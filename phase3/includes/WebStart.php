@@ -46,6 +46,7 @@ if ( function_exists ( 'getrusage' ) ) {
 	$wgRUstart = array();
 }
 unset( $IP );
+@ini_set( 'allow_url_fopen', 0 ); # For security
 
 # Valid web server entry point, enable includes.
 # Please don't move this line to includes/Defines.php. This line essentially
@@ -65,11 +66,7 @@ if ( $IP === false ) {
 
 
 # Start profiler
-if( file_exists("$IP/StartProfiler.php") ) {
-	require_once( "$IP/StartProfiler.php" );
-} else {
-	require_once( "$IP/includes/ProfilerStub.php" );
-}
+require_once( "$IP/StartProfiler.php" );
 wfProfileIn( 'WebStart.php-conf' );
 
 # Load up some global defines.

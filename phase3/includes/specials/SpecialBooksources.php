@@ -6,7 +6,7 @@
  *
  * @author Rob Church <robchur@gmail.com>
  * @todo Validate ISBNs using the standard check-digit method
- * @ingroup SpecialPage
+ * @ingroup SpecialPages
  */
 class SpecialBookSources extends SpecialPage {
 
@@ -34,7 +34,7 @@ class SpecialBookSources extends SpecialPage {
 		$wgOut->addWikiMsg( 'booksources-summary' );
 		$wgOut->addHTML( $this->makeForm() );
 		if( strlen( $this->isbn ) > 0 ) {
-			if( !self::isValidISBN( $this->isbn ) ) {
+			if( !$this->isValidIsbn( $this->isbn ) ) {
 				$wgOut->wrapWikiMsg( '<div class="error">$1</div>', 'booksources-invalid-isbn' );
 			}
 			$this->showList();

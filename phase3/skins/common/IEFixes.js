@@ -16,11 +16,11 @@ function hookit() {
 }
 
 // png alpha transparency fixes
-function fixalpha( logoId ) {
+function fixalpha() {
     // bg
     if (isMSIE55 && !doneIEAlphaFix)
     {
-        var plogo = document.getElementById( logoId || 'p-logo' );
+        var plogo = document.getElementById('p-logo');
         if (!plogo) return;
 
         var logoa = plogo.getElementsByTagName('a')[0];

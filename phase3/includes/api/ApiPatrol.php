@@ -41,7 +41,8 @@ class ApiPatrol extends ApiBase {
 	 * Patrols the article or provides the reason the patrol failed.
 	 */
 	public function execute() {
-		global $wgUser;
+		global $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
+		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
 		
 		if(!isset($params['token']))
@@ -57,15 +58,11 @@ class ApiPatrol extends ApiBase {
 		$retval = RecentChange::markPatrolled($params['rcid']);
 			
 		if($retval)
-			$this->dieUsageMsg(reset($retval));
+			$this->dieUsageMsg(current($retval));
 		
-		$result = array('rcid' => intval($rc->getAttribute('rc_id')));
+		$result = array('rcid' => $rc->getAttribute('rc_id'));
 		ApiQueryBase::addTitleInfo($result, $rc->getTitle());
 		$this->getResult()->addValue(null, $this->getModuleName(), $result);
-	}
-
-	public function isWriteMode() {
-		return true;
 	}
 
 	public function getAllowedParams() {

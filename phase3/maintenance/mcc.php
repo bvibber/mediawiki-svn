@@ -88,11 +88,7 @@ do {
 		break;
 
 		case 'get':
-			$sub = '';
-			if ( array_key_exists( 1, $args ) ) {
-				$sub = $args[1];
-			}
-			print "Getting {$args[0]}[$sub]\n";
+			print "Getting {$args[0]}[{$args[1]}]\n";
 			$res = $mcc->get( $args[0] );
 			if ( array_key_exists( 1, $args ) ) {
 				$res = $res[$args[1]];

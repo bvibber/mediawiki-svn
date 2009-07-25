@@ -40,8 +40,7 @@ function wfSpecialNewimages( $par, $specialPage ) {
 	if ($hidebotsql) {
 		$sql .= "$hidebotsql WHERE ug_group IS NULL";
 	}
-	$sql .= ' ORDER BY img_timestamp DESC';
-	$sql = $dbr->limitResult($sql, 1, false);
+	$sql .= ' ORDER BY img_timestamp DESC LIMIT 1';
 	$res = $dbr->query( $sql, __FUNCTION__ );
 	$row = $dbr->fetchRow( $res );
 	if( $row !== false ) {
@@ -65,13 +64,13 @@ function wfSpecialNewimages( $par, $specialPage ) {
 	}
 
 	$where = array();
-	$searchpar = array();
+	$searchpar = '';
 	if ( $wpIlMatch != '' && !$wgMiserMode) {
 		$nt = Title::newFromUrl( $wpIlMatch );
 		if( $nt ) {
 			$m = $dbr->escapeLike( strtolower( $nt->getDBkey() ) );
 			$where[] = "LOWER(img_name) LIKE '%{$m}%'";
-			$searchpar['wpIlMatch'] = $wpIlMatch;
+			$searchpar = '&wpIlMatch=' . urlencode( $wpIlMatch );
 		}
 	}
 
@@ -94,7 +93,7 @@ function wfSpecialNewimages( $par, $specialPage ) {
 		$sql .= ' WHERE ' . $dbr->makeList( $where, LIST_AND );
 	}
 	$sql.=' ORDER BY img_timestamp '. ( $invertSort ? '' : ' DESC' );
-	$sql = $dbr->limitResult($sql, ( $limit + 1 ), false);
+	$sql.=' LIMIT ' . ( $limit + 1 );
 	$res = $dbr->query( $sql, __FUNCTION__ );
 
 	/**
@@ -126,9 +125,9 @@ function wfSpecialNewimages( $par, $specialPage ) {
 		$ut = $s->img_user_text;
 
 		$nt = Title::newFromText( $name, NS_FILE );
-		$ul = $sk->link( Title::makeTitle( NS_USER, $ut ), $ut );
+		$ul = $sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
 
-		$gallery->add( $nt, "$ul<br />\n<i>".htmlspecialchars($wgLang->timeanddate( $s->img_timestamp, true ))."</i><br />\n" );
+		$gallery->add( $nt, "$ul<br />\n<i>".$wgLang->timeanddate( $s->img_timestamp, true )."</i><br />\n" );
 
 		$timestamp = wfTimestamp( TS_MW, $s->img_timestamp );
 		if( empty( $firstTimestamp ) ) {
@@ -163,72 +162,29 @@ function wfSpecialNewimages( $par, $specialPage ) {
 
 	# If we change bot visibility, this needs to be carried along.
 	if( !$hidebots ) {
-		$botpar = array( 'hidebots' => 0 );
+		$botpar = '&hidebots=0';
 	} else {
-		$botpar = array();
+		$botpar = '';
 	}
 	$now = wfTimestampNow();
 	$d = $wgLang->date( $now, true );
 	$t = $wgLang->time( $now, true );
-	$query = array_merge(
-		array( 'from' => $now ),
-		$botpar,
-		$searchpar
-	);
+	$dateLink = $sk->makeKnownLinkObj( $titleObj, wfMsgHtml( 'sp-newimages-showfrom', $d, $t ), 
+		'from='.$now.$botpar.$searchpar );
 
-	$dateLink = $sk->linkKnown(
-		$titleObj,
-		htmlspecialchars( wfMsg( 'sp-newimages-showfrom', $d, $t ) ),
-		array(),
-		$query
-	);
+	$botLink = $sk->makeKnownLinkObj($titleObj, wfMsgHtml( 'showhidebots', 
+		($hidebots ? wfMsgHtml('show') : wfMsgHtml('hide'))),'hidebots='.($hidebots ? '0' : '1').$searchpar);
 
-	$query = array_merge(
-		array( 'hidebots' => ( $hidebots ? 0 : 1 ) ),
-		$searchpar
-	);
-
-	$showhide = $hidebots ? wfMsg( 'show' ) : wfMsg( 'hide' );
-
-	$botLink = $sk->linkKnown(
-		$titleObj,
-		htmlspecialchars( wfMsg( 'showhidebots', $showhide ) ),
-		array(),
-		$query
-	);
 
 	$opts = array( 'parsemag', 'escapenoentities' );
 	$prevLink = wfMsgExt( 'pager-newer-n', $opts, $wgLang->formatNum( $limit ) );
 	if( $firstTimestamp && $firstTimestamp != $latestTimestamp ) {
-		$query = array_merge(
-			array( 'from' => $firstTimestamp ),
-			$botpar,
-			$searchpar
-		);
-
-		$prevLink = $sk->linkKnown(
-			$titleObj,
-			$prevLink,
-			array(),
-			$query
-		);
+		$prevLink = $sk->makeKnownLinkObj( $titleObj, $prevLink, 'from=' . $firstTimestamp . $botpar . $searchpar );
 	}
 
 	$nextLink = wfMsgExt( 'pager-older-n', $opts, $wgLang->formatNum( $limit ) );
 	if( $shownImages > $limit && $lastTimestamp ) {
-		$query = array_merge(
-			array( 'until' => $lastTimestamp ),
-			$botpar,
-			$searchpar
-		);
-
-		$nextLink = $sk->linkKnown(
-			$titleObj,
-			$nextLink,
-			array(),
-			$query
-		);
-
+		$nextLink = $sk->makeKnownLinkObj( $titleObj, $nextLink, 'until=' . $lastTimestamp.$botpar.$searchpar );
 	}
 
 	$prevnext = '<p>' . $botLink . ' '. wfMsgHtml( 'viewprevnext', $prevLink, $nextLink, $dateLink ) .'</p>';

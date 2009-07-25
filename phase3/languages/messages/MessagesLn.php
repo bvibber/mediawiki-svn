@@ -1,9 +1,6 @@
 <?php
 /** Lingala (Lingála)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -74,16 +71,14 @@ $messages = array(
 'subcategories'   => 'Ndéngé-bǎna',
 'category-empty'  => "''Loléngé loye ezalí na ekakola tɛ̂, loléngé-mwǎna tɛ̂ tǒ nkásá mitímediá tɛ̂.''",
 
-'about'      => 'elɔ́kɔ elobámí',
-'article'    => 'ekakoli',
-'cancel'     => 'Kozóngela',
-'mytalk'     => 'Ntembe na ngáí',
-'navigation' => 'Botamboli',
-'and'        => '&#32;mpé',
-
-# Cologne Blue skin
+'about'          => 'elɔ́kɔ elobámí',
+'article'        => 'ekakoli',
+'cancel'         => 'Kozóngela',
 'qbedit'         => 'kobalusa',
 'qbspecialpages' => 'Nkásá ya ndéngé isúsu',
+'mytalk'         => 'Ntembe na ngáí',
+'navigation'     => 'Botamboli',
+'and'            => '&#32;mpé',
 
 'errorpagetitle'   => 'Mbéba',
 'tagline'          => 'Artíclɛ ya {{SITENAME}}.',
@@ -94,7 +89,7 @@ $messages = array(
 'searcharticle'    => 'Kɛndɛ́',
 'history'          => 'Makambo ya lokásá',
 'history_short'    => 'likambo',
-'printableversion' => 'Mpɔ̂ na kofínela',
+'printableversion' => 'Mpɔ́ na kofínela',
 'permalink'        => 'Ekangeli ya ntángo yɔ́nsɔ',
 'print'            => 'kobimisa nkomá',
 'edit'             => 'Kobimisela',
@@ -162,6 +157,11 @@ $messages = array(
 'nologinlink'             => 'Míkomísá yɔ̌-mɛ́i',
 'gotaccount'              => 'Omíkomísí naíno ? $1.',
 'createaccountmail'       => 'na mokánda',
+'youremail'               => 'Mokandá (e-mail) *',
+'username'                => 'Nkómbó ya ekitoli :',
+'yourrealname'            => 'nkómbó ya sɔ̂lɔ́',
+'yourlanguage'            => 'Lokótá',
+'email'                   => 'Mokánda',
 
 # Edit page toolbar
 'bold_sample'     => 'Nkomá ya mbinga',
@@ -197,6 +197,7 @@ $messages = array(
 'cur'                 => 'sika',
 'next'                => 'bolɛngɛli',
 'last'                => 'ya nsúka',
+'deletedrev'          => '[elímwísámí]',
 
 # Revision deletion
 'rev-delundel' => 'komɔ́nisa/kobomba',
@@ -207,24 +208,20 @@ $messages = array(
 'editundo'      => 'kozóngela',
 
 # Search results
-'prevn'        => '{{PLURAL:$1|$1}} ya libosó',
-'nextn'        => 'bolɛngɛli {{PLURAL:$1|$1}}',
+'prevn'        => '$1 ya libosó',
+'nextn'        => 'bolɛngɛli $1',
 'viewprevnext' => 'Komɔ́na ($1) ($2) ($3)',
 'powersearch'  => 'Boluki',
 
 # Preferences page
 'preferences'       => 'Malúli',
 'mypreferences'     => 'Malúli ma ngáí',
-'prefs-datetime'    => 'Mokɔlɔ mpé ntángo',
+'dateformat'        => 'bokomi ya mokɔlɔ',
+'datetime'          => 'Mokɔlɔ mpé ntángo',
 'prefs-rc'          => 'Mbóngwana ya nsúka',
 'saveprefs'         => 'kobómbisa',
 'searchresultshead' => 'Boluki',
 'allowemail'        => 'Enable mokánda from other users',
-'youremail'         => 'Mokandá (e-mail) *',
-'username'          => 'Nkómbó ya ekitoli :',
-'yourrealname'      => 'nkómbó ya sɔ̂lɔ́',
-'yourlanguage'      => 'Lokótá',
-'email'             => 'Mokánda',
 
 # Groups
 'group-sysop' => 'Bayángeli',
@@ -235,7 +232,6 @@ $messages = array(
 'recentchanges'   => 'Mbóngwana ya nsúka',
 'rcnote'          => "Áwa o nsé {{PLURAL:$1|ezalí mbóngwana '''1'''|izalí mbóngwana '''$1'''}} o {{PLURAL:$2|mokɔlɔ|mikɔlɔ '''$2'''}} ya nsúka, {{PLURAL:$1|etángámí|itángámí}} o $3.",
 'rcshowhideminor' => '$1 mbóngwana ya mokɛ́',
-'rcshowhidebots'  => '$1 barobot',
 'rcshowhidemine'  => '$1 mbóngwana ya ngáí',
 'rclinks'         => 'Komɔ́nisa mbóngwana $1 ya nsúka o mikɔ́lɔ $2<br />$3',
 'diff'            => 'mbó.',
@@ -247,9 +243,7 @@ $messages = array(
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Bolandi ekangisi',
-'recentchangeslinked-feed'    => 'Bolandi ekangisi',
-'recentchangeslinked-toolbox' => 'Bolandi ekangisi',
+'recentchangeslinked' => 'Bolandi ekangisi',
 
 # Upload
 'upload'    => 'Kokumbisa (elilingi)',
@@ -260,8 +254,7 @@ $messages = array(
 'listfiles_date' => 'Mokɔlɔ',
 
 # File description page
-'file-anchor-link' => 'Elilingi',
-'filehist'         => 'Mokóló ya kásá',
+'filehist' => 'Mokóló ya kásá',
 
 # File deletion
 'filedelete-submit' => 'Kolímwisa',
@@ -354,8 +347,6 @@ $messages = array(
 'contributions'       => 'Mosálá ya moto óyo',
 'contributions-title' => 'Mosálá ya moto mpɔ̂ na $1',
 'mycontris'           => 'Nkásá nakomí',
-
-'sp-contributions-talk' => 'Ntembe',
 
 # What links here
 'whatlinkshere'       => 'Ekangísí áwa',

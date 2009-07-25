@@ -62,7 +62,7 @@ if (!defined('MEDIAWIKI')) {
 			$this->addFields($resultPageSet->getPageTableFields());
 	}
 
-	protected function runQuery(&$resultPageSet) {
+	protected function runQuery(&$data, &$resultPageSet) {
 		$db = $this->getDB();
 		$res = $this->select(__METHOD__);
 		$count = 0;
@@ -73,14 +73,7 @@ if (!defined('MEDIAWIKI')) {
 				// Prevent duplicates
 				if(!in_array($row->page_id, $this->pageIDs))
 				{
-					$fit = $this->getResult()->addValue(
-							array('query', $this->getModuleName()),
-							null, $this->extractRowInfo($row));
-					if(!$fit)
-						# We can't really query-continue a random list.
-						# Return an insanely high value so
-						# $count < $limit is false
-						return 1E9;
+					$data[] = $this->extractRowInfo($row);
 					$this->pageIDs[] = $row->page_id;
 				}
 			}
@@ -94,10 +87,11 @@ if (!defined('MEDIAWIKI')) {
 	public function run($resultPageSet = null) {
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
+		$data = array();
 		$this->pageIDs = array();
 		
 		$this->prepareQuery(wfRandom(), $params['limit'], $params['namespace'], $resultPageSet, $params['redirect']);
-		$count = $this->runQuery($resultPageSet);
+		$count = $this->runQuery($data, $resultPageSet);
 		if($count < $params['limit'])
 		{
 			/* We got too few pages, we probably picked a high value
@@ -105,19 +99,21 @@ if (!defined('MEDIAWIKI')) {
 			 * also the comment in Title::getRandomTitle()
 			 */
 			 $this->prepareQuery(0, $params['limit'] - $count, $params['namespace'], $resultPageSet, $params['redirect']);
-			 $this->runQuery($resultPageSet);
+			 $this->runQuery($data, $resultPageSet);
 		}
 
 		if(is_null($resultPageSet)) {
-			$result->setIndexedTagName_internal(array('query', $this->getModuleName()), 'page');
+			$result->setIndexedTagName($data, 'page');
+			$result->addValue('query', $this->getModuleName(), $data);
 		}
 	}
 
 	private function extractRowInfo($row) {
 		$title = Title::makeTitle($row->page_namespace, $row->page_title);
 		$vals = array();
-		$vals['id'] = intval($row->page_id);
-		ApiQueryBase::addTitleInfo($vals, $title);
+		$vals['title'] = $title->getPrefixedText();
+		$vals['ns'] = $row->page_namespace;
+		$vals['id'] = $row->page_id;
 		return $vals;
 	}
 

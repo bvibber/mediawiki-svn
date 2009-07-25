@@ -58,7 +58,7 @@ class ImageListPager extends TablePager {
 				'img_description' => wfMsg( 'listfiles_description' ),
 			);
 			if( !$wgMiserMode ) {
-				$this->mFieldNames['count'] = wfMsg( 'listfiles_count' );
+				$this->mFieldNames['COUNT(oi_archive_name)'] = wfMsg( 'listfiles_count' );
 			}
 		}
 		return $this->mFieldNames;
@@ -74,25 +74,11 @@ class ImageListPager extends TablePager {
 		$fields = array_keys( $this->getFieldNames() );
 		$fields[] = 'img_user';
 		$options = $join_conds = array();
-
 		# Depends on $wgMiserMode
-		if( isset( $this->mFieldNames['count'] ) ) {
+		if( isset($this->mFieldNames['COUNT(oi_archive_name)']) ) {
 			$tables[] = 'oldimage';
-
-			# Need to rewrite this one
-			foreach ( $fields as &$field )
-				if ( $field == 'count' )
-					$field = 'COUNT(oi_archive_name) as count';
-			unset( $field );
-
-			$dbr = wfGetDB( DB_SLAVE );
-			if( $dbr->implicitGroupby() ) {
-				$options = array( 'GROUP BY' => 'img_name' );
-			} else {
-				$columnlist = implode( ',', preg_grep( '/^img/', array_keys( $this->getFieldNames() ) ) );
-				$options = array( 'GROUP BY' => "img_user, $columnlist" );
-			}
-			$join_conds = array( 'oldimage' => array( 'LEFT JOIN', 'oi_name = img_name' ) );
+			$options = array('GROUP BY' => 'img_name');
+			$join_conds = array('oldimage' => array('LEFT JOIN','oi_name = img_name') );
 		}
 		return array(
 			'tables'     => $tables,
@@ -127,23 +113,21 @@ class ImageListPager extends TablePager {
 		global $wgLang;
 		switch ( $field ) {
 			case 'img_timestamp':
-				return htmlspecialchars( $wgLang->timeanddate( $value, true ) );
+				return $wgLang->timeanddate( $value, true );
 			case 'img_name':
 				static $imgfile = null;
 				if ( $imgfile === null ) $imgfile = wfMsg( 'imgfile' );
 
 				$name = $this->mCurrentRow->img_name;
-				$link = $this->getSkin()->linkKnown( Title::makeTitle( NS_FILE, $name ), $value );
+				$link = $this->getSkin()->makeKnownLinkObj( Title::makeTitle( NS_FILE, $name ), $value );
 				$image = wfLocalFile( $value );
 				$url = $image->getURL();
 				$download = Xml::element('a', array( 'href' => $url ), $imgfile );
 				return "$link ($download)";
 			case 'img_user_text':
 				if ( $this->mCurrentRow->img_user ) {
-					$link = $this->getSkin()->link(
-						Title::makeTitle( NS_USER, $value ),
-						htmlspecialchars( $value )
-					);
+					$link = $this->getSkin()->makeLinkObj( Title::makeTitle( NS_USER, $value ),
+						htmlspecialchars( $value ) );
 				} else {
 					$link = htmlspecialchars( $value );
 				}
@@ -152,7 +136,7 @@ class ImageListPager extends TablePager {
 				return $this->getSkin()->formatSize( $value );
 			case 'img_description':
 				return $this->getSkin()->commentBlock( $value );
-			case 'count':
+			case 'COUNT(oi_archive_name)':
 				return intval($value)+1;
 		}
 	}

@@ -40,15 +40,11 @@ $optionsWithArgs[] = 'aconf'; # As above for AdminSettings.php
 $optionsWithArgs[] = 'wiki'; # For specifying the wiki ID
 
 $self = array_shift( $argv );
-$IP = strval( getenv('MW_INSTALL_PATH') ) !== ''
+$IP = ( getenv('MW_INSTALL_PATH') !== false
 	? getenv('MW_INSTALL_PATH')
-	: realpath( dirname( __FILE__ ) . '/..' );
+	: realpath( dirname( __FILE__ ) . '/..' ) );
 #chdir( $IP );
-if ( file_exists( "$IP/StartProfiler.php" ) ) {
-	require_once( "$IP/StartProfiler.php" );
-} else {
-	require_once( "$IP/includes/ProfilerStub.php" );
-}
+require_once( "$IP/StartProfiler.php" );
 
 $options = array();
 $args = array();
@@ -116,8 +112,9 @@ if (!isset( $wgUseNormalUser ) ) {
 	$wgUseNormalUser = false;
 }
 
-if ( file_exists( dirname(__FILE__).'/wikimedia-mode' ) ) {
+if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 	$wgWikiFarm = true;
+	#$cluster = trim( file_get_contents( '/etc/cluster' ) );
 	$cluster = 'pmtpa';
 	require_once( "$IP/includes/AutoLoader.php" );
 	require_once( "$IP/includes/SiteConfiguration.php" );
@@ -169,10 +166,16 @@ if ( file_exists( dirname(__FILE__).'/wikimedia-mode' ) ) {
 	}
 	
 	#require_once( $IP.'/includes/ProfilerStub.php' );
-	require( $IP.'/includes/Defines.php' );
-	require( $IP.'/CommonSettings.php' );
-	if ( !$wgUseNormalUser && is_readable( "$IP/AdminSettings.php" ) ) {
-		require( "$IP/AdminSettings.php" );
+	require_once( $IP.'/includes/Defines.php' );
+	require_once( $IP.'/CommonSettings.php' );
+
+	$bin = '/home/wikipedia/bin';
+	if ( $wgUseRootUser ) {
+		$wgDBuser = $wgDBadminuser = 'root';
+		$wgDBpassword = $wgDBadminpassword = trim(`$bin/mysql_root_pass`);
+	} elseif ( !$wgUseNormalUser ) {
+		$wgDBuser = $wgDBadminuser = 'wikiadmin';
+		$wgDBpassword = $wgDBadminpassword = trim(`$bin/wikiadmin_pass`);
 	}
 } else {
 	$wgWikiFarm = false;
@@ -198,7 +201,8 @@ if ( file_exists( dirname(__FILE__).'/wikimedia-mode' ) ) {
 	$wgCommandLineMode = true;
 	$DP = $IP;
 	require_once( "$IP/includes/AutoLoader.php" );
-	require_once( "$IP/includes/Defines.php" );
+	#require_once( $IP.'/includes/ProfilerStub.php' );
+	require_once( $IP.'/includes/Defines.php' );
 	require_once( $settingsFile );
 	/* ini_set( 'include_path', ".$sep$IP$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" ); */
 
@@ -260,5 +264,3 @@ require_once( "$IP/includes/Setup.php" );
 require_once( "$IP/install-utils.inc" );
 $wgTitle = null; # Much much faster startup than creating a title object
 @set_time_limit(0);
-
-$wgProfiling = false; // only for Profiler.php mode; avoids OOM errors

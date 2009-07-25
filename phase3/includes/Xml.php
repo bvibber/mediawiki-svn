@@ -172,36 +172,6 @@ class Xml {
 			. implode( "\n", $options )
 			. self::closeElement( 'select' );
 	}
-	
-	/**
-	 * @param $year Integer
-	 * @param $month Integer
-	 * @return string Formatted HTML
-	 */
-	public static function dateMenu( $year, $month ) {
-		# Offset overrides year/month selection
-		if( $month && $month !== -1 ) {
-			$encMonth = intval( $month );
-		} else {
-			$encMonth = '';
-		}
-		if( $year ) {
-			$encYear = intval( $year );
-		} else if( $encMonth ) {
-			$thisMonth = intval( gmdate( 'n' ) );
-			$thisYear = intval( gmdate( 'Y' ) );
-			if( intval($encMonth) > $thisMonth ) {
-				$thisYear--;
-			}
-			$encYear = $thisYear;
-		} else {
-			$encYear = '';
-		}
-		return Xml::label( wfMsg( 'year' ), 'year' ) . ' '.
-			Xml::input( 'year', 4, $encYear, array('id' => 'year', 'maxlength' => 4) ) . ' '.
-			Xml::label( wfMsg( 'month' ), 'month' ) . ' '.
-			Xml::monthSelector( $encMonth, -1 );
-	}
 
 	/**
 	 *
@@ -671,6 +641,7 @@ class Xml {
 	
 		foreach( $fields as $labelmsg => $input ) {
 			$id = "mw-$labelmsg";
+			
 			$form .= Xml::openElement( 'tr', array( 'id' => $id ) );
 			$form .= Xml::tags( 'td', array('class' => 'mw-label'), wfMsgExt( $labelmsg, array('parseinline') ) );
 			$form .= Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . $input . Xml::closeElement( 'td' );
@@ -678,7 +649,7 @@ class Xml {
 		}
 
 		if( $submitLabel ) {
-			$form .= Xml::openElement( 'tr' );
+			$form .= Xml::openElement( 'tr', array( 'id' => $id ) );
 			$form .= Xml::tags( 'td', array(), '' );
 			$form .= Xml::openElement( 'td', array( 'class' => 'mw-submit' ) ) . Xml::submitButton( wfMsg( $submitLabel ) ) . Xml::closeElement( 'td' );
 			$form .= Xml::closeElement( 'tr' );
@@ -692,9 +663,9 @@ class Xml {
 	
 	/**
 	 * Build a table of data
-	 * @param $rows An array of arrays of strings, each to be a row in a table
-	 * @param $attribs An array of attributes to apply to the table tag [optional]
-	 * @param $headers An array of strings to use as table headers [optional]
+	 * @param array $rows An array of arrays of strings, each to be a row in a table
+	 * @param array $attribs Attributes to apply to the table tag [optional]
+	 * @param array $headers An array of strings to use as table headers [optional]
 	 * @return string
 	 */
 	public static function buildTable( $rows, $attribs = array(), $headers = null ) {
@@ -717,7 +688,7 @@ class Xml {
 	
 	/**
 	 * Build a row for a table
-	 * @param $cells An array of strings to put in <td>
+	 * @param array $cells An array of strings to put in <td>
 	 * @return string
 	 */
 	public static function buildTableRow( $attribs, $cells ) {
@@ -751,42 +722,10 @@ class XmlSelect {
 		$this->attributes[$name] = $value;
 	}
 
-	public function getAttribute( $name ) {
-		if ( isset($this->attributes[$name]) ) {
-			return $this->attributes[$name];
-		} else {
-			return null;
-		}
-	}
-
 	public function addOption( $name, $value = false ) {
 		// Stab stab stab
 		$value = ($value !== false) ? $value : $name;
 		$this->options[] = Xml::option( $name, $value, $value === $this->default );
-	}
-	
-	// This accepts an array of form
-	// label => value
-	// label => ( label => value, label => value )
-	public function addOptions( $options ) {
-		$this->options[] = trim(self::formatOptions( $options, $this->default ));
-	}
-
-	// This accepts an array of form
-	// label => value
-	// label => ( label => value, label => value )	
-	static function formatOptions( $options, $default = false ) {
-		$data = '';
-		foreach( $options as $label => $value ) {
-			if ( is_array( $value ) ) {
-				$contents = self::formatOptions( $value, $default );
-				$data .= Xml::tags( 'optgroup', array( 'label' => $label ), $contents ) . "\n";
-			} else {
-				$data .= Xml::option( $label, $value, $value === $default ) . "\n";
-			}
-		}
-		
-		return $data;
 	}
 
 	public function getHTML() {

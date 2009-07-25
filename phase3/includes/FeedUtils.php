@@ -13,7 +13,7 @@ class FeedUtils {
 	}
 
 	public static function checkFeedOutput( $type ) {
-		global $wgFeed, $wgFeedClasses;
+		global $wgFeed, $wgOut, $wgFeedClasses;
 
 		if ( !$wgFeed ) {
 			global $wgOut;
@@ -76,9 +76,7 @@ class FeedUtils {
 				wfProfileIn( __FUNCTION__."-dodiff" );
 
 				#$diffText = $de->getDiff( wfMsg( 'revisionasof',
-				#	$wgContLang->timeanddate( $timestamp ),
-				#	$wgContLang->date( $timestamp ),
-				#	$wgContLang->time( $timestamp ) ),
+				#	$wgContLang->timeanddate( $timestamp ) ),
 				#	wfMsg( 'currentrev' ) );
 				
 				// Don't bother generating the diff if we won't be able to show it
@@ -87,9 +85,7 @@ class FeedUtils {
 					$diffText = $de->getDiff(
 						wfMsg( 'previousrevision' ), // hack
 						wfMsg( 'revisionasof',
-							$wgContLang->timeanddate( $timestamp ),
-							$wgContLang->date( $timestamp ),
-							$wgContLang->time( $timestamp ) ) );
+							$wgContLang->timeanddate( $timestamp ) ) );
 				}
 
 				if ( ( strlen( $diffText ) > $wgFeedDiffCutoff ) || ( $wgFeedDiffCutoff <= 0 ) ) {

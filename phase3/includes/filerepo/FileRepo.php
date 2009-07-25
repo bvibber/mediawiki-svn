@@ -6,7 +6,6 @@
  * @ingroup FileRepo
  */
 abstract class FileRepo {
-	const FILES_ONLY = 1;
 	const DELETE_SOURCE = 1;
 	const FIND_PRIVATE = 1;
 	const FIND_IGNORE_REDIRECT = 2;
@@ -295,22 +294,16 @@ abstract class FileRepo {
 	 * MediaWiki this means action=render. This should only be called by the
 	 * repository's file class, since it may return invalid results. User code
 	 * should use File::getDescriptionText().
-	 * @param string $name Name of image to fetch
-	 * @param string $lang Language to fetch it in, if any.
 	 */
-	function getDescriptionRenderUrl( $name, $lang = null ) {
-		$query = 'action=render';
-		if ( !is_null( $lang ) ) {
-			$query .= '&uselang=' . $lang;
-		}
+	function getDescriptionRenderUrl( $name ) {
 		if ( isset( $this->scriptDirUrl ) ) {
 			return $this->scriptDirUrl . '/index.php?title=' .
 				wfUrlencode( 'Image:' . $name ) .
-				"&$query";
+				'&action=render';
 		} else {
 			$descUrl = $this->getDescriptionUrl( $name );
 			if ( $descUrl ) {
-				return wfAppendQuery( $descUrl, $query );
+				return wfAppendQuery( $descUrl, 'action=render' );
 			} else {
 				return false;
 			}
@@ -400,21 +393,6 @@ abstract class FileRepo {
 	 *        that the source files should be deleted if possible
 	 */
 	abstract function publishBatch( $triplets, $flags = 0 );
-
-	function fileExists( $file, $flags = 0 ) {
-		$result = $this->fileExistsBatch( array( $file ), $flags );
-		return $result[0];
-	}
-
-	/**
-	 * Checks existence of an array of files.
-	 *
-	 * @param array $files URLs (or paths) of files to check
-	 * @param integer $flags Bitwise combination of the following flags:
-	 *     self::FILES_ONLY     Mark file as existing only if it is a file (not directory)
-	 * @return Either array of files and existence flags, or false
-	 */
-	abstract function fileExistsBatch( $files, $flags = 0 );
 
 	/**
 	 * Move a group of files to the deletion archive.
@@ -533,8 +511,7 @@ abstract class FileRepo {
 	function cleanupDeletedBatch( $storageKeys ) {}
 
 	/**
-	 * Checks if there is a redirect named as $title. If there is, return the
-	 * title object. If not, return false.
+	 * Checks if there is a redirect named as $title
 	 * STUB
 	 *
 	 * @param Title $title Title of image
@@ -545,58 +522,14 @@ abstract class FileRepo {
 
 	/**
 	 * Invalidates image redirect cache related to that image
-	 * Doesn't do anything for repositories that don't support image redirects.
-	 * 
 	 * STUB
-	 * @param Title $title Title of image
-	 */	
-	function invalidateImageRedirect( $title ) {}
-	
-	/**
-	 * Get an array or iterator of file objects for files that have a given 
-	 * SHA-1 content hash.
 	 *
-	 * STUB
+	 * @param Title $title Title of image
 	 */
+	function invalidateImageRedirect( $title ) {
+	}
+	
 	function findBySha1( $hash ) {
 		return array();
-	}
-	
-	/**
-	 * Get the human-readable name of the repo. 
-	 * @return string
-	 */
-	public function getDisplayName() {
-		// We don't name our own repo, return nothing
-		if ( $this->name == 'local' ) {
-			return null;
-		}
-		$repoName = wfMsg( 'shared-repo-name-' . $this->name );
-		if ( !wfEmptyMsg( 'shared-repo-name-' . $this->name, $repoName ) ) {
-			return $repoName;
-		}
-		return wfMsg( 'shared-repo' ); 
-	}
-	
-	/**
-	 * Get a key on the primary cache for this repository.
-	 * Returns false if the repository's cache is not accessible at this site. 
-	 * The parameters are the parts of the key, as for wfMemcKey().
-	 *
-	 * STUB
-	 */
-	function getSharedCacheKey( /*...*/ ) {
-		return false;
-	}
-
-	/**
-	 * Get a key for this repo in the local cache domain. These cache keys are 
-	 * not shared with remote instances of the repo.
-	 * The parameters are the parts of the key, as for wfMemcKey().
-	 */
-	function getLocalCacheKey( /*...*/ ) {
-		$args = func_get_args();
-		array_unshift( $args, 'filerepo', $this->getName() );
-		return call_user_func_array( 'wfMemcKey', $args );
 	}
 }

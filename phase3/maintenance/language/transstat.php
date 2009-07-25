@@ -40,7 +40,7 @@ Usage: php transstat.php [--help] [--output=csv|text|wiki]
 Example: php maintenance/transstat.php --output=text
 
 END;
-	exit(1);
+	exit();
 }
 
 
@@ -48,16 +48,16 @@ END;
 # Select an output engine
 switch ( $options['output'] ) {
 	case 'wiki':
-		$output = new wikiStatsOutput();
+		$wgOut = new wikiStatsOutput();
 		break;
 	case 'metawiki':
-		$output = new metawikiStatsOutput();
+		$wgOut = new metawikiStatsOutput();
 		break;
 	case 'text':
-		$output = new textStatsOutput();
+		$wgOut = new textStatsOutput();
 		break;
 	case 'csv':
-		$output = new csvStatsOutput();
+		$wgOut = new csvStatsOutput();
 		break;
 	default:
 		showUsage();
@@ -67,18 +67,17 @@ switch ( $options['output'] ) {
 $wgLanguages = new languages();
 
 # Header
-$output->heading();
-$output->blockstart();
-$output->element( 'Language', true );
-$output->element( 'Code', true );
-$output->element( 'Fallback', true );
-$output->element( 'Translated', true );
-$output->element( '%', true );
-$output->element( 'Obsolete', true );
-$output->element( '%', true );
-$output->element( 'Problematic', true );
-$output->element( '%', true );
-$output->blockend();
+$wgOut->heading();
+$wgOut->blockstart();
+$wgOut->element( 'Language', true );
+$wgOut->element( 'Code', true );
+$wgOut->element( 'Translated', true );
+$wgOut->element( '%', true );
+$wgOut->element( 'Obsolete', true );
+$wgOut->element( '%', true );
+$wgOut->element( 'Problematic', true );
+$wgOut->element( '%', true );
+$wgOut->blockend();
 
 $wgGeneralMessages = $wgLanguages->getGeneralMessages();
 $wgRequiredMessagesNumber = count( $wgGeneralMessages['required'] );
@@ -91,36 +90,34 @@ foreach ( $wgLanguages->getLanguages() as $code ) {
 
 	# Calculate the numbers
 	$language = $wgContLang->getLanguageName( $code );
-	$fallback = $wgLanguages->getFallback( $code );
 	$messages = $wgLanguages->getMessages( $code );
 	$messagesNumber = count( $messages['translated'] );
 	$requiredMessagesNumber = count( $messages['required'] );
-	$requiredMessagesPercent = $output->formatPercent( $requiredMessagesNumber, $wgRequiredMessagesNumber );
+	$requiredMessagesPercent = $wgOut->formatPercent( $requiredMessagesNumber, $wgRequiredMessagesNumber );
 	$obsoleteMessagesNumber = count( $messages['obsolete'] );
-	$obsoleteMessagesPercent = $output->formatPercent( $obsoleteMessagesNumber, $messagesNumber, true );
-	$messagesWithMismatchVariables = $wgLanguages->getMessagesWithMismatchVariables( $code );
+	$obsoleteMessagesPercent = $wgOut->formatPercent( $obsoleteMessagesNumber, $messagesNumber, true );
+	$messagesWithoutVariables = $wgLanguages->getMessagesWithoutVariables( $code );
 	$emptyMessages = $wgLanguages->getEmptyMessages( $code );
 	$messagesWithWhitespace = $wgLanguages->getMessagesWithWhitespace( $code );
 	$nonXHTMLMessages = $wgLanguages->getNonXHTMLMessages( $code );
 	$messagesWithWrongChars = $wgLanguages->getMessagesWithWrongChars( $code );
-	$problematicMessagesNumber = count( array_unique( array_merge( $messagesWithMismatchVariables, $emptyMessages, $messagesWithWhitespace, $nonXHTMLMessages, $messagesWithWrongChars ) ) );
-	$problematicMessagesPercent = $output->formatPercent( $problematicMessagesNumber, $messagesNumber, true );
+	$problematicMessagesNumber = count( array_unique( array_merge( $messagesWithoutVariables, $emptyMessages, $messagesWithWhitespace, $nonXHTMLMessages, $messagesWithWrongChars ) ) );
+	$problematicMessagesPercent = $wgOut->formatPercent( $problematicMessagesNumber, $messagesNumber, true );
 
 	# Output them
-	$output->blockstart();
-	$output->element( "$language" );
-	$output->element( "$code" );
-	$output->element( "$fallback" );
-	$output->element( "$requiredMessagesNumber/$wgRequiredMessagesNumber" );
-	$output->element( $requiredMessagesPercent );
-	$output->element( "$obsoleteMessagesNumber/$messagesNumber" );
-	$output->element( $obsoleteMessagesPercent );
-	$output->element( "$problematicMessagesNumber/$messagesNumber" );
-	$output->element( $problematicMessagesPercent );
-	$output->blockend();
+	$wgOut->blockstart();
+	$wgOut->element( "$language" );
+	$wgOut->element( "$code" );
+	$wgOut->element( "$requiredMessagesNumber/$wgRequiredMessagesNumber" );
+	$wgOut->element( $requiredMessagesPercent );
+	$wgOut->element( "$obsoleteMessagesNumber/$messagesNumber" );
+	$wgOut->element( $obsoleteMessagesPercent );
+	$wgOut->element( "$problematicMessagesNumber/$messagesNumber" );
+	$wgOut->element( $problematicMessagesPercent );
+	$wgOut->blockend();
 }
 
 # Footer
-$output->footer();
+$wgOut->footer();
 
 

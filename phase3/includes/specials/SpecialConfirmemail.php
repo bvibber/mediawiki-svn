@@ -34,13 +34,10 @@ class EmailConfirmation extends UnlistedSpecialPage {
 				}
 			} else {
 				$title = SpecialPage::getTitleFor( 'Userlogin' );
+				$self = SpecialPage::getTitleFor( 'Confirmemail' );
 				$skin = $wgUser->getSkin();
-				$llink = $skin->linkKnown(
-					$title,
-					wfMsgHtml( 'loginreqlink' ),
-					array(),
-					array( 'returnto' => $this->getTitle()->getPrefixedText() )
-				);
+				$llink = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'loginreqlink' ), 
+					'returnto=' . $self->getPrefixedUrl() );
 				$wgOut->addHTML( wfMsgWikiHtml( 'confirmemail_needlogin', $llink ) );
 			}
 		} else {
@@ -71,12 +68,13 @@ class EmailConfirmation extends UnlistedSpecialPage {
 				$wgOut->addWikiMsg( 'emailauthenticated', $time, $d, $t );
 			}
 			if( $wgUser->isEmailConfirmationPending() ) {
-				$wgOut->wrapWikiMsg( "<div class=\"error mw-confirmemail-pending\">$1</div>", 'confirmemail_pending' );
+				$wgOut->addWikiMsg( 'confirmemail_pending' );
 			}
 			$wgOut->addWikiMsg( 'confirmemail_text' );
-			$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalUrl() ) );
+			$self = SpecialPage::getTitleFor( 'Confirmemail' );
+			$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 			$form .= Xml::hidden( 'token', $wgUser->editToken() );
-			$form .= Xml::submitButton( wfMsg( 'confirmemail_send' ) );
+			$form .= Xml::submitButton( wfMsgHtml( 'confirmemail_send' ) );
 			$form .= Xml::closeElement( 'form' );
 			$wgOut->addHTML( $form );
 		}

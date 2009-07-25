@@ -1,9 +1,6 @@
 <?php
 /** Tigrinya (ትግርኛ)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -50,12 +47,10 @@ $messages = array(
 'may'       => 'ሜይ',
 'jun'       => 'ጁን',
 
-'about'  => 'ብዛዕባ ብጠቅላላ',
-'mypage' => 'ፅሑፈይ',
-
-# Cologne Blue skin
+'about'         => 'ብዛዕባ ብጠቅላላ',
 'qbpageoptions' => 'ፅሑፍዚ',
 'qbmyoptions'   => 'ፅሑፋተይ',
+'mypage'        => 'ፅሑፈይ',
 
 'help'          => 'ፍንጪ',
 'search'        => 'ድሉይ',
@@ -81,6 +76,9 @@ $messages = array(
 
 # Login and logout pages
 'yourname'           => 'ናይ ኣባል ሽም:',
+'youremail'          => 'ኢ-መይል:',
+'yourlanguage'       => 'ቋንቋ:',
+'email'              => 'ኢ-መይል',
 'loginlanguagelabel' => 'ቋንቋ: $1',
 
 # Edit pages
@@ -92,8 +90,8 @@ $messages = array(
 'historysize' => '($1 ባይታት)',
 
 # Search results
-'prevn'       => 'ናይ ቀደም {{PLURAL:$1|$1}}',
-'nextn'       => 'ዝቕጽል {{PLURAL:$1|$1}}',
+'prevn'       => 'ናይ ቀደም $1',
+'nextn'       => 'ዝቕጽል $1',
 'powersearch' => 'ድሉይ',
 
 # Preferences page
@@ -102,10 +100,7 @@ $messages = array(
 'saveprefs'         => 'ኣቐምጥ',
 'searchresultshead' => 'ድሉይ',
 'savedprefs'        => 'ዘቕረብኩሞ መርኣይ ብትክክል ተቀሚጡ ኣሎ።',
-'prefs-files'       => 'ምስልታት',
-'youremail'         => 'ኢ-መይል:',
-'yourlanguage'      => 'ቋንቋ:',
-'email'             => 'ኢ-መይል',
+'files'             => 'ምስልታት',
 
 # Groups
 'group'       => 'ብሓበር:',
@@ -125,9 +120,6 @@ $messages = array(
 'listfiles'      => 'ምስልታት',
 'listfiles_name' => 'ሽም',
 'listfiles_user' => 'ኣባል',
-
-# File description page
-'file-anchor-link' => 'ምስሊ',
 
 # Miscellaneous special pages
 'nbytes'            => '$1 {{PLURAL:$1|ባይት|ባይታት}}',

@@ -20,9 +20,6 @@ class NullRepo extends FileRepo {
 	function deleteBatch( $sourceDestPairs ) {
 		return false;
 	}
-	function fileExistsBatch( $files, $flags = 0 ) {
-		return false;
-	}
 	function getFileProps( $virtualUrl ) {
 		return false;
 	}

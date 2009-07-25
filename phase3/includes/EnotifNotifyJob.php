@@ -26,8 +26,7 @@ class EnotifNotifyJob extends Job {
 			$this->params['timestamp'],
 			$this->params['summary'],
 			$this->params['minorEdit'],
-			$this->params['oldid'],
-			$this->params['watchers']
+			$this->params['oldid']
 		);
 		return true;
 	}

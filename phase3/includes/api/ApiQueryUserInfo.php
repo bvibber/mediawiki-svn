@@ -57,7 +57,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 		global $wgUser;
 		$result = $this->getResult();
 		$vals = array();
-		$vals['id'] = intval($wgUser->getId());
+		$vals['id'] = $wgUser->getId();
 		$vals['name'] = $wgUser->getName();
 
 		if($wgUser->isAnon())
@@ -80,13 +80,6 @@ class ApiQueryUserInfo extends ApiQueryBase {
 			$vals['rights'] = array_values(array_unique($wgUser->getRights()));
 			$result->setIndexedTagName($vals['rights'], 'r');	// even if empty
 		}
-		if (isset($this->prop['changeablegroups'])) {
-			$vals['changeablegroups'] = $wgUser->changeableGroups();
-			$result->setIndexedTagName($vals['changeablegroups']['add'], 'g');
-			$result->setIndexedTagName($vals['changeablegroups']['remove'], 'g');
-			$result->setIndexedTagName($vals['changeablegroups']['add-self'], 'g');
-			$result->setIndexedTagName($vals['changeablegroups']['remove-self'], 'g');
-		}
 		if (isset($this->prop['options'])) {
 			$vals['options'] = (is_null($wgUser->mOptions) ? User::getDefaultOptions() : $wgUser->mOptions);
 		}
@@ -94,16 +87,10 @@ class ApiQueryUserInfo extends ApiQueryBase {
 			$vals['preferencestoken'] = $wgUser->editToken();
 		}
 		if (isset($this->prop['editcount'])) {
-			$vals['editcount'] = intval($wgUser->getEditCount());
+			$vals['editcount'] = $wgUser->getEditCount();
 		}
 		if (isset($this->prop['ratelimits'])) {
 			$vals['ratelimits'] = $this->getRateLimits();
-		}
-		if (isset($this->prop['email'])) {
-			$vals['email'] = $wgUser->getEmail();
-			$auth = $wgUser->getEmailAuthenticationTimestamp();
-			if(!is_null($auth))
-				$vals['emailauthenticated'] = wfTimestamp(TS_ISO_8601, $auth);
 		}
 		return $vals;
 	}
@@ -135,8 +122,8 @@ class ApiQueryUserInfo extends ApiQueryBase {
 			foreach($categories as $cat)
 				if(isset($limits[$cat]) && !is_null($limits[$cat]))
 				{
-					$retval[$action][$cat]['hits'] = intval($limits[$cat][0]);
-					$retval[$action][$cat]['seconds'] = intval($limits[$cat][1]);
+					$retval[$action][$cat]['hits'] = $limits[$cat][0];
+					$retval[$action][$cat]['seconds'] = $limits[$cat][1];
 				}
 		return $retval;
 	}
@@ -151,12 +138,10 @@ class ApiQueryUserInfo extends ApiQueryBase {
 					'hasmsg',
 					'groups',
 					'rights',
-					'changeablegroups',
 					'options',
 					'preferencestoken',
 					'editcount',
-					'ratelimits',
-					'email',
+					'ratelimits'
 				)
 			)
 		);
@@ -169,8 +154,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 				'  blockinfo  - tags if the current user is blocked, by whom, and for what reason',
 				'  hasmsg     - adds a tag "message" if the current user has pending messages',
 				'  groups     - lists all the groups the current user belongs to',
-				'  rights     - lists all the rights the current user has',
-				'  changeablegroups - lists the groups the current user can add to and remove from',
+				'  rights     - lists of all rights the current user has',
 				'  options    - lists all preferences the current user has set',
 				'  editcount  - adds the current user\'s edit count',
 				'  ratelimits - lists all rate limits applying to the current user'

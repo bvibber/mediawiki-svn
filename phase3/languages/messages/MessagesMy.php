@@ -1,8 +1,5 @@
 <?php
-/** Burmese (မြန်မာဘာသာ)
- *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
+/** Burmese (Myanmasa)
  *
  * @ingroup Language
  * @file
@@ -90,15 +87,13 @@ $messages = array(
 'december-gen'  => 'ဒီ​ဇင်​ဘာ​',
 'may'           => 'မေ​',
 
-'about'      => 'အကြောင်း',
-'cancel'     => 'မ​လုပ်​တော့​ပါ​',
-'mytalk'     => 'ကျွန်​တော့​ပြော​ရေး​ဆို​ရာ​',
-'navigation' => 'အ​ညွှန်း​',
-
-# Cologne Blue skin
+'about'          => 'အကြောင်း',
+'cancel'         => 'မ​လုပ်​တော့​ပါ​',
 'qbfind'         => 'ရှာပါ',
 'qbedit'         => 'ပြင်​ဆင်​ရန်​',
 'qbspecialpages' => 'အ​ထူး​စာ​မျက်​နှာ​',
+'mytalk'         => 'ကျွန်​တော့​ပြော​ရေး​ဆို​ရာ​',
+'navigation'     => 'အ​ညွှန်း​',
 
 'help'             => 'အ​ကူ​အ​ညီ​',
 'search'           => 'ရှာ​ဖွေ​ရန်​',
@@ -145,7 +140,7 @@ $messages = array(
 'viewsource' => 'ဆို့​ကို​ပြ​ပါ​',
 
 # Login and logout pages
-'welcomecreation'         => 'မင်္ဂ​လာ​ပါ​ $1။ သင့်​အား​မှတ်​ပုံ​တင်​ပြီး​ပါ​ပြီ။​ ဝီ​ကီ​အ​တွက်​သင့်​စိတ်​ကြိုက်​များ​ကို​ရွေး​ချယ်​နိုင်​ပါ​သည်။​',
+'welcomecreation'         => 'မင်္ဂ​လာ​ပါ​ $1။ သင့်​အား​မှတ်​ပုံ​တင်​ပြီး​ပါ​ပြီ။​ ဝီ​ကီ​အ​တွက်​သင့်​စိတ်​ကြိုက်​များ​ကို​ရွေး​ချယ်​နိုင်​ပါ​သည်။​',
 'yourname'                => 'မှတ်​ပုံ​တင်​အ​မည်:',
 'yourpassword'            => 'လှို့​ဝှက်​စ​ကား​လုံး:',
 'yourpasswordagain'       => 'ပြန်​ရိုက်​ပါ:',
@@ -159,6 +154,13 @@ $messages = array(
 'nologinlink'             => 'မှတ်​ပုံ​တင်​ပြု​လုပ်​ပါ​',
 'createaccount'           => 'မှတ်​ပုံ​တင်​ပြု​လုပ်​ပါ​',
 'gotaccountlink'          => 'မှတ်​ပုံ​တင်​ဖြင့်​ဝင်​ပါ​',
+'youremail'               => 'အီ​မေး:',
+'username'                => 'မှတ်​ပုံ​တင်​အ​မည်:',
+'uid'                     => 'မှတ်​ပုံ​တင်​ID:',
+'yourrealname'            => 'နာမည်ရင်း:',
+'yourlanguage'            => 'ဘာသာ:',
+'yournick'                => 'ဆိုင်း:',
+'email'                   => 'အီ​မေး​',
 'loginsuccesstitle'       => 'မှတ်​ပုံ​တင်​ဖြင့်​ဝင်​ခြင်းအောင်မြင်သည်။',
 'loginlanguagelabel'      => 'ဘာသာ: $1',
 
@@ -206,16 +208,9 @@ $messages = array(
 'prefsnologin'      => 'မှတ်​ပုံ​တင်​ဖြင့်​မ​ဝင်​ရ​သေး​ပါ​',
 'changepassword'    => 'ဝှက်​စ​ကား​လုံးကိုပြောင်းပါ',
 'skin-preview'      => 'နမူနာ',
-'prefs-math'        => 'သင်္ချာ',
-'prefs-datetime'    => 'နေ့စွဲနှင့် အချိန်',
+'math'              => 'သင်္ချာ',
+'datetime'          => 'နေ့စွဲနှင့် အချိန်',
 'searchresultshead' => 'ရှာ​ဖွေ​ရန်​',
-'youremail'         => 'အီ​မေး:',
-'username'          => 'မှတ်​ပုံ​တင်​အ​မည်:',
-'uid'               => 'မှတ်​ပုံ​တင်​ID:',
-'yourrealname'      => 'နာမည်ရင်း:',
-'yourlanguage'      => 'ဘာသာ:',
-'yournick'          => 'ဆိုင်း:',
-'email'             => 'အီ​မေး​',
 
 # Groups
 'group-all' => '(အားလုံး)',
@@ -230,9 +225,7 @@ $messages = array(
 'boteditletter'   => 'ဆ',
 
 # Recent changes linked
-'recentchangeslinked'         => 'ဆက်​ဆပ်​သော​အ​ပြောင်း​အ​လဲ​များ​',
-'recentchangeslinked-feed'    => 'ဆက်​ဆပ်​သော​အ​ပြောင်း​အ​လဲ​များ​',
-'recentchangeslinked-toolbox' => 'ဆက်​ဆပ်​သော​အ​ပြောင်း​အ​လဲ​များ​',
+'recentchangeslinked' => 'ဆက်​ဆပ်​သော​အ​ပြောင်း​အ​လဲ​များ​',
 
 # Upload
 'upload'            => 'ဖိုင်​တင်​ရန်​',
@@ -241,7 +234,7 @@ $messages = array(
 'filename'          => 'ဖိုင်အမည်',
 'filedesc'          => 'အ​ကျဉ်း​ချုပ်​',
 'fileuploadsummary' => 'အ​ကျဉ်း​ချုပ်:',
-'watchthisupload'   => 'ဤ​စာ​မျက်​နှာ​အား​စောင့်​ကြည့်​ပါ​',
+'watchthisupload'   => 'ဤ​စာ​မျက်​နှာ​အား​စောင့်​ကြည့်​ပါ​',
 
 # Special:ListFiles
 'imgfile'        => 'ဖိုင်',
@@ -249,7 +242,6 @@ $messages = array(
 'listfiles_date' => 'နေ့စွဲ',
 
 # File description page
-'file-anchor-link'   => 'ဖိုင်',
 'filehist'           => 'ဖိုင်မှတ်တမ်း',
 'filehist-deleteall' => 'အားလုံးဖျက်',
 'filehist-deleteone' => 'ဖျက်',
@@ -271,8 +263,8 @@ $messages = array(
 # Statistics
 'statistics' => 'စာရင်းအင်း',
 
-'brokenredirects-edit'   => 'ပြင်​ဆင်​ရန်',
-'brokenredirects-delete' => 'ဖျက်​ပါ',
+'brokenredirects-edit'   => '(ပြင်​ဆင်​ရန်)',
+'brokenredirects-delete' => '(ဖျက်​ပါ)',
 
 'withoutinterwiki-submit' => 'ပြ',
 
@@ -313,7 +305,7 @@ $messages = array(
 
 # Protect
 'prot_1movedto2'         => '[[$1]]  မှ​ [[$2]] သို့​',
-'protect-expiry-options' => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite',
+'protect-expiry-options' => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite', # display1:time1,display2:time2,...
 'restriction-type'       => 'အခွင့်:',
 
 # Restrictions (nouns)
@@ -338,10 +330,10 @@ $messages = array(
 # Block/unblock
 'ipbreason'          => 'အ​ကြောင်း​ပြ​ချက်:',
 'ipbother'           => 'အခြားအချိန်:',
-'ipboptions'         => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite',
+'ipboptions'         => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'     => 'အခြား',
 'ipblocklist-submit' => 'ရှာ​ဖွေ​ရန်​',
-'expiringblock'      => '$1 $2 ဆုံးမည်',
+'expiringblock'      => '$1 ဆုံးမည်',
 
 # Move page
 'move-page-legend' => 'စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',

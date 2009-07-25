@@ -105,7 +105,6 @@ class LinkHolderArray {
 	}
 
 	/**
-	 * FIXME: update documentation. makeLinkObj() is deprecated.
 	 * Replace <!--LINK--> link placeholders with actual links, in the buffer
 	 * Placeholders created in Skin::makeLinkObj()
 	 * Returns an array of link CSS classes, indexed by PDBK.
@@ -229,12 +228,10 @@ class LinkHolderArray {
 					$linkCache->addBadLinkObj( $title );
 					$colours[$pdbk] = 'new';
 					$output->addLink( $title, 0 );
-					// FIXME: replace deprecated makeBrokenLinkObj() by link()
 					$replacePairs[$searchkey] = $sk->makeBrokenLinkObj( $title,
 									$entry['text'],
 									$query );
 				} else {
-					// FIXME: replace deprecated makeColouredLinkObj() by link()
 					$replacePairs[$searchkey] = $sk->makeColouredLinkObj( $title, $colours[$pdbk],
 									$entry['text'],
 									$query );

@@ -75,11 +75,6 @@ class ApiFeedWatchlist extends ApiBase {
 				'wllimit' => (50 > $wgFeedLimit) ? $wgFeedLimit : 50
 			);
 
-			if (!is_null($params['wluser']))
-				$fauxReqArr['wluser'] = $params['wluser'];
-			if (!is_null($params['wltoken']))
-				$fauxReqArr['wltoken'] = $params['wltoken'];
-
 			// Check for 'allrev' parameter, and if found, show all revisions to each page on wl.
 			if ( ! is_null ( $params['allrev'] ) )  $fauxReqArr['wlallrev'] = '';
 
@@ -94,7 +89,7 @@ class ApiFeedWatchlist extends ApiBase {
 			$data = $module->getResultData();
 
 			$feedItems = array ();
-			foreach ((array)$data['query']['watchlist'] as $info) {
+			foreach ($data['query']['watchlist'] as $info) {
 				$feedItems[] = $this->createFeedItem($info);
 			}
 
@@ -157,13 +152,7 @@ class ApiFeedWatchlist extends ApiBase {
 				ApiBase :: PARAM_MIN => 1,
 				ApiBase :: PARAM_MAX => 72,
 			),
-			'allrev' => null,
-			'wluser' => array (
-				ApiBase :: PARAM_TYPE => 'user'
-			),
-			'wltoken' => array (
-				ApiBase :: PARAM_TYPE => 'string'
-			)
+			'allrev' => null
 		);
 	}
 
@@ -171,9 +160,7 @@ class ApiFeedWatchlist extends ApiBase {
 		return array (
 			'feedformat' => 'The format of the feed',
 			'hours'      => 'List pages modified within this many hours from now',
-			'allrev'     => 'Include multiple revisions of the same page within given timeframe.',
-			'wluser'     => "The user whose watchlist you want (must be accompanied by wltoken if it's not you)",
-			'wltoken'    => 'Security token that requested user set in their preferences'
+			'allrev'     => 'Include multiple revisions of the same page within given timeframe.'
 		);
 	}
 

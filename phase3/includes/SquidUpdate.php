@@ -52,17 +52,13 @@ class SquidUpdate {
 		return new SquidUpdate( $blurlArr );
 	}
 
-	/**
-	 * Create a SquidUpdate from an array of Title objects, or a TitleArray object
-	 */
-	static function newFromTitles( $titles, $urlArr = array() ) {
+	static function newFromTitles( &$titles, $urlArr = array() ) {
 		global $wgMaxSquidPurgeTitles;
-		$i = 0;
+		if ( count( $titles ) > $wgMaxSquidPurgeTitles ) {
+			$titles = array_slice( $titles, 0, $wgMaxSquidPurgeTitles );
+		}
 		foreach ( $titles as $title ) {
 			$urlArr[] = $title->getInternalURL();
-			if ( $i++ > $wgMaxSquidPurgeTitles ) {
-				break;
-			}
 		}
 		return new SquidUpdate( $urlArr );
 	}

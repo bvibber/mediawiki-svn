@@ -47,13 +47,11 @@ require_once( "$IP/includes/Namespace.php" );
 require_once( "$IP/includes/ProfilerStub.php" );
 require_once( "$IP/includes/GlobalFunctions.php" );
 require_once( "$IP/includes/Hooks.php" );
-require_once( "$IP/includes/Exception.php" );
 
 # If we get an exception, the user needs to know
 # all the details
 $wgShowExceptionDetails = true;
-$wgShowSQLErrors = true;
-wfInstallExceptionHandler();
+
 ## Databases we support:
 
 $ourdb = array();
@@ -81,25 +79,12 @@ $ourdb['mssql']['compile']       = 'mssql not ready'; # Change to 'mssql' after 
 $ourdb['mssql']['bgcolor']       = '#ffc0cb';
 $ourdb['mssql']['rootuser']      = 'administrator';
 
-$ourdb['ibm_db2']['fullname']   = 'DB2';
-$ourdb['ibm_db2']['havedriver'] = 0;
-$ourdb['ibm_db2']['compile']    = 'ibm_db2';
-$ourdb['ibm_db2']['bgcolor']    = '#ffeba1';
-$ourdb['ibm_db2']['rootuser']   = 'db2admin';
-
-$ourdb['oracle']['fullname']   = 'Oracle';
-$ourdb['oracle']['havedriver'] = 0;
-$ourdb['oracle']['compile']    = 'oci8';
-$ourdb['oracle']['bgcolor']    = '#ffeba1';
-$ourdb['oracle']['rootuser']   = '';
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta name="robots" content="noindex,nofollow"/>
-	<title>MediaWiki <?php echo htmlspecialchars( $wgVersion ); ?> Installation</title>
+	<title>MediaWiki <?php echo( $wgVersion ); ?> Installation</title>
 	<style type="text/css">
 
 		@import "../skins/monobook/main.css";
@@ -217,7 +202,7 @@ $ourdb['oracle']['rootuser']   = '';
 <div id="content">
 <div id="bodyContent">
 
-<h1>MediaWiki <?php print htmlspecialchars( $wgVersion ) ?> Installation</h1>
+<h1>MediaWiki <?php print $wgVersion ?> Installation</h1>
 
 <?php
 $mainListOpened = false; # Is the main list (environement checking) opend ? Used by dieout
@@ -246,7 +231,7 @@ if( !is_writable( "." ) ) {
 	<p>To make the directory writable on a Unix/Linux system:</p>
 
 	<pre>
-	cd <i>" . htmlspecialchars( dirname( dirname( __FILE__ ) ) ) . "</i>
+	cd <i>/path/to/wiki</i>
 	chmod a+w config
 	</pre>
 	
@@ -317,7 +302,7 @@ $conf = new ConfigData;
 install_version_checks();
 $self = 'Installer'; # Maintenance script name, to please Setup.php
 
-print "<li>PHP " . htmlspecialchars( phpversion() ) . " installed</li>\n";
+print "<li>PHP " . phpversion() . " installed</li>\n";
 
 error_reporting( 0 );
 $phpdatabases = array();
@@ -417,7 +402,7 @@ if( wfIniGetBool( "safe_mode" ) ) {
 	$conf->safeMode = false;
 }
 
-$sapi = htmlspecialchars( php_sapi_name() );
+$sapi = php_sapi_name();
 print "<li>PHP server API is $sapi; ";
 $script = defined('MW_INSTALL_PHP5_EXT') ? 'index.php5' : 'index.php';
 if( $wgUsePathInfo ) {
@@ -516,24 +501,6 @@ if( !( $conf->turck || $conf->eaccel || $conf->apc || $conf->xcache ) ) {
 		cannot use these for object caching.</li>' );
 }
 
-$conf->phpCliPath = false;
-$phpClilocations = array_merge(
-	array(
-		"/usr/bin",
-		"/usr/local/bin",
-		"/opt/csw/bin",
-		"/usr/gnu/bin",
-		"/usr/sfw/bin" ),
-	explode( PATH_SEPARATOR, getenv( "PATH" ) ) );
-$phpClinames = array( "php", "php.exe" );
-foreach ($phpClilocations as $loc) {
-	$exe = locate_executable($loc, $phpClinames);
-	if ($exe !== false) {
-		$conf->phpCliPath= $exe;
-		break;
-	}
-}
-
 $conf->diff3 = false;
 $diff3locations = array_merge(
 	array(
@@ -618,9 +585,6 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 		: $_SERVER["SERVER_ADMIN"];
 	$conf->EmergencyContact = importPost( "EmergencyContact", $defaultEmail );
 	$conf->DBtype = importPost( "DBtype", $DefaultDBtype );
-	if ( !isset( $ourdb[$conf->DBtype] ) ) {
-		$conf->DBtype = $DefaultDBtype;
-	}
 
 	$conf->DBserver = importPost( "DBserver", "localhost" );
 	$conf->DBname = importPost( "DBname", "wikidb" );
@@ -633,7 +597,6 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->RootUser = importPost( "RootUser", "root" );
 	$conf->RootPW = importPost( "RootPW", "" );
 	$useRoot = importCheck( 'useroot', false );
-	$conf->populateadmin = importCheck( 'populateadmin', false );
 	$conf->LanguageCode = importPost( "LanguageCode", "en" );
 	## MySQL specific:
 	$conf->DBprefix     = importPost( "DBprefix" );
@@ -652,17 +615,6 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	## MSSQL specific
 	// We need a second field so it doesn't overwrite the MySQL one
 	$conf->DBprefix2 = importPost( "DBprefix2" );
-	
-	## DB2 specific:
-	// New variable in order to have a different default port number
-	$conf->DBport_db2   = importPost( "DBport_db2",      "50000" );
-	$conf->DBmwschema   = importPost( "DBmwschema",  "mediawiki" );
-	$conf->DBcataloged  = importPost( "DBcataloged",  "cataloged" );
-
-	// Oracle specific
-	$conf->DBprefix_ora     = importPost( "DBprefix_ora" );
-	$conf->DBdefTS_ora     = importPost( "DBdefTS_ora", "USERS" );
-	$conf->DBtempTS_ora     = importPost( "DBtempTS_ora", "TEMP" );
 
 	$conf->ShellLocale = getShellLocale( $conf->LanguageCode );
 
@@ -686,11 +638,6 @@ if( $conf->DBpassword != $conf->DBpassword2 ) {
 }
 if( !preg_match( '/^[A-Za-z_0-9]*$/', $conf->DBprefix ) ) {
 	$errs["DBprefix"] = "Invalid table prefix";
-} else {
-	untaint( $conf->DBprefix, TC_MYSQL );
-}
-if( !preg_match( '/^[A-Za-z_0-9]*$/', $conf->DBprefix_ora ) ) {
-	$errs["DBprefix_ora"] = "Invalid table prefix";
 }
 
 error_reporting( E_ALL );
@@ -721,7 +668,7 @@ if( $conf->SysopName ) {
 		# Various password checks
 		if( $conf->SysopPass != '' ) {
 			if( $conf->SysopPass == $conf->SysopPass2 ) {
-				if( $u->isValidPassword( $conf->SysopPass ) !== true ) {
+				if( !$u->isValidPassword( $conf->SysopPass ) ) {
 					$errs['SysopPass'] = "Bad password";
 				}
 			} else {
@@ -767,7 +714,7 @@ $conf->MCServers = importRequest( "MCServers" );
 /* Test memcached servers */
 
 if ( $conf->Shm == 'memcached' && $conf->MCServers ) {
-	$conf->MCServerArray = wfArrayMap( 'trim', explode( ',', $conf->MCServers ) );
+	$conf->MCServerArray = array_map( 'trim', explode( ',', $conf->MCServers ) );
 	foreach ( $conf->MCServerArray as $server ) {
 		$error = testMemcachedServer( $server );
 		if ( $error ) {
@@ -820,7 +767,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$errs["DBtype"] = "Unknown database type '$conf->DBtype'";
 			continue;
 		}
-		print "<li>Database type: " . htmlspecialchars( $conf->DBtypename ) . "</li>\n";
+		print "<li>Database type: {$conf->DBtypename}</li>\n";
 		$dbclass = 'Database'.ucfirst($conf->DBtype);
 		$wgDBtype = $conf->DBtype;
 		$wgDBadminuser = "root";
@@ -837,29 +784,19 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		if( $conf->DBprefix2 != '' ) {
 			// For MSSQL
 			$wgDBprefix = $conf->DBprefix2;
-		} elseif( $conf->DBprefix_ora != '' ) {
-			// For Oracle
-			$wgDBprefix = $conf->DBprefix_ora;
 		}
 
-		## DB2 specific:
-		$wgDBcataloged = $conf->DBcataloged;
-		
 		$wgCommandLineMode = true;
 		if (! defined ( 'STDERR' ) )
 			define( 'STDERR', fopen("php://stderr", "wb"));
 		$wgUseDatabaseMessages = false; /* FIXME: For database failure */
 		require_once( "$IP/includes/Setup.php" );
-		Language::getLocalisationCache()->disableBackend();
-		
 		chdir( "config" );
 
 		$wgTitle = Title::newFromText( "Installation script" );
 		error_reporting( E_ALL );
-		print "<li>Loading class: " . htmlspecialchars( $dbclass ) . "</li>\n";
-		if ( $conf->DBtype != 'sqlite' ) {
-			$dbc = new $dbclass;
-		}
+		print "<li>Loading class: $dbclass</li>\n";
+		$dbc = new $dbclass;
 
 		if( $conf->DBtype == 'mysql' ) {
 			$mysqlOldClient = version_compare( mysql_get_client_info(), "4.1.0", "lt" );
@@ -882,7 +819,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			}
 
 			# Attempt to connect
-			echo( "<li>Attempting to connect to database server as " . htmlspecialchars( $db_user ) . "..." );
+			echo( "<li>Attempting to connect to database server as $db_user..." );
 			$wgDatabase = Database::newFromParams( $wgDBserver, $db_user, $db_pass, '', 1 );
 
 			# Check the connection and respond to errors
@@ -917,124 +854,24 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 					case 2003:
 					default:
 						# General connection problem
-						echo( htmlspecialchars( "failed with error [$errno] $errtx." ) . "</li>\n" );
+						echo( "failed with error [$errno] $errtx.</li>\n" );
 						$errs["DBserver"] = "Connection failed";
 						break;
 				} # switch
 			} #conn. att.
 
 			if( !$ok ) { continue; }
-		}
-		else if( $conf->DBtype == 'ibm_db2' ) {
-			if( $useRoot ) {
-				$db_user = $conf->RootUser;
-				$db_pass = $conf->RootPW;
-			} else {
-				$db_user = $wgDBuser;
-				$db_pass = $wgDBpassword;
-			}
-			
-			echo( "<li>Attempting to connect to database \"" . htmlspecialchars( $wgDBname ) . 
-				"\" as \"" . htmlspecialchars( $db_user ) . "\"..." );
-			$wgDatabase = $dbc->newFromParams($wgDBserver, $db_user, $db_pass, $wgDBname, 1);
-			if (!$wgDatabase->isOpen()) {
-				print " error: " . htmlspecialchars( $wgDatabase->lastError() ) . "</li>\n";
-			} else {
-				$myver = $wgDatabase->getServerVersion();
-			}
-			if (is_callable(array($wgDatabase, 'initial_setup'))) $wgDatabase->initial_setup('', $wgDBname);
 
-		} elseif ( $conf->DBtype == 'sqlite' ) {
-			if ("$wgSQLiteDataDir" == '') {
-				$wgSQLiteDataDir = dirname($_SERVER['DOCUMENT_ROOT']).'/data';
-			}
-			echo "<li>Attempting to connect to SQLite database at \"" . 
-				htmlspecialchars( $wgSQLiteDataDir ) .  "\"";
-			if ( !is_dir( $wgSQLiteDataDir ) ) {
-				if ( is_writable( dirname( $wgSQLiteDataDir ) ) ) {
-					$ok = wfMkdirParents( $wgSQLiteDataDir, $wgSQLiteDataDirMode );
-				} else {
-					$ok = false;
-				}
-				if ( !$ok ) {
-					echo ": cannot create data directory</li>";
-					$errs['SQLiteDataDir'] = 'Enter a valid data directory';
-					continue;
-				}
-			}
-			if ( !is_writable( $wgSQLiteDataDir ) ) {
-				echo ": data directory not writable</li>";
-				$errs['SQLiteDataDir'] = 'Enter a writable data directory';
-				continue;
-			}
-			$dataFile = "$wgSQLiteDataDir/$wgDBname.sqlite";
-			if ( file_exists( $dataFile ) && !is_writable( $dataFile ) ) {
-				echo ": data file not writable</li>";
-				$errs['SQLiteDataDir'] = "$wgDBname.sqlite is not writable";
-				continue;
-			}
-			$wgDatabase = new DatabaseSqlite( false, false, false, $wgDBname, 1 );
-			if (!$wgDatabase->isOpen()) {
-				print ": error: " . htmlspecialchars( $wgDatabase->lastError() ) . "</li>\n";
-				$errs['SQLiteDataDir'] = 'Could not connect to database';
-				continue;
-			} else {
-				$myver = $wgDatabase->getServerVersion();
-			}
-			if (is_callable(array($wgDatabase, 'initial_setup'))) $wgDatabase->initial_setup('', $wgDBname);
-			echo "ok</li>\n";
-		} elseif ( $conf->DBtype == 'oracle' ) {
-			echo "<li>Attempting to connect to database \"" . htmlspecialchars( $wgDBname ) ."\"</li>";
-			$wgDatabase = $dbc->newFromParams('DUMMY', $wgDBuser, $wgDBpassword, $wgDBname, 1);
-			if (!$wgDatabase->isOpen()) {
-				$ok = true;
-				echo "<li>Connect failed.</li>";
-				if ($useRoot) {
-					if (ini_get('oci8.privileged_connect') === false) {
-						echo "<li>Privileged connect disabled, please set oci8.privileged_connect or run maintenance/ora/user.sql script manually prior to continuing.</li>";
-						$ok = false;
-					} else {
-						$wgDBadminuser = $conf->RootUser;
-						$wgDBadminpassword = $conf->RootPW;
-						echo "<li>Attempting to create DB user.</li>";
-						$wgDatabase = $dbc->newFromParams('DUMMY', $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1, 64);
-						if ($wgDatabase->isOpen()) {
-							$wgDBOracleDefTS = $conf->DBdefTS_ora;
-							$wgDBOracleTempTS = $conf->DBtempTS_ora;
-							$wgDatabase->sourceFile( "../maintenance/ora/user.sql"  );
-						} else {
-							echo "<li>Invalid database superuser, please supply a valid superuser account.</li>";
-							echo "<li>ERR: ".print_r(oci_error(), true)."</li>";
-							$ok = false;
-						}
-					}
-				} else {
-					echo "<li>Database superuser missing, please supply a valid superuser account.</li>";
-					$ok = false;
-				}
-				if (!$ok) {
-					$errs["RootUser"] = "Check username";
-					$errs["RootPW"] = "and password";
-				} else {
-					echo "<li>Attempting to connect to database with new user \"" . htmlspecialchars( $wgDBname ) ."\"</li>";
-					$wgDatabase = $dbc->newFromParams('DUMMY', $wgDBuser, $wgDBpassword, $wgDBname, 1);
-				}
-			}
-			if ($ok) {
-				$myver = $wgDatabase->getServerVersion();
-			}
 		} else { # not mysql
 			error_reporting( E_ALL );
 			$wgSuperUser = '';
 			## Possible connect as a superuser
-			// Changed !mysql to postgres check since it seems to only apply to postgres
-			if( $useRoot && $conf->DBtype == 'postgres' ) {
+			if( $useRoot && $conf->DBtype != 'sqlite' ) {
 				$wgDBsuperuser = $conf->RootUser;
-				echo( "<li>Attempting to connect to database \"postgres\" as superuser \"" . 
-					htmlspecialchars( $wgDBsuperuser ) . "\"..." );
+				echo( "<li>Attempting to connect to database \"postgres\" as superuser \"$wgDBsuperuser\"..." );
 				$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBsuperuser, $conf->RootPW, "postgres", 1);
 				if (!$wgDatabase->isOpen()) {
-					print " error: " . htmlspecialchars( $wgDatabase->lastError() ) . "</li>\n";
+					print " error: " . $wgDatabase->lastError() . "</li>\n";
 					$errs["DBserver"] = "Could not connect to database as superuser";
 					$errs["RootUser"] = "Check username";
 					$errs["RootPW"] = "and password";
@@ -1042,11 +879,10 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				}
 				$wgDatabase->initial_setup($conf->RootPW, 'postgres');
 			}
-			echo( "<li>Attempting to connect to database \"" . htmlspecialchars( $wgDBname ) . 
-				"\" as \"" . htmlspecialchars( $wgDBuser ) . "\"..." );
+			echo( "<li>Attempting to connect to database \"$wgDBname\" as \"$wgDBuser\"..." );
 			$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, 1);
 			if (!$wgDatabase->isOpen()) {
-				print " error: " . htmlspecialchars( $wgDatabase->lastError() ) . "</li>\n";
+				print " error: " . $wgDatabase->lastError() . "</li>\n";
 			} else {
 				$myver = $wgDatabase->getServerVersion();
 			}
@@ -1058,7 +894,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			continue;
 		}
 
-		print "<li>Connected to " . htmlspecialchars( "{$conf->DBtype} $myver" );
+		print "<li>Connected to $myver";
 		if ($conf->DBtype == 'mysql') {
 			if( version_compare( $myver, "4.0.14" ) < 0 ) {
 				print "</li>\n";
@@ -1101,7 +937,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 					print "<li>Couldn't create database <tt>" .
 						htmlspecialchars( $wgDBname ) .
 						"</tt>; try with root access or check your username/pass.</li>\n";
-					$errs["RootPW"] = "<- Enter";
+					$errs["RootPW"] = "&lt;- Enter";
 					continue;
 				}
 				print "<li>Created database <tt>" . htmlspecialchars( $wgDBname ) . "</tt></li>\n";
@@ -1109,7 +945,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$wgDatabase->selectDB( $wgDBname );
 		}
 		else if ($conf->DBtype == 'postgres') {
-			if( version_compare( $myver, "8.0" ) < 0 ) {
+			if( version_compare( $myver, "PostgreSQL 8.0" ) < 0 ) {
 				dieout( "<b>Postgres 8.0 or later is required</b>. Aborting." );
 			}
 		}
@@ -1145,19 +981,15 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 						}
 					}
 					if ( $existingSchema && $existingSchema != $conf->DBschema ) {
-						$encExisting = htmlspecialchars( $existingSchema );
-						$encRequested = htmlspecialchars( $conf->DBschema );
-						print "<li><strong>Warning:</strong> you requested the $encRequested schema, " .
-							"but the existing database has the $encExisting schema. This upgrade script ". 
-							"can't convert it, so it will remain $encExisting.</li>\n";
+						print "<li><strong>Warning:</strong> you requested the {$conf->DBschema} schema, " .
+							"but the existing database has the $existingSchema schema. This upgrade script ". 
+							"can't convert it, so it will remain $existingSchema.</li>\n";
 						$conf->setSchema( $existingSchema, $conf->DBengine );
 					}
 					if ( $existingEngine && $existingEngine != $conf->DBengine ) {
-						$encExisting = htmlspecialchars( $existingEngine );
-						$encRequested = htmlspecialchars( $conf->DBengine );
-						print "<li><strong>Warning:</strong> you requested the $encRequested storage " .
-							"engine, but the existing database uses the $encExisting engine. This upgrade " .
-							"script can't convert it, so it will remain $encExisting.</li>\n";
+						print "<li><strong>Warning:</strong> you requested the {$conf->DBengine} storage " .
+							"engine, but the existing database uses the $existingEngine engine. This upgrade " .
+							"script can't convert it, so it will remain $existingEngine.</li>\n";
 						$conf->setSchema( $conf->DBschema, $existingEngine );
 					}
 				}
@@ -1174,7 +1006,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 							print " <b class='error'>If the next step fails, see <a href='http://dev.mysql.com/doc/mysql/en/old-client.html'>http://dev.mysql.com/doc/mysql/en/old-client.html</a> for help.</b>";
 						}
 						print "</li>\n";
-						$wgDatabase->sourceFile( "../maintenance/users.sql" );
+						dbsource( "../maintenance/users.sql", $wgDatabase );
 					}
 				}
 			}
@@ -1191,15 +1023,14 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				$res = $wgDatabase->query( 'SHOW ENGINES' );
 				$found = false;
 				while ( $row = $wgDatabase->fetchObject( $res ) ) {
-					if ( $row->Engine == $conf->DBengine && ( $row->Support == 'YES' || $row->Support == 'DEFAULT' ) ) {
+					if ( $row->Engine == $conf->DBengine ) {
 						$found = true;
 						break;
 					}
 				}
 				$wgDatabase->freeResult( $res );
 				if ( !$found && $conf->DBengine != 'MyISAM' ) {
-					echo "<li><strong>Warning:</strong> " . htmlspecialchars( $conf->DBengine ) . 
-						" storage engine not available, " .
+					echo "<li><strong>Warning:</strong> {$conf->DBengine} storage engine not available, " .
 						"using MyISAM instead</li>\n";
 					$conf->setSchema( $conf->DBschema, 'MyISAM' );
 				}
@@ -1208,8 +1039,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			# FIXME: Check for errors
 			print "<li>Creating tables...";
 			if ($conf->DBtype == 'mysql') {
-				$wgDatabase->sourceFile( "../maintenance/tables.sql" );
-				$wgDatabase->sourceFile( "../maintenance/interwiki.sql" );
+				dbsource( "../maintenance/tables.sql", $wgDatabase );
+				dbsource( "../maintenance/interwiki.sql", $wgDatabase );
 			} elseif (is_callable(array($wgDatabase, 'setup_database'))) {
 				$wgDatabase->setup_database();
 			}
@@ -1238,11 +1069,11 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				if( $wgDatabase2->isOpen() ) {
 					# Nope, just close the test connection and continue
 					$wgDatabase2->close();
-					echo( "<li>User " . htmlspecialchars( $wgDBuser ) . " exists. Skipping grants.</li>\n" );
+					echo( "<li>User $wgDBuser exists. Skipping grants.</li>\n" );
 				} else {
 					# Yes, so run the grants
-					echo( "<li>" . htmlspecialchars( "Granting user permissions to $wgDBuser on $wgDBname..." ) );
-					$wgDatabase->sourceFile( "../maintenance/users.sql" );
+					echo( "<li>Granting user permissions to $wgDBuser on $wgDBname..." );
+					dbsource( "../maintenance/users.sql", $wgDatabase );
 					echo( "success.</li>\n" );
 				}
 			}
@@ -1282,8 +1113,6 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$revid = $revision->insertOn( $wgDatabase );
 			$article->updateRevisionOn( $wgDatabase, $revision );
 		}
-		// Now that all database work is done, make sure everything is committed
-		$wgDatabase->commit();
 
 		/* Write out the config file now that all is well */
 		print "<li style=\"list-style: none\">\n";
@@ -1346,9 +1175,7 @@ if( count( $errs ) ) {
 			$list = getLanguageList();
 			foreach( $list as $code => $name ) {
 				$sel = ($code == $conf->LanguageCode) ? 'selected="selected"' : '';
-				$encCode = htmlspecialchars( $code );
-				$encName = htmlspecialchars( $name );
-				echo "\n\t\t<option value=\"$encCode\" $sel>$encName</option>";
+				echo "\n\t\t<option value=\"$code\" $sel>$name</option>";
 			}
 			echo "\n";
 		?>
@@ -1364,7 +1191,7 @@ if( count( $errs ) ) {
 		<ul class="plain">
 		<li><?php aField( $conf, "License", "No license metadata", "radio", "none" ); ?></li>
 		<li><?php aField( $conf, "License", "Public Domain", "radio", "pd" ); ?></li>
-		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.2", "radio", "gfdl1_2" ); ?></li>
+		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.2 (Wikipedia-compatible)", "radio", "gfdl1_2" ); ?></li>
 		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.3", "radio", "gfdl1_3" ); ?></li>
 		<li><?php
 			aField( $conf, "License", "A Creative Commons license - ", "radio", "cc" );
@@ -1515,11 +1342,7 @@ if( count( $errs ) ) {
 <div class="config-section">
 <div class="config-input">
 	<label class='column'>Database type:</label>
-<?php 
-	if (isset($errs['DBpicktype'])) {
-		print "\t<span class='error'>" . htmlspecialchars( $errs['DBpicktype'] ) . "</span>\n";
-	}
-?>
+<?php if (isset($errs['DBpicktype'])) print "\t<span class='error'>$errs[DBpicktype]</span>\n"; ?>
 	<ul class='plain'><?php 
 		database_picker($conf); 
 	?></ul>
@@ -1548,8 +1371,6 @@ if( count( $errs ) ) {
 		<label class="column">Superuser account:</label>
 		<input type="checkbox" name="useroot" id="useroot" <?php if( $useRoot ) { ?>checked="checked" <?php } ?> />
 		&nbsp;<label for="useroot">Use superuser account</label>
-		<input type="checkbox" name="populateadmin" id="populateadmin" <?php if( $conf->populateadmin ) { ?>checked="checked" <?php } ?> />
-		&nbsp;<label for="populateadmin">Set as admin user for maintenance</label>
 	</div>
 	<div class="config-input"><?php aField( $conf, "RootUser", "Superuser name:", "text" ); ?></div>
 	<div class="config-input"><?php aField( $conf, "RootPW", "Superuser password:", "password" ); ?></div>
@@ -1638,38 +1459,6 @@ if( count( $errs ) ) {
 		<p>Avoid exotic characters; something like <tt>mw_</tt> is good.</p>
 	</div>
 	</fieldset>
-	
-	<?php database_switcher('ibm_db2'); ?>
-	<div class="config-input"><?php
-		aField( $conf, "DBport_db2", "Database port:" );
-	?></div>
-	<div class="config-input"><?php
-		aField( $conf, "DBmwschema", "Schema for mediawiki:" );
-	?></div>
-	<div>Select one:</div>
-		<ul class="plain">
-		<li><?php aField( $conf, "DBcataloged", "Cataloged (DB2 installed locally)", "radio", "cataloged" ); ?></li>
-		<li><?php aField( $conf, "DBcataloged", "Uncataloged (remote DB2 through ODBC)", "radio", "uncataloged" ); ?></li>
-		</ul>
-	<div class="config-desc">
-		<p>If you need to share one database between multiple wikis, or
-		between MediaWiki and another web application, you may specify
-		a different schema to avoid conflicts.</p>
-	</div>
-	</fieldset>
-
-	<?php database_switcher('oracle'); ?>
-	<div class="config-input"><?php aField( $conf, "DBprefix_ora", "Database table prefix:" ); ?></div>
-	<div class="config-desc">
-		<p>If you need to share one database between multiple wikis, or
-		between MediaWiki and another web application, you may choose to
-		add a prefix to all the table names to avoid conflicts.</p>
-
-		<p>Avoid exotic characters; something like <tt>mw_</tt> is good.</p>
-	</div>
-	<div class="config-input"><?php aField( $conf, "DBdefTS_ora", "Default tablespace:" ); ?></div>
-	<div class="config-input"><?php aField( $conf, "DBtempTS_ora", "Temporary tablespace:" ); ?></div>
-	</fieldset>
 
 	<div class="config-input" style="padding:2em 0 3em">
 		<label class='column'>&nbsp;</label>
@@ -1678,7 +1467,7 @@ if( count( $errs ) ) {
 </div>
 </form>
 <script type="text/javascript">
-window.onload = toggleDBarea( <?php echo Xml::encodeJsVar( $conf->DBtype ); ?>,
+window.onload = toggleDBarea('<?php echo $conf->DBtype; ?>',
 <?php
 	## If they passed in a root user name, don't populate it on page load
 	echo strlen(importPost('RootUser', '')) ? 0 : 1;
@@ -1810,15 +1599,10 @@ function writeLocalSettings( $conf ) {
 	}
 
 	# Add slashes to strings for double quoting
-	$slconf = wfArrayMap( "escapePhpString", get_object_vars( $conf ) );
+	$slconf = array_map( "escapePhpString", get_object_vars( $conf ) );
 	if( $conf->License == 'gfdl1_2' || $conf->License == 'pd' || $conf->License == 'gfdl1_3' ) {
 		# Needs literal string interpolation for the current style path
 		$slconf['RightsIcon'] = $conf->RightsIcon;
-	}
-	
-	if( $conf->populateadmin ) {
-		$slconf['DBadminuser'] = $conf->RootUser;
-		$slconf['DBadminpassword'] = $conf->RootPW;
 	}
 
 	if( $conf->DBtype == 'mysql' ) {
@@ -1845,16 +1629,6 @@ function writeLocalSettings( $conf ) {
 		$dbsettings =
 "# MSSQL specific settings
 \$wgDBprefix         = \"{$slconf['DBprefix2']}\";";
-	} elseif( $conf->DBtype == 'ibm_db2' ) {
-		$dbsettings =
-"# DB2 specific settings
-\$wgDBport_db2       = \"{$slconf['DBport_db2']}\";
-\$wgDBmwschema       = \"{$slconf['DBmwschema']}\";
-\$wgDBcataloged      = \"{$slconf['DBcataloged']}\";";
-	} elseif( $conf->DBtype == 'oracle' ) {
-		$dbsettings =
-"# Oracle specific settings
-\$wgDBprefix         = \"{$slconf['DBprefix']}\";";
 	} else {
 		// ummm... :D
 		$dbsettings = '';
@@ -1927,10 +1701,6 @@ if ( \$wgCommandLineMode ) {
 
 {$dbsettings}
 
-## Database admin settings, used for maintenance scripts
-\$wgDBadminuser     = \"{$slconf['DBadminuser']}\";
-\$wgDBadminpassword = \"{$slconf['DBadminpassword']}\";
-
 ## Shared memory settings
 \$wgMainCacheType = $cacheType;
 \$wgMemCachedServers = $mcservers;
@@ -1956,11 +1726,6 @@ if ( \$wgCommandLineMode ) {
 ## you can enable inline LaTeX equations:
 \$wgUseTeX           = false;
 
-## Set \$wgCacheDirectory to a writable directory on the web server
-## to make your wiki go slightly faster. The directory should not
-## be publically accessible from the web.
-#\$wgCacheDirectory = \"\$IP/cache\";
-
 \$wgLocalInterwiki   = strtolower( \$wgSitename );
 
 \$wgLanguageCode = \"{$slconf['LanguageCode']}\";
@@ -1982,8 +1747,6 @@ if ( \$wgCommandLineMode ) {
 # \$wgRightsCode = \"{$slconf['RightsCode']}\"; # Not yet used
 
 \$wgDiff3 = \"{$slconf['diff3']}\";
-
-\$wgPhpCliPath = \"{$slconf['phpCliPath']}\";
 
 # When you make changes to this configuration file, this will make
 # sure that cached pages are cleared.
@@ -2015,7 +1778,6 @@ function importVar( &$var, $name, $default = "" ) {
 	} else {
 		$retval = $default;
 	}
-	taint( $retval );
 	return $retval;
 }
 
@@ -2031,8 +1793,10 @@ function importRequest( $name, $default = "" ) {
 	return importVar( $_REQUEST, $name, $default );
 }
 
+$radioCount = 0;
+
 function aField( &$conf, $field, $text, $type = "text", $value = "", $onclick = '' ) {
-	static $radioCount = 0;
+	global $radioCount;
 	if( $type != "" ) {
 		$xtype = "type=\"$type\"";
 	} else {
@@ -2072,9 +1836,7 @@ function aField( &$conf, $field, $text, $type = "text", $value = "", $onclick = 
 	}
 
 	global $errs;
-	if(isset($errs[$field])) {
-		echo "<span class='error'>" . htmlspecialchars( $errs[$field] ) . "</span>\n";
-	}
+	if(isset($errs[$field])) echo "<span class='error'>" . $errs[$field] . "</span>\n";
 }
 
 function getLanguageList() {
@@ -2094,7 +1856,7 @@ function getLanguageList() {
 		if( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $f, $m ) ) {
 			$code = str_replace( '_', '-', strtolower( $m[1] ) );
 			if( isset( $wgLanguageNames[$code] ) ) {
-				$name = wfBCP47( $code ) . ' - ' . $wgLanguageNames[$code];
+				$name = $code . ' - ' . $wgLanguageNames[$code];
 			} else {
 				$name = $code;
 			}
@@ -2167,7 +1929,7 @@ function testMemcachedServer( $server ) {
 		fclose( $fp );
 	}
 	if ( !$errstr ) {
-		echo "<li>Connected to memcached on " . htmlspecialchars( "$host:$port" ) ." successfully</li>";
+		echo "<li>Connected to memcached on $host:$port successfully";
 	}
 	return $errstr;
 }
@@ -2217,7 +1979,7 @@ function getShellLocale( $wikiLang ) {
 		return false;
 	}
 
-	$lines = wfArrayMap( 'trim', $lines );
+	$lines = array_map( 'trim', $lines );
 	$candidatesByLocale = array();
 	$candidatesByLang = array();
 	foreach ( $lines as $line ) {
@@ -2261,17 +2023,6 @@ function getShellLocale( $wikiLang ) {
 	return false;
 }
 
-function wfArrayMap( $function, $input ) {
-	$ret = array_map( $function, $input );
-	foreach ( $ret as $key => $value ) {
-		$taint = istainted( $input[$key] );
-		if ( $taint ) {
-			taint( $ret[$key], $taint );
-		}
-	}
-	return $ret;
-}
-
 ?>
 
 	<div class="license">
@@ -2298,12 +2049,13 @@ function wfArrayMap( $function, $input ) {
 <div id="column-one">
 	<div class="portlet" id="p-logo">
 	  <a style="background-image: url(../skins/common/images/mediawiki.png);"
-	    href="../"
+	    href="http://www.mediawiki.org/"
 	    title="Main Page"></a>
 	</div>
 	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
 	<div class='portlet'><div class='pBody'>
 		<ul>
+			<li><strong><a href="http://www.mediawiki.org/">MediaWiki home</a></strong></li>
 			<li><a href="../README">Readme</a></li>
 			<li><a href="../RELEASE-NOTES">Release notes</a></li>
 			<li><a href="../docs/">Documentation</a></li>
@@ -2311,7 +2063,7 @@ function wfArrayMap( $function, $input ) {
 			<li><a href="http://www.mediawiki.org/wiki/Manual:Contents">Administrator's Guide</a></li>
 			<li><a href="http://www.mediawiki.org/wiki/Manual:FAQ">FAQ</a></li>
 		</ul>
-		<p style="font-size:90%;margin-top:1em">MediaWiki is Copyright © 2001-2009 by Magnus Manske, Brion Vibber,
+		<p style="font-size:90%;margin-top:1em">MediaWiki is Copyright © 2001-2008 by Magnus Manske, Brion Vibber,
 		 Lee Daniel Crocker, Tim Starling, Erik Möller, Gabriel Wicke, Ævar Arnfjörð Bjarmason, Niklas Laxström,
 		 Domas Mituzas, Rob Church, Yuri Astrakhan, Aryeh Gregor, Aaron Schulz and others.</p>
 	</div></div>

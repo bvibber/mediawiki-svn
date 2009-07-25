@@ -53,10 +53,6 @@ class Revision {
 			// Get the latest revision ID from the master
 			$dbw = wfGetDB( DB_MASTER );
 			$latest = $dbw->selectField( 'page', 'page_latest', $conds, __METHOD__ );
-			if ( $latest === false ) {
-				// Page does not exist
-				return null;
-			}
 			$conds['rev_id'] = $latest;
 		} else {
 			// Use a join to get the latest revision
@@ -64,30 +60,6 @@ class Revision {
 		}
 		$conds[] = 'page_id=rev_page';
 		return Revision::newFromConds( $conds );
-	}
-
-	/**
-	 * Make a fake revision object from an archive table row. This is queried
-	 * for permissions or even inserted (as in Special:Undelete)
-	 * @fixme: should be a subclass for RevisionDelete. [TS]
-	 */
-	public static function newFromArchiveRow( $row, $overrides = array() ) {
-		$attribs = $overrides + array(
-			'page'       => isset( $row->page_id ) ? $row->page_id : null,
-			'id'         => isset( $row->ar_rev_id ) ? $row->ar_rev_id : null,
-			'comment'    => $row->ar_comment,
-			'user'       => $row->ar_user,
-			'user_text'  => $row->ar_user_text,
-			'timestamp'  => $row->ar_timestamp,
-			'minor_edit' => $row->ar_minor_edit,
-			'text_id'    => isset( $row->ar_text_id ) ? $row->ar_text_id : null,
-			'deleted'    => $row->ar_deleted,
-			'len'        => $row->ar_len);
-		if ( isset( $row->ar_text ) && !$row->ar_text_id ) {
-			// Pre-1.5 ar_text row
-			$attribs['text'] = $row->ar_text;
-		}
-		return new self( $attribs );
 	}
 
 	/**
@@ -214,6 +186,24 @@ class Revision {
 		}
 		$ret = null;
 		return $ret;
+	}
+
+	/**
+	 * Return a wrapper for a series of database rows to
+	 * fetch all of a given page's revisions in turn.
+	 * Each row can be fed to the constructor to get objects.
+	 *
+	 * @param Title $title
+	 * @return ResultWrapper
+	 * @access public
+	 * @static
+	 */
+	public static function fetchAllRevisions( $title ) {
+		return Revision::fetchFromConds(
+			wfGetDB( DB_SLAVE ),
+			array( 'page_namespace' => $title->getNamespace(),
+			       'page_title'     => $title->getDBkey(),
+			       'page_id=rev_page' ) );
 	}
 
 	/**
@@ -373,7 +363,6 @@ class Revision {
 		} else {
 			throw new MWException( 'Revision constructor passed invalid row format.' );
 		}
-		$this->mUnpatrolled = NULL;
 	}
 
 	/**#@+
@@ -546,27 +535,6 @@ class Revision {
 	 */
 	public function isMinor() {
 		return (bool)$this->mMinorEdit;
-	}
-	
-	/**
-	 * @return int rcid of the unpatrolled row, zero if there isn't one
-	 */
-	public function isUnpatrolled() {
-		if( $this->mUnpatrolled !== NULL ) {
-			return $this->mUnpatrolled;
-		}
-		$dbr = wfGetDB( DB_SLAVE );
-		$this->mUnpatrolled = $dbr->selectField( 'recentchanges',
-			'rc_id',
-			array( // Add redundant user,timestamp condition so we can use the existing index
-				'rc_user_text'  => $this->getRawUserText(),
-				'rc_timestamp'  => $dbr->timestamp( $this->getTimestamp() ),
-				'rc_this_oldid' => $this->getId(),
-				'rc_patrolled'  => 0
-			),
-			__METHOD__
-		);
-		return (int)$this->mUnpatrolled;
 	}
 
 	/**
@@ -851,8 +819,7 @@ class Revision {
 				'rev_timestamp'  => $dbw->timestamp( $this->mTimestamp ),
 				'rev_deleted'    => $this->mDeleted,
 				'rev_len'	     => $this->mSize,
-				'rev_parent_id'  => is_null($this->mParentId) ?
-					$this->getPreviousRevisionId( $dbw ) : $this->mParentId
+				'rev_parent_id'  => $this->mParentId ? $this->mParentId : $this->getPreviousRevisionId( $dbw )
 			), __METHOD__
 		);
 
@@ -870,17 +837,15 @@ class Revision {
 	 *
 	 * @return string
 	 */
-	protected function loadText() {
+	private function loadText() {
 		wfProfileIn( __METHOD__ );
 
 		// Caching may be beneficial for massive use of external storage
 		global $wgRevisionCacheExpiry, $wgMemc;
-		$textId = $this->getTextId();
-		$key = wfMemcKey( 'revisiontext', 'textid', $textId );
+		$key = wfMemcKey( 'revisiontext', 'textid', $this->getTextId() );
 		if( $wgRevisionCacheExpiry ) {
 			$text = $wgMemc->get( $key );
 			if( is_string( $text ) ) {
-				wfDebug( __METHOD__. ": got id $textId from cache\n" );
 				wfProfileOut( __METHOD__ );
 				return $text;
 			}
@@ -996,10 +961,6 @@ class Revision {
 	 */
 	static function getTimestampFromId( $title, $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		// Casting fix for DB2
-		if ($id == '') {
-			$id = 0;
-		}
 		$conds = array( 'rev_id' => $id );
 		$conds['rev_page'] = $title->getArticleId();
 		$timestamp = $dbr->selectField( 'revision', 'rev_timestamp', $conds, __METHOD__ );

@@ -1,9 +1,6 @@
 <?php
 /** Maithili (मैथिली)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -198,10 +195,8 @@ $messages = array(
 'boteditletter'   => 'ब',
 
 # Recent changes linked
-'recentchangeslinked'         => 'संबंधित परिवर्त्तन',
-'recentchangeslinked-feed'    => 'संबंधित परिवर्त्तन',
-'recentchangeslinked-toolbox' => 'संबंधित परिवर्त्तन',
-'recentchangeslinked-title'   => '"$1" मे भेल परिवर्तन',
+'recentchangeslinked'       => 'संबंधित परिवर्त्तन',
+'recentchangeslinked-title' => '"$1" मे भेल परिवर्तन',
 
 # Upload
 'upload'        => 'फाइल अपलोड करू',
@@ -243,8 +238,6 @@ $messages = array(
 
 # Contributions
 'mycontris' => 'हमर योगदान',
-
-'sp-contributions-talk' => 'कहू',
 
 # What links here
 'whatlinkshere'       => 'एतय कोन लिंक अछि',

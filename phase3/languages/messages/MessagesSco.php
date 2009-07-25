@@ -1,17 +1,11 @@
 <?php
 /** Scots (Scots)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
- * @author Derek Ross
  * @author Malafaya
  * @author OchAyeTheNoo
- * @author Omnipaedista
- * @author Purodha
  * @author Urhixidur
  * @author Ushanka
  * @author sco.wikipedia.org editors
@@ -24,8 +18,6 @@ $messages = array(
 'tog-highlightbroken'         => 'Format brucken airtins <a href="" class="new">like this</a> (alternative: like this<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Justifee paragraphs',
 'tog-hideminor'               => 'Hide smaa edits in recent chynges',
-'tog-hidepatrolled'           => 'Hide patrolled edits in recent chynges',
-'tog-newpageshidepatrolled'   => 'Hide patrolled pages frae the new page list',
 'tog-extendwatchlist'         => 'Mak watchleet bigger tae shaw aw chynges',
 'tog-usenewrc'                => 'Enhanced recent chynges (no for aa brousers)',
 'tog-numberheadings'          => 'Auto-nummer heidins',
@@ -58,13 +50,9 @@ $messages = array(
 'tog-watchlisthideown'        => 'Hide yer ain edits frae yer watchleet',
 'tog-watchlisthidebots'       => 'Hide bot edits frae yer watchleet',
 'tog-watchlisthideminor'      => 'Dinna shaw sma edits on ma watchleet',
-'tog-watchlisthideliu'        => 'Hide edits by loggit in uisers frae the watchleet',
-'tog-watchlisthideanons'      => 'Hide edits by nameless uisers frae the watchleet',
-'tog-watchlisthidepatrolled'  => 'Hide patrolled edits frae the watchlist',
 'tog-ccmeonemails'            => 'Gie me copies o emails A write tae ither uisers',
 'tog-diffonly'                => 'Dinna shaw page contents ablo diffs',
 'tog-showhiddencats'          => 'Shaw hidden categories',
-'tog-norollbackdiff'          => 'Lave oot diff efter rowin back',
 
 'underline-always'  => 'Aye',
 'underline-never'   => 'Niver',
@@ -96,7 +84,7 @@ $messages = array(
 'september'     => 'September',
 'october'       => 'October',
 'november'      => 'November',
-'december'      => 'December',
+'december'      => 'Dizember',
 'january-gen'   => 'Januar',
 'february-gen'  => 'February',
 'march-gen'     => 'March',
@@ -123,18 +111,12 @@ $messages = array(
 'dec'           => 'Diz',
 
 # Categories related messages
-'pagecategories'                 => '{{PLURAL:$1|Category|Categories}}',
-'category_header'                => 'Pages in category "$1"',
-'subcategories'                  => 'Subcategories',
-'category-media-header'          => 'Eetems in category "$1"',
-'category-empty'                 => "''This category haes no pages or eetems at the meenit.''",
-'hidden-categories'              => '{{PLURAL:$1|Hidden categorie|Hidden categories}}',
-'category-subcat-count'          => '{{PLURAL:$2|This category juist haes the follaein subcategory.|This category haes the follaein {{PLURAL:$1|subcategory|$1 subcategories}}, oot o $2 awthegither.}}',
-'category-subcat-count-limited'  => 'This category haes the follaein {{PLURAL:$1|subcategory|$1 subcategories}}.',
-'category-article-count'         => '{{PLURAL:$2|This category contains the ae follaein page.|The follaein {{PLURAL:$1|page|$1 pages}} is in this category, oot o $2 total.}}',
-'category-article-count-limited' => 'The follaein {{PLURAL:$1|page|$1 pages}} is in this category.',
-'category-file-count'            => '{{PLURAL:$2|This category hauds juist the ae follaein file.|The follaein {{PLURAL:$1|file|$1 files}}s is in this category, oot o $2 total.}}',
-'category-file-count-limited'    => 'The follaein {{PLURAL:$1|file is|$1 files is}} in this category.',
+'pagecategories'        => '{{PLURAL:$1|Category|Categories}}',
+'category_header'       => 'Pages in category "$1"',
+'subcategories'         => 'Subcategories',
+'category-media-header' => 'Eetems in category "$1"',
+'category-empty'        => "''This category haes no pages or eetems at the meenit.''",
+'hidden-categories'     => '{{PLURAL:$1|Hidden categorie|Hidden categories}}',
 
 'mainpagetext'      => "<big>'''MediaWiki haes been installit wi speed.'''</big>",
 'mainpagedocfooter' => "Aks the [http://meta.wikimedia.org/wiki/Help:Contents Uiser's Manual] for speirins aboot using the wiki saftware.
@@ -145,18 +127,10 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki releese mailin leet]",
 
-'about'         => 'Aboot',
-'article'       => 'Content page',
-'newwindow'     => '(opens in new windae)',
-'cancel'        => 'Cancel',
-'moredotdotdot' => 'Mair...',
-'mypage'        => 'Ma page',
-'mytalk'        => 'Ma collogue',
-'anontalk'      => 'Collogue for this IP',
-'navigation'    => 'Navigation',
-'and'           => '&#32;an',
-
-# Cologne Blue skin
+'about'          => 'Aboot',
+'article'        => 'Content page',
+'newwindow'      => '(opens in new windae)',
+'cancel'         => 'Cancel',
 'qbfind'         => 'Rake',
 'qbbrowse'       => 'Brouse',
 'qbedit'         => 'Edit',
@@ -164,8 +138,12 @@ $messages = array(
 'qbpageinfo'     => 'Context',
 'qbmyoptions'    => 'Ma pages',
 'qbspecialpages' => 'Byordinar pages',
-'faq'            => 'ASQ',
-'faqpage'        => 'Project:ASQ',
+'moredotdotdot'  => 'Mair...',
+'mypage'         => 'Ma page',
+'mytalk'         => 'Ma collogue',
+'anontalk'       => 'Collogue for this IP',
+'navigation'     => 'Navigation',
+'and'            => '&#32;an',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -186,14 +164,12 @@ $messages = array(
 'permalink'         => 'Permanent airtin',
 'print'             => 'Prent',
 'edit'              => 'Edit',
-'create'            => 'Mak',
 'editthispage'      => 'Edit this page',
-'create-this-page'  => 'Mak this page',
 'delete'            => 'Delete',
 'deletethispage'    => 'Delete this page',
 'undelete_short'    => 'Undelete {{PLURAL:$1|ane edit|$1 edits}}',
 'protect'           => 'Fend',
-'protect_change'    => 'chynge',
+'protect_change'    => 'chynge fend',
 'protectthispage'   => 'Fend this page',
 'unprotect'         => 'Loose fend',
 'unprotectthispage' => 'Loose the fend for this page',
@@ -202,14 +178,14 @@ $messages = array(
 'talkpagelinktext'  => 'Collogue',
 'specialpage'       => 'Byordinar Page',
 'personaltools'     => 'Personal tuils',
-'postcomment'       => 'Eik a message',
+'postcomment'       => 'Eik a jottin',
 'articlepage'       => 'Leuk at content page',
 'talk'              => 'Collogue',
 'views'             => 'Views',
 'toolbox'           => 'Tuilkist',
 'userpage'          => 'View uiser page',
 'projectpage'       => 'View project page',
-'imagepage'         => 'look ower image page',
+'imagepage'         => 'Leuk at eimage page',
 'mediawikipage'     => 'View message page',
 'templatepage'      => 'View template page',
 'viewhelppage'      => 'View help page',
@@ -218,7 +194,7 @@ $messages = array(
 'otherlanguages'    => 'In ither leids',
 'redirectedfrom'    => '(Reguidit frae $1)',
 'redirectpagesub'   => 'Redirect page',
-'lastmodifiedat'    => 'This page wis hindermaist chynged $2, $1.',
+'lastmodifiedat'    => 'This page wis hindermaist chynged $2, $1.', # $1 date, $2 time
 'viewcount'         => 'This page haes been accesst $1 {{PLURAL:$1|once|$1 times}}.',
 'protectedpage'     => 'Protectit page',
 'jumpto'            => 'Lowp tae:',
@@ -237,6 +213,8 @@ $messages = array(
 'disclaimerpage'       => 'Project:General_disclamation',
 'edithelp'             => 'Editin help',
 'edithelppage'         => 'Help:Editin',
+'faq'                  => 'ASQ',
+'faqpage'              => 'Project:ASQ',
 'helppage'             => 'Help:Contents',
 'mainpage'             => 'Main Page',
 'mainpage-description' => 'Main Page',
@@ -248,7 +226,7 @@ $messages = array(
 
 'badaccess'        => 'Permeission mishanter',
 'badaccess-group0' => 'WARNIN: Ye arnae alloued tae dae whit you hae requestit!',
-'badaccess-groups' => 'The action ye hae requestit is limitit tae uisers in {{PLURAL:$2|the group|ane o the groups}}: $1.',
+'badaccess-groups' => "The action ye hae requestit is limitit tae uisers in ane o the groups:  ''$1''.",
 
 'versionrequired'     => 'Version $1 of MediaWiki requirit',
 'versionrequiredtext' => 'Version $1 o MediaWiki is requirit tae uise this page. Tak a keek at the [[Special:Version|version page]].',
@@ -262,7 +240,6 @@ $messages = array(
 'editsection'             => 'edit',
 'editold'                 => 'edit',
 'viewsourceold'           => 'ken soorce',
-'viewsourcelink'          => 'Scance ower the source',
 'editsectionhint'         => 'Edit section: $1',
 'toc'                     => 'Table o contents',
 'showtoc'                 => 'shaw',
@@ -272,18 +249,16 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|one delete edit|$1 delete edits}}',
 'feedlinks'               => 'Feed:',
 'feed-invalid'            => "This feeds subscrieve's teep isnae habile.",
-'feed-unavailable'        => 'Syndication feeds isna available',
 'site-rss-feed'           => '$1 RSS Feed',
 'site-atom-feed'          => '$1 Atom Feed',
 'page-rss-feed'           => '"$1" RSS Feed',
 'page-atom-feed'          => '"$1" Atom Feed',
-'red-link-title'          => '$1 (page disna exist)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Page',
 'nstab-user'      => 'Uiser page',
 'nstab-media'     => 'Eetem page',
-'nstab-special'   => 'Byordinar page',
+'nstab-special'   => 'Byordinar',
 'nstab-project'   => 'Project page',
 'nstab-image'     => 'Eimage',
 'nstab-mediawiki' => 'Message',
@@ -293,9 +268,7 @@ $messages = array(
 
 # Main script and global functions
 'nosuchaction'      => 'Nae sic action',
-'nosuchactiontext'  => "The action specifiee'd bi the URL isna recognised
-Ye micht hae mistyped the URL, or follaed a wrang link
-This micht forby be caused by a bug in the saftware uised by {{SITENAME}}.",
+'nosuchactiontext'  => "The action specifiee'd bi the URL isna recognised bi the wiki",
 'nosuchspecialpage' => 'Nae sic byordinar page',
 'nospecialpagetext' => "<big>'''Ye hae requestit an invalid byordinar page.'''</big>
 
@@ -304,8 +277,11 @@ A leet o valid byordinar pages can be funnd at [[Special:SpecialPages|{{int:spec
 # General errors
 'error'                => 'Error',
 'databaseerror'        => 'Database error',
-'dberrortext'          => 'A database query syntax error haes occurt. This micht indicate a bug in the saftware. The last attemptit database query wis: <blockquote><tt>$1</tt></blockquote> frae athin function "<tt>$2</tt>". $5 returned error "<tt>$3: $4</tt>".',
+'dberrortext'          => 'A database query syntax error haes occurt. This micht indicate a bug in the saftware. The last attemptit database query wis: <blockquote><tt>$1</tt></blockquote> frae athin function "<tt>$2</tt>". MySQL returned error "<tt>$3: $4</tt>".',
 'dberrortextcl'        => 'A database query syntax error haes occurt. The last attemptit database query wis: "$1" frae athin function "$2". MySQL returned error "$3: $4".',
+'noconnect'            => 'Sorry! The wiki is experiencin some technical difficulties, and canna contact the database server. <br /> $1',
+'nodb'                 => 'Cuidna select database $1',
+'cachederror'          => 'The follaein is a cached copy o the requestit page, an micht no be up tae date.',
 'laggedslavemode'      => 'Warning: Page micht nae contain recent updates',
 'readonly'             => 'Database lockit',
 'enterlockreason'      => "Enter a raeson for the lock, includin an estimate o whan the lock'll be lowsed",
@@ -313,12 +289,6 @@ A leet o valid byordinar pages can be funnd at [[Special:SpecialPages|{{int:spec
 likely for routine database maintenance; efter that it'll be back tae normal.
 The adminstration that lockit it gied this explanation:
 $1",
-'missing-article'      => 'The database didna find the text o a page that it shuid hae fund, cawed "$1" $2.
-
-Maistly this is caused by follaein an ootdated diff or history link tae a page that haes been delete.
-
-If this isna the case, you micht hae fund a bug in the saftware.
-Please lat an [[Special:ListUsers/sysop|administrator]] ken aboot this, makin note o the URL.',
 'readonly_lag'         => 'The database haes been autaematically lockit while the sclave database servers catch up tae the maister',
 'internalerror'        => 'Internal mishanter',
 'internalerror_info'   => 'Internal error: $1',
@@ -353,46 +323,57 @@ Aks: $2',
 $2',
 'namespaceprotected'   => "Ye dinna hae permeession tae edit pages in the '''$1''' namespace.",
 'customcssjsprotected' => "Ye dinna hae permeession tae edit this page, sin it hauds anither uiser's personal settins.",
-'ns-specialprotected'  => 'Byordinar pages canna be editit.',
+'ns-specialprotected'  => 'Pages in the {{ns:special}} namespace cannae be editit.',
 'titleprotected'       => "This teetle haes been protectit frae bein makkit by [[User:$1|$1]].
 The grunds for this are: ''$2''.",
 
 # Login and logout pages
+'logouttitle'                => 'Uiser logoot',
 'logouttext'                 => "Ye'r nou loggit oot. Ye can continue to uise {{SITENAME}} namelessly, or ye can log in again as the same or as a different uiser. Mynd that some pages micht continue tae be displayed as if ye war aye loggit in, till ye clear yer brouser cache.",
 'welcomecreation'            => '== Guid tae see ye, $1! ==
 
-Yer accoont haes been creatit. 
-Mynd an chynge yer [[Special:Preferences|{{SITENAME}} preferences]].',
+Yer accoont haes been creatit. Mynd an chynge yer {{SITENAME}} preferences.',
+'loginpagetitle'             => 'Uiser login',
 'yourname'                   => 'Yer uiser name',
-'yourpassword'               => 'Passwaird:',
+'yourpassword'               => 'Yer password',
 'yourpasswordagain'          => 'Retype passwaird:',
 'remembermypassword'         => 'Mynd ma password across sessions.',
 'yourdomainname'             => 'Yer domain:',
 'externaldberror'            => "Aither the wis an external authenteication database mishanter, or ye'r no alloued tae update yer external accoont.",
 'login'                      => 'Log in',
-'nav-login-createaccount'    => 'Log in / mak an accoont',
 'loginprompt'                => 'Ye maun hae cookies enabled tae log in tae {{SITENAME}}.',
 'userlogin'                  => 'Mak an accoont or log in',
 'logout'                     => 'Log oot',
 'userlogout'                 => 'Log oot',
 'notloggedin'                => 'No loggit in',
-'nologin'                    => 'Dinna hae an accoont? $1.',
+'nologin'                    => 'Dinna hae a login? $1.',
 'nologinlink'                => 'Mak an accoont',
 'createaccount'              => 'Mak new accoont',
 'gotaccount'                 => 'Got an accoont afore? $1.',
 'gotaccountlink'             => 'Log in',
 'createaccountmail'          => 'bi email',
 'badretype'                  => 'The passwords ye entered disna match.',
-'userexists'                 => 'The uiser name ye entered is in uiss. Please chuise a different name.',
+'userexists'                 => 'The uiser name ye entered is aareadies in uiss. Please chuise a different name.',
+'youremail'                  => 'Yer email:',
+'username'                   => 'Uisername:',
+'uid'                        => 'Uiser ID:',
+'yourrealname'               => 'Yer real name:',
+'yourlanguage'               => 'Interface leid:',
+'yourvariant'                => 'Leid variant',
+'yournick'                   => 'Yer byname:',
+'badsig'                     => 'Raw signature nae guid; check HTML tags.',
+'badsiglength'               => 'Yer nickname is ower lang; it haes tae be unner $1 leeters.',
+'email'                      => 'E-mail',
+'prefs-help-realname'        => 'Rael name is optional an gin ye chuise tae provide it this will be uised tae gie ye attreibution for yer wark.',
 'loginerror'                 => 'Login mishanter',
+'prefs-help-email'           => 'Email is optional, an lats ithers contact ye throu yer uiser or uiser_collogue page athoot you haein tae reveal yer identity.',
+'prefs-help-email-required'  => 'Yer e-mail address is needit.',
 'nocookiesnew'               => "The uiser accoont wis creatit, but ye'r no loggit in. {{SITENAME}} uises cookies tae log uisers in. Ye hae cookies disabled. Please enable them, than log in wi yer new uisername and password.",
 'nocookieslogin'             => '{{SITENAME}} uises cookies tae log in uisers. Ye hae cookies disabled. Please enable thaim an gie it anither shot.',
 'noname'                     => "Ye hivna specifee'd a valid uisername.",
 'loginsuccesstitle'          => 'Login fine',
 'loginsuccess'               => 'Ye\'re nou loggit in tae {{SITENAME}} as "$1".',
-'nosuchuser'                 => 'The\'r nae sic uiser as "$1".
-Uiser names are case-sensitive.
-Check yer spellin, or uise [[Special:UserLogin/signup|mak a new accoont]].',
+'nosuchuser'                 => 'The\'r nae sic uiser as "$1". Check yer spellin, or uise the form ablo tae mak a new uiser accoont.',
 'nosuchusershort'            => 'The\'r nae sic uiser as "<nowiki>$1</nowiki>". Check yer spellin.',
 'nouserspecified'            => 'Ye hae tae merk up a uisername.',
 'wrongpassword'              => 'The password ye entered is wrang. Please gie it anither shot.',
@@ -416,11 +397,11 @@ canna uise the password recovery function, for tae prevent abuiss.',
 'eauthentsent'               => "A confirmation email haes been sent tae the specifee'd email address.
 Afore onie ither mail is sent tae the accoont, ye'll hae tae follae the guidance in the email,
 tae confirm that ye ar aucht the accoont.",
-'throttled-mailpassword'     => "A password minder haes been sent afore, in the laist {{PLURAL:$1|hoor|$1 hoors}}. To hinder abuise, juist the ''ae'' password minder will be sent in
-{{PLURAL:$1|hoor|$1 hoors}}.",
+'throttled-mailpassword'     => "A passwaird minder haes been sent already, in the
+hindermaist $1 hoors. To hinder abuise, only ''ane'' passwaird minder will be gettin sent in
+$1 hoors.",
 'mailerror'                  => 'Error sendin mail: $1',
-'acct_creation_throttle_hit' => 'Veesitors tae this wiki uisin yer IP address haev created $1 {{PLURAL:$1|accoont|accoonts}} the day, which is the maist permeettit in that lang.
-Sae veesitors uisin this IP address canna mak ony mair accoonts juist noo.',
+'acct_creation_throttle_hit' => "Sorry, but ye'v aaraedies made $1 accoonts. Ye canna mak onie mair.",
 'emailauthenticated'         => 'Yer e-mail address wis checkit on $1.',
 'emailnotauthenticated'      => 'Yer e-mail address hasnae been checkit! Nae e-mail
 will be sent for ony o the followin featurs.',
@@ -431,21 +412,22 @@ Please enter a weel-formattit address or mak that field tuim.',
 'accountcreated'             => 'Accoont creatit',
 'accountcreatedtext'         => 'The uiser accoont for $1 haes bin creatit.',
 'createaccount-title'        => 'Accoont makin for {{SITENAME}}',
-'createaccount-text'         => 'A body ($1) makit an accoont for yer email address on {{SITENAME}} ($4) cried "$2", wi a password o "$3".
-Ye shuid log in an chynge yer password nou.
+'createaccount-text'         => 'A body ($1) makit an accoont for $2 on {{SITENAME}}
+($4). The passwaird for "$2" is "$3". Ye should log in an chynge yer passwaird
+nou.
 
-Ye dinna hae tae heed this message, if this accoont wis creatit by mistak.',
+Ye can sling a deifie on this message, if this accoont wis creatit by mistak.',
 'loginlanguagelabel'         => 'Leid: $1',
 
 # Password reset dialog
-'resetpass'           => 'Chynge passwaird',
-'resetpass_announce'  => 'Ye loggit in wi a short term e-mailed code. To be duin logging in, ye hae tae mak a new passwaird here:',
-'resetpass_header'    => 'Chynge accoont password',
-'oldpassword'         => 'Auld password',
-'resetpass_submit'    => 'Mak passwaird an log in',
-'resetpass_success'   => 'Yer passwaird chynge wis braw! Nou loggin ye in...',
-'resetpass_forbidden' => 'Passwords canna be chynged',
-'resetpass-no-info'   => 'Ye maun be loggit in tae access this page directly.',
+'resetpass'               => 'Set yer accoont passwaird again',
+'resetpass_announce'      => 'Ye loggit in wi a short term e-mailed code. To be duin logging in, ye hae tae mak a new passwaird here:',
+'resetpass_header'        => 'Reset passwaird',
+'oldpassword'             => 'Auld password',
+'resetpass_submit'        => 'Mak passwaird an log in',
+'resetpass_success'       => 'Yer passwaird chynge wis braw! Nou loggin ye in...',
+'resetpass_bad_temporary' => 'Yer short term passwaird wisnae habile. Ye micht hae already chynged yer passwaird or requestit a new short term passwaird.',
+'resetpass_forbidden'     => 'Passwairds cannae be chynged on this wiki',
 
 # Edit page toolbar
 'bold_sample'     => 'Bauld text',
@@ -470,23 +452,23 @@ Ye dinna hae tae heed this message, if this accoont wis creatit by mistak.',
 'hr_tip'          => 'Horizontal line (dinna ower uise)',
 
 # Edit pages
-'summary'                          => 'Ootline:',
-'subject'                          => 'Subject/headline:',
-'minoredit'                        => 'This is a smaa edit',
-'watchthis'                        => 'Leuk ower this page',
-'savearticle'                      => 'Hain page',
-'preview'                          => 'Scance',
-'showpreview'                      => 'Scance ower',
-'showlivepreview'                  => 'Live leuk ower',
-'showdiff'                         => 'Shaw chynges',
-'anoneditwarning'                  => "Ye arna loggit in. Yer IP address will be recordit in this page's edit history.",
-'missingsummary'                   => "'''Mynd:''' Ye hivna gien an edit summary. Gin ye dab on Hain again, yer edit will be haint athoot ane.",
-'missingcommenttext'               => 'Please enter a comment ablo.',
-'missingcommentheader'             => "'''Mynd:''' Ye hivna gien a subject/heidline for this comment. Gin ye dab on Hain again, yer edit will be haint athoot ane.",
-'summary-preview'                  => 'Ootline leuk ower:',
-'subject-preview'                  => 'Subject/headline leuk ower:',
-'blockedtitle'                     => 'Uiser is blockit',
-'blockedtext'                      => '<big>\'\'\'Yer uisername or IP address haes been blockit.\'\'\'</big>
+'summary'                   => 'Ootline:',
+'subject'                   => 'Subject/headline:',
+'minoredit'                 => 'This is a smaa edit',
+'watchthis'                 => 'Leuk ower this page',
+'savearticle'               => 'Hain page',
+'preview'                   => 'Scance',
+'showpreview'               => 'Scance ower',
+'showlivepreview'           => 'Live leuk ower',
+'showdiff'                  => 'Shaw chynges',
+'anoneditwarning'           => "Ye arna loggit in. Yer IP address will be recordit in this page's edit history.",
+'missingsummary'            => "'''Mynd:''' Ye hivna gien an edit summary. Gin ye dab on Hain again, yer edit will be haint athoot ane.",
+'missingcommenttext'        => 'Please enter a comment ablo.',
+'missingcommentheader'      => "'''Mynd:''' Ye hivna gien a subject/heidline for this comment. Gin ye dab on Hain again, yer edit will be haint athoot ane.",
+'summary-preview'           => 'Ootline leuk ower:',
+'subject-preview'           => 'Subject/headline leuk ower:',
+'blockedtitle'              => 'Uiser is blockit',
+'blockedtext'               => '<big>\'\'\'Yer uisername or IP address haes been blockit.\'\'\'</big>
 
 The block was made bi $1. The raeson gien is \'\'$2\'\'.
 
@@ -497,7 +479,7 @@ The block was made bi $1. The raeson gien is \'\'$2\'\'.
 Ye can contact $1 or ane o the ither [[{{MediaWiki:Grouppage-sysop}}|administrators]] tae discuss the block.
 Mynd that ye canna uise the "email this uiser" featur unless ye hae a valid email address registert in yer [[Special:Preferences|uiser preferences]] an ye hae not been blocked from using it.
 Yer IP address is $3, and the block ID is #$5. Please include this address in onie queries ye mak.',
-'autoblockedtext'                  => 'Sairy, but yer IP address haes been blockit by the seestem acause it wis uised by an ither uiser, that wis blockit by $1.
+'autoblockedtext'           => 'Sairy, but yer IP address haes been blockit by the seestem acause it wis uised by an ither uiser, that wis blockit by $1.
 The grunds for this were:
 
 :\'\'$2\'\'
@@ -512,86 +494,82 @@ Please jot that ye cannae uise the "e-mail this uiser" featur unless ye hae a ha
 registerit in yer [[Special:Preferences|uiser preferences]] an ye hinna been blockit frae uisin it.
 
 Yer block ID is $5. Please include this ID in ony argies ye mak.',
-'blockednoreason'                  => 'nae grunds put',
-'blockedoriginalsource'            => "The soorce o '''$1''' is shawn ablo:",
-'blockededitsource'                => "The text o '''your edits''' tae '''$1''' is shawn ablo:",
-'whitelistedittitle'               => 'Login needit tae edit',
-'whitelistedittext'                => 'Ye hae tae $1 tae edit pages.',
-'confirmedittext'                  => 'Ye maun confirm yer e-mail address afore editin pages. Please set an validate yer e-mail address throu yer [[Special:Preferences|uiser settins]].',
-'nosuchsectiontitle'               => 'There isnae a section wi that teetle',
-'nosuchsectiontext'                => "Yer tryin tae edit a section that isnae there.  Acause there isnae a section $1, there's naegate to sauf yer edit.",
-'loginreqtitle'                    => 'Login Requirit!',
-'loginreqlink'                     => 'log in',
-'loginreqpagetext'                 => 'Ye maun $1 tae view ither pages.',
-'accmailtitle'                     => 'Passwaird sent.',
-'accmailtext'                      => "The Password for '$1' haes been sent tae $2.",
-'newarticle'                       => '(New)',
-'newarticletext'                   => "Ye'v follaed an airtin til a page that disna exist yet. Tae create the page, stert typin in the box ablo (see the [[{{MediaWiki:Helppage}}|help page]] for mair info). Gin ye'r here by mistak, juist dab yer brouser's '''back''' button.",
-'anontalkpagetext'                 => "----''This is the collogue page for a nameless uiser that haesna made an accoont yet or that disna uise it. We syne hiv tae uise the numerical IP address tae identifee thaim. Sic an IP address can be shared bi a wheen o uisers. Gin you ar a nameless uiser an feel that irrelevant comments haes been directit at ye, please [[Special:UserLogin|mak an accoont or log in]] tae evyte futur confusion wi ither nameless uisers.''",
-'noarticletext'                    => "The'r nae text on this page the nou. Ye can [[Special:Search/{{PAGENAME}}|rake for this page teitle]] in ither pages or [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page].",
-'userpage-userdoesnotexist'        => 'Uiser accoont "$1" hasnae been registerit. Please check gin ye wint tae mak or edit this page.',
-'clearyourcache'                   => "'''Tak tent:''' Efter hainin, ye micht hae tae bypass yer brouser's cache for tae see the chynges. '''Mozilla / Firefox / Safari:''' haud doun ''Shift'' while dabbin on ''Reload'', or press ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac); '''IE:''' haud doun ''Ctrl'' while dabbin on ''Refresh'', or press ''Ctrl-F5''; '''Konqueror:''' juist dab on the ''Reload'' button, or press ''F5''; '''Opera''' users micht hae tae haillie dicht thair cache in ''Tools&rarr;Preferences''.",
-'usercssjsyoucanpreview'           => "'''Tip:''' Uise the 'Show preview' button tae proof yer new CSS/JS afore savin.",
-'usercsspreview'                   => "'''Mynd that ye'r juist previewin yer uiser CSS, it haesna yet been hained!'''",
-'userjspreview'                    => "'''Mynd that ye're juist testin/previewing yer uiser JavaScript; it haesna been hained yet!'''",
-'userinvalidcssjstitle'            => "'''Warnin:''' There isnae a skin \"\$1\". Mynd that yer ain .css an .js pages uise a lowercase teetle, e.g. {{ns:user}}:Foo/monobook.css instead o {{ns:user}}:Foo/Monobook.css.",
-'updated'                          => '(Updatit)',
-'note'                             => "'''Mynd:'''",
-'previewnote'                      => "'''Mynd that this is juist a scance-ower, an haesna been hained yet!'''",
-'previewconflict'                  => 'This scance reflects the text in the upper text editin area like it will kythe gin ye chuise tae save.',
-'session_fail_preview'             => "'''Sairy! We culdnae process yer edit acause o a loss o term data.
-Please try again. Gin it disnae wairk still, try loggin oot an loggin in again.'''",
-'session_fail_preview_html'        => "'''Sairy! We culdnae process yer edit acause o a loss o term data.'''
+'blockednoreason'           => 'nae grunds put',
+'blockedoriginalsource'     => "The soorce o '''$1''' is shawn ablo:",
+'blockededitsource'         => "The text o '''your edits''' tae '''$1''' is shawn ablo:",
+'whitelistedittitle'        => 'Login needit tae edit',
+'whitelistedittext'         => 'Ye hae tae $1 tae edit pages.',
+'confirmedittitle'          => 'E-mail confirmation needit for tae edit',
+'confirmedittext'           => 'Ye maun confirm yer e-mail address afore editin pages. Please set an validate yer e-mail address throu yer [[Special:Preferences|uiser settins]].',
+'nosuchsectiontitle'        => 'There isnae a section wi that teetle',
+'nosuchsectiontext'         => "Yer tryin tae edit a section that isnae there.  Acause there isnae a section $1, there's naegate to sauf yer edit.",
+'loginreqtitle'             => 'Login Requirit!',
+'loginreqlink'              => 'log in',
+'loginreqpagetext'          => 'Ye maun $1 tae view ither pages.',
+'accmailtitle'              => 'Passwaird sent.',
+'accmailtext'               => "The Password for '$1' haes been sent tae $2.",
+'newarticle'                => '(New)',
+'newarticletext'            => "Ye'v follaed an airtin til a page that disna exist yet. Tae create the page, stert typin in the box ablo (see the [[{{MediaWiki:Helppage}}|help page]] for mair info). Gin ye'r here by mistak, juist dab yer brouser's '''back''' button.",
+'anontalkpagetext'          => "----''This is the collogue page for a nameless uiser that haesna made an accoont yet or that disna uise it. We syne hiv tae uise the numerical IP address tae identifee thaim. Sic an IP address can be shared bi a wheen o uisers. Gin you ar a nameless uiser an feel that irrelevant comments haes been directit at ye, please [[Special:UserLogin|mak an accoont or log in]] tae evyte futur confusion wi ither nameless uisers.''",
+'noarticletext'             => "The'r nae text on this page the nou. Ye can [[Special:Search/{{PAGENAME}}|rake for this page teitle]] in ither pages or [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page].",
+'userpage-userdoesnotexist' => 'Uiser accoont "$1" hasnae been registerit. Please check gin ye wint tae mak or edit this page.',
+'clearyourcache'            => "'''Tak tent:''' Efter hainin, ye micht hae tae bypass yer brouser's cache for tae see the chynges. '''Mozilla / Firefox / Safari:''' haud doun ''Shift'' while dabbin on ''Reload'', or press ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac); '''IE:''' haud doun ''Ctrl'' while dabbin on ''Refresh'', or press ''Ctrl-F5''; '''Konqueror:''' juist dab on the ''Reload'' button, or press ''F5''; '''Opera''' users micht hae tae haillie dicht thair cache in ''Tools&rarr;Preferences''.",
+'usercssjsyoucanpreview'    => "<strong>Tip:</strong> Uise the 'Show preview' button tae proof yer new CSS/JS afore savin.",
+'usercsspreview'            => "'''Mynd that ye'r juist previewin yer uiser CSS, it haesna yet been hained!'''",
+'userjspreview'             => "'''Mynd that ye're juist testin/previewing yer uiser JavaScript; it haesna been hained yet!'''",
+'userinvalidcssjstitle'     => "'''Warnin:''' There isnae a skin \"\$1\". Mynd that yer ain .css an .js pages uise a lowercase teetle, e.g. {{ns:user}}:Foo/monobook.css instead o {{ns:user}}:Foo/Monobook.css.",
+'updated'                   => '(Updatit)',
+'note'                      => '<strong>Mynd:</strong>',
+'previewnote'               => '<strong>Mynd that this is juist a scance-ower, an haesna been hained yet!</strong>',
+'previewconflict'           => 'This scance reflects the text in the upper text editin area like it will kythe gin ye chuise tae save.',
+'session_fail_preview'      => '<strong>Sairy! We culdnae process yer edit acause o a loss o term data.
+Please try again. Gin it disnae wairk still, try loggin oot an loggin in again.</strong>',
+'session_fail_preview_html' => "<strong>Sairy! We culdnae process yer edit acause o a loss o term data.</strong>
 
 ''Acause this wiki haes raw HTML habile, the leuk ower is hidden tae hinder JavaScript attacks.''
 
-'''Gin this is a proper edit try, please try again. Gin it disnae wairk still, try loggin oot an loggin back in.'''",
-'token_suffix_mismatch'            => "'''Yer edit haes been rejectit acause yer client made a richt mess o the punctuation characters
+<strong>Gin this is a proper edit try, please try again. Gin it disnae wairk still, try loggin oot an loggin back in.</strong>",
+'token_suffix_mismatch'     => '<strong>Yer edit haes been rejectit acause yer client made a richt mess o the punctuation characters
 in the edit token. The edit haes been rejectit tae hinder corruption o the page text.
-This whiles happens when ye are uisin a bruken web-based anonymous proxy service.'''",
-'editing'                          => 'Editin $1',
-'editingsection'                   => 'Editin $1 (section)',
-'editingcomment'                   => 'Editin $1 (comment)',
-'editconflict'                     => 'Edit conflict: $1',
-'explainconflict'                  => 'Some ither body haes chynged this page syne ye stertit editin it. The upper text area hauds the page text as it currently exists. Yer chynges is shawn in the lower text area. Ye\'ll hae tae merge yer chynges intae the existin text. <b>Juist</b> the text in the upper text area will be hained whan ye press "Hain page". <p>',
-'yourtext'                         => 'Yer text',
-'storedversion'                    => 'Storit version',
-'nonunicodebrowser'                => "'''WARNIN: Yer brouser isna unicode compliant.  The'r a wirkaroond tae allou ye tae sauflie edit airticles: non-ASCII characters will kythe in the edit box as hexadecimal codes.'''",
-'editingold'                       => "'''WARNIN: Ye'r editin an oot-o-date reveision o this page. Gin ye hain it, onie chynges made syne this reveision will be lost.'''",
-'yourdiff'                         => 'Differs',
-'copyrightwarning'                 => "Please mynd that aa contreibutions tae {{SITENAME}} is conseidert tae be released unner the $2 (see $1 for details). Gin ye dinna want yer writin tae be editit athoot mercy an redistribute at will, than dinna submit it here.<br /> Forbye thon, ye'r promisin us that ye wrat this yersel, or copied it frae a public domain or siclike free resoorce. '''DINNA SUBMIT COPYRICHTIT WARK ATHOOT PERMEISSION!'''",
-'copyrightwarning2'                => "Please mynd that aa contreibutions tae {{SITENAME}} micht be editit, chynged, or remuved bi ither contreibutors.
+This whiles happens when ye are uisin a bruken web-based anonymous proxy service.</strong>',
+'editing'                   => 'Editin $1',
+'editingsection'            => 'Editin $1 (section)',
+'editingcomment'            => 'Editin $1 (comment)',
+'editconflict'              => 'Edit conflict: $1',
+'explainconflict'           => 'Some ither body haes chynged this page syne ye stertit editin it. The upper text area hauds the page text as it currently exists. Yer chynges is shawn in the lower text area. Ye\'ll hae tae merge yer chynges intae the existin text. <b>Juist</b> the text in the upper text area will be hained whan ye press "Hain page". <p>',
+'yourtext'                  => 'Yer text',
+'storedversion'             => 'Storit version',
+'nonunicodebrowser'         => "<strong>WARNIN: Yer brouser isna unicode compliant.  The'r a wirkaroond tae allou ye tae sauflie edit airticles: non-ASCII characters will kythe in the edit box as hexadecimal codes.</strong>",
+'editingold'                => "<strong>WARNIN: Ye'r editin an oot-o-date reveision o this page. Gin ye hain it, onie chynges made syne this reveision will be lost.</strong>",
+'yourdiff'                  => 'Differs',
+'copyrightwarning'          => "Please mynd that aa contreibutions tae {{SITENAME}} is conseidert tae be released unner the $2 (see $1 for details). Gin ye dinna want yer writin tae be editit athoot mercy an redistribute at will, than dinna submit it here.<br /> Forbye thon, ye'r promisin us that ye wrat this yersel, or copied it frae a public domain or siclike free resoorce. <strong>DINNA SUBMIT COPYRICHTIT WARK ATHOOT PERMEISSION!</strong>",
+'copyrightwarning2'         => "Please mynd that aa contreibutions tae {{SITENAME}} micht be editit, chynged, or remuved bi ither contreibutors.
 Gin ye dinna want yer writin tae be editit athoot mercy and redistribute at will, than dinna submit it here.<br />
 YYe'r promisin us forbye that ye wrat this yersel, or copied it frae a
 public domain or siclike free resoorce (see $1 for details).
-'''DINNA SUBMIT COPYRICHTIT WARK ATHOOT PERMEISSION!'''",
-'longpagewarning'                  => "WARNIN: This page is $1 kilobytes lang; some brousers micht hae trouble editin pages approachin or langer nor 32 kb. Please conseider brakkin the page intae smaa'er sections.",
-'longpageerror'                    => "'''ERROR: The text ye hae submitted is $1 kilobytes 
-lang, an that's langer than the maximum of $2 kilobytes. It canna be hained.'''",
-'readonlywarning'                  => "WARNIN: The database haes been lockit for maintenance, sae ye'll no can hain yer edits richt nou. Ye micht wish tae cut-n-paste the text intil a text file an hain it for later.",
-'protectedpagewarning'             => "'''WARNIN: This page haes been lockit sae that juist uisers wi administrator privileges can edit it.'''",
-'semiprotectedpagewarning'         => "'''Warnin:''' This page haes been lockit sae that only registerit uisers can edit it.",
-'cascadeprotectedwarning'          => "'''Warnin:''' This page haes been lockit sae that only uisers wi sysop richts can edit it, acause it is includit in the followin cascade-protectit {{PLURAL:$1|page|pages}}:",
-'templatesused'                    => 'Templates uised on this page:',
-'templatesusedpreview'             => 'Templates uised in this scance ower:',
-'templatesusedsection'             => 'Templates uised in this section:',
-'template-protected'               => '(protectit)',
-'template-semiprotected'           => '(semi-protectit)',
-'nocreatetitle'                    => 'Page makkin limitit',
-'nocreatetext'                     => 'This site haes restrictit the ability to mak new pages.
+<strong>DINNA SUBMIT COPYRICHTIT WARK ATHOOT PERMEISSION!</strong>",
+'longpagewarning'           => "WARNIN: This page is $1 kilobytes lang; some brousers micht hae trouble editin pages approachin or langer nor 32 kb. Please conseider brakkin the page intae smaa'er sections.",
+'longpageerror'             => "<strong>ERROR: The text ye hae submitted is $1 kilobytes 
+lang, an that's langer than the maximum of $2 kilobytes. It canna be hained.</strong>",
+'readonlywarning'           => "WARNIN: The database haes been lockit for maintenance, sae ye'll no can hain yer edits richt nou. Ye micht wish tae cut-n-paste the text intil a text file an hain it for later.",
+'protectedpagewarning'      => '<strong>WARNIN: This page haes been lockit sae that juist uisers wi administrator privileges can edit it.</strong>',
+'semiprotectedpagewarning'  => "'''Warnin:''' This page haes been lockit sae that only registerit uisers can edit it.",
+'cascadeprotectedwarning'   => "'''Warnin:''' This page haes been lockit sae that only uisers wi sysop richts can edit it, acause it is includit in the followin cascade-protectit {{PLURAL:$1|page|pages}}:",
+'templatesused'             => 'Templates uised on this page:',
+'templatesusedpreview'      => 'Templates uised in this scance ower:',
+'templatesusedsection'      => 'Templates uised in this section:',
+'template-protected'        => '(protectit)',
+'template-semiprotected'    => '(semi-protectit)',
+'nocreatetitle'             => 'Page makkin limitit',
+'nocreatetext'              => 'This site haes restrictit the ability to mak new pages.
 Ye can go back an eik tae an existing page, or [[Special:UserLogin|log in or mak an accoont]].',
-'nocreate-loggedin'                => 'Ye dinnae hae the richts tae mak new pages on this wiki.',
-'permissionserrors'                => 'Richts Errors',
-'permissionserrorstext'            => 'Ye dinnae hae the richts tae dae that, acause o the followin {{PLURAL:$1|grund|grunds}}:',
-'permissionserrorstext-withaction' => 'Ye dinna hae the richts tae $2, for the follaein {{PLURAL:$1|reason|reasons}}:',
-'recreate-moveddeleted-warn'       => "'''Warnin: Ye are makkin a page that haes been deletit.'''
+'nocreate-loggedin'         => 'Ye dinnae hae the richts tae mak new pages on this wiki.',
+'permissionserrors'         => 'Richts Errors',
+'permissionserrorstext'     => 'Ye dinnae hae the richts tae dae that, acause o the followin {{PLURAL:$1|grund|grunds}}:',
+'recreate-deleted-warn'     => "'''Warnin: Ye are makkin a page that haes been deletit.'''
 
 Ye shuld check that it is guid tae keep editin this page.
 The deletion log for this page is providit here:",
-
-# Parser/template warnings
-'post-expand-template-argument-warning' => 'Tak tent: This page hauds at least the ae template argument that haes an ower muckle expansion size.
-Thae arguments hae been left oot.',
 
 # "Undo" feature
 'undo-success' => 'The edit can be undone. Please check the chynges albo tae check that this is whit ye wint tae dae, an then hain the chynges albo tae be duin undooin the edit.',
@@ -609,7 +587,7 @@ The grund for this, given by $3 is ''$2''",
 'nohistory'           => "The'r nae edit history for this page.",
 'currentrev'          => 'Current reveision',
 'revisionasof'        => 'Reveision as o $1',
-'revision-info'       => 'Revision as o $1 by $2',
+'revision-info'       => 'Revision as o $1 by $2', # Additionally available: $3: revision id
 'previousrevision'    => '← Aulder reveision',
 'nextrevision'        => 'Newer reveision →',
 'currentrevisionlink' => 'see current reveision',
@@ -619,6 +597,7 @@ The grund for this, given by $3 is ''$2''",
 'page_first'          => 'first',
 'page_last'           => 'hindermaist',
 'histlegend'          => 'Diff selection: mairk the radio boxes o the versions tae compare an press enter or the button at the bottom.<br /> Legend: (cur) = difference frae current version, (last) = difference frae foregaun version, s = smaa edit.',
+'deletedrev'          => '[delete]',
 'histfirst'           => 'Foremaist',
 'histlast'            => 'Hindermaist',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -627,7 +606,7 @@ The grund for this, given by $3 is ''$2''",
 # Revision feed
 'history-feed-title'          => 'Revision history',
 'history-feed-description'    => 'Revision history for this page on the wiki',
-'history-feed-item-nocomment' => '$1 at $2',
+'history-feed-item-nocomment' => '$1 at $2', # user at time
 'history-feed-empty'          => 'The requestit page disnae exist.
 It micht hae been deletit frae the wiki, or the name micht hae been chynged.
 Try [[Special:Search|rakin on the wiki]] for new pages ye micht be interestit in.',
@@ -636,11 +615,15 @@ Try [[Special:Search|rakin on the wiki]] for new pages ye micht be interestit in
 'rev-deleted-comment'         => '(jottin removit)',
 'rev-deleted-user'            => '(uisername removit)',
 'rev-deleted-event'           => '(entry removit)',
-'rev-deleted-text-permission' => 'This page revision haes been removit frae the public archives.
-There micht be parteeculars in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} deletion log].',
-'rev-deleted-text-view'       => 'This page revision haes been removit frae the public archives.
+'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+This page revision haes been removit frae the public archives.
+There micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
+</div>',
+'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
+This page revision haes been removit frae the public archives.
 Acause yer an admeenistrator on this site, ye can leuk at it;
-there micht be parteeculars in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} deletion log].',
+there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
+</div>',
 'rev-delundel'                => 'shaw/scug',
 'revisiondelete'              => 'Delete/undelete revisions',
 'revdelete-nooldid-title'     => 'Nae target revision',
@@ -650,65 +633,52 @@ there micht be parteeculars in the [{{fullurl:{{#Special:Log}}/suppress|page={{F
 'compareselectedversions' => 'Compare selectit versions',
 
 # Search results
-'searchresults'            => 'Rake results',
-'searchresulttext'         => 'For mair information aboot rakin {{SITENAME}}, see [[{{MediaWiki:Helppage}}|Rakin {{SITENAME}}]].',
-'searchsubtitle'           => "Ye raked for '''[[:$1]]'''",
-'searchsubtitleinvalid'    => "Ye raked for '''$1'''",
-'noexactmatch'             => "'''There nae page wi the teetle \"\$1\".''' Ye can [[:\$1|mak this page]].",
-'titlematches'             => 'Airticle teitle matches',
-'notitlematches'           => 'Nae page teitle matches',
-'notextmatches'            => 'Nae page text matches',
-'prevn'                    => 'foregaun {{PLURAL:$1|$1}}',
-'nextn'                    => 'neist {{PLURAL:$1|$1}}',
-'searchhelp-url'           => 'Help:Contents',
-'search-mwsuggest-enabled' => 'wi suggestions',
-'searchall'                => 'aw',
-'showingresults'           => "Shawin ablo up tae {{PLURAL:$1|'''1''' result|'''$1''' results}} stertin wi #'''$2'''.",
-'showingresultsnum'        => "Shawin ablo {{PLURAL:$3|'''1''' result|'''$3''' results}} stertin wi #'''$2'''.",
-'nonefound'                => "'''Mynd''': unsuccessfu rakes is afttimes caused bi rakin for common words like \"hae\" an \"frae\", that isna indexed, or bi specifeein mair nor ae rake term (juist pages haudin aa the rake terms will kythe in the result).",
-'powersearch'              => 'Rake',
-'searchdisabled'           => 'Rakin throu {{SITENAME}} is disabled for performance raesons. Ye can rake via Google juist nou. Mynd that thair indexes o {{SITENAME}} content micht be oot o date.',
+'searchresults'         => 'Rake results',
+'searchresulttext'      => 'For mair information aboot rakin {{SITENAME}}, see [[{{MediaWiki:Helppage}}|Rakin {{SITENAME}}]].',
+'searchsubtitle'        => "Ye raked for '''[[:$1]]'''",
+'searchsubtitleinvalid' => "Ye raked for '''$1'''",
+'noexactmatch'          => "'''There nae page wi the teetle \"\$1\".''' Ye can [[:\$1|mak this page]].",
+'titlematches'          => 'Airticle teitle matches',
+'notitlematches'        => 'Nae page teitle matches',
+'notextmatches'         => 'Nae page text matches',
+'prevn'                 => 'foregaun $1',
+'nextn'                 => 'neist $1',
+'searchhelp-url'        => 'Help:Contents',
+'searchall'             => 'aw',
+'showingresults'        => "Shawin ablo up tae {{PLURAL:$1|'''1''' result|'''$1''' results}} stertin wi #'''$2'''.",
+'showingresultsnum'     => "Shawin ablo {{PLURAL:$3|'''1''' result|'''$3''' results}} stertin wi #'''$2'''.",
+'nonefound'             => "'''Mynd''': unsuccessfu rakes is afttimes caused bi rakin for common words like \"hae\" an \"frae\", that isna indexed, or bi specifeein mair nor ae rake term (juist pages haudin aa the rake terms will kythe in the result).",
+'powersearch'           => 'Rake',
+'searchdisabled'        => 'Rakin throu {{SITENAME}} is disabled for performance raesons. Ye can rake via Google juist nou. Mynd that thair indexes o {{SITENAME}} content micht be oot o date.',
 
 # Preferences page
-'mypreferences'             => 'Ma preferences',
-'prefsnologin'              => 'No loggit in',
-'prefsnologintext'          => 'Ye maun be [[Special:UserLogin|loggit in]] tae set uiser preferences.',
-'changepassword'            => 'Chynge password',
-'skin-preview'              => 'First Leuk',
-'prefs-math'                => 'Renderin math',
-'datedefault'               => 'Nae preference',
-'prefs-datetime'            => 'Date an time',
-'prefs-personal'            => 'Uiser data',
-'prefs-rc'                  => 'Recent chynges an shawin stubs',
-'prefs-misc'                => 'Antrin settins',
-'saveprefs'                 => 'Hain preferences',
-'prefs-editing'             => 'Editin',
-'searchresultshead'         => 'Rake result settins',
-'resultsperpage'            => 'Hits tae shaw per page',
-'contextlines'              => 'Lines tae shaw per hit',
-'contextchars'              => 'Characters o context per line',
-'recentchangescount'        => 'Nummer o teitles in recent chynges',
-'savedprefs'                => 'Yer preferences haes been hained.',
-'timezoneoffset'            => 'Affset',
-'servertime'                => 'Server time is nou',
-'guesstimezone'             => 'Fill in frae brouser',
-'allowemail'                => 'Allou email frae ither uisers',
-'defaultns'                 => 'Rake in thir namespaces bi defaut:',
-'default'                   => 'defaut',
-'youremail'                 => 'Yer email:',
-'username'                  => 'Uisername:',
-'uid'                       => 'Uiser ID:',
-'prefs-memberingroups'      => 'Member o {{PLURAL:$1|group|groups}}:',
-'yourrealname'              => 'Yer real name:',
-'yourlanguage'              => 'Interface leid:',
-'yourvariant'               => 'Leid variant',
-'yournick'                  => 'Seegnatur:',
-'badsig'                    => 'Raw signature nae guid; check HTML tags.',
-'badsiglength'              => 'Yer nickname is ower lang; it haes tae be $1 {{PLURAL:$1|character|characters}} or less.',
-'email'                     => 'E-mail',
-'prefs-help-realname'       => 'Rael name is optional an gin ye chuise tae provide it this will be uised tae gie ye attreibution for yer wark.',
-'prefs-help-email'          => 'Email is optional, an lats ithers contact ye throu yer uiser or uiser_collogue page athoot you haein tae reveal yer identity.',
-'prefs-help-email-required' => 'Yer e-mail address is needit.',
+'mypreferences'      => 'Ma preferences',
+'prefsnologin'       => 'No loggit in',
+'prefsnologintext'   => 'Ye maun be [[Special:UserLogin|loggit in]] tae set uiser preferences.',
+'prefsreset'         => 'Preferences haes been reset frae storage.',
+'changepassword'     => 'Chynge password',
+'skin-preview'       => 'First Leuk',
+'math'               => 'Renderin math',
+'datedefault'        => 'Nae preference',
+'datetime'           => 'Date an time',
+'prefs-personal'     => 'Uiser data',
+'prefs-rc'           => 'Recent chynges an shawin stubs',
+'prefs-misc'         => 'Antrin settins',
+'saveprefs'          => 'Hain preferences',
+'textboxsize'        => 'Editin',
+'searchresultshead'  => 'Rake result settins',
+'resultsperpage'     => 'Hits tae shaw per page',
+'contextlines'       => 'Lines tae shaw per hit',
+'contextchars'       => 'Characters o context per line',
+'recentchangescount' => 'Nummer o teitles in recent chynges',
+'savedprefs'         => 'Yer preferences haes been hained.',
+'timezonetext'       => 'Enter nummer o hoors yer local time differs frae server time (UTC).',
+'timezoneoffset'     => 'Affset',
+'servertime'         => 'Server time is nou',
+'guesstimezone'      => 'Fill in frae brouser',
+'allowemail'         => 'Allou email frae ither uisers',
+'defaultns'          => 'Rake in thir namespaces bi defaut:',
+'default'            => 'defaut',
 
 # User rights
 'editinguser'             => "Editin uiser '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
@@ -731,9 +701,7 @@ there micht be parteeculars in the [{{fullurl:{{#Special:Log}}/suppress|page={{F
 'rc_categories_any'                 => 'Ony',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Relatit chynges',
-'recentchangeslinked-feed'    => 'Relatit chynges',
-'recentchangeslinked-toolbox' => 'Relatit chynges',
+'recentchangeslinked' => 'Relatit chynges',
 
 # Upload
 'upload'                      => 'Uplaid file',
@@ -762,7 +730,7 @@ Tae pit the eimage intae a page, uise an airtin i the form
 'illegalfilename'             => 'The filename "$1" haes characters that isna alloud in page teitles. Please rename the file an gie uplaidin it anither shot.',
 'badfilename'                 => 'Eimage name haes been chynged tae "$1".',
 'largefileserver'             => 'This file is bigger nor the server is confeigurt tae allou.',
-'fileexists'                  => "A file wi this name exists aareadies, please check '''<tt>$1</tt>''' gin ye'r no siccar that ye want tae chynge it.",
+'fileexists'                  => "A file wi this name exists aareadies, please check <strong><tt>$1</tt></strong> gin ye'r no siccar that ye want tae chynge it.",
 'fileexists-forbidden'        => 'A file wi this name aareadies exists; please gang back an uplaid this file unner a new name. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'A file wi this name aareadies exists in the shared file depose; please gang back an uplaid this file unner a new name. [[File:$1|thumb|center|$1]]',
 'uploadwarning'               => 'Uplaid warnin',
@@ -780,10 +748,10 @@ Tae pit the eimage intae a page, uise an airtin i the form
 'listfiles' => 'Eimage leet',
 
 # File description page
-'file-anchor-link' => 'Eimage',
-'imagelinks'       => 'Eimage airtins',
-'linkstoimage'     => 'The follaein $1 pages airts tae this image:',
-'nolinkstoimage'   => "The'r nae pages airts tae this eimage.",
+'imagelinks'     => 'Eimage airtins',
+'linkstoimage'   => 'The follaein $1 pages airts tae this image:',
+'nolinkstoimage' => "The'r nae pages airts tae this eimage.",
+'noimage'        => 'Nae file wi this name exists, ye can [$1 uplaid it]',
 
 # MIME search
 'download' => 'dounlaid',
@@ -914,8 +882,8 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'rollbackfailed' => 'Rowback failed',
 'cantrollback'   => 'Canna revert edit; last contreibutor is the ae author o this page.',
 'alreadyrolled'  => 'Canna rowback last edit o [[$1]] bi [[User:$2|$2]] ([[User talk:$2|Talk]]); some ither bodie haes editit or rowed back the page aareadies. Last edit wis bi [[User:$3|$3]] ([[User talk:$3|Talk]]).',
-'editcomment'    => "The edit comment wis: \"''\$1''\".",
-'revertpage'     => 'Revertit edit o [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]), chynged back tae last version bi [[User:$1|$1]]',
+'editcomment'    => 'The edit comment wis: "<i>$1</i>".', # only shown if there is an edit comment
+'revertpage'     => 'Revertit edit o [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]), chynged back tae last version bi [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogtext'         => 'Ablo is a leet o page locks/unlocks. See the [[Special:ProtectedPages|protected pages list]] for the list of currently operational page protections.',
@@ -924,9 +892,9 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'protect-title'          => 'Protectin "$1"',
 'prot_1movedto2'         => '[[$1]] flittit til [[$2]]',
 'protectcomment'         => 'Raeson for protectin',
-'protect-text'           => "Ye can see an chynge the protection level here for the page '''<nowiki>$1</nowiki>'''.",
+'protect-text'           => 'Ye can see an chynge the protection level here for the page <strong><nowiki>$1</nowiki></strong>.',
 'protect-level-sysop'    => 'Juist administrators',
-'protect-expiry-options' => '2 oor:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
+'protect-expiry-options' => '2 oor:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite', # display1:time1,display2:time2,...
 
 # Undelete
 'undelete'               => 'Restore delete page',
@@ -951,8 +919,6 @@ afore it wis delete. The actual text o thir deletit reveisions is available tae 
 'month'         => 'Frae month (an afore):',
 'year'          => 'Frae year (an afore):',
 
-'sp-contributions-talk' => 'Collogue',
-
 # What links here
 'whatlinkshere' => 'Whit airts tae here',
 'linkshere'     => "The follaein pages airts tae '''[[:$1]]''':",
@@ -967,7 +933,7 @@ afore it wis delete. The actual text o thir deletit reveisions is available tae 
 'ipbreason'                   => 'Raeson',
 'ipbsubmit'                   => 'Block this uiser',
 'ipbother'                    => 'Ither time',
-'ipboptions'                  => '2 oor:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
+'ipboptions'                  => '2 oor:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'ither',
 'badipaddress'                => 'That IP address is nae guid',
 'blockipsuccesssub'           => 'Block succeedit',
@@ -1047,7 +1013,7 @@ The destination airticle "[[:$1]]" aareadies exists. Div ye want tae delete it f
 
 Tae export airticle pages, enter the teitles in the text box ablo, ae teitle tae ilka line, an wale whither ye want the current version alang wi aa auld versions, wi the page history lines, or the current version juist, wi wittins anent the last edit.
 
-In the saicont case ye can uise an airtin forbye, for exemplar [[{{#Special:Export}}/{{MediaWiki:Mainpage}}]] for the airticle "[[{{MediaWiki:Mainpage}}]]".',
+In the saicont case ye can uise an airtin forbye, for exemplar [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] for the airticle "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly' => 'Include juist the current revision, no the fou history',
 
 # Namespace 8 related
@@ -1056,6 +1022,7 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{#Special:Expo
 'allmessagescurrent'        => 'Text the nou',
 'allmessagestext'           => 'This is a leet o aa seestem messages available in the MediaWiki: namespace.',
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:AllMessages''' nae supportit acause '''\$wgUseDatabaseMessages''' is aff.",
+'allmessagesmodified'       => 'Juist shaw chynged',
 
 # Thumbnails
 'filemissing' => 'File missin',
@@ -1071,7 +1038,7 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{#Special:Expo
 'tooltip-pt-preferences'          => 'Ma preferences',
 'tooltip-pt-login'                => "It's a guid idea tae log i, but ye dinna hae tae.",
 'tooltip-search'                  => 'Rake {{SITENAME}}',
-'tooltip-n-mainpage'              => 'Gang tae the Main Page',
+'tooltip-n-mainpage'              => 'Gae tae the Main Page',
 'tooltip-t-contributions'         => "View this uiser's contreibutions",
 'tooltip-minoredit'               => 'Mairk this as a smaa edit',
 'tooltip-save'                    => 'Hain yer chynges',

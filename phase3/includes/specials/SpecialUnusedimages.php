@@ -22,24 +22,13 @@ class UnusedimagesPage extends ImageQueryPage {
 	function isSyndicated() { return false; }
 
 	function getSQL() {
-		global $wgCountCategorizedImagesAsUsed, $wgDBtype;
+		global $wgCountCategorizedImagesAsUsed;
 		$dbr = wfGetDB( DB_SLAVE );
-
-		switch ($wgDBtype) {
-			case 'mysql': 
-				$epoch = 'UNIX_TIMESTAMP(img_timestamp)'; 
-				break;
-			case 'oracle': 
-				$epoch = '((trunc(img_timestamp) - to_date(\'19700101\',\'YYYYMMDD\')) * 86400)'; 
-				break;
-			default:
-				$epoch = 'EXTRACT(epoch FROM img_timestamp)';
-		}
 
 		if ( $wgCountCategorizedImagesAsUsed ) {
 			list( $page, $image, $imagelinks, $categorylinks ) = $dbr->tableNamesN( 'page', 'image', 'imagelinks', 'categorylinks' );
 
-			return "SELECT 'Unusedimages' as type, 6 as namespace, img_name as title, $epoch as value,
+			return "SELECT 'Unusedimages' as type, 6 as namespace, img_name as title, img_timestamp as value,
 						img_user, img_user_text,  img_description
 					FROM ((($page AS I LEFT JOIN $categorylinks AS L ON I.page_id = L.cl_from)
 						LEFT JOIN $imagelinks AS P ON I.page_title = P.il_to)
@@ -48,14 +37,14 @@ class UnusedimagesPage extends ImageQueryPage {
 		} else {
 			list( $image, $imagelinks ) = $dbr->tableNamesN( 'image','imagelinks' );
 
-			return "SELECT 'Unusedimages' as type, 6 as namespace, img_name as title, $epoch as value,
+			return "SELECT 'Unusedimages' as type, 6 as namespace, img_name as title, img_timestamp as value,
 				img_user, img_user_text,  img_description
 				FROM $image LEFT JOIN $imagelinks ON img_name=il_to WHERE il_to IS NULL ";
 		}
 	}
 
 	function getPageHeader() {
-		return wfMsgExt( 'unusedimagestext', array( 'parse' ) );
+		return wfMsgExt( 'unusedimagestext', array( 'parse') );
 	}
 
 }

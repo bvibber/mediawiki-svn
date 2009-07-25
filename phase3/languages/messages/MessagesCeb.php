@@ -1,9 +1,6 @@
 <?php
 /** Cebuano (Cebuano)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -148,7 +145,7 @@ $messages = array(
 'category-media-header'         => 'Medya sa kategoriyang "$1"',
 'category-empty'                => "''Kini nga kategoriya kasamtangang way sulod nga mga panid ug mga medya.''",
 'hidden-categories'             => '{{PLURAL:$1|Nakatagong kategoriya|Mga nakatagong kategoriya}}',
-'hidden-category-category'      => 'Mga nakatagong kategoriya',
+'hidden-category-category'      => 'Mga nakatagong kategoriya', # Name of the category where hidden categories will be listed
 'category-subcat-count'         => '{{PLURAL:$2|Kini nga kategoriya may usa lamang ka subkategoriya.|Kini nga kategoriya may {{PLURAL:$1|subkategoriya|$1 ka mga subkategorya}}, sa total nga $2.}}',
 'category-subcat-count-limited' => 'Kini nga kategoriya adunay {{PLURAL:$1|ka subkategorya|$1 ka mga subkategoriya}}.',
 'category-article-count'        => '{{PLURAL:$2|Kini nga kategoriya may usa lang ka panid.|Ang kining {{PLURAL:$1|ka panid|$1 ka mga panid}} nahiapil niining kategoryaha, sa $2 nga total.}}',
@@ -162,22 +159,20 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ FAQ sa MediaWiki]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce  Mailing list sa mga release sa MediaWiki]',
 
-'about'         => 'Mahitungod',
-'newwindow'     => "(maabli sa laing ''window'')",
-'cancel'        => 'I-way bili',
-'moredotdotdot' => 'Dugang pa...',
-'mypage'        => 'Akong panid',
-'mytalk'        => 'Akong hisgot',
-'anontalk'      => 'Panghisgot-hisgot alang niining IP',
-'navigation'    => 'Tabok-tabok',
-'and'           => '&#32;ug',
-
-# Cologne Blue skin
+'about'          => 'Mahitungod',
+'newwindow'      => "(maabli sa laing ''window'')",
+'cancel'         => 'I-way bili',
 'qbfind'         => 'Pangitaa',
 'qbedit'         => 'Usba',
 'qbpageoptions'  => 'Kini nga panid',
 'qbmyoptions'    => 'Akong mga panid',
 'qbspecialpages' => 'Mga espesyal nga panid',
+'moredotdotdot'  => 'Dugang pa...',
+'mypage'         => 'Akong panid',
+'mytalk'         => 'Akong hisgot',
+'anontalk'       => 'Panghisgot-hisgot alang niining IP',
+'navigation'     => 'Tabok-tabok',
+'and'            => '&#32;ug',
 
 'returnto'          => 'Balik sa $1.',
 'tagline'           => 'Gikan sa {{SITENAME}}',
@@ -222,7 +217,7 @@ $messages = array(
 'otherlanguages'    => 'Sa ubang pinulongan',
 'redirectedfrom'    => '(Naredirek gikan sa $1)',
 'redirectpagesub'   => 'Panid sa redirekta',
-'lastmodifiedat'    => 'Kini nga panid kataposang giusab niadtong $2, $1.',
+'lastmodifiedat'    => 'Kini nga panid kataposang giusab niadtong $2, $1.', # $1 date, $2 time
 'viewcount'         => 'Naablihan na sa {{PLURAL:$1|maka-usa|$1 ka higayon}} ang kining panid.',
 'protectedpage'     => 'Giprotektahang panid',
 'jumpto'            => 'Ambak sa:',
@@ -292,6 +287,9 @@ Ang lista sa mga balidong espesyal nga mga panid makita sa [[Special:SpecialPage
 
 # General errors
 'error'               => 'Sayop',
+'noconnect'           => "Pasayloa, adunay problemang teknikal sa karon ang kini nga wiki, ug dili makakontak sa serber sa ''database''.<br />
+$1",
+'cachederror'         => "Ang mosunod usa ka gi-''cache'' nga kopya sa gihangyong panid, ug mahimong karaan na.",
 'laggedslavemode'     => 'Pahibalo: Mahimong dili mahiapil sa panid ang mga bag-ong kausaban.',
 'readonly'            => 'Gitrangkahan ang database',
 'internalerror'       => 'Internal nga sayop',
@@ -307,9 +305,11 @@ Basin aduna kini usa o daghan pang mga karakter nga dili magamit isip titulo.',
 'ns-specialprotected' => 'Ang mga espesyal nga panid dili mausban.',
 
 # Login and logout pages
+'logouttitle'             => 'Pagbiya sa tiggamit',
 'welcomecreation'         => '== Maayong pag-abot, $1! ==
 Nahimo na ang imong akawnt.
 Ayaw kalimot sa pag-usab sa imong [[Special:Preferences|{{SITENAME}} mga preperensiya]].',
+'loginpagetitle'          => 'Pagdayon sa tiggamit',
 'yourname'                => 'Ngalan sa tiggamit:',
 'remembermypassword'      => 'Hinumdomi ako niini nga kompyuter',
 'login'                   => 'Sulod',
@@ -350,13 +350,13 @@ Aron mahimo ang maong panid, pagtayp sa kahon sa ubos (tan-awa ang [[{{MediaWiki
 Kon miabot ka dinhi pinaagi sa usa ka sayop, palihog tuploka ang back nga tuplokanan sa imong brawser.',
 'noarticletext'             => 'Sa kasamtangan walay sulod nga teksto ang kining panid, pwede nimong  [[Special:Search/{{PAGENAME}}|pangitaon kining titulo sa panid]] sa ubang mga panid o [{{fullurl:{{FULLPAGENAME}}|action=edit}} usba kining panid].',
 'userpage-userdoesnotexist' => 'Ang akawnt sa tiggamit nga "$1" wala marehistro. Palihug tan-awa kon buot nimong himoon/usbon ang kining panid.',
-'previewnote'               => "'''Hinumdomi nga kini usa lang ka paunang tan-aw; wala pa matipigi ang imong giusab!'''",
+'previewnote'               => '<strong>Hinumdomi nga kini usa lang ka paunang tan-aw; wala pa matipigi ang imong giusab!</strong>',
 'editing'                   => 'Nagausab sa $1',
 'yourtext'                  => 'Imong gisulat',
 'yourdiff'                  => 'Mga kalainan',
-'copyrightwarning'          => "Palihog hinumdomi nga ang tanang kontribusyon sa {{SITENAME}} giisip nga ubos sa $2 (basaha ang $1 alang sa dugang detalye). Kon dili nimo buot nga ang imong mga sinulat mausab ni bisan kinsa ug maapud-apod bisan dili ka pangayoan og pagtugot, ayaw sila ibutang dinhi.<br />
+'copyrightwarning'          => 'Palihog hinumdomi nga ang tanang kontribusyon sa {{SITENAME}} giisip nga ubos sa $2 (basaha ang $1 alang sa dugang detalye). Kon dili nimo buot nga ang imong mga sinulat mausab ni bisan kinsa ug maapud-apod bisan dili ka pangayoan og pagtugot, ayaw sila ibutang dinhi.<br />
 Nagatimaan ka usab nga ikaw mismo ang nagsulat niini, o gikopya nimo kini gikan sa usa ka publikong rekursos o susamang libreng rekursos.
-'''AYAW PAGBUTANG DINHI OG MGA BINUHAT NGA MAY NANAG-IYA SA KATUNGOD SA PAGPATIK NGA WA KAY PERMISO!'''",
+<strong>AYAW PAGBUTANG DINHI OG MGA BINUHAT NGA MAY NANAG-IYA SA KATUNGOD SA PAGPATIK NGA WA KAY PERMISO!</strong>',
 'templatesused'             => 'Ang mga plantilyang gigamit niini nga panid:',
 'template-protected'        => '(giprotektahan)',
 
@@ -373,8 +373,8 @@ Nagatimaan ka usab nga ikaw mismo ang nagsulat niini, o gikopya nimo kini gikan 
 # Search results
 'noexactmatch'   => "'''Walay panid nga ginganla'g \"\$1\".'''
 Mahimo mong [[:\$1|isulat kini nga panid]].",
-'prevn'          => 'miaging {{PLURAL:$1|$1}}',
-'nextn'          => 'sunod {{PLURAL:$1|$1}}',
+'prevn'          => 'miaging $1',
+'nextn'          => 'sunod $1',
 'viewprevnext'   => 'Tan-awa sa ($1) ($2) ($3)',
 'searchhelp-url' => 'Help:Mga sulod',
 'powersearch'    => 'Abansadong pagpangita',
@@ -397,8 +397,6 @@ Mahimo mong [[:\$1|isulat kini nga panid]].",
 
 # Recent changes linked
 'recentchangeslinked'         => 'Mga may kalabotang kausaban',
-'recentchangeslinked-feed'    => 'Mga may kalabotang kausaban',
-'recentchangeslinked-toolbox' => 'Mga may kalabotang kausaban',
 'recentchangeslinked-title'   => 'Mga pag-usab nga may kalabotan sa "$1"',
 'recentchangeslinked-summary' => "Kini ang talaan sa mga bag-ong kausaban sa mga panid nga misumpay sa espesipikong panid (o sa mga sakop sa espesipikong kategoriya).
 Ang mga panid sa [[Special:Watchlist|imong gibantayan]] '''nakalugom'''.",
@@ -407,7 +405,6 @@ Ang mga panid sa [[Special:Watchlist|imong gibantayan]] '''nakalugom'''.",
 'upload' => 'Pagsumiter og payl',
 
 # File description page
-'file-anchor-link'  => 'Payl',
 'filehist'          => 'Kaagi sa payl',
 'filehist-help'     => 'I-klik ang petsa/oras aron makit-an ang hulagway sa payl niadtong panahona.',
 'filehist-current'  => 'kasamtangan',
@@ -455,8 +452,6 @@ Ang mga panid sa [[Special:Watchlist|imong gibantayan]] '''nakalugom'''.",
 # Contributions
 'contributions' => 'Mga tampo ning gumagamit',
 'mycontris'     => 'Akong tampo',
-
-'sp-contributions-talk' => 'Hisgot',
 
 # What links here
 'whatlinkshere'       => 'Unsay mga misumpay dinhi',

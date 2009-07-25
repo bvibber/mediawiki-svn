@@ -25,18 +25,8 @@ class AncientPagesPage extends QueryPage {
 		$db = wfGetDB( DB_SLAVE );
 		$page = $db->tableName( 'page' );
 		$revision = $db->tableName( 'revision' );
-
-		switch ($wgDBtype) {
-			case 'mysql': 
-				$epoch = 'UNIX_TIMESTAMP(rev_timestamp)'; 
-				break;
-			case 'oracle': 
-				$epoch = '((trunc(rev_timestamp) - to_date(\'19700101\',\'YYYYMMDD\')) * 86400)'; 
-				break;
-			default:
-				$epoch = 'EXTRACT(epoch FROM rev_timestamp)';
-		}
-
+		$epoch = $wgDBtype == 'mysql' ? 'UNIX_TIMESTAMP(rev_timestamp)' :
+			'EXTRACT(epoch FROM rev_timestamp)';
 		return
 			"SELECT 'Ancientpages' as type,
 					page_namespace as namespace,
@@ -56,11 +46,8 @@ class AncientPagesPage extends QueryPage {
 
 		$d = $wgLang->timeanddate( wfTimestamp( TS_MW, $result->value ), true );
 		$title = Title::makeTitle( $result->namespace, $result->title );
-		$link = $skin->linkKnown(
-			$title,
-			htmlspecialchars( $wgContLang->convert( $title->getPrefixedText() ) )
-		);
-		return wfSpecialList($link, htmlspecialchars($d) );
+		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $wgContLang->convert( $title->getPrefixedText() ) ) );
+		return wfSpecialList($link, $d);
 	}
 }
 

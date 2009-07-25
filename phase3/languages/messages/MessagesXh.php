@@ -1,13 +1,9 @@
 <?php
 /** Xhosa (isiXhosa)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
- * @author Jcwf
  * @author Jose77
  */
 
@@ -18,15 +14,15 @@ $messages = array(
 'tuesday'       => 'ULwesibini',
 'wednesday'     => 'ULwesithathu',
 'thursday'      => 'ULwesine',
-'friday'        => 'ULwesihlanu',
+'friday'        => 'u Lwesihlanu',
 'saturday'      => 'UMgqibelo',
 'january'       => 'EyoMqungu',
-'february'      => 'EyoMdumba',
-'march'         => 'EyoKwindla',
-'april'         => 'EkaTshazimpuzi',
-'june'          => 'EyeSilimela',
-'july'          => 'EyeKhala',
-'august'        => 'EyeThupha',
+'february'      => 'Eyo Mdumba',
+'march'         => 'Eyo Kwindla',
+'april'         => 'Ekatshazimpuzi',
+'june'          => 'Eyesilimela',
+'july'          => 'Eye Khala',
+'august'        => 'Eye Thupha',
 'september'     => 'Eyo Msintsi',
 'october'       => 'Eye Dwarha',
 'november'      => 'Eye Nkanga',
@@ -45,24 +41,21 @@ $messages = array(
 'december-gen'  => 'Eyo Mnga',
 'may'           => 'EkaCanzibe',
 
-'article' => 'Inqaku',
-'mypage'  => 'Inqaku yam',
-'mytalk'  => 'Inthetho yam',
+'article'        => 'Inqaku',
+'qbspecialpages' => 'Amaphepha',
+'mypage'         => 'Inqaku yam',
+'mytalk'         => 'Inthetho yam',
 
-# Cologne Blue skin
-'qbspecialpages' => 'Amaphepha Abalulekileyo',
-
-'help'             => 'Uncedo',
-'search'           => 'Khangela',
-'searchbutton'     => 'Khangela',
-'go'               => 'Hamba',
-'searcharticle'    => 'Hamba',
-'edit'             => 'Tshintsha',
-'delete'           => 'Cima',
-'protect'          => 'Khusela',
-'talkpagelinktext' => 'Inthetho',
-'talk'             => 'Ingxoxo',
-'otherlanguages'   => 'Kwezinye Ilwimi',
+'help'           => 'Uncedo',
+'search'         => 'Khangela',
+'searchbutton'   => 'Khangela',
+'go'             => 'Hamba',
+'searcharticle'  => 'Hamba',
+'edit'           => 'Tshintsha',
+'delete'         => 'Cima',
+'protect'        => 'Khusela',
+'talk'           => 'Ingxoxo',
+'otherlanguages' => 'Kwezinye Ilwimi',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents'        => 'Imisebenzi Eyenzekayo',
@@ -90,6 +83,7 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 'yourpasswordagain'  => 'Faka kwakhona igama elifihlakeleyo:',
 'remembermypassword' => 'Khumbula igama lam elifihlakeleyo kule Khompyutha',
 'createaccount'      => 'Vula I Account',
+'username'           => 'Igama lelungu:',
 'loginlanguagelabel' => 'Ulwimi: $1',
 
 # Edit pages
@@ -106,16 +100,12 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 # Preferences page
 'mypreferences'     => 'Ezithandwa ndim',
 'searchresultshead' => 'Khangela',
-'username'          => 'Igama lelungu:',
 
 # Recent changes
-'recentchanges'   => 'Utshitsho olusandokwenziwa',
-'minoreditletter' => 'nc',
+'recentchanges' => 'Utshitsho olusandokwenziwa',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Utsitsho olufana nolu',
-'recentchangeslinked-feed'    => 'Utsitsho olufana nolu',
-'recentchangeslinked-toolbox' => 'Utsitsho olufana nolu',
+'recentchangeslinked' => 'Utsitsho olufana nolu',
 
 # Upload
 'upload'          => 'Faka Ifile',
@@ -128,7 +118,6 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 
 # Special:AllPages
 'allinnamespace' => 'Amanqaku onke ($1 namespace)',
-'allpagessubmit' => 'Hamba',
 
 # Watchlist
 'watchlist'     => 'Endizibukeleyo',
@@ -143,7 +132,6 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 'contributions' => 'Imisebenzi ye lungu',
 'mycontris'     => 'Inkxaso yam',
 
-'sp-contributions-talk'   => 'Inthetho',
 'sp-contributions-submit' => 'Khangela',
 
 # Block/unblock

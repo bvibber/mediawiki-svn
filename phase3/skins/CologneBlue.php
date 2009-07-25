@@ -1,6 +1,6 @@
 <?php
 /**
- * Cologne Blue: A nicer-looking alternative to Standard.
+ * See docs/skin.txt
  *
  * @todo document
  * @file
@@ -19,36 +19,37 @@ class SkinCologneBlue extends Skin {
 	function getStylesheet() {
 		return 'common/cologneblue.css';
 	}
-
 	function getSkinName() {
-		return 'cologneblue';
+		return "cologneblue";
 	}
 
 	function doBeforeContent() {
+
+		$s = "";
 		$qb = $this->qbSetting();
 		$mainPageObj = Title::newMainPage();
 
-		$s = "\n<div id='content'>\n<div id='topbar'>" .
-		  '<table width="100%" border="0" cellspacing="0" cellpadding="8"><tr>';
+		$s .= "\n<div id='content'>\n<div id='topbar'>" .
+		  "<table width='100%' border='0' cellspacing='0' cellpadding='8'><tr>";
 
-		$s .= '<td class="top" align="left" valign="middle" nowrap="nowrap">';
-		$s .= '<a href="' . $mainPageObj->escapeLocalURL() . '">';
-		$s .= '<span id="sitetitle">' . wfMsg( 'sitetitle' ) . '</span></a>';
+		$s .= "<td class='top' align='left' valign='middle' nowrap='nowrap'>";
+		$s .= "<a href=\"" . $mainPageObj->escapeLocalURL() . "\">";
+		$s .= "<span id='sitetitle'>" . wfMsg( "sitetitle" ) . "</span></a>";
 
-		$s .= '</td><td class="top" align="right" valign="bottom" width="100%">';
+		$s .= "</td><td class='top' align='right' valign='bottom' width='100%'>";
 		$s .= $this->sysLinks();
-		$s .= '</td></tr><tr><td valign="top">';
+		$s .= "</td></tr><tr><td valign='top'>";
 
-		$s .= '<font size="-1"><span id="sitesub">';
-		$s .= htmlspecialchars( wfMsg( 'sitesubtitle' ) ) . '</span></font>';
-		$s .= '</td><td align="right">';
+		$s .= "<font size='-1'><span id='sitesub'>";
+		$s .= htmlspecialchars( wfMsg( "sitesubtitle" ) ) . "</span></font>";
+		$s .= "</td><td align='right'>" ;
 
-		$s .= '<font size="-1"><span id="langlinks">';
-		$s .= str_replace( '<br />', '', $this->otherLanguages() );
+		$s .= "<font size='-1'><span id='langlinks'>" ;
+		$s .= str_replace ( "<br />" , "" , $this->otherLanguages() );
 		$cat = $this->getCategoryLinks();
 		if( $cat ) $s .= "<br />$cat\n";
-		$s .= '<br />' . $this->pageTitleLinks();
-		$s .= '</span></font>';
+		$s .= "<br />" . $this->pageTitleLinks();
+		$s .= "</span></font>";
 
 		$s .= "</td></tr></table>\n";
 
@@ -63,44 +64,35 @@ class SkinCologneBlue extends Skin {
 		return $s;
 	}
 
-	function doAfterContent(){
-		global $wgLang;
+	function doAfterContent()
+	{
+		global $wgOut;
 
 		$s = "\n</div><br clear='all' />\n";
 
 		$s .= "\n<div id='footer'>";
-		$s .= '<table width="98%" border="0" cellspacing="0"><tr>';
+		$s .= "<table width='98%' border='0' cellspacing='0'><tr>";
 
 		$qb = $this->qbSetting();
 		if ( 1 == $qb || 3 == $qb ) { # Left
 			$s .= $this->getQuickbarCompensator();
 		}
-		$s .= '<td class="bottom" align="center" valign="top">';
+		$s .= "<td class='bottom' align='center' valign='top'>";
 
 		$s .= $this->bottomLinks();
-		$s .= $wgLang->pipeList( array(
-			"\n<br />" . $this->link(
-				Title::newMainPage(),
-				null,
-				array(),
-				array(),
-				array( 'known', 'noclasses' )
-			),
-			$this->aboutLink(),
-			$this->searchForm( wfMsg( 'qbfind' ) )
-		) );
+		$s .= "\n<br />" . $this->makeKnownLinkObj( Title::newMainPage() ) . " | "
+		  . $this->aboutLink() . " | "
+		  . $this->searchForm( wfMsg( "qbfind" ) );
 
 		$s .= "\n<br />" . $this->pageStats();
 
-		$s .= '</td>';
+		$s .= "</td>";
 		if ( 2 == $qb ) { # Right
 			$s .= $this->getQuickbarCompensator();
 		}
 		$s .= "</tr></table>\n</div>\n</div>\n";
 
-		if ( 0 != $qb ) {
-			$s .= $this->quickBar();
-		}
+		if ( 0 != $qb ) { $s .= $this->quickBar(); }
 		return $s;
 	}
 
@@ -129,76 +121,59 @@ class SkinCologneBlue extends Skin {
 	}
 
 	function sysLinks() {
-		global $wgUser, $wgLang, $wgContLang;
-		$li = $wgContLang->specialPage( 'Userlogin' );
-		$lo = $wgContLang->specialPage( 'Userlogout' );
+		global $wgUser, $wgContLang, $wgTitle;
+		$li = $wgContLang->specialPage("Userlogin");
+		$lo = $wgContLang->specialPage("Userlogout");
 
-		$rt = $this->mTitle->getPrefixedURL();
+		$rt = $wgTitle->getPrefixedURL();
 		if ( 0 == strcasecmp( urlencode( $lo ), $rt ) ) {
-			$q = array();
+			$q = "";
 		} else {
-			$q = array( 'returnto' => $rt );
+			$q = "returnto={$rt}";
 		}
 
-		$s = array(
-			$this->mainPageLink(),
-			$this->linkKnown(
-				Title::newFromText( wfMsgForContent( 'aboutpage' ) ),
-				wfMsg( 'about' )
-			),
-			$this->linkKnown(
-				Title::newFromText( wfMsgForContent( 'helppage' ) ),
-				wfMsg( 'help' )
-			),
-			$this->linkKnown(
-				Title::newFromText( wfMsgForContent( 'faqpage' ) ),
-				wfMsg( 'faq' )
-			),
-			$this->specialLink( 'specialpages' )
-		);
+		$s = "" .
+		  $this->mainPageLink()
+		  . " | " .
+		  $this->makeKnownLink( wfMsgForContent( "aboutpage" ), wfMsg( "about" ) )
+		  . " | " .
+		  $this->makeKnownLink( wfMsgForContent( "helppage" ), wfMsg( "help" ) )
+		  . " | " .
+		  $this->makeKnownLink( wfMsgForContent( "faqpage" ), wfMsg("faq") )
+		  . " | " .
+		  $this->specialLink( "specialpages" );
 
 		/* show links to different language variants */
-		if( $this->variantLinks() ) {
-			$s[] = $this->variantLinks();
-		}
-		if( $this->extensionTabLinks() ) {
-			$s[] = $this->extensionTabLinks();
-		}
+		$s .= $this->variantLinks();
+		$s .= $this->extensionTabLinks();
+		
+		$s .= " | ";
 		if ( $wgUser->isLoggedIn() ) {
-			$s[] = $this->linkKnown(
-				$lo,
-				wfMsg( 'logout' ),
-				array(),
-				$q
-			);
+			$s .=  $this->makeKnownLink( $lo, wfMsg( "logout" ), $q );
 		} else {
-			$s[] = $this->linkKnown(
-				$li,
-				wfMsg( 'login' ),
-				array(),
-				$q
-			);
+			$s .=  $this->makeKnownLink( $li, wfMsg( "login" ), $q );
 		}
 
-		return $wgLang->pipeList( $s );
+		return $s;
 	}
 
 	/**
 	 * Compute the sidebar
 	 * @access private
 	 */
-	function quickBar(){
-		global $wgOut, $wgUser, $wgEnableUploads;
+	function quickBar()
+	{
+		global $wgOut, $wgTitle, $wgUser, $wgLang, $wgContLang, $wgEnableUploads;
 
-		$tns = $this->mTitle->getNamespace();
+		$tns=$wgTitle->getNamespace();
 
 		$s = "\n<div id='quickbar'>";
 
-		$sep = '<br />';
-		$s .= $this->menuHead( 'qbfind' );
+		$sep = "<br />";
+		$s .= $this->menuHead( "qbfind" );
 		$s .= $this->searchForm();
 
-		$s .= $this->menuHead( 'qbbrowse' );
+		$s .= $this->menuHead( "qbbrowse" );
 
 		# Use the first heading from the Monobook sidebar as the "browse" section
 		$bar = $this->buildSidebar();
@@ -215,32 +190,29 @@ class SkinCologneBlue extends Skin {
 		}
 
 		if ( $wgOut->isArticle() ) {
-			$s .= $this->menuHead( 'qbedit' );
-			$s .= '<strong>' . $this->editThisPage() . '</strong>';
+			$s .= $this->menuHead( "qbedit" );
+			$s .= "<strong>" . $this->editThisPage() . "</strong>";
 
-			$s .= $sep . $this->linkKnown(
-				Title::newFromText( wfMsgForContent( 'edithelppage' ) ),
-				wfMsg( 'edithelp' )
-			);
+			$s .= $sep . $this->makeKnownLink( wfMsgForContent( "edithelppage" ), wfMsg( "edithelp" ) );
 
 			if( $wgUser->isLoggedIn() ) {
 				$s .= $sep . $this->moveThisPage();
 			}
-			if ( $wgUser->isAllowed( 'delete' ) ) {
+			if ( $wgUser->isAllowed('delete') ) {
 				$dtp = $this->deleteThisPage();
-				if ( '' != $dtp ) {
+				if ( "" != $dtp ) {
 					$s .= $sep . $dtp;
 				}
 			}
-			if ( $wgUser->isAllowed( 'protect' ) ) {
+			if ( $wgUser->isAllowed('protect') ) {
 				$ptp = $this->protectThisPage();
-				if ( '' != $ptp ) {
+				if ( "" != $ptp ) {
 					$s .= $sep . $ptp;
 				}
 			}
 			$s .= $sep;
 
-			$s .= $this->menuHead( 'qbpageoptions' );
+			$s .= $this->menuHead( "qbpageoptions" );
 			$s .= $this->talkLink()
 			  . $sep . $this->commentLink()
 			  . $sep . $this->printableLink();
@@ -250,14 +222,14 @@ class SkinCologneBlue extends Skin {
 
 			$s .= $sep;
 
-			$s .= $this->menuHead( 'qbpageinfo' )
+			$s .= $this->menuHead("qbpageinfo")
 			  . $this->historyLink()
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
 			if( $tns == NS_USER || $tns == NS_USER_TALK ) {
-				$id = User::idFromName( $this->mTitle->getText() );
-				if( $id != 0 ) {
+				$id=User::idFromName($wgTitle->getText());
+				if ($id != 0) {
 					$s .= $sep . $this->userContribsLink();
 					if( $this->showEmailUser( $id ) ) {
 						$s .= $sep . $this->emailUserLink();
@@ -267,94 +239,68 @@ class SkinCologneBlue extends Skin {
 			$s .= $sep;
 		}
 
-		$s .= $this->menuHead( 'qbmyoptions' );
+		$s .= $this->menuHead( "qbmyoptions" );
 		if ( $wgUser->isLoggedIn() ) {
 			$name = $wgUser->getName();
-			$tl = $this->link(
-				$wgUser->getTalkPage(),
-				wfMsg( 'mytalk' ),
-				array(),
-				array(),
-				array( 'known', 'noclasses' )
-			);
+			$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
+				wfMsg( 'mytalk' ) );
 			if ( $wgUser->getNewtalk() ) {
 				$tl .= " *";
 			}
 
-			$s .= $this->link(
-				$wgUser->getUserPage(),
-				wfMsg( 'mypage' ),
-				array(),
-				array(),
-				array( 'known', 'noclasses' )
-			  )
+			$s .= $this->makeKnownLinkObj( $wgUser->getUserPage(),
+				wfMsg( "mypage" ) )
 			  . $sep . $tl
-			  . $sep . $this->specialLink( 'watchlist' )
-			  . $sep . $this->link(
-				SpecialPage::getSafeTitleFor( 'Contributions', $wgUser->getName() ),
-				wfMsg( 'mycontris' ),
-				array(),
-				array(),
-				array( 'known', 'noclasses' )
-			  )
-			  . $sep . $this->specialLink( 'preferences' )
-			  . $sep . $this->specialLink( 'userlogout' );
+			  . $sep . $this->specialLink( "watchlist" )
+			  . $sep . $this->makeKnownLinkObj( SpecialPage::getSafeTitleFor( "Contributions", $wgUser->getName() ),
+			  	wfMsg( "mycontris" ) )
+		  	  . $sep . $this->specialLink( "preferences" )
+		  	  . $sep . $this->specialLink( "userlogout" );
 		} else {
-			$s .= $this->specialLink( 'userlogin' );
+			$s .= $this->specialLink( "userlogin" );
 		}
 
-		$s .= $this->menuHead( 'qbspecialpages' )
-		  . $this->specialLink( 'newpages' )
-		  . $sep . $this->specialLink( 'listfiles' )
-		  . $sep . $this->specialLink( 'statistics' );
+		$s .= $this->menuHead( "qbspecialpages" )
+		  . $this->specialLink( "newpages" )
+		  . $sep . $this->specialLink( "imagelist" )
+		  . $sep . $this->specialLink( "statistics" );
 		if ( $wgUser->isLoggedIn() && $wgEnableUploads ) {
-			$s .= $sep . $this->specialLink( 'upload' );
+			$s .= $sep . $this->specialLink( "upload" );
 		}
-
 		global $wgSiteSupportPage;
-
-		if( $wgSiteSupportPage ) {
-			$s .= $sep . '<a href="' . htmlspecialchars( $wgSiteSupportPage ) . '" class="internal">'
-			      . wfMsg( 'sitesupport' ) . '</a>';
+		if( $wgSiteSupportPage) {
+			$s .= $sep."<a href=\"".htmlspecialchars($wgSiteSupportPage)."\" class =\"internal\">"
+			      .wfMsg( "sitesupport" )."</a>";
 		}
 
-		$s .= $sep . $this->link(
+		$s .= $sep . $this->makeKnownLinkObj(
 			SpecialPage::getTitleFor( 'Specialpages' ),
-			wfMsg( 'moredotdotdot' ),
-			array(),
-			array(),
-			array( 'known', 'noclasses' )
-		);
+			wfMsg( 'moredotdotdot' ) );
 
 		$s .= $sep . "\n</div>\n";
 		return $s;
 	}
 
-	function menuHead( $key ){
+	function menuHead( $key )
+	{
 		$s = "\n<h6>" . wfMsg( $key ) . "</h6>";
 		return $s;
 	}
 
-	function searchForm( $label = '' ){
-		global $wgRequest, $wgUseTwoButtonsSearchForm;
+	function searchForm( $label = "" )
+	{
+		global $wgRequest;
 
 		$search = $wgRequest->getText( 'search' );
 		$action = $this->escapeSearchLink();
 		$s = "<form id=\"searchform{$this->searchboxes}\" method=\"get\" class=\"inline\" action=\"$action\">";
-		if( '' != $label ) {
-			$s .= "{$label}: ";
-		}
+		if ( "" != $label ) { $s .= "{$label}: "; }
 
 		$s .= "<input type='text' id=\"searchInput{$this->searchboxes}\" class=\"mw-searchInput\" name=\"search\" size=\"14\" value=\""
-		  . htmlspecialchars( substr( $search, 0, 256 ) ) . "\" /><br />"
-		  . "<input type='submit' id=\"searchGoButton{$this->searchboxes}\" class=\"searchButton\" name=\"go\" value=\"" . htmlspecialchars( wfMsg( 'searcharticle' ) ) . "\" />";
-
-		if( $wgUseTwoButtonsSearchForm )
-			$s .= "<input type='submit' id=\"mw-searchButton{$this->searchboxes}\" class=\"searchButton\" name=\"fulltext\" value=\"" . htmlspecialchars( wfMsg( 'search' ) ) . "\" />\n";
-		else
-			$s .= '<div><a href="' . $action . '" rel="search">' . wfMsg( 'powersearch-legend' ) . "</a></div>\n";
-
-		$s .= '</form>';
+		  . htmlspecialchars(substr($search,0,256)) . "\" /><br />"
+		  . "<input type='submit' id=\"searchGoButton{$this->searchboxes}\" class=\"searchButton\" name=\"go\" value=\"" . htmlspecialchars( wfMsg( "searcharticle" ) ) . "\" />"
+		  . "<input type='submit' id=\"mw-searchButton{$this->searchboxes}\" class=\"searchButton\" name=\"fulltext\" value=\"" . htmlspecialchars( wfMsg( "search" ) ) . "\" />\n"
+		  . '<a href="$action" rel="search">' . wfMsg ('powersearch-legend') . '</a></form>';
 
 		// Ensure unique id's for search boxes made after the first
 		$this->searchboxes = $this->searchboxes == '' ? 2 : $this->searchboxes + 1;
@@ -362,3 +308,5 @@ class SkinCologneBlue extends Skin {
 		return $s;
 	}
 }
+
+

@@ -1,9 +1,6 @@
 <?php
 /** Bislama (Bislama)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -60,15 +57,13 @@ $messages = array(
 'oct'           => 'Okt',
 'dec'           => 'Des',
 
-'mypage' => 'Pej blong mi',
-'mytalk' => 'Tingting blong mi',
-'and'    => '&#32;mo',
-
-# Cologne Blue skin
 'qbedit'         => 'Jenisim hem',
 'qbpageoptions'  => 'Pej ia',
 'qbmyoptions'    => 'Ol pej blong mi',
 'qbspecialpages' => 'Ol spesel pej',
+'mypage'         => 'Pej blong mi',
+'mytalk'         => 'Tingting blong mi',
+'and'            => '&#32;mo',
 
 'edit'             => 'Jenisim hem',
 'newpage'          => 'Mekem niu pej',
@@ -111,8 +106,6 @@ $messages = array(
 
 # Contributions
 'year' => 'Yia:',
-
-'sp-contributions-talk' => 'Toktok',
 
 # Block/unblock
 'proxyblocksuccess' => 'Finis.',

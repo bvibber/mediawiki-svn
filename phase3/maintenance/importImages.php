@@ -11,7 +11,7 @@
 
 $optionsWithArgs = array( 'extensions', 'comment', 'comment-file', 'comment-ext', 'user', 'license' );
 require_once( 'commandLine.inc' );
-require_once( 'importImages.inc' );
+require_once( 'importImages.inc.php' );
 $added = $skipped = $overwritten = 0;
 
 echo( "Import Images\n\n" );
@@ -20,13 +20,6 @@ echo( "Import Images\n\n" );
 if( count( $args ) > 0 ) {
 
 	$dir = $args[0];
-
-	# Check Protection
-	if (isset($options['protect']) && isset($options['unprotect']))
-			die("Cannot specify both protect and unprotect.  Only 1 is allowed.\n");
-
-	if ($options['protect'] == 1)
-			die("You must specify a protection option.\n");
 
 	# Prepare the list of allowed extensions
 	global $wgFileExtensions;
@@ -121,25 +114,6 @@ if( count( $args ) > 0 ) {
 					continue;
 				}
 			}
-			
-			$doProtect = false;
-			$restrictions = array();
-			
-			global $wgRestrictionLevels;
-			
-			$protectLevel = isset($options['protect']) ? $options['protect'] : null;
-			
-			if ( $protectLevel && in_array( $protectLevel, $wgRestrictionLevels ) ) {
-					$restrictions['move'] = $protectLevel;
-					$restrictions['edit'] = $protectLevel;
-					$doProtect = true;
-			}
-			if (isset($options['unprotect'])) {
-					$restrictions['move'] = '';
-					$restrictions['edit'] = '';
-					$doProtect = true;
-			}
-
 
 			$$svar++;
 			if ( isset( $options['dry'] ) ) {
@@ -147,21 +121,6 @@ if( count( $args ) > 0 ) {
 			} else if ( $image->recordUpload( $archive->value, $commentText, $license ) ) {
 				# We're done!
 				echo( "done.\n" );
-				if ($doProtect) {
-						# Protect the file
-						$article = new Article( $title );
-						echo "\nWaiting for slaves...\n";
-						// Wait for slaves.
-						sleep(2.0);
-						wfWaitForSlaves( 1.0 );
-						
-						echo( "\nSetting image restrictions ... " );
-						if ( $article->updateRestrictions($restrictions) )
-								echo( "done.\n" );
-						else
-								echo( "failed.\n" );
-				}
-
 			} else {
 				echo( "failed.\n" );
 			}
@@ -184,7 +143,7 @@ if( count( $args ) > 0 ) {
 	showUsage();
 }
 
-exit(0);
+exit();
 
 function showUsage( $reason = false ) {
 	if( $reason ) {
@@ -207,9 +166,7 @@ Options:
 			but the extension <ext>.
 --license=<code>  	Use an optional license template
 --dry			Dry run, don't import anything
---protect=<protect>     Specify the protect value (autoconfirmed,sysop)
---unprotect             Unprotects all uploaded images
 
 END;
-	exit(1);
+	exit();
 }

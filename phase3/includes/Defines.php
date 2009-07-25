@@ -18,7 +18,6 @@ define( 'DBO_IGNORE', 4 );
 define( 'DBO_TRX', 8 );
 define( 'DBO_DEFAULT', 16 );
 define( 'DBO_PERSISTENT', 32 );
-define( 'DBO_SYSDBA', 64 ); //for oracle maintenance
 /**#@-*/
 
 # Valid database indexes
@@ -228,4 +227,3 @@ define( 'APCOND_INGROUPS', 4 );
 define( 'APCOND_ISIP', 5 );
 define( 'APCOND_IPINRANGE', 6 );
 define( 'APCOND_AGE_FROM_EDIT', 7 );
-define( 'APCOND_BLOCKED', 8 );

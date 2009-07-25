@@ -30,14 +30,13 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * This class contains a list of pages that the client has requested.
- * Initially, when the client passes in titles=, pageids=, or revisions=
- * parameter, an instance of the ApiPageSet class will normalize titles,
- * determine if the pages/revisions exist, and prefetch any additional page
- * data requested.
+ * Initially, when the client passes in titles=, pageids=, or revisions= parameter,
+ * an instance of the ApiPageSet class will normalize titles,
+ * determine if the pages/revisions exist, and prefetch any additional data page data requested.
  *
- * When a generator is used, the result of the generator will become the input
- * for the second instance of this class, and all subsequent actions will use
- * the second instance for all their work.
+ * When generator is used, the result of the generator will become the input for the
+ * second instance of this class, and all subsequent actions will go use the second instance
+ * for all their work.
  *
  * @ingroup API
  */
@@ -53,11 +52,6 @@ class ApiPageSet extends ApiQueryBase {
 
 	private $mRequestedPageFields;
 
-	/**
-	 * Constructor
-	 * @param $query ApiQuery
-	 * @param $resolveRedirects bool Whether redirects should be resolved
-	 */
 	public function __construct($query, $resolveRedirects = false) {
 		parent :: __construct($query, 'query');
 
@@ -81,38 +75,20 @@ class ApiPageSet extends ApiQueryBase {
 		$this->mFakePageId = -1;
 	}
 
-	/**
-	 * Check whether this PageSet is resolving redirects
-	 * @return bool
-	 */
 	public function isResolvingRedirects() {
 		return $this->mResolveRedirects;
 	}
 
-	/**
-	 * Request an additional field from the page table. Must be called
-	 * before execute()
-	 * @param $fieldName string Field name
-	 */
 	public function requestField($fieldName) {
 		$this->mRequestedPageFields[$fieldName] = null;
 	}
 
-	/**
-	 * Get the value of a custom field previously requested through
-	 * requestField()
-	 * @param $fieldName string Field name
-	 * @return mixed Field value
-	 */
 	public function getCustomField($fieldName) {
 		return $this->mRequestedPageFields[$fieldName];
 	}
 
 	/**
-	 * Get the fields that have to be queried from the page table:
-	 * the ones requested through requestField() and a few basic ones
-	 * we always need
-	 * @return array of field names
+	 * Get fields that modules have requested from the page table
 	 */
 	public function getPageTableFields() {
 		// Ensure we get minimum required fields
@@ -123,11 +99,11 @@ class ApiPageSet extends ApiQueryBase {
 			'page_id' => null,
 		);
 
-		if ($this->mResolveRedirects)
-			$pageFlds['page_is_redirect'] = null;
-
 		// only store non-default fields
 		$this->mRequestedPageFields = array_diff_key($this->mRequestedPageFields, $pageFlds);
+
+		if ($this->mResolveRedirects)
+			$pageFlds['page_is_redirect'] = null;
 
 		$pageFlds = array_merge($pageFlds, $this->mRequestedPageFields);
 		return array_keys($pageFlds);
@@ -137,7 +113,6 @@ class ApiPageSet extends ApiQueryBase {
 	 * Returns an array [ns][dbkey] => page_id for all requested titles.
 	 * page_id is a unique negative number in case title was not found.
 	 * Invalid titles will also have negative page IDs and will be in namespace 0
-	 * @return array
 	 */
 	public function getAllTitlesByNamespace() {
 		return $this->mAllPages;
@@ -153,7 +128,6 @@ class ApiPageSet extends ApiQueryBase {
 
 	/**
 	 * Returns the number of unique pages (not revisions) in the set.
-	 * @return int
 	 */
 	public function getTitleCount() {
 		return count($this->mTitles);
@@ -169,7 +143,6 @@ class ApiPageSet extends ApiQueryBase {
 
 	/**
 	 * Returns the number of found unique pages (not revisions) in the set.
-	 * @return int
 	 */
 	public function getGoodTitleCount() {
 		return count($this->mGoodTitles);
@@ -202,8 +175,7 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Get a list of redirect resolutions - maps a title to its redirect
-	 * target.
+	 * Get a list of redirects when doing redirect resolution
 	 * @return array prefixed_title (string) => prefixed_title (string)
 	 */
 	public function getRedirectTitles() {
@@ -211,8 +183,8 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Get a list of title normalizations - maps a title to its normalized
-	 * version.
+	 * Get a list of title normalizations - maps the title given
+	 * with its normalized version.
 	 * @return array raw_prefixed_title (string) => prefixed_title (string)
 	 */
 	public function getNormalizedTitles() {
@@ -220,8 +192,8 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Get a list of interwiki titles - maps a title to its interwiki
-	 * prefix.
+	 * Get a list of interwiki titles - maps the title given
+	 * with to the interwiki prefix.
 	 * @return array raw_prefixed_title (string) => interwiki_prefix (string)
 	 */
 	public function getInterwikiTitles() {
@@ -229,7 +201,7 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Get the list of revision IDs (requested with the revids= parameter)
+	 * Get the list of revision IDs (requested with revids= parameter)
 	 * @return array revID (int) => pageID (int)
 	 */
 	public function getRevisionIDs() {
@@ -245,15 +217,14 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Returns the number of revisions (requested with revids= parameter)\
-	 * @return int
+	 * Returns the number of revisions (requested with revids= parameter)
 	 */
 	public function getRevisionCount() {
 		return count($this->getRevisionIDs());
 	}
 
 	/**
-	 * Populate the PageSet from the request parameters.
+	 * Populate from the request parameters
 	 */
 	public function execute() {
 		$this->profileIn();
@@ -296,8 +267,7 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Populate this PageSet from a list of Titles
-	 * @param $titles array of Title objects
+	 * Initialize PageSet from a list of Titles
 	 */
 	public function populateFromTitles($titles) {
 		$this->profileIn();
@@ -306,8 +276,7 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Populate this PageSet from a list of page IDs
-	 * @param $pageIDs array of page IDs
+	 * Initialize PageSet from a list of Page IDs
 	 */
 	public function populateFromPageIDs($pageIDs) {
 		$this->profileIn();
@@ -316,9 +285,7 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Populate this PageSet from a rowset returned from the database
-	 * @param $db Database object
-	 * @param $queryResult Query result object
+	 * Initialize PageSet from a rowset returned from the database
 	 */
 	public function populateFromQueryResult($db, $queryResult) {
 		$this->profileIn();
@@ -327,18 +294,17 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
-	 * Populate this PageSet from a list of revision IDs
-	 * @param $revIDs array of revision IDs
+	 * Initialize PageSet from a list of Revision IDs
 	 */
 	public function populateFromRevisionIDs($revIDs) {
 		$this->profileIn();
+		$revIDs = array_map('intval', $revIDs); // paranoia
 		$this->initFromRevIDs($revIDs);
 		$this->profileOut();
 	}
 
 	/**
 	 * Extract all requested fields from the row received from the database
-	 * @param $row Result row
 	 */
 	public function processDbRow($row) {
 
@@ -359,9 +325,6 @@ class ApiPageSet extends ApiQueryBase {
 			$fieldValues[$pageId] = $row-> $fieldName;
 	}
 
-	/**
-	 * Resolve redirects, if applicable
-	 */
 	public function finishPageSetGeneration() {
 		$this->profileIn();
 		$this->resolvePendingRedirects();
@@ -378,11 +341,9 @@ class ApiPageSet extends ApiQueryBase {
 	 *
 	 * Additionally, when resolving redirects:
 	 * #3 If no more redirects left, stop.
-	 * #4 For each redirect, get its target from the `redirect` table.
+	 * #4 For each redirect, get its links from `pagelinks` table.
 	 * #5 Substitute the original LinkBatch object with the new list
 	 * #6 Repeat from step #1
-	 *
-	 * @param $titles array of Title objects or strings
 	 */
 	private function initFromTitles($titles) {
 
@@ -396,8 +357,7 @@ class ApiPageSet extends ApiQueryBase {
 
 		// Get pageIDs data from the `page` table
 		$this->profileDBIn();
-		$res = $db->select('page', $this->getPageTableFields(), $set,
-					__METHOD__);
+		$res = $db->select('page', $this->getPageTableFields(), $set, __METHOD__);
 		$this->profileDBOut();
 
 		// Hack: get the ns:titles stored in array(ns => array(titles)) format
@@ -407,10 +367,6 @@ class ApiPageSet extends ApiQueryBase {
 		$this->resolvePendingRedirects();
 	}
 
-	/**
-	 * Does the same as initFromTitles(), but is based on page IDs instead
-	 * @param $pageids array of page IDs
-	 */
 	private function initFromPageIds($pageids) {
 		if(!count($pageids))
 			return;
@@ -419,12 +375,12 @@ class ApiPageSet extends ApiQueryBase {
 		$set = array (
 			'page_id' => $pageids
 		);
+
 		$db = $this->getDB();
 
 		// Get pageIDs data from the `page` table
 		$this->profileDBIn();
-		$res = $db->select('page', $this->getPageTableFields(), $set,
-					__METHOD__);
+		$res = $db->select('page', $this->getPageTableFields(), $set, __METHOD__);
 		$this->profileDBOut();
 
 		$remaining = array_flip($pageids);
@@ -439,11 +395,12 @@ class ApiPageSet extends ApiQueryBase {
 	 * and for each row create and store title object and save any extra fields requested.
 	 * @param $db Database
 	 * @param $res DB Query result
-	 * @param $remaining array of either pageID or ns/title elements (optional).
+	 * @param $remaining Array of either pageID or ns/title elements (optional).
 	 *        If given, any missing items will go to $mMissingPageIDs and $mMissingTitles
 	 * @param $processTitles bool Must be provided together with $remaining.
 	 *        If true, treat $remaining as an array of [ns][title]
 	 *        If false, treat it as an array of [pageIDs]
+	 * @return Array of redirect IDs (only when resolving redirects)
 	 */
 	private function initFromQueryResult($db, $res, &$remaining = null, $processTitles = null) {
 		if (!is_null($remaining) && is_null($processTitles))
@@ -491,36 +448,30 @@ class ApiPageSet extends ApiQueryBase {
 		}
 	}
 
-	/**
-	 * Does the same as initFromTitles(), but is based on revision IDs
-	 * instead
-	 * @param $revids array of revision IDs
-	 */
 	private function initFromRevIDs($revids) {
 
 		if(!count($revids))
 			return;
 
-		$revids = array_map('intval', $revids); // paranoia
 		$db = $this->getDB();
 		$pageids = array();
 		$remaining = array_flip($revids);
 
-		$tables = array('revision', 'page');
-		$fields = array('rev_id', 'rev_page');
-		$where = array('rev_id' => $revids, 'rev_page = page_id');
+		$tables = array('revision','page');
+		$fields = array('rev_id','rev_page');
+		$where = array('rev_deleted' => 0, 'rev_id' => $revids,'rev_page = page_id');
 
 		// Get pageIDs data from the `page` table
 		$this->profileDBIn();
-		$res = $db->select($tables, $fields, $where,  __METHOD__);
-		while ($row = $db->fetchObject($res)) {
+		$res = $db->select( $tables, $fields, $where,  __METHOD__ );
+		while ( $row = $db->fetchObject( $res ) ) {
 			$revid = intval($row->rev_id);
 			$pageid = intval($row->rev_page);
 			$this->mGoodRevIDs[$revid] = $pageid;
 			$pageids[$pageid] = '';
 			unset($remaining[$revid]);
 		}
-		$db->freeResult($res);
+		$db->freeResult( $res );
 		$this->profileDBOut();
 
 		$this->mMissingRevIDs = array_keys($remaining);
@@ -529,11 +480,6 @@ class ApiPageSet extends ApiQueryBase {
 		$this->initFromPageIds(array_keys($pageids));
 	}
 
-	/**
-	 * Resolve any redirects in the result if redirect resolution was
-	 * requested. This function is called repeatedly until all redirects
-	 * have been resolved.
-	 */
 	private function resolvePendingRedirects() {
 
 		if($this->mResolveRedirects) {
@@ -552,7 +498,7 @@ class ApiPageSet extends ApiQueryBase {
 					break;
 
 				$set = $linkBatch->constructSet('page', $db);
-				if($set === false)
+				if(false === $set)
 					break;
 
 				// Get pageIDs data from the `page` table
@@ -566,13 +512,6 @@ class ApiPageSet extends ApiQueryBase {
 		}
 	}
 
-	/**
-	 * Get the targets of the pending redirects from the database
-	 *
-	 * Also creates entries in the redirect table for redirects that don't
-	 * have one.
-	 * @return LinkBatch
-	 */
 	private function getRedirectTargets() {
 		$lb = new LinkBatch();
 		$db = $this->getDB();
@@ -623,8 +562,7 @@ class ApiPageSet extends ApiQueryBase {
 	 * This method validates access rights for the title,
 	 * and appends normalization values to the output.
 	 *
-	 * @param $titles array of Title objects or strings
-	 * @return LinkBatch
+	 * @return LinkBatch of title objects.
 	 */
 	private function processTitlesArray($titles) {
 
@@ -654,11 +592,9 @@ class ApiPageSet extends ApiQueryBase {
 					$linkBatch->addObj($titleObj);
 			}
 
-			// Make sure we remember the original title that was
-			// given to us. This way the caller can correlate new
-			// titles with the originally requested when e.g. the
-			// namespace is localized or the capitalization is
-			// different
+			// Make sure we remember the original title that was given to us
+			// This way the caller can correlate new titles with the originally requested,
+			// i.e. namespace is localized or capitalization is different
 			if (is_string($title) && $title !== $titleObj->getPrefixedText()) {
 				$this->mNormalizedTitles[$title] = $titleObj->getPrefixedText();
 			}

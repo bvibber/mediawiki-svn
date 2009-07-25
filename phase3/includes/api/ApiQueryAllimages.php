@@ -97,7 +97,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 
 		$res = $this->select(__METHOD__);
 
-		$titles = array();
+		$data = array ();
 		$count = 0;
 		$result = $this->getResult();
 		while ($row = $db->fetchObject($res)) {
@@ -110,23 +110,20 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 
 			if (is_null($resultPageSet)) {
 				$file = $repo->newFileFromRow( $row );
-				$info = array_merge(array('name' => $row->img_name),
+				$data[] = array_merge(array('name' => $row->img_name),
 					ApiQueryImageInfo::getInfo($file, $prop, $result));
-				$fit = $result->addValue(array('query', $this->getModuleName()), null, $info);
-				if( !$fit ) {
-					$this->setContinueEnumParameter('from', $this->keyToTitle($row->img_name));
-					break;
-				}
 			} else {
-				$titles[] = Title::makeTitle(NS_IMAGE, $row->img_name);
+				$data[] = Title::makeTitle(NS_FILE, $row->img_name);
 			}
 		}
 		$db->freeResult($res);
 
 		if (is_null($resultPageSet)) {
-			$result->setIndexedTagName_internal(array('query', $this->getModuleName()), 'img');
+			$result = $this->getResult();
+			$result->setIndexedTagName($data, 'img');
+			$result->addValue('query', $this->getModuleName(), $data);
 		} else {
-			$resultPageSet->populateFromTitles($titles);
+			$resultPageSet->populateFromTitles( $data );
 		}
 	}
 

@@ -36,14 +36,6 @@ class SiteConfiguration {
 	 * Array of domains that are local and can be handled by the same server
 	 */
 	public $localVHosts = array();
-	
-	/**
-	 * Optional callback to load full configuration data.
-	 */
-	public $fullLoadCallback = null;
-	
-	/** Whether or not all data has been loaded */
-	public $fullLoadDone = false;
 
 	/**
 	 * A callback function that returns an array with the following keys (all
@@ -395,12 +387,5 @@ class SiteConfiguration {
 
 		return $out;
 	}
-	
-	public function loadFullData() {
-		if ($this->fullLoadCallback && !$this->fullLoadDone) {
-			call_user_func( $this->fullLoadCallback, $this );
-			$this->fullLoadDone = true;
-		}
-	}
 }
-} // End of multiple inclusion guard
+}

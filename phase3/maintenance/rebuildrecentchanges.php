@@ -19,6 +19,6 @@ $wgDBpassword		= $wgDBadminpassword;
 rebuildRecentChangesTable();
 
 print "Done.\n";
-exit(0);
+exit();
 
 

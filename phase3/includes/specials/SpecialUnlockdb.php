@@ -98,9 +98,10 @@ END
 
 	function showSuccess() {
 		global $wgOut;
+		global $ip;
 
 		$wgOut->setPagetitle( wfMsg( "unlockdb" ) );
 		$wgOut->setSubtitle( wfMsg( "unlockdbsuccesssub" ) );
-		$wgOut->addWikiMsg( "unlockdbsuccesstext" );
+		$wgOut->addWikiMsg( "unlockdbsuccesstext", $ip );
 	}
 }

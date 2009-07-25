@@ -1,9 +1,6 @@
 <?php
 /** Maori (Māori)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -32,12 +29,10 @@ $messages = array(
 'november'  => 'Whiringa-ā-rangi',
 'december'  => 'Hakihea',
 
-'cancel'     => 'Whakakore',
-'mytalk'     => 'Karere mōku',
-'navigation' => 'Huarahi',
-
-# Cologne Blue skin
+'cancel'         => 'Whakakore',
 'qbspecialpages' => 'Whārangi motuhake',
+'mytalk'         => 'Karere mōku',
+'navigation'     => 'Huarahi',
 
 'help'             => 'Whakamārama',
 'search'           => 'Rapua',
@@ -89,9 +84,7 @@ $messages = array(
 'show'          => 'Whakaaturia',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Rerekētanga pū tahi',
-'recentchangeslinked-feed'    => 'Rerekētanga pū tahi',
-'recentchangeslinked-toolbox' => 'Rerekētanga pū tahi',
+'recentchangeslinked' => 'Rerekētanga pū tahi',
 
 # Upload
 'upload' => 'Tuku atu',

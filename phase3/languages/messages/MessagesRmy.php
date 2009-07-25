@@ -1,9 +1,6 @@
 <?php
 /** Romani (Romani)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -14,22 +11,24 @@
 $fallback = 'ro';
 
 $namespaceNames = array(
-	NS_MEDIA            => 'Mediya',
-	NS_SPECIAL          => 'Uzalutno',
-	NS_TALK             => 'Vakyarimata',
-	NS_USER             => 'Jeno',
-	NS_USER_TALK        => 'Jeno_vakyarimata',
-	NS_PROJECT_TALK     => '{{grammar:genitive-pl|$1}}_vakyarimata',
-	NS_FILE             => 'Chitro',
-	NS_FILE_TALK        => 'Chitro_vakyarimata',
-	NS_MEDIAWIKI        => 'MediyaViki',
-	NS_MEDIAWIKI_TALK   => 'MediyaViki_vakyarimata',
-	NS_TEMPLATE         => 'Sikavno',
-	NS_TEMPLATE_TALK    => 'Sikavno_vakyarimata',
-	NS_HELP             => 'Zhutipen',
-	NS_HELP_TALK        => 'Zhutipen_vakyarimata',
-	NS_CATEGORY         => 'Shopni',
-	NS_CATEGORY_TALK    => 'Shopni_vakyarimata',
+	NS_MEDIA          => 'Mediya',
+	NS_SPECIAL        => 'Uzalutno',
+	NS_MAIN           => '',
+	NS_TALK           => 'Vakyarimata',
+	NS_USER           => 'Jeno',
+	NS_USER_TALK      => 'Jeno_vakyarimata',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '{{grammar:genitive-pl|$1}}_vakyarimata',
+	NS_FILE           => 'Chitro',
+	NS_FILE_TALK      => 'Chitro_vakyarimata',
+	NS_MEDIAWIKI      => 'MediyaViki',
+	NS_MEDIAWIKI_TALK => 'MediyaViki_vakyarimata',
+	NS_TEMPLATE       => 'Sikavno',
+	NS_TEMPLATE_TALK  => 'Sikavno_vakyarimata',
+	NS_HELP           => 'Zhutipen',
+	NS_HELP_TALK      => 'Zhutipen_vakyarimata',
+	NS_CATEGORY       => 'Shopni',
+	NS_CATEGORY_TALK  => 'Shopni_vakyarimata'
 );
 
 $messages = array(
@@ -73,19 +72,17 @@ $messages = array(
 # Categories related messages
 'subcategories' => 'Telekategoriye',
 
-'about'      => 'Andar',
-'article'    => 'Lekh',
-'newwindow'  => '(inklel aver filiyastra)',
-'cancel'     => 'Mekh la',
-'mypage'     => 'Miri patrin',
-'mytalk'     => 'Mire vakyarimata',
-'navigation' => 'Phiripen',
-'and'        => '&#32;thai',
-
-# Cologne Blue skin
+'about'          => 'Andar',
+'article'        => 'Lekh',
+'newwindow'      => '(inklel aver filiyastra)',
+'cancel'         => 'Mekh la',
 'qbedit'         => 'Editisar',
 'qbpageinfo'     => 'Patrinyake janglimata',
 'qbspecialpages' => 'Uzalutne patrya',
+'mypage'         => 'Miri patrin',
+'mytalk'         => 'Mire vakyarimata',
+'navigation'     => 'Phiripen',
+'and'            => '&#32;thai',
 
 'errorpagetitle'   => 'Dosh',
 'returnto'         => 'Ja palpale kai $1.',
@@ -115,7 +112,7 @@ $messages = array(
 'userpage'         => 'Dikh i jeneski patrin',
 'viewtalkpage'     => 'Dikh i diskucia',
 'otherlanguages'   => 'Avre ćhibande',
-'lastmodifiedat'   => 'O palutno paruvipen $2, $1.',
+'lastmodifiedat'   => 'O palutno paruvipen $2, $1.', # $1 date, $2 time
 'viewcount'        => 'Kadaya patrin dikhlilyas {{PLURAL:$1|one time|$1var}}.',
 'jumpto'           => 'Ja kai:',
 'jumptonavigation' => 'phiripen',
@@ -166,10 +163,12 @@ $messages = array(
 'viewsource'           => 'Dikh i sursa',
 
 # Login and logout pages
+'logouttitle'                => 'San avri akana',
 'logouttext'                 => 'Akana san avryal i {{SITENAME}}. Shai te labyares {{SITENAME}} sar ekh bijanglo jeno vai shai te prinjares tut palem sar o jeno le kadale navesa vai le aver navesa.',
 'welcomecreation'            => '== Mishto avilyan, $1! ==
 
 Akana si tuke ekh akont. Te na bistares te paruves, kana trebul tuke, tire kamimata kai {{SITENAME}}.',
+'loginpagetitle'             => 'Jenesko prinjaripen',
 'yourname'                   => 'Tiro anav',
 'yourpassword'               => 'O nakhavipnasko lav',
 'yourpasswordagain'          => 'O nakhavipnasko lav de nevo',
@@ -185,6 +184,11 @@ Akana si tuke ekh akont. Te na bistares te paruves, kana trebul tuke, tire kamim
 'gotaccountlink'             => 'De andre',
 'createaccountmail'          => 'palal o e-mail',
 'badretype'                  => 'Le nakhavipnaske lava so lekhavdyan nai myazutne.',
+'youremail'                  => 'Emailesko adress (kana kames)*',
+'yourrealname'               => 'Tiro chacho anav*',
+'yourlanguage'               => 'Ćhib:',
+'yournick'                   => 'I xarni versyunya, le semnaturenge',
+'badsig'                     => 'Bilachhi semnatura; dikh le tagurya HTML.',
 'loginerror'                 => 'Prinjaripnaski dosh',
 'nocookiesnew'               => "O tiro akont sas kerdo, pale tu nai prinjardo/i. {{SITENAME}} labyarel ''cookies'' te astarel le manusha prinjarde. O tiro browser na astarel le cookies. Si mishto te das les drom te astarel le ''cookies'' thai, palal kodya, te zumaves vi ekh var, labyarindoi o nav thai o nakhavipnaso lav.",
 'nocookieslogin'             => "{{SITENAME}} labyarel ''cookies'' te prinjaren le manusha so aven kathe. O tiro browser chi astarel len. Si mishto te das les drom te astarel le ''cookies'' thai, palal kodya, te zumaves vi ekh var.",
@@ -246,6 +250,7 @@ Kana avilyan kathe doshatar, ja palpale.',
 'last'             => 'purani',
 'histlegend'       => 'Xalyaripen: (akanutni) = ververimata mamui i akanutni versiya,
 (purani) = ververimata mamui i puraneder versiya, T = tikno editisaripen',
+'deletedrev'       => '[khoslo]',
 'histfirst'        => 'O mai purano',
 'histlast'         => 'O mai nevo',
 
@@ -256,8 +261,8 @@ Kana avilyan kathe doshatar, ja palpale.',
 'compareselectedversions' => 'Dikh ververimata mashkar alosarde versiye',
 
 # Search results
-'prevn'             => 'mai neve {{PLURAL:$1|$1}}',
-'nextn'             => 'mai purane {{PLURAL:$1|$1}}',
+'prevn'             => 'mai neve $1',
+'nextn'             => 'mai purane $1',
 'viewprevnext'      => 'Dikh ($1) ($2) ($3).',
 'searchhelp-url'    => 'Help:Zhutipen',
 'showingresults'    => 'Tele si <b>$1</b> rezultaturya shirdindoi le ginestar <b>$2</b>.',
@@ -265,30 +270,31 @@ Kana avilyan kathe doshatar, ja palpale.',
 'powersearch'       => 'Rod',
 
 # Preferences page
-'preferences'    => 'Kamimata',
-'changepassword' => 'Paruv o nakhavipnasko lav',
-'prefs-skin'     => 'Dikhimos',
-'prefs-math'     => 'Matematika',
-'datedefault'    => 'Ni ekh kamipen',
-'prefs-datetime' => 'Dives thai chaso',
-'prefs-rc'       => 'Neve paruvimata',
-'saveprefs'      => 'Uxtav le kamimata',
-'resetprefs'     => 'Thov le kamimata sar ko shirdipen',
-'columns'        => 'Uche vortorina:',
-'contextlines'   => 'Vortorinyango gin pe avimos:',
-'contextchars'   => 'Grafemengo gin pe ekh vortorin:',
-'localtime'      => 'Thanutno vaxt',
-'timezoneoffset' => 'Ververipen',
-'guesstimezone'  => 'Le les katar o browser',
-'allowemail'     => 'De drom te aven e-mailurya katar aver jene',
-'defaultns'      => 'Rod savaxt vi kai kadale riga:',
-'default'        => 'acharuno',
-'prefs-files'    => 'Failurya',
-'youremail'      => 'Emailesko adress (kana kames)*',
-'yourrealname'   => 'Tiro chacho anav*',
-'yourlanguage'   => 'Ćhib:',
-'yournick'       => 'I xarni versyunya, le semnaturenge',
-'badsig'         => 'Bilachhi semnatura; dikh le tagurya HTML.',
+'preferences'           => 'Kamimata',
+'changepassword'        => 'Paruv o nakhavipnasko lav',
+'skin'                  => 'Dikhimos',
+'math'                  => 'Matematika',
+'dateformat'            => 'Datengi forma',
+'datedefault'           => 'Ni ekh kamipen',
+'datetime'              => 'Dives thai chaso',
+'math_unknown_error'    => 'bijangli dosh',
+'math_unknown_function' => 'bijangli funkciya',
+'math_syntax_error'     => 'sintaksaki dosh',
+'math_bad_output'       => 'Nashti te kerel pes vai te lekhavel po matematikano direktoro kai del pes avri.',
+'math_notexvc'          => 'Nai o kerditori (eksekutabilo) texvc; dikh math/README te labyares les.',
+'prefs-rc'              => 'Neve paruvimata',
+'saveprefs'             => 'Uxtav le kamimata',
+'resetprefs'            => 'Thov le kamimata sar ko shirdipen',
+'columns'               => 'Uche vortorina:',
+'contextlines'          => 'Vortorinyango gin pe avimos:',
+'contextchars'          => 'Grafemengo gin pe ekh vortorin:',
+'localtime'             => 'Thanutno vaxt',
+'timezoneoffset'        => 'Ververipen',
+'guesstimezone'         => 'Le les katar o browser',
+'allowemail'            => 'De drom te aven e-mailurya katar aver jene',
+'defaultns'             => 'Rod savaxt vi kai kadale riga:',
+'default'               => 'acharuno',
+'files'                 => 'Failurya',
 
 # User rights
 'editinguser' => "Editisaripen '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
@@ -330,9 +336,7 @@ Kana avilyan kathe doshatar, ja palpale.',
 'rc_categories_any'                 => 'Savegodi',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Pashvipnaske paruvimata',
-'recentchangeslinked-feed'    => 'Pashvipnaske paruvimata',
-'recentchangeslinked-toolbox' => 'Pashvipnaske paruvimata',
+'recentchangeslinked' => 'Pashvipnaske paruvimata',
 
 # Upload
 'upload'      => 'Bichhal file',
@@ -346,8 +350,7 @@ Kana avilyan kathe doshatar, ja palpale.',
 'listfiles' => 'Patrinipen le chitrengo',
 
 # File description page
-'file-anchor-link' => 'Chitro',
-'imagelinks'       => 'Chitroske phandimata',
+'imagelinks' => 'Chitroske phandimata',
 
 # Unused templates
 'unusedtemplates'    => 'Bilabyarde sikavne',
@@ -516,16 +519,9 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 # Attribution
 'anonymous'        => 'Bijangle labyarne kai {{SITENAME}}',
 'siteuser'         => 'Jeno kai {{SITENAME}} $1',
-'lastmodifiedatby' => 'Kadaya patrin sas paruvdi agoreste $2, $1 katar $3.',
+'lastmodifiedatby' => 'Kadaya patrin sas paruvdi agoreste $2, $1 katar $3.', # $1 date, $2 time, $3 user
 'others'           => 'aver',
 'siteusers'        => 'Jeno/e kai {{SITENAME}} $1',
-
-# Math errors
-'math_unknown_error'    => 'bijangli dosh',
-'math_unknown_function' => 'bijangli funkciya',
-'math_syntax_error'     => 'sintaksaki dosh',
-'math_bad_output'       => 'Nashti te kerel pes vai te lekhavel po matematikano direktoro kai del pes avri.',
-'math_notexvc'          => 'Nai o kerditori (eksekutabilo) texvc; dikh math/README te labyares les.',
 
 # Image deletion
 'deletedrevision' => 'Khoslo o purano paruvipen $1',
@@ -554,7 +550,7 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 'confirm_purge_button' => 'Va',
 
 # Special:Version
-'version' => 'Versiya',
+'version' => 'Versiya', # Not used as normal message but as header for the special page itself
 
 # Special:SpecialPages
 'specialpages' => 'Uzalutne patrya',

@@ -57,10 +57,10 @@ if ( empty( $wgFileStore['deleted']['directory'] ) ) {
 }
 
 /**
- * Unconditional protection for NS_MEDIAWIKI since otherwise it's too easy for a
- * sysadmin to set $wgNamespaceProtection incorrectly and leave the wiki insecure.
+ * Unconditional protection for NS_MEDIAWIKI since otherwise it's too easy for a 
+ * sysadmin to set $wgNamespaceProtection incorrectly and leave the wiki insecure. 
  *
- * Note that this is the definition of editinterface and it can be granted to
+ * Note that this is the definition of editinterface and it can be granted to 
  * all users if desired.
  */
 $wgNamespaceProtection[NS_MEDIAWIKI] = 'editinterface';
@@ -195,20 +195,6 @@ if($wgMetaNamespace === FALSE) {
 # To determine the user language, use $wgLang->getCode()
 $wgContLanguageCode = $wgLanguageCode;
 
-# Easy to forget to falsify $wgShowIPinHeader for static caches.
-# If file cache or squid cache is on, just disable this (DWIMD).
-if( $wgUseFileCache || $wgUseSquid ) $wgShowIPinHeader = false;
-
-# $wgAllowRealName and $wgAllowUserSkin were removed in 1.16
-# in favor of $wgHiddenPrefs, handle b/c here
-if( !$wgAllowRealName ) {
-	$wgHiddenPrefs[] = 'realname';
-}
-
-if( !$wgAllowUserSkin ) {
-	$wgHiddenPrefs[] = 'skin';
-}
-
 wfProfileOut( $fname.'-misc1' );
 wfProfileIn( $fname.'-memcached' );
 
@@ -267,7 +253,6 @@ $wgRequest->interpolateTitle();
 
 $wgUser = new StubUser;
 $wgLang = new StubUserLang;
-$wgVariant = new StubUserVariant;
 $wgOut = new StubObject( 'wgOut', 'OutputPage' );
 $wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
 
@@ -309,33 +294,12 @@ $wgArticle = null;
 wfProfileOut( $fname.'-misc2' );
 wfProfileIn( $fname.'-extensions' );
 
-/*
- * load the $wgExtensionMessagesFiles for the script loader
- * this can't be done in a normal extension type way
- * since the script-loader is an entry point
- */
-if( $wgEnableScriptLoader && strpos( wfGetScriptUrl(), "mwScriptLoader.php" ) !== false ){
-	$wgExtensionMessagesFiles['mwEmbed'] = "{$IP}/js2/mwEmbed/php/languages/mwEmbed.i18n.php";
-}
-
-
 # Extension setup functions for extensions other than skins
 # Entries should be added to this variable during the inclusion
 # of the extension file. This allows the extension to perform
 # any necessary initialisation in the fully initialised environment
 foreach ( $wgExtensionFunctions as $func ) {
-	# Allow closures in PHP 5.3+
-	if ( is_object( $func ) && $func instanceof Closure ) {
-		$profName = $fname.'-extensions-closure';
-	} elseif( is_array( $func ) ) {
-		if ( is_object( $func[0] ) )
-			$profName = $fname.'-extensions-'.get_class( $func[0] ).'::'.$func[1];
-		else
-			$profName = $fname.'-extensions-'.implode( '::', $func );
-	} else {
-		$profName = $fname.'-extensions-'.strval( $func );
-	}
-
+	$profName = $fname.'-extensions-'.strval( $func );
 	wfProfileIn( $profName );
 	call_user_func( $func );
 	wfProfileOut( $profName );

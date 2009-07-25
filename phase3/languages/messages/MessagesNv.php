@@ -1,9 +1,6 @@
 <?php
 /** Navajo (Diné bizaad)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -13,9 +10,11 @@
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
-	NS_TALK             => 'Naaltsoos_baa_yinísht\'į́',
+	NS_MAIN	            => '',
+	NS_TALK	            => 'Naaltsoos_baa_yinísht\'į́',
 	NS_USER             => 'Choinish\'įįhí',
 	NS_USER_TALK        => 'Choinish\'įįhí_baa_yinísht\'į́',
+	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_baa_yinísht\'į́',
 	NS_FILE             => 'E\'elyaaígíí',
 	NS_FILE_TALK        => 'E\'elyaaígíí_baa_yinísht\'į́',
@@ -26,7 +25,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Aná\'álwo\'',
 	NS_HELP_TALK        => 'Aná\'álwo\'_baa_yinísht\'į́',
 	NS_CATEGORY         => 'T\'ááłáhági_át\'éego',
-	NS_CATEGORY_TALK    => 'T\'ááłáhági_át\'éego_baa_yinísht\'į́',
+	NS_CATEGORY_TALK    => 'T\'ááłáhági_át\'éego_baa_yinísht\'į́'
 );
 
 $datePreferences = false;

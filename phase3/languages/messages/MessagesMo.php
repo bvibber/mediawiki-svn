@@ -1,9 +1,6 @@
 <?php
 /** Moldavian (Молдовеняскэ)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -116,18 +113,15 @@ $messages = array(
 'newpageletter'   => 'Н',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Скимбарь корелате',
-'recentchangeslinked-feed'    => 'Скимбарь корелате',
-'recentchangeslinked-toolbox' => 'Скимбарь корелате',
+'recentchangeslinked' => 'Скимбарь корелате',
 
 # Upload
 'upload' => 'Тримите фишиер',
 
 # File description page
-'file-anchor-link' => 'Фишиер',
-'filehist'         => 'Историкул фишиерулуй',
-'filehist-user'    => 'Утилизатор',
-'imagelinks'       => 'Легэтурь',
+'filehist'      => 'Историкул фишиерулуй',
+'filehist-user' => 'Утилизатор',
+'imagelinks'    => 'Легэтурь',
 
 # Miscellaneous special pages
 'nbytes' => '{{PLURAL:$1|ун октет|$1 октець}}',
@@ -141,8 +135,6 @@ $messages = array(
 
 # Namespace form on various pages
 'blanknamespace' => '(Принчиал)',
-
-'sp-contributions-talk' => 'Дискуций',
 
 # What links here
 'whatlinkshere'       => 'Че се лягэ аичь',

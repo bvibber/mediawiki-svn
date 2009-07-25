@@ -13,14 +13,8 @@
  * @ingroup ExternalStorage
  */
 class ExternalStore {
-	var $mParams;
-	
-	function __construct( $params = array() ) {
-		$this->mParams = $params;
-	}
-	
 	/* Fetch data from given URL */
-	static function fetchFromURL( $url, $params = array() ) {
+	static function fetchFromURL( $url ) {
 		global $wgExternalStores;
 
 		if( !$wgExternalStores )
@@ -31,16 +25,16 @@ class ExternalStore {
 		if( $path == '' )
 			return false;
 
-		$store = self::getStoreObject( $proto, $params );
+		$store = self::getStoreObject( $proto );
 		if ( $store === false )
 			return false;
 		return $store->fetchFromURL( $url );
 	}
 
 	/**
-	 * Get an external store object of the given type, with the given parameters
+	 * Get an external store object of the given type
 	 */
-	static function getStoreObject( $proto, $params = array() ) {
+	static function getStoreObject( $proto ) {
 		global $wgExternalStores;
 		if( !$wgExternalStores )
 			return false;
@@ -54,7 +48,7 @@ class ExternalStore {
 			return false;
 		}
 
-		return new $class($params);
+		return new $class();
 	}
 
 	/**
@@ -63,9 +57,9 @@ class ExternalStore {
 	 * class itself as a parameter.
 	 * Returns the URL of the stored data item, or false on error
 	 */
-	static function insert( $url, $data, $params = array() ) {
+	static function insert( $url, $data ) {
 		list( $proto, $params ) = explode( '://', $url, 2 );
-		$store = self::getStoreObject( $proto, $params );
+		$store = self::getStoreObject( $proto );
 		if ( $store === false ) {
 			return false;
 		} else {
@@ -79,10 +73,9 @@ class ExternalStore {
 	 * itself. It also fails-over to the next possible clusters.
 	 *
 	 * @param string $data
-	 * @param array $params Associative array of parameters for the ExternalStore object.
 	 * Returns the URL of the stored data item, or false on error
 	 */
-	public static function insertToDefault( $data, $storageParams = array() ) {
+	public static function insertToDefault( $data ) {
 		global $wgDefaultExternalStore;
 		$tryStores = (array)$wgDefaultExternalStore;
 		$error = false;
@@ -91,15 +84,13 @@ class ExternalStore {
 			$storeUrl = $tryStores[$index];
 			wfDebug( __METHOD__.": trying $storeUrl\n" );
 			list( $proto, $params ) = explode( '://', $storeUrl, 2 );
-			$store = self::getStoreObject( $proto, $storageParams );
+			$store = self::getStoreObject( $proto );
 			if ( $store === false ) {
 				throw new MWException( "Invalid external storage protocol - $storeUrl" );
 			}
 			try {
 				$url = $store->store( $params, $data ); // Try to save the object
 			} catch ( DBConnectionError $error ) {
-				$url = false;
-			} catch( DBQueryError $error ) {
 				$url = false;
 			}
 			if ( $url ) {
@@ -117,10 +108,5 @@ class ExternalStore {
 		} else {
 			throw new MWException( "Unable to store text to external storage" );
 		}
-	}
-	
-	/** Like insertToDefault, but inserts on another wiki */
-	public static function insertToForeignDefault( $data, $wiki ) {
-		return self::insertToDefault( $data, array( 'wiki' => $wiki ) );
 	}
 }

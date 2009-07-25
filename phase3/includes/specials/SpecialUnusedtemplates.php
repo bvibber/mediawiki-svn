@@ -33,18 +33,11 @@ class UnusedtemplatesPage extends QueryPage {
 
 	function formatResult( $skin, $result ) {
 		$title = Title::makeTitle( NS_TEMPLATE, $result->title );
-		$pageLink = $skin->linkKnown(
-			$title,
-			null,
-			array(),
-			array( 'redirect' => 'no' )
-		);
-		$wlhLink = $skin->linkKnown(
+		$pageLink = $skin->makeKnownLinkObj( $title, '', 'redirect=no' );
+		$wlhLink = $skin->makeKnownLinkObj(
 			SpecialPage::getTitleFor( 'Whatlinkshere' ),
 			wfMsgHtml( 'unusedtemplateswlh' ),
-			array(),
-			array( 'target' => $title->getPrefixedText() )
-		);
+			'target=' . $title->getPrefixedUrl() );
 		return wfSpecialList( $pageLink, $wlhLink );
 	}
 

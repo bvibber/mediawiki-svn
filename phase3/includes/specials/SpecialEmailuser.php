@@ -48,12 +48,6 @@ function wfSpecialEmailuser( $par ) {
 			case 'mailnologin':
 				$wgOut->showErrorPage( 'mailnologin', 'mailnologintext' );
 				return;
-			default:
-				// It's a hook error
-				list( $title, $msg, $params ) = $error;
-				$wgOut->showErrorPage( $title, $msg, $params );
-				return;
-				
 		}
 	}	
 	
@@ -247,7 +241,7 @@ class EmailUserForm {
 			$user = $this->target;
 
 		$wgOut->setPagetitle( wfMsg( "emailsent" ) );
-		$wgOut->addWikiMsg( 'emailsenttext' );
+		$wgOut->addHTML( wfMsg( "emailsenttext" ) );
 
 		$wgOut->returnToMain( false, $user->getUserPage() );
 	}
@@ -303,17 +297,12 @@ class EmailUserForm {
 			return 'actionthrottledtext';
 		}
 		
-		$hookErr = null;
-		wfRunHooks( 'EmailUserPermissionsErrors', array( $user, $editToken, &$hookErr ) );
-		
-		if ($hookErr) {
-			return $hookErr;
-		}
-		
 		if( !$user->matchEditToken( $editToken ) ) {
 			wfDebug( "Matching edit token failed.\n" );
 			return 'sessionfailure';
 		}
+		
+		return;
 	}
 	
 	static function newFromURL( $target, $text, $subject, $cc_me )

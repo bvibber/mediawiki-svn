@@ -12,8 +12,8 @@
 $oldCwd = getcwd();
 
 $optionsWithArgs = array( "d" );
-require( "commandLine.inc" );
-require( "rebuildInterwiki.inc" );
+include_once( "commandLine.inc" );
+include_once( "rebuildInterwiki.inc" );
 chdir( $oldCwd );
 
 # Output

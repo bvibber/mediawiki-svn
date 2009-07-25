@@ -67,7 +67,7 @@ class MergehistoryForm {
 	}
 
 	function execute() {
-		global $wgOut;
+		global $wgOut, $wgUser;
 
 		$wgOut->setPagetitle( wfMsgHtml( "mergehistory" ) );
 
@@ -97,7 +97,7 @@ class MergehistoryForm {
 			);
 		}
 		
-		if ( $this->mTargetObj && $this->mDestObj && $this->mTargetObj->equals( $this->mDestObj ) ) {
+		if ( $this->mTargetObj->equals( $this->mDestObj ) ) {
 			$errors[] = wfMsgExt( 'mergehistory-same-destination', array( 'parse' ) );
 		}
 
@@ -142,7 +142,7 @@ class MergehistoryForm {
 	}
 
 	private function showHistory() {
-		global $wgLang, $wgUser, $wgOut;
+		global $wgLang, $wgContLang, $wgUser, $wgOut;
 
 		$this->sk = $wgUser->getSkin();
 
@@ -155,7 +155,7 @@ class MergehistoryForm {
 		$haveRevisions = $revisions && $revisions->getNumRows() > 0;
 
 		$titleObj = SpecialPage::getTitleFor( "Mergehistory" );
-		$action = $titleObj->getLocalURL( array( 'action' => 'submit' ) );
+		$action = $titleObj->getLocalURL( "action=submit" );
 		# Start the form here
 		$top = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'merge' ) );
 		$wgOut->addHTML( $top );
@@ -163,22 +163,27 @@ class MergehistoryForm {
 		if( $haveRevisions ) {
 			# Format the user-visible controls (comment field, submission button)
 			# in a nice little table
+			$align = $wgContLang->isRtl() ? 'left' : 'right';
 			$table =
 				Xml::openElement( 'fieldset' ) .
-				wfMsgExt( 'mergehistory-merge', array('parseinline'),
-					$this->mTargetObj->getPrefixedText(), $this->mDestObj->getPrefixedText() ) .
-				Xml::openElement( 'table', array( 'id' => 'mw-mergehistory-table' ) ) .
+				Xml::openElement( 'table' ) .
 					"<tr>
-						<td class='mw-label'>" .
-							Xml::label( wfMsg( 'mergehistory-reason' ), 'wpComment' ) .
+						<td colspan='2'>" .
+							wfMsgExt( 'mergehistory-merge', array('parseinline'),
+								$this->mTargetObj->getPrefixedText(), $this->mDestObj->getPrefixedText() ) .
 						"</td>
-						<td class='mw-input'>" .
-							Xml::input( 'wpComment', 50, $this->mComment, array('id' => 'wpComment') ) .
+					</tr>
+					<tr>
+						<td align='$align'>" .
+							Xml::label( wfMsg( 'undeletecomment' ), 'wpComment' ) .
+						"</td>
+						<td>" .
+							Xml::input( 'wpComment', 50, $this->mComment ) .
 						"</td>
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
-						<td class='mw-submit'>" .
+						<td>" .
 							Xml::submitButton( wfMsg( 'mergehistory-submit' ), array( 'name' => 'merge', 'id' => 'mw-merge-submit' ) ) .
 						"</td>
 					</tr>" .
@@ -218,7 +223,7 @@ class MergehistoryForm {
 	}
 
 	function formatRevisionRow( $row ) {
-		global $wgLang;
+		global $wgUser, $wgLang;
 
 		$rev = new Revision( $row );
 
@@ -228,12 +233,8 @@ class MergehistoryForm {
 		$ts = wfTimestamp( TS_MW, $row->rev_timestamp );
 		$checkBox = Xml::radio( "mergepoint", $ts, false );
 
-		$pageLink = $this->sk->linkKnown(
-			$rev->getTitle(),
-			htmlspecialchars( $wgLang->timeanddate( $ts ) ),
-			array(),
-			array( 'oldid' => $rev->getId() )
-		);
+		$pageLink = $this->sk->makeKnownLinkObj( $rev->getTitle(),
+			htmlspecialchars( $wgLang->timeanddate( $ts ) ), 'oldid=' . $rev->getId() );
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$pageLink = '<span class="history-deleted">' . $pageLink . '</span>';
 		}
@@ -242,15 +243,8 @@ class MergehistoryForm {
 		if( !$rev->userCan( Revision::DELETED_TEXT ) )
 			$last = $this->message['last'];
 		else if( isset($this->prevId[$row->rev_id]) )
-			$last = $this->sk->linkKnown(
-				$rev->getTitle(),
-				$this->message['last'],
-				array(),
-				array(
-					'diff' => $row->rev_id,
-					'oldid' => $this->prevId[$row->rev_id]
-				)
-			);
+			$last = $this->sk->makeKnownLinkObj( $rev->getTitle(), $this->message['last'],
+				"diff=" . $row->rev_id . "&oldid=" . $this->prevId[$row->rev_id] );
 
 		$userLink = $this->sk->revUserTools( $rev );
 
@@ -272,15 +266,8 @@ class MergehistoryForm {
 		if( !$this->userCan($row, Revision::DELETED_TEXT) ) {
 			return '<span class="history-deleted">' . $wgLang->timeanddate( $ts, true ) . '</span>';
 		} else {
-			$link = $this->sk->linkKnown(
-				$titleObj,
-				$wgLang->timeanddate( $ts, true ),
-				array(),
-				array(
-					'target' => $target,
-					'timestamp' => $ts
-				)
-			);
+			$link = $this->sk->makeKnownLinkObj( $titleObj,
+				$wgLang->timeanddate( $ts, true ), "target=$target&timestamp=$ts" );
 			if( $this->isDeleted($row, Revision::DELETED_TEXT) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
@@ -288,7 +275,7 @@ class MergehistoryForm {
 	}
 
 	function merge() {
-		global $wgOut;
+		global $wgOut, $wgUser;
 		# Get the titles directly from the IDs, in case the target page params
 		# were spoofed. The queries are done based on the IDs, so it's best to
 		# keep it consistent...
@@ -452,7 +439,7 @@ class MergeHistoryPager extends ReverseChronologicalPager {
 		return array(
 			'tables' => array('revision','page'),
 			'fields' => array( 'rev_minor_edit', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_comment',
-				 'rev_id', 'rev_page', 'rev_parent_id', 'rev_text_id', 'rev_len', 'rev_deleted' ),
+				 'rev_id', 'rev_page', 'rev_text_id', 'rev_len', 'rev_deleted' ),
 			'conds' => $conds
 		);
 	}

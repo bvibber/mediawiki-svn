@@ -123,25 +123,6 @@ class AuthPlugin {
 	}
 
 	/**
-	 * Allow a property change? Properties are the same as preferences
-	 * and use the same keys. 'Realname' 'Emailaddress' and 'Nickname'
-	 * all reference this.
-	 *
-	 * @return bool
-	 */
-	public function allowPropChange( $prop = '' ) {
-		if( $prop == 'realname' && is_callable( array( $this, 'allowRealNameChange' ) ) ) {
-			return $this->allowRealNameChange();
-		} elseif( $prop == 'emailaddress' && is_callable( array( $this, 'allowEmailChange' ) ) ) {
-			return $this->allowEmailChange();
-		} elseif( $prop == 'nickname' && is_callable( array( $this, 'allowNickChange' ) ) ) {
-			return $this->allowNickChange();
-		} else {
-			return true;
-		}
-	}
-
-	/**
 	 * Can users change their passwords?
 	 *
 	 * @return bool

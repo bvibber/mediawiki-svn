@@ -10,21 +10,11 @@
  * @ingroup Maintenance
  */
 
-$optionsWithArgs = array( 'maxjobs', 'type', 'procs' );
+$optionsWithArgs = array( 'maxjobs', 'type' );
 $wgUseNormalUser = true;
 require_once( 'commandLine.inc' );
-
-if ( isset( $options['procs'] ) ) {
-	$procs = intval( $options['procs'] );
-	if ( $procs < 1 || $procs > 1000 ) {
-		echo "Invalid argument to --procs\n";
-		exit( 1 );
-	}
-	$fc = new ForkController( $procs );
-	if ( $fc->start( $procs ) != 'child' ) {
-		exit( 0 );
-	}
-}
+require_once( "$IP/includes/JobQueue.php" );
+require_once( "$IP/includes/FakeTitle.php" );
 
 if ( isset( $options['maxjobs'] ) ) {
 	$maxJobs = $options['maxjobs'];
@@ -55,26 +45,14 @@ while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
 			break;
 
 		wfWaitForSlaves( 5 );
-		$t = microtime( true );
+		print wfTimestamp( TS_DB ) . "  " . $job->id . "  " . $job->toString() . "\n";
 		$offset=$job->id;
-		$status = $job->run();
-		$t = microtime( true ) - $t;
-		$timeMs = intval( $t * 1000 );
-		if ( !$status ) {
-			runJobsLog( $job->toString() . " t=$timeMs error={$job->error}" );
-		} else {
-			runJobsLog( $job->toString() . " t=$timeMs good" );
+		if ( !$job->run() ) {
+			print wfTimestamp( TS_DB ) . "  Error: {$job->error}\n";
 		}
 		if ( $maxJobs && ++$n > $maxJobs ) {
 			break 2;
 		}
 	}
 }
-
-
-function runJobsLog( $msg ) {
-	print wfTimestamp( TS_DB ) . " $msg\n";
-	wfDebugLog( 'runJobs', $msg );
-}
-
 

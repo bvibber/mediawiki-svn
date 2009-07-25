@@ -56,19 +56,10 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 		$this->selectNamedDB('watchlist', DB_SLAVE, 'watchlist');
 
-		$params = $this->extractRequestParams();
-
-		if (!is_null($params['user']) && !is_null($params['token'])) {
-			$user = User::newFromName($params['user']);
-			$token = $user->getOption('watchlisttoken');
-			if ($token == '' || $token != $params['token']) {
-				$this->dieUsage('Incorrect watchlist token provided', 'bad_wltoken');
-			}
-		} elseif (!$wgUser->isLoggedIn()) {
+		if (!$wgUser->isLoggedIn())
 			$this->dieUsage('You must be logged-in to have a watchlist', 'notloggedin');
-		} else {
-			$user = $wgUser;
-		}
+
+		$params = $this->extractRequestParams();
 
 		if (!is_null($params['prop']) && is_null($resultPageSet)) {
 
@@ -101,7 +92,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 			$this->addFieldsIf('rc_new', $this->fld_flags);
 			$this->addFieldsIf('rc_minor', $this->fld_flags);
-			$this->addFieldsIf('rc_bot', $this->fld_flags);
 			$this->addFieldsIf('rc_user', $this->fld_user);
 			$this->addFieldsIf('rc_user_text', $this->fld_user);
 			$this->addFieldsIf('rc_comment', $this->fld_comment);
@@ -131,7 +121,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'recentchanges'
 		));
 
-		$userId = $user->getId();
+		$userId = $wgUser->getId();
 		$this->addWhere(array (
 			'wl_namespace = rc_namespace',
 			'wl_title = rc_title',
@@ -156,8 +146,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				$this->dieUsage("Incorrect parameter - mutually exclusive values may not be supplied", 'show');
 			}
 			
-			// Check permissions.  FIXME: should this check $user instead of
-			// $wgUser?
+			// Check permissions
 			global $wgUser;
 			if((isset($show['patrolled']) || isset($show['!patrolled'])) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
 				$this->dieUsage("You need the patrol right to request the patrolled flag", 'permissiondenied');
@@ -173,24 +162,13 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->addWhereIf('rc_patrolled != 0', isset($show['patrolled']));			
 		}
 
-		# Ignore extra user conditions if we're using token mode, since the
-		# user was already manually specified.
-		if(is_null($params['user']) || is_null($params['token'])) {
-			if(!is_null($params['user']) && !is_null($params['excludeuser']))
-				$this->dieUsage('user and excludeuser cannot be used together', 'user-excludeuser');
-			if(!is_null($params['user']))
-				$this->addWhereFld('rc_user_text', $params['user']);
-			if(!is_null($params['excludeuser']))
-				$this->addWhere('rc_user_text != ' . $this->getDB()->addQuotes($params['excludeuser']));
-		}
-
 
 		# This is an index optimization for mysql, as done in the Special:Watchlist page
 		$this->addWhereIf("rc_timestamp > ''", !isset ($params['start']) && !isset ($params['end']) && $wgDBtype == 'mysql');
 
 		$this->addOption('LIMIT', $params['limit'] +1);
 
-		$ids = array ();
+		$data = array ();
 		$count = 0;
 		$res = $this->select(__METHOD__);
 
@@ -204,18 +182,13 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 			if (is_null($resultPageSet)) {
 				$vals = $this->extractRowInfo($row);
-				$fit = $this->getResult()->addValue(array('query', $this->getModuleName()), null, $vals);
-				if(!$fit)
-				{
-					$this->setContinueEnumParameter('start',
-							wfTimestamp(TS_ISO_8601, $row->rc_timestamp));
-					break;
-				}
+				if ($vals)
+					$data[] = $vals;
 			} else {
 				if ($params['allrev']) {
-					$ids[] = intval($row->rc_this_oldid);
+					$data[] = intval($row->rc_this_oldid);
 				} else {
-					$ids[] = intval($row->rc_cur_id);
+					$data[] = intval($row->rc_cur_id);
 				}
 			}
 		}
@@ -223,12 +196,13 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		$db->freeResult($res);
 
 		if (is_null($resultPageSet)) {
-			$this->getResult()->setIndexedTagName_internal(array('query', $this->getModuleName()), 'item');
+			$this->getResult()->setIndexedTagName($data, 'item');
+			$this->getResult()->addValue('query', $this->getModuleName(), $data);
 		}
 		elseif ($params['allrev']) {
-			$resultPageSet->populateFromRevisionIDs($ids);
+			$resultPageSet->populateFromRevisionIDs($data);
 		} else {
-			$resultPageSet->populateFromPageIDs($ids);
+			$resultPageSet->populateFromPageIDs($data);
 		}
 	}
 
@@ -255,8 +229,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				$vals['new'] = '';
 			if ($row->rc_minor)
 				$vals['minor'] = '';
-			if ($row->rc_bot)
-				$vals['bot'] = '';
 		}
 
 		if ($this->fld_patrol && isset($row->rc_patrolled))
@@ -264,6 +236,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 		if ($this->fld_timestamp)
 			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->rc_timestamp);
+
+			$this->addFieldsIf('rc_new_len', $this->fld_sizes);
 
 		if ($this->fld_sizes) {
 			$vals['oldlen'] = intval($row->rc_old_len);
@@ -288,12 +262,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'namespace' => array (
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => 'namespace'
-			),
-			'user' => array(
-				ApiBase :: PARAM_TYPE => 'user',
-			),
-			'excludeuser' => array(
-				ApiBase :: PARAM_TYPE => 'user',
 			),
 			'dir' => array (
 				ApiBase :: PARAM_DFLT => 'older',
@@ -335,9 +303,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 					'patrolled',
 					'!patrolled',
 				)
-			),
-			'token' => array (
-				ApiBase :: PARAM_TYPE => 'string'
 			)
 		);
 	}
@@ -348,16 +313,13 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'start' => 'The timestamp to start enumerating from.',
 			'end' => 'The timestamp to end enumerating.',
 			'namespace' => 'Filter changes to only the given namespace(s).',
-			'user' => 'Only list changes by this user',
-			'excludeuser' => 'Don\'t list changes by this user',
 			'dir' => 'In which direction to enumerate pages.',
 			'limit' => 'How many total results to return per request.',
 			'prop' => 'Which additional items to get (non-generator mode only).',
 			'show' => array (
 				'Show only items that meet this criteria.',
 				'For example, to see only minor edits done by logged-in users, set show=minor|!anon'
-			),
-			'token' => "Give a security token (settable in preferences) to allow access to another user's watchlist"
+			)
 		);
 	}
 

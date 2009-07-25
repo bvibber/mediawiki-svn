@@ -41,12 +41,10 @@ class ApiParamInfo extends ApiBase {
 		// Get parameters
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
-		$queryObj = new ApiQuery($this->getMain(), 'query');
 		$r = array();
 		if(is_array($params['modules']))
 		{
 			$modArr = $this->getMain()->getModules();
-			$r['modules'] = array();
 			foreach($params['modules'] as $m)
 			{
 				if(!isset($modArr[$m]))
@@ -63,8 +61,8 @@ class ApiParamInfo extends ApiBase {
 		}
 		if(is_array($params['querymodules']))
 		{
+			$queryObj = new ApiQuery($this->getMain(), 'query');
 			$qmodArr = $queryObj->getModules();
-			$r['querymodules'] = array();
 			foreach($params['querymodules'] as $qm)
 			{
 				if(!isset($qmodArr[$qm]))
@@ -79,13 +77,6 @@ class ApiParamInfo extends ApiBase {
 			}
 			$result->setIndexedTagName($r['querymodules'], 'module');
 		}
-		if($params['mainmodule'])
-			$r['mainmodule'] = $this->getClassInfo($this->getMain());
-		if($params['pagesetmodule'])
-		{
-			$pageSet = new ApiPageSet($queryObj);
-			$r['pagesetmodule'] = $this->getClassInfo($pageSet);
-		}
 		$result->addValue(null, $this->getModuleName(), $r);
 	}
 
@@ -93,17 +84,8 @@ class ApiParamInfo extends ApiBase {
 	{
 		$result = $this->getResult();
 		$retval['classname'] = get_class($obj);
-		$retval['description'] = implode("\n", (array)$obj->getDescription());
-		$retval['version'] = implode("\n", (array)$obj->getVersion());
+		$retval['description'] = (is_array($obj->getDescription()) ? implode("\n", $obj->getDescription()) : $obj->getDescription());
 		$retval['prefix'] = $obj->getModulePrefix();
-		if($obj->isReadMode())
-			$retval['readrights'] = '';
-		if($obj->isWriteMode())
-			$retval['writerights'] = '';
-		if($obj->mustBePosted())
-			$retval['mustbeposted'] = '';
-		if($obj instanceof ApiQueryGeneratorBase)
-			$retval['generator'] = '';
 		$allowedParams = $obj->getFinalParams();
 		if(!is_array($allowedParams))
 			return $retval;
@@ -112,8 +94,6 @@ class ApiParamInfo extends ApiBase {
 		foreach($allowedParams as $n => $p)
 		{
 			$a = array('name' => $n);
-			if(isset($paramDesc[$n]))
-				$a['description'] = implode("\n", (array)$paramDesc[$n]);
 			if(!is_array($p))
 			{
 				if(is_bool($p))
@@ -121,16 +101,8 @@ class ApiParamInfo extends ApiBase {
 					$a['type'] = 'bool';
 					$a['default'] = ($p ? 'true' : 'false');
 				}
-				else if(is_string($p) || is_null($p))
-				{
-					$a['type'] = 'string';
-					$a['default'] = strval($p);
-				}
-				else if(is_int($p))
-				{
-					$a['type'] = 'integer';
-					$a['default'] = intval($p);
-				}
+				if(is_string($p))
+					$a['default'] = $p;
 				$retval['parameters'][] = $a;
 				continue;
 			}
@@ -160,14 +132,12 @@ class ApiParamInfo extends ApiBase {
 				$a['highmax'] = $p[ApiBase::PARAM_MAX2];
 			if(isset($p[ApiBase::PARAM_MIN]))
 				$a['min'] = $p[ApiBase::PARAM_MIN];
+			if(isset($paramDesc[$n]))
+				$a['description'] = (is_array($paramDesc[$n]) ? implode("\n", $paramDesc[$n]) : $paramDesc[$n]);
 			$retval['parameters'][] = $a;
 		}
 		$result->setIndexedTagName($retval['parameters'], 'param');
 		return $retval;
-	}
-
-	public function isReadMode() {
-		return false;
 	}
 
 	public function getAllowedParams() {
@@ -177,9 +147,7 @@ class ApiParamInfo extends ApiBase {
 			),
 			'querymodules' => array(
 				ApiBase :: PARAM_ISMULTI => true
-			),
-			'mainmodule' => false,
-			'pagesetmodule' => false,
+			)
 		);
 	}
 
@@ -187,8 +155,6 @@ class ApiParamInfo extends ApiBase {
 		return array (
 			'modules' => 'List of module names (value of the action= parameter)',
 			'querymodules' => 'List of query module names (value of prop=, meta= or list= parameter)',
-			'mainmodule' => 'Get information about the main (top-level) module as well',
-			'pagesetmodule' => 'Get information about the pageset module (providing titles= and friends) as well',
 		);
 	}
 

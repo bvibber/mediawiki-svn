@@ -1,9 +1,6 @@
 <?php
 /** Komi (Коми)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -48,11 +45,9 @@ $messages = array(
 'december-gen'  => 'ӧшым',
 
 'cancel' => 'Дугӧдны',
-'mytalk' => 'Сёрнитӧм лист бокӧй',
-
-# Cologne Blue skin
 'qbfind' => 'Корсьысьӧм',
 'qbedit' => 'Веськӧдны',
+'mytalk' => 'Сёрнитӧм лист бокӧй',
 
 'search'           => 'Корсьысьӧм',
 'searchbutton'     => 'Аддзыны',

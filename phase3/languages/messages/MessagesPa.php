@@ -1,9 +1,6 @@
 <?php
 /** Punjabi (ਪੰਜਾਬੀ)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -12,25 +9,32 @@
  * @author Sukh
  * @author Ævar Arnfjörð Bjarmason
  * @author לערי ריינהארט
+ *
+ * @license http://www.gnu.org/copyleft/fdl.html GNU Free Documentation License
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @see http://bugzilla.wikimedia.org/show_bug.cgi?id=1478
+ * @see http://bugzilla.wikimedia.org/show_bug.cgi?id=11145
  */
 
 $namespaceNames = array(
-	NS_MEDIA            => 'ਮੀਡੀਆ',
-	NS_SPECIAL          => 'ਖਾਸ',
-	NS_TALK             => 'ਚਰਚਾ',
-	NS_USER             => 'ਮੈਂਬਰ',
-	NS_USER_TALK        => 'ਮੈਂਬਰ_ਚਰਚਾ',
-	NS_PROJECT_TALK     => '$1_ਚਰਚਾ',
-	NS_FILE             => 'ਤਸਵੀਰ',
-	NS_FILE_TALK        => 'ਤਸਵੀਰ_ਚਰਚਾ',
-	NS_MEDIAWIKI        => 'ਮੀਡੀਆਵਿਕਿ',
-	NS_MEDIAWIKI_TALK   => 'ਮੀਡੀਆਵਿਕਿ_ਚਰਚਾ',
-	NS_TEMPLATE         => 'ਨਮੂਨਾ',
-	NS_TEMPLATE_TALK    => 'ਨਮੂਨਾ_ਚਰਚਾ',
-	NS_HELP             => 'ਮਦਦ',
-	NS_HELP_TALK        => 'ਮਦਦ_ਚਰਚਾ',
-	NS_CATEGORY         => 'ਸ਼੍ਰੇਣੀ',
-	NS_CATEGORY_TALK    => 'ਸ਼੍ਰੇਣੀ_ਚਰਚਾ',
+	NS_MEDIA          => 'ਮੀਡੀਆ',
+	NS_SPECIAL        => 'ਖਾਸ',
+	NS_MAIN           => '',
+	NS_TALK           => 'ਚਰਚਾ',
+	NS_USER           => 'ਮੈਂਬਰ',
+	NS_USER_TALK      => 'ਮੈਂਬਰ_ਚਰਚਾ',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_ਚਰਚਾ',
+	NS_FILE           => 'ਤਸਵੀਰ',
+	NS_FILE_TALK      => 'ਤਸਵੀਰ_ਚਰਚਾ',
+	NS_MEDIAWIKI      => 'ਮੀਡੀਆਵਿਕਿ',
+	NS_MEDIAWIKI_TALK => 'ਮੀਡੀਆਵਿਕਿ_ਚਰਚਾ',
+	NS_TEMPLATE       => 'ਨਮੂਨਾ',
+	NS_TEMPLATE_TALK  => 'ਨਮੂਨਾ_ਚਰਚਾ',
+	NS_HELP           => 'ਮਦਦ',
+	NS_HELP_TALK      => 'ਮਦਦ_ਚਰਚਾ',
+	NS_CATEGORY       => 'ਸ਼੍ਰੇਣੀ',
+	NS_CATEGORY_TALK  => 'ਸ਼੍ਰੇਣੀ_ਚਰਚਾ'
 );
 
 $digitTransformTable = array(
@@ -54,15 +58,9 @@ $messages = array(
 'tog-showtoolbar'        => 'ਐਡਿਟ ਟੂਲਬਾਰ ਵੇਖੋ (JavaScript)',
 'tog-showtoc'            => 'ਟੇਬਲ ਆਫ਼ ਕੰਨਟੈੱਟ ਵੇਖਾਓ (for pages with more than 3 headings)',
 'tog-rememberpassword'   => 'ਇਹ ਕੰਪਿਊਟਰ ਲਈ ਮੇਰਾ ਲਾਗਇਨ ਯਾਦ ਰੱਖੋ',
-'tog-editwidth'          => 'ਐਡਿਟ ਬਾਕਸ ਨਾਲ ਪੂਰੇ ਸਕਰੀਨ ਨੂੰ ਭਰਨ ਲਈ ਇਸ ਦੀ ਚੌੜਾਈ ਵਧਾਓ',
-'tog-watchcreations'     => 'ਮੇਰੇ ਦੁਆਰਾ ਬਣਾਏ ਗਏ ਨਵੇਂ ਪੇਜ ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚ ਪਾਓ',
-'tog-watchdefault'       => 'ਜੋ ਪੇਜ ਮੈਂ ਸੋਧਦਾ ਹਾਂ ਓਹ ਪੇਜ ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚ ਪਾਓ',
-'tog-watchmoves'         => 'ਮੇਰੇ ਦੁਆਰਾ ਮੁਵ ਕਿਤੇ ਪੇਜ ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚ ਪਾਓ',
-'tog-watchdeletion'      => 'ਮੇਰੇ ਦੁਆਰਾ ਹਟਾਏ ਗਏ ਪੇਜ ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚ ਪਾਓ',
+'tog-editwidth'          => 'ਐਡਿਟ ਬਾਕਸ ਪੇਜ ਦੀ ਪੂਰੀ ਚੌੜਾਈ ਵਿੱਚ ਕਰੋ',
 'tog-previewontop'       => 'ਐਡਿਟ ਬਕਸੇ ਤੋਂ ਪਹਿਲਾਂ ਝਲਕ ਵੇਖਾਓ',
 'tog-previewonfirst'     => 'ਪਹਿਲੇ ਐਡਿਟ ਉੱਤੇ ਝਲਕ ਵੇਖਾਓ',
-'tog-watchlisthideown'   => 'ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚੋਂ ਮੇਰੀਆਂ ਸੋਧਾਂ ਹਟਾਓ',
-'tog-watchlisthidebots'  => 'ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚੋਂ ਰੋਬਾਟ ਦਿਆਂ ਸੋਧਾਂ ਹਟਾਓ',
 'tog-watchlisthideminor' => 'ਛੋਟੇ ਸੋਧ ਵਾਚ-ਲਿਸਟ ਤੋਂ ਓਹਲੇ ਰੱਖੋ',
 
 'underline-always'  => 'ਹਮੇਸ਼ਾਂ',
@@ -130,18 +128,10 @@ $messages = array(
 
 'mainpagetext' => "<big>'''ਮੀਡਿਆਵਿਕਿ ਠੀਕ ਤਰ੍ਹਾਂ ਇੰਸਟਾਲ ਹੋ ਗਿਆ ਹੈ।'''</big>",
 
-'about'         => 'ਇਸ ਬਾਰੇ',
-'article'       => 'ਸਮੱਗਰੀ ਪੇਜ',
-'newwindow'     => '(ਨਵੀਂ ਵਿੰਡੋ ਵਿੱਚ ਖੋਲ੍ਹੋ)',
-'cancel'        => 'ਰੱਦ ਕਰੋ',
-'moredotdotdot' => 'ਹੋਰ...',
-'mypage'        => 'ਮੇਰਾ ਪੇਜ',
-'mytalk'        => 'ਮੇਰੀ ਗੱਲਬਾਤ',
-'anontalk'      => 'ਇਹ IP ਲਈ ਗੱਲਬਾਤ',
-'navigation'    => 'ਨੇਵੀਗੇਸ਼ਨ',
-'and'           => '&#32;ਅਤੇ',
-
-# Cologne Blue skin
+'about'          => 'ਇਸ ਬਾਰੇ',
+'article'        => 'ਸਮੱਗਰੀ ਪੇਜ',
+'newwindow'      => '(ਨਵੀਂ ਵਿੰਡੋ ਵਿੱਚ ਖੋਲ੍ਹੋ)',
+'cancel'         => 'ਰੱਦ ਕਰੋ',
 'qbfind'         => 'ਖੋਜ',
 'qbbrowse'       => 'ਬਰਾਊਜ਼',
 'qbedit'         => 'ਸੋਧ',
@@ -149,8 +139,12 @@ $messages = array(
 'qbpageinfo'     => 'ਭਾਗ',
 'qbmyoptions'    => 'ਮੇਰੇ ਪੇਜ',
 'qbspecialpages' => 'ਖਾਸ ਪੇਜ',
-'faq'            => 'ਸਵਾਲ-ਜਵਾਬ',
-'faqpage'        => 'Project:ਸਵਾਲ-ਜਵਾਬ',
+'moredotdotdot'  => 'ਹੋਰ...',
+'mypage'         => 'ਮੇਰਾ ਪੇਜ',
+'mytalk'         => 'ਮੇਰੀ ਗੱਲਬਾਤ',
+'anontalk'       => 'ਇਹ IP ਲਈ ਗੱਲਬਾਤ',
+'navigation'     => 'ਨੇਵੀਗੇਸ਼ਨ',
+'and'            => '&#32;ਅਤੇ',
 
 'errorpagetitle'    => 'ਗਲਤੀ',
 'returnto'          => '$1 ਤੇ ਵਾਪਸ ਜਾਓ',
@@ -189,7 +183,7 @@ $messages = array(
 'toolbox'           => 'ਟੂਲਬਾਕਸ',
 'userpage'          => 'ਯੂਜ਼ਰ ਪੇਜ ਵੇਖੋ',
 'projectpage'       => 'ਪਰੋਜੈਕਟ ਪੇਜ ਵੇਖੋ',
-'imagepage'         => 'ਫਾਇਲ ਪੇਜ ਵੇਖੋ',
+'imagepage'         => 'ਚਿੱਤਰ ਪੇਜ ਵੇਖੋ',
 'mediawikipage'     => 'ਸੁਨੇਹਾ ਪੇਜ ਵੇਖੋ',
 'templatepage'      => 'ਟੈਪਲੇਟ ਪੇਜ ਵੇਖੋ',
 'viewhelppage'      => 'ਮੱਦਦ ਪੇਜ ਵੇਖੋ',
@@ -198,7 +192,7 @@ $messages = array(
 'otherlanguages'    => 'ਹੋਰ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ',
 'redirectedfrom'    => '($1 ਤੋਂ ਰੀ-ਡਿਰੈਕਟ)',
 'redirectpagesub'   => 'ਰੀ-ਡਿਰੈਕਟ ਪੇਜ',
-'lastmodifiedat'    => 'ਇਹ ਪੇਜ ਆਖਰੀ ਵਾਰ $2, $1 ਨੂੰ ਸੋਧਿਆ ਗਿਆ ਸੀ।',
+'lastmodifiedat'    => 'ਇਹ ਪੇਜ ਆਖਰੀ ਵਾਰ $2, $1 ਨੂੰ ਸੋਧਿਆ ਗਿਆ ਸੀ।', # $1 date, $2 time
 'viewcount'         => 'ਇਹ ਪੇਜ ਅਸੈੱਸ ਕੀਤਾ ਗਿਆ {{PLURAL:$1|ਇੱਕਵਾਰ|$1 ਵਾਰ}}.',
 'protectedpage'     => 'ਸੁਰੱਖਿਅਤ ਪੇਜ',
 'jumpto'            => 'ਜੰਪ ਕਰੋ:',
@@ -217,6 +211,8 @@ $messages = array(
 'disclaimerpage'       => 'Project:ਆਮ ਡਿਕਲੇਅਮਰ',
 'edithelp'             => 'ਮੱਦਦ ਐਡੀਟਿੰਗ',
 'edithelppage'         => 'Help:ਐਡਟਿੰਗ',
+'faq'                  => 'ਸਵਾਲ-ਜਵਾਬ',
+'faqpage'              => 'Project:ਸਵਾਲ-ਜਵਾਬ',
 'helppage'             => 'Help:ਸਮੱਗਰੀ',
 'mainpage'             => 'ਮੁੱਖ ਪੇਜ',
 'mainpage-description' => 'ਮੁੱਖ ਪੇਜ',
@@ -237,7 +233,6 @@ $messages = array(
 'youhavenewmessagesmulti' => 'ਤੁਹਾਨੂੰ ਨਵੇਂ ਸੁਨੇਹੇ $1 ਉੱਤੇ ਹਨ',
 'editsection'             => 'ਸੋਧ',
 'editold'                 => 'ਸੋਧ',
-'editlink'                => 'ਸੋਧ',
 'editsectionhint'         => 'ਸ਼ੈਕਸ਼ਨ ਸੋਧ: $1',
 'toc'                     => 'ਸਮਗੱਰੀ',
 'showtoc'                 => 'ਵੇਖਾਓ',
@@ -245,7 +240,7 @@ $messages = array(
 'thisisdeleted'           => 'ਵੇਖੋ ਜਾਂ $1 ਰੀਸਟੋਰ?',
 'viewdeleted'             => '$1 ਵੇਖਣਾ?',
 'feedlinks'               => 'ਫੀਡ:',
-'red-link-title'          => '$1 (ਇਸ ਨਾਂ ਦਾ ਪੇਜ ਨਹੀਂ ਹੈ)',
+'red-link-title'          => '$1 (ਹੁਣ ਤਕ ਨਹੀਂ ਲਿਖਿਆ ਗਿਆ)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'ਲੇਖ',
@@ -269,6 +264,7 @@ A list of valid special pages can be found at [[Special:SpecialPages]].",
 # General errors
 'error'              => 'ਗਲਤੀ',
 'databaseerror'      => 'ਡਾਟਾਬੇਸ ਗਲਤੀ',
+'nodb'               => 'ਡਾਟਾਬੇਸ $1 ਚੁਣਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ',
 'readonly'           => 'ਡਾਟਾਬੇਸ ਲਾਕ ਹੈ',
 'internalerror'      => 'ਅੰਦਰੂਨੀ ਗਲਤੀ',
 'internalerror_info' => 'ਅੰਦਰੂਨੀ ਗਲਤੀ: $1',
@@ -277,14 +273,16 @@ A list of valid special pages can be found at [[Special:SpecialPages]].",
 'viewsourcefor'      => '$1 ਲਈ',
 
 # Login and logout pages
-'logouttext'                 => "'''ਹੁਣ ਤੁਸੀਂ ਲਾਗਆਉਟ ਹੋ ਗਏ ਹੋ।'''<br />
+'logouttitle'                => 'ਯੂਜ਼ਰ ਲਾਗਆਉਟ',
+'logouttext'                 => '<strong>ਹੁਣ ਤੁਸੀਂ ਲਾਗਆਉਟ ਹੋ ਗਏ ਹੋ।</strong><br />
 You can continue to use {{SITENAME}} anonymously, or you can log in
 again as the same or as a different user. Note that some pages may
 continue to be displayed as if you were still logged in, until you clear
-your browser cache.",
+your browser cache.',
 'welcomecreation'            => "== ਜੀ ਆਇਆਂ ਨੂੰ, $1! ==
 
 Your account has been created. Don't forget to change your {{SITENAME}} preferences.",
+'loginpagetitle'             => 'ਯੂਜ਼ਰ ਲਾਗਇਨ',
 'yourname'                   => 'ਯੂਜ਼ਰ ਨਾਂ:',
 'yourpassword'               => 'ਪਾਸਵਰਡ:',
 'yourpasswordagain'          => 'ਪਾਸਵਰਡ ਮੁੜ-ਲਿਖੋ:',
@@ -305,7 +303,17 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'createaccountmail'          => 'ਈਮੇਲ ਨਾਲ',
 'badretype'                  => 'ਤੁਹਾਡੇ ਵਲੋਂ ਦਿੱਤੇ ਪਾਸਵਰਡ ਮਿਲਦੇ ਨਹੀਂ ਹਨ।',
 'userexists'                 => 'ਯੂਜ਼ਰ, ਜੋ ਦਿੱਤਾ ਹੈ, ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਜਾ ਰਿਹਾ ਹੈ। ਇੱਕ ਵੱਖਰਾ ਨਾਂ ਚੁਣੋ ਜੀ।',
+'youremail'                  => 'ਈਮੇਲ:',
+'username'                   => 'ਯੂਜ਼ਰ ਨਾਂ:',
+'uid'                        => 'ਯੂਜ਼ਰ ID:',
+'yourrealname'               => 'ਅਸਲੀ ਨਾਂ:',
+'yourlanguage'               => 'ਭਾਸ਼ਾ:',
+'yournick'                   => 'ਛੋਟਾ ਨਾਂ:',
+'badsiglength'               => 'ਛੋਟਾ ਨਾਂ (Nickname) ਬਹੁਤ ਲੰਮਾ ਹੋ ਗਿਆ ਹੈ, ਇਹ $1 ਅੱਖਰਾਂ ਤੋਂ ਘੱਟ ਚਾਹੀਦਾ ਹੈ।',
+'email'                      => 'ਈਮੇਲ',
+'prefs-help-realname'        => 'ਅਸਲੀ ਨਾਂ ਚੋਣਵਾਂ ਹੈ, ਅਤੇ ਜੇ ਤੁਸੀਂ ਇਹ ਦਿੱਤਾ ਹੈ ਤਾਂ ਤੁਹਾਡੇ ਕੰਮ ਵਾਸਤੇ ਗੁਣ ਦੇ ਤੌਰ ਉੱਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।',
 'loginerror'                 => 'ਲਾਗਇਨ ਗਲਤੀ',
+'prefs-help-email'           => 'ਈਮੇਲ ਐਡਰੈੱਸ ਚੋਣਵਾਂ ਹੈ, ਪਰ ਇਹ ਤੁਹਾਨੂੰ ਹੋਰਾਂ ਵਲੋਂ ਤੁਹਾਡੇ ਨਾਲ ਤੁਹਾਡੇ ਯੂਜ਼ਰ ਜਾਂ ਯੂਜ਼ਰ_ਗੱਲਬਾਤ ਰਾਹੀਂ ਬਿਨਾਂ ਤੁਹਾਡੇ ਪਛਾਣ ਦੇ ਸੰਪਰਕ ਲਈ ਮੱਦਦ ਦਿੰਦਾ ਹੈ।',
 'nocookiesnew'               => 'ਯੂਜ਼ਰ ਅਕਾਊਂਟ ਬਣਾਇਆ ਗਿਆ ਹੈ, ਪਰ ਤੁਸੀਂ ਲਾਗਇਨ ਨਹੀਂ ਕੀਤਾ ਹੈ।{{SITENAME}} uses cookies to log in users. You have cookies disabled. Please enable them, then log in with your new username and password.',
 'nocookieslogin'             => '{{SITENAME}} ਯੂਜ਼ਰਾਂ ਨੂੰ ਲਾਗਇਨ ਕਰਨ ਲਈ ਕੂਕੀਜ਼ ਵਰਤਦੀ ਹੈ। ਤੁਹਾਡੇ ਕੂਕੀਜ਼ ਆਯੋਗ ਕੀਤੇ ਹੋਏ ਹਨ। ਉਨ੍ਹਾਂ ਨੂੰ ਯੋਗ ਕਰਕੇ ਮੁੜ ਟਰਾਈ ਕਰੋ।',
 'noname'                     => 'ਤੁਸੀਂ ਇੱਕ ਵੈਧ ਯੂਜ਼ਰ ਨਾਂ ਨਹੀਂ ਦਿੱਤਾ ਹੈ।',
@@ -344,15 +352,16 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'loginlanguagelabel'         => 'ਭਾਸ਼ਾ: $1',
 
 # Password reset dialog
-'resetpass'           => 'ਅਕਾਊਂਟ ਪਾਸਵਰਡ ਰੀ-ਸੈੱਟ ਕਰੋ',
-'resetpass_announce'  => 'ਤੁਸੀਂ ਇੱਕ ਆਰਜ਼ੀ ਈ-ਮੇਲ ਕੀਤੇ ਕੋਡ ਨਾਲ ਲਾਗਇਨ ਕੀਤਾ ਹੈ। ਲਾਗਇਨ ਪੂਰਾ ਕਰਨ ਲਈ, ਤੁਹਾਨੂੰ ਇੱਥੇ ਨਵਾਂ ਪਾਸਵਰਡ ਦੇਣਾ ਪਵੇਗਾ:',
-'resetpass_header'    => 'ਪਾਸਵਰਡ ਰੀ-ਸੈੱਟ ਕਰੋ',
-'oldpassword'         => 'ਪੁਰਾਣਾ ਪਾਸਵਰਡ:',
-'newpassword'         => 'ਨਵਾਂ ਪਾਸਵਰਡ:',
-'retypenew'           => 'ਨਵਾਂ ਪਾਸਵਰਡ ਮੁੜ-ਲਿਖੋ:',
-'resetpass_submit'    => 'ਪਾਸਵਰਡ ਸੈੱਟ ਕਰੋ ਅਤੇ ਲਾਗਇਨ ਕਰੋ',
-'resetpass_success'   => 'ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਠੀਕ ਤਰਾਂ ਬਦਲਿਆ ਗਿਆ ਹੈ! ਹੁਣ ਤੁਸੀਂ ਲਾਗਇਨ ਕਰ ਸਕਦੇ ਹੋ...',
-'resetpass_forbidden' => 'ਇਹ ਵਿਕਿ ਲਈ ਪਾਸਵਰਡ ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।',
+'resetpass'               => 'ਅਕਾਊਂਟ ਪਾਸਵਰਡ ਰੀ-ਸੈੱਟ ਕਰੋ',
+'resetpass_announce'      => 'ਤੁਸੀਂ ਇੱਕ ਆਰਜ਼ੀ ਈ-ਮੇਲ ਕੀਤੇ ਕੋਡ ਨਾਲ ਲਾਗਇਨ ਕੀਤਾ ਹੈ। ਲਾਗਇਨ ਪੂਰਾ ਕਰਨ ਲਈ, ਤੁਹਾਨੂੰ ਇੱਥੇ ਨਵਾਂ ਪਾਸਵਰਡ ਦੇਣਾ ਪਵੇਗਾ:',
+'resetpass_header'        => 'ਪਾਸਵਰਡ ਰੀ-ਸੈੱਟ ਕਰੋ',
+'oldpassword'             => 'ਪੁਰਾਣਾ ਪਾਸਵਰਡ:',
+'newpassword'             => 'ਨਵਾਂ ਪਾਸਵਰਡ:',
+'retypenew'               => 'ਨਵਾਂ ਪਾਸਵਰਡ ਮੁੜ-ਲਿਖੋ:',
+'resetpass_submit'        => 'ਪਾਸਵਰਡ ਸੈੱਟ ਕਰੋ ਅਤੇ ਲਾਗਇਨ ਕਰੋ',
+'resetpass_success'       => 'ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਠੀਕ ਤਰਾਂ ਬਦਲਿਆ ਗਿਆ ਹੈ! ਹੁਣ ਤੁਸੀਂ ਲਾਗਇਨ ਕਰ ਸਕਦੇ ਹੋ...',
+'resetpass_bad_temporary' => 'ਗਲਤ ਆਰਜ਼ੀ ਪਾਸਵਰਡ ਹੈ। ਤੁਸੀਂ ਸ਼ਾਇਦ ਪਹਿਲਾਂ ਹੀ ਆਪਣਾ ਪਾਸਵਰਡ ਬਦਲ ਚੁੱਕੇ ਹੋ ਜਾਂ ਇੱਕ ਨਵੇਂ ਆਰਜ਼ੀ ਪਾਸਵਰਡ ਦੀ ਮੰਗ ਭੇਜੀ ਹੈ।',
+'resetpass_forbidden'     => 'ਇਹ ਵਿਕਿ ਲਈ ਪਾਸਵਰਡ ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।',
 
 # Edit page toolbar
 'bold_sample'     => 'ਬੋਲਡ ਟੈਕਸਟ',
@@ -385,6 +394,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'blockedtitle'           => 'ਯੂਜ਼ਰ ਬਲਾਕ ਕੀਤਾ ਗਿਆ',
 'whitelistedittitle'     => 'ਸੋਧਣ ਲਈ ਲਾਗਇਨ ਕਰਨਾ ਪਵੇਗਾ',
 'whitelistedittext'      => 'ਪੇਜ ਸੋਧਣ ਲਈ ਤੁਹਾਨੂੰ $1 ਕਰਨਾ ਪਵੇਗਾ।',
+'confirmedittitle'       => 'ਐਡੀਟ ਕਰਨ ਲਈ ਈਮੇਲ ਕਨਫਰਮੇਸ਼ਨ ਦੀ ਲੋੜ ਹੈ',
 'nosuchsectiontitle'     => 'ਇੰਝ ਦਾ ਕੋਈ ਸ਼ੈਕਸ਼ਨ ਨਹੀਂ ਹੈ।',
 'loginreqtitle'          => 'ਲਾਗਇਨ ਚਾਹੀਦਾ ਹੈ',
 'loginreqlink'           => 'ਲਾਗਇਨ',
@@ -393,8 +403,8 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'accmailtext'            => '"$1" ਲਈ ਪਾਸਵਰਡ $2 ਨੂੰ ਭੇਜਿਆ ਗਿਆ।',
 'newarticle'             => '(ਨਵਾਂ)',
 'updated'                => '(ਅੱਪਡੇਟ)',
-'note'                   => "'''ਨੋਟ:'''",
-'previewnote'            => "'''ਇਹ ਸਿਰਫ਼ ਇੱਕ ਝਲਕ ਹੈ; ਬਦਲਾਅ ਹਾਲੇ ਸੰਭਾਲੇ ਨਹੀਂ ਗਏ ਹਨ!'''",
+'note'                   => '<strong>ਨੋਟ:</strong>',
+'previewnote'            => '<strong>ਇਹ ਸਿਰਫ਼ ਇੱਕ ਝਲਕ ਹੈ; ਬਦਲਾਅ ਹਾਲੇ ਸੰਭਾਲੇ ਨਹੀਂ ਗਏ ਹਨ!</strong>',
 'editing'                => '$1 ਸੋਧਿਆ ਜਾ ਰਿਹਾ ਹੈ',
 'editingsection'         => '$1 (ਸ਼ੈਕਸ਼ਨ) ਸੋਧ',
 'editingcomment'         => '$1 (ਟਿੱਪਣੀ) ਸੋਧ',
@@ -425,6 +435,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'last'                => 'ਆਖਰੀ',
 'page_first'          => 'ਪਹਿਲਾਂ',
 'page_last'           => 'ਆਖਰੀ',
+'deletedrev'          => '[ਹਟਾਇਆ]',
 'histfirst'           => 'ਸਭ ਤੋਂ ਪਹਿਲਾਂ',
 'histlast'            => 'ਸਭ ਤੋਂ ਨਵਾਂ',
 'historysize'         => '($1 ਬਾਈਟ)',
@@ -453,8 +464,6 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'lineno'                  => 'ਲਾਈਨ $1:',
 'compareselectedversions' => 'ਚੁਣੇ ਵਰਜਨਾਂ ਦੀ ਤੁਲਨਾ',
 'editundo'                => 'ਵਾਪਸ(undo)',
-'diff-width'              => 'ਚੌੜਾਈ',
-'diff-height'             => 'ਉਚਾਈ',
 
 # Search results
 'searchresults'         => 'ਖੋਜ ਨਤੀਜੇ',
@@ -466,58 +475,53 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'notitlematches'        => 'ਕੋਈ ਪੇਜ ਟਾਇਟਲ ਨਹੀਂ ਮਿਲਦਾ',
 'textmatches'           => 'ਪੇਜ ਟੈਕਸਟ ਮਿਲਦਾ',
 'notextmatches'         => 'ਕੋਈ ਪੇਜ ਟੈਕਸਟ ਨਹੀਂ ਮਿਲਦਾ',
-'prevn'                 => 'ਪਿੱਛੇ {{PLURAL:$1|$1}}',
-'nextn'                 => 'ਅੱਗੇ {{PLURAL:$1|$1}}',
+'prevn'                 => 'ਪਿੱਛੇ $1',
+'nextn'                 => 'ਅੱਗੇ $1',
 'viewprevnext'          => 'ਵੇਖੋ ($1) ($2) ($3)',
 'searchhelp-url'        => 'Help:ਸਮੱਗਰੀ',
 'searchall'             => 'ਸਭ',
 'powersearch'           => 'ਖੋਜ',
 
-# Quickbar
-'qbsettings'      => 'ਤੁਰੰਤ ਬਾਰ',
-'qbsettings-none' => 'ਕੋਈ ਨਹੀਂ',
-
 # Preferences page
-'preferences'         => 'ਮੇਰੀ ਪਸੰਦ',
-'mypreferences'       => 'ਮੇਰੀ ਪਸੰਦ',
-'prefs-edits'         => 'ਸੋਧਾਂ ਦੀ ਗਿਣਤੀ:',
-'prefsnologin'        => 'ਲਾਗਇਨ ਨਹੀਂ',
-'prefsnologintext'    => 'ਯੂਜ਼ਰ ਪਸੰਦ ਸੈੱਟ ਕਰਨ ਲਈ ਤੁਹਾਨੂੰ [[Special:UserLogin|logged in]] ਕਰਨਾ ਪਵੇਗਾ।',
-'changepassword'      => 'ਪਾਸਵਰਡ ਬਦਲੋ',
-'prefs-skin'          => 'ਸਕਿਨ',
-'skin-preview'        => 'ਝਲਕ',
-'prefs-math'          => 'ਗਣਿਤ',
-'datedefault'         => 'ਕੋਈ ਪਸੰਦ ਨਹੀਂ',
-'prefs-datetime'      => 'ਮਿਤੀ ਅਤੇ ਸਮਾਂ',
-'prefs-personal'      => 'ਯੂਜ਼ਰ ਪਰੋਫਾਇਲ',
-'prefs-rc'            => 'ਤਾਜ਼ਾ ਬਦਲਾਅ',
-'prefs-watchlist'     => 'ਵਾਚ-ਲਿਸਟ',
-'prefs-misc'          => 'ਫੁਟਕਲ',
-'saveprefs'           => 'ਸੰਭਾਲੋ',
-'resetprefs'          => 'ਰੀ-ਸੈੱਟ',
-'prefs-editing'       => 'ਸੰਪਾਦਨ',
-'rows'                => 'ਕਤਾਰਾਂ:',
-'columns'             => 'ਕਾਲਮ:',
-'searchresultshead'   => 'ਖੋਜ',
-'resultsperpage'      => 'ਪ੍ਰਤੀ ਪੇਜ ਹਿੱਟ:',
-'savedprefs'          => 'ਤੁਹਾਡੀ ਪਸੰਦ ਸੰਭਾਲੀ ਗਈ ਹੈ।',
-'timezonelegend'      => 'ਟਾਈਮ ਜ਼ੋਨ',
-'localtime'           => 'ਲੋਕਲ ਟਾਈਮ',
-'servertime'          => 'ਸਰਵਰ ਟਾਈਮ',
-'guesstimezone'       => 'ਬਰਾਊਜ਼ਰ ਤੋਂ ਭਰੋ',
-'allowemail'          => 'ਹੋਰ ਯੂਜ਼ਰਾਂ ਤੋਂ ਈਮੇਲ ਯੋਗ ਕਰੋ',
-'default'             => 'ਡਿਫਾਲਟ',
-'prefs-files'         => 'ਫਾਇਲਾਂ',
-'youremail'           => 'ਈਮੇਲ:',
-'username'            => 'ਯੂਜ਼ਰ ਨਾਂ:',
-'uid'                 => 'ਯੂਜ਼ਰ ID:',
-'yourrealname'        => 'ਅਸਲੀ ਨਾਂ:',
-'yourlanguage'        => 'ਭਾਸ਼ਾ:',
-'yournick'            => 'ਛੋਟਾ ਨਾਂ:',
-'badsiglength'        => 'ਛੋਟਾ ਨਾਂ (Nickname) ਬਹੁਤ ਲੰਮਾ ਹੋ ਗਿਆ ਹੈ, ਇਹ $1 ਅੱਖਰਾਂ ਤੋਂ ਘੱਟ ਚਾਹੀਦਾ ਹੈ।',
-'email'               => 'ਈਮੇਲ',
-'prefs-help-realname' => 'ਅਸਲੀ ਨਾਂ ਚੋਣਵਾਂ ਹੈ, ਅਤੇ ਜੇ ਤੁਸੀਂ ਇਹ ਦਿੱਤਾ ਹੈ ਤਾਂ ਤੁਹਾਡੇ ਕੰਮ ਵਾਸਤੇ ਗੁਣ ਦੇ ਤੌਰ ਉੱਤੇ ਵਰਤਿਆ ਜਾਵੇਗਾ।',
-'prefs-help-email'    => 'ਈਮੇਲ ਐਡਰੈੱਸ ਚੋਣਵਾਂ ਹੈ, ਪਰ ਇਹ ਤੁਹਾਨੂੰ ਹੋਰਾਂ ਵਲੋਂ ਤੁਹਾਡੇ ਨਾਲ ਤੁਹਾਡੇ ਯੂਜ਼ਰ ਜਾਂ ਯੂਜ਼ਰ_ਗੱਲਬਾਤ ਰਾਹੀਂ ਬਿਨਾਂ ਤੁਹਾਡੇ ਪਛਾਣ ਦੇ ਸੰਪਰਕ ਲਈ ਮੱਦਦ ਦਿੰਦਾ ਹੈ।',
+'preferences'           => 'ਮੇਰੀ ਪਸੰਦ',
+'mypreferences'         => 'ਮੇਰੀ ਪਸੰਦ',
+'prefs-edits'           => 'ਸੋਧਾਂ ਦੀ ਗਿਣਤੀ:',
+'prefsnologin'          => 'ਲਾਗਇਨ ਨਹੀਂ',
+'prefsnologintext'      => 'ਯੂਜ਼ਰ ਪਸੰਦ ਸੈੱਟ ਕਰਨ ਲਈ ਤੁਹਾਨੂੰ [[Special:UserLogin|logged in]] ਕਰਨਾ ਪਵੇਗਾ।',
+'prefsreset'            => 'ਪਸੰਦੀ ਸਟੋਰੇਜ਼ ਤੋਂ ਮੁੜ-ਸੈੱਟ ਕੀਤੀ ਗਈ ਹੈ।',
+'qbsettings'            => 'ਤੁਰੰਤ ਬਾਰ',
+'qbsettings-none'       => 'ਕੋਈ ਨਹੀਂ',
+'changepassword'        => 'ਪਾਸਵਰਡ ਬਦਲੋ',
+'skin'                  => 'ਸਕਿਨ',
+'skin-preview'          => 'ਝਲਕ',
+'math'                  => 'ਗਣਿਤ',
+'dateformat'            => 'ਮਿਤੀ ਫਾਰਮੈਟ',
+'datedefault'           => 'ਕੋਈ ਪਸੰਦ ਨਹੀਂ',
+'datetime'              => 'ਮਿਤੀ ਅਤੇ ਸਮਾਂ',
+'math_failure'          => 'ਪਾਰਸ ਕਰਨ ਲਈ ਫੇਲ੍ਹ',
+'math_unknown_error'    => 'ਅਣਜਾਣ ਗਲਤੀ',
+'math_unknown_function' => 'ਅਣਜਾਣ ਫੰਕਸ਼ਨ',
+'math_lexing_error'     => 'lexing ਗਲਤੀ',
+'math_syntax_error'     => 'ਸੰਟੈਕਸ ਗਲਤੀ',
+'prefs-personal'        => 'ਯੂਜ਼ਰ ਪਰੋਫਾਇਲ',
+'prefs-rc'              => 'ਤਾਜ਼ਾ ਬਦਲਾਅ',
+'prefs-watchlist'       => 'ਵਾਚ-ਲਿਸਟ',
+'prefs-misc'            => 'ਫੁਟਕਲ',
+'saveprefs'             => 'ਸੰਭਾਲੋ',
+'resetprefs'            => 'ਰੀ-ਸੈੱਟ',
+'textboxsize'           => 'ਸੰਪਾਦਨ',
+'rows'                  => 'ਕਤਾਰਾਂ:',
+'columns'               => 'ਕਾਲਮ:',
+'searchresultshead'     => 'ਖੋਜ',
+'resultsperpage'        => 'ਪ੍ਰਤੀ ਪੇਜ ਹਿੱਟ:',
+'savedprefs'            => 'ਤੁਹਾਡੀ ਪਸੰਦ ਸੰਭਾਲੀ ਗਈ ਹੈ।',
+'timezonelegend'        => 'ਟਾਈਮ ਜ਼ੋਨ',
+'localtime'             => 'ਲੋਕਲ ਟਾਈਮ',
+'servertime'            => 'ਸਰਵਰ ਟਾਈਮ',
+'guesstimezone'         => 'ਬਰਾਊਜ਼ਰ ਤੋਂ ਭਰੋ',
+'allowemail'            => 'ਹੋਰ ਯੂਜ਼ਰਾਂ ਤੋਂ ਈਮੇਲ ਯੋਗ ਕਰੋ',
+'default'               => 'ਡਿਫਾਲਟ',
+'files'                 => 'ਫਾਇਲਾਂ',
 
 # User rights
 'userrights-lookup-user'   => 'ਯੂਜ਼ਰ ਗਰੁੱਪ ਦੇਖਭਾਲ',
@@ -550,9 +554,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'rc_categories_any' => 'ਕੋਈ ਵੀ',
 
 # Recent changes linked
-'recentchangeslinked'         => 'ਸਬੰਧਿਤ ਬਦਲਾਅ',
-'recentchangeslinked-feed'    => 'ਸਬੰਧਿਤ ਬਦਲਾਅ',
-'recentchangeslinked-toolbox' => 'ਸਬੰਧਿਤ ਬਦਲਾਅ',
+'recentchangeslinked' => 'ਸਬੰਧਿਤ ਬਦਲਾਅ',
 
 # Upload
 'upload'               => 'ਫਾਇਲ ਅੱਪਲੋਡ ਕਰੋ',
@@ -575,11 +577,11 @@ to upload files.',
 'minlength1'           => 'ਫਾਇਲ ਨਾਂ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਅੱਖਰ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।',
 'badfilename'          => 'ਫਾਇਲ ਨਾਂ "$1" ਬਦਲਿਆ ਗਿਆ ਹੈ।',
 'filetype-missing'     => 'ਫਾਇਲ ਦੀ ਕੋਈ ਐਕਸ਼ਟੇਸ਼ਨ ਨਹੀਂ ਹੈ (ਜਿਵੇਂ ".jpg").',
-'fileexists'           => "ਇਹ ਫਾਇਲ ਨਾਂ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਹ ਬਦਲਣ ਬਾਰੇ ਜਾਣਦੇ ਨਹੀਂ ਹੋ ਤਾਂ  '''<tt>$1</tt>''' ਵੇਖੋ ਜੀ।",
-'fileexists-extension' => "ਇਸ ਨਾਂ ਨਾਲ ਰਲਦੀ ਫਾਇਲ ਮੌਜੂਦ ਹੈ:<br />
-ਅੱਪਲੋਡ ਕੀਤੀ ਫਾਇਲ ਦਾ ਨਾਂ: '''<tt>$1</tt>'''<br />
-ਮੌਜੂਦ ਫਾਇਲ ਦਾ ਨਾਂ: '''<tt>$2</tt>'''<br />
-ਇੱਕ ਵੱਖਰਾ ਨਾਂ ਚੁਣੋ ਜੀ",
+'fileexists'           => 'ਇਹ ਫਾਇਲ ਨਾਂ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਹ ਬਦਲਣ ਬਾਰੇ ਜਾਣਦੇ ਨਹੀਂ ਹੋ ਤਾਂ  <strong><tt>$1</tt></strong> ਵੇਖੋ ਜੀ।',
+'fileexists-extension' => 'ਇਸ ਨਾਂ ਨਾਲ ਰਲਦੀ ਫਾਇਲ ਮੌਜੂਦ ਹੈ:<br />
+ਅੱਪਲੋਡ ਕੀਤੀ ਫਾਇਲ ਦਾ ਨਾਂ: <strong><tt>$1</tt></strong><br />
+ਮੌਜੂਦ ਫਾਇਲ ਦਾ ਨਾਂ: <strong><tt>$2</tt></strong><br />
+ਇੱਕ ਵੱਖਰਾ ਨਾਂ ਚੁਣੋ ਜੀ',
 'fileexists-thumb'     => "<center>'''ਮੌਜੂਦ ਚਿੱਤਰ'''</center>",
 'successfulupload'     => 'ਠੀਕ ਤਰ੍ਹਾਂ ਅੱਪਲੋਡ',
 'uploadwarning'        => 'ਅੱਪਲੋਡ ਚੇਤਾਵਨੀ',
@@ -588,7 +590,7 @@ to upload files.',
 'uploaddisabled'       => 'ਅੱਪਲੋਡ ਆਯੋਗ ਹੈ',
 'uploadvirus'          => 'ਇਹ ਫਾਇਲ ਵਿੱਚ ਵਾਇਰਸ ਹੈ! ਵੇਰਵੇ ਲਈ ਵੇਖੋ: $1',
 'sourcefilename'       => 'ਸੋਰਸ ਫਾਇਲ ਨਾਂ:',
-'watchthisupload'      => 'ਇਸ ਫਾਇਲ ਨੂੰ ਵਾਚ ਕਰੋ',
+'watchthisupload'      => 'ਇਹ ਪੇਜ ਵਾਚ ਕਰੋ',
 
 'upload-file-error' => 'ਅੰਦਰੂਨੀ ਗਲਤੀ',
 'upload-misc-error' => 'ਅਣਜਾਣ ਅੱਪਲੋਡ ਗਲਤੀ',
@@ -611,7 +613,6 @@ to upload files.',
 'listfiles_description' => 'ਵੇਰਵਾ',
 
 # File description page
-'file-anchor-link'          => 'ਫਾਇਲ',
 'filehist'                  => 'ਫਾਇਲ ਅਤੀਤ',
 'filehist-deleteall'        => 'ਸਭ ਹਟਾਓ',
 'filehist-deleteone'        => 'ਇਹ ਹਟਾਓ',
@@ -623,6 +624,7 @@ to upload files.',
 'filehist-filesize'         => 'ਫਾਇਲ ਆਕਾਰ',
 'filehist-comment'          => 'ਟਿੱਪਣੀ',
 'imagelinks'                => 'ਲਿੰਕ',
+'noimage-linktext'          => 'ਇਹ ਅੱਪਲੋਡ',
 'uploadnewversion-linktext' => 'ਇਸ ਫਾਇਲ ਦਾ ਇੱਕ ਨਵਾਂ ਵਰਜਨ ਅੱਪਲੋਡ ਕਰੋ',
 
 # File reversion
@@ -648,8 +650,8 @@ to upload files.',
 'statistics-header-users' => 'ਯੂਜ਼ਰ ਅੰਕੜੇ',
 'statistics-mostpopular'  => 'ਸਭ ਤੋਂ ਵੱਧ ਵੇਖੇ ਪੇਜ',
 
-'brokenredirects-edit'   => 'ਸੋਧ',
-'brokenredirects-delete' => 'ਹਟਾਓ',
+'brokenredirects-edit'   => '(ਸੋਧ)',
+'brokenredirects-delete' => '(ਹਟਾਓ)',
 
 # Miscellaneous special pages
 'unusedcategories'  => 'ਅਣਵਰਤੀਆਂ ਕੈਟਾਗਰੀਆਂ',
@@ -760,10 +762,9 @@ to upload files.',
 'restriction-level-all'           => 'ਕੋਈ ਲੈਵਲ',
 
 # Undelete
-'undeletebtn'               => 'ਰੀਸਟੋਰ',
-'undeletereset'             => 'ਰੀ-ਸੈੱਟ',
-'undeletecomment'           => 'ਟਿੱਪਣੀ:',
-'undelete-show-file-submit' => 'ਹਾਂ',
+'undeletebtn'     => 'ਰੀਸਟੋਰ',
+'undeletereset'   => 'ਰੀ-ਸੈੱਟ',
+'undeletecomment' => 'ਟਿੱਪਣੀ:',
 
 # Namespace form on various pages
 'invert'         => 'ਉਲਟ ਚੋਣ',
@@ -775,7 +776,6 @@ to upload files.',
 'contribsub2'   => '$1 ($2) ਲਈ',
 
 'sp-contributions-newbies-sub' => 'ਨਵੇਂ ਅਕਾਊਂਟਾਂ ਲਈ',
-'sp-contributions-talk'        => 'ਗੱਲਬਾਤ',
 'sp-contributions-username'    => 'IP ਐਡਰੈੱਸ ਜਾਂ ਯੂਜ਼ਰ ਨਾਂ:',
 'sp-contributions-submit'      => 'ਖੋਜ',
 
@@ -802,12 +802,11 @@ to upload files.',
 'ipblocklist-submit'   => 'ਖੋਜ',
 'blocklistline'        => '$1, $2 ਬਲਾਕ $3 ($4)',
 'infiniteblock'        => 'ਬੇਅੰਤ',
-'expiringblock'        => '$1 $2 ਮਿਆਦ ਖਤਮ',
+'expiringblock'        => '$1 ਮਿਆਦ ਖਤਮ',
 'anononlyblock'        => 'anon. ਹੀ',
 'emailblock'           => 'ਈਮੇਲ ਬਲਾਕ ਹੈ',
 'blocklink'            => 'ਬਲਾਕ',
 'unblocklink'          => 'ਅਣ-ਬਲਾਕ',
-'contribslink'         => 'ਯੋਗਦਾਨ',
 'proxyblocksuccess'    => 'ਪੂਰਾ ਹੋਇਆ',
 
 # Developer tools
@@ -817,7 +816,7 @@ to upload files.',
 'move-page-legend' => 'ਪੇਜ ਮੂਵ ਕਰੋ',
 'movearticle'      => 'ਪੇਜ ਮੂਵ ਕਰੋ:',
 'movenologin'      => 'ਲਾਗਇਨ ਨਹੀਂ ਹੋ',
-'movenologintext'  => 'ਇੱਕ ਪੇਜ ਮੂਵ ਕਰਨ ਲਈ ਤੁਸੀਂ ਰਜਿਸਟਰਡ ਮੈਂਬਰ ਹੋਣੇ ਚਾਹੀਦੇ ਹੋ ਅਤੇ [[Special:UserLogin|ਲਾਗਡ ਇਨ]] ਕੀਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।',
+'movenologintext'  => 'ਇੱਕ ਪੇਜ ਮੂਵ ਕਰਨ ਲਈ ਤੁਸੀਂ ਰਜਿਸਟਰਡ ਯੂਜ਼ਰ ਹੋਣੇ ਚਾਹੀਦੇ ਹੋ ਅਤੇ [[Special:UserLogin|logged in]] ਕੀਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।',
 'newtitle'         => 'ਨਵੇਂ ਟਾਇਟਲ ਲਈ:',
 'move-watch'       => 'ਇਹ ਪੇਜ ਵਾਚ ਕਰੋ',
 'movepagebtn'      => 'ਪੇਜ ਮੂਵ ਕਰੋ',
@@ -857,8 +856,8 @@ to upload files.',
 'import-logentry-upload-detail' => '$1 ਰੀਵਿਜ਼ਨ',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage'        => 'ਤੁਹਾਡਾ ਯੂਜ਼ਰ ਪੇਜ',
-'tooltip-pt-mytalk'          => 'ਤੁਹਾਡਾ ਚਰਚਾ ਪੇਜ',
+'tooltip-pt-userpage'        => 'ਮੇਰਾ ਯੂਜ਼ਰ ਪੇਜ',
+'tooltip-pt-mytalk'          => 'ਮੇਰਾ ਗੱਲਬਾਤ ਪੇਜ',
 'tooltip-pt-preferences'     => 'ਮੇਰੀ ਪਸੰਧ',
 'tooltip-pt-mycontris'       => 'ਮੇਰੇ ਯੋਗਦਾਨ ਦੀ ਲਿਸਟ',
 'tooltip-pt-logout'          => 'ਲਾਗ ਆਉਟ',
@@ -901,13 +900,6 @@ to upload files.',
 'skinname-myskin'   => 'ਮੇਰੀਸਕਿਨ',
 'skinname-chick'    => 'ਚੀਚਕ',
 'skinname-simple'   => 'ਸੈਂਪਲ',
-
-# Math errors
-'math_failure'          => 'ਪਾਰਸ ਕਰਨ ਲਈ ਫੇਲ੍ਹ',
-'math_unknown_error'    => 'ਅਣਜਾਣ ਗਲਤੀ',
-'math_unknown_function' => 'ਅਣਜਾਣ ਫੰਕਸ਼ਨ',
-'math_lexing_error'     => 'lexing ਗਲਤੀ',
-'math_syntax_error'     => 'ਸੰਟੈਕਸ ਗਲਤੀ',
 
 # Patrol log
 'patrol-log-auto' => '(ਆਟੋਮੈਟਿਕ)',
@@ -968,7 +960,7 @@ to upload files.',
 'exif-subjectdistancerange-1' => 'ਮਾਈਕਰੋ',
 'exif-subjectdistancerange-2' => 'ਝਲਕ ਬੰਦ ਕਰੋ',
 
-# Pseudotags used for GPSSpeedRef
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
 'exif-gpsspeed-k' => 'ਕਿਲੋਮੀਟਰ ਪ੍ਰਤੀ ਘੰਟਾ',
 'exif-gpsspeed-m' => 'ਮੀਲ ਪ੍ਰਤੀ ਘੰਟਾ',
 
@@ -988,10 +980,10 @@ to upload files.',
 'confirmemail_subject'  => '{{SITENAME}} ਈਮੇਲ ਐਡਰੈੱਸ ਪੁਸ਼ਟੀ',
 
 # Scary transclusion
-'scarytranscludetoolong' => '[ਅਫਸੋਸ ਹੈ ਕਿ URL ਬਹੁਤ ਲੰਮਾ ਹੈ]',
+'scarytranscludetoolong' => '[URL ਬਹੁਤ ਲੰਮਾ ਹੈ; ਅਫਸੋਸ ਹੈ]',
 
 # Trackbacks
-'trackbackremove' => '([$1 ਹਟਾਓ])',
+'trackbackremove' => ' ([$1 ਹਟਾਓ])',
 'trackbacklink'   => 'ਟਰੈਕਬੈਕ',
 
 # Delete conflict
@@ -1015,8 +1007,8 @@ to upload files.',
 'table_pager_empty'        => 'ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ',
 
 # Auto-summaries
-'autosumm-blank' => 'ਪੇਜ ਨੂੰ ਖਾਲੀ ਕਰ ਦਿੱਤਾ',
-'autosumm-new'   => '$1 ਨਾਲ ਪੇਜ ਬਣਾਇਆ',
+'autosumm-blank' => 'ਪੇਜ ਤੋਂ ਸਭ ਸਮੱਗਰੀ ਹਟਾਓ',
+'autosumm-new'   => 'ਨਵਾਂ ਪੇਜ: $1',
 
 # Live preview
 'livepreview-loading' => 'ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…',
@@ -1028,13 +1020,10 @@ to upload files.',
 'watchlistedit-raw-removed' => '{{PLURAL:$1|1 title was|$1 titles were}} ਹਟਾਓ:',
 
 # Special:Version
-'version' => 'ਵਰਜਨ',
+'version' => 'ਵਰਜਨ', # Not used as normal message but as header for the special page itself
 
 # Special:SpecialPages
 'specialpages'             => 'ਖਾਸ ਪੇਜ',
 'specialpages-group-login' => 'ਲਾਗ ਇਨ / ਅਕਾਊਂਟ ਬਣਾਓ',
-
-# Special:BlankPage
-'blankpage' => 'ਖ਼ਾਲੀ ਪੇਜ',
 
 );

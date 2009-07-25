@@ -24,7 +24,7 @@ class CheckLanguageCLI {
 	public function __construct( Array $options ) {
 		if ( isset( $options['help'] ) ) {
 			echo $this->help();
-			exit(1);
+			exit();
 		}
 
 		if ( isset( $options['lang'] ) ) {
@@ -110,7 +110,7 @@ class CheckLanguageCLI {
 			'untranslated' => 'getUntranslatedMessages',
 			'duplicate'    => 'getDuplicateMessages',
 			'obsolete'     => 'getObsoleteMessages',
-			'variables'    => 'getMessagesWithMismatchVariables',
+			'variables'    => 'getMessagesWithoutVariables',
 			'plural'       => 'getMessagesWithoutPlural',
 			'empty'        => 'getEmptyMessages',
 			'whitespace'   => 'getMessagesWithWhitespace',
@@ -157,7 +157,7 @@ class CheckLanguageCLI {
 			'untranslated' => '$1 message(s) of $2 are not translated to $3, but exist in en:',
 			'duplicate'    => '$1 message(s) of $2 are translated the same in en and $3:',
 			'obsolete'     => '$1 message(s) of $2 do not exist in en or are in the ignore list, but exist in $3:',
-			'variables'    => '$1 message(s) of $2 in $3 don\'t match the variables used in en:',
+			'variables'    => '$1 message(s) of $2 in $3 don\'t use some variables that en uses:',
 			'plural'       => '$1 message(s) of $2 in $3 don\'t use {{plural}} while en uses:',
 			'empty'        => '$1 message(s) of $2 in $3 are empty or -:',
 			'whitespace'   => '$1 message(s) of $2 in $3 have trailing whitespace:',
@@ -199,7 +199,7 @@ Check codes (ideally, all of them should result 0; all the checks are executed b
 	* untranslated: Messages which are required to translate, but are not translated.
 	* duplicate: Messages which translation equal to fallback
 	* obsolete: Messages which are untranslatable or do not exist, but are translated.
-	* variables: Messages without variables which should be used, or with variables which shouldn't be used.
+	* variables: Messages without variables which should be used.
 	* empty: Empty messages and messages that contain only -.
 	* whitespace: Messages which have trailing whitespace.
 	* xhtml: Messages which are not well-formed XHTML (checks only few common errors).
@@ -418,7 +418,7 @@ ENDS;
 
 		$tableRows = implode( "\n|-\n", $rows );
 
-		$version = SpecialVersion::getVersion( 'nodb' );
+		$version = SpecialVersion::getVersion( $IP );
 		echo <<<EOL
 '''Check results are for:''' <code>$version</code>
 
@@ -459,7 +459,7 @@ class CheckExtensionsCLI extends CheckLanguageCLI {
 	public function __construct( Array $options, $extension ) {
 		if ( isset( $options['help'] ) ) {
 			echo $this->help();
-			exit(1);
+			exit();
 		}
 
 		if ( isset( $options['lang'] ) ) {
@@ -587,7 +587,7 @@ Check codes (ideally, all of them should result 0; all the checks are executed b
 	* untranslated: Messages which are required to translate, but are not translated.
 	* duplicate: Messages which translation equal to fallback
 	* obsolete: Messages which are untranslatable, but translated.
-	* variables: Messages without variables which should be used, or with variables which should not be used.
+	* variables: Messages without variables which should be used.
 	* empty: Empty messages.
 	* whitespace: Messages which have trailing whitespace.
 	* xhtml: Messages which are not well-formed XHTML (checks only few common errors).
@@ -646,8 +646,6 @@ ENDS;
 $checkBlacklist = array(
 #'code'        => array( 'check1', 'check2' ... )
 'gan'          => array( 'plural' ),
-'gan-hans'     => array( 'plural' ),
-'gan-hant'     => array( 'plural' ),
 'gn'           => array( 'plural' ),
 'hak'          => array( 'plural' ),
 'hu'           => array( 'plural' ),
@@ -657,7 +655,6 @@ $checkBlacklist = array(
 'kk-cyrl'      => array( 'plural' ),
 'kk-latn'      => array( 'plural' ),
 'ko'           => array( 'plural' ),
-'lzh'          => array( 'plural' ),
 'mn'           => array( 'plural' ),
 'ms'           => array( 'plural' ),
 'my'           => array( 'chars' ),  // Uses a lot zwnj

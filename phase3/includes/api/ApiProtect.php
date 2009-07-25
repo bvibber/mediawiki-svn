@@ -38,6 +38,7 @@ class ApiProtect extends ApiBase {
 
 	public function execute() {
 		global $wgUser, $wgRestrictionTypes, $wgRestrictionLevels;
+		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		$titleObj = NULL;
@@ -58,7 +59,7 @@ class ApiProtect extends ApiBase {
 		$errors = $titleObj->getUserPermissionsErrors('protect', $wgUser);
 		if($errors)
 			// We don't care about multiple errors, just report one of them
-			$this->dieUsageMsg(reset($errors));
+			$this->dieUsageMsg(current($errors));
 
 		$expiry = (array)$params['expiry'];
 		if(count($expiry) != count($params['protections']))
@@ -105,12 +106,10 @@ class ApiProtect extends ApiBase {
 		}
 
 		$cascade = $params['cascade'];
-		$articleObj = new Article($titleObj);
-		if($params['watch'])
-			$articleObj->doWatch();
-		if($titleObj->exists())
+		if($titleObj->exists()) {
+			$articleObj = new Article($titleObj);
 			$ok = $articleObj->updateRestrictions($protections, $params['reason'], $cascade, $expiryarray);
-		else
+		} else
 			$ok = $titleObj->updateTitleProtection($protections['create'], $params['reason'], $expiryarray['create']);
 		if(!$ok)
 			// This is very weird. Maybe the article was deleted or the user was blocked/desysopped in the meantime?
@@ -126,10 +125,6 @@ class ApiProtect extends ApiBase {
 
 	public function mustBePosted() { return true; }
 
-	public function isWriteMode() {
-		return true;
-	}
-
 	public function getAllowedParams() {
 		return array (
 			'title' => null,
@@ -143,8 +138,7 @@ class ApiProtect extends ApiBase {
 				ApiBase :: PARAM_DFLT => 'infinite',
 			),
 			'reason' => '',
-			'cascade' => false,
-			'watch' => false,
+			'cascade' => false
 		);
 	}
 
@@ -158,7 +152,6 @@ class ApiProtect extends ApiBase {
 			'reason' => 'Reason for (un)protecting (optional)',
 			'cascade' => array('Enable cascading protection (i.e. protect pages included in this page)',
 					'Ignored if not all protection levels are \'sysop\' or \'protect\''),
-			'watch' => 'If set, add the page being (un)protected to your watchlist',
 		);
 	}
 

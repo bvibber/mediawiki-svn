@@ -40,8 +40,6 @@ Options:
   --file=<testfile> Run test cases from a custom file instead of parserTests.txt
   --record         Record tests in database
   --compare        Compare with recorded results, without updating the database.
-  --setversion     When using --record, set the version string to use (useful
-                   with git-svn so that you can get the exact revision)
   --keep-uploads   Re-use the same upload directory for each test, don't delete it
   --fuzz           Do a fuzz test instead of a normal test
   --seed <n>       Start the fuzz test from the specified seed
@@ -73,5 +71,5 @@ if ( isset( $options['fuzz'] ) ) {
 	$tester->fuzzTest( $files );
 } else {
 	$ok = $tester->runTestsFromFiles( $files );
-	exit ($ok ? 0 : 1);
+	exit ($ok ? 0 : -1);
 }

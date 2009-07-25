@@ -68,6 +68,6 @@ if ( $success ) {
 	print "Done.\n";
 }
 
-exit(0);
+exit();
 
 

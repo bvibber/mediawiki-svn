@@ -16,7 +16,7 @@ echo( "Refresh Site Statistics\n\n" );
 
 if( isset( $options['help'] ) ) {
 	showHelp();
-	exit(1);
+	exit();
 }
 
 require "$IP/maintenance/initStats.inc";

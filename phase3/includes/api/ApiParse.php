@@ -51,7 +51,7 @@ class ApiParse extends ApiBase {
 
 		// The parser needs $wgTitle to be set, apparently the
 		// $title parameter in Parser::parse isn't enough *sigh*
-		global $wgParser, $wgUser, $wgTitle, $wgEnableParserCache;
+		global $wgParser, $wgUser, $wgTitle;
 		$popts = new ParserOptions();
 		$popts->setTidy(true);
 		$popts->enableLimitReport();
@@ -98,16 +98,14 @@ class ApiParse extends ApiBase {
 				if(isset($prop['revid']))
 					$oldid = $articleObj->getRevIdFetched();
 				// Try the parser cache first
-				$p_result = false;
 				$pcache = ParserCache::singleton();
-				if($wgEnableParserCache)
-					$p_result = $pcache->get($articleObj, $wgUser);
+				$p_result = $pcache->get($articleObj, $wgUser);
 				if(!$p_result)
 				{
 					$p_result = $wgParser->parse($articleObj->getContent(), $titleObj, $popts);
-					
-					if($wgEnableParserCache)
-						$pcache->save($p_result, $articleObj, $popts);
+					global $wgUseParserCache;
+					if($wgUseParserCache)
+						$pcache->save($p_result, $articleObj, $wgUser);
 				}
 			}
 		}
@@ -153,12 +151,8 @@ class ApiParse extends ApiBase {
 			$result_array['externallinks'] = array_keys($p_result->getExternalLinks());
 		if(isset($prop['sections']))
 			$result_array['sections'] = $p_result->getSections();
-		if(isset($prop['displaytitle']))
-			$result_array['displaytitle'] = $p_result->getDisplayTitle() ?
-							$p_result->getDisplayTitle() :
-							$titleObj->getPrefixedText();
 		if(!is_null($oldid))
-			$result_array['revid'] = intval($oldid);
+			$result_array['revid'] = $oldid;
 
 		$result_mapping = array(
 			'redirects' => 'r',
@@ -229,7 +223,7 @@ class ApiParse extends ApiBase {
 			'redirects' => false,
 			'oldid' => null,
 			'prop' => array(
-				ApiBase :: PARAM_DFLT => 'text|langlinks|categories|links|templates|images|externallinks|sections|revid|displaytitle',
+				ApiBase :: PARAM_DFLT => 'text|langlinks|categories|links|templates|images|externallinks|sections|revid',
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => array(
 					'text',
@@ -240,8 +234,7 @@ class ApiParse extends ApiBase {
 					'images',
 					'externallinks',
 					'sections',
-					'revid',
-					'displaytitle',
+					'revid'
 				)
 			),
 			'pst' => false,

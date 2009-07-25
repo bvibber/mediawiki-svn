@@ -6,7 +6,7 @@
  * @ingroup FileRepo
  */
 class FSRepo extends FileRepo {
-	var $directory, $deletedDir, $url, $deletedHashLevels, $fileMode;
+	var $directory, $deletedDir, $url, $deletedHashLevels;
 	var $fileFactory = array( 'UnregisteredLocalFile', 'newFromTitle' );
 	var $oldFileFactory = false;
 	var $pathDisclosureProtection = 'simple';
@@ -23,17 +23,6 @@ class FSRepo extends FileRepo {
 		$this->deletedHashLevels = isset( $info['deletedHashLevels'] ) ?
 			$info['deletedHashLevels'] : $this->hashLevels;
 		$this->deletedDir = isset( $info['deletedDir'] ) ? $info['deletedDir'] : false;
-		$this->fileMode = isset( $info['fileMode'] ) ? $info['fileMode'] : 0644;
-		if ( isset( $info['thumbDir'] ) ) {
-			$this->thumbDir =  $info['thumbDir'];
-		} else {
-			$this->thumbDir = "{$this->directory}/thumb";
-		}
-		if ( isset( $info['thumbUrl'] ) ) {
-			$this->thumbUrl = $info['thumbUrl'];
-		} else {
-			$this->thumbUrl = "{$this->url}/thumb";
-		}
 	}
 
 	/**
@@ -68,8 +57,6 @@ class FSRepo extends FileRepo {
 				return "{$this->directory}/temp";
 			case 'deleted':
 				return $this->deletedDir;
-			case 'thumb':
-				return $this->thumbDir;
 			default:
 				return false;
 		}
@@ -86,8 +73,6 @@ class FSRepo extends FileRepo {
 				return "{$this->url}/temp";
 			case 'deleted':
 				return false; // no public URL
-			case 'thumb':
-				return $this->thumbUrl;
 			default:
 				return false;
 		}
@@ -218,65 +203,13 @@ class FSRepo extends FileRepo {
 				}
 			}
 			if ( $good ) {
-				$this->chmod( $dstPath );
+				chmod( $dstPath, 0644 );
 				$status->successCount++;
 			} else {
 				$status->failCount++;
 			}
 		}
 		return $status;
-	}
-	function append( $srcPath, $toAppendPath ){
-		$status = $this->newGood();
-
-		//resolve the virtual url:
-		if ( self::isVirtualUrl( $srcPath ) ) {
-				$srcPath = $this->resolveVirtualUrl( $srcPath );
-		}
-		//make sure files are there: 
-		if ( !is_file( $srcPath ) ) 				
-			$status->fatal( 'append-src-filenotfound', $srcPath );
-			
-		if ( !is_file( $toAppendPath ) ) 				
-			$status->fatal( 'append-toappend-filenotfound', $toAppendPath );
-			
-		//do the append: 
-		if( file_put_contents( $srcPath, file_get_contents( $toAppendPath ), FILE_APPEND ) ){
-			$status->value = $srcPath;
-		}else{
-			$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
-		}
-		
-		//either way remove the append chunk as we have no use for it now:
-		unlink($toAppendPath);
-			
-		return $status;		
-	}
-	/**
-	 * Checks existence of specified array of files.
-	 *
-	 * @param array $files URLs of files to check
-	 * @param integer $flags Bitwise combination of the following flags:
-	 *     self::FILES_ONLY     Mark file as existing only if it is a file (not directory)
-	 * @return Either array of files and existence flags, or false
-	 */
-	function fileExistsBatch( $files, $flags = 0 ) {
-		if ( !file_exists( $this->directory ) || !is_readable( $this->directory ) ) {
-			return false;
-		}
-		$result = array();
-		foreach ( $files as $key => $file ) {
-			if ( self::isVirtualUrl( $file ) ) {
-				$file = $this->resolveVirtualUrl( $file );
-			}
-			if( $flags & self::FILES_ONLY ) {
-				$result[$key] = is_file( $file );
-			} else {
-				$result[$key] = file_exists( $file );
-			}
-		}
-
-		return $result;
 	}
 
 	/**
@@ -429,7 +362,7 @@ class FSRepo extends FileRepo {
 				$status->successCount++;
 				wfDebug(__METHOD__.": wrote tempfile $srcPath to $dstPath\n");
 				// Thread-safe override for umask
-				$this->chmod( $dstPath );
+				chmod( $dstPath, 0644 );
 			} else {
 				$status->failCount++;
 			}
@@ -506,7 +439,7 @@ class FSRepo extends FileRepo {
 					$status->error( 'filerenameerror', $srcPath, $archivePath );
 					$good = false;
 				} else {
-					$this->chmod( $archivePath );
+					@chmod( $archivePath, 0644 );
 				}
 			}
 			if ( $good ) {
@@ -599,16 +532,6 @@ class FSRepo extends FileRepo {
 			}
 		}
 		return strtr( $param, $this->simpleCleanPairs );
-	}
-	
-	/**
-	 * Chmod a file, supressing the warnings.
-	 * @param String $path The path to change
-	 */
-	protected function chmod( $path ) {
-		wfSuppressWarnings();
-		chmod( $path, $this->fileMode );
-		wfRestoreWarnings();
 	}
 
 }

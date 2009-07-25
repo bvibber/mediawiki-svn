@@ -10,6 +10,18 @@ class LocalRepo extends FSRepo {
 	var $fileFromRowFactory = array( 'LocalFile', 'newFromRow' );
 	var $oldFileFromRowFactory = array( 'OldLocalFile', 'newFromRow' );
 
+	function getSlaveDB() {
+		return wfGetDB( DB_SLAVE );
+	}
+
+	function getMasterDB() {
+		return wfGetDB( DB_MASTER );
+	}
+
+	function getMemcKey( $key ) {
+		return wfWikiID( $this->getSlaveDB() ) . ":{$key}";
+	}
+
 	function newFileFromRow( $row ) {
 		if ( isset( $row->img_name ) ) {
 			return call_user_func( $this->fileFromRowFactory, $row, $this );
@@ -50,7 +62,7 @@ class LocalRepo extends FSRepo {
 				$inuse = $dbw->selectField( 'oldimage', '1',
 					array( 'oi_sha1' => $sha1,
 						"oi_archive_name LIKE '%.{$ext}'",
-						$dbw->bitAnd('oi_deleted', File::DELETED_FILE) => File::DELETED_FILE ),
+						'oi_deleted & '.File::DELETED_FILE => File::DELETED_FILE ),
 					__METHOD__, array( 'FOR UPDATE' ) );
 			}
 			if ( !$inuse ) {
@@ -67,60 +79,6 @@ class LocalRepo extends FSRepo {
 		}
 		return $status;
 	}
-	
-	/**
-	 * Checks if there is a redirect named as $title
-	 *
-	 * @param Title $title Title of image
-	 */
-	function checkRedirect( $title ) {
-		global $wgMemc;
-
-		if( is_string( $title ) ) {
-			$title = Title::newFromTitle( $title );
-		}
-		if( $title instanceof Title && $title->getNamespace() == NS_MEDIA ) {
-			$title = Title::makeTitle( NS_FILE, $title->getText() );
-		}
-
-		$memcKey = $this->getSharedCacheKey( 'image_redirect', md5( $title->getPrefixedDBkey() ) );
-		if ( $memcKey === false ) {
-			$memcKey = $this->getLocalCacheKey( 'image_redirect', md5( $title->getPrefixedDBkey() ) );
-			$expiry = 300; // no invalidation, 5 minutes
-		} else {
-			$expiry = 86400; // has invalidation, 1 day
-		}
-		$cachedValue = $wgMemc->get( $memcKey );
-		if ( $cachedValue === ' '  || $cachedValue === '' ) {
-			// Does not exist
-			return false;
-		} elseif ( strval( $cachedValue ) !== '' ) {
-			return Title::newFromText( $cachedValue );
-		} // else $cachedValue is false or null: cache miss
-
-		$id = $this->getArticleID( $title );
-		if( !$id ) {
-			$wgMemc->set( $memcKey, " ", $expiry );
-			return false;
-		}
-		$dbr = $this->getSlaveDB();
-		$row = $dbr->selectRow(
-			'redirect',
-			array( 'rd_title', 'rd_namespace' ),
-			array( 'rd_from' => $id ),
-			__METHOD__
-		);
-
-		if( $row ) {
-			$targetTitle = Title::makeTitle( $row->rd_namespace, $row->rd_title );
-			$wgMemc->set( $memcKey, $targetTitle->getPrefixedDBkey(), $expiry );
-			return $targetTitle;
-		} else {
-			$wgMemc->set( $memcKey, '', $expiry );
-			return false;
-		}
-	}
-
 
 	/**
 	 * Function link Title::getArticleID().
@@ -136,17 +94,58 @@ class LocalRepo extends FSRepo {
 			'page_id',	//Field
 			array(	//Conditions
 				'page_namespace' => $title->getNamespace(),
-				'page_title' => $title->getDBkey(),
+				'page_title' => $title->getDBKey(),
 			),
 			__METHOD__	//Function name
 		);
 		return $id;
 	}
 
-	/**
-	 * Get an array or iterator of file objects for files that have a given 
-	 * SHA-1 content hash.
-	 */
+	function checkRedirect( $title ) {
+		global $wgMemc;
+
+		if( is_string( $title ) ) {
+			$title = Title::newFromTitle( $title );
+		}
+		if( $title instanceof Title && $title->getNamespace() == NS_MEDIA ) {
+			$title = Title::makeTitle( NS_FILE, $title->getText() );
+		}
+
+		$memcKey = $this->getMemcKey( "image_redirect:" . md5( $title->getPrefixedDBkey() ) );
+		$cachedValue = $wgMemc->get( $memcKey );
+		if( $cachedValue ) {
+			return Title::newFromDbKey( $cachedValue );
+		} elseif( $cachedValue == ' ' ) { # FIXME: ugly hack, but BagOStuff caching seems to be weird and return false if !cachedValue, not only if it doesn't exist
+			return false;
+		}
+
+		$id = $this->getArticleID( $title );
+		if( !$id ) {
+			$wgMemc->set( $memcKey, " ", 9000 );
+			return false;
+		}
+		$dbr = $this->getSlaveDB();
+		$row = $dbr->selectRow(
+			'redirect',
+			array( 'rd_title', 'rd_namespace' ),
+			array( 'rd_from' => $id ),
+			__METHOD__
+		);
+
+		if( $row ) $targetTitle = Title::makeTitle( $row->rd_namespace, $row->rd_title );
+		$wgMemc->set( $memcKey, ($row ? $targetTitle->getPrefixedDBkey() : " "), 9000 );
+		if( !$row ) {
+			return false;
+		}
+		return $targetTitle;
+	}
+
+	function invalidateImageRedirect( $title ) {
+		global $wgMemc;
+		$memcKey = $this->getMemcKey( "image_redirect:" . md5( $title->getPrefixedDBkey() ) );
+		$wgMemc->delete( $memcKey );
+	}
+	
 	function findBySha1( $hash ) {
 		$dbr = $this->getSlaveDB();
 		$res = $dbr->select(
@@ -185,42 +184,4 @@ class LocalRepo extends FSRepo {
 		$res->free();
 		return $result;
 	}
-
-	/**
-	 * Get a connection to the slave DB
-	 */
-	function getSlaveDB() {
-		return wfGetDB( DB_SLAVE );
-	}
-
-	/**
-	 * Get a connection to the master DB
-	 */
-	function getMasterDB() {
-		return wfGetDB( DB_MASTER );
-	}
-
-	/**
-	 * Get a key on the primary cache for this repository.
-	 * Returns false if the repository's cache is not accessible at this site. 
-	 * The parameters are the parts of the key, as for wfMemcKey().
-	 */
-	function getSharedCacheKey( /*...*/ ) {
-		$args = func_get_args();
-		return call_user_func_array( 'wfMemcKey', $args );
-	}
-
-	/**
-	 * Invalidates image redirect cache related to that image
-	 *
-	 * @param Title $title Title of image
-	 */	
-	function invalidateImageRedirect( $title ) {
-		global $wgMemc;
-		$memcKey = $this->getSharedCacheKey( 'image_redirect', md5( $title->getPrefixedDBkey() ) );
-		if ( $memcKey ) {
-			$wgMemc->delete( $memcKey );
-		}
-	}
 }
-

@@ -34,53 +34,6 @@ class ZhConverter extends LanguageConverter {
 			'zh-my'   => '大马',
 		);
 		$this->mVariantNames = array_merge($this->mVariantNames,$names);
-		$this->loadNamespaceTables();
-	}
-	
-	function loadNamespaceTables() {
-		global $wgMetaNamespace;
-		$nsproject     = $wgMetaNamespace;
-		$projecttable  = array(
-			'Wikipedia'       => '维基百科',
-			'Wikisource'      => '维基文库',
-			'Wikinews'        => '维基新闻',
-			'Wiktionary'      => '维基词典',
-			'Wikibooks'       => '维基教科书',
-			'Wikiquote'       => '维基语录',
-		);
-		$this->mNamespaceTables['zh-hans'] = array(
-			'Media'          => '媒体',
-			'Special'        => '特殊',
-			'Talk'           => '讨论',
-			'User'           => '用户',
-			'User talk'      => '用户讨论',
-			$nsproject
-					=> isset($projecttable[$nsproject]) ? 
-						$projecttable[$nsproject] : $nsproject,
-			$nsproject . ' talk'
-					=> isset($projecttable[$nsproject]) ?
-						$projecttable[$nsproject] . '讨论' : $nsproject . '讨论',
-			'File'           => '文件',
-			'File talk'      => '文件讨论',
-			'MediaWiki'      => 'MediaWiki',
-			'MediaWiki talk' => 'MediaWiki讨论',
-			'Template'       => '模板',
-			'Template talk'  => '模板讨论',
-			'Help'           => '帮助',
-			'Help talk'      => '帮助讨论',
-			'Category'       => '分类',
-			'Category talk'  => '分类讨论',
-		);
-		$this->mNamespaceTables['zh-hant'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-hant']['File'] = '檔案';
-		$this->mNamespaceTables['zh-hant']['File talk'] = '檔案討論';
-		$this->mNamespaceTables['zh'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-cn'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-hk'] = array_merge($this->mNamespaceTables['zh-hant']);
-		$this->mNamespaceTables['zh-mo'] = array_merge($this->mNamespaceTables['zh-hant']);
-		$this->mNamespaceTables['zh-my'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-sg'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-tw'] = array_merge($this->mNamespaceTables['zh-hant']);
 	}
 
 	function loadDefaultTables() {
@@ -175,12 +128,19 @@ class LanguageZh extends LanguageZh_hans {
 	function stripForSearch( $string ) {
 		wfProfileIn( __METHOD__ );
 
+		// eventually this should be a word segmentation
+		// for now just treat each character as a word
+		// @fixme only do this for Han characters...
+		$t = preg_replace(
+				"/([\\xc0-\\xff][\\x80-\\xbf]*)/",
+				" $1", $string);
+
         //always convert to zh-hans before indexing. it should be
 		//better to use zh-hans for search, since conversion from
 		//Traditional to Simplified is less ambiguous than the
 		//other way around
 
-		$t = $this->mConverter->autoConvert( $string, 'zh-hans' );
+		$t = $this->mConverter->autoConvert($t, 'zh-hans');
 		$t = parent::stripForSearch( $t );
 		wfProfileOut( __METHOD__ );
 		return $t;

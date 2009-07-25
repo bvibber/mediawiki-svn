@@ -18,7 +18,7 @@ require_once( "rebuildtextindex.inc" );
 $database = wfGetDB( DB_MASTER );
 if( !$database instanceof DatabaseMysql ) {
 	print "This script is only for MySQL.\n";
-	exit(1);
+	exit();
 }
 
 $wgTitle = Title::newFromText( "Rebuild text index script" );
@@ -28,6 +28,6 @@ rebuildTextIndex( $database );
 createTextIndex( $database );
 
 print "Done.\n";
-exit(0);
+exit();
 
 

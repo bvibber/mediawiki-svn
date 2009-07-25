@@ -1,9 +1,6 @@
 <?php
 /** Udmurt (Удмурт)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -16,9 +13,11 @@ $fallback = 'ru';
 $namespaceNames = array(
 	NS_MEDIA            => 'Медиа',
 	NS_SPECIAL          => 'Панель',
+	NS_MAIN             => '',
 	NS_TALK             => 'Вераськон',
 	NS_USER             => 'Викиавтор',
 	NS_USER_TALK        => 'Викиавтор_сярысь_вераськон',
+	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_сярысь_вераськон',
 	NS_FILE             => 'Суред',
 	NS_FILE_TALK        => 'Суред_сярысь_вераськон',
@@ -39,11 +38,9 @@ $separatorTransformTable = array(',' => ' ', '.' => ',' );
 $messages = array(
 'linkprefix' => '/^(.*?)(„|«)$/sDu',
 
-'article' => 'Статья',
-'mytalk'  => 'викиавтор сярысь вераськон',
-
-# Cologne Blue skin
+'article'        => 'Статья',
 'qbspecialpages' => 'Панельёс',
+'mytalk'         => 'викиавтор сярысь вераськон',
 
 'help'             => 'Валэктонъёс',
 'history'          => 'Бамлэн историез',
@@ -87,9 +84,7 @@ $messages = array(
 'hist'          => 'история',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Герӟаськем тупатонъёс',
-'recentchangeslinked-feed'    => 'Герӟаськем тупатонъёс',
-'recentchangeslinked-toolbox' => 'Герӟаськем тупатонъёс',
+'recentchangeslinked' => 'Герӟаськем тупатонъёс',
 
 # Upload
 'upload' => 'Файл поныны',

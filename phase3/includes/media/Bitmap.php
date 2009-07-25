@@ -42,7 +42,7 @@ class BitmapHandler extends ImageHandler {
 
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgUseImageMagick, $wgImageMagickConvertCommand, $wgImageMagickTempDir;
-		global $wgCustomConvertCommand, $wgUseImageResize;
+		global $wgCustomConvertCommand;
 		global $wgSharpenParameter, $wgSharpenReductionThreshold;
 		global $wgMaxAnimatedGifArea;
 
@@ -68,8 +68,6 @@ class BitmapHandler extends ImageHandler {
 
 		if ( !$dstPath ) {
 			// No output path available, client side scaling only
-			$scaler = 'client';
-		} elseif( !$wgUseImageResize ) {
 			$scaler = 'client';
 		} elseif ( $wgUseImageMagick ) {
 			$scaler = 'im';
@@ -181,23 +179,14 @@ class BitmapHandler extends ImageHandler {
 			if( !isset( $typemap[$mimeType] ) ) {
 				$err = 'Image type not supported';
 				wfDebug( "$err\n" );
-				$errMsg = wfMsg ( 'thumbnail_image-type' );
-				return new MediaTransformError( 'thumbnail_error', $clientWidth, $clientHeight, $errMsg );
+				return new MediaTransformError( 'thumbnail_error', $clientWidth, $clientHeight, $err );
 			}
 			list( $loader, $colorStyle, $saveType ) = $typemap[$mimeType];
 
 			if( !function_exists( $loader ) ) {
 				$err = "Incomplete GD library configuration: missing function $loader";
 				wfDebug( "$err\n" );
-				$errMsg = wfMsg ( 'thumbnail_gd-library', $loader );
-				return new MediaTransformError( 'thumbnail_error', $clientWidth, $clientHeight, $errMsg );
-			}
-
-			if ( !file_exists( $srcPath ) ) {
-				$err = "File seems to be missing: $srcPath";
-				wfDebug( "$err\n" );
-				$errMsg = wfMsg ( 'thumbnail_image-missing', $srcPath );
-				return new MediaTransformError( 'thumbnail_error', $clientWidth, $clientHeight, $errMsg );
+				return new MediaTransformError( 'thumbnail_error', $clientWidth, $clientHeight, $err );
 			}
 
 			$src_image = call_user_func( $loader, $srcPath );

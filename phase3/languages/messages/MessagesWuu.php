@@ -1,13 +1,9 @@
 <?php
 /** Wu (吴语)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
- * @author Hercule
  * @author O
  */
 
@@ -101,8 +97,8 @@ $messages = array(
 'subcategories'                 => '亚类',
 'category-media-header'         => '"$1"分类中个媒体',
 'category-empty'                => "''该个分类中尚未包含任何文章或媒体。''",
-'hidden-categories'             => '$1隐藏分类',
-'hidden-category-category'      => '囥脱分类',
+'hidden-categories'             => '个囥脱分类',
+'hidden-category-category'      => '囥脱分类', # Name of the category where hidden categories will be listed
 'category-subcat-count-limited' => '该个分类中有个亚类。',
 
 'mainpagetext'      => "<big>'''已成功安装MediaWiki！'''</big>",
@@ -113,23 +109,21 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 常见问题解答]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布邮件列表]',
 
-'about'         => '关于',
-'article'       => '文章',
-'newwindow'     => '(在新窗口中打开)',
-'cancel'        => '取消',
-'moredotdotdot' => '还有...',
-'mypage'        => '我个页面',
-'mytalk'        => '我个讲张',
-'anontalk'      => '该IP个讲张',
-'navigation'    => '导航',
-'and'           => '&#32;搭仔',
-
-# Cologne Blue skin
+'about'          => '关于',
+'article'        => '文章',
+'newwindow'      => '(在新窗口中打开)',
+'cancel'         => '取消',
 'qbfind'         => '查找',
 'qbedit'         => '编辑',
 'qbpageoptions'  => '页面选项',
 'qbmyoptions'    => '我个选项',
 'qbspecialpages' => '特殊页面',
+'moredotdotdot'  => '还有...',
+'mypage'         => '我个页面',
+'mytalk'         => '我个讲张',
+'anontalk'       => '该IP个讲张',
+'navigation'     => '导航',
+'and'            => '&#32;搭仔',
 
 'errorpagetitle'    => '错误',
 'returnto'          => '返回到$1。',
@@ -217,7 +211,6 @@ $messages = array(
 'restorelink'             => '个被删除个版本',
 'site-rss-feed'           => '$1的RSS订阅',
 'site-atom-feed'          => '$1的Atom订阅',
-'red-link-title'          => '$1 (网页不存在)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => '文章',
@@ -237,7 +230,6 @@ $messages = array(
 
 # General errors
 'error'           => '错误',
-'laggedslavemode' => '警告: 页面可能弗包含最近个更新。',
 'filedeleteerror' => '呒能删除文物“$1”。',
 'filenotfound'    => '寻弗着文件 "$1"。',
 'badtitle'        => '该只标题弗来三',
@@ -246,10 +238,12 @@ $messages = array(
 'actionthrottled' => '动作已压制',
 
 # Login and logout pages
-'logouttext'                 => "'''倷已经登出哉。'''<br /> 倷可以继续匿名使用{{SITENAME}} ，倷也可以再次以相同或者两样个用户名登录。注意，有星页面作兴还是会搭倷登出前头一样显示，一脚到倷清脱倷个浏览器缓存。",
+'logouttitle'                => '用户登出',
+'logouttext'                 => '<strong>倷已经登出哉。</strong><br /> 倷可以继续匿名使用{{SITENAME}} ，倷也可以再次以相同或者两样个用户名登录。注意，有星页面作兴还是会搭倷登出前头一样显示，一脚到倷清脱倷个浏览器缓存。',
 'welcomecreation'            => '== 欢迎， $1！ ==
 
 倷个户头已经建立哉。覅忘记脱改动倷个{{SITENAME}}偏好噢。',
+'loginpagetitle'             => '用户登录',
 'yourname'                   => '用户名:',
 'yourpassword'               => '密码:',
 'yourpasswordagain'          => '再打一遍密码:',
@@ -260,19 +254,28 @@ $messages = array(
 'logout'                     => '登出',
 'userlogout'                 => '登出',
 'notloggedin'                => '朆登录',
-'nologin'                    => '您还没有账户吗？$1。',
+'nologin'                    => '还呒拨户头？$1。',
 'nologinlink'                => '新开户头',
 'createaccount'              => '新开户头',
 'gotaccount'                 => '已经有仔帐号哉？ $1。',
 'gotaccountlink'             => '登录',
 'badretype'                  => '倷输入个密码搭倪个档案弗配。',
 'userexists'                 => '输入个用户名已经拨人注脱哉。请再选个两样个用户名。',
+'youremail'                  => '电子邮件:',
+'username'                   => '用户名:',
+'uid'                        => '用户号：',
+'yourrealname'               => '真实姓名:',
+'yourlanguage'               => '语言:',
+'yournick'                   => '绰号:',
+'badsig'                     => '无效原始签名；检查 HTML 标签。',
+'email'                      => '电子邮件',
 'loginerror'                 => '登录错误',
+'prefs-help-email'           => '电子邮箱是备选的，让别人家好通过倷个用户页或者用户讲张页面联系着倷，用弗着暴露倷个身份。',
 'loginsuccesstitle'          => '登录成功',
 'loginsuccess'               => "'''倷现在以 \"\$1\" 个身份登录到{{SITENAME}}。 '''",
 'nouserspecified'            => '侬必须选个用户名。',
 'wrongpassword'              => '密码弗对嗄。请倷再试试看。',
-'mailmypassword'             => '将新密码寄给我',
+'mailmypassword'             => '电子邮件发送密码',
 'acct_creation_throttle_hit' => '对覅起，侬经建了$1个账号。侬呒能再建了。',
 'emailauthenticated'         => '倷个电子邮箱地址勒拉 $1 验证过哉。',
 'accountcreated'             => '户头开好哉',
@@ -317,14 +320,14 @@ $messages = array(
 要创建该页面呢，就勒下底个框框里向开始写（[[{{MediaWiki:Helppage}}|帮助页面]]浪有更加多个信息）。
 要是倷是弗用心到该搭个说话，只要点击倷浏览器个'''返回'''揿钮。",
 'noarticletext'      => '个篇文章目前还呒拨内容，倷可以拉别个页面里向[[Special:Search/{{PAGENAME}}|寻寻该只标题看]]或者[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑当前页面].',
-'note'               => "'''注意：'''",
-'previewnote'        => "'''该个还只是预览；改动还朆保存！'''",
+'note'               => '<strong>注意：</strong>',
+'previewnote'        => '<strong>该个还只是预览；改动还朆保存！</strong>',
 'editing'            => '正在编辑$1',
 'editingsection'     => '正在编辑$1（段落）',
 'editingcomment'     => '正在编辑$1（评论）',
 'editconflict'       => '编辑冲突: $1',
 'yourtext'           => '侬个文字',
-'editingold'         => "''' 注意：倷勒里改动一只已经过期个页面修改。 如果倷保存俚个说话，勒拉该个修改之后个亨白浪当个修改侪会呒拨个。'''",
+'editingold'         => '<strong> 注意：倷勒里改动一只已经过期个页面修改。 如果倷保存俚个说话，勒拉该个修改之后个亨白浪当个修改侪会呒拨个。</strong>',
 'template-protected' => '(保护)',
 
 # Account creation failure
@@ -337,6 +340,7 @@ $messages = array(
 'cur'          => '当前',
 'last'         => '上个',
 'histlegend'   => '选择比较版本：标记要比较个两只版本，回车或者揿页面底里个揿钮。<br /> 图例：(当前) = 搭当前版本有啥两样， (上个) = 搭上个版本有啥两样，小 = 小改动。',
+'deletedrev'   => '[已删]',
 'histfirst'    => '顶早',
 'histlast'     => '顶晏',
 'historyempty' => '（空）',
@@ -350,43 +354,37 @@ $messages = array(
 # Diffs
 'compareselectedversions' => '比较选中个版本',
 'editundo'                => '撤销',
-'diff-multi'              => '($1个中途个修订版本无没显示。)',
 
 # Search results
-'searchresults'             => '搜索结果',
-'searchresulttext'          => '更加全面个关于拉{{SITENAME}}里向搜索个信息，请倷看[[{{MediaWiki:Helppage}}:搜索|搜索{{SITENAME}}]]。',
-'searchsubtitle'            => "倷搜寻 '''[[:$1]]'''",
-'searchsubtitleinvalid'     => "倷搜寻 '''$1'''",
-'noexactmatch'              => "''呒拨叫\"\$1\"个页面啘。''' 倷可以[[:\$1|建立俚]]。",
-'prevn'                     => '上个 $1',
-'nextn'                     => '下个 {{PLURAL:$1|$1}}',
-'viewprevnext'              => '查看 ($1) ($2) ($3)',
-'searchhelp-url'            => 'Help:目录',
-'search-result-size'        => '$1（$2字）',
-'search-mwsuggest-enabled'  => '与建议',
-'search-mwsuggest-disabled' => ' 没有建议',
-'powersearch'               => '高级搜索',
-
-# Quickbar
-'qbsettings-none' => '呒',
+'searchresults'         => '搜索结果',
+'searchresulttext'      => '更加全面个关于拉{{SITENAME}}里向搜索个信息，请倷看[[{{MediaWiki:Helppage}}:搜索|搜索{{SITENAME}}]]。',
+'searchsubtitle'        => "倷搜寻 '''[[:$1]]'''",
+'searchsubtitleinvalid' => "倷搜寻 '''$1'''",
+'noexactmatch'          => "''呒拨叫\"\$1\"个页面啘。''' 倷可以[[:\$1|建立俚]]。",
+'prevn'                 => '上个 $1',
+'nextn'                 => '下个 $1',
+'viewprevnext'          => '查看 ($1) ($2) ($3)',
+'searchhelp-url'        => 'Help:目录',
+'powersearch'           => '搜寻',
 
 # Preferences page
 'preferences'           => '偏好',
 'mypreferences'         => '我个所欢喜',
 'prefsnologin'          => '朆登录',
+'qbsettings-none'       => '呒',
 'changepassword'        => '改密码',
-'prefs-skin'            => '皮肤',
+'skin'                  => '皮肤',
 'skin-preview'          => '预览',
-'prefs-math'            => '数学公式',
+'math'                  => '数学公式',
 'datedefault'           => '呒拨偏好',
-'prefs-datetime'        => '日脚搭仔辰光',
+'datetime'              => '日脚搭仔辰光',
 'prefs-personal'        => '用户档案',
 'prefs-rc'              => '近段辰光个改动',
 'prefs-watchlist'       => '监控列表',
 'prefs-watchlist-days'  => '勒拉监控列表里向显示个日数：',
 'prefs-watchlist-edits' => '勒拉扩展个监控列表里向显示个编辑趟数：',
 'saveprefs'             => '保存',
-'prefs-editing'         => '编辑',
+'textboxsize'           => '编辑',
 'searchresultshead'     => '搜索',
 'recentchangescount'    => '近段辰光个改动标题数：',
 'savedprefs'            => '倷个偏好已经保存哉。',
@@ -395,16 +393,7 @@ $messages = array(
 'servertime'            => '服务器辰光',
 'allowemail'            => '接受别个用户个电子邮件',
 'default'               => '默认',
-'prefs-files'           => '文件',
-'youremail'             => '电子邮件:',
-'username'              => '用户名:',
-'uid'                   => '用户号：',
-'yourrealname'          => '真实姓名:',
-'yourlanguage'          => '语言:',
-'yournick'              => '绰号:',
-'badsig'                => '无效原始签名；检查 HTML 标签。',
-'email'                 => '电子邮件',
-'prefs-help-email'      => '电子邮箱是备选的，让别人家好通过倷个用户页或者用户讲张页面联系着倷，用弗着暴露倷个身份。',
+'files'                 => '文件',
 
 # User rights
 'userrights-user-editname' => '输入用户名:',
@@ -447,9 +436,7 @@ $messages = array(
 'newsectionsummary' => '/* $1 */ 新段落',
 
 # Recent changes linked
-'recentchangeslinked'         => '搭界个改动',
-'recentchangeslinked-feed'    => '搭界个改动',
-'recentchangeslinked-toolbox' => '搭界个改动',
+'recentchangeslinked' => '搭界个改动',
 
 # Upload
 'upload'            => '上载文物',
@@ -493,7 +480,6 @@ $messages = array(
 'listfiles_description' => '描述',
 
 # File description page
-'file-anchor-link'          => '文物',
 'filehist'                  => '文物历史',
 'filehist-deleteall'        => '全删',
 'filehist-deleteone'        => '删',
@@ -501,6 +487,9 @@ $messages = array(
 'filehist-user'             => '用户',
 'imagelinks'                => '链接',
 'nolinkstoimage'            => '呒拨页面链接到该只文件。',
+'shareduploadwiki-linktext' => '文件描述页面',
+'noimage'                   => '呒拨叫该个名字个文件，倷可以$1。',
+'noimage-linktext'          => '上载俚',
 'uploadnewversion-linktext' => '上载该文件个新版',
 
 # File reversion
@@ -528,8 +517,8 @@ $messages = array(
 
 'brokenredirects'        => '坏脱个重定向',
 'brokenredirectstext'    => '下底个重定向链到弗存在个页面:',
-'brokenredirects-edit'   => '编辑',
-'brokenredirects-delete' => '删除',
+'brokenredirects-edit'   => '（编辑）',
+'brokenredirects-delete' => '（删除）',
 
 # Miscellaneous special pages
 'unusedimages'         => '弗勒浪使用个文件',
@@ -629,7 +618,7 @@ $messages = array(
 'rollback_short' => '恢复',
 'rollbacklink'   => '恢复',
 'rollbackfailed' => '恢复失败',
-'revertpage'     => '恢复[[Special:Contributions/$2|$2]] ([[User talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本',
+'revertpage'     => '恢复[[Special:Contributions/$2|$2]] ([[User talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogpage'  => '保护日志',
@@ -657,7 +646,6 @@ $messages = array(
 'uctop'         => '(顶浪)',
 
 'sp-contributions-blocklog' => '查封记录',
-'sp-contributions-talk'     => '讲张',
 'sp-contributions-username' => 'IP地址或用户名：',
 
 # What links here
@@ -718,6 +706,8 @@ $messages = array(
 'allmessagescurrent'        => '当前文本',
 'allmessagestext'           => '该个是MediaWiki名字空间里可用个系统音讯列表。',
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' 呒处显示，因为 '''\$wgUseDatabaseMessages''' 关勒浪。",
+'allmessagesfilter'         => '音讯名字过滤:',
+'allmessagesmodified'       => '只显示修订过个',
 
 # Thumbnails
 'thumbnail-more' => '放大',
@@ -740,7 +730,6 @@ $messages = array(
 'tooltip-ca-delete'          => '删脱该只页面',
 'tooltip-ca-move'            => '移动该只页面',
 'tooltip-search'             => '搜寻{{SITENAME}}',
-'tooltip-search-go'          => '转到页本确切名称，如果存在',
 'tooltip-p-logo'             => '封面',
 'tooltip-n-mainpage'         => '进入封面',
 'tooltip-n-portal'           => '关于本计划，可以做什么，应该如何做',
@@ -748,7 +737,7 @@ $messages = array(
 'tooltip-n-help'             => '寻求帮助',
 'tooltip-t-whatlinkshere'    => '列出所有与此页相链个页面',
 'tooltip-t-emailuser'        => '发封信拨该个用户',
-'tooltip-t-upload'           => '上传文件',
+'tooltip-t-upload'           => '上载图像或媒体文物',
 'tooltip-t-specialpages'     => '亨白浪当个特殊页面列表',
 'tooltip-ca-nstab-main'      => '查看内容页',
 'tooltip-ca-nstab-user'      => '查看用户页',
@@ -780,13 +769,6 @@ $messages = array(
 'showhidebots' => '（$1机器人）',
 'ilsubmit'     => '搜寻',
 
-# Bad image list
-'bad_image_list' => '格式如下：
-
-只列出项目（线开始* ）的审议。
-第一个环节上线必须是一个链接到一个坏文件。
-其后的任何链接在同一行被认为是例外情况，即网页的文件，则可能会发生内部。',
-
 /*
 Short names for language variants used for language conversion links.
 To disable showing a particular link, set it to 'disable', e.g.
@@ -804,7 +786,7 @@ Variants for Chinese language
 
 'exif-contrast-2' => '高',
 
-# Pseudotags used for GPSSpeedRef
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
 'exif-gpsspeed-k' => '公里每小时',
 'exif-gpsspeed-m' => '英里每小时',
 
@@ -836,10 +818,6 @@ Variants for Chinese language
 # action=purge
 'confirm_purge_button' => '确定',
 
-# Separators for various lists, etc.
-'comma-separator' => '、',
-'parentheses'     => '（$1）',
-
 # Multipage image navigation
 'imgmultipageprev' => '← 上一页',
 'imgmultipagenext' => '下一页 →',
@@ -861,7 +839,7 @@ Variants for Chinese language
 'watchlistedit-normal-title' => '编辑监控列表',
 
 # Special:Version
-'version' => '版本',
+'version' => '版本', # Not used as normal message but as header for the special page itself
 
 # Special:FilePath
 'filepath'        => '文件路径',

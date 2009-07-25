@@ -16,7 +16,7 @@ $fname = 'removeUnusedAccounts';
 
 if( isset( $options['help'] ) ) {
 	showHelp();
-	exit(1);
+	exit();
 }
 
 # Do an initial scan for inactive accounts and report the result

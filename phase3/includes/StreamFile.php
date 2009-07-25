@@ -48,7 +48,6 @@ function wfStreamFile( $fname, $headers = array() ) {
 		$modsince = preg_replace( '/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE'] );
 		$sinceTime = strtotime( $modsince );
 		if ( $stat['mtime'] <= $sinceTime ) {
-			ini_set('zlib.output_compression', 0);
 			header( "HTTP/1.0 304 Not Modified" );
 			return;
 		}
@@ -92,12 +91,13 @@ function wfGetType( $filename, $safe = true ) {
 	if ( $safe ) {
 		global $wgFileBlacklist, $wgCheckFileExtensions, $wgStrictFileExtensions, 
 			$wgFileExtensions, $wgVerifyMimeType, $wgMimeTypeBlacklist, $wgRequest;
-		list( $partName, $extList ) = UploadBase::splitExtensions( $filename );
-		if ( UploadBase::checkFileExtensionList( $extList, $wgFileBlacklist ) ) {
+		$form = new UploadForm( $wgRequest );
+		list( $partName, $extList ) = $form->splitExtensions( $filename );
+		if ( $form->checkFileExtensionList( $extList, $wgFileBlacklist ) ) {
 			return 'unknown/unknown';
 		}
 		if ( $wgCheckFileExtensions && $wgStrictFileExtensions 
-			&& !UploadBase::checkFileExtensionList( $extList, $wgFileExtensions ) )
+			&& !$form->checkFileExtensionList( $extList, $wgFileExtensions ) )
 		{
 			return 'unknown/unknown';
 		}

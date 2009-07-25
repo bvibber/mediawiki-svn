@@ -36,7 +36,6 @@ vided name.  Default: empty (start from beginning).
 drops before continuing.  Default: 10.
     --throttle: Wait this many milliseconds after each category.  Default: 0.
     --force: Run regardless of whether the database says it's been run already.
-
 TEXT;
 	exit( 0 );
 }

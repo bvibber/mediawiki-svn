@@ -304,18 +304,20 @@ abstract class IndexPager implements Pager {
 		if ( $query === null ) {
 			return $text;
 		}
-
-		$attrs = array();
-		if( in_array( $type, array( 'first', 'prev', 'next', 'last' ) ) ) {
-			# HTML5 rel attributes
-			$attrs['rel'] = $type;
+		if( $type == 'prev' || $type == 'next' ) {
+			$attrs = "rel=\"$type\"";
+		} elseif( $type == 'first' ) {
+			$attrs = "rel=\"start\"";
+		} else {
+			# HTML 4 has no rel="end" . . .
+			$attrs = '';
 		}
 
 		if( $type ) {
-			$attrs['class'] = "mw-{$type}link";
+			$attrs .= " class=\"mw-{$type}link\"" ;
 		}
-		return $this->getSkin()->link( $this->getTitle(), $text,
-			$attrs, $query + $this->getDefaultQuery(), array('noclasses','known') );
+		return $this->getSkin()->makeKnownLinkObj( $this->getTitle(), $text,
+			wfArrayToCGI( $query, $this->getDefaultQuery() ), '', '', $attrs );
 	}
 
 	/**
@@ -417,14 +419,6 @@ abstract class IndexPager implements Pager {
 		return array( 'prev' => $prev, 'next' => $next, 'first' => $first, 'last' => $last );
 	}
 
-	function isNavigationBarShown() {
-		if ( !$this->mQueryDone ) {
-			$this->doQuery();
-		}
-		// Hide navigation by default if there is nothing to page
-		return !($this->mIsFirst && $this->mIsLast);
-	}
-
 	/**
 	 * Get paging links. If a link is disabled, the item from $disabledTexts
 	 * will be used. If there is no such item, the unlinked text from
@@ -476,7 +470,6 @@ abstract class IndexPager implements Pager {
 	 *    fields => Field(s) for passing to Database::select(), may be *
 	 *    conds => WHERE conditions
 	 *    options => option array
-	 *    join_conds => JOIN conditions
 	 */
 	abstract function getQueryInfo();
 
@@ -525,8 +518,6 @@ abstract class AlphabeticPager extends IndexPager {
 	function getNavigationBar() {
 		global $wgLang;
 
-		if ( !$this->isNavigationBarShown() ) return '';
-
 		if( isset( $this->mNavigationBar ) ) {
 			return $this->mNavigationBar;
 		}
@@ -541,10 +532,10 @@ abstract class AlphabeticPager extends IndexPager {
 
 		$pagingLinks = $this->getPagingLinks( $linkTexts );
 		$limitLinks = $this->getLimitLinks();
-		$limits = $wgLang->pipeList( $limitLinks );
+		$limits = implode( ' | ', $limitLinks );
 
 		$this->mNavigationBar =
-			"(" . $wgLang->pipeList( array( $pagingLinks['first'], $pagingLinks['last'] ) ) . ") " .
+			"({$pagingLinks['first']} | {$pagingLinks['last']}) " .
 			wfMsgHtml( 'viewprevnext', $pagingLinks['prev'],
 			$pagingLinks['next'], $limits );
 
@@ -560,7 +551,7 @@ abstract class AlphabeticPager extends IndexPager {
 			if( $first ) {
 				$first = false;
 			} else {
-				$extra .= wfMsgExt( 'pipe-separator' , 'escapenoentities' );
+				$extra .= ' | ';
 			}
 
 			if( $order == $this->mOrderType ) {
@@ -608,24 +599,22 @@ abstract class ReverseChronologicalPager extends IndexPager {
 	function getNavigationBar() {
 		global $wgLang;
 
-		if ( !$this->isNavigationBarShown() ) return '';
-
 		if ( isset( $this->mNavigationBar ) ) {
 			return $this->mNavigationBar;
 		}
 		$nicenumber = $wgLang->formatNum( $this->mLimit );
 		$linkTexts = array(
-			'prev' => wfMsgExt( 'pager-newer-n', array( 'parsemag', 'escape' ), $nicenumber ),
-			'next' => wfMsgExt( 'pager-older-n', array( 'parsemag', 'escape' ), $nicenumber ),
+			'prev' => wfMsgExt( 'pager-newer-n', array( 'parsemag' ), $nicenumber ),
+			'next' => wfMsgExt( 'pager-older-n', array( 'parsemag' ), $nicenumber ),
 			'first' => wfMsgHtml( 'histlast' ),
 			'last' => wfMsgHtml( 'histfirst' )
 		);
 
 		$pagingLinks = $this->getPagingLinks( $linkTexts );
 		$limitLinks = $this->getLimitLinks();
-		$limits = $wgLang->pipeList( $limitLinks );
+		$limits = implode( ' | ', $limitLinks );
 
-		$this->mNavigationBar = "({$pagingLinks['first']}" . wfMsgExt( 'pipe-separator' , 'escapenoentities' ) . "{$pagingLinks['last']}) " .
+		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " .
 			wfMsgHtml("viewprevnext", $pagingLinks['prev'], $pagingLinks['next'], $limits);
 		return $this->mNavigationBar;
 	}
@@ -758,48 +747,20 @@ abstract class TablePager extends IndexPager {
 	}
 
 	function formatRow( $row ) {
-		$this->mCurrentRow = $row;  	# In case formatValue etc need to know
-		$s = Xml::openElement( 'tr', $this->getRowAttrs($row) );
+		$s = "<tr>\n";
 		$fieldNames = $this->getFieldNames();
+		$this->mCurrentRow = $row;  # In case formatValue needs to know
 		foreach ( $fieldNames as $field => $name ) {
 			$value = isset( $row->$field ) ? $row->$field : null;
 			$formatted = strval( $this->formatValue( $field, $value ) );
 			if ( $formatted == '' ) {
 				$formatted = '&nbsp;';
 			}
-			$s .= Xml::tags( 'td', $this->getCellAttrs( $field, $value ), $formatted );
+			$class = 'TablePager_col_' . htmlspecialchars( $field );
+			$s .= "<td class=\"$class\">$formatted</td>\n";
 		}
 		$s .= "</tr>\n";
 		return $s;
-	}
-
-	/**
-	 * Get a class name to be applied to the given row.
-	 * @param object $row The database result row
-	 */
-	function getRowClass( $row ) {
-		return '';
-	}
-
-	/**
-	 * Get attributes to be applied to the given row.
-	 * @param object $row The database result row
-	 * @return associative array
-	 */
-	function getRowAttrs( $row ) {
-		return array( 'class' => $this->getRowClass( $row ) );
-	}
-
-	/**
-	 * Get any extra attributes to be applied to the given cell. Don't 
-	 * take this as an excuse to hardcode styles; use classes and 
-	 * CSS instead.  Row context is available in $this->mCurrentRow
-	 * @param $field The column
-	 * @param $value The cell contents
-	 * @return associative array
-	 */
-	function getCellAttrs( $field, $value ) {
-		return array( 'class' => 'TablePager_col_' . $field );
 	}
 
 	function getIndexField() {
@@ -823,9 +784,6 @@ abstract class TablePager extends IndexPager {
 	 */
 	function getNavigationBar() {
 		global $wgStylePath, $wgContLang;
-
-		if ( !$this->isNavigationBarShown() ) return '';
-
 		$path = "$wgStylePath/common/images";
 		$labels = array(
 			'first' => 'table_pager_first',
@@ -904,15 +862,14 @@ abstract class TablePager extends IndexPager {
 	 * Get a form containing a limit selection dropdown
 	 */
 	function getLimitForm() {
-		global $wgScript;
-
 		# Make the select with some explanatory text
+		$url = $this->getTitle()->escapeLocalURL();
 		$msgSubmit = wfMsgHtml( 'table_pager_limit_submit' );
 		return
-			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) . "\n" .		
+			"<form method=\"get\" action=\"$url\">" .
 			wfMsgHtml( 'table_pager_limit', $this->getLimitSelect() ) .
 			"\n<input type=\"submit\" value=\"$msgSubmit\"/>\n" .
-			$this->getHiddenFields( array( 'limit' ) ) .
+			$this->getHiddenFields( array('limit','title') ) .
 			"</form>\n";
 	}
 

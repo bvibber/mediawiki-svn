@@ -1,9 +1,6 @@
 <?php
 /** Guarani (Avañe'ẽ)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -14,10 +11,13 @@
 $fallback = 'es';
 
 $namespaceNames = array(
+	# NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Mba\'echĩchĩ',
+	NS_MAIN             => '',
 	NS_TALK             => 'Myangekõi',
 	NS_USER             => 'Puruhára',
 	NS_USER_TALK        => 'Puruhára_myangekõi',
+	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_myangekõi',
 	NS_FILE             => 'Ta\'ãnga',
 	NS_FILE_TALK        => 'Ta\'ãnga_myangekõi',
@@ -28,7 +28,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Pytyvõ',
 	NS_HELP_TALK        => 'Pytyvõ_myangekõi',
 	NS_CATEGORY         => 'Ñemohenda',
-	NS_CATEGORY_TALK    => 'Ñemohenda_myangekõi',
+	NS_CATEGORY_TALK    => 'Ñemohenda_myangekõi'
 );
 
 $messages = array(
@@ -98,18 +98,16 @@ $messages = array(
 # Categories related messages
 'pagecategories' => '{{PLURAL:$1|Ñemohenda|Ñemohendakuéra}}',
 
-'about'      => 'Rehegua',
-'article'    => 'Kuatiahai',
-'newwindow'  => "(Ojepe'a peteĩ ovetã pyahu)",
-'cancel'     => 'Mbotove',
-'mypage'     => 'Che kuatiarogue',
-'mytalk'     => 'Che myangekõi',
-'navigation' => 'Kundaharã',
-
-# Cologne Blue skin
+'about'          => 'Rehegua',
+'article'        => 'Kuatiahai',
+'newwindow'      => "(Ojepe'a peteĩ ovetã pyahu)",
+'cancel'         => 'Mbotove',
 'qbfind'         => 'Heka',
 'qbedit'         => 'Jehaijey',
 'qbspecialpages' => 'Kuatiarogue hekochĩchĩva',
+'mypage'         => 'Che kuatiarogue',
+'mytalk'         => 'Che myangekõi',
+'navigation'     => 'Kundaharã',
 
 'tagline'          => '{{SITENAME}}megua',
 'help'             => 'Pytyvõhára',
@@ -135,7 +133,7 @@ $messages = array(
 'viewtalkpage'     => 'Hecha myangekõi',
 'otherlanguages'   => "Ambue ñe'ẽ",
 'redirectedfrom'   => '(Oñembohapejeýva $1)',
-'lastmodifiedat'   => 'Ko kuatiarogue oñemoambuejeýkuri: $2, $1.',
+'lastmodifiedat'   => 'Ko kuatiarogue oñemoambuejeýkuri: $2, $1.', # $1 date, $2 time
 'viewcount'        => 'Esta página ha sido visitada $1 veces.',
 'jumpto'           => 'Kundaharãme jeho',
 'jumptonavigation' => 'kundaharã',
@@ -165,27 +163,21 @@ $messages = array(
 'showtoc'                 => 'hechauka',
 'hidetoc'                 => 'toñemi',
 'restorelink'             => '$1 ediciones borradas',
-'red-link-title'          => '$1 (ndaipóri ko togue)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Kuatiahai',
 'nstab-user'      => 'Puruhára',
-'nstab-media'     => 'Media rogue',
 'nstab-special'   => "Mba'echĩchĩ",
-'nstab-project'   => "Mba'e apopyrã rogue",
-'nstab-image'     => 'Ñongatupy',
+'nstab-image'     => "Ta'ãnga",
 'nstab-mediawiki' => 'Marandu',
 'nstab-template'  => 'Tembiecharã',
-'nstab-help'      => 'Pytyvõ',
 'nstab-category'  => 'Ñemohenda',
-
-# Main script and global functions
-'nosuchaction' => 'Upe tembiapo ndaipóri',
 
 # General errors
 'ns-specialprotected' => 'Las páginas en el espacio de nombres Especial no se pueden editar.',
 
 # Login and logout pages
+'loginpagetitle'          => 'Terañemboguapy/Ke',
 'yourname'                => 'Hero',
 'yourpassword'            => 'Ne remiñemi',
 'yourpasswordagain'       => 'Repita ne remiñemi',
@@ -197,6 +189,9 @@ $messages = array(
 'userlogout'              => 'Sẽ',
 'nologin'                 => "¿Ne'ĩrãpa remohenda nde réra? $1.",
 'nologinlink'             => 'Téra ñemohenda',
+'youremail'               => "Ñe'ẽveve",
+'yourlanguage'            => "Ñe'ẽ:",
+'email'                   => 'Pareha eleytróniko',
 'loginsuccesstitle'       => 'Remoñepyrũ hekopete ne rembiapo',
 'nosuchusershort'         => 'No hay un usuario con el nombre "$1". Compruebe que lo ha escrito correctamente.',
 'mailmypassword'          => "Embou chéve ñe'ẽveve rupive peteĩ temiñemĩ pyahu",
@@ -235,12 +230,13 @@ Reikotevẽvérõ marandu, emoñe'ẽ kuatiarogue ñepytyvõ rehegua. Oiméramo 
 'editingsection'        => 'Ojehaihína $1 (vore)',
 'editingcomment'        => 'Ojehaihína $1 (comentario)',
 'yourtext'              => "Mba'ehaipyre",
-'longpagewarning'       => "'''Ejesarekóke: ko kuatiarogue, tuichakuépe, oguereko $1 kb; heta kundahára ikatu iñapañuãi jehaijeýpe kuatiarogue ohaságui 32 kb.
-Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.'''",
+'longpagewarning'       => "<strong>Ejesarekóke: ko kuatiarogue, tuichakuépe, oguereko $1 kb; heta kundahára ikatu iñapañuãi jehaijeýpe kuatiarogue ohaságui 32 kb.
+Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.</strong>",
 
 # History pages
 'cur'         => "ko'ag̃agua",
 'last'        => 'ipaha',
+'deletedrev'  => '[oñembogue]',
 'historysize' => '($1 bytes)',
 
 # Revision deletion
@@ -257,7 +253,7 @@ Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.'''",
 'searchresults'     => 'Ojejuhúva jeheka',
 'searchsubtitle'    => "Nde reporandúkuri: '''[[:$1]]-re'''",
 'noexactmatch'      => "'''Ndaipóri kuatiarogue hérava: \"\$1\".''' Ikatu ndetevoi [[:\$1|rehai]].",
-'prevn'             => '{{PLURAL:$1|$1}} mboyvegua',
+'prevn'             => '$1 mboyvegua',
 'viewprevnext'      => 'Hecha ($1) ($2) ($3).',
 'showingresults'    => "Abajo se muestran hasta '''$1''' resultados empezando por el nº '''$2'''.",
 'showingresultsnum' => "Abajo se muestran los '''$3''' resultados empezando por el nº '''$2'''.",
@@ -268,9 +264,6 @@ Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.'''",
 'mypreferences'     => 'Che mbohoryha',
 'prefs-rc'          => 'Oñemoambue pyahúva',
 'searchresultshead' => 'Jeheka',
-'youremail'         => "Ñe'ẽveve",
-'yourlanguage'      => "Ñe'ẽ:",
-'email'             => 'Pareha eleytróniko',
 
 # User rights
 'userrights-lookup-user'   => 'Configurar grupos de usuarios',
@@ -316,7 +309,6 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'listfiles_user' => 'Puruhára',
 
 # File description page
-'file-anchor-link'  => 'Ñongatupy',
 'filehist-revert'   => 'embojevy',
 'filehist-current'  => "ko'ag̃agua",
 'filehist-datetime' => 'Ára/Aravo',
@@ -355,8 +347,8 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'doubleredirects' => "Ñembohapejey jo'apyre",
 
 'brokenredirects'        => "Ñembohapejey hekopegua'ỹva",
-'brokenredirects-edit'   => 'jehaijey',
-'brokenredirects-delete' => "mboje'o",
+'brokenredirects-edit'   => '(jehaijey)',
+'brokenredirects-delete' => "(mboje'o)",
 
 'withoutinterwiki' => 'Kuatiarogue ndorekóiva interwiki',
 
@@ -443,7 +435,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 
 # Protect
 'prot_1movedto2' => '[[$1]] oñembohasa [[$2]]-pe',
-'protect-text'   => "Puedes ver y modificar el nivel de protección de la página '''$1'''.",
+'protect-text'   => 'Puedes ver y modificar el nivel de protección de la página <strong>$1</strong>.',
 
 # Undelete
 'undeletedrevisions'       => '$1 ediciones restauradas',
@@ -508,7 +500,6 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'tooltip-pt-mycontris'   => "Tysỹi che mba'emoĩmbyre",
 'tooltip-ca-move'        => 'Guerova kuatiarogue',
 'tooltip-p-logo'         => 'Ape',
-'tooltip-n-mainpage'     => 'Eho ijapépe',
 
 # Spam protection
 'spamprotectiontitle' => 'Filtro de protección contra spam',
@@ -542,7 +533,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'watchlistedit-raw-removed'   => '$1 páginas han sido borradas:',
 
 # Special:Version
-'version' => "Mba'ereko",
+'version' => "Mba'ereko", # Not used as normal message but as header for the special page itself
 
 # Special:FilePath
 'filepath'        => 'Ruta de archivo',

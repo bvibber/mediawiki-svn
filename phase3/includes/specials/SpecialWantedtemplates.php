@@ -15,10 +15,18 @@
  * @copyright Copyright © 2008, Danny B.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
-class WantedTemplatesPage extends WantedQueryPage {
+class WantedTemplatesPage extends QueryPage {
 
 	function getName() {
 		return 'Wantedtemplates';
+	}
+
+	function isExpensive() {
+		return true;
+	}
+
+	function isSyndicated() {
+		return false;
 	}
 
 	function getSQL() {
@@ -34,8 +42,59 @@ class WantedTemplatesPage extends WantedQueryPage {
 			    FROM $templatelinks LEFT JOIN
 			         $page ON tl_title = page_title AND tl_namespace = page_namespace
 			   WHERE page_title IS NULL AND tl_namespace = ". NS_TEMPLATE ."
-			GROUP BY tl_namespace, tl_title
+			GROUP BY tl_title
 			";
+	}
+
+	function sortDescending() { return true; }
+
+	/**
+	 * Fetch user page links and cache their existence
+	 */
+	function preprocessResults( $db, $res ) {
+		$batch = new LinkBatch;
+		while ( $row = $db->fetchObject( $res ) )
+			$batch->add( $row->namespace, $row->title );
+		$batch->execute();
+
+		// Back to start for display
+		if ( $db->numRows( $res ) > 0 )
+			// If there are no rows we get an error seeking.
+			$db->dataSeek( $res, 0 );
+	}
+
+	function formatResult( $skin, $result ) {
+		global $wgLang, $wgContLang;
+
+		$nt = Title::makeTitle( $result->namespace, $result->title );
+		$text = $wgContLang->convert( $nt->getText() );
+
+		$plink = $this->isCached() ?
+			$skin->makeLinkObj( $nt, htmlspecialchars( $text ) ) :
+			$skin->makeBrokenLinkObj( $nt, htmlspecialchars( $text ) );
+
+		$nlinks = wfMsgExt( 'nmembers', array( 'parsemag', 'escape'),
+			$wgLang->formatNum( $result->value ) );
+		return wfSpecialList(
+			$plink,
+			$this->makeWlhLink( $nt, $skin, $result )
+		);
+	}
+
+	/**
+	 * Make a "what links here" link for a given title
+	 *
+	 * @param Title $title Title to make the link for
+	 * @param Skin $skin Skin to use
+	 * @param object $result Result row
+	 * @return string
+	 */
+	private function makeWlhLink( $title, $skin, $result ) {
+		global $wgLang;
+		$wlh = SpecialPage::getTitleFor( 'Whatlinkshere' );
+		$label = wfMsgExt( 'nlinks', array( 'parsemag', 'escape' ),
+		$wgLang->formatNum( $result->value ) );
+		return $skin->link( $wlh, $label, array(), array( 'target' => $title->getPrefixedText() ) );
 	}
 }
 

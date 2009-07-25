@@ -38,10 +38,11 @@ class WatchedItem {
 	public function isWatched() {
 		# Pages and their talk pages are considered equivalent for watching;
 		# remember that talk namespaces are numbered as page namespace+1.
+		$fname = 'WatchedItem::isWatched';
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'watchlist', 1, array( 'wl_user' => $this->id, 'wl_namespace' => $this->ns,
-			'wl_title' => $this->ti ), __METHOD__ );
+			'wl_title' => $this->ti ), $fname );
 		$iswatched = ($dbr->numRows( $res ) > 0) ? 1 : 0;
 		return $iswatched;
 	}
@@ -52,30 +53,31 @@ class WatchedItem {
 	 * @return bool (always true)
 	 */
 	public function addWatch() {
-		wfProfileIn( __METHOD__ );
+		$fname = 'WatchedItem::addWatch';
+		wfProfileIn( $fname );
 
 		// Use INSERT IGNORE to avoid overwriting the notification timestamp
 		// if there's already an entry for this page
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert( 'watchlist',
 		  array(
-			'wl_user' => $this->id,
-			'wl_namespace' => MWNamespace::getSubject($this->ns),
+		    'wl_user' => $this->id,
+			'wl_namespace' => ($this->ns & ~1),
 			'wl_title' => $this->ti,
 			'wl_notificationtimestamp' => NULL
-		  ), __METHOD__, 'IGNORE' );
+		  ), $fname, 'IGNORE' );
 
 		// Every single watched page needs now to be listed in watchlist;
 		// namespace:page and namespace_talk:page need separate entries:
 		$dbw->insert( 'watchlist',
 		  array(
 			'wl_user' => $this->id,
-			'wl_namespace' => MWNamespace::getTalk($this->ns),
+			'wl_namespace' => ($this->ns | 1 ),
 			'wl_title' => $this->ti,
 			'wl_notificationtimestamp' => NULL
-		  ), __METHOD__, 'IGNORE' );
+		  ), $fname, 'IGNORE' );
 
-		wfProfileOut( __METHOD__ );
+		wfProfileOut( $fname );
 		return true;
 	}
 
@@ -84,14 +86,16 @@ class WatchedItem {
 	 * @return bool
 	 */
 	public function removeWatch() {
+		$fname = 'WatchedItem::removeWatch';
+
 		$success = false;
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'watchlist',
 			array(
 				'wl_user' => $this->id,
-				'wl_namespace' => MWNamespace::getSubject($this->ns),
+				'wl_namespace' => ($this->ns & ~1),
 				'wl_title' => $this->ti
-			), __METHOD__
+			), $fname
 		);
 		if ( $dbw->affectedRows() ) {
 			$success = true;
@@ -104,9 +108,9 @@ class WatchedItem {
 		$dbw->delete( 'watchlist',
 			array(
 				'wl_user' => $this->id,
-				'wl_namespace' => MWNamespace::getTalk($this->ns),
+				'wl_namespace' => ($this->ns | 1),
 				'wl_title' => $this->ti
-			), __METHOD__
+			), $fname
 		);
 
 		if ( $dbw->affectedRows() ) {
@@ -130,7 +134,8 @@ class WatchedItem {
 	/**
 	 * Handle duplicate entries. Backend for duplicateEntries().
 	 */
-	private static function doDuplicateEntries( $ot, $nt ) {	
+	private static function doDuplicateEntries( $ot, $nt ) {
+		$fname = "WatchedItem::duplicateEntries";
 		$oldnamespace = $ot->getNamespace();
 		$newnamespace = $nt->getNamespace();
 		$oldtitle = $ot->getDBkey();
@@ -139,7 +144,7 @@ class WatchedItem {
 		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbw->select( 'watchlist', 'wl_user',
 			array( 'wl_namespace' => $oldnamespace, 'wl_title' => $oldtitle ),
-			__METHOD__, 'FOR UPDATE'
+			$fname, 'FOR UPDATE'
 		);
 		# Construct array to replace into the watchlist
 		$values = array();
@@ -160,7 +165,7 @@ class WatchedItem {
 		# Perform replace
 		# Note that multi-row replace is very efficient for MySQL but may be inefficient for
 		# some other DBMSes, mostly due to poor simulation by us
-		$dbw->replace( 'watchlist', array( array( 'wl_user', 'wl_namespace', 'wl_title' ) ), $values, __METHOD__ );
+		$dbw->replace( 'watchlist', array(array( 'wl_user', 'wl_namespace', 'wl_title')), $values, $fname );
 		return true;
 	}
 }

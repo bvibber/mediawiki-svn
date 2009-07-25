@@ -34,13 +34,11 @@ class SearchOracle extends SearchEngine {
 	/**
 	 * Perform a full text search query and return a result set.
 	 *
-	 * @param $term String: raw search term
+	 * @param string $term - Raw search term
 	 * @return OracleSearchResultSet
+	 * @access public
 	 */
 	function searchText( $term ) {
-		if ($term == '')
-			return new OracleSearchResultSet(false, '');
-		
 		$resultSet = $this->db->resultObject($this->db->query($this->getQuery($this->filter($term), true)));
 		return new OracleSearchResultSet($resultSet, $this->searchTerms);
 	}
@@ -48,13 +46,11 @@ class SearchOracle extends SearchEngine {
 	/**
 	 * Perform a title-only search query and return a result set.
 	 *
-	 * @param $term String: raw search term
+	 * @param string $term - Raw search term
 	 * @return ORacleSearchResultSet
+	 * @access public
 	 */
 	function searchTitle($term) {
-		if ($term == '')
-			return new OracleSearchResultSet(false, '');
-		
 		$resultSet = $this->db->resultObject($this->db->query($this->getQuery($this->filter($term), false)));
 		return new MySQLSearchResultSet($resultSet, $this->searchTerms);
 	}
@@ -62,7 +58,8 @@ class SearchOracle extends SearchEngine {
 
 	/**
 	 * Return a partial WHERE clause to exclude redirects, if so set
-	 * @return String
+	 * @return string
+	 * @private
 	 */
 	function queryRedirect() {
 		if ($this->showRedirects) {
@@ -74,7 +71,8 @@ class SearchOracle extends SearchEngine {
 
 	/**
 	 * Return a partial WHERE clause to limit the search to the given namespaces
-	 * @return String
+	 * @return string
+	 * @private
 	 */
 	function queryNamespaces() {
 		if( is_null($this->namespaces) )
@@ -89,7 +87,8 @@ class SearchOracle extends SearchEngine {
 
 	/**
 	 * Return a LIMIT clause to limit results on the query.
-	 * @return String
+	 * @return string
+	 * @private
 	 */
 	function queryLimit($sql) {
 		return $this->db->limitResult($sql, $this->limit, $this->offset);
@@ -98,7 +97,8 @@ class SearchOracle extends SearchEngine {
 	/**
 	 * Does not do anything for generic search engine
 	 * subclasses may define this though
-	 * @return String
+	 * @return string
+	 * @private
 	 */
 	function queryRanking($filteredTerm, $fulltext) {
 		return ' ORDER BY score(1)';
@@ -107,8 +107,9 @@ class SearchOracle extends SearchEngine {
 	/**
 	 * Construct the full SQL query to do the search.
 	 * The guts shoulds be constructed in queryMain()
-	 * @param $filteredTerm String
-	 * @param $fulltext Boolean
+	 * @param string $filteredTerm
+	 * @param bool $fulltext
+	 * @private
 	 */
 	function getQuery( $filteredTerm, $fulltext ) {
 		return $this->queryLimit($this->queryMain($filteredTerm, $fulltext) . ' ' .
@@ -120,8 +121,8 @@ class SearchOracle extends SearchEngine {
 
 	/**
 	 * Picks which field to index on, depending on what type of query.
-	 * @param $fulltext Boolean
-	 * @return String
+	 * @param bool $fulltext
+	 * @return string
 	 */
 	function getIndexField($fulltext) {
 		return $fulltext ? 'si_text' : 'si_title';
@@ -130,9 +131,10 @@ class SearchOracle extends SearchEngine {
 	/**
 	 * Get the base part of the search query.
 	 *
-	 * @param $filteredTerm String
-	 * @param $fulltext Boolean
-	 * @return String
+	 * @param string $filteredTerm
+	 * @param bool $fulltext
+	 * @return string
+	 * @private
 	 */
 	function queryMain( $filteredTerm, $fulltext ) {
 		$match = $this->parseQuery($filteredTerm, $fulltext);
@@ -159,17 +161,7 @@ class SearchOracle extends SearchEngine {
 		if (preg_match_all('/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/',
 			  $filteredText, $m, PREG_SET_ORDER)) {
 			foreach($m as $terms) {
-				
-				// Search terms in all variant forms, only
-				// apply on wiki with LanguageConverter
-				$temp_terms = $wgContLang->autoConvertToAllVariants( $terms[2] );
-				if( is_array( $temp_terms )) {
-					$temp_terms = array_unique( array_values( $temp_terms ));
-					foreach( $temp_terms as $t )
-						$q[] = $terms[1] . $wgContLang->stripForSearch( $t );
-				}
-				else
-					$q[] = $terms[1] . $wgContLang->stripForSearch( $terms[2] );
+				$q[] = $terms[1] . $wgContLang->stripForSearch($terms[2]);
 
 				if (!empty($terms[3])) {
 					$regexp = preg_quote( $terms[3], '/' );
@@ -191,9 +183,9 @@ class SearchOracle extends SearchEngine {
 	 * Create or update the search index record for the given page.
 	 * Title and text should be pre-processed.
 	 *
-	 * @param $id Integer
-	 * @param $title String
-	 * @param $text String
+	 * @param int $id
+	 * @param string $title
+	 * @param string $text
 	 */
 	function update($id, $title, $text) {
 		$dbw = wfGetDB(DB_MASTER);
@@ -230,7 +222,6 @@ class SearchOracle extends SearchEngine {
  * @ingroup Search
  */
 class OracleSearchResultSet extends SearchResultSet {
-
 	function __construct($resultSet, $terms) {
 		$this->mResultSet = $resultSet;
 		$this->mTerms = $terms;
@@ -241,16 +232,10 @@ class OracleSearchResultSet extends SearchResultSet {
 	}
 
 	function numRows() {
-		if ($this->mResultSet === false )
-			return 0;
-		else
-			return $this->mResultSet->numRows();
+		return $this->mResultSet->numRows();
 	}
 
 	function next() {
-		if ($this->mResultSet === false )
-			return false;
-
 		$row = $this->mResultSet->fetchObject();
 		if ($row === false)
 			return false;

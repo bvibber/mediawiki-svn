@@ -67,26 +67,22 @@ function wfGetAgent() {
  * @return string
  */
 function wfGetIP() {
-	global $wgIP, $wgUsePrivateIPs, $wgCommandLineMode;
+	global $wgIP, $wgUsePrivateIPs;
 
 	# Return cached result
 	if ( !empty( $wgIP ) ) {
 		return $wgIP;
 	}
 
-	$ipchain = array();
-	$ip = false;
-
 	/* collect the originating ips */
 	# Client connecting to this webserver
 	if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
-		$ip = IP::canonicalize( $_SERVER['REMOTE_ADDR'] );
-	} elseif( $wgCommandLineMode ) {
-		$ip = '127.0.0.1';
+		$ipchain = array( IP::canonicalize( $_SERVER['REMOTE_ADDR'] ) );
+	} else {
+		# Running on CLI?
+		$ipchain = array( '127.0.0.1' );
 	}
-	if( $ip ) {
-		$ipchain[] = $ip;
-	}
+	$ip = $ipchain[0];
 
 	# Append XFF on to $ipchain
 	$forwardedFor = wfGetForwardedFor();
@@ -109,10 +105,6 @@ function wfGetIP() {
 		} else {
 			break;
 		}
-	}
-
-	if( !$ip ) {
-		throw new MWException( "Unable to determine IP" );
 	}
 
 	wfDebug( "IP: $ip\n" );
@@ -174,7 +166,7 @@ function wfProxyCheck() {
 						escapeshellarg( $port ),
 						escapeshellarg( $url )
 						));
-			exec( "php $params &>" . wfGetNull() . " &" );
+			exec( "php $params &>/dev/null &" );
 		}
 		# Set MemCached key
 		$wgMemc->set( $mcKey, 1, $wgProxyMemcExpiry );

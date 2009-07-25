@@ -579,22 +579,22 @@ class MimeMagic {
 	 */
 	function detectZipType( $header ) {
 		$opendocTypes = array(
-			'chart-template',
 			'chart',
-			'formula-template',
+			'chart-template',
 			'formula',
-			'graphics-template',
+			'formula-template',
 			'graphics',
-			'image-template',
+			'graphics-template',
 			'image',
-			'presentation-template',
+			'image-template',
 			'presentation',
-			'spreadsheet-template',
+			'presentation-template',
 			'spreadsheet',
+			'spreadsheet-template',
+			'text',
 			'text-template',
 			'text-master',
-			'text-web',
-			'text' );
+			'text-web' );
 
 		// http://lists.oasis-open.org/archives/office/200505/msg00006.html
 		$types = '(?:' . implode( '|', $opendocTypes ) . ')';

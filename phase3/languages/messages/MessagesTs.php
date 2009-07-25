@@ -1,9 +1,6 @@
 <?php
 /** Tsonga (Xitsonga)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -11,32 +8,6 @@
  */
 
 $messages = array(
-# User preference toggles
-'tog-justify'              => 'Hikahata xirhapa',
-'tog-hideminor'            => 'Tumbeta mindzulamiso leyi tsongo',
-'tog-usenewrc'             => 'Kucinca ka sweswinyana loku hlutiweke (JavaScript)',
-'tog-showtoc'              => 'Komba nxaxamelo wa leswingandzeni (eka tinhlokomhaka tinharhu kumbe kutlula)',
-'tog-rememberpassword'     => 'Tsundzuka ku nghena eka Khompuyuta leyi',
-'tog-watchcreations'       => 'Hoxa matluka lawa ndzi matumbuluxaka eka leswi ndziswi languteke',
-'tog-watchdefault'         => 'Hoxa matluka lawa ndzi malulamisaka eka leswi ndziswi languteke',
-'tog-watchmoves'           => "Hoxa matluka lawa ndzi mayisaka kun'wana eka leswi ndziswi languteke",
-'tog-watchdeletion'        => 'Hoxa matluka lawa ndzi masulaka eka leswi ndziswi languteke',
-'tog-enotifwatchlistpages' => 'ndzurhumele e-mail loko leswi ndzi swi languteke swi lulamisiwa',
-'tog-enotifusertalkpages'  => 'ndzurhumele e-mail loko tluka ra mbulavulo na mina ri lulamisiwa',
-'tog-enotifminoredits'     => 'ndzurhumele e-mail loko ku endleka mindzulamiso leyi ntsongo',
-'tog-enotifrevealaddr'     => 'Paluxa e-mail yamina eka mapapila lawa ndzimarhumelaka',
-'tog-shownumberswatching'  => 'Komba ntsengo wa vatirhisi lava hlaleleke tluka',
-'tog-forceeditsummary'     => 'Ndzivutisisi loko ndzinga hoxi nkomiso wa ndzulamiso lowu ndzi wu endleke',
-'tog-watchlisthideown'     => 'Tumbeta mindzulamiso ya mina eka leswi ndzi swi languteke',
-'tog-watchlisthidebots'    => 'Tumbeta mindzulamiso ya rhobhoti eka leswi ndzi swi languteke',
-'tog-watchlisthideminor'   => 'Tumbeta mindzulamiso leyi tsongo eka leswi ndzi swi languteke',
-'tog-watchlisthideliu'     => 'Tumbeta mindzulamiso ya vatirhisiwa lava ngheneke eka leswi ndzi swi languteke',
-'tog-watchlisthideanons'   => 'Tumbeta mindzulamiso ya vatirhisiwa lavanga tivekiki eka leswi ndzi swi languteke',
-'tog-ccmeonemails'         => "Ndzirhumele khopi ya ti e-mail leti ndzi ti rhumelaka van'wana",
-
-'underline-always' => 'Nkarhi hinkwawo',
-'underline-never'  => "Swinga endleki ni kan'we",
-
 # Dates
 'sunday'    => 'Sonto',
 'mon'       => 'Musombhunuko',
@@ -58,23 +29,19 @@ $messages = array(
 'november'  => 'Hukuri',
 'december'  => "N'wendzamhala",
 
-'newwindow'     => '(Yi pfula e ndhzawini yintswa)',
-'cancel'        => 'Thsika',
-'moredotdotdot' => "Swin'wana...",
-'mypage'        => 'Tluka ramina',
-'mytalk'        => 'Mbulavulo namina',
-'anontalk'      => 'Vulavula na IP leyi',
-'and'           => '&#32;nakambe',
-
-# Cologne Blue skin
+'newwindow'      => '(Yi pfula e ndhzawini yintswa)',
+'cancel'         => 'Thsika',
 'qbfind'         => 'Kuma',
 'qbedit'         => 'Lulamisa',
 'qbpageoptions'  => 'Tluka leri',
 'qbpageinfo'     => 'mongo',
 'qbmyoptions'    => 'Matluka ya mina',
 'qbspecialpages' => 'Matluka yohlawuleka',
-'faq'            => 'FAQ',
-'faqpage'        => 'Project:FAQ',
+'moredotdotdot'  => "Swin'wana...",
+'mypage'         => 'Tluka ramina',
+'mytalk'         => 'Mbulavulo namina',
+'anontalk'       => 'Vulavula na IP leyi',
+'and'            => '&#32;nakambe',
 
 'errorpagetitle'   => 'Xihoxo',
 'returnto'         => 'Thlelela e $1.',
@@ -108,6 +75,8 @@ $messages = array(
 'disclaimerpage'       => 'Project:Swithsuxa nadzu hikuangara',
 'edithelp'             => 'Mpfuno hi ta mindzulamiso',
 'edithelppage'         => 'Help:Mindzulamiso',
+'faq'                  => 'FAQ',
+'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:Leswinga ndzeni',
 'mainpage'             => 'Tlukankulu',
 'mainpage-description' => 'Tluka-Nkulu',
@@ -184,6 +153,10 @@ The last attempted database query was:
 "$1"
 from within function "$2".
 MySQL returned error "$3: $4"',
+'noconnect'            => 'Sorry! The wiki is experiencing some technical difficulties, and cannot contact the database server.<br />
+$1',
+'nodb'                 => 'Could not select database $1',
+'cachederror'          => 'The following is a cached copy of the requested page, and may not be up to date.',
 'laggedslavemode'      => 'Warning: Page may not contain recent updates.',
 'readonly'             => 'Database locked',
 'enterlockreason'      => 'Enter a reason for the lock, including an estimate of when the lock will be released',
@@ -233,6 +206,8 @@ Query: $2',
 'userlogout'              => 'Pfala u famba',
 'nologinlink'             => 'Tumbuluxa akhawunti',
 'createaccount'           => 'Tumbuluxa akhawunti',
+'yourrealname'            => 'Vito ra ntiyiso:',
+'yourlanguage'            => 'Ririmi:',
 
 # Edit pages
 'summary'          => 'Nkomiso:',
@@ -242,12 +217,12 @@ Query: $2',
 'preview'          => 'Ringanisa',
 'showpreview'      => 'Komba kuringanisa',
 'showdiff'         => 'Komba ku cinca',
-'previewnote'      => "'''Lowu i ndzinganiso ntsena;
-kucinca a ku sihlayisiwa!'''",
-'copyrightwarning' => "Xiya leswaku minyikelo hinkwayo e ka {{SITENAME}} yi tekiwa yitshuxiwe e hansi ka $2 (Vona $1 ku kuma vuxokoxoko).
+'previewnote'      => '<strong>Lowu i ndzinganiso ntsena;
+kucinca a ku sihlayisiwa!</strong>',
+'copyrightwarning' => 'Xiya leswaku minyikelo hinkwayo e ka {{SITENAME}} yi tekiwa yitshuxiwe e hansi ka $2 (Vona $1 ku kuma vuxokoxoko).
 loko unga tsakeli leswaku vutsari bya wena byi lulamisiwa no aviwa handle ko tweriwa vusiwana, unga tsari laha.<br />
 U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe leswi u swinyikelaka u swi tekile e xihloveni xa lerivaleni kumbe laha kunga na mpfumelelo wa mani na mani.
-'''UNGA RHUMERI MATSALWA LA MA SIRHELERIWEKE HANDLE KA MPFUMELELO!'''",
+<strong>UNGA RHUMERI MATSALWA LA MA SIRHELERIWEKE HANDLE KA MPFUMELELO!</strong>',
 
 # History pages
 'next'       => 'Leswilandzelaka',
@@ -266,19 +241,16 @@ U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe 
 'searchrelated'         => 'Yelanaka',
 'searchall'             => 'Hinkwaswo',
 'showingresults'        => "Kombisa e hansi kufika eka {{PLURAL:$1|'''1''' mbuyelo|'''$1''' mimbuyelo}} Kusungula hi#'''$2'''.",
-'powersearch'           => 'Ndzavisiso',
 
 # Preferences page
 'mypreferences'   => 'Minhlawulo ya mina',
 'prefs-edits'     => 'Ntsengo wa mindzulamiso:',
 'skin-preview'    => 'Ndzinganiso',
-'prefs-datetime'  => 'Siku na nkarhi',
+'datetime'        => 'Siku na nkarhi',
 'prefs-watchlist' => 'Nxaxamelo wa Leswivoniwaka',
 'saveprefs'       => 'Hlayisa',
 'resetprefs'      => 'sula kucinca lokungahlayisiwangiki',
-'prefs-editing'   => 'Kululamisa',
-'yourrealname'    => 'Vito ra ntiyiso:',
-'yourlanguage'    => 'Ririmi:',
+'textboxsize'     => 'Kululamisa',
 
 # Rights
 'right-read'       => 'Matluka yo Hlaya',
@@ -292,9 +264,7 @@ U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe 
 'show'          => 'Komba',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Kuncica loku yelanaka',
-'recentchangeslinked-feed'    => 'Kuncica loku yelanaka',
-'recentchangeslinked-toolbox' => 'Kuncica loku yelanaka',
+'recentchangeslinked' => 'Kuncica loku yelanaka',
 
 # Upload
 'upload' => 'Khandziyisa fayili',
@@ -306,7 +276,6 @@ U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe 
 'listfiles_name' => 'vito',
 
 # File description page
-'file-anchor-link'   => 'Fayili',
 'filehist-deleteall' => 'sula hinkwaswo',
 'filehist-deleteone' => 'Dlaya',
 'filehist-revert'    => 'thlerisela',
@@ -321,9 +290,8 @@ U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe 
 'specialloguserlabel' => 'Mutirhisi:',
 
 # Special:AllPages
-'allpages'       => 'Matluka hinkwawo',
-'alphaindexline' => '$1 kuya fika eka $2',
-'allarticles'    => 'Matluka hinkwawo',
+'allpages'    => 'Matluka hinkwawo',
+'allarticles' => 'Matluka hinkwawo',
 
 # Special:LinkSearch
 'linksearch-ok' => 'Lava',
@@ -360,7 +328,6 @@ U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe 
 
 'sp-contributions-newbies'     => 'Komba minyikela ya ti akhawunti tintswa ntsena',
 'sp-contributions-newbies-sub' => 'Eka ti akhawunti ti ntswa',
-'sp-contributions-talk'        => 'Mbulavulo',
 'sp-contributions-search'      => 'Lava minyikelo',
 
 # What links here

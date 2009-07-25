@@ -26,7 +26,7 @@ class Category {
 	 */
 	protected function initialize() {
 		if ( $this->mName === null && $this->mTitle ) 
-			$this->mName = $title->getDBkey();
+			$this->mName = $title->getDBKey();
 
 		if( $this->mName === null && $this->mID === null ) {
 			throw new MWException( __METHOD__.' has both names and IDs null' );
@@ -41,7 +41,8 @@ class Category {
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow(
 			'category',
-			array( 'cat_id', 'cat_title', 'cat_pages', 'cat_subcats', 'cat_files' ),
+			array( 'cat_id', 'cat_title', 'cat_pages', 'cat_subcats',
+				'cat_files' ),
 			$where,
 			__METHOD__
 		);
@@ -50,7 +51,7 @@ class Category {
 			if ( $this->mTitle ) {
 				# If there is a title object but no record in the category table, treat this as an empty category
 				$this->mID      = false;
-				$this->mName    = $this->mTitle->getDBkey();
+				$this->mName    = $this->mTitle->getDBKey();
 				$this->mPages   = 0;
 				$this->mSubcats = 0;
 				$this->mFiles   = 0;
@@ -69,7 +70,8 @@ class Category {
 		# (bug 13683) If the count is negative, then 1) it's obviously wrong
 		# and should not be kept, and 2) we *probably* don't have to scan many
 		# rows to obtain the correct figure, so let's risk a one-time recount.
-		if( $this->mPages < 0 || $this->mSubcats < 0 || $this->mFiles < 0 ) {
+		if( $this->mPages < 0 || $this->mSubcats < 0 ||
+		$this->mFiles < 0 ) {
 			$this->refreshCounts();
 		}
 
@@ -91,7 +93,7 @@ class Category {
 		}
 
 		$cat->mTitle = $title;
-		$cat->mName = $title->getDBkey();
+		$cat->mName = $title->getDBKey();
 
 		return $cat;
 	}
@@ -106,7 +108,7 @@ class Category {
 		$cat = new self();
 
 		$cat->mTitle = $title;
-		$cat->mName = $title->getDBkey();
+		$cat->mName = $title->getDBKey();
 
 		return $cat;
 	}
@@ -149,7 +151,7 @@ class Category {
 				# but we can't know that here...
 				return false;
 			} else {
-				$cat->mName = $title->getDBkey(); # if we have a title object, fetch the category name from there
+				$cat->mName = $title->getDBKey(); # if we have a title object, fetch the category name from there
 			}
 
 			$cat->mID =   false;

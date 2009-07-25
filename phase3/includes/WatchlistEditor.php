@@ -143,8 +143,8 @@ class WatchlistEditor {
 			if( !$title instanceof Title )
 				$title = Title::newFromText( $title );
 			if( $title instanceof Title ) {
-				$output->addHTML( "<li>" . $skin->link( $title )
-				. ' (' . $skin->link( $title->getTalkPage(), $talk ) . ")</li>\n" );
+				$output->addHTML( "<li>" . $skin->makeLinkObj( $title )
+				. ' (' . $skin->makeLinkObj( $title->getTalkPage(), $talk ) . ")</li>\n" );
 			}
 		}
 		$output->addHTML( "</ul>\n" );
@@ -340,7 +340,7 @@ class WatchlistEditor {
 		if( ( $count = $this->showItemCount( $output, $user ) ) > 0 ) {
 			$self = SpecialPage::getTitleFor( 'Watchlist' );
 			$form  = Xml::openElement( 'form', array( 'method' => 'post',
-				'action' => $self->getLocalUrl( array( 'action' => 'edit' ) ) ) );
+				'action' => $self->getLocalUrl( 'action=edit' ) ) );
 			$form .= Xml::hidden( 'token', $wgUser->editToken( 'watchlistedit' ) );
 			$form .= "<fieldset>\n<legend>" . wfMsgHtml( 'watchlistedit-normal-legend' ) . "</legend>";
 			$form .= wfMsgExt( 'watchlistedit-normal-explain', 'parse' );
@@ -407,33 +407,19 @@ class WatchlistEditor {
 	 * @return string
 	 */
 	private function buildRemoveLine( $title, $redirect, $skin ) {
-		global $wgLang;
-
-		$link = $skin->link( $title );
+		$link = $skin->makeLinkObj( $title );
 		if( $redirect )
 			$link = '<span class="watchlistredir">' . $link . '</span>';
-		$tools[] = $skin->link( $title->getTalkPage(), wfMsgHtml( 'talkpagelinktext' ) );
+		$tools[] = $skin->makeLinkObj( $title->getTalkPage(), wfMsgHtml( 'talkpagelinktext' ) );
 		if( $title->exists() ) {
-			$tools[] = $skin->link(
-				$title,
-				wfMsgHtml( 'history_short' ),
-				array(),
-				array( 'action' => 'history' ),
-				array( 'known', 'noclasses' )
-			);
+			$tools[] = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'history_short' ), 'action=history' );
 		}
 		if( $title->getNamespace() == NS_USER && !$title->isSubpage() ) {
-			$tools[] = $skin->link(
-				SpecialPage::getTitleFor( 'Contributions', $title->getText() ),
-				wfMsgHtml( 'contributions' ),
-				array(),
-				array(),
-				array( 'known', 'noclasses' )
-			);
+			$tools[] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $title->getText() ), wfMsgHtml( 'contributions' ) );
 		}
 		return "<li>"
 			. Xml::check( 'titles[]', false, array( 'value' => $title->getPrefixedText() ) )
-			. $link . " (" . $wgLang->pipeList( $tools ) . ")" . "</li>\n";
+			. $link . " (" . implode( ' | ', $tools ) . ")" . "</li>\n";
 		}
 
 	/**
@@ -447,7 +433,7 @@ class WatchlistEditor {
 		$this->showItemCount( $output, $user );
 		$self = SpecialPage::getTitleFor( 'Watchlist' );
 		$form  = Xml::openElement( 'form', array( 'method' => 'post',
-			'action' => $self->getLocalUrl( array( 'action' => 'raw' ) ) ) );
+			'action' => $self->getLocalUrl( 'action=raw' ) ) );
 		$form .= Xml::hidden( 'token', $wgUser->editToken( 'watchlistedit' ) );
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'watchlistedit-raw-legend' ) . '</legend>';
 		$form .= wfMsgExt( 'watchlistedit-raw-explain', 'parse' );
@@ -494,20 +480,11 @@ class WatchlistEditor {
 	 * @return string
 	 */
 	public static function buildTools( $skin ) {
-		global $wgLang;
-
 		$tools = array();
 		$modes = array( 'view' => false, 'edit' => 'edit', 'raw' => 'raw' );
 		foreach( $modes as $mode => $subpage ) {
-			// can use messages 'watchlisttools-view', 'watchlisttools-edit', 'watchlisttools-raw'
-			$tools[] = $skin->link(
-				SpecialPage::getTitleFor( 'Watchlist', $subpage ),
-				wfMsgHtml( "watchlisttools-{$mode}" ),
-				array(),
-				array(),
-				array( 'known', 'noclasses' )
-			);
+			$tools[] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Watchlist', $subpage ), wfMsgHtml( "watchlisttools-{$mode}" ) );
 		}
-		return $wgLang->pipeList( $tools );
+		return implode( ' | ', $tools );
 	}
 }

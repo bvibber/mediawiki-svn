@@ -223,7 +223,7 @@ class WikiRevision {
 
 		} elseif( $changed ) {
 			wfDebug( __METHOD__ . ": running onArticleEdit\n" );
-			Article::onArticleEdit( $this->title );
+			Article::onArticleEdit( $this->title, 'skiptransclusions' ); // leave templatelinks for editUpdates()
 
 			wfDebug( __METHOD__ . ": running edit updates\n" );
 			$article->editUpdates(
@@ -1116,7 +1116,7 @@ class ImportStreamSource {
 		}
 	}
 
-	public static function newFromInterwiki( $interwiki, $page, $history = false, $templates = false, $pageLinkDepth = 0 ) {
+	public static function newFromInterwiki( $interwiki, $page, $history=false ) {
 		if( $page == '' ) {
 			return new WikiErrorMsg( 'import-noarticle' );
 		}
@@ -1124,10 +1124,7 @@ class ImportStreamSource {
 		if( is_null( $link ) || $link->getInterwiki() == '' ) {
 			return new WikiErrorMsg( 'importbadinterwiki' );
 		} else {
-			$params = array();
-			if ( $history ) $params['history'] = 1;
-			if ( $templates ) $params['templates'] = 1;
-			if ( $pageLinkDepth ) $params['pagelink-depth'] = $pageLinkDepth;
+			$params = $history ? 'history=1' : '';
 			$url = $link->getFullUrl( $params );
 			# For interwikis, use POST to avoid redirects.
 			return ImportStreamSource::newFromURL( $url, "POST" );

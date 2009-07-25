@@ -45,7 +45,7 @@ class UserDupes {
 		$fname = 'UserDupes::hasUniqueIndex';
 		$info = $this->db->indexInfo( 'user', 'user_name', $fname );
 		if( !$info ) {
-			wfOut( "WARNING: doesn't seem to have user_name index at all!\n" );
+			echo "WARNING: doesn't seem to have user_name index at all!\n";
 			return false;
 		}
 
@@ -92,11 +92,11 @@ class UserDupes {
 
 		$this->lock();
 
-		wfOut( "Checking for duplicate accounts...\n" );
+		echo "Checking for duplicate accounts...\n";
 		$dupes = $this->getDupes();
 		$count = count( $dupes );
 
-		wfOut( "Found $count accounts with duplicate records on ".wfWikiID().".\n" );
+		echo "Found $count accounts with duplicate records on ".wfWikiID().".\n";
 		$this->trimmed    = 0;
 		$this->reassigned = 0;
 		$this->failed     = 0;
@@ -106,34 +106,34 @@ class UserDupes {
 
 		$this->unlock();
 
-		wfOut( "\n" );
+		echo "\n";
 
 		if( $this->reassigned > 0 ) {
 			if( $doDelete ) {
-				wfOut( "$this->reassigned duplicate accounts had edits reassigned to a canonical record id.\n" );
+				echo "$this->reassigned duplicate accounts had edits reassigned to a canonical record id.\n";
 			} else {
-				wfOut( "$this->reassigned duplicate accounts need to have edits reassigned.\n" );
+				echo "$this->reassigned duplicate accounts need to have edits reassigned.\n";
 			}
 		}
 
 		if( $this->trimmed > 0 ) {
 			if( $doDelete ) {
-				wfOut( "$this->trimmed duplicate user records were deleted from ".wfWikiID().".\n" );
+				echo "$this->trimmed duplicate user records were deleted from ".wfWikiID().".\n";
 			} else {
-				wfOut( "$this->trimmed duplicate user accounts were found on ".wfWikiID()." which can be removed safely.\n" );
+				echo "$this->trimmed duplicate user accounts were found on ".wfWikiID()." which can be removed safely.\n";
 			}
 		}
 
 		if( $this->failed > 0 ) {
-			wfOut( "Something terribly awry; $this->failed duplicate accounts were not removed.\n" );
+			echo "Something terribly awry; $this->failed duplicate accounts were not removed.\n";
 			return false;
 		}
 
 		if( $this->trimmed == 0 || $doDelete ) {
-			wfOut( "It is now safe to apply the unique index on user_name.\n" );
+			echo "It is now safe to apply the unique index on user_name.\n";
 			return true;
 		} else {
-			wfOut( "Run this script again with the --fix option to automatically delete them.\n" );
+			echo "Run this script again with the --fix option to automatically delete them.\n";
 			return false;
 		}
 	}
@@ -215,36 +215,36 @@ class UserDupes {
 
 		$firstRow = $this->db->fetchObject( $result );
 		$firstId  = $firstRow->user_id;
-		wfOut( "Record that will be used for '$name' is user_id=$firstId\n" );
+		echo "Record that will be used for '$name' is user_id=$firstId\n";
 
 		while( $row = $this->db->fetchObject( $result ) ) {
 			$dupeId = $row->user_id;
-			wfOut( "... dupe id $dupeId: " );
+			echo "... dupe id $dupeId: ";
 			$edits = $this->editCount( $dupeId );
 			if( $edits > 0 ) {
 				$this->reassigned++;
-				wfOut( "has $edits edits! " );
+				echo "has $edits edits! ";
 				if( $doDelete ) {
 					$this->reassignEdits( $dupeId, $firstId );
 					$newEdits = $this->editCount( $dupeId );
 					if( $newEdits == 0 ) {
-						wfOut( "confirmed cleaned. " );
+						echo "confirmed cleaned. ";
 					} else {
 						$this->failed++;
-						wfOut( "WARNING! $newEdits remaining edits for $dupeId; NOT deleting user.\n" );
+						echo "WARNING! $newEdits remaining edits for $dupeId; NOT deleting user.\n";
 						continue;
 					}
 				} else {
-					wfOut( "(will need to reassign edits on fix)" );
+					echo "(will need to reassign edits on fix)";
 				}
 			} else {
-				wfOut( "ok, no edits. " );
+				echo "ok, no edits. ";
 			}
 			$this->trimmed++;
 			if( $doDelete ) {
 				$this->trimAccount( $dupeId );
 			}
-			wfOut( "\n" );
+			echo "\n";
 		}
 		$this->db->freeResult( $result );
 	}
@@ -306,12 +306,12 @@ class UserDupes {
 	 */
 	function reassignEditsOn( $table, $field, $from, $to ) {
 		$fname = 'UserDupes::reassignEditsOn';
-		wfOut( "reassigning on $table... " );
+		echo "reassigning on $table... ";
 		$this->db->update( $table,
 			array( $field => $to ),
 			array( $field => $from ),
 			$fname );
-		wfOut( "ok. " );
+		echo "ok. ";
 	}
 
 	/**
@@ -321,9 +321,9 @@ class UserDupes {
 	 */
 	function trimAccount( $userid ) {
 		$fname = 'UserDupes::trimAccount';
-		wfOut( "deleting..." );
+		echo "deleting...";
 		$this->db->delete( 'user', array( 'user_id' => $userid ), $fname );
-		wfOut( " ok" );
+		echo " ok";
 	}
 
 }

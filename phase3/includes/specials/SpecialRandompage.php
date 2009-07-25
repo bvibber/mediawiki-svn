@@ -23,7 +23,7 @@ class RandomPage extends SpecialPage {
 	}
 
 	public function setNamespace ( $ns ) {
-		if( !$ns || $ns < NS_MAIN ) $ns = NS_MAIN;
+		if( $ns < NS_MAIN ) $ns = NS_MAIN;
 		$this->namespaces = array( $ns );
 	}
 
@@ -36,9 +36,8 @@ class RandomPage extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgContLang;
 
-		if ($par) {
+		if ($par)
 			$this->setNamespace( $wgContLang->getNsIndex( $par ) );
-		}
 
 		$title = $this->getRandomTitle();
 
@@ -79,6 +78,8 @@ class RandomPage extends SpecialPage {
 
 	private function selectRandomPageFromDB( $randstr ) {
 		global $wgExtraRandompageSQL;
+		$fname = 'RandomPage::selectRandomPageFromDB';
+
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$use_index = $dbr->useIndexClause( 'page_random' );
@@ -88,7 +89,6 @@ class RandomPage extends SpecialPage {
 		$redirect = $this->isRedirect() ? 1 : 0;
 
 		$extra = $wgExtraRandompageSQL ? "AND ($wgExtraRandompageSQL)" : "";
-		$extra .= $this->addExtraSQL() ? "AND (".$this->addExtraSQL().")" : "";
 		$sql = "SELECT page_title, page_namespace
 			FROM $page $use_index
 			WHERE page_namespace IN ( $ns )
@@ -98,13 +98,7 @@ class RandomPage extends SpecialPage {
 			ORDER BY page_random";
 
 		$sql = $dbr->limitResult( $sql, 1, 0 );
-		$res = $dbr->query( $sql, __METHOD__ );
+		$res = $dbr->query( $sql, $fname );
 		return $dbr->fetchObject( $res );
-	}
-
-	// an alternative to $wgExtraRandompageSQL so extensions
-	// can add their own SQL by overriding this function
-	public function addExtraSQL() {
-		return '';
 	}
 }

@@ -1,31 +1,19 @@
 <?php
 /** Hiligaynon (Ilonggo)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
  * @author Jose77
  * @author Kguirnela
- * @author Tagimata
  */
 
 $messages = array(
 # User preference toggles
-'tog-underline'             => 'Kuritan sa idalom ang mga tabid:',
-'tog-highlightbroken'       => 'Dagwayi ang utod nga tabid <a href="" class="new">nga nagaka anggid sini </a> (alternatibo: anggid sini<a href="" class="internal">?</a>).',
-'tog-justify'               => 'Tadlongon ang mga parapo',
-'tog-hideminor'             => 'Tagu-on ang menor nga gin-islan sa bag-o lang gid na-obra',
-'tog-hidepatrolled'         => 'Taguon ang mga nabantayan nga na islan na nga bag-o lang gin obra',
-'tog-newpageshidepatrolled' => 'Taguon ang mga nabantayan  nga pahina sa bag-ong lista sang mga pahina',
-'tog-extendwatchlist'       => 'Palaparon ang watchlist para makita ang tanan nga mga na-islan, indi lang man sa pinaka bag-o',
-'tog-usenewrc'              => 'Gamiton ang ginpanami nga bag-o lang gid nga na-islan (nagakilanlan JavaScript)',
-'tog-numberheadings'        => 'Auto-numero heading',
-'tog-showtoolbar'           => 'Ipakita ang edit toolbar (nagakilanlan JavaScript)',
-'tog-editondblclick'        => 'Islan ang pahina kung i-doble klik mo (nagakilanlan JavaScript)',
-'tog-rememberpassword'      => 'Dumdumon ang akon pagsulod sa sini nga kompyuter',
+'tog-underline'        => 'Kuritan sa idalom ang mga tabid:',
+'tog-highlightbroken'  => 'Dagwayi ang utod nga tabid <a href="" class="new">nga nagaka anggid sini </a> (alternatibo: anggid sini<a href="" class="internal">?</a>).',
+'tog-justify'          => 'Tadlongon ang mga parapo',
+'tog-rememberpassword' => 'Dumdumon ang akon pagsulod sa sini nga kompyuter',
 
 # Dates
 'sunday'        => 'Domingo',
@@ -79,17 +67,15 @@ $messages = array(
 'nov'           => 'Nob',
 'dec'           => 'Dis',
 
-'about'      => 'Nahanungod',
-'cancel'     => 'Kanselahon',
-'mytalk'     => 'Akon paghisayranay',
-'navigation' => 'Nabigayson',
-'and'        => '&#32;kag',
-
-# Cologne Blue skin
+'about'          => 'Nahanungod',
+'cancel'         => 'Kanselahon',
 'qbfind'         => 'Pangita',
 'qbedit'         => 'Ilisan',
 'qbpageoptions'  => 'Ining panid',
 'qbspecialpages' => 'Pinasahi nga mga panid',
+'mytalk'         => 'Akon paghisayranay',
+'navigation'     => 'Nabigayson',
+'and'            => '&#32;kag',
 
 'tagline'          => 'Halin sa {{SITENAME}}',
 'help'             => 'Bulig',
@@ -158,6 +144,9 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 'nologinlink'             => 'Maghimo account',
 'createaccount'           => 'Maghimo Account',
 'gotaccountlink'          => 'Mag sulod',
+'youremail'               => 'E-mail:',
+'username'                => 'Ngalan sang Manog-gamit:',
+'email'                   => 'E-mail',
 
 # Edit pages
 'summary'            => 'Kabilogan:',
@@ -190,18 +179,13 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 'skin-preview'      => 'Ipakita subong',
 'prefs-rc'          => 'Mga Bag-o nga Inislan',
 'searchresultshead' => 'Pangita-a',
-'youremail'         => 'E-mail:',
-'username'          => 'Ngalan sang Manog-gamit:',
-'email'             => 'E-mail',
 
 # Recent changes
 'recentchanges' => 'Mga Bag-o nga Inislan',
 'newpageletter' => 'B',
 
 # Recent changes linked
-'recentchangeslinked'         => 'May labot nga pag-ilis',
-'recentchangeslinked-feed'    => 'May labot nga pag-ilis',
-'recentchangeslinked-toolbox' => 'May labot nga pag-ilis',
+'recentchangeslinked' => 'May labot nga pag-ilis',
 
 # Upload
 'upload'            => 'Karga file',
@@ -217,8 +201,8 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Random page
 'randompage' => 'Lagpat nga Panid',
 
-'brokenredirects-edit'   => 'ilisan',
-'brokenredirects-delete' => 'panason',
+'brokenredirects-edit'   => '(ilisan)',
+'brokenredirects-delete' => '(panason)',
 
 # Miscellaneous special pages
 'newpages-username' => 'Ngalan sang Manog-gamit:',
@@ -258,7 +242,6 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Contributions
 'mycontris' => 'Akon contribusyon',
 
-'sp-contributions-talk'   => 'Hisayranay',
 'sp-contributions-submit' => 'Pangita-a',
 
 # What links here

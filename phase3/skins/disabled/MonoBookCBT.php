@@ -426,30 +426,19 @@ class SkinMonoBookCBT extends SkinTemplate {
 		if (count($newtalks) == 1 && $newtalks[0]["wiki"] === $wgDBname) {
 			$usertitle = $this->getUserPageTitle();
 			$usertalktitle = $usertitle->getTalkPage();
-
 			if( !$usertalktitle->equals( $this->mTitle ) ) {
-				$newmessageslink = $this->link(
-					$usertalktitle,
-					wfMsgHtml( 'newmessageslink' ),
-					array(),
-					array( 'redirect' => 'no' ),
-					array( 'known', 'noclasses' )
+				$ntl = wfMsg( 'youhavenewmessages',
+					$this->makeKnownLinkObj(
+						$usertalktitle,
+						wfMsgHtml( 'newmessageslink' ),
+						'redirect=no'
+					),
+					$this->makeKnownLinkObj(
+						$usertalktitle,
+						wfMsgHtml( 'newmessagesdifflink' ),
+						'diff=cur'
+					)
 				);
-	
-				$newmessagesdifflink = $this->link(
-					$usertalktitle,
-					wfMsgHtml( 'newmessagesdifflink' ),
-					array(),
-					array( 'diff' => 'cur' ),
-					array( 'known', 'noclasses' )
-				);
-	
-				$ntl = wfMsg(
-					'youhavenewmessages',
-					$newmessageslink,
-					$newmessagesdifflink
-				);
-
 				# Disable Cache
 				$this->mOut->setSquidMaxage(0);
 			}

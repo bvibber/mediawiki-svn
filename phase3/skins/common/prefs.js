@@ -18,7 +18,7 @@ function tabbedprefs() {
 		if (children[i].nodeName.toLowerCase() == 'fieldset') {
 			children[i].id = 'prefsection-' + seci;
 			children[i].className = 'prefsection';
-			if (is_opera) {
+			if (is_opera || is_khtml) {
 				children[i].className = 'prefsection operaprefsection';
 			}
 			var legends = children[i].getElementsByTagName('legend');
@@ -90,15 +90,11 @@ function checkTimezone(tz, msg) {
 	}
 }
 
-function timezoneSetup() {
-	var tzSelect = document.getElementById( 'mw-input-timecorrection' );
-	var tzTextbox = document.getElementById( 'mw-input-timecorrection-other' );
-	
-	if (tzSelect && tzTextbox) {
-		addHandler( tzSelect, 'change', function(e) { updateTimezoneSelection(false); } );
-		addHandler( tzTextbox, 'blur', function(e) { updateTimezoneSelection(true); } );
+function unhidetzbutton() {
+	var tzb = document.getElementById('guesstimezonebutton');
+	if (tzb) {
+		tzb.style.display = 'inline';
 	}
-	
 	updateTimezoneSelection(false);
 }
 
@@ -116,79 +112,53 @@ function fetchTimezone() {
 	return tzString;
 }
 
-function guessTimezone() {
-	var textbox = document.getElementById("mw-input-timecorrection-other");
-	var selector = document.getElementById( 'mw-input-timecorrection' );
-	
-	selector.value = 'other';
-	textbox.value = fetchTimezone();
-	textbox.disabled = false; // The changed handler doesn't trip, obviously.
+function guessTimezone(box) {
+	document.getElementsByName("wpHourDiff")[0].value = fetchTimezone();
 	updateTimezoneSelection(true);
 }
 
 function updateTimezoneSelection(force_offset) {
-	var selector = document.getElementById("mw-input-timecorrection");
-	
-	if (selector.value == 'guess') {
-		return guessTimezone();
-	}
-	
-	var textbox = document.getElementById( 'mw-input-timecorrection-other' );
-	var localtimeHolder = document.getElementById("wpLocalTime");
-	var servertime = document.getElementsByName("wpServerTime")[0].value;
+	var wpTimeZone = document.getElementsByName("wpTimeZone")[0];
+	var wpHourDiff = document.getElementsByName("wpHourDiff")[0];
+	var wpLocalTime = document.getElementById("wpLocalTime");
+	var wpServerTime = document.getElementsByName("wpServerTime")[0];
 	var minDiff = 0;
-	
-	// Compatibility code.
-	if (!selector.value) selector.value = selector.options[selector.selectedIndex].value;
 
-	// Handle force_offset
-	if (force_offset) selector.value = 'other';
-	
-	// Get min_diff
-	if (selector.value == 'other') {
-		// Grab data from the textbox, parse it.
-		var diffArr = textbox.value.split(':');
+	if (force_offset) wpTimeZone.selectedIndex = 1;
+	if (wpTimeZone.selectedIndex == 1) {
+		wpHourDiff.disabled = false;
+		var diffArr = wpHourDiff.value.split(':');
 		if (diffArr.length == 1) {
-			// Specification is of the form [-]XX
 			minDiff = parseInt(diffArr[0], 10) * 60;
 		} else {
-			// Specification is of the form [-]XX:XX
 			minDiff = Math.abs(parseInt(diffArr[0], 10))*60 + parseInt(diffArr[1], 10);
 			if (parseInt(diffArr[0], 10) < 0) minDiff = -minDiff;
 		}
 	} else {
-		// Grab data from the selector value
-		var diffArr = selector.value.split('|');
+		wpHourDiff.disabled = true;
+		var diffArr = wpTimeZone.options[wpTimeZone.selectedIndex].value.split('|');
 		minDiff = parseInt(diffArr[1], 10);
 	}
-	
-	// Gracefully handle non-numbers.
 	if (isNaN(minDiff)) minDiff = 0;
-	
-	// Determine local time from server time and minutes difference, for display.
-	var localTime = parseInt(servertime, 10) + minDiff;
-	
-	// Bring time within the [0,1440) range.
+	var localTime = parseInt(wpServerTime.value, 10) + minDiff;
 	while (localTime < 0) localTime += 1440;
 	while (localTime >= 1440) localTime -= 1440;
 
-	// Split to hour and minute
 	var hour = String(Math.floor(localTime/60));
 	if (hour.length<2) hour = '0'+hour;
 	var min = String(localTime%60);
 	if (min.length<2) min = '0'+min;
-	changeText(localtimeHolder, hour+':'+min);
+	changeText(wpLocalTime, hour+':'+min);
 
-	// If the user selected from the drop-down, fill the offset field.
-	if (selector.value != 'other') {
+	if (wpTimeZone.selectedIndex != 1) {
 		hour = String(Math.abs(Math.floor(minDiff/60)));
 		if (hour.length<2) hour = '0'+hour;
 		if (minDiff < 0) hour = '-'+hour;
 		min = String(minDiff%60);
 		if (min.length<2) min = '0'+min;
-		textbox.value = hour+':'+min;
+		wpHourDiff.value = hour+':'+min;
 	}
 }
 
-addOnloadHook(timezoneSetup);
-addOnloadHook(tabbedprefs);
+hookEvent("load", unhidetzbutton);
+hookEvent("load", tabbedprefs);

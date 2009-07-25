@@ -1,9 +1,6 @@
 <?php
 /** Ladino (Ladino)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -93,27 +90,23 @@ $messages = array(
 'subcategories'            => 'Subkategorías',
 'category-media-header'    => 'Archivos multimedia en la kategoría "$1"',
 'category-empty'           => "''La kategoría no kontiene aktualmente ningún artikolo o archivo multimedia''",
-'hidden-category-category' => 'Kategorías eskondidas',
+'hidden-category-category' => 'Kategorías eskondidas', # Name of the category where hidden categories will be listed
 'listingcontinuesabbrev'   => 'kont.',
 
-'about'         => 'Encima de',
-'article'       => 'Artikolo',
-'newwindow'     => '(Se abre en una ventana nueva)',
-'cancel'        => 'Suprimir',
-'moredotdotdot' => 'Mas...',
-'mypage'        => 'Mi pajina',
-'mytalk'        => 'Mi diścuśión',
-'anontalk'      => 'Diskusion para esta IP',
-'and'           => '&#32;e',
-
-# Cologne Blue skin
+'about'          => 'Encima de',
+'article'        => 'Artikolo',
+'newwindow'      => '(Se abre en una ventana nueva)',
+'cancel'         => 'Suprimir',
 'qbfind'         => 'Buscar',
 'qbedit'         => 'Editar',
 'qbpageoptions'  => 'Opsiones de pajina',
 'qbmyoptions'    => 'Mis opsiones',
 'qbspecialpages' => 'Pajinas espesiales',
-'faq'            => 'FAQ',
-'faqpage'        => 'Project:FAQ',
+'moredotdotdot'  => 'Mas...',
+'mypage'         => 'Mi pajina',
+'mytalk'         => 'Mi diścuśión',
+'anontalk'       => 'Diskusion para esta IP',
+'and'            => '&#32;e',
 
 'errorpagetitle'   => 'Yerro',
 'tagline'          => 'De {{SITENAME}}',
@@ -169,6 +162,8 @@ $messages = array(
 'disclaimerpage'       => 'Project:Desmintira general',
 'edithelp'             => 'Ayudo de edición',
 'edithelppage'         => 'Help:Cómo se edita una página',
+'faq'                  => 'FAQ',
+'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:Ayudo',
 'mainpage'             => 'Página de Entrada',
 'mainpage-description' => 'Página de Entrada',
@@ -220,7 +215,7 @@ $messages = array(
 
 # Edit page toolbar
 'italic_tip'     => 'Texhto en cursiva',
-'extlink_sample' => 'http://www.example.com Título del link',
+'extlink_sample' => 'http://www.enxemplo.com Título del link',
 'headline_tip'   => 'Titular de nivel 2',
 'image_tip'      => 'Imagen incorporada',
 'media_tip'      => 'Link al arxivo multimedia',
@@ -235,7 +230,7 @@ $messages = array(
 'showdiff'         => 'Amostrar trocamientos',
 'accmailtitle'     => 'La kontrasenya ha sido embiada.',
 'accmailtext'      => 'La kontrasenya para "$1" se ha embiado a $2.',
-'copyrightwarning' => "Si puede ser, que observe que todas las contribuciones a {{SITENAME}} se consideran hechas públicas abaxo la $2 (ver detayes en $1). Si no quere que la gente endereche tus texhtos escritos sin piedad y los distribuya libbremente, alora no los meta aquí. También él/ella nos está asegurando ansí que escribió este texhto su mismo y es dueño de los derechos de autor, o lo copió desde el dominio público u otra fuente libbero.'''¡QUE N0 USE TEXHTOS ESCRITOS CON COPYRIGHT SIN PERMIŚIÓN!'''<br />",
+'copyrightwarning' => 'Si puede ser, que observe que todas las contribuciones a {{SITENAME}} se consideran hechas públicas abaxo la $2 (ver detayes en $1). Si no quere que la gente endereche tus texhtos escritos sin piedad y los distribuya libbremente, alora no los meta aquí. También él/ella nos está asegurando ansí que escribió este texhto su mismo y es dueño de los derechos de autor, o lo copió desde el dominio público u otra fuente libbero.<strong>¡QUE N0 USE TEXHTOS ESCRITOS CON COPYRIGHT SIN PERMIŚIÓN!</strong><br />',
 
 # History pages
 'revisionasof'     => 'Rêvizión de $1',
@@ -272,15 +267,12 @@ $messages = array(
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Trocamientos conectados',
-'recentchangeslinked-feed'    => 'Trocamientos conectados',
-'recentchangeslinked-toolbox' => 'Trocamientos conectados',
+'recentchangeslinked' => 'Trocamientos conectados',
 
 # Upload
 'upload' => 'Cargar un dosyé',
 
 # File description page
-'file-anchor-link'  => 'Archivo',
 'filehist'          => 'Istoria del dosyé',
 'filehist-datetime' => 'Data/Hora',
 'imagelinks'        => 'Linkes',
@@ -327,8 +319,6 @@ $messages = array(
 
 # Contributions
 'mycontris' => 'Mis contribuciones',
-
-'sp-contributions-talk' => 'Diścutir',
 
 # What links here
 'whatlinkshere'       => 'Lo que se ata con aquí',
@@ -377,7 +367,7 @@ Si puede ser, que use el botón de previsualización antes de registrarla.',
 'tooltip-diff'            => 'Mostra los trocamientos que él/ella hizo en el texhto.',
 
 # Attribution
-'anonymous' => '{{PLURAL:$1|Uzuario anonimo|Uzuarios anonimos}} de {{SITENAME}}',
+'anonymous' => 'Uzuario(s) anonimo(s) de {{SITENAME}}',
 
 # Bad image list
 'bad_image_list' => 'El formato es ansina:
@@ -396,7 +386,7 @@ El resto de los linkes del mismo satir se juzgan como eccepciones (por enxemplo,
 'exif-lightsource-9'  => 'Bueno tiémpo',
 'exif-lightsource-10' => 'Tiémpo nuvlozo',
 
-# Pseudotags used for GPSSpeedRef
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
 'exif-gpsspeed-k' => 'Kilometros por óra',
 
 # External editor support
@@ -416,7 +406,7 @@ El resto de los linkes del mismo satir se juzgan como eccepciones (por enxemplo,
 'confirmemail_success' => 'Su direksion de pósta a sido konfirmada. Agóra puedes registrarse e kolaborar en el wiki.',
 
 # Trackbacks
-'trackbackremove' => '([$1 Efasár])',
+'trackbackremove' => ' ([$1 Efasár])',
 
 # Delete conflict
 'recreate' => 'Krear de muevo',
@@ -442,10 +432,10 @@ El resto de los linkes del mismo satir se juzgan como eccepciones (por enxemplo,
 'autosumm-new'     => 'Pajina mueva: $1',
 
 # Special:Version
-'version'                  => 'Versión',
+'version'                  => 'Versión', # Not used as normal message but as header for the special page itself
 'version-specialpages'     => 'Pajinas espesiales',
 'version-other'            => 'Otros',
-'version-version'          => '(Versión $1)',
+'version-version'          => 'Versión',
 'version-software-version' => 'Versión',
 
 # Special:FileDuplicateSearch

@@ -18,16 +18,16 @@ class ChangesFeed {
 			$feedTitle, htmlspecialchars( $description ), $wgTitle->getFullUrl() );
 	}
 
-	public function execute( $feed, $rows, $limit=0, $hideminor=false, $lastmod=false, $target='' ) {
+	public function execute( $feed, $rows, $limit = 0 , $hideminor = false, $lastmod = false ) {
 		global $messageMemc, $wgFeedCacheTimeout;
-		global $wgSitename, $wgContLanguageCode;
+		global $wgFeedClasses, $wgSitename, $wgContLanguageCode;
 
 		if ( !FeedUtils::checkFeedOutput( $this->format ) ) {
 			return;
 		}
 
 		$timekey = wfMemcKey( $this->type, $this->format, 'timestamp' );
-		$key = wfMemcKey( $this->type, $this->format, $limit, $hideminor, $target );
+		$key = wfMemcKey( $this->type, $this->format, 'limit', $limit, 'minor', $hideminor );
 
 		FeedUtils::checkPurge($timekey, $key);
 

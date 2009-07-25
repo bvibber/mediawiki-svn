@@ -1,7 +1,8 @@
 <?php
 /**
- * Nostalgia: A skin which looks like Wikipedia did in its first year (2001).
+ * See docs/skin.txt
  *
+ * @todo document
  * @file
  * @ingroup Skins
  */
@@ -18,19 +19,18 @@ class SkinNostalgia extends Skin {
 	function getStylesheet() {
 		return 'common/nostalgia.css';
 	}
-
 	function getSkinName() {
-		return 'nostalgia';
+		return "nostalgia";
 	}
 
 	function doBeforeContent() {
 		$s = "\n<div id='content'>\n<div id='top'>\n";
-		$s .= '<div id="logo">' . $this->logoText( 'right' ) . '</div>';
+		$s .= "<div id=\"logo\">".$this->logoText( "right" )."</div>";
 
 		$s .= $this->pageTitle();
 		$s .= $this->pageSubtitle() . "\n";
 
-		$s .= '<div id="topbar">';
+		$s .= "<div id=\"topbar\">";
 		$s .= $this->topLinks() . "\n<br />";
 
 		$notice = wfGetSiteNotice();
@@ -40,12 +40,13 @@ class SkinNostalgia extends Skin {
 		$s .= $this->pageTitleLinks();
 
 		$ol = $this->otherLanguages();
-		if( $ol ) $s .= '<br />' . $ol;
+		if($ol) $s .= "<br />" . $ol;
 
 		$cat = $this->getCategoryLinks();
-		if( $cat ) $s .= '<br />' . $cat;
+		if($cat) $s .= "<br />" . $cat;
 
-		$s .= "<br clear='all' /></div><hr />\n</div>\n";
+		$s .= "<br clear='all' /></div><hr />\n</div
+>\n";
 		$s .= "\n<div id='article'>";
 
 		return $s;
@@ -59,7 +60,8 @@ class SkinNostalgia extends Skin {
 		  . $this->specialLink( 'recentchanges' );
 
 		if ( $wgOut->isArticle() ) {
-			$s .= $sep . '<strong>' . $this->editThisPage() . '</strong>' . $sep . $this->historyLink();
+			$s .=  $sep . $this->editThisPage()
+			  . $sep . $this->historyLink();
 		}
 
 		/* show links to different language variants */
@@ -79,7 +81,7 @@ class SkinNostalgia extends Skin {
 			$s .= $sep . $this->specialLink( 'watchlist' );
 			/* show my contributions link */
 			$s .= $sep . $this->link(
-				SpecialPage::getSafeTitleFor( 'Contributions', $wgUser->getName() ),
+				SpecialPage::getSafeTitleFor( "Contributions", $wgUser->getName() ),
 				wfMsgHtml( 'mycontris' ) );
 			/* show my preferences link */
 			$s .= $sep . $this->specialLink( 'preferences' );
@@ -112,3 +114,5 @@ class SkinNostalgia extends Skin {
 		return $s;
 	}
 }
+
+

@@ -105,7 +105,6 @@ class Block {
 			&& $this->mHideName == $block->mHideName
 			&& $this->mBlockEmail == $block->mBlockEmail
 			&& $this->mAllowUsertalk == $block->mAllowUsertalk
-			&& $this->mReason == $block->mReason
 		);
 	}
 
@@ -453,12 +452,9 @@ class Block {
 		# Unset ipb_enable_autoblock for IP blocks, makes no sense
 		if ( !$this->mUser ) {
 			$this->mEnableAutoblock = 0;
-			
+			$this->mBlockEmail = 0; //Same goes for email...
 		}
-		# bug 18860: non-anon-only IP blocks should be allowed to block email
-		if ( !$this->mUser && $this->mAnonOnly ) {
-			$this->mBlockEmail = 0;
-		}
+
 		if( !$this->mByName ) {
 			if( $this->mBy ) {
 				$this->mByName = User::whoIs( $this->mBy );
@@ -574,7 +570,7 @@ class Block {
 		
 		## Allow hooks to cancel the autoblock.
 		if (!wfRunHooks( 'AbortAutoblock', array( $autoblockIP, &$this ) )) {
-			wfDebug( "Autoblock aborted by hook.\n" );
+			wfDebug( "Autoblock aborted by hook." );
 			return false;
 		}
 
@@ -826,7 +822,7 @@ class Block {
 	 * Convert a DB-encoded expiry into a real string that humans can read.
 	 *
 	 * @param $encoded_expiry String: Database encoded expiry time
-	 * @return Html-escaped String
+	 * @return String
 	 */
 	public static function formatExpiry( $encoded_expiry ) {
 		static $msg = null;
@@ -844,9 +840,8 @@ class Block {
 			$expirystr = $msg['infiniteblock'];
 		} else {
 			global $wgLang;
-			$expiredatestr = htmlspecialchars($wgLang->date( $expiry, true ));
-			$expiretimestr = htmlspecialchars($wgLang->time( $expiry, true ));
-			$expirystr = wfMsgReplaceArgs( $msg['expiringblock'], array( $expiredatestr, $expiretimestr ) );
+			$expiretimestr = $wgLang->timeanddate( $expiry, true );
+			$expirystr = wfMsgReplaceArgs( $msg['expiringblock'], array($expiretimestr) );
 		}
 		return $expirystr;
 	}

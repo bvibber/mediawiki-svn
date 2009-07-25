@@ -110,7 +110,6 @@ function rebuildRecentChangesTablePass2()
 			$dbw->query( $sql3 );
 			
 			$lastOldId = intval( $obj->rc_this_oldid );
-			$lastSize = $size;
 		}
 	}
 	$dbw->freeResult( $res );
@@ -122,10 +121,19 @@ function rebuildRecentChangesTablePass3()
 
 	print( "Loading from user, page, and logging tables...\n" );
 	
-	global $wgRCMaxAge, $wgLogTypes, $wgLogRestrictions;
-	// Some logs don't go in RC. This should check for that
-	$basicRCLogs = array_diff( $wgLogTypes, array_keys( $wgLogRestrictions ) );
-		
+	global $wgRCMaxAge;
+	// Some logs don't go in RC. This can't really detect all of those.
+	// At least do the basics logs for a standard install...
+	// FIXME: this needs to be maintained
+	$basicRCLogs = array( 
+		'block',
+		'protect',
+		'rights',
+		'delete',
+		'upload',
+		'move',
+		'import',
+		'merge' );
 	// Escape...blah blah
 	$selectLogs = array();
 	foreach( $basicRCLogs as $logtype ) {
@@ -134,8 +142,7 @@ function rebuildRecentChangesTablePass3()
 	}
 	
 	$cutoff = time() - $wgRCMaxAge;
-	list($logging, $page) = $dbw->tableNamesN( 'logging', 'page' );
-	$dbw->insertSelect( 'recentchanges', array( 'user', "$logging LEFT JOIN $page ON (log_namespace=page_namespace AND log_title=page_title)" ),
+	$dbw->insertSelect( 'recentchanges', array( 'logging', 'page', 'user' ),
 		array(
 			'rc_timestamp'  => 'log_timestamp',
 			'rc_cur_time'   => 'log_timestamp',
@@ -151,7 +158,7 @@ function rebuildRecentChangesTablePass3()
 			'rc_this_oldid' => 0,
 			'rc_last_oldid' => 0,
 			'rc_type'       => RC_LOG,
-			'rc_cur_id'     => 'COALESCE(page_id, 0)',
+			'rc_cur_id'     => 'page_id',
 			'rc_log_type'   => 'log_type',
 			'rc_log_action' => 'log_action',
 			'rc_logid'      => 'log_id',
@@ -160,6 +167,8 @@ function rebuildRecentChangesTablePass3()
 		), array(
 			'log_timestamp > ' . $dbw->addQuotes( $dbw->timestamp( $cutoff ) ),
 			'log_user=user_id',
+			'log_namespace=page_namespace',
+			'log_title=page_title',
 			'log_type IN(' . implode(',',$selectLogs) . ')'
 		), __METHOD__,
 		array(), // INSERT options

@@ -38,6 +38,7 @@ class ApiUndelete extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		$titleObj = NULL;
@@ -77,17 +78,13 @@ class ApiUndelete extends ApiBase {
 				array($titleObj, array(), $wgUser, $params['reason']) );
 
 		$info['title'] = $titleObj->getPrefixedText();
-		$info['revisions'] = intval($retval[0]);
-		$info['fileversions'] = intval($retval[1]);
-		$info['reason'] = intval($retval[2]);
+		$info['revisions'] = $retval[0];
+		$info['fileversions'] = $retval[1];
+		$info['reason'] = $retval[2];
 		$this->getResult()->addValue(null, $this->getModuleName(), $info);
 	}
 
 	public function mustBePosted() { return true; }
-
-	public function isWriteMode() {
-		return true;
-	}
 
 	public function getAllowedParams() {
 		return array (

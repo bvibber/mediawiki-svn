@@ -1,9 +1,6 @@
 <?php
 /** Zulu (isiZulu)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -36,17 +33,15 @@ $messages = array(
 'may'       => 'uMeyi',
 
 'cancel'        => 'Nqamula',
-'moredotdotdot' => 'Amanye...',
-'mypage'        => 'Ikhasi lami',
-'mytalk'        => 'Ingxoxo yami',
-'navigation'    => 'Ukuqondiswa kwemikhumbi',
-
-# Cologne Blue skin
 'qbfind'        => 'Thola',
 'qbbrowse'      => 'Cinga',
 'qbedit'        => 'Ukuhlela',
 'qbpageoptions' => 'Leli khasi',
 'qbmyoptions'   => 'Amakhasi ami',
+'moredotdotdot' => 'Amanye...',
+'mypage'        => 'Ikhasi lami',
+'mytalk'        => 'Ingxoxo yami',
+'navigation'    => 'Ukuqondiswa kwemikhumbi',
 
 'errorpagetitle'   => 'Icala',
 'help'             => 'Usizo',
@@ -121,6 +116,10 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'nologinlink'        => 'Dala ikhawundi',
 'createaccount'      => 'Dala ikhawundi',
 'gotaccountlink'     => 'Ngena',
+'username'           => 'Isiga:',
+'yourrealname'       => 'Igama eliqinisileyo',
+'yourlanguage'       => 'Ulimi:',
+'email'              => 'Iposi likagesi',
 'loginsuccesstitle'  => 'Ubengena',
 'nosuchuser'         => 'Akukho umsebenzisi unegama "$1". Hlola umbhalo wakho, noma dala ikhawundi elisha.',
 'nosuchusershort'    => 'Akukho umsebenzisi unegama "<nowiki>$1</nowiki>". Hlola umbhalo wakho.',
@@ -165,23 +164,17 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'searchhelp-url' => 'Help:Isiqikili',
 'powersearch'    => 'Sesha',
 
-# Quickbar
-'qbsettings' => 'Imeniyu',
-
 # Preferences page
 'preferences'       => 'Amakhethelo',
 'mypreferences'     => 'Amakhethelo ami',
 'prefsnologin'      => 'Awungenile',
+'qbsettings'        => 'Imeniyu',
 'changepassword'    => 'Guqula izwi elingenangozi',
-'prefs-math'        => 'Izibalo',
+'math'              => 'Izibalo',
 'saveprefs'         => 'Saveprefs',
 'searchresultshead' => 'Sesha',
 'timezonelegend'    => 'Isifunda sasikhathi',
 'localtime'         => 'Isikhathi siyalapha',
-'username'          => 'Isiga:',
-'yourrealname'      => 'Igama eliqinisileyo',
-'yourlanguage'      => 'Ulimi:',
-'email'             => 'Iposi likagesi',
 
 # Recent changes
 'recentchanges' => 'Izinguquko ezimanje',
@@ -189,9 +182,7 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'show'          => 'Bukisa',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Izinguquko ezilandiweyo',
-'recentchangeslinked-feed'    => 'Izinguquko ezilandiweyo',
-'recentchangeslinked-toolbox' => 'Izinguquko ezilandiweyo',
+'recentchangeslinked' => 'Izinguquko ezilandiweyo',
 
 # Upload
 'upload'           => 'Layisha ifayili',
@@ -203,8 +194,9 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'nolicense' => 'Ubekhetha lutho',
 
 # File description page
-'file-anchor-link' => 'Ifayela',
 'nolinkstoimage'   => 'Akukho amakhasi akhomba kuleli fayela.',
+'noimage'          => 'Akukho ifayela elinaleli gama, unga $1.',
+'noimage-linktext' => 'Layisha',
 
 # Random page
 'randompage' => 'Ikhasi elingaphandle kokucabanga',
@@ -325,7 +317,7 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'exif-artist'      => 'Umbhali',
 'exif-sharpness'   => 'Ububukhali',
 
-'exif-orientation-1' => 'Kuphelele',
+'exif-orientation-1' => 'Kuphelele', # 0th row: top; 0th column: left
 
 'exif-meteringmode-5' => 'Umhlobiso',
 

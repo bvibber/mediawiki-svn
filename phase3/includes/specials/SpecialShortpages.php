@@ -74,15 +74,10 @@ class ShortPagesPage extends QueryPage {
 		if ( !$title ) {
 			return '<!-- Invalid title ' .  htmlspecialchars( "{$result->namespace}:{$result->title}" ). '-->';
 		}
-		$hlink = $skin->linkKnown(
-			$title,
-			wfMsgHtml( 'hist' ),
-			array(),
-			array( 'action' => 'history' )
-		);
+		$hlink = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'hist' ), 'action=history' );
 		$plink = $this->isCached()
-					? $skin->link( $title )
-					: $skin->linkKnown( $title );
+					? $skin->makeLinkObj( $title )
+					: $skin->makeKnownLinkObj( $title );
 		$size = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ), $wgLang->formatNum( htmlspecialchars( $result->value ) ) );
 
 		return $title->exists()

@@ -1,9 +1,6 @@
 <?php
 /** Tswana (Setswana)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -101,6 +98,8 @@ O ipuletse akhaonte. O seka wa lebala go fetola tse o di dikgatlhegelo tsa gago 
 'userlogout'         => 'Tswala',
 'notloggedin'        => 'Ga o a ikwadisa',
 'createaccount'      => 'Ipulela tsebe',
+'youremail'          => 'E-mail:',
+'username'           => 'Leina la modirisi:',
 
 # Edit pages
 'summary'            => 'Tshoboko:',
@@ -117,16 +116,12 @@ O ipuletse akhaonte. O seka wa lebala go fetola tse o di dikgatlhegelo tsa gago 
 
 # Preferences page
 'mypreferences' => 'Dikgatlhegelo tsa me',
-'youremail'     => 'E-mail:',
-'username'      => 'Leina la modirisi:',
 
 # Recent changes
 'recentchanges' => 'Diphetogo tsa sešeng',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Diphetogo tse di tsamaelanang',
-'recentchangeslinked-feed'    => 'Diphetogo tse di tsamaelanang',
-'recentchangeslinked-toolbox' => 'Diphetogo tse di tsamaelanang',
+'recentchangeslinked' => 'Diphetogo tse di tsamaelanang',
 
 # Upload
 'upload'          => 'Tsenya mokwalo o o tswang kwantle',

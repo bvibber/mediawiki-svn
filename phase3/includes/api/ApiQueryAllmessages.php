@@ -40,6 +40,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 	}
 
 	public function execute() {
+		global $wgMessageCache;
 		$params = $this->extractRequestParams();
 
 		if(!is_null($params['lang']))
@@ -52,7 +53,8 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		//Determine which messages should we print
 		$messages_target = array();
 		if( $params['messages'] == '*' ) {
-			$message_names = array_keys( Language::getMessagesFor( 'en' ) );
+			$wgMessageCache->loadAllMessages();
+			$message_names = array_keys( array_merge( Language::getMessagesFor( 'en' ), $wgMessageCache->getExtensionMessagesFor( 'en' ) ) );
 			sort( $message_names );
 			$messages_target = $message_names;
 		} else {
@@ -72,13 +74,8 @@ class ApiQueryAllmessages extends ApiQueryBase {
 
 		//Get all requested messages
 		$messages = array();
-		$skip = !is_null($params['from']);
 		foreach( $messages_target as $message ) {
-			// Skip all messages up to $params['from']
-			if($skip && $message === $params['from'])
-				$skip = false;
-			if(!$skip)
-				$messages[$message] = wfMsg( $message );
+			$messages[$message] = wfMsg( $message );
 		}
 
 		//Print the result
@@ -92,14 +89,10 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			} else {
 				$result->setContent( $message, $value );
 			}
-			$fit = $result->addValue(array('query', $this->getModuleName()), null, $message);
-			if(!$fit)
-			{
-				$this->setContinueEnumParameter('from', $name);
-				break;
-			}
+			$messages_out[] = $message;
 		}
-		$result->setIndexedTagName_internal(array('query', $this->getModuleName()), 'message');
+		$result->setIndexedTagName( $messages_out, 'message' );
+		$result->addValue( 'query', $this->getModuleName(), $messages_out );
 	}
 
 	public function getAllowedParams() {
@@ -109,7 +102,6 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			),
 			'filter' => array(),
 			'lang' => null,
-			'from' => null,
 		);
 	}
 
@@ -118,7 +110,6 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			'messages' => 'Which messages to output. "*" means all messages',
 			'filter' => 'Return only messages that contain this string',
 			'lang' => 'Return messages in this language',
-			'from' => 'Return messages starting at this message',
 		);
 	}
 

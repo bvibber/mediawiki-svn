@@ -29,7 +29,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 /**
- * This query adds the <categories> subelement to all pages with the list of categories the page is in
+ * This query adds <categories> subelement to all pages with the list of images embedded into those pages.
  *
  * @ingroup API
  */
@@ -39,8 +39,7 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 		parent :: __construct($query, $moduleName, 'ci');
 	}
 
-	public function execute() {
-		$params = $this->extractRequestParams();
+	public function execute() {			
 		$alltitles = $this->getPageSet()->getAllTitlesByNamespace();
 		if ( empty( $alltitles[NS_CATEGORY] ) ) {
 			return;
@@ -53,7 +52,7 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 		foreach($categories as $c)
 		{
 			$t = $titles[$c];
-			$cattitles[$c] = $t->getDBkey();
+			$cattitles[$c] = $t->getDBKey();
 		}
 
 		$this->addTables(array('category', 'page', 'page_props'));
@@ -66,47 +65,25 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 				'pp_propname' => 'hiddencat')),
 		));
 		$this->addFields(array('cat_title', 'cat_pages', 'cat_subcats', 'cat_files', 'pp_propname AS cat_hidden'));
-		$this->addWhere(array('cat_title' => $cattitles));
-		if(!is_null($params['continue']))
-		{
-			$title = $this->getDB()->addQuotes($params['continue']);
-			$this->addWhere("cat_title >= $title");
-		} 
-		$this->addOption('ORDER BY', 'cat_title');
+		$this->addWhere(array('cat_title' => $cattitles));			
 
 		$db = $this->getDB();
 		$res = $this->select(__METHOD__);
 
+		$data = array();
 		$catids = array_flip($cattitles);
 		while($row = $db->fetchObject($res))
 		{
 			$vals = array();
-			$vals['size'] = intval($row->cat_pages);
+			$vals['size'] = $row->cat_pages;
 			$vals['pages'] = $row->cat_pages - $row->cat_subcats - $row->cat_files;
-			$vals['files'] = intval($row->cat_files);
-			$vals['subcats'] = intval($row->cat_subcats);
+			$vals['files'] = $row->cat_files;
+			$vals['subcats'] = $row->cat_subcats;
 			if($row->cat_hidden)
 				$vals['hidden'] = '';
-			$fit = $this->addPageSubItems($catids[$row->cat_title], $vals);
-			if(!$fit)
-			{
-				$this->setContinueEnumParameter('continue', $row->cat_title);
-				break;
-			}
+			$this->addPageSubItems($catids[$row->cat_title], $vals);
 		}
 		$db->freeResult($res);
-	}
-
-	public function getAllowedParams() {
-		return array (
-			'continue' => null,
-		);
-	}
-
-	public function getParamDescription() {
-		return array (
-			'continue' => 'When more results are available, use this to continue',
-		);
 	}
 
 	public function getDescription() {

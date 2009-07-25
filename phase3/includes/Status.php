@@ -84,13 +84,6 @@ class Status {
 		$this->ok = false;
 	}
 
-	/**
-	 * Sanitize the callback parameter on wakeup, to avoid arbitrary execution.
-	 */
-	function __wakeup() {
-		$this->cleanCallback = false;
-	}
-
 	protected function cleanParams( $params ) {
 		if ( !$this->cleanCallback ) {
 			return $params;
@@ -159,7 +152,7 @@ class Status {
 			if ( $longContext ) {
 				$s = wfMsgNoTrans( $longContext, $s );
 			} elseif ( $shortContext ) {
-				$s = wfMsgNoTrans( $shortContext, "\n$s\n" );
+				$s = wfMsgNoTrans( $shortContext, "\n* $s\n" );
 			}
 		}
 		return $s;
@@ -182,10 +175,7 @@ class Status {
 		$result = array();
 		foreach ( $this->errors as $error ) {
 			if ( $error['type'] == 'error' )
-				if( $error['params'] )
-					$result[] = array_merge( array( $error['message'] ), $error['params'] );
-				else
-					$result[] = $error['message'];
+				$result[] = $error['message'];
 		}
 		return $result;
 	}

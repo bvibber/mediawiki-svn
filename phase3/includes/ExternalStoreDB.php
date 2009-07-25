@@ -26,29 +26,21 @@ $wgExternalBlobCache = array();
  */
 class ExternalStoreDB {
 
-	function __construct( $params = array() ) {
-		$this->mParams = $params;
-	}
-
 	/** @todo Document.*/
 	function &getLoadBalancer( $cluster ) {
-		$wiki = isset($this->mParams['wiki']) ? $this->mParams['wiki'] : false;
-		
-		return wfGetLBFactory()->getExternalLB( $cluster, $wiki );
+		return wfGetLBFactory()->getExternalLB( $cluster );
 	}
 
 	/** @todo Document.*/
 	function &getSlave( $cluster ) {
-		$wiki = isset($this->mParams['wiki']) ? $this->mParams['wiki'] : false;
 		$lb =& $this->getLoadBalancer( $cluster );
-		return $lb->getConnection( DB_SLAVE, array(), $wiki );
+		return $lb->getConnection( DB_SLAVE );
 	}
 
 	/** @todo Document.*/
 	function &getMaster( $cluster ) {
-		$wiki = isset($this->mParams['wiki']) ? $this->mParams['wiki'] : false;
 		$lb =& $this->getLoadBalancer( $cluster );
-		return $lb->getConnection( DB_MASTER, array(), $wiki );
+		return $lb->getConnection( DB_MASTER );
 	}
 
 	/** @todo Document.*/
@@ -136,9 +128,6 @@ class ExternalStoreDB {
 			array( 'blob_id' => $id, 'blob_text' => $data ), 
 			__METHOD__ );
 		$id = $dbw->insertId();
-		if ( !$id ) {
-			throw new MWException( __METHOD__.': no insert ID' );
-		}
 		if ( $dbw->getFlag( DBO_TRX ) ) {
 			$dbw->immediateCommit();
 		}

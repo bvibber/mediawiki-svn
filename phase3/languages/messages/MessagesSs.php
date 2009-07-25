@@ -1,9 +1,6 @@
 <?php
 /** Swati (SiSwati)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -45,7 +42,6 @@ $messages = array(
 'november-gen'  => 'Lídvúba',
 'december-gen'  => 'íNgongóni',
 
-# Cologne Blue skin
 'qbfind'         => 'Kúkhándza',
 'qbedit'         => 'Kúhlela',
 'qbspecialpages' => 'Emakhasi labalulekile',
@@ -79,6 +75,8 @@ $messages = array(
 'nstab-help' => 'Kúsíta',
 
 # Login and logout pages
+'uid'                => 'Umuntfu ID:',
+'yourlanguage'       => 'Lúlwîmi:',
 'loginlanguagelabel' => 'Lúlwîmi: $1',
 
 # Search results
@@ -86,8 +84,6 @@ $messages = array(
 
 # Preferences page
 'searchresultshead' => 'Kucálata',
-'uid'               => 'Umuntfu ID:',
-'yourlanguage'      => 'Lúlwîmi:',
 
 # Special:ListFiles
 'listfiles_date' => 'Lusuku',
@@ -98,7 +94,7 @@ $messages = array(
 'filehist-datetime' => 'Lusuku/Síkhatsí',
 'filehist-user'     => 'Umuntfu',
 
-'brokenredirects-edit' => 'kúhlela',
+'brokenredirects-edit' => '(kúhlela)',
 
 'withoutinterwiki-submit' => 'Kúfúna',
 
@@ -132,7 +128,6 @@ $messages = array(
 # Undelete
 'undelete-search-submit' => 'Kucálata',
 
-'sp-contributions-talk'   => 'Kúcoca',
 'sp-contributions-submit' => 'Kucálata',
 
 # Block/unblock

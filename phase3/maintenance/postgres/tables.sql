@@ -276,19 +276,19 @@ CREATE TABLE oldimage (
   oi_size          INTEGER      NOT NULL,
   oi_width         INTEGER      NOT NULL,
   oi_height        INTEGER      NOT NULL,
-  oi_bits          SMALLINT         NULL,
+  oi_bits          SMALLINT     NOT NULL,
   oi_description   TEXT,
   oi_user          INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL,
   oi_user_text     TEXT         NOT NULL,
-  oi_timestamp     TIMESTAMPTZ      NULL,
+  oi_timestamp     TIMESTAMPTZ  NOT NULL,
   oi_metadata      BYTEA        NOT NULL DEFAULT '',
   oi_media_type    TEXT             NULL,
-  oi_major_mime    TEXT             NULL DEFAULT 'unknown',
-  oi_minor_mime    TEXT             NULL DEFAULT 'unknown',
+  oi_major_mime    TEXT         NOT NULL DEFAULT 'unknown',
+  oi_minor_mime    TEXT         NOT NULL DEFAULT 'unknown',
   oi_deleted       SMALLINT     NOT NULL DEFAULT 0,
   oi_sha1          TEXT         NOT NULL DEFAULT ''
 );
-ALTER TABLE oldimage ADD CONSTRAINT oldimage_oi_name_fkey_cascaded FOREIGN KEY (oi_name) REFERENCES image(img_name) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE oldimage ADD CONSTRAINT oldimage_oi_name_fkey_cascade FOREIGN KEY (oi_name) REFERENCES image(img_name) ON DELETE CASCADE;
 CREATE INDEX oi_name_timestamp    ON oldimage (oi_name,oi_timestamp);
 CREATE INDEX oi_name_archive_name ON oldimage (oi_name,oi_archive_name);
 CREATE INDEX oi_sha1              ON oldimage (oi_sha1);
@@ -437,24 +437,12 @@ CREATE TABLE logging (
   log_title       TEXT         NOT NULL,
   log_comment     TEXT,
   log_params      TEXT,
-  log_deleted     SMALLINT     NOT NULL DEFAULT 0,
-  log_user_text   TEXT         NOT NULL DEFAULT '',
-  log_page        INTEGER
+  log_deleted     SMALLINT     NOT NULL DEFAULT 0
 );
 CREATE INDEX logging_type_name ON logging (log_type, log_timestamp);
 CREATE INDEX logging_user_time ON logging (log_timestamp, log_user);
 CREATE INDEX logging_page_time ON logging (log_namespace, log_title, log_timestamp);
-CREATE INDEX logging_times ON logging (log_timestamp);
-CREATE INDEX logging_user_type_time ON logging (log_user, log_type, log_timestamp);
-CREATE INDEX logging_page_id_time ON logging (log_page, log_timestamp);
 
-CREATE TABLE log_search (
-  ls_field   TEXT     NOT NULL,
-  ls_value   TEXT     NOT NULL,
-  ls_log_id  INTEGER  NOT NULL DEFAULT 0,
-  PRIMARY KEY (ls_field,ls_value,ls_log_id)
-);
-CREATE INDEX ls_log_id ON log_search (ls_log_id);
 
 CREATE SEQUENCE trackbacks_tb_id_seq;
 CREATE TABLE trackbacks (
@@ -566,40 +554,6 @@ CREATE TABLE category (
 CREATE UNIQUE INDEX category_title ON category(cat_title);
 CREATE INDEX category_pages ON category(cat_pages);
 
-CREATE TABLE change_tag (
-  ct_rc_id   INTEGER      NULL,
-  ct_log_id  INTEGER      NULL,
-  ct_rev_id  INTEGER      NULL,
-  ct_tag     TEXT     NOT NULL,
-  ct_params  TEXT         NULL
-);
-CREATE UNIQUE INDEX change_tag_rc_tag ON change_tag(ct_rc_id,ct_tag);
-CREATE UNIQUE INDEX change_tag_log_tag ON change_tag(ct_log_id,ct_tag);
-CREATE UNIQUE INDEX change_tag_rev_tag ON change_tag(ct_rev_id,ct_tag);
-CREATE INDEX change_tag_tag_id ON change_tag(ct_tag,ct_rc_id,ct_rev_id,ct_log_id);
-
-CREATE TABLE tag_summary (
-  ts_rc_id   INTEGER     NULL,
-  ts_log_id  INTEGER     NULL,
-  ts_rev_id  INTEGER     NULL,
-  ts_tags    TEXT    NOT NULL
-);
-CREATE UNIQUE INDEX tag_summary_rc_id ON tag_summary(ts_rc_id);
-CREATE UNIQUE INDEX tag_summary_log_id ON tag_summary(ts_log_id);
-CREATE UNIQUE INDEX tag_summary_rev_id ON tag_summary(ts_rev_id);
-
-CREATE TABLE valid_tag (
-  vt_tag TEXT NOT NULL PRIMARY KEY
-);
-
-CREATE TABLE user_properties (
-  up_user     INTEGER      NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE,
-  up_property TEXT     NOT NULL,
-  up_value    TEXT
-);
-CREATE UNIQUE INDEX user_properties_user_property ON user_properties (up_user,up_property);
-CREATE INDEX user_properties_property ON user_properties (up_property);
-
 CREATE TABLE mediawiki_version (
   type         TEXT         NOT NULL,
   mw_version   TEXT         NOT NULL,
@@ -621,9 +575,3 @@ CREATE TABLE mediawiki_version (
 INSERT INTO mediawiki_version (type,mw_version,sql_version,sql_date)
   VALUES ('Creation','??','$LastChangedRevision$','$LastChangedDate$');
 
-CREATE TABLE l10n_cache (
-  lc_lang     TEXT    NOT NULL,
-  lc_key      TEXT    NOT NULL,
-  lc_value    TEXT    NOT NULL
-);
-CREATE INDEX l10n_cache_lc_lang_key ON l10n_cache (lc_lang, lc_key);

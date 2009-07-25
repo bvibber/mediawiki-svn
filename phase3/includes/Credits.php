@@ -75,7 +75,7 @@ class Credits {
 	 * @param $article Article object
 	 */
 	protected static function getAuthor( Article $article ){
-		global $wgLang;
+		global $wgLang, $wgAllowRealName;
 
 		$user = User::newFromId( $article->getUser() );
 
@@ -87,7 +87,7 @@ class Credits {
 			$d = '';
 			$t = '';
 		}
-		return wfMsgExt( 'lastmodifiedatby', 'parsemag', $d, $t, self::userLink( $user ), $user->getName() );
+		return wfMsg( 'lastmodifiedatby', $d, $t, self::userLink( $user ) );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Credits {
 	 * @return String: html
 	 */
 	protected static function getContributors( Article $article, $cnt, $showIfMax ) {
-		global $wgLang, $wgHiddenPrefs;
+		global $wgLang, $wgAllowRealName;
 	
 		$contributors = $article->getContributors();
 	
@@ -120,7 +120,7 @@ class Credits {
 			$cnt--;
 			if( $user->isLoggedIn() ){
 				$link = self::link( $user );
-				if( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() )
+				if( $wgAllowRealName && $user->getRealName() )
 					$real_names[] = $link;
 				else
 					$user_names[] = $link;
@@ -162,15 +162,15 @@ class Credits {
 	 * @return String: html
 	 */
 	protected static function link( User $user ) {
-		global $wgUser, $wgHiddenPrefs;
-		if( !in_array( 'realname', $wgHiddenPrefs ) )
+		global $wgUser, $wgAllowRealName;
+		if( $wgAllowRealName )
 			$real = $user->getRealName();
 		else
 			$real = false;
 
 		$skin = $wgUser->getSkin();
 		$page = $user->getUserPage();
-
+			
 		return $skin->link( $page, htmlspecialchars( $real ? $real : $user->getName() ) );
 	}
 
@@ -181,12 +181,12 @@ class Credits {
 	 * @return String: html
 	 */
 	protected static function userLink( User $user ) {
+		global $wgUser, $wgAllowRealName;
 		if( $user->isAnon() ){
 			return wfMsgExt( 'anonymous', array( 'parseinline' ), 1 );
 		} else {
-			global $wgHiddenPrefs;
 			$link = self::link( $user );
-			if( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() )
+			if( $wgAllowRealName && $user->getRealName() )
 				return $link;
 			else 
 				return wfMsgExt( 'siteuser', array( 'parseinline', 'replaceafter' ), $link );

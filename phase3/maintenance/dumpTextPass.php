@@ -408,7 +408,7 @@ class TextPassDumper extends BackupDumper {
 		// Subprocess may not send everything at once, we have to loop.
 		while( $nbytes > strlen( $text ) ) {
 			$buffer = fread( $this->spawnRead, $nbytes - strlen( $text ) );
-			if( $buffer === false ) break;
+			if( $text === false ) break;
 			$text .= $buffer;
 		}
 		

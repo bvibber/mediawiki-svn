@@ -1,7 +1,7 @@
 <?php
 /**
  * Script for re-attributing edits
- * Use reassignEdits.php
+ * Use reassingEdits.php
  *
  * @file
  * @ingroup Maintenance

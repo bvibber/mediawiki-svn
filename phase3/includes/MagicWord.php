@@ -36,7 +36,6 @@ class MagicWord {
 	static public $mVariableIDsInitialised = false;
 	static public $mVariableIDs = array(
 		'currentmonth',
-		'currentmonth1',
 		'currentmonthname',
 		'currentmonthnamegen',
 		'currentmonthabbrev',
@@ -47,7 +46,6 @@ class MagicWord {
 		'currenttime',
 		'currenthour',
 		'localmonth',
-		'localmonth1',
 		'localmonthname',
 		'localmonthnamegen',
 		'localmonthabbrev',
@@ -80,9 +78,9 @@ class MagicWord {
 		'revisionmonth',
 		'revisionyear',
 		'revisiontimestamp',
-		'revisionuser',
 		'subpagename',
 		'subpagenamee',
+		'displaytitle',
 		'talkspace',
 		'talkspacee',
 		'subjectspace',
@@ -92,23 +90,30 @@ class MagicWord {
 		'subjectpagename',
 		'subjectpagenamee',
 		'numberofusers',
-		'numberofactiveusers',
+		'newsectionlink',
 		'numberofpages',
 		'currentversion',
 		'basepagename',
 		'basepagenamee',
+		'urlencode',
 		'currenttimestamp',
 		'localtimestamp',
 		'directionmark',
+		'language',
 		'contentlanguage',
+		'pagesinnamespace',
 		'numberofadmins',
 		'numberofviews',
+		'defaultsort',
+		'pagesincategory',
+		'index',
+		'noindex',
+		'numberingroup',
 	);
 
 	/* Array of caching hints for ParserCache */
 	static public $mCacheTTLs = array (
 		'currentmonth' => 86400,
-		'currentmonth1' => 86400,
 		'currentmonthname' => 86400,
 		'currentmonthnamegen' => 86400,
 		'currentmonthabbrev' => 86400,
@@ -119,7 +124,6 @@ class MagicWord {
 		'currenttime' => 3600,
 		'currenthour' => 3600,
 		'localmonth' => 86400,
-		'localmonth1' => 86400,
 		'localmonthname' => 86400,
 		'localmonthnamegen' => 86400,
 		'localmonthabbrev' => 86400,
@@ -137,7 +141,6 @@ class MagicWord {
 		'localweek' => 3600,
 		'localdow' => 3600,
 		'numberofusers' => 3600,
-		'numberofactiveusers' => 3600,
 		'numberofpages' => 3600,
 		'currentversion' => 86400,
 		'currenttimestamp' => 3600,
@@ -155,7 +158,6 @@ class MagicWord {
 		'toc',
 		'noeditsection',
 		'newsectionlink',
-		'nonewsectionlink',
 		'hiddencat',
 		'index',
 		'noindex',
@@ -185,7 +187,7 @@ class MagicWord {
 	 */
 	static function &get( $id ) {
 		wfProfileIn( __METHOD__ );
-		if ( !isset( self::$mObjects[$id] ) ) {
+		if (!array_key_exists( $id, self::$mObjects ) ) {
 			$mw = new MagicWord();
 			$mw->load( $id );
 			self::$mObjects[$id] = $mw;

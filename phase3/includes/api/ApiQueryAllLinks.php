@@ -74,11 +74,9 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 			$arr = explode('|', $params['continue']);
 			if(count($arr) != 2)
 				$this->dieUsage("Invalid continue parameter", 'badcontinue');
-			$from = $this->getDB()->strencode($this->titleToKey($arr[0]));
+			$params['from'] = $arr[0]; // Handled later
 			$id = intval($arr[1]);
-			$this->addWhere("pl_title > '$from' OR " .
-					"(pl_title = '$from' AND " .
-					"pl_from > $id)");
+			$this->addWhere("pl_from >= $id");
 		}		
 
 		if (!is_null($params['from']))
@@ -87,31 +85,29 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 			$this->addWhere("pl_title LIKE '" . $db->escapeLike($this->titlePartToKey($params['prefix'])) . "%'");
 
 		$this->addFields(array (
+			'pl_namespace',
 			'pl_title',
+			'pl_from'
 		));
-		$this->addFieldsIf('pl_from', !$params['unique']);
 
 		$this->addOption('USE INDEX', 'pl_namespace');
 		$limit = $params['limit'];
 		$this->addOption('LIMIT', $limit+1);
-		if($params['unique'])
-			$this->addOption('ORDER BY', 'pl_title');
+		# Only order by pl_namespace if it isn't constant in the WHERE clause
+		if(count($params['namespace']) != 1)
+			$this->addOption('ORDER BY', 'pl_namespace, pl_title');
 		else
-			$this->addOption('ORDER BY', 'pl_title, pl_from');
+			$this->addOption('ORDER BY', 'pl_title');
 
 		$res = $this->select(__METHOD__);
 
-		$pageids = array ();
+		$data = array ();
 		$count = 0;
-		$result = $this->getResult();
 		while ($row = $db->fetchObject($res)) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				// TODO: Security issue - if the user has no right to view next title, it will still be shown
-				if($params['unique'])
-					$this->setContinueEnumParameter('from', $this->keyToTitle($row->pl_title));
-				else
-					$this->setContinueEnumParameter('continue', $this->keyToTitle($row->pl_title) . "|" . $row->pl_from);
+				$this->setContinueEnumParameter('continue', $this->keyToTitle($row->pl_title) . "|" . $row->pl_from);
 				break;
 			}
 
@@ -120,18 +116,11 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 				if ($fld_ids)
 					$vals['fromid'] = intval($row->pl_from);
 				if ($fld_title) {
-					$title = Title :: makeTitle($params['namespace'], $row->pl_title);
-					ApiQueryBase::addTitleInfo($vals, $title);
+					$title = Title :: makeTitle($row->pl_namespace, $row->pl_title);
+					$vals['ns'] = intval($title->getNamespace());
+					$vals['title'] = $title->getPrefixedText();
 				}
-				$fit = $result->addValue(array('query', $this->getModuleName()), null, $vals);
-				if(!$fit)
-				{
-					if($params['unique'])
-						$this->setContinueEnumParameter('from', $this->keyToTitle($row->pl_title));
-					else
-						$this->setContinueEnumParameter('continue', $this->keyToTitle($row->pl_title) . "|" . $row->pl_from);
-					break;
-				}
+				$data[] = $vals;
 			} else {
 				$pageids[] = $row->pl_from;
 			}
@@ -139,7 +128,9 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 		$db->freeResult($res);
 
 		if (is_null($resultPageSet)) {
-			$result->setIndexedTagName_internal(array('query', $this->getModuleName()), 'l');
+			$result = $this->getResult();
+			$result->setIndexedTagName($data, 'l');
+			$result->addValue('query', $this->getModuleName(), $data);
 		} else {
 			$resultPageSet->populateFromPageIDs($pageids);
 		}

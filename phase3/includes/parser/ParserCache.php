@@ -7,7 +7,7 @@ class ParserCache {
 	/**
 	 * Get an instance of this object
 	 */
-	public static function singleton() {
+	public static function &singleton() {
 		static $instance;
 		if ( !isset( $instance ) ) {
 			global $parserMemc;
@@ -22,18 +22,12 @@ class ParserCache {
 	 *
 	 * @param object $memCached
 	 */
-	function __construct( $memCached ) {
-		$this->mMemc = $memCached;
+	function __construct( &$memCached ) {
+		$this->mMemc =& $memCached;
 	}
 
-	function getKey( $article, $popts ) {
-		global $wgRequest;
-
-		if( $popts instanceof User )	// It used to be getKey( &$article, &$user )
-			$popts = ParserOptions::newFromUser( $popts );
-
-		$user = $popts->mUser;
-		$printable = ( $popts->getIsPrintable() ) ? '!printable=1' : '';
+	function getKey( &$article, &$user ) {
+		global $action;
 		$hash = $user->getPageRenderingHash();
 		if( !$article->mTitle->quickUserCan( 'edit' ) ) {
 			// section edit links are suppressed even if the user has them on
@@ -42,62 +36,59 @@ class ParserCache {
 			$edit = '';
 		}
 		$pageid = $article->getID();
-		$renderkey = (int)($wgRequest->getVal('action') == 'render');
-		$key = wfMemcKey( 'pcache', 'idhash', "{$pageid}-{$renderkey}!{$hash}{$edit}{$printable}" );
+		$renderkey = (int)($action == 'render');
+		$key = wfMemcKey( 'pcache', 'idhash', "{$pageid}-{$renderkey}!{$hash}{$edit}" );
 		return $key;
 	}
 
-	function getETag( $article, $popts ) {
-		return 'W/"' . $this->getKey($article, $popts) . "--" . $article->mTouched. '"';
+	function getETag( &$article, &$user ) {
+		return 'W/"' . $this->getKey($article, $user) . "--" . $article->mTouched. '"';
 	}
 
-	function getDirty( $article, $popts ) {
-		$key = $this->getKey( $article, $popts );
+	function get( &$article, &$user ) {
+		global $wgCacheEpoch;
+		$fname = 'ParserCache::get';
+		wfProfileIn( $fname );
+
+		$key = $this->getKey( $article, $user );
+
 		wfDebug( "Trying parser cache $key\n" );
 		$value = $this->mMemc->get( $key );
-		return is_object( $value ) ? $value : false;
-	}
-
-	function get( $article, $popts ) {
-		global $wgCacheEpoch;
-		wfProfileIn( __METHOD__ );
-
-		$value = $this->getDirty( $article, $popts );
-		if ( !$value ) {
+		if ( is_object( $value ) ) {
+			wfDebug( "Found.\n" );
+			# Delete if article has changed since the cache was made
+			$canCache = $article->checkTouched();
+			$cacheTime = $value->getCacheTime();
+			$touched = $article->mTouched;
+			if ( !$canCache || $value->expired( $touched ) ) {
+				if ( !$canCache ) {
+					wfIncrStats( "pcache_miss_invalid" );
+					wfDebug( "Invalid cached redirect, touched $touched, epoch $wgCacheEpoch, cached $cacheTime\n" );
+				} else {
+					wfIncrStats( "pcache_miss_expired" );
+					wfDebug( "Key expired, touched $touched, epoch $wgCacheEpoch, cached $cacheTime\n" );
+				}
+				$this->mMemc->delete( $key );
+				$value = false;
+			} else {
+				if ( isset( $value->mTimestamp ) ) {
+					$article->mTimestamp = $value->mTimestamp;
+				}
+				wfIncrStats( "pcache_hit" );
+			}
+		} else {
 			wfDebug( "Parser cache miss.\n" );
 			wfIncrStats( "pcache_miss_absent" );
-			wfProfileOut( __METHOD__ );
-			return false;
-		}
-
-		wfDebug( "Found.\n" );
-		# Invalid if article has changed since the cache was made
-		$canCache = $article->checkTouched();
-		$cacheTime = $value->getCacheTime();
-		$touched = $article->mTouched;
-		if ( !$canCache || $value->expired( $touched ) ) {
-			if ( !$canCache ) {
-				wfIncrStats( "pcache_miss_invalid" );
-				wfDebug( "Invalid cached redirect, touched $touched, epoch $wgCacheEpoch, cached $cacheTime\n" );
-			} else {
-				wfIncrStats( "pcache_miss_expired" );
-				wfDebug( "Key expired, touched $touched, epoch $wgCacheEpoch, cached $cacheTime\n" );
-			}
 			$value = false;
-		} else {
-			if ( isset( $value->mTimestamp ) ) {
-				$article->mTimestamp = $value->mTimestamp;
-			}
-			wfIncrStats( "pcache_hit" );
 		}
 
-		wfProfileOut( __METHOD__ );
+		wfProfileOut( $fname );
 		return $value;
 	}
 
-	function save( $parserOutput, $article, $popts ){
+	function save( $parserOutput, &$article, &$user ){
 		global $wgParserCacheExpireTime;
-		$key = $this->getKey( $article, $popts );
+		$key = $this->getKey( $article, $user );
 
 		if( $parserOutput->getCacheTime() != -1 ) {
 

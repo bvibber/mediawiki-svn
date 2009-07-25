@@ -111,14 +111,20 @@ class RawPage {
 	function view() {
 		global $wgOut, $wgScript;
 
-		$url = wfGetScriptUrl();
-		if( $url == '' ) {
-			# This will make the next check fail with a confusing error
-			# message, so we should mention it separately.
-			wfHttpError( 500, 'Internal Server Error',
-				"\$_SERVER['URL'] is not set.  Perhaps you're using CGI" .
-				" and haven't set cgi.fix_pathinfo = 1 in php.ini?" );
-			return;
+		if( isset( $_SERVER['SCRIPT_URL'] ) ) {
+			# Normally we use PHP_SELF to get the URL to the script
+			# as it was called, minus the query string.
+			#
+			# Some sites use Apache rewrite rules to handle subdomains,
+			# and have PHP set up in a weird way that causes PHP_SELF
+			# to contain the rewritten URL instead of the one that the
+			# outside world sees.
+			#
+			# If in this mode, use SCRIPT_URL instead, which mod_rewrite
+			# provides containing the "before" URL.
+			$url = $_SERVER['SCRIPT_URL'];
+		} else {
+			$url = $_SERVER['PHP_SELF'];
 		}
 
 		if( strcmp( $wgScript, $url ) ) {
@@ -158,7 +164,7 @@ class RawPage {
 		$text = $this->getRawText();
 
 		if( !wfRunHooks( 'RawPageViewBeforeOutput', array( &$this, &$text ) ) ) {
-			wfDebug( __METHOD__ . ": RawPageViewBeforeOutput hook broke raw page output.\n" );
+			wfDebug( __METHOD__ . ': RawPageViewBeforeOutput hook broke raw page output.' );
 		}
 
 		echo $text;

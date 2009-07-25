@@ -8,13 +8,13 @@
  * @ingroup Exception
  */
 class MWException extends Exception {
+
 	/**
 	 * Should the exception use $wgOut to output the error ?
 	 * @return bool
 	 */
 	function useOutputPage() {
-		return $this->useMessageCache() &&
-			!empty( $GLOBALS['wgFullyInitialised'] ) &&
+		return !empty( $GLOBALS['wgFullyInitialised'] ) &&
 			( !empty( $GLOBALS['wgArticle'] ) || ( !empty( $GLOBALS['wgOut'] ) && !$GLOBALS['wgOut']->isArticle() ) ) &&
 			!empty( $GLOBALS['wgTitle'] );
 	}
@@ -25,11 +25,6 @@ class MWException extends Exception {
 	 */
 	function useMessageCache() {
 		global $wgLang;
-		foreach ( $this->getTrace() as $frame ) {
-			if ( isset( $frame['class'] ) && $frame['class'] === 'LocalisationCache' ) {
-				return false;
-			}
-		}
 		return is_object( $wgLang );
 	}
 
@@ -166,26 +161,23 @@ class MWException extends Exception {
 			if( $hookResult = $this->runHooks( get_class( $this ) . "Raw" ) ) {
 				die( $hookResult );
 			}
-			if ( defined( 'MEDIAWIKI_INSTALL' ) || $this->htmlBodyOnly() ) {
-				echo $this->getHTML();
-			} else {
-				echo $this->htmlHeader();
-				echo $this->getHTML();
-				echo $this->htmlFooter();
-			}
+			echo $this->htmlHeader();
+			echo $this->getHTML();
+			echo $this->htmlFooter();
 		}
 	}
 
 	/**
 	 * Output a report about the exception and takes care of formatting.
-	 * It will be either HTML or plain text based on isCommandLine().
+	 * It will be either HTML or plain text based on $wgCommandLineMode.
 	 */
 	function report() {
+		global $wgCommandLineMode;
 		$log = $this->getLogMessage();
 		if ( $log ) {
 			wfDebugLog( 'exception', $log );
 		}
-		if ( self::isCommandLine() ) {
+		if ( $wgCommandLineMode ) {
 			wfPrintError( $this->getText() );
 		} else {
 			$this->reportHTML();
@@ -207,12 +199,12 @@ class MWException extends Exception {
 			header( 'Pragma: nocache' );
 		}
 		$title = $this->getPageTitle();
-		return "<html>
+		echo "<html>
 		<head>
 		<title>$title</title>
 		</head>
 		<body>
-		<h1><img src='$wgLogo' style='float:left;margin-right:1em' alt=''/>$title</h1>
+		<h1><img src='$wgLogo' style='float:left;margin-right:1em' alt=''>$title</h1>
 		";
 	}
 
@@ -220,18 +212,7 @@ class MWException extends Exception {
 	 * print the end of the html page if not using $wgOut.
 	 */
 	function htmlFooter() {
-		return "</body></html>";
-	}
-	
-	/**
-	 * headers handled by subclass?
-	 */
-	function htmlBodyOnly() {
-		return false;
-	}
-
-	static function isCommandLine() {
-		return !empty( $GLOBALS['wgCommandLineMode'] ) && !defined( 'MEDIAWIKI_INSTALL' );
+		echo "</body></html>";
 	}
 }
 
@@ -283,51 +264,49 @@ function wfInstallExceptionHandler() {
  * Report an exception to the user
  */
 function wfReportException( Exception $e ) {
-	$cmdLine = MWException::isCommandLine();
-	if ( $e instanceof MWException ) {
-		try {
-			$e->report();
-		} catch ( Exception $e2 ) {
-			// Exception occurred from within exception handler
-			// Show a simpler error message for the original exception,
-			// don't try to invoke report()
-			$message = "MediaWiki internal error.\n\n";
-			if ( $GLOBALS['wgShowExceptionDetails'] )
-				$message .= "Original exception: " . $e->__toString();
-			$message .= "\n\nException caught inside exception handler";
-			if ( $GLOBALS['wgShowExceptionDetails'] )
-				$message .= ": " . $e2->__toString();
-			$message .= "\n";
-			if ( $cmdLine ) {
-				wfPrintError( $message );
-			} else {
-				echo nl2br( htmlspecialchars( $message ) ). "\n";
-			}
-		}
-	} else {
-		$message = "Unexpected non-MediaWiki exception encountered, of type \"" . get_class( $e ) . "\"\n" .
-			$e->__toString() . "\n";
-		if ( $GLOBALS['wgShowExceptionDetails'] ) {
-			$message .= "\n" . $e->getTraceAsString() ."\n";
-		}
-		if ( $cmdLine ) {
-			wfPrintError( $message );
-		} else {
-			echo nl2br( htmlspecialchars( $message ) ). "\n";
-		}
-	}
+	 if ( $e instanceof MWException ) {
+		 try {
+			 $e->report();
+		 } catch ( Exception $e2 ) {
+			 // Exception occurred from within exception handler
+			 // Show a simpler error message for the original exception,
+			 // don't try to invoke report()
+			 $message = "MediaWiki internal error.\n\n" .
+			 "Original exception: " . $e->__toString() .
+			 "\n\nException caught inside exception handler: " .
+			 $e2->__toString() . "\n";
+
+			 if ( !empty( $GLOBALS['wgCommandLineMode'] ) ) {
+				 wfPrintError( $message );
+			 } else {
+				 echo nl2br( htmlspecialchars( $message ) ). "\n";
+			 }
+		 }
+	 } else {
+		 $message = "Unexpected non-MediaWiki exception encountered, of type \"" . get_class( $e ) . "\"\n" .
+			 $e->__toString() . "\n";
+		 if ( $GLOBALS['wgShowExceptionDetails'] ) {
+			 $message .= "\n" . $e->getTraceAsString() ."\n";
+		 }
+		 if ( !empty( $GLOBALS['wgCommandLineMode'] ) ) {
+			 wfPrintError( $message );
+		 } else {
+			 echo nl2br( htmlspecialchars( $message ) ). "\n";
+		 }
+	 }
 }
 
 /**
  * Print a message, if possible to STDERR.
- * Use this in command line mode only (see isCommandLine)
+ * Use this in command line mode only (see wgCommandLineMode)
  */
 function wfPrintError( $message ) {
 	#NOTE: STDERR may not be available, especially if php-cgi is used from the command line (bug #15602).
 	#      Try to produce meaningful output anyway. Using echo may corrupt output to STDOUT though.
 	if ( defined( 'STDERR' ) ) {
 		fwrite( STDERR, $message );
-	} else {
+	}
+	else {
 		echo( $message );
 	}
 }

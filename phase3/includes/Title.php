@@ -69,7 +69,6 @@ class Title {
 	var $mLength = -1;                ///< The page length, 0 for special pages
 	var $mRedirect = null;            ///< Is the article at this title a redirect?
 	var $mNotificationTimestamp = array(); ///< Associative array of user ID -> timestamp/false
-	var $mBacklinkCache = null; ///< Cache of links to this title
 	//@}
 
 
@@ -152,14 +151,6 @@ class Title {
 	}
 
 	/**
-	 * THIS IS NOT THE FUNCTION YOU WANT. Use Title::newFromText().
-	 *
-	 * Example of wrong and broken code:
-	 * $title = Title::newFromURL( $wgRequest->getVal( 'title' ) );
-	 *
-	 * Example of right code:
-	 * $title = Title::newFromText( $wgRequest->getVal( 'title' ) );
-	 *
 	 * Create a new Title from URL-encoded text. Ensures that
 	 * the given title's length does not exceed the maximum.
 	 * @param $url \type{\string} the title, as might be taken from a URL
@@ -187,15 +178,20 @@ class Title {
 	/**
 	 * Create a new Title from an article ID
 	 *
+	 * @todo This is inefficiently implemented, the page row is requested
+	 *       but not used for anything else
+	 *
 	 * @param $id \type{\int} the page_id corresponding to the Title to create
 	 * @param $flags \type{\int} use GAID_FOR_UPDATE to use master
 	 * @return \type{Title} the new object, or NULL on an error
 	 */
 	public static function newFromID( $id, $flags = 0 ) {
+		$fname = 'Title::newFromID';
 		$db = ($flags & GAID_FOR_UPDATE) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$row = $db->selectRow( 'page', '*', array( 'page_id' => $id ), __METHOD__ );
-		if( $row !== false ) {
-			$title = Title::newFromRow( $row );
+		$row = $db->selectRow( 'page', array( 'page_namespace', 'page_title' ),
+			array( 'page_id' => $id ), $fname );
+		if ( $row !== false ) {
+			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 		} else {
 			$title = NULL;
 		}
@@ -298,77 +294,11 @@ class Title {
 	/**
 	 * Extract a redirect destination from a string and return the
 	 * Title, or null if the text doesn't contain a valid redirect
-	 * This will only return the very next target, useful for
-	 * the redirect table and other checks that don't need full recursion
 	 *
-	 * @param $text \type{\string} Text with possible redirect
+	 * @param $text \type{String} Text with possible redirect
 	 * @return \type{Title} The corresponding Title
 	 */
 	public static function newFromRedirect( $text ) {
-		return self::newFromRedirectInternal( $text );
-	}
-	
-	/**
-	 * Extract a redirect destination from a string and return the
-	 * Title, or null if the text doesn't contain a valid redirect
-	 * This will recurse down $wgMaxRedirects times or until a non-redirect target is hit
-	 * in order to provide (hopefully) the Title of the final destination instead of another redirect
-	 *
-	 * @param $text \type{\string} Text with possible redirect
-	 * @return \type{Title} The corresponding Title
-	 */
-	public static function newFromRedirectRecurse( $text ) {
-		$titles = self::newFromRedirectArray( $text );
-		return $titles ? array_pop( $titles ) : null;
-	}
-	
-	/**
-	 * Extract a redirect destination from a string and return an
-	 * array of Titles, or null if the text doesn't contain a valid redirect
-	 * The last element in the array is the final destination after all redirects
-	 * have been resolved (up to $wgMaxRedirects times)
-	 *
-	 * @param $text \type{\string} Text with possible redirect
-	 * @return \type{\array} Array of Titles, with the destination last
-	 */
-	public static function newFromRedirectArray( $text ) {
-		global $wgMaxRedirects;
-		// are redirects disabled?
-		if( $wgMaxRedirects < 1 )
-			return null;
-		$title = self::newFromRedirectInternal( $text );
-		if( is_null( $title ) )
-			return null;
-		// recursive check to follow double redirects
-		$recurse = $wgMaxRedirects;
-		$titles = array( $title );
-		while( --$recurse > 0 ) {
-			if( $title->isRedirect() ) {
-				$article = new Article( $title, 0 );
-				$newtitle = $article->getRedirectTarget();
-			} else {
-				break;
-			}
-			// Redirects to some special pages are not permitted
-			if( $newtitle instanceOf Title && $newtitle->isValidRedirectTarget() ) {
-				// the new title passes the checks, so make that our current title so that further recursion can be checked
-				$title = $newtitle;
-				$titles[] = $newtitle;
-			} else {
-				break;
-			}
-		}
-		return $titles;
-	}
-	
-	/**
-	 * Really extract the redirect destination
-	 * Do not call this function directly, use one of the newFromRedirect* functions above
-	 *
-	 * @param $text \type{\string} Text with possible redirect
-	 * @return \type{Title} The corresponding Title
-	 */
-	protected static function newFromRedirectInternal( $text ) {
 		$redir = MagicWord::get( 'redirect' );
 		$text = trim($text);
 		if( $redir->matchStartAndRemove( $text ) ) {
@@ -386,11 +316,13 @@ class Title {
 					$m[1] = urldecode( ltrim( $m[1], ':' ) );
 				}
 				$title = Title::newFromText( $m[1] );
-				// If the title is a redirect to bad special pages or is invalid, return null
-				if( !$title instanceof Title || !$title->isValidRedirectTarget() ) {
-					return null;
+				// Redirects to some special pages are not permitted
+				if( $title instanceof Title 
+						&& !$title->isSpecial( 'Userlogout' )
+						&& !$title->isSpecial( 'Filepath' ) ) 
+				{
+					return $title;
 				}
-				return $title;
 			}
 		}
 		return null;
@@ -457,7 +389,7 @@ class Title {
 		return trim( $t );
 	}
 
-	/**
+	/*
 	 * Make a prefixed DB key from a DB key and a namespace index
 	 * @param $ns \type{\int} numerical representation of the namespace
 	 * @param $title \type{\string} the DB key form the title
@@ -473,6 +405,18 @@ class Title {
 			$name .= '#' . $fragment;
 		}
 		return $name;
+	}
+
+	/**
+	 * Returns the URL associated with an interwiki prefix
+	 * @param $key \type{\string} the interwiki prefix (e.g. "MeatBall")
+	 * @return \type{\string} the associated URL, containing "$1", 
+	 * 	which should be replaced by an article title
+	 * @static (arguably)
+	 * @deprecated See Interwiki class
+	 */
+	public function getInterwikiLink( $key )  {
+		return Interwiki::fetch( $key )->getURL( );
 	}
 
 	/**
@@ -850,9 +794,6 @@ class Title {
 	 * there's a fragment but the prefixed text is empty, we just return a link
 	 * to the fragment.
 	 *
-	 * The result obviously should not be URL-escaped, but does need to be
-	 * HTML-escaped if it's being output in HTML.
-	 *
 	 * @param $query \type{\arrayof{\string}} An associative array of key => value pairs for the
 	 *   query string.  Keys and values will be escaped.
 	 * @param $variant \type{\string} Language variant of URL (for sr, zh..).  Ignored
@@ -861,16 +802,19 @@ class Title {
 	 * @return \type{\string} the URL
 	 */
 	public function getLinkUrl( $query = array(), $variant = false ) {
-		wfProfileIn( __METHOD__ );
-		if( $this->isExternal() ) {
-			$ret = $this->getFullURL( $query );
-		} elseif( $this->getPrefixedText() === '' && $this->getFragment() !== '' ) {
-			$ret = $this->getFragmentForURL();
-		} else {
-			$ret = $this->getLocalURL( $query, $variant ) . $this->getFragmentForURL();
+		if( !is_array( $query ) ) {
+			throw new MWException( 'Title::getLinkUrl passed a non-array for '.
+			'$query' );
 		}
-		wfProfileOut( __METHOD__ );
-		return $ret;
+		if( $this->isExternal() ) {
+			return $this->getFullURL( $query );
+		} elseif( $this->getPrefixedText() === ''
+		and $this->getFragment() !== '' ) {
+			return $this->getFragmentForURL();
+		} else {
+			return $this->getLocalURL( $query, $variant )
+				. $this->getFragmentForURL();
+		}
 	}
 
 	/**
@@ -1048,7 +992,7 @@ class Title {
  	 */
 	public function userCan( $action, $doExpensiveQueries = true ) {
 		global $wgUser;
-		return ($this->getUserPermissionsErrorsInternal( $action, $wgUser, $doExpensiveQueries, true ) === array());
+		return ( $this->getUserPermissionsErrorsInternal( $action, $wgUser, $doExpensiveQueries ) === array());
 	}
 
 	/**
@@ -1080,7 +1024,7 @@ class Title {
 		}
 
 		// Edit blocks should not affect reading. Account creation blocks handled at userlogin.
-		if ( $action != 'read' && $action != 'createaccount' && $user->isBlockedFrom( $this ) ) {
+		if ( $user->isBlockedFrom( $this ) && $action != 'read' && $action != 'createaccount' ) {
 			$block = $user->mBlock;
 
 			// This is from OutputPage::blockedPage
@@ -1150,87 +1094,19 @@ class Title {
 	 * @param $action \type{\string} action that permission needs to be checked for
 	 * @param $user \type{User} user to check
 	 * @param $doExpensiveQueries \type{\bool} Set this to false to avoid doing unnecessary queries.
-	 * @param $short \type{\bool} Set this to true to stop after the first permission error.
 	 * @return \type{\array} Array of arrays of the arguments to wfMsg to explain permissions problems.
 	 */
-	private function getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries=true, $short=false ) {
+	private function getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries = true ) {
 		wfProfileIn( __METHOD__ );
 
 		$errors = array();
-
-		// First stop is permissions checks, which fail most often, and which are easiest to test.
-		if ( $action == 'move' ) {
-			if( !$user->isAllowed( 'move-rootuserpages' )
-					&& $this->getNamespace() == NS_USER && !$this->isSubpage() )
-			{
-				// Show user page-specific message only if the user can move other pages
-				$errors[] = array( 'cant-move-user-page' );
-			}
-			
-			// Check if user is allowed to move files if it's a file
-			if( $this->getNamespace() == NS_FILE && !$user->isAllowed( 'movefile' ) ) {
-				$errors[] = array( 'movenotallowedfile' );
-			}
-			
-			if( !$user->isAllowed( 'move' ) ) {
-				// User can't move anything
-				global $wgGroupPermissions;
-				$userCanMove = false;
-				if ( isset( $wgGroupPermissions['user']['move'] ) ) {
-					$userCanMove = $wgGroupPermissions['user']['move'];
-				}
-				$autoconfirmedCanMove = false;
-				if ( isset( $wgGroupPermissions['autoconfirmed']['move'] ) ) {
-					$autoconfirmedCanMove = $wgGroupPermissions['autoconfirmed']['move'];
-				}
-				if ( $user->isAnon() && ( $userCanMove || $autoconfirmedCanMove ) ) {
-					// custom message if logged-in users without any special rights can move
-					$errors[] = array ( 'movenologintext' );
-				} else {
-					$errors[] = array ('movenotallowed');
-				}
-			}
-		} elseif ( $action == 'create' ) {
-			if( ( $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
-				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) )
-			{
-				$errors[] = $user->isAnon() ? array ('nocreatetext') : array ('nocreate-loggedin');
-			}
-		} elseif( $action == 'move-target' ) {
-			if( !$user->isAllowed( 'move' ) ) {
-				// User can't move anything
-				$errors[] = array ('movenotallowed');
-			} elseif( !$user->isAllowed( 'move-rootuserpages' )
-				&& $this->getNamespace() == NS_USER && !$this->isSubpage() )
-			{
-				// Show user page-specific message only if the user can move other pages
-				$errors[] = array( 'cant-move-to-user-page' );
-			}
-		} elseif( !$user->isAllowed( $action ) ) {
-			$return = null;
-			$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
-				User::getGroupsWithPermission( $action ) );
-			if( $groups ) {
-				$return = array( 'badaccess-groups',
-					array( implode( ', ', $groups ), count( $groups ) ) );
-			} else {
-				$return = array( "badaccess-group0" );
-			}
-			$errors[] = $return;
-		}
-
-		# Short-circuit point
-		if( $short && count($errors) > 0 ) {
-			wfProfileOut( __METHOD__ );
-			return $errors;
-		}
 
 		// Use getUserPermissionsErrors instead
 		if( !wfRunHooks( 'userCan', array( &$this, &$user, $action, &$result ) ) ) {
 			wfProfileOut( __METHOD__ );
 			return $result ? array() : array( array( 'badaccess-group0' ) );
 		}
-		// Check getUserPermissionsErrors hook
+
 		if( !wfRunHooks( 'getUserPermissionsErrors', array(&$this,&$user,$action,&$result) ) ) {
 			if( is_array($result) && count($result) && !is_array($result[0]) )
 				$errors[] = $result; # A single array representing an error
@@ -1241,12 +1117,6 @@ class Title {
 			else if( $result === false )
 				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
 		}
-		# Short-circuit point
-		if( $short && count($errors) > 0 ) {
-			wfProfileOut( __METHOD__ );
-			return $errors;
-		}
-		// Check getUserPermissionsErrorsExpensive hook
 		if( $doExpensiveQueries && !wfRunHooks( 'getUserPermissionsErrorsExpensive', array(&$this,&$user,$action,&$result) ) ) {
 			if( is_array($result) && count($result) && !is_array($result[0]) )
 				$errors[] = $result; # A single array representing an error
@@ -1257,20 +1127,13 @@ class Title {
 			else if( $result === false )
 				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
 		}
-		# Short-circuit point
-		if( $short && count($errors) > 0 ) {
-			wfProfileOut( __METHOD__ );
-			return $errors;
-		}
 		
-		# Only 'createaccount' and 'execute' can be performed on
-		# special pages, which don't actually exist in the DB.
+		// TODO: document
 		$specialOKActions = array( 'createaccount', 'execute' );
 		if( NS_SPECIAL == $this->mNamespace && !in_array( $action, $specialOKActions) ) {
 			$errors[] = array('ns-specialprotected');
 		}
 
-		# Check $wgNamespaceProtection for restricted namespaces
 		if( $this->isNamespaceProtected() ) {
 			$ns = $this->getNamespace() == NS_MAIN ?
 				wfMsg( 'nstab-main' ) : $this->getNsText();
@@ -1278,41 +1141,15 @@ class Title {
 				array('protectedinterface') : array( 'namespaceprotected',  $ns );
 		}
 
-		# Protect css/js subpages of user pages
+		# protect css/js subpages of user pages
 		# XXX: this might be better using restrictions
 		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssJsSubpage() from working
-		if( $this->isCssJsSubpage() && !$user->isAllowed('editusercssjs' ) && $action != 'patrol'
+		if( $this->isCssJsSubpage() && !$user->isAllowed('editusercssjs')
 			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) )
 		{
 			$errors[] = array('customcssjsprotected');
 		}
 
-		# Check against page_restrictions table requirements on this
-		# page. The user must possess all required rights for this action.
-		foreach( $this->getRestrictions($action) as $right ) {
-			// Backwards compatibility, rewrite sysop -> protect
-			if( $right == 'sysop' ) {
-				$right = 'protect';
-			}
-			if( '' != $right && !$user->isAllowed( $right ) ) {
-				// Users with 'editprotected' permission can edit protected pages
-				if( $action=='edit' && $user->isAllowed( 'editprotected' ) ) {
-					// Users with 'editprotected' permission cannot edit protected pages
-					// with cascading option turned on.
-					if( $this->mCascadeRestriction ) {
-						$errors[] = array( 'protectedpagetext', $right );
-					}
-				} else {
-					$errors[] = array( 'protectedpagetext', $right );
-				}
-			}
-		}
-		# Short-circuit point
-		if( $short && count($errors) > 0 ) {
-			wfProfileOut( __METHOD__ );
-			return $errors;
-		}
-		
 		if( $doExpensiveQueries && !$this->isCssJsSubpage() ) {
 			# We /could/ use the protection level on the source page, but it's fairly ugly
 			#  as we have to establish a precedence hierarchy for pages included by multiple
@@ -1335,10 +1172,26 @@ class Title {
 				}
 			}
 		}
-		# Short-circuit point
-		if( $short && count($errors) > 0 ) {
-			wfProfileOut( __METHOD__ );
-			return $errors;
+
+		foreach( $this->getRestrictions($action) as $right ) {
+			// Backwards compatibility, rewrite sysop -> protect
+			if( $right == 'sysop' ) {
+				$right = 'protect';
+			}
+			if( '' != $right && !$user->isAllowed( $right ) ) {
+				// Users with 'editprotected' permission can edit protected pages
+				if( $action=='edit' && $user->isAllowed( 'editprotected' ) ) {
+					// Users with 'editprotected' permission cannot edit protected pages
+					// with cascading option turned on.
+					if( $this->mCascadeRestriction ) {
+						$errors[] = array( 'protectedpagetext', $right );
+					} else {
+						// Nothing, user can edit!
+					}
+				} else {
+					$errors[] = array( 'protectedpagetext', $right );
+				}
+			}
 		}
 
 		if( $action == 'protect' ) {
@@ -1359,7 +1212,26 @@ class Title {
 					$errors[] = array( 'titleprotected', User::whoIs($pt_user), $pt_reason );
 				}
 			}
+
+			if( ( $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
+				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) 
+			{
+				$errors[] = $user->isAnon() ? array ('nocreatetext') : array ('nocreate-loggedin');
+			}
 		} elseif( $action == 'move' ) {
+			if( !$user->isAllowed( 'move' ) ) {
+				// User can't move anything
+				$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
+			} elseif( !$user->isAllowed( 'move-rootuserpages' ) 
+					&& $this->getNamespace() == NS_USER && !$this->isSubpage() ) 
+			{
+				// Show user page-specific message only if the user can move other pages
+				$errors[] = array( 'cant-move-user-page' );
+			}
+			// Check if user is allowed to move files if it's a file
+			if( $this->getNamespace() == NS_FILE && !$user->isAllowed( 'movefile' ) ) {
+				$errors[] = array( 'movenotallowedfile' );
+			}
 			// Check for immobile pages
 			if( !MWNamespace::isMovable( $this->getNamespace() ) ) {
 				// Specific message for this case
@@ -1369,11 +1241,31 @@ class Title {
 				$errors[] = array( 'immobile-page' );
 			}
 		} elseif( $action == 'move-target' ) {
+			if( !$user->isAllowed( 'move' ) ) {
+				// User can't move anything
+				$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
+			} elseif( !$user->isAllowed( 'move-rootuserpages' ) 
+				&& $this->getNamespace() == NS_USER && !$this->isSubpage() ) 
+			{
+				// Show user page-specific message only if the user can move other pages
+				$errors[] = array( 'cant-move-to-user-page' );
+			}
 			if( !MWNamespace::isMovable( $this->getNamespace() ) ) {
 				$errors[] = array( 'immobile-target-namespace', $this->getNsText() );
 			} elseif( !$this->isMovable() ) {
 				$errors[] = array( 'immobile-target-page' );
 			}
+		} elseif( !$user->isAllowed( $action ) ) {
+			$return = null;
+			$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
+				User::getGroupsWithPermission( $action ) );
+			if( $groups ) {
+				$return = array( 'badaccess-groups',
+					array( implode( ', ', $groups ), count( $groups ) ) );
+			} else {
+				$return = array( "badaccess-group0" );
+			}
+			$errors[] = $return;
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -1449,7 +1341,7 @@ class Title {
 
 		if( $create_perm ) {
 			$params = array("[create=$create_perm] $expiry_description",'');
-			$log->addEntry( ( isset( $this->mRestrictions['create'] ) && $this->mRestrictions['create'] ) ? 'modify' : 'protect', $this, trim( $reason ), $params );
+			$log->addEntry( $this->mRestrictions['create'] ? 'modify' : 'protect', $this, trim( $reason ), $params );
 		} else {
 			$log->addEntry( 'unprotect', $this, $reason );
 		}
@@ -1469,6 +1361,33 @@ class Title {
 	}
 
 	/**
+	 * Can $wgUser edit this page?
+	 * @return \type{\bool} TRUE or FALSE
+	 * @deprecated use userCan('edit')
+	 */
+	public function userCanEdit( $doExpensiveQueries = true ) {
+		return $this->userCan( 'edit', $doExpensiveQueries );
+	}
+
+	/**
+	 * Can $wgUser create this page?
+	 * @return \type{\bool} TRUE or FALSE
+	 * @deprecated use userCan('create')
+	 */
+	public function userCanCreate( $doExpensiveQueries = true ) {
+		return $this->userCan( 'create', $doExpensiveQueries );
+	}
+
+	/**
+	 * Can $wgUser move this page?
+	 * @return \type{\bool} TRUE or FALSE
+	 * @deprecated use userCan('move')
+	 */
+	public function userCanMove( $doExpensiveQueries = true ) {
+		return $this->userCan( 'move', $doExpensiveQueries );
+	}
+
+	/**
 	 * Would anybody with sufficient privileges be able to move this page?
 	 * Some pages just aren't movable.
 	 *
@@ -1485,33 +1404,7 @@ class Title {
 	 */
 	public function userCanRead() {
 		global $wgUser, $wgGroupPermissions;
-		
-		static $useShortcut = null;
 
-		# Initialize the $useShortcut boolean, to determine if we can skip quite a bit of code below
-		if( is_null( $useShortcut ) ) {
-			global $wgRevokePermissions;
-			$useShortcut = true;
-			if( empty( $wgGroupPermissions['*']['read'] ) ) {
-				# Not a public wiki, so no shortcut
-				$useShortcut = false;
-			} elseif( !empty( $wgRevokePermissions ) ) {
-				/*
-				 * Iterate through each group with permissions being revoked (key not included since we don't care
-				 * what the group name is), then check if the read permission is being revoked. If it is, then
-				 * we don't use the shortcut below since the user might not be able to read, even though anon
-				 * reading is allowed.
-				 */
-				foreach( $wgRevokePermissions as $perms ) {
-					if( !empty( $perms['read'] ) ) {
-						# We might be removing the read right from the user, so no shortcut
-						$useShortcut = false;
-						break;
-					}
-				}
-			}
-		}
-		
 		$result = null;
 		wfRunHooks( 'userCan', array( &$this, &$wgUser, 'read', &$result ) );
 		if ( $result !== null ) {
@@ -1519,7 +1412,7 @@ class Title {
 		}
 
 		# Shortcut for public wikis, allows skipping quite a bit of code
-		if ( $useShortcut )
+		if ($wgGroupPermissions['*']['read'])
 			return true;
 
 		if( $wgUser->isAllowed( 'read' ) ) {
@@ -1617,36 +1510,11 @@ class Title {
 			return $this->mHasSubpages;
 		}
 
-		$subpages = $this->getSubpages( 1 );
-		if( $subpages instanceof TitleArray )
-			return $this->mHasSubpages = (bool)$subpages->count();
-		return $this->mHasSubpages = false;
-	}
-	
-	/**
-	 * Get all subpages of this page.
-	 * @param $limit Maximum number of subpages to fetch; -1 for no limit
-	 * @return mixed TitleArray, or empty array if this page's namespace
-	 *  doesn't allow subpages
-	 */
-	public function getSubpages( $limit = -1 ) {
-		if( !MWNamespace::hasSubpages( $this->getNamespace() ) )
-			return array();
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$conds['page_namespace'] = $this->getNamespace();
-		$conds[] = 'page_title LIKE ' . $dbr->addQuotes(
-				$dbr->escapeLike( $this->getDBkey() ) . '/%' );
-		$options = array();
-		if( $limit > -1 )
-			$options['LIMIT'] = $limit;
-		return $this->mSubpages = TitleArray::newFromResult(
-			$dbr->select( 'page',
-				array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect' ),
-				$conds,
-				__METHOD__,
-				$options
-			)
+		$db = wfGetDB( DB_SLAVE );
+		return $this->mHasSubpages = (bool)$db->selectField( 'page', '1',
+			"page_namespace = {$this->mNamespace} AND page_title LIKE '"
+			. $db->escapeLike( $this->mDbkeyform ) . "/%'",
+			__METHOD__
 		);
 	}
 
@@ -1981,44 +1849,19 @@ class Title {
 	 * @return \type{\int} the number of archived revisions
 	 */
 	public function isDeleted() {
-		if( $this->getNamespace() < 0 ) {
+		$fname = 'Title::isDeleted';
+		if ( $this->getNamespace() < 0 ) {
 			$n = 0;
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
-			$n = $dbr->selectField( 'archive', 'COUNT(*)', 
-				array( 'ar_namespace' => $this->getNamespace(), 'ar_title' => $this->getDBkey() ),
-				__METHOD__
-			);
+			$n = $dbr->selectField( 'archive', 'COUNT(*)', array( 'ar_namespace' => $this->getNamespace(),
+				'ar_title' => $this->getDBkey() ), $fname );
 			if( $this->getNamespace() == NS_FILE ) {
 				$n += $dbr->selectField( 'filearchive', 'COUNT(*)',
-					array( 'fa_name' => $this->getDBkey() ),
-					__METHOD__
-				);
+					array( 'fa_name' => $this->getDBkey() ), $fname );
 			}
 		}
 		return (int)$n;
-	}
-	
-	/**
-	 * Is there a version of this page in the deletion archive?
-	 * @return bool
-	 */
-	public function isDeletedQuick() {
-		if( $this->getNamespace() < 0 ) {
-			return false;
-		}
-		$dbr = wfGetDB( DB_SLAVE );
-		$deleted = (bool)$dbr->selectField( 'archive', '1',
-			array( 'ar_namespace' => $this->getNamespace(), 'ar_title' => $this->getDBkey() ),
-			__METHOD__
-		);
-		if( !$deleted && $this->getNamespace() == NS_FILE ) {
-			$deleted = (bool)$dbr->selectField( 'filearchive', '1',
-				array( 'fa_name' => $this->getDBkey() ),
-				__METHOD__
-			);
-		}
-		return $deleted;
 	}
 
 	/**
@@ -2112,7 +1955,7 @@ class Title {
 		$linkCache = LinkCache::singleton();
 		$linkCache->clearBadLink( $this->getPrefixedDBkey() );
 
-		if ( $newid === false ) { $this->mArticleID = -1; }
+		if ( 0 == $newid ) { $this->mArticleID = -1; }
 		else { $this->mArticleID = $newid; }
 		$this->mRestrictionsLoaded = false;
 		$this->mRestrictions = array();
@@ -2221,22 +2064,14 @@ class Title {
 
 		# Namespace or interwiki prefix
 		$firstPass = true;
-		$prefixRegexp = "/^(.+?)_*:_*(.*)$/S";
 		do {
 			$m = array();
-			if ( preg_match( $prefixRegexp, $dbkey, $m ) ) {
+			if ( preg_match( "/^(.+?)_*:_*(.*)$/S", $dbkey, $m ) ) {
 				$p = $m[1];
-				if ( $ns = $wgContLang->getNsIndex( $p ) ) {
+				if ( $ns = $wgContLang->getNsIndex( $p )) {
 					# Ordinary namespace
 					$dbkey = $m[2];
 					$this->mNamespace = $ns;
-					# For Talk:X pages, check if X has a "namespace" prefix
-					if( $ns == NS_TALK && preg_match( $prefixRegexp, $dbkey, $x ) ) {
-						if( $wgContLang->getNsIndex( $x[1] ) )
-							return false; # Disallow Talk:File:x type titles...
-						else if( Interwiki::isValidInterwiki( $x[1] ) )
-							return false; # Disallow Talk:Interwiki:x type titles...
-					}
 				} elseif( Interwiki::isValidInterwiki( $p ) ) {
 					if( !$firstPass ) {
 						# Can't make a local interwiki link to an interwiki link.
@@ -2419,13 +2254,13 @@ class Title {
 	 * WARNING: do not use this function on arbitrary user-supplied titles!
 	 * On heavily-used templates it will max out the memory.
 	 *
-	 * @param array $options may be FOR UPDATE
+	 * @param $options \type{\string} may be FOR UPDATE
 	 * @return \type{\arrayof{Title}} the Title objects linking here
 	 */
-	public function getLinksTo( $options = array(), $table = 'pagelinks', $prefix = 'pl' ) {
+	public function getLinksTo( $options = '', $table = 'pagelinks', $prefix = 'pl' ) {
 		$linkCache = LinkCache::singleton();
 
-		if ( count( $options ) > 0 ) {
+		if ( $options ) {
 			$db = wfGetDB( DB_MASTER );
 		} else {
 			$db = wfGetDB( DB_SLAVE );
@@ -2460,10 +2295,10 @@ class Title {
 	 * WARNING: do not use this function on arbitrary user-supplied titles!
 	 * On heavily-used templates it will max out the memory.
 	 *
-	 * @param array $options may be FOR UPDATE
+	 * @param $options \type{\string} may be FOR UPDATE
 	 * @return \type{\arrayof{Title}} the Title objects linking here
 	 */
-	public function getTemplateLinksTo( $options = array() ) {
+	public function getTemplateLinksTo( $options = '' ) {
 		return $this->getLinksTo( $options, 'templatelinks', 'tl' );
 	}
 
@@ -2471,35 +2306,42 @@ class Title {
 	 * Get an array of Title objects referring to non-existent articles linked from this page
 	 *
 	 * @todo check if needed (used only in SpecialBrokenRedirects.php, and should use redirect table in this case)
+	 * @param $options \type{\string} may be FOR UPDATE
 	 * @return \type{\arrayof{Title}} the Title objects
 	 */
-	public function getBrokenLinksFrom() {
+	public function getBrokenLinksFrom( $options = '' ) {
 		if ( $this->getArticleId() == 0 ) {
 			# All links from article ID 0 are false positives
 			return array();
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-			array( 'page', 'pagelinks' ),
-			array( 'pl_namespace', 'pl_title' ),
-			array(
-				'pl_from' => $this->getArticleId(),
-				'page_namespace IS NULL'
-			),
-			__METHOD__, array(),
-			array(
-				'page' => array( 
-					'LEFT JOIN', 
-					array( 'pl_namespace=page_namespace', 'pl_title=page_title' )
-				)
-			)
-		);
+		if ( $options ) {
+			$db = wfGetDB( DB_MASTER );
+		} else {
+			$db = wfGetDB( DB_SLAVE );
+		}
+
+		$res = $db->safeQuery(
+			  "SELECT pl_namespace, pl_title
+			     FROM !
+			LEFT JOIN !
+			       ON pl_namespace=page_namespace
+			      AND pl_title=page_title
+			    WHERE pl_from=?
+			      AND page_namespace IS NULL
+				  !",
+			$db->tableName( 'pagelinks' ),
+			$db->tableName( 'page' ),
+			$this->getArticleId(),
+			$options );
 
 		$retVal = array();
-		foreach( $res as $row ) {
-			$retVal[] = Title::makeTitle( $row->pl_namespace, $row->pl_title );
+		if ( $db->numRows( $res ) ) {
+			foreach( $res as $row ) {
+				$retVal[] = Title::makeTitle( $row->pl_namespace, $row->pl_title );
+			}
 		}
+		$db->freeResult( $res );
 		return $retVal;
 	}
 
@@ -2603,7 +2445,7 @@ class Title {
 				if( $nt->getText() != wfStripIllegalFilenameChars( $nt->getText() ) ) {
 					$errors[] = array('imageinvalidfilename');
 				}
-				if( !File::checkExtensionCompatibility( $file, $nt->getDBkey() ) ) {
+				if( !File::checkExtensionCompatibility( $file, $nt->getDBKey() ) ) {
 					$errors[] = array('imagetypemismatch');
 				}
 			}
@@ -2617,7 +2459,7 @@ class Title {
 				$nt->getUserPermissionsErrors('edit', $wgUser) );
 		}
 
-		$match = EditPage::matchSummarySpamRegex( $reason );
+		$match = EditPage::matchSpamRegex( $reason );
 		if( $match !== false ) {
 			// This is kind of lame, won't display nice
 			$errors[] = array('spamprotectiontext');
@@ -2664,18 +2506,6 @@ class Title {
 			return $err;
 		}
 
-		// If it is a file, more it first. It is done before all other moving stuff is done because it's hard to revert
-		$dbw = wfGetDB( DB_MASTER );
-		if( $this->getNamespace() == NS_FILE ) {
-			$file = wfLocalFile( $this );
-			if( $file->exists() ) {
-				$status = $file->move( $nt );
-				if( !$status->isOk() ) {
-					return $status->getErrorsArray();
-				}
-			}
-		}
-
 		$pageid = $this->getArticleID();
 		$protected = $this->isProtected();
 		if( $nt->exists() ) {
@@ -2702,6 +2532,7 @@ class Title {
 		// we can't actually distinguish it from a default here, and it'll
 		// be set to the new title even though it really shouldn't.
 		// It'll get corrected on the next edit, but resetting cl_timestamp.
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'categorylinks',
 			array(
 				'cl_sortkey' => $nt->getPrefixedText(),
@@ -2728,8 +2559,8 @@ class Title {
 			);
 			# Update the protection log
 			$log = new LogPage( 'protect' );
-			$comment = wfMsgForContent( 'prot_1movedto2', $this->getPrefixedText(), $nt->getPrefixedText() );
-			if( $reason ) $comment .= wfMsgForContent( 'colon-separator' ) . $reason;
+			$comment = wfMsgForContent('prot_1movedto2',$this->getPrefixedText(), $nt->getPrefixedText() );
+			if( $reason ) $comment .= ': ' . $reason;
 			$log->addEntry( 'move_prot', $nt, $comment, array($this->getPrefixedText()) ); // FIXME: $params?
 		}
 
@@ -2770,16 +2601,8 @@ class Title {
 		# Update message cache for interface messages
 		if( $nt->getNamespace() == NS_MEDIAWIKI ) {
 			global $wgMessageCache;
-
-			# @bug 17860: old article can be deleted, if this the case,
-			# delete it from message cache
-			if ( $this->getArticleID() === 0 ) {
-				$wgMessageCache->replace( $this->getDBkey(), false );
-			} else {
-				$oldarticle = new Article( $this );
-				$wgMessageCache->replace( $this->getDBkey(), $oldarticle->getContent() );
-			}
-
+			$oldarticle = new Article( $this );
+			$wgMessageCache->replace( $this->getDBkey(), $oldarticle->getContent() );
 			$newarticle = new Article( $nt );
 			$wgMessageCache->replace( $nt->getDBkey(), $newarticle->getContent() );
 		}
@@ -2812,9 +2635,6 @@ class Title {
 		$newid = $nt->getArticleID();
 		$oldid = $this->getArticleID();
 		$latest = $this->getLatestRevID();
-		$rcts = $dbw->timestamp( $nt->getEarliestRevTime() );
-		$newns = $nt->getNamespace();
-		$newdbk = $nt->getDBkey();
 
 		$dbw = wfGetDB( DB_MASTER );
 
@@ -2836,11 +2656,6 @@ class Title {
 			$dbw->delete( 'langlinks', array( 'll_from' => $newid ), __METHOD__ );
 			$dbw->delete( 'redirect', array( 'rd_from' => $newid ), __METHOD__ );
 		}
-		// If the redirect was recently created, it may have an entry in recentchanges still	
-		$dbw->delete( 'recentchanges', 
-			array( 'rc_timestamp' => $rcts, 'rc_namespace' => $newns, 'rc_title' => $newdbk, 'rc_new' => 1 ), 
-			__METHOD__
-		);
 
 		# Save a null revision in the page's history notifying of the move
 		$nullRevision = Revision::newNullRevision( $dbw, $oldid, $comment, true );
@@ -2890,6 +2705,18 @@ class Title {
 		} else {
 			$this->resetArticleID( 0 );
 			$redirectSuppressed = true;
+		}
+
+		# Move an image if this is a file
+		if( $this->getNamespace() == NS_FILE ) {
+			$file = wfLocalFile( $this );
+			if( $file->exists() ) {
+				$status = $file->move( $nt );
+				if( !$status->isOk() ) {
+					$dbw->rollback();
+					return $status->getErrorsArray();
+				}
+			}
 		}
 
 		# Log the move
@@ -2977,6 +2804,18 @@ class Title {
 			$redirectSuppressed = true;
 		}
 
+		# Move an image if this is a file
+		if( $this->getNamespace() == NS_FILE ) {
+			$file = wfLocalFile( $this );
+			if( $file->exists() ) {
+				$status = $file->move( $nt );
+				if( !$status->isOk() ) {
+					$dbw->rollback();
+					return $status->getErrorsArray();
+				}
+			}
+		}
+
 		# Log the move
 		$log = new LogPage( 'move' );
 		$log->addEntry( 'move', $this, $reason, array( 1 => $nt->getPrefixedText(), 2 => $redirectSuppressed ) );
@@ -2988,67 +2827,6 @@ class Title {
 		# The new title, and links to the new title, are purged in Article::onArticleCreate()
 		$this->purgeSquid();
 		
-	}
-	
-	/**
-	 * Move this page's subpages to be subpages of $nt
-	 * @param $nt Title Move target
-	 * @param $auth bool Whether $wgUser's permissions should be checked
-	 * @param $reason string The reason for the move
-	 * @param $createRedirect bool Whether to create redirects from the old subpages to the new ones
-	 *  Ignored if the user doesn't have the 'suppressredirect' right
-	 * @return mixed array with old page titles as keys, and strings (new page titles) or
-	 *  arrays (errors) as values, or an error array with numeric indices if no pages were moved
-	 */
-	public function moveSubpages( $nt, $auth = true, $reason = '', $createRedirect = true ) {
-		global $wgMaximumMovedPages;
-		// Check permissions
-		if( !$this->userCan( 'move-subpages' ) )
-			return array( 'cant-move-subpages' );
-		// Do the source and target namespaces support subpages?
-		if( !MWNamespace::hasSubpages( $this->getNamespace() ) )
-			return array( 'namespace-nosubpages',
-				MWNamespace::getCanonicalName( $this->getNamespace() ) );
-		if( !MWNamespace::hasSubpages( $nt->getNamespace() ) )
-			return array( 'namespace-nosubpages',
-				MWNamespace::getCanonicalName( $nt->getNamespace() ) );
-
-		$subpages = $this->getSubpages($wgMaximumMovedPages + 1);
-		$retval = array();
-		$count = 0;
-		foreach( $subpages as $oldSubpage ) {
-			$count++;
-			if( $count > $wgMaximumMovedPages ) {
-				$retval[$oldSubpage->getPrefixedTitle()] =
-						array( 'movepage-max-pages',
-							$wgMaximumMovedPages );
-				break;
-			}
-
-			if( $oldSubpage->getArticleId() == $this->getArticleId() )
-				// When moving a page to a subpage of itself,
-				// don't move it twice
-				continue;
-			$newPageName = preg_replace(
-					'#^'.preg_quote( $this->getDBkey(), '#' ).'#',
-					$nt->getDBkey(), $oldSubpage->getDBkey() );
-			if( $oldSubpage->isTalkPage() ) {
-				$newNs = $nt->getTalkPage()->getNamespace();
-			} else {
-				$newNs = $nt->getSubjectPage()->getNamespace();
-			}
-			# Bug 14385: we need makeTitleSafe because the new page names may
-			# be longer than 255 characters.
-			$newSubpage = Title::makeTitleSafe( $newNs, $newPageName );
-
-			$success = $oldSubpage->moveTo( $newSubpage, $auth, $reason, $createRedirect );
-			if( $success === true ) {
-				$retval[$oldSubpage->getPrefixedText()] = $newSubpage->getPrefixedText();
-			} else {
-				$retval[$oldSubpage->getPrefixedText()] = $success;
-			}
-		}
-		return $retval;
 	}
 	
 	/**
@@ -3064,7 +2842,7 @@ class Title {
 			array( 'page_is_redirect', 'page_latest', 'page_id' ),
 			$this->pageCond(),
 			__METHOD__,
-			array( 'FOR UPDATE' )
+			'FOR UPDATE'
 		);
 		# Cache some fields we may want
 		$this->mArticleID = $row ? intval($row->page_id) : 0;
@@ -3082,7 +2860,7 @@ class Title {
 				'page_latest != rev_id'
 			), 
 			__METHOD__,
-			array( 'FOR UPDATE' )
+			'FOR UPDATE'
 		);
 		# Return true if there was no history
 		return ($row === false);
@@ -3256,28 +3034,6 @@ class Title {
 	}
 	
 	/**
-	 * Get the first revision of the page
-	 *
-	 * @param $flags \type{\int} GAID_FOR_UPDATE
-	 * @return Revision (or NULL if page doesn't exist)
-	 */
-	public function getFirstRevision( $flags=0 ) {
-		$db = ($flags & GAID_FOR_UPDATE) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$pageId = $this->getArticleId($flags);
-		if( !$pageId ) return NULL;
-		$row = $db->selectRow( 'revision', '*',
-			array( 'rev_page' => $pageId ),
-			__METHOD__,
-			array( 'ORDER BY' => 'rev_timestamp ASC', 'LIMIT' => 1 )
-		);
-		if( !$row ) {
-			return NULL;
-		} else {
-			return new Revision( $row );
-		}
-	}
-	
-	/**
 	 * Check if this is a new page
 	 *
 	 * @return bool
@@ -3318,8 +3074,8 @@ class Title {
 			'rev_page = ' . intval( $this->getArticleId() ) .
 			' AND rev_id > ' . intval( $old ) .
 			' AND rev_id < ' . intval( $new ),
-			__METHOD__
-		);
+			__METHOD__,
+			array( 'USE INDEX' => 'PRIMARY' ) );
 	}
 
 	/**
@@ -3338,7 +3094,7 @@ class Title {
 	/**
 	 * Callback for usort() to do title sorts by (namespace, title)
 	 */
-	public static function compare( $a, $b ) {
+	static function compare( $a, $b ) {
 		if( $a->getNamespace() == $b->getNamespace() ) {
 			return strcmp( $a->getText(), $b->getText() );
 		} else {
@@ -3388,12 +3144,12 @@ class Title {
 		if( $this->mInterwiki != '' ) {
 			return true;  // any interwiki link might be viewable, for all we know
 		}
-		switch( $this->mNamespace ) {
+		switch( $this->mNamespace ) {			
 		case NS_MEDIA:
 		case NS_FILE:
 			return wfFindFile( $this );  // file exists, possibly in a foreign repo
 		case NS_SPECIAL:
-			return SpecialPage::exists( $this->getDBkey() );  // valid special page
+			return SpecialPage::exists( $this->getDBKey() );  // valid special page
 		case NS_MAIN:
 			return $this->mDbkeyform == '';  // selflink, possibly with fragment
 		case NS_MEDIAWIKI:
@@ -3494,9 +3250,9 @@ class Title {
 	 * @return \type{\string} Trackback URL
 	 */
 	public function trackbackURL() {
-		global $wgScriptPath, $wgServer, $wgScriptExtension;
+		global $wgScriptPath, $wgServer;
 
-		return "$wgServer$wgScriptPath/trackback$wgScriptExtension?article="
+		return "$wgServer$wgScriptPath/trackback.php?article="
 			. htmlspecialchars(urlencode($this->getPrefixedDBkey()));
 	}
 
@@ -3531,29 +3287,40 @@ class Title {
 	 * Generate strings used for xml 'id' names in monobook tabs
 	 * @return \type{\string} XML 'id' name
 	 */
-	public function getNamespaceKey( $prepend = 'nstab-' ) {
-		global $wgContLang, $wgCanonicalNamespaceNames;
-		// Gets the subject namespace if this title
-		$namespace = MWNamespace::getSubject( $this->getNamespace() );
-		// Checks if cononical namespace name exists for namespace
-		if ( isset( $wgCanonicalNamespaceNames[$namespace] ) ) {
-			// Uses canonical namespace name
-			$namespaceKey = $wgCanonicalNamespaceNames[$namespace];
-		} else {
-			// Uses text of namespace
-			$namespaceKey = $this->getSubjectNsText();
+	public function getNamespaceKey() {
+		global $wgContLang;
+		switch ($this->getNamespace()) {
+			case NS_MAIN:
+			case NS_TALK:
+				return 'nstab-main';
+			case NS_USER:
+			case NS_USER_TALK:
+				return 'nstab-user';
+			case NS_MEDIA:
+				return 'nstab-media';
+			case NS_SPECIAL:
+				return 'nstab-special';
+			case NS_PROJECT:
+			case NS_PROJECT_TALK:
+				return 'nstab-project';
+			case NS_FILE:
+			case NS_FILE_TALK:
+				return 'nstab-image';
+			case NS_MEDIAWIKI:
+			case NS_MEDIAWIKI_TALK:
+				return 'nstab-mediawiki';
+			case NS_TEMPLATE:
+			case NS_TEMPLATE_TALK:
+				return 'nstab-template';
+			case NS_HELP:
+			case NS_HELP_TALK:
+				return 'nstab-help';
+			case NS_CATEGORY:
+			case NS_CATEGORY_TALK:
+				return 'nstab-category';
+			default:
+				return 'nstab-' . $wgContLang->lc( $this->getSubjectNsText() );
 		}
-		// Makes namespace key lowercase
-		$namespaceKey = $wgContLang->lc( $namespaceKey );
-		// Uses main
-		if ( $namespaceKey == '' ) {
-			$namespaceKey = 'main';
-		}
-		// Changes file to image for backwards compatibility
-		if ( $namespaceKey == 'file' ) {
-			$namespaceKey = 'image';
-		}
-		return $prepend . $namespaceKey;
 	}
 
 	/**
@@ -3628,37 +3395,5 @@ class Title {
 			$redirs[] = self::newFromRow( $row );
 		}
 		return $redirs;
-	}
-	
-	/**
-	 * Check if this Title is a valid redirect target
-	 *
-	 * @return \type{\bool} TRUE or FALSE
-	 */
-	public function isValidRedirectTarget() {
-		global $wgInvalidRedirectTargets;
-		
-		// invalid redirect targets are stored in a global array, but explicity disallow Userlogout here
-		if( $this->isSpecial( 'Userlogout' ) ) {
-			return false;
-		}
-		
-		foreach( $wgInvalidRedirectTargets as $target ) {
-			if( $this->isSpecial( $target ) ) {
-				return false;
-			}
-		}
-		
-		return true;
-	}
-
-	/**
-	 * Get a backlink cache object
-	 */
-	function getBacklinkCache() {
-		if ( is_null( $this->mBacklinkCache ) ) {
-			$this->mBacklinkCache = new BacklinkCache( $this );
-		}
-		return $this->mBacklinkCache;
 	}
 }

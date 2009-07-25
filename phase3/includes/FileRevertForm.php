@@ -114,16 +114,7 @@ class FileRevertForm {
 		global $wgOut, $wgUser;
 		$wgOut->setPageTitle( wfMsg( 'filerevert', $this->title->getText() ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		$wgOut->setSubtitle( wfMsg(
-			'filerevert-backlink',
-			$wgUser->getSkin()->link(
-				$this->title,
-				null,
-				array(),
-				array(),
-				array( 'known', 'noclasses' )
-			)
-		) );
+		$wgOut->setSubtitle( wfMsg( 'filerevert-backlink', $wgUser->getSkin()->makeKnownLinkObj( $this->title ) ) );
 	}
 
 	/**

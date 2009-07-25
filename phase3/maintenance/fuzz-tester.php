@@ -138,7 +138,7 @@ Wiki configuration for testing:
   }
   // --------- End ---------
 
-  Also add/change this in LocalSettings.php:
+  Also add/change this in AdminSettings.php:
   // --------- Start ---------
   $wgEnableProfileInfo = true;
   $wgDBserver = "localhost"; // replace with DB server hostname
@@ -169,7 +169,7 @@ TODO:
 /////////////////////////// COMMAND LINE HELP ////////////////////////////////////
 
 // This is a command line script, load MediaWiki env (gives command line options);
-require('commandLine.inc');
+include('commandLine.inc');
 
 // if the user asked for an explanation of command line options.
 if ( isset( $options["help"] ) ) {
@@ -2447,7 +2447,7 @@ function validateHTML($text) {
     if (curl_error($ch)) {
         trigger_error("Curl error #: " . curl_errno($ch) . " - " . curl_error ($ch) );
         print "Curl error #: " . curl_errno($ch) . " - " . curl_error ($ch) . " - exiting.\n";
-        exit(1);
+        exit();
     }
 
     curl_close ($ch);

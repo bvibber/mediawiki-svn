@@ -1,9 +1,6 @@
 <?php
 /** Tahitian (Reo Mā`ohi)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
- *
  * @ingroup Language
  * @file
  *
@@ -65,14 +62,12 @@ $messages = array(
 'nov'           => 'nō novema',
 'dec'           => 'nō tītema',
 
-'about'      => 'Nō',
-'article'    => 'Parau pāpa’i',
-'navigation' => 'Arata’i',
-
-# Cologne Blue skin
+'about'          => 'Nō',
+'article'        => 'Parau pāpa’i',
 'qbedit'         => 'Fa’ahuru ’ē',
 'qbmyoptions'    => 'ta’u ’api',
 'qbspecialpages' => 'Te mau ’api ta’a ’ē',
+'navigation'     => 'Arata’i',
 
 'help'             => 'Tauturu',
 'search'           => 'Roromā’imi',
@@ -110,6 +105,11 @@ $messages = array(
 'nstab-help'      => 'Tauturu',
 'nstab-category'  => 'Huru',
 
+# Login and logout pages
+'youremail'    => 'Tā’u ’āfata rata uira',
+'yourlanguage' => 'Te reo:',
+'email'        => '’Imere',
+
 # Revision feed
 'history-feed-title' => 'Parau tuatāpapa',
 
@@ -117,11 +117,8 @@ $messages = array(
 'powersearch' => 'Roromā’imi',
 
 # Preferences page
-'prefs-rc'     => 'Te mau fa’ahuru-’ē-ra’a ’āpī',
-'prefs-files'  => 'Te mau putu’ite',
-'youremail'    => 'Tā’u ’āfata rata uira',
-'yourlanguage' => 'Te reo:',
-'email'        => '’Imere',
+'prefs-rc' => 'Te mau fa’ahuru-’ē-ra’a ’āpī',
+'files'    => 'Te mau putu’ite',
 
 # Recent changes
 'recentchanges' => 'Te mau fa’ahuru-’ē-ra’a ’āpī',
@@ -130,8 +127,7 @@ $messages = array(
 'listfiles_user' => 'Ta’ata fa’a’ohipa',
 
 # File description page
-'file-anchor-link' => 'Hōho’a',
-'filehist-user'    => 'Ta’ata',
+'filehist-user' => 'Ta’ata',
 
 # Random page
 'randompage' => '’Api mā’iti-haere-noa',

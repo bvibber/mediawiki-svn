@@ -142,7 +142,7 @@ class SpecialResetpass extends SpecialPage {
 			if ( $type != 'text' )
 				$out .= Xml::label( wfMsg( $label ), $name );
 			else 
-				$out .=  wfMsgHtml( $label );
+				$out .=  wfMsg( $label );
 			$out .= '</td>';
 			$out .= "<td class='mw-input'>";
 			$out .= $field;

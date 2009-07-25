@@ -93,7 +93,7 @@ class SiteStats {
 		self::load();
 		return self::$row->ss_users;
 	}
-
+	
 	static function activeUsers() {
 		self::load();
 		return self::$row->ss_active_users;
@@ -111,7 +111,7 @@ class SiteStats {
 		wfDeprecated(__METHOD__);
 		return self::numberingroup('sysop');
 	}
-
+	
 	/**
 	 * Find the number of users in a given user group.
 	 * @param string $group Name of group
@@ -124,13 +124,13 @@ class SiteStats {
 			$hit = $wgMemc->get( $key );
 			if ( !$hit ) {
 				$dbr = wfGetDB( DB_SLAVE );
-				$hit = $dbr->selectField( 'user_groups', 'COUNT(*)',
-					array( 'ug_group' => $group ), __METHOD__ );
+				$hit = $dbr->selectField( 'user_groups', 'COUNT(*)', 
+													array( 'ug_group' => $group ), __METHOD__ );
 				$wgMemc->set( $key, $hit, 3600 );
 			}
 			self::$groupMemberCounts[$group] = $hit;
 		}
-		return self::$groupMemberCounts[$group];
+		return self::$groupMemberCounts[$group];		
 	}
 
 	static function jobs() {
@@ -222,7 +222,7 @@ class SiteStatsUpdate {
 
 		if ( $updates ) {
 			$site_stats = $dbw->tableName( 'site_stats' );
-			$sql = "UPDATE $site_stats SET $updates";
+			$sql = $dbw->limitResultForUpdate("UPDATE $site_stats SET $updates", 1);
 
 			# Need a separate transaction because this a global lock
 			$dbw->begin();
@@ -230,7 +230,7 @@ class SiteStatsUpdate {
 			$dbw->commit();
 		}
 	}
-
+	
 	public static function cacheUpdate( $dbw ) {
 		$dbr = wfGetDB( DB_SLAVE, array( 'SpecialStatistics', 'vslow') );
 		# Get non-bot users than did some recent action other than making accounts.
@@ -238,9 +238,9 @@ class SiteStatsUpdate {
 		$activeUsers = $dbr->selectField( 'recentchanges', 'COUNT( DISTINCT rc_user_text )',
 			array( 'rc_user != 0', 'rc_bot' => 0, "rc_log_type != 'newusers' OR rc_log_type IS NULL" ),
 			__METHOD__ );
-		$dbw->update( 'site_stats',
+		$dbw->update( 'site_stats', 
 			array( 'ss_active_users' => intval($activeUsers) ),
-			array( 'ss_row_id' => 1 ), __METHOD__
+			array( 'ss_row_id' => 1 ), __METHOD__, array( 'LIMIT' => 1 )
 		);
 	}
 }

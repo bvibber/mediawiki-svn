@@ -103,25 +103,21 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 				$item = array();
 				$result->setContent( $item, $titleObj->getText() );
 				if( isset( $prop['size'] ) ) {
-					$item['size'] = intval($row->cat_pages);
+					$item['size'] = $row->cat_pages;
 					$item['pages'] = $row->cat_pages - $row->cat_subcats - $row->cat_files;
-					$item['files'] = intval($row->cat_files);
-					$item['subcats'] = intval($row->cat_subcats);
+					$item['files'] = $row->cat_files;
+					$item['subcats'] = $row->cat_subcats;
 				}
 				if( isset( $prop['hidden'] ) && $row->cat_hidden )
 					$item['hidden'] = '';
-				$fit = $result->addValue(array('query', $this->getModuleName()), null, $item);
-				if(!$fit)
-				{
-					$this->setContinueEnumParameter('from', $this->keyToTitle($row->cat_title));
-					break;
-				}
+				$categories[] = $item;
 			}
 		}
 		$db->freeResult($res);
 
 		if (is_null($resultPageSet)) {
-			$result->setIndexedTagName_internal(array('query', $this->getModuleName()), 'c');
+			$result->setIndexedTagName($categories, 'c');
+			$result->addValue('query', $this->getModuleName(), $categories);
 		} else {
 			$resultPageSet->populateFromTitles($pages);
 		}

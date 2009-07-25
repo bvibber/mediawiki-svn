@@ -10,7 +10,7 @@
 
 $options = array( 'update', 'help' );
 require_once( 'commandLine.inc' );
-require_once( 'updateArticleCount.inc' );
+require_once( 'updateArticleCount.inc.php' );
 echo( "Update Article Count\n\n" );
 
 if( isset( $options['help'] ) && $options['help'] ) {

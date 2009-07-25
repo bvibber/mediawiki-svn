@@ -39,36 +39,6 @@ if (!defined('MEDIAWIKI')) {
 	public function __construct($query, $moduleName) {
 		parent :: __construct($query, $moduleName, 'us');
 	}
-	
-	/**
-	 * Get an array mapping token names to their handler functions.
-	 * The prototype for a token function is func($user)
-	 * it should return a token or false (permission denied)
-	 * @return array(tokenname => function)
-	 */
-	protected function getTokenFunctions() {
-		// Don't call the hooks twice
-		if(isset($this->tokenFunctions))
-			return $this->tokenFunctions;
-
-		// If we're in JSON callback mode, no tokens can be obtained
-		if(!is_null($this->getMain()->getRequest()->getVal('callback')))
-			return array();
-
-		$this->tokenFunctions = array(
-			'userrights' => array( 'ApiQueryUsers', 'getUserrightsToken' ),
-		);
-		wfRunHooks('APIQueryUsersTokens', array(&$this->tokenFunctions));
-		return $this->tokenFunctions;
-	}
-	
-	public static function getUserrightsToken($user)
-	{
-		global $wgUser;
-		// Since the permissions check for userrights is non-trivial,
-		// don't bother with it here
-		return $wgUser->editToken($user->getName());
-	}
 
 	public function execute() {
 		$params = $this->extractRequestParams();
@@ -81,112 +51,82 @@ if (!defined('MEDIAWIKI')) {
 			$this->prop = array();
 		}
 
-		$users = (array)$params['users'];
-		$goodNames = $done = array();
-		$result = $this->getResult();
+		if(is_array($params['users'])) {
+			$r = $this->getOtherUsersInfo($params['users']);
+			$result->setIndexedTagName($r, 'user');
+		}
+		$result->addValue("query", $this->getModuleName(), $r);
+	}
+
+	protected function getOtherUsersInfo($users) {
+		$goodNames = $retval = array();
 		// Canonicalize user names
 		foreach($users as $u) {
 			$n = User::getCanonicalName($u);
 			if($n === false || $n === '')
-			{
-				$vals = array('name' => $u, 'invalid' => '');
-				$fit = $result->addValue(array('query', $this->getModuleName()),
-						null, $vals);
-				if(!$fit)
-				{
-					$this->setContinueEnumParameter('users',
-							implode('|', array_diff($users, $done)));
-					$goodNames = array();
-					break;
-				}
-				$done[] = $u;
-			}
+				$retval[] = array('name' => $u, 'invalid' => '');
 			 else
 				$goodNames[] = $n;
 		}
-		if(count($goodNames))
-		{
-			$db = $this->getDb();
-			$this->addTables('user', 'u1');
-			$this->addFields('u1.*');
-			$this->addWhereFld('u1.user_name', $goodNames);
+		if(!count($goodNames))
+			return $retval;
 
-			if(isset($this->prop['groups'])) {
-				$this->addTables('user_groups');
-				$this->addJoinConds(array('user_groups' => array('LEFT JOIN', 'ug_user=u1.user_id')));
-				$this->addFields('ug_group');
-			}
-			if(isset($this->prop['blockinfo'])) {
-				$this->addTables('ipblocks');
-				$this->addTables('user', 'u2');
-				$u2 = $this->getAliasedName('user', 'u2');
-				$this->addJoinConds(array(
-					'ipblocks' => array('LEFT JOIN', 'ipb_user=u1.user_id'),
-					$u2 => array('LEFT JOIN', 'ipb_by=u2.user_id')));
-				$this->addFields(array('ipb_reason', 'u2.user_name AS blocker_name'));
-			}
+		$db = $this->getDB();
+		$this->addTables('user', 'u1');
+		$this->addFields('u1.*');
+		$this->addWhereFld('u1.user_name', $goodNames);
 
-			$data = array();
-			$res = $this->select(__METHOD__);
-			while(($r = $db->fetchObject($res))) {
-				$user = User::newFromRow($r);
-				$name = $user->getName();
-				$data[$name]['name'] = $name;
-				if(isset($this->prop['editcount']))
-					$data[$name]['editcount'] = intval($user->getEditCount());
-				if(isset($this->prop['registration']))
-					$data[$name]['registration'] = wfTimestampOrNull(TS_ISO_8601, $user->getRegistration());
-				if(isset($this->prop['groups']) && !is_null($r->ug_group))
-					// This row contains only one group, others will be added from other rows
+		if(isset($this->prop['groups'])) {
+			$this->addTables('user_groups');
+			$this->addJoinConds(array('user_groups' => array('LEFT JOIN', 'ug_user=u1.user_id')));
+			$this->addFields('ug_group');
+		}
+		if(isset($this->prop['blockinfo'])) {
+			$this->addTables('ipblocks');
+			$this->addTables('user', 'u2');
+			$u2 = $this->getAliasedName('user', 'u2');
+			$this->addJoinConds(array(
+				'ipblocks' => array('LEFT JOIN', 'ipb_user=u1.user_id'),
+				$u2 => array('LEFT JOIN', 'ipb_by=u2.user_id')));
+			$this->addFields(array('ipb_reason', 'u2.user_name blocker_name'));
+		}
+
+		$data = array();
+		$res = $this->select(__METHOD__);
+		while(($r = $db->fetchObject($res))) {
+			$user = User::newFromRow($r);
+			$name = $user->getName();
+			$data[$name]['name'] = $name;
+			if(isset($this->prop['editcount']))
+				// No proper member function in User class for this
+				$data[$name]['editcount'] = $r->user_editcount;
+			if(isset($this->prop['registration']))
+				// Nor for this one
+				$data[$name]['registration'] = wfTimestampOrNull(TS_ISO_8601, $r->user_registration);
+			if(isset($this->prop['groups']))
+				// This row contains only one group, others will be added from other rows
+				if(!is_null($r->ug_group))
 					$data[$name]['groups'][] = $r->ug_group;
-				if(isset($this->prop['blockinfo']) && !is_null($r->blocker_name)) {
+			if(isset($this->prop['blockinfo']))
+				if(!is_null($r->blocker_name)) {
 					$data[$name]['blockedby'] = $r->blocker_name;
 					$data[$name]['blockreason'] = $r->ipb_reason;
 				}
-				if(isset($this->prop['emailable']) && $user->canReceiveEmail())
-					$data[$name]['emailable'] = '';
-
-				if(isset($this->prop['gender'])) {
-					$gender = $user->getOption( 'gender' );
-					if ( strval( $gender ) === '' ) {
-						$gender = 'unknown';
-					}
-					$data[$name]['gender'] = $gender;
-				}
-
-				if(!is_null($params['token']))
-				{
-					$tokenFunctions = $this->getTokenFunctions();
-					foreach($params['token'] as $t)
-					{
-						$val = call_user_func($tokenFunctions[$t], $user);
-						if($val === false)
-							$this->setWarning("Action '$t' is not allowed for the current user");
-						else
-							$data[$name][$t . 'token'] = $val;
-					}
-				}
-			}
+			if(isset($this->prop['emailable']) && $user->canReceiveEmail())
+				$data[$name]['emailable'] = '';
 		}
+
 		// Second pass: add result data to $retval
 		foreach($goodNames as $u) {
 			if(!isset($data[$u]))
-				$data[$u] = array('name' => $u, 'missing' => '');
+				$retval[] = array('name' => $u, 'missing' => '');
 			else {
 				if(isset($this->prop['groups']) && isset($data[$u]['groups']))
 					$this->getResult()->setIndexedTagName($data[$u]['groups'], 'g');
+				$retval[] = $data[$u];
 			}
-			$fit = $result->addValue(array('query', $this->getModuleName()),
-					null, $data[$u]);
-			if(!$fit)
-			{
-				$this->setContinueEnumParameter('users',
-						implode('|', array_diff($users, $done)));
-				break;
-			}
-			$done[] = $u;
 		}
-		return $this->getResult()->setIndexedTagName_internal(array('query', $this->getModuleName()), 'user');
+		return $retval;
 	}
 
 	public function getAllowedParams() {
@@ -200,16 +140,11 @@ if (!defined('MEDIAWIKI')) {
 					'editcount',
 					'registration',
 					'emailable',
-					'gender',
 				)
 			),
 			'users' => array(
 				ApiBase :: PARAM_ISMULTI => true
-			),
-			'token' => array(
-				ApiBase :: PARAM_TYPE => array_keys($this->getTokenFunctions()),
-				ApiBase :: PARAM_ISMULTI => true
-			),
+			)
 		);
 	}
 
@@ -222,10 +157,8 @@ if (!defined('MEDIAWIKI')) {
 				'  editcount    - adds the user\'s edit count',
 				'  registration - adds the user\'s registration timestamp',
 				'  emailable    - tags if the user can and wants to receive e-mail through [[Special:Emailuser]]',
-				'  gender       - tags the gender of the user. Returns "male", "female", or "unknown"',
 			),
-			'users' => 'A list of users to obtain the same information for',
-			'token' => 'Which tokens to obtain for each user',
+			'users' => 'A list of users to obtain the same information for'
 		);
 	}
 
@@ -234,7 +167,7 @@ if (!defined('MEDIAWIKI')) {
 	}
 
 	protected function getExamples() {
-		return 'api.php?action=query&list=users&ususers=brion|TimStarling&usprop=groups|editcount|gender';
+		return 'api.php?action=query&list=users&ususers=brion|TimStarling&usprop=groups|editcount';
 	}
 
 	public function getVersion() {

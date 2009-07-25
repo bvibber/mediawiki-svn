@@ -134,11 +134,6 @@ class FileDependency extends CacheDependency {
 		$this->timestamp = $timestamp;
 	}
 
-	function __sleep() {
-		$this->loadDependencyValues();
-		return array( 'filename', 'timestamp' );
-	}
-
 	function loadDependencyValues() {
 		if ( is_null( $this->timestamp ) ) {
 			if ( !file_exists( $this->filename ) ) {

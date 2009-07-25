@@ -6,6 +6,9 @@
  */
 class SpecialPrefixindex extends SpecialAllpages {
 	// Inherit $maxPerPage
+
+	// Define other properties
+	protected $nsfromMsg = 'allpagesprefix';
 	
 	function __construct(){
 		parent::__construct( 'Prefixindex' );
@@ -23,7 +26,7 @@ class SpecialPrefixindex extends SpecialAllpages {
 
 		# GET values
 		$from = $wgRequest->getVal( 'from' );
-		$prefix = $wgRequest->getVal( 'prefix', '' );
+		$prefix = $wgRequest->getVal( 'prefix' );
 		$namespace = $wgRequest->getInt( 'namespace' );
 		$namespaces = $wgContLang->getNamespaces();
 
@@ -60,10 +63,10 @@ class SpecialPrefixindex extends SpecialAllpages {
 		$out .= Xml::openElement( 'table', array( 'id' => 'nsselect', 'class' => 'allpages' ) );
 		$out .= "<tr>
 				<td class='mw-label'>" .
-				Xml::label( wfMsg( 'allpagesprefix' ), 'nsfrom' ) .
+				Xml::label( wfMsg( 'allpagesfrom' ), 'nsfrom' ) .
 				"</td>
 				<td class='mw-input'>" .
-					Xml::input( 'prefix', 30, str_replace('_',' ',$from), array( 'id' => 'nsfrom' ) ) .
+					Xml::input( 'from', 30, str_replace('_',' ',$from), array( 'id' => 'nsfrom' ) ) .
 				"</td>
 			</tr>
 			<tr>
@@ -87,7 +90,7 @@ class SpecialPrefixindex extends SpecialAllpages {
 	 * @param string $from list all pages from this name (default FALSE)
 	 */
 	function showPrefixChunk( $namespace = NS_MAIN, $prefix, $from = null ) {
-		global $wgOut, $wgUser, $wgContLang, $wgLang;
+		global $wgOut, $wgUser, $wgContLang;
 
 		$sk = $wgUser->getSkin();
 
@@ -96,6 +99,7 @@ class SpecialPrefixindex extends SpecialAllpages {
 		$fromList = $this->getNamespaceKeyAndText($namespace, $from);
 		$prefixList = $this->getNamespaceKeyAndText($namespace, $prefix);
 		$namespaces = $wgContLang->getNamespaces();
+		$align = $wgContLang->isRtl() ? 'left' : 'right';
 
 		if ( !$prefixList || !$fromList ) {
 			$out = wfMsgWikiHtml( 'allpagesbadtitle' );
@@ -130,16 +134,13 @@ class SpecialPrefixindex extends SpecialAllpages {
 
 			$n = 0;
 			if( $res->numRows() > 0 ) {
-				$out = Xml::openElement( 'table', array( 'border' => '0', 'id' => 'mw-prefixindex-list-table' ) );
+				$out = '<table style="background: inherit;" border="0" width="100%">';
 	
 				while( ( $n < $this->maxPerPage ) && ( $s = $res->fetchObject() ) ) {
 					$t = Title::makeTitle( $s->page_namespace, $s->page_title );
 					if( $t ) {
 						$link = ($s->page_is_redirect ? '<div class="allpagesredirect">' : '' ) .
-							$sk->linkKnown(
-								$t,
-								htmlspecialchars( $t->getText() )
-							) .
+							$sk->makeKnownLinkObj( $t, htmlspecialchars( $t->getText() ), false, false ) .
 							($s->page_is_redirect ? '</div>' : '' );
 					} else {
 						$link = '[[' . htmlspecialchars( $s->page_title ) . ']]';
@@ -156,7 +157,7 @@ class SpecialPrefixindex extends SpecialAllpages {
 				if( ($n % 3) != 0 ) {
 					$out .= '</tr>';
 				}
-				$out .= Xml::closeElement( 'table' );
+				$out .= '</table>';
 			} else {
 				$out = '';
 			}
@@ -167,36 +168,20 @@ class SpecialPrefixindex extends SpecialAllpages {
 		} else {
 			$nsForm = $this->namespacePrefixForm( $namespace, $prefix );
 			$self = $this->getTitle();
-			$out2 = Xml::openElement( 'table', array( 'border' => '0', 'id' => 'mw-prefixindex-nav-table' ) )  .
-				'<tr>
-					<td>' .
-						$nsForm .
-					'</td>
-					<td id="mw-prefixindex-nav-form">' .
-						$sk->linkKnown( $self, wfMsgHtml( 'allpages' ) );
-
+			$out2 = '<table style="background: inherit;" width="100%" cellpadding="0" cellspacing="0" border="0">';
+			$out2 .= '<tr valign="top"><td>' . $nsForm;
+			$out2 .= '</td><td align="' . $align . '" style="font-size: smaller; margin-bottom: 1em;">' .
+					$sk->makeKnownLinkObj( $self,
+						wfMsg ( 'allpages' ) );
 			if( isset( $res ) && $res && ( $n == $this->maxPerPage ) && ( $s = $res->fetchObject() ) ) {
-				$query = array(
-					'from' => $s->page_title,
-					'prefix' => $prefix
-				);
-
-				if( $namespace ) {
-					$query['namespace'] = $namespace;
-				}
-
-				$out2 = $wgLang->pipeList( array(
-					$out2,
-					$sk->linkKnown(
-						$self,
-						wfMsgHtml( 'nextpage', str_replace( '_',' ', htmlspecialchars( $s->page_title ) ) ),
-						array(),
-						$query
-					)
-				) );
+				$namespaceparam = $namespace ? "&namespace=$namespace" : "";
+				$out2 .= " | " . $sk->makeKnownLinkObj(
+					$self,
+					wfMsgHtml( 'nextpage', htmlspecialchars( $s->page_title ) ),
+					"from=" . wfUrlEncode( $s->page_title ) .
+					"&prefix=" . wfUrlEncode( $prefix ) . $namespaceparam );
 			}
-			$out2 .= "</td></tr>" .
-				Xml::closeElement( 'table' );
+			$out2 .= "</td></tr></table><hr />";
 		}
 
 		$wgOut->addHTML( $out2 . $out );

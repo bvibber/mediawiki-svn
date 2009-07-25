@@ -50,7 +50,6 @@ function addWiki( $lang, $site, $dbName )
 	dbsource( "$IP/extensions/TitleKey/titlekey.sql", $dbw );
 	dbsource( "$IP/extensions/Oversight/hidden.sql", $dbw );
 	dbsource( "$IP/extensions/GlobalBlocking/localdb_patches/setup-global_block_whitelist.sql", $dbw );
-	dbsource( "$IP/extensions/AbuseFilter/abusefilter.tables.sql", $dbw );
 
 	$dbw->query( "INSERT INTO site_stats(ss_row_id) VALUES (1)" );
 
@@ -64,6 +63,7 @@ function addWiki( $lang, $site, $dbName )
 	}
 	if ( count( $stores ) ) {
 		require_once( 'ExternalStoreDB.php' );
+		print "Initialising external storage $store...\n";
 		global $wgDBuser, $wgDBpassword, $wgExternalServers;
 		foreach ( $stores as $storeURL ) {
 			$m = array();
@@ -72,23 +72,17 @@ function addWiki( $lang, $site, $dbName )
 			}
 			
 			$cluster = $m[1];
-			print "Initialising external storage $cluster...\n";
 			
 			# Hack
 			$wgExternalServers[$cluster][0]['user'] = $wgDBuser;
 			$wgExternalServers[$cluster][0]['password'] = $wgDBpassword;
-
+			
 			$store = new ExternalStoreDB;
-			$extdb = $store->getMaster( $cluster );
+			$extdb =& $store->getMaster( $cluster );
 			$extdb->query( "SET table_type=InnoDB" );
 			$extdb->query( "CREATE DATABASE $dbName" );
 			$extdb->selectDB( $dbName );
-
-			# Hack x2
-			$blobsTable = $store->getTable( $extdb );
-			$blobsFile = popen( "sed s/blobs\\\\\\>/$blobsTable/ $maintenance/storage/blobs.sql", 'r' );
-			$extdb->sourceStream( $blobsFile );
-			pclose( $blobsFile );
+			dbsource( "$maintenance/storage/blobs.sql", $extdb );
 			$extdb->immediateCommit();
 		}
 	}

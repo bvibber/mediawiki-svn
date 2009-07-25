@@ -37,7 +37,7 @@ usage: namespaceDupes.php [--fix] [--suffix=<text>] [--help]
     --prefix=<text> : Do an explicit check for the given title prefix
                       in place of the standard namespace list.
     --verbose       : Display output for checked namespaces without conflicts
-    --wiki=<wiki>   : enter the wiki database to edit
+
 ENDS;
 die;
 }
@@ -115,7 +115,6 @@ class NamespaceConflictChecker {
 	
 	private function getInterwikiList() {
 		$result = $this->db->select( 'interwiki', array( 'iw_prefix' ) );
-		$prefixes = array();
 		while( $row = $this->db->fetchObject( $result ) ) {
 			$prefixes[] = $row->iw_prefix;
 		}
@@ -225,19 +224,12 @@ class NamespaceConflictChecker {
 	function resolveConflict( $row, $resolvable, $suffix ) {
 		if( !$resolvable ) {
 			echo "...  *** old title {$row->title}\n";
-			while( true ) {
-				$row->title .= $suffix;
-				echo "...  *** new title {$row->title}\n";
-				$title = Title::makeTitleSafe( $row->namespace, $row->title );
-				if ( ! $title ) {
-					echo "... !!! invalid title\n";
-					return false;
-				}
-				if ( $id = $title->getArticleId() ) {
-					echo "...  *** page exists with ID $id ***\n";
-				} else {	
-					break;
-				}
+			$row->title .= $suffix;
+			echo "...  *** new title {$row->title}\n";
+			$title = Title::makeTitleSafe( $row->namespace, $row->title );
+			if ( ! $title ) {
+				echo "... !!! invalid title\n";
+				return false;
 			}
 			echo "...  *** using suffixed form [[" . $title->getPrefixedText() . "]] ***\n";
 		}
