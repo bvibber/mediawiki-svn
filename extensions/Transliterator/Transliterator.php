@@ -20,7 +20,7 @@
 $wgExtensionCredits['parserhook'][] = array(
     'name' => "Transliterator",
     'version' => "1.0",
-    'descriptionmsg' => "transliterator-description",
+    'descriptionmsg' => "transliterator-desc",
     'author' => 'Conrad Irwin',
     'url' => 'http://en.wiktionary.org/wiki/User:Conrad.Irwin/Transliterator.php'
 );
