@@ -51,17 +51,7 @@ class OptInHooks {
 		}
 		$link = SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query );
 		
-		// Inserts a link into personal tools
-		$addLinks = array(
-			'acaibeta' => array(
-				'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
-					wfMsg( 'optin-leave' ) :
-					wfMsg( 'optin-try' ),
-				'href' => $link,
-				'class' => 'no-text-transform'
-			)
-		);
-		
+		$addLinks = array();
 		// For opted-in users, add a feedback link
 		if ( SpecialOptIn::isOptedIn( $wgUser ) ) {
 			$query['opt'] = 'feedback';
@@ -73,6 +63,15 @@ class OptInHooks {
 			);
 		}
 		
+		// Inserts a link into personal tools
+		$addLinks['acaibeta'] = array(
+			'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
+				wfMsg( 'optin-leave' ) :
+				wfMsg( 'optin-try' ),
+			'href' => $link,
+			'class' => 'no-text-transform'
+		);
+			
 		// Add the links
 		$personal_urls = array_merge( $addLinks, $personal_urls ); 
 		return true;
