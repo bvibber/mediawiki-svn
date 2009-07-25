@@ -150,22 +150,37 @@
 			}
 
 			return this.each(function() {
-				// Put the cursor at the desired position
-				this.focus();
+				$(this).focus();
 				if ( this.selectionStart || this.selectionStart == '0' ) { // Mozilla
 					this.selectionStart = this.selectionEnd = pos;
+					$(this).scrollTop( getCaretPosition( this ) );
 				} else if ( document.selection && document.selection.createRange ) { // IE/Opera
-					var range = document.selection.createRange();
+					// IE automatically scrolls the section
+					// to the bottom of the page, except
+					// if it's already in view and the
+					// cursor position hasn't changed, in
+					// which case it does nothing. In that
+					// case we'll force it to act by moving
+					// one character back and forth
+					range = document.selection.createRange();
+					oldPos = $(this).bytePos();
+					goBack = false;
+					if ( oldPos == pos ) {
+						pos++;
+						goBack = true;
+					}
 					range.moveToElementText( this );
 					range.collapse();
-					//range.moveStart( 'character', pos );
 					range.move( 'character', pos );
-					//alert(range.text);
 					range.select();
+					this.scrollTop += range.offsetTop;
+					if ( goBack ) {
+						range.move( 'character', -1 );
+						range.select();
+					}
 				}
-				$(this).scrollTop( getCaretPosition( this ) );
 				$(this).trigger( 'scrollToPosition' );
 			});
 		}
-	});
+	});	
 })(jQuery);

@@ -13,7 +13,7 @@ class UsabilityInitiativeHooks {
 	private static $messages = array();
 	private static $styles = array();
 	private static $scripts = array(
-		array( 'src' => 'Resources/jquery.combined.js', 'version' => 1 ),
+		array( 'src' => 'Resources/jquery.combined.js', 'version' => 2 ),
 	);
 	private static $doOutput = false;
 
