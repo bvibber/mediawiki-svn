@@ -158,6 +158,10 @@ textarea {
 	margin-right: auto;
 }
 
+#p-search #searchform div div {
+	margin-top: .4em;
+}
+
 .portlet h5 {
 	padding: 0.1em 0 0.3em 1em;
 	margin: 0 0 0 0;
@@ -364,7 +368,7 @@ h1, h2 {
 	display: none;
 }
 
-.prefsectiontip {
+.htmlform-tip {
 	font-size: x-small;
 	padding: .2em 2em;
 	color: #666;
@@ -527,12 +531,6 @@ img.thumbborder {
 .hiddenStructure {
 	display: none;
 }
-
-#mw_content .plainlinks a {
-        background: none !important;
-        padding: 0 !important;
-}
-
 .mw-warning {
 	border: 1px solid #aaa;
 	background-color: #f9f9f9;
@@ -603,13 +601,8 @@ img.thumbborder {
 .catlinks {
 	border: solid 1px #bbbbbb;
 	background-color: #f0f0f0;
-	padding: 0.5em 0.5em 0.5em 0.5em;
+	padding: 0.1em 0.3em 0.1em 0.3em;
 	margin: 0 0 0 0;
-}
-
-.catlinks {
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
 }
 
 #mw_header h1,
@@ -640,19 +633,9 @@ img.thumbborder {
 	display: none;
 }
 
-.not-patrolled {
-	background-color: #ffa;
-}
-div.patrollink {
-	font-size: 75%;
-	text-align: right;
-}
+
 span.newpage, span.minor, span.bot {
 	font-weight: bold;
-}
-span.unpatrolled {
-	font-weight: bold;
-	color: red;
 }
 
 .sharedUploadNotice {
@@ -745,67 +728,8 @@ span.changedby {
 	text-indent: -2em;
 }
 
-/* Classes for EXIF data display */
-table.mw_metadata {
-	font-size: 0.8em;
-	margin-left: 0.5em;
-	margin-bottom: 0.5em;
-	width: 300px;
-}
-
-table.mw_metadata caption {
-	font-weight: bold;
-}
-
-table.mw_metadata th {
-	font-weight: normal;
-}
-
-table.mw_metadata td {
-	padding: 0.1em;
-}
-
-table.mw_metadata {
-	border: none;
-	border-collapse: collapse;
-}
-
-table.mw_metadata td, table.mw_metadata th {
-	text-align: center;
-	border: 1px solid #aaaaaa;
-	padding-left: 0.1em;
-	padding-right: 0.1em;
-}
-
-table.mw_metadata th {
-	background-color: #f9f9f9;
-}
-
-table.mw_metadata td {
-	background-color: #fcfcfc;
-}
-
 table.collapsed tr.collapsable {
 	display: none;
-}
-
-
-/* filetoc */
-ul#filetoc {
-	text-align: center;
-	border: 1px solid #aaaaaa;
-	background-color: #f9f9f9;
-	padding: 5px;
-	font-size: 95%;
-	margin-bottom: 0.5em;
-	margin-left: 0;
-	margin-right: 0;
-}
-
-#filetoc li {
-	display: inline;
-	list-style-type: none;
-	padding-right: 2em;
 }
 
 input#wpSummary {
@@ -844,32 +768,6 @@ p.revision_saved {
 	color: green;
 	font-weight:bold;
 }
-
-#mw_trackbacks {
-	border: solid 1px #bbbbff;
-	background-color: #eeeeff;
-	padding: 0.2em;
-}
-
-
-/* Allmessages table */
-
-#allmessagestable th {
-	background-color: #b2b2ff;
-}
-
-#allmessagestable tr.orig {
-	background-color: #ffe2e2;
-}
-
-#allmessagestable tr.new {
-	background-color: #e2ffe2;
-}
-
-#allmessagestable tr.def {
-	background-color: #f0f0ff;
-}
-
 
 /* noarticletext */
 div.noarticletext {
@@ -929,29 +827,6 @@ div.multipageimagenavbox hr {
 table.multipageimage td {
    text-align: center;
 }
-
-/** Special:Version */
-
-table#sv-ext, table#sv-hooks, table#sv-software {
-	margin: 1em;
-	padding:0em;
-}
-
-#sv-ext td, #sv-hooks td, #sv-software td,
-#sv-ext th, #sv-hooks th, #sv-software th {
-	border: 1px solid #A0A0A0;
-	padding: 0 0.15em 0 0.15em;
-}
-#sv-ext th, #sv-hooks th, #sv-software th {
-	background-color: #F0F0F0;
-	color: black;
-	padding: 0 0.15em 0 0.15em;
-}
-tr.sv-space{
-	height: 0.8em;
-	border:none;
-}
-tr.sv-space td { display: none; }
 
 /*
   Table pager (e.g. Special:Imagelist)

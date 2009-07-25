@@ -1,6 +1,9 @@
 <?php
 /** Southern Sotho (Sesotho)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -49,6 +52,9 @@ $messages = array(
 'mytalk'     => 'Leqephe la ka la moqoqo',
 'navigation' => 'Eya ho',
 
+# Cologne Blue skin
+'faq' => 'Dipotso-mehla',
+
 'returnto'       => 'Kgutlela ho $1.',
 'tagline'        => 'E tswa ho {{SITENAME}}',
 'search'         => 'Fuputsa',
@@ -63,7 +69,6 @@ $messages = array(
 'jumptosearch'   => 'phuputso',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'faq'                  => 'Dipotso-mehla',
 'mainpage'             => 'Leqephe la pele',
 'mainpage-description' => 'Leqephe la pele',
 'portal'               => 'Potjho e kopano',
@@ -99,7 +104,7 @@ $messages = array(
 'showdiff'     => 'Mpontshe hore ho tlo fetoha eng',
 'accmailtitle' => 'Lepetjo le rometswe.',
 'accmailtext'  => 'Lepetjo la "$1" le se le rometswe ho $2.',
-'note'         => '<strong>Ela hloko:</strong>',
+'note'         => "'''Ela hloko:'''",
 
 # Search results
 'powersearch' => 'Fuputsa',

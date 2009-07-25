@@ -37,9 +37,8 @@ class SearchPostgres extends SearchEngine {
 	 * Currently searches a page's current title (page.page_title) and
 	 * latest revision article text (pagecontent.old_text)
 	 *
-	 * @param string $term - Raw search term
+	 * @param $term String: raw search term
 	 * @return PostgresSearchResultSet
-	 * @access public
 	 */
 	function searchTitle( $term ) {
 		$q = $this->searchQuery( $term , 'titlevector', 'page_title' );
@@ -70,7 +69,7 @@ class SearchPostgres extends SearchEngine {
 	*/
 	function parseQuery( $term ) {
 
-		wfDebug( "parseQuery received: $term" );
+		wfDebug( "parseQuery received: $term \n" );
 
 		## No backslashes allowed
 		$term = preg_replace('/\\\/', '', $term);
@@ -122,7 +121,7 @@ class SearchPostgres extends SearchEngine {
 		## Quote the whole thing
 		$searchstring = $this->db->addQuotes($searchstring);
 
-		wfDebug( "parseQuery returned: $searchstring" );
+		wfDebug( "parseQuery returned: $searchstring \n" );
 
 		return $searchstring;
 
@@ -130,9 +129,8 @@ class SearchPostgres extends SearchEngine {
 
 	/**
 	 * Construct the full SQL query to do the search.
-	 * @param string $filteredTerm
-	 * @param string $fulltext
-	 * @private
+	 * @param $filteredTerm String
+	 * @param $fulltext String
 	 */
 	function searchQuery( $term, $fulltext, $colname ) {
 		global $wgDBversion;
@@ -194,7 +192,7 @@ class SearchPostgres extends SearchEngine {
 
 		$query .= $this->db->limitResult( '', $this->limit, $this->offset );
 
-		wfDebug( "searchQuery returned: $query" );
+		wfDebug( "searchQuery returned: $query \n" );
 
 		return $query;
 	}

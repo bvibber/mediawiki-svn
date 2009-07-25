@@ -1,6 +1,9 @@
 <?php
 /** Tok Pisin (Tok Pisin)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -78,13 +81,15 @@ $messages = array(
 'category-media-header' => 'Ol media (olsem piksa) insait long grup "$1"',
 'category-empty'        => "''Dispela grup i no gat wanpela pes o media (olsem piksa) insait long en nau.''",
 
-'newwindow'      => '(bai kamap long nupela windo)',
-'cancel'         => 'Toromwe senis',
+'newwindow'  => '(bai kamap long nupela windo)',
+'cancel'     => 'Toromwe senis',
+'mytalk'     => 'Toktok bilong mi',
+'navigation' => 'Ol bikpela pes',
+
+# Cologne Blue skin
 'qbfind'         => 'Painim',
 'qbedit'         => 'Senisim',
 'qbspecialpages' => 'Ol sipesol pes',
-'mytalk'         => 'Toktok bilong mi',
-'navigation'     => 'Ol bikpela pes',
 
 'help'             => 'Halivim mi',
 'search'           => 'Painim',
@@ -134,12 +139,12 @@ $messages = array(
 'showdiff'          => 'Soim ol senis',
 'summary-preview'   => 'Toksave bilong senis bai luk olsem:',
 'subject-preview'   => 'Nem bilong pes (o hap bilong pes) bai olsem:',
-'copyrightwarning'  => 'Toksave: olgeta senis yu wokim long long {{SITENAME}} bai stap ananit long tokorait $2 (lukim $1 long painimaut moa long dispela). Sapos yu no laikim narapela manmeri long senisim olgeta, o salim dispela i go long ol kainkain hap, noken raitim long hia.<br />
+'copyrightwarning'  => "Toksave: olgeta senis yu wokim long long {{SITENAME}} bai stap ananit long tokorait $2 (lukim $1 long painimaut moa long dispela). Sapos yu no laikim narapela manmeri long senisim olgeta, o salim dispela i go long ol kainkain hap, noken raitim long hia.<br />
 Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap we lo i tok olsem i orait long kisim (Tok Inglis: <i>public domain</i>).
-<strong>YU NOKEN RAITIM WANPELA SAMTING SAPOS YU NO WOKIM YU YET, O YU KISIM TOKORAIT LONG PUTIM LONG HIA!</strong>',
-'copyrightwarning2' => 'Toksave: olgeta senis yu wokim long long {{SITENAME}} bai inap senis o raus long han bilong ol narapela manmeri. Sapos yu no laikim narapela manmeri long senisim olgeta samting yu raitim, o salim dispela i go long ol kainkain hap, noken raitim long hia.<br />
+'''YU NOKEN RAITIM WANPELA SAMTING SAPOS YU NO WOKIM YU YET, O YU KISIM TOKORAIT LONG PUTIM LONG HIA!'''",
+'copyrightwarning2' => "Toksave: olgeta senis yu wokim long long {{SITENAME}} bai inap senis o raus long han bilong ol narapela manmeri. Sapos yu no laikim narapela manmeri long senisim olgeta samting yu raitim, o salim dispela i go long ol kainkain hap, noken raitim long hia.<br />
 Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap we lo i tok olsem i orait long kisim (Tok Inglis: <i>public domain</i>). Lukim $1 long painimaut moa long dispela.<br />
-<strong>YU NOKEN RAITIM WANPELA SAMTING IGAT COPYRIGHT LONG EN (NARAPELA MANMERI I RAITIM)!</strong>',
+'''YU NOKEN RAITIM WANPELA SAMTING IGAT COPYRIGHT LONG EN (NARAPELA MANMERI I RAITIM)!'''",
 'templatesused'     => 'Dispela pes i yusim ol templet:',
 
 # Preferences page
@@ -156,7 +161,9 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'rc_categories_any' => 'Olgeta',
 
 # Recent changes linked
-'recentchangeslinked' => 'Ol senis klostu',
+'recentchangeslinked'         => 'Ol senis klostu',
+'recentchangeslinked-feed'    => 'Ol senis klostu',
+'recentchangeslinked-toolbox' => 'Ol senis klostu',
 
 # Upload
 'upload' => 'Salim media fail',
@@ -221,6 +228,8 @@ Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis
 # Contributions
 'contributions' => 'Ol senis yusa i wokim',
 'mycontris'     => 'Ol senis mi wokim',
+
+'sp-contributions-talk' => 'Toktok',
 
 # What links here
 'whatlinkshere' => 'Ol link ikam long hia',

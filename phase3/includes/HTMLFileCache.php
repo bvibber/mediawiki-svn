@@ -14,6 +14,7 @@
  * - $wgCachePages
  * - $wgCacheEpoch
  * - $wgUseFileCache
+ * - $wgCacheDirectory
  * - $wgFileCacheDirectory
  * - $wgUseGzip
  *
@@ -30,7 +31,16 @@ class HTMLFileCache {
 
 	public function fileCacheName() {
 		if( !$this->mFileCache ) {
-			global $wgFileCacheDirectory, $wgRequest;
+			global $wgCacheDirectory, $wgFileCacheDirectory, $wgRequest;
+
+			if ( $wgFileCacheDirectory ) {
+				$dir = $wgFileCacheDirectory;
+			} elseif ( $wgCacheDirectory ) {
+				$dir = "$wgCacheDirectory/html";
+			} else {
+				throw new MWException( 'Please set $wgCacheDirectory in LocalSettings.php if you wish to use the HTML file cache' );
+			}
+
 			# Store raw pages (like CSS hits) elsewhere
 			$subdir = ($this->mType === 'raw') ? 'raw/' : '';
 			$key = $this->mTitle->getPrefixedDbkey();
@@ -128,15 +138,14 @@ class HTMLFileCache {
 	public function loadFromFileCache() {
 		global $wgOut, $wgMimeType, $wgOutputEncoding, $wgContLanguageCode;
 		wfDebug(" loadFromFileCache()\n");
-
 		$filename = $this->fileCacheName();
 		// Raw pages should handle cache control on their own,
 		// even when using file cache. This reduces hits from clients.
-		if( $this->mType !== 'raw' )
+		if( $this->mType !== 'raw' ) {
 			$wgOut->sendCacheControl();
-
-		header( "Content-type: $wgMimeType; charset={$wgOutputEncoding}" );
-		header( "Content-language: $wgContLanguageCode" );
+			header( "Content-Type: $wgMimeType; charset={$wgOutputEncoding}" );
+			header( "Content-Language: $wgContLanguageCode" );
+		}
 
 		if( $this->useGzip() ) {
 			if( wfClientAcceptsGzip() ) {
@@ -148,6 +157,7 @@ class HTMLFileCache {
 			}
 		}
 		readfile( $filename );
+		$wgOut->disable(); // tell $wgOut that output is taken care of
 	}
 
 	protected function checkCacheDirs() {
@@ -159,13 +169,12 @@ class HTMLFileCache {
 		wfMkdirParents( $mydir2 );
 	}
 
-	public function saveToFileCache( $origtext ) {
+	public function saveToFileCache( $text ) {
 		global $wgUseFileCache;
-		if( !$wgUseFileCache ) {
-			return $origtext; // return to output
+		if( !$wgUseFileCache || strlen( $text ) < 512 ) {
+			// Disabled or empty/broken output (OOM and PHP errors)
+			return $text;
 		}
-		$text = $origtext;
-		if( strcmp($text,'') == 0 ) return '';
 
 		wfDebug(" saveToFileCache()\n", false);
 

@@ -1,6 +1,9 @@
 <?php
 /** Buginese (ᨅᨔ ᨕᨘᨁᨗ)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -54,9 +57,16 @@ $messages = array(
 'category_header' => 'Leppa rilaleŋ kategori "$1"',
 'subcategories'   => 'Subkategori',
 
-'about'          => 'Atajangeng',
-'article'        => 'Lontara',
-'cancel'         => 'Rusa',
+'about'      => 'Atajangeng',
+'article'    => 'Lontara',
+'cancel'     => 'Rusa',
+'mypage'     => "Leppana iya'",
+'mytalk'     => 'Bicarana iyya',
+'anontalk'   => 'Bicarana IP édé',
+'navigation' => 'Navigasi',
+'and'        => '&#32;na',
+
+# Cologne Blue skin
 'qbfind'         => 'Assapparang',
 'qbbrowse'       => 'Berowoso',
 'qbedit'         => 'Padécéŋ',
@@ -64,11 +74,8 @@ $messages = array(
 'qbpageinfo'     => 'Konteks',
 'qbmyoptions'    => "Leppana iya'",
 'qbspecialpages' => 'Leppa spésiala',
-'mypage'         => "Leppana iya'",
-'mytalk'         => 'Bicarana iyya',
-'anontalk'       => 'Bicarana IP édé',
-'navigation'     => 'Navigasi',
-'and'            => '&#32;na',
+'faq'            => 'FAQ',
+'faqpage'        => 'Project:FAQ',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -123,8 +130,6 @@ $messages = array(
 'disclaimers'          => 'Diseklaima',
 'edithelp'             => 'Paŋinriŋ mapadécéŋ',
 'edithelppage'         => 'Help:Mapadécéŋ',
-'faq'                  => 'FAQ',
-'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:Lise',
 'mainpage'             => 'Leppa Indoë',
 'mainpage-description' => 'Leppa Indoë',
@@ -167,8 +172,6 @@ $messages = array(
 'virus-unknownscanner' => "Antivirus dé' riisseŋ:",
 
 # Login and logout pages
-'logouttitle'             => 'Log maessu papaké',
-'loginpagetitle'          => 'Log mattama papaké',
 'yourname'                => 'Aseŋ papaké:',
 'yourpassword'            => 'Pasewodo:',
 'login'                   => 'log attama',
@@ -182,10 +185,6 @@ $messages = array(
 'createaccount'           => 'Ebbu akun',
 'gotaccount'              => 'Purani eŋka akun? $1.',
 'gotaccountlink'          => 'Log attama',
-'youremail'               => 'E-mail:',
-'username'                => 'Aseŋ papaké:',
-'uid'                     => 'ID papaké:',
-'email'                   => 'E-mail',
 'loginerror'              => 'Éro log attama',
 'mailmypassword'          => 'E-mail pasewodo baru',
 
@@ -214,14 +213,13 @@ $messages = array(
 'previousrevision'    => '←Revisi riolo',
 'currentrevisionlink' => 'Revisi tannapa',
 'page_first'          => 'séuwani',
-'deletedrev'          => '[ripeddé]',
 'histfirst'           => 'Poŋ loa',
 'histlast'            => 'Poŋ nappa',
 'historysize'         => '($1 {{PLURAL:$1|bita|bita}})',
 'historyempty'        => '(kapa)',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 ri $2', # user at time
+'history-feed-item-nocomment' => '$1 ri $2',
 
 # Revision deletion
 'rev-deleted-comment'    => '(komentar ripeddé)',
@@ -265,15 +263,21 @@ $messages = array(
 'searchhelp-url'        => 'Help:Lise',
 'search-redirect'       => '(redirect $1)',
 
+# Quickbar
+'qbsettings-none' => 'Dégaga',
+
 # Preferences page
 'mypreferences'     => 'Bérékkeŋeŋna iyya',
 'prefsnologin'      => "Déppa ma'log attama'",
-'qbsettings-none'   => 'Dégaga',
 'prefs-watchlist'   => 'Watchlist',
 'prefs-misc'        => 'Misc',
 'saveprefs'         => 'Taro',
-'textboxsize'       => 'Mapadécéŋ',
+'prefs-editing'     => 'Mapadécéŋ',
 'searchresultshead' => 'Masappa',
+'youremail'         => 'E-mail:',
+'username'          => 'Aseŋ papaké:',
+'uid'               => 'ID papaké:',
+'email'             => 'E-mail',
 
 # Groups
 'group-sysop' => 'Puŋgawa',
@@ -301,7 +305,9 @@ $messages = array(
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked' => 'Pappakapinra terkait',
+'recentchangeslinked'         => 'Pappakapinra terkait',
+'recentchangeslinked-feed'    => 'Pappakapinra terkait',
+'recentchangeslinked-toolbox' => 'Pappakapinra terkait',
 
 # Upload
 'upload'    => 'Lureng berkas',
@@ -311,6 +317,7 @@ $messages = array(
 'listfiles_name' => 'Aseŋ',
 
 # File description page
+'file-anchor-link'    => 'Rapang',
 'filehist-user'       => 'Papaké',
 'filehist-dimensions' => 'Dimensi',
 'imagelinks'          => 'Liŋke',
@@ -383,6 +390,8 @@ Apak ida ronnak mappedde halamang édé ri daftar jagaan, klik \"Mangedda jaga\"
 
 # Namespace form on various pages
 'blanknamespace' => '(Utama)',
+
+'sp-contributions-talk' => 'Bicara',
 
 # What links here
 'whatlinkshere'          => 'Pranala ri halamang édé',
@@ -474,7 +483,7 @@ Eloko peddéï supaya weddiŋi mapalecé?',
 'specialpages'                 => 'Leppa spésiala',
 'specialpages-note'            => '----
 * Leppa spésiala normal
-* <span class="mw-specialpagerestricted">Leppa spésiala terbatas</span>',
+* <strong class="mw-specialpagerestricted">Leppa spésiala terbatas</strong>',
 'specialpages-group-other'     => 'Leppa spésiala laiŋë',
 'specialpages-group-login'     => 'Log attama / mendaftar',
 'specialpages-group-changes'   => 'Pinrana tanappaë sibawa logeë',

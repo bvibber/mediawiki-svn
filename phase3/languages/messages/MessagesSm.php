@@ -1,6 +1,9 @@
 <?php
 /** Samoan (Gagana Samoa)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -113,9 +116,6 @@ $messages = array(
 'nologinlink'       => 'Lesitala le ulufale',
 'createaccount'     => 'Lesitala le ulufale',
 'gotaccountlink'    => "Fa'aola",
-'youremail'         => "'Imeli:",
-'username'          => "Igoa o le tagata fa'aaoga:",
-'email'             => "'Imeli",
 
 # Edit pages
 'summary'      => "'Oto'otoga:",
@@ -132,6 +132,9 @@ $messages = array(
 # Preferences page
 'mypreferences'     => "Mea 'ou te fiafia i ai",
 'searchresultshead' => "Su'e",
+'youremail'         => "'Imeli:",
+'username'          => "Igoa o le tagata fa'aaoga:",
+'email'             => "'Imeli",
 
 # Groups
 'group-all' => "(mea 'uma)",
@@ -146,7 +149,6 @@ $messages = array(
 # Upload
 'upload'            => "Si'i mai le faila",
 'uploadbtn'         => "Si'i mai le faila",
-'uploadnologin'     => "Le'i fa'aolaina",
 'filedesc'          => "'Oto'otoga",
 'fileuploadsummary' => "'Oto'otoga:",
 'watchthisupload'   => 'Matau lenei itulau',
@@ -193,7 +195,6 @@ $messages = array(
 # Move page
 'move-page-legend' => "Si'i le itulau",
 'movearticle'      => "Si'i le itulau",
-'movenologin'      => "Le'i fa'aolaina",
 'newtitle'         => "'I le ulutala fou",
 'move-watch'       => 'Matau lenei itulau',
 'movepagebtn'      => "Si'i le itulau",

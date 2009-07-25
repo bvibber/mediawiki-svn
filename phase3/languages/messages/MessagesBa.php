@@ -1,6 +1,9 @@
 <?php
 /** Bashkir (Башҡорт)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -12,11 +15,9 @@ $fallback = 'ru';
 $namespaceNames = array(
 	NS_MEDIA            => 'Медиа',
 	NS_SPECIAL          => 'Ярҙамсы',
-	NS_MAIN             => '',
 	NS_TALK             => 'Фекер_алышыу',
 	NS_USER             => 'Ҡатнашыусы',
-	NS_USER_TALK        => 'Ҡатнашыусы_м-н_фекер_алышыу', 
-	#NS_PROJECT set by $wgMetaNamespace
+	NS_USER_TALK        => 'Ҡатнашыусы_м-н_фекер_алышыу',
 	NS_PROJECT_TALK     => '$1_б-са_фекер_алышыу',
 	NS_FILE             => 'Рәсем',
 	NS_FILE_TALK        => 'Рәсем_б-са_фекер_алышыу',
@@ -96,17 +97,19 @@ $messages = array(
 'nov'           => 'Ноябрь (Ҡырпағай)',
 'dec'           => 'Декабрь (Аҡъюлай)',
 
-'about'          => 'Тасуирлау',
-'article'        => 'Мәҡәлә',
-'newwindow'      => '(яңы биттә)',
-'cancel'         => 'Бөтөрөргә',
+'about'      => 'Тасуирлау',
+'article'    => 'Мәҡәлә',
+'newwindow'  => '(яңы биттә)',
+'cancel'     => 'Бөтөрөргә',
+'mypage'     => 'Шәхси бит',
+'mytalk'     => 'Минең менән фекер алышыу',
+'navigation' => 'Төп йүнәлештәр',
+'and'        => '&#32;һәм',
+
+# Cologne Blue skin
 'qbfind'         => 'Эҙләү',
 'qbmyoptions'    => 'Көйләү',
 'qbspecialpages' => 'Махсус биттәр',
-'mypage'         => 'Шәхси бит',
-'mytalk'         => 'Минең менән фекер алышыу',
-'navigation'     => 'Төп йүнәлештәр',
-'and'            => '&#32;һәм',
 
 'errorpagetitle'   => 'Хата',
 'returnto'         => '$1 битенә ҡайтыу.',
@@ -130,7 +133,7 @@ $messages = array(
 'talk'             => 'Фекер алышыу',
 'toolbox'          => 'Ярҙамсы йүнәлештәр',
 'otherlanguages'   => 'Башҡа телдәрҙә',
-'lastmodifiedat'   => 'Был биттең һуңғы тапҡыр үҙгәртелеү ваҡыты: $2, $1 .', # $1 date, $2 time
+'lastmodifiedat'   => 'Был биттең һуңғы тапҡыр үҙгәртелеү ваҡыты: $2, $1 .',
 'jumpto'           => 'Унда күсергә:',
 'jumptosearch'     => 'эҙләү',
 
@@ -166,7 +169,6 @@ $messages = array(
 'badtitle'        => 'Ярамаған исем',
 
 # Login and logout pages
-'loginpagetitle'          => 'Танышыу йәки теркәлеү',
 'yourname'                => 'Ҡатнашыусы исеме',
 'yourpassword'            => 'Һеҙҙең пароль',
 'yourpasswordagain'       => 'Парольде ҡабаттан яҙыу',
@@ -183,12 +185,6 @@ $messages = array(
 'gotaccount'              => 'Әгәр Һеҙ теркәлеү үткән булһағыҙ? $1.',
 'gotaccountlink'          => 'Үҙегеҙ менән таныштырығыҙ',
 'createaccountmail'       => 'эл. почта буйынса',
-'youremail'               => 'Электрон почта *',
-'yourrealname'            => 'Һеҙҙең ысын исемегеҙ (*)',
-'yourlanguage'            => 'Тышҡы күренештә ҡулланылған тел:',
-'yourvariant'             => 'Тел төрө',
-'yournick'                => 'Һеҙҙең уйҙырма исемегеҙ/ҡушаматығыҙ (имза өсөн):',
-'prefs-help-email'        => '* Электрон почта (күрһәтмәһәң дә була) башҡа ҡатнашыусылар менән туры бәйләнешкә инергә мөмкинселек бирә.',
 'loginsuccesstitle'       => 'Танышыу уңышлы үтте',
 'loginsuccess'            => 'Хәҙер һеҙ $1 исеме менән эшләйһегеҙ.',
 'wrongpassword'           => 'Һеҙ ҡулланған пароль ҡабул ителмәй. Яңынан яҙып ҡарағыҙ.',
@@ -202,7 +198,7 @@ $messages = array(
 'preview'        => 'Ҡарап сығыу',
 'showpreview'    => 'Ҡарап сығырға',
 'showdiff'       => 'Индерелгән үҙгәрештәр',
-'previewnote'    => '<strong>Ҡарап сығыу өлгөһө, әлегә үҙгәрештәр яҙҙырылмаған!</strong>',
+'previewnote'    => "'''Ҡарап сығыу өлгөһө, әлегә үҙгәрештәр яҙҙырылмаған!'''",
 'editing'        => 'Мөхәрирләү  $1',
 'editingsection' => 'Мөхәрирләү  $1 (секция)',
 'editingcomment' => 'Мөхәрирләү $1 (комментарий)',
@@ -210,10 +206,16 @@ $messages = array(
 'yourdiff'       => 'Айырмалыҡтар',
 
 # Preferences page
-'preferences' => 'Көйләүҙәр',
+'preferences'      => 'Көйләүҙәр',
+'youremail'        => 'Электрон почта *',
+'yourrealname'     => 'Һеҙҙең ысын исемегеҙ (*)',
+'yourlanguage'     => 'Тышҡы күренештә ҡулланылған тел:',
+'yourvariant'      => 'Тел төрө',
+'yournick'         => 'Һеҙҙең уйҙырма исемегеҙ/ҡушаматығыҙ (имза өсөн):',
+'prefs-help-email' => '* Электрон почта (күрһәтмәһәң дә була) башҡа ҡатнашыусылар менән туры бәйләнешкә инергә мөмкинселек бирә.',
 
 # User rights
-'editinguser' => "Мөхәрирләү  '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'editinguser' => "Мөхәрирләү  '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Groups
 'group-all' => '(бөтә)',
@@ -223,7 +225,9 @@ $messages = array(
 'recentchangestext' => '{{grammar:genitive|{{SITENAME}}}}. биттәрендә индерелгән һуңғы үҙгәртеүҙәр исемлеге',
 
 # Recent changes linked
-'recentchangeslinked' => 'Бәйле үҙгәртеүҙәр',
+'recentchangeslinked'         => 'Бәйле үҙгәртеүҙәр',
+'recentchangeslinked-feed'    => 'Бәйле үҙгәртеүҙәр',
+'recentchangeslinked-toolbox' => 'Бәйле үҙгәртеүҙәр',
 
 # Special:ListFiles
 'listfiles_user' => 'Ҡатнашыусы',
@@ -258,7 +262,8 @@ $messages = array(
 'allpagessubmit'    => 'Үтәргә',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
+'deletedcontributions'       => 'Ҡулланыусыларҙың юйылған өлөшө',
+'deletedcontributions-title' => 'Ҡулланыусыларҙың юйылған өлөшө',
 
 # E-mail user
 'emailuser'    => 'Ҡатнашыусыға хат',
@@ -288,6 +293,8 @@ $messages = array(
 # Contributions
 'contributions' => 'Ҡатнашыусы өлөшө',
 'mycontris'     => 'ҡылған эштәр',
+
+'sp-contributions-deleted' => 'Ҡулланыусыларҙың юйылған өлөшө',
 
 # What links here
 'whatlinkshere' => 'Бында һылтанмалар',

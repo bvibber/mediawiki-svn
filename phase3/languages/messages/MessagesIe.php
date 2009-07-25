@@ -1,16 +1,23 @@
 <?php
 /** Interlingue (Interlingue)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
  * @author Jmb
  * @author Malafaya
  * @author Remember the dot
+ * @author Valodnieks
  * @author לערי ריינהארט
  */
 
 $messages = array(
+'underline-always' => 'Sempre',
+'underline-never'  => 'Nequande',
+
 # Dates
 'sunday'        => 'soledí',
 'monday'        => 'lunedí',
@@ -70,19 +77,21 @@ $messages = array(
 
 'mainpagetext' => "<big>'''Software del wiki installat con successe.'''</big>",
 
-'about'          => 'Apropó',
-'article'        => 'Articul',
-'newwindow'      => '(aperte un nov fenestre)',
-'cancel'         => 'Anullar',
+'about'         => 'Apropó',
+'article'       => 'Articul',
+'newwindow'     => '(aperte un nov fenestre)',
+'cancel'        => 'Anullar',
+'moredotdotdot' => 'Plu mult...',
+'mytalk'        => 'Mi discussion',
+'anontalk'      => 'Discussion por ti ci IP',
+'and'           => '&#32;e',
+
+# Cologne Blue skin
 'qbfind'         => 'Serchar',
 'qbedit'         => 'Modificar',
 'qbpageoptions'  => 'Págine de optiones',
 'qbpageinfo'     => 'Págine de information',
 'qbspecialpages' => 'Special págines',
-'moredotdotdot'  => 'Plu mult...',
-'mytalk'         => 'Mi discussion',
-'anontalk'       => 'Discussion por ti ci IP',
-'and'            => '&#32;e',
 
 'errorpagetitle'   => 'Errore',
 'returnto'         => 'Retornar a $1.',
@@ -156,10 +165,8 @@ $messages = array(
 'viewsource' => 'Vider fonte',
 
 # Login and logout pages
-'logouttitle'                => 'Fine de session',
 'logouttext'                 => 'Vu ha terminat vor session.
 Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session denov quam li sam usator o quam un diferent usator.',
-'loginpagetitle'             => 'Registrar se/Intrar',
 'yourname'                   => 'Vor nómine usatori:',
 'yourpassword'               => 'Vor passa-parol:',
 'yourpasswordagain'          => 'Tippa denov vor passa-parol',
@@ -174,7 +181,6 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'createaccount'              => 'Crear un nov conto',
 'gotaccountlink'             => 'Intrar',
 'badretype'                  => 'Li passa-paroles queles vu tippat ne es identic.',
-'youremail'                  => 'Vor ret-adresse:',
 'loginerror'                 => 'Erra in initiation del session',
 'nocookieslogin'             => '{{SITENAME}} utilisa cookies por far intrar usatores. Vu nu ne permisse cookies. Ples permisser les e provar denov.',
 'loginsuccesstitle'          => 'Apertion de session successosi',
@@ -203,7 +209,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'editing'          => 'Modification de $1',
 'editingsection'   => 'modification de $1 (section)',
 'editingcomment'   => 'modification de $1 (comenta)',
-'copyrightwarning' => 'Omni contributiones a {{SITENAME}} es considerat quam publicat sub li termines del $2 (ples vider $1 por plu mult detallies). Si vu ne vole que vor ovres mey esser modificat e distribuet secun arbitrie, ples ne inviar les. Adplu, ples contribuer solmen vor propri ovres o ovres ex un fonte quel es líber de jures. <strong>NE UTILISA OVRES SUB JURE EDITORIAL SIN DEFINITIV AUTORISATION!</strong>',
+'copyrightwarning' => "Omni contributiones a {{SITENAME}} es considerat quam publicat sub li termines del $2 (ples vider $1 por plu mult detallies). Si vu ne vole que vor ovres mey esser modificat e distribuet secun arbitrie, ples ne inviar les. Adplu, ples contribuer solmen vor propri ovres o ovres ex un fonte quel es líber de jures. '''NE UTILISA OVRES SUB JURE EDITORIAL SIN DEFINITIV AUTORISATION!'''",
 
 # Diffs
 'lineno' => 'Linea $1:',
@@ -212,13 +218,16 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'viewprevnext'   => 'Vider ($1) ($2) ($3)',
 'searchhelp-url' => 'Help:Auxilie',
 
+# Quickbar
+'qbsettings' => 'Personalisation del barre de utensiles',
+
 # Preferences page
 'preferences'    => 'Preferenties',
 'mypreferences'  => 'Mi preferenties',
 'prefsnologin'   => 'Vu ne ha intrat',
-'qbsettings'     => 'Personalisation del barre de utensiles',
 'changepassword' => 'Modificar passa-parol',
 'saveprefs'      => 'Conservar preferenties',
+'youremail'      => 'Vor ret-adresse:',
 
 # Groups
 'group-user' => 'Usatores',
@@ -242,7 +251,9 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'minoreditletter'   => 'm',
 
 # Recent changes linked
-'recentchangeslinked' => 'Relatet modificationes',
+'recentchangeslinked'         => 'Relatet modificationes',
+'recentchangeslinked-feed'    => 'Relatet modificationes',
+'recentchangeslinked-toolbox' => 'Relatet modificationes',
 
 # Upload
 'upload'    => 'Cargar file',
@@ -318,8 +329,11 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 # Contributions
 'mycontris' => 'Mi contributiones',
 
+'sp-contributions-talk' => 'Discussion',
+
 # What links here
-'whatlinkshere' => 'Ligat págines',
+'whatlinkshere'      => 'Ligat págines',
+'whatlinkshere-page' => 'Págine:',
 
 # Block/unblock
 'ipblocklist'  => 'Blocat adresses e usatores',
@@ -340,7 +354,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'allmessages' => 'Liste del missages del sistema',
 
 # Tooltip help for the actions
-'tooltip-pt-mytalk'      => 'Mi discussion',
+'tooltip-pt-mytalk'      => 'Vor discussion',
 'tooltip-pt-preferences' => 'Mi preferenties',
 'tooltip-ca-delete'      => 'Deleter ti págine',
 'tooltip-ca-move'        => 'Moer ti págine',
@@ -356,7 +370,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'monthsall'     => 'omni',
 
 # Special:Version
-'version' => 'Version', # Not used as normal message but as header for the special page itself
+'version' => 'Version',
 
 # Special:SpecialPages
 'specialpages' => 'Special págines',

@@ -5,11 +5,13 @@
  *
  * To use this:
  *
- * Set $wgUploadDirectory to a non-public directory (not web accessible)
- * Set $wgUploadPath to point to this file
+ * - Set $wgUploadDirectory to a non-public directory (not web accessible)
+ * - Set $wgUploadPath to point to this file
  *
  * Your server needs to support PATH_INFO; CGI-based configurations
  * usually don't.
+ *
+ * @file
  */
  
 define( 'MW_NO_OUTPUT_COMPRESSION', 1 );
@@ -51,6 +53,10 @@ wfDebugLog( 'img_auth', "\$name is {$name}" );
 $title = Title::makeTitleSafe( NS_FILE, $name );
 if( !$title instanceof Title ) {
 	wfDebugLog( 'img_auth', "Unable to construct a valid Title from `{$name}`" );
+	wfForbidden();
+}
+if( !$title->userCanRead() ) {
+	wfDebugLog( 'img_auth', "User does not have access to read `{$name}`" );
 	wfForbidden();
 }
 $title = $title->getPrefixedText();

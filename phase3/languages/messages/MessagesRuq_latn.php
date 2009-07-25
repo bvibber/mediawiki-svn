@@ -1,6 +1,9 @@
 <?php
 /** Megleno-Romanian (Latin) (Vlăheşte (Latin))
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -170,8 +173,8 @@ $messages = array(
 'newarticle'             => '(Nova)',
 'editing'                => 'o $1 editaere',
 'editingsection'         => 'Editaere $1 (sekcion)',
-'copyrightwarning'       => '<!-- Gol deocamdată. Vertismentul se flă en MediaWiki:Summary -->
-Te rog notari la din kontribuţi al {{SITENAME}} sunt konsideraere relesavat supra $2 (suah $1 din detăs). Açteu nesav te se teksti sunt editaere denomerci det redistributaere din vent, hatae ici.<br /> Tu este nostre promisaere bonti us tu skrirste ce se, nega kopiaere din publik domen nega similari resorsua. <strong>NE SUBMITE KOPILEGRU SKRIE SAS PERMIŢION!</strong>',
+'copyrightwarning'       => "<!-- Gol deocamdată. Vertismentul se flă en MediaWiki:Summary -->
+Te rog notari la din kontribuţi al {{SITENAME}} sunt konsideraere relesavat supra $2 (suah $1 din detăs). Açteu nesav te se teksti sunt editaere denomerci det redistributaere din vent, hatae ici.<br /> Tu este nostre promisaere bonti us tu skrirste ce se, nega kopiaere din publik domen nega similari resorsua. '''NE SUBMITE KOPILEGRU SKRIE SAS PERMIŢION!'''",
 'template-protected'     => '(ažatmat)',
 'template-semiprotected' => '(semi-ažatmat)',
 
@@ -216,12 +219,15 @@ $3',
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked' => 'Modifikări korelate',
+'recentchangeslinked'         => 'Modifikări korelate',
+'recentchangeslinked-feed'    => 'Modifikări korelate',
+'recentchangeslinked-toolbox' => 'Modifikări korelate',
 
 # Upload
 'upload' => 'trimiţe fişirul',
 
 # File description page
+'file-anchor-link'    => 'Fişirul',
 'filehist'            => 'Historia fişirulu',
 'filehist-current'    => 'kurentu',
 'filehist-datetime'   => 'Data/Temp',
@@ -275,6 +281,8 @@ $3',
 'mycontris'     => 'Mes kontribuţi',
 'contribsub2'   => 'Pentru $1 ($2)',
 'uctop'         => '(susverf)',
+
+'sp-contributions-talk' => 'Diskuţu',
 
 # What links here
 'whatlinkshere'       => 'Legǎtul a ce pažu',

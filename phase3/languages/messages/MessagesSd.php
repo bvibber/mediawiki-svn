@@ -1,6 +1,9 @@
 <?php
 /** Sindhi (سنڌي)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -100,6 +103,59 @@ $specialPageAliases = array(
 	'Invalidateemail'           => array( 'ناقابلڪار برقٽپال' ),
 );
 
+$magicWords = array(
+	'redirect'              => array( '0', '#چوريو', '#REDIRECT' ),
+	'localmonth'            => array( '1', 'مقاميمهينو', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonthname'        => array( '1', 'مقاميمهينونالو', 'LOCALMONTHNAME' ),
+	'localday'              => array( '1', 'مقاميڏينهن', 'LOCALDAY' ),
+	'localday2'             => array( '1', 'مقاميڏينهن2', 'LOCALDAY2' ),
+	'localdayname'          => array( '1', 'مقاميڏينهننالو', 'LOCALDAYNAME' ),
+	'localyear'             => array( '1', 'مقاميسال', 'LOCALYEAR' ),
+	'localtime'             => array( '1', 'مقاميوقت', 'LOCALTIME' ),
+	'localhour'             => array( '1', 'مقاميڪلاڪ', 'LOCALHOUR' ),
+	'numberofpages'         => array( '1', 'صفحنجوتعداد', 'NUMBEROFPAGES' ),
+	'numberofarticles'      => array( '1', 'مضموننجوتعداد', 'NUMBEROFARTICLES' ),
+	'numberoffiles'         => array( '1', 'فائيلنجوتعداد', 'NUMBEROFFILES' ),
+	'numberofusers'         => array( '1', 'يوزرسجوتعداد', 'NUMBEROFUSERS' ),
+	'numberofedits'         => array( '1', 'ترميمنجوتعداد', 'NUMBEROFEDITS' ),
+	'pagename'              => array( '1', 'صفحيجوعنوان', 'PAGENAME' ),
+	'namespace'             => array( '1', 'نانئپولار', 'NAMESPACE' ),
+	'talkspace'             => array( '1', 'بحثپولار', 'TALKSPACE' ),
+	'subjectspace'          => array( '1', 'مضمونپولار', 'SUBJECTSPACE', 'ARTICLESPACE' ),
+	'fullpagename'          => array( '1', 'صحفيجوپورونالو', 'FULLPAGENAME' ),
+	'msg'                   => array( '0', 'نياپو:', 'MSG:' ),
+	'img_right'             => array( '1', 'ساڄو', 'right' ),
+	'img_left'              => array( '1', 'کاٻو', 'left' ),
+	'img_none'              => array( '1', 'ڪجهنه', 'none' ),
+	'img_width'             => array( '1', '$1 عڪسلون', '$1px' ),
+	'img_center'            => array( '1', 'مرڪز', 'center', 'centre' ),
+	'img_top'               => array( '1', 'سِرُ', 'top' ),
+	'img_middle'            => array( '1', 'وچ', 'middle' ),
+	'img_bottom'            => array( '1', 'تَرُ', 'bottom' ),
+	'sitename'              => array( '1', 'سرزميننالو', 'SITENAME' ),
+	'ns'                    => array( '0', 'نپ', 'NS:' ),
+	'localurl'              => array( '0', 'مقامييوآريل', 'LOCALURL:' ),
+	'grammar'               => array( '0', 'وياڪرڻ', 'GRAMMAR:' ),
+	'currentweek'           => array( '1', 'هلندڙهفتو', 'CURRENTWEEK' ),
+	'currentdow'            => array( '1', 'اڄوڪوڏينهن', 'CURRENTDOW' ),
+	'localweek'             => array( '1', 'مقاميهفتو', 'LOCALWEEK' ),
+	'localdow'              => array( '1', 'مقاميڏينهن', 'LOCALDOW' ),
+	'plural'                => array( '0', 'جمع', 'PLURAL:' ),
+	'fullurl'               => array( '0', 'مڪمليوآريل', 'FULLURL:' ),
+	'currenttimestamp'      => array( '1', 'هلندڙوقتمهر', 'CURRENTTIMESTAMP' ),
+	'localtimestamp'        => array( '1', 'مقاميوقتمهر', 'LOCALTIMESTAMP' ),
+	'directionmark'         => array( '1', 'طرفنشان', 'DIRECTIONMARK', 'DIRMARK' ),
+	'language'              => array( '0', '#ٻولي:', '#LANGUAGE:' ),
+	'contentlanguage'       => array( '1', 'موادٻولي', 'CONTENTLANGUAGE', 'CONTENTLANG' ),
+	'pagesinnamespace'      => array( '1', 'نپ۾صفحا', 'PAGESINNAMESPACE:', 'PAGESINNS:' ),
+	'numberofadmins'        => array( '1', 'منتظمينجوتعداد', 'NUMBEROFADMINS' ),
+	'special'               => array( '0', 'خاص', 'special' ),
+	'filepath'              => array( '0', 'فائيلڏس', 'FILEPATH:' ),
+	'hiddencat'             => array( '1', '__ لڪل زمرو __', '__HIDDENCAT__' ),
+	'pagesincategory'       => array( '1', 'زمريجاصفحا', 'PAGESINCATEGORY', 'PAGESINCAT' ),
+	'pagesize'              => array( '1', 'صفحيجيماپ', 'PAGESIZE' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-showtoolbar'         => 'سنوارپ اوزار دٻي ڏيکاريو (جاوا اسڪرپٽ)',
@@ -175,23 +231,27 @@ $messages = array(
 'subcategories'            => 'ذيلي زمرا',
 'category-media-header'    => ' "$1" زمري اندر ذريعات',
 'category-empty'           => "''في الوقت هن زمري ۾ ڪي به صفحا يا ذريعات شامل ناهن.''",
-'hidden-category-category' => 'لڪل زمرا', # Name of the category where hidden categories will be listed
+'hidden-category-category' => 'لڪل زمرا',
 'listingcontinuesabbrev'   => 'جاري..',
 
-'about'          => 'بابت',
-'article'        => 'مسوَدو',
-'newwindow'      => '(نئين کڙڪيءَ ۾ کلندو)',
-'cancel'         => 'رد',
+'about'         => 'بابت',
+'article'       => 'مسوَدو',
+'newwindow'     => '(نئين کڙڪيءَ ۾ کلندو)',
+'cancel'        => 'رد',
+'moredotdotdot' => 'اڃا...',
+'mypage'        => 'منهنجو صفحو',
+'mytalk'        => 'مون سان ڳالهه',
+'and'           => '&#32;۽',
+
+# Cologne Blue skin
 'qbfind'         => 'ڳوليو',
 'qbbrowse'       => 'جھانگيو',
 'qbedit'         => 'سنواريو',
 'qbpageoptions'  => 'هيءُ صفحو',
 'qbmyoptions'    => 'منهنجا صفحا',
 'qbspecialpages' => 'خاص صفحا',
-'moredotdotdot'  => 'اڃا...',
-'mypage'         => 'منهنجو صفحو',
-'mytalk'         => 'مون سان ڳالهه',
-'and'            => '&#32;۽',
+'faq'            => 'ڪپوس',
+'faqpage'        => 'Project:ڪپوس',
 
 'errorpagetitle'    => 'چُڪَ',
 'returnto'          => '$1 ڏانهن وَرو.',
@@ -239,7 +299,7 @@ $messages = array(
 'otherlanguages'    => 'ٻين ٻولين ۾',
 'redirectedfrom'    => '($1 کان چوريل)',
 'redirectpagesub'   => 'چوريل صفحو',
-'lastmodifiedat'    => 'هيءُ صفحو آخري ڀيرو $2، $1ع تي ترميميو ويو هو.', # $1 date, $2 time
+'lastmodifiedat'    => 'هيءُ صفحو آخري ڀيرو $2، $1ع تي ترميميو ويو هو.',
 'viewcount'         => 'هيءُ صفحو {{PLURAL:$1|دفعو|$1 دفعا}} ڏسجي چڪو آهي.',
 'protectedpage'     => 'تحفظيل صفحو',
 'jumptosearch'      => 'ڳولا',
@@ -256,8 +316,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:عام غيرجوابدارينامو',
 'edithelp'             => 'مدد براءِ ترميم',
 'edithelppage'         => 'Help:سنوارڻ',
-'faq'                  => 'ڪپوس',
-'faqpage'              => 'Project:ڪپوس',
 'helppage'             => 'Help:فهرست',
 'mainpage'             => 'مُک صفحو',
 'mainpage-description' => 'مُک صفحو',
@@ -303,7 +361,6 @@ $messages = array(
 # General errors
 'error'               => 'چُڪَ',
 'databaseerror'       => 'اعدادخاني ۾ چڪ',
-'nodb'                => 'اعدادخانو $1 چونڊجي نه سگھيو',
 'readonly'            => 'اعدادخانو بنديل',
 'missingarticle-diff' => '(تفاوت: $1، $2)',
 'internalerror'       => 'اندروني خرابي',
@@ -321,7 +378,6 @@ $messages = array(
 'ns-specialprotected' => 'خاص صفحا سنواري نٿا سگھجن.',
 
 # Login and logout pages
-'logouttitle'                => 'يوزر لاگ آئوٽ',
 'yourname'                   => 'يُوزرنانءُ:',
 'yourpassword'               => 'ڳجھو لفظ:',
 'remembermypassword'         => 'هن ڳڻپيوڪر تي مون کي ياد رکو',
@@ -337,11 +393,6 @@ $messages = array(
 'gotaccount'                 => 'ڇا اڳي ئي کاتو رکو ٿا؟ $1.',
 'gotaccountlink'             => 'لاگ اِن',
 'createaccountmail'          => 'بذريعه برق ٽپال',
-'yourrealname'               => 'اصل نالو:',
-'badsiglength'               => 'اها صحيح تمام وڏي آهي.
-$1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
-'prefs-help-realname'        => 'اصل نالو اختياري آهي.
-جيڪڏهن توهان اصل نالو ڄاڻائڻ جو فيصلو ٿا ڪريو، ته اهو توهان کي مڃتا ڏيڻ لاءِ ڪم آندو ويندو.',
 'loginsuccesstitle'          => 'لاگ اِن ڪامياب',
 'loginsuccess'               => "'''هاڻي توهان {{SITENAME}} تي بطور \"\$1\" لاگ اِن ٿيل آهيو.'''",
 'nosuchuser'                 => '"$1" نالي سان ڪو به يوزر نه آهي. هِجي چڪاسيو، يا نئون کاتو کوليو.',
@@ -387,20 +438,20 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'hr_tip'          => 'افقي لڪير (غيرضروري استعمال کان پاسو ڪندا)',
 
 # Edit pages
-'summary'                => 'تَتُ:',
-'subject'                => 'موضوع/سُرخي:',
-'minoredit'              => 'هيءَ هڪ معمولي ترميم آهي',
-'watchthis'              => 'هيءُ صفحو سانڍيو',
-'savearticle'            => 'صفحو سانڍيو',
-'preview'                => 'پيش نگاهه',
-'showpreview'            => 'پيش نگاهه',
-'showdiff'               => 'تبديليون ڏيکاريو',
-'anoneditwarning'        => "'''خبردار:''' توهان لاگ اِن ٿيل ناهيو.
+'summary'                    => 'تَتُ:',
+'subject'                    => 'موضوع/سُرخي:',
+'minoredit'                  => 'هيءَ هڪ معمولي ترميم آهي',
+'watchthis'                  => 'هيءُ صفحو سانڍيو',
+'savearticle'                => 'صفحو سانڍيو',
+'preview'                    => 'پيش نگاهه',
+'showpreview'                => 'پيش نگاهه',
+'showdiff'                   => 'تبديليون ڏيکاريو',
+'anoneditwarning'            => "'''خبردار:''' توهان لاگ اِن ٿيل ناهيو.
 هن صفحي جي سوانح ۾ توهان جو آءِ پي پتو درج ڪيو ويندو.",
-'missingcommenttext'     => 'براءِ مهرباني هيٺ پنهنجا تاثرات درج ڪندا.',
-'summary-preview'        => 'تت تي پيش نگاهه:',
-'blockedtitle'           => 'يُوزر بندشيل آهي.',
-'blockedtext'            => "<big>'''توهان جي يوزرنانءُ يا آءِ پي کي بندشيو ويو آهي.'''</big>
+'missingcommenttext'         => 'براءِ مهرباني هيٺ پنهنجا تاثرات درج ڪندا.',
+'summary-preview'            => 'تت تي پيش نگاهه:',
+'blockedtitle'               => 'يُوزر بندشيل آهي.',
+'blockedtext'                => "<big>'''توهان جي يوزرنانءُ يا آءِ پي کي بندشيو ويو آهي.'''</big>
 
 بندش $1 هنئي. جڏهن ته ڄاڻايل سبب ''$2'' آهي.
 
@@ -410,24 +461,24 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 * بندش جو هدف: $7
 
 اهڙي روڪ تي بحث ڪرڻ لاءِ توهان $1 يا ڪنهن ٻي [[{{MediaWiki:Grouppage-sysop}}|منتظم]] سان رابطو ڪري سگھو ٿا. جيڪڏهن توهان جو درست [[Special:ترجيحات|کاتو ترجيحات]] ۾ درست برق ٽپال پتو درج ٿيل نه آهي ته توهان 'هن يوزر کي برق ٽپال ڪريو' وارو فيچر نه ٿا استعمال ڪري سگھو. توهان جو هاڻوڪو آءِ پي پتو $3 آهي، ۽ بندش سڃاڻپ $5 آهي. مهرباني ڪري ڪنهن به پڇا ڳاڇا يا لهوچڙ  لاءِ انهن مان ڪنهن هڪ يا ٻنهي جو حوالو ڏيندا.",
-'blockednoreason'        => 'سبب اڻڄاڻايل',
-'accmailtitle'           => 'ڳجھو لفظ اماڻجي چڪو.',
-'newarticle'             => '(نئون)',
-'newarticletext'         => "توهان اهڙي صفحي جو ڳنڍڻو وٺي هتي پهتا آهيو، جيڪو اڃا وجود نه ٿو رکي. اهڙو صفحو جوڙڻ لاءِ هيٺين باڪس ۾ ٽائيپ ڪرڻ شروع ڪريو (وڌيڪ ڄاڻڻ لاءِ [[{{MediaWiki:Helppage}}|امدادي صفحو]] ڏسندا). جي توهان هتي غلطيءَ ۾ اچي ويا آهيو ته رڳو پنهنجي جهانگُوءَ جو '''back''' بٽڻ ڪلڪ ڪندا.",
-'previewnote'            => '<strong>هيءَ محظ پيش نگاهه آهي، ترميمون اڃا سانڍجون ناهن!</strong>',
-'editing'                => 'زير ترميم $1',
-'editingsection'         => 'زير ترميم $1 (سيڪشن)',
-'copyrightwarning'       => 'ياد رکندا ته {{SITENAME}} لاءِ سموريون ڀاڱيداريون $2 تحت پڌريون ڪجن ٿيون (تفصيلن لاءِ $1 ڏسندا). اوهان جي تحرير کي {{SITENAME}} جي قائدن تحت ترميمي سگهجي ٿو. جيڪڏهن اوهان نه ٿا چاهيو ته اوهان جي لکڻين کي بي رحميءَ سان ترميميو وڃي يا ورهائي عام ڪيو وڃي ته پوءِ پنهنجي لکڻي هتي جمع نه ڪرايو. پنهنجو مواد هتي جمع ڪرڻ جو مطلب هوندو ته توهان کي جمع ڪرايل مواد جي مفت فراهمي ۽ کُليل تبديليءَ تي ڪو به اعتراز ناهي.<br />
+'blockednoreason'            => 'سبب اڻڄاڻايل',
+'accmailtitle'               => 'ڳجھو لفظ اماڻجي چڪو.',
+'newarticle'                 => '(نئون)',
+'newarticletext'             => "توهان اهڙي صفحي جو ڳنڍڻو وٺي هتي پهتا آهيو، جيڪو اڃا وجود نه ٿو رکي. اهڙو صفحو جوڙڻ لاءِ هيٺين باڪس ۾ ٽائيپ ڪرڻ شروع ڪريو (وڌيڪ ڄاڻڻ لاءِ [[{{MediaWiki:Helppage}}|امدادي صفحو]] ڏسندا). جي توهان هتي غلطيءَ ۾ اچي ويا آهيو ته رڳو پنهنجي جهانگُوءَ جو '''back''' بٽڻ ڪلڪ ڪندا.",
+'previewnote'                => "'''هيءَ محظ پيش نگاهه آهي، ترميمون اڃا سانڍجون ناهن!'''",
+'editing'                    => 'زير ترميم $1',
+'editingsection'             => 'زير ترميم $1 (سيڪشن)',
+'copyrightwarning'           => "ياد رکندا ته {{SITENAME}} لاءِ سموريون ڀاڱيداريون $2 تحت پڌريون ڪجن ٿيون (تفصيلن لاءِ $1 ڏسندا). اوهان جي تحرير کي {{SITENAME}} جي قائدن تحت ترميمي سگهجي ٿو. جيڪڏهن اوهان نه ٿا چاهيو ته اوهان جي لکڻين کي بي رحميءَ سان ترميميو وڃي يا ورهائي عام ڪيو وڃي ته پوءِ پنهنجي لکڻي هتي جمع نه ڪرايو. پنهنجو مواد هتي جمع ڪرڻ جو مطلب هوندو ته توهان کي جمع ڪرايل مواد جي مفت فراهمي ۽ کُليل تبديليءَ تي ڪو به اعتراز ناهي.<br />
 توهان اهڙي پڪ ڏيڻ جا پابند پڻ آهيو ته توهان جو جمع ڪرايل مواد توهان جو پنهنجو لکيل آهي يا وري توهان ڪنهن مفت وسيلي تان ڪاپي ڪيو آهي.
-</strong>تحفظيل حق ۽ واسطا رکندڙ مواد واسطيدار مالڪ کان اڳواٽ اجازت وٺڻ کان سواءِ هتي جمع نه ڪريو.<strong>',
-'longpagewarning'        => '<strong>خبردار: هيءُ صفحو $1 ڪلوٻاٽڻيون وڏو آهي؛ 32 ڪلوٻاٽڻين کان وڏا صفحا سنواريندي ڪن جھانگوئن سان مسئلا ٿين ٿا. مهرباني ڪري هن صفحي کي ننڍن سيڪشنز ۾ ٽوڙڻ تي ويچاريندا.</strong>',
-'templatesused'          => 'هن صفحي تي استعمال ٿيندڙ سانچا:',
-'templatesusedpreview'   => 'هن پيش نگاهه ۾ استعمال ٿيل سانچا:',
-'template-protected'     => '(تحفظيل)',
-'template-semiprotected' => '(نيم تحفظيل)',
-'nocreatetext'           => '{{SITENAME}} نوان صفحا سرجڻ جي روڪَ ڪئي آهي.
+'''تحفظيل حق ۽ واسطا رکندڙ مواد واسطيدار مالڪ کان اڳواٽ اجازت وٺڻ کان سواءِ هتي جمع نه ڪريو.'''",
+'longpagewarning'            => "'''خبردار: هيءُ صفحو $1 ڪلوٻاٽڻيون وڏو آهي؛ 32 ڪلوٻاٽڻين کان وڏا صفحا سنواريندي ڪن جھانگوئن سان مسئلا ٿين ٿا. مهرباني ڪري هن صفحي کي ننڍن سيڪشنز ۾ ٽوڙڻ تي ويچاريندا.'''",
+'templatesused'              => 'هن صفحي تي استعمال ٿيندڙ سانچا:',
+'templatesusedpreview'       => 'هن پيش نگاهه ۾ استعمال ٿيل سانچا:',
+'template-protected'         => '(تحفظيل)',
+'template-semiprotected'     => '(نيم تحفظيل)',
+'nocreatetext'               => '{{SITENAME}} نوان صفحا سرجڻ جي روڪَ ڪئي آهي.
 توهان اڳي ئي موجود صفحن کي سنواري سگھو ٿا، يا [[Special:UserLogin|لاگ اِن ٿي يا نئون کاتو کولي سگھو ٿا]].',
-'recreate-deleted-warn'  => "'''خبردار: توهان اهڙو صفحو نئين سر سرجي رهيا آهيو جيڪو اڳي ڊاٺو ويو آهي.'''
+'recreate-moveddeleted-warn' => "'''خبردار: توهان اهڙو صفحو نئين سر سرجي رهيا آهيو جيڪو اڳي ڊاٺو ويو آهي.'''
 
 بهتر ٿيندو ته توهان سوچي وٺو ته ڇا ان صفحي کي سنوارڻ بهتر ٿيندو.
 توهآن جي سهوليت خاطر هتي ان صفحي جو ڊاٺ لاگ ميسر ڪجي ٿو:",
@@ -436,7 +487,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'viewpagelogs'        => 'هن صفحي جا لاگ ڏسو',
 'currentrev'          => 'هاڻوڪو مسودو',
 'revisionasof'        => '$1 وارو پرت',
-'revision-info'       => '$1 تي $2 جي ترميم بعد مسودو', # Additionally available: $3: revision id
+'revision-info'       => '$1 تي $2 جي ترميم بعد مسودو',
 'previousrevision'    => '←اڃا پراڻو پرت',
 'nextrevision'        => 'اڃا نئون پرت→',
 'currentrevisionlink' => 'هاڻوڪو پرت',
@@ -449,7 +500,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'historyempty'        => '(خالي)',
 
 # Revision feed
-'history-feed-item-nocomment' => '$2 تي $1', # user at time
+'history-feed-item-nocomment' => '$2 تي $1',
 
 # Revision deletion
 'pagehist' => 'صفحي جي سوانح',
@@ -465,21 +516,26 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 # Search results
 'noexactmatch'      => "'''\"\$1\" جي عنوان سان ڪو به صفحو ناهي.'''
 توهان [[:\$1|اهو صفحو سرجيو]].",
-'prevn'             => 'پويان $1',
-'nextn'             => 'اڳيان $1',
+'prevn'             => 'پويان {{PLURAL:$1|$1}}',
+'nextn'             => 'اڳيان {{PLURAL:$1|$1}}',
 'viewprevnext'      => 'ڏسو ($1) ($2) ($3)',
 'searchhelp-url'    => 'Help:فهرست',
 'powersearch'       => 'نفيس ڳولا',
 'powersearch-redir' => 'چورڻن جي فهرست ڏيکاريو',
 
 # Preferences page
-'preferences'    => 'ترجيحات',
-'mypreferences'  => 'منهنجون ترجيحات',
-'changepassword' => 'ڳجھو لفظ تبديل ڪريو',
-'skin-preview'   => 'پيش نگاهه',
-'datedefault'    => 'بلا ترجيحا',
-'datetime'       => 'تاريخ ۽ وقت',
-'allowemail'     => 'ٻين يُوزرس کان ايندڙ برق ٽپال بحال ڪريو',
+'preferences'         => 'ترجيحات',
+'mypreferences'       => 'منهنجون ترجيحات',
+'changepassword'      => 'ڳجھو لفظ تبديل ڪريو',
+'skin-preview'        => 'پيش نگاهه',
+'datedefault'         => 'بلا ترجيحا',
+'prefs-datetime'      => 'تاريخ ۽ وقت',
+'allowemail'          => 'ٻين يُوزرس کان ايندڙ برق ٽپال بحال ڪريو',
+'yourrealname'        => 'اصل نالو:',
+'badsiglength'        => 'اها صحيح تمام وڏي آهي.
+$1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
+'prefs-help-realname' => 'اصل نالو اختياري آهي.
+جيڪڏهن توهان اصل نالو ڄاڻائڻ جو فيصلو ٿا ڪريو، ته اهو توهان کي مڃتا ڏيڻ لاءِ ڪم آندو ويندو.',
 
 # User rights
 'userrights-reason' => 'تبديليءَ جو سبب:',
@@ -520,6 +576,8 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'لاڳاپيل تبديليون',
+'recentchangeslinked-feed'     => 'لاڳاپيل تبديليون',
+'recentchangeslinked-toolbox'  => 'لاڳاپيل تبديليون',
 'recentchangeslinked-title'    => '"$1" سان لاڳاپيل تبديليون',
 'recentchangeslinked-noresult' => 'ڄاڻايل مدي دوران ڳنڍيل صفحن ۾ ڪا به تبديلي ناهي ٿي.',
 
@@ -533,22 +591,20 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'listfiles' => 'فائيل فهرست',
 
 # File description page
-'filehist'                       => 'فائيل جي سوانح',
-'filehist-help'                  => 'ڪنهن به تاريخ/وقت تي ڪلڪ ڪري ڏسندا ته تڏڻي اهو فائيل ڪيئن هو.',
-'filehist-current'               => 'هاڻوڪو',
-'filehist-datetime'              => 'تاريخ/وقت',
-'filehist-user'                  => 'يُوزر',
-'filehist-dimensions'            => 'ماپَ',
-'filehist-filesize'              => 'فائيل سائيز',
-'filehist-comment'               => 'تاثرات',
-'imagelinks'                     => 'ڳنڍڻا',
-'linkstoimage'                   => 'هن فائيل سان {{PLURAL:$1|هيٺيون صفحو ڳنڍيل آهي |$1 هيٺيان صفحا ڳنڍيل آهن}}:',
-'nolinkstoimage'                 => 'هن فائيل سان ڪو به صفحو ڳنڍيل ناهي.',
-'sharedupload'                   => 'هيءَ هڪ شراڪتي چاڙهه آهي، تنهنڪري ان کي ٻيون رٿائون به استعمال ڪري سگھن ٿيون.',
-'shareduploadduplicate-linktext' => 'ڪو ٻيو فائيل',
-'noimage'                        => 'ان نالي سان ڪو به فائيل وجود نٿو رکي، جي چاهيو ته $1.',
-'noimage-linktext'               => 'اهو چاڙهيو',
-'uploadnewversion-linktext'      => 'هن فائيل جو نئون پرت چاڙهيو',
+'file-anchor-link'          => 'فائيل',
+'filehist'                  => 'فائيل جي سوانح',
+'filehist-help'             => 'ڪنهن به تاريخ/وقت تي ڪلڪ ڪري ڏسندا ته تڏڻي اهو فائيل ڪيئن هو.',
+'filehist-current'          => 'هاڻوڪو',
+'filehist-datetime'         => 'تاريخ/وقت',
+'filehist-user'             => 'يُوزر',
+'filehist-dimensions'       => 'ماپَ',
+'filehist-filesize'         => 'فائيل سائيز',
+'filehist-comment'          => 'تاثرات',
+'imagelinks'                => 'ڳنڍڻا',
+'linkstoimage'              => 'هن فائيل سان {{PLURAL:$1|هيٺيون صفحو ڳنڍيل آهي |$1 هيٺيان صفحا ڳنڍيل آهن}}:',
+'nolinkstoimage'            => 'هن فائيل سان ڪو به صفحو ڳنڍيل ناهي.',
+'sharedupload'              => 'هيءَ هڪ شراڪتي چاڙهه آهي، تنهنڪري ان کي ٻيون رٿائون به استعمال ڪري سگھن ٿيون.',
+'uploadnewversion-linktext' => 'هن فائيل جو نئون پرت چاڙهيو',
 
 # MIME search
 'mimesearch' => 'مائيم ڳولا',
@@ -573,8 +629,8 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'doubleredirects' => 'ٻٽا چورڻا',
 
 'brokenredirects'        => 'ٽٽل چورڻا',
-'brokenredirects-edit'   => '(سنواريو)',
-'brokenredirects-delete' => '(ڊاهيو)',
+'brokenredirects-edit'   => 'سنواريو',
+'brokenredirects-delete' => 'ڊاهيو',
 
 'withoutinterwiki' => 'ڪنهن به ٻي ٻوليءَ سان نه ڳنڍيل صفحا',
 
@@ -685,8 +741,8 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'protect_expiry_invalid'      => 'انجامي مدو ناقابلڪار آهي.',
 'protect_expiry_old'          => 'انجامي مدو ماضيءَ ۾ آهي.',
 'protect-unchain'             => 'چورڻ جي روڪ ختم ڪريو',
-'protect-text'                => 'توهان <strong><nowiki>$1</nowiki></strong> صفحي جي تحفظاتي سطح ڏسي ۽ بدلائي سگھو ٿا.',
-'protect-locked-access'       => 'توهان جو کاتو صفحن جي تحفظاتي سطح تبديلي ڪرڻ جا اختيار نه ٿو رکي. هيٺ صفحي جون وقوعات (سيٽڱس) پيش ڪجن ٿيون <strong>$1</strong>:',
+'protect-text'                => "توهان '''<nowiki>$1</nowiki>''' صفحي جي تحفظاتي سطح ڏسي ۽ بدلائي سگھو ٿا.",
+'protect-locked-access'       => "توهان جو کاتو صفحن جي تحفظاتي سطح تبديلي ڪرڻ جا اختيار نه ٿو رکي. هيٺ صفحي جون وقوعات (سيٽڱس) پيش ڪجن ٿيون '''$1''':",
 'protect-cascadeon'           => 'هيءُ صفحو في الوقت تحفظيل آهي، ڇاڪاڻ ته اهو هيٺين {{PLURAL:$1|صفحي|صفحن}} جو حصو آهي، جنهن تي تحفظ در تحفظ لاڳو ٿيل آهي.',
 'protect-fallback'            => '"$1" جي اجازت گھرجي',
 'protect-level-autoconfirmed' => 'غيرکاتيدار يُوزرس کي بندشيو',
@@ -694,7 +750,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'protect-summary-cascade'     => 'تحفظ در تحفظ',
 'protect-cascade'             => 'هن صفحي ۾ شامل صفحن کي تحفظيو (تحفظ در تحفظ)',
 'protect-cantedit'            => 'توهان هن صفحي جي تحفظاتي سطح نٿا بدلائي سگھو، ڇاڪاڻ ته توهان ان کي سنوارڻ جي اجازت نٿا رکو.',
-'protect-expiry-options'      => '2 ڪلاڪ:2 hours،1 ڏينهن:1 day،3 ڏينهن:3 days،1 هفتو:1 week،2 هفتا:2 weeks،1 مهينو:1 month،3 مهينا:3 months،6 مهينا:6 months،1 سال:1 year،لامحدود:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '2 ڪلاڪ:2 hours،1 ڏينهن:1 day،3 ڏينهن:3 days،1 هفتو:1 week،2 هفتا:2 weeks،1 مهينو:1 month،3 مهينا:3 months،6 مهينا:6 months،1 سال:1 year،لامحدود:infinite',
 'restriction-type'            => 'اجازتنامو:',
 'restriction-level'           => 'روڪ سطح:',
 'pagesize'                    => '(ٻاٽڻيون)',
@@ -718,6 +774,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 'sp-contributions-newbies-sub' => 'نون کاتن لاءِ',
 'sp-contributions-blocklog'    => 'بنسش لاگ',
+'sp-contributions-talk'        => 'بحث',
 
 # What links here
 'whatlinkshere'       => 'هتان ڇا ڳنڍيل آهي',
@@ -732,7 +789,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 # Block/unblock
 'blockip'                  => 'يُوزر کي روڪيو',
-'ipboptions'               => '2 ڪلاڪ:2 hours،1 ڏينهن:1 day،3 ڏينهن:3 days،1 هفتو:1 week،2 هفتا:2 weeks،1 مهينو:1 month،3 مهينا:3 months،6 مهينا:6 months،1 سال:1 year،لامحدود:infinite', # display1:time1,display2:time2,...
+'ipboptions'               => '2 ڪلاڪ:2 hours،1 ڏينهن:1 day،3 ڏينهن:3 days،1 هفتو:1 week،2 هفتا:2 weeks،1 مهينو:1 month،3 مهينا:3 months،6 مهينا:6 months،1 سال:1 year،لامحدود:infinite',
 'badipaddress'             => 'ناقابلڪار آءِ پي پتو',
 'ipblocklist'              => 'بندشيل يوزرنانءُ ۽ آءِ پي پتا',
 'infiniteblock'            => 'لامحدود',
@@ -764,7 +821,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'move-watch'              => 'هيءُ صفحو ٽيٽيو',
 'movepagebtn'             => 'صفحو چوريو',
 'pagemovedsub'            => 'چورڻ جو عمل ڪامياب ٿيو',
-'movepage-moved'          => '<big>\'\'\'"$1" کي چوري "$2" تي رکيو ويو آهي\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => '<big>\'\'\'"$1" کي چوري "$2" تي رکيو ويو آهي\'\'\'</big>',
 'articleexists'           => 'ان نالي سان صفحو اڳي ئي وجود رکي ٿو، يا ته توهان جو ڏنل نالو ناقابلڪار آهي.',
 'talkexists'              => "
 '''موادي صفحو پاڻ ته ڪاميابيءَ سان چُري ويو، پر لاڳاپيل مباحثي صفحو چُري نه سگھيو ڇاڪاڻ ته نئين عنوان تي اڳي ئي هڪ مباحثي صفحو موجود آهي. براءِ مهرباني انهن ٻنهي هٿ سان ضمائيندا.",
@@ -781,11 +838,9 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'export' => 'صفحا برآمديو',
 
 # Namespace 8 related
-'allmessages'         => 'سرشتائي نياپا',
-'allmessagesname'     => 'نالو',
-'allmessagescurrent'  => 'موجوده تحرير',
-'allmessagesfilter'   => 'نياپي نانءُ ڇاڻي:',
-'allmessagesmodified' => 'صرف ترميم شدھ ڏيکاريو',
+'allmessages'        => 'سرشتائي نياپا',
+'allmessagesname'    => 'نالو',
+'allmessagescurrent' => 'موجوده تحرير',
 
 # Thumbnails
 'thumbnail-more' => 'وڏو ڪريو',
@@ -877,7 +932,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 'exif-unknowndate' => 'نامعلوم تاريخ',
 
-'exif-orientation-3' => '180° موڙيل', # 0th row: bottom; 0th column: right
+'exif-orientation-3' => '180° موڙيل',
 
 'exif-componentsconfiguration-0' => 'وجود نه ٿو رکي',
 
@@ -900,7 +955,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'exif-gpsmeasuremode-2' => '2-رخي ماپ',
 'exif-gpsmeasuremode-3' => '3-رخي ماپ',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'ڪلوميٽر في ڪلاڪ',
 'exif-gpsspeed-m' => 'ميل في ڪلاڪ',
 'exif-gpsspeed-n' => 'ڳنڍيون',
@@ -928,7 +983,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'watchlisttools-raw'  => 'ڪچي ٽيٽ فهرست سنواريو',
 
 # Special:Version
-'version' => 'ورزن', # Not used as normal message but as header for the special page itself
+'version' => 'ورزن',
 
 # Special:SpecialPages
 'specialpages'             => 'خاص صفحا',

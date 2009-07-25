@@ -9,7 +9,7 @@
  */
 class FileCache {
 	var $repoGroup;
-	var $cache = array(), $notFound = array();
+	var $cache = array(), $oldCache = array(), $notFound = array();
 
 	protected static $instance;
 
@@ -69,8 +69,8 @@ class FileCache {
 	 */
 	function clearFiles( $remove ) {
 		wfDebug( "FileCache clearing data for ".count( $remove )." files\n" );
-		$this->cache = array_diff_keys( $this->cache, $remove );
-		$this->notFound = array_diff_keys( $this->notFound, $remove );
+		$this->cache = array_diff_key( $this->cache, $remove );
+		$this->notFound = array_diff_key( $this->notFound, $remove );
 	}
 
 	/**
@@ -80,17 +80,17 @@ class FileCache {
 	 */
 	function markNotFound( $dbkeys ) {
 		wfDebug( "FileCache marking ".count( $dbkeys )." files as not found\n" );
-		$this->notFound += array_fill_keys( $dbkeys, true );
+		$this->notFound += array_fill_key( $dbkeys, true );
 	}
 
 
 	/**
 	 * Search the cache for a file.
 	 * @param mixed $title Title object or string
+	 * @param string or false $time, old version time
 	 * @return File object or false if it is not found
-	 * @todo Implement searching for old file versions(?)
 	 */
-	function findFile( $title ) {
+	function findFile( $title, $time = false ) {
 		if( !( $title instanceof Title ) ) {
 			$title = Title::makeTitleSafe( NS_FILE, $title );
 		}
@@ -99,20 +99,37 @@ class FileCache {
 		}
 
 		$dbkey = $title->getDBkey();
+		# Is there a current version cached?
 		if( array_key_exists( $dbkey, $this->cache ) ) {
-			wfDebug( "FileCache HIT for $dbkey\n" );
-			return $this->cache[$dbkey];
+			if( !$time || $this->cache[$dbkey]->getTimestamp() === $time ) {
+				wfDebug( "FileCache HIT for $dbkey\n" );
+				return $this->cache[$dbkey];
+			}
 		}
+		# Is there no current version? Then assume no old versions too.
 		if( array_key_exists( $dbkey, $this->notFound ) ) {
 			wfDebug( "FileCache negative HIT for $dbkey\n" );
 			return false;
 		}
+		# Is this old version cached?
+		if( $time && array_key_exists( $dbkey, $this->oldCache ) &&
+			array_key_exists( $time, $this->oldCache[$dbkey] ) )
+		{
+			wfDebug( "FileCache HIT for $dbkey on $time\n" );
+			return $this->oldCache[$dbkey][$time];
+		}
 
 		// Not in cache, fall back to a direct query
-		$file = $this->repoGroup->findFile( $title );
+		$file = $this->repoGroup->findFile( $title, $time );
 		if( $file ) {
 			wfDebug( "FileCache MISS for $dbkey\n" );
-			$this->cache[$dbkey] = $file;
+			if( !$file->isOld() ) {
+				$this->cache[$dbkey] = $file; // cache the current version
+			}
+			if( !array_key_exists( $dbkey, $this->oldCache ) ) {
+				$this->oldCache[$dbkey] = array();
+			}
+			$this->oldCache[$dbkey][$file->getTimestamp()] = $file; // cache this version
 		} else {
 			wfDebug( "FileCache negative MISS for $dbkey\n" );
 			$this->notFound[$dbkey] = true;

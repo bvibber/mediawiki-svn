@@ -1,6 +1,9 @@
 <?php
 /** Bakhtiari (بختياري)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -118,7 +121,7 @@ $messages = array(
 'category-media-header'          => 'مدیا دردسته "$1"',
 'category-empty'                 => 'ای دسته درحال حاضر دارای هیچ صفحه یا مدیایی نه',
 'hidden-categories'              => '{{PLURAL:$1|دسته قایم|دسته های قایم}}',
-'hidden-category-category'       => 'دسته های قایم', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'دسته های قایم',
 'category-subcat-count'          => '{{PLURAL:$2|ای دسته فقط دسته های فرعی زیر راداره.|ای دسته چیزهای زیر راداره {{PLURAL:$1|دسته فرعی|$1 دسته های فرعی}}, بیشتراز$2 کل.}}',
 'category-subcat-count-limited'  => 'ای دسته چیزهای زیر راداره {{PLURAL:$1|دسته فرعی|$1 دسته های فرعی}}.',
 'category-article-count'         => '{{PLURAL:$2|ای دسته فقط دارای صفحات زیره.|ذیل الذکر{{PLURAL:$1|صفحه است|$1 صفحات هستند}} دراین دسته, بیشترزه$2 کل.}}',
@@ -130,9 +133,13 @@ $messages = array(
 'about'     => 'درباره',
 'newwindow' => '(پنجره تازه واز کن)',
 'cancel'    => 'لغو',
-'qbfind'    => 'پیدا کردن',
-'qbedit'    => 'اصلاح',
 'mytalk'    => 'صحبت مو',
+
+# Cologne Blue skin
+'qbfind'  => 'پیدا کردن',
+'qbedit'  => 'اصلاح',
+'faq'     => 'اف ای کیو',
+'faqpage' => 'Project:اف ای کیو',
 
 'errorpagetitle'   => 'خطا',
 'returnto'         => 'بازگشت به $1.',
@@ -171,7 +178,7 @@ $messages = array(
 'otherlanguages'   => 'درزبانهای دیگر',
 'redirectedfrom'   => '(تصحیح مجدداز$1)',
 'redirectpagesub'  => 'صفحه تصحیح وهدایت مجدد',
-'lastmodifiedat'   => 'این صفحه اخیرا تغییر واصلاح شددر $1, در $2.', # $1 date, $2 time
+'lastmodifiedat'   => 'این صفحه اخیرا تغییر واصلاح شددر $1, در $2.',
 'viewcount'        => 'این صفحه قابل دسترسی شده است {{PLURAL:$1|once|$1 times}}.',
 'protectedpage'    => 'صفحه حمایت شده',
 'jumpto'           => 'پریدن به:',
@@ -191,8 +198,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:انکار کاربران',
 'edithelp'             => 'کمک برای اصلاح',
 'edithelppage'         => 'Help:اصلاح',
-'faq'                  => 'اف ای کیو',
-'faqpage'              => 'Project:اف ای کیو',
 'helppage'             => 'Help:محتوا',
 'mainpage'             => 'صفحه اصلی',
 'mainpage-description' => 'صفحه اصلی',
@@ -213,6 +218,7 @@ $1',
 بوین :[[Special:Version|version page]].',
 
 'ok'                      => 'خووه',
+'pagetitle-view-mainpage' => 'سرصفحه',
 'retrievedfrom'           => 'بازیافت از"$1"',
 'youhavenewmessages'      => 'پیام تاره داری $1 ($2).',
 'newmessageslink'         => 'پیام تازه',
@@ -265,8 +271,6 @@ $1',
 'createaccount'           => 'درست کردن حساب کاربری',
 'gotaccount'              => 'آیا تقریبا یه حساب کاربری دارین? $1.',
 'gotaccountlink'          => 'اویدن به',
-'yourrealname'            => 'نام واقعی:',
-'prefs-help-realname'     => 'ذکر نام واقعی اختیاریه ایر تصمیم به گدن بگیرین هنگام ارجاع به آثارتو و انتساب هونو به ایسا زه نام واقعیتو استفاده ابوه',
 'loginsuccesstitle'       => 'اویدن با بخت وتوفیق به سیستم',
 'loginsuccess'            => "''' ایسا اویدن به داخل سایت {{SITENAME}} بعنوان \"\$1\".'''",
 'nosuchuser'              => 'کاربری به ای نام وجود نداره "$1".
@@ -317,18 +321,18 @@ $1',
 'hr_tip'          => 'خط افقی (کم استفاده کنین)',
 
 # Edit pages
-'summary'                => 'خلاصه:',
-'subject'                => 'موضوع/سرخط:',
-'minoredit'              => 'ای یه اصلاح ریزه-رز',
-'watchthis'              => 'پیگیری ای صفحه',
-'savearticle'            => 'صفحه ضبط بوه',
-'preview'                => 'پیش نمایش',
-'showpreview'            => 'پیش‌نمایش',
-'showdiff'               => 'نشودادن تغییرات',
-'anoneditwarning'        => "'''توجه:''' ایسا داخل سیستم نوابیدین.
+'summary'                    => 'خلاصه:',
+'subject'                    => 'موضوع/سرخط:',
+'minoredit'                  => 'ای یه اصلاح ریزه-رز',
+'watchthis'                  => 'پیگیری ای صفحه',
+'savearticle'                => 'صفحه ضبط بوه',
+'preview'                    => 'پیش نمایش',
+'showpreview'                => 'پیش‌نمایش',
+'showdiff'                   => 'نشودادن تغییرات',
+'anoneditwarning'            => "'''توجه:''' ایسا داخل سیستم نوابیدین.
 آی پی آدرستو درگزارش اصلاح صفحه ضبط ابوه.",
-'summary-preview'        => 'پیش نمایش - خلاصه:',
-'blockedtext'            => ' "<big>\'\'\'دسترسی نام کاربری یا نشانی اینترنتی ایسا بسته وابیده.\'\'\'</big>
+'summary-preview'            => 'پیش نمایش - خلاصه:',
+'blockedtext'                => ' "<big>\'\'\'دسترسی نام کاربری یا نشانی اینترنتی ایسا بسته وابیده.\'\'\'</big>
 ای کار توسط $1 انجام شده‌است.
 دلیلی که گده اینه: $2\'\'
 * آغاز قطع دسترسی: $8
@@ -341,37 +345,37 @@ $1',
 دقت کنین که سی ارسال پست الکترونیکی در ویکی، وا پست الکترونیکی خود را زه طریق صفحه[[Special:Preferences|تنظیمات]] فعال کرده بوین، و نیز، وا امکان استفاده زه ای ویژگی سی ایساقطع نبوه.
 نشانی اینترنتی الان ایسا $3 است و شماره قطع دسترسی $5 است.
 لطفاً ای شماره را در هر درخواستی که در ای مورد مطرح اکنین ذکر کنین',
-'newarticle'             => '(تازه)',
-'newarticletext'         => 'ایسا لینکی را دنبال کردین و به صفحه‌ای رسیدین که هنی درست نوابیده.
+'newarticle'                 => '(تازه)',
+'newarticletext'             => 'ایسا لینکی را دنبال کردین و به صفحه‌ای رسیدین که هنی درست نوابیده.
 سی ایجاد صفحه، داخل مستطیل زیر شروع به تایپ کنین (سی اطلاعات بیشتر به [[{{ns:project}}:راهنما|صفحه راهنما]] برین).
 ایر اشتباهی ایچو اویدین دکمه «برگشت» مرورگرتو را بزنین.',
-'noarticletext'          => ' الان ای صفحه متنی نداره، ایسا ترین [[Special:Search/{{PAGENAME}}عنوان ای صفحه را در صفحه‌های دیگر جستجو کنین]] یا [{{fullurl:{{FULLPAGENAME}}|action=edit}} ای صفحه را اصلاح کنین].',
-'previewnote'            => '<strong>ای فقط یه پیش نمایشه;
-تغییراتی که ایسا دادین هنی ضبط نوابیده!</strong>',
-'editing'                => 'درحال اصلاح $1',
-'editingsection'         => 'درحال اصلاح $1 (قسمت)',
-'copyrightwarning'       => "لطفاً دقت کنین که درنظر گریده ابوه که همه شراکتهای ایسا  {{SITENAME}} تحت «$2» منتشر ابون ). 
+'noarticletext'              => ' الان ای صفحه متنی نداره، ایسا ترین [[Special:Search/{{PAGENAME}}عنوان ای صفحه را در صفحه‌های دیگر جستجو کنین]] یا [{{fullurl:{{FULLPAGENAME}}|action=edit}} ای صفحه را اصلاح کنین].',
+'previewnote'                => "'''ای فقط یه پیش نمایشه;
+تغییراتی که ایسا دادین هنی ضبط نوابیده!'''",
+'editing'                    => 'درحال اصلاح $1',
+'editingsection'             => 'درحال اصلاح $1 (قسمت)',
+'copyrightwarning'           => "لطفاً دقت کنین که درنظر گریده ابوه که همه شراکتهای ایسا  {{SITENAME}} تحت «$2» منتشر ابون ). 
 
 
 (سی دیدن  جزئیات بیشتر به $1 برین
 
 ایر نه خوین نوشته‌هاتو بی‌رحمانه اصلاح بوه و به دلخواه ارسال بوه، ایچو نفرستن.<br />
-درضمن ایسادارین به ایما قول ادین که خودتو یونه نوشتین یا هونه زه یک منبع آزاد با مالکیت عمومی یا مثل هو ورداشتین. <strong>کارهای دارای کارهای دارای حق کپی رایت را بی‌اجازه نفرستین!</strong>',",
-'longpagewarning'        => '<strong>هشدار: ای صفحه $1 کیلوبایت طول داره؛
+درضمن ایسادارین به ایما قول ادین که خودتو یونه نوشتین یا هونه زه یک منبع آزاد با مالکیت عمومی یا مثل هو ورداشتین. '''کارهای دارای کارهای دارای حق کپی رایت را بی‌اجازه نفرستین!'''',",
+'longpagewarning'            => "'''هشدار: ای صفحه $1 کیلوبایت طول داره؛
 بعضی زه مرورگرها ممکنه با اصلاح صفحات نزدیک به ۳۲ کیلوبایت یا طولانی‌تر زه آن مشکلاتی داشته بون.
-لطفاً درمورد خرد کردن ای صفحه به قسمت‌های کوچکتر فکر کنین.</strong>',
-'templatesused'          => 'قالبهای استفاده شده من ای صفحه:',
-'templatesusedpreview'   => 'قالبها  یا الگوهای استفاده وابیده در ای پیش نمایش:',
-'template-protected'     => '(تحت حمایت)',
-'template-semiprotected' => '(نیمه حمایت وابیده)',
-'nocreatetext'           => '{{SITENAME}}قابلیت درست کردن صفحات تازه را محدود کرده‌. ترین برگردین و صفحه‌ موجود را اصلاح کنین یا اینکه  [[Special:UserLogin|به سیستم داخل بوین یا حساب کاربری درست کنین]].',
-'recreate-deleted-warn'  => "'''هشدار: ایسا در حال درست کردن دوباره صفحه‌ای هدین که قبلاً حذف وابیده '''در نظر داشته بوین که ادامه اصلاح ای صفحه کار درستی هده یا نه. نمایه حذف مربوط به ای صفحه سی راحتی کار در ادامه اویده",
+لطفاً درمورد خرد کردن ای صفحه به قسمت‌های کوچکتر فکر کنین.'''",
+'templatesused'              => 'قالبهای استفاده شده من ای صفحه:',
+'templatesusedpreview'       => 'قالبها  یا الگوهای استفاده وابیده در ای پیش نمایش:',
+'template-protected'         => '(تحت حمایت)',
+'template-semiprotected'     => '(نیمه حمایت وابیده)',
+'nocreatetext'               => '{{SITENAME}}قابلیت درست کردن صفحات تازه را محدود کرده‌. ترین برگردین و صفحه‌ موجود را اصلاح کنین یا اینکه  [[Special:UserLogin|به سیستم داخل بوین یا حساب کاربری درست کنین]].',
+'recreate-moveddeleted-warn' => "'''هشدار: ایسا در حال درست کردن دوباره صفحه‌ای هدین که قبلاً حذف وابیده '''در نظر داشته بوین که ادامه اصلاح ای صفحه کار درستی هده یا نه. نمایه حذف مربوط به ای صفحه سی راحتی کار در ادامه اویده",
 
 # History pages
 'viewpagelogs'        => 'نشودادن نمایه ها سی ای صفحه',
 'currentrev'          => 'نسخه جاری',
 'revisionasof'        => 'اصلاح $1',
-'revision-info'       => 'یه نسخه اصلاح شده درتاریخ  $1 بوسیله $2', # Additionally available: $3: revision id
+'revision-info'       => 'یه نسخه اصلاح شده درتاریخ  $1 بوسیله $2',
 'previousrevision'    => '← اصلاح قبلی',
 'nextrevision'        => 'نسخه بعدی →',
 'currentrevisionlink' => 'نسخه جاری',
@@ -386,7 +390,7 @@ $1',
 'histlast'            => 'تازه ترین',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 در $2', # user at time
+'history-feed-item-nocomment' => '$1 در $2',
 
 # Diffs
 'history-title'           => 'گزارش تاریخی نسخه زه "$1"',
@@ -399,15 +403,17 @@ $1',
 # Search results
 'noexactmatch'   => "'''صفحه ای باای عنوان نه  \"\$1\".'''
 ایسا ترین [[:\$1| ای صفحه را ایجاد کنین]].",
-'prevn'          => 'قبلی $1',
-'nextn'          => 'بعدی $1',
+'prevn'          => 'قبلی {{PLURAL:$1|$1}}',
+'nextn'          => 'بعدی {{PLURAL:$1|$1}}',
 'viewprevnext'   => 'مشاهده ($1) ($2) ($3)',
 'searchhelp-url' => 'Help:محتوا',
 'powersearch'    => 'جستجوی کاملتر',
 
 # Preferences page
-'preferences'   => 'اولویتها',
-'mypreferences' => 'اولویتهای مو',
+'preferences'         => 'اولویتها',
+'mypreferences'       => 'اولویتهای مو',
+'yourrealname'        => 'نام واقعی:',
+'prefs-help-realname' => 'ذکر نام واقعی اختیاریه ایر تصمیم به گدن بگیرین هنگام ارجاع به آثارتو و انتساب هونو به ایسا زه نام واقعیتو استفاده ابوه',
 
 'grouppage-sysop' => '{{ns:project}}:مدیران',
 
@@ -438,6 +444,8 @@ $1',
 
 # Recent changes linked
 'recentchangeslinked'          => 'تغییرات مرتبط',
+'recentchangeslinked-feed'     => 'تغییرات مرتبط',
+'recentchangeslinked-toolbox'  => 'تغییرات مرتبط',
 'recentchangeslinked-title'    => 'تغییرهای مرتبط با $1',
 'recentchangeslinked-noresult' => 'در دوره زمانی داده‌شده تغییری در صفحه‌های لینک داده رخ نداده‌',
 'recentchangeslinked-summary'  => " ای صفحه خاص تغییرات اخیر در صفحه‌های لینک داده شده به این صفحه را نشو اده.
@@ -453,6 +461,7 @@ $1',
 'listfiles' => 'لیست فایل',
 
 # File description page
+'file-anchor-link'          => 'فایل',
 'filehist'                  => 'گزارش تاریخی فایل',
 'filehist-help'             => 'رو تاریخ‌ها کلیک کنید تا نسخه مرتبط را ببینین.',
 'filehist-current'          => 'جاری',
@@ -465,8 +474,6 @@ $1',
 'linkstoimage'              => 'ذیل الذکر {{PLURAL:$1|لینکهای صفحه|$1 لینک صفحات}} به ای فایل:',
 'nolinkstoimage'            => 'هیچ صفحه ای نه که لینک وابیده بوه به ای فایل',
 'sharedupload'              => 'ای فایل یک آپلود اشتراکی هده و ممکنه زه طریق  پروژه‌های دیگه  هم قابل دسترسی بوه',
-'noimage'                   => 'هیچ فایلی با ای نام موجود نه اما ترین $1.',
-'noimage-linktext'          => 'آپلود کنین',
 'uploadnewversion-linktext' => 'آپلود کردن یه نسخه تازه زه ای فایل',
 
 # MIME search
@@ -600,9 +607,9 @@ $2',
 'protect_expiry_invalid'      => 'با سپری وابیدن وقت غیر معتبره.',
 'protect_expiry_old'          => 'سپری وابیدن وقت مربوط به گذشته.',
 'protect-unchain'             => 'واز کردن جابجایی با اجازه گرئدن',
-'protect-text'                => 'ایسا ممکنه بوینین وتغییر بدین سطح حمایت زه ای صفحه<strong><nowiki>$1</nowiki></strong>.',
-'protect-locked-access'       => 'حساب کاربری ایسا اجازه تغییر سطح حمایت ای صفحه را نداره.
-ای چونه تنظیمات جاری سی آن صفحه <strong>$1</strong>:',
+'protect-text'                => "ایسا ممکنه بوینین وتغییر بدین سطح حمایت زه ای صفحه'''<nowiki>$1</nowiki>'''.",
+'protect-locked-access'       => "حساب کاربری ایسا اجازه تغییر سطح حمایت ای صفحه را نداره.
+ای چونه تنظیمات جاری سی آن صفحه '''$1''':",
 'protect-cascadeon'           => 'ای صفحه  در حال حاضر حفاظت وحمایت وابیده چون که در {{PLURAL:$1|صفحه|صفحات}}
 زیر که گزینه حفاظت وحمایت موجی {{PLURAL:$1|آن|آن‌ها}} فعال هده ،
 ایسا ترین سطح حفاظت ای صفحه را تغییر بدین اما ای کارنتره تاثیری رو 
@@ -615,7 +622,7 @@ $2',
 'protect-expiring'            => 'سپری وابیده $1 (UTC)',
 'protect-cascade'             => 'حمایت صفحات دربرگیرنده در ای صفحه (cascading protection)',
 'protect-cantedit'            => 'ایسا نترین تغییر بدین سطوح حمایتی ای صفحه را, زیرا ایسا اجازه اصلاح آن را ندارین.',
-'protect-expiry-options'      => '۲ ساعت:2 hours,۱ روز:1 day,۳ روز:3 days,۱ هفته:1 week,۲ هفته:2 weeks,۱ ماه:1 month,۳ ماه:3 months,۶ ماه:6 months,۱ سال:1 year,بی‌پایان:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '۲ ساعت:2 hours,۱ روز:1 day,۳ روز:3 days,۱ هفته:1 week,۲ هفته:2 weeks,۱ ماه:1 month,۳ ماه:3 months,۶ ماه:6 months,۱ سال:1 year,بی‌پایان:infinite',
 'restriction-type'            => 'اجازه:',
 'restriction-level'           => 'سطح محدودیت:',
 
@@ -637,6 +644,7 @@ $2',
 
 'sp-contributions-newbies-sub' => 'سی حسابهای کاربری تازه',
 'sp-contributions-blocklog'    => 'نمایه بسته وابیده ها',
+'sp-contributions-talk'        => 'صحبت',
 
 # What links here
 'whatlinkshere'       => 'لینک های ای صفحه',
@@ -651,7 +659,7 @@ $2',
 
 # Block/unblock
 'blockip'       => 'بستن کاربر',
-'ipboptions'    => '۲ ساعت:2 hours,۱ روز:1 day,۳ روز:3 days,۱ هفته:1 week,۲ هفته:2 weeks,۱ ماه:1 month,۳ ماه:3 months,۶ ماه:6 months,۱ سال:1 year,بی‌پایان:infinite', # display1:time1,display2:time2,...
+'ipboptions'    => '۲ ساعت:2 hours,۱ روز:1 day,۳ روز:3 days,۱ هفته:1 week,۲ هفته:2 weeks,۱ ماه:1 month,۳ ماه:3 months,۶ ماه:6 months,۱ سال:1 year,بی‌پایان:infinite',
 'ipblocklist'   => 'آدرسهای  آی پی وکاربران بسته وابیدند',
 'blocklink'     => 'بسته بوه !',
 'unblocklink'   => 'باز بوه',
@@ -688,7 +696,7 @@ $2',
 'move-watch'       => 'پیگیری ای صفحه',
 'movepagebtn'      => 'جابجایی صفحه',
 'pagemovedsub'     => 'جابجایی با بخت وتوفیق انجام وابید',
-'movepage-moved'   => '<big>\'\'\'"$1" جابجا وابیده به "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'   => '<big>\'\'\'"$1" جابجا وابیده به "$2"\'\'\'</big>',
 'articleexists'    => 'یه صفحه زه ای  نوم تقریبا موجوده, یا نومی که ایسا انتخاب کردین غیر  معتبره
 لطفا نوم دیه انتخاب کنین.',
 'talkexists'       => "'''آن صفحه خوس با بخت وتوفیق جابجا وابید, ولی صفحه صحبت نتره جابجا بوه چونکه یکی تقریبا موجوده درعنوان تازه 
@@ -799,7 +807,8 @@ $2',
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* isospeedratings
+* focallength',
 
 # External editor support
 'edit-externally'      => 'اصلاح ای صفحه با استفاده زه یه ویرایشگر خارجی',
@@ -816,7 +825,7 @@ $2',
 'watchlisttools-raw'  => 'اصلاح لیست خام پی‌گیری‌ها',
 
 # Special:Version
-'version' => 'ترجمه یا تفسیر', # Not used as normal message but as header for the special page itself
+'version' => 'ترجمه یا تفسیر',
 
 # Special:SpecialPages
 'specialpages' => 'صفحات ویژه',

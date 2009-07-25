@@ -78,6 +78,7 @@ function os_Results(name, formname){
 	this.containerRow = 0; // height of result field in the container
 	this.containerTotal = 0; // total height of the container will all results
 	this.visible = false; // if container is visible
+	this.stayHidden = false; // don't try to show if lost focus
 }
 
 /** Hide results div */
@@ -93,6 +94,8 @@ function os_hideResults(r){
 function os_showResults(r){
 	if(os_is_stopped)
 		return;
+	if(r.stayHidden)
+		return
 	os_fitContainer(r);
 	var c = document.getElementById(r.container);
 	r.selected = -1;
@@ -104,9 +107,9 @@ function os_showResults(r){
 }
 
 function os_operaWidthFix(x){
-	// TODO: better css2 incompatibility detection here
-	if(is_opera || is_khtml || navigator.userAgent.toLowerCase().indexOf('firefox/1')!=-1){
-		return 30; // opera&konqueror & old firefox don't understand overflow-x, estimate scrollbar width
+	// For browsers that don't understand overflow-x, estimate scrollbar width
+	if(typeof document.body.style.overflowX != "string"){
+		return 30;
 	}
 	return 0;
 }
@@ -442,6 +445,7 @@ function os_delayedFetch(){
 /** Init timed update via os_delayedUpdate() */
 function os_fetchResults(r, query, timeout){
 	if(query == ""){
+		r.query = "";
 		os_hideResults(r);
 		return;
 	} else if(query == r.query)
@@ -622,13 +626,24 @@ function os_eventBlur(e){
 	var r = os_map[targ.id];
 	if(r == null)
 		return; // not our event
-	if(!os_mouse_pressed)
+	if(!os_mouse_pressed){
 		os_hideResults(r);
+		// force canvas to stay hidden
+		r.stayHidden = true
+		// cancel any pending fetches
+		if(os_timer != null && os_timer.id != null)
+			clearTimeout(os_timer.id);
+		os_timer = null
+	}
 }
 
 /** Event: focus (catch only when stopped) */
 function os_eventFocus(e){
-	// nothing happens here?
+	var targ = os_getTarget(e);
+	var r = os_map[targ.id];
+	if(r == null)
+		return; // not our event
+	r.stayHidden = false
 }
 
 

@@ -52,12 +52,15 @@ class MediaWiki {
 	 */
 	function initialize( &$title, &$article, &$output, &$user, $request ) {
 		wfProfileIn( __METHOD__ );
+		
+		$output->setTitle( $title );
+		
 		if( !$this->preliminaryChecks( $title, $output, $request ) ) {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
 		if( !$this->initializeSpecialCases( $title, $output, $request ) ) {
-			$new_article = $this->initializeArticle( $title, $request );
+			$new_article = $this->initializeArticle( $title, $output, $request );
 			if( is_object( $new_article ) ) {
 				$article = $new_article;
 				$this->performAction( $output, $article, $title, $user, $request );
@@ -115,12 +118,15 @@ class MediaWiki {
 			if( count( $wgContLang->getVariants() ) > 1 && !is_null( $ret ) && $ret->getArticleID() == 0 )
 				$wgContLang->findVariantLink( $title, $ret );
 		}
-		if( ( $oldid = $wgRequest->getInt( 'oldid' ) )
-			&& ( is_null( $ret ) || $ret->getNamespace() != NS_SPECIAL ) ) {
-			// Allow oldid to override a changed or missing title.
-			$rev = Revision::newFromId( $oldid );
-			if( $rev ) {
-				$ret = $rev->getTitle();
+		# For non-special titles, check for implicit titles
+		if( is_null( $ret ) || $ret->getNamespace() != NS_SPECIAL ) {
+			// We can have urls with just ?diff=,?oldid= or even just ?diff=
+			$oldid = $wgRequest->getInt( 'oldid' );
+			$oldid = $oldid ? $oldid : $wgRequest->getInt( 'diff' );
+			// Allow oldid to override a changed or missing title
+			if( $oldid ) {
+				$rev = Revision::newFromId( $oldid );
+				$ret = $rev ? $rev->getTitle() : $ret;
 			}
 		}
 		return $ret;
@@ -146,8 +152,9 @@ class MediaWiki {
 		# the Read array in order for the user to see it. (We have to check here to
 		# catch special pages etc. We check again in Article::view())
 		if( !is_null( $title ) && !$title->userCanRead() ) {
+			global $wgDeferredUpdateList;
 			$output->loginToUse();
-			$output->output();
+			$this->finalCleanup( $wgDeferredUpdateList, $output );
 			$output->disable();
 			return false;
 		}
@@ -267,10 +274,11 @@ class MediaWiki {
 	 * Create an Article object for the page, following redirects if needed.
 	 *
 	 * @param $title Title ($wgTitle)
-	 * @param $request WebRequest
+	 * @param $output OutputPage ($wgOut)
+	 * @param $request WebRequest ($wgRequest)
 	 * @return mixed an Article, or a string to redirect to another URL
 	 */
-	function initializeArticle( &$title, $request ) {
+	function initializeArticle( &$title, &$output, $request ) {
 		wfProfileIn( __METHOD__ );
 
 		$action = $this->getVal( 'action', 'view' );
@@ -317,6 +325,7 @@ class MediaWiki {
 						$rarticle->setRedirectedFrom( $title );
 						$article = $rarticle;
 						$title = $target;
+						$output->setTitle( $title );
 					}
 				}
 			} else {
@@ -328,14 +337,16 @@ class MediaWiki {
 	}
 
 	/**
-	 * Cleaning up by doing deferred updates, calling LBFactory and doing the output
+	 * Cleaning up request by doing:
+	 ** deferred updates, DB transaction, and the output
 	 *
 	 * @param $deferredUpdates array of updates to do
 	 * @param $output OutputPage
 	 */
 	function finalCleanup( &$deferredUpdates, &$output ) {
 		wfProfileIn( __METHOD__ );
-		# Now commit any transactions, so that unreported errors after output() don't roll back the whole thing
+		# Now commit any transactions, so that unreported errors after
+		# output() don't roll back the whole DB transaction
 		$factory = wfGetLBFactory();
 		$factory->commitMasterChanges();
 		# Output everything!
@@ -343,8 +354,6 @@ class MediaWiki {
 		# Do any deferred jobs
 		$this->doUpdates( $deferredUpdates );
 		$this->doJobs();
-		# Commit and close up!
-		$factory->shutdown();
 		wfProfileOut( __METHOD__ );
 	}
 
@@ -415,6 +424,10 @@ class MediaWiki {
 	 */
 	function restInPeace() {
 		wfLogProfilingData();
+		# Commit and close up!
+		$factory = wfGetLBFactory();
+		$factory->commitMasterChanges();
+		$factory->shutdown();
 		wfDebug( "Request ended normally\n" );
 	}
 
@@ -447,8 +460,10 @@ class MediaWiki {
 				$article->view();
 				break;
 			case 'raw': // includes JS/CSS
+				wfProfileIn( __METHOD__.'-raw' );
 				$raw = new RawPage( $article );
 				$raw->view();
+				wfProfileOut( __METHOD__.'-raw' );
 				break;
 			case 'watch':
 			case 'unwatch':

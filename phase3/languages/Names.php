@@ -6,9 +6,9 @@
   * @ingroup Language
   */
 /* private */ $wgLanguageNames = array(
-	'aa' => 'Afar',			# Afar
+	'aa' => 'Qafár af',	# Afar
 	'ab' => 'Аҧсуа',	# Abkhaz, should possibly add ' бысжѡа'
-	'ace' => 'Achèh',	# Aceh
+	'ace' => 'Acèh',	# Aceh
 	'af' => 'Afrikaans',	# Afrikaans
 	'ak' => 'Akan',		# Akan
 	'aln' => 'Gegë',	# Gheg Albanian
@@ -56,6 +56,9 @@
 	'cho' => 'Choctaw',		# Choctaw
 	'chr' => 'ᏣᎳᎩ', # Cherokee
 	'chy' => 'Tsetsêhestâhese',	# Cheyenne
+	'ckb' => 'Soranî / کوردی',	# Sorani
+	'ckb-latn' => "\xE2\x80\xAASoranî (latînî)\xE2\x80\xAC", # Central Kurdish Latin script
+	'ckb-arab' => "\xE2\x80\xABکوردی (عەرەبی)\xE2\x80\xAC", # Central Kurdish Arabic script
 	'co' => 'Corsu',		# Corsican
 	'cr' => 'Nēhiyawēwin / ᓀᐦᐃᔭᐍᐏᐣ',		# Cree
 	'crh' => 'Qırımtatarca',   # Crimean Tatar
@@ -64,10 +67,12 @@
 	'cs' => 'Česky',	# Czech
 	'csb' => 'Kaszëbsczi',	# Cassubian
 	'cu' => 'Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ', 	# Old Church Slavonic (ancient language)
-	'cv' => 'Чăвашла',	# Chuvash
+	'cv' => 'Чӑвашла',	# Chuvash
 	'cy' => 'Cymraeg',		# Welsh
 	'da' => 'Dansk',		# Danish
 	'de' => 'Deutsch',		# German ("Du")
+	'de-at' => 'Österreichisches Deutsch',		# Austrian German
+	'de-ch' => 'Schweizer Hochdeutsch',		# Swiss Standard German
 	'de-formal' => 'Deutsch (Sie-Form)',		# German - formal address ("Sie")
 	'diq' => 'Zazaki',		# Zazaki
 	'dk' => 'Dansk (deprecated:da)', 		# Unused code currently falls back to Danish, 'da' is correct for the language
@@ -87,7 +92,7 @@
 	'fa' => 'فارسی',	# Persian
 	'ff' => 'Fulfulde',		# Fulfulde, Maasina
 	'fi' => 'Suomi',		# Finnish
-	'fiu-vro' => 'Võro',    # Võro
+	'fiu-vro' => 'Võro',    # Võro (deprecated code, 'vro' in ISO 639-3 since 2009-01-16)
 	'fj' => 'Na Vosa Vakaviti',	# Fijian
 	'fo' => 'Føroyskt',	# Faroese
 	'fr' => 'Français',	# French
@@ -97,13 +102,15 @@
 	'fy' => 'Frysk',		# Frisian
 	'ga' => 'Gaeilge',		# Irish
 	'gag' => 'Gagauz',		# Gagauz
-	'gan' => '贛語',			# Gan
+	'gan' => '贛語',		# Gan-hant
+	'gan-hans' => '赣语(简体)',	# Gan-hans
+	'gan-hant' => '贛語(繁體)',	# Gan-hant
 	'gd' => 'Gàidhlig',	# Scots Gaelic
 	'gl' => 'Galego',		# Galician
 	'glk' => 'گیلکی',	# Gilaki
 	'gn' => 'Avañe\'ẽ',	# Guaraní, Paraguayan
 	'got' => '𐌲𐌿𐍄𐌹𐍃𐌺',	# Gothic
-	'grc' => 'Ἀρχαία ἑλληνικὴ', # Ancient Greece
+	'grc' => 'Ἀρχαία ἑλληνικὴ', # Ancient Greek
 	'gsw' => 'Alemannisch',	# Alemannic
 	'gu' => 'ગુજરાતી',	# Gujarati
 	'gv' => 'Gaelg',		# Manx
@@ -185,6 +192,7 @@
 	'loz' => 'Silozi', # Lozi
 	'lt' => 'Lietuvių',	# Lithuanian
 	'lv' => 'Latviešu',	# Latvian
+	'lzh' => '文言',	# Literary Chinese -- (bug 8217) lzh instead of zh-classical, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=l
 	'lzz' => 'Lazuri Nena',	#Laz
 	'mai' => 'मैथिली', # Maithili
 	'map-bms' => 'Basa Banyumasan', # Banyumasan 
@@ -202,7 +210,7 @@
 	'mt' => 'Malti',	# Maltese
 	'mus' => 'Mvskoke',	# Muskogee/Creek
 	'mwl' => 'Mirandés',	# Mirandese
-	'my' => 'Myanmasa',		# Burmese
+	'my' => 'မြန်မာဘာသာ',		# Burmese
 	'myv' => 'Эрзянь',         # Erzya
 	'mzn' => 'مَزِروني',		# Mazanderani
 	'na' => 'Dorerin Naoero',		# Nauruan
@@ -275,6 +283,7 @@
 	'simple' => 'Simple English',	# Simple English
 	'sk' => 'Slovenčina',	# Slovak
 	'sl' => 'Slovenščina',	# Slovenian
+	'sli' => 'Schläsch',	# Lower Selisian
 	'sm' => 'Gagana Samoa',	# Samoan
 	'sma' => 'Åarjelsaemien',	# Southern Sami
 	'sn' => 'chiShona',		# Shona
@@ -300,11 +309,11 @@
 	'tg-latn' => 'tojikī',	# Tajiki (Latin script)
 	'th' => 'ไทย',	# Thai
 	'ti' => 'ትግርኛ',		# Tigrinya
-	'tk' => 'Türkmen',	# Turkmen
+	'tk' => 'Türkmençe',	# Turkmen
 	'tl' => 'Tagalog',		# Tagalog
 	#'tlh' => 'tlhIngan-Hol',	# Klingon - no interlanguage links allowed
 	'tn' => 'Setswana',		# Setswana
-	'to' => 'faka-Tonga',		# Tonga (Tonga Islands)
+	'to' => 'lea faka-Tonga',		# Tonga (Tonga Islands)
 	'tokipona' => 'Toki Pona',      # Toki Pona
 	'tp' => 'Toki Pona (deprecated:tokipona)',	# Toki Pona - non-standard language code
 	'tpi' => 'Tok Pisin',	# Tok Pisin
@@ -319,15 +328,19 @@
 	'tyv' => 'Тыва дыл',	# Tyvan
 	'tzm' => 'ⵜⴰⵎⴰⵣⵉⵖⵜ',	# (Central Morocco) Tamazight
 	'udm' => 'Удмурт',	# Udmurt
-	'ug' => 'Uyghurche‎ / ئۇيغۇرچە',	# Uyghur
+	'ug' => 'Uyghurche‎ / ئۇيغۇرچە',	# Uyghur (multiple scripts - defaults to Latin)
+	'ug-arab' => 'ئۇيغۇرچە', # Uyghur (Arabic script)
+	'ug-latn' => 'Uyghurche‎', # Uyghur (Latin script - default)
 	'uk' => 'Українська',	# Ukrainian
 	'ur' => 'اردو',	# Urdu
 	'uz' => 'O\'zbek',	# Uzbek
 	've' => 'Tshivenda',		# Venda
 	'vec' => 'Vèneto',	# Venetian
+	'vep' => 'Vepsan kel\'',	# Veps
 	'vi' => 'Tiếng Việt',	# Vietnamese
 	'vls' => 'West-Vlams', # West Flemish
 	'vo' => 'Volapük',	# Volapük
+	'vro' => 'Võro',    # Võro
 	'wa' => 'Walon',		# Walloon
 	'war' => 'Winaray', # Waray-Waray
 	'wo' => 'Wolof',		# Wolof
@@ -339,10 +352,10 @@
 	'yi' => 'ייִדיש',	# Yiddish
 	'yo' => 'Yorùbá',	# Yoruba
 	'yue' => '粵語', 	# Cantonese -- (bug 8217) yue instead of zh-yue, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=y
-	'za' => '(Cuengh)',		# Zhuang
+	'za' => 'Vahcuengh',	# Zhuang
 	'zea' => 'Zeêuws',	# Zeeuws/Zeaws
 	'zh' => '中文',						# (Zhōng Wén) - Chinese
-	'zh-classical' => '文言',			# Classical Chinese/Literary Chinese
+	'zh-classical' => '文言',			# Classical Chinese/Literary Chinese -- (see bug 8217)
 	'zh-cn' => "\xE2\x80\xAA中文(中国大陆)\xE2\x80\xAC",	# Chinese (PRC)
 	'zh-hans' => "\xE2\x80\xAA中文(简体)\xE2\x80\xAC",	# Chinese written using the Simplified Chinese script
 	'zh-hant' => "\xE2\x80\xAA中文(繁體)\xE2\x80\xAC",	# Chinese written using the Traditional Chinese script

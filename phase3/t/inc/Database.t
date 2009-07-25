@@ -5,14 +5,14 @@ define( 'MEDIAWIKI', true );
 require 't/Test.php';
 
 require 'includes/Defines.php';
-require 'StartProfiler.php';
+require 'includes/ProfilerStub.php';
 require 'includes/AutoLoader.php';
 require 'LocalSettings.php';
 require 'includes/Setup.php';
 
 plan( 9 );
 
-$db = new Database( $wgDBserver, $wgDBuser, $wgDBpassword );
+$db = new DatabaseMysql( $wgDBserver, $wgDBuser, $wgDBpassword );
 
 cmp_ok( $db->addQuotes( NULL ), '==',
 	'NULL', 'Add quotes to NULL' );

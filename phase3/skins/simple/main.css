@@ -175,6 +175,12 @@ input.searchButton {
     padding: 0.5em 0.4em 0.4em 0.4em;
 }
 
+/* feed links */
+a.feedlink {
+	background: url("../common/images/feed-icon.png") center left no-repeat;
+	padding-left: 16px;
+}
+
 textarea {
   width: 100%;
 }
@@ -359,12 +365,7 @@ div.printfooter {
 #preftoc a:active {
     display: block;
 }
-#prefcontrol {
-    clear: both;
-    float: left;
-    margin-top: 1em;
-}
-div.prefsectiontip {
+div.htmlform-tip {
     font-size: 95%;
     margin-top: 1em;
 }

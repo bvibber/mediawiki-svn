@@ -51,9 +51,12 @@ class FileDuplicateSearchPage extends QueryPage {
 
 		$nt = Title::makeTitle( NS_FILE, $result->title );
 		$text = $wgContLang->convert( $nt->getText() );
-		$plink = $skin->makeLink( $nt->getPrefixedText(), $text );
+		$plink = $skin->link(
+			Title::newFromText( $nt->getPrefixedText() ),
+			$text
+		);
 
-		$user = $skin->makeLinkObj( Title::makeTitle( NS_USER, $result->img_user_text ), $result->img_user_text );
+		$user = $skin->link( Title::makeTitle( NS_USER, $result->img_user_text ), $result->img_user_text );
 		$time = $wgLang->timeanddate( $result->img_timestamp );
 
 		return "$plink . . $user . . $time";
@@ -64,7 +67,7 @@ class FileDuplicateSearchPage extends QueryPage {
  * Output the HTML search form, and constructs the FileDuplicateSearch object.
  */
 function wfSpecialFileDuplicateSearch( $par = null ) {
-	global $wgRequest, $wgTitle, $wgOut, $wgLang, $wgContLang;
+	global $wgRequest, $wgOut, $wgLang, $wgContLang, $wgScript;
 
 	$hash = '';
 	$filename =  isset( $par ) ?  $par : $wgRequest->getText( 'filename' );
@@ -73,7 +76,7 @@ function wfSpecialFileDuplicateSearch( $par = null ) {
 	if( $title && $title->getText() != '' ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$image = $dbr->tableName( 'image' );
-		$encFilename = $dbr->addQuotes( htmlspecialchars( $title->getDBKey() ) );
+		$encFilename = $dbr->addQuotes( htmlspecialchars( $title->getDBkey() ) );
 		$sql = "SELECT img_sha1 from $image where img_name = $encFilename";
 		$res = $dbr->query( $sql );
 		$row = $dbr->fetchRow( $res );
@@ -85,7 +88,8 @@ function wfSpecialFileDuplicateSearch( $par = null ) {
 
 	# Create the input form
 	$wgOut->addHTML(
-		Xml::openElement( 'form', array( 'id' => 'fileduplicatesearch', 'method' => 'get', 'action' => $wgTitle->getLocalUrl() ) ) .
+		Xml::openElement( 'form', array( 'id' => 'fileduplicatesearch', 'method' => 'get', 'action' => $wgScript ) ) .
+		Xml::hidden( 'title', SpecialPage::getTitleFor( 'FileDuplicateSearch' )->getPrefixedDbKey() ) .
 		Xml::openElement( 'fieldset' ) .
 		Xml::element( 'legend', null, wfMsg( 'fileduplicatesearch-legend' ) ) .
 		Xml::inputLabel( wfMsg( 'fileduplicatesearch-filename' ), 'filename', 'filename', 50, $filename ) . ' ' .
@@ -121,14 +125,14 @@ function wfSpecialFileDuplicateSearch( $par = null ) {
 
 		# Show a short summary
 		if( $count == 1 ) {
-			$wgOut->addHTML( '<p class="mw-fileduplicatesearch-result-1">' .
-				wfMsgHtml( 'fileduplicatesearch-result-1', $filename ) .
-				'</p>'
+			$wgOut->wrapWikiMsg(
+				"<p class='mw-fileduplicatesearch-result-1'>\n$1\n</p>",
+				array( 'fileduplicatesearch-result-1', $filename )
 			);
 		} elseif ( $count > 1 ) {
-			$wgOut->addHTML( '<p class="mw-fileduplicatesearch-result-n">' .
-				wfMsgExt( 'fileduplicatesearch-result-n', array( 'parseinline' ), $filename, $wgLang->formatNum( $count - 1 ) ) .
-				'</p>'
+			$wgOut->wrapWikiMsg(
+				"<p class='mw-fileduplicatesearch-result-n'>\n$1\n</p>",
+				array( 'fileduplicatesearch-result-n', $filename, $wgLang->formatNum( $count - 1 ) )
 			);
 		}
 	}

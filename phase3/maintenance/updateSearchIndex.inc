@@ -20,8 +20,8 @@ function updateSearchIndex( $start, $end, $maxLockTime, $quiet ) {
 	output( "Updating searchindex between $start and $end\n" );
 
 	# Select entries from recentchanges which are on top and between the specified times
-	$start = $dbw->strencode( $start );
-	$end = $dbw->strencode( $end );
+	$start = $dbw->strencode( $dbw->timestamp( $start ) );
+	$end = $dbw->strencode( $dbw->timestamp( $end ) );
 
 	$page = $dbw->tableName( 'page' );
 	$sql = "SELECT rc_cur_id,rc_type,rc_moved_to_ns,rc_moved_to_title FROM $recentchanges
@@ -75,7 +75,7 @@ function updateSearchIndex( $start, $end, $maxLockTime, $quiet ) {
 	# Unlock searchindex
 	if ( $maxLockTime ) {
 		output( "    --- Unlocking --" );
-		unlockSearchindex( $dbw );
+		$dbw->unlockTables( 'updateSearchIndex.inc ' . __METHOD__ );
 		output( "\n" );
 	}
 	output( "Done\n" );
@@ -84,26 +84,13 @@ function updateSearchIndex( $start, $end, $maxLockTime, $quiet ) {
 function lockSearchindex( &$db ) {
 	$write = array( 'searchindex' );
 	$read = array( 'page', 'revision', 'text', 'interwiki' );
-	$items = array();
-	
-	foreach( $write as $table ) {
-		$items[] = $db->tableName( $table ) . ' LOW_PRIORITY WRITE';
-	}
-	foreach( $read as $table ) {
-		$items[] = $db->tableName( $table ) . ' READ';
-	}
-	$sql = "LOCK TABLES " . implode( ',', $items );
-	$db->query( $sql, 'updateSearchIndex.inc ' . __METHOD__ );
-}
-
-function unlockSearchindex( &$db ) {
-	$db->query( "UNLOCK TABLES", 'updateSearchIndex.inc ' . __METHOD__ );
+	$db->lockTables( $read, $write, 'updateSearchIndex.inc ' . __METHOD__ );
 }
 
 # Unlock and lock again
 # Since the lock is low-priority, queued reads will be able to complete
 function relockSearchindex( &$db ) {
-	unlockSearchindex( $db );
+	$db->unlockTables( 'updateSearchIndex.inc ' . __METHOD__ );
 	lockSearchindex( $db );
 }
 

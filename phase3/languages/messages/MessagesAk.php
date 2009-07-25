@@ -1,6 +1,9 @@
 <?php
 /** Akan (Akan)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -53,5 +56,7 @@ $messages = array(
 
 # Watchlist
 'watch' => 'Hwɛ',
+
+'sp-contributions-talk' => 'Kasa',
 
 );

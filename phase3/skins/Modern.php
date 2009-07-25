@@ -16,6 +16,9 @@ if( !defined( 'MEDIAWIKI' ) )
  * @ingroup Skins
  */
 class SkinModern extends SkinTemplate {
+	var $skinname = 'modern', $stylename = 'modern',
+		$template = 'ModernTemplate';
+
 	/*
 	 * We don't like the default getPoweredBy, the icon clashes with the 
 	 * skin L&F.
@@ -25,13 +28,6 @@ class SkinModern extends SkinTemplate {
 		return "<div class='mw_poweredby'>Powered by MediaWiki $wgVersion</div>";
 	}
 
-	function initPage( OutputPage $out ) {
-		parent::initPage( $out );
-		$this->skinname  = 'modern';
-		$this->stylename = 'modern';
-		$this->template  = 'ModernTemplate';
-	}
-	
 	function setupSkinUserCss( OutputPage $out ){
 		// Do not call parent::setupSkinUserCss(), we have our own print style
 		$out->addStyle( 'common/shared.css', 'screen' );
@@ -56,53 +52,26 @@ class ModernTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	function execute() {
-		global $wgRequest;
+		global $wgRequest, $wgOut;
 		$this->skin = $skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
 
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php 
-	foreach($this->data['xhtmlnamespaces'] as $tag => $ns) {
-		?>xmlns:<?php echo "{$tag}=\"{$ns}\" ";
-	} ?>xml:lang="<?php $this->text('lang') ?>" lang="<?php $this->text('lang') ?>" dir="<?php $this->text('dir') ?>">
-	<head>
-		<meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
-		<?php $this->html('headlinks') ?>
-		<title><?php $this->text('pagetitle') ?></title>
-		<?php $this->html('csslinks') ?>
-		<!--[if lt IE 7]><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-		
-		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
-                
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
-		<!-- Head Scripts -->
-<?php $this->html('headscripts') ?>
-<?php	if($this->data['jsvarurl'  ]) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl'  ) ?>"><!-- site js --></script>
-<?php	} ?>
-<?php	if($this->data['pagecss'   ]) { ?>
-		<style type="text/css"><?php $this->html('pagecss'   ) ?></style>
-<?php	}
-		if($this->data['usercss'   ]) { ?>
-		<style type="text/css"><?php $this->html('usercss'   ) ?></style>
-<?php	}
-		if($this->data['userjs'    ]) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs' ) ?>"></script>
-<?php	}
-		if($this->data['userjsprev']) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
-<?php	}
-		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
-	</head>
-<body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
+		$wgOut->addScript( <<<HTML
+<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
+	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+HTML
+		);
+
+		echo $wgOut->headElement( $this->skin );
+?><body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload'    ]) { ?> onload="<?php     $this->text('body_onload')     ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
 
 	<!-- heading -->
-	<div id="mw_header"><h1 id="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1></div>
+	<div id="mw_header"><h1 id="firstHeading"><?php $this->html('title') ?></h1></div>
 
 	<div id="mw_main">
 	<div id="mw_contentwrapper">
@@ -245,18 +214,22 @@ class ModernTemplate extends QuickTemplate {
 
 	/*************************************************************************************************/
 	function searchBox() {
+		global $wgUseTwoButtonsSearchForm;
 ?>
 	<!-- search -->
 	<div id="p-search" class="portlet">
 		<h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
 		<div id="searchBody" class="pBody">
-			<form action="<?php $this->text('searchaction') ?>" id="searchform"><div>
+			<form action="<?php $this->text('wgScript') ?>" id="searchform"><div>
+				<input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
 				<input id="searchInput" name="search" type="text"<?php echo $this->skin->tooltipAndAccesskey('search');
 					if( isset( $this->data['search'] ) ) {
 						?> value="<?php $this->text('search') ?>"<?php } ?> />
-				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg('searcharticle') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-go' ); ?> />&nbsp;
-				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> />
-				<a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a>
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg('searcharticle') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-go' ); ?> /><?php if ($wgUseTwoButtonsSearchForm) { ?>&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> /><?php } else { ?>
+
+				<div><a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a></div><?php } ?>
+
 			</div></form>
 		</div><!-- pBody -->
 	</div><!-- portlet -->
@@ -280,7 +253,7 @@ class ModernTemplate extends QuickTemplate {
 			if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
 				<li id="t-recentchangeslinked"><a href="<?php
 				echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
-				?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked') ?></a></li>
+				?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked-toolbox') ?></a></li>
 <?php 		}
 		}
 		if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
@@ -290,8 +263,8 @@ class ModernTemplate extends QuickTemplate {
 <?php 	}
 		if($this->data['feeds']) { ?>
 			<li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
-					?><span id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>"><a href="<?php
-					echo htmlspecialchars($feed['href']) ?>"<?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
+					?><a id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>" href="<?php
+					echo htmlspecialchars($feed['href']) ?>" rel="alternate" type="application/<?php echo $key ?>+xml" class="feedlink"<?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;
 					<?php } ?></li><?php
 		}
 
@@ -305,7 +278,7 @@ class ModernTemplate extends QuickTemplate {
 
 		if(!empty($this->data['nav_urls']['print']['href'])) { ?>
 				<li id="t-print"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href'])
-				?>"<?php echo $this->skin->tooltipAndAccesskey('t-print') ?>><?php $this->msg('printableversion') ?></a></li><?php
+				?>" rel="alternate"<?php echo $this->skin->tooltipAndAccesskey('t-print') ?>><?php $this->msg('printableversion') ?></a></li><?php
 		}
 
 		if(!empty($this->data['nav_urls']['permalink']['href'])) { ?>

@@ -48,7 +48,7 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 	}
 
 	private function run($resultPageSet = null) {
-
+		global $wgContLang;
 		$params = $this->extractRequestParams();
 
 		$limit = $params['limit'];
@@ -87,7 +87,8 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 			$this->dieUsage("{$what} search is disabled",
 					"search-{$what}-disabled");
 
-		$data = array ();
+		$terms = $wgContLang->convertForSearchResult($matches->termMatches());
+		$titles = array ();
 		$count = 0;
 		while( $result = $matches->next() ) {
 			if (++ $count > $limit) {
@@ -102,20 +103,24 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 			
 			$title = $result->getTitle();
 			if (is_null($resultPageSet)) {
-				$data[] = array(
-					'ns' => intval($title->getNamespace()),
-					'title' => $title->getPrefixedText());
+				$vals = array();
+				ApiQueryBase::addTitleInfo($vals, $title);
+				$vals['snippet'] = $result->getTextSnippet($terms);
+				$fit = $this->getResult()->addValue(array('query', $this->getModuleName()), null, $vals);
+				if(!$fit)
+				{
+					$this->setContinueEnumParameter('offset', $params['offset'] + $count - 1);
+					break;
+				}
 			} else {
-				$data[] = $title;
+				$titles[] = $title;
 			}
 		}
 
 		if (is_null($resultPageSet)) {
-			$result = $this->getResult();
-			$result->setIndexedTagName($data, 'p');
-			$result->addValue('query', $this->getModuleName(), $data);
+			$this->getResult()->setIndexedTagName_internal(array('query', $this->getModuleName()), 'p');
 		} else {
-			$resultPageSet->populateFromTitles($data);
+			$resultPageSet->populateFromTitles($titles);
 		}
 	}
 

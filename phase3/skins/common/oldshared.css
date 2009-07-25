@@ -144,6 +144,9 @@ img { border: none; }
 }
 
 /* preference page with js-genrated toc */
+#mw-pref-clear {
+	clear: both;
+}
 #preftoc {
     float: left;
     margin: 1em 1em 1em 1em;
@@ -159,12 +162,12 @@ img { border: none; }
     display: block;
     color: #005189;
 }
-#prefcontrol {
+.mw-prefs-buttons {
     clear: left;
     float: left;
     margin-top: 1em;
 }
-div.prefsectiontip {
+div.htmlform-tip {
     font-size: 94%;
     margin-top: 0.4em;
     color: #666;
@@ -317,12 +320,6 @@ table.collapsed tr.collapsable {
 
 .visualClear {
     clear: both;
-}
-
-#mw_trackbacks {
-	border: solid 1px #bbbbff;
-	background-color: #eeeeff;
-	padding: 0.2em;
 }
 
 /* Allmessages table */
