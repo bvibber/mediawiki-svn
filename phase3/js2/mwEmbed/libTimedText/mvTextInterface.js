@@ -1,12 +1,11 @@
 
 loadGM({
-    
     "select_transcript_set" : "Select Layers",
 	"auto_scroll" : "auto scroll",
 	"close" : "close",
-	"improve_transcript" : "Improve"
-	
+	"improve_transcript" : "Improve",
 })
+
 // text interface object (for inline display captions) 
 var mvTextInterface = function( parentEmbed ){
 	return this.init( parentEmbed );
@@ -181,7 +180,7 @@ mvTextInterface.prototype = {
 					_this.pe.highlightPlaySection( {
 						'start'	: $j(this).parent().attr("start"),
 						'end'	: $j(this).parent().attr("end")
-					});
+						});
 				}, 
 				out:function () {	
 					  js_log('mvttseek: out');		  
@@ -288,12 +287,8 @@ mvTextInterface.prototype = {
 					$j('#mmbody_'+this.pe.id +' .tt_scroll_highlight').removeClass('tt_scroll_highlight');
 				}
 			};			
-			/*js_log('search_for_range:'+search_for_range +  ' for: '+ cur_time);*/
-			if( search_for_range ){				
-				//search for current time: add tt_scroll_highlight to clip		
-				// optimize:
-				//  should do binnary search not iterative 
-				//  avoid jquery function calls do native loops 
+			if(search_for_range){				
+				//search for current time:  flash red border trascript				
 				$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
 					if(npt2seconds($j(this).attr('start') ) < cur_time &&
 					   npt2seconds($j(this).attr('end') ) > cur_time){																		
@@ -302,7 +297,7 @@ mvTextInterface.prototype = {
 							scrollTop: $j(this).get(0).offsetTop						
 						}, 'slow');
 						$j(this).addClass('tt_scroll_highlight');
-						//js_log('should add class to: ' + $j(this).attr('id'));
+						js_log('should add class to: ' + $j(this).attr('id'));
 						//done with loop
 						return false;
 					}
