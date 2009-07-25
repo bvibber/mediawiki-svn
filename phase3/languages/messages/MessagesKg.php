@@ -1,6 +1,9 @@
 <?php
 /** Kongo (Kongo)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -88,7 +91,6 @@ $messages = array(
 # Login and logout pages
 'logout'             => 'Basika',
 'userlogout'         => 'Basika',
-'yourlanguage'       => 'Ndinga:',
 'loginlanguagelabel' => 'Ndinga: $1',
 
 # History pages
@@ -99,13 +101,14 @@ $messages = array(
 'lineno' => 'Nzila ya $1:',
 
 # Search results
-'prevn'        => 'biyita $1',
-'nextn'        => 'bilandi $1',
+'prevn'        => 'biyita {{PLURAL:$1|$1}}',
+'nextn'        => 'bilandi {{PLURAL:$1|$1}}',
 'viewprevnext' => 'Mona ($1) ($2) ($3).',
 'powersearch'  => 'Sosa',
 
 # Preferences page
 'mypreferences' => 'Konte ya munu',
+'yourlanguage'  => 'Ndinga:',
 
 # Recent changes
 'recentchanges' => 'Bampaluka ya mpa',
@@ -125,6 +128,8 @@ $messages = array(
 # Contributions
 'mycontris' => 'Makabu ya munu',
 
+'sp-contributions-talk' => 'Disolo',
+
 # What links here
 'whatlinkshere' => 'Balukaya ke songa awa',
 
@@ -133,7 +138,7 @@ $messages = array(
 'newtitle'       => 'Zina ya nkaka:',
 'movepagebtn'    => 'Nata lukaya',
 'pagemovedsub'   => 'Kunata me nunga',
-'movepage-moved' => '<big>\'\'\'"$1" me natama na "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved' => '<big>\'\'\'"$1" me natama na "$2"\'\'\'</big>',
 'articleexists'  => 'Lukaya ya nkaka kele na zina yango, to zina yango kele ya mbote ve.
 Sola zina ya nkaka.',
 'movereason'     => 'Samu:',

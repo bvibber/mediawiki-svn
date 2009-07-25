@@ -12,14 +12,14 @@
 $oldCwd = getcwd();
 
 $optionsWithArgs = array( "o" );
-include_once( "commandLine.inc" );
-include_once( "dumpInterwiki.inc" );
+require( "commandLine.inc" );
+require( "dumpInterwiki.inc" );
 chdir( $oldCwd );
 
 # Output
 if ( isset( $options['o'] ) ) {
     # To database specified with -o
-    $dbFile = dba_open( $options['o'], "n", "cdb_make" );
+    $dbFile = CdbWriter::open( $options['o'] );
 } 
 
 getRebuildInterwikiDump();

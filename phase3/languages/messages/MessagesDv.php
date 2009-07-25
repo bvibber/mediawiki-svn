@@ -1,6 +1,9 @@
 <?php
 /** Divehi (ދިވެހިބަސް)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -53,71 +56,82 @@ $specialPageAliases = array(
 
 $messages = array(
 # User preference toggles
-'tog-hideminor'    => 'ކުޑަ ކުޑަ އުނި އިތުރުތައް ފަހު ބަދަލު އިން ފޮރުއްވަވާ',
+'tog-hideminor'    => 'ކުޑަ ކުޑަ އުނި އިތުރުތައް އެންމެފަހުގެ ބަދަލުތަކުގެ ލިސްޓުން ފޮރުއްވަވާ',
 'tog-ccmeonemails' => 'އަޅުގަނޑު އެހެން މެމްބަރުންނަށް ފޮނުވާ އީމެއިލްގެ ނަކަލެއް އަޅުގަނޑަށް ފޮނުވާ',
 
 'underline-always' => 'އަބަދުވެސް',
 'underline-never'  => 'ހަމަހިލާ ނޫން',
 
 # Dates
-'sunday'       => 'އާދީއްތަ',
-'monday'       => 'ހޯމަ',
-'tuesday'      => 'އަންގާރަ',
-'wednesday'    => 'ބުދަ',
-'thursday'     => 'ބުރާސްފަތި',
-'friday'       => 'ހުކުރު',
-'saturday'     => 'ހޮނިހިރު',
-'sun'          => 'އާދީއްތަ',
-'mon'          => 'ހޯމަ',
-'tue'          => 'އަންގާރަ',
-'wed'          => 'ބުދަ',
-'thu'          => 'ބުރާސްފަތި',
-'fri'          => 'ހުކުރު',
-'sat'          => 'ހޮނިހިރު',
-'january'      => 'ޖެނުއަރީ',
-'february'     => 'ފެބްރުއަރީ',
-'march'        => 'މާރޗް',
-'april'        => 'އެޕްރީލް',
-'may_long'     => 'މެއި',
-'june'         => 'ޖޫން',
-'july'         => 'ޖުލައި',
-'august'       => 'އޮގަސްޓު',
-'september'    => 'ސެޕްޓެމްބަރު',
-'october'      => 'އޮކްޓޫބަރު',
-'november'     => 'ނޮވެމްބަރު',
-'december'     => 'ޑިސެމްބަރު',
-'january-gen'  => 'ޖެނުއަރީ',
-'february-gen' => 'ފެބްރުއަރީ',
-'march-gen'    => 'މާޗް',
-'jan'          => 'ޖެނުއަރީ',
-'feb'          => 'ފެބްރުއަރީ',
-'mar'          => 'މާޗް',
-'apr'          => 'އޭޕްރިލް',
-'may'          => 'މެއި',
-'jun'          => 'ޖޫން',
-'jul'          => 'ޖުލައި',
-'aug'          => 'އޯގަސްޓް',
-'sep'          => 'ސެޕްޓެމްބަރ',
-'oct'          => 'އޮކްޓޯބަރ',
-'nov'          => 'ނޮވެމްބަރ',
-'dec'          => 'ޑިސެމްބަރ',
+'sunday'        => 'އާދީއްތަ',
+'monday'        => 'ހޯމަ',
+'tuesday'       => 'އަންގާރަ',
+'wednesday'     => 'ބުދަ',
+'thursday'      => 'ބުރާސްފަތި',
+'friday'        => 'ހުކުރު',
+'saturday'      => 'ހޮނިހިރު',
+'sun'           => 'އާދީއްތަ',
+'mon'           => 'ހޯމަ',
+'tue'           => 'އަންގާރަ',
+'wed'           => 'ބުދަ',
+'thu'           => 'ބުރާސްފަތި',
+'fri'           => 'ހުކުރު',
+'sat'           => 'ހޮނިހިރު',
+'january'       => 'ޖެނުއަރީ',
+'february'      => 'ފެބްރުއަރީ',
+'march'         => 'މާރޗް',
+'april'         => 'އެޕްރީލް',
+'may_long'      => 'މެއި',
+'june'          => 'ޖޫން',
+'july'          => 'ޖުލައި',
+'august'        => 'އޮގަސްޓު',
+'september'     => 'ސެޕްޓެމްބަރު',
+'october'       => 'އޮކްޓޫބަރު',
+'november'      => 'ނޮވެމްބަރު',
+'december'      => 'ޑިސެމްބަރު',
+'january-gen'   => 'ޖެނުއަރީ',
+'february-gen'  => 'ފެބްރުއަރީ',
+'march-gen'     => 'މާޗް',
+'april-gen'     => 'އޭޕްރިލް',
+'may-gen'       => 'މޭއި',
+'june-gen'      => 'ޖޫން',
+'july-gen'      => 'ޖުލައި',
+'august-gen'    => 'އޯގަސްޓް',
+'september-gen' => 'ސެޕްޓެމްބަރ',
+'october-gen'   => 'އޮކްޓޯބަރ',
+'november-gen'  => 'ނޮވެމްބަރ',
+'december-gen'  => 'ޑިސެމްބަރ',
+'jan'           => 'ޖެނުއަރީ',
+'feb'           => 'ފެބްރުއަރީ',
+'mar'           => 'މާޗް',
+'apr'           => 'އޭޕްރިލް',
+'may'           => 'މެއި',
+'jun'           => 'ޖޫން',
+'jul'           => 'ޖުލައި',
+'aug'           => 'އޯގަސްޓް',
+'sep'           => 'ސެޕްޓެމްބަރ',
+'oct'           => 'އޮކްޓޯބަރ',
+'nov'           => 'ނޮވެމްބަރ',
+'dec'           => 'ޑިސެމްބަރ',
 
 # Categories related messages
 'category_header' => 'ގިސްމު "$1" ގައިވާ މަޒުމޫނުތައް',
 'subcategories'   => 'ކުދިގިސްމުތައް',
 'category-empty'  => "''މި ގިސްމުގައި އެއްވެއސް ސަފްހާ އެއް އަދި އެއްވެސް ފައިލެއް ނުހިމެނެއެވެ.''",
 
-'about'         => 'ތާރަފު',
-'article'       => 'ފިހުރިސްތު ޞަފްޙާ',
-'newwindow'     => '(އާ ވިންޑޯ އެއް ހުޅުވޭނެއެވެ)',
-'cancel'        => 'މަންސޫހު',
+'about'      => 'ތާރަފު',
+'article'    => 'ފިހުރިސްތު ޞަފްޙާ',
+'newwindow'  => '(އާ ވިންޑޯ އެއް ހުޅުވޭނެއެވެ)',
+'cancel'     => 'މަންސޫހު',
+'mytalk'     => 'މަގޭ ވާހަކަ',
+'navigation' => 'ސަމުގާ',
+'and'        => '&#32;އަދި',
+
+# Cologne Blue skin
 'qbfind'        => 'ހޯއްދަވާ',
 'qbedit'        => 'އުނިއިތުރުގެންނަވާ',
 'qbpageoptions' => 'މި ޞަފްޙާ',
 'qbmyoptions'   => 'މަގޭ ސަފްހާ ތައް',
-'mytalk'        => 'މަގޭ ވާހަކަ',
-'navigation'    => 'ސަމުގާ',
-'and'           => '&#32;އަދި',
 
 'errorpagetitle'    => 'ކުށް',
 'returnto'          => 'އަނބުރާ $1 އަށް ވަޑައިގަންނަވާ!',
@@ -136,10 +150,13 @@ $messages = array(
 'delete'            => 'ފޮހެލައްވާ',
 'deletethispage'    => 'މި ޞަފްޙާ ފޮހެލައްވާ',
 'protect'           => 'ދިފާއުކުރައްވާ',
+'protect_change'    => 'ބަދަލު ގެންނަވާ',
 'protectthispage'   => 'މި ޞަފްޙާ ދިފާއުކުރައްވާ',
 'unprotect'         => 'ދިފާއުކުރުން ހުއްޓަވާލައްވާ',
 'unprotectthispage' => 'މި ޞަފްޙާ ދިފާއުކުރުން ހުއްޓަވާލައްވާ',
+'newpage'           => 'އާ ސަފްޙާ',
 'talkpage'          => 'މި ސަފްޙާއާ މެދު ބަހުސްކުރައްވާ',
+'talkpagelinktext'  => 'ޚިޔާލު ސަފްޙާ',
 'specialpage'       => 'ހާއްސަ ޞަފްޙާ',
 'articlepage'       => 'ފިހުރިސްތު ޞަފްޙާ ބައްލަވާ',
 'talk'              => 'ބަހުސް',
@@ -150,7 +167,7 @@ $messages = array(
 'otherlanguages'    => 'އެހެން ބަސްބަހުން',
 'redirectedfrom'    => '(މިސްރާބުކުރެވުނީ $1 އިން)',
 'redirectpagesub'   => 'ޞަފްޙާގެ މިސްރާބު އައުކުރައްވާ',
-'lastmodifiedat'    => 'މި ޞަފްހާ އަށް އެންމެ ފަހުން ބަދަލެއް ގެނެވިފައިވަނީ $1، $2 ގައެވެ.', # $1 date, $2 time
+'lastmodifiedat'    => 'މި ޞަފްހާ އަށް އެންމެ ފަހުން ބަދަލެއް ގެނެވިފައިވަނީ $1، $2 ގައެވެ.',
 'protectedpage'     => 'ދިފާއުކުރެވިފައިވާ ޞަފްޙާ',
 'jumptosearch'      => 'ހޯއްދަވާ',
 
@@ -163,6 +180,7 @@ $messages = array(
 'currentevents'        => 'ހިނގަމުންދާ ހާދިސާތައް',
 'disclaimers'          => 'އިއުލާނުތައް',
 'edithelp'             => 'ބަދަލުތައް ގެނައުމަށް އެހީ އެއް',
+'edithelppage'         => 'އެހީ: އުނިއިތުރު ގެންނެވުން',
 'helppage'             => 'Help:ފިހުރިސްތު',
 'mainpage'             => 'މައި ޞަފްޙާ',
 'mainpage-description' => 'މައި ޞަފްޙާ',
@@ -196,7 +214,6 @@ $messages = array(
 # Login and logout pages
 'welcomecreation'            => '== މަރުހަބާ، $1 ! ==
 ތިޔަބޭފުޅާގެ މެންބަރުޝިޕް ހެދިއްޖެއެވެ. ތިޔަ ބޭފުޅާގެ ވިކިޕީޑިއާގެ ތަރުޖީހުތައް ބަދަލުކުރައްވަން ހަނދުމަފުޅު ބަހައްޓަވާށެވެ.',
-'loginpagetitle'             => 'މެންބަރު ވެންނެވުން',
 'yourname'                   => 'މެންބަރުގެނަން',
 'yourpassword'               => 'ސިއްރުބަސް',
 'yourpasswordagain'          => 'ސިއްރުބަސް އަލުންލިޔުއްވާ',
@@ -208,12 +225,6 @@ $messages = array(
 'createaccount'              => 'މެންބަރަކަށް ވެ ވަޑައިގަންނަވާ',
 'badretype'                  => 'ތިޔަ ލިޔުއްވި ދެ ސިއްރުބަސް އެއް ސިއްރު ބަހާއި އަނެއް ސިއްރު ބަހާއި ދިމަލެއް ނުވޭ. އަދި ސިއްރުބަސް ރަނގަޅަށް ޖައްސަވާށެވެ!',
 'userexists'                 => 'ތިޔަ ލިޔުއްވި ނަން މިހާރުވެސް ދަނީ ބޭނުން ކުރެވެމުން، އައު ނަމެއް އިހުތިޔާރު ކުރައްވާ!',
-'youremail'                  => '٭ އީމޭލު',
-'username'                   => 'މެންބަރުނަން:',
-'yourrealname'               => '* އަސްލު ނަން',
-'yourlanguage'               => 'ބަސް:',
-'yournick'                   => 'ލަގަބު/ކުއްނިއްޔާ:',
-'email'                      => 'އީމޭލު',
 'wrongpassword'              => 'ތިޔަ ލިޔުއްވި ސިއްރުބަސް އަދި ރަނގަޅެއް ނޫނެވެ! އަދި މަސައްކަތް ކޮށްލައްވާށެވެ!',
 'wrongpasswordempty'         => 'ތިޔަ ލިޔުއްވި ސިއްރުބަހެއް ނޭނގުނު. އަލުން މަސައްކަތް ކޮށްލައްވާ!',
 'mailmypassword'             => 'ސިއްރުބަސް އީމޭލުކުރައްވާ',
@@ -282,10 +293,16 @@ $messages = array(
 'mypreferences'  => 'މަގޭ ތަރުޖީހުތައް',
 'changepassword' => 'ސިއްރުބަސް ބަދަލުކުރައްވާ',
 'columns'        => 'ކޮލަންތައް:',
-'files'          => 'ފައިލުތައް',
+'prefs-files'    => 'ފައިލުތައް',
+'youremail'      => '٭ އީމޭލު',
+'username'       => 'މެންބަރުނަން:',
+'yourrealname'   => '* އަސްލު ނަން',
+'yourlanguage'   => 'ބަސް:',
+'yournick'       => 'ލަގަބު/ކުއްނިއްޔާ:',
+'email'          => 'އީމޭލު',
 
 # User rights
-'userrights'               => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް', # Not used as normal message but as header for the special page itself
+'userrights'               => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް',
 'userrights-user-editname' => 'މެންބަރުނަން ލިޔުއްވާ:',
 
 # Recent changes
@@ -296,7 +313,9 @@ $messages = array(
 'show'              => 'ދައްކަވާ',
 
 # Recent changes linked
-'recentchangeslinked' => 'ގުޅުންހުރި ބަދަލުތައް',
+'recentchangeslinked'         => 'ގުޅުންހުރި ބަދަލުތައް',
+'recentchangeslinked-feed'    => 'ގުޅުންހުރި ބަދަލުތައް',
+'recentchangeslinked-toolbox' => 'ގުޅުންހުރި ބަދަލުތައް',
 
 # Upload
 'upload'            => 'ފައިލު ފޮނުވާ',
@@ -392,6 +411,8 @@ $messages = array(
 'contributions' => 'މެންބަރު ގެ ހިއްސާ',
 'mycontris'     => 'މަގޭ ހިއްސާ',
 
+'sp-contributions-userrights' => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް',
+
 # What links here
 'whatlinkshere' => 'މިއާ ގުޅެނީ ކޮންއެއްޗެއް',
 
@@ -400,7 +421,7 @@ $messages = array(
 'ipbreason'         => 'ސަބަބު',
 'ipbsubmit'         => 'މި މެމްބަރާއި މެދު ފިޔަވަޅު އަޅުއްވާ!',
 'badipaddress'      => 'ނުރަނގަޅު އައި.ޕީ އެޑްރެހެއް',
-'expiringblock'     => 'މުއްދަތު ހަމަވާނީ $1',
+'expiringblock'     => 'މުއްދަތު ހަމަވާނީ $1 $2',
 'blocklink'         => 'ފިޔަވަޅުއަޅުއްވާ',
 'contribslink'      => 'ޙިއްޞާ',
 'proxyblocksuccess' => 'ފުރިހަމަވެއްޖެ.',
@@ -444,7 +465,7 @@ $messages = array(
 'exif-artist'           => 'މުސައްނިފު',
 'exif-filesource'       => 'ފައިލުގެ މަސްދަރު',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-n' => 'ތަސްވީރުގެ ސުރުހީ',
 
 # 'all' in various places, this might be different for inflected languages
@@ -459,7 +480,7 @@ $messages = array(
 'confirm_purge_button' => 'ރަނގަޅު',
 
 # Special:Version
-'version' => 'ނުސްހާ ނަމްބަރު', # Not used as normal message but as header for the special page itself
+'version' => 'ނުސްހާ ނަމްބަރު',
 
 # Special:SpecialPages
 'specialpages' => 'ހާއްސަ ޞަފްޙާތައް',

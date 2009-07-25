@@ -10,7 +10,7 @@
 /**
  * @ingroup Database
  */
-class DatabaseMssql extends Database {
+class DatabaseMssql extends DatabaseBase {
 
 	var $mAffectedRows;
 	var $mLastResult;
@@ -708,13 +708,6 @@ class DatabaseMssql extends Database {
 	}
 
 	/**
-	 * USE INDEX clause
-	 */
-	function useIndexClause( $index ) {
-		return "";
-	}
-
-	/**
 	 * REPLACE query wrapper
 	 * PostgreSQL simulates this with a DELETE followed by INSERT
 	 * $row is the row to insert, an associative array
@@ -858,18 +851,6 @@ class DatabaseMssql extends Database {
 	}
 
 	/**
-	 * Returns an SQL expression for a simple conditional.
-	 *
-	 * @param $cond String: SQL expression which will result in a boolean value
-	 * @param $trueVal String: SQL expression to return if true
-	 * @param $falseVal String: SQL expression to return if false
-	 * @return string SQL fragment
-	 */
-	function conditional( $cond, $trueVal, $falseVal ) {
-		return " (CASE WHEN $cond THEN $trueVal ELSE $falseVal END) ";
-	}
-
-	/**
 	 * Should determine if the last failure was due to a deadlock
 	 * @return bool
 	 */
@@ -919,6 +900,13 @@ class DatabaseMssql extends Database {
 	}
 
 	/**
+	 * @return String: Database type for use in messages
+	*/
+	function getDBtypeForMsg() {
+		return 'Microsoft SQL Server';
+	}
+
+	/**
 	 * @return string Version information from the database
 	 */
 	function getServerVersion() {
@@ -928,16 +916,6 @@ class DatabaseMssql extends Database {
 
 	function limitResultForUpdate($sql, $num) {
 		return $sql;
-	}
-
-	/**
-	 * not done
-	 */
-	public function setTimeout($timeout) { return; }
-
-	function ping() {
-		wfDebug("Function ping() not written for MSSQL yet");
-		return true;
 	}
 
 	/**
@@ -1014,7 +992,6 @@ class DatabaseMssql extends Database {
 	public function getSearchEngine() {
 		return "SearchEngineDummy";
 	}
-
 }
 
 /**

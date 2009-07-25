@@ -15,6 +15,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$opts = parent::getDefaultOptions();
 		$opts->add( 'target', '' );
 		$opts->add( 'showlinkedto', false );
+		$opts->add( 'tagfilter', '' );
 		return $opts;
 	}
 
@@ -22,9 +23,10 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$opts['target'] = $par;
 	}
 
-	public function feedSetup(){
+	public function feedSetup() {
 		global $wgRequest;
 		$opts = parent::feedSetup();
+		# Feed is cached on limit,hideminor,target; other params would randomly not work
 		$opts['target'] = $wgRequest->getVal( 'target' );
 		return $opts;
 	}
@@ -33,7 +35,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$feed = new ChangesFeed( $feedFormat, false );
 		$feedObj = $feed->getFeedObject(
 			wfMsgForContent( 'recentchangeslinked-title', $this->mTargetTitle->getPrefixedText() ),
-			wfMsgForContent( 'recentchangeslinked' )
+			wfMsgForContent( 'recentchangeslinked-feed' )
 		);
 		return array( $feed, $feedObj );
 	}
@@ -74,6 +76,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$tables = array( 'recentchanges' );
 		$select = array( $dbr->tableName( 'recentchanges' ) . '.*' );
 		$join_conds = array();
+		$query_options = array();
 
 		// left join with watchlist table to highlight watched rows
 		if( $uid = $wgUser->getId() ) {
@@ -81,6 +84,9 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$select[] = 'wl_user';
 			$join_conds['watchlist'] = array( 'LEFT JOIN', "wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace" );
 		}
+
+		ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds,
+			$query_options, $opts['tagfilter'] );
 
 		// XXX: parent class does this, should we too?
 		// wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
@@ -133,9 +139,14 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 				}
 			}
 
-			$subsql[] = $dbr->selectSQLText( array_merge( $tables, array( $link_table ) ), $select, $conds + $subconds,
-							 __METHOD__, array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit ),
-							 $join_conds + array( $link_table => array( 'INNER JOIN', $subjoin ) ) );
+			$subsql[] = $dbr->selectSQLText( 
+				array_merge( $tables, array( $link_table ) ), 
+				$select, 
+				$conds + $subconds,
+				__METHOD__, 
+				array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit ) + $query_options,
+				$join_conds + array( $link_table => array( 'INNER JOIN', $subjoin ) )
+			);
 		}
 
 		if( count($subsql) == 0 )
@@ -144,9 +155,10 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$sql = $subsql[0];
 		else {
 			// need to resort and relimit after union
-			$sql = "(" . implode( ") UNION (", $subsql ) . ") ORDER BY rc_timestamp DESC LIMIT {$limit}";
+			$sql = $dbr->unionQueries($subsql, false).' ORDER BY rc_timestamp DESC';
+			$sql = $dbr->limitResult($sql, $limit, false);
 		}
-
+		
 		$res = $dbr->query( $sql, __METHOD__ );
 
 		if( $res->numRows() == 0 )
@@ -159,10 +171,13 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$opts->consumeValues( array( 'showlinkedto', 'target' ) );
 		$extraOpts = array();
 		$extraOpts['namespace'] = $this->namespaceFilterForm( $opts );
-		$extraOpts['target'] = array( wfMsg( 'recentchangeslinked-page' ),
+		$extraOpts['target'] = array( wfMsgHtml( 'recentchangeslinked-page' ),
 			Xml::input( 'target', 40, str_replace('_',' ',$opts['target']) ) .
 			Xml::check( 'showlinkedto', $opts['showlinkedto'], array('id' => 'showlinkedto') ) . ' ' .
 			Xml::label( wfMsg("recentchangeslinked-to"), 'showlinkedto' ) );
+		$tagFilter = ChangeTags::buildTagFilterSelector( $opts['tagfilter'] );
+		if ($tagFilter)
+			$extraOpts['tagfilter'] = $tagFilter;
 		return $extraOpts;
 	}
 
@@ -176,7 +191,6 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 
 	function setBottomText( OutputPage $out, FormOptions $opts ){
 		if( isset( $this->mTargetTitle ) && is_object( $this->mTargetTitle ) ){
-			global $wgUser;
 			$out->setFeedAppendQuery( "target=" . urlencode( $this->mTargetTitle->getPrefixedDBkey() ) );
 		}
 		if( isset( $this->mResultEmpty ) && $this->mResultEmpty ){

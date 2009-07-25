@@ -586,7 +586,7 @@ abstract class File {
 		} while (false);
 
 		wfProfileOut( __METHOD__ );
-		return $thumb;
+		return is_object( $thumb ) ? $thumb : false;
 	}
 
 	/**
@@ -746,15 +746,6 @@ abstract class File {
 		return $path;
 	}
 
-	/** Get relative path for a thumbnail file */
-	function getThumbRel( $suffix = false ) {
-		$path = 'thumb/' . $this->getRel();
-		if ( $suffix !== false ) {
-			$path .= '/' . $suffix;
-		}
-		return $path;
-	}
-
 	/** Get the path of the archive directory, or a particular file if $suffix is specified */
 	function getArchivePath( $suffix = false ) {
 		return $this->repo->getZonePath('public') . '/' . $this->getArchiveRel( $suffix );
@@ -762,7 +753,11 @@ abstract class File {
 
 	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
 	function getThumbPath( $suffix = false ) {
-		return $this->repo->getZonePath('public') . '/' . $this->getThumbRel( $suffix );
+		$path = $this->repo->getZonePath('thumb') . '/' . $this->getRel();
+		if ( $suffix !== false ) {
+			$path .= '/' . $suffix;
+		}
+		return $path;
 	}
 
 	/** Get the URL of the archive directory, or a particular file if $suffix is specified */
@@ -778,7 +773,7 @@ abstract class File {
 
 	/** Get the URL of the thumbnail directory, or a particular file if $suffix is specified */
 	function getThumbUrl( $suffix = false ) {
-		$path = $this->repo->getZoneUrl('public') . '/thumb/' . $this->getUrlRel();
+		$path = $this->repo->getZoneUrl('thumb') . '/' . $this->getUrlRel();
 		if ( $suffix !== false ) {
 			$path .= '/' . rawurlencode( $suffix );
 		}
@@ -798,7 +793,7 @@ abstract class File {
 
 	/** Get the virtual URL for a thumbnail file or directory */
 	function getThumbVirtualUrl( $suffix = false ) {
-		$path = $this->repo->getVirtualUrl() . '/public/thumb/' . $this->getUrlRel();
+		$path = $this->repo->getVirtualUrl() . '/thumb/' . $this->getUrlRel();
 		if ( $suffix !== false ) {
 			$path .= '/' . rawurlencode( $suffix );
 		}
@@ -865,22 +860,23 @@ abstract class File {
 	 *
 	 * @deprecated Use HTMLCacheUpdate, this function uses too much memory
 	 */
-	function getLinksTo( $options = '' ) {
+	function getLinksTo( $options = array() ) {
 		wfProfileIn( __METHOD__ );
 
 		// Note: use local DB not repo DB, we want to know local links
-		if ( $options ) {
+		if ( count( $options ) > 0 ) {
 			$db = wfGetDB( DB_MASTER );
 		} else {
 			$db = wfGetDB( DB_SLAVE );
 		}
 		$linkCache = LinkCache::singleton();
 
-		list( $page, $imagelinks ) = $db->tableNamesN( 'page', 'imagelinks' );
 		$encName = $db->addQuotes( $this->getName() );
-		$sql = "SELECT page_namespace,page_title,page_id,page_len,page_is_redirect,
-			FROM $page,$imagelinks WHERE page_id=il_from AND il_to=$encName $options";
-		$res = $db->query( $sql, __METHOD__ );
+		$res = $db->select( array( 'page', 'imagelinks'), 
+							array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect' ),
+							array( 'page_id' => 'il_from', 'il_to' => $encName ),
+							__METHOD__,
+							$options );
 
 		$retVal = array();
 		if ( $db->numRows( $res ) ) {
@@ -950,7 +946,7 @@ abstract class File {
 	 */
 	function wasDeleted() {
 		$title = $this->getTitle();
-		return $title && $title->isDeleted() > 0;
+		return $title && $title->isDeletedQuick();
 	}
 
 	/**
@@ -1068,15 +1064,16 @@ abstract class File {
 	 * Get the HTML text of the description page, if available
 	 */
 	function getDescriptionText() {
-		global $wgMemc;
+		global $wgMemc, $wgContLang;
 		if ( !$this->repo->fetchDescription ) {
 			return false;
 		}
-		$renderUrl = $this->repo->getDescriptionRenderUrl( $this->getName() );
+		$renderUrl = $this->repo->getDescriptionRenderUrl( $this->getName(), $wgContLang->getCode() );
 		if ( $renderUrl ) {
 			if ( $this->repo->descriptionCacheExpiry > 0 ) {
 				wfDebug("Attempting to get the description from cache...");
-				$key = wfMemcKey( 'RemoteFileDescription', 'url', md5($renderUrl) );
+				$key = $this->repo->getLocalCacheKey( 'RemoteFileDescription', 'url', $wgContLang->getCode(), 
+									$this->getName() );
 				$obj = $wgMemc->get($key);
 				if ($obj) {
 					wfDebug("success!\n");
@@ -1086,7 +1083,9 @@ abstract class File {
 			}
 			wfDebug( "Fetching shared description from $renderUrl\n" );
 			$res = Http::get( $renderUrl );
-			if ( $res && $this->repo->descriptionCacheExpiry > 0 ) $wgMemc->set( $key, $res, $this->repo->descriptionCacheExpiry );
+			if ( $res && $this->repo->descriptionCacheExpiry > 0 ) {
+				$wgMemc->set( $key, $res, $this->repo->descriptionCacheExpiry );
+			}
 			return $res;
 		} else {
 			return false;
@@ -1118,6 +1117,19 @@ abstract class File {
 	 */
 	function getSha1() {
 		return self::sha1Base36( $this->getPath() );
+	}
+
+	/**
+	 * Get the deletion archive key, <sha1>.<ext>
+	 */
+	function getStorageKey() {
+		$hash = $this->getSha1();
+		if ( !$hash ) {
+			return false;
+		}
+		$ext = $this->getExtension();
+		$dotExt = $ext === '' ? '' : ".$ext";
+		return $hash . $dotExt;				
 	}
 
 	/**
@@ -1254,6 +1266,10 @@ abstract class File {
 
 	function redirectedFrom( $from ) {
 		$this->redirected = $from;
+	}
+
+	function isMissing() {
+		return false;
 	}
 }
 /**

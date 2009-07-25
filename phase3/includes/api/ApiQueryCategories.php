@@ -53,7 +53,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			return;	// nothing to do
 
 		$params = $this->extractRequestParams();
-		$prop = $params['prop'];
+		$prop = array_flip((array)$params['prop']);
 		$show = array_flip((array)$params['show']);
 
 		$this->addFields(array (
@@ -61,26 +61,24 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			'cl_to'
 		));
 
-		$fld_sortkey = $fld_timestamp = false;
-		if (!is_null($prop)) {
-			foreach($prop as $p) {
-				switch ($p) {
-					case 'sortkey':
-						$this->addFields('cl_sortkey');
-						$fld_sortkey = true;
-						break;
-					case 'timestamp':
-						$this->addFields('cl_timestamp');
-						$fld_timestamp = true;
-						break;
-					default :
-						ApiBase :: dieDebug(__METHOD__, "Unknown prop=$p");
-				}
-			}
-		}
+		$this->addFieldsIf('cl_sortkey', isset($prop['sortkey']));
+		$this->addFieldsIf('cl_timestamp', isset($prop['timestamp']));
 
 		$this->addTables('categorylinks');
 		$this->addWhereFld('cl_from', array_keys($this->getPageSet()->getGoodTitles()));
+		if(!is_null($params['categories']))
+		{
+			$cats = array();
+			foreach($params['categories'] as $cat)
+			{
+				$title = Title::newFromText($cat);
+				if(!$title || $title->getNamespace() != NS_CATEGORY)
+					$this->setWarning("``$cat'' is not a category");
+				else
+					$cats[] = $title->getDBkey();
+			}
+			$this->addWhereFld('cl_to', $cats);
+		}
 		if(!is_null($params['continue'])) {
 			$cont = explode('|', $params['continue']);
 			if(count($cont) != 2)
@@ -94,10 +92,11 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 		}
 		if(isset($show['hidden']) && isset($show['!hidden']))
 			$this->dieUsage("Incorrect parameter - mutually exclusive values may not be supplied", 'show');
-		if(isset($show['hidden']) || isset($show['!hidden']))
+		if(isset($show['hidden']) || isset($show['!hidden']) || isset($prop['hidden']))
 		{
 			$this->addOption('STRAIGHT_JOIN');
 			$this->addTables(array('page', 'page_props'));
+			$this->addFieldsIf('pp_propname', isset($prop['hidden']));
 			$this->addJoinConds(array(
 				'page' => array('LEFT JOIN', array(
 					'page_namespace' => NS_CATEGORY,
@@ -108,10 +107,11 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			));
 			if(isset($show['hidden']))
 				$this->addWhere(array('pp_propname IS NOT NULL'));
-			else
+			else if(isset($show['!hidden']))
 				$this->addWhere(array('pp_propname IS NULL'));
 		}
 
+		$this->addOption('USE INDEX', array('categorylinks' => 'cl_from'));
 		# Don't order by cl_from if it's constant in the WHERE clause
 		if(count($this->getPageSet()->getGoodTitles()) == 1)
 			$this->addOption('ORDER BY', 'cl_to');
@@ -123,8 +123,6 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 
 		if (is_null($resultPageSet)) {
 
-			$data = array();
-			$lastId = 0;	// database has no ID 0
 			$count = 0;
 			while ($row = $db->fetchObject($res)) {
 				if (++$count > $params['limit']) {
@@ -134,30 +132,25 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 							'|' . $this->keyToTitle($row->cl_to));
 					break;
 				}
-				if ($lastId != $row->cl_from) {
-					if($lastId != 0) {
-						$this->addPageSubItems($lastId, $data);
-						$data = array();
-					}
-					$lastId = $row->cl_from;
-				}
 
 				$title = Title :: makeTitle(NS_CATEGORY, $row->cl_to);
-
 				$vals = array();
 				ApiQueryBase :: addTitleInfo($vals, $title);
-				if ($fld_sortkey)
+				if (isset($prop['sortkey']))
 					$vals['sortkey'] = $row->cl_sortkey;
-				if ($fld_timestamp)
+				if (isset($prop['timestamp']))
 					$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->cl_timestamp);
+				if (isset($prop['hidden']) && !is_null($row->pp_propname))
+					$vals['hidden'] = '';
 
-				$data[] = $vals;
+				$fit = $this->addPageSubItem($row->cl_from, $vals);
+				if(!$fit)
+				{
+					$this->setContinueEnumParameter('continue', $row->cl_from .
+							'|' . $this->keyToTitle($row->cl_to));
+					break;
+				}
 			}
-
-			if($lastId != 0) {
-				$this->addPageSubItems($lastId, $data);
-			}
-
 		} else {
 
 			$titles = array();
@@ -185,6 +178,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 				ApiBase :: PARAM_TYPE => array (
 					'sortkey',
 					'timestamp',
+					'hidden',
 				)
 			),
 			'show' => array(
@@ -202,6 +196,9 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
 			'continue' => null,
+			'categories' => array(
+				ApiBase :: PARAM_ISMULTI => true,
+			),
 		);
 	}
 
@@ -211,6 +208,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			'limit' => 'How many categories to return',
 			'show' => 'Which kind of categories to show',
 			'continue' => 'When more results are available, use this to continue',
+			'categories' => 'Only list these categories. Useful for checking whether a certain page is in a certain category',
 		);
 	}
 

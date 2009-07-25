@@ -1,10 +1,14 @@
 <?php
 /** Seeltersk (Seeltersk)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
  * @author Maartenvdbent
+ * @author Purodha
  * @author Pyt
  * @author Urhixidur
  */
@@ -12,22 +16,22 @@
 $fallback = 'de';
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Media',
-	NS_SPECIAL        => 'Spezial',
-	NS_TALK           => 'Diskussion',
-	NS_USER           => 'Benutser',
-	NS_USER_TALK      => 'Benutser_Diskussion',
-	NS_PROJECT_TALK   => '$1_Diskussion',
-	NS_FILE           => 'Bielde',
-	NS_FILE_TALK      => 'Bielde_Diskussion',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'MediaWiki_Diskussion',
-	NS_TEMPLATE       => 'Foarloage',
-	NS_TEMPLATE_TALK  => 'Foarloage_Diskussion',
-	NS_HELP           => 'Hälpe',
-	NS_HELP_TALK      => 'Hälpe_Diskussion',
-	NS_CATEGORY       => 'Kategorie',
-	NS_CATEGORY_TALK  => 'Kategorie_Diskussion',
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Spezial',
+	NS_TALK             => 'Diskussion',
+	NS_USER             => 'Benutser',
+	NS_USER_TALK        => 'Benutser_Diskussion',
+	NS_PROJECT_TALK     => '$1_Diskussion',
+	NS_FILE             => 'Bielde',
+	NS_FILE_TALK        => 'Bielde_Diskussion',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_Diskussion',
+	NS_TEMPLATE         => 'Foarloage',
+	NS_TEMPLATE_TALK    => 'Foarloage_Diskussion',
+	NS_HELP             => 'Hälpe',
+	NS_HELP_TALK        => 'Hälpe_Diskussion',
+	NS_CATEGORY         => 'Kategorie',
+	NS_CATEGORY_TALK    => 'Kategorie_Diskussion',
 );
 
 $messages = array(
@@ -36,7 +40,9 @@ $messages = array(
 'tog-highlightbroken'         => 'Ätterdruk lääse ap Ferwiese ätter loose Themen',
 'tog-justify'                 => 'Text as Bloksats',
 'tog-hideminor'               => 'Litje Annerengen uutbländje',
-'tog-extendwatchlist'         => 'Uutdiende Beooboachtengslieste',
+'tog-hidepatrolled'           => 'Kontrollierde Annerengen in do "Lääste Annerengen" uutbländje',
+'tog-newpageshidepatrolled'   => 'Kontrollierde Sieden ap ju Lieste „Näie Sieden“ ferbierge',
+'tog-extendwatchlist'         => 'Uutgediende Beooboachtengslieste tou Anwiesenge fon aal Annerengen',
 'tog-usenewrc'                => 'Fermeerde Deerstaalenge (bruukt Javascript)',
 'tog-numberheadings'          => 'Uurschrifte automatisk nuumerierje',
 'tog-showtoolbar'             => 'Beoarbaidengs-Reewen anwiese',
@@ -70,6 +76,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Litje Biedraage in ju Beooboachtengslieste ferbierge',
 'tog-watchlisthideliu'        => 'Beoarbaidengen truch ounmäldede Benutsere in ju Beoboachtengslieste uutbländje',
 'tog-watchlisthideanons'      => 'Beoarbaidengen truch anonyme Benutsere (IP) in ju Beoboachtengslieste uutbländje',
+'tog-watchlisthidepatrolled'  => 'Kontrollierde Annerengen in ju Beooboachtengslieste "Lääste Annerengen" uutbländje',
 'tog-nolangconversion'        => 'Konvertierenge fon Sproakvarianten deaktivierje',
 'tog-ccmeonemails'            => 'Seend mie Kopien fon do E-Maile, do iek uur Benutsere seende.',
 'tog-diffonly'                => 'Wies bie dän Versionsfergliek bloot do Unnerscheede, nit ju fulboodige Siede',
@@ -139,7 +146,7 @@ $messages = array(
 'category-media-header'          => 'Media in Kategorie "$1"',
 'category-empty'                 => "''Disse Kategorie is loos.''",
 'hidden-categories'              => '{{PLURAL:$1|Ferstatte Kategorie|Ferstatte Kategorien}}',
-'hidden-category-category'       => 'Ferstatte Kategorien', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Ferstatte Kategorien',
 'category-subcat-count'          => '{{PLURAL:$2|Disse Kategorie änthaalt foulgjende Unnerkategorie:|{{PLURAL:$1|Foulgjende Unnerkategorie is een fon mädnunner $2 Unnerkategorien in disse Kategorie:|Der wäide $1 fon mädnunner $2 Unnerkategorien in disse Kategorie anwiesd:}}}}',
 'category-subcat-count-limited'  => 'Disse Kategorie änthaalt foulgjende {{PLURAL:$1|Unnerkategorie|$1 Unnerkategorien}}:',
 'category-article-count'         => '{{PLURAL:$2|Disse Kategorie änthaalt foulgjende Siede:|{{PLURAL:$1|Foulgjende Siede is een fon mädnunner $2 Sieden in disse Kategorie:|Der wäide $1 fon mädnunner $2 Sieden in disse Kategorie anwiesd:}}}}',
@@ -148,13 +155,21 @@ $messages = array(
 'category-file-count-limited'    => 'Foulgjende {{PLURAL:$1|Doatäi is|$1 Doatäie sunt}} in disse Kategorie äntheelden:',
 'listingcontinuesabbrev'         => '(Foutsättenge)',
 
-'mainpagetext'      => 'Ju Wiki Software wuude mäd Ärfoulch installierd!',
+'mainpagetext'      => "<big>'''Ju MediaWiki Software wuude mäd Ärfoulch installierd.'''</big>",
 'mainpagedocfooter' => 'Sjuch ju [http://meta.wikimedia.org/wiki/MediaWiki_localization Dokumentation tou de Anpaasenge fon dän Benutseruurfläche] un dät [http://meta.wikimedia.org/wiki/Help:Contents Benutserhondbouk] foar Hälpe tou ju Benutsenge un Konfiguration.',
 
-'about'          => 'Uur',
-'article'        => 'Inhoold Siede',
-'newwindow'      => '(eepent in näi Finster)',
-'cancel'         => 'Oubreeke',
+'about'         => 'Uur',
+'article'       => 'Inhoold Siede',
+'newwindow'     => '(eepent in näi Finster)',
+'cancel'        => 'Oubreeke',
+'moredotdotdot' => 'Moor …',
+'mypage'        => 'Oaine Siede',
+'mytalk'        => 'Oaine Diskussion',
+'anontalk'      => 'Diskussionssiede foar dissen IP',
+'navigation'    => 'Navigation',
+'and'           => '&#32;un',
+
+# Cologne Blue skin
 'qbfind'         => 'Fiende',
 'qbbrowse'       => 'Bleederje',
 'qbedit'         => 'Annerje',
@@ -162,12 +177,8 @@ $messages = array(
 'qbpageinfo'     => 'Siedendoatäie',
 'qbmyoptions'    => 'Mien Sieden',
 'qbspecialpages' => 'Spezialsieden',
-'moredotdotdot'  => 'Moor …',
-'mypage'         => 'Oaine Siede',
-'mytalk'         => 'Oaine Diskussion',
-'anontalk'       => 'Diskussionssiede foar dissen IP',
-'navigation'     => 'Navigation',
-'and'            => '&#32;un',
+'faq'            => 'Oafte stoalde Froagen',
+'faqpage'        => 'Project:FAQ',
 
 # Metadata in edit box
 'metadata_help' => 'Metadoatäie:',
@@ -176,8 +187,8 @@ $messages = array(
 'returnto'          => 'Tourääch tou Siede $1.',
 'tagline'           => 'Uut {{SITENAME}}',
 'help'              => 'Hälpe',
-'search'            => 'Säike',
-'searchbutton'      => 'Säike',
+'search'            => 'Säike (0)',
+'searchbutton'      => 'Säike (07)',
 'go'                => 'Uutfiere',
 'searcharticle'     => 'Siede',
 'history'           => 'Versione',
@@ -204,14 +215,14 @@ $messages = array(
 'talkpagelinktext'  => 'Diskussion',
 'specialpage'       => 'Spezioalsiede',
 'personaltools'     => 'Persöönelke Reewen',
-'postcomment'       => 'Kommentoar touföigje',
+'postcomment'       => 'Näi Stuk',
 'articlepage'       => 'Siede',
 'talk'              => 'Diskussion',
 'views'             => 'Anwiesengen',
 'toolbox'           => 'Reewen',
 'userpage'          => 'Benutsersiede',
 'projectpage'       => 'Meta-Text',
-'imagepage'         => 'Bekiekje Bieldesiede',
+'imagepage'         => 'Doatäisiede',
 'mediawikipage'     => 'Inhooldssiede anwiese',
 'templatepage'      => 'Foarloagensiede anwiese',
 'viewhelppage'      => 'Hälpesiede anwiese',
@@ -220,12 +231,12 @@ $messages = array(
 'otherlanguages'    => 'Uur Sproaken',
 'redirectedfrom'    => '(Fäärelaited fon $1)',
 'redirectpagesub'   => 'Fäärelaitenge',
-'lastmodifiedat'    => 'Disse Siede wuude toulääst annerd uum $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Disse Siede wuude toulääst annerd uum $2, $1.',
 'viewcount'         => 'Disse Siede wuude bit nu {{PLURAL:$1|eenmoal|$1 moal}} ouruupen.',
 'protectedpage'     => 'Schutsede Siede',
 'jumpto'            => 'Wikselje tou:',
 'jumptonavigation'  => 'Navigation',
-'jumptosearch'      => 'Säike',
+'jumptosearch'      => 'Säike (08)',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Uur {{SITENAME}}',
@@ -239,8 +250,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Siede tou Begriepskläärenge',
 'edithelp'             => 'Beoarbaidengshälpe',
 'edithelppage'         => 'Help:Beoarbaidengshälpe',
-'faq'                  => 'Oafte stoalde Froagen',
-'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:Hälpe',
 'mainpage'             => 'Haudsiede',
 'mainpage-description' => 'Haudsiede',
@@ -257,7 +266,7 @@ $messages = array(
 'versionrequired'     => 'Version $1 fon MediaWiki is nöödich',
 'versionrequiredtext' => 'Version $1 fon MediaWiki is nöödich uum disse Siede tou nutsjen. Sjuch ju [[Special:Version|Versionssiede]]',
 
-'ok'                      => 'Säike',
+'ok'                      => 'Säike (09)',
 'retrievedfrom'           => 'Fon "$1"',
 'youhavenewmessages'      => 'Du hääst $1 ($2).',
 'newmessageslink'         => 'näie Ättergjuchte',
@@ -285,10 +294,10 @@ $messages = array(
 'red-link-title'          => '$1 (Siede nit deer)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'Artikkel',
+'nstab-main'      => 'Siede',
 'nstab-user'      => 'Benutsersiede',
 'nstab-media'     => 'Media',
-'nstab-special'   => 'Spezial',
+'nstab-special'   => 'Spezioalsiede',
 'nstab-project'   => 'Projektsiede',
 'nstab-image'     => 'Bielde',
 'nstab-mediawiki' => 'Ättergjucht',
@@ -298,7 +307,9 @@ $messages = array(
 
 # Main script and global functions
 'nosuchaction'      => 'Disse Aktion rakt et nit',
-'nosuchactiontext'  => 'Disse Aktion wäd fon dän MediaWiki-Software nit unnerstöänd.',
+'nosuchactiontext'  => 'Ju in de URL anroate Aktion wäd fon MediaWiki nit unnerstöänd.
+Der kon n Schrieuwfailer in de URL foarlääse of der wuud n wrakken Link anklikt.
+Dät kon sik uk uum n Bug ap {{SITENAME}} honnelje.',
 'nosuchspecialpage' => 'Disse Spezialsiede rakt et nit',
 'nospecialpagetext' => 'Disse Spezialsiede wäd fon dän MediaWiki-Software nit unnerstöänd.',
 
@@ -306,14 +317,10 @@ $messages = array(
 'error'                => 'Failer',
 'databaseerror'        => 'Failer in ju Doatenboank',
 'dberrortext'          => 'Dät roat n Syntaxfailer in dän Doatenboankoufroage. Ju lääste Doatenboankoufroage lutte:
-<blockquote><tt>$1</tt></blockquote> uut de Funktion "<tt>$2</tt>". MySQL mäldede dän Failer "<tt>$3: $4</tt>".',
+<blockquote><tt>$1</tt></blockquote> uut de Funktion "<tt>$2</tt>". $5 mäldede dän Failer "<tt>$3: $4</tt>".',
 'dberrortextcl'        => 'Dät roate n Syntaxfailer in ju Doatenboankoufroage.
 Ju lääste Doatenboankoufroage lutte: „$1“ uut ju Funktion „<tt>$2</tt>“.
 MySQL mäldede dän Failer: „<tt>$3: $4</tt>“.',
-'noconnect'            => 'In dän Wiki sunt techniske Swierelkhaide aptreeden; der kuude neen Ferbiendenge tou ju Doatenboank apbaud wäide. <br />
-$1',
-'nodb'                 => 'Kuude Doatenboank $1 nit beloangje',
-'cachederror'          => 'Dät Foulgjende is ne Kopie uut de Cache un is fielicht ferallerd.',
 'laggedslavemode'      => 'Woarschauenge: Ju anwiesde Siede kon unner Umstande do jungste Beoarbaidengen noch nit be-ienhoolde.',
 'readonly'             => 'Doatenboank is speerd',
 'enterlockreason'      => 'Reeke jädden n Gruund ien, wieruum ju Doatenboank speerd wäide schuul un ne Ouschätsenge uur ju Duur fon ju Speerenge',
@@ -328,7 +335,7 @@ Fals dit nit die Fal is, hääst du eventuäl n Failer in ju Software fuunen.
 Mäld dit n [[Special:ListUsers/sysop|Administrator]] unner Naamenge fon ju URL.',
 'missingarticle-rev'   => '(Versionsnuumer: $1)',
 'missingarticle-diff'  => '(Unnerscheed twiske Versione: $1, $2)',
-'readonly_lag'         => 'Dät Spiekerjen fon Annerengen wuude foar ne kuute Tied automatisk speerd, uum doo Doatenboank-Servere fon dän Wikipedia Tied tou reeken, do Inhoolde unnernunner outouglieken. Fersäik dät jädden in n poor Minuten noch moal.',
+'readonly_lag'         => 'Dät Spiekerjen fon Annerengen wuude foar ne kuute Tied automatisk speerd, uum doo Doatenboank-Servere Tied tou reeken, do Inhoolde unnernunner outouglieken.',
 'internalerror'        => 'Interne Failer',
 'internalerror_info'   => 'Interne Failer: $1',
 'filecopyerror'        => 'Kuude Doatäi "$1" nit ätter "$2" kopierje.',
@@ -358,7 +365,7 @@ Oufroage: $2',
 'protectedinterface'   => 'Disse Siede änthaalt Text foar dät Sproak-Interface fon ju Software un is speerd, uum Misbruuk tou ferhinnerjen.',
 'editinginterface'     => "'''Woarschauenge:''' Du beoarbaidest ne Siede ju der bruukt wäd, Interface-Text foar ju Software tou lääwerjen.
 Annerengen ap disse Siede wirkje sik uut ap ju Benutseruurfläche foar uur Bruukere.
-Foar Uursättengen koast du fielicht beeter [http://translatewiki.net/wiki/Main_Page?setlang=en Betawiki] bruuke, dät is dät MediaWiki Lokalisierengsprojekt.",
+Foar Uursättengen koast du fielicht beeter [http://translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net] bruuke, dät is dät MediaWiki Lokalisierengsprojekt.",
 'sqlhidden'            => '(SQL-Oufroage ferbierged)',
 'cascadeprotected'     => 'Disse Siede is tou Beoarbaidenge speerd. Ju is in do {{PLURAL:$1|foulgjende Siede|foulgjende Sieden}} ienbuunen, do der middels ju Kaskadenspeeroption schutsed {{PLURAL:$1|is|sunt}}:
 $2',
@@ -369,18 +376,16 @@ $2',
 Ju Speere wuude truch [[User:$1|$1]] mäd ju Begruundenge ''$2'' ienroat.",
 
 # Virus scanner
-'virus-badscanner'     => 'Failerhafte Konfiguration: uunbekoanden Virenscanner: <i>$1</i>',
+'virus-badscanner'     => "Failerhafte Konfiguration: uunbekoanden Virenscanner: ''$1''",
 'virus-scanfailed'     => 'Scan failsloain (code $1)',
 'virus-unknownscanner' => 'Uunbekoanden Virenscanner:',
 
 # Login and logout pages
-'logouttitle'                => 'Benutser-Oumäldenge',
-'logouttext'                 => '<strong>Du bäst nu oumälded.</strong>
-Du koast {{SITENAME}} nu anonym fääre benutsje, of die fonnäien unner dän sälwe of n uur Benutsernoome wier [[Special:UserLogin|anmäldje]].',
+'logouttext'                 => "'''Du bäst nu oumälded.'''
+Du koast {{SITENAME}} nu anonym fääre benutsje, of die fonnäien unner dän sälwe of n uur Benutsernoome wier [[Special:UserLogin|anmäldje]].",
 'welcomecreation'            => '== Wäilkuumen, $1 ==
 
 Dien Benutserkonto wuude iengjucht. Ferjeet nit, dien Ienstaalengen antoupaasjen.',
-'loginpagetitle'             => 'Benutser-Anmäldenge',
 'yourname'                   => 'Benutsernoome:',
 'yourpassword'               => 'Paaswoud:',
 'yourpasswordagain'          => 'Paaswoud wierhoalje:',
@@ -402,29 +407,14 @@ Dien Benutserkonto wuude iengjucht. Ferjeet nit, dien Ienstaalengen antoupaasjen
 'createaccountmail'          => 'Uur Email',
 'badretype'                  => 'Do bee Paaswoude stimme nit uureen.',
 'userexists'                 => 'Disse Benutsernoomen is al ferroat. Wääl jädden n uur.',
-'youremail'                  => 'E-Mail-Adrässe:',
-'username'                   => 'Benutsernoome:',
-'uid'                        => 'Benutser-ID:',
-'prefs-memberingroups'       => 'Meeglid fon {{PLURAL:$1|ju Benutzergruppe|do Benutzergruppen}}:',
-'yourrealname'               => 'Dien ächte Noome:',
-'yourlanguage'               => 'Sproake fon ju Benutser-Uurfläche:',
-'yourvariant'                => 'Variante:',
-'yournick'                   => 'Unnerschrift:',
-'badsig'                     => 'Signatursyntax is uungultich; HTML uurpröiwje.',
-'badsiglength'               => 'Ju Unnerschrift is tou loang.
-Ju duur maximoal $1 {{PLURAL:$1|Teeken|Teekene}} loang weese.',
-'email'                      => 'E-Mail',
-'prefs-help-realname'        => 'Optional. Foar dät anärkaanende Naamen fon dien Noome in Touhoopehong mäd dien Biedraagen.',
 'loginerror'                 => 'Failer bie ju Anmäldenge',
-'prefs-help-email'           => 'Ju Angoawe fon ne E-Mail-Adresse is optionoal, moaket oawers je Touseendenge muugelk fon n Ärsats-Paaswoud, wan du dien Paaswoud ferjeeten hääst.
-Mäd uur Benutsere koast du uk uur do Benutserdiskussionssieden Kontakt apnieme, sunner dät du dien Identität eepenlääse hougest.',
-'prefs-help-email-required'  => 'N gultige Email-Adrässe is nöödich.',
 'nocookiesnew'               => 'Dien Benutsertougong wuude kloor moaked, man du bäst nit anmälded. {{SITENAME}} benutset Cookies toun Anmäldjen fon do Benutsere. Du hääst in dien Browser-Ienstaalengen Cookies deaktivierd. Uum dien näie Benutsertougong tou bruuken, läit jädden dien Browser Cookies foar {{SITENAME}} annieme un mäldje die dan mäd dien juust iengjuchten Benutsernoome un Paaswoud an.',
 'nocookieslogin'             => '{{SITENAME}} benutset Cookies toun Anmäldjen fon dän Benutser. Du hääst in dien Browser-Ienstaalengen Cookies deaktivierd, jädden aktivierje do un fersäik et fonnäien.',
 'noname'                     => 'Du moast n Benutsernoome anreeke.',
 'loginsuccesstitle'          => 'Anmäldenge mäd Ärfoulch',
 'loginsuccess'               => "'''Du bäst nu as \"\$1\" bie {{SITENAME}} anmälded.'''",
-'nosuchuser'                 => 'Die Benutsernoome "$1" bestoant nit. Uurpröif ju Schrieuwwiese, of [[Special:UserLogin/signup|mäld die as näien Benutser an]].',
+'nosuchuser'                 => 'Die Benutsernoome "$1" bestoant nit. 
+Uurpröif ju Schrieuwwiese (Groot-/Littekschrieuwenge beoachtje) of [[Special:UserLogin/signup|mäld die as näien Benutser an]].',
 'nosuchusershort'            => 'Die Benutsernooome "<nowiki>$1</nowiki>" bestoant nit. Jädden uurpröiwe ju Schrieuwwiese.',
 'nouserspecified'            => 'Reek jädden n Benutsernoome an.',
 'wrongpassword'              => 'Dät Paaswoud is falsk. Fersäik dät jädden fonnäien.',
@@ -432,7 +422,7 @@ Mäd uur Benutsere koast du uk uur do Benutserdiskussionssieden Kontakt apnieme,
 'passwordtooshort'           => 'Failer bie ju Woal fon dät Paaswoud. Dät mout mindestens {{PLURAL:$1|1 Teeken|$1 Teekene}} loang weese.',
 'mailmypassword'             => 'Näi Paaswoud touseende',
 'passwordremindertitle'      => 'Näi Paaswoud foar n {{SITENAME}}-Benutserkonto',
-'passwordremindertext'       => 'Wäl (woarschienelk du sälwen, fon ju IP-Adresse $1) häd n näi Paaswoud foar ju Anmäldenge bie {{SITENAME}} ($4) anfoarderd. Dät automatisk generierde tiedwiese Paaswoud foar Benutser "$2" lut nu: "$3". Is dät wät du foarhiest, dan schääst du die nu anmäldje un dät Paaswoud annerje.
+'passwordremindertext'       => 'Wäl (woarschienelk du sälwen, fon ju IP-Adresse $1) häd n näi Paaswoud foar ju Anmäldenge bie {{SITENAME}} ($4) anfoarderd. Dät automatisk generierde tiedwiese Paaswoud foar Benutser "$2" lut nu: "$3". Is dät wät du foarhiest, dan schääst du die nu anmäldje un dät Paaswoud annerje. Dät tiedwiese Paaswoud lapt ou in {{PLURAL:$5|aan Dai|$5 Deege}}.
 
 Ignorier disse E-Mail, in dän Fal du ju nit sälwen anfoarderd hääst of wan du dien oold Paaswoud wier betoanke kuust. Dät oolde Paaswoud blift dan wieders gultich.',
 'noemail'                    => 'Benutser "$1" häd neen Email-Adrässe anroat of häd ju E-Mail-Funktion deaktivierd.',
@@ -444,11 +434,13 @@ wuddelke Touheeregaid tou dit Benutserkonto eerste bestäätiged wäide. Befoulg
 Waiwiese in ju Bestätigengs-E-Mail.',
 'throttled-mailpassword'     => 'Der wuude binne do lääste {{PLURAL:$1|Uure|$1 Uuren}} al n näi Paaswoud anfoarderd. Uum n Misbruuk fon ju Funktion tou ferhinnerjen, kon bloot {{PLURAL:$1|insen in e Uure|alle $1 Uuren}} n näi Paaswoud anfoarderd wäide.',
 'mailerror'                  => 'Failer bie dät Seenden fon dän Email: $1',
-'acct_creation_throttle_hit' => 'Du hääst al {{PLURAL:$1|1 Benutserkonto|$1 Benutserkonten}} anlaid. Du koast fääre neen moor anlääse.',
+'acct_creation_throttle_hit' => 'Besäikere fon dissen Wiki, do dien IP-Adresse ferweende, hääbe dän lääste Dai {{PLURAL:$1|1 Benutserkonto|$1 Benutserkonten}} anlaid, wät ju maximoal ferlööwede Antaal in disse Tiedperiode is.
+
+Besäikere, do disse IP-Adresse ferweende, konnen apstuuns neen Benutserkonten moor moakje.',
 'emailauthenticated'         => 'Jou Email-Adrässe wuude ap n $2 uum $3 Uure bestäätiged.',
 'emailnotauthenticated'      => 'Jou Email-Adrässe wuude <strong>noch nit bestäätiged</strong>. Deeruum is bit nu neen E-
 Mail-Fersoand un Ämpfang foar do foulgjende Funktionen muugelk.',
-'noemailprefs'               => '<strong>Du hääst neen Email-Adrässe anroat</strong>, do foulgjende Funktione sunt deeruum apstuuns nit muugelk.',
+'noemailprefs'               => 'Du hääst neen Email-Adrässe anroat, do foulgjende Funktione sunt deeruum apstuuns nit muugelk.',
 'emailconfirmlink'           => 'Bestäätigje Jou Email-Adrässe',
 'invalidemailaddress'        => 'Ju Email-Adresse wuude nit akzeptierd deeruum dät ju n ungultich Formoat tou hääben schient. Reek jädden ne Adrässe in n gultich Formoat ien of moakje dät Fäild loos.',
 'accountcreated'             => 'Benutserkonto näi anlaid',
@@ -469,7 +461,6 @@ In dän Fal dät Benutserkonto uut Fersjoon anlaid wuude, koast du disse Ätterg
 'retypenew'                 => 'Näi Paaswoud (nochmoal):',
 'resetpass_submit'          => 'Paaswoud ienbrange un anmäldje',
 'resetpass_success'         => 'Dien Paaswoud wuude mäd Ärfoulch annerd. Nu foulget ju Anmäldenge...',
-'resetpass_bad_temporary'   => 'Ungultich foarlööpich Paaswoud. Du hääst dien Paaswoud al mäd Ärfoulch annerd of n näi, foarlööpich Paaswoud anfoarderd.',
 'resetpass_forbidden'       => 'Dät Paaswoud kon nit annerd wäide.',
 'resetpass-no-info'         => 'Du moast die anmäldje, uum ap disse Siede direkt toutougriepen.',
 'resetpass-submit-loggedin' => 'Paaswoud annerje',
@@ -563,7 +554,6 @@ Du koast $1 of aan fon do uur [[{{MediaWiki:Grouppage-sysop}}|Administratore]] k
 'blockededitsource'                => "Die Wältext '''fon dien Annerengen''' an '''$1''':",
 'whitelistedittitle'               => 'Toun Beoarbaidjen is dät nöödich, anmälded tou weesen',
 'whitelistedittext'                => 'Du moast die $1, uum Artikkele beoarbaidje tou konnen.',
-'confirmedittitle'                 => 'Toun Beoarbaidjen is ju E-Mail-Anärkannenge nöödich.',
 'confirmedittext'                  => 'Du moast dien E-Mail-Adresse eerste anärkanne, eer du beoarbaidje koast. Fäl dien E-Mail uut un ärkanne ju an in do [[Special:Preferences|Ienstaalengen]].',
 'nosuchsectiontitle'               => 'Oudeelenge bestoant nit',
 'nosuchsectiontext'                => 'Du fersäkst ju nit bestoundende Oudeelenge $1 tou beoarbaidjen. Man bloot al bestoundende Oudeelengen konnen beoarbaided wäide.',
@@ -571,40 +561,45 @@ Du koast $1 of aan fon do uur [[{{MediaWiki:Grouppage-sysop}}|Administratore]] k
 'loginreqlink'                     => 'anmäldje',
 'loginreqpagetext'                 => 'Du moast die $1, uum uur Sieden betrachtje tou konnen.',
 'accmailtitle'                     => 'Paaswoud wuude fersoand.',
-'accmailtext'                      => 'Dät Paaswoud fon "$1" wuude an $2 soand.',
+'accmailtext'                      => 'N toufällich generierd Paaswoud foar [[User talk:$1|$1]] wuud an $2 fersoand.
+
+Dät Paaswoud foar dit näie Benutserkonto kon ap ju Spezioalsiede
+„[[Special:ChangePassword|Paaswoud annerje]]“ annerd wäide.',
 'newarticle'                       => '(Näi)',
 'newarticletext'                   => 'Hier dän Text fon dän näie Artikkel iendreege. Jädden bloot in ganse Satse schrieuwe un neen truch dät Uurheebergjucht schutsede Texte fon uur Ljuude kopierje.',
 'anontalkpagetext'                 => "----''Dit is ju Diskussionssiede fon n uunbekoanden Benutser, die sik nit anmälded häd.
 Wail naan Noome deer is, wäd ju nuumeriske IP-Adrässe tou Identifizierenge ferwoand.
 Man oafte wäd sunne Adrässe fon moorere Benutsere ferwoand.
 Wan du n uunbekoanden Benutser bääst un du toankst dät du Kommentare krichst do nit foar die meend sunt, dan koast du ap bääste n [[Special:UserLogin/signup|Benutserkonto iengjuchte]] of die [[Special:UserLogin|anmäldje]], uum sukke Fertuusengen mäd uur anomyme Benutsere tou fermieden.''",
-'noarticletext'                    => 'Deer is apstuuns naan Text ap disse Siede. Du koast [[Special:Search/{{PAGENAME}}|disse Siedenoome säike]] in uur Sieden of [{{fullurl:{{FULLPAGENAME}}|action=edit}} disse Siede beoarbaidje].',
+'noarticletext'                    => 'Deer is apstuuns naan Text ap disse Siede. 
+Du koast dissen Tittel ap do uur Sieden [[Special:Search/{{PAGENAME}}|säike]],
+<span class="plainlinks"> in do touheerige [{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} Logbouke säike] of disse Siede [{{fullurl:{{FULLPAGENAME}}|action=edit}} beoarbaidje]</span>.',
 'userpage-userdoesnotexist'        => 'Dät Benutserkonto „$1“ is nit deer. Pröif, of du disse Siede wuddelk moakje/beoarbaidje wolt.',
 'clearyourcache'                   => "'''Bemäärkenge: Ätter dät Fäästlääsen kon dät nöödich weese, dän Browser-Cache loostoumoakjen, uum do Annerengen sjo tou konnen.'''
 '''Mozilla / Firefox / Safari:''' hoold ''Shift'' deel un klik ''Reload,'' of tai ''Ctrl-F5'' of ''Ctrl-R'' (''Command-R'' ap n Macintosh); '''Konqueror: '''klik ''Reload'' of tai ''F5;'' '''Opera:''' moak dän cache loos in ''Tools → Preferences;'' '''Internet Explorer:''' hoold ''Ctrl'' deel un klik ''Refresh,'' of tai ''Ctrl-F5.''",
-'usercssjsyoucanpreview'           => '<strong>Tipp:</strong> Benutse dän Foarschau-Knoop, uum dien näi CSS/JavaScript foar dät Spiekerjen tou tästjen.',
+'usercssjsyoucanpreview'           => "'''Tipp:''' Benutse dän Foarschau-Knoop, uum dien näi CSS/JavaScript foar dät Spiekerjen tou tästjen.",
 'usercsspreview'                   => "== Foarschau fon dien Benutser-CSS ==
 '''Beoachtje:''' Ätter dät Spiekerjen moast du dien Browser anwiese, ju näie Version tou leeden: '''Mozilla/Firefox:''' ''Strg-Shift-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
 'userjspreview'                    => "== Foarschau fon dien Benutser-CSS ==
 '''Beoachtje:''' Ätter dät Spiekerjen moast du dien Browser kweede, ju näie Version tou leeden: '''Mozilla/Firefox:''' ''Strg-Shift-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
 'userinvalidcssjstitle'            => "'''Woarschauenge:''' Deer existiert neen Skin \"\$1\". Betoank jädden, dät benutserspezifiske .css- un .js-Sieden män n Littek-Bouksteeuwe anfange mouten, also t.B. ''{{ns:user}}:Mustermann/monobook.css'', nit ''{{ns:user}}:Mustermann/Monobook.css''.",
 'updated'                          => '(Annerd)',
-'note'                             => '<strong>Waiwiesenge:</strong>',
-'previewnote'                      => '<strong>Dit is man ne Foarschau, die Artikkel wuude noch nit spiekerd!</strong>',
+'note'                             => "'''Waiwiesenge:'''",
+'previewnote'                      => "'''Dit is man ne Foarschau, die Artikkel wuude noch nit spiekerd!'''",
 'previewconflict'                  => 'Disse Foarschau rakt dän Inhoold fon dät buppere Täkstfäild wier; so wol die Artikkel uutsjo, wan du nu spiekerjen dääst.',
-'session_fail_preview'             => '<strong>Dien Beoarbaidenge kuud nit spiekerd wäide, deer dien Sitsengsdoaten ferlädden geen sunt. 
-Fersäik dät jädden fonnäien, deertruch dät du unner ju foulgjende Foarschau nochmoal ap "Siede spiekerje" klikst. 
-Schuul dät Problem bestounden blieuwe, mäldje die ou un deerätter wier an.</strong>',
-'session_fail_preview_html'        => "<strong>Dien Beoarbaidenge kuud nit spiekerd wäide, deer dien Sitsengsdoaten ferlädden geen sunt.</strong>
+'session_fail_preview'             => "'''Dien Beoarbaidenge kuud nit spiekerd wäide, deer dien Sitsengsdoaten ferlädden geen sunt. 
+Fersäik dät jädden fonnäien, deertruch dät du unner ju foulgjende Foarschau nochmoal ap \"Siede spiekerje\" klikst. 
+Schuul dät Problem bestounden blieuwe, mäldje die ou un deerätter wier an.'''",
+'session_fail_preview_html'        => "'''Dien Beoarbaidenge kuud nit spiekerd wäide, deer dien Sitsengsdoaten ferlädden geen sunt.'''
 
 ''Deer in  {{SITENAME}} dät Spikerjen fon scheen HTML aktivierd is, wuude ju Foarschau uutblended uum JavaScript Angriepe tou ferhinnerjen.''
 
-<strong>Fersäik et fonnäien, wan du unner ju foulgjende Textfoarschau noch moal ap „Siede spiekerje“ klikst. Schuul dät Problem bestounden blieuwe, [[Special:UserLogout|mäld die ou]] un deerätter wier an.</strong>",
-'token_suffix_mismatch'            => '<strong>Dien Beoarbaidenge wuude touräächwiesd, deer dien Browser Teekene in dät Beoarbaidje-Token ferstummeld häd.
-Ne Spiekerenge kon dän Siedeninhoold fernäile. Dit geböärt bietiede truch ju Benutsenge fon n anonymen Proxy-Tjoonst, die der failerhaft oarbaidet.</strong>',
+'''Fersäik et fonnäien, wan du unner ju foulgjende Textfoarschau noch moal ap „Siede spiekerje“ klikst. Schuul dät Problem bestounden blieuwe, [[Special:UserLogout|mäld die ou]] un deerätter wier an.'''",
+'token_suffix_mismatch'            => "'''Dien Beoarbaidenge wuude touräächwiesd, deer dien Browser Teekene in dät Beoarbaidje-Token ferstummeld häd.
+Ne Spiekerenge kon dän Siedeninhoold fernäile. Dit geböärt bietiede truch ju Benutsenge fon n anonymen Proxy-Tjoonst, die der failerhaft oarbaidet.'''",
 'editing'                          => 'Beoarbaidjen fon $1',
 'editingsection'                   => 'Beoarbaidje fon $1 (Apsats)',
-'editingcomment'                   => 'Beoarbaidjen fon $1 (Kommentoar)',
+'editingcomment'                   => 'Beoarbaidjen fon $1 (Näi Stuk)',
 'editconflict'                     => 'Beoarbaidengs-Konflikt: "$1"',
 'explainconflict'                  => "Uurswäl häd dissen Artikkel annerd, ätterdät du anfangd bäst, him tou beoarbaidjen.
 Dät buppere Textfäild änthaalt dän aktuälle Artikkel.
@@ -613,25 +608,25 @@ Föige jädden dien Annerengen in dät buppere Textfäild ien.
 '''Bloot''' die Inhoold fon dät buppere Textfäild wäd spiekerd, wan du ap \"Spiekerje\" klikst.",
 'yourtext'                         => 'Dien Text',
 'storedversion'                    => 'Spiekerde Version',
-'nonunicodebrowser'                => '<strong style="color: #330000; background: #f0e000;">Oachtenge: Dien Browser kon Unicode-Teekene nit gjucht feroarbaidje. Benutse jädden n uur Browser uum Artikkele tou beoarbaidjen.</strong>',
-'editingold'                       => '<strong>OACHTENGE: Jie beoarbaidje ne oolde Version fon disse Artikkel. Wan Jie spiekerje, wäide alle näiere Versione uurschrieuwen.</strong>',
+'nonunicodebrowser'                => "<strong style=\"color: #330000; background: #f0e000;\">Oachtenge: Dien Browser kon Unicode-Teekene nit gjucht feroarbaidje. Benutse jädden n uur Browser uum Artikkele tou beoarbaidjen.'''",
+'editingold'                       => "'''OACHTENGE: Jie beoarbaidje ne oolde Version fon disse Artikkel. Wan Jie spiekerje, wäide alle näiere Versione uurschrieuwen.'''",
 'yourdiff'                         => 'Unnerscheede',
-'copyrightwarning'                 => "<strong><big>Kopier neen Websieden,</big> do nit dien oaine sunt, benuts neen uurhääbergjuchtelk schutsede Wierke sunner Ferlof fon dän Copyright-Inhääber!</strong><br />
-Du toukwäst uus hiermäd, dät du dän Text <strong>sälwen ferfoated</strong> hääst, dät dän Text Algemeengoud (<strong>public domain</strong>) is, of dät die <strong>Copyright-Inhääber</strong> sien <strong>Toustämmenge</strong> roat häd. In dän Fal dät dissen Text al uurswain publizierd wuude, wies jädden ap ju Diskussionssiede deerap wai. 
+'copyrightwarning'                 => "'''<big>Kopier neen Websieden,</big> do nit dien oaine sunt, benuts neen uurhääbergjuchtelk schutsede Wierke sunner Ferlof fon dän Copyright-Inhääber!'''<br />
+Du toukwäst uus hiermäd, dät du dän Text '''sälwen ferfoated''' hääst, dät dän Text Algemeengoud ('''public domain''') is, of dät die '''Copyright-Inhääber''' sien '''Toustämmenge''' roat häd. In dän Fal dät dissen Text al uurswain publizierd wuude, wies jädden ap ju Diskussionssiede deerap wai. 
 <i>Beoachtje, dät aal {{SITENAME}}-Biedraage automatisk unner ju „$2“ stounde (sjuch $1 foar Details). In dän Fal dät du nit moatest, dät dien Oarbaid hier fon Uurswäkken annerd un fersprat wäd, druk dan '''nit''' ap „Siede spiekerje“.</i>",
 'copyrightwarning2'                => 'Aal Biedraage tou dän {{SITENAME}} konnen fon uur Ljuude ferannerd un fersprat wäide. Fals Jie nit moaten dät Jou Oarbaid hier fon uur Ljuude ferannerd un fersprat wäd, dan drukke Jie nit ap "Spiekerje".
 
 Jie fersicherje hiermäd uk, dät Jie dän Biedraach sälwen ferfoated hääbe blw. dät hie neen froamd Gjucht ferlätset (sjuch fääre: $1).',
-'longpagewarning'                  => '<strong>WOARSCHAUENGE: Disse Siede is $1 kb groot; eenige Browsere kuuden Probleme hääbe, Sieden tou beoarbaidjen, do der gratter as 32 kb sunt. Uurlääse Jou jädden, of ne Oudeelenge fon do Sieden in litjere Ousnitte muugelk is.</strong>',
-'longpageerror'                    => '<strong>FAILER: Die Text, dän du tou spiekerjen fersäkst, is $1 KB groot. Dät is gratter as dät ferlööwede Maximum fon $2 KB – Spiekerenge nit muugelk.</strong>',
-'readonlywarning'                  => '<strong>WOARSCHAUENGE: Ju Doatenboank wuude foar Wartengsoarbaiden speerd, so dät dien Annerengen apstuuns nit spiekerd wäide konnen. 
-Sicherje dän Text jädden lokoal ap dien Computer un fersäik tou n leeteren Tiedpunkt, do Annerengen in ju Wikipedia tou uurdreegen.</strong>
+'longpagewarning'                  => "'''WOARSCHAUENGE: Disse Siede is $1 kb groot; eenige Browsere kuuden Probleme hääbe, Sieden tou beoarbaidjen, do der gratter as 32 kb sunt. Uurlääse Jou jädden, of ne Oudeelenge fon do Sieden in litjere Ousnitte muugelk is.'''",
+'longpageerror'                    => "'''FAILER: Die Text, dän du tou spiekerjen fersäkst, is $1 KB groot. Dät is gratter as dät ferlööwede Maximum fon $2 KB – Spiekerenge nit muugelk.'''",
+'readonlywarning'                  => "'''WOARSCHAUENGE: Ju Doatenboank wuude foar Wartengsoarbaiden speerd, so dät dien Annerengen apstuuns nit spiekerd wäide konnen. 
+Sicherje dän Text jädden lokoal ap dien Computer un fersäik tou n leeteren Tiedpunkt, do Annerengen tou uurdreegen.'''
 
-Gruund foar ju Speere: $1',
-'protectedpagewarning'             => '<strong>WOARSCHAUENGE: Disse Siede wuude speerd, so dät ju bloot truch Benutsere mäd Administrationsgjuchte beoarbeded wäide kon.</strong>',
+Gruund foar ju Speere: $1",
+'protectedpagewarning'             => "'''WOARSCHAUENGE: Disse Siede wuude speerd, so dät ju bloot truch Benutsere mäd Administrationsgjuchte beoarbeded wäide kon.'''",
 'semiprotectedpagewarning'         => "'''Oachtenge:''' Disse Siede is ousleeten un kon bloot fon anmäldede Besäikere beoarbaided wäide.",
 'cascadeprotectedwarning'          => "'''WOARSCHAUENGE: Disse Siede wuude speerd, so dät ju bloot truch Benutsere mäd Administratorgjuchte beoarbaided wäide kon. Ju is in do {{PLURAL:$1|foulgjende Siede|foulgjende Sieden}} ienbuunen, do der middels ju Kaskadenspeeroption schutsed {{PLURAL:$1|is|sunt}}:'''",
-'titleprotectedwarning'            => '<strong>OACHTENGE: Dät Moakjen fon Sieden wuude speerd. Bloot bestimde Benutsergruppen konnen ju Siede moakje.</strong>',
+'titleprotectedwarning'            => "'''WOARSCHAUENGE: Dät Moakjen fon Sieden wuude speerd. Bloot Benutsere mäd  [[Special:ListGroupRights|spezielle Gjuchte]] konnen ju Siede moakje.'''",
 'templatesused'                    => 'Foulgjende Foarloagen wäide fon disse Artikkele ferwoand:',
 'templatesusedpreview'             => 'Foulgjende Foarloagen wäide fon disse Siedefoarschau ferwoand:',
 'templatesusedsection'             => 'Foulgjende Foarloagen wuuden fon disse Oudeelenge ferwoand:',
@@ -645,12 +640,11 @@ Gruund foar ju Speere: $1',
 'permissionserrors'                => 'Begjuchtigengs-Failere',
 'permissionserrorstext'            => 'Du bäst nit begjuchtiged, ju Aktion uuttoufieren. {{PLURAL:$1|Gruund|Gruunde}}:',
 'permissionserrorstext-withaction' => 'Du bäst nit begjuchtiged, ju Aktion „$2“ uuttoufieren, {{PLURAL:$1|Gruund|Gruunde}}:',
-'recreate-deleted-warn'            => "'''Oachtenge: Du moakest ne Siede, ju der al fröier läsked wuude.'''
+'recreate-moveddeleted-warn'       => "'''Oachtenge: Du moakest ne Siede, ju der al fröier läsked wuude.'''
 
 Pröif mäd Suurge, of dät näi Moakjen fon ju Siede do Gjuchtlienjen äntspräkt.
 Tou Dien Information foulget dät Läsk-Logbouk mäd ju Begründenge foar ju fröiere Läskenge:",
-'deleted-notice'                   => 'Disse Siede wuud läsked. Der foulget n Uutsuch uut dät Läsk-Logbouk foar disse Siede.',
-'deletelog-fulllog'                => 'Fulständich Läsk-Logbouk',
+'moveddeleted-notice'              => 'Disse Siede wuud läsked. Der foulget n Uutsuch uut dät Läsk-Logbouk foar disse Siede.',
 'edit-hook-aborted'                => 'Ju Beoarbaidenge wuud sunner Ärkläärenge truch ne Snitsteede oubreeken.',
 'edit-gone-missing'                => 'Ju Siede kuud nit aktualisierd wäide.
 Ju wuud anschienend läsked.',
@@ -672,7 +666,7 @@ Der {{PLURAL:$2|duur nit moor as 1 Aproup|duuren nit moor as $1 Aproupe}} weese.
 
 # "Undo" feature
 'undo-success' => 'Ju Annerenge kuud mäd Ärfoulch tourääch annerd wäide. Jädden ju Beoarbaidenge in ju Ferglieksansicht kontrollierje un dan ap „Siede spiekerje“ klikke, uum ju tou spiekerjen.',
-'undo-failure' => '<span class="error">Ju Annerenge kuud nit tourääch annerd wäide, deer ju betroffene Oudeelenge intwisken ferannerd wuude.</span>',
+'undo-failure' => 'Ju Annerenge kuud nit tourääch annerd wäide, deer ju betroffene Oudeelenge intwisken ferannerd wuude.',
 'undo-norev'   => 'Ju Beoarbaidenge kuud nit räägels troald wäide, deer ju nit foarhounden is of läsked wuude.',
 'undo-summary' => 'Annerenge $1 fon [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskussion]]) wuude tourääch annerd.',
 
@@ -688,7 +682,7 @@ Gruund fon ju Speere: ''$2''",
 'currentrev'             => 'Aktuälle Version',
 'currentrev-asof'        => 'Aktuelle Version fon $1',
 'revisionasof'           => 'Version fon $1',
-'revision-info'          => 'Dit is ne oolde Version. Tiedpunkt fon ju Beoarbaidenge: $1 truch $2.', # Additionally available: $3: revision id
+'revision-info'          => 'Dit is ne oolde Version. Tiedpunkt fon ju Beoarbaidenge: $1 truch $2.',
 'previousrevision'       => '← Naistallere Version',
 'nextrevision'           => 'Naistjungere Version →',
 'currentrevisionlink'    => 'Aktuälle Version',
@@ -701,7 +695,6 @@ Gruund fon ju Speere: ''$2''",
 Legende: (Aktuäl) = Unnerscheed tou ju aktuälle Version,
 (Lääste) = Unnerscheed tou ju foarige Version, L = Litje Annerenge",
 'history-fieldset-title' => 'Säik in ju Versionsgeschichte',
-'deletedrev'             => '[läsked]',
 'histfirst'              => 'Ooldste',
 'histlast'               => 'Näiste',
 'historysize'            => '({{PLURAL:$1|1 Byte|$1 Bytes}})',
@@ -710,33 +703,43 @@ Legende: (Aktuäl) = Unnerscheed tou ju aktuälle Version,
 # Revision feed
 'history-feed-title'          => 'Versionsgeschichte',
 'history-feed-description'    => 'Versionsgeschichte foar disse Siede in {{SITENAME}}',
-'history-feed-item-nocomment' => '$1 uum $2', # user at time
+'history-feed-item-nocomment' => '$1 uum $2',
 'history-feed-empty'          => 'Ju anfoarderde Siede existiert nit. Fielicht wuud ju läsked of ferschäuwen. [[Special:Search|Truchsäik]] {{SITENAME}} foar paasjende näie Sieden.',
 
 # Revision deletion
 'rev-deleted-comment'         => '(Beoarbaidengskommentoar wächhoald)',
 'rev-deleted-user'            => '(Benutsernoome wächhoald)',
 'rev-deleted-event'           => '(Logbouk-Aktion wächhoald)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks"> Disse Version wuude läsked un is nit moor eepentelk ientousjoon.
-Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].</div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">Disse Version wuude läsked un is nit moor eepentelk ientousjoon.
+'rev-deleted-text-permission' => "Disse Version wuude läsked un is '''nit moor eepentelk ientousjoon'''.
+Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
+'rev-deleted-text-view'       => "Disse Version wuude läsked un is '''nit moor eepentelk ientousjoon'''.
 As Administrator koast du ju wieders ienkiekje.
-Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].</div>',
+Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
+'rev-deleted-no-diff'         => "Du koast dissen Unnerscheed nit betrachtje, deer een fon do Versione '''uut do eepentelke Archive wächhoald wuud'''.
+Details stounde in dät [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
 'rev-delundel'                => 'wiese/ferbierge',
 'revisiondelete'              => 'Versione läskje/wier häärstaale',
 'revdelete-nooldid-title'     => 'Uunjäildige Siel-Beoarbaidenge',
 'revdelete-nooldid-text'      => 'Du hääst neen Version ounroat, wierap disse Aktion uutfierd wäide schäl, ju wäälde Version is nit deer of du fersäkst, ju aktuelle Version wächtouhoaljen.',
+'revdelete-nologtype-title'   => 'Naan Logtyp anroat',
+'revdelete-nologtype-text'    => 'Der wuud naan Logtyp foar disse Aktion anroat.',
+'revdelete-nologid-title'     => 'Uungultigen Logiendraach',
+'revdelete-nologid-text'      => 'Der wuud naan Logtyp uutwääld of die wäälde Logtyp existiert nit.',
 'revdelete-selected'          => "'''{{PLURAL:$2|Uutwäälde Version|Uutwäälde Versione}} fon [[:$1]]:'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Uutwäälden Logboukiendraach|Uutwäälde Logboukiendraage}}:'''",
-'revdelete-text'              => "'''Die Inhoold of uur Bestanddeele fon läskede Versione sunt nit moor eepentelk ientousjoon, man ärschiene wieders as Iendraage in ju Versionsgeschichte.'''
+'revdelete-text'              => "'''Läskede Versione un Aktione ferblieuwe in ju Versionsgeschichte un do Logbouke, man Deele deerfon sunt nit eepentelk ientoukiekjen.'''
 
-Uur Administratore ap {{SITENAME}} konnen dän wächhoalde Inhoold of uur wächhoalde Bestanddeele wieders ienkiekje un wier häärstaale, of dät moaste weese, dät fäästlaid wuude, dät do Tougongsbeschränkengen uk foar Administratore jäilde.",
+Uur Administratore ap {{SITENAME}} hääbe Tougriep ap dän ferstatte Inhoold un konnen him mäd ju glieke Siede wier moakje, insowied uurhoop neen Ientuunengen bestounde.
+Bestäätigje, dät du dät dwoo wolt, do Konsequenze ferstoanst un dät in Uureenstimmenge mäd do [[{{MediaWiki:Policy-url}}|Gjuchtlinien]] dääst.",
+'revdelete-suppress-text'     => "Unnerdrukkengen schuulen '''bloot''' in do foulgjende Fälle foarnuumen waide:
+* Uunpaasende persöönelke Informatione
+*: ''Adressen, Telefonnummere, Sozialversicherungsnummere usw.''",
 'revdelete-legend'            => 'Sät Ienschränkengen foar do Versione',
 'revdelete-hide-text'         => 'Text fon ju Version ferstopje',
 'revdelete-hide-name'         => 'Logbouk-Aktion ferstopje',
 'revdelete-hide-comment'      => 'Beoarbaidengskommentoar ferstopje',
 'revdelete-hide-user'         => 'Benutsernoome/ju IP fon dän Beoarbaider ferstopje',
-'revdelete-hide-restricted'   => 'Disse Ienschränkengen jäilde uk foar Administratore un dit Formular wäd speerd',
+'revdelete-hide-restricted'   => 'Doaten uk foar Administratore un uurswäkke unnerdrukke',
 'revdelete-suppress'          => 'Gruund fon ju Läskenge uk foar Administratore ferstopped',
 'revdelete-hide-image'        => 'Bielde-Inhoold ferstopje',
 'revdelete-unsuppress'        => 'Ienschränkengen foar wier häärstoalde Versione aphieuwje',
@@ -784,6 +787,7 @@ Staal deertruch sicher, dät ju Versionsgeschichte fon n Artikkel historisk akro
 'mergehistory-autocomment'         => '„[[:$1]]“ fereeniged ätter „[[:$2]]“',
 'mergehistory-comment'             => '[[:$1]] fereeniged ätter [[:$2]]: $3',
 'mergehistory-same-destination'    => 'Uutgongs- un Sielsiede duuren nit identisk weese',
+'mergehistory-reason'              => 'Begruundenge:',
 
 # Merge log
 'mergelog'           => 'Fereenigengs-Logbouk',
@@ -858,7 +862,7 @@ Staal deertruch sicher, dät ju Versionsgeschichte fon n Artikkel historisk akro
 'searchresults'                    => 'Säikresultoate',
 'searchresults-title'              => 'Säikresultoate foar "$1"',
 'searchresulttext'                 => 'Foar moor Informatione tou ju Säike sjuch ju [[{{MediaWiki:Helppage}}|Hälpesiede]].',
-'searchsubtitle'                   => 'Dien Säikanfroage: „[[:$1|$1]]“ ([[Special:Prefixindex/$1|aal mäd „$1“ ounfangende Sieden]] | [[Special:WhatLinksHere/$1|aal Sieden, do ätter „$1“ ferlinkje]])',
+'searchsubtitle'                   => 'Dien Säikanfroage: „[[:$1|$1]]“ ([[Special:Prefixindex/$1|aal mäd „$1“ ounfangende Sieden]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|aal Sieden, do ätter „$1“ ferlinkje]])',
 'searchsubtitleinvalid'            => 'Foar dien Säikanfroage „$1“.',
 'noexactmatch'                     => "'''Deer existiert neen Siede mäd dän Tittel „$1“.'''
 
@@ -869,8 +873,11 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 'notitlematches'                   => 'Neen Uureenstimmengen',
 'textmatches'                      => 'Uureenstämmengen mäd Texte',
 'notextmatches'                    => 'Neen Uureenstimmengen',
-'prevn'                            => 'foarige $1',
-'nextn'                            => 'naiste $1',
+'prevn'                            => 'foarige {{PLURAL:$1|$1}}',
+'nextn'                            => 'naiste {{PLURAL:$1|$1}}',
+'prevn-title'                      => '{{PLURAL:$1|Foarich Resultoat|Foarige $1 Resultoate}}',
+'nextn-title'                      => '{{PLURAL:$1|Foulgjend Resultoat|Foulgjende $1 Resultoate}}',
+'shown-title'                      => 'Wies $1 {{PLURAL:$1|Resultoat|Resultoate}} pro Siede',
 'viewprevnext'                     => 'Wies ($1) ($2) ($3)',
 'searchmenu-legend'                => 'Säikoptione',
 'searchmenu-exists'                => "'''Dät rakt n Siede mäd Noome \"[[:\$1]]\" ap dissen Wiki'''",
@@ -878,7 +885,6 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 'searchhelp-url'                   => 'Help:Hälpe',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Wies aal Sieden, do mäd dän Säikbegriep ounfange]]',
 'searchprofile-articles'           => 'Inhooldssieden',
-'searchprofile-articles-and-proj'  => 'Inhooldssieden & Projekt',
 'searchprofile-project'            => 'Projekt',
 'searchprofile-images'             => 'Doatäie',
 'searchprofile-everything'         => 'Aal',
@@ -888,8 +894,6 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 'searchprofile-images-tooltip'     => 'Ätter Bielden säike',
 'searchprofile-everything-tooltip' => 'Gansen Inhoold truchsäike (inklusive Diskussionssieden)',
 'searchprofile-advanced-tooltip'   => 'Säik in wiedere Noomensruume',
-'prefs-search-nsdefault'           => 'Standoard-Noomensruume:',
-'prefs-search-nscustom'            => 'Säik in wiedere Noomensruume:',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 Woud|$2 Woude}})',
 'search-result-score'              => 'Relevanz: $1 %',
 'search-redirect'                  => '(Wiederlaitenge $1)',
@@ -917,35 +921,26 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 'search-external'                  => 'Externe Säike',
 'searchdisabled'                   => 'Ju {{SITENAME}} Fultextsäike is weegen Uurläästenge apstuuns deaktivierd. Du koast insteede deerfon ne Google- of Yahoo-Säike startje. Do Resultoate foar {{SITENAME}} speegelje oawers nit uunbedingd dän aktuällen Stand wier.',
 
+# Quickbar
+'qbsettings'               => 'Siedenlieste',
+'qbsettings-none'          => 'Naan',
+'qbsettings-fixedleft'     => 'Links, fääst',
+'qbsettings-fixedright'    => 'Gjuchts, fääst',
+'qbsettings-floatingleft'  => 'Links, swieuwjend',
+'qbsettings-floatingright' => 'Gjuchts, swieuwjend',
+
 # Preferences page
 'preferences'               => 'Ienstaalengen',
 'mypreferences'             => 'Ienstaalengen',
 'prefs-edits'               => 'Antaal Beoarbaidengen:',
 'prefsnologin'              => 'Nit anmälded',
-'prefsnologintext'          => 'Du moast <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} anmälded]</span> weese, uum dien Ienstaalengen annerje tou konnen.',
-'prefsreset'                => 'Ienstaalengen wuuden ap Standoard touräächsät.',
-'qbsettings'                => 'Siedenlieste',
-'qbsettings-none'           => 'Naan',
-'qbsettings-fixedleft'      => 'Links, fääst',
-'qbsettings-fixedright'     => 'Gjuchts, fääst',
-'qbsettings-floatingleft'   => 'Links, swieuwjend',
-'qbsettings-floatingright'  => 'Gjuchts, swieuwjend',
+'prefsnologintext'          => 'Du moast <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} anmälded]</span> weese, uum dien Ienstaalengen annerje tou konnen.',
 'changepassword'            => 'Paaswoud annerje',
-'skin'                      => 'Skin',
+'prefs-skin'                => 'Skin',
 'skin-preview'              => 'Foarschau',
-'math'                      => 'TeX',
-'dateformat'                => 'Doatumsformoat',
+'prefs-math'                => 'TeX',
 'datedefault'               => 'Neen Preferenz',
-'datetime'                  => 'Doatum un Tied',
-'math_failure'              => 'Parser-Failer',
-'math_unknown_error'        => 'Uunbekoande Failer',
-'math_unknown_function'     => 'Uunbekoande Funktion',
-'math_lexing_error'         => "'Lexing'-Failer",
-'math_syntax_error'         => 'Syntaxfailer',
-'math_image_error'          => 'ju PNG-Konvertierenge sluuch fail',
-'math_bad_tmpdir'           => 'Kon dät Temporärferteeknis foar mathematiske Formeln nit anlääse of beschrieuwe.',
-'math_bad_output'           => 'Kon dät Sielferteeknis foar mathematiske Formeln nit anlääse of beschrieuwe.',
-'math_notexvc'              => 'Dät texvc-Program kon nit fuunen wäide. Beoachte jädden math/README.',
+'prefs-datetime'            => 'Doatum un Tied',
 'prefs-personal'            => 'Benutserdoaten',
 'prefs-rc'                  => 'Bekoandreekenge fon "Lääste Annerengen"',
 'prefs-watchlist'           => 'Beooboachtengslieste',
@@ -957,41 +952,73 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 'prefs-resetpass'           => 'Paaswoud annerje',
 'saveprefs'                 => 'Ienstaalengen spiekerje',
 'resetprefs'                => 'Nit spiekerde Annerengen fersmiete',
-'textboxsize'               => 'Beoarbaidje',
+'restoreprefs'              => 'Aal Standoard-Ienstaalengen wier häärstaale',
+'prefs-editing'             => 'Beoarbaidje',
 'prefs-edit-boxsize'        => 'Grööte fon dät Beoarbaidengsfinster:',
 'rows'                      => 'Riegen',
 'columns'                   => 'Spalten',
-'searchresultshead'         => 'Säike',
+'searchresultshead'         => 'Säike (010)',
 'resultsperpage'            => 'Träffere pro Siede:',
 'contextlines'              => 'Teekene pro Träffer:',
 'contextchars'              => 'Teekene pro Riege:',
 'stub-threshold'            => '<a href="#" class="stub">Kuute Artikkele</a> markierje bi (in Byte):',
 'recentchangesdays'         => 'Antaal fon Deege, do ju Lieste fon „Lääste Annerengen“ standoardmäitich uumfoatje schäl:',
 'recentchangesdays-max'     => '(Maximoal $1 {{PLURAL:$1|Dai|Deege}})',
-'recentchangescount'        => 'Antaal fon do Iendraage in "Lääste Annerengen", ju Versionsgeschichte un do Logbouke:',
+'recentchangescount'        => 'Antaal fon do Iendraage in ju Lieste fon do lääste Annerengen, ju Versionsgeschichte un do Logbouke:',
 'savedprefs'                => 'Dien Ienstaalengen wuuden spiekerd.',
 'timezonelegend'            => 'Tiedzone',
-'timezonetext'              => '¹Reek ju Antaal fon Uuren ien, do twiske Jou Tiedzone un UPC lääse.',
 'localtime'                 => 'Tied bie Jou:',
-'timezoneselect'            => 'Tiedzone:',
 'timezoneuseserverdefault'  => 'Standoardtied fon dän Server',
 'timezoneuseoffset'         => 'Uur (Unnerscheed anreeke)',
 'timezoneoffset'            => 'Unnerscheed¹:',
 'servertime'                => 'Tied ap dän Server:',
 'guesstimezone'             => 'Ienföigje uut dän Browser',
+'timezoneregion-africa'     => 'Afrikoa',
+'timezoneregion-america'    => 'Amerikoa',
+'timezoneregion-antarctica' => 'Antarktis',
+'timezoneregion-arctic'     => 'Arktis',
+'timezoneregion-asia'       => 'Asien',
+'timezoneregion-atlantic'   => 'Atlantisken Ozeoan',
+'timezoneregion-australia'  => 'Australien',
+'timezoneregion-europe'     => 'Europa',
+'timezoneregion-indian'     => 'Indisken Ozeoan',
+'timezoneregion-pacific'    => 'Pazifisken Ozeoan',
 'allowemail'                => 'Emails fon uur Benutsere kriegen',
 'prefs-searchoptions'       => 'Säikoptione',
 'prefs-namespaces'          => 'Noomensruume',
 'defaultns'                 => 'In disse Noomensruume schäl standoardmäitich soacht wäide:',
 'default'                   => 'Standoardienstaalenge',
-'files'                     => 'Doatäie',
+'prefs-files'               => 'Doatäie',
+'prefs-custom-css'          => 'Benutserdefinierde CSS',
+'prefs-custom-js'           => 'Benutserdefinierd JS',
+'youremail'                 => 'E-Mail-Adrässe:',
+'username'                  => 'Benutsernoome:',
+'uid'                       => 'Benutser-ID:',
+'prefs-memberingroups'      => 'Meeglid fon {{PLURAL:$1|ju Benutzergruppe|do Benutzergruppen}}:',
+'yourrealname'              => 'Dien ächte Noome:',
+'yourlanguage'              => 'Sproake fon ju Benutser-Uurfläche:',
+'yourvariant'               => 'Variante:',
+'yournick'                  => 'Unnerschrift:',
+'badsig'                    => 'Signatursyntax is uungultich; HTML uurpröiwje.',
+'badsiglength'              => 'Ju Unnerschrift is tou loang.
+Ju duur maximoal $1 {{PLURAL:$1|Teeken|Teekene}} loang weese.',
+'yourgender'                => 'Geslächt:',
+'gender-unknown'            => 'Nit anroat',
+'gender-male'               => 'Monnelk',
+'gender-female'             => 'Wieuwelk',
+'prefs-help-gender'         => 'Optionoal: Wäd foar ju geslächtskorrekte Anrääde fonsieden ju Software benutsed. Disse Information is eepentelk.',
+'email'                     => 'E-Mail',
+'prefs-help-realname'       => 'Optional. Foar dät anärkaanende Naamen fon dien Noome in Touhoopehong mäd dien Biedraagen.',
+'prefs-help-email'          => 'Ju Angoawe fon ne E-Mail-Adresse is optionoal, moaket oawers je Touseendenge muugelk fon n Ärsats-Paaswoud, wan du dien Paaswoud ferjeeten hääst.
+Mäd uur Benutsere koast du uk uur do Benutserdiskussionssieden Kontakt apnieme, sunner dät du dien Identität eepenlääse hougest.',
+'prefs-help-email-required' => 'N gultige Email-Adrässe is nöödich.',
 
 # User rights
-'userrights'                  => 'Benutsergjuchteferwaltenge', # Not used as normal message but as header for the special page itself
+'userrights'                  => 'Benutsergjuchteferwaltenge',
 'userrights-lookup-user'      => 'Ferwaltede Gruppentouheeregaid',
 'userrights-user-editname'    => 'Benutsernoome anreeke:',
 'editusergroup'               => 'Beoarbaidede Benutsergjuchte',
-'editinguser'                 => "Uur Benutsergjuchte fon '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'editinguser'                 => "Uur Benutsergjuchte fon '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'    => 'Beoarbaidje Gruppentouheeregaid fon dän Benutser',
 'saveusergroups'              => 'Spiekerje Gruppentouheeregaid',
 'userrights-groupsmember'     => 'Meeglid fon:',
@@ -1084,6 +1111,7 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 'right-userrights'           => 'Benutsergjuchte beoarbaidje',
 'right-userrights-interwiki' => 'Benutsergjuchte in uur Wikis beoarbaidje',
 'right-siteadmin'            => 'Doatenboank speere un äntspeere',
+'right-reset-passwords'      => 'Dät Paaswoud fon n uur Benutser touräächsätte',
 
 # User rights log
 'rightslog'      => 'Gjuchte-Logbouk',
@@ -1160,6 +1188,8 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 
 # Recent changes linked
 'recentchangeslinked'          => 'Annerengen an ferlinkede Sieden',
+'recentchangeslinked-feed'     => 'Annerengen an ferlinkede Sieden',
+'recentchangeslinked-toolbox'  => 'Annerengen an ferlinkede Sieden',
 'recentchangeslinked-title'    => 'Annerengen an Sieden, do der fon „$1“ ferbuunden sunt',
 'recentchangeslinked-noresult' => 'In dän uutwäälde Tiedruum wuuden an do ferbuundene Sieden neen Annerengen foarnuumen.',
 'recentchangeslinked-summary'  => "Disse Spezioalsiede liestet do lääste Annerengen fon ferbuundene Sieden ap (blw. bie Kategorien an do Meegliedere fon disse Kategorie). Sieden ap dien Beooboachtengslieste sunt '''fat''' schrieuwen.",
@@ -1203,6 +1233,7 @@ Beoachtje, dät, juust as bie normoale Sieden-Inhoolde, uur Benutsere dien Doat�
 'filename'                    => 'Doatäinoome',
 'filedesc'                    => 'Beschrieuwenge, Wälle',
 'fileuploadsummary'           => 'Beschrieuwenge/Wälle:',
+'filereuploadsummary'         => 'Doatäi-Annerengen:',
 'filestatus'                  => 'Copyright-Stoatus:',
 'filesource'                  => 'Wälle:',
 'uploadedfiles'               => 'Hoochleedene Doatäie',
@@ -1221,21 +1252,20 @@ Ferlööwed {{PLURAL:$3|is|sunt}} $2.",
 'large-file'                  => 'Jädden neen Bielde uur $1 hoochleede; disse Doatäi is $2 groot.',
 'largefileserver'             => 'Disse Doatäi is tou groot, deer die Server so konfigurierd is, dät Doatäien bloot bit tou ne bestimde Grööte apzeptierd wäide.',
 'emptyfile'                   => 'Ju hoochleedene Doatäi is loos. Die Gruund kon n Typfailer in dän Doatäinoome weese. Kontrollierje jädden, of du ju Doatäi wuddelk hoochleede wolt.',
-'fileexists'                  => "Ne Doatäi mäd dissen Noome bestoant al. Wan du ap 'Doatäi spiekerje' klikst, wäd ju Doatäi uurschrieuwen. Unner <strong><tt>$1</tt></strong> koast du die bewisje, of du dät wuddelk wolt.",
-'filepageexists'              => 'Ju Beschrieuwengssiede foar disse Doatäi wuude al moaked as <strong><tt>$1</tt></strong>, man der bestoant neen Doatäi mäd dissen Noome.
+'fileexists'                  => "Ne Doatäi mäd dissen Noome bestoant al. Wan du ap 'Doatäi spiekerje' klikst, wäd ju Doatäi uurschrieuwen. Unner '''<tt>$1</tt>''' koast du die bewisje, of du dät wuddelk wolt.",
+'filepageexists'              => "Ju Beschrieuwengssiede foar disse Doatäi wuude al moaked as '''<tt>$1</tt>''', man der bestoant neen Doatäi mäd dissen Noome.
 Ju ienroate Beschrieuwenge wäd nit ap ju Beschrieuwengssiede uurnuumen.
-Ju Beschrieuwengssiede moast du ätter dät Hoochleeden fon ju Doatäi noch mäd de Hounde beoarbaidje.',
-'fileexists-extension'        => 'Een Doatei mäd n äänelken Noome existiert al:<br />
-Noome fon ju hoochtouleedende Doatäi: <strong><tt>$1</tt></strong><br />
-Noome fon ju anweesende Doatäi: <strong><tt>$2</tt></strong><br />
-Bloot ju Doatäieendenge unnerschat sik in Groot-/Littikschrieuwenge. Pröif, of do Doatäie ätter dän Inhoold identisk sunt.',
+Ju Beschrieuwengssiede moast du ätter dät Hoochleeden fon ju Doatäi noch mäd de Hounde beoarbaidje.",
+'fileexists-extension'        => "Een Doatei mäd n äänelken Noome existiert al:<br />
+Noome fon ju hoochtouleedende Doatäi: '''<tt>$1</tt>'''<br />
+Noome fon ju anweesende Doatäi: '''<tt>$2</tt>'''<br />
+Bloot ju Doatäieendenge unnerschat sik in Groot-/Littikschrieuwenge. Pröif, of do Doatäie ätter dän Inhoold identisk sunt.",
 'fileexists-thumb'            => "<center>'''Bestoundende Doatäi'''</center>",
-'fileexists-thumbnail-yes'    => 'Bie ju Doatäi schient et sik uum ne Bielde fon ferlitjerde Grööte <i>(thumbnail)</i> tou honneljen. Pröif ju Doatäi <strong><tt>$1</tt></strong>.<br />
-Wan et sik uum ju Bielde in Originoalgrööte honnelt, dan houget neen apaate Foarschaubielde hoochleeden tou wäiden.',
-'file-thumbnail-no'           => 'Die Doatäinoome begint mäd <strong><tt>$1</tt></strong>. Dit tjut ap ne Bielde fon ferlitjerde Grööte <i>(thumbnail)</i> wai.
-Pröif, of du ju Bielde in fulle Aplöösenge foarlääsen hääst un leed ju unner dän Originoalnoome hooch. Uurs annerje dän Doatäinoome.',
-'fileexists-forbidden'        => 'Mäd dissen Noome bestoant al ne Doatäi.
-Gung jädden tourääch un leede dien Doatäi unner n uur Noome hooch. [[File:$1|thumb|center|$1]]',
+'fileexists-thumbnail-yes'    => "Bie ju Doatäi schient et sik uum ne Bielde fon ferlitjerde Grööte ''(thumbnail)'' tou honneljen. Pröif ju Doatäi '''<tt>$1</tt>'''.<br />
+Wan et sik uum ju Bielde in Originoalgrööte honnelt, dan houget neen apaate Foarschaubielde hoochleeden tou wäiden.",
+'file-thumbnail-no'           => "Die Doatäinoome begint mäd '''<tt>$1</tt>'''. Dit tjut ap ne Bielde fon ferlitjerde Grööte ''(thumbnail)'' wai.
+Pröif, of du ju Bielde in fulle Aplöösenge foarlääsen hääst un leed ju unner dän Originoalnoome hooch. Uurs annerje dän Doatäinoome.",
+'fileexists-forbidden'        => 'Mäd dissen Noome bestoant al ne Doatäi un ju kon nit uurschieuwen wäide. Gung jädden tourääch un leede dien Doatäi unner n uur Noome hooch. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Mäd dissen Noome bestoant al ne Doatäi in dät zentroale Medienarchiv.
 Wan du ju Doatäi daach hoochleede moatest, gung dan tourääch un leed dien Doatäi unner n uur Noome hooch. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Disse Doatäi is n Duplikoat fon foulgjende {{PLURAL:$1|Doatäi|$1 Doatäie}}:',
@@ -1247,6 +1277,7 @@ Wan du ju Doatäi daach hoochleede moatest, gung dan tourääch un leed dien Doa
 'overwroteimage'              => 'häd ne näie Version fon „[[$1]]“ hoochleeden',
 'uploaddisabled'              => 'Äntscheeldigenge, dät Hoochleeden is apstuuns deaktivierd.',
 'uploaddisabledtext'          => 'Dät Hoochleeden fon Doatäie is nit muugelk.',
+'php-uploaddisabledtext'      => 'PHP-Doatäi-Uploads wuuden deaktivierd. Wröich ju file_uploads-Ienstaalenge.',
 'uploadscripted'              => 'Disse Doatäi änthaalt HTML- of Scriptcode, ju bie Fersjoon fon aan Webbrowser apfierd wäide kuude.',
 'uploadcorrupt'               => 'Ju Doatäi is beschäädiged of häd n falsken Noome. Uurpröiwe jädden ju Doatäi un leede ju fonnäien hooch.',
 'uploadvirus'                 => 'Disse Doatäi änthaalt n Virus! Details: $1',
@@ -1259,8 +1290,8 @@ Wan du ju Doatäi daach hoochleede moatest, gung dan tourääch un leed dien Doa
 
 Pröif suurgfooldich, of dät fernäide Hoochleeden do Gjuchtlienjen äntspräkt.
 Tou Dien Information foulget dät Läsk-Logbouk mäd ju Begründenge foar ju foargungende Läskenge:",
-'filename-bad-prefix'         => 'Die Doatäinoome begint mäd <strong>„$1“</strong>. Dit is in algemeenen die fon ne Digitoalkamera foarroate Doatäinoome un deeruum nit gjucht uurtjuugend.
-Reek ju Doatäi n Noome, die dän Inhoold beeter beschrift.',
+'filename-bad-prefix'         => "Die Doatäinoome begint mäd '''„$1“'''. Dit is in algemeenen die fon ne Digitoalkamera foarroate Doatäinoome un deeruum nit gjucht uurtjuugend.
+Reek ju Doatäi n Noome, die dän Inhoold beeter beschrift.",
 
 'upload-proto-error'      => 'Falsk Protokol',
 'upload-proto-error-text' => 'Ju URL mout mäd <code>http://</code> of <code>ftp://</code> ounfange.',
@@ -1296,41 +1327,34 @@ Wan dät Problem fääre bestoant, informier n [[Special:ListUsers/sysop|System-
 'listfiles_count'       => 'Versione',
 
 # File description page
-'filehist'                       => 'Doatäiversione',
-'filehist-help'                  => 'Klik ap n Tiedpunkt, uum disse Version tou leeden.',
-'filehist-deleteall'             => 'Aal do Versione läskje',
-'filehist-deleteone'             => 'läskje',
-'filehist-revert'                => 'touräächsätte',
-'filehist-current'               => 'aktuäl',
-'filehist-datetime'              => 'Version fon',
-'filehist-thumb'                 => 'Foarschaubielde',
-'filehist-thumbtext'             => 'Foarschaubielde foar Version fon n $1',
-'filehist-nothumb'               => 'Neen Foarschaubielde deer',
-'filehist-user'                  => 'Benutser',
-'filehist-dimensions'            => 'Höchte un Bratte',
-'filehist-filesize'              => 'Doatäigrööte',
-'filehist-comment'               => 'Kommentoar',
-'imagelinks'                     => 'Bieldeferwiese',
-'linkstoimage'                   => '{{PLURAL:$1|Ju foulgjende Siede ferwoant|Do foulgjende $1 Sieden ferweende}} disse Doatäi:',
-'linkstoimage-more'              => 'Moor as {{PLURAL:$1|een Siede ferlinket|$1 Sieden ferlinkje}} ap disse Doatäi.
+'file-anchor-link'          => 'Bielde',
+'filehist'                  => 'Doatäiversione',
+'filehist-help'             => 'Klik ap n Tiedpunkt, uum disse Version tou leeden.',
+'filehist-deleteall'        => 'Aal do Versione läskje',
+'filehist-deleteone'        => 'läskje',
+'filehist-revert'           => 'touräächsätte',
+'filehist-current'          => 'aktuäl',
+'filehist-datetime'         => 'Version fon',
+'filehist-thumb'            => 'Foarschaubielde',
+'filehist-thumbtext'        => 'Foarschaubielde foar Version fon n $1',
+'filehist-nothumb'          => 'Neen Foarschaubielde deer',
+'filehist-user'             => 'Benutser',
+'filehist-dimensions'       => 'Höchte un Bratte',
+'filehist-filesize'         => 'Doatäigrööte',
+'filehist-comment'          => 'Kommentoar',
+'imagelinks'                => 'Doatäiferweendengen',
+'linkstoimage'              => '{{PLURAL:$1|Ju foulgjende Siede ferwoant|Do foulgjende $1 Sieden ferweende}} disse Doatäi:',
+'linkstoimage-more'         => 'Moor as {{PLURAL:$1|een Siede ferlinket|$1 Sieden ferlinkje}} ap disse Doatäi.
 Ju foulgjende Lieste wiest bloot {{PLURAL:$1|dän eerste Link|do eerste $1 Linke}} ap disse Doatäi.
 Ne [[Special:WhatLinksHere/$2|fulständige Lieste]] is ferföigboar.',
-'nolinkstoimage'                 => 'Naan Artikkel benutset disse Bielde.',
-'morelinkstoimage'               => '[[Special:WhatLinksHere/$1|Wiedere Ferbiendengen]] foar disse Doatäi.',
-'redirectstofile'                => '{{PLURAL:$1|Ju foulgjende Doatäi laitet|Do foulgjende $1 Doatäie laitje}} ap disse Doatäi fääre:',
-'duplicatesoffile'               => '{{PLURAL:$1|Ju foulgjende Doatäi is n Duplikoat|Do foulgjende $1 Doatäie sunt Duplikoate}} fon disse Doatäi:',
-'sharedupload'                   => 'Disse Doatäi is ne deelde Hoochleedenge un duur fon uur Projekte anwoand wäide.',
-'shareduploadwiki'               => 'Jädden sjuch dän $1 foar wiedere Information.',
-'shareduploadwiki-desc'          => 'Hier foulget die Inhoold fon $1 uut dät gemeensoam benutsede Repositorium.',
-'shareduploadwiki-linktext'      => 'Doatäi-Beschrieuwengssiede',
-'shareduploadduplicate'          => 'Disse Doatäi is n Duplikoat $1 uut dät gemeensoam bruukte Repositorium.',
-'shareduploadduplicate-linktext' => 'disse uur Doatäi',
-'shareduploadconflict'           => 'Disse Doatäi häd dänsälge Noome as $1 uut dät gemeensoam bruukte Repositorium.',
-'shareduploadconflict-linktext'  => 'disse uur Doatäi',
-'noimage'                        => 'Ne Doatäi mäd dissen Noome existiert nit, du koast ju oawers $1.',
-'noimage-linktext'               => 'aan hoochleede',
-'uploadnewversion-linktext'      => 'Ne näie Version fon disse Doatäi hoochleede',
-'imagepage-searchdupe'           => 'Säike ätter Doatäi-Duplikoate',
+'nolinkstoimage'            => 'Naan Artikkel benutset disse Bielde.',
+'morelinkstoimage'          => '[[Special:WhatLinksHere/$1|Wiedere Ferbiendengen]] foar disse Doatäi.',
+'redirectstofile'           => '{{PLURAL:$1|Ju foulgjende Doatäi laitet|Do foulgjende $1 Doatäie laitje}} ap disse Doatäi fääre:',
+'duplicatesoffile'          => '{{PLURAL:$1|Ju foulgjende Doatäi is n Duplikoat|Do foulgjende $1 Doatäie sunt Duplikoate}} fon disse Doatäi ([[Special:FileDuplicateSearch/$2|wiedere Details]]):',
+'sharedupload'              => 'Disse Doatäi stamt uut $1 un duur fon uur Projekte ferwoand wäide.',
+'uploadnewversion-linktext' => 'Ne näie Version fon disse Doatäi hoochleede',
+'shared-repo-from'          => 'uut $1',
+'shared-repo'               => 'n gemeensoam nutsed Medienarchiv',
 
 # File reversion
 'filerevert'                => 'Touräächsätte fon "$1"',
@@ -1345,7 +1369,7 @@ Ne [[Special:WhatLinksHere/$2|fulständige Lieste]] is ferföigboar.',
 # File deletion
 'filedelete'                  => 'Läskje "$1"',
 'filedelete-legend'           => 'Läskje Doatäi',
-'filedelete-intro'            => "Du läskest ju Doatäi '''„[[Media:$1|$1]]“'''.",
+'filedelete-intro'            => "Du läskest ju Doatäi '''„[[Media:$1|$1]]“''' touhoope mäd hiere Versionsgeschichte.",
 'filedelete-intro-old'        => "Du läskest fon ju Doatäi '''„[[Media:$1|$1]]“''' ju [$4 Version fon $2, $3 Uur].",
 'filedelete-comment'          => 'Gruund:',
 'filedelete-submit'           => 'Läskje',
@@ -1419,9 +1443,9 @@ Lääste schällen dan wächhoald wäide.',
 'double-redirect-fixer'      => 'RedirectBot',
 
 'brokenredirects'        => 'Ferkierde Fäärelaitengen',
-'brokenredirectstext'    => 'Disse Truchferwiese laitje tou nit existierjende Artikkel:',
-'brokenredirects-edit'   => '(beoarbaidje)',
-'brokenredirects-delete' => '(läskje)',
+'brokenredirectstext'    => 'Disse Spezioalsiede liestet Truchferwiese ap nit existierjende Sieden:',
+'brokenredirects-edit'   => 'beoarbaidje',
+'brokenredirects-delete' => 'läskje',
 
 'withoutinterwiki'         => 'Sieden sunner Ferbiendengen tou uur Sproaken',
 'withoutinterwiki-summary' => 'Do foulgjende Sieden ferlinkje nit ap uur Sproakversionen:',
@@ -1449,6 +1473,7 @@ Lääste schällen dan wächhoald wäide.',
 'popularpages'            => 'Sieden do oafte bekieked wäide',
 'wantedcategories'        => 'Benutsede, man nit anlaide Kategorien',
 'wantedpages'             => 'Wonskede Sieden',
+'wantedpages-badtitle'    => 'Uungultigen Tittel in dat Resultoat: $1',
 'wantedfiles'             => 'Failjende Doatäie',
 'wantedtemplates'         => 'Failjende Foarloagen',
 'mostlinked'              => 'Maast ferlinkede Sieden',
@@ -1457,7 +1482,7 @@ Lääste schällen dan wächhoald wäide.',
 'mostcategories'          => 'Maast kategorisierde Sieden',
 'mostimages'              => 'Maast benutsede Doatäie',
 'mostrevisions'           => 'Sieden mäd do maaste Versione',
-'prefixindex'             => 'Aal Artikkele (mäd Präfix)',
+'prefixindex'             => 'Aal Sieden (mäd Präfix)',
 'shortpages'              => 'Kuute Sieden',
 'longpages'               => 'Loange Sieden',
 'deadendpages'            => 'Siede sunner Ferwiese',
@@ -1472,7 +1497,9 @@ Lääste schällen dan wächhoald wäide.',
 'protectedtitlesempty'    => 'Apstuuns sunt mäd do ounroate Parametere neen Sieden speerd uum näi tou moakjen.',
 'listusers'               => 'Benutser-Lieste',
 'listusers-editsonly'     => 'Wies bloot Benutsere mäd Biedraage',
+'listusers-creationsort'  => 'Ätter dän Moakdoatum sortierje',
 'usereditcount'           => '$1 {{PLURAL:$1|Beoarbaidenge|Beoarbaidengen}}',
+'usercreated'             => 'Moaked ap n $1 uum $2',
 'newpages'                => 'Näie Sieden',
 'newpages-username'       => 'Benutsernoome:',
 'ancientpages'            => 'Siet loang uunbeoarbaidede Sieden',
@@ -1492,7 +1519,7 @@ Deeruum kon ju hier noch aptäld weese, wan ju uk aktiv benutsed wäd.',
 # Book sources
 'booksources'               => 'ISBN-Säike',
 'booksources-search-legend' => 'Säik ätter Steeden wier me Bouke kriege kon',
-'booksources-go'            => 'Säike',
+'booksources-go'            => 'Säike (011)',
 'booksources-text'          => 'Dit is ne Lieste mäd Ferbiendengen tou Internetsieden, do der näie un bruukte Bouke ferkoopje. Deer kon et uk wiedere Informatione uur do Bouke reeke. {{SITENAME}} is mäd neen fon disse Anbjoodere geschäftelk ferbuunen.',
 'booksources-invalid-isbn'  => 'Fermoudelk is ju ISBN uungultich. Säik ätter Failere in ju Kopie.',
 
@@ -1531,13 +1558,14 @@ Ju Uutgoawe kon truch ju Uutwoal fon dän Logbouktyp, fon dän Benutser of dän 
 'special-categories-sort-abc'   => 'Sortierenge ätter Alphabet',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Läskede Benutserbiedraage',
+'deletedcontributions'       => 'Läskede Benutserbiedraage',
+'deletedcontributions-title' => 'Läskede Benutserbiedraage',
 
 # Special:LinkSearch
 'linksearch'       => 'Webferbiendenge-Säike',
 'linksearch-pat'   => 'Säikmuster:',
 'linksearch-ns'    => 'Noomensruum:',
-'linksearch-ok'    => 'Säike',
+'linksearch-ok'    => 'Säike (012)',
 'linksearch-text'  => 'Disse Spezialsiede moaket ju Säike muugelke ätter Sieden, in do bestimde Webferbiendengen äntheelden sunt. Deerbie konne Wildcards as biespilswiese <tt>*.example.com</tt> benutsed wäide.<br />Unnerstutsede Protokolle: <tt>$1</tt>',
 'linksearch-line'  => '$1 is ferlinked fon $2',
 'linksearch-error' => 'Wildcards konnen bloot an dän Ounfang fon ju URL ferwoand wäide.',
@@ -1552,7 +1580,7 @@ Ju Uutgoawe kon truch ju Uutwoal fon dän Logbouktyp, fon dän Benutser of dän 
 'newuserlogpagetext'          => 'Dit is dät Logbouk fon näi anmäldede Benutsere.',
 'newuserlog-byemail'          => 'dät Paaswoud wuud uur E-Mail fersoand',
 'newuserlog-create-entry'     => 'Benutser wuude näi registrierd',
-'newuserlog-create2-entry'    => 'moakede Benutserkonto foar $1',
+'newuserlog-create2-entry'    => 'moakede näi Benutserkonto „$1“',
 'newuserlog-autocreate-entry' => 'Benutserkonto wuud automatisk moaked',
 
 # Special:ListGroupRights
@@ -1704,9 +1732,9 @@ In $2 fiende Jie ne Lieste fon do lääste Läskengen.',
 'cantrollback'     => 'Disse Annerenge kon nit touräächstoald wäide; deer et naan fröieren Autor rakt.',
 'alreadyrolled'    => 'Dät Touräächsätten fon do Annerengen fon [[User:$2|$2]] ([[User talk:$2|Diskussion]], [[Special:Contributions/$2|{{int:contribslink}}]]) an Siede [[:$1]] hied naan Ärfoulch, deer in ju Twiskentied al n uur Benutser Annerengen an disse Siede foarnuumen häd.
 
-Ju lääste Annerenge stamt fon [[User:$3|$3]] ([[User talk:$3|Diskussion]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
-'editcomment'      => 'Ju Annerengskommentoar waas: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Tounichte moakede Beoarbaidengen fon [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) tou ju lääste Version fon [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+Ju lääste Annerenge stamt fon [[User:$3|$3]] ([[User talk:$3|Diskussion]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+'editcomment'      => "Ju Annerengs-Touhoopefoatenge waas: \"''\$1''\".",
+'revertpage'       => 'Tounichte moakede Beoarbaidengen fon [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) tou ju lääste Version fon [[User:$1|$1]]',
 'rollback-success' => 'Do Annerengen fon $1 wuuden tourääch annerd un ju lääste Version fon $2 wuude wier moaked.',
 'sessionfailure'   => 'Dät roat n Problem mäd ju Uurdreegenge fon dien Benutserdoaten. Disse Aktion wuude deeruum sicherheidshoolwe oubreeken, uum ne falske Touoardnenge fon dien Annerengen tou n uur Benutser tou ferhinnerjen. Gung jädden tourääch un fersäik dän Foargong fonnäien uuttoufieren.',
 
@@ -1727,13 +1755,13 @@ Sjuch [[Special:ProtectedPages|Schutsede Siede]] foar moor Informatione.',
 'protect_expiry_old'          => 'Ju Speertied lait in ju fergeene Tied.',
 'protect-unchain'             => 'Ferschuuweschuts annerje',
 'protect-text'                => "Hier koast du dän Schutsstoatus foar ju Siede '''<nowiki>$1</nowiki>''' ienkiekje un annerje.",
-'protect-locked-blocked'      => 'Du koast dän Siedenschuts nit annerje, deer dien Benutserkonto speerd is. Hier sunt do aktuelle Siedenschuts-Ienstaalengen foar ju Siede <strong>„$1“:</strong>',
-'protect-locked-dblock'       => 'Ju Doatenboank is speerd, die Siedenschuts kon deeruum nit annerd wäide. Hier sunt do aktuelle Siedenschuts-Ienstaalengen foar ju Siede <strong>„$1“:</strong>',
-'protect-locked-access'       => 'Du bäst nit begjuchtiged, dän Siedenschutsstoatus tou annerjen. Hier is die aktuälle Schutsstoatus fon ju Siede <strong>$1</strong>:',
+'protect-locked-blocked'      => "Du koast dän Siedenschuts nit annerje, deer dien Benutserkonto speerd is. Hier sunt do aktuelle Siedenschuts-Ienstaalengen foar ju Siede '''„$1“:'''",
+'protect-locked-dblock'       => "Ju Doatenboank is speerd, die Siedenschuts kon deeruum nit annerd wäide. Hier sunt do aktuelle Siedenschuts-Ienstaalengen foar ju Siede '''„$1“:'''",
+'protect-locked-access'       => "Du bäst nit begjuchtiged, dän Siedenschutsstoatus tou annerjen. Hier is die aktuälle Schutsstoatus fon ju Siede '''$1''':",
 'protect-cascadeon'           => 'Disse Siede is apstuuns Deel fon ne Kaskadenspeere. Ju is in {{PLURAL:$1|ju foulgjende Siede|do foulgjende Sieden}} ienbuunen, do der truch ju Kaskadenspeerroption schutsed {{PLURAL:$1|is|sunt}}. Die Siedenschutsstoatus kon foar disse Siede annerd wäide, man dät häd naan Ienfloud ap ju Kaskadenspeere:',
-'protect-default'             => 'Aal (Standoard)',
+'protect-default'             => 'Aal Benutsere',
 'protect-fallback'            => 'Deer wäd ju „$1“-Begjuchtigenge benöödigd.',
-'protect-level-autoconfirmed' => 'Speerenge foar nit registrierde Benutsere',
+'protect-level-autoconfirmed' => 'Speerenge foar näie un nit registrierde Benutsere',
 'protect-level-sysop'         => 'Bloot Administration',
 'protect-summary-cascade'     => 'kaskadierjend',
 'protect-expiring'            => 'bit $1 (UTC)',
@@ -1751,7 +1779,7 @@ Sjuch [[Special:ProtectedPages|Schutsede Siede]] foar moor Informatione.',
 ** Oafte ienbuundene Foarloage
 ** Siede mäd hooge Besäikertaal',
 'protect-edit-reasonlist'     => 'Schutsgruunde beoarbaidje',
-'protect-expiry-options'      => '1 Uure:1 hour,2 Uuren:2 hours,6 Uuren:6 hours,1 Dai:1 day,3 Deege:3 days,1 Wiek:1 week,2 Wieke:2 weeks,1 Mound:1 month,3 Mounde:3 months,1 Jier:1 year,Uunbestimd:indefinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 Uure:1 hour,1 Dai:1 day,1 Wiek:1 week,2 Wieke:2 weeks,1 Mound:1 month,3 Mounde:3 months,6 Mounde:6 months,1 Jier:1 year,Uunbestimd:infinite',
 'restriction-type'            => 'Schutsstoatus',
 'restriction-level'           => 'Schutshöchte',
 'minimum-size'                => 'Minstgrööte',
@@ -1790,7 +1818,7 @@ Die aktuelle Text fon ju läskede Siede is bloot Administratore tougongelk.',
 'undeleterevision-missing'     => 'Uungultige of failjende Version. Äntweeder is ju Ferbiendenge falsk of ju Version wuude uut dät Archiv wier moaked of wächhoald.',
 'undelete-nodiff'              => 'Neen foargungende Version fuunen.',
 'undeletebtn'                  => 'Wier häärstaale',
-'undeletelink'                 => 'wier häärstaale',
+'undeletelink'                 => 'bekiekje/wier häärstaale',
 'undeletereset'                => 'Oubreeke',
 'undeleteinvert'               => 'Uutwoal uumekiere',
 'undeletecomment'              => 'Gruund:',
@@ -1805,7 +1833,7 @@ In dät [[Special:Log/delete|Läsk-Logbouk]] finst du ne Uursicht fon do läsked
 'undelete-header'              => 'Sjuch dät [[Special:Log/delete|Läsk-Logbouk]] foar knu läskede Sieden.',
 'undelete-search-box'          => 'Säik ätter läskede Sieden',
 'undelete-search-prefix'       => 'Säikbegriep (Woudounfang sunner Wildcards):',
-'undelete-search-submit'       => 'Säike',
+'undelete-search-submit'       => 'Säike (013)',
 'undelete-no-results'          => 'Der wuude in dät Archiv neen tou dän Säikbegriep paasjende Siede fuunen.',
 'undelete-filename-mismatch'   => 'Ju Doatäiversion mäd dän Tiedstämpel $1 kuude nit wier moaked wäide: Do Doatäinoomen paasje nit tounonner.',
 'undelete-bad-store-key'       => 'Ju Doatäiversion mäd dän Tiedstämpel $1 kuude nit wier moaked wäide: Ju Doatäi waas al foar dät Läskjen nit moor deer.',
@@ -1837,9 +1865,13 @@ $1',
 'sp-contributions-newbies-sub'   => 'Foar Näilinge',
 'sp-contributions-newbies-title' => 'Benutserbiedraage fon näie Benutsere',
 'sp-contributions-blocklog'      => 'Speerlogbouk',
+'sp-contributions-deleted'       => 'Läskede Benutserbiedraage',
+'sp-contributions-logs'          => 'Logbouke',
+'sp-contributions-talk'          => 'Diskussion',
+'sp-contributions-userrights'    => 'Benutsergjuchteferwaltenge',
 'sp-contributions-search'        => 'Säike ätter Benutserbiedraage',
 'sp-contributions-username'      => 'IP-Adrässe af Benutsernoome:',
-'sp-contributions-submit'        => 'Säike',
+'sp-contributions-submit'        => 'Säike (014)',
 
 # What links here
 'whatlinkshere'            => 'Links ap disse Siede',
@@ -1887,7 +1919,7 @@ Reek dän Gruund foar ju Speere oun.',
 'ipbenableautoblock'              => 'Speer ju aktuell fon dissen Benutser nutsede IP-Adresse as uk automatisk aal foulgjende, fon do uut hie Beoarbaidengen of dät Anlääsen fon Benutseraccounts fersäkt',
 'ipbsubmit'                       => 'Adrässe blokkierje',
 'ipbother'                        => 'Uur Duur (ängelsk):',
-'ipboptions'                      => '1 Uure:1 hour,2 Uuren:2 hours,6 Uuren:6 hours,1 Dai:1 day,3 Deege:3 days,1 Wiek:1 week,2 Wieke:2 weeks,1 Mound:1 month,3 Mounde:3 months,1 Jier:1 year,Uunbestimd:indefinite', # display1:time1,display2:time2,...
+'ipboptions'                      => '2 Uuren:2 hours,1 Dai:1 day,3 Deege:3 days,1 Wiek:1 week,2 Wieke:2 weeks,1 Mound:1 month,3 Mounde:3 months,6 Mounde:6 months,1 Jier:1 year,Uunbestimd:infinite',
 'ipbotheroption'                  => 'Uur Duur',
 'ipbotherreason'                  => 'Uur/additionelle Begründenge:',
 'ipbhidename'                     => 'Benutsernoome in dät Speer-Logbouk, in ju Lieste fon aktive Speeren un in dät Benutserferteeknis ferstopje.',
@@ -1906,7 +1938,7 @@ Reek dän Gruund foar ju Speere oun.',
 'ipb-blocklist-contribs'          => 'Benutserbiedreege foar „$1“',
 'unblockip'                       => 'IP-Adrässe fräireeke',
 'unblockiptext'                   => 'Benutsje dät Formular, uum ne blokkierde IP-Adrässe fräitoureeken.',
-'ipusubmit'                       => 'Disse Adrässe fräireeke',
+'ipusubmit'                       => 'Disse Speerenge wächhoalje',
 'unblocked'                       => '[[User:$1|$1]] wuude fräiroat',
 'unblocked-id'                    => 'Speer-ID $1 wuude fräiroat',
 'ipblocklist'                     => 'Speerde IP-Adrässen un Benutsernoomen',
@@ -1915,10 +1947,10 @@ Reek dän Gruund foar ju Speere oun.',
 'ipblocklist-sh-userblocks'       => '$1 Benutserspeeren',
 'ipblocklist-sh-tempblocks'       => '$1 tiedwiese Speeren',
 'ipblocklist-sh-addressblocks'    => '$1 IP-Speeren',
-'ipblocklist-submit'              => 'Säike',
+'ipblocklist-submit'              => 'Säike (015)',
 'blocklistline'                   => '$1, $2 blokkierde $3 ($4)',
 'infiniteblock'                   => 'uunbegränsed',
-'expiringblock'                   => '$1',
+'expiringblock'                   => '$1 $2',
 'anononlyblock'                   => 'bloot Anonyme',
 'noautoblockblock'                => 'Autoblock deaktivierd',
 'createaccountblock'              => 'Dät Moakjen fon Benutserkonten speerd',
@@ -2009,15 +2041,17 @@ In disse Falle moast du ju Siede, wan wonsked, fon Hounde ferschuuwe. Jädden d�
 'move-watch'                   => 'Disse Siede beooboachtje',
 'movepagebtn'                  => 'Siede ferschuuwe',
 'pagemovedsub'                 => 'Ferschuuwenge mäd Ärfoulch',
-'movepage-moved'               => "<big>'''Ju Siede „$1“ wuude ätter „$2“ ferschäuwen.'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => "<big>'''Ju Siede „$1“ wuude ätter „$2“ ferschäuwen.'''</big>",
+'movepage-moved-redirect'      => 'Der wuud ne Fäärelaitenge moaked.',
+'movepage-moved-noredirect'    => 'Dät Moakjen fon ne Fäärelaitenge wuud unnerdrukt.',
 'articleexists'                => 'Dät rakt al n Siede mäd disse Noome, of uurs is die Noome dän du anroat hääst, nit toulät.
 Fersäik jädden n uur Noome.',
 'cantmove-titleprotected'      => 'Ju Ferschuuwenge kon nit truchfierd wäide, deeruum dät die Sieltittel speerd is uum tou moakjen.',
 'talkexists'                   => 'Ju Siede sälwen wuude mäd Ärfoulch ferschäuwen, man ju Diskussionssiede nit, deer al een mäd dän näie Tittel bestoant. Glieke jädden do Inhoolde fon Hounde ou.',
 'movedto'                      => 'ferschäuwen ätter',
 'movetalk'                     => 'Ju Diskussionssiede mee ferschuuwe, wan muugelk.',
-'move-subpages'                => 'Aal Unnersieden, fals deer, meeferschuuwe',
-'move-talk-subpages'           => 'Aal Unnersieden fon Diskussionssieden, fals deer, meeferschuuwe',
+'move-subpages'                => 'Aal Unnersieden (bit tou $1) meeferschuuwe',
+'move-talk-subpages'           => 'Aal Unnersieden fon Diskussionssieden (bit tou $1) meeferschuuwe',
 'movepage-page-exists'         => 'Ju Siede „$1“ is al deer un kon nit automatisk uurschrieuwen wäide.',
 'movepage-page-moved'          => 'Ju Siede „$1“ wuude ätter „$2“ ferschäuwen.',
 'movepage-page-unmoved'        => 'Ju Siede „$1“ kuude nit ätter „$2“ ferschäuwen wäide.',
@@ -2027,6 +2061,9 @@ Fersäik jädden n uur Noome.',
 'move-redirect-suppressed'     => 'Fäärelaitenge unnerdrukt',
 'movelogpage'                  => 'Ferschuuwengs-Logbouk',
 'movelogpagetext'              => 'Dit is ne Lieste fon aal ferschäuwene Sieden.',
+'movesubpage'                  => '{{PLURAL:$1|Unnersiede|Unnersieden}}',
+'movesubpagetext'              => 'Disse Siede häd $1 {{PLURAL:$1|Unnersiede|Unnersieden}}.',
+'movenosubpage'                => 'Disse Siede häd neen Unnersieden.',
 'movereason'                   => 'Kuute Begründenge:',
 'revertmove'                   => 'tourääch ferschuuwe',
 'delete_and_move'              => 'Läskje un ferschuuwe',
@@ -2049,15 +2086,22 @@ Moatest du him foar ju Ferschuuwenge läskje?',
 
 # Export
 'export'            => 'Sieden exportierje',
-'exporttext'        => 'Du koast dän Täkst un ju Beoarbaidengshistorie fon ne bestimde Siede of fon n Uutwoal fon Sieden ättter XML exportierje.',
+'exporttext'        => 'Mäd disse Spezioalsiede koast du dän Täkst un ju Beoarbaidengshistorie fon eenpelde Sieden in ne XML-Doatäi exportierje.
+Ju Doatäi kon in n uur MediaWiki-Wiki uur ju [[Special:Import|Importfunktion]] ienspield wäide.
+
+Dräch dän of do äntspreekende Siedentittel(e) in dät foulgjende Textfäild ien (pro Riege älkemoal bloot foar een Siede).
+
+Alternativ is die Export uk mäd de Syntax [[{{#Special:Export}}/{{MediaWiki:Mainpage}}]] muugelk, biespilswiese foar ju [[{{MediaWiki:Mainpage}}]].',
 'exportcuronly'     => 'Bloot ju aktuälle Version fon de Siede exportierje',
 'exportnohistory'   => "----
 '''Waiwiesenge:''' Die Export fon komplette Versionsgeschichten is uut Performancegruunden bit ap fääre nit muugelk.",
 'export-submit'     => 'Sieden exportierje',
 'export-addcattext' => 'Sieden uut Kategorie bietouföigje:',
 'export-addcat'     => 'Bietouföigje',
+'export-addns'      => 'Bietouföigje',
 'export-download'   => 'As XML-Doatäi spiekerje',
 'export-templates'  => 'Inklusive Foarloagen',
+'export-pagelinks'  => 'Ferlinkede Sieden automatisk mee exportierje, bit tou ju Rekursionsjupte fon:',
 
 # Namespace 8 related
 'allmessages'               => 'Aal Ättergjuchte',
@@ -2065,10 +2109,8 @@ Moatest du him foar ju Ferschuuwenge läskje?',
 'allmessagesdefault'        => 'Standardtext',
 'allmessagescurrent'        => 'Dissen Text',
 'allmessagestext'           => 'Dit is ne Lieste fon aal System-Ättergjuchte do in dän MediaWiki-Noomenruum tou Ferföigenge stounde.
-Besäik jädden [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] un [http://translatewiki.net Betawiki], wan du mee-oarbaidje wolt an ju MediaWiki-Sortierenge.',
+Besäik jädden [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] un [http://translatewiki.net translatewiki.net], wan du mee-oarbaidje wolt an ju MediaWiki-Sortierenge.',
 'allmessagesnotsupportedDB' => 'Disse Spezioalsiede stoant nit tou Ferföigenge, deer ju uur dän Parameter <tt>$wgUseDatabaseMessages</tt> deaktivierd wuude.',
-'allmessagesfilter'         => 'Ättergjuchtennoomensfilter:',
-'allmessagesmodified'       => 'Bloot annerde wiese',
 
 # Thumbnails
 'thumbnail-more'           => 'fergratterje',
@@ -2087,6 +2129,7 @@ Do Versionsdoaten un Benutsernoomen blieuwe deerbie beheelden.
 Aal Transwiki-Import-Aktione wäide in dät [[Special:Log/import|Import-Logbouk]] protokollierd.',
 'import-interwiki-source'    => 'Wälle-Wiki/-Siede:',
 'import-interwiki-history'   => 'Importier aal Versione fon disse Siede',
+'import-interwiki-templates' => 'Aal Foarloagen iensluute',
 'import-interwiki-submit'    => 'Import',
 'import-interwiki-namespace' => 'Siel-Noomensruum:',
 'import-upload-filename'     => 'Doatäinoome:',
@@ -2124,19 +2167,19 @@ Aal Transwiki-Import-Aktione wäide in dät [[Special:Log/import|Import-Logbouk]
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|Version|Versione}} fon $2',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage'             => 'Oaine Benutsersiede',
+'tooltip-pt-userpage'             => 'Dien Benutsersiede',
 'tooltip-pt-anonuserpage'         => 'Benutsersiede fon ju IP-Adresse fon ju uut du Annerengen truchfierst',
-'tooltip-pt-mytalk'               => 'Oaine Diskussionssiede',
+'tooltip-pt-mytalk'               => 'Dien Diskussionssiede',
 'tooltip-pt-anontalk'             => 'Diskussion uur Annerengen fon disse IP-Adresse',
 'tooltip-pt-preferences'          => 'Oaine Ienstaalengen',
 'tooltip-pt-watchlist'            => 'Lieste fon do beooboachtede Sieden',
-'tooltip-pt-mycontris'            => 'Lieste fon oaine Biedraage',
+'tooltip-pt-mycontris'            => 'Lieste fon dien Biedraage',
 'tooltip-pt-login'                => 'Jou ientoulogjen wäd wäil jädden blouked, man is neen Plicht.',
 'tooltip-pt-anonlogin'            => 'Sik ientoulogjen wäd wäil jädden blouked, man is neen Plicht.',
 'tooltip-pt-logout'               => 'Oumäldje',
 'tooltip-ca-talk'                 => 'Diskussion uur dän Inhoold fon ju Siede',
 'tooltip-ca-edit'                 => 'Siede beoarbaidje. Jädden foar dät Spiekerjen ju Foarschaufunktion benutsje.',
-'tooltip-ca-addsection'           => 'N Kommentoar tou disse Diskussion bietouföigje.',
+'tooltip-ca-addsection'           => 'Näi Stuk ounfange',
 'tooltip-ca-viewsource'           => 'Disse Siede is schutsed. Die Wältext kon ankieked wäide.',
 'tooltip-ca-history'              => 'Fröiere Versione fon disse Siede',
 'tooltip-ca-protect'              => 'Disse Siede schutsje',
@@ -2202,7 +2245,7 @@ Aal Transwiki-Import-Aktione wäide in dät [[Special:Log/import|Import-Logbouk]
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonymen Benutser|Anonyme Benutsere}} ap {{SITENAME}}',
 'siteuser'         => '{{SITENAME}}-Benutser $1',
-'lastmodifiedatby' => 'Disse Siede wuude toulääst annerd uum $2, $1 fon $3.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Disse Siede wuude toulääst annerd uum $2, $1 fon $3.',
 'othercontribs'    => 'Basierd ap ju Oarbaid fon $1.',
 'others'           => 'uur',
 'siteusers'        => '{{SITENAME}} {{PLURAL:$2|Benutser|Benutsere}} $1',
@@ -2232,6 +2275,17 @@ Aal Transwiki-Import-Aktione wäide in dät [[Special:Log/import|Import-Logbouk]
 'mw_math_source' => 'As TeX beläite (foar Textbrowsere)',
 'mw_math_modern' => 'Antouräiden foar moderne Browsere',
 'mw_math_mathml' => 'MathML',
+
+# Math errors
+'math_failure'          => 'Parser-Failer',
+'math_unknown_error'    => 'Uunbekoande Failer',
+'math_unknown_function' => 'Uunbekoande Funktion',
+'math_lexing_error'     => "'Lexing'-Failer",
+'math_syntax_error'     => 'Syntaxfailer',
+'math_image_error'      => 'ju PNG-Konvertierenge sluuch fail',
+'math_bad_tmpdir'       => 'Kon dät Temporärferteeknis foar mathematiske Formeln nit anlääse of beschrieuwe.',
+'math_bad_output'       => 'Kon dät Sielferteeknis foar mathematiske Formeln nit anlääse of beschrieuwe.',
+'math_notexvc'          => 'Dät texvc-Program kon nit fuunen wäide. Beoachte jädden math/README.',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'As pröiwed markierje',
@@ -2271,7 +2325,7 @@ $1',
 'visual-comparison' => 'Visuellen Fergliek',
 
 # Media information
-'mediawarning'         => "'''Warnung:''' Disse Oard fon Doatäi kon n schoadelken Programcode änthoolde. Truch dät Deelleeden of Eepenjen fon dissen Doatäi kon dän Computer Schoade toubroacht wäide. Al dät Anklikken fon dän Link kon deertou fiere, dät die Browser ju Doatäi eepen moaket un uunbekoande Programcode tou Uutfierenge kumt. Do Bedrieuwere fon ju Wikipedia uurnieme neen Feroantwoudenge foar dän Inhoold fon disse Doatäi! Schuul disse Doatäi wuddelk schoadelke Programcode änthoolde, schuul n Administrator informierd wäide.<hr />",
+'mediawarning'         => "'''Warnung:''' Disse Oard fon Doatäi kon n schoadelken Programcode änthoolde. Truch dät Deelleeden of Eepenjen fon dissen Doatäi kon dän Computer Schoade toubroacht wäide.<hr />",
 'imagemaxsize'         => 'Maximoale Bieldegrööte ap Bieldebeschrieuwengssieden:',
 'thumbsize'            => 'Grööte fon do Foarschaubielden (thumbnails):',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|1 Siede|$3 Sieden}}',
@@ -2315,9 +2369,10 @@ wiedere standdoardmäitich "ienklapte" Details konnen anwiesd wäide.
 * make
 * model
 * fnumber
+* isospeedratings
 * datetimeoriginal
 * exposuretime
-* focallength', # Do not translate list items
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Bratte',
@@ -2444,14 +2499,14 @@ wiedere standdoardmäitich "ienklapte" Details konnen anwiesd wäide.
 
 'exif-unknowndate' => 'Uunbekoand Doatum',
 
-'exif-orientation-1' => 'Normoal', # 0th row: top; 0th column: left
-'exif-orientation-2' => 'Horizontoal uumewoand', # 0th row: top; 0th column: right
-'exif-orientation-3' => 'Uum 180° uumewoand', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => 'Vertikoal uumewoand', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => 'Juun dän Klokkenwiesersin uum 90° troald un vertikoal uumewoand', # 0th row: left; 0th column: top
-'exif-orientation-6' => 'Uum 90° in Klokkenwiesersin troald', # 0th row: right; 0th column: top
-'exif-orientation-7' => 'Uum 90° in Klokkenwiesersin troald un vertikoal uumewoand', # 0th row: right; 0th column: bottom
-'exif-orientation-8' => 'Uum 90° juun dän Klokkenwiesersin troald', # 0th row: left; 0th column: bottom
+'exif-orientation-1' => 'Normoal',
+'exif-orientation-2' => 'Horizontoal uumewoand',
+'exif-orientation-3' => 'Uum 180° uumewoand',
+'exif-orientation-4' => 'Vertikoal uumewoand',
+'exif-orientation-5' => 'Juun dän Klokkenwiesersin uum 90° troald un vertikoal uumewoand',
+'exif-orientation-6' => 'Uum 90° in Klokkenwiesersin troald',
+'exif-orientation-7' => 'Uum 90° in Klokkenwiesersin troald un vertikoal uumewoand',
+'exif-orientation-8' => 'Uum 90° juun dän Klokkenwiesersin troald',
 
 'exif-planarconfiguration-1' => 'Groafformoat',
 'exif-planarconfiguration-2' => 'Planoarformoat',
@@ -2573,7 +2628,7 @@ wiedere standdoardmäitich "ienklapte" Details konnen anwiesd wäide.
 'exif-gpsmeasuremode-2' => '2-dimensionoale Meetenge',
 'exif-gpsmeasuremode-3' => '3-dimensionoale Meetenge',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'km/h',
 'exif-gpsspeed-m' => 'mph',
 'exif-gpsspeed-n' => 'Knätte',
@@ -2597,7 +2652,7 @@ wiedere standdoardmäitich "ienklapte" Details konnen anwiesd wäide.
 'confirmemail'             => 'Email-Adrässe bestäätigje',
 'confirmemail_noemail'     => 'Du hääst neen gultige E-Mail-Adresse in dien [[Special:Preferences|persöönelke Ienstaalengen]] iendrain.',
 'confirmemail_text'        => '{{SITENAME}} ärfoardert, dät du dien E-Mail-Adresse bestäätigest (authentifizierje), eer du do fergratterde E-Mail-Funktione benutsje koast. Truch n Klik ap ju Schaltfläche unner wäd ne E-Mail an die fersoand. Disse E-Mail änthaalt ne Ferbiendenge mäd n Bestäätigengs-Code. Truch Klikken ap disse Ferbiendenge wäd bestäätiged, dät dien E-Mail-Adresse gultich is.',
-'confirmemail_pending'     => '<div class="error">Der wuude die al n Bestäätigengs-Code per E-Mail tousoand. Wan du dien Benutserkonto eerste knu moaked hääst, täif noch n poor Minuten ap ju E-Mail, eer du n näien Code anfoarderst.</div>',
+'confirmemail_pending'     => 'Der wuude die al n Bestäätigengs-Code per E-Mail tousoand. Wan du dien Benutserkonto eerste knu moaked hääst, täif noch n poor Minuten ap ju E-Mail, eer du n näien Code anfoarderst.',
 'confirmemail_send'        => 'Bestäätigengscode touseende',
 'confirmemail_sent'        => 'Bestäätigengs-E-Mail wuude fersoand.',
 'confirmemail_oncreate'    => 'N Bestäätigengs-Code wuude an dien E-Mail-Adresse soand. Dissen Code is foar ju Anmäldenge nit nöödich, man daach wäd er tou ju Aktivierenge fon do E-Mail-Funktione binne dän Wiki bruukt.',
@@ -2635,18 +2690,16 @@ Disse Bestäätigengscode is gultich bit $4.',
 'scarytranscludetoolong'  => '[URL is tou loang]',
 
 # Trackbacks
-'trackbackbox'      => '<div id="mw_trackbacks">
-Trackbacks foar dissen Artikkel:<br />
-$1
-</div>',
+'trackbackbox'      => 'Trackbacks foar disse Siede:<br />
+$1',
 'trackbackremove'   => '([$1 läskje])',
 'trackbacklink'     => 'Trackback',
 'trackbackdeleteok' => 'Trackback wuude mäd Ärfoulch läsked.',
 
 # Delete conflict
-'deletedwhileediting' => '<span class="error">Oachtenge: Disse Siede wuude al läsked, ätter dät du anfangd hiedest, hier tou beoarbaidjen!
+'deletedwhileediting' => 'Oachtenge: Disse Siede wuude al läsked, ätter dät du anfangd hiedest, hier tou beoarbaidjen!
 Kiekje in dät [{{fullurl:Special:Log|type=delete&page=}}{{FULLPAGENAMEE}} Läsk-Logbouk] ätter,
-wieruum ju Siede läsked wuude. Wan du ju Siede spiekerst, wäd ju näi anlaid.</span>',
+wieruum ju Siede läsked wuude. Wan du ju Siede spiekerst, wäd ju näi anlaid.',
 'confirmrecreate'     => "Benutser [[User:$1|$1]] ([[User talk:$1|Diskussion]]) häd disse Siede läsked, ätter dät du ounfangd hääst, ju tou beoarbaidjen. Ju Begruundenge lutte:
 ''$2''.
 Bestäätigje, dät du disse Siede wuddelk näi moakje moatest.",
@@ -2675,10 +2728,10 @@ Bestäätigje, dät du disse Siede wuddelk näi moakje moatest.",
 'table_pager_empty'        => 'Neen Resultoate',
 
 # Auto-summaries
-'autosumm-blank'   => 'Disse Siede wuude loosmoaked.',
+'autosumm-blank'   => 'Ju Siede wuud loosmoaked.',
 'autosumm-replace' => "Die Siedeninhoold wuude truch n uur Text ärsät: '$1'",
 'autoredircomment' => 'Fäärelaited ätter [[$1]]',
-'autosumm-new'     => 'Ju Siede wuude näi anlaid: $1',
+'autosumm-new'     => 'Ju Siede wuud näi anlaid: „$1“',
 
 # Live preview
 'livepreview-loading' => 'Leede …',
@@ -2719,7 +2772,7 @@ Bestäätigje, dät du disse Siede wuddelk näi moakje moatest.",
 'duplicate-defaultsort' => 'Paas ap: Die Sortierengskoai „$2“ uurschrift dän toufoarne ferwoanden Koai „$1“.',
 
 # Special:Version
-'version'                          => 'Version', # Not used as normal message but as header for the special page itself
+'version'                          => 'Version',
 'version-extensions'               => 'Installierde Ärwiederengen',
 'version-specialpages'             => 'Spezioalsieden',
 'version-parserhooks'              => 'Parser-Hooks',
@@ -2733,7 +2786,7 @@ Bestäätigje, dät du disse Siede wuddelk näi moakje moatest.",
 'version-skin-extension-functions' => 'Skin-Ärwiederengs-Funktione',
 'version-hook-name'                => 'Snitsteedennoome',
 'version-hook-subscribedby'        => 'Aproup fon',
-'version-version'                  => 'Version',
+'version-version'                  => '(Version $1)',
 'version-license'                  => 'Lizenz',
 'version-software'                 => 'Installierde Software',
 'version-software-product'         => 'Produkt',
@@ -2752,7 +2805,7 @@ Bestäätigje, dät du disse Siede wuddelk näi moakje moatest.",
 Ju Iengoawe mout sunner dän Tousats „{{ns:file}}:“ geböäre.',
 'fileduplicatesearch-legend'   => 'Säike ätter Duplikoate',
 'fileduplicatesearch-filename' => 'Doatäinoome:',
-'fileduplicatesearch-submit'   => 'Säike',
+'fileduplicatesearch-submit'   => 'Säike (016)',
 'fileduplicatesearch-info'     => '$1 × $2 Pixel<br />Doatäigrööte: $3<br />MIME-Typ: $4',
 'fileduplicatesearch-result-1' => 'Ju Doatäi „$1“ häd neen identiske Duplikoate.',
 'fileduplicatesearch-result-n' => 'Ju Doatäi „$1“ häd {{PLURAL:$2|1 identisk Duplikoat|$2 identiske Duplikoate}}.',
@@ -2761,7 +2814,7 @@ Ju Iengoawe mout sunner dän Tousats „{{ns:file}}:“ geböäre.',
 'specialpages'                   => 'Spezioalsieden',
 'specialpages-note'              => '----
 * Spezioalsieden foar Älkuneen
-* <span class="mw-specialpagerestricted">Spezioalsieden foar Benutsere mäd ärwiederde Gjuchte</span>',
+* <strong class="mw-specialpagerestricted">Spezioalsieden foar Benutsere mäd ärwiederde Gjuchte</strong>',
 'specialpages-group-maintenance' => 'Fersuurgengsliesten',
 'specialpages-group-other'       => 'Uur Spezioalsieden',
 'specialpages-group-login'       => 'Anmäldje',
@@ -2769,7 +2822,7 @@ Ju Iengoawe mout sunner dän Tousats „{{ns:file}}:“ geböäre.',
 'specialpages-group-media'       => 'Medien',
 'specialpages-group-users'       => 'Benutsere un Gjuchte',
 'specialpages-group-highuse'     => 'Oafte benutsede Sieden',
-'specialpages-group-pages'       => 'Siedenliesten',
+'specialpages-group-pages'       => 'Liesten fon Sieden',
 'specialpages-group-pagetools'   => 'Siedenreewen',
 'specialpages-group-wiki'        => 'Systemdoaten un Reewen',
 'specialpages-group-redirects'   => 'Fäärelaitjende Spezioalsieden',
@@ -2786,5 +2839,27 @@ Ju Iengoawe mout sunner dän Tousats „{{ns:file}}:“ geböäre.',
 #N positiven Fergliek fiert tou Anwiesenge fon ju Bielde, uurs wäd ju Bielde bloot as Link anwiesd
 #Riegen, do der mäd n # ounfange, wäide as Kommentoar behonneld
 #Fragmente fon reguläre Uutdrukke ätter disse Riege iendreege. Disse Riege nit ferannerje</pre>',
+
+# Special:Tags
+'tags'                    => 'Gultige Annerengsmarkierengen',
+'tag-filter'              => '[[Special:Tags|Tag]]-Sieuwe:',
+'tag-filter-submit'       => 'Sieuwe',
+'tags-title'              => 'Marekierengen',
+'tags-intro'              => 'Disse Siede wiest aal Markierengen, do foar Beoarbaidengen ferwoand wäide, as uk ju Betjuudenge deerfon.',
+'tags-tag'                => 'Internen Markierengsnoome',
+'tags-display-header'     => 'Benaamenge ap do Annerengsliesten',
+'tags-description-header' => 'Fulboodige Beschrieuwenge',
+'tags-hitcount-header'    => 'Markierde Annerengen',
+'tags-edit'               => 'beoarbaidje',
+'tags-hitcount'           => '$1 {{PLURAL:$1|Annerenge|Annerengen}}',
+
+# Database error messages
+'dberr-header'      => 'Dit Wiki häd n Problem',
+'dberr-problems'    => 'Äntscheeldenge. Disse Siede häd apstuuns techniske Meelasje.',
+'dberr-again'       => 'Fersäik n poor Minuten tou täiwen un dan näi tou leeden.',
+'dberr-info'        => '(Kon neen Ferbiendenge tou dän Doatenboank-Server moakje: $1)',
+'dberr-usegoogle'   => 'Du kuust in ju Twisketied mäd Google säike.',
+'dberr-outofdate'   => 'Beoachtje, dät die Säikindex fon uus Inhoolde ferallerd weese kon.',
+'dberr-cachederror' => 'Dät Foulgjende is ne Kopie fon dän Cache fon ju anfoarderde Siede un kon ferallerd weese.',
 
 );

@@ -83,7 +83,15 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		$this->addWhere('cl_from=page_id');
 		$this->setContinuation($params['continue'], $params['dir']);
 		$this->addWhereFld('cl_to', $categoryTitle->getDBkey());
-		$this->addWhereFld('page_namespace', $params['namespace']);
+		# Scanning large datasets for rare categories sucks, and I already told 
+		# how to have efficient subcategory access :-) ~~~~ (oh well, domas)
+		global $wgMiserMode;
+		$miser_ns = array();
+		if ($wgMiserMode) { 
+			$miser_ns = $params['namespace'];
+		} else {
+			$this->addWhereFld('page_namespace', $params['namespace']);
+		}
 		if($params['sort'] == 'timestamp')
 			$this->addWhereRange('cl_timestamp', ($params['dir'] == 'asc' ? 'newer' : 'older'), $params['start'], $params['end']);
 		else
@@ -112,7 +120,12 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 				break;
 			}
 
-			$lastSortKey = $row->cl_sortkey;	// detect duplicate sortkeys
+			// Since domas won't tell anyone what he told long ago, apply 
+			// cmnamespace here. This means the query may return 0 actual 
+			// results, but on the other hand it could save returning 5000 
+			// useless results to the client. ~~~~
+			if (count($miser_ns) && !in_array($row->page_namespace, $miser_ns))
+				continue;
 
 			if (is_null($resultPageSet)) {
 				$vals = array();
@@ -120,23 +133,32 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 					$vals['pageid'] = intval($row->page_id);
 				if ($fld_title) {
 					$title = Title :: makeTitle($row->page_namespace, $row->page_title);
-					$vals['ns'] = intval($title->getNamespace());
-					$vals['title'] = $title->getPrefixedText();
+					ApiQueryBase::addTitleInfo($vals, $title);
 				}
 				if ($fld_sortkey)
 					$vals['sortkey'] = $row->cl_sortkey;
 				if ($fld_timestamp)
 					$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->cl_timestamp);
-				$data[] = $vals;
+				$fit = $this->getResult()->addValue(array('query', $this->getModuleName()),
+						null, $vals);
+				if(!$fit)
+				{
+					if ($params['sort'] == 'timestamp')
+						$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->cl_timestamp));
+					else
+						$this->setContinueEnumParameter('continue', $this->getContinueStr($row, $lastSortKey));
+					break;
+				}
 			} else {
 				$resultPageSet->processDbRow($row);
 			}
+			$lastSortKey = $row->cl_sortkey;	// detect duplicate sortkeys
 		}
 		$db->freeResult($res);
 
 		if (is_null($resultPageSet)) {
-			$this->getResult()->setIndexedTagName($data, 'cm');
-			$this->getResult()->addValue('query', $this->getModuleName(), $data);
+			$this->getResult()->setIndexedTagName_internal(
+					 array('query', $this->getModuleName()), 'cm');
 		}
 	}
 
@@ -226,7 +248,8 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 	}
 
 	public function getParamDescription() {
-		return array (
+		global $wgMiserMode;
+		$desc = array (
 			'title' => 'Which category to enumerate (required). Must include Category: prefix',
 			'prop' => 'What pieces of information to include',
 			'namespace' => 'Only include pages in these namespaces',
@@ -239,6 +262,14 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 			'continue' => 'For large categories, give the value retured from previous query',
 			'limit' => 'The maximum number of pages to return.',
 		);
+		if ($wgMiserMode) {
+			$desc['namespace'] = array(
+				$desc['namespace'],
+				'NOTE: Due to $wgMiserMode, using this may result in fewer than "limit" results',
+				'returned before continuing; in extreme cases, zero results may be returned.',
+			);
+		}
+		return $desc;
 	}
 
 	public function getDescription() {

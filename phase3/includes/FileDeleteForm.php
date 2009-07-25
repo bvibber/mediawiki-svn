@@ -67,7 +67,7 @@ class FileDeleteForm {
 			$reason = $this->DeleteReasonList;
 			if ( $reason != 'other' && $this->DeleteReason != '') {
 				// Entry from drop down menu + additional comment
-				$reason .= ': ' . $this->DeleteReason;
+				$reason .= wfMsgForContent( 'colon-separator' ) . $this->DeleteReason;
 			} elseif ( $reason == 'other' ) {
 				$reason = $this->DeleteReason;
 			}
@@ -108,7 +108,8 @@ class FileDeleteForm {
 				$id = $title->getArticleID( GAID_FOR_UPDATE );
 				// Need to delete the associated article
 				$article = new Article( $title );
-				if( wfRunHooks('ArticleDelete', array(&$article, &$wgUser, &$reason)) ) {
+				$error = '';
+				if( wfRunHooks('ArticleDelete', array(&$article, &$wgUser, &$reason, &$error)) ) {
 					if( $article->doDeleteArticle( $reason, $suppress, $id ) ) {
 						global $wgRequest;
 						if( $wgRequest->getCheck( 'wpWatch' ) ) {
@@ -193,7 +194,13 @@ class FileDeleteForm {
 
 			if ( $wgUser->isAllowed( 'editinterface' ) ) {
 				$skin = $wgUser->getSkin();
-				$link = $skin->makeLink ( 'MediaWiki:Filedelete-reason-dropdown', wfMsgHtml( 'filedelete-edit-reasonlist' ) );
+				$title = Title::makeTitle( NS_MEDIAWIKI, 'Filedelete-reason-dropdown' );
+				$link = $skin->link(
+					$title,
+					wfMsgHtml( 'filedelete-edit-reasonlist' ),
+					array(),
+					array( 'action' => 'edit' )
+				);
 				$form .= '<p class="mw-filedelete-editreasons">' . $link . '</p>';
 			}
 
@@ -244,7 +251,16 @@ class FileDeleteForm {
 		global $wgOut, $wgUser;
 		$wgOut->setPageTitle( wfMsg( 'filedelete', $this->title->getText() ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		$wgOut->setSubtitle( wfMsg( 'filedelete-backlink', $wgUser->getSkin()->makeKnownLinkObj( $this->title ) ) );
+		$wgOut->setSubtitle( wfMsg(
+			'filedelete-backlink',
+			$wgUser->getSkin()->link(
+				$this->title,
+				null,
+				array(),
+				array(),
+				array( 'known', 'noclasses' )
+			)
+		) );
 	}
 
 	/**
@@ -278,10 +294,12 @@ class FileDeleteForm {
 	 */
 	private function getAction() {
 		$q = array();
-		$q[] = 'action=delete';
+		$q['action'] = 'delete';
+
 		if( $this->oldimage )
-			$q[] = 'oldimage=' . urlencode( $this->oldimage );
-		return $this->title->getLocalUrl( implode( '&', $q ) );
+			$q['oldimage'] = $this->oldimage;
+
+		return $this->title->getLocalUrl( $q );
 	}
 
 	/**
@@ -292,5 +310,4 @@ class FileDeleteForm {
 	private function getTimestamp() {
 		return $this->oldfile->getTimestamp();
 	}
-
 }

@@ -1,6 +1,9 @@
 <?php
 /** Basa Banyumasan (Basa Banyumasan)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -54,7 +57,9 @@ $messages = array(
 'recentchanges' => 'Pengobahan',
 
 # Recent changes linked
-'recentchangeslinked' => 'Pengobahan terkait',
+'recentchangeslinked'         => 'Pengobahan terkait',
+'recentchangeslinked-feed'    => 'Pengobahan terkait',
+'recentchangeslinked-toolbox' => 'Pengobahan terkait',
 
 # Random page
 'randompage' => 'Kaca Liya',

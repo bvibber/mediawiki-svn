@@ -1,6 +1,9 @@
 <?php
 /** Neapolitan (Nnapulitano)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -125,19 +128,21 @@ $messages = array(
 'category_header' => 'Paggene rìnt\'a categurìa "$1"',
 'subcategories'   => 'Categurìe secunnarie',
 
-'about'          => 'Nfromma',
-'article'        => 'Articulo',
-'newwindow'      => "(s'arape n'ata fenèsta)",
-'cancel'         => 'Scancèlla',
+'about'     => 'Nfromma',
+'article'   => 'Articulo',
+'newwindow' => "(s'arape n'ata fenèsta)",
+'cancel'    => 'Scancèlla',
+'mypage'    => "'A paggena mia",
+'mytalk'    => "'E mmie chiacchieriàte",
+'anontalk'  => 'Chiacchierate pe chisto IP',
+
+# Cologne Blue skin
 'qbfind'         => 'Truòva',
 'qbedit'         => 'Càgna',
 'qbpageoptions'  => 'Chesta paggena',
 'qbpageinfo'     => "Nfrummazzione ncopp'â paggena",
 'qbmyoptions'    => "'E ppaggene mie",
 'qbspecialpages' => 'Pàggene speciàle',
-'mypage'         => "'A paggena mia",
-'mytalk'         => "'E mmie chiacchieriàte",
-'anontalk'       => 'Chiacchierate pe chisto IP',
 
 # Metadata in edit box
 'metadata_help' => 'Metadate:',
@@ -170,7 +175,7 @@ $messages = array(
 'imagepage'         => 'Paggena fiùra',
 'otherlanguages'    => 'Ate léngue',
 'redirectedfrom'    => "(Redirect 'a $1)",
-'lastmodifiedat'    => "Urdema cagnamiénto pe' a paggena: $2, $1.", # $1 date, $2 time
+'lastmodifiedat'    => "Urdema cagnamiénto pe' a paggena: $2, $1.",
 'viewcount'         => 'Chesta paggena è stata lètta {{PLURAL:$1|una vòta|$1 vòte}}.',
 'jumpto'            => 'Vaje a:',
 'jumptonavigation'  => 'navigazione',
@@ -215,7 +220,7 @@ $messages = array(
 'badtitle'        => "'O nnomme nun è jùsto",
 
 # Login and logout pages
-'logouttext'                 => "<strong>Site asciùte.</strong><br />
+'logouttext'                 => "'''Site asciùte.'''<br />
 Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putite trasì n'ata vota, cu 'o stesso nomme o cu n'ato nomme.",
 'welcomecreation'            => "== Bemmenuto, $1! ==
 
@@ -232,8 +237,6 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'createaccount'              => 'Cria nu cunto nuovo',
 'gotaccount'                 => 'Tiene già nu cunto? $1.',
 'gotaccountlink'             => 'Tràse',
-'username'                   => 'Nomme utente',
-'yourlanguage'               => 'Lengua:',
 'loginerror'                 => "Probblema 'e accièsso",
 'loginsuccesstitle'          => 'Acciesso affettuato',
 'nosuchusershort'            => 'Nun ce stanno utente cu o nòmme "<nowiki>$1</nowiki>". Cuntrolla si scrivìste buòno.',
@@ -259,7 +262,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'loginreqpagetext'  => "Pe' veré ate ppaggene abbesognate $1.",
 'accmailtitle'      => "'O password è stato mannato.",
 'accmailtext'       => '\'A password pe ll\'utente "$1" fuje mannata ô nnerizzo $2.',
-'previewnote'       => "<strong>Chesta è sola n'anteprimma; 'e cagnamiénte â paggena NUN songo ancora sarvate!</strong>",
+'previewnote'       => "'''Chesta è sola n'anteprimma; 'e cagnamiénte â paggena NUN songo ancora sarvate!'''",
 'editing'           => "Cagnamiento 'e $1",
 'templatesused'     => "Template ausate 'a chesta paggena:",
 
@@ -268,7 +271,6 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 
 # History pages
 'currentrev' => "Verzione 'e mmo",
-'deletedrev' => '[scancellata]',
 
 # Revision deletion
 'rev-delundel' => 'faje vedé/annascunne',
@@ -283,11 +285,14 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'powersearch'      => 'Truova',
 
 # Preferences page
-'mypreferences'   => "Preferenze d''e mie",
-'changepassword'  => 'Cagna password',
-'prefs-rc'        => 'Urdeme nove',
-'prefs-watchlist' => 'Asservate speciale',
-'columns'         => 'Culonne:',
+'mypreferences'         => "Preferenze d''e mie",
+'changepassword'        => 'Cagna password',
+'prefs-rc'              => 'Urdeme nove',
+'prefs-watchlist'       => 'Asservate speciale',
+'columns'               => 'Culonne:',
+'timezoneregion-africa' => 'Afreca',
+'username'              => 'Nomme utente',
+'yourlanguage'          => 'Lengua:',
 
 # User rights log
 'rightsnone' => '(nisciuno)',
@@ -308,7 +313,9 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'rc_categories_any' => 'Qualònca',
 
 # Recent changes linked
-'recentchangeslinked' => 'Cagnamiénte cullegate',
+'recentchangeslinked'         => 'Cagnamiénte cullegate',
+'recentchangeslinked-feed'    => 'Cagnamiénte cullegate',
+'recentchangeslinked-toolbox' => 'Cagnamiénte cullegate',
 
 # Upload
 'upload'           => 'Careca file',
@@ -319,9 +326,9 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'listfiles_name' => 'Nomme',
 
 # File description page
+'file-anchor-link' => 'Fiura',
 'filehist-user'    => 'Utente',
 'imagelinks'       => 'Jonte ê ffiure',
-'noimage-linktext' => 'carrecarlo mmo',
 
 # Random page
 'randompage'         => 'Na paggena qualsiase',
@@ -378,11 +385,11 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 
 # Rollback
 'rollback'   => "Ausa na revizione 'e primma",
-'revertpage' => "Cangiaje 'e cagnamiénte 'e [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), cu â verzione 'e pprimma 'e  [[User:$1|$1]]", # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage' => "Cangiaje 'e cagnamiénte 'e [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), cu â verzione 'e pprimma 'e  [[User:$1|$1]]",
 
 # Protect
 'prot_1movedto2'         => 'ha spustato [[$1]] a [[$2]]',
-'protect-expiry-options' => '2 ore:2 hours,1 juorno:1 day,3 juorne:3 days,1 semmana:1 week,2 semmane:2 weeks,1 mise:1 month,3 mese:3 months,6 mese:6 months,1 anno:1 year,infinito:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options' => '2 ore:2 hours,1 juorno:1 day,3 juorne:3 days,1 semmana:1 week,2 semmane:2 weeks,1 mise:1 month,3 mese:3 months,6 mese:6 months,1 anno:1 year,infinito:infinite',
 
 # Undelete
 'viewdeletedpage' => "Vìre 'e ppàggine scancellate",
@@ -394,6 +401,8 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'contributions' => 'Contribbute utente',
 'mycontris'     => 'Mie contribbute',
 
+'sp-contributions-talk' => 'Chiàcchiera',
+
 # What links here
 'whatlinkshere'       => 'Paggene ca cullegano a chesta',
 'whatlinkshere-title' => 'Paggene ca cullegano a $1',
@@ -402,7 +411,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 # Block/unblock
 'blockip'            => 'Ferma utelizzatóre',
 'ipadressorusername' => 'Nnerizzo IP o nomme utente',
-'ipboptions'         => '2 ore:2 hours,1 juorno:1 day,3 juorne:3 days,1 semmana:1 week,2 semmane:2 weeks,1 mise:1 month,3 mese:3 months,6 mese:6 months,1 anno:1 year,infinito:infinite', # display1:time1,display2:time2,...
+'ipboptions'         => '2 ore:2 hours,1 juorno:1 day,3 juorne:3 days,1 semmana:1 week,2 semmane:2 weeks,1 mise:1 month,3 mese:3 months,6 mese:6 months,1 anno:1 year,infinito:infinite',
 'blockipsuccesssub'  => 'Blocco aseguito',
 'blocklistline'      => '$1, $2 ha fermato $3 ($4)',
 'blocklink'          => 'ferma',
@@ -426,11 +435,9 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'export' => "Spurta 'e ppaggene",
 
 # Namespace 8 related
-'allmessages'         => "'Mmasciate d''o sistema",
-'allmessagesname'     => 'Nomme',
-'allmessagescurrent'  => "Testo 'e mo",
-'allmessagesfilter'   => "Lammecca ncopp' 'e mmasciate:",
-'allmessagesmodified' => 'Faje vedé solo chille cagnate',
+'allmessages'        => "'Mmasciate d''o sistema",
+'allmessagesname'    => 'Nomme',
+'allmessagescurrent' => "Testo 'e mo",
 
 # Special:Import
 'import'                  => 'Mpurta paggene',

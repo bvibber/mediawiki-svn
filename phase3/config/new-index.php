@@ -16,6 +16,9 @@ function wfInstallerConfig() {
 chdir( ".." );
 require( './includes/WebStart.php' );
 
+// Disable the i18n cache
+Language::getLocalisationCache()->disableBackend();
+
 $installer = new WebInstaller( $wgRequest );
 $wgParser->setHook( 'doclink', array( $installer, 'docLink' ) );
 

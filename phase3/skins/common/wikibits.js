@@ -10,10 +10,9 @@ if (webkit_match) {
 	var is_safari_win = is_safari && clientPC.indexOf('windows') != -1;
 	var webkit_version = parseInt(webkit_match[1]);
 }
-var is_khtml = navigator.vendor == 'KDE' ||
-	( document.childNodes && !document.all && !navigator.taintEnabled );
 // For accesskeys; note that FF3+ is included here!
 var is_ff2 = /firefox\/[2-9]|minefield\/3/.test( clientPC );
+var ff2_bugs = /firefox\/2/.test( clientPC );
 // These aren't used here, but some custom scripts rely on them
 var is_ff2_win = is_ff2 && clientPC.indexOf('windows') != -1;
 var is_ff2_x11 = is_ff2 && clientPC.indexOf('x11') != -1;
@@ -21,7 +20,10 @@ if (clientPC.indexOf('opera') != -1) {
 	var is_opera = true;
 	var is_opera_preseven = window.opera && !document.childNodes;
 	var is_opera_seven = window.opera && document.childNodes;
-	var is_opera_95 = /opera\/(9.[5-9]|[1-9][0-9])/.test( clientPC );
+	var is_opera_95 = /opera\/(9\.[5-9]|[1-9][0-9])/.test( clientPC );
+	var opera6_bugs = is_opera_preseven; 	
+	var opera7_bugs = is_opera_seven && !is_opera_95; 	
+	var opera95_bugs = /opera\/(9\.5)/.test( clientPC );
 }
 
 // Global external objects used by this script.
@@ -34,6 +36,7 @@ if (!window.onloadFuncts) {
 	var onloadFuncts = [];
 }
 
+// code that is dependent on js2 functions should use js2AddOnloadHook
 function addOnloadHook(hookFunct) {
 	// Allows add-on scripts to add onload functions
 	if(!doneOnloadHook) {
@@ -43,17 +46,19 @@ function addOnloadHook(hookFunct) {
 	}
 }
 
+
 function hookEvent(hookName, hookFunct) {
 	addHandler(window, hookName, hookFunct);
 }
 
 function importScript(page) {
+	// TODO: might want to introduce a utility function to match wfUrlencode() in PHP
 	var uri = wgScript + '?title=' +
-		encodeURIComponent(page.replace(/ /g,'_')).replace('%2F','/').replace('%3A',':') +
+		encodeURIComponent(page.replace(/ /g,'_')).replace(/%2F/ig,'/').replace(/%3A/ig,':') +
 		'&action=raw&ctype=text/javascript';
 	return importScriptURI(uri);
 }
- 
+
 var loadedScripts = {}; // included-scripts tracker
 function importScriptURI(url) {
 	if (loadedScripts[url]) {
@@ -66,15 +71,21 @@ function importScriptURI(url) {
 	document.getElementsByTagName('head')[0].appendChild(s);
 	return s;
 }
- 
+
 function importStylesheet(page) {
 	return importStylesheetURI(wgScript + '?action=raw&ctype=text/css&title=' + encodeURIComponent(page.replace(/ /g,'_')));
 }
- 
-function importStylesheetURI(url) {
-	return document.createStyleSheet ? document.createStyleSheet(url) : appendCSS('@import "' + url + '";');
+
+function importStylesheetURI(url,media) {
+	var l = document.createElement('link');
+	l.type = 'text/css';
+	l.rel = 'stylesheet';
+	l.href = url;
+	if(media) l.media = media
+	document.getElementsByTagName('head')[0].appendChild(l);
+	return l;
 }
- 
+
 function appendCSS(text) {
 	var s = document.createElement('style');
 	s.type = 'text/css';
@@ -87,14 +98,19 @@ function appendCSS(text) {
 
 // special stylesheet links
 if (typeof stylepath != 'undefined' && typeof skin != 'undefined') {
-	if (is_opera_preseven) {
+	// FIXME: This tries to load the stylesheets even for skins where they
+	// don't exist, i.e., everything but Monobook.
+	if (opera6_bugs) {
 		importStylesheetURI(stylepath+'/'+skin+'/Opera6Fixes.css');
-	} else if (is_opera_seven && !is_opera_95) {
+	} else if (opera7_bugs) {
 		importStylesheetURI(stylepath+'/'+skin+'/Opera7Fixes.css');
-	} else if (is_khtml) {
-		importStylesheetURI(stylepath+'/'+skin+'/KHTMLFixes.css');
+	} else if (opera95_bugs) {
+		importStylesheetURI(stylepath+'/'+skin+'/Opera9Fixes.css');
+	} else if (ff2_bugs) {
+		importStylesheetURI(stylepath+'/'+skin+'/FF2Fixes.css');
 	}
 }
+
 
 if (wgBreakFrames) {
 	// Un-trap us from framesets
@@ -108,7 +124,9 @@ function showTocToggle() {
 		// Uses DOM calls to avoid document.write + XHTML issues
 
 		var linkHolder = document.getElementById('toctitle');
-		if (!linkHolder) {
+		var existingLink = document.getElementById('togglelink');
+		if (!linkHolder || existingLink) {
+			// Don't add the toggle link twice
 			return;
 		}
 
@@ -210,10 +228,19 @@ var tooltipAccessKeyRegexp = /\[(ctrl-)?(alt-)?(shift-)?(esc-)?(.)\]$/;
  */
 function updateTooltipAccessKeys( nodeList ) {
 	if ( !nodeList ) {
-		// skins without a "column-one" element don't seem to have links with accesskeys either
-		var columnOne = document.getElementById("column-one");
-		if ( columnOne )
-			updateTooltipAccessKeys( columnOne.getElementsByTagName("a") );
+		// Rather than scan all links on the whole page, we can just scan these
+		// containers which contain the relevant links. This is really just an
+		// optimization technique.
+		var linkContainers = [
+			"column-one", // Monobook and Modern
+			"head", "panel", "p-logo" // Vector
+		];
+		for ( var i in linkContainers ) {
+			var linkContainer = document.getElementById( linkContainers[i] );
+			if ( linkContainer ) {
+				updateTooltipAccessKeys( linkContainer.getElementsByTagName("a") );
+			}
+		}
 		// these are rare enough that no such optimization is needed
 		updateTooltipAccessKeys( document.getElementsByTagName("input") );
 		updateTooltipAccessKeys( document.getElementsByTagName("label") );
@@ -426,6 +453,8 @@ function checkboxClickHandler(e) {
 	}
 	for (var i = start; i <= finish; ++i ) {
 		checkboxes[i].checked = endState;
+		if( i > start && typeof checkboxes[i].onchange == 'function' )
+			checkboxes[i].onchange(); // fire triggers
 	}
 	lastCheckbox = this.index;
 	return true;
@@ -435,8 +464,23 @@ function toggle_element_activation(ida,idb) {
 	if (!document.getElementById) {
 		return;
 	}
-	document.getElementById(ida).disabled=true;
-	document.getElementById(idb).disabled=false;
+	//hide and show appropriate upload sizes
+	if(idb == 'wpUploadFileURL'){
+		var e = document.getElementById('mw-upload-maxfilesize');
+		if(e) e.style.display = "none";		
+		
+		var e = document.getElementById('mw-upload-maxfilesize-url');
+		if(e) e.style.display = "block";		
+	}
+	if(idb == 'wpUploadFile'){
+		var e = document.getElementById('mw-upload-maxfilesize-url');
+		if(e) e.style.display =  "none";
+					
+		var e = document.getElementById('mw-upload-maxfilesize');
+		if(e) e.style.display =  "block";
+	}
+	document.getElementById(ida).disabled = true;
+	document.getElementById(idb).disabled = false;
 }
 
 function toggle_element_check(ida,idb) {
@@ -643,7 +687,7 @@ function ts_resortTable(lnk) {
 		if((" "+row.className+" ").indexOf(" unsortable ") < 0) {
 			var keyText = ts_getInnerText(row.cells[column]);
 			var oldIndex = (reverse ? -j : j);
-			var preprocessed = preprocessor( keyText );
+			var preprocessed = preprocessor( keyText.replace(/^[\s\xa0]+/, "").replace(/[\s\xa0]+$/, "") );
 
 			newRows[newRows.length] = new Array(row, preprocessed, oldIndex);
 		} else staticRows[staticRows.length] = new Array(row, false, j-rowStart);
@@ -702,13 +746,13 @@ function ts_initTransformTable() {
 		// Separators
 		ascii = wgSeparatorTransformTable[0].split("\t");
 		localised = wgSeparatorTransformTable[1].split("\t");
-		for ( var i = 0; i < ascii.length; i++ ) { 
+		for ( var i = 0; i < ascii.length; i++ ) {
 			ts_number_transform_table[localised[i]] = ascii[i];
 		}
 		// Digits
 		ascii = wgDigitTransformTable[0].split("\t");
 		localised = wgDigitTransformTable[1].split("\t");
-		for ( var i = 0; i < ascii.length; i++ ) { 
+		for ( var i = 0; i < ascii.length; i++ ) {
 			ts_number_transform_table[localised[i]] = ascii[i];
 		}
 
@@ -717,7 +761,7 @@ function ts_initTransformTable() {
 		maxDigitLength = 1;
 		for ( var digit in ts_number_transform_table ) {
 			// Escape regex metacharacters
-			digits.push( 
+			digits.push(
 				digit.replace( /[\\\\$\*\+\?\.\(\)\|\{\}\[\]\-]/,
 					function( s ) { return '\\' + s; } )
 			);
@@ -774,10 +818,10 @@ function ts_dateToSortKey(date) {
 		}
 	} else if (date.length == 8) {
 		yr = date.substr(6,2);
-		if (parseInt(yr) < 50) { 
-			yr = '20'+yr; 
-		} else { 
-			yr = '19'+yr; 
+		if (parseInt(yr) < 50) {
+			yr = '20'+yr;
+		} else {
+			yr = '19'+yr;
 		}
 		if (ts_europeandate == true) {
 			return yr+date.substr(3,2)+date.substr(0,2);
@@ -807,7 +851,7 @@ function ts_parseFloat( s ) {
 	}
 
 	num = parseFloat(s.replace(/,/g, ""));
-	return (isNaN(num) ? s : num);
+	return (isNaN(num) ? 0 : num);
 }
 
 function ts_currencyToSortKey( s ) {
@@ -843,8 +887,8 @@ function ts_alternate(table) {
 /*
  * End of table sorting code
  */
- 
- 
+
+
 /**
  * Add a cute little box at the top of the screen to inform the user of
  * something, replacing any preexisting message.

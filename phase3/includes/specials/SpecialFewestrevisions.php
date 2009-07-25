@@ -55,13 +55,20 @@ class FewestrevisionsPage extends QueryPage {
 		$nt = Title::makeTitleSafe( $result->namespace, $result->title );
 		$text = $wgContLang->convert( $nt->getPrefixedText() );
 
-		$plink = $skin->makeKnownLinkObj( $nt, $text );
+		$plink = $skin->linkKnown(
+			$nt,
+			$text
+		);
 
-		$nl = wfMsgExt( 'nrevisions', array( 'parsemag', 'escape'),
+		$nl = wfMsgExt( 'nrevisions', array( 'parsemag', 'escape' ),
 			$wgLang->formatNum( $result->value ) );
-		$redirect = $result->redirect ? ' - ' . wfMsg( 'isredirect' ) : '';
-		$nlink = $skin->makeKnownLinkObj( $nt, $nl, 'action=history' ) . $redirect;
-
+		$redirect = $result->redirect ? ' - ' . wfMsgHtml( 'isredirect' ) : '';
+		$nlink = $skin->linkKnown(
+			$nt,
+			$nl,
+			array(),
+			array( 'action' => 'history' )
+		) . $redirect;
 
 		return wfSpecialList( $plink, $nlink );
 	}

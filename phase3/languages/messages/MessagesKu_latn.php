@@ -1,9 +1,13 @@
 <?php
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
+ * @author Asoxor
  * @author Bangin
  * @author Erdal Ronahi
  */
@@ -11,11 +15,9 @@
 $namespaceNames = array(
 	NS_MEDIA            => 'Medya',
 	NS_SPECIAL          => 'Taybet',
-	NS_MAIN             => '',
 	NS_TALK             => 'Nîqaş',
 	NS_USER             => 'Bikarhêner',
 	NS_USER_TALK        => 'Bikarhêner_nîqaş',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_nîqaş',
 	NS_FILE             => 'Wêne',
 	NS_FILE_TALK        => 'Wêne_nîqaş',
@@ -26,7 +28,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Alîkarî',
 	NS_HELP_TALK        => 'Alîkarî_nîqaş',
 	NS_CATEGORY         => 'Kategorî',
-	NS_CATEGORY_TALK    => 'Kategorî_nîqaş'
+	NS_CATEGORY_TALK    => 'Kategorî_nîqaş',
 );
 
 $messages = array(
@@ -138,7 +140,7 @@ $messages = array(
 'category-media-header'          => 'Medya di kategorîya "$1" da',
 'category-empty'                 => "''Di vê kategorîyê da niha gotar ya medya tune ne.''",
 'hidden-categories'              => '{{PLURAL:$1|Kategorîya veşartî|Kategorîyên veşartî}}',
-'hidden-category-category'       => 'Kategorîyên veşartî', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Kategorîyên veşartî',
 'category-subcat-count'          => '{{PLURAL:$2|Di vê kategorîyê da bes ev binkategorîya heye:|Di vê kategorîyê da {{PLURAL:$2|binkategorîyek heye|$2 binkategorî hene}}. Jêr {{PLURAL:$1|binkategorîyek tê|$1 binkategorî tên}} nîşandan.}}',
 'category-subcat-count-limited'  => 'Di vê kategorîyê da ev {{PLURAL:$1|binkategorîya heye|$1 binkategorî hene}}.',
 'category-article-count'         => '{{PLURAL:$2|Di vê kategorîyê da bes ev rûpela heye:|Di vê kategorîyê da {{PLURAL:$2|rûpelek heye|$2 rûpel hene}}. Jêr {{PLURAL:$1|rûpelek tê|$1 rûpel tên}} nîşandan.}}',
@@ -156,10 +158,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lîsteya e-nameyên versyonên nuh yê MediaWiki]',
 
-'about'          => 'Der barê',
-'article'        => 'Gotar',
-'newwindow'      => '(di rûpelekî din da yê were nîşandan)',
-'cancel'         => 'Betal',
+'about'         => 'Der barê',
+'article'       => 'Gotar',
+'newwindow'     => '(di rûpelekî din da yê were nîşandan)',
+'cancel'        => 'Betal',
+'moredotdotdot' => 'Zêde...',
+'mypage'        => 'Rûpela min',
+'mytalk'        => 'Rûpela guftûgo ya min',
+'anontalk'      => 'Guftûgo ji bo vê IPê',
+'navigation'    => 'Navîgasyon',
+'and'           => '&#32;û',
+
+# Cologne Blue skin
 'qbfind'         => 'Bibîne',
 'qbbrowse'       => 'Bigere',
 'qbedit'         => 'Biguherîne',
@@ -167,12 +177,8 @@ $messages = array(
 'qbpageinfo'     => "Data'yên rûpelê",
 'qbmyoptions'    => 'Rûpelên min',
 'qbspecialpages' => 'Rûpelên taybet',
-'moredotdotdot'  => 'Zêde...',
-'mypage'         => 'Rûpela min',
-'mytalk'         => 'Rûpela guftûgo ya min',
-'anontalk'       => 'Guftûgo ji bo vê IPê',
-'navigation'     => 'Navîgasyon',
-'and'            => '&#32;û',
+'faq'            => 'Pirs û Bersîv (FAQ)',
+'faqpage'        => 'Project:Pirs û Bersîv',
 
 # Metadata in edit box
 'metadata_help' => "Data'yên meta:",
@@ -225,7 +231,7 @@ $messages = array(
 'otherlanguages'    => 'Zimanên din',
 'redirectedfrom'    => '(Hat ragihandin ji $1)',
 'redirectpagesub'   => 'Rûpelê redirect',
-'lastmodifiedat'    => 'Ev rûpel carî dawî di $2, $1 de hat guherandin.', # $1 date, $2 time
+'lastmodifiedat'    => 'Ev rûpel carî dawî di $2, $1 de hat guherandin.',
 'viewcount'         => 'Ev rûpel {{PLURAL:$1|carekê|caran}} tê xwestin.',
 'protectedpage'     => 'Rûpela parastî',
 'jumpto'            => 'Here cem:',
@@ -244,8 +250,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Ferexetname',
 'edithelp'             => 'Alîkarî ji bo guherandin',
 'edithelppage'         => 'Help:Rûpeleke çawa biguherînim',
-'faq'                  => 'Pirs û Bersîv (FAQ)',
-'faqpage'              => 'Project:Pirs û Bersîv',
 'helppage'             => 'Help:Alîkarî',
 'mainpage'             => 'Destpêk',
 'mainpage-description' => 'Destpêk',
@@ -317,10 +321,6 @@ ji fonksyonê "<tt>$2</tt>" yê
 MySQL ev şaşbûna hate dîtin: "<tt>$3: $4</tt>".',
 'dberrortextcl'        => 'Li cem sekirina database "$1 ji fonksyonê "<tt>$2</tt>" yê
 MySQL ev şaşbûna hate dîtin: "<tt>$3: $4</tt>".',
-'noconnect'            => 'Bibexşîne! Çend pirsgrêkên teknîkî heye, girêdan ji pêşkêşvanê (suxrekirê, server) re niha ne gengaz e. <br />
-$1',
-'nodb'                 => 'Database $1 nikanî hatiba sekirin. Xêra xwe derengtir dîsa bicerbîne.',
-'cachederror'          => "Evê jêr bes kopîyek ji cache'ê ye û belkî ne yê niha ye.",
 'laggedslavemode'      => 'Zanibe: Ev rûpela belkî guherandinên yê ne niha nîşandide.',
 'readonly'             => 'Database hatîye girtin',
 'enterlockreason'      => 'Hoyek ji bo bestin binav bike, herweha zemaneke mezende kirî ji bo helgirtina bestinê!',
@@ -357,7 +357,7 @@ Jêpirskirin: $2",
 'protectedpagetext'    => 'Ev rûpela hatîye parastin ji bo nenivîsandinê.',
 'viewsourcetext'       => 'Tu dikarê li çavkanîyê vê rûpelê sekê û wê kopîbikê:',
 'protectedinterface'   => "Di vê rûpelê da nivîsandin ji bo interface'î zimanan yê vê software'ê ye. Ew tê parstin ji bo vandalîzm li vê derê çênebe.",
-'editinginterface'     => "'''Hîşyar:''' Tu rûpelekî diguherînê yê ji wêşandinê înformasyonan di sistêmê da girîn in. Guherandin di vê rûpelê da ji her bikarhêneran ra yê were dîtin. Ji bo tercemekirinan, xêra xwe di [http://translatewiki.net/wiki/Main_Page?setlang=ku Betawiki] da bixebite, projeyê MediaWiki.",
+'editinginterface'     => "'''Hîşyar:''' Tu rûpelekî diguherînê yê ji wêşandinê înformasyonan di sistêmê da girîn in. Guherandin di vê rûpelê da ji her bikarhêneran ra yê were dîtin. Ji bo tercemekirinan, xêra xwe di [http://translatewiki.net/wiki/Main_Page?setlang=ku translatewiki.net] da bixebite, projeyê MediaWiki.",
 'sqlhidden'            => '(Jêpirskirina SQL hatîye veşartin)',
 'cascadeprotected'     => '<strong>Ev rûpela hatîye parastin ji ber guherandinê, ji ber ku ev rûpela di {{PLURAL:$1|vê rûpelê|van rûpelan da}} tê bikaranîn:
 $2
@@ -369,13 +369,11 @@ $2
 'titleprotected'       => "Rûpelek bi vî navî nikane were çêkirin. Ev astengkirina ji [[User:$1|$1]] bi sedemê ''$2'' hate çêkirin.",
 
 # Login and logout pages
-'logouttitle'                => 'Derketina bikarhêner',
-'logouttext'                 => '<strong>Tu niha derketî (logged out).</strong><br />
-Tu dikarî {{SITENAME}} niha weke bikarhênerekî nediyarkirî bikarbînî, yan jî tu dikarî dîsa bi vî navê xwe yan navekî din wek bikarhêner [[Special:UserLogin|dîsa têkevî]]. Bila di bîra te de be ku gengaz e hin rûpel mîna ku tu hîn bi navê xwe qeyd kiriyî werin nîşandan, heta ku tu nîşanên çavlêgerandina (browser) xwe jênebî.',
+'logouttext'                 => "'''Tu niha derketî (logged out).'''<br />
+Tu dikarî {{SITENAME}} niha weke bikarhênerekî nediyarkirî bikarbînî, yan jî tu dikarî dîsa bi vî navê xwe yan navekî din wek bikarhêner [[Special:UserLogin|dîsa têkevî]]. Bila di bîra te de be ku gengaz e hin rûpel mîna ku tu hîn bi navê xwe qeyd kiriyî werin nîşandan, heta ku tu nîşanên çavlêgerandina (browser) xwe jênebî.",
 'welcomecreation'            => '== Bi xêr hatî, $1! ==
 
 Hesaba te hat afirandin. Tu dikarî niha [[Special:Preferences|tercîhên xwe di {{SITENAME}}]] da eyar bikî.',
-'loginpagetitle'             => 'Qeyda bikarhêner (User login)',
 'yourname'                   => 'Navê te wek bikarhêner (user name)',
 'yourpassword'               => 'Şîfreya te (password)',
 'yourpasswordagain'          => 'Şîfreya xwe careke din binîvîse',
@@ -397,21 +395,7 @@ Hesaba te hat afirandin. Tu dikarî niha [[Special:Preferences|tercîhên xwe di
 'createaccountmail'          => 'bi e-name',
 'badretype'                  => 'Herdu şîfreyên ku te nivîsîn hevûdin nagirin.',
 'userexists'                 => 'Ev navî bikarhênerî berê tê bikaranîn. Xêra xwe navekî din bibe.',
-'youremail'                  => 'E-maila te*',
-'username'                   => 'Navê bikarhêner:',
-'uid'                        => "ID'ya bikarhêner:",
-'prefs-memberingroups'       => 'Endamê {{PLURAL:$1|grûpê|grûpan}}:',
-'yourrealname'               => 'Navê te yê rastî*',
-'yourlanguage'               => 'Ziman',
-'yourvariant'                => 'Varîyant:',
-'yournick'                   => 'Leqeba te (ji bo îmza)',
-'badsig'                     => 'Nivîsandinê îmzê ne baş e; xêra xwe nivîsandina HTML seke, ku şaşbûn hene ya na.',
-'badsiglength'               => 'Navî te zêde dirêj e; ew gireke di bin {{PLURAL:$1|nîşanekê|nîşanan}} da be.',
-'email'                      => 'E-name',
-'prefs-help-realname'        => 'Ne gereke. Tu dikarî navî xwe binivisînê, ew ê bi karkirên te were nivîsandin.',
 'loginerror'                 => 'Çewtî (Login error)',
-'prefs-help-email'           => 'Adrêsa te yê e-nameyan ne gereke were nivîsandin, lê ew qebûldike, ku bikarhênerên din vê naskirinê te kanibin e-nameyan ji te ra bişînin.',
-'prefs-help-email-required'  => 'Adrêsa e-nameyan gereke.',
 'nocookiesnew'               => "Account'î bikarhêner hatibû çêkirin, lê te xwe qeyd nekirîye. {{SITENAME}} cookie'yan bikartîne ji bo qeydkirinê bikarhêneran. Te cookie'yan girtîye. Xêra xwe cookie'yan qebûlbike, manê tu kanibê bi navî bikarhêner û şîfreya xwe qeydbikê.",
 'nocookieslogin'             => 'Ji bo qeydkirina bikarhêneran {{SITENAME}} "cookies" bikartîne. Te fonksîyona "cookies" girtîye. Xêra xwe kerema xwe "cookies" gengaz bike û careke din biceribîne.',
 'noname'                     => 'Navê ku te nivîsand derbas nabe.',
@@ -450,17 +434,16 @@ Eger account\'a bikarhêneran şaşî hate çêkirin, guhdare vê peyamê meke.'
 'loginlanguagelabel'         => 'Ziman: $1',
 
 # Password reset dialog
-'resetpass'               => "Şîfreya account'î bikarhêneran şondabibe",
-'resetpass_announce'      => 'Te xwe bi şîfreyekê qeydkir, yê bi e-nameyekê ji te ra hate şandin. Ji bo xelaskirinê qeydkirinê, tu niha gireke şîfreyeka nuh binivisînê.',
-'resetpass_text'          => '<!-- Nivîsê xwe li vir binivisîne -->',
-'resetpass_header'        => 'Şîfreya xwe betalbike',
-'oldpassword'             => 'Şîfreya kevn',
-'newpassword'             => 'Şîfreya nû',
-'retypenew'               => 'Şîfreya nû careke din binîvîse',
-'resetpass_submit'        => 'Şîfrê bişîne û xwe qedybike',
-'resetpass_success'       => 'Şîfreya te hate guherandin! Niha tu tê qeydkirin...',
-'resetpass_bad_temporary' => 'Şîfreya te niha netê qebûlkirin. Te berê şîfreyekî nuh tomarkir ya şîfreyekî nuh xast.',
-'resetpass_forbidden'     => 'Şîfre nikanin werin guhartin',
+'resetpass'           => "Şîfreya account'î bikarhêneran şondabibe",
+'resetpass_announce'  => 'Te xwe bi şîfreyekê qeydkir, yê bi e-nameyekê ji te ra hate şandin. Ji bo xelaskirinê qeydkirinê, tu niha gireke şîfreyeka nuh binivisînê.',
+'resetpass_text'      => '<!-- Nivîsê xwe li vir binivisîne -->',
+'resetpass_header'    => 'Şîfreya xwe betalbike',
+'oldpassword'         => 'Şîfreya kevn',
+'newpassword'         => 'Şîfreya nû',
+'retypenew'           => 'Şîfreya nû careke din binîvîse',
+'resetpass_submit'    => 'Şîfrê bişîne û xwe qedybike',
+'resetpass_success'   => 'Şîfreya te hate guherandin! Niha tu tê qeydkirin...',
+'resetpass_forbidden' => 'Şîfre nikanin werin guhartin',
 
 # Edit page toolbar
 'bold_sample'     => 'Nivîsa estûr',
@@ -534,7 +517,6 @@ Zanibe ku tu nikanê e-nameya bişînê heta tu di [[Special:Preferences|tercih�
 'blockededitsource'                => "Nivîsarên '''guherandinên te''' di '''$1''' da tê wêşandan:",
 'whitelistedittitle'               => 'Ji bo guherandinê vê gotarê tu gireke xwe qeydbikê.',
 'whitelistedittext'                => 'Ji bo guherandina rûpelan, $1 pêwîst e.',
-'confirmedittitle'                 => 'Ji bo guherandinê, naskirina e-nameya te tê xastin.',
 'confirmedittext'                  => 'Tu gireke adrêsa e-nameya xwe nasbikê berî tu rûpelan diguherînê. Xêra xwe adrêsa e-nameya ya xwe di [[Special:Preferences|tercihên xwe]] da binivisîne û nasbike.',
 'nosuchsectiontitle'               => 'Beşekî wisa tune ye',
 'nosuchsectiontext'                => 'Te dixast beşekê biguherînê yê tune ye. Ji ber ku beşa $1 tune ye, guherandinên te jî nikanin werin tomarkirin.',
@@ -552,13 +534,13 @@ Eger tu bi şaştî hatî, bizivire rûpela berê.",
 'noarticletext'                    => 'Ev rûpel niha vala ye, tu dikarî [[Special:Search/{{PAGENAME}}|Di nav gotarên din de li "{{PAGENAME}}" bigere]] an [{{fullurl:{{FULLPAGENAME}}|action=edit}} vê rûpelê biguherînî].',
 'userpage-userdoesnotexist'        => 'Account\'î bikarhêneran "$1" nehatîye qeydkirin. Xêra xwe seke ku tu dixazê vê rûpelê çêkê/biguherînê.',
 'clearyourcache'                   => "'''Zanibe:''' Piştî tomarkirinê, tu gireke cache'a browser'î xwe dîsa wînê ji bo dîtina guherandinan. '''Mozilla / Firefor /Safari:''' Kepsa ''Shift'' bigre û li ''Reload'' xe, ya ''Ctrl-Shift-R'' bikepsîne (''Cmd-Shift-R'' li cem Apple Mac); '''IE:''' Kepsa ''Ctrl'' bigre û li ''Reload'' xe, ya li ''Ctrl-F5''; '''Konqueror:''' bes li ''Reload'' xe ya li kepsa ''F5'' xe; bikarhênerên '''Opera''' girekin belkî cache'a xwe tevda di bin ''Tools → Preferences'' da valabikin.",
-'usercssjsyoucanpreview'           => "<strong>Tîp:</strong> 'Pêşdîtin' bikarwîne ji bo tu bibînê çawa CSS/JS'ê te yê nuh e berî tomarkirinê.",
+'usercssjsyoucanpreview'           => "'''Tîp:''' 'Pêşdîtin' bikarwîne ji bo tu bibînê çawa CSS/JS'ê te yê nuh e berî tomarkirinê.",
 'usercsspreview'                   => "'''Zanibe ku tu bes CSS'ê xwe pêşdibînê.'''
 '''Ew hên nehatîye tomarkirin!'''",
 'userjspreview'                    => "'''Zanibe ku tu bes JavaScript'a xwe dicerbînê, ew hên nehatîye tomarkirin!'''",
 'updated'                          => '(Hat taze kirin)',
-'note'                             => '<strong>Not:</strong>',
-'previewnote'                      => '<strong>Ji bîr neke ku ev bi tenê çavdêriyek e, ev rûpel hîn nehat qeyd kirin!</strong>',
+'note'                             => "'''Not:'''",
+'previewnote'                      => "'''Ji bîr neke ku ev bi tenê çavdêriyek e, ev rûpel hîn nehat qeyd kirin!'''",
 'editing'                          => 'Biguherîne: "$1"',
 'editingsection'                   => 'Tê guherandin: $1 (beş)',
 'editingcomment'                   => '$1 (şîrove) tê guherandin.',
@@ -570,16 +552,16 @@ Divê tû wan bikî yek.
 Heke niha tomar bikî, '''bi tene''' nivîsara qutiya jor wê bê tomarkirin.",
 'yourtext'                         => 'Nivîsara te',
 'storedversion'                    => 'Versiyona qeydkirî',
-'editingold'                       => '<strong>HÎŞYAR: Tu ser revîsyoneke kevn a vê rûpelê dixebitî.
+'editingold'                       => "'''HÎŞYAR: Tu ser revîsyoneke kevn a vê rûpelê dixebitî.
 Eger tu qeyd bikî, hemû guhertinên ji vê revîzyonê piştre winda dibin.
-</strong>',
+'''",
 'yourdiff'                         => 'Ciyawazî',
 'copyrightwarning'                 => "Dîqat bike: Hemû tevkariyên {{SITENAME}} di bin $2 de tên belav kirin (ji bo hûragahiyan li $1 binêre). Eger tu nexwazî ku nivîsên te bê dilrehmî bên guherandin û li gora keyfa herkesî bên belavkirin, li vir neweşîne.<br />
 Tu soz didî ku te ev bi xwe nivîsand an jî ji çavkaniyekê azad an geliyane ''(public domain)'' girt.
-<strong>BERHEMÊN MAFÊN WAN PARASTÎ (©) BÊ DESTÛR NEWEŞÎNE!</strong>",
+'''BERHEMÊN MAFÊN WAN PARASTÎ (©) BÊ DESTÛR NEWEŞÎNE!'''",
 'longpagewarning'                  => "HIŞYAR: Drêjahiya vê rûpelê $1 kB (kilobyte) e, ev pir e. Dibe ku çend ''browser''
 baş nikarin rûpelên ku ji 32 kB drêjtir in biguherînin. Eger tu vê rûpelê beş beş bikî gelo ne çêtir e?",
-'protectedpagewarning'             => '<strong>ŞIYARÎ:  Ev rûpel tê parastin. Bi tenê bikarhênerên ku xwediyên mafên "sysop" ne, dikarin vê rûpelê biguherînin.</strong>',
+'protectedpagewarning'             => "'''ŞIYARÎ:  Ev rûpel tê parastin. Bi tenê bikarhênerên ku xwediyên mafên \"sysop\" ne, dikarin vê rûpelê biguherînin.'''",
 'templatesused'                    => 'Şablon di van rûpelan da tê bikaranîn',
 'templatesusedpreview'             => 'Şablon yê di vê pêşdîtinê da tên bikaranîn:',
 'templatesusedsection'             => 'Şablon yê di vê perçê da tên bikaranîn:',
@@ -587,11 +569,10 @@ baş nikarin rûpelên ku ji 32 kB drêjtir in biguherînin. Eger tu vê rûpel�
 'template-semiprotected'           => '(nîv-parastî)',
 'permissionserrorstext'            => 'Tu nikanê vê tiştî bikê, ji bo {{PLURAL:$1|vê sedemê|van sedeman}}:',
 'permissionserrorstext-withaction' => 'Mafên te bo $2 tune ye ji bo {{PLURAL:$1|vê sedemê|van sedeman}}:',
-'recreate-deleted-warn'            => "'''Zanibe: Tu kê rûpelekê çêkê yê niha hate jêbirin!'''
+'recreate-moveddeleted-warn'       => "'''Zanibe: Tu kê rûpelekê çêkê yê niha hate jêbirin!'''
 
 Zanibe ku nuhçêkirinê vê rûpelê hêja ye ya na.
 Înformasyon li ser jêbirinê vê rûpelê li vir e:",
-'deletelog-fulllog'                => 'Reşahîyê tevda bibîne',
 'edit-no-change'                   => 'Guherandina te hate nehate hesibandin, ji ber ku guherandinên nivîsê tune bûn.',
 'edit-already-exists'              => 'Nikarî rûpeleka nuh çêke.
 Ew berê heye.',
@@ -622,7 +603,6 @@ Sedemê qedexekirinê ji $3 ev e: ''$2''",
 'page_last'           => 'paşîn',
 'histlegend'          => 'Legend: (ferq) = cudayî nav vê û versiyon a niha,
 (berê) = cudayî nav vê û yê berê vê, B = guhêrka biçûk',
-'deletedrev'          => '[jêbir]',
 'histfirst'           => 'Kevintirîn',
 'histlast'            => 'Nûtirîn',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -630,15 +610,13 @@ Sedemê qedexekirinê ji $3 ev e: ''$2''",
 
 # Revision feed
 'history-feed-title'          => 'Dîroka versyona',
-'history-feed-item-nocomment' => '$1 li $2', # user at time
+'history-feed-item-nocomment' => '$1 li $2',
 'history-feed-empty'          => 'Rûpelê xastî tune ye. Belkî ew rûpela hatîye jêbirin ya sernava xwe hatîye guherandin. [[Special:Search|Di wîkîyê da li rûpelên nêzîkî wê bigere]].',
 
 # Revision deletion
 'rev-deleted-comment'         => '(nivîs hate jêbirin)',
 'rev-deleted-user'            => '(navî bikarhêner hate jêbirin)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
-Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} reşahîya jêbirinê] da hebin.
-</div>',
+'rev-deleted-text-permission' => 'Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} reşahîya jêbirinê] da hebin.',
 'rev-delundel'                => 'nîşan bide/veşêre',
 'revisiondelete'              => 'Rêvîsyona jêbibe/dîsa çêke',
 'revdelete-legend'            => 'Guherandina qebûlkirina dîtinê',
@@ -686,8 +664,8 @@ Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:Spe
 'notitlematches'                 => 'Di nav sernivîsan de nehat dîtin.',
 'textmatches'                    => 'Dîtinên di nivîsara rûpelan de',
 'notextmatches'                  => 'Di nivîsarê de nehat dîtin.',
-'prevn'                          => '$1 paş',
-'nextn'                          => '$1 pêş',
+'prevn'                          => '{{PLURAL:$1|$1}} paş',
+'nextn'                          => '{{PLURAL:$1|$1}} pêş',
 'viewprevnext'                   => '($1) ($2) ($3).',
 'searchhelp-url'                 => 'Help:Alîkarî',
 'searchprofile-articles-tooltip' => 'Di $1 da lêbigere',
@@ -701,52 +679,63 @@ Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:Spe
 'searchdisabled'                 => '<p>Tu dikarî li {{SITENAME}} bi Google an Yahoo! bigere. Têbînî: Dibe ku encamen lêgerîne ne yên herî nû ne.
 </p>',
 
+# Quickbar
+'qbsettings-none' => 'Tune',
+
 # Preferences page
-'preferences'         => 'Tercîhên min',
-'mypreferences'       => 'Tercihên min',
-'prefs-edits'         => 'Hejmarê guherandinan:',
-'prefsnologin'        => 'Xwe qeyd nekir',
-'prefsnologintext'    => 'Tu gireke xwe <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} qeydbikê]</span> ji bo guherandina tercihên bikarhêneran.',
-'prefsreset'          => 'Tercih hatin şondakirin.',
-'qbsettings-none'     => 'Tune',
-'changepassword'      => 'Şîfre biguherîne',
-'skin'                => 'Pêste',
-'skin-preview'        => 'Pêşdîtin',
-'math'                => 'TeX',
-'dateformat'          => 'Formata rojê',
-'datedefault'         => 'Tercih tune ne',
-'datetime'            => 'Dem û rêkewt',
-'math_unknown_error'  => 'şaşbûnekî nezanîn',
-'math_image_error'    => 'Wêşandana PNG nemeşî',
-'prefs-personal'      => 'Agahiyên bikarhênerê/î',
-'prefs-rc'            => 'Guherandinên dawî',
-'prefs-watchlist'     => 'Lîsteya şopandinê',
-'prefs-misc'          => 'Eyaren cuda',
-'prefs-resetpass'     => 'Şifreyê biguherîne',
-'saveprefs'           => 'Tercîhan qeyd bike',
-'resetprefs'          => 'Nivîsarên netomarkirî şondabike',
-'textboxsize'         => 'Guheranin',
-'rows'                => 'Rêz',
-'columns'             => 'sitûn',
-'searchresultshead'   => 'Eyarên encamên lêgerinê',
-'savedprefs'          => 'Tercîhên te qeyd kirî ne.',
-'timezonelegend'      => 'Navçeya demê',
-'timezonetext'        => '¹Hejmara saetan têkê, yê navbera navçeya demê te û UTC da ne.',
-'localtime'           => 'Demê vê cihê',
-'timezoneoffset'      => 'Cudahî¹:',
-'servertime'          => "Dema server'ê:",
-'guesstimezone'       => "Ji browser'î xwe têkê",
-'allowemail'          => 'Qebûlbike ku bikarhênerên di e-nameyan ji te ra bişînin',
-'prefs-searchoptions' => 'Tercihên lêgerînê',
-'default'             => 'asayî',
-'files'               => 'Dosya',
+'preferences'               => 'Tercîhên min',
+'mypreferences'             => 'Tercihên min',
+'prefs-edits'               => 'Hejmarê guherandinan:',
+'prefsnologin'              => 'Xwe qeyd nekir',
+'prefsnologintext'          => 'Tu gireke xwe <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} qeydbikê]</span> ji bo guherandina tercihên bikarhêneran.',
+'changepassword'            => 'Şîfre biguherîne',
+'prefs-skin'                => 'Pêste',
+'skin-preview'              => 'Pêşdîtin',
+'prefs-math'                => 'TeX',
+'datedefault'               => 'Tercih tune ne',
+'prefs-datetime'            => 'Dem û rêkewt',
+'prefs-personal'            => 'Agahiyên bikarhênerê/î',
+'prefs-rc'                  => 'Guherandinên dawî',
+'prefs-watchlist'           => 'Lîsteya şopandinê',
+'prefs-misc'                => 'Eyaren cuda',
+'prefs-resetpass'           => 'Şifreyê biguherîne',
+'saveprefs'                 => 'Tercîhan qeyd bike',
+'resetprefs'                => 'Nivîsarên netomarkirî şondabike',
+'prefs-editing'             => 'Guheranin',
+'rows'                      => 'Rêz',
+'columns'                   => 'sitûn',
+'searchresultshead'         => 'Eyarên encamên lêgerinê',
+'savedprefs'                => 'Tercîhên te qeyd kirî ne.',
+'timezonelegend'            => 'Navçeya demê',
+'localtime'                 => 'Demê vê cihê',
+'timezoneoffset'            => 'Cudahî¹:',
+'servertime'                => "Dema server'ê:",
+'guesstimezone'             => "Ji browser'î xwe têkê",
+'allowemail'                => 'Qebûlbike ku bikarhênerên di e-nameyan ji te ra bişînin',
+'prefs-searchoptions'       => 'Tercihên lêgerînê',
+'default'                   => 'asayî',
+'prefs-files'               => 'Dosya',
+'youremail'                 => 'E-maila te*',
+'username'                  => 'Navê bikarhêner:',
+'uid'                       => "ID'ya bikarhêner:",
+'prefs-memberingroups'      => 'Endamê {{PLURAL:$1|grûpê|grûpan}}:',
+'yourrealname'              => 'Navê te yê rastî*',
+'yourlanguage'              => 'Ziman',
+'yourvariant'               => 'Varîyant:',
+'yournick'                  => 'Leqeba te (ji bo îmza)',
+'badsig'                    => 'Nivîsandinê îmzê ne baş e; xêra xwe nivîsandina HTML seke, ku şaşbûn hene ya na.',
+'badsiglength'              => 'Navî te zêde dirêj e; ew gireke di bin {{PLURAL:$1|nîşanekê|nîşanan}} da be.',
+'email'                     => 'E-name',
+'prefs-help-realname'       => 'Ne gereke. Tu dikarî navî xwe binivisînê, ew ê bi karkirên te were nivîsandin.',
+'prefs-help-email'          => 'Adrêsa te yê e-nameyan ne gereke were nivîsandin, lê ew qebûldike, ku bikarhênerên din vê naskirinê te kanibin e-nameyan ji te ra bişînin.',
+'prefs-help-email-required' => 'Adrêsa e-nameyan gereke.',
 
 # User rights
-'userrights'                  => 'Îdarekirina mafên bikarhêneran', # Not used as normal message but as header for the special page itself
+'userrights'                  => 'Îdarekirina mafên bikarhêneran',
 'userrights-lookup-user'      => 'Îdarekirina grûpan',
 'userrights-user-editname'    => 'Navî bikarhênerê têke:',
 'editusergroup'               => 'Grûpên bikarhêneran biguherîne',
-'editinguser'                 => "Mafên bikarhêner '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) tên xeyrandin",
+'editinguser'                 => "Mafên bikarhêner '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) tên xeyrandin",
 'userrights-editusergroup'    => 'Grûpên bikarhêneran biguherîne',
 'saveusergroups'              => 'Grûpên bikarhêneran tomarbike',
 'userrights-groupsmember'     => 'Endamê:',
@@ -763,8 +752,8 @@ Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:Spe
 'userrights-unchangeable-col' => 'Grûpan yên tu nikarê biguherînê',
 
 # Groups
-'group'            => 'Kom:',
-'group-user'       => 'Bikarhêneran',
+'group'            => 'گرووپ:',
+'group-user'       => 'بەکارھێنەران',
 'group-bot'        => 'Bot',
 'group-sysop'      => 'Koordînatoran',
 'group-bureaucrat' => 'Bûrokrat',
@@ -828,6 +817,8 @@ Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:Spe
 
 # Recent changes linked
 'recentchangeslinked'         => 'Guherandinên peywend',
+'recentchangeslinked-feed'    => 'Guherandinên peywend',
+'recentchangeslinked-toolbox' => 'Guherandinên peywend',
 'recentchangeslinked-summary' => "Ev rûpela taybetî guherandinên dawî ji rûpelên lînkkirî nîşandide. Ew rûpel yê di lîsteya te ya şopandinê da ne bi nivîsa '''estûr''' tên nîşandan.",
 
 # Upload
@@ -867,13 +858,13 @@ Format {{PLURAL:$3|yê tê|yên tên}} xastin {{PLURAL:$3|ev e|ev in}}: $2.',
 'filetype-missing'       => 'Piştnavî datayê tune (wek ".jpg").',
 'large-file'             => "Mezinbûna data'yan bila ne ji $1 mezintir bin; ev data'ya $2 mezin e.",
 'emptyfile'              => "Data'ya barkirî vala ye. Sedemê valabûnê belkî şaşnivîsek di navê data'yê da ye. Xêra xwe seke, ku tu rast dixazê vê data'yê barbikê.",
-'fileexists'             => 'Datayek bi vê navê berê heye. Eger tu niha li „Tomarbike“ xê, ew wêneyê kevin ê here û wêneyê te ê were barkirin di bin wê navê. Di bin <strong><tt>$1</tt></strong> du dikarî sekê, ku di dixwazê wê wêneyê biguherînê. Eger tu naxazê, xêra xwe li „Betal“ xe.',
-'fileexists-extension'   => 'Datayek wek vê navê berê heye:<br />
-Navî datayê yê tê barkirin: <strong><tt>$1</tt></strong><br />
-Navî datayê yê berê heyê: <strong><tt>$2</tt></strong><br />
-Xêra xwe navekî din bibîne.',
+'fileexists'             => "Datayek bi vê navê berê heye. Eger tu niha li „Tomarbike“ xê, ew wêneyê kevin ê here û wêneyê te ê were barkirin di bin wê navê. Di bin '''<tt>$1</tt>''' du dikarî sekê, ku di dixwazê wê wêneyê biguherînê. Eger tu naxazê, xêra xwe li „Betal“ xe.",
+'fileexists-extension'   => "Datayek wek vê navê berê heye:<br />
+Navî datayê yê tê barkirin: '''<tt>$1</tt>'''<br />
+Navî datayê yê berê heyê: '''<tt>$2</tt>'''<br />
+Xêra xwe navekî din bibîne.",
 'fileexists-thumb'       => "<center>'''Wêne yê berê heye'''</center>",
-'file-thumbnail-no'      => 'Navî vê datayê bi <strong><tt>$1</tt></strong> destpêdike. Ev dibêje ku ev wêneyekî çûçik e <i>(thumbnail)</i>. Xêra xwe seke, ku belkî versyonekî mezin yê vê wêneyê li cem te heye û wê wêneyê mezintir di bin navî orîjînal da barbike.',
+'file-thumbnail-no'      => "Navî vê datayê bi '''<tt>$1</tt>''' destpêdike. Ev dibêje ku ev wêneyekî çûçik e ''(thumbnail)''. Xêra xwe seke, ku belkî versyonekî mezin yê vê wêneyê li cem te heye û wê wêneyê mezintir di bin navî orîjînal da barbike.",
 'fileexists-forbidden'   => 'Medyayek bi vê navî heye; xêra xwe şonda here û vê medyayê bi navekî din barbike.
 [[File:$1|thumb|center|$1]]',
 'successfulupload'       => 'Barkirin serkeftî',
@@ -894,7 +885,7 @@ Xêra xwe navekî din bibîne.',
 Zanibe, ku ev barkirina kê were qebûlkirin ya na.
 
 Înformasyonan li ser jêbirinê kevin ra:",
-'filename-bad-prefix'    => 'Nava wê data\'yê, yê tu niha bardikê, bi <strong>"$1"</strong> destpêdike. Kamêrayên dîjîtal wan navan didin wêneyên xwe. Ji kerema xwe navekî baştir binivisîne ji bo mirov zûtir zanibin ku şayeşê vê wêneyê çî ye.',
+'filename-bad-prefix'    => "Nava wê data'yê, yê tu niha bardikê, bi '''\"\$1\"''' destpêdike. Kamêrayên dîjîtal wan navan didin wêneyên xwe. Ji kerema xwe navekî baştir binivisîne ji bo mirov zûtir zanibin ku şayeşê vê wêneyê çî ye.",
 
 'license' => 'Lîsens:',
 
@@ -908,6 +899,7 @@ Zanibe, ku ev barkirina kê were qebûlkirin ya na.
 'listfiles_description' => 'Wesif',
 
 # File description page
+'file-anchor-link'          => 'Wêne',
 'filehist'                  => 'Dîroka datayê',
 'filehist-help'             => 'Li demekê xe ji bo dîtina verzyona wê demê',
 'filehist-deleteall'        => 'giştika jêbibe',
@@ -922,8 +914,6 @@ Zanibe, ku ev barkirina kê were qebûlkirin ya na.
 'imagelinks'                => 'Lînkên vî wêneyî',
 'linkstoimage'              => 'Di van rûpelan de lînkek ji vî wêneyî re heye:',
 'nolinkstoimage'            => 'Rûpelekî ku ji vî wêneyî re girêdankê çêdike nîne.',
-'noimage'                   => 'Medyayek bi vê navî tune, lê tu kanî $1',
-'noimage-linktext'          => 'wê barbike',
 'uploadnewversion-linktext' => 'Versyonekî nû yê vê datayê barbike',
 
 # File reversion
@@ -975,8 +965,8 @@ Zanibe, ku ev barkirina kê were qebûlkirin ya na.
 'double-redirect-fixed-move' => "cihê [[$1]] hatîye gerandin, ew niha redirect'ek berve [[$2]] ye",
 
 'brokenredirects'        => 'Ragihandinên jê bûye',
-'brokenredirects-edit'   => '(biguherîne)',
-'brokenredirects-delete' => '(jêbibe)',
+'brokenredirects-edit'   => 'biguherîne',
+'brokenredirects-delete' => 'jêbibe',
 
 'withoutinterwiki'        => 'Rûpel vê lînkên berve zimanên din',
 'withoutinterwiki-submit' => 'Nîşan bide',
@@ -1056,7 +1046,8 @@ Binêre [[Special:WantedCategories|kategorîyên xastî]].',
 'special-categories-sort-abc'   => 'hatîye rêzkirin li gorî alfabeyê',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',
+'deletedcontributions'       => 'Guherandinên bikarhênerekî yê jêbirî',
+'deletedcontributions-title' => 'Guherandinên bikarhênerekî yê jêbirî',
 
 # Special:LinkSearch
 'linksearch-ok' => 'Lêbigere',
@@ -1172,12 +1163,10 @@ Eger tu dixazê lîstêya xwe yê şopandinê biguherînê, li
 'deletecomment'          => 'Sedema jêbirinê',
 'deleteotherreason'      => 'Sedemekî din:',
 'deletereasonotherlist'  => 'Sedemekî din',
-'deletereason-dropdown'  => "*Sedemên jêbirinê
-** vandalîzm
+'deletereason-dropdown'  => '*Sedemên jêbirinê
 ** vala
 ** ne girek e
-** ne gotarek e
-** ceribandina IP'yekê",
+** vandalîzm',
 'delete-edit-reasonlist' => 'Sedemên jêbirinê biguherîne',
 'delete-toobig'          => 'Dîroka vê rûpelê pir mezin e, zêdetirî $1 guherandin. Jêbirina van rûpelan hatîye sînorkirin, ji bo pir şaşbûn (error) di {{SITENAME}} da çênebin.',
 'delete-warning-toobig'  => "Dîroka vê rûpelê pir mezin e, zêdetirî $1 guherandin. Jêbirina van rûpelan dikarin şaşbûnan di database'ê {{SITENAME}} da çêkin; zandibe tu çi dikê!",
@@ -1190,8 +1179,8 @@ Eger tu dixazê lîstêya xwe yê şopandinê biguherînê, li
 bi [[User:$2|$2]] ([[User talk:$2|guftûgo]]) venizivre; keseke din wê rûpelê zivrandiye an guherandiye.
 
 Guhartoya dawî bi [[User:$3|$3]] ([[User talk:$3|guftûgo]]).',
-'editcomment'      => 'Kurtenivîsê guherandinê ev bû: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Guherandina $2 hat betal kirin, vegerand guhartoya dawî ya $1', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => "Kurtenivîsê guherandinê ev bû: \"''\$1''\".",
+'revertpage'       => 'Guherandina $2 hat betal kirin, vegerand guhartoya dawî ya $1',
 'rollback-success' => 'Guherandina $1 şondakir; dîsa guharte verzyona $2.',
 
 # Protect
@@ -1210,7 +1199,7 @@ Guhartoya dawî bi [[User:$3|$3]] ([[User talk:$3|guftûgo]]).',
 'protect-level-autoconfirmed' => 'Bikarhênerên neqeydkirî astengbike',
 'protect-level-sysop'         => 'Bes koordînatoran (admînan)',
 'protect-expiring'            => 'heta rojê $1 (UTC)',
-'protect-expiry-options'      => '1 seet:1 hour,2 seet:2 hours,6 seet:6 hours,1 roj:1 day,3 roj:3 days,1 hefte:1 week,2 hefte:2 weeks,1 mihe:1 month,3 mihe:3 months,1 sal:1 year,ji her demê ra:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 seet:1 hour,1 roj:1 day,1 hefte:1 week,2 hefte:2 weeks,1 mihe:1 month,3 mihe:3 months,6 mihe:6 months,1 sal:1 year,ji her demê ra:infinite',
 'restriction-type'            => 'Destûr:',
 
 # Restrictions (nouns)
@@ -1264,6 +1253,9 @@ Ji bo jêbirinan û çêkirinên nuh ra, xêra xwe di [[Special:Log/delete|reşa
 'sp-contributions-newbies'     => 'Bes beşdarîyên bikarhênerê nû pêşêkê',
 'sp-contributions-newbies-sub' => 'Ji bikarhênerên nû re',
 'sp-contributions-blocklog'    => 'Reşahîya astengkirinê',
+'sp-contributions-deleted'     => 'Guherandinên bikarhênerekî yê jêbirî',
+'sp-contributions-talk'        => 'Nîqaş',
+'sp-contributions-userrights'  => 'Îdarekirina mafên bikarhêneran',
 'sp-contributions-search'      => 'Li beşdarîyan bigere',
 'sp-contributions-username'    => 'Adresê IP ya navî bikarhêner:',
 'sp-contributions-submit'      => 'Lêbigere',
@@ -1311,7 +1303,7 @@ Sedemekê binivîse!',
 'ipbenableautoblock'          => "Otomatîk IP'yên niha û yên nuh yê vê bikarhênerê astengbike.",
 'ipbsubmit'                   => 'Vê bikarhêner asteng bike',
 'ipbother'                    => 'demekî din',
-'ipboptions'                  => '1 seet:1 hour,2 seet:2 hours,6 seet:6 hours,1 roj:1 day,3 roj:3 days,1 hefte:1 week,2 hefte:2 weeks,1 mihe:1 month,3 mihe:3 months,1 sal:1 year,ji her demê ra:infinite', # display1:time1,display2:time2,...
+'ipboptions'                  => '1 seet:1 hour,2 seet:2 hours,6 seet:6 hours,1 roj:1 day,3 roj:3 days,1 hefte:1 week,2 hefte:2 weeks,1 mihe:1 month,3 mihe:3 months,1 sal:1 year,ji her demê ra:infinite',
 'ipbotheroption'              => 'yên din',
 'ipbotherreason'              => 'Sedemekî din',
 'ipbhidename'                 => 'Navî bikarhêner / adresê IP ji "pirtûkê" astengkirinê, lîsteya astengkirinên nuh û lîsteya bikarhêneran veşêre',
@@ -1336,7 +1328,7 @@ Sedemekê binivîse!',
 'ipblocklist-submit'          => 'Lêbigere',
 'blocklistline'               => '$1, $2 $3 asteng kir ($4)',
 'infiniteblock'               => 'ji her demê ra',
-'expiringblock'               => 'heta $1',
+'expiringblock'               => 'heta $1 $2',
 'anononlyblock'               => 'bes kesên netên zanîn',
 'noautoblockblock'            => 'astengkirina otomatîk hatîye temirandin',
 'createaccountblock'          => "çêkirina account'an hatîye qedexekirin",
@@ -1389,7 +1381,7 @@ da bikarî navê wê rûpelê biguherînî.',
 'move-watch'                => 'Vê rûpelê bişopîne',
 'movepagebtn'               => 'Vê rûpelê bigerîne',
 'pagemovedsub'              => 'Gerandin serkeftî',
-'movepage-moved'            => '<big>\'\'\'"$1" çû cihê "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'            => '<big>\'\'\'"$1" çû cihê "$2"\'\'\'</big>',
 'movepage-moved-noredirect' => "Redirect'ek nehate çêkirin",
 'articleexists'             => 'Rûpela bi vî navî heye, an navê ku te hilbijart derbas nabe. Navekî din hilbijêre.',
 'cantmove-titleprotected'   => 'Tu nikanê vê rûpelê bervê vê cihê bigerînê ji ber ku sernava nuh tê parastin ji bo çêkirinê',
@@ -1554,6 +1546,10 @@ if (wgUserLanguage == "ku-arab")
 'mw_math_modern' => "Baştir e ji browser'ên nuhtir",
 'mw_math_mathml' => 'MathML eger bibe (ceribandin)',
 
+# Math errors
+'math_unknown_error' => 'şaşbûnekî nezanîn',
+'math_image_error'   => 'Wêşandana PNG nemeşî',
+
 # Patrolling
 'markaspatrolleddiff'   => 'Wek serrastkirî nîşanbide',
 'markaspatrolledtext'   => 'Vê rûpelê wek serrastkirî nîşanbide',
@@ -1685,7 +1681,7 @@ Xêra xwe zanibe ku tu bi rastî dixwazê vê rûpelê dîsa çêkê",
 'watchlisttools-edit' => 'Lîsteya şopandinê bibîne û biguherîne',
 
 # Special:Version
-'version'       => 'Verzîyon', # Not used as normal message but as header for the special page itself
+'version'       => 'Verzîyon',
 'version-other' => 'yên din',
 
 # Special:FilePath
@@ -1698,7 +1694,7 @@ Xêra xwe zanibe ku tu bi rastî dixwazê vê rûpelê dîsa çêkê",
 'specialpages'               => 'Rûpelên taybet',
 'specialpages-note'          => '----
 * Rûpelên taybetî ji her kesan ra
-* <span class="mw-specialpagerestricted">Rûpelên taybetî ji bikarhêneran bi mafên zêdetir ra</span>',
+* <strong class="mw-specialpagerestricted">Rûpelên taybetî ji bikarhêneran bi mafên zêdetir ra</strong>',
 'specialpages-group-other'   => 'Rûpelên taybetî yên din',
 'specialpages-group-login'   => 'Têkevê',
 'specialpages-group-changes' => 'Guherandinên dawî û reşahîyan',

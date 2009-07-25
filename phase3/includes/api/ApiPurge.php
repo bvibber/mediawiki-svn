@@ -65,13 +65,22 @@ class ApiPurge extends ApiBase {
 				$result[] = $r;
 				continue;
 			}
-			$article = new Article($title);
+			$article = Mediawiki::articleFromTitle( $title );
 			$article->doPurge(); // Directly purge and skip the UI part of purge().
 			$r['purged'] = '';
 			$result[] = $r;
 		}
 		$this->getResult()->setIndexedTagName($result, 'page');
 		$this->getResult()->addValue(null, $this->getModuleName(), $result);
+	}
+
+	public function mustBePosted() {
+		global $wgUser;
+		return $wgUser->isAnon();
+	}
+
+	public function isWriteMode() {
+		return true;
 	}
 
 	public function getAllowedParams() {

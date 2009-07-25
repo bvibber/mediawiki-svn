@@ -13,6 +13,11 @@ class OutputPage {
 	var $mSubtitle = '', $mRedirect = '', $mStatusCode;
 	var $mLastModified = '', $mETag = false;
 	var $mCategoryLinks = array(), $mLanguageLinks = array();
+
+	var $mScriptLoaderClassList = array();
+	// the most recent id of any script that is grouped in the script request
+	var $mLatestScriptRevID = 0; 
+
 	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
 	var $mTemplateIds = array();
 
@@ -29,11 +34,13 @@ class OutputPage {
 	var $mArticleBodyOnly = false;
 
 	var $mNewSectionLink = false;
+	var $mHideNewSectionLink = false;
 	var $mNoGallery = false;
 	var $mPageTitleActionText = '';
 	var $mParseWarnings = array();
 	var $mSquidMaxage = 0;
 	var $mRevisionId = null;
+	protected $mTitle = null;
 
 	/**
 	 * An array of stylesheet filenames (relative from skins path), with options
@@ -83,9 +90,15 @@ class OutputPage {
 		array_push( $this->mMetatags, array( $name, $val ) );
 	}
 
-	function addKeyword( $text ) { array_push( $this->mKeywords, $text ); }
-	function addScript( $script ) { $this->mScripts .= "\t\t".$script; }
-	
+	function addKeyword( $text ) {
+		if( is_array( $text )) {
+			$this->mKeywords = array_merge( $this->mKeywords, $text );
+		} else {
+			array_push( $this->mKeywords, $text );
+		}
+	}
+	function addScript( $script ) { $this->mScripts .= "\t\t" . $script . "\n"; }
+
 	function addExtensionStyle( $url ) {
 		$linkarr = array( 'rel' => 'stylesheet', 'href' => $url, 'type' => 'text/css' );
 		array_push( $this->mExtStyles, $linkarr );
@@ -96,26 +109,200 @@ class OutputPage {
 	 * @param string $file filename in skins/common or complete on-server path (/foo/bar.js)
 	 */
 	function addScriptFile( $file ) {
-		global $wgStylePath, $wgStyleVersion, $wgJsMimeType;
+		global $wgStylePath, $wgStyleVersion, $wgJsMimeType, $wgScript, $wgUser;
+		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgEnableScriptLoader, $wgScriptPath;
+
 		if( substr( $file, 0, 1 ) == '/' ) {
 			$path = $file;
 		} else {
-			$path =  "{$wgStylePath}/common/{$file}";
+			$path = "{$wgStylePath}/common/{$file}";
 		}
-		$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$path?$wgStyleVersion\"></script>\n" );
+
+		if( $wgEnableScriptLoader ){
+			if( strpos( $path, $wgScript ) !== false ){
+				$reqPath = str_replace( $wgScript . '?', '', $path );
+				$reqArgs = explode( '&', $reqPath );
+				$reqSet = array();
+
+				foreach( $reqArgs as $arg ){
+					list( $key, $var ) = explode( '=', $arg );
+					$reqSet[$key] = $var;
+				}
+
+				if( isset( $reqSet['title'] ) && $reqSet != '' ) {
+					// extract any extra param (for now just skin)
+					$ext_param = ( isset( $reqSet['useskin'] ) && $reqSet['useskin'] != '' ) ? '|useskin=' . ucfirst( $reqSet['useskin'] ) : '';
+					$this->mScriptLoaderClassList[] = 'WT:' . $reqSet['title'] . $ext_param ;
+					// add the title revision to the key
+					$t = Title::newFromText( $reqSet['title'] );
+					// if there is no title (don't worry we just use the $wgStyleVersion var (which should be updated on relevant commits)
+					if( $t->exists() ){
+						if( $t->getLatestRevID() > $this->mLatestScriptRevID  )
+							$this->mLatestScriptRevID = $t->getLatestRevID();
+					}
+					return true;
+				}
+			}
+
+			// check for class from path:
+			$js_class = $this->getJsClassFromPath( $path );
+			if( $js_class ){
+				// add to the class list:
+				$this->mScriptLoaderClassList[] = $js_class;
+				return true;
+			}
+		}
+
+		// if the script loader did not find a way to add the script than add using addScript
+		$this->addScript(
+			Xml::element( 'script',
+				array(
+					'type' => $wgJsMimeType,
+					'src' => wfAppendQuery( $path, $this->getURIDparam() ),
+				),
+				'', false
+			)
+		);
 	}
-	
+
+	/**
+	 * This is the core script that is included on every page
+	 * (they are requested separately to improve caching across
+	 *  different page load types (edit, upload, view, etc)
+	 */
+	function addCoreScripts2Top(){
+		global $wgEnableScriptLoader, $wgStyleVersion, $wgJSAutoloadLocalClasses, $wgJsMimeType, $wgScriptPath, $wgEnableJS2system;
+		//@@todo we should deprecate wikibits in favor of mv_embed and native jQuery functions
+
+		if( $wgEnableJS2system ){
+			$core_classes = array( 'window.jQuery', 'mv_embed', 'wikibits' );
+		} else {
+			$core_classes = array( 'wikibits' );
+		}
+
+		if( $wgEnableScriptLoader ){
+			$this->mScripts = $this->getScriptLoaderJs( $core_classes ) . $this->mScripts;
+		} else {
+			$so = '';
+			foreach( $core_classes as $s ){
+				if( isset( $wgJSAutoloadLocalClasses[$s] ) ){
+					$so.= Xml::element( 'script', array(
+							'type' => $wgJsMimeType,
+							'src' => "{$wgScriptPath}/{$wgJSAutoloadLocalClasses[$s]}?" . $this->getURIDparam()
+						),
+						'', false
+					);
+				}
+			}
+			$this->mScripts =  $so . $this->mScripts;
+		}
+	}
+
+	/**
+	 * @param $js_class String: name of JavaScript class
+	 * @return Boolean: false if class wasn't found, true on success
+	 */
+	function addScriptClass( $js_class ){
+		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgJsMimeType,
+				$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath;
+
+		if( isset( $wgJSAutoloadClasses[$js_class] ) || isset( $wgJSAutoloadLocalClasses[$js_class] ) ){
+			if( $wgEnableScriptLoader ){
+				if( !in_array( $js_class, $this->mScriptLoaderClassList ) ){
+					$this->mScriptLoaderClassList[] = $js_class;
+				}
+			} else {
+				// do a normal load of without the script-loader:
+				$path = $wgScriptPath . '/';
+				$path.= isset( $wgJSAutoloadClasses[$js_class] ) ? $wgJSAutoloadClasses[$js_class]:
+							$wgJSAutoloadLocalClasses[$js_class];
+				$this->addScript(
+					Xml::element( 'script',
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "$path?$wgStyleVersion",
+						),
+						'', false
+					)
+				);
+			}
+			return true;
+		}
+		wfDebug( __METHOD__ . ' could not find js_class: ' . $js_class );
+		return false; // could not find the class
+	}
+
+	/**
+	 * gets the scriptLoader javascript include
+	 * @param $forcClassAry Boolean: false by default
+	 */
+	function getScriptLoaderJs( $forceClassAry = false ){
+		global $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgRequest, $wgDebugJavaScript;
+
+		if( !$forceClassAry ){
+			$class_list = implode( ',', $this->mScriptLoaderClassList );
+		} else {
+			$class_list = implode( ',', $forceClassAry );
+		}
+
+		$debug_param = ( $wgDebugJavaScript ||
+						 $wgRequest->getVal( 'debug' ) == 'true' ||
+						 $wgRequest->getVal( 'debug' ) == '1' )
+			 		 ? '&debug=true' : '';
+
+		//@@todo intelligent unique id generation based on svn version of file (rather than just grabbing the $wgStyleVersion var)
+		//@@todo we should check the packaged message text in this javascript file for updates and update the $mScriptLoaderURID id (in getJsClassFromPath)
+
+		//generate the unique request param (combine with the most recent revision id of any wiki page with the $wgStyleVersion var)
+
+
+		return Xml::element( 'script',
+				array(
+					'type' => $wgJsMimeType,
+					'src' => "$wgScriptPath/mwScriptLoader.php?class={$class_list}{$debug_param}&".$this->getURIDparam(),
+				),
+				'', false
+		);
+	}
+
+	function getURIDparam(){
+		global $wgDebugJavaScript, $wgStyleVersion;
+		if( $wgDebugJavaScript ){
+			return 'urid=' . time();
+		} else {
+			return "urid={$wgStyleVersion}_{$this->mLatestScriptRevID}";
+		}
+	}
+
+	function getJsClassFromPath( $path ){
+		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgScriptPath;
+
+		$scriptLoaderPaths = array_merge( $wgJSAutoloadClasses,  $wgJSAutoloadLocalClasses );
+		foreach( $scriptLoaderPaths as $js_class => $js_path ){
+			$js_path = "{$wgScriptPath}/{$js_path}";
+			if( $path == $js_path )
+				return $js_class;
+		}
+		return false;
+	}
+
 	/**
 	 * Add a self-contained script tag with the given contents
 	 * @param string $script JavaScript text, no <script> tags
 	 */
 	function addInlineScript( $script ) {
 		global $wgJsMimeType;
-		$this->mScripts .= "<script type=\"$wgJsMimeType\">/*<![CDATA[*/\n$script\n/*]]>*/</script>";
+		$this->mScripts .= "\t\t<script type=\"$wgJsMimeType\">/*<![CDATA[*/\n\t\t$script\n\t\t/*]]>*/</script>\n";
 	}
 
 	function getScript() {
-		return $this->mScripts . $this->getHeadItems();
+		global $wgEnableScriptLoader;
+		if( $wgEnableScriptLoader ){
+			//include $this->mScripts (for anything that we could not package into the scriptloader
+			return $this->mScripts . "\n" . $this->getScriptLoaderJs() . $this->getHeadItems();
+		} else {
+			return $this->mScripts . $this->getHeadItems();
+		}
 	}
 
 	function getHeadItems() {
@@ -142,7 +329,7 @@ class OutputPage {
 		# $linkarr should be an associative array of attributes. We'll escape on output.
 		array_push( $this->mLinktags, $linkarr );
 	}
-	
+
 	# Get all links added by extensions
 	function getExtStyle() {
 		return $this->mExtStyles;
@@ -165,9 +352,9 @@ class OutputPage {
 	 *
 	 * @return bool True iff cache-ok headers was sent.
 	 */
-	function checkLastModified ( $timestamp ) {
+	function checkLastModified( $timestamp ) {
 		global $wgCachePages, $wgCacheEpoch, $wgUser, $wgRequest;
-		
+
 		if ( !$timestamp || $timestamp == '19700101000000' ) {
 			wfDebug( __METHOD__ . ": CACHE DISABLED, NO TIMESTAMP\n" );
 			return false;
@@ -220,9 +407,9 @@ class OutputPage {
 		}
 		$clientHeaderTime = wfTimestamp( TS_MW, $clientHeaderTime );
 
-		wfDebug( __METHOD__ . ": client sent If-Modified-Since: " . 
+		wfDebug( __METHOD__ . ": client sent If-Modified-Since: " .
 			wfTimestamp( TS_ISO_8601, $clientHeaderTime ) . "\n", false );
-		wfDebug( __METHOD__ . ": effective Last-Modified: " . 
+		wfDebug( __METHOD__ . ": effective Last-Modified: " .
 			wfTimestamp( TS_ISO_8601, $maxModified ) . "\n", false );
 		if( $clientHeaderTime < $maxModified ) {
 			wfDebug( __METHOD__ . ": STALE, $info\n", false );
@@ -230,8 +417,9 @@ class OutputPage {
 		}
 
 		# Not modified
-		# Give a 304 response code and disable body output 
+		# Give a 304 response code and disable body output
 		wfDebug( __METHOD__ . ": NOT MODIFIED, $info\n", false );
+		ini_set('zlib.output_compression', 0);
 		$wgRequest->response()->header( "HTTP/1.1 304 Not Modified" );
 		$this->sendCacheControl();
 		$this->disable();
@@ -309,20 +497,51 @@ class OutputPage {
 		}
 	}
 
-	public function setHTMLTitle( $name ) {$this->mHTMLtitle = $name; }
+	/**
+	 * "HTML title" means the contents of <title>. It is stored as plain, unescaped text and will be run through htmlspecialchars in the skin file.
+	 */
+	public function setHTMLTitle( $name ) {
+		$this->mHTMLtitle = $name;
+	}
+
+	/**
+	 * "Page title" means the contents of <h1>. It is stored as a valid HTML fragment.
+	 * This function allows good tags like <sup> in the <h1> tag, but not bad tags like <script>.
+	 * This function automatically sets <title> to the same content as <h1> but with all tags removed.
+	 * Bad tags that were escaped in <h1> will still be escaped in <title>, and good tags like <i> will be dropped entirely.
+         */
 	public function setPageTitle( $name ) {
-		global $action, $wgContLang;
-		$name = $wgContLang->convert($name, true);
-		$this->mPagetitle = $name;
-		if(!empty($action)) {
-			$taction =  $this->getPageTitleActionText();
-			if( !empty( $taction ) ) {
-				$name .= ' - '.$taction;
-			}
+		global $wgContLang;
+		$name = $wgContLang->convert( $name, true );
+		# change "<script>foo&bar</script>" to "&lt;script&gt;foo&amp;bar&lt;/script&gt;"
+		# but leave "<i>foobar</i>" alone
+		$nameWithTags = Sanitizer::normalizeCharReferences( Sanitizer::removeHTMLtags( $name ) );
+		$this->mPagetitle = $nameWithTags;
+
+		$taction =  $this->getPageTitleActionText();
+		if( !empty( $taction ) ) {
+			$name .= ' - '.$taction;
 		}
 
-		$this->setHTMLTitle( wfMsg( 'pagetitle', $name ) );
+		# change "<i>foo&amp;bar</i>" to "foo&bar"
+		$this->setHTMLTitle( wfMsg( 'pagetitle', Sanitizer::stripAllTags( $nameWithTags ) ) );
 	}
+
+	public function setTitle( $t ) {
+		$this->mTitle = $t;
+	}
+
+	public function getTitle() {
+		if ( $this->mTitle instanceof Title ) {
+			return $this->mTitle;
+		}
+		else {
+			wfDebug( __METHOD__ . ' called and $mTitle is null. Return $wgTitle for sanity' );
+			global $wgTitle;
+			return $wgTitle;
+		}
+	}
+
 	public function getHTMLTitle() { return $this->mHTMLtitle; }
 	public function getPageTitle() { return $this->mPagetitle; }
 	public function setSubtitle( $str ) { $this->mSubtitle = /*$this->parse(*/$str/*)*/; } // @bug 2514
@@ -338,6 +557,7 @@ class OutputPage {
 	public function setOnloadHandler( $js ) { $this->mOnloadHandler = $js; }
 	public function getOnloadHandler() { return $this->mOnloadHandler; }
 	public function disable() { $this->mDoNothing = true; }
+	public function isDisabled() { return $this->mDoNothing; }
 
 	public function setArticleRelated( $v ) {
 		$this->mIsArticleRelated = $v;
@@ -408,9 +628,14 @@ class OutputPage {
 		if ( wfRunHooks( 'OutputPageMakeCategoryLinks', array( &$this, $categories, &$this->mCategoryLinks ) ) ) {
 			$sk = $wgUser->getSkin();
 			foreach ( $categories as $category => $type ) {
+				$origcategory = $category;
 				$title = Title::makeTitleSafe( NS_CATEGORY, $category );
+				$wgContLang->findVariantLink( $category, $title, true );
+				if ( $category != $origcategory )
+					if ( array_key_exists( $category, $categories ) )
+						continue;
 				$text = $wgContLang->convertHtml( $title->getText() );
-				$this->mCategoryLinks[$type][] = $sk->makeLinkObj( $title, $text );
+				$this->mCategoryLinks[$type][] = $sk->link( $title, $text );
 			}
 		}
 	}
@@ -455,7 +680,7 @@ class OutputPage {
 		$val = is_null( $revid ) ? null : intval( $revid );
 		return wfSetVar( $this->mRevisionId, $val );
 	}
-	
+
 	public function getRevisionId() {
 		return $this->mRevisionId;
 	}
@@ -469,8 +694,8 @@ class OutputPage {
 	 * @param bool   $linestart
 	 */
 	public function addWikiText( $text, $linestart = true ) {
-		global $wgTitle;
-		$this->addWikiTextTitle($text, $wgTitle, $linestart);
+		$title = $this->getTitle(); // Work arround E_STRICT
+		$this->addWikiTextTitle( $text, $title, $linestart );
 	}
 
 	public function addWikiTextWithTitle($text, &$title, $linestart = true) {
@@ -506,24 +731,24 @@ class OutputPage {
 	 * @param ParserOutput object &$parserOutput
 	 */
 	public function addParserOutputNoText( &$parserOutput ) {
-		global $wgTitle, $wgExemptFromUserRobotsControl, $wgContentNamespaces;
+		global $wgExemptFromUserRobotsControl, $wgContentNamespaces;
 
 		$this->mLanguageLinks += $parserOutput->getLanguageLinks();
 		$this->addCategoryLinks( $parserOutput->getCategories() );
 		$this->mNewSectionLink = $parserOutput->getNewSection();
+		$this->mHideNewSectionLink = $parserOutput->getHideNewSection();
 
 		if( is_null( $wgExemptFromUserRobotsControl ) ) {
 			$bannedNamespaces = $wgContentNamespaces;
 		} else {
 			$bannedNamespaces = $wgExemptFromUserRobotsControl;
 		}
-		if( !in_array( $wgTitle->getNamespace(), $bannedNamespaces ) ) {
+		if( !in_array( $this->getTitle()->getNamespace(), $bannedNamespaces ) ) {
 			# FIXME (bug 14900): This overrides $wgArticleRobotPolicies, and it
 			# shouldn't
 			$this->setIndexPolicy( $parserOutput->getIndexPolicy() );
 		}
 
-		$this->addKeywords( $parserOutput );
 		$this->mParseWarnings = $parserOutput->getWarnings();
 		if ( $parserOutput->getCacheTime() == -1 ) {
 			$this->enableClientCache( false );
@@ -538,9 +763,11 @@ class OutputPage {
 				$this->mTemplateIds[$ns] = $dbks;
 			}
 		}
-		// Display title
+		// Page title
 		if( ( $dt = $parserOutput->getDisplayTitle() ) !== false )
 			$this->setPageTitle( $dt );
+		else if ( ( $title = $parserOutput->getTitleText() ) != '' )
+			$this->setPageTitle( $title );
 
 		// Hooks registered in the object
 		global $wgParserOutputHooks;
@@ -575,7 +802,7 @@ class OutputPage {
 	 * @deprecated Use Article::outputWikitext
 	 */
 	public function addPrimaryWikiText( $text, $article, $cache = true ) {
-		global $wgParser, $wgUser;
+		global $wgParser;
 
 		wfDeprecated( __METHOD__ );
 
@@ -586,7 +813,7 @@ class OutputPage {
 		$popts->setTidy(false);
 		if ( $cache && $article && $parserOutput->getCacheTime() != -1 ) {
 			$parserCache = ParserCache::singleton();
-			$parserCache->save( $parserOutput, $article, $wgUser );
+			$parserCache->save( $parserOutput, $article, $popts);
 		}
 
 		$this->addParserOutput( $parserOutput );
@@ -596,17 +823,16 @@ class OutputPage {
 	 * @deprecated use addWikiTextTidy()
 	 */
 	public function addSecondaryWikiText( $text, $linestart = true ) {
-		global $wgTitle;
 		wfDeprecated( __METHOD__ );
-		$this->addWikiTextTitleTidy($text, $wgTitle, $linestart);
+		$this->addWikiTextTitleTidy($text, $this->getTitle(), $linestart);
 	}
 
 	/**
 	 * Add wikitext with tidy enabled
 	 */
 	public function addWikiTextTidy(  $text, $linestart = true ) {
-		global $wgTitle;
-		$this->addWikiTextTitleTidy($text, $wgTitle, $linestart);
+		$title = $this->getTitle();
+		$this->addWikiTextTitleTidy($text, $title, $linestart);
 	}
 
 
@@ -630,28 +856,43 @@ class OutputPage {
 	 * @param bool   $interface ??
 	 */
 	public function parse( $text, $linestart = true, $interface = false ) {
-		global $wgParser, $wgTitle;
-		if( is_null( $wgTitle ) ) {
-			throw new MWException( 'Empty $wgTitle in ' . __METHOD__ );
+		global $wgParser;
+		if( is_null( $this->getTitle() ) ) {
+			throw new MWException( 'Empty $mTitle in ' . __METHOD__ );
 		}
 		$popts = $this->parserOptions();
 		if ( $interface) { $popts->setInterfaceMessage(true); }
-		$parserOutput = $wgParser->parse( $text, $wgTitle, $popts,
+		$parserOutput = $wgParser->parse( $text, $this->getTitle(), $popts,
 			$linestart, true, $this->mRevisionId );
 		if ( $interface) { $popts->setInterfaceMessage(false); }
 		return $parserOutput->getText();
+	}
+
+	/** Parse wikitext, strip paragraphs, and return the HTML. */
+	public function parseInline( $text, $linestart = true, $interface = false ) {
+		$parsed = $this->parse( $text, $linestart, $interface );
+
+		$m = array();
+		if ( preg_match( '/^<p>(.*)\n?<\/p>\n?/sU', $parsed, $m ) ) {
+			$parsed = $m[1];
+		}
+
+		return $parsed;
 	}
 
 	/**
 	 * @param Article $article
 	 * @param User    $user
 	 *
+	 * @deprecated
+	 *
 	 * @return bool True if successful, else false.
 	 */
-	public function tryParserCache( &$article, $user ) {
-		$parserCache = ParserCache::singleton();
-		$parserOutput = $parserCache->get( $article, $user );
-		if ( $parserOutput !== false ) {
+	public function tryParserCache( &$article ) {
+		wfDeprecated( __METHOD__ );
+		$parserOutput = ParserCache::singleton()->get( $article, $article->getParserOptions() );
+
+		if ($parserOutput !== false) {
 			$this->addParserOutput( $parserOutput );
 			return true;
 		} else {
@@ -736,7 +977,7 @@ class OutputPage {
 	}
 
 	public function sendCacheControl() {
-		global $wgUseSquid, $wgUseESI, $wgUseETag, $wgSquidMaxage, $wgRequest;
+		global $wgUseSquid, $wgUseESI, $wgUseETag, $wgSquidMaxage, $wgRequest, $wgUseXVO;
 
 		$response = $wgRequest->response();
 		if ($wgUseETag && $this->mETag)
@@ -746,8 +987,10 @@ class OutputPage {
 		# maintain different caches for logged-in users and non-logged in ones
 		$response->header( 'Vary: Accept-Encoding, Cookie' );
 
-		# Add an X-Vary-Options header for Squid with Wikimedia patches
-		$response->header( $this->getXVO() );
+		if ( $wgUseXVO ) {
+			# Add an X-Vary-Options header for Squid with Wikimedia patches
+			$response->header( $this->getXVO() );
+		}
 
 		if( !$this->uncacheableBecauseRequestVars() && $this->mEnableClientCache ) {
 			if( $wgUseSquid && session_id() == '' &&
@@ -802,14 +1045,12 @@ class OutputPage {
 		global $wgContLanguageCode, $wgDebugRedirects, $wgMimeType;
 		global $wgJsMimeType, $wgUseAjax, $wgAjaxWatch;
 		global $wgEnableMWSuggest, $wgUniversalEditButton;
-		global $wgArticle, $wgTitle;
+		global $wgArticle;
 
 		if( $this->mDoNothing ){
 			return;
 		}
-
 		wfProfileIn( __METHOD__ );
-
 		if ( '' != $this->mRedirect ) {
 			# Standards require redirect URLs to be absolute
 			$this->mRedirect = wfExpandUrl( $this->mRedirect );
@@ -819,7 +1060,6 @@ class OutputPage {
 				}
 				$this->mLastModified = wfTimestamp( TS_RFC2822 );
 			}
-
 			$this->sendCacheControl();
 
 			$wgRequest->response()->header("Content-Type: text/html; charset=utf-8");
@@ -891,6 +1131,9 @@ class OutputPage {
 
 		$sk = $wgUser->getSkin();
 
+		// add our core scripts to output
+		$this->addCoreScripts2Top();
+
 		if ( $wgUseAjax ) {
 			$this->addScriptFile( 'ajax.js' );
 
@@ -899,35 +1142,35 @@ class OutputPage {
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
 				$this->addScriptFile( 'ajaxwatch.js' );
 			}
-			
+
 			if ( $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ){
 				$this->addScriptFile( 'mwsuggest.js' );
 			}
 		}
-		
+
 		if( $wgUser->getBoolOption( 'editsectiononrightclick' ) ) {
 			$this->addScriptFile( 'rightclickedit.js' );
 		}
 
 		if( $wgUniversalEditButton ) {
-			if( isset( $wgArticle ) && isset( $wgTitle ) && $wgTitle->quickUserCan( 'edit' )
-				&& ( $wgTitle->exists() || $wgTitle->quickUserCan( 'create' ) ) ) {
+			if( isset( $wgArticle ) && $this->getTitle() && $this->getTitle()->quickUserCan( 'edit' )
+				&& ( $this->getTitle()->exists() || $this->getTitle()->quickUserCan( 'create' ) ) ) {
 				// Original UniversalEditButton
 				$this->addLink( array(
 					'rel' => 'alternate',
 					'type' => 'application/x-wiki',
 					'title' => wfMsg( 'edit' ),
-					'href' => $wgTitle->getFullURL( 'action=edit' )
+					'href' => $this->getTitle()->getLocalURL( 'action=edit' )
 				) );
 				// Alternate edit link
 				$this->addLink( array(
 					'rel' => 'edit',
 					'title' => wfMsg( 'edit' ),
-					'href' => $wgTitle->getFullURL( 'action=edit' )
+					'href' => $this->getTitle()->getLocalURL( 'action=edit' )
 				) );
 			}
 		}
-		
+
 		# Buffer output; final headers may depend on later processing
 		ob_start();
 
@@ -952,8 +1195,9 @@ class OutputPage {
 	}
 
 	/**
-	 * @todo document
-	 * @param string $ins
+	 * Actually output something with print(). Performs an iconv to the
+	 * output encoding, if needed.
+	 * @param string $ins The string to output
 	 */
 	public function out( $ins ) {
 		global $wgInputEncoding, $wgOutputEncoding, $wgContLang;
@@ -971,7 +1215,7 @@ class OutputPage {
 	 */
 	public static function setEncodings() {
 		global $wgInputEncoding, $wgOutputEncoding;
-		global $wgUser, $wgContLang;
+		global $wgContLang;
 
 		$wgInputEncoding = strtolower( $wgInputEncoding );
 
@@ -1000,7 +1244,7 @@ class OutputPage {
 	 * @return nothing
 	 */
 	function blockedPage( $return = true ) {
-		global $wgUser, $wgContLang, $wgTitle, $wgLang;
+		global $wgUser, $wgContLang, $wgLang;
 
 		$this->setPageTitle( wfMsg( 'blockedtitle' ) );
 		$this->setRobotPolicy( 'noindex,nofollow' );
@@ -1050,7 +1294,7 @@ class OutputPage {
 
 		# Don't auto-return to special pages
 		if( $return ) {
-			$return = $wgTitle->getNamespace() > -1 ? $wgTitle : NULL;
+			$return = $this->getTitle()->getNamespace() > -1 ? $this->getTitle() : null;
 			$this->returnToMain( null, $return );
 		}
 	}
@@ -1063,9 +1307,8 @@ class OutputPage {
 	 * @param array $params Message parameters
 	 */
 	public function showErrorPage( $title, $msg, $params = array() ) {
-		global $wgTitle;
-		if ( isset($wgTitle) ) {
-			$this->mDebugtext .= 'Original title: ' . $wgTitle->getPrefixedText() . "\n";
+		if ( $this->getTitle() ) {
+			$this->mDebugtext .= 'Original title: ' . $this->getTitle()->getPrefixedText() . "\n";
 		}
 		$this->setPageTitle( wfMsg( $title ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
@@ -1089,10 +1332,8 @@ class OutputPage {
 	 */
 	public function showPermissionsErrorPage( $errors, $action = null )
 	{
-		global $wgTitle;
-
 		$this->mDebugtext .= 'Original title: ' .
-		$wgTitle->getPrefixedText() . "\n";
+		$this->getTitle()->getPrefixedText() . "\n";
 		$this->setPageTitle( wfMsg( 'permissionserrors' ) );
 		$this->setHTMLTitle( wfMsg( 'permissionserrors' ) );
 		$this->setRobotPolicy( 'noindex,nofollow' );
@@ -1132,7 +1373,7 @@ class OutputPage {
 	 * @param string $permission key required
 	 */
 	public function permissionRequired( $permission ) {
-		global $wgUser;
+		global $wgLang;
 
 		$this->setPageTitle( wfMsg( 'badaccess' ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
@@ -1144,7 +1385,7 @@ class OutputPage {
 			User::getGroupsWithPermission( $permission ) );
 		if( $groups ) {
 			$this->addWikiMsg( 'badaccess-groups',
-				implode( ', ', $groups ),
+				$wgLang->commaList( $groups ),
 				count( $groups) );
 		} else {
 			$this->addWikiMsg( 'badaccess-group0' );
@@ -1172,7 +1413,7 @@ class OutputPage {
 	 * Produce the stock "please login to use the wiki" page
 	 */
 	public function loginToUse() {
-		global $wgUser, $wgTitle, $wgContLang;
+		global $wgUser, $wgContLang;
 
 		if( $wgUser->isLoggedIn() ) {
 			$this->permissionRequired( 'read' );
@@ -1187,9 +1428,15 @@ class OutputPage {
 		$this->setArticleFlag( false );
 
 		$loginTitle = SpecialPage::getTitleFor( 'Userlogin' );
-		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $wgTitle->getPrefixedUrl() );
+		$loginLink = $skin->link(
+			$loginTitle,
+			wfMsgHtml( 'loginreqlink' ),
+			array(),
+			array( 'returnto' => $this->getTitle()->getPrefixedText() ),
+			array( 'known', 'noclasses' )
+		);
 		$this->addHTML( wfMsgWikiHtml( 'loginreqpagetext', $loginLink ) );
-		$this->addHTML( "\n<!--" . $wgTitle->getPrefixedUrl() . "-->" );
+		$this->addHTML( "\n<!--" . $this->getTitle()->getPrefixedUrl() . "-->" );
 
 		# Don't return to the main page if the user can't read it
 		# otherwise we'll end up in a pointless loop
@@ -1212,7 +1459,7 @@ class OutputPage {
 			$text = wfMsgNoTrans( 'permissionserrorstext', count($errors)). "\n\n";
 		} else {
 			global $wgLang;
-			$action_desc = wfMsg( "action-$action" );
+			$action_desc = wfMsgNoTrans( "action-$action" );
 			$text = wfMsgNoTrans( 'permissionserrorstext-withaction', count($errors), $action_desc ) . "\n\n";
 		}
 
@@ -1227,7 +1474,7 @@ class OutputPage {
 			}
 			$text .= '</ul>';
 		} else {
-			$text .= '<div class="permissions-errors">' . call_user_func_array( 'wfMsgNoTrans', reset( $errors ) ) . '</div>';
+			$text .= "<div class=\"permissions-errors\">\n" . call_user_func_array( 'wfMsgNoTrans', reset( $errors ) ) . "\n</div>";
 		}
 
 		return $text;
@@ -1253,7 +1500,7 @@ class OutputPage {
 	 * @param array  $reasons   List of reasons for this error, as returned by Title::getUserPermissionsErrors().
 	 */
 	public function readOnlyPage( $source = null, $protected = false, $reasons = array(), $action = null ) {
-		global $wgUser, $wgTitle;
+		global $wgUser;
 		$skin = $wgUser->getSkin();
 
 		$this->setRobotPolicy( 'noindex,nofollow' );
@@ -1269,7 +1516,18 @@ class OutputPage {
 			// Permissions error
 			if( $source ) {
 				$this->setPageTitle( wfMsg( 'viewsource' ) );
-				$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
+				$this->setSubtitle(
+					wfMsg(
+						'viewsourcefor',
+						$skin->link(
+							$this->getTitle(),
+							null,
+							array(),
+							array(),
+							array( 'known', 'noclasses' )
+						)
+					)
+				);
 			} else {
 				$this->setPageTitle( wfMsg( 'badaccess' ) );
 			}
@@ -1296,7 +1554,7 @@ class OutputPage {
 
 			// Show templates used by this article
 			$skin = $wgUser->getSkin();
-			$article = new Article( $wgTitle );
+			$article = new Article( $this->getTitle() );
 			$this->addHTML( "<div class='templatesUsed'>
 {$skin->formatTemplates( $article->getUsedTemplates() )}
 </div>
@@ -1306,8 +1564,8 @@ class OutputPage {
 		# If the title doesn't exist, it's fairly pointless to print a return
 		# link to it.  After all, you just tried editing it and couldn't, so
 		# what's there to do there?
-		if( $wgTitle->exists() ) {
-			$this->returnToMain( null, $wgTitle );
+		if( $this->getTitle()->exists() ) {
+			$this->returnToMain( null, $this->getTitle() );
 		}
 	}
 
@@ -1380,12 +1638,14 @@ class OutputPage {
 	 * Add a "return to" link pointing to a specified title
 	 *
 	 * @param Title $title Title to link
+	 * @param string $query Query string
 	 */
-	public function addReturnTo( $title ) {
+	public function addReturnTo( $title, $query = array() ) {
 		global $wgUser;
 		$this->addLink( array( 'rel' => 'next', 'href' => $title->getFullUrl() ) );
-		$link = wfMsg( 'returnto', $wgUser->getSkin()->makeLinkObj( $title ) );
-		$this->addHTML( "<p>{$link}</p>\n" );
+		$link = wfMsgHtml( 'returnto', $wgUser->getSkin()->link(
+			$title, null, array(), $query ) );
+		$this->addHTML( "<p id=\"mw-returnto\">{$link}</p>\n" );
 	}
 
 	/**
@@ -1395,11 +1655,15 @@ class OutputPage {
 	 * @param null $unused No longer used
 	 * @param Title $returnto Title to return to
 	 */
-	public function returnToMain( $unused = null, $returnto = NULL ) {
+	public function returnToMain( $unused = null, $returnto = null, $returntoquery = null ) {
 		global $wgRequest;
 
-		if ( $returnto == NULL ) {
+		if ( $returnto == null ) {
 			$returnto = $wgRequest->getText( 'returnto' );
+		}
+		
+		if ( $returntoquery == null ) {
+			$returntoquery = $wgRequest->getText( 'returntoquery' );
 		}
 
 		if ( '' === $returnto ) {
@@ -1415,31 +1679,7 @@ class OutputPage {
 			$titleObj = Title::newMainPage();
 		}
 
-		$this->addReturnTo( $titleObj );
-	}
-
-	/**
-	 * This function takes the title (first item of mGoodLinks), categories, existing and broken links for the page
-	 * and uses the first 10 of them for META keywords
-	 *
-	 * @param ParserOutput &$parserOutput
-	 */
-	private function addKeywords( &$parserOutput ) {
-		global $wgTitle;
-		$this->addKeyword( $wgTitle->getPrefixedText() );
-		$count = 1;
-		$links2d =& $parserOutput->getLinks();
-		if ( !is_array( $links2d ) ) {
-			return;
-		}
-		foreach ( $links2d as $dbkeys ) {
-			foreach( $dbkeys as $dbkey => $unused ) {
-				$this->addKeyword( $dbkey );
-				if ( ++$count > 10 ) {
-					break 2;
-				}
-			}
-		}
+		$this->addReturnTo( $titleObj, $returntoquery );
 	}
 
 	/**
@@ -1448,54 +1688,74 @@ class OutputPage {
 	public function headElement( Skin $sk ) {
 		global $wgDocType, $wgDTD, $wgContLanguageCode, $wgOutputEncoding, $wgMimeType;
 		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces;
-		global $wgUser, $wgContLang, $wgUseTrackbacks, $wgTitle, $wgStyleVersion;
+		global $wgContLang, $wgUseTrackbacks, $wgStyleVersion, $wgEnableScriptLoader, $wgHtml5;
 
-		$this->addMeta( "http:Content-type", "$wgMimeType; charset={$wgOutputEncoding}" );
-		$this->addStyle( 'common/wikiprintable.css', 'print' );
+		$this->addMeta( "http:Content-Type", "$wgMimeType; charset={$wgOutputEncoding}" );
+		if ( $sk->commonPrintStylesheet() ) {
+			$this->addStyle( 'common/wikiprintable.css', 'print' );
+		}
 		$sk->setupUserCss( $this );
 
 		$ret = '';
 
 		if( $wgMimeType == 'text/xml' || $wgMimeType == 'application/xhtml+xml' || $wgMimeType == 'application/xml' ) {
-			$ret .= "<?xml version=\"1.0\" encoding=\"$wgOutputEncoding\" ?>\n";
+			$ret .= "<?xml version=\"1.0\" encoding=\"$wgOutputEncoding\" ?" . ">\n";
 		}
-
-		$ret .= "<!DOCTYPE html PUBLIC \"$wgDocType\"\n        \"$wgDTD\">\n";
 
 		if ( '' == $this->getHTMLTitle() ) {
 			$this->setHTMLTitle(  wfMsg( 'pagetitle', $this->getPageTitle() ));
 		}
 
-		$rtl = $wgContLang->isRTL() ? " dir='RTL'" : '';
-		$ret .= "<html xmlns=\"{$wgXhtmlDefaultNamespace}\" ";
-		foreach($wgXhtmlNamespaces as $tag => $ns) {
-			$ret .= "xmlns:{$tag}=\"{$ns}\" ";
+		$dir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
+
+		if ( $wgHtml5 ) {
+			$ret .= "<!doctype html>\n";
+			$ret .= "<html lang=\"$wgContLanguageCode\" dir=\"$dir\">\n";
+		} else {
+			$ret .= "<!DOCTYPE html PUBLIC \"$wgDocType\" \"$wgDTD\">\n";
+			$ret .= "<html xmlns=\"{$wgXhtmlDefaultNamespace}\" ";
+			foreach($wgXhtmlNamespaces as $tag => $ns) {
+				$ret .= "xmlns:{$tag}=\"{$ns}\" ";
+			}
+			$ret .= "xml:lang=\"$wgContLanguageCode\" lang=\"$wgContLanguageCode\" dir=\"$dir\">\n";
 		}
-		$ret .= "xml:lang=\"$wgContLanguageCode\" lang=\"$wgContLanguageCode\" $rtl>\n";
-		$ret .= "<head>\n<title>" . htmlspecialchars( $this->getHTMLTitle() ) . "</title>\n\t\t";
-		$ret .= implode( "\t\t", array(
+
+		$ret .= "<head>\n\t<title>" . htmlspecialchars( $this->getHTMLTitle() ) . "</title>\n\t";
+		$ret .= implode( "\n", array(
 			$this->getHeadLinks(),
 			$this->buildCssLinks(),
-			$sk->getHeadScripts( $this->mAllowUserJs ),
-			$this->mScripts,
+			$sk->getHeadScripts( $this ),
 			$this->getHeadItems(),
 		));
 		if( $sk->usercss ){
 			$ret .= "<style type='text/css'>{$sk->usercss}</style>";
 		}
 
+		if( $wgEnableScriptLoader )
+			$ret .= $this->getScriptLoaderJs();
+
 		if ($wgUseTrackbacks && $this->isArticleRelated())
-			$ret .= $wgTitle->trackbackRDF();
+			$ret .= $this->getTitle()->trackbackRDF();
 
 		$ret .= "</head>\n";
 		return $ret;
 	}
-	
+
 	protected function addDefaultMeta() {
-		global $wgVersion;
-		$this->addMeta( 'http:Content-Style-Type', 'text/css' ); //bug 15835
+		global $wgVersion, $wgHtml5;
+
+		static $called = false;
+		if ( $called ) {
+			# Don't run this twice
+			return;
+		}
+		$called = true;
+
+		if ( !$wgHtml5 ) {
+			$this->addMeta( 'http:Content-Style-Type', 'text/css' ); //bug 15835
+		}
 		$this->addMeta( 'generator', "MediaWiki $wgVersion" );
-		
+
 		$p = "{$this->mIndexPolicy},{$this->mFollowPolicy}";
 		if( $p !== 'index,follow' ) {
 			// http://www.robotstxt.org/wc/meta-user.html
@@ -1505,7 +1765,7 @@ class OutputPage {
 
 		if ( count( $this->mKeywords ) > 0 ) {
 			$strip = array(
-				"/<.*?>/" => '',
+				"/<.*?" . ">/" => '',
 				"/_/" => ' '
 			);
 			$this->addMeta( 'keywords', preg_replace(array_keys($strip), array_values($strip),implode( ",", $this->mKeywords ) ) );
@@ -1517,12 +1777,12 @@ class OutputPage {
 	 */
 	public function getHeadLinks() {
 		global $wgRequest, $wgFeed;
-		
+
 		// Ideally this should happen earlier, somewhere. :P
 		$this->addDefaultMeta();
-		
+
 		$tags = array();
-		
+
 		foreach ( $this->mMetatags as $tag ) {
 			if ( 0 == strcasecmp( 'http:', substr( $tag[0], 0, 5 ) ) ) {
 				$a = 'http-equiv';
@@ -1540,7 +1800,6 @@ class OutputPage {
 		}
 
 		if( $wgFeed ) {
-			global $wgTitle;
 			foreach( $this->getSyndicationLinks() as $format => $link ) {
 				# Use the page name for the title (accessed through $wgTitle since
 				# there's no other way).  In principle, this could lead to issues
@@ -1550,39 +1809,39 @@ class OutputPage {
 				$tags[] = $this->feedLink(
 					$format,
 					$link,
-					wfMsg( "page-{$format}-feed", $wgTitle->getPrefixedText() ) ); # Used messages: 'page-rss-feed' and 'page-atom-feed' (for an easier grep)
+					wfMsg( "page-{$format}-feed", $this->getTitle()->getPrefixedText() ) ); # Used messages: 'page-rss-feed' and 'page-atom-feed' (for an easier grep)
 			}
 
-			# Recent changes feed should appear on every page (except recentchanges, 
-			# that would be redundant). Put it after the per-page feed to avoid 
-			# changing existing behavior. It's still available, probably via a 
+			# Recent changes feed should appear on every page (except recentchanges,
+			# that would be redundant). Put it after the per-page feed to avoid
+			# changing existing behavior. It's still available, probably via a
 			# menu in your browser. Some sites might have a different feed they'd
 			# like to promote instead of the RC feed (maybe like a "Recent New Articles"
 			# or "Breaking news" one). For this, we see if $wgOverrideSiteFeed is defined.
 			# If so, use it instead.
-			
+
 			global $wgOverrideSiteFeed, $wgSitename, $wgFeedClasses;
 			$rctitle = SpecialPage::getTitleFor( 'Recentchanges' );
-			
+
 			if ( $wgOverrideSiteFeed ) {
-				foreach ( $wgOverrideSiteFeed as $type => $feedUrl ) { 
+				foreach ( $wgOverrideSiteFeed as $type => $feedUrl ) {
 					$tags[] = $this->feedLink (
 						$type,
 						htmlspecialchars( $feedUrl ),
 						wfMsg( "site-{$type}-feed", $wgSitename ) );
 				}
 			}
-			else if ( $wgTitle->getPrefixedText() != $rctitle->getPrefixedText() ) {
+			else if ( $this->getTitle()->getPrefixedText() != $rctitle->getPrefixedText() ) {
 				foreach( $wgFeedClasses as $format => $class ) {
 					$tags[] = $this->feedLink(
 						$format,
-						$rctitle->getFullURL( "feed={$format}" ),
+						$rctitle->getLocalURL( "feed={$format}" ),
 						wfMsg( "site-{$format}-feed", $wgSitename ) ); # For grep: 'site-rss-feed', 'site-atom-feed'.
 				}
 			}
 		}
 
-		return implode( "\n\t\t", $tags ) . "\n";
+		return implode( "\n\t", $tags ) . "\n";
 	}
 
 	/**
@@ -1590,7 +1849,7 @@ class OutputPage {
 	 * @return array associating format keys with URLs
 	 */
 	public function getSyndicationLinks() {
-		global $wgTitle, $wgFeedClasses;
+		global $wgFeedClasses;
 		$links = array();
 
 		if( $this->isSyndicated() ) {
@@ -1601,7 +1860,7 @@ class OutputPage {
 			}
 
 			foreach( $wgFeedClasses as $format => $class ) {
-				$links[$format] = $wgTitle->getLocalUrl( "feed=$format{$appendQuery}" );
+				$links[$format] = $this->getTitle()->getLocalUrl( "feed=$format{$appendQuery}" );
 			}
 		}
 		return $links;
@@ -1638,6 +1897,14 @@ class OutputPage {
 	}
 
 	/**
+	 * Adds inline CSS styles
+	 * @param $style_css Mixed: inline CSS
+	 */
+	public function addInlineStyle( $style_css ){
+		$this->mScripts .= "<style type=\"text/css\">$style_css</style>";
+	}
+
+	/**
 	 * Build a set of <link>s for the stylesheets specified in the $this->styles array.
 	 * These will be applied to various media & IE conditionals.
 	 */
@@ -1649,7 +1916,7 @@ class OutputPage {
 				$links[] = $link;
 		}
 
-		return implode( "\n\t\t", $links );
+		return "\t" . implode( "\n\t", $links );
 	}
 
 	protected function styleLink( $style, $options ) {
@@ -1735,7 +2002,6 @@ class OutputPage {
 	 * for when rate limiting has triggered.
 	 */
 	public function rateLimited() {
-		global $wgTitle;
 
 		$this->setPageTitle(wfMsg('actionthrottled'));
 		$this->setRobotPolicy( 'noindex,follow' );
@@ -1746,7 +2012,7 @@ class OutputPage {
 		$this->setStatusCode(503);
 		$this->addWikiMsg( 'actionthrottledtext' );
 
-		$this->returnToMain( null, $wgTitle );
+		$this->returnToMain( null, $this->getTitle() );
 	}
 
 	/**
@@ -1756,6 +2022,15 @@ class OutputPage {
 	 */
 	public function showNewSectionLink() {
 		return $this->mNewSectionLink;
+	}
+
+	/**
+	* Forcibly hide the new section link?
+	*
+	* @return bool
+	*/
+	public function forceHideNewSectionLink() {
+		return $this->mHideNewSectionLink;
 	}
 
 	/**
@@ -1809,7 +2084,7 @@ class OutputPage {
 	 *
 	 * In the $wrap, $1 is replaced with the first message, $2 with the second, and so
 	 * on. The subsequent arguments may either be strings, in which case they are the
-	 * message names, or an arrays, in which case the first element is the message name,
+	 * message names, or arrays, in which case the first element is the message name,
 	 * and subsequent elements are the parameters to that message.
 	 *
 	 * The special named parameter 'options' in a message specification array is passed
@@ -1843,7 +2118,7 @@ class OutputPage {
 				$args = array();
 				$name = $spec;
 			}
-			$s = str_replace( '$' . ($n+1), wfMsgExt( $name, $options, $args ), $s );
+			$s = str_replace( '$' . ( $n + 1 ), wfMsgExt( $name, $options, $args ), $s );
 		}
 		$this->addHTML( $this->parse( $s, /*linestart*/true, /*uilang*/true ) );
 	}

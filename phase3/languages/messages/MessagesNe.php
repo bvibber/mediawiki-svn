@@ -1,6 +1,9 @@
 <?php
 /** Nepali (नेपाली)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -65,17 +68,19 @@ $messages = array(
 'article'       => 'मुख्य-लेख पृष्ठ',
 'newwindow'     => '(नयाँ विन्डोमा खुल्छ)',
 'cancel'        => 'रद्द',
-'qbfind'        => 'पत्ता लगाउनु',
-'qbbrowse'      => 'खोज',
-'qbedit'        => 'परिवर्तन्',
-'qbpageoptions' => 'यो पेज',
-'qbmyoptions'   => 'मेरो पेज',
 'moredotdotdot' => 'थप...',
 'mypage'        => 'मेरो पृष्ठ',
 'mytalk'        => 'मेरो कुरा',
 'anontalk'      => 'यस् IP को वारेमा वार्तालाप गर्नुहोस्',
 'navigation'    => 'अन्वेषण',
 'and'           => '&#32;र',
+
+# Cologne Blue skin
+'qbfind'        => 'पत्ता लगाउनु',
+'qbbrowse'      => 'खोज',
+'qbedit'        => 'परिवर्तन्',
+'qbpageoptions' => 'यो पेज',
+'qbmyoptions'   => 'मेरो पेज',
 
 'help'             => 'सहयोग',
 'search'           => 'खोज',
@@ -102,7 +107,7 @@ $messages = array(
 'imagepage'        => 'चित्रको पृष्ठ हेर्नुहोस्',
 'otherlanguages'   => 'अरु भाषामा',
 'redirectedfrom'   => '($1 बाट पठाईएको)',
-'lastmodifiedat'   => 'यो पृष्ठलाई अन्तिमपटक $2, $1 मा परिवर्तन गरिएको थियो।', # $1 date, $2 time
+'lastmodifiedat'   => 'यो पृष्ठलाई अन्तिमपटक $2, $1 मा परिवर्तन गरिएको थियो।',
 'protectedpage'    => 'सुरक्षित गरिएका पृष्ठहरू',
 'jumptonavigation' => 'अन्वेषण',
 
@@ -158,7 +163,6 @@ $messages = array(
 # Login and logout pages
 'welcomecreation'            => '== तपाँईलाई स्वागत छ $1! ==
 तपाँईको खाता खोलिएको छ। {{SITENAME}}का आफ्ना अभिरुचिहरू परिवर्तन गर्न नबिर्सिनुहोला।',
-'loginpagetitle'             => 'प्रयोगकर्ता प्रवेश',
 'yourname'                   => 'प्रयोगकर्ता-नाम',
 'yourpassword'               => 'पासवर्ड',
 'yourpasswordagain'          => 'पासवर्ड फेरी टाईप गर्नुहोस्',
@@ -172,12 +176,6 @@ $messages = array(
 'createaccount'              => 'खाता खोल्नुहोस्',
 'gotaccountlink'             => 'लग इन',
 'badretype'                  => 'तपाईंले दिनुभएको पासवर्ड मिल्दैन।',
-'youremail'                  => 'ईमेल',
-'yourrealname'               => 'वास्तविक नाम:',
-'yourlanguage'               => 'भाषा:',
-'yourvariant'                => 'परिवर्तित प्रकार',
-'yournick'                   => 'उपनाम (निकनेम):',
-'email'                      => 'ईमेल',
 'noname'                     => 'तपाईले सहि युजर नेम उल्लेख गर्नु भएन.',
 'nouserspecified'            => 'तपाँईले प्रयोगकर्तानाम (युजरनेम) जनाउनुपर्छ।',
 'wrongpassword'              => 'पासवर्ड गलत हालियो । कृपया फेरी प्रयास गर्नुहोला ।',
@@ -218,13 +216,12 @@ $messages = array(
 'blockedoriginalsource'  => "'''$1''' को स्रोत तल देखाइएको छ:",
 'whitelistedittitle'     => 'सम्पादन गर्नको लागि प्रवेश (लग इन) आवश्यक छ',
 'whitelistedittext'      => 'पाना सम्पादन गर्न तपाँईले $1 गर्नु पर्दछ।',
-'confirmedittitle'       => 'सम्पादन गर्न इमेल पुष्टि गर्नु आवस्यक छ',
 'loginreqlink'           => 'प्रवेश (लग ईन)',
 'accmailtitle'           => 'पासवर्ड पठाइयो',
 'accmailtext'            => '"$1" को पासवर्ड $2मा पठाइएको छ ।',
 'newarticle'             => '(नयाँ)',
-'note'                   => '<strong>सुझाव:</strong>',
-'previewnote'            => '<strong>यो केवल पूर्वालोकन मात्र हो; परिवर्तनहरू संग्रह गरिसकिएको छैन!</strong>',
+'note'                   => "'''सुझाव:'''",
+'previewnote'            => "'''यो केवल पूर्वालोकन मात्र हो; परिवर्तनहरू संग्रह गरिसकिएको छैन!'''",
 'editing'                => '$1 सम्पादन गरिँदै',
 'editingsection'         => '$1 (खण्ड) सम्पादन गरिँदै',
 'editconflict'           => 'सम्पादन बाँझियो: $1',
@@ -251,7 +248,7 @@ $messages = array(
 # Search results
 'notitlematches' => 'कुनैपनि पृष्ठको शिर्षक संग मिल्दैन',
 'notextmatches'  => 'अक्षरस् पेज भेटिएन',
-'nextn'          => 'अर्को $1',
+'nextn'          => 'अर्को {{PLURAL:$1|$1}}',
 
 # Preferences page
 'preferences'           => 'रोजाईहरू',
@@ -259,17 +256,22 @@ $messages = array(
 'prefsnologin'          => 'प्रवेश (लग ईन) नगरिएको',
 'changepassword'        => 'पासवर्ड परिवर्तन गर्नुहोस्',
 'skin-preview'          => 'पूर्वालोकन',
-'math'                  => 'गणित',
-'datetime'              => 'मिति र समय',
-'math_unknown_error'    => 'अज्ञात समस्या',
-'math_unknown_function' => 'अज्ञात निर्देशन',
+'prefs-math'            => 'गणित',
+'prefs-datetime'        => 'मिति र समय',
 'prefs-personal'        => 'प्रयोगकर्ताको विवरण',
 'prefs-rc'              => 'नयाँ परिवर्तनहरु',
 'prefs-watchlist'       => 'अवलोकन पृष्ठ',
 'recentchangescount'    => 'नयाँ परिवर्तित शिर्षकहरु',
 'savedprefs'            => 'तपाँईका अभिरुचिहरू सङ्ग्रहित भयो।',
 'localtime'             => 'स्थानीय समय',
+'timezoneregion-africa' => 'अफ्रिका',
 'allowemail'            => 'अरु प्रयोगकर्ताहरुबाट प्राप्त हुने ईमेल enable गर्नुहोस् ।',
+'youremail'             => 'ईमेल',
+'yourrealname'          => 'वास्तविक नाम:',
+'yourlanguage'          => 'भाषा:',
+'yourvariant'           => 'परिवर्तित प्रकार',
+'yournick'              => 'उपनाम (निकनेम):',
+'email'                 => 'ईमेल',
 
 # Groups
 'group-bot' => 'बोटहरु',
@@ -287,7 +289,9 @@ $messages = array(
 'rc_categories_any' => 'कुनै',
 
 # Recent changes linked
-'recentchangeslinked' => 'संबन्धित परिवर्तनहरु',
+'recentchangeslinked'         => 'संबन्धित परिवर्तनहरु',
+'recentchangeslinked-feed'    => 'संबन्धित परिवर्तनहरु',
+'recentchangeslinked-toolbox' => 'संबन्धित परिवर्तनहरु',
 
 # Upload
 'upload'            => 'फाइल अपलोड',
@@ -309,8 +313,8 @@ $messages = array(
 'listfiles_description' => 'वर्णन',
 
 # File description page
+'file-anchor-link' => 'फाईल',
 'nolinkstoimage'   => 'यो फाईलसंग लिंकभएको कुनै पृष्ठ छैन.',
-'noimage-linktext' => 'अपलोड गर्नुहोस्',
 
 # MIME search
 'download' => 'डाउनलोड',
@@ -468,10 +472,9 @@ $messages = array(
 'delete_and_move_confirm' => 'हो, पृष्ठ मेट्नुहोस्',
 
 # Namespace 8 related
-'allmessages'         => 'सिस्टम सन्देशहरू',
-'allmessagesname'     => 'नाम',
-'allmessagestext'     => 'यो मिडियाविकि नेमस्पेसमा पाइने सिस्टम सन्देशहरूको सूची हो।',
-'allmessagesmodified' => 'परिवर्तित मात्र देखाउनुहोस्',
+'allmessages'     => 'सिस्टम सन्देशहरू',
+'allmessagesname' => 'नाम',
+'allmessagestext' => 'यो मिडियाविकि नेमस्पेसमा पाइने सिस्टम सन्देशहरूको सूची हो।',
 
 # Special:Import
 'import'                  => 'पृष्ठहरु आयात गर्नुहोस्',
@@ -501,7 +504,7 @@ $messages = array(
 'tooltip-watch'           => 'यो पृष्ठलाई तपाईँको अवलोकनसूचीमा थप्नुहोस्',
 
 # Attribution
-'lastmodifiedatby' => 'यो पृष्ठ अन्तिमपटक $3द्वारा $2, $1 मा परिवर्तन गरिएको थियो।', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'यो पृष्ठ अन्तिमपटक $3द्वारा $2, $1 मा परिवर्तन गरिएको थियो।',
 'othercontribs'    => '$1 को कामको आधारमा',
 'others'           => 'अन्य',
 
@@ -512,6 +515,10 @@ $messages = array(
 'numwatchers'    => 'अवलोकन संख्या: $1',
 'numauthors'     => 'प्रष्ट लेखकहरुको संख्या (लेख): $1',
 'numtalkauthors' => 'लेखकहरूको संख्या (छलफल पृष्ठ): $1',
+
+# Math errors
+'math_unknown_error'    => 'अज्ञात समस्या',
+'math_unknown_function' => 'अज्ञात निर्देशन',
 
 # Patrol log
 'patrol-log-auto' => '(स्वचालित)',
@@ -547,8 +554,8 @@ $messages = array(
 'exif-gpsstatus'                 => 'रिसिभर अवस्था',
 'exif-gpstrack'                  => 'चलेको दिशा',
 
-'exif-orientation-1' => 'सामान्य', # 0th row: top; 0th column: left
-'exif-orientation-6' => '90° CW घुमाइएको', # 0th row: right; 0th column: top
+'exif-orientation-1' => 'सामान्य',
+'exif-orientation-6' => '90° CW घुमाइएको',
 
 'exif-subjectdistance-value' => '$1 मिटर',
 
@@ -574,7 +581,7 @@ $messages = array(
 'exif-gpslongitude-e' => 'पूर्व देशान्तर',
 'exif-gpslongitude-w' => 'पश्चिम देशान्तर',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'किलोमिटर प्रति घण्टा',
 'exif-gpsspeed-m' => 'माइल प्रति घण्टा',
 

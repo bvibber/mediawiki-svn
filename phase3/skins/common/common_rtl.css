@@ -46,3 +46,19 @@ table.filehistory th {
 html > body div#article ul {
 	display: table;
 }
+
+/* feed links */
+a.feedlink {
+	background: none !important;
+	padding-left: 0 !important;
+}
+
+/**
+ * Lists:
+ * The following lines don't have a visible effect on non-Gecko browsers
+ * They fix a problem ith Gecko browsers rendering lists to the right of
+ * left-floated objects in an RTL layout.
+ */
+html > body div#bodyContent ul#filetoc {
+	display: block;
+}

@@ -21,8 +21,12 @@ function wfSpecialWatchlist( $par ) {
 	# Anons don't get a watchlist
 	if( $wgUser->isAnon() ) {
 		$wgOut->setPageTitle( wfMsg( 'watchnologin' ) );
-		$llink = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Userlogin' ), 
-			wfMsgHtml( 'loginreqlink' ), 'returnto=' . $specialTitle->getPrefixedUrl() );
+		$llink = $skin->linkKnown(
+			SpecialPage::getTitleFor( 'Userlogin' ), 
+			wfMsgHtml( 'loginreqlink' ),
+			array(),
+			array( 'returnto' => $specialTitle->getPrefixedText() )
+		);
 		$wgOut->addHTML( wfMsgWikiHtml( 'watchlistanontext', $llink ) );
 		return;
 	}
@@ -54,7 +58,7 @@ function wfSpecialWatchlist( $par ) {
 	/* bool  */ 'hideBots'  => (int)$wgUser->getBoolOption( 'watchlisthidebots' ),
 	/* bool  */ 'hideAnons' => (int)$wgUser->getBoolOption( 'watchlisthideanons' ),
 	/* bool  */ 'hideLiu'   => (int)$wgUser->getBoolOption( 'watchlisthideliu' ),
-	/* bool  */ 'hidePatrolled' => (int)$wgUser->getBoolOption( 'watchlisthidepatrolled' ), // TODO
+	/* bool  */ 'hidePatrolled' => (int)$wgUser->getBoolOption( 'watchlisthidepatrolled' ),
 	/* bool  */ 'hideOwn'   => (int)$wgUser->getBoolOption( 'watchlisthideown' ),
 	/* ?     */ 'namespace' => 'all',
 	/* ?     */ 'invert'    => false,
@@ -96,7 +100,7 @@ function wfSpecialWatchlist( $par ) {
 	}
 
 	$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
-	list( $page, $watchlist, $recentchanges ) = $dbr->tableNamesN( 'page', 'watchlist', 'recentchanges' );
+	$recentchanges = $dbr->tableName( 'recentchanges' );
 
 	$watchlistCount = $dbr->selectField( 'watchlist', 'COUNT(*)',
 		array( 'wl_user' => $uid ), __METHOD__ );
@@ -159,10 +163,12 @@ function wfSpecialWatchlist( $par ) {
 	if( $wgUser->getOption( 'extendwatchlist' )) {
 		$andLatest='';
  		$limitWatchlist = intval( $wgUser->getOption( 'wllimit' ) );
+		$usePage = false;
 	} else {
 	# Top log Ids for a page are not stored
 		$andLatest = 'rc_this_oldid=page_latest OR rc_type=' . RC_LOG;
 		$limitWatchlist = 0;
+		$usePage = true;
 	}
 
 	# Show a message about slave lag, if applicable
@@ -189,12 +195,11 @@ function wfSpecialWatchlist( $par ) {
 	}
 	$form .= '<hr />';
 	
-	$tables = array( 'recentchanges', 'watchlist', 'page' );
+	$tables = array( 'recentchanges', 'watchlist' );
 	$fields = array( "{$recentchanges}.*" );
 	$conds = array();
 	$join_conds = array(
 		'watchlist' => array('INNER JOIN',"wl_user='{$uid}' AND wl_namespace=rc_namespace AND wl_title=rc_title"),
-		'page'      => array('LEFT JOIN','rc_cur_id=page_id')
 	);
 	$options = array( 'ORDER BY' => 'rc_timestamp DESC' );
 	if( $wgShowUpdatedMarker ) {
@@ -212,7 +217,16 @@ function wfSpecialWatchlist( $par ) {
 	if( $andHideAnons ) $conds[] = $andHideAnons;
 	if( $andHidePatrolled ) $conds[] = $andHidePatrolled;
 	if( $nameSpaceClause ) $conds[] = $nameSpaceClause;
-	
+
+	$rollbacker = $wgUser->isAllowed('rollback');
+	if ( $usePage || $rollbacker ) {
+		$tables[] = 'page';
+		$join_conds['page'] = array('LEFT JOIN','rc_cur_id=page_id');
+		if ($rollbacker) 
+			$fields[] = 'page_latest';
+	}
+
+	ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, $options, '' );
 	wfRunHooks('SpecialWatchlistQuery', array(&$conds,&$tables,&$join_conds,&$fields) );
 	
 	$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $options, $join_conds );
@@ -238,48 +252,23 @@ function wfSpecialWatchlist( $par ) {
 
 	$cutofflinks = "\n" . wlCutoffLinks( $days, 'Watchlist', $nondefaults ) . "<br />\n";
 
-	# Spit out some control panel links
 	$thisTitle = SpecialPage::getTitleFor( 'Watchlist' );
-	$skin = $wgUser->getSkin();
 
-	$showLinktext = wfMsgHtml( 'show' );
-	$hideLinktext = wfMsgHtml( 'hide' );
-	# Hide/show minor edits
-	$label = $hideMinor ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideMinor' => 1 - (int)$hideMinor ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhideminor', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
+	# Spit out some control panel links
+	$links[] = wlShowHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
+	$links[] = wlShowHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
+	$links[] = wlShowHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
+	$links[] = wlShowHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
+	$links[] = wlShowHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
 
-	# Hide/show bot edits
-	$label = $hideBots ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideBots' => 1 - (int)$hideBots ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhidebots', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
-
-	# Hide/show anonymous edits
-	$label = $hideAnons ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideAnons' => 1 - (int)$hideAnons ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhideanons', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
-
-	# Hide/show logged in edits
-	$label = $hideLiu ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideLiu' => 1 - (int)$hideLiu ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhideliu', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
-
-	# Hide/show own edits
-	$label = $hideOwn ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideOwn' => 1 - (int)$hideOwn ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhidemine', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
-
-	# Hide/show patrolled edits
 	if( $wgUser->useRCPatrol() ) {
-		$label = $hidePatrolled ? $showLinktext : $hideLinktext;
-		$linkBits = wfArrayToCGI( array( 'hidePatrolled' => 1 - (int)$hidePatrolled ), $nondefaults );
-		$links[] = wfMsgHtml( 'rcshowhidepatr', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
+		$links[] = wlShowHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
 	}
 
 	# Namespace filter and put the whole form together.
 	$form .= $wlInfo;
 	$form .= $cutofflinks;
-	$form .= implode( ' | ', $links );
+	$form .= $wgLang->pipeList( $links );
 	$form .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
 	$form .= '<hr /><p>';
 	$form .= Xml::label( wfMsg( 'namespace' ), 'namespace' ) . '&nbsp;';
@@ -317,12 +306,15 @@ function wfSpecialWatchlist( $par ) {
 			$linkBatch->add( NS_USER, $userNameUnderscored );
 		}
 		$linkBatch->add( NS_USER_TALK, $userNameUnderscored );
+
+		$linkBatch->add( $row->rc_namespace, $row->rc_title );
 	}
 	$linkBatch->execute();
 	$dbr->dataSeek( $res, 0 );
 
 	$list = ChangesList::newFromUser( $wgUser );
-
+	$list->setWatchlistDivs();
+	
 	$s = $list->beginRecentChangesList();
 	$counter = 1;
 	while ( $obj = $dbr->fetchObject( $res ) ) {
@@ -348,7 +340,7 @@ function wfSpecialWatchlist( $par ) {
 			$rc->numberofWatchingusers = 0;
 		}
 
-		$s .= $list->recentChangesLine( $rc, $updated );
+		$s .= $list->recentChangesLine( $rc, $updated, $counter );
 	}
 	$s .= $list->endRecentChangesList();
 
@@ -356,23 +348,53 @@ function wfSpecialWatchlist( $par ) {
 	$wgOut->addHTML( $s );
 }
 
+function wlShowHideLink( $options, $message, $name, $value ) {
+	global $wgUser;
+
+	$showLinktext = wfMsgHtml( 'show' );
+	$hideLinktext = wfMsgHtml( 'hide' );
+	$title = SpecialPage::getTitleFor( 'Watchlist' );
+	$skin = $wgUser->getSkin();
+
+	$label = $value ? $showLinktext : $hideLinktext;
+	$options[$name] = 1 - (int) $value;
+
+	return wfMsgHtml( $message, $skin->linkKnown( $title, $label, array(), $options ) );
+}
+
+
 function wlHoursLink( $h, $page, $options = array() ) {
 	global $wgUser, $wgLang, $wgContLang;
+
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink(
-	  $wgContLang->specialPage( $page ),
-	  $wgLang->formatNum( $h ),
-	  wfArrayToCGI( array('days' => ($h / 24.0)), $options ) );
+	$title = Title::newFromText( $wgContLang->specialPage( $page ) );
+	$options['days'] = ($h / 24.0);
+
+	$s = $sk->linkKnown(
+		$title,
+		$wgLang->formatNum( $h ),
+		array(),
+		$options
+	);
+
 	return $s;
 }
 
 function wlDaysLink( $d, $page, $options = array() ) {
 	global $wgUser, $wgLang, $wgContLang;
+
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink(
-	  $wgContLang->specialPage( $page ),
-	  ($d ? $wgLang->formatNum( $d ) : wfMsgHtml( 'watchlistall2' ) ),
-	  wfArrayToCGI( array('days' => $d), $options ) );
+	$title = Title::newFromText( $wgContLang->specialPage( $page ) );
+	$options['days'] = $d;
+	$message = ($d ? $wgLang->formatNum( $d ) : wfMsgHtml( 'watchlistall2' ) );
+
+	$s = $sk->linkKnown(
+		$title,
+		$message,
+		array(),
+		$options
+	);
+
 	return $s;
 }
 
@@ -380,6 +402,8 @@ function wlDaysLink( $d, $page, $options = array() ) {
  * Returns html
  */
 function wlCutoffLinks( $days, $page = 'Watchlist', $options = array() ) {
+	global $wgLang;
+
 	$hours = array( 1, 2, 6, 12 );
 	$days = array( 1, 3, 7 );
 	$i = 0;
@@ -392,8 +416,8 @@ function wlCutoffLinks( $days, $page = 'Watchlist', $options = array() ) {
 	}
 	return wfMsgExt('wlshowlast',
 		array('parseinline', 'replaceafter'),
-		implode(' | ', $hours),
-		implode(' | ', $days),
+		$wgLang->pipeList( $hours ),
+		$wgLang->pipeList( $days ),
 		wlDaysLink( 0, $page, $options ) );
 }
 

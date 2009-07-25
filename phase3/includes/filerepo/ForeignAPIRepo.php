@@ -21,6 +21,7 @@ class ForeignAPIRepo extends FileRepo {
 	var $fileFactory = array( 'ForeignAPIFile', 'newFromTitle' );
 	var $apiThumbCacheExpiry = 0;
 	protected $mQueryCache = array();
+	protected $mFileExists = array();
 	
 	function __construct( $info ) {
 		parent::__construct( $info );
@@ -29,6 +30,17 @@ class ForeignAPIRepo extends FileRepo {
 			// hack for description fetches
 			$this->scriptDirUrl = dirname( $this->mApiBase );
 		}
+	}
+	
+	/**
+	 * Per docs in FileRepo, this needs to return false if we don't support versioned
+	 * files. Well, we don't.
+	 */
+	function newFile( $title, $time = false ) {
+		if ( $time ) {
+			return false;
+		}
+		return parent::newFile( $title, $time );
 	}
 
 /**
@@ -45,6 +57,33 @@ class ForeignAPIRepo extends FileRepo {
 	}
 	function deleteBatch( $sourceDestPairs ) {
 		return false;
+	}
+	
+
+	function fileExistsBatch( $files, $flags = 0 ) {
+		$results = array();
+		foreach ( $files as $k => $f ) {
+			if ( isset( $this->mFileExists[$k] ) ) {
+				$results[$k] = true;
+				unset( $files[$k] );
+			} elseif( self::isVirtualUrl( $f ) ) {
+				# TODO! FIXME! We need to be able to handle virtual
+				# URLs better, at least when we know they refer to the
+				# same repo.
+				$results[$k] = false;
+				unset( $files[$k] );
+			}
+		}
+
+		$results = $this->fetchImageQuery( array( 'titles' => implode( $files, '|' ),
+											'prop' => 'imageinfo' ) );
+		if( isset( $data['query']['pages'] ) ) {
+			$i = 0;
+			foreach( $files as $key => $file ) {
+				$results[$key] = $this->mFileExists[$key] = !isset( $data['query']['pages'][$i]['missing'] );
+				$i++;
+			}
+		}
 	}
 	function getFileProps( $virtualUrl ) {
 		return false;
@@ -75,7 +114,7 @@ class ForeignAPIRepo extends FileRepo {
 						'action' => 'query' ) ) );
 		
 		if( !isset( $this->mQueryCache[$url] ) ) {
-			$key = wfMemcKey( 'ForeignAPIRepo', 'Metadata', md5( $url ) );
+			$key = $this->getLocalCacheKey( 'ForeignAPIRepo', 'Metadata', md5( $url ) );
 			$data = $wgMemc->get( $key );
 			if( !$data ) {
 				$data = Http::get( $url );
@@ -109,7 +148,7 @@ class ForeignAPIRepo extends FileRepo {
 		$ret = array();
 		if ( isset( $results['query']['allimages'] ) ) {
 			foreach ( $results['query']['allimages'] as $img ) {
-				$ret[] = new ForeignAPIFile( Title::makeTitle( NS_IMAGE, $img['name'] ), $this, $img );
+				$ret[] = new ForeignAPIFile( Title::makeTitle( NS_FILE, $img['name'] ), $this, $img );
 			}
 		}
 		return $ret;
@@ -137,7 +176,7 @@ class ForeignAPIRepo extends FileRepo {
 			return $this->getThumbUrl( $name, $width, $height );
 		}
 		
-		$key = wfMemcKey( 'ForeignAPIRepo', 'ThumbUrl', $name );
+		$key = $this->getLocalCacheKey( 'ForeignAPIRepo', 'ThumbUrl', $name );
 		if ( $thumbUrl = $wgMemc->get($key) ) {
 			wfDebug("Got thumb from local cache. $thumbUrl \n");
 			return $thumbUrl;
@@ -151,14 +190,13 @@ class ForeignAPIRepo extends FileRepo {
 			if ( !is_dir($wgUploadDirectory . '/' . $path) ) {
 				wfMkdirParents($wgUploadDirectory . '/' . $path);
 			}
-			if ( !is_writable( $wgUploadDirectory . '/' . $path . $fileName ) ) {
-				wfDebug( __METHOD__ . " could not write to thumb path\n" );
-				return $foreignUrl;
-			}
 			$localUrl =  $wgServer . $wgUploadPath . '/' . $path . $fileName;
 			$thumb = Http::get( $foreignUrl );
 			# FIXME: Delete old thumbs that aren't being used. Maintenance script?
-			file_put_contents($wgUploadDirectory . '/' . $path . $fileName, $thumb );
+			if( !file_put_contents($wgUploadDirectory . '/' . $path . $fileName, $thumb ) ) {
+				wfDebug( __METHOD__ . " could not write to thumb path\n" );
+				return $foreignUrl;
+			}
 			$wgMemc->set( $key, $localUrl, $this->apiThumbCacheExpiry );
 			wfDebug( __METHOD__ . " got local thumb $localUrl, saving to cache \n" );
 			return $localUrl;

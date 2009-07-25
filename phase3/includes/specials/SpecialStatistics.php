@@ -56,7 +56,7 @@ class SpecialStatistics extends SpecialPage {
 			$this->doRawOutput();
 		}
 
-		$text = Xml::openElement( 'table', array( 'class' => 'mw-statistics-table' ) );
+		$text = Xml::openElement( 'table', array( 'class' => 'wikitable mw-statistics-table' ) );
 
 		# Statistic - pages
 		$text .= $this->getPageStats();		
@@ -108,7 +108,7 @@ class SpecialStatistics extends SpecialPage {
 		}
 		return Xml::openElement( 'tr', $trExtraParams ) .
 			Xml::openElement( 'td' ) . $text . Xml::closeElement( 'td' ) .
-			Xml::openElement( 'td' ) . $number . Xml::closeElement( 'td' ) .
+			Xml::openElement( 'td', array( 'class' => 'mw-statistics-numbers' ) ) . $number . Xml::closeElement( 'td' ) .
 			Xml::closeElement( 'tr' );
 	}
 	
@@ -184,13 +184,19 @@ class SpecialStatistics extends SpecialPage {
 			} else {
 				$grouppageLocalized = $msg;
 			}
-			$grouppage = $sk->makeLink( $grouppageLocalized, htmlspecialchars( $groupnameLocalized ) );
-			$grouplink = $sk->link( SpecialPage::getTitleFor( 'Listusers' ),
+			$linkTarget = Title::newFromText( $grouppageLocalized );
+			$grouppage = $sk->link(
+				$linkTarget,
+				htmlspecialchars( $groupnameLocalized )
+			);
+			$grouplink = $sk->link(
+				SpecialPage::getTitleFor( 'Listusers' ),
 				wfMsgHtml( 'listgrouprights-members' ),
 				array(),
 				array( 'group' => $group ),
-				'known' );
-				# Add a class when a usergroup contains no members to allow hiding these rows
+				'known'
+			);
+			# Add a class when a usergroup contains no members to allow hiding these rows
 			$classZero = '';
 			$countUsers = SiteStats::numberingroup( $groupname );
 			if( $countUsers == 0 ) {

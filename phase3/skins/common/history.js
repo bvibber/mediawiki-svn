@@ -9,6 +9,16 @@ function historyRadios(parent) {
 	return radios;
 }
 
+function deleteCheck(parent) {
+	var inputs = parent.getElementsByTagName('input');
+	for (var i = 0; i < inputs.length; i++) {
+		if (inputs[i].name == "showhiderevisions") {
+			return inputs[i];
+		}
+	}
+	return null;
+}
+
 // check selection and tweak visibility/class onclick
 function diffcheck() {
 	var dli = false; // the li where the diff radio is checked
@@ -27,7 +37,13 @@ function diffcheck() {
 				}
 				if (oli) { // it's the second checked radio
 					if (inputs[1].checked) {
-						oli.className = "selected";
+						if ( (typeof oli.className) != 'undefined') {
+							oli.classNameOriginal = oli.className.replace( 'selected', '' );
+						} else {
+							oli.classNameOriginal = '';
+						}
+						
+						oli.className = "selected "+oli.classNameOriginal;
 						return false;
 					}
 				} else if (inputs[0].checked) {
@@ -42,7 +58,13 @@ function diffcheck() {
 				if (dli) {
 					inputs[1].style.visibility = 'hidden';
 				}
-				lis[i].className = "selected";
+				if ( (typeof lis[i].className) != 'undefined') {
+					lis[i].classNameOriginal = lis[i].className.replace( 'selected', '' );
+				} else {
+					lis[i].classNameOriginal = '';
+				}
+						
+				lis[i].className = "selected "+lis[i].classNameOriginal;
 				oli = lis[i];
 			}  else { // no radio is checked in this row
 				if (!oli) {
@@ -55,20 +77,21 @@ function diffcheck() {
 				} else {
 					inputs[1].style.visibility = 'visible';
 				}
-				lis[i].className = "";
+				if ( typeof lis[i].classNameOriginal != 'undefined' ) {
+					lis[i].className = lis[i].classNameOriginal;
+				}
 			}
 		}
 	}
 	return true;
 }
 
-// page history stuff
-// attach event handlers to the input elements on history page
+// Attach event handlers to the input elements on history page
 function histrowinit() {
 	var hf = document.getElementById('pagehistory');
-	if (!hf) {
-		return;
-	}
+	if (!hf) return;
+	var df = document.getElementById('mw-history-revdeleteform');
+	if( df ) df.style.visibility = 'visible'; // Enable JS form
 	var lis = hf.getElementsByTagName('li');
 	for (var i = 0; i < lis.length; i++) {
 		var inputs = historyRadios(lis[i]);
@@ -76,8 +99,28 @@ function histrowinit() {
 			inputs[0].onclick = diffcheck;
 			inputs[1].onclick = diffcheck;
 		}
+		var check = deleteCheck(lis[i]);
+		if( df && check ) {
+			check.style.display = 'inline'; // Enable JS form
+		}
 	}
 	diffcheck();
+}
+
+// Multi-item revision delete. 'checked' is the *previous* state.
+function updateShowHideForm( oldid, checked ) {
+	var formOldids = document.getElementById('revdel-oldid');
+	if( !formOldids ) return;
+	if( checked ) { // add on oldid if checked
+		if( formOldids.value ) {
+			formOldids.value += ',' + oldid;
+		} else {
+			formOldids.value = oldid;
+		}
+	} else if( formOldids.value ) { // remove oldid if unchecked
+		var reg = new RegExp( '(^|,)'+oldid+'($|,)' );
+		formOldids.value = formOldids.value.replace( reg, '' );
+	}
 }
 
 hookEvent("load", histrowinit);

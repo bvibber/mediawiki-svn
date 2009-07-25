@@ -26,7 +26,7 @@
 
 /** */
 $options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record' );
-$optionsWithArgs = array( 'regex', 'seed' );
+$optionsWithArgs = array( 'regex', 'seed', 'setversion' );
 
 require_once( 'commandLine.inc' );
 require_once( "$IP/maintenance/parserTestsParserHook.php" );
@@ -281,7 +281,7 @@ class ParserTest {
 	private function runFile( $filename ) {
 		$infile = fopen( $filename, 'rt' );
 		if( !$infile ) {
-			wfDie( "Couldn't open $filename\n" );
+			wfDie( "Couldn't open file '$filename'\n" );
 		} else {
 			global $IP;
 			$relative = wfRelativePath( $filename, $IP );
@@ -353,6 +353,9 @@ class ParserTest {
 					else {
 						$data['options'] = $this->chomp( $data['options'] );
 					}
+					if (!isset( $data['config'] ) )
+						$data['config'] = '';
+					
 					if (preg_match('/\\bdisabled\\b/i', $data['options'])
 						|| !preg_match("/{$this->regex}/i", $data['test'])) {
 						# disabled test
@@ -364,7 +367,9 @@ class ParserTest {
 						$this->chomp( $data['test'] ),
 						$this->chomp( $data['input'] ),
 						$this->chomp( $data['result'] ),
-						$this->chomp( $data['options'] ) );
+						$this->chomp( $data['options'] ),
+						$this->chomp( $data['config']   )
+						);
 					$ok = $ok && $result;
 					$this->recorder->record( $this->chomp( $data['test'] ), $result );
 					$data = array();
@@ -414,52 +419,57 @@ class ParserTest {
 	 * @param string $result Result to output
 	 * @return bool
 	 */
-	private function runTest( $desc, $input, $result, $opts ) {
+	private function runTest( $desc, $input, $result, $opts, $config ) {
 		if( $this->showProgress ) {
 			$this->showTesting( $desc );
 		}
 
-		$this->setupGlobals($opts);
+		$opts = $this->parseOptions( $opts );
+		$this->setupGlobals($opts, $config);
 
 		$user = new User();
 		$options = ParserOptions::newFromUser( $user );
 
-		if (preg_match('/\\bmath\\b/i', $opts)) {
+		if ( isset( $opts['math'] ) ) {
 			# XXX this should probably be done by the ParserOptions
 			$options->setUseTex(true);
 		}
 
 		$m = array();
-		if (preg_match('/title=\[\[(.*)\]\]/', $opts, $m)) {
-			$titleText = $m[1];
+		if (isset( $opts['title'] ) ) {
+			$titleText = $opts['title'];
 		}
 		else {
 			$titleText = 'Parser test';
 		}
 
-		$noxml = (bool)preg_match( '~\\b noxml \\b~x', $opts );
+		$noxml = isset( $opts['noxml'] );
+		$local = isset( $opts['local'] );
 		$parser = $this->getParser();
 		$title =& Title::makeTitle( NS_MAIN, $titleText );
 
 		$matches = array();
-		if (preg_match('/\\bpst\\b/i', $opts)) {
+		if( isset( $opts['pst'] ) ) {
 			$out = $parser->preSaveTransform( $input, $title, $user, $options );
-		} elseif (preg_match('/\\bmsg\\b/i', $opts)) {
+		} elseif( isset( $opts['msg'] ) ) {
 			$out = $parser->transformMsg( $input, $options );
-		} elseif( preg_match( '/\\bsection=([\w-]+)\b/i', $opts, $matches ) ) {
-			$section = $matches[1];
+		} elseif( isset( $opts['section'] ) ) {
+			$section = $opts['section'];
 			$out = $parser->getSection( $input, $section );
-		} elseif( preg_match( '/\\breplace=([\w-]+),"(.*?)"/i', $opts, $matches ) ) {
-			$section = $matches[1];
-			$replace = $matches[2];
+		} elseif( isset( $opts['replace'] ) ) {
+			$section = $opts['replace'][0];
+			$replace = $opts['replace'][1];
 			$out = $parser->replaceSection( $input, $section, $replace );
+		} elseif( isset( $opts['comment'] ) ) {
+			$linker = $user->getSkin();
+			$out = $linker->formatComment( $input, $title, $local );
 		} else {
 			$output = $parser->parse( $input, $title, $options, true, true, 1337 );
 			$out = $output->getText();
 
-			if (preg_match('/\\bill\\b/i', $opts)) {
+			if (isset( $opts['ill'] ) ) {
 				$out = $this->tidy( implode( ' ', $output->getLanguageLinks() ) );
-			} else if (preg_match('/\\bcat\\b/i', $opts)) {
+			} elseif( isset( $opts['cat'] ) ) {
 				global $wgOut;
 				$wgOut->addCategoryLinks($output->getCategories());
 				$cats = $wgOut->getCategoryLinks();
@@ -485,37 +495,102 @@ class ParserTest {
 
 	/**
 	 * Use a regex to find out the value of an option
-	 * @param $regex A regex, the first group will be the value returned
-	 * @param $opts Options line to look in
-	 * @param $defaults Default value returned if the regex does not match
+	 * @param $key name of option val to retrieve
+	 * @param $opts Options array to look in
+	 * @param $defaults Default value returned if not found
 	 */
-	private static function getOptionValue( $regex, $opts, $default ) {
-		$m = array();
-		if( preg_match( $regex, $opts, $m ) ) {
-			return $m[1];
+	private static function getOptionValue( $key, $opts, $default ) {
+		if( isset( $opts[$key] ) ) {
+			return $opts[$key];
 		} else {
 			return $default;
 		}
+	}
+	
+	private function parseOptions( $instring ) {
+		$opts = array();
+		$lines = explode( "\n", $instring );
+		// foo
+		// foo=bar
+		// foo="bar baz"
+		// foo=[[bar baz]]
+		// foo=bar,"baz quux"
+		$regex = '/\b
+			([\w-]+)						# Key
+			\b
+			(?:\s*
+				=						# First sub-value
+				\s*
+				(
+					"
+						[^"]*			# Quoted val
+					"
+				|
+					\[\[
+						[^]]*			# Link target
+					\]\]
+				|
+					[\w-]+				# Plain word
+				)
+				(?:\s*
+					,					# Sub-vals 1..N
+					\s*
+					(
+						"[^"]*"			# Quoted val
+					|
+						\[\[[^]]*\]\]	# Link target
+					|
+						[\w-]+			# Plain word
+					)
+				)*
+			)?
+			/x';
+
+		if( preg_match_all( $regex, $instring, $matches, PREG_SET_ORDER ) ) {
+			foreach( $matches as $bits ) {
+				$match = array_shift( $bits );
+				$key = strtolower( array_shift( $bits ) );
+				if( count( $bits ) == 0 ) {
+					$opts[$key] = true;
+				} elseif( count( $bits ) == 1 ) {
+					$opts[$key] = $this->cleanupOption( array_shift( $bits ) );
+				} else {
+					// Array!
+					$opts[$key] = array_map( array( $this, 'cleanupOption' ), $bits );
+				}
+			}
+		}
+		return $opts;
+	}
+	
+	private function cleanupOption( $opt ) {
+		if( substr( $opt, 0, 1 ) == '"' ) {
+			return substr( $opt, 1, -1 );
+		}
+		if( substr( $opt, 0, 2 ) == '[[' ) {
+			return substr( $opt, 2, -2 );
+		}
+		return $opt;
 	}
 
 	/**
 	 * Set up the global variables for a consistent environment for each test.
 	 * Ideally this should replace the global configuration entirely.
 	 */
-	private function setupGlobals($opts = '') {
+	private function setupGlobals($opts = '', $config = '') {
 		if( !isset( $this->uploadDir ) ) {
 			$this->uploadDir = $this->setupUploadDir();
 		}
 
 		# Find out values for some special options.
 		$lang =
-			self::getOptionValue( '/language=([a-z]+(?:_[a-z]+)?)/', $opts, 'en' );
+			self::getOptionValue( 'language', $opts, 'en' );
 		$variant =
-			self::getOptionValue( '/variant=([a-z]+(?:-[a-z]+)?)/', $opts, false );
+			self::getOptionValue( 'variant', $opts, false );
 		$maxtoclevel =
-			self::getOptionValue( '/wgMaxTocLevel=(\d+)/', $opts, 999 );
+			self::getOptionValue( 'wgMaxTocLevel', $opts, 999 );
 		$linkHolderBatchSize = 
-			self::getOptionValue( '/wgLinkHolderBatchSize=(\d+)/', $opts, 1000 );
+			self::getOptionValue( 'wgLinkHolderBatchSize', $opts, 1000 );
 
 		$settings = array(
 			'wgServer' => 'http://localhost',
@@ -538,13 +613,14 @@ class ParserTest {
 			'wgLanguageCode' => $lang,
 			'wgContLanguageCode' => $lang,
 			'wgDBprefix' => 'parsertest_',
-			'wgRawHtml' => preg_match('/\\brawhtml\\b/i', $opts),
+			'wgRawHtml' => isset( $opts['rawhtml'] ),
 			'wgLang' => null,
 			'wgContLang' => null,
-			'wgNamespacesWithSubpages' => array( 0 => preg_match('/\\bsubpage\\b/i', $opts)),
+			'wgNamespacesWithSubpages' => array( 0 => isset( $opts['subpage'] ) ),
 			'wgMaxTocLevel' => $maxtoclevel,
 			'wgCapitalLinks' => true,
 			'wgNoFollowLinks' => true,
+			'wgNoFollowDomainExceptions' => array(),
 			'wgThumbnailScriptPath' => false,
 			'wgUseTeX' => false,
 			'wgLocaltimezone' => 'UTC',
@@ -564,7 +640,20 @@ class ParserTest {
 			'wgForeignFileRepos' => array(),
 			'wgLinkHolderBatchSize' => $linkHolderBatchSize,
 			'wgEnforceHtmlIds' => true,
+			'wgExternalLinkTarget' => false,
+			'wgAlwaysUseTidy' => false,
 			);
+
+		if ($config) {
+			$configLines = explode( "\n", $config );
+			
+			foreach( $configLines as $line ) {
+				list( $var, $value ) = explode( '=', $line, 2 );
+				
+				$settings[$var] = eval("return $value;" );
+			}
+		}
+		
 		$this->savedGlobals = array();
 		foreach( $settings as $var => $val ) {
 			$this->savedGlobals[$var] = $GLOBALS[$var];
@@ -592,7 +681,7 @@ class ParserTest {
 			'categorylinks', 'templatelinks', 'externallinks', 'langlinks',
 			'site_stats', 'hitcounter',	'ipblocks', 'image', 'oldimage',
 			'recentchanges', 'watchlist', 'math', 'interwiki',
-			'querycache', 'objectcache', 'job', 'redirect', 'querycachetwo',
+			'querycache', 'objectcache', 'job', 'l10n_cache', 'redirect', 'querycachetwo',
 			'archive', 'user_groups', 'page_props', 'category'
 		);
 
@@ -613,7 +702,7 @@ class ParserTest {
 	 * the db will be visible to later tests in the run.
 	 */
 	private function setupDatabase() {
-		global $wgDBprefix;
+		global $wgDBprefix, $wgDBtype;
 		if ( $this->databaseSetupDone ) {
 			return;
 		}
@@ -635,15 +724,16 @@ class ParserTest {
 		$db = wfGetDB( DB_MASTER );
 		$tables = $this->listTables();
 
-		if (!(strcmp($db->getServerVersion(), '4.1') < 0 and stristr($db->getSoftwareLink(), 'MySQL'))) {
+		if ( !( $wgDBtype == 'mysql' && strcmp( $db->getServerVersion(), '4.1' ) < 0 ) ) {
 			# Database that supports CREATE TABLE ... LIKE
-			global $wgDBtype;
+			
 			if( $wgDBtype == 'postgres' ) {
 				$def = 'INCLUDING DEFAULTS';
+				$temporary = 'TEMPORARY';
 			} else {
 				$def = '';
 			}
-			foreach ($tables as $tbl) {
+			foreach ( $tables as $tbl ) {
 				# Clean up from previous aborted run.  So that table escaping
 				# works correctly across DB engines, we need to change the pre-
 				# fix back and forth so tableName() works right.
@@ -652,11 +742,11 @@ class ParserTest {
 				$this->changePrefix( 'parsertest_' );
 				$newTableName = $db->tableName( $tbl );
 
-				if ( $db->tableExists( $tbl ) ) {
-					$db->query("DROP TABLE $newTableName");
+				if ( $db->tableExists( $tbl ) && $wgDBtype != 'postgres' ) {
+					$db->query( "DROP TABLE $newTableName" );
 				}
 				# Create new table
-				$db->query("CREATE $temporary TABLE $newTableName (LIKE $oldTableName $def)");
+				$db->query( "CREATE $temporary TABLE $newTableName (LIKE $oldTableName $def)" );
 			}
 		} else {
 			# Hack for MySQL versions < 4.1, which don't support
@@ -725,6 +815,9 @@ class ParserTest {
 
 		# Update certain things in site_stats
 		$db->insert( 'site_stats', array( 'ss_row_id' => 1, 'ss_images' => 1, 'ss_good_articles' => 1 ) );
+
+		# Reinitialise the LocalisationCache to match the database state
+		Language::getLocalisationCache()->unloadAll();
 	}
 
 	/**
@@ -1011,6 +1104,7 @@ class ParserTest {
 	 */
 	private function requireHook( $name ) {
 		global $wgParser;
+		$wgParser->firstCallInit( ); //make sure hooks are loaded.
 		if( isset( $wgParser->mTagHooks[$name] ) ) {
 			$this->hooks[$name] = $wgParser->mTagHooks[$name];
 		} else {
@@ -1026,6 +1120,7 @@ class ParserTest {
 	 */
 	private function requireFunctionHook( $name ) {
 		global $wgParser;
+		$wgParser->firstCallInit( ); //make sure hooks are loaded.
 		if( isset( $wgParser->mFunctionHooks[$name] ) ) {
 			$this->functionHooks[$name] = $wgParser->mFunctionHooks[$name];
 		} else {
@@ -1375,7 +1470,7 @@ class DbTestRecorder extends DbTestPreviewer  {
 	 * and all that fun stuff
 	 */
 	function start() {
-		global $wgDBtype, $wgDBprefix;
+		global $wgDBtype, $wgDBprefix, $options;
 		$this->db->begin();
 
 		if( ! $this->db->tableExists( 'testrun' ) 
@@ -1394,7 +1489,8 @@ class DbTestRecorder extends DbTestPreviewer  {
 		$this->db->insert( 'testrun',
 			array(
 				'tr_date'        => $this->db->timestamp(),
-				'tr_mw_version'  => SpecialVersion::getVersion(),
+				'tr_mw_version'  => isset( $options['setversion'] ) ?
+					$options['setversion'] : SpecialVersion::getVersion(),
 				'tr_php_version' => phpversion(),
 				'tr_db_version'  => $this->db->getServerVersion(),
 				'tr_uname'       => php_uname()

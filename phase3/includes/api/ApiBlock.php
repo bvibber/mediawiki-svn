@@ -50,7 +50,6 @@ class ApiBlock extends ApiBase {
 	 */
 	public function execute() {
 		global $wgUser, $wgBlockAllowsUTEdit;
-		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		if($params['gettoken'])
@@ -70,7 +69,7 @@ class ApiBlock extends ApiBase {
 			$this->dieUsageMsg(array('cantblock'));
 		if($params['hidename'] && !$wgUser->isAllowed('hideuser'))
 			$this->dieUsageMsg(array('canthide'));
-		if($params['noemail'] && !$wgUser->isAllowed('blockemail'))
+		if($params['noemail'] && !IPBlockForm::canBlockEmail($wgUser) )
 			$this->dieUsageMsg(array('cantblock-email'));
 
 		$form = new IPBlockForm('');
@@ -94,7 +93,7 @@ class ApiBlock extends ApiBase {
 			$this->dieUsageMsg($retval);
 
 		$res['user'] = $params['user'];
-		$res['userID'] = $userID;
+		$res['userID'] = intval($userID);
 		$res['expiry'] = ($expiry == Block::infinity() ? 'infinite' : wfTimestamp(TS_ISO_8601, $expiry));
 		$res['reason'] = $params['reason'];
 		if($params['anononly'])
@@ -114,6 +113,10 @@ class ApiBlock extends ApiBase {
 	}
 
 	public function mustBePosted() { return true; }
+
+	public function isWriteMode() {
+		return true;
+	}
 
 	public function getAllowedParams() {
 		return array (

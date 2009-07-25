@@ -204,9 +204,9 @@ class QueryPage {
 	 * Clear the cache and save new results
 	 */
 	function recache( $limit, $ignoreErrors = true ) {
-		$fname = get_class($this) . '::recache';
+		$fname = get_class( $this ) . '::recache';
 		$dbw = wfGetDB( DB_MASTER );
-		$dbr = wfGetDB( DB_SLAVE, array( $this->getName(), 'QueryPage::recache', 'vslow' ) );
+		$dbr = wfGetDB( DB_SLAVE, array( $this->getName(), __METHOD__, 'vslow' ) );
 		if ( !$dbw || !$dbr ) {
 			return false;
 		}
@@ -222,37 +222,30 @@ class QueryPage {
 		$dbw->delete( 'querycache', array( 'qc_type' => $this->getName() ), $fname );
 		# Do query
 		$sql = $this->getSQL() . $this->getOrder();
-		if ($limit !== false)
-			$sql = $dbr->limitResult($sql, $limit, 0);
-		$res = $dbr->query($sql, $fname);
+		if ( $limit !== false )
+			$sql = $dbr->limitResult( $sql, $limit, 0 );
+		$res = $dbr->query( $sql, $fname );
 		$num = false;
 		if ( $res ) {
 			$num = $dbr->numRows( $res );
 			# Fetch results
-			$insertSql = "INSERT INTO $querycache (qc_type,qc_namespace,qc_title,qc_value) VALUES ";
-			$first = true;
+			$vals = array();
 			while ( $res && $row = $dbr->fetchObject( $res ) ) {
-				if ( $first ) {
-					$first = false;
-				} else {
-					$insertSql .= ',';
-				}
 				if ( isset( $row->value ) ) {
-					$value = $row->value;
+					$value = intval( $row->value ); // @bug 14414
 				} else {
 					$value = 0;
 				}
-
-				$insertSql .= '(' .
-					$dbw->addQuotes( $row->type ) . ',' .
-					$dbw->addQuotes( $row->namespace ) . ',' .
-					$dbw->addQuotes( $row->title ) . ',' .
-					$dbw->addQuotes( $value ) . ')';
+				
+				$vals[] = array('qc_type' => $row->type,
+						'qc_namespace' => $row->namespace,
+						'qc_title' => $row->title,
+						'qc_value' => $value);
 			}
 
 			# Save results into the querycache table on the master
-			if ( !$first ) {
-				if ( !$dbw->query( $insertSql, $fname ) ) {
+			if ( count( $vals ) ) {
+				if ( !$dbw->insert( 'querycache', $vals, __METHOD__ ) ) {
 					// Set result to false to indicate error
 					$dbr->freeResult( $res );
 					$res = false;
@@ -540,5 +533,87 @@ class QueryPage {
 	function feedUrl() {
 		$title = SpecialPage::getTitleFor( $this->getName() );
 		return $title->getFullURL();
+	}
+}
+
+/**
+ * Class definition for a wanted query page like
+ * WantedPages, WantedTemplates, etc
+ */
+abstract class WantedQueryPage extends QueryPage {
+
+	function isExpensive() {
+		return true;
+	}
+
+	function isSyndicated() {
+		return false;
+	}
+
+	/**
+	 * Cache page existence for performance
+	 */
+	function preprocessResults( $db, $res ) {
+		$batch = new LinkBatch;
+		while ( $row = $db->fetchObject( $res ) )
+			$batch->add( $row->namespace, $row->title );
+		$batch->execute();
+
+		// Back to start for display
+		if ( $db->numRows( $res ) > 0 )
+			// If there are no rows we get an error seeking.
+			$db->dataSeek( $res, 0 );
+	}
+	
+	/**
+	 * Format an individual result
+	 *
+	 * @param $skin Skin to use for UI elements
+	 * @param $result Result row
+	 * @return string
+	 */
+	public function formatResult( $skin, $result ) {
+		$title = Title::makeTitleSafe( $result->namespace, $result->title );
+		if( $title instanceof Title ) {
+			if( $this->isCached() ) {
+				$pageLink = $title->exists()
+					? '<s>' . $skin->link( $title ) . '</s>'
+					: $skin->link(
+						$title,
+						null,
+						array(),
+						array(),
+						array( 'broken' )
+					);
+			} else {
+				$pageLink = $skin->link(
+					$title,
+					null,
+					array(),
+					array(),
+					array( 'broken' )
+				);
+			}
+			return wfSpecialList( $pageLink, $this->makeWlhLink( $title, $skin, $result ) );
+		} else {
+			$tsafe = htmlspecialchars( $result->title );
+			return wfMsgHtml( 'wantedpages-badtitle', $tsafe );
+		}
+	}
+	
+	/**
+	 * Make a "what links here" link for a given title
+	 *
+	 * @param Title $title Title to make the link for
+	 * @param Skin $skin Skin to use
+	 * @param object $result Result row
+	 * @return string
+	 */
+	private function makeWlhLink( $title, $skin, $result ) {
+		global $wgLang;
+		$wlh = SpecialPage::getTitleFor( 'Whatlinkshere' );
+		$label = wfMsgExt( 'nlinks', array( 'parsemag', 'escape' ),
+		$wgLang->formatNum( $result->value ) );
+		return $skin->link( $wlh, $label, array(), array( 'target' => $title->getPrefixedText() ) );
 	}
 }

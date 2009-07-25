@@ -65,10 +65,9 @@ class ApiMain extends ApiBase {
 		'feedwatchlist' => 'ApiFeedWatchlist',
 		'help' => 'ApiHelp',
 		'paraminfo' => 'ApiParamInfo',
-		'purge' => 'ApiPurge',
-	);
 
-	private static $WriteModules = array (
+		// Write modules
+		'purge' => 'ApiPurge',
 		'rollback' => 'ApiRollback',
 		'delete' => 'ApiDelete',
 		'undelete' => 'ApiUndelete',
@@ -77,9 +76,12 @@ class ApiMain extends ApiBase {
 		'unblock' => 'ApiUnblock',
 		'move' => 'ApiMove',
 		'edit' => 'ApiEditPage',
+		'upload' => 'ApiUpload',
 		'emailuser' => 'ApiEmailUser',
 		'watch' => 'ApiWatch',
 		'patrol' => 'ApiPatrol',
+		'import' => 'ApiImport',
+		'userrights' => 'ApiUserrights',
 	);
 
 	/**
@@ -149,20 +151,10 @@ class ApiMain extends ApiBase {
 				wfDebug( "API: stripping user credentials for JSON callback\n" );
 				$wgUser = new User();
 			}
-
-			if (!$wgUser->isAllowed('read')) {
-				self::$Modules = array(
-					'login'  => self::$Modules['login'],
-					'logout' => self::$Modules['logout'],
-					'help'   => self::$Modules['help'],
-					);
-			}
 		}
 
-		global $wgAPIModules, $wgEnableWriteAPI; // extension modules
+		global $wgAPIModules; // extension modules
 		$this->mModules = $wgAPIModules + self :: $Modules;
-		if($wgEnableWriteAPI)
-			$this->mModules += self::$WriteModules;
 
 		$this->mModuleNames = array_keys($this->mModules);
 		$this->mFormats = self :: $Formats;
@@ -200,22 +192,10 @@ class ApiMain extends ApiBase {
 	}
 
 	/**
-	 * This method will simply cause an error if the write mode was disabled
-	 * or if the current user doesn't have the right to use it
+	 * Only kept for backwards compatibility
+	 * @deprecated Use isWriteMode() instead
 	 */
-	public function requestWriteMode() {
-		global $wgUser;
-		if (!$this->mEnableWrite)
-			$this->dieUsage('Editing of this wiki through the API' .
-			' is disabled. Make sure the $wgEnableWriteAPI=true; ' .
-			'statement is included in the wiki\'s ' .
-			'LocalSettings.php file', 'noapiwrite');
-		if (!$wgUser->isAllowed('writeapi'))
-			$this->dieUsage('You\'re not allowed to edit this ' .
-			'wiki through the API', 'writeapidenied');
-		if (wfReadOnly())
-			$this->dieUsageMsg(array('readonlytext'));
-	}
+	public function requestWriteMode() {}
 
 	/**
 	 * Set how long the response should be cached.
@@ -333,12 +313,10 @@ class ApiMain extends ApiBase {
 				//
 				// User entered incorrect parameters - print usage screen
 				//
-				$errMessage = array (
-				'code' => $e->getCodeString(),
-				'info' => $e->getMessage());
+				$errMessage = $e->getMessageArray();
 
 				// Only print the help message when this is for the developer, not runtime
-				if ($this->mPrinter->getIsHtml() || $this->mAction == 'help')
+				if ($this->mPrinter->getWantsHelp() || $this->mAction == 'help')
 					ApiResult :: setContent($errMessage, $this->makeHelpMsg());
 
 			} else {
@@ -360,9 +338,11 @@ class ApiMain extends ApiBase {
 			}
 
 			$this->getResult()->reset();
+			$this->getResult()->disableSizeCheck();
 			// Re-add the id
-			if($this->mRequest->getCheck('requestid'))
-				$this->getResult()->addValue(null, 'requestid', $this->mRequest->getVal('requestid'));
+			$requestid = $this->getParameter('requestid');
+			if(!is_null($requestid))
+				$this->getResult()->addValue(null, 'requestid', $requestid);
 			$this->getResult()->addValue(null, 'error', $errMessage);
 
 		return $errMessage['code'];
@@ -373,8 +353,9 @@ class ApiMain extends ApiBase {
 	 */
 	protected function executeAction() {
 		// First add the id to the top element
-		if($this->mRequest->getCheck('requestid'))
-			$this->getResult()->addValue(null, 'requestid', $this->mRequest->getVal('requestid'));
+		$requestid = $this->getParameter('requestid');
+		if(!is_null($requestid))
+			$this->getResult()->addValue(null, 'requestid', $requestid);
 
 		$params = $this->extractRequestParams();
 
@@ -396,14 +377,25 @@ class ApiMain extends ApiBase {
 			if ( $lag > $maxLag ) {
 				header( 'Retry-After: ' . max( intval( $maxLag ), 5 ) );
 				header( 'X-Database-Lag: ' . intval( $lag ) );
-				// XXX: should we return a 503 HTTP error code like wfMaxlagError() does?
 				if( $wgShowHostnames ) {
-					ApiBase :: dieUsage( "Waiting for $host: $lag seconds lagged", 'maxlag' );
+					$this->dieUsage( "Waiting for $host: $lag seconds lagged", 'maxlag' );
 				} else {
-					ApiBase :: dieUsage( "Waiting for a database server: $lag seconds lagged", 'maxlag' );
+					$this->dieUsage( "Waiting for a database server: $lag seconds lagged", 'maxlag' );
 				}
 				return;
 			}
+		}
+
+		global $wgUser;
+		if ($module->isReadMode() && !$wgUser->isAllowed('read'))
+			$this->dieUsageMsg(array('readrequired'));
+		if ($module->isWriteMode()) {
+			if (!$this->mEnableWrite)
+				$this->dieUsageMsg(array('writedisabled'));
+			if (!$wgUser->isAllowed('writeapi'))
+				$this->dieUsageMsg(array('writerequired'));
+			if (wfReadOnly())
+				$this->dieReadOnly();
 		}
 
 		if (!$this->mInternalMode) {
@@ -438,6 +430,7 @@ class ApiMain extends ApiBase {
 	 * Print results using the current printer
 	 */
 	protected function printResult($isError) {
+		$this->getResult()->cleanUpUTF8();
 		$printer = $this->mPrinter;
 		$printer->profileIn();
 
@@ -452,6 +445,10 @@ class ApiMain extends ApiBase {
 		$printer->execute();
 		$printer->closePrinter();
 		$printer->profileOut();
+	}
+	
+	public function isReadMode() {
+		return false;
 	}
 
 	/**
@@ -660,7 +657,6 @@ class ApiMain extends ApiBase {
 		$vers[] = ApiBase :: getBaseVersion();
 		$vers[] = ApiFormatBase :: getBaseVersion();
 		$vers[] = ApiQueryBase :: getBaseVersion();
-		$vers[] = ApiFormatFeedWrapper :: getVersion(); // not accessible with format=xxx
 		return $vers;
 	}
 
@@ -706,13 +702,24 @@ class ApiMain extends ApiBase {
 class UsageException extends Exception {
 
 	private $mCodestr;
+	private $mExtraData;
 
-	public function __construct($message, $codestr, $code = 0) {
+	public function __construct($message, $codestr, $code = 0, $extradata = null) {
 		parent :: __construct($message, $code);
 		$this->mCodestr = $codestr;
+		$this->mExtraData = $extradata;
 	}
 	public function getCodeString() {
 		return $this->mCodestr;
+	}
+	public function getMessageArray() {
+		$result = array (
+				'code' => $this->mCodestr,
+				'info' => $this->getMessage()
+		);
+		if ( is_array( $this->mExtraData ) )
+			$result = array_merge( $result, $this->mExtraData );
+		return $result;
 	}
 	public function __toString() {
 		return "{$this->getCodeString()}: {$this->getMessage()}";

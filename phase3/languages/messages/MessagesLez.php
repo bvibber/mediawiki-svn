@@ -1,9 +1,13 @@
 <?php
 /** Lezghian (Лезги)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
+ * @author Amikeco
  */
 
 $messages = array(
@@ -53,7 +57,9 @@ $messages = array(
 'nov'           => 'ЦӀе',
 'dec'           => 'Фaн',
 
-'about'  => 'Хакъиндай',
+'about' => 'Хакъиндай',
+
+# Cologne Blue skin
 'qbfind' => 'Жугъун',
 'qbedit' => 'Дегишарун',
 
@@ -105,9 +111,6 @@ $messages = array(
 # General errors
 'viewsource' => 'Къаларун булах',
 
-# Login and logout pages
-'yourrealname' => 'Xалис тIвар:',
-
 # Edit pages
 'minoredit'      => 'И гъвечIи дегишарун',
 'watchthis'      => 'Гелкъуьн и хъувун',
@@ -128,9 +131,12 @@ $messages = array(
 'viewprevnext' => 'Къаларун ($1) ($2) ($3)',
 'powersearch'  => 'Ахтармишун',
 
+# Preferences page
+'yourrealname' => 'Xалис тIвар:',
+
 # Recent changes
 'diff'            => 'тафават',
-'hist'            => 'тари',
+'hist'            => 'тарих',
 'hide'            => 'Чуьнуьхун',
 'show'            => 'Къаларун',
 'minoreditletter' => 'г',
@@ -140,6 +146,7 @@ $messages = array(
 'upload' => 'Парвиниз шикил',
 
 # File description page
+'file-anchor-link'  => 'Шикил',
 'filehist'          => 'Шикил тарих',
 'filehist-datetime' => 'Югъ/Заман',
 
@@ -181,6 +188,8 @@ $messages = array(
 
 # Contributions
 'uctop' => '(кIукI)',
+
+'sp-contributions-talk' => 'Рахун',
 
 # Block/unblock
 'blocklink' => 'тIаб',

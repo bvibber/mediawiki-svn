@@ -37,7 +37,6 @@ class ApiRollback extends ApiBase {
 	}
 
 	public function execute() {
-		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		$titleObj = NULL;
@@ -68,21 +67,25 @@ class ApiRollback extends ApiBase {
 
 		if($retval)
 			// We don't care about multiple errors, just report one of them
-			$this->dieUsageMsg(current($retval));
+			$this->dieUsageMsg(reset($retval));
 
 		$info = array(
 			'title' => $titleObj->getPrefixedText(),
-			'pageid' => $details['current']->getPage(),
+			'pageid' => intval($details['current']->getPage()),
 			'summary' => $details['summary'],
-			'revid' => $titleObj->getLatestRevID(),
-			'old_revid' => $details['current']->getID(),
-			'last_revid' => $details['target']->getID()
+			'revid' => intval($details['newid']),
+			'old_revid' => intval($details['current']->getID()),
+			'last_revid' => intval($details['target']->getID())
 		);
 
 		$this->getResult()->addValue(null, $this->getModuleName(), $info);
 	}
 
 	public function mustBePosted() { return true; }
+
+	public function isWriteMode() {
+		return true;
+	}
 
 	public function getAllowedParams() {
 		return array (

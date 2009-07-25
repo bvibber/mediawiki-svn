@@ -1,5 +1,8 @@
 <?php
-/** Chuvash (Чăвашла)
+/** Chuvash (Чӑвашла)
+ *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
  *
  * @ingroup Language
  * @file
@@ -16,11 +19,9 @@ $linkPrefixExtension = true;
 $namespaceNames = array(
 	NS_MEDIA            => 'Медиа',
 	NS_SPECIAL          => 'Ятарлă',
-	NS_MAIN             => '',
 	NS_TALK             => 'Сӳтсе явасси',
 	NS_USER             => 'Хутшăнакан',
 	NS_USER_TALK        => 'Хутшăнаканăн_канашлу_страници',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_сӳтсе_явмалли',
 	NS_FILE             => 'Ӳкерчĕк',
 	NS_FILE_TALK        => 'Ӳкерчĕке_сӳтсе_явмалли',
@@ -141,7 +142,7 @@ $messages = array(
 'category-media-header'          => '«$1» категорири файлсем',
 'category-empty'                 => "''Хальхи вăхăтра ку категори пушă.''",
 'hidden-categories'              => '{{PLURAL:$1|Пытарнă категори|Пытарнă категорисем}}',
-'hidden-category-category'       => 'Пытарнă категорисем', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Пытарнă категорисем',
 'category-subcat-count'          => '{{PLURAL:$2|Ку категоринче çак айри категори пур.|$2-ран(-рен,-тан,-тен) {{PLURAL:$1|$1 айри категорине кăтартнă|$1 айри категорине кăтартнă|$1 айри категорине кăтартнă}}.}}',
 'category-subcat-count-limited'  => 'Ку категоринче {{PLURAL:$1|$1 айри категори|$1 айри категори|$1 айри категори}}.',
 'category-article-count'         => '{{PLURAL:$2|Ку категоринче пĕр страница кăна.|Ку категорири $2 страницăран $1 кăтартнă.}}',
@@ -151,7 +152,7 @@ $messages = array(
 'listingcontinuesabbrev'         => '(малалли)',
 
 'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff«"]+)$/sD',
-'mainpagetext'      => '<big>«MediaWiki» вики-движока лартасси ăнăçлă вĕçленчĕ.</big>',
+'mainpagetext'      => "<big>'''«MediaWiki» вики-движока лартасси ăнăçлă вĕçленчĕ.'''</big>",
 'mainpagedocfooter' => 'Ку википе ĕçлеме пулăшакан информацине [http://meta.wikimedia.org/wiki/%D0%9F%D0%BE%D0%BC%D0%BE%D1%89%D1%8C:%D0%A1%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5 усăç руководствинче] тупма пултаратăр.
 
 == Пулăшма пултарĕç ==
@@ -159,10 +160,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki тăрăх час-часах ыйтакан ыйтусемпе хуравсем];
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki çĕнĕ верси тухнине пĕлтерекен рассылка].',
 
-'about'          => 'Ăнлантаркăч',
-'article'        => 'Статья',
-'newwindow'      => '(çĕнĕ чӳречере)',
-'cancel'         => 'Пăрахăçла',
+'about'         => 'Ăнлантаркăч',
+'article'       => 'Статья',
+'newwindow'     => '(çĕнĕ чӳречере)',
+'cancel'        => 'Пăрахăçла',
+'moredotdotdot' => 'Малалла…',
+'mypage'        => 'Ман страница',
+'mytalk'        => 'Ман канашлу страници',
+'anontalk'      => 'Çак IP-адреса сӳтсе явни',
+'navigation'    => 'Меню',
+'and'           => '&#32;тата',
+
+# Cologne Blue skin
 'qbfind'         => 'Шырав',
 'qbbrowse'       => 'Курăм',
 'qbedit'         => 'Тӳрлет',
@@ -170,12 +179,8 @@ $messages = array(
 'qbpageinfo'     => 'Страница çинчен',
 'qbmyoptions'    => 'Сирĕн ĕнĕрлевсем',
 'qbspecialpages' => 'Ятарлӑ страницӑсем',
-'moredotdotdot'  => 'Малалла…',
-'mypage'         => 'Ман страница',
-'mytalk'         => 'Ман канашлу страници',
-'anontalk'       => 'Çак IP-адреса сӳтсе явни',
-'navigation'     => 'Меню',
-'and'            => '&#32;тата',
+'faq'            => 'ЫйХу',
+'faqpage'        => 'Project:ЫйХу',
 
 # Metadata in edit box
 'metadata_help' => 'Метаданнăйсем:',
@@ -228,7 +233,7 @@ $messages = array(
 'otherlanguages'    => 'Урăх чěлхесем',
 'redirectedfrom'    => '($1 çинчен куçарнă)',
 'redirectpagesub'   => 'Куçаракан страница',
-'lastmodifiedat'    => 'Ку страницăна юлашки улăштарнă вăхăт: $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Ку страницăна юлашки улăштарнă вăхăт: $2, $1.',
 'viewcount'         => 'Ку страницăна $1 хут пăхнă.',
 'protectedpage'     => 'Хӳтĕленĕ статья',
 'jumpto'            => 'Куçас:',
@@ -247,8 +252,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Яваплăха тивĕçтерменни',
 'edithelp'             => 'Улшăнусене кĕртме пулăшакан пулăшу',
 'edithelppage'         => 'Help:Улшăнусене кĕртме пулăшакан пулăшу',
-'faq'                  => 'ЫйХу',
-'faqpage'              => 'Project:ЫйХу',
 'helppage'             => 'Help:Пулăшу',
 'mainpage'             => 'Тĕп страницă',
 'mainpage-description' => 'Тĕп страницă',
@@ -321,10 +324,6 @@ MySQL çак йăнăша тавăрнă <tt>«$3: $4»</tt>.',
 «$1»
 «$2» функци ыйтнă.
 MySQL çак йăнăша тавăрнă «$3: $4».',
-'noconnect'            => 'Каçарăр та, хальхи вăхăтра техника йăнăшне пула пĕлĕм пуххин серверĕпе çыханаймастпăр.<br />
-$1',
-'nodb'                 => '$1 пĕлĕм пуххине усă курма май çук',
-'cachederror'          => 'Аяларах эсир ыйтнă страницăн кэшри копине куратăр; вăл кивелме те пултарнă.',
 'laggedslavemode'      => 'Асăрхăр! Страница çинче юлашки улшăнусене кăтартмасăр пултарнă.',
 'readonly'             => 'Пĕлĕм пуххине çырассине чарса хунă',
 'enterlockreason'      => 'Чарнин сăлтавне тата палăртнă вăхăта кăтартăр.',
@@ -374,17 +373,15 @@ $1',
 Çак сăлтава кăтартнă: ''$2''.",
 
 # Virus scanner
-'virus-badscanner'     => 'Ĕнерлев йăнăшĕ. Вирус сканерĕ паллă мар: <i>$1</i>',
+'virus-badscanner'     => "Ĕнерлев йăнăшĕ. Вирус сканерĕ паллă мар: ''$1''",
 'virus-scanfailed'     => 'скенерланă чухнехи йăнăш (код $1)',
 'virus-unknownscanner' => 'паллă мар антивирус:',
 
 # Login and logout pages
-'logouttitle'                => 'Сайтран тух',
 'logouttext'                 => 'Эсир палласа илмен хутшăнакан евĕр ĕçлетĕр. Сайт сире ятпа мар, IP-адрес урлă пĕлет. Эсир анонимла, е малтанхи евĕрлĕ çĕнĕ сеанс уçса, е  урăх ятпа ĕçлеме пултаратăр. Хăш-пĕр страницăсем эсир сайта кĕнĕ пек курăнма пултараççĕ, ăна тӳрлетмешкĕн браузер кэшне çĕнетĕр.',
 'welcomecreation'            => '== Ырă сунса кĕтетпĕр, $1! ==
 Эсир пирĕн патăмăрта çырăнтăр.
 [[Special:Preferences|Сайт ĕнĕрлевĕсене хăвсамăра кирлĕ пек]] лартма ан манса кайăр.',
-'loginpagetitle'             => 'Сайта кĕр',
 'yourname'                   => 'Сирĕн ят',
 'yourpassword'               => 'Вăрттăн сăмах:',
 'yourpasswordagain'          => 'Вăрттăн сăмах тепре çырăр:',
@@ -405,19 +402,7 @@ $1',
 'createaccountmail'          => 'эл. почта тăрăх',
 'badretype'                  => 'Эсир кăтартнă парольсем пĕр пек мар.',
 'userexists'                 => 'Эсир усă курас теекен ята йышăннă. Тархасшăн, урăх ят суйласа илĕр.',
-'youremail'                  => 'Электронлă почта:',
-'username'                   => 'Хутшăнакан ячĕ:',
-'uid'                        => 'Хутшăнакан идентификаторĕ:',
-'yourrealname'               => 'Сирĕн чăн ят (*)',
-'yourlanguage'               => 'Интерфейс чĕлхи:',
-'yourvariant'                => 'Чĕлхе варианчĕ',
-'yournick'                   => 'Сирĕн ят (алă пусма усă курăнĕ):',
-'badsig'                     => 'Алă пуснинче йăнăш пур. HTML тэгĕсене тĕрĕслĕр.',
-'badsiglength'               => 'Алă пусни ытла вăрăм, $1 символтан кĕскерех пулмалла.',
-'email'                      => 'Эл. почта',
 'loginerror'                 => 'Хутшăнакана палласа илеймерĕмĕр',
-'prefs-help-email'           => 'Электронлă почта (вăл кирлисем шутне кĕмест пулин те) ытти хутшăнакансене сирĕнпе ун урлă çыхăнма май парать. Çыхăну тытнă вăхăтра ыттисем сирĕн адреса пĕлеймеççĕ.',
-'prefs-help-email-required'  => 'Электронлă почтăн адресне кăтартмалла.',
 'noname'                     => 'Эсир килĕшӳллĕ хутшăнаканăн ятне кăтартман.',
 'loginsuccesstitle'          => 'Сайта кĕтĕмĕр',
 'loginsuccess'               => 'Халĕ эсир $1 ятпа ĕçлетĕр.',
@@ -514,8 +499,8 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'usercsspreview'         => "'''Ан манăр, эсир сирĕн css файл епле пулассине çеç куратăр, ăна халлĕхе çырса хуман!'''",
 'userjspreview'          => "'''Астăвăр, ку сирĕн javascript-файлăн малтанхи курăмĕ кăна, ăна хальлĕхе çырса хуман!'''",
 'updated'                => '(Çĕнелнĕ)',
-'note'                   => '<strong>Ăнлантаркăч:</strong>',
-'previewnote'            => '<strong>Ку страницăна халлěхе çырса хуман. Эсир ку страницă мěнле пулассине кăна куратăр!</strong>',
+'note'                   => "'''Ăнлантаркăч:'''",
+'previewnote'            => "'''Ку страницăна халлěхе çырса хуман. Эсир ку страницă мěнле пулассине кăна куратăр!'''",
 'previewconflict'        => 'Çӳлти чӳречере эсир халĕ çырса хурсан текст епле курăннине куратăр.',
 'editing'                => '$1 тӳрлетни',
 'editingsection'         => '$1 тӳрлетни (статья разделě)',
@@ -524,9 +509,9 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'yourtext'               => 'Сирĕн текст',
 'storedversion'          => 'Астуса хăварнă верси',
 'yourdiff'               => 'Уйрăмлăхсем',
-'copyrightwarning'       => 'Эсир кĕртнĕ, е улăштарнă пур статьясен тексчĕсем $2 ($1 пăхăр) лизензине пăхăнаççĕ. Енчен те эсир кĕртнĕ текста пурте усă курма, тӳрлетсе улăштарма пултарнипе килĕшместĕр пулсан кунта ăна ан кĕртĕр. <br /> Çавăн пекех эсир кĕртнĕ текстăн е авторĕ, е ăна ирĕклĕ усă курма юракан çăлкуçсенчен илнине çирĕплететĕр. <br /> <strong>АВТОР ПРАВИСЕМПЕ ХӲТĔЛЕНĔ МАТЕРИАЛСЕНЕ АН КĔРТĔР!</strong>',
-'protectedpagewarning'   => '<strong>АСĂРХАТТАРНИ: ку страницăна улшăнусем кĕртессинчен хӳтĕленĕ, ăна тӳрлетме администраторсем кăна пултараççĕ.</strong>',
-'titleprotectedwarning'  => '<strong>Асăрхаттару. Ку страницăпа ĕçлеме чарнă, ăна хăш-пĕр хутшăнакан кăна хатерлеме пултарать.</strong>',
+'copyrightwarning'       => "Эсир кĕртнĕ, е улăштарнă пур статьясен тексчĕсем $2 ($1 пăхăр) лизензине пăхăнаççĕ. Енчен те эсир кĕртнĕ текста пурте усă курма, тӳрлетсе улăштарма пултарнипе килĕшместĕр пулсан кунта ăна ан кĕртĕр. <br /> Çавăн пекех эсир кĕртнĕ текстăн е авторĕ, е ăна ирĕклĕ усă курма юракан çăлкуçсенчен илнине çирĕплететĕр. <br /> '''АВТОР ПРАВИСЕМПЕ ХӲТĔЛЕНĔ МАТЕРИАЛСЕНЕ АН КĔРТĔР!'''",
+'protectedpagewarning'   => "'''АСĂРХАТТАРНИ: ку страницăна улшăнусем кĕртессинчен хӳтĕленĕ, ăна тӳрлетме администраторсем кăна пултараççĕ.'''",
+'titleprotectedwarning'  => "'''Асăрхаттару. Ку страницăпа ĕçлеме чарнă, ăна хăш-пĕр хутшăнакан кăна хатерлеме пултарать.'''",
 'templatesused'          => 'Ку страница çинче усă курнă шаблонсем:',
 'templatesusedpreview'   => 'Пăхакан страница çинче усă курнă шаблонсем:',
 'templatesusedsection'   => 'Ку пайра усă курнă шаблонсем:',
@@ -550,7 +535,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'nohistory'           => 'Ку страницăн улшăнусен журналĕ çук.',
 'currentrev'          => 'Хальхи верси',
 'revisionasof'        => '$1 верси',
-'revision-info'       => '$1 версийĕ; $2', # Additionally available: $3: revision id
+'revision-info'       => '$1 версийĕ; $2',
 'previousrevision'    => '&larr;Малтанхи верси',
 'nextrevision'        => 'Çěнěрех верси→',
 'currentrevisionlink' => 'хальхи верси çине куç',
@@ -559,7 +544,6 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'last'                => 'малт.',
 'page_first'          => 'пĕрремĕш',
 'page_last'           => 'юлашки',
-'deletedrev'          => '[кăларса пăрахнă]',
 'histfirst'           => 'Пĕрремĕш',
 'histlast'            => 'Юлашки',
 'historysize'         => '$1 байт',
@@ -598,43 +582,55 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'searchresults'      => 'Тупрăмăр',
 'notitlematches'     => 'Статьясен ячĕсем пĕр пек мар',
 'textmatches'        => 'Статьясенчи текст пĕрпеклĕхĕ',
-'prevn'              => 'малтанхи $1',
-'nextn'              => 'малалли $1',
+'prevn'              => 'малтанхи {{PLURAL:$1|$1}}',
+'nextn'              => 'малалли {{PLURAL:$1|$1}}',
 'searchhelp-url'     => 'Help:Пулăшу',
 'showingresults'     => 'Аяларах эсир <b>#$2</b> пуçласа кăтартнă <b>$1</b> йĕркене куратăр.',
 'powersearch'        => 'Анлă шырав',
 'powersearch-legend' => 'Анлă шырав',
 
+# Quickbar
+'qbsettings' => 'Навигаци хăми',
+
 # Preferences page
-'preferences'        => 'Ĕнерлевсем',
-'mypreferences'      => 'Ман ĕнерлевсем',
-'prefs-edits'        => 'Тӳрлетӳсен шучĕ:',
-'prefsnologin'       => 'Эсир сайта кĕмен',
-'qbsettings'         => 'Навигаци хăми',
-'changepassword'     => 'Пароле улăштар',
-'skin'               => 'Ерешленӳ',
-'skin-preview'       => 'Малтанхи курăну',
-'dateformat'         => 'Дата формачĕ',
-'datedefault'        => 'Палăртман чухнехи',
-'math_syntax_error'  => 'синтаксис йăнăшĕ',
-'prefs-rc'           => 'Юлашки улшăнусен страници',
-'prefs-watchlist'    => 'Сăнав списокĕ',
-'prefs-misc'         => 'Ытти ĕнерлевсем',
-'saveprefs'          => 'Çырса хур',
-'textboxsize'        => 'Тӳрлетни',
-'rows'               => 'Йěркесем',
-'columns'            => 'Юпасем:',
-'searchresultshead'  => 'Шыраса тупрăмăр',
-'recentchangesdays'  => 'Çак кунсен хушшинчи юлашки улшăнусене кăтартмалла:',
-'recentchangescount' => 'Списокра çакăн чухлĕ тӳрлетӳ кăтартмалла:',
-'savedprefs'         => 'Сирĕн ĕнерлевсене сыхласа хăвартăмăр',
-'timezonelegend'     => 'Сехет поясĕ',
-'localtime'          => 'Вырăнти вăхăт',
-'servertime'         => 'Сервер вăхăчě',
-'files'              => 'Файлсем',
+'preferences'               => 'Ĕнерлевсем',
+'mypreferences'             => 'Ман ĕнерлевсем',
+'prefs-edits'               => 'Тӳрлетӳсен шучĕ:',
+'prefsnologin'              => 'Эсир сайта кĕмен',
+'changepassword'            => 'Пароле улăштар',
+'prefs-skin'                => 'Ерешленӳ',
+'skin-preview'              => 'Малтанхи курăну',
+'datedefault'               => 'Палăртман чухнехи',
+'prefs-rc'                  => 'Юлашки улшăнусен страници',
+'prefs-watchlist'           => 'Сăнав списокĕ',
+'prefs-misc'                => 'Ытти ĕнерлевсем',
+'saveprefs'                 => 'Çырса хур',
+'prefs-editing'             => 'Тӳрлетни',
+'rows'                      => 'Йěркесем',
+'columns'                   => 'Юпасем:',
+'searchresultshead'         => 'Шыраса тупрăмăр',
+'recentchangesdays'         => 'Çак кунсен хушшинчи юлашки улшăнусене кăтартмалла:',
+'recentchangescount'        => 'Списокра çакăн чухлĕ тӳрлетӳ кăтартмалла:',
+'savedprefs'                => 'Сирĕн ĕнерлевсене сыхласа хăвартăмăр',
+'timezonelegend'            => 'Сехет поясĕ',
+'localtime'                 => 'Вырăнти вăхăт',
+'servertime'                => 'Сервер вăхăчě',
+'prefs-files'               => 'Файлсем',
+'youremail'                 => 'Электронлă почта:',
+'username'                  => 'Хутшăнакан ячĕ:',
+'uid'                       => 'Хутшăнакан идентификаторĕ:',
+'yourrealname'              => 'Сирĕн чăн ят (*)',
+'yourlanguage'              => 'Интерфейс чĕлхи:',
+'yourvariant'               => 'Чĕлхе варианчĕ',
+'yournick'                  => 'Сирĕн ят (алă пусма усă курăнĕ):',
+'badsig'                    => 'Алă пуснинче йăнăш пур. HTML тэгĕсене тĕрĕслĕр.',
+'badsiglength'              => 'Алă пусни ытла вăрăм, $1 символтан кĕскерех пулмалла.',
+'email'                     => 'Эл. почта',
+'prefs-help-email'          => 'Электронлă почта (вăл кирлисем шутне кĕмест пулин те) ытти хутшăнакансене сирĕнпе ун урлă çыхăнма май парать. Çыхăну тытнă вăхăтра ыттисем сирĕн адреса пĕлеймеççĕ.',
+'prefs-help-email-required' => 'Электронлă почтăн адресне кăтартмалла.',
 
 # User rights
-'userrights'               => 'Хутшăнакансен прависемпе ĕçлесси', # Not used as normal message but as header for the special page itself
+'userrights'               => 'Хутшăнакансен прависемпе ĕçлесси',
 'userrights-lookup-user'   => 'Хутшăнакансен ушкăнĕсемпе ĕçлесси',
 'userrights-user-editname' => 'Хутшăнакан ятне кăтартăр:',
 'editinguser'              => "тӳрлетни '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
@@ -689,7 +685,9 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'newsectionsummary' => '/* $1 */ Çĕнĕ тема',
 
 # Recent changes linked
-'recentchangeslinked' => 'Çыхăннă улшăнусем',
+'recentchangeslinked'         => 'Çыхăннă улшăнусем',
+'recentchangeslinked-feed'    => 'Çыхăннă улшăнусем',
+'recentchangeslinked-toolbox' => 'Çыхăннă улшăнусем',
 
 # Upload
 'upload'             => 'Файла кĕртесси',
@@ -746,13 +744,11 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'listfiles_description' => 'Ăнлантаркăч',
 
 # File description page
+'file-anchor-link'          => 'Файл',
 'filehist'                  => 'Файл историйĕ',
 'imagelinks'                => 'Ссылкăсем',
 'linkstoimage'              => 'Çак страницăсем ку файл çине кăтартаççĕ:',
 'nolinkstoimage'            => 'Ку файл çине кăтартакан страницăсем çук.',
-'shareduploadwiki'          => 'Тĕплĕнрех информацине $1 синче тупма пулать.',
-'noimage'                   => 'Ун пек ятлă файл çук, эсир ăна $1.',
-'noimage-linktext'          => 'кĕртме пултаратăр',
 'uploadnewversion-linktext' => 'Ку файлăн çĕнĕ версине кĕрт',
 
 # File reversion
@@ -802,8 +798,8 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 
 'brokenredirects'        => 'Татăк куçару страницисем',
 'brokenredirectstext'    => 'Ку куçару страницисем çук страницăна куçараççĕ:',
-'brokenredirects-edit'   => '(тӳрлет)',
-'brokenredirects-delete' => '(кăларса пăрах)',
+'brokenredirects-edit'   => 'тӳрлет',
+'brokenredirects-delete' => 'кăларса пăрах',
 
 'fewestrevisions' => 'Сахал тӳрлетнĕ статьясем',
 
@@ -970,9 +966,11 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'contribsub2'   => '$1 ӳсĕмĕ ($2)',
 'uctop'         => ' (пуçламăш)',
 
-'sp-contributions-blocklog' => 'Чарса лартнисен журналĕ',
-'sp-contributions-search'   => 'Тӳпе шыравĕ',
-'sp-contributions-submit'   => 'Шырас',
+'sp-contributions-blocklog'   => 'Чарса лартнисен журналĕ',
+'sp-contributions-talk'       => 'Сӳтсе яв',
+'sp-contributions-userrights' => 'Хутшăнакансен прависемпе ĕçлесси',
+'sp-contributions-search'     => 'Тӳпе шыравĕ',
+'sp-contributions-submit'     => 'Шырас',
 
 # What links here
 'whatlinkshere'       => 'Кунта килекен ссылкăсем',
@@ -1033,10 +1031,9 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'export-templates' => 'Шаблонсене ĕçлеттер',
 
 # Namespace 8 related
-'allmessages'         => 'Система пĕлтерĕвĕсем',
-'allmessagesname'     => 'Пĕлтерӳ',
-'allmessagescurrent'  => 'Хальхи текст',
-'allmessagesmodified' => 'Улăштарнисене кăна кăтартмалла',
+'allmessages'        => 'Система пĕлтерĕвĕсем',
+'allmessagesname'    => 'Пĕлтерӳ',
+'allmessagescurrent' => 'Хальхи текст',
 
 # Thumbnails
 'thumbnail-more'           => 'Пысăклатмалли',
@@ -1078,7 +1075,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 
 # Attribution
 'anonymous'        => '{{GRAMMAR:genitive|{{SITENAME}}}} анонимлă хутшăнакансем',
-'lastmodifiedatby' => 'Ку страницăна юлашки хут $2, $1 вăхăтра $3 хутшăнакан улăштарнă.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Ку страницăна юлашки хут $2, $1 вăхăтра $3 хутшăнакан улăштарнă.',
 'othercontribs'    => '$1 ĕçĕ çинче никĕсленнĕ.',
 'others'           => 'ыттисем',
 'creditspage'      => 'Пархатарлăх',
@@ -1098,6 +1095,9 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'mw_math_simple' => 'Ахаль чухне HTML, урăхла чухне PNG',
 'mw_math_html'   => 'май пулсан HTML, май çук пулсан — PNG',
 'mw_math_modern' => 'Хальхи браузерсемпе усă курмашкăн сĕннĕ пек',
+
+# Math errors
+'math_syntax_error' => 'синтаксис йăнăшĕ',
 
 # Patrolling
 'markaspatrolleddiff'   => 'Тĕрĕсленĕ тесе палăрт',
@@ -1133,7 +1133,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 
 'exif-scenecapturetype-0' => 'Стандартлă',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'км/сех',
 
 # External editor support
@@ -1155,7 +1155,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'scarytranscludetoolong' => '[Питĕ шел, URL ытла вăрăм]',
 
 # Trackbacks
-'trackbackremove' => ' ([$1 кăларса пăрах])',
+'trackbackremove' => '([$1 кăларса пăрах])',
 
 # Delete conflict
 'deletedwhileediting' => 'Асăрхăр: эсир тӳрлетнĕ вăхăтра ку страницăна кăларса парахнă!',
@@ -1192,7 +1192,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'watchlisttools-view' => 'Ку тӳрлетӳпе çыхăннăскерсем',
 
 # Special:Version
-'version' => 'MediaWiki версийĕ', # Not used as normal message but as header for the special page itself
+'version' => 'MediaWiki версийĕ',
 
 # Special:FilePath
 'filepath'        => 'Файл çулĕ',

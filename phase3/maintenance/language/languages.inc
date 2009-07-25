@@ -14,6 +14,7 @@ class languages {
 
 	protected $mRawMessages; # Raw list of the messages in each language
 	protected $mMessages; # Messages in each language (except for English), divided to groups
+	protected $mFallback; # Fallback language in each language
 	protected $mGeneralMessages; # General messages in English, divided to groups
 	protected $mIgnoredMessages; # All the messages which should be exist only in the English file
 	protected $mOptionalMessages; # All the messages which may be translated or not, depending on the language
@@ -76,6 +77,7 @@ class languages {
 	 */
 	protected function loadFile( $code ) {
 		if ( isset( $this->mRawMessages[$code] ) &&
+			isset( $this->mFallback[$code] ) &&
 			isset( $this->mNamespaceNames[$code] ) &&
 			isset( $this->mNamespaceAliases[$code] ) &&
 			isset( $this->mMagicWords[$code] ) &&
@@ -83,6 +85,7 @@ class languages {
 			return;
 		}
 		$this->mRawMessages[$code] = array();
+		$this->mFallback[$code] = '';
 		$this->mNamespaceNames[$code] = array();
 		$this->mNamespaceAliases[$code] = array();
 		$this->mMagicWords[$code] = array();
@@ -92,6 +95,9 @@ class languages {
 			require( $filename );
 			if ( isset( $messages ) ) {
 				$this->mRawMessages[$code] = $messages;
+			}
+			if ( isset( $fallback ) ) {
+				$this->mFallback[$code] = $fallback;
 			}
 			if ( isset( $namespaceNames ) ) {
 				$this->mNamespaceNames[$code] = $namespaceNames;
@@ -207,6 +213,18 @@ class languages {
 	}
 
 	/**
+	 * Get fallback language code for a specific language.
+	 *
+	 * @param $code The language code.
+	 *
+	 * @return Fallback code.
+	 */
+	public function getFallback( $code ) {
+		$this->loadFile( $code );
+		return $this->mFallback[$code];
+	}
+
+	/**
 	 * Get namespace names for a specific language.
 	 *
 	 * @param $code The language code.
@@ -300,17 +318,17 @@ class languages {
 	}
 
 	/**
-	 * Get the messages which do not use some variables.
+	 * Get the messages whose variables do not match the original ones.
 	 *
 	 * @param $code The language code.
 	 *
-	 * @return The messages which do not use some variables in this language.
+	 * @return The messages whose variables do not match the original ones.
 	 */
-	public function getMessagesWithoutVariables( $code ) {
+	public function getMessagesWithMismatchVariables( $code ) {
 		$this->loadGeneralMessages();
 		$this->loadMessages( $code );
 		$variables = array( '\$1', '\$2', '\$3', '\$4', '\$5', '\$6', '\$7', '\$8', '\$9' );
-		$messagesWithoutVariables = array();
+		$mismatchMessages = array();
 		foreach ( $this->mMessages[$code]['translated'] as $key => $value ) {
 			$missing = false;
 			foreach ( $variables as $var ) {
@@ -318,12 +336,16 @@ class languages {
 					!preg_match( "/$var/sU", $value ) ) {
 					$missing = true;
 				}
+				if ( !preg_match( "/$var/sU", $this->mGeneralMessages['translatable'][$key] ) &&
+					preg_match( "/$var/sU", $value ) ) {
+					$missing = true;
+				}
 			}
 			if ( $missing ) {
-				$messagesWithoutVariables[$key] = $value;
+				$mismatchMessages[$key] = $value;
 			}
 		}
-		return $messagesWithoutVariables;
+		return $mismatchMessages;
 	}
 
 	/**

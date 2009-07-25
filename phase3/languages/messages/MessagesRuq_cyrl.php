@@ -1,6 +1,9 @@
 <?php
 /** Megleno-Romanian (Cyrillic) (Vlăheşte (Cyrillic))
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -170,8 +173,8 @@ $messages = array(
 'newarticle'             => '(Нова)',
 'editing'                => 'о $1 едитаере',
 'editingsection'         => 'Едитаере $1 (секцион)',
-'copyrightwarning'       => '<!-- Гол деоцамдатај. Вертисментул се флај ен MediaWiki:Summary -->
-Те рог нотари ла дин контрибући ал {{SITENAME}} сунт консидераере релесават супра $2 (суах $1 дин детајс). Аџтеу несав те се тексти сунт едитаере деномерци дет редистрибутаере дин вент, хатае ици.<br /> Ту есте ностре промисаере бонти ус ту скрирсте це се, нега копиаере дин публик домен нега симилари ресорсуе. <strong>НЕ СУБМИТЕ КОПИЛЕГРУ СКРИЕ САС ПЕРМИћИОН!</strong>',
+'copyrightwarning'       => "<!-- Гол деоцамдатај. Вертисментул се флај ен MediaWiki:Summary -->
+Те рог нотари ла дин контрибући ал {{SITENAME}} сунт консидераере релесават супра $2 (суах $1 дин детајс). Аџтеу несав те се тексти сунт едитаере деномерци дет редистрибутаере дин вент, хатае ици.<br /> Ту есте ностре промисаере бонти ус ту скрирсте це се, нега копиаере дин публик домен нега симилари ресорсуе. '''НЕ СУБМИТЕ КОПИЛЕГРУ СКРИЕ САС ПЕРМИћИОН!'''",
 'template-protected'     => '(ажатмат)',
 'template-semiprotected' => '(семи-ажатмат)',
 
@@ -216,12 +219,15 @@ $3',
 'boteditletter'   => 'б',
 
 # Recent changes linked
-'recentchangeslinked' => 'Модификајри корелате',
+'recentchangeslinked'         => 'Модификајри корелате',
+'recentchangeslinked-feed'    => 'Модификајри корелате',
+'recentchangeslinked-toolbox' => 'Модификајри корелате',
 
 # Upload
 'upload' => 'тримиће фиширул',
 
 # File description page
+'file-anchor-link'    => 'фиширул',
 'filehist'            => 'Хисториа фиширулу',
 'filehist-current'    => 'куренту',
 'filehist-datetime'   => 'Дата/Темп',
@@ -275,6 +281,8 @@ $3',
 'mycontris'     => 'Мес контрибући',
 'contribsub2'   => 'пентру $1 ($2)',
 'uctop'         => '(сусверф)',
+
+'sp-contributions-talk' => 'дискућу',
 
 # What links here
 'whatlinkshere'       => 'Легајтул а це пажу',

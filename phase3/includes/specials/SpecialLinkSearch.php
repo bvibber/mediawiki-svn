@@ -15,7 +15,7 @@
 function wfSpecialLinkSearch( $par ) {
 
 	list( $limit, $offset ) = wfCheckLimits();
-	global $wgOut, $wgRequest, $wgUrlProtocols, $wgMiserMode;
+	global $wgOut, $wgRequest, $wgUrlProtocols, $wgMiserMode, $wgLang;
 	$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
 	$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', null );
 
@@ -48,7 +48,7 @@ function wfSpecialLinkSearch( $par ) {
 
 	$self = Title::makeTitle( NS_SPECIAL, 'Linksearch' );
 
-	$wgOut->addWikiText( wfMsg( 'linksearch-text', '<nowiki>' . implode( ', ',  $wgUrlProtocols) . '</nowiki>' ) );
+	$wgOut->addWikiMsg( 'linksearch-text', '<nowiki>' . $wgLang->commaList( $wgUrlProtocols ) . '</nowiki>' );
 	$s =	Xml::openElement( 'form', array( 'id' => 'mw-linksearch-form', 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
 		Xml::hidden( 'title', $self->getPrefixedDbKey() ) .
 		'<fieldset>' .
@@ -151,7 +151,7 @@ class LinkSearchPage extends QueryPage {
 	function formatResult( $skin, $result ) {
 		$title = Title::makeTitle( $result->namespace, $result->title );
 		$url = $result->url;
-		$pageLink = $skin->makeKnownLinkObj( $title );
+		$pageLink = $skin->linkKnown( $title );
 		$urlLink = $skin->makeExternalLink( $url, $url );
 
 		return wfMsgHtml( 'linksearch-line', $urlLink, $pageLink );
@@ -164,7 +164,7 @@ class LinkSearchPage extends QueryPage {
 		global $wgOut;
 		list( $this->mMungedQuery, $clause ) = LinkSearchPage::mungeQuery( $this->mQuery, $this->mProt );
 		if( $this->mMungedQuery === false ) {
-			$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
+			$wgOut->addWikiMsg( 'linksearch-error' );
 		} else {
 			// For debugging
 			// Generates invalid xhtml with patterns that contain --
