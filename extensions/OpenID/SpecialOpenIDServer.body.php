@@ -66,7 +66,9 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			return;
 		}
 
+		wfSuppressWarnings();
 		$server =& $this->getServer();
+		wfRestoreWarnings();
 
 		switch ( $par ) {
 		 case 'Login':
@@ -109,7 +111,10 @@ class SpecialOpenIDServer extends SpecialOpenID {
 					$query = $_POST;
 				}
 
+				wfSuppressWarnings();
 				$request = $server->decodeRequest();
+				wfRestoreWarnings();
+
 				$sreg = $this->SregFromQuery( $query );
 				$response = NULL;
 				break;
@@ -133,7 +138,9 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			break;
 		 default:
 			# For all the other parts, just let the libs do it
+			wfSuppressWarnings();
 			$response =& $server->handleRequest( $request );
+			wfRestoreWarnings();
 		}
 
 		# OpenIDServerCheck returns NULL if some output (like a form)
@@ -317,7 +324,9 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		$response_fields = array_intersect( array_unique( array_merge( $sreg['required'], $sreg['optional'] ) ),
 										   $trust );
 
+		wfSuppressWarnings();
 		$response = $request->answer( true );
+		wfRestoreWarnings();
 
 		assert( isset( $response ) );
 
@@ -481,7 +490,9 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 		$wgOut->disable();
 
+		wfSuppressWarnings();
 		$wr =& $server->encodeResponse( $response );
+		wfRestoreWarnings();
 
 		assert( !is_null( $wr ) );
 
@@ -552,7 +563,6 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	}
 
 	function serverLogin( $request ) {
-
 		global $wgRequest, $wgUser;
 
 		assert( isset( $request ) );

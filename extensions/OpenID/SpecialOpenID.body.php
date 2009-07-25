@@ -180,6 +180,7 @@ class SpecialOpenID extends SpecialPage {
 		$consumer = $this->getConsumer();
 
 		if ( !$consumer ) {
+			wfDebug( "OpenID: no consumer\n" );
 			$wgOut->showErrorPage( 'openiderror', 'openiderrortext' );
 			return;
 		}
@@ -191,6 +192,7 @@ class SpecialOpenID extends SpecialPage {
 
 		// Handle failure status return values.
 		if ( !$auth_request ) {
+			wfDebug( "OpenID: no auth_request\n" );
 			$wgOut->showErrorPage( 'openiderror', 'openiderrortext' );
 			return;
 		}
