@@ -55,3 +55,17 @@ function wfWhosOnline_update_data() {
 
 	return true;
 }
+
+// Register database operations
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'wfWhosOnlineCheckSchema';
+
+function wfWhosOnlineCheckSchema() {
+	// Get a connection
+	$db = wfGetDB( DB_MASTER );
+	// Create table if it doesn't exist
+	if ( !$db->tableExists( 'online' ) ) {
+		$db->sourceFile( dirname( __FILE__  ) . '/whosonline.sql' );
+	}
+	// Continue
+	return true;
+}
