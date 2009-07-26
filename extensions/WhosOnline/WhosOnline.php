@@ -10,6 +10,8 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
+$wgWhosOnlineShowAnons = FALSE;	// Showing anonymous users IP addresses can be a security threat!
+
 $wgHooks['BeforePageDisplay'][] = 'wfWhosOnline_update_data';
 
 $wgExtensionCredits['other'][] = array(
