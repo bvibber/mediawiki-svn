@@ -1,4 +1,24 @@
 <?php
+
+/**
+ * @package MediaWiki
+ * @subpackage Extensions
+ *
+ * @link http://www.mediawiki.org/wiki/Extension:Transliterator Documentation
+ * @link http://en.wiktionary.org/wiki/User:Conrad.Irwin/Transliterator.php Original
+ *
+ * @author Conrad Irwin
+ * @modifier Purodha Blissenbach
+ * @copyright Copyright © 2009 Conrad.Irwin
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0
+ *     or later
+ * @version 1.0
+ *     initial creation.
+ * @version 1.0.1
+ *     better i18n support, adjustable limits, minor formal adjustment.
+ *
+ */
+
 /**
     Extension:Transliterator Copyright (C) 2009 Conrad.Irwin
  
@@ -17,12 +37,22 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 */
 
+if ( !defined( 'MEDIAWIKI' ) )
+{
+    die( 'This file is a MediaWiki extension, not a valid entry point.' );
+}
+
+// adjustable parameters
+$wgTransliteratorRuleCount = 255;	// maximum number of permitted rules per map.
+$wgTransliteratorRuleSize  =  10;	// maximum number of characters in left side of a rule.
+
 $wgExtensionCredits['parserhook'][] = array(
-    'name' => "Transliterator",
-    'version' => "1.0",
-    'descriptionmsg' => "transliterator-desc",
+    'name' => 'Transliterator',
+    'version' => '1.0.1',
+    'descriptionmsg' => 'transliterator-desc',
     'author' => 'Conrad Irwin',
-    'url' => 'http://en.wiktionary.org/wiki/User:Conrad.Irwin/Transliterator.php'
+    'url' => 'http://en.wiktionary.org/wiki/User:Conrad.Irwin/Transliterator.php',
+    'path' => __FILE__,
 );
 
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
@@ -137,6 +167,7 @@ class ExtTransliterator {
      * $map['__decompose__'] indicates that NFD should be used instead of characters
      */
     function readMap( $input, $mappage ) {
+	global $wgTransliteratorRuleCount, $wgTransliteratorRuleSize;
 
         $map = array();
         $decompose = false;
@@ -150,8 +181,8 @@ class ExtTransliterator {
             $decompose = true;
         }
 
-        if ( count( $lines ) > 255 )
-            return wfMsg("transliterator-error-rulecount", 255, $mappage);
+        if ( count( $lines ) > $wgTransliteratorRuleCount )
+            return wfMsgExt('transliterator-error-rulecount', array('parsemag'), $wgTransliteratorRuleCount, $mappage );
 
         foreach ( $lines as $line ) {
 
@@ -176,8 +207,8 @@ class ExtTransliterator {
                 // Fill in the blanks, so that we know when to stop looking while transliterating
                 $to_fill = strlen( $from );
 
-                if ( $to_fill > 10 ) 
-                    return wfMsg('transliterator-error-rulesize', $line, 10, $mappage);
+                if ( $to_fill > $wgTransliteratorRuleSize )
+                    return wfMsgExt('transliterator-error-rulesize', array('parsemag'), $line, $mappage, $wgTransliteratorRuleSize );
                 
                 for ( $i = 1; $i < $to_fill; $i++ ) {
                     $substr = substr( $from, 0, $i );

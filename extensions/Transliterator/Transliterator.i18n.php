@@ -17,9 +17,9 @@ $messages['en'] = array(
 	'transliterator-error-ambiguous' => "Ambiguous rule '$1' in [[MediaWiki:$2]]",
 	'transliterator-error-syntax' => "Invalid syntax '$1' in [[MediaWiki:$2]]",
 	// $1 is the limit on number of rules
-	'transliterator-error-rulecount' => "More than $1 rules in [[MediaWiki:$2]]",
-	// $2 is the limit on the length of the left hand side (e.g. 'alpha => beta' has 5)
-	'transliterator-error-rulesize' => "Rule '$1' has more than $2 characters on the left in [[MediaWiki:$3]]",
+	'transliterator-error-rulecount' => "More than $1 {{PLURA:$1|rule|rules}} in [[MediaWiki:$2]]",
+	// $3 is the limit on the length of the left hand side (e.g. 'alpha => beta' has 5)
+	'transliterator-error-rulesize' => "Rule '$1' has more than $3 {{PLURAL:$3|character|characters}} on the left in [[MediaWiki:$2]]",
 );
 
 /**
@@ -41,8 +41,22 @@ $messages['qqq'] = array(
 * $2 is the map-page including thr prefix {{msg-mw|transliterator-invoke}}',
 	'transliterator-error-rulesize' => 'Parameters:
 * $1 is the line from the map, such as: <code>a => z</code>
-* $2 is the limit on the length of the left hand side (e.g. <code>alpha => beta</code> has 5)
-* $3 is the map-page including thr prefix {{msg-mw|transliterator-invoke}}',
+* $2 is the map-page including thr prefix {{msg-mw|transliterator-invoke}}
+* $3 is the limit on the length of the left hand side (e.g. <code>alpha => beta</code> has 5)',
+);
+
+/**
+ * German (Deutsch)
+ * @author: Purodha
+ */
+$messages['de'] = array(
+	'transliterator-desc' => 'Stellt eine konfigurierbare Parserfunktion zur Transliteration bereit.',
+	'transliterator-invoke' => 'transliterate', 
+	'transliterator-prefix' => 'Transliterator:',
+	'transliterator-error-ambiguous' => 'Mehrdeutige Regel <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Fehlerhafte Syntax in Regel <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Mehr als die {{PLURAL:$1|erlaubte eine Regel|die erlabubten $1 Regeln}} in [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'In der Regel <code>$1</code> {{PLURAL:$3|ist|sind}} mehr als $3 Zeichen auf der ligken Seite in [[MediaWiki:$2]]',
 );
 
 /**
@@ -50,12 +64,12 @@ $messages['qqq'] = array(
  * @author: Purodha
  */
 $messages['ksh'] = array(
-	'transliterator-desc' => 'Deiht en ennslellba Paaserfunxjuhn en et Wiki, di Boochshtabe tuusche kann.', 
+	'transliterator-desc' => 'Deiht en ennstellbaa Paaserfunxjuhn en et Wiki, di Boochshtabe tuusche kann.', 
 	'transliterator-invoke' => 'transliterate', 
 	'transliterator-prefix' => 'Transliterator:',
-	'transliterator-error-ambiguous' => 'Unkloh Rejel <code>$1</code> en [[MediaWiki:$2]]',
-	'transliterator-error-syntax' => 'En kappodde syntax <code>$1</code> es en [[MediaWiki:$2]]',
-	'transliterator-error-rulecount' => 'Et sin mieh wi $1 Rejelle en [[MediaWiki:$2]]',
-	'transliterator-error-rulesize' => 'En de Rejel <code>$1</code> sinn_er mieh wi $2 Zeische op de lengke Sigg, en [[MediaWiki:$3]]',
+	'transliterator-error-ambiguous' => 'En unkloh Rejel <code>$1</code> es en [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'En kappodde Syntax <code>$1</code> es en [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Et {{PLURAL:$1|es mieh wi ein Rejel|sinn_er mieh wi $1 Rejelle|es kei Rejel}} en [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'En de Rejel <code>$1</code> {{PLURAL:$3|es|sinn_er}} mieh wi $3 Zeische op de lengke Sigg, en [[MediaWiki:$2]]',
 );
 
