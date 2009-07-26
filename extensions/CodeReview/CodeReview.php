@@ -37,9 +37,9 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 
-$wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'ApiCodeUpdate.php';
-$wgAutoloadClasses['ApiCodeDiff'] = $dir . 'ApiCodeDiff.php';
-$wgAutoloadClasses['ApiCodeComments'] = $dir . 'ApiCodeComments.php';
+$wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'api/ApiCodeUpdate.php';
+$wgAutoloadClasses['ApiCodeDiff'] = $dir . 'api/ApiCodeDiff.php';
+$wgAutoloadClasses['ApiCodeComments'] = $dir . 'api/ApiCodeComments.php';
 
 $wgAutoloadClasses['CodeDiffHighlighter'] = $dir . 'DiffHighlighter.php';
 $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
