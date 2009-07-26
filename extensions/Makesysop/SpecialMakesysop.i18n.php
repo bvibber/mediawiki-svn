@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Internationalisation file for Makesysop extension.
  *
