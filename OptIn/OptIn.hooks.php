@@ -55,10 +55,10 @@ class OptInHooks {
 		// For opted-in users, add a feedback link
 		if ( SpecialOptIn::isOptedIn( $wgUser ) ) {
 			$query['opt'] = 'feedback';
-			$link = SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query );
 			$addLinks['betafeedback'] = array(
 				'text' => wfMsg( 'optin-feedback' ),
-				'href' => $link,
+				'href' =>
+					SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query ),
 				'class' => 'no-text-transform'
 			);
 		}
@@ -68,7 +68,7 @@ class OptInHooks {
 			'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
 				wfMsg( 'optin-leave' ) :
 				wfMsg( 'optin-try' ),
-			'href' => $link,
+			'href' => SpecialPage::getTitleFor( 'OptIn' )->getFullURL(),
 			'class' => 'no-text-transform'
 		);
 			
