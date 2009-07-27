@@ -26,6 +26,7 @@ class SlippyMapHook {
 
 	public function __construct() {
 		global $wgParser, $wgHooks, $wgOut, $wgScriptPath, $wgStyleVersion;
+		global $wgSlippyMapJs;
 
 		// Load i18n
 		self::loadMessages();
@@ -38,7 +39,7 @@ class SlippyMapHook {
 
 		// Add JavaScript files to <head>
 		$wgOut->addScriptFile( $wgScriptPath . '/extensions/SlippyMap/OpenLayers/public/OpenLayers.js?' . $wgStyleVersion );
-		$wgOut->addScriptFile( $wgScriptPath . '/extensions/SlippyMap/SlippyMap.js?' . $wgStyleVersion );
+		$wgOut->addScriptFile( $wgScriptPath . '/extensions/SlippyMap/js/' . $wgSlippyMapJs . '?' . $wgStyleVersion );
 
 		// Add our CSS to <head>
 		$wgOut->addExtensionStyle( $wgScriptPath . '/extensions/SlippyMap/SlippyMap.css?' . $wgStyleVersion );

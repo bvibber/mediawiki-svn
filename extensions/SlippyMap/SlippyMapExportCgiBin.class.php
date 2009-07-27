@@ -35,12 +35,23 @@ class SlippyMapExportCgiBin {
 	}
 
 	public function getUrl() {
-		return
+		global $wgContLang;
+
+		$args =
 			$this->options['base_url']
 			. '?'
 			. 'bbox=' . implode( ',', $this->bounds )
 			. '&amp;scale=' . $this->scale
 			. '&amp;format=' . $this->options['format'];
+
+		// Hack to support my custom cgi-bin/export script
+		if ( isset( $this->options['get_args'] ) ) {
+			$args .=
+				'&amp;maptype=' . $this->options['get_args']['maptype']
+				. '&amp;locale=' . $wgContLang->getCode();
+		}
+
+		return $args;
 	}
 
 	/**
