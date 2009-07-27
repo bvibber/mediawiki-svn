@@ -64,10 +64,15 @@ public class DefaultFeatureSet implements FeatureSet {
 	
 	}
 	
-		protected MultiMap<String, FeatureSet.Feature<?>, ? extends Collection<? extends FeatureSet.Feature<?>>> data 
-				= new ValueSetMultiMap<String, FeatureSet.Feature<?>>();
+		protected MultiMap<String, FeatureSet.Feature<?>, ? extends Collection<? extends FeatureSet.Feature<?>>> data;
 		
-		public DefaultFeatureSet() {
+		protected DefaultFeatureSet() {
+			this(null);
+		}
+
+		public DefaultFeatureSet(MultiMap<String, FeatureSet.Feature<?>, ? extends Collection<? extends FeatureSet.Feature<?>>> data) {
+			if (data==null) data = new ValueSetMultiMap<String, FeatureSet.Feature<?>>();
+			this.data = data;
 		}
 		
 		public String toString() {
@@ -106,8 +111,26 @@ public class DefaultFeatureSet implements FeatureSet {
 		}
 
 		public void addAll(FeatureSet other) {
-			// TODO Auto-generated method stub
-			
+			for (String k: other.keys()) {
+				Collection<? extends Feature<? extends Object>> features = other.getFeatures(k);
+				for (Feature<? extends Object> f: features) {
+					addFeature(k, f.getValue(), f.getQualifiers());
+				}
+			}
+		}
+
+		public void addAll(Record rec, Record qualifiers) {
+			for (String k: rec.keys()) {
+				Object v = rec.get(k);
+				
+				if (v instanceof Collection) {
+					for (Object w: (Collection)v) {
+						addFeature(k, w, qualifiers);
+					}
+				} else {
+					addFeature(k, v, qualifiers);
+				}
+			}
 		}
 
 		public <V> Collection<? extends Feature<? extends V>> getFeatures(String key) {
@@ -142,6 +165,10 @@ public class DefaultFeatureSet implements FeatureSet {
 			} else if (!data.equals(other.data))
 				return false;
 			return true;
+		}
+
+		public boolean hasFeature(String key) {
+			return data.containsKey(key);
 		}
 		
 		

@@ -2,9 +2,6 @@ package de.brightbyte.wikiword.integrator.data;
 
 import java.util.Collection;
 
-import de.brightbyte.abstraction.AbstractAccessor;
-import de.brightbyte.abstraction.PropertyAccessor;
-import de.brightbyte.data.StrictAggregator;
 import de.brightbyte.data.LabeledVector;
 
 public interface FeatureSet {
@@ -23,4 +20,8 @@ public interface FeatureSet {
 	public Iterable<String> keys();
 	
 	public void addAll(FeatureSet other);
+	
+	public void addAll(Record rec, Record qualifiers);
+	
+	public boolean hasFeature(String name);
 }

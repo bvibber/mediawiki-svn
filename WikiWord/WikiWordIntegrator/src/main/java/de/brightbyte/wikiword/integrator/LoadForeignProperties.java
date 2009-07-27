@@ -2,15 +2,20 @@ package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
 
-import de.brightbyte.data.Functor;
 import de.brightbyte.data.cursor.ConvertingCursor;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.db.SqlDialect;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
-import de.brightbyte.wikiword.integrator.data.DefaultForeignEntityRecord;
+import de.brightbyte.wikiword.integrator.data.DefaultForeignEntityFeatureSet;
+import de.brightbyte.wikiword.integrator.data.FeatureBuilder;
+import de.brightbyte.wikiword.integrator.data.FeatureBuilderCursor;
+import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.data.ForeignEntityFeatureSet;
 import de.brightbyte.wikiword.integrator.data.ForeignEntityRecord;
+import de.brightbyte.wikiword.integrator.data.PropertyMappingFeatureBuilder;
 import de.brightbyte.wikiword.integrator.data.Record;
+import de.brightbyte.wikiword.integrator.data.TriplifiedPropertyFeatureBuilder;
 import de.brightbyte.wikiword.integrator.processor.ForeignEntityProcessor;
 import de.brightbyte.wikiword.integrator.processor.ForeignPropertyPassThrough;
 import de.brightbyte.wikiword.integrator.store.DatabaseForeignPropertyStoreBuilder;
@@ -32,8 +37,54 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<Record> fsc = openRecordCursor();
 		
-		Functor<? extends ForeignEntityRecord, Record> converter = new DefaultForeignEntityRecord.FromRecord( sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField() );
-		DataCursor<ForeignEntityRecord> cursor = new ConvertingCursor<Record, ForeignEntityRecord>(fsc,  converter);
+		FeatureBuilder<Record> builder = sourceDescriptor.getFeatureBuilder();
+		
+		String authorityField = sourceDescriptor.getAuthorityField();
+		String authorityFieldName = authorityField;
+		if (authorityField==null) {
+			authorityField = "=" + sourceDescriptor.getAuthorityName();
+			authorityFieldName = "authority";
+		}
+
+		if (builder!=null) ; //noop
+		else {
+			if (sourceDescriptor.getPropertyNameField()!=null) {
+				builder =  new TriplifiedPropertyFeatureBuilder<Record>( 
+						authorityFieldName, 
+						sourceDescriptor.getPropertySubjectField(),
+						sourceDescriptor.getPropertyNameField(),
+						sourceDescriptor.getPropertyValueField()); 
+				
+				//FIXME: mapping/builder for qualifiers
+				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(authorityFieldName, new Record.Accessor<String>(authorityField, String.class), null);
+				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(sourceDescriptor.getPropertySubjectField(), new Record.Accessor<String>(sourceDescriptor.getPropertySubjectField(), String.class), null);
+				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(sourceDescriptor.getPropertyNameField(), new Record.Accessor<String>(sourceDescriptor.getPropertyNameField(), String.class), null);
+				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(sourceDescriptor.getPropertyValueField(), new Record.Accessor<String>(sourceDescriptor.getPropertyValueField(), String.class), null);
+			} else {
+				builder = new PropertyMappingFeatureBuilder<Record>( 
+						authorityFieldName, 
+						sourceDescriptor.getPropertySubjectField() ); 
+				
+				//FIXME: mapping/builder for qualifiers
+				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(authorityFieldName, new Record.Accessor<String>(authorityField, String.class), null);
+				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(sourceDescriptor.getPropertySubjectField(), new Record.Accessor<String>(sourceDescriptor.getPropertySubjectField(), String.class), null);
+				
+				for (String f: recordFields) {
+					if (sourceDescriptor.getAuthorityField()!=null && f.equals(sourceDescriptor.getAuthorityField()!=null)) continue;
+					if (sourceDescriptor.getPropertySubjectField()!=null && f.equals(sourceDescriptor.getPropertySubjectField()!=null)) continue;
+					
+					((PropertyMappingFeatureBuilder<Record>)builder).addMapping(f, new Record.Accessor<Object>(f, Object.class), null);
+				}
+			}
+		}
+				
+		DefaultForeignEntityFeatureSet.FromFeatureSet converter = new DefaultForeignEntityFeatureSet.FromFeatureSet(
+				authorityFieldName, 
+				sourceDescriptor.getPropertySubjectField(),
+				sourceDescriptor.getPropertySubjectNameField()
+				);
+		
+		DataCursor<ForeignEntityFeatureSet> cursor = new ConvertingCursor<FeatureSet, ForeignEntityFeatureSet>( new FeatureBuilderCursor<Record>(fsc,  builder), converter );
 		
 		section("-- process properties --------------------------------------------------");
 		store.prepareImport();

@@ -56,6 +56,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 	private DataSource configuredDataSource;
 	private DatasetIdentifier configuredDataset;
 	private String targetTableName;
+	protected String[] recordFields;
 	
 	public AbstractIntegratorApp() {
 		super(true, true);
@@ -129,6 +130,8 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		if (args.getParameterCount() > 2) targetTableName = args.getParameter(2);
 		else {
 			String authority = getSourceDescriptor().getAuthorityName();
+			if (authority==null) throw new IllegalArgumentException("nither a target table name nor an authority name was specified!");
+			
 			authority = authority.replaceAll("[^\\w\\d]", "_").toLowerCase();
 			
 			targetTableName= authority+"_property";
@@ -267,7 +270,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		}
 		
 		DataCursor<Record> rc;
-		String[] fields = sourceDescriptor.getDataFields();
+		recordFields = sourceDescriptor.getDataFields();
 		
 		if (sql!=null) {
 			Collection<Functor<String, String>> manglers = getSqlScriptManglers(sourceDescriptor);
@@ -279,7 +282,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			
 			//DatabaseUtil.dumpData(rs, ConsoleIO.output, " | ");
 			
-			rc = new ResultSetRecordCursor(rs, fields);
+			rc = new ResultSetRecordCursor(rs, recordFields);
 		} else {
 			LineCursor lines = new LineCursor(in, enc);
 			
@@ -291,12 +294,12 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 				((TsvRecordCursor)rc).setParseErrorHandler( new LoggingErrorHandler<ChunkingCursor, ParseException, PersistenceException>(out));
 			}
 			
-			if (fields!=null) {
+			if (recordFields!=null) {
 				if (sourceDescriptor.getSkipHeader()) ((TsvRecordCursor)rc).readFields();
-				((TsvRecordCursor)rc).setFields(fields);
+				((TsvRecordCursor)rc).setFields(recordFields);
 			} else {
 				((TsvRecordCursor)rc).readFields();
-				fields = ((TsvRecordCursor)rc).getFields();
+				recordFields = ((TsvRecordCursor)rc).getFields();
 			}
 		}
 
@@ -307,7 +310,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			if (splitters!=null) {
 				mangler = new DefaultRecordMangler();
 				
-				for (String f: fields) {
+				for (String f: recordFields) {
 					Chunker chunker = splitters.get(f);
 					
 					if (chunker!=null) ((DefaultRecordMangler)mangler).addConverter(f, f, String.class, chunker, Iterable.class);

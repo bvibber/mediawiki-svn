@@ -15,6 +15,8 @@ import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
+import de.brightbyte.wikiword.integrator.data.FeatureBuilder;
+import de.brightbyte.wikiword.integrator.data.Record;
 import de.brightbyte.wikiword.integrator.data.RecordMangler;
 
 public class FeatureSetSourceDescriptor extends TweakSet {
@@ -35,11 +37,15 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 		super.loadTweaks(u);
 		setBaseURL(u); //XXX: always?!
 	}
-	
+
 	public String getAuthorityName() {
 		String name = getTweak("authority", null);
-		if (name==null) throw new RuntimeException("authority name not specified!");
 		return name;
+	}
+	
+	public String getAuthorityField() {
+		String field = getTweak("authority-field", null);
+		return field;
 	}
 	
 	public String getDataEncoding() {
@@ -160,6 +166,10 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 
 	public boolean getSkipBadRows() {
 		return getTweak("csv-skip-bad-rows", false);
+	}
+
+	public FeatureBuilder<Record> getFeatureBuilder() {
+		return getTweak("feature-builder", (FeatureBuilder<Record>)null);
 	}
 
 }

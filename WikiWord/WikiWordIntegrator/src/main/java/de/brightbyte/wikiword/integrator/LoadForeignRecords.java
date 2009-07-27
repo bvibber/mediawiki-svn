@@ -32,7 +32,7 @@ public class LoadForeignRecords extends AbstractIntegratorApp<ForeignRecordStore
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<Record> fsc = openRecordCursor();
 
-		Functor<? extends ForeignEntityRecord, Record> converter = new DefaultForeignEntityRecord.FromRecord( sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField() );
+		Functor<? extends ForeignEntityRecord, Record> converter = new DefaultForeignEntityRecord.FromRecord( sourceDescriptor.getAuthorityField(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField() );
 		DataCursor<ForeignEntityRecord> cursor = new ConvertingCursor<Record, ForeignEntityRecord>(fsc,  converter);
 		
 		section("-- process properties --------------------------------------------------");

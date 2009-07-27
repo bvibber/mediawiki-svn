@@ -7,7 +7,6 @@ import java.util.Set;
 
 import de.brightbyte.abstraction.AbstractAccessor;
 import de.brightbyte.data.Aggregator;
-import de.brightbyte.data.StrictAggregator;
 import de.brightbyte.data.Functors;
 import de.brightbyte.db.DatabaseUtil;
 
@@ -21,7 +20,11 @@ public interface Record extends Cloneable {
 		}
 
 		public V getValue(Record obj) {
-			Object v = obj.get(property);
+			Object v;
+			
+			if (property.startsWith("=")) v = property.substring(1); //XXX: nasty hack! 
+			else v = obj.get(property);
+			
 			Class t = getType();
 			
 			if (Collection.class.isAssignableFrom(t)) {

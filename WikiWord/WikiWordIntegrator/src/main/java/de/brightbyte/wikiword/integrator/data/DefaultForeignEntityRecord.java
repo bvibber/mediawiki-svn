@@ -16,6 +16,10 @@ public class DefaultForeignEntityRecord extends DefaultRecord implements  Foreig
 			if (authorityField==null) throw new NullPointerException();
 			if (idField==null) throw new NullPointerException();
 			if (nameField==null) nameField = idField;
+			
+			this.authorityField= authorityField;
+			this.idField= idField;
+			this.nameField= nameField;
 		}
 
 		public DefaultForeignEntityRecord apply(Record rec) {
