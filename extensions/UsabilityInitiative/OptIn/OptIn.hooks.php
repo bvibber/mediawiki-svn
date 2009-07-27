@@ -49,26 +49,23 @@ class OptInHooks {
 			$query['from'] = $wgRequest->getVal( 'from' );
 			$query['fromquery'] = $wgRequest->getVal( 'fromquery' );
 		}
-		$link = SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query );
-		
 		$addLinks = array();
 		// For opted-in users, add a feedback link
 		if ( SpecialOptIn::isOptedIn( $wgUser ) ) {
-			$query['opt'] = 'feedback';
 			$addLinks['betafeedback'] = array(
 				'text' => wfMsg( 'optin-feedback' ),
-				'href' =>
-					SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query ),
+				'href' => SpecialPage::getTitleFor( 'OptIn' )->getFullURL(
+					array_merge( $query, array( 'opt' => 'feedback' ) )
+				),
 				'class' => 'no-text-transform'
 			);
 		}
-		
 		// Inserts a link into personal tools
 		$addLinks['acaibeta'] = array(
 			'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
 				wfMsg( 'optin-leave' ) :
 				wfMsg( 'optin-try' ),
-			'href' => SpecialPage::getTitleFor( 'OptIn' )->getFullURL(),
+			'href' => SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query ),
 			'class' => 'no-text-transform'
 		);
 			
