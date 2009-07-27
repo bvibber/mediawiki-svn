@@ -23,3 +23,7 @@ caching:
 
 # Where to read our list of languages from
 locales: /sql/misc-data/wikipedia-languages.yml  
+
+# Interface with renderd
+renderd:
+  socket: /var/run/renderd/renderd.sock

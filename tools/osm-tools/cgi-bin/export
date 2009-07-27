@@ -16,7 +16,9 @@ import resource
 import yaml
 import md5
 import datetime
-
+import math
+import socket
+import struct
 
 #
 # Config data
@@ -83,6 +85,45 @@ def output_error(message):
   print "</body>"
   print "</html>"
 
+# When generating a static map, also insert the relevant tiles into
+# the rendering queue, as one might want to view the static map in a
+# slippy map afterwards
+def expire_tiles(bbox, zoom,renderd_xmlname):
+  width = bbox[2] - bbox[0]
+  height = bbox[3] - bbox[1]
+  # Add a 10% margin around the bounding box
+  bbox_bigger = [(bbox[0] - 0.10*width), (bbox[1] - 0.10*height), (bbox[2] + 0.10*width), (bbox[3] + 0.10*height)]
+  notiles = math.pow(2,zoom)
+  # Calculate the x/y coordinates of the tiles corresponding to the bbox
+  mix = int(1 + math.floor((bbox_bigger[0] + 180.0) / (360.0 / notiles)))
+  max = int(1 + math.ceil((bbox_bigger[2] + 180) / (360.0 / notiles)))
+
+  # The tiles are merkator projected, so calculating y coordinates from the bbox is a little more
+  # complicated. The formula was taken from http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#X_and_Y
+  merc_miy = math.log(math.tan(bbox_bigger[1]/180*math.pi) + 1/math.cos(bbox_bigger[1]/180*math.pi))
+  may = int(1 + math.floor(((1 - merc_miy/math.pi) / 2)*notiles))
+  merc_may = math.log(math.tan(bbox_bigger[3]/180*math.pi) + 1/math.cos(bbox_bigger[3]/180*math.pi))
+  miy = int(1 + math.floor(((1 - merc_may/math.pi) / 2)*notiles))
+
+  CMD_DIRT = 2
+  RENDERD_PROTOCOL_VER = 2
+
+  # Open a socket to renderd 
+  for x in range(mix, max):
+    for y in range(miy, may):
+      try:
+          # TODO: It would be better to reuse the socket rather than
+          # creating a new one everytime.
+          s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+          s.connect(config['renderd']['socket'])
+          s.send(struct.pack("iiiii44s",RENDERD_PROTOCOL_VER,CMD_DIRT,x,y,zoom,renderd_xmlname))
+          s.close()
+      except:
+        # If we have an error here, just continue with the next one
+        # and hope that works better.
+        continue
+  return
+
 # Parse CGI parameters
 form = cgi.FieldStorage()
 
@@ -123,6 +164,7 @@ else:
     # Bogus bounding box
     output_error("Invalid bounding box")
   else:
+    bbox_coords = bbox
     # Project the bounds to the map projection
     bbox = mapnik.forward_(mapnik.Envelope(*bbox), prj)
 
@@ -157,6 +199,15 @@ else:
           if (os.environ['HTTP_IF_NONE_MATCH'] == etagquotes):
             print "Status: 304 Not Modified"
             exit
+
+        # Also make sure that the corresponding slippy map tiles exist
+        # and are up to date The magic number of 2132 is taken from
+        # http://lists.openstreetmap.org/pipermail/talk/2007-January/010349.html
+        zoom = math.ceil(18 - math.log(map.scale_denominator()/2132.72958385,2))
+        renderd_xmlname = form.getvalue('locale')
+        expire_tiles(bbox_coords, zoom, renderd_xmlname)
+        expire_tiles(bbox_coords, zoom - 1, renderd_xmlname)
+        expire_tiles(bbox_coords, zoom + 1, renderd_xmlname)
                 
         output_headers("image/png", len(png),etag.hexdigest())
         print png
