@@ -28,6 +28,7 @@ $messages['en'] = array(
 	'dt_xml_freetext'             => 'Free Text',
 	'importxml'                   => 'Import XML',
 	'dt_import_selectfile'        => 'Please select the $1 file to import:',
+	'dt_import_encodingtype'      => 'Encoding type',
 	'dt_import_editsummary'       => '$1 import',
 	'dt_import_importing'         => 'Importing...',
 	'dt_import_success'           => '$1 {{PLURAL:$1|page|pages}} will be created from the $2 file.',
@@ -70,11 +71,12 @@ Used as XML tag name.',
 	'dt_xml_freetext' => '{{Identical|Free text}}
 Used as XML tag name.',
 	'dt_import_selectfile' => '$1 is the file format: either CSV or XML',
+	'dt_import_encodingtype' => 'The type of encoding for the file: either UTF-8 or UTF-16',
 	'dt_import_editsummary' => '$1 is the file format: either CSV or XML',
 	'dt_import_success' => '* $1 is the number of pages
 * $2 is the file format: either CSV or XML',
 	'dt_importcsv_badheader' => 'The text "template_name[field_name]" can be translated.
-*$1 is a colomn number in the first row of the CVS file
+*$1 is a column number in the first row of the CVS file
 *$2 is the value found for the $1th colomn in the first line of the CSV file
 *$3 is the title label
 *$4 is a free text label',
