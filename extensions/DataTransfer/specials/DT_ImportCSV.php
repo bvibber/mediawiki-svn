@@ -73,13 +73,17 @@ class DTImportCSV extends SpecialPage {
 		if ($wgRequest->getCheck('import_file')) {
 			$text = "<p>" . wfMsg('dt_import_importing') . "</p>\n";
 			$source = ImportStreamSource::newFromUpload( "csv_file" );
-			$encoding = $wgRequest->getVal('encoding');
-			$pages = array();
-			$error_msg = self::getCSVData($source->mHandle, $encoding, $pages);
-			if (! is_null($error_msg))
-				$text .= $error_msg;
-			else
-				$text .= self::modifyPages($pages);
+			if ($source instanceof WikiErrorMsg) {
+				$text .= $source->getMessage();
+			} else {
+				$encoding = $wgRequest->getVal('encoding');
+				$pages = array();
+				$error_msg = self::getCSVData($source->mHandle, $encoding, $pages);
+				if (! is_null($error_msg))
+					$text .= $error_msg;
+				else
+					$text .= self::modifyPages($pages);
+			}
 		} else {
 			$select_file_label = wfMsg('dt_import_selectfile', 'CSV');
 			$encoding_type_label = wfMsg('dt_import_encodingtype');
