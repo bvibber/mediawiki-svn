@@ -363,8 +363,22 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'security' => 'Log pengamanan',
+	'security-desc' => 'Memperkaya proteksi halaman MediaWiki untuk membatasi tampilan isi halaman',
+	'security-logpage' => 'Log pengamanan',
+	'security-logpagetext' => 'Ini merupakan aksi yang diblok oleh [http://www.mediawiki.org/wiki/Extension:SimpleSecurity pengaya SimpleSecurity].',
+	'badaccess-read' => "'''Perhatian:''' \"\$1\" dirujuk ke sini, tapi Anda tidak memiliki ijin untuk mengaksesnya.",
+	'security-info' => 'Ada $1 pada halaman ini',
+	'security-info-toggle' => 'batasan pengamanan',
+	'security-inforestrict' => '$1 terbatas pada $2',
+	'security-desc-LS' => '(karena halaman ini berada di "$2 $1")',
+	'security-desc-PR' => '(pasang dari tab "proteksi")',
+	'security-infosysops' => 'Tidak ada batasan karena Anda anggota kelompok "sysop"',
+	'security-manygroups' => 'kelompok $1 dan $2',
+	'security-unchain' => 'Ubah aksi per individu',
 	'security-type-category' => 'kategori',
 	'security-type-namespace' => 'ruang nama',
+	'security-restricttogroup' => 'Akses dibatasi untuk anggota "$1"',
 );
 
 /** Italian (Italiano)

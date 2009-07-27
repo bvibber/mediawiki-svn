@@ -112,6 +112,7 @@ $messages['be-tarask'] = array(
 	'importfreeimages_filefromflickr' => '$1 карыстальніка Flickr <b>[$2]</b>. Арыгінальны URL-адрас',
 	'importfreeimages_promptuserforfilename' => 'Калі ласка, увядзіце назву мэтавага файла:',
 	'importfreeimages_returntoform' => "Ці націсьніце <a href='$1'>тут</a>, каб вярнуцца да вынікаў Вашага пошуку",
+	'importfreeimages_nophpflickr' => 'Вы не ўсталявалі phpFlickr, калі ласка, устанавіце $wgIFphpFlickr ў Вашым LocalSettings.php.',
 );
 
 /** Bulgarian (Български)
@@ -149,6 +150,7 @@ Da bi ste to učinili, molimo uzmite API ključ [http://www.flickr.com/services/
 	'importfreeimages_filefromflickr' => '$1 od {{GENDER:$2|korisnika|korisnice}} <b>[$2]</b> sa flickr. Prvobitni URL',
 	'importfreeimages_promptuserforfilename' => 'Molimo unesite ime odredišne datoteke:',
 	'importfreeimages_returntoform' => "ili kliknite <a href='$1'>ovdje</a> za povratak na Vaše rezultate pretrage",
+	'importfreeimages_nophpflickr' => 'Niste instalirali phpFlickr, molimo postavite $wgIFphpFlickr u Vašem LocalSettings.php.',
 );
 
 /** Catalan (Català)
@@ -247,6 +249,7 @@ Aby to cynił, wobstaraj se pšosym API-kluc wót [http://www.flickr.com/service
 	'importfreeimages_filefromflickr' => '$1 wót wužywarja <b>[$2]</b> z flickr. Originalny URL',
 	'importfreeimages_promptuserforfilename' => 'Pšosym zapódaj mě celowego dataje:',
 	'importfreeimages_returntoform' => "Abo klikni < a href='$1'>sem</a>, aby se wróśił k swójim pytańskim wuslědkam",
+	'importfreeimages_nophpflickr' => 'Njejsy phpFlickr instalěrował. pšosym nastaj $wgIFphpFlickr w swójej dataji LocalSettings.php.',
 );
 
 /** Greek (Ελληνικά)
@@ -494,6 +497,7 @@ $messages['hsb'] = array(
 	'importfreeimages_filefromflickr' => '$1 wot wužiwarja <b>[$2]</b> z flickra. Originalny URL',
 	'importfreeimages_promptuserforfilename' => 'Prošu zapodaj mjeno ciloweje dataje:',
 	'importfreeimages_returntoform' => "Abo klikń <a href='$1'>sem</a>, zo by k stronje z pytanskimi wuslědkami wróćił.",
+	'importfreeimages_nophpflickr' => 'Njejsy phpFlickr instalował, prošu nastaj $wgIFphpFlickr w swojej dataji LocalSettings.php.',
 );
 
 /** Hungarian (Magyar)
@@ -952,6 +956,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -967,6 +972,7 @@ $messages['ru'] = array(
 	'importfreeimages_filefromflickr' => '$1 авторства <b>[$2]</b> с Flickr. Исходный адрес',
 	'importfreeimages_promptuserforfilename' => 'Пожалуйста, введите новое имя файла:',
 	'importfreeimages_returntoform' => "Или нажмите <a href='$1'>здесь</a>, чтобы вернуться к вашим результатам поиска.",
+	'importfreeimages_nophpflickr' => 'У вас не установлен phpFlickr, пожалуйста, установите $wgIFphpFlickr в вашем LocalSettings.php.',
 );
 
 /** Sardinian (Sardu)
@@ -1011,6 +1017,7 @@ $messages['sk'] = array(
 	'importfreeimages_filefromflickr' => '$1 od používateľa <b>[$2]</b> z flickr. Pôvodný URL',
 	'importfreeimages_promptuserforfilename' => 'prosím, zadajte cieľový názov súboru:',
 	'importfreeimages_returntoform' => "Alebo sa vráťte na <a href='$1'>výsledky vášho vyhľadávania</a>",
+	'importfreeimages_nophpflickr' => 'Nemáte ainštalovaný phpFlickr. Prosím, nastavte $wgIFphpFlickr vo vašom súbore LocalSettings.php.',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1050,6 +1057,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Fluff
  * @author Lejonel
  * @author M.M.S.
  * @author Sannab
@@ -1067,6 +1075,7 @@ $messages['sv'] = array(
 	'importfreeimages_filefromflickr' => '$1 av användaren <b>[$2]</b> från Flickr. Orginal URL',
 	'importfreeimages_promptuserforfilename' => 'Var god skriv in ett destinationsnamn för filen:',
 	'importfreeimages_returntoform' => "Eller klicka <a href='$1'>här</a> för att gå tillbaka till dina sökresultat",
+	'importfreeimages_nophpflickr' => 'Du har inte phpFlickr installerat, ställ in $wgIFphpFlickr i filen LocalSettings.php.',
 );
 
 /** Telugu (తెలుగు)

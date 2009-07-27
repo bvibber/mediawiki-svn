@@ -397,9 +397,10 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Karduelis
  */
 $messages['tr'] = array(
-	'editown-desc' => 'Hepsinideğiştir yetkisi olmayan kullanıcılar sadece kendi oluşturdukları sayfaları değiştirebilirler',
+	'editown-desc' => 'Hepsini değiştir yetkisi olmayan kullanıcılar sadece kendi oluşturdukları sayfaları değiştirebilirler',
 );
 
 /** Vèneto (Vèneto)

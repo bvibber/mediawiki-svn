@@ -1385,11 +1385,13 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Fluff
  * @author Gabbe.g
  */
 $messages['sv'] = array(
 	'recordadmin' => 'Rekordadministration',
 	'recordadmin-desc' => 'En [[Special:RecordAdmin|specialsida]] för att hitta och ändra titelinformation med hjälp av ett formulär.',
+	'recordadmin-actions' => 'Åtgärder',
 );
 
 /** Telugu (తెలుగు)
@@ -1407,10 +1409,12 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Mopza
  * @author Octahedron80
  */
 $messages['th'] = array(
 	'recordadmin-buttonsearch' => 'สืบค้น',
+	'recordadmin-editlink' => 'แก้ไข',
 );
 
 /** Tagalog (Tagalog)

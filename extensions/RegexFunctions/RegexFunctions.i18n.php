@@ -122,6 +122,13 @@ $messages['he'] = array(
 	'regexfunctions-desc' => 'פונקציות פענוח לביטויים רגולריים',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'regexfunctions-desc' => 'Regular nga ekspresyon parser panksiyon',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

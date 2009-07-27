@@ -1815,6 +1815,7 @@ $messages['tr'] = array(
 	'usagestatisticsintervalweek' => 'Hafta',
 	'usagestatisticsintervalmonth' => 'Ay',
 	'usagestatisticsincremental' => 'Artımlı',
+	'usagestatisticscumulative' => 'Kümülatif',
 );
 
 /** Veps (Vepsan kel')

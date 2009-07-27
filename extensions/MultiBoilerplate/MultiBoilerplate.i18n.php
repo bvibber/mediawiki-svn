@@ -357,6 +357,8 @@ $messages['pt-br'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'multiboilerplate-desc' => "Permette de scacchià 'na pàgene da 'ngorporà da 'na liste ca se iacchie sus a 'a maschere de cangiamende quanne ste cange le pàggene",
+	'multiboilerplate-legend' => "Scacchie 'na pàgene da 'ngorporà",
 	'multiboilerplate-submit' => 'Careche',
 );
 

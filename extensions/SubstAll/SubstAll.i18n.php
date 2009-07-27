@@ -155,6 +155,13 @@ $messages['he'] = array(
 	'substall-hook' => 'substall',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'substall-desc' => 'Nagahimo sang <nowiki><substall></nowiki> tag nga nagapadaku sang tanan nga templates sa wikisyntax',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -171,6 +171,13 @@ $messages['hi'] = array(
 	'titlekey-desc' => 'शीर्षक उपपद खोज सजेशन बॅकएन्ड',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'titlekey-desc' => 'Titulo prefiks pangitaon sugestiyon bakend',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

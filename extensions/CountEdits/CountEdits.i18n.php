@@ -1132,6 +1132,7 @@ $messages['roa-tara'] = array(
 	'countedits-username' => "Nome de l'utende:",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => "Non ge stè nisciune utende cu 'u nome $1.",
+	'countedits-resultheader' => 'Resultate pe $1',
 );
 
 /** Russian (Русский)

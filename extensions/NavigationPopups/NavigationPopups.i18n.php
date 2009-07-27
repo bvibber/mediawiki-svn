@@ -130,6 +130,13 @@ $messages['hi'] = array(
 	'navigationpopups-desc' => 'मीडियाविकि में ल्युपिनकी नेव्हिगेशन स्क्रीप्ट्स पॉप-अप्स लोड करता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'navigationpopups-desc' => 'Ginaload Lupin’s nabigasyon scripts nga nagabutwa sa MediaWiki',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

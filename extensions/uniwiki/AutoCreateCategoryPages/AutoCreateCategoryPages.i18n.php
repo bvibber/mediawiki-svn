@@ -446,6 +446,13 @@ Nagtatala ito ng lahat ng mga pahinang nasa kauriang "$1" maging ang lahat ng ka
 	'autocreatecategorypages-editor' => 'Kusang tagapaglikha ng kaurian',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'autocreatecategorypages-editor' => 'Otomatik kategori oluşturucusu',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

@@ -150,6 +150,13 @@ $messages['he'] = array(
 	'opensearchxml-desc' => 'ממשק XML ל־[http://www.opensearch.org OpenSearch] המאפשר צפייה בקטעי טקסט',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML interface nagahatag para sa gin-ekstrak nga teksto',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

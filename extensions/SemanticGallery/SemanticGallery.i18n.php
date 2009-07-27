@@ -100,6 +100,13 @@ $messages['he'] = array(
 	'semanticgallery-desc' => 'הוספת מבנה פלט גלריה לשאילתות עריכה של SMW',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'semanticgallery-desc' => 'Nagadugang sang galeriya output format pakadto SMW inline pamangkotanon',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

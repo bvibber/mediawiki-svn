@@ -139,6 +139,13 @@ $messages['he'] = array(
 	'randomimage-desc' => 'בחירת מדיה אקראית באמצעות <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'randomimage-desc' => 'Nagahatag sang ginpalgpat medya gapangkuha gamit ang <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

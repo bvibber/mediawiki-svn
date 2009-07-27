@@ -75,6 +75,13 @@ $messages['cs'] = array(
 	'didyoumean-desc' => 'Přidává odkazy na stránky s „podobnými“ názvy',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'didyoumean-desc' => 'Yn ychwanegu cysylltiadau i dudalennau a theitlau rhywfaint yn debyg ganddynt.',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */

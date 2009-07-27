@@ -33,6 +33,14 @@ $messages['bs'] = array(
 	'usabilityinitiative-desc' => 'Mogućnost koju je razvila Wikipedia inicijativa upotrebljivosti da bi se poboljšala upotrebljivost MediaWiki',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'usabilityinitiative' => "''Usability Initiative''",
+	'usabilityinitiative-desc' => "Funcions desenvolupades per la ''Wikipedia Usability Initiative'' per millorar la usabilitat del Mediawiki",
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */

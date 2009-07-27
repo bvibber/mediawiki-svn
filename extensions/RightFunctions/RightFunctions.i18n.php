@@ -330,6 +330,16 @@ $messages['pt-br'] = array(
 	'rightfunctions-ns' => '(de proteção de espaços nominais)',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'rightfunctions-desc' => 'Permesse basate sus a le funziune de analisi',
+	'rightfunctions-casc' => '(da sorgende a cascate)',
+	'rightfunctions-local' => "(da 'na pàgena locale)",
+	'rightfunctions-ns' => "(da 'nu namespace protette)",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

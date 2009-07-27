@@ -62,14 +62,25 @@ $messages['be-tarask'] = array(
 	'cooperationstatistics-legendmore' => 'ці болей рэдактараў.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'cooperationstatistics-desc' => 'Prikazuje [[Special:CooperationStatistics|statistike saradnje u glavnom imenskom prostoru]].',
+	'cooperationstatistics-tablearticle' => 'Broj stranica',
+	'cooperationstatistics-legendmore' => 'ili više urednika.',
+);
+
 /** German (Deutsch)
  * @author Pill
  */
 $messages['de'] = array(
+	'cooperationstatistics-tablevalue' => 'Zahl der Bearbeiter',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|Seite|Seiten}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$2|hat|haben}} $1 {{PLURAL:$1|Bearbeiter|Bearbeiter}}',
 	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|hat|haben}} $1 {{PLURAL:$1|Bearbeiter|oder weniger Bearbeiter}}',
 	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|hat|haben}} $1 oder mehr Bearbeiter',
+	'cooperationstatistics-legendmore' => 'oder mehr Bearbeiter.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -229,6 +240,16 @@ $messages['ja'] = array(
 	'cooperationstatistics-nblessusers' => 'には$1人以下の編集者がいます',
 	'cooperationstatistics-nbmoreusers' => 'には$1人以上の編集者がいます',
 	'cooperationstatistics-legendmore' => '以上の編集者がいます。',
+);
+
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'cooperationstatistics' => 'თანამშრომლობის სტატისტიკა',
+	'cooperationstatistics-tablearticle' => 'გვერდების რაოდენობა',
+	'cooperationstatistics-tablevalue' => 'რედაქტორების რიცხვი',
+	'cooperationstatistics-legendmore' => 'ან მეტი რედაქტორი.',
 );
 
 /** Ripoarisch (Ripoarisch)

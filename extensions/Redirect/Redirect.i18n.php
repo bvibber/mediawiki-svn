@@ -107,6 +107,13 @@ $messages['he'] = array(
 	'redirect-desc' => 'מתן האפשרות להגדרה קלה של הפניות ב[[MediaWiki:Redirect-addnewaccount|יצירת חשבון]] וב[[MediaWiki:Redirect-userlogoutcomplete|יציאה מחשבון]]',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'redirect-desc' => 'nagapasugot sang hapos nga konfigurasyon sang gin-redirek sa [[MediaWiki:Redirect-addnewaccount|account creation]] kag [[MediaWiki:Redirect-userlogoutcomplete|logout]]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

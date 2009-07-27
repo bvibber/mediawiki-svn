@@ -131,6 +131,13 @@ $messages['he'] = array(
 	'tab0-desc' => 'הוספת לשונית "0" המקשרת לעריכת הפסקה הראשונה בדף',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'tab0-desc' => 'Nagadugang "0" tab, ginpatapik didto sa pahina nga gina-islan sang seksiyon nga una sang pahina',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

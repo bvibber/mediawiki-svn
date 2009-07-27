@@ -185,6 +185,13 @@ $messages['hi'] = array(
 	'skinperpage-desc' => 'हर पन्नेपर अलग त्वचा इस्तेमाल करने के लिये उपयुक्त ऐसा <tt>&lt;skin&gt;</tt> टैग बढाता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'skinperpage-desc' => 'Nagadugang <tt>&lt;skin&gt;</tt> tag para magamit ang sari-sari nga panit kada pahina',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

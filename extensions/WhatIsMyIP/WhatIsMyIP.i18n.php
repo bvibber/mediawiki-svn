@@ -39,13 +39,14 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author ;Hiba;1
  * @author Alnokta
  * @author Meno25
  */
 $messages['ar'] = array(
 	'whatismyip' => 'ما هو الأيبي الخاص بي',
-	'whatismyip-desc' => 'يظهر عنوان أيبي المستخدم الحالي في [[Special:WhatIsMyIP|صفحة خاصة]]',
-	'whatismyip-out' => 'الأيبي الخاص بك:',
+	'whatismyip-desc' => 'يظهر IP المستخدم [[Special:WhatIsMyIP|IP address]]',
+	'whatismyip-out' => 'ال IP الخاص بك:',
 );
 
 /** Aramaic (ܐܪܡܝܐ)

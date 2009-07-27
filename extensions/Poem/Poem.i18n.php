@@ -205,6 +205,13 @@ $messages['hi'] = array(
 	'poem-desc' => 'कविता लिखने के लिये आवश्यक <tt>&lt;poem&gt;</tt> टॅग देता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'poem-desc' => 'Gadugang <tt>&lt;poem&gt;</tt> tag para sa pagformat sang tula',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

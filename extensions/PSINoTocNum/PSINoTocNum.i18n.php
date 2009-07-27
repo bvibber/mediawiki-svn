@@ -133,6 +133,13 @@ $messages['he'] = array(
 	'psinotocnum-desc' => 'מילת קסם חדשה "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'psinotocnum-desc' => 'Bag-o nga majic hambal "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

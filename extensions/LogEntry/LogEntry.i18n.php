@@ -275,6 +275,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'logentry-append' => 'Derbäisetzen',
+	'logentry' => 'Androung an e Logbuch',
 	'logentry-invalidpage' => 'Net valabel Säit',
 );
 

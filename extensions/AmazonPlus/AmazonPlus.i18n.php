@@ -38,6 +38,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Fryed-peach
  * @author Meno25
  * @author Purodha
@@ -55,11 +56,13 @@ $messages['qqq'] = array(
 	'amazonplus-german' => 'Name of the German language, or an empty string if translating to German.',
 	'amazonplus-french' => 'Name of the French language, or an empty string if translating to French.',
 	'amazonplus-japanese' => 'Name of the Japanese language, or an empty string if translating to Japanese.',
+	'amazonplus-new' => '{{Identical|New}}',
 	'amazonplus-status' => ';$1:A combination of status messages seperated with [[MediaWiki:Amazonplus-status-sep/en|amazonplus-status-sep]]',
 	'amazonplus-currency' => ';$1:Formatted price without symbol (e.g. 16.41)
 ;$2:Currency code (e.g. USD)
 ;$3:Currency symbol (e.g. $)
 ;$4:Status message',
+	'amazonplus-cp-none' => '{{Identical|None}}',
 	'amazonplus-cp-usd' => '{{optional}}',
 	'amazonplus-cp-cad' => '{{optional}}',
 	'amazonplus-cp-gbp' => '{{optional}}',
@@ -566,7 +569,21 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'amazonplus-desc' => 'Pengaya yang bisa dikustomisasi untuk menampilkan informasi Amazon',
 	'amazonplus-nores' => 'Galat: Tidak ditemukan hasilnya!',
+	'amazonplus-noidres' => 'Galat: Tidak dapat menemukan ID produk!',
+	'amazonplus-fgcerr' => 'Galat: Tidak dapat mengambil data dari Amazon!',
+	'amazonplus-slserr' => 'Galat: Tidak dapat parsing data dari Amazon!',
+	'amazonplus-used' => 'terpakai',
+	'amazonplus-german' => 'Jerman',
+	'amazonplus-french' => 'Perancis',
+	'amazonplus-japanese' => 'Jepang',
+	'amazonplus-amazon' => 'harga amazon',
+	'amazonplus-new' => 'baru',
+	'amazonplus-none' => 'Tidak ada barang ekstra yang dijual.',
+	'amazonplus-cp-none' => 'Tidak ada',
+	'amazonplus-more' => 'lebih',
+	'amazonplus-less' => 'kurang',
 );
 
 /** Italian (Italiano)

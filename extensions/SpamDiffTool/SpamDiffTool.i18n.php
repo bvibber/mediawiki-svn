@@ -223,6 +223,13 @@ $messages['ca'] = array(
 	'spamdifftool_submit_buttom' => 'Envia',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'spamdifftool_option_none' => 'هیچ‌شتێک',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

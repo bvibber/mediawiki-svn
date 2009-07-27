@@ -152,6 +152,13 @@ $messages['nl'] = array(
 	'clientside-desc' => 'Biedt functies voor het genereren van code in client-sideformaten zoals HTML, CSS en JavaScript',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'clientside-desc' => 'Gjev funksjonar for å oppretta kodar i klientside format, til dømes HTML, CSS og JavaScript',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

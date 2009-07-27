@@ -287,6 +287,16 @@ $messages['ca'] = array(
 	'todo-form-submit' => 'Tramet una consulta',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'todo-new-queue' => 'نوێ',
+	'todo-list-change' => 'گۆڕان',
+	'todo-list-cancel' => 'هەڵوەشاندنەوە',
+	'todo-form-details' => 'وردەکاریەکان:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

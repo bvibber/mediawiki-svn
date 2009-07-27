@@ -499,14 +499,27 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Laajennus, jolla voi [[Special:PovWatch|lisätä sivuja toisten käyttäjien tarkkailulistoille]].',
+	'povwatch_already_subscribed' => 'Olet jo liittynyt PovWatchiin',
+	'povwatch_subscribed' => 'Olet nyt liittynyt PovWatchiin',
+	'povwatch_not_subscribed' => 'Et ole liittynyt PovWatchiin, joten et voi peruuttaa sitä.',
+	'povwatch_unsubscribed' => 'Liittymisesi PovWatchiin on nyt peruutettu',
 	'povwatch_invalid_title' => 'Annetun sivun nimi oli virheellinen',
+	'povwatch_intro' => 'PovWatch on palvelu, jonka kautta on mahdollista siirtää kiistanalaisia sivuja mukaan liittyneiden ylläpitäjien tarkkailulistoille.
+
+Loki tuoreimmista tarkkailulistoille [[Special:PovWatch/log|siirroista on saatavilla]].',
 	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|Luettelo tilaajista]] on saatavilla.',
 	'povwatch_subscriber_list_intro' => '<strong>Luettelo tilaajista</strong>',
+	'povwatch_not_allowed_subscribers' => 'Et ole oikeutettu tarkastelemaan PovWatchiin liittyneiden listaa.',
 	'povwatch_unknown_subpage' => 'Tuntematon alasivu.',
+	'povwatch_push_intro' => 'Käytä alla olevaa lomaketta siirtääksesi sivuja mukaan liittyneiden käyttäjien tarkkailulistoille.
+Ole varovainen kirjoittaessasi sivun nimen – jopa olemattomia sivuja voidaan lisätä, eikä ole mitään keinoa poistaa sivunimeä kun se on siirretty eteenpäin.',
 	'povwatch_comment' => 'Lokimerkintä',
 	'povwatch_no_log' => 'Lokitapahtumia ei ole.',
 	'povwatch_no_subscribers' => 'Tilaajia ei ole.',

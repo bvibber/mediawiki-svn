@@ -111,6 +111,19 @@ $messages['co'] = array(
 	'createbox-create' => 'Creà',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'createbox-desc' => "Blwch mewnbynnu arbennig ar gyfer dechrau tudalen o'r newydd",
+	'createbox-create' => 'Dechrau',
+	'createbox-exists' => "Mae'n ddrwg gennym, mae'r dudalen \"'''{{FULLPAGENAME}}'''\" ar gael yn barod.
+
+Ni ellwch ddechrau'r dudalen o'r newydd, ond gallwch [{{fullurl:{{FULLPAGENAME}}|action=edit}} ei golygu], neu [{{fullurl:{{FULLPAGENAME}}}} ei darllen], neu dechrau tudalen arall gan ddefnyddio'r blwch isod.
+
+<createbox>break=no</createbox>",
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Revolus

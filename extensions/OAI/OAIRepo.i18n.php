@@ -175,6 +175,13 @@ $messages['hi'] = array(
 	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] रिपॉजिटरी इंटरफेस देता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'oai-desc' => 'Nagahatag [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repositoryo interface',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

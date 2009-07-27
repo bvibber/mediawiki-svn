@@ -205,6 +205,15 @@ $messages['pt'] = array(
 	'simplesearch-search' => 'Pesquisa',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'simplesearch' => 'Ricerca semblice',
+	'simplesearch-desc' => "Aggiunge 'na funzione extra a 'u vettore d'a ricerche semblificate",
+	'simplesearch-search' => 'Cirche',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */
@@ -230,6 +239,15 @@ $messages['sk'] = array(
 	'simplesearch' => 'Jednoduché vyhľadávanie',
 	'simplesearch-desc' => 'Pridáva ďalšiu funkcionalitu k zjednodušenému vyhľadávaniu témy vzhľadu Vector',
 	'simplesearch-search' => 'Hľadať',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'simplesearch' => 'Enkel sökning',
+	'simplesearch-desc' => 'Lägger till extra funktioner till Vectors förenklade sökning',
+	'simplesearch-search' => 'Sök',
 );
 
 /** Turkish (Türkçe)

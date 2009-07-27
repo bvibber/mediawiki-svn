@@ -195,6 +195,13 @@ $messages['hi'] = array(
 	'mwsearch-desc' => 'एमडब्ल्यूखोज प्लगीन',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'mwsearch-desc' => 'MWPangita plugin',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

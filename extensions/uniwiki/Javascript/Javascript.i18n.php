@@ -130,6 +130,13 @@ $messages['he'] = array(
 	'javascript-desc' => 'הוספת הקובץ uniwiki.js לכל דף, שמכיל קוד JavaScript המשותף בין ההרחבות של יוניויקי',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'javascript-desc' => 'Nagadugang uniwiki.js sa kada pahina nga may ara JavaScript koda upod sang Uniwiki ekstensiyon',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

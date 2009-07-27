@@ -2578,7 +2578,12 @@ $messages['tr'] = array(
 	'grouppermissions-deletelabel' => 'Grup sil',
 	'grouppermissions-add' => 'Grup ekle',
 	'grouppermissions-delete' => 'Grup sil',
+	'grouppermissions-comment' => 'Açıklama:',
+	'grouppermissions-log-add' => '"$2" grubu eklendi',
+	'grouppermissions-log-delete' => '"$2" grubu silindi',
+	'grouppermissions-log-name' => 'Grup izini kayıtları',
 	'grouppermissions-sp-save' => 'Kaydet',
+	'grouppermissions-sp-remove' => 'kaldır',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

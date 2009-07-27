@@ -96,6 +96,14 @@ $messages['cs'] = array(
 	'contributionseditcount-desc' => 'Zobrazuje počet editací na stránce [[Special:Contributions|Příspěvky uživatele]]',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'contributionseditcount' => "Mae'r defnyddiwr hwn wedi cwblhau $1 {{PLURAL:$1|golygiad|golygiad|olygiad|golygiad|golygiad|o olygiadau}}.",
+	'contributionseditcount-desc' => "Yn dangos nifer golygiadau'r defnyddiwr ar ei [[Special:Contributions|dudalen gyfraniadau]]",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender

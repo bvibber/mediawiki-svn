@@ -119,6 +119,13 @@ $messages['hi'] = array(
 	'newsextension-desc' => 'विकिके पन्नोंमें हुए बदलाव आरएसएस फीड या ऍटम फीड के रूपमें दर्शाता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'newsextension-desc' => 'Nagapakita sang kustomized nga bag-o lang gin-islan sa pahina sang wiki, o bilang RSS o Atom feed',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

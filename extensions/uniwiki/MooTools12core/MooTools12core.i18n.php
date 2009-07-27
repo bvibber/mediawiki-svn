@@ -152,6 +152,13 @@ $messages['he'] = array(
 	'mootools12core-desc' => 'הוספת [http://mootools.net mootools-1.2-core-yc.js], סביבת JavaScript חסכונית, לכל דף',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'mootools12core-desc' => 'Nagadugang [http://mootools.net mootools-1.2-core-yc.js], isa ka kompak JavaScript framework, sa kada pahina',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -145,6 +145,13 @@ $messages['he'] = array(
 	'trustedxff-desc' => 'טיפול ברשימה של כתובות פרוקסי אמינות ([http://meta.wikimedia.org/wiki/XFF_project פרויקט ה־XFF])',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'trustedxff-desc' => 'Naga-uyat sang lista sang mga masaligan proxy adres ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

@@ -142,6 +142,15 @@ $messages['ca'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'filelist' => 'لیستی پەڕگە',
+	'filelist-show-list' => 'نیشان‌دانی لیست',
+	'filelist-show-gallery' => 'نیشان‌دانی گالێری',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

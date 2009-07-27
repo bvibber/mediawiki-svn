@@ -1650,6 +1650,7 @@ $messages['tr'] = array(
  * @author AS
  * @author Ahonc
  * @author Aleksandrit
+ * @author Ilyaroz
  */
 $messages['uk'] = array(
 	'vote' => 'Голосування',
@@ -1670,6 +1671,8 @@ $messages['uk'] = array(
 	'vote-results-none' => 'Нема голосів, відданих за цей час.',
 	'vote-login' => 'Щоб проголосувати, ви повинні [$1 ввійти до системи].',
 	'vote-invalid-choice' => 'Ви можете обрати один з доступних варіантів.',
+	'right-vote' => 'голосувати',
+	'right-voteadmin' => 'переглянути результати голосування',
 );
 
 /** Veps (Vepsan kel')

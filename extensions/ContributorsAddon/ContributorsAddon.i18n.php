@@ -56,6 +56,13 @@ $messages['cs'] = array(
 	'contributorsaddon-desc' => 'Přidává pop-up okna nad odkazy „Hlavní přispěvatelé“',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'contributorsaddon-desc' => 'Yn ychwanegu llamlenni JavaScript at gysylltiadau "Prif gyfranwyr"',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

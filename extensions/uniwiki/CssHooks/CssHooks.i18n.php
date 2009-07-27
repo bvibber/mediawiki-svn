@@ -147,6 +147,13 @@ $messages['he'] = array(
 	'csshooks-desc' => 'הוספת CSS לפלט ה־HTML של הדפים כדי לאפשר מראה טוב יותר',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'csshooks-desc' => 'Nagadugang CSS sa HTML ouput nga gikan sa mga pahina para mangin maayo ang estilo',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

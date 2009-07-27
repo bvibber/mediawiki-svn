@@ -2347,6 +2347,8 @@ Vielleicht kamen Sie direkt zu dieser Seite?',
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'wikidata-desc' => 'Pśidawa datowu banku za nałogom wikija za wšake typy wopśimjeśa',
+	'wikidata-handler-namespace-move-error' => 'Boki w mjenjowych rumach, kótarež rozšyrjenje Wikidata wužywa, njedaju se pśesunuś.',
 	'languages' => 'Wikidata: Zastojnik rěcow',
 	'langman-desc' => 'Rěcne nastajenja z [[Special:Languages]] pśidaś a změniś',
 	'langman_title' => 'Zastojnik rěcow',
@@ -2437,11 +2439,11 @@ Pšosym glědaj [[{{MediaWiki:Ow editing policy url}}|naše wobźěłowańske za
 	'conceptmapping' => 'Wikidaty: Zwězanje zapśimjeśow',
 	'ow_conceptmapping_title' => 'Zwězanje zapśimjeśow',
 	'ow_conceptmapping_help' => '<p>móžne akcije: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... zwězanje zasajźiś</li>
-<li>&action=get&concept=<concept_id> zwězanje pśecytaś</li>
-<li>&action=list_sets lisćinu móžnych prefiksow datowego konteksta a na což se póśěguju wrośiś.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  zwězanje zasajźiś</li>
+<li>&action=get&concept=<concept_id>  zwězanje pśecytaś</li>
+<li>&action=list_sets  lisćinu móžnych prefiksow datowego konteksta a na což se póśěguju wrośiś.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> za jaden definěrowany wóznam w zapśimjeśu, wroś wše druge</li>
-<li>&action=help Wužytnu pomoc pokazaś.</li>
+<li>&action=help  Wužytnu pomoc pokazaś.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Concept Mapping zmóžnja identificěrowaś, kótary definěrowany wóznam jo identiski z definěrowanym wóznamom w drugich datowych sajźbach.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" se njepódpěra.',
@@ -2529,6 +2531,7 @@ Pšosym pśekontrolěruj webadresu.',
 	'ow_meaningsoftitle' => 'Wóznamy zapśimjeśa "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wikijowy wótkaz:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Dowólenje wótpokazane</h2>',
+	'copy' => 'Wikidata: Kopěrowaś',
 	'ow_copy_no_action_specified' => 'Pšosym pódaj akciju',
 	'ow_copy_help' => 'Pomoc hyšći njejo implementěrowana.',
 	'ow_please_proved_dmid' => 'Zda se, až twójo zapódaśe njama "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
@@ -2570,6 +2573,7 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
 	'ow_nstab_definedmeaning' => 'definěrowany wóznam',
 	'ow_nstab_edit_copy' => 'kopiju wobźěłaś',
 	'right-addlanguage' => 'Rěcne nastajenja pśidaś a změniś',
+	'ow_shown_datasets' => 'Pokazane datowe sajźby',
 );
 
 /** Greek (Ελληνικά)
@@ -3028,6 +3032,7 @@ $messages['et'] = array(
  * @author Kobazulo
  * @author Pi
  * @author Theklan
+ * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
 	'languages' => 'WIkidata: Hizkuntza administraria',
@@ -3118,6 +3123,7 @@ Ziurtatu ezazu berriro web helbidea, mesedez.',
 	'ow_TranslatedTextAttributeValues' => 'Itzul daitezkeen testuak',
 	'ow_LinkAttribute' => 'Ezaugarria',
 	'ow_LinkAttributeValues' => 'Loturak',
+	'ow_User' => 'Lankide',
 	'ow_Property' => 'Ezaugarria',
 	'ow_Value' => 'Balioa',
 	'ow_meaningsoftitle' => '"$1"en esanahiak',
@@ -3340,6 +3346,8 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
  * @author Verdy p
  */
 $messages['fr'] = array(
+	'wikidata-desc' => 'Ajoute des base de données ressemblant aux wikis pour différents types de contenu',
+	'wikidata-handler-namespace-move-error' => "Les pages dans les espaces de noms pris en charge par l'extension Wikidata ne peuvent pas être déplacées.",
 	'languages' => 'Wikidata : gestionnaire de langues',
 	'langman-desc' => 'Ajouter et modifier les paramètres de langues avec [[Special:Languages]]',
 	'langman_title' => 'Gestionnaire de langues',
@@ -3565,6 +3573,7 @@ Veuillez contacter l’opérateur ou l’administrateur du serveur.',
 	'ow_nstab_definedmeaning' => 'sens défini',
 	'ow_nstab_edit_copy' => 'modifier la copie',
 	'right-addlanguage' => 'Ajouter et modifier les paramètres de langues',
+	'ow_shown_datasets' => 'Afficher les ensembles de données',
 );
 
 /** Western Frisian (Frysk)
@@ -7388,6 +7397,8 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'wikidata-desc' => 'Apond de basa de donadas que se semblan als wikis per diferents tipes de contengut',
+	'wikidata-handler-namespace-move-error' => "Las paginas dins los espacis de noms preses en carga per l'extension Wikidata pòdon pas èsser desplaçadas.",
 	'languages' => 'Wikidata: Gestion de las lengas',
 	'langman-desc' => 'Apondre e modificar los paramètres de lengas amb [[Special:Languages]]',
 	'langman_title' => 'Gestion de las lengas',
@@ -7433,7 +7444,7 @@ $messages['oc'] = array(
 Siatz segur(a) que vòstra aplicacion a salvat o exportat lo fichièr corrèctament.</p>",
 	'ow_importtsv_not_tsv' => '<p>Aquò sembla pas èsser un fichièr TSV valid.</p>',
 	'ow_importtsv_bad_columns' => '<p>Nom de colomna « $1 » invalida.<br />
-las colomnas devon èsser nomenadas « definition_iso » o « translations_iso »,
+las colomnas devon èsser nomenadas « definition_iso » o « translations_iso »,   
 ont iso es lo còde de lenga.</p>',
 	'ow_importtsv_test_run_title' => "Tèst d'importacion per las donadas TSV",
 	'ow_importtsv_nothing_added' => 'Res es pas estat apondut.',
@@ -7479,11 +7490,11 @@ Vejatz [[{{MediaWiki:Ow editing policy url}}|nòstras règlas d'edicion]].",
 	'conceptmapping' => 'Wikidata: Esquèma conceptual',
 	'ow_conceptmapping_title' => 'Esquèma conceptual',
 	'ow_conceptmapping_help' => "<p>accions possiblas : <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... inserir una mapa</li>
-<li>&action=get&concept=<concept_id> tornar veire una mapa</li>
-<li>&action=list_sets retorna una lista dels prefixes de contèxtes possibles e sus qué se referisson.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserir una mapa</li>
+<li>&action=get&concept=<concept_id>  tornar veire una mapa</li>
+<li>&action=list_sets  retorna una lista dels prefixes de contèxtes possibles e sus qué se referisson.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> per un definit dins lo sens d'un concèpte, retorna totes los autres.</li>
-<li>&action=help Vejatz l’ajuda completa.</li>
+<li>&action=help  Vejatz l’ajuda completa.</li>
 </ul></p>",
 	'ow_conceptmapping_uitext' => "<p>La mapa dels concèptes vos permet d'identificar
 que lo sens definit dins una donada siá identic
@@ -7571,6 +7582,7 @@ als senses definits dins las autras donadas.</p>",
 	'ow_meaningsoftitle' => 'Sens de "$1"',
 	'ow_meaningsofsubtitle' => '<em>ligam wiki :</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMISSION REFUSADA</h2>',
+	'copy' => 'Wikidata : Copiar',
 	'ow_copy_no_action_specified' => "Mercé d'especificar una accion",
 	'ow_copy_help' => "L'ajuda es pas encara estada implementada.",
 	'ow_please_proved_dmid' => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del servidor.',
@@ -7604,6 +7616,7 @@ Contactatz l’administrator.',
 	'ow_nstab_definedmeaning' => 'significacion definida',
 	'ow_nstab_edit_copy' => 'modificar la còpia',
 	'right-addlanguage' => 'Apondre e modificar los paramètres de lengas',
+	'ow_shown_datasets' => 'Afichar los ensembles de donadas',
 );
 
 /** Oriya (ଓଡ଼ିଆ)

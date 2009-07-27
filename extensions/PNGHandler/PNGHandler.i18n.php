@@ -141,6 +141,13 @@ $messages['he'] = array(
 	'pnghandler-desc' => 'שינוי גודל קובצי PNG באמצעות pngds',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'pnghandler-desc' => 'Islan ang kadaku-on PNGs gamit sang pngds',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

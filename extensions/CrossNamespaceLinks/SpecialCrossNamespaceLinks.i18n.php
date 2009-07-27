@@ -807,6 +807,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'crossnamespacelinks' => "Collegaminde 'mbrà namespace 'ngrociate",
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|collegamende|collegaminde}} a $3',
 );
 

@@ -3796,6 +3796,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Fluff
  * @author IAlex
  * @author Jon Harald Søby
  * @author Lokal Profil
@@ -3833,6 +3834,7 @@ Var god konsultera en [[Special:ListUsers/sysop|administratör]].',
 	'openidfullname' => 'Fullt namn',
 	'openidemail' => 'E-postadress',
 	'openidlanguage' => 'Språk',
+	'openidtimezone' => 'Tidszon',
 	'openidnotavailable' => 'Ditt framförda användarnamn ($1) används redan av en annan användare.',
 	'openidnotprovided' => 'Din OpenID-server uppgav inte ett användarnamn (antingen för att den inte kan, eller för att du har sagt till den att den inte ska göra det).',
 	'openidchooseinstructions' => 'Alla användare måste ha ett användarnamn;
@@ -3843,7 +3845,8 @@ du kan välja ett från alternativen nedan.',
 	'openidchoosemanual' => 'Ett valfritt namn:',
 	'openidchooseexisting' => 'Ett existerande konto på denna wiki:',
 	'openidchoosepassword' => 'lösenord:',
-	'openidconvertinstructions' => 'Detta formulär låter dig ändra dina användarkonton till att använda en OpenID-adress.',
+	'openidconvertinstructions' => 'Detta formulär låter dig ändra dina användarkonton till att använda eller lägga till en eller flera OpenID-adresser',
+	'openidconvertoraddmoreids' => 'Konvertera till OpenID eller lägg till en ny OpenID-adress',
 	'openidconvertsuccess' => 'Konverterade till OpenID',
 	'openidconvertsuccesstext' => 'Du har konverterat din OpenID till $1.',
 	'openidconvertyourstext' => 'Det är redan din OpenID.',
@@ -3866,9 +3869,18 @@ För att använda OpenID i framtiden kan du [[Special:OpenIDConvert|konvertera d
 
 Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan redan ha ett OpenID-aktiverat konto på en annan plats.',
 	'openidupdateuserinfo' => 'Uppdatera min personliga information',
+	'openiddelete' => 'Ta bort OpenID',
+	'openiddelete-text' => 'Genom att klicka på knappen "{{int:openiddelete-button}}" kommer du att ta bort OpenID $1 från ditt konto. Du kommer inte att kunna använda detta OpenID för att logga in.',
+	'openiddelete-button' => 'Bekräfta',
+	'openiddelete-sucess' => 'OpenID-kopplingen har tagits bort från ditt konto.',
+	'openiddelete-error' => 'Ett fel uppstod när OpenID-kopplingen skulle tas bort från ditt konto.',
 	'openid-prefstext' => '[http://openid.net/ OpenID] inställningar',
 	'openid-pref-hide' => 'Dölj OpenID på din användarsida, om du loggar in med OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Uppdatera min informationen från OpenID-persona varje gång jag loggar in',
+	'openid-pref-update-userinfo-on-login' => 'Uppdatera följande information från min OpenID-profil varje gång jag loggar in',
+	'openid-urls-desc' => 'OpenID som är kopplade till ditt konto:',
+	'openid-urls-action' => 'Åtgärd',
+	'openid-urls-delete' => 'Ta bort',
+	'openid-add-url' => 'Lägg till ett nytt OpenID',
 	'openidsigninorcreateaccount' => 'Logga in eller skapa ett nytt konto',
 	'openid-provider-label-openid' => 'Skriv in din OpenID-URL',
 	'openid-provider-label-google' => 'Logga in genom att använda ditt Google-konto',

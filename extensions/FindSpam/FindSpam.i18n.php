@@ -732,7 +732,12 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'findspam' => "Iacchie 'u spam",
+	'findspam-desc' => "Aggiunge 'na [[Special:FindSpam|pàgena speciale]] pe permettere de acchià le urteme spam aggiunde",
+	'findspam-ip' => 'Indirizze IP:',
 	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Nisciune condrebbute acchiate',
+	'right-findspam' => 'Cirche pe le urteme spam aggiunde',
 );
 
 /** Russian (Русский)

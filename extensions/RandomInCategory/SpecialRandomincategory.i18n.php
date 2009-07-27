@@ -349,9 +349,14 @@ $messages['hi'] = array(
 
 /** Hiligaynon (Ilonggo)
  * @author Jose77
+ * @author Tagimata
  */
 $messages['hil'] = array(
+	'randomincategory' => 'Lagpatan nga pahina sa kategorya',
+	'randomincategory-desc' => '[[Special:Randomincategory|Special page]] para makuha ang palagpat nga pahina sa kategorya',
 	'randomincategory-toolbox' => 'Lagpat nga Panid',
+	'randomincategory-nocategory' => 'Kategorya $1 wala pa nahimuan o blangko ini',
+	'randomincategory-label' => 'Kategorya:',
 	'randomincategory-submit' => 'Lakat',
 );
 

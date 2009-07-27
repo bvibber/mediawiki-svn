@@ -150,6 +150,13 @@ $messages['he'] = array(
 	'formatsearch-desc' => 'ההרחבה מנקה את דף תוצאות החיפוש',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'formatsearch-desc' => 'Gina tinlu-an ang pahina nga resulta pagpangita',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

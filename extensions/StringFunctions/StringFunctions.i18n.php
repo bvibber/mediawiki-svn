@@ -171,6 +171,13 @@ $messages['he'] = array(
 	'stringfunctions-desc' => 'הוספת הוראות מחרוזת למפענח',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'stringfunctions-desc' => 'Ginapanami ang parser upod sang string panksiyones',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

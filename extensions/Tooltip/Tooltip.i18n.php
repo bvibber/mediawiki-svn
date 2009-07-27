@@ -72,6 +72,13 @@ $messages['cs'] = array(
 	'tooltip-desc' => 'Přidává značky <tt>&lt;tooltip&gt;</tt> a <tt>{{&#35;tooltip:}}</tt>',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'tooltip-desc' => 'Yn ychwanegu tagiau <tt><nowiki><tooltip></nowiki></tt> a <tt><nowiki>{{#tooltip:}}</nowiki></tt> tag',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender
@@ -157,6 +164,13 @@ $messages['gu'] = array(
  */
 $messages['he'] = array(
 	'tooltip-desc' => 'הוספת התגיות <tt><nowiki><tooltip></nowiki></tt> ו־<tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'tooltip-desc' => 'Nagadugang <tt><nowiki><tooltip></nowiki></tt> kag <tt><nowiki>{{#tooltip:}}</nowiki></tt> tag',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

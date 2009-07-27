@@ -581,10 +581,11 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Karduelis
  */
 $messages['tr'] = array(
 	'absenteelandlord-reason' => 'Bu veritabanı sysoplardaki durgunluk nedeniyle otomatik olarak kilitlenmiştir.',
-	'absenteelandlord-desc' => 'Eğer bütün sysoplar bir süre etkin değilse, viki veritabanını otomatik olarak kilitler',
+	'absenteelandlord-desc' => 'Eğer bütün hizmetliler bir süre etkin değilse, viki veritabanını otomatik olarak kilitler',
 );
 
 /** Ukrainian (Українська)

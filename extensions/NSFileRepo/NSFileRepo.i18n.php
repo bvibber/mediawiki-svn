@@ -78,6 +78,13 @@ $messages['he'] = array(
 	'nsfilerepo-desc' => 'הוספת תכונות מבוססות מרחב שם לקבצים שהועלו',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'nsfilerepo-desc' => 'Nagahatag ngalanespasyo base sa mga feature para i-upload ang mga file',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -132,6 +139,13 @@ $messages['oc'] = array(
  */
 $messages['pms'] = array(
 	'nsfilerepo-desc' => 'Fornì fonsion basà an dzora a namespace për carié dij file',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'nsfilerepo-desc' => 'Prevede namespace ca se basene sus a le funziune pe carecà le file',
 );
 
 /** Russian (Русский)

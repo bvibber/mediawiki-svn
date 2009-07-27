@@ -94,6 +94,13 @@ $messages['cs'] = array(
 	'charinsert-desc' => 'Umožňuje vytvoření JavaScriptového políčka, které zjednodušuje [[MediaWiki:Edittools|vkládání neobvyklých znaků]]',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'charinsert-desc' => 'Yn caniatau llunio blwch Javascript ar gyfer [[MediaWiki:Edittools|gosod nodau ansafonol]]',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

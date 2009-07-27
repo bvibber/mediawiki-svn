@@ -1256,6 +1256,7 @@ $messages['roa-tara'] = array(
 	'readerfeedback-voted' => "'''Pare proprie ca tu è già vutete pe sta pàgene''' ([$3 Commende o dumanne?]).",
 	'readerfeedback-submitting' => 'In conferme...',
 	'readerfeedback-finished' => "Grazie 'mbà",
+	'readerfeedback-tagfilter' => 'Tag:',
 	'tooltip-ca-ratinghist' => 'Pundegge de le letture de sta pàgene',
 );
 

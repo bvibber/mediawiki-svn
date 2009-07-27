@@ -105,6 +105,13 @@ $messages['gsw'] = array(
 	'pipeescape-desc' => 'Parserfunktion <code>#!</code> versteckt Parameter-Trenner',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'pipeescape-desc' => 'Parser panksiyon <code>#!</code> para kada kilanlan nimo sang karakter tubo para mangin isa ka karakter tubo',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

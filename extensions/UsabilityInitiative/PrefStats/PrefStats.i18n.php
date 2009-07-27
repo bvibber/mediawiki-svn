@@ -394,6 +394,13 @@ $messages['sk'] = array(
 Po kliknutí na niektoré z nich zobrazíte štatistiku o ňom.',
 );
 
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'prefstats' => 'Statistik över inställningar',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

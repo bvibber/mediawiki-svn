@@ -1609,10 +1609,13 @@ Pakihintay lamang na mabuo muna ang umiiral na kilos.',
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'taggedimages' => 'Etiketlenmiş resimler',
 	'imagetagging-article' => 'Sayfa:',
 	'imagetagging-imghistory' => 'Geçmiş',
 	'imagetagging-images' => 'Resimler',
 	'imagetagging-tagcancel-button' => 'İptal',
+	'imagetagging-addingtag' => 'Etiket ekleniyor...',
+	'imagetagging-removingtag' => 'Etiket kaldırılıyor...',
 	'imagetagging-taggedimages-title' => '"$1" resimleri',
 );
 

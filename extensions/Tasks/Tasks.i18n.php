@@ -478,6 +478,14 @@ $messages['ca'] = array(
 	'tasks_status_closed' => 'Tancat',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'tasks_previous' => 'پێشوو',
+	'tasks_next' => 'دواتر',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

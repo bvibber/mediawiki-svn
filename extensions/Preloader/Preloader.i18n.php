@@ -127,6 +127,13 @@ $messages['gsw'] = array(
 	'preloader-desc' => 'Macht s megli pro Namensruum aapassbarei Vorlage zuezfiege bim Aalege vu neje Syte',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'preloader-desc' => 'Nagahatag sang gin-obra na daan kada-ngalanespasyo boilerplate teksto para sa mga bag-o nga pahina',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

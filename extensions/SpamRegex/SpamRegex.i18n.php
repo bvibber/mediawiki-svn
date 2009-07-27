@@ -256,6 +256,14 @@ $messages['ca'] = array(
 	'spamregex-already-blocked' => '«$1» ja està blocat',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'spamregex-text' => '(دەق)',
+	'spamregex-summary-log' => '(پوختە)',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

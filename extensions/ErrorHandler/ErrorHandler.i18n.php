@@ -1047,6 +1047,13 @@ $messages['tl'] = array(
 	'errorhandler-trace-line-internal' => '[panloob na tungkulin]: $1',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'errorhandler-errors' => 'Hatalar:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
