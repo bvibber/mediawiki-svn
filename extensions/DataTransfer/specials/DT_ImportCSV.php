@@ -73,19 +73,25 @@ class DTImportCSV extends SpecialPage {
 		if ($wgRequest->getCheck('import_file')) {
 			$text = "<p>" . wfMsg('dt_import_importing') . "</p>\n";
 			$source = ImportStreamSource::newFromUpload( "csv_file" );
+			$encoding = $wgRequest->getVal('encoding');
 			$pages = array();
-			$error_msg = self::getCSVData($source->mHandle, $pages);
+			$error_msg = self::getCSVData($source->mHandle, $encoding, $pages);
 			if (! is_null($error_msg))
 				$text .= $error_msg;
 			else
 				$text .= self::modifyPages($pages);
 		} else {
 			$select_file_label = wfMsg('dt_import_selectfile', 'CSV');
+			$encoding_type_label = wfMsg('dt_import_encodingtype');
 			$import_button = wfMsg('import-interwiki-submit');
 			$text =<<<END
 	<p>$select_file_label</p>
 	<form enctype="multipart/form-data" action="" method="post">
 	<p><input type="file" name="csv_file" size="25" /></p>
+	<p>$encoding_type_label: <select name="encoding">
+	<option selected value="utf8">UTF-8</option>
+	<option value="utf16">UTF-16</option>
+	</select>
 	<p><input type="Submit" name="import_file" value="$import_button"></p>
 	</form>
 
@@ -96,14 +102,18 @@ END;
 	}
 
 
-	static function getCSVData($csv_file, &$pages) {
+	static function getCSVData($csv_file, $encoding, &$pages) {
+		if (is_null($csv_file))
+			return wfMsg('emptyfile');
 		$table = array();
 		while ($line = fgetcsv($csv_file)) {
-			// fix values in case the file wasn't UTF-8 encoded -
+			// fix values if the file wasn't UTF-8 encoded -
 			// hopefully the UTF-8 value will work across all
 			// database encodings
-			$encoded_line = array_map('utf8_encode', $line);
-			array_push($table, $encoded_line);
+			if ($encoding == 'utf16') {
+				$line = array_map('utf8_encode', $line);
+			}
+			array_push($table, $line);
 		}
 		fclose($csv_file);
 		// check header line to make sure every term is in the
