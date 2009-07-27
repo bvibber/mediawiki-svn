@@ -21,4 +21,5 @@ maptypes:
 caching:
   max-age: 604800
 
+# Where to read our list of languages from
 locales: /sql/misc-data/wikipedia-languages.yml  
