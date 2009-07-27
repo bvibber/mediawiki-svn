@@ -88,7 +88,7 @@ $wgSlippyMapModes = array(
 		'static_rendering' => array(
 			'type' => 'SlippyMapExportCgiBin',
 			'options' => array(
-				'base_url' => 'http://localhost/cgi-bin/export',
+				'base_url' => 'http://cassini.toolserver.org/cgi-bin/export',
 
 				'format' => 'png',
 				'numZoomLevels' => 19,
