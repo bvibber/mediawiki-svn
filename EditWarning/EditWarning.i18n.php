@@ -50,6 +50,15 @@ $messages['bs'] = array(
 	'editwarning-warning' => 'Napuštanjem ove stranice će se izgubiti sve promjene koje ste načinili.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'editwarning' => "Avís d'edició",
+	'editwarning-desc' => 'Mostra un avís quan un usuari intenti sortir del formulari sense desar.',
+	'editwarning-warning' => "Si sortiu d'aquesta pàgina, perdreu tots els canvis que heu fet.",
+);
+
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
