@@ -78,7 +78,7 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Falschschreibung"));
 		
 		//resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.DISAMBIG, "Begriffskl\u00e4rung", null) );
-		resourceTypeSensors.add( new HasCategoryLikeSensor<ResourceType>(ResourceType.LIST, "^(Teill|L)iste$|^(Teill|L)iste_\\(.+\\)$", 0));
+		resourceTypeSensors.add( new HasCategoryLikeSensor<ResourceType>(ResourceType.LIST, "^(Stamm|Biographiel|Personenl|Teill|L)iste($|_\\(.+\\)$)|^((Nekrolog|Zeittafel|Literaturjahr|Diskografie)_.*)$", 0));
 
 		disambigStripSectionPattern = sectionPattern("Siehe auch", 0);  
 
