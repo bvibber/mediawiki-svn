@@ -253,6 +253,17 @@ class OggHandler extends MediaHandler {
 			' -i ' . wfEscapeShellArg( $file->getPath() ) . 
 			' -f mjpeg -an -vframes 1 ' .
 			wfEscapeShellArg( $dstPath ) . ' 2>&1';
+			$retval = 0;
+			$returnText = wfShellExec( $cmd, $retval );
+                }
+                
+		if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
+			#No mapping, time zero. A last ditch attempt. 			
+			$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . 
+			' -ss 0 ' .
+			' -i ' . wfEscapeShellArg( $file->getPath() ) . 
+			' -f mjpeg -an -vframes 1 ' .
+			wfEscapeShellArg( $dstPath ) . ' 2>&1';
 				
 			$retval = 0;
 			$returnText = wfShellExec( $cmd, $retval );
