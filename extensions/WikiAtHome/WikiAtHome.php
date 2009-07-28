@@ -6,7 +6,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $exDir = dirname(__FILE__);
-$wgAutoloadClasses['NonFreeVideoHandler'] = "$exDir/NonFreeVideoHandler.php";
+$wgAutoloadClasses['NonFreeVideoHandler'] 	= "$exDir/NonFreeVideoHandler.php";
+$wgAutoloadClasses['WahJobManager'] 		= "$exDri/WahJobManager.php";
 
 //add a set of video extensions to the $wgFileExtensions set that we support transcoding from
 $tmpExt = array('avi', 'mov', 'mp4', 'mp2', 'mpeg', 'mpeg2', 'mpeg4', 'dv', 'wmv' );
@@ -31,7 +32,46 @@ $wgExtensionCredits['media'][] = array(
 	'descriptionmsg' => 'wikiathome-desc',
 );
 
+/*
+ * Main WikiAtHome Class hold some constants and config values
+ * 
+ */
+class WikiAtHome {
+	const ENC_SAVE_BANDWITH = '256_200kbs';
+	const ENC_WEB_STREAM = '400_300kbs';
+	const ENC_HQ_STREAM = 'high_quality';
+}
+
 /******************* CONFIGURATION STARTS HERE **********************/
+
+//what to encode to: 
+$wgEnabledDerivatives = array( WikiAtHome::ENC_WEB_STREAM );
+
+//these params are set via firefogg encode options see:
+//http://firefogg.org/dev/index.html
+//if you want to re-derive things you should change its key above in the WikiAtHome class
+$wgDerivativeSettings[ WikiAtHome::ENC_SAVE_BANDWITH ] = 
+		array(
+			'videoBitrate'	=> '200',
+			'audioBitrate'	=> '32',
+			'samplerate'	=> '24',
+			'channels'		=> '1',
+			'width'			=> '256',
+			'noUpscaling'	=> 'true'
+		);
+$wgDerivativeSettings[ WikiAtHome::ENC_WEB_STREAM ] = 
+		array( 
+			'width'			=> '400',
+			'videoBitrate'	=> '400',
+			'audioBitrate'	=> '64',
+			'noUpscaling'	=> 'true'
+		);
+$wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
+		array(
+			'videoQuality'  => 9,
+			'audioQuality'	=> 9,
+			'noUpscaling'	=> 'true'		
+		);
 
 //ffmpeg2theora path: enables us to get basic source file information
 $wgffmpeg2theora = '/usr/bin/ffmpeg2theora';

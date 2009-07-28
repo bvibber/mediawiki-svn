@@ -3,3 +3,7 @@ Wiki@Home enables distributing transcoding video jobs to clients using firefogg
 To install this extension, add the following to the end of your LocalSettings.php:
 
     require( "$IP/extensions/WikiAtHome/WikiAtHome.php" );
+    
+You will also need to install ffmpeg2theora (for getting info about files) 
+you can download the latest here:
+http://firefogg.org/nightly/

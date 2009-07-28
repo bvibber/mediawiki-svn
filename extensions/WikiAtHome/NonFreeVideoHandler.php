@@ -129,28 +129,44 @@ class NonFreeVideoHandler extends MediaHandler {
 	}
 
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
-		global $wgFFmpegLocation;
-
-		//check the $params range for now lets do two derivatives one for 400x300 and
-		//another at the source resolution
-
+		global $wgEnabledDerivatives;
+		
+		$targetWidth = $params['width'];
+		$srcWidth = $file->getWidth();
+		$srcHeight = $file->getHeight();
+		
+		//do some arbitrary derivative selection logic: 
+		$encodeKey = $this->getTargetDerivative($targetWidth, $srcWidth);		
+		//see if we have that encoding profile already:		
+		
 		//get the job manager .. check status and output current state or defer to oggHanndler_body for output
-		$jobSet = new WahJobMannager();
-		if( $jobSet->isDone() ){
+		$jobSet = new WahJobManager( $file , $encodeKey );
+		$percDone = $jobSet->getDonePerc();
+		if( $percDone = 1 ){
 			//we should be able to output ogg then:
+		}else{			
+			//output our current progress
+			return new MediaQueueTransformOutput(  $file, $videoUrl, $width, $height, $percDone );
 		}
-
-		//check jobset table for this
-
-			//no derivative then add the jobset
-
-
-		//do oggHandler render on Derivative
-
-		return new NonFreeTransformOutput( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath, $noIcon);
-		//check the
 	}
-
+	
+	static function getTargetDerivative($targetWidth, $srcWidth ){
+		global $wgEnabledDerivatives, $wgDerivativeSettings;
+		if( count($wgEnabledDerivatives) == 1 )
+			return current($wgEnabledDerivatives);
+		//if target width > 450 & high quality is on then give them HQ:
+		if( $targetWidth > 450 && in_array(WikiAtHome::ENC_HQ_STREAM, $wgEnabledDerivatives) )
+			return WikiAtHome::ENC_HQ_STREAM;
+		//if target width <= 250 and ENC_SAVE_BANDWITH then send small version
+		if( $targetWidth >= 260 && in_array(WikiAtHome::ENC_SAVE_BANDWITH, $wgEnabledDerivatives) )
+			return WikiAtHome::ENC_SAVE_BANDWITH;		
+		//return the default web stream if on 
+		if( in_array(WikiAtHome::ENC_WEB_STREAM, $wgEnabledDerivatives) )
+			return WikiAtHome::ENC_WEB_STREAM;
+		//else return whatever we have
+		return $wgDerivativeSettings[ current($wgEnabledDerivatives) ];		
+	}
+	
 	function getMetadataType( $image ) {
 		return 'vid';
 	}
@@ -265,25 +281,19 @@ class NonFreeVideoHandler extends MediaHandler {
 class MediaQueueTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
 
-	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, $isVideo,
-		$path, $noIcon = false, $offset )
+	function __construct( $file, $videoUrl, $width, $height, $percDone )
 	{
 		$this->file = $file;
 		$this->videoUrl = $videoUrl;
-		$this->url = $thumbUrl;
 		$this->width = round( $width );
-		$this->height = round( $height );
-		$this->length = round( $length );
-		$this->offset = round( $offset );
-		$this->isVideo = $isVideo;
-		$this->path = $path;
-		$this->noIcon = $noIcon;
+		$this->height = round( $height );		
+		$this->percDone = $percDone;
 	}
 
 	function toHtml( $options = array() ) {
-
-
 		wfLoadExtensionMessages( 'WikiAtHome' );
+		//load the job
+		
 		return time();
 	}
 }
