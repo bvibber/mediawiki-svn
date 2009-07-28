@@ -1,5 +1,7 @@
 package de.brightbyte.wikiword.integrator.data;
 
+import java.util.Map;
+
 
 public class TriplifiedPropertyFeatureBuilder<R> extends PropertyMappingFeatureBuilder<R>  {
 
@@ -29,6 +31,10 @@ public class TriplifiedPropertyFeatureBuilder<R> extends PropertyMappingFeatureB
 		this.valueField = valueField;
 	}
 
+	public void setValueQualifierMapping(PropertyMapping<R> mapping) {
+		qualifierMappings.put(valueField, mapping);
+	}
+	
 	public void addFeatures(R rec, FeatureSet features) {
 		if (authorityField!=null) {
 			if (!features.hasFeature(authorityField)) {

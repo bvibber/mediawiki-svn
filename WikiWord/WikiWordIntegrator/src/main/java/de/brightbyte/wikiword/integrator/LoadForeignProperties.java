@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
+import java.util.Map;
 
 import de.brightbyte.data.cursor.ConvertingCursor;
 import de.brightbyte.data.cursor.DataCursor;
@@ -13,6 +14,7 @@ import de.brightbyte.wikiword.integrator.data.FeatureBuilderCursor;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.ForeignEntityFeatureSet;
 import de.brightbyte.wikiword.integrator.data.ForeignEntityRecord;
+import de.brightbyte.wikiword.integrator.data.PropertyMapping;
 import de.brightbyte.wikiword.integrator.data.PropertyMappingFeatureBuilder;
 import de.brightbyte.wikiword.integrator.data.Record;
 import de.brightbyte.wikiword.integrator.data.TriplifiedPropertyFeatureBuilder;
@@ -26,7 +28,11 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 	
 	@Override
 	protected WikiWordStoreFactory<? extends ForeignPropertyStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
-		return new DatabaseForeignPropertyStoreBuilder.Factory(getTargetTableName(), getConfiguredDataset(), getConfiguredDataSource(), tweaks);
+		return new DatabaseForeignPropertyStoreBuilder.Factory(getTargetTableName(), getQualifierFields(), getConfiguredDataset(), getConfiguredDataSource(), tweaks);
+	}
+
+	protected Map<String, Class> getQualifierFields() throws IOException {
+		return getSourceDescriptor().getQualifierFields();
 	}
 
 	@Override
@@ -48,7 +54,7 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 
 		if (builder!=null) ; //noop
 		else {
-			if (sourceDescriptor.getPropertyNameField()!=null) {
+			if (sourceDescriptor.getPropertyNameField()!=null) { //load triplified streamn of properties
 				builder =  new TriplifiedPropertyFeatureBuilder<Record>( 
 						authorityFieldName, 
 						sourceDescriptor.getPropertySubjectField(),
@@ -60,7 +66,7 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(sourceDescriptor.getPropertySubjectField(), new Record.Accessor<String>(sourceDescriptor.getPropertySubjectField(), String.class), null);
 				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(sourceDescriptor.getPropertyNameField(), new Record.Accessor<String>(sourceDescriptor.getPropertyNameField(), String.class), null);
 				((PropertyMappingFeatureBuilder<Record>)builder).addMapping(sourceDescriptor.getPropertyValueField(), new Record.Accessor<String>(sourceDescriptor.getPropertyValueField(), String.class), null);
-			} else {
+			} else { //load flat table, one property per column
 				builder = new PropertyMappingFeatureBuilder<Record>( 
 						authorityFieldName, 
 						sourceDescriptor.getPropertySubjectField() ); 
@@ -76,6 +82,9 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 					((PropertyMappingFeatureBuilder<Record>)builder).addMapping(f, new Record.Accessor<Object>(f, Object.class), null);
 				}
 			}
+			
+			Map<String, PropertyMapping<Record>> qm = sourceDescriptor.getQualifierMappings();
+			if (qm!=null) ((PropertyMappingFeatureBuilder<Record>)builder).addQualifierMappings(qm );
 		}
 				
 		DefaultForeignEntityFeatureSet.FromFeatureSet converter = new DefaultForeignEntityFeatureSet.FromFeatureSet(

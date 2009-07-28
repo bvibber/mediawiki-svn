@@ -2,6 +2,7 @@ package de.brightbyte.wikiword.integrator.store;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -25,7 +26,7 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		super(dataset, connectionInfo, tweaks, useFlushQueue);
 	}
 
-	public RelationTable newForeignPropertyTable(String name) {
+	public RelationTable newForeignPropertyTable(String name, Map<String, Class> qualifiers) {
 		RelationTable table = new RelationTable(this, name, getDefaultTableAttributes());
 		
 		table.addField( new DatabaseField(this, "foreign_authority", getTextType(64), null, true, null) );
@@ -33,6 +34,8 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		
 		table.addField( new DatabaseField(this, "property", getTextType(255), null, true, KeyType.INDEX) );
 		table.addField( new DatabaseField(this, "value", getTextType(255), null, true, null) );
+		
+		if (qualifiers!=null) table.addFields(qualifiers); 
 		//table.addField( new DatabaseField(this, "qualifier", getTextType(64), null, false, null) );
 		//FIXME: custom qualifier fields!
 

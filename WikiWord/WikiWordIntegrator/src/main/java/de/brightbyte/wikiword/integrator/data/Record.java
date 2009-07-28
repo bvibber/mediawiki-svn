@@ -15,7 +15,7 @@ public interface Record extends Cloneable {
 	public static class Accessor<V> extends AbstractAccessor<Record, V> {
 		
 
-		public Accessor(String property, Class<V> type) {
+		public Accessor(String property, Class<? extends V> type) {
 			super(property, type);
 		}
 

@@ -2,10 +2,12 @@ package de.brightbyte.wikiword.integrator.store;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
 import de.brightbyte.application.Agenda;
+import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
@@ -20,13 +22,15 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 
 	public static class Factory implements WikiWordStoreFactory<DatabaseForeignPropertyStoreBuilder> {
 		private String table;
+		private Map<String, Class> qualifierFields;
 		private DataSource db;
 		private DatasetIdentifier dataset;
 		private TweakSet tweaks;
 
-		public Factory(String table, DatasetIdentifier dataset, DataSource db, TweakSet tweaks) {
+		public Factory(String table, Map<String, Class> qualifierFields, DatasetIdentifier dataset, DataSource db, TweakSet tweaks) {
 			super();
 			this.table = table;
+			this.qualifierFields = qualifierFields;
 			this.db = db;
 			this.dataset = dataset;
 			this.tweaks = tweaks;
@@ -35,7 +39,7 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 		@SuppressWarnings("unchecked")
 		public DatabaseForeignPropertyStoreBuilder newStore() throws PersistenceException {
 			try {
-				return new DatabaseForeignPropertyStoreBuilder(table, dataset, db.getConnection(), tweaks);
+				return new DatabaseForeignPropertyStoreBuilder(table, qualifierFields, dataset, db.getConnection(), tweaks);
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
@@ -45,15 +49,17 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 	protected RelationTable propertyTable;
 	protected Inserter propertyInserter;
 	protected IntegratorSchema integratorSchema;
+	protected Map<String, Class> qualifierFields;
 
-	public DatabaseForeignPropertyStoreBuilder(String table, DatasetIdentifier dataset, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
-		this(table, new IntegratorSchema(dataset, connection, tweaks, true), tweaks, null);
+	public DatabaseForeignPropertyStoreBuilder(String table, Map<String, Class> qualifierFields, DatasetIdentifier dataset, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
+		this(table, qualifierFields, new IntegratorSchema(dataset, connection, tweaks, true), tweaks, null);
 	}
 	
-	protected DatabaseForeignPropertyStoreBuilder(String table, IntegratorSchema integratorSchema, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
+	protected DatabaseForeignPropertyStoreBuilder(String table, Map<String, Class> qualifierFields, IntegratorSchema integratorSchema, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
 		super(integratorSchema, tweaks, agenda);
 
-		integratorSchema.newForeignPropertyTable(table); 
+		this.qualifierFields = qualifierFields;
+		integratorSchema.newForeignPropertyTable(table, qualifierFields); 
 		
 		this.propertyInserter = configureTable(table, 128, 4*32);
 		this.propertyTable =  (RelationTable)propertyInserter.getTable();
@@ -75,7 +81,18 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 			propertyInserter.updateString("foreign_id", extId);
 			propertyInserter.updateString("property", property);
 			propertyInserter.updateObject("value", value);
-			//propertyInserter.updateString("qualifier", qualifier); //FIXME: store qualifiers
+			
+			if (qualifierFields!=null && qualifiers!=null) {
+				for (Map.Entry<String, Class> e: qualifierFields.entrySet()) {
+					String k = e.getKey();
+					Class<?> t = e.getValue();
+					
+					Object v = qualifiers.get(k);
+					v = DatabaseUtil.as(v, t);
+					propertyInserter.updateObject(k, v);
+				}
+			}
+			
 			propertyInserter.updateRow();
 		} catch (SQLException e) {
 			throw new PersistenceException(e);

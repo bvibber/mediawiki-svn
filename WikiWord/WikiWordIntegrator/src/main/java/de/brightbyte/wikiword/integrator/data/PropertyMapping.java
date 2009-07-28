@@ -11,11 +11,11 @@ public interface PropertyMapping<R> {
 	
 	public PropertyAccessor<R, ?> getAccessor(String field);
 	
-	public <T> T requireValue(R row, String field, Class<T> type);
+	public <T> T requireValue(R row, String field, Class<? extends T> type);
 	
-	public <T> T getValue(R row, String field, Class<T> type);
+	public <T> T getValue(R row, String field, Class<? extends T> type);
 	
-	public <T> T getValue(R row, String field, Class<T> type, T def);
+	public <T> T getValue(R row, String field, Class<? extends T> type, T def);
 
 	public Iterable<String> fields();
 }

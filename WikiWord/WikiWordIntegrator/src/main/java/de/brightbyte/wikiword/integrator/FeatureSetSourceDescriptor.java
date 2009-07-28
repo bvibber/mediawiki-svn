@@ -9,13 +9,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import de.brightbyte.abstraction.PropertyAccessor;
 import de.brightbyte.data.Functor;
 import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
+import de.brightbyte.wikiword.integrator.data.DefaultPropertyMapping;
 import de.brightbyte.wikiword.integrator.data.FeatureBuilder;
+import de.brightbyte.wikiword.integrator.data.PropertyMapping;
 import de.brightbyte.wikiword.integrator.data.Record;
 import de.brightbyte.wikiword.integrator.data.RecordMangler;
 
@@ -170,6 +173,71 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 
 	public FeatureBuilder<Record> getFeatureBuilder() {
 		return getTweak("feature-builder", (FeatureBuilder<Record>)null);
+	}
+
+	public Map<String, Class> getQualifierFields() {
+		return getTweak("qualifier-fields", (Map<String, Class>)null);
+	}
+
+	public Map<String, PropertyMapping<Record>> getQualifierMappings() {
+		Map<String, Object> m = getTweak("qualifier-mappings", (Map<String, Object>)null);
+		return m==null ? null : normalizeMapOfPropertyMappings(m);
+	}
+
+	@SuppressWarnings("unchecked")
+	private Map<String, PropertyMapping<Record>> normalizeMapOfPropertyMappings(Map<String, Object> m) {
+		if (m==null) return null;
+		
+		for (Map.Entry<String, Object> e: m.entrySet()) {
+			Object o = e.getValue();
+			if (o instanceof PropertyMapping) continue;
+			
+			if (o instanceof Map) o = createPropertyMapping((Map<String, Object>)o);
+			else throw new IllegalArgumentException("value for "+e.getKey()+" must be a PropertyMapping or a Map");
+			
+			e.setValue(o);
+		}
+		
+		return (Map<String, PropertyMapping<Record>>)(Object)m; //XXX: fugly cast, but actually safe
+	}
+
+	@SuppressWarnings("unchecked")
+	private PropertyMapping createPropertyMapping(Map<String, Object> m) {
+		PropertyMapping<Record> mapping = new DefaultPropertyMapping<Record>();
+		for (Map.Entry<String, Object> e: m.entrySet()) {
+			Object o = e.getValue();
+			
+			if (o instanceof PropertyAccessor) ; //noop
+			else if (o instanceof List) o = createPropertyAccessor((List<Object>)o);
+			else if (o instanceof String) o = new Record.Accessor<Object>((String)o, Object.class);
+			else throw new IllegalArgumentException("value for "+e.getKey()+" must be a PropertyAccessor, a String or a List");
+			
+			mapping.addMapping(e.getKey(), (PropertyAccessor<Record, ?>)o);
+		}
+		
+		return mapping;
+	}
+
+	@SuppressWarnings("unchecked")
+	private Object createPropertyAccessor(List<Object> args) {
+		if (args.size()<1) throw new IllegalArgumentException("empty arguments, can't create PropertyAccessor");
+		
+		Object t = args.size()<2 ? Object.class : args.get(1);
+		if (!(t instanceof Class)) {
+			if (t instanceof String) {
+				try {
+					t = Class.forName((String)t);
+				} catch (ClassNotFoundException e) {
+					throw new IllegalArgumentException("bad class name: "+t, e);
+				}
+			} else {
+				throw new IllegalArgumentException("second argument must be a Class or String");
+			}
+		}
+		
+		String n = args.get(0).toString();
+		
+		return new Record.Accessor<Object>(n, (Class<Object>)t);
 	}
 
 }

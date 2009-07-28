@@ -36,7 +36,7 @@ public class DefaultPropertyMapping<R> implements PropertyMapping<R>{
 		return accessors.get(field);
 	}
 	
-	public <T> T requireValue(R row, String field, Class<T> type) {
+	public <T> T requireValue(R row, String field, Class<? extends T> type) {
 		T v = getValue(row, field, type);
 		
 		if (v==null) {
@@ -47,11 +47,11 @@ public class DefaultPropertyMapping<R> implements PropertyMapping<R>{
 		return v;
 	}
 	
-	public <T> T getValue(R row, String field, Class<T> type) {
+	public <T> T getValue(R row, String field, Class<? extends T> type) {
 		return getValue(row, field, type, null);
 	}
 	
-	public <T> T getValue(R row, String field, Class<T> type, T def) {
+	public <T> T getValue(R row, String field, Class<? extends T> type, T def) {
 		
 		PropertyAccessor<R, ?> accessor = getAccessor(field);
 		if (accessor==null) throw new IllegalArgumentException("no accessor defined for field "+field);
@@ -61,7 +61,7 @@ public class DefaultPropertyMapping<R> implements PropertyMapping<R>{
 		
 		if (type==null) {
 				if (v instanceof byte[] || v instanceof char[] || v instanceof Clob || v instanceof Blob) { //XXX: UGLY HACK!
-					type = (Class<T>)String.class;
+					type = (Class<? extends T>)String.class;
 				} else {
 					type = ((PropertyAccessor<R, T>)accessor).getType();
 				}

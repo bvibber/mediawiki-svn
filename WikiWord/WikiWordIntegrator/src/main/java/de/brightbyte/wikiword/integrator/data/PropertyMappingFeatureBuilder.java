@@ -30,6 +30,10 @@ public class PropertyMappingFeatureBuilder<R> implements FeatureBuilder<R>  {
 		return qualifierMappings.get(field);
 	}
 	
+	public void addQualifierMappings(Map<String, PropertyMapping<R>> mappings) {
+		qualifierMappings.putAll(mappings);
+	}
+	
 	public void addMapping(String field, PropertyAccessor<R, ?> accessor, PropertyMapping<R> qualifiers) {
 		dataMapping.addMapping(field, accessor);
 		if (qualifiers!=null) qualifierMappings.put(field, qualifiers);

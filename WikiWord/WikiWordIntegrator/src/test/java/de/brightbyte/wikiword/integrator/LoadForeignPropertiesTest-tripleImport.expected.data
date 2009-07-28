@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
   <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="concept_name" value="FooBar"/>
-  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="firstName" value="Bar"/>
-  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="firstName" value="Barf"/>
-  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="name" value="Foo"/>
-  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="phone" value="12345"/>
+  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="firstName" value="Bar" weight="1" note="bla"/>
+  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="firstName" value="Barf" weight="1" note="bla"/>
+  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="name" value="Foo" weight="1" note="bla"/>
+  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="FooBar" property="phone" value="12345" weight="2" note="blubb"/>
   
   <TEST_xx_tripleImport foreign_authority="acme" foreign_id="XyzzyQuux" property="concept_name" value="XyzzyQuux"/>
-  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="XyzzyQuux" property="firstName" value="Quux"/>
-  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="XyzzyQuux" property="name" value="Xyzzy"/>
-  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="XyzzyQuux" property="phone" value="67890"/>
+  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="XyzzyQuux" property="firstName" value="Quux" weight="1" note="test"/>
+  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="XyzzyQuux" property="name" value="Xyzzy" weight="3" note=""/>
+  <TEST_xx_tripleImport foreign_authority="acme" foreign_id="XyzzyQuux" property="phone" value="67890"  weight="1" note="testing"/>
 </dataset>
 

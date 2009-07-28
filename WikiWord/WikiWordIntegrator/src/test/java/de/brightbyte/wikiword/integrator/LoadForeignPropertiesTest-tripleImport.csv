@@ -1,7 +1,7 @@
-concept_name,property,value
-FooBar,name,Foo
-FooBar,firstName,Bar|Barf
-FooBar,phone,12345
-XyzzyQuux,name,Xyzzy
-XyzzyQuux,firstName,Quux
-XyzzyQuux,phone,67890
+concept_name,property,value,weight,comment
+FooBar,name,Foo,1,bla
+FooBar,firstName,Bar|Barf,1,bla
+FooBar,phone,12345,2,blubb
+XyzzyQuux,name,Xyzzy,3,
+XyzzyQuux,firstName,Quux,1,test
+XyzzyQuux,phone,67890,1,testing
