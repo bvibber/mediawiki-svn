@@ -59,7 +59,7 @@ if( isset( $_SERVER['SCRIPT_NAME'] ) ) {
 
 // Live-hack to let api.php work with secure.wikimedia.org
 // Andrew 2009-06-17
-if ($secure) {
+if (substr( $wgServer, 0, 5 ) == 'https') {
 	$url = "/$site/$lang$url";
 }
 // End live hack
