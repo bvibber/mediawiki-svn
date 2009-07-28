@@ -28,7 +28,7 @@
 $wgOptInAlwaysShowPersonalLink = false;
 $wgOptInNeverShowPersonalLink = false;
 
-$wgOptInStyleVersion = 6;
+$wgOptInStyleVersion = 7;
 
 // Preferences to set when users opt in
 // array( prefname => value )
@@ -36,75 +36,85 @@ $wgOptInPrefs = array( 'skin' => 'vector', 'usebetatoolbar' => 1 );
 
 // Survey questions to ask when users opt out
 $wgOptInSurvey = array(
-	array(	'question' => 'optin-survey-question-likedislike',
+	'likedislike' => array(
+		'question' => 'optin-survey-question-likedislike',
 		'type' => 'textarea' ),
-	array(	'question' => 'optin-survey-question-whyoptout',
+	'whyoptout' => array(
+		'question' => 'optin-survey-question-whyoptout',
 		'type' => 'checkboxes',
 		'answers' => array(
-			'optin-survey-answer-whyoptout-hard',
-			'optin-survey-answer-whyoptout-didntwork',
-			'optin-survey-answer-whyoptout-notpredictable',
-			'optin-survey-answer-whyoptout-didntlike-look',
-			'optin-survey-answer-whyoptout-didntlike-layout',
-			'optin-survey-answer-whyoptout-didntlike-toolbar' ),
+			'hard' => 'optin-survey-answer-whyoptout-hard',
+			'didntwork' => 'optin-survey-answer-whyoptout-didntwork',
+			'notpredictable' => 'optin-survey-answer-whyoptout-notpredictable',
+			'look' => 'optin-survey-answer-whyoptout-didntlike-look',
+			'layout' => 'optin-survey-answer-whyoptout-didntlike-layout',
+			'toolbar' => 'optin-survey-answer-whyoptout-didntlike-toolbar' ),
 		'other' => 'optin-survey-answer-whyoptout-other' ),
-	array(	'question' => 'optin-survey-question-explain',
+	'explainwhyoptout' => array(
+		'question' => 'optin-survey-question-explain',
 		'type' => 'textarea' ),
-	array(	'question' => 'optin-survey-question-techfail',
+	'techfail' => array(
+		'question' => 'optin-survey-question-techfail',
 		'type' => 'yesno',
 		'ifyes' => 'optin-survey-question-techfail-ifyes' ),
-	array(	'question' => 'optin-survey-question-usedtoolbar',
+	'usedtoolbar' => array(
+		'question' => 'optin-survey-question-usedtoolbar',
 		'type' => 'yesno',
 		'ifyes' => 'optin-survey-question-usedtoolbar-ifyes' ),
-	array(	'question' => 'optin-survey-question-different',
+	'different' => array(
+		'question' => 'optin-survey-question-different',
 		'type' => 'textarea' ),
-	array(	'question' => 'optin-survey-question-feedback',
+	'feedback' => array(
+		'question' => 'optin-survey-question-feedback',
 		'type' => 'textarea' ),
-	array(	'question' => 'optin-survey-question-browser',
+	'browser' => array(
+		'question' => 'optin-survey-question-browser',
 		'type' => 'dropdown',
 		'answers' => array(
-			'optin-survey-answer-browser-ie5',
-			'optin-survey-answer-browser-ie6',
-			'optin-survey-answer-browser-ie7',
-			'optin-survey-answer-browser-ie8',
-			'optin-survey-answer-browser-ff1',
-			'optin-survey-answer-browser-ff2',
-			'optin-survey-answer-browser-ff3',
-			'optin-survey-answer-browser-cb',
-			'optin-survey-answer-browser-c1',
-			'optin-survey-answer-browser-c2',
-			'optin-survey-answer-browser-s3',
-			'optin-survey-answer-browser-s4',
-			'optin-survey-answer-browser-o9',
-			'optin-survey-answer-browser-o9.5',
-			'optin-survey-answer-browser-o10' ),
+			'ie5' => 'optin-survey-answer-browser-ie5',
+			'ie6' => 'optin-survey-answer-browser-ie6',
+			'ie7' => 'optin-survey-answer-browser-ie7',
+			'ie8' => 'optin-survey-answer-browser-ie8',
+			'ff1' => 'optin-survey-answer-browser-ff1',
+			'ff2' => 'optin-survey-answer-browser-ff2',
+			'ff3'=> 'optin-survey-answer-browser-ff3',
+			'cb' => 'optin-survey-answer-browser-cb',
+			'c1' => 'optin-survey-answer-browser-c1',
+			'c2' => 'optin-survey-answer-browser-c2',
+			's3' => 'optin-survey-answer-browser-s3',
+			's4' => 'optin-survey-answer-browser-s4',
+			'o9' => 'optin-survey-answer-browser-o9',
+			'o9.5' => 'optin-survey-answer-browser-o9.5',
+			'o10' => 'optin-survey-answer-browser-o10' ),
 		'other' => 'optin-survey-answer-browser-other' ),
-	array(	'question' => 'optin-survey-question-os',
+	'os' => array(
+		'question' => 'optin-survey-question-os',
 		'type' => 'dropdown',
 		'answers' => array(
-			'optin-survey-answer-os-windows',
-			'optin-survey-answer-os-macos',
-			'optin-survey-answer-os-linux' ),
+			'windows' => 'optin-survey-answer-os-windows',
+			'macos' => 'optin-survey-answer-os-macos',
+			'linux' => 'optin-survey-answer-os-linux' ),
 		'other' => 'optin-survey-answer-os-other' ),
-	array(	'question' => 'optin-survey-question-res',
+	'res' => array(
+		'question' => 'optin-survey-question-res',
 		'type' => 'resolution' ),
 );
 
 $wgOptInFeedBackSurvey = $wgOptInSurvey;
-unset( $wgOptInFeedBackSurvey[1] );
-unset( $wgOptInFeedBackSurvey[2] );
-$wgOptInFeedBackSurvey[4]['ifno'] = 'optin-survey-question-usedtoolbar-ifno';
-$wgOptInFeedBackSurvey[5] = array(
+unset( $wgOptInFeedBackSurvey['whyoptout'] );
+unset( $wgOptInFeedBackSurvey['explainwhyoptout'] );
+$wgOptInFeedBackSurvey['usedtoolbar']['ifno'] = 'optin-survey-question-usedtoolbar-ifno';
+$wgOptInFeedBackSurvey['changes'] = array(
 	'question' => 'optin-survey-question-changes',
 	'type' => 'checkboxes',
 	'answers' => array(
-		'optin-survey-answer-changes-nav',
-		'optin-survey-answer-changes-edittools',
-		'optin-survey-answer-changes-upload',
-		'optin-survey-answer-changes-richtext',
-		'optin-survey-answer-changes-lookfeel',
-		'optin-survey-answer-changes-predictability',
-		'optin-survey-answer-changes-custom' ),
+		'nav' => 'optin-survey-answer-changes-nav',
+		'edittools' => 'optin-survey-answer-changes-edittools',
+		'upload' => 'optin-survey-answer-changes-upload',
+		'richtext' => 'optin-survey-answer-changes-richtext',
+		'lookfeel' => 'optin-survey-answer-changes-lookfeel',
+		'predictability' => 'optin-survey-answer-changes-predictability',
+		'custom' => 'optin-survey-answer-changes-custom' ),
 	'other' => 'optin-survey-answer-changes-other'
 );
 
@@ -141,4 +151,3 @@ $wgSpecialPageGroups['OptIn'] = 'wiki';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OptInHooks::schema';
 
 $wgHooks['PersonalUrls'][] = 'OptInHooks::personalUrls';
-

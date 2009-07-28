@@ -36,51 +36,44 @@ $( document ).ready( function() {
 	}
 	// Detect browser and version
 	// BEWARE: this depends on the order of browsers in $wgOptInSurvey
-	var browserIndex = -1;
+	var browserIndex = 'other';
 	switch ( $.browser.name ) {
 		case 'msie':
-			browserIndex = $.browser.versionNumber - 5;
+			browserIndex = 'ie'+ parseInt( $.browser.versionNumber );
 		break;
 		case 'firefox':
-			browserIndex = $.browser.versionNumber + 3;
+			browserIndex = 'ff' + parseInt( $.browser.versionNumber );
 		break;
 		case 'chrome':
-			browserIndex = $.browser.versionNumber + 7;
+			browserIndex = 'c' + parseInt( $.browser.versionNumber ); // FIXME: Chrome Beta?
 		break;
 		case 'safari':
-			browserIndex = $.browser.versionNumber + 7;
+			browserIndex = 's' + parseInt( $.browser.versionNumber );
 		break;
 		case 'opera':
 			if ( parseInt( $.browser.versionNumber ) == 9 ) {
 				if ( $.browser.version.substr( 0, 3 ) == '9.5' )
-					browserIndex = 13;
+					browserIndex = 'o9.5';
 				else
-					browserIndex = 12;
+					browserIndex = 'o9';
 			} else if ( parseInt( $.browser.versionNumber ) == 10 )
-				browserIndex = 14;
+				browserIndex = 'o10';
 		break;
 	}
 
-	var osIndex = -1;
+	var osIndex = 'other';
 	switch ( $.os.name ) {
 		case 'win':
-			osIndex = 0;
+			osIndex = 'windows';
 		break;
 		case 'mac':
-			osIndex = 1;
+			osIndex = 'macos';
 		break;
 		case 'linux':
-			osIndex = 2;
+			osIndex = 'linux';
 		break;
 	}
 
-	if ( browserIndex == -1 )
-		$( '#survey-7' ).val( 'other' );
-	else
-		$( '#survey-7' ).val( parseInt( browserIndex ) );
-	if ( osIndex == -1 )
-		$( '#survey-8' ).val( 'other' );
-	else
-		$( '#survey-8' ).val( osIndex );
-
+	$( '#survey-browser' ).val( browserIndex );
+	$( '#survey-os' ).val( osIndex );
 });
