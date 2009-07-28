@@ -63,7 +63,7 @@ function addWiki( $lang, $site, $dbName )
 		$stores = array();
 	}
 	if ( count( $stores ) ) {
-		require_once( 'ExternalStoreDB.php' );
+		#require_once( 'ExternalStoreDB.php' );
 		global $wgDBuser, $wgDBpassword, $wgExternalServers;
 		foreach ( $stores as $storeURL ) {
 			$m = array();
