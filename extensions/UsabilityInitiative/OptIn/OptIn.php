@@ -104,7 +104,7 @@ $wgOptInFeedBackSurvey[5] = array(
 		'optin-survey-answer-changes-richtext',
 		'optin-survey-answer-changes-lookfeel',
 		'optin-survey-answer-changes-predictability',
-		'optin-survey-answer-changes-compat' ),
+		'optin-survey-answer-changes-custom' ),
 	'other' => 'optin-survey-answer-changes-other'
 );
 
