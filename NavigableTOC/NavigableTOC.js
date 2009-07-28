@@ -158,7 +158,7 @@ jQuery.fn.updateOutline = function( target ) {
 		target.find( 'a.section-' + i ).addClass( 'currentSelection' );
 	} );
 };
-$( document ).ready( function() {
+jQuery( document ).ready( function() {
 	$( '#wpTextbox1' ).parseOutline();
 	$( '#wpTextbox1' )
 		.buildOutline( $( '#navigableTOC' ) )
