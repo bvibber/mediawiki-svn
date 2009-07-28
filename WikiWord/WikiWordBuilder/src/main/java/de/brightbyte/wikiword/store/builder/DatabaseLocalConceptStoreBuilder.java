@@ -539,7 +539,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			
 			//XXX: insert ignore...
 			langlinkInserter.updateInt("resource", rcId);
-			langlinkInserter.updateInt("concept", concept);
+			if (concept<=0 && idManager!=null) concept = idManager.aquireId(conceptName);
+			if (concept>0) langlinkInserter.updateInt("concept", concept);
 			langlinkInserter.updateString("concept_name", checkName(rcId, conceptName, "concept name (resource #{0})", rcId));
 			langlinkInserter.updateString("language", lang);
 			langlinkInserter.updateString("target", checkName(rcId, target, "external concept name (resource #{0})", rcId));
@@ -796,9 +797,19 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				int n = buildIdLinks(broaderTable, "narrow_name", "narrow", 1);     
 				endTask("finishIdReferences", "buildIdLinks:narrower", n+" references");
 			}
-			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:alias")) {
+
+			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:alias_source")) {
+				int n = buildIdLinks(aliasTable, "source_name", "source", -5);  
+				endTask("finishIdReferences", "buildIdLinks:alias_source", n+" references");
+			}
+			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:alias_target")) {
 				int n = buildIdLinks(aliasTable, "target_name", "target", -5);  
-				endTask("finishIdReferences", "buildIdLinks:alias", n+" references");
+				endTask("finishIdReferences", "buildIdLinks:alias_target", n+" references");
+			}
+			
+			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:langlink")) {
+				int n = buildIdLinks(langlinkTable, "concept_name", "concept", 1);  
+				endTask("finishIdReferences", "buildIdLinks:langlink", n+" references");
 			}
 			//if (beginTask("finishIdReferences", "buildIdLinks:reference")) buildIdLinks(referenceTable, "target_name", "target"); 
 			
@@ -826,7 +837,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			//NOTE: broader.broad_name already done in finishMissingConcepts for AliasScope.BROADER
 			
 			if (beginTask("finishAliases", "resolveRedirects:about")) {
-				int n = resolveRedirects(aliasTable, aboutTable, null, "concept", null, 1, null, null);     
+				int n = resolveRedirects(aliasTable, aboutTable, "concept_name", "concept", null, 1, null, null);     
 				endTask("finishAliases", "resolveRedirects:about", n+" entries");
 			}
 

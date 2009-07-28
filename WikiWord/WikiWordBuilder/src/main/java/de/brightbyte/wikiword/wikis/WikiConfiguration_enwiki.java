@@ -138,7 +138,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PLACE, "Geobox"));
 		
-		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^(Male|Female|People)_|_(people|man|woman|birth|death)$", 0));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^(Male|Female|People)_|_(people|men|women|births|deaths)$", 0));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT)$", 0));
 		
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "Given_names"));
@@ -152,9 +152,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Day"));
 
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.WORK, "(^|_)(statue|work|play|album|song|painting|opera|novel|musical|novel|composition)s?(_|$)", Pattern.CASE_INSENSITIVE));
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.EVENT, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "artist"));
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.EVENT, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "author"));
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.EVENT, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "composer"));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.WORK, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "artist"));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.WORK, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "author"));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.WORK, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "composer"));
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.EVENT, "(^|_)(event|war|battle|siege|treaties|flood|famine|fire|conflict|crisis|disaster|riot|assasination|execution|crime)s?(_|$)", Pattern.CASE_INSENSITIVE));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.EVENT, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "date"));

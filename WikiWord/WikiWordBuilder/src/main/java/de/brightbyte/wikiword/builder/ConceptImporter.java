@@ -501,7 +501,7 @@ public class ConceptImporter extends AbstractImporter {
 			if (StringUtils.equals(name, tgtConcept)) {
 				warn(rcId, "bad redirect (self-link)", "page "+rcName, null);
 			} else {
-				conceptId = store.storeAbout(rcId, rcName, name); 
+				conceptId = store.storeConcept(rcId, name, ConceptType.ALIAS); 
 				storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, tgtConcept, ExtractionRule.TERM_FROM_REDIRECT );
 				storeConceptAlias(rcId, conceptId, name, -1, tgtConcept, AliasScope.REDIRECT);
 				if (link.getSection()!=null) storeSection(rcId, link.getTargetConcept().toString(), link.getTargetConceptPage().toString());

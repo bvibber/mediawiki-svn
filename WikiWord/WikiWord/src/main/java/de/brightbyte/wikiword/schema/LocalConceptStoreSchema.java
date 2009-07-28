@@ -51,7 +51,8 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		groupStats.add( new GroupStatsSpec("broader", "rule", extractionRulCodeTranslator));
 
 		langlinkTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.INDEX, "resource", "id", null ) );
-		langlinkTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
+		langlinkTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, null, "concept", "name", null ) );
+		langlinkTable.addKey( new DatabaseKey(this, KeyType.UNIQUE, "name_language_target", new String[] {"concept_name", "language", "target"}) );
 
 		linkTable.addField( new ReferenceField(this, "anchor_name", getTextType(255), null, false, KeyType.INDEX, "concept", "name", null ) );
 		linkTable.addField( new ReferenceField(this, "target_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
