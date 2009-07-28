@@ -1,5 +1,26 @@
 /* JavaScript for NavigableTOC extension */
 
+/*
+ * This function should be called on the text area to map out the section
+ * character positions by scanning for headings, and the resulting data will
+ * be stored as $(this).data( 'sections',  { ... } )
+ */
+jQuery.fn.mapSections = function() {
+	return this.each( function() {
+		// WRITE CODE HERE :)
+	} );
+};
+/*
+ * This function should be called on the text area with a selected UL element
+ * to perform the list update on, where it will match the current cursor
+ * position to an item on the outline and classify that li as 'current'
+ */
+jQuery.fn.updateSectionsList = function( list ) {
+	return this.each( function( list ) {
+		// WRITE CODE HERE :)
+	} );
+};
+
 $( document ).ready( function() {
 	if ( $.section == '' ) {
 		// Full page edit
@@ -18,17 +39,16 @@ $( document ).ready( function() {
 	}
 	// Unlink all section links that didn't get an offset
 	$( '.toc:last * li' ).each( function() {
-		link = $(this).children( 'a' );
-		if ( typeof link.data( 'offset') == 'undefined' &&
-				link.is( ':visible' ) ) {
+		link = $(this).children( 'a:visible' );
+		if ( typeof link.data( 'offset') == 'undefined' ) {
 			link.hide();
 			$(this).prepend( link.html() );
 		}
 	});
 
 	$( '.toc:last * li a' ).click( function(e) {
-		if( typeof jQuery(this).data( 'offset' ) != 'undefined' )
-			jQuery( '#wpTextbox1' ).scrollToPosition( jQuery(this).data( 'offset' ) );
+		if( typeof $(this).data( 'offset' ) != 'undefined' )
+			$( '#wpTextbox1' ).scrollToPosition( $(this).data( 'offset' ) );
 			e.preventDefault();
 	});
 	
@@ -54,5 +74,4 @@ $( document ).ready( function() {
 		// This is ugly as hell
 		setTimeout(styleCurrentSection, 0);
 	});
-
 });
