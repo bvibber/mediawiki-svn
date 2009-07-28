@@ -903,7 +903,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			//XXX: should be redundant: just delete alias concepts below and then kill broken links.
 			//     but somehow, we need it...
 			 if (beginTask("finishAliases", "deleteLinksToBadConcepts:link,ALIAS")) {
-				int n = deleteLinksToBadConcepts(linkTable, "target", ConceptType.ALIAS);        //uses index _use.concept, _concept.type
+				int n = deleteLinksToBadConcepts(linkTable, "target", "target_anchor", ConceptType.ALIAS);        //uses index _use.concept, _concept.type
 				if (n>0) warning(-1, "links to bad concepts", n+" references to redirects in "+linkTable.getName()+".target deleted", null);
 				endTask("finishAliases", "deleteLinksToBadConcepts:link,ALIAS", n+" entries");
 			}
@@ -1049,7 +1049,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		}
 	}
 
-	protected int deleteLinksToBadConcepts(DatabaseTable table, String conceptIdField, ConceptType... types) throws PersistenceException {
+	protected int deleteLinksToBadConcepts(DatabaseTable table, String conceptIdField, String index, ConceptType... types) throws PersistenceException {
 		ReferenceField refField = (ReferenceField)table.getField(conceptIdField);
 		DatabaseTable tgtTable = getTable(refField.getTargetTable());
 		DatabaseField tgtField = tgtTable.getField(refField.getTargetField());
@@ -1061,11 +1061,12 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		String sql = "DELETE FROM "+table.getSQLName()
 					+" USING "+table.getSQLName()
 						+" JOIN "+conceptTable.getSQLName()
+						+ ( index==null ? "" :  "force index( "+index+" )" )
 							+" ON "+table.getSQLName()+"."+conceptIdField+" = "+conceptTable.getSQLName()+"."+tgtField.getName();
 		String where = " WHERE "+conceptTable.getSQLName()+".type IN " + bad;
 
 		//System.out.println("*** "+sql+" ***");
-		return executeChunkedUpdate("deleteLinksToBadConcepts", table.getName()+"."+conceptIdField+" IN "+bad, sql, where, conceptTable, tgtField.getName());
+		return executeChunkedUpdate("deleteLinksToBadConcepts", table.getName()+"."+conceptIdField+" IN "+bad, sql, where, table, conceptIdField);
 	}
 	
 	protected int deleteBrokenReferences(DatabaseTable table, String ref) throws PersistenceException {
