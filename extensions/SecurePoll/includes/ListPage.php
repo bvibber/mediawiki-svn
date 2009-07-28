@@ -20,7 +20,7 @@ class SecurePoll_ListPage extends SecurePoll_Page {
 		}
 		
 		$electionId = intval( $params[0] );
-		$this->election = $this->parent->getElection( $electionId );
+		$this->election = $this->context->getElection( $electionId );
 		if ( !$this->election ) {
 			$wgOut->addWikiMsg( 'securepoll-invalid-election', $electionId );
 			return;
@@ -84,7 +84,7 @@ EOT
 	 */
 	static function ajaxStrike( $action, $id, $reason ) {
 		wfLoadExtensionMessages( 'SecurePoll' );
-		$db = wfGetDB( DB_MASTER );
+		$db = $this->context->getDB();
 		$table = $db->tableName( 'securepoll_elections' );
 		$row = $db->selectRow( 
 			array( 'securepoll_votes', 'securepoll_elections' ),
@@ -98,9 +98,9 @@ EOT
 				'message' => wfMsgHtml( 'securepoll-strike-nonexistent' )
 			) );
 		}
-		$page = new SecurePollPage;
+		$page = new SecurePoll_BasePage;
 		$subpage = new self( $page );
-		$subpage->election = SecurePoll_Election::newFromRow( $row );
+		$subpage->election = $subpage->context->newElectionFromRow( $row );
 		$status = $subpage->strike( $action, $id, $reason );
 		if ( $status->isGood() ) {
 			return Xml::encodeJsVar( (object)array( 'status' => 'good' ) );
@@ -122,7 +122,7 @@ EOT
 	 */
 	function strike( $action, $voteId, $reason ) {
 		global $wgUser;
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = $this->context->getDB();
 		if ( !$this->election->isAdmin( $wgUser ) ) {
 			return Status::newFatal( 'securepoll-need-admin' );
 		}
@@ -220,7 +220,7 @@ class SecurePoll_ListPager extends TablePager {
 	function formatValue( $name, $value ) {
 		global $wgLang;
 		$critical = Xml::element( 'img', 
-			array( 'src' => $GLOBALS['wgStylePath'] . '/common/images/critical-32.png' ) 
+			array( 'src' => $GLOBALS['wgScriptPath'] . '/extensions/SecurePoll/resources/critical-32.png' ) 
 		);
 
 		switch ( $name ) {

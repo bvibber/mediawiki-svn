@@ -10,7 +10,7 @@ class SecurePoll_MessageDumpPage extends SecurePoll_Page {
 		}
 		
 		$electionId = intval( $params[0] );
-		$this->election = $this->parent->getElection( $electionId );
+		$this->election = $this->context->getElection( $electionId );
 		if ( !$this->election ) {
 			$wgOut->addWikiMsg( 'securepoll-invalid-election', $electionId );
 			return;
@@ -18,9 +18,9 @@ class SecurePoll_MessageDumpPage extends SecurePoll_Page {
 
 		$wgOut->disable();
 		header( 'Content-Type: application/x-sql; charset=utf-8' );
-		$filename = urlencode( "sp-msgs-$electionId-" . wfTimestampNow() );
+		$filename = urlencode( "sp-msgs-$electionId-" . wfTimestampNow() . '.sql' );
 		header( "Content-Disposition: attachment; filename=$filename" );
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = $this->context->getDB();
 
 		$entities = array_merge( array( $this->election ), $this->election->getDescendants() );
 		$ids = array();

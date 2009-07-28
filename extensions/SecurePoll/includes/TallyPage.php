@@ -17,14 +17,13 @@ class SecurePoll_TallyPage extends SecurePoll_Page {
 		}
 		
 		$electionId = intval( $params[0] );
-		$this->election = $this->parent->getElection( $electionId );
+		$this->election = $this->context->getElection( $electionId );
 		if ( !$this->election ) {
 			$wgOut->addWikiMsg( 'securepoll-invalid-election', $electionId );
 			return;
 		}
 		$this->initLanguage( $wgUser, $this->election );
 		$wgOut->setPageTitle( wfMsg( 'securepoll-tally-title', $this->election->getMessage( 'title' ) ) );
-
 		if ( !$this->election->isAdmin( $wgUser ) ) {
 			$wgOut->addWikiMsg( 'securepoll-need-admin' );
 			return;
@@ -125,30 +124,13 @@ class SecurePoll_TallyPage extends SecurePoll_Page {
 	 */
 	function submitLocal() {
 		global $wgOut;
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 
-			'securepoll_votes',
-			array( 'vote_record' ),
-			array( 
-				'vote_election' => $this->election->getId(),
-				'vote_current' => 1,
-				'vote_struck' => 0
-			), __METHOD__
-		);
-		$crypt = $this->election->getCrypt();
-		$tallier = $this->election->getTallier();
-		foreach ( $res as $row ) {
-			$status = $crypt->decrypt( $row->vote_record );
-			if ( !$status->isOK() ) {
-				$wgOut->addWikiText( $status->getWikiText() );
-				return;
-			}
-			if ( !$tallier->addRecord( $status->value ) ) {
-				$wgOut->addWikiMsg( 'securepoll-tally-error' );
-				return;
-			}
+		$status = $this->election->tally();
+		if ( !$status->isOK() ) {
+			$wgOut->addWikiText( $status->getWikiText() );
+			return;
 		}
-		$wgOut->addHTML( $tallier->getResult() );
+		$tallier = $status->value;
+		$wgOut->addHTML( $tallier->getHtmlResult() );
 	}
 
 	/**
@@ -156,8 +138,6 @@ class SecurePoll_TallyPage extends SecurePoll_Page {
 	 */
 	function submitUpload() {
 		global $wgOut;
-		$crypt = $this->election->getCrypt();
-		$tallier = $this->election->getTallier();
 		if ( !isset( $_FILES['tally_file'] )
 			|| !is_uploaded_file( $_FILES['tally_file']['tmp_name'] ) 
 			|| !$_FILES['tally_file']['size'] )
@@ -165,24 +145,21 @@ class SecurePoll_TallyPage extends SecurePoll_Page {
 			$wgOut->addWikiMsg( 'securepoll-no-upload' );
 			return;
 		}
-			
-		$fileString = file_get_contents( $_FILES['tally_file']['tmp_name'] );
-		$records = StringUtils::explode( "\n\n\n", $fileString );
-		foreach ( $records as $encrypted ) {
-			if ( trim( $encrypted ) == '' ) {
-				continue;
-			}
-			$status = $crypt->decrypt( $encrypted );
-			if ( !$status->isOK() ) {
-				$wgOut->addWikiText( $status->getWikiText() );
-				return;
-			}
-			if ( !$tallier->addRecord( $status->value ) ) {
-				$wgOut->addWikiMsg( 'securepoll-tally-error' );
-				return;
-			}
+		$context = SecurePoll_Context::newFromXmlFile( $_FILES['tally_file']['tmp_name'] );
+		if ( !$context ) {
+			$wgOut->addWikiMsg( 'securepoll-dump-corrupt' );
+			return;
 		}
-		$wgOut->addHTML( $tallier->getResult() );
+		$electionIds = $context->getStore()->getAllElectionIds();
+		$election = $context->getElection( reset( $electionIds ) );
+
+		$status = $election->tally();
+		if ( !$status->isOK() ) {
+			$wgOut->addWikiText( $status->getWikiText( 'securepoll-tally-upload-error' ) );
+			return;
+		}
+		$tallier = $status->value;
+		$wgOut->addHTML( $tallier->getHtmlResult() );
 	}
 
 	function getTitle() {

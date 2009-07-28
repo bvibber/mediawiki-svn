@@ -56,34 +56,34 @@ class SecurePoll_Election extends SecurePoll_Entity {
 	var $title, $ballotType, $tallyType, $primaryLang, $startDate, $endDate, $authType;
 
 	/**
-	 * Constructor.
+	 * Constructor. 
+	 *
+	 * Do not use this constructor directly, instead use SecurePoll_Context::getElection(). 
+	 *
 	 * @param $id integer
 	 */
-	function __construct( $id ) {
-		parent::__construct( 'election', $id );
-	}
-
-	/**
-	 * Create an object based on a DB result row.
-	 * @param $row object
-	 */
-	static function newFromRow( $row ) {
-		$election = new self( $row->el_entity );
-		$election->title = $row->el_title;
-		$election->ballotType = $row->el_ballot;
-		$election->tallyType = $row->el_tally;
-		$election->primaryLang = $row->el_primary_lang;
-		$election->startDate = $row->el_start_date;
-		$election->endDate = $row->el_end_date;
-		$election->authType = $row->el_auth_type;
-		return $election;
+	function __construct( $context, $info ) {
+		parent::__construct( $context, 'election', $info );
+		$this->title = $info['title'];
+		$this->ballotType = $info['ballot'];
+		$this->tallyType = $info['tally'];
+		$this->primaryLang = $info['primaryLang'];
+		$this->startDate = $info['startDate'];
+		$this->endDate = $info['endDate'];
+		$this->authType = $info['auth'];
 	}
 
 	/**
 	 * Get a list of localisable message names. See SecurePoll_Entity.
 	 */
 	function getMessageNames() {
-		return array( 'title', 'intro', 'jump-text', 'return-text' );
+		return array(
+			'title',
+			'intro',
+			'jump-text',
+			'return-text',
+			'unqualified-error',
+		);
 	}
 
 	/**
@@ -131,7 +131,7 @@ class SecurePoll_Election extends SecurePoll_Entity {
 	 */
 	function getBallot() {
 		if ( !$this->ballot ) {
-			$this->ballot = SecurePoll_Ballot::factory( $this->ballotType, $this );
+			$this->ballot = $this->context->newBallot( $this->ballotType, $this );
 		}
 		return $this->ballot;
 	}
@@ -180,6 +180,14 @@ class SecurePoll_Election extends SecurePoll_Entity {
 		if ( $needList && !in_array( $needList, $lists ) ) {
 			$status->fatal( 'securepoll-not-in-list' );
 		}
+
+		# Get custom error message
+		if ( !$status->isOK() ) {
+			$errorMsg = $this->getMessage( 'unqualified-error' );
+			if ( $errorMsg !== '[unqualified-error]' && $errorMsg !== '' ) {
+				$status = Status::newFatal( 'securepoll-custom-unqualified', $errorMsg );
+			}
+		}
 		return $status;
 	}
 
@@ -187,7 +195,7 @@ class SecurePoll_Election extends SecurePoll_Entity {
 	 * Returns true if the user is an admin of the current election.
 	 * @param $user User
 	 */
-	function isAdmin( User $user ) {
+	function isAdmin( $user ) {
 		$admins = array_map( 'trim', explode( '|', $this->getProperty( 'admins' ) ) );
 		return in_array( $user->getName(), $admins );
 	}
@@ -197,7 +205,7 @@ class SecurePoll_Election extends SecurePoll_Entity {
 	 * @param $voter SecurePoll_Voter
 	 */
 	function hasVoted( $voter ) {
-		$db = wfGetDB( DB_MASTER );
+		$db = $this->context->getDB();
 		$row = $db->selectRow(
 			'securepoll_votes',
 			array( "1" ),
@@ -224,32 +232,10 @@ class SecurePoll_Election extends SecurePoll_Entity {
 	 */
 	function getQuestions() {
 		if ( $this->questions === null ) {
-			$db = wfGetDB( DB_MASTER );
-			$res = $db->select(
-				array( 'securepoll_questions', 'securepoll_options' ),
-				'*',
-				array(
-					'qu_election' => $this->getId(),
-					'op_question=qu_entity'
-				),
-				__METHOD__,
-				array( 'ORDER BY' => 'qu_index, qu_entity' )
-			);
-
+			$info = $this->context->getStore()->getQuestionInfo( $this->getId() );
 			$this->questions = array();
-			$options = array();
-			$questionId = false;
-			foreach ( $res as $row ) {
-				if ( $questionId === false ) {
-				} elseif ( $questionId !== $row->qu_entity ) {
-					$this->questions[] = new SecurePoll_Question( $questionId, $options );
-					$options = array();
-				}
-				$options[] = SecurePoll_Option::newFromRow( $row );
-				$questionId = $row->qu_entity;
-			}
-			if ( $questionId !== false ) {
-				$this->questions[] = new SecurePoll_Question( $questionId, $options );
+			foreach ( $info as $questionInfo ) {
+				$this->questions[] = $this->context->newQuestion( $questionInfo );
 			}
 		}
 		return $this->questions;
@@ -261,7 +247,7 @@ class SecurePoll_Election extends SecurePoll_Entity {
 	 */
 	function getAuth() {
 		if ( !$this->auth ) {
-			$this->auth = SecurePoll_Auth::factory( $this->authType );
+			$this->auth = $this->context->newAuth( $this->authType );
 		}
 		return $this->auth;
 	}
@@ -285,7 +271,7 @@ class SecurePoll_Election extends SecurePoll_Entity {
 		if ( $type === false || $type === 'none' ) {
 			return false;
 		}
-		$crypt = SecurePoll_Crypt::factory( $type, $this );
+		$crypt = $this->context->newCrypt( $type, $this );
 		if ( !$crypt ) {
 			throw new MWException( 'Invalid encryption type' );
 		}
@@ -293,16 +279,112 @@ class SecurePoll_Election extends SecurePoll_Entity {
 	}
 
 	/**
-	 * Get the tallier object
-	 * @return SecurePoll_Tallier
+	 * Get the tally type
 	 */
-	function getTallier() {
-		$tallier = SecurePoll_Tallier::factory( $this->tallyType, $this );
-		if ( !$tallier ) {
-			throw new MWException( 'Invalid tally type' );
-		}
-		return $tallier;
+	function getTallyType() {
+		return $this->tallyType;
 	}
 
+	/**
+	 * Call a callback function for each valid vote record, in random order.
+	 */
+	function dumpVotesToCallback( $callback ) {
+		if ( !$this->getCrypt() ) {
+			return Status::newFatal( 'securepoll-dump-no-crypt' );
+		}
+
+		$random = $this->context->getRandom();
+		$status = $random->open();
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+		$db = $this->context->getDB();
+		$res = $db->select(
+			'securepoll_votes',
+			array( '*' ),
+			array(
+				'vote_election' => $this->getId(),
+				'vote_current' => 1,
+				'vote_struck' => 0
+			),
+			__METHOD__
+		);
+		if ( $res->numRows() ) {
+			$order = $random->shuffle( range( 0, $res->numRows() - 1 ) );
+			foreach ( $order as $i ) {
+				$res->seek( $i );
+				call_user_func( $callback, $this, $res->fetchObject() );
+			}
+		}
+		$random->close();
+		return Status::newGood();
+	}
+
+	/**
+	 * Get an XML snippet describing the configuration of this object
+	 */
+	function getConfXml( $options = array() ) {
+		$s = "<configuration>\n" .
+			Xml::element( 'title', array(), $this->title ) . "\n" .
+			Xml::element( 'ballot', array(), $this->ballotType ) . "\n" .
+			Xml::element( 'tally', array(), $this->tallyType ) . "\n" .
+			Xml::element( 'primaryLang', array(), $this->primaryLang ) . "\n" .
+			Xml::element( 'startDate', array(), wfTimestamp( TS_ISO_8601, $this->startDate ) ) . "\n" .
+			Xml::element( 'endDate', array(), wfTimestamp( TS_ISO_8601, $this->endDate ) ) . "\n" .
+			$this->getConfXmlEntityStuff( $options );
+
+		# If we're making a jump dump, we need to add some extra properties, and 
+		# override the auth type
+		if ( !empty( $options['jump'] ) ) {
+			$s .= 
+				Xml::element( 'auth', array(), 'local' ) . "\n" .
+				Xml::element( 'property', 
+					array( 'name' => 'jump-url' ), 
+					$this->context->getSpecialTitle()->getFullURL()
+				) . "\n" .
+				Xml::element( 'property',
+					array( 'name' => 'jump-id' ),
+					$this->getId() 
+				) . "\n";
+		} else {
+			$s .= Xml::element( 'auth', array(), $this->authType ) . "\n";
+		}
+
+		foreach ( $this->getQuestions() as $question ) {
+			$s .= $question->getConfXml( $options );
+		}
+		$s .= "</configuration>\n";
+		return $s;
+	}
+
+	/**
+	 * Get property names which aren't included in an XML dump
+	 */
+	function getPropertyDumpBlacklist( $options = array() ) {
+		if ( !empty( $options['jump'] ) ) {
+			return array(
+				'gpg-encrypt-key',
+				'gpg-sign-key',
+				'gpg-decrypt-key'
+			);
+		} else {
+			return array();
+		}
+	}
+
+	/**
+	 * Tally the valid votes for this election.
+	 * Returns a Status object. On success, the value property will contain a
+	 * SecurePoll_ElectionTallier object.
+	 */
+	function tally() {
+		$tallier = $this->context->newElectionTallier( $this );
+		$status = $tallier->execute();
+		if ( $status->isOK() ) {
+			return Status::newGood( $tallier );
+		} else {
+			return $status;
+		}
+	}
 }
 

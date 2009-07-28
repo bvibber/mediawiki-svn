@@ -9,12 +9,15 @@ class SecurePoll_Question extends SecurePoll_Entity {
 
 	/**
 	 * Constructor
-	 * @param $id integer
-	 * @param $options array Array of SecurePoll_Option children
+	 * @param $context SecurePoll_Context
+	 * @param $info Associative array of entity info
 	 */
-	function __construct( $id, $options ) {
-		parent::__construct( 'question', $id );
-		$this->options = $options;
+	function __construct( $context, $info ) {
+		parent::__construct( $context, 'question', $info );
+		$this->options = array();
+		foreach ( $info['options'] as $optionInfo ) {
+			$this->options[] = new SecurePoll_Option( $context, $optionInfo );
+		}
 	}
 
 	/**
@@ -31,5 +34,16 @@ class SecurePoll_Question extends SecurePoll_Entity {
 		return $this->options;
 	}
 
-	function getOptions() { return $this->options; }
+	function getOptions() {
+		return $this->options;
+	}
+
+	function getConfXml( $options = array() ) {
+		$s = "<question>\n" . $this->getConfXmlEntityStuff( $options );
+		foreach ( $this->getOptions() as $option ) {
+			$s .= $option->getConfXml( $options );
+		}
+		$s .= "</question>\n";
+		return $s;
+	}
 }

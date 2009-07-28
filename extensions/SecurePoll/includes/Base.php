@@ -1,9 +1,6 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( "Not a valid entry point\n" );
-}
 
-class SecurePollPage extends UnlistedSpecialPage {
+class SecurePoll_BasePage extends UnlistedSpecialPage {
 	static $pages = array(
 		'details' => 'SecurePoll_DetailsPage',
 		'dump' => 'SecurePoll_DumpPage',
@@ -16,11 +13,14 @@ class SecurePollPage extends UnlistedSpecialPage {
 		'vote' => 'SecurePoll_VotePage',
 	);
 
+	var $sp_context;
+
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		parent::__construct( 'SecurePoll' );
+		$this->sp_context = new SecurePoll_Context;
 	}
 
 	/**
@@ -29,17 +29,17 @@ class SecurePollPage extends UnlistedSpecialPage {
 	 * @param $paramString Mixed: parameter passed to the page or null
 	 */
 	public function execute( $paramString ) {
-		global $wgOut, $wgRequest, $wgScriptPath;
+		global $wgOut, $wgUser, $wgRequest, $wgScriptPath;
 
 		wfLoadExtensionMessages( 'SecurePoll' );
 
 		$this->setHeaders();
 		$wgOut->addLink( array(
 			'rel' => 'stylesheet',
-			'href' => "$wgScriptPath/extensions/SecurePoll/SecurePoll.css",
+			'href' => "$wgScriptPath/extensions/SecurePoll/resources/SecurePoll.css",
 			'type' => 'text/css'
 		) );
-		$wgOut->addScriptFile( "$wgScriptPath/extensions/SecurePoll/SecurePoll.js" );
+		$wgOut->addScriptFile( "$wgScriptPath/extensions/SecurePoll/resources/SecurePoll.js" );
 
 		$this->request = $wgRequest;
 
@@ -55,9 +55,16 @@ class SecurePollPage extends UnlistedSpecialPage {
 			return;
 		}
 
+		if ( !($page instanceof SecurePoll_EntryPage ) ) {
+			$this->setSubtitle();
+		}
+
 		$page->execute( $params );
 	}
 
+	/**
+	 * Get a SecurePoll_Page subclass object for the given subpage name
+	 */
 	function getSubpage( $name ) {
 		if ( !isset( self::$pages[$name] ) ) {
 			return false;
@@ -67,20 +74,32 @@ class SecurePollPage extends UnlistedSpecialPage {
 		return $page;
 	}
 
-	function getElection( $id ) {
-		$db = wfGetDB( DB_MASTER );
-		$row = $db->selectRow( 'securepoll_elections', '*', array( 'el_entity' => $id ), __METHOD__ );
-		if ( $row ) {
-			return SecurePoll_Election::newFromRow( $row );
-		} else {
-			return false;
-		}
-	}
-
+	/**
+	 * Get a random token for CSRF protection
+	 */
 	function getEditToken() {
 		if ( !isset( $_SESSION['spToken'] ) ) {
 			$_SESSION['spToken'] = sha1( mt_rand() . mt_rand() . mt_rand() );
 		}
 		return $_SESSION['spToken'];
+	}
+
+	/**
+	 * Set a navigation subtitle.
+	 * Each argument is a two-element array giving a Title object to be used as 
+	 * a link target, and the link text.
+	 */
+	function setSubtitle( /*...*/ ) {
+		global $wgUser, $wgOut;
+		$skin = $wgUser->getSkin();
+		$title = $this->getTitle();
+		$subtitle = '&lt; ' . $skin->linkKnown( $title, htmlspecialchars( $title->getText() ) );
+		$pipe = wfMsg( 'pipe-separator' );
+		$links = func_get_args();
+		foreach ( $links as $link ) {
+			list( $title, $text ) = $link;
+			$subtitle .= $pipe . $skin->linkKnown( $title, htmlspecialchars( $text ) );
+		}
+		$wgOut->setSubtitle( $subtitle );
 	}
 }

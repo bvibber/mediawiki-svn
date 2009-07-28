@@ -12,21 +12,21 @@
  */
 class SecurePoll_Entity {
 	var $id;
+	var $context;
 	var $messagesLoaded = array();
 	var $properties;
-
-	static $languages = array();
-	static $messageCache = array();
 
 	/**
 	 * Create an entity of the given type. This is typically called from the 
 	 * child constructor.
+	 * @param $context SecurePoll_Context
 	 * @param $type string
-	 * @param $id integer
+	 * @param $info Associative array of entity info
 	 */
-	function __construct( $type, $id = false ) {
+	function __construct( $context, $type, $info ) {
+		$this->context = $context;
 		$this->type = $type;
-		$this->id = $id;
+		$this->id = isset( $info['id'] ) ? $info['id'] : false;
 	}
 
 	/**
@@ -51,17 +51,6 @@ class SecurePoll_Entity {
 	 */
 	function getId() {
 		return $this->id;
-	}
-
-	/**
-	 * Set the global language fallback sequence. 
-	 *
-	 * @param $languages array A list of language codes. When a message is 
-	 *     requested, the first code in the array will be tried first, followed
-	 *     by the subsequent codes.
-	 */
-	static function setLanguages( $languages ) {
-		self::$languages = $languages;
 	}
 
 	/**
@@ -96,32 +85,13 @@ class SecurePoll_Entity {
 	 */
 	function loadMessages( $lang = false ) {
 		if ( $lang === false ) {
-			$lang = reset( self::$languages );
+			$lang = reset( $this->context->languages );
 		}
 		$ids = array( $this->getId() );
 		foreach ( $this->getDescendants() as $child ) {
-			$id = $child->getId();
-			if ( !isset( self::$messageCache[$lang][$id] ) ) {
-				$ids[] = $id;
-			}
+			$ids[] = $child->getId();
 		}
-		if ( !count( $ids ) ) {
-			return;
-		}
-
-		$db = wfGetDB( DB_MASTER );
-		$res = $db->select(
-			'securepoll_msgs',
-			'*',
-			array(
-				'msg_entity' => $ids,
-				'msg_lang' => $lang
-			),
-			__METHOD__
-		);
-		foreach ( $res as $row ) {
-			self::$messageCache[$row->msg_lang][$row->msg_entity][$row->msg_key] = $row->msg_text;
-		}
+		$this->context->getMessages( $lang, $ids );
 		$this->messagesLoaded[$lang] = true;
 	}
 
@@ -131,15 +101,11 @@ class SecurePoll_Entity {
 	 * automatically.
 	 */
 	function loadProperties() {
-		$db = wfGetDB( DB_MASTER );
-		$res = $db->select(
-			'securepoll_properties',
-			'*',
-			array( 'pr_entity' => $this->getId() ),
-			__METHOD__ );
-		$this->properties = array();
-		foreach ( $res as $row ) {
-			$this->properties[$row->pr_key] = $row->pr_value;
+		$properties = $this->context->getStore()->getProperties( array( $this->getId() ) );
+		if ( count( $properties ) ) {
+			$this->properties = reset( $properties );
+		} else {
+			$this->properties = array();
 		}
 	}
 
@@ -154,11 +120,7 @@ class SecurePoll_Entity {
 		if ( empty( $this->messagesLoaded[$language] ) ) {
 			$this->loadMessages( $language );
 		}
-		if ( !isset( self::$messageCache[$language][$this->getId()][$name] ) ) {
-			return false;
-		} else {
-			return self::$messageCache[$language][$this->getId()][$name];
-		}
+		return $this->context->getMessage( $language, $this->getId(), $name );
 	}
 
 	/**
@@ -170,15 +132,51 @@ class SecurePoll_Entity {
 	 */
 	function getMessage( $name ) {
 		$id = $this->getId();
-		foreach ( self::$languages as $language ) {
+		foreach ( $this->context->languages as $language ) {
 			if ( empty( $this->messagesLoaded[$language] ) ) {
 				$this->loadMessages( $language );
 			}
-			if ( isset( self::$messageCache[$language][$id][$name] ) ) {
-				return self::$messageCache[$language][$id][$name];
+			$message = $this->getRawMessage( $name, $language );
+			if ( $message !== false ) {
+				return $message;
 			}
 		}
 		return "[$name]";
+	}
+
+	/**
+	 * Get a message, and interpret it as wikitext, converting it to HTML.
+	 */
+	function parseMessage( $name, $lineStart = true ) {
+		global $wgParser, $wgTitle;
+		$parserOptions = $this->context->getParserOptions();
+		if ( $wgTitle ) {
+			$title = $wgTitle;
+		} else {
+			$title = SpecialPage::getTitleFor( 'SecurePoll' );
+		}
+		$wikiText = $this->getMessage( $name );
+		$out = $wgParser->parse( $wikiText, $title, $parserOptions, $lineStart );
+		return $out->getText();
+	}
+
+	/**
+	 * Get a message and convert it from wikitext to HTML, without <p> tags.
+	 */
+	function parseMessageInline( $name ) {
+		return $this->parseMessage( $name, false );
+	}
+
+	/**
+	 * Get a list of languages for which we have translations, for this entity 
+	 * and its descendants.
+	 */
+	function getLangList() {
+		$ids = array( $this->getId() );
+		foreach ( $this->getDescendants() as $child ) {
+			$ids[] = $child->getId();
+		}
+		return $this->context->getStore()->getLangList( $ids );
 	}
 
 	/**
@@ -196,6 +194,64 @@ class SecurePoll_Entity {
 		} else {
 			return $default;
 		}
+	}
+
+	/**
+	 * Get all defined properties as an associative array
+	 */
+	function getAllProperties() {
+		if ( $this->properties === null ) {
+			$this->loadProperties();
+		}
+		return $this->properties;
+	}
+
+	/**
+	 * Get configuration XML. Overridden by most subclasses.
+	 */
+	function getConfXml( $options = array() ) {
+		return "<{$this->type}>\n" .
+			$this->getConfXmlEntityStuff( $options ) .
+			"</{$this->type}>\n";
+	}
+
+	/**
+	 * Get an XML snippet giving the messages and properties
+	 */
+	function getConfXmlEntityStuff( $options = array() ) {
+		$s = Xml::element( 'id', array(), $this->getId() ) . "\n";
+		$blacklist = $this->getPropertyDumpBlacklist( $options );
+		foreach ( $this->getAllProperties() as $name => $value ) {
+			if ( !in_array( $name, $blacklist ) ) {
+				$s .= Xml::element( 'property', array( 'name' => $name ), $value ) . "\n";
+			}
+		}
+		if ( isset( $options['langs'] ) ) {
+			$langs = $options['langs'];
+		} else {
+			$langs = $this->context->languages;
+		}
+		foreach ( $this->getMessageNames() as $name ) {
+			foreach ( $langs as $lang ) {
+				$value = $this->getRawMessage( $name, $lang );
+				if ( $value !== false ) {
+					$s .= Xml::element( 
+							'message', 
+							array( 'name' => $name, 'lang' => $lang ),
+							$value 
+						) . "\n";
+				}
+			}
+		}
+		return $s;
+	}
+
+	/**
+	 * Get property names which aren't included in an XML dump.
+	 * Overloaded by Election.
+	 */
+	function getPropertyDumpBlacklist( $options = array() ) {
+		return array();
 	}
 
 }
