@@ -1,5 +1,27 @@
 /* CSS for NavigableTOC extension */
 
-.currentSection {
-	color: red !important;
+div#navigableTOC {
+	position: absolute;
+	right: 0;
+	border: solid 1px silver;
+	background-color: #f3f3f3;
+	width: 23%;
+	padding: 0.5em;
+}
+div#navigableTOC ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+div#navigableTOC ul ul {
+	margin-left: 1em;
+}
+div#navigableTOC ul li a.currentSelection {
+	font-weight: bold;
+}
+div#edittoolbar {
+	width: 75%;
+}
+form#editform textarea#wpTextbox1 {
+	width: 75%;
 }

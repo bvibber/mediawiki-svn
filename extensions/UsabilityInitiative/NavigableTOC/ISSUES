@@ -1,8 +1,4 @@
-* Script assumes lines only break on spaces, but in practice lines can also be
-  broken mid-word on - / & etc.  This means the presence of such breaks (e.g.
-  in URLs) causes the script to scroll down a few lines too few or too many.
-  Especially the latter is very confusing.
-* Script assumes the letters in the textarea are 8x16 (Windows), 8x13 (Mac) or
-  7x15 (Linux), but these values should really be determined dynamically.
-** Both of these can be avoided by determining the caret position properly,
-   I'll ask Michael Dale about this.
+* The UI is still a horrible hack
+* parseOutline doesn't play well with headings that don't have lines above and
+below
+* The buildList logic is flawed
