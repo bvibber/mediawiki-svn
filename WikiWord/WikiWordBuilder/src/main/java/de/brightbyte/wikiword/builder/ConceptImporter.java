@@ -375,7 +375,7 @@ public class ConceptImporter extends AbstractImporter {
 						if (analyzer.useCategoryAliases()) {
 							//XXX: if there's more than one "main article", this breaks.
 							
-							if (analyzer.mayBeFormOf(link.getLenientPage(), analyzerPage.getTitleBaseName())) {
+							if (!StringUtils.equals(name, link.getTargetConcept()) && analyzer.mayBeFormOf(link.getLenientPage(), analyzerPage.getTitleBaseName())) {
 								Set<CharSequence> terms = analyzer.determineTitleTerms(link.getTitle());
 								storePageTerms(rcId, terms, conceptId, name, ExtractionRule.TERM_FROM_CAT_NAME);
 								

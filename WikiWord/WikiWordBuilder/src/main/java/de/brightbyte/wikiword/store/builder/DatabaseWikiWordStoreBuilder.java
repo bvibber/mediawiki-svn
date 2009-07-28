@@ -5,6 +5,8 @@ import java.text.MessageFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import de.brightbyte.application.Agenda;
 import de.brightbyte.db.BufferBasedInserter;
@@ -295,6 +297,8 @@ public class DatabaseWikiWordStoreBuilder
 		return executeChunkedUpdate(context, name, sql, suffix, chunkTable, chunkField, 1);
 	}
 	
+	private static final Pattern suffixRestPattern = Pattern.compile("(.*)(((\\s+|^)on\\s+duplicate\\s+key\\s+|\\s*group\\s+by\\s+).*)", Pattern.CASE_INSENSITIVE);
+	
 	protected int executeChunkedUpdate(String context, String name, String sql, String suffix, DatabaseTable chunkTable, String chunkField, int factor) throws PersistenceException {
 		if (updateChunkSize<=0) {
 			if (suffix!=null && !suffix.matches("^(?i:\\s*on\\s+duplicate\\s+key\\s+|\\s*group\\s+by\\s+|\\s*where\\s+).*")) {
@@ -312,10 +316,15 @@ public class DatabaseWikiWordStoreBuilder
 		if (suffix!=null) {
 			//XXX: nasty hacks! suffix used for different stuff!
 			
-			if (suffix.matches("^(?i:\\s*on\\s+duplicate\\s+key\\s+|\\s*group\\s+by\\s+).*")) {
-				rest = suffix;
+			Matcher m = suffixRestPattern.matcher(suffix);
+			
+			if (m.matches()) {
+				rest = m.group(2);
+				suffix = m.group(1);
 			}
-			else {
+			
+			suffix = suffix.trim();
+			if (suffix.length()>0) {
 				where = suffix.replaceAll("^(?i:\\s*where\\s+)?(.*)$", " $1");
 			}
 		}

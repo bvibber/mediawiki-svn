@@ -29,7 +29,6 @@ import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.GlobalConcept;
-import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
@@ -217,9 +216,9 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		for (Corpus c: cc) {
 			LocalConceptStoreSchema localdb = getLocalConceptDatabase(c);
 			
-			if (beginTask("importConcepts", "resolveLanglinkAliases#"+c.getLanguage(), "lang="+c.getLanguage())) {
-				int n = resolveLanglinkAliases(localdb);
-				endTask("importConcepts", "resolveLanglinkAliases#"+c.getLanguage(), n+" records");
+			if (beginTask("importConcepts", "resolveLanglinkAbout#"+c.getLanguage(), "lang="+c.getLanguage())) {
+				int n = resolveLanglinkAbout(localdb);
+				endTask("importConcepts", "resolveLanglinkAbout#"+c.getLanguage(), n+" records");
 			}
 			
 			if (beginTask("importConcepts", "deleteAliasedLanglinks#"+c.getLanguage(), "lang="+c.getLanguage())) {
@@ -229,37 +228,37 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		}
 	}
 	
-	protected int resolveLanglinkAliases(LocalConceptStoreSchema localdb) throws PersistenceException {
-		DatabaseTable aliasTable = localdb.getTable("alias");
+	protected int resolveLanglinkAbout(LocalConceptStoreSchema localdb) throws PersistenceException {
+		DatabaseTable aboutTable = localdb.getTable("about");
 		DatabaseTable langlinkTable = database.getTable("langlink");
 		String lang = localdb.getCorpus().getLanguage();
 		
-		String sql = "UPDATE IGNORE "+langlinkTable.getSQLName()+" as R JOIN "+aliasTable.getSQLName()+" as E "
+		String sql = "UPDATE IGNORE "+langlinkTable.getSQLName()+" as R JOIN "+aboutTable.getSQLName()+" as A "
 					+ " ON R.language = "+database.quoteString(lang)+" "
-					+ " AND R.target = E.source_name "
-					+ " SET R.target = E.target_name";
+					+ " AND R.target = A.resource_name "
+					+ " SET R.target = A.concept_name ";
 		
-		String where = " scope = "+AliasScope.REDIRECT.ordinal();
+		String where = null;
+		//String where = " WHERE A.resource_name != A.concept_name ";
 		
-		return executeChunkedUpdate("resolveLanglinkAliases", "resolve#"+lang, sql, where, langlinkTable, "concept");
+		return executeChunkedUpdate("resolveLanglinkAbout", "resolve#"+lang, sql, where, langlinkTable, "R.concept");
 	}
 	
-	
 	protected int deleteAliasedLanglinks(LocalConceptStoreSchema localdb) throws PersistenceException {
-		DatabaseTable aliasTable = localdb.getTable("alias");
+		DatabaseTable aboutTable = localdb.getTable("about");
 		DatabaseTable langlinkTable = database.getTable("langlink");
 		String lang = localdb.getCorpus().getLanguage();
 		
 		String sql = "DELETE FROM R "
-			+ " USING "+langlinkTable.getSQLName()+" as R JOIN "+aliasTable.getSQLName()+" as E "
-			+ " ON R.language = "+database.quoteString(lang)+" "
-			+ " AND R.target = E.source_name ";
-
-		String where = " scope = "+AliasScope.REDIRECT.ordinal();
+					+ " USING "+langlinkTable.getSQLName()+" as R JOIN "+aboutTable.getSQLName()+" as A "
+					+ " ON R.language = "+database.quoteString(lang)+" "
+					+ " AND R.target = A.resource_name ";
 		
-		return executeChunkedUpdate("deleteAliasedLanglinks", "resolve#"+lang, sql, where, langlinkTable, "concept");
+		String where = " A.resource_name != A.concept_name ";
+		
+		return executeChunkedUpdate("deleteAliasedLanglinks", "resolve#"+lang, sql, where, langlinkTable, "R.concept");
 	}
-
+	
 	protected int importOrigins(LocalConceptStoreSchema localdb, int idOffset) throws PersistenceException {		
 		String lang = localdb.getCorpus().getLanguage();
 		
@@ -310,9 +309,6 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		String sql;
 		DatabaseTable t;
 
-		//FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME 
-		 //FIXME: langlinks point to resource names. Use aboutTable to resolve to concepts!
-		
 		String lang = localdb.getCorpus().getLanguage();
 		
 		t = localdb.getTable("langlink");
@@ -406,8 +402,9 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 				" FROM "+langlinkTable.getSQLName()+" as LL " +
 				" JOIN "+originTable.getSQLName()+" as R ON R.lang = LL.language AND R.local_concept_name = LL.target";
 		
-		String ondupe = " ON DUPLICATE KEY UPDATE langref = langref + VALUES(langref)";
-		return executeChunkedUpdate("buildLangRef", "insert:langref", sql, ondupe, langlinkTable, "concept");
+		String suffix = " WHERE LL.concept != R.global_concept "
+			+" ON DUPLICATE KEY UPDATE langref = langref + VALUES(langref)";
+		return executeChunkedUpdate("buildLangRef", "insert:langref", sql, suffix, langlinkTable, "concept");
 	}
 	
 	protected int buildReverseLangRef() throws PersistenceException {
@@ -696,6 +693,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 				int n = insertMerged(relationTable, "concept2", "langref,langmatch,bilink", "SUM", "concept1"); 
 				endTask("performMerge", "insertMerge:relation.concept2", n+" entries");
 			}
+			
+			//TODO: recalculate langmatch and bilink after merging.
 			
 			if (beginTask("performMerge", "deleteMerged:relation.concept1")) {
 				int n = deleteMerged(relationTable, "concept1");

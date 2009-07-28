@@ -57,7 +57,7 @@ public class WikiWordConceptStoreSchema extends WikiWordStoreSchema {
 		langlinkTable.addField( new DatabaseField(this, "language", getTextType(16), null, true, null ) );
 		langlinkTable.addField( new DatabaseField(this, "target", getTextType(255), null, true, null ) );
 		langlinkTable.addKey( new DatabaseKey(this, KeyType.INDEX, "language_target", new String[] {"language", "target"}) );
-		langlinkTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_language_target", new String[] {"concept", "language", "target"}) );
+		langlinkTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept_language_target", new String[] {"concept", "language", "target"}) );
 		addTable(langlinkTable);
 		
 		groupStats.add( new GroupStatsSpec("concept", "type", conceptTypeCodeTranslator));
