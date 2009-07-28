@@ -12,12 +12,12 @@ $( document ).ready( function() {
 				.css({
 					'display': 'none',
 					'position' : 'absolute',
-					'left': 0,
 					'bottom': 0,
 					'padding': '0.25em',
 					'color': '#999999',
 					'cursor': 'text'
 				})
+				.css( ( $( 'body.rtl' ).size() > 0 ? 'right' : 'left' ), 0 )
 				.click( function() {
 					$(this).parent().find( 'input#searchInput' ).focus();
 				})
