@@ -49,8 +49,6 @@ gMsg['mv_open_edit'] ='you can only edit one at a time, please save or cancel ot
 
 //@@todo context sensitive init scripts
 //init the interface on page load
-js2AddOnloadHook(mv_load_interface_libs);
-
 js2AddOnloadHook( function(){
 	js_log('f:mv_load_interface_libs');
 	//make sure the mv_embed stuff is loaded 
