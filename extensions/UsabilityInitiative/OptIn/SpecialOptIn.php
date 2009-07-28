@@ -81,6 +81,9 @@ class SpecialOptIn extends SpecialPage {
 			else if ( $wgRequest->getVal( 'opt' ) == 'feedback' )
 				// Giving feedback
 				$wgOut->setPageTitle( wfMsg( 'optin-title-feedback' ) );
+			else if ( $wgRequest->getVal( 'opt' ) == 'in' )
+				// Just opted in and reloaded... or something
+				$wgOut->setPagetitle( wfMsg( 'optin-title-justoptedin' ) );
 			else
 				// About to opt out
 				$wgOut->setPageTitle( wfMsg( 'optin-title-optedin' ) );

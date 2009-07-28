@@ -21,6 +21,11 @@ class OptInHooks {
 			'ois_type',
 			dirname( __FILE__ ) . '/OptIn.patch.ois_type.sql'
 		);
+		$wgExtNewFields[] = array(
+			'optin_survey',
+			'ois_question',
+			dirname( __FILE__ ) . '/patch-ois_question.sql'
+		);
 		
 		return true;
 	}

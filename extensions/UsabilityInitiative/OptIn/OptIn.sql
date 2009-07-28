@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS /*_*/optin_survey (
 	ois_type varchar(16) NOT NULL,
 
 	-- Question ID (key in $wgOptInSurvey)
-	ois_question int unsigned NOT NULL,
+	ois_question varchar(16) NOT NULL,
 
 	-- Answer ID (key in $wgOptInSurvey[ois_question]['answers'])
 	ois_answer text NULL,
