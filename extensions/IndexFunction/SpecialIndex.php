@@ -35,7 +35,7 @@ class SpecialIndex extends UnlistedSpecialPage {
 	}
 	
 	function showDabPage( Title $t1 ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgSpecialIndexContext;
 		$sk = $wgUser->getSkin();
 		$wgOut->setPagetitle( $t1->getPrefixedText() );
 		$dbr = wfGetDB( DB_SLAVE );
@@ -112,9 +112,8 @@ class SpecialIndex extends UnlistedSpecialPage {
 				$grouphtml .= Xml::openElement( 'ul' );
 				foreach( $group as $pageid ) {
 					$t = $list[$pageid]['title'];
-					$cats = $list[$pageid]['cats'];
-					$link = $sk->link( $t, null, array(), array(), array( 'known', 'noclasses' ) );
-					$grouphtml .= Xml::tags( 'li', array(), $link . '&nbsp;&ndash&nbsp;' . implode( ', ', $cats ) );
+					$cats = $list[$pageid]['cats'];					
+					$grouphtml .= $this->makeContextLine( $t, $cats );					
 					unset( $list[$pageid] );
 					ksort($list);
 					foreach($catlist as $remaining) {
@@ -137,8 +136,7 @@ class SpecialIndex extends UnlistedSpecialPage {
 			if (count($list) != 0) { //Pages w/ no cats
 				$grouphtml = Xml::openElement( 'ul' );
 				foreach( $list as $pageid => $info ) {
-					$link = $sk->link( $info['title'], null, array(), array(), array( 'known', 'noclasses' ) );
-					$grouphtml .= Xml::tags( 'li', array(), $link );
+					$grouphtml .= $this->makeContextLine( $info['title'], array() );
 				}
 				$grouphtml .= Xml::closeElement('ul');
 				$groups = array_merge( array($grouphtml), $groups);
@@ -147,19 +145,44 @@ class SpecialIndex extends UnlistedSpecialPage {
 		} else {
 			$out = Xml::openElement( 'ul' );
 			foreach( $list as $pageid => $info ) {
-				$link = $sk->link( $info['title'], null, array(), array(), array( 'known', 'noclasses' ) );
-				if ( $info['cats'] ) {
-					$line = $link . '&nbsp;&ndash&nbsp;' . implode( ', ', $info['cats'] );
-					$line = Xml::tags( 'li', array(), $line );
-				} else {
-					$line = Xml::tags( 'li', array(), $link );
-				}
-				$out .= $line;
+				$out .= $this->makeContextLine( $info['title'], $info['cats'] );
 			}
 			$out .= Xml::closeElement('ul');
 		}
 		
 		$wgOut->addHtml($out);
 	}
+	
+	private function makeContextLine( $title, $cats ) {
+		global $wgUser, $wgSpecialIndexContext;
+		$sk = $wgUser->getSkin();
+		$link = $sk->link( $title, null, array(), array(), array( 'known', 'noclasses' ) );
+		if ( $wgSpecialIndexContext == 'extract' ) {
+			$extracter = new IndexAbstracts();
+			$text = $extracter->getExtract( $title );
+			if ( $text != '' ) {
+				if ( stripos( $text, $title->getPrefixedText() ) !== false ) {
+					$search = preg_quote( $title->getPrefixedText(), '/' );
+					$line = preg_replace( "/$search/i", $link, $text, 1 );
+				} else {
+					$line = $link . '&nbsp;&ndash&nbsp;' . $text;
+				}
+			} else {
+				$line = $link;
+			}
+			$line = Xml::tags( 'li', array(), $line );
+		} elseif ( $wgSpecialIndexContext == 'categories' ) {
+			if ( $cats ) {
+				$line = $link . '&nbsp;&ndash&nbsp;' . implode( ', ', $cats );
+				$line = Xml::tags( 'li', array(), $line );
+			} else {
+				$line = Xml::tags( 'li', array(), $link );
+			}
+		} else {
+			$line = Xml::tags( 'li', array(), $link );
+		}
+		return $line;
+	}
+	
 }
 
