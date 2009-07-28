@@ -272,7 +272,8 @@ div#edittoolbar-section-characters div.page div a {
 	color: black;
 	text-decoration: none;
 }
-body.rtl div#edittoolbar-section-characters div.page > div > a {
+body.rtl div#edittoolbar-section-characters div.page > div > a,
+div#edittoolbar-section-characters div.page div.rtl a {
 	direction: rtl;
 	float: right;
 	margin-left: 0;

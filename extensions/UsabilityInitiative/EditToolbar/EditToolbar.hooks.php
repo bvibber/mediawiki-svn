@@ -100,6 +100,13 @@ class EditToolbarHooks {
 				'edittoolbar-tool-table-example',
 				/* Special Characters Section */
 				'edittoolbar-section-characters',
+				'edittoolbar-characters-page-latin',
+				'edittoolbar-characters-page-ipa',
+				'edittoolbar-characters-page-symbols',
+				'edittoolbar-characters-page-greek',
+				'edittoolbar-characters-page-cyrillic',
+				'edittoolbar-characters-page-arabic',
+				'edittoolbar-characters-page-hebrew',
 				/* Help Section */
 				'edittoolbar-section-help',
 				'edittoolbar-help-heading-description',

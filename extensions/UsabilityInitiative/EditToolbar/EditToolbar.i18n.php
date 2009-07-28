@@ -75,6 +75,13 @@ File:Example.jpg|Caption2",
 | row 2, cell 3",
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',
+	'edittoolbar-characters-page-latin' => 'Latin',
+	'edittoolbar-characters-page-ipa' => 'IPA',
+	'edittoolbar-characters-page-symbols' => 'Symbols',
+	'edittoolbar-characters-page-greek' => 'Greek',
+	'edittoolbar-characters-page-cyrillic' => 'Cyrillic',
+	'edittoolbar-characters-page-arabic' => 'Arabic',
+	'edittoolbar-characters-page-hebrew' => 'Hebrew',
 	/* Help Section */
 	'edittoolbar-section-help' => 'Help',
 	'edittoolbar-help-heading-description' => 'Description',
