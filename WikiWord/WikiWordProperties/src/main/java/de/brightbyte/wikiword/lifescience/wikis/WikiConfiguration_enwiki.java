@@ -153,7 +153,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	private static final String neuroNamesChars = "["+alphabeticChars+"]+-["+numericChars+"]+";
 	
 	//TODO: exclude "Biography"... 
-	public static final String lifeScienceJournalPattern = "(^|[ _])(Chem[a-z]*|Biol?[.a-z]*|Gen[eo][a-z]*|Med[a-z]*|Cell[a-z]*|DNA|RNA|Nucleic|EMBO|FEBS|Onco[a-z]*|Blood|Immono[a-z]*|Cancer|Virol[a-z]*|Med[a-z]*|Clin[a-z]*|Lancet|Nature|PLoS|Neuro[a-z]*|Zootaxa|JAMA|FASEB|Bacter[a-z]*|Mutat[a-z]*|Mol[a-z]*|Protein|Dermat[a-z]*|Pathol[a-z]*|Endocr[a-z]*|Microbio[a-z]*)($|[_ ])";
+	//public static final String lifeScienceJournalPattern = "(^|[ _])(Chem[a-z]*|Biol?[.a-z]*|Gen[eo][a-z]*|Med[a-z]*|Cell[a-z]*|DNA|RNA|Nucleic|EMBO|FEBS|Onco[a-z]*|Blood|Immono[a-z]*|Cancer|Virol[a-z]*|Med[a-z]*|Clin[a-z]*|Lancet|Nature|PLoS|Neuro[a-z]*|Zootaxa|JAMA|FASEB|Bacter[a-z]*|Mutat[a-z]*|Mol[a-z]*|Protein|Dermat[a-z]*|Pathol[a-z]*|Endocr[a-z]*|Microbio[a-z]*)($|[_ ])";
 
 	
 	protected static DefaultTemplateParameterPropertySpec makeNamePropertySpec(String param, String prop, boolean multi, boolean space) {
@@ -219,8 +219,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		propertyExtractors.add( new TemplateParameterExtractor( new ExactNameMatcher("Cite_journal"), 
 				new DefaultTemplateParameterPropertySpec("journal", "journal")
-						.addNormalizer(punctuationStripPattern, "")
-						.setCondition(lifeScienceJournalPattern, 0, false) ) );
+						.addNormalizer(punctuationStripPattern, "")/*
+						.setCondition(lifeScienceJournalPattern, 0, false)*/ ) );
 		
 		TemplateParameterPropertySpec atcSpec = new AbstractTemplateParameterPropertySpec("ATC") {
 			private Matcher validator = Pattern.compile("["+upperAlphaNumericChars+"]+").matcher("");
@@ -473,8 +473,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeNamePropertySpec("abbreviation", "Name", true, true),
 				makeNamePropertySpec("type", "RNA type", true, true),
 				new DefaultTemplateParameterPropertySpec("journal", "journal")
-					.addNormalizer(punctuationStripPattern, "")
-					.setCondition(lifeScienceJournalPattern, 0, false) 
+					.addNormalizer(punctuationStripPattern, "") /*
+					.setCondition(lifeScienceJournalPattern, 0, false) */ 
 			) );
 		
 		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_chemical_analysis", 0, true), 
