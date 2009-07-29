@@ -1,6 +1,7 @@
 The master copy of these files is in /home/wikipedia/upload-scripts
 
-'sync' is a script to copy these files out to the image servers.
+'sync' is a script to copy the currently used files from this directory out 
+to the image and thumbnail servers. 
 
 'thumb-handler.php' is the primary 404 handler script point here; it parses
 down the URL path to get the wiki, image name, and thumbnail size and options
@@ -12,5 +13,5 @@ thumb-handler.php if it doesn't appear to be a thumb.
 
 'HTCPpurge' is a daemon to listen for HTCP proxy purge requests for thumbnails
 and delete the corresponding files from the local filesystem. This was used
-for the old thumbnailing server on 'anthony', but is probably not in use any
-longer.
+for the old thumbnailing server on 'anthony', but is no longer in use.
+
