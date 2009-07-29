@@ -343,7 +343,11 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			}
 			
 			if (id>0 && conceptDedupe!=null) {
-				if (!conceptDedupe.add(id)) throw new IllegalArgumentException("duplicate concept: id= "+id+", name= "+name+", rc= "+rcId);
+				if (!conceptDedupe.add(id)) {
+					warning(rcId, "duplicate concept", "id= "+id+", name= "+name+", rc= "+rcId+", type="+ctype, null);
+					if (rcId>=0) storeAbout(rcId, name, id, name); //XXX: really here? do prior to calling this method?!
+					return id;
+				}
 			}
 			
 			conceptInserter.updateDouble("random", random.nextDouble());
