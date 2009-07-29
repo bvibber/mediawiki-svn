@@ -74,6 +74,7 @@
 					post += ' '
 				}
 			}
+			$(this).trigger( 'encapsulateSelection' );
 			/**
 			 * /CLEAN THIS UP PLEASE!
 			 */
