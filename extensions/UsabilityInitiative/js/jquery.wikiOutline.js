@@ -131,7 +131,7 @@ buildOutline: function( target ) {
 								.data( 'position', structure[i].position )
 								.click( function( event ) {
 									$(this).data( 'textbox' ).scrollToPosition(
-										$(this).data( 'position' ) - 1
+										$(this).data( 'position' )
 									);
 									event.preventDefault();
 								} )

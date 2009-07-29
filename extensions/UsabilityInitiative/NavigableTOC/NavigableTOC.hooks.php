@@ -14,7 +14,7 @@ class NavigableTOCHooks {
 	 * EditPage::showEditForm:initial hook
 	 * Adds the TOC to the edit form
 	 */
-	 public static function addTOC( &$ep ) {
+	 public static function addTOC( &$toolbar ) {
 		global $wgNavigableTOCStyleVersion, $wgParser, $wgUser;
 		global $wgEnableParserCache;
 		
@@ -29,7 +29,6 @@ class NavigableTOCHooks {
 		UsabilityInitiativeHooks::addStyle(
 			'NavigableTOC/NavigableTOC.css', $wgNavigableTOCStyleVersion
 		);
-		$ep->editFormTextTop .= '<div id="navigableTOC"></div>';
 		return true;
 	}
 }

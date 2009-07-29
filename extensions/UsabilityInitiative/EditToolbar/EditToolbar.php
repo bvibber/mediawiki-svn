@@ -53,5 +53,5 @@ $wgExtensionMessagesFiles['EditToolbar'] =
 	dirname( __FILE__ ) . '/EditToolbar.i18n.php';
 
 // Registers Hooks
-$wgHooks['EditPageBeforeEditToolbar'][] = 'EditToolbarHooks::intercept';
+$wgHooks['EditPageBeforeEditToolbar'][] = 'EditToolbarHooks::addToolbar';
 $wgHooks['GetPreferences'][] = 'EditToolbarHooks::addPreferences';

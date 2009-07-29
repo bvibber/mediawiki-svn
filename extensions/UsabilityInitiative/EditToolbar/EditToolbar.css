@@ -1,62 +1,58 @@
 /* CSS StyleSheet for Toolbar extensions */
 
 /* MEDIAWIKI DEPENDENT IDs */
-form#editform {
+body form#editform {
 	margin: 0;
 	padding: 0;
-	margin-right: 2px !important;
 }
-body.rtl form#editform {
-	padding-right: 0;
-	margin-right: auto !important;
-	margin-left: 2px !important;
-}
-textarea#wpTextbox1 {
-	border: solid silver 1px;
-	padding: 0 !important;
-	margin: 0 !important;
+body textarea#wpTextbox1 {
+	border: none;
+	margin: 0;
+	padding: 0;
 	width: 100%;
 }
 /* ... */
-div#edittoolbar {
+div#edit-ui {
 	border: solid silver 1px;
-	border-bottom-width: 0;
-	background-color: #F3F3F3;
-	height: 32px;
+	background-color: #f3f3f3;
 	clear: both;
 }
+div#edit-toolbar {
+	border-bottom: solid silver 1px;
+	background-color: #F3F3F3;
+	height: 32px;
+}
 /* Sections */
-div#edittoolbar div.sections {
+div#edit-toolbar div.sections {
 	float: left;
 	width: 100%;
 	clear: both;
 }
-body.rtl div#edittoolbar div.sections {
+body.rtl div#edit-toolbar div.sections {
 	float: right;
 }
-div#edittoolbar div.sections div.section {
+div#edit-toolbar div.sections div.section {
 	display: none;
 	float: left;
 	width: 100%;
 	margin-left: -1px;
+	border: solid silver 1px;
 	border-top: solid 1px #DDDDDD;
-	border-left: solid silver 1px;
-	border-right: solid silver 1px;
 	background-color: #F3F3F3;
 }
-body.rtl div#edittoolbar div.sections div.section {
+body.rtl div#edit-toolbar div.sections div.section {
 	float: right;
 	margin-left: auto;
 	margin-right: -1px;
 }
-div#edittoolbar div.sections div.loading {
+div#edit-toolbar div.sections div.loading {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
-div#edittoolbar div.sections div div.progress {
+div#edit-toolbar div.sections div div.progress {
 	display: none;
 }
-div#edittoolbar div.sections div.loading div.progress {
+div#edit-toolbar div.sections div.loading div.progress {
 	display: block;
 	background-image: url(images/loading.gif);
 	background-position: left center;
@@ -66,7 +62,7 @@ div#edittoolbar div.sections div.loading div.progress {
 	float: left;
 	color: #666666;
 }
-body.rtl div#edittoolbar div.sections div.loading div.progress {
+body.rtl div#edit-toolbar div.sections div.loading div.progress {
 	background-position: right center;
 	padding-left: 0;
 	padding-right: 32px;
@@ -75,8 +71,8 @@ body.rtl div#edittoolbar div.sections div.loading div.progress {
 	float: right;
 }
 /* Toolbar Groups and Tabs */
-div#edittoolbar div.tabs,
-div#edittoolbar div.group {
+div#edit-toolbar div.tabs,
+div#edit-toolbar div.group {
 	float: left;
 	height: 26px;
 	margin: 3px;
@@ -84,35 +80,35 @@ div#edittoolbar div.group {
 	padding-left: 3px;
 	border-left: solid 1px #DDDDDD;
 }
-div#edittoolbar div.first {
+div#edit-toolbar div.first {
 	border-left: none;
 }
-body.rtl div#edittoolbar div.tabs,
-body.rtl div#edittoolbar div.group {
+body.rtl div#edit-toolbar div.tabs,
+body.rtl div#edit-toolbar div.group {
 	float: right;
 	padding-left: 0;
 	padding-right: 3px;
 	border-left: none;
 	border-right: solid 1px #DDDDDD;
 }
-body.rtl div#edittoolbar div.first {
+body.rtl div#edit-toolbar div.first {
 	border-right: none;
 }
 /* Tabs */
-div#edittoolbar div.tabs {
+div#edit-toolbar div.tabs {
 	list-style: none;
 }
-div#edittoolbar div.tabs span.tab {
+div#edit-toolbar div.tabs span.tab {
 	display: inline-block;
 	float: left;
 	line-height: 26px;
 }
 /* IGNORED BY IE6 */
-body.rtl div#edittoolbar div.tabs > span.tab {
+body.rtl div#edit-toolbar div.tabs > span.tab {
 	float: right;
 }
-div#edittoolbar div.tabs span.tab a,
-div#edittoolbar div.tabs span.tab a:visited {
+div#edit-toolbar div.tabs span.tab a,
+div#edit-toolbar div.tabs span.tab a:visited {
 	display: inline-block;
 	float: left;
 	padding-left: 18px;
@@ -124,32 +120,32 @@ div#edittoolbar div.tabs span.tab a:visited {
 	background-position: left center;
 	background-repeat: no-repeat;
 }
-body.rtl div#edittoolbar div.tabs span.tab a,
-body.rtl div#edittoolbar div.tabs span.tab a:visited {
+body.rtl div#edit-toolbar div.tabs span.tab a,
+body.rtl div#edit-toolbar div.tabs span.tab a:visited {
 	padding-left: 12px;
 	padding-right: 18px;
 	background-image: url(images/arrow-left.png);
 	background-position: right center;
 }
 /* IGNORED BY IE6 */
-body.rtl div#edittoolbar div.tabs > span.tab > a,
-body.rtl div#edittoolbar div.tabs > pan.tab > a:visited {
+body.rtl div#edit-toolbar div.tabs > span.tab > a,
+body.rtl div#edit-toolbar div.tabs > pan.tab > a:visited {
 	float: right;
 }
-div#edittoolbar div.tabs span.tab a.current,
-div#edittoolbar div.tabs span.tab a.current:visited {
+div#edit-toolbar div.tabs span.tab a.current,
+div#edit-toolbar div.tabs span.tab a.current:visited {
 	color: #333333;
 	background-image: url(images/arrow-down.png);
 }
-body.rtl div#edittoolbar div.tabs span.tab a.current,
-body.rtl div#edittoolbar div.tabs span.tab a.current:visited {
+body.rtl div#edit-toolbar div.tabs span.tab a.current,
+body.rtl div#edit-toolbar div.tabs span.tab a.current:visited {
 	background-image: url(images/arrow-down.png);
 }
-div#edittoolbar div.tabs span.tab a.current:hover {
+div#edit-toolbar div.tabs span.tab a.current:hover {
 	text-decoration: none;
 }
 /* Toolbar */
-div#edittoolbar div.group div.label {
+div#edit-toolbar div.group div.label {
 	float: left;
 	border: 0px;
 	height: 22px;
@@ -161,12 +157,12 @@ div#edittoolbar div.group div.label {
 	cursor: default;
 }
 /* IGNORED BY IE6 */
-body.rtl div#edittoolbar div.group > div.label {
+body.rtl div#edit-toolbar div.group > div.label {
 	float: right;
 	margin-left: 8px;
 	margin-right: 5px;
 }
-div#edittoolbar div.group input.tool {
+div#edit-toolbar div.group input.tool {
 	float: left;
 	border: 0px;
 	height: 22px;
@@ -175,91 +171,91 @@ div#edittoolbar div.group input.tool {
 	cursor: pointer;
 }
 /* IGNORED BY IE6 */
-body.rtl div#edittoolbar div.group > input.tool {
+body.rtl div#edit-toolbar div.group > input.tool {
 	float: right;
 }
-div#edittoolbar div.group select {
+div#edit-toolbar div.group select {
 	float: left;
 	margin: 2px;
 	height: 22px;
 	cursor: pointer;
 }
 /* IGNORED BY IE6 */
-body.rtl div#edittoolbar div.group > select {
+body.rtl div#edit-toolbar div.group > select {
 	float: right;
 	font-size: 0.9em;
 }
 /* Booklet */
-div#edittoolbar div.index {
+div#edit-toolbar div.index {
 	float: left;
 	width: 20%;
 	height: 125px;
 	overflow: auto;
 }
-body.rtl div#edittoolbar div.index {
+body.rtl div#edit-toolbar div.index {
 	float: right;
 }
-div#edittoolbar div.index div {
+div#edit-toolbar div.index div {
 	padding: 4px;
 	padding-left: 6px;
 	cursor: pointer;
 	color: #0645ad;
 }
-body.rtl div#edittoolbar div.index div {
+body.rtl div#edit-toolbar div.index div {
 	padding-left: 4px;
 	padding-right: 6px;
 }
-div#edittoolbar div.index div.current {
+div#edit-toolbar div.index div.current {
 	background-color: #FAFAFA;
 	color: #333333;
 	cursor: default;
 }
-div#edittoolbar div.pages {
+div#edit-toolbar div.pages {
 	float: right;
 	width: 80%;
 	height: 125px;
 	overflow: auto;
 	background-color: #FAFAFA;
 }
-body.rtl div#edittoolbar div.pages {
+body.rtl div#edit-toolbar div.pages {
 	float: left;
 }
-div#edittoolbar div.pages div.page {
+div#edit-toolbar div.pages div.page {
 	display: none;
 }
-div#edittoolbar div.pages div.page table {
+div#edit-toolbar div.pages div.page table {
 	padding-left: 5px;
 	padding-right: 5px;
 	background: none;
 }
-div#edittoolbar div.pages div.page table th {
+div#edit-toolbar div.pages div.page table th {
 	color: #999999;
 }
-div#edittoolbar div.pages div.page table td {
+div#edit-toolbar div.pages div.page table td {
 	color: black;
 	border-top: solid 1px #EEEEEE;
 }
-div#edittoolbar div.pages div.page table th,
-div#edittoolbar div.pages div.page table td {
+div#edit-toolbar div.pages div.page table th,
+div#edit-toolbar div.pages div.page table td {
 	text-align: left;
 	padding: 5px;
 	margin: 0px;
 }
-body.rtl div#edittoolbar div.pages div.page table th,
-body.rtl div#edittoolbar div.pages div.page table td {
+body.rtl div#edit-toolbar div.pages div.page table th,
+body.rtl div#edit-toolbar div.pages div.page table td {
 	text-align: right;
 }
-div#edittoolbar div.pages div.page table td.syntax {
+div#edit-toolbar div.pages div.page table td.syntax {
 	font-family: monospace;
 }
-div#edittoolbar-section-help div.page table td.syntax,
-div#edittoolbar-section-help div.page table td.result {
+div#edit-toolbar-section-help div.page table td.syntax,
+div#edit-toolbar-section-help div.page table td.result {
 	width: 40%;
 }
-div#edittoolbar-section-help div.page table td.description {
+div#edit-toolbar-section-help div.page table td.description {
 	width: 20%;
 }
-div#edittoolbar-section-characters div.page div a {
+div#edit-toolbar-section-characters div.page div a {
 	border: solid 1px #DDDDDD;
 	padding: 5px;
 	padding-left: 8px;
@@ -272,14 +268,14 @@ div#edittoolbar-section-characters div.page div a {
 	color: black;
 	text-decoration: none;
 }
-body.rtl div#edittoolbar-section-characters div.page > div > a,
-div#edittoolbar-section-characters div.page div.rtl a {
+body.rtl div#edit-toolbar-section-characters div.page > div > a,
+div#edit-toolbar-section-characters div.page div.rtl a {
 	direction: rtl;
 	float: right;
 	margin-left: 0;
 	margin-right: 5px;
 }
-div#edittoolbar-section-characters div.page div a:hover {
+div#edit-toolbar-section-characters div.page div a:hover {
 	background-color: white;
 	text-decoration: none;
 	border-color: #a8d7f9;

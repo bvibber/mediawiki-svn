@@ -1,27 +1,29 @@
 /* CSS for NavigableTOC extension */
 
-div#navigableTOC {
-	position: absolute;
-	right: 0;
-	border: solid 1px silver;
+div#edit-toc {
 	background-color: #f3f3f3;
-	width: 23%;
-	padding: 0.5em;
 }
-div#navigableTOC ul {
-	margin: 0;
+div#edit-toc ul {
+	margin: 0.5em;
 	padding: 0;
 	list-style: none;
 }
-div#navigableTOC ul ul {
+div#edit-toc ul ul {
+	margin: 0;
 	margin-left: 1em;
 }
-div#navigableTOC ul li a.currentSelection {
+div#edit-toc ul li a.currentSelection {
 	font-weight: bold;
 }
-div#edittoolbar {
-	width: 75%;
+div#edit-ui-left {
+	margin-right: 12em;
+	border-right: solid silver 1px;
 }
-form#editform textarea#wpTextbox1 {
-	width: 75%;
+div#edit-ui-right {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 12em;
+	border-right: solid silver 1px;
+	overflow: auto;
 }

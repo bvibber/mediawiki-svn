@@ -45,4 +45,4 @@ $wgExtensionMessagesFiles['NavigableTOC'] =
 	dirname( __FILE__ ) . '/NavigableTOC.i18n.php';
 
 // Registers Hooks
-$wgHooks['EditPage::showEditForm:initial'][] = 'NavigableTOCHooks::addTOC';
+$wgHooks['EditPageBeforeEditToolbar'][] = 'NavigableTOCHooks::addTOC';
