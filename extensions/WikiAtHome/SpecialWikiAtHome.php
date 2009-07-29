@@ -13,9 +13,12 @@ class SpecialWikiAtHome extends SpecialPage {
 	}
 	function execute( $par ) {
 		global $wgOut;
+		$wgOut->addScriptClass('WikiAtHome');
 		//for now just render out wiki@home header
 		$html = '<h1 class="firstHeading" id="firstHeading">'.wfMsg('specialwikiathome').'</h1>';
 		$html.='<div id="bodyContent">';
+		$html.= wfMsg('wah-user-desc');
+		$html.='<br><br>';
 		$html.= '<div id="wah_container" style="height:500px;">'.
 					wfMsg('wah-javascript-off') .
 				'</div>';

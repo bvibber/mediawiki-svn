@@ -6,9 +6,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $exDir = dirname(__FILE__);
-$wgAutoloadClasses['NonFreeVideoHandler'] 	= "$exDir/NonFreeVideoHandler.php";
-$wgAutoloadClasses['WahJobManager'] 		= "$exDir/WahJobManager.php";
-$wgAutoloadClasses['ApiWikiAtHome']			= "$exDir/ApiWikiAtHome.php";
+//setup autoloader php:
+$wgAutoloadClasses[ 'NonFreeVideoHandler' ] 	= "$exDir/NonFreeVideoHandler.php";
+$wgAutoloadClasses[ 'WahJobManager' ] 		= "$exDir/WahJobManager.php";
+$wgAutoloadClasses[ 'ApiWikiAtHome' ]			= "$exDir/ApiWikiAtHome.php";
+
+//setup autoloading javascript:
+$wgJSAutoloadLocalClasses[ 'WikiAtHome' ]		= "extensions/WikiAtHome/WikiAtHome.js";
 
 //add a set of video extensions to the $wgFileExtensions set that we support transcoding from
 $tmpExt = array('avi', 'mov', 'mp4', 'mp2', 'mpeg', 'mpeg2', 'mpeg4', 'dv', 'wmv' );
@@ -71,7 +75,7 @@ $wgChunkDuration = '10';
 //note first "in" wins & if once time is up we decrement set_c
 $wgJobTimeOut = 60*10; //10 min
 
-//this meaters how many copies of any given stream we should send out as part of a job 
+//this meaters how many copies of any given stream we should send out as part of a job
 $wgNumberOfClientsPerJobSet = 25;
 
 //what to encode to:

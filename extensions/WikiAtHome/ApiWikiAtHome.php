@@ -19,6 +19,7 @@ class ApiWikiAtHome extends ApiBase {
 	}
 
 	public function execute(){
+		global $wgUser;
 		$this->getMain()->isWriteMode();
 		$this->mParams = $this->extractRequestParams();
 		$request = $this->getMain()->getRequest();
@@ -31,67 +32,32 @@ class ApiWikiAtHome extends ApiBase {
 
 		//do actions:
 		if( $this->mParams['getnewjob'] ){
-			//assign a new job:
-			return $this->getNewJob( 'jobqueue' );
-		}
-	}
-	public function getNewJob(){
-		global $wgNumberOfClientsPerJobSet;
-		$dbr = wfGetDb( DB_READ );
-		//check if we have jobset
-		//its always best to assigning from jobset (since the user already has the data)
-		if( $this->mParams[ 'jobset' ] ){
-			//try to get one from the current jobset
-			$res = $dbr->select( 'wah_jobqueue',
-				'*',
-				array(
-					'job_set_id' =>  intval( $this->mParams[ 'jobset' ] ),
-					'job_done_time IS NULL',
-					'job_assigned_time >= '. time() - $wgJobTimeOut
-				),
-				__METHOD__,
-				array(
-					'LIMIT'=>1
-				)
-			);
-			if( $dbr->numRows( $res ) != 0){
-				$job = $dbr->fetchObject( $res );
-
-				return $this->getResult()->addValue( null, $this->getModuleName(),
-							array(
-								'job' => $job
-							)
-						);
+			if( isset( $this->mParams['jobset']) && $this->mParams['jobset']){
+				$job = WahJobManager::getNewJob( $this->mParams['jobset'] );
+			}else{
+				$job =  WahJobManager::getNewJob();
 			}
-		}
 
-		//just do a normal priority select of jobset
-		$res = $dbr->select( 'wah_jobset',
-			'*',
-			array(
-				'set_done_time IS NULL',
-				'set_client_count < '.$wgNumberOfClientsPerJobSet
-			),
-			__METHOD__,
-			array(				
-				'LIMIT'		=> 1
-			)
-		);
-		if( $dbr->numRows( $res ) != 0){
-			//no jobs:
-			return $this->getResult()->addValue( null, $this->getModuleName(),
+			if(!$job){
+				return $this->getResult()->addValue( null, $this->getModuleName(),
 						array(
 							'nojobs' => true
 						)
 					);
-		}else{
-			//get a job from the jobset and increment the set_client_count 
-			//(if the user has an unfinished job) reassin it (in cases where job is lost in trasport)			
-			$jobSet = $dbr->fetchObject( $res );
-			
+			}else{
+				$job4Client = array();
+				//unpack the $job_json
+				$job4Client['job_json'] = json_decode( $job->job_json ) ;
+				//we set the job key to job_id _ sha1
+				$job4Client['job_key'] 	= $job->job_id . '_'. sha1( $job->job_json );
 
+				$this->getResult()->addValue( null, $this->getModuleName(),
+						array(
+							'job' => $job4Client
+						)
+					);
+			}
 		}
-
 	}
 	public function getAllowedParams() {
 		return array(
@@ -130,6 +96,9 @@ class ApiWikiAtHome extends ApiBase {
 			'Submit a Job:',
 			'	 api.php?action=wikiathome&job_key=343&file={file_data}'
 		);
+	}
+	public function getVersion() {
+		return __CLASS__ . ': $Id: ApiWikiAtHome.php 51812 2009-06-12 23:45:20Z dale $';
 	}
 }
 
