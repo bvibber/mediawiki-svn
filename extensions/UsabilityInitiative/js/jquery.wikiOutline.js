@@ -156,7 +156,7 @@ updateOutline: function( target ) {
 		var outline = $(this).data( 'outline' );
 		var position = $(this).bytePos();
 		var i = 0;
-		while ( i < outline.length && outline[i].position - 1 <= position ) {
+		while ( i < outline.length && outline[i].position - 1 < position ) {
 			i++;
 		}
 		i = Math.max( 0, i - 1 );
