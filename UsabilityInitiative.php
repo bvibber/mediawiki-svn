@@ -23,6 +23,9 @@
 // Set this to true to simply override the stock toolbar for everyone
 $wgUsabilityInitiativeCoesxistWithMvEmbed = false;
 
+// Set this to false to include all plugins individually
+$wgUsabilityInitiativeJsMode = 'combined';
+
 /* Setup */
 
 // Sets Credits
