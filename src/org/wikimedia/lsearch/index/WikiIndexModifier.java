@@ -781,6 +781,14 @@ public class WikiIndexModifier {
 			rtitle.setBoost(rankBoost);
 			doc.add(rtitle);
 			
+			// Threading information
+			java.util.Enumeration e = article.DiscussionThreadingInfo.keys();
+			while (e.hasMoreElements()) {
+				String key = (String)e.nextElement();
+				String value = article.DiscussionThreadingInfo.get(key);
+				doc.add( new Field( key, value, Store.YES, Index.UN_TOKENIZED) );
+			}
+			
 			// extra info (for spellcheck indexes)
 			if(extraInfo){
 				addSpellCheckInfo(doc,article.getTitle(),tokenizer.getKeywords(),tokenizer.getHeadingText(),article.getRedirectKeywords(),iid,fields);

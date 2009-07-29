@@ -424,6 +424,10 @@ public class WikiQueryParser {
 	public HashSet<NamespaceFilter> getFieldNamespaces(String queryText){
 		HashSet<String> fields = getFields(queryText);
 		HashSet<NamespaceFilter> ret = new HashSet<NamespaceFilter>();
+		List ThreadingKeywords = new ArrayList();
+		ThreadingKeywords.add("inthread");
+		ThreadingKeywords.add("ondiscussionpage");
+		
 		for(String field : fields){
 			field = field.toLowerCase();
 			if(namespaceFilters.containsKey(field))
@@ -434,6 +438,8 @@ public class WikiQueryParser {
 				ret.add(defaultNamespaceFilter);
 			else if(field.startsWith("[")){
 				ret.add(new NamespaceFilter(field.substring(1,field.length()-1)));
+			} else if (ThreadingKeywords.contains(field)) {
+				ret.add( new NamespaceFilter(90) );
 			}
 		}
 		
@@ -637,7 +643,13 @@ public class WikiQueryParser {
 			else if(ch == ':'){				
 				// check if it's a valid field
 				String f = new String(buffer,0,length);
-				if(f.equals(namespaceAllKeyword) || f.equals("incategory") || f.equals("intitle") || namespaceFilters.containsKey(f) || namespacePolicy == NamespacePolicy.LEAVE){
+				
+				List fieldOperators = getFieldOperators();
+				
+				if(		f.equals(namespaceAllKeyword)
+						|| fieldOperators.contains(f)
+						|| namespaceFilters.containsKey(f)
+						|| namespacePolicy == NamespacePolicy.LEAVE){
 					cur = lookup;
 					return TokenType.FIELD;
 				} else
@@ -647,6 +659,16 @@ public class WikiQueryParser {
 		}
 		
 		return TokenType.WORD; 
+	}
+	
+	private List getFieldOperators() {
+		List fieldOperators = new ArrayList();
+		fieldOperators.add("intitle");
+		fieldOperators.add("incategory");
+		fieldOperators.add("inthread");
+		fieldOperators.add("ondiscussionpage");
+		
+		return fieldOperators;
 	}
 	
 	/**
@@ -722,25 +744,33 @@ public class WikiQueryParser {
 		return makeTerm(token.termText());
 	}
 	
-	/** Make term form <code>buffer</code> */
+	/** Make term from <code>buffer</code> */
 	private Term makeTerm(){
 		return makeTerm(new String(buffer,0,length));
 	}
 	
 	/** Make a lucene term from string */
 	private Term makeTerm(String t){
+		Hashtable<String,String> keywordFieldMapping = new Hashtable<String,String>();
+		keywordFieldMapping.put("inthread", "ThreadAncestor");
+		keywordFieldMapping.put("ondiscussionpage", "ThreadPage");
+		
 		if(currentField == null)
 			return new Term(defaultField,builder.isExactCase()? t : t.toLowerCase());
 		else if(defaultField.equals("contents") && isInTitle)
 			return new Term("title",builder.isExactCase()? t : t.toLowerCase());
-		else if(!"incategory".equals(currentField) && 
-				(namespacePolicy == NamespacePolicy.IGNORE || 
-						namespacePolicy == NamespacePolicy.REWRITE))
-			return new Term(defaultField,t);
 		else if(currentField.equals("incategory")){
 			String norm = t.replace("_"," "); // bug 10822
 			return new Term("category",builder.isExactCase()? norm : norm.toLowerCase());
-		} else
+		} else if( keywordFieldMapping.containsKey(currentField) ) {
+			String field = keywordFieldMapping.get(currentField);
+			
+			return new Term(field, t);
+		} else if(!"incategory".equals(currentField) && 
+				(namespacePolicy == NamespacePolicy.IGNORE || 
+						namespacePolicy == NamespacePolicy.REWRITE))
+			return new Term(defaultField,t);
+		else
 			return new Term(currentField,t);
 	}
 	

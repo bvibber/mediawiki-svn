@@ -66,6 +66,9 @@ public class Article implements Serializable  {
 	/** Rank of the redirect target */
 	private int redirectRank = 0;
 	
+	/** Threading information */
+	public Hashtable<String,String> DiscussionThreadingInfo;
+	
 	public Article(){
 		namespace="";
 		title="";
@@ -75,6 +78,7 @@ public class Article implements Serializable  {
 		redirects=new ArrayList<Redirect>();
 		related = new ArrayList<RelatedTitle>();
 		anchors = new Hashtable<String,Integer>();
+		this.DiscussionThreadingInfo = new Hashtable<String,String>();
 	}
 	
 	public Article(long pageId, Title title, String text, String redirectTo, int references, int redirectTargetNamespace, int redirectRank) {
@@ -87,6 +91,7 @@ public class Article implements Serializable  {
 	
 	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace, int redirectRank,
 			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, Hashtable<String,Integer> anchorRank, Date date) {
+		this();
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		this.contents = text;
@@ -99,6 +104,20 @@ public class Article implements Serializable  {
 		this.redirectTargetNamespace = redirectTargetNamespace;
 		this.date = date;
 		this.redirectRank = redirectRank;
+	}
+	
+	public Article(long pageId, int namespace, String titleText, String text,
+			String redirectTo, int references, int redirectTargetNamespace,
+			int redirectRank, ArrayList<Redirect> redirects,
+			ArrayList<RelatedTitle> related,
+			Hashtable<String,Integer> anchorRank, Date date,
+			Hashtable<String,String> DiscussionThreadingInfo) {
+		
+		this(pageId, namespace, titleText, text, redirectTo, references,
+				redirectTargetNamespace, redirectRank, redirects, related,
+				anchorRank, date);
+		
+		this.DiscussionThreadingInfo = DiscussionThreadingInfo;
 	}
 	
 	public boolean isRedirect() {
@@ -288,8 +307,7 @@ public class Article implements Serializable  {
 
 	public void setRedirectRank(int redirectRank) {
 		this.redirectRank = redirectRank;
-	}
-	
+	}	
 
 	
 }

@@ -108,8 +108,10 @@ public class DumpImporter implements DumpWriter {
 		if(makeIndex && related != null)
 			rel = related.getRelated(key);
 		// make article
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,redirectTo,
-				references,redirectTargetNamespace,0,redirects,rel,anchors,date);
+		Article article = new Article(page.Id,page.Title.Namespace,
+				page.Title.Text,revision.Text,redirectTo,references,
+				redirectTargetNamespace,0,redirects,rel,anchors,date,
+				page.DiscussionThreadingInfo);
 		// index
 		if(indexWriter != null)
 			indexWriter.addArticle(article);
