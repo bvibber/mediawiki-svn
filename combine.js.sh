@@ -1,4 +1,4 @@
-cd Resources
+cd js
 echo "Removing combined files"
 rm jquery.combined.*
 echo "Combined raw files"
