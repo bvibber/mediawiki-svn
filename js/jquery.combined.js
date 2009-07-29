@@ -4707,6 +4707,7 @@ jQuery.cookie = function(name, value, options) {
 					post += ' '
 				}
 			}
+			$(this).trigger( 'encapsulateSelection' );
 			/**
 			 * /CLEAN THIS UP PLEASE!
 			 */
@@ -4916,9 +4917,10 @@ jQuery.cookie = function(name, value, options) {
  */
 parseOutline: function() {
 	return this.each( function() {
+		//console.time( 'parseOutline' );
 		// Extract headings from wikitext
-		var wikitext = '\r\n' + $(this).val() + '\r\n';
-		var headings = wikitext.match( /[\r\n][=]+[^\r\n]*[=]+[\r\n]/g );
+		var wikitext = '\n' + $(this).val() + '\n';
+		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
 		var outline = [];
 		var offset = 0;
 		for ( var h = 0; h < headings.length; h++ ) {
@@ -4973,6 +4975,7 @@ parseOutline: function() {
 		}
 		// Cache outline
 		$(this).data( 'outline', outline )
+		//console.timeEnd( 'parseOutline' );
 	} );
 },
 /*
@@ -4981,18 +4984,23 @@ parseOutline: function() {
 buildOutline: function( target ) {
 	return this.each( function() {
 		if ( target.size() ) {
+			//console.time( 'buildOutline' );
 			var outline = $(this).data( 'outline' );
 			// Normalize levels, adding an nLevel parameter to each node
 			var level = 1;
+			var trunc = 0;
 			for ( var i = 0; i < outline.length; i++ ) {
 				if ( i > 0 ) {
 					if ( outline[i].level > outline[i - 1].level ) {
 						level++;
 					} else if ( outline[i].level < outline[i - 1].level ) {
-						level -= Math.max(
-							1, outline[i - 1].level - outline[i].level
-						);
+						if ( trunc <= 1 ) {
+							level -= Math.max(
+								1, outline[i - 1].level - outline[i].level
+							);
+						}
 					}
+					trunc = outline[i].level - outline[i - 1].level;
 				}
 				outline[i].nLevel = level;
 				/*
@@ -5032,7 +5040,7 @@ buildOutline: function( target ) {
 								.data( 'position', structure[i].position )
 								.click( function( event ) {
 									$(this).data( 'textbox' ).scrollToPosition(
-										$(this).data( 'position' ) - 1
+										$(this).data( 'position' )
 									);
 									event.preventDefault();
 								} )
@@ -5046,6 +5054,7 @@ buildOutline: function( target ) {
 				return list;
 			}
 			target.html( buildList( $(this), buildStructure( outline ) ) );
+			//console.timeEnd( 'buildOutline' );
 		}
 	} );
 },
@@ -5054,15 +5063,17 @@ buildOutline: function( target ) {
  */
 updateOutline: function( target ) {
 	return this.each( function() {
+		//console.time( 'updateOutline' );
 		var outline = $(this).data( 'outline' );
 		var position = $(this).bytePos();
 		var i = 0;
-		while ( i < outline.length && outline[i].position - 1 <= position ) {
+		while ( i < outline.length && outline[i].position - 1 < position ) {
 			i++;
 		}
 		i = Math.max( 0, i - 1 );
 		target.find( 'a' ).removeClass( 'currentSelection' );
 		target.find( 'a.section-' + i ).addClass( 'currentSelection' );
+		//console.timeEnd( 'updateOutline' );
 	} );
 }
 
