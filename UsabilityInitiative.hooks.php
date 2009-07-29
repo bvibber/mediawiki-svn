@@ -17,23 +17,23 @@ class UsabilityInitiativeHooks {
 	private static $scriptFiles = array(
 		'base_sets' => array(
 			'combined' => array(
-				array( 'src' => 'Resources/jquery.combined.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.combined.js', 'version' => 2 ),
 			),
 			'combined-min' => array(
-				array( 'src' => 'Resources/jquery.combined.min.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.combined.min.js', 'version' => 2 ),
 			),
 			'raw' => array(
-				array( 'src' => 'Resources/jquery.js', 'version' => 2 ),
-				array( 'src' => 'Resources/jquery.async.js', 'version' => 2 ),
-				array( 'src' => 'Resources/jquery.browser.js', 'version' => 2 ),
-				array( 'src' => 'Resources/jquery.cookie.js', 'version' => 2 ),
-				array( 'src' => 'Resources/jquery.textSelection.js', 'version' => 2 ),
-				array( 'src' => 'Resources/jquery.wikiOutline.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.async.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.browser.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.cookie.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.textSelection.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.wikiOutline.js', 'version' => 2 ),
 			),
 		),
 		// Code to include when mv_embed is not present
 		'no_mv_embed' => array(
-			array( 'src' => 'Resources/messages.js', 'version' => 1 ),
+			array( 'src' => 'js/messages.js', 'version' => 1 ),
 		)
 	);
 	
