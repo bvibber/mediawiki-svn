@@ -1,41 +1,6 @@
 /* JavaScript for OptIn extension */
 
-$( document ).ready( function() {
-	$( '.optin-other-select' ).parent().hide();
-	$( 'select.optin-need-other' ).change( function() {
-		if( $(this).val() == 'other' )
-			$( '#' + $(this).attr( 'id' ) + '-other' ).parent().slideDown( 'fast' );
-		else
-			$( '#' + $(this).attr( 'id' ) + '-other' ).parent().slideUp( 'fast' );
-	});
-	
-	$( '.optin-other-radios, .optin-other-checks' ).click( function() {
-		$(this).prev().prev().attr( 'checked', true );
-	});
-	
-	$( '.survey-ifyes, .survey-ifno' ).hide();
-	$( '.survey-yes, .survey-no' ).change( function() {
-		yesrow = $( '#' + $(this).attr( 'name' ) + '-ifyes-row' );
-		norow = $( '#' + $(this).attr( 'name' ) + '-ifno-row' );
-		if( $(this).is( '.survey-yes:checked' ) ) {
-			yesrow.slideDown( 'fast' );
-			norow.slideUp( 'fast' );
-		} else if( $(this).is( '.survey-no:checked' ) ) {
-			yesrow.slideUp( 'fast' );
-			norow.slideDown( 'fast' );
-		}
-	});
-	// Load initial state
-	$( '.survey-yes, .survey-no' ).change();
-	
-	// Detect screen resolution
-	if ( screen.width && screen.height ) {
-		$( '.optin-resolution-x' ).val( screen.width );
-		$( '.optin-resolution-y' ).val( screen.height );
-		// Hide the fields?
-	}
-	// Detect browser and version
-	// BEWARE: this depends on the order of browsers in $wgOptInSurvey
+function optInDetectBrowserOS() {
 	var browserIndex = 'other';
 	switch ( $.browser.name ) {
 		case 'msie':
@@ -73,7 +38,46 @@ $( document ).ready( function() {
 			osIndex = 'linux';
 		break;
 	}
+	
+	return { browser: browserIndex, os: osIndex };
+}
 
-	$( '#survey-browser' ).val( browserIndex );
-	$( '#survey-os' ).val( osIndex );
+$( document ).ready( function() {
+	$( '.optin-other-select' ).parent().hide();
+	$( 'select.optin-need-other' ).change( function() {
+		if( $(this).val() == 'other' )
+			$( '#' + $(this).attr( 'id' ) + '-other' ).parent().slideDown( 'fast' );
+		else
+			$( '#' + $(this).attr( 'id' ) + '-other' ).parent().slideUp( 'fast' );
+	});
+	
+	$( '.optin-other-radios, .optin-other-checks' ).click( function() {
+		$(this).prev().prev().attr( 'checked', true );
+	});
+	
+	$( '.survey-ifyes, .survey-ifno' ).hide();
+	$( '.survey-yes, .survey-no' ).change( function() {
+		yesrow = $( '#' + $(this).attr( 'name' ) + '-ifyes-row' );
+		norow = $( '#' + $(this).attr( 'name' ) + '-ifno-row' );
+		if( $(this).is( '.survey-yes:checked' ) ) {
+			yesrow.slideDown( 'fast' );
+			norow.slideUp( 'fast' );
+		} else if( $(this).is( '.survey-no:checked' ) ) {
+			yesrow.slideUp( 'fast' );
+			norow.slideDown( 'fast' );
+		}
+	});
+	// Load initial state
+	$( '.survey-yes, .survey-no' ).change();
+	
+	// Detect screen resolution
+	if ( screen.width && screen.height ) {
+		$( '.optin-resolution-x' ).val( screen.width );
+		$( '.optin-resolution-y' ).val( screen.height );
+		// Hide the fields?
+	}
+	
+	var detected = optInDetectBrowserOS();
+	$( '#survey-browser' ).val( detected.browser );
+	$( '#survey-os' ).val( detected.os );
 });

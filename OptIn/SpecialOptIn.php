@@ -74,6 +74,10 @@ class SpecialOptIn extends SpecialPage {
 		}
 		$this->setHeaders();
 		
+		if ( $wgRequest->wasPosted() ) {
+			// TODO: Handle AJAX request
+		}
+		
 		if ( self::isOptedIn( $wgUser ) ) {
 			if ( $wgRequest->getVal( 'opt' ) == 'out' )
 				// Just opted out
@@ -102,6 +106,16 @@ class SpecialOptIn extends SpecialPage {
 			if ( $wgRequest->getVal( 'opt' ) === 'in' ) {
 				self::optIn( $wgUser );
 				$wgOut->addWikiMsg( 'optin-success-in' );
+				
+				global $wgJsMimeType, $wgOptInStyleVersion;
+				UsabilityInitiativeHooks::initialize();
+				UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
+					$wgOptInStyleVersion );
+				$url = $this->getTitle()->getFullURL();
+				$wgOut->addHTML( Xml::tags( 'script',
+					array( 'type' => $wgJsMimeType ),
+					"$(document).ready(function() { $.post( \"$url\", optInDetectBrowserOS() ); } );"
+				) );
 			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' ) {
 				if ( $wgRequest->wasPosted() ) {
 					$this->saveSurvey( $wgOptInFeedBackSurvey,
