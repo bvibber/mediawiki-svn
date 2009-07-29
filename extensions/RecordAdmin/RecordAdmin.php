@@ -11,7 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'RECORDADMIN_VERSION', '0.8.0, 2009-07-21' );
+define( 'RECORDADMIN_VERSION', '0.8.1, 2009-07-30' );
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $wgRecordAdminCategory      = 'Records'; # Category containing record types
@@ -25,6 +25,7 @@ $wgSpecialPageGroups['RecordAdmin']      = 'wiki';
 $wgRecordAdminTableMagic                 = 'recordtable';
 $wgRecordAdminDataMagic                  = 'recorddata';
 $wgRecordAdminTag                        = 'recordid';
+$wgRecordAdminEditWithForm               = true;
 
 $wgGroupPermissions['sysop']['recordadmin'] = true;
 $wgAvailableRights[] = 'recordadmin';
@@ -46,8 +47,8 @@ $wgExtensionCredits['specialpage'][] = array(
  * Called from $wgExtensionFunctions array when initialising extensions
  */
 function wfSetupRecordAdmin() {
-	global $wgSpecialRecordAdmin, $wgParser, $wgRequest, $wgRecordAdminCategory,
-		$wgRecordAdminTag, $wgRecordAdminTableMagic, $wgRecordAdminDataMagic;
+	global $wgSpecialRecordAdmin, $wgTitle, $wgParser, $wgHooks, $wgRequest, $wgRecordAdminCategory,
+		$wgRecordAdminTag, $wgRecordAdminTableMagic, $wgRecordAdminDataMagic, $wgRecordAdminEditWithForm;
 
 	# Make a global singleton so methods are accessible as callbacks etc
 	$wgSpecialRecordAdmin = new SpecialRecordAdmin();
@@ -63,6 +64,28 @@ function wfSetupRecordAdmin() {
 	$title = Title::newFromText( $wgRequest->getText( 'title' ) );
 	if ( is_object( $title ) && $title->getNamespace() != NS_SPECIAL && $wgRequest->getText( 'wpType' ) && $wgRequest->getText( 'wpCreate' ) )
 		$wgSpecialRecordAdmin->createRecord();
+
+	# Add an "edit with form" action link
+	if ( $wgRecordAdminEditWithForm && is_object( $title ) ) {
+		$types = array();
+		$id    = $title->getArticleID();
+		$dbr   = &wfGetDB(DB_SLAVE);
+		$cat   = $dbr->addQuotes( $wgRecordAdminCategory );
+		$cl    = $dbr->tableName( 'categorylinks' );
+		$tl    = $dbr->tableName( 'templatelinks' );
+		$res   = $dbr->select( $cl, 'cl_from', "cl_to = $cat" );
+		while ( $row = $dbr->fetchRow( $res ) ) $types[] = 'tl_title = ' . $dbr->addQuotes( Title::newFromID( $row[0] )->getText() );
+		$dbr->freeResult( $res );
+		$uses = join( ' OR ', $types );
+		if ( $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND ($uses)" ) ) {
+			global $wgRecordAdminActionUrl;
+			$wgHooks['SkinTemplateTabs'][] = 'wfRecordAdminEditWithForm';
+			$type = $row->tl_title;
+			$qs = "wpType=$type&wpRecord=" . $title->getPrefixedText();
+			$wgRecordAdminActionUrl = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' )->getLocalURL( $qs );
+		}
+	}
+
 }
 
 /**
@@ -72,5 +95,23 @@ function wfRecordAdminLanguageGetMagic( &$magicWords, $langCode = 0 ) {
 	global $wgRecordAdminTableMagic, $wgRecordAdminDataMagic;
 	$magicWords[$wgRecordAdminTableMagic] = array( $langCode, $wgRecordAdminTableMagic );
 	$magicWords[$wgRecordAdminDataMagic]  = array( $langCode, $wgRecordAdminDataMagic );
+	return true;
+}
+
+/**
+ * Add action link
+ */
+function wfRecordAdminEditWithForm( &$skin, &$actions ) {
+	global $wgRecordAdminActionUrl;
+	$tmp = array();
+	foreach ( $actions as $k => $v ) {
+		$tmp[$k] = $v;
+		if ( $k == 'edit' ) $tmp['editwithform'] = array(
+			'text' => wfMsg( 'recordadmin-editwithform' ),
+			'class' => false,
+			'href' => $wgRecordAdminActionUrl
+		);
+	}
+	$actions = $tmp;
 	return true;
 }
