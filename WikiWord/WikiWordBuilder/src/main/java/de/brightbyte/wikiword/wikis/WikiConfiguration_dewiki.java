@@ -39,6 +39,7 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler("\\[\\[:commons:", "[[commons:", Pattern.CASE_INSENSITIVE));
 		
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Okina", 0, false), "\u02BB"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("0", 0, true), " "));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("IPA(?:-Text)|IAST|Unicode|Musik", 1, true), "$2"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("SWD|Wiktionary", 0, true), ""));
 

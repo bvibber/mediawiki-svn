@@ -79,6 +79,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler("\\[\\[:commons:", "[[commons:", Pattern.CASE_INSENSITIVE));
 
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Okina", 0, false), "\u02BB"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("0", 0, true), " "));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("\u00b7|moddot|dot", 0, false), "\u00b7"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("spaces", 1, true), " "));
 
