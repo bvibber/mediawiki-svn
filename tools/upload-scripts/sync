@@ -1,6 +1,11 @@
 #!/bin/bash
 
-for srv in amane storage1 ms1;do
+for srv in ms1; do
 	echo $srv
 	rsync --rsh=ssh -cr /home/wikipedia/upload-scripts/ root@$srv:/export/upload/sync-from-home
+done
+
+for srv in ms4; do
+	echo $srv
+	rsync --rsh=ssh -cr /home/wikipedia/upload-scripts/ root@$srv:/export/thumbs/sync-from-home
 done
