@@ -27,7 +27,6 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'Resources/jquery.async.js', 'version' => 2 ),
 				array( 'src' => 'Resources/jquery.browser.js', 'version' => 2 ),
 				array( 'src' => 'Resources/jquery.cookie.js', 'version' => 2 ),
-				array( 'src' => 'Resources/jquery.scrolltextarea.js', 'version' => 2 ),
 				array( 'src' => 'Resources/jquery.textSelection.js', 'version' => 2 ),
 				array( 'src' => 'Resources/jquery.wikiOutline.js', 'version' => 2 ),
 			),

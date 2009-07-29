@@ -4631,12 +4631,86 @@ jQuery.cookie = function(name, value, options) {
     }
 };
 
-/**
- * Plugin that can get the byte offset of the cursor in a textarea, move the
- * cursor to a byte offset and scroll the textarea to the cursor's new position.
+/*
+ * Ported from skins/common/edit.js by Trevor Parscal
+ * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
  */
-(function($){
-	$.fn.extend({
+(function($) {
+    $.fn.extend({
+		encapsulateSelection: function( pre, peri, post ) {
+			/**
+			 * CLEAN THIS UP PLEASE!
+			 */
+            var e = this.jquery ? this[0] : this;
+			var selText;
+			var isSample = false;
+			if (document.selection  && document.selection.createRange) { // IE/Opera
+		
+				//save window scroll position
+				if (document.documentElement && document.documentElement.scrollTop)
+					var winScroll = document.documentElement.scrollTop
+				else if (document.body)
+					var winScroll = document.body.scrollTop;
+				//get current selection
+				e.focus();
+				var range = document.selection.createRange();
+				selText = range.text;
+				//insert tags
+				checkSelectedText();
+				range.text = pre + selText + post;
+				//mark sample text as selected
+				if (isSample && range.moveStart) {
+					if (window.opera)
+						post = post.replace(/\n/g,'');
+					range.moveStart('character', - post.length - selText.length);
+					range.moveEnd('character', - post.length);
+				}
+				range.select();
+				//restore window scroll position
+				if (document.documentElement && document.documentElement.scrollTop)
+					document.documentElement.scrollTop = winScroll
+				else if (document.body)
+					document.body.scrollTop = winScroll;
+		
+			} else if (e.selectionStart || e.selectionStart == '0') { // Mozilla
+		
+				//save textarea scroll position
+				var textScroll = e.scrollTop;
+				//get current selection
+				e.focus();
+				var startPos = e.selectionStart;
+				var endPos = e.selectionEnd;
+				selText = e.value.substring(startPos, endPos);
+				//insert tags
+				checkSelectedText();
+				e.value = e.value.substring(0, startPos)
+					+ pre + selText + post
+					+ e.value.substring(endPos, e.value.length);
+				//set new selection
+				if (isSample) {
+					e.selectionStart = startPos + pre.length;
+					e.selectionEnd = startPos + pre.length + selText.length;
+				} else {
+					e.selectionStart = startPos + pre.length + selText.length + post.length;
+					e.selectionEnd = e.selectionStart;
+				}
+				//restore textarea scroll position
+				e.scrollTop = textScroll;
+			}
+			// Checks if the selected text is the same as the insert text
+			function checkSelectedText(){
+				if (!selText) {
+					selText = peri;
+					isSample = true;
+				} else if (selText.charAt(selText.length - 1) == ' ') { //exclude ending space char
+					selText = selText.substring(0, selText.length - 1);
+					post += ' '
+				}
+			}
+			/**
+			 * /CLEAN THIS UP PLEASE!
+			 */
+		},
 		// The getCaret(), getLineLength() and getCaretPosition()
 		// functions were copied from Wikia's LinkSuggest extension and
 		// modified slightly.
@@ -4646,6 +4720,9 @@ jQuery.cookie = function(name, value, options) {
 		 * Get the byte position in a textarea 
 		 */
 		 bytePos: function() {
+			/**
+			 * CLEAN THIS UP PLEASE!
+			 */
 			function getCaret(control) {
 				var caretPos = 0;
 				// IE Support
@@ -4726,6 +4803,9 @@ jQuery.cookie = function(name, value, options) {
 			}
 			
 			return getCaret( this.get( 0 ) );
+			/**
+			 * /CLEAN THIS UP PLEASE!
+			 */
 		},
 
 		/**
@@ -4733,6 +4813,9 @@ jQuery.cookie = function(name, value, options) {
 		 * @param pos Byte offset in the contents
 		 */
 		scrollToPosition: function( pos ) {
+			/**
+			 * CLEAN THIS UP PLEASE!
+			 */
 			function getLineLength(control) {
 				var width = control.scrollWidth;
 				return Math.floor(width/($.os.name == 'linux' ? 7 : 8));
@@ -4814,85 +4897,6 @@ jQuery.cookie = function(name, value, options) {
 				}
 				$(this).trigger( 'scrollToPosition' );
 			});
-		}
-	});	
-})(jQuery);
-/*
- * Ported from skins/common/edit.js by Trevor Parscal
- * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
- */
-(function($) {
-    $.fn.extend({
-		encapsulateSelection: function( pre, peri, post ) {
-            var e = this.jquery ? this[0] : this;
-			/**
-			 * CLEAN THIS UP PLEASE!
-			 */
-			var selText;
-			var isSample = false;
-			if (document.selection  && document.selection.createRange) { // IE/Opera
-		
-				//save window scroll position
-				if (document.documentElement && document.documentElement.scrollTop)
-					var winScroll = document.documentElement.scrollTop
-				else if (document.body)
-					var winScroll = document.body.scrollTop;
-				//get current selection
-				e.focus();
-				var range = document.selection.createRange();
-				selText = range.text;
-				//insert tags
-				checkSelectedText();
-				range.text = pre + selText + post;
-				//mark sample text as selected
-				if (isSample && range.moveStart) {
-					if (window.opera)
-						post = post.replace(/\n/g,'');
-					range.moveStart('character', - post.length - selText.length);
-					range.moveEnd('character', - post.length);
-				}
-				range.select();
-				//restore window scroll position
-				if (document.documentElement && document.documentElement.scrollTop)
-					document.documentElement.scrollTop = winScroll
-				else if (document.body)
-					document.body.scrollTop = winScroll;
-		
-			} else if (e.selectionStart || e.selectionStart == '0') { // Mozilla
-		
-				//save textarea scroll position
-				var textScroll = e.scrollTop;
-				//get current selection
-				e.focus();
-				var startPos = e.selectionStart;
-				var endPos = e.selectionEnd;
-				selText = e.value.substring(startPos, endPos);
-				//insert tags
-				checkSelectedText();
-				e.value = e.value.substring(0, startPos)
-					+ pre + selText + post
-					+ e.value.substring(endPos, e.value.length);
-				//set new selection
-				if (isSample) {
-					e.selectionStart = startPos + pre.length;
-					e.selectionEnd = startPos + pre.length + selText.length;
-				} else {
-					e.selectionStart = startPos + pre.length + selText.length + post.length;
-					e.selectionEnd = e.selectionStart;
-				}
-				//restore textarea scroll position
-				e.scrollTop = textScroll;
-			}
-			// Checks if the selected text is the same as the insert text
-			function checkSelectedText(){
-				if (!selText) {
-					selText = peri;
-					isSample = true;
-				} else if (selText.charAt(selText.length - 1) == ' ') { //exclude ending space char
-					selText = selText.substring(0, selText.length - 1);
-					post += ' '
-				}
-			}
 			/**
 			 * /CLEAN THIS UP PLEASE!
 			 */
