@@ -119,11 +119,12 @@
 				return object[property] || gM( object[property + 'Msg'] );
 			}
 			// Creates generic action
-			var action = function() {
+			var action = function( event ) {
 				$(this).useTool(
 					$(this).data( 'context' ).tool,
 					$(this).data( 'context' ).textbox
 				);
+				event.preventDefault();
 			};
 			switch ( section.type ) {
 				case 'toolbar':
