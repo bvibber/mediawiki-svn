@@ -429,7 +429,26 @@
  * textarea#wpTextbox1 - which needs to be done after the document is loaded.
  */
 jQuery( document ).ready( function() {
-	jQuery( 'div#edittoolbar' ).toolbar( $( 'textarea#wpTextbox1' ), editToolbarConfiguration );
+	$( 'textarea#wpTextbox1' ).wrap(
+		$( '<div></div>' )
+			.attr( 'id', 'edit-ui' )
+	);
+	$( 'textarea#wpTextbox1' ).wrap(
+		$( '<div></div>' )
+			.attr( 'id', 'edit-ui-left' )
+	);
+	$( 'div#edit-ui' ).append(
+		$( '<div></div>' )
+			.attr( 'id', 'edit-ui-right' )
+	);
+	$( 'div#edit-ui-left' ).prepend(
+		$( '<div></div>' )
+			.attr( 'id', 'edit-toolbar' )
+	);
+	$( 'div#edit-toolbar' ).toolbar(
+		$( 'textarea#wpTextbox1' ),
+		editToolbarConfiguration
+	);
 });
 /**
  * This enormous structure is what makes the toolbar what it is. Customization
