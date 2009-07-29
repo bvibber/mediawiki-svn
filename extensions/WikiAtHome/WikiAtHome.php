@@ -71,10 +71,8 @@ $wgChunkDuration = '10';
 //note first "in" wins & if once time is up we decrement set_c
 $wgJobTimeOut = 60*10; //10 min
 
-//this meeters how many copies of any given stream we should send out as part of a job
-//if you have lots of bandwith a little time set this higher
-//if you have little bandwith and lots of time set this lower
-$wgNumberOfClientsPerJobSet = 10;
+//this meaters how many copies of any given stream we should send out as part of a job 
+$wgNumberOfClientsPerJobSet = 25;
 
 //what to encode to:
 $wgEnabledDerivatives = array( WikiAtHome::ENC_WEB_STREAM );

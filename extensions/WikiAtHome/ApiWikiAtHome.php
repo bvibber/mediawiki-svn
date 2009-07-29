@@ -36,6 +36,7 @@ class ApiWikiAtHome extends ApiBase {
 		}
 	}
 	public function getNewJob(){
+		global $wgNumberOfClientsPerJobSet;
 		$dbr = wfGetDb( DB_READ );
 		//check if we have jobset
 		//its always best to assigning from jobset (since the user already has the data)
@@ -68,11 +69,11 @@ class ApiWikiAtHome extends ApiBase {
 		$res = $dbr->select( 'wah_jobset',
 			'*',
 			array(
-				'set_done_time IS NULL'
+				'set_done_time IS NULL',
+				'set_client_count < '.$wgNumberOfClientsPerJobSet
 			),
 			__METHOD__,
-			array(
-				'ORDER BY'	=> 'set_priority',
+			array(				
 				'LIMIT'		=> 1
 			)
 		);
@@ -84,9 +85,10 @@ class ApiWikiAtHome extends ApiBase {
 						)
 					);
 		}else{
-			//get the jobset:
+			//get a job from the jobset and increment the set_client_count 
+			//(if the user has an unfinished job) reassin it (in cases where job is lost in trasport)			
 			$jobSet = $dbr->fetchObject( $res );
-			//select a random job from the jobset
+			
 
 		}
 
