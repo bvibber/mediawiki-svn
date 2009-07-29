@@ -126,7 +126,7 @@ CREATE TABLE /*$wgDBprefix*/code_relations (
   cf_to int not null,
 
   primary key (cf_repo_id, cf_from, cf_to),
-  key (cf_repo_id, cf_to, cf_from)
+  key repo_to_from (cf_repo_id, cf_to, cf_from)
 ) /*$wgDBTableOptions*/;
 
 -- And for our commenting system...

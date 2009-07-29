@@ -131,6 +131,10 @@ function efCodeReviewSchemaUpdates() {
 	$base = dirname(__FILE__);
 	if( $wgDBtype == 'mysql' ) {
 		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" ); // Initial install tables
+		$wgExtNewFields[] = array( 'code_rev', 'cr_diff', "$base/archives/codereview-cr_diff.sql" );
+		$wgExtNewIndexes[] = array( 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql" );
+		//$wgExtNewFields[] = array( 'code_rev', "$base/archives/codereview-cr_status.sql" ); // FIXME FIXME this is a change to options... don't know how
+		$wgExtNewTables[] = array( 'code_bugs', "$base/archives/code_bugs.sql" );
 	} elseif( $wgDBtype == 'postgres' ) {
 		// TODO
 	}
