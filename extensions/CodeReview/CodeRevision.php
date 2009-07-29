@@ -141,6 +141,19 @@ class CodeRevision {
 		}
 		return true;
 	}
+	
+	/**
+	 * Quickie protection against huuuuuuuuge batch inserts
+	 */
+	protected function insertChunks( $db, $table, $data, $method, $options=array() ) {
+		$chunkSize = 100;
+		for( $i = 0; $i < count( $data ); $i += $chunkSize ) {
+			$db->insert( 'code_paths',
+				array_slice( $data, $i, $chunkSize ),
+				__METHOD__,
+				array( 'IGNORE' ) );
+		}
+	}
 
 	public function save() {
 		$dbw = wfGetDB( DB_MASTER );
@@ -183,7 +196,7 @@ class CodeRevision {
 					'cp_path'    => $path['path'],
 					'cp_action'  => $path['action'] );
 			}
-			$dbw->insert( 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
+			$this->insertChunks( $dbw, 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
 		}
 		// Update bug references table...
 		$affectedBugs = array();
