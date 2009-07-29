@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'prefstats-list-intro' => 'Currently, the following preferences are being tracked.
 Click on one to view statistics about it.',
 	'prefstats-list-elem' => '$1 = $2',
+	'prefstats-noprefs' => 'No preferences are currently being tracked. Configure $wgPrefStatsTrackPrefs to track preferences.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

@@ -289,7 +289,6 @@ class SpecialOptIn extends SpecialPage {
 					$attrs['class'] = 'optin-need-other';
 				}
 				$retval .= Xml::openElement( 'select', $attrs );
-				$retval .= Xml::option( '', '' );
 				foreach ( $question['answers'] as $aid => $answer ) {
 					$retval .= Xml::option(
 						wfMsg( $answer ), $aid,

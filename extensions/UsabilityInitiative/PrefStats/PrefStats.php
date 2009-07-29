@@ -18,7 +18,10 @@
 
 /* Configuration */
 
-// .Set to false to disable tracking
+// For this extension to actually do anything, you need to configure
+// $wgPrefStatsTrackPrefs yourself.
+
+// Set to false to disable tracking
 $wgPrefStatsEnable = true;
 
 // array('prefname' => 'value')
@@ -33,6 +36,9 @@ $wgPrefStatsChartDimensions = '1000x300';
 $wgPrefStatsTimeUnit = 60 * 60 * 24; // one day
 
 /* Setup */
+
+// Right required to view Special:PrefStats
+$wgAvailableRights[] = 'prefstats';
 
 // Credits
 $wgExtensionCredits['other'][] = array(
