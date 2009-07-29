@@ -18,9 +18,11 @@ div#edit-ui {
 	clear: both;
 }
 div#edit-toolbar {
-	border-bottom: solid silver 1px;
 	background-color: #F3F3F3;
-	height: 32px;
+}
+div#edit-toolbar div.break {
+	border-bottom: solid silver 1px;
+	clear:both;
 }
 /* Sections */
 div#edit-toolbar div.sections {
@@ -36,7 +38,8 @@ div#edit-toolbar div.sections div.section {
 	float: left;
 	width: 100%;
 	margin-left: -1px;
-	border: solid silver 1px;
+	border-left: solid silver 1px;
+	border-right: solid silver 1px;
 	border-top: solid 1px #DDDDDD;
 	background-color: #F3F3F3;
 }
@@ -77,19 +80,16 @@ div#edit-toolbar div.group {
 	height: 26px;
 	margin: 3px;
 	padding: 0;
-	padding-left: 3px;
-	border-left: solid 1px #DDDDDD;
-}
-div#edit-toolbar div.first {
-	border-left: none;
+	padding-right: 6px;
+	border-right: solid 1px #DDDDDD;
 }
 body.rtl div#edit-toolbar div.tabs,
 body.rtl div#edit-toolbar div.group {
 	float: right;
-	padding-left: 0;
-	padding-right: 3px;
-	border-left: none;
-	border-right: solid 1px #DDDDDD;
+	padding-right: 0;
+	padding-left: 6px;
+	border-right: none;
+	border-left: solid 1px #DDDDDD;
 }
 body.rtl div#edit-toolbar div.first {
 	border-right: none;
