@@ -104,11 +104,6 @@ The new navigation system makes it easier to see where you are and what you are 
 ;Edit toolbar improvements
 New-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
 The help section provides quick access to a reference for common uses of wiki-markup.
-<div style=\"clear:both;\"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Improved search interface
-When using search, title matches are shown first, helping you to find the most relevant articles quickly. Search profiles make searching for different kinds of content easier, while the new advanced search interface makes light work of complex searches.
 <div style=\"clear:both;\"></div>",
 );
 
