@@ -114,6 +114,15 @@ public class XmlDumpReader  extends DefaultHandler {
 		startElements.put("namespaces","namespaces");
 		startElements.put("namespace","namespace");
 
+		endElements.put("ThreadSubject","ThreadSubject");
+		endElements.put("ThreadParent","ThreadParent");
+		endElements.put("ThreadAncestor","ThreadAncestor");
+		endElements.put("ThreadPage","ThreadPage");
+		endElements.put("ThreadID","ThreadID");
+		endElements.put("ThreadSummaryPage","ThreadSummaryPage");
+		endElements.put("ThreadAuthor","ThreadAuthor");
+		endElements.put("ThreadEditStatus","ThreadEditStatus");
+		endElements.put("ThreadType","ThreadType");
 		endElements.put("base","base");
 		endElements.put("case","case");
 		endElements.put("comment","comment");
@@ -193,6 +202,7 @@ public class XmlDumpReader  extends DefaultHandler {
 			else if (qName == "title") readTitle();
 			else if (qName == "restrictions") readRestrictions();
 			// rare tags:
+			else if (qName.startsWith("Thread")) threadAttribute(qName);
 			else if (qName == "mediawiki") closeMediaWiki();
 			else if (qName == "siteinfo") closeSiteinfo();
 			else if (qName == "sitename") readSitename();
@@ -201,12 +211,17 @@ public class XmlDumpReader  extends DefaultHandler {
 			else if (qName == "case") readCase();
 			else if (qName == "namespaces") closeNamespaces();
 			else if (qName == "namespace") closeNamespace();
+//			else throw(SAXException)new SAXException("Unrecognised "+qName+"(substring "+qName.length()+qName.substring(0,6)+")");
 		} catch (IOException e) {
 			throw (SAXException)new SAXException(e.getMessage()).initCause(e);
 		}
 	}
 
 	// ----------
+	
+	void threadAttribute(String attrib) throws IOException {
+		page.DiscussionThreadingInfo.put(attrib, bufferContents());
+	}
 	
 	void openMediaWiki() throws IOException {
 		siteinfo = null;

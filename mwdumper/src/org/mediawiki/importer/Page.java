@@ -25,13 +25,17 @@
 
 package org.mediawiki.importer;
 
+import java.util.Hashtable;
+
 public class Page {
 	public Title Title;
 	public int Id;
+	public Hashtable DiscussionThreadingInfo;
 	public String Restrictions;
 	
 	public Page() {
 		// <restrictions> is optional...
 		Restrictions = "";
+		DiscussionThreadingInfo = new Hashtable();
 	}
 }
