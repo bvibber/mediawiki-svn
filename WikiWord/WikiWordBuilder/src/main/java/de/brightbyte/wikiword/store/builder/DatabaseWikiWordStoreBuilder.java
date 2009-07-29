@@ -13,6 +13,7 @@ import de.brightbyte.db.BufferBasedInserter;
 import de.brightbyte.db.DatabaseAccess;
 import de.brightbyte.db.DatabaseAgendaPersistor;
 import de.brightbyte.db.DatabaseField;
+import de.brightbyte.db.DatabaseKey;
 import de.brightbyte.db.DatabaseTable;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.InserterFactory;
@@ -484,6 +485,17 @@ public class DatabaseWikiWordStoreBuilder
 
 	protected int resolveRedirects(RelationTable aliasTable, DatabaseTable table, String relNameField, String relIdField, AliasScope scope, int chunkFactor, String forceRIndex, String forceEIndex) throws PersistenceException {
 		if (relIdField==null && relNameField==null) throw new IllegalArgumentException("relNameFields and relIdField can't both be null");
+		
+		if (forceRIndex==null) {
+			DatabaseKey k = table.findKeyForField(relIdField);
+			forceRIndex = k==null ? null : k.getName();
+		}
+		
+		if (forceRIndex==null && relIdField==null) {
+			DatabaseKey k = table.findKeyForField(relNameField);
+			forceRIndex = k==null ? null : k.getName();
+		}
+		
 		if (forceRIndex!=null && table.getKey(forceRIndex)==null) throw new IllegalArgumentException("unknown key: "+forceRIndex);
 		
 		if (forceEIndex==null) forceEIndex = "source";
