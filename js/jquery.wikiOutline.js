@@ -11,9 +11,10 @@
 parseOutline: function() {
 	return this.each( function() {
 		// Extract headings from wikitext
-		var wikitext = '\r\n' + $(this).val() + '\r\n';
-		var headings = wikitext.match( /[\r\n][=]+[^\r\n]*[=]+[\r\n]/g );
+		var wikitext = '\n' + $(this).val() + '\n';
+		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
 		var outline = [];
+		console.log( headings.length );
 		var offset = 0;
 		for ( var h = 0; h < headings.length; h++ ) {
 			text = headings[h];
@@ -78,15 +79,19 @@ buildOutline: function( target ) {
 			var outline = $(this).data( 'outline' );
 			// Normalize levels, adding an nLevel parameter to each node
 			var level = 1;
+			var trunc = 0;
 			for ( var i = 0; i < outline.length; i++ ) {
 				if ( i > 0 ) {
 					if ( outline[i].level > outline[i - 1].level ) {
 						level++;
 					} else if ( outline[i].level < outline[i - 1].level ) {
-						level -= Math.max(
-							1, outline[i - 1].level - outline[i].level
-						);
+						if ( trunc <= 1 ) {
+							level -= Math.max(
+								1, outline[i - 1].level - outline[i].level
+							);
+						}
 					}
+					trunc = outline[i].level - outline[i - 1].level;
 				}
 				outline[i].nLevel = level;
 				/*
