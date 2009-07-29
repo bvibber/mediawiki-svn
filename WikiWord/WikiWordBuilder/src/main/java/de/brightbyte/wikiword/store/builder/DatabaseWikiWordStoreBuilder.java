@@ -485,6 +485,8 @@ public class DatabaseWikiWordStoreBuilder
 	protected int resolveRedirects(RelationTable aliasTable, DatabaseTable table, String relNameField, String relIdField, AliasScope scope, int chunkFactor, String forceRIndex, String forceEIndex) throws PersistenceException {
 		if (relIdField==null && relNameField==null) throw new IllegalArgumentException("relNameFields and relIdField can't both be null");
 		if (forceRIndex!=null && table.getKey(forceRIndex)==null) throw new IllegalArgumentException("unknown key: "+forceRIndex);
+		
+		if (forceEIndex==null) forceEIndex = "source";
 		if (forceEIndex!=null && aliasTable.getKey(forceEIndex)==null) throw new IllegalArgumentException("unknown key: "+forceEIndex);
 		
 		DatabaseField nmField = relNameField ==null ? null : table.getField(relNameField);
