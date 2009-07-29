@@ -222,34 +222,6 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		return languages;
 	}
 	
-	public String[] listPrefixes(String suffix) throws SQLException {
-		List<String> pp = new ArrayList<String>(); 
-		
-		String coll = getCollectionName();
-		
-		String name = "%\\_"+suffix;
-		if (coll!=null && coll.length()>0) {
-			name = coll+"\\_"+name;
-		}
-		
-		String sql = "show tables like "+this.quoteString(name);
-		ResultSet rs = executeQuery("listPrefixes", sql);
-		while (rs.next()) {
-			String n = rs.getString(1);
-			n = n.replaceAll("_"+suffix+"$", "");
-			if (coll!=null && coll.length()>0) {
-				n = n.replaceAll("^"+coll+"_", "");
-			}
-			
-			pp.add(n);
-		}
-		
-		rs.close();
-		
-		String[] prefixes = (String[]) pp.toArray(new String[pp.size()]);
-		return prefixes;
-	}
-	
 	@Override
 	public ConceptType getConceptType(int type) throws SQLException {
 		if (conceptTypes==null) getLanguages(); //init on demand

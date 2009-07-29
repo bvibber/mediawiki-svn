@@ -315,4 +315,38 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 		return encodeSet(vv);
 	}
 	
+	
+	public String[] listPrefixes(String suffix) throws SQLException {
+		String coll = getCollectionName();
+		
+		return listPrefixes(coll, suffix);
+	}
+	
+	public String[] listPrefixes(String prefix, String suffix) throws SQLException {
+		List<String> pp = new ArrayList<String>(); 
+		
+		String name = "%\\_"+suffix;
+		if (prefix!=null && prefix.length()>0) {
+			name = prefix+"\\_"+name;
+		}
+		
+		String sql = "show tables like "+this.quoteString(name);
+		ResultSet rs = executeQuery("listPrefixes", sql);
+		while (rs.next()) {
+			String n = rs.getString(1);
+			n = n.replaceAll("_"+suffix+"$", "");
+			if (prefix!=null && prefix.length()>0) {
+				n = n.replaceAll("^"+prefix+"_", "");
+			}
+			
+			pp.add(n);
+		}
+		
+		rs.close();
+		
+		String[] prefixes = (String[]) pp.toArray(new String[pp.size()]);
+		return prefixes;
+	}
+	
+	
 }

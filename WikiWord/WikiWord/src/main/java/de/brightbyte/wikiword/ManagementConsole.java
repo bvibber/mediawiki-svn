@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import javax.sql.DataSource;
 
@@ -15,22 +16,22 @@ import de.brightbyte.application.Arguments;
 import de.brightbyte.data.Pair;
 import de.brightbyte.db.DatabaseConnectionInfo;
 import de.brightbyte.db.DatabaseSchema;
+import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.SingletonDataSource;
 import de.brightbyte.io.Prompt;
 import de.brightbyte.io.WriterOutput;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.DatasetIdentifier;
-import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.schema.WikiWordStoreSchema;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore;
 
-public class AlterDataset {
+public class ManagementConsole {
 	
-	private DatabaseSchema db;
+	private WikiWordStoreSchema db;
 	private boolean force;
 	private Prompt prompt;
 	
-	public AlterDataset(DatabaseSchema db, boolean force) {
+	public ManagementConsole(WikiWordStoreSchema db, boolean force) {
 		super();
 		this.db = db;
 		this.force = force; 
@@ -42,17 +43,22 @@ public class AlterDataset {
 		Arguments args = new Arguments();
 		args.parse(argv);
 		
-		String dbfile = args.getParameter(0); //FIXME: use standard interface from CliApp
+		File dbfile = CliApp.findConfigFile(args, "db");
+
+		if (dbfile==null) throw new RuntimeException("no database config file found. Splease specify --db option.");
+
 		boolean force = args.isSet("force");
 
 		List<String> params = args.getParameters();
-		params = params.subList(1, params.size());
 		
-		DatabaseConnectionInfo dbinfo = new DatabaseConnectionInfo(new File(dbfile));
-		DatabaseSchema db = new DatabaseSchema("", dbinfo, null);
+		DatabaseConnectionInfo dbinfo = new DatabaseConnectionInfo(dbfile);
+		DatasetIdentifier dataset = DatasetIdentifier.forName("dummy", "thingy");
+		TweakSet tweaks = new TweakSet();
+		
+		WikiWordStoreSchema db = new WikiWordStoreSchema(dataset, dbinfo, tweaks, false);
 		db.open();
 		
-		AlterDataset alter = new AlterDataset(db, force);
+		ManagementConsole alter = new ManagementConsole(db, force);
 		
 		if (params.size()>0) alter.runCommand(params);
 		else alter.runConsole();
@@ -94,7 +100,7 @@ public class AlterDataset {
 		return Arrays.asList(ss);
 	}
 
-	public void runCommand(List<String> params) throws SQLException, PersistenceException {
+	public void runCommand(List<String> params) throws SQLException, IOException, PersistenceException {
 		String cmd = params.get(0);
 		cmd = cmd.trim().toLowerCase();
 		
@@ -108,6 +114,15 @@ public class AlterDataset {
 			cmd = "delete";
 		}
 		else if (cmd.equals("stats") || cmd.equals("check")) {
+			//noop
+		}
+		else if (cmd.equals("processlist") || cmd.equals("processes")) {
+			cmd = "processes";
+		}
+		else if (cmd.equals("collections") || cmd.equals("datasets")) {
+			//noop
+		}
+		else if (cmd.equals("kill")) {
 			//noop
 		}
 		else {
@@ -134,6 +149,50 @@ public class AlterDataset {
 			DatabaseWikiWordConceptStore store = getConceptStore(name);
 			store.checkConsistency();
 		}
+		else if (cmd.equals("processes")) {
+			if (params.size()>1 && params.get(1).equalsIgnoreCase("full")) runQuery("SHOW FULL PROCESSLIST"); 
+			else runQuery("SHOW PROCESSLIST");
+		}
+		else if (cmd.equals("kill")) {
+			if (params.size()==1) throw new NoSuchElementException("KILL requires at least one argument"); 
+			
+			for (String k: params) {
+				runUpdate("KILL "+Integer.parseInt(k));
+			}
+		}
+		else if (cmd.equals("collections")) {
+			String[] tables = db.listPrefixes(null, "concept");
+			
+			List<String> collections = new ArrayList<String>();
+			for (String t: tables) {
+				String c = t.replaceAll("^(\\w+)_.*$", "$1");
+				if (!collections.contains(c)) collections.add(c);
+			}
+			
+			for (String c: collections) {
+				echo("\t"+c);
+			}
+		}
+		else if (cmd.equals("datasets")) {
+			if (params.size()==1) throw new NoSuchElementException("DATASETS requires exactly one argument: the collection name");
+			
+			String coll = params.get(1); 
+			String[] tables = db.listPrefixes(coll, "concept");
+			
+			for (String t: tables) {
+				echo("\t"+coll+"_"+t.replace("_concept", ""));
+			}
+		}
+	}
+
+	protected void runQuery(String sql) throws SQLException, IOException {
+		ResultSet rs = db.executeQuery("query", sql);
+		DatabaseUtil.dumpData(rs, prompt.getOut(), "\t|\t");
+	}
+
+	protected void runUpdate(String sql) throws SQLException, IOException {
+		int c = db.executeUpdate("query", sql);
+		echo("\t"+c+" rows updated.");
 	}
 
 	public DatabaseWikiWordConceptStore getConceptStore(String name) throws SQLException, PersistenceException {
