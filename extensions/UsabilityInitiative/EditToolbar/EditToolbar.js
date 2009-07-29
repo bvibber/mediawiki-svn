@@ -29,7 +29,7 @@
 					.attr( 'class', 'sections' )
 					.appendTo( $(this) );
 				// Appends float-clearing div
-				$(this).append( $( '<div style="clear:both;"></div>' ) );
+				$(this).append( $( '<div class="break"></div>' ) );
 				// Cookie name for storing section state
 				var sectionCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-section';
 				// Queue for sections to be built asynchonously
@@ -131,17 +131,12 @@
 					if ( !( 'groups' in section ) ) {
 						return;
 					}
-					var first = true;
 					// Loops over each group
 					for ( group in section.groups ) {
 						// Appends group
 						var groupDiv = $( '<div />' )
 							.attr( 'class', 'group' )
 							.appendTo( $(this) );
-						if ( first ) {
-							groupDiv.addClass( 'first' );
-							first = false;
-						}
 						// Checks if there's a label for this group
 						if ( msgSet( section.groups[group], 'label' ) ) {
 							groupDiv.append(
