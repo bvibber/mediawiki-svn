@@ -115,9 +115,6 @@ class WahJobManager {
 					)
 			);
 			if( $dbr->numRows( $jobRes ) == 0){
-				print "NO JOBS::";
-				print $dbr->lastQuery();
-				die;
 				//no jobs in this jobset (return nojob)
 				//@@todo we could "retry" since we will get here when a set has everything assigned in less than $wgJobTimeOut
 				return false;
@@ -136,7 +133,20 @@ class WahJobManager {
 	 */
 	static function assignJob( & $jobObj, & $jobSet = false ){
 		global $wgUser;
+		$dbr = wfGetDb( DB_READ );
 		$dbw = wfGetDb( DB_WRITE );
+		if( $jobSet == false ){
+			$jobRes = $dbr->select('wah_jobset', '*',
+				array(
+					'set_id' => $jobObj->job_set_id
+				),
+				__METHOD__,
+				array(
+					'LIMIT'		=> 1
+				)
+			);
+			$jobSet = $dbr->fetchObject( $jobRes );
+		}
 		//for jobqueue update: job_last_assigned_time, job_last_assigned_user_id, job_assign_count
 		$dbw->update('wah_jobqueue',
 			array(
@@ -168,6 +178,7 @@ class WahJobManager {
 				)
 			);
 		}
+		$jobObj->title = $jobSet->set_title;
 		return $jobObj;
 	}
 	/*
