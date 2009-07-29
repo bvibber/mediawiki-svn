@@ -9,18 +9,57 @@
 class UsabilityInitiativeHooks {
 
 	/* Static Members */
-
+	
+	private static $doOutput = false;
 	private static $messages = array();
 	private static $styles = array();
-	private static $scripts = array(
-		array( 'src' => 'Resources/jquery.combined.js', 'version' => 2 ),
+	private static $scripts = array();
+	private static $scriptFiles = array(
+		'base_sets' => array(
+			'combined' => array(
+				array( 'src' => 'Resources/jquery.combined.js', 'version' => 2 ),
+			),
+			'combined-min' => array(
+				array( 'src' => 'Resources/jquery.combined.min.js', 'version' => 2 ),
+			),
+			'raw' => array(
+				array( 'src' => 'Resources/jquery.js', 'version' => 2 ),
+				array( 'src' => 'Resources/jquery.async.js', 'version' => 2 ),
+				array( 'src' => 'Resources/jquery.browser.js', 'version' => 2 ),
+				array( 'src' => 'Resources/jquery.cookie.js', 'version' => 2 ),
+				array( 'src' => 'Resources/jquery.scrolltextarea.js', 'version' => 2 ),
+				array( 'src' => 'Resources/jquery.textSelection.js', 'version' => 2 ),
+				array( 'src' => 'Resources/jquery.wikiOutline.js', 'version' => 2 ),
+			),
+		),
+		// Code to include when mv_embed is not present
+		'no_mv_embed' => array(
+			array( 'src' => 'Resources/messages.js', 'version' => 1 ),
+		)
 	);
-	private static $doOutput = false;
-
-
+	
 	/* Static Functions */
 
 	public static function initialize() {
+		global $wgUsabilityInitiativeJsMode;
+		global $wgUsabilityInitiativeCoesxistWithMvEmbed;
+		
+		// Only do this the first time!
+		if ( !self::$doOutput ) {
+			// Default to raw
+			$mode = $wgUsabilityInitiativeJsMode; // Just an alias
+			if ( !isset( self::$scriptFiles['base_sets'][$mode] ) ) {
+				$mode = 'raw';
+			}
+			// Inlcude base-set of scripts
+			self::$scripts = self::$scriptFiles['base_sets'][$mode];
+			// Play nice with mv_embed
+			if ( !$wgUsabilityInitiativeCoesxistWithMvEmbed ) {
+				self::$scripts = array_merge(
+					self::$scriptFiles['no_mv_embed'], self::$scripts
+				);
+			}
+		}
 		self::$doOutput = true;
 	}
 	
@@ -30,20 +69,9 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addResources( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
-		global $wgUsabilityInitiativeCoesxistWithMvEmbed;
 		
 		if ( !self::$doOutput )
 			return true;
-		
-		// Play nice with mv_embed
-		if ( !$wgUsabilityInitiativeCoesxistWithMvEmbed ) {
-			self::$scripts = array_merge(
-				array(
-					array( 'src' => 'Resources/messages.js', 'version' => 1 ),
-				),
-				self::$scripts
-			);
-		}
 		
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {

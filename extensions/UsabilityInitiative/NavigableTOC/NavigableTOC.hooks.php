@@ -17,11 +17,14 @@ class NavigableTOCHooks {
 	 public static function addTOC( &$ep ) {
 		global $wgNavigableTOCStyleVersion, $wgParser, $wgUser;
 		global $wgEnableParserCache;
-
+		
 		// Adds script to document
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript(
 			'NavigableTOC/NavigableTOC.js', $wgNavigableTOCStyleVersion
+		);
+		UsabilityInitiativeHooks::addScript(
+			'Resources/jquery.wikiOutline.js', $wgNavigableTOCStyleVersion
 		);
 		UsabilityInitiativeHooks::addStyle(
 			'NavigableTOC/NavigableTOC.css', $wgNavigableTOCStyleVersion

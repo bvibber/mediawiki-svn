@@ -97,25 +97,25 @@ buildOutline: function( target ) {
 				);
 				*/
 			}
-			
-			function buildStructure( outline, structure, offset, level ) {
+			function buildStructure( outline, offset, level ) {
 				if ( offset == undefined ) offset = 0;
 				if ( level == undefined ) level = 1;
+				var sections = [];
 				for ( var i = offset; i < outline.length; i++ ) {
 					if ( outline[i].nLevel == level ) {
-						buildStructure( outline, outline[i], i + 1, level + 1 );
-						if ( structure.sections == undefined ) {
-							structure.sections = [ outline[i] ];
-						} else {
-							structure.sections[structure.sections.length] = outline[i];
+						var sub = buildStructure( outline, i + 1, level + 1 );
+						if ( sub.length ) {
+							outline[i].sections = sub;
 						}
+						sections[sections.length] = outline[i];
 					} else if ( outline[i].nLevel < level ) {
 						break;
 					}
 				}
+				return sections;
 			}
 			function buildList( textarea, structure ) {
-				var list = $( '<ul><ul>' );
+				var list = $( '<ul></ul>' );
 				for ( i in structure ) {
 					var item = $( '<li></li>' )
 						.append(
@@ -139,9 +139,7 @@ buildOutline: function( target ) {
 				}
 				return list;
 			}
-			var structure = {};
-			buildStructure( outline, structure );
-			target.html( buildList( $(this), structure.sections ) );
+			target.html( buildList( $(this), buildStructure( outline ) ) );
 		}
 	} );
 },
