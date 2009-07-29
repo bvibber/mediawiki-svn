@@ -1,9 +1,10 @@
 <?php
 /*
- * creates an stub for non-free video that is waiting to be transcoded (just redirects to the real file)
+ * creates an stub for non-free video that is waiting to be transcoded once the free format file is available
+ * it re-maps all requests to the free format file. (only transcoding jobs will recive the non-free file)
  */
 class NonFreeVideoHandler extends MediaHandler {
-	const METADATA_VERSION = 1;
+	const METADATA_VERSION = 22;
 
 	static $magicDone = false;
 
@@ -130,26 +131,30 @@ class NonFreeVideoHandler extends MediaHandler {
 
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgEnabledDerivatives;
-		
-		$targetWidth = $params['width'];
+
+		$width = $params['width'];
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
-		
-		//do some arbitrary derivative selection logic: 
-		$encodeKey = $this->getTargetDerivative($targetWidth, $srcWidth);		
-		//see if we have that encoding profile already:		
-		
+		$height = $srcWidth == 0 ? $srcHeight : $width * $srcHeight / $srcWidth;
+		//set the width based on the requested width:
+
+
+
+		//do some arbitrary derivative selection logic:
+		$encodeKey = $this->getTargetDerivative($width, $srcWidth);
+		//see if we have that encoding profile already:
+
 		//get the job manager .. check status and output current state or defer to oggHanndler_body for output
 		$jobSet = new WahJobManager( $file , $encodeKey );
 		$percDone = $jobSet->getDonePerc();
-		if( $percDone = 1 ){
+		if( $percDone == 1 ){
 			//we should be able to output ogg then:
-		}else{			
+		}else{
 			//output our current progress
-			return new MediaQueueTransformOutput(  $file, $videoUrl, $width, $height, $percDone );
+			return new MediaQueueTransformOutput($file, $width, $height, $percDone );
 		}
 	}
-	
+
 	static function getTargetDerivative($targetWidth, $srcWidth ){
 		global $wgEnabledDerivatives, $wgDerivativeSettings;
 		if( count($wgEnabledDerivatives) == 1 )
@@ -159,14 +164,14 @@ class NonFreeVideoHandler extends MediaHandler {
 			return WikiAtHome::ENC_HQ_STREAM;
 		//if target width <= 250 and ENC_SAVE_BANDWITH then send small version
 		if( $targetWidth >= 260 && in_array(WikiAtHome::ENC_SAVE_BANDWITH, $wgEnabledDerivatives) )
-			return WikiAtHome::ENC_SAVE_BANDWITH;		
-		//return the default web stream if on 
+			return WikiAtHome::ENC_SAVE_BANDWITH;
+		//return the default web stream if on
 		if( in_array(WikiAtHome::ENC_WEB_STREAM, $wgEnabledDerivatives) )
 			return WikiAtHome::ENC_WEB_STREAM;
 		//else return whatever we have
-		return $wgDerivativeSettings[ current($wgEnabledDerivatives) ];		
+		return $wgDerivativeSettings[ current($wgEnabledDerivatives) ];
 	}
-	
+
 	function getMetadataType( $image ) {
 		return 'vid';
 	}
@@ -281,20 +286,32 @@ class NonFreeVideoHandler extends MediaHandler {
 class MediaQueueTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
 
-	function __construct( $file, $videoUrl, $width, $height, $percDone )
+	function __construct( $file, $width, $height, $percDone )
 	{
 		$this->file = $file;
-		$this->videoUrl = $videoUrl;
 		$this->width = round( $width );
-		$this->height = round( $height );		
+		$this->height = round( $height );
 		$this->percDone = $percDone;
 	}
 
 	function toHtml( $options = array() ) {
 		wfLoadExtensionMessages( 'WikiAtHome' );
-		//load the job
-		
-		return time();
+		$waitHtml = wfMsgWikiHtml( 'wah-transcode-working', $this->percDone ) . "<br>" .
+		 wfMsgWikiHtml('wah-transcode-helpout');
+
+		//@@this is just a placeholder we should desing a waiting for transcode thing
+		if( $this->height !=0 && $this->width != 0 ){
+			return Xml::tags( 'div',
+				array(
+					'style' => 'border:solid thin black;padding:5px;overflow:hidden;'.
+								'width:'.$this->width.'px;height:'.$this->height.'px'
+				),
+				$waitHtml
+			);
+		}else{
+			return $waitHtml;
+		}
+
 	}
 }
 ?>

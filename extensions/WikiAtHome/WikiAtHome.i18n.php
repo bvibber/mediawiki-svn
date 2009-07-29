@@ -3,6 +3,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'specialwikiathome'		=> 'Wiki@Home',
 	'wikiathome-desc' 		=> 'Enables distributing transcoding video jobs to clients using firefogg.',
 	'wah-short-audio'      	=> '$1 sound file, $2',
 	'wah-short-video'      	=> '$1 video file, $2',
@@ -14,6 +15,10 @@ $messages['en'] = array(
 	'wah-long-general'     	=> '(media file, length $2, $3)',
 	'wah-long-error'       	=> '(ffmpeg could not read this file: $1)',
 
-	'wah-redirect-done'		=> 'this media asset will redirect to $1 when done transcoding'
+	'wah-transcode-working' => 'This video is being transcoded its $1% done',
+	'wah-transcode-helpout' => 'You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
+
+	'wah-javascript-off'	=> 'You must have javascript enabled to participate in Wiki@Home',
+	'wah-loading'			=> 'loading wiki@home interface <blink>...</blink>'
 );
 ?>
