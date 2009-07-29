@@ -14,7 +14,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 
-define( 'TREEANDMENU_VERSION','1.1.0, 2009-06-26' );
+define( 'TREEANDMENU_VERSION','1.1.1, 2009-07-29' );
 
 # Set any unset images to default titles
 if ( !isset( $wgTreeViewImages ) || !is_array( $wgTreeViewImages ) ) $wgTreeViewImages = array();
@@ -29,7 +29,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'TreeAndMenu',
 	'author'      => array( '[http://www.organicdesign.co.nz/User:Nad Nad]', '[http://www.organicdesign.co.nz/User:Sven Sven]' ),
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Treeview',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:TreeAndMenu',
 	'description' => 'Adds #tree and #menu parser functions which contain bullet-lists to be rendered as collapsible treeview\'s or dropdown menus.
 	                  The treeview\'s use the [http://www.destroydrop.com/javascripts/tree dTree] JavaScript tree menu,
 	                  and the dropdown menu\'s use [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
