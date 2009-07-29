@@ -1,6 +1,6 @@
 /* JavaScript for OptIn extension */
 
-function optInDetectBrowserOS() {
+function optInGetPOSTData() {
 	var browserIndex = 'other';
 	switch ( $.browser.name ) {
 		case 'msie':
@@ -39,7 +39,9 @@ function optInDetectBrowserOS() {
 		break;
 	}
 	
-	return { browser: browserIndex, os: osIndex };
+	return { 'survey-browser': browserIndex, 'survey-os': osIndex,
+		'survey-res-x': screen.width, 'survey-res-y': screen.height,
+		'opt': 'browser' };
 }
 
 $( document ).ready( function() {
@@ -70,14 +72,14 @@ $( document ).ready( function() {
 	// Load initial state
 	$( '.survey-yes, .survey-no' ).change();
 	
+	var detected = optInGetPOSTData();
 	// Detect screen resolution
 	if ( screen.width && screen.height ) {
-		$( '.optin-resolution-x' ).val( screen.width );
-		$( '.optin-resolution-y' ).val( screen.height );
+		$( '.optin-resolution-x' ).val( detected['survey-res-x'] );
+		$( '.optin-resolution-y' ).val( detected['survey-res-y'] );
 		// Hide the fields?
 	}
-	
-	var detected = optInDetectBrowserOS();
-	$( '#survey-browser' ).val( detected.browser );
-	$( '#survey-os' ).val( detected.os );
+
+	$( '#survey-browser' ).val( detected['survey-browser'] );
+	$( '#survey-os' ).val( detected['survey-os'] );
 });

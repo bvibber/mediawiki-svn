@@ -59,7 +59,7 @@ class SpecialOptIn extends SpecialPage {
 
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser, $wgOptInSurvey;
-		global $wgOptInFeedBackSurvey;
+		global $wgOptInFeedBackSurvey, $wgOptInBrowserSurvey;
 		
 		$par = $wgRequest->getVal( 'from', $par );
 		$this->mOriginTitle = Title::newFromText( $par );
@@ -73,10 +73,6 @@ class SpecialOptIn extends SpecialPage {
 				$this->mOriginQuery );
 		}
 		$this->setHeaders();
-		
-		if ( $wgRequest->wasPosted() ) {
-			// TODO: Handle AJAX request
-		}
 		
 		if ( self::isOptedIn( $wgUser ) ) {
 			if ( $wgRequest->getVal( 'opt' ) == 'out' )
@@ -114,7 +110,7 @@ class SpecialOptIn extends SpecialPage {
 				$url = $this->getTitle()->getFullURL();
 				$wgOut->addHTML( Xml::tags( 'script',
 					array( 'type' => $wgJsMimeType ),
-					"$(document).ready(function() { $.post( \"$url\", optInDetectBrowserOS() ); } );"
+					"$(document).ready(function() { $.post( \"$url\", optInGetPOSTData() ); } );"
 				) );
 			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' ) {
 				if ( $wgRequest->wasPosted() ) {
@@ -123,6 +119,9 @@ class SpecialOptIn extends SpecialPage {
 					$wgOut->addWikiMsg( 'optin-success-feedback' );
 				} else
 					$this->showForm( 'feedback' );
+			} else if ( $wgRequest->getVal( 'opt' ) == 'browser' ) {
+				$this->saveSurvey( $wgOptInBrowserSurvey, 'in' );
+				$wgOut->disable();
 			} else {
 				self::optOut( $wgUser );
 				$this->saveSurvey( $wgOptInSurvey, 'out' );
@@ -535,7 +534,7 @@ class SpecialOptIn extends SpecialPage {
 					$insert['ois_answer'] = null;
 					$insert['ois_answer_data'] = null;
 				} else  {
-					$insert['ois_answer'] = intval( $answer );
+					$insert['ois_answer'] = $answer;
 					$insert['ois_answer_data'] = null;
 				}
 			break;

@@ -117,6 +117,11 @@ $wgOptInFeedBackSurvey['changes'] = array(
 		'custom' => 'optin-survey-answer-changes-custom' ),
 	'other' => 'optin-survey-answer-changes-other'
 );
+$wgOptInBrowserSurvey = array(
+	'browser' => $wgOptInSurvey['browser'],
+	'os' => $wgOptInSurvey['os'],
+	'res' => $wgOptInSurvey['res']
+);
 
 /* Setup */
 
