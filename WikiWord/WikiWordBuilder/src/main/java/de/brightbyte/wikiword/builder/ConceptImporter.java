@@ -21,6 +21,7 @@ import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.processor.ImportProgressTracker;
 import de.brightbyte.wikiword.schema.AliasScope;
+import de.brightbyte.wikiword.schema.ConceptStoreSchemas;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;

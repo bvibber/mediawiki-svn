@@ -36,15 +36,15 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 	}
 	
 	public DatabasePropertyStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException, PersistenceException {
-		this(new LocalConceptStoreSchema(conceptStore.getCorpus(), 
-						conceptStore.getDatabaseAccess().getConnection(), 
-						tweaks, true), 
+		this((LocalConceptStoreSchema)conceptStore.getDatabaseAccess(), 
 				new PropertyStoreSchema(conceptStore.getCorpus(), 
 						conceptStore.getDatabaseAccess().getConnection(), 
 						tweaks, true), 
 				conceptStore.idManager,
 				tweaks,
 				conceptStore.getAgenda());
+		
+		database.setBackgroundErrorHandler(conceptStore.getDatabaseAccess().getBackgroundErrorHandler());
 	}
 	
 	protected DatabasePropertyStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, PropertyStoreSchema database, PersistentIdManager idManager, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {

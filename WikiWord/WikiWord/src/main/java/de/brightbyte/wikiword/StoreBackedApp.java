@@ -185,4 +185,31 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 		}		
 	}
 	
+	protected void terminate() {
+		info("terminating application");
+	
+		//XXX: note: flushing first would be nice, but 
+		//     can deadlock, especially when called from a worker of the database's background flush queue!
+		//     would need to detect that.
+		/*
+		try {
+			closeStores(true);
+		} catch (Exception ex) {
+			error("failed to flush stores", ex);
+			try {
+				closeStores(false);
+			} catch (Exception exx) {
+				error("failed to close stores", exx);
+			}
+		} */
+		
+		try {
+			closeStores(false);
+		} catch (Exception exx) {
+			error("failed to close stores", exx);
+		}
+		
+		super.terminate();
+	}
+	
 }

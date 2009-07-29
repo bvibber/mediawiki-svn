@@ -19,6 +19,7 @@ import de.brightbyte.db.InserterFactory;
 import de.brightbyte.db.ReferenceField;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.db.StatementBasedInserter;
+import de.brightbyte.util.ErrorHandler;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.TweakSet;
@@ -62,6 +63,14 @@ public class DatabaseWikiWordStoreBuilder
 		
 		warningInserter = configureTable(warningTable, 0, 0);
 		warningInserter.disableAutomaticField();
+	}
+	
+	public void setBackgroundErrorHandler(ErrorHandler<Runnable, Throwable, Error> handler) {
+		database.setBackgroundErrorHandler(handler);
+	}
+	
+	public ErrorHandler<Runnable, Throwable, Error> getBackgroundErrorHandler() {
+		return database.getBackgroundErrorHandler();
 	}
 	
 	protected Inserter configureTable(String name,  int bufferLength, int bufferWidth) throws SQLException {

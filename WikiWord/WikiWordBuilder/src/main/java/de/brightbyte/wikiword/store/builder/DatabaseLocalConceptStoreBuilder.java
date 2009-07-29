@@ -1342,12 +1342,14 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	@Override
 	protected DatabaseConceptInfoStoreBuilder<LocalConcept> newConceptInfoStoreBuilder() throws SQLException {
 		ConceptInfoStoreSchema schema = new ConceptInfoStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), true, tweaks, false, true);
+		schema.setBackgroundErrorHandler(database.getBackgroundErrorHandler());
 		return new DatabaseLocalConceptInfoStoreBuilder(schema, tweaks, getAgenda());
 	}
 
 	@Override
 	protected DatabaseStatisticsStoreBuilder newStatisticsStoreBuilder() throws SQLException {
 		StatisticsStoreSchema schema = new LocalStatisticsStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), tweaks, false); 
+		schema.setBackgroundErrorHandler(database.getBackgroundErrorHandler());
 		return new DatabaseLocalStatisticsStoreBuilder(schema, tweaks, getAgenda());
 	}
 

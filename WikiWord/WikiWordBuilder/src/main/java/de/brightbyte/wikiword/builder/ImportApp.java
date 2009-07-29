@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Agenda.Monitor;
+import de.brightbyte.db.DatabaseTask;
 import de.brightbyte.io.Prompt;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.StoreBackedApp;
@@ -14,6 +15,7 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.store.WikiWordStore;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.DatabaseConceptStoreBuilders;
+import de.brightbyte.wikiword.store.builder.DatabaseWikiWordStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
@@ -36,7 +38,7 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 	protected Operation operation = null;
 	private Monitor agendaMonitor;
 	protected  String[] baseTasks  = new String[] {};
-	protected InputFileHelper inputHelper;	
+	protected InputFileHelper inputHelper;
 	
 	public ImportApp(String agendaTask, boolean allowGlobal, boolean allowLocal) { //TODO: agenda-params!
 		super(allowGlobal, allowLocal);
@@ -267,6 +269,10 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 
 	protected void createStores(WikiWordStoreFactory<? extends S> factory) throws IOException, PersistenceException {
 		super.createStores(factory);
+		
+		if (conceptStore instanceof DatabaseWikiWordStoreBuilder) {
+			((DatabaseWikiWordStoreBuilder)conceptStore).setBackgroundErrorHandler(new FatalBackgroundErrorHandler<Runnable, Throwable, Error>());
+		}
 		
 		boolean noimport = args.isSet("noimport");
 

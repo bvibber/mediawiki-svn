@@ -17,7 +17,7 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		super(agendaTask, false, true);
 	}
 
-	private URL dumpFile;
+	protected URL dumpFile;
 
 	@Override
 	protected boolean applyArguments() {
@@ -107,7 +107,7 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		
 		///////////////////////// main import run ////////////////////////////////////
 		if (agenda.beginTask("ImportDump.run", "analysis")) {
-			DataSourceDriver driver = new XmlDumpDriver(getDumpFileURL(), inputHelper, getLogOutput(), tweaks);
+			DataSourceDriver driver = new XmlDumpDriver(getDumpFileURL(), inputHelper, getLogOutput(), new FatalBackgroundErrorHandler<XmlDumpDriver, Throwable, RuntimeException>(), tweaks);
 			
 			importer.reset();
 			importer.prepare();

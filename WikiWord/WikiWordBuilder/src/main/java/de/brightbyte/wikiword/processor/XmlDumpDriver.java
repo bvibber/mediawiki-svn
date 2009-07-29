@@ -17,6 +17,7 @@ import org.mediawiki.importer.XmlDumpReader;
 
 import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.job.BlockingJobQueue;
+import de.brightbyte.util.ErrorHandler;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
@@ -33,6 +34,7 @@ public class XmlDumpDriver implements DataSourceDriver {
 	protected InputStream in;
 	protected TweakSet tweaks;
 	protected LeveledOutput log;
+	protected ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler;
 
 	protected class Sink implements DumpWriter {
 		
@@ -145,9 +147,8 @@ public class XmlDumpDriver implements DataSourceDriver {
 							try {
 								importPage(p, r);
 							} catch (Throwable e) {
-								log.error("exception while processing page `"+p.Title.toString()+"` (id="+p.Id+", rev="+r.Id+", date="+r.Timestamp.getTime()+")", e);
-								error = e;
 								executor.shutdownNow();
+								handleImportError("exception while processing page `"+p.Title.toString()+"` (id="+p.Id+", rev="+r.Id+", date="+r.Timestamp.getTime()+")", e);
 								
 								if (e instanceof Error) throw (Error)e;
 							} 
@@ -197,24 +198,29 @@ public class XmlDumpDriver implements DataSourceDriver {
 			importer.handlePage(page.Id, page.Title.Namespace, page.Title.Text, revision.Text, revision.Timestamp.getTime());
 		}
 		
+		protected void handleImportError(String message, Throwable e) {
+			error = e;
+			if (errorHandler!=null) errorHandler.handleError(XmlDumpDriver.this, message, e);
+			else log.error(message, e);
+		}
 	}
 	
-	public XmlDumpDriver(URL dump, InputFileHelper inputHelper, LeveledOutput log, TweakSet tweaks) {
+	public XmlDumpDriver(URL dump, InputFileHelper inputHelper, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
 		if (dump==null) throw new NullPointerException();
 		this.dump= dump;
-		init(inputHelper, log, tweaks);
+		init(inputHelper, log, errorHandler, tweaks);
 	}
 	
-	public XmlDumpDriver(InputStream in, LeveledOutput log, TweakSet tweaks) {
+	public XmlDumpDriver(InputStream in, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
 		if (in==null) throw new NullPointerException();
 		this.in= in;
-		init(null, log, tweaks);
+		init(null, log, errorHandler, tweaks);
 	}
 	
 	private int importQueueCapacity = 0;
 	private InputFileHelper inputHelper;
 	
-	private void init(InputFileHelper inputHelper, LeveledOutput log, TweakSet tweaks) {
+	private void init(InputFileHelper inputHelper, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
 		if (log==null) throw new NullPointerException();
 		if (tweaks==null) throw new NullPointerException();
 		if (inputHelper==null && in==null) throw new NullPointerException();
@@ -222,6 +228,7 @@ public class XmlDumpDriver implements DataSourceDriver {
 		this.tweaks = tweaks;
 		this.log = log;
 		this.inputHelper = inputHelper;
+		this.errorHandler = errorHandler;
 		
 		importQueueCapacity = tweaks.getTweak("dumpdriver.pageImportQueue", 8);
 	}
@@ -243,4 +250,5 @@ public class XmlDumpDriver implements DataSourceDriver {
 				sink.close(); //NOTE: make sure the executor queue is terminated
 			}
 	}
+		
 }

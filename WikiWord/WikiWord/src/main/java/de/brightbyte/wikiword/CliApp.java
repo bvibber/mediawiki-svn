@@ -16,6 +16,7 @@ import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.io.LogOutput;
 import de.brightbyte.io.Output;
+import de.brightbyte.util.ErrorHandler;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.SystemUtils;
 import de.brightbyte.wikiword.rdf.WikiWordIdentifiers;
@@ -25,6 +26,20 @@ import de.brightbyte.wikiword.rdf.WikiWordIdentifiers;
  */
 public abstract class CliApp {
 	
+	public class FatalBackgroundErrorHandler<T, X extends Throwable, Y extends Throwable> implements
+			ErrorHandler<T, X, Y> {
+		
+		public void handleError(T context, String message, X error) throws Y {
+			String m = message;
+			if (context!=null) m = m + " ("+context+")";
+			
+			out.error(m, error);
+			
+			terminate();
+		}
+
+	}
+
 	public static final String VERSION_INFO = "WikiWord by Daniel Kinzler, brightbyte.de, 2007-2009";
 	public static final String LICENSE_INFO = "Originally created at the University of Leipzig,\n\tdevelopment supported by Wikimedia Deutschland.\n\tFree Software, GNU LGPL. See COPYING for details.";
 	
@@ -415,4 +430,8 @@ public abstract class CliApp {
 		return exitCode;
 	}
 	
+	protected void terminate() {
+		info("exiting application");
+		exit(55);
+	}
 }

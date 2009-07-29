@@ -40,14 +40,14 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 	}
 	
 	public DatabaseTextStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException, PersistenceException {
-		this(new LocalConceptStoreSchema(conceptStore.getCorpus(), 
-						conceptStore.getDatabaseAccess().getConnection(), 
-						tweaks, true), 
+		this((LocalConceptStoreSchema)conceptStore.getDatabaseAccess(), 
 				new TextStoreSchema(conceptStore.getCorpus(), 
 						conceptStore.getDatabaseAccess().getConnection(), 
 						tweaks, true), 
 				tweaks,
 				conceptStore.getAgenda());
+		
+		database.setBackgroundErrorHandler(conceptStore.getDatabaseAccess().getBackgroundErrorHandler());
 	}
 	
 	protected DatabaseTextStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, TextStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
