@@ -7,8 +7,6 @@ import java.util.Set;
 
 import de.brightbyte.application.Arguments;
 import de.brightbyte.data.MultiMap;
-import de.brightbyte.data.cursor.CursorProcessor;
-import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.ConceptType;
@@ -18,10 +16,8 @@ import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.processor.ImportProgressTracker;
 import de.brightbyte.wikiword.schema.AliasScope;
-import de.brightbyte.wikiword.schema.ConceptStoreSchemas;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
@@ -50,16 +46,9 @@ public class ConceptImporter extends AbstractImporter {
 	}
 	
 	@Override
-	public void prepare() throws PersistenceException {
-		store.prepareImport();
-		if (storeProperties) propertyStore.prepareImport();
-		if (storeFlatText || storeRawText) textStore.prepareImport();
-	}
-	
-	@Override
 	public void finish() throws PersistenceException {
 		if (beginTask("ConceptImporter.finish", "finishImport")) {
-			store.finalizeImport();
+			store.preparePostProcessing();
 			endTask("ConceptImporter.finish", "finishImport");
 		}
 		
@@ -98,11 +87,13 @@ public class ConceptImporter extends AbstractImporter {
 			endTask("ConceptImporter.finish", "finishRelations");
 		}
 				
+		/*
 		if (beginTask("ConceptImporter.finish", "buildTermsForMissingConcepts")) {
 			if (getAgenda().isTaskDirty()) resetTermsForMissingConcepts();
 			buildTermsForMissingConcepts();
 			endTask("ConceptImporter.finish", "buildTermsForMissingConcepts");
 		}
+		*/
 		
 		if (beginTask("ConceptImporter.finish", "finishMeanings")) {
 			store.finishMeanings();
@@ -142,6 +133,9 @@ public class ConceptImporter extends AbstractImporter {
 		}
 	}
 	
+	/*
+	 * this is broken, because finalizeImport kills the inserters.
+	 * the logic is dubious anyway
 	protected void buildTermsForMissingConcepts() throws PersistenceException {
 		if (!analyzer.isInitialized()) { //XXX: ugly hack!
 			analyzer.initialize(Namespace.canonicalNamespaces, true);
@@ -170,7 +164,8 @@ public class ConceptImporter extends AbstractImporter {
 		
 		store.processUnknownConcepts(p);
 	}
-
+	*/
+	
 	protected void resetTermsForMissingConcepts() throws PersistenceException {
 		store.resetTermsForUnknownConcepts();
 	}
@@ -259,7 +254,7 @@ public class ConceptImporter extends AbstractImporter {
 		String rcName = analyzerPage.getResourceName();
 		String text = analyzerPage.getText().toString();
 		//int namespace = analyzerPage.getNamespace();
-		String title = analyzerPage.getTitle().toString();
+		//String title = analyzerPage.getTitle().toString();
 		
 		//TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
 		int rcId = storeResource(rcName, rcType, timestamp);

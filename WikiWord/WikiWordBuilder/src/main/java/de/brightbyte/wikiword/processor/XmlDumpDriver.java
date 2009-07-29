@@ -240,6 +240,8 @@ public class XmlDumpDriver implements DataSourceDriver {
 				if (in==null) in = inputHelper.openURL(dump);
 				XmlDumpReader reader = new XmlDumpReader(in, sink);
 				
+				importer.beforePages();
+				
 				reader.readDump();
 							
 				importer.afterPages();

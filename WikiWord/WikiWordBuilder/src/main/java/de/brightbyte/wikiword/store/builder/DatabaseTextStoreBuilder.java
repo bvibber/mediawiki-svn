@@ -4,15 +4,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import de.brightbyte.application.Agenda;
-import de.brightbyte.data.PersistentIdManager;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.Inserter;
-import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.TextStoreSchema;
 

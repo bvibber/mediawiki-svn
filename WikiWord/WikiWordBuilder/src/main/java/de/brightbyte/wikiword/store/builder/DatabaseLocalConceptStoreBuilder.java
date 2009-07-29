@@ -155,18 +155,6 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		if (seed>0) random = new Random(seed);
 		else random = new Random();
 		
-		if (tweaks.getTweak("dbstore.idManager", false)) {
-			String dir = tweaks.getTweak("dbstore.auxFileDir", SystemUtils.getPropertySafely("java.io.temp", "/tmp"));
-			String pfx = database.getTablePrefix();
-			String db = database.getConnection().getMetaData().getURL().replaceAll("\\?.*$", "").replaceAll("[.:/\\@&;=!]+", "_");
-			File f = new File(dir+"/wikiword."+db+"."+pfx+".ids");
-			
-			int bsz = tweaks.getTweak("dbstore.idManager.bufferSize", 16*1024);
-			
-			Map<String, Integer> map = NameMaps.newMap();
-			idManager = new PersistentIdManager(map, f, "UTF-8", bsz);
-		}
-		
 		/*
 		Inserter conceptDescriptionInserter = configureTable("concept_description", 64, 1024);
 		conceptDescriptionTable = (EntityTable)conceptDescriptionInserter.getTable();
@@ -175,30 +163,46 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	
 	@Override
 	public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
+		if (tweaks.getTweak("dbstore.idManager", false)) {
+			try {
+				String dir = tweaks.getTweak("dbstore.auxFileDir", SystemUtils.getPropertySafely("java.io.temp", "/tmp"));
+				String pfx = database.getTablePrefix();
+				String db = database.getConnection().getMetaData().getURL().replaceAll("\\?.*$", "").replaceAll("[.:/\\@&;=!]+", "_");
+				File f = new File(dir+"/wikiword."+db+"."+pfx+".ids");
+				
+				int bsz = tweaks.getTweak("dbstore.idManager.bufferSize", 16*1024);
+				
+				Map<String, Integer> map = NameMaps.newMap();
+				idManager = new PersistentIdManager(map, f, "UTF-8", bsz);
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
+		}
+
 		if (purge) {
 			if (idManager!=null) idManager.clear(); 
-		}
-		else {
-			//FIXME: should fail if we are continuing a previous import, but the file doesn't exist.
-			//FIXME: should fail on partial load
-			//XXX: could probably be skipped if continuing at a stage after dump reading
-			if (idManager!=null) {
-				if (idManager.fileExists()) {
-					log("loading persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
-					idManager.load(); 
-					log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
-				} else {
-					log("building persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
-					DataCursor<Pair<String, Integer>> cursor = getConceptIdCursor();
-					idManager.slurp(cursor);
-					cursor.close();
-					log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
-				}
-			}
 		}
 		
 		super.initialize(purge, dropAll);
 	}	
+	
+	protected void loadIdManager() throws PersistenceException {
+		//FIXME: should fail on partial load
+		//XXX: could probably be skipped if continuing at a stage after dump reading
+		if (idManager!=null) {
+			if (idManager.fileExists()) {
+				log("loading persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+				idManager.load(); 
+				log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+			} else {
+				log("building persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+				DataCursor<Pair<String, Integer>> cursor = getConceptIdCursor();
+				idManager.slurp(cursor);
+				cursor.close();
+				log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+			}
+		}
+	}
 	
 	protected DataCursor<Pair<String, Integer>> getConceptIdCursor() throws PersistenceException {
 		final boolean binaryText = database.getHints().getHint(MySqlDialect.HINT_USE_BINARY_TEXT, false);
@@ -561,40 +565,74 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	 * @throws PersistenceException 
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#prepareImport()
 	 */
-	public void prepareImport() throws PersistenceException, PersistenceException {
-		if (getAgenda().beginTask("DatabaseLocalConceptStore.prepare", "prepare")) {
-			try {
+	public void prepareImport() throws PersistenceException {
+		if (idManager!=null) loadIdManager();
+
+		try {
 				database.disableKeys();
-				getAgenda().endTask("DatabaseLocalConceptStore.prepare", "prepare");
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+
+		if (propertyStore!=null) {
+			propertyStore.prepareImport();
+		}
+		
+		if (textStore!=null) {
+			textStore.prepareImport();
 		}
 	}
 	
 	public void finalizeImport() throws PersistenceException {
-		if (idManager!=null) { //delete temporary ID file
-			idManager.deleteFile();
+		if (idManager!=null) { 
+			idManager.deleteFile(); //delete temporary ID file
+			idManager = null;  //release id buffer memory
 		}
 		
+		flush();
+		
+		closeInserters(); //kill inserters and their internal buffers
+		
+		try {
+			database.joinExecutor(true); //kill background flush workers
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		} catch (InterruptedException e) {
+			//ignore
+		}  
+		
+		Runtime.getRuntime().gc(); //run garbage collection
+
+		if (propertyStore!=null && beginTask("finalizeImport", "propertyStore.finalizeImport")) {
+			propertyStore.finalizeImport();
+			endTask("finalizeImport", "propertyStore.finalizeImport");
+		}
+		
+		if (textStore!=null && beginTask("finalizeImport", "textStore.finalizeImport")) {
+			textStore.finalizeImport();
+			endTask("finalizeImport", "textStore.finalizeImport");
+		}
+	}
+		
+	public void preparePostProcessing() throws PersistenceException {
 		try {
 			flush();
-			if (beginTask("DatabaseLocalConceptStore.finishImport", "enableKeys")) {
+			if (beginTask("DatabaseLocalConceptStore.preparePostProcessing", "enableKeys")) {
 				database.enableKeys();
-				endTask("DatabaseLocalConceptStore.finishImport", "enableKeys");
+				endTask("DatabaseLocalConceptStore.preparePostProcessing", "enableKeys");
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		} 
 
-		if (propertyStore!=null && beginTask("finishAliases", "propertyStore.finalizeImport")) {
-			propertyStore.finalizeImport();
-			endTask("finishAliases", "propertyStore.finalizeImport");
+		if (propertyStore!=null && beginTask("preparePostProcessing", "propertyStore.preparePostProcessing")) {
+			propertyStore.preparePostProcessing();
+			endTask("preparePostProcessing", "propertyStore.preparePostProcessing");
 		}
 		
-		if (textStore!=null && beginTask("finishAliases", "textStore.finalizeImport")) {
-			textStore.finalizeImport();
-			endTask("finishAliases", "textStore.finalizeImport");
+		if (textStore!=null && beginTask("preparePostProcessing", "textStore.preparePostProcessing")) {
+			textStore.preparePostProcessing();
+			endTask("preparePostProcessing", "textStore.preparePostProcessing");
 		}
 	}
 	
@@ -1064,8 +1102,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		//FIXME: sometimes, this is very slow. running the alias query first seems to help. odd :(
 		String sql = "DELETE FROM "+table.getSQLName()
 					+" USING "+table.getSQLName()
+						+ ( index==null ? "" :  " force index( "+index+" ) " )
 						+" JOIN "+conceptTable.getSQLName()
-						+ ( index==null ? "" :  "force index( "+index+" )" )
 							+" ON "+table.getSQLName()+"."+conceptIdField+" = "+conceptTable.getSQLName()+"."+tgtField.getName();
 		String where = " WHERE "+conceptTable.getSQLName()+".type IN " + bad;
 

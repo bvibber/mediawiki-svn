@@ -140,6 +140,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			return dataset;
 		}
 		
+		public void preparePostProcessing() throws PersistenceException {
+			log("* preparePostProcessing *");
+		}
+		
 	}
 
 	public class DebugPropertyStoreBuilder implements PropertyStoreBuilder {
@@ -235,7 +239,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		public DatasetIdentifier getDatasetIdentifier() {
 			return dataset;
 		}
-		
+	
+		public void preparePostProcessing() throws PersistenceException {
+			log("* preparePostProcessing *");
+		}
 	}
 	
 	public class DebugStatisticsStoreBuilder implements StatisticsStoreBuilder {
@@ -325,7 +332,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		public DatasetIdentifier getDatasetIdentifier() {
 			return dataset;
 		}
-		
+
 	}
 
 	public class DebugConceptInfoStoreBuilder implements
@@ -742,4 +749,8 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		return dataset;
 	}
 	
+	public void preparePostProcessing() throws PersistenceException {
+		log("* preparePostProcessing *");
+	}
+		
 }

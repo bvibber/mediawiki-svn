@@ -39,13 +39,28 @@ public abstract class DatabaseIncrementalStoreBuilder extends DatabaseWikiWordSt
 		}
 	}
 	
-	@Override
 	public void finalizeImport() throws PersistenceException {
+		flush();
+		
+		closeInserters(); //kill inserters and their internal buffers
+		
+		try {
+			database.joinExecutor(true); //kill background flush workers
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		} catch (InterruptedException e) {
+			//ignore
+		}  
+		
+		Runtime.getRuntime().gc(); //run garbage collection
+	}
+	
+	public void preparePostProcessing() throws PersistenceException {
 		try {
 			flush();
-			if (beginTask("DatabaseLocalConceptStore.finishImport", "enableKeys")) {
+			if (beginTask("DatabaseLocalConceptStore.preparePostProcessing", "enableKeys")) {
 				database.enableKeys();
-				endTask("DatabaseLocalConceptStore.finishImport", "enableKeys");
+				endTask("DatabaseLocalConceptStore.preparePostProcessing", "enableKeys");
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e);

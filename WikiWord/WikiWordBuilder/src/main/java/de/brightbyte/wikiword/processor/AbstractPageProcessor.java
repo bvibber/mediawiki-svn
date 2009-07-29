@@ -301,9 +301,13 @@ public abstract class AbstractPageProcessor implements WikiWordPageProcessor {
 	}
 
 	public void prepare() throws PersistenceException {
-		//store.prepare(purge, dropAll);
+		//noop
 	}
 
+	public void beforePages() throws PersistenceException {
+		//noop		
+	}
+	
 	public void afterPages() throws PersistenceException {
 		trackerChunk();		
 	}

@@ -127,13 +127,17 @@ public class DatabaseWikiWordStoreBuilder
 	public void close(boolean flush) throws PersistenceException {
 			if (flush) flush();
 			
-			for (Inserter inserter: inserters.values()) {
-				inserter.close();
-			}
-			
-			inserters.clear();
+			closeInserters();
 
 			super.close(flush);
+	}
+	
+	protected void closeInserters() {
+		for (Inserter inserter: inserters.values()) {
+			inserter.close();
+		}
+		
+		inserters.clear();
 	}
 
 	@Override
@@ -539,12 +543,12 @@ public class DatabaseWikiWordStoreBuilder
 		return executeChunkedUpdate("buildIdLinks", table.getName()+"."+relNameField, sql, where, target, targetIdField, chunkFactor);
 	}
 
-	public void finalizeImport() throws PersistenceException {
-		flush();
-	}
-
 	public void prepareImport() throws PersistenceException {
 		//noop
+	}
+
+	public void finalizeImport() throws PersistenceException {
+		flush();
 	}
 	
 }

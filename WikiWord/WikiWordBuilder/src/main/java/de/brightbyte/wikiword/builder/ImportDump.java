@@ -110,8 +110,12 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 			DataSourceDriver driver = new XmlDumpDriver(getDumpFileURL(), inputHelper, getLogOutput(), new FatalBackgroundErrorHandler<XmlDumpDriver, Throwable, RuntimeException>(), tweaks);
 			
 			importer.reset();
-			importer.prepare();
 
+			if (agenda.beginTask("runImport", "prepare")) {
+				importer.prepare();
+				agenda.endTask("runImport", "prepare");
+			}
+			
 			if (agenda.beginTask("runImport", "readDump")) {
 				driver.run(importer);
 				agenda.endTask("runImport", "readDump");

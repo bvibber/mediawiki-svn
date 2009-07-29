@@ -63,7 +63,14 @@ public interface WikiWordPageProcessor {
 	//public boolean shouldRunAnalyze() throws PersistenceException;
 
 	/**
-	 * called after the last calle to handlePage, but before finish; should flush/close/finish all
+	 * called before the first call to handlePage, but after prepare; should create/initialize any
+	 * resources needed for importing individual pages. 
+	 * @throws PersistenceException 
+	 */
+	public void beforePages() throws PersistenceException;
+
+	/**
+	 * called after the last call to handlePage, but before finish; should flush/close/finish all
 	 * resources needed for importing individual pages. 
 	 * @throws PersistenceException 
 	 */

@@ -11,7 +11,7 @@ public interface WikiWordStoreBuilder extends WikiWordStore {
 
 	public abstract void prepareImport() throws PersistenceException;
 	public void finalizeImport() throws PersistenceException;
-	
+
 	public abstract void close(boolean flush) throws PersistenceException;
 
 	public abstract void open() throws PersistenceException;

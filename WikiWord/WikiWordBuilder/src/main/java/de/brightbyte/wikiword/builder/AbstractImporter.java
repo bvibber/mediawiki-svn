@@ -41,11 +41,17 @@ public abstract class AbstractImporter extends AbstractPageProcessor implements 
 		this.safepointInterval = safepointInterval;
 	}
 
+	public void beforePages() throws PersistenceException {
+		super.beforePages();
+		store.prepareImport();
+	}
+	
 	public void afterPages() throws PersistenceException {
 		super.afterPages();
 		flushSafepoint("handlePage");
+		store.finalizeImport();
+		memoryTrackerChunk();
 	}
-	
 	
 	protected void flush() throws PersistenceException {
 		store.flush();

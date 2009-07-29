@@ -146,7 +146,7 @@ public class PropertyImporter extends ConceptImporter {
 		boolean resolveIdsFirst = buildConcepts ? true : false;
 		
 		if (beginTask("PropertyImporter.finish", "finishImport")) {
-			store.finalizeImport();
+			store.preparePostProcessing();
 			endTask("PropertyImporter.finish", "finishImport");
 		}
 		
