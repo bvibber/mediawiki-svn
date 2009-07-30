@@ -1,9 +1,9 @@
--- --------------------------------------------------------
 
 --
 -- Table structure for table `wah_jobqueue`
 --
 
+DROP TABLE IF EXISTS `wah_jobqueue`;
 CREATE TABLE IF NOT EXISTS `wah_jobqueue` (
   `job_id` int(12) unsigned NOT NULL auto_increment,
   `job_set_id` int(12) unsigned NOT NULL,
@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `wah_jobqueue` (
 -- Table structure for table `wah_jobset`
 --
 
+DROP TABLE IF EXISTS `wah_jobset`;
 CREATE TABLE IF NOT EXISTS `wah_jobset` (
   `set_id` int(10) unsigned NOT NULL auto_increment,
   `set_namespace` int(11) default NULL,
