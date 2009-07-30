@@ -80,12 +80,14 @@ function efMultiBoilerplate( $form ) {
 		$options = '';
 		$things = explode( "\n", str_replace( "\r", "\n", str_replace( "\r\n", "\n", $things ) ) ); // Ensure line-endings are \n
 		foreach( $things as $row ) {
-			$row = ltrim( $row, '* ' ); // Remove the asterix (and a space if found) from the start of the line.
-			$row = explode( '|', $row );
-			if( !isset( $row[ 1 ] ) ) return true; // Invalid syntax, abort.
-			$selected = false;
-			if( $wgRequest->getVal( 'boilerplate' ) == $row[ 1 ] ) $selected = true;
-			$options .= Xml::option( $row[ 0 ], $row[ 1 ], $selected );
+			if ( substr( ltrim( $row ), 0, 1)==="*" ) {
+				$row = ltrim( $row, '* ' ); // Remove the asterix (and a space if found) from the start of the line.
+				$row = explode( '|', $row );
+				if( !isset( $row[ 1 ] ) ) return true; // Invalid syntax, abort.
+				$selected = false;
+				if( $wgRequest->getVal( 'boilerplate' ) == $row[ 1 ] ) $selected = true;
+				$options .= Xml::option( $row[ 0 ], $row[ 1 ], $selected );
+			}
 		}
 	}
 
