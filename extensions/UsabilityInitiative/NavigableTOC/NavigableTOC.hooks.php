@@ -23,9 +23,6 @@ class NavigableTOCHooks {
 		UsabilityInitiativeHooks::addScript(
 			'NavigableTOC/NavigableTOC.js', $wgNavigableTOCStyleVersion
 		);
-		UsabilityInitiativeHooks::addScript(
-			'Resources/jquery.wikiOutline.js', $wgNavigableTOCStyleVersion
-		);
 		UsabilityInitiativeHooks::addStyle(
 			'NavigableTOC/NavigableTOC.css', $wgNavigableTOCStyleVersion
 		);
