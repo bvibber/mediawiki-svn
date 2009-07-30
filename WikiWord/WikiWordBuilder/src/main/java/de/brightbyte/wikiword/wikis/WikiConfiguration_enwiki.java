@@ -69,9 +69,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("\\{\\{\\s*Auto[ _](.+?)\\s*\\|\\s*(.*?)(\\|.*?)?\\s*\\}\\}", "$1 $2", Pattern.CASE_INSENSITIVE));
 		*/
 		
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth[-_ ]date|BrithDate|Dob|Age|Birth[_ ]date[_ ]and[_ ]age|BirthDateAndAge|Bda", 3, true), "$2-$3-$4" ) );
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[_ ]date[_ ]and[_ ]age|DeathDateAndAge|Dda", 6, true), "$2-$3-$4 &ndash; $5-$6-$7" ) );
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[-_ ]date|DeathDate|Dod", 3, true), "$2-$3-$4" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth[-_ ]date|BrithDate|Bday|Dob|Age|Birth[-_ ]date[_ ]and[_ ]age|BirthDateAndAge|Bda", 3, true, true), "$2-$3-$4" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[-_ ]date[_ ]and[_ ]age|DeathDateAndAge|Dda", 6, true, true), "$2-$3-$4 &ndash; $5-$6-$7" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[-_ ]date|DeathDate|Dod", 3, true, true), "$2-$3-$4" ) );
 		
 		stripClutterManglers.add( new RegularExpressionMangler("^"+templatePatternString("wrapper", 0, true), "{|", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 		stripClutterManglers.add( new RegularExpressionMangler("^"+templatePatternString("end|col-end", 0, true), "|}", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));

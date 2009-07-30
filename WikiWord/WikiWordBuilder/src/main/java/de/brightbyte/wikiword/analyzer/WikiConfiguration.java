@@ -566,7 +566,11 @@ public class WikiConfiguration {
 	 * @param more if true, the template is allowed to have more parameters, which are hoewever not captured.
 	 */
 	public static Pattern templatePattern(String name, int params, boolean more) {
-		String s = templatePatternString(name, params, more);
+		return templatePattern(name, params, more, false);
+	}
+	
+	public static Pattern templatePattern(String name, int params, boolean more, boolean stripNamedParams) {
+		String s = templatePatternString(name, params, more, stripNamedParams);
 		return Pattern.compile(s, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 	}
 	
@@ -580,13 +584,17 @@ public class WikiConfiguration {
 	 * @param more if true, the template is allowed to have more parameters, which are hoewever not captured.
 	 */
 	public static String templatePatternString(String name, int params, boolean more) {
+		return templatePatternString(name, params, more, false);
+	}
+	
+	public static String templatePatternString(String name, int params, boolean more, boolean stripNamedParams) {
 		String s = "\\{\\{\\s*";
-		s+= "("+name+")";
+		s+= "("+name+")\\s*";
 		
-		s+= "(?:\\s*\\|[^|=]*?=[^|]*?\\s*)*";
+		if (stripNamedParams) s+= "(?:\\s*\\|[^|={}]*=[^|{}]*\\s*)*";
 		
 		for (int i=0; i<params; i++){
-			s+= "\\|([^|=]*?)\\s*";
+			s+= "\\|([^|={}]*)\\s*";
 		}
 		
 		if (more) s+= "(\\s*\\|.*?)?";
