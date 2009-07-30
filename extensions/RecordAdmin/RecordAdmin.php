@@ -76,7 +76,8 @@ function wfSetupRecordAdmin() {
 		$res   = $dbr->select( $cl, 'cl_from', "cl_to = $cat" );
 		while ( $row = $dbr->fetchRow( $res ) ) $types[] = 'tl_title = ' . $dbr->addQuotes( Title::newFromID( $row[0] )->getText() );
 		$dbr->freeResult( $res );
-		if ( $uses = join( ' OR ', $types ) && $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND ($uses)" ) ) {
+		$uses = join( ' OR ', $types );
+		if ( $uses && $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND ($uses)" ) ) {
 			global $wgRecordAdminActionUrl;
 			$wgHooks['SkinTemplateTabs'][] = 'wfRecordAdminEditWithForm';
 			$type = $row->tl_title;
