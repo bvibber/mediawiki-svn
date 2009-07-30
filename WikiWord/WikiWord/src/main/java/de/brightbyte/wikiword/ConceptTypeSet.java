@@ -24,12 +24,12 @@ public class ConceptTypeSet implements Iterable<ConceptType> {
 	}
 	
 	public void addType(ConceptType type) {
-		ConceptType tt = getType(type.getCode());
+		ConceptType tt = checkType(type.getCode());
 		if (tt!=null && !tt.getName().equals(type.getName())) {
 			throw new IllegalArgumentException("conflicting ConceptType code #"+type.getCode()+": defined as '"+tt.getName()+"', can not redefine as '"+type.getName()+"'");
 		}
 
-		tt = getType(type.getName());
+		tt = checkType(type.getName());
 		if (tt!=null && tt.getCode()!=type.getCode()) {
 			throw new IllegalArgumentException("conflicting ConceptType name '"+type.getName()+"': defined as #"+tt.getCode()+", can not redefine as #"+type.getCode());
 		}
@@ -39,11 +39,25 @@ public class ConceptTypeSet implements Iterable<ConceptType> {
 	}
 
 	public ConceptType getType(int code) {
-		return byCode.get(code);
+		ConceptType type = byCode.get(code);
+		if (type==null) throw new IllegalArgumentException("unknown concept type code: "+code);
+		return type;
 	}
 
 	public ConceptType getType(String name) {
-		return byName.get(name);
+		ConceptType type = byName.get(name);
+		if (type==null) throw new IllegalArgumentException("unknown concept type name: "+name);
+		return type;
+	}
+	
+	protected ConceptType checkType(int code) {
+		ConceptType type = byCode.get(code);
+		return type;
+	}
+
+	protected ConceptType checkType(String name) {
+		ConceptType type = byName.get(name);
+		return type;
 	}
 	
 	public Iterator<ConceptType> iterator() {

@@ -798,7 +798,10 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getConceptType()
 		 */
 		public ConceptType getConceptType() {
-			if (conceptType==null) conceptType = determineConceptType(this);
+			if (conceptType==null) {
+				conceptType = determineConceptType(this);
+				if (conceptType==null) throw new RuntimeException("failed to determin concept type for "+getResourceName()+" (rcType: "+getResourceType()+")");
+			}
 			return conceptType;
 		}
 

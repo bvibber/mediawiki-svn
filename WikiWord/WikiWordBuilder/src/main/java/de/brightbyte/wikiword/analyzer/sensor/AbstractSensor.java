@@ -9,7 +9,7 @@ public abstract class AbstractSensor<V> implements Sensor<V> {
 	protected V value;
 	
 	public AbstractSensor(V value) {
-		super();
+		if (value==null) throw new IllegalArgumentException("value must not be null");
 		this.value = value;
 	}
 

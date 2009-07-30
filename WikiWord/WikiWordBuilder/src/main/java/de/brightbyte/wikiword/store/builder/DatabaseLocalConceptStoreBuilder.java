@@ -336,7 +336,9 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	 */
 	public int storeConcept(int rcId, String name, ConceptType ctype) throws PersistenceException {
 		try {
-			if (rcId<0) throw new IllegalArgumentException("bad resource id "+rcId);
+			if (rcId<0) throw new IllegalArgumentException("bad resource id "+rcId+" for concept "+name);
+			if (ctype==null) throw new IllegalArgumentException("null type for for concept "+name+" (rc="+rcId+")");
+			
 			name = checkName(rcId, name, "concept name (resource #{0})", rcId);
 			
 			int id = -1;
