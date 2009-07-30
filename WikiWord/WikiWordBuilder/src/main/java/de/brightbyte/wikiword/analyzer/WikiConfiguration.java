@@ -583,6 +583,8 @@ public class WikiConfiguration {
 		String s = "\\{\\{\\s*";
 		s+= "("+name+")";
 		
+		s+= "(?:\\s*\\|[^|=]*?=[^|]*?\\s*)*";
+		
 		for (int i=0; i<params; i++){
 			s+= "\\|([^|=]*?)\\s*";
 		}

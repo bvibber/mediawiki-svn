@@ -17,10 +17,15 @@ public class RegularExpressionMangler implements Mangler {
 	
 	public RegularExpressionMangler(Pattern pattern, String replacement) {
 		super();
+		if (pattern.pattern().equals("") || pattern.pattern().equals("[]")) throw new IllegalArgumentException("empty pattern");
 		this.matcher = pattern.matcher("");
 		this.replacement = replacement;
 	}
 
+	public String toString() {
+		return matcher.pattern().pattern().toString()+" -> \""+replacement+"\"";
+	}
+	
 	public CharSequence mangle(CharSequence text) {
 		matcher.reset(text);
 		return matcher.replaceAll(replacement);

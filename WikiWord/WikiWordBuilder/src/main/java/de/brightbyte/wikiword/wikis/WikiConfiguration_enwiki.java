@@ -5,16 +5,13 @@ import java.util.regex.Pattern;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
-import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterValueExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
-import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategorySensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateSensor;
 import de.brightbyte.wikiword.analyzer.sensor.TitleSensor;
-import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
 
 public class WikiConfiguration_enwiki extends WikiConfiguration {
 
@@ -72,6 +69,10 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("\\{\\{\\s*Auto[ _](.+?)\\s*\\|\\s*(.*?)(\\|.*?)?\\s*\\}\\}", "$1 $2", Pattern.CASE_INSENSITIVE));
 		*/
 		
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth[-_ ]date|BrithDate|Dob|Age|Birth[_ ]date[_ ]and[_ ]age|BirthDateAndAge|Bda", 3, true), "$2-$3-$4" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[_ ]date[_ ]and[_ ]age|DeathDateAndAge|Dda", 6, true), "$2-$3-$4 &ndash; $5-$6-$7" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[-_ ]date|DeathDate|Dod", 3, true), "$2-$3-$4" ) );
+		
 		stripClutterManglers.add( new RegularExpressionMangler("^"+templatePatternString("wrapper", 0, true), "{|", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 		stripClutterManglers.add( new RegularExpressionMangler("^"+templatePatternString("end|col-end", 0, true), "|}", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 
@@ -85,9 +86,6 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("0", 0, true), " "));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("\u00b7|moddot|dot", 0, false), "\u00b7"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("spaces", 1, true), " "));
-
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth[-_]date|BrithDate|Dob|Death_date_and_age|DeathDateAndAge|Bda", 1, true), "[[Category:$2_births]]" ) );
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[-_]date|DeathDate|Dod", 1, true), "[[Category:$2_deaths]]" ) );
 		
 		stripClutterManglers.add( new RegularExpressionMangler(
 			templatePattern(
@@ -118,7 +116,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				, 1, true), "$2"));
 		
 		stripClutterManglers.add( new RegularExpressionMangler(
-				templatePattern("audio", 2, true), "$3") );
+				templatePattern("audio|fontcolor", 2, true), "$3") );
 		
 		//HACK for implied sort key and categories for people
 		stripClutterManglers.add( new RegularExpressionMangler(
