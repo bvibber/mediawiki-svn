@@ -70,18 +70,19 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new DefaultTemplateParameterPropertySpec("citizenship", "person-nationality").setStripMarkup(true)
 			) );
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Birth_date|BrithDate", 0, true),
+		/* note: converted to category links by stripClutter!
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Birth_date|BrithDate|Dob", 0, true),
 				new DefaultTemplateParameterPropertySpec("1", "person-birth-date").setStripMarkup(true)
 				) );
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Death_date|DeathDate", 0, true),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Death_date|DeathDate|Dod", 0, true),
 				new DefaultTemplateParameterPropertySpec("1", "person-death-date").setStripMarkup(true)
 				) );
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Death_date_and_age|DeathDateAndAge", 0, true),
-				new DefaultTemplateParameterPropertySpec("1", "person-death-date").setStripMarkup(true),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Death_date_and_age|DeathDateAndAge|Bda", 0, true),
 				new DefaultTemplateParameterPropertySpec("1", "person-birth-date").setStripMarkup(true)
 				) );
+		*/
 		
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Medical_Person"),
 				new DefaultTemplateParameterPropertySpec("profession", "person-occupation").setStripMarkup(true).setSplitPattern(defaultSplitPattern),

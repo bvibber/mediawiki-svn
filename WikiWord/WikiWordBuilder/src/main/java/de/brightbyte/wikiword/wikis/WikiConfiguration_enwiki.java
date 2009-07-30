@@ -5,13 +5,16 @@ import java.util.regex.Pattern;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
+import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterValueExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
+import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategorySensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateSensor;
 import de.brightbyte.wikiword.analyzer.sensor.TitleSensor;
+import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
 
 public class WikiConfiguration_enwiki extends WikiConfiguration {
 
@@ -83,6 +86,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("\u00b7|moddot|dot", 0, false), "\u00b7"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("spaces", 1, true), " "));
 
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth_date|BrithDate|Dob|Death_date_and_age|DeathDateAndAge|Bda", 1, true), "[[Category:$2_births]]" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death_date|DeathDate|Dod", 1, true), "[[Category:$2_deaths]]" ) );
+		
 		stripClutterManglers.add( new RegularExpressionMangler(
 			templatePattern(
 				"fact|Unreferenced(section)?|wrong[-\\w]*|cite[-\\w]*|" +
@@ -106,7 +112,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				templatePattern("nowrap(?:links)?|main|" +
 					"en|de|it|fr|ArabDIN|ISOtranslit|polytonic|" +
 					"IPA|IAST|Unicode|music|PIE|runic|semxlit|" +
-					"ssub|sub|sup|smallsup|small|" +
+					"ssub|sub|sup|smallsup|small|scinote|" +
 					"smallcaps|allcaps|nocaps|" +
 					"nihongo|Ivrit|Hebrew"
 				, 1, true), "$2"));
@@ -119,6 +125,10 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				templatePattern("Lifetime|BD|BIRTH-DEATH-SORT", 3, true),
 			    "{{DEFAULTSORT:$4}} [[Category:$2 births]] [[Category:$3 deaths]]"));
 		
+		stripClutterManglers.add( new RegularExpressionMangler(
+				templatePattern("Lifetime|BD|BIRTH-DEATH-SORT", 3, true),
+			    "{{DEFAULTSORT:$4}} [[Category:$2 births]] [[Category:$3 deaths]]"));
+		
 		//FIXME: handle {{sc}}, as in {{sc|B|ioy| C|asares}}
 		
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("convert", 2, true), "$2 $3"));
@@ -126,12 +136,12 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("frac", 2, true), "$2/$3"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("mp", 2, true), "$2_$3"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("lang|transl", 2, true), "$2"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("e", 2, true), "x10^$2"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("e|esp", 2, true), "x10^$2"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Auto[ _](.+?)", 2, true), "$1 $2"));
 		
 		//cruft regarding english/welsh census templates
 		stripClutterManglers.add( new RegularExpressionMangler("rank\\s*=\\s*\\[\\[List[ _]of[ _][-\\w\\d\\s]+?\\|\\s*Ranked\\s+\\{\\{[-\\w\\d\\s]+?counties\\s*\\|\\s*\\w+=[-\\w\\d\\s]+\\}\\}\\]\\]", "", 0));
-		
+
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PLACE, 
 				"^(Geography_of|Places|Villages|Towns|Cities|Counties|Countries|Municipalities|States|Provinces|Territories|Federal_states|Islands|Regions|Domains|Communes|Districts)" +
 				       "(_|$)|_(places|villages|towns|cities|counties|countries|municipalities|states|provinces|territories|federal_states|islands|regions|domains|communes|districts)$", 0));
