@@ -43,7 +43,7 @@ $wgExtensionCredits['media'][] = array(
 	'author'         => 'Michael Dale',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikiAtHome',
 	'description'    => 'Enables distributing transcoding video jobs to clients using firefogg.',
-	'descriptionmsg' => 'wikiathome-desc',
+	'descriptionmsg' => 'wah-desc',
 );
 
 /*
