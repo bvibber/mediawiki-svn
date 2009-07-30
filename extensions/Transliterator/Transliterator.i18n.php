@@ -14,12 +14,12 @@ $messages['en'] = array(
 	'transliterator-invoke' => 'transliterate', // {{#transliterate:blah}}
 	'transliterator-prefix' => 'Transliterator:', // [[MediaWiki:Transliterator:blah]] NOTE: changing this requires moving all maps
 	// $1 is the line from the map, 'a => z', $2 is the map-page including prefix.
-	'transliterator-error-ambiguous' => "Ambiguous rule '$1' in [[MediaWiki:$2]]",
-	'transliterator-error-syntax' => "Invalid syntax '$1' in [[MediaWiki:$2]]",
+	'transliterator-error-ambiguous' => "Ambiguous rule <code>$1</code> in [[MediaWiki:$2]]",
+	'transliterator-error-syntax' => "Invalid syntax <code>$1</code> in [[MediaWiki:$2]]",
 	// $1 is the limit on number of rules
-	'transliterator-error-rulecount' => "More than $1 {{PLURA:$1|rule|rules}} in [[MediaWiki:$2]]",
+	'transliterator-error-rulecount' => "More than $1 {{PLURAL:$1|rule|rules}} in [[MediaWiki:$2]]",
 	// $3 is the limit on the length of the left hand side (e.g. 'alpha => beta' has 5)
-	'transliterator-error-rulesize' => "Rule '$1' has more than $3 {{PLURAL:$3|character|characters}} on the left in [[MediaWiki:$2]]",
+	'transliterator-error-rulesize' => "Rule <code>$1</code> has more than $3 {{PLURAL:$3|character|characters}} on the left in [[MediaWiki:$2]]",
 );
 
 /**
@@ -32,16 +32,16 @@ $messages['qqq'] = array(
 	'transliterator-prefix' => "This is a prefix for the transliteration maps, used in the MediaWiki namespace like [<nowiki />[MediaWiki:Transliterator:''blah'']]. Changing this requires moving all maps.", 
 	'transliterator-error-ambiguous' => 'Parameters:
 * $1 is the line from the map, such as: <code>a => z</code>
-* $2 is the map-page including thr prefix {{msg-mw|transliterator-invoke}}',
+* $2 is the map-page including the prefix {{msg-mw|transliterator-invoke}}',
 	'transliterator-error-syntax' => 'Parameters:
 * $1 is the line from the map, such as: <code>a => z</code>
-* $2 is the map-page including thr prefix {{msg-mw|transliterator-invoke}}',
+* $2 is the map-page including the prefix {{msg-mw|transliterator-invoke}}',
 	'transliterator-error-rulecount' => 'Parameters:
 * $1 is the limit on number of rules
-* $2 is the map-page including thr prefix {{msg-mw|transliterator-invoke}}',
+* $2 is the map-page including the prefix {{msg-mw|transliterator-invoke}}',
 	'transliterator-error-rulesize' => 'Parameters:
 * $1 is the line from the map, such as: <code>a => z</code>
-* $2 is the map-page including thr prefix {{msg-mw|transliterator-invoke}}
+* $2 is the map-page including the prefix {{msg-mw|transliterator-invoke}}
 * $3 is the limit on the length of the left hand side (e.g. <code>alpha => beta</code> has 5)',
 );
 
