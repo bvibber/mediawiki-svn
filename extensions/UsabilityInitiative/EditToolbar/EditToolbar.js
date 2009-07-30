@@ -1,25 +1,21 @@
 /* JavaScript for EditToolbar extension */
 
 js2AddOnloadHook( function() {
-	$j( 'textarea#wpTextbox1' ).wrap(
+	$j( 'textarea#wpTextbox1' )
+		.wrap( $j( '<div></div>' ) .attr( 'id', 'edit-ui' ) )
+		.wrap( $j( '<div></div>' ).attr( 'id', 'edit-ui-bottom' ) )
+		.wrap( $j( '<div></div>' ).attr( 'id', 'edit-ui-text' ) );
+	$j( 'div#edit-ui' ).prepend(
 		$j( '<div></div>' )
-			.attr( 'id', 'edit-ui' )
-	);
-	$j( 'textarea#wpTextbox1' ).wrap(
-		$j( '<div></div>' )
-			.attr( 'id', 'edit-ui-left' )
-	);
-	$j( 'div#edit-ui' ).append(
-		$j( '<div></div>' )
-			.attr( 'id', 'edit-ui-right' )
-	);
-	$j( 'div#edit-ui-left' ).prepend(
-		$j( '<div></div>' )
-			.attr( 'id', 'edit-toolbar' )
-	);
-	$j( 'div#edit-toolbar' ).toolbar(
-		$j( 'textarea#wpTextbox1' ),
-		editToolbarConfiguration
+			.attr( 'id', 'edit-ui-top' )
+			.append(
+				$j( '<div></div>' )
+					.attr( 'id', 'edit-toolbar' )
+					.toolbar(
+						$j( 'textarea#wpTextbox1' ),
+						editToolbarConfiguration
+					)
+			)
 	);
 });
 

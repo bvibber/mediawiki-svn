@@ -1,16 +1,15 @@
 /**
  * Plugin for parsing wikitext, building outlines, and keeping them up to date
  */
-(function($){$.fn.extend({
+( function( $ ){ $.fn.extend( {
 
-/*
+/**
  * This function should be called on the text area to map out the section
  * character positions by scanning for headings, and the resulting data will
  * be stored as $(this).data( 'outline',  { ... } )
  */
 parseOutline: function() {
 	return this.each( function() {
-		//console.time( 'parseOutline' );
 		// Extract headings from wikitext
 		var wikitext = '\n' + $(this).val() + '\n';
 		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
@@ -54,7 +53,7 @@ parseOutline: function() {
 				'text': text,
 				'position': position,
 				'level': level,
-				'index': h
+				'index': h + 1
 			};
 			/*
 			console.log(
@@ -68,16 +67,16 @@ parseOutline: function() {
 		}
 		// Cache outline
 		$(this).data( 'outline', outline )
-		//console.timeEnd( 'parseOutline' );
 	} );
 },
-/*
+/**
  * Generate structured UL from outline
+ * 
+ * @param target jQuery selection of element of containers to place list in
  */
 buildOutline: function( target ) {
 	return this.each( function() {
 		if ( target.size() ) {
-			//console.time( 'buildOutline' );
 			var outline = $(this).data( 'outline' );
 			// Normalize levels, adding an nLevel parameter to each node
 			var level = 1;
@@ -132,42 +131,59 @@ buildOutline: function( target ) {
 								.data( 'textbox', textarea )
 								.data( 'position', structure[i].position )
 								.click( function( event ) {
-									$(this).data( 'textbox' ).scrollToPosition(
-										$(this).data( 'position' )
-									);
+									$(this).data( 'textbox' )
+										.scrollToCaretPosition(
+												$(this).data( 'position' )
+										);
 									event.preventDefault();
 								} )
 								.text( structure[i].text )
 						);
 					if ( structure[i].sections !== undefined ) {
-						item.append( buildList( textarea, structure[i].sections ) );
+						item.append(
+							buildList( textarea, structure[i].sections )
+						);
 					}
 					list.append( item );
 				}
 				return list;
 			}
-			target.html( buildList( $(this), buildStructure( outline ) ) );
-			//console.timeEnd( 'buildOutline' );
+			// Adds special level 1 section 0 item
+			var structure = buildStructure( outline );
+			structure.unshift( {
+				'text': wgTitle,
+				'level': 1,
+				'index': 0,
+				'position': 0
+			} );
+			target.html( buildList( $(this), structure ) );
 		}
 	} );
 },
-/*
+/**
  * Highlight the section the cursor is currently within
+ * 
+ * @param target jQuery selection of element of containers with links to update
  */
 updateOutline: function( target ) {
 	return this.each( function() {
-		//console.time( 'updateOutline' );
 		var outline = $(this).data( 'outline' );
-		var position = $(this).bytePos();
-		var i = 0;
-		while ( i < outline.length && outline[i].position - 1 < position ) {
-			i++;
+		var position = $(this).getCaretPosition();
+		var section = 0;
+		if ( position < outline[section].position - 1 ) {
+			// Section 0
+		} else {
+			while (
+				section < outline.length &&
+				outline[section].position - 1 < position
+			) {
+				section++;
+			}
+			section = Math.max( 0, section );
 		}
-		i = Math.max( 0, i - 1 );
 		target.find( 'a' ).removeClass( 'currentSelection' );
-		target.find( 'a.section-' + i ).addClass( 'currentSelection' );
-		//console.timeEnd( 'updateOutline' );
+		target.find( 'a.section-' + section ).addClass( 'currentSelection' );
 	} );
 }
 
-}); })(jQuery);
+} ); } )( jQuery );
