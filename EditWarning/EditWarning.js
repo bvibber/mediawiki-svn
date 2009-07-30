@@ -1,15 +1,14 @@
 /* JavaScript for EditWarning extension */
 
-$( document ).ready( function() {
+js2AddOnloadHook( function() {
 	// Only use this function in conjuction with the Vector skin
 	if( skin != 'vector' )
 		return;
-	
 	// Get the original values of some form elements
-	$( '#wpTextbox1, #wpSummary' ).each( function() {
-		$(this).data( 'origtext', $(this).val() );
+	$j( '#wpTextbox1, #wpSummary' ).each( function() {
+		$j(this).data( 'origtext', $j(this).val() );
 	});
-	
+	// Attach our own handler for onbeforeunload which respects the current one
 	fallbackWindowOnBeforeUnload = window.onbeforeunload;
 	window.onbeforeunload = function() {
 		var fallbackResult = null;
@@ -26,15 +25,15 @@ $( document ).ready( function() {
 		// Check if the current values of some form elements are the same as
 		// the original values
 		if(
-			$( '#wpTextbox1' ).data( 'origtext' ) != $( '#wpTextbox1' ).val() ||
-			$( '#wpSummary' ).data( 'origtext' ) != $( '#wpSummary' ).val()
+			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val()
+			|| $j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
 		) {
 			// Return our message
 			return gM( 'editwarning-warning' );
 		}
 	}
 	// Add form submission handler
-	$( 'form' ).submit( function() {
+	$j( 'form' ).submit( function() {
 		// Restore whatever previous onbeforeload hook existed
 		window.onbeforeunload = fallbackWindowOnBeforeUnload;
 	});

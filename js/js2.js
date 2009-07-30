@@ -40,3 +40,14 @@ function gM( key, args ) {
 		return '[' + key + ']';
 	}
 }
+/**
+ * Mimics the no-conflict method used by the js2 stuff
+ */
+$j = jQuery.noConflict();
+/**
+ * Provides js2 compatible onload hook
+ * @param func Function to call when ready
+ */
+function js2AddOnloadHook( func ) {
+	$j(document).ready( func );
+}
