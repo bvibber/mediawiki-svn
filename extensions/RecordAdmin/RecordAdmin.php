@@ -11,7 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'RECORDADMIN_VERSION', '0.8.1, 2009-07-30' );
+define( 'RECORDADMIN_VERSION', '0.8.2, 2009-07-30' );
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $wgRecordAdminCategory      = 'Records'; # Category containing record types
@@ -76,8 +76,7 @@ function wfSetupRecordAdmin() {
 		$res   = $dbr->select( $cl, 'cl_from', "cl_to = $cat" );
 		while ( $row = $dbr->fetchRow( $res ) ) $types[] = 'tl_title = ' . $dbr->addQuotes( Title::newFromID( $row[0] )->getText() );
 		$dbr->freeResult( $res );
-		$uses = join( ' OR ', $types );
-		if ( $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND ($uses)" ) ) {
+		if ( $uses = join( ' OR ', $types ) && $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND ($uses)" ) ) {
 			global $wgRecordAdminActionUrl;
 			$wgHooks['SkinTemplateTabs'][] = 'wfRecordAdminEditWithForm';
 			$type = $row->tl_title;
