@@ -28,5 +28,5 @@ $messages['en'] = array(
 	'wah-transcode-helpout' => 'You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
 
 	'wah-javascript-off'	=> 'You must have javascript enabled to participate in Wiki@Home',
-	'wah-loading'		=> 'loading wiki@home interface <blink>...</blink>'
+	'wah-loading'		=> 'loading Wiki@Home interface <blink>...</blink>'
 );
