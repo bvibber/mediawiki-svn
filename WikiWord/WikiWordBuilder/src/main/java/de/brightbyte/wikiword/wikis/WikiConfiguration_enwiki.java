@@ -86,8 +86,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("\u00b7|moddot|dot", 0, false), "\u00b7"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("spaces", 1, true), " "));
 
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth_date|BrithDate|Dob|Death_date_and_age|DeathDateAndAge|Bda", 1, true), "[[Category:$2_births]]" ) );
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death_date|DeathDate|Dod", 1, true), "[[Category:$2_deaths]]" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth[-_]date|BrithDate|Dob|Death_date_and_age|DeathDateAndAge|Bda", 1, true), "[[Category:$2_births]]" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[-_]date|DeathDate|Dod", 1, true), "[[Category:$2_deaths]]" ) );
 		
 		stripClutterManglers.add( new RegularExpressionMangler(
 			templatePattern(
