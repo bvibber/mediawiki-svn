@@ -191,6 +191,7 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 		//XXX: note: flushing first would be nice, but 
 		//     can deadlock, especially when called from a worker of the database's background flush queue!
 		//     would need to detect that.
+		//FIXME: just detect workewr thread before trying to join it
 		/*
 		try {
 			closeStores(true);

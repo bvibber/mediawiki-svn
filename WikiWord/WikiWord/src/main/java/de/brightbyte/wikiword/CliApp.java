@@ -11,12 +11,14 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import de.brightbyte.application.Arguments;
+import de.brightbyte.audit.DebugUtil;
 import de.brightbyte.db.DatabaseConnectionInfo;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.io.LogOutput;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.ErrorHandler;
+import de.brightbyte.util.LogLevels;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.SystemUtils;
 import de.brightbyte.wikiword.rdf.WikiWordIdentifiers;
@@ -432,6 +434,9 @@ public abstract class CliApp {
 	
 	protected void terminate() {
 		info("exiting application");
+		
+		if (logLevel>=LogLevels.LOG_FINE) DebugUtil.dumpStackTrace("\tat", out);
+		
 		exit(55);
 	}
 }

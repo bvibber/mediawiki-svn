@@ -46,7 +46,7 @@ public abstract class ConsoleApp<S extends WikiWordConceptStoreBase> extends Sto
 					afterCommand(params);
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.printStackTrace(prompt.getOut());
 			} 
 		}
 		

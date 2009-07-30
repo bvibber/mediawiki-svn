@@ -82,9 +82,9 @@ public class ManagementConsole {
 			try {
 				runCommand(params);
 			} catch (RuntimeException e) {
-				e.printStackTrace();
+				e.printStackTrace(prompt.getOut());
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.printStackTrace(prompt.getOut());
 			}
 		}
 		
