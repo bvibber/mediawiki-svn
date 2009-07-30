@@ -110,7 +110,7 @@ class SpecialOptIn extends SpecialPage {
 				$url = $this->getTitle()->getFullURL();
 				$wgOut->addHTML( Xml::tags( 'script',
 					array( 'type' => $wgJsMimeType ),
-					"$(document).ready(function() { $.post( \"$url\", optInGetPOSTData() ); } );"
+					"js2AddOnloadHook(function() { \$j.post( \"$url\", optInGetPOSTData() ); } );"
 				) );
 			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' ) {
 				if ( $wgRequest->wasPosted() ) {
