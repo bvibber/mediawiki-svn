@@ -50,8 +50,16 @@ class ApiWikiAtHome extends ApiBase {
 				$job4Client['job_json'] = json_decode( $job->job_json ) ;
 				//we set the job key to job_id _ sha1
 				$job4Client['job_key'] 	= $job->job_id . '_'. sha1( $job->job_json );
-				$job4Client['job_title'] = json_decode( $job->title );
-
+				$job4Client['job_title']= $job->title;
+				$job4Client['job_ns']	= $job->ns;
+				
+				$tTitle = Title::newFromText($job->title, $job->ns);
+				
+				$job4Client['job_fullTitle'] = $tTitle->getFullText();
+				
+				//@@todo avoid an api round trip return url here:
+				//$job4Client['job_url'] = $file->getFullURL();
+				
 				$this->getResult()->addValue( null, $this->getModuleName(),
 						array(
 							'job' => $job4Client
