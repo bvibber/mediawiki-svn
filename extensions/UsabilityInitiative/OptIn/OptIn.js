@@ -1,33 +1,60 @@
 /* JavaScript for OptIn extension */
 
-function optInGetPOSTData() {
+js2AddOnloadHook( function() {
+	$j( '.optin-other-select' ).parent().hide();
+	$j( 'select.optin-need-other' ).change( function() {
+		if( $j(this).val() == 'other' )
+			$j( '#' + $j(this).attr( 'id' ) + '-other' ).parent().slideDown( 'fast' );
+		else
+			$j( '#' + $j(this).attr( 'id' ) + '-other' ).parent().slideUp( 'fast' );
+	});
+	$j( '.optin-other-radios, .optin-other-checks' ).click( function() {
+		$j(this).prev().prev().attr( 'checked', true );
+	});
+	$j( '.survey-ifyes, .survey-ifno' ).hide();
+	$j( '.survey-yes, .survey-no' ).change( function() {
+		yesrow = $j( '#' + $j(this).attr( 'name' ) + '-ifyes-row' );
+		norow = $j( '#' + $j(this).attr( 'name' ) + '-ifno-row' );
+		if( $j(this).is( '.survey-yes:checked' ) ) {
+			yesrow.slideDown( 'fast' );
+			norow.slideUp( 'fast' );
+		} else if( $j(this).is( '.survey-no:checked' ) ) {
+			yesrow.slideUp( 'fast' );
+			norow.slideDown( 'fast' );
+		}
+	});
+	// Load initial state
+	$j( '.survey-yes, .survey-no' ).change();
+	// Detect browser
 	var browserIndex = 'other';
-	switch ( $.browser.name ) {
+	switch ( $j.browser.name ) {
 		case 'msie':
-			browserIndex = 'ie'+ parseInt( $.browser.versionNumber );
+			browserIndex = 'ie'+ parseInt( $j.browser.versionNumber );
 		break;
 		case 'firefox':
-			browserIndex = 'ff' + parseInt( $.browser.versionNumber );
+			browserIndex = 'ff' + parseInt( $j.browser.versionNumber );
 		break;
 		case 'chrome':
-			browserIndex = 'c' + parseInt( $.browser.versionNumber ); // FIXME: Chrome Beta?
+			// FIXME: Chrome Beta?
+			browserIndex = 'c' + parseInt( $j.browser.versionNumber );
 		break;
 		case 'safari':
-			browserIndex = 's' + parseInt( $.browser.versionNumber );
+			browserIndex = 's' + parseInt( $j.browser.versionNumber );
 		break;
 		case 'opera':
-			if ( parseInt( $.browser.versionNumber ) == 9 ) {
-				if ( $.browser.version.substr( 0, 3 ) == '9.5' )
+			if ( parseInt( $j.browser.versionNumber ) == 9 ) {
+				if ( $j.browser.version.substr( 0, 3 ) == '9.5' )
 					browserIndex = 'o9.5';
 				else
 					browserIndex = 'o9';
-			} else if ( parseInt( $.browser.versionNumber ) == 10 )
+			} else if ( parseInt( $j.browser.versionNumber ) == 10 )
 				browserIndex = 'o10';
 		break;
 	}
-
+	$j( '#survey-browser' ).val( browserIndex );
+	// Detect operating system
 	var osIndex = 'other';
-	switch ( $.os.name ) {
+	switch ( $j.os.name ) {
 		case 'win':
 			osIndex = 'windows';
 		break;
@@ -38,48 +65,10 @@ function optInGetPOSTData() {
 			osIndex = 'linux';
 		break;
 	}
-	
-	return { 'survey-browser': browserIndex, 'survey-os': osIndex,
-		'survey-res-x': screen.width, 'survey-res-y': screen.height,
-		'opt': 'browser' };
-}
-
-$( document ).ready( function() {
-	$( '.optin-other-select' ).parent().hide();
-	$( 'select.optin-need-other' ).change( function() {
-		if( $(this).val() == 'other' )
-			$( '#' + $(this).attr( 'id' ) + '-other' ).parent().slideDown( 'fast' );
-		else
-			$( '#' + $(this).attr( 'id' ) + '-other' ).parent().slideUp( 'fast' );
-	});
-	
-	$( '.optin-other-radios, .optin-other-checks' ).click( function() {
-		$(this).prev().prev().attr( 'checked', true );
-	});
-	
-	$( '.survey-ifyes, .survey-ifno' ).hide();
-	$( '.survey-yes, .survey-no' ).change( function() {
-		yesrow = $( '#' + $(this).attr( 'name' ) + '-ifyes-row' );
-		norow = $( '#' + $(this).attr( 'name' ) + '-ifno-row' );
-		if( $(this).is( '.survey-yes:checked' ) ) {
-			yesrow.slideDown( 'fast' );
-			norow.slideUp( 'fast' );
-		} else if( $(this).is( '.survey-no:checked' ) ) {
-			yesrow.slideUp( 'fast' );
-			norow.slideDown( 'fast' );
-		}
-	});
-	// Load initial state
-	$( '.survey-yes, .survey-no' ).change();
-	
-	var detected = optInGetPOSTData();
-	// Detect screen resolution
+	$j( '#survey-os' ).val( osIndex );
+	// Detect screen dimensions
 	if ( screen.width && screen.height ) {
-		$( '.optin-resolution-x' ).val( detected['survey-res-x'] );
-		$( '.optin-resolution-y' ).val( detected['survey-res-y'] );
-		// Hide the fields?
+		$j( '.optin-resolution-x' ).val( screen.width );
+		$j( '.optin-resolution-y' ).val( screen.height );
 	}
-
-	$( '#survey-browser' ).val( detected['survey-browser'] );
-	$( '#survey-os' ).val( detected['survey-os'] );
 });

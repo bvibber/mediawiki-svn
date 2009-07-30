@@ -28,36 +28,39 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/jquery.browser.js', 'version' => 2 ),
 				array( 'src' => 'js/jquery.cookie.js', 'version' => 2 ),
 				array( 'src' => 'js/jquery.textSelection.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.toolbar.js', 'version' => 2 ),
 				array( 'src' => 'js/jquery.wikiOutline.js', 'version' => 2 ),
 			),
 		),
-		// Code to include when mv_embed is not present
-		'no_mv_embed' => array(
-			array( 'src' => 'js/messages.js', 'version' => 1 ),
+		// Code to include when js2 is not present
+		'no_js2' => array(
+			array( 'src' => 'js/js2.js', 'version' => 1 ),
 		)
 	);
 	
 	/* Static Functions */
-
+	
 	public static function initialize() {
 		global $wgUsabilityInitiativeJsMode;
 		global $wgUsabilityInitiativeCoesxistWithMvEmbed;
 		
 		// Only do this the first time!
 		if ( !self::$doOutput ) {
+			// Provide support for js2 conventions in it's absence
+			if ( !$wgEnableJS2system ) {
+				self::$scripts = array_merge(
+					self::$scriptFiles['no_js2'], self::$scripts
+				);
+			}
 			// Default to raw
 			$mode = $wgUsabilityInitiativeJsMode; // Just an alias
 			if ( !isset( self::$scriptFiles['base_sets'][$mode] ) ) {
 				$mode = 'raw';
 			}
 			// Inlcude base-set of scripts
-			self::$scripts = self::$scriptFiles['base_sets'][$mode];
-			// Play nice with mv_embed
-			if ( !$wgUsabilityInitiativeCoesxistWithMvEmbed ) {
-				self::$scripts = array_merge(
-					self::$scriptFiles['no_mv_embed'], self::$scripts
-				);
-			}
+			self::$scripts = array_merge(
+				self::$scriptFiles['base_sets'][$mode], self::$scripts
+			);
 		}
 		self::$doOutput = true;
 	}

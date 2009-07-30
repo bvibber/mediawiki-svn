@@ -1,14 +1,14 @@
 /* JavaScript for NavigableTOC extension */
 
-jQuery( document ).ready( function() {
-	var list = $( '<div></div>' )
+js2AddOnloadHook( function() {
+	var list = $j( '<div></div>' )
 		.attr( 'id', 'edit-toc' )
-		.appendTo( $( 'div#edit-ui-right' ) );
-	$( '#wpTextbox1' )
+		.appendTo( $j( 'div#edit-ui-right' ) );
+	$j( '#wpTextbox1' )
 		.eachAsync( {
 			bulk: 0,
 			loop: function() {
-				$(this)
+				$j(this)
 					.parseOutline()
 					.buildOutline( list )
 					.updateOutline( list );
@@ -16,10 +16,10 @@ jQuery( document ).ready( function() {
 		} )
 		.bind( 'keyup encapsulateSelection', { 'list': list },
 			function( event ) {
-				$(this).eachAsync( {
+				$j(this).eachAsync( {
 					bulk: 0,
 					loop: function() {
-						$(this)
+						$j(this)
 							.parseOutline()
 							.buildOutline( event.data.list )
 							.updateOutline( event.data.list );
@@ -29,10 +29,10 @@ jQuery( document ).ready( function() {
 		)
 		.bind( 'mouseup scrollToPosition', { 'list': list },
 			function( event ) {
-				$(this).eachAsync( {
+				$j(this).eachAsync( {
 					bulk: 0,
 					loop: function() {
-						$(this).updateOutline( event.data.list )
+						$j(this).updateOutline( event.data.list )
 					}
 				} );
 			}

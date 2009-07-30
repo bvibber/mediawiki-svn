@@ -1,14 +1,15 @@
 /* JavaScript for SimpleSearch extension */
 
-$( document ).ready( function() {
+js2AddOnloadHook( function() {
 	// Only use this function in conjuction with the Vector skin
 	if( skin != 'vector' )
 		return;
 	
 	// Adds form submission handler
-	$( 'div#simpleSearch > input#searchInput' )
+	$j( 'div#simpleSearch > input#searchInput' )
 		.each( function() {
-			$( '<label>' + gM( 'simplesearch-search' ) + '</label>' )
+			$j( '<label></label>' )
+				.text( gM( 'simplesearch-search' ) )
 				.css({
 					'display': 'none',
 					'position' : 'absolute',
@@ -17,21 +18,21 @@ $( document ).ready( function() {
 					'color': '#999999',
 					'cursor': 'text'
 				})
-				.css( ( $( 'body.rtl' ).size() > 0 ? 'right' : 'left' ), 0 )
+				.css( ( $j( 'body.rtl' ).size() > 0 ? 'right' : 'left' ), 0 )
 				.click( function() {
-					$(this).parent().find( 'input#searchInput' ).focus();
+					$j(this).parent().find( 'input#searchInput' ).focus();
 				})
-				.appendTo( $(this).parent() );
-			if ( $(this).val() == '' ) {
-				$(this).parent().find( 'label' ).show();
+				.appendTo( $j(this).parent() );
+			if ( $j(this).val() == '' ) {
+				$j(this).parent().find( 'label' ).show();
 			}
 		})
 		.focus( function() {
-			$(this).parent().find( 'label' ).hide();
+			$j(this).parent().find( 'label' ).hide();
 		})
 		.blur( function() {
-			if ( $(this).val() == '' ) {
-				$(this).parent().find( 'label' ).show();
+			if ( $j(this).val() == '' ) {
+				$j(this).parent().find( 'label' ).show();
 			}
 		});
 });
