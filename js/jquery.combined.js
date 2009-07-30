@@ -5155,9 +5155,8 @@ addToolbarSection: function( section, textbox, id ) {
 									'div.pages > div.page-' +
 										$(this).data( 'page' )
 								)
-								.show()
-								.end()
-								.addClass( 'current' );
+								.show();
+							$(this).addClass( 'current' );
 							$.cookie(
 								$(this).data( 'cookie'), $(this).data( 'page' )
 							);
