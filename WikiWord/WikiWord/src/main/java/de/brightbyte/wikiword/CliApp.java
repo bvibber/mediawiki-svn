@@ -435,7 +435,7 @@ public abstract class CliApp {
 	protected void terminate() {
 		info("exiting application");
 		
-		if (logLevel>=LogLevels.LOG_FINE) DebugUtil.dumpStackTrace("\tat", out);
+		if (logLevel<=LogLevels.LOG_FINE) DebugUtil.dumpStackTrace("\tat ", out);
 		
 		exit(55);
 	}
