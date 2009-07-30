@@ -16,7 +16,8 @@
  *     initial creation.
  * @version 1.0.1
  *     better i18n support, adjustable limits, minor formal adjustment.
- *
+ * @version 1.1.0
+ *     addition of answer parameter
  */
 
 /**
@@ -48,10 +49,10 @@ $wgTransliteratorRuleSize  =  10;	// maximum number of characters in left side o
 
 $wgExtensionCredits['parserhook'][] = array(
     'name' => 'Transliterator',
-    'version' => '1.0.1',
+    'version' => '1.1.0',
     'descriptionmsg' => 'transliterator-desc',
     'author' => 'Conrad Irwin',
-    'url' => 'http://en.wiktionary.org/wiki/User:Conrad.Irwin/Transliterator.php',
+    'url' => 'http://www.mediawiki.org/wiki/Extension:Transliterator',
     'path' => __FILE__,
 );
 
@@ -173,12 +174,19 @@ class ExtTransliterator {
         $decompose = false;
 
         // Split lines and remove comments and space 
-        $lines = split( "\n", html_entity_decode( preg_replace( '/^(\s*#.*)?\n| */m', '', "$input" ), ENT_NOQUOTES, "UTF-8" ) );
+        $lines = split( "\n", html_entity_decode( preg_replace( '/^\s*(#.*)?(\n|$)| */m', '', $input ), ENT_NOQUOTES, "UTF-8" ) );
+
+        // If the last line was a comment then there will be an empty line at the end
+        if ( $lines[count( $lines ) - 1] == "" ) {
+            array_pop( $lines );
+        }
 
         if ( $lines[0] == "<decompose>" ) {
             $map['__decompose__'] = true;
             array_shift( $lines );
             $decompose = true;
+        } else if ( $lines[0] == "<$mappage>" ) {
+            return false;
         }
 
         if ( count( $lines ) > $wgTransliteratorRuleCount )
@@ -231,11 +239,12 @@ class ExtTransliterator {
      */
     function transliterate( $word, $map )
     {
-        $word = "^" . str_replace(" ", "$ ^", $word) . "$";
+        $word = "^" . str_replace( " ", "$ ^", $word ) . "$";
         if ( isset( $map["__decompose__"] ) ) {
             $letters = $this->codepoints( $word );
-        }else
+        } else {
             $letters =  $this->letters( $word );
+        }
 
         $output = "";               // The output
         $last_match = 0;            // The position of the last character matched, or the first character of the current run
@@ -244,7 +253,7 @@ class ExtTransliterator {
         $count = count($letters);   // The total number of characters in the string
         $current = "";              // The substring that we are currently trying to find the longest match for.
 
-        while ($i < $count) {
+        while ( $i < $count ) {
 
             $next = $current.$letters[$i];
 
@@ -294,17 +303,28 @@ class ExtTransliterator {
     }
 
     /**
-     * {{#transliterate:<mapname>|<word>[|<format>[|<onerror>]]}}
+     * {{#transliterate:<mapname>|<word>[|<format>[|<answer>[|<onerror>]]]}}
      *
-     * It is envisaged that most usage is in the form {{#transliterate:<mapname>|<word>}}
-     * However, when in use in multi-purpose templates, it would be very ugly to have
-     * {{#if}}s around all calls to {{#transliterate}} to check whether the map
-     * exists. The further two arguments can thus give very flexible output with
-     * minimal hassle.
+     * Direct usage will generally be of the form {{#transilterate:<mapname>|<word>}} while
+     * generic templates may find the latter three parameters invaluable for easy use.
+     *
+     * $mapname is the name of the transliteration map to find.
+     * $word    is the string to transliterate (if the map was found)
+     * $format  is a string containing $1 to be replaced by the transliteration if the map exists
+     * $answer  allows for a user-specified transliteration to override the automatic one
+     * $other   is an error messsage to display if $answer is blank and an invalid map is specified
      */
-    function render( &$parser, $mapname = '', $word = '', $format = '$1', $other = '' ) {
+    function render( &$parser, $mapname = '', $word = '', $format = '$1', $answer = '', $other = '' ) {
 
-        $prefix = wfMsg('transliterator-prefix');
+        if ( trim( $format ) == '') { // Handle the case when people use {{#transliterate:<>|<>||<>}}
+            $format = '$1';
+        }
+
+        if ( trim( $answer ) != '') { 
+            return str_replace('$1', $answer, $format);
+        }
+
+        $prefix = wfMsg( 'transliterator-prefix' );
         $mappage = $prefix.$mapname;
 
         $map = $this->getMap( $prefix, $mapname );
