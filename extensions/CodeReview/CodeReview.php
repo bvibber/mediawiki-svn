@@ -102,6 +102,12 @@ $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 $wgSubversionProxy = false;
 $wgSubversionProxyTimeout = 30; // default 3 secs is too short :)
 
+// Command-line options to pass on SVN command line if SVN PECL extension
+// isn't available and we're not using the proxy.
+// Defaults here should allow working with both http: and https: repos
+// as long as authentication isn't required.
+$wgSubversionOptions = "--non-interactive --trust-server-cert";
+
 // What is the default SVN import chunk size?
 $wgCodeReviewImportBatchSize = 400;
 
