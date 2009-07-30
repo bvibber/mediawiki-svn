@@ -1,17 +1,19 @@
 /* JavaScript for NavigableTOC extension */
 
 js2AddOnloadHook( function() {
-	var list = $j( '<div></div>' )
-		.attr( 'id', 'edit-toc' )
-		.appendTo( $j( 'div#edit-ui-right' ) );
-	$j( '#wpTextbox1' )
+	var list = $j( '<div></div>' ).attr( 'id', 'edit-ui-toc' );
+	$j( 'div#edit-ui-bottom' ).append( list );
+	$j( 'div#edit-ui-toc' ).height( $j( 'div#edit-ui-bottom' ).height() );
+	$j( 'textarea#wpTextbox1' )
 		.eachAsync( {
 			bulk: 0,
 			loop: function() {
 				$j(this)
+					.scrollToCaretPosition( 0 )
 					.parseOutline()
 					.buildOutline( list )
 					.updateOutline( list );
+					$j( 'div#edit-ui' ).trigger( 'layout' );
 			}
 		} )
 		.bind( 'keyup encapsulateSelection', { 'list': list },

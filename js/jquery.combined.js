@@ -4631,281 +4631,268 @@ jQuery.cookie = function(name, value, options) {
     }
 };
 
-/*
+/**
+ * These plugins provide extra functionality for interaction with textareas.
+ */
+( function( $ ) { $.fn.extend( {
+/**
  * Ported from skins/common/edit.js by Trevor Parscal
  * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
+ * 
+ * Inserts text at the begining and end of a text selection, optionally
+ * inserting text at the caret when selection is empty.
+ * 
+ * @param pre Text to insert before selection
+ * @param peri Text to insert at caret if selection is empty
+ * @param post Text to insert after selection
  */
-(function($) {
-    $.fn.extend({
-		encapsulateSelection: function( pre, peri, post ) {
-			/**
-			 * CLEAN THIS UP PLEASE!
-			 */
-            var e = this.jquery ? this[0] : this;
-			var selText;
-			var isSample = false;
-			if (document.selection  && document.selection.createRange) { // IE/Opera
-		
-				//save window scroll position
-				if (document.documentElement && document.documentElement.scrollTop)
-					var winScroll = document.documentElement.scrollTop
-				else if (document.body)
-					var winScroll = document.body.scrollTop;
-				//get current selection
-				e.focus();
-				var range = document.selection.createRange();
-				selText = range.text;
-				//insert tags
-				checkSelectedText();
-				range.text = pre + selText + post;
-				//mark sample text as selected
-				if (isSample && range.moveStart) {
-					if (window.opera)
-						post = post.replace(/\n/g,'');
-					range.moveStart('character', - post.length - selText.length);
-					range.moveEnd('character', - post.length);
-				}
-				range.select();
-				//restore window scroll position
-				if (document.documentElement && document.documentElement.scrollTop)
-					document.documentElement.scrollTop = winScroll
-				else if (document.body)
-					document.body.scrollTop = winScroll;
-		
-			} else if (e.selectionStart || e.selectionStart == '0') { // Mozilla
-		
-				//save textarea scroll position
-				var textScroll = e.scrollTop;
-				//get current selection
-				e.focus();
-				var startPos = e.selectionStart;
-				var endPos = e.selectionEnd;
-				selText = e.value.substring(startPos, endPos);
-				//insert tags
-				checkSelectedText();
-				e.value = e.value.substring(0, startPos)
-					+ pre + selText + post
-					+ e.value.substring(endPos, e.value.length);
-				//set new selection
-				if (isSample) {
-					e.selectionStart = startPos + pre.length;
-					e.selectionEnd = startPos + pre.length + selText.length;
-				} else {
-					e.selectionStart = startPos + pre.length + selText.length + post.length;
-					e.selectionEnd = e.selectionStart;
-				}
-				//restore textarea scroll position
-				e.scrollTop = textScroll;
+encapsulateSelection: function( pre, peri, post ) {
+	/**
+	 * Check if the selected text is the same as the insert text
+	 */ 
+	function checkSelectedText() {
+		if ( !selText ) {
+			selText = peri;
+			isSample = true;
+		} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
+			// Exclude ending space char
+			selText = selText.substring(0, selText.length - 1);
+			post += ' '
+		}
+	}
+    var e = this.jquery ? this[0] : this;
+	var selText;
+	var isSample = false;
+	if ( document.selection  && document.selection.createRange ) {
+		// IE/Opera
+		if ( document.documentElement && document.documentElement.scrollTop ) {
+			var winScroll = document.documentElement.scrollTop;
+		} else if ( document.body ) {
+			var winScroll = document.body.scrollTop;
+		}
+		e.focus();
+		var range = document.selection.createRange();
+		selText = range.text;
+		checkSelectedText();
+		range.text = pre + selText + post;
+		if ( isSample && range.moveStart ) {
+			if ( window.opera ) {
+				post = post.replace( /\n/g, '' );
 			}
-			// Checks if the selected text is the same as the insert text
-			function checkSelectedText(){
-				if (!selText) {
-					selText = peri;
-					isSample = true;
-				} else if (selText.charAt(selText.length - 1) == ' ') { //exclude ending space char
-					selText = selText.substring(0, selText.length - 1);
-					post += ' '
-				}
-			}
-			$(this).trigger( 'encapsulateSelection' );
-			/**
-			 * /CLEAN THIS UP PLEASE!
+			range.moveStart( 'character', - post.length - selText.length );
+			range.moveEnd( 'character', - post.length );
+		}
+		range.select();
+		if ( document.documentElement && document.documentElement.scrollTop ) {
+			document.documentElement.scrollTop = winScroll
+		} else if ( document.body ) {
+			document.body.scrollTop = winScroll;
+		}
+	} else if ( e.selectionStart || e.selectionStart == '0' ) {
+		// Mozilla
+		var textScroll = e.scrollTop;
+		e.focus();
+		var startPos = e.selectionStart;
+		var endPos = e.selectionEnd;
+		selText = e.value.substring( startPos, endPos );
+		checkSelectedText();
+		e.value = e.value.substring( 0, startPos ) + pre + selText + post +
+			e.value.substring( endPos, e.value.length );
+		if ( isSample ) {
+			e.selectionStart = startPos + pre.length;
+			e.selectionEnd = startPos + pre.length + selText.length;
+		} else {
+			e.selectionStart =
+				startPos + pre.length + selText.length + post.length;
+			e.selectionEnd = e.selectionStart;
+		}
+		e.scrollTop = textScroll;
+	}
+	$(this).trigger( 'encapsulateSelection' );
+},
+/**
+ * Ported from Wikia's LinkSuggest extension
+ * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
+ * Some code copied from
+ * http://www.dedestruct.com/2008/03/22/howto-cross-browser-cursor-position-in-textareas/
+ *
+ * Get the position (in resolution of bytes not nessecarily characters)
+ * in a textarea 
+ */
+ getCaretPosition: function() {
+	function getCaret( e ) {
+		var caretPos = 0;
+		if($.browser.msie) {
+			// IE Support
+			var postFinished = false;
+			var periFinished = false;
+			var postFinished = false;
+			var preText, rawPreText, periText;
+			var rawPeriText, postText, rawPostText;
+			// Create range containing text in the selection
+			var periRange = document.selection.createRange().duplicate();
+			// Create range containing text before the selection
+			var preRange = document.body.createTextRange();
+			// Select all the text
+			preRange.moveToElementText(e);
+			// Move the end where we need it
+			preRange.setEndPoint("EndToStart", periRange);
+			// Create range containing text after the selection
+			var postRange = document.body.createTextRange();
+			// Select all the text
+			postRange.moveToElementText(e);
+			// Move the start where we need it
+			postRange.setEndPoint("StartToEnd", periRange);
+			// Load the text values we need to compare
+			preText = rawPreText = preRange.text;
+			periText = rawPeriText = periRange.text;
+			postText = rawPostText = postRange.text;
+			/*
+			 * Check each range for trimmed newlines by shrinking the range by 1
+			 * character and seeing if the text property has changed. If it has
+			 * not changed then we know that IE has trimmed a \r\n from the end.
 			 */
-		},
-		// The getCaret(), getLineLength() and getCaretPosition()
-		// functions were copied from Wikia's LinkSuggest extension and
-		// modified slightly.
-		// https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest/LinkSuggest.js
-		
-		/**
-		 * Get the byte position in a textarea 
-		 */
-		 bytePos: function() {
-			/**
-			 * CLEAN THIS UP PLEASE!
-			 */
-			function getCaret(control) {
-				var caretPos = 0;
-				// IE Support
-				if($.browser.msie) {
-					// This code was copied from
-					// http://www.dedestruct.com/2008/03/22/howto-cross-browser-cursor-position-in-textareas/
-					var selection_range = document.selection.createRange().duplicate();
-
-					// Create three ranges, one containing all the text before the selection,
-					// one containing all the text in the selection (this already exists), and one containing all
-					// the text after the selection.
-					var before_range = document.body.createTextRange();
-					before_range.moveToElementText(control); // Selects all the text
-					before_range.setEndPoint("EndToStart", selection_range); // Moves the end where we need it
-					
-					var after_range = document.body.createTextRange();
-					after_range.moveToElementText(control); // Selects all the text
-					after_range.setEndPoint("StartToEnd", selection_range); // Moves the start where we need it
-					
-					var before_finished = false, selection_finished = false, after_finished = false;
-					var before_text, untrimmed_before_text, selection_text, untrimmed_selection_text, after_text, untrimmed_after_text;
-					
-					// Load the text values we need to compare
-					before_text = untrimmed_before_text = before_range.text;
-					selection_text = untrimmed_selection_text = selection_range.text;
-					after_text = untrimmed_after_text = after_range.text;
-					
-					
-					// Check each range for trimmed newlines by shrinking the range by 1 character and seeing
-					// if the text property has changed. If it has not changed then we know that IE has trimmed
-					// a \r\n from the end.
-					do {
-						if (!before_finished) {
-							if (before_range.compareEndPoints("StartToEnd", before_range) == 0) {
-								before_finished = true;
-							} else {
-								before_range.moveEnd("character", -1)
-								if (before_range.text == before_text) {
-									untrimmed_before_text += "\r\n";
-								} else {
-									before_finished = true;
-								}
-							}
-						}
-						if (!selection_finished) {
-							if (selection_range.compareEndPoints("StartToEnd", selection_range) == 0) {
-								selection_finished = true;
-							} else {
-								selection_range.moveEnd("character", -1)
-								if (selection_range.text == selection_text) {
-									untrimmed_selection_text += "\r\n";
-								} else {
-									selection_finished = true;
-								}
-							}
-						}
-						if (!after_finished) {
-							if (after_range.compareEndPoints("StartToEnd", after_range) == 0) {
-								after_finished = true;
-							} else {
-								after_range.moveEnd("character", -1)
-								if (after_range.text == after_text) {
-									untrimmed_after_text += "\r\n";
-								} else {
-									after_finished = true;
-								}
-							}
-						}
-					
-					} while ((!before_finished || !selection_finished || !after_finished));
-					
-					caretPos = untrimmed_before_text.replace(/\r\n/g, "\n").length;
-				// Firefox support
-				} else if (control.selectionStart || control.selectionStart == '0') {
-					caretPos = control.selectionStart;
-				}
-				return caretPos;
-			}
-			
-			return getCaret( this.get( 0 ) );
-			/**
-			 * /CLEAN THIS UP PLEASE!
-			 */
-		},
-
-		/**
-		 * Scroll a textarea to a certain offset
-		 * @param pos Byte offset in the contents
-		 */
-		scrollToPosition: function( pos ) {
-			/**
-			 * CLEAN THIS UP PLEASE!
-			 */
-			function getLineLength(control) {
-				var width = control.scrollWidth;
-				return Math.floor(width/($.os.name == 'linux' ? 7 : 8));
-			}
-			
-			function getCaretPosition(control) {
-				var text = control.value.replace(/\r/g, "");
-				var caret = $(control).bytePos();
-				var lineLength = getLineLength(control);
-
-				var row = 0;
-				var charInLine = 0;
-				var lastSpaceInLine = 0;
-
-				for(i = 0; i < caret; i++) {
-					charInLine++;
-					if(text.charAt(i) == " ") {
-						lastSpaceInLine = charInLine;
-					} else if(text.charAt(i) == "\n") {
-						lastSpaceInLine = 0;
-						charInLine = 0;
-						row++;
-					}
-					if(charInLine > lineLength) {
-						if(lastSpaceInLine > 0) {
-							charInLine = charInLine - lastSpaceInLine;
-
-							lastSpaceInLine = 0;
-							row++;
+			do {
+				if ( !postFinished ) {
+					if ( preRange.
+							compareEndPoints( "StartToEnd", preRange ) == 0 ) {
+						postFinished = true;
+					} else {
+						preRange.moveEnd( "character", -1 )
+						if ( preRange.text == preText ) {
+							rawPreText += "\r\n";
+						} else {
+							postFinished = true;
 						}
 					}
 				}
-				var nextSpace = 0;
-				for(j = caret; j < caret + lineLength; j++) {
-					if(text.charAt(j) == " " || text.charAt(j) == "\n" || caret == text.length) {
-						nextSpace = j;
-						break;
+				if ( !periFinished ) {
+					if ( periRange.
+							compareEndPoints( "StartToEnd", periRange ) == 0 ) {
+						periFinished = true;
+					} else {
+						periRange.moveEnd( "character", -1 )
+						if ( periRange.text == periText ) {
+							rawPeriText += "\r\n";
+						} else {
+							periFinished = true;
+						}
 					}
 				}
-
-				if(nextSpace > lineLength && caret <= lineLength) {
-					charInLine = caret - lastSpaceInLine;
+				if ( !postFinished ) {
+					if ( postRange.
+							compareEndPoints("StartToEnd", postRange) == 0 ) {
+						postFinished = true;
+					} else {
+						postRange.moveEnd( "character", -1 )
+						if ( postRange.text == postText ) {
+							rawPostText += "\r\n";
+						} else {
+							postFinished = true;
+						}
+					}
+				}
+			} while ( ( !postFinished || !periFinished || !postFinished ) );
+			caretPos = rawPreText.replace( /\r\n/g, "\n" ).length;
+		} else if ( e.selectionStart || e.selectionStart == '0' ) {
+			// Firefox support
+			caretPos = e.selectionStart;
+		}
+		return caretPos;
+	}
+	return getCaret( this.get( 0 ) );
+},
+/**
+ * Ported from Wikia's LinkSuggest extension
+ * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
+ * 
+ * Scroll a textarea to a certain offset
+ * @param pos Byte offset
+ */
+scrollToCaretPosition: function( pos ) {
+	function getLineLength( e ) {
+		return Math.floor( e.scrollWidth / ( $.os.name == 'linux' ? 7 : 8 ) );
+	}
+	function getCaretScrollPosition( e ) {
+		var text = e.value.replace( /\r/g, "" );
+		var caret = $( e ).getCaretPosition();
+		var lineLength = getLineLength( e );
+		var row = 0;
+		var charInLine = 0;
+		var lastSpaceInLine = 0;
+		for ( i = 0; i < caret; i++ ) {
+			charInLine++;
+			if ( text.charAt( i ) == " " ) {
+				lastSpaceInLine = charInLine;
+			} else if ( text.charAt( i ) == "\n" ) {
+				lastSpaceInLine = 0;
+				charInLine = 0;
+				row++;
+			}
+			if ( charInLine > lineLength ) {
+				if ( lastSpaceInLine > 0 ) {
+					charInLine = charInLine - lastSpaceInLine;
+					lastSpaceInLine = 0;
 					row++;
 				}
-
-
-				return ($.os.name == 'mac' ? 13 : ($.os.name == 'linux' ? 15 : 16))*row;
 			}
-
-			return this.each(function() {
-				$(this).focus();
-				if ( this.selectionStart || this.selectionStart == '0' ) { // Mozilla
-					this.selectionStart = this.selectionEnd = pos;
-					$(this).scrollTop( getCaretPosition( this ) );
-				} else if ( document.selection && document.selection.createRange ) { // IE/Opera
-					// IE automatically scrolls the section
-					// to the bottom of the page, except
-					// if it's already in view and the
-					// cursor position hasn't changed, in
-					// which case it does nothing. In that
-					// case we'll force it to act by moving
-					// one character back and forth
-					range = document.selection.createRange();
-					oldPos = $(this).bytePos();
-					goBack = false;
-					if ( oldPos == pos ) {
-						pos++;
-						goBack = true;
-					}
-					range.moveToElementText( this );
-					range.collapse();
-					range.move( 'character', pos );
-					range.select();
-					this.scrollTop += range.offsetTop;
-					if ( goBack ) {
-						range.move( 'character', -1 );
-						range.select();
-					}
-				}
-				$(this).trigger( 'scrollToPosition' );
-			});
-			/**
-			 * /CLEAN THIS UP PLEASE!
-			 */
 		}
-    });
-})(jQuery);
+		var nextSpace = 0;
+		for ( j = caret; j < caret + lineLength; j++ ) {
+			if (
+				text.charAt( j ) == " " ||
+				text.charAt( j ) == "\n" ||
+				caret == text.length
+			) {
+				nextSpace = j;
+				break;
+			}
+		}
+		if( nextSpace > lineLength && caret <= lineLength ) {
+			charInLine = caret - lastSpaceInLine;
+			row++;
+		}
+		return (
+			$.os.name == 'mac' ? 13 : ( $.os.name == 'linux' ? 15 : 16 )
+		) * row;
+	}
+	return this.each(function() {
+		$(this).focus();
+		if ( this.selectionStart || this.selectionStart == '0' ) {
+			// Mozilla
+			this.selectionStart = pos;
+			this.selectionEnd = pos;
+			$(this).scrollTop( getCaretScrollPosition( this ) );
+		} else if ( document.selection && document.selection.createRange ) {
+			// IE / Opera
+			/*
+			 * IE automatically scrolls the section to the bottom of the page,
+			 * except if it's already in view and the cursor position hasn't
+			 * changed, in which case it does nothing. In that case we'll force
+			 * it to act by moving one character back and forth.
+			 */
+			range = document.selection.createRange();
+			oldPos = $(this).bytePos();
+			goBack = false;
+			if ( oldPos == pos ) {
+				pos++;
+				goBack = true;
+			}
+			range.moveToElementText( this );
+			range.collapse();
+			range.move( 'character', pos );
+			range.select();
+			this.scrollTop += range.offsetTop;
+			if ( goBack ) {
+				range.move( 'character', -1 );
+				range.select();
+			}
+		}
+		$(this).trigger( 'scrollToPosition' );
+	});
+}
 
-/**
+} ); } )( jQuery );/**
  * This is the toolbar plugin, which can be used like
  * $j( 'div#edittoolbar' ).toolbar( '#wpTextbox1', tools );
  * Where tools is an array of objects which describe each tool (see below for
@@ -5361,16 +5348,15 @@ parseCharinsert: function( charinsert ) {
 }); })(jQuery);/**
  * Plugin for parsing wikitext, building outlines, and keeping them up to date
  */
-(function($){$.fn.extend({
+( function( $ ){ $.fn.extend( {
 
-/*
+/**
  * This function should be called on the text area to map out the section
  * character positions by scanning for headings, and the resulting data will
  * be stored as $(this).data( 'outline',  { ... } )
  */
 parseOutline: function() {
 	return this.each( function() {
-		//console.time( 'parseOutline' );
 		// Extract headings from wikitext
 		var wikitext = '\n' + $(this).val() + '\n';
 		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
@@ -5414,7 +5400,7 @@ parseOutline: function() {
 				'text': text,
 				'position': position,
 				'level': level,
-				'index': h
+				'index': h + 1
 			};
 			/*
 			console.log(
@@ -5428,16 +5414,16 @@ parseOutline: function() {
 		}
 		// Cache outline
 		$(this).data( 'outline', outline )
-		//console.timeEnd( 'parseOutline' );
 	} );
 },
-/*
+/**
  * Generate structured UL from outline
+ * 
+ * @param target jQuery selection of element of containers to place list in
  */
 buildOutline: function( target ) {
 	return this.each( function() {
 		if ( target.size() ) {
-			//console.time( 'buildOutline' );
 			var outline = $(this).data( 'outline' );
 			// Normalize levels, adding an nLevel parameter to each node
 			var level = 1;
@@ -5492,42 +5478,59 @@ buildOutline: function( target ) {
 								.data( 'textbox', textarea )
 								.data( 'position', structure[i].position )
 								.click( function( event ) {
-									$(this).data( 'textbox' ).scrollToPosition(
-										$(this).data( 'position' )
-									);
+									$(this).data( 'textbox' )
+										.scrollToCaretPosition(
+												$(this).data( 'position' )
+										);
 									event.preventDefault();
 								} )
 								.text( structure[i].text )
 						);
 					if ( structure[i].sections !== undefined ) {
-						item.append( buildList( textarea, structure[i].sections ) );
+						item.append(
+							buildList( textarea, structure[i].sections )
+						);
 					}
 					list.append( item );
 				}
 				return list;
 			}
-			target.html( buildList( $(this), buildStructure( outline ) ) );
-			//console.timeEnd( 'buildOutline' );
+			// Adds special level 1 section 0 item
+			var structure = buildStructure( outline );
+			structure.unshift( {
+				'text': wgTitle,
+				'level': 1,
+				'index': 0,
+				'position': 0
+			} );
+			target.html( buildList( $(this), structure ) );
 		}
 	} );
 },
-/*
+/**
  * Highlight the section the cursor is currently within
+ * 
+ * @param target jQuery selection of element of containers with links to update
  */
 updateOutline: function( target ) {
 	return this.each( function() {
-		//console.time( 'updateOutline' );
 		var outline = $(this).data( 'outline' );
-		var position = $(this).bytePos();
-		var i = 0;
-		while ( i < outline.length && outline[i].position - 1 < position ) {
-			i++;
+		var position = $(this).getCaretPosition();
+		var section = 0;
+		if ( position < outline[section].position - 1 ) {
+			// Section 0
+		} else {
+			while (
+				section < outline.length &&
+				outline[section].position - 1 < position
+			) {
+				section++;
+			}
+			section = Math.max( 0, section );
 		}
-		i = Math.max( 0, i - 1 );
 		target.find( 'a' ).removeClass( 'currentSelection' );
-		target.find( 'a.section-' + i ).addClass( 'currentSelection' );
-		//console.timeEnd( 'updateOutline' );
+		target.find( 'a.section-' + section ).addClass( 'currentSelection' );
 	} );
 }
 
-}); })(jQuery);
+} ); } )( jQuery );

@@ -13,9 +13,11 @@ body textarea#wpTextbox1 {
 }
 /* ... */
 div#edit-ui {
+	position: relative;
 	border: solid silver 1px;
 	background-color: #f3f3f3;
 	clear: both;
+	line-height: 1em;
 }
 div#edit-toolbar {
 	background-color: #F3F3F3;
