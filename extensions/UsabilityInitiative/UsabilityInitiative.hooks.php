@@ -42,7 +42,7 @@ class UsabilityInitiativeHooks {
 	
 	public static function initialize() {
 		global $wgUsabilityInitiativeJsMode;
-		global $wgUsabilityInitiativeCoesxistWithMvEmbed;
+		global $wgEnableJS2system;
 		
 		// Only do this the first time!
 		if ( !self::$doOutput ) {
