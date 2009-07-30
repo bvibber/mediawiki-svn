@@ -355,2476 +355,2241 @@ var editToolbarConfiguration = {
 				'characters': [
 					{
 						'type': 'link',
-						'label': 'Á',
+						'label': "\u00c1",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Á',
-								'post': ''
+								'pre': "\u00c1"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'á',
+						'label': "\u00e1",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'á',
-								'post': ''
+								'pre': "\u00e1"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ć',
+						'label': "\u00c0",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ć',
-								'post': ''
+								'pre': "\u00c0"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ć',
+						'label': "\u00e0",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ć',
-								'post': ''
+								'pre': "\u00e0"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'É',
+						'label': "\u00c2",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'É',
-								'post': ''
+								'pre': "\u00c2"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'é',
+						'label': "\u00e2",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'é',
-								'post': ''
+								'pre': "\u00e2"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Í',
+						'label': "\u00c4",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Í',
-								'post': ''
+								'pre': "\u00c4"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'í',
+						'label': "\u00e4",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'í',
-								'post': ''
+								'pre': "\u00e4"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ĺ',
+						'label': "\u00c3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ĺ',
-								'post': ''
+								'pre': "\u00c3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ĺ',
+						'label': "\u00e3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ĺ',
-								'post': ''
+								'pre': "\u00e3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ń',
+						'label': "\u01cd",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ń',
-								'post': ''
+								'pre': "\u01cd"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ń',
+						'label': "\u01ce",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ń',
-								'post': ''
+								'pre': "\u01ce"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ó',
+						'label': "\u0100",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ó',
-								'post': ''
+								'pre': "\u0100"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ó',
+						'label': "\u0101",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ó',
-								'post': ''
+								'pre': "\u0101"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ŕ',
+						'label': "\u0102",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ŕ',
-								'post': ''
+								'pre': "\u0102"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ŕ',
+						'label': "\u0103",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ŕ',
-								'post': ''
+								'pre': "\u0103"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ś',
+						'label': "\u0104",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ś',
-								'post': ''
+								'pre': "\u0104"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ś',
+						'label': "\u0105",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ś',
-								'post': ''
+								'pre': "\u0105"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ú',
+						'label': "\u00c5",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ú',
-								'post': ''
+								'pre': "\u00c5"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ú',
+						'label': "\u00e5",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ú',
-								'post': ''
+								'pre': "\u00e5"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ý',
+						'label': "\u0106",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ý',
-								'post': ''
+								'pre': "\u0106"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ý',
+						'label': "\u0107",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ý',
-								'post': ''
+								'pre': "\u0107"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ź',
+						'label': "\u0108",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ź',
-								'post': ''
+								'pre': "\u0108"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ź',
+						'label': "\u0109",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ź',
-								'post': ''
+								'pre': "\u0109"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'À',
+						'label': "\u00c7",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'À',
-								'post': ''
+								'pre': "\u00c7"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'à',
+						'label': "\u00e7",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'à',
-								'post': ''
+								'pre': "\u00e7"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'È',
+						'label': "\u010c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'È',
-								'post': ''
+								'pre': "\u010c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'è',
+						'label': "\u010d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'è',
-								'post': ''
+								'pre': "\u010d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ì',
+						'label': "\u010a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ì',
-								'post': ''
+								'pre': "\u010a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ì',
+						'label': "\u010b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ì',
-								'post': ''
+								'pre': "\u010b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ò',
+						'label': "\u0110",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ò',
-								'post': ''
+								'pre': "\u0110"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ò',
+						'label': "\u0111",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ò',
-								'post': ''
+								'pre': "\u0111"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ù',
+						'label': "\u010e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ù',
-								'post': ''
+								'pre': "\u010e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ù',
+						'label': "\u010f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ù',
-								'post': ''
+								'pre': "\u010f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Â',
+						'label': "\u1e0c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Â',
-								'post': ''
+								'pre': "\u1e0c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'â',
+						'label': "\u1e0d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'â',
-								'post': ''
+								'pre': "\u1e0d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ĉ',
+						'label': "\u00c9",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ĉ',
-								'post': ''
+								'pre': "\u00c9"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ĉ',
+						'label': "\u00e9",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ĉ',
-								'post': ''
+								'pre': "\u00e9"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ê',
+						'label': "\u00c8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ê',
-								'post': ''
+								'pre': "\u00c8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ê',
+						'label': "\u00e8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ê',
-								'post': ''
+								'pre': "\u00e8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ĝ',
+						'label': "\u00ca",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ĝ',
-								'post': ''
+								'pre': "\u00ca"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ĝ',
+						'label': "\u00ea",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ĝ',
-								'post': ''
+								'pre': "\u00ea"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ĥ',
+						'label': "\u00cb",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ĥ',
-								'post': ''
+								'pre': "\u00cb"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ĥ',
+						'label': "\u00eb",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ĥ',
-								'post': ''
+								'pre': "\u00eb"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Î',
+						'label': "\u1ebc",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Î',
-								'post': ''
+								'pre': "\u1ebc"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'î',
+						'label': "\u1ebd",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'î',
-								'post': ''
+								'pre': "\u1ebd"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ĵ',
+						'label': "\u011a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ĵ',
-								'post': ''
+								'pre': "\u011a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ĵ',
+						'label': "\u011b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ĵ',
-								'post': ''
+								'pre': "\u011b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ô',
+						'label': "\u0112",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ô',
-								'post': ''
+								'pre': "\u0112"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ô',
+						'label': "\u0113",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ô',
-								'post': ''
+								'pre': "\u0113"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ŝ',
+						'label': "\u0114",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ŝ',
-								'post': ''
+								'pre': "\u0114"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ŝ',
+						'label': "\u0115",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ŝ',
-								'post': ''
+								'pre': "\u0115"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Û',
+						'label': "\u0116",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Û',
-								'post': ''
+								'pre': "\u0116"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'û',
+						'label': "\u0117",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'û',
-								'post': ''
+								'pre': "\u0117"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ŵ',
+						'label': "\u0118",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ŵ',
-								'post': ''
+								'pre': "\u0118"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ŵ',
+						'label': "\u0119",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ŵ',
-								'post': ''
+								'pre': "\u0119"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ŷ',
+						'label': "\u011c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ŷ',
-								'post': ''
+								'pre': "\u011c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ŷ',
+						'label': "\u011d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ŷ',
-								'post': ''
+								'pre': "\u011d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ä',
+						'label': "\u0122",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ä',
-								'post': ''
+								'pre': "\u0122"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ä',
+						'label': "\u0123",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ä',
-								'post': ''
+								'pre': "\u0123"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ë',
+						'label': "\u011e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ë',
-								'post': ''
+								'pre': "\u011e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ë',
+						'label': "\u011f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ë',
-								'post': ''
+								'pre': "\u011f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ï',
+						'label': "\u0120",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ï',
-								'post': ''
+								'pre': "\u0120"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ï',
+						'label': "\u0121",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ï',
-								'post': ''
+								'pre': "\u0121"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ö',
+						'label': "\u0124",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ö',
-								'post': ''
+								'pre': "\u0124"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ö',
+						'label': "\u0125",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ö',
-								'post': ''
+								'pre': "\u0125"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ü',
+						'label': "\u1e24",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ü',
-								'post': ''
+								'pre': "\u1e24"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ü',
+						'label': "\u1e25",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ü',
-								'post': ''
+								'pre': "\u1e25"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ÿ',
+						'label': "\u0126",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ÿ',
-								'post': ''
+								'pre': "\u0126"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ÿ',
+						'label': "\u0127",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ÿ',
-								'post': ''
+								'pre': "\u0127"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ß',
+						'label': "\u00cd",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ß',
-								'post': ''
+								'pre': "\u00cd"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ã',
+						'label': "\u00ed",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ã',
-								'post': ''
+								'pre': "\u00ed"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ã',
+						'label': "\u00cc",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ã',
-								'post': ''
+								'pre': "\u00cc"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ẽ',
+						'label': "\u00ec",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ẽ',
-								'post': ''
+								'pre': "\u00ec"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ẽ',
+						'label': "\u00ce",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ẽ',
-								'post': ''
+								'pre': "\u00ce"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ĩ',
+						'label': "\u00ee",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ĩ',
-								'post': ''
+								'pre': "\u00ee"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ĩ',
+						'label': "\u00cf",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ĩ',
-								'post': ''
+								'pre': "\u00cf"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ñ',
+						'label': "\u00ef",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ñ',
-								'post': ''
+								'pre': "\u00ef"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ñ',
+						'label': "\u0128",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ñ',
-								'post': ''
+								'pre': "\u0128"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Õ',
+						'label': "\u0129",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Õ',
-								'post': ''
+								'pre': "\u0129"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'õ',
+						'label': "\u01cf",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'õ',
-								'post': ''
+								'pre': "\u01cf"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ũ',
+						'label': "\u01d0",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ũ',
-								'post': ''
+								'pre': "\u01d0"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ũ',
+						'label': "\u012a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ũ',
-								'post': ''
+								'pre': "\u012a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ỹ',
+						'label': "\u012b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ỹ',
-								'post': ''
+								'pre': "\u012b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ỹ',
+						'label': "\u012c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ỹ',
-								'post': ''
+								'pre': "\u012c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ç',
+						'label': "\u012d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ç',
-								'post': ''
+								'pre': "\u012d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ç',
+						'label': "\u0130",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ç',
-								'post': ''
+								'pre': "\u0130"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ģ',
+						'label': "\u0131",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ģ',
-								'post': ''
+								'pre': "\u0131"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ģ',
+						'label': "\u012e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ģ',
-								'post': ''
+								'pre': "\u012e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ķ',
+						'label': "\u012f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ķ',
-								'post': ''
+								'pre': "\u012f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ķ',
+						'label': "\u0134",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ķ',
-								'post': ''
+								'pre': "\u0134"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ļ',
+						'label': "\u0135",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ļ',
-								'post': ''
+								'pre': "\u0135"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ļ',
+						'label': "\u0136",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ļ',
-								'post': ''
+								'pre': "\u0136"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ņ',
+						'label': "\u0137",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ņ',
-								'post': ''
+								'pre': "\u0137"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ņ',
+						'label': "\u0139",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ņ',
-								'post': ''
+								'pre': "\u0139"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ŗ',
+						'label': "\u013a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ŗ',
-								'post': ''
+								'pre': "\u013a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ŗ',
+						'label': "\u013b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ŗ',
-								'post': ''
+								'pre': "\u013b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ş',
+						'label': "\u013c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ş',
-								'post': ''
+								'pre': "\u013c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ş',
+						'label': "\u013d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ş',
-								'post': ''
+								'pre': "\u013d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ţ',
+						'label': "\u013e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ţ',
-								'post': ''
+								'pre': "\u013e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ţ',
+						'label': "\u1e36",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ţ',
-								'post': ''
+								'pre': "\u1e36"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Đ',
+						'label': "\u1e37",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Đ',
-								'post': ''
+								'pre': "\u1e37"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'đ',
+						'label': "\u1e38",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'đ',
-								'post': ''
+								'pre': "\u1e38"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ů',
+						'label': "\u1e39",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ů',
-								'post': ''
+								'pre': "\u1e39"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ů',
+						'label': "\u0141",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ů',
-								'post': ''
+								'pre': "\u0141"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ǎ',
+						'label': "\u0142",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ǎ',
-								'post': ''
+								'pre': "\u0142"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǎ',
+						'label': "\u013f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǎ',
-								'post': ''
+								'pre': "\u013f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Č',
+						'label': "\u0140",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Č',
-								'post': ''
+								'pre': "\u0140"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'č',
+						'label': "\u1e42",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'č',
-								'post': ''
+								'pre': "\u1e42"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ď',
+						'label': "\u1e43",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ď',
-								'post': ''
+								'pre': "\u1e43"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ď',
+						'label': "\u0143",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ď',
-								'post': ''
+								'pre': "\u0143"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ě',
+						'label': "\u0144",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ě',
-								'post': ''
+								'pre': "\u0144"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ě',
+						'label': "\u00d1",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ě',
-								'post': ''
+								'pre': "\u00d1"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ǐ',
+						'label': "\u00f1",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ǐ',
-								'post': ''
+								'pre': "\u00f1"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǐ',
+						'label': "\u0145",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǐ',
-								'post': ''
+								'pre': "\u0145"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ľ',
+						'label': "\u0146",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ľ',
-								'post': ''
+								'pre': "\u0146"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ľ',
+						'label': "\u0147",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ľ',
-								'post': ''
+								'pre': "\u0147"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ň',
+						'label': "\u0148",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ň',
-								'post': ''
+								'pre': "\u0148"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ň',
+						'label': "\u1e46",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ň',
-								'post': ''
+								'pre': "\u1e46"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ǒ',
+						'label': "\u1e47",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ǒ',
-								'post': ''
+								'pre': "\u1e47"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǒ',
+						'label': "\u00d3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǒ',
-								'post': ''
+								'pre': "\u00d3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ř',
+						'label': "\u00f3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ř',
-								'post': ''
+								'pre': "\u00f3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ř',
+						'label': "\u00d2",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ř',
-								'post': ''
+								'pre': "\u00d2"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Š',
+						'label': "\u00f2",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Š',
-								'post': ''
+								'pre': "\u00f2"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'š',
+						'label': "\u00d4",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'š',
-								'post': ''
+								'pre': "\u00d4"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ť',
+						'label': "\u00f4",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ť',
-								'post': ''
+								'pre': "\u00f4"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ť',
+						'label': "\u00d6",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ť',
-								'post': ''
+								'pre': "\u00d6"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ǔ',
+						'label': "\u00f6",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ǔ',
-								'post': ''
+								'pre': "\u00f6"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǔ',
+						'label': "\u00d5",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǔ',
-								'post': ''
+								'pre': "\u00d5"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ž',
+						'label': "\u00f5",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ž',
-								'post': ''
+								'pre': "\u00f5"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ž',
+						'label': "\u01d1",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ž',
-								'post': ''
+								'pre': "\u01d1"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ā',
+						'label': "\u01d2",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ā',
-								'post': ''
+								'pre': "\u01d2"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ā',
+						'label': "\u014c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ā',
-								'post': ''
+								'pre': "\u014c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ē',
+						'label': "\u014d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ē',
-								'post': ''
+								'pre': "\u014d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ē',
+						'label': "\u014e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ē',
-								'post': ''
+								'pre': "\u014e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ī',
+						'label': "\u014f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ī',
-								'post': ''
+								'pre': "\u014f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ī',
+						'label': "\u01ea",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ī',
-								'post': ''
+								'pre': "\u01ea"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ō',
+						'label': "\u01eb",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ō',
-								'post': ''
+								'pre': "\u01eb"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ō',
+						'label': "\u0150",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ō',
-								'post': ''
+								'pre': "\u0150"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ū',
+						'label': "\u0151",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ū',
-								'post': ''
+								'pre': "\u0151"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ū',
+						'label': "\u0154",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ū',
-								'post': ''
+								'pre': "\u0154"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ȳ',
+						'label': "\u0155",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ȳ',
-								'post': ''
+								'pre': "\u0155"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ȳ',
+						'label': "\u0156",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ȳ',
-								'post': ''
+								'pre': "\u0156"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ǣ',
+						'label': "\u0157",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ǣ',
-								'post': ''
+								'pre': "\u0157"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǣ',
+						'label': "\u0158",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǣ',
-								'post': ''
+								'pre': "\u0158"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǖ',
+						'label': "\u0159",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǖ',
-								'post': ''
+								'pre': "\u0159"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǘ',
+						'label': "\u1e5a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǘ',
-								'post': ''
+								'pre': "\u1e5a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǚ',
+						'label': "\u1e5b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǚ',
-								'post': ''
+								'pre': "\u1e5b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǜ',
+						'label': "\u1e5c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǜ',
-								'post': ''
+								'pre': "\u1e5c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ă',
+						'label': "\u1e5d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ă',
-								'post': ''
+								'pre': "\u1e5d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ă',
+						'label': "\u015a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ă',
-								'post': ''
+								'pre': "\u015a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ĕ',
+						'label': "\u015b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ĕ',
-								'post': ''
+								'pre': "\u015b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ĕ',
+						'label': "\u015c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ĕ',
-								'post': ''
+								'pre': "\u015c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ğ',
+						'label': "\u015d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ğ',
-								'post': ''
+								'pre': "\u015d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ğ',
+						'label': "\u015e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ğ',
-								'post': ''
+								'pre': "\u015e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ĭ',
+						'label': "\u015f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ĭ',
-								'post': ''
+								'pre': "\u015f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ĭ',
+						'label': "\u0160",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ĭ',
-								'post': ''
+								'pre': "\u0160"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ŏ',
+						'label': "\u0161",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ŏ',
-								'post': ''
+								'pre': "\u0161"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ŏ',
+						'label': "\u1e62",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ŏ',
-								'post': ''
+								'pre': "\u1e62"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ŭ',
+						'label': "\u1e63",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ŭ',
-								'post': ''
+								'pre': "\u1e63"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ŭ',
+						'label': "\u0162",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ŭ',
-								'post': ''
+								'pre': "\u0162"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ċ',
+						'label': "\u0163",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ċ',
-								'post': ''
+								'pre': "\u0163"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ċ',
+						'label': "\u0164",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ċ',
-								'post': ''
+								'pre': "\u0164"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ė',
+						'label': "\u0165",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ė',
-								'post': ''
+								'pre': "\u0165"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ė',
+						'label': "\u1e6c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ė',
-								'post': ''
+								'pre': "\u1e6c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ġ',
+						'label': "\u1e6d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ġ',
-								'post': ''
+								'pre': "\u1e6d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ġ',
+						'label': "\u00da",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ġ',
-								'post': ''
+								'pre': "\u00da"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'İ',
+						'label': "\u00fa",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'İ',
-								'post': ''
+								'pre': "\u00fa"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ı',
+						'label': "\u00d9",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ı',
-								'post': ''
+								'pre': "\u00d9"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ż',
+						'label': "\u00f9",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ż',
-								'post': ''
+								'pre': "\u00f9"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ż',
+						'label': "\u00db",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ż',
-								'post': ''
+								'pre': "\u00db"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ą',
+						'label': "\u00fb",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ą',
-								'post': ''
+								'pre': "\u00fb"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ą',
+						'label': "\u00dc",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ą',
-								'post': ''
+								'pre': "\u00dc"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ę',
+						'label': "\u00fc",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ę',
-								'post': ''
+								'pre': "\u00fc"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ę',
+						'label': "\u0168",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ę',
-								'post': ''
+								'pre': "\u0168"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Į',
+						'label': "\u0169",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Į',
-								'post': ''
+								'pre': "\u0169"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'į',
+						'label': "\u016e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'į',
-								'post': ''
+								'pre': "\u016e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ǫ',
+						'label': "\u016f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ǫ',
-								'post': ''
+								'pre': "\u016f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ǫ',
+						'label': "\u01d3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ǫ',
-								'post': ''
+								'pre': "\u01d3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ų',
+						'label': "\u01d4",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ų',
-								'post': ''
+								'pre': "\u01d4"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ų',
+						'label': "\u016a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ų',
-								'post': ''
+								'pre': "\u016a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ḍ',
+						'label': "\u016b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ḍ',
-								'post': ''
+								'pre': "\u016b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ḍ',
+						'label': "\u01d6",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ḍ',
-								'post': ''
+								'pre': "\u01d6"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ḥ',
+						'label': "\u01d8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ḥ',
-								'post': ''
+								'pre': "\u01d8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ḥ',
+						'label': "\u01da",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ḥ',
-								'post': ''
+								'pre': "\u01da"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ḷ',
+						'label': "\u01dc",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ḷ',
-								'post': ''
+								'pre': "\u01dc"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ḷ',
+						'label': "\u016c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ḷ',
-								'post': ''
+								'pre': "\u016c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ḹ',
+						'label': "\u016d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ḹ',
-								'post': ''
+								'pre': "\u016d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ḹ',
+						'label': "\u0172",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ḹ',
-								'post': ''
+								'pre': "\u0172"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ṃ',
+						'label': "\u0173",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ṃ',
-								'post': ''
+								'pre': "\u0173"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ṃ',
+						'label': "\u0170",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ṃ',
-								'post': ''
+								'pre': "\u0170"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ṇ',
+						'label': "\u0171",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ṇ',
-								'post': ''
+								'pre': "\u0171"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ṇ',
+						'label': "\u0174",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ṇ',
-								'post': ''
+								'pre': "\u0174"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ṛ',
+						'label': "\u0175",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ṛ',
-								'post': ''
+								'pre': "\u0175"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ṛ',
+						'label': "\u00dd",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ṛ',
-								'post': ''
+								'pre': "\u00dd"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ṝ',
+						'label': "\u00fd",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ṝ',
-								'post': ''
+								'pre': "\u00fd"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ṝ',
+						'label': "\u0176",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ṝ',
-								'post': ''
+								'pre': "\u0176"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ṣ',
+						'label': "\u0177",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ṣ',
-								'post': ''
+								'pre': "\u0177"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ṣ',
+						'label': "\u0178",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ṣ',
-								'post': ''
+								'pre': "\u0178"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ṭ',
+						'label': "\u00ff",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ṭ',
-								'post': ''
+								'pre': "\u00ff"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ṭ',
+						'label': "\u1ef8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ṭ',
-								'post': ''
+								'pre': "\u1ef8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ł',
+						'label': "\u1ef9",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ł',
-								'post': ''
+								'pre': "\u1ef9"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ł',
+						'label': "\u0232",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ł',
-								'post': ''
+								'pre': "\u0232"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ő',
+						'label': "\u0233",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ő',
-								'post': ''
+								'pre': "\u0233"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ő',
+						'label': "\u0179",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ő',
-								'post': ''
+								'pre': "\u0179"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ű',
+						'label': "\u017a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ű',
-								'post': ''
+								'pre': "\u017a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ű',
+						'label': "\u017d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ű',
-								'post': ''
+								'pre': "\u017d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ŀ',
+						'label': "\u017e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ŀ',
-								'post': ''
+								'pre': "\u017e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ŀ',
+						'label': "\u017b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ŀ',
-								'post': ''
+								'pre': "\u017b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ħ',
+						'label': "\u017c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ħ',
-								'post': ''
+								'pre': "\u017c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ħ',
+						'label': "\u00c6",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ħ',
-								'post': ''
+								'pre': "\u00c6"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ð',
+						'label': "\u00e6",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ð',
-								'post': ''
+								'pre': "\u00e6"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ð',
+						'label': "\u01e2",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ð',
-								'post': ''
+								'pre': "\u01e2"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Þ',
+						'label': "\u01e3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Þ',
-								'post': ''
+								'pre': "\u01e3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'þ',
+						'label': "\u00d8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'þ',
-								'post': ''
+								'pre': "\u00d8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Œ',
+						'label': "\u00f8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Œ',
-								'post': ''
+								'pre': "\u00f8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'œ',
+						'label': "\u0152",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'œ',
-								'post': ''
+								'pre': "\u0152"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Æ',
+						'label': "\u0153",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Æ',
-								'post': ''
+								'pre': "\u0153"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'æ',
+						'label': "\u00df",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'æ',
-								'post': ''
+								'pre': "\u00df"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ø',
+						'label': "\u00f0",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ø',
-								'post': ''
+								'pre': "\u00f0"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ø',
+						'label': "\u00de",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ø',
-								'post': ''
+								'pre': "\u00de"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Å',
+						'label': "\u00fe",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Å',
-								'post': ''
+								'pre': "\u00fe"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'å',
+						'label': "\u018f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'å',
-								'post': ''
+								'pre': "\u018f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ə',
+						'label': "\u0259",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ə',
-								'post': ''
-							}
-						}
-					},
-					{
-						'type': 'link',
-						'label': 'ə',
-						'action': {
-							'type': 'encapsulate',
-							'options': {
-								'pre': 'ə',
-								'post': ''
+								'pre': "\u0259"
 							}
 						}
 					}
@@ -6011,694 +5776,631 @@ var editToolbarConfiguration = {
 				'characters': [
 					{
 						'type': 'link',
-						'label': 'Α',
+						'label': "\u0391",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Α',
-								'post': ''
+								'pre': "\u0391"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ά',
+						'label': "\u0386",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ά',
-								'post': ''
+								'pre': "\u0386"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Β',
+						'label': "\u03b1",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Β',
-								'post': ''
+								'pre': "\u03b1"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Γ',
+						'label': "\u03ac",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Γ',
-								'post': ''
+								'pre': "\u03ac"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Δ',
+						'label': "\u0392",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Δ',
-								'post': ''
+								'pre': "\u0392"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ε',
+						'label': "\u03b2",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ε',
-								'post': ''
+								'pre': "\u03b2"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Έ',
+						'label': "\u0393",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Έ',
-								'post': ''
+								'pre': "\u0393"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ζ',
+						'label': "\u03b3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ζ',
-								'post': ''
+								'pre': "\u03b3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Η',
+						'label': "\u0394",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Η',
-								'post': ''
+								'pre': "\u0394"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ή',
+						'label': "\u03b4",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ή',
-								'post': ''
+								'pre': "\u03b4"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Θ',
+						'label': "\u0395",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Θ',
-								'post': ''
+								'pre': "\u0395"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ι',
+						'label': "\u0388",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ι',
-								'post': ''
+								'pre': "\u0388"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ί',
+						'label': "\u03b5",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ί',
-								'post': ''
+								'pre': "\u03b5"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Κ',
+						'label': "\u03ad",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Κ',
-								'post': ''
+								'pre': "\u03ad"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Λ',
+						'label': "\u0396",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Λ',
-								'post': ''
+								'pre': "\u0396"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Μ',
+						'label': "\u03b6",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Μ',
-								'post': ''
+								'pre': "\u03b6"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ν',
+						'label': "\u0397",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ν',
-								'post': ''
+								'pre': "\u0397"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ξ',
+						'label': "\u0389",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ξ',
-								'post': ''
+								'pre': "\u0389"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ο',
+						'label': "\u03b7",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ο',
-								'post': ''
+								'pre': "\u03b7"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ό',
+						'label': "\u03ae",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ό',
-								'post': ''
+								'pre': "\u03ae"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Π',
+						'label': "\u0398",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Π',
-								'post': ''
+								'pre': "\u0398"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ρ',
+						'label': "\u03b8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ρ',
-								'post': ''
+								'pre': "\u03b8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Σ',
+						'label': "\u0399",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Σ',
-								'post': ''
+								'pre': "\u0399"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Τ',
+						'label': "\u038a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Τ',
-								'post': ''
+								'pre': "\u038a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Υ',
+						'label': "\u03b9",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Υ',
-								'post': ''
+								'pre': "\u03b9"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ύ',
+						'label': "\u03af",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ύ',
-								'post': ''
+								'pre': "\u03af"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Φ',
+						'label': "\u039a",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Φ',
-								'post': ''
+								'pre': "\u039a"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Χ',
+						'label': "\u03ba",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Χ',
-								'post': ''
+								'pre': "\u03ba"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ψ',
+						'label': "\u039b",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ψ',
-								'post': ''
+								'pre': "\u039b"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ω',
+						'label': "\u03bb",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ω',
-								'post': ''
+								'pre': "\u03bb"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'Ώ',
+						'label': "\u039c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'Ώ',
-								'post': ''
+								'pre': "\u039c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'α',
+						'label': "\u03bc",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'α',
-								'post': ''
+								'pre': "\u03bc"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ά',
+						'label': "\u039d",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ά',
-								'post': ''
+								'pre': "\u039d"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'β',
+						'label': "\u03bd",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'β',
-								'post': ''
+								'pre': "\u03bd"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'γ',
+						'label': "\u039e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'γ',
-								'post': ''
+								'pre': "\u039e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'δ',
+						'label': "\u03be",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'δ',
-								'post': ''
+								'pre': "\u03be"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ε',
+						'label': "\u039f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ε',
-								'post': ''
+								'pre': "\u039f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'έ',
+						'label': "\u038c",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'έ',
-								'post': ''
+								'pre': "\u038c"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ζ',
+						'label': "\u03bf",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ζ',
-								'post': ''
+								'pre': "\u03bf"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'η',
+						'label': "\u03cc",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'η',
-								'post': ''
+								'pre': "\u03cc"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ή',
+						'label': "\u03a0",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ή',
-								'post': ''
+								'pre': "\u03a0"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'θ',
+						'label': "\u03c0",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'θ',
-								'post': ''
+								'pre': "\u03c0"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ι',
+						'label': "\u03a1",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ι',
-								'post': ''
+								'pre': "\u03a1"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ί',
+						'label': "\u03c1",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ί',
-								'post': ''
+								'pre': "\u03c1"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'κ',
+						'label': "\u03a3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'κ',
-								'post': ''
+								'pre': "\u03a3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'λ',
+						'label': "\u03c3",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'λ',
-								'post': ''
+								'pre': "\u03c3"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'μ',
+						'label': "\u03c2",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'μ',
-								'post': ''
+								'pre': "\u03c2"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ν',
+						'label': "\u03a4",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ν',
-								'post': ''
+								'pre': "\u03a4"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ξ',
+						'label': "\u03c4",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ξ',
-								'post': ''
+								'pre': "\u03c4"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ο',
+						'label': "\u03a5",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ο',
-								'post': ''
+								'pre': "\u03a5"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ό',
+						'label': "\u038e",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ό',
-								'post': ''
+								'pre': "\u038e"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'π',
+						'label': "\u03c5",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'π',
-								'post': ''
+								'pre': "\u03c5"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ρ',
+						'label': "\u03cd",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ρ',
-								'post': ''
+								'pre': "\u03cd"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'σ',
+						'label': "\u03a6",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'σ',
-								'post': ''
+								'pre': "\u03a6"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ς',
+						'label': "\u03c6",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ς',
-								'post': ''
+								'pre': "\u03c6"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'τ',
+						'label': "\u03a7",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'τ',
-								'post': ''
+								'pre': "\u03a7"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'υ',
+						'label': "\u03c7",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'υ',
-								'post': ''
+								'pre': "\u03c7"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ύ',
+						'label': "\u03a8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ύ',
-								'post': ''
+								'pre': "\u03a8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'φ',
+						'label': "\u03c8",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'φ',
-								'post': ''
+								'pre': "\u03c8"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'χ',
+						'label': "\u03a9",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'χ',
-								'post': ''
+								'pre': "\u03a9"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ψ',
+						'label': "\u038f",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ψ',
-								'post': ''
+								'pre': "\u038f"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ω',
+						'label': "\u03c9",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ω',
-								'post': ''
+								'pre': "\u03c9"
 							}
 						}
 					},
 					{
 						'type': 'link',
-						'label': 'ώ',
+						'label': "\u03ce",
 						'action': {
 							'type': 'encapsulate',
 							'options': {
-								'pre': 'ώ',
-								'post': ''
+								'pre': "\u03ce"
 							}
 						}
 					}
