@@ -39,7 +39,7 @@ function efI18nTagsInit() {
 	$wgParser->setHook( 'grammar',   array($class, 'grammar') );
 	$wgParser->setHook( 'plural',    array($class, 'plural') );
 	$wgParser->setHook( 'linktrail', array($class, 'linktrail') );
-	wfLoadExtensionMessages( 'I18nTags' );
+	wfLoadExtensionMessages( 'I18nTags' ); // FOR BC
 	$wgParser->setFunctionHook( 'languagename',  array($class, 'languageName' ) );
 	return true;
 }

@@ -1,10 +1,6 @@
 <?php
-/* Internationnalization messages Files for
-   I18nTags extension */
 
-$magicWords['en'] = array(
-'languagename' => array( 0, 'languagename' ),
-);
+require_once( dirname(__FILE__) . '/I18nTags.magic.php' );
 
 $messages = array();
 
@@ -347,4 +343,3 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'i18ntags-desc' => '提供存取任何語言的數字格式、文法和複數型等i18n相關資訊',
 );
-
