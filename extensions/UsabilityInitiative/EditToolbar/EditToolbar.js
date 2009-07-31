@@ -2,7 +2,7 @@
 
 js2AddOnloadHook( function() {
 	$j( 'textarea#wpTextbox1' )
-		.wrap( $j( '<div></div>' ) .attr( 'id', 'edit-ui' ) )
+		.wrap( $j( '<div></div>' ).attr( 'id', 'edit-ui' ) )
 		.wrap( $j( '<div></div>' ).attr( 'id', 'edit-ui-bottom' ) )
 		.wrap( $j( '<div></div>' ).attr( 'id', 'edit-ui-text' ) );
 	$j( 'div#edit-ui' ).prepend(
@@ -11,12 +11,10 @@ js2AddOnloadHook( function() {
 			.append(
 				$j( '<div></div>' )
 					.attr( 'id', 'edit-toolbar' )
-					.toolbar(
-						$j( 'textarea#wpTextbox1' ),
-						editToolbarConfiguration
-					)
 			)
 	);
+	$j( 'div#edit-toolbar' ).toolbar( $j( 'textarea#wpTextbox1' ),
+		editToolbarConfiguration );
 });
 
 // Generate special chars tools from an array of characters

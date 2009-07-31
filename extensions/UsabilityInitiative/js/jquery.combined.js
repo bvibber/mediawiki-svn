@@ -4910,12 +4910,9 @@ toolbar: function( textbox, tools ) {
 			$(this).addToolbarSection( tools.main, textbox, 'main' );
 		}
 		var tabDiv = $( '<div></div>' )
-			.attr( 'class', 'tabs' )
-			.appendTo( $(this) );
+			.attr( 'class', 'tabs' );
 		var sectionsDiv = $( '<div></div>' )
-			.attr( 'class', 'sections' )
-			.appendTo( $(this) );
-		$(this).append( $( '<div></div>' ).addClass( 'break' ) );
+			.attr( 'class', 'sections' );
 		var sectionCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-section';
 		var sectionQueue = [];
 		for ( section in tools ) {
@@ -4927,14 +4924,14 @@ toolbar: function( textbox, tools ) {
 					'class': 'section',
 					'id': $(this).attr( 'id' ) + '-section-' + section
 				} )
-				.appendTo( sectionsDiv )
 				.addClass( 'loading' )
 				.append(
 					$( '<div></div>' )
 						.addClass( 'progress' )
 						.text( gM( 'edittoolbar-loading' )
 					)
-				);
+				)
+				.appendTo( sectionsDiv );
 			var current = false;
 			if ( $.cookie( sectionCookie ) == sectionDiv.attr( 'id' ) ) {
 				sectionDiv.attr( 'style', 'display:block' );
@@ -4991,6 +4988,9 @@ toolbar: function( textbox, tools ) {
 					)
 			);
 		}
+		$(this).append( tabDiv )
+			.append( sectionsDiv )
+			.append( $( '<div></div>' ).addClass( 'break' ) );
 		$.eachAsync( sectionQueue, {
 			bulk: 0,
 			loop: function( index, value ) {
@@ -5032,8 +5032,7 @@ addToolbarSection: function( section, textbox, id ) {
 			}
 			for ( group in section.groups ) {
 				var groupDiv = $( '<div></div>' )
-					.attr( 'class', 'group' )
-					.appendTo( $(this) );
+					.attr( 'class', 'group' );
 				if ( msgSet( section.groups[group], 'label' ) ) {
 					groupDiv.append(
 						$( '<div></div>' )
@@ -5103,6 +5102,7 @@ addToolbarSection: function( section, textbox, id ) {
 						default: break;
 					}
 				}
+				$(this).append( groupDiv );
 			}
 		break;
 		case 'booklet':
@@ -5110,8 +5110,7 @@ addToolbarSection: function( section, textbox, id ) {
 				return;
 			}
 			var indexDiv = $( '<div></div>' )
-				.attr( 'class', 'index' )
-				.appendTo( $(this) );
+				.attr( 'class', 'index' );
 			var bookletCookie =
 				'edittoolbar-' + $(this).attr( 'id' ) + '-booklet-' + id;
 			var selectedID = $.cookie( bookletCookie ); 
@@ -5151,13 +5150,11 @@ addToolbarSection: function( section, textbox, id ) {
 				);
 			}
 			var pagesDiv = $( '<div></div>' )
-				.attr( 'class', 'pages' )
-				.appendTo( $(this) );
+				.attr( 'class', 'pages' );
 			for ( page in section.pages ) {
 				var pageDiv = $( '<div></div>' )
 					.attr( 'class', 'page page-' + page )
-					.css( 'display', page === selectedID ? 'block' : 'none' )
-					.appendTo( pagesDiv );
+					.css( 'display', page === selectedID ? 'block' : 'none' );
 				switch ( section.pages[page].layout ) {
 					case 'table':
 						var contentTable = $( '<table></table>' )
@@ -5166,10 +5163,8 @@ addToolbarSection: function( section, textbox, id ) {
 								'cellspacing': '0',
 								'border': '0',
 								'width': '100%'
-							} )
-							.appendTo( pageDiv );
-						var headingRow = $( '<tr></tr>' )
-							.appendTo( contentTable );
+							} );
+						var headingRow = $( '<tr></tr>' );
 						for ( heading in section.pages[page].headings ) {
 							$( '<th></th>' )
 								.text(
@@ -5181,9 +5176,9 @@ addToolbarSection: function( section, textbox, id ) {
 								)
 								.appendTo( headingRow );
 						}
+						contentTable.append( headingRow );
 						for ( row in section.pages[page].rows ) {
-							var contentRow = $( '<tr></tr>' )
-								.appendTo( contentTable );
+							var contentRow = $( '<tr></tr>' );
 							for ( cell in section.pages[page].rows[row] ) {
 								$( '<td></td>' )
 									.attr( {
@@ -5202,13 +5197,14 @@ addToolbarSection: function( section, textbox, id ) {
 									)
 									.appendTo( contentRow );
 							}
+							contentTable.append( contentRow );
 						}
+						pageDiv.append( contentTable );
 					break;
 					case 'characters':
 						var charsDiv = $( '<div />' )
 							.attr( section.pages[page].attributes )
-							.css( section.pages[page].styles )
-							.appendTo( pageDiv );
+							.css( section.pages[page].styles );
 						for ( character in section.pages[page].characters ) {
 							switch (
 								section.pages[page].characters[character].type
@@ -5228,17 +5224,18 @@ addToolbarSection: function( section, textbox, id ) {
 											)
 											.data( 'context', context)
 											.click( action )
-											.click(
-												function() { return false; }
-											)
 									);
 								break;
 							}
 						}
+						pageDiv.append( charsDiv );
 					break;
 					default: break;
 				}
+				pagesDiv.append( pageDiv );
 			}
+			$(this).append( indexDiv )
+				.append( pagesDiv );
 		break;
 		default: break;
 	}
