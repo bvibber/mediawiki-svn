@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('DT_VERSION','0.3.3');
+define('DT_VERSION','0.3.4');
 
 // constants for special properties
 define('DT_SP_HAS_XML_GROUPING', 1);
