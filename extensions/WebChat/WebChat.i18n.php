@@ -10,6 +10,7 @@ $messages = array();
 
 /** English
  * @author Robert Leverington <robert@rhl.me.uk>
+ * @author Purodha <http://ksh.wikipedia.org/wiki/User:Purodha>
  */
 $messages['en'] = array(
 	'webchat'       => 'Web chat',
@@ -18,5 +19,5 @@ $messages['en'] = array(
 To connect simply press the "Connect" button.
 If you are logged in your nickname will have been prefilled.
 Anonymous users are given an automatically generated one, but it can be changed.',
-	'right-webchat'  => 'Allowed to use web chat',
+	'right-webchat'  => 'Allowed to use [[Special:WebChat|web chat]]',
 );
