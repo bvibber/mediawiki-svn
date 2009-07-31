@@ -56,6 +56,26 @@ class WikiAtHome {
 	const ENC_HQ_STREAM = 'high_quality';
 }
 
+//GLOBAL FUNCTIONS:
+
+/*
+ * gets the json metadata from a given file (also validates it as a valid file)
+ */
+function wahGetMediaJsonMeta( $path ){
+	$cmd = wfEscapeShellArg( $wgffmpeg2theora ) . ' ' . wfEscapeShellArg ( $path ). ' --info';
+	wfProfileIn( 'ffmpeg2theora shellExec' );
+	wfDebug( __METHOD__.": $cmd\n" );
+	$json_meta_str = wfShellExec( $cmd );
+	wfProfileOut( 'ffmpeg2theora shellExec' );
+	$objMeta = json_decode( $json_meta_str );
+
+	//if we return the same string then json_decode has failed in php < 5.2.6
+	//workaround for bug http://bugs.php.net/bug.php?id=45989
+	if( $objMeta == $json_meta_str )
+		return false;
+	return $objMeta;
+}
+
 /******************* CONFIGURATION STARTS HERE **********************/
 
 //ffmpeg2theora path: enables us to get basic source file information

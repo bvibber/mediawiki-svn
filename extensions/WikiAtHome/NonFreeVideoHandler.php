@@ -94,15 +94,10 @@ class NonFreeVideoHandler extends MediaHandler {
 		//if we have  fffmpeg2theora
 		if( $wgffmpeg2theora && is_file( $wgffmpeg2theora ) ){
 
-			$cmd = wfEscapeShellArg( $wgffmpeg2theora ) . ' ' . wfEscapeShellArg ( $path ). ' --info';
-			wfProfileIn( 'ffmpeg2theora' );
-			wfDebug( __METHOD__.": $cmd\n" );
-			$json_meta_str = wfShellExec( $cmd );
-			wfProfileOut( 'ffmpeg2theora' );
+			$mediaMeta = wahGetMediaJsonMeta( $path );
 
-			$json_file_meta = json_decode( $json_meta_str );
-			if( $json_file_meta ){
-				foreach($json_file_meta as $k=>$v){
+			if( $mediaMeta ){
+				foreach($mediaMeta as $k=>$v){
 					if( !isset( $metadata[ $k ]))
 						$metadata[ $k ] = $v;
 				}
@@ -138,7 +133,10 @@ class NonFreeVideoHandler extends MediaHandler {
 		$height = $srcWidth == 0 ? $srcHeight : $width * $srcHeight / $srcWidth;
 		//set the width based on the requested width:
 
-
+		/*print_r($file);
+		print_r($params);
+		print " dpath: $dstPath, durl: $dstUrl <br>";
+		die();*/
 
 		//do some arbitrary derivative selection logic:
 		$encodeKey = $this->getTargetDerivative($width, $srcWidth);

@@ -16,7 +16,7 @@ class WahJobManager {
 		$fname = 'WahJobManager::getDonePerc';
 		//grab the jobset
 		$dbr = &wfGetDb( DB_READ );
-		$res = $dbr->select('wah_jobset',
+		$setRow = $dbr->selectRow('wah_jobset',
 			'*',
 			array(
 				'set_namespace' => $this->sNamespace,
@@ -25,30 +25,38 @@ class WahJobManager {
 			),
 			__METHOD__
 		);
-		if( $dbr->numRows( $res ) == 0 ){
+		if( !$setRow ){
 			//we should setup the job:
 			$this->doJobSetup();
 			//return 0 percent done
 			return 0;
 		}else{
-			$setRow = $dbr->fetchObject( $res );
+			//quick check if we are done at the set level:
+			if( $setRow->set_done_time )
+				return 1;
+
+			//else check how done are we:
 			$this->sId = $setRow->set_id;
 			$this->sJobsCount = $setRow->set_jobs_count;
-			//get an estimate of how many of the current job are NULL (not completed)
+			//get an estimate of how many jobs are done  (not null)
+			//@@note:  estimateRowCount ~might be more appropriate
+			// but it was behaving inconsistently for me~
 			$doneRes = $dbr->select('wah_jobqueue',
 				'job_id',
 				array(
 					'job_set_id' => $this->sId,
 					'job_done_time IS NOT NULL'
 				),
-				$fname
+				__METHOD__
 			);
 			$doneCount = $dbr->numRows( $doneRes );
-			if( $doneCount == $this->sJobsCount )
+			if( $doneCount == $this->sJobsCount ){
+				//update the job_set (should already hae been done)
 				return 1;
+			}
 			//return 1 when doneCount == sJobCount
 			//(we also set this at a higher level and avoid hitting the wah_jobqueue table alltogehter)
-			return round( $doneCount / $this->sJobsCount , 3);
+			return round( $doneCount / $this->sJobsCount , 2);
 		}
 	}
 	/*
@@ -65,79 +73,64 @@ class WahJobManager {
 		//its always best to assigning from jobset (since the user already has the data)
 		if( $jobset_id ){
 			//try to get one from the current jobset
-			$res = $dbr->select( 'wah_jobqueue',
+			$job = $dbr->selectRow( 'wah_jobqueue',
 				'*',
 				array(
 					'job_set_id' =>  intval( $jobset_id ),
 					'job_done_time IS NULL',
 					'job_last_assigned_time < '.  $dbr->addQuotes( time() - $wgJobTimeOut )
 				),
-				__METHOD__,
-				array(
-					'LIMIT'=>1
-				)
+				__METHOD__
 			);
-			if( $dbr->numRows( $res ) != 0){
-				$job = $dbr->fetchObject( $res );
+			if( $job ){
 				return WahJobManager::assignJob( $job );
 			}
 		}
-		
+
 		//check if we already have a job given but never completed:
-		$res = $dbr->select( 'wah_jobqueue',
+		$job = $dbr->selectRow( 'wah_jobqueue',
 			'*',
 			array(
 				'job_last_assigned_user_id' => $wgUser->getId()
 			),
-		 	__METHOD__,
-			array(
-				'LIMIT'=>1
-			)
+		 	__METHOD__
 		);
-		//re-assing the same job (don't update
-		if( $dbr->numRows( $res ) != 0){
-			$job = $dbr->fetchObject( $res );
-			return WahJobManager::assignJob( $job , false, false);	
+
+		//re-assign the same job (don't update anything so it can timeout if they keep getting the same job)
+		if( $job ){
+			return WahJobManager::assignJob( $job , false, false);
 		}
-		
+
 		//just do a normal select from jobset
-		$setRes = $dbr->select( 'wah_jobset',
+		$jobSet = $dbr->selectRow( 'wah_jobset',
 			'*',
 			array(
 				'set_done_time IS NULL',
 				'set_client_count < '.  $dbr->addQuotes( $wgNumberOfClientsPerJobSet )
 			),
-			__METHOD__,
-			array(
-				'LIMIT'		=> 1
-			)
+			__METHOD__
 		);
-		if( $dbr->numRows( $setRes ) == 0){
-			//no jobs:			
+		if( $jobSet ){
+			//no jobs:
 			return false;
 		}else{
 			//get a job from the jobset and increment the set_client_count
 			//(if the user has an unfinished job) re assign it (in cases where job is lost in trasport)
-			$jobSet = $dbr->fetchObject( $setRes );
 			//get a job from the selected jobset:
-			$jobRes = $dbr->select('wah_jobqueue', '*',
+			$job = $dbr->selectRow('wah_jobqueue', '*',
 					array(
 						'job_set_id' => $jobSet->set_id,
 						'job_done_time IS NULL',
-						'job_last_assigned_time IS NULL OR job_last_assigned_time < ' . 
-							 $dbr->addQuotes( time() - $wgJobTimeOut ) 
+						'job_last_assigned_time IS NULL OR job_last_assigned_time < ' .
+							 $dbr->addQuotes( time() - $wgJobTimeOut )
 					),
-					__METHOD__,
-					array(
-						'LIMIT'		=> 1
-					)
+					__METHOD__
 			);
-			if( $dbr->numRows( $jobRes ) == 0){				
+			if( !$job ){
 				//no jobs in this jobset (return nojob)
 				//@@todo we could "retry" since we will get here when a set has everything assigned in less than $wgJobTimeOut
 				return false;
 			}else{
-				$job =  $dbr->fetchObject( $jobRes );
 				return WahJobManager::assignJob( $job , $jobSet);
 			}
 		}
@@ -154,12 +147,12 @@ class WahJobManager {
 		$dbr = wfGetDb( DB_READ );
 		$dbw = wfGetDb( DB_WRITE );
 		if( $jobSet == false ){
-			$jobSet = self::getJobSetBySetId( $job->job_set_id );
+			$jobSet = self::getJobSetById( $job->job_set_id );
 		}
 		//set the title and namespace:
 		$job->title = $jobSet->set_title;
 		$job->ns	= $jobSet->set_namespace;
-		
+
 		//check if we should update the tables for the assigned Job
 		if( $doUpdate ){
 			//for jobqueue update: job_last_assigned_time, job_last_assigned_user_id, job_assign_count
@@ -196,19 +189,23 @@ class WahJobManager {
 		}
 		return $job;
 	}
-	static function getJobSetBySetId( $set_id ){
+	static function getJobSetById( $set_id ){
 		$dbr = wfGetDb( DB_READ );
-		$setRes = $dbr->select('wah_jobset', '*',
+		return  $dbr->selectRow('wah_jobset', '*',
 			array(
 				'set_id' => $set_id
 			),
-			__METHOD__,
-			array(
-				'LIMIT'		=> 1
-			)
+			__METHOD__
 		);
-		$jobSet = $dbr->fetchObject( $setRes );
-		return $jobSet;
+	}
+	static function getJobById( $job_id ){
+		$dbr = wfGetDb( DB_READ );
+		return $dbr->selectRow('wah_jobset', '*',
+			array(
+				'job_id' => $set_id
+			),
+			__METHOD__
+		);
 	}
 	/*
 	 * setups up a new job
@@ -243,7 +240,7 @@ class WahJobManager {
 			$encSettingsAry['endtime']	 = $encSettingsAry['starttime'] + $wgChunkDuration;
 
 			$jobJsonAry = array(
-				'jobType'		=> 'transcode',				
+				'jobType'		=> 'transcode',
 				'chunkNumber'	=> $i,
 				'encodeSettings'=> $encSettingsAry
 			);
@@ -251,7 +248,7 @@ class WahJobManager {
 			//add starttime and endtime
 			$jobInsertArray[] =
 				array(
-					'job_set_id' => $this->sId,					
+					'job_set_id' => $this->sId,
 					'job_json'	 => ApiFormatJson::getJsonEncode( $jobJsonAry )
 				);
 		}

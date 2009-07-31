@@ -2,18 +2,29 @@
 
 //load msgs:
 loadGM({
-	'wah-menu-jobs'	: "Jobs",
-	'wah-menu-stats': "Stats",
-	'wah-menu-pref'	: "Prefrences",
-	'wah-loading'	: 'loading wiki@home interface <blink>...</blink>',
+	"wah-menu-jobs"	: "Jobs",
+	"wah-menu-stats": "Stats",
+	"wah-menu-pref"	: "Prefrences",
+	"wah-loading"	: "loading Wiki@Home interface <blink>...</blink>",
 	
-	'wah-lookingforjob'	: "Looking For a Job <blink>...</blink>",
-	'wah-nojobfound' 	: "No Job Found, Will retry in $1 seconds",
-	'wah-notoken-login' : "Could not get a token. Are you logged in?",
+	"wah-lookingforjob"	: "Looking For a Job <blink>...</blink>",
 	
-	'wah-doing-job'		: "Job: <i>$1</i> on: <i>$2</i>",
-	'wah-downloading'	: "Downloading File <i>$1%</i> done",
-	'wah-needs-firefogg': "To particate in wiki@home you need to install firefogg."
+	"wah-start-on-visit": "Start up Wiki@Home anytime I visit this site",
+	"wah-jobs-while-away": "Only run jobs when I have been away from my browser for 20 minnutes",
+	
+	"wah-nojobfound" 	: "No Job Found, Will retry in $1 seconds",
+	
+	"wah-notoken-login" : "Could not get a token. Are you logged in?",
+	"wah-apioff"		: "The api appears to be off. Please Contact your Wiki Admin",
+	
+	"wah-doing-job"		: "Job: <i>$1</i> on: <i>$2</i>",
+	"wah-downloading"	: "Downloading File <i>$1%</i> done",
+	"wah-encoding"		: "Encoding File <i>$1%</i> done",
+	"wah-uploading"		: "Uploading File <i>$i</i> done",
+	"wah-uploadfail"	: "Uploading Failed",
+	"wah-doneuploading" : "Done Uploading. Thanks for your Contribution.",
+	
+	"wah-needs-firefogg": "To particate in wiki@home you need to install firefogg."
 	
 });
 
@@ -54,6 +65,11 @@ var WikiAtHome = {
 		for(var i in wahConfig){
 			_this[i] = wahConfig[i];
 		}	
+		//make sure api is "on"
+		if( !wgEnableAPI ){
+			$j( _this.wah_container ).html( gM('wah-apioff') );
+			return false;
+		}
 		
 		//fist see if we are even logged in: 
 		if( !wgUserName ){
@@ -100,14 +116,30 @@ var WikiAtHome = {
 			select: function(event, ui) {									
 				//_this.selectTab( $j(ui.tab).attr('id').replace('rsd_tab_', '') );
 			}	
-		}).find(".ui-tabs-nav").sortable({axis:'x'});			
-			
+		}).find(".ui-tabs-nav").sortable({axis:'x'});	
+				
+		//set pref initial layout
+		$j('#tab-pref').html(
+			'<h2>' + gM('wah-menu-pref') + '</h2>' +
+			'<i>These prefrences are not yet active</i>' +  
+			'<ul>' + 
+				'<li><input type="checkbox">' + gM('wah-start-on-visit') + '</li>' +
+				'<li><input type="checkbox">' + gM('wah-jobs-while-away') + '</li>' + 
+			'</ul>'				
+		);
+		
+		//set the initail stats layout		
+		$j('#tab-stats').html(
+			'<h2>Some Cool Visual Stats Go here!</h2>'
+		)
+		
 		//set tabs to initial layout 
 		$j('#tab-jobs').html( 
 			'<h2 class="wah-gen-status"></h2>' + 
-			'<div class="progress-bar" style="width:400px;heigh:20px;"></div>' + 
-			'<div class="prograss-status" style="width:400px;heigh:20px;"></div>'  
+			'<div class="progress-bar" style="width:400px;height:20px;"></div>' + 
+			'<div class="prograss-status" ></div>'  
 		 );
+		 
 		//make sure we have firefogg
 			//check if we have firefogg installed (needed for transcoding jobs)
 		this.myFogg = new mvFirefogg({
@@ -115,7 +147,9 @@ var WikiAtHome = {
 		});	
 		
 		if(!this.myFogg.firefoggCheck() ){			
-			$j('#tab-jobs .progress-bar').hide().after( gM('wah-needs-firefogg') );			
+			$j('#tab-jobs .progress-bar').hide().after( 
+				gM('wah-needs-firefogg') 
+			);			
 							
 			//if we don't have 3.5 firefox update link:
 			if(!($j.browser.mozilla && $j.browser.version >= '1.9.1')) {
@@ -130,19 +164,24 @@ var WikiAtHome = {
 			}
 			return false;
 		}
+		//set up local fogg pointer: 
+		this.fogg = this.myFogg.fogg;
 		return true;		
 	},	
-	lookForJob: function(){
+	lookForJob: function( job_set_id ){
 		var _this = this;
 		//set the big status 
 		$j('#tab-jobs .wah-gen-status').html( gM('wah-lookingforjob') );				
-			
+		var reqObj = {
+			'action' 	: 'wikiathome',
+			'getnewjob'	: true,
+			'token'		: _this.eToken
+		};		
+		if( job_set_id ){
+			reqObj['jobset'] = job_set_id;
+		}
 		do_api_req({
-			'data':{
-				'action' 	: 'wikiathome',
-				'getnewjob'	: true,
-				'token'		: _this.eToken			
-				}
+			'data' : reqObj
 		},function(data){
 			//if we have a job update status to proccessing
 			if( data.wikiathome.nojobs ){				
@@ -153,6 +192,7 @@ var WikiAtHome = {
 			}
 		});
 	},
+	
 	delayLookForJob:function(){
 		var _this = this;
 		var i=0;
@@ -160,12 +200,14 @@ var WikiAtHome = {
 			i++;
 			if(i == _this.jobsearch_delay){
 				_this.lookForJob();
+				return false;
 			}else{
 				//update the delay msg:
-				$j('#tab-jobs .wah-gen-status').html( gM( 'wah-nojobfound', seconds2npt(i)) );
+				$j('#tab-jobs .wah-gen-status').html( gM( 'wah-nojobfound', seconds2npt( _this.jobsearch_delay - i )) );
 			}
+			setTimeout(delayJobUpdate, 1000);
 		}
-		setTimeout(delayJobUpdate, 1000)
+		setTimeout(delayJobUpdate, 1000);
 	},
 	doProccessJob:function( job ){
 		var _this = this;
@@ -177,6 +219,9 @@ var WikiAtHome = {
 		$j('#tab-jobs .progress-bar').progressbar({
 			value: 0
 		});
+		//set the jobKey:		
+		_this.jobKey = job.job_key;
+		
 		//start proccessing the work flow based on work type
 		if( job.job_json.jobType == 'transcode' ){
 			//download the source footage
@@ -196,26 +241,94 @@ var WikiAtHome = {
 		},function(data){
 			for(var i in data.query.pages){
 				_this.source_url = data.query.pages[i].imageinfo[0].url;
-			}
+			}			
 			//have firefogg download the file:
-			_this.myFogg.selectVideoUrl( _this.source_url );
+			js_log("do selectVideoUrl:: " + _this.source_url);
+			_this.fogg.selectVideoUrl( _this.source_url );
 			//check firefogg state and update status: 
-			var updateDownoadState = function(){				
-				if( _this.myFogg.state == 'downloading'){
-					var percDone = _this.myFogg.downloadVideo.progress * 100; 
-					$j('#tab-jobs .progress-bar').progressbar({
-						value:  percDone
-					});	
+			var updateDownloadState = function(){				
+				if( _this.fogg.state == 'downloading'){	
+					//update progress
+					_this.updateProgress(_this.fogg.progress(), 'wah-downloading');
+					//loop update:														
+					setTimeout(updateDownloadState, 100);
+				}else if( _this.fogg.state == 'downloaded'){
+						js_log('downloaded is done, run encode');
+						//we can now issue the encode call						
+						_this.fogg.encode( 
+							JSON.stringify(
+								job.job_json.encodeSettings	
+							)
+						);
+						updateEncodeState();						
+				}else if( _this.fogg.state == "download failed"){
+					js_log('download state failed');
+				}															
+			}
+			//do the initial call to downloading state updates
+			if( _this.fogg.state == 'downloading'){		
+				setTimeout(updateDownloadState, 100);
+			}					
+			
+			//our encode state update
+			var updateEncodeState = function(){				
+				_this.updateProgress( _this.fogg.progress(), 'wah-encoding');		
+				if( _this.fogg.state == 'encoding done' ){
+					js_log('encoding done , do upload');
+					_this.fogg.post( mwGetLocalApiUrl(), 
+						'file',
+						JSON.stringify({
+							'action' 	: 'wikiathome',
+							'token'		: _this.eToken,
+							'jobkey'	: _this.jobKey 
+						})
+					);
+					//do upload req
+					updateUploadState();
+					return true;
+				}
+				setTimeout(updateEncodeState, 100);			
+			}			
+			//our updateUploadState update
+			var updateUploadState = function(){						
+				_this.updateProgress( _this.fogg.progress(), 'wah-uploading');				
+				if( _this.fogg.state == 'upload done'){
+					//done uploading
+					//congradulate the user and issue new job request
 					$j('#tab-jobs .prograss-status').html(
-						gM('wah-downloading',percDone)
+						gM( 'wah-doneuploading' )
+					);
+					var getNextTranscodeJob = function(){						
+						_this.lookForJob( job.job_set_id );
+					}
+					//display the msg for 3 seconds
+					//setTimeout(getNextTranscodeJob, 3000);
+						
+					return true;				 
+				}else if( _this.fogg.state == 'uplaod failed'){
+					$j('#tab-jobs .prograss-status').html(
+						gM( 'wah-uploadfail' )
 					);
 				}
-			}
-			setTimeout(updateDownoadState, 100);
+				setTimeout(updateUploadState, 100);
+			}				
 		});
 	
 		
 		//for transcode jobs we have to download (unless we already have the file)
 		 
+	},
+	updateProgress: function(perc, msgKey){
+		//get percent done with 2 decimals 			
+		var percDone = Math.round(perc * 10000) /100;
+		//update progress bar 
+		$j('#tab-jobs .progress-bar').progressbar( 
+			'value',
+			Math.round( percDone )
+		);	
+		//update status
+		$j('#tab-jobs .prograss-status').html(
+			gM(msgKey, percDone)
+		);				
 	}
 }
