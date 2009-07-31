@@ -110,14 +110,25 @@ END;
 		if (is_null($csv_file))
 			return wfMsg('emptyfile');
 		$table = array();
-		while ($line = fgetcsv($csv_file)) {
-			// fix values if the file wasn't UTF-8 encoded -
-			// hopefully the UTF-8 value will work across all
-			// database encodings
-			if ($encoding == 'utf16') {
-				$line = array_map('utf8_encode', $line);
+		if ($encoding == 'utf16') {
+			// change encoding to UTF-8
+			// Starting with PHP 5.3 we could use str_getcsv(),
+			// which would save the tempfile hassle
+			$tempfile = tmpfile();
+			$csv_string = '';
+			while (!feof($csv_file)) {
+				$csv_string .= fgets($csv_file, 65535);
+ 			}
+			fwrite($tempfile, iconv('UTF-16', 'UTF-8', $csv_string));
+			fseek($tempfile, 0);
+			while ($line = fgetcsv($tempfile)) {
+				array_push($table, $line);
 			}
-			array_push($table, $line);
+			fclose($tempfile);
+		} else {
+			while ($line = fgetcsv($csv_file)) {
+				array_push($table, $line);
+			}
 		}
 		fclose($csv_file);
 		// check header line to make sure every term is in the
