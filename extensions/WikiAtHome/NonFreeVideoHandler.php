@@ -143,10 +143,10 @@ class NonFreeVideoHandler extends MediaHandler {
 		//see if we have that encoding profile already:
 
 		//get the job manager .. check status and output current state or defer to oggHanndler_body for output
-		$jobSet = new WahJobManager( $file , $encodeKey );
-		$percDone = $jobSet->getDonePerc();
+		$wjm = WahJobManager::newFromFile( $file , $encodeKey );
+		$percDone = $wjm->getDonePerc();
 		if( $percDone == 1 ){
-			//we should be able to output ogg then:
+			//we should use oggHandler to output ogg
 		}else{
 			//output our current progress
 			return new MediaQueueTransformOutput($file, $width, $height, $percDone );
@@ -294,7 +294,7 @@ class MediaQueueTransformOutput extends MediaTransformOutput {
 
 	function toHtml( $options = array() ) {
 		wfLoadExtensionMessages( 'WikiAtHome' );
-		$waitHtml = wfMsgWikiHtml( 'wah-transcode-working', $this->percDone ) . "<br>" .
+		$waitHtml = time() . wfMsgWikiHtml( 'wah-transcode-working', $this->percDone ) . "<br>" .
 		 wfMsgWikiHtml('wah-transcode-helpout');
 
 		//@@this is just a placeholder we should desing a waiting for transcode thing

@@ -12,7 +12,7 @@ loadGM({
 	"wah-start-on-visit": "Start up Wiki@Home anytime I visit this site",
 	"wah-jobs-while-away": "Only run jobs when I have been away from my browser for 20 minnutes",
 	
-	"wah-nojobfound" 	: "No Job Found, Will retry in $1 seconds",
+	"wah-nojobfound" 	: "No Job Found, Will retry in $1",
 	
 	"wah-notoken-login" : "Could not get a token. Are you logged in?",
 	"wah-apioff"		: "The api appears to be off. Please Contact your Wiki Admin",
@@ -20,6 +20,9 @@ loadGM({
 	"wah-doing-job"		: "Job: <i>$1</i> on: <i>$2</i>",
 	"wah-downloading"	: "Downloading File <i>$1%</i> done",
 	"wah-encoding"		: "Encoding File <i>$1%</i> done",
+	
+	"wah-encoding-fail"	: "Encoding Failed. Please reload this page or try back latter.",
+	
 	"wah-uploading"		: "Uploading File <i>$i</i> done",
 	"wah-uploadfail"	: "Uploading Failed",
 	"wah-doneuploading" : "Done Uploading. Thanks for your Contribution.",
@@ -32,7 +35,7 @@ loadGM({
 wahConfig = {
 	'wah_container'		: '#wah_container',
 	//how many seconds to wait before looking for a job again (in seconds) 
-	'jobsearch_delay'	: 90
+	'jobsearch_delay'	: ( wgClientSearchInterval ) ? wgClientSearchInterval: 60
 };
 
 //js2AddOnloadHook ensures that the dom and core libraries are ready:
@@ -244,7 +247,9 @@ var WikiAtHome = {
 			}			
 			//have firefogg download the file:
 			js_log("do selectVideoUrl:: " + _this.source_url);
-			_this.fogg.selectVideoUrl( _this.source_url );
+			_this.fogg.selectVideoUrl( _this.source_url );			
+			
+						
 			//check firefogg state and update status: 
 			var updateDownloadState = function(){				
 				if( _this.fogg.state == 'downloading'){	
@@ -253,9 +258,9 @@ var WikiAtHome = {
 					//loop update:														
 					setTimeout(updateDownloadState, 100);
 				}else if( _this.fogg.state == 'downloaded'){
-						js_log('downloaded is done, run encode');
+						js_log('downloaded is done, run encode:' + JSON.stringify( job.job_json.encodeSettings ) );
 						//we can now issue the encode call						
-						_this.fogg.encode( 
+						_this.fogg.encode(
 							JSON.stringify(
 								job.job_json.encodeSettings	
 							)
@@ -265,6 +270,7 @@ var WikiAtHome = {
 					js_log('download state failed');
 				}															
 			}
+			
 			//do the initial call to downloading state updates
 			if( _this.fogg.state == 'downloading'){		
 				setTimeout(updateDownloadState, 100);
@@ -284,16 +290,40 @@ var WikiAtHome = {
 						})
 					);
 					//do upload req
-					updateUploadState();
+					updateUploadState();	
 					return true;
+				}else if( _this.fogg.state == 'encoding failed'){
+					js_log('encoding failed');
+					//maybe its time to refresh the window?
+					$j('#tab-jobs .prograss-status').html(
+						gM( 'wah-encoding-fail' )
+					);					
+					return false;
 				}
 				setTimeout(updateEncodeState, 100);			
 			}			
 			//our updateUploadState update
-			var updateUploadState = function(){						
+			var updateUploadState = function(){					
 				_this.updateProgress( _this.fogg.progress(), 'wah-uploading');				
 				if( _this.fogg.state == 'upload done'){
-					//done uploading
+					//get the json result: 
+					var response_text =  _this.fogg.responseText;
+					if(!response_text){
+						   try{
+							   var pstatus = JSON.parse( _this.fogg.uploadstatus() );
+							   response_text = pstatus["responseText"];
+						   }catch(e){
+							   js_log("could not parse uploadstatus / could not get responseText");
+						   }
+					}
+					//see if we can parse the result
+					try{
+						resultObj = JSON.parse( response_text );
+					}catch(e){
+						js_log("could not parse result of upload ");
+					}				
+					
+					
 					//congradulate the user and issue new job request
 					$j('#tab-jobs .prograss-status').html(
 						gM( 'wah-doneuploading' )
@@ -302,7 +332,7 @@ var WikiAtHome = {
 						_this.lookForJob( job.job_set_id );
 					}
 					//display the msg for 3 seconds
-					//setTimeout(getNextTranscodeJob, 3000);
+					setTimeout(getNextTranscodeJob, 3000);
 						
 					return true;				 
 				}else if( _this.fogg.state == 'uplaod failed'){
@@ -320,7 +350,7 @@ var WikiAtHome = {
 	},
 	updateProgress: function(perc, msgKey){
 		//get percent done with 2 decimals 			
-		var percDone = Math.round(perc * 10000) /100;
+		var percDone = (perc == 0 ) ? '0': Math.round(perc * 10000) /100;		
 		//update progress bar 
 		$j('#tab-jobs .progress-bar').progressbar( 
 			'value',

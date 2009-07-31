@@ -2,11 +2,23 @@
 class WahJobManager {
 	//encoding profiles (settings set in config)
 
-	function __construct(&$file, $encodeKey){
-		$this->file = $file;
-		$this->sEncodeKey = $encodeKey;
-		$this->sNamespace =$this->file->title->getNamespace();
-		$this->sTitle = $this->file->title->getDBkey();
+	function __construct(){		
+	}
+	
+	function newFromFile(&$file, $encodeKey){
+		$wjm = new WahJobManager();
+		$wjm->file = $file;
+		$wjm->sEncodeKey = $encodeKey;
+		$wjm->sNamespace = $wjm->file->title->getNamespace();
+		$wjm->sTitle 	 = $wjm->file->title->getDBkey();
+		return $wjm;
+	}
+	function newFromSet( $jobSet ){
+		$wjm = new WahJobManager();
+		$this->sNamespace 	= $jobSet->set_namespace;
+		$this->sTitle 		= $jobSet->set_title;
+		$this->sEncodeKey 	= $jobSet->set_encodekey;
+		return $wjm;
 	}
 
 	/*
@@ -91,11 +103,11 @@ class WahJobManager {
 		$job = $dbr->selectRow( 'wah_jobqueue',
 			'*',
 			array(
-				'job_last_assigned_user_id' => $wgUser->getId()
+				'job_last_assigned_user_id' => $wgUser->getId(),
+				'job_done_time is NULL'
 			),
 		 	__METHOD__
 		);
-
 		//re-assign the same job (don't update anything so it can timeout if they keep getting the same job)
 		if( $job ){
 			return WahJobManager::assignJob( $job , false, false);
@@ -110,7 +122,7 @@ class WahJobManager {
 			),
 			__METHOD__
 		);
-		if( $jobSet ){
+		if( !$jobSet ){
 			//no jobs:
 			return false;
 		}else{
@@ -125,7 +137,7 @@ class WahJobManager {
 							 $dbr->addQuotes( time() - $wgJobTimeOut )
 					),
 					__METHOD__
-			);
+			);			
 			if( !$job ){
 				//no jobs in this jobset (return nojob)
 				//@@todo we could "retry" since we will get here when a set has everything assigned in less than $wgJobTimeOut
@@ -200,9 +212,9 @@ class WahJobManager {
 	}
 	static function getJobById( $job_id ){
 		$dbr = wfGetDb( DB_READ );
-		return $dbr->selectRow('wah_jobset', '*',
+		return $dbr->selectRow('wah_jobqueue', '*',
 			array(
-				'job_id' => $set_id
+				'job_id' => $job_id
 			),
 			__METHOD__
 		);
@@ -240,8 +252,7 @@ class WahJobManager {
 			$encSettingsAry['endtime']	 = $encSettingsAry['starttime'] + $wgChunkDuration;
 
 			$jobJsonAry = array(
-				'jobType'		=> 'transcode',
-				'chunkNumber'	=> $i,
+				'jobType'		=> 'transcode',				
 				'encodeSettings'=> $encSettingsAry
 			);
 
@@ -249,6 +260,7 @@ class WahJobManager {
 			$jobInsertArray[] =
 				array(
 					'job_set_id' => $this->sId,
+					'job_order_id'	=> $i,
 					'job_json'	 => ApiFormatJson::getJsonEncode( $jobJsonAry )
 				);
 		}

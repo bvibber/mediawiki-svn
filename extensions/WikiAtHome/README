@@ -5,5 +5,11 @@ To install this extension, add the following to the end of your LocalSettings.ph
     require( "$IP/extensions/WikiAtHome/WikiAtHome.php" );
     
 You will also need to install ffmpeg2theora (for getting info about files) 
-you can download the latest here:
+you should get the latest that supports the --info argument:
 http://firefogg.org/nightly/
+
+You will also need oggCat also available here:
+http://firefogg.org/nightly/
+
+And don't forget to add the mysql tables:
+WikiAtHome.sql

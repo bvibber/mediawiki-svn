@@ -36,6 +36,18 @@ $wgSpecialPages['SpecialWikiAtHome']		= 'SpecialWikiAtHome';
 //add api module for processing jobs
 $wgAPIModules['wikiathome'] = 'ApiWikiAtHome';
 
+function wahAddGlobalPageVars(&$vars){
+	global $wgClientSearchInterval, $wgTitle;
+	//only add to the special page:
+	if($vars['wgCanonicalSpecialPageName'] == 'SpecialWikiAtHome'){
+		$vars['wgClientSearchInterval'] = $wgClientSearchInterval;
+	}
+	return true;
+}
+//hooks
+$wgHooks['MakeGlobalVariablesScript'][] = 'wahAddGlobalPageVars';
+
+
 //credits
 $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
@@ -62,20 +74,19 @@ class WikiAtHome {
  * gets the json metadata from a given file (also validates it as a valid file)
  */
 function wahGetMediaJsonMeta( $path ){
+	global $wgffmpeg2theora;	
+	
 	$cmd = wfEscapeShellArg( $wgffmpeg2theora ) . ' ' . wfEscapeShellArg ( $path ). ' --info';
-	wfProfileIn( 'ffmpeg2theora shellExec' );
-	wfDebug( __METHOD__.": $cmd\n" );
-	$json_meta_str = wfShellExec( $cmd );
-	wfProfileOut( 'ffmpeg2theora shellExec' );
+	wfProfileIn( 'ffmpeg2theora' );	
+	$json_meta_str = wfShellExec( $cmd );	
+	wfProfileOut( 'ffmpeg2theora' );
 	$objMeta = json_decode( $json_meta_str );
-
 	//if we return the same string then json_decode has failed in php < 5.2.6
 	//workaround for bug http://bugs.php.net/bug.php?id=45989
 	if( $objMeta == $json_meta_str )
 		return false;
 	return $objMeta;
 }
-
 /******************* CONFIGURATION STARTS HERE **********************/
 
 //ffmpeg2theora path: enables us to get basic source file information
@@ -84,12 +95,15 @@ $wgffmpeg2theora = '/usr/bin/ffmpeg2theora';
 //the oggCat path enables server side concatenation of encoded "chunks"
 $wgOggCat =  '/usr/bin/oggCat';
 
-//if you do have oggCat installed then we can do encoding jobs in "chunks"
+//with oggCat installed then we can do encoding jobs in "chunks"
 //and assemble on the server: (this way no single slow client slows down
 //a video job and we can have tighter timeouts)
 // $wgChunkDuration is set in seconds: (setting this too low will result in bad encodes)
 // $wgChunkDuration is only used if we have a valid $wgOggCat install
-$wgChunkDuration = '10';
+$wgChunkDuration = '30';
+
+//time interval in seconds between clients asking the server for jobs.
+$wgClientSearchInterval = 90;
 
 //how long before considering a job ready to be assigned to others
 //note first "in" wins & if once time is up we decrement set_c
