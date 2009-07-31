@@ -47,6 +47,8 @@ public class XmlDumpReader  extends DefaultHandler {
 	
 	private char[] buffer;
 	private int len;
+	private boolean hasContent = false;
+	private boolean deleted = false;
 	
 	Siteinfo siteinfo;
 	Page page;
@@ -69,6 +71,7 @@ public class XmlDumpReader  extends DefaultHandler {
 		this.writer = writer;
 		buffer = new char[4096];
 		len = 0;
+		hasContent = false;
 	}
 	
 	/**
@@ -150,8 +153,15 @@ public class XmlDumpReader  extends DefaultHandler {
 		// if and when character data arrives -- at that point we
 		// have a length.
 		len = 0;
+		hasContent = false;
+		
 		if (abortFlag)
 			throw new SAXException("XmlDumpReader set abort flag.");
+
+		// check for deleted="deleted", and set deleted flag for the current element. 
+		String d = attributes.getValue("deleted");
+		deleted = (d!=null && d.equals("deleted")); 
+		
 		try {
 			qName = (String)startElements.get(qName);
 			if (qName == null)
@@ -181,6 +191,7 @@ public class XmlDumpReader  extends DefaultHandler {
 		}
 		System.arraycopy(ch, start, buffer, len, length);
 		len += length;
+		hasContent = true;
 	}
 	
 	public void endElement(String uri, String localname, String qName) throws SAXException {
@@ -243,6 +254,11 @@ public class XmlDumpReader  extends DefaultHandler {
 		writer.writeSiteinfo(siteinfo);
 	}
 
+	private String bufferContentsOrNull() {
+		if (!hasContent) return null;
+		else return bufferContents();
+	}
+	
 	private String bufferContents() {
 		return len == 0 ? "" : new String(buffer, 0, len);
 	}
@@ -298,7 +314,7 @@ public class XmlDumpReader  extends DefaultHandler {
 	
 	void readId() {
 		int id = Integer.parseInt(bufferContents());
-		if (contrib != null)
+		if (contrib != null) 
 			contrib.Id = id;
 		else if (rev != null)
 			rev.Id = id;
@@ -333,7 +349,8 @@ public class XmlDumpReader  extends DefaultHandler {
 	}
 
 	void readComment() {
-		rev.Comment = bufferContents();
+		rev.Comment = bufferContentsOrNull();
+		if (rev.Comment==null && !deleted) rev.Comment = ""; //NOTE: null means deleted/supressed
 	}
 
 	void readMinor() {
@@ -341,29 +358,30 @@ public class XmlDumpReader  extends DefaultHandler {
 	}
 
 	void readText() {
-		rev.Text = bufferContents();
+		rev.Text = bufferContentsOrNull();
+		if (rev.Text==null && !deleted) rev.Text = ""; //NOTE: null means deleted/supressed
 	}
 	
 	// -----------
 	void openContributor() {
-		contrib = null;
+		//XXX: record deleted flag?! as it is, any empty <contributor> tag counts as "deleted"
+		contrib =  new Contributor();
 	}
 	
 	void closeContributor() {
-		if (contrib == null)
-			throw new IllegalArgumentException("Invalid contributor");
-		
+		//NOTE: if the contributor was supressed, nither username nor id have been set in the Contributor object
 		rev.Contributor = contrib;
 		contrib = null;
 	}
 
 
 	void readUsername() {
-		contrib = new Contributor(bufferContents());
+		contrib.Username = bufferContentsOrNull();
 	}
 	
 	void readIp() {
-		contrib = new Contributor(bufferContents());
+		contrib.Username = bufferContents();
+		contrib.isIP = true;
 	}
 	
 	private static final TimeZone utc = TimeZone.getTimeZone("UTC");

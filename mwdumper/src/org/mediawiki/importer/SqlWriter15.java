@@ -59,22 +59,32 @@ public class SqlWriter15 extends SqlWriter {
 		lastRevision = null;
 	}
 	
+	static final int DELETED_TEXT = 1;
+	static final int DELETED_COMMENT = 2;
+	static final int DELETED_USER = 4;
+	static final int DELETED_RESTRICTED = 8;
+	
 	public void writeRevision(Revision revision) throws IOException {
 		bufferInsertRow(traits.getTextTable(), new Object[][] {
 				{"old_id", new Integer(revision.Id)},
-				{"old_text", revision.Text},
+				{"old_text", revision.Text == null ? "" : revision.Text},
 				{"old_flags", "utf-8"}});
+		
+		int rev_deleted = 0; 
+		if (revision.Contributor.Username==null) rev_deleted |= DELETED_USER;
+		if (revision.Comment==null) rev_deleted |= DELETED_COMMENT;
+		if (revision.Text==null) rev_deleted |= DELETED_TEXT;
 
 		bufferInsertRow("revision", new Object[][] {
 				{"rev_id", new Integer(revision.Id)},
 				{"rev_page", new Integer(currentPage.Id)},
 				{"rev_text_id", new Integer(revision.Id)},
-				{"rev_comment", revision.Comment},
-				{"rev_user", new Integer(revision.Contributor.Id)},
-				{"rev_user_text", revision.Contributor.Username},
+				{"rev_comment", revision.Comment == null ? "" : revision.Comment},
+				{"rev_user", revision.Contributor.Username == null ? ZERO :  new Integer(revision.Contributor.Id)},
+				{"rev_user_text", revision.Contributor.Username == null ? "" : revision.Contributor.Username},
 				{"rev_timestamp", timestampFormat(revision.Timestamp)},
 				{"rev_minor_edit", revision.Minor ? ONE : ZERO},
-				{"rev_deleted", ZERO}});
+				{"rev_deleted", rev_deleted==0 ? ZERO : new Integer(rev_deleted) }});
 		
 		lastRevision = revision;
 	}

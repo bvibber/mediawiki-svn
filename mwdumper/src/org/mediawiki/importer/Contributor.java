@@ -28,10 +28,10 @@ package org.mediawiki.importer;
 public class Contributor {
 	public String Username;
 	public int Id;
-	
-	public boolean isAnon() {
-		// Fixme; dumps w/o id numbers...
-		return (Id == 0);
+	public boolean isIP = false;
+
+	public Contributor() {
+		this(null, 0);
 	}
 	
 	public Contributor(String username, int id) {
@@ -39,8 +39,4 @@ public class Contributor {
 		Id = id;
 	}
 	
-	public Contributor(String ip) {
-		Username = ip;
-		Id = 0;
-	}
 }

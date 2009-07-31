@@ -118,14 +118,22 @@ public class XmlDumpWriter implements DumpWriter {
 			writer.emptyElement("minor");
 		}
 		
-		if (rev.Comment != null && rev.Comment.length() != 0)
+		if (rev.Comment == null) {
+			writer.emptyElement("comment", deletedAttrib);
+		} 
+		else if (rev.Comment.length() != 0) {
 			writer.textElement("comment", rev.Comment);
+		}
 		
-		writer.textElement("text", rev.Text, new String[][] {
-				{"xml:space", "preserve"}});
+		writer.textElement("text", rev.Text, 
+				rev.Text==null ? new String[][] {{"xml:space", "preserve"}, {"deleted", "deleted"}} 
+												: new String[][] {{"xml:space", "preserve"}}
+		);
 		
 		writer.closeElement();
 	}
+
+	static final String[][] deletedAttrib = new String[][] { {"deleted", "deleted"} };
 	
 	static String formatTimestamp(Calendar ts) {
 		return dateFormat.format(ts.getTime());
@@ -133,13 +141,19 @@ public class XmlDumpWriter implements DumpWriter {
 	
 	void writeContributor(Contributor contrib) throws IOException {
 		XmlWriter writer = this.writer;
-		writer.openElement("contributor");
-		if (contrib.isAnon()) {
-			writer.textElement("ip", contrib.Username);
-		} else {
-			writer.textElement("username", contrib.Username);
-			writer.textElement("id", Integer.toString(contrib.Id));
+		
+		if (contrib.Username==null) {
+			writer.emptyElement("contributor", deletedAttrib);
 		}
-		writer.closeElement();
+		else {
+			writer.openElement("contributor");
+			if (contrib.isIP) {
+				writer.textElement("ip", contrib.Username);
+			} else {
+				writer.textElement("username", contrib.Username);
+				writer.textElement("id", Integer.toString(contrib.Id));
+			}
+			writer.closeElement();
+		}
 	}
 }

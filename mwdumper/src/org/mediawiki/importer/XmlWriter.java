@@ -106,7 +106,7 @@ public class XmlWriter {
 	}
 	
 	public void textElement(String element, String text, String[][] attributes) throws IOException {
-		if (text.length() == 0) {
+		if (text==null || text.length() == 0) {
 			emptyElement(element, attributes);
 		} else {
 			startElement(element, attributes, ">");
