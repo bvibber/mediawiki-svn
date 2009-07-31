@@ -78,6 +78,13 @@ table.mw-codereview-meta td {
 	color: #666;
 }
 
+.mw-codereview-success {
+	color: #1a2;
+}
+.mw-codereview-fail {
+	color: #d21;
+}
+
 /* Diffs */
 .mw-codereview-diff ins {
 	text-decoration: none;

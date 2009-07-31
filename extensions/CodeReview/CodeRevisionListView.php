@@ -187,7 +187,7 @@ class SvnRevTablePager extends TablePager {
 				'options' => array( 'GROUP BY' => 'cp_rev_id', 'USE INDEX' => array( 'code_path' => 'cp_repo_id' ) ),
 				'join_conds' => array(
 					'code_rev' => array( 'INNER JOIN', 'cr_repo_id = cp_repo_id AND cr_id = cp_rev_id' ),
-					'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cp_repo_id AND cc_rev_id = cp_rev_id' )
+					'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cp_repo_id AND cc_rev_id = cp_rev_id' ),
 				)
 			);
 		// No path; entire repo...
@@ -198,7 +198,7 @@ class SvnRevTablePager extends TablePager {
 				'conds' => array( 'cr_repo_id' => $this->mRepo->getId() ),
 				'options' => array( 'GROUP BY' => 'cr_id' ),
 				'join_conds' => array(
-					'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cr_repo_id AND cc_rev_id = cr_id' )
+					'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cr_repo_id AND cc_rev_id = cr_id' ),
 				)
 			);
 		}
@@ -206,8 +206,15 @@ class SvnRevTablePager extends TablePager {
 	}
 
 	function getSelectFields() {
-		return array( $this->getDefaultSort(), 'cr_status', 'COUNT( DISTINCT cc_id ) AS comments',
-			'cr_path', 'cr_message', 'cr_author', 'cr_timestamp' );
+		return array( $this->getDefaultSort(),
+			'cr_id',
+			'cr_repo_id',
+			'cr_status',
+			'COUNT(DISTINCT cc_id) AS comments',
+			'cr_path',
+			'cr_message',
+			'cr_author',
+			'cr_timestamp' );
 	}
 
 	function getFieldNames() {
@@ -215,6 +222,7 @@ class SvnRevTablePager extends TablePager {
 			$this->getDefaultSort() => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
 			'comments' => wfMsg( 'code-field-comments' ),
+			'tests' => wfMsg( 'code-field-tests' ),
 			'cr_path' => wfMsg( 'code-field-path' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
@@ -259,6 +267,40 @@ class SvnRevTablePager extends TablePager {
 				return $this->mView->mSkin->link( $special, htmlspecialchars( $value ) );
 			} else {
 				return intval( $value );
+			}
+		case 'tests':
+			// fixme -- this still isn't too efficient...
+			$rev = CodeRevision::newFromRow( $this->mRepo, $row );
+			$runs = $rev->getTestRuns();
+			if( empty( $runs ) ) {
+				return '&nbsp;';
+			} else {
+				$total = 0;
+				$success = 0;
+				$progress = false;
+				foreach( $runs as $run ) {
+					$total += $run->countTotal;
+					$success += $run->countSuccess;
+					if( $run->status == 'running' ) {
+						$progress = true;
+					}
+				}
+				if( $progress ) {
+					global $wgStylePath;
+					return Xml::element( 'img', array(
+						'src' => "$wgStylePath/common/images/spinner.gif",
+						'width' => 20,
+						'height' => 20,
+						'alt' => "...",
+						'title' => "Tests in progress...",
+					));
+				}
+				if( $success == $total ) {
+					$class = 'mw-codereview-success';
+				} else {
+					$class = 'mw-codereview-fail';
+				}
+				return "<span class='$class'><strong>$success</strong>/$total</span>";
 			}
 		case 'cr_path':
 			return Xml::openElement( 'div', array( 'title' => (string)$value ) ) .

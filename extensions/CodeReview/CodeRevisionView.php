@@ -81,6 +81,12 @@ class CodeRevisionView extends CodeView {
 		}
 
 		$html .= $this->formatMetaData( $fields );
+		# Show test case info
+		$tests = $this->formatTests();
+		if( $tests ) {
+			$html .= "<h2 id='code-tests'>" . wfMsgHtml( 'code-tests' ) .
+				"</h2>\n" . $tests;
+		}
 		# Output diff
 		if ( $this->mRev->isDiffable() ) {
 			$diffHtml = $this->formatDiff();
@@ -280,6 +286,42 @@ class CodeRevisionView extends CodeView {
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/tag/$tag" );
 		return $this->mSkin->link( $special, htmlspecialchars( $tag ) );
+	}
+
+	protected function formatTests() {
+		$runs = $this->mRev->getTestRuns();
+		$html = '';
+		if( count( $runs ) ) {
+			foreach( $runs as $run ) {
+				$html .= "<h3>" . htmlspecialchars( $run->suite->name ) . "</h3>\n";
+				if( $run->status == 'complete' ) {
+					$total = $run->countTotal;
+					$success = $run->countSuccess;
+					$failed = $total - $success;
+					if( $failed ) {
+						$html .= "<p><span class='mw-codereview-success'>$success</span> succeeded tests, " .
+							"<span class='mw-codereview-fail'>$failed</span> failed tests:</p>";
+						
+						$tests = $run->getResults( false );
+						$html .= "<ul>\n";
+						foreach( $tests as $test ) {
+							$html .= "<li>" . htmlspecialchars( $test->caseName ) . "</li>\n";
+						}
+						$html .= "</ul>\n";
+					} else {
+						$html .= "<p><span class='mw-codereview-success'>$success</span> succeeded tests.</p>";
+					
+					}
+				} elseif( $run->status == "running" ) {
+					$html .= "<p>Test cases are running...</p>";
+				} elseif( $run->status == "abort" ) {
+					$html .= "<p>Test run aborted.</p>";
+				} else {
+					// Err, this shouldn't happen?
+				}
+			}
+		}
+		return $html;
 	}
 
 	protected function formatDiff() {

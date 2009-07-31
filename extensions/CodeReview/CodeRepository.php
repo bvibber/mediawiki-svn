@@ -170,6 +170,26 @@ class CodeRepository {
 			throw new MWException( 'Failed to load expected revision data' );
 		return CodeRevision::newFromRow( $this, $row );
 	}
+	
+	/**
+	 * Load test suite information
+	 */
+	public function getTestSuite( $name ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow( 'code_test_suite',
+			'*',
+			array(
+				'ctsuite_repo_id' => $this->getId(),
+				'ctsuite_name' => $name,
+			),
+			__METHOD__
+		);
+		if( $row ) {
+			return CodeTestSuite::newFromRow( $this, $row );
+		} else {
+			return null;
+		}
+	}
 
 	/**
 	 * @param int $rev Revision ID

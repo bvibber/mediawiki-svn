@@ -40,6 +40,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'api/ApiCodeUpdate.php';
 $wgAutoloadClasses['ApiCodeDiff'] = $dir . 'api/ApiCodeDiff.php';
 $wgAutoloadClasses['ApiCodeComments'] = $dir . 'api/ApiCodeComments.php';
+$wgAutoloadClasses['ApiCodeTestUpload'] = $dir . 'api/ApiCodeTestUpload.php';
 
 $wgAutoloadClasses['CodeDiffHighlighter'] = $dir . 'DiffHighlighter.php';
 $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
@@ -66,6 +67,10 @@ $wgAutoloadClasses['SpecialCode'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['CodeView'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['SpecialRepoAdmin'] = $dir . 'SpecialRepoAdmin.php';
 
+$wgAutoloadClasses['CodeTestSuite'] = $dir . 'CodeTestSuite.php';
+$wgAutoloadClasses['CodeTestRun'] = $dir . 'CodeTestRun.php';
+$wgAutoloadClasses['CodeTestResult'] = $dir . 'CodeTestResult.php';
+
 $wgSpecialPages['Code'] = 'SpecialCode';
 $wgSpecialPageGroups['Code'] = 'developer';
 $wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';
@@ -73,6 +78,7 @@ $wgSpecialPageGroups['RepoAdmin'] = 'developer';
 
 $wgAPIModules['codeupdate'] = 'ApiCodeUpdate';
 $wgAPIModules['codediff'] = 'ApiCodeDiff';
+$wgAPIModules['codetestupload'] = 'ApiCodeTestUpload';
 $wgAPIListModules['codecomments'] = 'ApiCodeComments';
 
 $wgExtensionMessagesFiles['CodeReview'] = $dir . 'CodeReview.i18n.php';
@@ -129,6 +135,10 @@ $wgCodeReviewENotif = false;
 // What images can be used for client-side side-by-side comparisons?
 $wgCodeReviewImgRegex = '/\.(png|jpg|jpeg|gif)$/i';
 
+// Set to a secret string for HMAC validation of test run data uploads.
+// Should match test runner's $wgParserTestRemote['secret'].
+$wgCodeReviewSharedSecret = false;
+
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 
@@ -141,6 +151,7 @@ function efCodeReviewSchemaUpdates() {
 		$wgExtNewIndexes[] = array( 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql" );
 		//$wgExtNewFields[] = array( 'code_rev', "$base/archives/codereview-cr_status.sql" ); // FIXME FIXME this is a change to options... don't know how
 		$wgExtNewTables[] = array( 'code_bugs', "$base/archives/code_bugs.sql" );
+		$wgExtNewTables[] = array( 'code_test_suite', "$base/archives/codereview-code_tests.sql" );
 	} elseif( $wgDBtype == 'postgres' ) {
 		// TODO
 	}
