@@ -274,7 +274,9 @@ public class ConceptImporter extends AbstractImporter {
 
 				//if the cat page contains a reference to the main topic page, store it.
 				WikiTextAnalyzer.WikiLink aliasFor = analyzerPage.getAliasFor();
-				if (aliasFor!=null) storeConceptAlias(rcId, conceptId, name, -1, aliasFor.getTargetConcept().toString(), AliasScope.CATEGORY);  
+				if (aliasFor!=null && !StringUtils.equals(name, aliasFor.getTargetConcept())) {
+					storeConceptAlias(rcId, conceptId, name, -1, aliasFor.getTargetConcept().toString(), AliasScope.CATEGORY);  
+				}
 
 				List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
 				linkTracker.step(links.size());
