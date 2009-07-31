@@ -80,6 +80,11 @@ $aliases['lb'] = array(
 	'CreateSignDocument' => array( 'Dokument ënnerschreiwen erméiglechen' ),
 );
 
+/** Lumbaart (Lumbaart) */
+$aliases['lmo'] = array(
+	'SignDocument' => array( 'FirmaDocüment' ),
+);
+
 /** Marathi (मराठी) */
 $aliases['mr'] = array(
 	'SignDocument' => array( 'सहीदस्त' ),

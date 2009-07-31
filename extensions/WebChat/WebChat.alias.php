@@ -12,3 +12,14 @@ $aliases = array();
 $aliases['en'] = array(
 	'WebChat' => array( 'WebChat' ),
 );
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'WebChat' => array( 'ウェブチャット' ),
+);
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'WebChat' => array( 'Webchat' ),
+);
+

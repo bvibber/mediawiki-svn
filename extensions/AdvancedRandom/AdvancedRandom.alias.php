@@ -112,6 +112,11 @@ $aliases['sa'] = array(
 	'AdvancedRandom' => array( 'प्रगताअविशीष्ट' ),
 );
 
+/** Sinhala (සිංහල) */
+$aliases['si'] = array(
+	'AdvancedRandom' => array( 'ප්‍රගතඅහඹු' ),
+);
+
 /** Slovak (Slovenčina) */
 $aliases['sk'] = array(
 	'AdvancedRandom' => array( 'RozšírenéNáhodné' ),

@@ -18,3 +18,8 @@ $aliases['ja'] = array(
 	'Index' => array( '索引' ),
 );
 
+/** Cornish (Kernewek) */
+$aliases['kw'] = array(
+	'Index' => array( 'Menegva' ),
+);
+

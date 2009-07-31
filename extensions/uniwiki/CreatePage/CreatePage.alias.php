@@ -105,6 +105,11 @@ $aliases['lb'] = array(
 	'CreatePage' => array( 'Säiten uleeën' ),
 );
 
+/** Lumbaart (Lumbaart) */
+$aliases['lmo'] = array(
+	'CreatePage' => array( 'FaSüPagina' ),
+);
+
 /** Lithuanian (Lietuvių) */
 $aliases['lt'] = array(
 	'CreatePage' => array( 'Kurti puslapį' ),

@@ -132,6 +132,11 @@ $aliases['sa'] = array(
 	'Call' => array( 'आमन्त्र्' ),
 );
 
+/** Sinhala (සිංහල) */
+$aliases['si'] = array(
+	'Call' => array( 'ඇමතුම' ),
+);
+
 /** Slovak (Slovenčina) */
 $aliases['sk'] = array(
 	'Call' => array( 'Volanie' ),

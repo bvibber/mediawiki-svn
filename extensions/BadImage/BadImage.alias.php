@@ -172,6 +172,11 @@ $aliases['sa'] = array(
 	'Badimages' => array( 'कुचित्र:' ),
 );
 
+/** Sinhala (සිංහල) */
+$aliases['si'] = array(
+	'Badimages' => array( 'අසත්රූප' ),
+);
+
 /** Slovak (Slovenčina) */
 $aliases['sk'] = array(
 	'Badimages' => array( 'ZléObrázky' ),

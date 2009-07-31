@@ -72,6 +72,11 @@ $aliases['ksh'] = array(
 	'ImageTagging' => array( 'Belder_Makeere', 'BelderMakeere' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ImageTagging' => array( 'Bildmarkéierung' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ImageTagging' => array( 'Ofbeeldingen_annoteren' ),

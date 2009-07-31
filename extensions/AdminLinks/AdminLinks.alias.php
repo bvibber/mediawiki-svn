@@ -73,6 +73,11 @@ $aliases['nl'] = array(
 	'AdminLinks' => array( 'Beheerdersverwijzingen' ),
 );
 
+/** Sinhala (සිංහල) */
+$aliases['si'] = array(
+	'AdminLinks' => array( 'පරිපාලකසබැඳි' ),
+);
+
 /** Slovak (Slovenčina) */
 $aliases['sk'] = array(
 	'AdminLinks' => array( 'OdkazySprávcu' ),

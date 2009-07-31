@@ -122,6 +122,11 @@ $aliases['ksh'] = array(
 	'WhatIsMyIP' => array( 'Ming IP Address' ),
 );
 
+/** Cornish (Kernewek) */
+$aliases['kw'] = array(
+	'WhatIsMyIP' => array( 'PythYwOwIP' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhatIsMyIP' => array( 'Wéi ass meng IP-Adress' ),

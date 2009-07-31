@@ -112,6 +112,11 @@ $aliases['lb'] = array(
 	'SpecialUserStats' => array( 'Benotzerstistiken' ),
 );
 
+/** Lumbaart (Lumbaart) */
+$aliases['lmo'] = array(
+	'SpecialUserStats' => array( 'StatistichDruvat' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'SpecialUserStats' => array( 'СтатистикиЗаКорисник', 'СпецијалниСтатистикиЗаКорисник' ),

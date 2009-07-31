@@ -207,6 +207,11 @@ $aliases['shi'] = array(
 	'CategoryIntersection' => array( "taqatoɛ n'omgrd" ),
 );
 
+/** Sinhala (සිංහල) */
+$aliases['si'] = array(
+	'CategoryIntersection' => array( 'ප්‍රවර්ග ඡේදනය', 'ප්‍රවර්ගඡේදනය' ),
+);
+
 /** Slovak (Slovenčina) */
 $aliases['sk'] = array(
 	'CategoryIntersection' => array( 'PrienikKategórií' ),

@@ -10,7 +10,11 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
-    'SpecialWikiAtHome' => array( 'WikiAtHome' ),
+	'SpecialWikiAtHome' => array( 'WikiAtHome' ),
 );
 
-?>
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'SpecialWikiAtHome' => array( 'WikiThuis' ),
+);
+
