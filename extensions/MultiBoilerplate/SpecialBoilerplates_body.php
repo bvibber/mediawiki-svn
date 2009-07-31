@@ -21,17 +21,15 @@ class SpecialBoilerplates extends IncludableSpecialPage {
 		wfLoadExtensionMessages( 'MultiBoilerplate' );
 		if( !$this->mIncluding ) {
 			$this->setHeaders();
-			$wgOut->setPagetitle( wfMsg( "multiboilerplate-special-title" ) );
 			$wgOut->addWikiMsg( "multiboilerplate-special-pagetext" );
-			$wgOut->wrapWikiMsg( "==$1==\n", "boilerplates-name" );
 		}
 		if( is_array( $wgMultiBoilerplateOptions ) ) {
-			if( !$this->mIncluding ) $wgOut->addWikiMsg( "multiboilerplate-special-define-on-localsettings" );
+			if( !$this->mIncluding ) $wgOut->addWikiMsg( "multiboilerplate-special-define-in-localsettings" );
 			foreach( $wgMultiBoilerplateOptions as $name => $template ) {
 				$wgOut->addWikiText( "* [[$template]]\n" );
 			}
 		} else {
-			if( !$this->mIncluding ) $wgOut->addWikiMsg( "multiboilerplate-special-define-on-interface" ) ;
+			if( !$this->mIncluding ) $wgOut->addWikiMsg( "multiboilerplate-special-define-in-interface" ) ;
 			$things = explode( "\n", str_replace( "\r", "\n", str_replace( "\r\n", "\n", wfMsg( 'multiboilerplate' ) ) ) ); // Ensure line-endings are \n
 			foreach( $things as $row ) {
 				if ( substr( ltrim( $row ), 0, 1 ) === '*' ) {			
