@@ -31,6 +31,7 @@ $messages['be-tarask'] = array(
 	'prefstats-title' => 'Статыстыка ўстановак',
 	'prefstats-list-intro' => 'Зараз адсочваюцца наступныя ўстаноўкі.
 Націсьніце на адну зь іх для прагляду яе статыстыкі.',
+	'prefstats-noprefs' => 'У цяперашні момант ніякія ўстаноўкі не адсочваюцца. Устанавіце $wgPrefStatsTrackPrefs для сачэньня за ўстаноўкамі.',
 );
 
 /** Bosnian (Bosanski)
@@ -42,6 +43,7 @@ $messages['bs'] = array(
 	'prefstats-title' => 'Statistike postavki',
 	'prefstats-list-intro' => 'Trenutno, slijedeće postavke se prate.
 Kliknite na jednu od njih da pogledate njene statistike.',
+	'prefstats-noprefs' => 'Nijedna postavka se trenutno ne prati. Podesite $wgPrefStatsTrackPrefs za praćenje postavki.',
 );
 
 /** Czech (Česky)
@@ -53,6 +55,7 @@ $messages['cs'] = array(
 	'prefstats-title' => 'Statistika nastavení',
 	'prefstats-list-intro' => 'V současnosti se sledují následující nastavení.
 Kliknutím zobrazíte příslušné statistiky.',
+	'prefstats-noprefs' => 'Momentálně se nesleduje žádné nastavení. Sledování musíte nakonfigurovat v $wgPrefStatsTrackPrefs.',
 );
 
 /** German (Deutsch)
@@ -75,6 +78,7 @@ $messages['dsb'] = array(
 	'prefstats-title' => 'Statistika nastajenjow',
 	'prefstats-list-intro' => 'Tuchylu se slědujuce nastajenja slěduju.
 Klikni na jadne z nich, aby se statistiku wó nim woglědał.',
+	'prefstats-noprefs' => 'Tuchylu žedne nastajenja se slěduju. Konfigurěruj $wgPrefStatsTrackPrefs, aby nastajenja slědował.',
 );
 
 /** Greek (Ελληνικά)
@@ -129,6 +133,7 @@ $messages['fr'] = array(
 	'prefstats-title' => 'Statistiques des préférences',
 	'prefstats-list-intro' => "En ce moment, les préférences suivantes sont suivies.
 Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
+	'prefstats-noprefs' => 'Aucune préférence n\'est actuellement suivie. Configurer $wgPrefStatsTrackPrefs pour suivre des préférences.',
 );
 
 /** Galician (Galego)
@@ -140,10 +145,12 @@ $messages['gl'] = array(
 	'prefstats-title' => 'Estatísticas das preferencias',
 	'prefstats-list-intro' => 'Actualmente as seguintes preferencias están sendo seguidas.
 Prema sobre unha para ver as estatísticas sobre ela.',
+	'prefstats-noprefs' => 'Actualmente non se segue preferencia algunha. Configure $wgPrefStatsTrackPrefs para seguir preferencias.',
 );
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Purodha
  */
 $messages['gsw'] = array(
 	'prefstats' => 'Prioritäte-Statischtik',
@@ -151,6 +158,7 @@ $messages['gsw'] = array(
 	'prefstats-title' => 'Priorotätestatischtik',
 	'prefstats-list-intro' => 'Zur Zyt wäre die Prioritäte verfolgt.
 Druck uf eini go Statischtike iber si aaluege.',
+	'prefstats-noprefs' => 'Bis jetz wäre kei Prioritete verfolgt. Konfigurier $wgPrefStatsTrackPrefs go Prioritete verfolge.',
 );
 
 /** Hebrew (עברית)
@@ -172,6 +180,7 @@ $messages['hsb'] = array(
 	'prefstats-desc' => 'Statistika wo tym, kelko wužiwarjow je wěste nastajenja aktiwizowało',
 	'prefstats-title' => 'Statistika nastajenjow',
 	'prefstats-list-intro' => 'Tuchwilu so slědowace nastajenja sćěhuja. Klikń na jedne z nich, zo by sej statistiku wo nim wobhladał.',
+	'prefstats-noprefs' => 'Tuchwilu so žane nastajenja njesćěhuja. Konfiguruj $wgPrefStatsTrackPrefs, zo by nastajenja sćěhował.',
 );
 
 /** Hungarian (Magyar)
@@ -197,6 +206,7 @@ Clicca super un pro vider statisticas super illo.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
@@ -205,6 +215,7 @@ $messages['id'] = array(
 	'prefstats-title' => 'Statistik preferensi',
 	'prefstats-list-intro' => 'Saat ini, preferensi-preferensi berikut sedang ditelusuri.
 Klik pada salah satu untuk melihat statistiknya.',
+	'prefstats-noprefs' => 'Tidak ada preferensi yang sedang ditelusuri. Konfigurasikan $wgPrefStatsTrackPrefs untuk menelusuri preferensi.',
 );
 
 /** Italian (Italiano)
@@ -226,7 +237,8 @@ $messages['ja'] = array(
 	'prefstats' => '個人設定の統計',
 	'prefstats-desc' => 'どの程度の数の利用者が個人設定のある項目を有効にしているかの追跡統計',
 	'prefstats-title' => '個人設定に関する統計',
-	'prefstats-list-intro' => '現在、以下の個人設定について追跡調査を行っています。調査結果を見るにはそれぞれをクリックしてください。',
+	'prefstats-list-intro' => '現在、以下の個人設定項目について追跡調査を行っています。調査結果を見るにはそれぞれをクリックしてください。',
+	'prefstats-noprefs' => '現在、追跡調査の対象となっている個人設定項目はありません。追跡調査を行うには $wgPrefStatsTrackPrefs を設定してください。',
 );
 
 /** Georgian (ქართული)
@@ -249,6 +261,7 @@ $messages['ksh'] = array(
 	'prefstats-title' => 'Shtatistike övver de Metmaacher ier Enshtellunge',
 	'prefstats-list-intro' => 'Em Momang donn mer heh di Enshtellunge vun de Metmaacher biobachte.
 Donn op ein dovun drop klecke, öm dä ier Shtatistik ze belooere.',
+	'prefstats-noprefs' => 'De Enshtellunge wääde nit Verfollsch. Donn <code lang="en">$wgPrefStatsTrackPrefs</code> opsäze, öm dat ze ändere.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -282,6 +295,8 @@ $messages['nl'] = array(
 	'prefstats-title' => 'Voorkeurenstatistieken',
 	'prefstats-list-intro' => 'Instellingen voor de onderstaande voorkeuren worden bijgehouden.
 Klik op een voorkeur om de statistieken te bekijken.',
+	'prefstats-noprefs' => 'Er worden geen voorkeuren bijgehouden.
+Stel $wgPrefStatsTrackPrefs in om voorkeuren bij te houden.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -315,6 +330,7 @@ $messages['oc'] = array(
 	'prefstats-title' => 'Estatisticas de las preferéncias',
 	'prefstats-list-intro' => "En aqueste moment, las preferéncias seguentas son seguidas.
 Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
+	'prefstats-noprefs' => 'Cap de preferéncia es pas seguida actualament. Configuratz $wgPrefStatsTrackPrefs per seguir de preferéncias.',
 );
 
 /** Polish (Polski)
@@ -326,6 +342,7 @@ $messages['pl'] = array(
 	'prefstats-title' => 'Statystyki dla preferencji',
 	'prefstats-list-intro' => 'Obecnie następujące preferencje są analizowane.
 Kliknij na jednej aby zobaczyć statystyki jej dotyczące.',
+	'prefstats-noprefs' => 'Żadne preferencje nie są obecnie śledzone. Skonfiguruj $wgPrefStatsTrackPrefs aby śledzić preferencje.',
 );
 
 /** Portuguese (Português)
@@ -371,6 +388,8 @@ $messages['ru'] = array(
 	'prefstats-title' => 'Статистика настроек',
 	'prefstats-list-intro' => 'Сейчас отслеживаются следующие настройки.
 Выберите одну из них для просмотра статистики.',
+	'prefstats-noprefs' => 'В настоящее время настройки не отслеживаются.
+Установите $wgPrefStatsTrackPrefs для отслеживания настроек.',
 );
 
 /** Yakut (Саха тыла)
@@ -393,6 +412,7 @@ $messages['sk'] = array(
 	'prefstats-title' => 'Štatistika nastavení',
 	'prefstats-list-intro' => 'Momentálne sa sledujú nasledovné nastavenia.
 Po kliknutí na niektoré z nich zobrazíte štatistiku o ňom.',
+	'prefstats-noprefs' => 'Momentálne sa nesledujú žiadne nastavenia. Ak chcete sledovať nastavenia, nastavte $wgPrefStatsTrackPrefs.',
 );
 
 /** Swedish (Svenska)
