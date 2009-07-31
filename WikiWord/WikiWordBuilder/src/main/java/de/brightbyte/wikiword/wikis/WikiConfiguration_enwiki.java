@@ -69,9 +69,10 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("\\{\\{\\s*Auto[ _](.+?)\\s*\\|\\s*(.*?)(\\|.*?)?\\s*\\}\\}", "$1 $2", Pattern.CASE_INSENSITIVE));
 		*/
 		
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth[-_ ]date|BrithDate|Bday|Dob|Age|Birth[-_ ]date[_ ]and[_ ]age|BirthDateAndAge|Bda", 3, true, true), "$2-$3-$4" ) );
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[-_ ]date[_ ]and[_ ]age|DeathDateAndAge|Dda", 6, true, true), "$2-$3-$4 &ndash; $5-$6-$7" ) );
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[-_ ]date|DeathDate|Dod", 3, true, true), "$2-$3-$4" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Birth[_ ]date|BrithDate|Bday|Dob|Age|Birth[-_ ]date[_ ]and[_ ]age|BirthDateAndAge|Bda", 3, true, true), "$2-$3-$4" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[_ ]date[_ ]and[_ ]age|DeathDateAndAge|Dda", 6, true, true), "$2-$3-$4 &ndash; $5-$6-$7" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Death[_ ]date|DeathDate|Dod", 3, true, true), "$2-$3-$4" ) );
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("(start|end|birth|death)-date|OldStyleDate", 1, true, true), "$1" ) );
 		
 		stripClutterManglers.add( new RegularExpressionMangler("^"+templatePatternString("wrapper", 0, true), "{|", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 		stripClutterManglers.add( new RegularExpressionMangler("^"+templatePatternString("end|col-end", 0, true), "|}", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
@@ -84,8 +85,10 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Okina", 0, false), "\u02BB"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("0", 0, true), " "));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("ndash", 0, true), "&ndash;"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("\u00b7|moddot|dot", 0, false), "\u00b7"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("spaces", 1, true), " "));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("nbsp", 1, true), " "));
 		
 		stripClutterManglers.add( new RegularExpressionMangler(
 			templatePattern(
@@ -94,7 +97,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				"Tnavbar|Navbox([ _]generic)?|redirect|pp-.*?|" +
 				"ambox|wikify|pov|cleanup|globalize|split|current|issue|merge|" +
 				"Coor([ _]\\w+)?|Coord|reflist|precision[-\\w\\d]+|nowrap[ _]begin|" +
-				"Audio|\\w+[ _]icon|lang-\\w+|Flagicon|" +
+				"Audio|\\w+[ _]icon|lang-\\w+|Flagicon|Flag|Flagcountry|" +
 				"Main|" +
 				"redirect" //maybe keep that? but we need this for the :'' stripping
 			, 0, true), ""));
