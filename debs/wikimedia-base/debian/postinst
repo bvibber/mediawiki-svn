@@ -104,6 +104,10 @@ case "$1" in
 		/^#alias ll=/ s/^#//
 		/^#alias la=/ s/^#//
 	' /root/.bashrc
+
+	# Enable system accounting
+	sed -i 's/^ENABLED="false"/ENABLED="true"/g' /etc/default/sysstat
+	invoke-rc.d sysstat start || true
 	
     ;;
 

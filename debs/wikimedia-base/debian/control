@@ -9,7 +9,7 @@ Package: wikimedia-base
 Architecture: all
 Origin: Wikimedia
 Pre-Depends: ntp-server, smartmontools
-Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, zsh, vim, joe, traceroute, screen, gdb, ntp-simple, ssmtp | mail-transport-agent
+Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, zsh, vim, joe, traceroute, screen, gdb, ntp-simple, ssmtp | mail-transport-agent, acct
 Description: Base requirements for any Wikimedia server
  wikimedia-base provides the Wikimedia specific base requirements
  for any Wikimedia server. Currently that involves:
@@ -19,3 +19,4 @@ Description: Base requirements for any Wikimedia server
  * Sets APT package pinning for Wikimedia packages
  * Sets up NTP
  * Set up SMART disk monitoring
+ * Set up process accounting
