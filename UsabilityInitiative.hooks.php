@@ -17,10 +17,10 @@ class UsabilityInitiativeHooks {
 	private static $scriptFiles = array(
 		'base_sets' => array(
 			'combined' => array(
-				array( 'src' => 'js/jquery.combined.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.combined.js', 'version' => 3 ),
 			),
 			'combined-min' => array(
-				array( 'src' => 'js/jquery.combined.min.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.combined.min.js', 'version' => 3 ),
 			),
 			'raw' => array(
 				array( 'src' => 'js/jquery.js', 'version' => 2 ),
@@ -28,7 +28,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/jquery.browser.js', 'version' => 2 ),
 				array( 'src' => 'js/jquery.cookie.js', 'version' => 2 ),
 				array( 'src' => 'js/jquery.textSelection.js', 'version' => 2 ),
-				array( 'src' => 'js/jquery.toolbar.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.toolbar.js', 'version' => 3 ),
 				array( 'src' => 'js/jquery.wikiOutline.js', 'version' => 2 ),
 			),
 		),
