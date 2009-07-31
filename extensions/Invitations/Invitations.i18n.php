@@ -692,6 +692,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -716,8 +717,8 @@ Fir Invitatioune fir eng bestëmmte fonctioun ze kréien, klickt w.e.g. op de je
 	'invitations-inviteform-title' => 'Ee Benotzer invitéiere fir $1 ze benotzen',
 	'invitations-inviteform-username' => "Benotzer fir z'invitéieren",
 	'invitations-inviteform-submit' => 'Invitéieren',
-	'invitations-error-baduser' => 'De Benotzer deen Dir uginn huet schéngt et net ze ginn.',
-	'invitations-error-alreadyinvited' => 'Dee Benotzer deen Dir uginn huet huet schonn Accès op déi Fonctioun!',
+	'invitations-error-baduser' => 'De Benotzer deen Dir uginn hutt schéngt et net ze ginn.',
+	'invitations-error-alreadyinvited' => 'Dee Benotzer deen Dir uginn hutt huet schonn Accès op déi Fonctioun!',
 	'invitations-invite-success' => 'Dir hutt de(n) $1 invitéiert fir dës Fonctioun ze benotzen!',
 );
 

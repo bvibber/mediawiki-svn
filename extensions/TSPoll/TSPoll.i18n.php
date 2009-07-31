@@ -160,10 +160,11 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'tspoll-desc' => 'Den [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] als HTML-Tag drasetzen',
+	'tspoll-desc' => 'Den [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] als HTML-Markéierung drasetzen',
 	'tspoll-fetch-error' => 'Feeler bäim Opruffe vun der URL!',
 	'tspoll-id-error' => 'Keng ID gouf uginn!',
 );

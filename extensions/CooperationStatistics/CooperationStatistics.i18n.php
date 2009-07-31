@@ -66,8 +66,11 @@ $messages['be-tarask'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'cooperationstatistics' => 'Statistike kooperacije',
 	'cooperationstatistics-desc' => 'Prikazuje [[Special:CooperationStatistics|statistike saradnje u glavnom imenskom prostoru]].',
 	'cooperationstatistics-tablearticle' => 'Broj stranica',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|stranica|stranice|stranica}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|ima|imaju}} $1 {{PLURAL:$1|uređivač|uređivača}}',
 	'cooperationstatistics-legendmore' => 'ili više urednika.',
 );
 

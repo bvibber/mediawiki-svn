@@ -443,7 +443,11 @@ $messages['pt-br'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'discussionthreading-desc' => "Aggiunge le thread jndr'à le pàggene de le 'ngazzaminde",
 	'discussionthreading-replysection' => 'respunne',
+	'discussionthreading-replysectionhint' => 'Responne a stu messagge',
+	'discussionthreading-threadnewsection' => 'nuève',
+	'discussionthreading-threadnewsectionhint' => "Accuminze 'nu thread nuève",
 );
 
 /** Russian (Русский)

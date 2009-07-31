@@ -690,6 +690,7 @@ Ding fründlesch %s Süstem för Bescheid ze sare.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -714,7 +715,7 @@ Fir eng Lëschtvun den disponibele Projeten, kuckt w.e.g. [[MediaWiki:TodoTasksV
 
 Iergend een huet Iech op %s eng Aufgab zougedeelt.
 
-Fir är komlett Aufgabelësch  ze gesinn, gitt w.e.g. op %s.
+Fir är komplett Aufgabelëscht ze gesinn, gitt w.e.g. op %s.
 
 Äre frëndleche  %s Informatiounssystem',
 );

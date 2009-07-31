@@ -1843,9 +1843,13 @@ $messages['roa-tara'] = array(
 	'badimages-reason' => 'Mutive:',
 	'badimages-remove' => '(live)',
 	'badimages-remove-btn' => 'Live',
+	'badimages-remove-confirm' => "Pe piacere conferme ca tu vuè ccu scangille $1 da 'a liste:",
 	'badimages-removed' => "$1 ha state luete da 'a liste.",
+	'badimages-subheading' => 'Artichele corrende',
 	'badimages-unprivileged' => '(Tu non ge tìne le permesse sufficiende pe cangià sta liste)',
+	'badimages-log-name' => 'Liste de le immaggine sbagliate',
 	'badimages-page' => '{{ns:help}}:Liste de le immaggine no bbuene',
+	'right-badimages' => "Aggiuèrne 'a liste de le immaggine sbagliate",
 );
 
 /** Russian (Русский)

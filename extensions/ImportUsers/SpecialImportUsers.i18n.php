@@ -939,6 +939,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -952,7 +953,7 @@ $messages['lb'] = array(
 	'importusers-user-added' => "De Benotzer '''$1''' gouf derbäigesat.",
 	'importusers-user-present-update' => "De Benotzer '''$1''' gëtt et schonn. Aktualiséiert.",
 	'importusers-user-present-not-update' => "De Benotzer '''$1''' gëtt et schonn. Net aktualiséiert.",
-	'importusers-user-invalid-format' => "D'Benotzerdaten an der Linn #$1 huet een ongëltege Format oder ass eidel. Iwwersprong.",
+	'importusers-user-invalid-format' => "D'Benotzerdaten an der Linn #$1 hunn een ongëltegt Format oder sinn eidel. Iwwersprong.",
 	'importusers-log' => 'Logbuch vun de Benotzerimporten',
 	'importusers-log-summary' => 'Resumé',
 	'importusers-log-summary-all' => 'Alleguer',
@@ -1323,7 +1324,9 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'importusers' => "Utinde ca 'mbortane",
 	'importusers-uploadfile' => "Careche 'u file",
+	'importusers-form-caption' => 'File de input CSV (UTF-8)',
 	'importusers-form-file' => "Ause 'u formate d'u file (CSV):",
+	'importusers-form-replace-present' => "Rimbiazze l'utinde esistende",
 	'importusers-form-button' => "'Mborte",
 	'importusers-user-added' => "Utende '''$1''' ha state aggiunde.",
 	'importusers-user-present-update' => "Utende '''$1''' esiste ggià. Aggiorne.",

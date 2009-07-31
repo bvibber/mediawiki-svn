@@ -69,6 +69,14 @@ $messages['dsb'] = array(
 	'simplesearch-search' => 'Pytaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'simplesearch' => 'Απλή αναζήτηση',
+	'simplesearch-search' => 'Αναζήτηση',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -167,6 +175,15 @@ $messages['lb'] = array(
 	'simplesearch' => 'Einfach Sich',
 	'simplesearch-desc' => 'Setzt eng extra Fonctionalitéit bäi déi einfach Sich derbäi.',
 	'simplesearch-search' => 'Sich',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'simplesearch' => 'Paprasta paieška',
+	'simplesearch-desc' => "Prideda papildomą funkcionalumą Vector's supaprastintai paieškai",
+	'simplesearch-search' => 'Ieškoti',
 );
 
 /** Dutch (Nederlands)

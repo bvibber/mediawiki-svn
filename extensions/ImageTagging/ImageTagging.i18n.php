@@ -928,6 +928,7 @@ Donn drop wade, bes dä Vörjang fädesch es, dä jraad em Jang es.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -940,7 +941,7 @@ $messages['lb'] = array(
 	'imagetagging-removetag' => 'Tag ewechhuelen',
 	'imagetagging-tag-button' => 'Tag',
 	'imagetagging-tagcancel-button' => 'Zréck',
-	'imagetagging-addingtag' => 'Tag derbäisetzen',
+	'imagetagging-addingtag' => 'Markéierung derbäisetzen',
 	'imagetagging-imagetag-seemoreimages' => 'Kuckt méi Biller vu(n) "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Biller vun "$1"',
 	'imagetagging-taggedimages-displaying' => 'Weis $1 - $2 vu(n) $3 Biller vu(n) "$4"',
@@ -1344,6 +1345,18 @@ $messages['ro'] = array(
 	'imagetagging-removingtag' => 'Eliminare etichetă…',
 	'imagetagging-addtagsuccess' => 'Adăugat etichetă.',
 	'imagetagging-removetagsuccess' => 'Şters etichetă.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'imagetagging-article' => 'Pàgene:',
+	'imagetagging-images' => 'immaggine',
+	'imagetagging-inthisimage' => "Jndr'à sta immagine: $1",
+	'imagetagging-tag-button' => 'Tag',
+	'imagetagging-addtagsuccess' => 'Tag aggiunde.',
+	'imagetagging-removetagsuccess' => 'Tag luate.',
 );
 
 /** Russian (Русский)

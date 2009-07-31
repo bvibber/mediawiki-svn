@@ -2404,6 +2404,7 @@ Dann kanns De met dä <i lang="en">OpenID</i> nit mieh heh enlogge.',
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author IAlex
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -2412,7 +2413,7 @@ $messages['lb'] = array(
 	'openidserver' => 'OpenID-Server',
 	'openidxrds' => 'Yadis Fichier',
 	'openidconvert' => 'OpenID-Ëmwandler',
-	'openiderror' => 'Feeler bäi der Iwwerpréifung',
+	'openiderror' => 'Feeler bei der Iwwerpréifung',
 	'openiderrortext' => 'Beim Iwwerpréifen vun der OpenID URL ass e Feeler geschitt.',
 	'openidconfigerror' => 'OpenId-Konfiguratiounsfeeler',
 	'openidconfigerrortext' => "D'OpenID-Späicherastellung fir dës Wiki ass falsch.
@@ -3912,6 +3913,7 @@ $messages['te'] = array(
 	'openidconvertyourstext' => 'అది ఇప్పటికే మీ ఓపెన్ఐడీ.',
 	'openidnousername' => 'వాడుకరిపేరు ఇవ్వలేదు.',
 	'openid-urls-delete' => 'తొలగించు',
+	'openid-provider-label-google' => 'మీ గూగుల్ ఖాతాని ఉపయోగించి ప్రవేశించండి',
 );
 
 /** Tetum (Tetun)

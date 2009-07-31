@@ -1474,6 +1474,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'expand_templates_input' => 'Teste de input:',
 	'expand_templates_output' => 'Resultete',
 	'expand_templates_xml_output' => 'XML de output',
 	'expand_templates_ok' => 'OK',

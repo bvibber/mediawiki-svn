@@ -1187,6 +1187,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'multipleupload-saveallfiles' => 'Reggistre tutte le file',
 	'multiupload-fileuploaded' => 'File carechete.',
 	'multiupload-toolbox' => "Carecamende de cchiù file 'nzieme",
 );

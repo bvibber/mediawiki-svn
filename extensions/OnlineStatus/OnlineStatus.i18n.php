@@ -803,6 +803,14 @@ $messages['pt-br'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Alterar o meu estado para offline quando me desautenticar',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'onlinestatus-tab' => 'State',
+	'onlinestatus-toggles-desc' => "'U state tue:",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

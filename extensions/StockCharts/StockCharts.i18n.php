@@ -138,11 +138,12 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'stockcharts-desc' => 'Setzt den Tag <nowiki><stockchart ticker="AAPL"/></nowiki> derbäi fir interaktiv Grafike vu Finanzwerter',
-	'stockcharts-missingticker' => 'Fir e Grafik mat Finanzwerter anzebanne musst Dir mindestens een ticker uginn.
+	'stockcharts-desc' => 'Setzt d\'Markéierung <nowiki><stockchart ticker="AAPL"/></nowiki> derbäi fir interaktiv Grafike vu Finanzwäerter',
+	'stockcharts-missingticker' => 'Fir eng Grafik mat Finanzwäerter anzebanne musst Dir mindestens een ticker uginn.
 Benotzt: &lt;stockchart ticker="AAPL"/&gt;',
 );
 

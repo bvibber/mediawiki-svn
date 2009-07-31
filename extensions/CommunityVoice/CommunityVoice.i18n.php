@@ -226,11 +226,18 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'communityvoice-desc' => 'Yhteisöllisen osallistumisen välineet.',
+	'communityvoice-ratings' => 'Arvioinnit',
 	'communityvoice-ratings-scale-status-sending' => 'Lähetetään...',
+	'communityvoice-ratings-scale-status-error' => 'Virhe lähettämisessä.',
 	'communityvoice-ratings-scale-status-thanks' => 'Kiitos äänestäsi!',
+	'communityvoice-ratings-error-no-category' => 'Luokkamäärite puuttuu arviointimerkinnästä.',
+	'communityvoice-ratings-error-no-title' => 'Nimimäärite puuttuu arviointimerkinnästä.',
 );
 
 /** French (Français)
@@ -409,18 +416,19 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'communityvoice' => 'Stëmm vun der Gemeinschaft',
 	'communityvoice-desc' => "Fonctioune fir d'Gemeinschaftsbedeelegung",
-	'communityvoice-ratings' => 'Bewertungen',
+	'communityvoice-ratings' => 'Bewäertungen',
 	'communityvoice-ratings-scale-status-sending' => 'Schécken...',
 	'communityvoice-ratings-scale-status-error' => 'Feeler beim Schécken!',
 	'communityvoice-ratings-scale-status-thanks' => "Merci fir d'Ofstëmmen!",
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|Stëmm|Stëmmen}} ofginn)',
 	'communityvoice-ratings-error-no-category' => 'Am Bewertungstag feelt den Attribut Kategorie.',
-	'communityvoice-ratings-error-no-title' => 'Den Titel-Attribut feelt am Bewertungs-Tag.',
+	'communityvoice-ratings-error-no-title' => 'Den Titel-Attribut feelt an der Bewäertungs-Markéierung.',
 );
 
 /** Lithuanian (Lietuvių)

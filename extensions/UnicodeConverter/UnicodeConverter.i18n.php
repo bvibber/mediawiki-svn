@@ -511,6 +511,17 @@ $messages['ro'] = array(
 	'unicodeconverter-newtext' => 'Text convertit:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'unicodeconverter' => 'Convertitore de Unicode',
+	'unicodeconverter-desc' => "'N'esempbie terra-terre de 'nu module de 'na pàgena speciale. [[Special:UnicodeConverter|Date 'na stringhe in UTF-8]], avène convertite jndr'à entità HTML ca se capiscene cu 'u stàndard ISO 8859-1 de le pàggene web",
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Teste origginale:',
+	'unicodeconverter-newtext' => 'Teste convertite:',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

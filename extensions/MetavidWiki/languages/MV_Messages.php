@@ -4197,10 +4197,7 @@ dobei</a>.',
 	'mv_tool_export' => 'Expotteere',
 	'mv_tool_export_title' => 'Dahteshtrohm-Mettadahte expoteere',
 	'mv_tool_embed' => 'Enbenge',
-	'mv_tool_embed_title' => '
-Enschtellunge för et jraad nohjefroochte
-segment
-enbenge',
+	'mv_tool_embed_title' => 'Enschtellunge för dä jraad nohjefroochte Afschnett enbenge',
 	'mv_tool_overlay' => '
 Schabloone 
 overlays',
@@ -4245,15 +4242,11 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mv_cat_search_note' => 'Opjepaß: Met „Saachjroppe“ wääde bloß de bövverschte Saachjroppe opjeleß.
 Öm alle Metta_Daate en de Berette vun Saachjroppe ze fenge, donn noh
 „$1“ söhke.',
-	'mv-category-media-count' => '
-En dä Saachjropp 
-{{PLURAL:$1|es ein 
-Mediensegment
-|sinn_er $1 
-Mediensegmente
-|kei 
-segments
-}}',
+	'mv-category-media-count' => 'En dä Saachjropp {{PLURAL:$1
+|es eine Afschnett
+|sinn_er $1 Afschnedde
+|jidd_et kei Afschnedde
+}} uß Meedije',
 	'mv_mvd_linkback' => 'Deil ussem Daateshtrohm $1<br />
 Jangk op di Aansech als Dahteshtrohm: $2',
 	'mvBadMVDtitle' => 'de Zoot fählt, der Dahteshtrohm fählt, udder et Fomaat vun de Zick eß Jedreße',
@@ -4440,21 +4433,29 @@ $messages['lb'] = array(
 	'metavid' => 'Metavid-Säit',
 	'mv_missing_stream' => 'De Stream $1 feelt',
 	'specialpages-group-mv_group' => 'MetaVidWiki Spezialsäiten',
+	'mv_ogg_high_quality' => 'Héich Qualitéit - Ogg Theora 900 kbit/s',
 	'mv_stream_added' => 'Dir hutt de Stream $1 derbäigesat',
 	'mv_stream_meta' => 'Stream-Säit',
+	'mv_add_stream' => 'MetaVid Stream derbäisetzen',
+	'mv_edit_stream' => 'MetaVid Stream änneren',
 	'mvexportsearch' => 'MetaVid-Export',
+	'mvexportstream' => 'MetaVid Stream exportéieren',
 	'mv_move_delete_msg' => 'op $1 geréckelt',
+	'mv_add_stream_page' => 'MetaVid Stream derbäisetzen',
 	'mv_add_stream_submit' => 'Stream derbäisetzen',
 	'mv_no_stream_files' => 'Et gëtt hei keng Stream Fichieren',
 	'mv_edit_stream_files' => 'Stream-Fichieren änneren',
 	'mv_path_type_wiki_title' => 'Wiki-Medientitel',
 	'mv_duration_label' => 'Dauer',
+	'mv_delete_stream_file' => 'Referenz vum Stream-Fichier läschen',
 	'mv_save_changes' => 'Ännerunge späicheren',
+	'mv_removed_file_stream' => 'Stream-Fichier ewechgeholl:$1',
 	'mv_add_stream_file' => 'Stream-Fichier derbäisetzen',
 	'mv_file_list' => 'Stream-Fichieren',
 	'mv_label_stream_name' => "Numm vum ''Stream''",
 	'mv_label_stream_desc' => 'Beschreiwung vum Stream',
 	'add_stream_permission' => 'Dir hutt net déi néideg Rechter fir e Stream derbäizesetzen',
+	'edit_stream_missing' => 'Den Numm vum Stream feelt',
 	'mv_missing_cat' => 'Den Numm vun der Kategorie feelt',
 	'mv_redirect_and_delete_reason' => 'Viruleedungssäit ass ewech geholl ginn',
 	'mv_remove_reason' => 'Grond vum Läschen:',
@@ -4465,6 +4466,7 @@ $messages['lb'] = array(
 	'mv_tool_search' => 'Sichen',
 	'mv_tool_navigate' => 'Navigéieren',
 	'mv_tool_export' => 'Exportéieren',
+	'mv_tool_export_title' => 'Meta-date vum Stream exportéieren',
 	'mv_tool_embed' => 'Abannen',
 	'mv_watch_clip' => 'Clip kucken',
 	'mv_close_clip' => 'Clip zoumaachen',
@@ -4480,8 +4482,10 @@ $messages['lb'] = array(
 	'mv_remove' => 'ewech huelen',
 	'mv_adjust' => 'upassen',
 	'mv_adjust_submit' => 'Astellung späicheren',
+	'mv_adjust_title' => 'Ufanks- a Schlusszäit upassen',
 	'mv_adjust_old_title_missing' => "D'Säit déi dir versich vun ($1) ze réckele gëtt et net",
 	'mv_start_desc' => 'Ufankszäit',
+	'mv_of' => '&#32;vu(n)&#32;',
 	'mv_edit_metadata' => 'Meta-Donnéeën änneren',
 	'mv_advanced_edit' => 'Erweidert Ännerung',
 	'mv_basic_edit' => 'Elementar Ännerung',
@@ -4532,6 +4536,7 @@ $messages['lb'] = array(
 	'mv_minutes_singular' => '$1 Minutt(en)',
 	'mv_seconds' => '$1 {{PLURAL:$1|Sekonn|Sekonnen}}',
 	'mv_seconds_singular' => '$1 Sekonn(en)',
+	'mv_stream_length' => 'Gesamtdauer vum Video:',
 	'mv_edit_sequence_desc_help' => 'Beschreiwung vun der Sequenz',
 	'mv_add_clip_by_name' => 'Clip nom Numm derbäisetzen',
 	'mv_export_cmml' => 'CMML exportéieren',
@@ -4541,6 +4546,8 @@ $messages['lb'] = array(
 	'mv_next_bill' => 'Nächst Rechnung: $1',
 	'mv_prev_cat' => 'Vireg Kategorie: $1',
 	'mv_next_cat' => 'Nächst Kategorie: $1',
+	'mv_search_stream' => 'Stream sichen',
+	'right-mv_edit_stream' => 'Stream-Fichieren änneren',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)

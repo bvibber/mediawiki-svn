@@ -271,6 +271,7 @@ In der folgenden Grafik wird die '''Anzahl Bewertungen pro Tag''' <font color=\"
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Pill
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Danke, dass Sie sich für die Bewertung dieser Seite einen Moment Zeit genommen haben!</font>''",
@@ -944,13 +945,14 @@ Di '''Aanzahl, wi öff en Version nohjekik wood för jeede Daach''' <font color=
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'ratinghistory' => 'Entwécklung vun der Bewertung vun der Säit',
-	'ratinghistory-leg' => 'Entwécklung vun der Bewertung vun [[:$1|$1]] am Laf vun der Zäit',
-	'ratinghistory-tab' => 'Bewertung',
-	'ratinghistory-link' => 'Bewertung vun der Säit',
+	'ratinghistory' => 'Entwécklung vun der Bewäertung vun der Säit',
+	'ratinghistory-leg' => 'Entwécklung vun der Bewäertung vun [[:$1|$1]] am Laf vun der Zäit',
+	'ratinghistory-tab' => 'Bewäertung',
+	'ratinghistory-link' => 'Bewäertung vun der Säit',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Merci datt Dir Iech en Ament Zäit huelt fir dës Säit nozekucken!</font>''",
 	'ratinghistory-period' => 'Zäitraum:',
 	'ratinghistory-month' => 'leschte Mount',
@@ -958,22 +960,22 @@ $messages['lb'] = array(
 	'ratinghistory-year' => 'lescht Joer',
 	'ratinghistory-3years' => 'lescht 3 Joer',
 	'ratinghistory-ave' => 'Duerchschnëtt: $1',
-	'ratinghistory-chart' => 'Bewertunge vun de Liser am Laf vun der Zäit',
+	'ratinghistory-chart' => 'Bewäertunge vun de Lieser am Laf vun der Zäit',
 	'ratinghistory-purge' => 'Tëschespäicher (Cache) eidelmaachen',
-	'ratinghistory-table' => 'Iwwerbléck vun de Bewertunge vu Lieser',
+	'ratinghistory-table' => 'Iwwerbléck vun de Bewäertunge vu Lieser',
 	'ratinghistory-users' => 'Benotzer, déi bewert hunn',
-	'ratinghistory-graph' => '$2 vun "$3" ($1 {{PLURAL:$1|Bewertung|Bewertungen}})',
+	'ratinghistory-graph' => '$2 vun "$3" ($1 {{PLURAL:$1|Bewäertung|Bewäertungen}})',
 	'readerfeedback-svg' => 'Als SVG kucken',
-	'ratinghistory-table-rating' => 'Bewertung',
+	'ratinghistory-table-rating' => 'Bewäertung',
 	'ratinghistory-table-votes' => 'Stëmmen',
-	'ratinghistory-none' => 'Et gëtt zu dësem Zäitpunkt net genuch Bewertunge vu Lieser fir e Grafik opzestellen.',
-	'ratinghistory-legend' => "Den '''Duerchschnëtt vun der deeglecher Bewertung''' <font color=\"blue\">''(blo)''</font> an '''momentanen Duerchschnëtt vun der Bewertung'''  <font color=\"green\">''(greng)''</font> sinn ënnendrënner grafesch pro Dag duergestallt.
+	'ratinghistory-none' => 'Et gëtt zu dësem Zäitpunkt net genuch Bewäertunge vu Lieser fir eng Grafik opzestellen.',
+	'ratinghistory-legend' => "Den '''Duerchschnëtt vun der deeglecher Bewäertung''' <font color=\"blue\">''(blo)''</font> an de '''momentanen Duerchschnëtt vun der Bewäertung''' <font color=\"green\">''(gréng)''</font> sinn ënnendrënner grafesch pro Dag duergestallt.
 
-De '''momentanen Duerchschnëtt vun der Bewertung'''  ass einfach den Duerchschnëtt vun allen deeglech Bewertungen ''bannert'' dësem Zäitraum fir all Dag.
+De '''momentanen Duerchschnëtt vun der Bewäertung''' ass einfach den Duerchschnëtt vun allen deegleche Bewäertunge ''bannent'' dësem Zäitraum fir all Dag.
 
-Skala: '''[1]''' - Aarmeséileg; '''[2]''' - Niddreg; '''[3]''' - An der Rei; '''[4]''' - Héich; '''[5]''' - Exzellent;
+Skala: '''[1]''' - Aarmséileg; '''[2]''' - Niddreg; '''[3]''' - An der Rei; '''[4]''' - Héich; '''[5]''' - Exzellent;
 
-D''''Zuel vun de Bewertunge pro Dag''' <font color=\"red\">''(roud)''</font> gëtt am Grafik ënnedrënner gewisen, op enger ''1:\$1'' Skala.",
+D''''Zuel vun de Bewäertunge pro Dag''' <font color=\"red\">''(rout)''</font> gëtt an der Grafik ënnendrënner op enger ''1:\$1'' Skala gewisen.",
 	'right-feedback' => 'De Feedback-Formulaire benotze fir eng Säit ze bewerten',
 );
 

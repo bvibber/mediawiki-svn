@@ -353,6 +353,13 @@ $messages['sv'] = array(
 	'stringfunctions-desc' => 'Utökar parsern med strängfunktioner',
 );
 
+/** Thai (ไทย)
+ * @author Harley Hartwell
+ */
+$messages['th'] = array(
+	'stringfunctions-desc' => 'เพิ่มประสิทธิภาพของฟังก์ชันพาร์เซอร์โดยใช้ฟังก์ชันสตริง',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

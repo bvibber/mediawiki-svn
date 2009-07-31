@@ -767,6 +767,14 @@ $messages['ro'] = array(
 	'talkhere-addcomment' => 'adaugă comentariu',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'talkhere-notalk' => "''(angore nisciune commente)''",
+	'talkhere-collapse' => "scunne 'u cangiatore",
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Александр Сигачёв

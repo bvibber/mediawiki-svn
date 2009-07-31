@@ -305,12 +305,13 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'likedpages' => 'Héich bewerte Säiten',
 	'likedpages-leg' => 'Héich-bewerte Säite fannen',
-	'likedpages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewertung vun de Lieser klasséiert sinn.',
+	'likedpages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewäertung vun de Lieser klasséiert sinn.',
 	'likedpages-none' => 'Et gëtt keng Säiten op dëser Lëscht',
 	'likedpages-graphs' => 'Bewertungsdonnéeën',
 );

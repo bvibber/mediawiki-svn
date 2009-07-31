@@ -138,6 +138,13 @@ $4',
 	'right-todo' => 'امتلاك قائمة للعمل',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'todo-new-queue' => 'ܚܕܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

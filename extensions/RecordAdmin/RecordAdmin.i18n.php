@@ -220,6 +220,7 @@ $messages['be-tarask'] = array(
 	'recordadmin-modified' => 'Абноўлены',
 	'recordadmin-actions' => 'Дзеяньні',
 	'recordadmin-needscontent' => 'Дадаць зьмест...',
+	'recordadmin-editwithform' => 'Рэдагаваць праз форму',
 	'right-recordadmin' => 'пошук і рэдагаваньне старонак запісаў',
 );
 
@@ -280,6 +281,7 @@ $messages['bs'] = array(
 	'recordadmin-modified' => 'Izmijenjeno',
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Dodaj sadržaj...',
+	'recordadmin-editwithform' => 'Uređivanje sa obrascom',
 	'right-recordadmin' => 'Traženje i uređivanje stranica zapisa',
 );
 
@@ -378,6 +380,7 @@ $messages['dsb'] = array(
 	'recordadmin-modified' => 'Změnjony',
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Wopśimjeśe pśidaś...',
+	'recordadmin-editwithform' => 'Z formularom wobźěłaś',
 	'right-recordadmin' => 'Zapisowe boki namakaś a wobźěłaś',
 );
 
@@ -570,6 +573,7 @@ $messages['gl'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Accións',
 	'recordadmin-needscontent' => 'Engadir o contido...',
+	'recordadmin-editwithform' => 'Editar con formulario',
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
@@ -713,6 +717,7 @@ $messages['hsb'] = array(
 	'recordadmin-modified' => 'Změnjeny',
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Wobsah přidać...',
+	'recordadmin-editwithform' => 'Z formularom wobdźěłać',
 	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
 );
 
@@ -814,6 +819,7 @@ $messages['ja'] = array(
 	'recordadmin-modified' => '変更',
 	'recordadmin-actions' => '操作',
 	'recordadmin-needscontent' => '内容の追加...',
+	'recordadmin-editwithform' => 'フォームを用いて編集',
 	'right-recordadmin' => '記録ページを検索および編集する',
 );
 
@@ -888,6 +894,7 @@ $messages['ksh'] = array(
 	'recordadmin-modified' => 'Jeändert',
 	'recordadmin-actions' => 'Axjohne',
 	'recordadmin-needscontent' => 'Enhalld dobei donn&nbsp;...',
+	'recordadmin-editwithform' => 'Övver et Fomulaa ändere',
 	'right-recordadmin' => 'Datesätz fenge un ändere',
 );
 
@@ -998,6 +1005,7 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 	'recordadmin-modified' => 'Gewijzigd',
 	'recordadmin-actions' => 'Acties',
 	'recordadmin-needscontent' => 'Inhoud toevoegen...',
+	'recordadmin-editwithform' => 'Via formulier bewerken',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 );
 
@@ -1286,6 +1294,7 @@ $messages['ru'] = array(
 	'recordadmin-modified' => 'Изменено',
 	'recordadmin-actions' => 'Действия',
 	'recordadmin-needscontent' => 'Добавить содержимое...',
+	'recordadmin-editwithform' => 'Редактировать с формой',
 	'right-recordadmin' => 'поиск и редактирование страниц записей',
 );
 
@@ -1337,6 +1346,7 @@ $messages['sk'] = array(
 	'recordadmin-modified' => 'Zmenené',
 	'recordadmin-actions' => 'Operácie',
 	'recordadmin-needscontent' => 'Pridať obsah...',
+	'recordadmin-editwithform' => 'Upraviť formulárom',
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
 );
 

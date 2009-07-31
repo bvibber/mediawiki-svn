@@ -214,10 +214,11 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'substall-desc' => 'Erstellt en <nowiki><substall></nowiki>-Tag, den all Schablounen a Wikisyntax ëmwandelt',
+	'substall-desc' => 'Erstellt eng <nowiki><substall></nowiki>-Markéierung, déi all Schablounen a Wikisyntax ëmwandelt',
 );
 
 /** Lithuanian (Lietuvių)

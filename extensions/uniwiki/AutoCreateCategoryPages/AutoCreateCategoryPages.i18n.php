@@ -378,6 +378,13 @@ Afişează toate paginile din categoria "$1" şi toate subcategoriile categoriei
 	'autocreatecategorypages-editor' => 'Creator automat de categorii',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'autocreatecategorypages-editor' => 'Ccreatore automateche de categorije',
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Александр Сигачёв

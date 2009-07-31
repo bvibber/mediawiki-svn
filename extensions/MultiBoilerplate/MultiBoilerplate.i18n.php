@@ -35,6 +35,7 @@ $messages['qqq'] = array(
 
 {{Identical|Load}}',
 	'boilerplates' => 'The description on Special:SpecialPages',
+	'multiboilerplate-special-pagetext' => 'Do not translate <code>&lt;span class=plainlinks>[{<nowiki />{fullurl:</code> and <code>|action=edit}}</code> and <code>]&lt;/span></code>',
 );
 
 /** Afrikaans (Afrikaans)
@@ -106,6 +107,10 @@ $messages['dsb'] = array(
 	'multiboilerplate-desc' => 'Zmóžnja wubraśe tekstowego elementa z wuběrańskego kašćika nad wobźěłowańskim pólom, mjaztym až boki se wobźěłuju',
 	'multiboilerplate-legend' => 'Tekstowy element wubraś',
 	'multiboilerplate-submit' => 'Zacytaś',
+	'boilerplates' => 'K dispoziciji stojece tekstowe elementy',
+	'multiboilerplate-special-pagetext' => 'Toś te pśedłogi daju se pśi napóranju boka awtomatiski zacytaś. (<span class=plainlinks>[{{fullurl:This page does not exist|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Tekstowe elementy definěruju se w LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Tekstowe elementy definěruju se w [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Greek (Ελληνικά)
@@ -161,6 +166,10 @@ $messages['gl'] = array(
 	'multiboilerplate-desc' => 'Permite que unha páxina a engadir sexa seleccionada dunha caixa despregable localizada enriba do formulario de edición ao editar páxinas',
 	'multiboilerplate-legend' => 'Seleccionar a páxina a engadir',
 	'multiboilerplate-submit' => 'Cargar',
+	'boilerplates' => 'Boilerplates dispoñibles',
+	'multiboilerplate-special-pagetext' => 'Estes modelos pódense precargar durante a creación da páxina. (<span class=plainlinks>[{{fullurl:Esta páxina non existe|action=edit}} demostración]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Os boilerplates están definidos en LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Os boilerplates están definidos en [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -238,6 +247,10 @@ $messages['ja'] = array(
 	'multiboilerplate-desc' => 'ページ編集時に編集フォームの上のドロップダウンボックスから定型句を選択できるようにする',
 	'multiboilerplate-legend' => '定型句の選択',
 	'multiboilerplate-submit' => '読み込み',
+	'boilerplates' => '利用可能な定型句',
+	'multiboilerplate-special-pagetext' => 'これらの雛型はページ作成時に先行読み込みすることが可能です。(<span class=plainlinks>[{{fullurl:このページは存在しません|action=edit}} 実演]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => '定型句は LocalSettings にて定義されています。',
+	'multiboilerplate-special-define-in-interface' => '定型句は [[MediaWiki:Multiboilerplate]] にて定義されています。',
 );
 
 /** Javanese (Basa Jawa)
@@ -261,6 +274,10 @@ $messages['ksh'] = array(
 	'multiboilerplate-desc' => 'Jit däm Schriver en Ußwahl aan extra parat jemaate Vörlare övver däm Finster för et Sigge-Beärrbeide.',
 	'multiboilerplate-legend' => 'Sök en Vörlaach uß',
 	'multiboilerplate-submit' => 'Donn et Enndraare!',
+	'boilerplates' => 'Müjjelesche Vörlare',
+	'multiboilerplate-special-pagetext' => 'Di Vörlare künne beim neu Sigge Aanlääje en di Sigg jetrocke wäde (<span class=plainlinks>[{{fullurl:Jung, di Sigg jidd_et noch jaa nit!|action=edit}} e Beishpell]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'De Vörlare wäde en dä Dattei <code lang="en">LocalSettings.php</code> om ßööver enjeschtallt.',
+	'multiboilerplate-special-define-in-interface' => 'De Vörlare wäde op dä Sigg [[MediaWiki:Multiboilerplate]] enjeschtallt.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -296,6 +313,11 @@ $messages['nl'] = array(
 	'multiboilerplate-desc' => 'Biedt de mogelijkheid een standaard tekstblok te selecteren uit een selectievenster bovenaan een bewerkingspagina',
 	'multiboilerplate-legend' => 'Sjabloon selecteren',
 	'multiboilerplate-submit' => 'Laden',
+	'boilerplates' => 'Beschikbare sjablonen',
+	'multiboilerplate-special-pagetext' => 'Deze sjablonen kunnen bij het aanmaken van een pagina worden voorgeladen.
+(<span class=plainlinks>[{{fullurl:Deze pagina bestaat niet|action=edit}} demonstratie]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Sjablonen worden ingesteld in LocalSettings.php.',
+	'multiboilerplate-special-define-in-interface' => 'Sjablonen worden ingesteld in [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

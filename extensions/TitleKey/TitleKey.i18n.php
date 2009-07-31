@@ -397,6 +397,13 @@ $messages['sv'] = array(
 	'titlekey-desc' => 'Bakstycke för sökning efter titelprefix',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'titlekey-desc' => 'శీర్షిక ప్రీఫిక్స్  వెతుకు సలహా బ్యాక్ఎండ్',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -985,6 +985,7 @@ $messages['bs'] = array(
 	'configure-ext-doc' => 'Pogledajte dokumentaciju na internetu',
 	'configure-ext-schemachange' => "'''Upozorenje:''' ovo proširenje zahtjeva ažuriranje baze podataka da bi ispravno radilo!",
 	'configure-ext-settings' => 'Postavke',
+	'configure-ext-settings-dep-errors' => 'Ovo proširenje ne može biti omogućeno jer {{PLURAL:$1|slijedeća postavka ima|slijedeće postavke imaju}} neprihvatljivu vrijednost:',
 	'configure-ext-settings-dep-error' => '$1: zahtijevana vrijednost: $2, trenutna vrijednost: $3',
 	'configure-ext-use-extension' => 'Koristi ovo proširenje',
 	'configure-ext-use' => 'Koristi',

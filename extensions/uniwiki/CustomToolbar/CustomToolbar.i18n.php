@@ -1832,6 +1832,17 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_user_sample' => 'Nume de utilizator',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$wgCustomToolbarMessages['roa-tara'] = array(
+	'ct_submit' => 'Veje!',
+	'ct_close' => "Achiude 'a fenéstre",
+	'ct_success' => 'File carecate senza probbleme!',
+	'ct_user_user' => 'Utende',
+	'ct_user_sample' => "Nome de l'utende",
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Ferrer
@@ -2103,6 +2114,7 @@ $wgCustomToolbarMessages['te'] = array(
 	'ct_math_tip_wrap' => 'ఈ పాఠ్యాన్ని గణిత సూత్రంగా మార్చండి (LaTeX)',
 	'ct_math_caption' => 'సూత్రం',
 	'ct_nowiki_caption' => 'వికీ లేదు',
+	'ct_horizontal_caption' => 'అడ్డు గీత',
 	'ct_upload' => '$1ని ఎగుమతి చేయండి',
 	'ct_select' => 'ఎగుమతి చేయడానికి $1ని ఎంచుకోండి:',
 	'ct_link' => 'లింకు పేరుని చేర్చండి (ఐచ్ఛికం):',

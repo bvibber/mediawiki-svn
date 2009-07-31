@@ -925,6 +925,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -947,7 +948,7 @@ $messages['lb'] = array(
 	'readerfeedback-voted' => "'''Et schéngt wéi wann Dir dës Säit scho bewert hutt''' ([$3 Bemierkungen oder Froen?]).",
 	'readerfeedback-submitting' => 'Späicheren ...',
 	'readerfeedback-finished' => 'Merci!',
-	'readerfeedback-tagfilter' => 'Tag:',
+	'readerfeedback-tagfilter' => 'Markéierung:',
 	'tooltip-ca-ratinghist' => 'Lieserbewertunge vun dëser Säit',
 );
 

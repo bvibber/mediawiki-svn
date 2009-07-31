@@ -1109,13 +1109,20 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Harley Hartwell
  * @author Manop
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'edituser-desc' => 'อนุญาตให้ผู้ใช้ที่ได้รับสิทธิ์แก้ไขการตั้งค่า แก้ไขการตั้งค่าของผู้ใช้อื่น',
 	'edituser' => 'แก้ไขผู้ใช้',
+	'edituser-logout' => 'ล็อกเอาต์ผู้ใช้',
 	'edituser-username' => 'ชื่อ',
 	'edituser-dosearch' => 'สืบค้น',
+	'edituser-nouser' => 'ผู้ใช้ที่ต้องการแก้ไขการตั้งค่า ไม่มีอยู่ในระบบ',
+	'edituser-exempt' => 'ไม่สามารถแก้ไขการตั้งค่าของผู้ใช้ที่ระบุได้',
+	'right-edituser' => 'แก้ไขการตั้งค่าของผู้ใช้อื่น',
+	'right-edituser-exempt' => 'ผู้ใช้่อื่นไม่สามารถแก้ไขการตั้งค่าของผู้ใช้คนนี้ได้',
 );
 
 /** Tagalog (Tagalog)

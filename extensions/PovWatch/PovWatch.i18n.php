@@ -506,11 +506,14 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Laajennus, jolla voi [[Special:PovWatch|lisätä sivuja toisten käyttäjien tarkkailulistoille]].',
+	'povwatch_no_session' => 'Virhe: Lomaketta ei voitu tallentaa johtuen menetetyistä istuntotiedoista.',
+	'povwatch_not_allowed_push' => 'Et ole PovWatchiin liittynyt ylläpitäjä, joten et voi siirtää sivuja muiden tarkkailulistoille.',
 	'povwatch_already_subscribed' => 'Olet jo liittynyt PovWatchiin',
 	'povwatch_subscribed' => 'Olet nyt liittynyt PovWatchiin',
 	'povwatch_not_subscribed' => 'Et ole liittynyt PovWatchiin, joten et voi peruuttaa sitä.',
 	'povwatch_unsubscribed' => 'Liittymisesi PovWatchiin on nyt peruutettu',
 	'povwatch_invalid_title' => 'Annetun sivun nimi oli virheellinen',
+	'povwatch_pushed' => '[[$1]] on onnistuneesti siirretty käyttäjän $2 {{PLURAL:$2|tarkkailulistalle|tarkkailulistoille}}',
 	'povwatch_intro' => 'PovWatch on palvelu, jonka kautta on mahdollista siirtää kiistanalaisia sivuja mukaan liittyneiden ylläpitäjien tarkkailulistoille.
 
 Loki tuoreimmista tarkkailulistoille [[Special:PovWatch/log|siirroista on saatavilla]].',
@@ -518,16 +521,21 @@ Loki tuoreimmista tarkkailulistoille [[Special:PovWatch/log|siirroista on saatav
 	'povwatch_subscriber_list_intro' => '<strong>Luettelo tilaajista</strong>',
 	'povwatch_not_allowed_subscribers' => 'Et ole oikeutettu tarkastelemaan PovWatchiin liittyneiden listaa.',
 	'povwatch_unknown_subpage' => 'Tuntematon alasivu.',
+	'povwatch_push' => 'Siirrä eteenpäin',
 	'povwatch_push_intro' => 'Käytä alla olevaa lomaketta siirtääksesi sivuja mukaan liittyneiden käyttäjien tarkkailulistoille.
 Ole varovainen kirjoittaessasi sivun nimen – jopa olemattomia sivuja voidaan lisätä, eikä ole mitään keinoa poistaa sivunimeä kun se on siirretty eteenpäin.',
+	'povwatch_title' => 'Sivunimi:',
 	'povwatch_comment' => 'Lokimerkintä',
 	'povwatch_no_log' => 'Lokitapahtumia ei ole.',
 	'povwatch_no_subscribers' => 'Tilaajia ei ole.',
+	'povwatch_unsubscribe_intro' => 'Olet liittynyt PovWatchiin. Napsauta alla olevaa painiketta peruuttaaksesi liittymisesi.',
 	'povwatch_unsubscribe' => 'Peruuta tilaus',
+	'povwatch_subscribe_intro' => 'Et ole liittynyt PovWatchiin. Napsauta alla olevaa painiketta liittyäksesi.',
 	'povwatch_subscribe' => 'Tilaa',
 	'povwatch_added' => 'lisätty',
 	'right-povwatch_admin' => 'ylläpitää muiden käyttäjien tarkkailusivuille lisäämisen käyttöoikeuksia',
 	'right-povwatch_user' => 'lisätä sivuja muiden käyttäjien tarkkailulistoille',
+	'action-povwatch_admin' => 'hallita käyttöoikeuksia PovWatchin suhteen',
 	'action-povwatch_user' => 'lisätä tätä sivua toisen käyttäjän tarkkailulistalle',
 );
 

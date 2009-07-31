@@ -363,6 +363,7 @@ Pour ce faire, vous êtes prié{{GENDER:||e|(e)}} d’obtenir une clef API à pa
 	'importfreeimages_filefromflickr' => '$1 par l’utilisateur <b>[$2]</b> depuis flickr. URL d’origine',
 	'importfreeimages_promptuserforfilename' => 'Veuillez indiquer le nom du fichier de destination :',
 	'importfreeimages_returntoform' => "ou, cliquez <a href='$1'>ici</a> pour revenir à votre liste de résultats.",
+	'importfreeimages_nophpflickr' => 'Vous n’avez pas installé phpFlickr, configurer $wgIFphpFlickr dans votre LocalSettings.php.',
 );
 
 /** Western Frisian (Frysk)
@@ -391,6 +392,7 @@ Para facelo, por favor, obteña a clave API [http://www.flickr.com/services/api/
 	'importfreeimages_filefromflickr' => '$1 polo usuario <b>[$2]</b> de flickr. Orixinal URL',
 	'importfreeimages_promptuserforfilename' => 'Introduza un nome de ficheiro de destino:',
 	'importfreeimages_returntoform' => "Ou prema <a href='$1'>aquí</a> para voltar á súa procura de resultados",
+	'importfreeimages_nophpflickr' => 'Non instalou phpFlickr, por favor, configure $wgIFphpFlickr no seu LocalSettings.php.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -793,6 +795,8 @@ U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hi
 	'importfreeimages_filefromflickr' => '$1 door gebruiker <b>[$2]</b> van flickr. Oorspronkelijke URL',
 	'importfreeimages_promptuserforfilename' => 'Gelieve een bestandsnaam op te geven:',
 	'importfreeimages_returntoform' => "Of, klik <a href='$1'>hier</a> om terug te keren naar uw zoekresultaten",
+	'importfreeimages_nophpflickr' => 'U hebt phpFlickr niet geïnstalleerd.
+Stel $wgIFphpFlickr in in uw LocalSettings.php.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -856,6 +860,7 @@ $messages['oc'] = array(
 	'importfreeimages_filefromflickr' => '$1 per l’utilizaire <b>[$2]</b> dempuèi flickr. URL d’origina',
 	'importfreeimages_promptuserforfilename' => 'Indicatz lo nom del fichièr de destinacion',
 	'importfreeimages_returntoform' => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
+	'importfreeimages_nophpflickr' => 'Avètz pas installat phpFlickr, configuratz $wgIFphpFlickr dins vòstre LocalSettings.php.',
 );
 
 /** Ossetic (Иронау)

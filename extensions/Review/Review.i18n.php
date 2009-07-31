@@ -367,6 +367,7 @@ $messages['bs'] = array(
 	'review_for_page' => 'Pregled za stranicu "$1"',
 	'review_for_user' => 'Provjera za korisnika "$1"',
 	'review_error' => 'Nešto nije u redu!',
+	'review_no_reviews_for_page' => 'Trenutno nema provjera za "$1".',
 	'review_total_statistics' => 'Ukupno',
 	'review_statistics_left_corner' => 'Revizija',
 	'review_version_link' => 'Revizija #$1',
@@ -375,8 +376,10 @@ $messages['bs'] = array(
 	'review_version_reviews_link' => '<small>(pregledi verzije)</small>',
 	'review_concerns_page' => 'Ovaj pregled je o stranici "$1".',
 	'review_user_reviews' => '<small>(provjere ovog korisnika)</small>',
+	'review_user_page_list' => '{{GENDER:$1|Korisnik|Korisnica}} je {{GENDER:$1|provjerio|provjerila}} slijedeće stranice:',
 	'review_user_details_link' => '(detalji)',
 	'review_has_been_stored' => 'Vaš pregled je spremljen!',
+	'review_page_review' => 'Provjera stranice "$1"',
 	'review_blocked' => 'Blokirani ste i ne možete učestvovati u pregledima.',
 	'review_wrong_namespace' => 'Stranice u ovom imenskom prostoru ne mogu biti provjerene!',
 	'review_topic' => 'Tema',
@@ -1179,6 +1182,7 @@ woh de „{{int:review_no_opinion}}“ ußjesooht häs.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1187,12 +1191,12 @@ $messages['lb'] = array(
 	'review_topic_page' => 'Sujete fir nozekucken',
 	'review_sidebar_explanation' => "Déi éischt Këscht fir unzeklicken heescht ëmmer 'keng Meenung'.",
 	'review_save' => 'Versioun späicheren',
-	'review_your_review' => 'Är Bewertung vun dëser Säit/Versioun:',
-	'review_sidebar_you_have_other_reviews_for_this_article' => "Dir hutt schonn aner Versioune vun dëser Säit bewert.
-Är aner Bewertunge gi mat dëser zesummegeluecht do wou Dir 'Keng Meenung' erausgewielt hutt.",
+	'review_your_review' => 'Är Bewäertung vun dëser Säit/Versioun:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Dir hutt schonn aner Versioune vun dëser Säit nogekuckt.
+Är aner Bewäertunge gi mat dëser zesummegeluecht wann Dir 'Keng Meenung' erausgewielt hutt.",
 	'review_page_link' => 'Statistike vum Nokucken',
 	'review_for_page' => 'Nokucke vun der Säit "$1"',
-	'review_for_user' => 'Bewertung fir de Benotzer "$1"',
+	'review_for_user' => 'Bewäertung fir de Benotzer "$1"',
 	'review_error' => 'Et ass eppes falsch!',
 	'review_no_reviews_for_page' => 'Et gëtt elo näischt fir "$1" fir nozekucken.',
 	'review_total_statistics' => 'Total',
@@ -1200,20 +1204,20 @@ $messages['lb'] = array(
 	'review_version_link' => 'Versioun #$1',
 	'review_statistic_cell' => 'Duerchschnëtt: $1 vun $2<br />($4 {{PLURAL:$4|registréierte|registréiert}} Benotzer, $5 {{PLURAL:$5|anonyme|anonym}} Benotzer)',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
-	'review_version_reviews_link' => '<small>(Bewertunge vun der Versioun)</small>',
+	'review_version_reviews_link' => '<small>(Bewäertunge vun der Versioun)</small>',
 	'review_concerns_page' => 'Dëst ass d\'Bewertung vun der Säit "$1".',
 	'review_concerns_user' => 'Dëst sinn d\'Bewertunge vum Benotzer "$1".',
-	'review_user_reviews' => '<small>(Bewertunge vun dësem Benotzer)</small>',
+	'review_user_reviews' => '<small>(Bewäertunge vun dësem Benotzer)</small>',
 	'review_user_page_list' => 'De Benotzer huet dës Säiten nogekuckt:',
 	'review_user_details_link' => '(Detailer)',
-	'review_has_been_stored' => 'Är Bewertung gouf gespäichert!',
+	'review_has_been_stored' => 'Är Bewäertung gouf gespäichert!',
 	'revision_review_this_page_version_link' => 'Dës Versioun vun der Säit nokucken.',
 	'review_page_review' => 'Nokucke vun der Säit "$1"',
 	'review_blocked' => 'Dir sidd gespaart a kënnt net beim Nokucke vu Säite matmaachen.',
 	'review_wrong_namespace' => 'Säiten an dësem Nummraum kënnen net nogekuckt ginn!',
 	'review_topic' => 'Thema',
 	'review_no_opinion' => 'Keng Meenung',
-	'review_rating' => 'Bewertung',
+	'review_rating' => 'Bewäertung',
 	'review_comment' => 'Bemierkung',
 );
 

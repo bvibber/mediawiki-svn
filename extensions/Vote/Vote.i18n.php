@@ -708,6 +708,16 @@ $messages['hi'] = array(
 	'vote-results-count' => 'गिनती',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'vote' => 'Boto',
+	'vote-submit' => 'Boto',
+	'vote-results-count' => 'Isipon',
+	'right-vote' => 'Boto',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -1359,11 +1369,20 @@ $messages['roa-tara'] = array(
 	'vote-header' => "Tu puè vutà pe 'u '''Signore Supreme d'u Munne''' aqquà!",
 	'vote-current' => "'U vote tuje l'è date a '''$1'''.",
 	'vote-caption' => "'A seleziona toje:",
+	'vote-choices' => "chicche|Chicche
+checche|Checche
+cacheme'ucazze|Cacheme 'u cazze",
 	'vote-submit' => 'Vote',
+	'vote-registered' => "'U vote tue ha state reggistrate",
 	'vote-view-results' => 'Vide le resultete',
 	'vote-results' => "Resultete d'u vote",
 	'vote-results-choice' => 'Scacchie',
 	'vote-results-count' => 'Cuende',
+	'vote-results-none' => "Non g'à state date nemmanghe 'nu vote.",
+	'vote-login' => 'Tu a essere [$1 collegate] pe vutà.',
+	'vote-invalid-choice' => "Tu à scacchià almene 'na opzione valide.",
+	'right-vote' => 'Vote',
+	'right-voteadmin' => "Vide 'u resultate de le votaziune",
 );
 
 /** Russian (Русский)

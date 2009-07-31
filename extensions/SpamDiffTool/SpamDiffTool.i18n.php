@@ -734,6 +734,7 @@ dänne drop lijje, wi zem Beispell blogpost.com, geocities.com, un esu.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -747,7 +748,7 @@ Klickt <a href='$1'>hei</a> fir weiderzefueren.",
 	'spamdifftool_summary' => "Op d'schwaarz Lëscht vum Spam derbäisetzen",
 	'spamdifftool_no_urls_detected' => "Et goufe keng URLe fonnt.
 Klickt w.e.g. <a href='$1'>heihi</a> fir zréck.",
-	'spamdifftool_spam_link_text' => 'bäi de Spam derbäisetzen',
+	'spamdifftool_spam_link_text' => 'bei de Spam setzen',
 	'spamdifftool_option_domain' => 'all vun dësem Domain',
 	'spamdifftool_option_subdomain' => 'all vun dësem Subdomain',
 	'spamdifftool_option_none' => 'näischt',

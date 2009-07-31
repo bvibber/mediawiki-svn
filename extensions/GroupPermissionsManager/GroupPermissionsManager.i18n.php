@@ -1599,6 +1599,7 @@ Jangk met de Mous övver e Rääsch en dä Leß, öm jezeisch ze krijje, wat dom
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1635,12 +1636,12 @@ $messages['lb'] = array(
 	'grouppermissions-log-change' => 'huet d\'Rechter fir de Grupp "$2" geännert',
 	'grouppermissions-log-delete' => 'huet de Grupp "$2" geläscht',
 	'grouppermissions-log-name' => 'Lëscht vun de Rechter vu Gruppen',
-	'grouppermissions-log-header' => 'Dës Säit weist Ännerungen bäi de Rechter vun de Benotzergruppen.',
+	'grouppermissions-log-header' => 'Dës Säit weist Ännerunge bei de Rechter vun de Benotzergruppen.',
 	'grouppermissions-needjs' => 'Opgepasst: Java Script ass an ärem Browser ausgeschalt. Et ka sënn datt e puer Fonctionalitéite net ginn !',
-	'grouppermissions-sp-header' => "Dir kënnt dës Säit benotze fir ze geréieren wéi Rechter sortéiert ginn a fir nei Rechter derbäizesetzen. Fuert matt der Maus iwwer e Recht fir d'Beschreiwung ze liesen",
+	'grouppermissions-sp-header' => "Dir kënnt dës Säit benotze fir ze geréiere wéi Rechter zortéiert ginn a fir nei Rechter derbäizesetzen. Fuert matt der Maus iwwer e Recht fir d'Beschreiwung ze liesen",
 	'grouppermissions-sp-sort' => 'Rechter sortéieren',
 	'grouppermissions-sp-save' => 'Späicheren',
-	'grouppermissions-sp-success' => "D'Rechter goufe sortéiert",
+	'grouppermissions-sp-success' => "D'Rechter goufen zortéiert",
 	'grouppermissions-sp-addtype' => 'Sortéierungstyp derbäisetzen',
 	'grouppermissions-sp-addperm' => 'Rechter derbäisetzen',
 	'grouppermissions-sp-remove' => 'ewech huelen',

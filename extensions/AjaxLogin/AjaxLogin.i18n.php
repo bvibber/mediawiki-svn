@@ -209,6 +209,18 @@ $messages['he'] = array(
 	'ajaxlogin-create' => 'יצירת חשבון',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'ajaxlogin-desc' => 'Ang Dinamik box ay gapasugot sa mga naga-usar nga makasulod kag magapadumdom sang password',
+	'ajaxLogin1' => 'Para ma kumpleto ang imo pagsulod, kinahanglan nga magabutang ka sang bag-o nga pasword. 
+Dayon magahalin ka diri sa ini nga pahina nga gina-islan kag madula ang imo gina islan subong.',
+	'ajaxLogin2' => 'Sigurado ka bala?
+Basi madula ang mga ginpang obra mo sa diri nga pahina kung mahalin ka subong sa diri nga pahina.',
+	'ajaxlogin-create' => 'Himuon ang akawnt',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

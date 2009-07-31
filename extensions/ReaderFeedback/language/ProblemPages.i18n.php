@@ -319,12 +319,13 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'problempages' => 'Säite mat enger nidreger Bewertungn',
 	'problempages-leg' => 'Niddreg bewerte Säite fannen',
-	'problempages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewertung vun de Lieser sortéiert sinn.',
+	'problempages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewäertung vun de Lieser zortéiert sinn.',
 	'problempages-none' => 'Et gëtt keng Säiten op dëser Lëscht',
 	'problempages-graphs' => 'Bewertungsdaten',
 );

@@ -445,6 +445,17 @@ $messages['ro'] = array(
 	'piwik-browsers' => 'Browsere',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'piwik-desc' => "Mitte 'u script de Piwik jndr'à le pàggene de MediaUicchi pe traccià e aggiungere [[Special:Piwik|quacche statisteche]]",
+	'piwik-lastvisits' => 'Urteme visite',
+	'piwik-countries' => 'Paìse',
+	'piwik-browsers' => 'Browser',
+	'right-viewpiwik' => 'Vide le [[Special:Piwik|Statisteche de Piwik]]',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

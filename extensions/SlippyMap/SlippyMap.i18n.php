@@ -493,10 +493,11 @@ Loor Der aan, wi dä [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax j
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'slippymap_desc' => 'Setzt en Tag <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> derbäi deen et erlaabt fit statesch an dynamesch Kaarten  anzebannen. Ënnerstetzt verschidde Kaarte-Servicer wéi [http://openstreetmap.org openstreetmap.org OpenStreetMap] an NASA Worldwind',
+	'slippymap_desc' => 'Setzt eng Markéierung <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> derbäi déi et erlaabt statesch an dynamesch Kaarten  anzebannen. Ënnerstëtzt verschidde Kaarte-Servicer wéi [http://openstreetmap.org openstreetmap.org OpenStreetMap] an NASA Worldwind',
 	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
 	'slippymap_button_code' => 'Wikicode weisen',
 	'slippymap_resetview' => 'Zrécksetzen',

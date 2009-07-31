@@ -1600,6 +1600,7 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
  * @author CERminator
  */
 $messages['bs'] = array(
+	'wikidata-desc' => 'Dodaje bazu podataka sličnu wikiju za razne vrste sadržaja',
 	'languages' => 'Wikidata: Upravljač jezika',
 	'langman-desc' => 'Dodavanje i izmjena jezičnih postavki sa [[Special:Languages]]',
 	'langman_title' => 'Upravitelj jezika',
@@ -1677,11 +1678,11 @@ Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivan
 	'ow_transaction_second_dm' => 'Drugo definisano značenje',
 	'ow_transaction_summary' => 'Sažetak',
 	'ow_conceptmapping_help' => '<p>moguće akcije: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... ubacivanje mappinga</li>
-<li>&action=get&concept=<concept_id> ponovno čitanje mappinga</li>
-<li>&action=list_sets vraća spisak mogućih podataka u kontekstu prefiksa i na što se odnose.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  ubacivanje mappinga</li>
+<li>&action=get&concept=<concept_id>  ponovno čitanje mappinga</li>
+<li>&action=list_sets  vraća spisak mogućih podataka u kontekstu prefiksa i na što se odnose.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> za jedno definisano značenje u konceptu, vraća sva ostala</li>
-<li>&action=help Prikazivanje pomoći.</li>
+<li>&action=help  Prikazivanje pomoći.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Concept Mapping omogućava Vam da odredite koje je definisano značenje u jednom setu podataka isto sa određenim značenjima u drugim setovima podataka.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" nije podržana.',
@@ -2603,6 +2604,7 @@ $messages['el'] = array(
 	'ow_transaction_rollback_header' => 'Επαναφορά',
 	'ow_transaction_previous_version' => 'Προηγούμενη έκδοση',
 	'ow_transaction_remove' => 'Αφαίρεση',
+	'ow_transaction_object' => 'Αντικείμενο',
 	'ow_transaction_summary' => 'Περίληψη',
 	'ow_dm_OK' => 'Εντάξει',
 	'ow_dm_not_present' => 'δεν εισήχθη',
@@ -6111,9 +6113,11 @@ $messages['kw'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
+	'wikidata-desc' => 'Setzt Datebase déi de Wikië gläichen, fir verschidden Type vun Inhalt derbäi.',
 	'wikidata-handler-namespace-move-error' => 'Säiten an den Nummraim déi vun der Wikidata Erweiderung geréiert ginn kënnen net geréckelt ginn.',
 	'languages' => 'Wikidata: Sproochmanager',
 	'langman-desc' => 'Sproochastellungen mat [[Special:Languages]] derbäisetzen an änneren',
@@ -6140,7 +6144,11 @@ $messages['lb'] = array(
 	'datasearch_ext_identifier' => 'Externen Idendificateur',
 	'datasearch_search_text' => 'Sichtext:',
 	'datasearch_within_words' => 'An de Wierder:',
+	'datasearch_within_ext_ids' => 'An den externen Identificateuren:',
 	'datasearch_showing_only' => 'Nëmmen e Maximum vu(n) $1 {{PLURAL:$1|Korrespondenz|Korrespondenze}} weisen.',
+	'datasearch_match_ext_ids' => 'Extern Identificateuren entspriechen <i>$1</i>',
+	'datasearch_match_words' => "Wierder déi zu <i>$1</i> passen an d'Bedeitungen déi derzou gehéieren",
+	'datasearch_match_words_lang' => "Wierder an <i>$1</i> déi zu <i>$2</i> passen, an d'Bedeitungen déi derzou gehéieren",
 	'importtsv' => 'Wikidata: TSV importéieren',
 	'ow_importtsv_title1' => 'TSV importéieren',
 	'ow_importtsv_title2' => 'Definitiounen an Iwwersetzungen importéieren',
@@ -6191,10 +6199,21 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_transaction_first_dm' => 'Éischt definéiert Bedeitung',
 	'ow_transaction_second_dm' => 'Zweet definéiert Bedeitung',
 	'ow_transaction_summary' => 'Resumé',
+	'conceptmapping' => 'Wikidata : Korrespondenz vu Konzepter',
+	'ow_conceptmapping_title' => 'Korrespondenz vu Konzepter',
+	'ow_conceptmapping_help' => '<p>Méiglech Aktiounen: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&… Eng Verknëppung derbäisetzen</li>
+<li>&action=get&concept=<concept_id> Eng Verknëppung ofruffen</li>
+<li>&action=list_sets Weis eng Lëscht vu méiglechen Datekontextprefixen an déi op déi se sech bezéien</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> fir eng Konzeptdefinitioun weis all déi aner</li>
+<li>&action=help Hëllef uweisen.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>Konzeptkorrespondenzen erlaben Iech erauszefannen, watereen an engem Ensemble vun Donnéeen definéierte Sënn, identesch ass mat deem deen an aneren Ensemble vun Donnéeen definéiert ass.</p>',
 	'ow_conceptmapping_no_action_specified' => 'D\'Aktioun "$1" gëtt net ënnerstetzt.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'net aginn',
 	'ow_dm_not_found' => 'net an der Datebank fonnt oder net richteg',
+	'ow_mapping_unsuccessful' => 'Et gi mindestens zwou Beddeitunge gebraucht ier se kënne matenee verbonn ginn.',
 	'ow_will_insert' => 'Dëst drasetzen:',
 	'ow_contents_of_mapping' => 'Inhalter vum Mapping',
 	'ow_available_contexts' => 'Disponibel Kontexter',
@@ -6212,6 +6231,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_ClassMembership' => 'Member vun der Klass',
 	'ow_Collection' => 'Sammlung',
 	'ow_Collection_colon' => 'Sammlung:',
+	'ow_CollectionMember' => 'Member vun der Collectioun',
 	'ow_CollectionMembership' => 'Member vun der Sammlung',
 	'ow_Definition' => 'Definitioun',
 	'ow_DefinedMeaningAttributes' => 'Notiz',
@@ -6222,6 +6242,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_ExpressionMeanings' => 'Bedeitunge vun den Ausdréck',
 	'ow_Expressions' => 'Ausdréck',
 	'ow_IdenticalMeaning' => 'Déi selwescht Bedeitung?',
+	'ow_IncomingRelations' => 'Relatiounen déi erakommen',
 	'ow_GotoSource' => "Zréck op d'Quell",
 	'ow_Language' => 'Sprooch',
 	'ow_LevelAnnotation' => 'Notiz',
@@ -6229,11 +6250,13 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_Multiple_meanings' => 'Méi Bedeitungen:',
 	'ow_NewExactMeaning' => 'Nei genee Bedeitung',
 	'ow_OptionAttribute' => 'Eegeschaft',
+	'ow_OptionAttributeHeader' => 'Optiounseegeschaft',
 	'ow_OptionAttributeOption' => 'Optioun',
 	'ow_OptionAttributeOptions' => 'Optiounen',
 	'ow_OptionAttributeValues' => 'Werter vun den Optiounen',
 	'ow_OtherDefinedMeaning' => 'Aner definéiert Bedeitung',
 	'ow_PopupAnnotation' => 'Notiz',
+	'ow_RecordLifeSpan' => 'Liewensdauer vum Enregistrement',
 	'ow_Relations' => 'Relatiounen',
 	'ow_RelationType' => 'Typ vu Relatioun',
 	'ow_Remove' => 'Ewechhuelen',
@@ -6296,6 +6319,7 @@ Vläicht koumt Dir direkt op dës Säit: Normalerweis braucht Dir net hei ze sin
 	'ow_nstab_definedmeaning' => 'Definéiert Bedeitung',
 	'ow_nstab_edit_copy' => 'Kopie änneren',
 	'right-addlanguage' => 'Sproochastellungen derbäisetzen an änneren',
+	'ow_shown_datasets' => 'Datesätz weisen',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
@@ -8518,6 +8542,7 @@ $messages['roa-tara'] = array(
 	'langman_addlang' => "Aggiunge 'na lènghe",
 	'datasearch_language' => 'Lènghe:',
 	'datasearch_search_text' => "Cirche 'u teste:",
+	'ow_importtsv_title1' => "'Mborte TSV",
 	'ow_importtsv_file' => 'File TSV:',
 	'ow_exporttsv_not_allowed' => "Tu non ge tìne 'u permesse pe esportà 'nu file TSV.",
 	'ow_save' => 'Reggìstre',
@@ -8526,11 +8551,16 @@ $messages['roa-tara'] = array(
 	'ow_uiprefs' => 'Uicchidate',
 	'ow_none_selected' => 'Nisciuna selezione',
 	'ow_transaction_count' => 'Condegge:',
+	'ow_transaction_user' => "Nome de l'utende:",
+	'ow_transaction_restore' => 'Repristine',
+	'ow_transaction_remove' => 'Live',
 	'ow_transaction_object' => 'Oggette',
+	'ow_transaction_summary' => 'Riepileghe',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => "non g'è 'nzerite ninde",
 	'ow_dm_not_found' => "non ge l'agghje acchiete jndr'à 'u database o jè malformete",
 	'ow_Annotation' => 'Annotazziune',
+	'ow_Class' => 'Classe',
 	'ow_ClassAttributeAttribute' => 'Attribbute',
 	'ow_ClassAttributes' => "Attribbute d'a classe",
 	'ow_ClassAttributeLevel' => 'Levèlle',
@@ -9841,6 +9871,7 @@ $messages['te'] = array(
 	'ow_TranslatedText' => 'అనువాదిత పాఠ్యం',
 	'ow_TranslatedTextAttributeValue' => 'పాఠ్యం',
 	'ow_TranslatedTextAttributeValues' => 'అనువదించదగ్గ పాఠ్యాలు',
+	'ow_Link' => 'లంకె',
 	'ow_LinkAttribute' => 'లక్షణం',
 	'ow_LinkAttributeValues' => 'లింకులు',
 	'ow_User' => 'వాడుకరి',

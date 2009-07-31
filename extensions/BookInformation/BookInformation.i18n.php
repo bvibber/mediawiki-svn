@@ -1384,6 +1384,8 @@ $messages['roa-tara'] = array(
 	'bookinfo-result-author' => 'Autore:',
 	'bookinfo-result-publisher' => 'Pubblicatore:',
 	'bookinfo-result-year' => 'Anne:',
+	'bookinfo-error-invalidisbn' => 'ISBN inzerite invalide.',
+	'bookinfo-purchase' => 'Accatte stu libbre da $1',
 );
 
 /** Russian (Русский)

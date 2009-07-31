@@ -1472,6 +1472,7 @@ $messages['kw'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1486,7 +1487,7 @@ $messages['lb'] = array(
 	'youtubeauthsub_category' => 'Kategorie',
 	'youtubeauthsub_submit' => 'Späicheren',
 	'youtubeauthsub_clickhere' => 'Klickt hei fir Iech op YouTube eranzeloggen',
-	'youtubeauthsub_tokenerror' => "Feeler beim generéieren bäi der Autorisatioun, versicht et nach eml andem Dir d'Säit aktualiséiert.",
+	'youtubeauthsub_tokenerror' => "Feeler beim generéiere vun der Autorisatioun, versicht et nach emol andeems Dir d'Säit aktualiséiert.",
 	'youtubeauthsub_success' => "Gratulatioun!
 
 Äre Video ass eropgelueden.

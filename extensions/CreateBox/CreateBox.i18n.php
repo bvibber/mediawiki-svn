@@ -646,6 +646,19 @@ $messages['tg-cyrl'] = array(
 	'createbox-create' => 'Эҷод',
 );
 
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'createbox-desc' => 'inputbox ที่ออกแบบมาเฉพาะสำหรับการสร้างหน้าใหม่',
+	'createbox-create' => 'สร้างหน้า',
+	'createbox-exists' => "ขออภัย, มีเนื้อหาชื่อ \"'''{{FULLPAGENAME}}'''\" อยู่ก่อนแล้ว.
+
+คุณไม่สามารถสร้างหน้านี้ได้, แต่คุณสามารถ[{{fullurl:{{FULLPAGENAME}}|action=edit}} แก้ไข]หรือ[{{fullurl:{{FULLPAGENAME}}}} เปิดอ่าน]หน้านี้, หรือเลือกที่จะสร้างเนื้อหาในชื่ออื่น โดยใช้กล่องด้านล่างนี้.
+
+<createbox>break=no</createbox>",
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

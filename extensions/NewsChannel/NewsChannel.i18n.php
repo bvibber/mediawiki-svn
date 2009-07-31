@@ -469,6 +469,14 @@ $messages['ro'] = array(
 	'newschannel_exclude_category' => 'Exclude categoria:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'newschannel_format' => 'Formate:',
+	'newschannel_limit' => 'Limite:',
+);
+
 /** Russian (Русский)
  * @author Iaroslav Vassiliev
  * @author Александр Сигачёв

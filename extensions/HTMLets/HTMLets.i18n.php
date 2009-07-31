@@ -166,10 +166,11 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'htmlets-desc' => 'Léisst Iech HTML-Schnëppelen vu Fichier mat Hellëf vum <tt><nowiki><htmlet></nowiki></tt> Tag asetzen',
+	'htmlets-desc' => 'Léisst Iech HTML-Schnëppele vu Fichiere mat Hellëf vun der <tt><nowiki><htmlet></nowiki></tt> Markéierung asetzen',
 );
 
 /** Marathi (मराठी)

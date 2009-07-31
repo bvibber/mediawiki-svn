@@ -299,6 +299,7 @@ $messages['lb'] = array(
 	'mostrevisors-submit' => 'Lass',
 	'mostrevisors-showredir' => 'Viruleedungssäite weisen',
 	'mostrevisors-hideredir' => 'Viruleedungssäite vestoppen',
+	'mostrevisors-viewcontributors' => 'Weis déi Haaptmataarbechter',
 );
 
 /** Dutch (Nederlands)

@@ -1931,11 +1931,12 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author Kiranmayee
  */
 $messages['hi'] = array(
 	'viewapc' => 'APC ज़ानकारी',
 	'viewapc-desc' => 'मीडियाविकि के साथ [[Special:ViewAPC|APC कैशे देखें तथा व्यवस्थापन]] करें',
-	'right-apc' => 'Special:ViewAPC के सभी फीचर्स देखें',
+	'right-apc' => '[[Special:ViewAPC|देखयेपिसी]] के सभी फीचर्स उपयोगित करो',
 	'viewapc-apc-not-available' => 'कैशे ज़ानकारी उपलब्ध नहीं हैं।
 शायद APC चल नहीं रहा हैं।',
 	'viewapc-clear-confirm' => 'क्या आप कैशे मेमरी खाली करना चाहतें हैं?',
@@ -1999,6 +2000,7 @@ $messages['hi'] = array(
 	'viewapc-display-ref_count' => 'संदर्भ गिनती',
 	'viewapc-display-mem_size' => 'आकार',
 	'viewapc-display-stored-value' => 'जताई हुई किमत',
+	'viewapc-display-too-big' => "''दिखाने के लिए समाहार बहुत ज्यादा हैं|''",
 	'viewapc-ls-options-legend' => 'ओप्शन्स',
 	'viewapc-ls-options' => 'स्कोप: $1 सॉर्टिंग: $2$3$4 खोज: $5 $6',
 	'viewapc-ls-submit' => 'जायें!',
@@ -2845,6 +2847,7 @@ En neuer Version ($2) steiht ald parat op http://pecl.php.net/package/APC/$2',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -2854,10 +2857,14 @@ $messages['lb'] = array(
 	'viewapc-clear-confirm' => 'Wëllt Dir de Cache eidel maachen?',
 	'viewapc-clear-user-cache' => 'Benotzer Cache eidel maachen',
 	'viewapc-mode-stats' => "D'Statistike vum Server weisen",
+	'viewapc-mode-system-cache' => 'Aschreiwungen an der System-Cache',
+	'viewapc-mode-system-cache-dir' => 'Aschreiwunge pro Repertoire',
+	'viewapc-mode-user-cache' => 'Aschreiwungen an der Benotzer-Cache',
 	'viewapc-mode-version-check' => 'Versioun nokucken',
 	'viewapc-info-general' => 'Allgemeng Informatiounen',
 	'viewapc-apc-version' => 'APC Versioun',
 	'viewapc-php-version' => 'PHP Versioun',
+	'viewapc-shared-memory' => 'Gedeelte Memoire',
 	'viewapc-start-time' => 'Ufankszäit',
 	'viewapc-uptime' => 'Betriebszäit (Uptime)',
 	'viewapc-upload-support' => "Ënnerstetzung fir d'Eropluede vu Fichieren",
@@ -2869,13 +2876,16 @@ $messages['lb'] = array(
 	'viewapc-memory-free' => 'Fräi: $1 ($2)',
 	'viewapc-memory-used' => 'Benotzt: $1 ($2)',
 	'viewapc-memory-hits' => 'Treffer: $1 ($2)',
+	'viewapc-memory-miss' => 'Verfeelt: $1 ($2)',
 	'viewapc-fragmentation-info' => 'Fragmentatioun: $1 ($2 vun $3 an $4 {{PLURAL:$4|Fragment|Fragmenter}})',
 	'viewapc-fragmentation-none' => 'Fragmentatioun: keng Fragmentatioun',
+	'viewapc-display-attribute' => 'Eegeschaft',
 	'viewapc-display-value' => 'Wert',
 	'viewapc-display-filename' => 'Numm vum Fichier',
 	'viewapc-display-device' => 'Apparat',
 	'viewapc-display-info' => 'Numm',
 	'viewapc-display-ttl' => 'Verfallsdatum',
+	'viewapc-display-inode' => 'Inode',
 	'viewapc-display-type' => 'Typ',
 	'viewapc-display-type-file' => 'tëschegespäicherte Fichier',
 	'viewapc-display-type-user' => 'Tëschegespäichert Donnéeë vun der Applicatioun',
@@ -2885,6 +2895,7 @@ $messages['lb'] = array(
 	'viewapc-display-deletion_time' => 'Geläscht',
 	'viewapc-display-no-delete' => 'Net geläscht',
 	'viewapc-display-access_time' => 'Zougegraff',
+	'viewapc-display-ref_count' => 'Referenzecompteur',
 	'viewapc-display-mem_size' => 'Gréisst',
 	'viewapc-display-stored-value' => 'Gespäicherte Wert',
 	'viewapc-display-too-big' => "''Den Inhalt ass ze grouss fir ën ze weisen.''",
@@ -2911,6 +2922,7 @@ $messages['lb'] = array(
 	'viewapc-ls-sort-deleted' => 'Geläscht',
 	'viewapc-ls-sort-timeout' => 'Timeout',
 	'viewapc-ls-limit-none' => 'Alleguer',
+	'viewapc-ls-nodata' => "''Keng Donnée trëfft zou''",
 	'viewapc-delete-failed' => "D'Entrée <nowiki>$1</nowiki> vum Tëschespäicher (Cache) konnt net geläscht ginn",
 	'viewapc-version-info' => "Informatiounen iwwert d'Versioun",
 	'viewapc-version-changelog' => 'Lëscht vun den Ännerungen',

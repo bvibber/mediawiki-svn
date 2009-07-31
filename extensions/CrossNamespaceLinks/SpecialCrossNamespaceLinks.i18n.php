@@ -808,6 +808,8 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'crossnamespacelinks' => "Collegaminde 'mbrà namespace 'ngrociate",
+	'crossnamespacelinks-desc' => "[[Special:CrossNamespaceLinks|Liste de le namespace ca s'appondene ingrociate]] ca non g'avessere esistere sus a {{SITENAME}}",
+	'crossnamespacelinks-summary' => "Sta pàgene dè 'na liste de collegaminde da ìna pàgene jndr'à 'u namespace prengepàle a 'na pàgene de 'n'otre namespace (a mene de le namespace {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}) pe le quale non pe ponne essere conzigliabbele pe l'ause.",
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|collegamende|collegaminde}} a $3',
 );
 

@@ -181,7 +181,7 @@ $messages['be-tarask'] = array(
 	'optin-title-optedin' => 'Пакінуць Beta',
 	'optin-title-justoptedin' => 'Вітаем у Beta',
 	'optin-title-justoptedout' => 'Дзякуй за спробу выкарыстаньня Beta',
-	'optin-title-feedback' => 'Даць зваротную інфармацыю',
+	'optin-title-feedback' => 'Зваротная сувязь',
 	'optin-needlogin' => 'Вам неабходна [$1 увайсьці ў сыстэму] каб далучыцца да Beta',
 	'optin-intro' => 'У рамках ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня Вікіпэдыі была праведзеная буйная праца па паляпшэньню зручнасьці і прастаты выкарыстаньня Вікіпэдыі. Вы жадаеце паспрабаваць Beta?',
 	'optin-feedback-intro' => 'Дзякуй за выкарыстаньне Beta.
@@ -192,14 +192,17 @@ $messages['be-tarask'] = array(
 	'optin-leave-cancel' => 'Калі Вы жадаеце працягваць выкарыстаньне Beta, Вы можаце вярнуцца да $1',
 	'optin-success-out' => 'Вы пасьпяхова пакінулі Beta.
 Вы можаце зноў паспрабаваць яе націснуўшы кнопку «{{int:optin-try}}» у правым верхнім куце экрана.',
+	'optin-success-feedback' => 'Дзякуй за зваротную сувязь!',
 	'optin-accept-short' => 'Зрабіць гэта!',
 	'optin-accept-long' => 'Паспрабаваць Beta',
 	'optin-accept-long-anon' => 'Увайсьці ў сыстэму і паспрабаваць Beta',
 	'optin-deny-short' => 'Не, дзякуй',
 	'optin-deny-long' => 'вярнуцца да папярэдняй старонкі',
 	'optin-submit-out' => 'Пакінуць Beta',
+	'optin-submit-feedback' => 'Даслаць',
 	'optin-try' => 'Паспрабаваць Beta',
 	'optin-leave' => 'Пакінуць Beta',
+	'optin-feedback' => 'Зваротная сувязь',
 	'optin-survey-yes' => 'Так',
 	'optin-survey-no' => 'Не',
 	'optin-survey-intro' => 'Дзякуй за выпрабаваньне Beta.
@@ -227,14 +230,14 @@ $messages['be-tarask'] = array(
 	'optin-survey-question-os' => 'Якой апэрацыйнай сыстэмай Вы карыстаецеся?',
 	'optin-survey-answer-os-other' => 'Іншая апэрацыйная сыстэма:',
 	'optin-survey-question-res' => 'Якое разрозьненьне Вашага манітора?',
-	'optin-survey-question-changes' => 'Якія зьмены Вы жадаеце бачыць у Beta ў будучыці (выберыце не болей трох)?',
+	'optin-survey-question-changes' => 'Якія зьмены Вы жадаеце бачыць у Beta ў будучыці (выберыце ўсё што падыходзіць)?',
 	'optin-survey-answer-changes-nav' => 'Зрабіць навігацыю па сайту больш простай у выкарыстаньні.',
 	'optin-survey-answer-changes-edittools' => 'Пашырыць і палепшыць інструмэнты рэдагаваньня.',
 	'optin-survey-answer-changes-upload' => 'Палепшыць загрузку зьместу і мэдыя-файлаў.',
 	'optin-survey-answer-changes-richtext' => 'Распрацаваць прылады рэдагаваньня, падобныя на тэкставыя рэдактары.',
 	'optin-survey-answer-changes-lookfeel' => 'Абнавіць «зьнешні выгляд і запаўненьне» сайта.',
 	'optin-survey-answer-changes-predictability' => 'Палепшыць прадказальнасьць хуткадзеяньня.',
-	'optin-survey-answer-changes-compat' => 'Палепшыць сумяшчальнасьць з лякальнай вікі.',
+	'optin-survey-answer-changes-custom' => 'Дазволіць удзельнікам пашыраную настройку.',
 	'optin-survey-answer-changes-other' => 'Іншыя:',
 	'optin-improvements' => '== Што было палепшана? ==
 [[File:UsabilityNavigation.png|left]]
@@ -245,11 +248,6 @@ $messages['be-tarask'] = array(
 [[File:UsabilityToolbar.png|left]]
 ;Паляпшэньне панэлі рэдагаваньняў
 Новыя і палепшаныя значкі дазваляюць лягчэй зразумець якія дзеяньні выконвае кожная прылада. Адчыняемыя сэктары зьмяньшаюць тлум, захоўваючы рэдка выкарыстоўваемыя прылады для кліку мышкай. Дапаможны падзел забясьпечвае хуткі доступ да прыкладаў па найбольш выкарыстоўваемым тыпам вікі-метак.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Паляпшэньне інтэрфэйсу пошуку
-Калі Вы карыстаецеся пошукам, супадзеньні з назвамі старонак будуць адлюстроўвацца ў першую чаргу, што дапаможа Вам хутчэй знайсьці самыя адпаведныя артыкулы. Профілі пошуку палягчаюць пошук па розных відаў інфармацыі, а новы інтэрфэйс пошуку палягчае працу са складанымі запытамі. 
 <div style="clear:both;"></div>',
 );
 
@@ -312,14 +310,14 @@ Možete se bilo kada ponovno prijaviti putem klika na link "{{int:optin-try}}" u
 	'optin-survey-question-os' => 'Koji operativni sistem koristite?',
 	'optin-survey-answer-os-other' => 'Drugi operativni sistemi:',
 	'optin-survey-question-res' => 'Koja je rezolucija Vašeg monitora?',
-	'optin-survey-question-changes' => 'Kakve izmjene bi željeli da vidite na Beti u budućnosti (odaberite najviše tri)?',
+	'optin-survey-question-changes' => 'Kakve izmjene bi željeli da vidite na Beti u budućnosti (molimo odaberite sve što je primjenjivo)?',
 	'optin-survey-answer-changes-nav' => 'Učiniti cjelokupnu navigaciju na stranici jednostavnijom za upotrebu.',
 	'optin-survey-answer-changes-edittools' => 'Povećati broj i poboljšati alate za uređivanje.',
 	'optin-survey-answer-changes-upload' => 'Poboljšati sadržaj i broj postavljenih datoteka.',
 	'optin-survey-answer-changes-richtext' => 'Razvoj alata za uređivanje sličnim naprednim uređivačima.',
 	'optin-survey-answer-changes-lookfeel' => 'Ažurirati "izgled i preglednost" stranice.',
 	'optin-survey-answer-changes-predictability' => 'Poboljšati predvidivost performansi.',
-	'optin-survey-answer-changes-compat' => 'Poboljšati kompatibilnost sa lokalnom wiki.',
+	'optin-survey-answer-changes-custom' => 'Omogućuje veća korisnička podešavanja.',
 	'optin-survey-answer-changes-other' => 'Ostalo:',
 	'optin-improvements' => '== Šta je poboljšano? ==
 [[File:UsabilityNavigation.png|left]]
@@ -332,11 +330,6 @@ Jasna naznaka stanja "čitanja" i "uređivanja" kada ste na stranici članka ili
 Traka za uređivanje koja se može sakriti može sakriti ikone alata koji se ne upotrebljavaju često. Potvrđeni korisnici mogu proširiti alatnu traku i pristupiti posebnim ikonama.
 Pomoćne informacije (prečice) su ugrađene u alatnu traku.
 Ikone alatne trake su nanovo dizajnirane koristeći ikone Tango i Gnome.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Poboljšan interfejs pretrage
-Pošto je stranica pretrage vrlo često put pristupa nekom članku, naslovi rezultata su istaknuti s poboljšanom preglednošću, a nepotrebne i manje korištene informacije su smanjene.
 <div style="clear:both;"></div>',
 );
 
@@ -406,24 +399,18 @@ Volem saber què n\'opinau de la nova interfície, així que us agrairíem que r
 	'optin-survey-answer-changes-richtext' => "Desenvolupar eines d'edició similars als editors de text enriquit.",
 	'optin-survey-answer-changes-lookfeel' => "Actualitzar l'aparença del lloc.",
 	'optin-survey-answer-changes-predictability' => 'Millorar la predictabilitat del rendiment.',
-	'optin-survey-answer-changes-compat' => 'Millorar la compatibilitat amb la wiki local.',
 	'optin-survey-answer-changes-other' => 'Altres:',
-	'optin-improvements' => '== Què s\'ha millorat? ==
+	'optin-improvements' => "== Què s'ha millorat? ==
 [[File:UsabilityNavigation.png|left]]
 ;Navegació millorada
-El nou sistema de navegació fa més fàcil veure on sou i què estau fent, així com on podeu anar i com arribar-hi. Amb la caixa de cerques situada al cantó superior dret, l\'opció de cercar és més fàcil de trobar i més ràpida d\'usar.
-<div style="clear:both;"></div>
+El nou sistema de navegació fa més fàcil veure on sou i què estau fent, així com on podeu anar i com arribar-hi. Amb la caixa de cerques situada al cantó superior dret, l'opció de cercar és més fàcil de trobar i més ràpida d'usar.
+<div style=\"clear:both;\"></div>
 
 [[File:UsabilityToolbar.png|left]]
-;Millores a la barra d\'edició
+;Millores a la barra d'edició
 Noves icones fan més clar quina acció realitza cada eina. Les seccions desplegables redueixen els ecos paràsits i a la vegada mantenen les eines poc usades a només un clic.
-La secció d\'ajuda dóna un ràpid accés a una guia dels usos més comuns del marcatge wiki.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Millores a la interfície de cerques
-Amb la nova eina de cerques, les coincidències en el títol són mostrades en primer lloc, cosa que us ajuda a trobar els articles més rellevants ràpidament. Els perfils de cerca fan la cerca de diferents tipus de contingut més fàcil, mentre que la nova interfície de cerca avançada simplifica les cerques complexes.
-<div style="clear:both;"></div>',
+La secció d'ajuda dóna un ràpid accés a una guia dels usos més comuns del marcatge wiki.
+<div style=\"clear:both;\"></div>",
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
@@ -510,14 +497,14 @@ Wir möchten gerne erfahren, was du über unsere neue Schnittstelle denkst. Wir 
 	'optin-survey-question-os' => 'Welches Betriebssystem verwendest du?',
 	'optin-survey-answer-os-other' => 'Anderes Betriebssystem:',
 	'optin-survey-question-res' => 'Was ist deine Bildschirmauflösung?',
-	'optin-survey-question-changes' => 'Welche Änderungen an der Beta würdest du gerne in Zukunft sehen (wähle bis zu drei aus)?',
+	'optin-survey-question-changes' => 'Welche Änderungen an der Beta würdest du gerne in Zukunft sehen (wähle alles Zutreffende aus)?',
 	'optin-survey-answer-changes-nav' => 'Die Gesamtnavigation der Site einfacher machen.',
 	'optin-survey-answer-changes-edittools' => 'Bearbeitungswerkzeuge erweitern und verbessern.',
 	'optin-survey-answer-changes-upload' => 'Inhalt und Medienuploads verbessern.',
 	'optin-survey-answer-changes-richtext' => 'Bearbeitungswerkzeuge ähnlich wie bei Rich-Text-Editoren entwickeln.',
 	'optin-survey-answer-changes-lookfeel' => 'Erscheinungsbild der Site aktualisieren.',
 	'optin-survey-answer-changes-predictability' => 'Vorhersehbarkeit der Leistung verbessern.',
-	'optin-survey-answer-changes-compat' => 'Kompatibilität mit dem lokalen Wiki verbessern.',
+	'optin-survey-answer-changes-custom' => 'Größere Benutzeranpassungen erlauben.',
 	'optin-survey-answer-changes-other' => 'Andere:',
 	'optin-improvements' => '== Was wurde verbessert? ==
 [[File:UsabilityNavigation.png|left]]
@@ -529,11 +516,6 @@ Das neue Navigationssystem macht es nicht nur einfacher zu sehen, wo du bist und
 ;Verbesserungen der Bearbeiten-Werkzeugleiste
 Neue und verbesserte Symbole machen es klarer, welche Aktion hinter jedem Tool steckt. Expandierbare Abschnitte reduzieren Verwirrungen, während selten verwendete Tools nur einen Klick entfernt sind.
 Der Hilfeabschnitt sorgt für schnellen Zugriff auf häufig verwendete Wikisyntax.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Verbesserte Suchoberfläche
-Wenn du die Suche verwendest, werden die Titeltreffer zuerst angezeigt. Sie hilft dir, die relevantesten Artikel schnell zu finden. Suchprofile machen das Suchen für verschiedene Arten von Inhalt einfacher, während die neue erweiterte Suchoberflächen komplexe Suchen einfacher macht.
 <div style="clear:both;"></div>',
 );
 
@@ -553,6 +535,7 @@ $messages['dsb'] = array(
 Móžoš kuždy cas pśez kliknjenje na wótkaz "{{int:optin-leave}}" górjejce na wobrazowce wótwóliś.',
 	'optin-success-out' => 'Sy wuspěšnje Betu spušćił.
 Móžoš ju hyšći raz kuždy cas pśez kliknjenje na wótkaz "{{int:optin-try}}" górjejce napšawo na wobrazowce wopytaś.',
+	'optin-success-feedback' => 'Žěkujomy se za twójo wótegrono!',
 	'optin-accept-long' => 'Betu wopytaś',
 	'optin-accept-long-anon' => 'Pśizjawiś se a Betu wopytaś',
 	'optin-deny-short' => 'Ně, źěkujomy se',
@@ -715,11 +698,6 @@ El nuevo sistema de navegación hace más fácil ver en donde estás y qué est�
 ;Mejoramientos de la barra de herramientas de edición
 Nuevos-y-mejorados íconos hacen más claro qué acción cada herramienta realiza. Secciones expandibles reducen abarrotamiento mientras mantienen herramientas usuadas infrecuentemente solo a un clic de distancia.
 La sección de ayuda provee acceso rápido a una referencia para usos comunes del lenguaje wiki.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Interfaz de búsqueda mejorada
-Cuando use la búsqueda, Coincidencias de título son mostradas primero, Ayudándote a encontrar los artículos más relevantes rápidamente. Buscar perfiles hace la búsqueda de diferentes tipos de contenido más fácil, Mientras la nueva interfaz de búsqueda avanzada facilita las búsquedas complejas.
 <div style="clear:both;"></div>',
 );
 
@@ -785,15 +763,26 @@ Haluaisimme tietää, mitä mieltä olet uudesta käyttöliittymästä, joten ar
 	'optin-survey-question-os' => 'Mitä käyttöjärjestelmää käytät?',
 	'optin-survey-answer-os-other' => 'Muu käyttöjärjestelmä',
 	'optin-survey-question-res' => 'Mikä on näyttösi resoluutio?',
-	'optin-survey-question-changes' => 'Mitä muutoksia haluaisit nähdä Betassa tulevaisuudessa (valitse kolme)?',
+	'optin-survey-question-changes' => 'Mitä muutoksia haluaisit nähdä Betassa tulevaisuudessa (valitse kolme sopivaa)?',
 	'optin-survey-answer-changes-nav' => 'Helpottaa sivuston navigointia ylipäätään.',
 	'optin-survey-answer-changes-edittools' => 'Lisää ja tehosta mukkaustyökaluita.',
 	'optin-survey-answer-changes-upload' => 'Paranna sisällön ja median lähettämistä.',
 	'optin-survey-answer-changes-richtext' => 'Kehitä muokkaustyökaluita tekstinkäsittelyohjelmia muistuttavaksi.',
 	'optin-survey-answer-changes-lookfeel' => 'Päivitä sivuston ulkonäköä ja käytettävyyttä.',
 	'optin-survey-answer-changes-predictability' => 'Paranna esityksen ennustettavuutta.',
-	'optin-survey-answer-changes-compat' => 'Paranna yhteensopivuutta paikallisen wikin kanssa.',
+	'optin-survey-answer-changes-custom' => 'Sallii laajemman käyttäjäkohtaisen kustomoinnin.',
 	'optin-survey-answer-changes-other' => 'Muu',
+	'optin-improvements' => '== Mitä on uudistettu? ==
+[[File:UsabilityNavigation.png|left]]
+;Paranneltu navigointi
+Uudesta valikkojärjestelmästä näkee helpommin, missä olet ja mitä teet. Näet myös helpommin, minne voit mennä ja kuinka pääset sinne. Oikeassa yläkulmassa olevalla hakulaatikolla hakutoimintoa on helpompi ja nopeampi käyttää.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left]]
+;Muokkauspalkin parannukset
+Uusista ja parannetuista kuvakkeista näkee helpommin, mitä mikäkin työkalu tekee. Laajennettavat osiot vähentävät epäjärjestystä, kun harvoin käytetyt työkalut ovat vain klikkauksen päässä.
+Ohje-osiosta näkyy esimerkit wikimerkinnän yleiseen käyttöön nopeasti.
+<div style="clear:both;"></div>',
 );
 
 /** French (Français)
@@ -857,14 +846,14 @@ Nous aimerions savoir ce que vous pensez de notre nouvelle interface, nous appr�
 	'optin-survey-question-os' => "Quel système d'exploitation utilisez-vous ?",
 	'optin-survey-answer-os-other' => "Autre système d'exploitation :",
 	'optin-survey-question-res' => 'Quelle est la résolution de votre écran ?',
-	'optin-survey-question-changes' => "Qu'aimeriez-vous voir dans la bêta dans le futur (au maximum 3) ?",
+	'optin-survey-question-changes' => "Qu'aimeriez-vous voir dans la bêta dans le futur (sélectionnez tout ce qui convient) ?",
 	'optin-survey-answer-changes-nav' => 'Fait que la navigation générale du site est plus simple à utiliser.',
 	'optin-survey-answer-changes-edittools' => "Améliore et augmente les outils d'édition.",
 	'optin-survey-answer-changes-upload' => "Améliore l'import de contenu et de média.",
 	'optin-survey-answer-changes-richtext' => 'Développe des outils de modifications similaires aux éditeurs en texte enrichi.',
 	'optin-survey-answer-changes-lookfeel' => "Change l'apparence du site.",
 	'optin-survey-answer-changes-predictability' => 'Améliore la prévisibilité des performances.',
-	'optin-survey-answer-changes-compat' => 'Améliore la compatibilité avec les wikis locaux.',
+	'optin-survey-answer-changes-custom' => "Permet une plus grande personnalisation de l'interface.",
 	'optin-survey-answer-changes-other' => 'Autre :',
 	'optin-improvements' => "== Qu'est-ce qui a été amélioré ? ==
 [[File:UsabilityNavigation.png|left]]
@@ -876,11 +865,6 @@ Le nouveau système de navigation vous permet de voir plus facilement où vous �
 ;Améliorations de la barre d'outils
 De toutes nouvelles icônes clarifient l'action effectuée par chaque outil. Des sections expansibles réduisent le désordre tout en gardant l'accès aux outils plus rarement utilisés à seulement un clic.
 La section d'aide fournit un accès rapide à la documentation sur l'utilisation courante des balises wiki.
-<div style=\"clear:both;\"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Interface de recherche améliorée
-Lorsque vous effectuez une recherche, les correspondances dans les titres sont affichés en premier lieu, pour vous aider à trouver rapidement les articles les plus pertinents. Les profiles de recherche donnent la possibilité de rechercher différents types de contenus plus facilement, et la nouvelle interface avancée de recherche permet d'effectuer facilement des recherches complexes.
 <div style=\"clear:both;\"></div>",
 );
 
@@ -943,14 +927,14 @@ Gustaríanos saber o que pensa sobre a nosa nova interface, de forma que lle agr
 	'optin-survey-question-os' => 'Que sistema operativo usa?',
 	'optin-survey-answer-os-other' => 'Outros sistemas operativos:',
 	'optin-survey-question-res' => 'Cal é a resolución da súa pantalla?',
-	'optin-survey-question-changes' => 'Que cambios lle gustaría ver en Beta no futuro (seleccione ata tres opcións)?',
+	'optin-survey-question-changes' => 'Que cambios lle gustaría ver en Beta no futuro (seleccione todas as que cumpran)?',
 	'optin-survey-answer-changes-nav' => 'Facer a navegación xeral do sitio máis doada de usar.',
 	'optin-survey-answer-changes-edittools' => 'Aumentar e mellorar as ferramentas de edición.',
 	'optin-survey-answer-changes-upload' => 'Mellorar o contido e as cargas multimedia.',
 	'optin-survey-answer-changes-richtext' => 'Desenvolver ferramentas de edición similares aos editores de texto.',
 	'optin-survey-answer-changes-lookfeel' => 'Actualizar o aspecto e apariencia do sitio.',
 	'optin-survey-answer-changes-predictability' => 'Mellorar a previsibilidade dos resultados.',
-	'optin-survey-answer-changes-compat' => 'Mellorar a compatibilidade cos wikis locais.',
+	'optin-survey-answer-changes-custom' => 'Permitir unha maior personalización por parte dos usuarios.',
 	'optin-survey-answer-changes-other' => 'Outros:',
 	'optin-improvements' => '== Que se mellorou? ==
 [[File:UsabilityNavigation.png|left]]
@@ -962,11 +946,6 @@ O novo sistema de navegación fai máis doado ver onde se está e que se está f
 ;Melloras na barra de ferramentas de edición
 As novas e melloradas iconas fan máis clara a identificación da acción que realiza cada unha. As seccións expansibles reducen a desorde á vez que manteñen as ferramentas menos usadas a só un clic de distancia.
 A sección de axuda proporciona un acceso rápido a unha referencia cos usos comúns do formato wiki.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Interface de busca mellorada
-Ao usar a procura, as coincidencias cos títulos de páxinas aparecen primeiro, axudando a atopar rapidamente os artigos máis relevantes. Os tipos de procura fan máis doadas as buscas de diferentes tipos de contido, mentres que a nova interface avanzada facilita tamén as buscas complexas.
 <div style="clear:both;"></div>',
 );
 
@@ -1040,14 +1019,14 @@ Mir wisste gärn, was Du iber di nej Benutzeroberflächi dänksch. Wäge däm de
 	'optin-survey-question-os' => 'Wel Betribssyschtem bruchsch Du?',
 	'optin-survey-answer-os-other' => 'Anders Betribssyschtem:',
 	'optin-survey-question-res' => 'Was fir e Uflesig het Dyy Bildschirm?',
-	'optin-survey-question-changes' => 'Weli Änderige wottsch gärn säh bi Beta in Zuechumpft (wehl bis zue drej uus)?',
+	'optin-survey-question-changes' => 'Weli Änderige wottsch gärn säh bi Beta in Zuechumpft (wehl bitte alli uus, wu s zuetrifft)?',
 	'optin-survey-answer-changes-nav' => 'D Gsamtnavigation vu dr Site eifacher mache.',
 	'optin-survey-answer-changes-edittools' => 'Bearbeitigswärchzyyg erwytere un verbessere.',
 	'optin-survey-answer-changes-upload' => 'Inhalt un s Uffelade vu Medie verbessere.',
 	'optin-survey-answer-changes-richtext' => 'Bearbeitigswärchzyyg entwickle, wu ähnlig sin wie d Rich-Text-Editore.',
 	'optin-survey-answer-changes-lookfeel' => 'Erschynigsbild vu dr Site aktualisiere.',
 	'optin-survey-answer-changes-predictability' => 'Vorhärsähbarkeit vu dr Leischtig verbessere.',
-	'optin-survey-answer-changes-compat' => 'Kompatibilität mit em lokale Wiki verbessere.',
+	'optin-survey-answer-changes-custom' => 'Greßeri Benutzeraapassige erlaube.',
 	'optin-survey-answer-changes-other' => 'Anderi:',
 	'optin-improvements' => '== Was isch verbesseret wore? ==
 [[File:UsabilityNavigation.png|left]]
@@ -1063,11 +1042,6 @@ Hilfe (Spickzettel) sin in s Wärchzygchäschtli dryygsetzt wore.
 D Grafike vum Wärchzygchäschtli sin nej designed wore mit Hilf vu Tango- un Gnome-Grafike.
 Neji un verbessereti Grafike mache s klarer, was du chasch mache mit dr einzelne Wärchzyg. Uusklappbari Abschnitt verringere s Durenander, di wenig bruchte Wärchzyg sin aber nume ei Klick ewäg.
 D Hilf-Sektion stellt e schnölle zuegang z Verfiegig zuen ere Quälle vu gängige Aawändige vu Wiki-Zueschläg 
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Verbessereti Suechoberflächi
-Wänn Du d Suechi bruchsch, no wäre d Titel zerscht aazeigt go Dir hälfe bim schnälle Finde vu dr relevanteschte Artikel. Suechprofil mache s Sueche vu verschidene Inhalt eifacher, derwylscht di nej Suechoberflächi kompläxeri Suechine eifacher macht.
 <div style="clear:both;"></div>',
 );
 
@@ -1207,14 +1181,14 @@ Nos volerea saper lo que tu pensa super nostre nove interfacie, e nos appreciare
 	'optin-survey-question-os' => 'Qual systema de operation usa tu?',
 	'optin-survey-answer-os-other' => 'Altere systema de operation:',
 	'optin-survey-question-res' => 'Qual es le resolution de tu schermo?',
-	'optin-survey-question-changes' => 'Que cambios vole tu vider in le Beta in le futuro (selige tres al maximo)?',
+	'optin-survey-question-changes' => 'Que cambios vole tu vider in le Beta in le futuro (selige tote le optiones applicabile)?',
 	'optin-survey-answer-changes-nav' => 'Rende le navigation general del sito plus facile a usar.',
 	'optin-survey-answer-changes-edittools' => 'Augmenta e meliora le instrumentos de modification.',
 	'optin-survey-answer-changes-upload' => 'Meliora le cargamento de contento e multimedia.',
 	'optin-survey-answer-changes-richtext' => 'Disveloppa instrumentos de modification similar al editores de texto inricchite.',
 	'optin-survey-answer-changes-lookfeel' => 'Renova le apparentia general del sito.',
 	'optin-survey-answer-changes-predictability' => 'Meliorar le previsibilitate del prestationes.',
-	'optin-survey-answer-changes-compat' => 'Meliorar le compatibilitate con le wiki local.',
+	'optin-survey-answer-changes-custom' => 'Permitter un personalisation plus ample al usator.',
 	'optin-survey-answer-changes-other' => 'Altere:',
 	'optin-improvements' => '== Que ha essite meliorate? ==
 [[File:UsabilityNavigation.png|left]]
@@ -1226,11 +1200,6 @@ Le nove systema de navigation rende plus facile vider ubi tu es e lo que tu face
 ;Meliorationes del instrumentario de modification
 Le icones nove e melior clarifica le action que cata instrumento exeque. Le sectiones expansibile simplifica le apparentia, durante que le instrumentos usate infrequentemente resta disponibile a solo un clic de distantia.
 Le section de adjuta provide accesso rapide a un referentia pro usos commun del marcation wiki.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Interfacie de recerca meliorate
-Quando tu usa le recerca, le correspondentias de titulo es monstrate primo, adjutante te a trovar le articulos plus relevante rapidemente. Con profilos de recerca, il es plus facile cercar differente typos de contento. E con le nove interfacie de recerca avantiate, il es un mer divertimento facer cercas complexe.
 <div style="clear:both;"></div>',
 );
 
@@ -1304,6 +1273,7 @@ Si desidera provare Beta?",
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -1358,14 +1328,14 @@ $messages['ja'] = array(
 	'optin-survey-question-os' => '利用しているOSはどれですか？',
 	'optin-survey-answer-os-other' => 'その他のオペレーティングシステム:',
 	'optin-survey-question-res' => '画面の解像度はいくつですか？',
-	'optin-survey-question-changes' => '今後、ベータ版にどのような点の改善を望みますか？（3つまで選択してください）',
+	'optin-survey-question-changes' => '今後、ベータ版にどのような点の改善を望みますか？（当てはまるものをすべて選択してください）',
 	'optin-survey-answer-changes-nav' => 'サイト全体の操作方法をより使いやすくしてほしい。',
 	'optin-survey-answer-changes-edittools' => '編集ツールを増やし、機能強化してほしい。',
 	'optin-survey-answer-changes-upload' => 'コンテンツやメディアアップロードを改善してほしい。',
 	'optin-survey-answer-changes-richtext' => 'リッチテキストエディタのような編集ツールを開発してほしい。',
 	'optin-survey-answer-changes-lookfeel' => 'サイトの「見た感じ」を更新してほしい。',
 	'optin-survey-answer-changes-predictability' => '動作の安定性を改善してほしい。',
-	'optin-survey-answer-changes-compat' => 'ローカルウィキとの互換性を改善してほしい。',
+	'optin-survey-answer-changes-custom' => 'より強力なカスタマイズを可能にしてほしい。',
 	'optin-survey-answer-changes-other' => 'その他:',
 	'optin-improvements' => '== 何が改良されたのですか？ ==
 [[File:UsabilityNavigation.png|left]]
@@ -1376,11 +1346,6 @@ $messages['ja'] = array(
 [[File:UsabilityToolbar.png|left]]
 ;編集ツールバーの改良
 新しく改良されたアイコンにより、各ツールの機能をより明確に表現できるようになりました。編集ツールバーの各部分について表示・非表示を切り替えられるようにすることで、ツールバーのデザインを簡潔に保ちつつ、散発的に使用される機能にもすぐアクセスできるようにしました。ツールバーにヘルプを組み込むことで、一般的なウィキ・マークアップの説明を素早く参照できるようにしました。
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;検索インタフェースの改良
-検索機能では、まずページ名との一致を表示することで、検索語と関連の深い記事を素早く見つけられるようにしました。検索画面の表示を改善してページの種類ごとの検索が簡単にできるようにすると同時に、「高度な検索」の画面では複雑な検索を素早く行えるようにしました。
 <div style="clear:both;"></div>',
 );
 
@@ -1444,11 +1409,6 @@ $messages['ka'] = array(
 ; რედაქტირების პანელის გაუმჯობესება
 ახალი და გაუმჯობესებული ხატულები უფრო ზუსტად აჩვენეენ რა ინსტრუმენტები რა ფუნქციას ატარებენ. გახსნადი ნაწილები აკლებენ  Expandable sections reduce clutter while keeping infrequently used tools just a click away.
 The help section provides quick access to a reference for common uses of wiki-markup.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Improved search interface
-When using search, title matches are shown first, helping you to find the most relevant articles quickly. Search profiles make searching for different kinds of content easier, while the new advanced search interface makes light-work of complex searches.
 <div style="clear:both;"></div>',
 );
 
@@ -1541,14 +1501,14 @@ Wat hät Der aam <i lang="en">Beta</i> nit jefalle?',
 	'optin-survey-answer-os-linux' => '<i lang="en">Linux</i>',
 	'optin-survey-answer-os-other' => 'En ander Zoot Bedriifßsüßtehm:',
 	'optin-survey-question-res' => 'Wie es Dingem Beldscherrem sing Oplüüsung?',
-	'optin-survey-question-changes' => 'Wat för Änderunge dääts De en De Zohkunnf jähn en de Bata hann? Söhk Der drei uß, udder winnijer.',
+	'optin-survey-question-changes' => 'Wat för Änderunge dääts De en De Zohkunnf jähn en de Bata hann? Nemm alle, di paße.',
 	'optin-survey-answer-changes-nav' => 'Maat et eröm Navvijeere en heh dä Web_ßait eijfaacher.',
 	'optin-survey-answer-changes-edittools' => 'Maat mieh Wärkzüsch för et Beärbeide, un maat et beßer.',
 	'optin-survey-answer-changes-upload' => 'Maat et Huhlaade, för Meedije un Enhallde, beßer.',
 	'optin-survey-answer-changes-richtext' => 'Doht Wärkzüsh en dä Aat vun <i lang="en">„rich-text“ editors</i> för et Täxte-Ändere entweckele.',
 	'optin-survey-answer-changes-lookfeel' => 'Doht Ußsinn un de Jeschtalldung vun dä Web-ßait neuer maache.',
 	'optin-survey-answer-changes-predictability' => 'Maat de Leistung mieh afseebaar.',
-	'optin-survey-answer-changes-compat' => 'Maat de Verdrääschleschkeit met heh däm Wiki bäßer.',
+	'optin-survey-answer-changes-custom' => 'Jrüßer Aanpassonge aan der einzelne Metmaacher müjjelesch maache.',
 	'optin-survey-answer-changes-other' => 'Söns jet:',
 	'optin-improvements' => '== Wat es bäßer jemaat woode? ==
 [[File:UsabilityNavigation.png|left]]
@@ -1563,12 +1523,6 @@ En verfüüßerbaa Wärkzüsch_Leß vershtish de sällde jebruch Wärkzüsch ier
 Metmaacher künne de Leß verjrüüßere, öm op de mieh spezjälle Sache zohzejriife.
 Bezösh op Hölp — Spekzäddel — sin doh ennjebout.
 Wärkzüsh Minnibeldscher sin neujemoohlt woode un bruche <i lang="en">Tango</i> un <i lang="en">Gnome</i> Belldscher.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-; bäßer Söhke
-De Sigg, di beij em Söhke eruß kütt es öff der Wääsch noh enem Atikel,
-de Tittelle sin esu verdeijlt, dat se joot ze sin sin, un de winnisch jebruchte Ennfommazjuhne sin kleijner.
 <div style="clear:both;"></div>',
 );
 
@@ -1632,14 +1586,14 @@ Mir wiere frou fir ze wëssen wat Dir vun deem neien Interface denkt, dofir wier
 	'optin-survey-question-os' => 'Wafir e Betriibssystem benotzt Dir?',
 	'optin-survey-answer-os-other' => 'Anere Betriibssystem:',
 	'optin-survey-question-res' => "Wéi ass d'Opléisung vun ärem Ecran?",
-	'optin-survey-question-changes' => 'Watfir Ännerunge géif Dir am léifsten an der Beta an Zukunft gesinn (sicht der bis zu dräi eraus)?',
+	'optin-survey-question-changes' => 'Watfir Ännerunge géif Dir am léifsten an der Beta an Zukunft gesinn (sicht w.e.g. all déi eraus déi Iech gefalen)?',
 	'optin-survey-answer-changes-nav' => 'Déi allgemeng Navigatioun vum Site méi einfach maachen.',
 	'optin-survey-answer-changes-edittools' => "D'Méiglechkeete fir z'änneren vergréisseren a verbesseren.",
 	'optin-survey-answer-changes-upload' => "D'Eropluede vun Inhalt a Medie verbesseren.",
 	'optin-survey-answer-changes-richtext' => "Ännerungsméiglechkeeten entwéckelen ähnlech wéi 'rich-text'-Editeuren.",
 	'optin-survey-answer-changes-lookfeel' => 'Ausgesi vum Site aktualiséieren.',
 	'optin-survey-answer-changes-predictability' => 'Zouverléissegkeet vun der Previsioun vun der Performance verbesseren.',
-	'optin-survey-answer-changes-compat' => 'Compatibilitéit mat der lokale Wiki verbesseren.',
+	'optin-survey-answer-changes-custom' => 'Méi en grouss Benotzer-Upassung erlaben.',
 	'optin-survey-answer-changes-other' => 'Anerer:',
 	'optin-improvements' => '== Wat gouf verbessert? ==
 [[File:UsabilityNavigation.png|left]]
@@ -1651,11 +1605,6 @@ Dat neit Navigatiounssystem mécht et net nëmme méi einfacher fir ze gesinn, w
 ;Verbesserunge vun der Ännerungs-Toolbar
 Nei a verbessert Symboler maachen et méi kloer, watfireng Aktioun hanner all Tool stécht. Abschnitter déi opgeklappt kënne ginn reduzéieren den Duercherneen, während sele benotzten Toolen nëmmen ee Klick ewech sinn.
 Den Abschnitt mat der Hëllef erlaabt e séieren Zougrëff mat déi am dackste benotzte Wikisyntax.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Verbessert Sichuewerfläch
-Wann Dir d\'Sich benotzt, ginn all Titeltreffer fir d\'éischt gewisen. Dat hëlleft, déi relevantesten Artikel séier ze fannen. Sichprofiler maachen d\'Siche fir verschidden Zorte vun Inhalt méi einfach, während déi nei erweidert Sichuewerfläche komplext Siche méi einfach mécht.
 <div style="clear:both;"></div>',
 );
 
@@ -1783,14 +1732,14 @@ Geef alstublieft een toelichting.',
 	'optin-survey-question-os' => 'Welk besturingssysteem gebruikt u?',
 	'optin-survey-answer-os-other' => 'Ander besturingssysteem:',
 	'optin-survey-question-res' => 'Wat is uw beeldschermresolutie?',
-	'optin-survey-question-changes' => 'Welke wijzigingen wilt u in Beta in de toekomst zien (selecteer maximaal drie mogelijkheden)?',
+	'optin-survey-question-changes' => 'Welke wijzigingen wilt u in de toekomst in Beta zien? (selecteer alle mogelijkheden die van toepassing zijn)',
 	'optin-survey-answer-changes-nav' => 'Maak de navigatie van de site eenvoudiger.',
 	'optin-survey-answer-changes-edittools' => 'Meer en betere bewerkingshulpmiddelen.',
 	'optin-survey-answer-changes-upload' => 'Verbeter het toevoegen van inhoud en mediauploads.',
 	'optin-survey-answer-changes-richtext' => 'Ontwikkel bewerkingshulpmiddelen vergelijkbaar met uitgebreide tekstverwerkers.',
-	'optin-survey-answer-changes-lookfeel' => 'Werk het uiterlijk en de werking van de site bij naar de laatste inzichten.',
+	'optin-survey-answer-changes-lookfeel' => 'Werkt het uiterlijk en de werking van de bij naar de laatste inzichten.',
 	'optin-survey-answer-changes-predictability' => 'Verbeter de voorspelbaarheid van de prestaties.',
-	'optin-survey-answer-changes-compat' => 'Verbeter de compatibiliteit met de lokale wiki.',
+	'optin-survey-answer-changes-custom' => 'Meer gebruikersaanpassingen mogelijk maken.',
 	'optin-survey-answer-changes-other' => 'Overig:',
 	'optin-improvements' => '== Wat is er verbeterd?==
 [[File:UsabilityNavigation.png|left]]
@@ -1804,12 +1753,6 @@ Met het zoekvak in de rechterbovenhoek is de zoekfunctie makkelijker te vinden e
 Nieuwe en verbeterde pictogrammen maken het duidelijker wat ieder hulpmiddel doet.
 Uitklapbare onderdelen verminderen een rommelig uiterlijk, terwijl minder vaak gebruikte functies wel bereikbaar blijven.
 De hulpfunctie biedt snelle toegang tot uitleg over veelgebruikte functies van de wikiopmaaktaal.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Verbeterde zoekinterface
-Bij het gebruiken van de zoekfunctie worden gevonden pagina\'s eerst weergegeven, zodat u relevante pagina\'s eerst ziet.
-Via zoekprofielen is het vinden van verschillende soorten inhoud eenvoudiger, terwijl via de gevorderde zoekinterface complexe zoekdrachten eenvoudig te maken zijn.
 <div style="clear:both;"></div>',
 );
 
@@ -1907,14 +1850,14 @@ Nos agradariá de saber çò que pensatz de nòstra interfàcia novèla, nos agr
 	'optin-survey-question-os' => 'Quin sistèma operatiu utilizatz ?',
 	'optin-survey-answer-os-other' => 'Autre sistèma operatiu :',
 	'optin-survey-question-res' => 'Quina es la resolucion de vòstre ecran ?',
-	'optin-survey-question-changes' => 'Qué vos agradariá veire dins la Beta dins lo futur (al maximum 3) ?',
+	'optin-survey-question-changes' => 'Qué vos agradariá veire dins la Beta dins lo futur (seleccionatz tot çò que conven) ?',
 	'optin-survey-answer-changes-nav' => "Fa que la navigacion generala del site es mai simpla d'utilizar.",
 	'optin-survey-answer-changes-edittools' => "Melhora e augmenta los espleches d'edicion.",
 	'optin-survey-answer-changes-upload' => "Melhora l'impòrt de contengut e de mèdia.",
 	'optin-survey-answer-changes-richtext' => "Desvolopa d'espleches de modificacions similars als editors en tèxte enriquit.",
 	'optin-survey-answer-changes-lookfeel' => "Cambia l'aparéncia del site.",
 	'optin-survey-answer-changes-predictability' => 'Melhora la previzibilitat de las performàncias.',
-	'optin-survey-answer-changes-compat' => 'Melhora la compatibilitat amb los wikis locals.',
+	'optin-survey-answer-changes-custom' => "Permet una màger personalizacion de l'interfàcia.",
 	'optin-survey-answer-changes-other' => 'Autre :',
 	'optin-improvements' => "== De qué es es estat melhorat ? ==
 [[File:UsabilityNavigation.png|left]]
@@ -1926,11 +1869,6 @@ Lo sistèma de navigacion novèl vos permet de veire mau aisidament ont sètz e 
 ;Melhoraments de la barra d'espleches
 D'icòna tota novèlas clarifican l'accion efectuada per cada esplech. De seccions extensibles redusisson lo desòrdre tot en gardant l'accès als espleches utilizats mai raremant en un sol clic.
 La seccion d'ajuda provesís un accès rapid a la documentacion sus l'utilizacion correnta de las balisas wiki.
-<div style=\"clear:both;\"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Interfàcia de recèrca melhorada
-Quora efectuatz una recèrca, las correspondéncias dins los títols son afichadas en primièr, per vos ajudar a trobar rapidament los articles mai pertinents. Los perfils de recèrca balhan la possibilitat de recercar diferents tipes de contenguts mai aisidament, e la novèla interfàcia avançada de recèrca permet d'efectuar aisidament de recèrcas complèxas.
 <div style=\"clear:both;\"></div>",
 );
 
@@ -1950,7 +1888,10 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'optin' => 'Włączenie Inicjatywy Użyteczności',
-	'optin-desc' => 'Pozwala użytkownikom włączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności',
+	'optin-desc' => 'Pozwala użytkownikom włączyć doświadczalne ulepszenia Beta zrealizowane w ramach Inicjatywy Użyteczności.',
+	'optin-title-optedout' => 'Wypróbuj Beta',
+	'optin-title-optedin' => 'Opuść Beta',
+	'optin-title-justoptedin' => 'Witaj w Beta',
 	'optin-needlogin' => 'Musisz [$1 zalogować się] by móc włączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności.',
 	'optin-intro' => 'Zamierzając poprawić użyteczność Wikipedii utworzono nowy wygląd strony oraz nowy pasek z narzędziami edycyjnymi. Te ulepszenia jeszcze nie są dostępne dla wszystkich użytkowników, ale Ty możesz je włączyć poprzez kliknięcie poniżej „{{int:optin-submit-in}}”.',
 	'optin-success-in' => 'Udało Ci się włączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności.
@@ -2007,11 +1948,6 @@ Rozszerzalny pasek narzędzi ukrywa ikony rzadko wykorzystywanych narzędzi.
 Doświadczeni użytkownicy mogą rozwinąć pasek, aby uzyskać dostęp do ikon narzędzi specjalistycznych.
 Odniesienia do stron pomocy są wbudowane w pasek narzędzi.
 Jako ikony paska narzędzi zostały wykorzystane ikony środowisk Tango oraz Gnome.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Ulepszono interfejs wyszukiwania
-Jako wynik wyszukiwania zazwyczaj wyświetlany jest artykuł; tytuły wyników ułożone są w kolejności zwiększającej przejrzystość, a mniej przydatne informacje są niżej umieszczane.
 <div style="clear:both;"></div>',
 );
 
@@ -2092,7 +2028,6 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-answer-changes-richtext' => 'Desenvolver ferramentas de edição semelhantes a editores avançados de texto.',
 	'optin-survey-answer-changes-lookfeel' => 'Renovar o aspecto geral do site.',
 	'optin-survey-answer-changes-predictability' => 'Melhorar a consistência dos resultados.',
-	'optin-survey-answer-changes-compat' => 'Melhorar a compatibilidade com a wiki local.',
 	'optin-survey-answer-changes-other' => 'Outros:',
 	'optin-improvements' => '== O que foi melhorado? ==
 [[File:UsabilityNavigation.png|left]]
@@ -2104,11 +2039,6 @@ O novo sistema de navegação torna mais fácil ver onde você está e o que voc
 ;Melhoramentos na barra de ferramentas de edição
 Novos e melhorados ícones tornam mais claro que acção que cada ferramenta realiza. Secções ampliáveis reduzem o empilhamento de botões, continuando a manter ferramentas menos utilizadas a apenas um clique de distância.
 A secção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Melhor interface de pesquisa
-Ao usar a pesquisa, correspondências de título são mostradas em primeiro lugar, ajudando-o a encontrar rapidamente os artigos  mais relevantes. Perfis de pesquisa tornam a pesquisa de diferentes tipos de conteúdos mais simples, enquanto que a nova interface de pesquisa avançada torna mais fácil executar pesquisas complexas.
 <div style="clear:both;"></div>',
 );
 
@@ -2211,14 +2141,14 @@ $messages['ru'] = array(
 	'optin-survey-answer-os-linux' => 'Linux',
 	'optin-survey-answer-os-other' => 'Другая операционная система:',
 	'optin-survey-question-res' => 'Каково разрешение вашего монитора?',
-	'optin-survey-question-changes' => 'Какие изменения вы хотите увидеть в Beta в будущем (выберите до трёх) ?',
+	'optin-survey-question-changes' => 'Какие изменения вы хотите увидеть в Beta в будущем (выберите все подходящие пункты)?',
 	'optin-survey-answer-changes-nav' => 'Сделать навигацию по всему сайту более простой в использовании.',
 	'optin-survey-answer-changes-edittools' => 'Расширить и усовершенствовать инструменты редактирования.',
 	'optin-survey-answer-changes-upload' => 'Усовершенствовать загрузку содержания и медиа.',
 	'optin-survey-answer-changes-richtext' => 'Разработать инструменты редактирования, аналогичные текстовым редакторам.',
 	'optin-survey-answer-changes-lookfeel' => 'Обновить «внешний вид» сайта.',
 	'optin-survey-answer-changes-predictability' => 'Повышение предсказуемости работы.',
-	'optin-survey-answer-changes-compat' => 'Усовершенствовать совместимость с локальной вики.',
+	'optin-survey-answer-changes-custom' => 'Позволить производить больше индивидуальных настроек.',
 	'optin-survey-answer-changes-other' => 'Другие:',
 	'optin-improvements' => '== Что было улучшено? ==
 [[File:UsabilityNavigation.png|left]]
@@ -2229,11 +2159,6 @@ $messages['ru'] = array(
 [[File:UsabilityToolbar.png|left]]
 ; Улучшение панели редактирования
 Новые и улучшенные значки более точно показывают какие инструменты какие действия выполняют. Раскрываемые разделы уменьшают беспорядок, сохраняя при этом редко используемые инструменты на расстоянии щелчка мыши. Справочный раздел обеспечивает быстрый доступ к примерам по наиболее используемым типам вики-разметки.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-; Улучшение интерфейса поиска
-В результатах поиска совпадения с названиями страниц будут показаны вверху, что поможет вам быстро найти подходящие статьи. Профили поиска делают проще поиск различных видов информации, а новый интерфейс расширенного поиска упрощает работу со сложными запросами.
 <div style="clear:both;"></div>',
 );
 
@@ -2292,14 +2217,14 @@ $messages['sah'] = array(
 	'optin-survey-question-os' => 'Ханнык операционнай систиэмэни туһанаҕын?',
 	'optin-survey-answer-os-other' => 'Атын ОС:',
 	'optin-survey-question-res' => 'Эн мониторуҥ разрешениета төһөнүй?',
-	'optin-survey-question-changes' => 'Betaҕа кэлин ханнык уларытыылары киллэриэххэ сөбүй? (үһү тал)',
+	'optin-survey-question-changes' => 'Beta-ҕа кэлин ханнык уларытыылары киллэриэххэ сөбүй? (барытын талыаххын сөп)',
 	'optin-survey-answer-changes-nav' => 'Саайт навигациятын туттарга арыый судургу гыныахха.',
 	'optin-survey-answer-changes-edittools' => 'Эрэдээксийэлиир үнүстүрүмүөннэри элбэтэргэ уонна тупсарарга.',
 	'optin-survey-answer-changes-upload' => 'Иһинээҕитин уонна медиатын хачайдыыры тупсарарга.',
 	'optin-survey-answer-changes-richtext' => 'Тиэкис эрэдээктэрдэригэр баар үнүстурүмүөннэргэ майгынныыр үнүстүрүмүөннэри эбэргэ.',
 	'optin-survey-answer-changes-lookfeel' => 'Саайт тас көстүүтүн уларытарга.',
 	'optin-survey-answer-changes-predictability' => 'Үлэлиирэ "дьэҥкирин" ситиһэргэ.',
-	'optin-survey-answer-changes-compat' => 'Олохтоох (локал) биикини кытта сөп түбэһиитин тупсарарга.',
+	'optin-survey-answer-changes-custom' => 'Тус туруоруулары өссө киэҥник уларытары көҥүллүүргэ.',
 	'optin-survey-answer-changes-other' => 'Атын:',
 	'optin-improvements' => '== Туох тупсарыллыбытый? ==
 [[File:UsabilityNavigation.png|left]]
@@ -2310,11 +2235,6 @@ $messages['sah'] = array(
 [[File:UsabilityToolbar.png|left]]
 ; Эрэдээксийэлиир панел тупсуута
 Саҥа тупсарыллыбыт значоктар ханнык үнүстурүмүөн ханнык үлэни оҥорорун ордук үчүгэйдик көрдөрөр. Аһыллар салаалар булкууру аҕыйаталлар, ол да буоллар сэдэхтик туттуллар үнүстүрумүөннэри чугас илдьэ сылдьарга көмөлөһөллөр. Көмө салаата биики-бэлиэлэри сөпкө туһанар туһунан холобурдары түргэнник көрөргө табыгастаах. 
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-; Көрдөөһүн интерфейса тупсуута
-Булуллубут сирдэри наардааһын тупсарыллыбыт: көрдөөбут тылларыҥ ыстатйа аатыгар баар буоллахтарына ол ыстатйалар үөһэ көстүөхтэрэ - ол наадалаах ыстатыйаны түргэнник буларга көмөлөһүө. Көрдөоһүн профиллара информация араас көрүҥнэрин көрдүүру тупсараллар, оттон дириҥэтэн көрдөөһүн саҥа интерфейса уустук көрдөбүллэри оҥорорго көмөлөһүө. 
 <div style="clear:both;"></div>',
 );
 
@@ -2376,14 +2296,14 @@ Chceli by sme vedieť, čo si myslíte o novom rozhraní, takže by sme ocenili 
 	'optin-survey-question-os' => 'Ktorý operačný systém používate?',
 	'optin-survey-answer-os-other' => 'Iný operačný systém:',
 	'optin-survey-question-res' => 'Aké je rozlíšenie vašej obrazovky?',
-	'optin-survey-question-changes' => 'Aké zmeny by ste radi videli v Beta v budúcnosti (vyberte najviac tri)?',
+	'optin-survey-question-changes' => 'Aké zmeny by ste radi videli v Beta v budúcnosti (prosím, vyberte všetky, ktoré chcete)?',
 	'optin-survey-answer-changes-nav' => 'Celkovo uľahčiť navigáciu po webovej lokalite.',
 	'optin-survey-answer-changes-edittools' => 'Zväčšiť počet a vylepšiť nástroje na úpravy.',
 	'optin-survey-answer-changes-upload' => 'Zlepšiť obsah a nahrávanie multimediálnych súborov.',
 	'optin-survey-answer-changes-richtext' => 'Vyvinúť nástroje na úpravu podobné editorom obohateného textu.',
 	'optin-survey-answer-changes-lookfeel' => 'Aktualizovať „vzhľad a správanie“ webovej lokality.',
 	'optin-survey-answer-changes-predictability' => 'Zlepšiť predpovedateľnosť výkonnosti.',
-	'optin-survey-answer-changes-compat' => 'Zlepšiť kompatibilitu s lokálnymi wiki.',
+	'optin-survey-answer-changes-custom' => 'Umožniť používateľom väčšiu prispôsobiteľnosť',
 	'optin-survey-answer-changes-other' => 'Iné:',
 	'optin-improvements' => '== Čo bolo zlepšené? ==
 [[File:UsabilityNavigation.png|left]]
@@ -2396,13 +2316,6 @@ Vďaka novému navigačnému systému je jednoduchšie rozlíšiť, kde sa nach�
 Nové a vylepšené ikony vyjasňujú čo ktorý nástroj robí.
 Rozbaliteľné časti skrývajú zriedka používané nástroje, pričom sú stále len o jedno kliknutie ďalej.
 Časť Pomocník poskytuje rýchly prístup do referenčnej dokumentácie bežného ppoužitia wiki syntaxe.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Vylepšené vyhľadávacie rozhranie
-Vo výsledkoch vyhľadávania sa ako prvé zobrazujú zhody v názvoch článkov, čo pomáha rýchlejšie nájsť najrelevantnejšie výsledky.
-Vyhľadávacie profily uľahčujú vyhľadávanie rôznych druhov obsahu.
-Vďaka rozhraniu pokročilého vyhľadávania je jednoduché tvoriť komplexné vyhľadávacie požiadavky.
 <div style="clear:both;"></div>',
 );
 
@@ -2419,6 +2332,7 @@ $messages['te'] = array(
 	'optin-survey-answer-browser-other' => 'ఇతర విహారిణి:',
 	'optin-survey-question-os' => 'మీరు వాడుతున్న నిర్వాహక వ్యవస్థ ఏది?',
 	'optin-survey-answer-os-other' => 'ఇతర నిర్వాహక వ్యవస్థలు:',
+	'optin-survey-answer-changes-other' => 'ఇతర:',
 );
 
 /** Turkish (Türkçe)
@@ -2487,7 +2401,6 @@ Yeni arayüzümüz konusunda ne düşündüğünüzü bilmek isteriz, o yüzden 
 	'optin-survey-answer-changes-richtext' => 'Zengin-metin editörlerine benzer değiştirme araçlarını geliştirin.',
 	'optin-survey-answer-changes-lookfeel' => 'Sitenin "görünüm ve hissini" güncelleyin.',
 	'optin-survey-answer-changes-predictability' => 'Öngörülebilirlik performansını geliştirin.',
-	'optin-survey-answer-changes-compat' => 'Yerel viki ile uyumluluğunu geliştirin.',
 	'optin-survey-answer-changes-other' => 'Diğer:',
 	'optin-improvements' => '== Neler geliştirildi? ==
 [[File:UsabilityNavigation.png|left]]
@@ -2499,11 +2412,6 @@ Yeni dolaşım sistemi, nerede olduğunuzu ve ne yaptığınızı görmenizi, ay
 ;Değiştirme araç çubuğu geliştirmeleri
 Yeni-ve-geliştirilmiş simgeler her aracın ne eylemi yaptığını daha netleştirir. Genişletilebilir bölümler dağınıklığı azaltırken az kullanılan araçları sadece bir tık ötesinde saklar.
 Yardım bölümü, viki-biçimlendirmesinin genel kullanımı için bir referansa kolay erişim sağlar.
-<div style="clear:both;"></div>
-
-[[File:UsabilitySearch.png|left]]
-;Geliştirilmiş arama arayüzü
-Arama kullanılırken, eşleşen başlıklar önce gösterilir, en alakalı maddeleri hızlıca bulmanıza yardımcı olur. Yeni gelişmiş arama arayüzü karmaşık aramaları kolay bir iş yaparken, arama profilleri farklı türdeki içerikleri aramayı kolaylaştırır.
 <div style="clear:both;"></div>',
 );
 

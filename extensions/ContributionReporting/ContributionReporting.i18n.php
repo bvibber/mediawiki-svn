@@ -221,6 +221,11 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'contrib-hist-name' => 'ܫܡܐ',
+	'contrib-hist-amount' => 'ܟܡܝܘܬܐ',
+	'contrib-hist-anonymous' => 'ܠܐ ܝܕܝܥܐ',
+	'contribstats-day' => 'ܝܘܡܐ',
+	'contribstats-month' => 'ܝܪܚܐ',
+	'contribstats-currency' => 'ܙܘܙܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
