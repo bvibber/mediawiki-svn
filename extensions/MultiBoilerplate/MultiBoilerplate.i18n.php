@@ -17,6 +17,15 @@ $messages['en'] = array(
 	'multiboilerplate-label'  => '',
 	'multiboilerplate-legend' => 'Select boilerplate',
 	'multiboilerplate-submit' => 'Load',
+	'boilerplates'            => 'Custom preload on creation',
+	'boilerplates-name'       => 'Boilerplates',
+	'multiboilerplate-special-title'                   => 'Custom templates preloader',
+	'multiboilerplate-special-pagetext'                => 'Those templates can be preloaded on page creation. (<span class=plainlinks>[{{fullurl:This page does not exist|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-on-localsettings' => 'Boilerplates are defined on LocalSettings.php in array <code>&#36;wgMultiBoilerplateOptions</code>. Set <code>&#36;wgMultiBoilerplateOptions = false;</code> to use [[MediaWiki:Multiboilerplate]] instead.',
+	'multiboilerplate-special-define-on-interface'     => 'Boilerplates are defined on interface page: [[MediaWiki:Multiboilerplate]].',
+	'multiboilerplate-label'                           => '',
+	'multiboilerplate-legend'                          => 'Select boilerplate',
+	'multiboilerplate-submit'                          => 'Load',
 );
 
 /** Message documentation (Message documentation)
@@ -30,6 +39,7 @@ $messages['qqq'] = array(
 	'multiboilerplate-submit' => 'The text displayed on the button that loads the boilerplate into the edit box.
 
 {{Identical|Load}}',
+	'boilerplates' => 'The description on Special:SpecialPages',
 );
 
 /** Afrikaans (Afrikaans)
