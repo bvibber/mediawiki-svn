@@ -9,6 +9,7 @@ $messages = array();
 
 /** English
  * @author Michael Dale
+ * @author Purodha 	http://ksh.wikipedia.org/wiki/User:Purodha
  */
 $messages['en'] = array(
 	'specialwikiathome'	=> 'Wiki@Home',
@@ -27,6 +28,6 @@ $messages['en'] = array(
 	'wah-transcode-working' => 'This video is being transcoded its $1% done',
 	'wah-transcode-helpout' => 'You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
 
-	'wah-javascript-off'	=> 'You must have javascript enabled to participate in Wiki@Home',
+	'wah-javascript-off'	=> 'You must have JavaScript enabled to participate in Wiki@Home',
 	'wah-loading'		=> 'loading Wiki@Home interface <blink>...</blink>'
 );
