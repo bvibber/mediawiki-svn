@@ -1,8 +1,15 @@
+wikimedia-base (0.20) feisty; urgency=low
+
+  * Changed dependency on ntp-simple to ntp since it replaced ntp-simple.
+  * Bumping version since 0.19 was already deployed (albeit not in changelog).
+
+ -- Fred Vassard <fred@wikimedia.org>  Fri, 31 Jul 2009 17:30:00 +0000
+
 wikimedia-base (0.19) feisty; urgency=low
 
   * Depends on acct
 
- -- Fred Vassard <fred@wikimedia.org> Fri, 31 Jul 2009 16:12:00 +0000
+ -- Fred Vassard <fred@wikimedia.org>  Fri, 31 Jul 2009 16:12:00 +0000
 
 wikimedia-base (0.18) feisty; urgency=low
 
