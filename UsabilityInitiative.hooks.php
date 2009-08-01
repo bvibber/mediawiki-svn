@@ -18,7 +18,7 @@ class UsabilityInitiativeHooks {
 			'combined' => array(
 				array( 'src' => 'css/combined.css', 'version' => 2 ),
 			),
-			'combined-min' => array(
+			'minified' => array(
 				array( 'src' => 'css/combined.min.css', 'version' => 2 ),
 			),
 			'raw' => array(
