@@ -13,14 +13,27 @@ class UsabilityInitiativeHooks {
 	private static $doOutput = false;
 	private static $messages = array();
 	private static $styles = array();
+	private static $styleFiles = array(
+		'base_sets' => array(
+			'combined' => array(
+				array( 'src' => 'css/combined.css', 'version' => 2 ),
+			),
+			'combined-min' => array(
+				array( 'src' => 'css/combined.min.css', 'version' => 2 ),
+			),
+			'raw' => array(
+				array( 'src' => 'css/wikiEditor.css', 'version' => 2 ),
+			),
+		)
+	);
 	private static $scripts = array();
 	private static $scriptFiles = array(
 		'base_sets' => array(
 			'combined' => array(
-				array( 'src' => 'js/jquery.combined.js', 'version' => 3 ),
+				array( 'src' => 'js/jquery.combined.js', 'version' => 2 ),
 			),
-			'combined-min' => array(
-				array( 'src' => 'js/jquery.combined.min.js', 'version' => 3 ),
+			'minified' => array(
+				array( 'src' => 'js/jquery.combined.min.js', 'version' => 2 ),
 			),
 			'raw' => array(
 				array( 'src' => 'js/jquery.js', 'version' => 2 ),
@@ -28,8 +41,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/jquery.browser.js', 'version' => 2 ),
 				array( 'src' => 'js/jquery.cookie.js', 'version' => 2 ),
 				array( 'src' => 'js/jquery.textSelection.js', 'version' => 2 ),
-				array( 'src' => 'js/jquery.toolbar.js', 'version' => 3 ),
-				array( 'src' => 'js/jquery.wikiOutline.js', 'version' => 2 ),
+				array( 'src' => 'js/jquery.wikiEditor.js', 'version' => 2 ),
 			),
 		),
 		// Code to include when js2 is not present
@@ -41,7 +53,7 @@ class UsabilityInitiativeHooks {
 	/* Static Functions */
 	
 	public static function initialize() {
-		global $wgUsabilityInitiativeJsMode;
+		global $wgUsabilityInitiativeResourceMode;
 		global $wgEnableJS2system;
 		
 		// Only do this the first time!
@@ -53,13 +65,17 @@ class UsabilityInitiativeHooks {
 				);
 			}
 			// Default to raw
-			$mode = $wgUsabilityInitiativeJsMode; // Just an alias
+			$mode = $wgUsabilityInitiativeResourceMode; // Just an alias
 			if ( !isset( self::$scriptFiles['base_sets'][$mode] ) ) {
 				$mode = 'raw';
 			}
 			// Inlcude base-set of scripts
 			self::$scripts = array_merge(
 				self::$scriptFiles['base_sets'][$mode], self::$scripts
+			);
+			// Inlcude base-set of styles
+			self::$styles = array_merge(
+				self::$styleFiles['base_sets'][$mode], self::$styles
 			);
 		}
 		self::$doOutput = true;

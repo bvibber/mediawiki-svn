@@ -21,7 +21,7 @@
 /* Configuration */
 
 // Set this to false to include all plugins individually
-$wgUsabilityInitiativeJsMode = 'combined';
+$wgUsabilityInitiativeResourceMode = 'minified';
 
 /* Setup */
 

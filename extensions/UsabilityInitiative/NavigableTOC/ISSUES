@@ -1,4 +1,0 @@
-* The UI is still a horrible hack
-* parseOutline doesn't play well with headings that don't have lines above and
-below
-* The buildList logic is flawed
