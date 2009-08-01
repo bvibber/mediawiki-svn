@@ -1,39 +1,10 @@
 /* JavaScript for EditToolbar extension */
 
 js2AddOnloadHook( function() {
-	$j( 'textarea#wpTextbox1' )
-		.wrap( $j( '<div></div>' ).attr( 'id', 'edit-ui' ) )
-		.wrap( $j( '<div></div>' ).attr( 'id', 'edit-ui-bottom' ) )
-		.wrap( $j( '<div></div>' ).attr( 'id', 'edit-ui-text' ) );
-	$j( 'div#edit-ui' ).prepend(
-		$j( '<div></div>' )
-			.attr( 'id', 'edit-ui-top' )
-			.append(
-				$j( '<div></div>' )
-					.attr( 'id', 'edit-toolbar' )
-			)
+	$j( 'textarea#wpTextbox1' ).wikiEditor(
+		{ 'modules': { 'toolbar': editToolbarConfiguration } }
 	);
-	$j( 'div#edit-toolbar' ).toolbar( $j( 'textarea#wpTextbox1' ),
-		editToolbarConfiguration );
 });
-
-// Generate special chars tools from an array of characters
-function generateSpecialChars( chars ) {
-	var retval = [ ];
-	for ( var i = 0; i < chars.length; i++ ) {
-		retval[i] = {
-			'type': 'link',
-			'label': chars[i],
-			'action': {
-				'type': 'encapsulate',
-				'options': {
-					'pre': chars[i]
-				}
-			}
-		};
-	}
-	return retval;
-}
 
 /**
  * This enormous structure is what makes the toolbar what it is. Customization
@@ -364,7 +335,7 @@ var editToolbarConfiguration = {
 			'latin': {
 				'labelMsg': 'edittoolbar-characters-page-latin',
 				'layout': 'characters',
-				'characters': generateSpecialChars( ["\u00c1",
+				'characters': ["\u00c1",
 					"\u00e1", "\u00c0", "\u00e0", "\u00c2",
 					"\u00e2", "\u00c4", "\u00e4", "\u00c3",
 					"\u00e3", "\u01cd", "\u01ce", "\u0100",
@@ -420,12 +391,12 @@ var editToolbarConfiguration = {
 					"\u017c", "\u00c6", "\u00e6", "\u01e2",
 					"\u01e3", "\u00d8", "\u00f8", "\u0152",
 					"\u0153", "\u00df", "\u00f0", "\u00de",
-					"\u00fe", "\u018f", "\u0259" ] )
+					"\u00fe", "\u018f", "\u0259"]
 			},
 			'ipa': {
 				labelMsg: 'edittoolbar-characters-page-ipa',
 				layout: 'characters',
-				characters: generateSpecialChars( ["p",
+				characters: ["p",
 					"t\u032a", "t", "\u0288", "c", "k",
 					"q", "\u02a1", "\u0294", "b",
 					"d\u032a", "d", "\u0256", "\u025f",
@@ -502,19 +473,19 @@ var editToolbarConfiguration = {
 					"\u0252", "\u0252\u032f",
 					"\u0252\u0303", "\u02c8", "\u02cc",
 					"\u02d0", "\u02d1", "\u02d8", ".",
-					"\u203f", "|", "\u2016" ] )
+					"\u203f", "|", "\u2016"]
 			},
 			'symbols': {
 				'labelMsg': 'edittoolbar-characters-page-symbols',
 				'layout': 'characters',
-				'characters': generateSpecialChars( [ "~", "|",
+				'characters': ["~", "|",
 					"\u00a1", "\u00bf", "\u2020", "\u2021",
 					"\u2194", "\u2191", "\u2193", "\u2022",
 					"\u00b6", "#", "\u00bd", "\u2153",
 					"\u2154", "\u00bc", "\u00be", "\u215b",
 					"\u215c", "\u215d", "\u215e", "\u221e",
 					"\u2018", "\u201c", "\u2019",
-					"\u201d" ]).concat( [ {
+					"\u201d", {
 						'type': 'link',
 						'label': "\u00ab\u00bb",
 						'action': {
@@ -524,7 +495,7 @@ var editToolbarConfiguration = {
 								'post': "\u00bb"
 							}
 						}
-					} ] ).concat( generateSpecialChars( [
+					},
 					"\u00a4", "\u20b3", "\u0e3f", "\u20b5",
 					"\u00a2", "\u20a1", "\u20a2", "$",
 					"\u20ab", "\u20af", "\u20ac", "\u20a0",
@@ -534,7 +505,7 @@ var editToolbarConfiguration = {
 					"\u17db", "\u20a8", "\u20aa", "\u09f3",
 					"\u20ae", "\u20a9", "\u00a5", "\u2660",
 					"\u2663", "\u2665", "\u2666",
-					"m\u00b2", "m\u00b3", ] ) )
+					"m\u00b2", "m\u00b3"]
 			},
 			'greek': {
 				'labelMsg': 'edittoolbar-characters-page-greek',
@@ -542,7 +513,7 @@ var editToolbarConfiguration = {
 				'attributes': {
 					'lang': 'hl'
 				},
-				'characters': generateSpecialChars( [ "\u0391",
+				'characters': ["\u0391",
 					"\u0386", "\u03b1", "\u03ac", "\u0392",
 					"\u03b2", "\u0393", "\u03b3", "\u0394",
 					"\u03b4", "\u0395", "\u0388", "\u03b5",
@@ -558,12 +529,12 @@ var editToolbarConfiguration = {
 					"\u03a5", "\u038e", "\u03c5", "\u03cd",
 					"\u03a6", "\u03c6", "\u03a7", "\u03c7",
 					"\u03a8", "\u03c8", "\u03a9", "\u038f",
-					"\u03c9", "\u03ce" ] )
+					"\u03c9", "\u03ce"]
 			},
 			'cyrillic': {
 				'labelMsg': 'edittoolbar-characters-page-cyrillic',
 				'layout': 'characters',
-				'characters': generateSpecialChars( [ "\u0410",
+				'characters': ["\u0410",
 					"\u0430", "\u04d8", "\u04d9", "\u0411",
 					"\u0431", "\u0412", "\u0432", "\u0413",
 					"\u0433", "\u0490", "\u0491", "\u0403",
@@ -593,7 +564,7 @@ var editToolbarConfiguration = {
 					"\u0429", "\u0449", "\u042a", "\u044a",
 					"\u042b", "\u044b", "\u042c", "\u044c",
 					"\u042d", "\u044d", "\u042e", "\u044e",
-					"\u042f", "\u044f" ] )
+					"\u042f", "\u044f"]
 			},
 			'arabic': {
 				'labelMsg': 'edittoolbar-characters-page-arabic',
@@ -605,7 +576,7 @@ var editToolbarConfiguration = {
 				'styles': {
 					'font-size': '1.25em'
 				},
-				'characters': generateSpecialChars( [ "\u061b",
+				'characters': ["\u061b",
 					"\u061f", "\u0621", "\u0622", "\u0623",
 					"\u0624", "\u0625", "\u0626", "\u0627",
 					"\u0628", "\u0629", "\u062a", "\u062b",
@@ -616,7 +587,7 @@ var editToolbarConfiguration = {
 					"\u0642", "\u0643", "\u0644", "\u0645",
 					"\u0646", "\u0647", "\u0648", "\u0649",
 					"\u064a", "\u060c", "\u067e", "\u0686",
-					"\u0698", "\u06af", "\u06ad" ] )
+					"\u0698", "\u06af", "\u06ad"]
 			},
 			'hebrew': {
 				'labelMsg': 'edittoolbar-characters-page-hebrew',
@@ -624,7 +595,7 @@ var editToolbarConfiguration = {
 				'attributes': {
 					'class': 'rtl'
 				},
-				'characters': generateSpecialChars( [ "\u05d0",
+				'characters': ["\u05d0",
 					"\u05d1", "\u05d2", "\u05d3", "\u05d4",
 					"\u05d5", "\u05d6", "\u05d7", "\u05d8",
 					"\u05d9", "\u05db", "\u05da", "\u05dc",
@@ -632,7 +603,7 @@ var editToolbarConfiguration = {
 					"\u05e1", "\u05e2", "\u05e4", "\u05e3",
 					"\u05e6", "\u05e5", "\u05e7", "\u05e8",
 					"\u05e9", "\u05ea", "\u05f3", "\u05f4",
-					"\u05f0", "\u05f1", "\u05f2" ] )
+					"\u05f0", "\u05f1", "\u05f2"]
 			}
 		}
 	},
