@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `wah_jobset` (
   `set_encodekey` varchar(40) default NULL,
   `set_creation_time` int(14) NOT NULL,
   `set_done_time` int(14) default NULL,
+  `set_failed` tinyint(1) default NULL,
   `set_client_count` int(5) NOT NULL default '0',
   PRIMARY KEY  (`set_id`),
   KEY `set_namespace` (`set_namespace`,`set_title`),
