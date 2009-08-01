@@ -10,7 +10,7 @@
 
 // Path to images (THIS WILL HAVE TO CHANGE IF YOU MOVE THIS INTO CORE)
 var imgPath = wgScriptPath +
-	'/extensions/UsabilityInitiative/images/WikiEditor/toolbar/';
+	'/extensions/UsabilityInitiative/images/wikiEditor/toolbar/';
 
 /* Initialization */
 
