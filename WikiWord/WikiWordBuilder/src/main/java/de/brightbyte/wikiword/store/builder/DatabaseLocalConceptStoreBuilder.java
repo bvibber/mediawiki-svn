@@ -170,6 +170,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				String db = database.getConnection().getMetaData().getURL().replaceAll("\\?.*$", "").replaceAll("[.:/\\@&;=!]+", "_");
 				File f = new File(dir+"/wikiword."+db+"."+pfx+".ids");
 				
+				log("storing ID mappings in "+f);
 				int bsz = tweaks.getTweak("dbstore.idManager.bufferSize", 16*1024);
 				
 				Map<String, Integer> map = NameMaps.newMap();
@@ -250,7 +251,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		deleteDataFrom(rcId, op, broaderTable, "resource");
 		
 		deleteDataFrom(rcId, op, aboutTable, "resource");
-		deleteOrphansFrom(rcId, op, conceptTable, aboutTable, "resource");
+		deleteOrphansFrom(rcId, op, conceptTable, aboutTable, "concept");
 		
 		deleteDataFrom(rcId, op, aliasTable, "resource");
 		deleteDataFrom(rcId, op, sectionTable, "resource");
@@ -342,18 +343,21 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			name = checkName(rcId, name, "concept name (resource #{0})", rcId);
 			
 			int id = -1;
+			if (rcId>=0) id = storeAbout(rcId, name, id, name); 
 			
-			if (idManager!=null) {
+			if (id<=0 && idManager!=null) {
 				id = idManager.aquireId(name);
-				conceptInserter.updateInt("id", id);
 			}
-			
+
 			if (id>0 && conceptDedupe!=null) {
 				if (!conceptDedupe.add(id)) {
 					warning(rcId, "duplicate concept", "id= "+id+", name= "+name+", rc= "+rcId+", type="+ctype, null);
-					if (rcId>=0) storeAbout(rcId, name, id, name); //XXX: really here? do prior to calling this method?!
 					return id;
 				}
+			}
+			
+			if (id>0) {
+				conceptInserter.updateInt("id", id);
 			}
 			
 			conceptInserter.updateDouble("random", random.nextDouble());
@@ -361,11 +365,9 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			conceptInserter.updateInt("type", ctype.getCode());
 			conceptInserter.updateRow();
 
-			if (idManager==null) {
+			if (idManager==null && id<=0) {
 				id = conceptInserter.getLastId();
 			}
-			
-			if (rcId>=0) storeAbout(rcId, name, id, name); //XXX: really here? do prior to calling this method?!
 			
 			return id;
 		} catch (SQLException e) {
@@ -510,11 +512,11 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			aboutInserter.updateString("resource_name", rcName);
 			aboutInserter.updateString("concept_name", conceptName);
 			
-			if (concept>0) aboutInserter.updateInt("concept", concept);
-			else if (idManager!=null) {
+			if (concept <=0 && idManager!=null) {
 				concept = idManager.aquireId(conceptName);
-				aboutInserter.updateInt("concept", concept);
 			}
+
+			if (concept>0) aboutInserter.updateInt("concept", concept);
 			
 			aboutInserter.updateRow();
 			return concept;
