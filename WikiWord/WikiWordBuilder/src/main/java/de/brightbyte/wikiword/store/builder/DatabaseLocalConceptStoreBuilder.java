@@ -250,7 +250,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		deleteDataFrom(rcId, op, langlinkTable, "resource");
 		deleteDataFrom(rcId, op, broaderTable, "resource");
 		
-		deleteDataFrom(rcId, op, conceptTable, "id", aboutTable, "concept", "resource", true);
+		deleteDataFrom(rcId, op, aboutTable, "resource");
+		deleteOrphansFrom(rcId, op, conceptTable, aboutTable, "concept");
 		
 		deleteDataFrom(rcId, op, aliasTable, "resource");
 		deleteDataFrom(rcId, op, sectionTable, "resource");

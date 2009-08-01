@@ -289,12 +289,20 @@ public class DatabaseWikiWordStoreBuilder
 		
 		ReferenceField f = (ReferenceField)ref.getField(refField);
 		String field = f.getTargetField();
-		
+
+		/*
 		sql = "DELETE FROM " + table.getSQLName() + " ";
 		sql += " WHERE NOT EXISTS ( ";
 		sql += "   SELECT * FROM " + ref.getSQLName() + " AS R ";
 		sql += "       WHERE R." + refField + " = "+ table.getSQLName() + "." + field;
 		sql += " )";
+		*/
+		
+		sql = "DELETE FROM E ";
+		sql += " USING " + table.getSQLName() + " AS E ";
+		sql += " LEFT JOIN " + ref.getSQLName() + " AS R ";
+		sql += "       ON R." + refField + " = E." + field;
+		sql += " WHERE R." + refField + " IS NULL;";
 		
 		long t = System.currentTimeMillis();
 		int c = executeUpdate("deleteDataFrom", sql);
