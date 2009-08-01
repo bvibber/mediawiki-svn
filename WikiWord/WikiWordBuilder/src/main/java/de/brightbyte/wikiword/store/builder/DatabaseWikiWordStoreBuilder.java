@@ -259,18 +259,20 @@ public class DatabaseWikiWordStoreBuilder
 	*/
 
 	protected void deleteDataFrom(int rcId, String op, DatabaseTable rel, String field) throws PersistenceException {
-		deleteDataFrom(rcId, op, rel, field, null, null, null);
+		deleteDataFrom(rcId, op, rel, field, null, null, null, false);
 	}
 	
-	protected void deleteDataFrom(int rcId, String op, DatabaseTable rel, String field, DatabaseTable via, String viaJoinField, String viaField) throws PersistenceException {
+	protected void deleteDataFrom(int rcId, String op, DatabaseTable rel, String field, DatabaseTable via, String viaJoinField, String viaField, boolean deleteVia) throws PersistenceException {
 		String sql;
 		
 		if (via!=null) {
-			sql = "DELETE FROM T";
-			sql += " USING "+rel.getSQLName()+" AS T ";
+			sql = "DELETE ";
+			if (deleteVia) sql += " T, C FROM "; 
+			else sql += " FROM T USING ";
+			sql += rel.getSQLName()+" AS T ";
 			sql += " LEFT JOIN "+via.getSQLName()+" AS C";
 			sql += " ON T."+field+" = C."+viaJoinField+" ";
-			sql += " WHERE "+viaField+" "+op+" "+rcId;
+			sql += " WHERE C."+viaField+" "+op+" "+rcId;
 		}
 		else {
 			sql = "DELETE FROM "+rel.getSQLName();
