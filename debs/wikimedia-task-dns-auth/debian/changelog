@@ -1,3 +1,9 @@
+wikimedia-task-dns-auth (0.10) hardy; urgency=low
+
+  * Add <language>.m.wikipedia.org entries
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 01 Aug 2009 19:55:11 +0000
+
 wikimedia-task-dns-auth (0.09) hardy; urgency=low
 
   * change toolserver server names

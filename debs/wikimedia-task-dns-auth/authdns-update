@@ -54,7 +54,7 @@ fi
 echo "Syncing langlist"
 rsync -t $LANGLISTSOURCE $LANGLIST || true
 echo "Generating language subdomains CNAME file from $LANGLIST"
-[ $LANGLIST -nt $POWERDNSDIR/langlist-cnames ] && < $LANGLIST awk '{ print $1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print"www."$1"\t\t\t1H\tIN CNAME\trr.wikimedia.org." }' > $POWERDNSDIR/langlist-cnames
+[ $LANGLIST -nt $POWERDNSDIR/langlist-cnames ] && < $LANGLIST awk '{ print $1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print"www."$1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print $1".m\t\t\t1H\tIN CNAME\tmobile1.wikimedia.org." }' > $POWERDNSDIR/langlist-cnames
 
 echo "Syncing all.dblist"
 rsync -t $DBLISTSOURCE $DBLIST || true
