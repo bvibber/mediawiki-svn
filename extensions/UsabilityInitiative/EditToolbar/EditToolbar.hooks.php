@@ -46,9 +46,6 @@ class EditToolbarHooks {
 		UsabilityInitiativeHooks::addScript(
 			'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
 		);
-		UsabilityInitiativeHooks::addStyle(
-			'EditToolbar/EditToolbar.css', $wgEditToolbarStyleVersion
-		);
 		// Internationalization
 		wfLoadExtensionMessages( 'EditToolbar' );
 		// Adds messages to page
