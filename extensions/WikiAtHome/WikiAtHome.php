@@ -74,11 +74,11 @@ class WikiAtHome {
  * gets the json metadata from a given file (also validates it as a valid file)
  */
 function wahGetMediaJsonMeta( $path ){
-	global $wgffmpeg2theora;	
-	
+	global $wgffmpeg2theora;
+
 	$cmd = wfEscapeShellArg( $wgffmpeg2theora ) . ' ' . wfEscapeShellArg ( $path ). ' --info';
-	wfProfileIn( 'ffmpeg2theora' );	
-	$json_meta_str = wfShellExec( $cmd );	
+	wfProfileIn( 'ffmpeg2theora' );
+	$json_meta_str = wfShellExec( $cmd );
 	wfProfileOut( 'ffmpeg2theora' );
 	$objMeta = json_decode( $json_meta_str );
 	//if we return the same string then json_decode has failed in php < 5.2.6
@@ -87,13 +87,34 @@ function wahGetMediaJsonMeta( $path ){
 		return false;
 	return $objMeta;
 }
+
+/*
+ * runs concatenation checks if we get a non zero length output
+ */
+function wahDoOggCat( $destFile, $oggList ){
+	global $wgOggCat;
+
+	$cmd = wfEscapeShellArg( $wgOggCat ). ' ' . wfEscapeShellArg( $destFile );
+	foreach($oggList as $oggFile){
+		$cmd.= ' ' . wfEscapeShellArg( $oggFile );
+	}
+	$cmd .= ' 2>&1';
+	wfProfileIn( 'oggCat' );
+	wfShellExec( $cmd, $retval );
+	wfProfileOut( 'oggCat' );
+	if( $retval ){
+		return false;
+	}
+	return true;
+}
+
 /******************* CONFIGURATION STARTS HERE **********************/
 
 //ffmpeg2theora path: enables us to get basic source file information
 $wgffmpeg2theora = '/usr/bin/ffmpeg2theora';
 
 //the oggCat path enables server side concatenation of encoded "chunks"
-$wgOggCat =  '/usr/bin/oggCat';
+$wgOggCat =  '/usr/local/bin/oggCat';
 
 //with oggCat installed then we can do encoding jobs in "chunks"
 //and assemble on the server: (this way no single slow client slows down
@@ -103,7 +124,7 @@ $wgOggCat =  '/usr/bin/oggCat';
 $wgChunkDuration = '30';
 
 //time interval in seconds between clients asking the server for jobs.
-$wgClientSearchInterval = 90;
+$wgClientSearchInterval = 60;
 
 //how long before considering a job ready to be assigned to others
 //note first "in" wins & if once time is up we decrement set_c

@@ -2,33 +2,55 @@
 class WahJobManager {
 	//encoding profiles (settings set in config)
 
-	function __construct(){		
+	function __construct(){
 	}
-	
-	function newFromFile(&$file, $encodeKey){
+
+	public static function newFromFile(&$file, $encodeKey){
 		$wjm = new WahJobManager();
 		$wjm->file = $file;
+
 		$wjm->sEncodeKey = $encodeKey;
 		$wjm->sNamespace = $wjm->file->title->getNamespace();
 		$wjm->sTitle 	 = $wjm->file->title->getDBkey();
+
 		return $wjm;
 	}
-	function newFromSet( $jobSet ){
+	public static function newFromSet( $jobSet ){
 		$wjm = new WahJobManager();
-		$this->sNamespace 	= $jobSet->set_namespace;
-		$this->sTitle 		= $jobSet->set_title;
-		$this->sEncodeKey 	= $jobSet->set_encodekey;
+		$wjm->sNamespace 	= $jobSet->set_namespace;
+		$wjm->sTitle 		= $jobSet->set_title;
+		$wjm->sEncodeKey 	= $jobSet->set_encodekey;
 		return $wjm;
 	}
 
-	/*
-	 * get the percentage done (return 1 if done)
-	 */
-	function getDonePerc(){
-		$fname = 'WahJobManager::getDonePerc';
-		//grab the jobset
+	function getEncodeKey(){
+		if(isset($this->sEncodeKey))
+			return $this->sEncodeKey;
+		return false;
+	}
+	function getTitle(){
+		if(isset($this->sTitle))
+			return $this->sTitle;
+		return false;
+	}
+	function getNamespace(){
+		if( isset( $this->sNamespace ) )
+			return $this->sNamespace;
+		return false;
+	}
+	function getSetId(){
+		if( isset(  $this->sId ) )
+			return $this->sId;
+		$this->getSet();
+		$this->sId = $this->mSetRow->sId;
+		return $this->sId;
+	}
+	function getSet(){
+		if( isset( $this->mSetRow ) )
+			return $this->mSetRow;
 		$dbr = &wfGetDb( DB_READ );
-		$setRow = $dbr->selectRow('wah_jobset',
+		//grab the jobset
+		$this->mSetRow = $dbr->selectRow('wah_jobset',
 			'*',
 			array(
 				'set_namespace' => $this->sNamespace,
@@ -37,15 +59,28 @@ class WahJobManager {
 			),
 			__METHOD__
 		);
+		return $this->mSetRow;
+	}
+	/*
+	 * get the percentage done (return 1 if done)
+	 */
+	function getDonePerc(){
+		$setRow = $this->getSet();
 		if( !$setRow ){
 			//we should setup the job:
 			$this->doJobSetup();
 			//return 0 percent done
 			return 0;
 		}else{
+			$dbr = &wfGetDb( DB_READ );
 			//quick check if we are done at the set level:
-			if( $setRow->set_done_time )
-				return 1;
+			if( $setRow->set_done_time ){
+				if( $this->doSetFileCheck() ){
+					return 1;
+				}else{
+					return -1;
+				}
+			}
 
 			//else check how done are we:
 			$this->sId = $setRow->set_id;
@@ -70,6 +105,13 @@ class WahJobManager {
 			//(we also set this at a higher level and avoid hitting the wah_jobqueue table alltogehter)
 			return round( $doneCount / $this->sJobsCount , 2);
 		}
+	}
+	function doSetFileCheck( ){
+		//get the title:
+		$fTitle = Title::newFromText( $this->getTitle(), $this->getNamespace() );
+		$file = RepoGroup::singleton()->getLocalRepo()->newFile( $fTitle );
+		$thumbPath = $file->getThumbPath( $this->getEncodeKey() );
+		return is_file ( $thumbPath . '.ogg' );
 	}
 	/*
 	 * returns a new job
@@ -137,7 +179,7 @@ class WahJobManager {
 							 $dbr->addQuotes( time() - $wgJobTimeOut )
 					),
 					__METHOD__
-			);			
+			);
 			if( !$job ){
 				//no jobs in this jobset (return nojob)
 				//@@todo we could "retry" since we will get here when a set has everything assigned in less than $wgJobTimeOut
@@ -187,7 +229,7 @@ class WahJobManager {
 			if( $jobSet && is_null( $job->job_last_assigned_user_id ) ){
 				$dbw->update('wah_jobset',
 					array(
-						'set_client_count' => $jobSet->set_client_count ++
+						'set_client_count = set_client_count+1'
 					),
 					array(
 						'set_id'	=>	$job->job_set_id
@@ -252,16 +294,16 @@ class WahJobManager {
 			$encSettingsAry['endtime']	 = $encSettingsAry['starttime'] + $wgChunkDuration;
 
 			$jobJsonAry = array(
-				'jobType'		=> 'transcode',				
-				'encodeSettings'=> $encSettingsAry
+				'jobType'			=> 'transcode',
+				'encodeSettings'	=> $encSettingsAry
 			);
 
 			//add starttime and endtime
 			$jobInsertArray[] =
 				array(
-					'job_set_id' => $this->sId,
+					'job_set_id' 	=> $this->sId,
 					'job_order_id'	=> $i,
-					'job_json'	 => ApiFormatJson::getJsonEncode( $jobJsonAry )
+					'job_json'	 	=> ApiFormatJson::getJsonEncode( $jobJsonAry )
 				);
 		}
 		//now insert the jobInsertArray

@@ -180,6 +180,7 @@ var WikiAtHome = {
 			'getnewjob'	: true,
 			'token'		: _this.eToken
 		};		
+		//add a set_id to work on the file we have already downloaded
 		if( job_set_id ){
 			reqObj['jobset'] = job_set_id;
 		}
@@ -278,7 +279,7 @@ var WikiAtHome = {
 			
 			//our encode state update
 			var updateEncodeState = function(){				
-				_this.updateProgress( _this.fogg.progress(), 'wah-encoding');		
+				_this.updateProgress( _this.fogg.progress(), 'wah-encoding' );		
 				if( _this.fogg.state == 'encoding done' ){
 					js_log('encoding done , do upload');
 					_this.fogg.post( mwGetLocalApiUrl(), 
@@ -286,7 +287,8 @@ var WikiAtHome = {
 						JSON.stringify({
 							'action' 	: 'wikiathome',
 							'token'		: _this.eToken,
-							'jobkey'	: _this.jobKey 
+							'jobkey'	: _this.jobKey, 
+							'format'	: 'json'
 						})
 					);
 					//do upload req
@@ -320,7 +322,7 @@ var WikiAtHome = {
 					try{
 						resultObj = JSON.parse( response_text );
 					}catch(e){
-						js_log("could not parse result of upload ");
+						js_log("could not parse result of upload :: " +response_text);
 					}				
 					
 					
@@ -328,6 +330,9 @@ var WikiAtHome = {
 					$j('#tab-jobs .prograss-status').html(
 						gM( 'wah-doneuploading' )
 					);
+					//reset the progress bar:
+					$j('#tab-jobs .progress-bar').progressbar( 'value', 0 );
+					
 					var getNextTranscodeJob = function(){						
 						_this.lookForJob( job.job_set_id );
 					}

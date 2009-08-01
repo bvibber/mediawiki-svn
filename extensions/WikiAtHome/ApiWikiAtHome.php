@@ -22,8 +22,8 @@ class ApiWikiAtHome extends ApiBase {
 		global $wgUser, $wgRequest;
 		$this->getMain()->isWriteMode();
 		$this->mParams = $this->extractRequestParams();
-		$request = $this->getMain()->getRequest();				
-		
+		$request = $this->getMain()->getRequest();
+
 		// do token checks:
 		if( is_null( $this->mParams['token'] ) )
 			$this->dieUsageMsg( array( 'missingparam', 'token' ) );
@@ -33,16 +33,18 @@ class ApiWikiAtHome extends ApiBase {
 		//do actions:
 		if( $this->mParams['getnewjob'] ){
 			//do job req:
-			return $this->proccessJobReq();			
+			return $this->proccessJobReq();
+
 		}else if ( $this->mParams['jobkey'] ){
-			return $this->doProccessJobKey ( $this->mParams['jobkey'] ) ;					
+			//process a completed job:
+			return $this->doProccessJobKey ( $this->mParams['jobkey'] ) ;
 		}
 	}
 	/*
 	 * Process a newJob req:
 	 */
-	function proccessJobReq(){		
-		
+	function proccessJobReq(){
+
 		if( isset( $this->mParams['jobset']) && $this->mParams['jobset']){
 			$job = WahJobManager::getNewJob( $this->mParams['jobset'] );
 		}else{
@@ -72,8 +74,8 @@ class ApiWikiAtHome extends ApiBase {
 			//@@todo avoid an api round trip return url here:
 			//$job4Client['job_url'] = $file->getFullURL();
 
-			$this->getResult()->addValue( 
-				null, 
+			$this->getResult()->addValue(
+				null,
 				$this->getModuleName(),
 				array(
 					'job' => $job4Client
@@ -82,7 +84,7 @@ class ApiWikiAtHome extends ApiBase {
 		}
 	}
 	/*
-	 * proccess the job key: 
+	 * process the submited job:
 	 */
 	function doProccessJobKey( $job_key ){
 		global $wgRequest, $wgUser;
@@ -91,12 +93,12 @@ class ApiWikiAtHome extends ApiBase {
 
 		//get the job object
 		$job = WahJobManager::getJobById( $job_id );
-		
+
 		if( !$job || sha1($job->job_json) != $json_sha1){
-			//die on bad job key				
-			return $this->dieUsageMsg( array( 'code' => 'badjobkey', 'info'=>'Bad Job key' ) );				
-		}							
-		
+			//die on bad job key
+			return $this->dieUsage('Bad Job key', 'badjobkey') ;
+		}
+
 		$jobSet =  WahJobManager::getJobSetById( $job->job_set_id );
 		//check if its a valid video ogg file (ffmpeg2theora --info)
 		$uploadedJobFile = $wgRequest->getFileTempname('file');
@@ -104,15 +106,15 @@ class ApiWikiAtHome extends ApiBase {
 
 		if( !$mediaMeta ){
 			//failed basic ffmpeg2theora video validation
-			return $this->dieUsageMsg( array( 'code'=>'badfile', 'info'=>"Not a valid Video file") );
+			return $this->dieUsage("Not a valid Video file", 'badfile');
 		}
-					
+
 		//gab the ogg types from OggHandler.php
 		global $wgOggVideoTypes, $wgOggAudioTypes;
 		//check for theora and vorbis streams in the metadata output of the file:
 		if( isset($wgOggVideoTypes) && isset($wgOggAudioTypes) ){
 			$isOgg = false;
-			
+
 			foreach ( $mediaMeta->video as $videoStream ) {
 				if(in_array( ucfirst( $videoStream->codec ),  $wgOggVideoTypes))
 					$isOgg =true;
@@ -122,30 +124,46 @@ class ApiWikiAtHome extends ApiBase {
 					$isOgg = true;
 			}
 			if(!$isOgg){
-				return $this->dieUsageMsg( array('code'=>'badfile', 'info'=>'Not a valid Ogg file') );
+				return $this->dieUsage( 'Not a valid Ogg file', 'badfile' );
 			}
 		}
-		
+
 		//all good so far put it into the derivative temp folder by with each piece as it job_id name
 		//@@todo need to rework this a bit for flattening "sequences"
 		$fTitle = Title::newFromText( $jobSet->set_title, $jobSet->set_namespace );
 		$file = RepoGroup::singleton()->getLocalRepo()->newFile( $fTitle );
 		$thumbPath = $file->getThumbPath( $jobSet->set_encodekey );
 
-		$destTarget = $thumbPath . '/'. $job->job_order_id . '.ogg';
-		if( is_file($destTarget) ){
-			//someone else beat this user to finish the job (with a $wgJobTimeOut handicap )
-			return $this->dieUsageMsg( array( 'code'=>'alreadydone', 'info'=>'The job has already been completed') );
+		$destTarget = $thumbPath .'/'. $job->job_order_id . '.ogg';
+		if( is_file( $destTarget ) ){
+			//someone else beat this user to finish the job? or out-of-sync file system?
+			//kind of tricky to tie the old file to a particular user so lets just:
+			unlink($destTarget);
+			//compare the oshashes? take the later file if they don't match
+			/*$metaDest = wahGetMediaJsonMeta( $destTarget );
+			if( $mediaMeta->oshash == $metaDest->oshash ){
+
+				return $this->dieUsage( 'The target upload file already exists', 'alreadydone' );
+			}else{
+				//old exipred file? or someone order a job to override? remove old chunk and continue proccessing:
+				unlink($destTarget);
+			}*/
 		}
 		//move the current chunk to that path:
-		$status = RepoGroup::singleton()->getLocalRepo()->store(
+		//@@todo use Repo methods (this is failing atm)
+		/*$status = RepoGroup::singleton()->getLocalRepo()->store(
 			$uploadedJobFile,
 			'thumb',
 			$destTarget
-		);						
+		);
 		if( !$status->isGood() ){
 			return $this->dieUsageMsg( array('code'=>'fileerror', 'info'=>'Could Not Move The Uploaded File') );
+		}*/
+		wfMkdirParents( $thumbPath );
+		if( !move_uploaded_file($uploadedJobFile, $destTarget) ){
+			return $this->dieUsage( 'Could Not Move The Uploaded File', 'fileerror' );
 		}
+
 		$dbw = &wfGetDb( DB_READ );
 		//update the jobqueue table with job done time & user
 		$dbw->update('wah_jobqueue',
@@ -160,10 +178,10 @@ class ApiWikiAtHome extends ApiBase {
 			array(
 				'LIMIT' => 1
 			)
-		);		
+		);
 
 		// reduce job_client_count by 1 now that this client is "done"
-		$dbw->update('wah_jobset', 
+		$dbw->update('wah_jobset',
 			array(
 				'set_client_count = set_client_count -1'
 			),
@@ -174,25 +192,25 @@ class ApiWikiAtHome extends ApiBase {
 			array(
 				'LIMIT' => 1
 			)
-		);			
-		//check if its the "last" job shell out a join command
-		$wjm = WahJobManager::newFromSet( $jobSet );	
+		);
+		//check if its the "last" job shell out a Join command
+		$wjm = WahJobManager::newFromSet( $jobSet );
 		$percDone = $wjm->getDonePerc();
 		if($percDone != 1){
-			//the stream is not done but success
+			//the stream is not done but success on chunk
 			return $this->getResult()->addValue( null, $this->getModuleName(),
 					array(
 						'chunkaccepted' => true,
 						'setdone'		=> false
 					)
-				);			
-		}else if( $percDone == 1){		
-			//all the files are "done" according to the DB:	
-			//make sure all the files exist in the 
-			$fileList = '';
+				);
+		}else if( $percDone == 1){
+			//all the files are "done" according to the DB:
+			//make sure all the files exist in the
+			$fileList = array();
 			for( $i=0; $i < $jobSet->set_jobs_count ; $i++ ){
-				//make sure all the files are present: 
-				if(!is_file($thumbPath . $i . '.ogg' )){
+				//make sure all the files are present:
+				if(!is_file( "$thumbPath/{$i}.ogg" )){
 					wfDebug('Missing wikiAtHome chunk $i');
 					//unset the job complete state
 					$dbw->update( 'wah_jobqueue',
@@ -207,37 +225,87 @@ class ApiWikiAtHome extends ApiBase {
 						__METHOD__,
 						array(
 							'LIMIT' => 1
-						)									
-					); 
+						)
+					);
+					//make sure jobset is not tagged done either:
+					$dbw->update( 'wah_jobset',
+						array(
+							'set_done_time = NULL'
+						),
+						array(
+							'set_id' 		=> $jobSet->set_id,
+						),
+						__METHOD__,
+						array(
+							'LIMIT' => 1
+						)
+					);
 					//return missing files (maybe something is ~broken~)
-					return $this->dieUsageMsg( array(
-						'code'=>'missingfile', 
-						'info'=>"WikiAtHome database out of sync with file system missing file $i"
-						) 
-					);						
+					wfDebug("WikiAtHome database out of sync with file system?\nFile: $thumbPath/{$i}.ogg missing, re-adding job");
+					return $this->getResult()->addValue( null, $this->getModuleName(),
+						array(
+							'chunkaccepted' => true,
+							'setdone'		=> false
+						)
+					);
 				}
-				$fileList+= " {$thumbPath}/{$i}.ogg";
+				//else add it to the combine list:
+				$fileList[] = "{$thumbPath}/{$i}.ogg";
 			}
-			//do merge request (not sure if we need to shell out for this or if we can do it in place)
-			//should be disk speed limited:
+
+			//do merge request
+			//@@todo do this in a background shell task
+			//( if the files are very large video could take longer than 30 seconds to concatenate )
 			global $wgOggCat;
 			$finalDestTarget = "{$thumbPath}.ogg";
-			$cmd = wfEscapeShellArg( $wgOggCat ) . ' ' .$finalDestTarget . ' ' . wfEscapeShellArg ( $fileList );
-			wfProfileIn( 'oggCat' );	
-			wfShellExec( $cmd );	
-			wfProfileOut( 'oggCat' );	
+			wahDoOggCat( $finalDestTarget, $fileList);
 
-			//the stream done but success
-			return $this->getResult()->addValue( null, $this->getModuleName(),
-				array(
-					'chunkaccepted' => true,
-					'setdone'		=> true,
-				)
-			);		
-	}		
+			//if the file got created tag the jobset as done:
+			if( is_file( $finalDestTarget )){
+				$dbw->update('wah_jobset',
+					array(
+						'set_done_time' => time()
+					),
+					array(
+						'set_id' => $jobSet->set_id
+					),
+					__METHOD__,
+					array(
+						'LIMIT' => 1
+					)
+				);
+				//send out stream done
+				return $this->getResult()->addValue( null, $this->getModuleName(),
+					array(
+						'chunkaccepted' => true,
+						'setdone'		=> true
+					)
+				);
+			}else{
+				wfDebug( "Concatenation Failed. Tag job as failed?");
+				//tag the job as failed ( also put in the fail time )
+				$dbw->update('wah_jobset',
+					array(
+						'set_done_time' => time(),
+						'set_failed' => 1
+					),
+					array(
+						'set_id' => $jobSet->set_id
+					),
+					__METHOD__,
+					array(
+						'LIMIT' => 1
+					)
+				);
+				//send join failed
+				return $this->dieUsage("Concatenation Failed", 'catfail');
+
+
+			}
+	}
 
 		//return success
-		
+
 	}
 	public function getAllowedParams() {
 		return array(

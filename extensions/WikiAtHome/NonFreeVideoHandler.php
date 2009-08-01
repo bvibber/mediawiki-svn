@@ -123,20 +123,24 @@ class NonFreeVideoHandler extends MediaHandler {
 			return false;
 		}
 	}
-
+	/*
+	 * sucks we have to maintain two version of Ogg doTransform but it proved difficult to integrate them.
+	 * in the future we should have a concept of "derivatives" and greatly simplify the media handlers.
+	 */
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
-		global $wgEnabledDerivatives;
+		global $wgEnabledDerivatives, $wgFFmpegLocation, $wgOut;
 
 		$width = $params['width'];
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
 		$height = $srcWidth == 0 ? $srcHeight : $width * $srcHeight / $srcWidth;
-		//set the width based on the requested width:
+		$length = $this->getLength( $file );
 
-		/*print_r($file);
-		print_r($params);
-		print " dpath: $dstPath, durl: $dstUrl <br>";
-		die();*/
+		//make sure we have all the output classes of oggHandler loaded by the autoLoader:
+		$oggHandle =  MediaHandler::getHandler( 'application/ogg' );
+
+		//add the oggHandler js:
+		$oggHandle->setHeaders( $wgOut );
 
 		//do some arbitrary derivative selection logic:
 		$encodeKey = $this->getTargetDerivative($width, $srcWidth);
@@ -144,12 +148,52 @@ class NonFreeVideoHandler extends MediaHandler {
 
 		//get the job manager .. check status and output current state or defer to oggHanndler_body for output
 		$wjm = WahJobManager::newFromFile( $file , $encodeKey );
-		$percDone = $wjm->getDonePerc();
-		if( $percDone == 1 ){
-			//we should use oggHandler to output ogg
+
+		//check for the derivative file:
+		//$fTitle = Title::newFromText( $wjm->getTitle(), $wjm->getNamespace() );
+		//$oggFile = wfLocalFile( $fTitle );
+		$thumbPath 	 = $file->getThumbPath( $wjm->getEncodeKey() );
+		$oggThumbUrl = $file->getThumbUrl( $wjm->getEncodeKey() . '.ogg');
+
+		//check that we have the requested theora derivative
+		if( is_file ( "{$thumbPath}.ogg" )){
+			//get the thumb time:
+			$thumbTime = false;
+			if ( isset( $params['thumbtime'] ) ) {
+				$thumbTime = $this->parseTimeString( $params['thumbtime'], $length );
+			}
+			if ( $thumbTime === false ) {
+				# Seek to midpoint by default, it tends to be more interesting than the start
+				$thumbTime = $length / 2;
+			}
+			wfMkdirParents( dirname( $dstPath ) );
+			if(!is_file($dstPath)){
+				$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
+				' -ss ' . intval( $thumbTime ) . ' ' .
+				' -i ' . wfEscapeShellArg( $file->getPath() ) .
+				# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
+				# No audio, one frame
+				' -f mjpeg -an -vframes 1 ' .
+				wfEscapeShellArg( $dstPath ) . ' 2>&1';
+
+				$retval = 0;
+				$returnText = wfShellExec( $cmd, $retval );
+				//if Bad file return error:
+				if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
+					$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
+					return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
+				}
+			}
+
+			return new OggTransformOutput( $file, $oggThumbUrl, $dstUrl, $width, $height, $length, $dstPath, $noIcon=false, $offset=0, 0);
+			//output using oggHandler:
+			//
+			//$oggHandle =  MediaHandler::getHandler( 'application/ogg' );
+			//return $oggHandle->doTransform( $file, "{$thumbPath}.ogg", $oggFile->getUrl(), $params);
+
 		}else{
 			//output our current progress
-			return new MediaQueueTransformOutput($file, $width, $height, $percDone );
+			return new MediaQueueTransformOutput($file, $width, $height, $wjm->getDonePerc() );
 		}
 	}
 
@@ -280,7 +324,6 @@ class NonFreeVideoHandler extends MediaHandler {
 		}
 	}
 }
-
 class MediaQueueTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
 
@@ -294,10 +337,14 @@ class MediaQueueTransformOutput extends MediaTransformOutput {
 
 	function toHtml( $options = array() ) {
 		wfLoadExtensionMessages( 'WikiAtHome' );
-		$waitHtml = time() . wfMsgWikiHtml( 'wah-transcode-working', $this->percDone ) . "<br>" .
-		 wfMsgWikiHtml('wah-transcode-helpout');
+		if( $this->percDone == -1){
+			$waitHtml =  wfMsgWikiHtml( 'wah-transcode-fail');
+		}else{
+			$waitHtml = time() . wfMsgWikiHtml( 'wah-transcode-working', $this->percDone ) . "<br>" .
+		 		wfMsgWikiHtml('wah-transcode-helpout');
+		}
 
-		//@@this is just a placeholder we should desing a waiting for transcode thing
+		//@@this is just a placeholder
 		if( $this->height !=0 && $this->width != 0 ){
 			return Xml::tags( 'div',
 				array(

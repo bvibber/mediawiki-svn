@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'specialwikiathome'	=> 'Wiki@Home',
-	'wah-desc'		=> 'Enables distributing transcoding video jobs to clients using firefogg.',
+	'wah-desc'			=> 'Enables distributing transcoding video jobs to clients using firefogg.',
 	'wah-user-desc'		=> 'Wiki@Home enables community members to donate spare cpu cycles to help with resource intensive operations',
 	'wah-short-audio'	=> '$1 sound file, $2',
 	'wah-short-video'	=> '$1 video file, $2',
@@ -28,9 +28,12 @@ $messages['en'] = array(
 	'wah-transcode-working' => 'This video is being transcoded its $1% done',
 	'wah-transcode-helpout' => 'You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
 
+	'wah-transcode-fail'	=> 'This File failed to transcode.',
+
 	'wah-javascript-off'	=> 'You must have JavaScript enabled to participate in Wiki@Home',
-	'wah-loading'		=> 'loading Wiki@Home interface <blink>...</blink>'
+	'wah-loading'			=> 'loading Wiki@Home interface <blink>...</blink>'
 );
+
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
