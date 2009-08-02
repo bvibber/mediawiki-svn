@@ -50,7 +50,7 @@ class CodeStatusChangeTablePager extends TablePager {
 		return array(
 			'tables' => array( 'code_prop_changes', 'code_rev' ),
 			'fields' => array_keys( $this->getFieldNames() ),
-			'conds' => array( 'cpc_repo_id' => $this->mRepo->getId() ),
+			'conds' => array( 'cpc_repo_id' => $this->mRepo->getId(), 'cpc_attrib' => 'status' ),
 			'join_conds' => array(
 				'code_rev' => array( 'LEFT JOIN', 'cpc_repo_id = cr_repo_id AND cpc_rev_id = cr_id' )
 			)
@@ -62,10 +62,9 @@ class CodeStatusChangeTablePager extends TablePager {
 			'cpc_timestamp' => wfMsg( 'code-field-timestamp' ),
 			'cpc_user_text' => wfMsg( 'code-field-user' ),
 			'cpc_rev_id' => wfMsg( 'code-field-id' ),
-			'cpc_removed' => wfMsg( 'code-field-text' ),
+			'cr_status' => wfMsg( 'code-field-status' ),
 			'cpc_removed' => wfMsg( 'code-old-status' ),
 			'cpc_added' => wfMsg( 'code-new-status' ),
-			'cr_status' => wfMsg( 'code-field-status' ),
 		);
 	}
 
