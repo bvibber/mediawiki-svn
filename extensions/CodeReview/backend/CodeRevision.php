@@ -141,6 +141,19 @@ class CodeRevision {
 		}
 		return true;
 	}
+	
+	/**
+	 * Quickie protection against huuuuuuuuge batch inserts
+	 */
+	protected function insertChunks( $db, $table, $data, $method, $options=array() ) {
+		$chunkSize = 100;
+		for( $i = 0; $i < count( $data ); $i += $chunkSize ) {
+			$db->insert( 'code_paths',
+				array_slice( $data, $i, $chunkSize ),
+				__METHOD__,
+				array( 'IGNORE' ) );
+		}
+	}
 
 	public function save() {
 		$dbw = wfGetDB( DB_MASTER );
@@ -183,7 +196,7 @@ class CodeRevision {
 					'cp_path'    => $path['path'],
 					'cp_action'  => $path['action'] );
 			}
-			$dbw->insert( 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
+			$this->insertChunks( $dbw, 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
 		}
 		// Update bug references table...
 		$affectedBugs = array();
@@ -564,6 +577,56 @@ class CodeRevision {
 
 	public function isValidTag( $tag ) {
 		return ( $this->normalizeTag( $tag ) !== false );
+	}
+	
+	public function getTestRuns() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select(
+			array(
+				'code_test_suite',
+				'code_test_run',
+			),
+			'*',
+			array(
+				'ctsuite_repo_id' => $this->mRepoId,
+				'ctsuite_id=ctrun_suite_id',
+				'ctrun_rev_id' => $this->mId,
+			),
+			__METHOD__ );
+		$runs = array();
+		foreach( $result as $row ) {
+			$suite = CodeTestSuite::newFromRow( $this->mRepo, $row );
+			$runs[] = new CodeTestRun( $suite, $row );
+		}
+		return $runs;
+	}
+	
+	public function getTestResults( $success = null ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$conds = array(
+			'ctr_repo_id' => $this->mRepoId,
+			'ctr_rev_id' => $this->mId,
+			'ctr_case_id=ctc_id',
+			'ctc_suite_id=cts_id' );
+		if( $success === true ) {
+			$conds['ctr_result'] = 1;
+		} elseif( $success === false ) {
+			$conds['ctr_result'] = 0;
+		}
+		$results = $dbr->select(
+			array(
+				'code_test_result',
+				'code_test_case',
+				'code_test_suite',
+			),
+			'*',
+			$conds,
+			__METHOD__ );
+		$out = array();
+		foreach( $results as $row ) {
+			$out[] = new CodeTestResult( $row );
+		}
+		return $out;
 	}
 
 	public function getPrevious() {

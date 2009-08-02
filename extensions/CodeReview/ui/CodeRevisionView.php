@@ -35,7 +35,8 @@ class CodeRevisionView extends CodeView {
 			$view->execute();
 			return;
 		}
-		$this->mStatus = $this->mStatus ? $this->mStatus : $this->mRev->getStatus();
+		if( $this->mStatus == '' )
+			$this->mStatus = $this->mRev->getStatus();
 
 		$redirectOnPost = $this->checkPostings();
 		if ( $redirectOnPost ) {
@@ -80,6 +81,12 @@ class CodeRevisionView extends CodeView {
 		}
 
 		$html .= $this->formatMetaData( $fields );
+		# Show test case info
+		$tests = $this->formatTests();
+		if( $tests ) {
+			$html .= "<h2 id='code-tests'>" . wfMsgHtml( 'code-tests' ) .
+				"</h2>\n" . $tests;
+		}
 		# Output diff
 		if ( $this->mRev->isDiffable() ) {
 			$diffHtml = $this->formatDiff();
@@ -247,7 +254,7 @@ class CodeRevisionView extends CodeView {
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
 			return Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
-				self::buildStatusList( $this->mRev->getStatus(), $this ) .
+				self::buildStatusList( $this->mStatus, $this ) .
 				xml::closeElement( 'select' );
 		} else {
 			return htmlspecialchars( $this->statusDesc( $this->mRev->getStatus() ) );
@@ -279,6 +286,42 @@ class CodeRevisionView extends CodeView {
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/tag/$tag" );
 		return $this->mSkin->link( $special, htmlspecialchars( $tag ) );
+	}
+
+	protected function formatTests() {
+		$runs = $this->mRev->getTestRuns();
+		$html = '';
+		if( count( $runs ) ) {
+			foreach( $runs as $run ) {
+				$html .= "<h3>" . htmlspecialchars( $run->suite->name ) . "</h3>\n";
+				if( $run->status == 'complete' ) {
+					$total = $run->countTotal;
+					$success = $run->countSuccess;
+					$failed = $total - $success;
+					if( $failed ) {
+						$html .= "<p><span class='mw-codereview-success'>$success</span> succeeded tests, " .
+							"<span class='mw-codereview-fail'>$failed</span> failed tests:</p>";
+						
+						$tests = $run->getResults( false );
+						$html .= "<ul>\n";
+						foreach( $tests as $test ) {
+							$html .= "<li>" . htmlspecialchars( $test->caseName ) . "</li>\n";
+						}
+						$html .= "</ul>\n";
+					} else {
+						$html .= "<p><span class='mw-codereview-success'>$success</span> succeeded tests.</p>";
+					
+					}
+				} elseif( $run->status == "running" ) {
+					$html .= "<p>Test cases are running...</p>";
+				} elseif( $run->status == "abort" ) {
+					$html .= "<p>Test run aborted.</p>";
+				} else {
+					// Err, this shouldn't happen?
+				}
+			}
+		}
+		return $html;
 	}
 
 	protected function formatDiff() {
@@ -431,14 +474,29 @@ class CodeRevisionView extends CodeView {
 		// Uses messages 'code-change-status', 'code-change-tags'
 		$line .= '&nbsp;' . wfMsgExt( "code-change-{$change->attrib}", 'parseinline', $revId );
 		$line .= " <i>[";
+		// Items that were changed or set...
 		if ( $change->removed ) {
 			$line .= '<b>' . wfMsg( 'code-change-removed' ) . '</b> ';
-			$line .= htmlspecialchars( $change->removed );
-			$line .= $change->added ? "&nbsp;" : "";
+			// Status changes...
+			if( $change->attrib == 'status' ) {
+				$line .= wfMsgHtml( 'code-status-'.$change->removed );
+				$line .= $change->added ? "&nbsp;" : ""; // spacing
+			// Tag changes
+			} else if( $change->attrib == 'tags' ) {
+				$line .= htmlspecialchars( $change->removed );
+				$line .= $change->added ? "&nbsp;" : ""; // spacing
+			}
 		}
+		// Items that were changed to something else...
 		if ( $change->added ) {
 			$line .= '<b>' . wfMsg( 'code-change-added' ) . '</b> ';
-			$line .=  htmlspecialchars( $change->added );
+			// Status changes...
+			if( $change->attrib == 'status' ) {
+				$line .= wfMsgHtml( 'code-status-'.$change->added );
+			// Tag changes...
+			} else {
+				$line .= htmlspecialchars( $change->added );
+			}
 		}
 		$line .= "]</i>";
 		return "<li>$line</li>";

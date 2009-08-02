@@ -42,6 +42,9 @@ class SpecialCode extends SpecialPage {
 				} elseif ( $params[1] === 'comments' ) {
 					$view = new CodeCommentsListView( $params[0] );
 					break;
+				} elseif ( $params[1] === 'statuschanges' ) {
+					$view = new CodeStatusChangeListView( $params[0] );
+					break;
 				} elseif ( $params[1] === 'releasenotes' ) {
 					$view = new CodeReleaseNotes( $params[0] );
 					break;

@@ -19,7 +19,7 @@ $aliases['en'] = array(
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'Code' => array( 'كود' ),
+	'Code' => array( 'كود', 'مراجعة_الكود' ),
 	'RepoAdmin' => array( 'إدارة_المستودع' ),
 );
 
@@ -94,6 +94,11 @@ $aliases['ia'] = array(
 	'RepoAdmin' => array( 'Admin repo' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Code' => array( 'Kode', 'Tinjauan kode', 'TinjauanKode' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Code' => array( 'コード', 'コードレビュー' ),
@@ -158,6 +163,12 @@ $aliases['pl'] = array(
 $aliases['sa'] = array(
 	'Code' => array( 'संकूटसङ्केतावलोकन' ),
 	'RepoAdmin' => array( 'रेपोप्रचालक' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Code' => array( 'Kód', 'KontrolaKódu' ),
+	'RepoAdmin' => array( 'SprávcaÚložiska' ),
 );
 
 /** Swahili (Kiswahili) */
