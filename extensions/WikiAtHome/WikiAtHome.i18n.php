@@ -28,10 +28,10 @@ $messages['en'] = array(
 	'wah-transcode-working' => 'This video is being transcoded its $1% done',
 	'wah-transcode-helpout' => 'You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
 
-	'wah-transcode-fail'	=> 'This File failed to transcode.',
+	'wah-transcode-fail'	=> 'This file failed to transcode.',
 
 	'wah-javascript-off'	=> 'You must have JavaScript enabled to participate in Wiki@Home',
-	'wah-loading'			=> 'loading Wiki@Home interface <blink>...</blink>'
+	'wah-loading'		=> 'loading Wiki@Home interface <blink>...</blink>'
 );
 
 
