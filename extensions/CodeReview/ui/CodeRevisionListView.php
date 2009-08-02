@@ -149,16 +149,7 @@ class CodeRevisionListView extends CodeView {
 }
 
 // Pager for CodeRevisionListView
-class SvnRevTablePager extends TablePager {
-
-	function __construct( $view ) {
-		global $IP;
-		$this->mView = $view;
-		$this->mRepo = $view->mRepo;
-		$this->mDefaultDirection = true;
-		$this->mCurSVN = SpecialVersion::getSvnRevision( $IP );
-		parent::__construct();
-	}
+class SvnRevTablePager extends SvnTablePager {
 
 	function getSVNPath() {
 		return $this->mView->mPath;

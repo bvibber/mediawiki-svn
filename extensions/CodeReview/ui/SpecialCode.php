@@ -174,6 +174,46 @@ abstract class CodeView {
 	}
 }
 
+abstract class SvnTablePager extends TablePager {
+
+	function __construct( $view ) {
+		global $IP;
+		$this->mView = $view;
+		$this->mRepo = $view->mRepo;
+		$this->mDefaultDirection = true;
+		$this->mCurSVN = SpecialVersion::getSvnRevision( $IP );
+		parent::__construct();
+	}
+
+	function isFieldSortable( $field ) {
+		return $field == $this->getDefaultSort();
+	}
+
+	// Note: this function is poorly factored in the parent class
+	function formatRow( $row ) {
+		global $wgWikiSVN;
+		$css = "mw-codereview-status-{$row->cr_status}";
+		if ( $this->mRepo->mName == $wgWikiSVN ) {
+			$css .= " mw-codereview-" . ( $row-> { $this->getDefaultSort() } <= $this->mCurSVN ? 'live' : 'notlive' );
+		}
+		$s = "<tr class=\"$css\">\n";
+		// Some of this stolen from Pager.php...sigh
+		$fieldNames = $this->getFieldNames();
+		$this->mCurrentRow = $row;  # In case formatValue needs to know
+		foreach ( $fieldNames as $field => $name ) {
+			$value = isset( $row->$field ) ? $row->$field : null;
+			$formatted = strval( $this->formatValue( $field, $value, $row ) );
+			if ( $formatted == '' ) {
+				$formatted = '&nbsp;';
+			}
+			$class = 'TablePager_col_' . htmlspecialchars( $field );
+			$s .= "<td class=\"$class\">$formatted</td>\n";
+		}
+		$s .= "</tr>\n";
+		return $s;
+	}
+}
+
 class CodeCommentLinker {
 	function __construct( $repo ) {
 		global $wgUser;
