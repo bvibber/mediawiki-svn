@@ -389,11 +389,18 @@ $messages['et'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'closewikis-page' => 'Wikia itxi',
+	'closewikis-page-close' => 'Wikia itxi',
+	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-submit' => 'Itxi',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Arrazoia:',
 	'closewikis-page-reopen-submit' => 'Berrireki',
+	'closewikis-list' => 'Itxitako wikien zerrenda',
+	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-log-close' => '$2 itxita',
 	'closewikis-log-reopen' => '$2 berrirekia',
+	'right-closewikis' => 'Wikiak itxi',
 );
 
 /** Finnish (Suomi)

@@ -51,6 +51,16 @@ $messages['de'] = array(
 	'delaydef-error-redef' => 'Fehler: Versuchte Definitionsänderung von $1.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'delaydef-desc' => 'Pśidawa &lt;define&gt; and &lt;display&gt;, aby se kod znowego pozicioněrował',
+	'delaydef-error-missing-def' => 'Zmólka: Definicija, kótaraž jo za &lt;display name="$1"&gt; trěbna, njejo se namakała.',
+	'delaydef-error-no-name' => 'Zmólka: Parameter "name" njepódany.',
+	'delaydef-error-redef' => 'Zmólka: Wopytane nowodefiněrowanje za $1.',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

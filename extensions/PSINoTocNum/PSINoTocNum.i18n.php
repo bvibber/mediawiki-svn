@@ -238,6 +238,13 @@ $messages['oc'] = array(
 	'psinotocnum-desc' => 'Mot magic novèl « <nowiki>__NOTOCNUM__</nowiki> »',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'psinotocnum-desc' => 'Nowe magiczne słowo „<nowiki>__NOTOCNUM__</nowiki>”',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

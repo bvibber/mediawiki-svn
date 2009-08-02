@@ -60,6 +60,13 @@ $messages['es'] = array(
 	'clientside-desc' => 'Provee funciones para generar código en formatos cliente como HTML, CSS y JavaScript',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'clientside-desc' => 'HTML, CSS eta JavaScript bezalako bezeroen neurriko formatuetan kodea sortzeko funtzioak hornitzen ditu.',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
@@ -108,6 +115,13 @@ $messages['hil'] = array(
  */
 $messages['hsb'] = array(
 	'clientside-desc' => 'Skići funkcije za płodźenje koda w klientowych formatach kaž HTML, CSS a JavaScript',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'clientside-desc' => 'Eszközöket biztosít kódgeneráláshoz kliens oldali formátumokban, mint például HTML, CSS és JavaScript',
 );
 
 /** Interlingua (Interlingua)

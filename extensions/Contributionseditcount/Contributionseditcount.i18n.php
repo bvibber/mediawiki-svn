@@ -155,6 +155,13 @@ $messages['es'] = array(
 	'contributionseditcount-desc' => 'Muestra un contador de ediciones en la [[Special:Contributions|página de contribuciones del usuario]]',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'contributionseditcount' => 'Erabiltzaile honek {{PLURAL:$1|aldaketa bat egin du|$1 aldaketa egin ditu}}.',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

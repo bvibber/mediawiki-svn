@@ -1041,6 +1041,7 @@ Prošu skontroluj swój blokowak wuskakowacych woknow.',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $wgCustomToolbarMessages['hu'] = array(
 	'ct-desc' => 'Bővíthető eszköztár',
@@ -1074,9 +1075,9 @@ $wgCustomToolbarMessages['hu'] = array(
 	'ct_horizontal_tip' => 'Vízszintes vonal beszúrása (ritkán használd)',
 	'ct_horizontal_caption' => 'Vízszintes vonal',
 	'ct_upload' => '$1 feltöltése',
-	'ct_select' => '$1 kiválasztása feltöltéshez',
-	'ct_caption' => 'Cím hozzáadása (nem kötelező)',
-	'ct_link' => 'Linknév hozzáadása (nem kötelező)',
+	'ct_select' => '$1 kiválasztása feltöltéshez:',
+	'ct_caption' => 'Cím hozzáadása (nem kötelező):',
+	'ct_link' => 'Hivatkozásnév hozzáadása (nem kötelező):',
 	'ct_submit' => 'Gyerünk!',
 	'ct_close' => 'Ablak bezárása',
 	'ct_success' => 'A fájl feltöltése sikerült!',
@@ -1244,6 +1245,7 @@ $wgCustomToolbarMessages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $wgCustomToolbarMessages['km'] = array(
 	'ct-desc' => 'បន្ថែម​របារឧបករណ៍​ដែល​អាច​ដាក់​បាន',
@@ -1277,9 +1279,9 @@ $wgCustomToolbarMessages['km'] = array(
 	'ct_horizontal_tip' => 'បញ្ចូល​ខ្សែផ្ដេក​មួយ (ប្រើ sparingly)',
 	'ct_horizontal_caption' => 'ខ្សែផ្ដេក',
 	'ct_upload' => 'ផ្ទុកឡើង $1',
-	'ct_select' => 'ជ្រើស $1 ដើម្បី​ផ្ទុកឡើង',
-	'ct_caption' => 'បន្ថែម​ចំណងជើង (ស្រេចចិត្ត)',
-	'ct_link' => 'បន្ថែម​ឈ្មោះ​តំណ (ស្រេចចិត្ត)',
+	'ct_select' => 'ជ្រើសយក $1 ដើម្បី​ផ្ទុកឡើង៖',
+	'ct_caption' => 'បន្ថែម​ចំណងជើងក្រោម (ស្រេចចិត្ត)៖',
+	'ct_link' => 'បន្ថែម​ឈ្មោះ​តំណ (ស្រេចចិត្ត)៖',
 	'ct_submit' => 'ទៅ​!',
 	'ct_close' => 'បិទ​បង្អួច',
 	'ct_success' => 'ផ្ទុក​ឯកសារ​ដោយ​ជោគជ័យ​!',

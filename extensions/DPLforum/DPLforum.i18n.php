@@ -189,6 +189,13 @@ $messages['es'] = array(
 	'dplforum-toomany' => 'Foro DPL: demasiadas categorías!',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'dplforum-never' => 'Inoiz ez',
+);
+
 /** Persian (فارسی)
  * @author BlueDevil
  * @author Huji
@@ -357,6 +364,7 @@ $messages['ja'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author T-Rithy
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'dplforum-by' => 'ដោយ$1',

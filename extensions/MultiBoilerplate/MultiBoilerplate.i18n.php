@@ -72,6 +72,10 @@ $messages['be-tarask'] = array(
 	'multiboilerplate-desc' => 'Дазваляе ўдзельнікам выбіраць тыповыя тэксты са сьпісу над полем рэдагаваньня',
 	'multiboilerplate-legend' => 'Выбар узору',
 	'multiboilerplate-submit' => 'Загрузіць',
+	'boilerplates' => 'Даступныя шаблёны старонак',
+	'multiboilerplate-special-pagetext' => 'Гэтыя шаблёны могуць быць загружаныя пры стварэньні старонкі. (<span class=plainlinks>[{{fullurl:Гэтая старонка не існуе|action=edit}} дэманстрацыя]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Шаблёны старонак вызначаныя ў LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Шаблёны старонак вызначаныя ў [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Bulgarian (Български)
@@ -145,11 +149,16 @@ $messages['eu'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'multiboilerplate-desc' => 'Permet de sélectionner une page ou un modèle à incorporer à partir d’une boîte en haut du formulaire d’édition d’une page.',
 	'multiboilerplate-legend' => 'Sélectionner la page à incorporer',
 	'multiboilerplate-submit' => 'Charger',
+	'boilerplates' => 'Modèles disponibles',
+	'multiboilerplate-special-pagetext' => "Ces modèles peuvent être préchargé à la création de pages. (<span class=plainlinks>[{{fullurl:Cette page n'existe pas|action=edit}} démo]</span>)",
+	'multiboilerplate-special-define-in-localsettings' => 'Les modèles sont définis dans LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Les modèles sont définis dans [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Western Frisian (Frysk)
@@ -210,6 +219,10 @@ $messages['hsb'] = array(
 	'multiboilerplate-desc' => 'Zmóžnja tekstowy element z padaceho kašćika wubrać, kotrež je wyše wobdźěłanskeho pola na wobdźełanskich stronach',
 	'multiboilerplate-legend' => 'Tekstowy element wubrać',
 	'multiboilerplate-submit' => 'Začitać',
+	'boilerplates' => 'K dispoziciji stejace tekstowe elementy',
+	'multiboilerplate-special-pagetext' => 'Tute předłohi dadźa so při wutworjenju strony awtomatisce začitać. (<span class=plainlinks>[{{fullurl:Tuta strona njeeksistuje|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Tekstowe elementy so w LocalSettings definuja.',
+	'multiboilerplate-special-define-in-interface' => 'Tekstowe elementy so w [[MediaWiki:Multiboilerplate]] definuja.',
 );
 
 /** Interlingua (Interlingua)

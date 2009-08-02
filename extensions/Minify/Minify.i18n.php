@@ -157,6 +157,13 @@ $messages['oc'] = array(
 	'minify-desc' => 'Estrechís la sortida de CSS e JavaScript de action=raw',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'minify-desc' => 'Redukuje wielkość CSS i JavaScript dla action=raw',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

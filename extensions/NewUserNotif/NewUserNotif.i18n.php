@@ -450,9 +450,11 @@ uff $3 iss am $5, $6 Uhr en neier Yuuser, $2, komme.',
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'newusernotifsubj' => 'Powiadamianie użytkownika $1 o nowych użytkownikach',
+	'newusernotif-desc' => 'Wysyła powiadomienie e–mail o utworzeniu nowego konta użytkownika',
 	'newusernotifbody' => 'Witaj $1, nowe konto użytkownika, $2, zostało stworzone w dniu $3 o $4.',
 );
 

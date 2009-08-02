@@ -1127,9 +1127,11 @@ Kui soovid kasutada avatud ID-d tulevikus sisselogimiseks, võid [[Special:OpenI
 );
 
 /** Basque (Euskara)
+ * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
+	'openidserver' => 'OpenID zerbitzaria',
 	'openidoptional' => 'Aukerazkoa',
 	'openidrequired' => 'Nahitaezkoa',
 	'openidnickname' => 'Ezizena',
@@ -2463,12 +2465,12 @@ Wann Dir OpenID benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [[S
 Wann net, da verich et mam Knäppche "Continue" (Weider).',
 	'openidclientonlytext' => 'Dir kënnt keng Benotzerkonten aus dëser Wiki als OpendIDen op anere Site benotzen.',
 	'openidloginlabel' => 'URL vun der OpenID',
-	'openidlogininstructions' => '{{SITENAME}} ënnerstetzt den [http://openid.net/ OpenID]-Standard fir eng eenheetlech Umeldung fir méi Websiten.
-OpenID mellt Iech bäi ville verschiddene Websäiten un, ouni datt Dir fir jidfer Siten een anert Passwuert gebrauche musst.
+	'openidlogininstructions' => '{{SITENAME}} ënnerstëtzt den [http://openid.net/ OpenID]-Standard fir eng eenheetlech Umeldung fir méi Websäiten.
+OpenID mellt Iech bäi ville verschiddene Websäiten un, ouni datt Dir fir jiddwer Säiten een anert Passwuert gebrauche musst.
 (Méi Informatiounen fannt Dir am [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikel iwwer OpenID].)
 
 Wann Dir schonn e Benotzerkont op {{SITENAME}} hutt, kënnt Dir Iech ganz normal mat ärem Benotzernumm a Passwuert [[Special:UserLogin|aloggen]].
-Fir an Zukunft OpenID ze benotzen, kënnt Dir [[Special:OpenIDConvert|äre Benotzerkont op OpenID ëmwandelen]], nodeem Dir Iech normal ageloggt huet.
+Fir an Zukunft OpenID ze benotzen, kënnt Dir [[Special:OpenIDConvert|äre Benotzerkont op OpenID ëmwandelen]], nodeems Dir Iech normal ageloggt huet.
 
 Et gëtt vill [http://openid.net/get/ OpenID-Provider] a méiglecherweis hutt Dir schonn e Benotzerkont mat aktivéierter OpenID bäi engem aneren Ubidder.',
 	'openidupdateuserinfo' => 'Meng perséinlech Informatiounen aktualiséieren',

@@ -92,6 +92,13 @@ $messages['hsb'] = array(
 	'nsfilerepo-desc' => 'Funkcije na zakładźe mjenjoweho ruma za nahrate dataje zmóžnić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'nsfilerepo-desc' => 'Névtér alapú funkciók a feltöltött fájlokhoz',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -132,6 +139,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'nsfilerepo-desc' => 'Apond de foncionalitats als fichièrs telecargats per espaci de nom',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'nsfilerepo-desc' => 'Dostarcza mechanizmu opartego na przestrzeniach nazw służącego do przesyłania plików',
 );
 
 /** Piedmontese (Piemontèis)

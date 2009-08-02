@@ -530,6 +530,7 @@ $messages['fr'] = array(
 	'recordadmin-modified' => 'Modifié',
 	'recordadmin-actions' => 'Actions',
 	'recordadmin-needscontent' => 'Ajouter le contenu...',
+	'recordadmin-editwithform' => 'Modifier avec un formulaire',
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 

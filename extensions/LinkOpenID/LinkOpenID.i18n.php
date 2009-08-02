@@ -216,6 +216,16 @@ $messages['hsb'] = array(
 	'linkopenid-prefstext-v2url' => 'Serwerowy URL za OpenID wersiju 2:',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'linkopenid-desc' => 'Felhasználói fiók külső OpenID-hoz csatolásának engedélyezése',
+	'linkopenid-prefstext-openid' => 'A te OpenID-d:',
+	'linkopenid-prefstext-v1url' => 'Szerver URL 1.1-es verziójú OpenID-hoz:',
+	'linkopenid-prefstext-v2url' => 'Szerver URL 2-es verziójú OpenID-hoz:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

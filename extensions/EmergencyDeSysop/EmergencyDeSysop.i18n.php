@@ -230,6 +230,15 @@ $messages['es'] = array(
 	'right-emergencydesysop' => 'Capáz de retirar los privilegios de administrador a otro usuario, perdiendo el suyo propio.',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'emergencydesysop-reason' => 'Ezabatzeko arrazoia',
+	'emergencydesysop-submit' => 'Bidali',
+	'emergencydesysop-nogroups' => 'Bat ere ez',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

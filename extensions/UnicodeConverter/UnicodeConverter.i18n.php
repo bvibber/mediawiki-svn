@@ -318,6 +318,16 @@ $messages['jv'] = array(
 	'unicodeconverter-newtext' => 'Tèks sing wis dikonversi:',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'unicodeconverter' => 'Unicode-კონვერტორი',
+	'unicodeconverter-ok' => 'კარგი',
+	'unicodeconverter-oldtext' => 'პირველადი ტექსტი:',
+	'unicodeconverter-newtext' => 'კონვერტირებული ტექსტი:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith

@@ -546,6 +546,7 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
@@ -569,6 +570,7 @@ $messages['eu'] = array(
 	'badimages-log-add' => '[[$1]] irudi txarren zerrendara gehitu da',
 	'badimages-log-remove' => '[[$1]] irudi txarren zerrendatik kendu da',
 	'badimages-page' => '{{ns:help}}:Irudi txarren zerrenda',
+	'right-badimages' => 'Irudi txarren zerrenda eguneratu',
 );
 
 /** Extremaduran (Estremeñu)

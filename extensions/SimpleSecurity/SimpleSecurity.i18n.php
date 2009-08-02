@@ -209,10 +209,12 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'security' => 'Segurtasun erregistroa',
 	'security-logpage' => 'Segurtasun erregistroa',
+	'security-info-toggle' => 'segurtasun murrizketak',
 	'security-manygroups' => '$1 eta $2 taldeak',
 	'security-type-category' => 'kategoria',
 );

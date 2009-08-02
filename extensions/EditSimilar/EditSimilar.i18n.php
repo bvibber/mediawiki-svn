@@ -184,6 +184,17 @@ Verifica {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.
 	'tog-edit-similar' => 'Habilitar sugerencias de páginas similares',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'editsimilar-thanks' => 'Mila esker egindako ekarpenagatik.
+
+Begira {{PLURAL:$2|ezazu lotutako orrialde hau|itzazu lotutako orrialde hauek}}: $1.',
+	'editsimilar-thankyou' => 'Mila esker egindako ekarpenagatik, $1!',
+	'editsimilar-link-disable' => 'hobespenak ezarri',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix <jack@countervandalism.net>
  * @author Mobe

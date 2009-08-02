@@ -418,8 +418,14 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
+	'spamregex-currently-blocked' => "'''Gaur egun blokeatutako esaldiak:'''",
+	'spamregex-no-currently-blocked' => "'''Ez dago blokeatutako esaldirik.'''",
+	'spamregex-warning-1' => 'Idatz ezazu blokeatzeko esaldi bat.',
+	'spamregex-phrase-block' => 'Blokeatu beharreko esaldia:',
+	'spamregex-block-submit' => 'Esaldi&nbsp;hau&nbsp;blokeatu',
 	'spamregex-text' => '(Testu)',
 	'spamregex-summary-log' => '(Laburpen)',
 );

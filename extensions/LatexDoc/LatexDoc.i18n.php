@@ -205,6 +205,21 @@ $3',
 	'latexdoc-desc' => 'Edición colaborativa de documentos LaTeX',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'latexdoc_error' => 'LaTeX errorea
+
+Komandoa: $1
+
+Irteera: $2
+
+$3',
+	'latexdoc_get_dvi' => 'DVIa eskuratu',
+	'latexdoc_get_pdf' => 'PDFa eskuratu',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

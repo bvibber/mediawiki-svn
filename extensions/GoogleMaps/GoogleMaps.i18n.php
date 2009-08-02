@@ -1431,6 +1431,7 @@ $wgGoogleMapsMessages['eu'] = array(
 	'gm-incompatible-browser' => 'Hutsune honetan legoken mapa ikusi ahal izateko, web nabigatzaile bateragarria erabili behar duzu.',
 	'gm-incompatible-browser-link' => 'Klikatu hemen web nabigatzaile bateragarrien zerrenda ikusteko.',
 	'gm-balloon-title' => 'Izenburua:',
+	'gm-remove' => 'ezabatu',
 	'gm-save-point' => 'gorde eta itxi',
 	'gm-refresh-list' => 'Zerrenda berritu',
 	'gm-load-map' => 'Mapa kargatu',
@@ -2922,13 +2923,14 @@ $wgGoogleMapsMessages['ku-latn'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $wgGoogleMapsMessages['lb'] = array(
 	'gm-desc' => 'Einfacht Uleeë vu Kaarten matt wikifizéierte Markéierungen',
 	'gm-incompatible-browser' => 'fir déi Kaart ze gesinn déi hei misst ugewise ginn, musst Dir e kompatibele Browser benotzen.',
 	'gm-incompatible-browser-link' => 'Klickt heihinner fir eng Lëscht vu kompatibele Browser ze gesinn.',
-	'gm-no-editor' => 'Leider ënnerstetzt Äre Browser déi interaktiv Funktioune fir Kaarten ze maachen net. Probéiert déi lescht Versioun vum <a href=http://www.microsoft.com/ie>Internet Explorer</a> (Windows) oder <a href=http://www.mozilla.org/products/firefox>Firefox</a> (Windows, Mac a Linux).',
+	'gm-no-editor' => 'Leider ënnerstëtzt Äre Browser déi interaktiv Funktioune fir Kaarten ze maachen net. Probéiert déi lescht Versioun vum <a href=http://www.microsoft.com/ie>Internet Explorer</a> (Windows) oder <a href=http://www.mozilla.org/products/firefox>Firefox</a> (Windows, Mac a Linux).',
 	'gm-balloon-title' => 'Titel:',
 	'gm-balloon-link-article' => 'Link op dës Säit (fakultativ):',
 	'gm-make-marker' => 'Beschreiwung (Wiki-Syntax ass OK):',

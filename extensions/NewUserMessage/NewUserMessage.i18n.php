@@ -164,6 +164,13 @@ $messages['es'] = array(
 	'newuseredit-summary' => 'Agregando el [[{{int:newusermessage-template}}|mensaje de bienvenida]] a la página de usuario del nuevo usuario',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'newusermessage-desc' => 'Kontu bat sortu berri duten erabiltzaileen eztabaida orrialdeetan mezu bat jartzen du',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

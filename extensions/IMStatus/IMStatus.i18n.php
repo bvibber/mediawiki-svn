@@ -580,6 +580,22 @@ ID, kotryž dyrbiš podać, su ličby a pismiki mjez "$2" a "$3".',
 	'imstatus_yahoo_style' => 'stil tłóčatka, wot $1 (najmjeńši) do $2 (najwjetši), $3 a $4 stej za Voicemail.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'imstatus_default' => 'Alapértelmezés',
+	'imstatus_example' => 'Példa',
+	'imstatus_possible_val' => 'Lehetséges értékek',
+	'imstatus_max' => 'max.',
+	'imstatus_min' => 'min.',
+	'imstatus_or' => 'vagy',
+	'imstatus_your_name' => '$1 azonosító',
+	'imstatus_gtalk_height' => 'a doboz magassága, képpontban.',
+	'imstatus_icq_id' => 'az ICQ ID-d',
+	'imstatus_xfire_size' => 'a gomb mérete, a legnagyobbtól ($1) a legkisebbig ($2).',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

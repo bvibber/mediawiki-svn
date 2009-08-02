@@ -265,9 +265,11 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'authors-desc' => 'បន្ថែម​បញ្ជី​អ្នកបរិច្ចាក​​មួយ​ទៅ​ខាងចុង​នៃ​ទំព័រ',
+	'authors_authors' => 'អ្នកនិពន្ធ',
 	'authors_anonymous' => 'អនាមិក',
 );
 

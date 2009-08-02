@@ -133,6 +133,13 @@ $messages['hsb'] = array(
 	'newsextension-desc' => 'Pokazuje přiměrjene aktualne změny na wikijowych stronach abo jako RSS abo kanal Atom',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'newsextension-desc' => 'Testre szabott friss változások wiki oldalon, vagy mint RSS/Atom hírcsatorna',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

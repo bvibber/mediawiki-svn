@@ -225,6 +225,13 @@ $messages['oc'] = array(
 	'preloader-desc' => 'Provesís, per las paginas novèlas, de fenèstras de tèxte personalizablas per nom d’espaci',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'preloader-desc' => 'Zapewnia odrębny dla każdej przestrzeni nazw domyślny tekst nowej strony',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

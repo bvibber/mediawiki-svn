@@ -976,6 +976,37 @@ $messages['vi'] = array(
 	'tog-riched_toggle_remember_state' => 'Ghi nhớ tình trạng chuyển đổi cuối cùng',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'fckeditor-desc' => '允许在编辑时使用所见即所得工具FCKeditor',
+	'textrichditor' => '富文本编辑器',
+	'prefs-fckeditor' => '富文本编辑器',
+	'tog-riched_disable' => '禁用富文本编辑器',
+	'tog-riched_disable_ns_main' => '在主名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_talk' => '在“{{ns:talk}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_user' => '在“{{ns:user}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_user_talk' => '在“{{ns:user_talk}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_project' => '在“{{ns:project}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_project_talk' => '在“{{ns:project_talk}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_image' => '在“{{ns:file}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_image_talk' => '在“{{ns:file_talk}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_mediawiki' => '在“{{ns:mediawiki}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_mediawiki_talk' => '在“{{ns:mediawiki_talk}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_template' => '在“{{ns:template}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_template_talk' => '在“{{ns:template_talk}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_help' => '在“{{ns:help}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_help_talk' => '在“{{ns:help_talk}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_category' => '在“{{ns:category}}”名字空间禁用富文本编辑器',
+	'tog-riched_disable_ns_category_talk' => '在“{{ns:category_talk}}”名字空间禁用富文本编辑器',
+	'rich_editor_new_window' => '在新窗口打开富文本编辑器',
+	'tog-riched_start_disabled' => '默认禁用富文本编辑器',
+	'tog-riched_use_popup' => '在弹出窗口中使用富文本编辑器',
+	'tog-riched_use_toggle' => '使用开关在wiki文本和富文本编辑器间切换（用富文本编辑器替换textarea）',
+	'tog-riched_toggle_remember_state' => '记住上次切换状态',
+);
+
 /** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */

@@ -199,6 +199,13 @@ $messages['oc'] = array(
 	'redirect-desc' => "Permet de configurar aisidament de redireccions al moment d'una [[MediaWiki:Redirect-addnewaccount|creacion de compte]] e una [[MediaWiki:Redirect-userlogoutcomplete|desconnexion]]",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'redirect-desc' => 'Umożliwia łatwą konfigurację przekierowań na [[MediaWiki:Redirect-addnewaccount|utworzenie konta]] i [[MediaWiki:Redirect-userlogoutcomplete|wylogowanie]]',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

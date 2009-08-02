@@ -142,6 +142,13 @@ $messages['hsb'] = array(
 	'jskit-desc' => 'Integruje nastroje JS-kita na wikijowej stronje',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'jskit-desc' => 'A JS-Kit eszközök integrálása wiki oldalakra',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

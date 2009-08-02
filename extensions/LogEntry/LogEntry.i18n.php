@@ -136,6 +136,14 @@ $messages['es'] = array(
 	'logentry-invalidtoken' => 'Ficha inválida',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'logentry-append' => 'Erantsi',
+	'logentry-invalidpage' => 'Baliogabeko orrialdea',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  * @author Vililikku

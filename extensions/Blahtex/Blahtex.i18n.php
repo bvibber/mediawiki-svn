@@ -793,6 +793,7 @@ $messages['eu'] = array(
 	'math_CannotWriteTexFile' => 'Ezin da tex fitxategia idatzi',
 	'math_InvalidColour' => '"$1" kolorea ez da baliozkoa',
 	'math_MismatchedBeginAndEnd' => '"$1" eta "$2" komandoek ez datoz bat',
+	'math_TooManyTokens' => 'Sarrera luzeegia da',
 	'math_UnexpectedNextCell' => '"&" komandoa "\\begin ... \\end" blokearen barruan egon daiteke bakarrik',
 	'math_UnexpectedNextRow' => '"\\\\" komandoa "\\begin ... \\end" blokearen barruan egon daiteke bakarrik',
 	'math_UnrecognisedCommand' => '"$1" komandoa ezezaguna da',

@@ -5531,6 +5531,7 @@ Mangga hubungi operator server utawa pangurus.',
 $messages['ka'] = array(
 	'languages' => 'ვიკიდატა: ენების მენეჯერი',
 	'langman_title' => 'ენების მენეჯერი',
+	'langman_langname' => 'ენის კოდი:',
 	'langman_iso639-3' => 'ISO 639-3 კოდი:',
 	'langman_iso639-2' => 'ISO 639-2 კოდი:',
 	'langman_addlang' => 'ენის დამატება',
@@ -5744,7 +5745,7 @@ $messages['km'] = array(
 	'ow_meaningsofsubtitle' => '<em>តំណភ្ជាប់វិគី៖</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>សិទ្ធិ​បាន​បដិសេធ</h2>',
 	'ow_copy_no_action_specified' => 'សូម សំដៅ មួយសកម្មភាព',
-	'ow_copy_help' => 'យើង​អាចជួយអ្នក​នៅ​ថ្ងៃណាមួយ',
+	'ow_copy_help' => 'មិនទាន់មានជំនួយនៅឡើយ។',
 	'ow_copy_successful' => '<h2>ចម្លង​ដោយជោគជ័យ</h2>
 
 ទិន្នន័យ​របស់​អ្នក​បង្ហាញ​ថា ត្រូវ​បាន​ចម្លង​ដោយជោគជ័យ​ហើយ​។
@@ -6209,7 +6210,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 <li>&action=help Hëllef uweisen.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Konzeptkorrespondenzen erlaben Iech erauszefannen, watereen an engem Ensemble vun Donnéeen definéierte Sënn, identesch ass mat deem deen an aneren Ensemble vun Donnéeen definéiert ass.</p>',
-	'ow_conceptmapping_no_action_specified' => 'D\'Aktioun "$1" gëtt net ënnerstetzt.',
+	'ow_conceptmapping_no_action_specified' => 'D\'Aktioun "$1" gëtt net ënnerstëtzt.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'net aginn',
 	'ow_dm_not_found' => 'net an der Datebank fonnt oder net richteg',

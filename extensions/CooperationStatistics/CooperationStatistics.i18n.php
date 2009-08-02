@@ -104,6 +104,13 @@ Glědaj teke [[Special:MostRevisors|'''boki z nejwěcej pśeglědarjami''']] a [
 	'cooperationstatistics-legendmore' => 'abo wobźěłarjow.',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'cooperationstatistics-articles' => '{{PLURAL:$1|Orrialde bat|$1 orrialde}}',
+);
+
 /** French (Français)
  * @author IAlex
  */

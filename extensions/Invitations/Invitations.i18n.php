@@ -338,6 +338,8 @@ $messages['es'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'invitations-inviteform-title' => 'Lankide bat $1 erabiltzeko gonbidatu',
+	'invitations-inviteform-username' => 'Gonbidatu beharreko erabiltzailea',
 	'invitations-inviteform-submit' => 'Gonbidatu',
 );
 

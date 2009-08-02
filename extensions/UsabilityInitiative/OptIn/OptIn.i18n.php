@@ -1267,6 +1267,19 @@ Si desidera provare Beta?",
 	'optin-survey-question-techfail' => 'Si sono verificati problemi tecnici usando Beta?',
 	'optin-survey-question-techfail-ifyes' => 'In caso affermativo, si prega di elaborare o spiegare:',
 	'optin-survey-question-usedtoolbar' => 'La nuova barra degli strumenti espandibile è stata usata per modificare una pagina?',
+	'optin-survey-question-browser' => 'Quale browser usi?',
+	'optin-survey-answer-browser-other' => 'Altri browser:',
+	'optin-survey-question-os' => 'Quale sistema operativo usi?',
+	'optin-survey-answer-os-other' => 'Altro sistema operativo:',
+	'optin-survey-question-res' => 'Qual è la risoluzione dello schermo?',
+	'optin-survey-question-changes' => 'Quali cambiamenti vorresti vedere in Beta in futuro (selezionare tutte le risposte pertinenti)?',
+	'optin-survey-answer-changes-nav' => 'Rendere la navigazione del sito più semplice da usare.',
+	'optin-survey-answer-changes-edittools' => 'Aumentare e migliorare gli strumenti di modifica.',
+	'optin-survey-answer-changes-richtext' => 'Sviluppare strumenti di modifica simili a un editor rich-text.',
+	'optin-survey-answer-changes-lookfeel' => "Aggiornare l'aspetto del sito.",
+	'optin-survey-answer-changes-predictability' => 'Migliorare la prevedibilità delle prestazioni.',
+	'optin-survey-answer-changes-custom' => "Consentire una maggiore personalizzazione all'utente.",
+	'optin-survey-answer-changes-other' => 'Altro:',
 );
 
 /** Japanese (日本語)
@@ -1660,6 +1673,16 @@ Mes norėtume sužinoti, ką manote apie mūsų naująją vartotojo sąsają, to
 	'optin-survey-question-res' => 'Kokia Jūsų ekrano rezoliucija?',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Junaidpv
+ */
+$messages['ml'] = array(
+	'optin-deny-short' => 'വേണ്ട, നന്ദി',
+	'optin-survey-yes' => 'ശരി',
+	'optin-survey-no' => 'അല്ല',
+	'optin-survey-answer-whyoptout-other' => 'മറ്റു കാരണം:',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -1776,9 +1799,16 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'optin-title-optedout' => 'Prøv Beta',
+	'optin-title-optedin' => 'Forlat Beta',
+	'optin-title-justoptedin' => 'Velkommen til Beta',
+	'optin-title-justoptedout' => 'Takk for at du prøver vår Beta',
+	'optin-title-feedback' => 'Tilbakemelding om Beta',
+	'optin-needlogin' => 'Du må [$1 logge inn] for å prøve Beta',
 	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskelig å redigere en side.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Den virket ikke ordentlig.',
 	'optin-survey-answer-whyoptout-other' => 'Annen årsak:',
@@ -1890,28 +1920,46 @@ $messages['pl'] = array(
 	'optin' => 'Włączenie Inicjatywy Użyteczności',
 	'optin-desc' => 'Pozwala użytkownikom włączyć doświadczalne ulepszenia Beta zrealizowane w ramach Inicjatywy Użyteczności.',
 	'optin-title-optedout' => 'Wypróbuj Beta',
-	'optin-title-optedin' => 'Opuść Beta',
+	'optin-title-optedin' => 'Rezygnacja z Beta',
 	'optin-title-justoptedin' => 'Witaj w Beta',
-	'optin-needlogin' => 'Musisz [$1 zalogować się] by móc włączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności.',
-	'optin-intro' => 'Zamierzając poprawić użyteczność Wikipedii utworzono nowy wygląd strony oraz nowy pasek z narzędziami edycyjnymi. Te ulepszenia jeszcze nie są dostępne dla wszystkich użytkowników, ale Ty możesz je włączyć poprzez kliknięcie poniżej „{{int:optin-submit-in}}”.',
-	'optin-success-in' => 'Udało Ci się włączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności.
-W każdej chwili możesz je wyłączyć poprzez kliknięcie poniżej „{{int:optin-submit-out}}”.',
+	'optin-title-justoptedout' => 'Dziękujemy za wypróbowanie Beta',
+	'optin-title-feedback' => 'Opinie o Beta',
+	'optin-needlogin' => 'Musisz [$1 zalogować się] by wypróbować Beta.',
+	'optin-intro' => 'Podjęliśmy inicjatywę mającą poprawić użyteczność Wikipedii.
+Czy chcesz wypróbować nowe funkcjonalności Beta?',
+	'optin-feedback-intro' => 'Dziękujemy za wypróbowanie Beta.
+Chcielibyśmy wiedzieć co myślisz o nowym interfejsie. Będziemy wdzięczni, jeśli wypełnisz poniższą ankiety.',
+	'optin-feedback-back' => 'Jeśli nie chcesz wypełnić ankiety, możesz powrócić do $1.',
+	'optin-success-in' => 'Rozpocząłeś testowanie Beta.
+W każdej chwili możesz je wyłączyć poprzez kliknięcie linku „{{int:optin-submit-out}}” umieszczonego na górze strony.',
+	'optin-leave-cancel' => 'Jeśli chcesz nadal używać Beta, powróć do $1.',
 	'optin-success-out' => 'Udało Ci się wyłączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności.
 W każdej chwili możesz je przywrócić poprzez kliknięcie poniżej „{{int:optin-submit-in}}”.',
+	'optin-success-feedback' => 'Dziękujemy za przesłaną opinię!',
 	'optin-accept-short' => 'Zrób to!',
+	'optin-accept-long' => 'Wypróbuj Beta',
+	'optin-accept-long-anon' => 'Zaloguj się i wypróbuj Beta',
 	'optin-deny-short' => 'Nie, dziękuję',
-	'optin-deny-long' => 'powrót do poprzedniej strony',
-	'optin-submit-out' => 'Wyłącz',
+	'optin-deny-long' => 'Powrót do poprzedniej strony',
+	'optin-submit-out' => 'Rezygnuję z Beta',
+	'optin-submit-feedback' => 'Prześlij opinię',
+	'optin-try' => 'Wypróbuj Beta',
+	'optin-leave' => 'Rezygnacja z Beta',
+	'optin-feedback' => 'Opinia o Beta',
+	'optin-survey-yes' => 'Tak',
+	'optin-survey-no' => 'Nie',
 	'optin-survey-intro' => 'Dziękujemy za wypróbowanie ulepszeń zrealizowanych w ramach Inicjatywy Użyteczności.
 Możesz wyłączyć ulepszenia poprzez kliknięcie na dole strony „{{int:optin-submit-out}}”.
 
 Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z tym będziemy wdzięczni za wypełnienie poniższej nieobowiązkowej ankiety, zanim klikniesz „{{int:optin-submit-out}}”.',
-	'optin-survey-question-whyoptout' => 'Dlaczego wyłączasz ten interfejs?',
-	'optin-survey-answer-whyoptout-hard' => 'Edytowanie strony było zbyt trudne.',
+	'optin-survey-question-likedislike' => 'Co Ci się spodobało w Beta? Co Ci się nie podoba w Beta?',
+	'optin-survey-question-whyoptout' => 'Dlaczego rezygnujesz z Beta? (zaznacz wszystkie, które pasują)',
+	'optin-survey-answer-whyoptout-hard' => 'To było zbyt trudne, aby z tego korzystać.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Nie działał poprawnie.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nie podoba mi się nowy pasek narzędzi.',
 	'optin-survey-answer-whyoptout-other' => 'Inny powód',
-	'optin-survey-question-feedback' => 'Napisz nam swoją opinię',
+	'optin-survey-question-techfail-ifyes' => 'Jeśli tak, wyjaśnij proszę',
+	'optin-survey-question-feedback' => 'Podziel się z nami swoją opinią, wątpliwościami lub sugestiami – każdy komentarz jest mile widziany!',
 	'optin-survey-question-browser' => 'Z jakiej korzystasz przeglądarki?',
 	'optin-survey-answer-browser-ie5' => 'Internet Explorer 5',
 	'optin-survey-answer-browser-ie6' => 'Internet Explorer 6',
@@ -1929,7 +1977,7 @@ Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z
 	'optin-survey-answer-browser-o9.5' => 'Opera 9.5',
 	'optin-survey-answer-browser-o10' => 'Opera 10',
 	'optin-survey-answer-browser-other' => 'Inna przeglądarka',
-	'optin-survey-question-os' => 'Którego systemu operacyjnego używasz?',
+	'optin-survey-question-os' => 'Z jakiego systemu operacyjnego korzystasz?',
 	'optin-survey-answer-os-windows' => 'Windows',
 	'optin-survey-answer-os-macos' => 'Mac OS',
 	'optin-survey-answer-os-linux' => 'Linux',
@@ -1962,6 +2010,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Capmo
  * @author Malafaya
  * @author Waldir
  */
@@ -2021,7 +2070,7 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-question-os' => 'Que sistema operativo utiliza?',
 	'optin-survey-answer-os-other' => 'Outro sistema operativo:',
 	'optin-survey-question-res' => 'Qual é a resolução do seu ecrã?',
-	'optin-survey-question-changes' => 'Que mudanças você gostaria de ver no Beta no futuro (selecione até três)?',
+	'optin-survey-question-changes' => 'Que mudanças você gostaria de ver futuramente no Beta? (favor selecionar as opções pertinentes)',
 	'optin-survey-answer-changes-nav' => 'Tornar a navegação geral do site mais fácil de usar.',
 	'optin-survey-answer-changes-edittools' => 'Criar mais e melhores ferramentas de edição.',
 	'optin-survey-answer-changes-upload' => 'Melhorar o carregamento de conteúdo e multimédia.',

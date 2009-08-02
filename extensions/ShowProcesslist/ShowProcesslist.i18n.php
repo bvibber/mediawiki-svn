@@ -778,6 +778,20 @@ $messages['sk'] = array(
 	'showprocesslist-info' => 'Informácie',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'showprocesslist' => 'Покажи списак процеса',
+	'showprocesslist-desc' => 'Прикажи излаз за [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-user' => 'Корисник',
+	'showprocesslist-host' => 'Хост',
+	'showprocesslist-db' => 'База података',
+	'showprocesslist-command' => 'Команда',
+	'showprocesslist-time' => 'Време',
+	'showprocesslist-state' => 'Стање',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

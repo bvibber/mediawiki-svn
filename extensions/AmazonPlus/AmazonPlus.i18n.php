@@ -527,6 +527,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'amazonplus-desc' => 'Egy teljesen testreszabható kiterjesztés Amazon-információk megjeleneítésére',
@@ -542,6 +543,8 @@ $messages['hu'] = array(
 	'amazonplus-new' => 'új',
 	'amazonplus-none' => 'A termék egyetlen példánya sem eladó.',
 	'amazonplus-cp-none' => 'Semmi',
+	'amazonplus-more' => 'több',
+	'amazonplus-less' => 'kevesebb',
 );
 
 /** Interlingua (Interlingua)
@@ -642,6 +645,7 @@ $messages['ka'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
@@ -658,6 +662,8 @@ $messages['km'] = array(
 	'amazonplus-new' => 'ថ្មី',
 	'amazonplus-none' => 'គ្មាន​ផលិតផល​ថតចម្លង​ណាមួយ​ត្រូវ​បាន​ដាក់​លក់​ឡើយ​។',
 	'amazonplus-cp-none' => 'គ្មាន',
+	'amazonplus-more' => 'ច្រើនជាងនេះ',
+	'amazonplus-less' => 'តិចជាងនេះ',
 );
 
 /** Korean (한국어)

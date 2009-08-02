@@ -206,6 +206,13 @@ $messages['oc'] = array(
 	'gotocategory-desc' => "Marcar los tèrmes de las recèrcas a l’endrech de la categoria : nom d'espaci per « Anar » a partir de la foncionalitat « anar a la pagina »",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'gotocategory-desc' => 'Przeszukiwanie przestrzeni nazw Kategoria: dla funkcjonalności „Przejdź” w wyszukiwarce',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

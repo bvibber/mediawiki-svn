@@ -744,6 +744,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'vote' => 'Szavazás',
@@ -764,6 +765,8 @@ riddler|Rébusz',
 	'vote-results-none' => 'Még senki sem adott le szavazott.',
 	'vote-login' => '[$1 Be kell jelentkezned] a szavazáshoz.',
 	'vote-invalid-choice' => 'Választanod kell egyet a megadott lehetőségek közül.',
+	'right-vote' => 'Szavazás',
+	'right-voteadmin' => 'A szavazás eredménye',
 );
 
 /** Interlingua (Interlingua)

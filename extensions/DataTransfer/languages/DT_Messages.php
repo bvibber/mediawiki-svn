@@ -429,6 +429,26 @@ $messages['es'] = array(
 	'importcsv' => 'Importar CSV',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'viewxml' => 'XML ikusi',
+	'dt_viewxml_categories' => 'Kategoriak',
+	'dt_xml_pages' => 'Orrialdeak',
+	'dt_xml_page' => 'Orrialdea',
+	'dt_xml_template' => 'Txantiloia',
+	'dt_xml_field' => 'Eremua',
+	'dt_xml_name' => 'Izena',
+	'dt_xml_title' => 'Izenburua',
+	'importxml' => 'XML inportatu',
+	'dt_import_selectfile' => 'Mesedez, aukera ezazu inportatzeko $1 fitxategia:',
+	'dt_import_editsummary' => '$1 inportatu',
+	'dt_import_importing' => 'Inportatzen...',
+	'importcsv' => 'CSV inportatu',
+	'right-datatransferimport' => 'Datuak inportatu',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Vililikku

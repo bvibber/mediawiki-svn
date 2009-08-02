@@ -210,6 +210,13 @@ $messages['hsb'] = array(
 	'didyoumean-desc' => 'Přidawa wotkazy stronam z "podobnymi" titulemi',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'didyoumean-desc' => 'Hivatkozások hozzáadása „hasonló” című oldalakhoz',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

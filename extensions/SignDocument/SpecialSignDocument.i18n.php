@@ -3528,6 +3528,7 @@ $1',
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} историја блокирања] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
 --></span>',
+	'sign-viewfield-stricken' => 'Залепљен',
 	'sign-viewfield-reviewcomment' => 'Коментар',
 	'sign-detail-uniquequery' => 'Слични ентитети',
 	'sign-detail-uniquequery-run' => 'Изврши захтев',

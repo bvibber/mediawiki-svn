@@ -898,6 +898,7 @@ Klucz API można uzyskać [http://www.flickr.com/services/api/misc.api_keys.html
 	'importfreeimages_filefromflickr' => '$1 przez użytkownika <b>[$2]</b> z serwisu flickr. Oryginalny adres URL to',
 	'importfreeimages_promptuserforfilename' => 'Wprowadź nazwę pliku docelowego',
 	'importfreeimages_returntoform' => "Kliknij <a href='$1'>tutaj</a> żeby powrócić do wyników wyszukiwania",
+	'importfreeimages_nophpflickr' => 'Nie masz zainstalowanego phpFlickr, ustaw $wgIFphpFlickr w LocalSettings.php.',
 );
 
 /** Pashto (پښتو)

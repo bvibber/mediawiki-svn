@@ -1063,6 +1063,7 @@ Prošu budź sćerpliwy.',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'youtubeauthsub' => 'YouTube videó feltöltése',
@@ -1078,11 +1079,11 @@ $messages['hu'] = array(
 	'youtubeauthsub_clickhere' => 'Kattints ide a YouTube-ra való bejelentkezéshez',
 	'youtubeauthsub_tokenerror' => 'Hiba törént az azonosítótoken készítése közben, próbáld meg frissíteni a lapot.',
 	'youtubeauthsub_success' => "Gratulálunk!
-A videó fel lett töltve.
-A megtekintéshez kattints <a href='http://www.youtube.com/watch?v=$1'>ide</a>.
-Szükség lehet egy kis időre a videó feldolgozásához, ezért lehet, hogy még nincs kész.
+A videód feltöltve.
+Megtekintéshez kattints <a href='http://www.youtube.com/watch?v=$1'>ide</a>.
+Szükség lehet egy kis időre a feldolgozásához, ezért lehet, hogy még nincs kész.
 
-A wikire való beillesztéshez illeszd be az következő kódot:
+Egy wiki oldalra való beágyazásához illeszd be a következő kódot:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Videó feltöltéséhez be kell jelentkezned a YouTube-ba.',
 	'youtubeauthsub_uploadhere' => 'Videó feltöltése innen:',

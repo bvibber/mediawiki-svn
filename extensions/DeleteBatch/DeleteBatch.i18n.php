@@ -327,6 +327,17 @@ $messages['es'] = array(
 	'deletebatch-no-page' => 'Por favor especifique al menos una página a borrar O escoja un archivo conteniendo una lista de páginas.',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'deletebatch-caption' => 'Orrialde zerrenda:',
+	'deletebatch-or' => '<b>edo</b>',
+	'deletebatch-delete' => 'Ezabatu',
+	'deletebatch-page' => 'Ezabatu beharreko orrialdeak:',
+	'deletebatch-select-yourself' => 'Zu',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix

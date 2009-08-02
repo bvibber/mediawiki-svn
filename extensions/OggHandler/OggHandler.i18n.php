@@ -1724,6 +1724,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1745,7 +1746,7 @@ $messages['lb'] = array(
 	'ogg-no-xiphqt' => 'Dir hutt anscheinend d\'Komponent  XiphQT fir QuickTime net installéiert.
 QuickTime kann Ogg-Fichiere net ouni dës Komponent spillen.
 <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Lued XiphQT w.e.g. erof</a> oder wielt eng aner Software.',
-	'ogg-player-videoElement' => 'Ënnerstetzt duerch de Browser',
+	'ogg-player-videoElement' => 'Ënnerstëtzt duerch de Browser',
 	'ogg-player-oggPlugin' => 'Browser-Plugin',
 	'ogg-player-thumbnail' => 'Just als Bild weisen',
 	'ogg-player-soundthumb' => 'Keng Player-Software',

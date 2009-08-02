@@ -309,12 +309,14 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Terik
  */
 $messages['hu'] = array(
 	'whatismyip' => 'Mi az IP-címem?',
-	'whatismyip-desc' => 'Megmutatja a szerkesztő IP-címét a [[Special:WhatIsMyIP]] lapon.',
+	'whatismyip-desc' => 'Megmutatja az aktuális szerkesztő [[Special:WhatIsMyIP|IP-címét]]',
 	'whatismyip-out' => 'Az IP-címed:',
+	'right-whatismyip' => 'A [[Special:WhatIsMyIP|saját IP címem]]',
 );
 
 /** Interlingua (Interlingua)
@@ -378,8 +380,8 @@ $messages['ka'] = array(
  */
 $messages['km'] = array(
 	'whatismyip' => 'IP របស់ខ្ញុំលេខប៉ុន្មាន',
-	'whatismyip-desc' => 'បង្ហាញអាសយដ្ឋាន IP របស់អ្នកប្រើប្រាស់បច្ចុប្បន្ននៅលើ [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'IP របស់អ្នក:',
+	'whatismyip-desc' => 'បង្ហាញ[[Special:WhatIsMyIP|អាសយដ្ឋាន IP]]របស់អ្នកប្រើប្រាស់បច្ចុប្បន្ន',
+	'whatismyip-out' => 'អសយដ្ឋានIP របស់អ្នក៖',
 );
 
 /** Ripoarisch (Ripoarisch)

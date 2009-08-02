@@ -192,6 +192,13 @@ $messages['oc'] = array(
 	'semanticgallery-desc' => 'Apond un format de sortida de la galariá dins las requèstas en linha de SMW',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'semanticgallery-desc' => 'Dodaje wyświetlanie w formie galerii dla zapytań SMW',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

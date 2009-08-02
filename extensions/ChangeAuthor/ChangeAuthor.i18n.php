@@ -575,6 +575,7 @@ $messages['eu'] = array(
 	'changeauthor-pagenameform-go' => 'Joan',
 	'changeauthor-comment' => 'Iruzkina:',
 	'changeauthor-changeauthors-single' => 'Egilea aldatu',
+	'changeauthor-nosuchtitle' => 'Ez dago "$1" izenburua duen orrialderik.',
 );
 
 /** Finnish (Suomi)

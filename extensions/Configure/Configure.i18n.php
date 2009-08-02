@@ -2178,7 +2178,9 @@ Por favor, créelo o cámbielo para usar esta extensión.',
  * @author Theklan
  */
 $messages['eu'] = array(
+	'configure' => 'Wikia konfiguratu',
 	'configure-desc-group' => 'Taldea',
+	'configure-desc-val' => 'Balioa',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-ext-settings' => 'Konfigurazioa',
 	'configure-form-reason' => 'Aldatzeko arrazoia:',
@@ -2194,6 +2196,7 @@ $messages['eu'] = array(
 	'configure-old' => 'Bertsio zaharrak',
 	'configure-old-changes' => 'aldaketak',
 	'configure-section-general' => 'Konfigurazio orokorra',
+	'configure-section-pages' => 'Orrialdeak',
 	'configure-section-email' => 'E-posta',
 	'configure-section-enotif' => 'E-posta bidezko berriematea',
 	'configure-section-localization' => 'Kokalekua',
@@ -2209,6 +2212,10 @@ $messages['eu'] = array(
 	'configure-section-users' => 'Erabiltzaileak',
 	'configure-section-search' => 'Bilatu',
 	'configure-section-copyright' => 'Copyrighta',
+	'configure-select-wiki-submit' => 'Aukeratu',
+	'right-configure' => 'Wikia konfiguratu',
+	'right-viewconfig' => 'Wikiaren konfigurazioa ikusi',
+	'right-viewconfig-all' => 'Wiki guztien konfigurazioa ikusi',
 	'configure-throttle-action-edit' => 'Editatu',
 	'configure-throttle-action-move' => 'Mugitu',
 	'configure-throttle-action-emailuser' => 'Posta elektroniko bat bidali',

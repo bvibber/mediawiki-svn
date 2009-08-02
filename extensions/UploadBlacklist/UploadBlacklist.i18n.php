@@ -39,6 +39,13 @@ $messages['dsb'] = array(
 	'uploadblacklist-desc' => 'Pśidawa carnu lisćinu za nagraśa',
 );
 
+/** Spanish (Español)
+ * @author Dferg
+ */
+$messages['es'] = array(
+	'uploadblacklist-desc' => 'Añade una lista negra de subida de archivos',
+);
+
 /** French (Français)
  * @author Crochet.david
  */
@@ -51,6 +58,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'uploadblacklist-desc' => 'Engade unha funcionalidade de lista negra de carga',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'uploadblacklist-desc' => 'Feketelista hozzáadása a feltöltésekhez',
 );
 
 /** Interlingua (Interlingua)
@@ -79,6 +93,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'uploadblacklist-desc' => 'Dodaje funkcjonalność czarnej listy przesyłanych plików',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'uploadblacklist-desc' => 'A gionta na funsionalità për carié la blacklist',
 );
 
 /** Tarandíne (Tarandíne)

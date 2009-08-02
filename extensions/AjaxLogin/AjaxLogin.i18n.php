@@ -133,8 +133,11 @@ Podrías perder tus ediciones si abandonas esta página ahora.',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
+	'ajaxLogin2' => 'Ziur al zaude?
+Orrialde honetan egindako aldaketak gal ditzakezu orrialde honetatik orain alde eginez gero.',
 	'ajaxlogin-create' => 'Kontua sortu',
 );
 
@@ -234,12 +237,15 @@ To budźe će k druhej stronje wjesć a ty móhł swoju aktualnu změnu zhubić.
 
 /** Hungarian (Magyar)
  * @author Blogadmin
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'ajaxlogin-desc' => 'Dinamikus doboz felhasználók belépéséhez és jelszóemlékeztetőre',
 	'ajaxLogin1' => 'A bejelentkezés befejezéséhez meg kell adnod a jelszavadat.
 Ez elirányít a szerkesztőablakból, úgyhogy ezek a szerkesztéseid el fognak veszni. Ha ezt nem szeretnéd, másold ki őket a szövegmezőből!',
 	'ajaxLogin2' => 'Biztos vagy benne?
 Az oldal elhagyásával a szerkesztéseid elvesznek.',
+	'ajaxlogin-create' => 'Új felhasználó létrehozása',
 );
 
 /** Interlingua (Interlingua)

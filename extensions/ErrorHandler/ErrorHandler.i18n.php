@@ -316,6 +316,13 @@ $messages['es'] = array(
 	'errorhandler-trace-line-internal' => '[función interna]: $1',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'errorhandler-errors' => 'Erroreak:',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Nike
@@ -626,6 +633,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -643,7 +651,7 @@ $messages['lb'] = array(
 	'errorhandler-error-user-error' => 'Feeler (vum Benotzer)',
 	'errorhandler-error-user-warning' => 'Benotzerwarnung',
 	'errorhandler-error-user-notice' => 'Benotzernotiz',
-	'errorhandler-error-user-deprecated' => 'Benotzer net ënnerstetzt',
+	'errorhandler-error-user-deprecated' => 'Benotzer refuséiert',
 	'errorhandler-error-strict' => 'Strikte Standard',
 	'errorhandler-error-recoverable' => 'Erfaassbare fatale Feeler',
 	'errorhandler-msg-text' => '$1 : $2 a(n) $3 (Linn $4)',

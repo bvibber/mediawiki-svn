@@ -81,6 +81,7 @@ $messages['be-tarask'] = array(
 	'wah-long-error' => '(ffmpeg ня можа прачытаць гэты файл: $1)',
 	'wah-transcode-working' => 'Гэты відэа-файл зараз перакадыруецца, выканана $1%',
 	'wah-transcode-helpout' => 'Вы можаце дапамагчы перакадыраваць гэты відэа-файл наведаўшы [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Немагчыма перакадаваць гэты файл.',
 	'wah-javascript-off' => 'У Вас павінен быць уключаны JavaScript для ўдзелу ў Wiki@Home',
 	'wah-loading' => 'загрузка інтэрфэйсу Wiki@Home <blink>...</blink>',
 );
@@ -90,6 +91,27 @@ $messages['be-tarask'] = array(
  */
 $messages['bs'] = array(
 	'wah-short-audio' => '$1 zvučna datoteka, $2',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'wah-desc' => 'Permet de distribuer le travail de transcodage de vidéo aux clients en utilisant firefogg.',
+	'wah-user-desc' => 'Wiki@Home permet aux membre de la communauté de donner des cycles processeur libres pour aider des opérations intensives en ressources.',
+	'wah-short-audio' => 'fichier de son $1, $2',
+	'wah-short-video' => 'fichier vidéo $1, $2',
+	'wah-short-general' => 'fichier média $1, $2',
+	'wah-long-audio' => '(fichier son $1, durée $2, $3)',
+	'wah-long-video' => '(fichier son $1, durée $2, $4×$5 pixels, $3)',
+	'wah-long-multiplexed' => '(fichier audio / vidéo multiplexé $1, durée $2, $4×$5 pixels, $3 total)',
+	'wah-long-general' => '(fichier média, durée $2, $3)',
+	'wah-long-error' => "(ffmpeg n'a pas pu lire ce fichier : $1)",
+	'wah-transcode-working' => "Cette vidéo est en train d'être transcodée et $1 % ont été effectués",
+	'wah-transcode-helpout' => 'Vous pouvez aider à transcoder cette vidéo en visitant [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => "Ce fichier n'a pas pu être transcodé.",
+	'wah-javascript-off' => 'Vous devez activer JavaScript pour participer à Wiki@Home',
+	'wah-loading' => "chargement de l'interface Wiki@Home <blink>...</blink>",
 );
 
 /** Galician (Galego)
@@ -128,7 +150,8 @@ $messages['hsb'] = array(
 	'wah-long-error' => '(ffmpeg njeje móhł tutu dataju čitać: $1)',
 	'wah-transcode-working' => 'Widejo so překoduje, $1 % je přewjedźene',
 	'wah-transcode-helpout' => 'Móžeš pomhać tute widejo přez wopytowanje [[Special:WikiAtHome|Wiki@Home]] překodować',
-	'wah-javascript-off' => 'Dyrbiš javascript zmóžnić, zo by so na Wiki@Home wobdźělił',
+	'wah-transcode-fail' => 'Njeje so poradźiło tutu dataju překodować.',
+	'wah-javascript-off' => 'Dyrbiš JavaScript zmóžnić, zo by so na Wiki@Home wobdźělił',
 	'wah-loading' => 'Začitanje powjercha Wik@Home <blink> ... </blink>',
 );
 
@@ -148,6 +171,7 @@ $messages['ja'] = array(
 	'wah-long-error' => '(ffmpeg はこのファイルを読み取れませんでした: $1)',
 	'wah-transcode-working' => 'この動画のトランスコードは$1%完了しています',
 	'wah-transcode-helpout' => '[[Special:WikiAtHome|Wiki@Home]] を使用すると、この動画のトランスコードをあなたが手伝うことができます',
+	'wah-transcode-fail' => 'このファイルはトランスコードに失敗しました。',
 	'wah-javascript-off' => 'Wiki@Home に参加するには JavaScript を有効にする必要があります',
 	'wah-loading' => 'Wiki@Home のインタフェースを読み込み中<blink>…</blink>',
 );
@@ -176,11 +200,37 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'wah-desc' => "Erlaabten et fir d'Ëmschreiwe vu Video-Aarbechten op Client ze verdeelen déi Firefogg benotzen.",
+	'wah-user-desc' => 'Wiki@Doheem erlaabt et Membere vun der Gemeinschaft fir spuersam CPU-Perioden ze spenden fir bäi resourcenintensiven Operatiounen ze hëllefen',
 	'wah-short-audio' => '$1 Toun-Fichier, $2',
 	'wah-short-video' => '$1 Video-Fichier, $2',
 	'wah-short-general' => '$1 Medie-Fichier, $2',
-	'wah-javascript-off' => 'Dir musst Javascript zouloossen fir bäi Wiki@Home matzemaachen',
+	'wah-long-audio' => '($1 Tounfichier, Längt $2, $3)',
+	'wah-long-general' => '(Mediefichier, Längt $2, $3)',
+	'wah-long-error' => '(ffmpeg konnt de Fichier $1 net liesen)',
+	'wah-transcode-helpout' => 'Dir kënnt hëllefen dëse Video ze transcdéieren wann Dir [[Special:WikiAtHome|Wiki@Home]] besicht',
+	'wah-transcode-fail' => 'Dëse Fichier konnt net ëmgeschriwwe ginn.',
+	'wah-javascript-off' => 'Dir musst JavaScript zouloossen fir bäi Wiki@Doheem matzemaachen',
 	'wah-loading' => 'wiki@home Interface lueden <blink>...</blink>',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'wah-short-audio' => '$1-geluidsbestand, $2',
+	'wah-short-video' => '$1-videobestand, $2',
+	'wah-short-general' => '$1-mediabestand, $2',
+	'wah-long-audio' => '($1-geluidsbestand, lengte $2, $3)',
+	'wah-long-video' => '($1-videobestand, lengte $2, $4×$5 pixels, $3)',
+	'wah-long-multiplexed' => '(gemultiplexed geluids/videobestand, $1, lengte $2, $4×$5 pixels, $3 totaal)',
+	'wah-long-general' => '(mediabestand, lengte $2, $3)',
+	'wah-long-error' => '(ffmpeg kon dit bestand niet lezen: $1)',
+	'wah-transcode-working' => 'Deze video wordt getranscodeerd ($1% gedaan)',
+	'wah-transcode-helpout' => 'U kunt helpen dit bestand te transcoderen door naar [[Special:WikiAtHome|Wiki@Home]] te gaan',
+	'wah-transcode-fail' => 'Het transcoderen van dit bestand is mislukt.',
+	'wah-javascript-off' => 'JavaScript moet ingeschakeld zijn om deel te nemen in Wiki@Home',
+	'wah-loading' => 'Wiki@Home-interface aan het laden <blink>...</blink>',
 );
 
 /** Russian (Русский)

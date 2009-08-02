@@ -1511,9 +1511,46 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Marco 27
+ * @author Melos
  */
 $messages['it'] = array(
+	'whitelistedit' => 'Editor della whitelist di accesso',
+	'whitelistfor' => '<center>Informazioni correnti per <b>$1</b> </center>',
+	'whitelisttablemodify' => 'Modifica',
+	'whitelisttablemodifyall' => 'Tutti',
+	'whitelisttablemodifynone' => 'Nessuno',
+	'whitelisttablepage' => 'Pagina',
+	'whitelisttabletype' => 'Livello di accesso',
+	'whitelisttableexpires' => 'Scade il',
+	'whitelisttablemodby' => 'Ultima modifica di',
+	'whitelisttablemodon' => 'Ultima modifica il',
 	'whitelisttableedit' => 'Modifica',
+	'whitelisttableview' => 'Visualizzazione',
+	'whitelisttablenewdate' => 'Nuova data:',
+	'whitelisttablechangedate' => 'Cambia data di scadenza',
+	'whitelisttablesetedit' => 'Imposta per la modifica',
+	'whitelisttablesetview' => 'Imposta per la visualizzazione',
+	'whitelisttableremove' => 'Rimuovi',
+	'whitelistnewpagesfor' => 'Aggiungi nuove pagine alla whitelist di <b>$1</b><br />
+Utilizza * o % come carattere jolly',
+	'whitelistnewtabledate' => 'Data di scadenza:',
+	'whitelistnewtableedit' => 'Imposta per la modifica',
+	'whitelistnewtableview' => 'Imposta per la visualizzazione',
+	'whitelistnowhitelistedusers' => 'Non ci sono utenti nel gruppo "{{MediaWiki:Group-restricted}}".
+Devi [[Special:UserRights|aggiungere utenti al gruppo]] prima di poter aggiungere pagine alla whitelist di un utente.',
+	'whitelistnewtablereview' => 'Cambia',
+	'whitelistoverview' => '== Descrizione delle modifiche per $1 ==',
+	'whitelistoverviewcd' => "* Modificata la data di scadenza a '''$1''' per [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Impostato l'accesso a '''$1''' per [[:$2|$2]]",
+	'whitelistoverviewrm' => "* Rimosso l'accesso a [[:$1|$1]]",
+	'whitelistoverviewna' => "* Aggiunta la pagina [[:$1|$1]] con livello di accesso '''$2''' e data di scadenza '''$3''' alla whitelist",
+	'whitelistrequestmsg' => "$1 ha richiesto l'accesso {{PLURAL:$3|alla seguente pagina|alle seguenti pagine}}:
+
+$2",
+	'whitelistnever' => 'mai',
+	'right-editwhitelist' => 'Modifica la whitelist per gli utenti esistenti.',
+	'action-editwhitelist' => 'modificare la whitelist per gli utenti esistenti',
 );
 
 /** Japanese (日本語)

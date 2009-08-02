@@ -570,6 +570,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'minipreview-desc' => 'MiniPreview wyświetla obok zdjęcia, podgląd–miniaturkę innych mediów w tej samej kategorii lub wyświetlanych na tych samych stronach',
 	'minipreview-files_in_category' => "W kategorii {{PLURAL:$1|jest|są|jest}} '''$1''' {{PLURAL:$1|plik|pliki|plików}}.",
 	'minipreview-files_in_gallery' => "W galerii {{PLURAL:$1|jest|są|jest}} '''$1''' {{PLURAL:$1|plik|pliki|plików}}.",
 	'minipreview-no_more_files_here' => 'Brak plików w tym kierunku.',

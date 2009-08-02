@@ -327,6 +327,7 @@ $messages['eu'] = array(
 	'watchers_link_title' => 'Nork begiratzen du orrialde hau?',
 	'watchers_error_article' => "'''Errorea:''' Orrialde hau ez da existitzen.",
 	'watchers_header' => '"$1" zaintzen ari {{PLURAL:$2|den erabaltzailea|diren erabaltzaileak}}',
+	'watchers_noone_watches' => 'Inork ez du orrialde hau ikusten.',
 );
 
 /** Finnish (Suomi)

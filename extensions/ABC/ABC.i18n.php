@@ -246,6 +246,13 @@ $messages['hsb'] = array(
 	'abcdownload' => 'Sćahnyć',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'abcdownload' => 'Letöltés:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

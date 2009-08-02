@@ -1425,12 +1425,22 @@ Túto operáciu nie je možné druhýkrát vrátiť.',
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'createsigndoc-pagename' => 'Страна:',
 	'createsigndoc-allowedgroup' => 'Дозвољена група:',
 	'createsigndoc-email' => 'Е-пошта:',
+	'createsigndoc-address' => 'Кућна адреса:',
 	'createsigndoc-extaddress' => 'Град, држава:',
+	'createsigndoc-phone' => 'Телефонски број:',
+	'createsigndoc-bday' => 'Дан рођења:',
+	'createsigndoc-minage' => 'Најмања старост:',
+	'createsigndoc-introtext' => 'Увод:',
+	'createsigndoc-hidden' => 'Сакривено',
+	'createsigndoc-optional' => 'Опционо',
+	'createsigndoc-create' => 'Направи',
+	'createsigndoc-error-generic' => 'Грешка: $1',
 );
 
 /** Swati (SiSwati)
