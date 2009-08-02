@@ -216,12 +216,6 @@ class CodeRepository {
 		} else {
 			$data = $wgMemc->get( $key );
 		}
-		
-		// Try DB cache...this is used by daemonds
-		if ( !$data && $useCache != 'skipcache' ) {
-			$dbCache = wfGetCache( CACHE_DB );
-			$data = $dbCache->get( $key );
-		}
 
 		# Try the database...
 		if ( !$data && $useCache != 'skipcache' ) {
@@ -249,12 +243,7 @@ class CodeRepository {
 			$svn = SubversionAdaptor::newFromRepo( $this->mPath );
 			$data = $svn->getDiff( '', $rev1, $rev2 );
 			// Store to cache
-			if( php_sapi_name() != 'cli' ) {
-				$wgMemc->set( $key, $data, 3600 * 24 * 3 );
-			} else {
-				$dbCache = wfGetCache( CACHE_DB ); // memcache fails in cli mode
-				$dbCache->set( $key, $data, 3600 * 24 * 3 );
-			}
+			$wgMemc->set( $key, $data, 3600 * 24 * 3 );
 			// Permanent DB storage
 			$storedData = $data;
 			$flags = Revision::compressRevisionText( $storedData );
