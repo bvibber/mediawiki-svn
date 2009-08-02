@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for the CreateBox extension.
  *
+ * @file
  * @ingroup Extensions
  * @author Ross McClure
  */
@@ -12,7 +13,7 @@ $messages = array();
  * @author Ross McClure
  */
 $messages['en'] = array(
-	'createbox-desc'   => 'Specialised inputbox for page creation',
+	'createbox-desc' => 'Specialised inputbox for page creation',
 	'createbox-create' => 'Create',
 	'createbox-exists' => "Sorry, \"'''{{FULLPAGENAME}}'''\" already exists.
 
