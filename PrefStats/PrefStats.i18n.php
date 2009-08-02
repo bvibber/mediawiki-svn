@@ -60,6 +60,7 @@ Kliknutím zobrazíte příslušné statistiky.',
 
 /** German (Deutsch)
  * @author Metalhead64
+ * @author Pill
  */
 $messages['de'] = array(
 	'prefstats' => 'Einstellungsstatistiken',
@@ -67,6 +68,7 @@ $messages['de'] = array(
 	'prefstats-title' => 'Einstellungsstatistiken',
 	'prefstats-list-intro' => 'Derzeit werden die folgenden Einstellungen aufgezeichnet.
 Klicke auf eine, um Statistiken darüber zu erhalten.',
+	'prefstats-noprefs' => 'Derzeit werden keine Einstellungen verfolgt. Konfiguriere $wgPrefStatsTrackPrefs, um Einstellungen zu verfolgen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -273,6 +275,7 @@ $messages['lb'] = array(
 	'prefstats-title' => 'Statistike vun den Astellungen',
 	'prefstats-list-intro' => 'Elo ginn dës Astellungen iwwerwaacht.
 Klickt op eng fir Statistiken iwwer hire Gebrauch ze gesinn.',
+	'prefstats-noprefs' => "Et ginn elo keng Astellungen iwwerwaacht. Stellt \$wgPrefStatsTrackPrefs an fir d'Astellungen z'iwwerwaachen.",
 );
 
 /** Lithuanian (Lietuvių)
@@ -319,6 +322,7 @@ $messages['no'] = array(
 	'prefstats-title' => 'Statistikk over innstillinger',
 	'prefstats-list-intro' => 'For tiden blir følgende innstillinger sporet.
 Klikk på en for å se statistikk om den.',
+	'prefstats-noprefs' => 'Ingen preferanser blir sporet. Konfigurer $wgPrefStatsTrackPrefs for å spore preferanser',
 );
 
 /** Occitan (Occitan)

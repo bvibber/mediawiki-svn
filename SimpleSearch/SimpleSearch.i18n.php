@@ -150,6 +150,15 @@ $messages['id'] = array(
 	'simplesearch-search' => 'Cari',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'simplesearch' => 'Ricerca semplice',
+	'simplesearch-desc' => 'Aggiunge funzionalità supplementari alla ricerca semplificata di Vector',
+	'simplesearch-search' => 'Ricerca',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
@@ -186,6 +195,14 @@ $messages['lt'] = array(
 	'simplesearch-search' => 'Ieškoti',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Junaidpv
+ */
+$messages['ml'] = array(
+	'simplesearch' => 'ലളിതമായ തിരച്ചില്‍',
+	'simplesearch-search' => 'തിരയുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -193,6 +210,15 @@ $messages['nl'] = array(
 	'simplesearch' => 'Eenvoudig zoeken',
 	'simplesearch-desc' => 'Voegt extra functionaliteit toe aan het vereenvoudigd zoeken in Vector',
 	'simplesearch-search' => 'Zoeken',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'simplesearch' => 'Enkelt søk',
+	'simplesearch-desc' => 'Legger til ekstra funksjonalitet til Vectors forenklede søk',
+	'simplesearch-search' => 'Søk',
 );
 
 /** Occitan (Occitan)
@@ -282,5 +308,14 @@ $messages['tr'] = array(
 $messages['vec'] = array(
 	'simplesearch' => 'Riserca sènplise',
 	'simplesearch-search' => 'Serca',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'simplesearch' => '简易搜索',
+	'simplesearch-desc' => '向Vector的简化搜索中添加附加功能',
+	'simplesearch-search' => '搜索',
 );
 
