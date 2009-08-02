@@ -1,8 +1,9 @@
 <?php
 /**
- * Internationalization file for DPLforum extension
+ * Internationalization file for DPLforum extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -11,11 +12,11 @@ $messages = array();
  * @author Ross McClure
  */
 $messages['en'] = array(
-	'dplforum-desc'    => 'DPL-based forum extension',
-	'dplforum-by'      => 'by $1',
-	'dplforum-edited'  => '- Last edited',
-	'dplforum-never'   => 'Never',
-	'dplforum-toofew'  => 'DPL Forum: Too few categories!',
+	'dplforum-desc' => 'DPL-based forum extension',
+	'dplforum-by' => 'by $1',
+	'dplforum-edited' => '- Last edited',
+	'dplforum-never' => 'Never',
+	'dplforum-toofew' => 'DPL Forum: Too few categories!',
 	'dplforum-toomany' => 'DPL Forum: Too many categories!'
 );
 
