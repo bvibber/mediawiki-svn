@@ -5144,13 +5144,11 @@ context.modules.toolbar = {
 						) {
 							var $headings = $( '<tr></tr>' ).appendTo( $table );
 							for ( heading in pages[page].headings ) {
+								var content = msg(
+									pages[page].headings[heading], 'content'
+								);
 								$( '<th></th>' )
-									.text(
-										msg(
-											pages[page].headings[heading],
-											'content'
-										)
-									)
+									.text( content )
 									.appendTo( $headings );
 							}
 						}
@@ -5161,18 +5159,14 @@ context.modules.toolbar = {
 							for ( row in pages[page].rows ) {
 								var $row = $( '<tr></tr>' ).appendTo( $table );
 								for ( cell in pages[page].rows[row] ) {
+									var content = msg(
+										pages[page].rows[row][cell], 'content'
+									);
 									$( '<td></td>' )
 										.addClass( cell )
 										.attr( 'valign', 'top' )
 										.append(
-											$( '<span></span>' )
-												.text(
-													msg(
-														pages[page]
-														    .rows[row][cell],
-														'content'
-													)
-												)
+											$( '<span></span>' ).html( content )
 										)
 										.appendTo( $row );
 								}
