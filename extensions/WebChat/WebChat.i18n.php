@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Internationalisation file for Mibbit extension.
+ * Internationalisation file for WebChat extension.
  *
  * @addtogroup Extensions
  */
