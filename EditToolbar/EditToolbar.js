@@ -603,7 +603,29 @@ var editToolbarConfiguration = {
 					"\u05e1", "\u05e2", "\u05e4", "\u05e3",
 					"\u05e6", "\u05e5", "\u05e7", "\u05e8",
 					"\u05e9", "\u05ea", "\u05f3", "\u05f4",
-					"\u05f0", "\u05f1", "\u05f2"]
+					"\u05f0", "\u05f1", "\u05f2", "\u05D0",
+					"\u05D3", "\u05D4", "\u05D5", "\u05D6",
+					"\u05D7", "\u05D8", "\u05D9", "\u05DA",
+					"\u05DB", "\u05DC", "\u05DD", "\u05DE",
+					"\u05DF", "\u05E0", "\u05E1", "\u05E2",
+					"\u05E3", "\u05E4", "\u05BE", "\u05F3",
+					"\u05F4"]
+					/* These characters are not visible alone, we need some way
+					 * to describe them visually on their own...
+					"\u05B0", "\u05B1", "\u05B2",
+					"\u05B3", "\u05B4", "\u05B5", "\u05B6",
+					"\u05B7", "\u05B8", "\u05B9", "\u05BB",
+					"\u05BC", "\u05C1", "\u05C2", "\u05C7",
+					"\u0591", "\u0592", "\u0593", "\u0594",
+					"\u0595", "\u0596", "\u0597", "\u0598",
+					"\u0599", "\u059A", "\u059B", "\u059C",
+					"\u059D", "\u059E", "\u059F", "\u05A0",
+					"\u05A1", "\u05A2", "\u05A3", "\u05A4",
+					"\u05A5", "\u05A6", "\u05A7", "\u05A8",
+					"\u05A9", "\u05AA", "\u05AB", "\u05AC",
+					"\u05AD", "\u05AE", "\u05AF", "\u05BF",
+					"\u05C0", "\u05C3"
+					*/
 			}
 		}
 	},
