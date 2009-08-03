@@ -34,7 +34,6 @@ $messages['en'] = array(
 	'wah-loading'		=> 'loading Wiki@Home interface <blink>...</blink>'
 );
 
-
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  */
@@ -91,6 +90,15 @@ $messages['be-tarask'] = array(
  */
 $messages['bs'] = array(
 	'wah-short-audio' => '$1 zvučna datoteka, $2',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'wah-short-audio' => '$1 soinu fitxategia, $2',
+	'wah-short-video' => '$1 bideo fitxategia, $2',
+	'wah-short-general' => '$1 media fitxategia, $2',
 );
 
 /** French (Français)
@@ -192,6 +200,7 @@ $messages['ksh'] = array(
 	'wah-long-error' => '(<code lang="en">ffmpeg</code> kunnt di Dattei nit lässe: $1)',
 	'wah-transcode-working' => 'Dat Viddejo weed ömkodeet, un es zoh $1% jedonn',
 	'wah-transcode-helpout' => 'Do kanns beim Ömkodeere hellfe för heh dä Viddejo, jangk doför noh de Sigg [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Di Dattei lehß sesch ömkodeere.',
 	'wah-javascript-off' => 'Dinge Brauser moß JavaSkrep künne un ennjeschalldt han, domet De bei Wiki@Home metmaache kanns.',
 	'wah-loading' => 'Ben wiki@home sing Schnetshtëll aam laade<blink>{{int:ellipsis}}</blink>',
 );
@@ -233,6 +242,27 @@ $messages['nl'] = array(
 	'wah-loading' => 'Wiki@Home-interface aan het laden <blink>...</blink>',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'wah-desc' => 'Permet de distribuir lo trabalh de transcodatge de vidèo als clients en utilizant firefogg.',
+	'wah-user-desc' => "Wiki@Home permet als membres de la comunautat de balhar de cicles processor liures per ajudar d'operacions intensivas en ressorsas.",
+	'wah-short-audio' => 'fichièr de son $1, $2',
+	'wah-short-video' => 'fichièr vidèo $1, $2',
+	'wah-short-general' => 'fichièr mèdia $1, $2',
+	'wah-long-audio' => '(fichièr son $1, durada $2, $3)',
+	'wah-long-video' => '(fichièr vidèo $1, durada $2, $4×$5 pixèls, $3)',
+	'wah-long-multiplexed' => '(fichièr àudio / vidèo multiplexada $1, durada $2, $4×$5 pixèls, $3 total)',
+	'wah-long-general' => '(fichièr mèdia, durada $2, $3)',
+	'wah-long-error' => '(ffmpeg a pas pogut legir aqueste fichièr : $1)',
+	'wah-transcode-working' => 'Aquesta vidèo es a èsser transcodada e $1 % son estats efectuats',
+	'wah-transcode-helpout' => 'Podètz ajudar a transcodar aquesta vidèo en visitant [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Aqueste fichièr a pas pogut èsser transcodat.',
+	'wah-javascript-off' => 'Vos cal activar JavaScript per participar a Wiki@Home',
+	'wah-loading' => "cargament de l'interfàcia Wiki@Home <blink>...</blink>",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -250,7 +280,25 @@ $messages['ru'] = array(
 	'wah-long-error' => '(ffmpeg не может прочитать этот файл: $1)',
 	'wah-transcode-working' => 'Это видео сейчас перекодируется, выполнено $1%.',
 	'wah-transcode-helpout' => 'Вы можете помочь перекодировать это видео, посетите [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Не удалось перекодировать этот файл.',
 	'wah-javascript-off' => 'У вас должен быть включён JavaScript, для возможности участия в Wiki@Home',
 	'wah-loading' => 'Загрузка интерфейса Wiki@Home <blink>...</blink>',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wah-short-audio' => '$1 звучни фајл, $2',
+	'wah-short-video' => '$1 видео-фајл, $2',
+	'wah-short-general' => '$1 медија-фајл, $2',
+	'wah-long-audio' => '($1 звучни фајл, трајање $2, $3)',
+	'wah-long-video' => '($1 видео-фајл, трајање $2, $3×$5 пиксела, $3)',
+	'wah-long-multiplexed' => '(мултиплексовани аудио/видео фајл, $1, трајање $2, $4×$5 пиксела, $3 укупно)',
+	'wah-long-general' => '(медија-фајл, трајање $2, $3)',
+	'wah-long-error' => '(ffmpeg није могао да прочита овај фајл: $1)',
+	'wah-transcode-working' => 'Овај видео се тренутно обрађује, и готово је $1% посла',
+	'wah-javascript-off' => 'Морате омогућити JavaScript, да бисте учествовали у Wiki@Home',
+	'wah-loading' => 'учитавање Wiki@Home интерфејса <blink>...</blink>',
 );
 
