@@ -20,13 +20,20 @@ If you create this page, remove this title from the <nowiki>{{#index:}}</nowiki>
 $2
 Please remove "$1" from the <nowiki>{{#index:}}</nowiki> on the above {{PLURAL:$3|page|pages}}.',
 
+	'index' => 'Index search',
 	'index-legend' => 'Search the index',
 	'index-search' => 'Search:',
 	'index-submit' => 'Submit',
 	'index-disambig-start' => "'''$1''' may refer to several pages:",
 	'index-exclude-categories' => '', # List of categories to exclude from the auto-disambig pages
-	'index-missing-param' => 'This page cannot be used with no parameters',
 	'index-emptylist' => 'There are no pages associated with "$1"',
+	'index-expand-detail' => 'Show pages indexed under this title',
+	'index-hide-detail' => 'Hide the list of pages',
+	'index-no-results' => 'The search returned no results',	
+	'index-search-explain' => 'This page uses an prefix search. 
+	
+Type the first few characters and press the submit button to search for page titles and index entries that start with the search string',
+	'index-details-explain' => 'Entries with arrows are index entries, click the arrow to show all pages indexed under that title.',
 );
 
 /** Message documentation (Message documentation)

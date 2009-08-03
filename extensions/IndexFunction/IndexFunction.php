@@ -30,19 +30,25 @@ $wgHooks['ArticleInsertComplete'][] = 'IndexFunctionHooks::onCreate';
 $wgHooks['EditPage::showEditForm:initial'][] = 'IndexFunctionHooks::editWarning';
 # Show a warning after page move, and do some cleanup
 $wgHooks['SpecialMovepageAfterMove'][] = 'IndexFunctionHooks::afterMove';
-
+# Load some Javascript for the special page
+$wgHooks['BeforePageDisplay'][] = 'efIndexJS';
+# Schema updates for update.php
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efIndexUpdateSchema';
 
 # Setup the special page
 $wgSpecialPages['Index'] = 'SpecialIndex';
 $wgSpecialPageGroups['Index'] = 'pages';
-$wgExtensionAliasesFiles['IndexFunction'] = $dir . 'IndexFunction.alias.php';
-$wgAutoloadClasses['SpecialIndex'] = $dir . 'SpecialIndex.php';
 
+# i18n
+$wgExtensionAliasesFiles['IndexFunction'] = $dir . 'IndexFunction.alias.php';
 $wgExtensionMessagesFiles['IndexFunction'] = $dir . 'IndexFunction.i18n.php';
+
+# Register classes with the autoloader
+$wgAutoloadClasses['SpecialIndex'] = $dir . 'SpecialIndex.php';
 $wgAutoloadClasses['IndexFunctionHooks'] = $dir . 'IndexFunction_body.php';
 $wgAutoloadClasses['IndexFunction'] = $dir . 'IndexFunction_body.php';
 $wgAutoloadClasses['IndexAbstracts'] = $dir . 'IndexAbstracts.php';
+$wgAutoloadClasses['SpecialIndexPager'] = $dir . 'SpecialIndex.php';
 
 /*
  * Used to set the context given on Special:Index auto-disambig pages
@@ -62,6 +68,19 @@ function efIndexUpdateSchema() {
 	$wgExtNewTables[] = array(
 		'indexes',
 		dirname( __FILE__ ) . '/indexes.sql' );
+	return true;
+}
+
+function efIndexJS( &$out, &$sk ) {
+	$t = $out->getTitle();
+	if ( $t->getPrefixedText() == SpecialPage::getTitleFor( 'Index' )->getPrefixedText() ) {
+		global $wgScriptPath;
+		$tag = Xml::element( 'script',
+			array( 'type'=>'text/javascript', 'src'=>"$wgScriptPath/extensions/IndexFunction/specialindex.js" ),
+			'', false
+		);
+		$out->addScript( $tag );
+	}
 	return true;
 }
 
