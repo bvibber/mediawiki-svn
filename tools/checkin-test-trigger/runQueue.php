@@ -34,7 +34,7 @@ function checkCommit( $revId ) {
 	// Check for changes which trigger our test suites...
 	foreach( $testSuites as $suite ) {
 		// Potentially expensive with multiple test sets, since we hit SVN for each one
-		$logs = $repo->getLog( $suite['path'], $revId, $revId );
+		$log = $repo->getLog( $suite['path'], $revId, $revId );
 		if( isset( $log[0]['paths'] ) && count( $log[0]['paths'] ) ) {
 			// There were changes to thsi path in this revision.
 			// Schedule it for testing!
