@@ -90,18 +90,19 @@ context.modules.toolbar = {
 	addSection: function( $section, section, sectionId ) {
 		/**
 		 * Wraps performAction with tool specific UI interaction
-		 * @param {Object} tool
-		 * @param {Object} element
 		 */
 		var useTool = function() {
 			var tool = $(this).data( 'tool' );
-			if ( 'type' in tool && 'action' in tool ) {
+			if ( 'type' in tool ) {
+				console.log( tool.type );
 				switch ( tool.type ) {
 					case 'button':
 					case 'link':
-						context.modules.toolbar.performAction(
-							tool.action
-						);
+						if ( 'action' in tool ) {
+							context.modules.toolbar.performAction(
+								tool.action
+							);
+						}
 						break;
 					case 'select':
 						if ( 'list' in tool && $(this).val() in tool.list ) {
