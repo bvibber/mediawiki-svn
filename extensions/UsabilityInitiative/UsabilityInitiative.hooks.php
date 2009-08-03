@@ -15,39 +15,50 @@ class UsabilityInitiativeHooks {
 	private static $styles = array();
 	private static $styleFiles = array(
 		'base_sets' => array(
+			'raw' => array(
+				array( 'src' => 'css/wikiEditor.css', 'version' => 2 ),
+				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 2 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 2 ),
+			),
 			'combined' => array(
 				array( 'src' => 'css/combined.css', 'version' => 2 ),
 			),
 			'minified' => array(
 				array( 'src' => 'css/combined.min.css', 'version' => 2 ),
 			),
-			'raw' => array(
-				array( 'src' => 'css/wikiEditor.css', 'version' => 2 ),
-			),
 		)
 	);
 	private static $scripts = array();
 	private static $scriptFiles = array(
-		'base_sets' => array(
-			'combined' => array(
-				array( 'src' => 'js/jquery.combined.js', 'version' => 2 ),
-			),
-			'minified' => array(
-				array( 'src' => 'js/jquery.combined.min.js', 'version' => 2 ),
-			),
-			'raw' => array(
-				array( 'src' => 'js/jquery.js', 'version' => 2 ),
-				array( 'src' => 'js/jquery.async.js', 'version' => 2 ),
-				array( 'src' => 'js/jquery.browser.js', 'version' => 2 ),
-				array( 'src' => 'js/jquery.cookie.js', 'version' => 2 ),
-				array( 'src' => 'js/jquery.textSelection.js', 'version' => 2 ),
-				array( 'src' => 'js/jquery.wikiEditor.js', 'version' => 2 ),
-			),
-		),
 		// Code to include when js2 is not present
 		'no_js2' => array(
-			array( 'src' => 'js/js2.js', 'version' => 1 ),
-		)
+			'raw' => array(
+				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
+				array( 'src' => 'js/js2/js2.js', 'version' => 2 ),
+			),
+			'combined' => array(
+				array( 'src' => 'js/js2.combined.js', 'version' => 2 ),
+			),
+			'minified' => array(
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 2 ),
+			),
+		),
+		// Core functionality of extension
+		'base_sets' => array(
+			'raw' => array(
+				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 2 ),
+			),
+			'combined' => array(
+				array( 'src' => 'js/plugins.combined.js', 'version' => 2 ),
+			),
+			'minified' => array(
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 2 ),
+			),
+		),
 	);
 	
 	/* Static Functions */
@@ -58,24 +69,25 @@ class UsabilityInitiativeHooks {
 		
 		// Only do this the first time!
 		if ( !self::$doOutput ) {
-			// Provide support for js2 conventions in it's absence
-			if ( !$wgEnableJS2system ) {
-				self::$scripts = array_merge(
-					self::$scriptFiles['no_js2'], self::$scripts
-				);
-			}
 			// Default to raw
 			$mode = $wgUsabilityInitiativeResourceMode; // Just an alias
 			if ( !isset( self::$scriptFiles['base_sets'][$mode] ) ) {
 				$mode = 'raw';
 			}
+			// Provide enough support to make things work, even when js2 is not
+			// in use (eventually it will be standard, but right now it's not)
+			if ( !$wgEnableJS2system ) {
+				self::$scripts = array_merge(
+					self::$scripts, self::$scriptFiles['no_js2'][$mode]
+				);
+			}
 			// Inlcude base-set of scripts
 			self::$scripts = array_merge(
-				self::$scriptFiles['base_sets'][$mode], self::$scripts
+				self::$scripts, self::$scriptFiles['base_sets'][$mode]
 			);
 			// Inlcude base-set of styles
 			self::$styles = array_merge(
-				self::$styleFiles['base_sets'][$mode], self::$styles
+				self::$styles, self::$styleFiles['base_sets'][$mode]
 			);
 		}
 		self::$doOutput = true;

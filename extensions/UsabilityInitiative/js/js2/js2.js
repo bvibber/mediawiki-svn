@@ -1,4 +1,4 @@
-/* JavaScript for UsabilityInitiative extensions */
+/* JavaScript for MediaWIki JS2 */
 
 /**
  * This is designed to be directly compatible with (and is essentially taken
