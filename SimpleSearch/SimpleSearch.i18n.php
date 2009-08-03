@@ -77,6 +77,22 @@ $messages['el'] = array(
 	'simplesearch-search' => 'Αναζήτηση',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'simplesearch' => 'Simpla serĉo',
+	'simplesearch-desc' => 'Aldonas pluan funkciadon al la simpligita serĉo de Vector.',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'simplesearch' => 'Bilaketa sinplea',
+	'simplesearch-search' => 'Bilatu',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -282,6 +298,14 @@ $messages['sk'] = array(
 	'simplesearch' => 'Jednoduché vyhľadávanie',
 	'simplesearch-desc' => 'Pridáva ďalšiu funkcionalitu k zjednodušenému vyhľadávaniu témy vzhľadu Vector',
 	'simplesearch-search' => 'Hľadať',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'simplesearch' => 'Једноставна претрага',
+	'simplesearch-search' => 'Претрага',
 );
 
 /** Swedish (Svenska)

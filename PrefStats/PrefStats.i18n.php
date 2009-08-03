@@ -165,6 +165,7 @@ Druck uf eini go Statischtike iber si aaluege.',
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'prefstats' => 'סטטיסטיקת העדפות',
@@ -172,6 +173,7 @@ $messages['he'] = array(
 	'prefstats-title' => 'סטטיסטיקת העדפות',
 	'prefstats-list-intro' => 'כרגע, ההעדפות הבאות נמצאות במעקב.
 לחצו על אחת כדי לצפות בסטטיסטיקות אודותיה.',
+	'prefstats-noprefs' => 'נכון לעכשיו לא מתבצע מעקב אחר העדפות. יש להגדיר את $wgPrefStatsTrackPrefs כדי לעקוב אחר העדפות.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
