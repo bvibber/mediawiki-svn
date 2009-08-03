@@ -1691,6 +1691,8 @@ $messages['ksh'] = array(
 	'ogg-no-player' => 'Deijt mer leid, süüd_esu uß, wi wann Dinge Kompjutor kei
 Affspellprojramm hät, wat mer öngerstoze däte.
 Beß esu joot, un <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">donn e Affspellprojramm erunger lade</a>.',
+	'ogg-no-player-js' => 'Deit mer leid, Dinge Rääschner hät entweeder JavaSkrepp afjeschalldt udder kei zopaß Affspellprojramm.<br />
+Do kanns <a href="$1">di Dattei eronger laade</a><br />udder<br />en <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">zopaß Affspellprojramm eronger laade</a> öm dat Schtöck en Dingen Brauser affzeschpelle.',
 	'ogg-no-xiphqt' => 'Deijt mer leid, süüd_esu uß, wi wann Dinge Kompjutor nit
 dat XiphQT Affspellprojrammstöck för <i lang="en">QuickTime</i> hät,
 ävver <i lang="en">QuickTime</i> kann <i lang="en">Ogg</i>-Dateie
@@ -2427,6 +2429,8 @@ $messages['ru'] = array(
 	'ogg-play-video' => 'Воспроизвести видео',
 	'ogg-play-sound' => 'Воспроизвести звук',
 	'ogg-no-player' => 'Извините, ваша система не имеет необходимого программного обеспечение для воспроизведения файлов. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте проигрыватель</a>.',
+	'ogg-no-player-js' => 'К сожалению, в вашей системе отлучён JavaScript, или данная технология не поддерживается проигрывателем.<br />
+Вы можете <a href="$1">скачать ролик</a><br />или<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачать проигрыватель</a> для воспроизведения ролика в браузере.',
 	'ogg-no-xiphqt' => 'Отсутствует компонент XiphQT для QuickTime. QuickTime не может воспроизвести файл Ogg без этого компонента. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте XiphQT</a> или выберите другой проигрыватель.',
 	'ogg-player-videoElement' => 'Встроенная поддержка браузером',
 	'ogg-player-oggPlugin' => 'Ogg модуль',

@@ -634,6 +634,31 @@ Bitte wart, bis di momentan Aktion abgschlossen isch.',
 	'tag-logpagetext' => 'Des isch e Logbuech vu allene Bildertag, wu zuegfiegt un usegnuh wore sin.',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'taggedimages' => 'અંકિતક ચિત્ર',
+	'imagetagging-addimagetag' => 'આ ચિત્રને અંકિત કરો',
+	'imagetagging-article' => 'પાનું:',
+	'imagetagging-articletotag' => 'અંકિતન માટેનું પાનું',
+	'imagetagging-imghistory' => 'ઇતિહાસ',
+	'imagetagging-images' => 'ચિત્રો',
+	'imagetagging-inthisimage' => 'આ ચિત્રમાં: $1',
+	'imagetagging-removetag' => 'અંકિતન દુર કરો',
+	'imagetagging-done-button' => 'અંકિતન સંપૂર્ણ',
+	'imagetagging-tag-button' => 'અંકિતક',
+	'imagetagging-tagcancel-button' => 'રદ કરો',
+	'imagetagging-addingtag' => 'અંકિતન ઉમેરો',
+	'imagetagging-removingtag' => 'અંકિતન દુર કરો',
+	'imagetagging-addtagsuccess' => 'ઉમેરેલ અંકિતક',
+	'imagetagging-removetagsuccess' => 'દુર કરાયેલ અંકિતક',
+	'imagetagging-imagetag-seemoreimages' => '"$1" ($2) નાં વધુ ચિત્રો જુઓ',
+	'imagetagging-taggedimages-title' => '"$1" નાં ચિત્રો',
+	'tag-logpagename' => 'અંકિતન નોંધ',
+	'tag-logpagetext' => 'આ ઉમેરાયેલ કે દુર કરાયેલ તમામ ચિત્ર અંકિતકનીં નોંધ છે.',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity

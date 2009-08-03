@@ -260,6 +260,15 @@ $messages['gsw'] = array(
 	'userimages-noimages' => '$1 het kei Bilder uffeglade.',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'userimages-caption' => '$1 દ્વારા ચડાવેલા ચિત્રો',
+	'userimages-noname' => 'અમાન્ય અથવા ન અપાયેલું સભ્યનામ.',
+	'userimages-noimages' => '$1 એ ચિત્ર ચડાવેલ નથી.',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

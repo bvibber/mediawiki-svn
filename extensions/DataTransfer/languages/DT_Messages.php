@@ -710,6 +710,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'dt-desc' => 'Lehetővé teszi a sablonhívásokban található adatszerkezetek importálását és exportálását',
@@ -725,6 +726,9 @@ $messages['hu'] = array(
 	'dt_xml_title' => 'Cím',
 	'dt_xml_id' => 'Azonosító',
 	'dt_xml_freetext' => 'Szabad szöveg',
+	'dt_import_importing' => 'Importálás…',
+	'importcsv' => 'CSV importálása',
+	'right-datatransferimport' => 'Adatok importálása',
 );
 
 /** Interlingua (Interlingua)

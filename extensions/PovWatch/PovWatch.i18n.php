@@ -489,6 +489,13 @@ Haga clic en el botón abajo para subscribirse.',
 	'action-povwatch_user' => 'agregar esta página a la lista de seguimiento de otro usuario',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'povwatch_title' => 'Izenburua:',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mardetanha

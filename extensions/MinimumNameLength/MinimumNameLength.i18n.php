@@ -139,6 +139,14 @@ $messages['es'] = array(
 	'minnamelength-desc' => 'Exige una longitud mínima para el nombre de usuario',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'minnamelength-error' => 'Zure lankide izena laburregia da. Luzera minimoa $1 da.',
+	'minnamelength-desc' => 'Lankide izenaren luzera minimoa ezarri',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

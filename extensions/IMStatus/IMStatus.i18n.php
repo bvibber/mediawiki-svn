@@ -369,10 +369,15 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
+	'imstatus_syntax' => 'Sintaxia',
 	'imstatus_default' => 'Lehenetsia',
 	'imstatus_example' => 'Adibidea',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'edo',
 );
 
 /** Persian (فارسی)

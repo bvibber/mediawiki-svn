@@ -470,6 +470,16 @@ $messages['sk'] = array(
 	'right-userrights-global' => 'Spravovať oprávnenia globálnych používateľov',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'globaluserrights' => 'Управљање глобалним правима корисника',
+	'gur-rightslog-name' => 'Историја глобалних прва',
+	'gur-rightslog-header' => 'Ово је историја промена глобалних права.',
+	'right-userrights-global' => 'Управљање глобалним правима корисника',
+);
+
 /** Swedish (Svenska)
  * @author Gabbe.g
  */

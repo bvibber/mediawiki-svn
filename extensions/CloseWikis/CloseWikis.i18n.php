@@ -1292,6 +1292,7 @@ $messages['sr-ec'] = array(
 	'closewikis-list-header-timestamp' => 'Затворен на',
 	'closewikis-list-header-dispreason' => 'Приказани разлог',
 	'closewikis-log' => 'Историја затварања Викија',
+	'closewikis-log-header' => 'Овде је историја свих затварања и поновних отварања Викија од стране стјуарда',
 	'closewikis-log-close' => 'затворен $2',
 	'closewikis-log-reopen' => 'поново отворен $2',
 	'right-editclosedwikis' => 'Измени затворене Викије',

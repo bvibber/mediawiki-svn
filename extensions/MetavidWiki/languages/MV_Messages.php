@@ -1907,17 +1907,31 @@ o puedes desear <a href="$3">Agregar el stream</a>.',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
+	'mv_duration_label' => 'Iraupena',
+	'mv_save_changes' => 'Aldaketak gorde',
 	'mv_upload_file' => 'Fitxategia igo',
 	'mv_external_file' => 'Kanpo fitxategia',
+	'mv_tool_search' => 'Bilatu',
 	'mv_tool_navigate' => 'Nabigatu',
 	'mv_tool_export' => 'Esportatu',
 	'mv_edit' => 'Aldatu',
+	'mv_history' => 'Historia',
 	'mv_remove' => 'kendu',
+	'mv_existing_categories' => '{{PLURAL:$1|kategoria|kategoriak}}:',
+	'mv_search_categories' => 'Kategoriak',
 	'mv_search_category' => 'Kategoria',
 	'mv_search_and' => 'eta',
 	'mv_search_or' => 'edo',
+	'mv_days' => '{{PLURAL:$1|Egun bat|$1 egun}}',
+	'mv_hours' => '{{PLURAL:$1|Ordu bat|$1 ordu}}',
+	'mv_hours_singular' => 'Ordu $1',
+	'mv_minutes' => '{{PLURAL:$1|Minutu bat|$1 minutu}}',
+	'mv_minutes_singular' => 'Minutu $1',
+	'mv_seconds' => '{{PLURAL:$1|Segundo bat|$1 segundo}}',
+	'mv_seconds_singular' => 'Segundo 1',
 );
 
 /** Finnish (Suomi)
@@ -4198,30 +4212,22 @@ dobei</a>.',
 	'mv_tool_export_title' => 'Dahteshtrohm-Mettadahte expoteere',
 	'mv_tool_embed' => 'Enbenge',
 	'mv_tool_embed_title' => 'Enschtellunge för dä jraad nohjefroochte Afschnett enbenge',
-	'mv_tool_overlay' => '
-Schabloone 
-overlays',
-	'mv_tool_overlay_title' => ' Op Schabloone opjeboute Metta_Daate 
-overlays',
+	'mv_tool_overlay' => 'Schabloone-Enbländunge ov -Övverbländunge',
+	'mv_tool_overlay_title' => 'Op Schabloone opjeboute Enbländunge ov Övverbländunge vun Metta_Daate',
 	'mv_results_found' => 'Jefonge Viddejo-Daate <b>$1</b> beß <b>$2</b> vun <b>$3</b>',
 	'mv_tool_mang_layers' => 'Nivohs verwallde',
 	'mv_update_layers' => 'Novohs op ene neue Shtand bränge',
 	'mv_watch_clip' => 'Ußschnet beloore',
 	'mv_close_clip' => 'Ußschnet zoh maache',
-	'mv_improve_transcript' => '
-transcrip
-verbessere',
+	'mv_improve_transcript' => 'Dä Opschriev verbessere',
 	'mv_people_matches' => 'Treffer bei Lück',
 	'mv_category_matches' => 'Treffer bei de Saachjroppe',
 	'mv_bill_matches' => 'Treffer bei de Projrammleßte',
 	'mv_interest_group_matches' => 'Treffer bei de Enträßenßjroppe',
 	'mv_click_to_edit' => 'Klecke zum Ändere',
-	'ht_en' => 'Transkrep',
-	'ht_en_desc' => 'Änglesch 
-transkrep
-He di Zoot
-overlay
-es för jeshproche Tex',
+	'ht_en' => 'Dä Opschriev',
+	'ht_en_desc' => 'De Opschrieve op Änglesch.
+He di Zoot Enbländung ov Övverbländung es för jeshproche Tex.',
 	'anno_en' => 'Aanmerkunge un Saachjroppe',
 	'anno_en_desc' => 'Englesch katejoriseere un Aanmerkunge maache.
 Hemet kanns De Stöckscher uß em Viddeo en Kattejorije donn un
@@ -4392,9 +4398,7 @@ expotteere',
 	'mv_stream_overview' => 'Dahteshtrohm-Övverseesh',
 	'mv_edit_time' => 'De Zick ändere',
 	'mv_embed_options' => 'Ußwahle för enzebenge',
-	'mv_overlay' => '
-Overlay
-Wärkzüsh',
+	'mv_overlay' => 'Wärkzüsh för Enbländunge ov Övverbländunge',
 	'mv_stream_tool_heading' => 'Dahteshtrohm-Wärkzüsh',
 	'mv_tool_missing' => 'dat jewönschte Werkzüch jidd et jaa nit',
 	'mv_bad_tool_request' => 'Dat es en kapodde Aanjab för enem Werkzüch singe Nahme. Dä Enndraach sullt esu sußsinn: <code>Wärkzüch-Nahme|Nahme-zom-Aanzeije</code>',
@@ -4406,8 +4410,7 @@ Wärkzüsh',
 	'mv_next_cat' => 'Näx Saachjrupp: $1',
 	'mv_search_stream' => 'Daateshtrohm söhke',
 	'mv_search_stream_title' => 'Em aktowälle Daateshtrohm söhke',
-	'mv_new_ht_en' => 'Neu
-Transkrepp',
+	'mv_new_ht_en' => 'Ene neue Opschriev',
 	'mv_new_anno_en' => 'En neu Makeerung udder Aanmerkung',
 	'mv_mang_layers' => 'Nivvohs verwallde',
 	'mv_mang_layers_title' => 'Enshtellunge för de Nivoh-Aanzeije em aktoälle Dahteshtrohm verwallde',

@@ -2378,6 +2378,59 @@ $messages['sk'] = array(
 	'right-readold' => 'Zobrazovať obsah starých revízií a ich rozdiely',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'grouppermissions-search' => 'Група:',
+	'grouppermissions-dologin' => 'Пријављивање',
+	'grouppermissions-dosearch' => 'Иди',
+	'grouppermissions-searchlabel' => 'Потражи групу',
+	'grouppermissions-deletelabel' => 'Обриши групу',
+	'grouppermissions-change' => 'Промени овлашћења група',
+	'grouppermissions-add' => 'Додај групу',
+	'grouppermissions-delete' => 'Обриши групу',
+	'grouppermissions-comment' => 'Коментар:',
+	'grouppermissions-addsuccess' => '$1 је успешно додата',
+	'grouppermissions-deletesuccess' => '$ је успешно обрисана',
+	'grouppermissions-changesuccess' => 'Овлашћења за $1 су успешно промењена',
+	'grouppermissions-true' => 'True',
+	'grouppermissions-false' => 'False',
+	'grouppermissions-never' => 'Никад',
+	'grouppermissions-sort-read' => 'Читање',
+	'grouppermissions-sort-edit' => 'Мењање',
+	'grouppermissions-sort-manage' => 'Менаџмент',
+	'grouppermissions-sort-admin' => 'Администрација',
+	'grouppermissions-sort-misc' => 'Разно',
+	'grouppermissions-log-add' => 'додата група „$2“',
+	'grouppermissions-log-change' => 'промењене дозволе за групу „$2“',
+	'grouppermissions-log-delete' => 'обрисана група „$2“',
+	'grouppermissions-log-name' => 'Историја дозвола група',
+	'grouppermissions-needjs' => "'''Упозорење:''' JavaScript је онемогућен у вашем браузеру. Неке погодности софтвера би могле бити онемогућене!",
+	'grouppermissions-sp-sort' => 'Сортирај дозволе',
+	'grouppermissions-sp-save' => 'Сними',
+	'grouppermissions-sp-success' => 'Дозволе су успешно сортиране',
+	'grouppermissions-sp-addtype' => 'Додај тип сортирања',
+	'grouppermissions-sp-addperm' => 'Додај дозволу',
+	'grouppermissions-sp-remove' => 'обриши',
+	'grouppermissions-sp-deltype' => 'Обриши тип сортирања',
+	'grouppermissions-rug-header' => 'На овој страни можете да обришете кориснике из некоришћених (обрисаних) група.',
+	'grouppermissions-rug-success' => 'Корисници успешно обрисани из некоришћених група!',
+	'grouppermissions-rug-confirm' => 'Обриши кориснике из некоришћених група',
+	'right-grouppermissions' => 'Управљање дозволама група',
+	'right-viewsource' => 'Преглед вики-сорс заштићених страна',
+	'right-raw' => 'Преглед сирових страна',
+	'right-render' => 'Преглед рендерованих страна без навигације',
+	'right-info' => 'Преглед информација о странама',
+	'right-history' => 'Преглед историја страница',
+	'right-search' => 'Претраживање Викија',
+	'right-contributions' => 'Преглед доприноса странама',
+	'right-recentchanges' => 'Преглед скорашњим изменама',
+	'right-edittalk' => 'Мењање страна за разговор',
+	'right-edit-new' => 'Мењање страна (које нису стране за разговор)',
+	'right-readold' => 'Преглед садржаја старих ревизија и дифова',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

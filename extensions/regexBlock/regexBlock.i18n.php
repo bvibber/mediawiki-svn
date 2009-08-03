@@ -668,12 +668,16 @@ Probablemente no existe tal usuario.',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'regexblock-form-username' => 'IP helbidea edo lankide izena:',
 	'regexblock-form-reason' => 'Arrazoia:',
+	'regexblock-form-submit' => 'Erabiltzaile hau blokeatu',
+	'regexblock-nodata-found' => 'Ez da daturik aurkitu',
 	'regexblock-view-all' => 'Dena',
 	'regexblock-view-go' => 'Joan',
+	'regexblock-view-reason' => 'arrazoia: $1',
 );
 
 /** Finnish (Suomi)

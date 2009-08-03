@@ -257,11 +257,13 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'eval' => 'Kiértékelés',
 	'eval-desc' => '[[Special:Eval|Speciális lap]] az <code>eval()</code> függvény használatára',
 	'eval_submit' => 'Kiértékelés',
+	'eval_escape' => 'Escape kimenete',
 	'eval_out' => 'Kimenet',
 	'eval_code' => 'Kód',
 );

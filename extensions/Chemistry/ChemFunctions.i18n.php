@@ -55,7 +55,7 @@ $messages['pcd'] = array(
 	'chemicalsources' => 'Référinches kémiques',
 	'chemicalsource-desc' => 'Ajouter el balise <nowiki><chemform></nowiki>, pou ches formules kémiques',
 	'chemFunctions_ListPage' => 'Référinches kémiques',
-	'chemFunctions_DataList' => 'Dsous il y o eune lisse aveuc ches loïens ed ches chites où os pourroème trouvoér des informachions su ches molécules kémiques qu\'os trachez.<br /><br />
+	'chemFunctions_DataList' => 'Dsous il y o eune lisse aveuc chés loïens éd chés chites où os pourroème trouvoér des informachons su chés molétchules kémiques qu\'os trachez.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS at the Oxford University (UK) (not searchable)</a><br />',
 	'chemFunctions_CAS' => 'Liméro CAS',

@@ -577,6 +577,7 @@ Retorne a:
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
@@ -586,8 +587,8 @@ $messages['et'] = array(
 	'crosswikiblock-submit' => 'Blokeeri see kasutaja',
 	'crosswikiblock-anononly' => 'Blokeeri ainult anonüümseid kasutajaid',
 	'crosswikiblock-nocreate' => 'Takista konto loomist',
-	'crosswikiblock-autoblock' => "Blokeeri automaatselt ka selle kasutaja poolt kasutatud IP aadress, ning ka kõik sarnased IP'd millelt võidakse proovida sodida",
-	'crosswikiblock-noemail' => 'Takista kasutaja poolt ka e-maili saatmine',
+	'crosswikiblock-autoblock' => 'Blokeeri automaatselt viimane IP-aadress, mida see kasutaja kasutas, ja ka järgnevad, mille alt ta võib proovida kaastööd teha.',
+	'crosswikiblock-noemail' => 'Takista kasutajal e-kirjade saatmine',
 	'crosswikiunblock-reason' => 'Põhjus:',
 	'crosswikiunblock-submit' => 'Lõpeta kasutaja blokeering',
 	'crosswikiblock-nousername' => 'Ühtegi kasutajanime ei antud',
@@ -599,10 +600,25 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
+	'crosswikiblock' => 'Erabiltzailea blokeatu beste wiki batean',
+	'crosswikiblock-reason' => 'Arrazoia:',
+	'crosswikiblock-submit' => 'Erabiltzaile hau blokeatu',
+	'crosswikiblock-nocreate' => 'Kontuen sorrera eragotzi',
 	'crosswikiblock-noemail' => 'Erabiltzaileak e-mailak bidal ditzan ekidin',
+	'crosswikiunblock' => 'Erabiltzailea desblokeatu beste wiki batean',
+	'crosswikiunblock-reason' => 'Arrazoia:',
+	'crosswikiunblock-submit' => 'Erabiltzaile hau desblokeatu',
+	'crosswikiblock-nousername' => 'Ez da erabiltzaile izenik zehaztu',
+	'crosswikiblock-dbnotfound' => '$1 datu-basea ez da existitzen',
+	'crosswikiblock-noname' => '"$1" ez da baliozko erabiltzaile izena.',
+	'crosswikiblock-nouser' => 'Ez da "$3" erabiltzailea aurkitu.',
+	'crosswikiblock-noreason' => 'Ez da arrazoirik zehaztu.',
+	'crosswikiblock-noblock' => 'Erabiltzaile hau ez dago blokeaturik.',
+	'right-crosswikiblock' => 'Erabiltzaileak beste wikietan blokeatu eta desblokeatu',
 );
 
 /** Finnish (Suomi)

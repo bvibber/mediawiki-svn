@@ -236,10 +236,12 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'showprocesslist-id' => 'NA',
 	'showprocesslist-user' => 'Lankidea',
+	'showprocesslist-db' => 'Datu-basea',
 	'showprocesslist-info' => 'Info',
 );
 

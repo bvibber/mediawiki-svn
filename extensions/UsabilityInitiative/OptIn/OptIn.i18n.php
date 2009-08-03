@@ -701,6 +701,32 @@ La sección de ayuda provee acceso rápido a una referencia para usos comunes de
 <div style="clear:both;"></div>',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'optin-title-optedout' => 'Beta probatu',
+	'optin-title-optedin' => 'Beta utzi',
+	'optin-title-justoptedin' => 'Ongi etorri Betara',
+	'optin-title-justoptedout' => 'Mila esker Beta probatzeagatik',
+	'optin-accept-long' => 'Beta probatu',
+	'optin-accept-long-anon' => 'Saioa hasi eta Beta probatu',
+	'optin-deny-short' => 'Ez, mila esker',
+	'optin-submit-out' => 'Beta utzi',
+	'optin-try' => 'Beta probatu',
+	'optin-leave' => 'Beta utzi',
+	'optin-survey-yes' => 'Bai',
+	'optin-survey-no' => 'Ez',
+	'optin-survey-answer-whyoptout-hard' => 'Erabiltzea zailegia zen.',
+	'optin-survey-answer-whyoptout-other' => 'Beste arrazoirik:',
+	'optin-survey-question-techfail' => 'Arazo teknikorik izan duzu Beta erabiltzean?',
+	'optin-survey-question-browser' => 'Zein nabigatzaile erabiltzen duzu?',
+	'optin-survey-answer-browser-other' => 'Beste nabigatzailerik:',
+	'optin-survey-question-os' => 'Zein sistema eragile erabiltzen duzu?',
+	'optin-survey-answer-os-other' => 'Beste sistema eragilerik:',
+	'optin-survey-question-res' => 'Zein da zure pantailaren bereizmena?',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
@@ -1047,6 +1073,7 @@ D Hilf-Sektion stellt e schnölle zuegang z Verfiegig zuen ere Quälle vu gängi
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'optin' => 'הרשמה ליוזמת השימושיות',
@@ -1057,7 +1084,11 @@ $messages['he'] = array(
 באפשרותכם לבטל את הרשמתכם בכל זמן באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" שלהלן.',
 	'optin-success-out' => 'ביטלתם בהצלחה את הרשמתכם לקבלת שיפורי השימושיות של יוזמת השימושיות.
 באפשרותכם להירשם שוב בכל זמן באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" שלהלן.',
+	'optin-success-feedback' => 'תודה לכם על המשוב!',
+	'optin-deny-short' => 'לא תודה',
 	'optin-submit-out' => 'ביטול הרשמה',
+	'optin-survey-yes' => 'כן',
+	'optin-survey-no' => 'לא',
 	'optin-survey-intro' => 'תודה לכם על שאתם מנסים את שיפורי השימושיות של יוזמת השימושיות.
 באפשרותכם לבטל את הרשמתכם באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" בתחתית הדף.
 
@@ -1072,6 +1103,7 @@ $messages['he'] = array(
 	'optin-survey-question-os' => 'באיזו מערכת הפעלה אתם משתמשים?',
 	'optin-survey-answer-os-other' => 'אחרת:',
 	'optin-survey-question-res' => 'מהי רזולוציית המסך שלכם?',
+	'optin-survey-answer-changes-other' => 'אחר:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1809,8 +1841,18 @@ $messages['no'] = array(
 	'optin-title-justoptedout' => 'Takk for at du prøver vår Beta',
 	'optin-title-feedback' => 'Tilbakemelding om Beta',
 	'optin-needlogin' => 'Du må [$1 logge inn] for å prøve Beta',
+	'optin-try' => 'Forsøk Beta',
+	'optin-leave' => 'Forlat Beta',
+	'optin-feedback' => 'Beta tilbakemelding',
+	'optin-survey-yes' => 'Ja',
+	'optin-survey-no' => 'Nei',
+	'optin-survey-intro' => 'Takk for at du prøver Betaen.
+Vi vil gjerne vite hva du tenker om vårt nye grensesnitt, så vi vil sette pris på om du fyller ut et valgfritt skjema under, før du trykker på "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskelig å redigere en side.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Den virket ikke ordentlig.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Jeg likte ikke måten det så ut.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Jeg likte ikke de nye fanene og utseende.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Jeg likte ikke den nye menyen.',
 	'optin-survey-answer-whyoptout-other' => 'Annen årsak:',
 	'optin-survey-question-feedback' => 'Vennligst gi oss dine tilbakemeldinger:',
 	'optin-survey-question-browser' => 'Hvilken nettleser bruker du?',
@@ -2366,6 +2408,27 @@ Nové a vylepšené ikony vyjasňujú čo ktorý nástroj robí.
 Rozbaliteľné časti skrývajú zriedka používané nástroje, pričom sú stále len o jedno kliknutie ďalej.
 Časť Pomocník poskytuje rýchly prístup do referenčnej dokumentácie bežného ppoužitia wiki syntaxe.
 <div style="clear:both;"></div>',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'optin-survey-yes' => 'Да',
+	'optin-survey-no' => 'Не',
+	'optin-survey-answer-whyoptout-hard' => 'Био је претежак за коришћење.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Није радио како треба.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Није радио предвидиво.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Није ми се свидело како изгледа.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Нису ми се свидели нови табови и изглед.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Није ми се свидео нови тулбар.',
+	'optin-survey-answer-whyoptout-other' => 'Други разлог:',
+	'optin-survey-question-browser' => 'Који браузер користите?',
+	'optin-survey-answer-browser-other' => 'Други браузер:',
+	'optin-survey-question-os' => 'Који оперативни систем користите?',
+	'optin-survey-answer-os-other' => 'Други оперативни систем:',
+	'optin-survey-question-res' => 'Која је резолуција Вашег екрана?',
+	'optin-survey-answer-changes-other' => 'Друго:',
 );
 
 /** Telugu (తెలుగు)

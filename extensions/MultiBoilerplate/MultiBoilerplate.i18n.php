@@ -358,6 +358,10 @@ $messages['oc'] = array(
 	'multiboilerplate-desc' => "Permet de seleccionar una pagina o un modèl d'incorporar a partir d'una bóstia en naut del formulari d'edicion d'una pagina.",
 	'multiboilerplate-legend' => "Seleccionar la pagina d'incorporar",
 	'multiboilerplate-submit' => 'Cargar',
+	'boilerplates' => 'Modèls disponibles',
+	'multiboilerplate-special-pagetext' => 'Aquestes modèls pòdon èsser precargats a la creacion de paginas. (<span class=plainlinks>[{{fullurl:Aquesta pagina existís pas|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Los modèls son definits dins LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Los modèls son definits dins [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Polish (Polski)
@@ -409,6 +413,10 @@ $messages['ru'] = array(
 	'multiboilerplate-desc' => 'Позволяет пользователям выбирать типовые тексты из выпадающего списка над полем редактирования',
 	'multiboilerplate-legend' => 'Выбор образца',
 	'multiboilerplate-submit' => 'Загрузить',
+	'boilerplates' => 'Доступные заготовки страниц',
+	'multiboilerplate-special-pagetext' => 'Эти шаблоны могут подгружаться при создании страницы. (<span class=plainlinks>[{{fullurl:Этой страницы не существует|action=edit}} Пример]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Заготовки определены в LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Заготовки определены в [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Slovak (Slovenčina)

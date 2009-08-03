@@ -119,6 +119,13 @@ $messages['hsb'] = array(
 	'Editsectionhilitelink-desc' => 'Přihódny wurězk strony wuzběhnyć, hdyž myšku přez wobdźěłanski wotkaz pohibuješ',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'Editsectionhilitelink-desc' => 'Kiemeli a megfelelő bekezdést az oldalon, ha az egeret a szerkesztés gomb fölé viszed',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -230,6 +237,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'Editsectionhilitelink-desc' => 'Zvýrazniť príslušnú sekciu článku keď podržíte ukazovateľ myši nad odkazom „upraviť“',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'Editsectionhilitelink-desc' => 'Истиче одговарајући одељак стране када се мишем пређе преко везе за његову измену',
 );
 
 /** Vietnamese (Tiếng Việt)

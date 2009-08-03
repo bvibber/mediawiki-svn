@@ -471,11 +471,16 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
+	'recordadmin-select' => 'Hautatu',
+	'recordadmin-submit' => 'Bidali',
 	'recordadmin-badtitle' => 'Izenburu okerra!',
 	'recordadmin-buttonsearch' => 'Bilatu',
 	'recordadmin-buttoncreate' => 'Sortu',
+	'recordadmin-buttonreset' => 'Berrezarri',
+	'recordadmin-buttonsave' => 'Gorde',
 	'recordadmin-viewlink' => 'ikusi',
 	'recordadmin-editlink' => 'aldatu',
 );
@@ -675,6 +680,7 @@ $messages['he'] = array(
 	'recordadmin-modified' => 'השתנתה',
 	'recordadmin-actions' => 'פעולות',
 	'recordadmin-needscontent' => 'הוספת תוכן...',
+	'recordadmin-editwithform' => 'עריכה באמצעות טופס',
 	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
 );
 
@@ -1094,6 +1100,7 @@ $messages['oc'] = array(
 	'recordadmin-modified' => 'Modificat',
 	'recordadmin-actions' => 'Accions',
 	'recordadmin-needscontent' => 'Apondre lo contengut...',
+	'recordadmin-editwithform' => 'Modificar amb un formulari',
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 
@@ -1355,7 +1362,9 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'recordadmin-select' => 'Изабери',
 	'recordadmin-submit' => 'Пошаљи',
+	'recordadmin-alreadyexist' => 'Жао нам је, „$1“ већ постоји!',
 	'recordadmin-buttonsave' => 'Сними',
 );
 

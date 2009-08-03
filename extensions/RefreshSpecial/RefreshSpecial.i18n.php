@@ -348,6 +348,13 @@ $messages['es'] = array(
 	'right-refreshspecial' => 'Refrescar páginas especiales',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'refreshspecial-reconnected' => 'Birkonektaturik.',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix <jack@countervandalism.net>

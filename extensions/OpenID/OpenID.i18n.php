@@ -1139,6 +1139,7 @@ $messages['eu'] = array(
 	'openidemail' => 'E-posta helbidea',
 	'openidlanguage' => 'Hizkuntza',
 	'openidnotavailable' => 'Nahi duzun ezizena ($1) beste lankide batek erabiltzen du jada.',
+	'openidchoosepassword' => 'pasahitza:',
 );
 
 /** Finnish (Suomi)

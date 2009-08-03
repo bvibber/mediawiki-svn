@@ -388,10 +388,12 @@ Click <a href='$1'>aquí</a> para regresar.",
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'spamdifftool_spam_link_text' => 'spamera gehitu',
 	'spamdifftool_option_none' => 'ezer',
+	'spamdifftool_submit_buttom' => 'Bidali',
 );
 
 /** Persian (فارسی)

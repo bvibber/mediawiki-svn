@@ -265,6 +265,16 @@ $messages['es'] = array(
 	'tog-riched_toggle_remember_state' => 'Recordar la última selección del editor',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'textrichditor' => 'Aberastutako Editorea',
+	'prefs-fckeditor' => 'Aberastutako Editorea',
+	'tog-riched_disable' => 'Ezgaitu aberastutako editorea',
+	'rich_editor_new_window' => 'Ireki Aberastutako editorea leiho berri batean',
+);
+
 /** Persian (فارسی) */
 $messages['fa'] = array(
 	'textrichditor' => 'ويرايشگر پيشرفته',

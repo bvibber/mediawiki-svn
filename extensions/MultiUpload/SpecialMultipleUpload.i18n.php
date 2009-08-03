@@ -403,10 +403,12 @@ Los archivos inapropiados se eliminarán inmediatamente: mira la [[{{MediaWiki:M
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'multipleupload-saveallfiles' => 'Fitxategi guztiak gorde',
 	'multiupload-fileuploaded' => 'Fitxategia igota.',
+	'multiupload-blank' => 'Ez da fitxategirik hautatu',
 );
 
 /** Persian (فارسی)

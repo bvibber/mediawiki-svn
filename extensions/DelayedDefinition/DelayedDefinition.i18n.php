@@ -69,6 +69,13 @@ $messages['es'] = array(
 	'delaydef-error-redef' => 'Error: Redefinición intentada de $1.',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'delaydef-error-no-name' => 'Errorea: Ez da parametrorik zehaztu.',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -97,6 +104,16 @@ $messages['gsw'] = array(
 	'delaydef-error-missing-def' => 'Fähler: d Definition, wu s fir &lt;display name="$1"&gt; brucht, isch nit gfunde wore.',
 	'delaydef-error-no-name' => 'Fähler: Kei Parameter spezifiziert.',
 	'delaydef-error-redef' => 'Fähler: Versuechti Nejdefinition vu $1.',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'delaydef-desc' => 'הוספת &lt;define&gt; ו־&lt;display&gt; כדי לאפשר מיקום מחדש של הקוד',
+	'delaydef-error-missing-def' => 'שגיאה: ההגדרה הנדרשת עבור &lt;display name="$1"&gt; לא נמצאה.',
+	'delaydef-error-no-name' => 'שגיאה: לא צויין משתנה לשם.',
+	'delaydef-error-redef' => 'שגיאה: התבצע נסיון להגדרת $1 מחדש.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

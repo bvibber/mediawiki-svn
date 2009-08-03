@@ -60,6 +60,13 @@ $messages['gl'] = array(
 	'uploadblacklist-desc' => 'Engade unha funcionalidade de lista negra de carga',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'uploadblacklist-desc' => 'הוספת יכולת העלאת רשימה שחורה',
+);
+
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
  */

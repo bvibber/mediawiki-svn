@@ -370,6 +370,16 @@ $messages['sk'] = array(
 	'uos-title' => 'Rozdelenie hodnôt používateľskej voľby $1',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'uos-warn' => 'PHPlot није инсталиран!',
+	'uos-choose' => 'Изаберите једну од следећих корисничких опција: $1',
+	'uos-unknown' => '*Подразумевано',
+	'uos-other' => '*Друго',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

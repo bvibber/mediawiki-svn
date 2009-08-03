@@ -109,6 +109,7 @@ Glědaj teke [[Special:MostRevisors|'''boki z nejwěcej pśeglědarjami''']] a [
  */
 $messages['eu'] = array(
 	'cooperationstatistics-articles' => '{{PLURAL:$1|Orrialde bat|$1 orrialde}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$1|Editore bat|$1 editore}} {{PLURAL:$2|du|ditu}}',
 );
 
 /** French (Français)

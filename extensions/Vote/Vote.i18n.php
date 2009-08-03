@@ -1481,8 +1481,10 @@ pecenje|Печење',
 	'vote-results-choice' => 'Избор',
 	'vote-results-count' => 'Број гласова',
 	'vote-results-none' => 'Тренутно није дат ни један глас.',
-	'vote-login' => 'Морате [$1 да се улогујете] да бисте глсали.',
+	'vote-login' => 'Морате да се [$1 пријавите], да бисте гласали.',
 	'vote-invalid-choice' => 'Морате изабрати једну од расположивих опција.',
+	'right-vote' => 'Гласање',
+	'right-voteadmin' => 'Прегледање резултата гласања',
 );
 
 /** Seeltersk (Seeltersk)

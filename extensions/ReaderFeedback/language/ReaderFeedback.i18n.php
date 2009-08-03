@@ -1338,7 +1338,7 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'readerfeedback' => 'Утисак читалаца',
+	'readerfeedback' => 'Како Вам се свидела ова страна?',
 	'readerfeedback-text' => "''Молим те, посвети мало пажње и оцени страну испод. Твоје мишљење је вредно и помаже нам у унапређивању сајта.''",
 	'readerfeedback-reliability' => 'поузданост',
 	'readerfeedback-completeness' => 'потпуност',
@@ -1351,7 +1351,7 @@ $messages['sr-ec'] = array(
 	'readerfeedback-level-3' => 'добро',
 	'readerfeedback-level-4' => 'изузетно',
 	'readerfeedback-submit' => 'пошаљи',
-	'readerfeedback-main' => 'Само стране са садржајем могу бити прегледане.',
+	'readerfeedback-main' => 'Само стране садржаја могу бити оцењиване.',
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
 );
 

@@ -311,6 +311,17 @@ $messages['gsw'] = array(
 	'intersection_noincludecats' => 'Fähler: S muess zmindescht ei Kategorii yybunde wäre oder gib e Namensruum aa!',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'intersection-desc' => 'શ્રેણીમાં અથવા વિવિધ શ્રેણીઓનાં છેદનબિંદુમાં મોજૂદ, હાલની તાજી બાબતોની વિગતવાર યાદી દર્શાવો.',
+	'intersection_toomanycats' => 'ત્રુટી:વધુ પડતી શ્રેણીઓ!',
+	'intersection_toofewcats' => 'ત્રુટી:બહુ ઓછી શ્રેણીઓ!',
+	'intersection_noresults' => 'ત્રુટી:પરીણામ નથી!',
+	'intersection_noincludecats' => 'ત્રુટી:તમારે ઓછામાં ઓછી એક શ્રેણીનો સમાવેશ કરવો, કે નામસ્થળનો ઉલ્લેખ કરવો જરૂરી છે !',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

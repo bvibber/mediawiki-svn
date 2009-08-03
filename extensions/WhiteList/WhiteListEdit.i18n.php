@@ -1549,8 +1549,10 @@ Devi [[Special:UserRights|aggiungere utenti al gruppo]] prima di poter aggiunger
 
 $2",
 	'whitelistnever' => 'mai',
-	'right-editwhitelist' => 'Modifica la whitelist per gli utenti esistenti.',
+	'right-editwhitelist' => 'Modifica la whitelist per gli utenti esistenti',
+	'right-restricttowhitelist' => 'Modifica e visualizza solo le pagine presenti nella whitelist',
 	'action-editwhitelist' => 'modificare la whitelist per gli utenti esistenti',
+	'action-restricttowhitelist' => 'modificare e visualizzare solo le pagine presenti nella whitelist',
 );
 
 /** Japanese (日本語)

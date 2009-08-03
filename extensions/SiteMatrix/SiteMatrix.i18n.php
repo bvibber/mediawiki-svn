@@ -442,11 +442,13 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'sitematrix' => 'Wikimediako beste hizkuntzatako proiektuen zerrenda',
 	'sitematrix-language' => 'Hizkuntza',
 	'sitematrix-others' => 'Wikimediaren beste proiektuak',
+	'sitematrix-sitetotal' => 'Guztira',
 	'sitematrix-private' => 'pribatua',
 	'sitematrix-fishbowl' => 'aldatzea mugatua',
 );

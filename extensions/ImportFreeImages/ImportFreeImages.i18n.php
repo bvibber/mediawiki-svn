@@ -305,6 +305,17 @@ Para hacerlo, por favor obtén una [http://www.flickr.com/services/api/misc.api_
 	'importfreeimages_returntoform' => "O, haga click <a href='$1'>aquí</a> para retornar a sus resultados de búsqueda",
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'importfreeimages' => 'Irudi libreak inportatu',
+	'importfreeimages_invalidurl' => '"$1" URLa ez da baliozko Flickr irudia.',
+	'importfreeimages_owner' => 'Egilea',
+	'importfreeimages_importthis' => 'hau inportatu',
+	'importfreeimages_returntoform' => "Edo egizu klik <a href='$1'>hemen</a> zure bilaketaren emaitzetara itzultzeko",
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -447,6 +458,7 @@ $messages['he'] = array(
 	'importfreeimages_filefromflickr' => '$1 על ידי המשתמש <b>[$2]</b> מ־Flickr. כתובת מקורית',
 	'importfreeimages_promptuserforfilename' => 'אנא הקלידו את שם קובץ היעד:',
 	'importfreeimages_returntoform' => "או, לחצו <a href='$1'>כאן</a> כדי לחזור לתוצאות החיפוש",
+	'importfreeimages_nophpflickr' => 'phpFlickr לא הותקן, יש להגדיר את $wgIFphpFlickr בקובץ LocalSettings.php שלכם.',
 );
 
 /** Hindi (हिन्दी)
