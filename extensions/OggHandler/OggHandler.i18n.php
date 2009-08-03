@@ -27,6 +27,9 @@ $messages['en'] = array(
 	'ogg-play-sound'       => 'Play sound',
 	'ogg-no-player'        => 'Sorry, your system does not appear to have any supported player software.
 Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download a player</a>.',
+	'ogg-no-player-js'     => 'Sorry, your system either has javascript disabled or does not have any supported player.<br>
+You can <a href="$1">Download the clip</a><br> or <br><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download a player</a> 
+to play the clip in your browser.',
 	'ogg-no-xiphqt'        => 'You do not appear to have the XiphQT component for QuickTime.
 QuickTime cannot play Ogg files without this component.
 Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download XiphQT</a> or choose another player.',
