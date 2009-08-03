@@ -534,8 +534,59 @@ context.modules.toc = {
 	 * @param {String} editorId
 	 */
 	build: function( configuration, editorId ) {
+		/**
+		 * Builds a structured outline from flat outline
+		 * @param {Object} outline Array of objects with level fields
+		 */
+		function buildStructure( outline, offset, level ) {
+			if ( offset == undefined ) offset = 0;
+			if ( level == undefined ) level = 1;
+			var sections = [];
+			for ( var i = offset; i < outline.length; i++ ) {
+				if ( outline[i].nLevel == level ) {
+					var sub = buildStructure( outline, i + 1, level + 1 );
+					if ( sub.length ) {
+						outline[i].sections = sub;
+					}
+					sections[sections.length] = outline[i];
+				} else if ( outline[i].nLevel < level ) {
+					break;
+				}
+			}
+			return sections;
+		}
+		/**
+		 * Bulds unordered list HTML object from structured outline
+		 * @param {Object} structure Structured outline
+		 */
+		function buildList( structure ) {
+			var list = $( '<ul></ul>' );
+			for ( i in structure ) {
+				var item = $( '<li></li>' )
+					.append(
+						$( '<a></a>' )
+							.attr( 'href', '#' )
+							.addClass( 'section-' + structure[i].index )
+							.data( 'textbox', context.$textarea )
+							.data( 'position', structure[i].position )
+							.click( function( event ) {
+								$(this).data( 'textbox' )
+									.scrollToCaretPosition(
+											$(this).data( 'position' )
+									);
+								event.preventDefault();
+							} )
+							.text( structure[i].text )
+					);
+				if ( structure[i].sections !== undefined ) {
+					item.append( buildList( structure[i].sections ) );
+				}
+				list.append( item );
+			}
+			return list;
+		}
+		// Build outline from wikitext
 		var outline = [];
-		// Extract headings from wikitext
 		var wikitext = '\n' + context.$textarea.val() + '\n';
 		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
 		var offset = 0;
@@ -580,66 +631,21 @@ context.modules.toc = {
 				'index': h + 1
 			};
 		}
-		// Normalize levels, adding an nLevel parameter to each node
-		var level = 1;
-		var trunc = 0;
+		// Normalize heading levels for list creation
+		// This is based on Linker::generateTOC() so, it should behave like the
+		// TOC on rendered articles does - which is considdered to be correct
+		// at this point in time.
+		var lastLevel = 0;
+		var nLevel = 0;
 		for ( var i = 0; i < outline.length; i++ ) {
-			if ( i > 0 ) {
-				if ( outline[i].level > outline[i - 1].level ) {
-					level++;
-				} else if ( outline[i].level < outline[i - 1].level ) {
-					if ( trunc <= 1 ) {
-						level -= Math.max(
-							1, outline[i - 1].level - outline[i].level
-						);
-					}
-				}
-				trunc = outline[i].level - outline[i - 1].level;
+			if ( outline[i].level > lastLevel ) {
+				nLevel++;
 			}
-			outline[i].nLevel = level;
-		}
-		function buildStructure( outline, offset, level ) {
-			if ( offset == undefined ) offset = 0;
-			if ( level == undefined ) level = 1;
-			var sections = [];
-			for ( var i = offset; i < outline.length; i++ ) {
-				if ( outline[i].nLevel == level ) {
-					var sub = buildStructure( outline, i + 1, level + 1 );
-					if ( sub.length ) {
-						outline[i].sections = sub;
-					}
-					sections[sections.length] = outline[i];
-				} else if ( outline[i].nLevel < level ) {
-					break;
-				}
+			else if ( outline[i].level < lastLevel ) {
+				nLevel -= Math.max( 1, lastLevel - outline[i].level );
 			}
-			return sections;
-		}
-		function buildList( structure ) {
-			var list = $( '<ul></ul>' );
-			for ( i in structure ) {
-				var item = $( '<li></li>' )
-					.append(
-						$( '<a></a>' )
-							.attr( 'href', '#' )
-							.addClass( 'section-' + structure[i].index )
-							.data( 'textbox', context.$textarea )
-							.data( 'position', structure[i].position )
-							.click( function( event ) {
-								$(this).data( 'textbox' )
-									.scrollToCaretPosition(
-											$(this).data( 'position' )
-									);
-								event.preventDefault();
-							} )
-							.text( structure[i].text )
-					);
-				if ( structure[i].sections !== undefined ) {
-					item.append( buildList( structure[i].sections ) );
-				}
-				list.append( item );
-			}
-			return list;
+			outline[i].nLevel = nLevel;
+			lastLevel = nLevel;
 		}
 		// Recursively build the structure and adds special item for section 0
 		var structure = buildStructure( outline );
