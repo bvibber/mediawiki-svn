@@ -29,15 +29,16 @@ class MvVideoFeed extends SpecialPage {
 			parent::setGroup( 'MvVideoFeed', 'mv_group' );
 		}
 	}
-	function execute(){
+	function execute( $par ){
 		$MvSpecialExport = new MV_SpecialExport( 'category' );
 	}
 }
+
 class MvExportStream extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'MvExportStream' );
 	}
-	function execute(){
+	function execute( $par ){
 		$MvSpecialExport = new MV_SpecialExport( 'stream' );
 	}
 }
@@ -48,7 +49,7 @@ class MvExportSequence extends SpecialPage {
 			parent::setGroup( 'MvExportSequence', 'mv_group' );
 		}
 	}
-	function execute() {
+	function execute( $par ) {
 		global $wgRequest;
 		// @@todo replace this ugly hack .. don't know how to get around the missing param atm:
 		$tl = $wgRequest->getVal( 'title' );
@@ -68,7 +69,7 @@ class MvExportSearch extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'MvExportSearch' );
 	}
-	function execute() {
+	function execute( $par ) {
 		$MvSpecialExport = new MV_SpecialExport( 'search' );
 	}
 
@@ -77,7 +78,7 @@ class MvExportAsk extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'MvExportAsk' );
 	}
-	function execute() {
+	function execute( $par ) {
 		global $wgTitle;
 		$MvSpecialExport = new MV_SpecialExport( 'ask' );
 	}
