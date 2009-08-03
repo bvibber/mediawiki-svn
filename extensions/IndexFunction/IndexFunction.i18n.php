@@ -30,7 +30,7 @@ Please remove "$1" from the <nowiki>{{#index:}}</nowiki> on the above {{PLURAL:$
 	'index-expand-detail' => 'Show pages indexed under this title',
 	'index-hide-detail' => 'Hide the list of pages',
 	'index-no-results' => 'The search returned no results',	
-	'index-search-explain' => 'This page uses an prefix search. 
+	'index-search-explain' => 'This page uses a prefix search. 
 	
 Type the first few characters and press the submit button to search for page titles and index entries that start with the search string',
 	'index-details-explain' => 'Entries with arrows are index entries, click the arrow to show all pages indexed under that title.',
