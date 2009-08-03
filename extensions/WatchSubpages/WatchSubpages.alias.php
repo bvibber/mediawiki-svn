@@ -1,11 +1,14 @@
 <?php
 /**
- * Aliases for special pages
+ * Aliases for Special:WatchSubpages.
  *
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();
 
+/** English */
 $aliases['en'] = array(
 	'WatchSubpages' => array( 'WatchSubpages' ),
 );
