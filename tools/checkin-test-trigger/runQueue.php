@@ -12,7 +12,7 @@ require "$base/Subversion.php";
 $revs = array();
 $dir = dir( $queueDir );
 while( ( $filename = $dir->read() ) !== false ) {
-	if( preg_match( '^\d+$', $filename ) ) {
+	if( preg_match( '/^\d+$/', $filename ) ) {
 		$revs[] = intval( $filename );
 	}
 }
@@ -20,7 +20,7 @@ $dir->close();
 
 // Run through them in order and run tests, if applicable.
 sort( $revs );
-foreach( $revs as $rev ) {
+foreach( $revs as $revId ) {
 	checkCommit( $revId );
 }
 
@@ -28,14 +28,14 @@ foreach( $revs as $rev ) {
 
 
 function checkCommit( $revId ) {
-	global $targetRepo, $testSuites;
+	global $targetRepo, $testSuites, $queueDir;
 	$repo = SubversionAdaptor::newFromRepo( $targetRepo );
 	
 	// Check for changes which trigger our test suites...
 	foreach( $testSuites as $suite ) {
 		// Potentially expensive with multiple test sets, since we hit SVN for each one
-		$log = $repo->getLog( $suite['path'], $revId, $revId );
-		if( isset( $log['paths'] ) && count( $logs['paths'] ) ) {
+		$logs = $repo->getLog( $suite['path'], $revId, $revId );
+		if( isset( $log[0]['paths'] ) && count( $log[0]['paths'] ) ) {
 			// There were changes to thsi path in this revision.
 			// Schedule it for testing!
 			echo "Running $suite[name] on $suite[path] r$revId...\n";
