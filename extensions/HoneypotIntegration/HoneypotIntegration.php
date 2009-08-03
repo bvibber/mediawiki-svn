@@ -25,11 +25,14 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionMessagesFiles['HoneypotIntegration'] =  "$dir/HoneypotIntegration.i18n.php";
 $wgAutoloadClasses[ 'HoneypotIntegration' ] = "$dir/HoneypotIntegration.class.php";
 
+// Stuff that's been sort of semi-implemented, but we don't want to activate yet.
+//  Keeping commented-out so it doesn't get lost.
 #$wgHooks['AbuseFilter-filterAction'][] = 'HoneypotIntegration::onAbuseFilterFilterAction';
 #$wgHooks['AbuseFilter-builder'][] = 'HoneypotIntegration::onAbuseFilterBuilder';
-$wgHooks['EditPage::showEditForm:fields'][] = 'HoneypotIntegration::onShowEditForm';
 // $wgHooks['GetUserPermissionsErrorsExpensive'][] =
 // 	'HoneypotIntegration::onGetUserPermissionsErrorsExpensive';
+
+$wgHooks['EditPage::showEditForm:fields'][] = 'HoneypotIntegration::onShowEditForm';
 $wgHooks['RecentChange_save'][] = 'HoneypotIntegration::onRecentChangeSave';
 
 $wgHoneypotURLSource = '';
