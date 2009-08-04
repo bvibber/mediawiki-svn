@@ -23,7 +23,9 @@ create: function( context, configuration ) {
 	// Make some css modifications to make room for the toc on the right...
 	// Perhaps this could be configurable?
 	context.modules.$toc.css( 'width', '12em' );
-	context.$ui.find( '.wikiEditor-ui-text' ).css( 'marginRight', '12em' );
+	context.$ui.find( '.wikiEditor-ui-text' ).css(
+		( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em'
+	);
 	// Add the TOC to the document
 	$.wikiEditor.modules.toc.build( context );
 	$.wikiEditor.modules.toc.update( context );
