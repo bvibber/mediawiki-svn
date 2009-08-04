@@ -36,6 +36,12 @@ form#editform {
 	border-left: solid silver 1px;
 	overflow: auto;
 }
+body.rtl .wikiEditor-ui .wikiEditor-ui-toc {
+	right: auto;
+	left: -1px;
+	border-left: none;
+	border-right: solid silver 1px;
+}
 .wikiEditor-ui .wikiEditor-ui-toc ul {
 	padding: 0;
 	margin: 0.5em 1em;
@@ -48,6 +54,10 @@ form#editform {
 	margin-bottom: 0 !important;
 	margin-top: 0 !important;
 	list-style: none;
+}
+body.rtl .wikiEditor-ui .wikiEditor-ui-toc ul ul {
+	margin-left: 0;
+	margin-right: 0.75em;
 }
 .wikiEditor-ui .wikiEditor-ui-toc ul li a {
 	display: block;
