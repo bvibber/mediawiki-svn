@@ -94,6 +94,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   stripped from them.
 * Added FSRepo configuration properties thumbUrl and thumbDir, to allow the 
   thumbnails to be stored in a separate location to the source images.
+* wgMainPageTitle variable now available to JavaScript code to identify the main
+  page link, so it doesn't have to be extracted from the link URLs.
 
 === Bug fixes in 1.16 ===
 
