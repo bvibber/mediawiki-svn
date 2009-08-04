@@ -51,6 +51,8 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 2 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 2 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 2 ),
 			),
 			'combined' => array(
 				array( 'src' => 'js/plugins.combined.js', 'version' => 2 ),
