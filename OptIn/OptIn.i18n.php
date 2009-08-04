@@ -104,7 +104,12 @@ The new navigation system makes it easier to see where you are and what you are 
 ;Edit toolbar improvements
 New-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
 The help section provides quick access to a reference for common uses of wiki-markup.
-<div style=\"clear:both;\"></div>",
+<div style=\"clear:both;\"></div>
+== How to get involved ==
+To learn more about the project or to get involved, please visit the [http://usability.wikimedia.org Usability Initiative's wiki].  There you will find information about our grant, research, design + development, and releases.  To ask questions or leave general feedback, please use our [http://usability.wikimedia.org/wiki/Talk:Prototype prototype discussion page].  To address particular subjects, please use the associated discussion pages.  If you find bugs, please leave your comments on the [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai release discussion page] or by using [https://bugzilla.wikimedia.org Bugzilla].
+
+Thanks and we look forward to hearing from you!
+",
 );
 
 /** Message documentation (Message documentation)
