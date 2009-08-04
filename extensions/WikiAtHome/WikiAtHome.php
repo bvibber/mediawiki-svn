@@ -58,6 +58,7 @@ $wgExtensionCredits['media'][] = array(
 	'descriptionmsg' => 'wah-desc',
 );
 
+
 /*
  * Main WikiAtHome Class hold some constants and config values
  *
@@ -66,15 +67,91 @@ class WikiAtHome {
 	const ENC_SAVE_BANDWITH = '256_200kbs';
 	const ENC_WEB_STREAM = '400_300kbs';
 	const ENC_HQ_STREAM = 'high_quality';
+
+	/*
+ * the mapping between firefogg api and ffmpeg2theora command line
+ * (this way shell command to ffmpeg2theora and firefogg can share a common api)
+ * also see: http://firefogg.org/dev/index.html
+ */
+	var $foggMap = array(
+		//video
+		'width'				=> "--width",
+		'height' 			=> "--height",
+		'maxSize' 			=> "--max_size",
+	    'noUpscaling'		=> "--no-upscaling",
+	  	'videoQuality'		=> "-v",
+		'videoBitrate'		=> "-V",
+		'framerate'			=> "-F",
+		'aspect'			=> "--aspect",
+		'starttime'			=> "--starttime",
+		'endtime'			=> "--endtime",
+		'cropTop'			=> "--croptop",
+		'cropBottom'		=> "--cropbottom",
+		'cropLeft'			=> "--cropleft",
+		'cropRight'			=> "--cropright",
+		'keyframeInterval'	=> "--key",
+		'denoise'			=> array("--pp", "de"),
+		'novideo'			=> array("--novideo", "--no-skeleton"),
+
+		//audio
+		'audioQuality'		=> "-a",
+		'audioBitrate'		=> "-A",
+	    'samplerate'		=> "-H",
+		'channels'			=> "-c",
+		'noaudio'			=> "--noaudio",
+
+	    //metadata
+	    'artist'			=> "--artist",
+	    'title'				=> "--title",
+	    'date'				=> "--date",
+	    'location'			=> "--location",
+	    'organization'		=> "--organization",
+	    'copyright'			=> "--copyright",
+	    'license'			=> "--license",
+	    'contact'			=> "--contact"
+	);
 }
 
 //GLOBAL FUNCTIONS:
+/*
+ * wahDoEncode issues an encode command to ffmpeg2theora
+ */
+function wahDoEncode($source, $target, $encodeSettings ){
+	global $wgffmpeg2theora;
+	$cmd = wfEscapeShellArg( $wgffmpeg2theora ) . ' ' . wfEscapeShellArg( $source );
+	$wah = new WikiAtHome();
+	foreach($encodeSettings as $key=>$val){
+		if( isset( $wah->foggMap[$key] ) ){
+			if( is_array(  $wah->foggMap[$key] ) ){
+				$cmd.= ' '. implode(' ', $wah->foggMap[$key] );
+			}else if($val == 'true'|| $val===true){
+		 		$cmd.= ' '. $wah->foggMap[$key];
+			}else if( $val === false){
+				//ignore "false" flags
+			}else{
+				//normal get/set value
+				$cmd.= ' '. $wah->foggMap[$key] . ' ' . wfEscapeShellArg( $val );
+			}
+		}
+	}
+	//add the output target:
+	$cmd.= ' -o ' . wfEscapeShellArg ( $target );
+
+	wfProfileIn( 'ffmpeg2theora_encode' );
+	wfShellExec( $cmd, $retval );
+	wfProfileOut( 'ffmpeg2theora_encode' );
+
+	if( $retval ){
+		return false;
+	}
+	return true;
+}
 
 /*
  * gets the json metadata from a given file (also validates it as a valid file)
  */
 function wahGetMediaJsonMeta( $path ){
-	global $wgffmpeg2theora;
+	global $wgffmpeg2theora, $wahFFmpeg2theoraFoggMap;
 
 	$cmd = wfEscapeShellArg( $wgffmpeg2theora ) . ' ' . wfEscapeShellArg ( $path ). ' --info';
 	wfProfileIn( 'ffmpeg2theora' );
@@ -116,12 +193,26 @@ $wgffmpeg2theora = '/usr/bin/ffmpeg2theora';
 //the oggCat path enables server side concatenation of encoded "chunks"
 $wgOggCat =  '/usr/local/bin/oggCat';
 
-//with oggCat installed then we can do encoding jobs in "chunks"
+//with oggCat installed then we can do jobs in "chunks"
 //and assemble on the server: (this way no single slow client slows down
-//a video job and we can have tighter timeouts)
+//a video job)
 // $wgChunkDuration is set in seconds: (setting this too low will result in bad encodes)
 // $wgChunkDuration is only used if we have a valid $wgOggCat install
-$wgChunkDuration = '30';
+$wgJobTypeConfig = array(
+	'transcode' => array(
+		//set chunk duration to zero to not split the file
+		'chunkDuration'=> 0,
+		// if the api should assign the job on the Special:WikiAtHome page
+		// (or via other external api scripts)
+		'assignAtHome' 	=> false,
+		'assignInternal'=> true
+	),
+	'flatten'=> array(
+		'chunkDuration'=> 10,
+		'assignAtHome' => true,
+		'assignInternal' => false
+	)
+);
 
 //time interval in seconds between clients asking the server for jobs.
 $wgClientSearchInterval = 60;

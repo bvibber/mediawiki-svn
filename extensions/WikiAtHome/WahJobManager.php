@@ -120,24 +120,31 @@ class WahJobManager {
 	 *
 	 * returns the jobs object or false if no jobs are available
 	 */
-	static function getNewJob( $jobset_id = false ){
-		global $wgNumberOfClientsPerJobSet, $wgJobTimeOut, $wgUser;
+	static function getNewJob( $jobset_id = false , $reqMode = 'AtHome'){
+		global $wgNumberOfClientsPerJobSet, $wgJobTimeOut, $wgUser, $wgJobTypeConfig;
 		$dbr = wfGetDb( DB_READ );
-		//check if we have jobset
+
 		//its always best to assigning from jobset (since the user already has the data)
 		if( $jobset_id ){
-			//try to get one from the current jobset
-			$job = $dbr->selectRow( 'wah_jobqueue',
-				'*',
-				array(
-					'job_set_id' =>  intval( $jobset_id ),
-					'job_done_time IS NULL',
-					'job_last_assigned_time < '.  $dbr->addQuotes( time() - $wgJobTimeOut )
-				),
-				__METHOD__
-			);
-			if( $job ){
-				return WahJobManager::assignJob( $job );
+			$jobSet = WahJobManager::getJobSetById( $jobset_id );
+			if(!$jobSet)
+				return false; //not a valid job_set key (no jobs for you)
+
+			//check if the jobset is an accepted job type
+			if( WahJobManager::validateJobType( $jobSet->set_job_type, $reqMode) ){
+				//try to get one from the current jobset
+				$job = $dbr->selectRow( 'wah_jobqueue',
+					'*',
+					array(
+						'job_set_id' =>  intval( $jobset_id ),
+						'job_done_time IS NULL',
+						'job_last_assigned_time < '.  $dbr->addQuotes( time() - $wgJobTimeOut )
+					),
+					__METHOD__
+				);
+				if( $job ){
+					return WahJobManager::assignJob( $job );
+				}
 			}
 		}
 
@@ -150,20 +157,46 @@ class WahJobManager {
 			),
 		 	__METHOD__
 		);
-		//re-assign the same job (don't update anything so it can timeout if they keep getting the same job)
-		if( $job ){
-			return WahJobManager::assignJob( $job , false, false);
+		if($job){
+			$jobSet = WahJobManager::getJobSetById( $job->job_set_id );
+			//make sure the job is oky to assign:
+			if( WahJobManager::validateJobType( $jobSet->set_job_type, $reqMode) ){
+				//re-assign the same job (don't update anything so it can timeout if they keep getting the same job)
+				return WahJobManager::assignJob( $job , false, false);
+			}
+		}
+
+		$conditionAry =array(
+			'set_done_time IS NULL',
+			'set_client_count < '.  $dbr->addQuotes( $wgNumberOfClientsPerJobSet )
+		);
+
+		//build a request to get a compatible job:
+		$okyJobOrList = '';
+		$or = '';
+		foreach($wgJobTypeConfig as $tKey=>$tSet){
+			if( $tSet['assign' . $reqMode] ){
+				$okyJobOrList = $or . ' ( set_job_type = ' . $dbr->addQuotes(  $tKey ) . ' )';
+				$or = ' OR ';
+			}
+		}
+		//no valid jobs:
+		if( $okyJobOrList=='' ){
+			return false;
+		}
+		//else add it to the sql statement :
+		if( $okyJobOrList != '' ){
+			//no types are assignAtHome
+			$conditionAry[] = $okyJobOrList;
 		}
 
 		//just do a normal select from jobset
 		$jobSet = $dbr->selectRow( 'wah_jobset',
 			'*',
-			array(
-				'set_done_time IS NULL',
-				'set_client_count < '.  $dbr->addQuotes( $wgNumberOfClientsPerJobSet )
-			),
+			$conditionAry,
 			__METHOD__
 		);
+
 		if( !$jobSet ){
 			//no jobs:
 			return false;
@@ -188,6 +221,10 @@ class WahJobManager {
 				return WahJobManager::assignJob( $job , $jobSet);
 			}
 		}
+	}
+	static function validateJobType( $reqType, $reqMode ){
+		global $wgJobTypeConfig;
+		return $wgJobTypeConfig[ $reqType ][ 'assign' . $reqMode ];
 	}
 	/*
 	 * assigns a job:
@@ -265,13 +302,17 @@ class WahJobManager {
 	 * setups up a new job
 	 */
 	function doJobSetup(){
-		global $wgChunkDuration, $wgDerivativeSettings;
+		global $wgDerivativeSettings, $wgJobTypeConfig;
 		$fname = 'WahJobManager::doJobSetup';
 		$dbw = &wfGetDb( DB_WRITE );
-		//figure out how many sub-jobs we will have:
-		$length = $this->file->handler->getLength( $this->file );
 
-		$set_job_count = ceil( $length / $wgChunkDuration );
+		if( $wgJobTypeConfig[ $this->getJobTypeKey() ]['chunkDuration'] == 0){
+			$set_job_count = 1;
+		}else{
+			//figure out how many sub-jobs we will have:
+			$length = $this->file->handler->getLength( $this->file );
+			$set_job_count = ceil( $length / $wgJobTypeConfig[ $jobTypeKey ]['chunkDuration'] );
+		}
 
 		//first insert the job set
 		$dbw->insert('wah_jobset',
@@ -281,33 +322,108 @@ class WahJobManager {
 				'set_jobs_count' 	=> $set_job_count,
 				'set_encodekey'		=> $this->sEncodeKey,
 			  	'set_creation_time' => time()
-			),$fname
+			), $fname
 		);
 		$this->sId = $dbw->insertId();
 
 		//generate the job data
+		$jobInsertArray = $this->gennerateJobData();
+
+		//now insert the jobInsertArray
+		$dbw->insert( 'wah_jobqueue', $jobInsertArray, $fname );
+	}
+	function gennerateJobData(){
+		global $wgJobTypeConfig, $wgDerivativeSettings;
+
+		$jobTypeKey = $this->getJobTypeKey();
+
+		//set the base encode settings:
+		$encSettingsAry = $wgDerivativeSettings[ $this->sEncodeKey ];
+
+		//init the jobs array:
 		$jobInsertArray = array();
-		for( $i=0 ; $i < $set_job_count; $i++ ){
-			$encSettingsAry = $wgDerivativeSettings[ $this->sEncodeKey ];
-			$encSettingsAry['starttime'] = $i * $wgChunkDuration;
-			//should be oky that the last endtime is > than length
-			$encSettingsAry['endtime']	 = $encSettingsAry['starttime'] + $wgChunkDuration;
 
-			$jobJsonAry = array(
-				'jobType'			=> 'transcode',
-				'encodeSettings'	=> $encSettingsAry
-			);
+		$jobJsonAry = array(
+			'jobType'			=> $jobTypeKey,
+			'encodeSettings'	=> $encSettingsAry
+		);
 
-			//add starttime and endtime
+		//check if we need to split into chunks: (if chunk duration is zero don't split)
+		if( $wgJobTypeConfig[ $jobTypeKey ]['chunkDuration'] == 0 ){
 			$jobInsertArray[] =
 				array(
 					'job_set_id' 	=> $this->sId,
-					'job_order_id'	=> $i,
+					'job_order_id'	=> 0,
 					'job_json'	 	=> ApiFormatJson::getJsonEncode( $jobJsonAry )
 				);
+		}else{
+			for( $i=0 ; $i < $set_job_count; $i++ ){
+				//add starttime and endtime
+				$jobJsonAry['encodeSettings']['starttime'] = $i * $wgJobTypeConfig[ $jobTypeKey ]['chunkDuration'];
+				//should be oky that the last endtime is > than length
+				$jobJsonAry['encodeSettings']['endtime'] = $encSettingsAry['starttime'] + $wgChunkDuration;
+				$jobInsertArray[] =
+					array(
+						'job_set_id' 	=> $this->sId,
+						'job_order_id'	=> $i,
+						'job_json'	 	=> ApiFormatJson::getJsonEncode( $jobJsonAry )
+					);
+			}
 		}
-		//now insert the jobInsertArray
-		$dbw->insert( 'wah_jobqueue', $jobInsertArray, $fname );
+		return $jobInsertArray;
+	}
+	function getJobTypeKey(){
+		//if its in the file namespace the job is a transcode
+		if($this->sNamespace == NS_FILE){
+			return 'transcode';
+		}
+		//if its in the "sequence" namespace then its a flatten job
+	}
+	function updateSetDone($jobSet, $user_id=0){
+		$dbw = &wfGetDb( DB_WRITE );
+		$dbw->update('wah_jobset',
+			array(
+				'set_done_time' => time()
+			),
+			array(
+				'set_id' => $jobSet->set_id
+			),
+			__METHOD__,
+			array(
+				'LIMIT' => 1
+			)
+		);
+	}
+	function updateJobDone(&$job, $user_id=0){
+		$dbw = &wfGetDb( DB_WRITE );
+		//update the jobqueue table with job done time & user
+		$dbw->update('wah_jobqueue',
+			array(
+				'job_done_user_id' 	=> $user_id,
+				'job_done_time'		=> time()
+			),
+			array(
+				'job_id'			=> $job->job_id
+			),
+			__METHOD__,
+			array(
+				'LIMIT' => 1
+			)
+		);
+
+		// reduce job_client_count by 1 now that this client is "done"
+		$dbw->update('wah_jobset',
+			array(
+				'set_client_count = set_client_count -1'
+			),
+			array(
+				'set_id' => $job->job_set_id
+			),
+			__METHOD__,
+			array(
+				'LIMIT' => 1
+			)
+		);
 	}
 
 }

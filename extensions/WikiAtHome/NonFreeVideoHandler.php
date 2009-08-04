@@ -336,12 +336,17 @@ class MediaQueueTransformOutput extends MediaTransformOutput {
 	}
 
 	function toHtml( $options = array() ) {
+		global $wgJobTypeConfig;
+
 		wfLoadExtensionMessages( 'WikiAtHome' );
 		if( $this->percDone == -1){
 			$waitHtml =  wfMsgWikiHtml( 'wah-transcode-fail');
 		}else{
-			$waitHtml = time() . wfMsgWikiHtml( 'wah-transcode-working', $this->percDone ) . "<br>" .
-		 		wfMsgWikiHtml('wah-transcode-helpout');
+			$waitHtml = wfMsgWikiHtml( 'wah-transcode-working' ) . "<br>";
+			//check if we doing it ~at~ home then we know how done it is:
+			if( $wgJobTypeConfig['transcode'][ 'assignAtHome' ] ){
+		 		$waitHtml += wfMsgWikiHtml('wah-transcode-helpout', $this->percDone);
+			}
 		}
 
 		//@@this is just a placeholder

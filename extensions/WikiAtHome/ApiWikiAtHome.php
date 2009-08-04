@@ -60,12 +60,12 @@ class ApiWikiAtHome extends ApiBase {
 		}else{
 			$job4Client = array();
 			//unpack the $job_json
-			$job4Client['job_json'] = json_decode( $job->job_json ) ;
+			$job4Client['job_json'] 	= json_decode( $job->job_json ) ;
 			//we set the job key to job_id _ sha1
-			$job4Client['job_key'] 	= $job->job_id . '_'. sha1( $job->job_json );
-			$job4Client['job_title']= $job->title;
-			$job4Client['job_ns']	= $job->ns;
-			$job4Client['job_set_id'] = $job->job_set_id;
+			$job4Client['job_key'] 		= $job->job_id . '_'. sha1( $job->job_json );
+			$job4Client['job_title']	= $job->title;
+			$job4Client['job_ns']		= $job->ns;
+			$job4Client['job_set_id'] 	= $job->job_set_id;
 
 			$tTitle = Title::newFromText($job->title, $job->ns);
 
@@ -84,7 +84,7 @@ class ApiWikiAtHome extends ApiBase {
 		}
 	}
 	/*
-	 * process the submited job:
+	 * process the submitted job:
 	 */
 	function doProccessJobKey( $job_key ){
 		global $wgRequest, $wgUser;
@@ -100,6 +100,7 @@ class ApiWikiAtHome extends ApiBase {
 		}
 
 		$jobSet =  WahJobManager::getJobSetById( $job->job_set_id );
+
 		//check if its a valid video ogg file (ffmpeg2theora --info)
 		$uploadedJobFile = $wgRequest->getFileTempname('file');
 		$mediaMeta = wahGetMediaJsonMeta( $uploadedJobFile );
@@ -131,7 +132,7 @@ class ApiWikiAtHome extends ApiBase {
 		//all good so far put it into the derivative temp folder by with each piece as it job_id name
 		//@@todo need to rework this a bit for flattening "sequences"
 		$fTitle = Title::newFromText( $jobSet->set_title, $jobSet->set_namespace );
-		$file = RepoGroup::singleton()->getLocalRepo()->newFile( $fTitle );
+		$file = wfLocalFile( $fTitle );
 		$thumbPath = $file->getThumbPath( $jobSet->set_encodekey );
 
 		$destTarget = $thumbPath .'/'. $job->job_order_id . '.ogg';
@@ -163,36 +164,10 @@ class ApiWikiAtHome extends ApiBase {
 		if( !move_uploaded_file($uploadedJobFile, $destTarget) ){
 			return $this->dieUsage( 'Could Not Move The Uploaded File', 'fileerror' );
 		}
-
+		//issue the jobDone to the Manager:
+		WahJobManager :: updateJobDone($job, $wgUser->getId());
 		$dbw = &wfGetDb( DB_READ );
-		//update the jobqueue table with job done time & user
-		$dbw->update('wah_jobqueue',
-			array(
-				'job_done_user_id' 	=> $wgUser->getId(),
-				'job_done_time'		=> time()
-			),
-			array(
-				'job_id'			=> $job_id
-			),
-			__METHOD__,
-			array(
-				'LIMIT' => 1
-			)
-		);
 
-		// reduce job_client_count by 1 now that this client is "done"
-		$dbw->update('wah_jobset',
-			array(
-				'set_client_count = set_client_count -1'
-			),
-			array(
-				'set_id' => $jobSet->set_id
-			),
-			__METHOD__,
-			array(
-				'LIMIT' => 1
-			)
-		);
 		//check if its the "last" job shell out a Join command
 		$wjm = WahJobManager::newFromSet( $jobSet );
 		$percDone = $wjm->getDonePerc();
@@ -204,7 +179,7 @@ class ApiWikiAtHome extends ApiBase {
 						'setdone'		=> false
 					)
 				);
-		}else if( $percDone == 1){
+		}else if( $percDone == 1 ){
 			//all the files are "done" according to the DB:
 			//make sure all the files exist in the
 			$fileList = array();
@@ -262,18 +237,8 @@ class ApiWikiAtHome extends ApiBase {
 
 			//if the file got created tag the jobset as done:
 			if( is_file( $finalDestTarget )){
-				$dbw->update('wah_jobset',
-					array(
-						'set_done_time' => time()
-					),
-					array(
-						'set_id' => $jobSet->set_id
-					),
-					__METHOD__,
-					array(
-						'LIMIT' => 1
-					)
-				);
+				//update jobSet done:
+				WahJobManager :: updateSetDone( $jobSet );
 				//send out stream done
 				return $this->getResult()->addValue( null, $this->getModuleName(),
 					array(

@@ -25,8 +25,8 @@ $messages['en'] = array(
 	'wah-long-general'     	=> '(media file, length $2, $3)',
 	'wah-long-error'       	=> '(ffmpeg could not read this file: $1)',
 
-	'wah-transcode-working' => 'This video is being transcoded its $1% done',
-	'wah-transcode-helpout' => 'You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-working' => 'This video is being processed, please try again later',
+	'wah-transcode-helpout' => 'The clip is $1 percent done. You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
 
 	'wah-transcode-fail'	=> 'This file failed to transcode.',
 
