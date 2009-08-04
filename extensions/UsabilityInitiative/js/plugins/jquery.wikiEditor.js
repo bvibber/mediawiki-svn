@@ -94,7 +94,6 @@ context.modules.toolbar = {
 		var useTool = function() {
 			var tool = $(this).data( 'tool' );
 			if ( 'type' in tool ) {
-				console.log( tool.type );
 				switch ( tool.type ) {
 					case 'button':
 					case 'link':
