@@ -10,7 +10,9 @@
  *	);
  * ...using the API, which is still be finished.
  */
-(function($) { $.wikiEditor = { 'modules': {} }; $.fn.wikiEditor = function() {
+(function($) {
+$.wikiEditor = { 'modules': {}, 'instances': [] };
+$.fn.wikiEditor = function() {
 
 /* Initialization */
 
@@ -32,7 +34,9 @@ if ( typeof context !== 'undefined' ) {
 		// Handle API calls
 		var call = arguments.shift();
 		if ( call in context.api ) {
-			context.api[call]( arguments );
+			context.api[call](
+				context, arguments[0] == undefined ? {} : arguments[0]
+			);
 		}
 		// Store the context for next time and return
 		return $(this).data( 'context', context );
@@ -43,7 +47,12 @@ if ( typeof context !== 'undefined' ) {
 
 /* Construction */
 
-context = { '$textarea': $(this), 'modules': {}, 'data': {} };
+var instance = $.wikiEditor.instances.length;
+context = {
+	'$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance
+};
+$.wikiEditor.instances[instance] = $(this);
+
 // Encapsulate the textarea with some containers for layout
 $(this)
 	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
@@ -55,33 +64,52 @@ context.$ui = $(this).parent().parent().parent();
 context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
 // Create a set of standard methods for internal and external use
 context.api = {
-	addModule: function() {
-		if ( arguments.length >= 1 && arguments[0].length >= 1 ) {
-			var module = arguments[0][0];
-			var configuration = ( arguments[0][1] ? arguments[0][1] : {} );
-			// Check if the module is supported and that there's a create
-			// method available for it
+	/**
+	 * Accepts either a string of the name of a module to add without any
+	 * additional configuration parameters, or an object with members keyed with
+	 * module names and valued with configuration objects
+	 */
+	addModule: function( context, data ) {
+		// A safe way of calling an API function on a module
+		function callModuleApi( module, call, data ) {
 			if (
 				module in $.wikiEditor.modules &&
-				'create' in $.wikiEditor.modules[module]
+				'fn' in $.wikiEditor.modules[module] &&
+				call in $.wikiEditor.modules[module].fn
 			) {
-				$.wikiEditor.modules[module].create( context, configuration );
+				$.wikiEditor.modules[module].fn[call]( context, data );
+			}
+		}
+		if ( typeof data == 'string' ) {
+			callModuleApi( data, 'create', {} );
+		} else if ( typeof data == 'object' ) {
+			for ( module in data ) {
+				if ( typeof module == 'string' ) {
+					callModuleApi( module, 'create', data[module] );
+				}
 			}
 		}
 	}
 };
+// Allow modules to extend the API
+for ( module in $.wikiEditor.modules ) {
+	if ( 'api' in $.wikiEditor.modules[module] ) {
+		for ( call in $.wikiEditor.modules[module].api ) {
+			// Modules may not overwrite existing API functions - first come,
+			// first serve
+			if ( !( call in context.api ) ) {
+				context.api[call] = $.wikiEditor.modules[module].api[call];
+			}
+		}
+	}
+}
 // Each browser seems to do this differently, so let's keep our editor
 // consistent by allways starting at the begining
 context.$textarea.scrollToCaretPosition( 0 );
-// If there was a configuration passed, we can get started adding
-// modules right away - which is done using the same API that could be used
-// explicitly by the user
+// If there was a configuration passed, it's assumed to be for the addModule
+// API call, so we can just send it on it's way right now
 if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
-	if ( 'modules' in arguments[0] ) {
-		for ( module in arguments[0].modules ) {
-			context.api.addModule( [module, arguments[0].modules[module]] );
-		}
-	}
+	context.api.addModule( context, arguments[0] );
 }
 // Store the context for next time, and support chaining
 return $(this).data( 'context', context );;
