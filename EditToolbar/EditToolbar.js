@@ -132,17 +132,6 @@ var editToolbarConfiguration = {
 						labelMsg: 'edittoolbar-tool-heading',
 						type: 'select',
 						list: {
-							'heading-1' : {
-								labelMsg: 'edittoolbar-tool-heading-1',
-								action: {
-									type: 'encapsulate',
-									options: {
-										pre: "=",
-										periMsg: 'edittoolbar-tool-heading-example',
-										post: "="
-									}
-								}
-							},
 							'heading-2' : {
 								labelMsg: 'edittoolbar-tool-heading-2',
 								action: {
