@@ -33,6 +33,9 @@ body.skin-vector div#p-DONATE div.body {
 	margin-right: 1em;
 }
 /* General Style */
+div#p-DONATE.collapsed {
+	display: none;
+}
 div#fundraiserportal-box {
 	background-color: white;
 	background-image: url(<?php echo $imageUrl ?>/tourmaline-b-l.png);
@@ -177,11 +180,38 @@ div#fundraiserportal-box-bottom div div {
 	height: 12px;
 }
 </style>
+<script language="javascript" type="text/javascript">
+function toggleFundraiserPortal() {
+	fundraiserPortalToggleState = !fundraiserPortalToggleState;
+	setFundraiserPortalCookie( fundraiserPortalToggleState );
+	updateFundraiserPortal();
+}
+function updateFundraiserPortal() {
+	var portal = document.getElementById( 'p-DONATE' );
+	if ( !fundraiserPortalToggleState ) {
+		portal.className = portal.className.replace( 'collapsed', '' );
+	} else {
+		portal.className += ' collapsed';
+	}
+}
+function setFundraiserPortalCookie( state ) {
+	// Store cookie so portal is hidden for one week
+	var e = new Date();
+	e.setTime( e.getTime() + ( 7 * 24 * 60 * 60 * 1000 ) );
+	var work = 'hidefrportal=' + ( state ? 1 : 0 ) + '; expires=' + e.toGMTString() + '; path=/';
+	document.cookie = work;
+}
+function getFundraiserPortalCookie() {
+	return ( document.cookie.indexOf( 'hidefrportal=1' ) !== -1 );
+}
+var fundraiserPortalToggleState = getFundraiserPortalCookie();
+updateFundraiserPortal();
+</script>
 <div id="fundraiserportal-box-top"><div><div></div></div></div>
 <div id="fundraiserportal-box">
 	<div>
 		<div id="fundraiserportal-message">
-			<div id="fundraiserportal-close"><a href="#" title="<?php echo wfMsg( 'fundraiserportal-tourmaline-close' ) ?>"></a></div>
+			<div id="fundraiserportal-close"><a href="#" onclick="toggleFundraiserPortal();return false;" title="<?php echo wfMsg( 'fundraiserportal-tourmaline-close' ) ?>"></a></div>
 			<?php echo wfMsg( 'fundraiserportal-tourmaline-message' ) ?>
 		</div>
 		<div id="fundraiserportal-button"><div><div><div><div><div><div><div><div><a href="<?php echo $wgFundraiserPortalURL ?>"><?php echo wfMsg( 'fundraiserportal-tourmaline-button' ) ?></a></div></div></div></div></div></div></div></div></div>
