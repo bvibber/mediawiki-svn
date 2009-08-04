@@ -197,19 +197,40 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
 			} else {
 				log("building persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
-				DataCursor<Pair<String, Integer>> cursor = getConceptIdCursor();
+				DataCursor<Pair<String, Integer>> cursor = getConceptIdAssociationCursor();
 				idManager.slurp(cursor);
 				cursor.close();
-				log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+				log("IP map size: "+idManager.size()+"; Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
 			}
 		}
 	}
 	
-	protected DataCursor<Pair<String, Integer>> getConceptIdCursor() throws PersistenceException {
+	protected void loadConceptDedupe() throws PersistenceException {
+		log("building dedupe set..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+		DataCursor<Integer> cursor = getConceptIdCursor();
+		conceptDedupe.slurp(cursor);
+		cursor.close();
+		log("Dedupe size: "+conceptDedupe.size()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+	}
+	
+	protected DataCursor<Integer> getConceptIdCursor() throws PersistenceException {
+		String sql = "SELECT id from " + conceptTable.getSQLName();
+		ResultSet rs = executeBigQuery("getConceptIdCursor", sql);
+		
+		DatabaseDataSet.Factory<Integer> f = new DatabaseDataSet.Factory<Integer>() {
+			public Integer newInstance(ResultSet row) throws Exception {
+				return row.getInt(1);
+			}
+		};
+		
+		return new DatabaseDataSet.Cursor<Integer>(rs, f);
+	}
+	
+	protected DataCursor<Pair<String, Integer>> getConceptIdAssociationCursor() throws PersistenceException {
 		final boolean binaryText = database.getHints().getHint(MySqlDialect.HINT_USE_BINARY_TEXT, false);
 		
 		String sql = "SELECT name, id from " + conceptTable.getSQLName();
-		ResultSet rs = executeBigQuery("getConceptIdCursor", sql);
+		ResultSet rs = executeBigQuery("getConceptIdAssociationCursor", sql);
 		
 		DatabaseDataSet.Factory<Pair<String, Integer>> f = new DatabaseDataSet.Factory<Pair<String, Integer>>() {
 			public Pair<String, Integer> newInstance(ResultSet row) throws Exception {
@@ -571,6 +592,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	 */
 	public void prepareImport() throws PersistenceException {
 		if (idManager!=null) loadIdManager();
+		if (conceptDedupe!=null) loadConceptDedupe();
 
 		try {
 				database.disableKeys();
