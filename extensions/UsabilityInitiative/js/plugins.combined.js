@@ -826,7 +826,7 @@ build: function( context, configuration, editorId ) {
  * code (and images) gets moved into the core - or anywhere for that matter...
  */
 imgPath: wgScriptPath +
-	'/extensions/UsabilityInitiative/images/wikiEditor/toolbar',
+	'/extensions/UsabilityInitiative/images/wikiEditor/toolbar/',
 /**
  * Creates a toolbar module within a wikiEditor
  * 
