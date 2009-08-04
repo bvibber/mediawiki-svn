@@ -2,7 +2,7 @@
 
 js2AddOnloadHook( function() {
 	$j( 'textarea#wpTextbox1' ).wikiEditor(
-		{ 'modules': { 'toolbar': editToolbarConfiguration } }
+		{ 'toolbar': editToolbarConfiguration }
 	);
 });
 
