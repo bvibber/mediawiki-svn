@@ -58,10 +58,11 @@ public class PropertyImporter extends ConceptImporter {
 			rcId = storeResource(rcName, rcType, timestamp);	
 			
 			if (rcType == ResourceType.REDIRECT) {
-				storeAlias(analyzerPage, rcId);
+				cid = storeAlias(analyzerPage, rcId);
+			} else {
+				cid = storeConcept(rcId, name, ctype);
 			}
 			
-			cid = storeConcept(rcId, name, ctype);
 			storeSuffixInfo(analyzerPage, rcId, cid, name);
 		} 
 		
