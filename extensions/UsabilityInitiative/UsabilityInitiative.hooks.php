@@ -16,15 +16,15 @@ class UsabilityInitiativeHooks {
 	private static $styleFiles = array(
 		'base_sets' => array(
 			'raw' => array(
-				array( 'src' => 'css/wikiEditor.css', 'version' => 2 ),
-				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 2 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 2 ),
+				array( 'src' => 'css/wikiEditor.css', 'version' => 3 ),
+				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 3 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 2 ),
+				array( 'src' => 'css/combined.css', 'version' => 3 ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 2 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 3 ),
 			),
 		)
 	);
@@ -34,31 +34,31 @@ class UsabilityInitiativeHooks {
 		'no_js2' => array(
 			'raw' => array(
 				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
-				array( 'src' => 'js/js2/js2.js', 'version' => 2 ),
+				array( 'src' => 'js/js2/js2.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/js2.combined.js', 'version' => 2 ),
+				array( 'src' => 'js/js2.combined.js', 'version' => 3 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/js2.combined.min.js', 'version' => 2 ),
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 3 ),
 			),
 		),
 		// Core functionality of extension
 		'base_sets' => array(
 			'raw' => array(
-				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 2 ),
-				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 2 ),
-				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 2 ),
-				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 2 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 2 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 2 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 3 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 3 ),
 			),
 		),
 	);
