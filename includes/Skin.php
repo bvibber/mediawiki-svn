@@ -1439,7 +1439,8 @@ END;
 			return $out;
 		}
 		// Allow for site and per-namespace customization of copyright notice.
-		wfRunHooks( 'SkinCopyrightFooter', array( $wgArticle->getTitle(), $type, &$msg, &$link ) );
+		if( isset($wgArticle) )
+			wfRunHooks( 'SkinCopyrightFooter', array( $wgArticle->getTitle(), $type, &$msg, &$link ) );
 		
 		$out .= wfMsgForContent( $msg, $link );
 		return $out;
