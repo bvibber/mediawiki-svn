@@ -3,7 +3,7 @@
 /* wikiEditor toolbar module */
 
 .wikiEditor-ui .wikiEditor-ui-toolbar {
-	background-color: #F3F3F3;
+	position: relative;
 }
 .wikiEditor-ui .wikiEditor-ui-toolbar .break {
 	border-bottom: solid silver 1px;
