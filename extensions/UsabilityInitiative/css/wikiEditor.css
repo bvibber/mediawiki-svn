@@ -10,17 +10,28 @@ form#editform {
 /* This ID (#wpTextbox1) could change in MediaWiki */
 .wikiEditor-ui textarea#wpTextbox1 {
 	border: none;
-	margin: 0;
 	padding: 0;
 	width: 100%;
+	margin: -1px;
+}
+.wikiEditor-ui .wikiEditor-ui-text > textarea#wpTextbox1 {
+	margin: 0;
 }
 .wikiEditor-ui {
+	float: left;
 	position: relative;
-	border: solid silver 1px;
-	background-color: #f3f3f3;
 	clear: both;
+	width: 100%;
 	line-height: 1em;
+	background-color: #f3f3f3;
 }
 .wikiEditor-ui .wikiEditor-ui-bottom {
 	position: relative;
+	border: solid silver 1px;
+	border-top-width: 0;
+}
+.wikiEditor-ui .wikiEditor-ui-top {
+	position: relative;
+	border: solid silver 1px;
+	border-bottom-width: 0;
 }

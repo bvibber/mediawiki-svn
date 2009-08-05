@@ -60,6 +60,7 @@ $(this)
 	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
 // Get a refrence to the outter container
 context.$ui = $(this).parent().parent().parent();
+context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 // Attach a container in the top
 context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
 // Create a set of standard methods for internal and external use
