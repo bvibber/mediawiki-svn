@@ -4600,6 +4600,7 @@ $messages['te'] = array(
 	'edittoolbar-tool-newline' => 'కొత్త లైను',
 	'edittoolbar-tool-table' => 'పట్టిక',
 	'edittoolbar-section-characters' => 'ప్రత్యేక అక్షరాలు',
+	'edittoolbar-characters-page-latin' => 'లాటిన్',
 	'edittoolbar-characters-page-greek' => 'గ్రీకు',
 	'edittoolbar-characters-page-arabic' => 'అరబిక్',
 	'edittoolbar-characters-page-hebrew' => 'హిబ్రూ',
@@ -4615,6 +4616,7 @@ $messages['te'] = array(
 	'edittoolbar-help-content-bold-description' => 'బొద్దు',
 	'edittoolbar-help-content-bold-syntax' => "'''బొద్దు పాఠ్యం'''",
 	'edittoolbar-help-content-bold-result' => '<strong>బొద్దు పాఠ్యం</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'బొద్దు &amp; వాలు',
 	'edittoolbar-help-content-ilink-description' => 'అంతర్గత లింకు',
 	'edittoolbar-help-content-xlink-description' => 'బయటి లింకు',
 );

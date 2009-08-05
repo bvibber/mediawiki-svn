@@ -148,6 +148,15 @@ $messages['hsb'] = array(
 	'simplesearch-search' => 'Pytać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'simplesearch' => 'Egyszerű keresés',
+	'simplesearch-desc' => 'Extra funkciókat biztosít a Vector felület egyszerűsített kereséséhez',
+	'simplesearch-search' => 'Keresés',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
