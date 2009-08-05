@@ -161,6 +161,10 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .first {
 	line-height: 26px;
 }
 /* IGNORED BY IE6 */
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs > span.tab {
+	display: block;
+}
+/* IGNORED BY IE6 */
 body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .tabs > span.tab {
 	float: right;
 }
