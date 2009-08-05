@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'specialwikiathome'	=> 'Wiki@Home',
-	'wah-desc'			=> 'Enables distributing transcoding video jobs to clients using firefogg.',
+	'wah-desc'			=> 'Enables distributing transcoding video jobs to clients using firefogg',
 	'wah-user-desc'		=> 'Wiki@Home enables community members to donate spare cpu cycles to help with resource intensive operations',
 	'wah-short-audio'	=> '$1 sound file, $2',
 	'wah-short-video'	=> '$1 video file, $2',
