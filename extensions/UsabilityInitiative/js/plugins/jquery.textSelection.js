@@ -238,9 +238,9 @@ scrollToCaretPosition: function( pos ) {
 			 * changed, in which case it does nothing. In that case we'll force
 			 * it to act by moving one character back and forth.
 			 */
-			range = document.selection.createRange();
-			oldPos = $(this).bytePos();
-			goBack = false;
+			var range = document.selection.createRange();
+			var oldPos = $(this).getCaretPosition();
+			var goBack = false;
 			if ( oldPos == pos ) {
 				pos++;
 				goBack = true;
