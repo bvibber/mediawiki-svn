@@ -1260,6 +1260,12 @@ fn: {
 		}
 		$.eachAsync( sectionQueue, {
 			'bulk': 0,
+			'end': function() {
+				// HACK: Opera doesn't seem to want to redraw after these bits
+				// are added to the DOM, so we can just FORCE it!
+				$( 'body' ).css( 'position', 'static' );
+				$( 'body' ).css( 'position', 'relative' );
+			},
 			'loop': function( i, s ) {
 				s.$sections.append(
 					$.wikiEditor.modules.toolbar.fn.buildSection(
