@@ -1078,6 +1078,7 @@ D Hilf-Sektion stellt e schnölle zuegang z Verfiegig zuen ere Quälle vu gängi
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -1089,7 +1090,7 @@ $messages['he'] = array(
 באפשרותכם לבטל את הרשמתכם בכל זמן באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" שלהלן.',
 	'optin-success-out' => 'ביטלתם בהצלחה את הרשמתכם לקבלת שיפורי השימושיות של יוזמת השימושיות.
 באפשרותכם להירשם שוב בכל זמן באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" שלהלן.',
-	'optin-success-feedback' => 'תודה לכם על המשוב!',
+	'optin-success-feedback' => 'תודה על המשוב!',
 	'optin-deny-short' => 'לא תודה',
 	'optin-submit-out' => 'ביטול הרשמה',
 	'optin-survey-yes' => 'כן',
@@ -1157,6 +1158,23 @@ Bychmy rady wědźeli, što mysliš wo našim nowym wužiwarskim powjerchu, bych
 	'optin-survey-answer-os-other' => 'Druhi dźěłowy system:',
 	'optin-survey-question-res' => 'Kotre je rozeznaće twojeje wobrazowki?',
 	'optin-survey-answer-changes-other' => 'Druhe:',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'optin-title-optedout' => 'A béta kipróbálása',
+	'optin-title-optedin' => 'Kilépés a bétából',
+	'optin-title-justoptedin' => 'Üdvözlünk a bétában',
+	'optin-title-justoptedout' => 'Köszönjük, hogy kipróbáltad a bétát',
+	'optin-title-feedback' => 'Visszajelzés a bétáról',
+	'optin-needlogin' => 'A béta kipróbálásához [$1 be kell jelentkezned].',
+	'optin-intro' => 'A Wikipedia Usability Initiative keményen dolgozott azon, hogy javítsa a Wikipédia használhatóságát.
+Szeretnéd kipróbálni a bétánkat?',
+	'optin-feedback-intro' => 'Köszönjük, hogy kipróbáltad a bétát.
+Szeretnénk tudni, hogy mit gondolsz az új felületről, így örülnénk neki, ha kitöltenéd az alábbi kérdőívet.',
+	'optin-feedback-back' => 'Ha nem szeretnéd kitölteni a kérdőívet, visszatérhetsz a(z) $1 lapra.',
 );
 
 /** Interlingua (Interlingua)
@@ -1237,7 +1255,11 @@ Le nove systema de navigation rende plus facile vider ubi tu es e lo que tu face
 ;Meliorationes del instrumentario de modification
 Le icones nove e melior clarifica le action que cata instrumento exeque. Le sectiones expansibile simplifica le apparentia, durante que le instrumentos usate infrequentemente resta disponibile a solo un clic de distantia.
 Le section de adjuta provide accesso rapide a un referentia pro usos commun del marcation wiki.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+== Como participar ==
+Pro ulterior informationes super le projecto o pro participar, per favor visita le [http://usability.wikimedia.org wiki del Initiativa de Usabilitate]. Ibi tu trovara informationes super nostre subvention, recerca, conception + disveloppamento, e edition de versiones. Pro poner questiones o lassar commentarios general, per favor usa nostre [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion super le prototypo]. Pro discuter subjectos particular, per favor usa le paginas de discussion dedicate a istes. Si tu trova defectos, lassa tu commentos in le [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina de discussion super editiones de Acai] o invia los a [https://bugzilla.wikimedia.org Bugzilla].
+
+Gratias e nos spera audir de te!',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1274,6 +1296,7 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Stefano-c
  */
 $messages['it'] = array(
 	'optin-desc' => "Consente agli utenti di provare Beta, gli ultimi miglioramenti dell'iniziativa di usabilità.",
@@ -1287,6 +1310,9 @@ Si desidera provare Beta?",
 	'optin-leave-cancel' => 'Se si desidera continuare a usare Beta è possibile tornare a $1',
 	'optin-success-out' => 'Beta è stato lasciato con successo.
 È possibile provarlo nuovamente in qualsiasi momento facendo clic sul collegamento "{{int:optin-try}}" in alto a destra dello schermo.',
+	'optin-accept-long' => 'Prova la Beta',
+	'optin-accept-long-anon' => 'Accedi e prova la Beta',
+	'optin-deny-short' => 'No grazie',
 	'optin-deny-long' => 'Torna alla pagina precedente',
 	'optin-submit-out' => 'Lascia Beta',
 	'optin-try' => 'Prova Beta',
@@ -1396,7 +1422,11 @@ $messages['ja'] = array(
 [[File:UsabilityToolbar.png|left]]
 ;編集ツールバーの改良
 新しく改良されたアイコンにより、各ツールの機能をより明確に表現できるようになりました。編集ツールバーの各部分について表示・非表示を切り替えられるようにすることで、ツールバーのデザインを簡潔に保ちつつ、散発的に使用される機能にもすぐアクセスできるようにしました。ツールバーにヘルプを組み込むことで、一般的なウィキ・マークアップの説明を素早く参照できるようにしました。
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+== 参加するには ==
+このプロジェクトについてより詳しいことが知りたい、あるいは参加したい場合は、[http://usability.wikimedia.org Usability Initiative のウィキ]を訪れてみてください。我々の助成、研究、設計・開発、およびリリースについての情報が得られます。質問をしたり全般的なフィードバックを伝えたい場合は、[http://usability.wikimedia.org/wiki/Talk:Prototype プロトタイプ議論ページ]を使ってください。特定の問題を解決したい場合は、該当する議論ページを使ってください。バグを発見した場合は、[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai リリース議論ページ]か [https://bugzilla.wikimedia.org Bugzilla]を使ってコメントを伝えてください。
+
+あなたからの意見を楽しみに待っています。',
 );
 
 /** Georgian (ქართული)
@@ -1655,7 +1685,12 @@ Dat neit Navigatiounssystem mécht et net nëmme méi einfacher fir ze gesinn, w
 ;Verbesserunge vun der Ännerungs-Toolbar
 Nei a verbessert Symboler maachen et méi kloer, watfireng Aktioun hanner all Tool stécht. Abschnitter déi opgeklappt kënne ginn reduzéieren den Duercherneen, während sele benotzten Toolen nëmmen ee Klick ewech sinn.
 Den Abschnitt mat der Hëllef erlaabt e séieren Zougrëff mat déi am dackste benotzte Wikisyntax.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+
+== Wéi Dir matmaache kënnt ==
+Fir méi iwwer dëse Projet gewuer ze ginn oder fir matzemaachen, gitt w.e.g. op d\'[http://usability.wikimedia.org Benotzerfrëndlechkeets-Initiative Wiki]. Do fannt Dir Informatiounen iwwer eise Financement, eis Recherche, eisen Design, eis Entwécklung an déi verschidde Versiounen. Fir Froen ze stellen oder en allgemenge Feedback ze hannerloossen benotzt w.e.g. eis [http://usability.wikimedia.org/wiki/Talk:Prototype Prototyp-Diskussiouns-Säit].  Fir méi prezies Sujeten ze diskutéieren benotzt w.e.g. déi jeweileg Diskussiounssäiten. Wann Dir Feeler fannt da mellt eis déi w.e.g. op der [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai release Diskussiounssäit] oder andeem Dir [https://bugzilla.wikimedia.org Bugzilla] benotzt.
+
+Merci a mir freën eis fir vun Iech ze héieren!',
 );
 
 /** Lithuanian (Lietuvių)
@@ -2166,7 +2201,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'optin' => 'Участие в Инициативе юзабилити',
 	'optin-desc' => 'Позволяет участникам опробовать Beta, последнее улучшение, сделанное в рамках Инициативы юзабилити',
-	'optin-title-optedout' => 'Опробовать Beta',
+	'optin-title-optedout' => 'Опробование Beta',
 	'optin-title-optedin' => 'Покинуть Beta',
 	'optin-title-justoptedin' => 'Добро пожаловать в Beta',
 	'optin-title-justoptedout' => 'Благодарим вас за проверку Beta',
@@ -2187,7 +2222,7 @@ $messages['ru'] = array(
 	'optin-accept-long' => 'Опробовать Beta',
 	'optin-accept-long-anon' => 'Представиться системе и попробовать Beta',
 	'optin-deny-short' => 'Нет, спасибо',
-	'optin-deny-long' => 'вернуться на предыдущую страницу',
+	'optin-deny-long' => 'Вернуться на предыдущую страницу',
 	'optin-submit-out' => 'Покинуть Beta',
 	'optin-submit-feedback' => 'Отправить отзыв',
 	'optin-try' => 'Опробовать Beta',
@@ -2243,9 +2278,9 @@ $messages['ru'] = array(
 	'optin-survey-answer-changes-upload' => 'Усовершенствовать загрузку содержания и медиа.',
 	'optin-survey-answer-changes-richtext' => 'Разработать инструменты редактирования, аналогичные текстовым редакторам.',
 	'optin-survey-answer-changes-lookfeel' => 'Обновить «внешний вид» сайта.',
-	'optin-survey-answer-changes-predictability' => 'Повышение предсказуемости работы.',
+	'optin-survey-answer-changes-predictability' => 'Повысить предсказуемости работы.',
 	'optin-survey-answer-changes-custom' => 'Позволить производить больше индивидуальных настроек.',
-	'optin-survey-answer-changes-other' => 'Другие:',
+	'optin-survey-answer-changes-other' => 'Иное:',
 	'optin-improvements' => '== Что было улучшено? ==
 [[File:UsabilityNavigation.png|left]]
 ; Усовершенствование навигации 
@@ -2255,7 +2290,12 @@ $messages['ru'] = array(
 [[File:UsabilityToolbar.png|left]]
 ; Улучшение панели редактирования
 Новые и улучшенные значки более точно показывают какие инструменты какие действия выполняют. Раскрываемые разделы уменьшают беспорядок, сохраняя при этом редко используемые инструменты на расстоянии щелчка мыши. Справочный раздел обеспечивает быстрый доступ к примерам по наиболее используемым типам вики-разметки.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+== Как подключиться ==
+
+Чтобы узнать больше о проекте, принять в нём участие, пожалуйста, посетите [http://usability.wikimedia.org вики-сайт Инициативы юзабилити]. Там вы найдёте информацию о наших грантах, научных исследованиях, проектировании, выпусках. Чтобы задать вопрос или оставить общий отзыв, воспользуйтесь нашеё [http://usability.wikimedia.org/wiki/Talk:Prototype страницей обсуждения прототипа]. Для решения конкретных вопросов, пожалуйста, используйте соответствующие страницы обсуждения. Если вы нашли ошибку, пожалуйста, оставьте свои замечания на [http://usability.wikimedia.org/wiki/Talk:Releases/Acai странице обсуждения выпуска Acai] или с помощью [https://bugzilla.wikimedia.org Bugzilla].
+
+Спасибо, мы ждём ваших отзывов!',
 );
 
 /** Yakut (Саха тыла)
@@ -2441,6 +2481,7 @@ $messages['sr-ec'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'optin-accept-long' => 'బీటాని ప్రయత్నించండి',
 	'optin-survey-yes' => 'అవును',
 	'optin-survey-no' => 'కాదు',
 	'optin-survey-answer-whyoptout-hard' => 'వాడడానికి చాలా కష్టంగా ఉంది.',
