@@ -475,7 +475,6 @@ var editToolbarConfiguration = {
 					"\u215c", "\u215d", "\u215e", "\u221e",
 					"\u2018", "\u201c", "\u2019",
 					"\u201d", {
-						'type': 'link',
 						'label': "\u00ab\u00bb",
 						'action': {
 							'type': 'encapsulate',
@@ -499,9 +498,7 @@ var editToolbarConfiguration = {
 			'greek': {
 				'labelMsg': 'edittoolbar-characters-page-greek',
 				'layout': 'characters',
-				'attributes': {
-					'lang': 'hl'
-				},
+				'language': 'hl',
 				'characters': ["\u0391",
 					"\u0386", "\u03b1", "\u03ac", "\u0392",
 					"\u03b2", "\u0393", "\u03b3", "\u0394",
@@ -558,13 +555,8 @@ var editToolbarConfiguration = {
 			'arabic': {
 				'labelMsg': 'edittoolbar-characters-page-arabic',
 				'layout': 'characters',
-				'attributes': {
-					'lang': 'ar',
-					'class': 'rtl'
-				},
-				'styles': {
-					'font-size': '1.25em'
-				},
+				'language': 'ar',
+				'direction': 'rtl',
 				'characters': ["\u061b",
 					"\u061f", "\u0621", "\u0622", "\u0623",
 					"\u0624", "\u0625", "\u0626", "\u0627",
@@ -581,9 +573,7 @@ var editToolbarConfiguration = {
 			'hebrew': {
 				'labelMsg': 'edittoolbar-characters-page-hebrew',
 				'layout': 'characters',
-				'attributes': {
-					'class': 'rtl'
-				},
+				'direction': 'rtl',
 				'characters': ["\u05d0",
 					"\u05d1", "\u05d2", "\u05d3", "\u05d4",
 					"\u05d5", "\u05d6", "\u05d7", "\u05d8",
