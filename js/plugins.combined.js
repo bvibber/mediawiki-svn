@@ -1010,8 +1010,7 @@ fn: {
 		var label = $.wikiEditor.modules.toolbar.fn.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
-				$button = $( '<input />' ).attr( {
-					'type': 'image',
+				$button = $( '<img />' ).attr( {
 					'src': $.wikiEditor.modules.toolbar.imgPath + tool.icon,
 					'alt': label,
 					'title': label,
@@ -1248,28 +1247,42 @@ fn: {
 					)
 				);
 			} else {
-				$sections.append(
+				sectionQueue[sectionQueue.length] = {
+					'context': context,
+					'$sections': $sections,
+					'$tabs': $tabs,
+					'section': section,
+					'config': config[section],
+					'selected': ( selected == section )
+				};
+			}
+		}
+		$.eachAsync( sectionQueue, {
+			'bulk': 0,
+			'loop': function( i, s ) {
+			console.log( i );
+				s.$sections.append(
 					$.wikiEditor.modules.toolbar.fn.buildSection(
-						context, section, config[section]
+						s.context, s.section, s.config
 					)
-					.css( 'display', selected == section ? 'block' : 'none' )
+					.css( 'display', s.selected ? 'block' : 'none' )
 				);
-				$tabs.append(
+				s.$tabs.append(
 					$( '<span></span>' )
 						.attr( {
-							'class': 'tab tab-' + section,
-							'rel': section
+							'class': 'tab tab-' + s.section,
+							'rel': s.section
 						} )
 						.append(
 							$( '<a></a>' )
-							.addClass( selected == section ? 'current' : null )
+							.addClass( s.selected ? 'current' : null )
 							.attr( 'href', '#' )
 							.text(
 								$.wikiEditor.modules.toolbar.fn.autoMsg(
-									config[section], 'label'
+									s.config, 'label'
 								)
 							)
-							.data( 'context', context )
+							.data( 'context', s.context )
 							.click( function() {
 								var $section =
 									$(this).data( 'context' ).$ui.find(
@@ -1299,7 +1312,7 @@ fn: {
 						)
 				);
 			}
-		}
+		} );
 	}
 }
 
