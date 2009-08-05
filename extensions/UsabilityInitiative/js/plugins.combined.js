@@ -287,14 +287,14 @@ encapsulateSelection: function( pre, peri, post ) {
     var e = this.jquery ? this[0] : this;
 	var selText;
 	var isSample = false;
-	if ( document.selection  && document.selection.createRange ) {
+	if ( document.selection && document.selection.createRange ) {
 		// IE/Opera
 		if ( document.documentElement && document.documentElement.scrollTop ) {
 			var winScroll = document.documentElement.scrollTop;
 		} else if ( document.body ) {
 			var winScroll = document.body.scrollTop;
 		}
-		e.focus();
+		$(this).focus();
 		var range = document.selection.createRange();
 		selText = range.text;
 		checkSelectedText();
@@ -315,7 +315,7 @@ encapsulateSelection: function( pre, peri, post ) {
 	} else if ( e.selectionStart || e.selectionStart == '0' ) {
 		// Mozilla
 		var textScroll = e.scrollTop;
-		e.focus();
+		$(this).focus();
 		var startPos = e.selectionStart;
 		var endPos = e.selectionEnd;
 		selText = e.value.substring( startPos, endPos );
