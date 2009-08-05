@@ -229,9 +229,11 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'profiling-ok' => 'Ados',
+	'profiling-data-process' => 'Prozesua',
 	'profiling-data-count' => 'Zenbaketa',
 );
 

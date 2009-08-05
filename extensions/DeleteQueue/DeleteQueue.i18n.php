@@ -2983,7 +2983,7 @@ Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odde
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'deletequeue-list-search' => 'Hwilas',
+	'deletequeue-list-search' => 'Whila',
 	'deletequeue-list-anyqueue' => '(vydh)',
 	'deletequeue-case-page' => 'Folen:',
 );

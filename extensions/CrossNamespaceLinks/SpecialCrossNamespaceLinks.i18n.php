@@ -240,9 +240,13 @@ $messages['es'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|enlace a página|enlaces a páginas}} de $3',
 );
 
-/** Estonian (Eesti) */
+/** Estonian (Eesti)
+ * @author Pikne
+ */
 $messages['et'] = array(
 	'crossnamespacelinks' => 'Lingid teise nimeruumi',
+	'crossnamespacelinks-summary' => 'Loetletud leheküljed artiklinimeruumis viitavad teistele nimeruumidele, millele ei ole soovitatav viidata. Loetlemata on lingid nimeruumidesse {{ns:special}}, {{ns:talk}}, {{ns:project}} ja {{ns:template}}.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linki}} nimeruumi $3',
 );
 
 /** Basque (Euskara)

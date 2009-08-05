@@ -3358,6 +3358,7 @@ $messages['ro'] = array(
 	'openidchoosemanual' => 'Un nume la alegere:',
 	'openidchooseexisting' => 'Un cont existent pe acest wiki:',
 	'openidchoosepassword' => 'parolă:',
+	'openid-urls-action' => 'Acţiune',
 );
 
 /** Tarandíne (Tarandíne)

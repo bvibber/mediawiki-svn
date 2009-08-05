@@ -613,6 +613,13 @@ $messages['pt-br'] = array(
 	'security-type-namespace' => 'domínio',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'security-type-namespace' => 'spaţiu de nume',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

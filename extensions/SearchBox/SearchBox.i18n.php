@@ -538,7 +538,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'searchbox-namespaces' => 'Spaţiu de nume:',
+	'searchbox-namespaces' => 'Spaţii de nume:',
 );
 
 /** Tarandíne (Tarandíne)

@@ -237,6 +237,7 @@ To budźe će k druhej stronje wjesć a ty móhł swoju aktualnu změnu zhubić.
 
 /** Hungarian (Magyar)
  * @author Blogadmin
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -245,7 +246,7 @@ $messages['hu'] = array(
 Ez elirányít a szerkesztőablakból, úgyhogy ezek a szerkesztéseid el fognak veszni. Ha ezt nem szeretnéd, másold ki őket a szövegmezőből!',
 	'ajaxLogin2' => 'Biztos vagy benne?
 Az oldal elhagyásával a szerkesztéseid elvesznek.',
-	'ajaxlogin-create' => 'Új felhasználó létrehozása',
+	'ajaxlogin-create' => 'Új felhasználói fiók létrehozása',
 );
 
 /** Interlingua (Interlingua)
@@ -445,6 +446,7 @@ Você perderá as suas edições se abandonar a página agora.',
 );
 
 /** Romanian (Română)
+ * @author KlaudiuMihaila
  * @author Pixi
  */
 $messages['ro'] = array(
@@ -452,6 +454,7 @@ $messages['ro'] = array(
 Aceasta înseamnă că vei părăsi pagina de editare şi vei pierde editările efectuate până acum.',
 	'ajaxLogin2' => 'Eşti sigur?
 Vei pierde editările efectuate dacă părăseşti această pagină acum.',
+	'ajaxlogin-create' => 'Creează un cont',
 );
 
 /** Tarandíne (Tarandíne)

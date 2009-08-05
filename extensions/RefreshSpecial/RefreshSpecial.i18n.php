@@ -184,6 +184,7 @@ $messages['bs'] = array(
 	'refreshspecial-fail' => 'Molimo odaberite najmanje jednu posebnu stranicu za osvježavanje.',
 	'refreshspecial-refreshing' => 'osvježavam specijalne stranice',
 	'refreshspecial-choice' => 'osvježavam posebne stranice',
+	'refreshspecial-js-disabled' => '(<i>Ne možete odabrati sve stranice ako je JavaScript onemogućen</i>)',
 	'refreshspecial-select-all-pages' => 'Odaberi sve stranice',
 	'refreshspecial-link-back' => 'Idi nazad na posebne stranice',
 	'refreshspecial-none-selected' => 'Niste odabrali nijednu posebnu stranicu. Vraćam na pretpostavljeni odabir.',
@@ -191,6 +192,7 @@ $messages['bs'] = array(
 	'refreshspecial-no-page' => 'Nema takve specijalne stranice',
 	'refreshspecial-reconnected' => 'Ponovno spojeno.',
 	'refreshspecial-reconnecting' => 'Spajanje nije uspjelo, ponovno spajanje za 10 sekundi...',
+	'right-refreshspecial' => 'Osvježavanje posebnih stranica',
 );
 
 /** Catalan (Català)

@@ -118,10 +118,11 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'clientside-desc' => 'Eszközöket biztosít kódgeneráláshoz kliens oldali formátumokban, mint például HTML, CSS és JavaScript',
+	'clientside-desc' => 'Eszközöket biztosít kódgeneráláshoz olyan kliens oldali formátumokban, mint például a HTML, a CSS és a JavaScript',
 );
 
 /** Interlingua (Interlingua)

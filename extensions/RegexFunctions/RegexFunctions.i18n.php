@@ -143,6 +143,13 @@ $messages['hsb'] = array(
 	'regexfunctions-desc' => 'Analyzowanske funkcije za regularne wurazy',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'regexfunctions-desc' => 'Reguláris kifejezés parser függvények',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -61,17 +61,19 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'uploadblacklist-desc' => 'הוספת יכולת העלאת רשימה שחורה',
+	'uploadblacklist-desc' => 'אפשרות להעלאת רשימה שחורה',
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'uploadblacklist-desc' => 'Feketelista hozzáadása a feltöltésekhez',
+	'uploadblacklist-desc' => 'Feketelista használata a feltöltéseknél',
 );
 
 /** Interlingua (Interlingua)

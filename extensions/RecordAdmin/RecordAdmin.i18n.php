@@ -329,6 +329,7 @@ $messages['de'] = array(
 	'recordadmin-modified' => 'Modifiziert',
 	'recordadmin-actions' => 'Aktionen',
 	'recordadmin-needscontent' => 'Inhalt hinzufügen …',
+	'recordadmin-editwithform' => 'Mit Formular bearbeiten',
 	'right-recordadmin' => 'Finde und Editiere Aufzeichnungsseiten',
 );
 
@@ -1249,6 +1250,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'recordadmin-badtitle' => 'Titlu greşit!',
+	'recordadmin-actions' => 'Acţiuni',
 );
 
 /** Tarandíne (Tarandíne)

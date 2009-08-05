@@ -263,7 +263,7 @@ $messages['hu'] = array(
 	'eval' => 'Kiértékelés',
 	'eval-desc' => '[[Special:Eval|Speciális lap]] az <code>eval()</code> függvény használatára',
 	'eval_submit' => 'Kiértékelés',
-	'eval_escape' => 'Escape kimenete',
+	'eval_escape' => 'A kimenet escapelése',
 	'eval_out' => 'Kimenet',
 	'eval_code' => 'Kód',
 );

@@ -122,10 +122,11 @@ Aos usuarios anónimos concederáselles un nome automático, que pode ser cambia
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'webchat' => "צ'אט במנשק אתר",
+	'webchat' => "צ'אט באתר",
 	'webchat-desc' => "הוספת [[Special:WebChat|דף מיוחד]] המשמש לקיום צ'אט בזמן אמת עם משתמשים אחרים באתר הוויקי",
 );
 

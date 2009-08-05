@@ -586,18 +586,19 @@ ID, kotryž dyrbiš podać, su ličby a pismiki mjez "$2" a "$3".',
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'imstatus_default' => 'Alapértelmezés',
+	'imstatus_default' => 'Alapértelmezett',
 	'imstatus_example' => 'Példa',
 	'imstatus_possible_val' => 'Lehetséges értékek',
 	'imstatus_max' => 'max.',
 	'imstatus_min' => 'min.',
 	'imstatus_or' => 'vagy',
-	'imstatus_your_name' => '$1 azonosító',
+	'imstatus_your_name' => '$1-azonosító',
 	'imstatus_gtalk_height' => 'a doboz magassága, képpontban.',
-	'imstatus_icq_id' => 'az ICQ ID-d',
+	'imstatus_icq_id' => 'az ICQ-azonosítód',
 	'imstatus_xfire_size' => 'a gomb mérete, a legnagyobbtól ($1) a legkisebbig ($2).',
 );
 

@@ -134,10 +134,11 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'newsextension-desc' => 'Testre szabott friss változások wiki oldalon, vagy mint RSS/Atom hírcsatorna',
+	'newsextension-desc' => 'Testre szabott friss változások a wiki egy lapján, vagy mint RSS/Atom hírcsatorna',
 );
 
 /** Interlingua (Interlingua)

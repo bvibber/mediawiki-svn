@@ -82,6 +82,7 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Pill
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'mostrevisors' => 'Seiten mit den meisten Bearbeitern',
@@ -96,6 +97,7 @@ $messages['de'] = array(
 	'mostrevisors-showredir' => 'Weiterleitungen anzeigen',
 	'mostrevisors-hideredir' => 'Weiterleitungen verstecken',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|Bearbeiter|Bearbeiter}}',
+	'mostrevisors-viewcontributors' => 'Hauptautoren ansehen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -337,6 +339,13 @@ $messages['oc'] = array(
 	'mostrevisors-showredir' => 'Afichar las paginas de redireccion',
 	'mostrevisors-hideredir' => 'amagar las paginas de redireccion',
 	'mostrevisors-viewcontributors' => 'Veire los contributors principals',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'mostrevisors-namespace' => 'Spaţiu de nume:',
 );
 
 /** Russian (Русский)

@@ -320,7 +320,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'abcdownload' => 'Iskarga:',
+	'abcdownload' => 'Iscarga:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

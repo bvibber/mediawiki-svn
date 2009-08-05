@@ -410,6 +410,13 @@ $messages['es'] = array(
 	'right-patroller' => 'Patrullar páginas',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'patrol-revert-reason' => 'Arrazoia:',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

@@ -217,13 +217,14 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'linkopenid-desc' => 'Felhasználói fiók külső OpenID-hoz csatolásának engedélyezése',
+	'linkopenid-desc' => 'Lehetővé teszi a szerkesztők számára, hogy felhasználói fiókjukat egy külső OpenID-hoz csatolják',
 	'linkopenid-prefstext-openid' => 'A te OpenID-d:',
-	'linkopenid-prefstext-v1url' => 'Szerver URL 1.1-es verziójú OpenID-hoz:',
-	'linkopenid-prefstext-v2url' => 'Szerver URL 2-es verziójú OpenID-hoz:',
+	'linkopenid-prefstext-v1url' => 'Szerver URL 1.1-es verziójú OpenID-hez:',
+	'linkopenid-prefstext-v2url' => 'Szerver URL 2-es verziójú OpenID-hez:',
 );
 
 /** Interlingua (Interlingua)

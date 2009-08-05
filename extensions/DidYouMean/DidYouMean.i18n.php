@@ -211,10 +211,11 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'didyoumean-desc' => 'Hivatkozások hozzáadása „hasonló” című oldalakhoz',
+	'didyoumean-desc' => 'Hivatkozások hozzáadása „hasonló” című lapokhoz',
 );
 
 /** Interlingua (Interlingua)

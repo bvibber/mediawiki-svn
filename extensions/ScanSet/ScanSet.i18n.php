@@ -346,6 +346,14 @@ $messages['es'] = array(
 	'scanset_prev' => '&lt; Anterior',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'scanset_next' => 'Hurrengoa &gt;',
+	'scanset_prev' => '&lt; Aurrekoa',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

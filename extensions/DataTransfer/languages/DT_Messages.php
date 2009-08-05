@@ -329,6 +329,7 @@ $messages['de'] = array(
 	'dt_xml_freetext' => 'Freier Text',
 	'importxml' => 'XML importieren',
 	'dt_import_selectfile' => 'Bitte die zu importierende $1-Datei auswählen:',
+	'dt_import_encodingtype' => 'Encoding-Typ',
 	'dt_import_editsummary' => '$1-Import',
 	'dt_import_importing' => 'Importiere …',
 	'dt_import_success' => '$1 {{PLURAL:$1|Seite|Seiten}} werden aus der $2-Datei importiert.',
@@ -713,7 +714,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'dt-desc' => 'Lehetővé teszi a sablonhívásokban található adatszerkezetek importálását és exportálását',
+	'dt-desc' => 'Lehetővé teszi a sablonhívásokban található adatok importálását és exportálását',
 	'viewxml' => 'XML megtekintése',
 	'dt_viewxml_docu' => 'Válaszd ki a kategóriák és a névterek közül azt, amelyiket meg akarod tekinteni XML formátumban.',
 	'dt_viewxml_categories' => 'Kategóriák',
@@ -919,7 +920,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'dt_viewxml_categories' => 'Klasyansow',
+	'dt_viewxml_categories' => 'Clasyansow',
 	'dt_xml_page' => 'Folen',
 );
 

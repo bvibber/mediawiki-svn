@@ -204,6 +204,14 @@ $messages['es'] = array(
 	'lua_overflow_time' => 'Tiempo de ejecución máximo alcanzado',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'lua_error' => 'Errorea $1. lerroan',
+	'lua_error_internal' => 'Barneko errorea',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Nike

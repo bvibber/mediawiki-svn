@@ -188,6 +188,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -196,6 +197,7 @@ $messages['hu'] = array(
 	'prefstats-title' => 'Beállítás-statisztikák',
 	'prefstats-list-intro' => 'Jelenleg az alábbi beállításokról készül statisztika.
 Kattints rá valamelyikre a róla gyűjtött adatok megtekintéséhez.',
+	'prefstats-noprefs' => 'A beállítások nyomkövetése inaktív. Állítsd be megfelelően a $wgPrefStatsTrackPrefs értékét a beállítások követéséhez.',
 );
 
 /** Interlingua (Interlingua)

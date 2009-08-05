@@ -763,10 +763,10 @@ riddler|Rébusz',
 	'vote-results-choice' => 'Válasz',
 	'vote-results-count' => 'Szavazatok',
 	'vote-results-none' => 'Még senki sem adott le szavazott.',
-	'vote-login' => '[$1 Be kell jelentkezned] a szavazáshoz.',
+	'vote-login' => 'A szavazáshoz [$1 be kell jelentkezned].',
 	'vote-invalid-choice' => 'Választanod kell egyet a megadott lehetőségek közül.',
-	'right-vote' => 'Szavazás',
-	'right-voteadmin' => 'A szavazás eredménye',
+	'right-vote' => 'szavazás',
+	'right-voteadmin' => 'a szavazás eredményének megtekintése',
 );
 
 /** Interlingua (Interlingua)

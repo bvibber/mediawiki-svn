@@ -4333,7 +4333,7 @@ Jangk op di Aansech als Dahteshtrohm: $2',
 De 
 sequence
 „$1“ aam Ändere',
-	'mv_sequence_player_title' => 'Afshpeller för
+	'mv_sequence_player_title' => 'Afshpellprojramm för
 sequence',
 	'mv_resource_not_found' => "
 Resource 
@@ -4353,7 +4353,7 @@ fenge',
 	'mv_transitions' => 'Övverjäng',
 	'mv_save_sequence' => 'Donn de 
 Sequenz 
-speichere',
+afspeichere',
 	'mv_sequence_page_desc' => '
 Donn de aktoälle 
 sequence

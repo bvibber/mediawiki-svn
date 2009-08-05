@@ -107,12 +107,13 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'delaydef-desc' => 'הוספת &lt;define&gt; ו־&lt;display&gt; כדי לאפשר מיקום מחדש של הקוד',
 	'delaydef-error-missing-def' => 'שגיאה: ההגדרה הנדרשת עבור &lt;display name="$1"&gt; לא נמצאה.',
-	'delaydef-error-no-name' => 'שגיאה: לא צויין משתנה לשם.',
+	'delaydef-error-no-name' => 'שגיאה: לא צויין פרמטר לשם.',
 	'delaydef-error-redef' => 'שגיאה: התבצע נסיון להגדרת $1 מחדש.',
 );
 

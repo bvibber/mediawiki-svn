@@ -316,7 +316,7 @@ $messages['hu'] = array(
 	'whatismyip' => 'Mi az IP-címem?',
 	'whatismyip-desc' => 'Megmutatja az aktuális szerkesztő [[Special:WhatIsMyIP|IP-címét]]',
 	'whatismyip-out' => 'Az IP-címed:',
-	'right-whatismyip' => 'A [[Special:WhatIsMyIP|saját IP címem]]',
+	'right-whatismyip' => '[[Special:WhatIsMyIP|saját IP-cím]] megtekintése',
 );
 
 /** Interlingua (Interlingua)

@@ -322,7 +322,7 @@ $messages['hu'] = array(
 	'simpleantispam' => 'A szerkesztésed egy spamellenes mechanizmust aktivált.',
 	'simpleantispam-label' => "Spam elleni ellenőrzés.
 '''NE''' töltsd ezt ki!",
-	'simpleantispam-desc' => 'Egyszerű spam/bot ellenőrzés hozzáadása űrlapokhoz',
+	'simpleantispam-desc' => 'Egyszerű spam és bot elleni ellenőrzés hozzáadása űrlapokhoz',
 );
 
 /** Interlingua (Interlingua)

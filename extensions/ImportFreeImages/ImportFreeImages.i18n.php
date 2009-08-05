@@ -206,6 +206,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'importfreeimages' => 'Import freier Bilder',
@@ -220,6 +221,7 @@ $messages['de'] = array(
 	'importfreeimages_filefromflickr' => '$1 von Benutzer <b>[$2]</b> von flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Bitte gebe einen Ziel-Dateinamen ein:',
 	'importfreeimages_returntoform' => "Oder klicke <a href='$1'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.",
+	'importfreeimages_nophpflickr' => 'Du musst „phpFlickr“ installieren, bitte setze <tt>$wgIFphpFlickr</tt> in deiner <tt>LocalSettings.php</tt>.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

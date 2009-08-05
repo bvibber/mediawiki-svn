@@ -375,6 +375,8 @@ $messages['be-tarask'] = array(
 	'ogg-play-video' => 'Прайграць відэа',
 	'ogg-play-sound' => 'Прайграць аўдыё',
 	'ogg-no-player' => 'Прабачце, Ваша сыстэма ня мае неабходнага праграмнага забесьпячэньня для прайграваньня файлаў. Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце прайгравальнік</a>.',
+	'ogg-no-player-js' => 'Прабачце, але ў Вашай сыстэме адключаны JavaScript, альбо яна ня мае ніякага адпаведнага прайгравальніка.<br />
+Вы можаце <a href="$1">загрузіць кліп</a><br />альбо<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
 	'ogg-no-xiphqt' => 'Адсутнічае кампанэнт  XiphQT для QuickTime.
 QuickTime ня можа прайграваць файлы ў фармаце Ogg бяз гэтага кампанэнта.
 Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце XiphQT</a> альбо выберыце іншы прайгравальнік.',
@@ -495,6 +497,8 @@ $messages['bs'] = array(
 	'ogg-play-sound' => 'Sviraj zvuk',
 	'ogg-no-player' => 'Žao nam je, Vaš sistem izgleda da nema nikakvog podržanog softvera za pregled.
 Molimo Vas <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">da skinete preglednik</a>.',
+	'ogg-no-player-js' => 'Žao nam je, Vaš sistem ima onemogućen JavaScript ili je nemate nijedan podržani player.<br />
+Možete <a href="$1">skinuti snimak</a><br />ili <br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">skinuti player</a> da biste mogli pogledati snimak u Vašem pregledniku.',
 	'ogg-no-xiphqt' => 'Izgleda da nemate XiphQT komponentu za program QuickTime.
 QuickTime ne može reproducirati Ogg datoteke bez ove komponente.
 Molimo Vas da <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">skinete XiphQT</a> ili da odaberete drugi preglednik.',
@@ -567,6 +571,8 @@ $messages['cs'] = array(
 	'ogg-play-video' => 'Přehrát video',
 	'ogg-play-sound' => 'Přehrát zvuk',
 	'ogg-no-player' => 'Váš systém zřejmě neobsahuje žádný podporovaný přehrávač. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Váš systém zřejmě neobsahuje žádný podporovaný přehrávač. </a>.',
+	'ogg-no-player-js' => 'Je nám líto, ale máte vypnutý JavaScript nebo váš systém neobsahuje žádný podporovaný přehrávač.<br />
+Můžete si <a href="$1">klip stáhnout</a><br />nebo<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/cs">si nainstalovat přehrávač</a>.',
 	'ogg-no-xiphqt' => 'Nemáte rozšíření XiphQT pro QuickTime. QuickTime nemůže přehrávat soubory ogg bez tohoto rozšíření. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Stáhněte XiphQT</a> nebo vyberte jiný přehrávač.',
 	'ogg-player-videoElement' => 'Vestavěná podpora v prohlížeči',
 	'ogg-player-oggPlugin' => 'Zásuvný modul do prohlížeče',
@@ -609,6 +615,8 @@ $messages['de'] = array(
 	'ogg-play-video' => 'Video abspielen',
 	'ogg-play-sound' => 'Audio abspielen',
 	'ogg-no-player' => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
+	'ogg-no-player-js' => 'Entschuldigung, auf deinem System ist JavaScript deaktiviert oder es ist keine unterstützte Abspielsoftware vorhanden.<br />
+Du kannst <a href="$1">den Clip herunterladen</a><br />oder<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'ogg-no-xiphqt' => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder wähle eine andere Abspielsoftware.',
 	'ogg-player-videoElement' => 'Vorhandene Browserunterstützung',
 	'ogg-player-oggPlugin' => 'Browser-Plugin',
@@ -624,9 +632,12 @@ $messages['de'] = array(
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'ogg-no-player' => 'Ihr System scheint über keine Abspielsoftware zu verfügen. Bitte installieren Sie <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
+	'ogg-no-player-js' => 'Entschuldigung, auf Ihrem System ist JavaScript deaktiviert oder es ist keine unterstützte Abspielsoftware vorhanden.<br />
+Sie können <a href="$1">den Clip herunterladen</a><br />oder<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'ogg-no-xiphqt' => 'Ihr System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
 );
 
@@ -650,6 +661,8 @@ $messages['dsb'] = array(
 	'ogg-play-sound' => 'Zuk wótegraś',
 	'ogg-no-player' => 'Wódaj, twój system njezda se pódpěrany wótegrawak měś.
 Pšosym <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ześěgni wótegrawak</a>.',
+	'ogg-no-player-js' => 'Wódaj, w twójom systemje pak JavaScript jo znjemóžnjony pak njejo pódpěrany wótegrawak.<br />
+Móžoš <a href="$1">klip ześěgnuś</a><br />abo<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">wótegrawak ześěgnuś</a>, aby klip w swójom wobglědowaku wótegrał.',
 	'ogg-no-xiphqt' => 'Zda se, až njamaš komponentu XiphQT za QuickTime.
 QuickTime njamóžo ogg-dataje bźez toś teje komponenty wótegraś.
 Pšosym <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Cient_download">ześěgni XiphQT</a> abo wubjeŕ drugi wótegrawak.',
@@ -1207,6 +1220,8 @@ $messages['hsb'] = array(
 	'ogg-play-video' => 'Widejo wothrać',
 	'ogg-play-sound' => 'Zynk wothrać',
 	'ogg-no-player' => 'Bohužel twój system po wšěm zdaću nima wothrawansku software. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń wothrawak</a>.',
+	'ogg-no-player-js' => 'Wodaj, na twojim systemje je pak JavaScript znjemóžnjeny pak nima podpěrany wothrawak.<br />
+Móžeš <a href="$1">klip sćahnyć</a><br />abo<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrał.',
 	'ogg-no-xiphqt' => 'Po wšěm zdaću nimaš komponentu XiphQT za QuickTime. QuickTime njemóže Ogg-dataje bjez tuteje komponenty wothrawać. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń XiphQT</a> abo wubjer druhi wothrawak.',
 	'ogg-player-videoElement' => 'Element <video>',
 	'ogg-player-oggPlugin' => 'Tykač Ogg',
@@ -1417,6 +1432,8 @@ $messages['ja'] = array(
 	'ogg-play-video' => '動画を再生',
 	'ogg-play-sound' => '音声を再生',
 	'ogg-no-player' => '申し訳ありません、あなたのシステムには対応する再生ソフトウェアがインストールされていないようです。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここからダウンロードしてください</a>。',
+	'ogg-no-player-js' => '申し訳ありません、あなたのシステムでは JavaScript が無効になっているか、対応したプレイヤーをもっていません。<br />
+<a href="$1">クリップをダウンロード</a>する<br />か、または<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">プレイヤーをダウンロード</a>してブラウザでクリップを再生することができます。',
 	'ogg-no-xiphqt' => 'QuickTime用XiphQTコンポーネントがインストールされていないようです。QuickTimeでOggファイルを再生するには、このコンポーネントが必要です。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここからXiphQTをダウンロードする</a>か、別の再生ソフトをインストールしてください。',
 	'ogg-player-videoElement' => 'ネイティヴ・ブラウザをサポート',
 	'ogg-player-oggPlugin' => 'ブラウザ・プラグイン',
@@ -2463,6 +2480,8 @@ $messages['sah'] = array(
 	'ogg-play-video' => 'Көрдөр',
 	'ogg-play-sound' => 'Иһитиннэр',
 	'ogg-no-player' => 'Хомойуох иһин эн систиэмэҕэр иһитиннэрэр/көрдөрөр анал бырагырааммалар суохтар эбит. Бука диэн, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">плееры хачайдан</a>.',
+	'ogg-no-player-js' => 'Эн систиэмэҕэр JavaScript үлэлээбэт, эбэтэр плеерыҥ бу технологияны өйөөбөт.<br />
+<a href="$1">Клибы хачайдаан ылыаххын</a><br /> сөп эбэтэр браузергар бу клибы оонньотор туһуттан <br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">плееры хачайдаан ылыаххын</a> сөп.',
 	'ogg-no-xiphqt' => 'QuickTime маннык тэрээбэтэ: XiphQT суох эбит. Онон QuickTime бу Ogg билэни (файлы) оонньотор кыаҕа суох. Бука диэн, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> XiphQT хачайдан</a> эбэтэр атын плееры тал.',
 	'ogg-player-videoElement' => 'Браузер бэйэтин өйөөһүнэ',
 	'ogg-player-oggPlugin' => 'Браузер плагина',

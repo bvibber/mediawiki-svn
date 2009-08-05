@@ -114,6 +114,13 @@ $messages['hsb'] = array(
 	'semanticgallery-desc' => 'Přidawa galerijowy wudawanski format k wotprašanjam Semantic MediaWiki',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'semanticgallery-desc' => 'Galéria kimeneti formátum a SMW belső lekérdezésekhez',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

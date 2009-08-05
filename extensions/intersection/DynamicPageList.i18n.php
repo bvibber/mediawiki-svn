@@ -167,15 +167,17 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Pill
  * @author Purodha
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'intersection-desc' => 'Ausgabe einer Liste der aktuellsten Einträge in einer Kategorie, oder der Schnittmenge mehrerer Kategorien',
-	'intersection_toomanycats' => 'DynamicPageList: Zuviele Kategorien!',
-	'intersection_toofewcats' => 'DynamicPageList: Zuwenige Kategorien!',
-	'intersection_noresults' => 'DynamicPageList: Kein Ergebnis!',
-	'intersection_noincludecats' => 'DynamicPageList: Es muss mindestens eine Kategorie eingebunden werden oder gebe einen Namensraum an!',
+	'intersection_toomanycats' => 'Fehler: Zu viele Kategorien!',
+	'intersection_toofewcats' => 'Fehler: Zu wenige Kategorien!',
+	'intersection_noresults' => 'Fehler: Keine Ergebnisse!',
+	'intersection_noincludecats' => 'Fehler: Du musst mindestens eine Kategorie einbinden oder gib einen Namensraum an!',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -88,7 +88,7 @@ $messages['be-tarask'] = array(
 	'contrib-tracking-error-text' => 'Няслушная перадача зьвестак з формы',
 	'contrib-tracking-submitting' => 'Адпраўка апрацоўшчыку плацяжоў...',
 	'contrib-tracking-continue' => 'Калі Вы не былі аўтаматычна перанакіраваны, націсьніце кнопку, каб завяршыць Ваша ахвяраваньне праз сыстэму PayPal.',
-	'contrib-tracking-button' => 'Далей',
+	'contrib-tracking-button' => 'Працягваць',
 );
 
 /** Bulgarian (Български)

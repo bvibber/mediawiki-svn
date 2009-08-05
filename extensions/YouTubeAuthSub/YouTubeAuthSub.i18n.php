@@ -1469,7 +1469,7 @@ Bes jet jedoldesch.',
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'youtubeauthsub_category' => 'Klasyans',
+	'youtubeauthsub_category' => 'Clasyans',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

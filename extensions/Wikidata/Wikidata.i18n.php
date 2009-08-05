@@ -1601,6 +1601,7 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
  */
 $messages['bs'] = array(
 	'wikidata-desc' => 'Dodaje bazu podataka sličnu wikiju za razne vrste sadržaja',
+	'wikidata-handler-namespace-move-error' => 'Stranice u imenskom prostoru koje obrađuje proširenje Wikidata ne mogu se premještati.',
 	'languages' => 'Wikidata: Upravljač jezika',
 	'langman-desc' => 'Dodavanje i izmjena jezičnih postavki sa [[Special:Languages]]',
 	'langman_title' => 'Upravitelj jezika',
@@ -1758,9 +1759,12 @@ Molimo provjerite web adresu.',
 	'ow_meaningsoftitle' => 'Značenje od "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wiki link:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Pristup onemogućen</h2>',
+	'copy' => 'Wikidata: Kopija',
 	'ow_copy_no_action_specified' => 'Molimo Vas da odredite akciju',
 	'ow_copy_help' => 'Pomoć još nije implementirana.',
 	'ow_please_proved_dmid' => 'Izgleda da Vašem unosu nedostaje "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
+Molimo kontaktirajte administratora servera.',
+	'ow_please_proved_dc2' => 'Izgleda da nedostaje Vaš unos "?dc2=<something>" (dc2=kontekst seta podataka 2, set podataka za kopiranje TO)<br />
 Molimo kontaktirajte administratora servera.',
 	'ow_copy_successful' => '<h2>Kopiranje uspješno</h2>
 Vaši podaci su uspješno kopirani.
@@ -1792,6 +1796,7 @@ Molimo kontaktirajte operatora servera ili administratora.',
 	'ow_suggest_clear' => 'Očisti',
 	'ow_nstab_definedmeaning' => 'definisano značenje',
 	'right-addlanguage' => 'Dodavanje i promjena jezičnih postavki',
+	'ow_shown_datasets' => 'Pokaži setove podataka',
 );
 
 /** Catalan (Català)
@@ -3048,6 +3053,7 @@ $messages['eu'] = array(
 	'langman_wikimedia' => 'Wikimedia kodea:',
 	'langman_field_optional' => '(hautazkoa)',
 	'langman_addlang' => 'Hizkuntza gehitu',
+	'importlangnames' => 'Wikidata: Hizkuntzen izenak inportatu',
 	'importlangnames_title' => 'Inportatu Hizkuntza Izenak',
 	'importlangnames_not_allowed' => 'Ez duzu hizkuntza izenak inportatzeko baimenik.',
 	'datasearch' => 'Wikidata:Datu bilaketa',
@@ -3055,6 +3061,8 @@ $messages['eu'] = array(
 	'datasearch_found_word' => 'Aurkitutako hitza',
 	'datasearch_meaning' => 'Esanahia',
 	'datasearch_search_text' => 'Bilaketa testua:',
+	'importtsv' => 'Wikidata: TSV inportatu',
+	'ow_importtsv_title1' => 'TSV inportatu',
 	'ow_importtsv_file' => 'TSV Fitxategia:',
 	'ow_exporttsv_languages' => 'Hizkuntzak:',
 	'ow_save' => 'Gorde',
@@ -3067,6 +3075,8 @@ Mesedez ikus [[{{MediaWiki:Ow editing policy url}}|gure aldatzeko arauak]].',
 	'ow_uiprefs' => 'Wikidatua',
 	'ow_none_selected' => 'Bat ere ez da aukeratu',
 	'ow_transaction_user' => 'Erabiltzaile-izena:',
+	'ow_transaction_restore' => 'Leheneratu',
+	'ow_transaction_remove' => 'Kendu',
 	'ow_transaction_summary' => 'Laburpena',
 	'ow_conceptmapping_no_action_specified' => '"$1" ekintza ez da onartzen.',
 	'ow_dm_OK' => 'Ondo',
@@ -6224,6 +6234,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'net aginn',
 	'ow_dm_not_found' => 'net an der Datebank fonnt oder net richteg',
+	'ow_mapping_successful' => 'All mat [OK] markéiert Felder goufen zougeuerdnet<br />',
 	'ow_mapping_unsuccessful' => 'Et gi mindestens zwou Beddeitunge gebraucht ier se kënne matenee verbonn ginn.',
 	'ow_will_insert' => 'Dëst drasetzen:',
 	'ow_contents_of_mapping' => 'Inhalter vum Mapping',
