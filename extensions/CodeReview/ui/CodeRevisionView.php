@@ -7,7 +7,7 @@ class CodeRevisionView extends CodeView {
 		global $wgRequest;
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
-		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( $rev ) ) : null;
+		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( ltrim( $rev, 'r' ) ) ) : null;
 		$this->mPreviewText = false;
 		# URL params...
 		$this->mAddTags = $wgRequest->getText( 'wpTag' );
