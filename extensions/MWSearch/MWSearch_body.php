@@ -30,10 +30,11 @@ class LuceneSearch extends SearchEngine {
 	static function prefixSearch( $ns, $search, $limit, &$results ) {
 		$it = LuceneSearchSet::newFromQuery( 'prefix', $search, $ns, $limit, 0 );
 		$results = array();
-		while( $res = $it->next() ) {
-			$results[] = $res->getTitle()->getPrefixedText(); 
+		if( $it ) { // $it can be null
+			while( $res = $it->next() ) {
+				$results[] = $res->getTitle()->getPrefixedText(); 
+			}
 		}
-		
 		return false;
 	}
 
