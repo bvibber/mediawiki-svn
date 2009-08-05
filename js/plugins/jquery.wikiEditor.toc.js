@@ -155,6 +155,7 @@ fn: {
 		var wikitext = '\n' + context.$textarea.val() + '\n';
 		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
 		var offset = 0;
+		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
 			text = headings[h];
 			// Get position of first occurence
