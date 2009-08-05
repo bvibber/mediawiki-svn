@@ -287,14 +287,14 @@ encapsulateSelection: function( pre, peri, post ) {
     var e = this.jquery ? this[0] : this;
 	var selText;
 	var isSample = false;
-	if ( document.selection  && document.selection.createRange ) {
+	if ( document.selection && document.selection.createRange ) {
 		// IE/Opera
 		if ( document.documentElement && document.documentElement.scrollTop ) {
 			var winScroll = document.documentElement.scrollTop;
 		} else if ( document.body ) {
 			var winScroll = document.body.scrollTop;
 		}
-		e.focus();
+		$(this).focus();
 		var range = document.selection.createRange();
 		selText = range.text;
 		checkSelectedText();
@@ -315,7 +315,7 @@ encapsulateSelection: function( pre, peri, post ) {
 	} else if ( e.selectionStart || e.selectionStart == '0' ) {
 		// Mozilla
 		var textScroll = e.scrollTop;
-		e.focus();
+		$(this).focus();
 		var startPos = e.selectionStart;
 		var endPos = e.selectionEnd;
 		selText = e.value.substring( startPos, endPos );
@@ -495,9 +495,9 @@ scrollToCaretPosition: function( pos ) {
 			 * changed, in which case it does nothing. In that case we'll force
 			 * it to act by moving one character back and forth.
 			 */
-			range = document.selection.createRange();
-			oldPos = $(this).bytePos();
-			goBack = false;
+			var range = document.selection.createRange();
+			var oldPos = $(this).getCaretPosition();
+			var goBack = false;
 			if ( oldPos == pos ) {
 				pos++;
 				goBack = true;
@@ -789,6 +789,7 @@ fn: {
 		var wikitext = '\n' + context.$textarea.val() + '\n';
 		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
 		var offset = 0;
+		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
 			text = headings[h];
 			// Get position of first occurence
@@ -1259,6 +1260,12 @@ fn: {
 		}
 		$.eachAsync( sectionQueue, {
 			'bulk': 0,
+			'end': function() {
+				// HACK: Opera doesn't seem to want to redraw after these bits
+				// are added to the DOM, so we can just FORCE it!
+				$( 'body' ).css( 'position', 'static' );
+				$( 'body' ).css( 'position', 'relative' );
+			},
 			'loop': function( i, s ) {
 				s.$sections.append(
 					$.wikiEditor.modules.toolbar.fn.buildSection(
