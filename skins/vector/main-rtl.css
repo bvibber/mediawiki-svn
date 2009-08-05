@@ -28,7 +28,7 @@ body {
 	background-image: url(images/page-base.png);
 }
 /* Content */
-div#content {
+#content {
 	margin-right: 12em;
 	padding: 1em;
 	background-image: url(images/border.png);
@@ -37,14 +37,14 @@ div#content {
 	background-color: white;
 }
 /* Head */
-div#page-base {
+#page-base {
 	height: 6em;
 	background-color: white;
 	background-image: url(images/page-fade.png);
 	background-position: bottom right;
 	background-repeat: repeat-x;
 }
-div#head-base {
+#head-base {
 	margin-top: -6em;
 	margin-right: 12em;
 	height: 6em;
@@ -52,46 +52,47 @@ div#head-base {
 	background-position: bottom right;
 	background-repeat: repeat-x;
 }
-div#head {
+#head {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 }
-div#head h5 {
+#head h5 {
 	margin: 0;
 	padding: 0;
 }
 	/* Personal */
-	div#p-personal {
+	#p-personal {
 		position: absolute;
 		top: 0;
 		left: 0.75em;
 	}
-	div#p-personal h5 {
+	#p-personal h5 {
 		display: none;
 	}
-	div#p-personal ul {
+	#p-personal ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 	}
 	/* @noflip */
-	div#p-personal li {
+	#p-personal li {
+		line-height: 1.125em;
 		float: left;
 	}
-	div#p-personal li {
+	#p-personal li {
 		margin-right: 0.75em;
 		margin-top: 0.5em;
 		font-size: 0.9em;
 	}
 	/* Navigation Containers */
-	div#left-navigation {
+	#left-navigation {
 		position: absolute;
 		right: 12em;
 		top: 3em;
 	}
-	div#right-navigation {
+	#right-navigation {
 		float: left;
 		margin-top: 3em;
 	}
@@ -127,6 +128,7 @@ div#head h5 {
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div.vectorTabs ul li {
+		line-height: 1.125em;
 		display: inline-block;
 		height: 100%;
 		margin: 0;
@@ -178,7 +180,6 @@ div#head h5 {
 	div.vectorTabs li.selected a:visited
 	div.vectorTabs li.selected a:visited span {
 		color: #333333;
-		cursor: default;
 		text-decoration: none;
 	}
 	div.vectorTabs li.new a,
@@ -265,44 +266,81 @@ div#head h5 {
 		padding: 0;
 		margin: 0;
 		text-align: right;
+		line-height: 1em;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div.vectorMenu li a {
 		display: inline-block;
 		padding: 0.5em;
+		white-space: nowrap;
 	}
 	/* IGNORED BY IE6 */
 	div.vectorMenu li > a {
 		display: block;
 	}
 	/* Search */
-	div#p-search h5 {
+	#p-search h5 {
 		display: none;
 	}
 	/* @noflip */
-	div#p-search {
+	#p-search {
 		float: left;
 	}
-	div#p-search {
+	#p-search {
 		margin-left: 0.5em;
 		margin-right: 0.5em;
 	}
-	div#p-search form,
-	div#p-search input {
+	#p-search form,
+	#p-search input {
 		margin: 0;
 		margin-top: 0.4em;
 	}
+	#simpleSearch {
+		margin-top: 0.75em;
+		position: relative;
+		border: solid 1px #AAAAAA;
+		background-color: white;
+		background-image: url(images/search-fade.png);
+		background-position: top right;
+		background-repeat: repeat-x;
+	}
+	#simpleSearch input#searchInput {
+		margin: 0;
+		border-width: 0;
+		padding: 0.25em;
+		line-height: 1em;
+		font-size: 9.75pt;
+		width: 9em;
+		background-color: transparent;
+	}
+	/* OVERRIDDEN BY COMPLIANT BROWSERS */
+	#simpleSearch button#searchButton {
+		margin: 0;
+		padding: 0;
+		width: 1.75em;
+		height: 2em;
+		border: none;
+		cursor: pointer;
+		background-color: transparent;
+		background-image: url(images/search-rtl.png);
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	/* IGNORED BY IE6 */
+	#simpleSearch > button#searchButton {
+		height: 100%;
+	}
 /* Panel */
-div#panel {
+#panel {
 	position: absolute;
 	top: 12em;
 	width: 12em;
 	right: 0;
 }
-	div#panel div.portal {
+	#panel div.portal {
 		padding-top: 1.5em;
 	}
-	div#panel div.portal h5 {
+	#panel div.portal h5 {
 		font-weight: normal;
 		color: #444444;
 		padding: 0.5em;
@@ -312,7 +350,7 @@ div#panel {
 		border: none;
 		font-size: 0.9em;
 	}
-	div#panel div.portal div.body {
+	#panel div.portal div.body {
 		margin: 0;
 		padding-top: 0.5em;
 		margin-right: 1.25em;
@@ -320,26 +358,27 @@ div#panel {
 		background-repeat: no-repeat;
 		background-position: top right;
 	}
-	div#panel div.portal div.body ul {
+	#panel div.portal div.body ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 	}
-	div#panel div.portal div.body ul li {
+	#panel div.portal div.body ul li {
+		line-height: 1.125em;
 		padding: 0;
 		padding-bottom: 0.5em;
 		margin: 0;
 		overflow: hidden;
 		font-size: 0.9em;
 	}
-	div#panel div.portal div.body ul li a {
+	#panel div.portal div.body ul li a {
 		color: #0645ad;
 	}
-	div#panel div.portal div.body ul li a:visited {
+	#panel div.portal div.body ul li a:visited {
 		color: #0b0080;
 	}
 /* Foot */
-div#foot {
+#foot {
 	margin-right: 12em;
 	margin-top: 0;
 	padding: 0.75em;
@@ -347,12 +386,12 @@ div#foot {
 	background-position: top right;
 	background-repeat: repeat-x;
 }
-div#foot ul {
+#foot ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-div#foot ul li {
+#foot ul li {
 	margin: 0;
 	padding: 0;
 	padding-top: 0.5em;
@@ -360,34 +399,34 @@ div#foot ul li {
 	color: #333333;
 	font-size: 0.9em;
 }
-div#foot ul#foot-icons {
+#foot #foot-icons {
 	float: left;
 }
-div#foot ul#foot-places {
+#foot #foot-places {
 	float: right;
 }
-div#foot ul#foot-info li {
+#foot #foot-info li {
 	line-height: 1.4em;
 }
-div#foot ul#foot-icons li {
+#foot #foot-icons li {
 	float: right;
 	margin-right: 0.5em;
 	line-height: 2em;
 }
-div#foot ul#foot-places li {
+#foot #foot-places li {
 	float: right;
 	margin-left: 1em;
 	line-height: 2em;
 }
 /* Logo */
-div#p-logo {
+#p-logo {
 	position: absolute;
 	top: 0;
 	right: 0;
 	height: 12em;
 	width: 12em;
 }
-div#p-logo a {
+#p-logo a {
 	display: block;
 	width: 12em;
 	height: 12em;
@@ -447,19 +486,17 @@ div#p-logo a {
 		text-decoration: underline;
 	}
 	#preftoc li.selected a {
-		cursor: default;
 		background-image: url(images/preferences-fade.png);
 		background-position: bottom;
 		background-repeat: repeat-x;
 		color: #333333;
-		cursor: default;
 		text-decoration: none;
 	}
 #preferences {
 	float: right;
-	zoom: 1;
 	width: 100%;
 	margin: 0;
+	margin-top: -2px;
 	clear: both;
 	border: solid 1px #cccccc;
 	background-color: #f9f9f9;
@@ -611,31 +648,31 @@ pre {
 	background-color: #f9f9f9;
 	line-height: 1.1em;
 }
-div#content ul {
+ul {
 	line-height: 1.5em;
 	list-style-type: square;
 	margin: .3em 1.5em 0 0;
 	padding: 0;
 	list-style-image: url(images/bullet-icon.png);
 }
-div#content ol {
+ol {
 	line-height: 1.5em;
 	margin: .3em 3.2em 0 0;
 	padding: 0;
 	list-style-image: none;
 }
-div#content li {
+li {
 	margin-bottom: .1em;
 }
-div#content dt {
+dt {
 	font-weight: bold;
 	margin-bottom: .1em;
 }
-div#content dl {
+dl {
 	margin-top: .2em;
 	margin-bottom: .5em;
 }
-div#content dd {
+dd {
 	line-height: 1.5em;
 	margin-right: 2em;
 	margin-bottom: .1em;
@@ -648,12 +685,12 @@ table {
 	 * floated tables */
 	background-color: white;
 }
-div#content fieldset table {
+fieldset table {
 	/* but keep table layouts in forms clean... */
 	background: none;
 }
 /* Forms */
-div#content fieldset {
+fieldset {
 	border: 1px solid #2f6fab;
 	margin: 1em 0 1em 0;
 	padding: 0 1em 1em;
@@ -663,19 +700,19 @@ div#content fieldset {
 		margin: 0 0 0.5em 0;
 		padding: 0 0.5em 0.5em;
 	}
-div#content legend {
+legend {
 	padding: .5em;
 	font-size: 95%;
 }
-div#content form {
+form {
 	border: none;
 	margin: 0;
 }
-div#content textarea {
+textarea {
 	width: 100%;
 	padding: .1em;
 }
-div#content select {
+select {
 	vertical-align: top;
 }
 /* Table of Contents */
@@ -703,9 +740,9 @@ div#content select {
 }
 #toc ul,
 .toc ul {
-	list-style-type: none !important;
-	list-style-image: none !important;
-	margin-right: 0 !important;
+	list-style-type: none;
+	list-style-image: none;
+	margin-right: 0;
 	padding-right: 0;
 	text-align: right;
 }
@@ -740,6 +777,7 @@ div.thumb {
 	border-style: solid;
 	border-color: white;
 	width: auto;
+	background-color: transparent;
 }
 div.thumbinner {
 	border: 1px solid #ccc;
@@ -806,11 +844,13 @@ img.thumbborder {
 #siteNotice {
 	text-align: center;
 	font-size: 95%;
-	margin-bottom: 0.9em;
+	margin: 0;
 }
+	#siteNotice div,
 	#siteNotice p {
 		margin: 0;
 		padding: 0;
+		margin-bottom: 0.9em;
 	}
 /* Categories */
 .catlinks {
@@ -860,7 +900,7 @@ table.small {
 #content h3, #content h4, #content h5 {
 	margin-bottom: .3em;
 }
-h1#firstHeading {
+#firstHeading {
 	padding-top: 0;
 	margin-top: 0;
 	padding-top: 0;
@@ -933,27 +973,16 @@ h1#firstHeading {
 #content a.external {
 	color: #36b;
 }
-#content .plainlinks a {
-	/* this can be used in the content area to switch off special external link
-	 * styling */
-	background: none !important;
-	padding: 0 !important;
-}
 #content .printfooter {
 	display: none;
 }
-
-
-li#pt-userpage,
-li#pt-anonuserpage,
-li#pt-login {
+/* Icon for Usernames */
+#pt-userpage,
+#pt-anonuserpage,
+#pt-login {
 	background: url(images/user-icon.png) right top no-repeat;
 	padding-right: 15px !important;
 	text-transform: none;
-}
-
-span.newpage, span.minor, span.bot {
-	font-weight: bold;
 }
 
 .toccolours {
@@ -962,9 +991,7 @@ span.newpage, span.minor, span.bot {
 	padding: 5px;
 	font-size: 95%;
 }
-
-div#bodyContent {
+#bodyContent {
 	position: relative;
 	width: 100%;
 }
-

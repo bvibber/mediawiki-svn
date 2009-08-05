@@ -2,7 +2,7 @@
 /**
  * Vector - Branch of MonoBook which has many usability improvements and
  * somewhat cleaner code.
- * 
+ *
  * @todo document
  * @file
  * @ingroup Skins
@@ -18,6 +18,8 @@ if( !defined( 'MEDIAWIKI' ) )
 class SkinVector extends SkinTemplate {
 
 	/* Functions */
+	var $skinname = 'vector', $stylename = 'vector',
+		$template = 'VectorTemplate';
 
 	/**
 	 * Initializes output page and sets up skin-specific parameters
@@ -25,12 +27,9 @@ class SkinVector extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		global $wgStylePath, $wgJsMimeType, $wgStyleVersion;
-		
+
 		parent::initPage( $out );
-		$this->skinname  = 'vector';
-		$this->stylename = 'vector';
-		$this->template  = 'VectorTemplate';
-		
+
 		// Append skin-specific styles
 		$out->addStyle( 'vector/main-rtl.css', 'screen', '', 'rtl' );
 		$out->addStyle( 'vector/main-ltr.css', 'screen', '', 'ltr' );
@@ -71,7 +70,7 @@ class SkinVector extends SkinTemplate {
 			'actions' => array(),
 			'variants' => array()
 		);
-		
+
 		// Detects parameters
 		$action = $wgRequest->getVal( 'action', 'view' );
 		$section = $wgRequest->getVal( 'section' );
@@ -88,14 +87,14 @@ class SkinVector extends SkinTemplate {
 
 			// Generates XML IDs from namespace names
 			$subjectId = $this->mTitle->getNamespaceKey( '' );
-			
+
 			if ( $subjectId == 'main' ) {
 				$talkId = 'talk';
 			} else {
 				$talkId = "{$subjectId}_talk";
 			}
 			$currentId = $isTalk ? $talkId : $subjectId;
-			
+
 			// Adds namespace links
 			$links['namespaces'][$subjectId] = $this->tabAction(
 				$subjectPage, 'vector-namespace-' . $subjectId, !$isTalk, '', true
@@ -105,7 +104,7 @@ class SkinVector extends SkinTemplate {
 				$talkPage, 'vector-namespace-talk', $isTalk, '', true
 			);
 			$links['namespaces'][$talkId]['context'] = 'talk';
-			
+
 			// Adds view view link
 			if ( $this->mTitle->exists() ) {
 				$links['views']['view'] = $this->tabAction(
@@ -113,9 +112,9 @@ class SkinVector extends SkinTemplate {
 						'vector-view-view', ( $action == 'view' ), '', true
 				);
 			}
-			
+
 			wfProfileIn( __METHOD__ . '-edit' );
-			
+
 			// Checks if user can...
 			if (
 				// edit the current page
@@ -271,7 +270,7 @@ class SkinVector extends SkinTemplate {
 				}
 			}
 			wfProfileOut( __METHOD__ . '-live' );
-			
+
 			/**
 			 * The following actions use messages which, if made particular to
 			 * the Vector skin, would break the Ajax code which makes this
@@ -304,10 +303,10 @@ class SkinVector extends SkinTemplate {
 					);
 				}
 			}
-			
+
 			// This is instead of SkinTemplateTabs - which uses a flat array
 			wfRunHooks( 'SkinTemplateNavigation', array( &$this, &$links ) );
-		
+
 		// If it's not content, it's got to be a special page
 		} else {
 			$links['namespaces']['special'] = array(
@@ -352,42 +351,47 @@ class SkinVector extends SkinTemplate {
  * @ingroup Skins
  */
 class VectorTemplate extends QuickTemplate {
-	
+
 	/* Members */
-	
+
 	/**
 	 * @var Cached skin object
 	 */
 	var $skin;
-	
+
 	/* Functions */
-	
+
 	/**
 	 * Outputs the entire contents of the XHTML page
 	 */
 	public function execute() {
-		global $wgRequest, $wgOut, $wgContLang;
-		
+		global $wgRequest, $wgOut, $wgContLang, $wgDevelopmentWarnings;
+
 		$this->skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
-		
+
 		// Suppress warnings to prevent notices about missing indexes in
 		// $this->data (is this really the best way to handle this?)
-		wfSuppressWarnings();
-		
+		$wgDevelopmentWarnings && wfSuppressWarnings();
+
 		// Build additional attributes for navigation urls
 		$nav = $this->skin->buildNavigationUrls();
 		foreach ( $nav as $section => $links ) {
 			foreach ( $links as $key => $link ) {
-				$insert = '';
+				$xmlID = $key;
 				if ( isset( $link['context'] ) && $link['context'] == 'subject' ) {
-					$insert = 'nstab-';
+					$xmlID = 'ca-nstab-' . $xmlID;
+				} else if ( isset( $link['context'] ) && $link['context'] == 'talk' ) {
+					$xmlID = 'ca-talk';
+				} else {
+					$xmlID = 'ca-' . $xmlID;
 				}
 				$nav[$section][$key]['attributes'] =
-					' id="' . Sanitizer::escapeId( "ca-{$insert}{$key}" ) . '"';
+					' id="' . Sanitizer::escapeId( $xmlID ) . '"';
 			 	if ( $nav[$section][$key]['class'] ) {
 					$nav[$section][$key]['attributes'] .=
 						' class="' . htmlspecialchars( $link['class'] ) . '"';
+					unset( $nav[$section][$key]['class'] );
 			 	}
 				// We don't want to give the watch tab an accesskey if the page
 				// is being edited, because that conflicts with the accesskey on
@@ -399,10 +403,10 @@ class VectorTemplate extends QuickTemplate {
 					in_array( $key, array( 'edit', 'watch', 'unwatch' ) )
 				) {
 			 		$nav[$section][$key]['key'] =
-						$this->skin->tooltip( "ca-{$insert}{$key}" );
+						$this->skin->tooltip( $xmlID );
 			 	} else {
 			 		$nav[$section][$key]['key'] =
-						$this->skin->tooltipAndAccesskey( "ca-{$insert}{$key}" );
+						$this->skin->tooltipAndAccesskey( $xmlID );
 			 	}
 			}
 		}
@@ -412,16 +416,16 @@ class VectorTemplate extends QuickTemplate {
 		$this->data['variant_urls'] = $nav['variants'];
 		// Build additional attributes for personal_urls
 		foreach ( $this->data['personal_urls'] as $key => $item) {
-			$this->data['personal_urls'][$key]['attributes'] = 
+			$this->data['personal_urls'][$key]['attributes'] =
 				' id="' . Sanitizer::escapeId( "pt-$key" ) . '"';
-			if ( $item['active'] ) {
+			if ( isset( $item['active'] ) && $item['active'] ) {
 				$this->data['personal_urls'][$key]['attributes'] .=
 					' class="active"';
 			}
 			$this->data['personal_urls'][$key]['key'] =
 				$this->skin->tooltipAndAccesskey('pt-'.$key);
 		}
-		
+
 		// Generate additional footer links
 		$footerlinks = array(
 			'info' => array(
@@ -465,7 +469,8 @@ class VectorTemplate extends QuickTemplate {
 		<div id="head-base" class="noprint"></div>
 		<!-- content -->
 		<div id="content">
-			<a name="top" id="top"></a>
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
 			<?php if ( $this->data['sitenotice'] ): ?>
 			<!-- sitenotice -->
 			<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
@@ -496,7 +501,7 @@ class VectorTemplate extends QuickTemplate {
 				<!-- jumpto -->
 				<div id="jump-to-nav">
 					<?php $this->msg( 'jumpto' ) ?><a href="#head"><?php $this->msg( 'jumptonavigation' ) ?></a>,
-					<a href="#search"><?php $this->msg( 'jumptosearch' ) ?></a>
+					<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
 				</div>
 				<!-- /jumpto -->
 				<?php endif; ?>
@@ -573,9 +578,9 @@ class VectorTemplate extends QuickTemplate {
 </html>
 <?php
 		// We're done with abusing arrays now...
-		wfRestoreWarnings();
+		$wgDevelopmentWarnings && wfRestoreWarnings();
 	}
-	
+
 	/**
 	 * Render a series of portals
 	 */
@@ -670,14 +675,14 @@ class VectorTemplate extends QuickTemplate {
 			echo "\n<!-- /{$name} -->\n";
 		}
 	}
-	
+
 	/**
 	 * Render one or more navigations elements by name, automatically reveresed
 	 * when UI is in RTL mode
 	 */
 	private function renderNavigation( $elements ) {
-		global $wgContLang, $wgUseTwoButtonsSearchForm;
-		
+		global $wgContLang, $wgVectorUseSimpleSearch, $wgStylePath;
+
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
 		if ( !is_array( $elements ) ) {
@@ -770,12 +775,15 @@ class VectorTemplate extends QuickTemplate {
 	<h5 <?php $this->html('userlangattributes') ?>><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h5>
 	<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
 		<input type='hidden' name="title" value="<?php $this->text( 'searchtitle' ) ?>"/>
+		<?php if ( $wgVectorUseSimpleSearch ): ?>
+		<div id="simpleSearch">
+			<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />
+			<button id="searchButton" type='submit' name='fulltext' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>>&nbsp;</button>
+		</div>
+		<?php else: ?>
 		<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />
 		<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg( 'searcharticle' ) ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-go' ); ?> />
-		<?php if ( $wgUseTwoButtonsSearchForm ): ?>
 		<input type="submit" name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg( 'searchbutton' ) ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> />
-		<?php else: ?>
-		<div><a href="<?php $this->text( 'searchaction' ) ?>" rel="search"><?php $this->msg( 'powersearch-legend' ) ?></a></div>
 		<?php endif; ?>
 	</form>
 </div>
@@ -784,6 +792,6 @@ class VectorTemplate extends QuickTemplate {
 				break;
 			}
 			echo "\n<!-- /{$name} -->\n";
-		}	
+		}
 	}
 }
