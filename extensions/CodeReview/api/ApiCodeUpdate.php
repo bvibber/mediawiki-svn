@@ -41,6 +41,7 @@ class ApiCodeUpdate extends ApiBase {
 		}
 
 		$result = array();
+		$revs = array();
 		foreach ( $log as $data ) {
 			$codeRev = CodeRevision::newFromSvn( $repo, $data );
 			$codeRev->save();
@@ -50,12 +51,13 @@ class ApiCodeUpdate extends ApiBase {
 				'timestamp' => wfTimestamp( TS_ISO_8601, $codeRev->getTimestamp() ),
 				'message' => $codeRev->getMessage()
 			);
+			$revs[] = $codeRev;
 		}
 		// Cache the diffs if there are a only a few.
 		// Mainly for WMF post-commit ping hook...
-		if ( count( $result ) <= 2 ) {
-			foreach ( $result as $revData ) {
-				$diff = $repo->getDiff( $revData['id'] ); // trigger caching
+		if ( count( $revs ) <= 2 ) {
+			foreach ( $revs as $codeRev ) {
+				$repo->setDiffCache( $codeRev ); // trigger caching
 			}
 		}
 		$this->getResult()->setIndexedTagName( $result, 'rev' );

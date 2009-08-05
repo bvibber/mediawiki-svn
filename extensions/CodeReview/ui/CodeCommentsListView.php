@@ -29,16 +29,7 @@ class CodeCommentsListView extends CodeView {
 }
 
 // Pager for CodeRevisionListView
-class CodeCommentsTablePager extends TablePager {
-
-	function __construct( CodeCommentsListView $view ) {
-		global $IP;
-		$this->mView = $view;
-		$this->mRepo = $view->mRepo;
-		$this->mDefaultDirection = true;
-		$this->mCurSVN = SpecialVersion::getSvnRevision( $IP );
-		parent::__construct();
-	}
+class CodeCommentsTablePager extends SvnTablePager {
 
 	function isFieldSortable( $field ) {
 		return $field == 'cr_timestamp';
@@ -91,20 +82,6 @@ class CodeCommentsTablePager extends TablePager {
 			global $wgLang;
 			return $wgLang->timeanddate( $value, true );
 		}
-	}
-
-	// Note: this function is poorly factored in the parent class
-	function formatRow( $row ) {
-		global $wgWikiSVN;
-		$class = "mw-codereview-status-{$row->cr_status}";
-		if ( $this->mRepo->mName == $wgWikiSVN ) {
-			$class .= " mw-codereview-" . ( $row->cc_rev_id <= $this->mCurSVN ? 'live' : 'notlive' );
-		}
-		return str_replace(
-			'<tr>',
-			Xml::openElement( 'tr',
-				array( 'class' => $class ) ),
-				parent::formatRow( $row ) );
 	}
 
 	function getTitle() {

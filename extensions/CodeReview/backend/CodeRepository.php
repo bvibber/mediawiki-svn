@@ -257,6 +257,34 @@ class CodeRepository {
 		wfProfileOut( __METHOD__ );
 		return $data;
 	}
+	
+	/**
+	 * Set diff cache (for import operations)
+	 * @param $codeRev CodeRevision
+	 */	
+	public function setDiffCache( CodeRevision $codeRev ) {
+		global $wgMemc;
+		wfProfileIn( __METHOD__ );
+
+		$rev1 = $codeRev->getId() - 1;
+		$rev2 = $codeRev->getId();
+
+		$svn = SubversionAdaptor::newFromRepo( $this->mPath );
+		$data = $svn->getDiff( '', $rev1, $rev2 );
+		// Store to cache
+		$key = wfMemcKey( 'svn', md5( $this->mPath ), 'diff', $rev1, $rev2 );
+		$wgMemc->set( $key, $data, 3600 * 24 * 3 );
+		// Permanent DB storage
+		$storedData = $data;
+		$flags = Revision::compressRevisionText( $storedData );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update( 'code_rev',
+			array( 'cr_diff' => $storedData, 'cr_flags' => $flags ),
+			array( 'cr_repo_id' => $this->mId, 'cr_id' => $codeRev->getId() ),
+			__METHOD__
+		);
+		wfProfileOut( __METHOD__ );
+	}
 
 	/**
 	 * Is the requested revid a valid revision to show?
