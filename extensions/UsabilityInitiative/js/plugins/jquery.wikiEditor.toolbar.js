@@ -401,7 +401,6 @@ fn: {
 		$.eachAsync( sectionQueue, {
 			'bulk': 0,
 			'loop': function( i, s ) {
-			console.log( i );
 				s.$sections.append(
 					$.wikiEditor.modules.toolbar.fn.buildSection(
 						s.context, s.section, s.config
