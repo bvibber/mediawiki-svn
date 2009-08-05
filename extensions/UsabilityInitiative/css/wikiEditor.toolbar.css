@@ -148,7 +148,7 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .group > .label {
 	margin-left: 8px;
 	margin-right: 5px;
 }
-.wikiEditor-ui .wikiEditor-ui-toolbar .group input.tool {
+.wikiEditor-ui .wikiEditor-ui-toolbar .group img.tool {
 	float: left;
 	border: 0px;
 	height: 22px;
@@ -157,7 +157,7 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .group > .label {
 	cursor: pointer;
 }
 /* IGNORED BY IE6 */
-body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .group > input.tool {
+body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .group > img.tool {
 	float: right;
 }
 .wikiEditor-ui .wikiEditor-ui-toolbar .group select {

@@ -151,8 +151,7 @@ fn: {
 		var label = $.wikiEditor.modules.toolbar.fn.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
-				$button = $( '<input />' ).attr( {
-					'type': 'image',
+				$button = $( '<img />' ).attr( {
 					'src': $.wikiEditor.modules.toolbar.imgPath + tool.icon,
 					'alt': label,
 					'title': label,
