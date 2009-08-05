@@ -142,4 +142,22 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 		}
 	}
 	*/
+	
+	
+	public void prepareMassInsert() throws PersistenceException {
+		try {
+				database.disableKeys();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+	
+	public void prepareMassProcessing() throws PersistenceException {
+		try {
+				database.enableKeys();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+	
 }

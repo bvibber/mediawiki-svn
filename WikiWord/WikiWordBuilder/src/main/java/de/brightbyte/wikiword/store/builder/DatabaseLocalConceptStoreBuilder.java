@@ -609,6 +609,38 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		}
 	}
 	
+	public void prepareMassInsert() throws PersistenceException {
+		try {
+				database.disableKeys();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+
+		if (propertyStore!=null) {
+			propertyStore.prepareMassInsert();
+		}
+		
+		if (textStore!=null) {
+			textStore.prepareMassInsert();
+		}
+	}
+	
+	public void prepareMassProcessing() throws PersistenceException {
+		try {
+				database.enableKeys();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+
+		if (propertyStore!=null) {
+			propertyStore.prepareMassProcessing();
+		}
+		
+		if (textStore!=null) {
+			textStore.prepareMassProcessing();
+		}
+	}
+	
 	public void finalizeImport() throws PersistenceException {
 		if (idManager!=null) { 
 			idManager.deleteFile(); //delete temporary ID file

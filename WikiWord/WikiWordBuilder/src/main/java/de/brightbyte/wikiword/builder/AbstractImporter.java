@@ -143,7 +143,9 @@ public abstract class AbstractImporter extends AbstractPageProcessor implements 
 	}
 	
 	protected void deleteDataAfter(int delAfter) throws PersistenceException {
-		((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
+		((IncrementalStoreBuilder)store).prepareMassProcessing(); 
+		((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); 
+		((IncrementalStoreBuilder)store).prepareMassInsert(); 
 	}
 	
 	protected void concludeStep() throws PersistenceException{

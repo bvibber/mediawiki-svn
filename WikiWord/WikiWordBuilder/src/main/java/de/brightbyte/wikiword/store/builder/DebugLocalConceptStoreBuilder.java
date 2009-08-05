@@ -143,6 +143,14 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		public void preparePostProcessing() throws PersistenceException {
 			log("* preparePostProcessing *");
 		}
+
+		public void prepareMassInsert() throws PersistenceException {
+			log("* prepareMassInsert *");
+		}
+
+		public void prepareMassProcessing() throws PersistenceException {
+			log("* prepareMassProcessing *");
+		}
 		
 	}
 
@@ -242,6 +250,14 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	
 		public void preparePostProcessing() throws PersistenceException {
 			log("* preparePostProcessing *");
+		}
+
+		public void prepareMassInsert() throws PersistenceException {
+			log("* prepareMassInsert *");
+		}
+
+		public void prepareMassProcessing() throws PersistenceException {
+			log("* prepareMassProcessing *");
 		}
 	}
 	
@@ -753,4 +769,13 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		log("* preparePostProcessing *");
 	}
 		
+
+	public void prepareMassInsert() throws PersistenceException {
+		log("* prepareMassInsert *");
+	}
+
+	public void prepareMassProcessing() throws PersistenceException {
+		log("* prepareMassProcessing *");
+	}
+	
 }

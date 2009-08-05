@@ -124,4 +124,21 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 			endTask("DatabasePropertyStoreBuilder.finishIdReferences", "buildIdLinks:property", n+" references");
 		}
 	}
+	
+	public void prepareMassInsert() throws PersistenceException {
+		try {
+				database.disableKeys();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+	
+	public void prepareMassProcessing() throws PersistenceException {
+		try {
+				database.enableKeys();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+	
 }

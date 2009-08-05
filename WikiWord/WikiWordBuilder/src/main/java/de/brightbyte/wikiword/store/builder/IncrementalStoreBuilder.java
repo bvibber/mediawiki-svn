@@ -8,4 +8,7 @@ public interface IncrementalStoreBuilder extends WikiWordStoreBuilder {
 	
 	public void deleteDataAfter(int delAfter, boolean inclusive) throws PersistenceException;
 
+	public void prepareMassProcessing() throws PersistenceException;
+	public void prepareMassInsert() throws PersistenceException;
+
 }
