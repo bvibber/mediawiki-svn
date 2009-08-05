@@ -8,8 +8,9 @@
  * This file contains the main include file for the UsabilityInitiative
  * extension of MediaWiki.
  *
- * Usage: Add the following line in LocalSettings.php:
- * require_once( "$IP/extensions/UsabilityInitiative/UsabilityInitiative.php" );
+ * Usage: Inlcude the modules you want to use specifically by adding a line in
+ * LocalSettings.php for each of them like this:
+ * require_once( "$IP/extensions/UsabilityInitiative/EditToolbar/EditToolbar.php" );
  *
  * @author Trevor Parscal <tparscal@wikimedia.org>
  * Allow "or a later version" here?
@@ -19,21 +20,8 @@
 
 /* Configuration */
 
-// Set this to true to simply override the stock toolbar for everyone
-$wgUsabilityInitiativeCoesxistWithMvEmbed = false;
-
-// Configures which modules should be enabled
-if (
-	!isset( $wgUsabilityInitiativeModules ) ||
-	!is_array( $wgUsabilityInitiativeModules )
-) {
-	$wgUsabilityInitiativeModules = array(
-		'EditToolbar',
-		'EditWarning',
-		'PrefStats',
-		'OptIn'
-	);
-}
+// Set this to false to include all plugins individually
+$wgUsabilityInitiativeResourceMode = 'minified';
 
 /* Setup */
 
@@ -55,11 +43,5 @@ $wgAutoloadClasses['UsabilityInitiativeHooks'] =
 $wgExtensionMessagesFiles['UsabilityInitiative'] =
 	dirname( __FILE__ ) . "/UsabilityInitiative.i18n.php";
 
-// Includes modules
-foreach ( $wgUsabilityInitiativeModules as $module ) {
-	require_once( dirname( __FILE__ ) . "/{$module}/{$module}.php" );
-}
-
 // Registers Hooks
-$wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJs';
-$wgHooks['BeforePageDisplay'][] = 'UsabilityInitiativeHooks::addCss';
+$wgHooks['BeforePageDisplay'][] = 'UsabilityInitiativeHooks::addResources';

@@ -1,69 +1,74 @@
 /* JavaScript for OptIn extension */
 
-$( document ).ready( function() {
-	$( '.optin-other-select' ).hide();
-	$( 'select.optin-need-other' ).change( function() {
-		if( $(this).val() == 'other' )
-			$( '#' + $(this).attr( 'id' ) + '-other' ).show();
+js2AddOnloadHook( function() {
+	$j( '.optin-other-select' ).parent().hide();
+	$j( 'select.optin-need-other' ).change( function() {
+		if( $j(this).val() == 'other' )
+			$j( '#' + $j(this).attr( 'id' ) + '-other' ).parent().slideDown( 'fast' );
 		else
-			$( '#' + $(this).attr( 'id' ) + '-other' ).hide();
+			$j( '#' + $j(this).attr( 'id' ) + '-other' ).parent().slideUp( 'fast' );
 	});
-	$( '.optin-other-radios' ).click( function() {
-		$(this).prev().prev().click();
+	$j( '.optin-other-radios, .optin-other-checks' ).click( function() {
+		$j(this).prev().prev().attr( 'checked', true );
 	});
-	// Detect screen resolution
-	if ( screen.width && screen.height ) {
-		$( '.optin-resolution-x' ).val( screen.width );
-		$( '.optin-resolution-y' ).val( screen.height );
-		// Hide the fields?
-	}
-	// Detect browser and version
-	// BEWARE: this depends on the order of browsers in $wgOptInSurvey
-	var browserIndex = -1;
-	switch ( $.browser.name ) {
+	$j( '.survey-ifyes, .survey-ifno' ).hide();
+	$j( '.survey-yes, .survey-no' ).change( function() {
+		yesrow = $j( '#' + $j(this).attr( 'name' ) + '-ifyes-row' );
+		norow = $j( '#' + $j(this).attr( 'name' ) + '-ifno-row' );
+		if( $j(this).is( '.survey-yes:checked' ) ) {
+			yesrow.slideDown( 'fast' );
+			norow.slideUp( 'fast' );
+		} else if( $j(this).is( '.survey-no:checked' ) ) {
+			yesrow.slideUp( 'fast' );
+			norow.slideDown( 'fast' );
+		}
+	});
+	// Load initial state
+	$j( '.survey-yes, .survey-no' ).change();
+	// Detect browser
+	var browserIndex = 'other';
+	switch ( $j.browser.name ) {
 		case 'msie':
-			browserIndex = $.browser.versionNumber - 5;
+			browserIndex = 'ie'+ parseInt( $j.browser.versionNumber );
 		break;
 		case 'firefox':
-			browserIndex = $.browser.versionNumber + 3;
+			browserIndex = 'ff' + parseInt( $j.browser.versionNumber );
 		break;
 		case 'chrome':
-			browserIndex = $.browser.versionNumber + 7;
+			// FIXME: Chrome Beta?
+			browserIndex = 'c' + parseInt( $j.browser.versionNumber );
 		break;
 		case 'safari':
-			browserIndex = $.browser.versionNumber + 7;
+			browserIndex = 's' + parseInt( $j.browser.versionNumber );
 		break;
 		case 'opera':
-			if ( parseInt( $.browser.versionNumber ) == 9 ) {
-				if ( $.browser.version.substr( 0, 3 ) == '9.5' )
-					browserIndex = 13;
+			if ( parseInt( $j.browser.versionNumber ) == 9 ) {
+				if ( $j.browser.version.substr( 0, 3 ) == '9.5' )
+					browserIndex = 'o9.5';
 				else
-					browserIndex = 12;
-			} else if ( parseInt( $.browser.versionNumber ) == 10 )
-				browserIndex = 14;
+					browserIndex = 'o9';
+			} else if ( parseInt( $j.browser.versionNumber ) == 10 )
+				browserIndex = 'o10';
 		break;
 	}
-
-	var osIndex = -1;
-	switch ( $.os.name ) {
+	$j( '#survey-browser' ).val( browserIndex );
+	// Detect operating system
+	var osIndex = 'other';
+	switch ( $j.os.name ) {
 		case 'win':
-			osIndex = 0;
+			osIndex = 'windows';
 		break;
 		case 'mac':
-			osIndex = 1;
+			osIndex = 'macos';
 		break;
 		case 'linux':
-			osIndex = 2;
+			osIndex = 'linux';
 		break;
 	}
-
-	if ( browserIndex == -1 )
-		$( '#survey-1' ).val( 'other' );
-	else
-		$( '#survey-1' ).val( parseInt( browserIndex ) );
-	if ( osIndex == -1 )
-		$( '#survey-2' ).val( 'other' );
-	else
-		$( '#survey-2' ).val( osIndex );
-
+	$j( '#survey-os' ).val( osIndex );
+	// Detect screen dimensions
+	if ( screen.width && screen.height ) {
+		$j( '.optin-resolution-x' ).val( screen.width );
+		$j( '.optin-resolution-y' ).val( screen.height );
+	}
 });

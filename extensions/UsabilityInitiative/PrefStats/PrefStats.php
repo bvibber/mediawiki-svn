@@ -8,7 +8,8 @@
  * This file contains the include file for the EditWarning portion of the
  * UsabilityInitiative extension of MediaWiki.
  *
- * Usage: This file is included automatically by ../UsabilityInitiative.php
+ * Usage: Include the following line in your LocalSettings.php
+ * require_once( "$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.php" );
  *
  * @author Roan Kattouw <roan.kattouw@gmail.com>
  * @license GPL v2 or later
@@ -17,7 +18,10 @@
 
 /* Configuration */
 
-// .Set to false to disable tracking
+// For this extension to actually do anything, you need to configure
+// $wgPrefStatsTrackPrefs yourself.
+
+// Set to false to disable tracking
 $wgPrefStatsEnable = true;
 
 // array('prefname' => 'value')
@@ -33,6 +37,9 @@ $wgPrefStatsTimeUnit = 60 * 60 * 24; // one day
 
 /* Setup */
 
+// Right required to view Special:PrefStats
+$wgAvailableRights[] = 'prefstats';
+
 // Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -42,6 +49,9 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'prefstats-desc',
 );
+
+// Includes parent extension
+require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 
 // Adds Autoload Classes
 $wgAutoloadClasses['PrefStatsHooks'] =

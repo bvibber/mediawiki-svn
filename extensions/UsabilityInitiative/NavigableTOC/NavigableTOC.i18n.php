@@ -25,6 +25,14 @@ $messages['be-tarask'] = array(
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'navigabletoc' => 'Navigierbares Inhaltsverzeichnis',
+	'navigabletoc-desc' => 'Fügt ein Inhaltsverzeichnis zum Bearbeitungsfenster hinzu, das den Text scrollt, wenn ein Abschnitt angeklickt wird',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -38,6 +46,7 @@ $messages['dsb'] = array(
  */
 $messages['es'] = array(
 	'navigabletoc' => 'Tabla de contenidos navegable',
+	'navigabletoc-desc' => 'Añade una tabla de contenido al formulario de edición que desplaza el cuadro de texto cuando se hace clic en una sección',
 );
 
 /** French (Français)
@@ -62,6 +71,14 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'navigabletoc' => 'Navigierbari Tabälle vum Inhalt',
 	'navigabletoc-desc' => 'Fiegt e Inhalts-Tabälle zue in s Bearbeitigsformat, wu ne Tekschtchaschte gscrollt wird, wänn e abschitt aaklickt wird.',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'navigabletoc' => 'תוכן עניינים עם אפשרות ניווט',
+	'navigabletoc-desc' => 'הוספת תוכן עניינים לדף העריכה, המאפשר לגלול את תיבת הטקסט בעת לחיצה על פסקה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -181,5 +198,29 @@ $messages['sk'] = array(
 $messages['tr'] = array(
 	'navigabletoc' => 'Taşınabilir içindekiler listesi',
 	'navigabletoc-desc' => 'Değişiklik formuna, bir bölüm tıklandığında metin kutusunu kaydıran, bir içindekiler listesi ekler',
+);
+
+/** Yue (粵語)
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'navigabletoc' => '導航目錄',
+	'navigabletoc-desc' => '加入目錄到編輯表格，當一小節揀咗嗰陣捲動文字盒',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'navigabletoc' => '导航目录',
+	'navigabletoc-desc' => '加入目录至编辑表格，当一段落点击以后卷动文字方块',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'navigabletoc' => '導航目錄',
+	'navigabletoc-desc' => '加入目錄至編輯表格，當一段落點擊以後捲動文字方塊',
 );
 

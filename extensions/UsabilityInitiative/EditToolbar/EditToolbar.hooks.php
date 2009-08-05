@@ -14,7 +14,7 @@ class EditToolbarHooks {
 	 * EditPageBeforeEditToolbar hook
 	 * Intercept the display of the toolbar, replacing the content of $toolbar
 	 */
-	public static function intercept( &$toolbar ) {
+	public static function addToolbar( &$toolbar ) {
 		global $wgUser, $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
 
 		// Checks if...
@@ -35,17 +35,16 @@ class EditToolbarHooks {
 			// Returns without using the toolbar
 			return true;
 		}
-		// Replaces stock toolbar with new toolbar container
-		$toolbar = '<div id="edittoolbar"></div>';
-
+		// Blanks out the stock toolbar, since the new one will be created
+		// by javascript, and we don't want to waste the client's time building
+		// and downloading the icons for the old toolbar.
+		$toolbar = '';
+		
 		// Add JS and CSS
 		global $wgEditToolbarStyleVersion;
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript(
 			'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
-		);
-		UsabilityInitiativeHooks::addStyle(
-			'EditToolbar/EditToolbar.css', $wgEditToolbarStyleVersion
 		);
 		// Internationalization
 		wfLoadExtensionMessages( 'EditToolbar' );
@@ -100,6 +99,13 @@ class EditToolbarHooks {
 				'edittoolbar-tool-table-example',
 				/* Special Characters Section */
 				'edittoolbar-section-characters',
+				'edittoolbar-characters-page-latin',
+				'edittoolbar-characters-page-ipa',
+				'edittoolbar-characters-page-symbols',
+				'edittoolbar-characters-page-greek',
+				'edittoolbar-characters-page-cyrillic',
+				'edittoolbar-characters-page-arabic',
+				'edittoolbar-characters-page-hebrew',
 				/* Help Section */
 				'edittoolbar-section-help',
 				'edittoolbar-help-heading-description',

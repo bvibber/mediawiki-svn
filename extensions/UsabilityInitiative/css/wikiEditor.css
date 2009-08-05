@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+/* wikiEditor plugin */
+
+/* This ID (#editform) could change in MediaWiki */
+form#editform {
+	margin: 0;
+	padding: 0;
+}
+/* This ID (#wpTextbox1) could change in MediaWiki */
+.wikiEditor-ui textarea#wpTextbox1 {
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.wikiEditor-ui {
+	position: relative;
+	border: solid silver 1px;
+	background-color: #f3f3f3;
+	clear: both;
+	line-height: 1em;
+}
+.wikiEditor-ui .wikiEditor-ui-bottom {
+	position: relative;
+}

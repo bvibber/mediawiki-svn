@@ -8,12 +8,15 @@ CREATE TABLE IF NOT EXISTS /*_*/optin_survey (
 
 	-- Timestamp
 	ois_timestamp binary(14) NOT NULL,
+	
+	-- Survey type (out or feedback)
+	ois_type varchar(16) NOT NULL,
 
 	-- Question ID (key in $wgOptInSurvey)
-	ois_question int unsigned NOT NULL,
+	ois_question varchar(16) NOT NULL,
 
 	-- Answer ID (key in $wgOptInSurvey[ois_question]['answers'])
-	ois_answer int unsigned NULL,
+	ois_answer text NULL,
 
 	-- Optional text associated with the answer
 	ois_answer_data text NULL

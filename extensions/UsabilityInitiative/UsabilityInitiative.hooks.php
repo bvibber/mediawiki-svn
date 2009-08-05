@@ -9,18 +9,89 @@
 class UsabilityInitiativeHooks {
 
 	/* Static Members */
-
+	
+	private static $doOutput = false;
 	private static $messages = array();
 	private static $styles = array();
-	private static $scripts = array(
-		array( 'src' => 'Resources/jquery.combined.js', 'version' => 1 ),
+	private static $styleFiles = array(
+		'base_sets' => array(
+			'raw' => array(
+				array( 'src' => 'css/wikiEditor.css', 'version' => 2 ),
+				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 2 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 2 ),
+			),
+			'combined' => array(
+				array( 'src' => 'css/combined.css', 'version' => 2 ),
+			),
+			'minified' => array(
+				array( 'src' => 'css/combined.min.css', 'version' => 2 ),
+			),
+		)
 	);
-	private static $doOutput = false;
-
-
+	private static $scripts = array();
+	private static $scriptFiles = array(
+		// Code to include when js2 is not present
+		'no_js2' => array(
+			'raw' => array(
+				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
+				array( 'src' => 'js/js2/js2.js', 'version' => 2 ),
+			),
+			'combined' => array(
+				array( 'src' => 'js/js2.combined.js', 'version' => 2 ),
+			),
+			'minified' => array(
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 2 ),
+			),
+		),
+		// Core functionality of extension
+		'base_sets' => array(
+			'raw' => array(
+				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 2 ),
+			),
+			'combined' => array(
+				array( 'src' => 'js/plugins.combined.js', 'version' => 2 ),
+			),
+			'minified' => array(
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 2 ),
+			),
+		),
+	);
+	
 	/* Static Functions */
-
+	
 	public static function initialize() {
+		global $wgUsabilityInitiativeResourceMode;
+		global $wgEnableJS2system;
+		
+		// Only do this the first time!
+		if ( !self::$doOutput ) {
+			// Default to raw
+			$mode = $wgUsabilityInitiativeResourceMode; // Just an alias
+			if ( !isset( self::$scriptFiles['base_sets'][$mode] ) ) {
+				$mode = 'raw';
+			}
+			// Provide enough support to make things work, even when js2 is not
+			// in use (eventually it will be standard, but right now it's not)
+			if ( !$wgEnableJS2system ) {
+				self::$scripts = array_merge(
+					self::$scripts, self::$scriptFiles['no_js2'][$mode]
+				);
+			}
+			// Inlcude base-set of scripts
+			self::$scripts = array_merge(
+				self::$scripts, self::$scriptFiles['base_sets'][$mode]
+			);
+			// Inlcude base-set of styles
+			self::$styles = array_merge(
+				self::$styles, self::$styleFiles['base_sets'][$mode]
+			);
+		}
 		self::$doOutput = true;
 	}
 	
@@ -28,22 +99,11 @@ class UsabilityInitiativeHooks {
 	 * AjaxAddScript hook
 	 * Adds scripts
 	 */
-	public static function addJs( $out ) {
+	public static function addResources( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
-		global $wgUsabilityInitiativeCoesxistWithMvEmbed;
 		
 		if ( !self::$doOutput )
 			return true;
-		
-		// Play nice with mv_embed
-		if ( !$wgUsabilityInitiativeCoesxistWithMvEmbed ) {
-			self::$scripts = array_merge(
-				array(
-					array( 'src' => 'Resources/messages.js', 'version' => 1 ),
-				),
-				self::$scripts
-			);
-		}
 		
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
@@ -79,19 +139,6 @@ class UsabilityInitiativeHooks {
 				"loadGM({{$messagesList}});"
 			)
 		);
-		// Continue
-		return true;
-	}
-
-	/**
-	 * BeforePageDisplay hook
-	 * Adds styles
-	 */
-	public static function addCss( $out ) {
-		global $wgScriptPath, $wgJsMimeType;
-		
-		if ( !self::$doOutput )
-			return true;
 		
 		// Loops over each style
 		foreach ( self::$styles as $style ) {

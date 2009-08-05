@@ -34,6 +34,10 @@ class SpecialPrefStats extends SpecialPage {
 
 	function displayTrackedPrefs() {
 		global $wgOut, $wgUser, $wgPrefStatsTrackPrefs;
+		if ( !count( $wgPrefStatsTrackPrefs ) ) {
+			$wgOut->addWikiMsg( 'prefstats-noprefs' );
+			return;
+		}
 		$wgOut->addWikiMsg( 'prefstats-list-intro' );
 		$wgOut->addHTML( Xml::openElement( 'ul' ) );
 		foreach ( $wgPrefStatsTrackPrefs as $pref => $value ) {
@@ -116,8 +120,8 @@ class SpecialPrefStats extends SpecialPage {
 		$count2 = $dbr->selectField( 'prefstats', 'COUNT(*)', array(
 				'ps_pref' => $pref,
 				'ps_duration IS NULL',
-				'ps_start <' . $dbr->timestamp( $maxTS ),
-				'ps_start >=' . $dbr->timestamp( $minTS )
+				'ps_start <' . $dbr->addQuotes( $dbr->timestamp( $maxTS ) ),
+				'ps_start >=' . $dbr->addQuotes( $dbr->timestamp( $minTS ) )
 			), __METHOD__ );
 		return $count1 + $count2;
 	}
