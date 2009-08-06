@@ -7,6 +7,7 @@ public class ByteArrayKeyAnalyzer implements KeyAnalyzer<byte[]> {
 	private static final long serialVersionUID = -3056514701732470312L;
 
 	public static final int BITS = 8;
+	private static final int MSB = 0x80;
 	
 	public static final ByteArrayKeyAnalyzer INSTANCE = new ByteArrayKeyAnalyzer();
 
@@ -87,9 +88,14 @@ public class ByteArrayKeyAnalyzer implements KeyAnalyzer<byte[]> {
 	}
 
 	public boolean isBitSet(byte[] key, int offsetInBits, int lengthInBits) {
-		if (offsetInBits % BITS>0) throw new IllegalArgumentException("index and offset must be multiple of "+BITS);
-		if (lengthInBits % BITS>0) throw new IllegalArgumentException("index and offset must be multiple of "+BITS);
-		return false;
+        if (key == null || offsetInBits >= lengthInBits) {
+            return false;
+        }
+        
+        int index = key.length - (int)(offsetInBits / BITS) -1;
+        int bit = (int)(offsetInBits % BITS);
+        
+        return (key[index] & (MSB >>> bit)) != 0;
 	}
 
 	public int lengthInBits(byte[] key) {
