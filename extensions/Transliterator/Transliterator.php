@@ -137,18 +137,18 @@ class ExtTransliterator {
 
         $mappage = $prefix.$name;
 
-        if ( isset( $mMaps[$mappage] ) ) 
-            return $mMaps[$mappage];
+        if ( isset( $this->mMaps[$mappage] ) ) 
+            return $this->mMaps[$mappage];
 
         $existing = $this->getExistingMapNames( $prefix );
 
         if (! isset( $existing[$mappage] ) ) 
-            $mMaps[$mappage] = false;
+            $this->mMaps[$mappage] = false;
 
         else
-            $mMaps[$mappage] = $this->readMap( wfMsg( $mappage ), $mappage );
+            $this->mMaps[$mappage] = $this->readMap( wfMsg( $mappage ), $mappage );
 
-        return $mMaps[$mappage];
+        return $this->mMaps[$mappage];
     }
 
     /**
@@ -166,6 +166,7 @@ class ExtTransliterator {
      *
      * $map[''] is used as the default fall through for any characters not in the map
      * $map['__decompose__'] indicates that NFD should be used instead of characters
+     * $map['__sensitive__'] indicates that the automatic first-letter upper-case fall-through should not be tried
      */
     function readMap( $input, $mappage ) {
 	global $wgTransliteratorRuleCount, $wgTransliteratorRuleSize;
@@ -181,12 +182,20 @@ class ExtTransliterator {
             array_pop( $lines );
         }
 
-        if ( $lines[0] == "<decompose>" ) {
-            $map['__decompose__'] = true;
+        $first_line = $lines[0];
+        if ( strpos( $first_line, "=>") === FALSE ) {
+            # Empty page
+            if ( $first_line == "<$mappage>")
+                return false;
+
+            if ( strpos( $first_line, "<decompose>" ) ) {
+                $map['__decompose__'] = true;
+                $decompose = true;
+            } 
+            if ( strpos( $first_line, "<sensitive>" ) ) {
+                $map['__sensitive__'] = true;
+            }
             array_shift( $lines );
-            $decompose = true;
-        } else if ( $lines[0] == "<$mappage>" ) {
-            return false;
         }
 
         if ( count( $lines ) > $wgTransliteratorRuleCount )
@@ -246,12 +255,16 @@ class ExtTransliterator {
             $letters =  $this->letters( $word );
         }
 
+        $sensitive = isset( $map["__sensitive__"] );
+        $ucfirst = false;
+
         $output = "";               // The output
         $last_match = 0;            // The position of the last character matched, or the first character of the current run
         $last_trans = null;         // The transliteration of the last character matched, or null if the first character of the current run
         $i = 0;                     // The current position in the string
         $count = count($letters);   // The total number of characters in the string
         $current = "";              // The substring that we are currently trying to find the longest match for.
+
 
         while ( $i < $count ) {
 
@@ -275,28 +288,61 @@ class ExtTransliterator {
                 // We had no match at all, pass through one character
                 if ( is_null( $last_trans ) ) {
 
-                    // Might be nice to output a ? if we don't understand
-                    if ( isset( $map[''] ) ) 
-                        $output .= $map[''];
-                    // Or the input if it's likely to be correct enough
-                    else
-                        $output .= $letters[$last_match];
+                    $last_letter = $letters[$last_match];
+                    $last_lower = $sensitive ? $last_letter : mb_strtolower( $last_letter );
 
-                    $i = ++$last_match;
+                    if ( $last_letter != $last_lower ) {
+                        $ucfirst = true;
+                        $letters[$last_match] = $last_lower;
+
+                    // Might be nice to output a ? if we don't understand
+                    } else if ( isset( $map[''] ) && $last_letter != '^' && $last_letter != '$' ) {
+
+                        if ( $ucfirst ) {
+                            $output .= str_replace( '$1', mb_strtoupper( $last_letter ), $map[''] );
+                            $ucfirst = false;
+                        } else {
+                            $output .= str_replace( '$1', $last_letter, $map[''] );
+                        }
+                        $i = ++$last_match;
+                        $current = "";
+
+                    // Or the input if it's likely to be correct enough
+                    } else {
+
+                        if ( $ucfirst ) {
+                            $output .= mb_strtoupper( $last_letter );
+                            $ucfirst = false;
+                        } else {
+                            $output .= $last_letter;
+                        }
+                        $i = ++$last_match;
+                        $current = "";
+                    }
+
 
                 // Output the previous match
                 } else {
 
-                    $output .= $last_trans;
+                    if ( $ucfirst ) {
+                        $output .= mb_strtoupper( mb_substr( $last_trans, 0, 1 ) ).mb_substr( $last_trans, 1 );
+                        $ucfirst = false;
+                    } else {
+                        $output .= $last_trans;
+                    }
                     $i = ++$last_match;
                     $last_trans = null;
+                    $current = "";
 
                 }
-                $current = "";
             }
         }
         if (! is_null( $last_trans ))
-            $output .= $last_trans;
+            if ( $ucfirst ) {
+                $output .= mb_strtoupper( mb_substr( $last_trans, 0, 1 ) ).mb_substr( $last_trans, 1 );
+            } else {
+                $output .= $last_trans;
+            }
 
         // Remove the beginnng and end markers
         return preg_replace('/^\^|\$$|\$(\s+)\^|\$(\s+)|(\s+)\^/',"$1", $output);
