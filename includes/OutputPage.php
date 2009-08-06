@@ -1464,11 +1464,13 @@ class OutputPage {
 	 * Add a "return to" link pointing to a specified title
 	 *
 	 * @param Title $title Title to link
+	 * @param string $query Query string
 	 */
-	public function addReturnTo( $title ) {
+	public function addReturnTo( $title, $query = array() ) {
 		global $wgUser;
 		$this->addLink( array( 'rel' => 'next', 'href' => $title->getFullUrl() ) );
-		$link = wfMsgHtml( 'returnto', $wgUser->getSkin()->link( $title ) );
+		$link = wfMsgHtml( 'returnto', $wgUser->getSkin()->link(
+			$title, null, array(), $query ) );
 		$this->addHTML( "<p id=\"mw-returnto\">{$link}</p>\n" );
 	}
 
@@ -1479,11 +1481,15 @@ class OutputPage {
 	 * @param null $unused No longer used
 	 * @param Title $returnto Title to return to
 	 */
-	public function returnToMain( $unused = null, $returnto = NULL ) {
+	public function returnToMain( $unused = null, $returnto = null, $returntoquery = null ) {
 		global $wgRequest;
 
-		if ( $returnto == NULL ) {
+		if ( $returnto == null ) {
 			$returnto = $wgRequest->getText( 'returnto' );
+		}
+		
+		if ( $returntoquery == null ) {
+			$returntoquery = $wgRequest->getText( 'returntoquery' );
 		}
 
 		if ( '' === $returnto ) {
@@ -1499,7 +1505,7 @@ class OutputPage {
 			$titleObj = Title::newMainPage();
 		}
 
-		$this->addReturnTo( $titleObj );
+		$this->addReturnTo( $titleObj, $returntoquery );
 	}
 
 	/**

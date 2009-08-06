@@ -202,6 +202,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Show user preference 'Use live preview' if $wgLivePreview is enabled only
 * (bug 17014) Blocked users can no longer use Special:UserRights if they do
   not have the 'userrights' permission.
+* Log in and log out links no longer return to page view when clicked from
+  history view, edit page, or something similar
 
 == API changes in 1.16 ==
 

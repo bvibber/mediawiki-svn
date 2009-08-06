@@ -150,6 +150,11 @@ class SkinTemplate extends Skin {
 		wfProfileIn( __METHOD__ . '-stuff' );
 		$this->thispage = $this->mTitle->getPrefixedDBkey();
 		$this->thisurl = $this->mTitle->getPrefixedURL();
+		$query = $wgRequest->getValues();
+		unset( $query['title'] );
+		unset( $query['returnto'] );
+		unset( $query['returntoquery'] );
+		$this->thisquery = wfUrlencode( wfArrayToCGI( $query ) );
 		$this->loggedin = $wgUser->isLoggedIn();
 		$this->iscontent = ( $this->mTitle->getNamespace() != NS_SPECIAL );
 		$this->iseditable = ( $this->iscontent and !( $action == 'edit' or $action == 'submit' ) );
@@ -495,6 +500,11 @@ class SkinTemplate extends Skin {
 
 		/* set up the default links for the personal toolbar */
 		$personal_urls = array();
+		$page = $wgRequest->getVal( 'returnto', $this->thisurl );
+		$query = $wgRequest->getVal( 'returntoquery', $this->thisquery );
+		$returnto = "returnto=$page";
+		if( $this->thisquery != '' )
+			$returnto .= "&returntoquery=$query";
 		if( $this->loggedin ) {
 			$personal_urls['userpage'] = array(
 				'text' => $this->username,
@@ -547,7 +557,7 @@ class SkinTemplate extends Skin {
 			$personal_urls['logout'] = array(
 				'text' => wfMsg( 'userlogout' ),
 				'href' => self::makeSpecialUrl( 'Userlogout',
-					$title->isSpecial( 'Preferences' ) ? '' : "returnto={$this->thisurl}"
+					$title->isSpecial( 'Preferences' ) ? '' : $returnto
 				),
 				'active' => false
 			);
@@ -574,13 +584,13 @@ class SkinTemplate extends Skin {
 				);
 				$personal_urls['anonlogin'] = array(
 					'text' => wfMsg( $loginlink ),
-					'href' => self::makeSpecialUrl( 'Userlogin', 'returnto=' . $this->thisurl ),
+					'href' => self::makeSpecialUrl( 'Userlogin', $returnto ),
 					'active' => $title->isSpecial( 'Userlogin' )
 				);
 			} else {
 				$personal_urls['login'] = array(
 					'text' => wfMsg( $loginlink ),
-					'href' => self::makeSpecialUrl( 'Userlogin', 'returnto=' . $this->thisurl ),
+					'href' => self::makeSpecialUrl( 'Userlogin', $returnto ),
 					'active' => $title->isSpecial( 'Userlogin' )
 				);
 			}
