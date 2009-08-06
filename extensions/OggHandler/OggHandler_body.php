@@ -23,11 +23,13 @@ class OggHandler extends MediaHandler {
 			'ogg_noplayer' => 'noplayer',
 			'ogg_noicon' => 'noicon',
 			'ogg_thumbtime' => 'thumbtime',
+			'ogg_starttime'	=> 'start',
+			'ogg_endtime'	=> 'end',
 		);
 	}
 
-	function validateParam( $name, $value ) {
-		if ( $name == 'thumbtime' ) {
+	function validateParam( $name, $value ) {		
+		if ( $name == 'thumbtime' || $name == 'start' || $name == 'end' ) {
 			if ( $this->parseTimeString( $value ) === false ) {
 				return false;
 			}
@@ -72,18 +74,27 @@ class OggHandler extends MediaHandler {
 		}
 		return array();
 	}
-
-	function normaliseParams( $image, &$params ) {
-		if ( isset( $params['thumbtime'] ) ) {
-			$length = $this->getLength( $image );
-			$time = $this->parseTimeString( $params['thumbtime'] );
-			if ( $time === false ) {
-				return false;
-			} elseif ( $time > $length - 1 ) {
-				$params['thumbtime'] = $length - 1;
-			} elseif ( $time <= 0 ) {
-				$params['thumbtime'] = 0;
+	
+	function normaliseParams( $image, &$params ) {			
+		$timeParam = array('thumbtime', 'start', 'end');
+		//parse time values if endtime or thumbtime can't be more than length -1
+		foreach($timeParam as $pn){
+			if ( isset( $params[$pn] ) ) {
+				$length = $this->getLength( $image );
+				$time = $this->parseTimeString( $params[$pn] );
+				if ( $time === false ) {
+					return false;
+				} elseif ( $time > $length - 1 ) {
+					$params[$pn] = $length - 1;
+				} elseif ( $time <= 0 ) {
+					$params[$pn] = 0;
+				}
 			}
+		}
+		//make sure start time is not > than end time
+		if(isset($params['start']) && isset($params['end']) ){
+			if($params['start'] > $params['end'])
+				return false;
 		}
 
 		return true;
@@ -171,7 +182,7 @@ class OggHandler extends MediaHandler {
 	}
 	
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
-		global $wgFFmpegLocation;
+		global $wgFFmpegLocation, $wgEnableTemporalOggUrls;
 
 		$width = $params['width'];
 		$srcWidth = $file->getWidth();
@@ -182,6 +193,14 @@ class OggHandler extends MediaHandler {
 		$noPlayer = isset( $params['noplayer'] );
 		$noIcon = isset( $params['noicon'] );
 
+		$oggAppendReq = '';
+		//add temporal request parameter if $wgEnableTemporalOggUrls is on:
+		if($wgEnableTemporalOggUrls && isset( $params['start'] ) ){
+			$oggAppendReq .= '?t=' . seconds2npt( $params['start'] );
+			if(isset( $params['end'] ) && $params['end'] )
+				$oggAppendReq.='/'. seconds2npt( $params['end'] );
+		}		
+		
 		if ( !$noPlayer ) {
 			// Hack for miscellaneous callers
 			global $wgOut;
@@ -207,7 +226,7 @@ class OggHandler extends MediaHandler {
 			} else {
 				$width = $params['width'];
 			}
-			return new OggAudioDisplay( $file, $file->getURL(), $width, $height, $length, $dstPath, $noIcon, $offset );
+			return new OggAudioDisplay( $file, $file->getURL().$oggAppendReq, $width, $height, $length, $dstPath, $noIcon, $offset );
 		}
 
 		// Video thumbnail only
@@ -216,16 +235,16 @@ class OggHandler extends MediaHandler {
 		}
 
 		if ( $flags & self::TRANSFORM_LATER ) {
-			return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath, $noIcon, $offset);
+			return new OggVideoDisplay( $file, $file->getURL().$oggAppendReq, $dstUrl, $width, $height, $length, $dstPath, $noIcon, $offset);
 		}
 
-		$thumbTime = false;
+		$thumbtime = false;
 		if ( isset( $params['thumbtime'] ) ) {
-			$thumbTime = $this->parseTimeString( $params['thumbtime'], $length );
+			$thumbtime = $this->parseTimeString( $params['thumbtime'], $length );
 		}
-		if ( $thumbTime === false ) {
+		if ( $thumbtime === false ) {
 			# Seek to midpoint by default, it tends to be more interesting than the start
-			$thumbTime = $length / 2;
+			$thumbtime = $length / 2;
 		}
 
 		wfMkdirParents( dirname( $dstPath ) );
@@ -281,7 +300,7 @@ class OggHandler extends MediaHandler {
 				return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
 			}
 		}
-		return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath );
+		return new OggVideoDisplay( $file, $file->getURL() . $oggAppendReq, $dstUrl, $width, $height, $length, $dstPath );
 	}
 
 	function canRender( $file ) { return true; }
@@ -708,6 +727,62 @@ class OggVideoDisplay extends OggTransformOutput {
 class OggAudioDisplay extends OggTransformOutput {
 	function __construct( $file, $videoUrl, $width, $height, $length, $path, $noIcon = false, $offset=0 ) {
 		parent::__construct( $file, $videoUrl, false, $width, $height, $length, false, $path, $noIcon, $offset );
+	}
+}
+/*utility functions*/
+/*
+ * takes seconds duration and return hh:mm:ss time
+ */
+if(!function_exists('seconds2npt')){
+	function seconds2npt( $seconds, $short = false ) {
+		$dur = time_duration_2array( $seconds );
+		if( ! $dur )
+			return null;
+		// be sure to output leading zeros (for min,sec):
+		if ( $dur['hours'] == 0 && $short == true ) {
+			return sprintf( "%2d:%02d", $dur['minutes'], $dur['seconds'] );
+		} else {
+			return sprintf( "%d:%02d:%02d", $dur['hours'], $dur['minutes'], $dur['seconds'] );
+		}
+	}
+}
+/*
+ * converts seconds to time unit array
+ */
+if(!function_exists('time_duration_2array')){
+	function time_duration_2array ( $seconds, $periods = null ) {
+		// Define time periods
+		if ( !is_array( $periods ) ) {
+			$periods = array (
+				'years'     => 31556926,
+				'months'    => 2629743,
+				'weeks'     => 604800,
+				'days'      => 86400,
+				'hours'     => 3600,
+				'minutes'   => 60,
+				'seconds'   => 1
+				);
+		}
+	
+		// Loop
+		$seconds = (float) $seconds;
+		foreach ( $periods as $period => $value ) {
+			$count = floor( $seconds / $value );
+			if ( $count == 0 ) {
+				// must include hours minutes and seconds even if they are 0
+				if ( $period == 'hours' || $period == 'minutes' || $period == 'seconds' ) {
+					$values[$period] = 0;
+				}
+				continue;
+			}
+			$values[$period] = sprintf( "%02d", $count );
+			$seconds = $seconds % $value;
+		}
+		// Return
+		if ( empty( $values ) ) {
+			$values = null;
+		}
+		return $values;
 	}
 }
 
