@@ -171,6 +171,13 @@ $messages['hi'] = array(
 	'titlekey-desc' => 'शीर्षक उपपद खोज सजेशन बॅकएन्ड',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'titlekey-desc' => 'Titulo prefiks pangitaon sugestiyon bakend',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -229,6 +236,13 @@ $messages['jv'] = array(
 	'titlekey-desc' => 'Backend prosès panggolèkan irah-irahan préfiks',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'titlekey-desc' => 'საძიება დახმარებათა ძრავა სიტყვების პირველი ასოების გამოყენებით',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -255,6 +269,13 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'titlekey-desc' => 'Backend veur zeuksuggesties veur paginanaamveurvoegsels',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'titlekey-desc' => 'Pavadinimo prefikso paieška pasiūlymo sugrąžinimui',
 );
 
 /** Marathi (मराठी)
@@ -374,6 +395,13 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'titlekey-desc' => 'Bakstycke för sökning efter titelprefix',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'titlekey-desc' => 'శీర్షిక ప్రీఫిక్స్  వెతుకు సలహా బ్యాక్ఎండ్',
 );
 
 /** Tagalog (Tagalog)
