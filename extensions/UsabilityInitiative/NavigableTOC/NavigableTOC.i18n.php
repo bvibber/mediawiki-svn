@@ -209,11 +209,12 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'navigabletoc' => '导航目录',
-	'navigabletoc-desc' => '加入目录至编辑表格，当一段落点击以后卷动文字方块',
+	'navigabletoc-desc' => '在编辑表单中加入目录，当点选一处段落后滚动文本框到相应位置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

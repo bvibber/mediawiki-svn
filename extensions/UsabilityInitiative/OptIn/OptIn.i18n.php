@@ -2641,32 +2641,40 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'optin' => '可用性倡议加入',
-	'optin-desc' => '容许用户选择性去加入可用性倡议的可用性增强',
-	'optin-needlogin' => '您需要[$1 登入]去加入可用性倡议的可用性增强。',
-	'optin-intro' => '维基百科可用性小组开发了一个新皮肤和一个新的编辑工具去加强维基百科的可用性。这些增强还未对全部用户开放，但是您可以点击下面的"{{int:optin-submit-in}}"加入。',
-	'optin-success-in' => '您已经成功地加入到可用性小组的可用性增强。
-您可以随时点击下面的"{{int:optin-submit-out}}"去退出。',
-	'optin-success-out' => '您已经成功地退出自可用性小组的可用性增强。
-您可以随时点击下面的"{{int:optin-submit-in}}"去加入。',
-	'optin-submit-out' => '退出',
-	'optin-survey-intro' => '多谢您去试用可用性小组的可用性增强。
-您可以随时点击下面的"{{int:optin-submit-out}}"去退出。
-
-我们想知道您对这个新接口的想法，因此我们会好高兴如果您在点击"{{int:optin-submit-out}}"之前完成一个可选的调查。',
-	'optin-survey-question-whyoptout' => '为什么您会退出这个接口？',
-	'optin-survey-answer-whyoptout-hard' => '太难去编辑一个页面。',
-	'optin-survey-answer-whyoptout-didntwork' => '不能正确地操作。',
-	'optin-survey-answer-whyoptout-other' => '其它原因：',
-	'optin-survey-question-feedback' => '请给我们知道您的反馈：',
-	'optin-survey-question-browser' => '您用那款浏览器？',
+	'optin-desc' => '允许用户使用Usability Initiative测试版提供的最新的可用性增强功能。',
+	'optin-title-optedout' => '使用测试版',
+	'optin-title-optedin' => '退出测试版',
+	'optin-title-justoptedin' => '欢迎使用测试版',
+	'optin-title-justoptedout' => '感谢您试用我们的测试版',
+	'optin-title-feedback' => '测试版反馈',
+	'optin-needlogin' => '您需要[$1 登录]后才能试用测试版。',
+	'optin-intro' => '维基百科可用性小组正在努力改善维基百科的可用性。你想尝试下我们的测试版吗？',
+	'optin-feedback-intro' => '感谢您试用测试版。
+我们希望了解到您对我们新界面的意见，望阁下不吝笔墨填写下方的调查表。',
+	'optin-feedback-back' => '如果您不愿意填写调查表，您可以返回到$1。',
+	'optin-success-in' => '您现在正在试用测试版。
+您随时都可点击屏幕顶部的“{{int:optin-leave}}”返回。',
+	'optin-success-out' => '您已成功退出测试版。
+您随时都可点击屏幕右上角的“{{int:optin-try}}”再次试用。',
+	'optin-submit-out' => '退出测试版',
+	'optin-survey-intro' => '感谢您试用测试版。
+我们希望了解到您对我们新界面的意见，希望您在单击“[[#leave|{{int:optin-submit-out}}]]”前不吝笔墨填写下方的调查表。',
+	'optin-survey-question-whyoptout' => '为什么您会退出测试版？',
+	'optin-survey-answer-whyoptout-hard' => '难以使用。',
+	'optin-survey-answer-whyoptout-didntwork' => '运行不正常。',
+	'optin-survey-answer-whyoptout-other' => '其他原因：',
+	'optin-survey-question-feedback' => '如果您对我们还有其他意见，也请让我们知晓——所有反馈都很有用处！：',
+	'optin-survey-question-browser' => '您使用的浏览器是？',
 	'optin-survey-answer-browser-other' => '其它浏览器：',
-	'optin-survey-question-os' => '您用哪套操作系统？',
-	'optin-survey-answer-os-other' => '其它：',
-	'optin-survey-question-res' => '您的屏幕解像度之大小有多大？',
+	'optin-survey-question-os' => '您使用的操作系统是？',
+	'optin-survey-answer-os-other' => '其他操作系统：',
+	'optin-survey-question-res' => '您的屏幕分辨率有多大？',
+	'optin-survey-answer-changes-other' => '其他：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
