@@ -46,7 +46,7 @@ You can try it out again at anytime by clicking the "{{int:optin-try}}" link on 
 	'optin-survey-intro' => "Thank you for trying the Beta.
 We would like to know what you think about our new interface, so we would appreciate it if you filled out the optional survey below before clicking \"[[#leave|{{int:optin-submit-out}}]]\".",
 	'optin-survey-question-likedislike' => 'What did you like about the Beta? What did you dislike about the Beta?',
-	'optin-survey-question-whyoptout' => 'Why are you leaving the Beta? (Please select all that apply.) ',
+	'optin-survey-question-whyoptout' => 'Why are you leaving the Beta? (Please select all that apply.)',
 	'optin-survey-answer-whyoptout-hard' => 'It was too hard to use.',
 	'optin-survey-answer-whyoptout-didntwork' => 'It did not function properly.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'It did not perform predictably.',
@@ -108,8 +108,7 @@ The help section provides quick access to a reference for common uses of wiki-ma
 == How to get involved ==
 To learn more about the project or to get involved, please visit the [http://usability.wikimedia.org Usability Initiative's wiki].  There you will find information about our grant, research, design + development, and releases.  To ask questions or leave general feedback, please use our [http://usability.wikimedia.org/wiki/Talk:Prototype prototype discussion page].  To address particular subjects, please use the associated discussion pages.  If you find bugs, please leave your comments on the [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai release discussion page] or by using [https://bugzilla.wikimedia.org Bugzilla].
 
-Thanks and we look forward to hearing from you!
-",
+Thanks and we look forward to hearing from you!",
 );
 
 /** Message documentation (Message documentation)
