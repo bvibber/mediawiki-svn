@@ -385,12 +385,13 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'editwarning' => '编辑警告',
 	'editwarning-desc' => '当用户尝试离开未保存的编辑时显示警告',
-	'editwarning-warning' => '离开这个页面会令到您所作的更改遗失。',
+	'editwarning-warning' => '离开这个页面会令您所作的更改遗失。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -399,6 +400,6 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'editwarning' => '編輯警告',
 	'editwarning-desc' => '當用戶嘗試離開未保存的編輯時顯示警告',
-	'editwarning-warning' => '離開這個頁面會令到您所作的更改遺失。',
+	'editwarning-warning' => '離開這個頁面會令您所作的更改遺失。',
 );
 

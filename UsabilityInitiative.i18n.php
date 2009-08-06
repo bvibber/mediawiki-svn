@@ -251,18 +251,19 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'usabilityinitiative' => '可用性倡议',
-	'usabilityinitiative-desc' => '由维基百科可用性小组增强MediaWiki的可用性',
+	'usabilityinitiative' => 'Usability Initiative',
+	'usabilityinitiative-desc' => '由维基百科可用性小组开发的新功能，用以增强MediaWiki的可用性',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'usabilityinitiative' => '可用性倡議',
-	'usabilityinitiative-desc' => '由維基百科可用性小組增強MediaWiki的可用性',
+	'usabilityinitiative' => 'Usability Initiative',
+	'usabilityinitiative-desc' => '由維基百科可用性小組開發的新功能，用以增強MediaWiki的可用性',
 );
 
