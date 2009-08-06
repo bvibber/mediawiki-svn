@@ -287,7 +287,8 @@ class ApiWikiAtHome extends ApiBase {
 			'file' 		=> 'the file or data being uploaded for a given job',
 			'jobkey'	=> 'used to submit the resulting file of a given job key',
 			'getnewjob'	=> 'set to ture to get a new job',
-			'jobset' 	=> 'jobset used with getnewjob to set jobset prefrence',
+			'jobset' 	=> array('jobset used with getnewjob to set jobset. ',
+								 '(this lets you work on jobs that use set data that you already have)'),
 			'token' 	=> 'the edittoken (needed to submit job chunks)'
 		);
 	}

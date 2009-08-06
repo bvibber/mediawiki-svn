@@ -8,7 +8,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $exDir = dirname(__FILE__);
 //setup autoloader php:
 $wgAutoloadClasses[ 'NonFreeVideoHandler' ] 	= "$exDir/NonFreeVideoHandler.php";
-$wgAutoloadClasses[ 'WahJobManager' ] 		= "$exDir/WahJobManager.php";
+$wgAutoloadClasses[ 'MediaQueueTransformOutput']="$exDir/NonFreeVideoHandler.php";
+
+$wgAutoloadClasses[ 'WahJobManager' ] 			= "$exDir/WahJobManager.php";
 $wgAutoloadClasses[ 'ApiWikiAtHome' ]			= "$exDir/ApiWikiAtHome.php";
 
 //setup autoloading javascript:
@@ -68,7 +70,7 @@ class WikiAtHome {
 	const ENC_WEB_STREAM = '400_300kbs';
 	const ENC_HQ_STREAM = 'high_quality';
 
-	/*
+/*
  * the mapping between firefogg api and ffmpeg2theora command line
  * (this way shell command to ffmpeg2theora and firefogg can share a common api)
  * also see: http://firefogg.org/dev/index.html
@@ -110,6 +112,35 @@ class WikiAtHome {
 	    'license'			=> "--license",
 	    'contact'			=> "--contact"
 	);
+	static function getTargetDerivative($targetWidth, $srcFile){
+		global $wgEnabledDerivatives, $wgDerivativeSettings;
+
+		$srcWidth = $srcFile->getWidth();
+		$srcHeight = $srcFile->getHeight();
+		//print get_class( $srcFile->handler);
+
+		//return special key 'notransform' if targetdWidth greater than our source file)
+		if( $targetWidth >= $srcWidth && get_class( $srcFile->handler) != 'NonFreeVideoHandler')
+			return 'notransform';
+
+		if( count($wgEnabledDerivatives) == 1 )
+			return current($wgEnabledDerivatives);
+
+		//if target width > 450 & high quality is on then give them HQ:
+		if( $targetWidth > 450 && in_array(WikiAtHome::ENC_HQ_STREAM, $wgEnabledDerivatives) )
+			return WikiAtHome::ENC_HQ_STREAM;
+
+		//if target width <= 250 and ENC_SAVE_BANDWITH then send small version
+		if( $targetWidth <= 260 && in_array(WikiAtHome::ENC_SAVE_BANDWITH, $wgEnabledDerivatives) )
+			return WikiAtHome::ENC_SAVE_BANDWITH;
+
+		//else return the default web stream if on
+		if( in_array(WikiAtHome::ENC_WEB_STREAM, $wgEnabledDerivatives) )
+			return WikiAtHome::ENC_WEB_STREAM;
+
+		//else return whatever we have
+		return $wgDerivativeSettings[ current($wgEnabledDerivatives) ];
+	}
 }
 
 //GLOBAL FUNCTIONS:
@@ -225,31 +256,37 @@ $wgJobTimeOut = 60*10; //10 min
 $wgNumberOfClientsPerJobSet = 25;
 
 //what to encode to:
-$wgEnabledDerivatives = array( WikiAtHome::ENC_WEB_STREAM );
+$wgEnabledDerivatives = array(
+	WikiAtHome::ENC_SAVE_BANDWITH,
+	WikiAtHome::ENC_WEB_STREAM,
+	WikiAtHome::ENC_HQ_STREAM
+);
 
 //these params are set via firefogg encode options see:
 //http://firefogg.org/dev/index.html
 //if you want to re-derive things you should change its key above in the WikiAtHome class
 $wgDerivativeSettings[ WikiAtHome::ENC_SAVE_BANDWITH ] =
 		array(
-			'videoBitrate'	=> '200',
+			'videoBitrate'	=> '128',
 			'audioBitrate'	=> '32',
-			'samplerate'	=> '24',
+			'samplerate'	=> '22050',
+			'framerate'		=> '15',
 			'channels'		=> '1',
-			'width'			=> '256',
+			'maxSize'		=> '200',
 			'noUpscaling'	=> 'true'
 		);
 $wgDerivativeSettings[ WikiAtHome::ENC_WEB_STREAM ] =
 		array(
-			'width'			=> '400',
-			'videoBitrate'	=> '400',
-			'audioBitrate'	=> '64',
-			'noUpscaling'	=> 'true'
-		);
-$wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
-		array(
-			'videoQuality'  => 9,
-			'audioQuality'	=> 9,
+			'maxSize'		=> '400',
+			'videoBitrate'	=> '512',
+			'audioBitrate'	=> '96',
 			'noUpscaling'	=> 'true'
 		);
 
+$wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
+		array(
+			'maxSize' 		=> '1080',
+			'videoQuality'	=> 6,
+			'audioQuality'	=> 3,
+			'noUpscaling'	=> 'true'
+		);

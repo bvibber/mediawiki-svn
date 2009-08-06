@@ -143,7 +143,7 @@ class NonFreeVideoHandler extends MediaHandler {
 		$oggHandle->setHeaders( $wgOut );
 
 		//do some arbitrary derivative selection logic:
-		$encodeKey = $this->getTargetDerivative($width, $srcWidth);
+		$encodeKey = WikiAtHome::getTargetDerivative($width, $file);
 		//see if we have that encoding profile already:
 
 		//get the job manager .. check status and output current state or defer to oggHanndler_body for output
@@ -195,23 +195,6 @@ class NonFreeVideoHandler extends MediaHandler {
 			//output our current progress
 			return new MediaQueueTransformOutput($file, $width, $height, $wjm->getDonePerc() );
 		}
-	}
-
-	static function getTargetDerivative($targetWidth, $srcWidth ){
-		global $wgEnabledDerivatives, $wgDerivativeSettings;
-		if( count($wgEnabledDerivatives) == 1 )
-			return current($wgEnabledDerivatives);
-		//if target width > 450 & high quality is on then give them HQ:
-		if( $targetWidth > 450 && in_array(WikiAtHome::ENC_HQ_STREAM, $wgEnabledDerivatives) )
-			return WikiAtHome::ENC_HQ_STREAM;
-		//if target width <= 250 and ENC_SAVE_BANDWITH then send small version
-		if( $targetWidth >= 260 && in_array(WikiAtHome::ENC_SAVE_BANDWITH, $wgEnabledDerivatives) )
-			return WikiAtHome::ENC_SAVE_BANDWITH;
-		//return the default web stream if on
-		if( in_array(WikiAtHome::ENC_WEB_STREAM, $wgEnabledDerivatives) )
-			return WikiAtHome::ENC_WEB_STREAM;
-		//else return whatever we have
-		return $wgDerivativeSettings[ current($wgEnabledDerivatives) ];
 	}
 
 	function getMetadataType( $image ) {
