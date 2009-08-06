@@ -53,6 +53,7 @@ $messages['en'] = array(
 	'recordadmin-select' => 'Select',
 	'recordadmin-needscontent' => 'Add content...',
 	'recordadmin-editwithform' => 'Edit with form',
+	'recordadmin-typeinfo' => '$1 record',
 	'right-recordadmin' => 'Find and edit record pages',
 );
 

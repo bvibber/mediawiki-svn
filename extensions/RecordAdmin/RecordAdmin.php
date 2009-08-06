@@ -11,7 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'RECORDADMIN_VERSION', '0.8.3, 2009-08-05' );
+define( 'RECORDADMIN_VERSION', '0.8.4, 2009-08-06' );
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $wgRecordAdminCategory      = 'Records'; # Category containing record types
@@ -26,6 +26,7 @@ $wgRecordAdminTableMagic                 = 'recordtable';
 $wgRecordAdminDataMagic                  = 'recorddata';
 $wgRecordAdminTag                        = 'recordid';
 $wgRecordAdminEditWithForm               = true;
+$wgRecordAdminAddTitleInfo               = false;
 
 $wgGroupPermissions['sysop']['recordadmin'] = true;
 $wgAvailableRights[] = 'recordadmin';
@@ -65,8 +66,8 @@ function wfSetupRecordAdmin() {
 	if ( is_object( $title ) && $title->getNamespace() != NS_SPECIAL && $wgRequest->getText( 'wpType' ) && $wgRequest->getText( 'wpCreate' ) )
 		$wgSpecialRecordAdmin->createRecord();
 
-	# Add an "edit with form" action link
-	if ( $wgRecordAdminEditWithForm && is_object( $title ) ) {
+	# Add some hooks if the current title is a record
+	if ( is_object( $title ) ) {
 		$types = array();
 		$id    = $title->getArticleID();
 		$dbr   = &wfGetDB(DB_SLAVE);
@@ -78,11 +79,20 @@ function wfSetupRecordAdmin() {
 		$dbr->freeResult( $res );
 		$uses = join( ' OR ', $types );
 		if ( $uses && $row = $dbr->selectRow( $tl, 'tl_title', "tl_from = $id AND ($uses)" ) ) {
-			global $wgRecordAdminActionUrl;
-			$wgHooks['SkinTemplateTabs'][] = 'wfRecordAdminEditWithForm';
-			$type = $row->tl_title;
-			$qs = "wpType=$type&wpRecord=" . $title->getPrefixedText();
-			$wgRecordAdminActionUrl = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' )->getLocalURL( $qs );
+			global $wgRecordAdminEditWithForm, $wgRecordAdminActionUrl, $wgRecordAdminCurrentType, $wgRecordAdminAddTitleInfo;
+			$wgRecordAdminCurrentType = $row->tl_title;
+
+			# Add title info
+			if ( $wgRecordAdminAddTitleInfo ) {
+				$wgHooks['OutputPageBeforeHTML'][] = 'wfRecordAdminAddTypeInfo';
+			}
+
+			# Add an "edit with form" action link
+			if ( $wgRecordAdminEditWithForm ) {
+				$wgHooks['SkinTemplateTabs'][] = 'wfRecordAdminEditWithForm';
+				$qs = "wpType=$wgRecordAdminCurrentType&wpRecord=" . $title->getPrefixedText();
+				$wgRecordAdminActionUrl = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' )->getLocalURL( $qs );
+			}
 		}
 	}
 
@@ -113,5 +123,14 @@ function wfRecordAdminEditWithForm( &$skin, &$actions ) {
 		);
 	}
 	$actions = $tmp;
+	return true;
+}
+
+/**
+ * Add record type info below title
+ */
+function wfRecordAdminAddTypeInfo( &$out, &$text ) {
+	global $wgRecordAdminCurrentType;
+	$text = '<div class="recordadmin-typeinfo">' . wfMsg( 'recordadmin-typeinfo', $wgRecordAdminCurrentType ) . "</div>\n" . $text;
 	return true;
 }
