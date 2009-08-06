@@ -3,6 +3,8 @@ package de.brightbyte.wikiword.builder;
 import org.ardverk.collection.KeyAnalyzer;
 import org.ardverk.collection.PatriciaTrie;
 
+import de.brightbyte.wikiword.builder.util.ReverseStringKeyAnalyzer;
+
 import junit.framework.TestCase;
 
 public class ReverseStringKeyAnalyzerTest extends TestCase {

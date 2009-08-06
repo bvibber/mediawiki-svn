@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.builder.util;
 
 import org.ardverk.collection.KeyAnalyzer;
 import org.ardverk.collection.StringKeyAnalyzer;
