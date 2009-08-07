@@ -2978,6 +2978,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-remove-fill' => 'Fëllen ewechhuelen',
 	'gm-fill-color' => 'Faarw fir opzefëllen',
 	'gm-line-color' => 'Faarw vum Strich',
+	'gm-opacity' => 'Opazitéit',
 	'gm-line-width' => 'Breed',
 	'gm-make-map' => 'Eng Kaart maachen',
 	'gm-hide-map' => 'Kaart verstoppen',
@@ -5495,6 +5496,7 @@ $wgGoogleMapsMessages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author <anonymous>
+ * @author PhiLiP
  * @author Wmr89502270
  */
 $wgGoogleMapsMessages['zh-hans'] = array(
@@ -5561,7 +5563,7 @@ $wgGoogleMapsMessages['zh-hans'] = array(
 	'gm-back' => '返回',
 	'gm-kml-include' => '外部的 KML/GeoRSS：',
 	'gm-kml-include-link' => '新增至地图',
-	'gm-kml-loading' => '载入中.....',
+	'gm-kml-loading' => '正在载入……',
 	'gm-kml-export' => '导出此地图至KML',
 	'gm-earth' => '地球',
 	'gm-moon' => '月亮',

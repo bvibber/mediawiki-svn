@@ -175,6 +175,15 @@ $messages['hsb'] = array(
 	'editwarning-warning' => 'Hdyž so strona wopušća, so přewjedźene změny zhubja.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'editwarning' => 'Figyelmeztetés szerkesztésnél',
+	'editwarning-desc' => 'Figyelmezteti a szerkesztőt, ha a szerkesztőlapot mentés nélkül akarja elhagyni.',
+	'editwarning-warning' => 'A lap elhagyásával az összes itt végzett változtatás elvész.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

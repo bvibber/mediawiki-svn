@@ -153,6 +153,14 @@ $messages['hsb'] = array(
 	'catfeed-desc' => 'Wužiwa bity z kanalow aktualnych změnow. Wutwor wersiju w stronje, kotraž je wosebje wužitna za WikiNews.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'catfeed-desc' => 'A friss változások hírcsatornáiból használ részleteket.
+Lapon belüli változatot készít, különösen hasznos a Wikihírekhez',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

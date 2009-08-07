@@ -166,6 +166,13 @@ $messages['hsb'] = array(
 	'trustedxff-desc' => 'Wobchadźenje z lisćinu dowěrliwych proksyjowych adresow ([http://meta.wikimedia.org/wiki/XFF_project projekt XFF])',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'trustedxff-desc' => 'Megbízható proxycímek listájának kezelése ([http://meta.wikimedia.org/wiki/XFF_project XFF-projekt (angolul)])',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

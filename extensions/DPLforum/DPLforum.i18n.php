@@ -303,10 +303,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'dplforum-desc' => 'DPL-alapú fórumkiterjesztés',
-	'dplforum-by' => 'by $1',
+	'dplforum-by' => '– $1',
 	'dplforum-edited' => '- Utolsó szerkesztés',
 	'dplforum-never' => 'soha',
 	'dplforum-toofew' => 'DPL fórum: túl kevés kategória!',

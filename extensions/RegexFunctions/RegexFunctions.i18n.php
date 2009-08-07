@@ -144,10 +144,11 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'regexfunctions-desc' => 'Reguláris kifejezés parser függvények',
+	'regexfunctions-desc' => 'Értelmezőfüggvények reguláris kifejezések használatához',
 );
 
 /** Interlingua (Interlingua)

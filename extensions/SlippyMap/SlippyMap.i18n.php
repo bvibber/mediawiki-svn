@@ -228,6 +228,16 @@ $messages['es'] = array(
 	'slippymap_clicktoactivate' => 'Haga clic para activar mapa',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'slippymap_errors' => '$1 errore:',
+	'slippymap_button_code' => 'Wikikodea lortu',
+	'slippymap_resetview' => 'Bista berrezarri',
+);
+
 /** Finnish (Suomi)
  * @author Vililikku
  */

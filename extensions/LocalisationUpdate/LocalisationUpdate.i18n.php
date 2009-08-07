@@ -115,6 +115,13 @@ $messages['hsb'] = array(
 	'localisationupdate-desc' => 'Dźerži lokalizowane zdźělenki tak aktualne kaž móžno',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'localisationupdate-desc' => 'Frissíti a lefordított üzeneteket',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

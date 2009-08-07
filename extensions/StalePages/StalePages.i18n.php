@@ -115,6 +115,14 @@ $messages['es'] = array(
 	'stalepages-summary' => 'Esta es una lista de páginas que no han sido editadas en los últimos $1 {{PLURAL:$1|día|días}}.',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'stalepages' => 'Orrialde zaharkituak',
+	'stalepages-desc' => 'Berriki editatu ez diren [[Special:Stalepages|orrialdeen zerrenda]] sortzen du',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

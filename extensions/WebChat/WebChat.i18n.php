@@ -95,6 +95,13 @@ $messages['es'] = array(
 	'webchat-desc' => 'Añade una [[Special:WebChat|página especial]] usada para chatear en vivo con otros usuarios del proyecto',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'webchat' => 'Web bidezko txata',
+);
+
 /** French (Français)
  * @author IAlex
  */

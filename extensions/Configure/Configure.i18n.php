@@ -3612,6 +3612,7 @@ Prošu wutwor abo změń jón, zo by tute rozšěrjenje wužiwał.',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Terik
  */
 $messages['hu'] = array(
@@ -3620,6 +3621,18 @@ $messages['hu'] = array(
 	'configure-desc-key' => 'Kulcs',
 	'configure-desc-ns' => 'Névtér',
 	'configure-desc-val' => 'Érték',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Kiterjesztések',
+	'configure-ext-settings' => 'Beállítások',
+	'configure-js-remove' => 'Törlés',
+	'configure-section-pages' => 'Lapok',
+	'configure-section-paths' => 'Elérési utak',
+	'configure-section-db' => 'Adatbázis',
+	'configure-section-load-balancing' => 'Terheléselosztás',
+	'configure-section-groups' => 'Csoportok',
+	'configure-section-users' => 'Felhasználók',
+	'configure-section-search' => 'Keresés',
+	'configure-section-filter' => 'Szűrés',
 );
 
 /** Armenian (Հայերեն) */

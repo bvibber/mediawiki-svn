@@ -441,9 +441,11 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author Dorgan
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'inspectcache' => 'Gyorsítótár ellenőrzése',
+	'inspectcache-desc' => 'Egyszerű hibakereső eszköz az osztott gyorsítótár tartalmának vizsgálatára',
 	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Általános gyorsítótár',
 	'inspectcache-parser' => 'Értelmező gyorsítótár',

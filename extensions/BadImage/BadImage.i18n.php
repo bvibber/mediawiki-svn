@@ -951,6 +951,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'badimages' => 'Hibás képek listája',
@@ -973,6 +974,7 @@ $messages['hu'] = array(
 	'badimages-log-add' => '[[$1]] hozzáadva a hibás képek listájához',
 	'badimages-log-remove' => '[[$1]] eltávolítva a hibás képek listájáról',
 	'badimages-page' => '{{ns:help}}:Hibás képek listája',
+	'right-badimages' => 'A hibás képek listájának frissítése',
 );
 
 /** Interlingua (Interlingua)

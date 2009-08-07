@@ -46,6 +46,18 @@ Kliknite na jednu od njih da pogledate njene statistike.',
 	'prefstats-noprefs' => 'Nijedna postavka se trenutno ne prati. Podesite $wgPrefStatsTrackPrefs za praćenje postavki.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'prefstats' => 'Estadístiques de les preferències',
+	'prefstats-desc' => 'Registra les estadístiques de quants usuaris tenen certes preferències activades',
+	'prefstats-title' => 'Estadístiques de les preferències',
+	'prefstats-list-intro' => "Actualment s'estan registrant les següents preferències.
+Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
+	'prefstats-noprefs' => 'No s\'està registrant cap preferència. Configurau $wgPrefStatsTrackPrefs per registrar les preferències.',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -384,6 +396,7 @@ $messages['roa-tara'] = array(
 	'prefstats-title' => 'Statisteche de le preferenze',
 	'prefstats-list-intro' => 'Pe mò, le seguende preferenze stonne avènene tracciate.
 Cazze sus a une de le statisteche da vedè.',
+	'prefstats-noprefs' => 'Nisciuna preferenze ha state tracciate pe mò. Configure $wgPrefStatsTrackPrefs pe traccià le preferenze.',
 );
 
 /** Russian (Русский)
@@ -425,9 +438,15 @@ Po kliknutí na niektoré z nich zobrazíte štatistiku o ňom.',
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Ozp
  */
 $messages['sv'] = array(
 	'prefstats' => 'Statistik över inställningar',
+	'prefstats-desc' => 'Statistik över hur många användare som har vissa inställningar',
+	'prefstats-title' => 'Statistik över inställningar',
+	'prefstats-list-intro' => 'För närvarande blir följande inställningar spårade.
+Klicka på en för att visa statistik om den.',
+	'prefstats-noprefs' => 'Inga inställningar blir för närvarande spårade. Konfigurera $wgPrefStatsTrackPrefs för att spåra inställningar.',
 );
 
 /** Telugu (తెలుగు)
@@ -475,6 +494,7 @@ Strucando su de una te vedi le so statìsteghe.',
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'prefstats' => 'Thống kê tùy chọn',
@@ -482,6 +502,7 @@ $messages['vi'] = array(
 	'prefstats-title' => 'Thống kê tùy chọn',
 	'prefstats-list-intro' => 'Hiện đang theo dõi các tùy chọn sau.
 Hãy nhấn vào một tùy chọn để xem thống kê về nó.',
+	'prefstats-noprefs' => 'Không có tùy chọn nào được theo dõi. Hãy cấu hình $wgPrefStatsTrackPrefs để theo dõi tùy chọn.',
 );
 
 /** Yue (粵語)
@@ -503,7 +524,7 @@ $messages['zh-hans'] = array(
 	'prefstats' => '喜好统计',
 	'prefstats-desc' => '追踪统计，有多少用户启用了特定的设置',
 	'prefstats-title' => '喜好统计',
-'prefstats-list-intro' => '直到现时，以下的喜好设置会追踪下来。
+	'prefstats-list-intro' => '直到现时，以下的喜好设置会追踪下来。
 	点击其中一种设置去查看有关它的统计。',
 	'prefstats-noprefs' => '无喜好可供追踪。设置 $wgPrefStatsTrackPrefs 去追踪喜好。',
 );

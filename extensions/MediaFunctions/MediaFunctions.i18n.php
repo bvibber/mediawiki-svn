@@ -222,8 +222,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'mediafunctions-desc' => 'Elemzőfüggvények információk kinyerésére médiafájlokból',
 	'mediafunctions-invalid-title' => '„$1” nem érvényes cím',
 	'mediafunctions-not-exist' => '„$1” nem létezik',
 );

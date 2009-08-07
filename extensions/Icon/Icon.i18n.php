@@ -248,10 +248,12 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author Dorgan
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'icon-badimage' => 'Rossz kép',
 	'icon-badwidth' => 'Érvénytelen szélesség',
+	'icon-desc' => 'Lehetővé teszi, hogy képeket ikonként és ikonhivatkozásként használjunk',
 );
 
 /** Interlingua (Interlingua)

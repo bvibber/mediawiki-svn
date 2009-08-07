@@ -171,6 +171,13 @@ $messages['hsb'] = array(
 	'opensearchxml-desc' => 'Interfejs XML [http://www.opensearch.org OpenSearch] za tekstowe wućahi',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-támogatás',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -589,6 +589,10 @@ $messages['et'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'specialuserstats' => 'Erabilpen-estatistikak',
+	'usagestatistics' => 'Erabilpen-estatistikak',
+	'usagestatisticsfor' => '<h2>[[User:$1|$1]] lankidearen erabilpen-estatistikak</h2>',
+	'usagestatisticsforallusers' => '<h2>Lankide guztien erabilpen-estatistikak</h2>',
 	'usagestatisticsinterval' => 'Bitartea',
 	'usagestatisticstype' => 'Mota',
 	'usagestatisticsstart' => 'Hasiera data',
@@ -894,6 +898,22 @@ $messages['hsb'] = array(
 	'usagestatistics-editindividual' => 'Indiwiduelna statistika změnow wužiwarja $1',
 	'usagestatistics-editpages' => 'Indiwiduelna statistika stronow wužiwarja $1',
 	'right-viewsystemstats' => '[[Special:UserStats|Wikijowu wužiwansku statistiku]] sej wobhladać',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'specialuserstats' => 'Használati statisztika',
+	'usagestatistics' => 'Használati statisztika',
+	'usagestatisticsinterval' => 'Intervallum',
+	'usagestatisticstype' => 'Típus',
+	'usagestatisticsstart' => 'Kezdődátum',
+	'usagestatisticsend' => 'Végdátum',
+	'usagestatisticsintervalday' => 'Nap',
+	'usagestatisticsintervalweek' => 'Hét',
+	'usagestatisticsintervalmonth' => 'Hónap',
+	'usagestatisticscalselect' => 'Kiválaszt',
 );
 
 /** Interlingua (Interlingua)

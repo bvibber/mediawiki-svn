@@ -2862,6 +2862,7 @@ $4',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'code' => 'Kódellenőrzés',
@@ -2876,6 +2877,7 @@ $messages['hu'] = array(
 	'code-notes' => 'hozzászólások áttekintése',
 	'code-authors' => 'szerzők',
 	'code-tags' => 'címkék',
+	'code-tests' => 'Tesztesetek',
 	'code-authors-text' => 'Ezen a lapon a tárhelyhez tartozó szerzők láthatóak a legutóbbi elküldések alapján rendezve.',
 	'code-author-haslink' => 'Ez a szerző megegyezi a wiki $1 nevű szerkesztőjével',
 	'code-author-orphan' => 'Ez a szerkesztő nem rendelkezik felhasználói fiókkal ezen a wikin',

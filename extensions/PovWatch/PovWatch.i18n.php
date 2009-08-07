@@ -835,6 +835,9 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
  */
 $messages['hu'] = array(
 	'povwatch_title' => 'Cím:',
+	'right-povwatch_user' => 'lapok hozzáadása más szerkesztők figyelőlistájához',
+	'action-povwatch_admin' => 'a PovWatchhoz tartozó jogosultságok kezelése',
+	'action-povwatch_user' => 'lap hozzáadása egy másik szerkesztő figyelőlistájához',
 );
 
 /** Interlingua (Interlingua)

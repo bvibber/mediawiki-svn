@@ -673,6 +673,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'duplicator' => 'Oldal másolása',
@@ -695,6 +696,7 @@ $messages['hu'] = array(
 	'duplicator-dest-invalid' => 'Adj meg egy érvényes címet.',
 	'duplicator-dest-exists' => '[[$1]] már létezik. Add meg egy olyan oldal címet, amely még nem létezik.',
 	'duplicator-toomanyrevisions' => '[[$1]] túl sok ($2) változattal rendelkezik, ezért nem másolható. A jelenlegi határ $3.',
+	'right-duplicate' => 'lapok megkettőzése',
 );
 
 /** Interlingua (Interlingua)

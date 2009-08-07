@@ -133,6 +133,14 @@ $messages['es'] = array(
 	'uos-title' => 'Distribución de valores de opción de usuario $1',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'uos-unknown' => '*Lehenetsia',
+	'uos-other' => '*Besterik',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -406,5 +414,12 @@ $messages['vi'] = array(
 	'uos-unknown' => '*Mặc định',
 	'uos-other' => '*Khác',
 	'uos-title' => 'Phân phối giá trị tùy chọn cá nhân $1',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'uos-other' => '*其他',
 );
 

@@ -3064,6 +3064,8 @@ $messages['eu'] = array(
 	'importtsv' => 'Wikidata: TSV inportatu',
 	'ow_importtsv_title1' => 'TSV inportatu',
 	'ow_importtsv_file' => 'TSV Fitxategia:',
+	'ow_importtsv_nothing_added' => 'Ez da ezer erantsi.',
+	'ow_importtsv_nothing_added_test' => 'Ez da ezer erantsi (proba bat egin duzu).',
 	'ow_exporttsv_languages' => 'Hizkuntzak:',
 	'ow_save' => 'Gorde',
 	'ow_history' => 'Historia',
@@ -3075,8 +3077,12 @@ Mesedez ikus [[{{MediaWiki:Ow editing policy url}}|gure aldatzeko arauak]].',
 	'ow_uiprefs' => 'Wikidatua',
 	'ow_none_selected' => 'Bat ere ez da aukeratu',
 	'ow_transaction_user' => 'Erabiltzaile-izena:',
+	'ow_transaction_rollback_button' => 'Desegin',
+	'ow_transaction_rollback_header' => 'Desegin',
+	'ow_transaction_no_action' => 'Ezer ez egin',
 	'ow_transaction_restore' => 'Leheneratu',
 	'ow_transaction_remove' => 'Kendu',
+	'ow_transaction_is_latest' => 'Azkena da',
 	'ow_transaction_summary' => 'Laburpena',
 	'ow_conceptmapping_no_action_specified' => '"$1" ekintza ez da onartzen.',
 	'ow_dm_OK' => 'Ondo',
@@ -3091,6 +3097,7 @@ Mesedez ikus [[{{MediaWiki:Ow editing policy url}}|gure aldatzeko arauak]].',
 	'ow_concept_panel' => 'Kontzeptu panela',
 	'ow_dm_badtitle' => 'Orrialde honek ez du DefinedMeaning (kontzeptu) bakar bat ere lotzen.
 Ziurtatu ezazu berriro web helbidea, mesedez.',
+	'ow_AddHint' => 'Sartu gehitu beharreko errenkadak',
 	'ow_AlternativeDefinition' => 'Definizio alternatiboa',
 	'ow_AlternativeDefinitions' => 'Definizio alternatiboak',
 	'ow_Annotation' => 'Anotazioa',
@@ -3126,6 +3133,7 @@ Ziurtatu ezazu berriro web helbidea, mesedez.',
 	'ow_RelationType' => 'Harreman motak',
 	'ow_Remove' => 'Ezabatu',
 	'ow_Spelling' => 'Letreiatu',
+	'ow_SuggestHint' => 'Egizu klik hautaketa aldatzeko',
 	'ow_Synonyms' => 'Sinonimoak',
 	'ow_SynonymsAndTranslations' => 'Sinonimoak eta itzulpenak',
 	'ow_Source' => 'Jatorria',
@@ -3133,10 +3141,12 @@ Ziurtatu ezazu berriro web helbidea, mesedez.',
 	'ow_Text' => 'Testua',
 	'ow_TextAttribute' => 'Ezaugarria',
 	'ow_TextAttributeValues' => 'Testu lauak',
+	'ow_Time' => 'Denbora',
 	'ow_TranslatedTextAttribute' => 'Ezaugarria',
 	'ow_TranslatedText' => 'Itzulitako testua',
 	'ow_TranslatedTextAttributeValue' => 'Testua',
 	'ow_TranslatedTextAttributeValues' => 'Itzul daitezkeen testuak',
+	'ow_Label' => 'Etiketa',
 	'ow_Link' => 'Esteka',
 	'ow_LinkAttribute' => 'Ezaugarria',
 	'ow_LinkAttributeValues' => 'Loturak',
@@ -3144,6 +3154,7 @@ Ziurtatu ezazu berriro web helbidea, mesedez.',
 	'ow_Property' => 'Ezaugarria',
 	'ow_Value' => 'Balioa',
 	'ow_added' => 'Gehitua',
+	'ow_removed' => 'Ezabatua',
 	'ow_meaningsoftitle' => '"$1"en esanahiak',
 	'ow_meaningsofsubtitle' => '<em>Wiki lotura:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Baimena ukatua</h2>',
@@ -3159,6 +3170,7 @@ Ez da kopiarik egin.',
 Errore bat dago datu-base koherentziarekin, wikidata ez da zehazturiko esanahi IDarekin konektaturiko baliozko daturik aurkitzeko gai.
 Galdu egingo ziren.
 Mesedez harremanetan ipini zerbitzari operadore edo administratzailearekin.',
+	'ow_class_attr_type_xlate' => 'Itzul daitekeen testua',
 	'ow_class_attr_type_plain' => 'Testu laua',
 	'ow_class_attr_type_link' => 'Lotura',
 	'ow_class_attr_type_option' => 'Aukera zerrenda',
@@ -3174,6 +3186,7 @@ Mesedez harremanetan ipini zerbitzari operadore edo administratzailearekin.',
 	'ow_suggest_next' => 'Hurrengoa',
 	'ow_suggest_clear' => 'Ezabatu',
 	'ow_nstab_edit_copy' => 'kopia editatu',
+	'right-addlanguage' => 'Gehitu eta aldatu hizkuntzaren ezarpenak',
 );
 
 /** Persian (فارسی)
@@ -10727,6 +10740,7 @@ $messages['zh-cn'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Gaoxuewei
+ * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
@@ -10754,17 +10768,18 @@ $messages['zh-hans'] = array(
 	'ow_uiprefs' => 'Wiki数据',
 	'ow_none_selected' => '未选择',
 	'ow_conceptmapping_help' => '<p>可能的action： <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... 插入一个映射</li>
-<li>&action=get&concept=<concept_id> 阅读映射返回</li>
-<li>&action=list_sets 返回一个关于可能的背景前缀和他们可能提到的列表。</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  插入一个映射</li>
+<li>&action=get&concept=<concept_id>  阅读映射返回</li>
+<li>&action=list_sets  返回一个关于可能的背景前缀和他们可能提到的列表。</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> 为一个已经定义的概念返回所有其他的</li>
-<li>&action=help 阅读帮助</li>
+<li>&action=help  阅读帮助</li>
 </ul></p>',
 	'ow_Language' => '语言',
 	'ow_OptionAttributeOption' => '选择',
 	'ow_OptionAttributeOptions' => '选项',
 	'ow_Source' => '来源',
 	'ow_Text' => '文本',
+	'ow_LinkAttributeValues' => '链接',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

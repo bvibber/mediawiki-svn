@@ -522,6 +522,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -540,6 +541,7 @@ $messages['hu'] = array(
 	'lookupuser-touched' => 'Utolsó hozzáférés ideje: $1',
 	'lookupuser-info-authenticated' => 'Megerősített e-mail cím: $1',
 	'lookupuser-useroptions' => 'Beállításai:',
+	'right-lookupuser' => 'felhasználó beállításainak megtekintése',
 );
 
 /** Interlingua (Interlingua)

@@ -1036,6 +1036,16 @@ Jeli maš prašenja wo systemje rozdźělowanja rozšěrjenjow, prošu dźi k [[
 	'extdist-want-more' => 'Dalše rozšěrjenje wobstarać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'extensiondistributor' => 'MediaWiki-kigészítők letöltése',
+	'extdist-desc' => 'Kiegészítő kiegészítőcsomagok terjesztéséhez',
+	'extdist-not-configured' => 'Kérlek állítsd be a $wgExtDistTarDir és a $wgExtDistWorkingCopy értékeit',
+	'extdist-no-such-extension' => 'Nincs „$1” nevű kiegészítő',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

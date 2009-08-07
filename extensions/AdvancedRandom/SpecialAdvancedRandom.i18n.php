@@ -258,8 +258,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'advancedrandom' => 'Véletlen lap (fejlettebb)',
 	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely vagy amelynek vitalapja egy megadott oldalra, például a[[{{#special:advancedrandom}}/{{ns:template}}:Kiemelt/{{ns:talk}}]] mutat egy véletlen kiemelt szócikket vagy a [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] mutat egy véletlen GFDL fájlt.',
 );
 

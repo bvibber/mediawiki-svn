@@ -518,6 +518,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'importfreeimages' => 'Szabad képek importálása',
@@ -533,6 +534,7 @@ $messages['hu'] = array(
 	'importfreeimages_filefromflickr' => '$1 <b>[$2]</b> felhasználótól a flickr-ről. Eredeti URL',
 	'importfreeimages_promptuserforfilename' => 'Add meg a cél fájlnevet:',
 	'importfreeimages_returntoform' => "Vagy kattints <a href='$1'>ide</a>, hogy visszatérj az eredmények listájához",
+	'importfreeimages_nophpflickr' => 'Nem telepítetted a phpFlickr-t, állítsd be a <tt>$wgIFphpFlickr</tt> változót a <tt>LocalSettings.php</tt>-ben.',
 );
 
 /** Interlingua (Interlingua)
@@ -700,6 +702,7 @@ Fir dëst ze maachen, Frot w.e.g. en API Schlëssel [http://www.flickr.com/servi
 	'importfreeimages_filefromflickr' => '$1 vum Benotzer <b>[$2]</b> vun flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Gitt w.e.g een Numm fir den neie fichier un:',
 	'importfreeimages_returntoform' => "oder, klickt <a href='$1'>heihinn</a> fir op d'Resultat vun ärer Sich zréckzegoen",
+	'importfreeimages_nophpflickr' => 'Dir hutt phpFlickr net installéiert, stellt w.e.g. $wgIFphpFlickr an Äre <tt>LocalSettings.php</tt> an.',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)

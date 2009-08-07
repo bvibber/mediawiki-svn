@@ -416,6 +416,17 @@ Wothladowarjo tutoho websydła njemóža zamołwitosć za wobsah tajkich komenta
 	'talkhere-collapse' => 'Editor schować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'talkhere-talkpage' => 'vitalap',
+	'talkhere-notalk' => "''(még nincsenek megjegyzések)''",
+	'talkhere-addcomment' => 'megjegyzés hozzáadása',
+	'talkhere-loading' => 'szerkesztő betöltése…',
+	'talkhere-collapse' => 'szerkesztő elrejtése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

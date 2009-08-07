@@ -250,6 +250,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'abcdesc' => '<tt>&lt;abc&gt;</tt> tag ABC zeneleírás formázásához',
 	'abcdownload' => 'Letöltés:',
 );
 

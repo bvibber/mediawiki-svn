@@ -78,6 +78,7 @@ Do not translate or change tag names, or link anchors.',
 	'recordadmin-buttonsave' => '{{Identical|Save}}',
 	'recordadmin-editlink' => '{{Identical|Edit}}',
 	'recordadmin-actions' => '{{Identical|Action}}',
+	'recordadmin-typeinfo' => '$1 is a record type. Could be read as "A record of type $1"',
 );
 
 /** Arabic (العربية)
@@ -222,6 +223,7 @@ $messages['be-tarask'] = array(
 	'recordadmin-actions' => 'Дзеяньні',
 	'recordadmin-needscontent' => 'Дадаць зьмест...',
 	'recordadmin-editwithform' => 'Рэдагаваць праз форму',
+	'recordadmin-typeinfo' => '$1 запіс',
 	'right-recordadmin' => 'пошук і рэдагаваньне старонак запісаў',
 );
 
@@ -727,6 +729,7 @@ $messages['hsb'] = array(
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Wobsah přidać...',
 	'recordadmin-editwithform' => 'Z formularom wobdźěłać',
+	'recordadmin-typeinfo' => 'Datowa sadźba $1',
 	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
 );
 
@@ -829,6 +832,7 @@ $messages['ja'] = array(
 	'recordadmin-actions' => '操作',
 	'recordadmin-needscontent' => '内容の追加...',
 	'recordadmin-editwithform' => 'フォームを用いて編集',
+	'recordadmin-typeinfo' => '$1記録',
 	'right-recordadmin' => '記録ページを検索および編集する',
 );
 
@@ -904,6 +908,7 @@ $messages['ksh'] = array(
 	'recordadmin-actions' => 'Axjohne',
 	'recordadmin-needscontent' => 'Enhalld dobei donn&nbsp;...',
 	'recordadmin-editwithform' => 'Övver et Fomulaa ändere',
+	'recordadmin-typeinfo' => '$1-Datesaz',
 	'right-recordadmin' => 'Datesätz fenge un ändere',
 );
 
@@ -1015,6 +1020,7 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 	'recordadmin-actions' => 'Acties',
 	'recordadmin-needscontent' => 'Inhoud toevoegen...',
 	'recordadmin-editwithform' => 'Via formulier bewerken',
+	'recordadmin-typeinfo' => 'Gegeven van het type $1',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 );
 
@@ -1306,6 +1312,7 @@ $messages['ru'] = array(
 	'recordadmin-actions' => 'Действия',
 	'recordadmin-needscontent' => 'Добавить содержимое...',
 	'recordadmin-editwithform' => 'Редактировать с формой',
+	'recordadmin-typeinfo' => '$1 запись',
 	'right-recordadmin' => 'поиск и редактирование страниц записей',
 );
 

@@ -117,6 +117,14 @@ $messages['hsb'] = array(
 	'wikiarticlefeeds_combined_description' => 'To je kombinaciski kanal, kotryž zapiski z wjacorych kanalowych žórłow wobsahuje.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'wikiarticlefeeds-desc' => 'Hírcsatornákat generál MediaWiki lapokból',
+	'wikiarticlefeeds_combined_description' => 'Ez egy kombinált hírcsatorna, számos hírcsatorna-forrásból tartalmaz elemeket.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

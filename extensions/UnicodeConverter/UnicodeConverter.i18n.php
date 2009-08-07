@@ -685,9 +685,9 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'unicodeconverter' => 'Chuyển đổi Unicode',
-	'unicodeconverter-desc' => 'Ví dụ đơn giản về một gói trang đặc biệt. [[Special:UnicodeConverter|Cho trước một chuỗi ở dạng UTF-8]], nó được chuyển đổi thành các thực thể HTMK phù hợp với trang web theo ISO 8859-1',
+	'unicodeconverter-desc' => 'Ví dụ đơn giản về một gói trang đặc biệt. [[Special:UnicodeConverter|Cho trước một chuỗi ở dạng UTF-8]], nó được chuyển đổi thành các thực thể HTML phù hợp với trang web theo ISO 8859-1',
 	'unicodeconverter-ok' => 'OK',
-	'unicodeconverter-oldtext' => 'Nguyên văn:',
+	'unicodeconverter-oldtext' => 'Bản gốc:',
 	'unicodeconverter-newtext' => 'Văn bản chuyển đổi:',
 );
 

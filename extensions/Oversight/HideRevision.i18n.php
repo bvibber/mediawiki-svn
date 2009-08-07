@@ -910,6 +910,16 @@ Hacer pública esta información puede provocar la pérdida definitiva de los pr
 	'oversight-offender' => 'Contraventor:',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'group-oversight' => 'Järelevaatajad',
+	'group-oversight-member' => 'järelevaataja',
+	'right-oversight' => 'Vaadata eelnevalt peidetud redaktsioone',
+	'right-hiderevision' => 'Peita redaktsioone ülemate eest',
+);
+
 /** Basque (Euskara) */
 $messages['eu'] = array(
 	'hiderevision' => 'Berrikuspenak mugagabe ezkutatu',
@@ -1519,6 +1529,7 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 	'oversight-hidden' => 'Rejtett változat',
 	'oversight-header' => 'Alább találhatóak meg a nyilvánosság elől legutóbb elrejtett változatok.
 Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elvesztését is jelentheti.',
+	'oversight-legend' => 'Keresés a változatelrejtési naplóban',
 	'oversight-oversighter' => 'Adatvédelmi biztos:',
 	'oversight-offender' => 'IP-cím vagy felhasználói név:',
 );

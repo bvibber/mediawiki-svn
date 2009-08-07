@@ -519,6 +519,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'authorprotect' => 'Lap védelme a nem-szerzőkkel szemben',
@@ -534,6 +535,7 @@ $messages['hu'] = array(
 	'authorprotect-failure' => 'Levédés sikertelen',
 	'protect-level-author' => 'Csak a szerző',
 	'restriction-level-author' => 'Szerző-védett',
+	'right-authorprotect' => 'szerzői lapok védelme',
 );
 
 /** Interlingua (Interlingua)
@@ -1081,6 +1083,26 @@ $messages['ru'] = array(
 	'protect-level-author' => 'Защита от не-авторов',
 	'restriction-level-author' => 'Авторская защита',
 	'right-authorprotect' => 'защита авторских страниц',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'authorprotect' => 'Ааптар буолбатах дьонтон сирэйи көмүскээһин',
+	'authorprotect-desc' => 'Сирэй ааптара сирэйи атын кыттааччылартан көмүскүүрүн хааччыйар',
+	'authorprotect-notauthor' => 'Эн бу сирэй аапатара буолбатаххын',
+	'authorprotect-confirm' => 'Көмүскэл таһымын уларытыы',
+	'authorprotect-edit' => 'Ааптардар эрэ көннөрөр кыахтаахтар',
+	'authorprotect-move' => 'Ааптардар эрэ аатын уларытар кыахтаахтар',
+	'authorprotect-expiry' => 'Көмүскэл болдьоҕо',
+	'authorprotect-reason' => 'Төрүөтэ',
+	'authorprotect-intro' => 'Бу форманы туһанан ааптар буолбатах кыттааччылартан сирэйи көмүскээ',
+	'authorprotect-success' => 'Көмүскэл турда!',
+	'authorprotect-failure' => 'Көмүскэли туруорар табыллыбата',
+	'protect-level-author' => 'Ааптар буолбатах дьонтон көмүскэл',
+	'restriction-level-author' => 'Ааптар көмүскэлэ',
+	'right-authorprotect' => 'Ааптар суруйуутун көмүскээһин',
 );
 
 /** Slovak (Slovenčina)

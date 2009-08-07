@@ -194,6 +194,21 @@ $messages['hsb'] = array(
 	'fundraiserportal-tourmaline-close' => 'To wotnětka schować',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'fundraiserportal-plain-button' => 'Támogasd a Wikipédiát!',
+	'fundraiserportal-ruby-button' => 'Adakozz most!',
+	'fundraiserportal-rubytext-button' => 'Adakozz most!',
+	'fundraiserportal-rubytext-message' => 'Minden adomány segít abban, hogy a Wikipédia mindenki számára szabad maradjon.',
+	'fundraiserportal-rubytext-close' => 'Ne jelenjen meg többé',
+	'fundraiserportal-sapphire-button' => 'Adakozz most!',
+	'fundraiserportal-tourmaline-button' => 'Adakozz most!',
+	'fundraiserportal-tourmaline-message' => 'Minden adomány segít abban, hogy a Wikipédia mindenki számára szabad maradjon.',
+	'fundraiserportal-tourmaline-close' => 'Ne jelenjen meg többé',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -335,6 +350,19 @@ $messages['sk'] = array(
 	'fundraiserportal-tourmaline-button' => 'Prispejte teraz',
 	'fundraiserportal-tourmaline-message' => 'Každý dar nám pomáha zachovať Wikipédiu slobodnou pre každého.',
 	'fundraiserportal-tourmaline-close' => 'Odteraz nezobrazovať',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'fundraiserportal-plain-button' => 'వికీపీడియాకి తోడ్పడండి!',
+	'fundraiserportal-ruby-button' => 'విరాళమివ్వండి',
+	'fundraiserportal-rubytext-button' => 'ఇప్పుడే విరాళమివ్వండి',
+	'fundraiserportal-rubytext-message' => 'ప్రతీ విరాళమూ వికీపీడియాని అందరికీ ఉచితంగా ఆందించడానికి సహాయపడుతుంది.',
+	'fundraiserportal-sapphire-button' => 'విరాళమివ్వండి',
+	'fundraiserportal-tourmaline-button' => 'ఇప్పుడే విరాళమివ్వండి',
+	'fundraiserportal-tourmaline-message' => 'ప్రతీ విరాళమూ వికీపీడియాని అందరికీ ఉచితంగా ఆందించడానికి సహాయపడుతుంది.',
 );
 
 /** Turkish (Türkçe)

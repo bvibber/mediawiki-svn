@@ -456,6 +456,7 @@ $messages['eu'] = array(
 	'createsigndoc-bday' => 'Urtebetetzea:',
 	'createsigndoc-minage' => 'Gutxienezko adina:',
 	'createsigndoc-introtext' => 'Sarrera:',
+	'createsigndoc-hidden' => 'Ezkutaturik',
 	'createsigndoc-optional' => 'Hautazkoa',
 	'createsigndoc-create' => 'Sortu',
 	'createsigndoc-error-generic' => 'Errorea: $1',

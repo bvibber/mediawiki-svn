@@ -37,6 +37,7 @@ You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'wah-desc' => '{{desc}}',
@@ -62,6 +63,7 @@ $messages['qqq'] = array(
 	'wah-long-general' => '* $2 is file length (time)
 * $3 is bitrate',
 	'wah-long-error' => '* $1 is error message',
+	'wah-transcode-helpout' => 'You can use PLURAL on $1.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -103,6 +105,7 @@ $messages['eu'] = array(
 	'wah-short-audio' => '$1 soinu fitxategia, $2',
 	'wah-short-video' => '$1 bideo fitxategia, $2',
 	'wah-short-general' => '$1 media fitxategia, $2',
+	'wah-transcode-working' => 'Bideo hau prozesatzen ari da, mesedez, saia zaitez beranduago',
 );
 
 /** French (Français)
@@ -167,6 +170,20 @@ $messages['hsb'] = array(
 	'wah-loading' => 'Začitanje powjercha Wik@Home <blink> ... </blink>',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wah-desc' => 'Permitte le division del carga de transcodification de video inter computatores-clientes per medio de firefogg',
+	'wah-user-desc' => 'Wiki@Home permitte al membros del communicate donar cyclos libere del processator pro adjutar operationes intensive in ressources.',
+	'wah-short-audio' => 'file audio $1, $2',
+	'wah-short-video' => 'file video $1, $2',
+	'wah-short-general' => 'file multimedia $1, $2',
+	'wah-long-audio' => '(file audio $1, durata $2, $3)',
+	'wah-long-video' => '(file video $1, durata $2, $4×$5 pixels, $3)',
+	'wah-long-multiplexed' => '(file audio/video multiplexate, $1, durata $2, $4×$5 pixels, $3 in total)',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -219,8 +236,10 @@ $messages['lb'] = array(
 	'wah-short-video' => '$1 Video-Fichier, $2',
 	'wah-short-general' => '$1 Medie-Fichier, $2',
 	'wah-long-audio' => '($1 Tounfichier, Längt $2, $3)',
+	'wah-long-video' => '($1 Video-Fichier, Längt $2, $4x$5 Pixel, $3)',
 	'wah-long-general' => '(Mediefichier, Längt $2, $3)',
 	'wah-long-error' => '(ffmpeg konnt de Fichier $1 net liesen)',
+	'wah-transcode-working' => 'Dëse Video gëtt elo ëmgewandelt, versicht et spéider w.e.g. nach eng kéier',
 	'wah-transcode-helpout' => 'De Clip ass zu $1 % fäerdeg. Dir kënnt hëllefen dëse Video ze transcdéieren wann Dir [[Special:WikiAtHome|Wiki@Home]] besicht',
 	'wah-transcode-fail' => 'Dëse Fichier konnt net ëmgeschriwwe ginn.',
 	'wah-javascript-off' => 'Dir musst JavaScript zouloossen fir bäi Wiki@Doheem matzemaachen',
@@ -233,6 +252,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'wah-desc' => 'Maakt het mogelijk videotranscoderingwerk te distribueren via firefogg',
+	'wah-user-desc' => 'Wiki@Home maakt het voor gemeenschapsleden mogelijk computertijd te doneren om zo mee te helpen aan het uitvoeren van rekenintensieve taken',
 	'wah-short-audio' => '$1-geluidsbestand, $2',
 	'wah-short-video' => '$1-videobestand, $2',
 	'wah-short-general' => '$1-mediabestand, $2',
@@ -243,9 +263,10 @@ $messages['nl'] = array(
 	'wah-long-error' => '(ffmpeg kon dit bestand niet lezen: $1)',
 	'wah-transcode-working' => 'Deze video wordt verwerkt.
 Probeer het later nog eens.',
-	'wah-transcode-helpout' => 'U kunt helpen dit bestand te transcoderen door naar [[Special:WikiAtHome|Wiki@Home]] te gaan',
+	'wah-transcode-helpout' => 'De clip is $1 procent voltooid.
+U kunt helpen dit bestand te transcoderen door naar [[Special:WikiAtHome|Wiki@Home]] te gaan',
 	'wah-transcode-fail' => 'Het transcoderen van dit bestand is mislukt.',
-	'wah-javascript-off' => 'JavaScript moet ingeschakeld zijn om deel te nemen in Wiki@Home',
+	'wah-javascript-off' => 'JavaScript moet ingeschakeld zijn om deel te nemen aan Wiki@Home',
 	'wah-loading' => 'Wiki@Home-interface aan het laden <blink>...</blink>',
 );
 

@@ -83,6 +83,13 @@ $messages['ksh'] = array(
 	'poolcounter-remote-error' => 'Dä ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde hät dä Fähler „$1“ jemeldt.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'poolcounter-desc' => 'Mediawiki-Client fir de Pool-Counter-Daemon poolcounter.py',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

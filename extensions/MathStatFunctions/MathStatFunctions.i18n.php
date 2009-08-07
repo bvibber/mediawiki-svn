@@ -273,8 +273,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'msfunc_desc' => 'Matematikai és statisztikai függvények gyűjteménye',
 	'msfunc_nan' => 'A kapott érték nem szám',
 	'msfunc_inf' => 'A kapott érték végtelen',
 	'msfunc_div_zero' => 'Nullával való osztás',

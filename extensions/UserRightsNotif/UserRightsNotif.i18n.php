@@ -474,6 +474,23 @@ $2',
 	'userrightsnotif-desc' => 'Sćele wužiwarjam e-mejlowu powěsće při změnjenju prawow',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'userrightsnotifysubject' => 'Csoporttagság változás a $1 oldalon',
+	'userrightsnotifybody' => 'Szia $1!
+
+Tájékoztatlak, hogy a csoporttagságodat a(z) $2 oldalon $3 megváltoztatta. Módosítás ideje: $4.
+
+Hozzáadva: $5
+Eltávolítva: $6
+
+Üdvözlettel,
+$2',
+	'userrightsnotif-desc' => 'E-mail üzenetet küld a felhasználóknak jogosultságaik megváltozásakor',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

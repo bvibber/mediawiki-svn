@@ -3292,3 +3292,10 @@ $messages['vo'] = array(
 	'voctrain_other' => 'votik',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'voctrain_other' => '其他',
+);
+

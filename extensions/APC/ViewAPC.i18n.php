@@ -2185,13 +2185,20 @@ Nowša wersija $2 steji na http://pecl.php.net/package/APC/$2 k dispoziciji.',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'viewapc' => 'APC-információ',
+	'viewapc-desc' => "[[Special:ViewAPC|APC gyorstótár megtekintése és beállítása]] ''MediaWiki''vel",
 	'right-apc' => 'a Special:ViewAPC összes funkciójának használata',
+	'viewapc-apc-not-available' => 'A gyorítótárinformációk nem elérhetőek.
+Úgy tűnik, hogy az APC nem fut.',
 	'viewapc-info-general' => 'Általános információk',
 	'viewapc-apc-version' => 'APC-verzió',
 	'viewapc-php-version' => 'PHP-verzió',
 	'viewapc-shared-memory' => 'Megosztott memória',
+	'viewapc-shared-memory-details' => '{{PLURAL:$1|egy|$1}} $2 méretű szegmens.<br />
+($3 memória, $4 zárolás)',
 	'viewapc-start-time' => 'Futtatás kezdete',
 	'viewapc-uptime' => 'Futási idő',
 	'viewapc-upload-support' => 'Fájlfeltöltés támogatása',
@@ -2204,11 +2211,13 @@ $messages['hu'] = array(
 	'viewapc-requests' => 'Kérési sebesség',
 	'viewapc-hitrate' => 'Találati sebesség',
 	'viewapc-missrate' => 'Hibázási sebesség',
+	'viewapc-insertrate' => 'Bekerülési ráta',
 	'viewapc-rps' => '$1 kérés másodpercenként',
 	'viewapc-info-runtime' => 'Információk: futási idő',
 	'viewapc-info-memory' => 'Állapotdiagramok: kiszolgáló',
 	'viewapc-memory-usage-detailed' => 'Memóriahasználat<br />
 (több szelet a töredezettséget jelzi)',
+	'viewapc-memory-usage' => 'Memóriahasználat',
 	'viewapc-cache-efficiency' => 'Találatok és hibázások',
 	'viewapc-memory-free' => 'Szabad: $1 ($2)',
 	'viewapc-memory-used' => 'Használt: $1 ($2)',
@@ -2217,6 +2226,24 @@ $messages['hu'] = array(
 	'viewapc-memoryfragmentation' => 'Részletes memóriahasználat és töredezettség',
 	'viewapc-fragmentation-info' => 'Töredezettség: $1 ($2 a $3 bájtból {{PLURAL:$4|egy|$4}} darabban)',
 	'viewapc-fragmentation-none' => 'Töredezettség: nincs töredezettség',
+	'viewapc-display-value' => 'Érték',
+	'viewapc-display-filename' => 'Fájlnév',
+	'viewapc-display-device' => 'Eszköz',
+	'viewapc-display-info' => 'Név',
+	'viewapc-display-ttl' => 'Lejárat ideje',
+	'viewapc-display-access_time' => 'Elérve',
+	'viewapc-display-mem_size' => 'Méret',
+	'viewapc-ls-submit' => 'Menj!',
+	'viewapc-ls-header-name' => 'Név',
+	'viewapc-ls-header-hits' => 'Találatok',
+	'viewapc-ls-header-size' => 'Méret',
+	'viewapc-ls-header-accessed' => 'Utoljára elérve',
+	'viewapc-ls-header-modified' => 'Utoljára módosítva',
+	'viewapc-ls-header-deleted' => 'Törölve',
+	'viewapc-ls-scope-active' => 'Aktív',
+	'viewapc-ls-scope-deleted' => 'Törölt',
+	'viewapc-ls-sort-hits' => 'Találatok',
+	'viewapc-ls-limit-none' => 'Mind',
 );
 
 /** Armenian (Հայերեն)

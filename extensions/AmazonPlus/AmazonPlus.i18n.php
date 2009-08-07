@@ -322,6 +322,7 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
@@ -331,7 +332,7 @@ $messages['eu'] = array(
 	'amazonplus-fgcerr' => 'Akatsa: Ezin da daturik lortu Amazonetik!',
 	'amazonplus-slserr' => 'Akatsa: Ezin da daturik parseatu Amazonetik!',
 	'amazonplus-used' => 'erabilia',
-	'amazonplus-german' => 'Alemaniera',
+	'amazonplus-german' => 'Alemana',
 	'amazonplus-french' => 'Frantsesa',
 	'amazonplus-japanese' => 'Japoniera',
 	'amazonplus-amazon' => 'amazon prezioa',

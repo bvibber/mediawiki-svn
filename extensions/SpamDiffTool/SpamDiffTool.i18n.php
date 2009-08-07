@@ -391,6 +391,8 @@ Click <a href='$1'>aquí</a> para regresar.",
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'spamdifftool_no_urls_detected' => "Ez da url-rik detektatu.
+Egizu klik <a href='$1'>hemen</a> itzultzeko.",
 	'spamdifftool_spam_link_text' => 'spamera gehitu',
 	'spamdifftool_option_none' => 'ezer',
 	'spamdifftool_submit_buttom' => 'Bidali',

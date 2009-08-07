@@ -226,6 +226,13 @@ $messages['hsb'] = array(
 	'authors_anonymous' => 'Anonymny',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'authors_anonymous' => 'Névtelen',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -222,6 +222,8 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'linkopenid-desc' => 'Lehetővé teszi a szerkesztők számára, hogy felhasználói fiókjukat egy külső OpenID-hoz csatolják',
+	'linkopenid-prefstext-pre' => 'Ha külső szolgáltatótól van OpenID-d, itt adhatod meg.
+Ez lehetővé teszi, hogy a felhasználói lapodat OpenID-ként is használd.',
 	'linkopenid-prefstext-openid' => 'A te OpenID-d:',
 	'linkopenid-prefstext-v1url' => 'Szerver URL 1.1-es verziójú OpenID-hez:',
 	'linkopenid-prefstext-v2url' => 'Szerver URL 2-es verziójú OpenID-hez:',

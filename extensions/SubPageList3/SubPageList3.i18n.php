@@ -192,6 +192,16 @@ $messages['hsb'] = array(
 	'spl3_nosubpages' => '$1 nima podstrony za lisćinu.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'spl3-desc' => 'Automatikusan listát készít egy lap allapjairól az <code><nowiki><splist /></nowiki></code> tag használatával',
+	'spl3_debug' => 'Ismeretlen érték a(z) $1 beállításhoz.',
+	'spl3_nosubpages' => 'A(z) $1 című lapnak nincsenek allapjai.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

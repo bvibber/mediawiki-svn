@@ -589,6 +589,7 @@ $messages['es'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'review_error' => 'Zerbait oker dago!',
 	'review_total_statistics' => 'Guztira',
 	'review_user_details_link' => '(xehetasunak)',
 	'review_blocked' => 'Blokeatuta zaude eta ezin duzu berrikuspenetan parte hartu.',

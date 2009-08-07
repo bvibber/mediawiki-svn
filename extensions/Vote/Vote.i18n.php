@@ -1369,8 +1369,10 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'vote' => 'Vote',
+	'vote-desc' => "Face ausà 'na capacità semblice pe le sondagge",
 	'vote-header' => "Tu puè vutà pe 'u '''Signore Supreme d'u Munne''' aqquà!",
 	'vote-current' => "'U vote tuje l'è date a '''$1'''.",
+	'vote-legend' => "Chiazze o amende 'u vote",
 	'vote-caption' => "'A seleziona toje:",
 	'vote-choices' => "chicche|Chicche
 checche|Checche

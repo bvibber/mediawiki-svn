@@ -122,6 +122,13 @@ $messages['hsb'] = array(
 	'gotocategory-desc' => 'Pruwuje pytanske zapřijeća přećiwo mjenowemu rumej Kategorija: za funkcionalitu "Dźi k stronje"',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'gotocategory-desc' => "Ellenőrzi a keresett kifejezéseket a 'Kategória'' névtérben a ''Menj!'' (lapra ugrás) funkcióhoz",
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
