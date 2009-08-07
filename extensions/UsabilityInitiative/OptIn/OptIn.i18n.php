@@ -2617,26 +2617,91 @@ $messages['yue'] = array(
 	'optin' => '可用性倡議選入',
 	'optin-desc' => '容許用戶選擇性去加入可用性倡議嘅可用性加強',
 	'optin-needlogin' => '你需要[$1 登入]去加入可用性倡議嘅可用性加強。',
-	'optin-intro' => '維基百科可用性小組開發咗一個新皮同埋一個新編輯工具去加強維基百科嘅可用性。呢啲加強重未響全部用戶開晒，但係你可以撳下面嘅"{{int:optin-submit-in}}"選入。',
+	'optin-title-optedout' => '試吓測試版',
+	'optin-title-optedin' => '離開測試版',
+	'optin-title-justoptedin' => '歡迎來到測試版',
+	'optin-title-justoptedout' => '多謝你去試用測試版',
+	'optin-title-feedback' => '測試版回饋',
+	'optin-needlogin' => '你需要[$1 登入]去試吓測試版。',
+	'optin-intro' => '維基百科可用性小組開發咗一個新皮同埋一個新編輯工具去加強維基百科嘅可用性。
+你係咪想試吓我哋嘅測試版？',
+	'optin-feedback-intro' => "多謝去試用個測試版。
+我哋想知道你對我哋嘅新界面有啲咩睇法，如果你完成下面可選嘅調查，我哋會好樂意接受。",
+	'optin-feedback-back' => '如果你唔想完成下面嘅調查，你可以返去$1。',
 	'optin-success-in' => '你已經成功噉選入到可用性小組嘅可用性加強。
-你可以響任何時間撳下面嘅"{{int:optin-submit-out}}"去選出番去。',
+你可以響任何時間撳上面嘅"{{int:optin-leave}}"去選出番去。',
+	'optin-leave-cancel' => '如果你繼續去用測試版，你可以返去$1。',
 	'optin-success-out' => '你已經成功噉選出到可用性小組嘅可用性加強。
-你可以響任何時間撳下面嘅"{{int:optin-submit-in}}"去選入番去。',
+你可以響任何時間撳上面嘅"{{int:optin-try}}"去選入番去。',
 	'optin-submit-out' => '選出',
+	'optin-success-feedback' => '多謝你嘅回饋！',
+	'optin-accept-short' => '而家就去做！',
+	'optin-accept-long' => '試吓我哋嘅測試版',
+	'optin-accept-long-anon' => '登入試吓測試版',
+	'optin-deny-short' => '唔使喇，多謝',
+	'optin-deny-long' => '返去上一版',
+	'optin-submit-out' => '離開測試版',
+	'optin-submit-feedback' => '畀意見',
+	'optin-try' => '試吓測試版',
+	'optin-leave' => '離開測試版',
+	'optin-feedback' => '測試版回饋',
+	'optin-survey-yes' => '係',
+	'optin-survey-no' => '唔係',
 	'optin-survey-intro' => '多謝你去試用可用性小組嘅可用性加強。
-你可以響任何時間響呢版下面撳"{{int:optin-submit-out}}"去選出。
+你可以響任何時間響呢版上面撳"{{int:optin-leave}}"去選出。
 
-我哋想知道你對呢個新界面嘅諗法，因此我哋會好高興如果你撳"{{int:optin-submit-out}}"之前完成一個可選嘅調查。',
-	'optin-survey-question-whyoptout' => '點解你會選出呢個界面？',
-	'optin-survey-answer-whyoptout-hard' => '太難去編輯一版。',
+我哋想知道你對呢個新界面嘅諗法，因此我哋會好高興如果你撳"[[#leave|{{int:optin-submit-out}}]]"之前完成一個可選嘅調查。',
+	'optin-survey-question-likedislike' => '你對測試版有啲咩鍾意？有啲咩唔鍾意？',
+	'optin-survey-question-whyoptout' => '點解你會選出呢個界面？（揀全部可以用到嘅）',
+	'optin-survey-answer-whyoptout-hard' => '太難去用。',
 	'optin-survey-answer-whyoptout-didntwork' => '唔能夠正確噉操作。',
+	'optin-survey-answer-whyoptout-notpredictable' => '唔能夠做到預期嘅嘢。',
+	'optin-survey-answer-whyoptout-didntlike-look' => '我唔鍾意佢嘅外觀。',
+	'optin-survey-answer-whyoptout-didntlike-layout' => '我唔鍾意個新標籤同埋排版。',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => '我唔鍾意條新工具列。',
 	'optin-survey-answer-whyoptout-other' => '其它原因：',
-	'optin-survey-question-feedback' => '請畀我哋知道你嘅反饋：',
+	'optin-survey-question-explain' => '請解釋或詳述你上面嘅答案：',
+	'optin-survey-question-techfail' => '你響用緊測試版嗰陣，有冇曾經遇過任何嘅技術問題？',
+	'optin-survey-question-techfail-ifyes' => '如果有嘅話，請詳述或者解釋：',
+	'optin-survey-question-usedtoolbar' => '你有冇用過新可擴展嘅工具列去編輯一版？',
+	'optin-survey-question-usedtoolbar-ifyes' => '如果有嘅，你鍾意啲乜？你又唔鍾意啲乜？',
+	'optin-survey-question-usedtoolbar-ifno' => '如果冇嘅，點解唔用？會唔會響將來去用？請解釋一下。',
+	'optin-survey-question-different' => '你響用緊測試版嗰陣，我哋做咗啲乜嘢改變去令到你持續去用佢？',
+	'optin-survey-question-feedback' => '請畀我哋知道你嘅反饋、睇法、同埋諗法 - 全部嘅反饋都係有用嘅！：',
 	'optin-survey-question-browser' => '你用邊隻瀏覽器？',
 	'optin-survey-answer-browser-other' => '其它瀏覽器：',
 	'optin-survey-question-os' => '你用邊套操作系統？',
-	'optin-survey-answer-os-other' => '其它：',
+	'optin-survey-answer-os-other' => '其它操作系統：',
 	'optin-survey-question-res' => '你個螢光幕嘅解像度有幾大？',
+	'optin-survey-question-changes' => '你想響未來，期望對測試版有啲乜嘢改變（揀全部可以用到嘅）？',
+	'optin-survey-answer-changes-nav' => '整到網站嘅整體導航更加容易使用。',
+	'optin-survey-answer-changes-edittools' => '增加同加強編輯工具。',
+	'optin-survey-answer-changes-upload' => '改善內容同媒體上載。',
+	'optin-survey-answer-changes-richtext' => '開發同廣文字編輯器相似嘅編輯工具。',
+	'optin-survey-answer-changes-lookfeel' => '更新網站嘅『樣同感』。',
+	'optin-survey-answer-changes-predictability' => '改善效率預測。',
+	'optin-survey-answer-changes-custom' => '容許更加有彈性嘅用戶自定。',
+	'optin-survey-answer-changes-other' => '其它：',
+	'optin-improvements' => "== 有啲乜改善咗？ ==
+[[File:UsabilityNavigation.png|left|link=]]
+;導航加強
+個新嘅導航系統會更加容易噉令你知道你響邊同做緊啲乜嘢，你可以去邊同埋點樣去嗰度。搵嘢盒放咗響右上角，個搵嘢功能更加容易搵到，又用得快啲。
+<div style=\"clear:both;\"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;編輯欄改進
+新同改善嘅圖示更加清楚睇到每一個工具去做啲乜嘢。可以擴展嘅小節減少混亂，撳一個掣就可以收起啲唔常用嘅工具。
+個幫手小節提供常用wiki語法嘅快捷途徑。
+<div style=\"clear:both;\"></div>
+== 點樣加入 ==
+要知更多有關專案或者加入，請睇吓[http://usability.wikimedia.org Usability Initiative wiki]。
+嗰度你就會搵到我哋嘅准許、研究、設計開發，同埋發佈。
+去問問題或者畀一般回饋，請用我哋嘅[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁]。
+去解決特定嘅標題，請用有關嘅討論版。
+如果你搵到臭蟲，請響[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
+
+多謝，我哋會等待你嘅意見！
+",
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -2645,35 +2710,91 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'optin' => '可用性倡议加入',
-	'optin-desc' => '允许用户使用Usability Initiative测试版提供的最新的可用性增强功能。',
-	'optin-title-optedout' => '使用测试版',
-	'optin-title-optedin' => '退出测试版',
+	'optin-desc' => '允许用户使用Usability Initiative测试版提供的最新的可用性增强功能',
+	'optin-needlogin' => '您需要[$1 登入]去加入可用性倡议的可用性增强。',
+	'optin-title-optedout' => '试用测试版',
+	'optin-title-optedin' => '离开测试版',
 	'optin-title-justoptedin' => '欢迎使用测试版',
 	'optin-title-justoptedout' => '感谢您试用我们的测试版',
 	'optin-title-feedback' => '测试版反馈',
-	'optin-needlogin' => '您需要[$1 登录]后才能试用测试版。',
+	'optin-needlogin' => '你需要[$1 登录]才能试用测试版。',
 	'optin-intro' => '维基百科可用性小组正在努力改善维基百科的可用性。你想尝试下我们的测试版吗？',
-	'optin-feedback-intro' => '感谢您试用测试版。
-我们希望了解到您对我们新界面的意见，望阁下不吝笔墨填写下方的调查表。',
+	'optin-feedback-intro' => "感谢您试用测试版。
+我们希望了解到您对我们新界面的意见，望阁下不吝笔墨填写下方的调查表。",
 	'optin-feedback-back' => '如果您不愿意填写调查表，您可以返回到$1。',
 	'optin-success-in' => '您现在正在试用测试版。
 您随时都可点击屏幕顶部的“{{int:optin-leave}}”返回。',
 	'optin-success-out' => '您已成功退出测试版。
 您随时都可点击屏幕右上角的“{{int:optin-try}}”再次试用。',
 	'optin-submit-out' => '退出测试版',
+	'optin-success-feedback' => '多谢你的反馈！',
+	'optin-accept-short' => '现在就去做！',
+	'optin-accept-long' => '试试我们的测试版',
+	'optin-accept-long-anon' => '登入试用测试版',
+	'optin-deny-short' => '不用了，多谢',
+	'optin-deny-long' => '回到上一页',
+	'optin-submit-out' => '离开测试版',
+	'optin-submit-feedback' => '给意见',
+	'optin-try' => '试试测试版',
+	'optin-leave' => '离开测试版',
+	'optin-feedback' => '测试版反馈',
+	'optin-survey-yes' => '是',
+	'optin-survey-no' => '否',
 	'optin-survey-intro' => '感谢您试用测试版。
+您可以随时点击上面的"{{int:optin-leave}}"去退出。
+
 我们希望了解到您对我们新界面的意见，希望您在单击“[[#leave|{{int:optin-submit-out}}]]”前不吝笔墨填写下方的调查表。',
-	'optin-survey-question-whyoptout' => '为什么您会退出测试版？',
+	'optin-survey-question-likedislike' => '您对测试版有什么喜欢？有什么不喜欢？',
+	'optin-survey-question-whyoptout' => '为什么您会退出测试版？（选全部应用到的）',
 	'optin-survey-answer-whyoptout-hard' => '难以使用。',
 	'optin-survey-answer-whyoptout-didntwork' => '运行不正常。',
-	'optin-survey-answer-whyoptout-other' => '其他原因：',
+	'optin-survey-answer-whyoptout-notpredictable' => '不能做到预期的事。',
+	'optin-survey-answer-whyoptout-didntlike-look' => '我不喜欢它的外观。',
+	'optin-survey-answer-whyoptout-didntlike-layout' => '我不喜欢它的新标签以及排版。',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => '我不喜欢它的新工具列。',
+	'optin-survey-answer-whyoptout-other' => '其它原因：',
+	'optin-survey-question-explain' => '请解释或详述您以上之答案：',
+	'optin-survey-question-techfail' => '您在使用测试版时，有没有曾经遇过任何的技术问题？',
+	'optin-survey-question-techfail-ifyes' => '如果有的话，请详述或者解释：',
+	'optin-survey-question-usedtoolbar' => '您有没有用过新可扩展的工具列去编辑一个页面？',
+	'optin-survey-question-usedtoolbar-ifyes' => '如果有的话，您喜欢什么？您又不喜欢什么？',
+	'optin-survey-question-usedtoolbar-ifno' => '如果没有的话，为什么不去用？会否在将来去用？请解释一下。',
+	'optin-survey-question-different' => '您在用测试版时，我们做了什么事改变去令到你持续使用它？',
 	'optin-survey-question-feedback' => '如果您对我们还有其他意见，也请让我们知晓——所有反馈都很有用处！：',
 	'optin-survey-question-browser' => '您使用的浏览器是？',
 	'optin-survey-answer-browser-other' => '其它浏览器：',
 	'optin-survey-question-os' => '您使用的操作系统是？',
 	'optin-survey-answer-os-other' => '其他操作系统：',
 	'optin-survey-question-res' => '您的屏幕分辨率有多大？',
-	'optin-survey-answer-changes-other' => '其他：',
+	'optin-survey-question-changes' => '您想在未来中，期望对测试版有什么改变（选全部应用到的）？',
+	'optin-survey-answer-changes-nav' => '令网站的整体导航更加容易使用。',
+	'optin-survey-answer-changes-edittools' => '增加和加强编辑工具。',
+	'optin-survey-answer-changes-upload' => '改善内容和媒体上载。',
+	'optin-survey-answer-changes-richtext' => '开发与广文字编辑器相似的编辑工具。',
+	'optin-survey-answer-changes-lookfeel' => '更新网站的『样式与感受』。',
+	'optin-survey-answer-changes-predictability' => '改善效率预测。',
+	'optin-survey-answer-changes-custom' => '容许更加有弹性的用户自定。',
+	'optin-survey-answer-changes-other' => '其它：',
+	'optin-improvements' => "== 有什么改善什？ ==
+[[File:UsabilityNavigation.png|left|link=]]
+;导航加强
+新的导航系统会更加容易地令您知道您在哪里以及正在做什么，您可以去哪里以及怎样哪里。搜寻方块放在右上角，令它的功能更加容易找到，使用得更快。
+<div style=\"clear:both;\"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;编辑栏改进
+新和改善的图标更加清楚看见每一个工具去做什么。可以扩展的小节减少混乱，点击一个按钮就可以隐藏一些不常用的工具。
+而帮助小节提供常用wiki语法的快捷途径。
+<div style=\"clear:both;\"></div>
+== 怎样加入 ==
+要知更多有关专案或者加入，请参阅[http://usability.wikimedia.org Usability Initiative wiki]。
+在哪里您就会找到我们的准许、研究、设计开发，以及发布。
+去问问题或者给予一般反馈，请用我们的[http://usability.wikimedia.org/wiki/Talk:Prototype 模型讨论页面]。
+去解决特定的主题，请用有关的讨论页面。
+如果您找到臭虫，请在[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai发布讨论版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
+
+多谢，我们会等待您的意见！
+",
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -2683,25 +2804,88 @@ $messages['zh-hant'] = array(
 	'optin' => '可用性倡議加入',
 	'optin-desc' => '容許用戶選擇性去加入可用性倡議的可用性增強',
 	'optin-needlogin' => '您需要[$1 登入]去加入可用性倡議的可用性增強。',
+	'optin-title-optedout' => '試用測試版',
+	'optin-title-optedin' => '離開測試版',
+	'optin-title-justoptedin' => '歡迎來到測試版',
+	'optin-title-justoptedout' => '多謝你去試用測試版',
+	'optin-title-feedback' => '測試版回饋',
+	'optin-needlogin' => '你需要[$1 登入]去試用測試版。',
 	'optin-intro' => '維基百科可用性小組開發了一個新皮膚和一個新的編輯工具去加強維基百科的可用性。這些增強還未對全部用戶開放，但是您可以點擊下面的"{{int:optin-submit-in}}"加入。',
+	'optin-feedback-intro' => "多謝去試用這個測試版。
+我們想知道你對我們的新界面有何看法，如果你完成下面可選的調查，我們會好樂意接受。",
+	'optin-feedback-back' => '如果你不想完成下面嘅調查，你可以回到$1。',
 	'optin-success-in' => '您已經成功地加入到可用性小組的可用性增強。
-您可以隨時點擊下面的"{{int:optin-submit-out}}"去退出。',
+您可以隨時點擊上面的"{{int:ooptin-leave}}"去退出。',
 	'optin-success-out' => '您已經成功地退出自可用性小組的可用性增強。
-您可以隨時點擊下面的"{{int:optin-submit-in}}"去加入。',
+您可以隨時點擊上面的"{{int:optin-try}}"去加入。',
 	'optin-submit-out' => '退出',
+	'optin-success-feedback' => '多謝你的回饋！',
+	'optin-accept-short' => '現在就去做！',
+	'optin-accept-long' => '試試我們的測試版',
+	'optin-accept-long-anon' => '登入試用測試版',
+	'optin-deny-short' => '不用了，多謝',
+	'optin-deny-long' => '回到上一頁',
+	'optin-submit-out' => '離開測試版',
+	'optin-submit-feedback' => '給意見',
+	'optin-try' => '試試測試版',
+	'optin-leave' => '離開測試版',
+	'optin-feedback' => '測試版回饋',
+	'optin-survey-yes' => '是',
+	'optin-survey-no' => '否',
 	'optin-survey-intro' => '多謝您去試用可用性小組的可用性增強。
-您可以隨時點擊下面的"{{int:optin-submit-out}}"去退出。
+您可以隨時點擊上面的"{{int:optin-leave}}"去退出。
 
-我們想知道您對這個新界面的想法，因此我們會好高興如果您在點擊"{{int:optin-submit-out}}"之前完成一個可選的調查。',
-	'optin-survey-question-whyoptout' => '為什麼您會退出這個界面？',
-	'optin-survey-answer-whyoptout-hard' => '太難去編輯一個頁面。',
+我們想知道您對這個新界面的想法，因此我們會好高興如果您在點擊"[[#leave|{{int:optin-submit-out}}]]"之前完成一個可選的調查。',
+	'optin-survey-question-likedislike' => '您對測試版有什麼喜歡？有什麼不喜歡？',
+	'optin-survey-question-whyoptout' => '為什麼您會退出這個界面？（選全部應用到的）',
+	'optin-survey-answer-whyoptout-hard' => '太難去使用。',
 	'optin-survey-answer-whyoptout-didntwork' => '不能正確地操作。',
+	'optin-survey-answer-whyoptout-notpredictable' => '不能做到預期的事。',
+	'optin-survey-answer-whyoptout-didntlike-look' => '我不喜歡它的外觀。',
+	'optin-survey-answer-whyoptout-didntlike-layout' => '我不喜歡它的新標籤以及排版。',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => '我不喜歡它的新工具列。',
 	'optin-survey-answer-whyoptout-other' => '其它原因：',
-	'optin-survey-question-feedback' => '請給我們知道您的反饋：',
-	'optin-survey-question-browser' => '您用那款瀏覽器？',
+	'optin-survey-question-explain' => '請解釋或詳述您以上之答案：',
+	'optin-survey-question-techfail' => '您在使用測試版時，有沒有曾經遇過任何的技術問題？',
+	'optin-survey-question-techfail-ifyes' => '如果有的話，請詳述或者解釋：',
+	'optin-survey-question-usedtoolbar' => '您有沒有用過新可擴展的工具列去編輯一個頁面？',
+	'optin-survey-question-usedtoolbar-ifyes' => '如果有的話，您喜歡什麼？您又不喜歡什麼？',
+	'optin-survey-question-usedtoolbar-ifno' => '如果沒有的話，為什麼不去用？會否在將來去用？請解釋一下。',
+	'optin-survey-question-different' => '您在用測試版時，我們做了什麼事改變去令到你持續使用它？',
+	'optin-survey-question-feedback' => '請給我們知道你的反饋、看法、以及想法 - 全部的反饋都是有用的！：',
+	'optin-survey-question-browser' => '您用哪款瀏覽器？',
 	'optin-survey-answer-browser-other' => '其它瀏覽器：',
 	'optin-survey-question-os' => '您用哪套操作系統？',
-	'optin-survey-answer-os-other' => '其它：',
+	'optin-survey-answer-os-other' => '其它操作系統：',
 	'optin-survey-question-res' => '您的屏幕解像度之大小有多大？',
+	'optin-survey-question-changes' => '您想在未來中，期望對測試版有什麼改變（選全部應用到的）？',
+	'optin-survey-answer-changes-nav' => '令網站的整體導航更加容易使用。',
+	'optin-survey-answer-changes-edittools' => '增加和加強編輯工具。',
+	'optin-survey-answer-changes-upload' => '改善內容和媒體上載。',
+	'optin-survey-answer-changes-richtext' => '開發與廣文字編輯器相似的編輯工具。',
+	'optin-survey-answer-changes-lookfeel' => '更新網站的『樣式與感受』。',
+	'optin-survey-answer-changes-predictability' => '改善效率預測。',
+	'optin-survey-answer-changes-custom' => '容許更加有彈性的用戶自定。',
+	'optin-survey-answer-changes-other' => '其它：',
+	'optin-improvements' => "== 有什麼改善什？ ==
+[[File:UsabilityNavigation.png|left|link=]]
+;導航加強
+新的導航系統會更加容易地令您知道您在哪裏以及正在做什麼，您可以去哪裏以及怎樣哪裏。搜尋方塊放在右上角，令它的功能更加容易找到，使用得更快。
+<div style=\"clear:both;\"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;編輯欄改進
+新和改善的圖示更加清楚看見每一個工具去做什麼。可以擴展的小節減少混亂，點擊一個按鈕就可以隱藏一些不常用的工具。
+而幫助小節提供常用wiki語法的快捷途徑。
+<div style=\"clear:both;\"></div>
+== 怎樣加入 ==
+要知更多有關專案或者加入，請參閱[http://usability.wikimedia.org Usability Initiative wiki]。
+在那裏您就會找到我們的准許、研究、設計開發，以及發佈。
+去問問題或者給予一般回饋，請用我們的[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁面]。
+去解決特定的主題，請用有關的討論頁面。
+如果您找到臭蟲，請在[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
+
+多謝，我們會等待您的意見！
+",
 );
 
