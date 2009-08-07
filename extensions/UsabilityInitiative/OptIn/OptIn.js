@@ -29,7 +29,19 @@ js2AddOnloadHook( function() {
 	var browserIndex = 'other';
 	switch ( $j.browser.name ) {
 		case 'msie':
-			browserIndex = 'ie'+ parseInt( $j.browser.versionNumber );
+			if ( parseInt( $j.browser.versionNumber ) == 7 ) {
+				// IE7 or IE8 compat mode
+				if( document.documentMode ) {
+					// IE8 supports Document mode
+					browserIndex = 'ie8';
+				} else {
+					// while IE7 does not support it
+					browserIndex = 'ie7';
+				}
+			} else {
+				// other versions
+				browserIndex = 'ie'+ parseInt( $j.browser.versionNumber );
+			}
 		break;
 		case 'firefox':
 			browserIndex = 'ff' + parseInt( $j.browser.versionNumber );
