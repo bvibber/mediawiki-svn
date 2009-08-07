@@ -36,7 +36,7 @@ class SpecialOptIn extends SpecialPage {
 		global $wgOptInPrefs, $wgUser, $wgRequest;
 		
 		// Don't allow anything to actually change without a matching token
-		if ( $wgUser->editToken() == $wgRequest->getText( 'token' ) ) {
+		if ( $wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
 			foreach ( $wgOptInPrefs as $pref => $value ) {
 				$user->setOption( $pref, $value );
 			}
@@ -48,7 +48,7 @@ class SpecialOptIn extends SpecialPage {
 		global $wgOptInPrefs, $wgUser, $wgRequest;
 		
 		// Don't allow anything to actually change without a matching token
-		if ( $wgUser->editToken() == $wgRequest->getText( 'token' ) ) {
+		if ( $wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
 			foreach ( $wgOptInPrefs as $pref => $value ) {
 				$user->setOption( $pref, null );
 			}
