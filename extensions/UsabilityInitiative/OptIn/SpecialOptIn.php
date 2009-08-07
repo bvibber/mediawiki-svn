@@ -75,7 +75,7 @@ class SpecialOptIn extends SpecialPage {
 			$this->mOriginLink = $wgUser->getSkin()->link(
 				$this->mOriginTitle, null, array(),
 				$this->mOriginQuery );
-			$this->mOriginURL = $this->mOriginTitle->getFullURL(
+			$this->mOriginURL = $this->mOriginTitle->getLinkUrl(
 				$this->mOriginQuery );
 		}
 		$this->setHeaders();
@@ -113,7 +113,7 @@ class SpecialOptIn extends SpecialPage {
 				UsabilityInitiativeHooks::initialize();
 				UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
 					$wgOptInStyleVersion );
-				$url = $this->getTitle()->getFullURL();
+				$url = $this->getTitle()->getLinkUrl();
 				$wgOut->addHTML( Xml::tags( 'script',
 					array( 'type' => $wgJsMimeType ),
 					"js2AddOnloadHook(function() { \$j.post( \"$url\", optInGetPOSTData() ); } );"
@@ -185,9 +185,9 @@ class SpecialOptIn extends SpecialPage {
 			'token' => $wgUser->editToken(),
 		);
 		if ( $wgUser->isLoggedIn() )
-			$url = $this->getTitle()->getFullURL( $query );
+			$url = $this->getTitle()->getLinkUrl( $query );
 		else
-			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
+			$url = SpecialPage::getTitleFor( 'Userlogin' )->getLinkUrl(
 				array(	'returnto' => $this->getTitle(),
 					'returntoquery' => wfArrayToCGI( $query )
 				) );
