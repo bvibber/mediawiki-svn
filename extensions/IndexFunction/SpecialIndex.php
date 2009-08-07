@@ -26,8 +26,9 @@ class SpecialIndexPager extends AlphabeticPager {
 			return $ret;
 		} else {
 			$ret = Xml::openElement( 'tr' );
+			$targettitle = Title::makeTitle( $row->ns, $row->title );
 			$title = SpecialPage::getTitleFor( 'Index', $row->title );
-			$link = $sk->link( $title, $row->title, array( 'class'=>'mw-index' ), array(), array( 'known', 'noclasses' ) );
+			$link = $sk->link( $title, $targettitle->getPrefixedText(), array( 'class'=>'mw-index' ), array(), array( 'known', 'noclasses' ) );
 			
 			$jsid = $this->mJSid;
 			$expandTitle = wfMsgHtml( 'index-expand-detail' );
