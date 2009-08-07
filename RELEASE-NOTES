@@ -204,6 +204,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   not have the 'userrights' permission.
 * Log in and log out links no longer return to page view when clicked from
   history view, edit page, or something similar
+* (bug 18708) CSS plainlinks class now available to all skins
 
 == API changes in 1.16 ==
 
