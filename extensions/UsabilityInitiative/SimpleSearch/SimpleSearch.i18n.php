@@ -343,6 +343,15 @@ $messages['vec'] = array(
 	'simplesearch-search' => 'Serca',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'simplesearch' => '簡單搵嘢',
+	'simplesearch-desc' => '加額外功能到Vector嘅簡單搵嘢度',
+	'simplesearch-search' => '搵嘢',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author PhiLiP
  */
@@ -350,5 +359,14 @@ $messages['zh-hans'] = array(
 	'simplesearch' => '简易搜索',
 	'simplesearch-desc' => '向Vector的简化搜索中添加附加功能',
 	'simplesearch-search' => '搜索',
+);
+
+/** Traditional Cantonese
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'simplesearch' => '簡易搜尋',
+	'simplesearch-desc' => '向Vector的簡化搜尋中增加附加功能',
+	'simplesearch-search' => '搜尋',
 );
 

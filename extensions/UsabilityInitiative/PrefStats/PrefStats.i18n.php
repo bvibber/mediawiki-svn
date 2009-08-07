@@ -493,6 +493,7 @@ $messages['yue'] = array(
 	'prefstats-title' => '喜好統計',
 	'prefstats-list-intro' => '直到而家，下面嘅喜好設定會追蹤落來。
 撳其中一樣去睇有關佢嘅統計。',
+	'prefstats-noprefs' => '無喜好可以追蹤得到。設定 $wgPrefStatsTrackPrefs 去追蹤喜好。',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -502,8 +503,9 @@ $messages['zh-hans'] = array(
 	'prefstats' => '喜好统计',
 	'prefstats-desc' => '追踪统计，有多少用户启用了特定的设置',
 	'prefstats-title' => '喜好统计',
-	'prefstats-list-intro' => '直到现时，以下的喜好设置会追踪下来。
-点击其中一种设置去查看有关它的统计。',
+'prefstats-list-intro' => '直到现时，以下的喜好设置会追踪下来。
+	点击其中一种设置去查看有关它的统计。',
+	'prefstats-noprefs' => '无喜好可供追踪。设置 $wgPrefStatsTrackPrefs 去追踪喜好。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -515,5 +517,6 @@ $messages['zh-hant'] = array(
 	'prefstats-title' => '喜好統計',
 	'prefstats-list-intro' => '直到現時，以下的喜好設定會追蹤下來。
 點擊其中一種設定去查看有關它的統計。',
+	'prefstats-noprefs' => '無喜好可供追蹤。設定 $wgPrefStatsTrackPrefs 去追蹤喜好。',
 );
 
