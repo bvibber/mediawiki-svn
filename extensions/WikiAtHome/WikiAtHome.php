@@ -83,6 +83,7 @@ class WikiAtHome {
 	    'noUpscaling'		=> "--no-upscaling",
 	  	'videoQuality'		=> "-v",
 		'videoBitrate'		=> "-V",
+		'twopass'			=> "--two-pass",
 		'framerate'			=> "-F",
 		'aspect'			=> "--aspect",
 		'starttime'			=> "--starttime",
@@ -155,7 +156,7 @@ function wahDoEncode($source, $target, $encodeSettings ){
 		if( isset( $wah->foggMap[$key] ) ){
 			if( is_array(  $wah->foggMap[$key] ) ){
 				$cmd.= ' '. implode(' ', $wah->foggMap[$key] );
-			}else if($val == 'true'|| $val===true){
+			}else if($val == 'true' || $val===true){
 		 		$cmd.= ' '. $wah->foggMap[$key];
 			}else if( $val === false){
 				//ignore "false" flags
@@ -273,14 +274,16 @@ $wgDerivativeSettings[ WikiAtHome::ENC_SAVE_BANDWITH ] =
 			'framerate'		=> '15',
 			'channels'		=> '1',
 			'maxSize'		=> '200',
-			'noUpscaling'	=> 'true'
+			'noUpscaling'	=> 'true',
+			'twopass'		=> 'true'
 		);
 $wgDerivativeSettings[ WikiAtHome::ENC_WEB_STREAM ] =
 		array(
 			'maxSize'		=> '400',
 			'videoBitrate'	=> '512',
 			'audioBitrate'	=> '96',
-			'noUpscaling'	=> 'true'
+			'noUpscaling'	=> 'true',
+			'twopass'		=> 'true'
 		);
 
 $wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
