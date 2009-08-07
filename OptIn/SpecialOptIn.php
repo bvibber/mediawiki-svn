@@ -113,11 +113,15 @@ class SpecialOptIn extends SpecialPage {
 				UsabilityInitiativeHooks::initialize();
 				UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
 					$wgOptInStyleVersion );
+				/*
+				 * What the hell does this do?
+				 * 
 				$url = $this->getTitle()->getLinkUrl();
 				$wgOut->addHTML( Xml::tags( 'script',
 					array( 'type' => $wgJsMimeType ),
 					"js2AddOnloadHook(function() { \$j.post( \"$url\", optInGetPOSTData() ); } );"
 				) );
+				*/
 			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' ) {
 				if ( $wgRequest->wasPosted() ) {
 					$this->saveSurvey( $wgOptInFeedBackSurvey,
