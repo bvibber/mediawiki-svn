@@ -72,8 +72,8 @@ function efIndexUpdateSchema() {
 }
 
 function efIndexJS( &$out, &$sk ) {
-	$t = $out->getTitle();
-	if ( $t->getPrefixedText() == SpecialPage::getTitleFor( 'Index' )->getPrefixedText() ) {
+	global $wgTitle;
+	if ( $wgTitle->getPrefixedText() == SpecialPage::getTitleFor( 'Index' )->getPrefixedText() ) {
 		global $wgScriptPath;
 		$tag = Xml::element( 'script',
 			array( 'type'=>'text/javascript', 'src'=>"$wgScriptPath/extensions/IndexFunction/specialindex.js" ),
