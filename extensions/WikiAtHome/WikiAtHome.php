@@ -268,22 +268,24 @@ $wgEnabledDerivatives = array(
 //if you want to re-derive things you should change its key above in the WikiAtHome class
 $wgDerivativeSettings[ WikiAtHome::ENC_SAVE_BANDWITH ] =
 		array(
-			'videoBitrate'	=> '128',
-			'audioBitrate'	=> '32',
-			'samplerate'	=> '22050',
-			'framerate'		=> '15',
-			'channels'		=> '1',
-			'maxSize'		=> '200',
-			'noUpscaling'	=> 'true',
-			'twopass'		=> 'true'
+			'videoBitrate'		=> '128',
+			'audioBitrate'		=> '32',
+			'samplerate'		=> '22050',
+			'framerate'			=> '15',
+			'channels'			=> '1',
+			'maxSize'			=> '200',
+			'noUpscaling'		=> 'true',
+			'twopass'			=> 'true',
+			'keyframeInterval'	=> '64'
 		);
 $wgDerivativeSettings[ WikiAtHome::ENC_WEB_STREAM ] =
 		array(
-			'maxSize'		=> '400',
-			'videoBitrate'	=> '512',
-			'audioBitrate'	=> '96',
-			'noUpscaling'	=> 'true',
-			'twopass'		=> 'true'
+			'maxSize'			=> '400',
+			'videoBitrate'		=> '512',
+			'audioBitrate'		=> '96',
+			'noUpscaling'		=> 'true',
+			'twopass'			=> 'true',
+			'keyframeInterval'	=> '128'
 		);
 
 $wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
