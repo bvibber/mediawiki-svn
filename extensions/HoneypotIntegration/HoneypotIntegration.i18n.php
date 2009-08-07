@@ -17,10 +17,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'honeypot-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'honeypot-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -57,9 +58,10 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Demicx
  */
 $messages['bs'] = array(
-	'honeypot-desc' => 'Omogućuje intergraciju sa [http://projecthoneypot.org/ projektom Honey Pot] za MedijaViki sajtove',
+	'honeypot-desc' => 'Omogućuje intergraciju sa [http://projecthoneypot.org/ projektom Honey Pot] za MediaWiki stranice',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Broj nedavnih događaja koja je IP adresa pokrenula, u skladu s projektom Honey Pot',
 );
 
@@ -135,6 +137,13 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'honeypot-desc' => 'Provide integration con le [http://projecthoneypot.org/ projecto Honey Pot] pro sitos MediaWiki',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Numero de eventos recente que iste adresse IP ha causate, secundo le projecto Honey Pot',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'honeypot-desc' => 'Menyediakan integrasi dengan [http://projecthoneypot.org/ Proyek Honey Pot] untuk situs-situs MediaWiki',
 );
 
 /** Italian (Italiano)

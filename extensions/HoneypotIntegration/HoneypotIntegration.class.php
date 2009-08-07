@@ -218,7 +218,7 @@ class HoneypotIntegration {
 			$logid = $rc->getAttribute( 'rc_logid' );
 			$rcid = $rc->getAttribute( 'rc_id' );
 			
-			wfDebugLog( 'HoneypotHit', "$ip is listed in honeypot data. ".
+			wfDebugLog( 'HoneypotIntegrationMatches', "$ip is listed in honeypot data. ".
 						"$user made RCID $rcid REVID $revid LOGID $logid." );
 		}
 		
