@@ -200,6 +200,14 @@ $messages['tr'] = array(
 	'navigabletoc-desc' => 'Değişiklik formuna, bir bölüm tıklandığında metin kutusunu kaydıran, bir içindekiler listesi ekler',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'navigabletoc' => 'Mục lục dễ duyệt tìm',
+	'navigabletoc-desc' => 'Thêm bảng mục lục vào khung sửa đổi để cuộn hộp văn bản khi nhấn vào một đề mục',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

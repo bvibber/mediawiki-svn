@@ -113,6 +113,14 @@ $messages['hsb'] = array(
 	'usabilityinitiative-desc' => 'Funkcije, wuwity přez iniciatiwu wužiwajomnosće Wikipedije, za polěpšenje wužiwajomnosće MediaWiki',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'usabilityinitiative' => 'Usability Initiative',
+	'usabilityinitiative-desc' => 'A Wikipedia Usability Initiative által kifejlesztett funkciók a MediaWiki használhatóságának javítására.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -240,6 +248,14 @@ $messages['sk'] = array(
 $messages['tr'] = array(
 	'usabilityinitiative' => 'Kullanılabilirlik Girişimi',
 	'usabilityinitiative-desc' => "Vikipedi Kullanılabilirlik Girişimi tarafından MedyaViki'nin kullanılabilirliğini artırmak için geliştirilen özellikler",
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'usabilityinitiative' => 'Sáng kiến Khả dụng',
+	'usabilityinitiative-desc' => 'Các tính năng do Sáng kiến Khả dụng Wikipedia phát triển để tăng cường tính khả dụng của MediaWiki',
 );
 
 /** Yue (粵語)
