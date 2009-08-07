@@ -11,12 +11,14 @@ $messages['en'] = array(
 	'indexfunc-desc' => 'Parser function to create automatic redirects and disambiguation pages',
 
 	'indexfunc-badtitle' => 'Invalid title: "$1"',
-	'indexfunc-editwarning' => 'Warning: This title is an index title for the following {{PLURAL:$2|page|pages}}:
+	'indexfunc-editwarning' => 'Warning:
+This title is an index title for the following {{PLURAL:$2|page|pages}}:
 $1
 Be sure the page you are about to create does not already exist under a different title.
 If you create this page, remove this title from the <nowiki>{{#index:}}</nowiki> on the above {{PLURAL:$2|page|pages}}.',
 	'indexfunc-index-exists' => 'The page "$1" already exists',
-	'indexfunc-movewarn' => 'Warning: "$1" is an index title for the following {{PLURAL:$3|page|pages}}:
+	'indexfunc-movewarn' => 'Warning:
+"$1" is an index title for the following {{PLURAL:$3|page|pages}}:
 $2
 Please remove "$1" from the <nowiki>{{#index:}}</nowiki> on the above {{PLURAL:$3|page|pages}}.',
 
@@ -33,7 +35,8 @@ Please remove "$1" from the <nowiki>{{#index:}}</nowiki> on the above {{PLURAL:$
 	'index-search-explain' => 'This page uses a prefix search. 
 	
 Type the first few characters and press the submit button to search for page titles and index entries that start with the search string',
-	'index-details-explain' => 'Entries with arrows are index entries, click the arrow to show all pages indexed under that title.',
+	'index-details-explain' => 'Entries with arrows are index entries.
+Click the arrow to show all pages indexed under that title.',
 );
 
 /** Message documentation (Message documentation)
