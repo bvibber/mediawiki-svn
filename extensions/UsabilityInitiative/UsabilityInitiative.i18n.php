@@ -113,6 +113,14 @@ $messages['hsb'] = array(
 	'usabilityinitiative-desc' => 'Funkcije, wuwity přez iniciatiwu wužiwajomnosće Wikipedije, za polěpšenje wužiwajomnosće MediaWiki',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'usabilityinitiative' => 'Usability Initiative',
+	'usabilityinitiative-desc' => 'A Wikipedia Usability Initiative által kifejlesztett funkciók a MediaWiki használhatóságának javítására.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -242,6 +250,14 @@ $messages['tr'] = array(
 	'usabilityinitiative-desc' => "Vikipedi Kullanılabilirlik Girişimi tarafından MedyaViki'nin kullanılabilirliğini artırmak için geliştirilen özellikler",
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'usabilityinitiative' => 'Sáng kiến Khả dụng',
+	'usabilityinitiative-desc' => 'Các tính năng do Sáng kiến Khả dụng Wikipedia phát triển để tăng cường tính khả dụng của MediaWiki',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */
@@ -251,18 +267,19 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'usabilityinitiative' => '可用性倡议',
-	'usabilityinitiative-desc' => '由维基百科可用性小组增强MediaWiki的可用性',
+	'usabilityinitiative' => 'Usability Initiative',
+	'usabilityinitiative-desc' => '由维基百科可用性小组开发的新功能，用以增强MediaWiki的可用性',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'usabilityinitiative' => '可用性倡議',
-	'usabilityinitiative-desc' => '由維基百科可用性小組增強MediaWiki的可用性',
+	'usabilityinitiative' => 'Usability Initiative',
+	'usabilityinitiative-desc' => '由維基百科可用性小組開發的新功能，用以增強MediaWiki的可用性',
 );
 
