@@ -43,8 +43,11 @@ class OptInHooks {
 		// Loads opt-in messages
 		wfLoadExtensionMessages( 'OptIn' );
 		
-		$fromquery = $wgRequest->getValues();
-		unset( $fromquery['title'] );
+		$fromquery = array();
+		if ( !( $wgRequest->wasPosted() ) ) {
+			$fromquery = $wgRequest->getValues();
+			unset( $fromquery['title'] );
+		}
 		$query = array(	'from' => $title->getPrefixedDBKey(),
 				'fromquery' => wfArrayToCGI( $fromquery )
 		);
