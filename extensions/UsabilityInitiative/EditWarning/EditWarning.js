@@ -1,9 +1,6 @@
 /* JavaScript for EditWarning extension */
 
 js2AddOnloadHook( function() {
-	// Only use this function in conjuction with the Vector skin
-	if( skin != 'vector' )
-		return;
 	// Get the original values of some form elements
 	$j( '#wpTextbox1, #wpSummary' ).each( function() {
 		$j(this).data( 'origtext', $j(this).val() );
