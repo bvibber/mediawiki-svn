@@ -22,7 +22,7 @@
 if ( !defined( 'MEDIAWIKI' ) )                     die( 'Not an entry point.' );
 if ( version_compare( $wgVersion, '1.12.0' ) < 0 ) die( 'Sorry, this extension requires at least MediaWiki version 1.12.0' );
 
-define( 'SIMPLESECURITY_VERSION', '4.3.4, 2009-07-29' );
+define( 'SIMPLESECURITY_VERSION', '4.3.5, 2009-08-08' );
 
 # Load the SimpleSecurity class and messages
 $dir = dirname( __FILE__ ) . '/';

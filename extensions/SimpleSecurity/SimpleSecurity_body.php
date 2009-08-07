@@ -20,10 +20,10 @@ class SimpleSecurity {
 
 		# Add our hooks
 		$wgHooks['UserGetRights'][] = $this;
+		$wgHooks['OutputPageBeforeHTML'][] = $this;
 		if ( $wgSecurityMagicIf )    $wgParser->setFunctionHook( $wgSecurityMagicIf,    array( $this, 'ifUserCan' ) );
 		if ( $wgSecurityMagicGroup ) $wgParser->setFunctionHook( $wgSecurityMagicGroup, array( $this, 'ifGroup' ) );
 		if ( $wgSecurityAllowUnreadableLinks ) $wgHooks['BeforePageDisplay'][] = $this;
-		if ( $wgSecurityRenderInfo )           $wgHooks['OutputPageBeforeHTML'][] = $this;
 
 		# Add a new log type
 		$wgLogTypes[]                  = 'security';
@@ -105,44 +105,51 @@ class SimpleSecurity {
 
 	/**
 	 * Render security info if any restrictions on this title
+	 * Also make restricted pages not archive by robots
 	 */
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
-		global $wgUser, $wgTitle;
-
+		global $wgUser, $wgTitle, $wgSecurityRenderInfo;
 		$title = $wgTitle;
-		# Render security info if any
+
+		# Any restrictions?
 		if ( is_object( $title ) && $title->exists() && count( $this->info['LS'] ) + count( $this->info['PR'] ) ) {
 
-			$rights = $wgUser->getRights();
-			$title->getRestrictions( false );
-			$reqgroups = $title->mRestrictions;
-			$sysop = in_array( 'sysop', $wgUser->getGroups() );
+			# Don't archive restricted pages
+			$out->addMeta( "robots", "noarchive" );
 
-			# Build restrictions text
-			$itext = "<ul>\n";
-			foreach ( $this->info as $source => $rules ) if ( !( $sysop && $source === 'CR' ) ) {
-				foreach ( $rules as $info ) {
-					list( $action, $groups, $comment ) = $info;
-					$gtext = $this->groupText( $groups );
-					$itext .= "<li>" . wfMsg( 'security-inforestrict', "<b>$action</b>", $gtext ) . " $comment</li>\n";
+			# Render info if enabled
+			if ( $wgSecurityRenderInfo ) {
+				$rights = $wgUser->getRights();
+				$title->getRestrictions( false );
+				$reqgroups = $title->mRestrictions;
+				$sysop = in_array( 'sysop', $wgUser->getGroups() );
+
+				# Build restrictions text
+				$itext = "<ul>\n";
+				foreach ( $this->info as $source => $rules ) if ( !( $sysop && $source === 'CR' ) ) {
+					foreach ( $rules as $info ) {
+						list( $action, $groups, $comment ) = $info;
+						$gtext = $this->groupText( $groups );
+						$itext .= "<li>" . wfMsg( 'security-inforestrict', "<b>$action</b>", $gtext ) . " $comment</li>\n";
+					}
 				}
+				if ( $sysop ) $itext .= "<li>" . wfMsg( 'security-infosysops' ) . "</li>\n";
+				$itext .= "</ul>\n";
+
+				# Add some javascript to allow toggling the security-info
+				$out->addScript( "<script type='text/javascript'>
+					function toggleSecurityInfo() {
+						var info = document.getElementById('security-info');
+						info.style.display = info.style.display ? '' : 'none';
+					}</script>"
+				);
+
+				# Add info-toggle before title and hidden info after title
+				$link = "<a href='javascript:'>" . wfMsg( 'security-info-toggle' ) . "</a>";
+				$link = "<span onClick='toggleSecurityInfo()'>$link</span>";
+				$info = "<div id='security-info-toggle'>" . wfMsg( 'security-info', $link ) . "</div>\n";
+				$text = "$info<div id='security-info' style='display:none'>$itext</div>\n$text";
 			}
-			if ( $sysop ) $itext .= "<li>" . wfMsg( 'security-infosysops' ) . "</li>\n";
-			$itext .= "</ul>\n";
-
-			# Add some javascript to allow toggling the security-info
-			$out->addScript( "<script type='text/javascript'>
-				function toggleSecurityInfo() {
-					var info = document.getElementById('security-info');
-					info.style.display = info.style.display ? '' : 'none';
-				}</script>"
-			);
-
-			# Add info-toggle before title and hidden info after title
-			$link = "<a href='javascript:'>" . wfMsg( 'security-info-toggle' ) . "</a>";
-			$link = "<span onClick='toggleSecurityInfo()'>$link</span>";
-			$info = "<div id='security-info-toggle'>" . wfMsg( 'security-info', $link ) . "</div>\n";
-			$text = "$info<div id='security-info' style='display:none'>$itext</div>\n$text";
 		}
 
 		return true;
