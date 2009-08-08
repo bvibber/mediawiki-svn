@@ -24,6 +24,15 @@ $messages['qqq'] = array(
 	'simplesearch-search' => '{{Identical/Search}}',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'simplesearch' => 'بحث بسيط',
+	'simplesearch-desc' => 'يضيف خصائص جديدة إلى بحث ڤكتور المبسّط',
+	'simplesearch-search' => 'ابحث',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -80,9 +89,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'simplesearch' => 'Απλή αναζήτηση',
+	'simplesearch-desc' => 'Προσθέτει έξτρα λειτουργικότητα στην απλοποιημένη αναζήτηση του Vector',
 	'simplesearch-search' => 'Αναζήτηση',
 );
 
@@ -95,10 +106,12 @@ $messages['eo'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
 	'simplesearch' => 'Bilaketa sinplea',
+	'simplesearch-desc' => 'Funtzio gehiagarria gehitzen du Vector-en bilaketa erraztura',
 	'simplesearch-search' => 'Bilatu',
 );
 
@@ -200,6 +213,15 @@ $messages['ja'] = array(
 	'simplesearch' => '基本検索',
 	'simplesearch-desc' => 'ベクターの簡略化された検索機能に追加機能を追加する',
 	'simplesearch-search' => '検索',
+);
+
+/** Georgian (ქართული)
+ * @author Alsandro
+ */
+$messages['ka'] = array(
+	'simplesearch' => 'მარტივი ძიება',
+	'simplesearch-desc' => 'ამატებს დამატებით ფუნქციებს ვექტორის გამარტივებულ საძიებელს',
+	'simplesearch-search' => 'ძიება',
 );
 
 /** Ripoarisch (Ripoarisch)

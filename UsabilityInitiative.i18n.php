@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'usabilityinitiative-desc' => 'Features developed by the Wikipedia Usability Initiative to enhance the usability of MediaWiki',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'usabilityinitiative' => 'مبادرة الاستخدامية',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -63,6 +70,14 @@ $messages['dsb'] = array(
 $messages['es'] = array(
 	'usabilityinitiative' => 'Iniciativa de usabilidad',
 	'usabilityinitiative-desc' => 'Características desarrolladas por la iniciativa de usabilidad de Wikipedia para mejorar la usabilidad de MediaWiki',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'usabilityinitiative' => 'Erabilgarritasun Iniziatiba',
+	'usabilityinitiative-desc' => 'Wikipediaren Erabilgarritasun Iniziatibak garatutako ezaugarriak MediaWikiren erabilgarritasuna hobetzeko.',
 );
 
 /** Finnish (Suomi)
@@ -154,11 +169,20 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author Alsandro
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
-	'usabilityinitiative' => 'шгяфишдшЕшы штшсшфешмф',
-	'usabilityinitiative-desc' => 'MediaWiki ძრავის შესაძლებლობები, რომლებიც შეიქმნა ვიკიპედიის იუზაბილითი ინიციატივის ფარგლებში და რომლის მიზანია გამოყენების გამარტივება.',
+	'usabilityinitiative' => 'გამოყენებადობის ინიციატივა',
+	'usabilityinitiative-desc' => 'ფუნქციები, რომლებიც შემუშავდა ვიკიპედიის გამოყენებადობის ინიციატივის ჯგუფის მიერ, მედიავიკის გამოყენებადობის გასაუმჯობესებლად',
+);
+
+/** Korean (한국어)
+ * @author Klutzy
+ */
+$messages['ko'] = array(
+	'usabilityinitiative' => 'Usability Initiative',
+	'usabilityinitiative-desc' => '위키백과 Usability Initiative에서 제작한, 미디어위키 사용성을 높여 주는 기능',
 );
 
 /** Ripoarisch (Ripoarisch)
