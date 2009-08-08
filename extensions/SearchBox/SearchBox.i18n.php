@@ -355,9 +355,11 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author Alsandro
  * @author Sopho
  */
 $messages['ka'] = array(
+	'searchbox-desc' => 'ძიების ფორმების ჩასმის ნებართვა',
 	'searchbox-search' => 'ძიება',
 	'searchbox-go' => 'გადასვლა',
 	'searchbox-namespaces' => 'სახელთა სივრცეები:',

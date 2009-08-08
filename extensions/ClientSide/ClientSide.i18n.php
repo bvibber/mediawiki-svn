@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'clientside-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'clientside-desc' => 'يوفر دوال لتوليد كود في صيغ تابعة للعميل مثل HTML، CSS وجافاسكريبت',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

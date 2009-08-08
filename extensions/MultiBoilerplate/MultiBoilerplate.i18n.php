@@ -426,6 +426,10 @@ $messages['sk'] = array(
 	'multiboilerplate-desc' => 'Umožňuje výber šablóny, ktoré sa zobrazuje na vrchu editovacej stránky',
 	'multiboilerplate-legend' => 'Vyberte nápis',
 	'multiboilerplate-submit' => 'Načítať',
+	'boilerplates' => 'Dostupné šablóny',
+	'multiboilerplate-special-pagetext' => 'Tieto šablóny možno vopred načítať pri vytvorení stránky. (<span class=plainlinks>[{{fullurl:Táto stránka neexistuje|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Šablóny sú definované v LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Šablóny sú definované v [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Swedish (Svenska)

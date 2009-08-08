@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'nsfilerepo-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'nsfilerepo-desc' => 'يوفر خصائص معنمدة على النطاق للملفات المرفوعة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

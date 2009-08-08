@@ -191,7 +191,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'random-users-avatars-title' => 'Dyerbydna an kebmynieth',
+	'random-users-avatars-title' => 'Dyerbynna an kemmynieth',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

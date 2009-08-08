@@ -2096,6 +2096,8 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'wikidata-desc' => 'Ergänzt eine Wiki-ähnliche Datenbank für verschiedene Typen von Daten',
+	'wikidata-handler-namespace-move-error' => 'Seiten im reservierten Namensraum der Wikidata-Erweiterung können nicht verschoben werden.',
 	'languages' => 'Wikidata: Sprachen-Manager',
 	'langman-desc' => 'Spracheinstellungen mit [[Special:Languages]] hinzufügen und ändern',
 	'langman_title' => 'Sprachen-Manager',
@@ -2312,6 +2314,7 @@ Bitte kontaktiere den Serveradminstrator.',
 	'ow_nstab_definedmeaning' => 'Festgelegte Bedeutung',
 	'ow_nstab_edit_copy' => 'Kopie bearbeiten',
 	'right-addlanguage' => 'Spracheinstellungen hinzufügen und ändern',
+	'ow_shown_datasets' => 'Datasets zeigen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -5557,6 +5560,7 @@ Mangga hubungi operator server utawa pangurus.',
 );
 
 /** Georgian (ქართული)
+ * @author Alsandro
  * @author Malafaya
  * @author Sopho
  * @author Temuri rajavi
@@ -5564,7 +5568,7 @@ Mangga hubungi operator server utawa pangurus.',
 $messages['ka'] = array(
 	'languages' => 'ვიკიდატა: ენების მენეჯერი',
 	'langman_title' => 'ენების მენეჯერი',
-	'langman_langname' => 'ენის კოდი:',
+	'langman_langname' => 'ენის სახელი:',
 	'langman_iso639-3' => 'ISO 639-3 კოდი:',
 	'langman_iso639-2' => 'ISO 639-2 კოდი:',
 	'langman_addlang' => 'ენის დამატება',

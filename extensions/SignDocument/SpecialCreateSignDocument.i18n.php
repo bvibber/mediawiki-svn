@@ -907,7 +907,7 @@ Mer kann jetz dat [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} Ungerschr
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'createsigndoc-introtext' => 'Commendyans:',
+	'createsigndoc-introtext' => 'Kommendyans:',
 );
 
 /** Latin (Latina)

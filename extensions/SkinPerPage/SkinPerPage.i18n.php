@@ -280,7 +280,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'skinperpage-desc' => 'Setzt de <tt>&lt;skin&gt;</tt> Tag derbäi den et erlaabt verschidde Layouten (Skins) ze benotzen',
+	'skinperpage-desc' => 'Setzt de <tt>&lt;skin&gt;</tt> Tag derbäi den et erlaabt op enger Wiki eent aner Ausgesinn (Skin) ze benotzen',
 );
 
 /** Limburgish (Limburgs)

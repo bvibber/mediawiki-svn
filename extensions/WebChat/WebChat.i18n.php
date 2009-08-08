@@ -245,3 +245,16 @@ $messages['ru'] = array(
 	'right-webchat' => 'использование [[Special:WebChat|веб-чата]]',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'webchat' => 'Webový chat',
+	'webchat-desc' => 'Pridáva [[Special:WebChat|špeciálnu stránku]] na konverzáciu s ostatnými používateľmi wiki v reálnom čase',
+	'webchat-header' => 'Táto špeciálna stránka vám umožňuje v reálnom čase spolupracovať s ostatnými používateľmi wiki.
+Pripojíte sa jednoducho stlačením tlačidla „Pripojiť“.
+Ak ste prihlásený, vaša prezývka bude vyplnená automaticky.
+Anonymní používatelia dostanú automaticky vytvorenú prezývku, ale možno ju zmeniť.',
+	'right-webchat' => 'Povolené používať [[Special:WebChat|webový chat]]',
+);
+

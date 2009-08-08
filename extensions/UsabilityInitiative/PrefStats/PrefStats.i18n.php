@@ -126,6 +126,16 @@ $messages['es'] = array(
 Selecciona una para ver estadísticas acerca de ella.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'prefstats' => 'Hobespen estatistikak',
+	'prefstats-title' => 'Hobespen estatistikak',
+	'prefstats-list-intro' => 'Une honetan, ondorengo hobespenak jarraitzen ari dira.
+Klikatu batean bere estatistikak ikusteko.',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -140,9 +150,10 @@ Tilastot näkyvät painamalla asetusta.',
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Kropotkine 113
  */
 $messages['fr'] = array(
-	'prefstats' => 'Préférence des statistiques',
+	'prefstats' => 'Statistiques des préférences',
 	'prefstats-desc' => "Statistiques sur le nombre d'utilisateurs ayant certaines préférences activées",
 	'prefstats-title' => 'Statistiques des préférences',
 	'prefstats-list-intro' => "En ce moment, les préférences suivantes sont suivies.
@@ -260,6 +271,7 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author Alsandro
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -268,6 +280,7 @@ $messages['ka'] = array(
 	'prefstats-title' => 'კონფიგურაციათა სტატისტიკა',
 	'prefstats-list-intro' => 'ეხლა მიმდინარეობს შემდეგ კონფიგურაციათა კონტროლი
 აირჩიეთ რომელიმე მათგანი სტატისტიკის სანახავად',
+	'prefstats-noprefs' => 'რაიმე უპირატესობა ამჟამად კონტროლი არ ეწევა. კონფიგურაციის კონტროლისთვის შეიტანეთ ცვლილებები $wgPrefStatsTrackPrefs გვერდზე.',
 );
 
 /** Ripoarisch (Ripoarisch)

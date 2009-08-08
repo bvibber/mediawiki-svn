@@ -412,11 +412,19 @@ Ak túto stránku vytvoríte, odstráňte jej názov z <nowiki>{{#index:}}</nowi
 	'indexfunc-movewarn' => 'Upozornenie: „$1“ je indexový názov {{PLURAL:$3|nasledovnej stránky|nasledovných stránok}}:
 $2
 Prosím, odstráňte „$1“ z <nowiki>{{#index:}}</nowiki> v hore {{PLURAL:$3|uvedenej stránke|uvedených stránkach}}.',
+	'index' => 'Index',
 	'index-legend' => 'Hľadať v indexe',
 	'index-search' => 'Hľadať:',
 	'index-submit' => 'Odoslať',
 	'index-disambig-start' => "'''$1''' môže odkazovať na niekoľko stránok:",
-	'index-missing-param' => 'Túto stránku nemožno použiť bez zadania parametrov',
 	'index-emptylist' => 'S „$1“ nesúvisia žiadne stránky',
+	'index-expand-detail' => 'Zobraziť stránky indexované pod týmto názvom',
+	'index-hide-detail' => 'Skryť zoznam stránok',
+	'index-no-results' => 'Hľadanie nevrátilo žiadne výsledky',
+	'index-search-explain' => 'Táto stránka používa predponu vyhľadávania.
+
+Napíšte niekoľko prvých znakov a stlačte tlačidlo odoslať. Vyhľadajú sa názvy stránok a položky indexu začínajúce zadaným reťazcom.',
+	'index-details-explain' => 'Položky s šípkami sú položky indexu.
+Po kliknutí na šípku sa zobrazia všetky stránky indexované pod daným názvom.',
 );
 

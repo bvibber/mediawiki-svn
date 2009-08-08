@@ -489,9 +489,21 @@ Lo hace llamando al nivel del analizador sintáctico correspondiente del propio 
 
 /** Estonian (Eesti)
  * @author Ker
+ * @author Pikne
  */
 $messages['et'] = array(
 	'expandtemplates' => 'Mallide lahendamine',
+	'expand_templates_intro' => 'See erileht mahutab natuke teksti ja laiendab tekstis kõik mallid nende lähtekoodideks.
+Samuti laiendab see parserifunktsioonid nagu <nowiki>{{</nowiki>#if:…}} ja muutujad nagu <nowiki>{{</nowiki>CURRENTDAY}} – teisisõnu enamvähem kõik, mis jääb looksulgude vahele.
+Selleks kutsub lehekülg MediaWikist asjassepuutuva parserijärgu.',
+	'expand_templates_title' => 'Sisu pealkiri, näiteks {{PAGENAME}} jaoks:',
+	'expand_templates_input' => 'Sisendtekst:',
+	'expand_templates_output' => 'Tulemus',
+	'expand_templates_xml_output' => 'XML-väljund',
+	'expand_templates_ok' => 'Lahenda',
+	'expand_templates_remove_comments' => 'Eemalda selgitavad märkused',
+	'expand_templates_generate_xml' => 'Näita XML sõelumispuud',
+	'expand_templates_preview' => 'Eelvaade',
 );
 
 /** Basque (Euskara)

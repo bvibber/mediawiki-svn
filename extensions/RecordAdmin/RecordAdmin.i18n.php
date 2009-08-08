@@ -122,6 +122,8 @@ $messages['ar'] = array(
 	'recordadmin-modified' => 'معدل',
 	'recordadmin-actions' => 'أفعال',
 	'recordadmin-needscontent' => 'أضف المحتوى...',
+	'recordadmin-editwithform' => 'عدل مع الاستمارة',
+	'recordadmin-typeinfo' => '$1 تسجيل',
 	'right-recordadmin' => 'أبحث و عدل صفحات السجل',
 );
 
@@ -1365,6 +1367,7 @@ $messages['sk'] = array(
 	'recordadmin-actions' => 'Operácie',
 	'recordadmin-needscontent' => 'Pridať obsah...',
 	'recordadmin-editwithform' => 'Upraviť formulárom',
+	'recordadmin-typeinfo' => 'Záznam $1',
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
 );
 

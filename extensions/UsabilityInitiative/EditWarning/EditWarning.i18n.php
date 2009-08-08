@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'editwarning' => "This is the name of an extension that warns people when they try to leave an edit form without saving. So it means something like \"warning about (your) edit\", '''not''' \"edit the warning\".",
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'editwarning' => 'تحذير تحريري',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
@@ -121,6 +128,15 @@ $messages['es'] = array(
 	'editwarning-warning' => 'Dejar esta página le causará pérdida de los cambios que ha hecho.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'editwarning' => 'Oharra aldatu',
+	'editwarning-desc' => 'Oharra erakusten du lankide batek editatzeko orritik irteten denean gorde gabe',
+	'editwarning-warning' => 'Orrialde honetatik irteten bazara, egindako aldaketak galdu egingo dira.',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -132,11 +148,12 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Kropotkine 113
  */
 $messages['fr'] = array(
 	'editwarning' => 'Avertissement de modification',
 	'editwarning-desc' => 'Afficher un avertissement lorsque l’utilisateur tente de quitter le formulaire sans enregistrer les modifications',
-	'editwarning-warning' => 'Quitter cette page vous fera perdre toutes les modifications que vous avez faite.',
+	'editwarning-warning' => 'Quitter cette page vous fera perdre toutes les modifications que vous avez faites.',
 );
 
 /** Galician (Galego)
@@ -227,6 +244,15 @@ $messages['ka'] = array(
 	'editwarning' => 'რედაქტირების გაფრთხილება',
 	'editwarning-desc' => 'გამოჰყავს გაფრთხილება, როდესაც მომხმარებელი ტოვებს ფორმას შენახვის გარეშე',
 	'editwarning-warning' => 'სხვა გვერდზე გადასვლა გამოიწვევს ცვლილებების დაკარგვას.',
+);
+
+/** Korean (한국어)
+ * @author Klutzy
+ */
+$messages['ko'] = array(
+	'editwarning' => '편집 주의',
+	'editwarning-desc' => '저장하지 않고 화면을 닫을 때 주의문을 표시하기',
+	'editwarning-warning' => '저장하지 않은 편집이 모두 사라집니다.',
 );
 
 /** Ripoarisch (Ripoarisch)

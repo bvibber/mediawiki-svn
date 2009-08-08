@@ -794,6 +794,7 @@ Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
@@ -802,8 +803,8 @@ $messages['et'] = array(
 	'ogg-stop' => 'Peata',
 	'ogg-play-video' => 'Mängi videot',
 	'ogg-play-sound' => 'Mängi heli',
-	'ogg-no-player' => 'Kahjuks, ei paista su süsteemis olevat ühtki ühilduvat multimeedia programmi.
-Palun lae omale tarkvara <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">siit alla</a>.',
+	'ogg-no-player' => 'Kahjuks ei paista su süsteemis olevat ühtki ühilduvat esitustarkvara.
+Palun <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laadi tarkvara alla</a>.',
 	'ogg-dismiss' => 'Sulge',
 );
 
@@ -2561,6 +2562,8 @@ $messages['sk'] = array(
 	'ogg-play-video' => 'Prehrať video',
 	'ogg-play-sound' => 'Prehrať zvuk',
 	'ogg-no-player' => 'Prepáčte, zdá sa, že váš systém nemá žiadny podporovaný softvér na prehrávanie. Prosím, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnite si prehrávač</a>.',
+	'ogg-no-player-js' => 'Ľutujeme, váš systém má buď vypnutý JavaScript alebonemá podporovaný prehrávač.<br />
+Môžete si buď <a href="$1">klip stiahnuť</a><br />alebo<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnuť prehrávač</a> ak ho chcete prehrať vo svojom prehliadači.',
 	'ogg-no-xiphqt' => 'Zdá sa, že nemáte komponent QuickTime XiphQT. QuickTime nedokáže prehrávať ogg súbory bez tohto komponentu. Prosím, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnite si XiphQT</a> alebo si vyberte iný prehrávač.',
 	'ogg-player-videoElement' => 'Natívna podpora prehliadača',
 	'ogg-player-oggPlugin' => 'Zásuvný modul prehliadača',

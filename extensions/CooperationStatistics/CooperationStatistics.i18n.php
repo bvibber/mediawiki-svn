@@ -76,8 +76,15 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Pill
+ * @author Umherirrender
  */
 $messages['de'] = array(
+	'cooperationstatistics' => 'Statistiken zur Zusammenarbeit',
+	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|Statistiken zur Zusammenarbeit von Nutzern im Haupt-Namensraum]].',
+	'cooperationstatistics-text' => "Zeige Statistiken zur Zusammenarbeit von Nutzern im Haupt-Namensraum.
+
+Von [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] bis [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}} und mehr]] Bearbeitern.<br />Siehe auch die [[Special:MostRevisors|'''Seiten mit den meisten Bearbeitern''']] und die [[Special:MostRevisions|Seiten mit den meisten Versionen]].",
+	'cooperationstatistics-tablearticle' => 'Anzahl Seiten',
 	'cooperationstatistics-tablevalue' => 'Zahl der Bearbeiter',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|Seite|Seiten}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$2|hat|haben}} $1 {{PLURAL:$1|Bearbeiter|Bearbeiter}}',

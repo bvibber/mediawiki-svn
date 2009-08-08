@@ -89,6 +89,7 @@ $messages['ar'] = array(
 	'readerfeedback-voted' => "'''يبدو أنك قيمت هذه الصفحة بالفعل.'''. ([$3 تعليقات أو أسئلة؟]).",
 	'readerfeedback-submitting' => 'جاري التنفيذ...',
 	'readerfeedback-finished' => 'شكرا لك!',
+	'readerfeedback-tagfilter' => 'وسم:',
 	'tooltip-ca-ratinghist' => 'تقييمات القراء لهذه الصفحة',
 );
 

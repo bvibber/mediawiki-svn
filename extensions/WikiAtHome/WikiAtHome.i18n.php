@@ -182,6 +182,14 @@ $messages['ia'] = array(
 	'wah-long-audio' => '(file audio $1, durata $2, $3)',
 	'wah-long-video' => '(file video $1, durata $2, $4×$5 pixels, $3)',
 	'wah-long-multiplexed' => '(file audio/video multiplexate, $1, durata $2, $4×$5 pixels, $3 in total)',
+	'wah-long-general' => '(file multimedia, durata $2, $3)',
+	'wah-long-error' => '(ffmpeg non poteva leger le file: $1)',
+	'wah-transcode-working' => 'Iste video es in le processo de esser transcodificate. Per favor reproba plus tarde.',
+	'wah-transcode-helpout' => 'Le clip es complete a $1 per cento.
+Tu pote adjutar a transcodificar iste video per visitar [[Special:WikiAtHome|Wiki@Home]].',
+	'wah-transcode-fail' => 'Le transcodification de iste file ha fallite.',
+	'wah-javascript-off' => 'Tu debe activar JavaScript pro participar in Wiki@Home.',
+	'wah-loading' => 'carga interfacie de Wiki@Home <blink>...</blink>',
 );
 
 /** Japanese (日本語)
@@ -311,6 +319,28 @@ $messages['ru'] = array(
 	'wah-transcode-fail' => 'Не удалось перекодировать этот файл.',
 	'wah-javascript-off' => 'У вас должен быть включён JavaScript, для возможности участия в Wiki@Home',
 	'wah-loading' => 'Загрузка интерфейса Wiki@Home <blink>...</blink>',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'wah-desc' => 'Umožňuje šírenie úloh prekódovania videa klientom pomocou firefogg',
+	'wah-user-desc' => 'Wiki@Home umožnuje členom komunity venovať nevyužitý výpočtový čas procesora na pomoc pri operáciách náročných na zdroje',
+	'wah-short-audio' => '$1 zvukový súbor, $2',
+	'wah-short-video' => '$1 videosúbor, $2',
+	'wah-short-general' => '$1 multimediálny súbor, $2',
+	'wah-long-audio' => '($1 zvukový súbor, dĺžka $2, $3)',
+	'wah-long-video' => '($1 videosúbor, dĺžka $2, $4×$5 pixlov, $3)',
+	'wah-long-multiplexed' => '(multiplexovaný zvukový/videosúbor, $1, dĺžka $2, $4×$5 pixlov, $3 celkom)',
+	'wah-long-general' => '(multimediálny súbor, dĺžka $2, $3)',
+	'wah-long-error' => '(ffmpeg nedokázal načítať nasledovný súbor: $1)',
+	'wah-transcode-working' => 'Toto video sa spracováva, skúste to prosím neskôr',
+	'wah-transcode-helpout' => 'Klip je hotový na $1 percent.
+Môžete pomôcť s prekódovaním tohto videa po navštívení [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Tento súbor sa nepodarilo prekódovať.',
+	'wah-javascript-off' => 'Aby ste sa mohli zúčastniť Wiki@Home musíte mať zapnutý JavaScript',
+	'wah-loading' => 'načítava sa rozhranie Wiki@Home <blink>...</blink>',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

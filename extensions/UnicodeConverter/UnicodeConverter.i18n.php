@@ -319,13 +319,15 @@ $messages['jv'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author Alsandro
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
-	'unicodeconverter' => 'Unicode-კონვერტორი',
+	'unicodeconverter' => 'უნიკოდის გარდამქმნელი',
+	'unicodeconverter-desc' => 'სპეციალური გვერდის მოდულის მარტივი ნიმუში.  [[Special:UnicodeConverter|UTF-8-ში მოცემული სტრინგით]], ის გარდაქმნის მას HTML პარამეტრებში, რომელიც მიზანშეწონილია ISO 8859-1 ვებგვერდისთვის',
 	'unicodeconverter-ok' => 'კარგი',
 	'unicodeconverter-oldtext' => 'პირველადი ტექსტი:',
-	'unicodeconverter-newtext' => 'კონვერტირებული ტექსტი:',
+	'unicodeconverter-newtext' => 'გარდაქმნილი ტექსტი:',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -47,6 +47,7 @@ $messages['ar'] = array(
 	'whatismyip' => 'ما هو الأيبي الخاص بي',
 	'whatismyip-desc' => 'يظهر IP المستخدم [[Special:WhatIsMyIP|IP address]]',
 	'whatismyip-out' => 'ال IP الخاص بك:',
+	'right-whatismyip' => 'رؤية [[Special:WhatIsMyIP|عنوان الأيبي الشخصي]]',
 );
 
 /** Aramaic (ܐܪܡܝܐ)

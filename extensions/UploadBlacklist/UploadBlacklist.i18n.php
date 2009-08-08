@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'uploadblacklist-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'uploadblacklist-desc' => 'يضيف وظيفة قائمة رفع سوداء',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -44,6 +51,13 @@ $messages['dsb'] = array(
  */
 $messages['es'] = array(
 	'uploadblacklist-desc' => 'Añade una lista negra de subida de archivos',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'uploadblacklist-desc' => 'Igoerako zerrenda beltza funtzionalitatea gehitzen du',
 );
 
 /** French (Français)

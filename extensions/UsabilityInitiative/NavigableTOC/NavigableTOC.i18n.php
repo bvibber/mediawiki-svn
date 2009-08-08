@@ -49,6 +49,14 @@ $messages['es'] = array(
 	'navigabletoc-desc' => 'Añade una tabla de contenido al formulario de edición que desplaza el cuadro de texto cuando se hace clic en una sección',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'navigabletoc' => 'Eduki-taula nabigagarria',
+	'navigabletoc-desc' => 'Eduki-taula gehitzen du editatzeko orrira eta testu-taula erakusten du klikatzean',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -119,6 +127,14 @@ $messages['id'] = array(
 $messages['ja'] = array(
 	'navigabletoc' => 'ナビゲーション可能な目次',
 	'navigabletoc-desc' => 'クリックした際にテキストボックスをスクロールさせる目次を編集フォームに加える',
+);
+
+/** Georgian (ქართული)
+ * @author Alsandro
+ */
+$messages['ka'] = array(
+	'navigabletoc' => 'მართვადი სარჩევი',
+	'navigabletoc-desc' => 'ამატებს სარჩევს რედაქტირების ფორმას, რომელიც ტექსტის დაფის ამოძრავების საშუალებას იძლევა განყოფილებაზე დაწკაპუნებით',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -150,6 +150,13 @@ $messages['ja'] = array(
 	'tspoll-id-error' => 'IDが指定されていません！',
 );
 
+/** Georgian (ქართული)
+ * @author Alsandro
+ */
+$messages['ka'] = array(
+	'tspoll-id-error' => 'იდენტიფიკაცია არ იყო მოცემული!',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

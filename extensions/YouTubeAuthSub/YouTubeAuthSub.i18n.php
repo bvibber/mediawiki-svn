@@ -1319,14 +1319,22 @@ Tulung sabar dhisik.',
 );
 
 /** Georgian (ქართული)
+ * @author Alsandro
  * @author David1010
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'youtubeauthsub' => 'YouTube ვიდეოს ატვირთვა',
+	'youtubeauthsub-desc' => 'შესაძლებლობას აძლევს მომხმარებლებს YouTube-ზე პირდაპირ [[Special:YouTubeAuthSub|ატვირთონ ვიდეო]]',
+	'youtubeauthsub_info' => 'გვერდზე მისათითებელი ვიდეოს YouTube-ზე ატვირთვისთვის, შეავსეთ შემდეგი ინფორმაცია:',
 	'youtubeauthsub_title' => 'სათაური',
+	'youtubeauthsub_description' => 'აღწერა',
 	'youtubeauthsub_password' => 'პაროლი YouTube–ზე',
 	'youtubeauthsub_username' => 'მომხმარებლის სახელი YouTube–ზე',
+	'youtubeauthsub_keywords' => 'საძიებო სიტყვები',
 	'youtubeauthsub_category' => 'კატეგორია',
+	'youtubeauthsub_submit' => 'გაგზავნა',
+	'youtubeauthsub_clickhere' => 'აქ დააწკაპუნეთ YouTube-ში შესასვლელად',
 	'youtubeauthsub_uploadbutton' => 'ატვირთვა',
 );
 
@@ -1469,7 +1477,7 @@ Bes jet jedoldesch.',
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'youtubeauthsub_category' => 'Clasyans',
+	'youtubeauthsub_category' => 'Klasyans',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

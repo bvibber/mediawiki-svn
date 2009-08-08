@@ -53,6 +53,13 @@ $messages['bg'] = array(
 	'woopra-desc' => 'Позволява работата на [http://www.woopra.com/ Woopra Live Tracking Software] в МедияУики',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'woopra-desc' => 'Aotren a ra [http://www.woopra.com/ Woopra ar meziant heuliañ war-eeun] da blediñ gant ho staliadur MediaWiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

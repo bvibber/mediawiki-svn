@@ -336,6 +336,7 @@ Jump to stream view: $2',
  * @author McDutchie
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'mv-desc' => '{{desc}}',
@@ -370,6 +371,9 @@ $messages['qqq'] = array(
 	'mv_spoken_by' => '{{Identical|Spoken by}}',
 	'mv_category' => '{{Identical|Category}}',
 	'mv_edithelpsequence' => "Leave \"'''Help:'''\" unchanged.",
+	'right-mv_delete_mvd' => '{{doc-right|mv delete mvd}}',
+	'action-mv_delete_mvd' => '{{doc-action|mv delete mvd}}',
+	'right-mv_edit_stream' => '{{doc-right|mv edit stream}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -1639,6 +1643,9 @@ Zur Stream-Ansicht springen: $2',
 	'mv_mang_layers' => 'Ebenen verwalten',
 	'mv_mang_layers_title' => 'Einstellungen der Layer-Anzeige für den aktuellen Stream verwalten',
 	'mv_protect_source_material' => 'Originalmaterial gegenüber Bearbeitungen gesperrt',
+	'right-mv_delete_mvd' => 'MetaVid-Metadaten löschen',
+	'action-mv_delete_mvd' => 'dieses MetaVid-Metadaten-Segment zu löschen',
+	'right-mv_edit_stream' => 'Stream-Dateien bearbeiten',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -4335,15 +4342,9 @@ sequence
 „$1“ aam Ändere',
 	'mv_sequence_player_title' => 'Afshpellprojramm för
 sequence',
-	'mv_resource_not_found' => "
-Resource 
-'''$1''' nit jefonge",
-	'mv_resource_not_supported' => "
-Resource 
-'''$1''' met dä Zoot künne mer nit ömjonn",
-	'mv_resource_locator' => '
-Resource 
-fenge',
+	'mv_resource_not_found' => "Daatequell '''$1''' nit jefonge",
+	'mv_resource_not_supported' => 'Daatequell $1 — met dä Zoot künne mer nit ömjonn',
+	'mv_resource_locator' => 'Daatequell fenge',
 	'mv_unknown_clipboard_action' => 'En unbikannte Akßjuhn för der Zweschespeicher.',
 	'mv_media_search' => 'Meedijje Söhke',
 	'mv_editor_options' => 'Enstellunge för et Beärbeide',
@@ -4389,10 +4390,7 @@ Sequence
 _Beärbeide',
 	'mv_seq_summary' => 'Koot Zosammejefass',
 	'mv_add_clip_by_name' => 'Donn ene Ußschnedde övver singe Name derbei',
-	'mv_stream_resource_export' => '
-Dahteshtrohm
-resources
-expotteere',
+	'mv_stream_resource_export' => 'Dahteshtröhm expotteere',
 	'mv_export_cmml' => '<code lang="en">CMML</code> äxpoteere',
 	'mv_navigate_stream' => 'Em janze Dahteshtrohm eröm jonn',
 	'mv_stream_overview' => 'Dahteshtrohm-Övverseesh',

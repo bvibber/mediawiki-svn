@@ -954,6 +954,7 @@ Está página sólo es aplicable a usuarios restringidos",
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
@@ -978,6 +979,7 @@ $messages['eu'] = array(
 	'whitelistnewtableview' => 'Aldatzeko jarri',
 	'whitelistnewtableprocess' => 'Prozesatu',
 	'whitelistnewtablereview' => 'Berrikusi',
+	'whitelistselectrestricted' => '== Hauta ezazu mugatutako lankide izena ==',
 	'whitelistnever' => 'inoiz',
 	'group-restricted' => 'Mugatutako lankideak',
 	'group-restricted-member' => 'Mugatutako lankidea',

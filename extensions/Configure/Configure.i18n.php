@@ -4654,9 +4654,9 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'configure-section-pages' => 'Folednow',
-	'configure-section-upload' => 'Ughcarga',
-	'configure-section-search' => 'Whilas',
+	'configure-section-pages' => 'Folennow',
+	'configure-section-upload' => 'Ughkarga',
+	'configure-section-search' => 'Hwilas',
 	'configure-throttle-action-edit' => 'Chanjya',
 );
 
