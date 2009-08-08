@@ -3354,7 +3354,7 @@ $messages['zh-hans'] = array(
 	'optin-survey-answer-changes-predictability' => '改善效率预测。',
 	'optin-survey-answer-changes-custom' => '容许更加有弹性的用户自定。',
 	'optin-survey-answer-changes-other' => '其它：',
-	'optin-improvements' => '== 有什么改善什？ ==
+	'optin-improvements' => '== 有什么改善？ ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;导航加强
 新的导航系统会更加容易地令您知道您在哪里以及正在做什么，您可以去哪里以及怎样哪里。搜寻方块放在右上角，令它的功能更加容易找到，使用得更快。
@@ -3387,7 +3387,8 @@ $messages['zh-hant'] = array(
 	'optin-title-justoptedout' => '多謝你去試用測試版',
 	'optin-title-feedback' => '測試版回饋',
 	'optin-needlogin' => '你需要[$1 登入]去試用測試版。',
-	'optin-intro' => '維基百科可用性小組開發了一個新皮膚和一個新的編輯工具去加強維基百科的可用性。這些增強還未對全部用戶開放，但是您可以點擊下面的"{{int:optin-submit-in}}"加入。',
+	'optin-intro' => '維基百科可用性小組開發了一個新皮膚和一個新的編輯工具去加強維基百科的可用性。
+您是否想試用我們的測試版？',
 	'optin-feedback-intro' => '多謝去試用這個測試版。
 我們想知道你對我們的新界面有何看法，如果你完成下面可選的調查，我們會好樂意接受。',
 	'optin-feedback-back' => '如果你不想完成下面嘅調查，你可以回到$1。',
@@ -3443,7 +3444,7 @@ $messages['zh-hant'] = array(
 	'optin-survey-answer-changes-predictability' => '改善效率預測。',
 	'optin-survey-answer-changes-custom' => '容許更加有彈性的用戶自定。',
 	'optin-survey-answer-changes-other' => '其它：',
-	'optin-improvements' => '== 有什麼改善什？ ==
+	'optin-improvements' => '== 有什麼改善？ ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;導航加強
 新的導航系統會更加容易地令您知道您在哪裏以及正在做什麼，您可以去哪裏以及怎樣哪裏。搜尋方塊放在右上角，令它的功能更加容易找到，使用得更快。
