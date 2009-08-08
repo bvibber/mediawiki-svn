@@ -70,8 +70,17 @@ js2AddOnloadHook( function() {
 		case 'win':
 			osIndex = 'windows';
 		break;
+		case 'iemobile':
+			osIndex = 'windowsmobile';
+		break;
 		case 'mac':
 			osIndex = 'macos';
+		break;
+		case 'iphone':
+			osIndex = 'iphoneos';
+		break;
+		case 'ipod':
+			osIndex = 'iphoneos';
 		break;
 		case 'linux':
 			osIndex = 'linux';
