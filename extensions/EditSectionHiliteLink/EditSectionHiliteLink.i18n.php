@@ -253,3 +253,24 @@ $messages['vi'] = array(
 	'Editsectionhilitelink-desc' => 'Tô đậm phần trang khi để con trỏ trên liên kết sửa đổi',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'Editsectionhilitelink-desc' => '當你郁隻老鼠到編輯連結嗰陣將有關嘅小節高亮',
+);
+
+/** Simplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'Editsectionhilitelink-desc' => '当您移动鼠标器至编辑链接时将有关的段落高亮',
+);
+
+/** Traditional Chinese
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'Editsectionhilitelink-desc' => '當您移動滑鼠至編輯連結時將有關的段落高亮',
+);
+

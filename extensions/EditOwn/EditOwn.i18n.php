@@ -431,6 +431,13 @@ $messages['yi'] = array(
 	'editown-desc' => 'באניצער וואס האבן נישט דעם אלץ-רעדאקטירן רעכט (editall) קענען רעדאקטירן נאר בלעטער וואס זיי האבן אליין געשאפן.',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'editown-desc' => '無全編權限嘅用戶只能夠編輯佢哋自己建立嘅版',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong

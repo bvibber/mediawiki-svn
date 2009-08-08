@@ -3202,7 +3202,7 @@ $messages['yue'] = array(
 	'optin-title-optedin' => '離開測試版',
 	'optin-title-justoptedin' => '歡迎來到測試版',
 	'optin-title-justoptedout' => '多謝你去試用測試版',
-	'optin-title-feedback' => '測試版回饋',
+	'optin-title-feedback' => '測試版反饋',
 	'optin-needlogin' => '你需要[$1 登入]去試吓測試版。',
 	'optin-intro' => '維基百科可用性小組開發咗一個新皮同埋一個新編輯工具去加強維基百科嘅可用性。
 你係咪想試吓我哋嘅測試版？',
@@ -3214,7 +3214,7 @@ $messages['yue'] = array(
 	'optin-leave-cancel' => '如果你繼續去用測試版，你可以返去$1。',
 	'optin-success-out' => '你已經成功噉選出到可用性小組嘅可用性加強。
 你可以響任何時間撳上面嘅"{{int:optin-try}}"去選入番去。',
-	'optin-success-feedback' => '多謝你嘅回饋！',
+	'optin-success-feedback' => '多謝你嘅反饋！',
 	'optin-accept-short' => '而家就去做！',
 	'optin-accept-long' => '試吓我哋嘅測試版',
 	'optin-accept-long-anon' => '登入試吓測試版',
@@ -3224,7 +3224,7 @@ $messages['yue'] = array(
 	'optin-submit-feedback' => '畀意見',
 	'optin-try' => '試吓測試版',
 	'optin-leave' => '離開測試版',
-	'optin-feedback' => '測試版回饋',
+	'optin-feedback' => '測試版反饋',
 	'optin-survey-yes' => '係',
 	'optin-survey-no' => '唔係',
 	'optin-survey-intro' => '多謝你去試用可用性小組嘅可用性加強。
@@ -3276,7 +3276,7 @@ $messages['yue'] = array(
 == 點樣加入 ==
 要知更多有關專案或者加入，請睇吓[http://usability.wikimedia.org Usability Initiative wiki]。
 嗰度你就會搵到我哋嘅准許、研究、設計開發，同埋發佈。
-去問問題或者畀一般回饋，請用我哋嘅[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁]。
+去問問題或者畀一般反饋，請用我哋嘅[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁]。
 去解決特定嘅標題，請用有關嘅討論版。
 如果你搵到臭蟲，請響[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
 
@@ -3385,7 +3385,7 @@ $messages['zh-hant'] = array(
 	'optin-title-optedin' => '離開測試版',
 	'optin-title-justoptedin' => '歡迎來到測試版',
 	'optin-title-justoptedout' => '多謝你去試用測試版',
-	'optin-title-feedback' => '測試版回饋',
+	'optin-title-feedback' => '測試版反饋',
 	'optin-needlogin' => '你需要[$1 登入]去試用測試版。',
 	'optin-intro' => '維基百科可用性小組開發了一個新皮膚和一個新的編輯工具去加強維基百科的可用性。
 您是否想試用我們的測試版？',
@@ -3396,7 +3396,7 @@ $messages['zh-hant'] = array(
 您可以隨時點擊上面的"{{int:ooptin-leave}}"去退出。',
 	'optin-success-out' => '您已經成功地退出自可用性小組的可用性增強。
 您可以隨時點擊上面的"{{int:optin-try}}"去加入。',
-	'optin-success-feedback' => '多謝你的回饋！',
+	'optin-success-feedback' => '多謝你的反饋！',
 	'optin-accept-short' => '現在就去做！',
 	'optin-accept-long' => '試試我們的測試版',
 	'optin-accept-long-anon' => '登入試用測試版',
@@ -3406,7 +3406,7 @@ $messages['zh-hant'] = array(
 	'optin-submit-feedback' => '給意見',
 	'optin-try' => '試試測試版',
 	'optin-leave' => '離開測試版',
-	'optin-feedback' => '測試版回饋',
+	'optin-feedback' => '測試版反饋',
 	'optin-survey-yes' => '是',
 	'optin-survey-no' => '否',
 	'optin-survey-intro' => '多謝您去試用可用性小組的可用性增強。
@@ -3458,7 +3458,7 @@ $messages['zh-hant'] = array(
 == 怎樣加入 ==
 要知更多有關專案或者加入，請參閱[http://usability.wikimedia.org Usability Initiative wiki]。
 在那裏您就會找到我們的准許、研究、設計開發，以及發佈。
-去問問題或者給予一般回饋，請用我們的[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁面]。
+去問問題或者給予一般反饋，請用我們的[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁面]。
 去解決特定的主題，請用有關的討論頁面。
 如果您找到臭蟲，請在[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
 
