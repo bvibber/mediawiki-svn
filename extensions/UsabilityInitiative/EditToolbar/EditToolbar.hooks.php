@@ -185,7 +185,7 @@ class EditToolbarHooks {
 	 * GetPreferences hook
 	 * Add toolbar related items to the preferences
 	 */
-	public static function addPreferences( $user, $defaultPreferences ) {
+	public static function addPreferences( $user, &$defaultPreferences ) {
 		global $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
 
 		// Checks if...

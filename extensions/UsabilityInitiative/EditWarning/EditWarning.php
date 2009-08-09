@@ -46,3 +46,7 @@ $wgExtensionMessagesFiles['EditWarning'] =
 
 // Registers Hooks
 $wgHooks['EditPage::showEditForm:initial'][] = 'EditWarningHooks::initialize';
+$wgHooks['GetPreferences'][] = 'EditWarningHooks::addPreferences';
+
+// Enable EditWarning by default
+$wgDefaultUserOptions['useeditwarning'] = 1;
