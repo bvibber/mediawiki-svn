@@ -70,6 +70,8 @@ function wfSlippyMapHook() {
  */
 //$wgSlippyMapJs = 'SlippyMap.js';
 $wgSlippyMapJs = 'SlippyMapCassini.js';
+$wgJSAutoloadClasses['OpenLayers'] = "extensions/SlippyMap/OpenLayers/public/OpenLayers.js"; // Does not work yet
+$wgJSAutoloadClasses['SlippyMap'] = "extensions/SlippyMap/js/$wgSlippyMapJs";
 
 /**
  * $wgSlippyMapModes
