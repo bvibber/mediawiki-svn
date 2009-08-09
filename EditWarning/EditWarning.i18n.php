@@ -15,6 +15,7 @@ $messages['en'] = array(
 	'editwarning' => 'Edit warning',
 	'editwarning-desc' => 'Show a warning when a user tries to leave the edit form without saving',
 	'editwarning-warning' => 'Leaving this page will cause you to lose any changes you have made.',
+	'editwarning-preference' => 'Warn me when I leave an edit page with unsaved changes',
 );
 
 /** Message documentation (Message documentation)
