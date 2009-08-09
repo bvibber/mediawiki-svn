@@ -284,7 +284,7 @@ encapsulateSelection: function( pre, peri, post ) {
 			post += ' '
 		}
 	}
-    var e = this.jquery ? this[0] : this;
+	var e = this.jquery ? this[0] : this;
 	var selText;
 	var isSample = false;
 	if ( document.selection && document.selection.createRange ) {
@@ -332,7 +332,7 @@ encapsulateSelection: function( pre, peri, post ) {
 		}
 		e.scrollTop = textScroll;
 	}
-	$(this).trigger( 'encapsulateSelection' );
+	$(this).trigger( 'encapsulateSelection', [ pre, peri, post ] );
 },
 /**
  * Ported from Wikia's LinkSuggest extension
