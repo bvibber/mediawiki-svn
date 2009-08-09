@@ -18,6 +18,8 @@
  *     better i18n support, adjustable limits, minor formal adjustment.
  * @version 1.1.0
  *     addition of answer parameter
+ * @version 1.2.0
+ *     semi-case-sensitive by default, fix bugs with edge-detection and html-entities
  */
 
 /**
@@ -38,6 +40,7 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 */
 
+error_reporting(E_ALL | E_WARNING | E_STRICT);
 if ( !defined( 'MEDIAWIKI' ) )
 {
     die( 'This file is a MediaWiki extension, not a valid entry point.' );
@@ -49,7 +52,7 @@ $wgTransliteratorRuleSize  =  10;	// maximum number of characters in left side o
 
 $wgExtensionCredits['parserhook'][] = array(
     'name' => 'Transliterator',
-    'version' => '1.1.0',
+    'version' => '1.2.0',
     'descriptionmsg' => 'transliterator-desc',
     'author' => 'Conrad Irwin',
     'url' => 'http://www.mediawiki.org/wiki/Extension:Transliterator',
@@ -66,6 +69,7 @@ $wgHooks['LanguageGetMagic'][]       = 'efTransliterator_Magic';
 
 class ExtTransliterator {
 
+    const DELIMITER = "\x1F"; // A character that will be inserted in places where the ^ and $ should match
     var $mPages = null;  // An Array of "transliterator:$mapname" => The database row for that template.
     var $mMaps = array();// An Array of "$mapname" => The map parsed from that page.
 
@@ -99,6 +103,23 @@ class ExtTransliterator {
     function codepoints( $word ) {
         $word = UtfNormal::toNFD( $word );
         return preg_split( '/(.)/u', $word, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
+    }
+
+    /**
+     * Given a codepoints or letters array returns a list that contains 1 for every 
+     * alphabetic character and accent, and 0 otherwise. This allows for edge-of-word
+     * detection.
+     */
+    function alphamap( $letters ) {
+
+        $output = Array();
+        $count = count($letters);
+
+        for ($i = 0; $i < $count; $i++) {
+            $output[] =  preg_match( '/\pL/u', $letters[$i]) || isset( $utfCombiningClass[$letters[$i]] );
+        }
+
+        return $output;
     }
 
     /**
@@ -156,9 +177,8 @@ class ExtTransliterator {
      * 
      * Input syntax is a set of lines.
      *  All " " are ignored.
-     *  Lines starting with # are ignored.
+     *  Lines starting with # are ignored, remaining lines are split by =>
      *  HTML entities are decoded (essential for sanity when trying to add rules for combining codepoints)
-     *  Remaining lines are split by "=>".
      *
      * The map created is a set of "from" strings to "to" strings
      *  With extra "from" => true for all substrings of "from" strings
@@ -174,66 +194,86 @@ class ExtTransliterator {
         $map = array();
         $decompose = false;
 
-        // Split lines and remove comments and space 
-        $lines = split( "\n", html_entity_decode( preg_replace( '/^\s*(#.*)?(\n|$)| */m', '', $input ), ENT_NOQUOTES, "UTF-8" ) );
+        // Split lines and remove whitespace at beginning and end
+        $lines = preg_split( "/(^|\s*\n)(\s*(#[^\n]*)?\n)*\s*/", $input."\n" );
+        if ( $lines[0] == "" )
+            array_shift( $lines );
 
-        // If the last line was a comment then there will be an empty line at the end
-        if ( $lines[count( $lines ) - 1] == "" ) {
+        if ( $lines[count( $lines ) - 1] == "" )
             array_pop( $lines );
-        }
 
+
+        // The first line can contain flags
         $first_line = $lines[0];
         if ( strpos( $first_line, "=>") === FALSE ) {
-            # Empty page
+            // Or, could just signify that the message was blank
             if ( $first_line == "<$mappage>")
                 return false;
+            else if ( preg_replace( '/<(decompose|sensitive)>/', '', $first_line ) != '') 
+                return wfMsg( 'transliterator-error-syntax', $first_line, $mappage );
 
-            if ( strpos( $first_line, "<decompose>" ) ) {
+            if ( strpos( $first_line, "<decompose>" ) !== FALSE ) {
                 $map['__decompose__'] = true;
                 $decompose = true;
             } 
-            if ( strpos( $first_line, "<sensitive>" ) ) {
+            if ( strpos( $first_line, "<sensitive>" ) !== FALSE ) {
                 $map['__sensitive__'] = true;
             }
             array_shift( $lines );
         }
 
         if ( count( $lines ) > $wgTransliteratorRuleCount )
-            return wfMsgExt('transliterator-error-rulecount', array('parsemag'), $wgTransliteratorRuleCount, $mappage );
+            return wfMsgExt( 'transliterator-error-rulecount', array('parsemag'), $wgTransliteratorRuleCount, $mappage );
 
         foreach ( $lines as $line ) {
 
-            $pair = split( "=>", $line );
+            $pair = preg_split( '/\s*=>\s*/', $line );
 
-            if ( count($pair) != 2 ) 
-                return wfMsg("transliterator-error-syntax", $line, $mappage);
+            if ( count( $pair ) != 2 ) 
+                return wfMsg( "transliterator-error-syntax", $line, $mappage );
 
-            if ($decompose) // Undo the NFCing of MediaWiki
-                $from = UtfNormal::toNFD( $pair[0] );
-            else // substrings by NFC code-point are a superset of substrings by letters
-                $from = $pair[0];
+            $from = $pair[0];
+            $to = html_entity_decode( $pair[1], ENT_QUOTES, 'UTF-8' );
 
-            $to = $pair[1];
+            // Convert the ^ and $ selectors into the DELIMITER so that it can be used with a negligable chance of conflict
+            // Leave single ^ and $'s alone incase someone wants to use them
+            // Still permits the creation of the rule "^$=>" that will never match, but hey
+            $fromlast = strlen( $from ) - 1;
+            if ( $fromlast > 0 ) {
+                if ( $from[0] == "^" && $fromlast > 0)
+                    $from[0] = ExtTransliterator::DELIMITER;
 
+                if ( $from[$fromlast] == "$")
+                    $from[$fromlast] = ExtTransliterator::DELIMITER;
+            }
+
+            // Now we've looked at our syntax we can remove html escaping to reveal the true form
+            $from = html_entity_decode( $from, ENT_QUOTES, 'UTF-8' );
+            if ( $decompose ) // Undo the NFCing of MediaWiki
+                $from = UtfNormal::toNFD( $from );
+
+            // If $map[$from] is set we can skip the filling in of sub-strings as there is a longer rule
             if ( isset( $map[$from] ) ) {
 
-                if ( is_string( $map[$from] ) ) 
+                // Or a rule of the same length, i.e. the same rule.
+                if ( is_string( $map[$from] ) && $to != $map[$from] ) 
                     return wfMsg("transliterator-error-ambiguous", $line, $mappage);
                 
             } else if ( strlen( $from ) > 1 ){
-                // Fill in the blanks, so that we know when to stop looking while transliterating
-                $to_fill = strlen( $from );
 
-                if ( $to_fill > $wgTransliteratorRuleSize )
+                // Bail if the left hand side is too long (has performance implications otherwise)
+                $fromlen = strlen( $from );
+                if ( $fromlen > $wgTransliteratorRuleSize )
                     return wfMsgExt('transliterator-error-rulesize', array('parsemag'), $line, $mappage, $wgTransliteratorRuleSize );
-                
-                for ( $i = 1; $i < $to_fill; $i++ ) {
+
+                // Fill in the blanks, so that we know when to stop looking while transliterating
+                for ( $i = 1; $i < $fromlen; $i++ ) {
                     $substr = substr( $from, 0, $i );
 
                     if (! isset( $map[$substr] ) ) 
                         $map[$substr] = true;
                 }
-            }
+            } // else we have the default rule
 
             $map[$from] = $to;
         }
@@ -248,15 +288,17 @@ class ExtTransliterator {
      */
     function transliterate( $word, $map )
     {
-        $word = "^" . str_replace( " ", "$ ^", $word ) . "$";
         if ( isset( $map["__decompose__"] ) ) {
             $letters = $this->codepoints( $word );
         } else {
             $letters =  $this->letters( $word );
         }
 
-        $sensitive = isset( $map["__sensitive__"] );
-        $ucfirst = false;
+        $alphamap = $this->alphamap( $letters );
+
+        $sensitive = isset( $map["__sensitive__"] ); // Are we in case-sensitive mode, or not
+        $ucfirst = false;                            // We are in case-sensitive mode and the first character of the current match was upper-case originally
+        $withstart = false;                          // Have we inserted a start character into the current $current
 
         $output = "";               // The output
         $last_match = 0;            // The position of the last character matched, or the first character of the current run
@@ -265,38 +307,56 @@ class ExtTransliterator {
         $count = count($letters);   // The total number of characters in the string
         $current = "";              // The substring that we are currently trying to find the longest match for.
 
+        while ( $last_match < $count ) {
 
-        while ( $i < $count ) {
+            if ( $i < $count ) {
 
-            $next = $current.$letters[$i];
-
-            // There may be a match longer than $current
-            if ( isset( $map[$next] ) ) {
-
-                // In fact, $next is a match
-                if ( is_string( $map[$next] ) ) {
-                    $last_match = $i;
-                    $last_trans = $map[$next];
+                // if this is the start of a word, first try the form with the start indicator
+                if ( $withstart ) {
+                    $withstart = false;
+                } else if ( $alphamap[$i] && ($last_trans == null) && ( $i == 0 || !$alphamap[$i - 1] ) ) {
+                    $current = ExtTransliterator::DELIMITER;
+                    $withstart = true;
                 }
 
-                $i++;
-                $current = $next;
+                $next = $current.$letters[$i];
 
-            // No more matching, go back to the last match and start from the character after
-            } else {
+                // There may be a match longer than $current
+                if ( isset( $map[$next] ) ) {
 
-                // We had no match at all, pass through one character
-                if ( is_null( $last_trans ) ) {
+                    // In fact, $next is a match
+                    if ( is_string( $map[$next] ) ) {
+                        $last_match = $i;
+                        $last_trans = $map[$next];
+                    }
+
+                    $i++;
+                    $current = $next;
+                    continue;
+                }
+            }
+
+            // We had no match at all, pass through one character
+            if ( is_null( $last_trans ) ) {
+
+                // This was a fake character that we inserted
+                if ( $withstart ) {
+                    $current = "";
+                    continue;
+
+                // It was a real character that we were supposed to transliterate
+                } else {
 
                     $last_letter = $letters[$last_match];
                     $last_lower = $sensitive ? $last_letter : mb_strtolower( $last_letter );
 
+                    // If we are not being sensitive, we can try down-casing the previous letter
                     if ( $last_letter != $last_lower ) {
                         $ucfirst = true;
                         $letters[$last_match] = $last_lower;
 
                     // Might be nice to output a ? if we don't understand
-                    } else if ( isset( $map[''] ) && $last_letter != '^' && $last_letter != '$' ) {
+                    } else if ( isset( $map[''] ) ) {
 
                         if ( $ucfirst ) {
                             $output .= str_replace( '$1', mb_strtoupper( $last_letter ), $map[''] );
@@ -319,33 +379,32 @@ class ExtTransliterator {
                         $i = ++$last_match;
                         $current = "";
                     }
-
-
-                // Output the previous match
-                } else {
-
-                    if ( $ucfirst ) {
-                        $output .= mb_strtoupper( mb_substr( $last_trans, 0, 1 ) ).mb_substr( $last_trans, 1 );
-                        $ucfirst = false;
-                    } else {
-                        $output .= $last_trans;
-                    }
-                    $i = ++$last_match;
-                    $last_trans = null;
-                    $current = "";
-
                 }
+
+            // Output the previous match
+            } else {
+
+                // If this match is at the end of a word, see whether we have a more specific rule
+                if ( $alphamap[$i-1] && ( $i == $count || !$alphamap[$i] ) ) {
+                    $try = $current . ExtTransliterator::DELIMITER;
+                    if ( isset( $map[$try] ) && is_string( $map[$try] ) ) {
+                        $last_trans = $map[$try];
+                    }
+                }
+
+                if ( $ucfirst ) {
+                    $output .= mb_strtoupper( mb_substr( $last_trans, 0, 1 ) ).mb_substr( $last_trans, 1 );
+                    $ucfirst = false;
+                } else {
+                    $output .= $last_trans;
+                }
+                $i = ++$last_match;
+                $last_trans = null;
+                $current = "";
+
             }
         }
-        if (! is_null( $last_trans ))
-            if ( $ucfirst ) {
-                $output .= mb_strtoupper( mb_substr( $last_trans, 0, 1 ) ).mb_substr( $last_trans, 1 );
-            } else {
-                $output .= $last_trans;
-            }
-
-        // Remove the beginnng and end markers
-        return preg_replace('/^\^|\$$|\$(\s+)\^|\$(\s+)|(\s+)\^/',"$1", $output);
+        return $output;
     }
 
     /**
@@ -385,8 +444,8 @@ class ExtTransliterator {
 
         } else { // A Map
             $title = Title::newFromRow( $this->mPages[$mappage] );
-            $output = UtfNormal::toNFC( $this->transliterate( $word, $map ) );
-            $output = str_replace('$1', $output, $format);
+            $output = UtfNormal::toNFC( $this->transliterate( html_entity_decode( $word, ENT_QUOTES, 'UTF-8' ), $map ) );
+            $output = str_replace( '$1', $output, $format );
 
         }
         // Populate the dependency table so that we get re-rendered if the map changes.
@@ -395,8 +454,8 @@ class ExtTransliterator {
 
         return $output;
     }
-
 }
+
 function efTransliterator_Setup() {
     global $wgParser;
 
@@ -408,6 +467,6 @@ function efTransliterator_Setup() {
 function efTransliterator_Magic( &$magicWords, $langCode ) {
     wfLoadExtensionMessages('Transliterator');
 
-    $magicWords['transliterate'] = array( 0, 'transliterate', wfMsg('transliterator-invoke') );
+    $magicWords['transliterate'] = array( 0, 'transliterate', wfMsg( 'transliterator-invoke' ) );
     return true;
 }
