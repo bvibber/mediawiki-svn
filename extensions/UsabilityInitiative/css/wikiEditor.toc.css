@@ -1,9 +1,7 @@
-@CHARSET "UTF-8";
-
 /* wikiEditor toc module */
 
 .wikiEditor-ui .wikiEditor-ui-toc {
-	/* width is set dynmaically */
+	/* width is set dynamically */
 	position: absolute;
 	right: -1px;
 	top: 0;
