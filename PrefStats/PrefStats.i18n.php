@@ -18,11 +18,12 @@ $messages['en'] = array(
 	'prefstats-list-intro' => 'Currently, the following preferences are being tracked.
 Click on one to view statistics about it.',
 	'prefstats-list-elem' => '$1 = $2',
-	'prefstats-noprefs' => 'No preferences are currently being tracked. Configure $wgPrefStatsTrackPrefs to track preferences.',
+	'prefstats-noprefs' => 'No preferences are currently being tracked.
+Configure $wgPrefStatsTrackPrefs to track preferences.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|user has|users have}} enabled this preference since preference statistics were activated
 ** $2 {{PLURAL:$2|user has|users have}} enabled it
 ** $3 {{PLURAL:$3|user has|users have}} disabled it',
-	'prefstats-counters-expensive' => '* {{PLURAL:$1|$1 user has|$1 users have}} enabled this preference since preference statistics were activated
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|user has|users have}} enabled this preference since preference statistics were activated
 ** $2 {{PLURAL:$2|user has|users have}} enabled it
 ** $3 {{PLURAL:$3|user has|users have}} disabled it
 * In total, $4 {{PLURAL:$4|user has|users have}} this preference set', 
