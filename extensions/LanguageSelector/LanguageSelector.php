@@ -71,6 +71,7 @@ $wgLanguageSelectorRequestedLanguage = NULL;
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['LanguageSelector'] = $dir . 'LanguageSelector.i18n.php';
+$wgJSAutoloadClasses['LanguageSelector'] = "extensions/LanguageSelector/LanguageSelector.js"; 
 
 function wgLanguageSelectorSetHook() {
 	global $wgParser;
@@ -166,32 +167,14 @@ function wfLanguageSelectorExtension() {
 		}
 	}
 
-	$wgOut->addScript('<script type="'.$wgJsMimeType.'">
-		addOnloadHook(function() { 
-			var i = 1;
-			while ( true ) {
-				var btn = document.getElementById("languageselector-commit-"+i);
-				var sel = document.getElementById("languageselector-select-"+i);
-				var idx = i;
-
-				if (!btn) break;
-
-				btn.style.display = "none";
-				sel.onchange = function() {
-					node = this.parentNode;
-					while( true ) {
-						if( node.tagName.toLowerCase() == "form" ) {
-							node.submit();
-							break;
-						}
-						node = node.parentNode;
-					}
-				};
-
-				i++;
-			}
-		});
-	</script>');
+	if ( method_exists( $wgOut, 'addScriptClass' ) ) {
+		$wgOut->addScriptClass( 'LanguageSelector' );
+	} else {
+		$wgOut->addScript( "<script type=\"$wgJsMimeType\">" .
+			file_get_contents( dirname( __FILE__ ) . '/LanguageSelector.js' ) .
+			'</script>'
+		);
+	}
 }
 
 function wfLanguageSelectorBeforePageDisplay( &$out ) {
