@@ -52,7 +52,7 @@ Please create an alternate user name or [[$1|contact us]] about the problem',
 	'regexblock-unblock-log' => "User name or IP address '''$1''' has been unblocked.",
 	'regexblock-unblock-error' => 'Error unblocking $1.
 Probably there is no such user.',
-	'regexblock-regex-filter' => ' or regex value: ', // FIXME: bad i18n. Static formatting and lego
+	'regexblock-regex-filter' => ' or regex value:', // FIXME: bad i18n. Static formatting and lego
 	'regexblock-view-blocked' => 'View blocked by:',
 	'regexblock-view-all' => 'All',
 	'regexblock-view-go' => 'Go',
@@ -62,7 +62,6 @@ Probably there is no such user.',
 	'regexblock-view-reason' => 'reason: $1',
 	'regexblock-view-reason-default' => 'generic reason',
 	'regexblock-view-block-infinite' => 'permanent block',
-	'regexblock-view-block-expired' => 'EXPIRED on ',
 	'regexblock-view-block-by' => 'blocked by:',
 	'regexblock-view-block-unblock' => 'unblock',
 	'regexblock-view-stats' => 'stats',
