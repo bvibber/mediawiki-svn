@@ -14,6 +14,11 @@ public class ReverseStringKeyAnalyzerTest extends TestCase {
 		
 		String key = "AAXB";
 		String other = "AAYB";
+
+		assertEquals(KeyAnalyzer.EQUAL_BIT_KEY,
+				analyzer.bitIndex(key, 0, 4*ReverseStringKeyAnalyzer.LENGTH, 
+						key, 0, 4*ReverseStringKeyAnalyzer.LENGTH));
+
 		assertEquals(1*16+8+7,
 				analyzer.bitIndex(key, 0, 4*ReverseStringKeyAnalyzer.LENGTH, 
 						other, 0, 4*ReverseStringKeyAnalyzer.LENGTH));

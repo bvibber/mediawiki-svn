@@ -10,15 +10,22 @@ import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
+import javolution.util.FastMap;
+
 import org.ardverk.collection.PatriciaTrie;
 import org.ardverk.collection.StringKeyAnalyzer;
 
 import de.brightbyte.audit.DebugUtil;
-import de.brightbyte.data.Functor;
+import de.brightbyte.data.Codec;
+import de.brightbyte.data.CodecException;
+import de.brightbyte.data.NaturalComparator;
+import de.brightbyte.data.ArrayComparator;
+import de.brightbyte.data.TerseIdMap;
+import de.brightbyte.text.CharsetCodec;
 
 public class IdManagerBenchmark {
 
-	protected static <D> void load(File store, String encoding, Map<D, Integer> ids, Functor<D, String> converter) throws IOException {
+	protected static <D> void load(File store, String encoding, Map<D, Integer> ids, Codec<String, D> converter) throws IOException, CodecException {
 		InputStream f = new FileInputStream(store);
 		Reader rd = encoding!=null ? new InputStreamReader(f, encoding) : new InputStreamReader(f);
 		BufferedReader in = new BufferedReader(rd); 
@@ -32,7 +39,7 @@ public class IdManagerBenchmark {
 			
 			try {
 				String n = s.substring(0, idx);
-				D x = converter==null ? (D)n : converter.apply(n);
+				D x = converter==null ? (D)n : converter.encode(n);
 				int i = Integer.parseInt(s.substring(idx+1));
 				
 				Integer old = ids.put(x, i);
@@ -45,7 +52,7 @@ public class IdManagerBenchmark {
 		in.close();
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, CodecException {
 		String mode = args[0];
 		String enc = args[1];
 		String file = args[2];
@@ -61,8 +68,10 @@ public class IdManagerBenchmark {
 			Map<String, Integer> map;
 			
 			if (mode.equals("hash")) map = new HashMap<String, Integer>();
+			else if (mode.equals("fast")) map = new FastMap<String, Integer>();
 			else if (mode.equals("trie")) map = new PatriciaTrie<String, Integer>(StringKeyAnalyzer.INSTANCE);
 			else if (mode.equals("rtrie")) map = new PatriciaTrie<String, Integer>(ReverseStringKeyAnalyzer.INSTANCE);
+			else if (mode.equals("terse")) map = new TerseIdMap<String>(String.class, NaturalComparator.<String>instance());
 			else throw new IllegalArgumentException("unknown mode: "+mode);
 
 			load(new File(file), fileEncoding, map, null);
@@ -70,11 +79,13 @@ public class IdManagerBenchmark {
 		}	else {
 			Map<byte[], Integer> map;
 			
-			StringEncoder converter = new StringEncoder(enc);
+			CharsetCodec converter = new CharsetCodec(enc);
 			
 			if (mode.equals("hash")) map = new HashMap<byte[], Integer>();
+			else if (mode.equals("fast")) map = new FastMap<byte[], Integer>();
 			else if (mode.equals("trie")) map = new PatriciaTrie<byte[], Integer>(ByteArrayKeyAnalyzer.INSTANCE);
 			else if (mode.equals("rtrie")) throw new IllegalArgumentException("Reverte Trie is not yet supported for byte arrays");
+			else if (mode.equals("terse")) map = new TerseIdMap<byte[]>(byte[].class, ArrayComparator.BYTES);
 			else throw new IllegalArgumentException("unknown mode: "+mode);
 
 			load(new File(file), fileEncoding, map, converter);

@@ -14,5 +14,6 @@
 			<attribute name="javadoc_location" value="file:/home/daniel/src/patricia-trie-0.1/api/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/org/javolution/javolution/5.2.6/javolution-5.2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

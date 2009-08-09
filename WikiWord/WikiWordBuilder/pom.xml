@@ -50,7 +50,17 @@
           <version>0.1</version>
           <scope>system</scope>
           <systemPath>${basedir}/lib/patricia-trie-0.1.jar</systemPath>
+	      <optional>true</optional> 
        </dependency>
+ 
+      <dependency>
+      	 <groupId>org.javolution</groupId>
+      	 <artifactId>javolution</artifactId>
+      	 <version>5.2.6</version>
+         <scope>compile</scope>
+      	<optional>true</optional> 
+     </dependency> 
+       
     </dependencies>
     
   <build>

@@ -92,7 +92,7 @@ public class ByteArrayKeyAnalyzer implements KeyAnalyzer<byte[]> {
             return false;
         }
         
-        int index = key.length - (int)(offsetInBits / BITS) -1;
+        int index = offsetInBits / BITS;
         int bit = (int)(offsetInBits % BITS);
         
         return (key[index] & (MSB >>> bit)) != 0;
