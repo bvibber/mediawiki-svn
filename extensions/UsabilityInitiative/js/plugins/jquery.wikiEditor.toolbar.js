@@ -57,7 +57,8 @@ fn: {
 			return;
 		}
 		context.modules.$toolbar = $( '<div></div>' )
-			.addClass( 'wikiEditor-ui-toolbar' );
+			.addClass( 'wikiEditor-ui-toolbar' )
+			.attr( 'id', 'wikiEditor-ui-toolbar' );
 		$.wikiEditor.modules.toolbar.fn.build( context, config );
 		context.$ui.find( '.wikiEditor-ui-top' )
 			.append( context.modules.$toolbar );

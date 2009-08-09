@@ -50,15 +50,15 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 4 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 5 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 4 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 4 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 5 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 4 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 5 ),
 			),
 		),
 	);
