@@ -344,6 +344,14 @@ fn: {
 									'options': { 'pre': tool }
 								}
 							};
+						} else if ( 0 in tool && 1 in tool ) {
+							tool = {
+								'label': tool[0],
+								'action': {
+									'type': 'encapsulate',
+									'options': { 'pre': tool[1] }
+								}
+							};
 						}
 						if ( 'action' in tool && 'label' in tool ) {
 							var $character = $( '<a></a>' )
@@ -356,7 +364,7 @@ fn: {
 										$(this).data( 'context' ),
 										$(this).data( 'action' )
 									);
-									return false;	
+									return false;
 								} );
 							$characters.append( $character );
 						}

@@ -76,6 +76,7 @@ File:Example.jpg|Caption2",
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',
 	'edittoolbar-characters-page-latin' => 'Latin',
+	'edittoolbar-characters-page-latinextended' => 'Latin extended',
 	'edittoolbar-characters-page-ipa' => 'IPA',
 	'edittoolbar-characters-page-symbols' => 'Symbols',
 	'edittoolbar-characters-page-greek' => 'Greek',

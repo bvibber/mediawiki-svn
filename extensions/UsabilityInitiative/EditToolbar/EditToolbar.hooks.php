@@ -100,6 +100,7 @@ class EditToolbarHooks {
 				/* Special Characters Section */
 				'edittoolbar-section-characters',
 				'edittoolbar-characters-page-latin',
+				'edittoolbar-characters-page-latinextended',
 				'edittoolbar-characters-page-ipa',
 				'edittoolbar-characters-page-symbols',
 				'edittoolbar-characters-page-greek',
