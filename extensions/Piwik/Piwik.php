@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Piwik Integration',
-	'version'        => '0.8-piwik0.2.26 (1.0-RC3)',
+	'version'        => '1.5-piwik0.4.2',
 	'author'         => 'Isb1009',
 	'description'    => 'Inserts Piwik script into MediaWiki pages for tracking and adds [[Special:Piwik|some stats]]. Based on Google Analytics Integration by Tim Laqua.',
 	'descriptionmsg' => 'piwik-desc',
@@ -52,19 +52,24 @@ function efAddPiwik() {
 				}
 				$funcOutput = <<<PIWIK
 <!-- Piwik -->
-<a href="http://piwik.org" title="Web analytics" onclick="window.open(this.href);return(false);">
-<script language="javascript" src="{$wgScriptPath}/extensions/piwik/piwik-mw.js" type="text/javascript"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-piwik_action_name = '{$wgPiwikFinalActionName}';
-piwik_idsite = {$wgPiwikIDSite};
-piwik_url = '{$wgPiwikURL}piwik.php';
-piwik_log(piwik_action_name, piwik_idsite, piwik_url);
-{$wgPiwikCustomJS}
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://{$wgPiwikURL}" : "http://{$wgPiwikURL}");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
 /* ]]> */
-</script><object>
-<noscript><p>Web analytics <img src="{$wgPiwikURL}/piwik.php" style="border:0" alt="piwik"/></p>
-</noscript></object></a>
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", {$wgPiwikIDSite});
+piwikTracker.setDocumentTitle("{$wgPiwikFinalActionName}");
+piwikTracker.setIgnoreClasses("image");
+{$wgPiwikCustomJS}
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+/* ]]> */
+</script><noscript><p><img src="http://{$wgPiwikURL}piwik.php?idsite={$wgPiwikIDSite}" style="border:0" alt=""/></p></noscript>
 <!-- /Piwik -->
 PIWIK;
 			} else {
