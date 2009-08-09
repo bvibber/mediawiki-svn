@@ -335,7 +335,7 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .section-help .page-table table t
 	text-decoration: none;
 }
 body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .section-characters .page-characters > div > a,
-.wikiEditor-ui .wikiEditor-ui-toolbar .section-characters .page-characters div.rtl a {
+.wikiEditor-ui .wikiEditor-ui-toolbar .section-characters .page-characters div[dir=rtl] a {
 	direction: rtl;
 	float: right;
 	margin-left: 0;
