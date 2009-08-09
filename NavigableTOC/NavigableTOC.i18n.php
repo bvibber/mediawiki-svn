@@ -57,6 +57,15 @@ $messages['eu'] = array(
 	'navigabletoc-desc' => 'Eduki-taula gehitzen du editatzeko orrira eta testu-taula erakusten du klikatzean',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'navigabletoc' => 'Navigoitava sisällysluettelo',
+	'navigabletoc-desc' => 'Lisää tekstikenttään sisällysluettelon, joka vierii kun osiota napsautetaan.',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -152,6 +161,14 @@ $messages['lb'] = array(
 	'navigabletoc' => 'Inhaltsverzeechnis fir ze navigéieren',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'navigabletoc' => 'Navigasi kandungan',
+	'navigabletoc-desc' => "Menambahkan jadual kandungan dalam bahagian suntingan yang ''scroll'' ke bawah.",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -183,6 +200,14 @@ $messages['pt'] = array(
 	'navigabletoc-desc' => 'Adiciona uma tabela de conteúdo ao formulário de edição que desloca a caixa de texto quando a secção é clicada',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'navigabletoc' => 'Tabela de conteúdo navegável',
+	'navigabletoc-desc' => 'Adiciona uma tabela de conteúdo ao formulário de edição que desloca a caixa de texto quando uma seção é clicada',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -206,6 +231,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'navigabletoc' => 'Navigovateľný Obsah',
 	'navigabletoc-desc' => 'Pridáva do formulára úprav Obsah, ktorý sa posunie na správne miesto po kliknutí na sekciu',
+);
+
+/** Swedish (Svenska)
+ * @author Micke
+ */
+$messages['sv'] = array(
+	'navigabletoc' => 'Navigeringsbar innehållsförteckning',
+	'navigabletoc-desc' => 'Lägger till en innehållsförteckning i redigeringsfönstret som scrollar textrutan när ett avsnitt väljs',
 );
 
 /** Turkish (Türkçe)

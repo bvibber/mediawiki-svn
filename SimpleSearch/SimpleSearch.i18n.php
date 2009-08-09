@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'simplesearch-search' => '{{Identical/Search}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'simplesearch-search' => 'Soek',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -103,6 +110,14 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'simplesearch' => 'Simpla serĉo',
 	'simplesearch-desc' => 'Aldonas pluan funkciadon al la simpligita serĉo de Vector.',
+	'simplesearch-search' => 'Serĉi',
+);
+
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'simplesearch-search' => 'Búsqueda',
 );
 
 /** Basque (Euskara)
@@ -259,6 +274,15 @@ $messages['ml'] = array(
 	'simplesearch-search' => 'തിരയുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'simplesearch' => 'Carian mudah',
+	'simplesearch-desc' => 'Menambahkan lebih fungsi dalam penggunaan carian mudah Vector',
+	'simplesearch-search' => 'Cari',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -295,6 +319,15 @@ $messages['pl'] = array(
 	'simplesearch-search' => 'Szukaj',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'simplesearch' => 'ساده پلټنه',
+	'simplesearch-desc' => 'د وېکټور ساده پلټنې ته نورې کړنې ورګډوي',
+	'simplesearch-search' => 'پلټل',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -302,6 +335,23 @@ $messages['pt'] = array(
 	'simplesearch' => 'Pesquisa Simples',
 	'simplesearch-desc' => 'Adiciona funcionalidades extra à pesquisa simplificada do Vector.',
 	'simplesearch-search' => 'Pesquisa',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'simplesearch' => 'Sikllalla maskay',
+	'simplesearch-desc' => 'Sinkurwaq illwap sikllalla maskayninman huk ruranakunatam yapan',
+	'simplesearch-search' => 'Maskay',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'simplesearch' => 'Căutare simplă',
+	'simplesearch-search' => 'Căutaţi',
 );
 
 /** Tarandíne (Tarandíne)
@@ -371,6 +421,14 @@ $messages['tr'] = array(
 	'simplesearch' => 'Basit arama',
 	'simplesearch-desc' => "Vector'un basitleştirilmiş aramasına ilave işlevler ekler",
 	'simplesearch-search' => 'Ara',
+);
+
+/** Ukrainian (Українська)
+ * @author Pavlo Shevelo
+ */
+$messages['uk'] = array(
+	'simplesearch' => 'Простий пошук',
+	'simplesearch-desc' => 'Додає більше функціональності до спрощеного пошуку Vector',
 );
 
 /** Vèneto (Vèneto)
