@@ -1,6 +1,8 @@
 /* JavaScript for EditToolbar extension */
 
 js2AddOnloadHook( function() {
+	// Allow user/site JS to customize editToolbarConfiguration
+	$j( document ).trigger( 'toolbarConfig' );
 	$j( 'textarea#wpTextbox1' ).wikiEditor(
 		{ 'toolbar': editToolbarConfiguration }
 	);
