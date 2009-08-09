@@ -51,10 +51,15 @@ class SpecialPrefStats extends SpecialPage {
 	}
 
 	function displayPrefStats( $pref ) {
-		global $wgOut, $wgRequest, $wgPrefStatsTrackPrefs;
+		global $wgOut, $wgRequest, $wgPrefStatsExpensiveCounts;
 		$max = $this->getMaxDuration( $pref );
 		$stats = $this->getPrefStats( $pref,
 			$wgRequest->getIntOrNull( 'inc' ) );
+		$counters = $this->getCounters( $pref );
+		$message = $wgPrefStatsExpensiveCounts ?
+			'prefstats-counters-expensive' :
+			'prefstats-counters';
+		$wgOut->addWikiMsgArray( $message, $counters );
 		$wgOut->addHTML( Xml::element( 'img', array( 'src' =>
 			$this->getGoogleChartParams( $stats ) ) ) );
 	}
@@ -72,6 +77,30 @@ class SpecialPrefStats extends SpecialPage {
 			'chxl' => '0:|' . implode( '|', array_keys( $stats ) ),
 			'chm' => 'N*f0zy*,000000,0,-1,11'
 		) );
+	}
+	
+	function getCounters( $pref ) {
+		global $wgPrefStatsExpensiveCounts, $wgPrefStatsTrackPrefs;
+		$val = $wgPrefStatsTrackPrefs[$pref];
+		
+		$dbr = wfGetDb( DB_SLAVE );
+		$c2 = $dbr->selectField( 'prefstats', 'COUNT(*)', array(
+				'ps_pref' => $pref,
+				'ps_duration IS NULL'
+			), __METHOD__ );
+		$c3 = $dbr->selectField( 'prefstats', 'COUNT(*)', array(
+				'ps_pref' => $pref,
+				'ps_duration IS NOT NULL'
+			), __METHOD__ );
+		$c1 = $c2 + $c3;
+		if ( $wgPrefStatsExpensiveCounts )
+			$c4 = $dbr->selectField( 'user_properties', 'COUNT(*)',
+				array(	'up_property' => $pref,
+					'up_value' => $val
+				), __METHOD__ );
+		else
+			$c4 = 0;
+		return array( $c1, $c2, $c3, $c4 );
 	}
 
 	function getPrefStats( $pref, $inc = null ) {

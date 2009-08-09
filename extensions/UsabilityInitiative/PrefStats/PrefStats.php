@@ -35,6 +35,10 @@ $wgPrefStatsChartDimensions = '1000x300';
 // Time unit to use for the graph on Special:PrefStats
 $wgPrefStatsTimeUnit = 60 * 60 * 24; // one day
 
+// Whether to run possibly expensive COUNT(*) queries on the user_properties
+// table
+$wgPrefStatsExpensiveCounts = false;
+
 /* Setup */
 
 // Right required to view Special:PrefStats
