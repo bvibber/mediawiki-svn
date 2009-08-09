@@ -55,15 +55,19 @@ $.wikiEditor.instances[instance] = $(this);
 
 // Encapsulate the textarea with some containers for layout
 $(this)
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' )
+		.attr( 'id', 'wikiEditor-ui' ) )
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' )
+		.attr( 'id', 'wikiEditor-ui-bottom' ) )
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' )
+		.attr( 'id', 'wikiEditor-ui-text' ) );
 
 // Get a reference to the outer container
 context.$ui = $(this).parent().parent().parent();
 context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 // Attach a container in the top
-context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
+context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' )
+	.attr( 'id', 'wikiEditor-ui-top' ) );
 // Create a set of standard methods for internal and external use
 context.api = {
 	/**

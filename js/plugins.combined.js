@@ -573,14 +573,19 @@ $.wikiEditor.instances[instance] = $(this);
 
 // Encapsulate the textarea with some containers for layout
 $(this)
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
-// Get a refrence to the outter container
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' )
+		.attr( 'id', 'wikiEditor-ui' ) )
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' )
+		.attr( 'id', 'wikiEditor-ui-bottom' ) )
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' )
+		.attr( 'id', 'wikiEditor-ui-text' ) );
+
+// Get a reference to the outer container
 context.$ui = $(this).parent().parent().parent();
 context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 // Attach a container in the top
-context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ) );
+context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' )
+	.attr( 'id', 'wikiEditor-ui-top' ) );
 // Create a set of standard methods for internal and external use
 context.api = {
 	/**
@@ -658,7 +663,8 @@ fn: {
 			return;
 		}
 		context.modules.$toc = $( '<div></div>' )
-			.addClass( 'wikiEditor-ui-toc' );
+			.addClass( 'wikiEditor-ui-toc' )
+			.attr( 'id', 'wikiEditor-ui-toc' );
 		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$ui.find( '.wikiEditor-ui-bottom' )
 			.append( context.modules.$toc );
@@ -918,7 +924,8 @@ fn: {
 			return;
 		}
 		context.modules.$toolbar = $( '<div></div>' )
-			.addClass( 'wikiEditor-ui-toolbar' );
+			.addClass( 'wikiEditor-ui-toolbar' )
+			.attr( 'id', 'wikiEditor-ui-toolbar' );
 		$.wikiEditor.modules.toolbar.fn.build( context, config );
 		context.$ui.find( '.wikiEditor-ui-top' )
 			.append( context.modules.$toolbar );

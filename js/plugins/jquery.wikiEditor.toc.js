@@ -23,7 +23,8 @@ fn: {
 			return;
 		}
 		context.modules.$toc = $( '<div></div>' )
-			.addClass( 'wikiEditor-ui-toc' );
+			.addClass( 'wikiEditor-ui-toc' )
+			.attr( 'id', 'wikiEditor-ui-toc' );
 		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$ui.find( '.wikiEditor-ui-bottom' )
 			.append( context.modules.$toc );
