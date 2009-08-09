@@ -674,6 +674,13 @@ $messages['os'] = array(
 	'findspam-ok' => 'Афтæ уæд!',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'findspam-ok' => 'OK',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Maikking

@@ -520,7 +520,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'whatismyip' => 'زما IP څه دی',
-	'whatismyip-desc' => 'د اوسني کارونکي [[Special:WhatIsMyIP|IP پته]] ښکاره کوي',
+	'whatismyip-desc' => 'د اوسني کارن [[Special:WhatIsMyIP|IP پته]] ښکاره کوي',
 	'whatismyip-out' => 'ستاسې IP پته:',
 	'right-whatismyip' => '[[Special:WhatIsMyIP|خپله IP پته]] کتل',
 );
@@ -538,11 +538,13 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'whatismyip' => 'Qual é o meu IP',
-	'whatismyip-desc' => 'Mostra o endereço IP do utilizador atual em [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'O seu IP:',
+	'whatismyip-desc' => 'Mostra o [[Special:WhatIsMyIP|endereço de IP]] do usuário atual',
+	'whatismyip-out' => 'O seu endereço de IP:',
+	'right-whatismyip' => 'Visualizar o [[Special:WhatIsMyIP|meu endereço de IP]]',
 );
 
 /** Romanian (Română)

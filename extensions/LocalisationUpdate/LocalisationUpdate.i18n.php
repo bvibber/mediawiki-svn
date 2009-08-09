@@ -136,6 +136,13 @@ $messages['id'] = array(
 	'localisationupdate-desc' => 'Mengusahakan agar pesan-pesan yang telah diterjemahkan tetap semutakhir mungkin',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'localisationupdate-desc' => 'Mantiene i messaggi localizzati quanto più aggiornati è possibile',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -206,6 +213,13 @@ $messages['pt'] = array(
 	'localisationupdate-desc' => 'Mantém as mensagens localizadas tão atualizadas quanto possível',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'localisationupdate-desc' => 'Mantém as mensagens localizadas tão atualizadas quanto possível',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
@@ -232,6 +246,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'localisationupdate-desc' => 'Giữ các thông điệp bản địa hóa được cập nhật nhất có thể',
 );
 
 /** Yue (粵語)

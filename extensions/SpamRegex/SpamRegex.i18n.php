@@ -432,12 +432,32 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'spamregex-error-unblocking' => 'Ilmauksen ”$1” eston poisto ei onnistunut. Sitä ei todennäköisesti ole estetty.',
+	'spamregex-summary' => 'Teksti löytyi sivun yhteenvedosta.',
+	'spamregex-currently-blocked' => "'''Estetyt ilmaukset:'''",
+	'spamregex-move' => 'Antamasi syy sisälsi estetyn ilmauksen.',
+	'spamregex-no-currently-blocked' => "'''Estettyjä ilmauksia ei ole.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 poista]) lisäsi $5 $6 klo $7",
+	'spamregex-page-title-1' => 'Estä ilmaus säännöllisten lausekkeiden avulla',
 	'spamregex-unblock-success' => 'Eston poisto onnistui',
+	'spamregex-unblock-message' => "Ilmauksen '''$1''' esto on poistettu.",
+	'spamregex-page-title-2' => 'Estä ilmausten tallentaminen säännöllisten lausekkeiden avulla',
 	'spamregex-block-success' => 'Esto onnistui',
+	'spamregex-block-message' => "Ilmaus '''$1''' on estetty.",
+	'spamregex-warning-1' => 'Anna estettävä ilmaus.',
 	'spamregex-error-1' => 'Virheellinen säännöllinen lauseke.',
+	'spamregex-warning-2' => 'Valitse ainakin yksi estotapa.',
+	'spamregex-already-blocked' => '”$1” on jo estetty',
+	'spamregex-phrase-block' => 'Estettävä ilmaus:',
+	'spamregex-phrase-block-text' => 'estä ilmaus sivun tekstissä',
+	'spamregex-phrase-block-summary' => 'estä ilmaus yhteenvedossa',
+	'spamregex-block-submit' => 'Estä&nbsp;tämä&nbsp;ilmaus',
+	'spamregex-text' => '(Teksti)',
+	'spamregex-summary-log' => '(Yhteenveto)',
 );
 
 /** French (Français)

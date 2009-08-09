@@ -126,6 +126,13 @@ $messages['es'] = array(
 	'antibot-desc' => 'Entorno sencillo para las comprobaciones de bots de spam y la activación de contenidos de descarga condicional automatizada.',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'antibot-desc' => 'Lihtne raamistik rämpspostirobotite pidurdamiseks.',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -241,10 +248,11 @@ $messages['jv'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'antibot-desc' => '스팸봇의 간단한 구조를 점검하고 유효한 탑재량을 확인함',
+	'antibot-desc' => '스팸봇 확인과 트리거 사용량 확인 기능을 가지는 프레임워크',
 );
 
 /** Ripoarisch (Ripoarisch)

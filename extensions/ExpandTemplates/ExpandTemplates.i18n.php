@@ -493,6 +493,7 @@ Lo hace llamando al nivel del analizador sintáctico correspondiente del propio 
  */
 $messages['et'] = array(
 	'expandtemplates' => 'Mallide lahendamine',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Laiendab mallid, parserifunktsioonid ja muutujad]], et näidata täielikku vikiteksti ja kuvada visualiseeritud lehekülg.',
 	'expand_templates_intro' => 'See erileht mahutab natuke teksti ja laiendab tekstis kõik mallid nende lähtekoodideks.
 Samuti laiendab see parserifunktsioonid nagu <nowiki>{{</nowiki>#if:…}} ja muutujad nagu <nowiki>{{</nowiki>CURRENTDAY}} – teisisõnu enamvähem kõik, mis jääb looksulgude vahele.
 Selleks kutsub lehekülg MediaWikist asjassepuutuva parserijärgu.',

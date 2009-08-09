@@ -377,12 +377,13 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
 	'block_title_error_page_title' => '금지된 제목',
-	'block_title_error-desc' => '페이지에 특정한 제목을 저장하거나 만드는 것을 막는 기본적인 방법을 제공합니다.',
-	'block_title_error' => '죄송합니다. 이 페이지의 제목은 저장이 허용되지 않습니다.',
+	'block_title_error-desc' => '특정한 제목의 문서 생성을 막는 기능',
+	'block_title_error' => '죄송합니다. 현재 문서의 제목은 저장이 금지되어 있습니다.',
 );
 
 /** Ripoarisch (Ripoarisch)

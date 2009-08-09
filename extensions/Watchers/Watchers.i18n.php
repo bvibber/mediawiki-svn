@@ -669,6 +669,13 @@ $messages['os'] = array(
 	'watchers_link_title' => 'Чи йæ цæст дары ацы фарсмæ?',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'watchers' => 'Watschers',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Maikking

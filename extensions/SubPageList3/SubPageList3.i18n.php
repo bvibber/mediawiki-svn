@@ -144,6 +144,13 @@ $messages['es'] = array(
 	'spl3_nosubpages' => '$1 no tiene subpáginas a listar.',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'spl3_debug' => 'Tuntematon arvo valinnassa $1.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Grondin

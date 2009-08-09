@@ -163,6 +163,13 @@ $messages['id'] = array(
 	'jskit-desc' => 'Integrasikan peralatan js-kit ke sebuah halaman wiki',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'jskit-desc' => 'Integra gli strumenti js-kit in una pagina wiki',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

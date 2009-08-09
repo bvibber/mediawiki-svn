@@ -391,6 +391,7 @@ $messages['fa'] = array(
  * @author Crt
  * @author Nike
  * @author Vililikku
+ * @author ZeiP
  */
 $messages['fi'] = array(
 	'imstatus-desc' => 'Lisää elementit monien pikaviestimien tilan näyttämiseen (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo).',
@@ -401,6 +402,8 @@ $messages['fi'] = array(
 	'imstatus_style' => 'tilanilmaisimen tyyli',
 	'imstatus_action' => 'toimenpide, kun painiketta napsautetaan',
 	'imstatus_details_saa' => 'Lisätietoja kaikista tyyleistä ja toimenpiteistä löytyy sivulta $1.',
+	'imstatus_gtalk_code' => 'google talk -tunnuksesi',
+	'imstatus_gtalk_get_code' => 'google talk -tunnuksesi: hanki se osoitteessa $1.',
 	'imstatus_gtalk_height' => 'laatikon korkeus, pikseleinä.',
 	'imstatus_gtalk_width' => 'laatikon leveys, pikseleinä.',
 	'imstatus_icq_id' => 'ICQ-tunnuksesi',
@@ -408,6 +411,9 @@ $messages['fi'] = array(
 	'imstatus_live_code' => 'Live Messenger -sivuston tunnuksesi',
 	'imstatus_live_get_code' => 'Live Messenger -sivuston tunnus: <strong>tämä ei ole sähköpostiosoitteesi</strong>. Sinun täytyy luoda se <a href="$1">Live Messenger -asetuksissasi</a>.
 Tunnus, joka sinun pitää antaa, on numeroita ja kirjaimia merkkijonojen <code>$2</code> ja <code>$3</code> väliltä.',
+	'imstatus_skype_nbstyle' => 'Huomaa: Jos valitset tyylin joka on myös toiminto, valitsemasi tyylin toiminto yliajaa valitsemasi toiminnon.',
+	'imstatus_xfire_size' => 'painikkeen koko, $1:stä (suurin) $2:een (pienin).',
+	'imstatus_yahoo_style' => 'painikkeen tyyli, $1:stä (pienin) $2:een (suurin), $3 ja $4 ovat äänivastaajalle.',
 );
 
 /** French (Français)
@@ -915,6 +921,15 @@ L’identificant de provesir aicí es compausat de chifras e letras entre « $2 
 	'imstatus_skype_nbstyle' => "Nòta : se causissètz un estil que tanben es una accion, vòstra causida d’accion serà espotida per l’accion que correspond a l'estil qu'avètz causit.",
 	'imstatus_xfire_size' => 'la talha del boton, de $1 (la mai granda) a $2 (la mai pichona).',
 	'imstatus_yahoo_style' => "l'estil del boton, de $1 (lo mai pichon) a $2 (lo mai grand), $3 e $4 son pels messatges vocals.",
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'imstatus_or' => 'odder',
+	'imstatus_icq_id' => 'dei ICQ-ID',
+	'imstatus_icq_style' => 'en Zehl vun 0 bis 26 (ya, es gitt 27 verschiddeni Aarde …).',
 );
 
 /** Polish (Polski)

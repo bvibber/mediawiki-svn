@@ -1012,11 +1012,12 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Ilovesabbath
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'povwatch' => 'POV주시',
+	'povwatch' => 'PovWatch',
 	'povwatch_desc' => '다른 사용자의 [[Special:PovWatch|주시 목록에 문서를 추가시키는]] 확장 기능',
 	'povwatch_no_session' => '에러: 세션 데이터를 잃어서 폼을 전달할 수 없습니다.',
 	'povwatch_not_allowed_push' => 'POV주시 관리자가 아니면, 주시 목록에 문서를 추가할 수 없습니다.',
@@ -1032,7 +1033,7 @@ $messages['ko'] = array(
 	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|수신자 목록]]을 볼 수 있습니다.',
 	'povwatch_subscriber_list_intro' => '<strong>수신자 목록</strong>',
 	'povwatch_not_allowed_subscribers' => '당신은 POV주시 수신자 목록을 볼 수 있는 권한이 없습니다.',
-	'povwatch_unknown_subpage' => '알려지지 않은 하위 페이지입니다.',
+	'povwatch_unknown_subpage' => '알 수 없는 하위 문서',
 	'povwatch_push' => '추가',
 	'povwatch_push_intro' => '수신 사용자의 주시 목록에 문서를 추가하려면 아래 폼을 이용하세요.
 제목을 정확히 입력해주세요: 존재하지 않는 제목도 추가될 수 있고, 추가된 제목은 지울 수 없기 때문입니다.',
@@ -1048,7 +1049,7 @@ $messages['ko'] = array(
 	'povwatch_subscribe' => '수신',
 	'povwatch_added' => '추가됨',
 	'right-povwatch_admin' => '다른 사용자의 주시 목록에 문서를 추가할 수 있는 관리자 권한',
-	'right-povwatch_user' => '다른 사용자의 주시 목록에 문서를 추가',
+	'right-povwatch_user' => '다른 사용자의 주시 목록에 문서 추가',
 	'action-povwatch_admin' => 'POV주시 관리자',
 	'action-povwatch_user' => '다른 사용자의 주시 목록에 문서를 추가할 수 있는',
 );

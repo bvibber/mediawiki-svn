@@ -97,6 +97,20 @@ $messages['ia'] = array(
 	'uploadblacklist-desc' => 'Adde le functionalitate de un lista nigre pro le cargamento de files',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'uploadblacklist-desc' => 'Aggiunge una funzionalità di blacklist per i caricamenti',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'uploadblacklist-desc' => "Setzt d'Fonctionalitéit vun enger Schwaarzer Lëscht fir d'Eroplueden derbäi",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -125,6 +139,13 @@ $messages['pms'] = array(
 	'uploadblacklist-desc' => 'A gionta na funsionalità për carié la blacklist',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'uploadblacklist-desc' => 'Adiciona uma funcionalidade de lista negra para carregamento de arquivos',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -137,5 +158,12 @@ $messages['roa-tara'] = array(
  */
 $messages['sah'] = array(
 	'uploadblacklist-desc' => 'Киллэрии (суруттарыы) хара испииһэгин туһанары баар гынар',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'uploadblacklist-desc' => 'Thêm chức năng danh sách đen tải lên',
 );
 

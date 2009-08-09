@@ -96,6 +96,13 @@ $messages['es'] = array(
 	'trustedxff-desc' => 'Manejo de una lista de direcciones proxy confiables([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'trustedxff-desc' => 'Usaldusväärsete proksiaadresside nimekirja alalhoidmine ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

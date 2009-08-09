@@ -703,11 +703,12 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author ToePeu
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'editmessages' => '편집 메세지',
+	'editmessages' => '메시지 편집',
 	'editmsg-search' => '찾기',
 	'editmsg-new-search' => '새 검색',
 );

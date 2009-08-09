@@ -119,6 +119,16 @@ $messages['dsb'] = array(
 	'mostrevisors-viewcontributors' => 'Głownych wobźěłarjow se woglědaś',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'mostrevisors-namespace' => 'Nimiavaruus',
+	'mostrevisors-submit' => 'Siirry',
+	'mostrevisors-showredir' => 'Näytä ohjaussivut',
+	'mostrevisors-hideredir' => 'Piilota ohjaussivut',
+);
+
 /** French (Français)
  * @author IAlex
  */

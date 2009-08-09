@@ -629,8 +629,12 @@ $messages['qu'] = array(
 	'filelist-image-desc' => 'uray',
 );
 
-/** Romanian (Română) */
+/** Romanian (Română)
+ * @author Firilacroco
+ */
 $messages['ro'] = array(
+	'filelist-show-list' => 'Arată lista',
+	'filelist-show-gallery' => 'Arată galeria',
 	'filelist-image-desc' => 'desc',
 );
 

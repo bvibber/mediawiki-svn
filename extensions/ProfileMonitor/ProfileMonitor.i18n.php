@@ -196,6 +196,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'profiling-ok' => 'Εντάξει',
+	'profiling-data-count' => 'Καταμέτρηση',
 );
 
 /** Esperanto (Esperanto)
@@ -241,6 +242,7 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'profiling-wildcard' => 'Käytä jokerimerkkiä',
 	'profiling-ok' => 'OK',
 	'profiling-data-count' => 'Määrä',
 	'profiling-data-average' => 'Aika (keskiarvo)',
@@ -643,6 +645,13 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'profiling-ok' => 'Афтæ уæд!',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'profiling-ok' => 'OK',
 );
 
 /** Polish (Polski)

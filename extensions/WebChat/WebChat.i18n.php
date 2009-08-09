@@ -45,6 +45,19 @@ $messages['be-tarask'] = array(
 	'right-webchat' => 'карыстаньне [[Special:WebChat|ўэб-чатам]]',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'webchat' => 'Flap web',
+	'webchat-desc' => 'Ouzhpennañ a ra ur [[Special:WebChat|bajenn dibar]] a reer ganti evit flapañ war-eeun gant implijerien all ar wiki',
+	'webchat-header' => "A-drugarez d'ar bajenn dibar-mañ e c'hallit kenlabourat war-eeun gant implijerien all eus ar wiki.
+Evit kevreañ, klikit war ar bouton \"Kevreañ\".
+Ma'z oc'h kevreet e vo bet rakleuniet ho lesanv.
+Ul lesanv a vo lakaet d'an implijerien dianv dre ziouer, met gallout a ra bezañ cheñchet.",
+	'right-webchat' => 'Aotreet da implijout ar [[Special:WebChat|flap web]]',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -90,8 +103,10 @@ Anonymne wužywarje dostanu awtomatiski napórane pśimě, ale dajo se změniś.
 
 /** Spanish (Español)
  * @author Dferg
+ * @author Locos epraix
  */
 $messages['es'] = array(
+	'webchat' => 'Web chat',
 	'webchat-desc' => 'Añade una [[Special:WebChat|página especial]] usada para chatear en vivo con otros usuarios del proyecto',
 );
 
@@ -148,6 +163,19 @@ Jeli sy přizjewjeny, budźe so twoje přimjeno awtomatisce pokazować. Anonymni
 	'right-webchat' => 'Wužiwanje [[Special:WebChat|webchata]] dowoleny',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'webchat' => 'Chat web',
+	'webchat-desc' => 'Adde un [[Special:WebChat|paginas special]] usate pro chattar in tempore real con altere usatores del wiki',
+	'webchat-header' => 'Iste pagina special te permitte collaborar in tempore real con altere usatores del wiki.
+Pro connecter te, clicca simplemente super le button "Connecter".
+Si tu ha aperite un session, tu peudonymo essera ja predefinite.
+Pro usatores anonyme, un pseudonymo es generate automaticamente, ma pote esser cambiate.',
+	'right-webchat' => 'Pote usar le [[Special:WebChat|chat web]]',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
@@ -169,6 +197,19 @@ $messages['ja'] = array(
 	'webchat-desc' => 'ウィキの他の利用者とリアルタイムで会話するための[[Special:WebChat|特別ページ]]を加える',
 	'webchat-header' => 'この特別ページを使うと、あなたはこのウィキの他の利用者とリアルタイムで共同作業ができるようになります。接続するには接続ボタンを押すだけです。ニックネームでログインしている場合はその名前があらかじめ入力されています。匿名の利用者は自動的に名前がつけられますが、変えることもできます。',
 	'right-webchat' => '[[Special:WebChat|ウェブチャット]]を使用できる',
+);
+
+/** Korean (한국어)
+ * @author ITurtle
+ */
+$messages['ko'] = array(
+	'webchat' => '웹 채팅',
+	'webchat-desc' => '위키의 다른 사용자와 실시간으로 대화할 수 있는 [[Special:WebChat|특수 문서]]를 추가합니다.',
+	'webchat-header' => '이 특수 문서로 위키의 다른 사용자와 실시간으로 협업할 수 있습니다.
+연결하시려면, "연결" 버튼을 누르세요.
+로그인하셨으면 자동으로 닉네임이 채워집니다.
+익명 사용자는 임의로 부여하지만, 변경할 수 있습니다.',
+	'right-webchat' => '[[Special:WebChat|웹 채팅]] 이용을 허용하기',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -230,6 +271,13 @@ Per vos connectar, clicatz simplament sul boton « Connect ».
 Se sètz enregistrat(ada), vòstre escais es predefinit amb l’ajuda de vòstre nom d’utilizaire.
 Pels utilizaires anonims, un escais es creat automaticament, mas aqueste pòt èsser modificat.',
 	'right-webchat' => 'Pòt utilizar lo [[Special:WebChat|chat web]]',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'webchat' => 'د جال بنډار',
 );
 
 /** Russian (Русский)

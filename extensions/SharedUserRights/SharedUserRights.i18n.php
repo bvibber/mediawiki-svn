@@ -380,6 +380,7 @@ $messages['pt-br'] = array(
 	'gblrights-logpage' => 'Registo de Permissões Globais',
 	'gblrights-pagetext' => 'Este é um registro de todas as alterações feitas à tabela de permissões globais da família de wikis',
 	'gblrights-rights-entry' => 'alterou grupo global de $1, de $2 para $3',
+	'right-userrights-shared' => 'Gerenciar permissões de utilizador compartilhadas',
 );
 
 /** Russian (Русский)

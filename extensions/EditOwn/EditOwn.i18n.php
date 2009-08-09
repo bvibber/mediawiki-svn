@@ -227,10 +227,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'editown-desc' => '편집권한이 없는 사용자는 오직 그들이 만든 페이지만 편집할 수 있습니다.',
+	'editown-desc' => '완전한 편집 권한(editall)이 없는 사용자에게 자신이 만든 문서의 편집 권한을 주는 기능',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -431,7 +432,7 @@ $messages['yi'] = array(
 	'editown-desc' => 'באניצער וואס האבן נישט דעם אלץ-רעדאקטירן רעכט (editall) קענען רעדאקטירן נאר בלעטער וואס זיי האבן אליין געשאפן.',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

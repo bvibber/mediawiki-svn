@@ -146,6 +146,13 @@ $messages['eu'] = array(
 	'multiboilerplate-submit' => 'Kargatu',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'multiboilerplate-submit' => 'Lataa',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Grondin

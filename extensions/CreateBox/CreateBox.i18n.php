@@ -377,14 +377,15 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'createbox-desc' => '페이지를 위한 특별한 입력 상자 만들기',
-	'createbox-create' => '만들다',
-	'createbox-exists' => "죄송합니다, \"'''{{FULLPAGENAME}}'''\"은 이미 있습니다.
+	'createbox-desc' => '새 문서 생성을 편리하게 만들어 주는 입력 상자',
+	'createbox-create' => '생성',
+	'createbox-exists' => "‘'''{{FULLPAGENAME}}'''’ 문서가 이미 존재합니다.
 
-사용자께서는 이 페이지를 만들 수 없습니다만, [{{fullurl:{{FULLPAGENAME}}|action=edit}} 그 것을 편집하실수 있고],[{{fullurl:{{FULLPAGENAME}}}}를 읽으실 수 있고], 아래 상자를 사용하는 다른 페이지를 만들 수 있습니다.
+따라서 문서를 새로 만들 수는 없지만, [{{fullurl:{{FULLPAGENAME}}|action=edit}} 이 문서를 편집하거나] [{{fullurl:{{FULLPAGENAME}}}} 읽을 수] 있습니다. 또는, 아래 상자를 이용해 다른 문서를 만들어 주세요.
 
 <createbox>break=no</createbox>",
 );

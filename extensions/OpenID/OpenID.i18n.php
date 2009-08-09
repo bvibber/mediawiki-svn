@@ -1194,7 +1194,7 @@ Voit valita omasi alla olevista vaihtoehdoista.',
 	'openidchoosemanual' => 'Omavalintainen nimi',
 	'openidchooseexisting' => 'Olemassa oleva tunnus tässä wikissä',
 	'openidchoosepassword' => 'salasana:',
-	'openidconvertinstructions' => 'Tällä lomakkeella voit muuttaa käyttäjätilisi käyttämään OpenID-osoitetta.',
+	'openidconvertinstructions' => 'Tällä lomakkeella voit muuttaa käyttäjätilisi käyttämään OpenID-osoitetta tai lisätä OpenID-osoitteita.',
 	'openidconvertsuccess' => 'Muutettiin onnistuneesti OpenID:hen.',
 	'openidconvertyourstext' => 'Tämä on jo OpenID:si.',
 	'openidconvertothertext' => 'Tämä on jonkun muun OpenID.',
@@ -1209,6 +1209,8 @@ Muussa tapauksessa valitse <code>Continue</code> (Jatka).',
 	'openidloginlabel' => 'OpenID-URL',
 	'openidupdateuserinfo' => 'Päivitä minun henkilökohtaiset tietoni.',
 	'openiddelete' => 'Poista OpenID',
+	'openiddelete-button' => 'Vahvista',
+	'openid-prefstext' => '[http://openid.net/ OpenID]-asetukset',
 	'openid-pref-hide' => 'Piilota OpenID:si käyttäjäsivultani, jos kirjaudun sisään OpenID-tunnuksilla.',
 	'openid-urls-desc' => 'Tiliisi liitetyt OpenID:eet:',
 	'openid-urls-action' => 'Toiminto',
@@ -2286,6 +2288,13 @@ $messages['km'] = array(
 	'openidnousername' => 'មិនមានឈ្មោះអ្នកប្រើប្រាស់បានបញ្ជាក់ទេ។',
 	'openidbadusername' => 'ឈ្មោះមិនត្រឹមត្រូវត្រូវបានបញ្ជាក់',
 	'openid-pref-hide' => 'លាក់OpenIDរបស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់របស់អ្នក ប្រសិនបើអ្នកឡុកអ៊ីនដោយប្រើOpenID។',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'openidlanguage' => 'ಭಾಷೆ',
 );
 
 /** Korean (한국어)
@@ -4244,7 +4253,7 @@ te pol tórghene uno da le opzioni seguenti.',
 	'openidchoosemanual' => 'Un nome a sielta tua:',
 	'openidchooseexisting' => 'Na utensa esistente su sta wiki:',
 	'openidchoosepassword' => 'password:',
-	'openidconvertinstructions' => 'Sto modulo el te parmete de canbiar la to utensa par doparar un URL OpenID.',
+	'openidconvertinstructions' => 'Sto modulo el te parmete de canbiar la to utensa par doparar un URL OpenID o zontar altri URL OpenID.',
 	'openidconvertsuccess' => 'Convertìo con successo a OpenID',
 	'openidconvertsuccesstext' => 'El to OpenID el xe stà convertìo a $1.',
 	'openidconvertyourstext' => 'Sto chì el xe xà el to OpenID.',

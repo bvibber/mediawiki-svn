@@ -576,9 +576,12 @@ $messages['ja'] = array(
 	'tog-riched_toggle_remember_state' => '最後のトグル状態を記憶する',
 );
 
-/** Korean (한국어) */
+/** Korean (한국어)
+ * @author Klutzy
+ */
 $messages['ko'] = array(
 	'textrichditor' => '리치 에디터',
+	'prefs-fckeditor' => '리치 에디터',
 	'tog-riched_disable' => '리치 에디터 사용하지 않기',
 	'tog-riched_disable_ns_main' => '주 이름 공간에서 리치 에디어 사용하지 않기',
 	'tog-riched_disable_ns_talk' => '"{{ns:talk}}" 이름 공간에서 리치 에디어 사용하지 않기',

@@ -682,6 +682,7 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Option
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'regexblock-already-blocked' => '$1 on jo estetty.',
@@ -706,6 +707,7 @@ Todennäköisesti kyseistä käyttäjää ei ole olemassa.',
 	'regexblock-view-match' => '(tarkka osuma)',
 	'regexblock-view-account' => '(tunnusten luominen estetty)',
 	'regexblock-view-reason' => 'syy: $1',
+	'regexblock-view-reason-default' => 'yleinen syy',
 	'regexblock-view-block-infinite' => 'pysyvä esto',
 	'regexblock-view-block-by' => 'estänyt:',
 	'regexblock-view-block-unblock' => 'poista esto',
@@ -1362,8 +1364,7 @@ $messages['km'] = array(
 	'regexblock-view-go' => 'ទៅ',
 	'regexblock-view-account' => '(រាំងខ្ទប់​ការបង្កើត​គណនី)',
 	'regexblock-view-reason' => 'មូលហេតុ៖ $1',
-	'regexblock-view-block-expired' => 'បានផុតកំណត់នៅ',
-	'regexblock-view-block-by' => 'ត្រូវបានហាមឃាត់ដោយ',
+	'regexblock-view-block-by' => 'ត្រូវបានរាំងខ្ទប់ដោយ៖',
 	'regexblock-view-block-unblock' => 'ឈប់ហាមឃាត់',
 	'regexblock-view-empty' => 'បញ្ជីឈ្មោះអ្នកប្រើប្រាស់និងអាសយដ្ឋានIPគឺទទេ។',
 	'regexblock-view-time' => 'នៅ $1',

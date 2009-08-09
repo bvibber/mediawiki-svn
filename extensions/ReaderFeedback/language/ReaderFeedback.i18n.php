@@ -496,6 +496,7 @@ $messages['fi'] = array(
 	'readerfeedback-level-2' => 'Kohtalainen',
 	'readerfeedback-level-3' => 'Hyvä',
 	'readerfeedback-level-4' => 'Todella mainio',
+	'readerfeedback-main' => 'Vain sisältösivuja voi arvioida.',
 	'readerfeedback-finished' => 'Kiitos!',
 	'tooltip-ca-ratinghist' => 'Lukijoiden arviot tästä sivusta',
 );
@@ -1552,6 +1553,7 @@ $messages['vi'] = array(
 	'readerfeedback-voted' => "'''Dường như bạn đã xếp hạng trang này rồi''' ([$3 Ghi chú hoặc câu hỏi?]).",
 	'readerfeedback-submitting' => 'Đang gửi…',
 	'readerfeedback-finished' => 'Cám ơn!',
+	'readerfeedback-tagfilter' => 'Thẻ:',
 	'tooltip-ca-ratinghist' => 'Các đánh giá của độc giả về trang này',
 );
 

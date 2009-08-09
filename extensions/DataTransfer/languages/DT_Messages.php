@@ -452,6 +452,7 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
@@ -460,12 +461,17 @@ $messages['fi'] = array(
 	'dt_viewxml_namespaces' => 'Nimiavaruudet',
 	'dt_viewxml_simplifiedformat' => 'Yksinkertaistettu muoto',
 	'dt_xml_namespace' => 'Nimiavaruus',
+	'dt_xml_pages' => 'Sivut',
 	'dt_xml_page' => 'Sivu',
+	'dt_xml_template' => 'Malline',
 	'dt_xml_field' => 'Kenttä',
 	'dt_xml_name' => 'Nimi',
 	'dt_xml_title' => 'Otsikko',
 	'dt_xml_id' => 'Tunnus',
 	'dt_xml_freetext' => 'Vapaa teksti',
+	'importxml' => 'XML-tuonti',
+	'dt_import_encodingtype' => 'Merkistötyyppi',
+	'dt_import_importing' => 'Tuodaan...',
 );
 
 /** French (Français)

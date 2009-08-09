@@ -52,6 +52,13 @@ $messages['bg'] = array(
 	'wikitextloggedinout-desc' => 'Добавя две куки в парсета, <tt>&lt;loggedin&gt;</tt> и <tt>&lt;loggedout&gt;</tt>, чрез които се показва различен текст в зависимост дали потребителят е влязъл или не',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wikitextloggedinout-desc' => 'Div diketenn an dielfenner ereadurezh, <tt>&lt;loggedin&gt;</tt> ha <tt>&lt;loggedout&gt;</tt> a-benn diskouez un destenn disheñvel, diouzh statud kevreañ an implijerien',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

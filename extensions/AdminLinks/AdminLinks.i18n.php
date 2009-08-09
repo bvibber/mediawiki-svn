@@ -254,10 +254,17 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Str4nd
  * @author Varusmies
  */
 $messages['fi'] = array(
 	'adminlinks' => 'Ylläpidon linkit',
+	'adminlinks_editsidebar' => 'Muokkaa sivupalkkia',
+	'adminlinks_editcss' => 'Muokkaa CSS-tiedostoa',
+	'adminlinks_editmainpagename' => 'Muokkaa etusivun nimeä',
+	'adminlinks_users' => 'Käyttäjät',
+	'adminlinks_createuser' => 'Luo uusi käyttäjä',
+	'adminlinks_browsesearch' => 'Selaaminen ja hakeminen',
 );
 
 /** French (Français)

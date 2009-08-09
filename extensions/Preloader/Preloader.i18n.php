@@ -162,6 +162,13 @@ $messages['id'] = array(
 	'preloader-desc' => 'Menyediakan teks pembuka yang dapat dikustomisasi per ruang nama untuk halaman-halaman baru',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'preloader-desc' => 'Fornisce un testo standard personalizzabile per ciascun namespace per le nuove pagine',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

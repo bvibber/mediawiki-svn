@@ -313,6 +313,7 @@ $messages['br'] = array(
 	'usagestatisticscalselect' => 'Dibab',
 	'usagestatistics-editindividual' => 'Stadegoù savet $1 gant an implijer',
 	'usagestatistics-editpages' => 'Stadegoù $1 ar pajennoù gant an implijer e-unan',
+	'right-viewsystemstats' => 'Gwelet [[Special:UserStats|stadegoù implijout ar wiki]]',
 );
 
 /** Bosnian (Bosanski)
@@ -1531,12 +1532,16 @@ $messages['pt-br'] = array(
 	'usagestatisticscalselect' => 'Escolher',
 	'usagestatistics-editindividual' => 'Estatísticas $1 de edição de utilizador individual',
 	'usagestatistics-editpages' => 'Estatísticas $1 de páginas de utilizador individual',
+	'right-viewsystemstats' => 'Ver [[Special:UserStats|estatísticas de utilização do wiki]]',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'specialuserstats' => 'Statistici de utilizare',
+	'usagestatistics' => 'Statistici de utilizare',
 	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticstype' => 'Tip',
 	'usagestatisticsstart' => 'Dată început',
@@ -1547,6 +1552,7 @@ $messages['ro'] = array(
 	'usagestatisticsintervalmonth' => 'Lună',
 	'usagestatisticscumulative' => 'Cumulativ',
 	'usagestatisticscumulative-text' => 'cumulativ',
+	'usagestatisticscalselect' => 'Selectaţi',
 );
 
 /** Tarandíne (Tarandíne)

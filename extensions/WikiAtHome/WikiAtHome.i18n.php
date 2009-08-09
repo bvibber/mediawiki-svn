@@ -88,6 +88,27 @@ $messages['be-tarask'] = array(
 	'wah-loading' => 'загрузка інтэрфэйсу Wiki@Home <blink>...</blink>',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wah-desc' => "Talvezout a ra da zasparzh al labour treuzkodañ videoioù d'ar c'hliantoù dre firefogg",
+	'wah-user-desc' => "Talvezout a ra Wiki@Home da izili ar gumuniezh da reiñ kelc'hioù prosesor diac'hub evit harpañ oberadurioù pounner da gas da benn",
+	'wah-short-audio' => 'restr son $1, $2',
+	'wah-short-video' => 'restr video $1, $2',
+	'wah-short-general' => 'restr media $1, $2',
+	'wah-long-audio' => '(restr son $1, pad $2, $3)',
+	'wah-long-video' => '(restr video $1, pad $2, $4×$5 piksel, $3)',
+	'wah-long-multiplexed' => '(restr klevet / video liesplekset $1, pad $2, $4×$5 piksel, $3 hollad)',
+	'wah-long-general' => '(restr media, pad $2, $3)',
+	'wah-long-error' => "(n'eo ket bet ffmpeg evit lenn ar restr-mañ : $1)",
+	'wah-transcode-working' => "Emeur o treuzkodañ ar video, klaskit en-dro diwezhatoc'hik",
+	'wah-transcode-helpout' => "Savet ez eus $1 % eus ar c'hlip-mañ. Skoazellañ da dreuzkodañ ar video-mañ a c'hallit ober en ur vont war [[Special:WikiAtHome|Wiki@Home]]",
+	'wah-transcode-fail' => "C'hwitet eo treuzkodañ ar restr.",
+	'wah-javascript-off' => 'Rekis eo bezañ gweredekaet JavaScript evit kemer perzh e Wiki@Home',
+	'wah-loading' => 'o kargañ etrefas Wiki@Home <blink>...</blink>',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -98,6 +119,26 @@ $messages['bs'] = array(
 	'wah-long-general' => '(medijalna datoteka, dužina $2, $3)',
 );
 
+/** German (Deutsch)
+ * @author Sebastian Wallroth
+ */
+$messages['de'] = array(
+	'wah-desc' => 'Ermöglicht das Verteilen von Video-Transkodier-Jobs an Clients mit firefogg',
+	'wah-user-desc' => 'Wiki@Home ermöglicht Community-Mitgliedern freie CPU-Zeiten zu spenden, um bei Ressourcen-intensiven Operation zu helfen',
+	'wah-short-audio' => '$1-Audiodatei, $2',
+	'wah-short-video' => '$1-Videodatei, $2',
+	'wah-short-general' => '$1-Mediadatei, $2',
+	'wah-long-audio' => '($1-Audiodatei, Länge: $2, $3)',
+	'wah-long-video' => '($1-Videodatei, Länge: $2, $4×$5 Pixel, $3)',
+	'wah-long-multiplexed' => '(Multiplex-Audio-/Video-Datei, $1, Länge: $2, $4×$5 Pixel, $3)',
+	'wah-long-general' => '(Mediadatei, Länge: $2, $3)',
+	'wah-long-error' => '(ffmpeg konnte diese Datei nicht lesen: $1)',
+	'wah-transcode-working' => 'Das Video wird verarbeitet, bitte versuche es später wieder',
+	'wah-transcode-helpout' => 'Der Clip ist zu $1 verarbeitet.
+Du kannst dabei helfen dieses Video zu verarbeiten, wenn Du [[Special:WikiAtHome|Wiki@Home]] besuchst',
+	'wah-transcode-fail' => 'Diese Datei konnte nicht transkodiert werden.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -106,6 +147,26 @@ $messages['eu'] = array(
 	'wah-short-video' => '$1 bideo fitxategia, $2',
 	'wah-short-general' => '$1 media fitxategia, $2',
 	'wah-transcode-working' => 'Bideo hau prozesatzen ari da, mesedez, saia zaitez beranduago',
+);
+
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'wah-user-desc' => 'Wiki@Homen avulla yhteisön jäsenet voivat lahjoittaa käyttämättömiä keskusprosessori-syklejään paljon resursseja kuluttaviin operaatioihin',
+	'wah-short-audio' => 'Äänitiedosto $1, $2',
+	'wah-short-video' => 'Videotiedosto $1, $2',
+	'wah-short-general' => 'Mediatiedosto $1, $2',
+	'wah-long-audio' => '(äänitiedosto $1, pituus $2, $3)',
+	'wah-long-video' => '($1 videotiedosto, pituus $2, $4×$5 pikseliä, $3)',
+	'wah-long-general' => '(mediatiedosto, pituus $2, $3)',
+	'wah-long-error' => '(ffmpeg ei kyennyt lukemaan tätä tiedostoa: $1)',
+	'wah-transcode-working' => 'Tätä videota käsitellään parhaillaan, yritä myöhemmin uudelleen',
+	'wah-transcode-fail' => 'Tämä tiedosto ei transkoodautunut.',
+	'wah-javascript-off' => 'JavaScriptin on oltava käytössä, jotta voit osallistua Wiki@Homeen',
+	'wah-loading' => 'ladataan Wiki@Home-käyttöliittymää <blink>...</blink>',
 );
 
 /** French (Français)
@@ -147,6 +208,28 @@ $messages['gl'] = array(
 	'wah-transcode-helpout' => 'Pode axudar na transcodificación deste vídeo visitando o [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-javascript-off' => 'Debe ter o Javascript activado para participar no Wiki@Home',
 	'wah-loading' => 'cargando a interface do Wiki@Home <blink>...</blink>',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wah-desc' => 'מתן האפשרות להפצת עבודות לקידוד וידאו אל לקוחות באמצעות firefogg',
+	'wah-user-desc' => 'ההרחבה Wiki@Home מאפשרת לחברי הקהילה לתרום כוחות עיבוד עודפים על מנת לעזור לפעולות הדורשות משאבים רבים',
+	'wah-short-audio' => 'קובץ שמע מסוג $1, $2',
+	'wah-short-video' => 'קובץ וידאו מסוג $1, $2',
+	'wah-short-general' => 'קובץ מדיה מסוג $1, $2',
+	'wah-long-audio' => '(קובץ שמע מסוג $1, באורך $2, $3)',
+	'wah-long-video' => '(קובץ וידאו מסוג $1, באורך $2, $4×$5 פיקסלים, $3)',
+	'wah-long-multiplexed' => '(קובץ שמע/וידאו מרובב, $1, באורך $2, $4×$5 פיקסלים, $3 באופן כללי)',
+	'wah-long-general' => '(קובץ מדיה, באורך $2, $3)',
+	'wah-long-error' => '(ל־ffmpeg לא היתה אפשרות לקרוא קובץ זה: $1)',
+	'wah-transcode-working' => 'קובץ זה נמצא בתהליכי עיבוד, נא לנסות שוב מאוחר יותר',
+	'wah-transcode-helpout' => 'עיבוד סרטון זה הושלם ב־$1 אחוזים.
+ניתן לעזור בקידוד הווידאו הזה על ידי ביקור בדף [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'קידוד קובץ זה נכשל.',
+	'wah-javascript-off' => 'עליכם להפעיל את תכונת ה־JavaScript כדי לקחת חלק ב־Wiki@Home',
+	'wah-loading' => 'מנשק Wiki@Home נטען כעת <blink>...</blink>',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -299,6 +382,23 @@ $messages['oc'] = array(
 	'wah-loading' => "cargament de l'interfàcia Wiki@Home <blink>...</blink>",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'wah-short-audio' => 'Arquivo de áudio $1, $2',
+	'wah-short-video' => 'Arquivo de vídeo $1, $2',
+	'wah-short-general' => 'Arquivo multimídia $1, $2',
+	'wah-long-audio' => 'Arquivo de Áudio $1, $2 de duração, $3',
+	'wah-long-video' => '(Arquivo de vídeo $1, $2 de duração, $4×$5 pixels, $3)',
+	'wah-long-multiplexed' => '(Arquivo de áudio/vídeo multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo)',
+	'wah-long-general' => '(Arquivo multimídia, $2 de duração, $3)',
+	'wah-long-error' => '(ffmpeg não pode ler este arquivo: $1)',
+	'wah-transcode-working' => 'Este vídeo está sendo processado, por favor tente novamente mais tarde',
+	'wah-javascript-off' => 'Você precisa ter habilitado JavaScript para participar de Wiki@Home',
+	'wah-loading' => 'carregando interface Wiki@Home <blink>...</blink>',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -358,5 +458,25 @@ $messages['sr-ec'] = array(
 	'wah-transcode-working' => 'Овај видео се тренутно обрађује, и готово је $1% посла',
 	'wah-javascript-off' => 'Морате омогућити JavaScript, да бисте учествовали у Wiki@Home',
 	'wah-loading' => 'учитавање Wiki@Home интерфејса <blink>...</blink>',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'wah-short-audio' => '$1-ljudfil, $2',
+	'wah-short-video' => '$1-videofil, $2',
+	'wah-short-general' => '$1-mediafil, $2',
+	'wah-long-audio' => '($1-ljudfil, längd $2, $3)',
+	'wah-long-video' => '($1-videofil, längd $2, $4×$5 pixlar, $3)',
+	'wah-long-multiplexed' => 'Multiplexad ljud-/video-fil, $1, längd $2, $4×$5 pixlar, $3 totalt)',
+	'wah-long-general' => '(mediafil, längd $2, $3)',
+	'wah-long-error' => '(ffmpeg kunde inte läsa filen: $2)',
+	'wah-transcode-working' => 'Videon bearbetas just ju, vänligen försök igen senare',
+	'wah-transcode-helpout' => 'Filen är $1 procent klar. 
+Du kan hjälpa till att konvertera den här videon genom att besöka [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Kunde inte konvertera den här filen.',
+	'wah-javascript-off' => 'Du måste ha JavaScript aktiverat för att delta i Wiki@Home',
+	'wah-loading' => 'laddar gränssnittet för Wiki@Home <blink>...</blink>',
 );
 

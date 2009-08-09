@@ -155,10 +155,12 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  */
 $messages['fi'] = array(
 	'whosonline' => 'Paikalla olevat käyttäjät',
+	'whosonline-desc' => 'Näyttää [[Special:WhosOnline|luettelon]] sisäänkirjautuneista ja anonyymeistä käyttäjistä, jotka ovat paikalla.',
 );
 
 /** French (Français)
@@ -381,6 +383,13 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'whosonline' => 'Quem está ligado',
 	'whosonline-desc' => 'Apresenta [[Special:WhosOnline|uma lista]] de utilizadores autenticados e anônimos que se encontram ligados neste momento',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'whosonline' => 'Cine e online',
 );
 
 /** Tarandíne (Tarandíne)

@@ -434,10 +434,20 @@ $messages['es'] = array(
 	'sitematrix-fishbowl' => 'edición restringida',
 );
 
-/** Estonian (Eesti) */
+/** Estonian (Eesti)
+ * @author Pikne
+ */
 $messages['et'] = array(
 	'sitematrix' => 'Wikimedia vikide nimekiri',
+	'sitematrix-summary' => 'See erilehekülg loetleb kõik Wikimedia vikid.',
+	'sitematrix-desc' => 'Kuvab [[Special:SiteMatrix|Wikimedia vikide loendi]].',
 	'sitematrix-language' => 'Keel',
+	'sitematrix-project' => 'Projekti nimi, sõsarprojekti link ja interviki link',
+	'sitematrix-others' => 'Muud Wikimedia projektid',
+	'sitematrix-total' => "'''Vikisid kokku: $1'''",
+	'sitematrix-sitetotal' => 'Kokku',
+	'sitematrix-private' => 'eraviisiline',
+	'sitematrix-fishbowl' => 'muutmine piiratud',
 );
 
 /** Basque (Euskara)
@@ -925,6 +935,13 @@ $messages['km'] = array(
 	'sitematrix-sitetotal' => 'សរុប',
 	'sitematrix-private' => 'ឯកជន',
 	'sitematrix-fishbowl' => 'កំណែប្រែត្រូវបានដាក់កំហិត',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'sitematrix-language' => 'ಭಾಷೆ',
 );
 
 /** Korean (한국어)

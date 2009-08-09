@@ -761,20 +761,23 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author ToePeu
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'contributors' => '기여자',
-	'contributors-desc' => '주요 기여자들을 한 페이지에 요약합니다.',
-	'contributors-toolbox' => '주요 기여자',
-	'contributors-legend' => '하나의 페이지에 대한 주요 기여자 목록',
+	'contributors' => '편집자',
+	'contributors-desc' => '문서의 주 기여자를 요약해서 보여주는 기능',
+	'contributors-toolbox' => '주 기여자',
+	'contributors-legend' => '주 기여자 목록',
 	'contributors-target' => '제목:',
 	'contributors-submit' => '보이기',
-	'contributors-subtitle' => '$1에 대한 주요 기여자',
-	'contributors-badtitle' => '효과 없는 제목',
-	'contributors-nosuchpage' => '$1 페이지는 존재하지 않습니다.',
+	'contributors-subtitle' => '$1 문서에 대한 주 기여자 목록',
+	'contributors-others-long' => '그 외에 $1명이 기여했습니다.',
+	'contributors-others' => '그 외 $1명',
+	'contributors-badtitle' => '제목이 잘못되었습니다.',
+	'contributors-nosuchpage' => '$1 문서가 존재하지 않습니다.',
 );
 
 /** Kinaray-a (Kinaray-a)

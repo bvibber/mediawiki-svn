@@ -121,6 +121,13 @@ $messages['es'] = array(
 	'oai-desc' => 'Provee interfaz con el repositorio [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'oai-desc' => 'Seab üles [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-hoidlaliidese.',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

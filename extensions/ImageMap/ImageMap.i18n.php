@@ -844,6 +844,7 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
@@ -851,9 +852,9 @@ $messages['ko'] = array(
 	'imagemap_no_image' => '오류: 첫 줄에 그림이 제시되어야 합니다.',
 	'imagemap_invalid_image' => '오류: 그림이 잘못되었거나 존재하지 않습니다.',
 	'imagemap_bad_image' => '오류: 이 그림은 이 문서에서 사용이 금지되어 있습니다.',
-	'imagemap_no_link' => '오류: 의미있는 링크를 $1 줄의 끝에서 찾을 수 없습니다.',
-	'imagemap_invalid_title' => '오류: $1 줄에 있는 제목이 제대로 인식되지 않습니다.',
-	'imagemap_no_areas' => '오류: 최소한 한 영역에 대한 구체적인 설명은 꼭 있어야 합니다.',
+	'imagemap_no_link' => '오류: $1번째 줄에서 유효한 링크를 찾을 수 없습니다',
+	'imagemap_invalid_title' => '오류: $1번째 줄의 링크 제목이 잘못되었습니다',
+	'imagemap_no_areas' => '오류: 설정된 영역이 없습니다',
 	'imagemap_invalid_coord' => '오류: $1번째 줄에서 좌표가 잘못되었습니다. 좌표는 반드시 숫자여야 합니다.',
 	'imagemap_description' => '이 그림에 대한 정보',
 );

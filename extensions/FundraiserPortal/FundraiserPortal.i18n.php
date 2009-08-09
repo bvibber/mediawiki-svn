@@ -94,6 +94,20 @@ $messages['dsb'] = array(
 	'fundraiserportal-tourmaline-close' => 'Wótněnta to schowaś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'fundraiserportal' => 'Portalo pri Donacado',
+	'fundraiserportal-plain-button' => 'Subtenu Vikipedion!',
+	'fundraiserportal-ruby-button' => 'Donacu Nun',
+	'fundraiserportal-rubytext-button' => 'Donacu Nun',
+	'fundraiserportal-rubytext-close' => 'Kaŝi ĉi tion ekde nun',
+	'fundraiserportal-sapphire-button' => 'Donacu Nun',
+	'fundraiserportal-tourmaline-button' => 'Donacu Nun',
+	'fundraiserportal-tourmaline-close' => 'Kaŝi ĉi tion ekde nun',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -169,6 +183,23 @@ $messages['gsw'] = array(
 	'fundraiserportal-tourmaline-close' => 'Des vu jetz ab uusblände',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'fundraiserportal' => 'פורטל גיוס התרומות',
+	'fundraiserportal-desc' => 'הוספת פורטל "אנא תרמו" לראש סרגל הצד.',
+	'fundraiserportal-plain-button' => 'תמכו בוויקיפדיה!',
+	'fundraiserportal-ruby-button' => 'תרמו כעת',
+	'fundraiserportal-rubytext-button' => 'תרמו כעת',
+	'fundraiserportal-rubytext-message' => 'כל תרומה מסייעת לשמור על ויקיפדיה חופשית לכולם.',
+	'fundraiserportal-rubytext-close' => 'הסתרת ההצעה מעתה ואילך',
+	'fundraiserportal-sapphire-button' => 'תרמו כעת',
+	'fundraiserportal-tourmaline-button' => 'תרמו כעת',
+	'fundraiserportal-tourmaline-message' => 'כל תרומה מסייעת לשמור על ויקיפדיה חופשית לכולם.',
+	'fundraiserportal-tourmaline-close' => 'הסתרת ההצעה מעתה ואילך',
+);
+
 /** Hiligaynon (Ilonggo)
  * @author Tagimata
  */
@@ -231,6 +262,15 @@ $messages['id'] = array(
 $messages['it'] = array(
 	'fundraiserportal' => 'Portale raccolta fondi',
 	'fundraiserportal-desc' => 'Aggiunge un portale "Fai una donazione" nella parte superiore della barra laterale.',
+	'fundraiserportal-plain-button' => 'Supporta Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Dona ora',
+	'fundraiserportal-rubytext-button' => 'Dona ora',
+	'fundraiserportal-rubytext-message' => 'Ogni donazione ci aiuta a mantenere Wikipedia libera per tutti.',
+	'fundraiserportal-rubytext-close' => "Nascondi questo d'ora in poi",
+	'fundraiserportal-sapphire-button' => 'Dona ora',
+	'fundraiserportal-tourmaline-button' => 'Dona ora',
+	'fundraiserportal-tourmaline-message' => 'Ogni donazione ci aiuta a mantenere Wikipedia libera per tutti.',
+	'fundraiserportal-tourmaline-close' => "Nascondi questo d'ora in poi",
 );
 
 /** Japanese (日本語)

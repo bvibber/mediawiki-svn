@@ -785,6 +785,7 @@ $messages['it'] = array(
 	'duplicator-dest-invalid' => 'Indicare un titolo di arrivo valido.',
 	'duplicator-dest-exists' => 'La pagina [[$1]] esiste già. Indicare un titolo di arrivo non ancora esistente.',
 	'duplicator-toomanyrevisions' => 'Impossibile copiare [[$1]]. La pagina ha troppe revisioni ($2). Il limite attuale è $3.',
+	'right-duplicate' => 'Duplica pagine',
 );
 
 /** Japanese (日本語)
@@ -1227,6 +1228,7 @@ $messages['pt-br'] = array(
 	'duplicator-dest-invalid' => 'Por favor, forneça um título de destino válido.',
 	'duplicator-dest-exists' => '[[$1]] já existe. Por favor, forneça um título de destino que ainda não exista.',
 	'duplicator-toomanyrevisions' => '[[$1]] possui muitas ($2) revisões e não pode ser copiada. O limite atual é $3.',
+	'right-duplicate' => 'Duplicar páginas',
 );
 
 /** Romanian (Română)

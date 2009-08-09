@@ -586,6 +586,7 @@ $messages['it'] = array(
 	'refreshspecial-button' => 'Aggiorna pagine selezionate',
 	'refreshspecial-fail' => 'Seleziona almeno una pagina speciale da aggiornare.',
 	'refreshspecial-refreshing' => 'aggiornamento pagine speciali',
+	'refreshspecial-skipped' => 'non importante, saltato',
 	'refreshspecial-choice' => 'aggiornamento pagine speciali',
 	'refreshspecial-js-disabled' => '(<i>Non è possibile selezionare tutte le pagine se JavaScript è disattivato</i>)',
 	'refreshspecial-select-all-pages' => 'Seleziona tutte le pagine',

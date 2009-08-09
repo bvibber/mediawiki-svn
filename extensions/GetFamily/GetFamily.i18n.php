@@ -26,6 +26,16 @@ $messages['qqq'] = array(
 	'right-getfamily' => '{{doc-right|getfamily}}',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'getfamily-desc' => 'يولد ملف عائلة لpywikipediabot',
+	'getfamily' => 'احصل على عائلة pywikipediabot',
+	'getfamily-interwikierror' => 'خطأ: إعدادات الإنترويكي غير صحيحة، اتصل بإداريّك المحلي.',
+	'right-getfamily' => 'أنشأ ملف عائلة لpywikipediabot',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

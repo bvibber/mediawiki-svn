@@ -121,6 +121,13 @@ To śi dowólijo swój wužywarski bok teke ako OpenID wužywaś.',
 	'linkopenid-prefstext-v2url' => 'Serwerowy URL za OpenID wersiju 2;',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'linkopenid-prefstext-openid' => 'OpenID σας:',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

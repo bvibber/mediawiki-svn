@@ -135,6 +135,13 @@ $messages['id'] = array(
 	'redirect-desc' => 'Mempermudah konfigurasi pengalihan pada [[MediaWiki:Redirect-addnewaccount|pembuatan akun]] dan [[MediaWiki:Redirect-userlogoutcomplete|keluar log]]',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'redirect-desc' => 'Consente una facile configurazione di redirect nella [[MediaWiki:Redirect-addnewaccount|creazione di account]] e nel [[MediaWiki:Redirect-userlogoutcomplete|logout]]',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

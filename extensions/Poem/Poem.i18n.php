@@ -144,6 +144,13 @@ $messages['es'] = array(
 	'poem-desc' => 'Añade la etiqueta <tt>&lt;poem&gt;</tt> para dar el formato propio de un poema.',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'poem-desc' => 'Lisab <tt>&lt;poem&gt;</tt>-märgendi luuletuse vormindamiseks.',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

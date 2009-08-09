@@ -293,6 +293,13 @@ $messages['oc'] = array(
 	'tooltip-desc' => 'Apond una balisa <nowiki><tooltip></nowiki> e un parser <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt>- unn <tt><nowiki>{{#tooltip:}}</nowiki></tt>-Tags dezu duh',
+);
+
 /** Polish (Polski)
  * @author Matma Rex
  * @author Sp5uhe

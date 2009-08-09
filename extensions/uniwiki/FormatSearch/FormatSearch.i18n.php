@@ -185,6 +185,13 @@ $messages['id'] = array(
 	'formatsearch-desc' => 'Membersihkan halaman hasil pencarian',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'formatsearch-desc' => 'Pulisce la pagina dei risultati di ricerca',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi

@@ -291,6 +291,7 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
@@ -299,6 +300,7 @@ $messages['it'] = array(
 	'purgecache-warning' => 'Questo purgherà le tabelle di cache.',
 	'purgecache-purged' => 'La cache è stata svuotata.',
 	'purgecache-button' => 'Purga',
+	'right-purgecache' => 'Pulisce la tabella OBJECTCACHE',
 );
 
 /** Japanese (日本語)
@@ -470,6 +472,7 @@ $messages['pt-br'] = array(
 	'purgecache-warning' => 'Isto irá purgar as tabelas de cache.',
 	'purgecache-purged' => 'A cache foi purgada.',
 	'purgecache-button' => 'Purgar',
+	'right-purgecache' => 'Limpar a tabela OBJECTCACHE',
 );
 
 /** Tarandíne (Tarandíne)

@@ -175,6 +175,13 @@ $messages['es'] = array(
 	'assert_edit_message' => 'La aserción especificada ($1) fracasó.',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'assert_edit_desc' => 'Lisab roboti kasutusele redigeerimiskinnituse.',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

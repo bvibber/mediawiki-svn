@@ -286,6 +286,7 @@ $messages['it'] = array(
 	'protectsection_add_remove' => 'Hai provato ad aggiungere o rimuovere una sezione protetta',
 	'protectsection_modify' => 'Hai provato a modificare del testo protetto',
 	'protectsection_forbidden' => 'Vietato',
+	'right-protectsection' => 'Protegge le sezioni di una pagina',
 );
 
 /** Japanese (日本語)
@@ -401,6 +402,13 @@ $messages['oc'] = array(
 	'right-protectsection' => 'Protegir las seccions de pagina',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'protectsection_forbidden' => 'Verbodde',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -431,6 +439,7 @@ $messages['pt-br'] = array(
 	'protectsection_add_remove' => 'Você tentou adicionar ou remover uma seção protegida',
 	'protectsection_modify' => 'Você tentou modificar texto protegido',
 	'protectsection_forbidden' => 'Proibido',
+	'right-protectsection' => 'Proteger seções da página',
 );
 
 /** Russian (Русский)

@@ -498,6 +498,10 @@ $messages['et'] = array(
 	'vote-results' => 'Hääletuse tulemused',
 	'vote-results-choice' => 'Valik',
 	'vote-results-count' => 'Üldarv',
+	'vote-login' => 'Hääletamiseks on vajalik [$1 sisse logida].',
+	'vote-invalid-choice' => 'Üks valik tuleb teha.',
+	'right-vote' => 'Hääleta',
+	'right-voteadmin' => 'Vaata hääletuse tulemusi',
 );
 
 /** Basque (Euskara)
@@ -896,6 +900,29 @@ riddler|Riddler',
 	'vote-invalid-choice' => 'Panjenengan kudu milih salah siji pilihan sing ana.',
 );
 
+/** Georgian (ქართული)
+ * @author Alsandro
+ */
+$messages['ka'] = array(
+	'vote' => 'ხმა მიეცით',
+	'vote-desc' => 'მარტივი გამოკითხვის შესაძლებლობას იძლევა',
+	'vote-header' => '??',
+	'vote-current' => "თქვენ ხმა მიეცით '''$1'''-ს.",
+	'vote-legend' => 'დაადასტურეთ ან შეცვალეთ ხმა',
+	'vote-caption' => 'თქვენი არჩევანი:',
+	'vote-submit' => 'ხმა',
+	'vote-registered' => 'თქვენი ხმა დარეგისტრირდა.',
+	'vote-view-results' => 'იხილეთ შედეგები',
+	'vote-results' => 'არჩევნების შედეგები',
+	'vote-results-choice' => 'არჩევანი',
+	'vote-results-count' => 'ათვლა',
+	'vote-results-none' => 'ხმები ამ დროისთვის მიცემული არ არის.',
+	'vote-login' => 'უნდა [$1 დარეგისტრირდეთ] ხმის მისაცემად.',
+	'vote-invalid-choice' => 'უნდა აირჩიოთ ერთ-ერთი არსებული ვარიანტი.',
+	'right-vote' => 'ხმა',
+	'right-voteadmin' => 'იხილეთ არჩევნების შედეგები',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -917,30 +944,31 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
 	'vote' => '투표',
-	'vote-desc' => '간단한 투표 능력을 제공합니다.',
-	'vote-header' => "사용자께서는 이 곳에서 '''세계의 최고 군주'''에 대한 투표를 하실 수 있습니다!",
-	'vote-current' => "사용자의 현재 투표는 '''$1'''을 위한 것입니다.",
-	'vote-legend' => '투표를 제출하거나 변경함',
-	'vote-caption' => '당신의 선택:',
-	'vote-choices' => '조커|그 조커
-펭귄|그 펭귄
-수수께끼|수수께끼',
+	'vote-desc' => '간단한 투표 기능',
+	'vote-header' => "'''세계 대마왕'''을 뽑는 투표를 시작합니다!",
+	'vote-current' => "현재 '''$1'''을 투표하고 있습니다.",
+	'vote-legend' => '표를 제출하거나 변경하기',
+	'vote-caption' => '선택:',
+	'vote-choices' => 'joker|조커
+penguin|펭귄
+riddler|리들러',
 	'vote-submit' => '투표',
-	'vote-registered' => '사용자의 투표가 등록되었습니다.',
+	'vote-registered' => '해당 표를 등록했습니다.',
 	'vote-view-results' => '결과 보기',
 	'vote-results' => '투표 결과',
 	'vote-results-choice' => '선택',
-	'vote-results-count' => '합계',
-	'vote-results-none' => '지금은 아무도 투표할 수 없습니다.',
-	'vote-login' => '투표하시려면 [$1 로그인]하셔야만 합니다.',
-	'vote-invalid-choice' => '사용자께서는 유효한 후보 중 하나를 택하셔야만 합니다.',
-	'right-vote' => '투표',
-	'right-voteadmin' => '투표 결과를 보세요',
+	'vote-results-count' => '갯수',
+	'vote-results-none' => '현재 아무도 투표하지 않았습니다.',
+	'vote-login' => '투표하려면 먼저 [$1 로그인]을 해 주세요.',
+	'vote-invalid-choice' => '선택지 중 하나를 선택해야 합니다.',
+	'right-vote' => '투표하기',
+	'right-voteadmin' => '투표 결과 보기',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1236,14 +1264,14 @@ $messages['pl'] = array(
 	'vote' => 'Głosuj',
 	'vote-desc' => 'Dostarcza prosty mechanizm wyborów',
 	'vote-header' => "Tutaj możesz zagłosować na '''Naczelnego Przywódcę Świata'''!",
-	'vote-current' => "Aktualnie Twój głos oddany jest za '''$1'''.",
+	'vote-current' => "Głos oddałeś na '''$1'''.",
 	'vote-legend' => 'Zagłosuj lub zmień głos',
 	'vote-caption' => 'Twój wybór:',
 	'vote-choices' => 'joker|Joker
 penguin|Pingwin
 riddler|Człowiek-Zagadka',
 	'vote-submit' => 'Głosuj',
-	'vote-registered' => 'Twój głos został zarejestrowany.',
+	'vote-registered' => 'Głos został zarejestrowany.',
 	'vote-view-results' => 'Zobacz wyniki',
 	'vote-results' => 'Wyniki głosowania',
 	'vote-results-choice' => 'Wybór',
@@ -1330,6 +1358,7 @@ riddler|Enigmático',
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author GKnedo
+ * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'vote' => 'Votar',
@@ -1348,20 +1377,28 @@ riddler|O Charada',
 	'vote-results-choice' => 'Escolha',
 	'vote-results-count' => 'Contagem',
 	'vote-results-none' => 'De momento ainda não foram submetidos votos.',
-	'vote-login' => 'Terá de [$1 autenticar-se] para votar.',
+	'vote-login' => 'Você precisa [$1 autenticar-se] para votar.',
 	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
+	'right-vote' => 'Votar',
+	'right-voteadmin' => 'Ver resultados da votação',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'vote' => 'Votaţi',
 	'vote-current' => "Votul dumneavoastră curent este pentru '''$1'''.",
+	'vote-caption' => 'Alegerea dvs.:',
 	'vote-submit' => 'Votează',
 	'vote-registered' => 'Votul dumneavoastră a fost înregistrat.',
 	'vote-view-results' => 'Vizualizează rezultatele',
 	'vote-results' => 'Rezultatele votului',
+	'vote-results-choice' => 'Alegeţi',
 	'vote-invalid-choice' => 'Trebuie să selectaţi una din opţiunile disponibile.',
+	'right-vote' => 'Votaţi',
+	'right-voteadmin' => 'Vedeţi rezultatele votului',
 );
 
 /** Tarandíne (Tarandíne)

@@ -163,6 +163,13 @@ $messages['eu'] = array(
 	'templatelink_empty' => 'Parametroa bat eman behar diozu.',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'templatelink' => 'Mallinelinkki',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

@@ -1885,6 +1885,7 @@ Voltar para:
 * [[Special:CrosswikiBlock|Formulário de bloqueio]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Desbloqueios locais são podem ser efetuados a partir deste interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Bloquear e desbloquear utilizadores em outros wikis',
 );
 
 /** Romanian (Română)

@@ -177,6 +177,14 @@ $messages['id'] = array(
 Membuat versi halamannya, berguna terutama untuk Wikinews',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'catfeed-desc' => 'Utilizza parti dai feed delle ultime modifiche.
+Crea una versione da inserire nelle pagine, particolarmente utile per Wikinews',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author JtFuruhata
@@ -186,11 +194,11 @@ $messages['ja'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'catfeed-desc' => '최근바뀜 공급으로부터 온 비트를 사용합니다.
-특별히 위키뉴스에 유용한 페이지 내부 판을 만듭니다.',
+	'catfeed-desc' => '최근 바뀜 피드에서 일부 정보를 빼내, 문서 내부 버전을 작성합니다. 위키뉴스에 유용한 기능입니다.',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -283,6 +283,13 @@ $messages['km'] = array(
 	'categoryonupload-label' => 'ចំណាត់ថ្នាក់ក្រុម:',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'categoryonupload-label' => 'ವರ್ಗ:',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

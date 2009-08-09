@@ -536,6 +536,22 @@ $messages['eu'] = array(
 	'todo-form-submit' => 'Galdeketa bidali',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Silvonen
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'todo' => 'Tehtävälista',
+	'todo-tab' => 'tehtävät',
+	'todo-new-queue' => 'uusi',
+	'todo-add-queue' => 'Lisää jonoon…',
+	'todo-move-queue' => 'Siirrä jonoon…',
+	'todo-list-change' => 'Muuta',
+	'todo-list-cancel' => 'Peruuta',
+	'todo-form-details' => 'Tiedot',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -1203,6 +1219,13 @@ $messages['os'] = array(
 	'todo-list-cancel' => 'Нæ бæззы',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'todo-new-queue' => 'Nei',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe
@@ -1328,12 +1351,16 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'todo-unrecognize-type' => 'Tip nerecunoscut',
+	'todo-list-change' => 'Modifică',
 	'todo-list-cancel' => 'Anulează',
+	'todo-new-item' => 'Element nou',
 	'todo-form-details' => 'Detalii:',
+	'todo-form-submit' => 'Trimiteţi interogare',
 );
 
 /** Tarandíne (Tarandíne)

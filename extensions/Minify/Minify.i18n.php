@@ -122,6 +122,13 @@ $messages['id'] = array(
 	'minify-desc' => 'Mengecilkan keluaran CSS dan JavaScript dari action=raw',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'minify-desc' => "Riduce l'output CSS e JavaScript da action=raw",
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
@@ -176,6 +183,13 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'minify-desc' => 'Encolhe a saída CSS e JavaScript de action=raw',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'minify-desc' => 'Encolhe a saída de CSS e JavaScript de action=raw',
 );
 
 /** Tarandíne (Tarandíne)

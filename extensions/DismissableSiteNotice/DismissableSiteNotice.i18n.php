@@ -232,10 +232,12 @@ $messages['es'] = array(
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author WikedKentaur
  */
 $messages['et'] = array(
 	'sitenotice_close' => 'Peida sõnum',
+	'sitenotice-desc' => 'Lubab kasutajal võrgukohateate sulgeda.',
 );
 
 /** Basque (Euskara)

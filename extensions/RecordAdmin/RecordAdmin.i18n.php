@@ -387,6 +387,7 @@ $messages['dsb'] = array(
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Wopśimjeśe pśidaś...',
 	'recordadmin-editwithform' => 'Z formularom wobźěłaś',
+	'recordadmin-typeinfo' => 'Datowa sajźba $1',
 	'right-recordadmin' => 'Zapisowe boki namakaś a wobźěłaś',
 );
 
@@ -495,7 +496,12 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'recordadmin-badtitle' => 'Virheellinen otsikko!',
+	'recordadmin-invert' => 'Käänteinen valinta',
+	'recordadmin-buttonsave' => 'Tallenna',
 	'recordadmin-editlink' => 'muokkaa',
+	'recordadmin-created' => 'Luotu',
+	'recordadmin-modified' => 'Muutettu',
 );
 
 /** French (Français)
@@ -542,6 +548,7 @@ $messages['fr'] = array(
 	'recordadmin-actions' => 'Actions',
 	'recordadmin-needscontent' => 'Ajouter le contenu...',
 	'recordadmin-editwithform' => 'Modifier avec un formulaire',
+	'recordadmin-typeinfo' => 'enregistrement $1',
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 
@@ -841,10 +848,11 @@ $messages['ja'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'recordadmin' => 'កណត់ត្រា​ការគ្រប់គ្រង',
-	'recordadmin-select' => 'ជ្រើស​ប្រភេទ​នៃ​កំណត់ត្រ​ដើម្បី​ស្វែងរក​សម្រាប់',
+	'recordadmin-select' => 'ជ្រើស​យក',
 	'recordadmin-newsearch' => 'ថ្មី $1 ស្វែងរក',
 	'recordadmin-newrecord' => 'ជ្រើស​ប្រភេទ​កំណត់ត្រ​មួយ​ផ្សេង​ទៀត',
 	'recordadmin-submit' => 'ដាក់ស្នើ',
@@ -1126,6 +1134,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'recordadmin-editlink' => 'ennere',
+	'recordadmin-modified' => 'Gennert',
 );
 
 /** Polish (Polski)

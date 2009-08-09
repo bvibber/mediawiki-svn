@@ -209,6 +209,13 @@ $messages['pt'] = array(
 	'clientside-desc' => 'Providencia funções para gerar código em formatos "client-side", tais como HTML, CSS e JavaScript',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'clientside-desc' => 'Provê funções para gerar código em formatos "client-side", tais como HTML, CSS e JavaScript',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

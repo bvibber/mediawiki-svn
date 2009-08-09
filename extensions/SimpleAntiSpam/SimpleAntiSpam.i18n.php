@@ -212,6 +212,13 @@ $messages['es'] = array(
 	'simpleantispam-desc' => 'Añade un control simple de spam y bots a los formularios',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'simpleantispam-desc' => 'Lisab lihtsa rämpsposti- ja robotikontrolli vormiväljade jaoks.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -377,14 +384,15 @@ $messages['jv'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'simpleantispam' => '당신의 편집은 반(反)스팸 메커니즘이 작동하게 했습니다.',
+	'simpleantispam' => '현재 편집이 스팸 방지 장치에 탐지되었습니다',
 	'simpleantispam-label' => "스팸 방지 검사입니다.
 이것을 입력하지 '''마세요'''!",
-	'simpleantispam-desc' => '형태를 확인할 간단한 스팸/봇을 덧붙여 주세요',
+	'simpleantispam-desc' => '스팸/봇 확인 장치를 추가',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -165,6 +165,13 @@ $messages['id'] = array(
 	'javascript-desc' => 'Menambahkan uniwiki.js ke setiap halaman yang mengandung kode JavaScript pada ekstensi-ekstensi Uniwiki',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'javascript-desc' => 'Aggiunge uniwiki.js per ogni pagina contenente il codice JavaScript condiviso tra estensioni Uniwiki',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

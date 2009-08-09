@@ -226,6 +226,16 @@ $messages['fa'] = array(
 	'userimages-noimages' => '$1 هیچ تصویری بارگذاری نکرده‌‌است.',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'userimages-caption' => 'Kuvat, jotka $1 on lähettänyt',
+	'userimages-noname' => 'Virheellinen käyttäjätunnus tai käyttäjätunnusta ei määritelty.',
+	'userimages-noimages' => '$1 ei ole lähettänyt kuvatiedostoja.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
@@ -321,8 +331,11 @@ $messages['id'] = array(
 	'userimages-noimages' => '$1 tidak pernah memuatkan berkas.',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
 $messages['it'] = array(
+	'userimages-desc' => 'Crea gallerie di immagini caricate dagli utenti con <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => "Immagini caricate dall'utente $1",
 	'userimages-noname' => 'Nome utente errato o mancante.',
 	'userimages-noimages' => "L'utente $1 non ha caricato immagini.",

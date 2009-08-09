@@ -228,6 +228,7 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -236,6 +237,7 @@ $messages['fi'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Lähetetään...',
 	'communityvoice-ratings-scale-status-error' => 'Virhe lähettämisessä.',
 	'communityvoice-ratings-scale-status-thanks' => 'Kiitos äänestäsi!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|ääni|ääntä}} annettu)',
 	'communityvoice-ratings-error-no-category' => 'Luokkamäärite puuttuu arviointimerkinnästä.',
 	'communityvoice-ratings-error-no-title' => 'Nimimäärite puuttuu arviointimerkinnästä.',
 );
@@ -388,16 +390,17 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'communityvoice' => '공동체 알림',
-	'communityvoice-desc' => '공동체 참가 도구',
+	'communityvoice' => '커뮤니티 보이스',
+	'communityvoice-desc' => '공동체 참여 도구',
 	'communityvoice-ratings' => '평가',
 	'communityvoice-ratings-scale-status-sending' => '전송 중...',
-	'communityvoice-ratings-scale-status-error' => '오류를 보냅니다!',
-	'communityvoice-ratings-scale-status-thanks' => '투표에 감사드립니다!',
+	'communityvoice-ratings-scale-status-error' => '오류를 전송합니다!',
+	'communityvoice-ratings-scale-status-thanks' => '투표해 주셔서 감사합니다!',
 );
 
 /** Ripoarisch (Ripoarisch)

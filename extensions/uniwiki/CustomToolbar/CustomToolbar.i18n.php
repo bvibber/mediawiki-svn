@@ -719,6 +719,7 @@ $wgCustomToolbarMessages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Nike
  * @author Str4nd
@@ -748,6 +749,8 @@ $wgCustomToolbarMessages['fi'] = array(
 	'ct_math_tip_wrap' => 'Tee tästä tekstistä matemaattinen kaava (LaTeX)',
 	'ct_math_caption' => 'Kaava',
 	'ct_nowiki_sample' => 'Lisää muotoilematon teksti tähän',
+	'ct_nowiki_tip_ins' => 'Älä huomioi wikimuotoiluja',
+	'ct_nowiki_tip_wrap' => 'Jätä wikimuotoilut huomiotta tämän tekstin osalta',
 	'ct_nowiki_caption' => 'Ei wikitekstiä',
 	'ct_horizontal_tip' => 'Lisää vaakasuora viiva (käytä niukasti)',
 	'ct_horizontal_caption' => 'Vaakasuora viiva',
@@ -755,12 +758,14 @@ $wgCustomToolbarMessages['fi'] = array(
 	'ct_select' => 'Valitse $1 tallentaaksesi:',
 	'ct_caption' => 'Lisää kuvateksti (valinnainen)',
 	'ct_link' => 'Lisää linkin nimi (valinnainen)',
+	'ct_submit' => 'Siirry',
 	'ct_close' => 'Sulje ikkuna',
 	'ct_success' => 'Tiedoston tallennus onnistui.',
 	'ct_popupblocked' => 'Tiedostojen tallennuksen ponnahdusikkunan avaus epäonnistui.
 Tarkista ponnahdusikkunoiden eston asetukset.',
 	'ct_user_user' => 'Käyttäjä',
 	'ct_user_tip' => 'Lisää linkki käyttäjäsivulle',
+	'ct_user_caption' => 'Käyttäjälinkki',
 	'ct_user_sample' => 'Käyttäjätunnus',
 );
 
@@ -1615,6 +1620,7 @@ $wgCustomToolbarMessages['os'] = array(
  * @author Xqt
  */
 $wgCustomToolbarMessages['pdc'] = array(
+	'ct_close' => 'Fenschder zumache',
 	'ct_user_user' => 'Yuuser',
 	'ct_user_sample' => 'Yuuser-Naame',
 );

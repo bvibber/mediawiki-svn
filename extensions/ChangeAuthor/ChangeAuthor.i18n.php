@@ -1102,34 +1102,32 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'changeauthor' => '판 저자 바꾸기',
-	'changeauthor-desc' => '판의 저자 바꾸기를 허락합니다',
-	'changeauthor-title' => '판의 저자 바꾸기',
-	'changeauthor-search-box' => '판 찾기',
-	'changeauthor-pagename-or-revid' => '페이지 이름 또는 개정 ID:',
-	'changeauthor-pagenameform-go' => '실행',
-	'changeauthor-comment' => '의견:',
-	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|저자|저자들}} 바꾸기',
-	'changeauthor-explanation-multi' => "이 형식에서 사용자께서는 판의 저자를 바꿀 수 있습니다.
-아래 목록에 있는 하나 또는 그보다 더 많은 수의 사용자 이름을 간단히 바꾸시고, 원하시면 의견을 추가하시고, '저자 바꾸기' 단추를 누르십시오.",
-	'changeauthor-changeauthors-single' => '저자 바꾸기',
-	'changeauthor-explanation-single' => "이 형식에서 사용자께서는 판의 저자를 바꾸실 수 있습니다.
-아래 사용자 이름을 간단히 바꾸시고, 원하시면 의견을 추가하시고, '저자 바꾸기' 단추를 누르세요.",
-	'changeauthor-invalid-username' => '무효 사용자이름 "$1".',
-	'changeauthor-nosuchuser' => '사용자 "$1" 같은 이름은 없습니다.',
+	'changeauthor' => '판의 저자 변경',
+	'changeauthor-desc' => '특정 판의 저자를 변경할 수 있는 기능',
+	'changeauthor-title' => '특정 판의 저자 변경',
+	'changeauthor-search-box' => '판 검색',
+	'changeauthor-pagename-or-revid' => '문서 이름 혹은 특정 판 ID:',
+	'changeauthor-pagenameform-go' => '가기',
+	'changeauthor-comment' => '이유:',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1}}저자 변경',
+	'changeauthor-explanation-multi' => "아래의 양식을 이용해 특정 판의 저자를 변경할 수 있습니다.
+아래 목록에서 변경하려는 부분의 저자를 편집한 다음에, 이유를 입력하고 '저자 변경'을 클릭해 주세요.",
+	'changeauthor-changeauthors-single' => '저자 변경',
+	'changeauthor-explanation-single' => "아래의 양식을 이용해 특정 판의 저자를 변경할 수 있습니다. 저자를 변경한 다음, 이유를 입력하고 '저자 변경'을 클릭해 주세요.",
+	'changeauthor-invalid-username' => '‘$1’은(는) 잘못된 사용자 이름입니다.',
+	'changeauthor-nosuchuser' => '‘$1’ 사용자가 존재하지 않습니다.',
 	'changeauthor-revview' => '$2의 $1 판',
-	'changeauthor-nosuchtitle' => '"$1"이라고 불리는 페이지는 없습니다.',
-	'changeauthor-weirderror' => '매우 이상한 오류가 생겼습니다.
-사용자께서는 원하시는 것을 다시 한 번 시도해주시기 바랍니다.
-만약에 이 오류가 계속 나타난다면, 아마도 데이터베이스가 박살난 것입니다.',
-	'changeauthor-invalidform' => '현재의 형식보다는 차라리 [[Special:ChangeAuthor|특별 페이지]]에 의해 제공된 형식을 사용하여 주세요',
-	'changeauthor-success' => '사용자께서 하신 요청이 성공적으로 실행되었습니다.',
-	'changeauthor-logentry' => '페이지 이름 $1과 개정 ID $2의 저자 $3를 $4로 바꾸었습니다.',
-	'changeauthor-logpagename' => '저자가 로그를 바꿈',
-	'right-changeauthor' => '판의 저자 바꾸기',
+	'changeauthor-nosuchtitle' => '‘$1’ 문서가 존재하지 않습니다.',
+	'changeauthor-weirderror' => '알 수 없는 오류가 발생했습니다. 다시 시도해주세요. 계속 오류가 나오는 경우 데이터베이스에 문제가 있을 수 있습니다.',
+	'changeauthor-invalidform' => '별개 양식을 사용하지 말고, [[Special:ChangeAuthor|여기]]의 양식을 사용해주세요.',
+	'changeauthor-success' => '변경이 완료되었습니다.',
+	'changeauthor-logentry' => '$1 문서의 $2를 $3 사용자에서 $4 사용자로 변경',
+	'changeauthor-logpagename' => '저자 변경 기록',
+	'right-changeauthor' => '특정 판의 작성자 이름을 변경하기',
 );
 
 /** Krio (Krio)

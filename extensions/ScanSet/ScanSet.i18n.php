@@ -710,20 +710,21 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Ilovesabbath
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'scanset-desc' => '안드레아스 그로즈의 CD/DVD 세트에서 스캔하신 이미지를 보고 계십니다',
+	'scanset-desc' => 'Andreas Grosz CD/DVD set을 이용해 이미지 자켓을 표시',
 	'scanset_no_name' => '에러: 스캔셋 이름을 정해야 합니다. (예:&lt;scanset name="EB1911" /&gt;.)',
-	'scanset_invalid_name' => '오류: 효과가 없거나 사라진 스캔 세트임.',
-	'scanset_unrecognised_index_format' => '오류: 알 수 없는 목록 형식임',
-	'scanset_opendir_error' => '오류: 자료실 $1을 열 수 없음',
-	'scanset_no_files' => '오류: 특정한 자료실에서 존재하는 파일이 없음.',
-	'scanset_no_volumes' => '오류: 확인할 수 있는 자료량이 없음',
-	'scanset_missing_index_file' => '오류: 파일 목록 $1을 찾을 수 없음',
-	'scanset_index_file_error' => '오류: $1 라인에 있는 목록 파일 형식에서 오류 발생',
-	'scanset_invalid_volume' => '오류: 양이 너무 적습니다',
+	'scanset_invalid_name' => '오류: 스캔 세트가 잘못되었거나 없습니다.',
+	'scanset_unrecognised_index_format' => '오류: 알 수 없는 색인 형식',
+	'scanset_opendir_error' => '오류: $1 디렉토리를 열 수 없음',
+	'scanset_no_files' => '오류: 해당 디렉토리에 파일이 없습니다.',
+	'scanset_no_volumes' => '오류: 볼륨 디렉토리가 없음',
+	'scanset_missing_index_file' => '오류: 색인 파일 $1을(를) 찾을 수 없음',
+	'scanset_index_file_error' => '오류: $1번째 줄에 알 수 없는 색인 파일 형식',
+	'scanset_invalid_volume' => '오류: 잘못된 볼륨',
 	'scanset_next' => '다음 &gt;',
 	'scanset_prev' => '&lt; 이전',
 );

@@ -733,7 +733,9 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Lösche',
+	'inspectcache-list' => 'Lischt',
 );
 
 /** Polish (Polski)

@@ -101,6 +101,13 @@ $messages['es'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] interface XML proveído para extractos de texto',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-liides tekstiväljavõteteks',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

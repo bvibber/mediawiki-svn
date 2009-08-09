@@ -252,12 +252,20 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'layouts-desc' => 'Esitäyttää vastaluodut sivut muokattavilla "sabluunoilla" yhdenmukaisten sivujen pohjarakenteiden kannustamiseksi',
 	'layouts_title' => 'Luo sivu',
+	'layouts_chooselayout' => 'Valitse ulkoasu kohteelle $1:',
 	'layouts_nolayout' => 'Ei ulkoasua',
+	'layouts_continue' => 'Jatka',
+	'layouts_choosecategory' => 'Valitse luokka kohteelle $1:',
 	'layouts_unknown' => 'Tuntematon',
+	'layouts_tagline' => "Tämän sivun tuotti '''$1''' ulkoasumuoto.",
 );
 
 /** French (Français)

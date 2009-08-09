@@ -2325,6 +2325,7 @@ Laajennoksen käyttäminen edellyttää, että PHP:lla on kirjoitusoikeudet hake
 	'configure-backlink' => 'Palaa lomakkeeseen',
 	'configure-section-features' => 'Ominaisuudet',
 	'configure-section-general' => 'Yleiset asetukset',
+	'configure-section-pages' => 'Sivut',
 	'configure-section-paths' => 'Polut',
 	'configure-section-db' => 'Tietokanta',
 	'configure-section-load-balancing' => 'Kuormantasaus',
@@ -4000,7 +4001,7 @@ Assegnare a PHP il diritto di scrittura su di essa per utilizzare questa estensi
 	'configure-select-wiki-view-specific' => 'Sito wiki specifico:',
 	'configure-select-wiki-submit' => 'Seleziona',
 	'configure-setting-not-available' => "L'impostazione non è disponibile in questa versione di MediaWiki",
-	'configure-transwiki-not-in-range' => 'Il sito wiki richiesto, $1, non è fra i valori permessi ($2).',
+	'configure-transwiki-not-in-range' => 'Il sito wiki richiesto, $1, non è {{PLURAL:$3|nel valore permesso|fra i valori permessi}}: ($2).',
 	'configure-view' => 'Visualizza',
 	'configure-view-all-versions' => 'Elenco completo delle versioni',
 	'configure-view-default' => 'Impostazioni predefinite',
@@ -4059,6 +4060,9 @@ Assegnare a PHP il diritto di scrittura su di essa per utilizzare questa estensi
 	'configure-boolop-description-or' => 'Almeno una condizione deve essere verificata',
 	'configure-boolop-description-xor' => 'Una condizione deve necessariamente essere verificata',
 	'configure-boolop-description-not' => 'Nessuna condizione deve essere verificata',
+	'configure-farmer-settings' => '[[Special:Configure|Configura questo sito]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Configura le estensioni per questo sito]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Elenca le estensioni disponibili per questo sito]].',
 );
 
 /** Japanese (日本語)

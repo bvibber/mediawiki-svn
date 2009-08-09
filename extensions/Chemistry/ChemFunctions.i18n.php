@@ -48,24 +48,6 @@ $messages['qqq'] = array(
 	'chemFunctions_ListPage' => '{{Identical|Chemical sources}}',
 );
 
-/** Picard (Picard)
- * @author Geoleplubo
- */
-$messages['pcd'] = array(
-	'chemicalsources' => 'Référinches kémiques',
-	'chemicalsource-desc' => 'Ajouter el balise <nowiki><chemform></nowiki>, pou ches formules kémiques',
-	'chemFunctions_ListPage' => 'Référinches kémiques',
-	'chemFunctions_DataList' => 'Dsous il y o eune lisse aveuc chés loïens éd chés chites où os pourroème trouvoér des informachons su chés molétchules kémiques qu\'os trachez.<br /><br />
-* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
-* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS at the Oxford University (UK) (not searchable)</a><br />',
-	'chemFunctions_CAS' => 'Liméro CAS',
-	'chemFunctions_ATCCode' => 'Code ATC',
-	'chemFunctions_ECNumber' => 'ECLiméro',
-	'chemFunctions_Formula' => 'Formule',
-	'chemFunctions_Name' => 'Nom IUPAC',
-	'chemFunctions_ChemFormInputError' => 'Chemform: Bérlurache del intrèe!',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -329,6 +311,7 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'chemFunctions_CAS' => 'CAS-numero',
+	'chemFunctions_Formula' => 'Kaava',
 	'chemFunctions_Name' => 'IUPAC-nimi',
 );
 
@@ -801,6 +784,24 @@ $messages['oc'] = array(
 	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Nom UICPA',
 	'chemFunctions_ChemFormInputError' => 'Chemform, dintrant erronèu!',
+);
+
+/** Picard (Picard)
+ * @author Geoleplubo
+ */
+$messages['pcd'] = array(
+	'chemicalsources' => 'Référinches kémiques',
+	'chemicalsource-desc' => 'Ajouter el balise <nowiki><chemform></nowiki>, pou ches formules kémiques',
+	'chemFunctions_ListPage' => 'Référinches kémiques',
+	'chemFunctions_DataList' => 'Dsous il y o eune lisse aveuc chés loïens éd chés chites où os pourroème trouvoér des informachons su chés molétchules kémiques qu\'os trachez.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS at the Oxford University (UK) (not searchable)</a><br />',
+	'chemFunctions_CAS' => 'Liméro CAS',
+	'chemFunctions_ATCCode' => 'Code ATC',
+	'chemFunctions_ECNumber' => 'ECLiméro',
+	'chemFunctions_Formula' => 'Formule',
+	'chemFunctions_Name' => 'Nom IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Bérlurache del intrèe!',
 );
 
 /** Polish (Polski)

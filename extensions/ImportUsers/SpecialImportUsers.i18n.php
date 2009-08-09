@@ -1187,6 +1187,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'importusers-log-summary-all' => 'All',
 	'importusers-password' => 'Paesswatt',
 );
 

@@ -191,10 +191,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'contributorsaddon-desc' => '자바 스크립트 팝업에 "주요 기여자" 링크를 추가해 주세요',
+	'contributorsaddon-desc' => '자바스크립트를 이용해 ‘주 기여자’를 표시하는 기능',
 );
 
 /** Ripoarisch (Ripoarisch)

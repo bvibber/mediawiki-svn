@@ -62,6 +62,24 @@ $messages['be-tarask'] = array(
 	'cooperationstatistics-legendmore' => 'ці болей рэдактараў.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'cooperationstatistics' => 'Stadegoù kenlabour',
+	'cooperationstatistics-desc' => 'Diskouez [[Special:CooperationStatistics|stadegoù kenlabour an esaouenn anv pennañ]].',
+	'cooperationstatistics-text' => "Diskouez ar stadegoù kenlabour war an esaouennoù anv pennañ.
+Eus[[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] da [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] adlennerien.<br />
+Gwelet ivez ar [[Special:MostRevisors|'''pajennoù dezho ar muiañ a adlennerien''']] hag ar [[Special:MostRevisions|pajennoù reizhet ar muiañ]].",
+	'cooperationstatistics-tablearticle' => 'Niver a bajennoù',
+	'cooperationstatistics-tablevalue' => 'Niver a aozerien',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pajenn|pajenn}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|en deus|o deus}} $1 {{PLURAL:$1|aozer|aozer}}',
+	'cooperationstatistics-nblessusers' => "{{PLURAL:$2|en deus|o deus}} $1 {{PLURAL:$1|aozer|aozer pe nebeutoc'h}}",
+	'cooperationstatistics-nbmoreusers' => "{{PLURAL:$2|en deus|o deus}} $1 aozer pe muioc'h",
+	'cooperationstatistics-legendmore' => "pe muioc'h a aozerien.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -111,12 +129,33 @@ Glědaj teke [[Special:MostRevisors|'''boki z nejwěcej pśeglědarjami''']] a [
 	'cooperationstatistics-legendmore' => 'abo wobźěłarjow.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'cooperationstatistics-tablearticle' => 'Nombro de paĝoj',
+	'cooperationstatistics-tablevalue' => 'Nombro de redaktantoj',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|paĝo|paĝoj}}',
+	'cooperationstatistics-nbusers' => 'havas $1 {{PLURAL:$1|redaktanton|redaktantojn}}',
+	'cooperationstatistics-legendmore' => 'aŭ pliaj redaktoj.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
 $messages['eu'] = array(
 	'cooperationstatistics-articles' => '{{PLURAL:$1|Orrialde bat|$1 orrialde}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$1|Editore bat|$1 editore}} {{PLURAL:$2|du|ditu}}',
+);
+
+/** Finnish (Suomi)
+ * @author Silvonen
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'cooperationstatistics' => 'Yhteistyötilastot',
+	'cooperationstatistics-tablearticle' => 'Sivumäärä',
+	'cooperationstatistics-tablevalue' => 'Muokkaajien lukumäärä',
 );
 
 /** French (Français)
@@ -172,6 +211,24 @@ Luege au d [[Special:MostRevisors|'''Syte mit dr meischte Bearbeiter''']] un d [
 	'cooperationstatistics-nblessusers' => 'hän $1 oder weniger Bearbeiter',
 	'cooperationstatistics-nbmoreusers' => 'hän $1 oder meh Bearbeiter',
 	'cooperationstatistics-legendmore' => 'oder meh Bearbeiter',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'cooperationstatistics' => 'סטטיסטיקת שיתוף פעולה',
+	'cooperationstatistics-desc' => 'הצגת [[Special:CooperationStatistics|סטטיסטיקת שיתוף פעולה במרחב השם הראשי]].',
+	'cooperationstatistics-text' => "הצגת נתוני שיתוף פעולה במרחב השם הראשי.
+מ־[[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] עד [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}} או יותר]] מבקרים.<br />
+עיינו גם ב[[Special:MostRevisors|'''דפים עם הכי הרבה מבקרים''']] וב[[Special:MostRevisions|דפים עם הכי הרבה גרסאות]].",
+	'cooperationstatistics-tablearticle' => 'מונה דפים',
+	'cooperationstatistics-tablevalue' => 'מספר העורכים',
+	'cooperationstatistics-articles' => '{{PLURAL:$1|דף אחד|$1 דפים}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|יש|יש}} {{PLURAL:$1|עורך אחד|$1 עורכים}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|יש|יש}} {{PLURAL:$1|עורך אחד|$1 עורכים או פחות}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|יש|יש}} $1 או יותר עורכים',
+	'cooperationstatistics-legendmore' => 'או עורכים נוספים.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

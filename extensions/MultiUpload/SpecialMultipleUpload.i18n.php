@@ -177,6 +177,30 @@ $messages['bg'] = array(
 	'multiupload-blank' => 'Не е избран файл',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'multipleupload' => 'Enporzhiañ meur a restr',
+	'multipleupload-desc' => 'Aotren a ra an implijerien da [[Special:MultipleUpload|enporzhiañ meur a restr war un dro]]',
+	'multipleupload-ignoreallwarnings' => "Na ober van ouzh '''an holl gemennoù''' hag enrollañ ar restr forzh penaos.",
+	'multipleupload-saveallfiles' => 'Enrollañ an holl restroù',
+	'multipleupload-addresswarnings' => "Gwiriañ ar c'hemennoù war wel a-raok enporzhiañ restroù en-dro.",
+	'multipleupload-page' => '{{ns:project}}:Politikerezh diverkañ restroù',
+	'multipleupload-text' => "Enporzhiañ meur a restr amañ.
+
+Dibabit 'Furchal' ha diuzit kement restr a fell deoc'h enporzhiañ.
+Gallout a rit enporzhiañ etre 1 ha $1 restr war un dro.
+
+Merkañ a c'hallit '''Lec'h enrollañ ar restr''', mar karit, ha sevel un tamm '''deskrivadenn''' eus ar restr.
+
+Diverket raktal e vo ar restroù didalvez, sellit ouzh ar [[{{MediaWiki:Multipleupload-page}}|politikerezh diverkañ ar restroù]].",
+	'multiupload-fileuploaded' => 'Restr enporzhiet.',
+	'multiupload-toolbox' => 'Enporzhiañ meur a restr',
+	'multiupload-no-files' => 'Diuzañ da nebeutañ ur restr da vezañ enporzhiet',
+	'multiupload-blank' => "N'eus bet diuzet restr ebet",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -1154,7 +1178,7 @@ Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Mult
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
-	'multipleupload' => 'Carregar arquivos',
+	'multipleupload' => 'Carregar múltiplos arquivos',
 	'multipleupload-desc' => 'Permite aos utilizadores [[Special:MultipleUpload|carregar vários arquivos de uma vez]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e gravar os arquivos.",
 	'multipleupload-saveallfiles' => 'Gravar todos os arquivos',

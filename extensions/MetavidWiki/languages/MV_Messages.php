@@ -1946,9 +1946,14 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'metavid' => 'MetaVid-sivu',
+	'specialpages-group-mv_group' => 'MetaVidWikin toimintosivut',
+	'mvexportsearch' => 'MetaVid-vienti',
 	'mv_remove_reason' => 'Poiston syy',
 	'mv_upload_file' => 'Tallenna tiedosto',
 	'mv_external_file' => 'Ulkoinen tiedosto',
+	'mv_tool_search' => 'Hae',
+	'mv_tool_export' => 'Vie',
 	'mv_edit' => 'Muokkaa',
 	'mv_history' => 'Historia',
 	'mv_edit_title' => 'Muokkaa tekstiä',
@@ -1957,13 +1962,27 @@ $messages['fi'] = array(
 	'mv_start_desc' => 'Aloitusaika',
 	'mv_end_desc' => 'Päättymisaika',
 	'mv_edit_metadata' => 'Muokkaa metatietoa',
+	'mv_advanced_edit' => 'Kehittynyt muokkaus',
+	'mv_basic_edit' => 'Perusmuokkaus',
 	'mv_remove_category' => 'Poista luokka',
 	'mv_video_search' => 'Videohaku',
 	'mv_search_category' => 'Luokka',
 	'mv_search_and' => 'ja',
 	'mv_search_or' => 'tai',
 	'mv_search_not' => 'ei',
+	'mv_date_last_week' => 'Viime viikko',
+	'mv_category_results' => 'Luokan tulokset',
+	'mv_category' => 'luokka',
+	'mv_remove_filter' => 'poista suodatin',
+	'mv_view_wiki_page' => 'Näytä wikisivu',
 	'mv_other_options' => 'Muut asetukset',
+	'mv_days' => '$1 {{PLURAL:$1|päivä|päivää}}',
+	'mv_hours' => '$1 {{PLURAL:$1|tunti|tuntia}}',
+	'mv_hours_singular' => '$1 tunti',
+	'mv_minutes' => '$1 {{PLURAL:$1|minuutti|minuuttia}}',
+	'mv_minutes_singular' => '$1 minuutti',
+	'mv_seconds' => '$1 {{PLURAL:$1|sekunti|sekuntia}}',
+	'mv_seconds_singular' => '$1 sekunti',
 );
 
 /** French (Français)
@@ -4021,6 +4040,7 @@ $messages['jv'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'metavid' => 'ទំព័រ​ឆ្លាស់',
@@ -4031,7 +4051,7 @@ $messages['km'] = array(
 	'mv_path_type_wiki_title' => 'ចំណងជើង​វិគីមេឌា',
 	'mv_duration_label' => 'កំលុងពេល',
 	'mv_save_changes' => 'រក្សាបំលាស់ប្តូរទុក',
-	'mv_user_cant_edit' => 'អ្នក​អាច​មាន [$1 Log in] ដើម្បី​កែប្រែ, $2',
+	'mv_user_cant_edit' => 'អ្នក​ត្រូវតែ [$1 ឡុកអ៊ីន] ដើម្បី​កែប្រែ, $2',
 	'mv_add_stream_file' => 'បន្ថែម​ឯកសារស្ទ្រីម',
 	'mv_file_list' => 'ឯកសារស្ទ្រីម',
 	'mv_label_stream_name' => 'ឈ្មោះ​ស្ទ្រីម',
@@ -4103,6 +4123,13 @@ $messages['km'] = array(
 	'mv_next_cat' => 'ចំណាត់ថ្នាក់ក្រុម​បន្ទាប់​៖ $1',
 	'mv_search_stream_title' => 'ស្វែងរក​ស្ទ្រីម​បច្ចុប្បន្ន',
 	'mv_mang_layers' => 'គ្រប់គ្រង​ស្រទាប់',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'mv_existing_categories' => '{{PLURAL:$1|ವರ್ಗ|ವರ್ಗಗಳು}}:',
 );
 
 /** Korean (한국어)
@@ -5872,10 +5899,18 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'mv_remove_reason' => 'Grund fers Lösche:',
+	'mv_edit' => 'Ennere',
 	'mv_history' => 'Gschicht',
+	'mv_search_bills' => 'Lischt',
 	'mv_search_and' => 'unn',
+	'mv_search_or' => 'odder',
+	'mv_search_not' => 'net',
+	'mv_spoken_by' => 'verdeelt vun',
 	'mv_days' => '$1 {{PLURAL:$1|Daag|Daage}}',
+	'mv_hours' => '$1 Schtund',
 	'mv_hours_singular' => '$1 Schtund',
+	'mv_minutes' => '$1 {{PLURAL:$1|Minudd|Minudde}}',
+	'mv_minutes_singular' => '$1 Minudde',
 );
 
 /** Polish (Polski)

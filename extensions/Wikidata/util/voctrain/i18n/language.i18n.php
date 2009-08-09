@@ -314,6 +314,7 @@ $messages['af'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Verberg definisies in brontaal',
 	'voctrain_hide_words_in_question_language' => 'Verberg woorde in brontaal',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Gebruik kommas tussen tale indien u meer as een taal wil gebruik.',
+	'voctrain_other' => 'ander',
 );
 
 /** Arabic (العربية)
@@ -456,6 +457,13 @@ $messages['arz'] = array(
 	'voctrain_hide_words_in_question_language' => 'إخفاء الكلمات فى لغة السؤال',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'افصل القيم بفواصل لاستخدام لغات متعددة.',
 	'voctrain_other' => 'آخر',
+);
+
+/** Azerbaijani (Azərbaycan)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'voctrain_Hello_World' => 'SALAM VİKİ!',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -1762,6 +1770,14 @@ $messages['km'] = array(
 	'voctrain_other' => 'ផ្សេងទៀត',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'voctrain_Language' => 'ಭಾಷೆ',
+	'voctrain_other' => 'ಇತರ',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */
@@ -2329,7 +2345,7 @@ $messages['oc'] = array(
 	'voctrain_Action_unknown' => 'Accion desconeguda',
 	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Sabi pas qué far amb « %action »',
 	'voctrain_User_added' => 'Utilizaire ajustat',
-	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Adiu, %username, planvenguda a l’entrainament de las lengas sus omega',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Adiu, %username, benvenguda a l’entraïnament de las lengas sus omèga',
 	'voctrain_continue' => 'contunhar',
 	'voctrain_hello_place' => 'Adiu aquí %place',
 	'voctrain_bye' => 'al reveire',
@@ -2542,6 +2558,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'voctrain_Hello_World' => 'سلامونه ويکي!',
+	'voctrain_Permission_Denied' => 'غوښتنه مو رد شوه',
 	'voctrain_try_again_' => 'بيا آزمويل يې غواړۍ؟',
 	'voctrain_Action_unknown' => 'ناڅرګنده کړنه',
 	'voctrain_I_don_t_know_what_to_do_with_action_' => "زه نه پوهېږم چې د '%action' سره څه وکړم.",
@@ -2597,6 +2614,7 @@ $messages['ps'] = array(
 	'voctrain_unhide_definition' => 'پېژند ښکاره کول',
 	'voctrain_unhide_words' => 'وييونه ښکاره کول',
 	'voctrain_hiding' => 'پټول',
+	'voctrain_other' => 'بل ګڼ',
 );
 
 /** Portuguese (Português)

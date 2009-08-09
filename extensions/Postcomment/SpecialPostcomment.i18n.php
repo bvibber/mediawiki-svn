@@ -640,6 +640,14 @@ $messages['oc'] = array(
 	'postcomment_nopostingtoadd' => "Cap de messatge d'ajustar",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'postcomment_on' => 'Am',
+	'postcomment_said' => 'hot gschriwwe',
+);
+
 /** Polish (Polski)
  * @author Maire
  * @author Sp5uhe

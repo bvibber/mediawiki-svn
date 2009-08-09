@@ -668,25 +668,26 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Wrightbus
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'amazonplus-desc' => '아마존 정보를 전시하기 위한 고도 주문 확장',
-	'amazonplus-nores' => '오류: 아무런 결과를 찾을 수 없습니다!',
-	'amazonplus-noidres' => '오류: 상품 ID를 찾을 수 없습니다!',
-	'amazonplus-fgcerr' => '오류: 아마존으로부터 온 자료가 복구될 수 없습니다!',
-	'amazonplus-slserr' => '오류: 아마존으로부터 온 자료를 인식할 수 없습니다!',
+	'amazonplus-desc' => '아마존에서 정보를 가져와 보여주는, 높은 확장성을 가지는 기능',
+	'amazonplus-nores' => '오류: 결과가 없습니다!',
+	'amazonplus-noidres' => '오류: 해당 제품 ID를 찾을 수 없습니다!',
+	'amazonplus-fgcerr' => '오류: 아마존에서 자료를 받지 못했습니다!',
+	'amazonplus-slserr' => '오류: 아마존에서 온 자료를 해석할 수 없습니다!',
 	'amazonplus-used' => '중고',
 	'amazonplus-german' => '독일어',
 	'amazonplus-french' => '프랑스어',
 	'amazonplus-japanese' => '일본어',
 	'amazonplus-amazon' => '아마존 가격',
-	'amazonplus-new' => '신규',
-	'amazonplus-none' => '이 책의 복사본은 팔지 않습니다.',
+	'amazonplus-new' => '신상품',
+	'amazonplus-none' => '해당 상품은 판매하지 않습니다.',
 	'amazonplus-cp-none' => '없음',
-	'amazonplus-more' => '좀 더 있음',
-	'amazonplus-less' => '부족함',
+	'amazonplus-more' => '더 보기',
+	'amazonplus-less' => '간단하게 보기',
 );
 
 /** Ripoarisch (Ripoarisch)

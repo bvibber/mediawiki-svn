@@ -189,6 +189,7 @@ $messages['es'] = array(
  */
 $messages['fi'] = array(
 	'newschannel' => 'Uutiskanava',
+	'newschannel_format' => 'Muoto',
 	'newschannel_limit' => 'Rajoitus',
 	'newschannel_submit_button' => 'Luo syöte',
 );

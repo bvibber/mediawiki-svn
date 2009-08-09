@@ -408,6 +408,10 @@ $messages['it'] = array(
 	'watchsubpages-addtitles' => 'Aggiungi pagine',
 	'watchsubpages-addtitlestowatchlist' => 'Aggiungi pagine agli Osservati Speciali',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Aggiunge rapidamente tutte le sottopagine]] di una pagina agli Osservati Speciali',
+	'watchsubpages-form' => 'Selezionare le pagine da aggiungere ai propri osservati speciali di seguito.
+Per aggiungere una pagina, selezionare la casella accanto a essa e fare clic su "Aggiungi pagine".
+
+Quando si selezionano o deselezionano più pagine, tenendo premuto il tasto shift si possono selezionare caselle consecutive cliccando gli estremi dell\'intervallo da selezionare.',
 );
 
 /** Japanese (日本語)
@@ -581,6 +585,13 @@ $messages['oc'] = array(
 Per apondre una pagina, marcatz la casa aprèp ela, e clicatz « Apondre de paginas ».
 
 Per marcar o desmarcar mai d'una pagina, lo fach de téner quichada la tòca « Majuscula » permet de seleccionar tota una seria de casa en clicant de part e d’autra de la rengada de seleccionar.",
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'watchsubpages-addtitles' => 'Blatt dezu duh',
 );
 
 /** Polish (Polski)

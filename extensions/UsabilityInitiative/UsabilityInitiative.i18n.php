@@ -21,6 +21,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'usabilityinitiative' => 'مبادرة الاستخدامية',
+	'usabilityinitiative-desc' => 'مزايا طورتها مبادرة استخدامية ويكيبيديا (Wikipedia Usability Initiative) لتحسين استخدامية ميدياويكي.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -64,12 +65,26 @@ $messages['dsb'] = array(
 	'usabilityinitiative-desc' => 'Funkcije wuwite pśez iniciatiwu wužywajobnosći Wikipedije za pólěpšenje wužywajobnosći MediaWiki',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'usabilityinitiative' => 'Iniciato pri Uzebleco',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
 $messages['es'] = array(
 	'usabilityinitiative' => 'Iniciativa de usabilidad',
 	'usabilityinitiative-desc' => 'Características desarrolladas por la iniciativa de usabilidad de Wikipedia para mejorar la usabilidad de MediaWiki',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'usabilityinitiative-desc' => 'Vikipeedia kasutushõlpsuse algatuse välja töötatud omadused, mis peaks täiustama MediaWiki kasutatavust.',
 );
 
 /** Basque (Euskara)
@@ -209,6 +224,14 @@ $messages['lt'] = array(
 	'usabilityinitiative-desc' => 'Priedai, rengiami Wikipedia Naudojimo Iniciatyvos, siekiant padidinti MediaWiki naudojimą.',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'usabilityinitiative' => 'Bruukbaorheidsinitiatief',
+	'usabilityinitiative-desc' => "Functionaliteit dee deur 't Bruukbaorheidsinitiatief van Wikipedie is ontwikkeld um de gebruuksvriendelijkheid van MediaWiki te verbeteren",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -238,6 +261,14 @@ $messages['pl'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'usabilityinitiative' => 'Iniciativa de Usabilidade',
+	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'usabilityinitiative' => 'Iniciativa de Usabilidade',
 	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
 );

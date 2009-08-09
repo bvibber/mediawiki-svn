@@ -187,6 +187,13 @@ $messages['id'] = array(
 	'mootools12core-desc' => 'Menambahkan [http://mootools.net mootools-1.2-core-yc.js], sebuah rangka kerja JavaScript yang padat, ke setiap halaman',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'mootools12core-desc' => 'Aggiunge [http://mootools.net mootools-1.2-core-yc.js], un compatto framework JavaScript, a ogni pagina',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi

@@ -1578,6 +1578,9 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
 	'deletequeue-list-header-queue' => 'Jono',
 	'deletequeue-list-header-votes' => 'Hyväksyjät ja vastustajat',
 	'deletequeue-list-header-discusspage' => 'Keskustelusivu',
+	'deletequeue-case-details' => 'Perustiedot',
+	'deletequeue-case-page' => 'Sivu',
+	'deletequeue-case-reason' => 'Syy',
 );
 
 /** French (Français)

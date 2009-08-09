@@ -377,8 +377,16 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'tasklist' => 'Tehtävälista',
+	'tasklistbyproject' => 'Projektikohtainen tehtävälista',
 	'tasklistunknownproject' => 'Tuntematon projekti',
+	'tasklistunspecuser' => 'Määrittelemätön käyttäjä',
 	'tasklistincorrectuser' => 'Virheellinen käyttäjätunnus',
+	'tasklistemail' => 'Hyvä %s',
+	'tasklistemailsubject' => '[%s] Tehtäväluettelon muutos',
+	'tasklistmytasks' => 'Omat tehtävät',
+	'tasklistbyprojname' => "Käyttäjälle '''%s''' osoitetut tehtävät",
+	'tasklistchooseproj' => 'Valitse projekti',
+	'tasklistprojdisp' => 'Näytä',
 );
 
 /** French (Français)
@@ -993,12 +1001,14 @@ O seu sistema de notificação amigável de %s',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'tasklistunknownproject' => 'Proiect necunoscut',
 	'tasklistunspecuser' => 'Utilizator nespecificat',
 	'tasklistincorrectuser' => 'Nume de utilizator incorect',
+	'tasklistemail' => 'Dragă %s',
 );
 
 /** Tarandíne (Tarandíne)

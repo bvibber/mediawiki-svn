@@ -1078,6 +1078,8 @@ $messages['ext'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'sign-selectdoc' => 'Asiakirja',
+	'sign-error-nosuchdoc' => 'Pyytämääsi asiakirjaa ($1) ei löydy.',
 	'sign-realname' => 'Nimi',
 	'sign-address' => 'Katuosoite',
 	'sign-city' => 'Kaupunki',
@@ -1095,6 +1097,7 @@ $messages['fi'] = array(
 	'sign-list-hidephone' => 'Älä listaa puhelinnumeroa',
 	'sign-list-hidebday' => 'Älä listaa ikää',
 	'sign-list-hideemail' => 'Älä listaa sähköpostiosoitetta',
+	'sign-submit' => 'Allekirjoita dokumentti',
 	'sign-viewfield-timestamp' => 'Aikaleima',
 	'sign-viewfield-realname' => 'Nimi',
 	'sign-viewfield-address' => 'Osoite',
@@ -1106,9 +1109,17 @@ $messages['fi'] = array(
 	'sign-viewfield-phone' => 'Puhelin',
 	'sign-viewfield-email' => 'Sähköpostiosoite',
 	'sign-viewfield-age' => 'Ikä',
+	'sign-viewfield-options' => 'Valinnat',
+	'sign-sigadmin-close' => 'Ota allekirjoittaminen pois käytöstä',
+	'sign-sigadmin-open' => 'Ota allekirjoittaminen käyttöön',
+	'sign-signatures' => 'Allekirjoitukset',
+	'sign-sigadmin-closesuccess' => 'Allekirjoittaminen poistettiin käytöstä onnistuneesti.',
+	'sign-sigadmin-opensuccess' => 'Allekirjoitus otettiin käyttöön onnistuneesti.',
+	'sign-viewsignatures' => 'näytä allekirjoitukset',
 	'sign-closed' => 'suljettu',
 	'sig-anonymous' => '<i>Nimetön</i>',
 	'sig-private' => '<i>Yksityinen</i>',
+	'sign-sigdetails' => 'Allekirjoituksen tiedot',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|keskustelu]] • <!--
 -->[[Special:Contributions/$1|muokkaukset]] • <!--
@@ -1119,6 +1130,14 @@ $messages['fi'] = array(
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} estoloki] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} osoitepaljastus])<!--
 --></span>',
+	'sign-viewfield-reviewcomment' => 'Kommentti',
+	'sign-detail-uniquequery-run' => 'Suorita kysely',
+	'sign-reviewsig' => 'Arvioi allekirjoitus',
+	'sign-review-comment' => 'Kommentoi',
+	'sign-uniquequery-similarname' => 'Samankaltainen nimi',
+	'sign-uniquequery-similaraddress' => 'Samankaltainen osoite',
+	'sign-uniquequery-similarphone' => 'Samankaltainen puhelinnumero',
+	'sign-uniquequery-similaremail' => 'Samankaltainen sähköpostiosoite',
 );
 
 /** French (Français)

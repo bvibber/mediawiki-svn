@@ -344,6 +344,7 @@ $messages['it'] = array(
 	'categorywatch-catmoveout' => 'ha spostato $1 dalla categoria $2 a $3',
 	'categorywatch-catadd' => 'ha aggiunto $1 alla categoria $2',
 	'categorywatch-catsub' => 'ha rimosso $1 dalla categoria $2',
+	'categorywatch-autocat' => 'Osservata automaticamente da $1',
 );
 
 /** Japanese (日本語)
@@ -368,6 +369,7 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
@@ -378,7 +380,7 @@ $messages['ko'] = array(
 	'categorywatch-catmoveout' => '$1 문서를 분류 $2에서 $3으로 이동',
 	'categorywatch-catadd' => '$1 문서를 $2 분류에 추가',
 	'categorywatch-catsub' => '$1 문서를 $2 분류에서 제거',
-	'categorywatch-autocat' => '$1에 의해 자동적으로 주시됩니다',
+	'categorywatch-autocat' => '$1에 의해 자동 주시됨',
 );
 
 /** Ripoarisch (Ripoarisch)

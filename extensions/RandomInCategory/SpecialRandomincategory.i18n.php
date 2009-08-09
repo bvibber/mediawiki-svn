@@ -478,6 +478,13 @@ $messages['km'] = array(
 	'randomincategory-submit' => 'ទៅ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'randomincategory-label' => 'ವರ್ಗ:',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */

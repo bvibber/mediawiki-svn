@@ -407,6 +407,23 @@ $messages['fa'] = array(
 	'spamdifftool_cantedit' => 'متاسفیم؛ شما اجازه ویرایش فهرست سیاه هرزنویسی را ندارید.',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'spamdifftool' => 'Hallinnoi roskapostien mustaa listaa',
+	'spamdifftool-desc' => 'Tarjoaa yksioikoisen tavan roskapostien mustalle listalle tehtävien lisäysten lisäämiseen versioiden ero-sivuilta',
+	'spamdifftool_cantedit' => 'Sinulla ei ole oikeuksia muokata roskapostien mustaa listaa.',
+	'spamdifftool_notext' => "Ei ole tekstiä lisättäväksi roskapostin mustalle listalle.
+Napsauta <a href='$1'>tästä</a> jatkaaksesi.",
+	'spamdifftool_confirm' => "Vahvista, että haluat lisätä nämä roskapostien mustalle listalle. (Napsauta <a href='$1' target='new'>tästä</a> ilmoittaaksesi ongelmasta.)",
+	'spamdifftool_summary' => 'Lisätään roskapostien mustalle listalle',
+	'spamdifftool_option_none' => 'ei mitään',
+	'spamdifftool_block' => 'Esto:',
+	'spamdifftool_submit_buttom' => 'Lähetä',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
@@ -923,6 +940,13 @@ $messages['os'] = array(
 	'spamdifftool_submit_buttom' => 'Рарвит',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'spamdifftool_option_none' => 'nix',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Maikking
@@ -1013,6 +1037,19 @@ Clique <a href='$1'>aqui</a> para voltar.",
 	'spamdifftool_option_none' => 'nada',
 	'spamdifftool_block' => 'Bloquear:',
 	'spamdifftool_submit_buttom' => 'Enviar',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'spamdifftool_spam_link_text' => 'adaugă la spam',
+	'spamdifftool_option_domain' => 'toate din acest domeniu',
+	'spamdifftool_option_subdomain' => 'toate de pe acest subdomeniu',
+	'spamdifftool_option_directory' => 'acest subdomeniu şi directorul',
+	'spamdifftool_option_none' => 'nimic',
+	'spamdifftool_block' => 'Blocare:',
+	'spamdifftool_submit_buttom' => 'Trimite',
 );
 
 /** Tarandíne (Tarandíne)

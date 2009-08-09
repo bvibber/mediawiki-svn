@@ -914,6 +914,7 @@ Hacer pública esta información puede provocar la pérdida definitiva de los pr
  * @author Pikne
  */
 $messages['et'] = array(
+	'hiderevision-desc' => 'Võimaldab õiguslikul või muul põhjusel üksikud redaktsioonid kõigi kasutajate eest peita.',
 	'group-oversight' => 'Järelevaatajad',
 	'group-oversight-member' => 'järelevaataja',
 	'right-oversight' => 'Vaadata eelnevalt peidetud redaktsioone',

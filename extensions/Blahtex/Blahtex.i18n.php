@@ -1682,11 +1682,12 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'math_CannotCreateTexFile' => '텍스트 파일을 만들 수 없습니다.',
-	'math_CannotWriteTexFile' => '텍스트 파일을 쓸 수 없습니다.',
+	'math_CannotCreateTexFile' => 'tex 파일을 생성할 수 없습니다',
+	'math_CannotWriteTexFile' => 'tex 파일에 내용을 쓸 수 없습니다',
 );
 
 /** Ripoarisch (Ripoarisch)

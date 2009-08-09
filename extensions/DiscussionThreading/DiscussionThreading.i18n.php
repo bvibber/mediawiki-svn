@@ -402,6 +402,13 @@ $messages['oc'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Començar una discussion novèla',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'discussionthreading-threadnewsection' => 'nei',
+);
+
 /** Polish (Polski)
  * @author Holek
  * @author Leinad

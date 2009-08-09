@@ -141,6 +141,20 @@ $messages['eu'] = array(
 	'uos-other' => '*Besterik',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Silvonen
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'useroptionstats' => 'Käyttäjien asetusten tilastot',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Toimintosivu]] MediaWikin asetusvalintojen käyttötilastoille.',
+	'uos-warn' => 'PHPlotia ei ole asennettu!',
+	'uos-choose' => 'Valitse yksi seuraavista käyttäjän valinnoista: $1',
+	'uos-unknown' => '*Oletus',
+	'uos-other' => '*Muu',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -351,6 +365,14 @@ $messages['pt'] = array(
 	'uos-other' => '*Outro',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'uos-unknown' => '*Implicit',
+	'uos-other' => '*Altul',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -386,6 +408,13 @@ $messages['sr-ec'] = array(
 	'uos-choose' => 'Изаберите једну од следећих корисничких опција: $1',
 	'uos-unknown' => '*Подразумевано',
 	'uos-other' => '*Друго',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'uos-warn' => 'PHPlot är inte installerat!',
 );
 
 /** Telugu (తెలుగు)

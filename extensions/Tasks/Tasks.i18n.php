@@ -942,16 +942,51 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
  * @author Mobe
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'tasks' => 'Tehtävät',
 	'tasks_desc' => 'Tehtävienhallintalaajennus',
 	'tasks_tab' => 'Tehtävät',
+	'tasks_assign_me' => 'Osoita itselle',
+	'tasks_assign_to' => 'Osoita käyttäjälle',
+	'tasks_unassign_me' => 'Poista osoitukseni',
+	'tasks_close' => 'Sulje tehtävä',
+	'tasks_wontfix' => 'Ei korjata',
 	'tasks_delete' => 'Poista',
+	'tasks_reopen' => 'Avaa tehtävä uudelleen',
+	'tasks_assignedto' => 'Osoitettu käyttäjälle $1',
+	'tasks_sidebar_title' => 'Avoimet tehtävät',
+	'tasks_here' => 'tästä',
+	'tasks_returnto' => 'Sinut ohjataan eteenpäin nyt. 
+Jos sinua ei ole ohjattu eteenpäin muutaman sekunnin kuluessa, napsauta $1.',
 	'tasks_see_page_tasks' => '(tämän sivun tehtävät)',
+	'tasks_task_is_assigned' => '(osoitettu)',
+	'tasks_plain_text_only' => '(pelkkä teksti, vain 256 merkkiä)',
+	'tasks_help_page' => 'Tehtävät',
+	'tasks_more_like_it' => 'lisää',
+	'tasks_event_on_creation' => 'tarkasta',
+	'tasks_event_on_creation_anon' => 'tarkasta',
 	'tasks_table_header_page' => 'Sivu',
+	'tasks_search_form_title' => 'Haku',
+	'tasks_search_tasks' => 'Tehtävät',
+	'tasks_search_status' => 'Tila',
+	'tasks_search_results' => 'Hakutulokset',
+	'tasks_previous' => 'Edellinen',
+	'tasks_next' => 'Seuraava',
+	'tasks_sort' => 'Järjestä',
+	'tasks_ascending' => 'Vanhimmat ensin',
+	'tasks_status_open' => 'Avaa',
+	'tasks_status_assigned' => 'Osoitettu',
+	'tasks_status_closed' => 'Suljettu',
+	'tasks_status_wontfix' => 'Jää huomiotta',
+	'tasks_action_open' => 'Tehtävä ”$1” avattu.',
+	'tasks_action_assigned' => 'Tehtävä ”$1” osoitettu.',
+	'tasks_action_closed' => 'Tehtävä ”$1” suljettu.',
 );
 
 /** French (Français)
@@ -2194,10 +2229,13 @@ $messages['pdc'] = array(
 	'tasks_form_comment' => 'Comment',
 	'tasks_noone' => 'ken',
 	'tasks_delete' => 'Lösche',
+	'tasks_here' => 'do',
 	'tasks_help_page_link' => 'Hilf',
+	'tasks_more_like_it' => 'mehner',
 	'tasks_table_header_page' => 'Blatt',
 	'tasks_previous' => 'Letscht',
 	'tasks_next' => 'Neegscht',
+	'tasks_logentry' => 'fer „[[$1]]“',
 );
 
 /** Polish (Polski)
@@ -2442,13 +2480,43 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'tasks' => 'Sarcini',
+	'tasks_tab' => 'Sarcini',
+	'tasks_title' => 'Sarcini pentru "$1"',
 	'tasks_form_comment' => 'Comentariu',
+	'tasks_noone' => 'nimeni',
+	'tasks_assign_me' => 'Atribuie-mi mie',
+	'tasks_assign_to' => 'Atribuie lui',
+	'tasks_close' => 'Încheie sarcină',
+	'tasks_delete' => 'Ştergere',
+	'tasks_here' => 'aici',
+	'tasks_task_is_assigned' => '(atribuie)',
+	'tasks_plain_text_only' => '(text simplu, numai 256 de caractere)',
+	'tasks_help_page' => 'Sarcini',
+	'tasks_more_like_it' => 'mai mult',
+	'tasks_event_on_creation' => 'verifică',
+	'tasks_event_on_creation_anon' => 'verifică',
 	'tasks_table_header_page' => 'Pagină',
+	'tasks_search_form_title' => 'Caută',
+	'tasks_search_tasks' => 'Sarcini',
+	'tasks_search_status' => 'Statut',
+	'tasks_search_results' => 'Rezultatele căutării',
+	'tasks_previous' => 'Anterior',
+	'tasks_next' => 'Următor',
 	'tasks_sort' => 'Ordonează',
 	'tasks_ascending' => 'Întâi cele mai vechi',
+	'tasks_status_open' => 'Deschide',
+	'tasks_status_assigned' => 'Alocat',
+	'tasks_status_closed' => 'Închis',
+	'tasks_action_open' => 'Sarcina "$1" deschisă.',
+	'tasks_action_assigned' => 'Sarcina "$1" alocată.',
+	'tasks_action_closed' => 'Sarcina "$1" închisă.',
+	'tasks_logpage' => 'Jurnal sarcini',
+	'tasks_logentry' => 'Pentru "[[$1]]"',
 );
 
 /** Tarandíne (Tarandíne)

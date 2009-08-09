@@ -988,12 +988,14 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Nike
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
+	'whitelist-desc' => 'Muokkaa rajoituksenalaisten käyttäjien käyttöoikeuksia',
 	'mywhitelistpages' => 'Omat sivu',
 	'whitelisttablemodify' => 'Muokkaa',
 	'whitelisttablemodifyall' => 'Kaikki',
@@ -1008,10 +1010,20 @@ $messages['fi'] = array(
 	'whitelisttablechangedate' => 'Muuta vanhentumispäivämäärää',
 	'whitelisttableremove' => 'Poista',
 	'whitelistnewtabledate' => 'Vanhentumispäivämäärä',
+	'whitelistnewtableprocess' => 'Käsittele',
+	'whitelistnewtablereview' => 'Tarkasta',
+	'whitelistselectrestricted' => '== Valitse rajattu käyttäjätunnus ==',
+	'whitelistpagelist' => '{{SITENAME}}-sivut kohteelle $1',
+	'whitelistoverview' => '== Yleiskatsaus muutoksista kohteeseen $1 ==',
+	'whitelistoverviewcd' => "* Muutetaan päiväys arvoon '''$1''' kohteelle [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Asetetaan oikeudet '''$1''' kohteelle [[:$2|$2]]",
 	'whitelistrequest' => 'Pyydä pääsyä useammille sivuille',
 	'whitelistrequestmsg' => '$1 on pyytänyt pääsyä {{PLURAL:$3|seuraavalle sivulle|seuraaville sivuille}}:
 
 $2',
+	'whitelistrequestconf' => 'Lähetettiin kohteeseen $1 pyyntö uusista sivuista',
+	'whitelistnonrestricted' => "Käyttäjä '''$1''' ei ole rajoituksenalainen käyttäjä.
+Tätä sivua sovelletaan ainoastaan rajoituksenalaisiin käyttäjiin",
 	'whitelistnever' => 'ei koskaan',
 	'whitelistnummatches' => '  - {{PLURAL:$1|yksi osuma|$1 osumaa}}',
 	'group-restricted' => 'rajoitetut käyttäjät',
@@ -2515,12 +2527,14 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  */
 $messages['ro'] = array(
 	'mywhitelistpages' => 'Paginile mele',
 	'whitelisttablemodify' => 'Modifică',
+	'whitelisttablemodifyall' => 'Tot',
 	'whitelisttablemodifynone' => 'Nimic',
 	'whitelisttablepage' => 'Pagină wiki',
 	'whitelisttabletype' => 'Tip de acces',
@@ -2528,8 +2542,17 @@ $messages['ro'] = array(
 	'whitelisttablemodby' => 'Ultima dată modificat de',
 	'whitelisttablemodon' => 'Ultima dată modificat la',
 	'whitelisttableedit' => 'Modifică',
+	'whitelisttableview' => 'Afişează',
 	'whitelisttablenewdate' => 'Dată nouă:',
+	'whitelisttablechangedate' => 'Schimbare dată de expirare',
+	'whitelisttablesetedit' => 'Activare modificare',
+	'whitelisttablesetview' => 'Activare vizualizare',
 	'whitelisttableremove' => 'Elimină',
+	'whitelistnewtabledate' => 'Data de expirare:',
+	'whitelistnewtableedit' => 'Activare modificare',
+	'whitelistnewtableview' => 'Activare vizualizare',
+	'whitelistnewtableprocess' => 'Proces',
+	'whitelistnewtablereview' => 'Recenzie',
 	'whitelistrequestmsg' => '$1 a cerut acces la {{PLURAL:$3|următoarea pagină|următoarele pagini}}:
 
 $2',

@@ -758,14 +758,42 @@ $messages['ext'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'inplace_access_denied' => 'Tämä palvelu on rajoitettu IP-osoitteiden perusteella.',
+	'inplace_scaler_not_enough_params' => 'Ei tarpeeksi parametreja.',
 	'webstore_path_invalid' => 'Tiedostonimi oli epäkelpo.',
+	'webstore_dest_open' => 'Kohdetiedostoa ”$1” ei voitu avata.',
+	'webstore_dest_mkdir' => 'Kohdehakemistoa ”$1” ei voitu luoda.',
+	'webstore_archive_mkdir' => 'Arkistohakemistoa ”$1” ei voitu luoda.',
+	'webstore_src_open' => 'Lähdetiedostoa ”$1” ei voitu avata.',
+	'webstore_src_close' => 'Virhe sulkiessa lähdetiedostoa ”$1”.',
+	'webstore_src_delete' => 'Virhe sulkiessa lähdetiedostoa ”$1”.',
+	'webstore_rename' => 'Virhe vaihtaessa tiedostoa ”$1” nimelle ”$2”.',
+	'webstore_lock_open' => 'Virhe avatessa lukkotiedostoa ”$1”.',
+	'webstore_lock_close' => 'Virhe sulkiessa lukkotiedostoa ”$1”.',
+	'webstore_dest_exists' => 'Virhe, kohdetiedosto ”$1” on olemassa.',
+	'webstore_temp_open' => 'Virhe avatessa väliaikaistiedostoa ”$1”.',
+	'webstore_temp_copy' => 'Virhe kopioidessa väliaikaistiedostoa ”$1” kohdetiedostoon ”$2”.',
+	'webstore_temp_close' => 'Virhe sulkiessa väliaikaistiedostoa ”$1”.',
+	'webstore_temp_lock' => 'Virhe lukitessa väliaikaistiedostoa ”$1”.',
+	'webstore_no_archive' => 'Kohdetiedosto on olemassa, eikä arkistoa ole määritelty.',
+	'webstore_no_file' => 'Yhtään tiedostoa ei tallennettu.',
+	'webstore_move_uploaded' => 'Virhe siirtäessä tallennettua tiedostoa ”$1” väliaikaiskohteeseen ”$2”.',
+	'webstore_invalid_zone' => 'Virheellinen alue ”$1”.',
+	'webstore_curl' => 'Virhe cURL:lta: $1',
 	'webstore_404' => 'Tiedostoa ei löydy.',
 	'webstore_php_warning' => 'PHP-varoitus: $1',
 	'webstore_metadata_not_found' => 'Tiedostoa ei löydy: $1',
+	'webstore_invalid_response' => 'Virheellinen vastaus palvelimelta:
+
+$1',
 	'webstore_no_response' => 'Ei vastausta palvelimelta.',
+	'webstore_backend_error' => 'Virhe tallennuspalvelimelta:
+
+$1',
 );
 
 /** French (Français)

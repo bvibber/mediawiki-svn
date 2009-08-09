@@ -304,6 +304,7 @@ $messages['it'] = array(
 	'piwik-lastvisits' => 'Ultime visite',
 	'piwik-countries' => 'Paesi',
 	'piwik-browsers' => 'Browser',
+	'right-viewpiwik' => 'Visualizza le [[Special:Piwik|statistiche Piwik]]',
 );
 
 /** Japanese (日本語)
@@ -434,6 +435,7 @@ $messages['pt-br'] = array(
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries' => 'Países',
 	'piwik-browsers' => 'Navegadores',
+	'right-viewpiwik' => 'Ver [[Special:Piwik|estatísticas Piwik]]',
 );
 
 /** Romanian (Română)

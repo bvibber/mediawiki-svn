@@ -1070,6 +1070,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Darth Kule
  * @author McDutchie
  * @author Melos
  */
@@ -1094,6 +1095,7 @@ $messages['it'] = array(
 	'badimages-log-add' => "ha aggiunto [[$1]] all'elenco dei file discutibili",
 	'badimages-log-remove' => "ha rimosso [[$1]] dall'elenco dei file discutibili",
 	'badimages-page' => '{{ns:help}}:Elenco dei file discutibili',
+	'right-badimages' => "Aggiorna l'elenco delle immagini discutibili",
 );
 
 /** Japanese (日本語)
@@ -1199,30 +1201,33 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author ToePeu
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'badimages' => '나쁜 이미지 목록',
-	'badimages-desc' => '나쁜 이미지 목록을 확장하는 미디어 위키의 성능',
+	'badimages' => '파일 금지 목록',
+	'badimages-desc' => '미디어위키의 파일 금지 기능을 확장',
 	'badimages-add-btn' => '추가',
-	'badimages-added' => '$1이 목록에 추가되었습니다.',
+	'badimages-added' => '$1 파일이 목록에 추가되었습니다.',
+	'badimages-count' => "현재 금지된 파일이 '''$1'''개 있습니다.",
 	'badimages-name' => '이름:',
-	'badimages-not-added' => '이미지가 추가될 수 없습니다.',
-	'badimages-not-removed' => '이미지를 이동할 수 없습니다.',
+	'badimages-not-added' => '해당 파일을 목록에 추가할 수 없습니다.',
+	'badimages-not-removed' => '해당 파일을 목록에서 제거할 수 없습니다.',
 	'badimages-reason' => '이유:',
-	'badimages-remove' => '(이동)',
+	'badimages-remove' => '(삭제)',
 	'badimages-remove-btn' => '제거',
-	'badimages-remove-confirm' => '사용자께서 원하시는 대로 $1이 목록에서 삭제되었는지 다시 한번 확인해 주시길 부탁드립니다:',
-	'badimages-removed' => '$1이 목록으로부터 삭제되었습니다.',
+	'badimages-remove-confirm' => '$1 파일을 목록에서 제거합니다. 원하는 동작이 맞는지 다시 한 번 확인해 주세요:',
+	'badimages-removed' => '$1 파일을 목록에서 삭제했습니다.',
 	'badimages-subheading' => '현재 항목',
 	'badimages-unprivileged' => '(목록을 바꿀 권한이 없습니다)',
-	'badimages-log-name' => '나쁜 이미지 목록',
-	'badimages-log-add' => '[[$1]]을 나쁜 이미지 목록에 추가했습니다.',
-	'badimages-log-remove' => '[[$1]]을 나쁜 이미지 목록에서 삭제했습니다',
-	'badimages-page' => '{{ns:도움말}}:나쁜 이미지 목록',
-	'right-badimages' => '최신 나쁜 이미지 목록',
+	'badimages-log-name' => '파일 금지 목록',
+	'badimages-log-header' => '[[{{MediaWiki:Badimages-page}}|금지된 파일 목록]]의 변경 내역입니다.',
+	'badimages-log-add' => '[[$1]] 파일을 필터 목록에 추가했습니다.',
+	'badimages-log-remove' => '[[$1]] 파일을 필터 목록에서 제외했습니다.',
+	'badimages-page' => '{{ns:help}}:파일 금지 목록',
+	'right-badimages' => '파일 금지 필터 목록을 변경할 수 있음',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1798,6 +1803,7 @@ $messages['pt-br'] = array(
 	'badimages-log-add' => 'adicionada [[$1]] na lista de imagens problemáticas',
 	'badimages-log-remove' => 'removida [[$1]] da lista de imagens problemáticas',
 	'badimages-page' => '{{ns:help}}:Lista de imagens problemáticas',
+	'right-badimages' => 'Atualizar a lista de imagens problemáticas',
 );
 
 /** Rhaeto-Romance (Rumantsch) */

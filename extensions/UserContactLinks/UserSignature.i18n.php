@@ -176,11 +176,13 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'usercontactlink-baduser' => 'virheellinen käyttäjätunnus',
+	'usercontactlink-desc' => 'Suo mahdollisuuden lisätä yksinkertaisesti ja yhdenmukaisesti muita käyttäjätunnuksia käyttäen ^^^user^^^ syntaksia',
 );
 
 /** French (Français)

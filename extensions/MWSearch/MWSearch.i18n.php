@@ -138,6 +138,13 @@ $messages['es'] = array(
 	'mwsearch-desc' => 'Complemento MWSearch',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'mwsearch-desc' => 'MWSearch-lisa',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

@@ -77,6 +77,14 @@ $messages['es'] = array(
 	'tspoll-id-error' => 'Sin ID proveído!',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'tspoll-fetch-error' => 'Virhe noudettaessa URL:ia.',
+	'tspoll-id-error' => 'ID-numeroa ei annettu.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -203,6 +211,13 @@ $messages['oc'] = array(
 	'tspoll-id-error' => "Cap d'ID es pas estada balhada !",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'tspoll-id-error' => 'Ken ID aagewwe!',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -228,6 +243,13 @@ $messages['pt-br'] = array(
 	'tspoll-desc' => 'Incluir [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] como marca HTML',
 	'tspoll-fetch-error' => 'Erro ao buscar o URL!',
 	'tspoll-id-error' => 'Não foi dado um ID!',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'tspoll-id-error' => 'Niciun ID introdus!',
 );
 
 /** Tarandíne (Tarandíne)
@@ -267,10 +289,13 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Fluff
  * @author Najami
  */
 $messages['sv'] = array(
 	'tspoll-desc' => 'Inkludera [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] som en HTML-tagg',
+	'tspoll-fetch-error' => 'Ett fel uppstod när webbadressen hämtades!',
+	'tspoll-id-error' => 'Inget ID är angivet!',
 );
 
 /** Vietnamese (Tiếng Việt)

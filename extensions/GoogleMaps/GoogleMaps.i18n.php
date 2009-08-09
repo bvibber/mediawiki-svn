@@ -2802,13 +2802,14 @@ $wgGoogleMapsMessages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author ToePeu
  * @author Yknok29
  */
 $wgGoogleMapsMessages['ko'] = array(
 	'gm-remove' => '제거',
-	'gm-no-results' => '죄송합니다. 아무런 결과가 없습니다.',
+	'gm-no-results' => '죄송합니다. 결과가 없습니다.',
 	'gm-map' => '지도',
 	'gm-scale-control' => '축척',
 	'gm-yes' => '예',
@@ -3682,8 +3683,12 @@ Subukan me ing pekabayung bersion ning <a href="http://www.microsoft.com/ie">Int
 $wgGoogleMapsMessages['pdc'] = array(
 	'gm-height' => 'Heeh',
 	'gm-zoom-control' => 'Faahre-Gnepp',
+	'gm-small' => 'Glee',
 	'gm-yes' => 'Ya',
 	'gm-no' => 'Nee',
+	'gm-earth' => 'Erd',
+	'gm-moon' => 'Moond',
+	'gm-mars' => 'Mars',
 );
 
 /** Polish (Polski)

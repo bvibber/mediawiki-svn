@@ -261,10 +261,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'breadcrumbs-desc' => '위키를 통해 사용자 경로를 보여줍니다.',
+	'breadcrumbs-desc' => '사용자의 최근 방문 문서 목록을 표시하는 기능',
 );
 
 /** Ripoarisch (Ripoarisch)

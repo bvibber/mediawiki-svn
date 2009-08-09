@@ -472,14 +472,15 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'intersection_toomanycats' => '에러: 분류가 너무 많습니다!',
-	'intersection_toofewcats' => '에러: 분류가 너무 적습니다!',
+	'intersection_toomanycats' => '오류: 분류가 너무 많습니다!',
+	'intersection_toofewcats' => '오류: 분류가 너무 적습니다!',
 	'intersection_noresults' => '오류: 결과가 없습니다!',
-	'intersection_noincludecats' => '에러: 최소한 하나의 분류에 포함시켜 주시거나 이름공간을 명확히 적어 주세요!',
+	'intersection_noincludecats' => '오류: 분류를 추가하거나 이름공간을 명시해야 합니다!',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -771,11 +771,14 @@ Os responsáveis por este site não podem ser responsabilizados pelo conteúdo d
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'talkhere-talkpage' => 'padina de discuţii',
 	'talkhere-notalk' => "''(încă nici un comentariu)''",
 	'talkhere-addcomment' => 'adaugă comentariu',
+	'talkhere-loading' => 'încărcare editor...',
 );
 
 /** Tarandíne (Tarandíne)

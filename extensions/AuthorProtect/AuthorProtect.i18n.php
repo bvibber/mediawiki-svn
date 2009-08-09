@@ -348,6 +348,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
+ * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
@@ -355,6 +356,7 @@ $messages['fi'] = array(
 	'authorprotect-desc' => 'Mahdollistaa sivun tekijän suojata se muilta käyttäjiltä.',
 	'authorprotect-notauthor' => 'Et ole tämän sivun luoja.',
 	'authorprotect-confirm' => 'Vaihda suojauksen tasoa',
+	'authorprotect-expiry' => 'Vanhenemisaika',
 	'authorprotect-reason' => 'Syy',
 	'authorprotect-success' => 'Suojaus onnistui!',
 	'authorprotect-failure' => 'Suojaus ei onnistunut',
@@ -608,6 +610,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
@@ -624,6 +627,7 @@ $messages['it'] = array(
 	'authorprotect-failure' => 'Protezione fallita',
 	'protect-level-author' => 'Protetta dai non-autori',
 	'restriction-level-author' => "Protetta dall'autore",
+	'right-authorprotect' => 'Protegge le pagine con autori',
 );
 
 /** Japanese (日本語)
@@ -694,24 +698,25 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'authorprotect' => '저자가 아닌 사람들로부터 페이지를 보호함',
-	'authorprotect-desc' => '다른 사용자들로부터 페이지를 보호하는 것을 페이지의 저자에게 허용함',
-	'authorprotect-notauthor' => '사용자께서는 이 페이지의 저자가 아닙니다.',
-	'authorprotect-confirm' => '보호 수준을 바꿉니다',
-	'authorprotect-edit' => '저자에게 편집하는 것을 제한함',
-	'authorprotect-move' => '저자에게 옮기는 것을 제한함',
-	'authorprotect-expiry' => '만료 시기',
+	'authorprotect' => '저자가 아닌 사람의 편집을 보호',
+	'authorprotect-desc' => '문서의 저자에게 문서 보호 기능 제공',
+	'authorprotect-notauthor' => '이 문서의 저자가 아닙니다',
+	'authorprotect-confirm' => '보호 수준 변경',
+	'authorprotect-edit' => '저자의 편집 제한하기',
+	'authorprotect-move' => '저자의 이동 제한',
+	'authorprotect-expiry' => '만료 시간',
 	'authorprotect-reason' => '이유',
-	'authorprotect-intro' => '저자가 아닌 사람들로부터 이 페이지를 잠금처리하는 이 형식을 사용합니다',
-	'authorprotect-success' => '성공한 보호!',
-	'authorprotect-failure' => '성공하지 못한 보호',
-	'protect-level-author' => '저자가 아닌 사람들로부터 보호',
-	'restriction-level-author' => '보호된 저자',
-	'right-authorprotect' => '저자의 페이지를 보호합니다.',
+	'authorprotect-intro' => '이 양식을 이용해 저자가 아닌 사람의 조작을 제한합니다',
+	'authorprotect-success' => '보호 완료!',
+	'authorprotect-failure' => '보호 실패',
+	'protect-level-author' => '저자가 아닌 사용자로부터 보호',
+	'restriction-level-author' => '저자보호',
+	'right-authorprotect' => '작성한 문서를 보호하기',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1034,6 +1039,7 @@ $messages['pt-br'] = array(
 	'authorprotect-failure' => 'Proteção sem sucesso',
 	'protect-level-author' => 'Proteger de não-autores',
 	'restriction-level-author' => 'Protegida pelo autor',
+	'right-authorprotect' => 'Proteger páginas de autoria própria',
 );
 
 /** Romanian (Română)

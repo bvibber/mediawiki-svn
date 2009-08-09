@@ -404,12 +404,31 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
+	'gep-desc' => 'Täydentää muokkaustoimintosivua käyttäjäystävällisemmäksi.',
+	'gep-emailsubject' => '[$1] Ehdotus luokaksi: $2',
+	'gep-emailbody' => 'Käyttäjä ”$1” ehdotti luokkaa ”$2” sivustolle ”$3”.',
+	'gep-emailfailure' => 'Valitettavasti ehdotustasi ei voitu käsitellä.',
+	'gep-emailsuccess' => 'Kiitos ehdottamastasi luokasta: $1.',
+	'gep-categories' => 'Luokat',
 	'gep-addcategory' => 'Lisää luokka',
 	'gep-addcategorybutton' => 'Lisää',
+	'gep-suggestcategory' => 'Ehdota luokkaa',
+	'gep-suggestcategorybutton' => 'Lähetä',
+	'gep-sections' => 'Osiot',
+	'gep-sectionnotdisabled' => 'Tätä osiota ei voi poistaa käytöstä',
+	'gep-addsection' => 'Lisää osio',
 	'gep-addsectionbutton' => 'Lisää',
+	'gep-classicmode' => 'Klassinen tila',
+	'gep-genericmode' => 'Yleinen tila',
+	'gep-nosectioninstructions' => 'Tällä sivulla ei ole osioita.
+Lisää osioita käyttäen valikkorivin työkaluja.',
+	'gep-nocategories' => 'Valitse mielellään ainakin yksi luokka ennen tallennusta',
 );
 
 /** French (Français)

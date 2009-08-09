@@ -249,11 +249,15 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'showprocesslist' => 'Näytä prosessiluettelo',
+	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => 'Käyttäjä',
+	'showprocesslist-host' => 'Osoite',
 	'showprocesslist-db' => 'Tietokanta',
 	'showprocesslist-command' => 'Komento',
 	'showprocesslist-time' => 'Aika',
 	'showprocesslist-state' => 'Tilanne',
+	'showprocesslist-info' => 'Tiedot',
 );
 
 /** French (Français)

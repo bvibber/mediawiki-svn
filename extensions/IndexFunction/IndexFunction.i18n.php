@@ -165,6 +165,9 @@ Enlevez « $1 » de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|de la page|des page
 	'index-expand-detail' => 'Afficher les pages indexées sous ce titre',
 	'index-hide-detail' => 'Masque la liste des pages',
 	'index-no-results' => "La recherche n'a retourné aucun résultat",
+	'index-search-explain' => 'Cette page utilise une recherche par préfixe.
+
+Tapez les premiers caractères et pressez sur le bouton de soumission pour chercher les titres des pages qui débutent avec chaîne de recherche.',
 	'index-details-explain' => "Les entrées avec des flèches sont des entrées d'index, cliquez sur la flèche pour voir toutes les pages indexées sous ce titre.",
 );
 
@@ -269,14 +272,28 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'indexfunc-desc' => '自動的なリダイレクトや曖昧さ回避ページを作成するためのパーサー関数',
-	'indexfunc-badtitle' => '不正なタイトル:「$1」',
+	'indexfunc-badtitle' => '不正なページ名:「$1」',
+	'indexfunc-editwarning' => '警告: このページ名は以下の{{PLURAL:$2|ページ}}用の索引名となっています。
+$1
+あなたが作成しようとしているページが既に別の名前で存在していないことを確認してください。
+このページを作成する場合、前掲の{{PLURAL:$2|ページ}}内の <nowiki>{{#index:}}</nowiki> からこのページ名を除去してください。',
 	'indexfunc-index-exists' => 'ページ「$1」は既に存在します。',
+	'indexfunc-movewarn' => '警告: 「$1」は以下の{{PLURAL:$3|ページ}}の索引名となっています。
+$2
+前掲の{{PLURAL:$3|ページ}}内の <nowiki>{{#index:}}</nowiki> から「$1」を除去してください。',
+	'index' => '索引検索',
 	'index-legend' => '索引の検索',
 	'index-search' => '検索:',
 	'index-submit' => '送信',
 	'index-disambig-start' => "「'''$1'''」はいくつかのページを指す可能性があります:",
-	'index-missing-param' => 'このページは引数なしで使用できません',
 	'index-emptylist' => '「$1」と関連付けられたページはありません',
+	'index-expand-detail' => 'この名前で索引付けされたページを表示する',
+	'index-hide-detail' => 'ページの一覧を表示しない',
+	'index-no-results' => '検索結果はありません',
+	'index-search-explain' => 'このページは前方一致検索を用います。
+
+先頭の数文字を入力して送信ボタンを押すと、検索文字列から始まるページ名および索引項目を探します。',
+	'index-details-explain' => '矢印の付いた項目は索引項目で、矢印をクリックするとその名前で索引に載っているすべてのページを表示します。',
 );
 
 /** Ripoarisch (Ripoarisch)

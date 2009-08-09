@@ -218,10 +218,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'woopra-desc' => '사용자 분의 미디어위키의 설치를 위해 [http://www.woopra.com/ 오페라 라이브 추적 소프트웨어]가 작동하도록 허용해주세요.',
+	'woopra-desc' => '[http://www.woopra.com/ Woopra 웹 사이트 트래킹 프로그램]을 미디어위키에서 작동하도록 하는 기능',
 );
 
 /** Ripoarisch (Ripoarisch)

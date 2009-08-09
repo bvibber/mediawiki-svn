@@ -290,9 +290,11 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'problempages' => 'ទំព័រមានបញ្ហា',
+	'problempages' => 'ទំព័រអន់',
+	'problempages-leg' => 'រកមើលទំព័រអន់ៗ',
 	'problempages-none' => 'មិនមានទំព័រនៅក្នុងបញ្ជីនេះទេ',
 );
 

@@ -490,6 +490,13 @@ $messages['km'] = array(
 	'languageselector-setlang' => 'ប្តូរ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'languageselector' => 'ಭಾಷೆ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

@@ -113,6 +113,13 @@ $messages['es'] = array(
 	'titlekey-desc' => 'Mecanismo para sugerir búsquedas por prefijo de título',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'titlekey-desc' => 'Pealkirja eesliiteotsinguvihjete taustprotsess',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

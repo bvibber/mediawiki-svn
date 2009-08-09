@@ -29,6 +29,25 @@ Configure $wgPrefStatsTrackPrefs to track preferences.',
 * In total, $4 {{PLURAL:$4|user has|users have}} this preference set', 
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'prefstats' => 'إحصاءات التفضيلات',
+	'prefstats-desc' => 'تتبع الإحصاءات التي تظهر عدد المستخدمين الذين فعّلوا تفضيلات معينة.',
+	'prefstats-title' => 'إحصاءات التفضيلات',
+	'prefstats-list-intro' => 'يتم حاليًا تتبع التفضيلات التالية.
+انقر على أحد التفضيلات لتظهر إحصاءات عنه.',
+	'prefstats-noprefs' => 'لا توجد تفضيلات يتم تتبعها. اضبط $wgPrefStatsTrackPrefs لتتبع التفضيلات.',
+	'prefstats-counters' => '* فعّل {{PLURAL:$1||مستخدم واحد|مستخدمان|$1 مستخدمين|$1 مستخدمًا|$1 مستخدم}} هذه التفضيلة منذ تنفعيل إحصاءات التفضيلات.
+** فعّلها {{PLURAL:$2||مستخدم واحد|مستخدمان|$2 مستخدمين|$2 مستخدمًا|$2 مستخدم}}
+** عطّلها {{PLURAL:$3||مستخدم واحد|مستخدمان|$3 مستخدمين|$3 مستخدمًا|$3 مستخدم}}',
+	'prefstats-counters-expensive' => '* فعّل {{PLURAL:$1||مستخدم واحد|مستخدمان|$1 مستخدمين|$1 مستخدمًا|$1 مستخدم}} هذه التفضيلة منذ تنفعيل إحصاءات التفضيلات.
+** فعّلها {{PLURAL:$2||مستخدم واحد|مستخدمان|$2 مستخدمين|$2 مستخدمًا|$2 مستخدم}}
+** عطّلها {{PLURAL:$3||مستخدم واحد|مستخدمان|$3 مستخدمين|$3 مستخدمًا|$3 مستخدم}}
+* في المحصلة، ضبط {{PLURAL:$4||مستخدم واحد|مستخدمان|$4 مستخدمين|$4 مستخدمًا|$4 مستخدم}} هذه التفضيلة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -40,6 +59,13 @@ $messages['be-tarask'] = array(
 	'prefstats-list-intro' => 'Зараз адсочваюцца наступныя ўстаноўкі.
 Націсьніце на адну зь іх для прагляду яе статыстыкі.',
 	'prefstats-noprefs' => 'У цяперашні момант ніякія ўстаноўкі не адсочваюцца. Устанавіце $wgPrefStatsTrackPrefs для сачэньня за ўстаноўкамі.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|удзельнік уключыў|удзельнікі ўключылі|удзельнікаў уключыла}} гэту магчымасьць з моманту актывізацыі гэтай статыстыкі
+** У $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} яна уключана
+** У $3 {{PLURAL:$3|удзельніка|удзельнікаў|удзельнікаў}} яна выключана',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|удзельнік уключыў|удзельнікі ўключылі|удзельнікаў уключыла}} гэту магчымасьць з моманту актывізацыі гэтай статыстыкі
+** У $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} яна уключана
+** У $3 {{PLURAL:$3|удзельніка|удзельнікаў|удзельнікаў}} яна выключана
+* Агулам $4 {{PLURAL:$4|удзельнік|удзельнікі|удзельнікаў}} усталавяла гэту магчымасьць',
 );
 
 /** Bosnian (Bosanski)
@@ -101,6 +127,13 @@ $messages['dsb'] = array(
 	'prefstats-list-intro' => 'Tuchylu se slědujuce nastajenja slěduju.
 Klikni na jadne z nich, aby se statistiku wó nim woglědał.',
 	'prefstats-noprefs' => 'Tuchylu žedne nastajenja se slěduju. Konfigurěruj $wgPrefStatsTrackPrefs, aby nastajenja slědował.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} toś to nastajenje {{PLURAL:$1|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}, wót togo, až statistika nastajenjow jo se aktiwěrowała
+** $2 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$1|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}
+** $3 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$1|znjemóžnił|znjemóžniłej|znjemóžnili|znjemóžniło}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} toś to nastajenje {{PLURAL:$1|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}, wót togo, až statistika nastajenjow jo se aktiwěrowała
+** $2 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$2|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}
+** $3 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$3|znjemóžnił|znjemóžniłej|znjemóžnili|znjemóžniło}}
+*Dogromady $4 {{PLURAL:$4|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} toś to nastajenje {{PLURAL:$4|stajił|stajiłej|stajili|stajiło}}',
 );
 
 /** Greek (Ελληνικά)
@@ -119,7 +152,7 @@ $messages['eo'] = array(
 	'prefstats-desc' => 'Atenti statistikojn pri kiom da uzantoj ŝaltas certajn agordojn',
 	'prefstats-title' => 'Statistikoj pri preferoj',
 	'prefstats-list-intro' => 'Nune, la jenaj agordoj estas atentitaj.
-Klaku por vidi statistikojn pri ĝxi.',
+Klaku por vidi statistikojn pri ĝi.',
 );
 
 /** Spanish (Español)
@@ -132,6 +165,13 @@ $messages['es'] = array(
 	'prefstats-title' => 'Estadísticas de preferencia',
 	'prefstats-list-intro' => 'De momento, las siguientes preferencias están siendo seguidas.
 Selecciona una para ver estadísticas acerca de ella.',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'prefstats-desc' => 'Kogub arvandmeid kindlate eelistuste kasutatavuse kohta.',
 );
 
 /** Basque (Euskara)
@@ -216,6 +256,13 @@ $messages['hsb'] = array(
 	'prefstats-title' => 'Statistika nastajenjow',
 	'prefstats-list-intro' => 'Tuchwilu so slědowace nastajenja sćěhuja. Klikń na jedne z nich, zo by sej statistiku wo nim wobhladał.',
 	'prefstats-noprefs' => 'Tuchwilu so žane nastajenja njesćěhuja. Konfiguruj $wgPrefStatsTrackPrefs, zo by nastajenja sćěhował.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} tute nastajenje {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}, wot toho, zo statistika nastajenjow je so aktiwizowała
+** $2 {{PLURAL:$2|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}
+** $3 {{PLURAL:$3|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|znjemóžnił|znjemóžniłoj|znjemóžnili|znjemóžniło}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} tute nastajenje {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}, wot toho, zo statistika nastajenjow je so aktiwizowała
+** $2 {{PLURAL:$2|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}
+** $3 {{PLURAL:$3|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|znjemóžnił|znjemóžniłoj|znjemóžnili|znjemóžniło}}
+Dohromady $4 {{PLURAL:$4|wužiwar je|wužiwarjej saj|wužiwarjo su|wužiwarjow je}} tute nastajenje {{PLURAL:$4|stajił|stajiłoj|stajili|stajiło}}',
 );
 
 /** Hungarian (Magyar)
@@ -240,6 +287,14 @@ $messages['ia'] = array(
 	'prefstats-title' => 'Statisticas de preferentias',
 	'prefstats-list-intro' => 'Actualmente, le sequente preferentias es sequite.
 Clicca super un pro vider statisticas super illo.',
+	'prefstats-noprefs' => 'Nulle preferentia es ora sequite. Configura $wgPrefStatsTrackPrefs pro sequer preferentias.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|usator|usatores}} ha activate iste preferentia depost le comenciamento del statisticas de preferentias
+** $2 {{PLURAL:$2|usator|usatores}} lo ha activate
+** $3 {{PLURAL:$3|usator|usatores}} lo ha disactivate',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|usator|usatores}} ha activate iste preferentia depost le comenciamento del statisticas de preferentias
+** $2 {{PLURAL:$2|usator|usatores}} lo ha activate
+** $3 {{PLURAL:$3|usator|usatores}} lo ha disactivate
+* In total, iste preferentia es active pro $4 {{PLURAL:$4|usator|usatores}}',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -276,6 +331,13 @@ $messages['ja'] = array(
 	'prefstats-title' => '個人設定に関する統計',
 	'prefstats-list-intro' => '現在、以下の個人設定項目について追跡調査を行っています。調査結果を見るにはそれぞれをクリックしてください。',
 	'prefstats-noprefs' => '現在、追跡調査の対象となっている個人設定項目はありません。追跡調査を行うには $wgPrefStatsTrackPrefs を設定してください。',
+	'prefstats-counters' => '* 個人設定の統計が稼動して以降、$1人の利用者がこの設定を有効にしました
+** $2人の利用者がこれを有効にしています
+** $3人の利用者がこれを無効にしています',
+	'prefstats-counters-expensive' => '* 個人設定の統計が稼動して以降、$1人の利用者がこの設定を有効にしました
+** $2人の利用者がこれを有効にしています
+** $3人の利用者がこれを無効にしています
+* 合計では、$4人の利用者がこの項目を設定しています',
 );
 
 /** Georgian (ქართული)
@@ -289,6 +351,15 @@ $messages['ka'] = array(
 	'prefstats-list-intro' => 'ეხლა მიმდინარეობს შემდეგ კონფიგურაციათა კონტროლი
 აირჩიეთ რომელიმე მათგანი სტატისტიკის სანახავად',
 	'prefstats-noprefs' => 'რაიმე უპირატესობა ამჟამად კონტროლი არ ეწევა. კონფიგურაციის კონტროლისთვის შეიტანეთ ცვლილებები $wgPrefStatsTrackPrefs გვერდზე.',
+);
+
+/** Korean (한국어)
+ * @author Klutzy
+ */
+$messages['ko'] = array(
+	'prefstats' => '환경 설정 통계',
+	'prefstats-desc' => '각 환경 설정에 대한 사용자 비율 통계',
+	'prefstats-title' => '환경 설정 통계',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -313,6 +384,13 @@ $messages['lb'] = array(
 	'prefstats-list-intro' => 'Elo ginn dës Astellungen iwwerwaacht.
 Klickt op eng fir Statistiken iwwer hire Gebrauch ze gesinn.',
 	'prefstats-noprefs' => "Et ginn elo keng Astellungen iwwerwaacht. Stellt \$wgPrefStatsTrackPrefs an fir d'Astellungen z'iwwerwaachen.",
+	'prefstats-counters' => "* $1 {{PLURAL:$1|Benotzer huet|Benotzer hunn}} dës Astellung ageschalt zënter datt d'Statistik vun de Benotzerastellungen aktivéiert gouf
+** $2 {{PLURAL:$2|Benotzer huet|Benotzer hunn}} et ageschalt
+** $3 {{PLURAL:$3|Benotzer huet|Benotzer hunn}} et ausgeschalt",
+	'prefstats-counters-expensive' => "* $1 {{PLURAL:$1|Benotzer huet|Benotzer hunn}} dës Astellung ageschalt zënter datt d'Statistik vun de Benotzerastellungen aktivéiert gouf
+** $2 {{PLURAL:$2|Benotzer huet|Benotzer hunn}} et ageschalt
+** $3 {{PLURAL:$3|Benotzer huet|Benotzer hunn}} et ausgeschalt
+* am Ganzen, $4 {{PLURAL:$3|Benotzer huet|Benotzer hunn}} dës Astellung konfiguréiert",
 );
 
 /** Lithuanian (Lietuvių)
@@ -337,6 +415,13 @@ $messages['nl'] = array(
 Klik op een voorkeur om de statistieken te bekijken.',
 	'prefstats-noprefs' => 'Er worden geen voorkeuren bijgehouden.
 Stel $wgPrefStatsTrackPrefs in om voorkeuren bij te houden.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|gebruiker heeft|gebruikers hebben}} deze voorkeur ingesteld sinds de voorkeurstatistieken zijn geactiveerd.
+** $2 {{PLURAL:$2|gebruiker heeft|gebruikers hebben}} deze nog insteld
+** $3 {{PLURAL:$3|gebruiker heeft|gebruikers hebben}} deze weer uitgeschakeld',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|gebruiker heeft|gebruikers hebben}} deze voorkeur ingesteld sinds de voorkeurstatistieken zijn geactiveerd.
+** $2 {{PLURAL:$2|gebruiker heeft|gebruikers hebben}} deze nog insteld.
+** $3 {{PLURAL:$3|gebruiker heeft|gebruikers hebben}} deze weer uitgeschakeld.
+* In totaal {{PLURAL:$4|heeft $4 gebruiker|hebben $4 gebruikers}} deze voorkeur ingesteld.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -384,6 +469,13 @@ $messages['pl'] = array(
 	'prefstats-list-intro' => 'Obecnie następujące preferencje są analizowane.
 Kliknij na jednej aby zobaczyć statystyki jej dotyczące.',
 	'prefstats-noprefs' => 'Żadne preferencje nie są obecnie śledzone. Skonfiguruj $wgPrefStatsTrackPrefs aby śledzić preferencje.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|użytkownik włączał|użytkowników włączało}} tę opcję od momentu aktywowania tej statystyki
+** $2 {{PLURAL:$2|użytkownik|użytkowników}} ma tę opcję włączoną
+** $3 {{PLURAL:$3|użytkownik|użytkowników}} ma tę opcję wyłączoną',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|użytkownik włączał|użytkowników włączało}} tę opcję od momentu aktywowania tej statystyki
+** $2 {{PLURAL:$2|użytkownik|użytkowników}} ma tę opcję włączoną
+** $3 {{PLURAL:$3|użytkownik|użytkowników}} ma tę opcję wyłączoną
+* Ogólnie $4  {{PLURAL:$4|użytkownik|użytkowników}} ustawiło tę opcję',
 );
 
 /** Portuguese (Português)
@@ -395,6 +487,15 @@ $messages['pt'] = array(
 	'prefstats-title' => 'Estatísticas de preferências',
 	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão a ser monitorizadas.
 Clique numa para ver as estatísticas sobre ela.',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'prefstats' => 'Munakusqa ranuy (kanchachani)',
+	'prefstats-desc' => "Kaypiqa rukunki, hayk'a ruraqkuna ima munakusqankunata allinkachina nisqapi akllarqan",
+	'prefstats-title' => 'Munakusqa ranuy (kanchachani)',
 );
 
 /** Romanian (Română)
@@ -539,6 +640,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Jimmy xu wrk
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -548,6 +650,13 @@ $messages['zh-hans'] = array(
 	'prefstats-list-intro' => '直到现时，以下的喜好设置会追踪下来。
 	点击其中一种设置去查看有关它的统计。',
 	'prefstats-noprefs' => '无喜好可供追踪。设置 $wgPrefStatsTrackPrefs 去追踪喜好。',
+	'prefstats-counters' => '* $1名用户在统计启用之后启用了此选项
+** $2名用户启用了它
+** $3名用户禁用了它',
+	'prefstats-counters-expensive' => '* $1名用户在统计启用之后启用了此选项
+** $2名用户启用了它
+** $3名用户禁用了它
+* 总的来说，$4名用户设置了此选项',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

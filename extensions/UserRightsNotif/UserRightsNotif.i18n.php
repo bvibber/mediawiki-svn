@@ -344,6 +344,15 @@ $2',
 	'userrightsnotif-desc' => 'Enviar notificación por correo electrónico a usuarios cuyos derechos se han modificado',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'userrightsnotifysubject' => 'Käyttäjäryhmän jäsenyyden vaihto wikissä $1',
+	'userrightsnotif-desc' => 'Lähettää sähköpostiviestin käyttäjille, kun heidän oikeuksiaan muutetaan.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Grondin

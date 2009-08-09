@@ -240,10 +240,24 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'emergencydesysop-desc' => 'Mahdollistaa ylläpitäjän uhraamaan omat oikeutensa poistaakseen ylläpitäjän oikeudet toiselta ylläpitäjältä.',
+	'emergencydesysop-title' => 'Poista ylläpitäjän oikeudet sekä nykyiseltä käyttäjältä että toiselta ylläpitäjältä',
+	'emergencydesysop-otheradmin' => 'Ryhmästä poistettava toinen ylläpitäjä',
+	'emergencydesysop-reason' => 'Poiston syy',
+	'emergencydesysop-submit' => 'Lähetä',
+	'emergencydesysop-incomplete' => 'Kaikki kentät ovat pakollisia, yritä uudestaan.',
+	'emergencydesysop-notasysop' => 'Kohdekäyttäjä ei ole ylläpitäjäryhmässä.',
+	'emergencydesysop-nogroups' => 'Ei mitään',
+	'emergencydesysop-done' => 'Toiminto suoritettu, sekä sinulta että [[$1]]:ltä on poistettu ylläpitäjän oikeudet.',
 	'emergencydesysop-invalidtarget' => 'Kohdekäyttäjää ei ole olemassa.',
+	'emergencydesysop-blocked' => 'Et voi käyttää tätä sivua ollessasi estettynä',
+	'emergencydesysop-noright' => 'Sinulla ei ole oikeuksia tämän sivun käyttämiseen',
+	'right-emergencydesysop' => 'Poistaa ylläpitäjän oikeudet toiselta käyttäjältä vastavuoroisesti',
 );
 
 /** French (Français)

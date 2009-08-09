@@ -119,6 +119,14 @@ $messages['eu'] = array(
 	'untidy' => 'Narrastu',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'tidy' => 'Puhdas',
+	'untidy' => 'Epäpuhdas',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud

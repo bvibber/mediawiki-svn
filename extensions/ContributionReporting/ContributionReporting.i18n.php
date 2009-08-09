@@ -1561,6 +1561,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Ilovesabbath
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */

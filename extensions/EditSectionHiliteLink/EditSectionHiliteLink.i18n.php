@@ -140,6 +140,13 @@ $messages['id'] = array(
 	'Editsectionhilitelink-desc' => 'Tandai bagian halaman yang cocok pada saat Anda menggerakan tetikus ke atas pranala sunting',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'Editsectionhilitelink-desc' => 'Evidenzia la sezione appropriata di una pagina quando si sposta il mouse sopra il link di modifica',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -253,21 +260,21 @@ $messages['vi'] = array(
 	'Editsectionhilitelink-desc' => 'Tô đậm phần trang khi để con trỏ trên liên kết sửa đổi',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'Editsectionhilitelink-desc' => '當你郁隻老鼠到編輯連結嗰陣將有關嘅小節高亮',
 );
 
-/** Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'Editsectionhilitelink-desc' => '当您移动鼠标器至编辑链接时将有关的段落高亮',
 );
 
-/** Traditional Chinese
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

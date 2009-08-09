@@ -120,6 +120,13 @@ $messages['id'] = array(
 	'nsfilerepo-desc' => 'Menyediakan fitur berbasis ruang nama untuk memuat berkas',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'nsfilerepo-desc' => 'Fornisce una funzione basata sui namespace per caricare file',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -162,6 +169,13 @@ $messages['pms'] = array(
 	'nsfilerepo-desc' => 'Fornì fonsion basà an dzora a namespace për carié dij file',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'nsfilerepo-desc' => 'Provê funcionalidades de arquivos carregados, baseadas no domínio',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -181,5 +195,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'nsfilerepo-desc' => 'Poskytuje nahraným súborom možnosti menných priestorov',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'nsfilerepo-desc' => 'Cung cấp các tính năng dựa trên không gian tên cho các tập tin được tải lên',
 );
 

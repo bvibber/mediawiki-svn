@@ -852,10 +852,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author ToePeu
  */
 $messages['ko'] = array(
-	'createsigndoc-create' => '만들기',
+	'createsigndoc-create' => '생성',
 );
 
 /** Krio (Krio)

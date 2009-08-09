@@ -23,13 +23,21 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Darth Kule
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'dplforum-desc' => 'Short description of the DPLforum extension, shown on [[Special:Version]].',
-	'dplforum-by' => '* $1 is a username',
-	'dplforum-never' => '{{Identical|Never}}',
+	'dplforum-desc' => 'Short description of the [http://www.mediawiki.org/wiki/Extension:DPLforum DPLforum extension], shown on [[Special:Version]]. DPL stands for Dynamic Page Listing.',
+	'dplforum-by' => 'Part of the [http://www.mediawiki.org/wiki/Extension:DPLforum DPLforum extension]. DPL stands for Dynamic Page Listing.
+
+* $1 is a username',
+	'dplforum-edited' => 'Part of the [http://www.mediawiki.org/wiki/Extension:DPLforum DPLforum extension]. DPL stands for Dynamic Page Listing.',
+	'dplforum-never' => 'Part of the [http://www.mediawiki.org/wiki/Extension:DPLforum DPLforum extension]. DPL stands for Dynamic Page Listing.
+
+{{Identical|Never}}',
+	'dplforum-toofew' => 'Part of the [http://www.mediawiki.org/wiki/Extension:DPLforum DPLforum extension]. DPL stands for Dynamic Page Listing.',
+	'dplforum-toomany' => 'Part of the [http://www.mediawiki.org/wiki/Extension:DPLforum DPLforum extension]. DPL stands for Dynamic Page Listing.',
 );
 
 /** Arabic (العربية)
@@ -120,6 +128,18 @@ $messages['cs'] = array(
 	'dplforum-never' => 'Nikdy',
 	'dplforum-toofew' => 'DPL fórum: Příliš málo kategorií!',
 	'dplforum-toomany' => 'DPL fórum: Příliš mnoho kategorií!',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'dplforum-desc' => "Estyniad ar gyfer fforwm gan ddefnyddio DPL (rhestru tudalennau'n ddeinamig)",
+	'dplforum-by' => 'gan $1',
+	'dplforum-edited' => '- Golygiad diweddaraf',
+	'dplforum-never' => 'Byth',
+	'dplforum-toofew' => 'Fforwm DPL: Dim digon o gategorïau!',
+	'dplforum-toomany' => 'Fforwm DPL: Gormod o gategorïau!',
 );
 
 /** German (Deutsch)

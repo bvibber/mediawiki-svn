@@ -219,6 +219,15 @@ $messages['eu'] = array(
 	'security-type-category' => 'kategoria',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'security-info-toggle' => 'turvallisuusrajoitukset',
+	'security-type-category' => 'luokka',
+	'security-type-namespace' => 'nimiavaruus',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -418,6 +427,13 @@ $messages['ja'] = array(
 	'security-type-category' => 'カテゴリ',
 	'security-type-namespace' => '名前空間',
 	'security-restricttogroup' => '「$1」の構成員に限定されているコンテンツにアクセスする',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'security-type-category' => 'ವರ್ಗ',
 );
 
 /** Ripoarisch (Ripoarisch)

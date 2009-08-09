@@ -152,6 +152,18 @@ $messages['eu'] = array(
 	'autocreatecategorypages-editor' => 'Kategoria sortzaile automatikoa',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'autocreatecategorypages-desc' => 'Luo puuttuvat luokkasivut automaattisesti tallennettaessa',
+	'autocreatecategorypages-stub' => 'Tämä on luokkasivu.
+Sillä luetellaan kaikki sivut luokassa ”$1”, sekä kaikki luokkaan ”$1” kuuluvat alaluokat, jos niitä on.',
+	'autocreatecategorypages-createdby' => 'AutoCreateCategoryPages-laajennuksen automaattisesti luoma.',
+	'autocreatecategorypages-editor' => 'Automaattinen luokan perustaja',
+);
+
 /** French (Français)
  * @author Grondin
  * @author PieRRoMaN

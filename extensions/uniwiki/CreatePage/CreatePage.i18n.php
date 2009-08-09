@@ -289,10 +289,18 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  */
 $messages['fi'] = array(
 	'createpage' => 'Luo sivu',
+	'createpage_submitbutton' => 'Lähetä',
+	'createpage_instructions' => 'Syötä nimi sivulle, jonka haluat luoda:',
+	'createpage_entertitle' => 'Anna sivulle nimi.',
+	'createpage_titleexists' => 'Sivu nimeltä [[$1]] on jo olemassa.
+Haluatko muokata olemassa olevaa sivua?',
+	'createpage_tryagain' => 'Ei. Haluan luoda uuden sivun, jolla on oma otsikkonsa.',
+	'createpage_editexisting' => 'Kyllä. Haluan muokata nykyistä sivua.',
 	'createpage-badtitle' => 'Nimeä ”$1” ei voi käyttää sivun nimenä.',
 );
 

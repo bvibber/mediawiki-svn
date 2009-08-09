@@ -923,6 +923,7 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
@@ -935,7 +936,7 @@ $messages['ko'] = array(
 	'bookinfo-result-year' => '연도:',
 	'bookinfo-error-invalidisbn' => '잘못된 ISBN이 입력되었습니다.',
 	'bookinfo-error-nosuchitem' => '해당되는 결과가 없거나 찾을 수 없습니다.',
-	'bookinfo-error-nodriver' => '머리글자로 된 약어는 적합한 책 정보 드라이버가 될 수 없습니다.',
+	'bookinfo-error-nodriver' => '책 정보 드라이버를 초기화할 수 없습니다.',
 	'bookinfo-error-noresponse' => '서버의 반응이 없가나 요청 시간을 초과했습니다.',
 	'bookinfo-purchase' => '$1에서 이 책을 구입하기',
 	'bookinfo-provider' => '데이터 제공자: $1',

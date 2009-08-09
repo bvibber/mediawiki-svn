@@ -318,11 +318,12 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'categorystepper-desc' => '한 문서 안에 있는 하나 또는 보다 많은 분류를 가나다라 순서대로 앞글자부터 뒷글자로, 뒷글자부터 앞글자로 안내해주는, 분류 검색 상자를 보여드리고 있습니다.',
+	'categorystepper-desc' => 'Displays a category stepper box allowing one to navigate forward and backwards alphabetically through one or more categories a page is in',
 	'categorystepper-end' => '(분류의 끝)',
 	'categorystepper-start' => '(분류의 시작)',
 );

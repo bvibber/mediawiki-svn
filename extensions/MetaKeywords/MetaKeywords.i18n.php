@@ -194,6 +194,13 @@ $messages['id'] = array(
 	'metakeywords-desc' => 'Mengijinkan konfigurasi tag <tt><nowiki><meta "keywords"></nowiki></tt> dan <tt><nowiki><meta "description"></nowiki></tt> per ruang nama',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'metakeywords-desc' => 'Consente la configurazione dei tag <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> per ogni namespace',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
