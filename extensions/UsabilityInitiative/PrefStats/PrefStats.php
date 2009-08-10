@@ -30,10 +30,22 @@ $wgPrefStatsEnable = true;
 $wgPrefStatsTrackPrefs = array();
 
 // Dimensions of the chart on Special:PrefStats
-$wgPrefStatsChartDimensions = '1000x300';
+$wgPrefStatsChartDimensions = array( 800, 300 );
 
 // Time unit to use for the graph on Special:PrefStats
-$wgPrefStatsTimeUnit = 60 * 60 * 24; // one day
+// Don't change this unless you know what you're doing
+$wgPrefStatsTimeUnit = 60 * 60; // one hour
+
+// Multiples of $wgPrefStatsTimeUnit to offer
+// array( messagekey => factor )
+$wgPrefStatsTimeFactors = array(
+	'prefstats-factor-hour' => 1,
+	'prefstats-factor-day' => 24,
+	'prefstats-factor-week' => 7*24,
+	'prefstats-factor-twoweeks' => 2*7*24,
+	'prefstats-factor-fourweeks' => 4*7*24,
+	'prefstats-factor-default' => null,
+);
 
 // Whether to run possibly expensive COUNT(*) queries on the user_properties
 // table
