@@ -70,7 +70,7 @@ fn: {
 	 * @param {Object} action
 	 */
 	doAction: function( context, action ) {
-		switch ( action.type) {
+		switch ( action.type ) {
 			case 'encapsulate':
 				var parts = { 'pre': '', 'peri': '', 'post': '' };
 				for ( part in parts ) {
@@ -84,7 +84,8 @@ fn: {
 					}
 				}
 				context.$textarea.encapsulateSelection(
-					parts.pre, parts.peri, parts.post
+					parts.pre, parts.peri, parts.post,
+					action.options.ownline
 				);
 			break;
 			default: break;

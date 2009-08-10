@@ -12,8 +12,9 @@
  * @param pre Text to insert before selection
  * @param peri Text to insert at caret if selection is empty
  * @param post Text to insert after selection
+ * @param ownline If true, put the inserted text is on its own line
  */
-encapsulateSelection: function( pre, peri, post ) {
+encapsulateSelection: function( pre, peri, post, ownline ) {
 	/**
 	 * Check if the selected text is the same as the insert text
 	 */ 
@@ -42,6 +43,20 @@ encapsulateSelection: function( pre, peri, post ) {
 		$(this).focus();
 		var range = document.selection.createRange();
 		selText = range.text;
+		if ( ownline && range.moveStart ) {
+			var range2 = document.selection.createRange();
+			range2.collapse();
+			range2.moveStart( 'character', -1 );
+			// FIXME: Which check is correct?
+			if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" )
+				pre = "\n" + pre;
+			
+			var range3 = document.selection.createRange();
+			range3.collapse( false );
+			range3.moveEnd( 'character', 1 );
+			if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" )
+				post += "\n";
+		}
 		checkSelectedText();
 		range.text = pre + selText + post;
 		if ( isSample && range.moveStart ) {
@@ -65,6 +80,12 @@ encapsulateSelection: function( pre, peri, post ) {
 		var endPos = e.selectionEnd;
 		selText = e.value.substring( startPos, endPos );
 		checkSelectedText();
+		if ( ownline ) {
+			if ( startPos != 0 && e.value.charAt( startPos - 1 ) != "\n" )
+				pre = "\n" + pre;
+			if ( e.value.charAt( endPos ) != "\n" )
+				post += "\n";
+		}
 		e.value = e.value.substring( 0, startPos ) + pre + selText + post +
 			e.value.substring( endPos, e.value.length );
 		if ( isSample ) {
@@ -77,7 +98,7 @@ encapsulateSelection: function( pre, peri, post ) {
 		}
 		e.scrollTop = textScroll;
 	}
-	$(this).trigger( 'encapsulateSelection', [ pre, peri, post ] );
+	$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline ] );
 },
 /**
  * Ported from Wikia's LinkSuggest extension
