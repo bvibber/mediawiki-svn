@@ -134,19 +134,12 @@ class SpecialIndexPager extends AlphabeticPager {
 			array( 'page' => array('JOIN','page_id=in_from') )
 		);
 		
-		$union = $this->unionQueries( array( $pagequery, $indexquery ), false );
+		$union = $this->mDb->unionQueries( array( $pagequery, $indexquery ), false );
 		$union .= $order . $limit;		
 
 		$res = $this->mDb->query( $union, __METHOD__ );
 		return new ResultWrapper( $this->mDb, $res );
 	}
-	
-	// Copied from Database.php on MW trunk
-	function unionQueries($sqls, $all) {
-		$glue = $all ? ') UNION ALL (' : ') UNION (';
-		return '('.implode( $glue, $sqls ) . ')';
-	}
-
 
 }
 
