@@ -107,6 +107,7 @@ class EditToolbarHooks {
 				'edittoolbar-characters-page-cyrillic',
 				'edittoolbar-characters-page-arabic',
 				'edittoolbar-characters-page-hebrew',
+				'edittoolbar-characters-page-telugu',
 				/* Help Section */
 				'edittoolbar-section-help',
 				'edittoolbar-help-heading-description',
