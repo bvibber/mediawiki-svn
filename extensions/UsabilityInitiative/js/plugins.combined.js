@@ -287,7 +287,9 @@ encapsulateSelection: function( pre, peri, post ) {
 	var e = this.jquery ? this[0] : this;
 	var selText;
 	var isSample = false;
-	if ( document.selection && document.selection.createRange ) {
+	if ( e.style.display == 'none' ) {
+		// Do nothing
+	} else if ( document.selection && document.selection.createRange ) {
 		// IE/Opera
 		if ( document.documentElement && document.documentElement.scrollTop ) {
 			var winScroll = document.documentElement.scrollTop;
@@ -312,7 +314,7 @@ encapsulateSelection: function( pre, peri, post ) {
 		} else if ( document.body ) {
 			document.body.scrollTop = winScroll;
 		}
-	} else if ( e.style.display != 'none' && ( e.selectionStart || e.selectionStart == '0' ) ) {
+	} else if ( e.selectionStart || e.selectionStart == '0' ) {
 		// Mozilla
 		var textScroll = e.scrollTop;
 		$(this).focus();
