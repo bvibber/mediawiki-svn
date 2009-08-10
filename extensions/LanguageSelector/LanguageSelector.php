@@ -167,6 +167,11 @@ function wfLanguageSelectorExtension() {
 		}
 	}
 
+	// Unstub for method_exists call to work
+	if ( !StubObject::isRealObject( $wgOut ) ) {
+		$wgOut->_unstub();
+	}
+
 	if ( method_exists( $wgOut, 'addScriptClass' ) ) {
 		$wgOut->addScriptClass( 'LanguageSelector' );
 	} else {
