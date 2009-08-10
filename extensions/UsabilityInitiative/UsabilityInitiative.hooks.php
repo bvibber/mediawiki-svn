@@ -49,16 +49,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 6 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 7 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 6 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 7 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 4 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 9 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 10 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 9 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 10 ),
 			),
 		),
 	);
