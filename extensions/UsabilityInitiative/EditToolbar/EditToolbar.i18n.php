@@ -83,6 +83,7 @@ File:Example.jpg|Caption2",
 	'edittoolbar-characters-page-cyrillic' => 'Cyrillic',
 	'edittoolbar-characters-page-arabic' => 'Arabic',
 	'edittoolbar-characters-page-hebrew' => 'Hebrew',
+	'edittoolbar-characters-page-telugu' => 'Telugu',
 	/* Help Section */
 	'edittoolbar-section-help' => 'Help',
 	'edittoolbar-help-heading-description' => 'Description',
