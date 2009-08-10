@@ -298,6 +298,7 @@ class ExtTransliterator {
 
         $sensitive = isset( $map["__sensitive__"] ); // Are we in case-sensitive mode, or not
         $ucfirst = false;                            // We are in case-sensitive mode and the first character of the current match was upper-case originally
+        $last_upper = null;                          // We have lower-cased the current letter, but we need to keep track of the original (dotted I for example)
         $withstart = false;                          // Have we inserted a start character into the current $current
 
         $output = "";               // The output
@@ -354,12 +355,13 @@ class ExtTransliterator {
                     if ( $last_letter != $last_lower ) {
                         $ucfirst = true;
                         $letters[$last_match] = $last_lower;
+                        $last_upper = $last_letter;
 
                     // Might be nice to output a ? if we don't understand
                     } else if ( isset( $map[''] ) ) {
 
                         if ( $ucfirst ) {
-                            $output .= str_replace( '$1', mb_strtoupper( $last_letter ), $map[''] );
+                            $output .= str_replace( '$1', $last_upper , $map[''] );
                             $ucfirst = false;
                         } else {
                             $output .= str_replace( '$1', $last_letter, $map[''] );
@@ -371,7 +373,7 @@ class ExtTransliterator {
                     } else {
 
                         if ( $ucfirst ) {
-                            $output .= mb_strtoupper( $last_letter );
+                            $output .= $last_upper;
                             $ucfirst = false;
                         } else {
                             $output .= $last_letter;
