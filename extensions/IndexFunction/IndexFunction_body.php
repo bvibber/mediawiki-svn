@@ -216,7 +216,7 @@ class IndexFunctionHooks {
 	static function doIndexes( &$out, $parseroutput ) {
 		global $wgTitle;
 		if ( !isset($parseroutput->mIndexes) ) {
-			return true;
+			$parseroutput->mIndexes = array();
 		}
 		if ( $parseroutput->getProperty( 'preview' ) ) {
 			return true;
@@ -234,7 +234,7 @@ class IndexFunctionHooks {
 		}
 		$toAdd = wfArrayDiff2( $parseroutput->mIndexes, $current );
 		$toRem = wfArrayDiff2( $current, $parseroutput->mIndexes );
-		if ( true ) {
+		if ( $toAdd || $toRem ) {
 			$dbw->begin( __METHOD__ );
 			if ( $toRem ) {
 				$delCond = "in_from = $pageid AND (";
