@@ -18,13 +18,13 @@ class UsabilityInitiativeHooks {
 			'raw' => array(
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 5 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 4 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 5 ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 5 ),
+				array( 'src' => 'css/combined.css', 'version' => 6 ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 5 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 6 ),
 			),
 		)
 	);
