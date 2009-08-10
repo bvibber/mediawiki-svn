@@ -217,7 +217,7 @@ fn: {
 		// Recursively build the structure and adds special item for section 0
 		var structure = buildStructure( outline );
 		structure.unshift(
-			{ 'text': wgTitle, 'level': 1, 'index': 0, 'position': 0 }
+			{ 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 }
 		);
 		context.modules.$toc.html( buildList( structure ) );
 		// Cache the outline for later use
