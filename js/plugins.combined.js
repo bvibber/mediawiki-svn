@@ -312,7 +312,7 @@ encapsulateSelection: function( pre, peri, post ) {
 		} else if ( document.body ) {
 			document.body.scrollTop = winScroll;
 		}
-	} else if ( e.selectionStart || e.selectionStart == '0' ) {
+	} else if ( e.style.display != 'none' && ( e.selectionStart || e.selectionStart == '0' ) ) {
 		// Mozilla
 		var textScroll = e.scrollTop;
 		$(this).focus();
