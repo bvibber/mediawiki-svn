@@ -322,6 +322,7 @@ wfor-ip-ccache-1-vif0.telkom-ipnet.co.za
 rgm-ip-ccache-1-vif0.telkom-ipnet.co.za
 tpr-ip-ccache-1-vif0.telkom-ipnet.co.za
 tbnb-ip-ccache-1-vif0.telkom-ipnet.co.za
+wbs-ip-ccache-4-vif0.telkom-ipnet.co.za
 rrba-ip-ccache-3-vif0.telkom-ipnet.co.za
 rrba-ip-ccache-4-vif0.telkom-ipnet.co.za
 wblv-ip-rcache-3-vif0.telkom-ipnet.co.za
@@ -334,6 +335,7 @@ ndn-ip-ccache-1-vif0.telkom-ipnet.co.za
 wbs-ip-ccache-2-vif0.telkom-ipnet.co.za
 wbs-ip-ccache-3-vif0.telkom-ipnet.co.za
 rrba-ip-ccache-7-vif0.telkom-ipnet.co.za
+nngy-ip-ccache-2-vif0.telkom-ipnet.co.za
 ndn-ip-ccache-2-vif0.telkom-ipnet.co.za
 rnls-ip-ccache-1-vif0.telkom-ipnet.co.za
 rhwh-ip-ccache-1-vif0.telkom-ipnet.co.za
@@ -341,6 +343,7 @@ rrdg-ip-ccache-1-vif0.telkom-ipnet.co.za
 tvwt-ip-ccache-1-vif0.telkom-ipnet.co.za
 tprn-ip-ccache-1-vif0.telkom-ipnet.co.za
 ndnn-ip-ccache-1-vif0.telkom-ipnet.co.za
+wblv-ip-pcache-4-vif0.telkom-ipnet.co.za
 wblv-ip-pcache-1-vif0.telkom-ipnet.co.za
 wblv-ip-pcache-5-vif0.telkom-ipnet.co.za
 rrba-ip-pcache-2-vif0.telkom-ipnet.co.za
