@@ -30,6 +30,9 @@ class UsabilityInitiativeHooks {
 	);
 	private static $scripts = array();
 	private static $scriptFiles = array(
+		'tests' => array(
+			array( 'src' => 'js/tests/wikiEditor.toolbar.js' )
+		),
 		// Code to include when js2 is not present
 		'no_js2' => array(
 			'raw' => array(
@@ -67,7 +70,7 @@ class UsabilityInitiativeHooks {
 	
 	public static function initialize() {
 		global $wgUsabilityInitiativeResourceMode;
-		global $wgEnableJS2system;
+		global $wgEnableJS2system, $wgEditToolbarRunTests;
 		
 		// Only do this the first time!
 		if ( !self::$doOutput ) {
@@ -91,6 +94,12 @@ class UsabilityInitiativeHooks {
 			self::$styles = array_merge(
 				self::$styles, self::$styleFiles['base_sets'][$mode]
 			);
+			if ( $wgEditToolbarRunTests ) {
+				// Include client side tests
+				self::$scripts = array_merge(
+					self::$scripts, self::$scriptFiles['tests']
+				);
+			}
 		}
 		self::$doOutput = true;
 	}
