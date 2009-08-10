@@ -2,7 +2,7 @@
 
 js2AddOnloadHook( function() {
 	// Allow user/site JS to customize editToolbarConfiguration
-	$j( document ).trigger( 'toolbarConfig' );
+	$j( document ).trigger( 'toolbarConfig', [ editToolbarConfiguration ] );
 	$j( 'textarea#wpTextbox1' ).wikiEditor(
 		{ 'toolbar': editToolbarConfiguration }
 	);
