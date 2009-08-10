@@ -29,6 +29,9 @@ $wgEditToolbarGlobalEnable = false;
 // will not do anything)
 $wgEditToolbarUserEnable = true;
 
+// Set if we should include a client-side testing script
+$wgEditToolbarRunTests = false;
+
 /* Setup */
 
 // Credits
