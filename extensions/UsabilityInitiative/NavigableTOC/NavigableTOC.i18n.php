@@ -41,12 +41,36 @@ $messages['dsb'] = array(
 	'navigabletoc-desc' => 'Pśidawa zapis wopśimjeśa wobźěłowańskemu formularoju, kótaryž kula tekstowe pólo, gaž se na wótrězk kliknjo',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'navigabletoc' => 'Περιηγήσιμος πίνακας περιεχομένων',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
 $messages['es'] = array(
 	'navigabletoc' => 'Tabla de contenidos navegable',
 	'navigabletoc-desc' => 'Añade una tabla de contenido al formulario de edición que desplaza el cuadro de texto cuando se hace clic en una sección',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'navigabletoc' => 'Eduki-taula nabigagarria',
+	'navigabletoc-desc' => 'Eduki-taula gehitzen du editatzeko orrira eta testu-taula erakusten du klikatzean',
+);
+
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'navigabletoc' => 'Navigoitava sisällysluettelo',
+	'navigabletoc-desc' => 'Lisää tekstikenttään sisällysluettelon, joka vierii kun osiota napsautetaan.',
 );
 
 /** French (Français)
@@ -113,12 +137,28 @@ $messages['id'] = array(
 	'navigabletoc-desc' => 'Menambahkan sebuah daftar isi pada formulir penyuntingan yang jika diklik dapat langsung menuju bagian yang dimaksud',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'navigabletoc' => 'Indice navigabile',
+	'navigabletoc-desc' => 'Aggiunge un indice al modulo di modifica che scorre la casella di testo quando si fa clic su una sezione',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'navigabletoc' => 'ナビゲーション可能な目次',
 	'navigabletoc-desc' => 'クリックした際にテキストボックスをスクロールさせる目次を編集フォームに加える',
+);
+
+/** Georgian (ქართული)
+ * @author Alsandro
+ */
+$messages['ka'] = array(
+	'navigabletoc' => 'მართვადი სარჩევი',
+	'navigabletoc-desc' => 'ამატებს სარჩევს რედაქტირების ფორმას, რომელიც ტექსტის დაფის ამოძრავების საშუალებას იძლევა განყოფილებაზე დაწკაპუნებით',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -134,6 +174,14 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'navigabletoc' => 'Inhaltsverzeechnis fir ze navigéieren',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'navigabletoc' => 'Navigasi kandungan',
+	'navigabletoc-desc' => "Menambahkan jadual kandungan dalam bahagian suntingan yang ''scroll'' ke bawah.",
 );
 
 /** Dutch (Nederlands)
@@ -159,12 +207,35 @@ $messages['oc'] = array(
 	'navigabletoc-desc' => 'Apond lo somari al formulari de modificacion que desfila lo tèxte quand una seccion es clicada',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'navigabletoc' => 'Nawigacyjny spis treści',
+	'navigabletoc-desc' => 'Przewija tekst w formularzu edycji, jeśli zostanie kliknięty kliknięty tytuł sekcji w dodanym do formularza spisie treści',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'navigabletoc' => 'Tabela de conteúdo navegável',
 	'navigabletoc-desc' => 'Adiciona uma tabela de conteúdo ao formulário de edição que desloca a caixa de texto quando a secção é clicada',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'navigabletoc' => 'Tabela de conteúdo navegável',
+	'navigabletoc-desc' => 'Adiciona uma tabela de conteúdo ao formulário de edição que desloca a caixa de texto quando uma seção é clicada',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'navigabletoc' => 'Cuprins navigabil',
 );
 
 /** Tarandíne (Tarandíne)
@@ -190,6 +261,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'navigabletoc' => 'Navigovateľný Obsah',
 	'navigabletoc-desc' => 'Pridáva do formulára úprav Obsah, ktorý sa posunie na správne miesto po kliknutí na sekciu',
+);
+
+/** Swedish (Svenska)
+ * @author Micke
+ */
+$messages['sv'] = array(
+	'navigabletoc' => 'Navigeringsbar innehållsförteckning',
+	'navigabletoc-desc' => 'Lägger till en innehållsförteckning i redigeringsfönstret som scrollar textrutan när ett avsnitt väljs',
 );
 
 /** Turkish (Türkçe)

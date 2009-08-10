@@ -388,7 +388,7 @@ fn: {
 					)
 				);
 			} else {
-				sectionQueue[sectionQueue.length] = {
+				s = {
 					'context': context,
 					'$sections': $sections,
 					'$tabs': $tabs,
@@ -396,23 +396,7 @@ fn: {
 					'config': config[section],
 					'selected': ( selected == section )
 				};
-			}
-		}
-		$.eachAsync( sectionQueue, {
-			'bulk': 0,
-			'end': function() {
-				// HACK: Opera doesn't seem to want to redraw after these bits
-				// are added to the DOM, so we can just FORCE it!
-				$( 'body' ).css( 'position', 'static' );
-				$( 'body' ).css( 'position', 'relative' );
-			},
-			'loop': function( i, s ) {
-				s.$sections.append(
-					$.wikiEditor.modules.toolbar.fn.buildSection(
-						s.context, s.section, s.config
-					)
-					.css( 'display', s.selected ? 'block' : 'none' )
-				);
+				sectionQueue[sectionQueue.length] = s;
 				s.$tabs.append(
 					$( '<span></span>' )
 						.attr( {
@@ -457,6 +441,24 @@ fn: {
 							} )
 						)
 				);
+			}
+		}
+		$.eachAsync( sectionQueue, {
+			'bulk': 0,
+			'end': function() {
+				// HACK: Opera doesn't seem to want to redraw after these bits
+				// are added to the DOM, so we can just FORCE it!
+				$( 'body' ).css( 'position', 'static' );
+				$( 'body' ).css( 'position', 'relative' );
+			},
+			'loop': function( i, s ) {
+				s.$sections.append(
+					$.wikiEditor.modules.toolbar.fn.buildSection(
+						s.context, s.section, s.config
+					)
+					.css( 'display', s.selected ? 'block' : 'none' )
+				);
+				
 			}
 		} );
 	}

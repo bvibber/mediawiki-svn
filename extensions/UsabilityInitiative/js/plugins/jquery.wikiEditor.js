@@ -58,7 +58,8 @@ $(this)
 	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
 	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
 	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
-// Get a refrence to the outter container
+
+// Get a reference to the outer container
 context.$ui = $(this).parent().parent().parent();
 context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 // Attach a container in the top

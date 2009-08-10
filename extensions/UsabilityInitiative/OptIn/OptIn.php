@@ -28,7 +28,7 @@
 $wgOptInAlwaysShowPersonalLink = false;
 $wgOptInNeverShowPersonalLink = false;
 
-$wgOptInStyleVersion = 7;
+$wgOptInStyleVersion = 9;
 
 // Preferences to set when users opt in
 // array( prefname => value )
@@ -92,7 +92,9 @@ $wgOptInSurvey = array(
 		'type' => 'dropdown',
 		'answers' => array(
 			'windows' => 'optin-survey-answer-os-windows',
+			'windowsmobile' => 'optin-survey-answer-os-windowsmobile',
 			'macos' => 'optin-survey-answer-os-macos',
+			'iphoneos' => 'ptin-survey-answer-os-iphoneos',
 			'linux' => 'optin-survey-answer-os-linux' ),
 		'other' => 'optin-survey-answer-os-other' ),
 	'res' => array(

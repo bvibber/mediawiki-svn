@@ -113,10 +113,11 @@ class SpecialOptIn extends SpecialPage {
 				UsabilityInitiativeHooks::initialize();
 				UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
 					$wgOptInStyleVersion );
+				
 				$url = $this->getTitle()->getLinkUrl();
 				$wgOut->addHTML( Xml::tags( 'script',
 					array( 'type' => $wgJsMimeType ),
-					"js2AddOnloadHook(function() { \$j.post( \"$url\", optInGetPOSTData() ); } );"
+					'js2AddOnloadHook( function() { $j.post( "' . $url . '", optInGetPOSTData() ); } );'
 				) );
 			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' ) {
 				if ( $wgRequest->wasPosted() ) {
