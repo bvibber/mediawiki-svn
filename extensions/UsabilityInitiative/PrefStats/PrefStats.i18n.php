@@ -35,7 +35,6 @@ Configure $wgPrefStatsTrackPrefs to track preferences.',
 	'prefstats-factor-twoweeks' => 'two weeks',
 	'prefstats-factor-fourweeks' => 'four weeks',
 	'prefstats-factor-default' => 'back to default scale',
->>>>>>> .merge-right.r54738
 );
 
 /** Arabic (العربية)
