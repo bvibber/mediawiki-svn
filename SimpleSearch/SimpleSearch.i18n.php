@@ -120,6 +120,14 @@ $messages['es'] = array(
 	'simplesearch-search' => 'Búsqueda',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'simplesearch' => 'Lihtotsing',
+	'simplesearch-search' => 'Otsi',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
@@ -174,6 +182,15 @@ $messages['he'] = array(
 	'simplesearch' => 'חיפוש פשוט',
 	'simplesearch-desc' => 'הוספת תכונות נוספות לחיפוש המפושט של וקטור',
 	'simplesearch-search' => 'חיפוש',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'simplesearch' => 'Jednostavno pretraživanje',
+	'simplesearch-desc' => 'Dodaje dodatne mogućnosti Vectorovom pojednostavljenom pretraživanju',
+	'simplesearch-search' => 'Traži',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -237,6 +254,14 @@ $messages['ka'] = array(
 	'simplesearch' => 'მარტივი ძიება',
 	'simplesearch-desc' => 'ამატებს დამატებით ფუნქციებს ვექტორის გამარტივებულ საძიებელს',
 	'simplesearch-search' => 'ძიება',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'simplesearch' => 'ស្វែងរកសាមញ្ញ​',
+	'simplesearch-search' => 'ស្វែងរក​',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -381,6 +406,15 @@ $messages['sah'] = array(
 	'simplesearch-search' => 'Көрдөөһүн',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'simplesearch' => 'Ricerca semplici',
+	'simplesearch-desc' => 'Junci funzionalità supplemintari â ricerca simplificata di Vector',
+	'simplesearch-search' => 'Ricerca',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -396,6 +430,14 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'simplesearch' => 'Једноставна претрага',
 	'simplesearch-search' => 'Претрага',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'simplesearch' => 'Jednostavna pretraga',
+	'simplesearch-search' => 'Pretraga',
 );
 
 /** Swedish (Svenska)
