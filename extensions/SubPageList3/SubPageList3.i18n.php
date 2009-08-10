@@ -146,9 +146,11 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Silvonen
  */
 $messages['fi'] = array(
 	'spl3_debug' => 'Tuntematon arvo valinnassa $1.',
+	'spl3_nosubpages' => 'Sivulla $1 ei ole alasivuja.',
 );
 
 /** French (Français)
@@ -386,6 +388,15 @@ $messages['sr-ec'] = array(
 	'spl3-desc' => 'Аутоматски прави списак подстрана неке стране преко тага <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Непозната вредност за опцију $1.',
 	'spl3_nosubpages' => '$1 нема подстрана.',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'spl3-desc' => 'Automatski pravi spisak podstrana neke strane preko taga <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Nepoznata vrednost za opciju $1.',
+	'spl3_nosubpages' => '$1 nema podstrana.',
 );
 
 /** Swedish (Svenska)

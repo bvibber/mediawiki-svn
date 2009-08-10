@@ -298,6 +298,13 @@ $messages['sr-ec'] = array(
 	'javascript-desc' => 'Додаје uniwiki.js на сваку страну која садржи јаваскрипт код који се користи између више Унивики екстензија',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'javascript-desc' => 'Dodaje uniwiki.js na svaku stranu koja sadrži javaskript kod koji se koristi između više Univiki ekstenzija',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

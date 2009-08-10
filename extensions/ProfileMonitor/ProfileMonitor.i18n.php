@@ -734,10 +734,14 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'profiling-ok' => 'OK',
+	'profiling-data-process' => 'Proces',
+	'profiling-data-time' => 'Timp (total)',
+	'profiling-data-average' => 'Timp (medie)',
 );
 
 /** Tarandíne (Tarandíne)

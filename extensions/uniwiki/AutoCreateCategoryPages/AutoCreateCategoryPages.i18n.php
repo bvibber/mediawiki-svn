@@ -258,6 +258,17 @@ Halaman ini mendaftarkan semua halaman di kategori "$1" dan juga semua upa kateg
 	'autocreatecategorypages-editor' => 'Pembuat kategori otomatis',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'autocreatecategorypages-desc' => 'Crea automaticamente le pagine di categoria mancanti al salvataggio',
+	'autocreatecategorypages-stub' => 'Questa è una pagina di categoria.
+Di seguito sono elencate tutte le pagine nella categoria "$1" e tutte le sottocategorie di "$1" qualora esistano.',
+	'autocreatecategorypages-createdby' => "Creata automaticamente dall'estensione AutoCreateCategoryPages.",
+	'autocreatecategorypages-editor' => 'Creatore automatico di categoria',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -428,6 +439,14 @@ $messages['sr-ec'] = array(
 	'autocreatecategorypages-editor' => 'Аутоматско прављење категорија',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'autocreatecategorypages-desc' => 'Automatski napravi nedostajuće strane kategorija po snimanju',
+	'autocreatecategorypages-editor' => 'Automatsko pravljenje kategorija',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -441,8 +460,13 @@ Ju liestet aal Sieden in ju Kategorie "$1" as uk aal Unnerkategorien fon ju Kate
 
 /** Swedish (Svenska)
  * @author Najami
+ * @author Rotsee
  */
 $messages['sv'] = array(
+	'autocreatecategorypages-desc' => 'Skapa automatiskt kategorisidor som inte finns när sidan sparas',
+	'autocreatecategorypages-stub' => 'Detta är en kategorisida.
+Här listas alla artiklar som placerats i kategorin "$1", samt eventuella underkategorier till "$1".',
+	'autocreatecategorypages-createdby' => 'Sidan skapades automatiskt av AutoCreateCategoryPages-tillägget.',
 	'autocreatecategorypages-editor' => 'Automatisk kategoriskapning',
 );
 

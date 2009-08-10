@@ -1328,6 +1328,20 @@ $messages['sr-ec'] = array(
 	'multiupload-blank' => 'Ни један фајл није био назначен за слање',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'multipleupload-desc' => 'Omogući korisnicima da [[Special:MultipleUpload|šalju više fajlova odjednom]]',
+	'multipleupload-ignoreallwarnings' => "Ignoripi '''sva upozorenja''' i snimi fajlove bez obzira na njih.",
+	'multipleupload-saveallfiles' => 'Snimi sve fajlove',
+	'multipleupload-page' => '{{ns:project}}:Politika brisanja fajlova',
+	'multiupload-fileuploaded' => 'Fajl poslat.',
+	'multiupload-toolbox' => 'Pošalji više fajlova',
+	'multiupload-no-files' => 'Molimo Vas da naznačite makar jedan fajl za slanje',
+	'multiupload-blank' => 'Ni jedan fajl nije bio naznačen za slanje',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

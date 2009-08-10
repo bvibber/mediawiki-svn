@@ -940,6 +940,19 @@ $messages['sr-ec'] = array(
 	'ajax-se-usernotfound' => 'ГРЕШКА: корисник није пронађен',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'ajax-se-desc' => 'Pokazuje korisnike koji trenutno uređuju istu stranicu',
+	'ajax-se-title' => 'Trenutno uređuju:',
+	'ajax-se-pending' => 'čeka se osvežavanje ... (kliknite ovde ili počnite sa uređivanjem)',
+	'ajax-se-idling' => '(pre $1 sek)',
+	'ajax-se-pagedoesnotexist' => 'stranica ne postoji',
+	'ajax-se-userinvalid' => 'GREŠKA: korisnik ne postoji',
+	'ajax-se-usernotfound' => 'GREŠKA: korisnik nije pronađen',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

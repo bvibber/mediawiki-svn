@@ -68,6 +68,13 @@ $messages['dsb'] = array(
 	'tspoll-id-error' => 'Žeden ID pódany!',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'tspoll-id-error' => 'Δεν έχει δωθεί κανένα ID!',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -147,6 +154,15 @@ $messages['id'] = array(
 	'tspoll-desc' => 'Masukkan [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] sebagai sebuah tag HTML',
 	'tspoll-fetch-error' => 'Terjadi kesalahan pada saat berusaha mengambil URL!',
 	'tspoll-id-error' => 'ID tidak diberikan!',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'tspoll-desc' => 'Include il [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] come un tag HTML',
+	'tspoll-fetch-error' => "Errore durante il caricamento dell'URL",
+	'tspoll-id-error' => 'Nessun ID fornito',
 );
 
 /** Japanese (日本語)

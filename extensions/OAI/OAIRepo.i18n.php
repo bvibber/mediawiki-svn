@@ -376,6 +376,13 @@ $messages['sr-ec'] = array(
 	'oai-desc' => 'Даје складиште интерфејса [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH].',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'oai-desc' => 'Daje skladište interfejsa [<a href="http://www.openarchives.org/OAI/openarchivesprotocol.html">http://www.openarchives.org/OAI/openarchivesprotocol.html</a> OAI-PMH].',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

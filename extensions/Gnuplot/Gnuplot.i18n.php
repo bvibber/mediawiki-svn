@@ -339,6 +339,13 @@ $messages['sr-ec'] = array(
 	'gnuplot-desc' => 'Додаје таг <code><nowiki><gnuplot></nowiki></code> зарад коришћења Gnuplot-а',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'gnuplot-desc' => 'Dodaje tag <code><nowiki><gnuplot></nowiki></code> zarad korišćenja Gnuplot-a',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

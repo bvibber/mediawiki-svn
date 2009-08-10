@@ -178,7 +178,7 @@ $messages['fi'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'categorystepper-desc' => 'Affiche une boîte de catégories permettant de visiter alphabétiquement de l’une à l’autre la (ou les) catégorie(s) dont une page est membre.',
+	'categorystepper-desc' => 'Affiche une boîte de parcours de catégories permettant de visiter alphabétiquement en avant ou en arrière la (ou les) catégorie(s) dont une page est membre.',
 	'categorystepper-end' => '(Fin de catégorie)',
 	'categorystepper-start' => '(Début de catégorie)',
 );
@@ -503,6 +503,14 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'categorystepper-end' => '(Крај категорије)',
 	'categorystepper-start' => '(Почетак категорије)',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'categorystepper-end' => '(Kraj kategorije)',
+	'categorystepper-start' => '(Početak kategorije)',
 );
 
 /** Seeltersk (Seeltersk)

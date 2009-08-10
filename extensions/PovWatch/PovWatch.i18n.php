@@ -277,10 +277,12 @@ Kliknite na dugme ispod da se prijavite.',
 /** Catalan (Català)
  * @author Aleator
  * @author Jordi Roqué
+ * @author Paucabot
  */
 $messages['ca'] = array(
 	'povwatch_unknown_subpage' => 'Subpàgina desconeguda.',
 	'povwatch_title' => 'Títol:',
+	'povwatch_added' => 'Afegit',
 );
 
 /** Danish (Dansk)
@@ -1678,6 +1680,7 @@ Clique no botão abaixo para inscrever-se.',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  */
@@ -1685,6 +1688,7 @@ $messages['ro'] = array(
 	'povwatch_invalid_title' => 'Titlul specificat este incorect',
 	'povwatch_subscriber_list_intro' => '<strong>Lista abonaţilor</strong>',
 	'povwatch_unknown_subpage' => 'Subpagină necunoscută.',
+	'povwatch_push' => 'Apasă',
 	'povwatch_title' => 'Titlu:',
 	'povwatch_comment' => 'Comentariu pentru jurnal:',
 	'povwatch_no_log' => 'Nu există intrări în jurnal.',
@@ -1832,6 +1836,13 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
  */
 $messages['sr-ec'] = array(
 	'povwatch_title' => 'Наслов:',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'povwatch_title' => 'Naslov:',
 );
 
 /** Seeltersk (Seeltersk)

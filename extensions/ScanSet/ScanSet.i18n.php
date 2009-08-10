@@ -1127,6 +1127,24 @@ $messages['sr-ec'] = array(
 	'scanset_prev' => '&lt; Прет.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'scanset-desc' => 'Vidi skeniranu stranu slike is CD/DVD skupa Andreasa Groša (Andreas Grosz).',
+	'scanset_no_name' => 'Greška: Moraš odrediti ime skupu skenova, npr. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Greška: Loš ili nedostajući skup skenova.',
+	'scanset_unrecognised_index_format' => 'Greška: Nepoznati oblik indeksa.',
+	'scanset_opendir_error' => 'Greška: Ne mogu otvoriti direktorijum $1.',
+	'scanset_no_files' => 'Greška: Nema fajlova u datom direktorijumu.',
+	'scanset_no_volumes' => 'Greška: Nijedan skup direktorijuma nije nađen.',
+	'scanset_missing_index_file' => 'Greška: Fajl s indeksima $1 nije nađen.',
+	'scanset_index_file_error' => 'Greška: Greška u obliku fajla s indeksima u liniji $1.',
+	'scanset_invalid_volume' => 'Greška: Loš skup.',
+	'scanset_next' => 'Sled. &gt;',
+	'scanset_prev' => '&lt; Pret.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -729,9 +729,11 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'findspam' => 'Găsiţi spam',
 	'findspam-ip' => 'Adresă IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nici o contribuţie găsită',
@@ -803,6 +805,18 @@ $messages['sr-ec'] = array(
 	'findspam-ok' => 'У реду',
 	'findspam-notextfound' => 'Нису пронађени прилози',
 	'right-findspam' => 'Потражи скоро додати спам',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'findspam' => 'Pronađi spam',
+	'findspam-desc' => 'Dodaje [[Special:FindSpam|specijalnu stranu]] koja omogućava nalaženje skoro dodatog spama',
+	'findspam-ip' => 'IP adresa:',
+	'findspam-ok' => 'U redu',
+	'findspam-notextfound' => 'Nisu pronađeni prilozi',
+	'right-findspam' => 'Potraži skoro dodati spam',
 );
 
 /** Seeltersk (Seeltersk)

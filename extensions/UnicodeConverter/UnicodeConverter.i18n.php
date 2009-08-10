@@ -156,9 +156,12 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'unicodeconverter-ok' => 'Εντάξει',
+	'unicodeconverter-oldtext' => 'Αρχικό κείμενο:',
+	'unicodeconverter-newtext' => 'Κείμενο που έχει μετατραπεί:',
 );
 
 /** Esperanto (Esperanto)
@@ -294,6 +297,17 @@ $messages['id'] = array(
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Teks asli:',
 	'unicodeconverter-newtext' => 'Teks ubahan:',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'unicodeconverter' => 'Convertitore Unicode',
+	'unicodeconverter-desc' => 'Un semplice esempio di un modulo di pagina speciale. [[Special:UnicodeConverter|Data una stringa in UTF-8]], la converte in entity HTML adatte per una pagina web ISO 8859-1',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Testo originale:',
+	'unicodeconverter-newtext' => 'Testo convertito:',
 );
 
 /** Japanese (日本語)
@@ -565,6 +579,16 @@ $messages['sr-ec'] = array(
 	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинални текст:',
 	'unicodeconverter-newtext' => 'Конвертован текст:',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'unicodeconverter' => 'Junikod konverter',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Originalni tekst:',
+	'unicodeconverter-newtext' => 'Konvertovan tekst:',
 );
 
 /** Seeltersk (Seeltersk)

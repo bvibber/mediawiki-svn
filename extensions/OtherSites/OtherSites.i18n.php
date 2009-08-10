@@ -369,6 +369,13 @@ $messages['sr-ec'] = array(
 	'othersites' => 'Други сајтови',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'othersites' => 'Drugi sajtovi',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

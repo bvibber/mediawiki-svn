@@ -201,6 +201,13 @@ $messages['lb'] = array(
 	'crowdauthentication-desc' => "Authentiséierungs-Erweiderung fir ''Atlassian Crowd''",
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'crowdauthentication-desc' => 'Authenticatieplugin veur Atlassian Crowd',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -290,6 +297,13 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'crowdauthentication-desc' => 'Ауторизацијски плагин за Atlassian Crowd',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'crowdauthentication-desc' => 'Autorizacijski plagin za Atlassian Crowd',
 );
 
 /** Seeltersk (Seeltersk)

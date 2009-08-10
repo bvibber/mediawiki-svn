@@ -485,6 +485,16 @@ $messages['sr-ec'] = array(
 	'problempages-none' => 'Нема страна у овом списку.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'problempages' => 'Loše ocenjene strane',
+	'problempages-leg' => 'Pretraga nisko ocenjenih strana.',
+	'problempages-list' => 'Ispod se nalazi spisak sortiran po ocenama čitalaca.',
+	'problempages-none' => 'Nema strana u ovom spisku.',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

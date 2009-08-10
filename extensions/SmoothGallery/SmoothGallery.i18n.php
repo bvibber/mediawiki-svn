@@ -728,6 +728,26 @@ $messages['sr-ec'] = array(
 	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан да би се галерија нормално приказала.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'smoothgallery' => 'LakaGalerija',
+	'smoothgallery-desc' => 'Omogućuje korisnicima da prave galerije sa slikama koje su poslali.
+Omogućuje veći broj opcija za SmoothGallery.',
+	'smoothgallery-title' => 'LakaGalerija',
+	'smoothgallery-smoothgallerytitle' => 'LakaGalerija: $1',
+	'smoothgallery-error' => '<b>LakaGalerija greška:</b>',
+	'smoothgallery-gallery-not-found' => 'Zahtevana galerija ne postoji.',
+	'smoothgallery-not-found' => 'Nema slika u galeriji. Dodajte najmanje jednu sliku.',
+	'smoothgallery-no-images' => 'Nisu nađene slike u ovoj galeriji.
+Osigurajte se da {{PLURAL:$3|zahtevana slika postoji|sve zahtevane slike postoje}}.
+{{PLURAL:$2|Sledeća slika nije nađena|Sledeće slike nisu nađene}}: $1',
+	'smoothgallery-invalid-images' => 'Tip {{PLURAL:$2|sledeće zahtevane slike|sledećih zahtevanih slika}} je bio nepoznat: $1',
+	'smoothgallery-unexpected-error' => 'Desila se neočekivana greška. Molimo obavestite administratore.',
+	'smoothgallery-javascript-disabled' => 'Javaskript je potreban da bi se galerija normalno prikazala.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Najami

@@ -292,6 +292,13 @@ $messages['sr-ec'] = array(
 	'regexfunctions-desc' => 'Парсерске функције за регуларне изразе',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'regexfunctions-desc' => 'Parserske funkcije za regularne izraze',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

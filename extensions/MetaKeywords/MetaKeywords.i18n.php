@@ -357,6 +357,13 @@ $messages['sr-ec'] = array(
 	'metakeywords-desc' => 'Омогућује конфигурацију <tt><nowiki><meta "keywords"></nowiki></tt> и <tt><nowiki><meta "description"></nowiki></tt> тагова по именском простору',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'metakeywords-desc' => 'Omogućuje konfiguraciju <tt><nowiki><meta "keywords"></nowiki></tt> i <tt><nowiki><meta "description"></nowiki></tt> tagova po imenskom prostoru',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

@@ -326,10 +326,21 @@ Pśidaj někotare z rědami w menijowej kšomje.',
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'gep-emailsubject' => '[$1] Πρόταση κατηγορίας: $2',
+	'gep-categories' => 'Κατηγορίες',
+	'gep-addcategory' => 'Πρόσθηκη μιας κατηγορίας',
 	'gep-addcategorybutton' => 'Προσθήκη',
+	'gep-suggestcategory' => 'Πρόταση μιας κατηγορίας',
+	'gep-suggestcategorybutton' => 'Καταχώρηση',
+	'gep-sections' => 'Τμήματα',
+	'gep-sectionnotdisabled' => 'Αυτό το τμήμα δεν μπορεί να απενεργοποιηθεί',
+	'gep-addsection' => 'Προσθήκη ενός τμήματος',
 	'gep-addsectionbutton' => 'Προσθήκη',
+	'gep-classicmode' => 'Κλασσική κατάσταση',
+	'gep-genericmode' => 'Γενική κατάσταση',
 );
 
 /** Esperanto (Esperanto)
@@ -1111,6 +1122,30 @@ $messages['sr-ec'] = array(
 	'gep-nosectioninstructions' => 'Овај чланак нема одељака.
 Додајте их помоћу алата у мени-бару.',
 	'gep-nocategories' => 'Молимо вас да изаберете макар једну категорију пре снимања',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'gep-emailsubject' => '[$1] Sugerisana kategorija: $2',
+	'gep-emailbody' => 'Korisnik "$1" je sugerisao kategoriju "$2" za sajt "$3".',
+	'gep-emailfailure' => 'Žao nam je, Vaša sugestija nije mogla biti procesirana.',
+	'gep-emailsuccess' => 'Hvala za sugerisanje kategorije: $1.',
+	'gep-categories' => 'Kategorije',
+	'gep-addcategory' => 'Dodaj kategoriju',
+	'gep-addcategorybutton' => 'Dodaj',
+	'gep-suggestcategory' => 'Sugeriši kategoriju',
+	'gep-suggestcategorybutton' => 'Pošalji',
+	'gep-sections' => 'Odeljci',
+	'gep-sectionnotdisabled' => 'Ovaj odeljak ne može biti onemogućen',
+	'gep-addsection' => 'Dodaj sekciju',
+	'gep-addsectionbutton' => 'Dodaj',
+	'gep-classicmode' => 'Klasičan mod',
+	'gep-genericmode' => 'Generički mod',
+	'gep-nosectioninstructions' => 'Ovaj članak nema odeljaka.
+Dodajte ih pomoću alata u meni-baru.',
+	'gep-nocategories' => 'Molimo vas da izaberete makar jednu kategoriju pre snimanja',
 );
 
 /** Seeltersk (Seeltersk)

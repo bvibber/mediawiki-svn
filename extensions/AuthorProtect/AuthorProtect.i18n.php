@@ -1150,6 +1150,25 @@ $messages['sr-ec'] = array(
 	'restriction-level-author' => 'Кориснички заштићено',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'authorprotect' => 'Zaštiti članak od ne-autora',
+	'authorprotect-desc' => 'Omogućava autoru članka da ga zaštiti od drugih korisnika',
+	'authorprotect-notauthor' => 'Vi niste autor ovog članka',
+	'authorprotect-confirm' => 'Promeni nivoe zaštite',
+	'authorprotect-edit' => 'Ograniči pravo izmene na autore',
+	'authorprotect-move' => 'Ograniči pravo premeštanja samo na autore',
+	'authorprotect-expiry' => 'Vreme isteka',
+	'authorprotect-reason' => 'Razlog',
+	'authorprotect-intro' => 'Koristite ovu formu da biste zaključali ovaj članak za ne-autore',
+	'authorprotect-success' => 'Zaštita uspešna!',
+	'authorprotect-failure' => 'Zaštita neuspešna',
+	'protect-level-author' => 'Zaštiti od ne-autora',
+	'restriction-level-author' => 'Korisnički zaštićeno',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

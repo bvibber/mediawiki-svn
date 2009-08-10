@@ -194,6 +194,13 @@ $messages['bg'] = array(
 	'readerfeedback-finished' => 'Благодарим ви!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'readerfeedback' => 'Petra a soñjit eus ar bajenn-mañ ?',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -810,6 +817,7 @@ $messages['it'] = array(
 	'readerfeedback-completeness' => 'Completezza',
 	'readerfeedback-npov' => 'Neutralità',
 	'readerfeedback-presentation' => 'Aspetto',
+	'readerfeedback-overall' => 'Complessivo',
 	'readerfeedback-level-none' => '(insicuro)',
 	'readerfeedback-level-0' => 'Insufficiente',
 	'readerfeedback-level-1' => 'Mediocre',
@@ -822,6 +830,7 @@ $messages['it'] = array(
 	'readerfeedback-voted' => "'''Sembra che tu abbia già giudicato questa pagina.''' ([$3 Commenti o domande?])",
 	'readerfeedback-submitting' => 'Invio in corso...',
 	'readerfeedback-finished' => 'Grazie!',
+	'readerfeedback-tagfilter' => 'Tag:',
 	'tooltip-ca-ratinghist' => 'Valutazioni dei lettori per questa pagina',
 );
 
@@ -1213,6 +1222,7 @@ $messages['pt'] = array(
 
 /** Romanian (Română)
  * @author Emily
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  */
@@ -1234,6 +1244,7 @@ $messages['ro'] = array(
 	'readerfeedback-voted' => "'''Aţi evaluat deja această pagină''' ([$3 Comentarii sau întrebări?]).",
 	'readerfeedback-submitting' => 'Trimit ...',
 	'readerfeedback-finished' => 'Mulţumim!',
+	'readerfeedback-tagfilter' => 'Etichetă:',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1355,6 +1366,27 @@ $messages['sr-ec'] = array(
 	'readerfeedback-submit' => 'пошаљи',
 	'readerfeedback-main' => 'Само стране садржаја могу бити оцењиване.',
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'readerfeedback' => 'Kako Vam se svidela ova strana?',
+	'readerfeedback-text' => "''Molim te, posveti malo pažnje i oceni stranu ispod. Tvoje mišljenje je vredno i pomaže nam u unapređivanju sajta.''",
+	'readerfeedback-reliability' => 'pouzdanost',
+	'readerfeedback-completeness' => 'potpunost',
+	'readerfeedback-npov' => 'neutralnost',
+	'readerfeedback-presentation' => 'prezentacija',
+	'readerfeedback-overall' => 'ukupno',
+	'readerfeedback-level-0' => 'loše',
+	'readerfeedback-level-1' => 'slabo',
+	'readerfeedback-level-2' => 'prihvatljivo',
+	'readerfeedback-level-3' => 'dobro',
+	'readerfeedback-level-4' => 'izuzetno',
+	'readerfeedback-submit' => 'pošalji',
+	'readerfeedback-main' => 'Samo strane sadržaja mogu biti ocenjivane.',
+	'tooltip-ca-ratinghist' => 'Ocene strane od strane čitalaca.',
 );
 
 /** Swedish (Svenska)

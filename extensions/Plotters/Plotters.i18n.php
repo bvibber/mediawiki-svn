@@ -52,9 +52,15 @@ $1 = number of messages following. Can be used with PLURAL.',
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'plotters-uses' => 'تستخدم',
+	'plotters-missing-script' => 'لا سكربت مُعرّف.',
+	'plotters-missing-arguments' => 'لا معطى محدّد.',
+	'plotters-excessively-long-scriptname' => 'اسم السكربت طويل جدًا.
+من فضلك عرّف سكربتًا اسمه لا يتجاوز 255 حرفًا.',
+	'plotters-no-data' => 'لا بيانات متوفرة.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -105,6 +111,14 @@ Molimo definirajte klasu tabele tako da ima najviše 255 znakova.',
 	'plotters-no-data' => 'Nisu navedeni podaci.',
 	'plotters-invalid-renderer' => 'Odabran je nevaljan renderer.',
 	'plotters-errors' => '{{PLURAL:$1|Greška|Greške}} plotera:',
+);
+
+/** German (Deutsch)
+ * @author Sebastian Wallroth
+ */
+$messages['de'] = array(
+	'plotters' => 'Plotter',
+	'plotters-title' => 'Plotter',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -371,6 +385,13 @@ Definissètz una classa de tablèu que fa mens de 255 caractèrs.',
 $messages['pt'] = array(
 	'plotters-uses' => 'Usos',
 	'plotters-no-data' => 'Não foram providenciados dados.',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'plotters-uses' => 'Utilizări',
 );
 
 /** Russian (Русский)

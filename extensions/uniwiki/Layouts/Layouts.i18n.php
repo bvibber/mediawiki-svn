@@ -203,10 +203,16 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'layouts_title' => 'Δημιουργία μιας σελίδας',
+	'layouts_chooselayout' => 'Επιλογή ενός σχεδιαγράμματος για τον $1:',
+	'layouts_nolayout' => 'Κανένα σχεδιάγραμμα',
 	'layouts_continue' => 'Συνέχεια',
+	'layouts_choosecategory' => 'Επιλογή μιας κατηγορίας για τον $1:',
 	'layouts_unknown' => 'Άγνωστο',
+	'layouts_tagline' => "Αυτή η σελίδα δημιουργήθηκε από το σχεδιάγραμμα '''$1'''.",
 );
 
 /** Esperanto (Esperanto)
@@ -656,6 +662,16 @@ $messages['sr-ec'] = array(
 	'layouts_continue' => 'Настави',
 	'layouts_choosecategory' => 'Изабери категорију за $1:',
 	'layouts_unknown' => 'Непознато',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'layouts_title' => 'Napravi članak',
+	'layouts_continue' => 'Nastavi',
+	'layouts_choosecategory' => 'Izaberi kategoriju za $1:',
+	'layouts_unknown' => 'Nepoznato',
 );
 
 /** Seeltersk (Seeltersk)

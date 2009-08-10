@@ -746,6 +746,14 @@ $messages['sr-ec'] = array(
 	'sitenotice-desc' => 'омогући корисницима да искључе обавештење на сајту',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'sitenotice_close' => 'otkaži',
+	'sitenotice-desc' => 'omogući korisnicima da isključe obaveštenje na sajtu',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

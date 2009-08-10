@@ -663,6 +663,7 @@ Palaa takaisin:
 Palaa:
 * [[Special:CrosswikiBlock|estosivulle]]
 * [[$4]]",
+	'right-crosswikiblock' => 'Estää ja poistaa estoja muissa wikeissä',
 );
 
 /** French (Français)
@@ -2030,6 +2031,14 @@ Vrátiť sa na:
 $messages['sr-ec'] = array(
 	'crosswikiblock-reason' => 'Разлог:',
 	'crosswikiunblock-reason' => 'Разлог:',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'crosswikiblock-reason' => 'Razlog:',
+	'crosswikiunblock-reason' => 'Razlog:',
 );
 
 /** Seeltersk (Seeltersk)

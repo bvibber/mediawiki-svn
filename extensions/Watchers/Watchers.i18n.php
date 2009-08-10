@@ -784,6 +784,14 @@ $messages['sr-ec'] = array(
 	'watchers_error_article' => "'''Грешка:''' Чланак не постоји.",
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'watchers_link_title' => 'Ko gleda ovaj članak?',
+	'watchers_error_article' => "'''Greška:''' Članak ne postoji.",
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

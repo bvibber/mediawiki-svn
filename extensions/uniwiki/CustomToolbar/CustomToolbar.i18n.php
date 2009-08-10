@@ -575,9 +575,45 @@ Pšosym pśekontrolěruj swój blokěrowak wuskokowańskich woknow.',
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $wgCustomToolbarMessages['el'] = array(
+	'ct_bold_sample' => 'Έντονο κείμενο',
+	'ct_bold_tip_ins' => 'Εισαγωγή έντονου κειμένου',
+	'ct_bold_tip_wrap' => 'Κάντε αυτό το κείμενο έντονο',
+	'ct_bold_caption' => 'Έντονο',
+	'ct_italic_sample' => 'Πλάγιο κείμενο',
+	'ct_italic_tip_ins' => 'Εισαγωγή πλάγιου κειμένου',
+	'ct_italic_tip_wrap' => 'Κάντε αυτό το κείμενο πλάγιο',
+	'ct_italic_caption' => 'Πλάγιο',
+	'ct_internal_sample' => 'ΌνομαΣελίδας',
+	'ct_internal_tip_ins' => 'Εισαγωγή ενός εσωτερικού συνδέσμου',
+	'ct_internal_tip_wrap' => 'Κάντε αυτό το κείμενο έναν εσωτερικό σύνδεσμο',
+	'ct_internal_caption' => 'Εσωτερικός σύνδεσμος',
+	'ct_external_tip_ins' => 'Εισαγωγή ενός εξωτερικού συνδέσμου',
+	'ct_external_tip_wrap' => 'Κάντε αυτό το κείμενο έναν εξωτερικό σύνδεσμο',
+	'ct_external_caption' => 'Εξωτερικός σύνδεσμος',
+	'ct_image_tip' => 'Εισαγωγή μιας εικόνας',
+	'ct_image_caption' => 'Προσθήκη εικόνας',
+	'ct_attachment_tip' => 'Εισαγωγή μιας σύνδεσης',
+	'ct_attachment_caption' => 'Προσθήκη σύνδεσης',
+	'ct_math_sample' => 'Εισαγωγή φόρμουλας LaTeX εδώ',
+	'ct_math_tip_ins' => 'Εισαγωγή μαθηματικής φόρμουλας (LaTeX)',
+	'ct_math_tip_wrap' => 'Κάντε αυτό το κείμενο μια μαθηματική φόρμουλα (LaTeX)',
+	'ct_math_caption' => 'Φόρμουλα',
+	'ct_nowiki_caption' => 'Κανένα βίκι',
+	'ct_horizontal_tip' => 'Εισαγωγή μιας οριζόντιας γραμμής (λιτή χρησιμοποίηση)',
+	'ct_horizontal_caption' => 'Οριζόντια γραμμή',
+	'ct_upload' => 'Φόρτωση $1',
+	'ct_select' => 'Επιλογή $1 για φόρτωση:',
+	'ct_link' => 'Προσθήκη ονόματος συνδέσμου (προαιρετικό):',
+	'ct_submit' => 'Πήγαινε!',
+	'ct_close' => 'Κλείσιμο παραθύρου',
+	'ct_success' => 'Φόρτωση αρχείου επιτυχής!',
 	'ct_user_user' => 'Χρήστης',
+	'ct_user_tip' => 'Εισαγωγή ενός συνδέσμου σε μια σελίδα χρήστη',
+	'ct_user_caption' => 'Σύνδεσμος χρήστη',
+	'ct_user_sample' => 'Όνομα χρήστη',
 );
 
 /** Esperanto (Esperanto)
@@ -734,6 +770,7 @@ $wgCustomToolbarMessages['fi'] = array(
 	'ct_italic_tip_ins' => 'Lisää kursivoitu teksti',
 	'ct_italic_tip_wrap' => 'Tee tästä tekstistä kursivoitu',
 	'ct_italic_caption' => 'Kursiivi',
+	'ct_internal_sample' => 'Sivunimi',
 	'ct_internal_tip_ins' => 'Lisää sisäinen linkki',
 	'ct_internal_tip_wrap' => 'Tee tästä tekstistä sisäinen linkki',
 	'ct_internal_caption' => 'Sisäinen linkki',
@@ -1147,9 +1184,55 @@ Per favor verifica que tu blocator de pop-up lo permitte.',
  * @author Bennylin
  */
 $wgCustomToolbarMessages['id'] = array(
+	'ct-desc' => 'Tambahkan batang penyuntingan berpengaya',
+	'ct_bold_sample' => 'Teks cetak tebal',
+	'ct_bold_tip_ins' => 'Masukkan teks cetak tebal',
+	'ct_bold_tip_wrap' => 'Cetak tebal teks ini',
+	'ct_bold_caption' => 'Cetak tebal',
+	'ct_italic_sample' => 'Teks cetak miring',
+	'ct_italic_tip_ins' => 'Masukkan teks cetak miring',
+	'ct_italic_tip_wrap' => 'Cetak miring teks ini',
+	'ct_italic_caption' => 'Cetak miring',
+	'ct_internal_sample' => 'Nama halaman',
+	'ct_internal_tip_ins' => 'Masukkan pranala internal',
+	'ct_internal_tip_wrap' => 'Jadikan teks ini pranala internal',
+	'ct_internal_caption' => 'Pranala internal',
+	'ct_external_tip_ins' => 'Masukkan pranala luar',
+	'ct_external_tip_wrap' => 'Jadikan teks ini pranala luar',
+	'ct_external_caption' => 'Pranala luar',
+	'ct_image_tip' => 'Masukkan gambar',
+	'ct_image_caption' => 'Tambahkan gambar',
+	'ct_attachment_tip' => 'Masukkan lampiran',
+	'ct_attachment_caption' => 'Tambahkan lampiran',
+	'ct_math_sample' => 'Masukkan formula LaTeX di sini',
+	'ct_math_tip_ins' => 'Masukkan formula matematika (LaTeX)',
+	'ct_math_tip_wrap' => 'Jadikan teks ini formula matematika (LaTeX)',
+	'ct_math_caption' => 'Formula',
+	'ct_nowiki_sample' => 'Masukkan teks yang tidak akan diformat di sini',
+	'ct_nowiki_tip_ins' => 'Abaikan format wiki',
+	'ct_nowiki_tip_wrap' => 'Abaikan format wiki untuk teks ini',
+	'ct_nowiki_caption' => 'Nirwiki',
+	'ct_horizontal_tip' => 'Masukkan garis horisontal (gunakan secukupnya)',
+	'ct_horizontal_caption' => 'Garis horisontal',
+	'ct_upload' => 'Muat $1',
+	'ct_select' => 'Pilih $1 untuk dimuat:',
+	'ct_caption' => 'Tambahkan judul (opsional):',
+	'ct_link' => 'Tambahkan nama pranala (opsional):',
 	'ct_submit' => 'Kirim!',
+	'ct_close' => 'Tutup jendela',
+	'ct_success' => 'Pemuatan berkas berhasil:',
+	'ct_popupblocked' => "''Pop-up'' pemuatan gagal dibuka. Periksa blokir ''pop-up'' Anda.",
 	'ct_user_user' => 'Pengguna',
+	'ct_user_tip' => 'Masukkan pranala ke halaman pengguna',
+	'ct_user_caption' => 'Pranala pengguna',
 	'ct_user_sample' => 'Nama pengguna',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$wgCustomToolbarMessages['it'] = array(
+	'ct_submit' => 'Vai',
 );
 
 /** Japanese (日本語)
@@ -1997,6 +2080,51 @@ $wgCustomToolbarMessages['sr-ec'] = array(
 	'ct_user_sample' => 'Корисничко име',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$wgCustomToolbarMessages['sr-el'] = array(
+	'ct-desc' => 'Dodaje proširiv bar sa alatkama',
+	'ct_bold_sample' => 'Podebljan tekst',
+	'ct_bold_tip_ins' => 'Ubaci podebljan tekst',
+	'ct_bold_tip_wrap' => 'Učini ovaj tekst podebljanim',
+	'ct_bold_caption' => 'Podebljano',
+	'ct_italic_sample' => 'Tekst u kurzivu',
+	'ct_italic_tip_ins' => 'Unbaci tekst u kurzivu',
+	'ct_italic_tip_wrap' => 'Prebaci ovaj tekst u kurziv',
+	'ct_italic_caption' => 'Kurziv',
+	'ct_internal_tip_ins' => 'Ubaci unutrašnju vezu',
+	'ct_internal_tip_wrap' => 'Učini ovaj tekst unutrašnjom vezom',
+	'ct_internal_caption' => 'Unutrašnja veza',
+	'ct_external_tip_ins' => 'Ubaci unutrašnju vezu',
+	'ct_external_tip_wrap' => 'Učini ovaj tekst spoljašnjom vezom',
+	'ct_external_caption' => 'Spoljašnja veza',
+	'ct_image_tip' => 'Ubaci sliku',
+	'ct_image_caption' => 'Dodaj sliku',
+	'ct_attachment_tip' => 'Ubaci prikačeni fajl',
+	'ct_attachment_caption' => 'Prikači fajl',
+	'ct_math_sample' => 'Ubaci LaTeX formulu ovde',
+	'ct_math_tip_ins' => 'Ubaci matematičku formulu (LaTeX)',
+	'ct_math_tip_wrap' => 'Učini ovaj tekst matematičkom formulom (LaTeX)',
+	'ct_math_caption' => 'Formula',
+	'ct_nowiki_sample' => 'Ubaci neformatiran tekst ovde',
+	'ct_nowiki_tip_ins' => 'Ignoriši Viki-formatiranje',
+	'ct_nowiki_tip_wrap' => 'Ignoriši Viki-formatiranje nad ovim tekstom',
+	'ct_horizontal_tip' => 'Ubaci horizontalnu liniju (koristiti štedljivo)',
+	'ct_horizontal_caption' => 'Horizontalna linija',
+	'ct_upload' => 'Pošalji $1',
+	'ct_select' => 'Izaberi $1 za slanje:',
+	'ct_caption' => 'Dodaj naslov (neobavezno):',
+	'ct_link' => 'Dodaj naziv linka (neobavezno):',
+	'ct_submit' => 'Idi!',
+	'ct_close' => 'Zatvori prozor',
+	'ct_success' => 'Slanje fajla uspešno!',
+	'ct_user_user' => 'Korisnik',
+	'ct_user_tip' => 'Ubaci link ka korisničkoj strani',
+	'ct_user_caption' => 'Korisnički link',
+	'ct_user_sample' => 'Korisničko ime',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -2145,6 +2273,20 @@ $wgCustomToolbarMessages['tg-cyrl'] = array(
 	'ct_image_tip' => 'Иловаи як акс',
 	'ct_image_caption' => 'Иловаи акс',
 	'ct_attachment_tip' => 'Иловаи як замима',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$wgCustomToolbarMessages['th'] = array(
+	'ct_bold_sample' => 'ตัวอักษรหนา',
+	'ct_bold_tip_ins' => 'ใส่ตัวอักษรหนา',
+	'ct_bold_tip_wrap' => 'ทำเป็นตัวอักษรหนา',
+	'ct_bold_caption' => 'ตัวหนา',
+	'ct_italic_sample' => 'ตัวอักษรเอียง',
+	'ct_italic_tip_ins' => 'ใส่ตัวอักษรเอียง',
+	'ct_italic_tip_wrap' => 'ทำเป็นตัวอักษรเอียง',
+	'ct_italic_caption' => 'ตัวเอียง',
 );
 
 /** Tagalog (Tagalog)

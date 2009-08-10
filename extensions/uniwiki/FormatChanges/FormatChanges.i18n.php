@@ -141,6 +141,15 @@ $messages['dsb'] = array(
 	'formatchanges-editedby' => '$1 - wobźěłany wót $2 ($3)',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'formatchanges-anonymous' => 'Ανώνυμος',
+	'formatchanges-createdby' => '$1 - δημιουργήθηκε από τον $2 ($3)',
+	'formatchanges-editedby' => '$1 - επεξεργάστηκε από τον $2 ($3)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -269,6 +278,16 @@ $messages['id'] = array(
  */
 $messages['io'] = array(
 	'formatchanges-anonymous' => 'Anonima',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'formatchanges-desc' => 'Riformatta le [[Special:RecentChanges|ultime modifiche]]',
+	'formatchanges-anonymous' => 'Anonimo',
+	'formatchanges-createdby' => '$1 - creata da $2 ($3)',
+	'formatchanges-editedby' => '$1 - modificata da $2 ($3)',
 );
 
 /** Japanese (日本語)
@@ -440,6 +459,16 @@ $messages['sr-ec'] = array(
 	'formatchanges-anonymous' => 'Анонимно',
 	'formatchanges-createdby' => '$1 - направио $2 ($3)',
 	'formatchanges-editedby' => '$1 - изменио $2 ($3)',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'formatchanges-desc' => 'Reformatira [[Special:RecentChanges|skorašnje izmene]]',
+	'formatchanges-anonymous' => 'Anonimno',
+	'formatchanges-createdby' => '$1 - napravio $2 ($3)',
+	'formatchanges-editedby' => '$1 - izmenio $2 ($3)',
 );
 
 /** Seeltersk (Seeltersk)

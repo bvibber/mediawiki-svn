@@ -691,6 +691,7 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Silviubogan
  */
@@ -698,6 +699,7 @@ $messages['ro'] = array(
 	'am-username' => 'nume de utilizator',
 	'am-email' => 'e-mail',
 	'am-active' => 'activ',
+	'nss-rights' => 'drepturi',
 	'nss-save-changes' => 'Salvează modificările',
 	'nss-create-account-header' => 'Creează cont nou',
 	'nss-create-account' => 'Creează cont',
@@ -779,6 +781,22 @@ $messages['sr-ec'] = array(
 	'nss-no-mail' => 'Не шаљи имејл',
 	'nss-welcome-mail' => 'За Вас је направљен налог са корисничким именом $1 и лозинком $2.',
 	'nss-welcome-mail-subject' => 'Прављење налога',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'accountmanager' => 'Menadžer za nalog',
+	'am-username' => 'korisičko ime',
+	'am-email' => 'imejl',
+	'am-active' => 'aktivan',
+	'am-updated' => 'Baše izmene su uspešno snimljene',
+	'nss-create-account-header' => 'Napravi novi nalog',
+	'nss-create-account' => 'Napravi nalog',
+	'nss-no-mail' => 'Ne šalji imejl',
+	'nss-welcome-mail' => 'Za Vas je napravljen nalog sa korisničkim imenom $1 i lozinkom $2.',
+	'nss-welcome-mail-subject' => 'Pravljenje naloga',
 );
 
 /** Swedish (Svenska)

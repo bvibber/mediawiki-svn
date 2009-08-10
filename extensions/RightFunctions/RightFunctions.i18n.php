@@ -202,10 +202,14 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
 	'rightfunctions-desc' => 'Funzioni del parser basate sui permessi',
+	'rightfunctions-casc' => '(da fonti a cascata)',
+	'rightfunctions-local' => '(da pagina locale)',
+	'rightfunctions-ns' => '(da protezione namespace)',
 );
 
 /** Japanese (日本語)

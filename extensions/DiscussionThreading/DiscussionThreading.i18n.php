@@ -134,9 +134,14 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Konsnos
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'discussionthreading-desc' => 'Προσθήκη τμημάτων στις σελίδες συζήτησης',
 	'discussionthreading-replysection' => 'απάντηση',
+	'discussionthreading-replysectionhint' => 'Απάντηση σε αυτό το ποστ',
+	'discussionthreading-threadnewsection' => 'νέο',
+	'discussionthreading-threadnewsectionhint' => 'Προσθήκη νέου τμήματος',
 );
 
 /** Esperanto (Esperanto)
@@ -220,7 +225,11 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'discussionthreading-desc' => 'Προστιθέναι τμήματα εἰς τὰς δέλτους διαλέξεως',
+	'discussionthreading-replysection' => 'ἀποκρίνεσθαι',
+	'discussionthreading-replysectionhint' => 'Ἀποκρίνεσθαι τῷδε',
 	'discussionthreading-threadnewsection' => 'νέα',
+	'discussionthreading-threadnewsectionhint' => 'Ἄρχειν νέον τμῆμα',
 );
 
 /** Swiss German (Alemannisch)
@@ -444,6 +453,14 @@ $messages['pt-br'] = array(
 	'discussionthreading-replysectionhint' => 'Responder a este comentário',
 	'discussionthreading-threadnewsection' => 'novo',
 	'discussionthreading-threadnewsectionhint' => 'Iniciar um novo tópico',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'discussionthreading-replysection' => 'răspuns',
+	'discussionthreading-threadnewsection' => 'nou',
 );
 
 /** Tarandíne (Tarandíne)

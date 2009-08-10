@@ -210,9 +210,12 @@ Gaž coš někotare boki wubraś abo wótwóliś, móžoš wubraś jaden za drug
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'watchsubpages' => 'Παρακολούθηση υποσελίδων',
 	'watchsubpages-addtitles' => 'Προσθήκη σελίδων',
+	'watchsubpages-addtitlestowatchlist' => 'Προσθήκη σελίδων στη λίστα παρακολούθησης',
 );
 
 /** Esperanto (Esperanto)
@@ -699,6 +702,15 @@ $messages['sr-ec'] = array(
 	'watchsubpages' => 'Надгледај подстранице',
 	'watchsubpages-addtitles' => 'Додај стране',
 	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додај све подстранице]] странице на списак надгледања',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'watchsubpages' => 'Nadgledaj podstranice',
+	'watchsubpages-addtitles' => 'Dodaj strane',
+	'watchsubpages-desc' => 'Brzo [[Special:WatchSubpages|dodaj sve podstranice]] stranice na spisak nadgledanja',
 );
 
 /** Seeltersk (Seeltersk)

@@ -619,6 +619,13 @@ $messages['sr-ec'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Слање...',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Slanje...',
+);
+
 /** Swedish (Svenska)
  * @author Gabbe.g
  * @author Micke

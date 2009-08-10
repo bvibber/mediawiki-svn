@@ -1620,9 +1620,12 @@ $messages['sr-ec'] = array(
 	'expand_templates_preview' => 'Приказ',
 );
 
-/** latinica (latinica) */
+/** latinica (latinica)
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
 	'expandtemplates' => 'Zamena šablona',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Razvija šablone, parser-funkcije i promenljive]] kako bi pokazao razvijeni vikitekst i pregled prikazivane strane',
 	'expand_templates_intro' => 'Ova posebna stranica uzima neki tekst i menja sve šablone u njemu rekurzivno.
 Takođe menja funkcije parsera kao što je <nowiki>{{</nowiki>#if:...}}, i promenljive kao što je
 <nowiki>{{</nowiki>TRENUTNIDAN}}&mdash;zapravo praktično sve što se nalazi između vitičastih zagrada.
@@ -1630,8 +1633,11 @@ Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVi
 	'expand_templates_title' => 'Naziv konteksta; za <nowiki>{{</nowiki>STRANICA}} itd.:',
 	'expand_templates_input' => 'Unos:',
 	'expand_templates_output' => 'Rezultat',
+	'expand_templates_xml_output' => 'XML izlaz',
 	'expand_templates_ok' => 'U redu',
 	'expand_templates_remove_comments' => 'Ukloni komentare',
+	'expand_templates_generate_xml' => 'prikaži XML stablo',
+	'expand_templates_preview' => 'Prikaz',
 );
 
 /** Seeltersk (Seeltersk)

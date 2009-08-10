@@ -1133,6 +1133,13 @@ $messages['sr-ec'] = array(
 	'editmsg-search' => 'Претрага',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'editmsg-search' => 'Pretraga',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

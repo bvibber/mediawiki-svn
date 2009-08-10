@@ -2503,6 +2503,33 @@ $messages['sr-ec'] = array(
 	'fundraiserstats-max' => 'Максимум (USD)',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'contrib-hist-name' => 'Ime',
+	'contrib-hist-date' => 'Vreme i datum',
+	'contrib-hist-next' => 'Prethodne donacije',
+	'contribstats-day' => 'Dan',
+	'contribstats-month' => 'Mesec',
+	'contribstats-currency' => 'Valuta',
+	'contribstats-amount' => 'Suma',
+	'contribstats-contributions' => 'Prilozi',
+	'contribstats-total' => 'Ukupno',
+	'contribstats-avg' => 'Prosečno',
+	'contribstats-max' => 'Maksimum (USD)',
+	'contribstats-percentage-ytd' => 'Procentualno',
+	'contribstats-total-ytd' => 'Ukupno (YTD)',
+	'contribstats-value-exactly' => 'Tačno $1',
+	'contribstats-value-under' => 'Ispod $1',
+	'contribstats-value-from' => 'Od $1 - $2',
+	'contribstats-value-over' => 'Preko $1',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-total' => 'Ukupno (USD)',
+	'fundraiserstats-avg' => 'Prosečno (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Najami

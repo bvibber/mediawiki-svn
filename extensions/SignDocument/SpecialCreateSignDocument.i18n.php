@@ -1445,6 +1445,25 @@ $messages['sr-ec'] = array(
 	'createsigndoc-error-generic' => 'Грешка: $1',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'createsigndoc-pagename' => 'Strana:',
+	'createsigndoc-allowedgroup' => 'Dozvoljena grupa:',
+	'createsigndoc-email' => 'E-pošta:',
+	'createsigndoc-address' => 'Kućna adresa:',
+	'createsigndoc-extaddress' => 'Grad, država:',
+	'createsigndoc-phone' => 'Telefonski broj:',
+	'createsigndoc-bday' => 'Dan rođenja:',
+	'createsigndoc-minage' => 'Najmanja starost:',
+	'createsigndoc-introtext' => 'Uvod:',
+	'createsigndoc-hidden' => 'Sakriveno',
+	'createsigndoc-optional' => 'Opciono',
+	'createsigndoc-create' => 'Napravi',
+	'createsigndoc-error-generic' => 'Greška: $1',
+);
+
 /** Swati (SiSwati)
  * @author Jatrobat
  */

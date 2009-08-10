@@ -608,6 +608,15 @@ $messages['sr-ec'] = array(
 	'assert_edit_message' => 'Одређена тврдња ($1) није успела.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'assert_edit_title' => 'Potvrda nije uspela.',
+	'assert_edit_desc' => 'Dodaje potvrde izmena kod korišćenja botova.',
+	'assert_edit_message' => 'Određena tvrdnja ($1) nije uspela.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -651,6 +651,13 @@ $messages['sr-ec'] = array(
 	'dplforum-by' => 'од $1',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'dplforum-by' => 'od $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

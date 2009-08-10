@@ -979,14 +979,18 @@ $messages['sr-ec'] = array(
 	'chemFunctions_ChemFormInputError' => 'ХемФормула: грешка!',
 );
 
-/** latinica (latinica) */
+/** latinica (latinica)
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
 	'chemicalsources' => 'Hemijski izvori',
+	'chemicalsource-desc' => 'Dodaje tag <nowiki><chemform></nowiki>, za hemijske formule',
 	'chemFunctions_ListPage' => 'Hemijski izvori',
 	'chemFunctions_DataList' => 'Ovde se nalazi spisak veza ka sajtovima koji prožaju informacije o hemojskom jedinjenju koju tražite.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Jedinjenje $MIXCASNameFormula na NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oksfordskom univerzitetu (UK) (nemoguća pretraga)</a><br />',
 	'chemFunctions_CAS' => 'CAS broj',
+	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_ChemFormInputError' => 'HemFormula: greška!',
 );
 

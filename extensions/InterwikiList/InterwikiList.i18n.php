@@ -481,11 +481,13 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'interwikilist' => 'Listă interwiki',
 	'interwikilist-linkname' => 'Legătură interwiki',
+	'interwikilist-filter' => 'Listă filtre',
 	'interwikilist-prefix' => 'Prefix interwiki:',
 );
 
@@ -531,6 +533,18 @@ $messages['sr-ec'] = array(
 	'interwikilist-target' => 'Циљани URL',
 	'interwikilist-filter' => 'Списак филтера',
 	'interwikilist-prefix' => 'Међувики префикс:',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'interwikilist' => 'Spisak međuvikija',
+	'interwikilist-desc' => 'Dodaje [[Special:Interwikilist|specijalnu stranu]] za pregled dostupnog međuvikija',
+	'interwikilist-linkname' => 'Međuviki veza',
+	'interwikilist-target' => 'Ciljani URL',
+	'interwikilist-filter' => 'Spisak filtera',
+	'interwikilist-prefix' => 'Međuviki prefiks:',
 );
 
 /** Swedish (Svenska)

@@ -163,6 +163,14 @@ $messages['id'] = array(
 	'random-users-avatars-desc' => 'Tambahkan tag <tt>&lt;randomuserswithavatars&gt;</tt> untuk menampilkan avatar pengguna secara acak',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'random-users-avatars-title' => 'Incontra la comunità',
+	'random-users-avatars-desc' => 'Aggiunge il tag <tt>&lt;randomuserswithavatars&gt;</tt> per visualizzare gli avatar di utenti scelti a caso',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */
@@ -233,6 +241,14 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'random-users-avatars-title' => 'Fasètz coneissença amb la comunautat',
 	'random-users-avatars-desc' => 'Apond la balisa <tt>&lt;randomuserswithavatars&gt;</tt> per afichar los avatars d’utilizaires causits aleatòriament',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'random-users-avatars-title' => 'Poznaj społeczność',
+	'random-users-avatars-desc' => 'Dodaje znacznik <tt>&lt;randomuserswithavatars&gt;</tt> wyświetlający portret losowo wybranego użytkownika',
 );
 
 /** Portuguese (Português)

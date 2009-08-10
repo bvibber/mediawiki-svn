@@ -345,8 +345,9 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'whatismyip' => 'Qual è il mio IP',
-	'whatismyip-desc' => "Mostra l'indirizzo IP corrente dell'utente in [[Special:WhatIsMyIP]]",
-	'whatismyip-out' => 'Il tuo IP è:',
+	'whatismyip-desc' => "Mostra l'[[Special:WhatIsMyIP|indirizzo IP]] attuale dell'utente",
+	'whatismyip-out' => 'Il tuo indirizzo IP è:',
+	'right-whatismyip' => 'Visualizza il [[Special:WhatIsMyIP|proprio indirizzo IP]]',
 );
 
 /** Japanese (日本語)

@@ -403,6 +403,13 @@ $messages['sr-ec'] = array(
 	'fixedimage-desc' => 'Додаје ознаку <tt><nowiki><fundraising></nowiki></tt> као слику.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'fixedimage-desc' => 'Dodaje oznaku <tt><nowiki><fundraising></nowiki></tt> kao sliku.',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

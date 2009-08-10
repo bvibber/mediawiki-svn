@@ -280,8 +280,10 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'edituser' => 'Τροποποίηση χρήστη',
 	'edituser-username' => 'Όνομα',
 	'edituser-dosearch' => 'Αναζήτηση',
 );
@@ -945,9 +947,12 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'edituser' => 'Editare utilizator',
+	'edituser-logout' => 'Închidere sesiune utilizator',
 	'edituser-username' => 'Nume',
 	'edituser-dosearch' => 'Caută',
 	'edituser-nouser' => 'Utilizatorul specificat nu există.',
@@ -1034,6 +1039,13 @@ $messages['sq'] = array(
  */
 $messages['sr-ec'] = array(
 	'edituser-dosearch' => 'Претрага',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'edituser-dosearch' => 'Pretraga',
 );
 
 /** Sundanese (Basa Sunda)

@@ -367,6 +367,13 @@ $messages['sr-ec'] = array(
 	'editown-desc' => 'Корисници без editall права могу да мењају само стране које су сами направили',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'editown-desc' => 'Korisnici bez editall prava mogu da menjaju samo strane koje su sami napravili',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.

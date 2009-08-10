@@ -2584,6 +2584,64 @@ $messages['sr-ec'] = array(
 Покушајте да употребите команду "$3{...}".',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'math_noblahtex' => 'Ne može da se izvrši blatex, što je na $1',
+	'math-desc' => 'MathML izlaz za &lt;math&gt; tagove',
+	'math_AmbiguousInfix' => 'Višeznačna upotreba "$1".
+Pokušajte da koristite dodatne velike zagrade "{ ... }" da biste ga dodatno odredili.',
+	'math_CannotChangeDirectory' => 'Ne može da se promeni radni direktorijum',
+	'math_CannotCreateTexFile' => 'Ne može da se napravi tex fajl',
+	'math_CannotRunDvipng' => 'Ne može da se pokrene dvipng',
+	'math_CannotRunLatex' => 'Ne može da se pokrene latex',
+	'math_CannotWritePngDirectory' => 'Izlaz ne može da se za piše u PNG direktorijum',
+	'math_CannotWriteTexFile' => 'Ne može da se piše u tex fajl',
+	'math_CasesRowTooBig' => 'Samo dva unosa mogu da budu u svakom redu bloka sa "slučajevima"',
+	'math_IllegalCharacter' => 'Nedozvoljeni znak u unosu',
+	'math_IllegalCommandInMathMode' => 'Komanda "$1" nije dopuštena u math-modu',
+	'math_IllegalCommandInMathModeWithHint' => 'Komanda "$1" nije dopuštena u math-modu
+Verovatno ste želeli da upotrebite "$2" umesto nje?',
+	'math_IllegalCommandInTextMode' => 'Komanda "$1" nije dozvoljena u tekstualnom modu',
+	'math_IllegalCommandInTextModeWithHint' => 'Komanda "$1" nije dozvoljena u tekstualnom modu
+Verovatno ste želeli da upotrebite "$2" umesto nje?',
+	'math_IllegalDelimiter' => 'Deo "$1" ne počinje kako treba',
+	'math_IllegalFinalBackslash' => 'Nedozvoljeni beksleš "\\" na kraju unosa',
+	'math_IllegalNestedFontEncodings' => 'Komande za kodiranje fonta ne mogu biti ugnježdene',
+	'math_IllegalRedefinition' => 'Komanda "$1" je već definisana; ne možete je ponovo definisati',
+	'math_InvalidColour' => 'Boja "$1" je neispravna',
+	'math_InvalidUtf8Input' => 'Ulazni string nije validni UTF-8',
+	'math_LatexFontNotSpecified' => 'Nije bio naveden LaTeX font za "$1"',
+	'math_LatexPackageUnavailable' => 'Nije moguće izraditi PNG zato što je LaTeX paket "$1" nedostupan',
+	'math_MismatchedBeginAndEnd' => 'Komande "$1" i "$2" se ne poklapaju',
+	'math_MisplacedLimits' => 'Komanda "$1" može da se upotrebi samo nakon matematičkog operatora.
+Razmislite o korišćenju "\\mathop".',
+	'math_MissingOpenBraceAfter' => 'Medostaje otvorena velika zagrda "{" nakon "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Nedostaje otvorena zagrda "{" na kraju unosa',
+	'math_MissingOpenBraceBefore' => 'Nedostaje otvorena zagrada "{" pre "$1"',
+	'math_MissingOrIllegalParameterIndex' => 'Indeks parametra nedostaje ili je neispravan u definiciji "$1"',
+	'math_NotEnoughArguments' => 'Nedovoljno argumenata je upotrebljeno za "$1"',
+	'math_PngIncompatibleCharacter' => 'Nije bilo moguće ispravno iscrtati PNG sliu koja sadrži karakter $1',
+	'math_SubstackRowTooBig' => 'U svakom redu bloka "podsteka" se može naći samo jedan unos',
+	'math_TooManyMathmlNodes' => 'MathML drvo sadrži previše čvorova',
+	'math_TooManyTokens' => 'Unos je previše dugačak',
+	'math_UnavailableSymbolFontCombination' => 'Simbol "$1" je nedostupan u fontu "$2"',
+	'math_UnexpectedNextCell' => 'Komanda "&" može da se nađe samo unutar "\\begin ... \\end" bloka',
+	'math_UnexpectedNextRow' => 'Komanda "\\\\" može da se nađe samo unutar "\\begin ... \\end" bloka',
+	'math_UnmatchedBegin' => 'Postoji "\\begin" bez uparenog "\\end"',
+	'math_UnmatchedCloseBrace' => 'Postoji zatvarajuća zagrada "}" bez uparene otvorene zagrade "{"',
+	'math_UnmatchedEnd' => 'Postoji "\\end" bez uparenog "\\begin"',
+	'math_UnmatchedLeft' => 'Postoji "\\left" bez uparenog "\\right"',
+	'math_UnmatchedOpenBrace' => 'Postoji otvorena velika zagrada "{" bez uparene zatvarajuće zagrade "}"',
+	'math_UnmatchedOpenBracket' => 'Postoji otvorena srednja zagrada "[" bez uparene zatvarajuće zagrade "]"',
+	'math_UnmatchedRight' => 'Postoji "\\right" bez uparenog "\\left"',
+	'math_UnrecognisedCommand' => 'Nepoznata komanda "$1"',
+	'math_WrongFontEncoding' => 'Simbol "$1" bi mogao da se ne prikaže pri kodiranju fonta "$2"',
+	'math_WrongFontEncodingWithHint' => 'Simbol "$1" bi mogao da se ne prikaže pri kodiranju fonta "$2".
+Pokušajte da upotrebite komandu "$3{...}".',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

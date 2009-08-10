@@ -1355,16 +1355,20 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'taggedimages' => 'Imagini etichetate',
 	'imagetagging-addimagetag' => 'Etichetează această imagine',
 	'imagetagging-article' => 'Pagină:',
+	'imagetagging-articletotag' => 'Pagină de etichetat',
 	'imagetagging-imghistory' => 'Istoric',
 	'imagetagging-images' => 'imagini',
 	'imagetagging-inthisimage' => 'În această imagine: $1',
 	'imagetagging-removetag' => 'elimină etichetă',
+	'imagetagging-done-button' => 'Etichetare încheiată',
+	'imagetagging-tag-button' => 'Etichetă',
 	'imagetagging-tagcancel-button' => 'Anulează',
 	'imagetagging-addingtag' => 'Adăugare etichetă…',
 	'imagetagging-removingtag' => 'Eliminare etichetă…',
@@ -1497,6 +1501,44 @@ $messages['sr-ec'] = array(
 	'imagetagging-taggedimages-displaying' => 'Приказ $1 - $2 од $3 слика од "$4"',
 	'tag-logpagename' => 'Историја таговања',
 	'tag-logpagetext' => 'Ово је историја свих додавања и брисања тагова са слика',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'taggedimages' => 'Tagovane slike',
+	'imagetagging-desc' => 'Omogućava korisniku da izabere regione jedne slike i pridruži im članke',
+	'imagetagging-addimagetag' => 'Taguj ovu sliku',
+	'imagetagging-article' => 'Strana:',
+	'imagetagging-articletotag' => 'Članak za tagovanje',
+	'imagetagging-canteditothermessage' => 'Ne možete da menjate ovu stranu, zbog toga što nemate potrebna prava pristupa za to ili zbog zaključavanja strane iz drugih razloga.',
+	'imagetagging-imghistory' => 'Istorija',
+	'imagetagging-images' => 'slike',
+	'imagetagging-inthisimage' => 'Na ovoj slici: $1',
+	'imagetagging-logentry' => 'Obrisan tag ka strani [[$1]], od $2',
+	'imagetagging-log-tagged' => 'Slika [[$1|$2]] je tagovana na stranu [[$3]] od $4',
+	'imagetagging-new' => '<sup><span style="color:red">Novo!</span></sup>',
+	'imagetagging-removetag' => 'obriši tag',
+	'imagetagging-done-button' => 'Tagovanje završeno',
+	'imagetagging-tag-button' => 'Taguj',
+	'imagetagging-tagcancel-button' => 'Poništi',
+	'imagetagging-tagging-instructions' => 'Kliknite na ljude ili stvari na slici, kako biste ih tagovali.',
+	'imagetagging-addingtag' => 'Dodavanje taga…',
+	'imagetagging-removingtag' => 'Brisanje taga…',
+	'imagetagging-addtagsuccess' => 'Dodat tag.',
+	'imagetagging-removetagsuccess' => 'Izbrisan tag.',
+	'imagetagging-canteditneedloginmessage' => 'Ne možete menjati ovaj članak.
+Ovo može biti zbog toga što je potrebno da se ulogujete kako bi tagovali slike.
+Da li želite da se ulogujete?',
+	'imagetagging-oneactionatatimemessage' => 'Moguće je dodati samo jedan tag po akciji.
+Molimo vas da sačekate da se prethodna akcija završi.',
+	'imagetagging-oneuniquetagmessage' => 'Ova slika već ima tag sa ovim imenom.',
+	'imagetagging-imagetag-seemoreimages' => 'Vidi više slika od "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Slike od "$1"',
+	'imagetagging-taggedimages-displaying' => 'Prikaz $1 - $2 od $3 slika od "$4"',
+	'tag-logpagename' => 'Istorija tagovanja',
+	'tag-logpagetext' => 'Ovo je istorija svih dodavanja i brisanja tagova sa slika',
 );
 
 /** Seeltersk (Seeltersk)

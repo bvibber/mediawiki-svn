@@ -827,18 +827,52 @@ $messages['ee'] = array(
  * @author Consta
  * @author Crazymadlover
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'whitelist-desc' => 'Αλλαγή των αδειών πρόσβασης των περιορισμένων χρηστών',
+	'whitelistedit' => 'Επεξεργαστής πρόσβασης της άσπρης λίστας',
+	'whitelist' => 'Σελίδες άσπρης λίστας',
 	'mywhitelistpages' => 'Οι Σελίδες μου',
+	'whitelistfor' => '<center>Τωρινές πληροφορίες για το <b>$1</b></center>',
 	'whitelisttablemodify' => 'Τροποποίηση',
 	'whitelisttablemodifyall' => 'Ὀλα',
 	'whitelisttablemodifynone' => 'Κανένα',
+	'whitelisttablepage' => 'Σελίδα βίκι',
+	'whitelisttabletype' => 'Τύπος πρόσβασης',
+	'whitelisttableexpires' => 'Λήγει στις',
+	'whitelisttablemodby' => 'Τελευταία επεξεργασία από τον',
+	'whitelisttablemodon' => 'Τελευταία επεξεργασία στις',
 	'whitelisttableedit' => 'Επεξεργασία',
 	'whitelisttableview' => 'Προβολή',
 	'whitelisttablenewdate' => 'Νέα ημερομηνία:',
+	'whitelisttablechangedate' => 'Αλλαγή ημερομηνίας λήξης',
+	'whitelisttablesetedit' => 'Έτοιμο για επεξεργασία',
+	'whitelisttablesetview' => 'Έτοιμο για εμφάνιση',
 	'whitelisttableremove' => 'Αφαίρεση',
 	'whitelistnewtabledate' => 'Ημερομηνία λήξης:',
-	'whitelistnever' => 'Ποτέ',
+	'whitelistnewtableedit' => 'Έτοιμο για επεξεργασία',
+	'whitelistnewtableview' => 'Έτοιμο για εμφάνιση',
+	'whitelistnewtableprocess' => 'Πρόοδος',
+	'whitelistnewtablereview' => 'Επιθεώρηση',
+	'whitelistselectrestricted' => '== Επιλογή περιορισμένου ονόματος χρήστη ==',
+	'whitelistpagelist' => 'Σελίδες στο {{SITENAME}} για το $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Φαίνεται ότι το [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], προαπαιτούμενο για αυτή την επέκταση, δεν έχει εγκατασταθεί σωστά!</font>",
+	'whitelistoverview' => '== Επισκόπηση αλλαγών του $1 ==',
+	'whitelistoverviewcd' => "* Αλλαγή της ημερομηνίας στο '''$1''' για το [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Ρυθμίση της πρόσβασης στο '''$1''' για το [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Αφαίρεση της πρόσβασης στο [[:$1|$1]]',
+	'whitelistoverviewna' => "* Προσθήκη του [[:$1|$1]] στην άσπρη λίστα με πρόσβαση '''$2''' και ημερομηνία λήξης στις '''$3'''",
+	'whitelistrequest' => 'Ζήτηση πρόσβασης για περισσότερες σελίδες',
+	'whitelistrequestmsg' => 'Ο/Η $1 έχει άδεια που ζητήθηκε {{PLURAL:$3|στην σελίδα|στις σελίδες}}:
+
+$2',
+	'whitelistrequestconf' => 'Η πρόταση για νέες σελίδες στάλθηκε σε $1',
+	'whitelistnever' => 'ποτέ',
+	'whitelistnummatches' => '  - {{PLURAL:$1|ένα αποτέλεσμα|$1 αποτελέσματα}}',
+	'right-editwhitelist' => 'Τροποποίηση της άσπρης λίστας για τωρινούς χρήστες',
+	'group-restricted' => 'Περιορισμένοι χρήστες',
+	'group-restricted-member' => 'Περιορισμένος χρήστης',
 	'group-manager' => 'Διαχειριστές',
 	'group-manager-member' => 'Διαχειριστής',
 );
@@ -1501,19 +1535,36 @@ Iste pagina es solmente applicabile al usatores restringite",
  * @author Rex
  */
 $messages['id'] = array(
+	'whitelist-desc' => 'Sunting hak akses untuk pengguna terbatas',
+	'whitelistedit' => 'Penyunting hak akses daftar putih',
+	'whitelist' => 'Halaman daftar putih',
 	'mywhitelistpages' => 'Halaman saya',
+	'whitelistfor' => '<center>Informasi terkini untuk <b>$1</b></center>',
+	'whitelisttablemodify' => 'Ubah',
 	'whitelisttablemodifyall' => 'Semua',
 	'whitelisttablemodifynone' => 'Tidak ada',
+	'whitelisttablepage' => 'Halaman wiki',
+	'whitelisttabletype' => 'Tipe akses',
 	'whitelisttableexpires' => 'Kadaluwarsa pada',
+	'whitelisttablemodby' => 'Terakhir diubah oleh',
+	'whitelisttablemodon' => 'Terakhir diubah pada',
 	'whitelisttableedit' => 'Sunting',
+	'whitelisttableview' => 'Lihat',
+	'whitelisttablenewdate' => 'Tanggal baru:',
+	'whitelisttablechangedate' => 'Ubah tanggal kadaluarsa',
 	'whitelisttablesetedit' => 'Set ke sunting',
 	'whitelisttablesetview' => 'Set ke lihat',
 	'whitelisttableremove' => 'Hapus',
+	'whitelistnewtabledate' => 'Tanggal kadaluarsa:',
 	'whitelistnewtableedit' => 'Set ke sunting',
 	'whitelistnewtableview' => 'Set ke lihat',
 	'whitelistnewtableprocess' => 'Proses',
 	'whitelistnewtablereview' => 'Tinjau',
 	'whitelistnever' => 'tidak pernah',
+	'group-restricted' => 'Kelompok pengguna terbatas',
+	'group-restricted-member' => 'Pengguna terbatas',
+	'group-manager' => 'Kelompok manajer',
+	'group-manager-member' => 'Manajer',
 );
 
 /** Icelandic (Íslenska)
@@ -2553,6 +2604,7 @@ $messages['ro'] = array(
 	'whitelistnewtableview' => 'Activare vizualizare',
 	'whitelistnewtableprocess' => 'Proces',
 	'whitelistnewtablereview' => 'Recenzie',
+	'whitelistpagelist' => 'Pagini {{SITENAME}} pentru $1',
 	'whitelistrequestmsg' => '$1 a cerut acces la {{PLURAL:$3|următoarea pagină|următoarele pagini}}:
 
 $2',
@@ -2741,6 +2793,36 @@ $messages['sr-ec'] = array(
 $2',
 	'whitelistrequestconf' => 'Захтев за новим странама је послат $1',
 	'whitelistnever' => 'никад',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'mywhitelistpages' => 'Moje strane',
+	'whitelisttablemodifyall' => 'Sve',
+	'whitelisttablemodifynone' => 'Nema',
+	'whitelisttablepage' => 'Viki članak',
+	'whitelisttabletype' => 'Tip pristupa',
+	'whitelisttableexpires' => 'Ističe na',
+	'whitelisttablemodby' => 'Poslednju izmenu napravio',
+	'whitelisttablemodon' => 'Poslednja izmena na',
+	'whitelisttableedit' => 'Uredi',
+	'whitelisttableview' => 'Pregled',
+	'whitelisttablenewdate' => 'Novi datum:',
+	'whitelisttablechangedate' => 'Promeni datum isteka',
+	'whitelisttableremove' => 'Ukloni',
+	'whitelistnewtabledate' => 'Datum isteka:',
+	'whitelistoverview' => '== Pregled izmena za $1 ==',
+	'whitelistoverviewcd' => "* Menjanje datuma na '''$1''' za [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Postavljanje pristupa na '''$1''' za [:$2|$2]]",
+	'whitelistoverviewrm' => '* Uklanjanje pristupa za [[:$1|$1]]',
+	'whitelistrequest' => 'Zahtevanje pristupa za više strana',
+	'whitelistrequestmsg' => '$1 je zahtevao pristup {{PLURAL:$3|sledećoj strani|sledećim stranama}}:
+
+$2',
+	'whitelistrequestconf' => 'Zahtev za novim stranama je poslat $1',
+	'whitelistnever' => 'nikad',
 );
 
 /** Seeltersk (Seeltersk)

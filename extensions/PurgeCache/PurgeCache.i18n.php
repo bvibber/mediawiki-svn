@@ -174,6 +174,7 @@ $messages['fi'] = array(
 	'purgecache-warning' => 'Tämä poistaa välimuistitaulut.',
 	'purgecache-purged' => 'Välimuisti tyhjennettiin.',
 	'purgecache-button' => 'Tyhjennä välimuisti',
+	'right-purgecache' => 'Tyhjentää OBJECTCACHE-taulun',
 );
 
 /** French (Français)
@@ -520,6 +521,16 @@ $messages['sr-ec'] = array(
 	'purgecache-warning' => 'Ово ће освежити кеш',
 	'purgecache-purged' => 'Кеш је освежен.',
 	'purgecache-button' => 'Освежи',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'purgecache' => 'Osveži keš',
+	'purgecache-warning' => 'Ovo će osvežiti keš',
+	'purgecache-purged' => 'Keš je osvežen.',
+	'purgecache-button' => 'Osveži',
 );
 
 /** Seeltersk (Seeltersk)

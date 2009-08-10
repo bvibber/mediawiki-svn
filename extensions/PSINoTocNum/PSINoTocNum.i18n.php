@@ -301,6 +301,13 @@ $messages['sr-ec'] = array(
 	'psinotocnum-desc' => 'Нова магична реч "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'psinotocnum-desc' => 'Nova magična reč "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

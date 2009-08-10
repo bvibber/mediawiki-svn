@@ -2015,9 +2015,12 @@ $messages['sr-ec'] = array(
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
 );
 
-/** latinica (latinica) */
+/** latinica (latinica)
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
 	'badimages' => 'Spisak loših slika',
+	'badimages-desc' => 'Proširuje mogućnosti spiska loših slika MedijaVikija',
 	'badimages-add-btn' => 'dodaj',
 	'badimages-added' => '$1 je dodata u spisak.',
 	'badimages-count' => "Trenutno se '''$1''' slika nalazi na spisku loših slika.",

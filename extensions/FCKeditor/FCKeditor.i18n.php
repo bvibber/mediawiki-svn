@@ -39,9 +39,11 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'textrichditor' => 'محرر متقدم',
+	'prefs-fckeditor' => 'محرّر غني',
 	'tog-riched_disable' => 'عطل المحرر المتقدم',
 	'tog-riched_disable_ns_main' => 'عطل المحرر المتقدم في النطاق الرئيسي',
 	'tog-riched_disable_ns_talk' => 'عطل المحرر المتقدم في نطاق "{{ns:talk}}"',
@@ -59,6 +61,8 @@ $messages['ar'] = array(
 	'tog-riched_disable_ns_help_talk' => 'عطل المحرر المتقدم في نطاق "{{ns:help_talk}}"',
 	'tog-riched_disable_ns_category' => 'عطل المحرر المتقدم في نطاق "{{ns:category}}"',
 	'tog-riched_disable_ns_category_talk' => 'عطل المحرر المتقدم في نطاق "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'افتح المحرر الغني في نافذة جديدة',
+	'tog-riched_use_popup' => 'افتح المحرر الغني في نافذة منبثقة',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

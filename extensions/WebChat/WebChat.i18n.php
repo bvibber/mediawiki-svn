@@ -31,6 +31,14 @@ $messages['qqq'] = array(
 	'right-webchat' => '{{doc-right|webchat}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'webchat' => 'Webchat',
+	'right-webchat' => 'Maak dit moontlik om [[Special:WebChat|webchat]] te gebruik',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -101,6 +109,14 @@ Anonymne wužywarje dostanu awtomatiski napórane pśimě, ale dajo se změniś.
 	'right-webchat' => 'Wužywanje [[Special:WebChat|webchata]] dowólone',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'webchat' => 'Δικτυακή συζήτηση',
+	'right-webchat' => 'Επιτρέπεται να χρησιμοποιεί τη [[Special:WebChat|δικτυακή συζήτηση]]',
+);
+
 /** Spanish (Español)
  * @author Dferg
  * @author Locos epraix
@@ -115,6 +131,19 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'webchat' => 'Web bidezko txata',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'webchat' => 'Verkkokeskustelu',
+	'webchat-desc' => 'Lisää [[Special:WebChat|toimintosivun]], jota käytetään reaaliaikaiseen keskusteluun muiden käyttäjien kanssa.',
+	'webchat-header' => 'Tämä toimintosivu antaa sinulle mahdollisuuden osallistua reaaliaikaiseen keskusteluun toisten wikin käyttäjien kanssa.
+Yhdistäminen tapahtuu yksinkertaisesti ”Connect”-painikkeesta.
+Jos olet kirjautunut sisään, nimimerkkisi täydentyy automaattisesti.
+Kirjautumattomille käyttäjille luodaan nimimerkki automaattisesti, mutta sitä voi vaihtaa.',
+	'right-webchat' => 'Käyttää [[Special:WebChat|verkkokeskustelua]]',
 );
 
 /** French (Français)
@@ -143,6 +172,19 @@ Aos usuarios anónimos concederáselles un nome automático, que pode ser cambia
 	'right-webchat' => 'Autorizado para usar o chat web',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'webchat' => 'Netz-Chat',
+	'webchat-desc' => 'Fiegt e [[Special:WebChat|Spezialsyte]] yy go in Ächtzyt mit andere Benutzer chatte',
+	'webchat-header' => 'Mit däre Spezialsyte chasch in Ächtzyt mit andere Benutzer zämmeschaffe.
+Zum Verbinde druck uf dr „Connect“-Chnopf.
+Wänn Du aagmäldet bisch, wird standardmäßig Dyy Wiki-Benutzername as Chatname brucht.
+Sunscht wird dr Chatname automatisch erzygt, aber är cha gänderet wäre.',
+	'right-webchat' => 'Benutzig vum [[Special:WebChat|Netz-Chat]]',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -150,6 +192,14 @@ Aos usuarios anónimos concederáselles un nome automático, que pode ser cambia
 $messages['he'] = array(
 	'webchat' => "צ'אט באתר",
 	'webchat-desc' => "הוספת [[Special:WebChat|דף מיוחד]] המשמש לקיום צ'אט בזמן אמת עם משתמשים אחרים באתר הוויקי",
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'webchat' => 'Web chat',
+	'right-webchat' => 'Dozvoljeno je rabiti [[Special:WebChat|web chat]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -186,7 +236,20 @@ $messages['id'] = array(
 Untuk menyambung, tekan tombol "Connect".
 Jika Anda sudah masuk log, nama pengguna Anda akan otomatis diisikan.
 Pengguna anonim akan diberikan nama secara otomatis, dan namanya dapat diganti.',
-	'right-webchat' => 'Diijinkan untuk menggunakan obrolan web',
+	'right-webchat' => 'Mengijinkan pengguna untuk menggunakan [[Special:WebChat|obrolan web]]',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'webchat' => 'Web chat',
+	'webchat-desc' => 'Aggiunge una [[Special:WebChat|pagina speciale]] usata per chattare in tempo reale con altri utenti wiki',
+	'webchat-header' => 'Questa pagina speciale consente di collaborare in tempo reale con altri utenti del sito.
+Per connettersi premere semplicemente il pulsante "Connect".
+Se si è effettuato l\'accesso verrà preinserito il proprio nickname.
+Agli utenti anonimi ne viene assegnato uno generato automaticamente che è possibile cambiare.',
+	'right-webchat' => 'Autorizzato a usare la [[Special:WebChat|web chat]]',
 );
 
 /** Japanese (日本語)
@@ -197,6 +260,13 @@ $messages['ja'] = array(
 	'webchat-desc' => 'ウィキの他の利用者とリアルタイムで会話するための[[Special:WebChat|特別ページ]]を加える',
 	'webchat-header' => 'この特別ページを使うと、あなたはこのウィキの他の利用者とリアルタイムで共同作業ができるようになります。接続するには接続ボタンを押すだけです。ニックネームでログインしている場合はその名前があらかじめ入力されています。匿名の利用者は自動的に名前がつけられますが、変えることもできます。',
 	'right-webchat' => '[[Special:WebChat|ウェブチャット]]を使用できる',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'webchat' => 'ជជែកតាម​ Web',
 );
 
 /** Korean (한국어)

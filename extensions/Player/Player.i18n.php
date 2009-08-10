@@ -1044,11 +1044,15 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'player-title' => 'Jucător',
 	'player-file' => 'Nume fişier',
+	'player-play' => 'Redare',
+	'player-not-allowed' => 'format nepermis',
+	'player-not-found' => 'fişier negăsit',
 	'player-invalid-title' => 'titlu incorect',
 	'player-goto-player' => 'jucător',
 	'player-goto-page' => 'Pagină',
@@ -1130,6 +1134,25 @@ $messages['sr-ec'] = array(
 	'player-goto-player' => 'плејер',
 	'player-goto-page' => 'Страна',
 	'player-goto-file' => 'фајл',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'player' => 'Plejer',
+	'player-desc' => 'Ugrađeni plejer za multimedijalne fajlove, koji koristi ustaljene plaginove za brauzere, i [[Special:Player|specijalnu stranu]]',
+	'player-title' => 'Plejer',
+	'player-playertitle' => 'Plejer: $1',
+	'player-file' => 'Naziv fajla',
+	'player-play' => 'Pusti',
+	'player-not-allowed' => 'nedozvoljen format',
+	'player-not-found' => 'fajl nije pronađen',
+	'player-invalid-title' => 'pogrešan naslov',
+	'player-clicktoplay' => 'Pusti $1',
+	'player-goto-player' => 'plejer',
+	'player-goto-page' => 'Strana',
+	'player-goto-file' => 'fajl',
 );
 
 /** Seeltersk (Seeltersk)

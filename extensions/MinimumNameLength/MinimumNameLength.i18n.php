@@ -440,6 +440,14 @@ $messages['sr-ec'] = array(
 	'minnamelength-desc' => 'Одређује минималну дужину корисничког имена',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'minnamelength-error' => 'Vaše korisničko ime je prekratko. Minimalna dužina je $1.',
+	'minnamelength-desc' => 'Određuje minimalnu dužinu korisničkog imena',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

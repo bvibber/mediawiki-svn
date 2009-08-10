@@ -1309,11 +1309,16 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'importusers-uploadfile' => 'Încarcă fişier',
 	'importusers-form-button' => 'Importă',
 	'importusers-log-summary' => 'Rezumat',
+	'importusers-log-summary-all' => 'Total',
+	'importusers-log-summary-added' => 'Adăugat',
+	'importusers-log-summary-updated' => 'Actualizat',
 	'importusers-password' => 'parolă',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'nume real',
@@ -1431,6 +1436,31 @@ $messages['sr-ec'] = array(
 	'importusers-password' => 'лозинка',
 	'importusers-email' => 'мејл',
 	'importusers-realname' => 'право име',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'importusers' => 'Uvezi korisnike',
+	'importusers-uploadfile' => 'Pošalji fajl',
+	'importusers-form-caption' => 'Unesi CSV-fajl (UTF-8)',
+	'importusers-form-file' => 'Korisnički format fajla (CSV):',
+	'importusers-form-replace-present' => 'Piši preko podataka postojećih korisnika',
+	'importusers-form-button' => 'Uvoz',
+	'importusers-user-added' => "Korisnik '''$1''' je dodat.",
+	'importusers-user-present-update' => "Korisnik '''$1''' već postoji. Ažurirano.",
+	'importusers-user-present-not-update' => "Korisnik '''$1''' već postoji. Nije ažurirano.",
+	'importusers-user-invalid-format' => 'Korisnički podaci u liniji #$1 su neispravno formatirani ili je linija prazna. Preskočeno.',
+	'importusers-log' => 'Istorija uvoza korisnika',
+	'importusers-log-summary' => 'Opis',
+	'importusers-log-summary-all' => 'Sve',
+	'importusers-log-summary-added' => 'Dodato',
+	'importusers-log-summary-updated' => 'Ažurirano',
+	'importusers-login-name' => 'Korisničko ime',
+	'importusers-password' => 'lozinka',
+	'importusers-email' => 'mejl',
+	'importusers-realname' => 'pravo ime',
 );
 
 /** Seeltersk (Seeltersk)

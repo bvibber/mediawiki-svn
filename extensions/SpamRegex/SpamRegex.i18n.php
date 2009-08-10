@@ -356,8 +356,15 @@ Buź pak wobglědniwy, wuraze njeby pśekrotke abo pśepowšykne byś.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'spamregex-unblock-success' => 'Η απόφραξη ολοκληρώθηκε επιτυχώς.',
+	'spamregex-block-success' => 'Η φραγή ήταν επιτυχής',
+	'spamregex-block-message' => "Η φράση '''$1''' έχει φραγεί.",
+	'spamregex-warning-1' => 'Δώστε μια φράση για φραγή.',
+	'spamregex-already-blocked' => 'Ο "$1" είναι ήδη φραγμένος',
+	'spamregex-phrase-block' => 'Φράση για φραγή:',
 	'spamregex-text' => '(κείμενο)',
 	'spamregex-summary-log' => '(Περίληψη)',
 );
@@ -1342,6 +1349,35 @@ $messages['sr-ec'] = array(
 	'spamregex-text' => '(Текст)',
 	'spamregex-summary-log' => '(Опис)',
 	'right-spamregex' => 'Блокирајте спам-фразе помоћу [[Special:SpamRegex]]',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'spamregex-desc' => '[[Special:SpamRegex|Filtrirajte]] neželjene fraze u izmenjenim stranama, pomoću regularnih izraza',
+	'spamregex-error-unblocking' => 'Greška prilikom odblokiranja "$1". Verovatno ta fraza i nije blokirana.',
+	'spamregex-summary' => 'Tekst se našao u opisu stranice.',
+	'spamregex-currently-blocked' => "'''Trenutno blokirane fraze:'''",
+	'spamregex-move' => 'Razlog koji ste naveli je sadržao blokiranu frazu.',
+	'spamregex-no-currently-blocked' => "'''Nema blokiranih fraza.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ukloni]) dodat sa $5 na $6 u $7",
+	'spamregex-page-title-1' => 'Blokiraj fraze pomoću regularnih izraza',
+	'spamregex-unblock-success' => 'Deblokiranje uspešno',
+	'spamregex-unblock-message' => "Fraza '''$1''' je bila odblokirana za izmene.",
+	'spamregex-block-success' => 'Blok uspešan.',
+	'spamregex-block-message' => "Fraza '''$1''' je sada blokirana.",
+	'spamregex-warning-1' => 'Navedite frazu koju treba blokirati.',
+	'spamregex-error-1' => 'Nevalidan regularni izraz.',
+	'spamregex-warning-2' => 'Molimo Vas da označite makar jedan način blokiranja.',
+	'spamregex-already-blocked' => '"$1" je već blokirana',
+	'spamregex-phrase-block' => 'Fraza za blokiranje:',
+	'spamregex-phrase-block-text' => 'blokirajte frazu u tekstu stranice',
+	'spamregex-phrase-block-summary' => 'blokirajte frazu u opisu izmene',
+	'spamregex-block-submit' => 'Blokirajte&nbsp;ovu&nbsp;frazu',
+	'spamregex-text' => '(Tekst)',
+	'spamregex-summary-log' => '(Opis)',
+	'right-spamregex' => 'Blokirajte spam-fraze pomoću [[Special:SpamRegex]]',
 );
 
 /** Sundanese (Basa Sunda)

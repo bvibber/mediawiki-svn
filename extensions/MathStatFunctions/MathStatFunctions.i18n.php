@@ -189,6 +189,13 @@ $messages['fa'] = array(
 	'msfunc_div_zero' => 'تقسیم بر صفر',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'msfunc_div_zero' => 'Jako nollalla',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
@@ -533,8 +540,11 @@ $messages['sr-ec'] = array(
 	'msfunc_div_zero' => 'Дељиво са нулом',
 );
 
-/** latinica (latinica) */
+/** latinica (latinica)
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
+	'msfunc_desc' => 'Kolekcija matematičkih i statističkih funkcija',
 	'msfunc_nan' => 'Rezultat nije broj',
 	'msfunc_inf' => 'Rezultat je beskonačan',
 	'msfunc_div_zero' => 'Deljivo sa nulom',

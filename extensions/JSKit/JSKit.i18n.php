@@ -291,6 +291,13 @@ $messages['sr-ec'] = array(
 	'jskit-desc' => 'Интегрише js-kit алате у Вики-чланак',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'jskit-desc' => 'Integriše js-kit alate u Viki-članak',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

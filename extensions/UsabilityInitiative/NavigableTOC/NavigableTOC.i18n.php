@@ -41,6 +41,13 @@ $messages['dsb'] = array(
 	'navigabletoc-desc' => 'Pśidawa zapis wopśimjeśa wobźěłowańskemu formularoju, kótaryž kula tekstowe pólo, gaž se na wótrězk kliknjo',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'navigabletoc' => 'Περιηγήσιμος πίνακας περιεχομένων',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -130,6 +137,14 @@ $messages['id'] = array(
 	'navigabletoc-desc' => 'Menambahkan sebuah daftar isi pada formulir penyuntingan yang jika diklik dapat langsung menuju bagian yang dimaksud',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'navigabletoc' => 'Indice navigabile',
+	'navigabletoc-desc' => 'Aggiunge un indice al modulo di modifica che scorre la casella di testo quando si fa clic su una sezione',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -192,6 +207,14 @@ $messages['oc'] = array(
 	'navigabletoc-desc' => 'Apond lo somari al formulari de modificacion que desfila lo tèxte quand una seccion es clicada',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'navigabletoc' => 'Nawigacyjny spis treści',
+	'navigabletoc-desc' => 'Przewija tekst w formularzu edycji, jeśli zostanie kliknięty kliknięty tytuł sekcji w dodanym do formularza spisie treści',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -206,6 +229,13 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'navigabletoc' => 'Tabela de conteúdo navegável',
 	'navigabletoc-desc' => 'Adiciona uma tabela de conteúdo ao formulário de edição que desloca a caixa de texto quando uma seção é clicada',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'navigabletoc' => 'Cuprins navigabil',
 );
 
 /** Tarandíne (Tarandíne)

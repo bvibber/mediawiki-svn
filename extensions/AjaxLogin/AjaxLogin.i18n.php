@@ -157,13 +157,14 @@ Saatat menettää muokkauksesi jos lähdet tältä sivulta nyt.',
 /** French (Français)
  * @author IAlex
  * @author Polytherion
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'ajaxlogin-desc' => 'Formulaire dynamique qui permet aux utilisateurs de se connecter et retenir le mot de passe',
-	'ajaxLogin1' => 'Pour compléter votre connexion, vous devez saisir un nouveau mot de passe.
-Cela vous fera quitter cette page et vous pourriez perdre votre modification.',
+	'ajaxlogin-desc' => 'Formulaire dynamique qui permet aux utilisateurs de s’identifier et retenir leur mot de passe.',
+	'ajaxLogin1' => 'Pour compléter votre identification, vous devez saisir un nouveau mot de passe.
+Cela vous fera quitter cette page et vous pourriez perdre vos modifications en cours.',
 	'ajaxLogin2' => 'Êtes-vous certain ?
-Vous pourriez perdre vos modifications si vous quittez cette page maintenant.',
+Vous pourriez perdre vos modifications en cours sur cette page si vous la quittez maintenant.',
 	'ajaxlogin-create' => 'Créer un compte',
 );
 
@@ -273,6 +274,17 @@ Anda dapat kehilangan perubahan yang telah Anda buat di halaman ini jika Anda me
 	'ajaxlogin-create' => 'Buat akun',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'ajaxlogin-desc' => "Casella dinamica che consente agli utenti di effettuare l'accesso e ricordare la password",
+	'ajaxLogin1' => "Per completare l'accesso è necessario inserire inserire una nuova password.
+Ciò vi porterà via da questa pagina di modifica e si rischia di perdere la modifica attuale.",
+	'ajaxLogin2' => 'Sicuro? Si potrebbero perdere le modifiche apportate a questa pagina se si lascia la pagina ora.',
+	'ajaxlogin-create' => 'Crea un account',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Tommy6
@@ -327,6 +339,18 @@ Dëst wäert Iech op vun dëser Ännerungssäit erofbréngen an Dir kënnt Är a
 	'ajaxLogin2' => 'Sidd Dir sécher?
 Dir kënnt Är Ännerunge vun dëser Säit verléieren wann Dir elo vun dëser Säit erof gitt.',
 	'ajaxlogin-create' => 'E Benotzerkont uleeën',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'ajaxlogin-desc' => 'Dynamisch vinster veur aanmelje en wachwoordherinneringe',
+	'ajaxLogin1' => "Veur 'n nuuj wachwoord in um 't aanmelje aaf te make.
+Hiedoor waers doe weggeleid van dees pagina, en verlus doe mäögelik dien hujige bewirkinge.",
+	'ajaxLogin2' => 'Wils doe wiejergaon?
+Doe verlus mäögelik dien hujige bewirkinge es doe dees pagina noe verleuts.',
+	'ajaxlogin-create' => 'Registrere',
 );
 
 /** Lithuanian (Lietuvių)
@@ -513,6 +537,18 @@ $messages['sr-ec'] = array(
 	'ajaxLogin2' => 'Да ли сте сигурни?
 Могли бисте да изгубите све неснимљене измене на овој страни ако је сада напустите.',
 	'ajaxlogin-create' => 'Направите налог',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'ajaxlogin-desc' => 'Dinamička kutijica, koja omogućava korisnicima da se uloguju i podsete se lozinke.',
+	'ajaxLogin1' => 'Da biste se ulogovali, morate uneti lozinku.
+Ova akcija će vas odvesti sa ove strane za ozmeni članka i mogli biste da izgubite svoje nesnimljene izmene.',
+	'ajaxLogin2' => 'Da li ste sigurni?
+Mogli biste da izgubite sve nesnimljene izmene na ovoj strani ako je sada napustite.',
+	'ajaxlogin-create' => 'Napravite nalog',
 );
 
 /** Swedish (Svenska)

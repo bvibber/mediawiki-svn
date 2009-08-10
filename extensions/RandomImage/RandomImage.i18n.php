@@ -314,6 +314,13 @@ $messages['sr-ec'] = array(
 	'randomimage-desc' => 'Приказује случајно изабрану слику помоћу тага <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'randomimage-desc' => 'Prikazuje slučajno izabranu sliku pomoću taga <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

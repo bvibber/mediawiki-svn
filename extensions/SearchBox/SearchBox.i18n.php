@@ -276,6 +276,14 @@ $messages['gu'] = array(
 	'searchbox-namespaces' => 'નામાવકાશ:',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'searchbox-search' => 'Ronsaghey',
+	'searchbox-go' => 'Gow',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */
@@ -341,6 +349,16 @@ $messages['id'] = array(
 	'searchbox-search' => 'Cari',
 	'searchbox-go' => 'Tuju ke',
 	'searchbox-namespaces' => 'Ruang nama:',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'searchbox-desc' => "Consente l'inserimento di moduli di ricerca",
+	'searchbox-search' => 'Ricerca',
+	'searchbox-go' => 'Vai',
+	'searchbox-namespaces' => 'Namespace:',
 );
 
 /** Japanese (日本語)
@@ -537,9 +555,12 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'searchbox-search' => 'Căutare',
+	'searchbox-go' => 'Mergeţi',
 	'searchbox-namespaces' => 'Spaţii de nume:',
 );
 
@@ -580,6 +601,13 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'searchbox-namespaces' => 'Именски простори:',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'searchbox-namespaces' => 'Imenski prostori:',
 );
 
 /** Seeltersk (Seeltersk)

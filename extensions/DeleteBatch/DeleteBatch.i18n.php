@@ -630,9 +630,10 @@ I file caricati dovrebbero contenere il nome della pagina e un motivo opzionale 
 	'deletebatch-as' => 'Esegui lo script come:',
 	'deletebatch-both-modes' => 'Per favore scegli o una pagina specificata o una data lista di pagine.',
 	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-delete' => 'Cancella',
 	'deletebatch-page' => 'Pagine da cancellare:',
-	'deletebatch-reason' => 'Motivo della cancellazione',
-	'deletebatch-success-subtitle' => 'per $1',
+	'deletebatch-processing-from-file' => 'eliminazione di pagine da un file di elenco',
+	'deletebatch-processing-from-form' => 'eliminazione di pagine da modulo',
 	'deletebatch-omitting-nonexistant' => 'Tralascio la pagina non esistente $1.',
 	'deletebatch-omitting-invalid' => 'Tralascio la pagina non valida $1.',
 	'deletebatch-file-bad-format' => 'Il file dovrebbe essere di solo testo',
@@ -988,14 +989,14 @@ O arquivo carregado deverá conter o nome da página e um motivo opcional, separ
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'deletebatch-caption' => 'Lista de pagini:',
 	'deletebatch-or' => '<b>sau</b>',
+	'deletebatch-delete' => 'Ştergere',
 	'deletebatch-page' => 'Pagini de şters:',
-	'deletebatch-reason' => 'Motiv pentru ştergere',
-	'deletebatch-success-subtitle' => 'pentru $1',
 	'deletebatch-file-missing' => 'Nu se poate citi fişierul dat',
 );
 

@@ -713,6 +713,7 @@ Todennäköisesti kyseistä käyttäjää ei ole olemassa.',
 	'regexblock-view-block-unblock' => 'poista esto',
 	'regexblock-view-stats' => 'tilastot',
 	'regexblock-view-empty' => 'Estettyjen käyttäjätunnuksien sekä osoitteiden lista on tyhjä.',
+	'right-regexblock' => 'Estää käyttäjiä muokkaamasta kaikissa wikifarmin wikeissä',
 );
 
 /** French (Français)
@@ -2111,14 +2112,22 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'regexblock-already-blocked' => '$1 este deja blocat.',
 	'regexblock-form-username' => 'Adresă IP sau nume d utilizator:',
 	'regexblock-form-reason' => 'Motiv:',
+	'regexblock-form-expiry' => 'Expirare:',
+	'regexblock-form-submit' => 'Blochează acest utilizator',
+	'regexblock-view-all' => 'Toţi',
+	'regexblock-view-go' => 'Mergeţi',
 	'regexblock-view-reason' => 'motiv: $1',
 	'regexblock-view-reason-default' => 'motiv generic',
+	'regexblock-view-block-by' => 'blocat de către:',
+	'regexblock-view-block-unblock' => 'deblocare',
+	'regexblock-view-stats' => 'statistici',
 );
 
 /** Tarandíne (Tarandíne)
@@ -2257,6 +2266,13 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'regexblock-form-reason' => 'Разлог:',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'regexblock-form-reason' => 'Razlog:',
 );
 
 /** Sundanese (Basa Sunda)

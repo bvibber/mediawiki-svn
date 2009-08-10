@@ -244,6 +244,13 @@ $messages['sk'] = array(
 	'clientside-desc' => 'Poskytuje funkcie na tvorbu kódu v klientských formátoch ako HTML, CSS a JavaScript',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'clientside-desc' => 'Nyadiakeun fungsi pikeun nyieun kode kawas HTML, CSS sarta Javascript',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

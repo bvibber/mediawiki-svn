@@ -33,6 +33,23 @@ $messages['qqq'] = array(
 	'fundraiserportal-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'fundraiserportal' => 'بوابة جمع التبرعات',
+	'fundraiserportal-desc' => 'يضيف بوابة "تبرّع رجاءً" في أعلى الشريط الجانبي.',
+	'fundraiserportal-plain-button' => 'ادعم ويكيبيديا!',
+	'fundraiserportal-ruby-button' => 'تبرّع الآن',
+	'fundraiserportal-rubytext-button' => 'تبرّع الآن',
+	'fundraiserportal-rubytext-message' => 'يساعدنا كل تبرع في جعل ويكيبيديا مجانية للجميع.',
+	'fundraiserportal-rubytext-close' => 'أخفِ هذا من الآن فصاعدًا',
+	'fundraiserportal-sapphire-button' => 'تبرّع الآن',
+	'fundraiserportal-tourmaline-button' => 'تبرّع الآن',
+	'fundraiserportal-tourmaline-message' => 'يساعدنا كل تبرع في جعل ويكيبيديا مجانية للجميع.',
+	'fundraiserportal-tourmaline-close' => 'أخفِ هذا من الآن فصاعدًا',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -49,6 +66,23 @@ $messages['be-tarask'] = array(
 	'fundraiserportal-tourmaline-button' => 'Ахвяраваць зараз',
 	'fundraiserportal-tourmaline-message' => 'Кожнае ахвяраваньне дапамагае нам захоўваць {{GRAMMAR:вінавальны|{{SITENAME}}}} вольнай для кожнага.',
 	'fundraiserportal-tourmaline-close' => 'Схаваць гэта',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'fundraiserportal' => 'Porched dastum profoù',
+	'fundraiserportal-desc' => 'Ouzhpennañ a ra ur porched "kas ur prof" e laez ar varrenn-gostez.',
+	'fundraiserportal-plain-button' => 'Harpit Wikipadia !',
+	'fundraiserportal-ruby-button' => 'Grit ur profig diouzhtu',
+	'fundraiserportal-rubytext-button' => 'Grit ur profig diouzhtu',
+	'fundraiserportal-rubytext-message' => "Pep prof a dalvez deomp da zerc'hel Wikipedia digoust ha digor d'an holl.",
+	'fundraiserportal-rubytext-close' => 'Kuzhat hiviziken',
+	'fundraiserportal-sapphire-button' => 'Grit ur profig diouzhtu',
+	'fundraiserportal-tourmaline-button' => 'Grit ur profig diouzhtu',
+	'fundraiserportal-tourmaline-message' => "Pep prof a dalvez deomp da zerc'hel Wikipedia digoust ha digor d'an holl.",
+	'fundraiserportal-tourmaline-close' => 'Kuzhat hiviziken',
 );
 
 /** Welsh (Cymraeg)
@@ -92,6 +126,21 @@ $messages['dsb'] = array(
 	'fundraiserportal-tourmaline-button' => 'Něnto pósćiś',
 	'fundraiserportal-tourmaline-message' => 'Kuždy dar nam pomoga Wikipediju za kuždego licho k dispoziciji źaržaś.',
 	'fundraiserportal-tourmaline-close' => 'Wótněnta to schowaś',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'fundraiserportal' => 'Πύλη Εράνου',
+	'fundraiserportal-plain-button' => 'Υποστηρίξτε τη Βικιπαίδεια!',
+	'fundraiserportal-ruby-button' => 'Δωρίστε Τώρα',
+	'fundraiserportal-rubytext-button' => 'Δωρίστε Τώρα',
+	'fundraiserportal-rubytext-close' => 'Απόκρυψη αυτού από τώρα',
+	'fundraiserportal-sapphire-button' => 'Δωρίστε Τώρα',
+	'fundraiserportal-tourmaline-button' => 'Δωρίστε Τώρα',
+	'fundraiserportal-tourmaline-close' => 'Απόκρυψη αυτού από τώρα',
 );
 
 /** Esperanto (Esperanto)
@@ -290,6 +339,14 @@ $messages['ja'] = array(
 	'fundraiserportal-tourmaline-close' => '以後このメッセージを非表示にする',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'fundraiserportal' => 'ផតថល​អ្នកជួយ​ស្វែង​រក​មូលនិធិ​',
+	'fundraiserportal-plain-button' => 'គាំទ្រ​វិគីភីឌា​!',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -356,6 +413,16 @@ $messages['oc'] = array(
 	'fundraiserportal-tourmaline-button' => 'Fasètz un don tre ara',
 	'fundraiserportal-tourmaline-message' => 'Cada don nos permet de gardar Wikipèdia liura per tot lo monde.',
 	'fundraiserportal-tourmaline-close' => 'Amagar aquò ara',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'fundraiserportal-ruby-button' => 'Donează acum',
+	'fundraiserportal-rubytext-button' => 'Donează acum',
+	'fundraiserportal-sapphire-button' => 'Donează acum',
+	'fundraiserportal-tourmaline-button' => 'Donează acum',
 );
 
 /** Russian (Русский)

@@ -267,6 +267,13 @@ $messages['jv'] = array(
 	'whosonline' => "Sapa waé sing ana ing jaringan (''online'')",
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'whosonline' => 'អ្នកណា​កំពុង​នៅលើ​បណ្ដាញ​ (online)',
+);
+
 /** Korean (한국어)
  * @author ToePeu
  */
@@ -429,6 +436,14 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'whosonline' => 'Ко је присутан',
 	'whosonline-desc' => 'Приказује [[Special:WhosOnline|списак]] улогованих и анонимних корисника, који су тренутно присутни',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'whosonline' => 'Ko je prisutan',
+	'whosonline-desc' => 'Prikazuje [[Special:WhosOnline|spisak]] ulogovanih i anonimnih korisnika, koji su trenutno prisutni',
 );
 
 /** Sundanese (Basa Sunda)

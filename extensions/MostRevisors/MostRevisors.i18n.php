@@ -43,6 +43,19 @@ $messages['qqq'] = array(
 	'mostrevisors-users' => '* $1 is the number of contributors to a page, it supports PLURAL.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'mostrevisors-namespace' => 'النطاق:',
+	'mostrevisors-none' => 'لم توجد مدخلات.',
+	'mostrevisors-submit' => 'اذهب',
+	'mostrevisors-showredir' => 'أظهر صفحات التحويل',
+	'mostrevisors-hideredir' => 'أخفِ صفحات التحويل',
+	'mostrevisors-users' => '- {{PLURAL:$1||محرّر واحد|محرّران|$1 محرّرين|$1 محرّرًا|$1 محرر}}',
+	'mostrevisors-viewcontributors' => 'اعرض المساهمين الرئيسيين',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -59,6 +72,25 @@ $messages['be-tarask'] = array(
 	'mostrevisors-showredir' => 'Паказаць перанакіраваньні',
 	'mostrevisors-hideredir' => 'Схаваць перанакіраваньні',
 	'mostrevisors-viewcontributors' => 'Паказаць асноўных аўтараў',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'mostrevisors' => 'Pennadoù savet gant ar muiañ a aozerien zisheñvel',
+	'mostrevisors-desc' => 'Rollañ a ra ar [[Special:MostRevisors|pennadoù savet gant ar muiañ a aozerien zisheñvel]]',
+	'mostrevisors-header' => "'''Rollañ a ra ar bajenn-mañ ar {{PLURAL:$1|pennad|$1 pennad}} eus ar wiki savet gant ar muiañ a aozerien zisheñvel.'''",
+	'mostrevisors-limitlinks' => 'Diskwel betek $1 pajenn',
+	'mostrevisors-namespace' => 'Esaouenn anv :',
+	'mostrevisors-none' => 'Pajenn ebet kavet.',
+	'mostrevisors-ns-header' => "'''Rollañ a ra ar bajenn-mañ ar {{PLURAL:$1|pennad|$1 pennad}} savet gant ar muiañ a aozerien zisheñvel en $2 esaouenn anv.'''",
+	'mostrevisors-showing' => 'Roll {{PLURAL:$1|eus ar bajenn|eus an $1 pajenn}}:',
+	'mostrevisors-submit' => 'Mont',
+	'mostrevisors-showredir' => 'Diskouez ar pajennnoù adkas',
+	'mostrevisors-hideredir' => 'kuzhat ar pajennoù adkas',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|aozer|aozer}}',
+	'mostrevisors-viewcontributors' => 'Gwelet an aozerien bennañ',
 );
 
 /** Bosnian (Bosanski)
@@ -117,6 +149,16 @@ $messages['dsb'] = array(
 	'mostrevisors-hideredir' => 'Dalejpósrědnjenja schowaś',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|wobźěłaŕ|wobźěłarja|wobźěłarje|wobźěłarjow}}',
 	'mostrevisors-viewcontributors' => 'Głownych wobźěłarjow se woglědaś',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'mostrevisors-namespace' => 'Nimeruum:',
+	'mostrevisors-submit' => 'Mine',
+	'mostrevisors-showredir' => 'Näita ümbersuunamislehekülgi',
+	'mostrevisors-hideredir' => 'Peida ümbersuunamisleheküljed',
 );
 
 /** Finnish (Suomi)
@@ -352,10 +394,12 @@ $messages['oc'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'mostrevisors-namespace' => 'Spaţiu de nume:',
+	'mostrevisors-submit' => 'Mergeţi',
 );
 
 /** Russian (Русский)

@@ -628,6 +628,15 @@ $messages['sr-ec'] = array(
 	'block_title_error' => 'Жао нам је, наслов ове странице није могуће снимити.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'block_title_error_page_title' => 'Blokiran naslov',
+	'block_title_error-desc' => 'Pruža jednostavan način sprečavanja pravljenja ili snimanja strana sa neodgovarajućim naslovima',
+	'block_title_error' => 'Žao nam je, naslov ove stranice nije moguće snimiti.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -683,6 +692,15 @@ $messages['tg-cyrl'] = array(
 	'block_title_error_page_title' => 'Сарлавҳаҳои басташуда',
 	'block_title_error-desc' => 'Рохҳои асосиро барои ҷилавгирӣ аз захира ё эчод кардани саҳифаҳое бо баъзе унвонҳоро пешниҳод мекунад',
 	'block_title_error' => 'Бубахшед, захира намудани саҳифае, ки чунин сарлавҳа дорад манъ аст.',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'block_title_error_page_title' => 'หัวข้อที่ได้รับการป้องกัน',
+	'block_title_error-desc' => 'ให้แนวทางพื้นฐานในการป้องกันหน้าที่มีชื่อหัวข้อบางประการจากการบันทึกหรือสร้างขึ้นได้',
+	'block_title_error' => 'ขออภัย ไม่อนุญาตให้บันทึกชื่อหัวข้อของหน้านี้ได้',
 );
 
 /** Tagalog (Tagalog)

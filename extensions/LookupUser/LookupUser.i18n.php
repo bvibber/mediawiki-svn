@@ -1106,6 +1106,22 @@ $messages['sr-ec'] = array(
 	'lookupuser-info-authenticated' => 'Потврда имејла: $1',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'lookupuser' => 'Pogledaj informacije o korisniku',
+	'lookupuser-nonexistent' => 'Greška: Korisnik ne postoji',
+	'lookupuser-authenticated' => 'autorizacija na $1',
+	'lookupuser-not-authenticated' => 'nije autorizovano',
+	'lookupuser-id' => 'Korisnički ID: <tt>#$1</tt>',
+	'lookupuser-email' => 'Imejl: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'nije priloženo',
+	'lookupuser-realname' => 'Pravo ime: $1',
+	'lookupuser-registration' => 'Datum registracije: $1',
+	'lookupuser-info-authenticated' => 'Potvrda imejla: $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

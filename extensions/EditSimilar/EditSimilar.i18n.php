@@ -463,11 +463,11 @@ Verificatz {{PLURAL:$2|aquesta pagina aparentada|aquestas paginas aparentadas}} 
  */
 $messages['pl'] = array(
 	'editsimilar-desc' => 'Zachęca do edycji podobnego artykułu po zapisaniu strony',
-	'editsimilar-thanks' => 'Dzięki za edycję!
-Zerknij też na podobne artykuły: $1.',
-	'editsimilar-thanks-notsimilar' => 'Dzięki za edycję!
-Te artykuły również mogą potrzebować twojej pomocy: $1.',
-	'editsimilar-thankyou' => 'Dzięki za Twoją edycję, $1!',
+	'editsimilar-thanks' => 'Dziękujemy za edycję.
+Sprawdź też {{PLURAL:$2|podobny artykuł|podobne artykuły:}} $1.',
+	'editsimilar-thanks-notsimilar' => 'Dziękujemy za edycję.
+{{PLURAL:$2|Jest jeszcze jeden artykuł przy którym możesz pomóc –|Artykuły przy których również możesz pomóc:}} $1.',
+	'editsimilar-thankyou' => 'Dziękujemy za Twoją edycję, $1!',
 	'editsimilar-link-disable' => 'zmień ustawienia',
 	'tog-edit-similar' => 'Włącz sugestie edycji podobnych artykułów',
 );
@@ -492,15 +492,16 @@ Espreite {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.
 $messages['pt-br'] = array(
 	'editsimilar-desc' => 'Encoraja os utilizadores a editarem uma página semelhante depois de gravar uma página',
 	'editsimilar-thanks' => 'Obrigado pela sua contribuição.
-Veja estas páginas relacionadas: $1.',
+Veja {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Obrigado pela sua contribuição.
-Estas páginas também poderiam ser beneficiadas por sua ajuda: $1.',
+{{PLURAL:$2|Esta página|Estas páginas}} também poderiam ser beneficiadas por sua ajuda: $1.',
 	'editsimilar-thankyou' => 'Obrigado pela sua contribuição, $1!',
 	'editsimilar-link-disable' => 'configurar preferências',
 	'tog-edit-similar' => 'Ativar sugestões de páginas semelhantes',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
@@ -510,6 +511,7 @@ Vizitează şi {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.'
 	'editsimilar-thanks-notsimilar' => 'Mulţumim pentru contribuţie.
 Şi {{PLURAL:$2|această pagină|aceste pagini}} ar avea nevoie de ajutor: $1.',
 	'editsimilar-thankyou' => 'Mulţumim pentru contribuţia dumneaovastră, $1!',
+	'editsimilar-link-disable' => 'setare preferinţe',
 	'tog-edit-similar' => 'Activează sugestiile paginilor similare',
 );
 

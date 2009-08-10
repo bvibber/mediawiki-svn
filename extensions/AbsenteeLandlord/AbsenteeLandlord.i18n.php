@@ -385,11 +385,12 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Sadik Khalid
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'absenteelandlord-reason' => 'സിസോപ്പുകള്‍ നിഷ്ക്രിയരായിരുന്നതു മൂലം ഡാറ്റാബേസ് യാന്ത്രികമായി ബന്ധിക്കപ്പെട്ടിരിക്കുന്നു.',
-	'absenteelandlord-desc' => 'സിസോപ്പുമാര്‍ ഒരു നിശ്ചിത സമയ പരിധിയില്‍ കൂടുതല്‍ നിഷ്ക്രിയരായിരുന്നാല്‍ ഡാറ്റാബേസ് യാന്ത്രികമായി ബന്ധിക്കപ്പെടുന്നു.',
+	'absenteelandlord-reason' => 'കാര്യനിര്‍വാഹകര്‍ നിഷ്ക്രിയരായിരുന്നതു മൂലം വിവരശേഖരം സ്വയം ബന്ധിക്കപ്പെട്ടിരിക്കുന്നു.',
+	'absenteelandlord-desc' => 'എല്ലാ കാര്യനിര്‍വാഹകരും നിശ്ചിത സമയ പരിധിയില്‍ കൂടുതല്‍ നിഷ്ക്രിയരായിരുന്നാല്‍ വിക്കി വിവരശേഖരം സ്വയം ബന്ധിക്കപ്പെടുന്നു.',
 );
 
 /** Marathi (मराठी)
@@ -528,6 +529,14 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'absenteelandlord-reason' => 'База подтака је била аутоматски закључана због неактивности администратора.',
 	'absenteelandlord-desc' => 'Аутоматски закључава Вики базу података уколико су сви администратори неактивни неко време.',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'absenteelandlord-reason' => 'Baza podtaka je bila automatski zaključana zbog neaktivnosti administratora.',
+	'absenteelandlord-desc' => 'Automatski zaključava Viki bazu podataka ukoliko su svi administratori neaktivni neko vreme.',
 );
 
 /** Seeltersk (Seeltersk)

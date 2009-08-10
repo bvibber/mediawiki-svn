@@ -307,6 +307,13 @@ $messages['sr-ec'] = array(
 	'tab0-desc' => 'Додаје језичак "0", повезујући ка форми за измену прве секције странице',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'tab0-desc' => 'Dodaje jezičak "0", povezujući ka formi za izmenu prve sekcije stranice',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

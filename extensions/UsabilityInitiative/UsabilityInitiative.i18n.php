@@ -65,11 +65,19 @@ $messages['dsb'] = array(
 	'usabilityinitiative-desc' => 'Funkcije wuwite pśez iniciatiwu wužywajobnosći Wikipedije za pólěpšenje wužywajobnosći MediaWiki',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'usabilityinitiative' => 'Πρωτοβουλία Χρηστικότητας',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'usabilityinitiative' => 'Iniciato pri Uzebleco',
+	'usabilityinitiative-desc' => 'Funkcioj disvolvitaj de la Uzebleca Iniciato de Vikipedio por plibonigi la uzeblecon de MediaWiki',
 );
 
 /** Spanish (Español)
@@ -133,6 +141,14 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'usabilityinitiative' => 'יוזמת השימושיות',
 	'usabilityinitiative-desc' => 'תכונות שפותחו על ידי יוזמת השימושית של ויקיפדיה, כדי לשפר את השימושיות של מדיה־ויקי',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'usabilityinitiative' => 'Inicijativa za uporabljivost',
+	'usabilityinitiative-desc' => 'Mogućnosti razvijane od strane Inicijative za uporabljivost Wikipedije kako bi se unaprijedila uporabljivost MediaWikija',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -295,6 +311,15 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'usabilityinitiative' => 'Iniciatíva použiteľnosti',
 	'usabilityinitiative-desc' => 'Vlastnosti na rozšírenie použiteľnosti MediaWiki vyvinuté v rámci Iniciatívy použiteľnosti Wikipédie',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ * @author Rotsee
+ */
+$messages['sv'] = array(
+	'usabilityinitiative' => 'Initiativet för användbarhet',
+	'usabilityinitiative-desc' => "Funktioner utvecklade av ''Wikipedias initiativ för användbarhet'', för att förbättra MediaWikis användbarhet",
 );
 
 /** Turkish (Türkçe)

@@ -380,6 +380,17 @@ $messages['sr-ec'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Ограничава учесталост корисничких регистрација',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Pravljenje naloga je bilo automatski suspendovano na par momenata zbog neobično velikog broja skorašnjih pokušaja logovanja.
+Molimo Vas da odčekate nekoliko minuta i pokušate opet.',
+	'acct_creation_global_hard_throttle_hit' => 'Pravljenje naloga je automatski suspendovano na nekoliko sekundi, da bi umanjilo broj napada brojnim registracijama.
+Molimo Vas da malo sačekate i pritisnete dugme za osvežavanje u vašem brauzeru, da biste opet poslali podatke.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Ograničava učestalost korisničkih registracija',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

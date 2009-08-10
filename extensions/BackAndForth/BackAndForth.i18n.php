@@ -748,6 +748,15 @@ $messages['sr-ec'] = array(
 	'backforth-prev' => 'Претходно ($1)',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'backforth-next' => 'Sledeće ($1)',
+	'backforth-desc' => 'Dodaje azbučno uređenje preko linkova za &quot;Sledeći&quot; i &quot;Prethodni&quot;, na vrhu stranica članaka',
+	'backforth-prev' => 'Prethodno ($1)',
+);
+
 /** Sranan Tongo (Sranantongo)
  * @author Stretsh
  */

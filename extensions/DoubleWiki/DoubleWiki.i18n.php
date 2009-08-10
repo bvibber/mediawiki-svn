@@ -454,6 +454,13 @@ $messages['sr-ec'] = array(
 	'doublewiki-desc' => 'Приказује страну и њен превод с другог викија у две колоне на истој страни.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'doublewiki-desc' => 'Prikazuje stranu i njen prevod s drugog vikija u dve kolone na istoj strani.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

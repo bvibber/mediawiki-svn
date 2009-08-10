@@ -787,6 +787,7 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -798,6 +799,19 @@ $messages['fi'] = array(
 	'grouppermissions-delete' => 'Poista ryhmä',
 	'grouppermissions-addsuccess' => '$1 lisättiin',
 	'grouppermissions-deletesuccess' => '$1 poistettiin',
+	'grouppermissions-sp-remove' => 'poista',
+	'right-viewsource' => 'Katsoa suojattujen sivujen wikikoodeja',
+	'right-raw' => 'Katsoa jäsentämättömiä sivuja',
+	'right-render' => 'Katsoa jäsennettyjä sivuja ilman valikkoa',
+	'right-info' => 'Katsoa sivujen tietoja',
+	'right-credits' => 'Katsoa sivujen tekijäluetteloja',
+	'right-history' => 'Katsoa sivujen historioita',
+	'right-search' => 'Etsiä wikistä',
+	'right-contributions' => 'Katsoa muokkausluetteloja',
+	'right-recentchanges' => 'Katsoa tuoreita muutoksia',
+	'right-edittalk' => 'Muokata keskustelusivuja',
+	'right-edit-new' => 'Muokata sivuja (jotka eivät ole keskustelusivuja)',
+	'right-readold' => 'Nähdä vanhojen versioiden sisällön ja muutokset',
 );
 
 /** French (Français)
@@ -2208,12 +2222,14 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'removeunusedgroups' => 'Elimină grupuri neutilizate',
 	'grouppermissions-search' => 'Grup:',
 	'grouppermissions-dologin' => 'Autentificare',
+	'grouppermissions-dosearch' => 'Mergeţi',
 	'grouppermissions-searchlabel' => 'Caută grup',
 	'grouppermissions-deletelabel' => 'Şterge grup',
 	'grouppermissions-change' => 'Schimbă permisiunile de grup',
@@ -2223,10 +2239,18 @@ $messages['ro'] = array(
 	'grouppermissions-addsuccess' => '$1 a fost adăugat cu succes',
 	'grouppermissions-deletesuccess' => '$1 a fost şters cu succes',
 	'grouppermissions-changesuccess' => 'Permisiunile pentru $1 au fost schimbate cu succes',
+	'grouppermissions-true' => 'Adevărat',
+	'grouppermissions-false' => 'Fals',
 	'grouppermissions-never' => 'Niciodată',
+	'grouppermissions-sort-read' => 'Citire',
+	'grouppermissions-sort-edit' => 'Modificare',
+	'grouppermissions-sort-manage' => 'Management',
+	'grouppermissions-sort-admin' => 'Administraţia',
+	'grouppermissions-sort-tech' => 'Tehnic',
 	'grouppermissions-log-add' => 'adăugat grupul "$2"',
 	'grouppermissions-log-change' => 'schimbat permisiunile grupului "$2"',
 	'grouppermissions-log-delete' => 'şters grupul "$2"',
+	'grouppermissions-sp-sort' => 'Sortează permisiunile',
 	'grouppermissions-sp-save' => 'Salvează',
 	'grouppermissions-sp-addperm' => 'Adaugă permisiune',
 	'grouppermissions-sp-remove' => 'elimină',
@@ -2431,6 +2455,59 @@ $messages['sr-ec'] = array(
 	'right-edittalk' => 'Мењање страна за разговор',
 	'right-edit-new' => 'Мењање страна (које нису стране за разговор)',
 	'right-readold' => 'Преглед садржаја старих ревизија и дифова',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'grouppermissions-search' => 'Grupa:',
+	'grouppermissions-dologin' => 'Prijavljivanje',
+	'grouppermissions-dosearch' => 'Idi',
+	'grouppermissions-searchlabel' => 'Potraži grupu',
+	'grouppermissions-deletelabel' => 'Obriši grupu',
+	'grouppermissions-change' => 'Promeni ovlašćenja grupa',
+	'grouppermissions-add' => 'Dodaj grupu',
+	'grouppermissions-delete' => 'Obriši grupu',
+	'grouppermissions-comment' => 'Komentar:',
+	'grouppermissions-addsuccess' => '$1 je uspešno dodata',
+	'grouppermissions-deletesuccess' => '$ je uspešno obrisana',
+	'grouppermissions-changesuccess' => 'Ovlašćenja za $1 su uspešno promenjena',
+	'grouppermissions-true' => 'True',
+	'grouppermissions-false' => 'False',
+	'grouppermissions-never' => 'Nikad',
+	'grouppermissions-sort-read' => 'Čitanje',
+	'grouppermissions-sort-edit' => 'Menjanje',
+	'grouppermissions-sort-manage' => 'Menadžment',
+	'grouppermissions-sort-admin' => 'Administracija',
+	'grouppermissions-sort-misc' => 'Razno',
+	'grouppermissions-log-add' => 'dodata grupa „$2“',
+	'grouppermissions-log-change' => 'promenjene dozvole za grupu „$2“',
+	'grouppermissions-log-delete' => 'obrisana grupa „$2“',
+	'grouppermissions-log-name' => 'Istorija dozvola grupa',
+	'grouppermissions-needjs' => "'''Upozorenje:''' JavaScript je onemogućen u vašem brauzeru. Neke pogodnosti softvera bi mogle biti onemogućene!",
+	'grouppermissions-sp-sort' => 'Sortiraj dozvole',
+	'grouppermissions-sp-save' => 'Snimi',
+	'grouppermissions-sp-success' => 'Dozvole su uspešno sortirane',
+	'grouppermissions-sp-addtype' => 'Dodaj tip sortiranja',
+	'grouppermissions-sp-addperm' => 'Dodaj dozvolu',
+	'grouppermissions-sp-remove' => 'obriši',
+	'grouppermissions-sp-deltype' => 'Obriši tip sortiranja',
+	'grouppermissions-rug-header' => 'Na ovoj strani možete da obrišete korisnike iz nekorišćenih (obrisanih) grupa.',
+	'grouppermissions-rug-success' => 'Korisnici uspešno obrisani iz nekorišćenih grupa!',
+	'grouppermissions-rug-confirm' => 'Obriši korisnike iz nekorišćenih grupa',
+	'right-grouppermissions' => 'Upravljanje dozvolama grupa',
+	'right-viewsource' => 'Pregled viki-sors zaštićenih strana',
+	'right-raw' => 'Pregled sirovih strana',
+	'right-render' => 'Pregled renderovanih strana bez navigacije',
+	'right-info' => 'Pregled informacija o stranama',
+	'right-history' => 'Pregled istorija stranica',
+	'right-search' => 'Pretraživanje Vikija',
+	'right-contributions' => 'Pregled doprinosa stranama',
+	'right-recentchanges' => 'Pregled skorašnjim izmenama',
+	'right-edittalk' => 'Menjanje strana za razgovor',
+	'right-edit-new' => 'Menjanje strana (koje nisu strane za razgovor)',
+	'right-readold' => 'Pregled sadržaja starih revizija i difova',
 );
 
 /** Seeltersk (Seeltersk)

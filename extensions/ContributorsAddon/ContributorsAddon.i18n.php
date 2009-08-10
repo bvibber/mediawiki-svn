@@ -318,6 +318,20 @@ $messages['sr-ec'] = array(
 	'contributorsaddon-desc' => 'Додаје јаваскрипт поп-апове везама ка "Главним ауторима"',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'contributorsaddon-desc' => 'Dodaje javaskript pop-apove vezama ka &quot;Glavnim autorima&quot;',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'contributorsaddon-desc' => 'Nambahan pop-up Javascript ka tumbu "Kontributor utama"',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

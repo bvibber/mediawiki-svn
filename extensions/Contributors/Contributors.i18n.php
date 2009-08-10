@@ -1230,10 +1230,12 @@ $messages['sr-ec'] = array(
 );
 
 /** latinica (latinica)
+ * @author Michaello
  * @author Sasa Stefanovic
  */
 $messages['sr-el'] = array(
 	'contributors' => 'Doprinosioci',
+	'contributors-desc' => 'Sažima spisak glavnih autora nekog članka',
 	'contributors-toolbox' => 'Glavni doprinosioci',
 	'contributors-legend' => 'Spisak glavnih doprinosioca u članku',
 	'contributors-target' => 'Naslov:',

@@ -737,6 +737,17 @@ $messages['sr-ec'] = array(
 	'intersection_noincludecats' => 'Грешка: Потребно је укључити бар једну категорију или одредити именски простор!',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'intersection-desc' => 'Daje redni spisak najskorije dodatih članaka u jednu ili više kategorija.',
+	'intersection_toomanycats' => 'Greška: Previše kategorija!',
+	'intersection_toofewcats' => 'Greška:Premalo kategorija!',
+	'intersection_noresults' => 'Greška: Nema rezulatata!',
+	'intersection_noincludecats' => 'Greška: Potrebno je uključiti bar jednu kategoriju ili odrediti imenski prostor!',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

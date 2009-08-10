@@ -141,6 +141,14 @@ $messages['id'] = array(
 	'wikiarticlefeeds_combined_description' => 'Ini merupakan sindikasi gabungan yang berasal dari beberapa sumber sindikasi.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'wikiarticlefeeds-desc' => 'Produce feed generati da pagine MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'Questo è un feed combinato, contenente elementi da diverse risorse feed.',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

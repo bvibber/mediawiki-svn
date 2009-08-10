@@ -129,6 +129,13 @@ $messages['dsb'] = array(
 	'eval_code' => 'Kod',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'eval_code' => 'Κώδικας',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -347,6 +354,13 @@ $messages['ksh'] = array(
 	'eval_code' => '<i lang="en">Code</i>',
 );
 
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'eval_code' => 'Codex',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -464,6 +478,13 @@ $messages['pt-br'] = array(
 	'eval_escape' => 'Resultado em "escape"',
 	'eval_out' => 'Resultado',
 	'eval_code' => 'Código',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'eval_code' => 'Cod',
 );
 
 /** Tarandíne (Tarandíne)

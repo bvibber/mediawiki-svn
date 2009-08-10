@@ -306,6 +306,13 @@ $messages['sr-ec'] = array(
 	'wikitextloggedinout-desc' => 'Додаје парсеру две куке, <tt>&lt;loggedin&gt;</tt> и <tt>&lt;loggedout&gt;</tt>, које приказују различити текст у зависности од тога да ли је корисник улогован, односно излогован.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'wikitextloggedinout-desc' => 'Dodaje parseru dve kuke, <tt>&lt;loggedin&gt;</tt> i <tt>&lt;loggedout&gt;</tt>, koje prikazuju različiti tekst u zavisnosti od toga da li je korisnik ulogovan, odnosno izlogovan.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

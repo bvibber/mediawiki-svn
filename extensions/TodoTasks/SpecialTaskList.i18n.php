@@ -300,6 +300,23 @@ Aby wiźeł swóju dopołnu lisćinu nadawkow, źi k %s.
 Twój pśijaśelny informěrowański system {{GRAMMAR:genitiw|%s}}',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'tasklist' => 'Λίστα εργασιών',
+	'tasklistbyproject' => 'Λίστα εργασιών βάσει εγχειρήματος',
+	'tasklistunknownproject' => 'Άγνωστο εγχείρημα',
+	'tasklistunspecuser' => 'Απροσδιόριστος χρήστης',
+	'tasklistincorrectuser' => 'Λάθος όνομα χρήστη',
+	'tasklistemail' => 'Αγαπητέ %s',
+	'tasklistemailsubject' => '[%s] Αλλαγή λίστας εργασιών',
+	'tasklistmytasks' => 'Οι εργασίες μου',
+	'tasklistchooseproj' => 'Επιλογή εγχειρήματος:',
+	'tasklistprojdisp' => 'Ανάλυση',
+	'tasklistbyname' => '== Λίστα todo για το %s ==',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -387,6 +404,7 @@ $messages['fi'] = array(
 	'tasklistbyprojname' => "Käyttäjälle '''%s''' osoitetut tehtävät",
 	'tasklistchooseproj' => 'Valitse projekti',
 	'tasklistprojdisp' => 'Näytä',
+	'tasklistbyname' => '== Tehtävälista käyttäjälle %s ==',
 );
 
 /** French (Français)
@@ -582,6 +600,13 @@ $messages['id'] = array(
 	'tasklistbyname' => '== Daftar tugas untuk %s ==',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'tasklistincorrectuser' => 'Nome utente errato',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -648,6 +673,7 @@ Sistém notifikasi panjenengan %s',
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'tasklist' => 'បញ្ជីពិភាក្សា',
@@ -661,6 +687,7 @@ $messages['km'] = array(
 	'tasklistbyprojname' => "បាន​ផ្ដល់តម្លៃ​ភារកិច្ច​នានា​ជា '''%s'''",
 	'tasklistchooseproj' => 'ជ្រើសយក​គម្រោង ៖',
 	'tasklistprojdisp' => 'បង្ហាញ',
+	'tasklistbyname' => '== បញ្ជី​កិច្ចការ​ដែលត្រូវ​ធ្វើ​ សម្រាប់​ %s ==',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1099,6 +1126,24 @@ $messages['sr-ec'] = array(
 	'tasklistmytasks' => 'Моји задаци',
 	'tasklistchooseproj' => 'Изабери пројекат:',
 	'tasklistprojdisp' => 'Прикажи',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'tasklist' => 'Spisak poslova',
+	'tasklist-parser-desc' => 'Dodaje <nowiki>{{#todo:}}</nowiki> parser funkciju za davanje zadataka',
+	'tasklist-special-desc' => 'Dodaje specijalnu stranu za pregled [[Special:TaskList|dodeljenih zadataka]]',
+	'tasklistbyproject' => 'Spisak zadataka po projektu',
+	'tasklistunknownproject' => 'Nepoznati projekat',
+	'tasklistunspecuser' => 'Neodređeni korisnik',
+	'tasklistincorrectuser' => 'Neispravno korisničko ime',
+	'tasklistemail' => 'Dragi %s',
+	'tasklistemailsubject' => '[%s] Promena spiska zadataka',
+	'tasklistmytasks' => 'Moji zadaci',
+	'tasklistchooseproj' => 'Izaberi projekat:',
+	'tasklistprojdisp' => 'Prikaži',
 );
 
 /** Seeltersk (Seeltersk)

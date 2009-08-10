@@ -47,6 +47,7 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'importfreeimages' => 'استيراد صور حرة',
@@ -62,6 +63,7 @@ $messages['ar'] = array(
 	'importfreeimages_filefromflickr' => '$1 بواسطة المستخدم <b>[$2]</b> من فليكر. المسار الأصلي',
 	'importfreeimages_promptuserforfilename' => 'من فضلك أدخل اسما لتخزين الملف به:',
 	'importfreeimages_returntoform' => "أو، اضغط <a href='$1'>هنا</a> للعودة إلى نتائج بحثك",
+	'importfreeimages_nophpflickr' => 'لم تثبّت phpFlickr، من فضلك اضبط $wgIFphpFlickr في LocalSettings.php.',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -188,6 +190,7 @@ $messages['cs'] = array(
 	'importfreeimages_filefromflickr' => '$1 od uživatele <b>[$2]</b> z Flickru. Původní URL',
 	'importfreeimages_promptuserforfilename' => 'Prosím, zadejte název cílového souboru:',
 	'importfreeimages_returntoform' => "Nebo se vraťte na <a href='$1'>výsledky vašeho vyhledávání</a>",
+	'importfreeimages_nophpflickr' => 'Nemáte naistalovaný phpFlickr. Prosím nastavte <tt>$wgIFphpFlickr</tt> ve vašem LocalSettings.php.',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -647,7 +650,7 @@ $messages['km'] = array(
 	'importfreeimages' => 'នាំចូល រូបភាព សេរី',
 	'importfreeimages-desc' => 'ផ្ដល់នូវរបៀបមួយក្នុងការ[[Special:ImportFreeImages|នាំចូលរូបភាពដែលមានអាជ្ញាប័ណ្ណត្រឹមត្រូវ]] ពី [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'ទំព័រនេះផ្ដល់លទ្ឋភាពឱ្យអ្នកស្វែងរករូបភាពដែលមានអាជ្ញាប័ណ្ណត្រឹមត្រូវពី flickr ហើយនាំចូលពូកវាមកក្នុងវិគីរបស់អ្នក។',
-	'importfreeimages_noapikey' => 'អ្នកមិនបាន​ធ្វើទម្រង់​សោ Flickr API របស់អ្នក​។ ដើម្បីធ្វើវា, ត្រូវយក​សោ​ API ពី [http://www.flickr.com/services/api/misc.api_keys.html here] រួច​កំណត់​ $wgFlickrAPIKey  ក្នុង ImportFreeImages.php ។',
+	'importfreeimages_noapikey' => 'អ្នកមិនបាន​ធ្វើទម្រង់​សោ Flickr API របស់អ្នក​។ ដើម្បីធ្វើវា, ត្រូវយក​សោ​ API ពី [http://www.flickr.com/services/api/misc.api_keys.html ទីនេះ​] រួច​កំណត់​ $wgFlickrAPIKey  ក្នុង ImportFreeImages.php ។',
 	'importfreeimages_nophotosfound' => "គ្មាន​រូបថត​ត្រូវបានរកឃើញ​សម្រាប់ការ​ស្វែងរក '$1' របស់អ្នក សូមព្យាយាម​ម្តងទៀត។​",
 	'importfreeimages_invalidurl' => 'URL "$1" មិនមែនជា​រូបភាព​ត្រឹមត្រូវ​របស់ Flickr ។',
 	'importfreeimages_owner' => 'អ្នកនិពន្ធ',
@@ -970,10 +973,13 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'importă aceasta',
+	'importfreeimages_next' => 'Înainte $1',
 );
 
 /** Tarandíne (Tarandíne)

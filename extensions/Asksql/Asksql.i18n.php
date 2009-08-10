@@ -1014,6 +1014,15 @@ $messages['sr-ec'] = array(
 	'querysuccessful' => 'Упит успешан',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'sqlquery' => 'Unesi upit',
+	'querybtn' => 'Postavi upit',
+	'querysuccessful' => 'Upit uspešan',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

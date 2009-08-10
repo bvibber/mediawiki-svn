@@ -482,6 +482,13 @@ $messages['sr-ec'] = array(
 	'poem-desc' => 'Додаје <tt>&lt;poem&gt;</tt> ознаку за форматирање песама.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'poem-desc' => 'Dodaje <tt>&lt;poem&gt;</tt> oznaku za formatiranje pesama.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

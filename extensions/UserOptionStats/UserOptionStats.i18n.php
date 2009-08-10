@@ -31,6 +31,13 @@ $messages['qqq'] = array(
 	'uos-other' => '{{Identical|Other}}',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'uos-warn' => 'PHPlot غير مثبّت!',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -120,6 +127,15 @@ $messages['dsb'] = array(
 	'uos-title' => 'Distribucija gódnotow wužywarskeje opcije $1',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'useroptionstats' => 'Προαιρετικά στατιστικά χρήστη',
+	'uos-unknown' => '*Προεπιλογή',
+	'uos-other' => '*Άλλο',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -195,6 +211,19 @@ $messages['gsw'] = array(
 	'uos-title' => 'Wärtverteilig vu dr Benutzeroption $1',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'useroptionstats' => 'סטטיסטיקות אפשרויות המשתמש',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|דף מיוחד]] שמטרתו לדווח על השימוש באפשרויות המשתמש',
+	'uos-warn' => 'התוספת PHPlot אינה מותקנת!',
+	'uos-choose' => 'בחרו באחת מאפשרויות המשתמש הבאות: $1',
+	'uos-unknown' => '*ברירת מחדל',
+	'uos-other' => '*אחר',
+	'uos-title' => 'הפצת הערכים של אפשרות המשתמש $1',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -258,6 +287,14 @@ $messages['ja'] = array(
 	'uos-unknown' => '*デフォルト',
 	'uos-other' => '*その他',
 	'uos-title' => '利用者オプション $1 の設定値の分布',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'uos-unknown' => '*លំនាំ​ដើម​',
+	'uos-other' => '*ដទៃទៀត​',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -367,8 +404,10 @@ $messages['pt'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'uos-warn' => 'PHPlot neinstalat!',
 	'uos-unknown' => '*Implicit',
 	'uos-other' => '*Altul',
 );
@@ -408,6 +447,16 @@ $messages['sr-ec'] = array(
 	'uos-choose' => 'Изаберите једну од следећих корисничких опција: $1',
 	'uos-unknown' => '*Подразумевано',
 	'uos-other' => '*Друго',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'uos-warn' => 'PHPlot nije instaliran!',
+	'uos-choose' => 'Izaberite jednu od sledećih korisničkih opcija: $1',
+	'uos-unknown' => '*Podrazumevano',
+	'uos-other' => '*Drugo',
 );
 
 /** Swedish (Svenska)

@@ -830,6 +830,7 @@ $1',
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'sign-realname' => 'Όνομα:',
@@ -847,6 +848,7 @@ $messages['el'] = array(
 	'sign-viewfield-age' => 'Ηλικία',
 	'sign-viewfield-options' => 'Επιλογές',
 	'sign-signatures' => 'Υπογραφές',
+	'sign-closed' => 'κλεισμένο',
 	'sig-anonymous' => '<i>Ανώνυμος</i>',
 	'sig-private' => '<i>Ιδιωτικός</i>',
 	'sign-viewfield-reviewcomment' => 'Σχόλιο',
@@ -1075,9 +1077,12 @@ $messages['ext'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'signdocument' => 'Allekirjoita asiakirja',
+	'sign-nodocselected' => 'Valitse asiakirja, jonka haluat allekirjoittaa.',
 	'sign-selectdoc' => 'Asiakirja',
 	'sign-error-nosuchdoc' => 'Pyytämääsi asiakirjaa ($1) ei löydy.',
 	'sign-realname' => 'Nimi',
@@ -1098,6 +1103,7 @@ $messages['fi'] = array(
 	'sign-list-hidebday' => 'Älä listaa ikää',
 	'sign-list-hideemail' => 'Älä listaa sähköpostiosoitetta',
 	'sign-submit' => 'Allekirjoita dokumentti',
+	'sign-view-selectfields' => '<b>Näytettävät kentät:</b>',
 	'sign-viewfield-timestamp' => 'Aikaleima',
 	'sign-viewfield-realname' => 'Nimi',
 	'sign-viewfield-address' => 'Osoite',
@@ -3218,6 +3224,7 @@ $messages['rm'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
@@ -3233,16 +3240,22 @@ $messages['ro'] = array(
 	'sign-list-hidephone' => 'Nu afişa telefonul',
 	'sign-list-hidebday' => 'Nu afişa vârsta',
 	'sign-list-hideemail' => 'Nu afişa adresa de e-mail',
+	'sign-viewfield-entryid' => 'ID intrare',
+	'sign-viewfield-timestamp' => 'Data şi ora',
 	'sign-viewfield-realname' => 'Nume',
 	'sign-viewfield-address' => 'Adresă',
 	'sign-viewfield-city' => 'Oraş',
+	'sign-viewfield-state' => 'Stat',
 	'sign-viewfield-country' => 'Ţară',
+	'sign-viewfield-zip' => 'Cod poştal',
 	'sign-viewfield-ip' => 'Adresă IP',
+	'sign-viewfield-agent' => 'Agent utilizator',
 	'sign-viewfield-phone' => 'Telefon',
 	'sign-viewfield-email' => 'E-mail',
 	'sign-viewfield-age' => 'Vârstă',
 	'sign-viewfield-options' => 'Opţiuni',
 	'sign-signatures' => 'Semnături',
+	'sign-closed' => 'închis',
 	'sig-private' => '<i>Privat</i>',
 	'sign-sigdetails' => 'Detaliile semnăturii',
 	'sign-viewfield-reviewcomment' => 'Comentariu',
@@ -3557,6 +3570,95 @@ $1',
 	'sign-uniquequery-similarphone' => 'Сличан телефон',
 	'sign-uniquequery-similaremail' => 'Сличан имејл',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] потписан [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'signdocument' => 'Potpiši dokument',
+	'sign-nodocselected' => 'Molimo Vas, izaberite dokument koji želite da potpišete',
+	'sign-selectdoc' => 'Dokument:',
+	'sign-docheader' => '<div class="noarticletext">Molimo Vas da koristite ovu formu kao biste potpisali dokument "[[$1]]", prikazan ispod.
+Pročitajte celi dokument i, ako želite da potvrdite da ga se sa njegovim sadržajem slažete, popunite potrebna polja i potpišite ga.</div>',
+	'sign-error-nosuchdoc' => 'Dokument koji ste zatražili ($1) ne postoji.',
+	'sign-realname' => 'Ime:',
+	'sign-address' => 'Adresa:',
+	'sign-city' => 'Grad:',
+	'sign-state' => 'Država:',
+	'sign-zip' => 'Poštanski kod:',
+	'sign-country' => 'Zemlja:',
+	'sign-phone' => 'Telefonski broj:',
+	'sign-bday' => 'Starost:',
+	'sign-email' => 'E-pošta:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> označava obavezno polje.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Napomena: neprikazane informacije će još uvek biti vidljive moderatorima.</i></small>',
+	'sign-list-anonymous' => 'Prikaži kao anonimno',
+	'sign-list-hideaddress' => 'Ne prikazuj adresu',
+	'sign-list-hideextaddress' => 'Ne prikazuj grad, državu, poštanski kod, ili zemlju',
+	'sign-list-hidephone' => 'Ne prijazuj telefon',
+	'sign-list-hidebday' => 'Ne prikazuj starost',
+	'sign-list-hideemail' => 'Ne prikazuj imejl',
+	'sign-submit' => 'Potpiši dokument',
+	'sign-information' => '<div class="noarticletext">Hvala Vam što ste odvojili vremen da pročitate ovaj dokument.
+Ako se slažete s njim, molimo Vas da pokažete vašu podršku popunjavanjem obaveznih polja ispod i klikom na dugme "Potpiši dokument".
+
+Molimo Vas da proverite da li ste vaše lične informacije uneli ispravno i da ste nam dali dovoljno informacija kako bismo Vas mogli kontaktirati zarad provere identiteta.
+Primetite da će Vaša IP adresa i ostale identifikujuće informacije biti snimljenje kroz ovu formu i korišćene od strane moderatora, kako bi se eliminisala dupla slanja i potvrdila tačnost vaših ličnih podataka.
+Pošto korišćenje otvorenih i anonimnih proksija umanjuje naše mogćnosti da ispunimo ovaj zadatak, potpisi poslati sa njih najverovatnije neće biti uračunati.
+Ako ste trenutno povezani na internet preko proksi servera, molimo Vas da se diskonektujete s njega i koristite standardnu konekciju tokom potpisivanja dokumenta.</div>
+
+$1',
+	'sig-success' => 'Uspešno ste potpisali dokument.',
+	'sign-view-selectfields' => '<b>Polja za prikaz:</b>',
+	'sign-viewfield-entryid' => 'ID unosa',
+	'sign-viewfield-timestamp' => 'Vremenska marka',
+	'sign-viewfield-realname' => 'Ime',
+	'sign-viewfield-address' => 'Adresa',
+	'sign-viewfield-city' => 'Grad',
+	'sign-viewfield-state' => 'Država',
+	'sign-viewfield-country' => 'Zemlja',
+	'sign-viewfield-zip' => 'Poštanski kod',
+	'sign-viewfield-ip' => 'IP adresa',
+	'sign-viewfield-agent' => 'Brauzer korisnika',
+	'sign-viewfield-phone' => 'Telefon',
+	'sign-viewfield-email' => 'Imejl',
+	'sign-viewfield-age' => 'Starost',
+	'sign-viewfield-options' => 'Opcije',
+	'sign-viewsigs-intro' => 'Ispod su prikazani potpisi snimljeni za <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Potpisivanje je trenutno omogućeno za ovaj dokument.',
+	'sign-sigadmin-close' => 'Onemogući potpisivanje',
+	'sign-sigadmin-currentlyclosed' => 'Potpisivanje je trenutno onemogućeno za ovaj dokument.',
+	'sign-sigadmin-open' => 'Omogući potpisivanje',
+	'sign-signatures' => 'Potpisi',
+	'sign-sigadmin-closesuccess' => 'Potpisivanje uspešno onemogućeno.',
+	'sign-sigadmin-opensuccess' => 'Potpisivanje uspešno omogućeno.',
+	'sign-viewsignatures' => 'pogledaj potpise',
+	'sign-closed' => 'zatvoreno',
+	'sign-error-closed' => 'Potpisivanje ovog dokumenta je trenutno onemogućeno.',
+	'sig-anonymous' => '<i>Anonimno</i>',
+	'sig-private' => '<i>Privatno</i>',
+	'sign-sigdetails' => 'Detalji o potpisu',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|razgovor]] • <!--
+-->[[Special:Contributions/$1|doprinosi]] • <!--
+-->[<a href="http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on">http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on</a> WHOIS] • <!--
+-->[<a href="http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on">http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on</a> RDNS] • <!--
+-->[<a href="http://www.robtex.com/rbls/$1.html">http://www.robtex.com/rbls/$1.html</a> RBLs] • <!--
+-->[[Special:BlockIP/$1|blokiraj korisnika]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} istorija blokiranja] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Zalepljen',
+	'sign-viewfield-reviewcomment' => 'Komentar',
+	'sign-detail-uniquequery' => 'Slični entiteti',
+	'sign-detail-uniquequery-run' => 'Izvrši zahtev',
+	'sign-review-comment' => 'Komentar',
+	'sign-uniquequery-similarname' => 'Slično ime',
+	'sign-uniquequery-similaraddress' => 'Slična adresa',
+	'sign-uniquequery-similarphone' => 'Sličan telefon',
+	'sign-uniquequery-similaremail' => 'Sličan imejl',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] potpisan [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Seeltersk (Seeltersk)

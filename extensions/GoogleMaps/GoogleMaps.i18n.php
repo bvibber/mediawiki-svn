@@ -3964,11 +3964,14 @@ $wgGoogleMapsMessages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $wgGoogleMapsMessages['ro'] = array(
 	'gm-balloon-title' => 'Titlu:',
 	'gm-remove' => 'elimină',
+	'gm-tab-title' => 'Titlu etichetă',
+	'gm-tab' => 'Etichetă',
 	'gm-save-point' => 'salvează &amp; închide',
 	'gm-load-map' => 'Încarcă hartă',
 	'gm-clip-result' => 'Adaugă la hartă',
@@ -3979,19 +3982,24 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-refresh-points' => 'Reactualizează toate punctele',
 	'gm-width' => 'Lăţime',
 	'gm-height' => 'Înălţime',
+	'gm-scale-control' => 'Scală',
 	'gm-zoom-control' => 'Navigare',
 	'gm-large' => 'Mare',
 	'gm-medium' => 'Mediu',
 	'gm-small' => 'Mic',
+	'gm-no-zoom-control' => 'Niciunul',
 	'gm-yes' => 'Da',
 	'gm-no' => 'Nu',
+	'gm-no-search-preface' => 'Apăsaţi pe hartă pentru a adăuga un punct.',
 	'gm-search' => 'Caută',
+	'gm-clear-search' => 'şterge rezultatele căutării',
 	'gm-meters' => 'metri',
 	'gm-miles' => 'mile',
 	'gm-save-path' => 'Salvează',
 	'gm-edit-path' => 'adaugă puncte',
 	'gm-show-path' => 'arată puncte',
 	'gm-color-path' => 'schimbă culoare',
+	'gm-line-color' => 'Culoarea liniei',
 	'gm-opacity' => 'Opacitate',
 	'gm-line-width' => 'Lăţime',
 	'gm-make-map' => 'creează o hartă',
@@ -4470,6 +4478,75 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-mars' => 'Марс',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$wgGoogleMapsMessages['sr-el'] = array(
+	'gm-desc' => 'Lako pravi mape, pomoću Vikificiranih markera',
+	'gm-incompatible-browser' => 'Kako bi videli mapu koja se prikazuje ovde, morate da koristite kompatibilan veb brauzer.',
+	'gm-incompatible-browser-link' => 'Kliknite ovde da vidite spisak kompatibilnih brauzera.',
+	'gm-no-editor' => 'Žao nam je, vaš brauzer ne podržava interaktivne mape. Probajte poslednju verziju <a href="<a href="http://www.microsoft.com/ie">Internet">http://www.microsoft.com/ie">Internet</a> Eksplorera</a> (Windows) ili <a href="<a href="http://www.mozilla.org/products/firefox">Fajerfoksa</a>">http://www.mozilla.org/products/firefox">Fajerfoksa</a></a> (Windows, Mac, and Linux).',
+	'gm-balloon-title' => 'Naslov:',
+	'gm-balloon-link-article' => 'Veza ka ovoj stranici (opciono):',
+	'gm-make-marker' => 'Naslov (viki kod):',
+	'gm-remove' => 'ukloni',
+	'gm-caption' => 'Naziv',
+	'gm-tab-title' => 'Naslov taba',
+	'gm-tab' => 'Tab',
+	'gm-start-path' => 'započni putanju',
+	'gm-trace-area' => 'prati neki površinu',
+	'gm-save-point' => 'Snimi &amp; zatvori',
+	'gm-load-map-from-article' => 'Učitaj mapu sa ove stranice:',
+	'gm-no-maps' => 'Nema mapa na ovoj stranici za učitavanje.',
+	'gm-refresh-list' => 'Osveži spisak',
+	'gm-load-map' => 'Učitaj mapu',
+	'gm-clip-result' => 'Dodaj na mapu',
+	'gm-no-results' => 'Nema rezultata',
+	'gm-searching' => 'pretraživanje...',
+	'gm-map' => 'Mapa',
+	'gm-are-you-sure' => 'Da li ste sigurni?',
+	'gm-clear-all-points' => 'Obriši sve bodove',
+	'gm-refresh-points' => 'Osveži tačke',
+	'gm-width' => 'Širina',
+	'gm-height' => 'Visina',
+	'gm-overview-control' => 'Pregled',
+	'gm-zoom-control' => 'Navigacija',
+	'gm-large' => 'Velika',
+	'gm-medium' => 'Srednja',
+	'gm-small' => 'Mala',
+	'gm-no-zoom-control' => 'Nema',
+	'gm-yes' => 'Da',
+	'gm-no' => 'Ne',
+	'gm-search-preface' => 'Klikni mapu za dodavanje tačke, ili skok na grad, zemlju adresu ili preduzeće:',
+	'gm-geocode-preface' => 'Klikni mapu za dodavanje tačke, ili skok na grad, zemlju ili adresu:',
+	'gm-no-search-preface' => 'Klikno na mapu za dodavanje tačke.',
+	'gm-search' => 'Pretraga',
+	'gm-clear-search' => 'obriši rezultate pretrage',
+	'gm-meters' => 'metri',
+	'gm-miles' => 'milje',
+	'gm-editing-path' => 'Klikni mapu za dodavanje novih tačaka ovoj putanji.',
+	'gm-save-path' => 'Snimi',
+	'gm-edit-path' => 'dodaj bodove',
+	'gm-show-path' => 'pokaži bodove',
+	'gm-color-path' => 'promeni boju',
+	'gm-color-fill' => 'izmeni ispunjavajuću boju',
+	'gm-add-fill' => 'ispuni površinu',
+	'gm-fill-color' => 'Boja ispunjavanja',
+	'gm-line-color' => 'Boja linije',
+	'gm-opacity' => 'Neprozračnost',
+	'gm-line-width' => 'Širina',
+	'gm-make-map' => 'napravi mapu',
+	'gm-hide-map' => 'sakrij mapu',
+	'gm-back' => 'nazad',
+	'gm-kml-include' => 'Spoljni KML/GeoRSS:',
+	'gm-kml-include-link' => 'dodaj na mapu',
+	'gm-kml-loading' => 'učitavanje...',
+	'gm-kml-export' => 'Izvezi ovu mapu u KML',
+	'gm-earth' => 'Zemlja',
+	'gm-moon' => 'Mesec',
+	'gm-mars' => 'Mars',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -4545,9 +4622,11 @@ $wgGoogleMapsMessages['stq'] = array(
 );
 
 /** Sundanese (Basa Sunda)
+ * @author Irwangatot
  * @author Kandar
  */
 $wgGoogleMapsMessages['su'] = array(
+	'gm-desc' => 'Nyieun peta kalayan gampang maké tanda wiki',
 	'gm-incompatible-browser' => "Ngarah bisa nempo peta nu bisa asup ka ieu rohangan, anjeun kudu migunakeun ''browser'' ramat nu kompatibel.",
 	'gm-incompatible-browser-link' => "Klik di dieu pikeun nempo béréndélan ''browser'' nu kompatibel.",
 	'gm-no-editor' => 'Hanjakal, \'\'browser\'\' anjeun teu ngarojong fitur peta interaktif.

@@ -475,6 +475,14 @@ $messages['sr-ec'] = array(
 	'categoryonupload-label' => 'Категорија:',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'categoryonupload-desc' => 'Traži od korisnika da izabere kategoriju kada šalje fajl',
+	'categoryonupload-label' => 'Kategorija:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

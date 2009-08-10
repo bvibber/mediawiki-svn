@@ -1091,6 +1091,27 @@ $messages['sr-ec'] = array(
 	'amazonplus-less' => 'мање',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'amazonplus-desc' => 'Široko podesiva ekstenzija za prikaz informacija sa Amazona',
+	'amazonplus-nores' => 'Greška: Nema nađenih rezultata!',
+	'amazonplus-noidres' => 'Greška: Nije nađen ID proizvoda!',
+	'amazonplus-fgcerr' => 'Greška: Podaci sa Amazona su nedostupni!',
+	'amazonplus-slserr' => 'Greška: Podaci sa Amazona nisu mogli biti parsirani!',
+	'amazonplus-used' => 'polovno',
+	'amazonplus-german' => 'Nemački jezik',
+	'amazonplus-french' => 'Francuski jezik',
+	'amazonplus-japanese' => 'Japanski jezik',
+	'amazonplus-amazon' => 'cena na Amazonu',
+	'amazonplus-new' => 'novo',
+	'amazonplus-none' => 'Nema više raspoloživih primeraka ovog poizvoda',
+	'amazonplus-cp-none' => 'Ništa',
+	'amazonplus-more' => 'više',
+	'amazonplus-less' => 'manje',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -1170,6 +1191,27 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'amazonplus-more' => 'barak liu',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'amazonplus-desc' => 'ส่วนเพิ่มเติมที่แสดงข้อมูลจาก Amazon ที่สามารถปรับแต่งได้หลากหลาย',
+	'amazonplus-nores' => 'เกิดความผิดพลาด: ไม่พบข้อมูล!',
+	'amazonplus-noidres' => 'เิกิดความผิดพลาด: ไม่พบหมายเลขสินค้าดังกล่าว!',
+	'amazonplus-fgcerr' => 'เิกิดความผิดพลาด: ไม่สามารถดึงข้อมูลจาก Amazon ได้!',
+	'amazonplus-slserr' => 'เกิดความผิดพลาด: ไม่สามารถส่งข้อมูลไปยัง Amazon ได้!',
+	'amazonplus-used' => 'ใช้แล้ว',
+	'amazonplus-german' => 'เยอรมัน',
+	'amazonplus-french' => 'ฝรั่งเศส',
+	'amazonplus-japanese' => 'ญี่ปุ่น',
+	'amazonplus-amazon' => 'ราคาจาก Amazon',
+	'amazonplus-new' => 'ใหม่',
+	'amazonplus-none' => 'ไม่มีรายการขายสำหรับสิ่งนี้',
+	'amazonplus-cp-none' => 'ไม่มี',
+	'amazonplus-more' => 'มากกว่า',
+	'amazonplus-less' => 'น้อยกว่า',
 );
 
 /** Tagalog (Tagalog)

@@ -122,6 +122,13 @@ $messages['dsb'] = array(
 	'catboxattop-categories' => 'Kategorije',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'catboxattop-categories' => 'Κατηγορίες',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -226,6 +233,14 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'catboxattop-desc' => 'Menambahkan sebuah kotak kategori di kanan atas halaman',
 	'catboxattop-categories' => 'Kategori',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'catboxattop-desc' => "Aggiunge una casella della categoria nell'angolo in alto a destra delle pagine",
+	'catboxattop-categories' => 'Categorie',
 );
 
 /** Japanese (日本語)
@@ -396,6 +411,14 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'catboxattop-desc' => 'Додаје кутијицу за категорије у горње десне углове чланака',
 	'catboxattop-categories' => 'Категорија',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'catboxattop-desc' => 'Dodaje kutijicu za kategorije u gornje desne uglove članaka',
+	'catboxattop-categories' => 'Kategorija',
 );
 
 /** Seeltersk (Seeltersk)

@@ -1283,6 +1283,26 @@ $messages['sr-ec'] = array(
 	'disabledusers' => 'Онемогућени корисници',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'passwordreset' => 'Obnavljanje lozinke',
+	'passwordreset-invalidusername' => 'Neispravno korisničko ime',
+	'passwordreset-emptyusername' => 'Prazno korisničko ime',
+	'passwordreset-nopassmatch' => 'Lozinke se ne poklapaju',
+	'passwordreset-username' => 'Korisničko ime:',
+	'passwordreset-newpass' => 'Nova lozinka:',
+	'passwordreset-confirmpass' => 'Potvrdi lozinku:',
+	'passwordreset-submit' => 'Obnovi lozinku',
+	'passwordreset-success' => 'Lozinka je obnovljena za korisnički ID: $1',
+	'passwordreset-disableuser' => 'Onemogućiti korisnički nalog?',
+	'passwordreset-disableuserexplain' => '(postavlja neispravan heš lozinke — korisnik ne može da se uloguje)',
+	'passwordreset-disablesuccess' => 'Nalog je onemogućen za korisnički ID: $1',
+	'passwordreset-accountdisabled' => 'Nalog je onemogućen',
+	'disabledusers' => 'Onemogućeni korisnici',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

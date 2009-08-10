@@ -192,6 +192,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'emergencydesysop-reason' => 'Αιτία για την αφαίρεση:',
 	'emergencydesysop-submit' => 'Υποβολή',
 	'emergencydesysop-nogroups' => 'Κανένα',
 );
@@ -676,10 +677,13 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'emergencydesysop-reason' => 'Motiv pentru ştergere',
+	'emergencydesysop-submit' => 'Trimite',
+	'emergencydesysop-nogroups' => 'Niciunul',
 	'emergencydesysop-invalidtarget' => 'Utilizatorul ţintă nu există.',
 );
 
@@ -743,6 +747,26 @@ $messages['sr-ec'] = array(
 	'emergencydesysop-blocked' => 'Не можете да приступите овој страни док сте под блоком.',
 	'emergencydesysop-noright' => 'Немате права приступа, потребна да бисте приступили овој страни',
 	'right-emergencydesysop' => 'Омогућава администратору да одузме администраторска права себи и другом администратору',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'emergencydesysop' => 'Skidanje administratorskih prava za slučaj nužde',
+	'emergencydesysop-desc' => 'Omogućuje administratoru da skine sopstvena prava da bi ih skinuo i drugom administratoru',
+	'emergencydesysop-title' => 'Uklanjanje administratorskih prava sa sopstvenog naloga i naloga drugog administratora',
+	'emergencydesysop-otheradmin' => 'Drugi administrator, čija prava treba ukloniti',
+	'emergencydesysop-reason' => 'Razlog za uklanjanje',
+	'emergencydesysop-submit' => 'Potvrdi',
+	'emergencydesysop-incomplete' => 'Potrebno je popuniti sva polja forme, molim Vas da pokušate ponovo.',
+	'emergencydesysop-notasysop' => 'Ciljani korisnik nije u grupi administratora.',
+	'emergencydesysop-nogroups' => 'Nepopunjeno',
+	'emergencydesysop-done' => 'Akcija je završena. Vaša i administratorska prava [[$1]] su uklonjena.',
+	'emergencydesysop-invalidtarget' => 'Ciljani korisnik ne postoji.',
+	'emergencydesysop-blocked' => 'Ne možete da pristupite ovoj strani dok ste pod blokom.',
+	'emergencydesysop-noright' => 'Nemate prava pristupa, potrebna da biste pristupili ovoj strani',
+	'right-emergencydesysop' => 'Omogućava administratoru da oduzme administratorska prava sebi i drugom administratoru',
 );
 
 /** Swedish (Svenska)

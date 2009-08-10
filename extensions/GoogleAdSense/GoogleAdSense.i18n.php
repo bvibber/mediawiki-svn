@@ -375,6 +375,13 @@ $messages['sr-ec'] = array(
 	'googleadsense-desc' => 'Додаје [http://www.google.com/adsense Гуглов AdSense] сајдбару Вашег пројекта',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'googleadsense-desc' => 'Dodaje [<a href="http://www.google.com/adsense">http://www.google.com/adsense</a> Guglov AdSense] sajdbaru Vašeg projekta',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -204,8 +204,12 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'filelist' => 'Λίστα αρχείων',
+	'filelist-show-list' => 'Εμφάνιση λίστας',
+	'filelist-show-gallery' => 'Εμφάνιση συλλογής',
 	'filelist-image-desc' => 'ανεβ',
 );
 
@@ -694,6 +698,17 @@ $messages['sr-ec'] = array(
 	'filelist-show-list' => 'Прикажи списак',
 	'filelist-show-gallery' => 'Прикажи галерију',
 	'filelist-image-desc' => 'опис',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'filelist' => 'Spisak fajlova',
+	'filelist-desc' => '[[Special:Filelist|Specijalna strana]] za spiskove poslatih fajlova',
+	'filelist-show-list' => 'Prikaži spisak',
+	'filelist-show-gallery' => 'Prikaži galeriju',
+	'filelist-image-desc' => 'opis',
 );
 
 /** Sranan Tongo (Sranantongo) */

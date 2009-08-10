@@ -1485,10 +1485,20 @@ $messages['sr-ec'] = array(
 );
 
 /** latinica (latinica)
+ * @author Michaello
  * @author לערי ריינהארט
  */
 $messages['sr-el'] = array(
 	'sitematrix' => 'Tabela svih vikija',
+	'sitematrix-summary' => 'Ova posebna strana lista sve Vikimedijine vikije.',
+	'sitematrix-desc' => 'Prikazuje [[Special:SiteMatrix|spisak Vikimedijinih vikija]].',
+	'sitematrix-language' => 'Jezik',
+	'sitematrix-project' => 'Ime projekta, međuprojekatska veza i međuviki veza.',
+	'sitematrix-others' => 'Ostali Vikimedijini projekti.',
+	'sitematrix-total' => "'''Ukupan zbir: $1.'''",
+	'sitematrix-sitetotal' => 'ukupno',
+	'sitematrix-private' => 'privatno',
+	'sitematrix-fishbowl' => 'zabrana menjanja',
 );
 
 /** Swati (SiSwati)

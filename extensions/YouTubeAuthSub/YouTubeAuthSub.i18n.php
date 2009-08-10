@@ -694,13 +694,28 @@ Por favor, sé paciente.',
 );
 
 /** Estonian (Eesti)
+ * @author Avjoska
  * @author KalmerE.
  */
 $messages['et'] = array(
+	'youtubeauthsub' => "Lae üles YouTube'i video",
 	'youtubeauthsub_title' => 'Pealkiri',
 	'youtubeauthsub_description' => 'Kirjeldus',
 	'youtubeauthsub_password' => 'YouTube salasõna',
 	'youtubeauthsub_username' => 'YouTube kasutajanimi',
+	'youtubeauthsub_keywords' => 'Võtmesõnad',
+	'youtubeauthsub_category' => 'Kategooria',
+	'youtubeauthsub_submit' => 'Saada',
+	'youtubeauthsub_clickhere' => "Kliki siia, et YouTube'i sisse logida",
+	'youtubeauthsub_authsubinstructions' => "Enne video üleslaadimist on vajalik YouTube'i sisselogimine.",
+	'youtubeauthsub_uploadhere' => 'Lae oma video üles siit:',
+	'youtubeauthsub_uploadbutton' => 'Lae üles',
+	'youtubeauthsub_summary' => "YouTube'i video üleslaadimine",
+	'youtubeauthsub_uploading' => 'Sinu videot laetakse üles.
+Ole kannatlik.',
+	'youtubeauthsub_jserror_nokeywords' => 'Palun sisesta 1 või rohkem võtmesõnu.',
+	'youtubeauthsub_jserror_notitle' => 'Palun sisesta videole pealkiri.',
+	'youtubeauthsub_jserror_nodesc' => 'Palun sisesta videole kirjeldus.',
 );
 
 /** Basque (Euskara)
@@ -2500,6 +2515,44 @@ $messages['sr-ec'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'Молимо Вас, унесите једну или више кључних речи.',
 	'youtubeauthsub_jserror_notitle' => 'Молимо Вас, унесите наслов видеа.',
 	'youtubeauthsub_jserror_nodesc' => 'Молимо Вас, унесите опис видеа.',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'youtubeauthsub' => 'Slanje videa sa Jutuba',
+	'youtubeauthsub-desc' => 'Omogući korisnicima da [[Special:YouTubeAuthSub|šalju videe]] direktno na Jutub',
+	'youtubeauthsub_info' => 'Popunite sledeći formukar kako biste poslali video na Jutub i potom ga uključili na stranu:',
+	'youtubeauthsub_title' => 'Naslov:',
+	'youtubeauthsub_description' => 'Opis',
+	'youtubeauthsub_password' => 'Lozinka na Jutubu',
+	'youtubeauthsub_username' => 'Korisničko ime na Jutubu',
+	'youtubeauthsub_keywords' => 'Ključne reči',
+	'youtubeauthsub_category' => 'Kategorija',
+	'youtubeauthsub_submit' => 'Prihvati',
+	'youtubeauthsub_clickhere' => 'Kliknite ovde da biste se ulogovali na Jutub',
+	'youtubeauthsub_tokenerror' => 'Greška pri generisanju autorizacionog ključa, pokušajte sa osveživanjem stranice.',
+	'youtubeauthsub_success' => 'Čestitamo!
+Vaš video je poslat.
+<a href=\'<a href="http://www.youtube.com/watch?v=$1">http://www.youtube.com/watch?v=$1</a>\'>Pogledajte svoj video</a>.
+Moguće je da Vaš video neće biti odmah dostupan, jer Jutubu treba vremena da ga obradi.
+
+Da biste uključili svoj video na Viki-stranu, ubacite sledeći kod u nju:
+<code>{{&#35;ev:youtube|$1}}</code>',
+	'youtubeauthsub_authsubinstructions' => 'Da biste poslali video, prvo morate da budete ulogovani na Jutubu.',
+	'youtubeauthsub_uploadhere' => 'Pošaljite Vaš video odavde:',
+	'youtubeauthsub_uploadbutton' => 'Slanje',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[<a href="http://www.youtube.com/watch?v=$1">http://www.youtube.com/watch?v=$1</a> Pogledajte ovaj video]',
+	'youtubeauthsub_summary' => 'Slanje videa na Jutub.',
+	'youtubeauthsub_uploading' => 'Ovaj video se upravo šalje.
+Molimo Vas, budite strpljivi.',
+	'youtubeauthsub_viewpage' => 'Takođe možete da [[$1|pogledate svoj video]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Molimo Vas, unesite jednu ili više ključnih reči.',
+	'youtubeauthsub_jserror_notitle' => 'Molimo Vas, unesite naslov videa.',
+	'youtubeauthsub_jserror_nodesc' => 'Molimo Vas, unesite opis videa.',
 );
 
 /** Seeltersk (Seeltersk)

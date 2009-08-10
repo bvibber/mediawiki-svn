@@ -565,6 +565,11 @@ $messages['et'] = array(
 	'changeauthor-changeauthors-single' => 'Muuda autorit',
 	'changeauthor-invalid-username' => 'Kehtetu kasutajanimi "$1".',
 	'changeauthor-nosuchuser' => 'Ei ole sellist kasutajat nagu "$1".',
+	'changeauthor-weirderror' => 'Väga veider viga ilmnes.
+
+Palun ürita uuesti.
+
+Kui see viga kordub, on ilmselt viga andmebaasis.',
 );
 
 /** Basque (Euskara)
@@ -1684,6 +1689,29 @@ $messages['sr-ec'] = array(
 	'changeauthor-logentry' => 'Промењен аутор $2 на $1, са $3 на $4',
 	'changeauthor-logpagename' => 'Историја промене аутора',
 	'right-changeauthor' => 'Промени аутора ревизије',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'changeauthor' => 'Promeni autora revizije',
+	'changeauthor-desc' => 'Omogući promene autora revizija',
+	'changeauthor-title' => 'Promeni autora neke revizije',
+	'changeauthor-search-box' => 'Pretraži revizije',
+	'changeauthor-pagename-or-revid' => 'Ime stranice ili ID revizije:',
+	'changeauthor-pagenameform-go' => 'Idi',
+	'changeauthor-comment' => 'Komentar:',
+	'changeauthor-changeauthors-multi' => 'Promeni {{PLURAL:$1|autora|autore}}',
+	'changeauthor-changeauthors-single' => 'Promeni autora',
+	'changeauthor-invalid-username' => 'Pogrešno korisničko ime &quot;$1&quot;.',
+	'changeauthor-nosuchuser' => 'Nema korisnika &quot;$1&quot;.',
+	'changeauthor-revview' => 'Revizija #$1 ili $2',
+	'changeauthor-nosuchtitle' => 'Ne postoji stranica pod nazivom &quot;$1&quot;.',
+	'changeauthor-success' => 'Baš zahtev je bio uspešno obrađen.',
+	'changeauthor-logentry' => 'Promenjen autor $2 na $1, sa $3 na $4',
+	'changeauthor-logpagename' => 'Istorija promene autora',
+	'right-changeauthor' => 'Promeni autora revizije',
 );
 
 /** Seeltersk (Seeltersk)

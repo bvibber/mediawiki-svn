@@ -253,6 +253,13 @@ $messages['sr-ec'] = array(
 	'Editsectionhilitelink-desc' => 'Истиче одговарајући одељак стране када се мишем пређе преко везе за његову измену',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'Editsectionhilitelink-desc' => 'Ističe odgovarajući odeljak strane kada se mišem pređe preko veze za njegovu izmenu',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -710,6 +710,14 @@ $messages['sr-ec'] = array(
 	'contrib-tracking-button' => 'Настави',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'contrib-tracking-error' => 'Greška',
+	'contrib-tracking-button' => 'Nastavi',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

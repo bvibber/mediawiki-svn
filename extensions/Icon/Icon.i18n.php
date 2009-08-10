@@ -471,9 +471,11 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'icon-badimage' => 'Imagine coruptă',
 	'icon-badwidth' => 'Lăţime incorectă',
 );
 
@@ -511,6 +513,15 @@ $messages['sr-ec'] = array(
 	'icon-badimage' => 'Неисправна слика',
 	'icon-badwidth' => 'Лоша ширина',
 	'icon-desc' => 'Омогућује коришћење слика као икона и њихових спољашњих веза',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'icon-badimage' => 'Neispravna slika',
+	'icon-badwidth' => 'Loša širina',
+	'icon-desc' => 'Omogućuje korišćenje slika kao ikona i njihovih spoljašnjih veza',
 );
 
 /** Seeltersk (Seeltersk)

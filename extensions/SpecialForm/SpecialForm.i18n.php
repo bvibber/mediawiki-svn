@@ -302,9 +302,19 @@ Pšosym wupołń {{PLURAL:$2|jo|jej|je|je}}.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'form' => 'Φόρμα',
+	'formnoname' => 'Κανένα όνομα φόρμας',
+	'formbadname' => 'Κακό όνομα φόρμας',
+	'formpattern' => '$1-φόρμα',
+	'formtitlepattern' => 'Προσθήκη νέου $1',
 	'formsave' => 'Αποθηκεύστε',
+	'formarticleexists' => 'Η σελίδα υπάρχει',
+	'formarticleexiststext' => 'Η σελίδα [[$1]] υπάρχει ήδη.',
+	'formbadpagename' => 'Κακό όνομα σελίδας',
+	'formsaveerror' => 'Σφάλμα στην αποθήκευση της φόρμας',
 );
 
 /** Esperanto (Esperanto)
@@ -1139,6 +1149,14 @@ $messages['so'] = array(
 $messages['sr-ec'] = array(
 	'formsave' => 'Сачувај',
 	'formarticleexists' => 'Страна постоји',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'formsave' => 'Sačuvaj',
+	'formarticleexists' => 'Strana postoji',
 );
 
 /** Seeltersk (Seeltersk)

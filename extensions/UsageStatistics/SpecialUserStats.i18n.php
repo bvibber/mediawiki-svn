@@ -498,15 +498,32 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'specialuserstats' => 'Στατιστικά χρήσης',
 	'usagestatistics' => 'Στατιστικά χρήσης',
+	'usagestatisticsfor' => '<h2>Στατιστικά χρήσης για τον [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Στατιστικά χρήσης για όλους τους χρήστες</h2>',
+	'usagestatisticsinterval' => 'Διάστημα',
 	'usagestatisticstype' => 'Τύπος',
+	'usagestatisticsstart' => 'Ημερομηνία έναρξης',
+	'usagestatisticsend' => 'Ημερομηνία λήξης',
+	'usagestatisticssubmit' => 'Παραγωγή στατιστικών',
+	'usagestatisticsnostart' => 'Παρακαλώ καταχωρήστε μια ημερομηνία έναρξης',
+	'usagestatisticsnoend' => 'Παρακαλώ καταχωρήστε μια ημερομηνία λήξης',
+	'usagestatisticsbadstartend' => '<b>Κακή ημερομηνία <i>έναρξης</i> και/ή <i>λήξης</i>!</b>',
 	'usagestatisticsintervalday' => 'Ημέρα',
 	'usagestatisticsintervalweek' => 'Εβδομάδα',
 	'usagestatisticsintervalmonth' => 'Μήνας',
+	'usagestatisticsincremental' => 'Επαυξητικό',
+	'usagestatisticsincremental-text' => 'επαυξητικό',
+	'usagestatisticscumulative' => 'Συσσωρευτικό',
+	'usagestatisticscumulative-text' => 'συσσωρευτικό',
 	'usagestatisticscalselect' => 'Επιλέξτε',
+	'usagestatistics-editindividual' => 'Μεμονωμένα στατιστικά επεξεργασιών του χρήστη $1',
+	'usagestatistics-editpages' => 'Μεμονωμένα στατιστικά σελίδων του χρήστη $1',
+	'right-viewsystemstats' => 'Εμφάνιση [[Special:UserStats|στατιστικών χρήσης του βίκι]]',
 );
 
 /** Esperanto (Esperanto)
@@ -953,12 +970,28 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'specialuserstats' => 'Statistik penggunaan',
 	'usagestatistics' => 'Statistik penggunaan',
+	'usagestatistics-desc' => 'Perlihatkan statistik pengguna individual dan keseluruhan wiki',
+	'usagestatisticsfor' => '<h2>Statistik untuk [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistik untuk seluruh pengguna</h2>',
+	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticstype' => 'Tipe',
+	'usagestatisticsstart' => 'Tanggal mulai',
+	'usagestatisticsend' => 'Tanggal selesai',
+	'usagestatisticssubmit' => 'Tunjukkan statistik',
+	'usagestatisticsnostart' => 'Masukkan tanggal mulai',
+	'usagestatisticsnoend' => 'Masukkan tanggal selesai',
+	'usagestatisticsbadstartend' => '<b>Tanggal <i>mulai</i> dan/atau <i>selesai</i> salah!</b>',
+	'usagestatisticsintervalday' => 'Tanggal',
+	'usagestatisticsintervalweek' => 'Minggu',
 	'usagestatisticsintervalmonth' => 'Bulan',
 	'usagestatisticsincremental' => 'Bertahap',
 	'usagestatisticsincremental-text' => 'bertahap',
 	'usagestatisticscumulative' => 'Kumulatif',
 	'usagestatisticscumulative-text' => 'kumulatif',
+	'usagestatisticscalselect' => 'Pilih',
+	'usagestatistics-editindividual' => 'Statistik penyuntingan $1 pengguna individual',
+	'usagestatistics-editpages' => 'Statistik halaman $1 pengguna individual',
+	'right-viewsystemstats' => 'Lihat [[Special:UserStats|statistik wiki]]',
 );
 
 /** Ido (Ido)
@@ -1550,6 +1583,8 @@ $messages['ro'] = array(
 	'usagestatisticsintervalday' => 'Zi',
 	'usagestatisticsintervalweek' => 'Săptămână',
 	'usagestatisticsintervalmonth' => 'Lună',
+	'usagestatisticsincremental' => 'Incremental',
+	'usagestatisticsincremental-text' => 'incremental',
 	'usagestatisticscumulative' => 'Cumulativ',
 	'usagestatisticscumulative-text' => 'cumulativ',
 	'usagestatisticscalselect' => 'Selectaţi',
@@ -1675,6 +1710,35 @@ $messages['sr-ec'] = array(
 	'usagestatisticscalselect' => 'Изабери',
 	'usagestatistics-editindividual' => 'Статистике измена појединачног корисника $1',
 	'usagestatistics-editpages' => 'Статистике страна индивидуалних корисника $1',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'specialuserstats' => 'Statistike korišćenja',
+	'usagestatistics' => 'Statistike korišćenja',
+	'usagestatistics-desc' => 'Pokaži pojedinačne korisnike i ukupnu statistiku korišćenja Vikija',
+	'usagestatisticsfor' => '<h2>Statistike korišćenja za [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistike korišćenja za sve korisnike</h2>',
+	'usagestatisticsinterval' => 'Interval',
+	'usagestatisticstype' => 'Tip',
+	'usagestatisticsstart' => 'Početni datum',
+	'usagestatisticsend' => 'Završni datum',
+	'usagestatisticssubmit' => 'Generiši statistike',
+	'usagestatisticsnostart' => 'Molimo Vas da zadate početni datum',
+	'usagestatisticsnoend' => 'Molimo Vas da zadate završni datum',
+	'usagestatisticsbadstartend' => '<b>Loš <i>početni</i> i/ili <i>završni</i> datum!</b>',
+	'usagestatisticsintervalday' => 'Dan',
+	'usagestatisticsintervalweek' => 'Nedelja',
+	'usagestatisticsintervalmonth' => 'Mesec',
+	'usagestatisticsincremental' => 'Inkrementalno',
+	'usagestatisticsincremental-text' => 'inkrementalno',
+	'usagestatisticscumulative' => 'Kumulativno',
+	'usagestatisticscumulative-text' => 'kumulativno',
+	'usagestatisticscalselect' => 'Izaberi',
+	'usagestatistics-editindividual' => 'Statistike izmena pojedinačnog korisnika $1',
+	'usagestatistics-editpages' => 'Statistike strana individualnih korisnika $1',
 );
 
 /** Seeltersk (Seeltersk)

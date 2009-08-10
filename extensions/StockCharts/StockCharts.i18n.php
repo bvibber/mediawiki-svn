@@ -40,6 +40,15 @@ $messages['bs'] = array(
 Koristite &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** German (Deutsch)
+ * @author Pill
+ */
+$messages['de'] = array(
+	'stockcharts-desc' => 'Fügt einen <nowiki><stockchart ticker="AAPL"/></nowiki>-Tag für eine interaktive Aktien-Finanz-Grafik ein.',
+	'stockcharts-missingticker' => 'Um eine Aktien-Grafik einzufügen, musst du mindestens einen Ticker angeben.
+Verwende: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

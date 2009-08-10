@@ -624,11 +624,40 @@ $1',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'inplace_scaler_not_enough_params' => 'Όχι αρκετοί παράμετροι',
+	'inplace_scaler_invalid_image' => 'Μη έγκυρη εικόνα, δεν ήταν δυνατό να αποφασιστεί το μέγεθος.',
+	'inplace_scaler_no_handler' => 'Κανένας χειριστής για την μεταμόρφωση αυτού του τύπου MIME',
+	'webstore_access' => 'Η υπηρεσία είναι περιορισμένη από τον εξυπηρετητή ΙΡ.',
+	'webstore_path_invalid' => 'Το όνομα αρχείου ήταν άκυρο.',
+	'webstore_dest_open' => 'Αδύνατο να ανοίξει το αρχείο προορισμού "$1".',
+	'webstore_dest_mkdir' => 'Αδύνατο να δημιουργήσει κατάλογο προορισμού "$1".',
+	'webstore_archive_lock' => 'Απέτυχε η λήψη κλειδαριάς για το αρχείο αρχείου "$1".',
+	'webstore_src_open' => 'Αδύνατο το άνοιγμα τρου αρχείου πηγής "$1".',
+	'webstore_src_close' => 'Σφάλμα στο κλείσιμο του αρχείου πηγής "$1".',
+	'webstore_src_delete' => 'Σφάλμα στη διαγραφή του αρχείου πηγής "$1".',
+	'webstore_rename' => 'Σφάλμα στη μετονομασία του αρχείου "$1" σε "$2".',
+	'webstore_lock_open' => 'Σφάλμα στο άνοιγμα του κλειδωμένου αρχείου "$1".',
+	'webstore_lock_close' => 'Σφάλμα στο κλείσιμο του κλειδωμένου αρχείου "$1".',
+	'webstore_dest_exists' => 'Σφάλμα, το αρχείο προορισμού "$1" υπάρχει.',
+	'webstore_temp_open' => 'Σφάλμα στο άνοιγμα του προσωρινού αρχείου "$1".',
+	'webstore_temp_copy' => 'Σφάλμα στην αντιγραφή του προσωρινού αρχείου "$1" στον προορισμό αρχείου "$2".',
+	'webstore_temp_close' => 'Σφάλμα στο κλείσιμο του προσωρινού αρχείου "$1".',
+	'webstore_temp_lock' => 'Σφάλμα στο κλείσιμο του προσωρινού αρχείου "$1".',
+	'webstore_no_archive' => 'Το αρχείο προορισμού υπάρχει και δεν δώθηκε κανένα ιστορικό.',
+	'webstore_no_file' => 'Δεν φορτώθηκε κανένα αρχείο.',
+	'webstore_move_uploaded' => 'Σφάλμα στη μετακίνηση του φορτωμένου αρχείου "$1" στην προσωρινή τοποθεσία "$2".',
 	'webstore_invalid_zone' => 'Άκυρη ζώνη "$1".',
+	'webstore_curl' => 'Σφάλμα από το cURL: $1',
 	'webstore_404' => 'Το αρχείο δεν βρέθηκε.',
+	'webstore_php_warning' => 'Προειδοποίηση PHP: $1',
 	'webstore_metadata_not_found' => 'Το Αρχείο δεν βρέθηκε: $1',
+	'webstore_postfile_not_found' => 'Δεν βρέθηκε το αρχείο προς δημοσίευση.',
+	'webstore_no_response' => 'Καμία απόκριση από τον εξυπηρετητή',
+	'webstore_php_error' => 'Τα σφάλματα PHP αντιμετωπίστηκαν:',
 );
 
 /** Esperanto (Esperanto)
@@ -764,6 +793,7 @@ $messages['ext'] = array(
 $messages['fi'] = array(
 	'inplace_access_denied' => 'Tämä palvelu on rajoitettu IP-osoitteiden perusteella.',
 	'inplace_scaler_not_enough_params' => 'Ei tarpeeksi parametreja.',
+	'inplace_scaler_invalid_image' => 'Virheellinen kuvatiedosto. Kokoa ei voitu määrittää.',
 	'webstore_path_invalid' => 'Tiedostonimi oli epäkelpo.',
 	'webstore_dest_open' => 'Kohdetiedostoa ”$1” ei voitu avata.',
 	'webstore_dest_mkdir' => 'Kohdehakemistoa ”$1” ei voitu luoda.',
@@ -783,6 +813,7 @@ $messages['fi'] = array(
 	'webstore_no_file' => 'Yhtään tiedostoa ei tallennettu.',
 	'webstore_move_uploaded' => 'Virhe siirtäessä tallennettua tiedostoa ”$1” väliaikaiskohteeseen ”$2”.',
 	'webstore_invalid_zone' => 'Virheellinen alue ”$1”.',
+	'webstore_no_deleted' => 'Arkistohakemistoa poistettaville tiedostoille ei ole määritelty.',
 	'webstore_curl' => 'Virhe cURL:lta: $1',
 	'webstore_404' => 'Tiedostoa ei löydy.',
 	'webstore_php_warning' => 'PHP-varoitus: $1',
@@ -1992,9 +2023,12 @@ $messages['ro'] = array(
 	'webstore_no_archive' => 'Fişierul destinaţie există şi nu a fost oferită nici o arhivă.',
 	'webstore_no_file' => 'Nici un fişier nu a fost încărcat.',
 	'webstore_move_uploaded' => 'Eroare la mutarea fişierului încărcat "$1" în fişierul temporar "$2".',
+	'webstore_invalid_zone' => 'Zona "$1" invalidă.',
 	'webstore_no_deleted' => 'Nu este definită nici o arhivă pentru fişierele şterse.',
 	'webstore_curl' => 'Eroare de la cURL: $1',
+	'webstore_404' => 'Fişier negăsit.',
 	'webstore_php_warning' => 'Avertizare PHP: $1',
+	'webstore_metadata_not_found' => 'Fişier negăsit: $1',
 	'webstore_invalid_response' => 'Răspuns incorect de la server:
 
 $1',
@@ -2175,6 +2209,54 @@ $1',
 	'webstore_no_response' => 'Сервер не одговара',
 	'webstore_php_error' => 'Дошло је до PHP грешака:',
 	'webstore_no_handler' => 'Није дефинисано трансформисање овог MIME типа',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'inplace_access_disabled' => 'Pristup ovom servisu je bio onemogućen za sve klijente.',
+	'inplace_access_denied' => 'Ovaj servis ograničava pristup po IP klijenta.',
+	'inplace_scaler_no_temp' => 'Nema ispravnog privremenog direktorijuma.
+Postavite $wgLocalTmpDirectory na direktorijum sa dozvolama za pisanje.',
+	'inplace_scaler_not_enough_params' => 'Nedovoljno parametara.',
+	'inplace_scaler_invalid_image' => 'Neispravna slika, nije moga biti određena veličina.',
+	'inplace_scaler_no_handler' => 'Nema handlera za transofrmisanje ovog MIME tipa',
+	'inplace_scaler_no_output' => 'Transformisani fajl nije napravljen.',
+	'inplace_scaler_zero_size' => 'Transformacijom je nastao izlazni fajl nulte dužine (bez sadržaja).',
+	'webstore_access' => 'Pristup ovom servisu je ograničen op IP klijenta.',
+	'webstore_path_invalid' => 'Ime fajla je bilo pogrešno.',
+	'webstore_dest_open' => 'Ciljani fajl "$1" nije mogao biti otvoren.',
+	'webstore_dest_lock' => 'Ciljani fajl "$1" nije mogao biti zaključan zarad izmena.',
+	'webstore_dest_mkdir' => 'Ciljani direktorijum "$1" nije mogao biti napravljen.',
+	'webstore_archive_lock' => 'Arhivski fajl "$1" nije mogao biti zaključan.',
+	'webstore_archive_mkdir' => 'Arhivski direktorijum "$1" nije mogao biti napravljen.',
+	'webstore_src_open' => 'Izvorni fajl "$1" nije mogao biti otvoren.',
+	'webstore_src_close' => 'Greška pri zatvaranju izvornog fajla "$1".',
+	'webstore_src_delete' => 'Greška prilikom brisanja izvornog fajla "$1".',
+	'webstore_rename' => 'Greška pri preimenovanju fajla "$1" u "$2".',
+	'webstore_lock_open' => 'Greška prilikom otključavanja fajla "$1".',
+	'webstore_dest_exists' => 'Greška, ciljani fajl "$1" postoji.',
+	'webstore_temp_open' => 'Greška prilikom otvaranja privremenog fajla "$1".',
+	'webstore_temp_copy' => 'Greška prilikom kopiranja privremenog fajla "$1" na mesto ciljanog fajla "$2".',
+	'webstore_temp_close' => 'Greška prilikom zatvaranja privremenog fajla "$1".',
+	'webstore_temp_lock' => 'Greška prilikom zaključavanja privremenog fajla "$1".',
+	'webstore_no_archive' => 'Ciljani fajl postoji i nkakva arhiva nije navedena.',
+	'webstore_no_file' => 'Fajl nije poslat.',
+	'webstore_move_uploaded' => 'Greška priliokm premeštanja poslatog fajla "$1" na privremeno mesto "$2".',
+	'webstore_invalid_zone' => 'Pogrešna zona "$1".',
+	'webstore_no_deleted' => 'Nije naveden arhivski direktorijum za obrisane fajlove.',
+	'webstore_curl' => 'Greška od cURL: $1',
+	'webstore_404' => 'Fajl nije pronađen.',
+	'webstore_php_warning' => 'PHP napomena: $1',
+	'webstore_metadata_not_found' => 'Fajl nije pronađen: $1',
+	'webstore_postfile_not_found' => 'Nije pronađen fajl za slanje.',
+	'webstore_invalid_response' => 'Neadekvatan odgovor od servera:
+
+$1',
+	'webstore_no_response' => 'Server ne odgovara',
+	'webstore_php_error' => 'Došlo je do PHP grešaka:',
+	'webstore_no_handler' => 'Nije definisano transformisanje ovog MIME tipa',
 );
 
 /** Seeltersk (Seeltersk)

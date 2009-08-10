@@ -74,12 +74,33 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'slippymap_desc' => 'يسمح باستخدام وسم <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> لعرض خريطة OpenLayers لزقة. الخرائط من [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_error' => 'خطأ $1: $2',
+	'slippymap_errors' => 'أخطاء $1:',
+	'slippymap_error_missing_attribute_lat' => 'الخاصية <tt>lat</tt> مفقودة (لخط العرض).',
+	'slippymap_error_missing_attribute_lon' => 'الخاصية <tt>lon</tt> مفقودة (لخط الطول).',
+	'slippymap_error_missing_attribute_zoom' => 'الخاصية <tt>zoom</tt> مفقودة (لمستوى التكبير).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>lat</tt>، (خط العرض) يجب أن تكون القيمة المعطاة عددًا صحيحًا.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>lon</tt> (خط الطول)، يجب أن تكون القيمة المعطاة عددًا صحيحًا.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>zoom</tt>، يجب أن تكون القيمة المعطاة عددًا صحيحًا.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>width</tt>، يجب أن تكون القيمة المعطاة عددًا صحيحًا.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>height</tt>، يجب أن تكون القيمة المعطاة عددًا صحيحًا.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>mode</tt>، القيم الصالحة $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>layer</tt>، القيم الصالحة $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>marker</tt>، القيم الصالحة $2.',
+	'slippymap_error_unknown_attribute' => 'الخاصية <tt>$1</tt> غير معروفة.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>lat</tt> (خط العرض). يجب أن تكون خطوط العرض بين -90 و 90 درجة.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>lon</tt> (خط الطول). يجب أن تكون خطوط الطول بين -180 و 180 درجة.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>zoom</tt>. يجب أن تكون مستويات التكبير بين $2 و $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>width</tt>. يجب أن تكون مستويات العرض بين $2 و $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'القيمة <tt>$1</tt> ليست صالحة لخاصية <tt>height</tt>. يجب أن تكون مستويات الارتفاع بين $2 و $3.',
 	'slippymap_code' => 'كود الويكي لعرض الخريطة هذا:',
 	'slippymap_button_code' => 'الحصول على كود ويكي',
 	'slippymap_resetview' => 'إعادة ضبط الرؤية',
+	'slippymap_clicktoactivate' => 'انقر لتنشّط الخريطة',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -168,15 +189,38 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Pill
+ * @author Sebastian Wallroth
  * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'slippymap_desc' => 'Ergänzt ein <tt>&lt;slippymap&gt;</tt>-Tag zum Einbinden von statischen und dynamischen Karten. Unterstützt werden mehrere Kartendienste einschließlich [http://openstreetmap.org OpenStreetMap] und NASA Worldwind',
+	'slippymap_error' => '$1-Fehler: $2',
+	'slippymap_errors' => '$1-Fehler:',
+	'slippymap_error_tag_content_given' => 'Der <tt>&lt;$1&gt;</tt>-Tag kennt nur Attribut-Argumente (&lt;$1 [...]/&gt;), keinen Eingabetext (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Du hast mit dem &lt;$1&gt;-Tag keine Attribute übergeben. In der [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax Syntax-Hilfe] findest du Informationen darüber, wie man ihn aufruft.',
+	'slippymap_error_missing_attribute_lat' => 'Fehlendes <tt>lat</tt>-Attribut (für die Breite).',
+	'slippymap_error_missing_attribute_lon' => 'Fehlendes <tt>lon</tt>-Attribut (für die Länge).',
+	'slippymap_error_missing_attribute_zoom' => 'Fehlendes <tt>zoom</tt>-Attribut (für das Zoomlevel).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'Der Wert <tt>$1</tt> ist für das <tt>lat</tt>-Attribut (Länge) nicht zulässig. Der Wert muss eine Zahl sein.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'Der Wert <tt>$1</tt> ist für das <tt>lon</tt>-Attribut (Länge) nicht zulässig. Der Wert muss eine Zahl sein.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'Der Wert <tt>$1</tt> ist für das <tt>zoom</tt>-Attribut nicht zulässig. Der Wert muss eine Zahl sein.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'Der Wert <tt>$1</tt> ist für das <tt>width</tt>-Attribut nicht zulässig. Der Wert muss eine Zahl sein.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'Der Wert <tt>$1</tt> ist für das <tt>height</tt>-Attribut nicht zulässig. Der Wert muss eine Zahl sein.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'Der Wert <tt>$1</tt> ist für das <tt>mode</tt>-Attribut nicht zulässig. Zulässige Werte sind $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'Der Wert <tt>$1</tt> ist für das <tt>layer</tt>-Attribut nicht zulässig. Zulässige Werte sind $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'Der Wert <tt>$1</tt> ist für das <tt>marker</tt>-Attribut nicht zulässig. Zulässige Werte sind $2.',
 	'slippymap_error_unknown_attribute' => 'Das Attribut <tt>$1</tt> ist unbekannt.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Der Wert <tt>$1</tt> ist für das <tt>lat</tt>-Attribut (Breite) nicht zulässig. Breiten müssen zwischen -90 und 90 Grad liegen.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Der Wert <tt>$1</tt> ist für das <tt>lat</tt>-Attribut (Länge) nicht zulässig. Längen müssen zwischen -180 und 180 Grad liegen.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Der Wert <tt>$1</tt> ist für das <tt>zoom</tt>-Attribut nicht zulässig. Zoom-Level müssen zwischen $2 und $3 liegen.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Der Wert <tt>$1</tt> ist für das <tt>width</tt>-Attribut nicht zulässig. Der Wert muss zwischen $2 und $3 liegen.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Der Wert <tt>$1</tt> ist für das <tt>height</tt>-Attribut nicht zulässig. Der Wert muss zwischen $2 und $3 liegen.',
 	'slippymap_code' => 'Wikitext für diese Kartenansicht:',
 	'slippymap_button_code' => 'Zeige Wikicode',
 	'slippymap_resetview' => 'Zurücksetzen',
+	'slippymap_clicktoactivate' => 'Klicken, um die Karte zu aktivieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -209,6 +253,14 @@ $messages['dsb'] = array(
 	'slippymap_button_code' => 'Wikikod pokazaś',
 	'slippymap_resetview' => 'Naglěd slědk stajiś',
 	'slippymap_clicktoactivate' => 'Kliknuś, aby se kórta aktiwěrowała',
+);
+
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'slippymap_error' => '$1 σφάλμα: $2',
+	'slippymap_errors' => '$1 λάθη:',
 );
 
 /** Spanish (Español)
@@ -358,7 +410,8 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'slippymap_desc' => 'מתן האפשרות לשימוש בתגית <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> להצגת מפת OpenLayers רדומה. המפות הן מהאתר [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => 'מתן האפשרות לשימוש בתגית <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> המאפשרת הטמעת מפות סטאטיות ודינאמיות. קיימת תמיכה במספר שרותי מפות כולל [http://openstreetmap.org OpenStreetMap]ו־Worldwind של NASA',
+	'slippymap_errors' => '$1 שגיאות:',
 	'slippymap_code' => 'קוד הוויקי להצגת מפה זו:',
 	'slippymap_button_code' => 'איחזור קוד הוויקי',
 	'slippymap_resetview' => 'איפוס התצוגה',
@@ -431,6 +484,14 @@ $messages['ia'] = array(
 	'slippymap_button_code' => 'Obtener codice wiki',
 	'slippymap_resetview' => 'Reinitialisar vista',
 	'slippymap_clicktoactivate' => 'Clicca pro activar le carta',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'slippymap_error' => 'Galat $1: $2',
+	'slippymap_errors' => 'Galat $1:',
 );
 
 /** Italian (Italiano)

@@ -402,6 +402,13 @@ $messages['sr-ec'] = array(
 	'skinperpage-desc' => 'Додаје ознаку <tt>&lt;skin&gt;</tt> за коришћење различитих кожа на различитим странама.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'skinperpage-desc' => 'Dodaje oznaku <tt>&lt;skin&gt;</tt> za korišćenje različitih koža na različitim stranama.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

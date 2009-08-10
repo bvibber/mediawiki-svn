@@ -586,12 +586,14 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'framedvideo_errors' => 'Au avut loc mai multe erori!',
 	'framedvideo_error' => 'A avut loc o eroare!',
 	'framedvideo_error_limit' => 'Valoarea maximă permisă este $1.',
+	'framedvideo_helppage' => 'Help:Video',
 );
 
 /** Tarandíne (Tarandíne)

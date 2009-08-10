@@ -190,6 +190,7 @@ $messages['am'] = array(
  * @author ;Hiba;1
  * @author IAlex
  * @author Meno25
+ * @author Orango
  * @author OsamaK
  */
 $messages['ar'] = array(
@@ -223,6 +224,7 @@ $messages['ar'] = array(
 	'openidfullname' => 'الاسم الكامل',
 	'openidemail' => 'عنوان البريد الإلكتروني',
 	'openidlanguage' => 'اللغة',
+	'openidtimezone' => 'المنطقة الزمنية',
 	'openidnotavailable' => 'لقبك المفضل ($1) قيد الاستخدام بالفعل بواسطة مستخدم آخر.',
 	'openidnotprovided' => 'خادم هويتك المفتوحة لم يوفر لقبا (إما لأنه لا يستطيع، أو لأنك أخبرته ألا يفعل).',
 	'openidchooseinstructions' => 'كل المستخدمين يحتاجون إلى لقب؛
@@ -234,6 +236,7 @@ $messages['ar'] = array(
 	'openidchooseexisting' => 'حساب موجود في هذه الويكي:',
 	'openidchoosepassword' => 'كلمة السر:',
 	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب المستخدم الخاص بك لكي تستخدم OpenID URL او لاضافة المزيد من OpenID URLs .',
+	'openidconvertoraddmoreids' => 'حوّل إلى OpenID أو أضف عنوان OpenID آخر',
 	'openidconvertsuccess' => 'تم التحول بنجاح إلى الهوية المفتوحة',
 	'openidconvertsuccesstext' => 'أنت حولت بنجاح هويتك المفتوحة إلى $1.',
 	'openidconvertyourstext' => 'هذه بالفعل هويتك المفتوحة.',
@@ -256,10 +259,20 @@ $messages['ar'] = array(
 
 يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
 	'openidupdateuserinfo' => 'تحديث معلوماتي الشخصية',
+	'openiddelete' => 'احذف OpenID',
+	'openiddelete-text' => 'بالضغط على زر "{{int:openiddelete-button}}"، ستزيل الهوية المفتوحة OpenID $1 من حسابك.
+لن تتمكن بعد الآن من الدخول بهذه الهوية المفتوحة.',
+	'openiddelete-button' => 'أكّد',
+	'openiddelete-sucess' => 'أزيل OpenID بنجاح من حسابك.',
+	'openiddelete-error' => 'صودف خطأ أثناء إزالة OpenID من حسابك.',
 	'prefs-openid' => 'هوية مفتوحة',
 	'openid-prefstext' => 'تفضيلات [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'أخف هويتك هويتك المفتوحة على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 	'openid-pref-update-userinfo-on-login' => 'حدث معلوماتي من شخصية الهوية المفتوحة كل مرة أسجل الدخول',
+	'openid-urls-desc' => 'OpenIDs المربوطة بحسابك:',
+	'openid-urls-action' => 'إجراء',
+	'openid-urls-delete' => 'احذف',
+	'openid-add-url' => 'أضف OpenID جديدة',
 	'openidsigninorcreateaccount' => 'سجل الدخول أو أنشئ حسابا جديدا',
 	'openid-provider-label-openid' => 'أدخل مسار هويتك المفتوحة',
 	'openid-provider-label-google' => 'سجل الدخول باستخدام حساب جوجل الخاص بك',
@@ -1115,6 +1128,7 @@ $messages['et'] = array(
 	'openidfullname' => 'Täisnimi',
 	'openidemail' => 'E-posti aadress',
 	'openidlanguage' => 'Keel',
+	'openidtimezone' => 'Ajavöönd',
 	'openidnotavailable' => 'Sinu eelistatud hüüdnimi ($1) on juba kasutuses.',
 	'openidchoosefull' => 'Sinu täisnimi ($1)',
 	'openidchoosemanual' => 'Sinu valitud nimi:',
@@ -1125,6 +1139,9 @@ $messages['et'] = array(
 	'openidalreadyloggedin' => "'''Sa oled juba sisse logitud, $1!'''
 
 Kui soovid kasutada avatud ID-d tulevikus sisselogimiseks, võid [[Special:OpenIDConvert|konvertida oma konto, kasutamaks avatud ID-d]].",
+	'openidnousername' => 'Kasutajanimi määratlemata.',
+	'openidbadusername' => 'Märgitud kasutajanimi on vigane.',
+	'openid-urls-delete' => 'Kustuta',
 );
 
 /** Basque (Euskara)
@@ -3127,6 +3144,7 @@ Skonsultuj to z [[Special:ListUsers/sysop|administratorem]].',
 	'openidfullname' => 'Imię i nazwisko',
 	'openidemail' => 'Adres e‐mail',
 	'openidlanguage' => 'Język',
+	'openidtimezone' => 'Strefa czasowa',
 	'openidnotavailable' => 'Wybrana nazwa użytkownika „$1” jest już zajęta.',
 	'openidnotprovided' => 'Twój serwer OpenID nie dostarczył pseudonimu (dlatego że nie mógł albo mu zabroniłeś).',
 	'openidchooseinstructions' => 'Wszyscy użytkownicy muszą mieć pseudonim.
@@ -3137,7 +3155,8 @@ Możesz wybrać spośród propozycji podanych poniżej.',
 	'openidchoosemanual' => 'Nazwa użytkownika wybrana przez Ciebie',
 	'openidchooseexisting' => 'Istniejące konto na tej wiki',
 	'openidchoosepassword' => 'hasło',
-	'openidconvertinstructions' => 'Formularz umożliwia przystosowanie konta użytkownika do korzystania z adresu URL OpenID.',
+	'openidconvertinstructions' => 'Formularz umożliwia przystosowanie konta użytkownika do korzystania z adresu URL OpenID lub dodanie następnych adresów URL OpenID.',
+	'openidconvertoraddmoreids' => 'Konwertuj do OpenID lub dodaj kolejny adres URL OpenID',
 	'openidconvertsuccess' => 'Przełączone na korzystanie z OpenID',
 	'openidconvertsuccesstext' => 'Zmieniłeś swoje OpenID na $1.',
 	'openidconvertyourstext' => 'Już masz swój OpenID.',
@@ -3160,9 +3179,19 @@ Jeśli chcesz w przyszłości używać OpenID do logowania się, możesz [[Speci
 
 Jest wielu [http://openid.net/get/ operatorów usługi OpenID] i możesz mieć już konto przełączone na korzystanie z OpenID innego usługodawcy.',
 	'openidupdateuserinfo' => 'Uaktualnij moje dane',
+	'openiddelete' => 'Usuń OpenID',
+	'openiddelete-text' => 'Klikając na przycisk „{{int:openiddelete-button}}” usuniesz OpenID $1 ze swojego konta.
+Nie będziesz już mógł więcej logować się korzystając z tego OpenID.',
+	'openiddelete-button' => 'Zapisz',
+	'openiddelete-sucess' => 'OpenID został pomyślnie usunięty z Twojego konta.',
+	'openiddelete-error' => 'Wystąpił błąd podczas usuwania powiązania Twojego konta z OpenID.',
 	'openid-prefstext' => 'Preferencje [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ukryj mój adres URL OpenID na stronie użytkownika, jeśli zaloguję się za pomocą OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Aktualizuj informacje o mnie z OpenID za każdym razem w czasie logowania',
+	'openid-pref-update-userinfo-on-login' => 'Aktualizuj następujące informacje o mnie z OpenID przy każdym logowaniu',
+	'openid-urls-desc' => 'OpenID powiązane z Twoim kontem:',
+	'openid-urls-action' => 'Akcja',
+	'openid-urls-delete' => 'Usuń',
+	'openid-add-url' => 'Dodaj nowe OpenID',
 	'openidsigninorcreateaccount' => 'Zaloguj się lub utwórz nowe konto',
 	'openid-provider-label-openid' => 'Wprowadź adres OpenID',
 	'openid-provider-label-google' => 'Zaloguj się korzystając z konta Google',
@@ -3356,19 +3385,46 @@ Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de 
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'openidlogin' => 'Autentificare cu OpenID',
+	'openidserver' => 'Server OpenID',
+	'openiderror' => 'Eroare de verificare',
+	'openiderrortext' => 'A avut loc o eroare în timpul verificării URL-ului OpenID',
+	'openidconfigerror' => 'Eroare de configurare OpenID',
+	'openidpermission' => 'Eroare de permisiune OpenID',
 	'openidcancel' => 'Verificare anulată',
+	'openidcanceltext' => 'Verificarea URL-ului OpenID a fost anulată.',
 	'openidfailure' => 'Verificare eşuată',
+	'openidfailuretext' => 'Verificarea URL-ului OpenID a eşuat. Mesaj de eroare: "$1"',
 	'openidsuccess' => 'Verificare cu succes',
+	'openidsuccesstext' => 'Verificarea URL-ului OpenID a reuşit.',
+	'openidusernameprefix' => 'Utilizator OpenID',
 	'openidoptional' => 'Opţional',
+	'openidrequired' => 'Necesar',
+	'openidnickname' => 'Poreclă',
 	'openidemail' => 'Adresă e-mail',
 	'openidlanguage' => 'Limbă',
+	'openidtimezone' => 'Fus orar',
+	'openidnotavailable' => 'Porecla preferată ($1) este folosită deja de alt utilizator.',
+	'openidchooseinstructions' => 'Toţi utilizatorii necesită o poreclă;
+se poate alege una din opţiunile de mai jos.',
+	'openidchoosefull' => 'Numele întreg ($1)',
+	'openidchooseauto' => 'Un nume generat automat ($1)',
 	'openidchoosemanual' => 'Un nume la alegere:',
 	'openidchooseexisting' => 'Un cont existent pe acest wiki:',
 	'openidchoosepassword' => 'parolă:',
+	'openidconvertothertext' => 'Acesta este OpenID-ul altcuiva.',
+	'openidnousername' => 'Nici un nume de utilizator specificat.',
+	'openidbadusername' => 'Nume de utilizator specificat greşit.',
+	'openidloginlabel' => 'URL OpenID',
+	'openiddelete' => 'Şterge OpenID',
 	'openid-urls-action' => 'Acţiune',
+	'openid-urls-delete' => 'Şterge',
+	'openid-provider-label-google' => 'Autentificare folosind contul Google',
+	'openid-provider-label-yahoo' => 'Autentificare folosind contul Yahoo',
 );
 
 /** Tarandíne (Tarandíne)
@@ -3707,6 +3763,50 @@ $messages['sr-ec'] = array(
 	'openid-prefstext' => '[http://openid.net/ OpenID] подешавања',
 	'openid-pref-hide' => 'Сакријте свој OpenID URL са корисничке стране, ако се са њим логујете.',
 	'openid-pref-update-userinfo-on-login' => 'Актуализуј моје информације са OpenID личност сваки пут кад се улогујем',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'openidserver' => 'OpenID server',
+	'openidconvert' => 'OpenID konvertor',
+	'openiderror' => 'Greška prilikom verifikacije',
+	'openiderrortext' => 'Došlo je do greške prilikom verifikacije OpenID URL-a.',
+	'openidconfigerror' => 'Greška oko konfiguracije OpenID-a',
+	'openidpermission' => 'Greška oko OpenID prava pristupa',
+	'openidpermissiontext' => 'OpenID-u koga ste naveli nije dozvoljeno da se uloguje na ovaj server.',
+	'openidcancel' => 'Verifikacija poništena',
+	'openidcanceltext' => 'Verifikacija OpenID URL-a je poništena.',
+	'openidfailure' => 'Verifikacija nije prošla',
+	'openidfailuretext' => 'Verifikacija OpenID URL-a nije prošla. Poruka greške: "$1"',
+	'openidsuccess' => 'Verifikacija uspešna',
+	'openidsuccesstext' => 'Verifikacija OpenID URL-a je bila uspešna.',
+	'openidoptional' => 'Neobavezno',
+	'openidrequired' => 'Obavezno',
+	'openidnickname' => 'Nadimak',
+	'openidfullname' => 'Puno ime',
+	'openidemail' => 'E-pošta',
+	'openidlanguage' => 'Jezik',
+	'openidchooseinstructions' => 'Svaki korisnik treba da ima nadimak;
+Možete da izaberete jednu od opcija ispod.',
+	'openidchoosefull' => 'Važe puno ime ($1)',
+	'openidchooseurl' => 'Ime preuzeto od vašeg OpenID ($1)',
+	'openidchooseauto' => 'Automatski generisano korisničko ime ($1)',
+	'openidchoosemanual' => 'Izaberite korisničko ime:',
+	'openidchooseexisting' => 'Postojeći nalog na ovoj Viki:',
+	'openidchoosepassword' => 'lozinka:',
+	'openidconvertsuccess' => 'Konverzija ka OpenID je uspešna',
+	'openidconvertsuccesstext' => 'Uspešno ste prmenili svoj OpenID na $1.',
+	'openidconvertyourstext' => 'Taj OpenID je već vaš.',
+	'openidconvertothertext' => 'To je tuđ OpenID.',
+	'openidnousername' => 'Nije navedeno korisničko ime.',
+	'openidbadusername' => 'Zadato neispravno korisničko ime.',
+	'openidclientonlytext' => 'Vi ne možete da koristite naloge sa ovog Vikija kao OpenID-ove na drugim sajtovima.',
+	'openidloginlabel' => 'OpenID URL',
+	'openidupdateuserinfo' => 'Aktualizuj moje lične podatke',
+	'openid-prefstext' => '[<a href="http://openid.net/">http://openid.net/</a> OpenID] podešavanja',
+	'openid-pref-hide' => 'Sakrijte svoj OpenID URL sa korisničke strane, ako se sa njim logujete.',
 );
 
 /** Seeltersk (Seeltersk)

@@ -193,9 +193,13 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'showprocesslist-user' => 'Χρήστης',
+	'showprocesslist-host' => 'Φιλοξενία',
+	'showprocesslist-db' => 'Βάση δεδομένων',
+	'showprocesslist-command' => 'Εντολή',
 	'showprocesslist-time' => 'Χρόνος',
 	'showprocesslist-info' => 'Πληροφορίες',
 );
@@ -796,6 +800,20 @@ $messages['sr-ec'] = array(
 	'showprocesslist-command' => 'Команда',
 	'showprocesslist-time' => 'Време',
 	'showprocesslist-state' => 'Стање',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'showprocesslist' => 'Pokaži spisak procesa',
+	'showprocesslist-desc' => 'Prikaži izlaz za [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-user' => 'Korisnik',
+	'showprocesslist-host' => 'Host',
+	'showprocesslist-db' => 'Baza podataka',
+	'showprocesslist-command' => 'Komanda',
+	'showprocesslist-time' => 'Vreme',
+	'showprocesslist-state' => 'Stanje',
 );
 
 /** Seeltersk (Seeltersk)

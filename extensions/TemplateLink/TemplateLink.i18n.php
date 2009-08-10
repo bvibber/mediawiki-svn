@@ -129,8 +129,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'templatelink' => 'Σύνδεσμος προτύπου',
 	'templatelink_empty' => 'Πρέπει να ορίσετε μια παράμετρο.',
 );
 
@@ -251,6 +253,15 @@ $messages['id'] = array(
 	'templatelink_desc' => 'Pengaya ini dapat menampilkan sebuah templat sebagai sebuah halaman baru',
 	'templatelink_empty' => 'Anda perlu menambahkan sebuah parameter.',
 	'templatelink_newtitle' => '$1 (ditransklusikan)',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'templatelink_desc' => 'Questa estensione può mostrare un template come una nuova pagina',
+	'templatelink_empty' => 'È necessario fornire un parametro.',
+	'templatelink_newtitle' => '$1 (inclusi)',
 );
 
 /** Japanese (日本語)

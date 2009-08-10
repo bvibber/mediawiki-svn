@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 Do not translate "<code>action=raw</code>".',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'minify-desc' => 'يقلص مُخرج CSS وجافاسكربت من action=raw',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

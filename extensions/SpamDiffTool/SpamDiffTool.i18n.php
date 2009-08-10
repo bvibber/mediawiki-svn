@@ -327,9 +327,11 @@ Klikni <a href='$1'>sem</a>, aby se wróśił.",
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'spamdifftool_option_none' => 'τίποτα',
+	'spamdifftool_block' => 'Φραγή:',
 	'spamdifftool_submit_buttom' => 'Υποβολή',
 );
 
@@ -410,6 +412,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'spamdifftool' => 'Hallinnoi roskapostien mustaa listaa',
@@ -419,6 +422,10 @@ $messages['fi'] = array(
 Napsauta <a href='$1'>tästä</a> jatkaaksesi.",
 	'spamdifftool_confirm' => "Vahvista, että haluat lisätä nämä roskapostien mustalle listalle. (Napsauta <a href='$1' target='new'>tästä</a> ilmoittaaksesi ongelmasta.)",
 	'spamdifftool_summary' => 'Lisätään roskapostien mustalle listalle',
+	'spamdifftool_spam_link_text' => 'lisää roskapostiluetteloon',
+	'spamdifftool_option_domain' => 'kaikki tästä verkkotunnuksesta',
+	'spamdifftool_option_subdomain' => 'kaikki tästä aliverkkotunnuksesta',
+	'spamdifftool_option_directory' => 'tämä aliverkkotunnus ja hakemisto',
 	'spamdifftool_option_none' => 'ei mitään',
 	'spamdifftool_block' => 'Esto:',
 	'spamdifftool_submit_buttom' => 'Lähetä',
@@ -1162,6 +1169,21 @@ $messages['sr-ec'] = array(
 	'spamdifftool_option_none' => 'ништа',
 	'spamdifftool_block' => 'Блок:',
 	'spamdifftool_submit_buttom' => 'Прихвати',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'spamdifftool_no_urls_detected' => "Nisu pronađeni likovi.
+Kliknite <a href='$1'>ovde</a> da se vratite.",
+	'spamdifftool_spam_link_text' => 'dodaj kao spam',
+	'spamdifftool_option_domain' => 'sve od ovog domena',
+	'spamdifftool_option_subdomain' => 'sve od ovog poddomena',
+	'spamdifftool_option_directory' => 'ovaj poddomen i direktorijum',
+	'spamdifftool_option_none' => 'ništa',
+	'spamdifftool_block' => 'Blok:',
+	'spamdifftool_submit_buttom' => 'Prihvati',
 );
 
 /** Seeltersk (Seeltersk)

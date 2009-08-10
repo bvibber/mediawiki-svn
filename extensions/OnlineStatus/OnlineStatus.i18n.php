@@ -803,6 +803,15 @@ $messages['pt-br'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Alterar o meu estado para offline quando me desautenticar',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'onlinestatus-tab' => 'Statut',
+	'onlinestatus-toggles-desc' => 'Starea dvs.:',
+	'onlinestatus-toggle-online' => 'Online',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -870,6 +879,26 @@ $messages['sr-ec'] = array(
 	'onlinestatus-toggle-online' => 'Присутан',
 	'onlinestatus-pref-onlineonlogin' => 'Промени мој статус на онлајн када се улогујем',
 	'onlinestatus-pref-offlineonlogout' => 'Промени мој статус на офлајн када се излогујем',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'onlinestatus-desc' => 'Dodaje podešavanja da bi se pokazivalo da li je korisnik trentno prisutan na vikiju ili ne.',
+	'onlinestatus-js-anon' => 'Greška: morate biti ulogovani da biste koristili ovu pogodnost.',
+	'onlinestatus-js-changed' => 'Vaš status je promenjen na "$1"',
+	'onlinestatus-js-error' => 'Nemoguće promeniti status, vrednost "$1" je neispravna',
+	'onlinestatus-subtitle-offline' => 'Ovaj korisnik je trenutno odsutan',
+	'onlinestatus-subtitle-online' => 'Ovaj korisnik je trenutno prisutan',
+	'onlinestatus-tab' => 'Status',
+	'onlinestatus-toggles-desc' => 'Vaš status:',
+	'onlinestatus-toggles-explain' => 'Ovo Vam omogućava da pokažete drugim korisnicima da na vašoj strani vide da li ste trenutno prisutni ili ne.',
+	'onlinestatus-toggles-show' => 'Pokazuj prisutnost na mojoj korisničkoj strani',
+	'onlinestatus-toggle-offline' => 'Odsutan',
+	'onlinestatus-toggle-online' => 'Prisutan',
+	'onlinestatus-pref-onlineonlogin' => 'Promeni moj status na onlajn kada se ulogujem',
+	'onlinestatus-pref-offlineonlogout' => 'Promeni moj status na oflajn kada se izlogujem',
 );
 
 /** Swedish (Svenska)

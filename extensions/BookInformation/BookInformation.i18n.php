@@ -1457,6 +1457,20 @@ $messages['sr-ec'] = array(
 	'bookinfo-provider' => 'Подаци из: $1',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'bookinfo-header' => 'Informacije za knjigu',
+	'bookinfo-result-title' => 'Naslov:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Izdavač:',
+	'bookinfo-result-year' => 'Godina:',
+	'bookinfo-error-invalidisbn' => 'Pogrešno ukucan ISBN',
+	'bookinfo-purchase' => 'Kupite ovu knjigu od $1',
+	'bookinfo-provider' => 'Podaci iz: $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -1579,13 +1593,21 @@ $messages['tg-cyrl'] = array(
 /** Thai (ไทย)
  * @author Ans
  * @author Manop
+ * @author Woraponboonkerd
  */
 $messages['th'] = array(
 	'bookinfo-header' => 'ข้อมูลหนังสือ',
+	'bookinfo-desc' => 'ข้อมูลเพิ่มเติม[[Special:Booksources|หน้าพิเศษเกี่ยวกับข้อมูลหนังสือ]]จากบริการบนเว็บไซต์',
+	'bookinfo-result-title' => 'ชื่อหนังสือ:',
 	'bookinfo-result-author' => 'ผู้แต่ง:',
 	'bookinfo-result-publisher' => 'ผู้ตีพิมพ์:',
 	'bookinfo-result-year' => 'ปี:',
 	'bookinfo-error-invalidisbn' => 'รหัส ISBN ที่ใส่ไม่ถูกต้อง',
+	'bookinfo-error-nosuchitem' => 'ไม่พบข้อมูลหนังสือ',
+	'bookinfo-error-nodriver' => 'ไม่สามารถเริ่มต้นไดร์ฟเวอร์ของข้ิอมูลหนังสือที่เหมาะสมได้',
+	'bookinfo-error-noresponse' => 'ไม่มีการตอบรับหรือการร้องขอหมดเวลาก่อน',
+	'bookinfo-purchase' => 'ซื้อหนังสือเล่มนี้ได้ที่ $1',
+	'bookinfo-provider' => 'ผู้ให้ข้อมูล: $1',
 );
 
 /** Tagalog (Tagalog)

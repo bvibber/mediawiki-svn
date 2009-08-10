@@ -301,6 +301,13 @@ $messages['sr-ec'] = array(
 	'csshooks-desc' => 'Додаје CSS на HTML излаз страна зарад бољег стилизовања',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'csshooks-desc' => 'Dodaje CSS na HTML izlaz strana zarad boljeg stilizovanja',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

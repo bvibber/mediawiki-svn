@@ -332,6 +332,13 @@ $messages['sr-ec'] = array(
 	'stringfunctions-desc' => 'Обогаћује парсер функцијама за стрингове',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'stringfunctions-desc' => 'Obogaćuje parser funkcijama za stringove',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -466,7 +466,9 @@ $messages['fi'] = array(
 	'ratinghistory-table' => 'Katsaus lukijoiden arvioinneista',
 	'ratinghistory-users' => 'Käyttäjät, jotka esittivät arvionsa',
 	'readerfeedback-svg' => 'Näytä SVG-muodossa',
+	'ratinghistory-table-votes' => 'Äänet',
 	'ratinghistory-none' => 'Ei ole tarpeeksi lukijapalautetta, jotta taulukko voitaisiin esittää.',
+	'right-feedback' => 'Käyttää palautelomaketta sivujen arvosteluun',
 );
 
 /** French (Français)
@@ -1453,6 +1455,25 @@ $messages['sr-ec'] = array(
 	'readerfeedback-svg' => 'Види као SVG',
 	'ratinghistory-table-votes' => 'Гласови',
 	'ratinghistory-none' => 'Још увек нема довољно мишљења читалаца да би се формирали графикони.',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'ratinghistory' => 'Istorija ocena strane.',
+	'ratinghistory-leg' => 'Istorija ocenjivanja za [[:$1|$1]]',
+	'ratinghistory-tab' => 'ocena',
+	'ratinghistory-period' => 'Razdoblje:',
+	'ratinghistory-month' => 'poslednji mesec',
+	'ratinghistory-3months' => 'poslednja 3 meseca',
+	'ratinghistory-year' => 'poslednja godina',
+	'ratinghistory-3years' => 'poslednje tri godine',
+	'ratinghistory-ave' => 'Srednje: $1',
+	'ratinghistory-purge' => 'očisti keš',
+	'readerfeedback-svg' => 'Vidi kao SVG',
+	'ratinghistory-table-votes' => 'Glasovi',
+	'ratinghistory-none' => 'Još uvek nema dovoljno mišljenja čitalaca da bi se formirali grafikoni.',
 );
 
 /** Swedish (Svenska)

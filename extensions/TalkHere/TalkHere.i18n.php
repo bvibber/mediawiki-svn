@@ -228,6 +228,7 @@ Awtory toś togo sedła njamógu pśewześ žednu zagronitosć za wopśimjeśe t
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'talkhere-foottext' => 'Τα παραπάνω σχόλια μπορεί να γράφτηκαν από επισκέπτες.
@@ -237,6 +238,8 @@ $messages['el'] = array(
 	'talkhere-notalk' => "''(δεν υπάρχουν ακόμη σχόλια)''",
 	'talkhere-addcomment' => 'προσθέστε σχόλιο',
 	'talkhere-beforeinput' => 'Μπορείτε να προσθέσετε ένα σχόλιο παρακάτω',
+	'talkhere-loading' => 'φόρτωση επεξεργαστή...',
+	'talkhere-collapse' => 'απόκρυψη επεξεργαστή',
 );
 
 /** Esperanto (Esperanto)
@@ -836,6 +839,22 @@ $messages['sr-ec'] = array(
 	'talkhere-beforeinput' => 'Можете да додате коментар испод',
 	'talkhere-loading' => 'учитавање едитора…',
 	'talkhere-collapse' => 'сакриј едитор',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'talkhere-desc' => 'Ubacuje stranu za razgovor u članak',
+	'talkhere-foottext' => 'Komentari iznad su možda ostavili posetioci sajta.
+
+Operatori sajta ne mogu biti smatrani odgovornim za sadržaj ovih komentara.',
+	'talkhere-talkpage' => 'strana za razgovor',
+	'talkhere-notalk' => "''(trenutno bez komentara)''",
+	'talkhere-addcomment' => 'dodajte komentar',
+	'talkhere-beforeinput' => 'Možete da dodate komentar ispod',
+	'talkhere-loading' => 'učitavanje editora…',
+	'talkhere-collapse' => 'sakrij editor',
 );
 
 /** Seeltersk (Seeltersk)

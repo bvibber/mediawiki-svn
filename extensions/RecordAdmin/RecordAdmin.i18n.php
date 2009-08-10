@@ -295,6 +295,7 @@ $messages['bs'] = array(
  * @author Melancholie
  * @author Purodha
  * @author Revolus
+ * @author Sebastian Wallroth
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -335,6 +336,7 @@ $messages['de'] = array(
 	'recordadmin-actions' => 'Aktionen',
 	'recordadmin-needscontent' => 'Inhalt hinzufügen …',
 	'recordadmin-editwithform' => 'Mit Formular bearbeiten',
+	'recordadmin-typeinfo' => '$1-Aufnahme',
 	'right-recordadmin' => 'Finde und Editiere Aufzeichnungsseiten',
 );
 
@@ -493,15 +495,21 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'recordadmin-badtitle' => 'Virheellinen otsikko!',
 	'recordadmin-invert' => 'Käänteinen valinta',
+	'recordadmin-buttoncreate' => 'Luo',
+	'recordadmin-searchresult' => 'Hakutulokset',
 	'recordadmin-buttonsave' => 'Tallenna',
+	'recordadmin-viewlink' => 'näytä',
 	'recordadmin-editlink' => 'muokkaa',
 	'recordadmin-created' => 'Luotu',
 	'recordadmin-modified' => 'Muutettu',
+	'recordadmin-actions' => 'Toiminnot',
+	'recordadmin-editwithform' => 'Muokkaa lomakkeella',
 );
 
 /** French (Français)
@@ -649,6 +657,8 @@ $messages['gsw'] = array(
 	'recordadmin-modified' => 'Gänderet',
 	'recordadmin-actions' => 'Aktione',
 	'recordadmin-needscontent' => 'Inhalt zuefiege ...',
+	'recordadmin-editwithform' => 'Mit eme Formular bearbeite',
+	'recordadmin-typeinfo' => '$1 Ufzeichnig',
 	'right-recordadmin' => 'Find Ufzeichnigssyte un bearbeit si',
 );
 
@@ -797,6 +807,13 @@ $messages['id'] = array(
 	'recordadmin-buttonsave' => 'Simpan',
 	'recordadmin-editlink' => 'sunting',
 	'recordadmin-actions' => 'Tindakan',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'recordadmin-buttonsearch' => 'Ricerca',
 );
 
 /** Japanese (日本語)
@@ -1119,6 +1136,7 @@ $messages['oc'] = array(
 	'recordadmin-actions' => 'Accions',
 	'recordadmin-needscontent' => 'Apondre lo contengut...',
 	'recordadmin-editwithform' => 'Modificar amb un formulari',
+	'recordadmin-typeinfo' => 'enregistrament $1',
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 
@@ -1264,11 +1282,23 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'recordadmin-select' => 'Selectaţi',
+	'recordadmin-submit' => 'Trimite',
 	'recordadmin-badtitle' => 'Titlu greşit!',
+	'recordadmin-buttonsearch' => 'Căutare',
+	'recordadmin-buttoncreate' => 'Creare',
+	'recordadmin-buttonreset' => 'Resetare',
+	'recordadmin-buttonsave' => 'Salvare',
+	'recordadmin-viewlink' => 'vedeţi',
+	'recordadmin-created' => 'Creat',
+	'recordadmin-modified' => 'Modificat',
 	'recordadmin-actions' => 'Acţiuni',
+	'recordadmin-needscontent' => 'Adăugaţi conţinut...',
+	'recordadmin-editwithform' => 'Modificare cu un formular',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1388,6 +1418,16 @@ $messages['sr-ec'] = array(
 	'recordadmin-submit' => 'Пошаљи',
 	'recordadmin-alreadyexist' => 'Жао нам је, „$1“ већ постоји!',
 	'recordadmin-buttonsave' => 'Сними',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'recordadmin-select' => 'Izaberi',
+	'recordadmin-submit' => 'Pošalji',
+	'recordadmin-alreadyexist' => 'Žao nam je, „$1“ već postoji!',
+	'recordadmin-buttonsave' => 'Snimi',
 );
 
 /** Seeltersk (Seeltersk)

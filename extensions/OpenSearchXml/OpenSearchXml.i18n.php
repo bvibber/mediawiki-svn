@@ -353,6 +353,13 @@ $messages['sr-ec'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML интерфејс, који пружа извлачење делова текста',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'opensearchxml-desc' => '[<a href="http://www.opensearch.org">http://www.opensearch.org</a> OpenSearch] XML interfejs, koji pruža izvlačenje delova teksta',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

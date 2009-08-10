@@ -56,6 +56,17 @@ $messages['qqq'] = array(
 	'index-search-explain' => 'If your language permits, you can replace <code>submit</code> with <code>{<nowiki />{int:{{msg-mw|index-submit}}}}</code> for the button label.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'indexfunc-badtitle' => 'عنوان غير صالح: "$1"',
+	'index-search' => 'ابحث:',
+	'index-submit' => 'أرسل',
+	'index-disambig-start' => "'''$1''' يمكن أن يشير إلى صفحات عديدة:",
+	'index-hide-detail' => 'أخفِ قائمة الصفحات',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -199,13 +210,28 @@ Por favor, elimine "$1" de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|na páxina d
 $messages['gsw'] = array(
 	'indexfunc-desc' => 'Parserfunktion go automatischi Wyterleitige un Begriffsklärige aalege',
 	'indexfunc-badtitle' => 'Nit giltige Titel „$1“',
+	'indexfunc-editwarning' => 'Warnig: Dää Titel isch e Verzeichnis-Titel fir die {{PLURAL:$2|Syte|Syte}}:
+$1
+Stell sicher, ass es d Syte, wu Du grad aaleisch, nonig unter eme andere Titel git.
+Wänn Du die Syte aaleisch, no nimm dää Titel us em <nowiki>{{#index:}}</nowiki> uf dr obe ufgfierte  {{PLURAL:$2|Syte|Syte}} use.',
 	'indexfunc-index-exists' => 'D Syte „$1“ git s scho.',
+	'indexfunc-movewarn' => 'Warnig: „$1“ isch e Verzeichnis-Titel fir die {{PLURAL:$3|Syte|Syte}}:
+$2
+Bitte nimm „$1“ us em <nowiki>{{#index:}}</nowiki> uf dr obe ufgfierte  {{PLURAL:$3|Syte|Syte}} use.',
+	'index' => 'Verzeichnis',
 	'index-legend' => 'S Verzeichnis dursueche',
 	'index-search' => 'Suech:',
 	'index-submit' => 'Abschicke',
 	'index-disambig-start' => "'''$1''' cha zue verschidene Syte ghere:",
-	'index-missing-param' => 'Die Syte cha nit brucht wäre, ohni ass Parameter aagee sin',
 	'index-emptylist' => 'S git kei Syte, wu zue „$1“ ghere',
+	'index-expand-detail' => 'Syte aazeige, wu unter däm Titel ufglischtet sin',
+	'index-hide-detail' => 'D Sytelischt verstecke',
+	'index-no-results' => 'D Suechi het kei Ergebnis brocht',
+	'index-search-explain' => 'Die Syte verwändet e Präfixsuechi.  
+
+Tipp di erschte paar Buehcstabe yy un druck dr „Abschicke“-Chnopf go Sytetitel un Verzeichnisyytreg suech, wu mit däre Zeichechette aafange',
+	'index-details-explain' => 'Yytreg mit Bege sin Verzeichnisyytreg.
+Druck uf dr Boge go alli Syte aazeige, wu unter däm Titel ufglischtet sin.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -263,6 +289,13 @@ $messages['id'] = array(
 	'index-disambig-start' => "'''$1''' dapat mengacu kepada:",
 	'index-missing-param' => 'Halaman ini tidak dapat digunakan tanpa parameter',
 	'index-emptylist' => 'Tidah ada halaman yang berhubungan dengan "$1"',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'index-search' => 'Ricerca:',
 );
 
 /** Japanese (日本語)
@@ -382,7 +415,17 @@ Levatz « $1 » de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|de la pagina|de las 
 	'index-expand-detail' => 'Afichar las paginas indexadas jos aqueste títol',
 	'index-hide-detail' => 'Amaga la lista de las paginas',
 	'index-no-results' => 'La recèrca a pas tornat cap de resultat',
+	'index-search-explain' => 'Aquesta pagina utiliza una recèrca per prefix.
+
+Picatz los primièrs caractèrs e quichatz sul boton de somission per cercar los títols de las paginas que començan amb la cadena de recèrca.',
 	'index-details-explain' => "Las entradas amb de sagetas son d'entradas d'indèx, clicatz sus la sageta per veire totas las paginas indexadas jos aqueste títol.",
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'index-search' => 'Căutare:',
 );
 
 /** Russian (Русский)
@@ -443,5 +486,37 @@ Prosím, odstráňte „$1“ z <nowiki>{{#index:}}</nowiki> v hore {{PLURAL:$3|
 Napíšte niekoľko prvých znakov a stlačte tlačidlo odoslať. Vyhľadajú sa názvy stránok a položky indexu začínajúce zadaným reťazcom.',
 	'index-details-explain' => 'Položky s šípkami sú položky indexu.
 Po kliknutí na šípku sa zobrazia všetky stránky indexované pod daným názvom.',
+);
+
+/** Swedish (Svenska)
+ * @author Rotsee
+ */
+$messages['sv'] = array(
+	'indexfunc-desc' => 'Parser-funktion för att skapa automatiska omdirigeringar och förgreningssidor',
+	'indexfunc-badtitle' => 'Ogiltig titel: "$1"',
+	'indexfunc-editwarning' => 'Varning:
+Den här titeln används som innehållsförteckningstitel för följande {{PLURAL:$2|sida|sidor}}:
+$1
+Försäkra dig om att sida du försöker skapa inte redan finns under en annan titel.
+Om du skapar den här sidan, ta bort den här titeln från <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|sidan|sidorna}} ovan.',
+	'indexfunc-index-exists' => 'Sidan "$1" finns redan',
+	'indexfunc-movewarn' => 'Varning:
+"$1" är en innehållsförteckningstitel för följande {{PLURAL:$3|sida|sidor}}:
+$2
+Ta bort "$1" från <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|sidan|sidorna}} ovan.',
+	'index' => 'Sök',
+	'index-legend' => 'Sök i innehållsförteckningen',
+	'index-search' => 'Sök:',
+	'index-submit' => 'Skicka',
+	'index-disambig-start' => "'''$1''' kan syfta på flera saker:",
+	'index-emptylist' => 'Det finns inga sidor kopplade till "$1"',
+	'index-expand-detail' => 'Visa sidor som listas under den här rubriken',
+	'index-hide-detail' => 'Göm sidlistan',
+	'index-no-results' => 'Inga träffar',
+	'index-search-explain' => 'Den här sidan använder prefix-sökning.
+
+Skriv några inledande tecken och klicka på {{int:index-submit ("<index-submit>")}} för att hitta sidor och stycken som inleds med din söksträng.',
+	'index-details-explain' => 'Poster med pilar är innehållsförteckningar.
+Klicka på pilen för att se hela innehållsförteckningen.',
 );
 

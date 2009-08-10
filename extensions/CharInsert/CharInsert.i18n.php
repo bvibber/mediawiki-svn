@@ -466,6 +466,13 @@ $messages['sr-ec'] = array(
 	'charinsert-desc' => 'Омогућава прављење јаваскрипт кутијице за [[MediaWiki:Edittools|inserting non-standard characters]]',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'charinsert-desc' => 'Omogućava pravljenje javaskript kutijice za [[MediaWiki:Edittools|inserting non-standard characters]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

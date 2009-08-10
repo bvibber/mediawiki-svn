@@ -778,6 +778,18 @@ $messages['sr-ec'] = array(
 	'randomincategory-submit' => 'Иди',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'randomincategory' => 'Slučajna strana iz kategorije',
+	'randomincategory-desc' => '[[Special:Randomincategory|Specijalna strana]] za preuzimanje slučajne strane iz kategorije',
+	'randomincategory-toolbox' => 'Slučajna strana',
+	'randomincategory-nocategory' => 'Kategorija $1 ne postoji ili je prazna',
+	'randomincategory-label' => 'Kategorija:',
+	'randomincategory-submit' => 'Idi',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -202,6 +202,10 @@ $messages['gsw'] = array(
 	'multiboilerplate-desc' => 'Macht s megli e Täxtvorlag us em Uuswahlchaschte iber em Bearbeitigsformular uuszwehle derwylscht d Syte bearbeitet wird',
 	'multiboilerplate-legend' => 'Täxtvorlag uuswehle',
 	'multiboilerplate-submit' => 'Lade',
+	'boilerplates' => 'Verfiegbari Textböustei',
+	'multiboilerplate-special-pagetext' => 'Die Vorlage chenne vor s Syte aalege vorgschalte wäre. (<span class=plainlinks>[{{fullurl:Die Syte git s nit|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Textböustei wäre in LocalSettings.php definiert.',
+	'multiboilerplate-special-define-in-interface' => 'Textböustei wäre definiert in [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Hawaiian (Hawai`i)
@@ -402,6 +406,13 @@ $messages['pt-br'] = array(
 	'multiboilerplate-desc' => 'Permite que um texto-modelo seja selecionado de uma lista suspensa localizada acima do formulário de edição, quando se edita páginas',
 	'multiboilerplate-legend' => 'Selecione o texto-modelo',
 	'multiboilerplate-submit' => 'Carregar',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'multiboilerplate-submit' => 'Încărcare',
 );
 
 /** Tarandíne (Tarandíne)

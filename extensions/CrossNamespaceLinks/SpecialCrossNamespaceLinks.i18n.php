@@ -879,9 +879,12 @@ $messages['sr-ec'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|веза|везе|веза}} ка $3 именском простору',
 );
 
-/** latinica (latinica) */
+/** latinica (latinica)
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
 	'crossnamespacelinks' => 'Veze ka imenskim prostorima',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Spiak veza preko imenskih prostora]] koje ne bi trebalo da postoje na sajtu {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Ova stranica pruža spisak veza sa stranice u glavnom imenskom prostoru ka stranici u nekom drugom imenskom prostoru (osim za {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}} imenske prostore), čija se upotreba ne preporučuje.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|veza|veze|veza}} ka $3 imenskom prostoru',
 );

@@ -340,6 +340,13 @@ $messages['sr-ec'] = array(
 	'substall-desc' => 'Додаје <nowiki><substall></nowiki> таг, који развија све шаблоне у викисинтаксу',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'substall-desc' => 'Dodaje <nowiki><substall></nowiki> tag, koji razvija sve šablone u vikisintaksu',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

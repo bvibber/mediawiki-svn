@@ -110,6 +110,14 @@ $messages['dsb'] = array(
 	'stalkerlog-log-text' => 'To jo protokol wužywarskich pśizjawjenjow a wótzjawjenjow.',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'stalkerlog-log-login' => 'συνδέθηκε.',
+	'stalkerlog-log-logout' => 'αποσυνδέθηκε.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -425,6 +433,15 @@ $messages['sr-ec'] = array(
 	'stalkerlog-log-login' => 'улогован.',
 	'stalkerlog-log-logout' => 'излогован.',
 	'stalkerlog-log-type' => 'Историја логовања корисника',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'stalkerlog-log-login' => 'ulogovan.',
+	'stalkerlog-log-logout' => 'izlogovan.',
+	'stalkerlog-log-type' => 'Istorija logovanja korisnika',
 );
 
 /** Swedish (Svenska)

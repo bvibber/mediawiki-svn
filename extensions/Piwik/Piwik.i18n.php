@@ -204,6 +204,7 @@ $messages['fi'] = array(
 	'piwik-lastvisits' => 'Viimeiset käynnit',
 	'piwik-countries' => 'Maat',
 	'piwik-browsers' => 'Selaimet',
+	'right-viewpiwik' => 'Katsoa [[Special:Piwik|Piwik-tilastoja]]',
 );
 
 /** French (Français)
@@ -489,6 +490,16 @@ $messages['sr-ec'] = array(
 	'piwik-lastvisits' => 'Последње посете',
 	'piwik-countries' => 'Земље',
 	'piwik-browsers' => 'Браузери',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'piwik-desc' => 'Ubacuje Piwik skriptu u MedijaViki strane zarad praćenja i dodaje [[Special:Piwik|statistike]]',
+	'piwik-lastvisits' => 'Poslednje posete',
+	'piwik-countries' => 'Zemlje',
+	'piwik-browsers' => 'Brauzeri',
 );
 
 /** Seeltersk (Seeltersk)

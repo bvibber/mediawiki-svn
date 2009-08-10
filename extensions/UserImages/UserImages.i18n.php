@@ -174,8 +174,10 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author K sal 15
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'userimages-caption' => 'Οι εικόνες φορτώθηκαν από τον $1',
 	'userimages-noname' => 'Άκυρο ή μη δοσμένο όνομα χρήστη',
 	'userimages-noimages' => 'Ο/Η $1 δεν έχει ανεβάσει εικόνες.',
 );
@@ -198,6 +200,13 @@ $messages['es'] = array(
 	'userimages-caption' => 'Imágenes cargadas por $1',
 	'userimages-noname' => 'Nombre de usuario inválido ninguno proveído.',
 	'userimages-noimages' => '$1 no tiene imágenes cargadas.',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'userimages-noimages' => '$1 ei ole faile üles laadinud.',
 );
 
 /** Basque (Euskara)
@@ -639,8 +648,11 @@ $messages['sr-ec'] = array(
 	'userimages-noimages' => '$1 нема послатих слика.',
 );
 
-/** latinica (latinica) */
+/** latinica (latinica)
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
+	'userimages-desc' => 'Pomoću <code><nowiki><userimage /></nowiki></code> taga generiše galerije slika, koje su poslali korisnici.',
 	'userimages-caption' => 'Slike koje je poslao korisnik $1',
 	'userimages-noname' => 'Pogrešno korisničko ime ili korisnik nije poslao ni jednu sliku.',
 	'userimages-noimages' => '$1 nema poslatih slika.',

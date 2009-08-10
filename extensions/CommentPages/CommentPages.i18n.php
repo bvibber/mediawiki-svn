@@ -154,9 +154,10 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'commentpages-desc' => "Pages de commentaires pour l'espace principal",
+	'commentpages-desc' => 'Pages de commentaires pour l’espace principal',
 	'nstab-comments' => 'Commentaire',
 );
 
@@ -450,6 +451,14 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'commentpages-desc' => 'Коментарисање страна главног именског простора',
 	'nstab-comments' => 'Коментари',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'commentpages-desc' => 'Komentarisanje strana glavnog imenskog prostora',
+	'nstab-comments' => 'Komentari',
 );
 
 /** Sundanese (Basa Sunda)

@@ -403,6 +403,13 @@ $messages['sah'] = array(
 	'antibot-desc' => 'Спамбуоттары тургутар уонна полезнай ноҕуруусканы холбуур судургу үнүстүрүмүөн',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'antibot-desc' => "Semplici framework pi li verifiche anti-spambot e l'attivazioni di specifici payload",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -415,6 +422,13 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'antibot-desc' => 'Једноставни фрејмворк за спамбот-провере и реаговање на одређене квоте активности',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'antibot-desc' => 'Jednostavni frejmvork za spambot-provere i reagovanje na određene kvote aktivnosti',
 );
 
 /** Seeltersk (Seeltersk)

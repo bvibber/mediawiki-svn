@@ -47,6 +47,14 @@ $messages['qqq'] = array(
 * $2 is the number of pages in the previous column',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'cooperationstatistics-tablevalue' => 'عدد المحررين',
+	'cooperationstatistics-articles' => '{{PLURAL:$1||صفحة واحدة|صفحتان|$1 صفحات|$1 صفحة}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

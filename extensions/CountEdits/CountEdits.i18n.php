@@ -339,10 +339,14 @@ No juzgue a los contribuyentes por el número de sus ediciones.",
 );
 
 /** Estonian (Eesti)
+ * @author Avjoska
  * @author Silvar
  */
 $messages['et'] = array(
 	'countedits-username' => 'Kasutajanimi:',
+	'countedits-ok' => 'Otsi',
+	'countedits-mostactive' => 'Kõige aktiivsemad kaastöötajad',
+	'countedits-nocontribs' => 'Seda wikit ei ole muudetud.',
 );
 
 /** Basque (Euskara)
@@ -1215,10 +1219,12 @@ $messages['sr-ec'] = array(
 );
 
 /** latinica (latinica)
+ * @author Michaello
  * @author Sasa Stefanovic
  */
 $messages['sr-el'] = array(
 	'countedits' => 'Brojač izmena',
+	'countedits-desc' => '[[Special:CountEdits|Posebna strana]] koja izračunava izmene korisnika i pruža spisak deset najaktivnijih autora',
 	'countedits-warning' => "'''Upozorenje:''' Ne sudite o knjizi po njenom omotu. Ne sudite o korisniku po njegovom broju izmena.",
 	'countedits-username' => 'Korisnik:',
 	'countedits-ok' => 'U redu',

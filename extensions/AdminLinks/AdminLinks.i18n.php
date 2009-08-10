@@ -438,11 +438,13 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Darth Kule
  * @author Marco 27
  */
 $messages['it'] = array(
 	'adminlinks' => 'Pannello admin',
 	'adminlinks-desc' => 'Aggiunge una [[Special:AdminLinks|pagina speciale]] che contiene link utili per gli amministratori',
+	'adminlinks_documentation' => 'documentazione di $1',
 	'adminlinks_general' => 'Generale',
 	'adminlinks_editsidebar' => 'Modifica sidebar',
 	'adminlinks_editcss' => 'Modifica file CSS',
@@ -451,6 +453,7 @@ $messages['it'] = array(
 	'adminlinks_createuser' => 'Crea un account',
 	'adminlinks_browsesearch' => 'Visualizza e ricerca',
 	'adminlinks_importexport' => 'Importa ed esporta',
+	'right-adminlinks' => 'Vede il collegamento al [[Special:AdminLinks|Pannello Admin]]',
 );
 
 /** Japanese (日本語)
@@ -520,6 +523,24 @@ $messages['lb'] = array(
 	'right-adminlinks' => 'Kuckt the Link op [[Special:AdminLinks|Like fir Administrateuren]]',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'adminlinks' => 'Verwiezinge veur systeemwèrkers',
+	'adminlinks-desc' => "Deit 'n [[Special:AdminLinks|speciaal pagina]] bie mèt handige verwiezinge veur systeemwèrkers",
+	'adminlinks_documentation' => 'Dokkementatie veur $1',
+	'adminlinks_general' => 'Algemein',
+	'adminlinks_editsidebar' => 'Ziebalk bewirke',
+	'adminlinks_editcss' => 'CSS bewirke',
+	'adminlinks_editmainpagename' => 'Naam van de huidpagina bewirke',
+	'adminlinks_users' => 'Gebroekers',
+	'adminlinks_createuser' => 'Gebroeker aanmake',
+	'adminlinks_browsesearch' => 'Betrachte en zeuke',
+	'adminlinks_importexport' => 'Importere en exportere',
+	'right-adminlinks' => 'De verwiezing nao [[Special:AdminLinks|verwiezinge veur systeemwèrkers]] betrachte',
+);
+
 /** Lazuri Nena (Lazuri Nena)
  * @author Bombola
  */
@@ -543,6 +564,24 @@ $messages['mg'] = array(
 	'adminlinks_browsesearch' => 'Fikarohana sy fitadiavina',
 	'adminlinks_importexport' => 'hampiditra sy hamoaka',
 	'right-adminlinks' => "Hijery ny rohy any amin'ny [[Special:AdminLinks|rohy ampiasain'ny mpandrindra]]",
+);
+
+/** Malayalam (മലയാളം)
+ * @author Sadik Khalid
+ */
+$messages['ml'] = array(
+	'adminlinks' => 'കാര്യനിര്‍വാഹക കണ്ണികള്‍',
+	'adminlinks-desc' => 'കാര്യനിര്‍വാഹകര്‍ക്ക് സഹായകരമായ കണ്ണികളോടു കൂടിയ ഒരു [[Special:AdminLinks|പ്രത്യേക താള്‍]] ചേര്‍ക്കുന്നു',
+	'adminlinks_documentation' => '$1 വിവരണം',
+	'adminlinks_general' => 'സാര്‍വത്രികം',
+	'adminlinks_editsidebar' => 'സൈഡ്ബാര്‍ തിരുത്തുക',
+	'adminlinks_editcss' => 'CSS പ്രമാണം തിരുത്തുക',
+	'adminlinks_editmainpagename' => 'പ്രധാനതാളിന്റെ പേര് തിരുത്തുക',
+	'adminlinks_users' => 'ഉപയോക്താക്കള്‍',
+	'adminlinks_createuser' => 'ഒരു ഉപയോക്താവിനെ സൃഷ്ടിക്കുക',
+	'adminlinks_browsesearch' => 'തിരച്ചിലും മേച്ചിലും',
+	'adminlinks_importexport' => 'കയറ്റുമതിയും ഇറക്കുമതിയും',
+	'right-adminlinks' => '[[Special:AdminLinks|കാര്യനിവാഹക കണ്ണികളിലേക്കുള്ള]] കണ്ണികള്‍ കാണുക',
 );
 
 /** Dutch (Nederlands)

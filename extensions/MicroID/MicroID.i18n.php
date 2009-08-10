@@ -323,6 +323,14 @@ $messages['sr-ec'] = array(
 	'tog-microid' => 'Објавите <a href="http://microid.org/">MicroID</a> да бисте потврдили налог за спољашње услуге',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'microid-desc' => 'Dodaje [<a href="http://www.microid.org/">http://www.microid.org/</a> MicroID] korisničkim stranama zarad potvrde spoljašnjih usluga',
+	'tog-microid' => 'Objavite <a href="<a href="http://microid.org/">MicroID</a>">http://microid.org/">MicroID</a></a> da biste potvrdili nalog za spoljašnje usluge',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

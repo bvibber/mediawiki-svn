@@ -492,6 +492,7 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Cancella',
 );
 
@@ -797,11 +798,13 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Şterge',
+	'inspectcache-list' => 'Listă',
 );
 
 /** Tarandíne (Tarandíne)
@@ -861,6 +864,22 @@ $messages['sr-ec'] = array(
 	'inspectcache-delete' => 'Обриши',
 	'inspectcache-deleted' => 'Обрисан кеш',
 	'inspectcache-list' => 'Списак',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'inspectcache' => 'Ispitaj keš',
+	'inspectcache-desc' => 'Jednostavan debager za proveru sadržaja zajedničkog keša',
+	'inspectcache-ok' => 'Potvrdi',
+	'inspectcache-general' => 'Opšti keš',
+	'inspectcache-parser' => 'Keš parsera',
+	'inspectcache-message' => 'Keš za poruke',
+	'inspectcache-get' => 'Preuzmi',
+	'inspectcache-delete' => 'Obriši',
+	'inspectcache-deleted' => 'Obrisan keš',
+	'inspectcache-list' => 'Spisak',
 );
 
 /** Seeltersk (Seeltersk)

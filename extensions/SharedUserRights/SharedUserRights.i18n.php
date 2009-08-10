@@ -162,6 +162,13 @@ $messages['es'] = array(
 	'right-userrights-shared' => 'Administrar derechos de usuario compartido',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'right-userrights-shared' => 'Hallita käyttöoikeuksia',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex

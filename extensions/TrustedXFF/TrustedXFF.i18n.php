@@ -369,6 +369,13 @@ $messages['sr-ec'] = array(
 	'trustedxff-desc' => 'Управљање списком прокси адреса којима се верује ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'trustedxff-desc' => 'Upravljanje spiskom proksi adresa kojima se veruje ([<a href="http://meta.wikimedia.org/wiki/XFF_project">http://meta.wikimedia.org/wiki/XFF_project</a> XFF project])',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

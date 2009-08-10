@@ -436,8 +436,11 @@ $messages['sr-ec'] = array(
 	'donationform-submit' => 'Донирајте преко PayPal',
 );
 
-/** latinica (latinica) */
+/** latinica (latinica)
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
+	'donationform-desc' => 'Dodaje tag <tt>&amp;lt;donateform&amp;gt;</tt> kao podršku prilozima preko PayPal-a',
 	'donationform-submit' => 'Donirajte PayPal',
 );
 

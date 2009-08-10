@@ -545,6 +545,16 @@ $messages['sr-ec'] = array(
 Нови кориснички налог, $2, је направљен на $3 у $4.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'newusernotifsubj' => 'Novi korisnik za $1',
+	'newusernotif-desc' => 'Šalje mejl obaveštenja kada se novi nalog napravi',
+	'newusernotifbody' => 'Zdravo $1
+Novi korisnički nalog, $2, je napravljen na $3 u $4.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -578,9 +588,11 @@ Ett nytt användar konto, $2, har skapats på $3 som $4.',
 );
 
 /** Telugu (తెలుగు)
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
+	'newusernotifsubj' => '$1 కోసం కొత్తవాడుకరి నోటిఫికేషన్',
 	'newusernotifbody' => 'హలో $1,
 
 $3లో $2 అనే కొత్త వాడుకరి ఖాతాని $4కి సృష్టించాం.',

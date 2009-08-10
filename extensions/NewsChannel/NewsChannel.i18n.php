@@ -304,6 +304,17 @@ $messages['id'] = array(
 	'newschannel_submit_button' => 'Buat sindikasi',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'newschannel_format' => 'Formato:',
+	'newschannel_limit' => 'Limite:',
+	'newschannel_include_category' => 'Ulteriori categorie:',
+	'newschannel_exclude_category' => 'Escludi categoria:',
+	'newschannel_submit_button' => 'Crea feed',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -461,6 +472,7 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
@@ -468,6 +480,7 @@ $messages['ro'] = array(
 	'newschannel_limit' => 'Limită:',
 	'newschannel_include_category' => 'Categorie adiţională:',
 	'newschannel_exclude_category' => 'Exclude categoria:',
+	'newschannel_submit_button' => 'Creaţi flux',
 );
 
 /** Tarandíne (Tarandíne)
@@ -513,6 +526,16 @@ $messages['sr-ec'] = array(
 	'newschannel_limit' => 'Лимит:',
 	'newschannel_include_category' => 'Додатна категорија:',
 	'newschannel_exclude_category' => 'Искључи категорију:',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Limit:',
+	'newschannel_include_category' => 'Dodatna kategorija:',
+	'newschannel_exclude_category' => 'Isključi kategoriju:',
 );
 
 /** Swedish (Svenska)

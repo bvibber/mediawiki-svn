@@ -323,6 +323,13 @@ $messages['sr-ec'] = array(
 	'mootools12core-desc' => 'Додаје свакој страни [http://mootools.net mootools-1.2-core-yc.js], компактни јаваскрипт фрејмворк',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'mootools12core-desc' => 'Dodaje svakoj strani [<a href="http://mootools.net">http://mootools.net</a> mootools-1.2-core-yc.js], kompaktni javaskript frejmvork',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

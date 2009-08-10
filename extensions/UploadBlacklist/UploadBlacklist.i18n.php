@@ -46,6 +46,13 @@ $messages['dsb'] = array(
 	'uploadblacklist-desc' => 'Pśidawa carnu lisćinu za nagraśa',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'uploadblacklist-desc' => 'Aldonas funkcion por nigralisto de alŝutaĵoj',
+);
+
 /** Spanish (Español)
  * @author Dferg
  */
@@ -80,6 +87,13 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'uploadblacklist-desc' => 'אפשרות להעלאת רשימה שחורה',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'uploadblacklist-desc' => 'Dodaje funkcionalnost crne liste postavljanja',
 );
 
 /** Hungarian (Magyar)
@@ -158,6 +172,13 @@ $messages['roa-tara'] = array(
  */
 $messages['sah'] = array(
 	'uploadblacklist-desc' => 'Киллэрии (суруттарыы) хара испииһэгин туһанары баар гынар',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'uploadblacklist-desc' => 'Lägger till en funktion för att svartlista vissa uppladdningar',
 );
 
 /** Vietnamese (Tiếng Việt)

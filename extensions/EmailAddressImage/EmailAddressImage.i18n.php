@@ -379,6 +379,13 @@ $messages['sr-ec'] = array(
 	'emailaddressimage-desc' => 'Додаје <tt>&lt;email&gt;</tt> таг, за приказивање имејл адреса као слика',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'emailaddressimage-desc' => 'Dodaje <tt>&amp;lt;email&amp;gt;</tt> tag, za prikazivanje imejl adresa kao slika',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

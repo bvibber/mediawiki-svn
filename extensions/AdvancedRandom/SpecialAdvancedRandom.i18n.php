@@ -183,10 +183,11 @@ $messages['fi'] = array(
  * @author IAlex
  * @author PieRRoMaN
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'advancedrandom' => 'Accès aléatoire avancé',
-	'advancedrandom-desc' => "Obtient une page au hasard dans n'importe quel espace de noms, qui lie, elle ou sa page de discussion, vers une page donnée. Peut être utilisé comme [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] pour obtenir aléatoirement la page de discussion d'un article de qualité, ou comme [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] pour obtenir un fichier sous licence de documentation libre GNU (GFDL)",
+	'advancedrandom-desc' => 'Obtient une page au hasard dans n’importe quel espace de noms dont la page de sujet ou de discussion est liée à une page donnée. Peut être utilisé comme <tt><nowiki>[[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]]</nowiki></tt> pour obtenir aléatoirement la page de discussion d’un article de qualité, ou comme <tt><nowiki>[[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]</nowiki></tt> pour obtenir un fichier sous Licence de documentation libre GNU (GFDL).',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -494,6 +495,15 @@ $messages['sr-ec'] = array(
 	'advancedrandom' => 'Напредно бирање случајног чланка',
 	'advancedrandom-desc' => 'Изабире случајну страну из било ког именског простора, из садржаја или разговора о њему, на коју линкује.
 Може да се користи као [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] да би се добила страна која укључује наведени шаблон, или слично [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], итд.',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'advancedrandom' => 'Napredno biranje slučajnog članka',
+	'advancedrandom-desc' => 'Izabire slučajnu stranu iz bilo kog imenskog prostora, iz sadržaja ili razgovora o njemu, na koju linkuje.
+Može da se koristi kao [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] da bi se dobila strana koja uključuje navedeni šablon, ili slično [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], itd.',
 );
 
 /** Seeltersk (Seeltersk)

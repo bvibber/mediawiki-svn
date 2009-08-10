@@ -428,6 +428,7 @@ $messages['fi'] = array(
 	'closewikis-list' => 'Suljettujen wikien luettelo',
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Sulkija:',
+	'closewikis-list-header-timestamp' => 'Suljettu',
 	'closewikis-list-header-dispreason' => 'Näytetty syy',
 	'closewikis-log-close' => 'suljettiin $2',
 	'closewikis-log-reopen' => 'avattiin $2 uudelleen',
@@ -1297,6 +1298,40 @@ $messages['sr-ec'] = array(
 	'closewikis-log-reopen' => 'поново отворен $2',
 	'right-editclosedwikis' => 'Измени затворене Викије',
 	'right-closewikis' => 'Затвори Викије',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'closewikis-desc' => 'Omogućava zatvaranje Viki-sajtova u Viki-farmama',
+	'closewikis-page' => 'Zatvori Viki',
+	'closewikis-page-close' => 'Zatvori Viki',
+	'closewikis-page-close-wiki' => 'Viki:',
+	'closewikis-page-close-dreason' => 'Razlog (prikazan):',
+	'closewikis-page-close-reason' => 'Razlog (zabeležen):',
+	'closewikis-page-close-submit' => 'Zatvori',
+	'closewikis-page-close-success' => 'Viki je uspešno zatvoren',
+	'closewikis-page-reopen' => 'Otvori Viki ponovo',
+	'closewikis-page-reopen-wiki' => 'Viki:',
+	'closewikis-page-reopen-reason' => 'Razlog:',
+	'closewikis-page-reopen-submit' => 'Otvori ponovo',
+	'closewikis-page-reopen-success' => 'Viki je uspešno ponovo otvoren',
+	'closewikis-page-err-nowiki' => 'Naveden je pogrešan Viki',
+	'closewikis-page-err-closed' => 'Viki je već zatvoren',
+	'closewikis-page-err-opened' => 'Viki nije zatvoren',
+	'closewikis-list' => 'Spisak zatvorenik Vikija',
+	'closewikis-list-intro' => 'Ovaj spisak sadrži Vikije koje su stjuardi zatvorili.',
+	'closewikis-list-header-wiki' => 'Viki',
+	'closewikis-list-header-by' => 'Zatvorio',
+	'closewikis-list-header-timestamp' => 'Zatvoren na',
+	'closewikis-list-header-dispreason' => 'Prikazani razlog',
+	'closewikis-log' => 'Istorija zatvaranja Vikija',
+	'closewikis-log-header' => 'Ovde je istorija svih zatvaranja i ponovnih otvaranja Vikija od strane stjuarda',
+	'closewikis-log-close' => 'zatvoren $2',
+	'closewikis-log-reopen' => 'ponovo otvoren $2',
+	'right-editclosedwikis' => 'Izmeni zatvorene Vikije',
+	'right-closewikis' => 'Zatvori Vikije',
 );
 
 /** Seeltersk (Seeltersk)

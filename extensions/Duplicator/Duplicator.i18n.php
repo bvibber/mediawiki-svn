@@ -344,11 +344,15 @@ Aktualny limit {{PLURAL:$3|jo 1 wersija|stej $3 wersiji|su $3 wersije|jo $3 wers
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'duplicator' => 'Παραγωγή διπλότυπου σελίδας',
 	'duplicator-options' => 'Επιλογές',
 	'duplicator-source' => 'Πηγή:',
 	'duplicator-dest' => 'Προορισμός:',
+	'duplicator-submit' => 'Διπλότυπο',
+	'right-duplicate' => 'Διπλότυπες σελίδες',
 );
 
 /** Esperanto (Esperanto)
@@ -445,6 +449,7 @@ $messages['ext'] = array(
 /** Finnish (Suomi)
  * @author Mobe
  * @author Niklas Laxström
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'duplicator' => 'Monista sivu',
@@ -467,6 +472,7 @@ $messages['fi'] = array(
 	'duplicator-dest-invalid' => 'Kohdesivun nimi ei kelpaa.',
 	'duplicator-dest-exists' => '[[$1]] on jo olemassa. Anna nimi, joka ei ole vielä käytössä.',
 	'duplicator-toomanyrevisions' => 'Sivu [[$1]] koostuu liian monesta muutoksesta ($2), minkä takia sitä ei voi monistaa. Nykyinen raja on $3.',
+	'right-duplicate' => 'Kahdentaa sivuja',
 );
 
 /** French (Français)
@@ -540,9 +546,12 @@ de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'duplicator' => 'Παραγωγὴ διπλοτύπου δέλτου',
 	'duplicator-options' => 'Ἐπιλογαί',
 	'duplicator-source' => 'Πηγή:',
 	'duplicator-dest' => 'Προορισμός:',
+	'duplicator-submit' => 'Διπλότυπον',
+	'right-duplicate' => 'Διπλότυποι δέλτοι',
 );
 
 /** Swiss German (Alemannisch)
@@ -937,6 +946,13 @@ $messages['ml'] = array(
 	'duplicator-toomanyrevisions' => '[[$1]]നു വളരെയധികം($2) പതിപ്പുകള്‍ ഉണ്ട്; അതിനാല്‍ പകര്‍ത്താന്‍ സാദ്ധ്യമല്ല. നിലവിലുള്ള പരിധി $3 ആണ്‌.',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'duplicator-source' => 'Эх үүсвэр:',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
@@ -1168,6 +1184,14 @@ $messages['pms'] = array(
 	'duplicator-toomanyrevisions' => "[[$1]] a l'ha tròpe ($2) revision e as peul pa copiesse. Al dì d'ancheuj ël màssim a l'é $3.",
 );
 
+/** Pontic (Ποντιακά)
+ * @author Omnipaedista
+ */
+$messages['pnt'] = array(
+	'duplicator-submit' => 'Διπλότυπον',
+	'right-duplicate' => 'Διπλογραμμένας σελίδας',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -1339,6 +1363,35 @@ $messages['sr-ec'] = array(
 	'duplicator-dest-exists' => '[[$1]] већ постоји. Молимо Вас да наведете незаузет циљани наслов.',
 	'duplicator-toomanyrevisions' => '[[$1]] има превише ($2) измена и не може бити ископиран.
 Тренутни лимит је $3.',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'duplicator' => 'Duplira članak',
+	'duplicator-desc' => 'Pravi nezavisne [[Special:Duplicate|kopije članaka]] sa potpunim istorijama izmena',
+	'duplicator-toolbox' => 'Dupliraj ovaj članak',
+	'duplicator-header' => 'Ova strana omogućava kompletno dupliranje nekog članka, pravljenjem nezavisnih kopija svih istorija.
+Ovo je korisno za forkovanje članaka i sl.',
+	'duplicator-options' => 'Opcije',
+	'duplicator-source' => 'Izvor:',
+	'duplicator-dest' => 'Cilj:',
+	'duplicator-dotalk' => 'Dupliraj stranu za razgovor (ako je moguće)',
+	'duplicator-submit' => 'Dupliraj',
+	'duplicator-summary' => 'Iskopirano od [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] je iskopiran u [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revizija je iskopirana|ravizija je iskopirano}}.',
+	'duplicator-success-talkcopied' => 'Strana za razgovor je takođe iskopirana.',
+	'duplicator-success-talknotcopied' => 'Strana za razgovor nije mogla biti iskopirana.',
+	'duplicator-failed' => 'Članak nije mogao biti dupliran.
+Došlo je do nepozante greške.',
+	'duplicator-source-invalid' => 'Molimo Vas da navedete ispravan naslov izvornog članka.',
+	'duplicator-source-notexist' => '[[$1]] ne postoji. Molimo Vas da navedete naslov postojećeg članka.',
+	'duplicator-dest-invalid' => 'Molomo Vas da navedete ispravan naziv ciljanog naslova.',
+	'duplicator-dest-exists' => '[[$1]] već postoji. Molimo Vas da navedete nezauzet ciljani naslov.',
+	'duplicator-toomanyrevisions' => '[[$1]] ima previše ($2) izmena i ne može biti iskopiran.
+Trenutni limit je $3.',
 );
 
 /** Seeltersk (Seeltersk)

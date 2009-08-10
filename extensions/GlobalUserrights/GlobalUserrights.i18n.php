@@ -480,6 +480,16 @@ $messages['sr-ec'] = array(
 	'right-userrights-global' => 'Управљање глобалним правима корисника',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'globaluserrights' => 'Upravljanje globalnim pravima korisnika',
+	'gur-rightslog-name' => 'Istorija globalnih prva',
+	'gur-rightslog-header' => 'Ovo je istorija promena globalnih prava.',
+	'right-userrights-global' => 'Upravljanje globalnim pravima korisnika',
+);
+
 /** Swedish (Svenska)
  * @author Gabbe.g
  */

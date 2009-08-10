@@ -123,9 +123,10 @@ To śi dowólijo swój wužywarski bok teke ako OpenID wužywaś.',
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
-	'linkopenid-prefstext-openid' => 'OpenID σας:',
+	'linkopenid-prefstext-openid' => 'Η OpenID σας:',
 );
 
 /** Esperanto (Esperanto)
@@ -259,6 +260,18 @@ Hal ini mengijinkan Anda untuk menggunakakn halaman pengguna Anda sebagai OpenID
 	'linkopenid-prefstext-openid' => 'OpenID Anda:',
 	'linkopenid-prefstext-v1url' => 'URL-Peladen untuk OpenID Versi 1.1:',
 	'linkopenid-prefstext-v2url' => 'URL-Peladen untuk OpenID Versi 2:',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'linkopenid-desc' => 'Consente agli utenti di collegare il proprio account a un OpenID esterno',
+	'linkopenid-prefstext-pre' => 'Se si dispone di un OpenID da un provider esterno è possibile specificarlo qui.
+Ciò consente anche di utilizzare la propria pagina utente come OpenID.',
+	'linkopenid-prefstext-openid' => 'Il tuo OpenID:',
+	'linkopenid-prefstext-v1url' => 'Server-URL per OpenID Versione 1.1:',
+	'linkopenid-prefstext-v2url' => 'Server-URL per OpenID Versione 2:',
 );
 
 /** Japanese (日本語)

@@ -93,6 +93,14 @@ $messages['dsb'] = array(
 	'untidy' => 'Njepórědny',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'tidy' => 'Τακτοποιημένο',
+	'untidy' => 'Ατακτοποίητο',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

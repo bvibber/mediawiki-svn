@@ -87,6 +87,13 @@ $messages['es'] = array(
 	'right-getfamily' => 'Crear un archivo de familia para pywikipediabot',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'right-getfamily' => 'Luoda perhetiedoston pywikipediabotille',
+);
+
 /** French (Français)
  * @author Crochet.david
  */

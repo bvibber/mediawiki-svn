@@ -443,6 +443,13 @@ $messages['sr-ec'] = array(
 	'ajax-qp-desc' => 'AJAX додаци за стране претрага попут [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'ajax-qp-desc' => 'AJAX dodaci za strane pretraga poput [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

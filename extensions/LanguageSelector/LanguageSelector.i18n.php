@@ -799,6 +799,15 @@ $messages['sr-ec'] = array(
 	'languageselector-setlang' => 'постави',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'languageselector' => 'Jezik',
+	'languageselector-desc' => 'Izbirač jezika na svakom jeziku, i takođe za posetioce',
+	'languageselector-setlang' => 'postavi',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

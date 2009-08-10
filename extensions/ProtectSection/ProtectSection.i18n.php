@@ -442,6 +442,13 @@ $messages['pt-br'] = array(
 	'right-protectsection' => 'Proteger seções da página',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'protectsection_forbidden' => 'Interzis',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

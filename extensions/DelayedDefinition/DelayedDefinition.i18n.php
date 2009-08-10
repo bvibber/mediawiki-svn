@@ -21,6 +21,16 @@ $messages['qqq'] = array(
 	'delaydef-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'delaydef-desc' => 'يضيف &lt;define&gt; و &lt;display&gt; لإتاحة تغيير مكان الكود.',
+	'delaydef-error-missing-def' => 'خطأ: لم توجد التعاريف المطلوبة ل&lt;display name="$1"&gt;.',
+	'delaydef-error-no-name' => 'خطأ: لا اسم معامل محدد.',
+	'delaydef-error-redef' => 'خطأ: محاولة لإعادة تعريف $1.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -145,6 +155,16 @@ $messages['id'] = array(
 	'delaydef-error-missing-def' => 'Galat: Definisi yang diperlukan untuk &lt;display name="$1"&gt; tidak ditemukan.',
 	'delaydef-error-no-name' => 'Galat: Paramater tidak diberikan.',
 	'delaydef-error-redef' => 'Galat: Mencoba untuk mendefinisi ulang $1.',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'delaydef-desc' => 'Aggiunge &lt;define&gt; e &lt;display&gt; per consentire al codice di essere riposizionato',
+	'delaydef-error-missing-def' => 'Errore: definizione necessaria per &lt;display name="$1"&gt; non trovata.',
+	'delaydef-error-no-name' => 'Errore: nessun nome parametro specificato.',
+	'delaydef-error-redef' => 'Errore: tentativo di ridefinizione di $1.',
 );
 
 /** Japanese (日本語)

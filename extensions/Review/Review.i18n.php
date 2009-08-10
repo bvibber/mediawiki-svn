@@ -646,9 +646,14 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'review_sidebar_title' => 'Arvioi',
+	'review-desc' => 'Sallii käyttäjien [[Special:Review|arvioida]] sivuja.',
+	'review_save' => 'Tallenna arviointi',
+	'review_error' => 'Jokin on väärin!',
 	'review_total_statistics' => 'Yhteensä',
 	'review_has_been_stored' => 'Arvostelusi tallennettiin.',
 	'review_blocked' => 'Olet estetty, joten et voi osallistua.',
+	'review_no_opinion' => 'Ei mielipidettä',
 );
 
 /** French (Français)
@@ -1798,6 +1803,14 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'review_total_statistics' => 'Укупно',
 	'review_comment' => 'Коментар',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'review_total_statistics' => 'Ukupno',
+	'review_comment' => 'Komentar',
 );
 
 /** Swedish (Svenska)

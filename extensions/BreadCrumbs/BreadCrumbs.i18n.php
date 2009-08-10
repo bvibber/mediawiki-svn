@@ -422,6 +422,13 @@ $messages['sr-ec'] = array(
 	'breadcrumbs-desc' => 'Показује путање корисника кроз Вики.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'breadcrumbs-desc' => 'Pokazuje putanje korisnika kroz Viki.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

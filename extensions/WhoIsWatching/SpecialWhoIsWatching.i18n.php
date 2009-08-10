@@ -188,6 +188,16 @@ Pšosym wužyj bok [[MediaWiki:Number_of_watching_users_pageview]], aby zastupny
 	'specialwhoiswatchingaddbtn' => 'Wubranych wužywarjow pśidaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'whoiswatching' => 'Ποιος βλέπει μια σελίδα βίκι',
+	'specialwhoiswatchingthepage' => 'Ποιος βλέπει %s',
+	'specialwhoiswatchingaddusers' => 'Προσθήκη χρηστών για παρακολούθηση της σελίδας',
+	'specialwhoiswatchingaddbtn' => 'Προσθήκη επιλεγμένων χρηστών',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -674,6 +684,19 @@ $messages['sr-ec'] = array(
 Молимо Вас, користите страну [[MediaWiki:Number_of_watching_users_pageview]] да бисте дефинисали ову улазну тачку.',
 	'specialwhoiswatchingaddusers' => 'Додај кориснике који ће пратити ову страну',
 	'specialwhoiswatchingaddbtn' => 'Додај означене кориснике',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'whoiswatching' => 'Ko prati viki stranu',
+	'whoiswatching-desc' => 'Prikazuje spisak korisničkih imena koja prate odrećenu stranicu',
+	'specialwhoiswatchingthepage' => 'Ko prati %s',
+	'specialwhoiswatchingusage' => 'Ova specijalna strana ne može biti korišćena sama za sebe, već joj treba ulazna tačka.
+Molimo Vas, koristite stranu [[MediaWiki:Number_of_watching_users_pageview]] da biste definisali ovu ulaznu tačku.',
+	'specialwhoiswatchingaddusers' => 'Dodaj korisnike koji će pratiti ovu stranu',
+	'specialwhoiswatchingaddbtn' => 'Dodaj označene korisnike',
 );
 
 /** Seeltersk (Seeltersk)

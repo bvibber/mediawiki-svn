@@ -3219,10 +3219,17 @@ $messages['sr-ec'] = array(
 );
 
 /** latinica (latinica)
+ * @author Michaello
  * @author Sasa Stefanovic
  */
 $messages['sr-el'] = array(
 	'hiderevision' => 'Trajno sakrij revizije',
+	'hiderevision-desc' => 'Sakrij pojedinačne verzije od svih saradnika zbog legalnih razloga i sl.',
+	'group-oversight' => 'oversajtovi',
+	'group-oversight-member' => 'oversajt',
+	'grouppage-oversight' => '{{ns:project}}:Oversajt',
+	'right-oversight' => 'Pregledaj prethodno sakrivene verzije.',
+	'right-hiderevision' => 'Sakrij revizije administratora',
 	'hiderevision-prompt' => 'Broj revizije za uklanjanje:',
 	'hiderevision-continue' => 'Nastavi',
 	'hiderevision-text' => "Ova opcija treba da se koristi '''samo''' u sledećim slučajevima:
@@ -3245,9 +3252,16 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 	'hiderevision-error-current' => 'Ne mogu da obrišem najskoriju izmenu na stranici. Prvo vratite izmenu.',
 	'hiderevision-error-delete' => 'Ne mogu da arhiviram; da li je prethodno obrisana?',
 	'hiderevision-archive-status' => 'Obrisana revizija iz $1: $2',
+	'oversight-nodiff' => 'Nisam u mogućnosti da pratim izmene pošto ne trenutno ne postoje prethodne verzije strane. Mogući razlozi:
+* strana je obrisana ili
+* sakrivena verzija je bila prva verzija.',
 	'oversight-log-hiderev' => 'uklonjena izmena iz $1',
 	'oversight' => 'Propust',
 	'oversight-view' => 'detalji',
+	'oversight-difference' => '(Razlike između prethodnih verzija koje su ostale.)',
+	'oversight-prev' => 'Poslednja prethodna verzija.',
+	'oversight-hidden' => 'Sakrivene verzije.',
+	'oversight-header' => 'Ispod se nalazi spisak verzija prethodno sakrivenih od javnosti. Ako otkriješ ove podatke možeš zauvek izgubiti oversajt prava.',
 );
 
 /** Seeltersk (Seeltersk)

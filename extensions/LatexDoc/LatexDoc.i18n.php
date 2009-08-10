@@ -415,6 +415,25 @@ $3',
 	'latexdoc-desc' => 'Penyuntingan kolaborasi dokumen LaTeX',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'latexdoc_no_text' => 'Pagina non contiene testo, impossibile generare DVI',
+	'latexdoc_cant_create_dir' => 'Impossibile creare cartella temporanea $1',
+	'latexdoc_cant_write' => 'Impossibile scrivere sul file $1',
+	'latexdoc_error' => 'Errore LaTeX
+
+Comando: $1
+
+Output: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Ottieni DVI',
+	'latexdoc_get_pdf' => 'Ottieni PDF',
+	'latexdoc-desc' => 'Modifica collaborativa di documenti LaTeX',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

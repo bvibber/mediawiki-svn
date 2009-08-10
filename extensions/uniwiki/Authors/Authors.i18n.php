@@ -119,6 +119,14 @@ $messages['dsb'] = array(
 	'authors_anonymous' => 'Anonymny',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'authors_authors' => 'Συγγραφείς',
+	'authors_anonymous' => 'Ανώνυμοι',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -249,6 +257,15 @@ $messages['id'] = array(
 	'authors-desc' => 'Buat suatu daftar kontributor halaman',
 	'authors_authors' => 'Pembuat',
 	'authors_anonymous' => 'Anonim',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'authors-desc' => 'Aggiunge una lista di contributori alle pagine',
+	'authors_authors' => 'Autori',
+	'authors_anonymous' => 'Anonimo',
 );
 
 /** Japanese (日本語)
@@ -460,6 +477,15 @@ $messages['sr-ec'] = array(
 	'authors-desc' => 'Допуњује списак доприносиоца страна',
 	'authors_authors' => 'Аутори',
 	'authors_anonymous' => 'Анонимно',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'authors-desc' => 'Dopunjuje spisak doprinosioca strana',
+	'authors_authors' => 'Autori',
+	'authors_anonymous' => 'Anonimno',
 );
 
 /** Seeltersk (Seeltersk)

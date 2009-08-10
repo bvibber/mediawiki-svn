@@ -366,6 +366,13 @@ $messages['sr-ec'] = array(
 	'woopra-desc' => 'Омогућава [http://www.woopra.com/ Woopra Софтверу за праћење уживо] да ради са Вашом инсталацијом МедијаВикија.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'woopra-desc' => 'Omogućava [<a href="http://www.woopra.com/">http://www.woopra.com/</a> Woopra Softveru za praćenje uživo] da radi sa Vašom instalacijom MedijaVikija.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

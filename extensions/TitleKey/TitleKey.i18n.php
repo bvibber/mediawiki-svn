@@ -390,6 +390,13 @@ $messages['sr-ec'] = array(
 	'titlekey-desc' => 'Позадинска машина за претрагу префикса наслова.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'titlekey-desc' => 'Pozadinska mašina za pretragu prefiksa naslova.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -390,6 +390,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
+ * @author Silvonen
  * @author Vililikku
  * @author ZeiP
  */
@@ -399,6 +400,9 @@ $messages['fi'] = array(
 	'imstatus_default' => 'Oletus',
 	'imstatus_example' => 'Esimerkki',
 	'imstatus_possible_val' => 'Mahdolliset arvot',
+	'imstatus_max' => 'enintään',
+	'imstatus_min' => 'vähintään',
+	'imstatus_or' => 'tai',
 	'imstatus_style' => 'tilanilmaisimen tyyli',
 	'imstatus_action' => 'toimenpide, kun painiketta napsautetaan',
 	'imstatus_details_saa' => 'Lisätietoja kaikista tyyleistä ja toimenpiteistä löytyy sivulta $1.',
@@ -1139,6 +1143,25 @@ $messages['sr-ec'] = array(
 	'imstatus_gtalk_width' => 'ширина кутије, у пикселима.',
 	'imstatus_icq_id' => 'Ваш ICQ ID',
 	'imstatus_xfire_size' => 'величина дугмета, од $1 (највеће) до $2 (најмање).',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'imstatus_syntax' => 'Sintaksa',
+	'imstatus_default' => 'Podrazumevano',
+	'imstatus_example' => 'Primer',
+	'imstatus_possible_val' => 'Moguće vrednosti',
+	'imstatus_max' => 'maks',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'ili',
+	'imstatus_action' => 'akcija po kliku dugmeta',
+	'imstatus_your_name' => 'Vaše $1 ime',
+	'imstatus_gtalk_height' => 'visina kutije, u pikselima.',
+	'imstatus_gtalk_width' => 'širina kutije, u pikselima.',
+	'imstatus_icq_id' => 'Vaš ICQ ID',
+	'imstatus_xfire_size' => 'veličina dugmeta, od $1 (najveće) do $2 (najmanje).',
 );
 
 /** Seeltersk (Seeltersk)

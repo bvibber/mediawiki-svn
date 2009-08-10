@@ -152,6 +152,13 @@ $messages['es'] = array(
 	'seealso-desc' => "Traducidos 'See also' encabezados usando la etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'seealso' => 'Vaata ka',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  * @author Theklan
@@ -447,6 +454,13 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'seealso' => 'Ver também',
 	'seealso-desc' => "Títulos de seção 'Ver também' localizados usando a marca <code><nowiki><seealso></nowiki></code>",
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'seealso' => 'Vedeţi, de asemenea,',
 );
 
 /** Tarandíne (Tarandíne)

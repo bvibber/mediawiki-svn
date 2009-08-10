@@ -573,6 +573,18 @@ $messages['sr-ec'] = array(
 $2',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'email-desc' => 'Omogućuje podesive hedere/futere za imejlove koje razmenjuju korisnici',
+	'email_footer' => '----------------------------------------------------------------------------
+Ovaj mejl vam je poslat preko sistema za slanje poruka, na sajtu {{SITENAME}}
+od strane $1
+
+$2',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

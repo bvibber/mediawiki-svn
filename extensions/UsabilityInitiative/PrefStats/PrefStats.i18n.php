@@ -59,13 +59,13 @@ $messages['be-tarask'] = array(
 	'prefstats-list-intro' => 'Зараз адсочваюцца наступныя ўстаноўкі.
 Націсьніце на адну зь іх для прагляду яе статыстыкі.',
 	'prefstats-noprefs' => 'У цяперашні момант ніякія ўстаноўкі не адсочваюцца. Устанавіце $wgPrefStatsTrackPrefs для сачэньня за ўстаноўкамі.',
-	'prefstats-counters' => '* $1 {{PLURAL:$1|удзельнік уключыў|удзельнікі ўключылі|удзельнікаў уключыла}} гэту магчымасьць з моманту актывізацыі гэтай статыстыкі
-** У $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} яна уключана
-** У $3 {{PLURAL:$3|удзельніка|удзельнікаў|удзельнікаў}} яна выключана',
-	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|удзельнік уключыў|удзельнікі ўключылі|удзельнікаў уключыла}} гэту магчымасьць з моманту актывізацыі гэтай статыстыкі
-** У $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} яна уключана
-** У $3 {{PLURAL:$3|удзельніка|удзельнікаў|удзельнікаў}} яна выключана
-* Агулам $4 {{PLURAL:$4|удзельнік|удзельнікі|удзельнікаў}} усталавяла гэту магчымасьць',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|удзельнік уключыў|удзельнікі ўключылі|удзельнікаў уключылі}} гэтую магчымасьць з моманту актывізацыі гэтай статыстыкі
+** У $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} яна уключаная
+** У $3 {{PLURAL:$3|удзельніка|удзельнікаў|удзельнікаў}} яна выключаная',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|удзельнік уключыў|удзельнікі ўключылі|удзельнікаў уключылі}} гэтую магчымасьць з моманту актывізацыі гэтай статыстыкі
+** У $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} яна уключаная
+** У $3 {{PLURAL:$3|удзельніка|удзельнікаў|удзельнікаў}} яна выключаная
+* Агулам $4 {{PLURAL:$4|удзельнік устанавіў|удзельнікі устанавілі|удзельнікаў устанавілі}} гэтую магчымасьць',
 );
 
 /** Bosnian (Bosanski)
@@ -102,6 +102,13 @@ $messages['cs'] = array(
 	'prefstats-list-intro' => 'V současnosti se sledují následující nastavení.
 Kliknutím zobrazíte příslušné statistiky.',
 	'prefstats-noprefs' => 'Momentálně se nesleduje žádné nastavení. Sledování musíte nakonfigurovat v $wgPrefStatsTrackPrefs.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|uživatel si aktivoval|uživatelé si aktivovali|uživatelů si aktivovalo}} tuto volbu od zavedení statistik.
+** $2 {{PLURAL:$2|uživatel si ji zapnul|uživatelé si ji zapnuli|uživatelů si ji zapnulo}}
+** $3 {{PLURAL:$3|uživatel si ji vypnul|uživatelé si ji vypnuli|uživatelů si ji vypnulo}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|uživatel si aktivoval|uživatelé si aktivovali|uživatelů si aktivovalo}} tuto volbu od zavedení statistik.
+** $2 {{PLURAL:$2|uživatel si ji zapnul|uživatelé si ji zapnuli|uživatelů si ji zapnulo}}
+** $3 {{PLURAL:$3|uživatel si ji vypnul|uživatelé si ji vypnuli|uživatelů si ji vypnulo}}
+* Celkem {{PLURAL:$4|má|mají|má}} tuto volbu nastavenu $4 {{PLURAL:$4|uživatel|uživatelé|uživatelů}}',
 );
 
 /** German (Deutsch)
@@ -115,6 +122,13 @@ $messages['de'] = array(
 	'prefstats-list-intro' => 'Derzeit werden die folgenden Einstellungen aufgezeichnet.
 Klicke auf eine, um Statistiken darüber zu erhalten.',
 	'prefstats-noprefs' => 'Derzeit werden keine Einstellungen verfolgt. Konfiguriere $wgPrefStatsTrackPrefs, um Einstellungen zu verfolgen.',
+	'prefstats-counters' => '* $1 Benutzer {{PLURAL:$1|hat|haben}} diese Einstellung aktiviert seit Statistiken über Einstellungen erhoben werden
+** $2 Benutzer {{PLURAL:$2|hat|haben}} sie aktiviert
+** $3 Benutzer {{PLURAL:$3|hat|haben}} sie deaktiviert',
+	'prefstats-counters-expensive' => '* $1 Benutzer {{PLURAL:$1|hat|haben}} diese Einstellung aktiviert seit Statistiken über Einstellungen erhoben werden
+** $2 Benutzer {{PLURAL:$2|hat|haben}} sie aktiviert
+** $3 Benutzer {{PLURAL:$3|hat|haben}} sie deaktiviert
+* Insgesamt {{PLURAL:$4|hat|haben}} $4 Benutzer diese Einstellung gesetzt',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -153,6 +167,15 @@ $messages['eo'] = array(
 	'prefstats-title' => 'Statistikoj pri preferoj',
 	'prefstats-list-intro' => 'Nune, la jenaj agordoj estas atentitaj.
 Klaku por vidi statistikojn pri ĝi.',
+	'prefstats-noprefs' => 'Neniuj preferoj estas nune sekvita.
+Konfiguru $wgPrefStatsTrackPrefs por sekvi preferojn.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|uzanto|uzantoj}} ŝaltis ĉi tiun preferon ekde statistikoj pri preferoj aktiviĝis
+** $2 {{PLURAL:$2|uzanto|uzantoj}} ŝaltis ĝin
+** $3 {{PLURAL:$3|uzanto|uzantoj}} malŝaltis ĝin',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|uzanto|uzantoj}} ŝaltis ĉi tiun preferon ekde statistikoj pri preferoj aktiviĝis
+** $2 {{PLURAL:$2|uzanto|uzantoj}} ŝaltis ĝin
+** $3 {{PLURAL:$3|uzanto|uzantoj}} malŝaltis ĝin
+* Sume, $4 {{PLURAL:$4|uzanto|uzantoj}} uzas ĉi tiun preferon.',
 );
 
 /** Spanish (Español)
@@ -199,6 +222,7 @@ Tilastot näkyvät painamalla asetusta.',
  * @author Crochet.david
  * @author IAlex
  * @author Kropotkine 113
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'prefstats' => 'Statistiques des préférences',
@@ -207,6 +231,13 @@ $messages['fr'] = array(
 	'prefstats-list-intro' => "En ce moment, les préférences suivantes sont suivies.
 Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
 	'prefstats-noprefs' => 'Aucune préférence n\'est actuellement suivie. Configurer $wgPrefStatsTrackPrefs pour suivre des préférences.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utilisateur a|utilisateurs ont}} activé cette préférence depuis que les statistiques de préférences ont été activées
+** $2 {{PLURAL:$2|utilisateur a|utilisateurs ont}} activé cette préférence
+** $3 {{PLURAL:$3|utilisateur a|utilisateurs ont}} désactivé cette préférence',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utilisateur a|utilisateurs ont}} activé cette préférence depuis que les statistiques de préférences ont été activées
+** $2 {{PLURAL:$2|utilisateur a|utilisateurs ont}} activé cette préférence
+** $3 {{PLURAL:$3|utilisateur a|utilisateurs ont}} désactivé cette préférence
+* Au total, $4 {{PLURAL:$4|utilisateur a|utilisateurs ont}} défini cette préférence',
 );
 
 /** Galician (Galego)
@@ -231,7 +262,14 @@ $messages['gsw'] = array(
 	'prefstats-title' => 'Priorotätestatischtik',
 	'prefstats-list-intro' => 'Zur Zyt wäre die Prioritäte verfolgt.
 Druck uf eini go Statischtike iber si aaluege.',
-	'prefstats-noprefs' => 'Bis jetz wäre kei Prioritete verfolgt. Konfigurier $wgPrefStatsTrackPrefs go Prioritete verfolge.',
+	'prefstats-noprefs' => 'Bis jetz wäre kei Yystellige verfolgt. Konfigurier $wgPrefStatsTrackPrefs go Yystellige verfolge.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|Benutzer het|Benutzer hän}} die Yystellig megli gmacht syt d Yystelligsstatischtike aktiviert wore sin
+** $2 {{PLURAL:$2|Benutzer het|Benutzer hän}} si megli gmacht
+** $3 {{PLURAL:$3|Benutzer het|Benutzer hän}} si abgstellt',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|Benutzer het|Benutzer hän}} die Yystellig megli gmacht syt d Yystelligsstatischtike aktiviert wore sin
+** $2 {{PLURAL:$2|Benutzer het|Benutzer hän}} si megli gmacht
+** $3 {{PLURAL:$3|Benutzer het|Benutzer hän}} si abgstellt
+* $4 {{PLURAL:$4|Benutzer het si insgsamt|Benutzer hän si insgsamt}} die Yystellig megli gmacht',
 );
 
 /** Hebrew (עברית)
@@ -245,6 +283,24 @@ $messages['he'] = array(
 	'prefstats-list-intro' => 'כרגע, ההעדפות הבאות נמצאות במעקב.
 לחצו על אחת כדי לצפות בסטטיסטיקות אודותיה.',
 	'prefstats-noprefs' => 'נכון לעכשיו לא מתבצע מעקב אחר העדפות. יש להגדיר את $wgPrefStatsTrackPrefs כדי לעקוב אחר העדפות.',
+	'prefstats-counters' => '* {{PLURAL:$1|משתמש אחד|$1 משתמשים}} הפעילו העדפה זו מאז שהופעלו סטטיסטיקות ההעדפות
+** {{PLURAL:$2|משתמש אחד|$2 משתמשים}} הפעילו אותה
+** {{PLURAL:$3|משתמש אחד|$3 משתמשים}} ביטלו אותה',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|משתמש אחד|$1 משתמשים}} הפעילו העדפה זו מאז שהופעלו סטטיסטיקות ההעדפות
+** {{PLURAL:$2|משתמש אחד|$2 משתמשים}} הפעילו אותה
+** {{PLURAL:$3|משתמש אחד|$3 משתמשים}} ביטלו אותה
+* סך הכל, {{PLURAL:$4|משתמש אחד|$4 משתמשים}} הגדירו העדפה זו',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'prefstats' => 'Statistike postavki',
+	'prefstats-desc' => 'Praćenje statistike o tome koliko suradnika ima omogućene određene postavke',
+	'prefstats-title' => 'Statistike postavki',
+	'prefstats-list-intro' => 'Trenutačno su sljedeće postavke praćene. 
+Kliknite na jednu kako biste vidjeli njezinu statistiku.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -351,6 +407,14 @@ $messages['ka'] = array(
 	'prefstats-list-intro' => 'ეხლა მიმდინარეობს შემდეგ კონფიგურაციათა კონტროლი
 აირჩიეთ რომელიმე მათგანი სტატისტიკის სანახავად',
 	'prefstats-noprefs' => 'რაიმე უპირატესობა ამჟამად კონტროლი არ ეწევა. კონფიგურაციის კონტროლისთვის შეიტანეთ ცვლილებები $wgPrefStatsTrackPrefs გვერდზე.',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'prefstats' => 'ស្ថិតិ​ ចំណូលចិត្ត​',
+	'prefstats-title' => 'ស្ថិតិ​ ចំណូលចិត្ត​',
 );
 
 /** Korean (한국어)
@@ -533,6 +597,13 @@ $messages['ru'] = array(
 Выберите одну из них для просмотра статистики.',
 	'prefstats-noprefs' => 'В настоящее время настройки не отслеживаются.
 Установите $wgPrefStatsTrackPrefs для отслеживания настроек.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|участник включил|участника включили|участников включили}} этот параметр, с момента начала работы статистики по параметрам
+** $2 {{PLURAL:$2|участник включил|участника включили|участников включили}} параметр
+** $3 {{PLURAL:$3|участник выключил|участника выключили|участников выключили}} параметр',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|участник включил|участника включили|участников включили}} этот параметр, с момента начала работы статистики по параметрам
+** $2 {{PLURAL:$2|участник включил|участника включили|участников включили}} параметр
+** $3 {{PLURAL:$3|участник выключил|участника выключили|участников выключили}} параметр
+* Всего этот параметр установлен у $4 {{PLURAL:$4|участника|участников|участников}}',
 );
 
 /** Yakut (Саха тыла)
@@ -546,6 +617,14 @@ $messages['sah'] = array(
 Статиистикатын көрөргө ханныгы эмит биири тал.',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'prefstats' => 'Statistichi dê prifirenzi',
+	'prefstats-title' => 'Statistichi dê prifirenzi',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -556,19 +635,34 @@ $messages['sk'] = array(
 	'prefstats-list-intro' => 'Momentálne sa sledujú nasledovné nastavenia.
 Po kliknutí na niektoré z nich zobrazíte štatistiku o ňom.',
 	'prefstats-noprefs' => 'Momentálne sa nesledujú žiadne nastavenia. Ak chcete sledovať nastavenia, nastavte $wgPrefStatsTrackPrefs.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|používateľ zapol|používatelia zapli|používateľov zaplo}} túto voľbu od aktivácie štatistiky nastavení
+** $2 {{PLURAL:$2|používateľ ju zapol|používatelia ju zapli|používateľov ju zaplo}}
+** $3 {{PLURAL:$3|používateľ ju vypol|používatelia ju vypli|používateľov ju vyplo}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|používateľ zapol|používatelia zapli|používateľov zaplo}} túto voľbu od aktivácie štatistiky nastavení
+** $2 {{PLURAL:$2|používateľ ju zapol|používatelia ju zapli|používateľov ju zaplo}}
+** $3 {{PLURAL:$3|používateľ ju vypol|používatelia ju vypli|používateľov ju vyplo}}
+* Celkom {{PLURAL:$4|má|majú}} túto voľbu zapnutú $4 {{PLURAL:$4|používateľ|používatelia|používateľov}}',
 );
 
 /** Swedish (Svenska)
  * @author Fluff
  * @author Ozp
+ * @author Rotsee
  */
 $messages['sv'] = array(
 	'prefstats' => 'Statistik över inställningar',
 	'prefstats-desc' => 'Statistik över hur många användare som har vissa inställningar',
 	'prefstats-title' => 'Statistik över inställningar',
-	'prefstats-list-intro' => 'För närvarande blir följande inställningar spårade.
-Klicka på en för att visa statistik om den.',
-	'prefstats-noprefs' => 'Inga inställningar blir för närvarande spårade. Konfigurera $wgPrefStatsTrackPrefs för att spåra inställningar.',
+	'prefstats-list-intro' => 'För närvarande spåras följande inställningar.
+Klicka på en inställning för att visa statistik om den.',
+	'prefstats-noprefs' => 'Inga inställningar spåras för närvarande. Ändra $wgPrefStatsTrackPrefs för att spåra inställningar.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|användare|användare}} har slagit på den här inställningen sedan spårningen av inställningar inleddes.
+** $2 {{PLURAL:$2|användare|användare}} har slagit på den
+** $3 {{PLURAL:$3|användare|användare}} har slagit av den',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|användare|användare}} har slagit på den här inställningen sedan spårningen av inställningar inleddes
+** $2 {{PLURAL:$2|användare|användare}} har slagit på den
+** $3 {{PLURAL:$3|användare|användare}} har slagit av den
+* Sammanlagt har $4 {{PLURAL:$4|användare|användare}} den här inställningen påslagen',
 );
 
 /** Telugu (తెలుగు)

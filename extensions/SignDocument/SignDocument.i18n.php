@@ -163,6 +163,7 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
@@ -170,6 +171,8 @@ $messages['fi'] = array(
 	'signature-desc' => 'Sallii dokumentin [[Special:SignDocument|allekirjoituksen]].',
 	'signaturelogpagetext' => 'Tämä on [[Special:SignDocument|kaikkien asiakirjoihin lisättyjen allekirjoitusten]] loki..',
 	'signaturelogentry' => 'allekirjoitti dokumentin $1',
+	'right-sigadmin' => 'Ylläpitää asiakirjojen allekirjoituksia',
+	'right-createsigndocument' => 'Luoda allekirjoitettavia asiakirjoja',
 );
 
 /** French (Français)
@@ -414,6 +417,8 @@ $messages['pt-br'] = array(
 	'signature-desc' => 'Permite a [[Special:SignDocument|assinatura]] de documentos',
 	'signaturelogpagetext' => 'Este é um registro de [[Special:SignDocument|todas as assinaturas adicionadas a documentos]].',
 	'signaturelogentry' => 'assinou o documento $1',
+	'right-sigadmin' => 'Administrar a assinatura de documentos',
+	'right-createsigndocument' => 'Criar documentos que possam ser assinados',
 );
 
 /** Russian (Русский)
@@ -450,6 +455,16 @@ $messages['sr-ec'] = array(
 	'signature-desc' => 'Омогући документ [[Special:SignDocument|signing]]',
 	'signaturelogpagetext' => 'Ово је историја [[Special:SignDocument|свих потписа докумената]].',
 	'signaturelogentry' => 'потписао документ $1',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'signaturelogpage' => 'Istorija potpisivanja',
+	'signature-desc' => 'Omogući dokument [[Special:SignDocument|signing]]',
+	'signaturelogpagetext' => 'Ovo je istorija [[Special:SignDocument|svih potpisa dokumenata]].',
+	'signaturelogentry' => 'potpisao dokument $1',
 );
 
 /** Seeltersk (Seeltersk)

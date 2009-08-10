@@ -578,6 +578,15 @@ $messages['sr-ec'] = array(
 	'simpleantispam-desc' => 'Додаје једноставну спам/бот проверу у форме.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'simpleantispam' => 'Tvoja izmena je pokrenula antispam mehanizam.',
+	'simpleantispam-label' => "Provera spama. '''NE''' popunjavaj ovo unutra!",
+	'simpleantispam-desc' => 'Dodaje jednostavnu spam/bot proveru u forme.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

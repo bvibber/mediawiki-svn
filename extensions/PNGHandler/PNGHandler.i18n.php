@@ -316,6 +316,13 @@ $messages['sr-ec'] = array(
 	'pnghandler-desc' => 'Промени величину ПНГ слика користећи pngds',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'pnghandler-desc' => 'Promeni veličinu PNG slika koristeći pngds',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

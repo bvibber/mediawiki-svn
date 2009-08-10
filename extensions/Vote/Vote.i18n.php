@@ -830,14 +830,19 @@ riddler|Riddler',
 /** Italian (Italiano)
  * @author Aushulz
  * @author Cruccone
+ * @author Darth Kule
  * @author Stefano-c
  */
 $messages['it'] = array(
 	'vote' => 'Vota',
 	'vote-desc' => 'Fornisce una funzionalità per semplici sondaggi',
+	'vote-header' => "Qui è possibile votare per il '''Capo Supremo del Mondo'''",
 	'vote-current' => "Il tuo voto corrente è per '''$1'''.",
 	'vote-legend' => 'Imposta o modifica il voto',
 	'vote-caption' => 'La tua selezione:',
+	'vote-choices' => 'joker|Il Joker
+pinguino|Il Pinguino
+enigmista|Enigmista',
 	'vote-submit' => 'Vota',
 	'vote-registered' => 'Il tuo voto è stato registrato.',
 	'vote-view-results' => 'Vedi risultati',
@@ -845,8 +850,10 @@ $messages['it'] = array(
 	'vote-results-choice' => 'Scelta',
 	'vote-results-count' => 'Conteggio',
 	'vote-results-none' => 'Non è stato espresso alcun voto.',
-	'vote-login' => 'È necessario [$1 accedi] per votare.',
+	'vote-login' => 'È necessario [$1 accedere] per votare.',
 	'vote-invalid-choice' => 'Devi selezionare una delle possibili opzioni.',
+	'right-vote' => 'Vota',
+	'right-voteadmin' => 'Vede i risultati del voto',
 );
 
 /** Japanese (日本語)
@@ -927,6 +934,7 @@ $messages['ka'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'vote' => 'បោះឆ្នោត',
@@ -941,6 +949,8 @@ $messages['km'] = array(
 	'vote-results-none' => 'គ្មាន​សំឡេងឆ្នោត ត្រូវ​បាន​បោះ​​ទេ​នាពេលនេះ​។',
 	'vote-login' => 'អ្នកត្រូវតែ[$1 ឡុកអ៊ីន]ដើម្បីបោះឆ្នោត។',
 	'vote-invalid-choice' => 'អ្នកត្រូវតែជ្រើសយកជម្រើសមួយក្នុងចំណោមជម្រើសទាំងឡាយដែលបានផ្ដល់ឱ្យ។',
+	'right-vote' => 'បោះ​ឆ្នោត​',
+	'right-voteadmin' => 'មើល​លទ្ធផល​ការបោះឆ្នោត​',
 );
 
 /** Korean (한국어)
@@ -1526,6 +1536,32 @@ pecenje|Печење',
 	'right-voteadmin' => 'Прегледање резултата гласања',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'vote' => 'Glasanje',
+	'vote-desc' => 'Pruža mogućnosti za postavljanje jednostavnih glasanja',
+	'vote-header' => "Ovde možete da glasate za '''vaše omiljeno jelo'''!",
+	'vote-current' => "Vaš trenutni glas je '''$1'''.",
+	'vote-legend' => 'Dajte ili izmenite glas',
+	'vote-caption' => 'Vaš izbor:',
+	'vote-choices' => 'vsalata|Voćna salata
+pica|Pica
+pecenje|Pečenje',
+	'vote-submit' => 'Glasaj',
+	'vote-registered' => 'Vaš glas je bio uračunat.',
+	'vote-view-results' => 'Prikaz rezultata',
+	'vote-results' => 'Rezultati glasanja',
+	'vote-results-choice' => 'Izbor',
+	'vote-results-count' => 'Broj glasova',
+	'vote-results-none' => 'Trenutno nije dat ni jedan glas.',
+	'vote-login' => 'Morate da se [$1 prijavite], da biste glasali.',
+	'vote-invalid-choice' => 'Morate izabrati jednu od raspoloživih opcija.',
+	'right-vote' => 'Glasanje',
+	'right-voteadmin' => 'Pregledanje rezultata glasanja',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -1650,6 +1686,7 @@ $messages['tg-cyrl'] = array(
  * @author Manop
  * @author Mopza
  * @author Passawuth
+ * @author Woraponboonkerd
  */
 $messages['th'] = array(
 	'vote' => 'ลงคะแนน',
@@ -1660,7 +1697,7 @@ $messages['th'] = array(
 	'vote-view-results' => 'ดูผล',
 	'vote-results' => 'ผลโหวต',
 	'vote-results-choice' => 'ตัวเลือก',
-	'vote-login' => 'คุณจำเป็นต้อง [$1 ล็อกอิน] สำหรับโหวต',
+	'vote-login' => 'คุณต้อง[$1 ลงชื่อเข้าระบบ]เพื่อลงคะแนน',
 );
 
 /** Tagalog (Tagalog)

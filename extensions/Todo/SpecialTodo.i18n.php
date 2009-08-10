@@ -443,18 +443,27 @@ $4',
 /** Greek (Ελληνικά)
  * @author Consta
  * @author K sal 15
+ * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'todo' => 'Λίστα εργασιών',
+	'todo-tab' => 'τα πρακτέα',
 	'todo-new-queue' => 'Νέο',
 	'todo-invalid-item' => 'Χαμένο ή άκυρο στοιχείο',
 	'todo-unrecognize-type' => 'Μη αναγνωρισμένος τύπος',
 	'todo-item-list' => 'Τα αντικείμενα σας',
+	'todo-no-item' => 'Κανένα αντικείμενο προς υλοποίηση.',
+	'todo-add-queue' => 'Προσθήκη ουράς…',
 	'todo-move-queue' => 'Μετακίνηση στην ουρά...',
+	'todo-list-for' => 'Λίστα πρακτέων για $1',
 	'todo-list-change' => 'Αλλαγή',
 	'todo-list-cancel' => 'Έξοδος',
 	'todo-new-item' => 'Νέο αντικείμενο',
+	'todo-issue-summary' => 'Σύνοψη τεύχους:',
 	'todo-form-details' => 'Λεπτομέρειες:',
+	'todo-form-submit' => 'Καταχώρηση αιτήματος',
+	'right-todo' => 'Λίστα πρακτέων',
 );
 
 /** Esperanto (Esperanto)
@@ -547,9 +556,13 @@ $messages['fi'] = array(
 	'todo-new-queue' => 'uusi',
 	'todo-add-queue' => 'Lisää jonoon…',
 	'todo-move-queue' => 'Siirrä jonoon…',
+	'todo-list-for' => 'Tehtävälista käyttäjälle $1',
 	'todo-list-change' => 'Muuta',
 	'todo-list-cancel' => 'Peruuta',
 	'todo-form-details' => 'Tiedot',
+	'todo-form-submit' => 'Lähetä kysely',
+	'right-todo' => 'Käyttää tehtäväluetteloa',
+	'right-todosubmit' => 'Rajoittaa käyttäjien tehtäväluettelojen oikeuksia',
 );
 
 /** French (Français)
@@ -637,7 +650,9 @@ $4',
  */
 $messages['grc'] = array(
 	'todo-new-queue' => 'νέα',
+	'todo-add-queue' => 'Προσθήκη οὐρᾶς…',
 	'todo-list-cancel' => 'Ἀκυροῦν',
+	'todo-issue-summary' => 'Σύνοψις τεύχους:',
 	'todo-form-details' => 'Λεπτομέρειαι:',
 );
 
@@ -895,6 +910,7 @@ $messages['jv'] = array(
  * @author Chhorran
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'todo' => 'បញ្ជីកិច្ចការ​ត្រូវ​ធ្វើ',
@@ -903,9 +919,11 @@ $messages['km'] = array(
 	'todo-unrecognize-type' => 'ប្រភេទមិនស្គាល់',
 	'todo-item-list' => 'ធាតុ​របស់​អ្នក',
 	'todo-add-queue' => 'បន្ថែម ជួររង់ចាំ...',
+	'todo-list-for' => 'បញ្ជី​កិច្ចការ​ដែល​ត្រូវ​ធ្វើ​ សម្រាប់​ $1',
 	'todo-list-change' => 'ផ្លាស់ប្តូរ',
 	'todo-list-cancel' => 'បោះបង់',
 	'todo-new-item' => 'របស់ថ្មី',
+	'todo-issue-summary' => 'សេចក្ដី​សង្ខេប​នៃ​បញ្ហា​៖',
 	'todo-form-details' => 'លំអិត ៖',
 );
 
@@ -1469,6 +1487,25 @@ $messages['sr-ec'] = array(
 	'todo-list-cancel' => 'Поништи',
 	'todo-form-details' => 'Детаљи:',
 	'todo-form-submit' => 'Пошањи упит',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'todo' => 'Spisak stvari za uraditi',
+	'todo-desc' => 'Ekstenzija za eksperimentalan lični [[Special:Todo|spisak stvari za uraditi]]',
+	'todo-tab' => 'za uraditi',
+	'todo-new-queue' => 'novo',
+	'todo-unrecognize-type' => 'Nepoznat tip',
+	'todo-no-item' => 'Nema stvari za uraditi.',
+	'todo-add-queue' => 'Dodaj red…',
+	'todo-move-queue' => 'Premesti u red…',
+	'todo-list-for' => 'Spisak stvari za uraditi, za $1',
+	'todo-list-change' => 'Promeni',
+	'todo-list-cancel' => 'Poništi',
+	'todo-form-details' => 'Detalji:',
+	'todo-form-submit' => 'Pošanji upit',
 );
 
 /** Seeltersk (Seeltersk)

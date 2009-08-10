@@ -441,6 +441,13 @@ $messages['sr-ec'] = array(
 	'mwsearch-desc' => 'MWSearch додатак',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'mwsearch-desc' => 'MWSearch dodatak',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

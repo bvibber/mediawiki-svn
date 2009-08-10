@@ -592,6 +592,19 @@ $messages['sr-ec'] = array(
 	'categorywatch-autocat' => 'Аутоматски надгледано од $1',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'categorywatch-desc' => 'Proširuje funkcionalnost spiska praćenja na obaveštavanje o promenama sadržaja kategorija',
+	'categorywatch-emailsubject' => 'Aktivnost koja uključuje nadgledanu kategoriju &quot;$1&quot;',
+	'categorywatch-catmovein' => '$1 je premešten u $2 iz $3',
+	'categorywatch-catmoveout' => '$1 je premešten iz $2 u $3',
+	'categorywatch-catadd' => '$1 je dodat u $2',
+	'categorywatch-catsub' => '$1 je izbačen iz $2',
+	'categorywatch-autocat' => 'Automatski nadgledano od $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

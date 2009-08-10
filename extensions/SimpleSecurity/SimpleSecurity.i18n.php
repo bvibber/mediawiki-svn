@@ -53,6 +53,7 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'security' => 'سجل الأمن',
@@ -63,13 +64,14 @@ $messages['ar'] = array(
 	'security-info' => 'توجد $1 على هذه المقالة',
 	'security-info-toggle' => 'ضوابط الأمن',
 	'security-inforestrict' => '$1 مضبوط إلى $2',
-	'security-desc-LS' => "''(يطبق لأن هذه المقالة موجودة في '''$2 $1''')''",
-	'security-desc-PR' => "''(اضبط من '''لسان الحماية''')''",
-	'security-infosysops' => "لا ضوابط مفعلة لأنك عضو في مجموعة '''sysop'''",
+	'security-desc-LS' => '(يطبق لأن هذه المقالة موجودة في "$2 $1")',
+	'security-desc-PR' => '(اضبط من لسان "الحماية")',
+	'security-infosysops' => 'لا قيود مفعّلة لأنك عضو في مجموعة "sysop"',
 	'security-manygroups' => 'المجموعات $1 و $2',
 	'security-unchain' => 'عدل الأفعال بشكل فردي',
 	'security-type-category' => 'تصنيف',
 	'security-type-namespace' => 'نطاق',
+	'security-restricttogroup' => 'الوصول إلى المحتوى مُقيّد لأعضاء "$1"',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -220,9 +222,12 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'security' => 'Tietoturvaloki',
+	'security-logpage' => 'Tietoturvaloki',
 	'security-info-toggle' => 'turvallisuusrajoitukset',
 	'security-type-category' => 'luokka',
 	'security-type-namespace' => 'nimiavaruus',
@@ -393,6 +398,7 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Darth Kule
  * @author Marco 27
  */
 $messages['it'] = array(
@@ -402,6 +408,7 @@ $messages['it'] = array(
 	'security-infosysops' => 'Non sono applicate restrizioni perché sei un membro del gruppo "sysop"',
 	'security-manygroups' => 'gruppi $1 e $2',
 	'security-type-category' => 'categoria',
+	'security-type-namespace' => 'namespace',
 );
 
 /** Japanese (日本語)

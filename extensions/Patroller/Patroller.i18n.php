@@ -1107,7 +1107,7 @@ $messages['no'] = array(
 	'patrol-stopped' => 'Du har valgt å ikke patruljere en annen redigering. $1',
 	'patrol-resume' => 'Klikk her for å fortsette.',
 	'group-patroller' => 'Patruljører',
-	'group-patroller-member' => 'Patruljør',
+	'group-patroller-member' => 'patruljør',
 	'grouppage-patroller' => '{{ns:project}}:Patruljør',
 	'right-patroller' => 'Patruljere sider',
 );
@@ -1293,10 +1293,16 @@ $messages['rm'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'patrol-revert-reason' => 'Motiv:',
+	'patrol-resume' => 'Apăsaţi aici pentru a reveni.',
+	'group-patroller' => 'Patrule',
+	'group-patroller-member' => 'patrulă',
+	'grouppage-patroller' => '{{ns:project}}:Patrule',
+	'right-patroller' => 'Pagini de patrulat',
 );
 
 /** Russian (Русский)
@@ -1391,6 +1397,32 @@ $messages['sr-ec'] = array(
 	'group-patroller-member' => 'патролер',
 	'grouppage-patroller' => '{{ns:project}}:Патролер',
 	'right-patroller' => 'Патролирање страна',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'patrol' => 'Potroliranje izmena',
+	'patrol-revert' => 'Vrati',
+	'patrol-revert-reason' => 'Razlog:',
+	'patrol-skip' => 'Preskoči',
+	'patrol-reverting' => 'Vraćanje: $1',
+	'patrol-nonefound' => 'Nema izmena koje bi se mogle patrolirati',
+	'patrol-endorsed-ok' => 'Izmena je obeležena kao patrolisana.',
+	'patrol-endorsed-failed' => 'Izmena nije mogla biti obeležena kao patrolirana.',
+	'patrol-reverted-ok' => 'Izmena je vraćena.',
+	'patrol-reverted-failed' => 'Izmena nije mogla biti vraćena.',
+	'patrol-skipped-ok' => 'Ignorisanje izmene.',
+	'patrol-reasons' => '* Običan vandalizam
+* Test početnika
+* Vidi stranu za razgovor',
+	'patrol-another' => 'Pokaži neku drugu izmenu, ako je dostupna.',
+	'patrol-resume' => 'Kliknite ovde da se vratite.',
+	'group-patroller' => 'Patroleri',
+	'group-patroller-member' => 'patroler',
+	'grouppage-patroller' => '{{ns:project}}:Patroler',
+	'right-patroller' => 'Patroliranje strana',
 );
 
 /** Seeltersk (Seeltersk)

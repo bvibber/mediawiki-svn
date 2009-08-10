@@ -357,6 +357,13 @@ $messages['sr-ec'] = array(
 	'tooltip-desc' => 'Додаје <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt> тагове',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'tooltip-desc' => 'Dodaje <tt><nowiki><tooltip></nowiki></tt> i <tt><nowiki>{{#tooltip:}}</nowiki></tt> tagove',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

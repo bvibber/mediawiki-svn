@@ -261,6 +261,14 @@ $messages['id'] = array(
 	'usercontactlink-desc' => 'Memampukan untuk menambahkan nama pengguna lain secara konsisten dengan menggunakan sintaks ^^^pengguna^^^',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'usercontactlink-baduser' => 'nome utente errato',
+	'usercontactlink-desc' => 'Permette di aggiungere semplicemente e coerentemente altri nomi utente usando la sintassi ^^^user^^^',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */
@@ -460,6 +468,14 @@ $messages['sq'] = array(
 $messages['sr-ec'] = array(
 	'usercontactlink-baduser' => 'неправилно корисничко име',
 	'usercontactlink-desc' => 'Пружа могућност једноставног и непрекидног додавања других корисничких имена, коришћењем ^^^user^^^ синтаксе',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'usercontactlink-baduser' => 'nepravilno korisničko ime',
+	'usercontactlink-desc' => 'Pruža mogućnost jednostavnog i neprekidnog dodavanja drugih korisničkih imena, korišćenjem ^^^user^^^ sintakse',
 );
 
 /** Seeltersk (Seeltersk)

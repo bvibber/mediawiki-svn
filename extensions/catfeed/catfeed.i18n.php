@@ -346,6 +346,14 @@ $messages['sr-ec'] = array(
 Прави верзију унутар стране, посебно корисну за Викивести.',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'catfeed-desc' => 'Koristi bitove iz protoka skorašnjih izmena.
+Pravi verziju unutar strane, posebno korisnu za Vikivesti.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

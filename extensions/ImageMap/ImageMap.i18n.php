@@ -1354,6 +1354,25 @@ $messages['sr-ec'] = array(
 	'imagemap_poly_odd' => 'Грешка: нађен је полигон са непарним бројем координата у линији $1',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'imagemap_desc' => 'Omogućava klijentskoj strani klikabilnu mapu korišćnjenjm oznake <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_no_image' => 'Greška: Neophodno je odrediti sliku u prvoj liniji.',
+	'imagemap_invalid_image' => 'Greška: Slika je loša ili nepostojeća.',
+	'imagemap_bad_image' => 'Greška: slika se nalazi na crnom spisku za ovu stranu',
+	'imagemap_no_link' => 'Greška: Nije pronađena nijedna valjana veza na kraju linije $1.',
+	'imagemap_invalid_title' => 'Greška: Loš naslov u vezi u liniji $1.',
+	'imagemap_missing_coord' => 'Greška: Nema dovoljno koordinata za krivu u liniji $1.',
+	'imagemap_unrecognised_shape' => 'Greška: Neprepoznata kriva u liniji $1, svaka linija mora početi jednom od: default, rect, circle ili poly.',
+	'imagemap_no_areas' => 'Greška: Mora se dati bar jedno prostorno određenje.',
+	'imagemap_invalid_coord' => 'Greška: Loše koordinate u liniji $1; moraju biti broj.',
+	'imagemap_invalid_desc' => 'Greška: Loše desc određenje, mora biti jedno od: <tt>$1</tt>.',
+	'imagemap_description' => 'O ovoj slici',
+	'imagemap_poly_odd' => 'Greška: nađen je poligon sa neparnim brojem koordinata u liniji $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

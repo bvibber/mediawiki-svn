@@ -358,8 +358,10 @@ $messages['mg'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Abhishek Jacob
+ * @author Sadik Khalid
  */
 $messages['ml'] = array(
+	'abcdesc' => '<tt>&lt;abc&gt;</tt> അനുബന്ധം എ.ബി.സി. സംഗീതത്തിനു ചേര്‍ക്കുന്നു',
 	'abcdownload' => 'ഡൌൺലോഡ്',
 );
 
@@ -538,6 +540,14 @@ $messages['sq'] = array(
 $messages['sr-ec'] = array(
 	'abcdesc' => 'Додаје <tt>&lt;abc&gt;</tt> таг за форматирање ABC музике',
 	'abcdownload' => 'Сними:',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'abcdesc' => 'Dodaje <tt>&lt;abc&gt;</tt> tag za formatiranje ABC muzike',
+	'abcdownload' => 'Snimi:',
 );
 
 /** Seeltersk (Seeltersk)

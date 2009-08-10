@@ -717,10 +717,15 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'postcomment_post' => 'Trimite',
+	'postcomment_on' => 'La',
+	'postcomment_said' => 'a spus',
 	'postcomment_invalidrequest' => 'Cerere incorectă.',
+	'postcomment_replyto' => 'Răspundeţi lui $1',
 );
 
 /** Tarandíne (Tarandíne)

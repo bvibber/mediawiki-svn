@@ -461,6 +461,15 @@ $messages['sr-ec'] = array(
 	'mediafunctions-not-exist' => '"$1" не постоји',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'mediafunctions-desc' => 'Parser funkcije za preuzimanje podataka o medija fajlovima',
+	'mediafunctions-invalid-title' => '"$1" nije ispravan naslov',
+	'mediafunctions-not-exist' => '"$1" ne postoji',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

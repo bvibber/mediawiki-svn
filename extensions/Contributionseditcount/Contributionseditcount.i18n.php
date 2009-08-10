@@ -518,6 +518,14 @@ $messages['sr-ec'] = array(
 	'contributionseditcount-desc' => 'Приказује бројач измена на [[Special:Contributions|страни корисничких доприноса]]',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'contributionseditcount' => 'Ovaj korisnik ima $1 izmena.',
+	'contributionseditcount-desc' => 'Prikazuje brojač izmena na [[Special:Contributions|strani korisničkih doprinosa]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -526,11 +534,12 @@ $messages['stq'] = array(
 );
 
 /** Sundanese (Basa Sunda)
+ * @author Irwangatot
  * @author Kandar
  */
 $messages['su'] = array(
 	'contributionseditcount' => 'Ieu pamaké geus ngédit $1 kali.',
-	'contributionseditcount-desc' => 'Témbongkeun itungan éditan dina [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Témbongkeun itungan éditan dina [[Special:Contributions|Kontribusi pamaké]]',
 );
 
 /** Swedish (Svenska)

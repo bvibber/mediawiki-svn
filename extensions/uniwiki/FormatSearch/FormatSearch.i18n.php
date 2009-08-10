@@ -326,6 +326,13 @@ $messages['sr-ec'] = array(
 	'formatsearch-desc' => 'Чисти страну са резултатима претраге',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'formatsearch-desc' => 'Čisti stranu sa rezultatima pretrage',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

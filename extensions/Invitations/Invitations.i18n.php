@@ -334,6 +334,16 @@ $messages['es'] = array(
 	'invitations-invite-success' => 'Ha invitado con éxito a $1 usar esta función.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'invitations-inviteform-title' => 'Kutsu kasutaja $1 kasutama',
+	'invitations-inviteform-username' => 'Kutsutav kasutaja',
+	'invitations-inviteform-submit' => 'Kutsu',
+	'invitations-error-baduser' => 'Märgitud kasutajanimi puudub.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

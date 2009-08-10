@@ -423,6 +423,13 @@ $messages['sr-ec'] = array(
 	'didyoumean-desc' => 'Додаје линкове ка странама са "сличним" насловима',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'didyoumean-desc' => 'Dodaje linkove ka stranama sa &quot;sličnim&quot; naslovima',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

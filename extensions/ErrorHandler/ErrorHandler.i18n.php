@@ -256,10 +256,14 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'errorhandler-errors' => 'Σφάλματα:',
+	'errorhandler-error-notice' => 'Σημείωση',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (γραμμή <b>$4</b>)',
+	'errorhandler-trace' => 'ίχνος:',
+	'errorhandler-trace-line' => '$1 (γραμμή $2): $3',
 );
 
 /** Esperanto (Esperanto)
@@ -416,7 +420,10 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'errorhandler-errors' => 'Σφάλματα:',
 	'errorhandler-error-notice' => 'Σημείωμα',
+	'errorhandler-msg-text' => '$1 : $2 ἐν $3 (γραμμή $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> ἐν <b>$3</b> (γραμμή <b>$4</b>)',
 	'errorhandler-trace' => 'ἴχνος:',
+	'errorhandler-trace-line' => '$1 (γραμμή $2): $3',
 );
 
 /** Swiss German (Alemannisch)
@@ -632,6 +639,15 @@ $messages['ksh'] = array(
 	'errorhandler-trace-line-internal' => '[enner Funxjohn]: $1',
 );
 
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (linea <b>$4</b>)',
+	'errorhandler-trace' => 'vestigium:',
+	'errorhandler-trace-line' => '$1 (linea $2): $3',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
@@ -811,6 +827,13 @@ $messages['pl'] = array(
 	'errorhandler-trace-line-internal' => '[funkcja wewnętrzna] – $1',
 );
 
+/** Pontic (Ποντιακά)
+ * @author Omnipaedista
+ */
+$messages['pnt'] = array(
+	'errorhandler-trace-line' => '$1 (γραμμήν $2): $3',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -876,17 +899,20 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'errorhandler-errors' => 'Erori:',
 	'errorhandler-error-fatal' => 'Eroare fatală',
 	'errorhandler-error-warning' => 'Avertizare',
+	'errorhandler-error-notice' => 'Notificare',
 	'errorhandler-error-deprecated' => 'Învechit',
 	'errorhandler-error-compile-error' => 'Eroare de compilare',
 	'errorhandler-error-compile-warning' => 'Avertizare de compilare',
 	'errorhandler-error-user-error' => 'Eroare de utilizator',
 	'errorhandler-error-user-warning' => 'Avertizare de utilizator',
+	'errorhandler-error-user-notice' => 'Notificare utilizator',
 	'errorhandler-error-strict' => 'Standarde stricte',
 	'errorhandler-msg-text' => '$1 : $2 în $3 (linia $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> în <b>$3</b> (linia <b>$4</b>)',
@@ -986,6 +1012,32 @@ $messages['sr-ec'] = array(
 	'errorhandler-trace' => 'траг:',
 	'errorhandler-trace-line' => '$1 (линија $2): $3',
 	'errorhandler-trace-line-internal' => '[интерна функција]: $1',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'errorhandler-desc' => 'Prihvatač grešaka za MedijaViki',
+	'errorhandler-errors' => 'Greške:',
+	'errorhandler-error-fatal' => 'Fatalna greška',
+	'errorhandler-error-warning' => 'Upozorenje',
+	'errorhandler-error-parse' => 'Greška parsera',
+	'errorhandler-error-notice' => 'Napomena',
+	'errorhandler-error-deprecated' => 'Zastarelo',
+	'errorhandler-error-core-error' => 'Zatvori grešku',
+	'errorhandler-error-compile-error' => 'Greška prilikom kompajliranja',
+	'errorhandler-error-compile-warning' => 'Upozorenje prilikom kompajliranja',
+	'errorhandler-error-user-error' => 'Korisnička greška',
+	'errorhandler-error-user-warning' => 'Korisničko upozorenje',
+	'errorhandler-error-user-notice' => 'Korisnička napomena',
+	'errorhandler-error-user-deprecated' => 'Zastareli nalog',
+	'errorhandler-error-strict' => 'Strogi standardi',
+	'errorhandler-msg-text' => '$1 : $2 u $3 (linija $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> u <b>$3</b> (linija <b>$4</b>)',
+	'errorhandler-trace' => 'trag:',
+	'errorhandler-trace-line' => '$1 (linija $2): $3',
+	'errorhandler-trace-line-internal' => '[interna funkcija]: $1',
 );
 
 /** Swedish (Svenska)

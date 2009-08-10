@@ -227,9 +227,19 @@ By ty rady eksistěrujucy bok wobźěłaś?',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'createpage' => 'Δημιουργία μιας σελίδας',
+	'createpage-desc' => 'Προσθέτει μια [[Special:CreatePage|ειδική σελίδα]] για τη δημιουργία νέων σελίδων',
 	'createpage_submitbutton' => 'Υποβολή',
+	'createpage_instructions' => 'Πληκτρολογείστε τον τίτλο της σελίδας που θέλετε να δημιουργήσετε:',
+	'createpage_entertitle' => 'Παρακαλώ πληκτρολογείστε έναν τίτλο για τη σελίδα σας.',
+	'createpage_titleexists' => 'Μια σελίδα με τον τίτλο [[$1]] υπάρχει ήδη.
+Θα θέλατε να επεξεργαστείτε την υπάρχουσα σελίδα;',
+	'createpage_tryagain' => 'Όχι. Θέλω να δημιουργήσω μια νέα σελίδα με ένα διαφορετικό τίτλο.',
+	'createpage_editexisting' => 'Ναι. Θέλω να συνεισφέρω στην υπάρχουσα σελίδα.',
+	'createpage-badtitle' => 'Το "$1" δεν μπορεί να χρησιμοποιηθεί σαν τίτλος μιας σελίδας',
 );
 
 /** Esperanto (Esperanto)
@@ -757,6 +767,22 @@ $messages['sr-ec'] = array(
 	'createpage-badtitle' => '"$1" не може бити употребљен као наслов стране',
 );
 
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'createpage' => 'Napravi članak',
+	'createpage-desc' => 'Dodaje [[Special:CreatePage|specijalnu stranu]] za pravljenje novih strana',
+	'createpage_submitbutton' => 'Pošalji',
+	'createpage_instructions' => 'Unesi naslov koga želiš da napraviš:',
+	'createpage_entertitle' => 'Molimo Vas da unesete naslov za Vaš članak.',
+	'createpage_titleexists' => 'Članak sa naslovom [[$1]] već postoji.
+Da li biste želeli da izmenite postojeći članak?',
+	'createpage_tryagain' => 'Ne. Želim da napravim novi članak sa njegovim sopstvenim naslovom.',
+	'createpage_editexisting' => 'Da. Želim da doprinesem postojećem članku.',
+	'createpage-badtitle' => '&quot;$1&quot; ne može biti upotrebljen kao naslov strane',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -776,6 +802,7 @@ Moatest Du ju bestoundene Siede beoarbaidje?',
 /** Swedish (Svenska)
  * @author Gabbe.g
  * @author Najami
+ * @author Rotsee
  */
 $messages['sv'] = array(
 	'createpage' => 'Skapa en sida',
@@ -783,7 +810,9 @@ $messages['sv'] = array(
 	'createpage_submitbutton' => 'OK',
 	'createpage_instructions' => 'Skriv in titeln till sidan som du vill skapa:',
 	'createpage_entertitle' => 'Var god skriv in en titel för din sida.',
+	'createpage_titleexists' => 'En sida med titeln [[$1]] finns redan. Vill du redigera den?',
 	'createpage_tryagain' => 'Nej, jag vill skapa en ny sida med ett annat namn.',
+	'createpage_editexisting' => 'Ja, jag vill redigera den befintliga sidan.',
 	'createpage-badtitle' => '"$1" kan inte användas som sidtitel',
 );
 

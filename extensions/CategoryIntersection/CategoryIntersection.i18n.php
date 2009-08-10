@@ -163,9 +163,11 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Silvonen
  * @author Vililikku
  */
 $messages['fi'] = array(
+	'categoryintersection' => 'Luokkien leikkaus',
 	'categoryintersection-doit' => 'Listaa kaikissa näissä luokissa olevat sivut',
 	'categoryintersection-results' => 'Haku palautti $1 {{PLURAL:$1|tuloksen|tulosta}}.',
 );
@@ -540,6 +542,17 @@ $messages['sr-ec'] = array(
 	'categoryintersection-doit' => 'Дај списак страна у свим овим категоријама',
 	'categoryintersection-maxcategories' => 'Максималан дозвољен број категорија у пресеку је $1.',
 	'categoryintersection-results' => 'Претрага је вратила $1 {{PLURAL:$1|резултат|резултата}}.',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'categoryintersection' => 'Presek kategorija',
+	'categoryintersection-desc' => 'Održava tabelu sa heš vrednostima za [[Special:CategoryIntersection|preseke kategorija]] unutar strane',
+	'categoryintersection-doit' => 'Daj spisak strana u svim ovim kategorijama',
+	'categoryintersection-maxcategories' => 'Maksimalan dozvoljen broj kategorija u preseku je $1.',
+	'categoryintersection-results' => 'Pretraga je vratila $1 {{PLURAL:$1|rezultat|rezultata}}.',
 );
 
 /** Seeltersk (Seeltersk)

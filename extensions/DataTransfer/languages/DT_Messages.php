@@ -125,6 +125,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'dt-desc' => 'يسمح باستيراد وتصدير بيانات محتواة في استدعاءات قالب',
@@ -144,9 +145,12 @@ $messages['ar'] = array(
 	'dt_xml_freetext' => 'نص حر',
 	'importxml' => 'استيراد XML',
 	'dt_import_selectfile' => 'من فضلك اختر ملف $1 للاستيراد:',
+	'dt_import_encodingtype' => 'نوع الترميز',
 	'dt_import_editsummary' => 'استيراد $1',
 	'dt_import_importing' => 'جاري الاستيراد...',
 	'dt_import_success' => '$1 {{PLURAL:$1|صفحة|صفحة}} سيتم استيرادها من ملف $2.',
+	'importcsv' => 'استورد CSV',
+	'right-datatransferimport' => 'استورد بيانات',
 );
 
 /** Araucanian (Mapudungun)
@@ -1395,6 +1399,24 @@ $messages['sr-ec'] = array(
 	'dt_xml_field' => 'Поље',
 	'dt_xml_name' => 'Име',
 	'dt_xml_title' => 'Наслов',
+	'dt_xml_id' => 'ID',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'viewxml' => 'Vidi XML',
+	'dt_viewxml_categories' => 'Kategorije',
+	'dt_viewxml_namespaces' => 'Imenski prostori',
+	'dt_viewxml_simplifiedformat' => 'Pojednostavljeni format',
+	'dt_xml_namespace' => 'Imenski prostor',
+	'dt_xml_pages' => 'Članci',
+	'dt_xml_page' => 'Strana',
+	'dt_xml_template' => 'Šablon',
+	'dt_xml_field' => 'Polje',
+	'dt_xml_name' => 'Ime',
+	'dt_xml_title' => 'Naslov',
 	'dt_xml_id' => 'ID',
 );
 
