@@ -195,7 +195,7 @@ var editToolbarConfiguration = {
 								pre: "* ",
 								periMsg: 'edittoolbar-tool-ulist-example',
 								post: "",
-								ownline: true,
+								ownline: true
 							}
 						}
 					},
@@ -209,7 +209,7 @@ var editToolbarConfiguration = {
 								pre: "# ",
 								periMsg: 'edittoolbar-tool-olist-example',
 								post: "",
-								ownline: true,
+								ownline: true
 							}
 						}
 					}
@@ -290,7 +290,7 @@ var editToolbarConfiguration = {
 								pre: "<gallery>\n",
 								periMsg: 'edittoolbar-tool-gallery-example',
 								post: "\n</gallery>",
-								ownline: true,
+								ownline: true
 							}
 						}
 					},
@@ -304,7 +304,7 @@ var editToolbarConfiguration = {
 								pre: "{| class=\"wikitable\" border=\"1\"\n|",
 								periMsg: 'edittoolbar-tool-table-example',
 								post: "\n|}",
-								ownline: true,
+								ownline: true
 							}
 						}
 					},
