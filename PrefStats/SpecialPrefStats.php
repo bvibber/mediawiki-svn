@@ -60,22 +60,44 @@ class SpecialPrefStats extends SpecialPage {
 			'prefstats-counters-expensive' :
 			'prefstats-counters';
 		$wgOut->addWikiMsgArray( $message, $counters );
+		$wgOut->addHTML( $this->incLinks( $pref ) );
 		$wgOut->addHTML( Xml::element( 'img', array( 'src' =>
 			$this->getGoogleChartParams( $stats ) ) ) );
+	}
+	
+	function incLinks( $pref ) {
+		global $wgPrefStatsTimeFactors, $wgLang;
+		$factors = array();
+		foreach ( $wgPrefStatsTimeFactors as $message => $factor ) {
+			$attrs = array();
+			if ( !is_null( $factor ) )
+				$attrs['inc'] = $factor;
+			$factors[] = Xml::element( 'a', array( 'href' =>
+				$this->getTitle( $pref )->getFullURL( $attrs )
+				), wfMsg( $message ) );
+		}
+		return wfMsg( 'prefstats-factors',
+			      $wgLang->pipeList( $factors ) );
 	}
 
 	function getGoogleChartParams( $stats ) {
 		global $wgPrefStatsChartDimensions;
+		$max = max( $stats[0] ) + max( $stats[1] );
+		$min = min( min( $stats[0] ), min( $stats[1] ) );
 		return "http://chart.apis.google.com/chart?" . wfArrayToCGI(
 		array(
-			'chs' => $wgPrefStatsChartDimensions,
+			'chs' => implode( 'x', $wgPrefStatsChartDimensions ),
 			'cht' => 'bvs',
-			'chds' => '0,' . max( $stats ),
-			'chd' => 't:' . implode( ',', $stats ),
-			'chxt' => 'x,y',
-			'chxr' => '1,' . min( $stats ) . ',' . max( $stats ),
-			'chxl' => '0:|' . implode( '|', array_keys( $stats ) ),
-			'chm' => 'N*f0zy*,000000,0,-1,11'
+			'chds' => '0,' . $max,
+			'chd' => 't:' . implode( ',', $stats[0] ) . '|' .
+					implode( ',', $stats[1] ),
+			'chxt' => 'x,y,x',
+			'chxr' => '1,' . $min . ',' . $max,
+			'chxl' => '2:|' . wfMsg( 'prefstats-xaxis' ) .
+				'|0:|' . implode( '|', array_keys( $stats[0] ) ),
+			'chm' => 'N*f0zy*,000000,0,-1,11|N*f0zy*,000000,1,-1,11',
+			'chco' => '4D89F9,C6D9FD',
+			'chbh' => 'a'
 		) );
 	}
 	
@@ -112,9 +134,11 @@ class SpecialPrefStats extends SpecialPage {
 		for ( $i = 0; $i <= $max; $i += $inc ) {
 			$end = min( $max, $i + $inc );
 			$key = $i . '-' . $end;
-			$retval[$key] = $this->countBetween( $pref,
+			list( $out, $in ) = $this->countBetween( $pref,
 				$i * $wgPrefStatsTimeUnit,
 				$end * $wgPrefStatsTimeUnit );
+			$retval[0][$key] = $out;
+			$retval[1][$key] = $in;
 		}
 		return $retval;
 	}
@@ -136,6 +160,7 @@ class SpecialPrefStats extends SpecialPage {
 	/**
 	 * Count the number of users having $pref enabled between
 	 * $min and $max seconds
+	 * @return array( opted out, still opted in )
 	 */
 	function countBetween( $pref, $min, $max ) {
 		$dbr = wfGetDb( DB_SLAVE );
@@ -152,6 +177,6 @@ class SpecialPrefStats extends SpecialPage {
 				'ps_start <' . $dbr->addQuotes( $dbr->timestamp( $maxTS ) ),
 				'ps_start >=' . $dbr->addQuotes( $dbr->timestamp( $minTS ) )
 			), __METHOD__ );
-		return $count1 + $count2;
+		return array( $count1, $count2 );
 	}
 }

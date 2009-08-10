@@ -26,7 +26,15 @@ Configure $wgPrefStatsTrackPrefs to track preferences.',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|user has|users have}} enabled this preference since preference statistics were activated
 ** $2 {{PLURAL:$2|user has|users have}} enabled it
 ** $3 {{PLURAL:$3|user has|users have}} disabled it
-* In total, $4 {{PLURAL:$4|user has|users have}} this preference set', 
+* In total, $4 {{PLURAL:$4|user has|users have}} this preference set',
+	'prefstats-xaxis' => 'Duration (hours)',
+	'prefstats-factors' => 'View per: $1',
+	'prefstats-factor-hour' => 'hour',
+	'prefstats-factor-day' => 'day',
+	'prefstats-factor-week' => 'week',
+	'prefstats-factor-twoweeks' => 'two weeks',
+	'prefstats-factor-fourweeks' => 'four weeks',
+	'prefstats-factor-default' => 'back to default scale',
 );
 
 /** Arabic (العربية)
