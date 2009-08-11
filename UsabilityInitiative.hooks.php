@@ -142,7 +142,7 @@ class UsabilityInitiativeHooks {
 		$messagesList = implode( ',', self::$messages );
 		// Add javascript to document
 		$out->addScript(
-			Xml::element(
+			Xml::tags(
 				'script',
 				array( 'type' => $wgJsMimeType ),
 				"loadGM({{$messagesList}});"
