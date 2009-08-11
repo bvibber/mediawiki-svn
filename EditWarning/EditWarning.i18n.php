@@ -51,7 +51,7 @@ $messages['be-tarask'] = array(
 	'editwarning' => 'Папярэджаньне рэдагаваньня',
 	'editwarning-desc' => 'Паказвае папярэджаньне, калі ўдзельнік спрабуе пакінуць форму рэдагаваньня без захаваньня',
 	'editwarning-warning' => 'Усе зробленыя Вамі зьмены могуць быць страчаныя, калі Вы пакінеце гэтую старонку.
-Вы можаце адключыць гэтае папярэджаньне у сэкцыі {{int:prefs-editing}} Вашых установак.',
+Вы можаце адключыць гэтае папярэджаньне у сэкцыі «{{int:prefs-editing}}» Вашых установак.',
 	'editwarning-preference' => 'Папярэджваць мяне, калі я буду пакідаць старонку рэдагаваньня з незахаванымі зьменамі',
 );
 
@@ -112,7 +112,7 @@ $messages['de'] = array(
 	'editwarning' => 'Bearbeitungswarnung',
 	'editwarning-desc' => 'Eine Warnung anzeigen, wenn ein Benutzer versucht, den Bearbeitungsvorgang ohne speichern zu verlassen',
 	'editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass deine Änderungen verloren gehen.
-Du kannst das Anzeigen dieser Warnung im "{{int:prefs-editing}}"-Bereich deiner Einstellungen abschalten.',
+Du kannst das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich deiner Einstellungen abschalten.',
 	'editwarning-preference' => 'Warne mich, wenn ich eine „Bearbeiten“-Seite mit nicht gesicherten Änderungen verlasse',
 );
 
@@ -313,7 +313,8 @@ $messages['ka'] = array(
 $messages['km'] = array(
 	'editwarning' => 'សារក្រើនរំលឹកអំពីការកែប្រែ',
 	'editwarning-desc' => 'បង្ហាញសារក្រើនរំលឹកនៅពេលដែលអ្នកប្រើប្រាស់ព្យាយាមចាកចេញពីទំរង់បែបបទកែប្រែដោយមិនបានរក្សាទុក',
-	'editwarning-warning' => 'ចាកចេញពីទំព័រនេះ នឹងធ្វើឲ្យអ្នកបាត់បង់កំនែប្រែដែលអ្នកបានធ្វើ។',
+	'editwarning-warning' => 'ចាកចេញពីទំព័រនេះ នឹងធ្វើឲ្យអ្នកបាត់បង់កំណែប្រែដែលអ្នកបានធ្វើ។
+អ្នកអាច​បិទ​បម្រាម​នេះ​នៅ​ក្នុងផ្នែក​"{{int:prefs-editing}}"នៃ​ចំណូល​ចិត្ត​របស់​អ្នក​។',
 	'editwarning-preference' => 'សូមព្រមាន​ខ្ញុំ​ ពេលដែលខ្ញុំ​ចាកចេញ​ពី​ទំព័រ​កែប្រែដោយមិន​បានរក្សា​ទុកបំលាស់ប្ដូរ​នានា​',
 );
 
@@ -492,6 +493,7 @@ $messages['tr'] = array(
 	'editwarning' => 'Değişiklik uyarısı',
 	'editwarning-desc' => 'Bir kullanıcı kaydetmeden değişiklik formundan çıkmaya çalışırsa bir uyarı göster',
 	'editwarning-warning' => 'Bu sayfadan ayrılmak yaptığınız herhangi bir değişikliği kaybetmenize sebep olacaktır.',
+	'editwarning-preference' => 'Kaydedilmemiş değişikliğe sahip bir değişiklik sayfasından çıkarken beni uyar',
 );
 
 /** Ukrainian (Українська)
