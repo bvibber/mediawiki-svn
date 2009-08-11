@@ -18,7 +18,7 @@ class EditWarningHooks {
 		global $wgEditWarningStyleVersion, $wgRequest, $wgUser;
 		
 		$skin = $wgUser->getSkin();
-		if ( $skin->skinname == 'vector' && $wgUser->getOption( 'useeditwarning' ) ) {
+		if ( $skin->getSkinName() == 'vector' && $wgUser->getOption( 'useeditwarning' ) ) {
 			UsabilityInitiativeHooks::initialize();
 			// Adds script to document
 			UsabilityInitiativeHooks::addScript(
