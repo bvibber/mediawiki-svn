@@ -40,6 +40,7 @@ $wgPrefStatsTimeUnit = 60 * 60; // one hour
 // array( messagekey => factor )
 $wgPrefStatsTimeFactors = array(
 	'prefstats-factor-hour' => 1,
+	'prefstats-factor-sixhours' => 6,
 	'prefstats-factor-day' => 24,
 	'prefstats-factor-week' => 7*24,
 	'prefstats-factor-twoweeks' => 2*7*24,
@@ -51,10 +52,11 @@ $wgPrefStatsTimeFactors = array(
 // table
 $wgPrefStatsExpensiveCounts = false;
 
-/* Setup */
+// For how long statistics should be cached
+// Set to false to disable caching
+$wgPrefStatsCacheTime = 60 * 60; // one hour
 
-// Right required to view Special:PrefStats
-$wgAvailableRights[] = 'prefstats';
+/* Setup */
 
 // Credits
 $wgExtensionCredits['other'][] = array(

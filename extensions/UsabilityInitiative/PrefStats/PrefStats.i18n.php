@@ -21,20 +21,23 @@ Click on one to view statistics about it.',
 	'prefstats-noprefs' => 'No preferences are currently being tracked.
 Configure $wgPrefStatsTrackPrefs to track preferences.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|user has|users have}} enabled this preference since preference statistics were activated
-** $2 {{PLURAL:$2|user has|users have}} enabled it
-** $3 {{PLURAL:$3|user has|users have}} disabled it',
+** $2 {{PLURAL:$2|user still has|users still have}} it enabled
+** $3 {{PLURAL:$3|user has|users have}} disabled it since',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|user has|users have}} enabled this preference since preference statistics were activated
-** $2 {{PLURAL:$2|user has|users have}} enabled it
-** $3 {{PLURAL:$3|user has|users have}} disabled it
+** $2 {{PLURAL:$2|user still has|users still have}} it enabled
+** $3 {{PLURAL:$3|user has|users have}} disabled it since
 * In total, $4 {{PLURAL:$4|user has|users have}} this preference set',
 	'prefstats-xaxis' => 'Duration (hours)',
 	'prefstats-factors' => 'View per: $1',
 	'prefstats-factor-hour' => 'hour',
+	'prefstats-factor-sixhours' => 'six hours',
 	'prefstats-factor-day' => 'day',
 	'prefstats-factor-week' => 'week',
 	'prefstats-factor-twoweeks' => 'two weeks',
 	'prefstats-factor-fourweeks' => 'four weeks',
 	'prefstats-factor-default' => 'back to default scale',
+	'prefstats-legend-out' => 'Opted out',
+	'prefstats-legend-in' => 'Opted in',
 );
 
 /** Arabic (العربية)

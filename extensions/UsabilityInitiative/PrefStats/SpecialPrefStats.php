@@ -8,7 +8,7 @@
 
 class SpecialPrefStats extends SpecialPage {
 	function __construct() {
-		parent::__construct( 'PrefStats', 'prefstats' );
+		parent::__construct( 'PrefStats' );
 		wfLoadExtensionMessages( 'PrefStats' );
 	}
 
@@ -52,7 +52,6 @@ class SpecialPrefStats extends SpecialPage {
 
 	function displayPrefStats( $pref ) {
 		global $wgOut, $wgRequest, $wgPrefStatsExpensiveCounts;
-		$max = $this->getMaxDuration( $pref );
 		$stats = $this->getPrefStats( $pref,
 			$wgRequest->getIntOrNull( 'inc' ) );
 		$counters = $this->getCounters( $pref );
@@ -61,6 +60,7 @@ class SpecialPrefStats extends SpecialPage {
 			'prefstats-counters';
 		$wgOut->addWikiMsgArray( $message, $counters );
 		$wgOut->addHTML( $this->incLinks( $pref ) );
+		$wgOut->addHTML( Xml::element( 'br' ) );
 		$wgOut->addHTML( Xml::element( 'img', array( 'src' =>
 			$this->getGoogleChartParams( $stats ) ) ) );
 	}
@@ -97,11 +97,27 @@ class SpecialPrefStats extends SpecialPage {
 				'|0:|' . implode( '|', array_keys( $stats[0] ) ),
 			'chm' => 'N*f0zy*,000000,0,-1,11|N*f0zy*,000000,1,-1,11',
 			'chco' => '4D89F9,C6D9FD',
-			'chbh' => 'a'
+			'chbh' => 'a',
+			'chdl' => wfMsg( 'prefstats-legend-out' ) . '|' .
+				wfMsg( 'prefstats-legend-in' )
 		) );
 	}
 	
 	function getCounters( $pref ) {
+		global $wgMemc, $wgPrefStatsCacheTime;
+		if ( $wgPrefStatsCacheTime === false )
+			return $this->reallyGetCounters( $pref );
+		
+		$key = wfMemcKey( 'prefstats', 'counters', $pref );
+		$cached = $wgMemc->get( $key );
+		if ( $cached )
+			return $cached;
+		$retval = $this->reallyGetCounters( $pref );
+		$wgMemc->set( $key, $retval, $wgPrefStatsCacheTime );
+		return $retval;
+	}
+	
+	function reallyGetCounters( $pref ) {
 		global $wgPrefStatsExpensiveCounts, $wgPrefStatsTrackPrefs;
 		$val = $wgPrefStatsTrackPrefs[$pref];
 		
@@ -124,8 +140,22 @@ class SpecialPrefStats extends SpecialPage {
 			$c4 = 0;
 		return array( $c1, $c2, $c3, $c4 );
 	}
-
+	
 	function getPrefStats( $pref, $inc = null ) {
+		global $wgMemc, $wgPrefStatsCacheTime;
+		if ( $wgPrefStatsCacheTime === false )
+			return $this->reallyGetPrefStats( $pref, $inc );
+		
+		$key = wfMemcKey( 'prefstats', 'stats', $pref, $inc );
+		$cached = $wgMemc->get( $key );
+		if ( $cached )
+			return $cached;
+		$retval = $this->reallyGetPrefStats( $pref, $inc );
+		$wgMemc->set( $key, $retval, $wgPrefStatsCacheTime );
+		return $retval;
+	}
+
+	function reallyGetPrefStats( $pref, $inc = null ) {
 		global $wgPrefStatsTimeUnit;
 		$max = ceil( $this->getMaxDuration( $pref ) /
 			$wgPrefStatsTimeUnit );

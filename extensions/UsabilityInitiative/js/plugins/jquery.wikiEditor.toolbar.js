@@ -17,18 +17,39 @@ api: {
 		//
 	},
 	modifyToolbar: function( context, data ) {
-		//
+		// 
 	},
 	removeFromToolbar: function( context, data ) {
 		if ( typeof data.section == 'string' ) {
-			var selector = 'div[rel=' + data.section + '].section';
+			// Section
+			var tab = 'div.tabs span[rel=' + data.section + '].tab';
+			var target = 'div[rel=' + data.section + '].section';
 			if ( typeof data.group == 'string' ) {
-				selector += ' div[rel=' + data.group + '].group';
+				// Toolbar group
+				target += ' div[rel=' + data.group + '].group';
 				if ( typeof data.tool == 'string' ) {
-					selector += ' div[rel=' + data.tool + '].tool';
+					// Tool
+					target += ' div[rel=' + data.tool + '].tool';
 				}
+			} else if ( typeof data.page == 'string' ) {
+				// Booklet page
+				var index = target + ' div.index div[rel=' + data.page + ']';
+				target += ' div.pages div[rel=' + data.page + '].page';
+				if ( typeof data.character == 'string' ) {
+					// Character
+					target += ' a[rel=' + data.character + ']';
+				} else if ( typeof data.row == 'number' ) {
+					// Table row
+					target += ' table tr:not(:has(th)):eq(' + data.row + ')';
+				} else {
+					// Just a page, remove the index too!
+					context.modules.$toolbar.find( index ).remove();
+				}
+			} else {
+				// Just a section, remove the tab too!
+				context.modules.$toolbar.find( tab ).remove();
 			}
-			context.modules.$toolbar.find( selector ).remove();
+			context.modules.$toolbar.find( target ).remove();
 		}
 	}
 },
@@ -346,6 +367,7 @@ fn: {
 						}
 						if ( 'action' in tool && 'label' in tool ) {
 							var $character = $( '<a></a>' )
+								.attr( 'rel', tool.label )
 								.attr( 'href', '#' )
 								.text( tool.label )
 								.data( 'context', context )

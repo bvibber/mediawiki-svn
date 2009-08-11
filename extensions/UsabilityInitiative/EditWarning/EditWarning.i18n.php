@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'editwarning' => 'Edit warning',
 	'editwarning-desc' => 'Show a warning when a user tries to leave the edit form without saving',
 	'editwarning-warning' => 'Leaving this page may cause you to lose any changes you have made.
-You can disable this warning in the {{int:prefs-editing}} section of your preferences.',
+You can disable this warning in the "{{int:prefs-editing}}" section of your preferences.',
 	'editwarning-preference' => 'Warn me when I leave an edit page with unsaved changes',
 );
 
@@ -63,7 +63,7 @@ $messages['bs'] = array(
 	'editwarning' => 'Upozorenje uređivanja',
 	'editwarning-desc' => 'Prikazuje upozorenje kada korisnik pokušava napustiti obrazac za uređivanje bez spremanja',
 	'editwarning-warning' => 'Napuštanje ove stranice može dovesti do gubitka svih promjena koje ste načinili.
-Možete isključiti ovo upozorenje u {{int:prefs-editing}} dijelu vaših opcija.',
+Možete isključiti ovo upozorenje u "{{int:prefs-editing}}" dijelu vaših opcija.',
 	'editwarning-preference' => 'Upozori me kada napustim stranicu za izmjene bez spašenih promjena',
 );
 
@@ -105,7 +105,7 @@ $messages['de'] = array(
 	'editwarning' => 'Bearbeitungswarnung',
 	'editwarning-desc' => 'Eine Warnung anzeigen, wenn ein Benutzer versucht, den Bearbeitungsvorgang ohne speichern zu verlassen',
 	'editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass deine Änderungen verloren gehen.
-Du kannst das Anzeigen dieser Warnung im {{int:prefs-editing}}-Bereich deiner Einstellungen abschalten.',
+Du kannst das Anzeigen dieser Warnung im "{{int:prefs-editing}}"-Bereich deiner Einstellungen abschalten.',
 	'editwarning-preference' => 'Warne mich, wenn ich eine „Bearbeiten“-Seite mit nicht gesicherten Änderungen verlasse',
 );
 
@@ -133,7 +133,7 @@ $messages['eo'] = array(
 	'editwarning' => 'Redakta averto',
 	'editwarning-desc' => 'Montri averton kiam uzanto provas forlasi la redaktan paĝon sen konservado.',
 	'editwarning-warning' => 'Forlasante ĉi tiun paĝon perdos iun ajn ŝanĝojn kiujn vi faris.
-Vi povas malŝalti ĉi tiun averton en la sekcio {{int:prefs-editing}} de viaj preferoj.',
+Vi povas malŝalti ĉi tiun averton en la sekcio "{{int:prefs-editing}}" de viaj preferoj.',
 	'editwarning-preference' => 'Avertu min kiam mi forlasas redaktan paĝon kun nekonservitaj ŝanĝoj',
 );
 
@@ -223,7 +223,7 @@ $messages['hr'] = array(
 	'editwarning' => 'Upozorenje o uređivanju',
 	'editwarning-desc' => 'Prikazuje upozorenje kada suradnik pokušava napustiti okvir za uređivanje bez spremanja',
 	'editwarning-warning' => 'Napuštanje ove stranice može uzrokovati gubitak svake izmjene koju ste napravili.
-Možete onemogućiti ovo upozorenje u odjeljku {{int:prefs-editing}} Vaših postavki.',
+Možete onemogućiti ovo upozorenje u odjeljku "{{int:prefs-editing}}" Vaših postavki.',
 	'editwarning-preference' => 'Upozori me kad napuštam stranicu za uređivanje bez spremanja izmjena',
 );
 
@@ -332,7 +332,7 @@ $messages['lb'] = array(
 	'editwarning' => 'Warnung virun enger Ännerung',
 	'editwarning-desc' => 'Weist eng Warnung wann e Benotzer versicht den Ännerungsformulaire ze verloossen ouni ofzespàicheren',
 	'editwarning-warning' => 'Wann Dir dës Säit verloosst kann dat dozou féieren datt Dir all Ännerungen, déi Dir gemaach hutt, verléiert.
-Dir kënnt dës Warnung an der Sektioun {{int:prefs-editing}} vun Ären Astellungen ausschalten.',
+Dir kënnt dës Warnung an der Sektioun "{{int:prefs-editing}}" vun Ären Astellungen ausschalten.',
 	'editwarning-preference' => "Mech warne wann ech d'Ännerung vun enger Säit verloosen, ouni Ännerunge gespäichert ze hunn",
 );
 
@@ -352,7 +352,7 @@ $messages['nl'] = array(
 	'editwarning' => 'Bewerkingswaarschuwing',
 	'editwarning-desc' => 'Geeft een waarschuwing weer als een gebruiker probeert een bewerkingsvenster te verlaten zonder wijzigingen op te slaan',
 	'editwarning-warning' => 'Als u deze pagina verlaat verliest u mogelijk wijzigingen die u hebt gemaakt.
-U kunt deze waarschuwing uitschakelen in het tabblad {{int:prefs-editing}} in uw voorkeuren.',
+U kunt deze waarschuwing uitschakelen in het tabblad "{{int:prefs-editing}}" in uw voorkeuren.',
 	'editwarning-preference' => 'Waarschuw mij als ik een bewerkte pagina die nog niet is opgeslagen wil verlaten',
 );
 
@@ -445,7 +445,7 @@ $messages['sv'] = array(
 	'editwarning' => 'Redigeringsvarning',
 	'editwarning-desc' => 'Visar en varning när en användare försöker att lämna redigeringsformuläret utan att spara',
 	'editwarning-warning' => 'Om du lämnar den här sidan kommer du att förlora alla ändringar du har gjort.
-Du kan slå av den här varningen under {{int:prefs-editing}} i dina inställningar.',
+Du kan slå av den här varningen under "{{int:prefs-editing}}" i dina inställningar.',
 	'editwarning-preference' => 'Varna mig om jag lämnar en redigeringssida där jag gjort ändringar men inte sparat.',
 );
 

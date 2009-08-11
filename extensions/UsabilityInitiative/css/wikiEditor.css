@@ -5,6 +5,10 @@ form#editform {
 	margin: 0;
 	padding: 0;
 }
+/* These IDs (#wpSummaryLabel and #wpSummary) could change in MediaWiki */
+#wpSummary, #wpSummaryLabel {
+	margin-bottom: 1em;
+}
 /* This ID (#wpTextbox1) could change in MediaWiki */
 .wikiEditor-ui textarea#wpTextbox1 {
 	border: none;
