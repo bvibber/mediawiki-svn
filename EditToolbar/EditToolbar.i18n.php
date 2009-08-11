@@ -73,6 +73,11 @@ File:Example.jpg|Caption2",
 | row 2, cell 1
 | row 2, cell 2
 | row 2, cell 3",
+	'edittoolbar-tool-replace' => 'Replace',
+	'edittoolbar-tool-replace-title' => 'Search and replace',
+	'edittoolbar-tool-replace-search' => 'Search for (may be a regex):',
+	'edittoolbar-tool-replace-replace' => 'Replace with:',
+	'edittoolbar-tool-replace-button' => 'Replace',
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',
 	'edittoolbar-characters-page-latin' => 'Latin',

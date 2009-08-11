@@ -19,12 +19,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 5 ),
 				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 5 ),
+				array( 'src' => 'css/ui.core.css', 'version' => '1.7.2' ),
+				array( 'src' => 'css/ui.resizable.css', 'version' => '1.7.2' ),
+				array( 'src' => 'css/ui.dialog.css', 'version' => '1.7.2' ),
+				array( 'src' => 'css/ui.theme.css', 'version' => '1.7.2' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 6 ),
+				array( 'src' => 'css/combined.css', 'version' => 7 ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 6 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 7 ),
 			),
 		)
 	);
@@ -37,13 +41,17 @@ class UsabilityInitiativeHooks {
 		'no_js2' => array(
 			'raw' => array(
 				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
+				array( 'src' => 'js/js2/ui.core.js', 'version' => '1.7.2' ),
+				array( 'src' => 'js/js2/ui.draggable.js', 'version' => '1.7.2' ),
+				array( 'src' => 'js/js2/ui.resizable.js', 'version' => '1.7.2' ),
+				array( 'src' => 'js/js2/ui.dialog.js', 'version' => '1.7.2' ),
 				array( 'src' => 'js/js2/js2.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/js2.combined.js', 'version' => 3 ),
+				array( 'src' => 'js/js2.combined.js', 'version' => 4 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/js2.combined.min.js', 'version' => 3 ),
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 4 ),
 			),
 		),
 		// Core functionality of extension
@@ -54,14 +62,14 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 7 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 7 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 8 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 4 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 10 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 11 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 10 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 11 ),
 			),
 		),
 	);
