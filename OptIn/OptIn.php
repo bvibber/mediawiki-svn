@@ -105,6 +105,7 @@ $wgOptInSurvey = array(
 $wgOptInFeedBackSurvey = $wgOptInSurvey;
 unset( $wgOptInFeedBackSurvey['whyoptout'] );
 unset( $wgOptInFeedBackSurvey['explainwhyoptout'] );
+unset( $wgOptInFeedBackSurvey['different'] );
 $wgOptInFeedBackSurvey['usedtoolbar']['ifno'] = 'optin-survey-question-usedtoolbar-ifno';
 $wgOptInFeedBackSurvey['changes'] = array(
 	'question' => 'optin-survey-question-changes',
