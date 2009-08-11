@@ -10,4 +10,4 @@ cat css/*.css > css/combined.css
 echo "Minifying merged scripts and styles"
 jsmin < js/js2.combined.js > js/js2.combined.min.js
 jsmin < js/plugins.combined.js > js/plugins.combined.min.js
-cat css/combined.css | sed -e 's/^[ 	]*//g; s/[ 	]*$//g; s/\([:{;,]\) /\1/g; s/ {/{/g; s/\/\*.*\*\///g; /^$/d' | sed -e :a -e '$!N; s/\n\(.\)/\1/; ta' >css/combined.min.css
+cat css/combined.css | sed -e 's/^[ 	]*//g; s/[ 	]*$//g; s/\([:{;,]\) /\1/g; s/ {/{/g; s/\/\*.*\*\///g; /^$/d' >css/combined.min.css
