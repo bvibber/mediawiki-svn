@@ -54,10 +54,11 @@ $wgPrefStatsDefaultScaleBars = 15;
 // table
 $wgPrefStatsExpensiveCounts = false;
 
-/* Setup */
+// For how long statistics should be cached
+// Set to false to disable caching
+$wgPrefStatsCacheTime = 60 * 60; // one hour
 
-// Right required to view Special:PrefStats
-$wgAvailableRights[] = 'prefstats';
+/* Setup */
 
 // Credits
 $wgExtensionCredits['other'][] = array(
