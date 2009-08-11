@@ -97,7 +97,9 @@ class SpecialPrefStats extends SpecialPage {
 				'|0:|' . implode( '|', array_keys( $stats[0] ) ),
 			'chm' => 'N*f0zy*,000000,0,-1,11|N*f0zy*,000000,1,-1,11',
 			'chco' => '4D89F9,C6D9FD',
-			'chbh' => 'a'
+			'chbh' => 'a',
+			'chdl' => wfMsg( 'prefstats-legend-out' ) . '|' .
+				wfMsg( 'prefstats-legend-in' )
 		) );
 	}
 	
