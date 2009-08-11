@@ -164,12 +164,12 @@ class ExtTransliterator {
         $existing = $this->getExistingMapNames( $prefix );
 
         if (! isset( $existing[$mappage] ) ) 
-            $this->mMaps[$mappage] = false;
+            $map = false;
 
         else
-            $this->mMaps[$mappage] = $this->readMap( wfMsg( $mappage ), $mappage );
+            $map = $this->readMap( wfMsg( $mappage ), $mappage );
 
-        return $this->mMaps[$mappage];
+        return $this->mMaps[$mappage] = $map;
     }
 
     /**
@@ -196,12 +196,22 @@ class ExtTransliterator {
 
         // Split lines and remove whitespace at beginning and end
         $lines = preg_split( "/(^|\s*\n)(\s*(#[^\n]*)?\n)*\s*/", $input."\n" );
-        if ( $lines[0] == "" )
+
+        $count = count( $lines );
+
+        if ( $count > 0 && $lines[0] == "" ) {
             array_shift( $lines );
+            $count--;
+        }
 
-        if ( $lines[count( $lines ) - 1] == "" )
+        if ( $count > 0 && $lines[$count - 1] == "" ) {
             array_pop( $lines );
+            $count--;
+        }
 
+        // The only content was comments
+        if ( $count == 0 )
+            return false;
 
         // The first line can contain flags
         $first_line = $lines[0];
