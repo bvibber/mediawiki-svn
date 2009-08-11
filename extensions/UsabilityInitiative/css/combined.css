@@ -27,6 +27,9 @@ form#editform {
 	line-height: 1em;
 	background-color: #f3f3f3;
 }
+body.rtl .wikiEditor-ui {
+	float: right;
+}
 .wikiEditor-ui .wikiEditor-ui-bottom {
 	position: relative;
 	border: solid silver 1px;
