@@ -40,6 +40,7 @@ $wgPrefStatsTimeUnit = 60 * 60; // one hour
 // array( messagekey => factor )
 $wgPrefStatsTimeFactors = array(
 	'prefstats-factor-hour' => 1,
+	'prefstats-factor-sixhours' => 6,
 	'prefstats-factor-day' => 24,
 	'prefstats-factor-week' => 7*24,
 	'prefstats-factor-twoweeks' => 2*7*24,

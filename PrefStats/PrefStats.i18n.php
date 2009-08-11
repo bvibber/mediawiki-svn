@@ -30,11 +30,14 @@ Configure $wgPrefStatsTrackPrefs to track preferences.',
 	'prefstats-xaxis' => 'Duration (hours)',
 	'prefstats-factors' => 'View per: $1',
 	'prefstats-factor-hour' => 'hour',
+	'prefstats-factor-sixhours' => 'six hours',
 	'prefstats-factor-day' => 'day',
 	'prefstats-factor-week' => 'week',
 	'prefstats-factor-twoweeks' => 'two weeks',
 	'prefstats-factor-fourweeks' => 'four weeks',
 	'prefstats-factor-default' => 'back to default scale',
+	'prefstats-legend-out' => 'Opted out',
+	'prefstats-legend-in' => 'Opted in',
 );
 
 /** Message documentation (Message documentation)
