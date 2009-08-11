@@ -21,4 +21,4 @@ $words['en'] = array(
  * Unlike the English one above where the array has two values, all translations must have THREE values, like so:
  * 'ifcategory' => array( 0, 'translation_goes_here', 'ifcategory' )
  * The third value should be the same as the name of the key string you are translating for
-*/
+ */

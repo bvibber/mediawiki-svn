@@ -1,7 +1,7 @@
 <?php
 /**
  * Internationalization file for the CategoryTests extension
-*/
+ */
 
 $messages = array();
 
