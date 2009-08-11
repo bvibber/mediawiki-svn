@@ -8,6 +8,13 @@ js2AddOnloadHook( function() {
 	);
 });
 
+/*
+ * Extend the RegExp object with an escaping function
+ * From http://simonwillison.net/2006/Jan/20/escape/
+ */
+
+RegExp.escape = function(s) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$1'); }
+
 /**
  * This enormous structure is what makes the toolbar what it is. Customization
  * of this structure prior to the document being ready and thus executing the
@@ -331,20 +338,35 @@ var editToolbarConfiguration = {
 							type: 'dialog',
 							titleMsg: 'edittoolbar-tool-replace-title',
 							id: 'edittoolbar-replace-dialog',
-							html: function() { return '<form><fieldset><label for="edittoolbar-replace-search">'
-							+ gM( 'edittoolbar-tool-replace-search' ) +
+							html: function() { return '<form><fieldset><label for="edittoolbar-replace-search">'+ 
+							gM( 'edittoolbar-tool-replace-search' ) +
 							'</label><input type="text" id="edittoolbar-replace-search" style="display:block;" /><label for="edittoolbar-replace-replace">' +
 							gM( 'edittoolbar-tool-replace-replace' ) +
-							'</label><input type="text" id="edittoolbar-replace-replace" style="display:block;" /></fieldset></form>';
+							'</label><input type="text" id="edittoolbar-replace-replace" style="display:block;" /><input type="checkbox" id="edittoolbar-replace-case" /><label for="edittoolbar-replace-case">' +
+							gM( 'edittoolbar-tool-replace-case' ) +
+							'</label><br /><input type="checkbox" id="edittoolbar-replace-regex" /><label for="edittoolbar-replace-regex">' +
+							gM( 'edittoolbar-tool-replace-regex' ) + '</label><br /><input type="checkbox" id="edittoolbar-replace-all" /><label for="edittoolbar-replace-all">' +
+							gM( 'edittoolbar-tool-replace-all' ) +
+							'</label></fieldset></form>';
 							},
 							dialog: {
 								buttons: {
 									'edittoolbar-tool-replace-button': function() {
 										var searchStr = $j( '#edittoolbar-replace-search' ).val();
 										var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
-										var regex = new RegExp( searchStr, 'g' );
+										var flags = '';
+										if ( !$j( '#edittoolbar-replace-case' ).is( ':checked' ) )
+											flags += 'i';
+										if ( $j( '#edittoolbar-replace-all' ).is( ':checked' ) )
+											flags += 'g';
+										if ( !$j( '#edittoolbar-replace-regex' ).is( ':checked' ) )
+											searchStr = RegExp.escape( searchStr );
+										var regex = new RegExp( searchStr, flags );
 										var $textarea = $j(this).data( 'context' ).$textarea;
-										$textarea.val( $textarea.val().replace( regex, replaceStr ) );
+										if ( !$textarea.val().match( regex ) )
+											alert( gM( 'edittoolbar-tool-replace-nomatch' ) );
+										else
+											$textarea.val( $textarea.val().replace( regex, replaceStr ) );
 										// TODO: Hook for wikEd
 									}
 								}

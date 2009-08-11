@@ -101,7 +101,11 @@ class EditToolbarHooks {
 				'edittoolbar-tool-replace-title',
 				'edittoolbar-tool-replace-search',
 				'edittoolbar-tool-replace-replace',
+				'edittoolbar-tool-replace-case',
+				'edittoolbar-tool-replace-regex',
+				'edittoolbar-tool-replace-all',
 				'edittoolbar-tool-replace-button',
+				'edittoolbar-tool-replace-nomatch',
 				/* Special Characters Section */
 				'edittoolbar-section-characters',
 				'edittoolbar-characters-page-latin',
