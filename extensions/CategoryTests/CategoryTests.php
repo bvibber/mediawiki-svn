@@ -15,14 +15,13 @@ $wgExtensionFunctions[] = 'wfCategoryTests';
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Category Tests',
-	'version' => '1.2',
+	'version' => '1.3',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryTests',
 	'author' => 'Ryan Schmidt',
 	'description' => 'Functions for category testing',
-	'descriptionmsg' => 'categorytests',
+	'descriptionmsg' => 'categorytests-desc',
 );
 
-$wgHooks['LanguageGetMagic'][] = 'wfCategoryTestsLanguageGetMagic';
 $wgExtensionMessagesFiles['CategoryTests'] = dirname( __FILE__ ) . '/CategoryTests.i18n.php';
 
 function wfCategoryTests() {
@@ -32,19 +31,6 @@ function wfCategoryTests() {
 	$wgParser->setFunctionHook( 'ifcategory', array( &$wgExtCategoryTests, 'ifcategory' ) );
 	$wgParser->setFunctionHook( 'ifnocategories', array( &$wgExtCategoryTests, 'ifnocategories' ) );
 	$wgParser->setFunctionHook( 'switchcategory', array( &$wgExtCategoryTests, 'switchcategory' ) );
-}
-
-function wfCategoryTestsLanguageGetMagic( &$magicWords, $langCode ) {
-	require_once( dirname( __FILE__ ) . '/CategoryTests.i18n.magic.php' );
-	if ( $langCode == 'en' || !array_key_exists( $langCode, $words ) ) {
-		$functions = $words['en'];
-	} else {
-		$functions = array_merge( $words[$langCode], $words['en'] );
-	}
-	foreach ( $functions as $key => $value ) {
-		$magicWords[$key] = $value;
-	}
-	return true;
 }
 
 Class ExtCategoryTests {
