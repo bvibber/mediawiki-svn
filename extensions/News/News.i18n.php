@@ -199,6 +199,13 @@ $messages['mg'] = array(
 	'newsextension-desc' => "Mampiseho ny fanovàna farany manokana eo amin'ny pejy wiki iray na otra ny topa RSS na Atom.",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'newsextension-desc' => 'Прикажува лично прилагоден преглед на скорешни промени на вики страница, или како RSS или Atom достава',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -2595,9 +2595,40 @@ Ieuwen täiwe.',
 
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
+ * @author Kandar
  */
 $messages['su'] = array(
+	'youtubeauthsub' => 'Muatkeun vidéo YouTube',
+	'youtubeauthsub-desc' => 'Bisa dipaké pikeun [[Special:YouTubeAuthSub|ngamuat vidéo]] langsung ka YouTube',
+	'youtubeauthsub_info' => 'Pikeun bisa ngamuat vidéo ka YouTube sarta bisa diselapkeun dina hiji kaca, mangga eusian formulir di handap:',
+	'youtubeauthsub_title' => 'Judul',
+	'youtubeauthsub_description' => 'Pedaran',
+	'youtubeauthsub_password' => 'Sandi di YouTube',
+	'youtubeauthsub_username' => 'Landihan di YouTube',
+	'youtubeauthsub_keywords' => 'Kecap konci',
 	'youtubeauthsub_category' => 'Kategori',
+	'youtubeauthsub_submit' => 'Kirim',
+	'youtubeauthsub_clickhere' => 'Klik di dieu pikeun asup log ka YouTube',
+	'youtubeauthsub_tokenerror' => "Gagal ngahasilkeun token otorisasi, coba dimuat ulang (''refresh/reload'').",
+	'youtubeauthsub_success' => "Wilujeng!
+Vidéo anjeun geus dimuat.
+<a href='http://www.youtube.com/watch?v=$1'>Tempo vidéo anjeun</a>.
+Bisa jadi YouTube perlu waktu pikeun ngolah vidéona, ku kituna bisa jadi teu bisa langsung midang.
+
+Pikeun nyelapkeun vidéo kana kaca wiki, asupkeun skrip ieu <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Ngarah bisa ngamuat vidéo, anjeun kudu asup log YouTube heula.',
+	'youtubeauthsub_uploadhere' => 'Muat vidéo anjeun ti dieu:',
+	'youtubeauthsub_uploadbutton' => 'Muatkeun',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Tempo ieu vidéo]',
+	'youtubeauthsub_summary' => 'Ngamuat vidéo YouTube',
+	'youtubeauthsub_uploading' => 'Vidéo anjeun keur dimuat.
+Antos heula.',
+	'youtubeauthsub_viewpage' => 'Pilihan séjén, anjeun bisa [[$1|nempo vidéona]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Asupkeun hiji atawa dua kecap konci.',
+	'youtubeauthsub_jserror_notitle' => 'Mangga asupkeun judul pikun vidéona.',
+	'youtubeauthsub_jserror_nodesc' => 'Mangga lebetkeun pedaran ngeunaan vidéona:',
 );
 
 /** Swedish (Svenska)

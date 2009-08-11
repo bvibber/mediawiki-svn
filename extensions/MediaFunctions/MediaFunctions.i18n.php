@@ -302,6 +302,15 @@ $messages['lb'] = array(
 	'mediafunctions-not-exist' => '"$1" gëtt et net',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mediafunctions-desc' => 'Аналитички (парсер) функции за добивање на информации за медиски податотеки',
+	'mediafunctions-invalid-title' => '„$1“ е неважечки наслов',
+	'mediafunctions-not-exist' => '„$1“ не постои',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

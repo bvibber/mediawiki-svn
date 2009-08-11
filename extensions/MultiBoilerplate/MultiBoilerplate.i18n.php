@@ -96,12 +96,18 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author Pill
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'multiboilerplate-desc' => 'Ermöglicht während der Seitenbearbeitung, eine Textvorlage aus der Auswahlbox über dem Bearbeitungsformular auszuwählen',
 	'multiboilerplate-legend' => 'Textvorlage auswählen',
 	'multiboilerplate-submit' => 'Laden',
+	'boilerplates' => 'Verfügbare Textvorlagen',
+	'multiboilerplate-special-pagetext' => 'Diese Vorlagen können beim Erstellen einer Seite automatisch geladen werden (<span class=plainlinks>[{{fullurl:Diese Seite existiert nicht|action=edit}} Demo]</span>).',
+	'multiboilerplate-special-define-in-localsettings' => 'Textvorlagen werden in <tt>LocalSettings.php</tt> definiert.',
+	'multiboilerplate-special-define-in-interface' => 'Textvorlagen werden in [[MediaWiki:Multiboilerplate]] definiert.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -406,6 +412,10 @@ $messages['pt-br'] = array(
 	'multiboilerplate-desc' => 'Permite que um texto-modelo seja selecionado de uma lista suspensa localizada acima do formulário de edição, quando se edita páginas',
 	'multiboilerplate-legend' => 'Selecione o texto-modelo',
 	'multiboilerplate-submit' => 'Carregar',
+	'boilerplates' => 'Modelos disponíveis',
+	'multiboilerplate-special-pagetext' => 'Estes modelos podem ser pré-carregados na criação da página. (<span class=plainlinks>[{{fullurl:Esta página não existe|action=edit}} demonstração]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Boilerplates são definidos no LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Modelos são definidos em [[MediaWiki:Multiboilerplate]]',
 );
 
 /** Romanian (Română)

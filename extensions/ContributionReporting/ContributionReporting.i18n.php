@@ -368,6 +368,31 @@ $messages['bg'] = array(
 	'fundraiserstats-max' => 'Максимум (USD)',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'contrib-hist-name' => 'নাম',
+	'contrib-hist-date' => 'সময় ও তারিখ',
+	'contribstats-day' => 'দিন',
+	'contribstats-month' => 'মাস',
+	'contribstats-currency' => 'মুদ্রা',
+	'contribstats-amount' => 'পরিমান (USD)',
+	'contribstats-contributions' => 'অবদান',
+	'contribstats-total' => 'মোট (USD)',
+	'contribstats-avg' => 'গড় (USD)',
+	'contribstats-max' => 'সর্বোচ্চ (USD)',
+	'contribstats-percentage-ytd' => 'শতকরা (YTD)',
+	'contribstats-total-ytd' => 'মোট (YTD)',
+	'fundraiserstats-date' => 'তারিখ',
+	'fundraiserstats-total' => 'মোট (USD)',
+	'fundraiserstats-avg' => 'গড় (USD)',
+	'fundraiserstats-max' => 'সর্বোচ্চ (USD)',
+	'fundraiserstats-tab-totals' => 'মোট(USD)',
+	'fundraiserstats-tab-averages' => 'গড় (USD)',
+	'fundraiserstats-tab-maximums' => 'সর্বোচ্চ (USD)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -758,6 +783,35 @@ $messages['es'] = array(
 	'fundraiserstats-tab-averages' => 'Promedios (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'specialpages-group-contribution' => 'Contribuciones/Recaudador de fondos',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'contrib-hist-name' => 'Nimi',
+	'contrib-hist-date' => 'Kellaaeg ja kuupäev',
+	'contribstats-day' => 'Päev',
+	'contribstats-month' => 'Kuu',
+	'contribstats-currency' => 'Rahaühik',
+	'contribstats-amount' => 'Hulk (USD)',
+	'contribstats-contributions' => 'Annetused',
+	'contribstats-total' => 'Summa (USD)',
+	'contribstats-avg' => 'Keskmine (USD)',
+	'contribstats-max' => 'Maksimum (USD)',
+	'contribstats-value-exactly' => 'Täpselt $1',
+	'contribstats-value-under' => 'Alla $1',
+	'contribstats-value-from' => '$1 - $2',
+	'contribstats-value-over' => 'Üle $1',
+	'fundraiserstats-date' => 'Kuupäev',
+	'fundraiserstats-contributions' => 'Annetused',
+	'fundraiserstats-total' => 'Kokku (USD)',
+	'fundraiserstats-avg' => 'Keskmine (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
+	'fundraiserstats-tab-totals' => 'Summad (USD)',
+	'fundraiserstats-tab-contributions' => 'Annetuste hulk',
+	'fundraiserstats-tab-averages' => 'Keskmised (USD)',
+	'fundraiserstats-tab-maximums' => 'Maksimumid (USD)',
 );
 
 /** Basque (Euskara)
@@ -1334,11 +1388,41 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  */
 $messages['id'] = array(
+	'contributionreporting-desc' => 'Laporan langsung pada penggalangan dana Wikimedia',
+	'contributionhistory' => 'Riwayat kontribusi',
 	'contrib-hist-name' => 'Nama',
 	'contrib-hist-date' => 'Waktu dan tanggal',
+	'contrib-hist-anonymous' => 'Anonim',
+	'contributionstatistics' => 'Statistika kontribusi',
+	'contribstats-day' => 'Hari',
+	'contribstats-month' => 'Bulan',
+	'contribstats-currency' => 'Mata uang',
+	'contribstats-amount' => 'Nilai (USD)',
+	'contribstats-contributions' => 'Kontribusi',
+	'contribstats-total' => 'Total (USD)',
+	'contribstats-avg' => 'Rata-rata (USD)',
+	'contribstats-max' => 'Tertinggi (USD)',
+	'contribstats-percentage-ytd' => 'Persentase (YTD)',
+	'contribstats-total-ytd' => 'Total (YTD)',
+	'contribstats-value-exactly' => 'Persis $1',
+	'contribstats-value-under' => 'Di bawah $1',
+	'contribstats-value-from' => 'Dari $1 - $2',
+	'contribstats-value-over' => 'Melebihi $1',
+	'fundraiserstatistics' => 'Statistika penggalang dana',
 	'fundraiserstats-date' => 'Tanggal',
+	'fundraiserstats-day' => 'Hari $1 dari $2',
+	'fundraiserstats-contributions' => 'Kontribusi',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Rata-rata (USD)',
+	'fundraiserstats-max' => 'Tertinggi (USD)',
+	'fundraiserstats-tab-totals' => 'Total (USD)',
+	'fundraiserstats-tab-contributions' => 'Jumlah kontribusi',
+	'fundraiserstats-tab-averages' => 'Rata-rata (USD)',
+	'fundraiserstats-tab-maximums' => 'Tertinggi (USD)',
+	'specialpages-group-contribution' => 'Kontribusi/Penggalang dana',
 );
 
 /** Ido (Ido)

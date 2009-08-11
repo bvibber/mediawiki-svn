@@ -47,8 +47,14 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'mostrevisors' => 'الصفحات ذات المحررين الأكثر',
+	'mostrevisors-desc' => 'تسرد [[Special:MostRevisors|الصفحات ذات المحررين الأكثر]]',
+	'mostrevisors-header' => "'''تسرد هذه الصفحة {{PLURAL:$1||الصفحة ذات|الصفحتين ذواتي|$1 صفحات ذات|$1 صفحة ذات}} المحررين الأكثر على الويكي.'''",
+	'mostrevisors-limitlinks' => 'أظهر إلى $1 صفحة',
 	'mostrevisors-namespace' => 'النطاق:',
 	'mostrevisors-none' => 'لم توجد مدخلات.',
+	'mostrevisors-ns-header' => "'''تسرد هذه الصفحة {{PLURAL:$1||الصفحة ذات|الصفحتين ذواتي|$1 صفحات ذات|$1 صفحة ذات}} المحريين الأكثر في نطاق $2.'''",
+	'mostrevisors-showing' => 'سرد {{PLURAL:$1||صفحة واحدة|صفحتين|$1 صفحات|$1 صفحة}}:',
 	'mostrevisors-submit' => 'اذهب',
 	'mostrevisors-showredir' => 'أظهر صفحات التحويل',
 	'mostrevisors-hideredir' => 'أخفِ صفحات التحويل',
@@ -227,6 +233,19 @@ $messages['gsw'] = array(
 	'mostrevisors-viewcontributors' => 'Hauptbyyträger zeige',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'mostrevisors' => 'הדפים בעלי מספר המבקרים הגבוה ביותר',
+	'mostrevisors-namespace' => 'מרחב שם:',
+	'mostrevisors-none' => 'לא נמצאו רשומות.',
+	'mostrevisors-showredir' => 'הצגת דפי הפניה',
+	'mostrevisors-hideredir' => 'הסתרת דפי הפניה',
+	'mostrevisors-users' => '- {{PLURAL:$1|עורך אחד|$1 עורכים}}',
+	'mostrevisors-viewcontributors' => 'הצגת התורמים הראשיים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -354,6 +373,13 @@ $messages['lb'] = array(
 	'mostrevisors-showredir' => 'Viruleedungssäite weisen',
 	'mostrevisors-hideredir' => 'Viruleedungssäite vestoppen',
 	'mostrevisors-viewcontributors' => 'Weis déi Haaptmataarbechter',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'mostrevisors-namespace' => 'Нэрний зай:',
 );
 
 /** Dutch (Nederlands)

@@ -632,9 +632,13 @@ $messages['lt'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|nuoroda|nuorodos|nuorodų}} į $3',
 );
 
-/** Latvian (Latviešu) */
+/** Latvian (Latviešu)
+ * @author Yyy
+ */
 $messages['lv'] = array(
 	'crossnamespacelinks' => 'Raksti, kuros ir saites uz citu veidu palīglapām',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Satur datus par saitēm starp palīglapām]], kurām (saitēm) nevajadzētu parādīties {{grammar:lokatīvs|{{SITENAME}}}}',
+	'crossnamespacelinks-summary' => "Šajā lapā ir saraksts, kurā uzskaitītas saites no lapas galvenajā palīglapā (''namespace'') uz lapu citās palīglapās (izņemot {{ns:special}}, {{ns:talk}}, {{ns:project}} un {{ns:template}} palīglapas), kuru lietošana ir nevēlama.",
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|saite|saites}} uz $3',
 );
 

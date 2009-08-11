@@ -441,6 +441,16 @@ $messages['lv'] = array(
 	'simpleantispam' => 'Tevis veiktās izmaiņas ir iedarbināja pretspama mehānismu',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'simpleantispam' => 'Вашето уредување го предизвика анти-спам механизмот',
+	'simpleantispam-label' => "Антиспам проверка.
+'''НЕ''' го пополнувајте ова!",
+	'simpleantispam-desc' => 'Додава едноставна проверка за спам/ботови на обрасците',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

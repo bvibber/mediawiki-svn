@@ -772,15 +772,27 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
+	'importusers' => 'Impor pengguna',
 	'importusers-uploadfile' => 'Muatkan berkas',
+	'importusers-form-caption' => 'Input berkas CSV (UTF-8)',
+	'importusers-form-file' => 'Format berkas pengguna (CSV):',
+	'importusers-form-replace-present' => 'Timpa pengguna yang sudah ada',
 	'importusers-form-button' => 'Impor',
+	'importusers-user-added' => "Pengguna '''$1''' telah ditambahkan.",
+	'importusers-user-present-update' => "Pengguna '''$1''' sudah ada.
+Diperbarui.",
+	'importusers-user-present-not-update' => "Pengguna '''$1''' telah ada.
+Tidak diperbarui.",
+	'importusers-log' => 'Impor log pengguna',
 	'importusers-log-summary' => 'Ringkasan',
 	'importusers-log-summary-all' => 'Semua',
 	'importusers-log-summary-added' => 'Telah ditambahkan',
 	'importusers-log-summary-updated' => 'Dimutakhirkan',
+	'importusers-login-name' => 'Nama masuk log',
 	'importusers-password' => 'kata sandi',
 	'importusers-email' => 'surel',
 	'importusers-realname' => 'nama asli',
+	'right-import_users' => 'Impor banyak pengguna',
 );
 
 /** Icelandic (Íslenska)

@@ -184,8 +184,11 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'security-info-toggle' => 'περιορισμοί ασφαλείας',
+	'security-manygroups' => 'ομάδες $1 και $2',
 	'security-type-category' => 'κατηγορία',
 	'security-type-namespace' => 'περιοχή ονομάτων',
 );
@@ -485,6 +488,13 @@ $messages['lb'] = array(
 	'security-type-namespace' => 'Nummraum',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'security-type-namespace' => 'нэрний зай',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  */
@@ -539,6 +549,13 @@ $messages['nn'] = array(
 	'security-unchain' => 'Endra handlingar individuelt',
 	'security-type-category' => 'kategori',
 	'security-type-namespace' => 'namnerom',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Simny
+ */
+$messages['no'] = array(
+	'security-type-category' => 'kategori',
 );
 
 /** Occitan (Occitan)
@@ -627,19 +644,22 @@ $messages['pt-br'] = array(
 	'security-info' => 'Há $1 nesta página',
 	'security-info-toggle' => 'restrições de segurança',
 	'security-inforestrict' => '$1 é restrita a $2',
-	'security-desc-LS' => "''(aplica-se porque está página está em '''$2 $1''')''",
-	'security-desc-PR' => "''(definido através da '''aba proteger''')''",
-	'security-infosysops' => "Nenhuma das restrições está em efeito porque você é membro do grupo '''sysop'''",
+	'security-desc-LS' => '(aplica-se porque esta página está no "$2 $1")',
+	'security-desc-PR' => '(definido a partir da "aba proteger")',
+	'security-infosysops' => 'Nenhuma restrição está em vigor, porque você é um membro do grupo "sysop"',
 	'security-manygroups' => 'grupos $1 e $2',
 	'security-unchain' => 'Modificar ações individualmente',
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'domínio',
+	'security-restricttogroup' => 'Acessar conteúdo restrito a membros de "$1"',
 );
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'security' => 'Jurnal securitate',
+	'security-logpage' => 'Jurnal securitate',
 	'security-type-namespace' => 'spaţiu de nume',
 );
 

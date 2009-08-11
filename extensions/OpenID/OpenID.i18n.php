@@ -2586,6 +2586,13 @@ $messages['ml'] = array(
 	'openidloginlabel' => 'ഓപ്പണ്‍‌ഐഡി വിലാസം',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'openidtimezone' => 'Цагийн бүс',
+);
+
 /** Marathi (मराठी)
  * @author IAlex
  * @author Kaustubh
@@ -3544,6 +3551,7 @@ OpenID позволяет вам заходить на различные веб
 
 /** Sicilian (Sicilianu)
  * @author IAlex
+ * @author Melos
  * @author Santu
  */
 $messages['scn'] = array(
@@ -3614,6 +3622,10 @@ Ci sunnu assai [http://wiki.openid.net/Public_OpenID_providers Provider OpenID p
 ; [http://dev.aol.com/aol-and-63-million-openids AOL] : Si pussedi n'account cu [http://www.aol.com/ AOL], comu a n'account [http://www.aim.com/ AIM], poi fari lu login a {{SITENAME}} nzirennu lu tò OpenID AOL ntô box curripunnenti. Li URL OpenID AOL pussèdunu la furma ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Lu tò nomu utenti avissi a èssiri tuttu paru 'n caràttiri nichi, senza spàzii.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Si pussedi nu blog supr'a unu di sti siti, nzirisci l'URL dû blog ntô box currispunnenti. P'asèmpiu, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', o ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 	'openid-pref-hide' => "Ammuccia lu tò OpenID supr'a tò pàggina utenti, si fai lu login cu OpenID.",
+	'openid-urls-action' => 'Azzioni',
+	'openid-provider-label-google' => 'Accedi utilizzannu lu tò account Google',
+	'openid-provider-label-aol' => 'Nserisci lu tò screenname AOL',
+	'openid-provider-label-other-username' => 'Nserisci lu tò $1 nnomu utenti',
 );
 
 /** Sinhala (සිංහල)

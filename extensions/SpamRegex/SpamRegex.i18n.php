@@ -1226,6 +1226,11 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'spamregex-no-currently-blocked' => "'''Nu există expresii blocate.'''",
+	'spamregex-unblock-success' => 'Deblocare cu succes',
+	'spamregex-block-success' => 'Blocare cu succes',
+	'spamregex-block-message' => "Expresia '''$1''' a fost blocată.",
+	'spamregex-error-1' => 'Expresie regulată incorectă.',
 	'spamregex-already-blocked' => '"$1" este deja blocat',
 	'spamregex-text' => '(Text)',
 	'spamregex-summary-log' => '(Rezumat)',

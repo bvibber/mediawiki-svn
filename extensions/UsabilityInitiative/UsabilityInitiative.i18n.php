@@ -322,6 +322,14 @@ $messages['sv'] = array(
 	'usabilityinitiative-desc' => "Funktioner utvecklade av ''Wikipedias initiativ för användbarhet'', för att förbättra MediaWikis användbarhet",
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'usabilityinitiative' => 'వాడుక సౌలభ్యం కోసం ఒక ప్రయత్నం',
+	'usabilityinitiative-desc' => 'వికీపీడియా వాడుక సౌలభ్యాన్ని పెంచేందుకు వీలుగా కొన్ని నూతన ఫీచర్లు',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

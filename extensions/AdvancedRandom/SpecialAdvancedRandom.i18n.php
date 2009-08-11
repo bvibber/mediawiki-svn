@@ -274,6 +274,15 @@ $messages['ia'] = array(
 	'advancedrandom-desc' => 'Obtene un pagina aleatori ab qualcunque spatio de nomines cuje pagina de discussion o de subjecto liga verso un pagina date. Pote esser usate como [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] pro obtener le discussion de un articulo eminente aleatori, o como [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] pro obtener un file aleatori sub licentia GFDL',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kandar
+ */
+$messages['id'] = array(
+	'advancedrandom' => 'Sembarang lanjutan',
+	'advancedrandom-desc' => 'Dapatkan halaman sembarang dari ruang nama apapun, halaman artikel atau pembicaraan yang terhubung ke halaman yang diminta.
+Dapat digunakan seperti [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] untuk mendapatkan pembicaraan sembarang artikel pilihan, atau seperti [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] untuk mendapatkan sembarang berkas GFDL.',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

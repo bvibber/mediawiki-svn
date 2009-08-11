@@ -911,6 +911,7 @@ Hacer pública esta información puede provocar la pérdida definitiva de los pr
 );
 
 /** Estonian (Eesti)
+ * @author Avjoska
  * @author Pikne
  */
 $messages['et'] = array(
@@ -919,6 +920,7 @@ $messages['et'] = array(
 	'group-oversight-member' => 'järelevaataja',
 	'right-oversight' => 'Vaadata eelnevalt peidetud redaktsioone',
 	'right-hiderevision' => 'Peita redaktsioone ülemate eest',
+	'hiderevision-continue' => 'Jätka',
 );
 
 /** Basque (Euskara) */

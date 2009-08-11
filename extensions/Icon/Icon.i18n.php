@@ -359,6 +359,15 @@ $messages['lt'] = array(
 	'icon-badwidth' => 'Blogas plotis',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'icon-badimage' => 'Лоша слика',
+	'icon-badwidth' => 'Лоша широчина',
+	'icon-desc' => 'Дозволува употреба на слики како икони и врски-икони',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

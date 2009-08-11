@@ -231,6 +231,8 @@ Die Ibersicht isch e eifach Zuegang zue dr Syschtemnochrichte, wu d Bschrybig un
  */
 $messages['he'] = array(
 	'plotters-desc' => 'מתן אפשרות לשימוש ב־JavaScript מותאם אישית בתגיות jsplot',
+	'plotters-missing-script' => 'לא הוגדר סקריפט.',
+	'plotters-missing-arguments' => 'לא צויינו ארגומנטים.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

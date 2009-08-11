@@ -552,6 +552,7 @@ Pliparto de kromprogramoj funkcias trans pluraj versioj de MediaWiki, do se via 
 	'extdist-no-remote' => 'Ne eblas kontakti eksteran klienton de subversion.',
 	'extdist-remote-error' => 'Eraro de la ekstera kliento de subversion: <pre>$1</pre>',
 	'extdist-remote-invalid-response' => 'Nevalida respondo de ekstera kliento de Subversion.',
+	'extdist-svn-error' => 'Subversion renkontis eraron: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar donis elirkodon $1:',
 	'extdist-created' => "Statika kopio de versio <b>$2</b> de la <b>$1</b> kromprogramo por MediaWiki <b>$3</b> estis kreita. Via elŝuto komencos aŭtomate post 5 sekundoj.
 

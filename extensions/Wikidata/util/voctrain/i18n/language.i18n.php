@@ -464,6 +464,8 @@ $messages['arz'] = array(
  */
 $messages['az'] = array(
 	'voctrain_Hello_World' => 'SALAM VİKİ!',
+	'voctrain_Word' => 'Söz',
+	'voctrain_other' => 'digər',
 );
 
 /** Southern Balochi (بلوچی مکرانی)

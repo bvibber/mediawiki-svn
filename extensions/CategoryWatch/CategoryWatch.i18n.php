@@ -410,6 +410,7 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -419,6 +420,7 @@ $messages['mk'] = array(
 	'categorywatch-catmoveout' => 'преместено $1 од категорија $2 во $3',
 	'categorywatch-catadd' => 'додадено $1 во категорија $2',
 	'categorywatch-catsub' => 'избришано $1 од категорија $2',
+	'categorywatch-autocat' => 'Автоматски набљудувана од $1',
 );
 
 /** Dutch (Nederlands)

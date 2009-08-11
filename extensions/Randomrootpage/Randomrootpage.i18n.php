@@ -189,6 +189,14 @@ $messages['lb'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Spezialsäit]] déi eng Zoufalls-Stammsäit oprifft',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'randomrootpage' => 'Случајна основна страница',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Специјална страница]] која дава случајна основна страница',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

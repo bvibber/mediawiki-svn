@@ -147,6 +147,13 @@ $messages['es'] = array(
 	'whosonline-desc' => 'Muestra [[Special:WhosOnline|una lista]] de usuarios identificados y anónimos que están conectados actualmente.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'whosonline' => 'Online kasutajad',
+);
+
 /** Basque (Euskara)
  * @author Pi
  */
@@ -303,6 +310,14 @@ $messages['lb'] = array(
 $messages['lt'] = array(
 	'whosonline' => 'Dabar naršo',
 	'whosonline-desc' => 'Rodo [[Special:WhosOnline|sąrašą]] prisijungusių ir anoniminių naudotojų, kurie dabar naršo',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'whosonline' => 'Кој е на линија',
+	'whosonline-desc' => 'Прикажува [[Special:WhosOnline|листа]] на најавени и анонимни корисници кои се моментално на линија',
 );
 
 /** Malayalam (മലയാളം)

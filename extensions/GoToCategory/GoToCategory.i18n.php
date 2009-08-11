@@ -178,6 +178,13 @@ $messages['li'] = array(
 	'gotocategory-desc' => "Doorzeuk ouch de naamrummdje Category: veur zeuktèrm óm 'nao paasj gaon' meugelik tö make",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'gotocategory-desc' => "Ја проверува Категоријата за поими за пребарување: именски простор за функционалноста на Оди 'скокни на страница'",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

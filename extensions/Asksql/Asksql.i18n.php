@@ -704,9 +704,20 @@ Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofi
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
 	'asksql' => 'SQL-zeukopdrach',
+	'asksql-desc' => "Veur SQL-zeukopdrachte oet via 'n [[Special:Asksql|speciaal pagina]]",
+	'asksqltext' => "Gebroek 't ongersjtaond formeleer om direk 'n zeukopdrach op de database te make.
+Gebroek appestroffe ('zoe dus') es delimiter veur strings.
+Dit kan zörge veur zjwaor belasting van de server, gebroek dees funktie dus sjpaarzaam.",
+	'sqlislogged' => "Alle zeukopdrachte waere in 'n logbook opgesjlage.",
+	'sqlquery' => "Veur 'n zeukopdrach in",
+	'querybtn' => 'Veur zeukopdrach oet',
+	'selectonly' => 'Doe kans inkel allein-leze zeukopdrachte oetvoere.',
+	'querysuccessful' => 'Zeukopdrach oetgevoerd',
+	'right-asksql' => 'SQL-zeukopdrachte oetvoere',
 );
 
 /** Lithuanian (Lietuvių)

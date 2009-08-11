@@ -250,6 +250,14 @@ $messages['es'] = array(
 	'ajax-se-usernotfound' => 'Error: usuario no encontrado',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'ajax-se-pagedoesnotexist' => 'lehekülge ei ole',
+	'ajax-se-usernotfound' => 'Viga: kasutajat ei leitud',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

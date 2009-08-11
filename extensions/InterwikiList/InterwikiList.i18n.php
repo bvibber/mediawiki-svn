@@ -395,6 +395,18 @@ $messages['lb'] = array(
 	'interwikilist-prefix' => 'Interwiki-Prefix:',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'interwikilist' => 'Интервики листа',
+	'interwikilist-desc' => 'Додава [[Special:Interwikilist|специјална страница]] на која се гледаат интервики врските на располагање',
+	'interwikilist-linkname' => 'Интервики врска',
+	'interwikilist-target' => 'Целна URL',
+	'interwikilist-filter' => 'Филтрирај ја листата',
+	'interwikilist-prefix' => 'Интервики префикс:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -18,6 +18,17 @@ $messages['en'] = array(
 	'poolcounter-remote-error' => 'Pool counter server error: $1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'poolcounter-desc' => 'Kliant evit MediaWiki eus diaoul kanastell strollad poolcounter.py',
+	'poolcounter-connection-error' => 'Fazi kevreañ ouzh servijer kanastell ar strollad : $1',
+	'poolcounter-read-error' => 'Fazi lenn a-berzh servijer kanastell ar strollad',
+	'poolcounter-write-error' => 'Fazi e-ser skrivañ war servijer kanastell ar strollad',
+	'poolcounter-remote-error' => 'Fazi servijer kanastell ar strollad : $1',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -110,5 +121,16 @@ $messages['oc'] = array(
 	'poolcounter-read-error' => 'Error al moment de la lectura del servidor de comptador de gropament',
 	'poolcounter-write-error' => "Error al moment de l'escritura sul servidor del comptador de gropament",
 	'poolcounter-remote-error' => 'Error del servidor de comptador de gropament : $1',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'poolcounter-desc' => 'Cliente mediawiki para o pool counter daemon poolcounter.py',
+	'poolcounter-connection-error' => 'Erro ao conectar ao servidor do pool counter: $1',
+	'poolcounter-read-error' => 'Erro ao ler do servidor do pool counter',
+	'poolcounter-write-error' => 'Erro ao escrever no servidor do pool counter',
+	'poolcounter-remote-error' => 'Erro no servidor do pool counter: $1',
 );
 

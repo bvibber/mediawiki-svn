@@ -870,6 +870,61 @@ $messages['ca'] = array(
 	'deletequeue-case-reason' => 'Motiu:',
 );
 
+/** Danish (Dansk)
+ * @author Lhademmor
+ */
+$messages['da'] = array(
+	'deletequeue-action-queued' => 'Sletning',
+	'deletequeue-action' => 'Foreslå sletning',
+	'deletequeue-action-title' => 'Foreslå sletning af "$1"',
+	'deletequeue-permissions-noedit' => 'Du skal kunne redigere en side for at kunne påvirke dens sletningsstatus.',
+	'deletequeue-nom-alreadyqueued' => 'Denne side er allerede i en sletningskø.',
+	'deletequeue-speedy-title' => 'Marker "$1" til hurtig sletning',
+	'deletequeue-prod-title' => 'Foreslå sletning af "$1"',
+	'deletequeue-delnom-reason' => 'Begrundelse for nominering:',
+	'deletequeue-delnom-otherreason' => 'Anden grund',
+	'deletequeue-delnom-extra' => 'Ekstra information:',
+	'deletequeue-delnom-submit' => 'Indsend nominering',
+	'deletequeue-log-nominate' => "nominerede [[$1]] til sletning i køen '$2'.",
+	'deletequeue-log-rmspeedy' => 'afviste at hurtigslette [[$1]].',
+	'deletequeue-log-requeue' => "overførte [[$1]] til en anden sletningskø: fra '$2' til '$3'.",
+	'deletequeue-log-dequeue' => "fjernede [[$1]] fra sletningskøen '$2'.",
+	'right-speedy-nominate' => 'Nominer sider til hurtigsletning',
+	'right-speedy-review' => 'Gennemse nomineringer til hurtigsletning',
+	'right-prod-nominate' => 'Foreslå sletning af side',
+	'right-deletediscuss-nominate' => 'Start sletningsdiskussioner',
+	'right-deletediscuss-review' => 'Luk sletningsdiskussioner',
+	'right-deletequeue-vote' => 'Støt eller indvend mod sletninger',
+	'deletequeue-queue-speedy' => 'Hurtigsletning',
+	'deletequeue-queue-prod' => 'Foreslået sletning',
+	'deletequeue-queue-deletediscuss' => 'Sletningsdiskussion',
+	'deletequeue-page-speedy' => "Denne side er blevet nomineret til hurtigsletning.
+Grunden givet til denne sletning er ''$1''.",
+	'deletequeue-review-action' => 'Handling:',
+	'deletequeue-review-delete' => 'Slet siden.',
+	'deletequeue-review-change' => 'Slet denne side, men med en anden begrundelse.',
+	'deletequeue-review-requeue' => 'Overfør denne side til den følgende kø:',
+	'deletequeue-review-dequeue' => 'Gør intet, og fjern siden fra sletningskøen.',
+	'deletequeue-review-reason' => 'Kommentarer:',
+	'deletequeue-review-newreason' => 'Ny begrundelse:',
+	'deletequeue-review-newextra' => 'Ekstra information:',
+	'deletequeue-review-original' => 'Begrundelse for nominering',
+	'deletequeue-review-badaction' => 'Du angav en ugyldig handling',
+	'deletequeue-role-vote-endorse' => 'støtter sletning',
+	'deletequeue-role-vote-object' => 'modsætter sig sletning',
+	'deletequeue-vote-tab' => 'Stem om sletningen',
+	'deletequeue-vote-title' => 'Støt eller indvend mod sletningen af "$1"',
+	'deletequeue-vote-legend' => 'Støt/indvend mod sletning',
+	'deletequeue-vote-endorse' => 'Støt sletning.',
+	'deletequeue-vote-object' => 'Modsæt dig sletning.',
+	'deletequeue-vote-reason' => 'Kommentarer:',
+	'deletequeue-vote-submit' => 'Indsend',
+	'deletequeue-vote-success-endorse' => 'Du har støttet sletningen af denne side.',
+	'deletequeue-vote-success-object' => 'Du har modsat dig sletningen af denne side.',
+	'deletequeue-vote-requeued' => 'Du har modsat dig sletningen af denne side.
+På grund af din indvending er siden blevet flyttet til køen $1.',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
@@ -1187,8 +1242,17 @@ Móžoš k toś tomu wulašowanjeju [{{fullurl:{{FULLPAGENAME}}|action=delvote}}
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'deletequeue-action-queued' => 'Διαγραφή',
+	'deletequeue-delnom-otherreason' => 'Άλλος λόγος',
+	'deletequeue-delnom-extra' => 'Επιπλέον πληροφορίες:',
+	'deletequeue-delnom-submit' => 'Υποβολή υποψηφιότητας',
+	'deletequeue-review-reason' => 'Σχόλια:',
+	'deletequeue-review-newreason' => 'Νέος λόγος:',
+	'deletequeue-review-newextra' => 'Επιπλέον πηροφορίες:',
+	'deletequeue-review-submit' => 'Αποθήκευση Επιθεώρησης',
 	'deletequeue-vote-submit' => 'Υποβολή',
 	'deletequeue-list-search' => 'Αναζήτηση',
 	'deletequeue-case-reason' => 'Αιτία:',
@@ -2471,15 +2535,38 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  * @author Rex
  */
 $messages['id'] = array(
+	'deletequeue-action-queued' => 'Penghapusan',
+	'deletequeue-action' => 'Usulkan penghapusan',
+	'deletequeue-action-title' => 'Usulkan penghapusan untuk "$1"',
+	'deletequeue-delnom-reason' => 'Alasan pengusulan:',
 	'deletequeue-delnom-otherreason' => 'Alasan lain',
 	'deletequeue-delnom-extra' => 'Informasi tambahan:',
+	'deletequeue-delnom-submit' => 'Kirimkan usulan',
+	'deletequeue-log-nominate' => "mengusulkan penghapusan [[$1]] pada antrian '$2'.",
+	'right-speedy-nominate' => 'Usulkan halaman untuk penghapusan segera',
+	'right-prod-nominate' => 'Usulkan penghapusan halaman',
+	'right-deletediscuss-nominate' => 'Mulai pembicaraan penghapusan',
+	'right-deletediscuss-review' => 'Tutup pembicaraan penghapusan',
+	'right-deletequeue-vote' => 'Dukungan atau tolakan terhadap penghapusan',
+	'deletequeue-queue-speedy' => 'Penghapusan segera',
+	'deletequeue-queue-prod' => 'Penghapusan yang diusulkan',
+	'deletequeue-queue-deletediscuss' => 'Pembicaraan penghapusan',
 	'deletequeue-review-reason' => 'Komentar:',
 	'deletequeue-review-newextra' => 'Informasi tambahan:',
+	'deletequeue-vote-legend' => 'Dukungan/Keberatan terhadap penghapusan',
+	'deletequeue-vote-action' => 'Rekomendasi:',
+	'deletequeue-vote-endorse' => 'Dukung penghapusan.',
+	'deletequeue-vote-object' => 'Tolak penghapusan.',
 	'deletequeue-vote-reason' => 'Komentar:',
 	'deletequeue-vote-submit' => 'Kirim',
+	'deletequeue-showvotes' => 'Dukungan dan penolakan terhadap penghapusan "$1"',
+	'deletequeue-showvotes-restrict-endorse' => 'Tampilkan dukungan saja',
+	'deletequeue-showvotes-restrict-object' => 'Tampilkan penolakan saja',
+	'deletequeue-showvotes-restrict-none' => 'Tampilkan semua dukungan dan penolakan',
 	'deletequeue-list-queue' => 'Antrian:',
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Cari',
@@ -2767,6 +2854,7 @@ $messages['ja'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'deletequeue-desc' => 'បង្កើត​[[Special:DeleteQueue|ប្រព័ន្ធ​ជា​ជួរ​សម្រាប់​គ្រប់គ្រង​ការ​លុប]]',
@@ -2822,7 +2910,12 @@ $messages['km'] = array(
 	'deletequeue-list-header-page' => 'ទំព័រ',
 	'deletequeue-list-header-queue' => 'ជួរ',
 	'deletequeue-list-header-votes' => 'ការយល់ស្រប និង​ជំទាស់',
+	'deletequeue-list-header-expiry' => 'ផុតកំណត់​',
 	'deletequeue-list-header-discusspage' => 'ទំព័រ​ពិភាក្សា',
+	'deletequeue-case-details' => 'ព័ត៌មាន​លម្អិត​មូលដ្ឋាន',
+	'deletequeue-case-page' => 'ទំព័រ៖',
+	'deletequeue-case-reason' => 'មូលហេតុ៖',
+	'deletequeue-case-expiry' => 'ផុតកំណត់​៖',
 );
 
 /** Krio (Krio)
@@ -3005,6 +3098,14 @@ $messages['kw'] = array(
 	'deletequeue-list-search' => 'Hwila',
 	'deletequeue-list-anyqueue' => '(vydh)',
 	'deletequeue-case-page' => 'Folen:',
+);
+
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'deletequeue-action-queued' => 'Deletio',
+	'deletequeue-delnom-otherreason' => 'Causa alia',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3430,9 +3531,11 @@ Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} leggja inn di eiga støtta f
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Simny
  */
 $messages['no'] = array(
 	'deletequeue-desc' => 'Skaper et [[Special:DeleteQueue|købasert system for å håndtere sletting]]',
+	'deletequeue-action-queued' => 'Sletting',
 	'deletequeue-action' => 'Foreslå sletting',
 	'deletequeue-action-title' => 'Foreslå sletting av «$1»',
 	'deletequeue-action-text' => "{{SITENAME}} har flere prosesser for sletting av sider:
@@ -3469,6 +3572,7 @@ Om ingen har motsetninger mot slettingen innen fem dager, vil slettingen vurdere
 	'right-prod-review' => 'Behandle ukontroversielle slettingsforslag',
 	'right-deletediscuss-nominate' => 'Starte slettingsdiskusjoner',
 	'right-deletediscuss-review' => 'Avslutte slettingsdiskusjoner',
+	'right-deletequeue-vote' => 'Støtt eller gå imot sletteforslag',
 	'deletequeue-queue-speedy' => 'Hurtigsletting',
 	'deletequeue-queue-prod' => 'Slettingsforslag',
 	'deletequeue-queue-deletediscuss' => 'Slettingsdiskusjon',
@@ -3505,7 +3609,18 @@ Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
 	'deletequeue-reviewprod-tab' => 'Behandle slettingsforslag',
 	'deletequeue-reviewprod-title' => 'Behandle slettingsforslag av «$1»',
 	'deletequeue-reviewprod-text' => "Du kan bruke dette skjemaet for å behandle sletting av «'''$1'''».",
+	'deletequeue-role-vote-endorse' => 'støtter sletting',
+	'deletequeue-role-vote-object' => 'er imot sletting',
+	'deletequeue-vote-tab' => 'Stem over slettinga',
+	'deletequeue-vote-legend' => 'Støtt/gå imot sletting',
+	'deletequeue-vote-action' => 'Anbefaling:',
+	'deletequeue-vote-endorse' => 'Støtt sletting.',
+	'deletequeue-vote-object' => 'Gå imot sletting.',
 	'deletequeue-vote-reason' => 'Kommentarer:',
+	'deletequeue-vote-success-endorse' => 'Du har støttet forslaget om sletting av denne sida.',
+	'deletequeue-vote-success-object' => 'Du har gått imot sletting av denne sida',
+	'deletequeue-showvotes-showingonly-endorse' => 'Viser bare støtte',
+	'deletequeue-showvotes-showingonly-object' => 'Viser bare innvendinger',
 	'deletequeue' => 'Slettingskø',
 	'deletequeue-list-search-legend' => 'Søk etter sider',
 	'deletequeue-list-queue' => 'Kø:',
@@ -3517,6 +3632,11 @@ Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
 	'deletequeue-list-header-queue' => 'Kø',
 	'deletequeue-list-header-expiry' => 'Varighet',
 	'deletequeue-list-header-discusspage' => 'Diskusjonsside',
+	'deletequeue-list-header-reason' => 'Slettingsårsak:',
+	'deletequeue-case-details' => 'Grunnleggende detaljer',
+	'deletequeue-case-page' => 'Side:',
+	'deletequeue-case-reason' => 'Årsak:',
+	'deletequeue-case-expiry' => 'Utgår:',
 );
 
 /** Novial (Novial)

@@ -774,6 +774,10 @@ Klickt <a href='$1'>hei</a> fir weiderzefueren.",
 	'spamdifftool_confirm' => "Konfirméiert daat Dir dës Elementer op déi Schwaarz Lëscht vum Spam derbäisetze wëllt.
 (Klickt <a href='$1' target='new'>hei</a> fir e Problem ze mellen.)",
 	'spamdifftool_summary' => "Op d'schwaarz Lëscht vum Spam derbäisetzen",
+	'spamdifftool_urls_detected' => "Dës URLen goufen an den Ännerunge fonnt, watfireng wëllt Dir op déi Schwaarz Lëscht vum Spam derbäisetzen?
+Dës Optioune gi vu méi restriktiv op manner restriktiv. D'Späre vun engem ganzen Domain spärt all Linken op alles wat vun dem Domain kënnt.
+
+ Vergewëssert Iech datt Dir net ganz Domaine spärt déi Benotzerkonten hosten, esou wéi blogpost.com, geocities.com, asw.",
 	'spamdifftool_no_urls_detected' => "Et goufe keng URLe fonnt.
 Klickt w.e.g. <a href='$1'>heihi</a> fir zréck.",
 	'spamdifftool_spam_link_text' => 'bei de Spam setzen',

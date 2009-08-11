@@ -51,8 +51,15 @@ $messages['be-tarask'] = array(
 	'editwarning' => 'Папярэджаньне рэдагаваньня',
 	'editwarning-desc' => 'Паказвае папярэджаньне, калі ўдзельнік спрабуе пакінуць форму рэдагаваньня без захаваньня',
 	'editwarning-warning' => 'Усе зробленыя Вамі зьмены могуць быць страчаныя, калі Вы пакінеце гэтую старонку.
-Вы можаце адключыць гэтае папярэджаньне у сэкцыі «{{int:prefs-editing}}» Вашых установак.',
+Вы можаце адключыць гэтае папярэджаньне у сэкцыі {{int:prefs-editing}} Вашых установак.',
 	'editwarning-preference' => 'Папярэджваць мяне, калі я буду пакідаць старонку рэдагаваньня з незахаванымі зьменамі',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'editwarning' => 'সম্পাদনা সতর্কীকরণ',
 );
 
 /** Bosnian (Bosanski)
@@ -115,7 +122,8 @@ Du kannst das Anzeigen dieser Warnung im {{int:prefs-editing}}-Bereich deiner Ei
 $messages['dsb'] = array(
 	'editwarning' => 'Wobźěłowańske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazaś, gaž wužywaŕ wopytujo wobźěłowański formular bźeze składowanja spušćiś',
-	'editwarning-warning' => 'Gaž toś ten bok se spušća, mógu se změny zgubiś, kótarež sy pśewjadł.',
+	'editwarning-warning' => 'Gaž toś ten bok se spušća, mógu se změny zgubiś, kótarež sy pśewjadł.
+Móžoš toś to warnowanje we wótrězku {{int:prefs-editing}} swójich nastajenjow znjemóžniś.',
 	'editwarning-preference' => 'Warnowaś, gaž bok spušća se z njeskłaźonymi změnami',
 );
 
@@ -171,6 +179,7 @@ $messages['fi'] = array(
 	'editwarning' => 'Muokkausvaroitus',
 	'editwarning-desc' => 'Näyttää varoituksen kun käyttäjä yrittää poistua muokkaustilasta tallentamatta.',
 	'editwarning-warning' => 'Tältä sivulta poistuminen saattaa aiheuttaa kaikkien tekemiesi muutosten katoamisen.',
+	'editwarning-preference' => 'Varoita minua, kun poistun muokkaussivulta tallentamatta muutoksia',
 );
 
 /** French (Français)
@@ -182,7 +191,7 @@ $messages['fr'] = array(
 	'editwarning' => 'Avertissement de modification',
 	'editwarning-desc' => 'Afficher un avertissement lorsque l’utilisateur tente de quitter le formulaire sans enregistrer les modifications',
 	'editwarning-warning' => 'Quitter cette page vous fera perdre toutes les modifications que vous avez faites.
-Vous pouvez retirer cet avertissement dans la section « {{int:prefs-editing}} » de vos préférences.',
+Vous pouvez retirer cet avertissement dans la section {{int:prefs-editing}} de vos préférences.',
 	'editwarning-preference' => 'M’avertir quand je quitte une page de modification sans publier les changements',
 );
 
@@ -233,7 +242,8 @@ Možete onemogućiti ovo upozorenje u odjeljku {{int:prefs-editing}} Vaših post
 $messages['hsb'] = array(
 	'editwarning' => 'Wobdźěłowanske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazać, hdyž wužiwar pospytuje, wobdźěłowanski formular bjez składowanja wopušćić',
-	'editwarning-warning' => 'Hdyž so strona wopušća, móžeja so změny zhubić, kotrež sy přewjedł.',
+	'editwarning-warning' => 'Hdyž so strona wopušća, móžeja so změny zhubić, kotrež sy přewjedł.
+Móžeš tute warnowanje we wotrězku {{int:prefs-editing}} swojich nastajenjow znjemóžnić.',
 	'editwarning-preference' => 'Warnować, hdyž so wobdźěłowanska strona z njeskładowanymi změnami wopušća',
 );
 
@@ -262,7 +272,8 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'editwarning' => 'Peringatan suntingan',
 	'editwarning-desc' => 'Menampilkan sebuah peringatan jika pengguna hendak meninggalkan halaman penyuntingan tanpa menyimpan perubahan yang dilakukan',
-	'editwarning-warning' => 'Meninggalkan halaman ini dapat menyebabkan semua perubahan yang belum tersimpan hilang.',
+	'editwarning-warning' => 'Meninggalkan halaman ini dapat menyebabkan semua perubahan yang belum tersimpan hilang.
+Anda dapat mematikan peringatan ini lewat {{int:prefs-editing}} pada halaman preferensi Anda.',
 	'editwarning-preference' => 'Peringatkan saya jika saya meninggalkan halaman penyuntingan dengan perubahan yang belum tersimpan',
 );
 
@@ -368,11 +379,14 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Harald Khan
  * @author Nghtwlkr
+ * @author Simny
  */
 $messages['no'] = array(
 	'editwarning' => 'Redigeringsadvarsel',
 	'editwarning-desc' => 'Vis en advarsel når en bruker prøver å forlate et redigeringsskjema uten å lagre',
-	'editwarning-warning' => 'Ved å forlate siden vil du miste alle endringer du har utført.',
+	'editwarning-warning' => 'Ved å forlate siden vil du miste alle endringer du har utført.
+Denne advarselen kan slås av under {{int:prefs-editing}} i instillingene dine.',
+	'editwarning-preference' => 'Si ifra dersom jeg forlater en side jeg har gjort redigeringer på men ikke har lagret siden.',
 );
 
 /** Occitan (Occitan)
@@ -381,7 +395,9 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'editwarning' => 'Avertiment de modificacion',
 	'editwarning-desc' => 'Afichar un avertiment quora l’utilizaire tempta de quitar lo formulari sens enregistrar las modificacions',
-	'editwarning-warning' => "Quitar aquesta pagina vos farà pèrdre totas las modificacions qu'avètz facha.",
+	'editwarning-warning' => "Quitar aquesta pagina vos farà pèrdre totas las modificacions qu'avètz fachas.
+Podètz levar aqueste avertiment dins la seccion {{int:prefs-editing}} de vòstras preferéncias.",
+	'editwarning-preference' => 'M’avisar quand quiti una pagina de modificacion sens publicar los cambiaments',
 );
 
 /** Polish (Polski)
@@ -390,18 +406,31 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'editwarning' => 'Edycja – ostrzeżenie',
 	'editwarning-desc' => 'Wyświetla ostrzeżenie gdy użytkownik próbuje opuścić formularz edycji bez zapisania',
-	'editwarning-warning' => 'Opuszczenie tej strony może spowodować utratę wprowadzonych przez Ciebie zmian.',
+	'editwarning-warning' => 'Opuszczenie tej strony może spowodować utratę wprowadzonych przez Ciebie zmian.
+Możesz wyłączyć pojawianie się tego ostrzeżenia za pomocą ustawienia w swoich preferencjach, w zakładce {{int:prefs-editing}}.',
 	'editwarning-preference' => 'Ostrzegaj mnie, gdy opuszczam stronę edycji bez zapisania zmian',
 );
 
 /** Portuguese (Português)
+ * @author Heldergeovane
  * @author Lijealso
  * @author Waldir
  */
 $messages['pt'] = array(
-	'editwarning' => 'Avido de edição',
+	'editwarning' => 'Aviso de edição',
 	'editwarning-desc' => 'Exibir um aviso quando um utilizador tenta deixar a caixa de edição sem gravar',
 	'editwarning-warning' => 'Abandonar esta página fará com que você perca todas as alterações que fez.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'editwarning' => 'Aviso de edição',
+	'editwarning-desc' => 'Exibir um aviso quando um usuário tenta deixar a caixa de edição sem salvar',
+	'editwarning-warning' => 'Abandonar esta página pode fazer com que você perca todas as alterações que fez.
+Você pode desabilitar este aviso na seção {{int:prefs-editing}} de suas preferências.',
+	'editwarning-preference' => 'Me avisar quando eu deixar uma janela de edição sem ter salvo as alterações',
 );
 
 /** Russian (Русский)
@@ -413,7 +442,7 @@ $messages['ru'] = array(
 	'editwarning' => 'Предупреждение редактирования',
 	'editwarning-desc' => 'Выдаёт предупреждение, когда участник пытается покинуть форму редактирования без сохранения',
 	'editwarning-warning' => 'Переход на другую страницу может привести к потере сделанных вами изменений.
-Вы можете отключить это предупреждение в секции «{{int:prefs-editing}}» ваших настроек.',
+Вы можете отключить это предупреждение в разделе «{{int:prefs-editing}}» ваших настроек.',
 	'editwarning-preference' => 'Предупреждать меня, когда я покидаю страницу редактирования с несохранёнными изменениями',
 );
 

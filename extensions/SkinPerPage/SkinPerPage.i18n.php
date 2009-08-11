@@ -290,6 +290,13 @@ $messages['li'] = array(
 	'skinperpage-desc' => 'Voegt de tag <tt>&lt;skin&gt;</tt> toe veur de instelling van vormgeving op paginaniveau',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'skinperpage-desc' => 'Додава ознака <tt>&lt;skin&gt;</tt> за користење на различни маски по страница',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

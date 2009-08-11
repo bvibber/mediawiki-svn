@@ -360,6 +360,18 @@ $messages['lb'] = array(
 	'right-purgecache' => 'OBJECTCACHE Tabell eidelmaachen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'purgecache' => 'Исчисти кеш',
+	'purgecache-desc' => '[[Special:PurgeCache|Специјална страница]] која се користи за бришење на табелата OBJECTCACHE',
+	'purgecache-warning' => 'Ова ги чисти кеш табелите.',
+	'purgecache-purged' => 'Кешот е исчистен.',
+	'purgecache-button' => 'Исчисти',
+	'right-purgecache' => 'Избриши ја табелата OBJECTCACHE',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -490,13 +502,14 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Putnik
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'purgecache' => 'Очистить кэш',
+	'purgecache' => 'Очистить кеш',
 	'purgecache-desc' => '[[Special:PurgeCache|Служебная страница]] для очистки таблицы OBJECTCACHE',
-	'purgecache-warning' => 'Будет произведена очистка кэш-таблиц.',
-	'purgecache-purged' => 'Кэш был очищен.',
+	'purgecache-warning' => 'Будет произведена очистка кеш-таблиц.',
+	'purgecache-purged' => 'Кеш был очищен.',
 	'purgecache-button' => 'Очистить',
 	'right-purgecache' => 'очистка таблицы OBJECTCACHE',
 );

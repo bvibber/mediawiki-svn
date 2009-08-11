@@ -289,6 +289,13 @@ $messages['mg'] = array(
 	'didyoumean-desc' => 'Manampy rohy anaty pejy « mitovy » lohateny',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'didyoumean-desc' => 'Додава врски на страници со „слични“ наслови',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

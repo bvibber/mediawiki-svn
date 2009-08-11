@@ -587,9 +587,11 @@ Nejskerjej taki wužywaŕ njejo.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'regexblock-form-reason' => 'Λόγος:',
+	'regexblock-form-expiry' => 'Λήξη:',
 	'regexblock-view-reason' => 'Λόγος: $1',
 );
 

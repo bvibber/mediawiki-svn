@@ -401,6 +401,13 @@ $messages['ru'] = array(
 	'breadcrumbs-desc' => 'Показывает путь пользователей по вики.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'breadcrumbs-desc' => 'Кыттааччылар биики устун хамсыылларын көрдөрөр.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -102,6 +102,13 @@ $messages['bg'] = array(
 	'contrib-tracking-button' => 'Продължаване',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'contrib-tracking-error' => 'ত্রুটি',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

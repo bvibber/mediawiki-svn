@@ -173,9 +173,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'searchbox-search' => 'Αναζήτηση',
+	'searchbox-go' => 'Πήγαινε',
 	'searchbox-namespaces' => 'Περιοχές ονομάτων:',
 );
 
@@ -433,6 +435,13 @@ $messages['mk'] = array(
 	'searchbox-search' => 'Барај',
 	'searchbox-go' => 'Оди',
 	'searchbox-namespaces' => 'Именски простори:',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'searchbox-namespaces' => 'Нэрний зайнууд:',
 );
 
 /** Malay (Bahasa Melayu)

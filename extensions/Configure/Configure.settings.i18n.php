@@ -1281,8 +1281,12 @@ $messages['ar'] = array(
 	'configure-setting-wgDisableQueryPageUpdate' => 'الصفحات الخاصة المعطّلة',
 	'configure-setting-wgDisableSearchUpdate' => 'تعطيل التحديثات للبحث',
 	'configure-setting-wgDisableTextSearch' => 'تعطيل البحث بالنص الكامل',
+	'configure-setting-wgEdititis' => 'اعرض عدّاد تعديلات المستخدم في أماكن بارزة مختلفة',
+	'configure-setting-wgFixDoubleRedirects' => 'صحّح الوصلات المزدوجة بعد نقل صفحة',
 	'configure-setting-wgCookieExpiration' => 'أنقضاء سجل المتصفح',
 	'configure-setting-wgCookieSecure' => 'سجلات متصفح آمنه',
+	'configure-setting-wgDisableCookieCheck' => 'عطّل كعكات الجلسة',
+	'configure-setting-wgSessionHandler' => 'محرّك تخزين جلسة PHP',
 	'configure-setting-wgSessionName' => 'اسم القسم',
 	'configure-setting-wgUseSquid' => 'تفعيل السكويد',
 	'configure-setting-wgAPIModules' => 'امتدادات وحدة API',
@@ -1290,6 +1294,8 @@ $messages['ar'] = array(
 	'configure-setting-wgAvailableRights' => 'قائمة الحقوق المتاحة',
 	'configure-setting-wgDisableInternalSearch' => 'عطّل البحث الداخلي',
 	'configure-setting-wgExtensionFunctions' => 'وظائف الإمتداد',
+	'configure-setting-wgExtensionMessagesFiles' => 'ملفات رسائل الامتدادات',
+	'configure-setting-wgExternalStores' => 'ضبط التخزين الخارجي',
 	'configure-setting-wgHooks' => 'خطاطيف',
 	'configure-setting-wgSpecialPages' => 'الصفحات الخاصة المخصصة',
 	'configure-setting-wgSkinExtensionFunctions' => 'وظائف إمتدادات الواجهة',
@@ -1303,7 +1309,11 @@ $messages['ar'] = array(
 	'configure-setting-wgRateLimitLog' => 'سجل تقييم الحدود',
 	'configure-setting-wgRateLimits' => 'قيم الحدود',
 	'configure-setting-wgFeed' => 'مكّن التلقيم',
+	'configure-setting-wgAdvancedSearchHighlighting' => 'مكّن الإبراز في نتائج البحث',
 	'configure-setting-wgEnableMWSuggest' => 'إتاحة أقتراح البحث',
+	'configure-setting-wgGoToEdit' => 'يتجه زر اذهب مباشرة إلى شاشة التحرير إذا لم توجد الصفحة',
+	'configure-setting-wgMWSuggestTemplate' => 'قالب محرك مقترحات ميدياويكي الداخلي',
+	'configure-setting-wgOpenSearchTemplate' => 'قالب مقترحات OpenSearch',
 	'configure-setting-wgSearchForwardUrl' => 'توجيه طلبات البحث',
 	'configure-setting-wgUseTwoButtonsSearchForm' => 'سلوك نموذج البحث في الشريط الجانبي',
 	'configure-setting-wgCountCategorizedImagesAsUsed' => 'في [[Special:UnusedImages]]، اعتبر الصفحات مستخدمة إذا وُضعت في تصنيف',
@@ -1346,7 +1356,9 @@ $messages['ar'] = array(
 	'configure-setting-wgCompressRevisions' => 'أضغط الملفات القديمة لو أمكن',
 	'configure-setting-wgExternalDiffEngine' => 'محرك فرق خارجي',
 	'configure-setting-wgUseAutomaticEditSummaries' => 'استخدم ملخصات تحرير تلقائية',
+	'configure-setting-wgInterwikiCache' => 'مكّن اختزان الإنترويكي',
 	'configure-setting-wgLocalInterwiki' => 'بادئة إنترويكي محلية',
+	'configure-setting-wgEnableSorbs' => 'استخدم [http://dnsbl.sorbs.net http.dnsbl.sorbs.net] للالتماس البروكسيات المفتوحة',
 	'configure-setting-wgProxyList' => 'عنوان آي بي ممنوع',
 	'configure-setting-wgProxyWhitelist' => 'القائمة البيضاء للبروكسي',
 	'configure-setting-wgSecretKey' => 'مفتاح سري',
@@ -1356,10 +1368,12 @@ $messages['ar'] = array(
 	'configure-setting-wgDBprefix' => 'بادئة الجدول',
 	'configure-setting-wgDBTableOptions' => 'خيارات جدول MySQL',
 	'configure-setting-wgDBtransactions' => 'استخدم جداول InnoDB',
+	'configure-setting-wgDBClusterTimeout' => 'انتهاء وقت قاعدة البيانات',
 	'configure-setting-wgDBservers' => 'خوادم قاعدة البيانات',
 	'configure-setting-wgAntivirus' => 'الاسم الداخلي لماسح الفيروسات',
 	'configure-setting-wgAntivirusRequired' => 'يحتاج مسح فيروسات ناجح',
 	'configure-setting-wgAntivirusSetup' => 'ضبط ماسح الفيروسات',
+	'configure-setting-wgAllowTitlesInSVG' => 'اسمح بالعناوين في ملفات SVG',
 	'configure-setting-wgSVGConverter' => 'SVG محول',
 	'configure-setting-wgSVGConverterPath' => 'مسار مُحوّل SVG',
 	'configure-setting-wgSVGConverters' => 'SVG محولات',
@@ -1380,11 +1394,21 @@ $messages['ar'] = array(
 	'configure-setting-wgUseSiteJs' => 'استخدم صفحة جافاسكربت الموقع',
 	'configure-setting-wgUseAjax' => 'فعل أجاكس',
 	'configure-setting-wgLivePreview' => 'فعل العرض المسبق الحي',
+	'configure-setting-wgMimeInfoFile' => 'ملف معلومات نوع MIME',
+	'configure-setting-wgMimeTypeFile' => 'ملف تعريف نوع MIME',
+	'configure-setting-wgMimeTypeBlacklist' => 'لا تسمح بأنواع MIME',
+	'configure-setting-wgForeignFileRepos' => 'مستودعات الملفات الأجنبية',
 	'configure-setting-wgFetchCommonsDescriptions' => 'اجلب وصف الملفات المشتركة',
+	'configure-setting-wgRepositoryBaseUrl' => 'المسار الأساسي للمستودع المشترك',
+	'configure-setting-wgSharedThumbnailScriptPath' => 'مسار سكربت مصغرات المرفوعات المشتركة',
+	'configure-setting-wgSharedUploadDBname' => 'قاعدة بيانات المرفوعات المشتركة',
 	'configure-setting-wgUseSharedUploads' => 'استخدم المرفوعات المشتركة',
+	'configure-setting-wgAppleTouchIcon' => 'أيقونة علامة Apple Touch',
 	'configure-setting-wgArticlePath' => 'مسار المقالة',
 	'configure-setting-wgLogo' => 'مسار شعار الموقع',
 	'configure-setting-wgScript' => 'مسار index.php',
+	'configure-setting-wgScriptPath' => 'المسار الأساسي',
+	'configure-setting-wgServer' => 'مسار الخادوم الأساسي',
 	'configure-setting-wgStylePath' => 'مسار دليل الواجهات',
 	'configure-setting-wgRCLinkLimits' => 'حد التغييرات في أحدث الغييرات',
 	'configure-setting-wgRCLinkDays' => 'أيام محددة في أحدث التغييرات',
@@ -1990,6 +2014,16 @@ $messages['be-tarask'] = array(
 	'configure-setting-wgMimeInfoFile' => 'Файла інфармацыі пра MIME-тыпы',
 	'configure-setting-wgMimeTypeFile' => 'Файл вызначэньняў MIME-тыпаў',
 	'configure-setting-wgTrivialMimeDetection' => 'Выкарыстоўваць трывіяльнае дэтэктаваньне MIME-тыпу',
+	'configure-setting-wgVerifyMimeType' => 'Праверыць MIME-тып загружаемых файлаў',
+	'configure-setting-wgMimeTypeBlacklist' => 'Адключыць MIME-тыпы',
+	'configure-setting-wgCacheSharedUploads' => 'Кэшыраваць агульныя мэтазьвесткі ў memcached',
+	'configure-setting-wgForeignFileRepos' => 'Зьнешнія сховішчы файлаў',
+	'configure-setting-wgFetchCommonsDescriptions' => 'Атрымліваць апісаньні агульных файлаў',
+	'configure-setting-wgHashedSharedUploadDirectory' => 'Хэшаваць агульную дырэкторыю загрузак',
+	'configure-setting-wgRepositoryBaseUrl' => 'Базавы URL для агульнага сховішча',
+	'configure-setting-wgSharedThumbnailScriptPath' => 'Шлях да скрыпта мініятур для агульных загрузак',
+	'configure-setting-wgSharedUploadDBname' => 'База зьвестак для агульных загрузак',
+	'configure-setting-wgSharedUploadDBprefix' => 'Прэфікс базы зьвестак для агульных загрузак',
 );
 
 /** Bulgarian (Български)
@@ -6645,16 +6679,30 @@ $messages['km'] = array(
 	'configure-setting-wgLanguageCode' => 'កូដភាសាតំបន់​',
 	'configure-setting-wgTranslateNumerals' => 'ចំនួន​ពាក្យ​សរសេរ​អក្សរ​ភាសាផ្សេង',
 	'configure-setting-wgArticleRobotPolicies-key' => 'ចំណងជើង​ទំព័រ',
+	'configure-setting-wgArticleRobotPolicies-value' => 'គោលការណ៍​រូបយន្ត​',
 	'configure-setting-wgExtraLanguageNames-key' => 'កូដ​ភាសា',
 	'configure-setting-wgExtraLanguageNames-value' => 'ឈ្មោះ',
 	'configure-setting-wgMaxArticleSize' => 'ទំហំ​ទំព័រ​អតិបរមារ (គីឡូបៃ)',
 	'configure-setting-wgEnableUploads' => 'អនុញ្ញាត​ឱ្យ​ផ្ទុកឡើង',
 	'configure-setting-wgMaxUploadSize' => 'ទំហំ​អតិបរមារ​ដែល​ត្រូវ​បាន​អនុញ្ញាត​ឱ្យ​ផ្ទុកឡើង',
 	'configure-setting-wgHTTPProxy' => 'ប្រូកស៊ី HTTP ដែល​ត្រូវ​ប្រើ',
+	'configure-setting-wgLogHeaders' => 'បរិយាយ​នៃ​កំណត់ហេតុ​',
+	'configure-setting-wgLogNames' => 'ឈ្មោះកំណត់ហេតុ​',
 	'configure-setting-wgLogRestrictions-key' => 'ប្រភេទ​កំណត់ហេតុ​',
+	'configure-setting-wgLogTypes' => 'ប្រភេទ​កំណត់ហេតុ​',
 	'configure-setting-wgSpecialPageGroups' => 'ក្រុម​ទំព័រ​ពិសេសៗ',
 	'configure-setting-wgSpecialPageGroups-key' => 'ក្រុម',
+	'configure-setting-wgAutopromote-value' => 'លក្ខខណ្ឌ',
+	'configure-setting-wgSMTP' => 'ម៉ាស៊ីន​បម្រើ​ SMTP',
 	'configure-setting-wgDebugLogGroups-value' => 'ឯកសារ',
+	'configure-setting-wgValidSkinNames-key' => 'ឈ្មោះ​​ខាងក្នុង',
+	'configure-setting-wgValidSkinNames-value' => '​​ឈ្មោះអេក្រង់ (Display name)',
+	'configure-setting-wgExtraNamespaces-key' => 'លេខ​ ID នៃ​លំហឈ្មោះ',
+	'configure-setting-wgAllowRealName' => 'អនុញ្ញាត​ឲ្យ​មាន​ឈ្មោះ​ពិត​',
+	'configure-setting-wgDefaultUserOptions' => 'ចំណូលចិត្ត​អ្នក​ប្រើប្រាស់​តាម​លំនាំ​ដើម​',
+	'configure-setting-wgSecretKey' => 'កូនសោ​សម្ងាត់​',
+	'configure-setting-wgXhtmlNamespaces-key' => 'លំហឈ្មោះ',
+	'configure-setting-wgLocaltimezone' => 'ល្វែង​ម៉ោងក្នុងស្រុក​',
 );
 
 /** Korean (한국어)
@@ -7420,6 +7468,13 @@ $messages['mk'] = array(
 	'configure-setting-wgZhdaemonHost' => 'ZhDaemon хост',
 	'configure-setting-wgZhdaemonPort' => 'ZhDaemon порта',
 	'configure-setting-wgLocaltimezone' => 'Локална временска зона',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'configure-setting-wgXhtmlNamespaces-key' => 'Нэрний зай',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -9961,6 +10016,7 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  * @author Innv
  * @author Lockal
+ * @author Putnik
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -10178,7 +10234,7 @@ $messages['ru'] = array(
 	'configure-setting-wgMiserMode' => 'Отключить некоторые ресурсозатратные возможности',
 	'configure-setting-wgShowHostnames' => 'Показывать имена хостов через комментарии API и HTML',
 	'configure-setting-wgUseDumbLinkUpdate' => 'Выполнять <code>DELETE</code> / <code>INSERT</code> для обновления ссылок, вместо приращения',
-	'configure-setting-wgCacheVaryCookies' => 'Список куки (cookies), изменяющих кэш',
+	'configure-setting-wgCacheVaryCookies' => 'Список куки (cookies), изменяющих кеш',
 	'configure-setting-wgCookieDomain' => 'Точный домен для coockie входа в систему',
 	'configure-setting-wgCookieExpiration' => 'Время действия HTTP-cookie',
 	'configure-setting-wgCookieHttpOnly' => 'Установить cookie аутентификации на httpOnly',

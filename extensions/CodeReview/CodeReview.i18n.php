@@ -765,6 +765,25 @@ $4',
 	'specialpages-group-developer' => 'Инструменти за разработчици',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'code-field-author' => 'লেখক:',
+	'code-field-timestamp' => 'তারিখ',
+	'code-field-comments' => 'টীকা',
+	'code-field-select' => 'নির্বাচন',
+	'code-rev-author' => 'লেখক:',
+	'code-rev-date' => 'তারিখ:',
+	'code-rev-message' => 'মন্তব্য:',
+	'code-rev-modified-r' => 'প্রতিস্থাপিত',
+	'code-rev-comment-preview' => 'প্রাকদর্শন',
+	'code-status-new' => 'নতুন',
+	'code-status-ok' => 'ঠিক আছে',
+	'repoadmin-new-button' => 'তৈরি',
+	'repoadmin-edit-button' => 'ঠিক আছে',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -1459,6 +1478,7 @@ $messages['eo'] = array(
 	'code-authors' => 'aŭtoroj',
 	'code-status' => 'statoj',
 	'code-tags' => 'etikedoj',
+	'code-tests' => 'Testaj kazoj',
 	'code-authors-text' => 'Jen listo de dosierujaj aŭtoroj ordigitaj laŭ lastaj faritaĵoj.',
 	'code-author-haslink' => 'Ĉi tiu aŭtoro estas ligita al la vikiuzanto $1',
 	'code-author-orphan' => 'La aŭtoro ne havas ligilon kun vikia konto',
@@ -1477,6 +1497,7 @@ $messages['eo'] = array(
 	'code-field-status' => 'Statuso',
 	'code-field-timestamp' => 'Dato',
 	'code-field-comments' => 'Notoj',
+	'code-field-tests' => 'Testoj',
 	'code-field-path' => 'Vojo',
 	'code-field-text' => 'Noto',
 	'code-field-select' => 'Elekti',
@@ -1668,6 +1689,23 @@ $4',
 	'right-codereview-set-status' => 'Cambiar el estado de las revisiones',
 	'right-codereview-link-user' => 'Enlazar autores con usuarios',
 	'specialpages-group-developer' => 'Herramientas para desarrolladores',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'code-field-author' => 'Autor',
+	'code-field-status' => 'Staatus',
+	'code-field-timestamp' => 'Kuupäev',
+	'code-field-comments' => 'Märkused',
+	'code-field-tests' => 'Testid',
+	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Kuupäev:',
+	'code-rev-message' => 'Kommentaar:',
+	'code-rev-modified-a' => 'lisatud',
+	'code-rev-modified-r' => 'asendatud',
+	'code-rev-modified-d' => 'kustutatud',
 );
 
 /** Basque (Euskara)
@@ -5417,7 +5455,7 @@ $messages['ru'] = array(
 	'code-rev-comment-preview' => 'Предпросмотр',
 	'code-rev-diff' => 'Изменение',
 	'code-rev-diff-link' => 'изм.',
-	'code-rev-purge-link' => 'очистить кэш',
+	'code-rev-purge-link' => 'очистить кеш',
 	'code-status-new' => 'новое',
 	'code-status-fixme' => 'проверить',
 	'code-status-reverted' => 'откачено',

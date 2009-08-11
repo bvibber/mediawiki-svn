@@ -653,6 +653,7 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_horizontal_caption' => 'Horizonta linio',
 	'ct_upload' => 'Alŝuti $1n',
 	'ct_select' => 'Selekti $1 por alŝuti',
+	'ct_caption' => 'Aldoni tekston (nedevige):',
 	'ct_link' => 'Aldoni ligilan nomon (nedevige)',
 	'ct_submit' => 'Ek!',
 	'ct_close' => 'Fermi fenestron',
@@ -811,6 +812,7 @@ Tarkista ponnahdusikkunoiden eston asetukset.',
  * @author Grondin
  * @author PieRRoMaN
  * @author Sherbrooke
+ * @author Verdy p
  */
 $wgCustomToolbarMessages['fr'] = array(
 	'ct-desc' => 'Ajoute une barre d’outils extensible',
@@ -826,6 +828,7 @@ $wgCustomToolbarMessages['fr'] = array(
 	'ct_internal_tip_ins' => 'Insérer un lien interne',
 	'ct_internal_tip_wrap' => 'Mettre ce texte en lien interne',
 	'ct_internal_caption' => 'Lien interne',
+	'ct_external_sample' => 'http://www.example.com/',
 	'ct_external_tip_ins' => 'Insérer un lien externe',
 	'ct_external_tip_wrap' => 'Mettre ce texte en lien externe',
 	'ct_external_caption' => 'Lien externe',

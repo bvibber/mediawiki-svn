@@ -325,7 +325,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'globaluserrights' => 'Раководење со глобални кориснички права',
-	'gur-desc' => 'Лесна администрација на [[Special:GlobalUserRights|глобални кориснички права]]',
+	'gur-desc' => 'Лесно раководење со [[Special:GlobalUserRights|глобални кориснички права]]',
 	'gur-rightslog-name' => 'Дневник на глобални кориснички права',
 	'gur-rightslog-header' => 'Ова е дневник на промени на глобални кориснички права.',
 	'gur-rightslog-entry' => 'променета припадност на глобална група за $1 од $2 во $3',

@@ -193,14 +193,18 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'showprocesslist' => 'Εμφάνιση λίστας προόδου',
+	'showprocesslist-id' => 'Ταυτότητα',
 	'showprocesslist-user' => 'Χρήστης',
 	'showprocesslist-host' => 'Φιλοξενία',
 	'showprocesslist-db' => 'Βάση δεδομένων',
 	'showprocesslist-command' => 'Εντολή',
 	'showprocesslist-time' => 'Χρόνος',
+	'showprocesslist-state' => 'Κατάσταση',
 	'showprocesslist-info' => 'Πληροφορίες',
 );
 

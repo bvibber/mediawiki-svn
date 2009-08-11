@@ -377,6 +377,16 @@ $messages['lb'] = array(
 	'msfunc_div_zero' => 'Divisioun duerch null',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'msfunc_desc' => 'Збир математички и статистички функции',
+	'msfunc_nan' => 'Добиената вредност не е број',
+	'msfunc_inf' => 'Добиената вредност е бесконечност',
+	'msfunc_div_zero' => 'Делење со нула',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

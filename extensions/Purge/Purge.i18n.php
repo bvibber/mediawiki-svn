@@ -280,6 +280,14 @@ $messages['lt'] = array(
 	'purge' => 'atnaujinti',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'purge' => 'исчисти',
+	'purge-desc' => 'Додава јазиче за пречистување кеш на сите нормални страници, и ја прескокнува проверката за чистење за анонимни корисници што дозволува брзо чистење на кешот',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

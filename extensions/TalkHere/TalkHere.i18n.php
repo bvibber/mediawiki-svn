@@ -276,6 +276,16 @@ El operador de este sitio no puede tener responsabilidad por el contenido de tal
 	'talkhere-collapse' => 'ocultar editor',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'talkhere-talkpage' => 'aruteluleht',
+	'talkhere-notalk' => "''(kommentaare veel ei ole)''",
+	'talkhere-addcomment' => 'lisa kommentaar',
+	'talkhere-beforeinput' => 'Võid lisada alla kommentaari',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

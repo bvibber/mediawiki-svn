@@ -316,6 +316,16 @@ $messages['lb'] = array(
 	'templatelink_newtitle' => '$1 (ersat)',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'templatelink' => 'Врска за шаблонот',
+	'templatelink_desc' => 'Ова дополнување може да прикаже шаблон како нова страница',
+	'templatelink_empty' => 'Мора да внесете параметар.',
+	'templatelink_newtitle' => '$1 (трансклудирано)',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

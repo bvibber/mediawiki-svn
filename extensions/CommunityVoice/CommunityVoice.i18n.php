@@ -212,6 +212,15 @@ $messages['es'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Gracias por votar!',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Saatmine...',
+	'communityvoice-ratings-scale-status-error' => 'Viga saatmisel.',
+	'communityvoice-ratings-scale-status-thanks' => 'Aitäh hääletamast!',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -232,6 +241,7 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'communityvoice' => 'Yhteisön ääni',
 	'communityvoice-desc' => 'Yhteisöllisen osallistumisen välineet.',
 	'communityvoice-ratings' => 'Arvioinnit',
 	'communityvoice-ratings-scale-status-sending' => 'Lähetetään...',
@@ -387,6 +397,7 @@ $messages['km'] = array(
 	'communityvoice-desc' => 'ឧបករណ៍​ចូលរួម​សហគមន៍​',
 	'communityvoice-ratings-scale-status-sending' => 'កំពុងផ្ញើ​…',
 	'communityvoice-ratings-scale-status-error' => 'កំហុសកំឡុងពេល​ផ្ញើ​!',
+	'communityvoice-ratings-scale-status-thanks' => 'សូម​អរគុណ​ចំពោះ​ការ​បោះ​ឆ្នោត​!',
 );
 
 /** Korean (한국어)

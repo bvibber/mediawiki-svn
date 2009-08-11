@@ -561,6 +561,18 @@ $messages['mhr'] = array(
 	'randomincategory-toolbox' => 'Вучыдымо (случайный) статья',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'randomincategory' => 'Случајна страница во категорија',
+	'randomincategory-desc' => '[[Special:Randomincategory|Специјална страница]] за добивање на случајна страница во категорија',
+	'randomincategory-toolbox' => 'Случајна страница',
+	'randomincategory-nocategory' => 'Категоријата $1 не постои или е празна',
+	'randomincategory-label' => 'Категорија:',
+	'randomincategory-submit' => 'Оди',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

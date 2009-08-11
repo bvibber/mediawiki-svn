@@ -435,6 +435,13 @@ Você tentou: '''$1'''",
 	'rt-nomatches' => 'Nenhum ticket RT correspondente foi encontrado',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'rt-inactive' => 'Extensia RT nu este activă',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

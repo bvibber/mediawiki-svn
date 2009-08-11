@@ -954,6 +954,25 @@ $messages['lv'] = array(
 	'imagemap_description' => 'Par šo attēlu',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'imagemap_desc' => 'Дава картографски слики кои можат да се кликаат од клиентот користејќи ја ознаката <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image' => 'Грешка: мора да се назначи слика во првиот ред',
+	'imagemap_invalid_image' => 'Грешка: сликата е неважечка или не постои',
+	'imagemap_bad_image' => 'Грешка: сликата е на црна листа на оваа страница',
+	'imagemap_no_link' => 'Грешка: не беше пронајдена важечка врска на крајот на редот $1',
+	'imagemap_invalid_title' => 'Грешка: погрешен наслов во врската на ред $1',
+	'imagemap_missing_coord' => 'Грешка: нема доволно координати за обликот на ред $1',
+	'imagemap_unrecognised_shape' => 'Грешка: непризнат ред $1, секој ред мора да почне со едно од: default, rect, circle или poly',
+	'imagemap_no_areas' => 'Грешка: мора да се зададе напатствие за барем едно подрачје',
+	'imagemap_invalid_coord' => 'Грешка: погрешни координати на ред $1, мора да биде со бројки',
+	'imagemap_invalid_desc' => 'Грешка: неважечко напатствие за опис, мора да биде едно од: <tt>$1</tt>',
+	'imagemap_description' => 'За оваа слика',
+	'imagemap_poly_odd' => 'Грешка: пронајдено е poly со непарен број на координати на ред $1',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

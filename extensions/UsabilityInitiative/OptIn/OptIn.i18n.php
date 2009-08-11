@@ -141,6 +141,26 @@ $messages['qqq'] = array(
 	'optin-improvements' => 'A few paragraphs of wikitext describing the improvements made in Beta. The referenced images have been uploaded to Commons',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'optin-title-optedout' => 'Probeer Beta',
+	'optin-title-optedin' => 'Verlaat Beta',
+	'optin-title-justoptedout' => 'Baie dankie dat u Beta uitprobeer het',
+	'optin-title-feedback' => 'Beta terugvoer',
+	'optin-needlogin' => 'U moet [$1 aanteken] voordat u Beta kan gebruik.',
+	'optin-success-feedback' => 'Baie dankie vir u terugvoer!',
+	'optin-accept-short' => 'Inskakeling',
+	'optin-deny-short' => 'Nee dankie',
+	'optin-deny-long' => 'Terug na die vorige bladsy',
+	'optin-submit-out' => 'Verlaat Beta',
+	'optin-submit-feedback' => 'Gee terugvoer',
+	'optin-try' => 'Probeer Beta',
+	'optin-leave' => 'Verlaat Beta',
+	'optin-feedback' => 'Beta terugvoer',
+);
+
 /** Arabic (العربية)
  * @author ;Hiba;1
  * @author OsamaK
@@ -348,6 +368,37 @@ $messages['be-tarask'] = array(
 Каб даведацца болей пра праект, ці ці прыняць у ім удзел, калі ласка наведайце [http://usability.wikimedia.org Вікі-сайт ініцыятывы Usability].  Там Вы знойдзіце інфармацыю пра нашыя гранты, дасьледаваньні, дызайн + распрацоўкі і рэлізы.  Каб задаць пытаньні ці заставіць водгук, калі ласка, карыстайцеся нашай [http://usability.wikimedia.org/wiki/Talk:Prototype старонкай абмеркаваньня прататыпу].  Для рашэньня неадкладных пытаньняў, калі ласка, карыстайцеся адпаведныя старонкі абмеркаваньня.  Калі Вы знайшлі памылку, калі ласка, застаўце свой камэнтар на [http://usability.wikimedia.org/wiki/Talk:Releases/Acai старонцы абмеркаваньня Acai] ці праз выкарыстаньне [https://bugzilla.wikimedia.org Bugzilla].
 
 Дзякуй, мы чакаем Вашых водгукаў!',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'optin-title-optedout' => 'বেটা চেষ্টা করুন',
+	'optin-title-optedin' => 'বেটা ছেড়ে যান',
+	'optin-title-justoptedin' => 'বেটায় স্বাগতম',
+	'optin-title-justoptedout' => 'বেটা চেষ্টা করার জন্য আপনাকে ধন্যবাদ',
+	'optin-title-feedback' => 'বেটা ফিডব্যাক',
+	'optin-needlogin' => 'বেটা চেষ্টা করার জন্য আপনাকে [$1 লগইন] করতে হবে।',
+	'optin-success-feedback' => 'আপনার ফিডব্যাকের জন্য ধন্যবাদ!',
+	'optin-accept-short' => 'চলুন শুরু করি!',
+	'optin-accept-long' => 'বেটা চেষ্টা করুন',
+	'optin-accept-long-anon' => 'লগইন করুন এবং বেটা চেষ্টা করুন',
+	'optin-deny-short' => 'না ধন্যবাদ',
+	'optin-deny-long' => 'পূর্বের পাতায় ফিরে যাও',
+	'optin-submit-out' => 'বেটা ছেড়ে যাও',
+	'optin-submit-feedback' => 'ফিডব্যাক দিন',
+	'optin-try' => 'বেটা চেষ্টা করুন',
+	'optin-leave' => 'বেটা ছেড়ে যাও',
+	'optin-feedback' => 'বেটা ফিডব্যাক',
+	'optin-survey-yes' => 'হ্যা',
+	'optin-survey-no' => 'না',
+	'optin-survey-answer-whyoptout-other' => 'অন্য কারণ:',
+	'optin-survey-question-browser' => 'আপনি কোন ব্রাউজার ব্যবহার করেন?',
+	'optin-survey-answer-browser-other' => 'অন্য ব্রাউজার:',
+	'optin-survey-answer-os-other' => 'অন্য অপারেটিং সিস্টেম:',
+	'optin-survey-question-res' => 'আপনার পর্দার রেজ্যুলেশন কত?',
+	'optin-survey-answer-changes-other' => 'অন্য:',
 );
 
 /** Bosnian (Bosanski)
@@ -689,7 +740,7 @@ Der Hilfeabschnitt erlaubt den schnellen Zugriff auf häufig verwendete Wikisynt
 <div style="clear:both;"></div>
 
 == Wie kann ich mich daran beteiligen? ==
-Um mehr über das Projekt zu erfahren oder selbst daran teilzunehmen, finden sich im [http://usability.wikimedia.org Wiki der Benutzerfreundlichkeitsinitiative] weitere Informationen, zum Beispiel über unsere Spende, Forschung, Design und Entwicklung sowie über neue Versionen. Für Fragen oder allgemeine Rückmeldungen steht die [http://usability.wikimedia.org/wiki/Talk:Prototype Diskussionsseite des Prototyps] zur Verfügung. Für spezielle Themen eignen sich die entsprechenden dazugehörigen Diskussionsseiten. Solltest du Fehler („Bugs“) entdecken, hinterlasse bitte unter http://usability.wikimedia.org/wiki/Talk:Releases/Acai einen entsprechenden Hinweis oder melde die Fehler über [https://bugzilla.wikimedia.org Bugzilla].
+Wenn du mehr über das Projekt erfahren willst oder dich selbst daran beteiligen möchtest, kannst du hierzu im [http://usability.wikimedia.org Wiki der Benutzerfreundlichkeitsinitiative] weitere Informationen erhalten, unter anderem über unsere Spende, Forschung, Design und Entwicklung sowie über neue Versionen. Für Fragen oder allgemeine Rückmeldungen steht die [http://usability.wikimedia.org/wiki/Talk:Prototype Diskussionsseite des Prototyps] zur Verfügung. Für spezielle Themen eignen sich die entsprechenden dazugehörigen Diskussionsseiten. Solltest du Fehler („Bugs“) entdecken, hinterlasse bitte unter http://usability.wikimedia.org/wiki/Talk:Releases/Acai einen entsprechenden Hinweis oder melde die Fehler über [https://bugzilla.wikimedia.org Bugzilla].
 
 Vielen Dank, wir freuen uns auf dein Feedback!',
 );
@@ -704,10 +755,13 @@ $messages['dsb'] = array(
 	'optin-title-optedin' => 'Betu spušćiś',
 	'optin-title-justoptedin' => 'Witaj do Bety',
 	'optin-title-justoptedout' => 'Źěkujomy se, až sy wopytał Betu',
+	'optin-title-feedback' => 'Powěsći wó Beśe',
 	'optin-needlogin' => 'Musyš se [$1 pśizjawiś], aby Betu wopytał.',
 	'optin-intro' => 'Iniciatiwa wužywajobnosći Wikipedije jo južo žurnje źěłała, aby pólěpšyła wužywajobnosć Wikipedije. By ty rady Betu wopytaś?',
+	'optin-feedback-back' => 'Jolic njocoš formular wupołniś, móžoš se k $1 wrośiś.',
 	'optin-success-in' => 'Wopytujoš něnto Betu.
 Móžoš kuždy cas pśez kliknjenje na wótkaz "{{int:optin-leave}}" górjejce na wobrazowce wótwóliś.',
+	'optin-leave-cancel' => 'Jolic coš Betu dalej wužywaś, móžoš se k $1 wrośiś.',
 	'optin-success-out' => 'Sy wuspěšnje Betu spušćił.
 Móžoš ju hyšći raz kuždy cas pśez kliknjenje na wótkaz "{{int:optin-try}}" górjejce napšawo na wobrazowce wopytaś.',
 	'optin-success-feedback' => 'Žěkujomy se za twójo wótegrono!',
@@ -715,23 +769,39 @@ Móžoš ju hyšći raz kuždy cas pśez kliknjenje na wótkaz "{{int:optin-try}
 	'optin-accept-long' => 'Betu wopytaś',
 	'optin-accept-long-anon' => 'Pśizjawiś se a Betu wopytaś',
 	'optin-deny-short' => 'Ně, źěkujomy se',
+	'optin-deny-long' => 'Slědk k slědnemu bokoju',
 	'optin-submit-out' => 'Betu spušćiś',
+	'optin-submit-feedback' => 'Powěsć daś',
 	'optin-try' => 'Betu wopytaś',
 	'optin-leave' => 'Betu spušćiś',
+	'optin-feedback' => 'Powěsći wó Beśe',
 	'optin-survey-yes' => 'Jo',
 	'optin-survey-no' => 'Ně',
 	'optin-survey-intro' => 'Źěkujomy se za wopytanje Bety.
 My by rady wěźeli, co mysliš wó našem nowem wužywarskem pówjerchu, togodla my by se wjaselili, jolic ty by wupołnił opcionalny napšašnik dołojce, nježli až kliknjoš na "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'Co se śi na Beśe spódoba? Co se śi na Beśe njespódoba?',
 	'optin-survey-question-whyoptout' => 'Cogodla spušćaś Betu? (Pšosym wubjeŕ wšykne, kótarež pśitrjefje.)',
 	'optin-survey-answer-whyoptout-hard' => 'Wužywanje jo było pśekomplicěrowane.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Njejo pórědnje funkcioněrowało.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Nowe rejtarki a layout se mi njespódobaju.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nowa rědowa kšoma se mi njespódoba.',
 	'optin-survey-answer-whyoptout-other' => 'Druga pśicyna:',
+	'optin-survey-question-techfail' => 'Sy na techniske zmólki starcył, gaž sy Betu wužył?',
+	'optin-survey-question-techfail-ifyes' => 'Jolic jo, pšosym wuźěłaj abo wujasni:',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Jolic jo, co se śi na tom spódoba? Co se śi na tom njespódoba?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Jolic ně, cogodla nic? Buźoš to w pśichoźe cyniś? Pšosym rozjasni.',
+	'optin-survey-question-different' => 'Co by my mógli hyšći hynac cyniś, aby ty dalej wužywaš Betu?',
 	'optin-survey-question-feedback' => 'Pšosym daj nam swóje měnjenja k wěsći:',
 	'optin-survey-question-browser' => 'Kótary wobglědowak wužywaš?',
 	'optin-survey-answer-browser-other' => 'Drugi wobglědowak:',
 	'optin-survey-question-os' => 'Kótary źěłowy system wužywaš?',
 	'optin-survey-answer-os-other' => 'Drugi źěłowy system:',
 	'optin-survey-question-res' => 'Kótare jo rozeznaśe twójeje wobrazowki?',
+	'optin-survey-answer-changes-edittools' => 'Wobźěłowańske rědy rozšyriś a pólěpšyś.',
+	'optin-survey-answer-changes-upload' => 'Wopśimjeśe a nagraśa medijow pólěpšyś.',
+	'optin-survey-answer-changes-lookfeel' => 'Wenkowny naglěd sedła aktualizěrowaś',
+	'optin-survey-answer-changes-predictability' => 'Pśedpowědajobnosć wugbaśa pólěpšyś.',
+	'optin-survey-answer-changes-custom' => 'Wětše wužywarske pśiměrjenja dowóliś',
 	'optin-survey-answer-changes-other' => 'Druge:',
 	'optin-improvements' => '== Co jo se pólěpšyło? ==
 [[File:UsabilityNavigation.png|left|link=]]
@@ -967,22 +1037,39 @@ La sección de ayuda provee acceso rápido a una referencia para usos comunes de
  * @author Pikne
  */
 $messages['et'] = array(
+	'optin' => 'Kasutushõlpsuse algatuses kaasategemine',
 	'optin-desc' => 'Võimaldab proovida beetat, viimaseid kasutushõlpsuse täiustusi.',
 	'optin-title-optedout' => 'Proovi beetat',
-	'optin-title-optedin' => 'Lahku Beta-versioonist',
-	'optin-title-justoptedin' => 'Tere tulemast Beta-versiooni',
-	'optin-title-justoptedout' => 'Täname, et proovisid Beta-versiooni',
+	'optin-title-optedin' => 'Lahku beetaversioonist',
+	'optin-title-justoptedin' => 'Tere tulemast beetasse',
+	'optin-title-justoptedout' => 'Täname, et proovisid beetaversiooni',
 	'optin-title-feedback' => 'Anna tagasisidet',
+	'optin-intro' => 'Vikipeedia kasutushõlpsuse algatus on Vikipeedia paremini kasutatavaks muutmise nimel palju tööd teinud. Kas soovid beetat proovida?',
 	'optin-success-feedback' => 'Aitäh tagasiside eest!',
-	'optin-accept-short' => 'Tehkem seda!',
+	'optin-accept-short' => 'Tehkem proovi!',
 	'optin-accept-long' => 'Proovi Beta-versiooni',
-	'optin-accept-long-anon' => 'Logi sisse ja proovi Beta-versiooni',
+	'optin-accept-long-anon' => 'Logi sisse ja proovi beetat',
 	'optin-deny-short' => 'Ei, tänan',
 	'optin-deny-long' => 'Naase eelmisele lehele',
 	'optin-submit-out' => 'Lahku Beta-versioonist',
 	'optin-submit-feedback' => 'Anna tagasisidet',
 	'optin-try' => 'Proovi beetat',
-	'optin-leave' => 'Lahku Beta-versioonist',
+	'optin-leave' => 'Lahku beetast',
+	'optin-feedback' => 'Beeta tagasiside',
+	'optin-survey-yes' => 'Jah',
+	'optin-survey-no' => 'Ei',
+	'optin-survey-answer-whyoptout-hard' => 'See oli kasutamiseks liialt keeruline.',
+	'optin-survey-answer-whyoptout-didntwork' => 'See ei toiminud korralikult.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Mulle ei meeldinud selle välimus.',
+	'optin-survey-answer-whyoptout-other' => 'Muu põhjus:',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Kui jah, siis mis sulle selle juures meeldis? Mis ei meeldinud?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Kui ei, siis miks? Kas edaspidi on plaanis? Palun selgita.',
+	'optin-survey-question-browser' => 'Millist internetilehitsejat kasutad?',
+	'optin-survey-answer-browser-other' => 'Muu internetilehitseja:',
+	'optin-survey-question-os' => 'Millist operatsioonisüsteemi sa kasutad?',
+	'optin-survey-answer-os-other' => 'Muu operatsioonisüsteem:',
+	'optin-survey-question-res' => 'Milline on su ekraani resolutsioon?',
+	'optin-survey-question-changes' => 'Milliseid muudatusi soovid näha Beta-versioonis tulevikus (vali kõik sobivad)?',
 );
 
 /** Basque (Euskara)
@@ -1472,14 +1559,14 @@ $messages['hr'] = array(
 	'optin-title-feedback' => 'Beta komentari',
 	'optin-needlogin' => 'Morate se [$1 prijaviti] kako biste isprobali Beta.',
 	'optin-intro' => 'Inicijativa za uporabljivost Wikipedije puno je radila na poboljšanju uporabljivosti Wikipedije. Želite li isprobati našu Beta?',
-	'optin-feedback-intro' => 'Hvala što ste isprobali Beta. Željeli bistmo znati što mislite o našem novom sučelju, stoga bismo cijenili ukoliko biste ispunili našu neobvezatnu anketu koja se nalazi u nastavku.',
+	'optin-feedback-intro' => 'Hvala što ste isprobali Beta. Željeli bismo znati što mislite o našem novom sučelju, stoga bismo cijenili ukoliko biste ispunili našu neobvezatnu anketu koja se nalazi u nastavku.',
 	'optin-feedback-back' => 'Ukoliko ne želite ispuniti anketu, možete se vratiti na $1.',
 	'optin-success-in' => 'Sada isprobavate Beta. U bilo kojem trenutku možete se odlučiti vratiti nazad klikom na poveznicu "{{int:optin-leave}}" koja se nalazi na vrhu zaslona.',
 	'optin-leave-cancel' => 'Ako želite nastaviti koristiti Beta, možete se vratiti na $1.',
 	'optin-success-out' => 'Uspješno ste izašli iz Beta. 
 Možete je u svakom trenutku ponovno isprobati klikom na poveznicu "{{int:optin-try}} u gornjem desnom dijelu zaslona.',
 	'optin-success-feedback' => 'Hvala Vam na Vašem komentaru!',
-	'optin-accept-short' => 'Idemo probati!',
+	'optin-accept-short' => 'Idemo isprobati!',
 	'optin-accept-long' => 'Isprobajte Beta',
 	'optin-accept-long-anon' => 'Prijavite se i isprobajte Beta',
 	'optin-deny-short' => 'Ne hvala',
@@ -1507,7 +1594,7 @@ Možete je u svakom trenutku ponovno isprobati klikom na poveznicu "{{int:optin-
 	'optin-survey-question-techfail-ifyes' => 'Ako da, molimo objasnite ili pojasnite:',
 	'optin-survey-question-usedtoolbar' => 'Jeste li koristiti novu proširivu alatnu traku za uređivanje stranice?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Ako da, što Vam se svidjelo? Što Vam se nije svidjelo?',
-	'optin-survey-question-usedtoolbar-ifno' => 'Ako ne, zašto ne? Hoćete li u budućnosti? Molim objasnite.',
+	'optin-survey-question-usedtoolbar-ifno' => 'Ako ne, zašto ne? Hoćete li u budućnosti? Molimo objasnite.',
 	'optin-survey-question-different' => 'Što možemo učiniti drugačije da nastavite rabiti Beta?',
 	'optin-survey-question-feedback' => 'Molimo Vas da nas izvjestite o bilo kojim drugim komentarima, mišljenjima i gledištima - sve povratne informacije su korisne!:',
 	'optin-survey-question-browser' => 'Koji preglednik rabite?',
@@ -2473,6 +2560,19 @@ Mes norėtume sužinoti, ką manote apie mūsų naująją vartotojo sąsają, to
 	'optin-survey-question-res' => 'Kokia Jūsų ekrano rezoliucija?',
 );
 
+/** Latvian (Latviešu)
+ * @author Marozols
+ */
+$messages['lv'] = array(
+	'optin-title-optedout' => 'Izmēģināt Beta',
+	'optin-title-optedin' => 'Pamest Beta',
+	'optin-title-feedback' => 'Atsauksmes par Beta',
+	'optin-accept-long' => 'Izmēģināt Beta',
+	'optin-try' => 'Izmēģināt Beta',
+	'optin-leave' => 'Pamest Beta',
+	'optin-feedback' => 'Atsauksmes par Beta',
+);
+
 /** Malayalam (മലയാളം)
  * @author Junaidpv
  * @author Sadik Khalid
@@ -2569,6 +2669,8 @@ Nixtiequ nkunu nafu x'taħseb fuq din l-interfaċċa l-ġdida, fejn napprezzaw j
 	'optin-survey-question-techfail-ifyes' => 'Jekk iva, jekk jogħġbok elabora jew spjega:',
 	'optin-survey-question-usedtoolbar' => 'Għamilt użu mill-kaxxa l-ġdida tal-għodda espansiva biex timmodifika paġna?',
 	'optin-survey-question-usedtoolbar-ifyes' => "Jekk iva, x'għoġbok minnha? X'ma għoġbokx minnha?",
+	'optin-survey-question-usedtoolbar-ifno' => "Jekk le, għala el? Tista' tużaha fil-futur? Jekk jogħġbok spjega.",
+	'optin-survey-question-different' => "Xi stajna għamilna differenti biex kieku bqajt tuża' l-Beta?",
 	'optin-survey-question-feedback' => "Ħallina nkunu nafu fuq kwalunkwe kumment jew ħsibijiet oħra li għadek għalina - kull tip ta' rispons huwa bżonnjuż!:",
 	'optin-survey-question-browser' => "Xi browżer tuża'?",
 	'optin-survey-answer-browser-other' => 'Browżer ieħor:',
@@ -2796,6 +2898,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Laaknor
  * @author Nghtwlkr
+ * @author Simny
  */
 $messages['no'] = array(
 	'optin' => 'Deltakelse i brukervennlighetsprosjektet',
@@ -2845,12 +2948,14 @@ Vi vil gjerne vite hva du tenker om vårt nye grensesnitt, så vi vil sette pris
 	'optin-survey-question-techfail-ifyes' => 'Hvis ja, forklar:',
 	'optin-survey-question-usedtoolbar' => 'Har du brukt den nye utvidbare menyen for å redigere en side?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Hvis ja, hva likte du med den? Hva likte du ikke om den?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Hvis nei, hvorfor ikke? Vil du gjøre det i fremtiden? Vær så snill og forklar.',
 	'optin-survey-question-feedback' => 'Vennligst gi oss dine tilbakemeldinger:',
 	'optin-survey-question-browser' => 'Hvilken nettleser bruker du?',
 	'optin-survey-answer-browser-other' => 'Annen nettleser:',
 	'optin-survey-question-os' => 'Hvilket operativsystem bruker du?',
 	'optin-survey-answer-os-other' => 'Annet operativsystem:',
 	'optin-survey-question-res' => 'Hva er skjermoppløsningen din?',
+	'optin-survey-answer-changes-other' => 'Andre ting:',
 );
 
 /** Occitan (Occitan)
@@ -3205,6 +3310,39 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-question-techfail' => 'Você sofreu alguma falha técnica ao usar o Beta?',
 	'optin-survey-question-techfail-ifyes' => 'Se sim, por favor descreva ou explique:',
 	'optin-survey-question-usedtoolbar' => 'Você usou a nova barra de ferramentas expansível para editar uma página?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Se sim, de que você gostou nela? De que você não gostou nela?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Se não, porque não? Irá no futuro? Por favor, explique.',
+	'optin-survey-question-different' => 'O que poderíamos ter feito de forma diferente para que você continuasse a usar o Beta?',
+	'optin-survey-question-feedback' => 'Por favor, indique-nos quaisquer outros comentários, críticas ou sugestões que você tenha para nós - todas as opiniões são úteis!:',
+	'optin-survey-question-browser' => 'Que navegador você usa?',
+	'optin-survey-answer-browser-other' => 'Outro navegador:',
+	'optin-survey-question-os' => 'Que sistema operacional você usa?',
+	'optin-survey-answer-os-other' => 'Outro sistema operacional:',
+	'optin-survey-question-res' => 'Qual é a resolução do seu monitor?',
+	'optin-survey-question-changes' => 'Que mudanças você gostaria de ver futuramente no Beta? (por favor selecione todas as opções pertinentes)',
+	'optin-survey-answer-changes-nav' => 'Tornar a navegação geral do site mais fácil de usar.',
+	'optin-survey-answer-changes-edittools' => 'Criar mais e melhores ferramentas de edição.',
+	'optin-survey-answer-changes-upload' => 'Melhorar o carregamento de conteúdo e multimédia.',
+	'optin-survey-answer-changes-richtext' => 'Desenvolver ferramentas de edição semelhantes a editores avançados de texto.',
+	'optin-survey-answer-changes-lookfeel' => 'Renovar o aspecto geral do site.',
+	'optin-survey-answer-changes-predictability' => 'Melhorar a previsibilidade dos resultados.',
+	'optin-survey-answer-changes-custom' => 'Permitir uma maior personalização para o usuário.',
+	'optin-survey-answer-changes-other' => 'Outros:',
+	'optin-improvements' => '== O que foi melhorado? ==
+[[File:UsabilityNavigation.png|left|link=]]
+;Navegação melhorada
+O novo sistema de navegação torna mais fácil ver onde você está e o que você está fazendo, bem como onde pode ir e como chegar lá. Com a caixa de pesquisa localizada no canto superior direito, a funcionalidade de pesquisa é mais fácil de encontrar e mais rápida de usar.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;Melhoramentos na barra de ferramentas de edição
+Ícones novos e melhorados tornam mais claro que ação que cada ferramenta realiza. Seções ampliáveis reduzem o empilhamento de botões, mantendo as ferramentas menos utilizadas a apenas um clique de distância.
+A seção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
+<div style="clear:both;"></div>
+== Como se envolver ==
+Para aprender mais sobre o projeto ou se envolver, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá você encontrará informação sobre nossa doação, pesquisa, concepção e desenvolvimento, e lançamentos. Para perguntar ou deixar comentários em geral, por favor use nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão do prototipo]. Para tratar de assuntos particulares, por favor use as páginas de discussão associadas. Se você encontrar problemas, por favor deixe seus comentários na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão do Acai] ou use o [https://bugzilla.wikimedia.org Bugzilla].
+
+Obrigado e nós estamos ansiosos para saber o que você tem a dizer!',
 );
 
 /** Quechua (Runa Simi)
@@ -3749,6 +3887,20 @@ $messages['te'] = array(
 	'optin-survey-answer-changes-richtext' => 'రిచ్ టెక్స్ట్ ఎడిటర్ లాంటి ఎడిటింగ్ ఉపకరణాలను రూపొందించండి.',
 	'optin-survey-answer-changes-lookfeel' => 'సైటు యొక్క లుక్ అండ్ ఫీల్ ను మార్చండి.',
 	'optin-survey-answer-changes-other' => 'ఇతర:',
+	'optin-improvements' => '==ఏమి మెరుగైంది?==
+[[File:UsabilityNavigation.png|left|link=]]
+;మెరుగైన నావిగేషన్
+సరికొత్త నావిగేషన్ వ్యవస్థలో మీరు ఏమి చూస్తున్నారు? ఎక్కడ ఉన్నారు? ఎక్కడికి వెళ్ళవచ్చు? ఎలా వెళ్ళవచ్చు మొదలైనవన్నీ సులభంగా తెలుసుకోవచ్చు. ఇప్పుడు వెతుకు పెట్టె పైన ఉండటం వల్ల సులభంగానూ, వేగంగానూ వెతకవచ్చు.
+<div style="clear:both;"></div>
+[[File:UsabilityToolbar.png|left|link=]]
+;ఎడిట్ టూల్‌బార్ నవీకరణలు
+సరికొత్త ఐకాన్లు ఏ టూల్ ఏ పని చేస్తుందో స్పష్టంగా తెలియబరుస్తాయి. ఎక్కువగా అవసరమయ్యే లింకులను మాత్రమే బాగా అందుబాటులో ఉంచి మిగతా లింకులను విస్తరించగలిగే మెనూలో పెట్టడం ద్వారా టూల్‌బార్ సరళంగా కనిపిస్తుంది.
+సహాయ విభాగం వికీ మార్కప్ గురించి తక్షణ సమాచారాన్ని అందజేస్తుంది.
+<div style="clear:both;"></div>
+==ఎలా పాల్గొనాలి==
+ఈ ప్రాజెక్టు గురించి మరింత సమాచారం తెలుసుకొనేందుకు, లేదా పాల్గొనేందుకు, [http://usability.wikimedia.org వాడుక సౌలభ్యం వికీ] ని సందర్శించండి. అక్కడ మా గ్ర్రాంటులు, పరిశోధన, రూపకల్పన, అభివృద్ధి, విడుదలలు మొదలైన ఎన్నో విషయాల గురించి తెలుసుకోవచ్చు. ప్రశ్నలడటానికైనా, లేదా అభిప్రాయాలు తెలియజేయాలన్నా [http://usability.wikimedia.org/wiki/Talk:Prototype మా ప్రోటోటైప్ చర్చాపేజీ]ని వాడండి. మీకు తప్పులు కనిపిస్తే, [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai విడుదలపై చర్చా పేజీ] లేదా [https://bugzilla.wikimedia.org బగ్‌జిల్లా] లో తెలియజేయండి.
+
+ధన్యవాదాలు మీ అమూల్యమైన సలహాల కోసం ఎదురు చూస్తుంటాము.',
 );
 
 /** Turkish (Türkçe)

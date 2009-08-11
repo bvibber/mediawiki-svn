@@ -170,6 +170,13 @@ $messages['li'] = array(
 	'redirect-desc' => 'Einvawdige instelling ven redireks bie [[MdiaWiki:Redirect-addnewaccount|gebroeker aanmake]] en [[MediaWiki:Redirect-userlogoutcomplete|aafmelje]]',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'redirect-desc' => 'Овозможува лесна конфигурација на пренасочувањата при [[MediaWiki:Redirect-addnewaccount|создавањето на сметки]] и [[MediaWiki:Redirect-userlogoutcomplete|одјавување]]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

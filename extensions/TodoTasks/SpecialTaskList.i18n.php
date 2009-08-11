@@ -1032,10 +1032,13 @@ O seu sistema de notificação amigável de %s',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'tasklist' => 'Listă de sarcini',
+	'tasklistbyproject' => 'Lista de sarcini după proiect',
 	'tasklistunknownproject' => 'Proiect necunoscut',
 	'tasklistunspecuser' => 'Utilizator nespecificat',
 	'tasklistincorrectuser' => 'Nume de utilizator incorect',
 	'tasklistemail' => 'Dragă %s',
+	'tasklistmytasks' => 'Sarcinile mele',
 );
 
 /** Tarandíne (Tarandíne)

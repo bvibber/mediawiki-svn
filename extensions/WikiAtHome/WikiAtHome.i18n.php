@@ -75,6 +75,7 @@ $messages['ar'] = array(
 	'wah-short-general' => 'ملف وسائط $1، $2',
 	'wah-long-general' => '(ملف وسائط طوله $2، $3)',
 	'wah-long-error' => '(لم يتمكن ffmpeg من قراءة هذا الملف: $1)',
+	'wah-transcode-working' => 'تتم الآن معالجة الفيديو، من فضلك حاول لاحقًا مرة أخرى',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -354,6 +355,9 @@ $messages['km'] = array(
 	'wah-short-audio' => '$1 ឯកសារ​សំលេង​, $2',
 	'wah-short-video' => '$1 ឯកសារ​វីដេអូ​, $2',
 	'wah-short-general' => '$1 ឯកសារ​មេឌា​, $2',
+	'wah-long-audio' => '($1 ឯកសារសំឡេង, រយៈពេល$2, $3)',
+	'wah-long-video' => '($1 ឯកសារវីដេអូ, រយៈពេល $2, $4×$5 pixels, $3)',
+	'wah-long-general' => '(ឯកសារមេឌា, រយៈពេល$2, $3)',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -388,6 +392,7 @@ $messages['lb'] = array(
 	'wah-short-general' => '$1 Medie-Fichier, $2',
 	'wah-long-audio' => '($1 Tounfichier, Längt $2, $3)',
 	'wah-long-video' => '($1 Video-Fichier, Längt $2, $4x$5 Pixel, $3)',
+	'wah-long-multiplexed' => '(Multiplex-Audio-/Video-Fichier, $1, Längt: $2, $4×$5 Pixel, $3 am Ganzen)',
 	'wah-long-general' => '(Mediefichier, Längt $2, $3)',
 	'wah-long-error' => '(ffmpeg konnt de Fichier $1 net liesen)',
 	'wah-transcode-working' => 'Dëse Video gëtt elo ëmgewandelt, versicht et spéider w.e.g. nach eng kéier',
@@ -443,9 +448,12 @@ $messages['oc'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
+	'wah-desc' => 'Permite a distribuição de tarefas de transcodificação para clientes utilizando firefogg',
+	'wah-user-desc' => 'Wiki@Home permite que membros da comunidade doem ciclos de cpu ociosos para ajudar em operações com uso intensivo de recursos.',
 	'wah-short-audio' => 'Arquivo de áudio $1, $2',
 	'wah-short-video' => 'Arquivo de vídeo $1, $2',
 	'wah-short-general' => 'Arquivo multimídia $1, $2',
@@ -455,6 +463,9 @@ $messages['pt-br'] = array(
 	'wah-long-general' => '(Arquivo multimídia, $2 de duração, $3)',
 	'wah-long-error' => '(ffmpeg não pode ler este arquivo: $1)',
 	'wah-transcode-working' => 'Este vídeo está sendo processado, por favor tente novamente mais tarde',
+	'wah-transcode-helpout' => 'Este clipe está $1 porcento completo.
+Você pode ajudar a transcodificar este vídeo visitando [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Falha na transcodificação do arquivo',
 	'wah-javascript-off' => 'Você precisa ter habilitado JavaScript para participar de Wiki@Home',
 	'wah-loading' => 'carregando interface Wiki@Home <blink>...</blink>',
 );

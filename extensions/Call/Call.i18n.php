@@ -315,7 +315,7 @@ $messages['fr'] = array(
 	'call' => 'Appel',
 	'call-desc' => 'Crée un lien hypertexte permettant d’afficher l’expansion d’un modèle (ou d’une page wiki normale) tout en lui passant des paramètres.
 Ce lien peut être utilisé en ligne de commande depuis un navigateur ou dans un texte wiki.',
-	'call-text' => "L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière comme argument.<br /><br />
+	'call-text' => 'L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière comme argument.<br /><br />
 
 Exemple 1 : &nbsp; <tt>[[{{#special:call}}/Mon modèle,param1=valeur1]]</tt><br />
 Exemple 2 : &nbsp; <tt>[[{{#special:call}}/Discussion:Ma discussion,param1=valeur1]]</tt><br />
@@ -326,8 +326,8 @@ L’extension <i>Appel</i> appellera la page indiquée tout en lui passant les p
 Vous verrez les informations de cette page, son titre, mais son « type » sera celui d’une page spéciale qui ne pourra pas être éditée.<br />Les informations que vous verrez varieront en fonction des paramètres que vous avez passés.
 
 Cette <i>extension</i> est très pratique pour créer des applications interactives avec MediaWiki.<br />
-À titre d’exemple, voyez <a href='http://semeb.com/dpldemo/Template:Catlist'>l’interface DPL</a>...<br />
-En cas de problèmes, vous pouvez essayer <b>{{#special:call}}/DebuG</b>",
+À titre d’exemple, voyez [http://semeb.com/dpldemo/Template:Catlist l’interface DPL]...<br />
+En cas de problèmes, vous pouvez essayer <b>{{#special:call}}/DebuG</b>',
 	'call-save' => "Le résultat de cet appel pourrait être publié dans une page appelée ''$1''.",
 	'call-save-success' => 'Le texte suivant a été publié vers la page <big>[[$1]]</big>.',
 	'call-save-failed' => 'Le texte suivant n’a pu être publié vers la page <big>[[$1]]</big> car cette page existe déjà.',
@@ -874,6 +874,15 @@ $messages['ru'] = array(
 	'call-save' => "Вывод этого вызова будет сохранён на страницу ''$1''.",
 	'call-save-success' => 'Следующий текст был сохранён на страницу <big>[[$1]]</big>.',
 	'call-save-failed' => 'Следующий текст НЕ был сохранён на страницу <big>[[$1]]</big>, так как данная страница уже существует.',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'call' => 'Ыҥырыы',
+	'call-desc' => 'Халыыпка (эбэтэр көннөрү сирэйгэ) сигэни оҥорор (туруорууарын биэрэн туран).
+Браузер аадырыһын устуруокатыгар эбэтэр биики тиэкискэ туттуллуон сөп.',
 );
 
 /** Slovak (Slovenčina)

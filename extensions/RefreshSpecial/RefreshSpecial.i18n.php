@@ -566,12 +566,19 @@ Attention: le refrescamento pote durar un poco de tempore in wikis plus grande.'
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  */
 $messages['id'] = array(
 	'refreshspecial' => 'Mutakhirkan halaman istimewa',
 	'refreshspecial-title' => 'Mutakhirkan halaman istimewa',
 	'refreshspecial-refreshing' => 'memutakhirkan halaman istimewa',
 	'refreshspecial-choice' => 'memutakhirkan halaman istimewa',
+	'refreshspecial-link-back' => 'Kembali ke halaman istimewa',
+	'refreshspecial-none-selected' => 'Anda belum memilih halaman istimewa apapun. Kembali ke pilihan default.',
+	'refreshspecial-db-error' => 'Gagal: kesalahan basis data',
+	'refreshspecial-no-page' => 'Tidak ada halaman istimewa tersebut',
+	'refreshspecial-reconnected' => 'Tersambung kembali.',
+	'refreshspecial-reconnecting' => 'Gagal tersambung. Menghubungkan kembali dalam 10 detik...',
 );
 
 /** Italian (Italiano)

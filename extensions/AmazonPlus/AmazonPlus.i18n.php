@@ -318,7 +318,14 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'amazonplus-nores' => 'Viga: tulemusi ei leitud!',
+	'amazonplus-german' => 'Saksakeelne',
+	'amazonplus-french' => 'Prantsusekeelne',
+	'amazonplus-japanese' => 'Jaapanikeelne',
+	'amazonplus-amazon' => "amazon'i hind",
 	'amazonplus-new' => 'uus',
+	'amazonplus-cp-none' => 'Ei ole',
+	'amazonplus-more' => 'rohkem',
+	'amazonplus-less' => 'vähem',
 );
 
 /** Basque (Euskara)
@@ -374,6 +381,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'amazonplus-desc' => 'Une extension très personnalisable pour afficher des informations de Amazon',
@@ -388,6 +396,7 @@ $messages['fr'] = array(
 	'amazonplus-amazon' => 'Prix de Amazon',
 	'amazonplus-new' => 'nouveau',
 	'amazonplus-none' => "Aucune copie de cet article n'est disponible à l'achat",
+	'amazonplus-currency' => '$1&nbsp;$3 ($2)$4',
 	'amazonplus-cp-none' => 'Aucun',
 	'amazonplus-more' => 'plus',
 	'amazonplus-less' => 'moins',
@@ -740,12 +749,25 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Pahles
  * @author Wrightbus
  */
 $messages['li'] = array(
+	'amazonplus-desc' => "'n Aan te passe oetbreijing veur 't weergeve van infermasie van Amazon",
+	'amazonplus-nores' => 'Fout: gein rizzeltate gevónje!',
+	'amazonplus-noidres' => 'Fout: gein produktnómmer gevónje!',
+	'amazonplus-fgcerr' => 'Fout: gegaeves van Amazon kóste neet opgehaold waere!',
+	'amazonplus-slserr' => 'Fout: de gegaeves van Amazon kóste neet verwirk waere!',
+	'amazonplus-used' => 'gebroek',
 	'amazonplus-german' => 'Duits',
 	'amazonplus-french' => 'Frans',
 	'amazonplus-japanese' => 'Japans',
+	'amazonplus-amazon' => 'Amazon-pries',
+	'amazonplus-new' => 'nuuj',
+	'amazonplus-none' => 'Dao zien gein eksemplare van dit objek te koup.',
+	'amazonplus-cp-none' => 'Gein',
+	'amazonplus-more' => 'mier',
+	'amazonplus-less' => 'minder',
 );
 
 /** Lithuanian (Lietuvių)
@@ -767,6 +789,27 @@ $messages['lt'] = array(
 	'amazonplus-cp-none' => 'Nieko',
 	'amazonplus-more' => 'daugiau',
 	'amazonplus-less' => 'mažiau',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'amazonplus-desc' => 'Високоприлагодлив додаток за приказ на информации од Amazon',
+	'amazonplus-nores' => 'Грешка: Нема пронајдено резултати!',
+	'amazonplus-noidres' => 'Грешка: Не можев да го најдам идентификациониот број на производот!',
+	'amazonplus-fgcerr' => 'Грешка: Не можев да добијам податоци од Amazon!',
+	'amazonplus-slserr' => 'Грешка: Не можев да ги расчленам податоците од Amazon!',
+	'amazonplus-used' => 'половно',
+	'amazonplus-german' => 'Германски',
+	'amazonplus-french' => 'Француски',
+	'amazonplus-japanese' => 'Јапонски',
+	'amazonplus-amazon' => 'цена на Amazon',
+	'amazonplus-new' => 'ново',
+	'amazonplus-none' => 'Нема примероци од овој артикл во продажба.',
+	'amazonplus-cp-none' => 'Нема',
+	'amazonplus-more' => 'повеќе',
+	'amazonplus-less' => 'помалку',
 );
 
 /** Mongolian (Монгол)

@@ -61,10 +61,30 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'indexfunc-badtitle' => 'عنوان غير صالح: "$1"',
+	'indexfunc-editwarning' => 'تحذير:
+هذا العنوان عنوان فهرس {{PLURAL:$2||للصفحة التالية|للصفحتين التاليتين|للصفحات التالية}}:
+$1
+تأكد م أن الصفحة التي أنت بصدد إنشائها غير موجودة أصلًا تحت عنوان مختلف.
+إذا أنشأت هذه الصفحة، فأزل هذا العنوان من <nowiki>{{#index:}}</nowiki> في {{PLURAL:$2||الصفحة|الصفحتين|الصفحات}} أعلاه.',
+	'indexfunc-index-exists' => 'الصفحة "$1" موجودة بالفعل',
+	'indexfunc-movewarn' => 'تحذير:
+"$1" عنوان فهرس {{PLURAL:$3||للصفحة التالية|للصفحتين التاليتين|للصفحات التالية}}:
+$2
+من فضلك أزل "$1" من <nowiki>{{#index:}}</nowiki> في {{PLURAL:$2||الصفحة|الصفحتين|الصفحات}} أعلاه.',
+	'index' => 'البحث في الفهرس',
+	'index-legend' => 'ابحث في الفهرس',
 	'index-search' => 'ابحث:',
 	'index-submit' => 'أرسل',
 	'index-disambig-start' => "'''$1''' يمكن أن يشير إلى صفحات عديدة:",
+	'index-emptylist' => 'لا توجد أي صفحات مربوطة ب"$1"',
+	'index-expand-detail' => 'أظهر الصفحات المفهرسة تحت هذا العنوان',
 	'index-hide-detail' => 'أخفِ قائمة الصفحات',
+	'index-no-results' => 'لم يرجع البحث بأي نتيجة',
+	'index-search-explain' => 'تستخدم هذه الصفحة البحث ببادئة.
+
+اطبع الحروف الأولى ثم انقر زر الإرسال للبحث عن عناوين الصفحات ومدخلات الفهرس التي تبدأ بعبارة البحث.',
+	'index-details-explain' => 'المدخلات ذات الأسهم تمثل مدخلات فهرس.
+انقر على السهم لعرض كل الصفحات المفهرسة تحت ذلك العنوان.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -93,6 +113,38 @@ $messages['be-tarask'] = array(
 
 Увядзіце першыя некалькі сымбаляў і націсьніце кнопку для пошуку назваў старонак і індэксных запісаў, якія пачынаюцца з пошукавага радку',
 	'index-details-explain' => 'Запісы са стрэлкамі зьяўляюцца індэкснымі, націсьніце на стрэлку для паказу ўсіх старонак праіндэксаваных пад гэтай назвай.',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'indexfunc-desc' => "Arc'hwel eus ar parser evit sevel pajennoù adkas ha diforc'hañ ent emgefre",
+	'indexfunc-badtitle' => 'Titl direizh : "$1"',
+	'indexfunc-editwarning' => "Diwallit :
+Un titl meneger evit ar {{PLURAL:$2|bajenn|pajenn}}-mañ eo an titl-mañ :
+$1
+Gwiriit mat n'eo ket bet savet c'hoazh, gant un titl all, ar bajenn emaoc'h en sell da grouiñ.
+Mar savit ar bajenn-mañ, tennit an titl eus ar <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|bajenn|pajenn}} a-us.",
+	'indexfunc-index-exists' => 'Bez\' ez eus eus ar bajenn "$1" c\'hoazh',
+	'indexfunc-movewarn' => 'Diwallit :
+Un titl meneger evit ar {{PLURAL:$3|bajenn |pajenn}} eo $1 :
+$2
+Tennit "$1" eus ar <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|bajenn|pajenn}} a-us.',
+	'index' => 'Meneger klask',
+	'index-legend' => 'Klask er meneger',
+	'index-search' => 'Klask :',
+	'index-submit' => 'Kas',
+	'index-disambig-start' => "Gallout a ra '''$1''' ober dave da meur a bajenn :",
+	'index-emptylist' => 'N\'eus pajenn ebet liammet ouzh "$1"',
+	'index-expand-detail' => 'Diskouez ar pajennoù menegeret dindan an titl-mañ',
+	'index-hide-detail' => 'Kuzhat roll ar pajennoù',
+	'index-no-results' => "N'eus bet kavet disoc'h ebet",
+	'index-search-explain' => 'Ober a ra ar bajenn-mañ gant ur rakger klask.
+
+Merkit an nebeud arouezennoù kentañ ha pouezit war ar bouton klask evit kavout titloù ar pajennoù a grog gant an neudennad klask-se',
+	'index-details-explain' => 'Monedoù meneger eo ar monedoù gant biroù. 
+Klikit war ar bir evit gwelet an holl bajennoù menegeret dindan an titl-se.',
 );
 
 /** Bosnian (Bosanski)
@@ -232,6 +284,16 @@ Bitte nimm „$1“ us em <nowiki>{{#index:}}</nowiki> uf dr obe ufgfierte  {{PL
 Tipp di erschte paar Buehcstabe yy un druck dr „Abschicke“-Chnopf go Sytetitel un Verzeichnisyytreg suech, wu mit däre Zeichechette aafange',
 	'index-details-explain' => 'Yytreg mit Bege sin Verzeichnisyytreg.
 Druck uf dr Boge go alli Syte aazeige, wu unter däm Titel ufglischtet sin.',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'indexfunc-index-exists' => 'הדף "$1" כבר קיים',
+	'index' => 'חיפוש באינדקס',
+	'index-legend' => 'חיפוש באינדקס',
+	'index-search' => 'חיפוש:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

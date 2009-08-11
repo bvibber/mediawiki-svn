@@ -860,6 +860,23 @@ $messages['mhr'] = array(
 	'contributors-submit' => 'ончыкташ',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'contributors' => 'Уредници',
+	'contributors-desc' => 'Дава краток преглед на главните уредници на една страница',
+	'contributors-toolbox' => 'Главни уредници',
+	'contributors-legend' => 'Покажи листа на главните уредници на една страница',
+	'contributors-target' => 'Наслов:',
+	'contributors-submit' => 'Прикажи',
+	'contributors-subtitle' => 'Главни уредници на $1',
+	'contributors-others-long' => '{{PLURAL:$1|Постои уште еден уредник|постојат уште $1 други уредници}} на оваа страница.',
+	'contributors-others' => 'и {{PLURAL:$1|уште еден|$1 други}}',
+	'contributors-badtitle' => 'Погрешен наслов.',
+	'contributors-nosuchpage' => 'Страницата $1 не постои.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

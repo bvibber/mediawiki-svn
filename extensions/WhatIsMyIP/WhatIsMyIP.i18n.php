@@ -183,7 +183,8 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'whatismyip' => 'Kio estas mia IP',
 	'whatismyip-desc' => 'Montras nunan IP-adreson de uzanto en [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'Via IP:',
+	'whatismyip-out' => 'Via IP-adreso:',
+	'right-whatismyip' => 'Vidi [[Special:WhatIsMyIP|propran IP-adreson]]',
 );
 
 /** Spanish (Español)
@@ -436,12 +437,14 @@ $messages['mg'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'whatismyip' => 'Која е мојата IP адреса',
 	'whatismyip-desc' => 'Прикажува моментална корисничка IP адреса на [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'Ваша IP адреса:',
+	'right-whatismyip' => 'Погледајте ја [[Special:WhatIsMyIP|вашата IP адреса]]',
 );
 
 /** Nahuatl (Nāhuatl)

@@ -199,6 +199,26 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'readerfeedback' => 'Petra a soñjit eus ar bajenn-mañ ?',
+	'readerfeedback-text' => "''Tapit un tamm amzer da briziañ ar bajenn a-is mar plij. Talvoudus eo deomp ho soñj pa skoazell ac'hanomp da wellaat hol lec'hienn web.''",
+	'readerfeedback-reliability' => 'Fiziuster :',
+	'readerfeedback-completeness' => 'Klokter :',
+	'readerfeedback-npov' => 'Neptuegezh :',
+	'readerfeedback-presentation' => 'Kinnig',
+	'readerfeedback-overall' => 'Dre-vras',
+	'readerfeedback-level-none' => '(diasur)',
+	'readerfeedback-level-0' => 'Dister-kenañ',
+	'readerfeedback-level-1' => 'Gwan',
+	'readerfeedback-level-2' => 'Etre',
+	'readerfeedback-level-3' => 'Mat',
+	'readerfeedback-level-4' => 'Eus an dibab',
+	'readerfeedback-submit' => 'Kas',
+	'readerfeedback-main' => "N'haller priziañ nemet ar pajennoù zo danvez enno",
+	'readerfeedback-success' => "'''Ho trugarekaat evit bezañ adlennet ar bajenn-mañ !''' ([$3 goulennoù pe ur soñj bennak ?]).",
+	'readerfeedback-voted' => "'''Evit doare eo bet priziet ar bajenn-mañ ganeoc'h c'hoazh''' ([$3 Goulennoù pe ur soñj bennak?])",
+	'readerfeedback-submitting' => 'O kas...',
+	'readerfeedback-finished' => 'Trugarez !',
+	'readerfeedback-tagfilter' => 'Balizenn :',
+	'tooltip-ca-ratinghist' => 'Priziadenn ar bajenn-mañ gant al lennerien',
 );
 
 /** Bosnian (Bosanski)

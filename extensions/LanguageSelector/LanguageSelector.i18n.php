@@ -555,6 +555,15 @@ $messages['lt'] = array(
 	'languageselector-setlang' => 'nustatyti',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'languageselector' => 'Јазик',
+	'languageselector-desc' => 'Избирач на јазик на секоја страница, исто така за посетители',
+	'languageselector-setlang' => 'постави',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

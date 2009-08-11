@@ -390,6 +390,13 @@ $messages['pt-br'] = array(
 	'right-userrights-shared' => 'Gerenciar permissões de utilizador compartilhadas',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'gblrights-logpage' => 'Jurnal drepturi globale',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

@@ -238,6 +238,14 @@ $messages['es'] = array(
 	'right-adminlinks' => 'Ver el vínculo a [[Special:AdminLinks|Administrar vínculos]]',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'adminlinks_users' => 'Kasutajad',
+	'adminlinks_createuser' => 'Loo uus kasutaja',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

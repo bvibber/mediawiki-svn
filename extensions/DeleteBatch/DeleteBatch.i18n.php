@@ -676,6 +676,7 @@ $messages['ja'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'deletebatch' => 'លុប​បាច់​នៃ​ទំព័រ',
@@ -685,9 +686,8 @@ $messages['km'] = array(
 	'deletebatch-link-back' => 'ត្រឡប់​ទៅកាន់​ទំព័រ​ពិសេស',
 	'deletebatch-as' => 'រត់​ស្គ្រីប​ជា៖',
 	'deletebatch-or' => '<b>ឬ</b>',
+	'deletebatch-delete' => 'លុបចោល',
 	'deletebatch-page' => 'ទំព័រ​ដែល​ត្រូវ​លុប៖',
-	'deletebatch-reason' => 'មូលហេតុនៃការលុប',
-	'deletebatch-success-subtitle' => 'សម្រាប់ $1',
 	'deletebatch-omitting-invalid' => 'លុប​ទំព័រ​មិនត្រឹមត្រូវ $1 ។',
 	'deletebatch-file-bad-format' => 'ឯកសារ​គួរតែ​ជា​អត្ថបទធម្មតា',
 	'deletebatch-file-missing' => 'មិន​អាច​អាន​ឯកសារ​ដែល​បាន​ផ្ដល់​ឱ្យ',
@@ -975,9 +975,10 @@ O arquivo carregado deverá conter o nome da página e um motivo opcional, separ
 	'deletebatch-as' => 'Executar o script como:',
 	'deletebatch-both-modes' => 'Por favor, escolha uma página especificada ou uma dada lista de páginas.',
 	'deletebatch-or' => '<b>ou</b>',
+	'deletebatch-delete' => 'Remover',
 	'deletebatch-page' => 'Páginas a eliminar:',
-	'deletebatch-reason' => 'Motivo da eliminação',
-	'deletebatch-success-subtitle' => 'para $1',
+	'deletebatch-processing-from-file' => 'Removendo páginas da lista de arquivos',
+	'deletebatch-processing-from-form' => 'deletando páginas do formulário',
 	'deletebatch-omitting-nonexistant' => 'Omitindo página não existente $1.',
 	'deletebatch-omitting-invalid' => 'Omitindo página inválida $1.',
 	'deletebatch-file-bad-format' => 'O arquivo deve conter texto pleno',

@@ -454,6 +454,7 @@ $messages['eo'] = array(
 	'vote-results-choice' => 'Elekto',
 	'vote-results-count' => 'Nombro',
 	'vote-login' => 'Vi devas [$1 ensaluti] por voĉdoni.',
+	'right-vote' => 'Voĉdoni',
 );
 
 /** Spanish (Español)

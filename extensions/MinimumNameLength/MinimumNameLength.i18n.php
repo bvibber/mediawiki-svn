@@ -310,6 +310,14 @@ $messages['lb'] = array(
 	'minnamelength-desc' => 'Eng Mindestlängt vum Benotzrnumm verlaangen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'minnamelength-error' => 'Вашето корисничко име е прекратко. Минималната должина е $1.',
+	'minnamelength-desc' => 'Наложи минимална должина на корисничко име',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -775,10 +775,21 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
+	'player' => 'Преслушувач',
+	'player-desc' => 'Вметнат мултимедијален преслушувач кој користи обични додатоци од прелистувачот, и [[Special:Player|специјална страница]]',
+	'player-title' => 'Преслушувач',
+	'player-playertitle' => 'Преслушувач: $1',
 	'player-file' => 'Име на податотека',
+	'player-play' => 'Пушти',
+	'player-not-allowed' => 'недозволен формат',
+	'player-not-found' => 'податотеката не беше најдена',
+	'player-invalid-title' => 'лош наслов',
+	'player-clicktoplay' => 'Пушти ја $1',
+	'player-goto-player' => 'преслушувач',
 	'player-goto-page' => 'Страница',
 	'player-goto-file' => 'податотека',
 );

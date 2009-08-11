@@ -874,6 +874,7 @@ $messages['jv'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'viewxml' => 'មើល XML',
@@ -882,11 +883,17 @@ $messages['km'] = array(
 	'dt_viewxml_namespaces' => 'លំហឈ្មោះ',
 	'dt_viewxml_simplifiedformat' => 'ទម្រង់សាមញ្ញ',
 	'dt_xml_namespace' => 'វាលឈ្មោះ',
+	'dt_xml_pages' => 'ទំព័រ',
 	'dt_xml_page' => 'ទំព័រ',
+	'dt_xml_template' => 'ទំព័រគំរូ',
 	'dt_xml_name' => 'ឈ្មោះ',
 	'dt_xml_title' => 'ចំណងជើង',
 	'dt_xml_id' => 'អត្តសញ្ញាណ',
 	'dt_xml_freetext' => 'អត្ថបទសេរី',
+	'importxml' => 'នាំចូល XML',
+	'dt_import_editsummary' => '$1 នាំចូល​',
+	'dt_import_importing' => 'កំពុងនាំចូល​...',
+	'right-datatransferimport' => 'នាំចូល​ទិន្នន័យ​',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -999,6 +1006,14 @@ $messages['ml'] = array(
 	'dt_xml_name' => 'പേര്‌',
 	'dt_xml_title' => 'ശീര്‍ഷകം',
 	'dt_xml_id' => 'ഐഡി',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'dt_viewxml_namespaces' => 'Нэрний зайнууд',
+	'dt_xml_namespace' => 'Нэрний зай',
 );
 
 /** Marathi (मराठी)

@@ -569,6 +569,8 @@ $messages['haw'] = array(
  */
 $messages['he'] = array(
 	'patrol-revert-reason' => 'סיבה:',
+	'patrol-skip' => 'דילוג',
+	'patrol-skipped-ok' => 'התעלמות מעריכה.',
 	'patrol-resume' => 'לחצו כאן להמשך.',
 );
 

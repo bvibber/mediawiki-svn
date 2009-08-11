@@ -233,6 +233,13 @@ $messages['bg'] = array(
 	'right-povwatch_user' => 'добавяне на страници в списъка за наблюдение на други потребители',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'povwatch_title' => 'শিরোনাম:',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -755,6 +762,7 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'povwatch' => 'Predbilježeno praćenje',
@@ -766,7 +774,7 @@ $messages['hr'] = array(
 	'povwatch_not_subscribed' => 'Niste upisani u predbilježeno praćenje, stoga se ne možete ispisati.',
 	'povwatch_unsubscribed' => 'Sada ste se ispisali iz predbilježenog praćenja',
 	'povwatch_invalid_title' => 'Određeni naslov nije valjan',
-	'povwatch_pushed' => '[[$1]] je uspješno postavljeno u popis praćenja za $2 suradnika',
+	'povwatch_pushed' => '[[$1]] je uspješno dodan u {{PLURAL:$2|popis praćenja|popise praćenja}} za $2 suradnika',
 	'povwatch_intro' => 'Predbilježeno praćenje je sustav koji omogućava diskretno postavljanje spornih stranica u popis praćenja upisanih administratora.
 
 Evidencija nedavno postavljenih stranica je dostupna [[Special:PovWatch/log|ovdje]].',

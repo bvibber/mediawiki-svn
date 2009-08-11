@@ -650,6 +650,9 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
  */
 $messages['id'] = array(
 	'imstatus_default' => 'Baku',
+	'imstatus_max' => 'maks',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'atau',
 );
 
 /** Japanese (日本語)

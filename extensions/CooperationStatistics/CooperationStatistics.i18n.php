@@ -335,6 +335,13 @@ $messages['ka'] = array(
 	'cooperationstatistics-legendmore' => 'ან მეტი რედაქტორი.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'cooperationstatistics-tablearticle' => 'ចំនួន​ទំព័រ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -499,8 +499,10 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'recordadmin-submit' => 'Lähetä',
 	'recordadmin-badtitle' => 'Virheellinen otsikko!',
 	'recordadmin-invert' => 'Käänteinen valinta',
+	'recordadmin-buttonsearch' => 'Etsi',
 	'recordadmin-buttoncreate' => 'Luo',
 	'recordadmin-searchresult' => 'Hakutulokset',
 	'recordadmin-buttonsave' => 'Tallenna',
@@ -797,15 +799,38 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  */
 $messages['id'] = array(
+	'recordadmin-select' => 'Pilih',
+	'recordadmin-createtype' => 'Masukkan nama tipe rekaman baru yang akan dibuat',
+	'recordadmin-recordtype' => 'tipe rekaman',
+	'recordadmin-newrecord' => 'Pilih tipe rekaman lain',
 	'recordadmin-submit' => 'Kirim',
+	'recordadmin-create' => 'Pilih atau buat "$1" rekaman',
+	'recordadmin-alreadyexist' => 'Maaf, "$1" sudah ada!',
+	'recordadmin-createsuccess' => '$1 telah dibuat',
+	'recordadmin-createerror' => 'Ada kesalahan saat mencoba membuat $1!',
+	'recordadmin-badtitle' => 'Judul tidak dibenarkan!',
+	'recordadmin-recordid' => 'ID/nama rekaman:',
 	'recordadmin-invert' => 'Balikkan pilihan',
 	'recordadmin-buttonsearch' => 'Cari',
 	'recordadmin-buttoncreate' => 'Buat',
 	'recordadmin-buttonreset' => 'Reset',
+	'recordadmin-searchresult' => 'Hasil pencarian',
+	'recordadmin-nomatch' => 'Tidak ditemukan rekaman yang cocok!',
+	'recordadmin-edit' => 'Menyunting $2 rekaman "$1"',
+	'recordadmin-updatesuccess' => '$1 telah diperbarui',
+	'recordadmin-updateerror' => 'Ada kesalahan saat pembaruan',
 	'recordadmin-buttonsave' => 'Simpan',
+	'recordadmin-noform' => 'Tidak ada formulir yang terkait dengan rekaman "$1"!',
+	'recordadmin-createlink' => 'buat',
+	'recordadmin-newcreated' => '$1 baru telah dibuat dari formulir umum',
+	'recordadmin-summary-typecreated' => '$1 baru telah dibuat',
+	'recordadmin-viewlink' => 'lihat',
 	'recordadmin-editlink' => 'sunting',
+	'recordadmin-created' => 'Telah dibuat',
+	'recordadmin-modified' => 'Dirubah',
 	'recordadmin-actions' => 'Tindakan',
 );
 
@@ -1263,7 +1288,7 @@ $messages['pt-br'] = array(
 	'recordadmin-buttonreset' => 'Reiniciar',
 	'recordadmin-searchresult' => 'Resultados da pesquisa',
 	'recordadmin-nomatch' => 'Não foram encontrados resultados correspondentes!',
-	'recordadmin-edit' => 'Editando $1',
+	'recordadmin-edit' => 'Editando registro $2 "$1"',
 	'recordadmin-typeupdated' => 'Propriedades de $1 atualizadas',
 	'recordadmin-updatesuccess' => '$1 atualizado',
 	'recordadmin-updateerror' => 'Ocorreu um erro durante a atualização',
@@ -1278,6 +1303,8 @@ $messages['pt-br'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Ações',
 	'recordadmin-needscontent' => 'Adicione conteúdo...',
+	'recordadmin-editwithform' => 'Editar com formulário',
+	'recordadmin-typeinfo' => 'registro "$1"',
 	'right-recordadmin' => 'Encontrar e editar páginas de registros',
 );
 

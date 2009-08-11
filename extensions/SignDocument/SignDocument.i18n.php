@@ -421,6 +421,13 @@ $messages['pt-br'] = array(
 	'right-createsigndocument' => 'Criar documentos que possam ser assinados',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'signaturelogpage' => 'Jurnal semnături',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Kaganer

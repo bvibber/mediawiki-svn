@@ -1242,6 +1242,26 @@ $messages['ru'] = array(
 	'multiupload-blank' => 'Нет выбранных файлов',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'multipleupload-saveallfiles' => 'Бары билэлэри суруттарыы',
+	'multipleupload-addresswarnings' => 'Бука диэн хачайдыаҥ иннинэ бары сэрэтиилэри көр эрэ.',
+	'multipleupload-page' => '{{ns:project}}:Билэни сотуу сиэрэ',
+	'multipleupload-text' => "Бу сирэй көмөтүнэн хас да билэни киллэриэххэ сөп.
+
+'Көрүү' («Обзор») тимэҕи баттаа уонна хачайдаан киллэриэххин баҕарар билэлэри тал. Эн бииртэн $1 ахсааҥҥа дылы билэни бииргэ киллэриэххин сөп.
+
+Булгуччута суох '''Билэ бүтэһик аатын''' уонна быһаарыылары суруйан биэриэххин сөп.
+
+Сөп түбэспэт билэлэр тута сотуллуохтара, сиһилии маны көр: [[{{MediaWiki:Multipleupload-page}}|Билэни сотуу сиэрэ]].",
+	'multiupload-fileuploaded' => 'Билэ киирдэ.',
+	'multiupload-toolbox' => 'Хас да билэни киллэрии',
+	'multiupload-no-files' => 'Бука диэн, саатар биир билэни тал',
+	'multiupload-blank' => 'Талыллыбыт билэлэр суохтар',
+);
+
 /** Sardinian (Sardu)
  * @author Marzedu
  */

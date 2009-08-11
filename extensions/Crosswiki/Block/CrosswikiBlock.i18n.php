@@ -1034,6 +1034,7 @@ Retornar a:
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  * @author Rex
  */
 $messages['id'] = array(
@@ -1044,8 +1045,13 @@ $messages['id'] = array(
 	'crosswikiblock-autoblock' => 'Blokir alamat IP terakhir yang digunakan pengguna ini secara otomatis, dan semua alamat berikutnya yang mereka coba gunakan untuk menyunting.',
 	'crosswikiblock-noemail' => 'Cegah pengguna mengirimkan surel',
 	'crosswikiunblock-reason' => 'Alasan:',
+	'crosswikiblock-dbnotfound' => 'Basis data $1 tidak ada',
+	'crosswikiblock-noname' => 'Nama pengguna "$1" tidak sah.',
+	'crosswikiblock-nouser' => 'Pengguna "$3" tidak ditemukan.',
+	'crosswikiblock-noreason' => 'Tak ada penjelasan.',
 	'crosswikiblock-notoken' => 'Token penyuntingan tidak sah.',
 	'crosswikiblock-alreadyblocked' => 'Pengguna $1 telah diblokir.',
+	'crosswikiblock-noblock' => 'Pengguna ini tidak diblok.',
 );
 
 /** Ido (Ido)

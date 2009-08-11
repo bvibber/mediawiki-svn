@@ -357,6 +357,13 @@ $messages['lo'] = array(
 	'contributionseditcount' => 'ຜູ້ໃຊ້ຮາຍນີ້ ທຳການດັດແກ້ທັງໝົດ $1 ຄັ້ງ',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'contributionseditcount' => 'Овој корисник извршил {{PLURAL:$1|едно уредување|$1 уредувања}}.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

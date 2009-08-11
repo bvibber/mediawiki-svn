@@ -133,6 +133,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'eval_out' => 'Έξοδος',
 	'eval_code' => 'Κώδικας',
 );
 

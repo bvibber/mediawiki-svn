@@ -350,6 +350,19 @@ $messages['ps'] = array(
 	'webchat' => 'د جال بنډار',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'webchat' => 'Bate-papo Web',
+	'webchat-desc' => 'Adiciona uma [[Special:WebChat|special page]] usada para falar em tempo real com outros utilizadores do wiki',
+	'webchat-header' => 'Esta página especial permite a colaboração em tempo real com outros utilizadores da wiki.
+Para conectar-se basta clicar no botão "Connect".
+Se estiver autenticado, o seu nome de utilizador será preenchido automaticamente.
+Utilizadores anônimos recebem um apelido gerado aleatoriamente, mas este pode ser alterado.',
+	'right-webchat' => 'Permitido a utilizar o [[Special:WebChat|Bate-papo web]]',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

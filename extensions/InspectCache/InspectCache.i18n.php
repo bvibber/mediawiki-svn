@@ -269,12 +269,18 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'inspectcache' => 'Tutki välimuistia',
 	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Yleinen välimuisti',
+	'inspectcache-parser' => 'Jäsentimen välimuisti',
+	'inspectcache-message' => 'Viestivälimuisti',
+	'inspectcache-get' => 'Hae',
 	'inspectcache-delete' => 'Poista',
+	'inspectcache-deleted' => 'Poistettu välimuisti',
+	'inspectcache-list' => 'Luettelo',
 );
 
 /** French (Français)
@@ -818,6 +824,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Putnik
  * @author VasilievVV
  * @author Александр Сигачёв
  */
@@ -825,12 +832,12 @@ $messages['ru'] = array(
 	'inspectcache' => 'Просмотр кэша',
 	'inspectcache-desc' => 'Простой инструмент отладки для просмотра содержимого общего кеша',
 	'inspectcache-ok' => 'OK',
-	'inspectcache-general' => 'Общий кэш',
-	'inspectcache-parser' => 'Кэш парсера',
-	'inspectcache-message' => 'Кэш сообщений',
+	'inspectcache-general' => 'Общий кеш',
+	'inspectcache-parser' => 'Кеш парсера',
+	'inspectcache-message' => 'Кеш сообщений',
 	'inspectcache-get' => 'Получить',
 	'inspectcache-delete' => 'Удалить',
-	'inspectcache-deleted' => 'Кэш удалён',
+	'inspectcache-deleted' => 'Кеш удалён',
 	'inspectcache-list' => 'Все ключи',
 );
 

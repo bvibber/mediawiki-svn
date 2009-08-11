@@ -803,9 +803,30 @@ Per favor attende le completion del action in curso.',
  * @author Rex
  */
 $messages['id'] = array(
+	'taggedimages' => 'Gambar yang diberi tag',
+	'imagetagging-addimagetag' => 'Beri tag pada gambar ini',
 	'imagetagging-article' => 'Halaman:',
+	'imagetagging-articletotag' => 'Halaman yang akan diberi tag',
 	'imagetagging-imghistory' => 'Versi',
+	'imagetagging-images' => 'gambar',
+	'imagetagging-inthisimage' => 'Pada gambar ini: $1',
+	'imagetagging-logentry' => 'Hapus tag ke halaman [[$1]] oleh $2',
+	'imagetagging-log-tagged' => 'Gambar [[$1|$2]] diberi tag ke halaman [[$3]] oleh $4',
+	'imagetagging-new' => '<sup><span style="color:red">Baru!</span></sup>',
+	'imagetagging-done-button' => 'Selesai memberi tag',
+	'imagetagging-tag-button' => 'Tag',
 	'imagetagging-tagcancel-button' => 'Batalkan',
+	'imagetagging-tagging-instructions' => 'Klik pada gambar orang atau benda di gambar ini untuk memberi tag.',
+	'imagetagging-addingtag' => 'Menambahkan tag...',
+	'imagetagging-removingtag' => 'Menghilangkan tag...',
+	'imagetagging-addtagsuccess' => 'Tag ditambahkan.',
+	'imagetagging-removetagsuccess' => 'Tag dihilangkan.',
+	'imagetagging-oneuniquetagmessage' => 'Gambar ini telah memiliki tag dengan nama ini.',
+	'imagetagging-imagetag-seemoreimages' => 'Lihat gambar lain dari "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Gambar-gambar "$1"',
+	'imagetagging-taggedimages-displaying' => 'Menampilkan $1 - $2 dari $3 gambar "$4"',
+	'tag-logpagename' => 'Log tag',
+	'tag-logpagetext' => 'Ini adalah log semua penambahan dan penghilangan tag gambar.',
 );
 
 /** Italian (Italiano)
@@ -986,6 +1007,44 @@ $messages['mhr'] = array(
 	'imagetagging-article' => 'Лаштык:',
 	'imagetagging-imghistory' => 'Историй',
 	'imagetagging-tagcancel-button' => 'Чараш',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'taggedimages' => 'Означени слики',
+	'imagetagging-desc' => 'Му дава на корисникот да избере региони на вметната слика и да асоцира страница со тој регион',
+	'imagetagging-addimagetag' => 'Означи ја сликава',
+	'imagetagging-article' => 'Страница:',
+	'imagetagging-articletotag' => 'Страница за означување',
+	'imagetagging-canteditothermessage' => 'Не можете да ја уредувате оваа страница, или бидејќи немате права на тоа, или бидејќи страницата е заклучена од други причини.',
+	'imagetagging-imghistory' => 'Историја',
+	'imagetagging-images' => 'слики',
+	'imagetagging-inthisimage' => 'На сликава: $1',
+	'imagetagging-logentry' => 'Ознаката е преместена на страницата [[$1]] од страна на $2',
+	'imagetagging-log-tagged' => 'Сликата [[$1|$2]] беше означена кон страницата [[$3]] од страна на $4',
+	'imagetagging-new' => '<sup><span style="color:red">Ново!</span></sup>',
+	'imagetagging-removetag' => 'отстрани ознака',
+	'imagetagging-done-button' => 'Означувањето е завршено',
+	'imagetagging-tag-button' => 'Ознака',
+	'imagetagging-tagcancel-button' => 'Откажи',
+	'imagetagging-tagging-instructions' => 'Кликнете на луѓе или нешта на сликата за да ги означите.',
+	'imagetagging-addingtag' => 'Додавам ознака...',
+	'imagetagging-removingtag' => 'Отстранувам ознака...',
+	'imagetagging-addtagsuccess' => 'Ја додадов ознаката.',
+	'imagetagging-removetagsuccess' => 'Ја отстранив ознаката.',
+	'imagetagging-canteditneedloginmessage' => 'Не можете да ја уредувате оваа страница.
+Ова е можеби затоа што треба да сте најавени за да означувате слики.
+Сакате да се најавите сега?',
+	'imagetagging-oneactionatatimemessage' => 'Дозволено е да се означува едно по едно.
+Почекајте да заврши моменталното дејство.',
+	'imagetagging-oneuniquetagmessage' => 'Оваа слика веќе има ознака со такво име.',
+	'imagetagging-imagetag-seemoreimages' => 'Погледајте повеќе слики со „$1“ ($2)',
+	'imagetagging-taggedimages-title' => 'Слики со „$1“',
+	'imagetagging-taggedimages-displaying' => 'Прикажани се $1 - $2 од вкупно $3 слики со „$4“',
+	'tag-logpagename' => 'Дневник на означувања',
+	'tag-logpagetext' => 'Ова е дневник на сите додавања на ознаки во слики и сите отстранувања.',
 );
 
 /** Malayalam (മലയാളം)

@@ -41,6 +41,16 @@ $messages['be-tarask'] = array(
 	'delaydef-error-redef' => 'Памылка: спроба перавызначэньня $1.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'delaydef-desc' => "Ouzhpennañ a ra &lt;define&gt; ha &lt;display&gt; evit ma c'hallo ar c'hod bezañ adlec'hiet",
+	'delaydef-error-missing-def' => 'Fazi : Termenadur rekis evit &lt;display name="$1"&gt; n\'eo ket bet kavet.',
+	'delaydef-error-no-name' => "Fazi : N'eus bet resisaet anv arventenn ebet.",
+	'delaydef-error-redef' => 'Fazi : Taol-esae adtermeniñ $1.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -215,6 +225,16 @@ $messages['oc'] = array(
 	'delaydef-error-missing-def' => 'Error : la definicion requesa per &lt;display name="$1"&gt; es pas estada trobada.',
 	'delaydef-error-no-name' => 'Error : Lo paramètre « name » es pas estat especificat.',
 	'delaydef-error-redef' => 'Error : temptativa de redefinicion de $1.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'delaydef-desc' => 'Adiciona  &lt;define&gt; e &lt;display&gt; para permitir que códigos sejam reposicionados',
+	'delaydef-error-missing-def' => 'Erro: Definição necessária para &lt;display name="$1"&gt; não encontrada.',
+	'delaydef-error-no-name' => 'Erro: Parâmetro nome não especificado.',
+	'delaydef-error-redef' => 'Erro: Tentativa de redefinição de $1.',
 );
 
 /** Russian (Русский)

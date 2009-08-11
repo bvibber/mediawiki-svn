@@ -404,6 +404,13 @@ $messages['pt-br'] = array(
 	'stalkerlog-log-text' => 'Este é um registro de autenticações e desautenticações de utilizadores.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'stalkerlog-log-type' => 'Jurnalul autentificărilor utilizatorilor',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

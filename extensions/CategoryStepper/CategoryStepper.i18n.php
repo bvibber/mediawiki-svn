@@ -109,6 +109,14 @@ $messages['cs'] = array(
 	'categorystepper-start' => '(začátek kategorie)',
 );
 
+/** Danish (Dansk)
+ * @author Lhademmor
+ */
+$messages['da'] = array(
+	'categorystepper-end' => '(Slut på kategori)',
+	'categorystepper-start' => '(Start på kategori)',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Revolus

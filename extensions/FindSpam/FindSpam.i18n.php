@@ -254,9 +254,11 @@ $messages['es'] = array(
  * @author Avjoska
  */
 $messages['et'] = array(
+	'findspam' => 'Otsi spämmi',
 	'findspam-ip' => 'IP-aadress:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Redigeerimisi ei leitud',
+	'right-findspam' => 'Otsi värskelt lisatud spämmi',
 );
 
 /** Basque (Euskara)
@@ -554,6 +556,18 @@ $messages['lfn'] = array(
  */
 $messages['lt'] = array(
 	'findspam-ip' => 'IP adresas:',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'findspam' => 'Пронајди спам',
+	'findspam-desc' => 'Додава [[Special:FindSpam|специјална страница]] која овозможува пронаоѓање на скоро додаден спам',
+	'findspam-ip' => 'IP адреса:',
+	'findspam-ok' => 'ОК',
+	'findspam-notextfound' => 'Не се најдени придонеси',
+	'right-findspam' => 'Барај скоро додаден спам',
 );
 
 /** Malayalam (മലയാളം)
@@ -989,6 +1003,14 @@ $messages['vo'] = array(
 	'findspam-notextfound' => 'Keblünots nonik petuvons',
 );
 
+/** Chinese (China) (‪中文(中国大陆)‬)
+ * @author Wrightbus
+ */
+$messages['zh-cn'] = array(
+	'findspam-ip' => 'IP地址：',
+	'findspam-ok' => '确定',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Wmr89502270
  */
@@ -999,5 +1021,29 @@ $messages['zh-hans'] = array(
 	'findspam-ok' => '确定',
 	'findspam-notextfound' => '没有查找到贡献',
 	'right-findspam' => '搜索最近增加的垃圾信息',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'findspam-ip' => 'IP位址：',
+	'findspam-ok' => '確定',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hk'] = array(
+	'findspam-ip' => 'IP位址：',
+	'findspam-ok' => '確定',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Wrightbus
+ */
+$messages['zh-tw'] = array(
+	'findspam-ip' => 'IP位址：',
+	'findspam-ok' => '確定',
 );
 

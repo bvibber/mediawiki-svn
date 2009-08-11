@@ -346,6 +346,14 @@ $messages['es'] = array(
 	'scanset_prev' => '&lt; Anterior',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'scanset_next' => 'Järgmine &gt;',
+	'scanset_prev' => '&lt; Eelmine',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

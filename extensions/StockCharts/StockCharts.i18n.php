@@ -42,11 +42,12 @@ Koristite &lt;stockchart ticker="AAPL"/&gt;',
 
 /** German (Deutsch)
  * @author Pill
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'stockcharts-desc' => 'Fügt einen <nowiki><stockchart ticker="AAPL"/></nowiki>-Tag für eine interaktive Aktien-Finanz-Grafik ein.',
+	'stockcharts-desc' => 'Ergänzt ein <nowiki><stockchart ticker="AAPL" /></nowiki>-Tag für eine interaktive Aktien-Finanz-Grafik',
 	'stockcharts-missingticker' => 'Um eine Aktien-Grafik einzufügen, musst du mindestens einen Ticker angeben.
-Verwende: &lt;stockchart ticker="AAPL"/&gt;',
+Verwende: &lt;stockchart ticker="AAPL" /&gt;',
 );
 
 /** Lower Sorbian (Dolnoserbski)

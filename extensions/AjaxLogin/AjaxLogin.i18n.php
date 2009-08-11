@@ -69,6 +69,13 @@ Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 	'ajaxlogin-create' => 'Crea un compte',
 );
 
+/** Danish (Dansk)
+ * @author Lhademmor
+ */
+$messages['da'] = array(
+	'ajaxlogin-create' => 'Opret ny brugerkonto',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Tim 'Avatar' Bartel
@@ -129,6 +136,13 @@ Esto hará que salgas de esta página de edición y podrías perder tu edición 
 	'ajaxLogin2' => '¿Estas seguro?
 Podrías perder tus ediciones si abandonas esta página ahora.',
 	'ajaxlogin-create' => 'Crear una cuenta',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'ajaxlogin-create' => 'Registreeru siin',
 );
 
 /** Basque (Euskara)

@@ -4269,6 +4269,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ahonc
+ * @author Putnik
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -4277,7 +4278,7 @@ $messages['ru'] = array(
 	'right-apc' => 'использование всех возможностей [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Нет сведений о кэше.
 По видимому, APC не работает.',
-	'viewapc-clear-confirm' => 'Вы желаете очистить кэш?',
+	'viewapc-clear-confirm' => 'Вы желаете очистить кеш?',
 	'viewapc-clear-user-cache' => 'Очистка пользовательского кэша',
 	'viewapc-clear-code-cache' => 'Очистка кэша opcode',
 	'viewapc-mode-stats' => 'Просмотр статистики узла',
@@ -4373,8 +4374,8 @@ $messages['ru'] = array(
 	'viewapc-version-ok' => 'Вы используете последнюю версию APC ($1)',
 	'viewapc-version-old' => 'Вы используете старую версию APC ($1).
 Новая версия ($2) доступна по адресу http://pecl.php.net/package/APC/$2',
-	'viewapc-filecache-cleared' => "'''''Файловый кэш очищен.'''''",
-	'viewapc-usercache-cleared' => "'''''Кэш приложений очищен.'''''",
+	'viewapc-filecache-cleared' => "'''''Файловый кеш очищен.'''''",
+	'viewapc-usercache-cleared' => "'''''Кеш приложений очищен.'''''",
 );
 
 /** Sicilian (Sicilianu)

@@ -93,10 +93,11 @@ Wikinewserako bereziki erabilgarria den in-page bertsioa sortzen du.',
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
-	'catfeed-desc' => 'Hyödyntää palasia tuoreet muutokset feedistä.
-Luo sivunsisäisen version, joka on erityisen hyödyllinen Wikinewsissä',
+	'catfeed-desc' => 'Käyttää osasia tuoreet muutokset -syötteestä.
+Luo sivunsisäisen version, joka on erityisen hyödyllistä Wikinewsissä.',
 );
 
 /** French (Français)

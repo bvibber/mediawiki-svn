@@ -36,6 +36,9 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'uos-warn' => 'PHPlot غير مثبّت!',
+	'uos-choose' => 'اختر واحدة من خيارات المستخدم التالية: $1',
+	'uos-unknown' => '*مبدئي',
+	'uos-other' => '*أخرى',
 );
 
 /** Bavarian (Boarisch)
@@ -134,6 +137,13 @@ $messages['el'] = array(
 	'useroptionstats' => 'Προαιρετικά στατιστικά χρήστη',
 	'uos-unknown' => '*Προεπιλογή',
 	'uos-other' => '*Άλλο',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'uos-unknown' => '*Defaŭlta',
 );
 
 /** Spanish (Español)

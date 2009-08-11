@@ -4349,6 +4349,7 @@ $messages['kaa'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'configure' => 'កំណត់រចនាសម្ព័ន្ធ​វិគី',
@@ -4389,6 +4390,7 @@ $messages['km'] = array(
 	'configure-saved' => 'ការកំណត់រចនាសម្ព័ន្ធ​ត្រូវ​បាន​រក្សាទុក​ហើយ',
 	'configure-section-features' => 'លក្ខណៈពិសេស​ៗ',
 	'configure-section-general' => 'ការកំណត់ទូទៅនានា',
+	'configure-section-pages' => 'ទំព័រ',
 	'configure-section-paths' => 'ផ្លូវ',
 	'configure-section-db' => 'មូលដ្ឋានទិន្នន័យ',
 	'configure-section-email' => 'អ៊ីមែល',
@@ -4442,12 +4444,20 @@ $messages['km'] = array(
 	'configure-throttle-action-move' => 'ផ្លាស់ទី',
 	'configure-throttle-action-emailuser' => 'ផ្ញើ​អ៊ីមែល',
 	'configure-throttle-group-anon' => 'អ្នកប្រើប្រាស់​អនាមិក​ទាំងអស់',
+	'configure-throttle-group-user' => 'ក្នុង​គណនីអ្នកប្រើប្រាស់មួយ​',
+	'configure-throttle-group-newbie' => 'ក្នុង​គណនីអ្នកប្រើប្រាស់ថ្មី​មួយ​',
+	'configure-throttle-group-ip' => 'ក្នុង​អាសយដ្ឋាន IP មួយ​',
+	'configure-throttle-count' => 'សកម្មភាព​​ដែល​បាន​អនុញ្ញាត៖',
 	'configure-throttle-group' => 'ប្រភេទ',
+	'configure-throttle-limit' => 'មាន​ដែន​កំណត់',
+	'configure-throttle-none' => 'គ្មាន​ដែន​កំណត់​',
 	'configure-condition-operator-or' => 'ឬ',
 	'configure-condition-operator-and' => 'និង',
 	'configure-condition-operator-not' => 'មិន',
 	'configure-condition-name' => 'លក្ខខណ្ឌ',
 	'configure-condition-requirement' => 'តម្រូវការ',
+	'configure-condition-name-3' => 'អ៊ីមែល​ត្រូវ​បាន​បញ្ជាក់​',
+	'configure-condition-name-4' => 'ជា​ក្រុម',
 	'configure-condition-description-5' => 'អាសយដ្ឋាន IP អ្នកប្រើប្រាស់​គឺ $1',
 	'configure-condition-description-6' => 'អាសយដ្ឋាន IP អ្នកប្រើប្រាស់​ស្ថិត​ក្នុង​ជួរ $1',
 );
@@ -5100,6 +5110,7 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -5112,8 +5123,12 @@ $messages['mk'] = array(
 	'configure-edit-core' => 'МедијаВики',
 	'configure-edit-ext' => 'Проширувања',
 	'configure-viewconfig-default-diff' => 'Промени на основните нагодувања',
+	'configure-ext-ext-dependencies' => "'''Предупредување:''' ова дополнување бара да се {{PLURAL:$2|активира следново дополнување|активираат следниве дополнувања}}: $1.",
+	'configure-ext-ext-dependency-err' => "'''Грешка:''' дополнувањето $1 бара да се активира дополнувањето $2.",
 	'configure-ext-doc' => 'Види on-line документација',
+	'configure-ext-schemachange' => "'''Предупредување:''' ова дополнуваењ бара надградба на базата на податоци за да работи како што треба!",
 	'configure-ext-settings' => 'Нагодувања',
+	'configure-ext-settings-dep-errors' => 'Ова дополнување не може да се овозможи бидејќи {{PLURAL:$1|следново прилагодување има|следниве прилагодувања имаат}} неприфатлива вредност:',
 	'configure-ext-use-extension' => 'Користи го ова проширување',
 	'configure-ext-use' => 'Користи',
 	'configure-form-reason' => 'Причина за промена:',
@@ -5156,24 +5171,38 @@ $messages['mk'] = array(
 	'configure-saved' => 'Конфигурацијата е зачувана',
 	'configure-section-features' => 'Својства',
 	'configure-section-general' => 'Општи нагодувања',
+	'configure-section-pages' => 'Страници',
 	'configure-section-paths' => 'Патеки',
 	'configure-section-db' => 'База на податоци',
+	'configure-section-load-balancing' => 'Врамнотежување на товар',
 	'configure-section-mysql' => 'Специфични за MySQL',
 	'configure-section-postgres' => 'Специфични за PostgreSQL',
 	'configure-section-sqlite' => 'Специфични за SQLite',
 	'configure-section-email' => 'Е-пошта',
+	'configure-section-enotif' => 'Известување по е-пошта',
 	'configure-section-localization' => 'Локализација',
 	'configure-section-timezone' => 'Временска зона',
+	'configure-section-zh-conversion' => 'Кинеско претворање',
+	'configure-section-debug' => 'Отстранување бубачки',
+	'configure-section-profiling' => 'Профилирање',
+	'configure-section-site' => 'Прилагодување на интернет-страница',
 	'configure-section-css-js' => 'CSS и JavaScript',
 	'configure-section-namespaces' => 'Именски простори',
 	'configure-section-stats' => 'Статистики на сајт',
+	'configure-section-skin' => 'Маски',
 	'configure-section-category' => 'Категории',
+	'configure-section-cache' => 'Кеш',
+	'configure-section-pcache' => 'Кеш на анализатор (парсер)',
+	'configure-section-messagecache' => 'Кеш за пораки',
 	'configure-section-access' => 'Пристап',
 	'configure-section-groups' => 'Групи',
 	'configure-section-block' => 'Блокирања',
+	'configure-section-rates' => 'Ограничувања на стапки',
 	'configure-section-proxy' => 'Проксија',
 	'configure-section-cookie' => 'Колачиња',
+	'configure-section-performance' => 'Исполнување задачи',
 	'configure-section-upload' => 'Подигнување',
+	'configure-section-sharedupload' => 'Заедничко подигнување',
 	'configure-section-mime' => 'MIME типови',
 	'configure-section-images' => 'Податотеки',
 	'configure-section-djvu' => 'DjVu',
@@ -5187,16 +5216,22 @@ $messages['mk'] = array(
 	'configure-section-recentchanges' => 'Скорешни промени',
 	'configure-section-users' => 'Корисници',
 	'configure-section-feed' => 'Фид',
+	'configure-section-job' => 'Задачи',
 	'configure-section-extension' => 'Проширувања',
 	'configure-section-search' => 'Барај',
 	'configure-section-copyright' => 'Copyright',
+	'configure-section-misc' => 'Разно',
+	'configure-section-filter' => 'Филтрирање',
 	'configure-section-mw-extensions' => 'МедијаВики проширувања',
 	'configure-section-external-tools' => 'Надворешни алатки',
+	'configure-section-filesystem' => 'Интеракција помеѓу Податочниот систем и Школката',
+	'configure-section-thumbnail' => 'Поставување на мини-слики',
+	'configure-section-output' => 'Излезни резултати',
 	'configure-select-wiki' => 'Избор на вики',
-	'configure-select-wiki-desc' => 'Избери го викито кои сакаш да го конфигурираш.',
+	'configure-select-wiki-desc' => 'Изберете го викито кое сакате да го конфигурирате.',
 	'configure-select-wiki-view-desc' => 'Избери го викито за кое сакаш да ја видиш верзијата.',
 	'configure-select-wiki-view-all' => 'Сите викија',
-	'configure-select-wiki-view-specific' => 'Специфично вики:',
+	'configure-select-wiki-view-specific' => 'Конкретно вики:',
 	'configure-select-wiki-submit' => 'Избор',
 	'configure-setting-not-available' => 'Ова нагодување не е достапно за оваа верзија на МедијаВики',
 	'configure-transwiki-not-in-range' => 'Бараното вики, $1, не е во допуштените вредности ($2).',
@@ -5285,6 +5320,15 @@ $messages['ml'] = array(
 	'configure-section-misc' => 'മറ്റുള്ളവ',
 	'configure-setting-not-available' => 'മീഡിയാവിക്കിയുടെ ഈ പതിപ്പില്‍ ഈ ക്രമീകരണം ലഭ്യമല്ല,',
 	'right-configure' => 'വിക്കി ക്രമപ്പെടുത്തുക',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'configure-desc-ns' => 'Нэрний зай',
+	'configure-section-timezone' => 'Цагийн бүс',
+	'configure-section-namespaces' => 'Нэрний зайнууд',
 );
 
 /** Marathi (मराठी)
@@ -6746,6 +6790,7 @@ $messages['roa-tara'] = array(
  * @author Flrn
  * @author Innv
  * @author Lockal
+ * @author Putnik
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -6830,9 +6875,9 @@ $messages['ru'] = array(
 	'configure-section-stats' => 'Статистика сайта',
 	'configure-section-skin' => 'Оформление',
 	'configure-section-category' => 'Категории',
-	'configure-section-cache' => 'Кэш',
-	'configure-section-pcache' => 'Кэш парсера',
-	'configure-section-messagecache' => 'Кэш сообщений',
+	'configure-section-cache' => 'Кеш',
+	'configure-section-pcache' => 'Кеш парсера',
+	'configure-section-messagecache' => 'Кеш сообщений',
 	'configure-section-interwiki' => 'Интервики',
 	'configure-section-access' => 'Доступ',
 	'configure-section-groups' => 'Группы',

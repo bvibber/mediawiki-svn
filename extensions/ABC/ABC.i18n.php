@@ -107,6 +107,14 @@ $messages['ca'] = array(
 	'abcdownload' => 'Descarrega:',
 );
 
+/** Danish (Dansk)
+ * @author Lhademmor
+ */
+$messages['da'] = array(
+	'abcdesc' => 'Tilføjer mærket <tt>&lt;abc&gt;</tt> for at formatere ABC-musik',
+	'abcdownload' => 'Hent:',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'abcdesc' => 'Ergänzt das <tt>&lt;abc&gt;</tt>-Tag zur Notation von Musik in ABC',
@@ -354,6 +362,14 @@ $messages['lt'] = array(
 $messages['mg'] = array(
 	'abcdesc' => 'Manampy balizy <tt>&lt;abc&gt;</tt> mba hifôrmaty ny mozika ABC',
 	'abcdownload' => 'Ampidino eto:',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'abcdesc' => 'Ја додава ознаката <tt>&lt;abc&gt;</tt> за да форматира ABC музика',
+	'abcdownload' => 'Преземи:',
 );
 
 /** Malayalam (മലയാളം)

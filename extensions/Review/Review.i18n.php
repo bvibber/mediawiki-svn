@@ -511,9 +511,14 @@ Twóje druge pógódnośenja zjadnośuju se do toś togo, źož sy wubrał 'žed
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'review_sidebar_title' => 'Κριτική',
+	'review_total_statistics' => 'Σύνολο',
+	'review_statistics_left_corner' => 'Επανάληψη',
 	'review_user_details_link' => '(λεπτομέρειες)',
+	'review_topic' => 'Θέμα',
 	'review_no_opinion' => 'Καμία γνώμη',
 	'review_rating' => 'Αξιολόγηση',
 	'review_comment' => 'Σχόλιο',
@@ -651,6 +656,7 @@ $messages['fi'] = array(
 	'review_save' => 'Tallenna arviointi',
 	'review_error' => 'Jokin on väärin!',
 	'review_total_statistics' => 'Yhteensä',
+	'review_user_details_link' => '(tiedot)',
 	'review_has_been_stored' => 'Arvostelusi tallennettiin.',
 	'review_blocked' => 'Olet estetty, joten et voi osallistua.',
 	'review_no_opinion' => 'Ei mielipidettä',
@@ -1694,6 +1700,7 @@ As suas outras classificações serão fundidas nesta onde selecionou 'sem opini
 $messages['ro'] = array(
 	'review_error' => 'Ceva e greşit!',
 	'review_total_statistics' => 'Total',
+	'review_version_link' => 'Revizia #$1',
 	'review_user_details_link' => '(detalii)',
 	'review_comment' => 'Comentariu',
 );

@@ -251,6 +251,16 @@ $messages['pt'] = array(
 	'right-getfamily' => 'Criar um ficheiro de família para o pywikipediabot',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'getfamily-desc' => 'Gera um arquivo de família para o pywikipediabot',
+	'getfamily' => 'Obter família pywikipediabot',
+	'getfamily-interwikierror' => 'Erro: configuração de interwikis incorreta. Contacte o administrador local.',
+	'right-getfamily' => 'Criar um arquivo de família para o pywikipediabot',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

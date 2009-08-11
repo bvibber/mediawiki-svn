@@ -68,6 +68,17 @@ $messages['be-tarask'] = array(
 	'fundraiserportal-tourmaline-close' => 'Схаваць гэта',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'fundraiserportal-plain-button' => 'উইকিপিডিয়াকে সাহায্য করুন!',
+	'fundraiserportal-ruby-button' => 'এখনই দান করুন',
+	'fundraiserportal-rubytext-button' => 'এখনই দান করুন',
+	'fundraiserportal-sapphire-button' => 'এখনই দান করুন',
+	'fundraiserportal-tourmaline-button' => 'এখনই দান করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -148,6 +159,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'fundraiserportal' => 'Portalo pri Donacado',
+	'fundraiserportal-desc' => 'Aldonas portalon "bonvolu donaci" ĉe la supro de la flanka menuo.',
 	'fundraiserportal-plain-button' => 'Subtenu Vikipedion!',
 	'fundraiserportal-ruby-button' => 'Donacu Nun',
 	'fundraiserportal-rubytext-button' => 'Donacu Nun',
@@ -162,6 +174,19 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'fundraiserportal' => 'Portal de recaudador de fondos',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'fundraiserportal-plain-button' => 'Toeta Vikipeediat!',
+	'fundraiserportal-ruby-button' => 'Anneta nüüd',
+	'fundraiserportal-rubytext-button' => 'Anneta nüüd',
+	'fundraiserportal-rubytext-message' => 'Iga annetus aitab meil hoida Wikipedia kõigile vabana.',
+	'fundraiserportal-sapphire-button' => 'Anneta nüüd',
+	'fundraiserportal-tourmaline-button' => 'Anneta nüüd',
 );
 
 /** Finnish (Suomi)
@@ -379,6 +404,23 @@ $messages['lb'] = array(
 	'fundraiserportal-tourmaline-button' => 'Maacht elo en Don',
 	'fundraiserportal-tourmaline-message' => 'All Don hëlleft eis fir Wikipedia fir jidferee fräi zougänglech ze maachen.',
 	'fundraiserportal-tourmaline-close' => 'Dëst vun elo u verstoppen',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'fundraiserportal' => 'Портал „Обезбедување средства“ (Fundraiser Portal)',
+	'fundraiserportal-desc' => 'Додава портал „ве молиме донирајте“ на врвот на страничната лента.',
+	'fundraiserportal-plain-button' => 'Поддржете ја Википедија!',
+	'fundraiserportal-ruby-button' => 'Донирајте сега',
+	'fundraiserportal-rubytext-button' => 'Донирајте сега',
+	'fundraiserportal-rubytext-message' => 'Секоја донација ни помага во напорите Википедија да остане бесплатна за сите нас.',
+	'fundraiserportal-rubytext-close' => 'Отсега криј го ова',
+	'fundraiserportal-sapphire-button' => 'Донирајте сега',
+	'fundraiserportal-tourmaline-button' => 'Донирајте сега',
+	'fundraiserportal-tourmaline-message' => 'Секоја донација ни помага во напорите Википедија да остане бесплатна за сите нас.',
+	'fundraiserportal-tourmaline-close' => 'Отсега криј го ова',
 );
 
 /** Dutch (Nederlands)

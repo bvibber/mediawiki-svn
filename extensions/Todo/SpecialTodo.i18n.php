@@ -554,6 +554,7 @@ $messages['fi'] = array(
 	'todo' => 'Tehtävälista',
 	'todo-tab' => 'tehtävät',
 	'todo-new-queue' => 'uusi',
+	'todo-unrecognize-type' => 'Tunnistamaton tyyppi',
 	'todo-add-queue' => 'Lisää jonoon…',
 	'todo-move-queue' => 'Siirrä jonoon…',
 	'todo-list-for' => 'Tehtävälista käyttäjälle $1',
@@ -1359,6 +1360,8 @@ $4',
 	'todo-form-details' => 'Detalhes:',
 	'todo-form-email' => 'Para receber uma notificação por e-mail quando este item for fechado, escreva o seu endereço aqui:',
 	'todo-form-submit' => 'Submeter pesquisa',
+	'right-todo' => 'Possuir lista de afazeres',
+	'right-todosubmit' => 'Restringir o privilégio de lista de afazeres de utilizadores',
 );
 
 /** Tarifit (Tarifit)

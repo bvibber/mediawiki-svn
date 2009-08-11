@@ -2797,9 +2797,14 @@ $messages['eo'] = array(
 	'datasearch_language' => 'Lingvo:',
 	'datasearch_found_word' => 'Trovita vorto',
 	'datasearch_meaning' => 'Signifo',
+	'datasearch_ext_identifier' => 'Ekstera identigilo',
 	'datasearch_search_text' => 'Serĉi tekston:',
+	'datasearch_within_words' => 'Inter vortojn:',
+	'ow_importtsv_title2' => 'Importi difinojn kaj tradukojn',
 	'ow_importtsv_import_failed' => 'Importado malsukcesis',
 	'ow_importtsv_test_run' => 'Testprovo:',
+	'ow_importtsv_nothing_added' => 'Nenio aldonita.',
+	'ow_exporttsv_languages' => 'Lingvoj:',
 	'ow_save' => 'Konservi',
 	'ow_history' => 'Historio',
 	'ow_datasets' => 'Datumara selekto',
@@ -2810,8 +2815,12 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_uiprefs' => 'Vikidatenoj',
 	'ow_none_selected' => 'Nenio elektita',
 	'ow_transaction_from_transaction' => 'el transakcio:',
+	'ow_transaction_user' => 'Salutnomo:',
+	'ow_transaction_no_action' => 'Fari nenion',
 	'ow_transaction_previous_version' => 'Antaŭa versio',
 	'ow_transaction_restore' => 'ripari',
+	'ow_transaction_remove' => 'Forigi',
+	'ow_transaction_object' => 'Objekto',
 	'ow_transaction_summary' => 'Resumo',
 	'ow_conceptmapping_no_action_specified' => 'Oni ne konas la "$1"',
 	'ow_dm_OK' => 'Ek!',
@@ -2825,6 +2834,7 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_AlternativeDefinitions' => 'Alternativaj difinoj',
 	'ow_Annotation' => 'Prinotado',
 	'ow_ApproximateMeanings' => 'Similaj signifoj',
+	'ow_Class' => 'Klaso',
 	'ow_ClassAttributeAttribute' => 'Atribuo',
 	'ow_ClassAttributes' => 'Klasaj atribuoj',
 	'ow_ClassAttributeLevel' => 'Nivelo',
@@ -2867,6 +2877,7 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_TranslatedText' => 'Tradukita teksto',
 	'ow_TranslatedTextAttributeValue' => 'Teksto',
 	'ow_TranslatedTextAttributeValues' => 'Tradukeblaj tekstoj',
+	'ow_Label' => 'Etikedo',
 	'ow_Link' => 'Ligilo',
 	'ow_LinkAttribute' => 'Eco',
 	'ow_LinkAttributeValues' => 'Ligiloj',
@@ -2888,6 +2899,10 @@ Neniu kopia operacio okazis.',
 	'ow_no_action_specified' => '<h3>Neniu ago estis specifigita</h3>
 Ĉu eble vi alvenis ĉi tiun paĝon rekte? Norme vi ne bezonus esti ĉi tie.',
 	'ow_class_attr_type_xlate' => 'Tradukebla teksto',
+	'ow_class_attr_type_plain' => 'Ordinara teksto',
+	'ow_class_attr_type_link' => 'Ligilo',
+	'ow_needs_xlation_source_lang' => 'Fonta lingvo:',
+	'ow_needs_xlation_dest_lang' => 'Cela lingvo:',
 );
 
 /** Spanish (Español)
@@ -3429,13 +3444,15 @@ $messages['fi'] = array(
 	'importtsv' => 'Wikidata: Tuo TSV',
 	'ow_importtsv_title1' => 'Tuo TSV',
 	'ow_importtsv_title2' => 'Tuo määritelmiä ja käännöksiä',
+	'ow_importtsv_header' => '<p>Tuo määritelmät ja käännökset sarkainmerkein eroteltuna tekstitiedostona, jolle olet saattanut tehdä viennin OpenOffice.org:in, Excel:in tai muun taulukkolaskentaohjelmiston tiedostomuodossa.</p>
+<p>Tiedostomuodon pitää olla sama kuin viedyissä tiedostoissa jotka ovat [[Special:ExportTSV|ExportTSV]] -sivulla. Jos olet muuttanut sarakkeiden nimiä, tuonti ei onnistu. Jos olet muuttanut id:n tai määrittävän lausekkeen määritellylle merkitykselle ilmaus mitään määritelty merkitys, että linja ei oteta huomioon. Jos olet lisännyt sarakkeet, niiden on oltava muodossa &quot;definitions_iso&quot; tai &quot;translations_iso&quot;, kun iso on ISO 639-3 kielikoodin. </p><p> Jos&#39; testikäyttöä &quot;on valittuna, kaikki toimet, jotka sen suhteen on raportoitu, mutta muutoksia ei oikeastaan tapahtunut. Sinun kannattaa tehdä testin, ennen kuin teet todellinen tuonti. </p>',
 	'ow_importtsv_not_allowed' => 'Sinulla ei ole lupaa tehdä TSV-tuontia.',
 	'ow_importtsv_importing' => 'TSV-tietueitten tuonti',
 	'ow_importtsv_import_failed' => 'Tuonti ei onnistunut',
 	'ow_importtsv_file' => 'TSV-tiedosto:',
 	'ow_importtsv_test_run' => 'Koetuonti:',
-	'ow_importtsv_not_utf8' => '<p>Tämä ei näytä olevan UTF-8-koodattu tiedosto. Tiedoston <i>täytyy</i> olla UTF-8-koodattu.
-Varmista, että sovellusohjelmasi on tallentanut tai vienyt tiedoston oikein.</p>',
+	'ow_importtsv_not_utf8' => '<p>Tämä ei näyttäisi olevan UTF-8-merkistömuotoinen tiedosto. Tiedoston <i>pitää</i> olla UTF-8-merkistömuotoinen.
+Tarkista, että sovellusohjelmasi on tallentanut tai vienyt tiedoston oikein.</p>',
 	'ow_importtsv_not_tsv' => '<p>Tämä ei näytä olevan kelvollinen TSV-tiedosto.</p>',
 	'ow_importtsv_bad_columns' => "<p>Virheellinen sarakenimi '$1'.<br />
 Sarakkeet kuuluu nimetä 'definition_iso' tai 'translations_iso',
@@ -3553,6 +3570,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 	'copy' => 'Wikidata: Kopioi',
 	'ow_copy_no_action_specified' => 'Määritä suoritettava toiminto',
 	'ow_copy_help' => 'Ohje ei ole vielä käytössä.',
+	'ow_history_transaction' => 'Tapahtuma',
 	'ow_class_attr_type_dm' => 'Määritelty merkitys',
 	'ow_class_attr_type_xlate' => 'Käännettävä teksti',
 	'ow_class_attr_type_plain' => 'Pelkkä teksti',
@@ -4658,8 +4676,26 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author CERminator
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
+	'langman_langname' => 'Naziv jezika:',
+	'langman_iso639-3' => 'ISO 639-3 kôd:',
+	'langman_iso639-2' => 'ISO 639-2 kôd:',
+	'langman_wikimedia' => 'Kôd Wikimedije:',
+	'langman_field_optional' => '(opcionalno)',
+	'langman_addlang' => 'Dodaj jezik',
+	'importlangnames' => 'Wikidata: Uvoz jezičnih naziva',
+	'datasearch_language' => 'Jezik:',
+	'datasearch_found_word' => 'Pronađena riječ',
+	'datasearch_meaning' => 'Značenje',
+	'datasearch_ext_identifier' => 'Vanjski identifikator',
+	'datasearch_search_text' => 'Pretraži tekst:',
+	'datasearch_within_words' => 'Unutar riječi:',
+	'datasearch_within_ext_ids' => 'Unutar vanjskih identifikatora:',
+	'datasearch_showing_only' => 'Prikazan je samo maksimum od $1 {{PLURAL:$1|pronalaska|pronalazaka}}.',
+	'datasearch_match_ext_ids' => 'Vanjski identifikatori koji se podudaraju s <i>$1</i>',
+	'datasearch_match_words' => 'Riječi koje se podudaraju s <i>$1</i> i pridruženim značenjima',
 	'ow_save' => 'Spremi',
 	'ow_class_attr_type_link' => 'Poveznica',
 );
@@ -5188,9 +5224,12 @@ Per favor contacta le operator o administrator del servitor.',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author Kandar
  * @author Rex
  */
 $messages['id'] = array(
+	'wikidata-desc' => 'Menambahkan basis data serupa-wiki untuk beragam tipe isi',
+	'wikidata-handler-namespace-move-error' => 'Halaman pada ruang nama yang ditangani oleh ekstensi Wikidata tak bisa dipindahkan.',
 	'languages' => 'Wikidata: Pengelola bahasa',
 	'langman-desc' => 'Tambahkan dan ubah seting bahasa dengan [[Special:Languages]]',
 	'langman_title' => 'Pengelola bahasa',
@@ -5204,6 +5243,11 @@ $messages['id'] = array(
 	'langman_wikimedia' => 'Kode Wikimedia:',
 	'langman_field_optional' => '(opsional)',
 	'langman_addlang' => 'Tambahkan bahasa',
+	'importlangnames' => 'Wikidata: impor nama bahasa',
+	'importlangnames_title' => 'Impor nama bahasa',
+	'importlangnames_not_allowed' => 'Anda tak memiliki kewenangan untuk mengimpor nama bahasa.',
+	'importlangnames_added' => 'Nama bahasa untuk "$1" sudah ditambahkan.',
+	'importlangnames_not_found' => '<strong>Entri bahasa untuk "$1" tidak ditemukan!</strong>',
 	'datasearch' => 'Wikidata: Pencarian data',
 	'datasearch_language' => 'Bahasa:',
 	'datasearch_found_word' => 'Kata yang ditemukan',
@@ -5216,7 +5260,23 @@ $messages['id'] = array(
 	'datasearch_match_ext_ids' => 'Identifikasi eksternal cocok dengan <i>$1</i>',
 	'datasearch_match_words' => 'Kata cocok dengan <i>$1</i> dan arti yang berhubungan',
 	'datasearch_match_words_lang' => 'Kata pada <i>$1</i> cocok dengan <i>$2</i> dan arti yang berhubungan',
+	'importtsv' => 'Wikidata: impor TSV',
+	'ow_importtsv_title1' => 'Impor TSV',
+	'ow_importtsv_title2' => 'Impor definisi dan terjemahan',
+	'ow_importtsv_not_allowed' => 'Anda tak memiliki kewenangan untuk melakukan impor TSV.',
+	'ow_importtsv_importing' => 'Mengimpor data TSV',
+	'ow_importtsv_import_failed' => 'Gagal mengimpor',
+	'ow_importtsv_file' => 'Berkas TSV:',
+	'ow_importtsv_test_run' => 'Jalannya uji:',
+	'ow_importtsv_not_tsv' => '<p>Tampaknya ini bukan berkas TSV yang benar.</p>',
+	'ow_impexptsv_unknown_lang' => '<p>Bahasa tidak tepat atau tidak dikenal: $1.<br />
+Harus sesuai dengan kode bahasa ISO 639-3.</p>',
+	'exporttsv' => 'Wikidata: expor TSV',
+	'ow_exporttsv_title' => 'Ekspor suatu koleksi ke TSV',
 	'ow_exporttsv_languages' => 'Bahasa:',
+	'ow_exporttsv_not_allowed' => 'Anda tak memiliki kewenangan untuk melakukan ekspor TSV.',
+	'ow_exporttsv_export_failed' => 'Gagal mengekspor',
+	'addcollection' => 'Wikidata: tambahkan koleksi',
 	'ow_save' => 'Simpan',
 	'ow_history' => 'Versi',
 	'ow_datasets' => 'Pemilihan set-data',
@@ -5226,16 +5286,36 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_uipref_datasets' => 'Tampilan baku:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Tidak ada yang dipilih',
+	'transaction' => 'Wikidata: log transaksi',
+	'ow_transaction_from_transaction' => 'Dari transaksi:',
 	'ow_transaction_count' => 'Jumlah:',
 	'ow_transaction_user' => 'Nama pengguna:',
+	'ow_transaction_show_rollback' => 'Tampilkan kontrol pengembalian:',
 	'ow_transaction_rollback_button' => 'Kembalikan',
 	'ow_transaction_rollback_header' => 'Kembalikan',
+	'ow_transaction_no_action' => 'Jangan lakukan apapun',
+	'ow_transaction_previous_version' => 'Versi sebelumnya',
+	'ow_transaction_restore' => 'Kembalikan',
 	'ow_transaction_remove' => 'Hapus',
+	'ow_transaction_operation' => 'Pengerjaan',
+	'ow_transaction_is_latest' => 'mutakhir',
+	'ow_transaction_object' => 'Objek',
 	'ow_transaction_summary' => 'Ringkasan',
+	'conceptmapping' => 'Wikidata: Pemetaan konsep',
+	'ow_conceptmapping_title' => 'Pemetaan Konsep',
 	'ow_conceptmapping_no_action_specified' => 'Tindakan "$1" tidak didukung.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'tidak dimasukkan',
+	'ow_will_insert' => 'Akan memasukkan yang berikut:',
+	'ow_contents_of_mapping' => 'Isi pemetaan',
+	'ow_available_contexts' => 'Konteks yang tersedia',
+	'ow_add_concept_link' => 'Tambahkan pranala ke konsep lain',
+	'ow_concept_panel' => 'Panel Konsep',
+	'ow_AlternativeDefinition' => 'Definisi lainnya',
+	'ow_AlternativeDefinitions' => 'Definisi lainnya',
 	'ow_Annotation' => 'Anotasi',
+	'ow_ClassAttributeAttribute' => 'Atribut',
+	'ow_ClassAttributeLevel' => 'Tingkat',
 	'ow_ClassAttributeType' => 'Tipe',
 	'ow_Collection' => 'Koleksi',
 	'ow_Collection_colon' => 'Koleksi:',
@@ -5259,11 +5339,23 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_Value' => 'Nilai',
 	'ow_Permission_denied' => '<h2>Hak ases ditolak</h2>',
 	'copy' => 'Wikidata: Salin',
+	'ow_history_transaction' => 'Transaksi:',
+	'ow_class_attr_type_xlate' => 'Teks yang bisa diterjemahkan',
+	'ow_class_attr_type_plain' => 'Teks polos',
+	'ow_class_attr_type_link' => 'Pranala',
+	'ow_class_attr_type_option' => 'Daftar pilihan',
+	'needstranslation' => 'Wikidata: ekspresi yang memerlukan penerjemahan',
+	'ow_needs_xlation_title' => 'Ekspresi yang memerlukan penerjemahan',
+	'ow_needs_xlation_source_lang' => 'Bahasa sumber:',
+	'ow_needs_xlation_dest_lang' => 'Bahasa yang dituju:',
+	'ow_needs_xlation_no_dest_lang' => 'Tentukan bahasa yang dituju.',
 	'ow_show' => 'Tampilkan',
 	'ow_upload' => 'Unggah',
 	'ow_create' => 'Buat',
 	'ow_suggest_previous' => 'Sebelumnya',
 	'ow_suggest_next' => 'Selanjutnya',
+	'ow_suggest_clear' => 'Kosongkan',
+	'right-addlanguage' => 'Tambah dan rubah setelan bahasa',
 );
 
 /** Ido (Ido)
@@ -5944,7 +6036,9 @@ $messages['kk-tr'] = array(
  */
 $messages['km'] = array(
 	'languages' => 'ទិន្នន័យវិគី៖ អ្នកគ្រប់គ្រង​ភាសា',
+	'langman-desc' => 'បន្ថែម​និង​ផ្លាស់ប្ដូរ​ការកំណត់​ភាសា​ជាមួយ​[[Special:Languages]]',
 	'langman_title' => 'អ្នកគ្រប់គ្រង​ភាសា',
+	'langman_not_allowed' => 'អ្នក​មិន​មាន​ការ​អនុញ្ញាត​​ក្នុង​ការ​ផ្លាស់​ប្ដូរ​ការកំណត់​​ភាសា​ទេ​។​',
 	'langman_header' => 'វាយបញ្ចូលលេខកូដភាសានិងឈ្មោះជាភាសាអង់គ្លេសរបស់វាខាងក្រោម៖',
 	'langman_req_fields' => 'ត្រូវការ​ទាំងឈ្មោះ​ភាសា​និង​លេខកូដ ISO 639-3!',
 	'langman_adding' => 'កំពុង​បន្ថែម​ភាសា $1 ជាមួយ​កូនសោ​ $2 ។',
@@ -5953,6 +6047,7 @@ $messages['km'] = array(
 	'langman_iso639-2' => 'លេខកូដ ISO 639-2៖',
 	'langman_wikimedia' => 'លេខកូដវិគីមីឌា៖',
 	'langman_addlang' => 'បន្ថែមភាសា',
+	'importlangnames' => 'ទិន្នន័យវិគី៖ នាំចូល​ឈ្មោះ​​ភាសា',
 	'importlangnames_title' => 'នាំចូល​ឈ្មោះ​ភាសា​',
 	'importlangnames_not_allowed' => 'អ្នក​មិន​មាន​ការ​អនុញាត​ក្នុង​ការ​នាំ​ចូល​ឈ្មោះ​ភាសា​ទេ​។​',
 	'importlangnames_added' => 'ឈ្មោះ​ភាសា​សម្រាប់ ​"$1" បាន​បន្ថែម​។​',
@@ -5982,7 +6077,12 @@ $messages['km'] = array(
 	'ow_uipref_datasets' => 'ទិដ្ឋភាព​លំនាំដើម',
 	'ow_uiprefs' => 'ទិន្នន័យ​វិគី',
 	'ow_none_selected' => 'គ្មានអ្វីត្រូវបានជ្រើសយកទេ',
+	'ow_transaction_count' => 'ចំនួន​៖',
 	'ow_transaction_user' => 'ឈ្មោះ​អ្នក​ប្រើប្រាស់​៖',
+	'ow_transaction_previous_version' => 'កំណែ​មុន​',
+	'ow_transaction_restore' => 'ស្ដារឡើងវិញ',
+	'ow_transaction_remove' => 'ដកចេញ',
+	'ow_transaction_operation' => 'ប្រតិបត្តិការ',
 	'ow_transaction_summary' => 'សង្ខេប​សេចក្ដី​',
 	'ow_conceptmapping_no_action_specified' => '',
 	'ow_dm_OK' => 'យល់ព្រម',
@@ -6020,7 +6120,9 @@ $messages['km'] = array(
 	'ow_PopupAnnotation' => 'ចំណារពន្យល់',
 	'ow_Relations' => 'ទំនាក់ទំនង',
 	'ow_RelationType' => 'ប្រភេទ​ទំនាក់ទំនង',
+	'ow_Remove' => 'ដកចេញ',
 	'ow_Spelling' => 'ការប្រកប',
+	'ow_SuggestHint' => 'ចុច​ដើម្បី​ផ្លាស់​ប្ដូរ​ការ​ជ្រើសរើស​',
 	'ow_Synonyms' => 'វេវចនសព្ទ',
 	'ow_SynonymsAndTranslations' => 'វេវចនសព្ទ និង ការបកប្រែ',
 	'ow_Source' => 'ប្រភព',
@@ -6039,9 +6141,12 @@ $messages['km'] = array(
 	'ow_User' => 'អ្នកប្រើប្រាស់​',
 	'ow_Property' => 'លក្ខណៈ',
 	'ow_Value' => 'តម្លៃ',
+	'ow_added' => 'បានបន្ថែម',
+	'ow_removed' => 'បាន​ដកចេញ',
 	'ow_meaningsoftitle' => 'និយមន័យ របស់ "$1"',
 	'ow_meaningsofsubtitle' => '<em>តំណភ្ជាប់វិគី៖</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>សិទ្ធិ​បាន​បដិសេធ</h2>',
+	'copy' => 'វិគី​ទិន្នន័យ​៖ Copy',
 	'ow_copy_no_action_specified' => 'សូម សំដៅ មួយសកម្មភាព',
 	'ow_copy_help' => 'មិនទាន់មានជំនួយនៅឡើយ។',
 	'ow_copy_successful' => '<h2>ចម្លង​ដោយជោគជ័យ</h2>
@@ -6057,6 +6162,7 @@ $messages['km'] = array(
 	'ow_class_attr_type_xlate' => 'អត្ថបទ​ដែលអាច​បកប្រែបាន​',
 	'ow_class_attr_type_plain' => 'អក្សរ​ទទេ',
 	'ow_class_attr_type_link' => 'តំណ​បណ្ដាញ​',
+	'ow_class_attr_type_option' => 'បញ្ជី​ជម្រើស',
 	'ow_needs_xlation_source_lang' => 'ភាសា​ប្រភព​៖',
 	'ow_needs_xlation_dest_lang' => 'ភាសាគោលដៅ​៖',
 	'ow_needs_xlation_no_dest_lang' => 'សូមបញ្ជាក់​អំពីភាសា​គោលដៅ​។​',
@@ -6455,10 +6561,24 @@ $messages['la'] = array(
 	'ow_transaction_object' => 'Obiectum',
 	'ow_transaction_summary' => 'Summarium',
 	'ow_Class' => 'Classis',
+	'ow_Language' => 'Lingua',
+	'ow_OptionAttribute' => 'Proprietas',
+	'ow_Relations' => 'Relationes',
+	'ow_Remove' => 'Removere',
+	'ow_Synonyms' => 'Synonyma',
+	'ow_Source' => 'Fons',
+	'ow_Text' => 'Textus',
+	'ow_TextAttribute' => 'Proprietas',
+	'ow_Time' => 'Tempus',
 	'ow_Link' => 'Nexus',
 	'ow_LinkAttributeValues' => 'Nexus',
 	'ow_User' => 'Usor',
+	'ow_Property' => 'Proprietas',
 	'ow_added' => 'Additum',
+	'ow_removed' => 'Abrogatum',
+	'ow_class_attr_type_link' => 'Nexus',
+	'ow_show' => 'Monstrare',
+	'ow_create' => 'Creare',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -7540,8 +7660,11 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Nghtwlkr
+ * @author Simny
  */
 $messages['no'] = array(
+	'wikidata-desc' => 'Legger til en wiki-liknende database for ulike typer innhold.',
+	'wikidata-handler-namespace-move-error' => 'Sider i navnrom som kontrolleres av Wikipedia-tillegget kan ikke flyttes.',
 	'languages' => 'Wikidata: Språkbehandler',
 	'langman-desc' => 'Legg til og endre språkinstillinger med [[Special:Languages]]',
 	'langman_title' => 'Språkbehandler',
@@ -7722,6 +7845,7 @@ Velg en samlign for eksportering. Skriv inn en kommaseparert liste av ISO 639-3-
 	'ow_meaningsoftitle' => 'Betydninger av «$1»',
 	'ow_meaningsofsubtitle' => '<em>Wikilenke:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>TILGANG NEKTET</h2>',
+	'copy' => 'Wikidata: Kopier',
 	'ow_copy_no_action_specified' => 'Vennligst angi en handling',
 	'ow_copy_help' => 'Hjelp er ikke implementert enda.',
 	'ow_please_proved_dmid' => 'Det virker som om teksten din mangler en «?dmid=<ID>» (dmid=ID for definert betydning)<br />Vennligst kontakt en systemadministrator.',
@@ -8308,6 +8432,13 @@ $messages['pms'] = array(
 	'ow_Value' => 'Valor',
 );
 
+/** Pontic (Ποντιακά)
+ * @author Omnipaedista
+ */
+$messages['pnt'] = array(
+	'ow_Time' => 'Χρόνον',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -8588,6 +8719,7 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
  */
 $messages['pt-br'] = array(
 	'wikidata-desc' => 'Adicionar banco de dados tipo wiki para vários tipos de conteúdo',
+	'wikidata-handler-namespace-move-error' => 'Páginas em domínios manipulados pela extensão Wikidata não podem ser movidas',
 	'languages' => 'Wikidata: Gestor de línguas',
 	'langman-desc' => 'Adicione e mude configurações de língua com [[Special:Languages]]',
 	'langman_title' => 'Gestor de línguas',
@@ -8772,6 +8904,7 @@ Por favor, verifique o endereço ''web''.",
 	'ow_meaningsoftitle' => 'Significados de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Ligação wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Permissão negada</h2>',
+	'copy' => 'Wikidata: Copiar',
 	'ow_copy_no_action_specified' => 'Por favor, especifique uma ação',
 	'ow_copy_help' => 'A ajuda ainda não está implementada.',
 	'ow_please_proved_dmid' => 'Parece que em sua entrada está faltando um "?dmid=<qualquercoisa>" (dmid=ID do Significado Definido)<br />
@@ -9260,6 +9393,67 @@ $messages['ru'] = array(
 	'ow_nstab_edit_copy' => 'править копию',
 	'right-addlanguage' => 'добавление и изменение языковых настроек',
 	'ow_shown_datasets' => 'Показанные наборы данных',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'ow_importtsv_nothing_added' => 'Nenti junciutu.',
+	'ow_exporttsv_title' => 'Esporta na collezioni a TSV',
+	'ow_exporttsv_languages' => 'Lingue:',
+	'ow_exporttsv_export_failed' => 'Esportazioni fallita',
+	'addcollection' => 'Wikidata: junci collezioni',
+	'ow_save' => 'Sarva',
+	'ow_history' => 'Storia',
+	'ow_datasets' => 'Silizzioni Data-set',
+	'ow_noedit_title' => 'Nuddu pirmessu pi editari',
+	'ow_uipref_datasets' => 'Vista pridifinita:',
+	'ow_uiprefs' => 'Wikidata',
+	'ow_transaction_remove' => 'Lèva',
+	'ow_transaction_operation' => 'Operazioni',
+	'ow_transaction_object' => 'Uggettu',
+	'ow_transaction_summary' => 'Summariu:',
+	'ow_dm_OK' => 'OK',
+	'ow_dm_not_found' => 'nun truvatu ni lu database o nun funziunanti',
+	'ow_AddHint' => 'Nserisci li novi colonni da junciri',
+	'ow_AlternativeDefinition' => 'Difinizioni alternativa',
+	'ow_AlternativeDefinitions' => 'Difinizioni alternativi',
+	'ow_Annotation' => 'Annotazioni',
+	'ow_ApproximateMeanings' => 'Significatu approssimativu',
+	'ow_Class' => 'Classi',
+	'ow_ClassAttributeAttribute' => 'Attributu',
+	'ow_ClassAttributeLevel' => 'Liveddu',
+	'ow_ClassAttributeType' => 'Tipu',
+	'ow_Collection' => 'Collezioni',
+	'ow_Collection_colon' => 'Collezioni:',
+	'ow_CollectionMember' => 'Membru da collezioni',
+	'ow_CollectionMembership' => 'Appartinenza â collezioni',
+	'ow_Definition' => 'Difinizioni',
+	'ow_DefinedMeaningAttributes' => 'Annotazioni',
+	'ow_Expression' => 'Espressioni',
+);
+
+/** Scots (Scots)
+ * @author Omnipaedista
+ */
+$messages['sco'] = array(
+	'datasearch_language' => 'Leid:',
+	'ow_exporttsv_languages' => 'Leids:',
+	'ow_save' => 'Hain',
+	'ow_history' => 'History',
+	'ow_uiprefs' => 'Wikidata',
+	'ow_transaction_restore' => 'Restore',
+	'ow_transaction_remove' => 'Lowse',
+	'ow_transaction_object' => 'Object',
+	'ow_dm_OK' => 'Aye',
+	'ow_Class' => 'Class',
+	'ow_Language' => 'Leid',
+	'ow_OptionAttribute' => 'Fend',
+	'ow_Time' => 'Tyme',
+	'ow_Link' => 'Link',
+	'ow_User' => 'Uiser',
+	'ow_removed' => 'Lowsed',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

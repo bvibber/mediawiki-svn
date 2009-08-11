@@ -277,6 +277,13 @@ $messages['li'] = array(
 	'fixedimage-desc' => 'Veug tag <tt><nowiki><fundraising></nowiki></tt> es aafbeilding',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'fixedimage-desc' => 'Додава ознака <tt><nowiki><fundraising></nowiki></tt> како слика',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

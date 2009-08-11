@@ -370,6 +370,8 @@ To njedajo se drugi raz cyniś.',
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'createsigndoc-pagename' => 'Σελίδα:',
@@ -379,9 +381,11 @@ $messages['el'] = array(
 	'createsigndoc-extaddress' => 'Πόλη, Περιοχή, Χώρα:',
 	'createsigndoc-phone' => 'Τηλεφωνικός αριθμός:',
 	'createsigndoc-bday' => 'Ημερομηνία Γέννησης:',
+	'createsigndoc-minage' => 'Ελάχιστη ηλικία:',
 	'createsigndoc-introtext' => 'Εισαγωγή:',
 	'createsigndoc-hidden' => 'Κρυμμένος',
 	'createsigndoc-optional' => 'Προαιρετικός',
+	'createsigndoc-create' => 'Δημιουργία',
 	'createsigndoc-error-generic' => 'Σφάλμα: $1',
 	'createsigndoc-error-pagenoexist' => 'Σφάλμα: Η σελίδα [[$1]] δεν υπάρχει.',
 );
@@ -912,10 +916,12 @@ $messages['kw'] = array(
 );
 
 /** Latin (Latina)
+ * @author Omnipaedista
  * @author SPQRobin
  */
 $messages['la'] = array(
 	'createsigndoc-pagename' => 'Pagina:',
+	'createsigndoc-create' => 'Creare',
 	'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',
 );
 
@@ -1313,6 +1319,8 @@ Isto não pode ser feito pela segunda vez.',
 $messages['ro'] = array(
 	'createsigndoc-pagename' => 'Pagină:',
 	'createsigndoc-email' => 'Adresă e-mail:',
+	'createsigndoc-address' => 'Adresă domiciliu:',
+	'createsigndoc-extaddress' => 'Oraş, stat, ţară:',
 	'createsigndoc-phone' => 'Număr de telefon:',
 	'createsigndoc-bday' => 'Zi de naştere:',
 	'createsigndoc-minage' => 'Vârstă minimă:',

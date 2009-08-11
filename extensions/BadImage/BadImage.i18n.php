@@ -1318,6 +1318,33 @@ $messages['lb'] = array(
 	'right-badimages' => 'Lëscht vun de schlechte Biller aktualiséieren',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'badimages' => 'Ewegsjaflies plaetjes',
+	'badimages-desc' => 'Oetbreijing veur de lies mit oongewunsjde plaetjes in MediaWiki',
+	'badimages-add-btn' => 'Toevoege',
+	'badimages-added' => '$1 is toegevoeg aon de lies.',
+	'badimages-count' => "Dao {{PLURAL:$1|sjteit|sjtoon}} '''$1''' {{PLURAL:$1|plaetje|plaetjes}} op de ewegsjaflies veur plaetjes.",
+	'badimages-name' => 'Naam:',
+	'badimages-not-added' => "'t Plaetje kós neet waere toegevoeg.",
+	'badimages-not-removed' => "'t Plaetje kós neet waere eweggesjaf.",
+	'badimages-reason' => 'Raej:',
+	'badimages-remove' => '(ewegsjaffe)',
+	'badimages-remove-btn' => 'Ewegsjaffe',
+	'badimages-remove-confirm' => 'Bevestig dats doe $1 van de lies wils ewegsjaffe:',
+	'badimages-removed' => '$1 is van de lies eweggesjaf.',
+	'badimages-subheading' => 'Hujige inhaud',
+	'badimages-unprivileged' => '(Doe höbs neet de richtige rol om de lies te kinne verangere)',
+	'badimages-log-name' => 'Ewegsjaflies plaetjes',
+	'badimages-log-header' => "Dit is 't logbook van verangeringe in de [[{{MediaWiki:Badimages-page}}|ewegsjaflies plaetjes]].",
+	'badimages-log-add' => '[[$1]] is toegevoeg aan de ewegsjaflies plaetjes',
+	'badimages-log-remove' => '[[$1]] is eweggesjaf van de ewegsjaflies plaetjes',
+	'badimages-page' => '{{ns:help}}:Ewegsjaflies plaetjes',
+	'right-badimages' => 'Ewegsjaflies besjtandje aanpasse',
+);
+
 /** Lao (ລາວ)
  * @author Passawuth
  */

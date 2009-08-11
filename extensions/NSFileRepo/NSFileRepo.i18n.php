@@ -36,6 +36,13 @@ $messages['be-tarask'] = array(
 	'nsfilerepo-desc' => 'Дадае дадатковыя магчымасьці для загружаных файлаў у залежнасьці ад прасторы назваў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'nsfilerepo-desc' => "Pourchas a ra d'ar restroù enporzhiet arc'hwelioù diazezet war an esaouenn anv",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

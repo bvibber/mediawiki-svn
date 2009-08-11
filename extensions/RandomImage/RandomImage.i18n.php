@@ -202,6 +202,13 @@ $messages['lb'] = array(
 	'randomimage-desc' => 'Weist eng zoufälleg Medien-Datei a benotzt <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'randomimage-desc' => 'Дава случаен избирач на медии користејќи <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
