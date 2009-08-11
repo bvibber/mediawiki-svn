@@ -109,6 +109,35 @@ fn: {
 					action.options.ownline
 				);
 			break;
+			case 'dialog':
+				if ( $j( '#' + action.id ).size() == 0 ) {
+					var dialogConf = action.dialog;
+					// Add some stuff to dialogConf
+					dialogConf.bgiframe = true;
+					dialogConf.autoOpen = false;
+					dialogConf.modal = true;
+					dialogConf.title = gM( action.titleMsg );
+					
+					// Transform messages in keys
+					// Stupid JS won't let us do stuff like
+					// foo = { gM ('bar'): baz }
+					for ( msg in dialogConf.buttons ) {
+						dialogConf.buttons[ gM( msg ) ] = dialogConf.buttons[msg];
+						delete dialogConf.buttons[msg];
+					}
+					
+					// Create the dialog <div>
+					if ( typeof action.html == 'function' )
+						action.html = action.html();
+					$j( '<div></div> ')
+						.attr( 'id', action.id )
+						.html( action.html )
+						.data( 'context', context )
+						.appendTo( $j( 'body' ) )
+						.dialog( dialogConf );
+				}
+				$j( '#' + action.id ).dialog( 'open' );
+			break;
 			default: break;
 		}
 	},

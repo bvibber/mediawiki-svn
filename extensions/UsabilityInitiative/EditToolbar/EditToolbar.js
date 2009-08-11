@@ -320,6 +320,38 @@ var editToolbarConfiguration = {
 						}
 					}
 				}
+			},
+			'search': {
+				tools: {
+					'replace': {
+						labelMsg: 'edittoolbar-tool-replace',
+						type: 'button',
+						icon: 'search-replace.png',
+						action: {
+							type: 'dialog',
+							titleMsg: 'edittoolbar-tool-replace-title',
+							id: 'edittoolbar-replace-dialog',
+							html: function() { return '<form><fieldset><label for="edittoolbar-replace-search">'
+							+ gM( 'edittoolbar-tool-replace-search' ) +
+							'</label><input type="text" id="edittoolbar-replace-search" style="display:block;" /><label for="edittoolbar-replace-replace">' +
+							gM( 'edittoolbar-tool-replace-replace' ) +
+							'</label><input type="text" id="edittoolbar-replace-replace" style="display:block;" /></fieldset></form>';
+							},
+							dialog: {
+								buttons: {
+									'edittoolbar-tool-replace-button': function() {
+										var searchStr = $j( '#edittoolbar-replace-search' ).val();
+										var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
+										var regex = new RegExp( searchStr, 'g' );
+										var $textarea = $j(this).data( 'context' ).$textarea;
+										$textarea.val( $textarea.val().replace( regex, replaceStr ) );
+										// TODO: Hook for wikEd
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	},

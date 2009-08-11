@@ -97,6 +97,11 @@ class EditToolbarHooks {
 				'edittoolbar-tool-newline',
 				'edittoolbar-tool-table',
 				'edittoolbar-tool-table-example',
+				'edittoolbar-tool-replace',
+				'edittoolbar-tool-replace-title',
+				'edittoolbar-tool-replace-search',
+				'edittoolbar-tool-replace-replace',
+				'edittoolbar-tool-replace-button',
 				/* Special Characters Section */
 				'edittoolbar-section-characters',
 				'edittoolbar-characters-page-latin',
