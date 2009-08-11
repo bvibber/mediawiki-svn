@@ -31,7 +31,7 @@ class UsabilityInitiativeHooks {
 	private static $scripts = array();
 	private static $scriptFiles = array(
 		'tests' => array(
-			array( 'src' => 'js/tests/wikiEditor.toolbar.js' )
+			array( 'src' => 'js/tests/wikiEditor.toolbar.js', 'version' => 0 )
 		),
 		// Code to include when js2 is not present
 		'no_js2' => array(
