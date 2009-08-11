@@ -1,12 +1,11 @@
 <?php
+/**
+ * Magic word localization for the MathStatFunction extension
+*/
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
-}
+$magicWords = array();
 
-$wgMathStatFunctionsMagic = array();
-
-$wgMathStatFunctionsMagic['en'] = array(
+$magicWords['en'] = array(
 	'const'         => array( 0, 'const' ),
 	'median'        => array( 0, 'median' ),
 	'mean'          => array( 0, 'mean' ),

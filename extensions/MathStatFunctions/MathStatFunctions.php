@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'MathStatFunctions',
-	'version' => '1.1',
+	'version' => '1.2',
 	'author' => 'Carl Fürstenberg (AzaToth)',
 	'description' => 'A collection of mathematical and statistical functions',
 	'descriptionmsg' => 'msfunc_desc',
@@ -16,7 +16,6 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $wgExtensionMessagesFiles['MathStatFunctions'] = dirname( __FILE__ ) . '/MathStatFunctions.i18n.php';
 $wgExtensionFunctions[] = 'wfSetupMathStatFunctions';
-$wgHooks['LanguageGetMagic'][]       = 'wfMathStatFunctionsLanguageGetMagic';
 
 /**
  * \brief Exception class identifying that ParserFunctions is not available
@@ -454,14 +453,5 @@ function wfSetupMathStatFunctions() {
 	$wgParser->setFunctionHook( 'csc',    array( &$wgExtMathStatFunctions, 'cscHook' ) );
 	$wgParser->setFunctionHook( 'acsc',   array( &$wgExtMathStatFunctions, 'acscHook' ) );
 
-	return true;
-}
-
-function wfMathStatFunctionsLanguageGetMagic( &$magicWords, $langCode ) {
-	global $wgMathStatFunctionsMagic;
-	require_once( dirname(__FILE__) . '/MathStatFunctions.i18n.magic.php' );
-
-	if ( !in_array( $langCode, $wgMathStatFunctionsMagic ) ) $langCode = 'en';
-	$magicWords = array_merge( $magicWords, $wgMathStatFunctionsMagic[$langCode] );
 	return true;
 }
