@@ -1,5 +1,5 @@
 /**
- *
+ * Test set for the edit toolbar
  */
 var textareaId = '#wpTextbox1';
 var wikiEditorTests = {
@@ -7,31 +7,31 @@ var wikiEditorTests = {
 	'remove_character': {
 		'call': 'removeFromToolbar',
 		'data': {
-	        'section': 'characters',
-	        'page': 'latin',
-	        'character': 'Á'
+			'section': 'characters',
+			'page': 'latin',
+			'character': 'Á'
 	    },
 	    'test': 'div[rel=characters].section div[rel=latin].page a[rel=Á]'
-    },
-    'remove_table_row_0': {
+	},
+	'remove_table_row_0': {
 		// Should remove the first non-heading row of format help
 		'call': 'removeFromToolbar',
-	    'data': {
-	        'section': 'help',
-	        'page': 'heading',
-	        'row': 0
-	    },
-	    'test': 'div[rel=help].section div[rel=format].page table tr td:eq(0):contains("1st level heading")'
-    },
-    'remove_table_row_1': {
+		'data': {
+			'section': 'help',
+			'page': 'heading',
+			'row': 0
+		},
+		'test': 'div[rel=help].section div[rel=format].page table tr td:eq(0):contains("1st level heading")'
+	},
+	'remove_table_row_1': {
 		// Should remove the second non-heading row of link help
 		'call': 'removeFromToolbar',
-	    'data': {
-	        'section': 'help',
-	        'page': 'heading',
-	        'row': 1
-	    },
-	    'test': 'div[rel=help].section div[rel=format].page table tr td:eq(0):contains("3rd level heading")'
+		'data': {
+			'section': 'help',
+			'page': 'heading',
+			'row': 1
+		},
+		'test': 'div[rel=help].section div[rel=format].page table tr td:eq(0):contains("3rd level heading")'
 	}
 };
 js2AddOnloadHook( function() {
