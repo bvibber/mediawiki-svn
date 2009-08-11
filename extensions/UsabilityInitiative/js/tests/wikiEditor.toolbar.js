@@ -62,8 +62,8 @@ js2AddOnloadHook( function() {
 					wikiEditorTests[test].data
 				);
 				var pass = ui.find( wikiEditorTests[test].test ).size() == 0;
-				messages[messages.length] =
-					test + ':' + ( pass ? 'PASS' : 'FAIL' );
+				messages.push (
+					test + ':' + ( pass ? 'PASS' : 'FAIL' ) );
 				if ( pass ) {
 					passes++;
 				}
