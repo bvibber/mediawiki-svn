@@ -35,8 +35,7 @@ var wikiEditorTests = {
 	}
 };
 js2AddOnloadHook( function() {
-	$j( '<button>Run wikiEditor Tests!</button>' )
-		.appendTo( $j( 'body' ) )
+	var button = $j( '<button>Run wikiEditor Tests!</button>' )
 		.css( {
 			'position': 'fixed',
 			'bottom': 0,
@@ -45,9 +44,13 @@ js2AddOnloadHook( function() {
 			'backgroundColor': '#333333',
 			'color': '#DDDDDD',
 			'padding': '0.5em',
-			'border': 'none'
+			'border': 'none',
+			'display': 'none'
 		} )
 		.click( function() {
+			if ( $j(this).attr( 'enabled' ) == 'false' ) {
+				$j(this).slideUp( 'slow' );
+			}
 			var messages = [ 'Running tests for wikiEditor API' ];
 			var target = $j( textareaId );
 			var ui = target.data( 'context' ).$ui;
@@ -77,5 +80,7 @@ js2AddOnloadHook( function() {
 				.css( 'backgroundColor', passes < tests ? 'red' : 'green' )
 				.attr( 'enabled', 'false' )
 				.blur();
-		} );
+		} )
+		.appendTo( $j( 'body' ) );
+	button.slideDown( 'slow' )
 } );
