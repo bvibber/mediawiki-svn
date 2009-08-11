@@ -48,7 +48,7 @@ js2AddOnloadHook( function() {
 			'border': 'none'
 		} )
 		.click( function() {
-			console.log( 'Running tests for wikiEditor API' );
+			var messages = [ 'Running tests for wikiEditor API' ];
 			var target = $j( textareaId );
 			var ui = target.data( 'context' ).$ui;
 			var passes = 0;
@@ -59,15 +59,20 @@ js2AddOnloadHook( function() {
 					wikiEditorTests[test].data
 				);
 				var pass = ui.find( wikiEditorTests[test].test ).size() == 0;
-				if ( console.log ) {
-					console.log( test + ':' + ( pass ? 'PASS' : 'FAIL' ) );
-				}
+				messages[messages.length] =
+					test + ':' + ( pass ? 'PASS' : 'FAIL' );
 				if ( pass ) {
 					passes++;
 				}
 				tests++;
 			}
+			if ( window.console !== undefined ) {
+				for ( message in messages ) {
+					console.log( messages[message] );
+				}
+			}
 			$j(this)
+				.attr( 'title', messages.join( " | " ) )
 				.text( tests + ' / ' + passes + ' were successful' )
 				.css( 'backgroundColor', passes < tests ? 'red' : 'green' )
 				.attr( 'enabled', 'false' )
