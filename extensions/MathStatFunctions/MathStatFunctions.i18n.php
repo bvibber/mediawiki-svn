@@ -8,10 +8,10 @@
 $messages = array();
 
 $messages['en'] = array(
-        'msfunc_desc'     => 'A collection of mathematical and statistical functions',
-        'msfunc_nan'      => 'Resulting value is not a number',
-        'msfunc_inf'      => 'Resulting value is infinity',
-        'msfunc_div_zero' => 'Division by zero',
+	'msfunc_desc'     => 'A collection of mathematical and statistical functions',
+	'msfunc_nan'      => 'Resulting value is not a number',
+	'msfunc_inf'      => 'Resulting value is infinity',
+	'msfunc_div_zero' => 'Division by zero',
 );
 
 /** Message documentation (Message documentation)
