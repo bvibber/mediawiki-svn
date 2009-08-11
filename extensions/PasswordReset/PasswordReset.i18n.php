@@ -382,6 +382,7 @@ $messages['fi'] = array(
 	'passwordreset-invalidusername' => 'Virheellinen käyttäjätunnus',
 	'passwordreset-emptyusername' => 'Tyhjä käyttäjätunnus',
 	'passwordreset-nopassmatch' => 'Salasanat eivät vastaa toisiaan',
+	'passwordreset-badtoken' => 'Virheellinen muokkauslipuke',
 	'passwordreset-username' => 'Käyttäjätunnus',
 	'passwordreset-newpass' => 'Uusi salasana',
 	'passwordreset-confirmpass' => 'Vahvista salasana',

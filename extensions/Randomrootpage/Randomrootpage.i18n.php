@@ -102,6 +102,13 @@ $messages['fa'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحهٔ ویژه‌ای]] که به طور تصادفی یکی از صفحه‌های سرشاخه را نشان می دهد',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'randomrootpage' => 'Satunnainen juurisivu',
+);
+
 /** French (Français)
  * @author Meithal
  */

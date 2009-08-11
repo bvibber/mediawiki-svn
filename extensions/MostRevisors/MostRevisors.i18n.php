@@ -426,6 +426,8 @@ $messages['oc'] = array(
 $messages['ro'] = array(
 	'mostrevisors-namespace' => 'Spaţiu de nume:',
 	'mostrevisors-submit' => 'Mergeţi',
+	'mostrevisors-showredir' => 'Arată paginile de redirecţionare',
+	'mostrevisors-hideredir' => 'Ascunde paginile de redirecţionare',
 );
 
 /** Russian (Русский)

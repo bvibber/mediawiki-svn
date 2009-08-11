@@ -498,6 +498,21 @@ Haga clic en el botón abajo para subscribirse.',
 	'action-povwatch_user' => 'agregar esta página a la lista de seguimiento de otro usuario',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'povwatch_unknown_subpage' => 'Tundmatu alaleht.',
+	'povwatch_title' => 'Pealkiri:',
+	'povwatch_comment' => 'Logi kommentaar:',
+	'povwatch_no_log' => 'Logi sissekandeid ei ole.',
+	'povwatch_no_subscribers' => 'Tellijaid ei ole.',
+	'povwatch_unsubscribe' => 'Lõpeta tellimus',
+	'povwatch_subscribe' => 'Telli',
+	'povwatch_added' => 'lisatud',
+	'action-povwatch_user' => 'lisa see lehekülg teise kasutaja jälgimisloendisse',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -1693,7 +1708,9 @@ Clique no botão abaixo para inscrever-se.',
  * @author Mihai
  */
 $messages['ro'] = array(
+	'povwatch_no_session' => 'Eroare: Formularul nu a putut fi trimis din cauza pierderii datelor sesiunii.',
 	'povwatch_invalid_title' => 'Titlul specificat este incorect',
+	'povwatch_subscriber_list' => 'O [[Special:PovWatch/subscribers|listă de înscrişi]] este disponibilă.',
 	'povwatch_subscriber_list_intro' => '<strong>Lista abonaţilor</strong>',
 	'povwatch_unknown_subpage' => 'Subpagină necunoscută.',
 	'povwatch_push' => 'Apasă',

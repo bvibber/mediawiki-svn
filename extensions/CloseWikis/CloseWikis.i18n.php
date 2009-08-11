@@ -383,6 +383,10 @@ $messages['et'] = array(
 	'closewikis-page-err-opened' => 'Wiki ei ole suletud',
 	'closewikis-list' => 'Suletud wikide list',
 	'closewikis-list-header-wiki' => 'Viki',
+	'closewikis-list-header-by' => 'Sulgeja:',
+	'closewikis-list-header-timestamp' => 'Suletud',
+	'closewikis-log-close' => 'suleti $2',
+	'closewikis-log-reopen' => 'taasavati $2',
 );
 
 /** Basque (Euskara)
@@ -407,6 +411,7 @@ $messages['eu'] = array(
  * @author Crt
  * @author Nike
  * @author Silvonen
+ * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
@@ -430,6 +435,7 @@ $messages['fi'] = array(
 	'closewikis-list-header-by' => 'Sulkija:',
 	'closewikis-list-header-timestamp' => 'Suljettu',
 	'closewikis-list-header-dispreason' => 'Näytetty syy',
+	'closewikis-log' => 'Wikien sulkemisloki',
 	'closewikis-log-close' => 'suljettiin $2',
 	'closewikis-log-reopen' => 'avattiin $2 uudelleen',
 	'right-editclosedwikis' => 'Muokata suljettuja wikejä',
@@ -908,6 +914,40 @@ $messages['lb'] = array(
 	'closewikis-log-reopen' => 'huet $2 nees opgemaach',
 	'right-editclosedwikis' => 'Zougemaachte Wikien änneren',
 	'right-closewikis' => 'Wikien zoumaachen',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'closewikis-desc' => "Maak het sjlete en heräöpene van wiki's in 'ne wikifarm mäögelik",
+	'closewikis-page' => 'Wiki sjlete',
+	'closewikis-page-close' => 'Wiki sjlete',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Raej (weergegaeve op wiki):',
+	'closewikis-page-close-reason' => 'Raej (veur logbook):',
+	'closewikis-page-close-submit' => 'Sjlete',
+	'closewikis-page-close-success' => 'De wiki is noe gesjlote',
+	'closewikis-page-reopen' => 'Wiki heräöpene',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Raej:',
+	'closewikis-page-reopen-submit' => 'Heräöpene',
+	'closewikis-page-reopen-success' => 'De wiki is noe heräöpend',
+	'closewikis-page-err-nowiki' => 'Ongeljige naam van wiki opgegaeve',
+	'closewikis-page-err-closed' => 'Deze wiki is al gesjlote',
+	'closewikis-page-err-opened' => 'Deze wiki is neet gesjlaote',
+	'closewikis-list' => "Gesjlaote wiki's",
+	'closewikis-list-intro' => "Deze lies bevat wiki's die gesjlaote zien door stewards.",
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Gesjlaote door',
+	'closewikis-list-header-timestamp' => 'Gesjlaote op',
+	'closewikis-list-header-dispreason' => 'Weergegaeve raej',
+	'closewikis-log' => 'Wikisletingslogbook',
+	'closewikis-log-header' => "Dit is 'n logbook van alle sjletinge en heräöpeninge van wiki's oetgeveurd door stewards",
+	'closewikis-log-close' => 'haet $2 gesjlaote',
+	'closewikis-log-reopen' => 'haet $2 heräöpend',
+	'right-editclosedwikis' => 'Gesjlaote wikis bewirke',
+	'right-closewikis' => "Gesjlaote wiki's",
 );
 
 /** Erzya (Эрзянь)

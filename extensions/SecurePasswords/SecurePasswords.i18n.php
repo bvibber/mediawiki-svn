@@ -147,6 +147,13 @@ $messages['dsb'] = array(
 	'securepasswords-word' => 'něco druge byś ako słowo',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'securepasswords-word' => 'να μην είναι μία λέξη',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Sanbec

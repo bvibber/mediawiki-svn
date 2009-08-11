@@ -810,6 +810,7 @@ $messages['et'] = array(
 	'ogg-play-sound' => 'Mängi heli',
 	'ogg-no-player' => 'Kahjuks ei paista su süsteemis olevat ühtki ühilduvat esitustarkvara.
 Palun <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laadi tarkvara alla</a>.',
+	'ogg-player-selected' => '(valitud)',
 	'ogg-more' => 'Lisa...',
 	'ogg-dismiss' => 'Sulge',
 	'ogg-download' => 'Lae fail alla',

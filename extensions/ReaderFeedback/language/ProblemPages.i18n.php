@@ -147,12 +147,14 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Jaakonam
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'problempages' => 'Huonosti arvioidut sivut',
 	'problempages-leg' => 'Etsi kehnoksi arvioituja sivuja',
 	'problempages-list' => 'Alla näkyvä sivuluettelo on järjestetty käyttäjien antaman palautearvosanan mukaan.',
 	'problempages-none' => 'Tässä luettelossa ei ole sivuja',
+	'problempages-graphs' => 'arvostelutiedot',
 );
 
 /** French (Français)

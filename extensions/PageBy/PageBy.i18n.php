@@ -189,6 +189,8 @@ $messages['eu'] = array(
  * @author Vililikku
  */
 $messages['fi'] = array(
+	'pageby-first' => 'Sivun loi $1 $2',
+	'pageby-last' => 'Viimeksi <a href="$3">muokannut</a> käyttäjä $1 $2',
 	'pageby-contributors' => 'Osallistujat:',
 	'pageby-anon' => '<i>nimetön</i>',
 );

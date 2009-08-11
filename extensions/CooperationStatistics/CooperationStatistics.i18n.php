@@ -164,6 +164,7 @@ $messages['fi'] = array(
 	'cooperationstatistics' => 'Yhteistyötilastot',
 	'cooperationstatistics-tablearticle' => 'Sivumäärä',
 	'cooperationstatistics-tablevalue' => 'Muokkaajien lukumäärä',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|sivu|sivua}}',
 );
 
 /** French (Français)

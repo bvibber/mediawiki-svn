@@ -921,6 +921,10 @@ $messages['et'] = array(
 	'right-oversight' => 'Vaadata eelnevalt peidetud redaktsioone',
 	'right-hiderevision' => 'Peita redaktsioone ülemate eest',
 	'hiderevision-continue' => 'Jätka',
+	'hiderevision-link' => 'peidetud kaastööd',
+	'hiderevision-success' => 'Arhiveerimine ja kustutamine õnnestus.',
+	'hiderevision-error-missing' => 'Ei leidu andmebaasis.',
+	'oversight-view' => 'üksikasjad',
 );
 
 /** Basque (Euskara) */

@@ -1902,5 +1902,7 @@ riddler|謎人',
 	'vote-results-none' => '在這個時間無放任何投票。',
 	'vote-login' => '您一定要[$1 登入]先可以投票。',
 	'vote-invalid-choice' => '您一定要在可以選擇的選項中選擇一個。',
+	'right-vote' => '投票',
+	'right-voteadmin' => '觀看投票結果',
 );
 

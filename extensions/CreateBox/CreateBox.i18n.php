@@ -234,7 +234,7 @@ Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}}
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'createbox-create' => 'Ποεῖν',
+	'createbox-create' => 'Ποιεῖν',
 );
 
 /** Swiss German (Alemannisch)

@@ -254,6 +254,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'searchbox-search' => 'Ζητεῖν',
 	'searchbox-go' => 'Ἰέναι',
 	'searchbox-namespaces' => 'Ὀνοματεῖα:',
 );
@@ -441,6 +442,7 @@ $messages['mk'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'searchbox-search' => 'Хайлт',
 	'searchbox-namespaces' => 'Нэрний зайнууд:',
 );
 

@@ -425,6 +425,15 @@ Los archivos inapropiados se eliminarán inmediatamente: mira la [[{{MediaWiki:M
 	'multiupload-blank' => 'Ningún archivo seleccionado',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'multipleupload' => 'Lae üles mitu faili',
+	'multipleupload-saveallfiles' => 'Salvesta kõik failid',
+	'multiupload-fileuploaded' => 'Fail on üles laetud.',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
@@ -1451,9 +1460,10 @@ $messages['tg-cyrl'] = array(
 /** Thai (ไทย)
  * @author Octahedron80
  * @author Passawuth
+ * @author Woraponboonkerd
  */
 $messages['th'] = array(
-	'multipleupload' => 'อัปโหลดไฟล์',
+	'multipleupload' => 'อัปโหลดหลายไฟล์',
 	'multipleupload-ignoreallwarnings' => "ไม่สนใจ '''คำเตือน''' และบันทึกไฟล์",
 	'multipleupload-saveallfiles' => 'บันทึกไฟล์ทั้งหมด',
 	'multiupload-fileuploaded' => 'ไฟล์ถูกอัปโหลดเรียบร้อยแล้ว',
@@ -1605,9 +1615,14 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wrightbus
  */
 $messages['zh-hans'] = array(
 	'multipleupload-saveallfiles' => '保存所有文件',
+	'multipleupload-page' => '{{ns:project}}:文件刪除方针',
+	'multiupload-fileuploaded' => '文件经已上载。',
+	'multiupload-toolbox' => '上载多个文件',
+	'multiupload-no-files' => '请选择最少一个文件进行上载',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1629,5 +1644,8 @@ $messages['zh-hant'] = array(
 你亦可為要上載的檔案重定一個 '''目標檔名''' ，並為每個檔案提供 '''總結''' ，用以描述各檔。
 
 所有不合適的檔案都會被立即刪除，詳見[[{{MediaWiki:Multipleupload-page}}|檔案刪除政策]]。",
+	'multiupload-fileuploaded' => '檔案經已上載。',
+	'multiupload-toolbox' => '上載多個檔案',
+	'multiupload-no-files' => '請選擇最少一個檔案進行上載',
 );
 

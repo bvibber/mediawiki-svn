@@ -995,6 +995,8 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|O invitaţie disponibilă|$1 invitaţii disponibile}})',
+	'invitations-error-baduser' => 'Utilizatorul specificat pare să nu existe.',
+	'invitations-error-alreadyinvited' => 'Utilizatorul specificat are deja acces la această funcţionalitate!',
 );
 
 /** Tarandíne (Tarandíne)

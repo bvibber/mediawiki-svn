@@ -262,6 +262,7 @@ $messages['el'] = array(
 	'errorhandler-errors' => 'Σφάλματα:',
 	'errorhandler-error-notice' => 'Σημείωση',
 	'errorhandler-error-user-error' => 'Σφάλμα χρήστη',
+	'errorhandler-error-strict' => 'Υψηλά στάνταρ',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (γραμμή <b>$4</b>)',
 	'errorhandler-trace' => 'ίχνος:',
 	'errorhandler-trace-line' => '$1 (γραμμή $2): $3',
@@ -423,10 +424,12 @@ $messages['grc'] = array(
 	'errorhandler-error-warning' => 'Εἴδησις',
 	'errorhandler-error-parse' => 'Σφάλμα λεξιαναλυτοῦ',
 	'errorhandler-error-notice' => 'Σημείωμα',
+	'errorhandler-error-strict' => 'Αὐστηρὰ πρότυπα',
 	'errorhandler-msg-text' => '$1 : $2 ἐν $3 (γραμμή $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> ἐν <b>$3</b> (γραμμή <b>$4</b>)',
 	'errorhandler-trace' => 'ἴχνος:',
 	'errorhandler-trace-line' => '$1 (γραμμή $2): $3',
+	'errorhandler-trace-line-internal' => '[ἐσωτέρα συνάρτησις]: $1',
 );
 
 /** Swiss German (Alemannisch)

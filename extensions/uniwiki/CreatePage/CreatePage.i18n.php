@@ -767,7 +767,7 @@ $messages['sr-ec'] = array(
 	'createpage-badtitle' => '"$1" не може бити употребљен као наслов стране',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -780,7 +780,7 @@ $messages['sr-el'] = array(
 Da li biste želeli da izmenite postojeći članak?',
 	'createpage_tryagain' => 'Ne. Želim da napravim novi članak sa njegovim sopstvenim naslovom.',
 	'createpage_editexisting' => 'Da. Želim da doprinesem postojećem članku.',
-	'createpage-badtitle' => '&quot;$1&quot; ne može biti upotrebljen kao naslov strane',
+	'createpage-badtitle' => '"$1" ne može biti upotrebljen kao naslov strane',
 );
 
 /** Seeltersk (Seeltersk)

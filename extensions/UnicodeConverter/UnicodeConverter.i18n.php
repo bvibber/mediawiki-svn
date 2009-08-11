@@ -380,6 +380,15 @@ $messages['ksh'] = array(
 	'unicodeconverter-newtext' => 'Ömjesaz Tex:',
 );
 
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'unicodeconverter-ok' => 'Licet',
+	'unicodeconverter-oldtext' => 'Textus originalis:',
+	'unicodeconverter-newtext' => 'Textus conversus:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -392,13 +401,15 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'unicodeconverter' => 'Unicode конвертор',
-	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter' => 'Уникод претворач',
+	'unicodeconverter-desc' => 'Прост пример за модул за специјална страница. [[Special:UnicodeConverter|Ако му се зададе низата UTF-8]], ја претвора во HTML ентитети соодветни аз интернет-страници со стандардот ISO 8859-1',
+	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинален текст:',
-	'unicodeconverter-newtext' => 'Конвертиран текст:',
+	'unicodeconverter-newtext' => 'Претворен текст:',
 );
 
 /** Marathi (मराठी)

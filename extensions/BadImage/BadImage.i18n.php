@@ -463,6 +463,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Dead3y3
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -486,6 +487,7 @@ $messages['el'] = array(
 	'badimages-log-add' => 'η [[$1]] προστέθηκε στην λίστα κακών εικόνων',
 	'badimages-log-remove' => 'η [[$1]] αφαιρέθηκε από τη λίστα κακών εικόνων',
 	'badimages-page' => '{{ns:help}}:Λίστα κακών εικόνων',
+	'right-badimages' => 'Ενημέρωση της λίστας κακών εικόνων',
 );
 
 /** Esperanto (Esperanto)

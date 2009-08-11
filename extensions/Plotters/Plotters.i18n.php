@@ -391,9 +391,12 @@ $messages['pt'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'plotters-uses' => 'Utilizări',
+	'plotters-missing-script' => 'Nici un script nu a fost definit.',
+	'plotters-missing-arguments' => 'Nici un argument specificat.',
 );
 
 /** Russian (Русский)

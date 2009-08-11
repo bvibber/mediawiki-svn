@@ -151,6 +151,7 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'logentry-append' => 'Lisää',
 	'logentry-invalidpage' => 'Virheellinen sivu',
+	'logentry-invalidtoken' => 'Virheellinen lipuke',
 );
 
 /** French (Français)

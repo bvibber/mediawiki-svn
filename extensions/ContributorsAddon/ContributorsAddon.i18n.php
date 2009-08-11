@@ -77,6 +77,13 @@ $messages['dsb'] = array(
 	'contributorsaddon-desc' => 'Pśidawa wuskokajuce wókna JS onMouseover k wótkazam "Głowne pśinosowarje"',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'contributorsaddon-desc' => 'Προσθέτει το popup JavaScript στους συνδέσμους «Κύριοι συνεισφέροντες»',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */
@@ -318,11 +325,11 @@ $messages['sr-ec'] = array(
 	'contributorsaddon-desc' => 'Додаје јаваскрипт поп-апове везама ка "Главним ауторима"',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'contributorsaddon-desc' => 'Dodaje javaskript pop-apove vezama ka &quot;Glavnim autorima&quot;',
+	'contributorsaddon-desc' => 'Dodaje javaskript pop-apove vezama ka "Glavnim autorima"',
 );
 
 /** Sundanese (Basa Sunda)

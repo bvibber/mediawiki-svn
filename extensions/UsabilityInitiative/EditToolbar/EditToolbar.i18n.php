@@ -216,6 +216,13 @@ $messages['qqq'] = array(
 	'edittoolbar-help-content-signature-description' => '{{Identical|Signature}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Omnipaedista
+ */
+$messages['af'] = array(
+	'edittoolbar-characters-page-ipa' => 'IFA',
+);
+
 /** Arabic (العربية)
  * @author Orango
  * @author OsamaK
@@ -1354,9 +1361,14 @@ $messages['el'] = array(
 File:Example.jpg|Λεζάντα2',
 	'edittoolbar-tool-newline' => 'Νέα γραμμή',
 	'edittoolbar-tool-table' => 'Πίνακας',
+	'edittoolbar-tool-replace' => 'Αντικατάσταση',
+	'edittoolbar-tool-replace-title' => 'Αναζήτηση και αντικατάσταση',
+	'edittoolbar-tool-replace-search' => 'Αναζήτηση για (πιθανώς μία τακτική έκφραση):',
+	'edittoolbar-tool-replace-replace' => 'Αντικατάσταση από:',
+	'edittoolbar-tool-replace-button' => 'Αντικατάσταση',
 	'edittoolbar-section-characters' => 'Ειδικοί χαρακτήρες',
 	'edittoolbar-characters-page-latin' => 'Λατινικό',
-	'edittoolbar-characters-page-latinextended' => 'Επέκταση του λατινικού',
+	'edittoolbar-characters-page-latinextended' => 'Προέκταση του λατινικού',
 	'edittoolbar-characters-page-ipa' => 'ΔΦΑ',
 	'edittoolbar-characters-page-symbols' => 'Σύμβολα',
 	'edittoolbar-characters-page-greek' => 'Ελληνικό',
@@ -1551,6 +1563,7 @@ File:Ekzemplo.jpg|Teksto2 pri dosiero',
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
+ * @author Omnipaedista
  */
 $messages['es'] = array(
 	'edittoolbar' => 'Editando barra de herramientas',
@@ -1599,6 +1612,7 @@ Archivo:Ejemplo.jpg|Descripción2',
 	'edittoolbar-tool-newline' => 'Nueva línea',
 	'edittoolbar-tool-table' => 'Tabla',
 	'edittoolbar-section-characters' => 'Carácteres especiales',
+	'edittoolbar-characters-page-ipa' => 'AFI',
 	'edittoolbar-section-help' => 'Ayuda',
 	'edittoolbar-help-heading-description' => 'Descripción',
 	'edittoolbar-help-heading-syntax' => 'Lo que escribes',
@@ -1971,14 +1985,21 @@ Tiedosto:Esimerkki.jpg|Kuvateksti2',
 | rivi 2, sarake 1
 | rivi 2, sarake 2
 | rivi 2, sarake 3',
+	'edittoolbar-tool-replace' => 'Korvaa',
+	'edittoolbar-tool-replace-title' => 'Etsi ja korvaa',
+	'edittoolbar-tool-replace-search' => 'Etsi seuraavaa (voi olla regex):',
+	'edittoolbar-tool-replace-replace' => 'Korvaa seuraavalla:',
+	'edittoolbar-tool-replace-button' => 'Korvaa',
 	'edittoolbar-section-characters' => 'Erikoismerkit',
 	'edittoolbar-characters-page-latin' => 'Latinalaiset aakkoset',
+	'edittoolbar-characters-page-latinextended' => 'Laajennettu latina',
 	'edittoolbar-characters-page-ipa' => 'Kansainväliset foneettiset kirjainmerkit (IPA)',
 	'edittoolbar-characters-page-symbols' => 'Symbolit',
-	'edittoolbar-characters-page-greek' => 'Kreikkalaiset kirjainmerkit',
-	'edittoolbar-characters-page-cyrillic' => 'Kyrilliset aakkoset',
-	'edittoolbar-characters-page-arabic' => 'Arabialaiset kirjainmerkit',
-	'edittoolbar-characters-page-hebrew' => 'Heprealaiset kirjainmerkit',
+	'edittoolbar-characters-page-greek' => 'Kreikkalainen kirjaimisto',
+	'edittoolbar-characters-page-cyrillic' => 'Kyrillinen kirjaimisto',
+	'edittoolbar-characters-page-arabic' => 'Arabialainen kirjaimisto',
+	'edittoolbar-characters-page-hebrew' => 'Heprealainen kirjaimisto',
+	'edittoolbar-characters-page-telugu' => 'Telugu',
 	'edittoolbar-section-help' => 'Ohje',
 	'edittoolbar-help-heading-description' => 'Kuvaus',
 	'edittoolbar-help-heading-syntax' => 'Mitä kirjoitat',
@@ -2324,13 +2345,21 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'edittoolbar' => 'Ἐργαλειοθήκη μεταγραφῆς',
 	'edittoolbar-loading' => 'Φορτίζειν…',
 	'edittoolbar-tool-bold' => 'ἔντονον',
 	'edittoolbar-tool-bold-example' => 'Γράμματα παχέα',
 	'edittoolbar-tool-italic' => 'πλάγιον',
 	'edittoolbar-tool-italic-example' => 'Γράμματα πλάγια',
-	'edittoolbar-tool-ilink' => 'Ἐσωτερικός σύνδεσμος',
-	'edittoolbar-section-advanced' => 'Προωθημένον',
+	'edittoolbar-tool-ilink' => 'Ἐσωτερικὸς σύνδεσμος',
+	'edittoolbar-tool-ilink-example' => 'Συνδέσμου ὄνομα',
+	'edittoolbar-tool-xlink' => 'Ἐξώτερος σύνδεσμος (μέμνησο τοῦ προθέματος http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com ὄνομα συνδέσμου',
+	'edittoolbar-tool-file' => 'Ἐμβεβαπτισμένον ἀρχεῖον',
+	'edittoolbar-tool-reference' => 'Ἀναφορά',
+	'edittoolbar-tool-reference-example' => 'Εἰσάγειν κείμενον παραπομπῆς ὧδε',
+	'edittoolbar-tool-signature' => 'Ὑπογραφή σου μετὰ χρονοσφραγίδος',
+	'edittoolbar-section-advanced' => 'Προεωσμένον',
 	'edittoolbar-tool-heading' => 'Ἐπικεφαλίς',
 	'edittoolbar-tool-heading-1' => 'Ἐπίπεδον 1',
 	'edittoolbar-tool-heading-2' => 'Ἐπίπεδον 2',
@@ -2343,11 +2372,29 @@ $messages['grc'] = array(
 	'edittoolbar-tool-big-example' => 'Μέγα κείμενον',
 	'edittoolbar-tool-small' => 'Σμικρόν',
 	'edittoolbar-tool-small-example' => 'Σμικρόν κείμενον',
+	'edittoolbar-group-baseline' => 'Γραμμὴ βάσεως',
 	'edittoolbar-group-insert' => 'Εἰσάγειν',
+	'edittoolbar-tool-gallery' => 'Πινακοθήκη',
 	'edittoolbar-tool-newline' => 'Νέα γραμμή',
 	'edittoolbar-tool-table' => 'Πίναξ',
+	'edittoolbar-tool-replace' => 'Ὑποκαθιστάναι',
+	'edittoolbar-tool-replace-title' => 'Ζητεῖν καὶ ὑποκαθιστάναι',
+	'edittoolbar-tool-replace-search' => 'Zήτησις περί (πιθανῶς τακτικῆς ἐκφράσεως τινός):',
+	'edittoolbar-tool-replace-replace' => 'Ὑποκατάστασις ὑπό:',
+	'edittoolbar-tool-replace-button' => 'Ὑποκαθιστάναι',
+	'edittoolbar-section-characters' => 'Εἰδικοὶ χαρακτῆρες',
+	'edittoolbar-characters-page-latin' => 'Λατινικόν',
+	'edittoolbar-characters-page-latinextended' => 'Λατινικὸν προεκτεταμένον',
+	'edittoolbar-characters-page-ipa' => 'ΔΦΑ',
+	'edittoolbar-characters-page-symbols' => 'Σύμβολα',
+	'edittoolbar-characters-page-greek' => 'Ἑλληνικόν',
+	'edittoolbar-characters-page-cyrillic' => 'Κυριλλικόν',
+	'edittoolbar-characters-page-arabic' => 'Ἀραβικόν',
+	'edittoolbar-characters-page-hebrew' => 'Ἑβραϊκόν',
+	'edittoolbar-characters-page-telugu' => 'Τελουγούϊον',
 	'edittoolbar-section-help' => 'Βοήθεια',
 	'edittoolbar-help-heading-description' => 'Περιγραφή',
+	'edittoolbar-help-page-format' => 'Μορφοποίησις',
 	'edittoolbar-help-page-link' => 'σύνδεσμοι',
 	'edittoolbar-help-page-heading' => 'Ἐπικεφαλίδες',
 	'edittoolbar-help-page-list' => 'Κατάλογοι',
@@ -2360,8 +2407,8 @@ $messages['grc'] = array(
 	'edittoolbar-help-content-bold-description' => 'ἔντονον',
 	'edittoolbar-help-content-bold-syntax' => "'''Γράμματα παχέα'''",
 	'edittoolbar-help-content-bold-result' => '<strong>Γράμματα παχέα</strong>',
-	'edittoolbar-help-content-ilink-description' => 'Ἐσωτερικός σύνδεσμος',
-	'edittoolbar-help-content-xlink-description' => 'Ἐξωτερικός σύνδεσμος',
+	'edittoolbar-help-content-ilink-description' => 'Ἐσωτερικὸς σύνδεσμος',
+	'edittoolbar-help-content-xlink-description' => 'Ἐξωτερικὸς σύνδεσμος',
 	'edittoolbar-help-content-heading1-description' => 'Ἐπικεφαλὶς 1ου ἐπιπέδου',
 	'edittoolbar-help-content-heading1-syntax' => '= Κείμενον ἐπικεφαλίδος =',
 	'edittoolbar-help-content-heading1-result' => '<h1>Κείμενον ἐπικεφαλίδος</h1>',
@@ -2377,9 +2424,13 @@ $messages['grc'] = array(
 	'edittoolbar-help-content-heading5-description' => 'Ἐπικεφαλὶς 5ου ἐπιπέδου',
 	'edittoolbar-help-content-heading5-syntax' => '===== Κείμενον ἐπικεφαλίδος =====',
 	'edittoolbar-help-content-heading5-result' => '<h5>Κείμενον ἐπικεφαλίδος</h5>',
+	'edittoolbar-help-content-olist-description' => 'Ἠριθμημένη διαλογή',
+	'edittoolbar-help-content-file-description' => 'Ἐμβεβαπτισμένον ἀρχεῖον',
 	'edittoolbar-help-content-reference-description' => 'Ἀναφορά',
+	'edittoolbar-help-content-showreferences-description' => 'Δεικνύειν ἀναφοράς',
 	'edittoolbar-help-content-signaturetimestamp-description' => 'Ὑπογραφὴ μετὰ χρονοσφραγίδος',
 	'edittoolbar-help-content-signature-description' => 'Ὑπογραφή',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Ὄνομα χρωμένου</a> (<a href='#' title='{{#special:mytalk}}'>διάλεξις</a>)",
 	'edittoolbar-help-content-indent-description' => 'Παραγραφοποίησις',
 );
 
@@ -2728,7 +2779,7 @@ File:Primjer.jpg|Opis2',
 	'edittoolbar-help-page-heading' => 'Podnaslovi',
 	'edittoolbar-help-page-list' => 'Popisi',
 	'edittoolbar-help-page-file' => 'Datoteke',
-	'edittoolbar-help-page-reference' => 'Napomene',
+	'edittoolbar-help-page-reference' => 'Bilješke',
 	'edittoolbar-help-page-discussion' => 'Razgovor',
 	'edittoolbar-help-content-italic-description' => 'Kurziv',
 	'edittoolbar-help-content-italic-syntax' => "''Kurzivni tekst''",
@@ -2761,7 +2812,7 @@ File:Primjer.jpg|Opis2',
 	'edittoolbar-help-content-heading5-syntax' => '===== Tekst podnaslova =====',
 	'edittoolbar-help-content-heading5-result' => '<h5> Tekst podnaslova </h5>',
 	'edittoolbar-help-content-ulist-description' => 'Popis s grafičkim oznakama',
-	'edittoolbar-help-content-ulist-syntax' => '* stavka popisa<br />*stavka popisa',
+	'edittoolbar-help-content-ulist-syntax' => '* stavka popisa<br />* stavka popisa',
 	'edittoolbar-help-content-ulist-result' => '<ul><li>stavka popisa</li><li>stavka popisa</li></ul>',
 	'edittoolbar-help-content-olist-description' => 'Numerirani popis',
 	'edittoolbar-help-content-olist-syntax' => '# stavka popisa<br /># stavka popisa',
@@ -3299,6 +3350,7 @@ Berkas:Contoh.jpg|Judul2',
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Melos
  */
 $messages['it'] = array(
 	'edittoolbar' => 'Barra degli strumenti di modifica',
@@ -3346,6 +3398,8 @@ $messages['it'] = array(
 File:Esempio.jpg|Didascalia2',
 	'edittoolbar-tool-newline' => 'Nuova riga',
 	'edittoolbar-tool-table' => 'Tabella',
+	'edittoolbar-tool-replace' => 'Sostituisci',
+	'edittoolbar-tool-replace-title' => 'Cerca e sostituisci',
 	'edittoolbar-section-characters' => 'Caratteri speciali',
 	'edittoolbar-characters-page-latin' => 'Latino',
 	'edittoolbar-characters-page-ipa' => 'IPA',
@@ -4067,6 +4121,65 @@ aanzeije',
 	'edittoolbar-help-content-indent-result' => 'Nommaale Täx<dl><dd>Enjerök<dl><dd>Un norrens enjerök</dd></dl></dd></dl>',
 );
 
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'edittoolbar-loading' => 'Depromens…',
+	'edittoolbar-tool-ilink-example' => 'Titulus nexus externi',
+	'edittoolbar-tool-xlink' => 'Nexus externus (memento praefixi http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.exemplum.com titulus nexus externi',
+	'edittoolbar-tool-file' => 'Fasciculus in pagina impositus',
+	'edittoolbar-tool-file-example' => 'Exemplum.jpg',
+	'edittoolbar-tool-reference' => 'Referentia bibliographica',
+	'edittoolbar-tool-heading-1' => 'Planities 1',
+	'edittoolbar-group-size' => 'Magnitudo',
+	'edittoolbar-tool-big-example' => 'Textus magnus',
+	'edittoolbar-tool-small' => 'Parvus',
+	'edittoolbar-tool-small-example' => 'Textus parvus',
+	'edittoolbar-tool-superscript' => 'Superscriptum',
+	'edittoolbar-tool-subscript' => 'Subscriptum',
+	'edittoolbar-group-insert' => 'Inserere',
+	'edittoolbar-tool-gallery' => 'Pinacotheca',
+	'edittoolbar-tool-gallery-example' => 'Fasciculus:Exemplum.jpg|Descriptio 1
+Fasciculus:Exemplum.jpg|Descriptio 2',
+	'edittoolbar-tool-newline' => 'Nova linea',
+	'edittoolbar-tool-table' => 'Tabula',
+	'edittoolbar-section-characters' => 'Characteres speciales',
+	'edittoolbar-characters-page-latin' => 'Latinum',
+	'edittoolbar-characters-page-latinextended' => 'Latinum extensum',
+	'edittoolbar-characters-page-ipa' => 'API',
+	'edittoolbar-characters-page-symbols' => 'Symbola',
+	'edittoolbar-characters-page-greek' => 'Graecum',
+	'edittoolbar-characters-page-cyrillic' => 'Cyrillicum',
+	'edittoolbar-characters-page-arabic' => 'Arabicum',
+	'edittoolbar-characters-page-hebrew' => 'Hebraicum',
+	'edittoolbar-characters-page-telugu' => 'Telugu',
+	'edittoolbar-section-help' => 'Adiutatum',
+	'edittoolbar-help-heading-description' => 'Descriptio',
+	'edittoolbar-help-page-format' => 'Formatio',
+	'edittoolbar-help-page-link' => 'Nexus',
+	'edittoolbar-help-page-file' => 'Fasciculi',
+	'edittoolbar-help-page-reference' => 'Referentiae bibliographicae',
+	'edittoolbar-help-page-discussion' => 'Disputatio',
+	'edittoolbar-help-content-italic-description' => 'Litterae italicae',
+	'edittoolbar-help-content-italic-syntax' => "'''Textus litteris italicis scriptus'''",
+	'edittoolbar-help-content-italic-result' => '<em>Textus litteris italicis scriptus</em>',
+	'edittoolbar-help-content-bold-description' => 'Litterae pingues',
+	'edittoolbar-help-content-bold-syntax' => "'''Textus litteris pinguibus scriptus'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Textus litteris pinguibus scriptus</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Pingues &amp; italicae',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Textus litteris pinguibus &amp; italicis scriptus'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Textus litteris pinguibus &amp; italicis scriptus</em></strong>',
+	'edittoolbar-help-content-ilink-description' => 'Nexus internus',
+	'edittoolbar-help-content-ilink-syntax' => '[[Titulus paginae|Titulus nexus]]<br />[[Titulus paginae]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>Titulus nexus</a><br /><a href='#'>Titulus paginae</a>",
+	'edittoolbar-help-content-xlink-description' => 'Nexus externus',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.exemplum.org Titulus nexus]<br />[http://www.exemplum.org]<br />http://www.exemplum.org',
+	'edittoolbar-help-content-reference-description' => 'Referentia bibliographica',
+	'edittoolbar-help-content-signature-description' => 'Subscriptio',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -4129,6 +4242,11 @@ File:Example.jpg|Beschreiwung2',
 | Rei 2, Zell 1
 | Rei 2, Zell 2
 | Rei 2, Zell 3',
+	'edittoolbar-tool-replace' => 'Ersetzen',
+	'edittoolbar-tool-replace-title' => 'Sichen an ersetzen',
+	'edittoolbar-tool-replace-search' => 'Sichen no (kann eng Regex sinn):',
+	'edittoolbar-tool-replace-replace' => 'Ersetzen duerch:',
+	'edittoolbar-tool-replace-button' => 'Ersetzen',
 	'edittoolbar-section-characters' => 'Spezialzeechen',
 	'edittoolbar-characters-page-latin' => 'Laténgesch',
 	'edittoolbar-characters-page-latinextended' => 'Laténgesch, erweidert',
@@ -4757,6 +4875,7 @@ Fil:Døme.jpg|Bilettekst2',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  * @author Nghtwlkr
+ * @author Simny
  */
 $messages['no'] = array(
 	'edittoolbar-loading' => 'Laster...',
@@ -4848,6 +4967,7 @@ Fil:Example.jpg|Bildetekst2',
 # Listeelement',
 	'edittoolbar-help-content-olist-result' => '<ol><li>Listeelement</li><li>Listeelement</li></ol>',
 	'edittoolbar-help-content-file-syntax' => '[[Fil:Example.png|thumb|Bildetekst]]',
+	'edittoolbar-help-content-signature-description' => 'Signatur',
 );
 
 /** Occitan (Occitan)
@@ -5125,6 +5245,17 @@ Plik:Example.jpg|Podpis2',
 	'edittoolbar-help-content-indent-description' => 'Wcięcie',
 	'edittoolbar-help-content-indent-syntax' => 'Zwykły tekst<br />:Tekst wcięty<br />::Tekst wcięty',
 	'edittoolbar-help-content-indent-result' => 'Zwykły tekst<dl><dd>Tekst wcięty<dl><dd>Tekst wcięty</dd></dl></dd></dl>',
+);
+
+/** Pontic (Ποντιακά)
+ * @author Omnipaedista
+ */
+$messages['pnt'] = array(
+	'edittoolbar-loading' => "Φορτών'...",
+	'edittoolbar-tool-big-example' => 'Τρανόν κείμενον',
+	'edittoolbar-characters-page-ipa' => 'ΔΦΑ',
+	'edittoolbar-characters-page-telugu' => 'Τελούγκου',
+	'edittoolbar-help-content-signature-description' => 'Υπογραφή',
 );
 
 /** Pashto (پښتو)
@@ -5746,6 +5877,16 @@ $messages['scn'] = array(
 	'edittoolbar-tool-bold' => 'Grassettu',
 	'edittoolbar-tool-bold-example' => 'Testu in grassettu',
 	'edittoolbar-tool-italic' => 'Cursivu',
+	'edittoolbar-help-content-bold-description' => 'Grassettu',
+	'edittoolbar-help-content-bold-syntax' => "'''Testu n grassettu'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Testu n grassettu</strong>',
+);
+
+/** Scots (Scots)
+ * @author Omnipaedista
+ */
+$messages['sco'] = array(
+	'edittoolbar-characters-page-ipa' => 'IPA',
 );
 
 /** Slovak (Slovenčina)
@@ -6229,7 +6370,20 @@ $messages['tr'] = array(
 Dosya:Örnek.jpg|Resimyazısı2',
 	'edittoolbar-tool-newline' => 'Yeni satır',
 	'edittoolbar-tool-table' => 'Tablo',
+	'edittoolbar-tool-replace' => 'Değiştir',
+	'edittoolbar-tool-replace-title' => 'Ara ve değiştir',
+	'edittoolbar-tool-replace-search' => 'Şunun için ara (bir düzenli ifade olabilir):',
+	'edittoolbar-tool-replace-replace' => 'Şununla değiştir:',
+	'edittoolbar-tool-replace-button' => 'Değiştir',
 	'edittoolbar-section-characters' => 'Özel karakter',
+	'edittoolbar-characters-page-latin' => 'Latin',
+	'edittoolbar-characters-page-latinextended' => 'Genişletilmiş Latince',
+	'edittoolbar-characters-page-symbols' => 'Semboller',
+	'edittoolbar-characters-page-greek' => 'Yunan',
+	'edittoolbar-characters-page-cyrillic' => 'Kiril',
+	'edittoolbar-characters-page-arabic' => 'Arapça',
+	'edittoolbar-characters-page-hebrew' => 'İbranice',
+	'edittoolbar-characters-page-telugu' => 'Telugu',
 	'edittoolbar-section-help' => 'Yardım',
 	'edittoolbar-help-heading-description' => 'Açıklama',
 	'edittoolbar-help-heading-syntax' => 'Yazdığınız',
@@ -6900,7 +7054,9 @@ $messages['zh-hans'] = array(
 	'edittoolbar-help-content-indent-result' => '标准文本<dl><dd>缩进文本<dl><dd>缩进文本</dd></dl></dd></dl>',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
 $messages['zh-hant'] = array(
 	'edittoolbar' => '編輯工具列',
 	'edittoolbar-desc' => '加強可用性的編輯頁面工具',
@@ -6911,7 +7067,7 @@ $messages['zh-hant'] = array(
 	'edittoolbar-tool-italic' => '斜體',
 	'edittoolbar-tool-italic-example' => '斜體文字',
 	'edittoolbar-tool-ilink' => '內部連結',
-	'edittoolbar-tool-ilink-example' => '拎題',
+	'edittoolbar-tool-ilink-example' => '連結標題',
 	'edittoolbar-tool-xlink' => '外部連結（記住 http:// 文字開頭）',
 	'edittoolbar-tool-xlink-example' => 'http://www.example.com 連結標題',
 	'edittoolbar-tool-file' => '結合標題',

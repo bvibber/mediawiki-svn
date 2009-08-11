@@ -992,8 +992,11 @@ $messages['ro'] = array(
 	'lookupuser-nonexistent' => 'Eroare: Utilizatorul nu există',
 	'lookupuser-authenticated' => 'autentificat la $1',
 	'lookupuser-not-authenticated' => 'neautentificat',
+	'lookupuser-id' => 'ID utilizator: <tt>#$1</tt>',
+	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => 'Nume real: $1',
 	'lookupuser-registration' => 'Data înregistrării: $1',
+	'lookupuser-info-authenticated' => 'Autentificare e-mail: $1',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1330,8 +1333,10 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'lookupuser-nonexistent' => '错误：用户不存在',
 	'lookupuser-email' => '电邮：[[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => '真实姓名：$1',
 	'lookupuser-registration' => '注册日期：$1',
@@ -1342,6 +1347,7 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'lookupuser-nonexistent' => '錯誤：使用者不存在',
 	'lookupuser-email' => '電郵：[[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => '真實姓名：$1',
 	'lookupuser-registration' => '註冊日期：$1',

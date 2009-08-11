@@ -642,11 +642,14 @@ Adde alcunes con le instrumentos in le barra de menu.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  */
 $messages['id'] = array(
 	'gep-categories' => 'Kategori',
 	'gep-addcategorybutton' => 'Tambahkan',
 	'gep-addsectionbutton' => 'Tambahkan',
+	'gep-classicmode' => 'Mode klasik',
+	'gep-genericmode' => 'Mode generik',
 );
 
 /** Japanese (日本語)

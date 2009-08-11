@@ -476,6 +476,7 @@ $messages['fi'] = array(
 	'importxml' => 'XML-tuonti',
 	'dt_import_encodingtype' => 'Merkistötyyppi',
 	'dt_import_importing' => 'Tuodaan...',
+	'importcsv' => 'CSV-tuonti',
 );
 
 /** French (Français)

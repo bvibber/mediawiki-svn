@@ -388,6 +388,15 @@ Click <a href='$1'>aquí</a> para regresar.",
 	'spamdifftool_submit_buttom' => 'Enviar',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'spamdifftool_spam_link_text' => 'lisa spämminimekirja',
+	'spamdifftool_option_none' => 'ei midagi',
+	'spamdifftool_block' => 'Blokeeri:',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

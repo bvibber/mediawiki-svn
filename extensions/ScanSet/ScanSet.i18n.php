@@ -463,7 +463,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'scanset_next' => 'Ἑπομέναι &gt;',
+	'scanset_next' => 'Ἑπoμένη &gt;',
 	'scanset_prev' => '&lt; Προηγουμένη',
 );
 

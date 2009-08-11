@@ -345,11 +345,22 @@ $2',
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'userrightsnotifysubject' => 'Käyttäjäryhmän jäsenyyden vaihto wikissä $1',
+	'userrightsnotifybody' => 'Hei vaan $1.
+
+Täten haluamme ilmoittaa teille, että ryhmien jäsenyytenne $2 verkkosivustolla on tullut muutetuksi käyttäjän $3 toimesta, päiväyksenä $4.
+
+Lisättiin: $5
+Poistettiin: $6
+
+Ystävällisin terveisin,
+
+$2',
 	'userrightsnotif-desc' => 'Lähettää sähköpostiviestin käyttäjille, kun heidän oikeuksiaan muutetaan.',
 );
 

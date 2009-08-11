@@ -226,6 +226,13 @@ $messages['es'] = array(
 	'intersection_noincludecats' => 'Error: ¡Necesita incluir al menos una categoría, o especificar un espacio de nombres!',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'intersection_noresults' => 'Viga: Tulemusi ei ole!',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

@@ -185,8 +185,11 @@ $messages['et'] = array(
 	'fundraiserportal-ruby-button' => 'Anneta nüüd',
 	'fundraiserportal-rubytext-button' => 'Anneta nüüd',
 	'fundraiserportal-rubytext-message' => 'Iga annetus aitab meil hoida Wikipedia kõigile vabana.',
+	'fundraiserportal-rubytext-close' => 'Peida see edaspidi',
 	'fundraiserportal-sapphire-button' => 'Anneta nüüd',
 	'fundraiserportal-tourmaline-button' => 'Anneta nüüd',
+	'fundraiserportal-tourmaline-message' => 'Iga annetus aitab meil Vikipeedia kõigile vaba hoida.',
+	'fundraiserportal-tourmaline-close' => 'Peida see edaspidi',
 );
 
 /** Finnish (Suomi)
@@ -282,6 +285,19 @@ $messages['hil'] = array(
 	'fundraiserportal-desc' => 'Mga pasayod "palihog amot" portal ay ara sa ibabaw sang sidebar.',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'fundraiserportal-plain-button' => 'Podržite Wikipediju!',
+	'fundraiserportal-ruby-button' => 'Donirajte sada',
+	'fundraiserportal-rubytext-button' => 'Donirajte sada',
+	'fundraiserportal-rubytext-close' => 'Sakrij ovo od sada',
+	'fundraiserportal-sapphire-button' => 'Donirajte sada',
+	'fundraiserportal-tourmaline-button' => 'Donirajte sada',
+	'fundraiserportal-tourmaline-close' => 'Sakrij ovo od sada',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -370,6 +386,10 @@ $messages['ja'] = array(
 $messages['km'] = array(
 	'fundraiserportal' => 'ផតថល​អ្នកជួយ​ស្វែង​រក​មូលនិធិ​',
 	'fundraiserportal-plain-button' => 'គាំទ្រ​វិគីភីឌា​!',
+	'fundraiserportal-ruby-button' => 'វិភាគទាន ឥឡូវ​នេះ​',
+	'fundraiserportal-rubytext-button' => 'វិភាគទាន ឥឡូវ​នេះ​',
+	'fundraiserportal-sapphire-button' => 'វិភាគទាន ឥឡូវ​នេះ​',
+	'fundraiserportal-tourmaline-button' => 'វិភាគទាន ឥឡូវ​នេះ​',
 );
 
 /** Ripoarisch (Ripoarisch)

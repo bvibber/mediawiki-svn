@@ -76,6 +76,13 @@ $messages['es'] = array(
 	'wikiarticlefeeds_combined_description' => 'Este es un feed combinado, que contiene elementos de varias fuentes.',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'wikiarticlefeeds-desc' => 'Valmistaa syötteitä jotka synnytetään MediaWikin sivuista',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

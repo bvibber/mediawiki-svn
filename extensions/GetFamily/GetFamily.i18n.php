@@ -91,6 +91,9 @@ $messages['es'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'getfamily-desc' => 'Luo perhetiedoston pywikipediabotille.',
+	'getfamily' => 'Hae perhe pywikipediabotille',
+	'getfamily-interwikierror' => 'Virhe: kelvoton interwiki-asetus, ota yhteyttä paikalliseen ylläpitäjääsi.',
 	'right-getfamily' => 'Luoda perhetiedoston pywikipediabotille',
 );
 

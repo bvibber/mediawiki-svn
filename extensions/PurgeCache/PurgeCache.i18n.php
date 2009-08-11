@@ -202,6 +202,13 @@ $messages['gl'] = array(
 	'right-purgecache' => 'Limpar a táboa OBJECTCACHE',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'purgecache-button' => 'Ἐκκαθαίρειν',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

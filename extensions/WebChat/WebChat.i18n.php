@@ -389,3 +389,10 @@ Anonymní používatelia dostanú automaticky vytvorenú prezývku, ale možno j
 	'right-webchat' => 'Povolené používať [[Special:WebChat|webový chat]]',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'webchat' => '網上聊天',
+);
+

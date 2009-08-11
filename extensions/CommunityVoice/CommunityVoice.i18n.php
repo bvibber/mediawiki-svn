@@ -192,6 +192,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'communityvoice' => 'Komunuma Voĉo',
+	'communityvoice-desc' => 'Komunumaj kunlaboradaj iloj',
 	'communityvoice-ratings' => 'Taksoj',
 	'communityvoice-ratings-scale-status-sending' => 'Sendante...',
 	'communityvoice-ratings-scale-status-error' => 'Eraris sendante!',
@@ -216,6 +217,8 @@ $messages['es'] = array(
  * @author Avjoska
  */
 $messages['et'] = array(
+	'communityvoice' => 'Kogukonna Hääl',
+	'communityvoice-ratings' => 'Reitingud',
 	'communityvoice-ratings-scale-status-sending' => 'Saatmine...',
 	'communityvoice-ratings-scale-status-error' => 'Viga saatmisel.',
 	'communityvoice-ratings-scale-status-thanks' => 'Aitäh hääletamast!',
@@ -311,6 +314,13 @@ $messages['he'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|הצבעה אחת נחשבת|$2 הצבעות נחשבות}})',
 	'communityvoice-ratings-error-no-category' => 'תכונת הקטגוריה חסרה בתגית הדירוג.',
 	'communityvoice-ratings-error-no-title' => 'תכונת הכותרת חסרה בתגית הדירוג.',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Šaljem ...',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -48,6 +48,13 @@ $messages['el'] = array(
 	'navigabletoc' => 'Περιηγήσιμος πίνακας περιεχομένων',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'navigabletoc' => 'Navigebla tabelo de enhavo',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

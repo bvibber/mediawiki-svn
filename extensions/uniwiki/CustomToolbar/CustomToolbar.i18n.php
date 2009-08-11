@@ -578,6 +578,7 @@ Pšosym pśekontrolěruj swój blokěrowak wuskokowańskich woknow.',
  * @author ZaDiak
  */
 $wgCustomToolbarMessages['el'] = array(
+	'ct-desc' => 'Προσθέτει μία επεκτάσιμη εργαλειοθήκη',
 	'ct_bold_sample' => 'Έντονο κείμενο',
 	'ct_bold_tip_ins' => 'Εισαγωγή έντονου κειμένου',
 	'ct_bold_tip_wrap' => 'Κάντε αυτό το κείμενο έντονο',
@@ -923,6 +924,7 @@ Por favor, comprobe o seu bloqueador de ventás emerxentes.',
  * @author Omnipaedista
  */
 $wgCustomToolbarMessages['grc'] = array(
+	'ct_external_caption' => 'Ἐξωτερικὸς σύνδεσμος',
 	'ct_submit' => 'Ἰέναι!',
 	'ct_user_user' => 'Χρώμενος',
 	'ct_user_sample' => 'Ὄνομα χρωμένου',
@@ -2580,11 +2582,15 @@ $wgCustomToolbarMessages['zh-hans'] = array(
  */
 $wgCustomToolbarMessages['zh-hant'] = array(
 	'ct_bold_sample' => '粗體文字',
+	'ct_bold_tip_ins' => '插入粗體文字',
 	'ct_bold_caption' => '粗體',
 	'ct_italic_sample' => '斜體文字',
+	'ct_italic_tip_ins' => '插入斜體文字',
 	'ct_italic_caption' => '斜體',
 	'ct_internal_caption' => '內部連結',
 	'ct_external_caption' => '外部連結',
+	'ct_math_sample' => '在此插入LaTeX公式',
+	'ct_math_tip_ins' => '插入數學公式（LaTeX）',
 	'ct_select' => '選擇要上載的$1',
 	'ct_close' => '關閉視窗',
 	'ct_success' => '上載檔案成功！',

@@ -313,6 +313,7 @@ $messages['fi'] = array(
 	'chemFunctions_CAS' => 'CAS-numero',
 	'chemFunctions_Formula' => 'Kaava',
 	'chemFunctions_Name' => 'IUPAC-nimi',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Syötevirhe!',
 );
 
 /** French (Français)

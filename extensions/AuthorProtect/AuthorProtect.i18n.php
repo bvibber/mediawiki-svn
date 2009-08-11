@@ -356,10 +356,13 @@ $messages['fi'] = array(
 	'authorprotect-desc' => 'Mahdollistaa sivun tekijän suojata se muilta käyttäjiltä.',
 	'authorprotect-notauthor' => 'Et ole tämän sivun luoja.',
 	'authorprotect-confirm' => 'Vaihda suojauksen tasoa',
+	'authorprotect-edit' => 'Rajoita muokkaus tekijöille',
+	'authorprotect-move' => 'Rajoita siirtäminen tekijöille',
 	'authorprotect-expiry' => 'Vanhenemisaika',
 	'authorprotect-reason' => 'Syy',
 	'authorprotect-success' => 'Suojaus onnistui!',
 	'authorprotect-failure' => 'Suojaus ei onnistunut',
+	'protect-level-author' => 'Suojaa ei-tekijöiltä',
 );
 
 /** French (Français)
@@ -407,6 +410,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'authorprotect-expiry' => 'Χρόνος λήξεως',
 	'authorprotect-reason' => 'Αἰτία',
 );
 

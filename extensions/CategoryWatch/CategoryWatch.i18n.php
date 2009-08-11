@@ -366,6 +366,9 @@ $messages['ja'] = array(
 $messages['km'] = array(
 	'categorywatch-emailsubject' => 'សកម្មភាព​ពាក់ពិន​នឹង​ចំណាត់ថ្នាក់ក្រុមដែល​តាមដាន ​"$1"',
 	'categorywatch-catmovein' => '$1 បានផ្លាស់ប្តូរ​ទីតាំងទៅកាន់ $2 ពី $3',
+	'categorywatch-catmoveout' => '$1 បានផ្លាស់ប្តូរ​ទីតាំងពី $2 ទៅកាន់ $3',
+	'categorywatch-catadd' => '$1 ត្រូវបាន​បន្ថែមទៅក្នុង​ $2',
+	'categorywatch-catsub' => '$1 ត្រូវ​បាន​ដក​ចេញ​ពី​ $2',
 );
 
 /** Korean (한국어)
@@ -407,6 +410,19 @@ $messages['lb'] = array(
 	'categorywatch-catadd' => "$1 an d'Kategorie $2 derbäigesat huet",
 	'categorywatch-catsub' => '$1 aus der Kategorie $2 erausgeholl huet',
 	'categorywatch-autocat' => 'Automatesch iwwerwaacht vum $1',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categorywatch-desc' => 'Breijd de funktie van de volglies oet mit meljinge euver aanpassinge in categorielidmaatsjap van categorieë op de volglies',
+	'categorywatch-emailsubject' => 'Aktiviteit mit betrèkking tot categorie "$1" op volglies',
+	'categorywatch-catmovein' => '$1 is van categorie $3 nao $2 verplaats',
+	'categorywatch-catmoveout' => '$1 is van categorie $2 nao $3 verplaats',
+	'categorywatch-catadd' => '$1 is aan categorie $2 toegeveug',
+	'categorywatch-catsub' => '$1 is oet categorie $2 eweggesjaf',
+	'categorywatch-autocat' => 'Otomatisch gevolg door $1',
 );
 
 /** Macedonian (Македонски)
@@ -594,12 +610,12 @@ $messages['sr-ec'] = array(
 	'categorywatch-autocat' => 'Аутоматски надгледано од $1',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
 	'categorywatch-desc' => 'Proširuje funkcionalnost spiska praćenja na obaveštavanje o promenama sadržaja kategorija',
-	'categorywatch-emailsubject' => 'Aktivnost koja uključuje nadgledanu kategoriju &quot;$1&quot;',
+	'categorywatch-emailsubject' => 'Aktivnost koja uključuje nadgledanu kategoriju "$1"',
 	'categorywatch-catmovein' => '$1 je premešten u $2 iz $3',
 	'categorywatch-catmoveout' => '$1 je premešten iz $2 u $3',
 	'categorywatch-catadd' => '$1 je dodat u $2',

@@ -2014,16 +2014,32 @@ $messages['be-tarask'] = array(
 	'configure-setting-wgMimeInfoFile' => 'Файла інфармацыі пра MIME-тыпы',
 	'configure-setting-wgMimeTypeFile' => 'Файл вызначэньняў MIME-тыпаў',
 	'configure-setting-wgTrivialMimeDetection' => 'Выкарыстоўваць трывіяльнае дэтэктаваньне MIME-тыпу',
-	'configure-setting-wgVerifyMimeType' => 'Праверыць MIME-тып загружаемых файлаў',
-	'configure-setting-wgMimeTypeBlacklist' => 'Адключыць MIME-тыпы',
-	'configure-setting-wgCacheSharedUploads' => 'Кэшыраваць агульныя мэтазьвесткі ў memcached',
-	'configure-setting-wgForeignFileRepos' => 'Зьнешнія сховішчы файлаў',
+	'configure-setting-wgVerifyMimeType' => 'Правяраць MIME-тып файлаў пад час загрузкі',
+	'configure-setting-wgMimeTypeBlacklist' => 'Забароненыя MIME-тыпы',
+	'configure-setting-wgCacheSharedUploads' => 'Кэшаваць агульныя мэта-зьвесткі ў memcached',
+	'configure-setting-wgForeignFileRepos' => 'Вонкавыя сховішчы файлаў',
 	'configure-setting-wgFetchCommonsDescriptions' => 'Атрымліваць апісаньні агульных файлаў',
 	'configure-setting-wgHashedSharedUploadDirectory' => 'Хэшаваць агульную дырэкторыю загрузак',
-	'configure-setting-wgRepositoryBaseUrl' => 'Базавы URL для агульнага сховішча',
-	'configure-setting-wgSharedThumbnailScriptPath' => 'Шлях да скрыпта мініятур для агульных загрузак',
+	'configure-setting-wgRepositoryBaseUrl' => 'Базавы URL-адрас для агульнага сховішча',
+	'configure-setting-wgSharedThumbnailScriptPath' => 'Шлях да скрыпта стварэньня мініятур для агульных загрузак',
 	'configure-setting-wgSharedUploadDBname' => 'База зьвестак для агульных загрузак',
 	'configure-setting-wgSharedUploadDBprefix' => 'Прэфікс базы зьвестак для агульных загрузак',
+	'configure-setting-wgSharedUploadDirectory' => 'Шлях да файлавай сыстэмы, па якому могуць быць знойдзены агульныя загрузкі',
+	'configure-setting-wgSharedUploadPath' => 'Поўны шлях на ўэб-сэрвэры, дзе могуць быць знойдзены агульныя загрузкі',
+	'configure-setting-wgUseSharedUploads' => 'Выкарыстоўваць агульныя загрузкі',
+	'configure-setting-wgAppleTouchIcon' => 'Іконка закладкі Apple Touch',
+	'configure-setting-wgArticlePath' => 'Базавы URL-адрас унутраных спасылак у MediaWiki',
+	'configure-setting-wgDirectoryMode' => 'Правы для новых дырэкторыяў',
+	'configure-setting-wgDiff' => 'Шлях да праграмы GNU diff',
+	'configure-setting-wgDiff3' => 'Шлях да праграмы GNU diff3',
+	'configure-setting-wgFavicon' => 'URL-адрас іконкі сайта',
+	'configure-setting-wgLogo' => 'URL-адрас лягатыпу сайта',
+	'configure-setting-wgMathDirectory' => 'Шлях у файлавай сыстэме да дырэкторыі, якая ўтрымлівае выявы формулаў LaTeX',
+	'configure-setting-wgMathPath' => 'Базавы URL-адрас дырэкторыі, якая ўтрымлівае выявы формулаў LaTeX',
+	'configure-setting-wgRedirectScript' => 'URL-адрас redirect.php, неабходны для адваротнай сумяшчальнасьці',
+	'configure-setting-wgPhpCli' => 'Назва праграмы cli кліента PHP (PHP/PHP5)',
+	'configure-setting-wgProto' => 'Прэфікс бясьпечнага сэрвэра',
+	'configure-setting-wgScript' => 'URL-адрас index.php',
 );
 
 /** Bulgarian (Български)
@@ -3439,12 +3455,14 @@ $messages['fi'] = array(
 	'configure-setting-wgShowEXIF' => 'Näytä EXIF-tiedot tiedostojen kuvaussivuilla',
 	'configure-setting-wgThumbLimits' => 'Pienoiskuvien sallitut koot',
 	'configure-setting-wgTrustedMediaFormats' => 'Turvalliseksi luokitellut Media- ja MIME-tyypit',
+	'configure-setting-wgMainCacheType' => 'Pääasiallisen välimuistijärjestelmän tyyppi',
 	'configure-setting-wgFileCacheDirectory' => 'Tiedostojen välimuistihakemisto',
 	'configure-setting-wgTranscludeCacheExpiry' => 'Välitysmuistin vanhenemisaika wikienvälisille sisällytyksille',
 	'configure-setting-wgUseFileCache' => 'Käytä tiedostovälimuistia',
 	'configure-setting-wgUseGzip' => 'Käytä GZIP-pakkausta',
 	'configure-setting-wgAllowDisplayTitle' => 'Salli <nowiki>{{DISPLAYTITLE}}</nowiki>-funktion käyttö',
 	'configure-setting-wgParserConf' => 'Jäsentimen asetukset',
+	'configure-setting-wgAmericanDates' => 'Vaadi ”May 12” -muotoa ”12 May” -muodon sijasta englannissa',
 	'configure-setting-wgInputEncoding' => 'Syötetekstin merkistö',
 	'configure-setting-wgLanguageCode' => 'Sivuston kielikoodi',
 	'configure-setting-wgLoginLanguageSelector' => 'Näytä kielenvalitsin kirjautumis- ja rekisteröintilomakkeessa',
@@ -3465,6 +3483,7 @@ $messages['fi'] = array(
 	'configure-setting-wgNoFollowLinks' => 'Lisää linkkeihin rel="nofollow"',
 	'configure-setting-wgSiteSupportPage' => 'Sivu lahjoitustiedoilla',
 	'configure-setting-wgStyleVersion' => 'MediaWikin CSS/JS-tiedostojen versio',
+	'configure-setting-wgUniversalEditButton' => 'Ota universaali muokkauspainike käyttöön',
 	'configure-setting-wgUseExternalEditor' => 'Salli ulkoisen muokkausohjelman käyttö',
 	'configure-setting-wgUseMetadataEdit' => 'Salli metatiedon muokkaus',
 	'configure-setting-wgAjaxLicensePreview' => 'Käytä AJAX-esikatselua lisensseille tiedostoja tallennettaessa',
@@ -3486,11 +3505,14 @@ $messages['fi'] = array(
 	'configure-setting-wgAutopromote-value' => 'Ehdot',
 	'configure-setting-wgEnableAPI' => 'Salli API-rajapinnan käyttö',
 	'configure-setting-wgEnableWriteAPI' => 'Salli kirjoitus-API',
+	'configure-setting-wgPasswordAttemptThrottle' => 'Salasanan kokeilukertojen väli',
 	'configure-setting-wgPasswordSalt' => 'Salasanojen vahvistaminen salasanakohtaisella kääreellä',
+	'configure-setting-wgRestrictionTypes' => 'Toiminnot joita voi rajoittaa',
 	'configure-setting-wgEmergencyContact' => 'Sivuston ylläpitäjän sähköpostiosoite',
 	'configure-setting-wgEnableEmail' => 'Salli sähköpostiominaisuudet',
 	'configure-setting-wgEnableUserEmail' => 'Salli käyttäjienväliset sähköpostiviestit',
 	'configure-setting-wgSMTP' => 'SMTP-palvelin',
+	'configure-setting-wgUserEmailUseReplyTo' => 'Käytä From-kentän sijasta Reply-To-kenttää',
 	'configure-setting-wgDebugDumpSql' => 'Tee SQL-kyselyistä vedos virheenjäljitystulosteeseen',
 	'configure-setting-wgDebugLogFile' => 'Vianjäljityksen lokitiedosto',
 	'configure-setting-wgDebugLogGroups-value' => 'Tiedosto',
@@ -3498,17 +3520,25 @@ $messages['fi'] = array(
 	'configure-setting-wgCookiePrefix' => 'Oma etuliite evästeille',
 	'configure-setting-wgCookieSecure' => 'Turvalliset evästeet',
 	'configure-setting-wgDisableCookieCheck' => 'Ota istuntojen evästeet pois käytöstä',
+	'configure-setting-wgSessionHandler' => 'PHP:n istuntojen säilytysmoottori',
 	'configure-setting-wgSessionName' => 'Istunnon nimi',
 	'configure-setting-wgUseSquid' => 'Ota Squid käyttöön',
 	'configure-setting-wgAllowSlowParserFunctions' => 'Salli hitaat jäsenninfunktiot',
 	'configure-setting-wgExtensionMessagesFiles' => 'Laajennusten käännöstiedostot',
 	'configure-setting-wgHooks' => 'Kytkökset',
+	'configure-setting-wgSpecialPages' => 'Omat toimintosivut',
+	'configure-setting-wgGroupPermissions-value' => 'Osoitetut oikeudet',
+	'configure-setting-wgRevokePermissions-value' => 'Mitätöidyt oikeudet',
 	'configure-setting-wgAddGroups' => 'Lisättävät ryhmät',
 	'configure-setting-wgAddGroups-value' => 'Lisättävät ryhmät',
 	'configure-setting-wgRemoveGroups' => 'Poistettavat ryhmät',
+	'configure-setting-wgRemoveGroups-value' => 'Poistettavat ryhmät',
 	'configure-setting-wgGroupsAddToSelf' => 'Itsepoistettavat ryhmät',
+	'configure-setting-wgGroupsRemoveFromSelf' => 'Itsepoistettavat ryhmät',
 	'configure-setting-wgFeedLimit' => 'Enimmäismäärä tuloksia syötteessä',
 	'configure-setting-wgOverrideSiteFeed' => 'Ohita syöteasetukset',
+	'configure-setting-wgSearchForwardUrl' => 'Uudelleenohjaa hakupyynnöt',
+	'configure-setting-wgDisableCounters' => 'Poista sivujen latauslaskurit käytöstä',
 	'configure-setting-wgDefaultSkin' => 'Oletusulkoasun nimi',
 	'configure-setting-wgSkipSkin' => 'Kielletyn ulkoasun nimi',
 	'configure-setting-wgSkipSkins' => 'Kiellettyjen ulkoasujen nimet',
@@ -3523,7 +3553,13 @@ $messages['fi'] = array(
 	'configure-setting-wgNamespaceRobotPolicies-value' => 'Hakurobottikäytännöt',
 	'configure-setting-wgUseCategoryBrowser' => 'Salli luokkaselain',
 	'configure-setting-wgCopyrightIcon' => 'Tekijänoikeuskuvakkeen HTML',
+	'configure-setting-wgEnableDublinCoreRdf' => 'Käytä RDF-metatietoja',
 	'configure-setting-wgRightsIcon' => 'Tekijänoikeuskuvake',
+	'configure-setting-wgRightsPage' => 'Sivuston lisenssin määrittelevä sivu',
+	'configure-setting-wgRightsText' => 'Sivuston lisenssin määrittelevä teksti',
+	'configure-setting-wgRightsUrl' => 'Sivuston lisenssin määrittelevä URL',
+	'configure-setting-wgAutoConfirmAge' => 'Automaattisesti hyväksytyn käyttäjän iän kynnysarvo',
+	'configure-setting-wgAutoConfirmCount' => 'Automaattisesti hyväksytyn käyttäjän muokkausmäärän kynnysarvo',
 	'configure-setting-wgAllowRealName' => 'Salli oikeat nimet',
 	'configure-setting-wgAllowUserSkin' => 'Salli käyttäjien vaihtaa ulkoasuaan',
 	'configure-setting-wgDefaultUserOptions' => 'Käyttäjien oletusasetukset',
@@ -3533,12 +3569,19 @@ $messages['fi'] = array(
 	'configure-setting-wgMinimalPasswordLength' => 'Salasanan vähimmäispituus',
 	'configure-setting-wgReservedUsernames' => 'Ohjelmiston varaamien tunnusten nimet',
 	'configure-setting-wgShowIPinHeader' => 'Näytä IP-osoite käyttäjäpalkissa',
+	'configure-setting-wgCompressRevisions' => 'Pakkaa vanhat versiot, jos mahdollista',
+	'configure-setting-wgDisableOutputCompression' => 'Ota tulosteen pakkaus pois käytöstä',
+	'configure-setting-wgEnableHtmlDiff' => 'Käytä sivuaalista (HTML) muutosvertailua',
 	'configure-setting-wgUseAutomaticEditSummaries' => 'Käytä automaattisia muokkausyhteenvetoja',
 	'configure-setting-wgEnableScaryTranscluding' => 'Salli wikienvälinen sisällytys',
 	'configure-setting-wgInterwikiCache' => 'Käytä wikienvälisten linkkien välimuistitusta',
 	'configure-setting-wgBlockOpenProxies' => 'Automaattinen avointen välityspalvelinten testaus muokatessa',
+	'configure-setting-wgEnableSorbs' => 'Käytä [http://dnsbl.sorbs.net http.dnsbl.sorbs.net-palvelua] avointen välityspalvelinten tarkastamiseen',
 	'configure-setting-wgProxyList' => 'Estetyt IP-osoitteet',
+	'configure-setting-wgProxyPorts' => 'Portit joita skannataan välityspalvelimen havaitsemiseksi',
+	'configure-setting-wgProxyWhitelist' => 'Hyväksytyt välityspalvelimet',
 	'configure-setting-wgSecretKey' => 'Salainen avain',
+	'configure-setting-wgSQLiteDataDir' => 'SQLiten tietohakemisto',
 	'configure-setting-wgDBmysql5' => 'Käytä UTF-8-merkistökoodausta',
 	'configure-setting-wgDBprefix' => 'Taulujen etuliite',
 	'configure-setting-wgDBTableOptions' => 'MySQL-taulujen asetukset',
@@ -3547,20 +3590,32 @@ $messages['fi'] = array(
 	'configure-setting-wgDBservers' => 'Tietokantapalvelimet',
 	'configure-setting-wgExternalServers' => 'Ulkoiset MySQL-palvelimet',
 	'configure-setting-wgLBFactoryConf' => 'Kuormantasaajan asetukset',
+	'configure-setting-wgAntivirusRequired' => 'Vaadi onnistunutta virustarkistusta',
 	'configure-setting-wgAntivirusSetup' => 'Virusskannerin asetukset',
 	'configure-setting-wgAllowTitlesInSVG' => 'Salli otsikot SVG-tiedostoissa',
 	'configure-setting-wgSVGConverter' => 'SVG-muuntaja',
+	'configure-setting-wgSVGConverterPath' => 'Polku SVG-muuntajalle',
 	'configure-setting-wgSVGConverters' => 'SVG-muuntajat',
 	'configure-setting-wgSVGConverters-key' => 'Muuntajan nimi',
 	'configure-setting-wgSVGConverters-value' => 'Muuntokomento',
+	'configure-setting-wgSVGMaxSize' => 'Enimmäiskoko SVG-skaalaukselle',
 	'configure-setting-wgImageMagickConvertCommand' => 'Komento ImageMagickille',
 	'configure-setting-wgImageMagickTempDir' => 'ImageMagickin väliaikaishakemisto',
 	'configure-setting-wgUseImageMagick' => 'Käytä ImageMagickia',
 	'configure-setting-wgMemCachedServers' => 'Memcached-palvelimet',
+	'configure-setting-wgSessionsInMemcached' => 'Säilytä istuntoja memcachedissa',
 	'configure-setting-wgUseMemCached' => 'Käytä memcachedia',
+	'configure-setting-wgMessageCacheType' => 'Viestivälimuistin tyyppi',
 	'configure-setting-wgParserCacheType' => 'Jäsentimen välimuistityyppi',
+	'configure-setting-wgEnableParserCache' => 'Ota jäsentimen välimuisti käyttöön',
+	'configure-setting-wgSidebarCacheExpiry' => 'Sivupalkin välimuistin vanheneminen',
+	'configure-setting-wgUseETag' => 'Lähetä ETag-otsakkeet',
 	'configure-setting-wgAlwaysUseTidy' => 'Käytä aina Tidyä',
+	'configure-setting-wgDebugTidy' => 'Lisää tidy-varoitukset HTML-kommentteihin',
+	'configure-setting-wgTidyBin' => 'Tidyn binäärin polku',
+	'configure-setting-wgTidyConf' => 'Tidyn asetustiedosto',
 	'configure-setting-wgUseTeX' => 'Salli TeX',
+	'configure-setting-wgXMLMimeTypes' => 'Tunnistettavat XML-MIME-tyypit',
 	'configure-setting-wgXMLMimeTypes-key' => 'MIME-tyyppi',
 	'configure-setting-wgMimeType' => 'Wikisivujen MIME-tyyppi',
 	'configure-setting-wgXhtmlNamespaces' => 'Muut XHTML-nimiavaruudet',
@@ -3571,6 +3626,8 @@ $messages['fi'] = array(
 	'configure-setting-wgLocalTZoffset' => 'Aikavyöhykkeen aikaero',
 	'configure-setting-wgAllowUserCss' => 'Salli käyttäjäkohtaiset Cascading Style Sheet (CSS) -sivut',
 	'configure-setting-wgAllowUserJs' => 'Salli käyttäjäkohtaiset JavaScript-sivut',
+	'configure-setting-wgUseSiteCss' => 'Käytä sivuston kaskadisia tyyliohjeita (CSS)',
+	'configure-setting-wgUseSiteJs' => 'Käytä sivuston JavaScript-sivua',
 	'configure-setting-wgHandheldStyle' => 'Tyyli media="handheld":lle',
 	'configure-setting-wgHandheldForIPhone' => 'Aseta ”screen”- ja ”handheld”-mediatyypit iPhonelle',
 	'configure-setting-wgUseAjax' => 'Käytä AJAX-lisäominaisuuksia',
@@ -3580,9 +3637,11 @@ $messages['fi'] = array(
 	'configure-setting-wgVerifyMimeType' => 'Tarkista tallennettujen tiedostojen MIME-tyyppi',
 	'configure-setting-wgMimeTypeBlacklist' => 'Kielletyt MIME-tyypit',
 	'configure-setting-wgForeignFileRepos' => 'Muut tiedostolähteet',
+	'configure-setting-wgSharedUploadDBprefix' => 'Tietokannan etuliite jaetuille tiedostoille',
 	'configure-setting-wgUseSharedUploads' => 'Käytä jaettuja tiedostoja',
 	'configure-setting-wgAppleTouchIcon' => 'Apple Touchin kirjanmerkki-ikoni',
 	'configure-setting-wgArticlePath' => 'MediaWikin sisäisten linkkien pohja-URL',
+	'configure-setting-wgDirectoryMode' => 'Uusien hakemistojen käyttöoikeudet',
 	'configure-setting-wgDiff' => 'GNU diff -työkalun polku',
 	'configure-setting-wgDiff3' => 'GNU diff3 -työkalun polku',
 	'configure-setting-wgFavicon' => 'Sivuston favicon-ikonin URL',
@@ -3592,8 +3651,10 @@ $messages['fi'] = array(
 	'configure-setting-wgScriptPath' => 'Juuripolun URL',
 	'configure-setting-wgServer' => 'Palvelimen juuren URL',
 	'configure-setting-wgServerName' => 'Palvelimen nimi ilman protokollaa',
+	'configure-setting-wgStyleDirectory' => 'Tiedostojärjestelmän polku skins-hakemistoon',
 	'configure-setting-wgStylePath' => 'Ulkoasuhakemiston URL',
 	'configure-setting-wgTmpDirectory' => 'Väliaikaishakemiston URL',
+	'configure-setting-wgUploadNavigationUrl' => 'URL tiedostojen tallentamiseen valikossa',
 	'configure-setting-wgUploadPath' => 'Tiedostojen tallennushakemiston URL',
 	'configure-setting-wgPutIPinRC' => 'Lisää IP-osoitteet ”recentchanges”-tauluun',
 	'configure-setting-wgRCLinkLimits' => 'Muutosmäärän rajoitus tuoreissa muutoksissa',
@@ -3605,7 +3666,11 @@ $messages['fi'] = array(
 	'configure-setting-wgSysopEmailBans' => 'Salli ylläpitäjien estää pääsy sivulle [[Special:EmailUser]]',
 	'configure-setting-wgSysopRangeBans' => 'Salli ylläpitäjien estää IP-alueita',
 	'configure-setting-wgSysopUserBans' => 'Salli ylläpitäjien estää kirjautuneita käyttäjiä',
+	'configure-setting-wgEnotifFromEditor' => 'Sähköpostihuomautukset näyttäisivät tulevan sivun muokkaajalta (ei wikin palvelimelta)',
+	'configure-setting-wgEnotifImpersonal' => 'Lähetä yleinen sähköpostiviesti jokaiselle käyttäjälle henkilökohtaisen viestin sijasta',
 	'configure-setting-wgEnotifUseJobQ' => 'Lähetä sähköpostit työjonon kautta',
+	'configure-setting-wgUDPProfilerHost' => 'Osoite UDP-profiloijalle',
+	'configure-setting-wgUDPProfilerPort' => 'Portti UDP-profiloijalle',
 );
 
 /** French (Français)
@@ -4741,10 +4806,23 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'configure-setting-wgSitename' => 'Ὄνομα ἱστοτόπου',
+	'configure-setting-wgActionPaths-key' => 'Δρᾶσις',
+	'configure-setting-wgMediaHandlers-key' => 'Τύπος MIME',
+	'configure-setting-wgExtraLanguageNames-key' => 'Κῶδιξ γλώττης',
 	'configure-setting-wgExtraLanguageNames-value' => 'Ὄνομα',
+	'configure-setting-wgVersion' => 'Ἔκδοσις MediaWiki',
+	'configure-setting-wgSpecialPageGroups-key' => 'Ὁμάς',
+	'configure-setting-wgEnableAPI' => 'Καθιστάναι δυνατὴν τὴν API',
 	'configure-setting-wgDebugLogGroups-value' => 'Ἀρχεῖον',
+	'configure-setting-wgSessionName' => 'Ὄνομα συνεδρίας',
+	'configure-setting-wgHooks' => 'Ἀγγύλαι',
+	'configure-setting-wgNamespaceAliases-key' => 'Ψευδώνυμον',
+	'configure-setting-wgSecretKey' => 'Κρυφὴ κλείς',
+	'configure-setting-wgDBmysql5' => 'Χρῆσθαι κωδικοποιήσει UTF-8',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Ὀνοματεῖον',
 );
 
@@ -5515,6 +5593,32 @@ $messages['hr'] = array(
 	'configure-setting-wgSMTP' => 'SMTP server',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'configure-setting-wgSitename' => 'Sydłowe mjeno',
+	'configure-setting-wgActionPaths' => 'URL za akcije',
+	'configure-setting-wgActionPaths-key' => 'Akcija',
+	'configure-setting-wgActionPaths-value' => 'Předłoha URL',
+	'configure-setting-wgAllowImageMoving' => 'Přemjenowanje datajow zmóžnić',
+	'configure-setting-wgMediaHandlers-key' => 'Typ MIME',
+	'configure-setting-wgGrammarForms' => 'Gramatiske formy za parserowu funkciju GRAMMAR',
+	'configure-setting-wgParserConf' => 'Konfiguracija parsera',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Titul strony',
+	'configure-setting-wgExtraLanguageNames-key' => 'Rěčny kod',
+	'configure-setting-wgExtraLanguageNames-value' => 'Mjeno',
+	'configure-setting-wgVersion' => 'Wersija MediaWiki',
+	'configure-setting-wgSpecialPageGroups-key' => 'Skupina',
+	'configure-setting-wgAutopromote-value' => 'Wuměnjenja',
+	'configure-setting-wgSMTP' => 'Serwer SMTP',
+	'configure-setting-wgDebugLogGroups-value' => 'Dataja',
+	'configure-setting-wgXMLMimeTypes-key' => 'Typ MIME',
+	'configure-setting-wgXhtmlNamespaces-key' => 'Mjenowy rum',
+	'configure-setting-wgLocaltimezone' => 'Lokalne časowe pasmo',
+	'configure-setting-wgUseAjax' => 'AJAX zmóžnić',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -6078,6 +6182,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  * @author Rex
  */
 $messages['id'] = array(
@@ -6085,6 +6190,10 @@ $messages['id'] = array(
 	'configure-setting-wgExtraLanguageNames-value' => 'Nama',
 	'configure-setting-wgSpecialPageGroups-key' => 'Kelompok',
 	'configure-setting-wgDebugLogGroups-value' => 'Berkas',
+	'configure-setting-wgRightsIcon' => 'Ikon hak cipta',
+	'configure-setting-wgRightsPage' => 'Halaman yang menjelaskan lisensi situs',
+	'configure-setting-wgRightsText' => 'Tulisan yang menjelaskan lisensi situs',
+	'configure-setting-wgRightsUrl' => 'URL yang menjelaskan lisensi situs',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Ruang nama',
 );
 
@@ -6698,11 +6807,33 @@ $messages['km'] = array(
 	'configure-setting-wgValidSkinNames-key' => 'ឈ្មោះ​​ខាងក្នុង',
 	'configure-setting-wgValidSkinNames-value' => '​​ឈ្មោះអេក្រង់ (Display name)',
 	'configure-setting-wgExtraNamespaces-key' => 'លេខ​ ID នៃ​លំហឈ្មោះ',
+	'configure-setting-wgNamespaceProtection' => 'ការ​ការពារ​លំហ​ឈ្មោះ​',
+	'configure-setting-wgNamespaceRobotPolicies' => 'គោលការណ៍​រូបយន្ត​ តាម​លំហ​ឈ្មោះ​',
+	'configure-setting-wgNamespaceRobotPolicies-value' => 'គោលការណ៍​រូបយន្ត​',
+	'configure-setting-wgNamespacesWithSubpages' => 'លំហ​ឈ្មោះ​ជាមួយទំព័ររង',
 	'configure-setting-wgAllowRealName' => 'អនុញ្ញាត​ឲ្យ​មាន​ឈ្មោះ​ពិត​',
 	'configure-setting-wgDefaultUserOptions' => 'ចំណូលចិត្ត​អ្នក​ប្រើប្រាស់​តាម​លំនាំ​ដើម​',
+	'configure-setting-wgProxyList' => 'អាសយដ្ឋាន​ IP ដែលបាន​ហាមឃាត់​',
+	'configure-setting-wgProxyWhitelist' => 'បញ្ជី​ស Proxy',
 	'configure-setting-wgSecretKey' => 'កូនសោ​សម្ងាត់​',
+	'configure-setting-wgDBmysql5' => 'ប្រើប្រាស់​ UTF-8 encoding',
+	'configure-setting-wgDBprefix' => 'បុព្វបទ​នៃ​តារាង​',
+	'configure-setting-wgDBtransactions' => 'ប្រើប្រាស់​តារាង​ InnoDB',
+	'configure-setting-wgDBservers' => 'ម៉ាស៊ីន​បម្រើ​ទិន្នន័យ',
+	'configure-setting-wgSVGConverter' => 'កម្មវិធីបម្លែង SVG',
+	'configure-setting-wgSVGConverterPath' => 'ផ្លូវ​នៃ​កម្មវិធីបម្លែង SVG',
+	'configure-setting-wgSVGConverters' => 'កម្មវិធី​បម្លែង​ SVG',
+	'configure-setting-wgSVGConverters-key' => 'ឈ្មោះ​កម្មវិធី​បម្លែង​',
+	'configure-setting-wgMemCachedServers' => 'ម៉ាស៊ីន​បម្រើ​ Memcached',
+	'configure-setting-wgUseMemCached' => 'ប្រើប្រាស់​ memcached',
+	'configure-setting-wgXMLMimeTypes-key' => 'ប្រភេទ MIME',
 	'configure-setting-wgXhtmlNamespaces-key' => 'លំហឈ្មោះ',
 	'configure-setting-wgLocaltimezone' => 'ល្វែង​ម៉ោងក្នុងស្រុក​',
+	'configure-setting-wgMimeInfoFile' => 'ឯកសារ​ព័ត៌មាន​​ប្រភេទ​ MIME',
+	'configure-setting-wgMimeTypeFile' => 'ឯកសារ​និយមន័យ​ប្រភេទ​ MIME',
+	'configure-setting-wgTmpDirectory' => 'URL នៃ​ថតឯកសារ​បណ្តោះអាសន្ន​',
+	'configure-setting-wgUploadNavigationUrl' => 'URL សម្រាប់​តំណ​បណ្ដាញ​ទិស​ដៅ​ផ្ទុក​ឡើង​',
+	'configure-setting-wgUploadPath' => 'URL នៃថត​ឯកសារ​​​ផ្ទុក​ឡើង​',
 );
 
 /** Korean (한국어)
@@ -7279,6 +7410,14 @@ $messages['ksh'] = array(
 	'configure-setting-wgProfileToDatabase' => 'Donn zosamme jezallte Daate uß dä Tabäll övver de Projramme ier Leißdung en de Daatebangk schriive',
 	'configure-setting-wgUDPProfilerHost' => 'Dä Rääschner för dat Projramm <i lang="en">UDP</i> öm de Projramme ier Leißdung beschriive',
 	'configure-setting-wgUDPProfilerPort' => 'De „Pooz“ (<code lang="en">port</code>) för dat Projramm, öm övver <i lang="en">UDP</i> de Projramme ier Leißdung ze beshtemme (<code lang="en">UDP-profiler</code>)',
+);
+
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'configure-setting-wgSessionName' => 'Nomen sessionis',
+	'configure-setting-wgNamespaceAliases-key' => 'Pseudonymum',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -11429,7 +11568,7 @@ $messages['sr-ec'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'Порт за UDP профајлер',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -11480,7 +11619,7 @@ $messages['sr-el'] = array(
 	'configure-setting-wgAllowDisplayTitle' => 'Omogući korišćenje <nowiki>{{DISPLAYTITLE}}</nowiki>',
 	'configure-setting-wgAllowExternalImages' => 'Omogući inlajn povezivanje ka fajlovima',
 	'configure-setting-wgAllowExternalImagesFrom' => 'Izuzeci od $wgAllowExternalImages = false',
-	'configure-setting-wgEnableImageWhitelist' => 'Omogući korišćenje &quot;MediaWiki:External file whitelist&quot;',
+	'configure-setting-wgEnableImageWhitelist' => 'Omogući korišćenje "MediaWiki:External file whitelist"',
 	'configure-setting-wgExpensiveParserFunctionLimit' => 'Maksimalni broj poziva po parsiranju skupim parser-funkcijama',
 	'configure-setting-wgCleanSignatures' => 'Razvijaj šablone u potpisima',
 	'configure-setting-wgMaxPPExpandDepth' => 'Limit dubine steka za razvijanje šablona u preprocesoru',
@@ -11518,8 +11657,8 @@ $messages['sr-el'] = array(
 	'configure-setting-wgMaxArticleSize' => 'Maksimalna veličina strane (kB)',
 	'configure-setting-wgMaxRedirects' => 'Maksimalni broj praćenih preusmerenja',
 	'configure-setting-wgMetadataWhitelist' => 'Strana koja sadrži šablone sa dozvoljenim metapodacima',
-	'configure-setting-wgNoFollowLinks' => 'Dodaj rel=&quot;nofollow&quot; linkovima',
-	'configure-setting-wgNoFollowDomainExceptions' => 'Spoljašnje veze kao onim (pod)domenima, koji ne treba da imaju rel=&quot;nofollow&quot; atribut',
+	'configure-setting-wgNoFollowLinks' => 'Dodaj rel="nofollow" linkovima',
+	'configure-setting-wgNoFollowDomainExceptions' => 'Spoljašnje veze kao onim (pod)domenima, koji ne treba da imaju rel="nofollow" atribut',
 	'configure-setting-wgPageShowWatchingUsers' => 'Pokaži koji korisnici prate stranu',
 	'configure-setting-wgRestrictionLevels' => 'Podesivi novoi kontrole pristupa',
 	'configure-setting-wgSiteNotice' => 'Napomena sajta',

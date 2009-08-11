@@ -144,12 +144,14 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'likedpages' => 'Parasta laatua lukijoiden mielestä tarjoavat sivut',
 	'likedpages-leg' => 'Etsi parasta laatua sisältävät sivut',
 	'likedpages-list' => 'Alla on luettelo sivuista lukijapalaute-arviointinsa mukaan lajiteltuna.',
 	'likedpages-none' => 'Tällä listalla ei ole sivuja',
+	'likedpages-graphs' => 'arvostelutiedot',
 );
 
 /** French (Français)

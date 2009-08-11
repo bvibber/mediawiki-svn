@@ -448,6 +448,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'contributors' => 'Συνεισφέροντες',
 	'contributors-target' => 'Ἐπιγραφή:',
 	'contributors-submit' => 'Δεικνύναι',
 	'contributors-badtitle' => 'Ἄκυρος ἐπιγραφή.',

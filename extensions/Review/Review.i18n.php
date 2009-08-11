@@ -511,12 +511,13 @@ Twóje druge pógódnośenja zjadnośuju se do toś togo, źož sy wubrał 'žed
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
-	'review_sidebar_title' => 'Κριτική',
+	'review_sidebar_title' => 'Επιθεώρηση',
 	'review_total_statistics' => 'Σύνολο',
-	'review_statistics_left_corner' => 'Επανάληψη',
+	'review_statistics_left_corner' => 'Αναθεώρηση',
 	'review_user_details_link' => '(λεπτομέρειες)',
 	'review_topic' => 'Θέμα',
 	'review_no_opinion' => 'Καμία γνώμη',
@@ -656,6 +657,10 @@ $messages['fi'] = array(
 	'review_save' => 'Tallenna arviointi',
 	'review_error' => 'Jokin on väärin!',
 	'review_total_statistics' => 'Yhteensä',
+	'review_statistics_left_corner' => 'Versio',
+	'review_version_link' => 'Versio $1',
+	'review_statistic_cell' => 'Keskimäärin $1 / $2<br />($4 {{PLURAL:$4|rekisteröity käyttäjä|rekisteröityä käyttäjää}}, $5 {{PLURAL:$5|nimetön käyttäjä|nimetöntä käyttäjää}})',
+	'review_user_reviews' => '<small>(tämän käyttäjän arviot)</small>',
 	'review_user_details_link' => '(tiedot)',
 	'review_has_been_stored' => 'Arvostelusi tallennettiin.',
 	'review_blocked' => 'Olet estetty, joten et voi osallistua.',
@@ -784,6 +789,7 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'review_sidebar_title' => 'Ἐπισκόπησις',
 	'review_total_statistics' => 'Συνολικόν',
+	'review_statistics_left_corner' => 'Ἀναθεώρησις',
 	'review_user_details_link' => '(λεπτομέρειαι)',
 	'review_topic' => 'Θέμα',
 	'review_rating' => 'Βάθμισις',

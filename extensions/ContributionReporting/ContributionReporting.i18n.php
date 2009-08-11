@@ -787,10 +787,17 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'contributionhistory' => 'Redigeerimise ajalugu',
 	'contrib-hist-name' => 'Nimi',
 	'contrib-hist-date' => 'Kellaaeg ja kuupäev',
+	'contrib-hist-next' => 'Varasemad annetused',
+	'contrib-hist-previous' => 'Värskemad annetused',
+	'contrib-hist-anonymous' => 'Anonüümne',
+	'contributionstatistics' => 'Redigeerimise statistika',
+	'contribstats-desc' => 'Kuvab Wikimedia Sihtasutusele tehtud koostöö arvandmed.',
 	'contribstats-day' => 'Päev',
 	'contribstats-month' => 'Kuu',
 	'contribstats-currency' => 'Rahaühik',

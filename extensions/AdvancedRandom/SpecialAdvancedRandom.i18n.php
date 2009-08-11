@@ -482,10 +482,13 @@ $messages['ru'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Melos
  * @author Santu
  */
 $messages['scn'] = array(
 	'advancedrandom' => 'Random avanzatu',
+	'advancedrandom-desc' => 'Pigghia na pàggina di qualunque namespace, la talk o la pàggina soggettu dô link pi dari na pàggina.
+Pò èssiri usatu comu [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] pi pigghiari na discussioni di na pàggina di qualità, o comu [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] pi haviri na pagina casuali di nu file n GFDL',
 );
 
 /** Slovak (Slovenčina)

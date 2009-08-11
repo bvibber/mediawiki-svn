@@ -242,9 +242,11 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'profiling' => 'Profilointitiedot',
 	'profiling-wildcard' => 'Käytä jokerimerkkiä',
 	'profiling-ok' => 'OK',
 	'profiling-data-count' => 'Määrä',
+	'profiling-data-time' => 'Aika (kaikki)',
 	'profiling-data-average' => 'Aika (keskiarvo)',
 );
 

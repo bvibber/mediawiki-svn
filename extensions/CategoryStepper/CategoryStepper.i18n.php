@@ -354,6 +354,15 @@ $messages['lb'] = array(
 	'categorystepper-start' => '(Ufank vun der Kategorie)',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categorystepper-desc' => "Gif 'n categorieblajervinster waer dat toeleut om alfabetisch veuroet en achteroet te navigere op pagina's die in ein of mier categorieë zitte.",
+	'categorystepper-end' => '(Ènj van categorie)',
+	'categorystepper-start' => '(Begin van categorie)',
+);
+
 /** Lao (ລາວ)
  * @author Passawuth
  */

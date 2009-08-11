@@ -1386,7 +1386,10 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'form' => '表格',
+	'formnoname' => '未有表格名稱',
 	'formsave' => '儲存',
 	'formarticleexists' => '頁面存在',
+	'formsaveerror' => '儲存表格時發生錯誤',
 );
 

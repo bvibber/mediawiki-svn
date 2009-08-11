@@ -454,6 +454,9 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'ratinghistory' => 'Sivun arvosteluhistoria',
+	'ratinghistory-tab' => 'arvostelu',
+	'ratinghistory-link' => 'Sivun arvostelu',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Kiitos, että tarkistit tämän sivun!</font>''",
 	'ratinghistory-period' => 'Aikajakso:',
 	'ratinghistory-month' => 'viime kuu',
@@ -466,6 +469,7 @@ $messages['fi'] = array(
 	'ratinghistory-table' => 'Katsaus lukijoiden arvioinneista',
 	'ratinghistory-users' => 'Käyttäjät, jotka esittivät arvionsa',
 	'readerfeedback-svg' => 'Näytä SVG-muodossa',
+	'ratinghistory-table-rating' => 'Arvostelu',
 	'ratinghistory-table-votes' => 'Äänet',
 	'ratinghistory-none' => 'Ei ole tarpeeksi lukijapalautetta, jotta taulukko voitaisiin esittää.',
 	'right-feedback' => 'Käyttää palautelomaketta sivujen arvosteluun',

@@ -142,9 +142,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'block_title_error_page_title' => 'Παρεμποδισμένος τίτλος',
+	'block_title_error-desc' => 'Παρέχει ένα βασικό τρόπο αποτροπής σελίδων με συγκεκριμένους τίτλους από το να αποθηκεύονται ή να δημιουργούνται',
 	'block_title_error' => 'Συγγνώμη, ο τίτλος αυτής της σελίδας δεν επιτρέπεται να αποθηκευτεί.',
 );
 

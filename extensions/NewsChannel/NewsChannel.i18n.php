@@ -476,6 +476,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'newschannel' => 'Canal de ştiri',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limită:',
 	'newschannel_include_category' => 'Categorie adiţională:',

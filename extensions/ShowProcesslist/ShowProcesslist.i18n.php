@@ -959,3 +959,20 @@ $messages['yi'] = array(
 	'showprocesslist-time' => 'צײַט',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hans'] = array(
+	'showprocesslist-user' => '用户',
+	'showprocesslist-time' => '时间',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'showprocesslist-user' => '使用者',
+	'showprocesslist-time' => '時間',
+	'showprocesslist-state' => '狀態',
+);
+

@@ -267,12 +267,14 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'adminlinks' => 'Ylläpidon linkit',
+	'adminlinks_general' => 'Yleinen',
 	'adminlinks_editsidebar' => 'Muokkaa sivupalkkia',
 	'adminlinks_editcss' => 'Muokkaa CSS-tiedostoa',
 	'adminlinks_editmainpagename' => 'Muokkaa etusivun nimeä',
 	'adminlinks_users' => 'Käyttäjät',
 	'adminlinks_createuser' => 'Luo uusi käyttäjä',
 	'adminlinks_browsesearch' => 'Selaaminen ja hakeminen',
+	'adminlinks_importexport' => 'Tuonti ja vienti',
 );
 
 /** French (Français)

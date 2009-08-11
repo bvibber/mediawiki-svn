@@ -1611,6 +1611,7 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
 	'deletequeue-discusscreate-text' => 'Poistoa ehdotettiin seuraavan syyn takia: $2',
 	'deletequeue-role-nominator' => 'alkuperäinen poiston ehdottaja',
 	'deletequeue-role-vote-endorse' => 'poiston siirtäjä',
+	'deletequeue-role-vote-object' => 'poiston vastustaja',
 	'deletequeue-vote-title' => 'Myötäile tai vastusta sivun ”$1” poistoa',
 	'deletequeue-vote-action' => 'Suositus:',
 	'deletequeue-vote-endorse' => 'Hyväksy poisto.',
@@ -1642,6 +1643,7 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
 	'deletequeue-list-header-queue' => 'Jono',
 	'deletequeue-list-header-votes' => 'Hyväksyjät ja vastustajat',
 	'deletequeue-list-header-discusspage' => 'Keskustelusivu',
+	'deletequeue-list-header-reason' => 'Syy poistolle',
 	'deletequeue-case-details' => 'Perustiedot',
 	'deletequeue-case-page' => 'Sivu',
 	'deletequeue-case-reason' => 'Syy',
@@ -3184,6 +3186,13 @@ $messages['mhr'] = array(
 	'deletequeue-delnom-otherreason' => 'Вес амал',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'deletequeue-list-search' => 'Хайх',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  */
@@ -4604,7 +4613,7 @@ $messages['sr-ec'] = array(
 	'deletequeue-case-expiry' => 'Истек:',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -4647,7 +4656,7 @@ Diskusija se vodi na [[$5]], i završiće se na ''$2''.",
 	'deletequeue-vote-success-endorse' => 'Uspešno ste podržali brisanje ove strane.',
 	'deletequeue-vote-requeued' => 'Uspešno ste se usprotivili brisanju ove strane.
 Zbog Vašeg protivljenja, strana je premeštena u sledeći red: $1.',
-	'deletequeue-showvotes' => 'Podrška i protivljenje brisanju &quot;$1&quot;.',
+	'deletequeue-showvotes' => 'Podrška i protivljenje brisanju "$1".',
 	'deletequeue-showvotes-restrict-endorse' => 'Prikaži samo podrške',
 	'deletequeue-showvotes-restrict-object' => 'Prikaži samo protivljenja',
 	'deletequeue-showvotes-restrict-none' => 'Prikaži sve podrške i protivljenja',

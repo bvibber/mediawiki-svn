@@ -275,7 +275,9 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'am-username' => 'käyttäjätunnus',
 	'am-email' => 'sähköposti',
+	'am-active' => 'aktiivinen',
 	'am-updated' => 'Muutokset tallennettiin onnistuneesti',
+	'nss-rights' => 'oikeudet',
 	'nss-save-changes' => 'Tallenna muutokset',
 	'nss-create-account-header' => 'Luo uusi tunnus',
 	'nss-create-account' => 'Luo tunnus',
@@ -703,7 +705,9 @@ $messages['ro'] = array(
 	'nss-save-changes' => 'Salvează modificările',
 	'nss-create-account-header' => 'Creează cont nou',
 	'nss-create-account' => 'Creează cont',
+	'nss-no-mail' => 'Nu trimite e-mail',
 	'nss-welcome-mail-subject' => 'Crearea contului',
+	'nss-db-error' => 'Eroare la citirea din baza de date de autentificare',
 );
 
 /** Tarandíne (Tarandíne)

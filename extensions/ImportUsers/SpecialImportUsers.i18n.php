@@ -1743,3 +1743,25 @@ $messages['yi'] = array(
 	'importusers-form-button' => 'אימפארט',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hans'] = array(
+	'importusers-uploadfile' => '上载文件',
+	'importusers-password' => '密码',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'importusers' => '匯入使用者',
+	'importusers-uploadfile' => '上載檔案',
+	'importusers-form-button' => '匯入',
+	'importusers-log-summary-added' => '已加入',
+	'importusers-log-summary-updated' => '已更新',
+	'importusers-password' => '密碼',
+	'importusers-email' => '電郵',
+	'importusers-realname' => '真實姓名',
+);
+

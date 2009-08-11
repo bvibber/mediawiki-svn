@@ -735,6 +735,6 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'whatismyip-out' => '您的IP:',
+	'whatismyip-out' => '您的IP位址：',
 );
 

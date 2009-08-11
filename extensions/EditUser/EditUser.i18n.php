@@ -748,6 +748,13 @@ $messages['ml'] = array(
 	'edituser-exempt' => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ഉപയോക്താവിന്റെ ക്രമീകരണം തിരുത്തുവാന്‍ സാധിക്കില്ല',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'edituser-dosearch' => 'Хайх',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

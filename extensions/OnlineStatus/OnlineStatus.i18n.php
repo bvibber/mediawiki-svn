@@ -805,10 +805,14 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'onlinestatus-subtitle-offline' => 'Acest utilizator este momentan offline',
+	'onlinestatus-subtitle-online' => 'Acest utilizator este momentan online',
 	'onlinestatus-tab' => 'Statut',
 	'onlinestatus-toggles-desc' => 'Starea dvs.:',
+	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
 );
 

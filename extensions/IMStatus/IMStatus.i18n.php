@@ -918,8 +918,8 @@ $messages['oc'] = array(
 	'imstatus_aim_api' => "$1 aficha vòstre estat amb un ligam qu'aviarà dins un <b>navigador</b> una version javascript de AIM per vos mandar un messatge instantanèu.",
 	'imstatus_gtalk_code' => 'vòstre còde Google Talk',
 	'imstatus_gtalk_get_code' => 'vòstre còde Google Talk : obtenètz-lo sus $1.',
-	'imstatus_gtalk_height' => 'nautor de la boita, en pixèls.',
-	'imstatus_gtalk_width' => 'largor de la boita, en pixèls.',
+	'imstatus_gtalk_height' => 'nautor de la bóstia, en pixèls.',
+	'imstatus_gtalk_width' => 'largor de la bóstia, en pixèls.',
 	'imstatus_icq_id' => 'vòstre identificant ICQ',
 	'imstatus_icq_style' => 'un nombre entre 0 e 26 (òc, i a 27 estils disponibles...).',
 	'imstatus_live_code' => 'vòstre identificant sul sit Live Messenger',
@@ -1040,6 +1040,8 @@ $messages['ro'] = array(
 	'imstatus_max' => 'max',
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'sau',
+	'imstatus_gtalk_height' => 'înălţimea cutiei, în pixeli.',
+	'imstatus_gtalk_width' => 'lăţimea cutiei, în pixeli.',
 	'imstatus_icq_style' => 'un număr între 0 şi 26 (da, există 27 de stiluri disponibile...).',
 	'imstatus_xfire_size' => 'mărimea butoanelor, de la $1 (cel mai mare) la $2 (cel mai mic).',
 );
@@ -1345,5 +1347,14 @@ $messages['zh-hans'] = array(
 </a>中生成。
 需要提供的ID由"$2"和"$3"之间的数字、字母组成。',
 	'imstatus_xfire_size' => '按钮的大小，可从 $1 (最大) 到 $2 (最小)供选择。',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'imstatus_your_name' => '您的$1名稱',
+	'imstatus_gtalk_code' => '您的Google Talk代碼',
+	'imstatus_icq_id' => '您的ICQ ID',
 );
 

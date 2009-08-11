@@ -172,7 +172,7 @@ $messages['fi'] = array(
 	'categoryintersection' => 'Luokkien leikkaus',
 	'categoryintersection-desc' => 'Ylläpitää hajautusalgoritmin arvojen taulukkoa sivunsisäisäisesti näytettynä olevia [[Special:CategoryIntersection|luokkien leikkauksia]] varten',
 	'categoryintersection-doit' => 'Listaa kaikissa näissä luokissa olevat sivut',
-	'categoryintersection-maxcategories' => 'Suurin sallittu määrä luokkia, joista tehdään leikkaus on $1.',
+	'categoryintersection-maxcategories' => 'Suurin sallittu määrä luokkia, joista tehdään leikkaus, on $1.',
 	'categoryintersection-results' => 'Haku palautti $1 {{PLURAL:$1|tuloksen|tulosta}}.',
 );
 
@@ -365,6 +365,17 @@ $messages['lb'] = array(
 	'categoryintersection-doit' => 'Lëscht vun de Säiten aus all dëse Kategorien',
 	'categoryintersection-maxcategories' => 'Déi maximal Zuel vu Kategorien déi sech iwwerschneiden däerfen ass $1.',
 	'categoryintersection-results' => "D'Resultat vun der der Sich  {{PLURAL:$1|ass $1 Titel|si(nn) $1 Titelen}}.",
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categoryintersection' => 'Categoriedoorsjneet',
+	'categoryintersection-desc' => "Hilt 'n tabel bie mit hashwaerd veur [[Special:CategoryIntersection|categoriedoorsjneet]] veur 'n pagina",
+	'categoryintersection-doit' => "Pagina's in al dees categorieë betrachte",
+	'categoryintersection-maxcategories' => "'t Maximaal aantal categoriedoorsjneet is $1.",
+	'categoryintersection-results' => 'De zeukopdrach haet $1 {{PLURAL:$1|rizzeltaat|rizzeltate}} opgelieverd.',
 );
 
 /** Lao (ລາວ)

@@ -257,11 +257,13 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'slippymap_error' => '$1 σφάλμα: $2',
 	'slippymap_errors' => '$1 λάθη:',
+	'slippymap_button_code' => 'Αποκτήστε βικικώδικα',
 	'slippymap_resetview' => 'Επαναφορά προβολής',
 	'slippymap_clicktoactivate' => 'Κάντε "κλικ" για να ενεργοποιήσετε το χάρτη',
 );
@@ -373,6 +375,14 @@ $messages['gl'] = array(
 	'slippymap_button_code' => 'Obter o código wiki',
 	'slippymap_resetview' => 'Axustar a vista',
 	'slippymap_clicktoactivate' => 'Prema para activar o mapa',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'slippymap_error' => '$1 σφάλμα: $2',
+	'slippymap_errors' => '$1 σφάλματα:',
 );
 
 /** Swiss German (Alemannisch)

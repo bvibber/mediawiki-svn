@@ -1030,6 +1030,7 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'whitelist-desc' => 'Muokkaa rajoituksenalaisten käyttäjien käyttöoikeuksia',
+	'whitelist' => 'Sallitut sivut',
 	'mywhitelistpages' => 'Omat sivu',
 	'whitelisttablemodify' => 'Muokkaa',
 	'whitelisttablemodifyall' => 'Kaikki',
@@ -1532,6 +1533,7 @@ Iste pagina es solmente applicabile al usatores restringite",
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  * @author Rex
  */
 $messages['id'] = array(
@@ -1560,6 +1562,8 @@ $messages['id'] = array(
 	'whitelistnewtableview' => 'Set ke lihat',
 	'whitelistnewtableprocess' => 'Proses',
 	'whitelistnewtablereview' => 'Tinjau',
+	'whitelistpagelist' => 'Halaman {{SITENAME}} untuk $1',
+	'whitelistrequestconf' => 'Permintaan halaman baru telah dikirim ke $1',
 	'whitelistnever' => 'tidak pernah',
 	'group-restricted' => 'Kelompok pengguna terbatas',
 	'group-restricted-member' => 'Pengguna terbatas',

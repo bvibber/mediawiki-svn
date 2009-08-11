@@ -625,6 +625,14 @@ Si tienes algunas preguntas acerca de éste sistema de distribución de extensio
 	'extdist-want-more' => 'Obtener otra extensión',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'extdist-submit-extension' => 'Jätka',
+	'extdist-submit-version' => 'Jätka',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

@@ -159,6 +159,14 @@ $messages['es'] = array(
 	'eval_code' => 'Código',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'eval_submit' => 'Leia väärtus',
+	'eval_out' => 'Tulem',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

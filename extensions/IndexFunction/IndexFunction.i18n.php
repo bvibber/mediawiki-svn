@@ -204,6 +204,13 @@ $messages['es'] = array(
 	'index-emptylist' => 'No hay páginas asociadas con "$1"',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'index-submit' => 'Lähetä',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -424,6 +431,13 @@ $messages['lb'] = array(
 	'index-no-results' => "D'Sich hat keng Resultater",
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'index-search' => 'Хайх:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -485,9 +499,17 @@ Picatz los primièrs caractèrs e quichatz sul boton de somission per cercar los
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'indexfunc-badtitle' => 'Titlu invalid: "$1"',
+	'indexfunc-index-exists' => 'Pagina "$1" există deja',
 	'index-search' => 'Căutare:',
+	'index-disambig-start' => "'''$1''' se poate referi la mai multe pagini:",
+	'index-emptylist' => 'Nu există pagini asociate cu "$1"',
+	'index-expand-detail' => 'Arată paginile indexate sub acest titlu',
+	'index-hide-detail' => 'Ascunde lista paginilor',
+	'index-no-results' => 'Căutarea nu a returnat rezultate',
 );
 
 /** Russian (Русский)
@@ -580,5 +602,13 @@ Ta bort "$1" från <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|sidan|sidorna}} ovan
 Skriv några inledande tecken och klicka på {{int:index-submit ("<index-submit>")}} för att hitta sidor och stycken som inleds med din söksträng.',
 	'index-details-explain' => 'Poster med pilar är innehållsförteckningar.
 Klicka på pilen för att se hela innehållsförteckningen.',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'index-search' => '搜尋：',
+	'index-submit' => '遞交',
 );
 

@@ -232,6 +232,7 @@ $messages['fi'] = array(
 	'security' => 'Tietoturvaloki',
 	'security-logpage' => 'Tietoturvaloki',
 	'security-info-toggle' => 'turvallisuusrajoitukset',
+	'security-inforestrict' => '$1 on rajoitettu ryhmälle $2',
 	'security-type-category' => 'luokka',
 	'security-type-namespace' => 'nimiavaruus',
 );
@@ -660,6 +661,7 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'security' => 'Jurnal securitate',
 	'security-logpage' => 'Jurnal securitate',
+	'security-type-category' => 'categorie',
 	'security-type-namespace' => 'spaţiu de nume',
 );
 

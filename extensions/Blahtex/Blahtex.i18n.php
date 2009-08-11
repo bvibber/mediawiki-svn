@@ -1502,6 +1502,15 @@ Proba mitter le characteres problematic in un bloco "\\text{...}".',
 Proba usar le commando "$3{...}".',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kandar
+ */
+$messages['id'] = array(
+	'math_MissingOpenBraceAfter' => 'Kekurangan kurawal buka "{" setelah "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Kehilangan kurawal buka "{" pada ujung input',
+	'math_MissingOpenBraceBefore' => 'Kehilangan kurawal buka "{" sebelum "$1"',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Pietrodn

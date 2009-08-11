@@ -207,6 +207,14 @@ $messages['es'] = array(
 	'contrib-tracking-button' => 'Continuar',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'contrib-tracking-error' => 'Viga',
+	'contrib-tracking-button' => 'Jätka',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

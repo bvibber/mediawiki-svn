@@ -1715,6 +1715,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'createsigndocument' => '啟用文件簽名',
+	'createsigndoc-email' => '電郵地址：',
 	'createsigndoc-phone' => '電話號碼：',
 	'createsigndoc-bday' => '出生日期：',
 	'createsigndoc-hidden' => '隱藏',

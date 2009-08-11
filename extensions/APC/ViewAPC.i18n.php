@@ -2707,6 +2707,7 @@ $messages['ka'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'viewapc' => 'ព័ត៌មាន APC',
@@ -2727,6 +2728,7 @@ $messages['km'] = array(
 	'viewapc-memory-used' => 'ត្រូវបានប្រើប្រាស់៖ $1 ($2)',
 	'viewapc-display-value' => 'តម្លៃ',
 	'viewapc-display-filename' => 'ឈ្មោះឯកសារ',
+	'viewapc-display-device' => 'ឧបករណ៍​',
 	'viewapc-display-info' => 'ឈ្មោះ',
 	'viewapc-display-ttl' => 'ពេលវេលាផុតកំណត់',
 	'viewapc-display-type' => 'ប្រភេទ',
@@ -2735,6 +2737,7 @@ $messages['km'] = array(
 	'viewapc-display-deletion_time' => 'ត្រូវបានលុបចោល',
 	'viewapc-display-no-delete' => 'មិនត្រូវបានលុបចោល',
 	'viewapc-display-access_time' => 'ត្រូវបានចូលមើល',
+	'viewapc-display-ref_count' => 'ចំនួន​ឯកសារយោង',
 	'viewapc-display-mem_size' => 'ទំហំ',
 	'viewapc-display-stored-value' => 'តម្លៃដែលបានស្ដុកទុក',
 	'viewapc-ls-options-legend' => 'ជម្រើសនានា',

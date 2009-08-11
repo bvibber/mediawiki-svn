@@ -690,6 +690,7 @@ Prosím, poraďte se se [[Special:ListUsers/sysop|správcem]].',
 	'openidchooseexisting' => 'Existující účet na této wiki:',
 	'openidchoosepassword' => 'heslo:',
 	'openidconvertinstructions' => 'Tento formulář vám umožňuje změnit váš učet, aby používal OpenID URL.',
+	'openidconvertoraddmoreids' => 'Převést na OpenID nebo přidat jinou OpenID URL',
 	'openidconvertsuccess' => 'Úspěšně převedeno na OpenID',
 	'openidconvertsuccesstext' => 'Úspěšně jste převedli váš OpenID na $1.',
 	'openidconvertyourstext' => 'To už je váš OpenID.',
@@ -714,7 +715,26 @@ Existuje množství [http://wiki.openid.net/Public_OpenID_providers veřejných 
 ; [http://openid.yahoo.com/ Yahoo!]: Pokud máte učet Yahoo!, můžete se na tuto wiki přihlásit zadáním vašeho OpenID, které poskytuje Yahoo!, do pole výše. Yahoo! OpenID URL bývají ve tvaru ''<nowiki>https://me.yahoo.com/uzivatelskejmeno</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL]: Pokud máte účet [http://www.aol.com/ AOL], jako například účet [http://www.aim.com/ AIM], můžete se přihlásit na {{GRAMMAR:4sg|{{SITENAME}}}} zadáním vaeho OpenID, které poskytuje AOL, do pole výše. AOL OpenID URL bývají ve tvaru ''<nowiki>http://openid.aol.com/uzivatelskejmeno</nowiki>''. Vaše uživatelské jméno by mělo mít jen malá písmena a žádné mezery.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Pokud máte blog na některé z této služeb, zadejte do pole výše URL svého blogu. Například ''<nowiki>http://uzivatelskejmeno.blogspot.com/</nowiki>'', ''<nowiki>http://uzivatelskejmeno.wordpress.com/</nowiki>'', ''<nowiki>http://uzivatelskejmeno.livejournal.com/</nowiki>'' nebo ''<nowiki>http://uzivatelskejmeno.vox.com/</nowiki>''.",
+	'openidupdateuserinfo' => 'Aktualizovat moje osobní informace',
+	'openiddelete' => 'Smazat OpenID',
+	'openiddelete-text' => 'Kliknutím na tlačítko „{{int:openiddelete-button}}“ odstraníte OpenID $1 z vašeho účtu.
+Nebudete se již moci tímto OpenID přihlasít.',
+	'openiddelete-button' => 'Potvrdit',
+	'openiddelete-sucess' => 'OpenID bylo úspěšně odstraněno z vašeho účtu.',
+	'openiddelete-error' => 'Během odstraňování OpenID z vašeho účtu se vyskytla chyba.',
+	'openid-prefstext' => 'Nastavení [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Nezobrazovat váš OpenID na vaší uživatelské stránce pokud se přihlašujete pomocí OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Aktualizovat následující informace z OpenID identity vždy, když se přihlásím:',
+	'openid-urls-desc' => 'OpenID asociovaná s vaším účtem:',
+	'openid-urls-action' => 'Operace',
+	'openid-urls-delete' => 'Smazat',
+	'openid-add-url' => 'Přidat nové OpenID',
+	'openidsigninorcreateaccount' => 'Přihlásit se nebo vytvořit nový účet',
+	'openid-provider-label-openid' => 'Zadejte URL svého OpenID',
+	'openid-provider-label-google' => 'Přihlásit se pomocí Google účtu',
+	'openid-provider-label-yahoo' => 'Přihlásit se pomocí Yahoo účtu',
+	'openid-provider-label-aol' => 'Přihlásit se pomocí AOL účtu',
+	'openid-provider-label-other-username' => 'Zadejte svoje uživatelské jméno pro $1',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -1142,6 +1162,8 @@ Kui soovid kasutada avatud ID-d tulevikus sisselogimiseks, võid [[Special:OpenI
 	'openidnousername' => 'Kasutajanimi määratlemata.',
 	'openidbadusername' => 'Märgitud kasutajanimi on vigane.',
 	'openid-urls-delete' => 'Kustuta',
+	'openid-provider-label-google' => "Logi sisse oma Google'i konto kaudu",
+	'openid-provider-label-yahoo' => 'Logi sisse oma Yahoo konto kaudu',
 );
 
 /** Basque (Euskara)
@@ -2312,6 +2334,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'openidlanguage' => 'ಭಾಷೆ',
+	'openidtimezone' => 'ಸಮಯ ವಲಯ',
 );
 
 /** Korean (한국어)
@@ -3412,6 +3435,7 @@ $messages['ro'] = array(
 	'openidoptional' => 'Opţional',
 	'openidrequired' => 'Necesar',
 	'openidnickname' => 'Poreclă',
+	'openidfullname' => 'Nume complet:',
 	'openidemail' => 'Adresă e-mail',
 	'openidlanguage' => 'Limbă',
 	'openidtimezone' => 'Fus orar',
@@ -3423,13 +3447,16 @@ se poate alege una din opţiunile de mai jos.',
 	'openidchoosemanual' => 'Un nume la alegere:',
 	'openidchooseexisting' => 'Un cont existent pe acest wiki:',
 	'openidchoosepassword' => 'parolă:',
+	'openidconvertsuccess' => 'Convertit cu succes la OpenID',
 	'openidconvertothertext' => 'Acesta este OpenID-ul altcuiva.',
 	'openidnousername' => 'Nici un nume de utilizator specificat.',
 	'openidbadusername' => 'Nume de utilizator specificat greşit.',
 	'openidloginlabel' => 'URL OpenID',
 	'openiddelete' => 'Şterge OpenID',
+	'openiddelete-button' => 'Confirmă',
 	'openid-urls-action' => 'Acţiune',
 	'openid-urls-delete' => 'Şterge',
+	'openid-add-url' => 'Adaugă un nou OpenID',
 	'openid-provider-label-google' => 'Autentificare folosind contul Google',
 	'openid-provider-label-yahoo' => 'Autentificare folosind contul Yahoo',
 );
@@ -4530,6 +4557,7 @@ kanol välön bali sökölas.',
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author IAlex
+ * @author Wrightbus
  */
 $messages['zh-hans'] = array(
 	'openidlogin' => '使用OpenID登陆',
@@ -4585,6 +4613,7 @@ $messages['zh-hans'] = array(
 如果没有自动提交，请按 "Continue" （继续）按钮。',
 	'openidloginlabel' => 'OpenID地址',
 	'openid-pref-hide' => '如果使用OpenID登陆，您可以在您的用户页隐藏您的OpenID。',
+	'openid-urls-delete' => '删除',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -4592,14 +4621,24 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'openidlogin' => '使用OpenID登入',
 	'openidserver' => 'OpenID伺服器',
 	'openidconvert' => 'OpenID轉換器',
 	'openiderror' => '驗證錯誤',
+	'openidfailure' => '驗證失敗',
+	'openidsuccess' => '驗證成功',
 	'openidnickname' => '暱稱',
 	'openidfullname' => '全名',
+	'openidemail' => '電郵地址',
+	'openidlanguage' => '語言',
+	'openidtimezone' => '時區',
 	'openidchoosefull' => '您的全名 ($1)',
 	'openidchoosepassword' => '密碼：',
 	'openidconvertyourstext' => '這已是您的OpenID了。',
 	'openidloginlabel' => 'OpenID網址',
+	'openiddelete-button' => '確認',
+	'openid-urls-delete' => '删除',
+	'openid-provider-label-google' => '以您的Google帳戶登入',
+	'openid-provider-label-yahoo' => '以您的Yahoo帳戶登入',
 );
 

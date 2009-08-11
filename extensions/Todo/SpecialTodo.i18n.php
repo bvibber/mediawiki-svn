@@ -546,6 +546,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Silvonen
  * @author Str4nd
@@ -554,12 +555,27 @@ $messages['fi'] = array(
 	'todo' => 'Tehtävälista',
 	'todo-tab' => 'tehtävät',
 	'todo-new-queue' => 'uusi',
+	'todo-mail-subject' => 'Suoritettu tehtävä $1:n muistilistalta',
+	'todo-mail-body' => 'Pyysit sähköposti-vahvistusta $1:n verkossa pidetylle tehtävä muistilistalle lisäämäsi tehtävän suorittamisesta.
+
+Tehtävä: $2
+Lisätty: $3
+
+Tämä tehtävä on merkitty suoritetuksi, tämän huomion kera:
+$4',
+	'todo-invalid-item' => 'Puuttuva tai virheellinen tehtävä',
+	'todo-update-else-item' => 'Yritetään päivittää jonkin muun tehtävää',
 	'todo-unrecognize-type' => 'Tunnistamaton tyyppi',
+	'todo-user-invalide' => 'Annettu tehtävä on kelvoton tai puuttuva, tai käyttäjä on sopimaton.',
+	'todo-no-item' => 'Ei tehtäviä.',
+	'todo-invalid-owner' => 'Tässä tehtävässä on virheellinen omistaja',
 	'todo-add-queue' => 'Lisää jonoon…',
 	'todo-move-queue' => 'Siirrä jonoon…',
 	'todo-list-for' => 'Tehtävälista käyttäjälle $1',
 	'todo-list-change' => 'Muuta',
 	'todo-list-cancel' => 'Peruuta',
+	'todo-new-item' => 'Uusi tehtävä',
+	'todo-issue-summary' => 'Tehtävän yhteenveto',
 	'todo-form-details' => 'Tiedot',
 	'todo-form-submit' => 'Lähetä kysely',
 	'right-todo' => 'Käyttää tehtäväluetteloa',
@@ -1731,6 +1747,8 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'todo-list-change' => '更改',
 	'todo-list-cancel' => '取消',
+	'todo-form-submit' => '遞交查詢',
 );
 

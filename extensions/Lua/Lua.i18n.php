@@ -523,6 +523,8 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'lua_error' => 'Eroare la linia $1',
+	'lua_extension_notfound' => 'Extensia Lua neconfigurată',
+	'lua_interp_notfound' => 'Interpretor Lua negăsit',
 	'lua_error_internal' => 'Eroare internă',
 	'lua_overflow_recursion' => 'Limita de recursie a fost atinsă',
 	'lua_overflow_loc' => 'Numărul maxim de linii de cod a fost atins',

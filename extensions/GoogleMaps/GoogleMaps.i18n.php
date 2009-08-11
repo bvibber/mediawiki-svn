@@ -1226,6 +1226,7 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-caption' => 'Επικεφαλίδα',
 	'gm-tab-title' => 'Τίτλος καρτέλας',
 	'gm-tab' => 'Καρτέλα',
+	'gm-start-path' => 'εκκίνηση μίας διαδρομής',
 	'gm-trace-area' => 'εντοπισμός μίας περιοχής',
 	'gm-save-point' => 'αποθήκευση &amp; κλείσιμο',
 	'gm-load-map-from-article' => 'Φορτώστε ένα χάρτη από τη σελίδα:',
@@ -1257,6 +1258,7 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-edit-path' => 'προσθήκη σημείων',
 	'gm-show-path' => 'εμφάνιση σημείων',
 	'gm-color-path' => 'αλλάξτε χρώμα',
+	'gm-line-color' => 'Χρώμα γραμμής',
 	'gm-opacity' => 'Αδιαφάνεια',
 	'gm-line-width' => 'Πλάτος',
 	'gm-make-map' => 'δημιουργία ενός χάρτη',
@@ -2801,6 +2803,14 @@ $wgGoogleMapsMessages['km'] = array(
 	'gm-mars' => 'ភពអង្គារ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$wgGoogleMapsMessages['kn'] = array(
+	'gm-yes' => 'ಹೌದು',
+	'gm-no' => 'ಇಲ್ಲ',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772
@@ -3000,6 +3010,80 @@ $wgGoogleMapsMessages['lfn'] = array(
 	'gm-search' => 'Xerca',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$wgGoogleMapsMessages['li'] = array(
+	'gm-desc' => 'Einvoudig kaarte make mit gewikificeerde markeringe',
+	'gm-incompatible-browser' => 'Om dees kaart te kanne betrachte moos te gebroek make van \'ne <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">gesjikte browser</a>.',
+	'gm-incompatible-browser-link' => "Klik hie veur 'n lies mit compatibele browsers.",
+	'gm-no-editor' => 'Jaomergenóg ongersjteunt diene browser \'t interactief make van kaarte neet. Perbeer het \'ns mit de nuujste versie van <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Mac, Linux en Windows) of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
+	'gm-balloon-title' => 'Titel:',
+	'gm-balloon-link-article' => 'Verwiezing nao dees pagina (optioneel):',
+	'gm-make-marker' => 'Besjrieving (wikiopmaak toegesjtange):',
+	'gm-remove' => 'ewegsjaffe',
+	'gm-caption' => 'Umsjrieving',
+	'gm-tab-title' => 'Tabblaadtitel',
+	'gm-tab' => 'Tab',
+	'gm-start-path' => 'paad toeveuge',
+	'gm-trace-area' => 'gebeed markere',
+	'gm-save-point' => 'opsjlaon en sjlete',
+	'gm-load-map-from-article' => 'Kaart oet pagina laje:',
+	'gm-no-maps' => 'Dees pagina bevat gein kaart',
+	'gm-refresh-list' => 'Lies verfrisje',
+	'gm-load-map' => 'Kaart laje',
+	'gm-clip-result' => 'Aan kaart toeveuge',
+	'gm-no-results' => 'Gein rizzeltate',
+	'gm-searching' => 'bezig mit zeuke…',
+	'gm-map' => 'Kaart',
+	'gm-note' => 'Waarsjoewing: zörg deveur dats doe kopieers wats doe in de pagina wils opsjlaon (hie-onger) ierdets doe op "Kaart laje", "Opsjlaon" of "Bekiek dees bewirking" kliks!',
+	'gm-instructions' => 'De benudigde wikisyntax om de kaart in te veuge:',
+	'gm-are-you-sure' => 'Bis doe zeker?',
+	'gm-clear-all-points' => 'Alle puntje ewegsjaffe',
+	'gm-refresh-points' => 'Puntje obbenuuts laje',
+	'gm-width' => 'Breide',
+	'gm-height' => 'Huugde',
+	'gm-scale-control' => 'Sjaol',
+	'gm-overview-control' => 'Euverzichskaart',
+	'gm-selector-control' => 'Kaart/satelliet',
+	'gm-zoom-control' => 'Navigatie',
+	'gm-large' => 'Groet',
+	'gm-medium' => 'Middel',
+	'gm-small' => 'Klein',
+	'gm-no-zoom-control' => 'Gein',
+	'gm-yes' => 'jao',
+	'gm-no' => 'nei',
+	'gm-search-preface' => "Klik op de kaart om 'n puntj toe te veuge of om nao 'n sjtad, landj, adres of bedrief te sjpringe:",
+	'gm-geocode-preface' => "Klik op de kaart om 'n puntj toe te veuge of om nao 'n sjtad, landj of adres te sjpringe:",
+	'gm-no-search-preface' => "Klik op de kaart om 'n puntj toe te veuge.",
+	'gm-search' => 'Zeuke',
+	'gm-clear-search' => 'zeukopdrach ewegsjaffe',
+	'gm-meters' => 'meter',
+	'gm-miles' => 'mijle',
+	'gm-editing-path' => 'Klik op de kaart om mier puntje aan dit paad toe te veuge.',
+	'gm-save-path' => 'Opsjlaon',
+	'gm-edit-path' => 'puntj toeveuge',
+	'gm-show-path' => 'puntje weergaeve',
+	'gm-color-path' => 'kleur aanpasse',
+	'gm-color-fill' => 'opvölkleur aanpasse',
+	'gm-add-fill' => 'gebeed opvölle',
+	'gm-remove-fill' => 'opvölle ewegsjaffe',
+	'gm-fill-color' => 'Opvölkleur',
+	'gm-line-color' => 'Sjtriepkleur',
+	'gm-opacity' => 'Doorlaotendheid',
+	'gm-line-width' => 'Breide',
+	'gm-make-map' => 'kaart make',
+	'gm-hide-map' => 'kaart versjtaeke',
+	'gm-back' => 'trök',
+	'gm-kml-include' => 'Externe KML/GeoRSS:',
+	'gm-kml-include-link' => 'aan kaart toeveuge',
+	'gm-kml-loading' => 'bezig mit laje…',
+	'gm-kml-export' => 'Dees kaart nao KML exportere',
+	'gm-earth' => 'Aerd',
+	'gm-moon' => 'Maon',
+	'gm-mars' => 'Mars',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  */
@@ -3159,6 +3243,13 @@ $wgGoogleMapsMessages['ml'] = array(
 	'gm-earth' => 'ഭൂമി',
 	'gm-moon' => 'ചന്ദ്രന്‍',
 	'gm-mars' => 'ചൊവ്വ',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$wgGoogleMapsMessages['mn'] = array(
+	'gm-search' => 'Хайх',
 );
 
 /** Marathi (मराठी)

@@ -2119,17 +2119,25 @@ $messages['rif'] = array(
  */
 $messages['ro'] = array(
 	'regexblock-already-blocked' => '$1 este deja blocat.',
+	'regexblock-currently-blocked' => 'Adrese blocate în prezent:',
 	'regexblock-form-username' => 'Adresă IP sau nume d utilizator:',
 	'regexblock-form-reason' => 'Motiv:',
 	'regexblock-form-expiry' => 'Expirare:',
+	'regexblock-form-account-block' => 'Blochează crearea de conturi noi',
 	'regexblock-form-submit' => 'Blochează acest utilizator',
+	'regexblock-form-submit-regex' => 'Expresie regulată incorectă.',
+	'regexblock-unblock-success' => 'Deblocare cu succes',
+	'regexblock-unblock-log' => "Utilizatorul sau adresa IP '''$1''' a fost deblocat.",
 	'regexblock-view-all' => 'Toţi',
 	'regexblock-view-go' => 'Mergeţi',
+	'regexblock-view-account' => '(blocare creare conturi)',
 	'regexblock-view-reason' => 'motiv: $1',
 	'regexblock-view-reason-default' => 'motiv generic',
+	'regexblock-view-block-infinite' => 'blocare permanentă',
 	'regexblock-view-block-by' => 'blocat de către:',
 	'regexblock-view-block-unblock' => 'deblocare',
 	'regexblock-view-stats' => 'statistici',
+	'regexblock-view-empty' => 'Lista de nume şi adrese blocate este goală.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -2644,6 +2652,7 @@ $messages['zh-hant'] = array(
 	'regexblock-form-reason' => '原因：',
 	'regexblock-form-expiry' => '到期日：',
 	'regexblock-form-submit' => '封禁該名使用者',
+	'regexblock-nodata-found' => '找不到數據',
 	'regexblock-view-reason-default' => '一般原因',
 	'regexblock-view-block-infinite' => '永久封禁',
 	'regexblock-view-stats' => '（統計）',

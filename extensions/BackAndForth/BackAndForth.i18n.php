@@ -228,6 +228,14 @@ $messages['es'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'backforth-next' => 'Järgmine ($1)',
+	'backforth-prev' => 'Eelmine ($1)',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -301,9 +309,9 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'backforth-next' => 'Ἑπομέναι ($1)',
+	'backforth-next' => 'Ἑπομένη ($1)',
 	'backforth-desc' => 'Προσθέτει τοὺς συνδέσμους ἀλφαβητικῆς πλοηγήσεως "Ἐπομένη" καὶ "Προηγουμένη" εἰς τὴν κορυφὴν τῶν δέλτων',
-	'backforth-prev' => 'Προηγουμέναι ($1)',
+	'backforth-prev' => 'Προηγουμένη ($1)',
 );
 
 /** Swiss German (Alemannisch)
@@ -748,12 +756,12 @@ $messages['sr-ec'] = array(
 	'backforth-prev' => 'Претходно ($1)',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
 	'backforth-next' => 'Sledeće ($1)',
-	'backforth-desc' => 'Dodaje azbučno uređenje preko linkova za &quot;Sledeći&quot; i &quot;Prethodni&quot;, na vrhu stranica članaka',
+	'backforth-desc' => 'Dodaje azbučno uređenje preko linkova za "Sledeći" i "Prethodni", na vrhu stranica članaka',
 	'backforth-prev' => 'Prethodno ($1)',
 );
 

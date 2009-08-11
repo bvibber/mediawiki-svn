@@ -281,6 +281,13 @@ $messages['ksh'] = array(
 	'simplesearch-search' => 'Söhke',
 );
 
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'simplesearch-search' => 'Quaerere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -305,6 +312,13 @@ $messages['lt'] = array(
 $messages['ml'] = array(
 	'simplesearch' => 'ലളിതമായ തിരച്ചില്‍',
 	'simplesearch-search' => 'തിരയുക',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'simplesearch-search' => 'Хайх',
 );
 
 /** Malay (Bahasa Melayu)

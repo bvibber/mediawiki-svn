@@ -523,7 +523,9 @@ $messages['fi'] = array(
 	'readerfeedback-level-2' => 'Kohtalainen',
 	'readerfeedback-level-3' => 'Hyvä',
 	'readerfeedback-level-4' => 'Todella mainio',
+	'readerfeedback-submit' => 'Lähetä',
 	'readerfeedback-main' => 'Vain sisältösivuja voi arvioida.',
+	'readerfeedback-submitting' => 'Lähetetään…',
 	'readerfeedback-finished' => 'Kiitos!',
 	'tooltip-ca-ratinghist' => 'Lukijoiden arviot tästä sivusta',
 );

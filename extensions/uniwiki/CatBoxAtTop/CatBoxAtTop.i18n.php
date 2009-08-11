@@ -325,7 +325,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'catboxattop-desc' => 'Apondre una boita de categoria en naut a drecha de las paginas',
+	'catboxattop-desc' => 'Apondre una bóstia de categoria en naut a drecha de las paginas',
 	'catboxattop-categories' => 'Categorias',
 );
 

@@ -1050,3 +1050,19 @@ $messages['vi'] = array(
 	'inspectcache-list' => 'Liệt kê',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hans'] = array(
+	'inspectcache-ok' => '确定',
+	'inspectcache-delete' => '删除',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'inspectcache-ok' => '確定',
+	'inspectcache-delete' => '删除',
+);
+

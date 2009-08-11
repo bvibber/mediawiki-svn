@@ -1272,6 +1272,7 @@ Ad dunön osi, dagetolös kiki-API [http://www.flickr.com/services/api/misc.api_
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Tomchiukc
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'importfreeimages' => '匯入自由版權影像',
@@ -1287,5 +1288,6 @@ $messages['zh-hant'] = array(
 	'importfreeimages_filefromflickr' => '在 flickr 由用戶 $1 拍攝的 <b>[$2]</b>。原來的URL',
 	'importfreeimages_promptuserforfilename' => '請輸入目標檔名：',
 	'importfreeimages_returntoform' => "又或，點選<a href='$1'>這裡</a>回到你的搜尋結果",
+	'importfreeimages_nophpflickr' => '您尚未安裝phpFlickr，請在您的LocalSettings.php設定$wgIFphpFlickr。',
 );
 

@@ -318,6 +318,7 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'amazonplus-nores' => 'Viga: tulemusi ei leitud!',
+	'amazonplus-used' => 'kasutatud',
 	'amazonplus-german' => 'Saksakeelne',
 	'amazonplus-french' => 'Prantsusekeelne',
 	'amazonplus-japanese' => 'Jaapanikeelne',

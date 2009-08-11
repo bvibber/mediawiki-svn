@@ -110,6 +110,15 @@ $messages['es'] = array(
 	'rightfunctions-ns' => '(a partir de la protección del espacio de nombres)',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'rightfunctions-desc' => 'Käyttöoikeuspohjaiset jäsenninfunktiot',
+	'rightfunctions-local' => '(paikalliselta sivulta)',
+	'rightfunctions-ns' => '(nimiavaruuden suojauksesta)',
+);
+
 /** French (Français)
  * @author Grondin
  * @author McDutchie

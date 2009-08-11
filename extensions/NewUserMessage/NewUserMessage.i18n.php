@@ -164,6 +164,13 @@ $messages['es'] = array(
 	'newuseredit-summary' => 'Agregando el [[{{int:newusermessage-template}}|mensaje de bienvenida]] a la página de usuario del nuevo usuario',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'newusermessage-desc' => 'Lisab vastloodud kasutaja aruteluleheküljele läkituse.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

@@ -1099,6 +1099,7 @@ $messages['ext'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Nike
  * @author Silvonen
  * @author Str4nd
@@ -1126,6 +1127,7 @@ $messages['fi'] = array(
 	'sign-list-hidebday' => 'Älä listaa ikää',
 	'sign-list-hideemail' => 'Älä listaa sähköpostiosoitetta',
 	'sign-submit' => 'Allekirjoita dokumentti',
+	'sig-success' => 'Onnistuneesti allekirjoitit asiakirjan.',
 	'sign-view-selectfields' => '<b>Näytettävät kentät:</b>',
 	'sign-viewfield-timestamp' => 'Aikaleima',
 	'sign-viewfield-realname' => 'Nimi',
@@ -1135,17 +1137,21 @@ $messages['fi'] = array(
 	'sign-viewfield-country' => 'Maa',
 	'sign-viewfield-zip' => 'Postinumero',
 	'sign-viewfield-ip' => 'IP-osoite',
+	'sign-viewfield-agent' => 'Käyttäjäagentti',
 	'sign-viewfield-phone' => 'Puhelin',
 	'sign-viewfield-email' => 'Sähköpostiosoite',
 	'sign-viewfield-age' => 'Ikä',
 	'sign-viewfield-options' => 'Valinnat',
+	'sign-sigadmin-currentlyopen' => 'Tällä hetkellä  tämän asiakirjan allekirjoitustoiminto on käytössä.',
 	'sign-sigadmin-close' => 'Ota allekirjoittaminen pois käytöstä',
+	'sign-sigadmin-currentlyclosed' => 'Tällä hetkellä tämän asiakirjan allekirjoittamistoiminto on estetty.',
 	'sign-sigadmin-open' => 'Ota allekirjoittaminen käyttöön',
 	'sign-signatures' => 'Allekirjoitukset',
 	'sign-sigadmin-closesuccess' => 'Allekirjoittaminen poistettiin käytöstä onnistuneesti.',
 	'sign-sigadmin-opensuccess' => 'Allekirjoitus otettiin käyttöön onnistuneesti.',
 	'sign-viewsignatures' => 'näytä allekirjoitukset',
 	'sign-closed' => 'suljettu',
+	'sign-error-closed' => 'Tämän asiakirjan allekirjoittamistoiminto on tällä hetkellä estetty.',
 	'sig-anonymous' => '<i>Nimetön</i>',
 	'sig-private' => '<i>Yksityinen</i>',
 	'sign-sigdetails' => 'Allekirjoituksen tiedot',
@@ -1159,10 +1165,13 @@ $messages['fi'] = array(
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} estoloki] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} osoitepaljastus])<!--
 --></span>',
+	'sign-viewfield-reviewedby' => 'Arvioija',
 	'sign-viewfield-reviewcomment' => 'Kommentti',
 	'sign-detail-uniquequery-run' => 'Suorita kysely',
+	'sign-detail-strike' => 'Yliviivaa allekirjoitus',
 	'sign-reviewsig' => 'Arvioi allekirjoitus',
 	'sign-review-comment' => 'Kommentoi',
+	'sign-submitreview' => 'Lähetä arvio',
 	'sign-uniquequery-similarname' => 'Samankaltainen nimi',
 	'sign-uniquequery-similaraddress' => 'Samankaltainen osoite',
 	'sign-uniquequery-similarphone' => 'Samankaltainen puhelinnumero',
@@ -1368,7 +1377,11 @@ $messages['grc'] = array(
 	'sign-phone' => 'Ἀριθμὸς τηλεφώνου:',
 	'sign-email' => 'Ἡλεκτρονικὴ διεύθυνσις:',
 	'sign-viewfield-realname' => 'Ὄνομα',
-	'sign-viewfield-ip' => 'IP-διεύθυνσις',
+	'sign-viewfield-address' => 'Διεύθυνσις',
+	'sign-viewfield-city' => 'Πόλις',
+	'sign-viewfield-state' => 'Πολιτεία',
+	'sign-viewfield-country' => 'Χώρα',
+	'sign-viewfield-ip' => 'Διεύθυνσις IP:',
 	'sign-viewfield-agent' => 'Χρώμενος πράκτωρ',
 	'sign-viewfield-phone' => 'Τηλέφωνον',
 	'sign-viewfield-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
@@ -1377,6 +1390,7 @@ $messages['grc'] = array(
 	'sig-private' => '<ι>Ἰδιωτική</ι>',
 	'sign-viewfield-reviewedby' => 'ἐπιθεωρητής',
 	'sign-viewfield-reviewcomment' => 'Σχόλιον',
+	'sign-detail-uniquequery-run' => 'Ἐκτελεῖν πεῦσιν',
 	'sign-review-comment' => 'Σχόλιον',
 );
 
@@ -4269,8 +4283,21 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'sign-realname' => '姓名：',
+	'sign-address' => '街道地址：',
+	'sign-city' => '城市：',
+	'sign-state' => '州份/省份：',
+	'sign-zip' => '郵政編號：',
+	'sign-country' => '國家地區：',
+	'sign-phone' => '電話號碼：',
+	'sign-bday' => '年齡：',
+	'sign-email' => '電郵地址：',
 	'sign-viewfield-realname' => '姓名',
 	'sign-viewfield-address' => '地址',
+	'sign-viewfield-city' => '城市',
+	'sign-viewfield-state' => '州份/省份',
+	'sign-viewfield-country' => '國家地區',
+	'sign-viewfield-zip' => '郵政編號',
 	'sign-viewfield-ip' => 'IP位址',
 	'sign-viewfield-phone' => '電話',
 	'sign-viewfield-email' => '電郵',

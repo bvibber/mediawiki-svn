@@ -326,7 +326,7 @@ $aliases['sq'] = array(
 	'RatingHistory' => array( 'HistoriaeVlerësimit' ),
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $aliases['sr-ec'] = array(

@@ -1375,7 +1375,10 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'tasklist' => '任務清單',
 	'tasklistincorrectuser' => '使用者名稱錯誤',
+	'tasklistmytasks' => '我的任務',
+	'tasklistprojdisp' => '顯示',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

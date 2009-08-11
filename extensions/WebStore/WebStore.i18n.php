@@ -1184,8 +1184,11 @@ $1',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  */
 $messages['id'] = array(
+	'webstore_dest_open' => 'Tak bisa membuka berkas tujuan "$1".',
+	'webstore_src_open' => 'Gagal membuka berkas sumber "$1".',
 	'webstore_404' => 'Berkas tidak ditemukan.',
 );
 
@@ -2670,13 +2673,21 @@ $1',
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'inplace_scaler_not_enough_params' => '參數不足。',
 	'inplace_scaler_invalid_image' => '圖像無效，不能判斷大小。',
 	'inplace_scaler_failed' => '在縮放圖像其間遇到錯誤: $1',
 	'webstore_path_invalid' => '檔名無效。',
+	'webstore_src_close' => '關閉來源檔案"$1"時發生錯誤。',
+	'webstore_src_delete' => '刪除來源檔案"$1"時發生錯誤。',
+	'webstore_temp_open' => '開啟暫存檔案"$1"時發生錯誤。',
+	'webstore_temp_close' => '關閉暫存檔案"$1"時發生錯誤。',
 	'webstore_no_file' => '沒有上載檔案。',
 	'webstore_404' => '找不到檔案。',
 	'webstore_php_warning' => 'PHP警告: $1',
 	'webstore_metadata_not_found' => '找不到檔案: $1',
+	'webstore_invalid_response' => '伺服器傳回無效的回應：
+
+$1',
 	'webstore_no_response' => '伺服器沒有回應',
 	'webstore_php_error' => '遇到PHP錯誤:',
 );

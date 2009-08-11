@@ -35,6 +35,7 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'useroptionstats' => 'إحصاءات خيارات المساهمين',
 	'uos-warn' => 'PHPlot غير مثبّت!',
 	'uos-choose' => 'اختر واحدة من خيارات المستخدم التالية: $1',
 	'uos-unknown' => '*مبدئي',
@@ -144,6 +145,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'uos-unknown' => '*Defaŭlta',
+	'uos-other' => '*Alia',
 );
 
 /** Spanish (Español)
@@ -508,6 +510,15 @@ $messages['vi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'uos-other' => '*其他',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'uos-warn' => '尚未安裝PHPlot！',
+	'uos-unknown' => '*預設',
 	'uos-other' => '*其他',
 );
 

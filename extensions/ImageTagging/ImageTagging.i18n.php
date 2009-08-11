@@ -1817,8 +1817,28 @@ Xin hãy chờ tác vụ hoàn thành.',
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Wmr89502270
+ * @author Wrightbus
  */
 $messages['zh-hans'] = array(
 	'imagetagging-article' => '页面：',
+	'imagetagging-tagcancel-button' => '取消',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'imagetagging-addimagetag' => '標籤這幅圖像',
+	'imagetagging-images' => '圖像',
+	'imagetagging-removetag' => '移除標籤',
+	'imagetagging-done-button' => '完成標籤',
+	'imagetagging-tag-button' => '標籤',
+	'imagetagging-tagcancel-button' => '取消',
+	'imagetagging-addingtag' => '正在新增標籤...',
+	'imagetagging-removingtag' => '正在移除標籤...',
+	'imagetagging-addtagsuccess' => '已新增標籤。',
+	'imagetagging-removetagsuccess' => '已移除標籤。',
+	'tag-logpagename' => '標籤記錄',
+	'tag-logpagetext' => '這是所有新增及移除圖像標籤的記錄。',
 );
 

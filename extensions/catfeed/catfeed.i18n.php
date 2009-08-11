@@ -75,6 +75,14 @@ $messages['dsb'] = array(
 Napóraj wersiju w boku, wósebnje   wužytnu za Wikinowosće.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'catfeed-desc' => 'Χρησιμοποιεί κομμάτια από τη ροή προσφάτων αλλαγών.
+Δημιουργία έκδοσης για εισαγωγή μέσα στις σελίδες, ιδιαίτερα χρήσιμης για τα Βικινέα',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

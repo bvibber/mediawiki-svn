@@ -824,6 +824,13 @@ $messages['ml'] = array(
 	'editmsg-patch-success' => 'വിജയകരമായി പാച്ച് ചെയ്തിരിക്കുന്നു.',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'editmsg-search' => 'Хайх',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

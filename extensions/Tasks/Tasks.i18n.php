@@ -986,6 +986,7 @@ $messages['fi'] = array(
 	'tasks' => 'Tehtävät',
 	'tasks_desc' => 'Tehtävienhallintalaajennus',
 	'tasks_tab' => 'Tehtävät',
+	'tasks_title' => 'Tehtävät käyttäjälle ”$1”',
 	'tasks_form_new' => 'Luo uusi tehtävä',
 	'tasks_form_comment' => 'Kommentoi',
 	'tasks_ok1' => 'Uusi tehtävä on luotu!',
@@ -1032,6 +1033,7 @@ Jos sinua ei ole ohjattu eteenpäin muutaman sekunnin kuluessa, napsauta $1.',
 	'tasks_action_open' => 'Tehtävä ”$1” avattu.',
 	'tasks_action_assigned' => 'Tehtävä ”$1” osoitettu.',
 	'tasks_action_closed' => 'Tehtävä ”$1” suljettu.',
+	'tasks_action_wontfix' => 'Tehtävää ”$1” ei suoriteta.',
 	'tasks_logpage' => 'Tehtäväloki',
 );
 
@@ -1198,8 +1200,9 @@ $messages['grc'] = array(
 	'tasks_more_like_it' => 'πλείω',
 	'tasks_table_header_page' => 'Δέλτος',
 	'tasks_search_status' => 'Καθεστώς',
-	'tasks_previous' => 'Προηγουμέναι',
-	'tasks_next' => 'Ἑπομέναι',
+	'tasks_previous' => 'Προηγούμεναι',
+	'tasks_next' => 'Ἑπόμεναι',
+	'tasks_status_open' => 'Ἀνοίγειν',
 );
 
 /** Swiss German (Alemannisch)
@@ -1994,6 +1997,13 @@ $messages['lb'] = array(
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logpagetext' => 'Dëst ass eng Lëscht vun den Ännerunge vun den Aufgaben',
 	'tasks_logentry' => 'Fir "[[$1]]"',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'tasks_search_form_title' => 'Хайлт',
 );
 
 /** Maltese (Malti)
@@ -3433,11 +3443,25 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'tasks' => '任務',
+	'tasks_tab' => '任務',
+	'tasks_close' => '關閉任務',
 	'tasks_delete' => '刪除',
+	'tasks_reopen' => '再開任務',
+	'tasks_discussion_page_link' => '任務討論頁面',
+	'tasks_help_page' => '任務',
+	'tasks_more_like_it' => '更多',
 	'tasks_event_on_creation' => '檢查',
 	'tasks_event_on_creation_anon' => '檢查',
 	'tasks_table_header_page' => '頁面',
 	'tasks_search_form_title' => '搜尋',
+	'tasks_search_status' => '狀態',
 	'tasks_search_results' => '搜尋結果',
+	'tasks_sort' => '排序',
+	'tasks_status_open' => '開放',
+	'tasks_status_closed' => '已關閉',
+	'tasks_action_open' => '任務「$1」已開放。',
+	'tasks_action_closed' => '任務「$1」已關閉。',
+	'tasks_logpage' => '任務記錄',
 );
 

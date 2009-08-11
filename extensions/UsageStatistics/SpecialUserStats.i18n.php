@@ -553,6 +553,7 @@ $messages['eo'] = array(
 	'usagestatisticscalselect' => 'Elektu',
 	'usagestatistics-editindividual' => 'Individua uzanto $1 redaktoj statistikoj',
 	'usagestatistics-editpages' => 'Individua uzanto $1 paĝoj statistikoj',
+	'right-viewsystemstats' => 'Vidi [[Special:UserStats|statistikojn pri vikia uzado]]',
 );
 
 /** Spanish (Español)
@@ -1995,5 +1996,13 @@ $messages['zh-hans'] = array(
 	'usagestatisticscalselect' => '选择',
 	'usagestatistics-editindividual' => '用户$1编辑统计分析',
 	'usagestatistics-editpages' => '用户$1统计分析',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'usagestatisticsstart' => '開始日期',
+	'usagestatisticsend' => '結束日期',
 );
 

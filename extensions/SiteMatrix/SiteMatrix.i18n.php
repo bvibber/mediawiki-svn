@@ -597,8 +597,8 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'sitematrix-language' => 'Γλῶττα',
-	'sitematrix-sitetotal' => 'Πλήρης',
-	'sitematrix-private' => 'ἰδιωτική',
+	'sitematrix-sitetotal' => 'Συνολικός',
+	'sitematrix-private' => 'ἰδιωτικός',
 );
 
 /** Swiss German (Alemannisch)

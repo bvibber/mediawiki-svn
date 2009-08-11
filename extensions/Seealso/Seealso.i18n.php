@@ -200,6 +200,14 @@ $messages['gl'] = array(
 	'seealso-desc' => "Cabeceira 'Véxase tamén' localizada empregando a etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'seealso' => 'Ὁρᾶν ἐπἴσης',
+	'seealso-desc' => 'Ἐντοπιοποίησις ἐπικεφαλίδῶν «Ὁρᾶν ἐπἴσης» διὰ τοῦ προσαρτήματος <code><nowiki><seealso></nowiki></code>',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

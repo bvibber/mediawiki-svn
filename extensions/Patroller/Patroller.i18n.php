@@ -429,9 +429,11 @@ $messages['fi'] = array(
 	'patrol-skip' => 'Ohita',
 	'patrol-reverting' => 'Palautetaan $1',
 	'patrol-reverted-ok' => 'Muokkaus kumottiin.',
+	'patrol-skipped-ok' => 'Ohitetaan muokkaus.',
 	'patrol-reasons' => '* Selvää vandalismia
 * Tulokkaan kokeilu
 * Katso keskustelusivu',
+	'patrol-another' => 'Näytä toinen muokkaus, jos saatavilla.',
 	'group-patroller' => 'tarkastajat',
 	'group-patroller-member' => 'tarkastaja',
 	'grouppage-patroller' => '{{ns:project}}:Tarkastajat',
@@ -1300,6 +1302,7 @@ $messages['rm'] = array(
  */
 $messages['ro'] = array(
 	'patrol-revert-reason' => 'Motiv:',
+	'patrol-another' => 'Arată altă modificare, dacă e posibil.',
 	'patrol-resume' => 'Apăsaţi aici pentru a reveni.',
 	'group-patroller' => 'Patrule',
 	'group-patroller-member' => 'patrulă',

@@ -236,7 +236,16 @@ Por favor archive un reporte de errores.',
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Antaa käyttäjille mahdollisuuden luoda kuvagallerioita tallennetuista kuvista.
+Käyttää suurinta osaa SmoothGalleryn ominaisuuksista',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>SmoothGalleryn virhe:</b>',
 	'smoothgallery-gallery-not-found' => 'Pyydettyä galleriaa ei ole.',
+	'smoothgallery-unexpected-error' => 'Havaittiin odottamaton virhe.
+Ole hyvä ja tee virheraportti.',
+	'smoothgallery-javascript-disabled' => 'Tämän gallerian täydelliseen näyttämiseen vaaditaan JavaScript-tuki.',
 );
 
 /** French (Français)

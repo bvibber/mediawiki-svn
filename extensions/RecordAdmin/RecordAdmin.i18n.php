@@ -499,18 +499,21 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'recordadmin-select' => 'Valitse',
 	'recordadmin-submit' => 'Lähetä',
 	'recordadmin-badtitle' => 'Virheellinen otsikko!',
 	'recordadmin-invert' => 'Käänteinen valinta',
 	'recordadmin-buttonsearch' => 'Etsi',
 	'recordadmin-buttoncreate' => 'Luo',
 	'recordadmin-searchresult' => 'Hakutulokset',
+	'recordadmin-updatesuccess' => '$1 päivitetty',
 	'recordadmin-buttonsave' => 'Tallenna',
 	'recordadmin-viewlink' => 'näytä',
 	'recordadmin-editlink' => 'muokkaa',
 	'recordadmin-created' => 'Luotu',
 	'recordadmin-modified' => 'Muutettu',
 	'recordadmin-actions' => 'Toiminnot',
+	'recordadmin-needscontent' => 'Lisää sisältöä...',
 	'recordadmin-editwithform' => 'Muokkaa lomakkeella',
 );
 
@@ -999,6 +1002,13 @@ $messages['li'] = array(
 	'recordadmin-invert' => 'Ómgedriejde selectie',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'recordadmin-buttonsearch' => 'Хайх',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  */
@@ -1316,6 +1326,7 @@ $messages['ro'] = array(
 	'recordadmin-select' => 'Selectaţi',
 	'recordadmin-submit' => 'Trimite',
 	'recordadmin-badtitle' => 'Titlu greşit!',
+	'recordadmin-invert' => 'Inversează selecţia',
 	'recordadmin-buttonsearch' => 'Căutare',
 	'recordadmin-buttoncreate' => 'Creare',
 	'recordadmin-buttonreset' => 'Resetare',

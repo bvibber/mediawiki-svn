@@ -430,11 +430,11 @@ $messages['sr-ec'] = array(
 	'didyoumean-desc' => 'Додаје линкове ка странама са "сличним" насловима',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'didyoumean-desc' => 'Dodaje linkove ka stranama sa &quot;sličnim&quot; naslovima',
+	'didyoumean-desc' => 'Dodaje linkove ka stranama sa "sličnim" naslovima',
 );
 
 /** Sundanese (Basa Sunda)

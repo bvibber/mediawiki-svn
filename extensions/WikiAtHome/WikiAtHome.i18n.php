@@ -327,6 +327,20 @@ Tu pote adjutar a transcodificar iste video per visitar [[Special:WikiAtHome|Wik
 	'wah-loading' => 'carga interfacie de Wiki@Home <blink>...</blink>',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kandar
+ */
+$messages['id'] = array(
+	'wah-short-audio' => '$1 berkas suara, $2',
+	'wah-short-video' => '$1 berkas video, $2',
+	'wah-short-general' => '$1 berkas media, $2',
+	'wah-long-audio' => '($1 berkas suara, panjang $2, $3)',
+	'wah-long-video' => '($1 berkas video, panjang $2, $4×$5 piksel, $3)',
+	'wah-long-general' => '(berkas media, panjang $2, $3)',
+	'wah-long-error' => '(ffmpeg tak bisa membaca berkas ini: $1)',
+	'wah-transcode-working' => 'Video ini sedang diolah, silahkan coba lagi nanti',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

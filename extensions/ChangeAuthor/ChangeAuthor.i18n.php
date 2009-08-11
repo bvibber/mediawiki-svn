@@ -1092,8 +1092,11 @@ Yèn kaluputan iki tetep dumadi manèh, tegesé basis data iki mbok-menawa rusak
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
+	'changeauthor-search-box' => 'ស្វែងរកកំណែប្រែ​',
+	'changeauthor-pagename-or-revid' => 'ឈ្មោះ​ទំព័រ​ឬ​លេខ ID កំណែ​៖',
 	'changeauthor-pagenameform-go' => 'ទៅ',
 	'changeauthor-comment' => 'យោបល់៖',
 	'changeauthor-changeauthors-multi' => 'ផ្លាស់ប្តូរ{{PLURAL:$1|author|អ្នកនិពន្ធ}}',
@@ -1221,6 +1224,35 @@ Wann dëse Feeler sech widderhëlt dann ass d'Datebank waarscheinlech futti.",
  */
 $messages['lfn'] = array(
 	'changeauthor-comment' => 'Comenta:',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'changeauthor' => 'Outäör versie aanpasse',
+	'changeauthor-desc' => "Maak 't mäögelik de outäör van 'n versie aan te passe",
+	'changeauthor-title' => "De outäör van 'n bewirkingsversie aanpasse",
+	'changeauthor-search-box' => 'Versies zeuke',
+	'changeauthor-pagename-or-revid' => 'Paginanaam of versienómmer:',
+	'changeauthor-pagenameform-go' => 'Gank',
+	'changeauthor-comment' => 'Opmirking:',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Outäör|Outäörs}} aanpasse',
+	'changeauthor-explanation-multi' => "Mit dit formeleer kans doe de outäör van 'n bewirkingsversie aanpasse. Pas sumpeleweg ein of mier gebroekersname in de lies hie-onger aan, veug 'n opmirking toe (neet verplich) en klik op de knop 'Outäör(s) aanpasse'.",
+	'changeauthor-changeauthors-single' => 'Outäör aanpasse',
+	'changeauthor-explanation-single' => "Mit dit formeleer kans doe de outäör van 'n bewirkingsversie aanpasse. Pas sumpeleweg ein gebroekersname in de lies hie-onger aan, veug 'n opmirking toe (neet verplich) en klik op de knop 'Outäör aanpasse'.",
+	'changeauthor-invalid-username' => 'Ongeljige gebroekersnaam "$1".',
+	'changeauthor-nosuchuser' => 'Gebroeker "$1" besjteit neet.',
+	'changeauthor-revview' => 'Bewirkingsnómmer $1 van $2',
+	'changeauthor-nosuchtitle' => 'D\'r is gein pagina "$1".',
+	'changeauthor-weirderror' => "D'r is 'n erg vraemde fout opgetraoje.
+Perbeer 't nog 'ns.
+Es doe dees foutmeljing jedere kier weer zuus, is de database allezelaeve kepot.",
+	'changeauthor-invalidform' => "Gebroek 't formeleer van de [[Special:ChangeAuthor|speciaal pagina]], in plaats van 'n aangepas formeleer.",
+	'changeauthor-success' => 'Diene aanvraog is verwirk.',
+	'changeauthor-logentry' => 'Outäör van $2 van $1 aangepas van $3 nao $4',
+	'changeauthor-logpagename' => 'Outäörsaanpassingelogbook',
+	'right-changeauthor' => "De outäör van 'n bewirking aanpasse",
 );
 
 /** Malayalam (മലയാളം)
@@ -1691,7 +1723,7 @@ $messages['sr-ec'] = array(
 	'right-changeauthor' => 'Промени аутора ревизије',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1704,10 +1736,10 @@ $messages['sr-el'] = array(
 	'changeauthor-comment' => 'Komentar:',
 	'changeauthor-changeauthors-multi' => 'Promeni {{PLURAL:$1|autora|autore}}',
 	'changeauthor-changeauthors-single' => 'Promeni autora',
-	'changeauthor-invalid-username' => 'Pogrešno korisničko ime &quot;$1&quot;.',
-	'changeauthor-nosuchuser' => 'Nema korisnika &quot;$1&quot;.',
+	'changeauthor-invalid-username' => 'Pogrešno korisničko ime "$1".',
+	'changeauthor-nosuchuser' => 'Nema korisnika "$1".',
 	'changeauthor-revview' => 'Revizija #$1 ili $2',
-	'changeauthor-nosuchtitle' => 'Ne postoji stranica pod nazivom &quot;$1&quot;.',
+	'changeauthor-nosuchtitle' => 'Ne postoji stranica pod nazivom "$1".',
 	'changeauthor-success' => 'Baš zahtev je bio uspešno obrađen.',
 	'changeauthor-logentry' => 'Promenjen autor $2 na $1, sa $3 na $4',
 	'changeauthor-logpagename' => 'Istorija promene autora',

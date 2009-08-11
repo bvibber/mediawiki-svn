@@ -322,6 +322,14 @@ $messages['lb'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categoryonupload-desc' => "Vreug 'ne gebroeker om 'n categorie te selectere bie 't uploade van 'n besjtandj",
+	'categoryonupload-label' => 'Categorie:',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Homo
  */

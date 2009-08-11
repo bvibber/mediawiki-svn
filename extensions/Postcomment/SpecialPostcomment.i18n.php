@@ -230,6 +230,16 @@ $messages['es'] = array(
 	'postcomment_nopostingtoadd' => 'No hay mensaje qué añadir.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'postcomment_notloggedin' => 'Sa ei ole sisse loginud.',
+	'postcomment_youareloggedinas' => 'Oled sisse loginud kasutajana $1',
+	'postcomment_addcommentdiscussionpage' => 'Lisa oma kommentaar sellele arutelulehele',
+	'postcomment_leavemessagefor' => 'Jäta teade kasutajale $1',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -245,6 +255,7 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
@@ -253,6 +264,7 @@ $messages['fi'] = array(
 	'postcomment_youareloggedinas' => 'Olet kirjautunut sisään käyttäjänä $1',
 	'postcomment_addcommentdiscussionpage' => 'Lisää kommenttisi tälle keskustelusivulle',
 	'postcomment_post' => 'Lähetä',
+	'postcomment_on' => 'Lähetetty',
 	'postcomment_said' => 'sanoi',
 	'postcomment_invalidrequest' => 'Epäkelpo pyyntö.',
 	'postcomment_replyto' => 'Vastaa käyttäjälle $1',

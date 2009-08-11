@@ -533,3 +533,10 @@ $messages['vi'] = array(
 	'whosonline-desc' => 'Hiển thị [[Special:WhosOnline|danh sách]] các thành viên đã đăng nhập lẫn vô danh hiện đang trực tuyến',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'whosonline' => '誰正在線',
+);
+

@@ -931,6 +931,7 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'watchers' => '監視者',
 	'watchers_link_title' => '誰在監視此頁？',
+	'watchers_error_article' => "'''錯誤：'''頁面不存在。",
 	'watchers_noone_watches' => '沒有人監視此頁面。',
 );
 
