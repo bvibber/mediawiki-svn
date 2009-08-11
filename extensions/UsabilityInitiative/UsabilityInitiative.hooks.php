@@ -19,16 +19,15 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 5 ),
 				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 5 ),
-				array( 'src' => 'css/ui.core.css', 'version' => '1.7.2' ),
-				array( 'src' => 'css/ui.resizable.css', 'version' => '1.7.2' ),
-				array( 'src' => 'css/ui.dialog.css', 'version' => '1.7.2' ),
-				array( 'src' => 'css/ui.theme.css', 'version' => '1.7.2' ),
+				array( 'src' => 'css/smoothness/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'combined' => array(
 				array( 'src' => 'css/combined.css', 'version' => 7 ),
+				array( 'src' => 'css/smoothness/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'minified' => array(
 				array( 'src' => 'css/combined.min.css', 'version' => 7 ),
+				array( 'src' => 'css/smoothness/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 		)
 	);
@@ -41,10 +40,7 @@ class UsabilityInitiativeHooks {
 		'no_js2' => array(
 			'raw' => array(
 				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
-				array( 'src' => 'js/js2/ui.core.js', 'version' => '1.7.2' ),
-				array( 'src' => 'js/js2/ui.draggable.js', 'version' => '1.7.2' ),
-				array( 'src' => 'js/js2/ui.resizable.js', 'version' => '1.7.2' ),
-				array( 'src' => 'js/js2/ui.dialog.js', 'version' => '1.7.2' ),
+				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2' ),
 				array( 'src' => 'js/js2/js2.js', 'version' => 3 ),
 			),
 			'combined' => array(
