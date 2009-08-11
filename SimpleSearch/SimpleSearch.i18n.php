@@ -58,6 +58,14 @@ $messages['be-tarask'] = array(
 	'simplesearch-search' => 'Пошук',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'simplesearch' => 'সহজ অনুসন্ধান',
+	'simplesearch-search' => 'অনুসন্ধান',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -362,6 +370,15 @@ $messages['pt'] = array(
 	'simplesearch-search' => 'Pesquisa',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'simplesearch' => 'Pesquisa simples',
+	'simplesearch-desc' => 'Adiciona funcionalidades extras à pesquisa simplificada do Vector.',
+	'simplesearch-search' => 'Pesquisa',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */
@@ -450,9 +467,11 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
+	'simplesearch' => 'సాధారణ వెతుకులాట',
 	'simplesearch-search' => 'వెతుకు',
 );
 
