@@ -16,6 +16,7 @@ $messages = array();
  */
 
 $messages['en'] = array(
+	'readerfeedback-desc'          => 'Article validation allows for readers to give feedback in the form of categorical ratings',
 	'readerfeedback'               => 'What do you think of this page?',
 	'readerfeedback-text'          => '\'\'Please take a moment to rate this page below. Your feedback is valuable and helps us improve our website.\'\'',
 	'readerfeedback-reliability'   => 'Reliability',
