@@ -25,6 +25,14 @@ $messages['be-tarask'] = array(
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'navigabletoc' => 'Navigerbar indholdsfortegnelse',
+	'navigabletoc-desc' => 'Tilføjer en indholdsfortegnelse til redigeringsformularen som ruller tekstfeltet når der klikkes på et afsnit',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
