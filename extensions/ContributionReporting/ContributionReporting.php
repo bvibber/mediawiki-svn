@@ -15,11 +15,17 @@ $wgContributionReportingDBuser = $wgDBuser;
 $wgContributionReportingDBpassword = $wgDBpassword;
 $wgContributionReportingDBname = $wgDBname;
 
+// And now the tracking database
+$wgContributionReportingTrackingDBserver = $wgDBserver;
+$wgContributionReportingTrackingDBuser = $wgDBuser;
+$wgContributionReportingTrackingDBpassword = $wgDBpassword;
+$wgContributionReportingTrackingDBname = $wgDBname;
+
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Contribution Reporting',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ContributionReporting',
-	'author' => array( 'David Strauss', 'Brion Vibber', 'Siebrand Mazeland', 'Trevor Parscal' ),
+	'author' => array( 'David Strauss', 'Brion Vibber', 'Siebrand Mazeland', 'Trevor Parscal', 'Tomasz Finc' ),
 	'descriptionmsg' => 'contributionreporting-desc',
 );
 
@@ -32,15 +38,20 @@ $wgAutoloadClasses['ContributionHistory'] = $dir . 'ContributionHistory_body.php
 $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
 $wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics_body.php';
 $wgAutoloadClasses['SpecialFundraiserStatistics'] = $dir . 'FundraiserStatistics_body.php';
+$wgAutoloadClasses['SpecialContributionTrackingStatistics'] = $dir . 'ContributionTrackingStatistics_body.php';
 
 $wgSpecialPages['ContributionHistory'] = 'ContributionHistory';
 $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
 $wgSpecialPages['FundraiserStatistics'] = 'SpecialFundraiserStatistics';
+$wgSpecialPages['ContributionTrackingStatistics'] = 'SpecialContributionTrackingStatistics';
 $wgSpecialPageGroups['ContributionHistory'] = 'contribution';
 $wgSpecialPageGroups['ContributionTotal'] = 'contribution';
 $wgSpecialPageGroups['ContributionStatistics'] = 'contribution';
 $wgSpecialPageGroups['FundraiserStatistics'] = 'contribution';
+$wgSpecialPageGroups['ContributionTrackingStatistics'] = 'contribution';
+
+
 
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
@@ -71,6 +82,19 @@ $egFundraiserStatisticsFundraisers = array(
 $egFundraiserStatisticsMinimum = 1;
 $egFundraiserStatisticsMaximum = 10000;
 
+// Allowed display templates since users can introduce noise
+$wgAllowedTemplates = array(
+			'enwiki_00',
+			'enwiki_01',
+			'enwiki_02',
+			'enwiki_03',
+			'enwiki_04',
+			'enwiki_05',
+			'donate'
+		);
+
+$wgContributionTrackingStatisticsViewWeeks = 3;
+
 $wgHooks['ParserFirstCallInit'][] = 'efContributionReportingSetup';
 $wgHooks['LanguageGetMagic'][] = 'efContributionReportingTotal_Magic';
 
@@ -97,6 +121,24 @@ function efContributionReportingConnection() {
 			$wgContributionReportingDBuser,
 			$wgContributionReportingDBpassword,
 			$wgContributionReportingDBname );
+		$db->query( "SET names utf8" );
+	}
+
+	return $db;
+}
+
+function efContributionReportingTrackingConnection() {
+	global $wgContributionReportingTrackingDBserver, $wgContributionReportingTrackingDBname;
+	global $wgContributionReportingTrackingDBuser, $wgContributionReportingTrackingDBpassword;
+
+	static $db;
+
+	if ( !$db ) {
+		$db = new DatabaseMysql(
+			$wgContributionReportingTrackingDBserver,
+			$wgContributionReportingTrackingDBuser,
+			$wgContributionReportingTrackingDBpassword,
+			$wgContributionReportingTrackingDBname );
 		$db->query( "SET names utf8" );
 	}
 
