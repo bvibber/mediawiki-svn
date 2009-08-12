@@ -56,12 +56,12 @@ $messages['en'] = array(
 
 	// Tracking Statistics
 	'contributiontrackingstatistics' => 'Contribution tracking statistics',
-	'contribstats-day-totals' => 'Total for Today',
+	'contribstats-day-totals' => 'Total for today',
 	'contribstats-week' => 'Week',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total for this week|Weekly totals for the past $1 weeks inclusive}}',
 	'contribstats-clicks' => 'Clicks',
 	'contribstats-donations' => 'Donations',
-	'contribstats-conversion' => 'Conversion Rate (%)',
+	'contribstats-conversion' => 'Conversion rate (%)',
 	'contribstats-template' => 'Template',
 
 	// Fundraiser statistics
