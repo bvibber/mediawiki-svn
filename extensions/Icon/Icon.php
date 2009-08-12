@@ -12,7 +12,7 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Icon',
-	'version'        => '1.5',
+	'version'        => '1.6',
 	'author'         => 'Tim Laqua',
 	'description'    => 'Allows you to use images as icons and icon links',
 	'descriptionmsg' => 'icon-desc',
@@ -20,29 +20,14 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgExtensionFunctions[] = 'efIcon_Setup';
-$wgHooks['LanguageGetMagic'][] = 'efIcon_LanguageGetMagic';
+$wgExtensionMessagesFiles['Icon'] = $dir . 'Icon.i18n.php';
 
 function efIcon_Setup() {
-	global $wgParser, $wgMessageCache;
-
-	#Add Messages
-	require( dirname( __FILE__ ) . '/Icon.i18n.php' );
-	foreach( $messages as $key => $value ) {
-		  $wgMessageCache->addMessages( $messages[$key], $key );
-	}
+	global $wgParser;
 
 	# Set a function hook associating the "example" magic word with our function
 	$wgParser->setFunctionHook( 'icon', 'efIcon_Render' );
 
-	return true;
-}
-
-function efIcon_LanguageGetMagic( &$magicWords, $langCode ) {
-	# Add the magic word
-	# The first array element is case sensitive, in this case it is not case sensitive
-	# All remaining elements are synonyms for our parser function
-	$magicWords['icon'] = array( 0, 'icon' );
-	# unless we return true, other parser functions extensions won't get loaded.
 	return true;
 }
 
