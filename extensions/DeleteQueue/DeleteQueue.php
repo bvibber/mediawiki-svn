@@ -70,7 +70,7 @@ $wgDeleteQueueExpiry = array( 'prod' => 5 * 86400, 'deletediscuss' => 7 * 86400 
 
 $wgSpecialPages['DeleteQueue'] = 'SpecialDeleteQueue';
 
-$wgExtraNamespaces[140] = 'Deletion';
 define( 'NS_DELETION', 140 );
+$wgExtraNamespaces[NS_DELETION] = 'Deletion';
 
 $wgDeleteQueueStyleVersion = 1;
