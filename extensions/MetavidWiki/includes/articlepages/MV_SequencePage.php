@@ -28,11 +28,8 @@ class MV_SequencePage extends Article {
 	/*
 	 * returns the xml output of the sequence with all wiki-text templates/magic words swapped out
 	 * also resolves all image and media locations with absolute paths.
-	 *@param $partial_node_set  'full' (the full nodeset)
-	 * 							'seq' (just seq elements)
-	 * 							'transition' (just transition elements)
 	 */
-	function getSequenceSMIL( $partial_node_set='full' ){
+	function getSequenceSMIL(){
 		global $wgParser,$wgOut, $wgUser, $wgEnableParserCache;
 		//temporally stop cache:
 		$wgEnableParserCache=false;
@@ -296,8 +293,13 @@ class MV_SequencePage extends Article {
 
 	 				//if type is ogg: (set dur and poster)
 	 				if( $img->getMimeType()=='application/ogg') {
+	 					//set the durationHint to the real media duration:
+	 					$node->setAttribute('durationHint', $thumbnail->file->getLength() );
+
+	 					//set up default dur to media length if not already set:
 	 					if( !$node->hasAttribute('dur') )
 	 						$node->setAttribute('dur',  $thumbnail->file->getLength() );
+	 					//set the poster attribute:
 	 					if( !$node->hasAttribute('poster') ){
 	 						$node->setAttribute('poster',  $thumbnail->getURL() );
 	 					}
@@ -709,7 +711,7 @@ class MV_SequencePage extends Article {
 		}
 		//print_r($this->clips);
 		}*/
-	function doSeqReplace( &$input, &$argv, &$parser ) {
+	static function doSeqReplace( &$input, &$argv, &$parser ) {
 		global $wgTitle, $wgUser, $wgRequest, $markerList;
 		$sk = $wgUser->getSkin();
 
