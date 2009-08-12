@@ -388,6 +388,18 @@ $messages['hi'] = array(
 	'findspam-notextfound' => 'योगदान मिला नहीं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'findspam' => 'Pronađi spam',
+	'findspam-desc' => 'Dodaje [[Special:FindSpam|posebnu stranicu]] koja omogućava pronalaženje nedavno dodanog spama',
+	'findspam-ip' => 'IP adresa:',
+	'findspam-ok' => 'U redu',
+	'findspam-notextfound' => 'Nisu pronađeni doprinosi',
+	'right-findspam' => 'Pronađi nedavno dodan spam',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -786,6 +798,7 @@ $messages['sc'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Melos
  * @author Santu
  */
 $messages['scn'] = array(
@@ -794,6 +807,7 @@ $messages['scn'] = array(
 	'findspam-ip' => 'Nnirizzu IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nuddu cuntribbutu attruvatu',
+	'right-findspam' => 'Cerca lu spam cchiù ricenti',
 );
 
 /** Slovak (Slovenčina)

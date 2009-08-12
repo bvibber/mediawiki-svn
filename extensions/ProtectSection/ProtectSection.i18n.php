@@ -121,6 +121,13 @@ $messages['dsb'] = array(
 	'right-protectsection' => 'Wótrězki boka šćitaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'protectsection_forbidden' => 'Απαγορευμένο',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

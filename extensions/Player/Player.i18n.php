@@ -264,14 +264,19 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'player' => 'Παίκτης',
 	'player-title' => 'Παίκτης',
 	'player-playertitle' => 'Παίκτης: $1',
 	'player-file' => 'Όνομα αρχείου',
+	'player-play' => 'Παίξε',
+	'player-not-allowed' => 'μη επιτρεπόμενο φορμά',
 	'player-not-found' => 'το αρχείο δεν βρέθηκε',
 	'player-invalid-title' => 'άκυρος τίτλος',
+	'player-clicktoplay' => 'Παίξε $1',
 	'player-goto-player' => 'Παίκτης',
 	'player-goto-page' => 'Σελίδα',
 	'player-goto-file' => 'Αρχείο',
@@ -1377,7 +1382,12 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'player' => '播放器',
 	'player-title' => '播放器',
+	'player-playertitle' => '播放器：$1',
+	'player-file' => '檔案名稱',
+	'player-play' => '播放',
 	'player-not-found' => '找不到檔案',
+	'player-goto-player' => '播放器',
+	'player-goto-page' => '頁面',
 	'player-goto-file' => '檔案',
 );
 

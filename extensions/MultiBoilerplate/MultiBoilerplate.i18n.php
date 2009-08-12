@@ -508,3 +508,10 @@ $messages['vo'] = array(
 	'multiboilerplate-submit' => 'Lodön',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'multiboilerplate-submit' => '載入',
+);
+

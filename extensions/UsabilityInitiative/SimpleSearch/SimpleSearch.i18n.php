@@ -84,6 +84,15 @@ $messages['ca'] = array(
 	'simplesearch-search' => 'Cerca',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'simplesearch' => 'Enkel søgning',
+	'simplesearch-desc' => 'Tilføjer ekstra funktionalitet til Vectors forenklede søgning',
+	'simplesearch-search' => 'Søg',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -162,6 +171,13 @@ $messages['fr'] = array(
 	'simplesearch' => 'Recherche simple',
 	'simplesearch-desc' => "Ajoute des fonctionnalités à la recherche simplifiée de l'habillage Vector",
 	'simplesearch-search' => 'Rechercher',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'simplesearch-search' => 'Rechèrchiér',
 );
 
 /** Galician (Galego)
@@ -255,6 +271,15 @@ $messages['ja'] = array(
 	'simplesearch-search' => '検索',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'simplesearch' => 'Panggolèkan prasaja',
+	'simplesearch-desc' => 'Tambahna fungsionalitas tambahan kanggo panggolèkan prasaja Vector',
+	'simplesearch-search' => 'Golèk',
+);
+
 /** Georgian (ქართული)
  * @author Alsandro
  */
@@ -304,6 +329,15 @@ $messages['lt'] = array(
 	'simplesearch' => 'Paprasta paieška',
 	'simplesearch-desc' => "Prideda papildomą funkcionalumą Vector's supaprastintai paieškai",
 	'simplesearch-search' => 'Ieškoti',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'simplesearch' => 'Едноставно пребарување',
+	'simplesearch-desc' => 'Додава додатна функција на упростеното пребарување на Вектор',
+	'simplesearch-search' => 'Пребарување',
 );
 
 /** Malayalam (മലയാളം)
@@ -453,6 +487,15 @@ $messages['sk'] = array(
 	'simplesearch' => 'Jednoduché vyhľadávanie',
 	'simplesearch-desc' => 'Pridáva ďalšiu funkcionalitu k zjednodušenému vyhľadávaniu témy vzhľadu Vector',
 	'simplesearch-search' => 'Hľadať',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Smihael
+ */
+$messages['sl'] = array(
+	'simplesearch' => 'Enostavno iskanje',
+	'simplesearch-desc' => 'Dodaja dodatne funkcionalnosti za poenostavljeno iskanje Vector',
+	'simplesearch-search' => 'Iskanje',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

@@ -126,6 +126,13 @@ $messages['dsb'] = array(
 	'spl3_nosubpages' => '$1 njama pódboki za lisćinu.',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'spl3_debug' => 'Άγνωστη αξία για την επιλογή $1.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

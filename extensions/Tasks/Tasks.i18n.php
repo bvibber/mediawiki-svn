@@ -754,6 +754,7 @@ $messages['el'] = array(
 	'tasks_wontfix' => 'Δεν θα φτιάξει',
 	'tasks_delete' => 'Διαγραφή',
 	'tasks_no_task_delete_title' => 'Δεν επιτρέπεται',
+	'tasks_no_task_delete_texe' => 'Δεν μπορείς να διαγράψεις μια εργασία. Μόνο οι διαχειριστές μπορούν να το κάνουν αυτό.',
 	'tasks_action_delete' => 'Μια εργασία διαγράφηκε.',
 	'tasks_task_was_deleted' => 'Η εργασία διαγράφηκε επιτυχώς.',
 	'tasks_reopen' => 'Επανάνοιγμα εργασίας',
@@ -770,6 +771,7 @@ $messages['el'] = array(
 	'tasks_event_on_creation' => 'έλεγχος',
 	'tasks_event_on_creation_anon' => 'έλεγχος',
 	'tasks_link_your_assignments' => 'ανοιχτές αναθέσεις',
+	'tasks_my_assignments' => '{{PLURAL:$1|Η τωρινή σας ανάθεση|Οι τωρινές σας αναθέσεις}}',
 	'tasks_table_header_page' => 'Σελίδα',
 	'tasks_you_have_no_assignments' => 'Δεν υπάρχουν ανοιχτές εργασίες',
 	'tasks_search_form_title' => 'Αναζήτηση',
@@ -1115,6 +1117,34 @@ $messages['fr'] = array(
 	'tasks-pref-showtaskcomments' => 'Voir la page de commentaires à propos des tâches.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'tasks' => 'Tâches',
+	'tasks_tab' => 'Tâches',
+	'tasks_title' => 'Tâches pôr "$1"',
+	'tasks_form_new' => 'Crèar tâche',
+	'tasks_form_comment' => 'Comentèro',
+	'tasks_delete' => 'Suprimar',
+	'tasks_here' => 'Iqué',
+	'tasks_help_page' => 'Tâches',
+	'tasks_more_like_it' => 'més',
+	'tasks_task_types' => '1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write|7:check:Check',
+	'tasks_event_on_creation' => 'Vèrifiér',
+	'tasks_event_on_creation_anon' => 'Vèrifiér',
+	'tasks_table_header_page' => 'Pâge',
+	'tasks_search_form_title' => 'Rechèrchiér',
+	'tasks_search_tasks' => 'Tâches',
+	'tasks_search_status' => 'Statut',
+	'tasks_search_results' => 'Rèsultats de la rechèrche',
+	'tasks_previous' => 'Devant',
+	'tasks_next' => 'Aprés',
+	'tasks_sort' => 'Cièrdre',
+	'tasks_status_open' => 'Uvèrta',
+	'tasks_logentry' => 'Pôr « [[$1]] »',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -1202,6 +1232,7 @@ $messages['grc'] = array(
 	'tasks_search_status' => 'Καθεστώς',
 	'tasks_previous' => 'Προηγούμεναι',
 	'tasks_next' => 'Ἑπόμεναι',
+	'tasks_sort' => 'Κατατάσσειν',
 	'tasks_status_open' => 'Ἀνοίγειν',
 );
 
@@ -3459,6 +3490,7 @@ $messages['zh-hant'] = array(
 	'tasks_search_results' => '搜尋結果',
 	'tasks_sort' => '排序',
 	'tasks_status_open' => '開放',
+	'tasks_status_assigned' => '已分派',
 	'tasks_status_closed' => '已關閉',
 	'tasks_action_open' => '任務「$1」已開放。',
 	'tasks_action_closed' => '任務「$1」已關閉。',

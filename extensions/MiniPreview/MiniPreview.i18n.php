@@ -785,3 +785,11 @@ Samo: „* PD-“ no ojenon kladis valik, kels primons me: „PD-“ , äs „PD
 * Self',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'minipreview-files_in_category' => "本分類包含'''$1'''個檔案。",
+	'minipreview-files_in_gallery' => "本圖片廊包含'''$1'''個檔案。",
+);
+

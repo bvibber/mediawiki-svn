@@ -177,10 +177,20 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'navigabletoc' => 'Inhaltsverzeechnis fir ze navigéieren',
+	'navigabletoc' => 'Inhaltsverzeechnes fir ze navigéieren',
+	'navigabletoc-desc' => 'Setzt en Inhaltsverzeechnes op den Ännerungsformulaire derbäi, deen den Text scrollt, wann en Abschnitt ugeklickt gëtt',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'navigabletoc' => 'Содржина со навигација',
+	'navigabletoc-desc' => 'Додава содржина на статијата во образецот за уредување која ја поместува кутијата за текст кога ќе се кликне на пасус',
 );
 
 /** Malay (Bahasa Melayu)
@@ -268,6 +278,13 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'navigabletoc' => 'Navigovateľný Obsah',
 	'navigabletoc-desc' => 'Pridáva do formulára úprav Obsah, ktorý sa posunie na správne miesto po kliknutí na sekciu',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Smihael
+ */
+$messages['sl'] = array(
+	'navigabletoc' => 'Navigacijsko kazalo vsebine',
 );
 
 /** Swedish (Svenska)

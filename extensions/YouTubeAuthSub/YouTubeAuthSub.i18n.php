@@ -68,9 +68,13 @@ $messages['af'] = array(
 	'youtubeauthsub' => 'Laai YouTube-video op',
 	'youtubeauthsub_title' => 'Titel',
 	'youtubeauthsub_description' => 'Beskrywing',
+	'youtubeauthsub_password' => 'YouTube-wagwoord',
+	'youtubeauthsub_username' => 'YouTube-gebruikersnaam',
 	'youtubeauthsub_keywords' => 'Sleutelwoorde',
 	'youtubeauthsub_category' => 'Kategorie',
 	'youtubeauthsub_submit' => 'Oplaai',
+	'youtubeauthsub_clickhere' => 'Kliek hier om by YouTube aan te teken',
+	'youtubeauthsub_uploadbutton' => 'Laai op',
 	'youtubeauthsub_jserror_nokeywords' => 'Verskaf asseblief een of meer sleutelwoorde.',
 );
 
@@ -867,6 +871,18 @@ Veuillez patienter.',
 	'youtubeauthsub_jserror_nodesc' => 'Veuillez entrer une description pour la vidéo.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'youtubeauthsub_title' => 'Titro',
+	'youtubeauthsub_description' => 'Dèscripcion',
+	'youtubeauthsub_password' => 'Mot de pâssa sus Youtube',
+	'youtubeauthsub_category' => 'Catègorie',
+	'youtubeauthsub_submit' => 'Sometre',
+	'youtubeauthsub_uploadbutton' => 'Tèlèchargiér',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -1523,7 +1539,7 @@ Bes jet jedoldesch.',
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'youtubeauthsub_category' => 'Klasyans',
+	'youtubeauthsub_category' => 'Klass',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1670,15 +1686,16 @@ $messages['ml'] = array(
 );
 
 /** Mongolian (Монгол)
+ * @author Chinneeb
  * @author E.shijir
  */
 $messages['mn'] = array(
-	'youtubeauthsub' => 'Youtube видео гадагш хуулах',
+	'youtubeauthsub' => 'Youtube-н бичлэг оруулах',
 	'youtubeauthsub_title' => 'Гарчиг',
 	'youtubeauthsub_password' => 'YouTube нууц үг',
 	'youtubeauthsub_username' => 'YouTube хэрэглэгчийн нэр',
 	'youtubeauthsub_keywords' => 'Түлхүүр үгнүүд',
-	'youtubeauthsub_uploadbutton' => 'Гадагш хуулах',
+	'youtubeauthsub_uploadbutton' => 'Оруулах',
 );
 
 /** Marathi (मराठी)
@@ -2068,6 +2085,7 @@ Czekaj.',
  */
 $messages['pnt'] = array(
 	'youtubeauthsub_title' => 'Τίτλον',
+	'youtubeauthsub_description' => 'Περιγραφήν',
 	'youtubeauthsub_category' => 'Κατηγορίαν',
 	'youtubeauthsub_submit' => 'Στείλον',
 	'youtubeauthsub_uploadbutton' => 'Φόρτωμαν',
@@ -2431,9 +2449,11 @@ Buďte prosím trpezliví.',
 
 /** Lower Silesian (Schläsch)
  * @author Schläsinger
+ * @author Äberlausitzer
  */
 $messages['sli'] = array(
 	'youtubeauthsub_title' => 'Tittel',
+	'youtubeauthsub_description' => 'Beschreibung',
 	'youtubeauthsub_password' => 'YouTube-Passwurt',
 	'youtubeauthsub_username' => 'YouTube-Benutzernoame',
 	'youtubeauthsub_category' => 'Kategorie',

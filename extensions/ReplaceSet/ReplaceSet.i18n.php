@@ -29,3 +29,13 @@ $messages['en'] = array(
 	'replaceset-error-regexnoend' => 'The regex pattern "$1" is missing the ending delimiter \'$2\'',
 	'replaceset-error-regexbadmodifier' => 'The regex modifier \'$1\' is not valid.'
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'replaceset-error-calllimit' => 'De limiet van het aantal aanroepen van ReplaceSet is bereikt.',
+	'replaceset-error-regexnoend' => 'Het in het patroon "$1" van de reguliere expressie mist het sluitteken "$2"',
+	'replaceset-error-regexbadmodifier' => 'De modifier "$1" van de reguliere expressie is niet geldig.',
+);
+

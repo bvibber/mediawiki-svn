@@ -159,6 +159,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'unicodeconverter' => 'Μετατροπέας Unicode',
 	'unicodeconverter-ok' => 'Εντάξει',
 	'unicodeconverter-oldtext' => 'Αρχικό κείμενο:',
 	'unicodeconverter-newtext' => 'Κείμενο που έχει μετατραπεί:',
@@ -223,6 +224,14 @@ $messages['fr'] = array(
 	'unicodeconverter-ok' => 'Convertir',
 	'unicodeconverter-oldtext' => 'Texte d’origine :',
 	'unicodeconverter-newtext' => 'Texte converti :',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'unicodeconverter-ok' => 'D’acôrd',
+	'unicodeconverter-oldtext' => 'Tèxte d’origina :',
 );
 
 /** Galician (Galego)
@@ -406,7 +415,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'unicodeconverter' => 'Уникод претворач',
-	'unicodeconverter-desc' => 'Прост пример за модул за специјална страница. [[Special:UnicodeConverter|Ако му се зададе низата UTF-8]], ја претвора во HTML ентитети соодветни аз интернет-страници со стандардот ISO 8859-1',
+	'unicodeconverter-desc' => 'Прост пример за модул за специјална страница. [[Special:UnicodeConverter|Ако му се зададе низата UTF-8]], ја претвора во HTML ентитети погодни за интернет-страници по стандардот ISO 8859-1',
 	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинален текст:',
 	'unicodeconverter-newtext' => 'Претворен текст:',

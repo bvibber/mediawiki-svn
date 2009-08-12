@@ -101,6 +101,13 @@ $messages['dsb'] = array(
 	'purge-desc' => 'Pśidawa rejtark "wuprozniś" wšym normalnym bokam a wobija se kontrolu za proznjenje cacha za anonymnych wužywarjow, aby zmóžnił spěšnje proznjenje cacha',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'purge' => 'εκκαθάριση',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  */

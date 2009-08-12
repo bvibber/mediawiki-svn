@@ -196,6 +196,17 @@ Pšosym napiš powěźeńku zmólki.',
 	'smoothgallery-javascript-disabled' => 'JavaScript jo trěbny, aby se galerija korektnje zwobrazniła.',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'smoothgallery' => 'ΟμαλήΣυλλογή',
+	'smoothgallery-title' => 'ΟμαλήΣυλλογή',
+	'smoothgallery-smoothgallerytitle' => 'ΟμαλήΣυλλογή: $1',
+	'smoothgallery-error' => '<b>Σφάλμα ΟμαλήΣυλλογή:</b>',
+	'smoothgallery-gallery-not-found' => 'Η συλλογή που απαιτήθηκε δεν υπάρχει.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -830,5 +841,12 @@ Xin hãy đăng một báo cáo lỗi.',
  */
 $messages['vo'] = array(
 	'smoothgallery-gallery-not-found' => 'Magodem pavilöl no dabinon.',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'smoothgallery-javascript-disabled' => '需要JavaScript以正常檢視本圖片廊。',
 );
 

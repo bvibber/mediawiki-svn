@@ -932,10 +932,11 @@ $messages['ml'] = array(
 );
 
 /** Mongolian (Монгол)
+ * @author Chinneeb
  * @author E.shijir
  */
 $messages['mn'] = array(
-	'multipleupload' => 'Файл гадагш хуулах',
+	'multipleupload' => 'Олон файл оруулах',
 );
 
 /** Marathi (मराठी)
@@ -1280,10 +1281,11 @@ $messages['sc'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Melos
  * @author Santu
  */
 $messages['scn'] = array(
-	'multipleupload' => 'Càrica file multimediali',
+	'multipleupload' => 'Càrica file multipli',
 	'multipleupload-desc' => "Pirmetti a l'utenti di [[Special:MultipleUpload|caricari cchiù file 'n cuntimpurrania]]",
 	'multipleupload-ignoreallwarnings' => "Trascura '''tutti l'avvisi''' e lu stissu sarva li file.",
 	'multipleupload-saveallfiles' => 'Sarva tutti li file.',
@@ -1299,6 +1301,8 @@ Poi nziriri nu '''Nomu dû file di distinazzioni''' e assignari  '''Dittagghi'''
 File nun adatti vènunu scancillati pi sùbbitu, leggi li [[{{MediaWiki:Multipleupload-page}}|rèuli pi la scancillazzioni dî file]].",
 	'multiupload-fileuploaded' => 'File caricatu.',
 	'multiupload-toolbox' => 'Càrica file mùltipli',
+	'multiupload-no-files' => 'Pi favuri silizziona almenu nu file da càricari',
+	'multiupload-blank' => 'Nissunu file silizziunatu',
 );
 
 /** Sassaresu (Sassaresu)
@@ -1647,5 +1651,6 @@ $messages['zh-hant'] = array(
 	'multiupload-fileuploaded' => '檔案經已上載。',
 	'multiupload-toolbox' => '上載多個檔案',
 	'multiupload-no-files' => '請選擇最少一個檔案進行上載',
+	'multiupload-blank' => '沒有選擇檔案',
 );
 

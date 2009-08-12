@@ -187,7 +187,11 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'security' => 'Αρχείο ασφαλείας',
+	'security-logpage' => 'Αρχείο ασφαλείας',
+	'security-info' => 'Υπάρχουν $1 σε αυτή τη σελίδα',
 	'security-info-toggle' => 'περιορισμοί ασφαλείας',
+	'security-inforestrict' => 'Ο $1 είναι περιορισμένος στο $2',
 	'security-manygroups' => 'ομάδες $1 και $2',
 	'security-type-category' => 'κατηγορία',
 	'security-type-namespace' => 'περιοχή ονομάτων',
@@ -765,5 +769,12 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'security-type-category' => 'קאַטעגאריע',
 	'security-type-namespace' => 'נאָמענטייל',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'security-type-namespace' => '名字空間',
 );
 

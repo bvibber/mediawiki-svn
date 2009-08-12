@@ -12,3 +12,11 @@ $messages = array();
 $messages['en'] = array(
 	'interlanguage-desc' => 'Grabs interlanguage links from another wiki',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'interlanguage-desc' => 'Haalt intertaalverwijzingen uit een andere wiki',
+);
+

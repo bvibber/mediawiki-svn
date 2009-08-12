@@ -22,12 +22,17 @@ $magicWords['en'] = array(
 	'mediaexif'       => array( 0, 'mediaexif' ),
 );
 
-/**
- * Dutch
- */
+$magicWords['ar'] = array(
+	'mediamime'         => array( '0', 'ميم_الميديا', 'mediamime' ),
+	'mediasize'         => array( '0', 'حجم_الميديا', 'mediasize' ),
+	'mediaheight'       => array( '0', 'ارتفاع_الميديا', 'mediaheight' ),
+	'mediawidth'        => array( '0', 'عرض_الميديا', 'mediawidth' ),
+	'mediadimensions'   => array( '0', 'أبعاد_الميديا', 'mediadimensions' ),
+);
+
 $magicWords['nl'] = array(
-	'mediasize'       => array( 0, 'mediagrootte', 'mediasize' ),
-	'mediaheight'     => array( 0, 'mediahoogte', 'mediaheight' ),
-	'mediawidth'      => array( 0, 'mediabreedte', 'mediawidth' ),
-	'mediadimensions' => array( 0, 'mediaafmetingen', 'mediadimensions' ),
+	'mediasize'         => array( '0', 'mediagrootte', 'mediasize' ),
+	'mediaheight'       => array( '0', 'mediahoogte', 'mediaheight' ),
+	'mediawidth'        => array( '0', 'mediabreedte', 'mediawidth' ),
+	'mediadimensions'   => array( '0', 'mediaafmetingen', 'mediadimensions' ),
 );

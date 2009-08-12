@@ -60,6 +60,13 @@ $messages['dsb'] = array(
 	'clientside-desc' => 'Dawa funkcije za napóranje koda w klientowych formatach ako HTML, CSS a JavaScript',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'clientside-desc' => 'Παρέχει συναρτήσεις για την παραγωγή κώδικα σε φορμά πλευράς client όπως HTML, CSS και JavaScript',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

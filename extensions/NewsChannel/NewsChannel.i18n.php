@@ -153,9 +153,15 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'newschannel' => 'Κανάλι νέων',
+	'newschannel_format' => 'Μορφή:',
 	'newschannel_limit' => 'Όριο:',
+	'newschannel_include_category' => 'Πρόσθετη κατηγορία:',
+	'newschannel_exclude_category' => 'Εξαίρεση κατηγορίας:',
+	'newschannel_submit_button' => 'Δημιουργία ροής',
 );
 
 /** Esperanto (Esperanto)
@@ -617,5 +623,14 @@ $messages['vo'] = array(
 	'newschannel_limit' => 'Mied:',
 	'newschannel_include_category' => 'Klad pluik:',
 	'newschannel_exclude_category' => 'Plödakipön kladi:',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'newschannel' => '新聞頻道',
+	'newschannel_format' => '格式：',
+	'newschannel_limit' => '限制：',
 );
 

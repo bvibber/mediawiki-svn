@@ -999,6 +999,21 @@ $messages['ru'] = array(
 	'right-edituser-exempt' => 'другие не могут редактировать настройки этого участника',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'edituser-desc' => "Pirmetti all'utenti cu li pirmessi nicissari di canciari li prifirenzi di autri utenti",
+	'edituser' => 'Cancia utenti',
+	'edituser-logout' => 'Effettua lu logout',
+	'edituser-username' => 'Nomu:',
+	'edituser-dosearch' => 'Ricerca',
+	'edituser-nouser' => "L'utenti spicificatu nun esisti",
+	'edituser-exempt' => "L'utenti spicificatu nun po èssiri canciatu",
+	'right-edituser' => "Cancia li prifirenzi di l'autri utenti",
+	'right-edituser-exempt' => 'Li sò prifirenzi nun ponu èssiri canciati da autri',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */

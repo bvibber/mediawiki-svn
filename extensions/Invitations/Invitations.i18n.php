@@ -451,6 +451,7 @@ Para xestionar as invitacións para unha característica individual, faga clic n
  */
 $messages['grc'] = array(
 	'invite-logpage' => 'Κατάλογος προσκλήσεων',
+	'invitations-feature-pagetitle' => 'Διαχείρισις προσκλήσεως - $1',
 	'invitations-inviteform-submit' => 'Προσκαλεῖν',
 );
 

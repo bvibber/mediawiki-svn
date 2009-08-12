@@ -95,8 +95,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author Paucabot
  */
 $messages['ca'] = array(
+	'newusermessage-desc' => 'Afegeix un missatge a les discussions dels nous usuaris.',
 	'newuseredit-summary' => "Afegint [[{{int:newusermessage-template}}|missatge de benvinguda]] a la pàgina de discussió de l'usuari",
 );
 

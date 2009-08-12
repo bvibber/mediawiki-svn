@@ -79,6 +79,13 @@ $messages['dsb'] = array(
 	'random-users-avatars-desc' => 'Pśidawa toflicku <tt>&lt;randomuserswithavatars&gt;</tt> za zwobraznjenje pśipadnje wuzwólonych wužywarjow',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'random-users-avatars-title' => 'Γνωρίστε την κοινότητα',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

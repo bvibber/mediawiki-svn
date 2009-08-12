@@ -344,11 +344,23 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Konsnos
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'patrol' => 'Επεξεργασίες περιπολίας',
+	'patrol-endorse' => 'Επικυρώστε',
 	'patrol-revert' => 'Αναίρεση',
 	'patrol-revert-reason' => 'Λόγος:',
+	'patrol-skip' => 'Παράβλεψη',
 	'patrol-reverting' => 'Επαναφορά: $1',
+	'patrol-endorsed-ok' => 'Η επεξεργασία σημάνθηκε ως περιπολημένο.',
+	'patrol-reverted-ok' => 'Η επεξεργασία αναστράφηκε.',
+	'patrol-skipped-ok' => 'Αγνόηση επεξεργασίας.',
+	'patrol-resume' => 'Πατήστε εδώ για συνέχεια.',
+	'group-patroller' => 'Περιπολητές',
+	'group-patroller-member' => 'περιπολητής',
+	'grouppage-patroller' => '{{ns:project}}:Περιπολητής',
+	'right-patroller' => 'Σελίδες περιπολίας',
 );
 
 /** Esperanto (Esperanto)
@@ -418,22 +430,30 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'patrol' => 'Tarkasta muokkauksia',
+	'patrol-desc' => 'Tehostettu liittymä, joka mahdollistaa työtaakan jakamisen.',
 	'patrol-revert' => 'Palauta',
 	'patrol-revert-reason' => 'Syy',
 	'patrol-skip' => 'Ohita',
 	'patrol-reverting' => 'Palautetaan $1',
+	'patrol-nonefound' => 'Ei sopivia muokkauksia, joita voitaisiin tarkistaa.',
+	'patrol-endorsed-ok' => 'Muokkaus merkittiin tarkastetuksi.',
+	'patrol-endorsed-failed' => 'Muokkausta ei voitu merkitä tarkastetuksi.',
 	'patrol-reverted-ok' => 'Muokkaus kumottiin.',
+	'patrol-reverted-failed' => 'Muokkausta ei voitu takaisinpalauttaa.',
 	'patrol-skipped-ok' => 'Ohitetaan muokkaus.',
 	'patrol-reasons' => '* Selvää vandalismia
 * Tulokkaan kokeilu
 * Katso keskustelusivu',
 	'patrol-another' => 'Näytä toinen muokkaus, jos saatavilla.',
+	'patrol-stopped' => 'Olet tehnyt valinnan olla partioimatta lisää muokkauksia. $1',
+	'patrol-resume' => 'Napsauta jatkaaksesi.',
 	'group-patroller' => 'tarkastajat',
 	'group-patroller-member' => 'tarkastaja',
 	'grouppage-patroller' => '{{ns:project}}:Tarkastajat',
@@ -615,9 +635,12 @@ $messages['hil'] = array(
  * @author Suradnik13
  */
 $messages['hr'] = array(
+	'patrol' => 'Patrolirane promjene',
+	'patrol-revert' => 'Ukloni',
+	'patrol-revert-reason' => 'Razlog:',
 	'group-patroller' => 'Patroleri',
 	'group-patroller-member' => 'Patroler',
-	'grouppage-patroller' => '((ns: project)): Patroler',
+	'grouppage-patroller' => '{{ns:project}}:Patroler',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

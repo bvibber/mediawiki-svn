@@ -162,6 +162,17 @@ $messages['bs'] = array(
 	'index-emptylist' => 'Nema stranica povezanih sa "$1"',
 );
 
+/** German (Deutsch)
+ * @author MF-Warburg
+ */
+$messages['de'] = array(
+	'index' => 'Indexsuche',
+	'index-legend' => 'Den Index durchsuchen',
+	'index-search' => 'Suche:',
+	'index-disambig-start' => "'''$1''' steht für:",
+	'index-hide-detail' => 'Seitenliste verstecken',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -205,9 +216,11 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  */
 $messages['fi'] = array(
+	'index-search' => 'Etsi:',
 	'index-submit' => 'Lähetä',
 );
 

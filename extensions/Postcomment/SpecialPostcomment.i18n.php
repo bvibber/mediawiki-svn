@@ -186,11 +186,18 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'postcomment_notloggedin' => 'Δεν έχετε συνδεθεί.',
+	'postcomment_youareloggedinas' => 'Είστε συνδεδεμένος σαν $1',
 	'postcomment_leavemessagefor' => 'Αφήστε ένα μήνυμα για $1',
+	'postcomment_post' => 'Δημοσίευση',
+	'postcomment_on' => 'Μέσα',
+	'postcomment_said' => 'είπε',
 	'postcomment_invalidrequest' => 'Άκυρο αίτημα.',
+	'postcomment_replyto' => 'Απάντηση σε $1',
+	'postcomment_nopostingtoadd' => 'Καμία δημοσίευση για προσθήκη',
 );
 
 /** Esperanto (Esperanto)

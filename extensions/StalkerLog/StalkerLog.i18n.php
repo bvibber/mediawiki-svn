@@ -116,6 +116,8 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'stalkerlog-log-login' => 'συνδέθηκε.',
 	'stalkerlog-log-logout' => 'αποσυνδέθηκε.',
+	'stalkerlog-log-type' => 'Αρχείο πιστοποίησης χρηστών',
+	'stalkerlog-log-text' => 'Αυτό είναι ένα αρχείο συνδέσεων και αποσυνδέσεων.',
 );
 
 /** Esperanto (Esperanto)
@@ -170,6 +172,13 @@ $messages['fr'] = array(
 	'stalkerlog-log-logout' => 'déconnecté.',
 	'stalkerlog-log-type' => 'Journal d’authentification de l’utilisateur',
 	'stalkerlog-log-text' => 'Voici un journal des connections et des déconnections de l’utilisateur.',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'stalkerlog-log-login' => 'Branchiér.',
 );
 
 /** Galician (Galego)

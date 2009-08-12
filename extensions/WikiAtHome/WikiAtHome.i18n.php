@@ -596,3 +596,11 @@ Du kan hjälpa till att konvertera den här videon genom att besöka [[Special:W
 	'wah-loading' => 'laddar gränssnittet för Wiki@Home <blink>...</blink>',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'wah-transcode-working' => '本影片正在處理中，請稍後再試',
+	'wah-loading' => '正在載入Wiki@Home介面<blink>...</blink>',
+);
+

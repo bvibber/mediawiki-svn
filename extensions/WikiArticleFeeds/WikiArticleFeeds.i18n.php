@@ -181,6 +181,14 @@ $messages['lb'] = array(
 	'wikiarticlefeeds-desc' => 'Mécht "Feeds" aus MediaWiki-Säiten',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'wikiarticlefeeds-desc' => 'Прави напојувања изведени од МедијаВики страници',
+	'wikiarticlefeeds_combined_description' => 'Ова е комбинирано напојување, со содржини од неколку напојни извори.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -335,10 +335,11 @@ $messages['lv'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'poem-desc' => 'Додава <tt>&lt;poem&gt;</tt> приврзок за форматирање на стихови',
+	'poem-desc' => 'Додава <tt>&lt;poem&gt;</tt> ознака за форматирање на стихови',
 );
 
 /** Malayalam (മലയാളം)
@@ -451,6 +452,13 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'poem-desc' => 'Хоһооннору суруйарга <tt>&lt;poem&gt;</tt> тиэги эбэр',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'poem-desc' => 'Iunci lu tag <tt>&lt;poem&gt;</tt> pi la furmattazioni di li testa puetici',
 );
 
 /** Slovak (Slovenčina)

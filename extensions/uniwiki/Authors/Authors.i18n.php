@@ -184,6 +184,13 @@ $messages['fr'] = array(
 	'authors_anonymous' => 'Anonyme',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'authors_authors' => 'Ôtors',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

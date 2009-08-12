@@ -1019,6 +1019,7 @@ $messages['sc'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Melos
  * @author Santu
  */
 $messages['scn'] = array(
@@ -1035,6 +1036,7 @@ Pi fàrilu addumanna na chiavi [http://www.flickr.com/services/api/misc.api_keys
 	'importfreeimages_filefromflickr' => "$1 di l'utenti <b>[$2]</b> di flickr. URL urigginali",
 	'importfreeimages_promptuserforfilename' => 'Nzirisci nu nomu pi lu file di distinazzioni:',
 	'importfreeimages_returntoform' => "Oppuru fà clic <a href='$1'>ccà</a> pi turnari a li risurtati di la tò circata",
+	'importfreeimages_nophpflickr' => 'Nun hai installatu phpFlickr, impustari $wgIFphpFlickr no propriu LocalSettings.php.',
 );
 
 /** Slovak (Slovenčina)

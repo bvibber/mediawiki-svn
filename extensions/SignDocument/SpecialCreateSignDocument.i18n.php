@@ -374,6 +374,7 @@ To njedajo se drugi raz cyniś.',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'createsigndocument' => 'Ενεργοποίηση υπογραφής εγγράφων',
 	'createsigndoc-pagename' => 'Σελίδα:',
 	'createsigndoc-allowedgroup' => 'Ομάδα:',
 	'createsigndoc-email' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου:',

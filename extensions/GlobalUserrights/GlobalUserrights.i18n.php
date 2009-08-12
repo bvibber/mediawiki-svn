@@ -431,7 +431,10 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'globaluserrights' => 'Administrarea drepturilor utilizatorilor globali',
 	'gur-rightslog-name' => 'Jurnal drepturi globale',
+	'gur-rightslog-header' => 'Acest jurnal cuprinde modificările drepturilor globale.',
+	'right-userrights-global' => 'Administrează drepturile utilizatorilor globali',
 );
 
 /** Tarandíne (Tarandíne)

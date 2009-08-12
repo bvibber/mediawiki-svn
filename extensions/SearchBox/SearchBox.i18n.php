@@ -541,6 +541,8 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'searchbox-search' => 'پلټل',
+	'searchbox-go' => 'ورځه',
 	'searchbox-namespaces' => 'نوم-تشيالونه:',
 );
 

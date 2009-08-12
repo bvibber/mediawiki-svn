@@ -409,6 +409,13 @@ $messages['ru'] = array(
 	'didyoumean-desc' => 'Добавляет ссылки на страницы с «похожими» названиями',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'didyoumean-desc' => 'Iunci liami a pàggini cu tituli "simili"',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

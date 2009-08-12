@@ -417,6 +417,7 @@ riddler|Riddler',
  * @author Crazymadlover
  * @author K sal 15
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'vote' => 'Ψηφοφορία',
@@ -425,6 +426,9 @@ $messages['el'] = array(
 	'vote-current' => "Η τρέχουσα ψήφος σας είναι για '''$1'''.",
 	'vote-legend' => 'Τοποθετήστε ή τροποποιήστε την ψήφο σας',
 	'vote-caption' => 'Η επιλογή σας:',
+	'vote-choices' => 'τζόκερ|Ο Τζόκερ
+πιγκουίνος|Ο Πιγκουίνος
+γρίφος|Γρίφος',
 	'vote-submit' => 'Ψηφοφορία',
 	'vote-registered' => 'Η ψήφος σας έχει προσμετρηθεί.',
 	'vote-view-results' => 'Δείτε τα αποτελέσματα',
@@ -618,6 +622,14 @@ sphinx|Sphinx',
 	'right-voteadmin' => 'Voir les résultats du vote',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'vote-results-choice' => 'Ch.ouèx',
+	'vote-results-count' => 'Vouèx',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */
@@ -650,6 +662,19 @@ riddler|Riddler',
 	'vote-invalid-choice' => 'Ten que escoller unha das opcións dispoñíbeis.',
 	'right-vote' => 'Votar',
 	'right-voteadmin' => 'Ver os resultados dunha votación',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'vote' => 'Ψηφίζειν',
+	'vote-choices' => 'γελωτοποιός|Ὁ Γελωτοποιός
+σφηνίσκος|Ὁ Σφηνίσκος
+γρῖφος|Γρῖφος',
+	'vote-submit' => 'Ψηφίζειν',
+	'vote-results-count' => 'Καταμετρεῖν',
+	'right-vote' => 'Ψηφίζειν',
 );
 
 /** Swiss German (Alemannisch)

@@ -397,9 +397,12 @@ Pšosym cakaj, až eksistěrujuca akcija jo se skóńcyła.',
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'imagetagging-imghistory' => 'Ιστορικό',
+	'imagetagging-tag-button' => 'Ετικέτα',
+	'imagetagging-tagcancel-button' => 'Ακύρωση',
 );
 
 /** Esperanto (Esperanto)
@@ -593,6 +596,7 @@ $messages['grc'] = array(
 	'imagetagging-article' => 'Δέλτος:',
 	'imagetagging-imghistory' => 'Αἱ προτέραι',
 	'imagetagging-images' => 'εἰκόνες',
+	'imagetagging-tag-button' => 'Προσάρτημα',
 	'imagetagging-tagcancel-button' => 'Ἀκυροῦν',
 );
 

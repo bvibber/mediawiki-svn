@@ -1341,6 +1341,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'importusers' => "Utinde ca 'mbortane",
+	'importusers-desc' => "[[Special:ImportUsers|'Mborte utinde]] in masse da 'nu file CSV; codifiche: UTF-8",
 	'importusers-uploadfile' => "Careche 'u file",
 	'importusers-form-caption' => 'File de input CSV (UTF-8)',
 	'importusers-form-file' => "Ause 'u formate d'u file (CSV):",
@@ -1349,6 +1350,8 @@ $messages['roa-tara'] = array(
 	'importusers-user-added' => "Utende '''$1''' ha state aggiunde.",
 	'importusers-user-present-update' => "Utende '''$1''' esiste ggià. Aggiorne.",
 	'importusers-user-present-not-update' => "Utende '''$1''' esiste ggià. Non g'ù puè aggiornà.",
+	'importusers-user-invalid-format' => "'U date utinde jndr'à linèe #$1 tène 'nu formate invalide o jè vianghe.
+Zumbate.",
 	'importusers-log' => "Archivije de l'utinde ca 'mbortane",
 	'importusers-log-summary' => 'Riepileghe',
 	'importusers-log-summary-all' => 'Tutte',
@@ -1358,6 +1361,7 @@ $messages['roa-tara'] = array(
 	'importusers-password' => 'password',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'nome vere',
+	'right-import_users' => "'Mborte utinde in masse",
 );
 
 /** Russian (Русский)

@@ -123,6 +123,13 @@ Nalistujo wšykne boki w kategoriji "$1" a wšykne pódkategorije kategorije "$1
 	'autocreatecategorypages-editor' => 'Awtomatiske napóranje kategorijow',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'autocreatecategorypages-editor' => 'Αυτόματος δημιουργός κατηγοριών',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

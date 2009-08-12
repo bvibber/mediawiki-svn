@@ -123,10 +123,15 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'contrib-tracking-error' => 'Error',
+	'contrib-tracking-error-text' => 'Enviament de formulari no vàlid',
+	'contrib-tracking-submitting' => 'Enviant al processador de pagaments...',
+	'contrib-tracking-continue' => 'Si no sou automàticament redirigit, clicau el botó per completar la vostra donació a PayPal.',
+	'contrib-tracking-button' => 'Continua',
 );
 
 /** Czech (Česky)

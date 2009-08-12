@@ -1129,6 +1129,18 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
 	'group-manager-member' => 'Gestionnaire',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'mywhitelistpages' => 'Mas pâges',
+	'whitelisttablemodify' => 'Changiér',
+	'whitelisttablemodifyall' => 'Tot',
+	'whitelisttablemodifynone' => 'Nion',
+	'whitelisttableedit' => 'Changiér',
+	'whitelisttableview' => 'Fâre vêre',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -1227,6 +1239,7 @@ $messages['got'] = array(
  */
 $messages['grc'] = array(
 	'mywhitelistpages' => 'Αἱ δέλτοι μου',
+	'whitelisttablemodify' => 'Τροποποιεῖν',
 	'whitelisttablemodifyall' => 'Ἅπασαι',
 	'whitelisttablemodifynone' => 'Οὐδέν',
 	'whitelisttableedit' => 'Μεταγράφειν',
@@ -3332,6 +3345,15 @@ $messages['zh-hans'] = array(
 	'group-restricted-member' => '受限用户',
 	'group-manager' => '管理员',
 	'group-manager-member' => '管理员',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'whitelisttableedit' => '編輯',
+	'whitelisttableview' => '檢視',
+	'whitelistnewtableprocess' => '處理',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

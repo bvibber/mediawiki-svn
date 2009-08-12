@@ -333,6 +333,14 @@ Désirez-vous modifier la page existante ?',
 	'createpage-badtitle' => '« $1 » ne peut pas être utilisé comme nom de page',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'createpage' => 'Fâre una pâge',
+	'createpage_submitbutton' => 'Sometre',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -539,11 +547,12 @@ $messages['lzh'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'createpage' => 'Создади страница',
-	'createpage-desc' => 'Додава [[Special:CreatePage|специјална страница]] за креирање на нови страници',
+	'createpage-desc' => 'Додава [[Special:CreatePage|специјална страница]] за создавање на нови страници',
 	'createpage_submitbutton' => 'Потврди',
 	'createpage_instructions' => 'Внесете наслов на страницата која сакате да ја креирате:',
 	'createpage_entertitle' => 'Внесете наслов на вашата страница.',
@@ -708,6 +717,22 @@ Doriţi să modificaţi pagina existentă?',
 	'createpage_tryagain' => 'Nu. Doresc să creez o pagină nouă cu un titlu diferit.',
 	'createpage_editexisting' => 'Da. Doresc să contribui la pagina existentă.',
 	'createpage-badtitle' => '"$1" nu poate fi folosit drept titlu',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'createpage' => "Ccreje 'na vôsce",
+	'createpage-desc' => "Aggiunge 'na [[Special:CreatePage|pàgena speciale]] pe ccrejà le pàggene nuève",
+	'createpage_submitbutton' => 'Conferme',
+	'createpage_instructions' => "Mitte 'u titele d'a pàgene ca vuè ccù ccreje:",
+	'createpage_entertitle' => "Pe piacere mitte 'u titele pà pàgena toje.",
+	'createpage_titleexists' => "'Na pàgene cu 'u titele [[$1]] già esiste.
+No è ca vuè ccù cange 'a pàgena esistende?",
+	'createpage_tryagain' => "None, Ije vogghie ccù ccreje 'na pàgena nove cu 'nu titele diverse.",
+	'createpage_editexisting' => "Sine. Ije vogghie ccù condrebbuische a 'a pàgene esistende.",
+	'createpage-badtitle' => '"$1" non ge pò essere ausate cumme titele de \'na pàgene',
 );
 
 /** Russian (Русский)

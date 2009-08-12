@@ -124,6 +124,26 @@ $messages['avk'] = array(
 	'restriction-level-author' => 'Sutesikafa nendara',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'authorprotect' => 'Səhifənin qeyri-müəlliflərdən mühafizəsi',
+	'authorprotect-desc' => 'Müəllifə səhifəni digər istifadəçilərin redaktəsindən mühafizə etmək imkanı verir',
+	'authorprotect-notauthor' => 'Siz bu səhifənin müəllifi deyilsiniz',
+	'authorprotect-confirm' => 'Mühafizə səviyyələrini dəyişdir',
+	'authorprotect-edit' => 'Yalnız müəlliflər redaktə edə bilərlər',
+	'authorprotect-move' => 'Yalnız müəlliflər adını dəyişdirə bilərlər',
+	'authorprotect-expiry' => 'Mühafizə müddəti',
+	'authorprotect-reason' => 'Səbəb',
+	'authorprotect-intro' => 'Səhifəni onun müəllifi olmayan istifadəçilərin redaktələrindən mühafizə etmək üçün bu formadan istifadə edin',
+	'authorprotect-success' => 'Mühafizə olundu!',
+	'authorprotect-failure' => 'Mühafizə etmək mümkün deyil',
+	'protect-level-author' => 'Qeyri-müəlliflərdən mühafizə',
+	'restriction-level-author' => 'Müəllif mühafizəsi',
+	'right-authorprotect' => 'Müəllif səhifələrinin mühafizəsi',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -255,8 +275,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'authorprotect-expiry' => 'Χρόνος λήξης',
 	'authorprotect-reason' => 'Λόγος',
 );
 

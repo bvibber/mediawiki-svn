@@ -49,6 +49,14 @@ $messages['ca'] = array(
 	'usabilityinitiative-desc' => "Funcions desenvolupades per la ''Wikipedia Usability Initiative'' per millorar la usabilitat del Mediawiki",
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'usabilityinitiative' => 'Initiativet til brugervenlighed',
+	'usabilityinitiative-desc' => 'Funktioner udviklet af Wikipedia-initiativet til at forbedre MediaWikis brugervenlighed',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -238,6 +246,14 @@ $messages['lb'] = array(
 $messages['lt'] = array(
 	'usabilityinitiative' => 'Naudojimo iniciatyva',
 	'usabilityinitiative-desc' => 'Priedai, rengiami Wikipedia Naudojimo Iniciatyvos, siekiant padidinti MediaWiki naudojimą.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'usabilityinitiative' => 'Иницијатива за употребливост',
+	'usabilityinitiative-desc' => 'Алатки и можности изработени од Иницијативата за употребливост на Википедија со цел да се подобри употребливоста на МедијаВики',
 );
 
 /** Nedersaksisch (Nedersaksisch)

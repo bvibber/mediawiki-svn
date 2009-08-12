@@ -86,6 +86,14 @@ $messages['dsb'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Specialny bok]], kótaryž póra pśipadny kórjenjowy bok',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'randomrootpage' => 'Τυχαία σελίδα ρίζα',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Ειδική σελίδα]] η οποία εξάγει τυχαία σελίδα ρίζα',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

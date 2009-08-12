@@ -193,10 +193,17 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'profiling' => 'Δεδομένα προφίλ',
+	'profiling-process' => 'Πρόοδος σειρών:',
 	'profiling-ok' => 'Εντάξει',
+	'profiling-data-process' => 'Διαδικασία',
 	'profiling-data-count' => 'Καταμέτρηση',
+	'profiling-data-time' => 'Χρόνος (όλα)',
+	'profiling-data-average' => 'Χρόνος (μ.ο.)',
 );
 
 /** Esperanto (Esperanto)
@@ -239,12 +246,14 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'profiling' => 'Profilointitiedot',
 	'profiling-wildcard' => 'Käytä jokerimerkkiä',
 	'profiling-ok' => 'OK',
+	'profiling-data-process' => 'Prosessi',
 	'profiling-data-count' => 'Määrä',
 	'profiling-data-time' => 'Aika (kaikki)',
 	'profiling-data-average' => 'Aika (keskiarvo)',

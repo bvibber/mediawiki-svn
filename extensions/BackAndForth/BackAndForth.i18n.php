@@ -96,6 +96,14 @@ $messages['avk'] = array(
 	'backforth-prev' => 'Abdif ($1)',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'backforth-next' => 'Sonrakı ($1)',
+	'backforth-prev' => 'Əvvəlki ($1)',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -519,11 +527,12 @@ $messages['mg'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'backforth-next' => 'Следна ($1)',
-	'backforth-desc' => 'Додава "Следна" и "Претходна" врски на врвот од азбучниот индекс',
+	'backforth-desc' => 'Додава врски „Следна“ и „Претходна“ на врвот од азбучниот индекс',
 	'backforth-prev' => 'Претходна ($1)',
 );
 

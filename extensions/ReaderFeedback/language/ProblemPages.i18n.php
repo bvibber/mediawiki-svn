@@ -110,6 +110,14 @@ $messages['dsb'] = array(
 	'problempages-graphs' => 'Daty pógódnośenja',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'problempages' => 'Ανεπαρκώς αποτιμημένες σελίδες',
+	'problempages-graphs' => 'δεδομένα βαθμολόγησης',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

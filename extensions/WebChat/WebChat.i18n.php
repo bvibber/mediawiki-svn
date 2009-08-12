@@ -39,6 +39,19 @@ $messages['af'] = array(
 	'right-webchat' => 'Maak dit moontlik om [[Special:WebChat|webchat]] te gebruik',
 );
 
+/** Arabic (العربية)
+ * @author Orango
+ */
+$messages['ar'] = array(
+	'webchat' => 'دردشة وب',
+	'webchat-desc' => 'يضيف [[Special:WebChat|صفحة خاصة]] تستخدم للدردشة في الوقت الحقيقي مع مستخدمي الويكي الآخرين',
+	'webchat-header' => 'هذه الصفحة الخاصة تسمح لك بالتعاون في الوقت الحقيقي مع المستخدمين الآخرين للويكي.
+للتوصيل ببساطة اضغط زر "توصيل".
+لو أنك مسجل الدخول لقبك سيتم ملؤه مسبقا.
+المستخدمون المجهولون يعطون لقبا مولدا تلقائيا، لكن يمكن تغييره.',
+	'right-webchat' => 'السماح باستخذام [[Special:WebChat|دردشة الوب]]',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

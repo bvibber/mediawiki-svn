@@ -171,6 +171,13 @@ $messages['fr'] = array(
 	'catboxattop-categories' => 'Catégories',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'catboxattop-categories' => 'Catègories',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

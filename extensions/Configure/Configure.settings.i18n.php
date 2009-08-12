@@ -1153,6 +1153,7 @@ $messages['an'] = array(
  * @author Alnokta
  * @author Ciphers
  * @author Meno25
+ * @author Orango
  * @author OsamaK
  * @author Ouda
  */
@@ -1187,16 +1188,25 @@ $messages['ar'] = array(
 	'configure-setting-wgMediaHandlers' => 'الإضافات للتعامل مع أنواع ملفات الميديا',
 	'configure-setting-wgMediaHandlers-key' => 'MIME النوع',
 	'configure-setting-wgMediaHandlers-value' => 'رتبة المعالج',
+	'configure-setting-wgThumbnailScriptPath' => 'المسار إلى thumb.php لصنع تصغير على السريع بدلا من التحليل',
+	'configure-setting-wgThumbUpright' => 'عرض عامل التعديل لإستقامة المصغرات',
 	'configure-setting-wgShowEXIF' => 'اعرض بيانات EXIF في صفحات وصف الملفات',
 	'configure-setting-wgThumbLimits' => 'أحجام تصغير الصور المسموح بها',
+	'configure-setting-wgUseImageResize' => 'تمكين جانب خادم تعديل أبعاد الصورة الديناميكي',
 	'configure-setting-wgTrustedMediaFormats' => "أنواع الوسائط وأنواع MIME التي تعتبر 'آمنة'",
+	'configure-setting-wgTiffThumbnailType' => 'ملف الامتداد و صغية MIME تستخدمان لتحويل الصورة بصيغة TIFF إلى',
 	'configure-setting-wgMainCacheType' => 'نوع نظام الاختزان الرئيسي',
+	'configure-setting-wgCacheEpoch' => 'وقت إبطال الذاكرة المخبئة (الكاش)',
 	'configure-setting-wgCachePages' => 'اسمح باختزان الصفحات من جهة العميل',
 	'configure-setting-wgFileCacheDirectory' => 'مجلد اختزان الملفات',
+	'configure-setting-wgForcedRawSMaxage' => 'العمر الأقصى الإفتراضي لخام صلاحية لغة التنسيق/الجافاسكربت',
 	'configure-setting-wgQueryCacheLimit' => "عدد الصفوف التي تختزن في جدول 'querycache'",
+	'configure-setting-wgRevisionCacheExpiry' => 'الانتهاء من التخزين المؤقت لمراجعة النص (أو 0 للتعطيل)',
+	'configure-setting-wgThumbnailEpoch' => 'وقت تحديث المصغرات',
 	'configure-setting-wgUseFileCache' => 'إستخدم كاش الملف',
 	'configure-setting-wgUseGzip' => 'GZIP إستخدم ترميز',
 	'configure-setting-wgAllowDisplayTitle' => 'اسمح باستخدام <nowiki>{{DISPLAYTITLE}}</nowiki>',
+	'configure-setting-wgAllowExternalImages' => 'إسمح لتحويل الرابط الساخن للملف',
 	'configure-setting-wgEnableImageWhitelist' => 'مكّن استخدام "MediaWiki:External file whitelist"',
 	'configure-setting-wgParserConf' => 'ضبط المحلل',
 	'configure-setting-wgParserCacheExpireTime' => 'زمن انتهاء كاش المحلل',
@@ -2456,6 +2466,7 @@ $messages['cs'] = array(
  * @author Als-Holder
  * @author ChrisiPK
  * @author IAlex
+ * @author MF-Warburg
  * @author Purodha
  * @author Umherirrender
  */
@@ -2674,6 +2685,7 @@ $messages['de'] = array(
 	'configure-setting-wgMiserMode' => 'Einige leistungshungrige Funktionen deaktivieren',
 	'configure-setting-wgShowHostnames' => 'Hostnamen über API und HTML-Kommentare angeben',
 	'configure-setting-wgUseDumbLinkUpdate' => '<code>DELETE</code>/<code>INSERT</code> für Linkaktualisierungen verwenden, anstelle von inkrementell',
+	'configure-setting-wgCacheVaryCookies' => 'Liste von Cookies, die den Cache verändern',
 	'configure-setting-wgCookieDomain' => 'Bestimmte Domain für Login-Cookies',
 	'configure-setting-wgCookieExpiration' => 'Lebensdauer von HTTP-Cookies',
 	'configure-setting-wgCookieHttpOnly' => 'Authentifizierungs-Cookies auf httpOnly setzen',
@@ -3027,15 +3039,47 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
+ * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'configure-setting-wgSitename' => 'Ονομασία ιστοτόπου',
+	'configure-setting-wgActionPaths-key' => 'Ενέργεια',
+	'configure-setting-wgActionPaths-value' => 'Πρότυπο URL',
 	'configure-setting-wgDBtype' => 'Τύπος δεδομένων για χρήση',
+	'configure-setting-wgSharedTables' => 'Πίνακες προς κοινή χρήση',
+	'configure-setting-wgAllowImageMoving' => 'Ενεργοποίηση αλλαγής ονόματος αρχείων.',
+	'configure-setting-wgMediaHandlers-key' => 'Τύπος MIME',
+	'configure-setting-wgUseFileCache' => 'Χρησιμοποίηση του αρχείου λανθάνουσας μνήμης',
+	'configure-setting-wgUseGzip' => 'Χρησιμοποίηση κωδικοποίησης GZIP',
+	'configure-setting-wgLanguageCode' => 'Κωδικός γλώσσας ιστοτόπου',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Τίτλος σελίδας',
+	'configure-setting-wgArticleRobotPolicies-value' => 'Πολιτική Ρομπότ',
+	'configure-setting-wgExtraLanguageNames-key' => 'Κωδικός γλώσσας',
+	'configure-setting-wgExtraLanguageNames-value' => 'Όνομα',
 	'configure-setting-wgExtraSubtitle' => 'Υπότιτλος (εμφανίζεται κάτω από κάθε τίτλο σελίδας)',
 	'configure-setting-wgMaxArticleSize' => 'Μέγιστο μέγεθος σελίδας (kB)',
+	'configure-setting-wgSiteNotice' => 'Σημειωματάριο Ιστοτόπου',
+	'configure-setting-wgUseExternalEditor' => 'Επιτρέψτε τη χρήση εξωτερικού επεξεργαστή',
+	'configure-setting-wgCheckFileExtensions' => 'Έλεγχος επεκτάσεων αρχείου',
+	'configure-setting-wgEnableUploads' => 'Ενεργοποίηση φορτώσεων',
+	'configure-setting-wgVersion' => 'Έκδοση MediaWiki',
+	'configure-setting-wgLogHeaders' => 'Περιγραφές αρχείων',
+	'configure-setting-wgLogNames' => 'Ονόματα αρχείων',
+	'configure-setting-wgLogRestrictions' => 'Περιορισμοί προσβασης αρχείων',
+	'configure-setting-wgLogRestrictions-key' => 'Τύπος αρχείου',
+	'configure-setting-wgLogTypes' => 'Τύποι αρχείων',
+	'configure-setting-wgSpecialPageGroups' => 'Ομάδες ειδικών σελίδων',
+	'configure-setting-wgSpecialPageGroups-key' => 'Ομάδα',
 	'configure-setting-wgAutopromote-value' => 'Συνθήκες',
+	'configure-setting-wgAllowPageInfo' => 'Επιτρέψτε τη δράση πληροφοριών',
+	'configure-setting-wgDisabledActions' => 'Απενεργοποιήθηκαν οι ενέργειες σελίδας',
+	'configure-setting-wgEnableAPI' => 'Ενεργοποίηση API',
 	'configure-setting-wgDebugLogGroups-value' => 'Αρχείο',
+	'configure-setting-wgDisableQueryPageUpdate' => 'Απενεργοποιήθηκαν οι ειδικές σελίδες',
+	'configure-setting-wgDisableSearchUpdate' => 'Απενεργοποίηση ενημερώσεων στην αναζήτηση',
+	'configure-setting-wgXhtmlNamespaces-key' => 'Περιοχή ονομάτων',
 );
 
 /** Esperanto (Esperanto)
@@ -5504,7 +5548,12 @@ $messages['he'] = array(
 	'configure-setting-wgDebugLogGroups-key' => 'קבוצת רישום',
 	'configure-setting-wgDebugLogGroups-value' => 'קובץ',
 	'configure-setting-wgShowSQLErrors' => 'הצגת דפי שגיאה של מסד הנתונים',
+	'configure-setting-wgStatsMethod' => 'היעד עבור נתוני wfIncrStats()',
 	'configure-setting-wgUpdateRowsPerJob' => 'מספר שורות לעדכון בכל משימה',
+	'configure-setting-wgDisableQueryPageUpdate' => 'דפים מיוחדים מנוטרלים',
+	'configure-setting-wgDisableSearchUpdate' => 'ביטול עדכונים לחיפוש',
+	'configure-setting-wgFixDoubleRedirects' => 'תיקון הפניות כפולות לאחר העברת עמוד',
+	'configure-setting-wgExtensionFunctions' => 'פונקציות ההרחבה',
 	'configure-setting-wgValidSkinNames-key' => 'שם פנימי',
 	'configure-setting-wgValidSkinNames-value' => 'שם לתצוגה',
 	'configure-setting-wgExtraNamespaces-key' => 'מספר מרחב השם',
@@ -5513,10 +5562,23 @@ $messages['he'] = array(
 	'configure-setting-wgNamespaceProtection' => 'הגנת מרחב שם',
 	'configure-setting-wgNamespaceRobotPolicies-value' => 'מדיניות הרובוטים',
 	'configure-setting-wgNamespacesWithSubpages' => 'מרחבי שם עם דפי משנה',
+	'configure-setting-wgUseCategoryBrowser' => 'הפעלת סייר הקטגוריות',
+	'configure-setting-wgCopyrightIcon' => 'ה־HTML עבור סמל זכויות היוצרים',
 	'configure-setting-wgRightsIcon' => 'סמל זכויות היוצרים',
+	'configure-setting-wgRightsText' => 'הטקסט המתאר את רישיון האתר',
+	'configure-setting-wgRightsUrl' => 'הכתובת המתארת את רישיון האתר',
+	'configure-setting-wgActiveUserDays' => 'הזמן שלאחריו המשתמש נחשב לבלתי פעיל',
 	'configure-setting-wgAllowRealName' => 'מתן אפשרות לשימוש בשמות אמיתיים',
+	'configure-setting-wgAllowUserSkin' => 'מתן האפשרות לשינוי העיצוב על ידי המשתמשים',
 	'configure-setting-wgDefaultUserOptions' => 'העדפות ברירת המחדל למשתמשים',
 	'configure-setting-wgHiddenPrefs' => 'העדפות משתמשים חסומות',
+	'configure-setting-wgInvalidUsernameCharacters' => 'התווים מהם יש להמנע במהלך יצירת חשבונות חדשים',
+	'configure-setting-wgUserrightsInterwikiDelimiter' => 'התו המשמש כמפריד בעת בדיקת זכויות משתמש עבור בינוויקי',
+	'configure-setting-wgMaxNameChars' => 'מספר הבתים המירבי בשם המשתמש',
+	'configure-setting-wgMinimalPasswordLength' => 'אורך הסיסמה המינימאלי',
+	'configure-setting-wgShowIPinHeader' => 'הצגת כתובת ה־IP בסרגל המשתמש',
+	'configure-setting-wgCompressRevisions' => 'דחיסת גרסאות ישנות במידת האפשר',
+	'configure-setting-wgEnableHtmlDiff' => 'שימוש בהשוואת שינויים חזותית (HTML)',
 	'configure-setting-wgExternalDiffEngine' => 'מנוע שינויים חיצוני',
 	'configure-setting-wgInterwikiScopes' => 'טווחי בינוויקי',
 	'configure-setting-wgLocalInterwiki' => 'קידומת בינוויקי מקומית',
@@ -5547,6 +5609,22 @@ $messages['he'] = array(
 	'configure-setting-wgSharpenParameter' => 'פרמטר החדות ל־ImageMagick',
 	'configure-setting-wgUseImageMagick' => 'שימוש ב־ImageMagick',
 	'configure-setting-wgDjvuDump' => 'הנתיב אל קובץ ההפעלה של djvudump',
+	'configure-setting-wgUseTeX' => 'הפעלת TeX',
+	'configure-setting-wgXMLMimeTypes-key' => 'סוג MIME',
+	'configure-setting-wgXhtmlNamespaces' => 'מרחבי שם XHTML אחרים',
+	'configure-setting-wgXhtmlNamespaces-key' => 'מרחב שם',
+	'configure-setting-wgZhdaemonHost' => 'מארח ZhDaemon',
+	'configure-setting-wgZhdaemonPort' => 'פתחת ZhDaemon',
+	'configure-setting-wgLocaltimezone' => 'אזור הזמן המקומי',
+	'configure-setting-wgAllowUserCss' => 'מתן האפשרות לשימוש בדפי גליונות סגנון מדורגים (CSS)',
+	'configure-setting-wgUseAjax' => 'הפעלת AJAX',
+	'configure-setting-wgMimeTypeBlacklist' => 'סוגי MIME שאינם מורשים',
+	'configure-setting-wgDirectoryMode' => 'מצבי תיקייה חדשים',
+	'configure-setting-wgFavicon' => 'כתובת סמל המועדפים של האתר',
+	'configure-setting-wgLogo' => 'כתובת לוגו האתר',
+	'configure-setting-wgScript' => 'הכתובת של index.php',
+	'configure-setting-wgStylePath' => 'הכתובת של תיקיית ערכות העיצוב',
+	'configure-setting-wgRCLinkDays' => 'מגבלת הימים שיוצגו ברשימת השינויים האחרונים',
 );
 
 /** Croatian (Hrvatski)
@@ -5617,6 +5695,47 @@ $messages['hsb'] = array(
 	'configure-setting-wgXhtmlNamespaces-key' => 'Mjenowy rum',
 	'configure-setting-wgLocaltimezone' => 'Lokalne časowe pasmo',
 	'configure-setting-wgUseAjax' => 'AJAX zmóžnić',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'configure-setting-wgSitename' => 'Az oldal neve',
+	'configure-setting-wgActionPaths' => 'Műveletekhez tartozó URL-ek',
+	'configure-setting-wgActionPaths-key' => 'Művelet',
+	'configure-setting-wgActionPaths-value' => 'URL-sablon',
+	'configure-setting-wgCheckDBSchema' => 'Az adatbázis frissességének ellenőrzése minden lapmegtekintéskor (már nem használt)',
+	'configure-setting-wgDBerrorLog' => 'Adatbázishibák naplózása a következő fájlba',
+	'configure-setting-wgDBname' => 'A használt adatbázis neve',
+	'configure-setting-wgDBpassword' => '$wgDBuser-hez tartozó jelszó',
+	'configure-setting-wgDBport' => 'Az adatbázisszerver portszáma',
+	'configure-setting-wgDBserver' => 'Az adatbázisszerver hosztneve vagy IP-címe',
+	'configure-setting-wgDBtype' => 'A használt adatbázis típusa',
+	'configure-setting-wgDBuser' => 'A adatbázisba való bejelentkezéshez használt felhasználónév',
+	'configure-setting-wgLocalDatabases' => 'Más adatbázisok, melyeket kezelni lehet erről a szerverről',
+	'configure-setting-wgSearchType' => 'A használt adatbáziskereső típusa. Adj meg egy osztálynevet saját keresőmotor használatához',
+	'configure-setting-wgSharedDB' => 'Megosztott adatbázis neve',
+	'configure-setting-wgSharedPrefix' => 'Megosztott adatbázis előtagja',
+	'configure-setting-wgSharedTables' => 'Megosztott táblák',
+	'configure-setting-wgAllowImageMoving' => 'Fájlok átnevezésének engedélyezése',
+	'configure-setting-wgCustomConvertCommand' => 'Alternatív képátméretező',
+	'configure-setting-wgGenerateThumbnailOnParse' => 'Bélyegképek elkészítése, ha az őket tartalmazó lapok elemezve vannak',
+	'configure-setting-wgIgnoreImageErrors' => 'Ne jelenjenek meg a képekkel kapcsolatos hibaüzenetek',
+	'configure-setting-wgImageLimits' => 'Képek maximális mérete a leírólapokon',
+	'configure-setting-wgMaxAnimatedGifArea' => 'Animált GIF-ek maximális területe, képpontban',
+	'configure-setting-wgMaxImageArea' => 'Képek maximális területe, képpontban',
+	'configure-setting-wgMediaHandlers' => 'Média-fájltípusok kezelésére használt kiterjesztések',
+	'configure-setting-wgMediaHandlers-key' => 'MIME-típus',
+	'configure-setting-wgMediaHandlers-value' => 'Kezelőosztály',
+	'configure-setting-wgShowEXIF' => 'EXIF-adatok megjelenítése a fájlok leírólapján',
+	'configure-setting-wgThumbLimits' => 'Engedélyezett bélyegképméretek',
+	'configure-setting-wgUseImageResize' => 'Dinamikus, szerveroldali képátméretezés engedélyezése',
+	'configure-setting-wgTrustedMediaFormats' => 'Média- és MIME-típusok, melyek biztonságosak',
+	'configure-setting-wgTiffThumbnailType' => 'A TIFF-képek átalakításánál használt fájlkiterjesztés és MIME-típus',
+	'configure-setting-wgMainCacheType' => 'Az elsődleges gyorsítótár-rendszer típusa',
+	'configure-setting-wgCacheEpoch' => 'A gyorsítótár érvénytelenülésének ideje',
+	'configure-setting-wgCachePages' => 'Oldalak kliensoldali gyorsítótárazásának engedélyezése',
 );
 
 /** Interlingua (Interlingua)
@@ -6785,10 +6904,12 @@ $messages['km'] = array(
 	'configure-setting-wgDBserver' => 'ឈ្មោះ​ម៉ាស៊ីន ឬ អាសយដ្ឋាន IP នៃ​ម៉ាស៊ីនបម្រើ​មូលដ្ឋានទិន្នន័យ',
 	'configure-setting-wgDBtype' => 'ប្រភេទ​មូលដ្ឋានទិន្នន័យ​ដែល​ត្រូវ​ប្រើ',
 	'configure-setting-wgMediaHandlers-key' => 'ប្រភេទ MIME',
+	'configure-setting-wgShowEXIF' => 'បង្ហាញ​ទិន្នន័យ​ EXIF នៅ​លើ​ទំព័រ​បរិយាយ​ឯកសារ​',
 	'configure-setting-wgLanguageCode' => 'កូដភាសាតំបន់​',
 	'configure-setting-wgTranslateNumerals' => 'ចំនួន​ពាក្យ​សរសេរ​អក្សរ​ភាសាផ្សេង',
 	'configure-setting-wgArticleRobotPolicies-key' => 'ចំណងជើង​ទំព័រ',
 	'configure-setting-wgArticleRobotPolicies-value' => 'គោលការណ៍​រូបយន្ត​',
+	'configure-setting-wgDefaultRobotPolicy' => 'គោលការណ៍​រូបយន្ត​លំនាំ​ដើម​',
 	'configure-setting-wgExtraLanguageNames-key' => 'កូដ​ភាសា',
 	'configure-setting-wgExtraLanguageNames-value' => 'ឈ្មោះ',
 	'configure-setting-wgMaxArticleSize' => 'ទំហំ​ទំព័រ​អតិបរមារ (គីឡូបៃ)',
@@ -6820,10 +6941,12 @@ $messages['km'] = array(
 	'configure-setting-wgDBprefix' => 'បុព្វបទ​នៃ​តារាង​',
 	'configure-setting-wgDBtransactions' => 'ប្រើប្រាស់​តារាង​ InnoDB',
 	'configure-setting-wgDBservers' => 'ម៉ាស៊ីន​បម្រើ​ទិន្នន័យ',
+	'configure-setting-wgAntivirus' => 'ឈ្មោះ​ខាង​ក្នុង​នៃ​កម្មវិធី​ស្កេន​ virus',
 	'configure-setting-wgSVGConverter' => 'កម្មវិធីបម្លែង SVG',
 	'configure-setting-wgSVGConverterPath' => 'ផ្លូវ​នៃ​កម្មវិធីបម្លែង SVG',
 	'configure-setting-wgSVGConverters' => 'កម្មវិធី​បម្លែង​ SVG',
 	'configure-setting-wgSVGConverters-key' => 'ឈ្មោះ​កម្មវិធី​បម្លែង​',
+	'configure-setting-wgUseImageMagick' => 'ប្រើប្រាស់​ ImageMagick',
 	'configure-setting-wgMemCachedServers' => 'ម៉ាស៊ីន​បម្រើ​ Memcached',
 	'configure-setting-wgUseMemCached' => 'ប្រើប្រាស់​ memcached',
 	'configure-setting-wgXMLMimeTypes-key' => 'ប្រភេទ MIME',
@@ -7352,7 +7475,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgMathDirectory' => 'Dä Pahdt för dat Verzeijschneß, woh dem <code lang="en">LaTex-Math</code> sing Bellder dren sen',
 	'configure-setting-wgMathPath' => 'Dä Aanfang vum <i lang="en">URL</i> för dat Verzeijschneß, woh dem <code lang="en">LaTex-Math</code> sing Bellder dren sen',
 	'configure-setting-wgRedirectScript' => 'Dä <i lang="en">URL</i> vum <code lang="en">redirect.php</code>, öm met ahle Versione zosamme ze paße',
-	'configure-setting-wgPhpCli' => 'Dä Name fun dä ußföhrba Datei met dämm <i lang="en">PHP cli client</i> dren, dä mer fun de Kommando-Reih uß oprööf, öm php/php5 Projramme ußzeföhre. Dä heiß fö jewöönlesch <code>php</code> odder <code>php5</code>.',
+	'configure-setting-wgPhpCli' => 'Dä Name fun dä ußföhrba Datei met dämm <i lang="en">php cli client</i> Projramm dren, dä mer fun de Kommando-Reih uß oprööf, öm esu en Projramme ußzeföhre. Dä heiß fö jewöönlesch <code lang="en">php</code> odder <code lang="en">php5</code>.',
 	'configure-setting-wgProto' => 'Dä Vösaz för dä ßööver met verschlößelte Verbendunge',
 	'configure-setting-wgScript' => 'Dä <i lang="en">URL</i> vum <code lang="en">index.php</code>',
 	'configure-setting-wgScriptExtension' => 'Dat Engk, wat schtandattmääßesch aan Skrepte ier Name aanjhange weedt',

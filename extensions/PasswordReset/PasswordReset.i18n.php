@@ -299,6 +299,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'passwordreset' => 'Κωδικός επαναφοράς',
@@ -310,6 +311,8 @@ $messages['el'] = array(
 	'passwordreset-confirmpass' => 'Επιβεβαιώστε τον κωδικό πρόσβασης:',
 	'passwordreset-submit' => 'Επαναφορά κωδικού',
 	'passwordreset-success' => 'Ο κωδικός έχει επαναφερθεί για τον user_id: $1',
+	'passwordreset-accountdisabled' => 'Ο λογαριασμός έχει απενεργοποιηθεί',
+	'disabledusers' => 'Απενεργοποιημένοι χρήστες',
 );
 
 /** Esperanto (Esperanto)

@@ -430,6 +430,16 @@ $messages['ro'] = array(
 	'formatchanges-editedby' => '$1 - modificat de $2 ($3)',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'formatchanges-desc' => 'Reformatte le [[Special:RecentChanges|urteme cangiaminde]]',
+	'formatchanges-anonymous' => 'Anonime',
+	'formatchanges-createdby' => '$1 - ccrejate da $2 ($3)',
+	'formatchanges-editedby' => '$1 - cangiate da $2 ($3)',
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Александр Сигачёв

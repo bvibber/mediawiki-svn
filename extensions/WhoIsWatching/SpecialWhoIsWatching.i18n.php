@@ -478,6 +478,7 @@ $messages['lt'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -486,8 +487,8 @@ $messages['mk'] = array(
 	'specialwhoiswatchingthepage' => 'Кој набљудува %s',
 	'specialwhoiswatchingusage' => 'Оваа специјална страница не може да се користи самостојно.
 За дефинирање на влезна точка кон оваа специјална страница, Ве молиме користете се со оваа страница [[MediaWiki:Number_of_watching_users_pageview|тука]].',
-	'specialwhoiswatchingaddusers' => 'Додади корисници за набљудување на страницата',
-	'specialwhoiswatchingaddbtn' => 'Додади избрани корисници',
+	'specialwhoiswatchingaddusers' => 'Додај корисници за набљудување на страницата',
+	'specialwhoiswatchingaddbtn' => 'Додај избрани корисници',
 );
 
 /** Malayalam (മലയാളം)
@@ -823,6 +824,13 @@ $messages['vo'] = array(
 	'specialwhoiswatchingusage' => 'Pad patik at no dalon pagebön ito. Gebolös padi: [[MediaWiki:Number_of_watching_users_pageview]] ad miedetön nükömapüni lü pad patik at.',
 	'specialwhoiswatchingaddusers' => 'Läükön gebanis ad galädön padi at',
 	'specialwhoiswatchingaddbtn' => 'Läükön gebanis pevälöl',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'specialwhoiswatchingthepage' => '誰正觀看%s',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

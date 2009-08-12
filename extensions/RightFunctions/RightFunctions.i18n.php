@@ -89,6 +89,14 @@ $messages['dsb'] = array(
 	'rightfunctions-ns' => '(ze šćita mjenjowego ruma)',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'rightfunctions-local' => '(από τοπική σελίδα)',
+	'rightfunctions-ns' => '(από την προστασία περιοχής)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

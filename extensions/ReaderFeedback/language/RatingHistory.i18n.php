@@ -314,6 +314,7 @@ Skala: '''[1]''' - Špatny; '''[2]''' - Niski; '''[3]''' - Spokojecy; '''[4]''' 
  * @author Consta
  * @author Crazymadlover
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'ratinghistory' => 'Ιστορικό βαθμολογίας σελίδας',
@@ -324,6 +325,9 @@ $messages['el'] = array(
 	'ratinghistory-3months' => 'τελευταίοι 3 μήνες',
 	'ratinghistory-year' => 'πέρυσι',
 	'ratinghistory-3years' => 'τελευταία 3 έτη',
+	'ratinghistory-ave' => 'Μ.Ο.: $1',
+	'ratinghistory-purge' => 'εκκαθάριση λανθάνουσας μνήμης',
+	'ratinghistory-users' => 'Οι χρήστες που έδωσαν βαθμολογίες',
 	'ratinghistory-graph' => '$2 από "$3" ($1 {{PLURAL:$1|επιθεώρηση|επιθεωρήσεις}})',
 	'readerfeedback-svg' => 'Προβολή ως SVG',
 	'ratinghistory-table-rating' => 'Βαθμολογία',
@@ -1717,6 +1721,12 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'ratinghistory-tab' => '評分',
 	'ratinghistory-link' => '頁面評分',
+	'ratinghistory-month' => '過去一個月',
+	'ratinghistory-3months' => '過去三個月',
+	'ratinghistory-year' => '過去一年',
+	'ratinghistory-3years' => '過去三年',
+	'ratinghistory-ave' => '平均：$1',
 	'readerfeedback-svg' => '以SVG檢視',
+	'ratinghistory-table-rating' => '評分',
 );
 

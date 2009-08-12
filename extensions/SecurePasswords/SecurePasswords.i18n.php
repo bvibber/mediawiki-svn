@@ -149,8 +149,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'securepasswords-digit' => 'περίληψη τουλάχιστον 1 ψηφίου',
 	'securepasswords-word' => 'να μην είναι μία λέξη',
 );
 

@@ -139,6 +139,13 @@ $messages['dsb'] = array(
 	'right-userrights-shared' => 'Zgromadne wužywarske pšawa zastojaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'right-userrights-shared' => 'Διαχείριση κοινών δικαιωμάτων χρηστών',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

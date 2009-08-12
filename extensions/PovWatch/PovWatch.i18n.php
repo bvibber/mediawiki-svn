@@ -290,6 +290,8 @@ $messages['ca'] = array(
 	'povwatch_unknown_subpage' => 'Subpàgina desconeguda.',
 	'povwatch_title' => 'Títol:',
 	'povwatch_added' => 'Afegit',
+	'right-povwatch_admin' => "Administra els drets d'usuari per afegir pàgines a les llistes de seguiment d'altres usuaris",
+	'right-povwatch_user' => "Afegeix pàgines a les llistes de seguiment d'altres usuaris",
 );
 
 /** Danish (Dansk)

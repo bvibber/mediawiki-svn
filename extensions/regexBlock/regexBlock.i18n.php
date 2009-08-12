@@ -590,9 +590,31 @@ Nejskerjej taki wužywaŕ njejo.',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'regexblock' => 'Τακτική έκφραση φραγής',
+	'regexblock-already-blocked' => 'Ο $1 είναι ήδη φραγμένος',
+	'regexblock-block-success' => 'Η φραγή πέτυχε',
+	'regexblockstats' => 'Τακτική έκφραση στατιστικών φραγής',
+	'regexblock-form-username' => 'Διεύθυνση IP ή όνομα χρήστη',
 	'regexblock-form-reason' => 'Λόγος:',
 	'regexblock-form-expiry' => 'Λήξη:',
+	'regexblock-form-match' => 'Ακριβής αντιστοιχία',
+	'regexblock-form-account-block' => 'Φραγή δημιουργίας νέων λογαριασμών',
+	'regexblock-form-submit' => 'Φραγή αυτού του χρήστη',
+	'regexblock-nodata-found' => 'Δεν βρέθηκαν δεδομένα',
+	'regexblock-unblock-success' => 'Η άρση φραγής ολοκληρώθηκε επιτυχώς',
+	'regexblock-view-blocked' => 'Προβολή φραγμένων από:',
+	'regexblock-view-all' => 'Όλα',
+	'regexblock-view-go' => 'Πήγαινε',
+	'regexblock-view-match' => '(ακριβής αντιστοιχία)',
+	'regexblock-view-regex' => '(αντιστοιχία τακτικής έκφρασης)',
+	'regexblock-view-account' => '(φραγή δημιουργίας λογαριασμού)',
 	'regexblock-view-reason' => 'Λόγος: $1',
+	'regexblock-view-reason-default' => 'γενικός λόγος',
+	'regexblock-view-block-infinite' => 'μόνιμη φραγή',
+	'regexblock-view-block-by' => 'φραγμένος από:',
+	'regexblock-view-block-unblock' => 'άρση φραγής',
+	'regexblock-view-stats' => 'στατιστικά',
+	'regexblock-view-time' => 'στις $1',
 );
 
 /** Esperanto (Esperanto)
@@ -665,6 +687,13 @@ Probablemente no existe tal usuario.',
 	'regexblock-view-stats' => 'Estadísticas',
 	'regexblock-view-empty' => 'La lista de nombres y direcciones bloqueadas está vacía',
 	'regexblock-view-time' => 'en $1',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'regexblock-expire-duration' => '1 tund,2 tundi,4 tundi,6 tundi,1 päev,3 päeva,1 nädal,2 nädalat,1 kuu,3 kuud,6 kuud,1 aasta,igavene',
 );
 
 /** Basque (Euskara)
@@ -2653,6 +2682,7 @@ $messages['zh-hant'] = array(
 	'regexblock-form-expiry' => '到期日：',
 	'regexblock-form-submit' => '封禁該名使用者',
 	'regexblock-nodata-found' => '找不到數據',
+	'regexblock-view-reason' => '原因：$1',
 	'regexblock-view-reason-default' => '一般原因',
 	'regexblock-view-block-infinite' => '永久封禁',
 	'regexblock-view-stats' => '（統計）',

@@ -688,6 +688,7 @@ $messages['km'] = array(
 	'deletebatch-or' => '<b>ឬ</b>',
 	'deletebatch-delete' => 'លុបចោល',
 	'deletebatch-page' => 'ទំព័រ​ដែល​ត្រូវ​លុប៖',
+	'deletebatch-processing-from-file' => 'កំពុង​លុប​ទំព័រ​ចេញ​ពី​បញ្ជី​ឯកសារ​',
 	'deletebatch-omitting-invalid' => 'លុប​ទំព័រ​មិនត្រឹមត្រូវ $1 ។',
 	'deletebatch-file-bad-format' => 'ឯកសារ​គួរតែ​ជា​អត្ថបទធម្មតា',
 	'deletebatch-file-missing' => 'មិន​អាច​អាន​ឯកសារ​ដែល​បាន​ផ្ដល់​ឱ្យ',

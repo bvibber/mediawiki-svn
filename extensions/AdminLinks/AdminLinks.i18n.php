@@ -495,6 +495,7 @@ $messages['km'] = array(
 	'adminlinks_editmainpagename' => 'កែសម្រួល​ឈ្មោះ​នៃ​ទំព័រ​ដើម​',
 	'adminlinks_users' => 'អ្នកប្រើប្រាស់',
 	'adminlinks_createuser' => 'បង្កើតអ្នកប្រើប្រាស់',
+	'adminlinks_importexport' => 'កំពុង​នាំ​ចូល ​និងកំពុង​នាំ​ចេញ​',
 );
 
 /** Ripoarisch (Ripoarisch)

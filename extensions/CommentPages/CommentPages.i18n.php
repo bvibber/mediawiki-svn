@@ -45,6 +45,14 @@ $messages['avk'] = array(
 	'nstab-comments' => 'Sebuks',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'commentpages-desc' => 'Əsas adlar fəzası üçün şərh səhifələri',
+	'nstab-comments' => 'İzahat',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

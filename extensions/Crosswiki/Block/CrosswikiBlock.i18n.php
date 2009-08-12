@@ -1978,6 +1978,29 @@ $messages['ru'] = array(
 	'right-crosswikiblock' => 'блокировка и разблокировка участников в других вики',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'crosswikiblock-desc' => 'Pirmetti di bluccari utenti supra autri wiki usannu na [[Special:Crosswikiblock|pàggina spiciali]]',
+	'crosswikiblock' => "Blocca utenti supra n'autra wiki",
+	'crosswikiblock-expiry' => 'Scadenza:',
+	'crosswikiblock-reason' => 'Mutivu dô bloccu:',
+	'crosswikiblock-submit' => "Blocca l'utenti",
+	'crosswikiblock-anononly' => "Blocca sulu l'utenti anònimi (l'utenti riggistrati ca cundivìdinu lu stissu IP nun vèninu bluccati)",
+	'crosswikiblock-nocreate' => 'Mpidisci la criazzioni di àutri account',
+	'crosswikiunblock-user' => 'Nomu utenti, ndirizzu IP o ID dô bloccu e wiki di distinazioni:',
+	'crosswikiunblock-reason' => 'Mutivu:',
+	'crosswikiunblock-submit' => "Sblocca l'utenti",
+	'crosswikiblock-nousername' => 'Nun fu nseritu nu nomu utenti',
+	'crosswikiblock-dbnotfound' => 'Lu database $1 nun esisti',
+	'crosswikiblock-noname' => '"$1" nun è nu validu nomu utenti.',
+	'crosswikiblock-nouser' => 'L\'utenti "$3" nun fu truvatu.',
+	'crosswikiblock-noexpiry' => 'Scadenza nun valida: $1.',
+	'crosswikiblock-noreason' => 'Nudda motivazioni spicificata.',
+	'crosswikiblock-notoken' => 'Edit token nun validu.',
+);
+
 /** Sassaresu (Sassaresu)
  * @author Felis
  */

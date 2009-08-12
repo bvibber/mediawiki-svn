@@ -219,6 +219,7 @@ $messages['bs'] = array(
  * @author Paucabot
  */
 $messages['ca'] = array(
+	'scanset-desc' => "Mostra imatges de la pàgines escanejades dels conjunt de CDs i DVDs d'Andreas Grosz",
 	'scanset_unrecognised_index_format' => 'Error: Format de fitxer desconegut',
 	'scanset_opendir_error' => 'Error: No es pot obrir el directori $1',
 	'scanset_no_files' => 'Error: No hi ha fitxers al directori especificat',

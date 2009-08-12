@@ -1041,6 +1041,7 @@ $messages['sc'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Melos
  * @author Santu
  */
 $messages['scn'] = array(
@@ -1059,6 +1060,7 @@ $messages['scn'] = array(
 	'lookupuser-touched' => 'Ùrtima visita riggistrata: $1',
 	'lookupuser-info-authenticated' => 'Autenticazzioni e-mail: $1',
 	'lookupuser-useroptions' => 'Prifirenzi utenti:',
+	'right-lookupuser' => 'Talìa li prifirenzi utenti',
 );
 
 /** Slovak (Slovenčina)

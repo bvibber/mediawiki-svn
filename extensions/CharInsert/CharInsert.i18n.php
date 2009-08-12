@@ -311,10 +311,11 @@ $messages['mg'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'charinsert-desc' => 'Дава можност за креирање на JavaScript кутија за [[MediaWiki:Edittools|вметнување на нестандардни знаци]]',
+	'charinsert-desc' => 'Дава можност за создавање на JavaScript кутија за [[MediaWiki:Edittools|вметнување на нестандардни знаци]]',
 );
 
 /** Marathi (मराठी)

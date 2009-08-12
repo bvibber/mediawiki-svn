@@ -472,6 +472,19 @@ Ajoutez-en en utilisant les outils dans la barre de menu.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'gep-categories' => 'Catègories',
+	'gep-addcategory' => 'Apondre una catègoria',
+	'gep-addcategorybutton' => 'Apondre',
+	'gep-suggestcategorybutton' => 'Sometre',
+	'gep-sections' => 'Sèccions',
+	'gep-addsection' => 'Apondre una sèccion',
+	'gep-addsectionbutton' => 'Apondre',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -652,6 +665,31 @@ $messages['id'] = array(
 	'gep-genericmode' => 'Mode generik',
 );
 
+/** Italian (Italiano)
+ * @author Melos
+ */
+$messages['it'] = array(
+	'gep-desc' => 'Potenzia la pagina di modifica per essere più comprensibile agli utenti',
+	'gep-emailsubject' => '[$1] Suggerimento categoria: $2',
+	'gep-emailbody' => 'L\'utente "$1" suggerisce la categoria "$2" per il sito "$3".',
+	'gep-emailfailure' => 'Spiacenti, il tuo suggerimento non può essere processato.',
+	'gep-emailsuccess' => 'Grazie per aver suggerito la categora: $1.',
+	'gep-categories' => 'Categorie',
+	'gep-addcategory' => 'Aggiungi una categoria',
+	'gep-addcategorybutton' => 'Aggiungi',
+	'gep-suggestcategory' => 'Suggerisci una categoria',
+	'gep-suggestcategorybutton' => 'Invia',
+	'gep-sections' => 'Sezioni',
+	'gep-sectionnotdisabled' => 'Questa sezione non può essere disabilitata',
+	'gep-addsection' => 'Aggiungi una nuova sezione',
+	'gep-addsectionbutton' => 'Aggiungi',
+	'gep-classicmode' => 'Modo classico',
+	'gep-genericmode' => 'Modo generico',
+	'gep-nosectioninstructions' => 'Non ci sono sezioni in questa pagina.
+Aggiungine qualcuna usando i tool nella barra dei menu.',
+	'gep-nocategories' => 'Selezionare almeno una categoria prima di salvare',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
@@ -780,12 +818,13 @@ Setzt der mat den Toolen am Menü derbäi.',
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'gep-categories' => 'Категории',
-	'gep-addcategory' => 'Додади категорија',
-	'gep-addcategorybutton' => 'Додади',
+	'gep-addcategory' => 'Додај категорија',
+	'gep-addcategorybutton' => 'Додај',
 	'gep-suggestcategory' => 'Предложи категорија',
 	'gep-sections' => 'Секции',
 );
@@ -1034,6 +1073,11 @@ Adăugaţi unele folosind uneltele din bara de meniu.',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'gep-desc' => "Supplemende de cangiamende d'a pàgene pe essere cchiù ''user friendly''",
+	'gep-emailsubject' => '[$1] Categorije suggerite: $2',
+	'gep-emailbody' => 'L\'utende "$1" ha suggerite \'a categorije "$2" pu site "$3".',
+	'gep-emailfailure' => "Ne dispiace, 'u suggerimende tue non ge pò essere processate.",
+	'gep-emailsuccess' => "Grazie pe avè suggerite 'a categorije: $1.",
 	'gep-categories' => 'Categorije',
 	'gep-addcategory' => "Aggiunge 'na categorije",
 	'gep-addcategorybutton' => 'Aggiunge',
@@ -1368,6 +1412,7 @@ $messages['zh-hant'] = array(
 	'gep-categories' => '頁面分類',
 	'gep-addcategory' => '增加一個分類',
 	'gep-addcategorybutton' => '增加',
+	'gep-suggestcategory' => '建議一個分類',
 	'gep-suggestcategorybutton' => '提交',
 	'gep-addsection' => '增加一個段落',
 	'gep-addsectionbutton' => '增加',

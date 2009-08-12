@@ -1033,6 +1033,7 @@ Debe ser un díxito único entre 1 e 9, ambos os dous inclusive.',
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'math_CannotRunLatex' => 'Ἀδύνατος ἡ ἐκτέλεσις latex',
 	'math_LatexFontNotSpecified' => 'Οὐδεμία γραμματοσειρά LaTeX κεκαθωρισμένη ἐστὶν διὰ τὴν "$1"',
 );
 

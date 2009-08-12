@@ -301,11 +301,32 @@ Ako imate nekih pitanja oko ovog sistema distribucije proširenja, molimo pogled
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'extensiondistributor' => 'Descarrega una extensió de Mediawiki',
+	'extdist-desc' => 'Extensió per distribuir arxius actualitzats de les extensions',
+	'extdist-not-configured' => 'Per favor, configurau $wgExtDistTarDir i $wgExtDistWorkingCopy',
+	'extdist-no-such-extension' => 'No existeix l\'extensió "$1"',
+	'extdist-no-such-version' => 'L\'extensió "$1" no existeix en la versió "$2"',
+	'extdist-choose-extension' => 'Seleccionau quina extensió voleu descarregar:',
 	'extdist-submit-extension' => 'Continua',
+	'extdist-current-version' => 'Versió de desenvolupament (trunk)',
+	'extdist-choose-version' => "<big>Estau descarregant l'extensió <b>$1</b>.</big>
+
+Seleccionau la vostra versió del Mediawiki.
+
+La majoria d'extensions funcionen a les diferents versions de Mediawiki, així que si la vostra versió de Mediawiki no és aquí o si necessitau les darreres funcionalitats de l'extensió, provau d'usar la versió actual.",
+	'extdist-no-versions' => "L'extensió seleccionada ($1) no està disponible en cap versió.",
 	'extdist-submit-version' => 'Continua',
+	'extdist-no-remote' => "No s'ha pogut contactar amb el client remot de Subversion.",
+	'extdist-remote-error' => 'Error del client remot de Subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Resposta invàlida del client remot de Subversion.',
+	'extdist-svn-error' => 'Subversion ha trobat un error: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'No s\'ha pogut processar l\'XML de "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => "L'ordre tar ha retornat un codi de sortida $1:",
+	'extdist-want-more' => 'Descarrega una altra extensió',
 );
 
 /** Czech (Česky)
@@ -627,8 +648,10 @@ Si tienes algunas preguntas acerca de éste sistema de distribución de extensio
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'extdist-no-such-version' => 'Versioonis "$2" puudub lisa "$1".',
 	'extdist-submit-extension' => 'Jätka',
 	'extdist-submit-version' => 'Jätka',
 );

@@ -542,6 +542,8 @@ $messages['ca'] = array(
 	'ogg-play-video' => 'Reprodueix vídeo',
 	'ogg-play-sound' => 'Reprodueix so',
 	'ogg-no-player' => 'No teniu instaŀlat cap reproductor acceptat. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-ne</a> un.',
+	'ogg-no-player-js' => 'Disculpau, o el vostre sistema té el Javascript deshabilitat o no té un reproductor adequat.<br />
+Podeu <a href="$1">descarregar l\'arxiu</a><br />o bé<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar un reproductor</a> per reproduir l\'arxiu al vostre navegador.',
 	'ogg-no-xiphqt' => 'No disposeu del component XiphQT al vostre QuickTime. Aquest component és imprescindible per a que el QuickTime pugui reproduir fitxers OGG. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-lo</a> o escollir un altre reproductor.',
 	'ogg-player-videoElement' => 'Suport natiu del navegador',
 	'ogg-player-oggPlugin' => 'Connector del navegador',

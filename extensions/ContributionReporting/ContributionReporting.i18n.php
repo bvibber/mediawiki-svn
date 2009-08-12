@@ -447,15 +447,26 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Aleator
  * @author Loupeter
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'contributiontotal' => 'Total de contribucions',
+	'contributionhistory' => 'Historial de contribucions',
+	'contrib-hist-header' => "Comentaris en temps real de donants d'arreu del món",
 	'contrib-hist-name' => 'Nom',
 	'contrib-hist-date' => 'Data i hora',
 	'contrib-hist-amount' => 'Quantitat',
+	'contrib-hist-next' => 'Donacions anteriors',
+	'contrib-hist-previous' => 'Donacions posteriors',
+	'contrib-hist-anonymous' => 'Anònim',
+	'contributionstatistics' => 'Estadístiques de contribució',
+	'contribstats-desc' => 'Mostra les estadístiques de les contribucions a la Wikimedia Foundation',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Total per avui|Totals diaris dels darrers $1 dies}}',
 	'contribstats-monthly-totals' => "{{PLURAL:$1|Total d'aquest mes|Totals mensuals dels darrers $1 mesos}}",
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total per $1 mes|Totals mensuals per $1 mesos}}',
+	'contribstats-currency-range-totals' => 'Diners totals (de $1 a $2)',
+	'contribstats-currency-totals' => "Diners totals de l'any fiscal $1",
 	'contribstats-day' => 'Dia',
 	'contribstats-month' => 'Mes',
 	'contribstats-currency' => 'Moneda',
@@ -470,7 +481,17 @@ $messages['ca'] = array(
 	'contribstats-value-under' => 'Inferior a $1',
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Per sobre $1',
+	'fundraiserstatistics' => 'Estadístiques de les donacions',
 	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Dia $1 de $2',
+	'fundraiserstats-contributions' => 'Contribucions',
+	'fundraiserstats-total' => 'Total ($)',
+	'fundraiserstats-avg' => 'Mitjana ($)',
+	'fundraiserstats-max' => 'Màxim ($)',
+	'fundraiserstats-tab-totals' => 'Totals ($)',
+	'fundraiserstats-tab-contributions' => 'Nombre de contribucions',
+	'fundraiserstats-tab-averages' => 'Mitjanes ($)',
+	'fundraiserstats-tab-maximums' => 'Màxims ($)',
 );
 
 /** Czech (Česky)
@@ -1877,6 +1898,56 @@ $messages['lt'] = array(
 	'contribstats-currency' => 'Valiuta',
 	'contribstats-amount' => 'Suma (USD)',
 	'contribstats-contributions' => 'Aukojimai',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'contributionreporting-desc' => 'Известување во живо за собирањето на средства на Викимедија',
+	'contributiontotal' => 'Вкупен износ на придонесите',
+	'contributionhistory' => 'Историја на придонеси',
+	'contrib-hist-header' => 'Коментари од дарители ширум светот во живо',
+	'contrib-hist-name' => 'Име',
+	'contrib-hist-date' => 'Време и датум',
+	'contrib-hist-amount' => 'Износ',
+	'contrib-hist-next' => 'Постари донации',
+	'contrib-hist-previous' => 'Понови донации',
+	'contrib-hist-anonymous' => 'Анонимно',
+	'contributionstatistics' => 'Статистики за придонеси',
+	'contribstats-desc' => 'Прикажува статистики за парични придонеси за Фондацијата Викимедија',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Вкупно за денес|Вкупно за изминатите $1 дена}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Вкупно за овој месец|Вкупно за изминатите $1 месеци}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Вкупно за $1 месец|Вкупни месечни износи за $1 месеци}}',
+	'contribstats-currency-range-totals' => 'Вкупни износи по валута (од $1 до $2)',
+	'contribstats-contribution-range-breakdown' => 'Расчленет преглед на придонеси по парична вредност (од $1 до $2)',
+	'contribstats-currency-totals' => 'Вкупни износи по валута за фискалната година $1',
+	'contribstats-contribution-breakdown' => 'Расчленет преглед на придонеси по парична вредност за фискалната година $1',
+	'contribstats-day' => 'Ден',
+	'contribstats-month' => 'Месец',
+	'contribstats-currency' => 'Валута',
+	'contribstats-amount' => 'Износ (USD)',
+	'contribstats-contributions' => 'Придонеси',
+	'contribstats-total' => 'Вкупно (USD)',
+	'contribstats-avg' => 'Просечно (USD)',
+	'contribstats-max' => 'Највеќе (USD)',
+	'contribstats-percentage-ytd' => 'Постоток (YTD)',
+	'contribstats-total-ytd' => 'Вкупно (YTD)',
+	'contribstats-value-exactly' => 'Точно $1',
+	'contribstats-value-under' => 'Под $1',
+	'contribstats-value-from' => 'Од $1 - $2',
+	'contribstats-value-over' => 'Над $1',
+	'fundraiserstatistics' => 'Статистики за собирањето на средства',
+	'fundraiserstats-date' => 'Датум',
+	'fundraiserstats-contributions' => 'Придонеси',
+	'fundraiserstats-total' => 'Вкупно (USD)',
+	'fundraiserstats-avg' => 'Просечно (USD)',
+	'fundraiserstats-max' => 'Највеќе (USD)',
+	'fundraiserstats-tab-totals' => 'Вкупни износи (USD)',
+	'fundraiserstats-tab-contributions' => 'Број на придонеси',
+	'fundraiserstats-tab-averages' => 'Просеци (USD)',
+	'fundraiserstats-tab-maximums' => 'Највисоки (USD)',
+	'specialpages-group-contribution' => 'Придонеси/Обезб. средства',
 );
 
 /** Malay (Bahasa Melayu)

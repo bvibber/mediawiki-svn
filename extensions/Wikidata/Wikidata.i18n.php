@@ -379,6 +379,11 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'langman_title' => 'Taalbestuurder',
+	'langman_langname' => 'Taalnaam:',
+	'langman_iso639-3' => 'ISO 639-3-kode:',
+	'langman_iso639-2' => 'ISO 639-2-kode:',
+	'langman_wikimedia' => 'Wikimedia-kode:',
+	'langman_field_optional' => '(opsioneel)',
 	'ow_save' => 'Stoor',
 	'ow_history' => 'Geskiedenis',
 	'ow_noedit_title' => 'Geen regte om te wysig',
@@ -2599,6 +2604,7 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'wikidata-desc' => 'Προσθέτει μία wiki βάση δεδομένων διαφόρων τυπών περιεχομένου',
 	'languages' => 'Wikidata: Διαχειριστής γλώσσας',
 	'langman-desc' => 'Προσθήκη και αλλαγή των γλωσσικών ρυθμίσεων με [[Special:Languages]]',
 	'langman_title' => 'Διαχειριστής γλώσσας',
@@ -2678,6 +2684,7 @@ $messages['el'] = array(
 	'ow_conceptmapping_no_action_specified' => 'Η ενέργεια "$1" δεν υποστηρίζεται.',
 	'ow_dm_OK' => 'Εντάξει',
 	'ow_dm_not_present' => 'δεν εισήχθη',
+	'ow_dm_not_found' => 'είτε δεν υπάρχει στη βάση δεδομένων είτε είναι κακοδιατυπωμένο',
 	'ow_will_insert' => 'Θα ενσωματωθούν τα παρακάτω:',
 	'ow_contents_of_mapping' => 'Περιεχόμενα του χάρτη',
 	'ow_available_contexts' => 'Διαθέσιμα πλαίσια',
@@ -3866,6 +3873,44 @@ Veuillez contacter l’opérateur ou l’administrateur du serveur.',
 	'ow_shown_datasets' => 'Afficher les ensembles de données',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'langman_langname' => 'Nom de la lengoua :',
+	'langman_iso639-3' => 'Code ISO 639-3 :',
+	'langman_iso639-2' => 'Code ISO 639-2 :',
+	'datasearch_language' => 'Lengoua :',
+	'ow_exporttsv_languages' => 'Lengouas :',
+	'ow_save' => 'Sôvar',
+	'ow_history' => 'Historico',
+	'ow_transaction_count' => 'Compto :',
+	'ow_transaction_user' => 'Nom d’utilisator :',
+	'ow_transaction_operation' => 'Operacion',
+	'ow_transaction_object' => 'Objèt',
+	'ow_transaction_first_dm' => 'Premiér sens definit',
+	'ow_transaction_second_dm' => 'Segond sens definit',
+	'ow_transaction_summary' => 'Rèsumâ',
+	'ow_dm_OK' => 'D’acôrd',
+	'ow_Class' => 'Classe',
+	'ow_ClassAttributeLevel' => 'Nivél',
+	'ow_Collection' => 'Colêcion',
+	'ow_Collection_colon' => 'Colêcion :',
+	'ow_Definition' => 'Définicion',
+	'ow_Expression' => 'Expression',
+	'ow_Language' => 'Lengoua',
+	'ow_OptionAttributeOption' => 'Opcion',
+	'ow_OptionAttributeOptions' => 'Opcions',
+	'ow_Text' => 'Tèxte',
+	'ow_TranslatedTextAttributeValue' => 'Tèxte',
+	'ow_class_attr_type_link' => 'Lim',
+	'ow_class_attr_type_option' => "Lista d'opcions",
+	'ow_show' => 'Fâre vêre',
+	'ow_create' => 'Crèar',
+	'ow_suggest_previous' => 'Devant',
+	'ow_suggest_next' => 'Aprés',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -4187,8 +4232,12 @@ $messages['grc'] = array(
 	'ow_Collection' => 'Συλλογή',
 	'ow_Collection_colon' => 'Συλλογή:',
 	'ow_Definition' => 'Ὁρισμός',
+	'ow_Expression' => 'Ἔκφρασις',
+	'ow_Expressions' => 'Ἐκφράσεις',
 	'ow_IdenticalMeaning' => 'Ταυτόσημον;',
 	'ow_Language' => 'Γλῶττα',
+	'ow_LevelAnnotation' => 'Σχολιασμός',
+	'ow_Multiple_meanings' => 'Πολλαπλᾶ νοήματα:',
 	'ow_OptionAttribute' => 'Ἰδιότης',
 	'ow_OptionAttributeOption' => 'Ἐπιλογή',
 	'ow_OptionAttributeOptions' => 'Ἐπιλογαί',
@@ -4196,10 +4245,16 @@ $messages['grc'] = array(
 	'ow_PopupAnnotation' => 'Σχολιασμός',
 	'ow_RecordLifeSpan' => 'Διάρκεια ζωῆς ἐγγραφῆς',
 	'ow_Relations' => 'Σχέσεις',
+	'ow_RelationType' => 'Τύπος σχέσεως',
 	'ow_Remove' => 'Άφαιρεῖν',
+	'ow_Spelling' => 'Ὀρθογραφία',
+	'ow_Synonyms' => 'Συνώνυμα',
+	'ow_SynonymsAndTranslations' => 'Συνώνυμα καὶ μεταγλωττίσεις',
 	'ow_Source' => 'Πηγή',
+	'ow_Text' => 'Κείμενον',
 	'ow_TextAttribute' => 'Ἰδιότης',
 	'ow_TextAttributeHeader' => 'Κατηγορούμενον κειμένου',
+	'ow_TextAttributeValues' => 'Ἁπλᾶ κείμενα',
 	'ow_Time' => 'Χρόνος',
 	'ow_TranslatedTextAttribute' => 'Ἰδιότης',
 	'ow_LinkAttribute' => 'Ἰδιότης',
@@ -4208,6 +4263,11 @@ $messages['grc'] = array(
 	'ow_Property' => 'Ἰδιότης',
 	'ow_Value' => 'Τιμή',
 	'ow_history_show_life_span' => 'Προβάλλειν διάρκειαν ζωῆς ἐγγραφῆς',
+	'ow_class_attr_type_xlate' => 'Μεταγλωττίσιμον κείμενον',
+	'ow_class_attr_type_plain' => 'Ἁπλοῦν κείμενον',
+	'ow_class_attr_type_link' => 'Σύνδεσμος',
+	'ow_needs_xlation_source_lang' => 'Γλῶσσα-πηγή:',
+	'ow_needs_xlation_dest_lang' => 'Γλῶσσα-προορισμός:',
 	'ow_show' => 'Ἐμφανίζειν',
 	'ow_upload' => 'Ἐπιφόρτισις',
 	'ow_create' => 'Ποιεῖν',
@@ -4490,6 +4550,7 @@ $messages['haw'] = array(
  * @author דניאל ב.
  */
 $messages['he'] = array(
+	'wikidata-desc' => 'הוספת בסיס נתונים דמוי ויקי למגוון סוגי תוכן',
 	'languages' => 'ויקי־דאטא: מנהל השפות',
 	'langman-desc' => 'הוספה ושינוי של הגדרות שפה באמצעות [[Special:Languages]]',
 	'langman_title' => 'מנהל השפות',
@@ -5596,10 +5657,12 @@ Non è stata eseguita l'operazione di copia.",
 	'ow_needs_xlation_dest_lang' => 'Lingua di destinazione:',
 	'ow_needs_xlation_no_dest_lang' => 'Specifica una lingua di destinazione.',
 	'ow_show' => 'Mostra',
+	'ow_upload' => 'Carica',
 	'ow_create' => 'Crea',
 	'ow_collection_added' => '<strong>Collezione $1 aggiunta.</strong>',
 	'ow_suggest_previous' => 'Precedente',
 	'ow_suggest_next' => 'Successivo',
+	'ow_suggest_clear' => 'Pulisci',
 );
 
 /** Japanese (日本語)
@@ -6963,6 +7026,7 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -6970,8 +7034,8 @@ $messages['mk'] = array(
 	'langman_iso639-3' => 'ISO 639-3 код:',
 	'langman_iso639-2' => 'ISO 639-2 код:',
 	'langman_wikimedia' => 'Викимедија код:',
-	'langman_field_optional' => '(опционо)',
-	'langman_addlang' => 'Додади јазик',
+	'langman_field_optional' => '(изборно)',
+	'langman_addlang' => 'Додај јазик',
 	'ow_save' => 'Зачувај',
 	'ow_history' => 'Историја',
 	'ow_uipref_datasets' => 'Основен поглед',
@@ -11700,17 +11764,21 @@ $messages['zh-hant'] = array(
 	'datasearch_within_ext_ids' => '與外部辨識器：',
 	'importtsv' => 'Wikidata: 匯入分頁分割資料',
 	'ow_importtsv_title1' => '匯入TSV',
+	'ow_importtsv_importing' => '正在匯入TSV數據',
 	'ow_importtsv_import_failed' => '匯入失敗',
+	'ow_importtsv_file' => 'TSV檔案：',
 	'ow_exporttsv_languages' => '語言：',
 	'ow_exporttsv_export_failed' => '匯出失敗',
 	'ow_save' => '儲存',
 	'ow_transaction_user' => '使用者名稱：',
 	'ow_transaction_restore' => '還原',
+	'ow_transaction_object' => '物件',
 	'ow_dm_OK' => '確定',
 	'ow_Language' => '語言',
 	'ow_Text' => '文字',
 	'ow_added' => '已新增',
 	'ow_removed' => '已移除',
+	'ow_class_attr_type_link' => '連結',
 	'ow_show' => '顯示',
 	'ow_upload' => '上載',
 	'ow_suggest_clear' => '清除',

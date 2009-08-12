@@ -602,11 +602,13 @@ $wgCustomToolbarMessages['el'] = array(
 	'ct_math_tip_ins' => 'Εισαγωγή μαθηματικής φόρμουλας (LaTeX)',
 	'ct_math_tip_wrap' => 'Κάντε αυτό το κείμενο μια μαθηματική φόρμουλα (LaTeX)',
 	'ct_math_caption' => 'Φόρμουλα',
+	'ct_nowiki_tip_ins' => 'Να αγνοηθεί η μορφοποίηση Wiki.',
 	'ct_nowiki_caption' => 'Κανένα βίκι',
 	'ct_horizontal_tip' => 'Εισαγωγή μιας οριζόντιας γραμμής (λιτή χρησιμοποίηση)',
 	'ct_horizontal_caption' => 'Οριζόντια γραμμή',
 	'ct_upload' => 'Φόρτωση $1',
 	'ct_select' => 'Επιλογή $1 για φόρτωση:',
+	'ct_caption' => 'Προσθήκη επικεφαλίδας (προαιρετικό):',
 	'ct_link' => 'Προσθήκη ονόματος συνδέσμου (προαιρετικό):',
 	'ct_submit' => 'Πήγαινε!',
 	'ct_close' => 'Κλείσιμο παραθύρου',
@@ -860,6 +862,23 @@ Veuillez vérifier vos paramètres de blocage des fenêtres intruses.',
 	'ct_user_tip' => 'Insérer un lien vers une page utilisateur',
 	'ct_user_caption' => 'Lien de l’utilisateur',
 	'ct_user_sample' => 'Nom de l’utilisateur',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$wgCustomToolbarMessages['frp'] = array(
+	'ct_bold_sample' => 'Tèxte grâs',
+	'ct_bold_caption' => 'Grâs',
+	'ct_italic_sample' => 'Tèxto étalico',
+	'ct_internal_caption' => 'Lim de dedens',
+	'ct_external_caption' => 'Lim de defôr',
+	'ct_math_caption' => 'Formula',
+	'ct_upload' => 'Tèlèchargiér $1',
+	'ct_submit' => 'Alar !',
+	'ct_user_user' => 'Utilisator',
+	'ct_user_caption' => "Lim de l'utilisator",
+	'ct_user_sample' => 'Nom d’utilisator',
 );
 
 /** Irish (Gaeilge)
@@ -1235,9 +1254,48 @@ $wgCustomToolbarMessages['id'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Melos
  */
 $wgCustomToolbarMessages['it'] = array(
+	'ct-desc' => 'Aggiunge una toolbar estendibile',
+	'ct_bold_sample' => 'Testo in grassetto',
+	'ct_bold_tip_ins' => 'Inserisci testo in grassetto',
+	'ct_bold_tip_wrap' => 'Rendi questo testo in grassetto',
+	'ct_bold_caption' => 'Grassetto',
+	'ct_italic_sample' => 'Testo in corsivo',
+	'ct_italic_tip_ins' => 'Inserisci testo in corsivo',
+	'ct_italic_tip_wrap' => 'Rendi questo testo in corsivo',
+	'ct_italic_caption' => 'Corsivo',
+	'ct_internal_tip_ins' => 'Inserisci un link interno',
+	'ct_internal_tip_wrap' => 'Rendi questo testo un link interno',
+	'ct_internal_caption' => 'Collegamento interno',
+	'ct_external_tip_ins' => 'Inserisci il collegamento esterno',
+	'ct_external_tip_wrap' => 'Rendi questo testo un link esterno',
+	'ct_external_caption' => 'Link esterno',
+	'ct_image_tip' => 'Inserisci un immagine',
+	'ct_image_caption' => 'Aggiungi immagine',
+	'ct_attachment_tip' => 'Inserisci un allegato',
+	'ct_attachment_caption' => 'Aggiungi allegato',
+	'ct_math_sample' => 'Inserisci qui la formula in LaTeX',
+	'ct_math_tip_ins' => 'Inserisci la formula matematica (LaTeX)',
+	'ct_math_tip_wrap' => 'Rendi questo testo una formula matematica (LaTeX)',
+	'ct_math_caption' => 'Formula',
+	'ct_nowiki_sample' => 'Inserisci qui il testo non formattato',
+	'ct_nowiki_tip_ins' => 'Ignora la formattazione wiki',
+	'ct_nowiki_tip_wrap' => 'Ignora la formattazione wiki per questo testo',
+	'ct_horizontal_caption' => 'Linea orizzontale',
+	'ct_upload' => 'Carica $1',
+	'ct_select' => 'Seleziona $1 da caricare:',
+	'ct_caption' => 'Aggiungi etichetta (opzionale):',
+	'ct_link' => 'Aggiungi il nome del link (opzionale):',
 	'ct_submit' => 'Vai',
+	'ct_close' => 'Chiudi finestra',
+	'ct_success' => 'File caricato con successo!',
+	'ct_popupblocked' => 'Il popup di upload è stato bloccato. Controlla il tuo strumento blocca popup.',
+	'ct_user_user' => 'Utente',
+	'ct_user_tip' => 'Inserisci un link alla pagina utente',
+	'ct_user_caption' => 'Link utente',
+	'ct_user_sample' => 'Nome utente',
 );
 
 /** Japanese (日本語)
@@ -1990,6 +2048,49 @@ $wgCustomToolbarMessages['ru'] = array(
 	'ct_user_sample' => 'Имя участника',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$wgCustomToolbarMessages['scn'] = array(
+	'ct_bold_sample' => 'Testu n grassettu',
+	'ct_bold_tip_ins' => 'Nserisci testu n grassettu',
+	'ct_bold_tip_wrap' => 'Fai stu testu grassettu',
+	'ct_bold_caption' => 'Grassettu',
+	'ct_italic_sample' => 'Testu n corsivu',
+	'ct_italic_tip_ins' => 'Nserisci testu n corsivu',
+	'ct_italic_tip_wrap' => 'Fai stu testu n corsivu',
+	'ct_italic_caption' => 'Corsivu',
+	'ct_internal_tip_ins' => 'Nserici nu liami nternu',
+	'ct_internal_tip_wrap' => 'Fai stu testu nu liami nternu',
+	'ct_internal_caption' => 'Liami nternu',
+	'ct_external_tip_ins' => 'Nserisci lu liami esternu',
+	'ct_external_tip_wrap' => 'Fai stu testu nu liami esternu',
+	'ct_external_caption' => 'Liami di fora',
+	'ct_image_tip' => 'Nserisci na mmàggini',
+	'ct_image_caption' => 'Iunci mmàggini',
+	'ct_attachment_tip' => "Nserisci n'allegatu",
+	'ct_attachment_caption' => 'Iunci allegatu',
+	'ct_math_sample' => 'Nserisci ccà la formula n LaTeX',
+	'ct_math_tip_ins' => 'Nserisci la formula matimatica (LaTeX)',
+	'ct_math_tip_wrap' => 'Fai stu testu na formula matimatica (LaTeX)',
+	'ct_math_caption' => 'Fommula',
+	'ct_nowiki_sample' => 'Nzirisci ccà lu testu nun furmattatu',
+	'ct_nowiki_tip_ins' => 'Gnora la furmattazzioni wiki',
+	'ct_nowiki_tip_wrap' => 'Gnora la furmattazioni wiki pi stu testu',
+	'ct_horizontal_caption' => 'Linea orizzontali',
+	'ct_upload' => 'Carica $1',
+	'ct_select' => 'Silizziona $1 pi caricari',
+	'ct_caption' => 'Iunci etichetta (opzionali):',
+	'ct_link' => 'Iunci lu nomu do liami (opzionali)',
+	'ct_close' => 'Chiuri finestra',
+	'ct_success' => 'File caricatu cu successu',
+	'ct_popupblocked' => 'Lu popup di upload fu bluccatu. Cuntrolla lu strumentu blocca popup.',
+	'ct_user_user' => 'Utenti',
+	'ct_user_tip' => 'Nserisci nu liami a la pàggina utenti',
+	'ct_user_caption' => 'Liami utenti',
+	'ct_user_sample' => 'Nomu utenti',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -2591,10 +2692,13 @@ $wgCustomToolbarMessages['zh-hant'] = array(
 	'ct_external_caption' => '外部連結',
 	'ct_math_sample' => '在此插入LaTeX公式',
 	'ct_math_tip_ins' => '插入數學公式（LaTeX）',
-	'ct_select' => '選擇要上載的$1',
+	'ct_upload' => '上載$1',
+	'ct_select' => '選擇要上載的$1：',
 	'ct_close' => '關閉視窗',
 	'ct_success' => '上載檔案成功！',
 	'ct_user_user' => '使用者',
+	'ct_user_tip' => '插入一個用戶頁面的連結',
+	'ct_user_caption' => '用戶連結',
 	'ct_user_sample' => '使用者名稱',
 );
 

@@ -32,7 +32,8 @@ $messages['qqq'] = array(
 $messages['ar'] = array(
 	'editwarning' => 'تحذير تحريري',
 	'editwarning-desc' => 'أظهر تحذيرًا عندما ياحول مستخدم مغادرة نموذج تحرير قبل الحفظ',
-	'editwarning-warning' => 'قد تتسبب مغادرة هذه الصفحة بخسارتك لأي تغييرات قمت بها.',
+	'editwarning-warning' => 'قد تتسبب مغادرة هذه الصفحة بخسارتك لأي تغييرات قمت بها.
+يمكنك تعطيل هذا التحذير في قسم "{{int:prefs-editing}}" في تفضيلاتك.',
 	'editwarning-preference' => 'حذّرني عندما أغادر تحرير صفحة ذات تغييرات غير محفوظة',
 );
 
@@ -80,7 +81,9 @@ Možete isključiti ovo upozorenje u "{{int:prefs-editing}}" dijelu vaših opcij
 $messages['ca'] = array(
 	'editwarning' => "Avís d'edició",
 	'editwarning-desc' => 'Mostra un avís quan un usuari intenti sortir del formulari sense desar.',
-	'editwarning-warning' => "Si sortiu d'aquesta pàgina, perdreu tots els canvis que heu fet.",
+	'editwarning-warning' => 'Si sortiu d\'aquesta pàgina, perdreu tots els canvis que heu fet.
+Podeu eliminar aquest avís a la secció "{{int:prefs-editing}}" de les vostres preferències.',
+	'editwarning-preference' => "Avisa'm quan surti d'una pàgina d'edició amb canvis sense desar",
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
@@ -98,8 +101,20 @@ $messages['ckb-arab'] = array(
 $messages['cs'] = array(
 	'editwarning' => 'Upozornění na změny',
 	'editwarning-desc' => 'Zobrazí upozornění, pokud se uživatel pokusí opustit editaci bez uložení změn',
-	'editwarning-warning' => 'Opuštěním této stránky se mohou veškeré provedené změny ztratit.',
+	'editwarning-warning' => 'Opuštěním této stránky se mohou veškeré provedené změny ztratit.
+Toto varování si můžete vypnout na záložce „{{int:prefs-editing}}“ v uživatelském nastavení.',
 	'editwarning-preference' => 'Upozornit, když budu opouštět editaci bez uložení změn',
+);
+
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'editwarning' => 'Redigeringsadvarsel',
+	'editwarning-desc' => 'Vis en advarsel når en bruger prøver at forlade redigeringsformularen uden at gemme',
+	'editwarning-warning' => 'Hvis du forlader siden nu, risikerer du at miste alle ændringer som du har lavet.
+Denne advarsel kan slås fra under {{int:prefs-editing}} i dine indstillinger.',
+	'editwarning-preference' => 'Advar mig hvis jeg forlader en redigeringsside med ikke gemte ændringer.',
 );
 
 /** German (Deutsch)
@@ -132,6 +147,8 @@ Móžoš toś to warnowanje we wótrězku {{int:prefs-editing}} swójich nastaje
  */
 $messages['el'] = array(
 	'editwarning' => 'Προειδοποίηση επεξεργασίας',
+	'editwarning-desc' => 'Προβολή μίας προειδοποίησης όταν ένας χρήστης επιχειρεί να εγκαταλείψει τη φόρμα επεξεργασίας χωρίς πρώτα να έχει αποθηκεύσει',
+	'editwarning-preference' => 'Να με προειδοποιείς όταν εγκαταλείπω μία σελίδα επεξεργασίας χωρίς να έχω πρώτα αποθηκεύσει τις αλλαγές',
 );
 
 /** Esperanto (Esperanto)
@@ -210,7 +227,8 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'editwarning' => 'Warnig bearbeite',
 	'editwarning-desc' => 'E Warnig zeige wänn e Benutzer versuecht s Bearbeitgsfänschter ohni Spychere z verloo',
-	'editwarning-warning' => 'Wänn Du die Syte verlosch, cha s syy, ass Du alli Bearbeitige verliersch, wu Du do dra gmacht hesch.',
+	'editwarning-warning' => 'Wänn Du die Syte verlosch, cha s syy, ass Du alli Bearbeitige verliersch, wu Du do dra gmacht hesch.
+Du chasch s Anzeige vu däre Warnig im „{{int:prefs-editing}}“-Beryych vu Dyyne Yystelligen abstelle.',
 	'editwarning-preference' => 'Warn mi, wänn I ne Syte verloss mit Bearbeitige, wu nonig gspycheret sin',
 );
 
@@ -279,6 +297,7 @@ Anda dapat mematikan peringatan ini lewat {{int:prefs-editing}} pada halaman pre
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Melos
  */
 $messages['it'] = array(
 	'editwarning' => 'Avviso di modifica',
@@ -320,20 +339,24 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author ToePeu
  */
 $messages['ko'] = array(
 	'editwarning' => '편집 주의',
-	'editwarning-desc' => '저장하지 않고 화면을 닫을 때 주의문을 표시하기',
-	'editwarning-warning' => '저장하지 않은 편집이 모두 사라집니다.',
+	'editwarning-desc' => '저장하지 않고 화면을 닫을 때 경고를 표시해 줍니다.',
+	'editwarning-warning' => '이 창을 떠나면 저장하지 않은 편집이 모두 사라집니다.
+이 경고를 환경 설정의 "{{int:prefs-editing}}"에서 비활성화 할 수 있습니다.',
 );
 
 /** Ripoarisch (Ripoarisch)
+ * @author Als-Holder
  * @author Purodha
  */
 $messages['ksh'] = array(
 	'editwarning' => 'Warnung beim Ändere_Afbreshe',
 	'editwarning-desc' => 'Donn en Warnung aanzeije, wann ene Metmaacher vum Sigge_Ändere fott jonn well, der oohne sing Änderunge afzeseschere.',
-	'editwarning-warning' => 'Wann de vun hee dä Sigg fott jeihß, dann künnte all Ding Änderunge aan dä Sigg verschött jonn.',
+	'editwarning-warning' => 'Wann de vun hee dä Sigg fott jeihß, doh künnte all Ding Änderunge aan dä Sigg verschött jonn.
+(Do kanns heh di Warnung affschallde, dann kriß de se nieh mieh wider. Jangk doför en dä Affschnett „{{int:prefs-editing}}“ en Dinge Enshtellunge)',
 	'editwarning-preference' => 'Donn mesch warne, wann esch vun en Sigg fott jonn, ih dat esch all ming Änderunge avjeschpeischert hann.',
 );
 
@@ -355,6 +378,17 @@ $messages['lt'] = array(
 	'editwarning' => 'Redagavimo pranešimas',
 	'editwarning-desc' => 'Rodyti pranešimą kai naudotojas bando palikti redagavimo langą neišsaugojęs',
 	'editwarning-warning' => 'Palikdamas šį puslapį jūs prarasite visus padarytus pakeitimus.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'editwarning' => 'Предупредување за уредување',
+	'editwarning-desc' => 'Прикажувај предупредување кога некој корисник се обидува да го напушти уредувањето без да го има зачувано',
+	'editwarning-warning' => 'Ако ја напуштите страницата ќе ги изгубите сите промени кои сте ги направиле.
+Можете да го исклучите ова предупредување во одделот „{{int:prefs-editing}}“ во вашите нагодувања.',
+	'editwarning-preference' => 'Предупреди ме кога сакам да напуштам страница за уредување без да ги имам зачувано промените',
 );
 
 /** Dutch (Nederlands)
@@ -462,8 +496,20 @@ $messages['sah'] = array(
 $messages['sk'] = array(
 	'editwarning' => 'Upozornenie pri úprave',
 	'editwarning-desc' => 'Zobrazí upozornenie, keď sa používateľ pokúsi opustiť formulár na úpravy bez uloženia',
-	'editwarning-warning' => 'Ak opustíte túto stránku, môžete tým stratiť všetky vykonané zmeny.',
+	'editwarning-warning' => 'Ak opustíte túto stránku, môžete tým stratiť všetky vykonané zmeny.
+Toto upozornenie môžete vypnúť v sekcii „{{int:prefs-editing}}“ svojich nastavení.',
 	'editwarning-preference' => 'Upozorniť ma, keď opúšťam upravovaciu stránku s neuloženými zmenami',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Smihael
+ */
+$messages['sl'] = array(
+	'editwarning' => 'Opozorilo urejevalnika',
+	'editwarning-desc' => 'Prikaže opozorilo, ko uporabnik poskuša zapustiti urejevalno polje brez shranjevanja',
+	'editwarning-warning' => 'Zapuščanje te strani lahko povzroči izgubo vseh sprememb, ki ste jih naredili.
+To opozorilo lahko onemogočite v razdelku »{{int:prefs-editing}}« svojih nastavitev.',
+	'editwarning-preference' => 'Opozori me, ko skušam zapreti urejevalno polje z neshranjenimi spremembami',
 );
 
 /** Swedish (Svenska)

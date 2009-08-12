@@ -188,6 +188,14 @@ $messages['cy'] = array(
 	'sitenotice-desc' => "Yn galluogi defnyddwyr i gau'r hysbysiad",
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'sitenotice_close' => 'Skjul',
+	'sitenotice-desc' => 'Muliggør at brugere kan skjule topbeskeden',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -538,11 +546,12 @@ $messages['lzh'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'sitenotice_close' => 'сокриј',
-	'sitenotice-desc' => 'Овозможува корисниците да ја затворат сајт пораката',
+	'sitenotice-desc' => 'Им овозможува корисниците да го затворат известувањето на главната страница',
 );
 
 /** Malayalam (മലയാളം)

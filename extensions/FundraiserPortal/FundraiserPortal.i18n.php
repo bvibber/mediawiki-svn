@@ -96,6 +96,23 @@ $messages['br'] = array(
 	'fundraiserportal-tourmaline-close' => 'Kuzhat hiviziken',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'fundraiserportal' => 'Portal de donacions',
+	'fundraiserportal-desc' => 'Afegeix un portal de "Donatius" a la part superior del menú lateral.',
+	'fundraiserportal-plain-button' => 'Ajuda Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Donatius',
+	'fundraiserportal-rubytext-button' => 'Donatius',
+	'fundraiserportal-rubytext-message' => 'Cada donació ens ajuda a mantenir Wikipedia lliure per a tothom.',
+	'fundraiserportal-rubytext-close' => "Amaga això a partir d'ara",
+	'fundraiserportal-sapphire-button' => 'Donatius',
+	'fundraiserportal-tourmaline-button' => 'Donatius',
+	'fundraiserportal-tourmaline-message' => 'Cada donació ens ajuda a mantenir Wikipedia lliure per tothom.',
+	'fundraiserportal-tourmaline-close' => "Amaga això a partir d'ara",
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

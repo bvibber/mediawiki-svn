@@ -2720,6 +2720,7 @@ $messages['km'] = array(
 	'viewapc-apc-version' => 'កំណែ APC',
 	'viewapc-php-version' => 'កំណែ PHP',
 	'viewapc-shared-memory' => 'អង្គចងចាំដែលត្រូវបានប្រើរួមគ្នា',
+	'viewapc-start-time' => 'ពេលចាប់ផ្តើម',
 	'viewapc-usercache-info' => 'ព័ត៌មាន​ឃ្លាំងសម្ងាត់​អ្នកប្រើប្រាស់',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ឯកសារ|ឯកសារ}} ($2)',
 	'viewapc-rps' => '$1សំណើសុំក្នុងមួយវិនាទី',

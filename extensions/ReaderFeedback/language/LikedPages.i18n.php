@@ -97,6 +97,13 @@ $messages['dsb'] = array(
 	'likedpages-graphs' => 'Daty pógódnośenja',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'likedpages-graphs' => 'δεδομένα βαθμολόγησης',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -93,6 +93,13 @@ $messages['dsb'] = array(
 	'othersites-desc' => 'Pśesuwa wótkaze interwiki, kótarež njejsu rěcne wótkaze, do jich swójskego wobcerka',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'othersites' => 'Άλλοι ιστότοποι',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -160,8 +160,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'piwik-lastvisits' => 'Τελευταίες επισκέψεις',
 	'piwik-countries' => 'Χώρες',
 	'piwik-browsers' => 'Φυλλομετρητές',
 );

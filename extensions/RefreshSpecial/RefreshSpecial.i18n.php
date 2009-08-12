@@ -306,6 +306,26 @@ Warnowanje: Wobnowjenje móžo na wjelikich wikijach wobdłujko traś.',
 	'right-refreshspecial' => 'Specialne boki wobnowiś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'refreshspecial' => 'Ανανέωση ειδικών σελίδων',
+	'refreshspecial-title' => 'Ανανέωση ειδικών σελίδων',
+	'refreshspecial-button' => 'Επιλέχθηκε ανανέωση',
+	'refreshspecial-refreshing' => 'ανανέωση ειδικών σελίδων',
+	'refreshspecial-skipped' => 'φθηνό, παρακάμφθηκε',
+	'refreshspecial-choice' => 'ανανέωση ειδικών σελίδων',
+	'refreshspecial-select-all-pages' => 'Επιλογή όλων των σελίδων',
+	'refreshspecial-link-back' => 'Πήγαινε πίσω στην ειδική σελίδα',
+	'refreshspecial-db-error' => 'Απέτυχε: Σφάλμα βάσης δεδομένων',
+	'refreshspecial-no-page' => 'Καμιά τέτοια ειδική σελίδα',
+	'refreshspecial-reconnected' => 'Επανασυνδέθηκε.',
+	'refreshspecial-reconnecting' => 'Η σύνδεση απέτυχε, επανασύνδεση σε 10 δευτερόλεπτα...',
+	'right-refreshspecial' => 'Ανανέωση ειδικών σελίδων',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1042,17 +1062,32 @@ Oachtenge: Dät Aktualisierjen kon ap groote Wikis laanger duurje.',
 
 /** Swedish (Svenska)
  * @author Najami
+ * @author Rotsee
  */
 $messages['sv'] = array(
 	'refreshspecial' => 'Uppdatera specialsidor',
 	'refreshspecial-desc' => 'Möjliggör [[Special:RefreshSpecial|manuell uppdatering]] av specialsidor',
 	'refreshspecial-title' => 'Uppdatera specialsidor',
+	'refreshspecial-help' => "Den här specialsidan låter dig uppdatera andra specialsidor manuellt.
+Välj vilka sidor du vill uppdatera, och klicka på \"Uppdatera valda sidor\".
+'''Obs:''' Uppdateringen kan ta en lång stund på en stor wiki.",
+	'refreshspecial-button' => 'Uppdatera valda sidor',
+	'refreshspecial-fail' => 'Välj minst en sida att uppdatera.',
 	'refreshspecial-refreshing' => 'uppdaterar specialsidor',
+	'refreshspecial-skipped' => 'överhoppad',
 	'refreshspecial-choice' => 'uppdaterar specialsidor',
+	'refreshspecial-js-disabled' => "(''Du behöver slå på JavaScript för att kunna markera alla sidor'')",
 	'refreshspecial-select-all-pages' => 'Välj alla sidor',
+	'refreshspecial-link-back' => 'Tillbaka till specialsidan',
+	'refreshspecial-none-selected' => 'Du har inte valt någon specialsida. Återställer standardvalet.',
+	'refreshspecial-db-error' => 'Misslyckades: Databasfel',
 	'refreshspecial-no-page' => 'Ingen sådan specialsida',
+	'refreshspecial-slave-lagged' => 'Slavservern släpar efter, väntar ...',
 	'refreshspecial-reconnected' => 'Återansluten.',
 	'refreshspecial-reconnecting' => 'Anslutning misslyckades, återansluter om 10 sekunder...',
+	'refreshspecial-page-result' => 'databasen svarade med $1 {{PLURAL:$1|rad|rader}} i',
+	'refreshspecial-total-display' => 'Uppdaterade $1 {{PLURAL:$1|sida|sidor}} om sammanlagt $2 {{PLURAL:$2|rad|rader}} på $3 (skriptet har körts i sammanlagt $4)',
+	'right-refreshspecial' => 'Uppdatera specialsidor',
 );
 
 /** Telugu (తెలుగు)

@@ -379,6 +379,18 @@ Jūs prarasite pakeitimus, atliktus šiame puslapyje, jei jį dabar paliksite.',
 	'ajaxlogin-create' => 'Sukurti sąskaitą',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'ajaxlogin-desc' => 'Динамична кутија која им овозможува на корисниците да се најавуваат и ги потсетува на лозинката',
+	'ajaxLogin1' => 'За да завршите со најавувањето, прво мора да внесете нова лозинка.
+Ова ќе ве одведе од оваа страница за уредување и може да го изгубите вашето моментално уредување.',
+	'ajaxLogin2' => 'Дали сте сигурни?
+Ако ја напуштите страницата сега може да ги изгубите вашите направени промени на неа.',
+	'ajaxlogin-create' => 'Создајте сметка',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Zamwan
  */

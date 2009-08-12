@@ -308,6 +308,7 @@ $messages['el'] = array(
 	'form' => 'Φόρμα',
 	'formnoname' => 'Κανένα όνομα φόρμας',
 	'formbadname' => 'Κακό όνομα φόρμας',
+	'formbadnametext' => 'Δεν υπάρχει καμιά φόρμα με αυτό το όνομα.',
 	'formpattern' => '$1-φόρμα',
 	'formtitlepattern' => 'Προσθήκη νέου $1',
 	'formsave' => 'Αποθηκεύστε',
@@ -430,6 +431,13 @@ Vous devez le{{PLURAL:$2||s}} remplir.',
 	'formsaveerrortext' => "Une erreur inconnue s’est produite pendant la sauvegarde de ''$1''.",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'formsave' => 'Sôvar',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -467,9 +475,11 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'formsave' => 'Γράφειν',
+	'formbadpagename' => 'Κακὸν ὄνομα δέλτου',
 );
 
 /** Swiss German (Alemannisch)

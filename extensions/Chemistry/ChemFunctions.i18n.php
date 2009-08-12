@@ -99,6 +99,16 @@ $messages['arz'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'chemicalsources' => 'Kimyaya dair mənbələr',
+	'chemicalsource-desc' => 'Kimyəvi formullar üçün <nowiki><chemform></nowiki> teqini əlavə edin',
+	'chemFunctions_ListPage' => 'Kimyaya dair mənbələr',
+	'chemFunctions_Formula' => 'Formul',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

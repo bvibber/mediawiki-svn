@@ -454,6 +454,7 @@ $messages['el'] = array(
 	'todo-unrecognize-type' => 'Μη αναγνωρισμένος τύπος',
 	'todo-item-list' => 'Τα αντικείμενα σας',
 	'todo-no-item' => 'Κανένα αντικείμενο προς υλοποίηση.',
+	'todo-invalid-owner' => 'Άκυρος ιδιοκτήτης αυτού του αντικειμένου',
 	'todo-add-queue' => 'Προσθήκη ουράς…',
 	'todo-move-queue' => 'Μετακίνηση στην ουρά...',
 	'todo-list-for' => 'Λίστα πρακτέων για $1',
@@ -621,6 +622,18 @@ $4',
 	'todo-form-submit' => 'Soumettre la requête',
 	'right-todo' => 'Avoir une liste de choses à faire',
 	'right-todosubmit' => 'Restreindre les droits des listes personnelles de choses à faire',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'todo-new-queue' => 'Novél',
+	'todo-list-change' => 'Changiér',
+	'todo-list-cancel' => 'Anular',
+	'todo-new-item' => 'Novél elèment',
+	'todo-issue-summary' => 'Resumâ du problèmo :',
+	'todo-form-details' => 'Dètalys :',
 );
 
 /** Galician (Galego)

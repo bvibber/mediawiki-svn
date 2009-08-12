@@ -362,6 +362,7 @@ $messages['lo'] = array(
  */
 $messages['mk'] = array(
 	'contributionseditcount' => 'Овој корисник извршил {{PLURAL:$1|едно уредување|$1 уредувања}}.',
+	'contributionseditcount-desc' => 'Прикажува бројач на уредувања на [[Special:Contributions|страницата за придонеси на корисникот]]',
 );
 
 /** Malayalam (മലയാളം)

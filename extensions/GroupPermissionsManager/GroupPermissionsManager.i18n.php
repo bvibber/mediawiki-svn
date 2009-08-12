@@ -643,6 +643,7 @@ $messages['ee'] = array(
  */
 $messages['el'] = array(
 	'grouppermissions-search' => 'Ομάδα:',
+	'grouppermissions-dosearch' => 'Μετάβαση',
 	'grouppermissions-comment' => 'Σχόλιο:',
 	'grouppermissions-true' => 'Αληθινός',
 	'grouppermissions-false' => 'Ψεύτικος',

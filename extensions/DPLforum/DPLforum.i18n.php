@@ -67,6 +67,18 @@ $messages['arz'] = array(
 	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'dplforum-desc' => 'DPL-ə əsaslanan forum genişlənməsi',
+	'dplforum-by' => '$1-dən',
+	'dplforum-edited' => 'Sonuncu redaktə',
+	'dplforum-never' => 'Heç vaxt',
+	'dplforum-toofew' => 'Forum DPL: Kateqoriya sayı həddən artıq çoxdur!',
+	'dplforum-toomany' => 'Forum DPL: Kateqoriya sayı həddən artıq azdır!',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -621,6 +633,7 @@ $messages['ru'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Melos
  * @author Santu
  */
 $messages['scn'] = array(

@@ -125,6 +125,13 @@ $messages['lb'] = array(
 	'uploadblacklist-desc' => "Setzt d'Fonctionalitéit vun enger Schwaarzer Lëscht fir d'Eroplueden derbäi",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'uploadblacklist-desc' => 'Додава функција за црна листа на подигања',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

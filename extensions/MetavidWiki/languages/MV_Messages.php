@@ -1661,14 +1661,28 @@ $messages['de-formal'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'metavid' => 'Σελίδα MetaVid',
+	'specialpages-group-mv_group' => 'Ειδικές σελίδες MetaVidWiki',
+	'mvexportsearch' => 'εξαγωγή MetaVid',
+	'mv_move_delete_msg' => 'μεταφέρθηκε στο $1',
+	'mv_path_type_label' => 'τύποι μονοπατιών',
+	'mv_duration_label' => 'Διάρκεια',
+	'mv_save_changes' => 'Αποθήκευση αλλαγών',
+	'mv_media_path' => 'μονοπάτι μέσου',
+	'mv_upload_file' => 'Φόρτωση αρχείου',
+	'mv_external_file' => 'Εξωτερικό αρχείο',
+	'mv_tool_search' => 'Αναζήτηση',
 	'mv_history' => 'Ιστορικό',
 	'mv_remove' => 'αφαίρεση',
 	'mv_search_category' => 'Κατηγορία',
 	'mv_search_and' => 'και',
 	'mv_search_or' => 'ή',
 	'mv_category' => 'Κατηγορία',
+	'mv_edit_time' => 'Επεξεργασία Ημερομηνίας',
 );
 
 /** Esperanto (Esperanto)
@@ -1943,6 +1957,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Silvonen
  * @author Str4nd
@@ -1952,9 +1967,12 @@ $messages['fi'] = array(
 	'specialpages-group-mv_group' => 'MetaVidWikin toimintosivut',
 	'mv_ogg_high_quality' => 'Hyvälaatuinen – Ogg Theora 900 kbit/s',
 	'mvexportsearch' => 'MetaVid-vienti',
+	'mv_move_delete_msg' => 'siirretty kohteeseen $1',
 	'mv_save_changes' => 'Tallenna muutokset',
 	'mv_media_path' => 'mediapolku',
+	'mv_missing_cat' => 'Luokan nimi puuttuu',
 	'mv_remove_reason' => 'Poiston syy',
+	'mv_metavid_file' => 'Palvelimella on jo tämä tiedosto',
 	'mv_upload_file' => 'Tallenna tiedosto',
 	'mv_external_file' => 'Ulkoinen tiedosto',
 	'mv_tool_search' => 'Hae',
@@ -1966,6 +1984,7 @@ $messages['fi'] = array(
 	'mv_category_matches' => 'Luokkien vastaavuudet',
 	'mv_click_to_edit' => 'Klikkaa muokataksesi',
 	'mv_time_separator' => '$1 – $2',
+	'video_feed_cat' => 'Videosyöte luokkaan kohdistuen:',
 	'mv_play' => 'Soita',
 	'mv_edit' => 'Muokkaa',
 	'mv_history' => 'Historia',
@@ -1986,6 +2005,8 @@ $messages['fi'] = array(
 	'mv_basic_edit' => 'Perusmuokkaus',
 	'mv_remove_category' => 'Poista luokka',
 	'mv_existing_categories' => '{{PLURAL:$1|luokka|luokat}}:',
+	'mv_add_category' => 'Lisää luokitus',
+	'mv_basic_text_desc' => 'Sanallinen kuvailu (valinnainen)',
 	'mediasearch' => 'Mediahaku',
 	'mv_video_search' => 'Videohaku',
 	'mv_add_filter' => 'Lisää suodatin',
@@ -1995,12 +2016,20 @@ $messages['fi'] = array(
 	'mv_search_and' => 'ja',
 	'mv_search_or' => 'tai',
 	'mv_search_not' => 'ei',
+	'mv_search_date_range' => 'Aikajakso',
+	'mv_date_range' => 'aikaväli',
 	'mv_date_last_week' => 'Viime viikko',
 	'mv_category_results' => 'Luokan tulokset',
+	'mv_most_relevant' => 'Asiaan selkeimmin liittyvät',
+	'mv_most_viewed' => 'Katsotuimmat',
 	'mv_category' => 'luokka',
 	'mv_remove_filter' => 'poista suodatin',
 	'mv_view_wiki_page' => 'Näytä wikisivu',
 	'mv_editor_mode' => 'Muokkaustila',
+	'mv_sequence_add_manual' => 'Lisää nimenmukaisesti',
+	'mv_sequence_add_search' => 'Lisää haunmukaisesti',
+	'mv_sequence_edit_text' => 'Siirry tekstimuotoiseen editoriin',
+	'mv_sequence_edit_visual_editor' => 'Vaihda graafisen käyttöliittymän editoriin',
 	'mv_other_options' => 'Muut asetukset',
 	'mv_days' => '$1 {{PLURAL:$1|päivä|päivää}}',
 	'mv_hours' => '$1 {{PLURAL:$1|tunti|tuntia}}',
@@ -2009,6 +2038,7 @@ $messages['fi'] = array(
 	'mv_minutes_singular' => '$1 minuutti',
 	'mv_seconds' => '$1 {{PLURAL:$1|sekunti|sekuntia}}',
 	'mv_seconds_singular' => '$1 sekunti',
+	'mv_stream_length' => 'Videon pituus yhteensä:',
 	'mv_add_clip_by_name' => 'Lisää leike nimellä',
 	'mv_export_cmml' => 'CMML-vienti',
 	'mv_prev_cat' => 'Edellinen luokka: $1',
@@ -2586,6 +2616,7 @@ $messages['grc'] = array(
 	'mv_search_or' => 'ἢ',
 	'mv_search_not' => 'οὐ',
 	'mv_category' => 'κατηγορία',
+	'mv_edit_time' => 'Μεταγραφὴ Ἡμερομηνίας',
 );
 
 /** Swiss German (Alemannisch)
@@ -4783,6 +4814,7 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -4816,8 +4848,8 @@ $messages['mk'] = array(
 	'mv_basic_edit' => 'Основно уредување',
 	'mv_remove_category' => 'Бриши категорија',
 	'mv_existing_categories' => '{{PLURAL:$1|категорија|категории}}:',
-	'mv_add_category' => 'додади категоризација',
-	'mv_basic_text_desc' => 'Текстуален опис (опционо)',
+	'mv_add_category' => 'Додај категоризација',
+	'mv_basic_text_desc' => 'Текстуален опис (изборно)',
 	'mv_viewnext' => 'Види ($1)',
 	'mv_viewprevnext' => 'Види ($1) ($2)',
 	'mediasearch' => 'Пребарај медија',
@@ -4825,7 +4857,7 @@ $messages['mk'] = array(
 	'mv_next_cat' => 'Следна категорија: $1',
 	'mv_search_stream_title' => 'Пребарај низ тековен поток',
 	'mv_new_ht_en' => 'Нов транскрипт',
-	'mv_new_anno_en' => 'Нов приврзок или забелешка',
+	'mv_new_anno_en' => 'Нова ознака или забелешка',
 );
 
 /** Malayalam (മലയാളം)
@@ -7329,6 +7361,7 @@ $messages['su'] = array(
  * @author M.M.S.
  * @author Najami
  * @author Purodha
+ * @author Rotsee
  */
 $messages['sv'] = array(
 	'metavid' => 'Metavid-sida',
@@ -7401,6 +7434,8 @@ $messages['sv'] = array(
 	'mv_watch_clip' => 'Se klipp',
 	'mv_close_clip' => 'Stäng klipp',
 	'mv_improve_transcript' => 'Förbättra transkription',
+	'mv_people_matches' => 'Träffar på folk',
+	'mv_category_matches' => 'Träffar på kategorier',
 	'mv_click_to_edit' => 'klicka för att redigera',
 	'ht_en' => 'Transkription',
 	'ht_en_desc' => 'Engelska transkriptioner. Denna överläggstypen är för uppläst text',
@@ -7424,9 +7459,10 @@ $mvMVDTypeDefaultDisp borde vara ett undersätt av $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'Video matning för kategori:',
 	'mv_cat_search_note' => 'Notera: Kategorier listar endast underkategorier i högsta nivå;
 för alla metadata i ett kategoriområde, sök efter $1',
+	'mv-category-media-count' => '$1 mediesegment i kategorin',
 	'mv_mvd_linkback' => 'Del av dataflödet $1 <br />
 Hoppa till dataflödesvisning: $2',
-	'mvBadMVDtitle' => 'missad typ, missat dataflöde eller ogiltigt tidsformat',
+	'mvBadMVDtitle' => 'typ eller ström saknas, eller så är tidsformatet ogiltigt',
 	'mvMVDFormat' => 'MVD-titel borde vara i formatet: mvd:typ:dataflödesnamn/starttid/sluttid',
 	'mv_play' => 'Spela',
 	'mv_edit' => 'Redigera',
@@ -7458,6 +7494,7 @@ Hoppa till dataflödesvisning: $2',
 	'mv_viewprevnext' => 'Visa ($1) ($2)',
 	'mediasearch' => 'Media sök',
 	'mv_search_sel_t' => 'Välj sök sätt',
+	'mv_do_media_search' => 'Gör en MetaVid-sökning efter $1',
 	'mv_results_for' => 'Resultat för $1',
 	'mv_video_search' => 'Videosökning',
 	'mv_page_search' => 'Gör en wikisidesökning efter $1',
@@ -7465,6 +7502,9 @@ Hoppa till dataflödesvisning: $2',
 	'mv_search_match' => 'Sök text',
 	'mv_search_spoken_by' => 'Uppläst av',
 	'mv_search_categories' => 'Kategorier',
+	'mv_search_bills' => 'Samlingslista',
+	'mv_search_bill' => 'Samlingslista',
+	'mv_bill' => 'samlingslista',
 	'mv_search_category' => 'Kategori',
 	'mv_search_smw_property' => 'Semanitska värden',
 	'mv_search_smw_property_numeric' => 'Numeriskt semantiskt värde',
@@ -7477,21 +7517,36 @@ Hoppa till dataflödesvisning: $2',
 	'mv_date_range' => 'datumområde',
 	'mv_date_last_week' => 'Senaste veckan',
 	'mv_category_results' => 'Kategoriresultat',
+	'mv_people_results' => 'Sökresultat bland folk',
+	'mv_bill_results' => 'Sökresultat i förteckning',
+	'mv_intrest_group_results' => 'Intressegrupper',
 	'mv_most_relevant' => 'Mest relevant',
 	'mv_most_recent' => 'Nyaste',
 	'mv_most_viewed' => 'Mest visade',
 	'mv_spoken_by' => 'uppläst av',
+	'mv_speech_by' => 'tal av',
 	'mv_category' => 'kategori',
 	'mv_search_no_results' => 'Inga mediaträffar',
 	'mv_media_matches' => 'Mediaträffar',
 	'mv_remove_filter' => 'ta bort filter',
 	'mv_advaced_search' => 'Avancerat Media Sök',
 	'mv_expand_play' => 'Utvidga och spela integreterat',
+	'mv_play_inline' => 'Spela internt',
 	'mv_view_in_stream_interface' => 'Visa i dataflödesgränssnitt',
 	'mv_view_wiki_page' => 'Visa wiki sida',
 	'mv_error_mvd_not_found' => 'Fel: mvd hittades inte',
 	'mv_edit_sequence' => 'Redigerar sekvens: $1',
 	'mv_sequence_player_title' => 'sekvensspelare',
+	'mv_resource_not_found' => "Kunde inte hitta resursen '''$1'''",
+	'mv_resource_not_supported' => "Resurstypen '''$1''' stödjs ej",
+	'mv_resource_locator' => 'Resurslokalisator',
+	'mv_unknown_clipboard_action' => 'Du försökte göra något med urklippen som det här programmet inte förstår',
+	'mv_media_search' => 'Sök media',
+	'mv_editor_options' => 'Redigeringsinställningar',
+	'mv_editor_mode' => 'Redigeringsläge',
+	'mv_simple_editor_desc' => 'Enkel redigering (iMovie-liknande)',
+	'mv_advanced_editor_desc' => 'Avancerad redigering (Final Cut-liknande)',
+	'mv_transitions' => 'Övergångar',
 	'mv_save_sequence' => 'Spara sekvens',
 	'mv_sequence_page_desc' => 'Spara den nuvarande sekvensen',
 	'mv_sequence_add' => 'Lägg till klipp',
@@ -7500,18 +7555,37 @@ Hoppa till dataflödesvisning: $2',
 	'mv_sequence_add_search' => 'Lägg till efter sökning',
 	'mv_sequence_add_search_desc' => 'Lägg till klipp efter mediasökning',
 	'mv_seq_add_end' => 'Lägg till sekvensslut',
+	'mv_sequence_edit_text' => 'Växla till textredigering',
+	'mv_sequence_edit_visual_editor' => 'Växla till grafisk redigering',
+	'mv_other_options' => 'Andra inställningar',
+	'mv_contextmenu_opt' => 'Aktivera kontextmenyer',
+	'mv_days' => '$1 {{PLURAL:$1|dag|dagar}}',
+	'mv_hours' => '$1 {{PLURAL:$1|timme|timmar}}',
+	'mv_hours_singular' => '$1 timme',
+	'mv_minutes' => '$1 {{PLURAL:$1|minut|minuter}}',
+	'mv_minutes_singular' => '$1 minut',
+	'mv_seconds' => '$1 {{PLURAL:$1|sekund|sekunder}}',
+	'mv_seconds_singular' => '$1 sekund',
+	'mv_stream_length' => 'Total videolängd:',
 	'mv_sequence_timeline' => 'Sekvenstidslinje:',
 	'mv_edit_sequence_desc_help' => 'Sekvensbeskrivning',
 	'mv_edithelpsequence' => 'Help:Sekvensredigering',
 	'mv_seq_summary' => 'Sammandrag av sekvensredigering',
 	'mv_add_clip_by_name' => 'Lägg till klipp efter namn',
+	'mv_stream_resource_export' => 'Export av strömningsresurser',
 	'mv_export_cmml' => 'Exportera CMML',
 	'mv_navigate_stream' => 'Navigera fulla dataflödet',
+	'mv_stream_overview' => 'Strömningsvy',
+	'mv_edit_time' => 'Redigeringstid',
 	'mv_embed_options' => 'Inkluderingsalternativ',
 	'mv_overlay' => 'Överläggskontroll',
 	'mv_stream_tool_heading' => 'Dataflödesverktyg',
 	'mv_tool_missing' => 'det begärda verktyget finns inte',
 	'mv_bad_tool_request' => 'dålig verktygslinje; borde vara i formen: verktygsnamn|visningsnamn',
+	'mv_prev_speech' => 'Föregående tal: $1',
+	'mv_next_speech' => 'Nästa tal: $1',
+	'mv_prev_bill' => 'Föregående förteckning: $1',
+	'mv_next_bill' => 'Nästa förteckning: $1',
 	'mv_prev_cat' => 'Föregående kategori: $1',
 	'mv_next_cat' => 'Nästa kategori: $1',
 	'mv_search_stream' => 'Sök dataflöde',
@@ -7521,6 +7595,9 @@ Hoppa till dataflödesvisning: $2',
 	'mv_mang_layers' => 'Behandla lager',
 	'mv_mang_layers_title' => 'Behandla lagervisningsättet för det nuvarande dataflödet',
 	'mv_protect_source_material' => 'Orginalt källmaterial beskyddat mot redigeringar',
+	'right-mv_delete_mvd' => 'Radera MetaVid-metadata',
+	'action-mv_delete_mvd' => 'radera den här MetaVid-metadatan',
+	'right-mv_edit_stream' => 'Redigera strömningsfiler',
 );
 
 /** Silesian (Ślůnski)
@@ -8222,15 +8299,67 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'mv_edit_stream_files' => '编辑流文件',
+	'mv_path_type_mp4_stream' => 'MP4流服务器',
+	'mv_file_list' => '流文件',
+	'mv_label_stream_name' => '流名称',
+	'mv_upload_file' => '上载文件',
+	'mv_external_file' => '外部文件',
 	'mv_tool_search' => '搜索',
+	'mv_search_stream_name' => '流名称',
+	'mv_stream_name' => '流名称',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'metavid' => 'MetaVid頁面',
+	'mv_stream_meta' => '串流頁面',
+	'mv_add_stream' => 'MetaVid加入串流',
+	'mv_edit_stream' => 'MetaVid編輯串流',
+	'mvexportsearch' => 'MetaVid匯出',
+	'mvexportstream' => 'MetaVid匯出串流',
+	'mv_move_delete_msg' => '已移動到$1',
+	'mv_add_stream_page' => 'MetaVid加入串流',
+	'mv_add_stream_submit' => '加入串流',
+	'mv_edit_stream_files' => '編輯串流檔案',
+	'mv_path_type_mp4_stream' => 'MP4串流伺服器',
+	'mv_path_type_label' => '路徑類型',
+	'mv_save_changes' => '儲存變更',
+	'mv_file_list' => '串流檔案',
+	'mv_label_stream_name' => '串流名稱',
+	'mv_error_stream_insert' => '插入串流失敗',
+	'mv_label_stream_type' => '串流類型',
+	'mv_upload_file' => '上載檔案',
+	'mv_external_file' => '外部檔案',
 	'mv_tool_search' => '搜尋',
+	'mv_tool_export' => '匯出',
+	'mv_watch_clip' => '觀看短片',
+	'mv_close_clip' => '關閉短片',
+	'mv_improve_transcript' => '改進字幕',
+	'ht_en' => '字幕',
+	'mv_start_desc' => '開始時間',
+	'mv_end_desc' => '結束時間',
+	'mv_search_or' => '或',
+	'mv_search_stream_name' => '串流名稱',
+	'mv_stream_name' => '串流名稱',
+	'mv_date_last_week' => '過去一星期',
+	'mv_resource_not_found' => "找不到資源'''$1'''",
+	'mv_sequence_add' => '加入短片',
+	'mv_other_options' => '其他選項',
+	'mv_days' => '$1天',
+	'mv_hours' => '$1小時',
+	'mv_hours_singular' => '$1小時',
+	'mv_minutes' => '$1分',
+	'mv_minutes_singular' => '$1分',
+	'mv_seconds' => '$1秒',
+	'mv_seconds_singular' => '$1秒',
+	'mv_add_clip_by_name' => '按名稱加入短片',
+	'mv_stream_tool_heading' => '串流工具',
+	'right-mv_edit_stream' => '編輯串流檔案',
 );
 

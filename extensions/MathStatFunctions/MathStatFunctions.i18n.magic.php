@@ -31,3 +31,18 @@ $magicWords['en'] = array(
 	'csc'           => array( 0, 'csc' ),
 	'acsc'          => array( 0, 'acsc', 'arccsc' ),
 );
+
+$magicWords['ar'] = array(
+	'const'    => array( '0', 'ثابت', 'const' ),
+	'mean'     => array( '0', 'متوسط', 'mean' ),
+	'exp'      => array( '0', 'أس', 'exp' ),
+	'log'      => array( '0', 'لوغاريتم', 'log' ),
+	'ln'       => array( '0', 'لوغاريتم_طبيعي', 'ln' ),
+	'cos'      => array( '0', 'جتا', 'cos' ),
+	'sin'      => array( '0', 'جا', 'sin' ),
+);
+
+$magicWords['nl'] = array(
+	'median'   => array( '0', 'mediaan', 'median' ),
+	'mean'     => array( '0', 'gemiddelde', 'mean' ),
+);

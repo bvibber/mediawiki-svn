@@ -1388,12 +1388,13 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'badimages' => 'Листа на лоши слики',
 	'badimages-desc' => 'Проширување на можностите на МедијаВики во работата со листата на лоши слики',
-	'badimages-add-btn' => 'Додади',
+	'badimages-add-btn' => 'Додај',
 	'badimages-added' => '$1 беше додадена во листата',
 	'badimages-count' => "Има {{PLURAL:$1| | }} '''$1''' {{PLURAL:$1|слика|слики}} во листата на лоши слики.",
 	'badimages-name' => 'Име:',
@@ -1874,8 +1875,10 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'badimages' => 'Liste de le immaggine no bbuene',
+	'badimages-desc' => "Estende 'a funzione d'a liste de le immaggine cattive de MediaUicchi",
 	'badimages-add-btn' => 'Aggiunge',
 	'badimages-added' => "$1 ha state aggiunde a 'a liste.",
+	'badimages-count' => "There {{PLURAL:$1|Stè|Stonne}} '''$1''' {{PLURAL:$1|immaggine|immaggine}} sus 'a liste de le immaggine cattive.",
 	'badimages-name' => 'Nome:',
 	'badimages-not-added' => "L'immaggine non ge pò essere aggiunde.",
 	'badimages-not-removed' => "L'immaggine non ge pò essere luete.",
@@ -1887,6 +1890,9 @@ $messages['roa-tara'] = array(
 	'badimages-subheading' => 'Artichele corrende',
 	'badimages-unprivileged' => '(Tu non ge tìne le permesse sufficiende pe cangià sta liste)',
 	'badimages-log-name' => 'Liste de le immaggine sbagliate',
+	'badimages-log-header' => "Quiste ète l'archivije de le cangiaminde a 'a [[{{MediaWiki:Badimages-page}}|liste de le immagine cattive]].",
+	'badimages-log-add' => "aggiunge [[$1]] jndr'à liste de le immaggine cattive",
+	'badimages-log-remove' => "luate [[$1]] da 'a liste de le immaggine cattive",
 	'badimages-page' => '{{ns:help}}:Liste de le immaggine no bbuene',
 	'right-badimages' => "Aggiuèrne 'a liste de le immaggine sbagliate",
 );

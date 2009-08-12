@@ -283,6 +283,13 @@ $messages['lt'] = array(
 	'antibot-desc' => 'Paprasta sustena spamboto patikroms ir trigerio užkrovoms',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'antibot-desc' => 'Едноставен систем за проверување на спамботови и повлекувачки капацитети',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jyothis
  */

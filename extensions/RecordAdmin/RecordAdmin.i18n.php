@@ -395,11 +395,38 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'recordadmin' => 'Καταγραφή διαχείρισης',
+	'recordadmin-select' => 'Επιλογή',
+	'recordadmin-recordtype' => 'τύπος καταγραφής',
+	'recordadmin-newsearch' => 'Νέα $1 αναζήτηση',
+	'recordadmin-newrecord' => 'Επιλογή ενός άλλου τύπου καταγραφής',
 	'recordadmin-submit' => 'Υποβολή',
+	'recordadmin-alreadyexist' => 'Συγνώμη, το "$1" υπάρχει ήδη!',
+	'recordadmin-createsuccess' => 'Το $1 δημιουργήθηκε',
+	'recordadmin-badtitle' => 'Άσχημος τίτλος!',
+	'recordadmin-recordid' => 'Καταγραφή ταυτότητας/ονόματος:',
+	'recordadmin-invert' => 'Ανατροπή επιλογής',
 	'recordadmin-buttonsearch' => 'Αναζήτηση',
+	'recordadmin-buttoncreate' => 'Δημιουργία',
+	'recordadmin-buttonreset' => 'Επαναφορά',
+	'recordadmin-searchresult' => 'Αποτελέσματα αναζήτησης',
+	'recordadmin-nomatch' => 'Δεν βρέθηκαν αντίστοιχα αποτελέσματα!',
+	'recordadmin-typeupdated' => 'Οι $1 ιδιότητες ενημερώθηκαν',
+	'recordadmin-updatesuccess' => 'Το $1 ενημερώθηκε',
+	'recordadmin-buttonsave' => 'Αποθήκευση',
+	'recordadmin-createlink' => 'δημιουργία ενός',
+	'recordadmin-summary-typecreated' => 'Νέα $1 δημιουργήθηκε',
+	'recordadmin-viewlink' => 'προβολή',
+	'recordadmin-editlink' => 'επεξεργασία',
+	'recordadmin-created' => 'Δημιουργήθηκε',
+	'recordadmin-modified' => 'Μετατράπηκε',
 	'recordadmin-actions' => 'Ενέργειες',
+	'recordadmin-needscontent' => 'Προσθήκη περιεχομένου...',
+	'recordadmin-editwithform' => 'Επεξεργασία με φόρμα',
+	'recordadmin-typeinfo' => '$1 καταγραφή',
 );
 
 /** Esperanto (Esperanto)
@@ -495,6 +522,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Silvonen
  * @author Str4nd
  */
@@ -507,7 +535,9 @@ $messages['fi'] = array(
 	'recordadmin-buttoncreate' => 'Luo',
 	'recordadmin-searchresult' => 'Hakutulokset',
 	'recordadmin-updatesuccess' => '$1 päivitetty',
+	'recordadmin-updateerror' => 'Päivityksessä tapahtui virhe',
 	'recordadmin-buttonsave' => 'Tallenna',
+	'recordadmin-createlink' => 'luo sellainen',
 	'recordadmin-viewlink' => 'näytä',
 	'recordadmin-editlink' => 'muokkaa',
 	'recordadmin-created' => 'Luotu',
@@ -839,9 +869,20 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Melos
  */
 $messages['it'] = array(
+	'recordadmin-select' => 'Seleziona',
+	'recordadmin-submit' => 'Invia',
+	'recordadmin-badtitle' => 'Titolo non corretto',
 	'recordadmin-buttonsearch' => 'Ricerca',
+	'recordadmin-buttoncreate' => 'Crea',
+	'recordadmin-buttonreset' => 'Reimposta',
+	'recordadmin-searchresult' => 'Risultati della ricerca',
+	'recordadmin-buttonsave' => 'Salva',
+	'recordadmin-editlink' => 'modifica',
+	'recordadmin-created' => 'Creata',
+	'recordadmin-actions' => 'Azioni',
 );
 
 /** Japanese (日本語)
@@ -1645,6 +1686,10 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'recordadmin-badtitle' => '標題錯誤！',
+	'recordadmin-invert' => '反向選擇',
+	'recordadmin-buttonsearch' => '搜尋',
 	'recordadmin-buttonreset' => '重置',
+	'recordadmin-viewlink' => '檢視',
+	'recordadmin-editlink' => '編輯',
 );
 

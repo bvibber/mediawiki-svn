@@ -157,6 +157,20 @@ $messages['dsb'] = array(
 	'mostrevisors-viewcontributors' => 'Głownych wobźěłarjow se woglědaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'mostrevisors-limitlinks' => 'Εμφάνιση μέχρι και $1 σελίδες',
+	'mostrevisors-namespace' => 'Περιοχή:',
+	'mostrevisors-none' => 'Δεν βρέθηκαν καθόλου καταχωρήσεις.',
+	'mostrevisors-submit' => 'Πήγαινε',
+	'mostrevisors-showredir' => 'Εμφάνιση σελίδων ανακατεύθυνσης',
+	'mostrevisors-hideredir' => 'Απόκρυψη σελίδων ανακατεύθυνσης',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|επεξεργαστής|επεξεργαστές}}',
+	'mostrevisors-viewcontributors' => 'Εμφάνιση κύριων συνεισφέροντων',
+);
+
 /** Estonian (Eesti)
  * @author Avjoska
  */
@@ -168,6 +182,7 @@ $messages['et'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -175,6 +190,7 @@ $messages['fi'] = array(
 	'mostrevisors-submit' => 'Siirry',
 	'mostrevisors-showredir' => 'Näytä ohjaussivut',
 	'mostrevisors-hideredir' => 'Piilota ohjaussivut',
+	'mostrevisors-viewcontributors' => 'Tarkastele merkittävimpiä muokkaajia',
 );
 
 /** French (Français)
@@ -213,6 +229,13 @@ $messages['gl'] = array(
 	'mostrevisors-hideredir' => 'Agochar as páxinas de redirección',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editores}}',
 	'mostrevisors-viewcontributors' => 'Ver os principais contribuíntes',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'mostrevisors-namespace' => 'Ὀνοματεῖον:',
 );
 
 /** Swiss German (Alemannisch)
@@ -419,6 +442,13 @@ $messages['oc'] = array(
 	'mostrevisors-viewcontributors' => 'Veire los contributors principals',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mostrevisors-submit' => 'ورځه',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
@@ -474,5 +504,15 @@ $messages['sk'] = array(
  */
 $messages['te'] = array(
 	'mostrevisors-submit' => 'వెళ్ళు',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'mostrevisors-namespace' => '名字空間：',
+	'mostrevisors-showredir' => '顯示重定向頁面',
+	'mostrevisors-hideredir' => '隱藏重定向頁面',
+	'mostrevisors-viewcontributors' => '檢視主要貢獻者',
 );
 

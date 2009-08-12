@@ -246,6 +246,13 @@ $messages['lt'] = array(
 	'emailaddressimage-desc' => 'Prideda <tt>&lt;email&gt;</tt>, kad rodytų elektroninio pašto adresą kaip paveikslėlį',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'emailaddressimage-desc' => 'Додава <tt>&lt;email&gt;</tt> за да прикаже е-поштенска адреса како слика',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

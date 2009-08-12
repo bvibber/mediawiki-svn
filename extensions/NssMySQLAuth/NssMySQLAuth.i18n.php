@@ -215,6 +215,22 @@ $messages['dsb'] = array(
 	'nss-db-error' => 'Zmólka pśi cytanju z awtenficěrowańskeje datoweje banki',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'accountmanager' => 'Διαχειριστής λογαριασμών',
+	'am-username' => 'όνομα χρήστη',
+	'am-email' => 'ηλεκτρονική διεύθυνση',
+	'am-active' => 'ενεργός',
+	'nss-rights' => 'δικαιώματα',
+	'nss-save-changes' => 'Αποθήκευση αλλαγών',
+	'nss-create-account-header' => 'Δημιουργία νέου λογαριασμού',
+	'nss-create-account' => 'Δημιουργία λογαριασμού',
+	'nss-no-mail' => 'Μην στείλεις email',
+	'nss-welcome-mail-subject' => 'Δημιουργία λογαριασμού',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -897,5 +913,16 @@ $messages['vo'] = array(
 	'nss-no-mail' => 'No sedolös poti leäktronik',
 	'nss-welcome-mail' => 'Kal labü gebananem: $1 e letavöd: $2 pejafon ole.',
 	'nss-welcome-mail-subject' => 'Kalijafam',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'am-username' => '使用者名稱',
+	'am-email' => '電郵',
+	'nss-rights' => '權限',
+	'nss-save-changes' => '儲存變更',
+	'nss-no-mail' => '不要傳送電郵',
 );
 

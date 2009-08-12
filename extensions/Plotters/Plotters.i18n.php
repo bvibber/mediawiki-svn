@@ -116,11 +116,13 @@ Molimo definirajte klasu tabele tako da ima najviše 255 znakova.',
 );
 
 /** German (Deutsch)
+ * @author MF-Warburg
  * @author Sebastian Wallroth
  */
 $messages['de'] = array(
 	'plotters' => 'Plotter',
 	'plotters-title' => 'Plotter',
+	'plotters-uses' => 'Nutzungen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -145,6 +147,18 @@ Pšosym definěruj plotowe mě, kótarež ma maksimalnje 255 znamuškow.',
 	'plotters-errors' => '{{PLURAL:$1|Ploterowa zmólka|Ploterowej zmólce|Ploterowe zmólki|Ploterowe zmólki}}:',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'plotters' => 'Σχεδιοποιητές',
+	'plotters-title' => 'Σχεδιοποιητές',
+	'plotters-uses' => 'Χρήσεις',
+	'plotters-missing-script' => 'Δεν προσδιορίστηκε κανένα σκριπτ',
+	'plotters-missing-arguments' => 'Δεν καθορίστηκαν επιχειρήματα',
+	'plotters-errors' => 'Σχεδιοποιητές {{PLURAL:$1|σφάλματος|σφαλμάτων}}:',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
@@ -162,6 +176,16 @@ Por favor define un script, cuyo nombre tenga 255 caracteres de longitud como m�
 Por favor define un preprocesador, cuyo nombre tenga 255 caracteres de longitud como máximo.',
 	'plotters-no-data' => 'sin datos proveídos',
 	'plotters-invalid-renderer' => 'Se seleccionó un renderizador inválido.',
+);
+
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'plotters-missing-script' => 'Mitään skriptiä ei määritetty.',
+	'plotters-excessively-long-scriptname' => 'Skriptin nimi on liian pitkä.
+Nimeä skripti jonka nimi on enimmiltään 255 merkkiä pitkä.',
+	'plotters-no-data' => 'Tietoa ei saatu.',
 );
 
 /** French (Français)

@@ -1258,6 +1258,7 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-edit-path' => 'προσθήκη σημείων',
 	'gm-show-path' => 'εμφάνιση σημείων',
 	'gm-color-path' => 'αλλάξτε χρώμα',
+	'gm-remove-fill' => 'αφαίρεση-γέμισμα',
 	'gm-line-color' => 'Χρώμα γραμμής',
 	'gm-opacity' => 'Αδιαφάνεια',
 	'gm-line-width' => 'Πλάτος',
@@ -3249,6 +3250,7 @@ $wgGoogleMapsMessages['ml'] = array(
  * @author Chinneeb
  */
 $wgGoogleMapsMessages['mn'] = array(
+	'gm-yes' => 'Тийм',
 	'gm-search' => 'Хайх',
 );
 
@@ -4138,12 +4140,15 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-tab-title' => 'Titlu etichetă',
 	'gm-tab' => 'Etichetă',
 	'gm-save-point' => 'salvează &amp; închide',
+	'gm-load-map-from-article' => 'Încarcă o hartă de la pagina:',
+	'gm-no-maps' => 'Nu s-a găsit nici o hartă de încărcat în această pagină.',
 	'gm-load-map' => 'Încarcă hartă',
 	'gm-clip-result' => 'Adaugă la hartă',
 	'gm-no-results' => 'Ne pare rău, nici un rezultat',
 	'gm-searching' => 'căutare…',
 	'gm-map' => 'Hartă',
 	'gm-are-you-sure' => 'Sunteţi sigur?',
+	'gm-clear-all-points' => 'Şterge toate punctele',
 	'gm-refresh-points' => 'Reactualizează toate punctele',
 	'gm-width' => 'Lăţime',
 	'gm-height' => 'Înălţime',
@@ -4343,9 +4348,11 @@ $wgGoogleMapsMessages['sc'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Melos
  * @author Santu
  */
 $wgGoogleMapsMessages['scn'] = array(
+	'gm-desc' => 'Crea facilmenti mappi cu marcatura in stili wiki',
 	'gm-incompatible-browser' => 'Pi taliari la mappa ca veni misa nti stu spàzziu, hà usari nu browser cumpatìbbili.',
 	'gm-incompatible-browser-link' => 'Fà clic ccà pi taliari na lista di browser cunpatìbbili.',
 	'gm-no-editor' => 'Purtroppu lu tò browser non è bonu pi la carattirìstica di criazzioni di mappi ntirattivi. Prova l\'ùrtima virsioni di <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac e Linux).',

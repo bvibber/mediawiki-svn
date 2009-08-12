@@ -380,3 +380,11 @@ $messages['vi'] = array(
 	'tog-microid' => 'Xuất bản một <a href="http://microid.org/">MicroID</a> để xác nhận tài khoản bằng những dịch vụ bên ngoài',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'microid-desc' => '在用戶頁面新增一個[http://www.microid.org/ MicroID]以確認含外部服務的帳戶',
+	'tog-microid' => '發佈一個<a href="http://microid.org/">MicroID</a>以確認含外部服務的帳戶',
+);
+

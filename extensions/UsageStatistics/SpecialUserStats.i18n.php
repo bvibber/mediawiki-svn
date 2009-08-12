@@ -705,6 +705,24 @@ $messages['fr'] = array(
 	'right-viewsystemstats' => 'Voir les [[Special:UserStats|statistiques d’utilisation du wiki]]',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'usagestatisticsinterval' => 'Intervalle',
+	'usagestatisticstype' => 'Tipo',
+	'usagestatisticsstart' => 'Dâta de comencement',
+	'usagestatisticsend' => 'Dâta de fin',
+	'usagestatisticssubmit' => 'Gènèrér les statistiques',
+	'usagestatisticsintervalday' => 'Jorn',
+	'usagestatisticsintervalweek' => 'Semana',
+	'usagestatisticsintervalmonth' => 'Mês',
+	'usagestatisticsincremental' => 'Incrèmentala',
+	'usagestatisticsincremental-text' => 'Incrèmentalas',
+	'usagestatisticscumulative' => 'Cumulâtif',
+	'usagestatisticscumulative-text' => 'Cumulâtives',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */
@@ -2002,6 +2020,7 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'usagestatisticstype' => '類型',
 	'usagestatisticsstart' => '開始日期',
 	'usagestatisticsend' => '結束日期',
 );

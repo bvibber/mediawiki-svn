@@ -190,9 +190,13 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'randomincategory' => 'Τυχαία σελίδα στην κατηγορία',
+	'randomincategory-toolbox' => 'Τυχαία σελίδα',
 	'randomincategory-label' => 'Κατηγορία:',
+	'randomincategory-submit' => 'Πήγαινε',
 );
 
 /** Esperanto (Esperanto)

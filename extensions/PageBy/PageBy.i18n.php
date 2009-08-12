@@ -146,8 +146,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'pageby-contributors' => 'Συνεισφέροντες:',
 	'pageby-anon' => '<i>ανώνυμος</i>',
 );
 

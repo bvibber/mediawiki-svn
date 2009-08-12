@@ -725,12 +725,16 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'slippymap_desc' => 'Permite o uso da marca <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para apresentar um mapa corrediço OpenLayers. Os mapas provêm de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_error' => '$1 erro: $2',
+	'slippymap_errors' => '$1 erros:',
 	'slippymap_code' => 'Código wiki para esta vista do mapa:',
 	'slippymap_button_code' => 'Buscar código wiki',
 	'slippymap_resetview' => 'Reiniciar vista',
+	'slippymap_clicktoactivate' => 'Clique para ativar o mapa',
 );
 
 /** Romanian (Română)
@@ -878,5 +882,12 @@ $messages['vi'] = array(
 	'slippymap_button_code' => 'Xem mã wiki',
 	'slippymap_resetview' => 'Mặc định lại bản đồ',
 	'slippymap_clicktoactivate' => 'Nhấn để khởi động bản đồ',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'slippymap_error' => '$1錯誤：$2',
 );
 

@@ -348,6 +348,14 @@ Le gestionnaire du site n’est pas responsable de leur contenu.',
 	'talkhere-collapse' => 'cacher l’éditeur',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'talkhere-talkpage' => 'pâge de discussion',
+	'talkhere-addcomment' => 'Apondre un comentèro',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

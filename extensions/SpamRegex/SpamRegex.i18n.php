@@ -359,12 +359,17 @@ Buź pak wobglědniwy, wuraze njeby pśekrotke abo pśepowšykne byś.',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'spamregex' => 'Τακτική έκφραση spam',
+	'spamregex-currently-blocked' => "'''Υπάρχουσες φραγμένες φράσεις:'''",
+	'spamregex-no-currently-blocked' => "'''Δεν υπάρχουν φραγμένες φράσεις.'''",
 	'spamregex-unblock-success' => 'Η απόφραξη ολοκληρώθηκε επιτυχώς.',
 	'spamregex-block-success' => 'Η φραγή ήταν επιτυχής',
 	'spamregex-block-message' => "Η φράση '''$1''' έχει φραγεί.",
 	'spamregex-warning-1' => 'Δώστε μια φράση για φραγή.',
 	'spamregex-already-blocked' => 'Ο "$1" είναι ήδη φραγμένος',
 	'spamregex-phrase-block' => 'Φράση για φραγή:',
+	'spamregex-phrase-block-text' => 'γραφή φράσης στο κείμενο της σελίδας',
+	'spamregex-phrase-block-summary' => 'φραγή φράση στη σύνοψη',
 	'spamregex-text' => '(κείμενο)',
 	'spamregex-summary-log' => '(Περίληψη)',
 );
@@ -501,6 +506,14 @@ $messages['fr'] = array(
 	'spamregex-text' => '(Texte)',
 	'spamregex-summary-log' => '(Commentaire)',
 	'right-spamregex' => 'Bloquer du spam depuis [[Special:SpamRegex]]',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'spamregex-text' => '(Tèxte)',
+	'spamregex-summary-log' => '(Rèsumâ)',
 );
 
 /** Western Frisian (Frysk)

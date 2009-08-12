@@ -386,6 +386,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'readerfeedback' => 'Τι πιστεύετε για αυτή τη σελίδα;',
 	'readerfeedback-reliability' => 'Αξιοπιστία',
 	'readerfeedback-completeness' => 'Πληρότητα',
 	'readerfeedback-npov' => 'Ουδετερότητα',
@@ -400,6 +401,7 @@ $messages['el'] = array(
 	'readerfeedback-submit' => 'Υποβολή',
 	'readerfeedback-submitting' => 'Υποβολή ...',
 	'readerfeedback-finished' => 'Σας ευχαριστούμε!',
+	'readerfeedback-tagfilter' => 'Ετικέτα:',
 );
 
 /** Esperanto (Esperanto)
@@ -1633,5 +1635,8 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'readerfeedback-submit' => '提交',
+	'readerfeedback-finished' => '謝謝！',
+	'readerfeedback-tagfilter' => '標籤：',
+	'tooltip-ca-ratinghist' => '本頁面的讀者評分',
 );
 

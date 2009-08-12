@@ -129,6 +129,16 @@ $messages['dsb'] = array(
 	'right-purgecache' => 'Tabelu OBJECTCACHE wulašowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'purgecache' => 'Εκκαθάριση λανθάνουσας μνήμης',
+	'purgecache-warning' => 'Αυτό θα εκκαθαρίσει τη λανθάνουσα μνήμη των πινάκων.',
+	'purgecache-purged' => 'Η λανθάνουσα μνήμη έχει εκκαθαριστεί.',
+	'purgecache-button' => 'Εκκαθάριση',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

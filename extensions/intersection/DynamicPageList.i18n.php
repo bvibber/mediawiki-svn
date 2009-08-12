@@ -228,9 +228,13 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'intersection_toomanycats' => 'Tõrge: Liiga palju kategooriaid!',
+	'intersection_toofewcats' => 'Tõrge: Liiga vähe kategooriaid!',
 	'intersection_noresults' => 'Viga: Tulemusi ei ole!',
+	'intersection_noincludecats' => 'Tõrge: Lisa vähemalt üks kategooria või täpsusta nimeruum!',
 );
 
 /** Basque (Euskara)

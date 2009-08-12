@@ -197,6 +197,14 @@ $messages['fr'] = array(
 	'uos-title' => 'Distribution des valeurs de l’option utilisateur $1',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'uos-unknown' => '* Per dèfôt',
+	'uos-other' => '* Ôtros',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -412,6 +420,18 @@ $messages['pt'] = array(
 	'uos-choose' => 'Escolha uma das seguintes opções de usuário: $1',
 	'uos-unknown' => '*Padrão',
 	'uos-other' => '*Outro',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Special page]] para reportar o uso de opção de usuário do MediaWiki',
+	'uos-warn' => 'PHPlot não está instalado!',
+	'uos-choose' => 'Escolha uma das seguintes opções de usuário: $1',
+	'uos-unknown' => '*Padrão',
+	'uos-other' => '*Outro',
+	'uos-title' => 'Distribuição de valores da opção de usuário $1',
 );
 
 /** Romanian (Română)

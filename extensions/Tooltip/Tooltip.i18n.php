@@ -244,10 +244,11 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'tooltip-desc' => 'Додава <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt> приврзок',
+	'tooltip-desc' => 'Додава <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt> ознака',
 );
 
 /** Low German (Plattdüütsch)

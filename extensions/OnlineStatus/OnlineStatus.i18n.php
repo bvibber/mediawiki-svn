@@ -247,6 +247,16 @@ $messages['dsb'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Status pśi wótzjawjenju do offline změniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'onlinestatus-tab' => 'Κατάσταση',
+	'onlinestatus-toggles-desc' => 'Η κατάστασή σας:',
+	'onlinestatus-toggle-offline' => 'Αποσυνδεδεμένος',
+	'onlinestatus-toggle-online' => 'Συνδεδεμένος',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1034,5 +1044,19 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'onlinestatus-tab' => '状态',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'onlinestatus-subtitle-offline' => '這用戶現正離線',
+	'onlinestatus-subtitle-online' => '這用戶現正在線',
+	'onlinestatus-toggles-desc' => '您的狀態：',
+	'onlinestatus-toggles-show' => '在我的用戶頁面顯示在線狀態',
+	'onlinestatus-toggle-offline' => '離線',
+	'onlinestatus-toggle-online' => '在線',
+	'onlinestatus-pref-onlineonlogin' => '當登入時把我的狀態設為在線',
+	'onlinestatus-pref-offlineonlogout' => '當登出時把我的狀態設為離線',
 );
 

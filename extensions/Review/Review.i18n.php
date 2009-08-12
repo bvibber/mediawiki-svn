@@ -516,9 +516,19 @@ Twóje druge pógódnośenja zjadnośuju se do toś togo, źož sy wubrał 'žed
  */
 $messages['el'] = array(
 	'review_sidebar_title' => 'Επιθεώρηση',
+	'review_topic_page' => 'Επιθεώρηση θεμάτων',
+	'review_page_link' => 'επιθεώρηση στατιστικών',
+	'review_for_page' => 'Επιθεώρηση για τη σελίδα "$1"',
+	'review_for_user' => 'Επιθεώρηση για τον χρήστη "$1"',
+	'review_error' => 'Κάτι είναι λάθος!',
 	'review_total_statistics' => 'Σύνολο',
 	'review_statistics_left_corner' => 'Αναθεώρηση',
+	'review_version_link' => 'Έκδοση #$1',
+	'review_version_statistic_cell' => '$1 από $2',
 	'review_user_details_link' => '(λεπτομέρειες)',
+	'review_has_been_stored' => 'Η επιθεώρηση σας έχει αποθηκευτεί!',
+	'revision_review_this_page_version_link' => 'Επιθεώρηση της έκδοσης αυτής της σελίδας.',
+	'review_page_review' => 'Επιθεώρηση της σελίδας "$1"',
 	'review_topic' => 'Θέμα',
 	'review_no_opinion' => 'Καμία γνώμη',
 	'review_rating' => 'Αξιολόγηση',
@@ -648,6 +658,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
  */
@@ -655,16 +666,26 @@ $messages['fi'] = array(
 	'review_sidebar_title' => 'Arvioi',
 	'review-desc' => 'Sallii käyttäjien [[Special:Review|arvioida]] sivuja.',
 	'review_save' => 'Tallenna arviointi',
+	'review_your_review' => 'Arviointisi tästä sivusta tai sen versiosta:',
 	'review_error' => 'Jokin on väärin!',
 	'review_total_statistics' => 'Yhteensä',
 	'review_statistics_left_corner' => 'Versio',
 	'review_version_link' => 'Versio $1',
 	'review_statistic_cell' => 'Keskimäärin $1 / $2<br />($4 {{PLURAL:$4|rekisteröity käyttäjä|rekisteröityä käyttäjää}}, $5 {{PLURAL:$5|nimetön käyttäjä|nimetöntä käyttäjää}})',
+	'review_concerns_page' => 'Tämä on arviointi joka koskee sivua "$1".',
+	'review_concerns_user' => 'Tämä koskee arvioita, jotka on tehnyt käyttäjä "$1".',
 	'review_user_reviews' => '<small>(tämän käyttäjän arviot)</small>',
+	'review_user_page_list' => 'Käyttäjä on arvioinut seuraavat sivut:',
 	'review_user_details_link' => '(tiedot)',
+	'review_do_merge' => 'Yhdistä arvioni tämän sivun muista versioista tähän arvioon',
 	'review_has_been_stored' => 'Arvostelusi tallennettiin.',
+	'revision_review_this_page_version_link' => 'Arvioi sivun tämä versio.',
+	'review_page_review' => 'Sivun "$1" arviointi',
 	'review_blocked' => 'Olet estetty, joten et voi osallistua.',
+	'review_wrong_namespace' => 'Tämän nimiavaruuden sivuja ei voi arvioida.',
 	'review_no_opinion' => 'Ei mielipidettä',
+	'review_rating' => 'Arvosana',
+	'review_comment' => 'Kommentti',
 );
 
 /** French (Français)
@@ -788,6 +809,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'review_sidebar_title' => 'Ἐπισκόπησις',
+	'review_topic_page' => 'Ἐπιθεώρησις θεμάτων',
 	'review_total_statistics' => 'Συνολικόν',
 	'review_statistics_left_corner' => 'Ἀναθεώρησις',
 	'review_user_details_link' => '(λεπτομέρειαι)',

@@ -327,9 +327,15 @@ Klikni <a href='$1'>sem</a>, aby se wróśił.",
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'spamdifftool' => 'Διαχείριση μαύρης λίστας των σπαμ',
+	'spamdifftool_spam_link_text' => 'Προσθήκη στο spam',
+	'spamdifftool_option_domain' => 'όλα από αυτή την περιοχή',
+	'spamdifftool_option_subdomain' => 'όλα από αυτή την υποπεριοχή',
+	'spamdifftool_option_directory' => 'αυτή η υποπεριοχή και ο κατάλογος',
 	'spamdifftool_option_none' => 'τίποτα',
 	'spamdifftool_block' => 'Φραγή:',
 	'spamdifftool_submit_buttom' => 'Υποβολή',
@@ -466,6 +472,15 @@ Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comp
 	'spamdifftool_option_none' => 'néant',
 	'spamdifftool_block' => 'Bloquer :',
 	'spamdifftool_submit_buttom' => 'Soumettre',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'spamdifftool_option_none' => 'Pas ren',
+	'spamdifftool_block' => 'Blocar :',
+	'spamdifftool_submit_buttom' => 'Sometre',
 );
 
 /** Galician (Galego)

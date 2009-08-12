@@ -292,6 +292,15 @@ $messages['fr'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'layouts_title' => 'Fâre una pâge',
+	'layouts_continue' => 'Continuar',
+	'layouts_unknown' => 'Encognu',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */
@@ -319,6 +328,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'layouts_title' => 'Ποιεῖν δέλτον τινά',
 	'layouts_continue' => 'Συνεχίζειν',
 	'layouts_unknown' => 'Ἄγνωτος',
 );

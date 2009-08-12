@@ -233,6 +233,13 @@ W paźe problemow, móžoš wopytaś <b>Special:Call/DebuG</b>",
 	'call-save-failed' => 'Slědujucy tekst NJEjo se do boka <big>[[$1]]</big> składł, dokulaž ten bok južo eksistěrujo.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'call' => 'Κλήση',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

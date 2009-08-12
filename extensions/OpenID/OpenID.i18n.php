@@ -268,7 +268,7 @@ $messages['ar'] = array(
 	'prefs-openid' => 'هوية مفتوحة',
 	'openid-prefstext' => 'تفضيلات [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'أخف هويتك هويتك المفتوحة على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
-	'openid-pref-update-userinfo-on-login' => 'حدث معلوماتي من شخصية الهوية المفتوحة كل مرة أسجل الدخول',
+	'openid-pref-update-userinfo-on-login' => 'حدث المعلومات التالية من شخصية الهوية المفتوحة كل مرة أسجل الدخول:',
 	'openid-urls-desc' => 'OpenIDs المربوطة بحسابك:',
 	'openid-urls-action' => 'إجراء',
 	'openid-urls-delete' => 'احذف',
@@ -957,18 +957,37 @@ Jo wjele [http://openid.net/get/ póbitowarjow OpenID] a snaź maš južo konto 
  * @author Consta
  * @author Crazymadlover
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'openidserver' => 'Εξυπηρετητής OpenID',
+	'openidxrds' => 'Αρχείο Yadis.',
+	'openidconvert' => 'Μετατροπέας OpenID',
+	'openiderror' => 'Σφάλμα επαλήθευσης',
+	'openidcancel' => 'Η επαλήθευση ακυρώθηκε',
+	'openidfailure' => 'Η επαλήθευση απέτυχε',
+	'openidsuccess' => 'Η επαλήθευση ήταν επιτυχής',
+	'openidusernameprefix' => 'Χρήστης OpenID',
 	'openidoptional' => 'Προαιρετικός',
 	'openidrequired' => 'Απαιτημένος',
 	'openidnickname' => 'Παρωνύμιο',
 	'openidfullname' => 'ονοματεπώνυμο',
 	'openidemail' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου',
 	'openidlanguage' => 'Γλώσσα',
+	'openidtimezone' => 'Ζώνη ώρας:',
 	'openidchoosefull' => 'Το πλήρες όνομά σας ($1)',
 	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
 	'openidchoosepassword' => 'κωδικός:',
+	'openidnousername' => 'Δεν καθορίστηκε κανένα όνομα χρήστη.',
+	'openidbadusername' => 'Καθορίστηκε κακό όνομα χρήστη.',
+	'openidloginlabel' => 'OpenID URL',
+	'openidupdateuserinfo' => 'Ενημέρωση των προσωπικών πληροφοριών μου',
+	'openiddelete' => 'Διαγραφή OpenID',
+	'openiddelete-button' => 'Επιβεβαίωση',
 	'openid-urls-action' => 'Ενέργεια',
+	'openid-urls-delete' => 'Διαγραφή',
+	'openid-add-url' => 'Προσθέστε ένα νέο OpenID',
+	'openidsigninorcreateaccount' => 'Σύνδεση ή Δημιουργία Νέου Λογαριασμού',
 );
 
 /** Esperanto (Esperanto)
@@ -4625,6 +4644,7 @@ $messages['zh-hant'] = array(
 	'openidserver' => 'OpenID伺服器',
 	'openidconvert' => 'OpenID轉換器',
 	'openiderror' => '驗證錯誤',
+	'openidcancel' => '驗證已取消',
 	'openidfailure' => '驗證失敗',
 	'openidsuccess' => '驗證成功',
 	'openidnickname' => '暱稱',
@@ -4638,6 +4658,7 @@ $messages['zh-hant'] = array(
 	'openidloginlabel' => 'OpenID網址',
 	'openiddelete-button' => '確認',
 	'openid-urls-delete' => '删除',
+	'openid-add-url' => '加入一個新的OpenID',
 	'openid-provider-label-google' => '以您的Google帳戶登入',
 	'openid-provider-label-yahoo' => '以您的Yahoo帳戶登入',
 );
