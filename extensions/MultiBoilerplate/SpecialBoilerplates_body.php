@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Special:boilerplates, provides a list of MediaWiki:Multiboilerplate or $wgMultiBoilerplateOptions.
  * This add-on use three new messages.
