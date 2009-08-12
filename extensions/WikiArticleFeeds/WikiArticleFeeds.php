@@ -145,6 +145,7 @@ class WikiArticleFeedsParser {
 		return ( !empty( $tags ) ? '<pre>@ITEMTAGS@' . base64_encode( serialize( implode( ',', $tags ) ) ) . '@ITEMTAGS@</pre>':'' );
 	}
 
+	// FIXME: remove after 1.16 branching. This extension has not been branched yet.
 	function itemTagsMagic( &$magicWords, $langCode = null ) {
 		$magicWords['itemtags'] = array( 0, 'itemtags' );
 		return true;
@@ -162,6 +163,7 @@ class WikiArticleFeedsParser {
 
 # Create global instance
 $wgWikiArticleFeedsParser = new WikiArticleFeedsParser();
+// FIXME: update after 1.16 branching for new style magic words. This extension has not been branched yet.
 if ( version_compare( $wgVersion, '1.7', '<' ) ) {
 	# Hack solution to resolve 1.6 array parameter nullification for hook args
 	function wfWAFParserItemTagsMagic( &$magicWords ) {
