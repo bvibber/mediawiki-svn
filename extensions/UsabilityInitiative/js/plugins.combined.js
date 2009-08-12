@@ -1324,7 +1324,7 @@ fn: {
 			.addClass( 'sections' )
 			.appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append(
-			$( '<div></div>' ).addClass( 'break' )
+			$( '<div></div>' ).css( 'clear', 'both' )
 		);
 		var selected = $.cookie(
 			'wikiEditor-' + context.instance + '-toolbar-section'

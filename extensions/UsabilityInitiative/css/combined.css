@@ -34,11 +34,12 @@ body.rtl .wikiEditor-ui {
 	position: relative;
 	border: solid silver 1px;
 	border-top-width: 0;
+	width: 100%;
 }
 .wikiEditor-ui .wikiEditor-ui-top {
 	position: relative;
 	border: solid silver 1px;
-	border-bottom-width: 0;
+	width: 100%;
 }
 /* wikiEditor toc module */
 
@@ -88,10 +89,7 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toc ul ul {
 
 .wikiEditor-ui .wikiEditor-ui-toolbar {
 	position: relative;
-}
-.wikiEditor-ui .wikiEditor-ui-toolbar .break {
-	border-bottom: solid silver 1px;
-	clear:both;
+	width: 100%;
 }
 /* Sections */
 .wikiEditor-ui .wikiEditor-ui-toolbar .sections {
@@ -143,17 +141,26 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .sections .loading .spinner {
 	margin-right: 1em;
 	float: right;
 }
-/* Toolbar Groups and Tabs */
+/* Top Level Containers */
 .wikiEditor-ui .wikiEditor-ui-toolbar .tabs,
+.wikiEditor-ui .wikiEditor-ui-toolbar .section-main {
+	position: relative;
+	float: left;
+	height: 26px;
+	padding: 0;
+}
+body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .tabs,
+body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .section-main {
+	float: right;
+}
+/* Groups */
 .wikiEditor-ui .wikiEditor-ui-toolbar .group {
 	float: left;
 	height: 26px;
-	margin: 3px;
-	padding: 0;
 	padding-right: 6px;
 	border-right: solid 1px #DDDDDD;
+	margin: 3px;
 }
-body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .tabs,
 body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .group {
 	float: right;
 	padding-right: 0;
@@ -161,12 +168,10 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .group {
 	border-right: none;
 	border-left: solid 1px #DDDDDD;
 }
-body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .first {
-	border-right: none;
-}
 /* Tabs */
 .wikiEditor-ui .wikiEditor-ui-toolbar .tabs {
 	list-style: none;
+	margin: 3px;
 }
 .wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab {
 	display: inline-block;

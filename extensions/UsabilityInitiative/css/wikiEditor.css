@@ -34,9 +34,10 @@ body.rtl .wikiEditor-ui {
 	position: relative;
 	border: solid silver 1px;
 	border-top-width: 0;
+	width: 100%;
 }
 .wikiEditor-ui .wikiEditor-ui-top {
 	position: relative;
 	border: solid silver 1px;
-	border-bottom-width: 0;
+	width: 100%;
 }
