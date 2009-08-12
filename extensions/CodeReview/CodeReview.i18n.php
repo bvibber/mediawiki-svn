@@ -118,6 +118,15 @@ Commit summary:
 
 $4',
 
+	'codereview-email-subj3' => '[$1] [r$2]: Automatic testing detected regression',
+	'codereview-email-body3' => 'Automatic testing has revealed a regression due to the changes in r$1.
+
+Full URL: $2
+
+Commit summary:
+
+$3',
+
 	'repoadmin' => 'Repository Administration',
 	'repoadmin-new-legend' => 'Create a new repository',
 	'repoadmin-new-label' => 'Repository name:',
