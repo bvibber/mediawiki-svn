@@ -25,13 +25,12 @@ if ( !defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki packa
 $wgExtensionCredits['parserhook'][] = array (
 	'name' => 'ReplaceSet',
 	'url' => 'http://mediawiki.org/wiki/Extension:ReplaceSet',
-	'version' => '1.0a',
+	'version' => '1.1a',
 	'author' => "[http://mediawiki.org/wiki/User:Dantman Daniel Friesen]",
 	'description' => "Adds a <nowiki>{{#replaceset}}</nowiki> parserfunction used for replacing sections of text with specially formatted data."
 );
 
 $wgExtensionFunctions[] = 'efReplaceSetSetup';
-$wgHooks['LanguageGetMagic'][]   = 'efReplaceSetSetupLanguageMagic';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ReplaceSet'] = $dir . 'ReplaceSet.class.php';
@@ -53,9 +52,4 @@ function efReplaceSetSetup() {
 
 function efReplaceSetRegisterParser( &$parser ) {
 	$parser->setFunctionHook( 'replaceset', array( 'ReplaceSet', 'parserFunction' ) );
-}
-
-function efReplaceSetSetupLanguageMagic( &$magicWords, $langCode ) {
-	$magicWords['replaceset'] = array( 0, 'replaceset' );
-	return true;
 }
