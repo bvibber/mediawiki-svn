@@ -90,11 +90,11 @@ $wgExtensionMessagesFiles['RatingHistory'] = $langDir . 'RatingHistory.i18n.php'
 # To list ill-recieved pages
 $wgAutoloadClasses['ProblemPages'] = $dir . 'specialpages/ProblemPages_body.php';
 $wgExtensionMessagesFiles['ProblemPages'] = $langDir . 'ProblemPages.i18n.php';
-$wgSpecialPageGroups['ProblemPages'] = 'quality';
+$wgSpecialPageGroups['ProblemPages'] = 'feedback';
 # To list well-recieved pages
 $wgAutoloadClasses['LikedPages'] = $dir . 'specialpages/LikedPages_body.php';
 $wgExtensionMessagesFiles['LikedPages'] = $langDir . 'LikedPages.i18n.php';
-$wgSpecialPageGroups['LikedPages'] = 'quality';
+$wgSpecialPageGroups['LikedPages'] = 'feedback';
 
 ######### Hook attachments #########
 

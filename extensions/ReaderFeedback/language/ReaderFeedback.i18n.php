@@ -38,6 +38,7 @@ $messages['en'] = array(
 	'readerfeedback-finished'      => 'Thank you!',
 	'readerfeedback-tagfilter'     => 'Tag:',
 	'tooltip-ca-ratinghist'        => 'Reader ratings of this page',
+	'specialpages-group-feedback'  => 'Viewer opinion',
 );
 
 /** Message documentation (Message documentation)
