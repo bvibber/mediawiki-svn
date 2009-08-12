@@ -75,26 +75,48 @@ var editToolbarConfiguration = {
 									$j(this).html( gM( $j(this).attr( 'rel' ) ) );
 								});
 								$j( '#edittoolbar-link-tabs' ).tabs();
+								$j( '#edittoolbar-link-int-target' ).bind( 'keypress paste', function() {
+									// $j(this).val() is the old value, before the keypress
+									if ( $j( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
+										// Defer this until $j(this).val() has been updated
+										setTimeout("$j( '#edittoolbar-link-int-text' ).val( $j( '#edittoolbar-link-int-target' ).val() );", 0);
+								});
+								$j( '#edittoolbar-link-int-text' ).bind( 'keypress paste', function() {
+									$j(this).data( 'untouched', false );
+								});
 							},
 							dialog: {
-								width: 550,
+								width: 550, // FIXME: autoresize width
 								buttons: {
 									'edittoolbar-tool-link-insert': function() {
+										function escapeInternalText( s ) {
+											// FIXME: Escapes ]]]] as <nowiki>]]</nowiki><nowiki>]]</nowiki>
+											return s.replace( /]]/g, '<nowiki>]]</nowiki>' );
+										}
+										function escapeExternalTarget( s ) {
+											return s.replace( / /g, '%20' )
+												.replace( /]/g, '%5D' );
+										}
+										function escapeExternalText( s ) {
+											// FIXME: Escapes ]] as <nowiki>]</nowiki>
+											return s.replace( /]/g, '<nowiki>]</nowiki>' );
+										}
 										var insertText = '';
 										switch ( $j( '#edittoolbar-link-tabs' ).tabs( 'option', 'selected' ) ) {
 											case 0: // Internal link
 												// TODO: Escape this stuff
+												// TODO: Verify internal target validity
 												insertText = '[[' +
 													$j( '#edittoolbar-link-int-target' ).val() +
 													'|' +
-													$j( '#edittoolbar-link-int-text' ).val() +
+													escapeInternalText( $j( '#edittoolbar-link-int-text' ).val() ) +
 													']]';
 											break;
 											case 1:
 												insertText = '[' +
-													$j( '#edittoolbar-link-ext-target' ).val() +
+													escapeExternalTarget( $j( '#edittoolbar-link-ext-target' ).val() ) +
 													' ' +
-													$j( '#edittoolbar-link-ext-text' ).val() +
+													escapeExternalText( $j( '#edittoolbar-link-ext-text' ).val() ) +
 													']';
 											break;
 										}
@@ -109,6 +131,17 @@ var editToolbarConfiguration = {
 									'edittoolbar-tool-link-cancel': function() {
 										$j(this).dialog( 'close' );
 									}
+								},
+								close: function() {
+									// Clear text fields
+									$j(this).find( 'input' ).val( '' );
+								},
+								open: function() {
+									// Pre-fill text fields
+									$j( '#edittoolbar-link-int-text, #edittoolbar-link-ext-text, #edittoolbar-link-int-target' )
+										.val( $j(this).data( 'context' ).$textarea.getSelection() );
+									$j( '#edittoolbar-link-ext-target' ).val( 'http://' );
+									$j( '#edittoolbar-link-int-text' ).data( 'untouched', true );
 								}
 							}
 						}

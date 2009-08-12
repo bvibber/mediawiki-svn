@@ -271,6 +271,21 @@ jQuery.cookie = function(name, value, options) {
  * @param post Text to insert after selection
  * @param ownline If true, put the inserted text is on its own line
  */
+
+getSelection: function() {
+	var e = this.jquery ? this[0] : this;
+	var retval = '';
+	if ( e.style.display == 'none' ) {
+		// Do nothing
+	} else if ( document.selection && document.selection.createRange ) {
+		var range = document.selection.createRange();
+		retval = range.text;
+	} else if ( e.selectionStart || e.selectionStart == '0' ) {
+		retval = e.value.substring( e.selectionStart, e.selectionEnd );
+	}
+	return retval;
+},
+ 
 encapsulateSelection: function( pre, peri, post, ownline ) {
 	/**
 	 * Check if the selected text is the same as the insert text
@@ -286,7 +301,7 @@ encapsulateSelection: function( pre, peri, post, ownline ) {
 		}
 	}
 	var e = this.jquery ? this[0] : this;
-	var selText;
+	var selText = $(this).getSelection();
 	var isSample = false;
 	if ( e.style.display == 'none' ) {
 		// Do nothing
@@ -299,7 +314,6 @@ encapsulateSelection: function( pre, peri, post, ownline ) {
 		}
 		$(this).focus();
 		var range = document.selection.createRange();
-		selText = range.text;
 		if ( ownline && range.moveStart ) {
 			var range2 = document.selection.createRange();
 			range2.collapse();
@@ -335,7 +349,6 @@ encapsulateSelection: function( pre, peri, post, ownline ) {
 		$(this).focus();
 		var startPos = e.selectionStart;
 		var endPos = e.selectionEnd;
-		selText = e.value.substring( startPos, endPos );
 		checkSelectedText();
 		if ( ownline ) {
 			if ( startPos != 0 && e.value.charAt( startPos - 1 ) != "\n" )
