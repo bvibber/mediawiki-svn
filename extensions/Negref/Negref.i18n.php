@@ -5,7 +5,7 @@
  * @addtogroup Extensions
  */
 
-require_once( dirname(__FILE__) . '/Negreg.i18n.magic.php' );
+require_once( dirname(__FILE__) . '/Negref.i18n.magic.php' );
 
 $messages = array();
 
