@@ -81,6 +81,7 @@ File:Example.jpg|Caption2",
 	'edittoolbar-tool-replace-regex' => 'Treat search string as a regular expression',
 	'edittoolbar-tool-replace-all' => 'Replace all occurences',
 	'edittoolbar-tool-replace-button' => 'Replace',
+	'edittoolbar-tool-replace-close' => 'Close',
 	'edittoolbar-tool-replace-nomatch' => 'Your search did not match anything.',
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',

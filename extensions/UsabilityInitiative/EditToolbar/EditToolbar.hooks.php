@@ -105,6 +105,7 @@ class EditToolbarHooks {
 				'edittoolbar-tool-replace-regex',
 				'edittoolbar-tool-replace-all',
 				'edittoolbar-tool-replace-button',
+				'edittoolbar-tool-replace-close',
 				'edittoolbar-tool-replace-nomatch',
 				/* Special Characters Section */
 				'edittoolbar-section-characters',

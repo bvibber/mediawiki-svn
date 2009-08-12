@@ -1017,12 +1017,11 @@ fn: {
 					}
 					
 					// Create the dialog <div>
-					if ( typeof action.html == 'function' )
-						action.html = action.html();
 					$j( '<div></div> ')
 						.attr( 'id', action.id )
 						.html( action.html )
 						.data( 'context', context )
+						.each( action.init )
 						.appendTo( $j( 'body' ) )
 						.dialog( dialogConf );
 				}

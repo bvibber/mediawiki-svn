@@ -338,19 +338,18 @@ var editToolbarConfiguration = {
 							type: 'dialog',
 							titleMsg: 'edittoolbar-tool-replace-title',
 							id: 'edittoolbar-replace-dialog',
-							html: function() { return '<form><fieldset><label for="edittoolbar-replace-search">'+ 
-							gM( 'edittoolbar-tool-replace-search' ) +
-							'</label><input type="text" id="edittoolbar-replace-search" style="display:block;" /><label for="edittoolbar-replace-replace">' +
-							gM( 'edittoolbar-tool-replace-replace' ) +
-							'</label><input type="text" id="edittoolbar-replace-replace" style="display:block;" /><input type="checkbox" id="edittoolbar-replace-case" /><label for="edittoolbar-replace-case">' +
-							gM( 'edittoolbar-tool-replace-case' ) +
-							'</label><br /><input type="checkbox" id="edittoolbar-replace-regex" /><label for="edittoolbar-replace-regex">' +
-							gM( 'edittoolbar-tool-replace-regex' ) + '</label><br /><input type="checkbox" id="edittoolbar-replace-all" /><label for="edittoolbar-replace-all">' +
-							gM( 'edittoolbar-tool-replace-all' ) +
-							'</label></fieldset></form>';
+							html: '<form><fieldset><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label><input type="text" id="edittoolbar-replace-search" style="display:block;" /><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label><input type="text" id="edittoolbar-replace-replace" style="display:block;" /><input type="checkbox" id="edittoolbar-replace-case" /><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label><br /><input type="checkbox" id="edittoolbar-replace-regex" /><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label><br /><input type="checkbox" id="edittoolbar-replace-all" /><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></fieldset></form>',
+							init: function() {
+								$j(this).find( 'label' ).each( function() {
+									$j(this).html( gM( $j(this).attr( 'rel' ) ) );
+								});
 							},
 							dialog: {
 								buttons: {
+									// Buttons float right, so order is backwards
+									'edittoolbar-tool-replace-close': function() {
+										$j(this).dialog( 'close' );
+									},
 									'edittoolbar-tool-replace-button': function() {
 										var searchStr = $j( '#edittoolbar-replace-search' ).val();
 										var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
