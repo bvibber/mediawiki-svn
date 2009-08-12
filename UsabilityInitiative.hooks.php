@@ -40,14 +40,14 @@ class UsabilityInitiativeHooks {
 		'no_js2' => array(
 			'raw' => array(
 				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
-				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2' ),
+				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2x' ),
 				array( 'src' => 'js/js2/js2.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/js2.combined.js', 'version' => 4 ),
+				array( 'src' => 'js/js2.combined.js', 'version' => 5 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/js2.combined.min.js', 'version' => 4 ),
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 5 ),
 			),
 		),
 		// Core functionality of extension

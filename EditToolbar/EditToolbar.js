@@ -60,29 +60,56 @@ var editToolbarConfiguration = {
 			},
 			'insert': {
 				tools: {
-					'xlink': {
-						labelMsg: 'edittoolbar-tool-xlink',
+					'link': {
+						labelMsg: 'edittoolbar-tool-link',
 						type: 'button',
-						icon: 'insert-xlink.png',
+						icon: 'insert-link.png',
 						action: {
-							type: 'encapsulate',
-							options: {
-								pre: "[",
-								periMsg: 'edittoolbar-tool-xlink-example',
-								post: "]"
-							}
-						}
-					},
-					'ilink': {
-						labelMsg: 'edittoolbar-tool-ilink',
-						type: 'button',
-						icon: 'insert-ilink.png',
-						action: {
-							type: 'encapsulate',
-							options: {
-								pre: "[[",
-								periMsg: 'edittoolbar-tool-ilink-example',
-								post: "]]"
+							type: 'dialog',
+							titleMsg: 'edittoolbar-tool-link-title',
+							id: 'edittoolbar-link-dialog',
+							// TODO: break this line
+							html: '<div id="edittoolbar-link-tabs"><ul><li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li><li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li></ul><div id="edittoolbar-link-dialog-tab-int"><form><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label><input type="text" id="edittoolbar-link-int-target" style="display:block;" /><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label><input type="text" id="edittoolbar-link-int-text" style="display:block;" /></form></div><div id="edittoolbar-link-dialog-tab-ext"><form><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label><input type="text" id="edittoolbar-link-ext-target" style="display:block;" /><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label><input type="text" id="edittoolbar-link-ext-text" style="display:block;" /></form></div></div>',
+							init: function() {
+								$j(this).find( '[rel]' ).each( function() {
+									$j(this).html( gM( $j(this).attr( 'rel' ) ) );
+								});
+								$j( '#edittoolbar-link-tabs' ).tabs();
+							},
+							dialog: {
+								width: 550,
+								buttons: {
+									'edittoolbar-tool-link-insert': function() {
+										var insertText = '';
+										switch ( $j( '#edittoolbar-link-tabs' ).tabs( 'option', 'selected' ) ) {
+											case 0: // Internal link
+												// TODO: Escape this stuff
+												insertText = '[[' +
+													$j( '#edittoolbar-link-int-target' ).val() +
+													'|' +
+													$j( '#edittoolbar-link-int-text' ).val() +
+													']]';
+											break;
+											case 1:
+												insertText = '[' +
+													$j( '#edittoolbar-link-ext-target' ).val() +
+													' ' +
+													$j( '#edittoolbar-link-ext-text' ).val() +
+													']';
+											break;
+										}
+										$j.wikiEditor.modules.toolbar.fn.doAction( $j(this).data( 'context' ), {
+											type: 'encapsulate',
+											options: {
+												pre: insertText
+											}
+										});
+										$j(this).dialog( 'close' );
+									},
+									'edittoolbar-tool-link-cancel': function() {
+										$j(this).dialog( 'close' );
+									}
+								}
 							}
 						}
 					},
@@ -338,18 +365,15 @@ var editToolbarConfiguration = {
 							type: 'dialog',
 							titleMsg: 'edittoolbar-tool-replace-title',
 							id: 'edittoolbar-replace-dialog',
+							// TODO: break this line
 							html: '<form><fieldset><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label><input type="text" id="edittoolbar-replace-search" style="display:block;" /><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label><input type="text" id="edittoolbar-replace-replace" style="display:block;" /><input type="checkbox" id="edittoolbar-replace-case" /><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label><br /><input type="checkbox" id="edittoolbar-replace-regex" /><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label><br /><input type="checkbox" id="edittoolbar-replace-all" /><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></fieldset></form>',
 							init: function() {
-								$j(this).find( 'label' ).each( function() {
+								$j(this).find( '[rel]' ).each( function() {
 									$j(this).html( gM( $j(this).attr( 'rel' ) ) );
 								});
 							},
 							dialog: {
 								buttons: {
-									// Buttons float right, so order is backwards
-									'edittoolbar-tool-replace-close': function() {
-										$j(this).dialog( 'close' );
-									},
 									'edittoolbar-tool-replace-button': function() {
 										var searchStr = $j( '#edittoolbar-replace-search' ).val();
 										var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
@@ -367,6 +391,9 @@ var editToolbarConfiguration = {
 										else
 											$textarea.val( $textarea.val().replace( regex, replaceStr ) );
 										// TODO: Hook for wikEd
+									},
+									'edittoolbar-tool-replace-close': function() {
+										$j(this).dialog( 'close' );
 									}
 								}
 							}
