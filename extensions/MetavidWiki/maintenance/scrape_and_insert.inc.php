@@ -612,7 +612,8 @@ class MV_BillScraper extends MV_BaseScraper {
 	function processBill( $govTrackBillId, $bill_key, $openCongBillId = false, $mapLightBillId = false, $forceUpdate = false , $doIntrestLookup=false) {
 		// get the bill title & its sponsor / co-sponsors:
 		$rawGovTrackPage = $this->doRequest( $this->govTrack_bill_url . $govTrackBillId );
-
+		if( $rawGovTrackPage === false)
+			return false;
 		/*****************************
 		 * Process Bill GovTrack info
 		 *****************************/
@@ -884,7 +885,7 @@ class MV_ArchiveOrgScrape extends MV_BaseScraper {
 }
 
 class MV_BaseScraper {
-	var $number_of_tries = 5;
+	var $number_of_tries = 3;
 	/*
 	 * simple url cach using the mv_url_cache table
 	 *
@@ -906,8 +907,8 @@ class MV_BaseScraper {
 				echo( "error getting url retrying (".$try_count." of $this->number_of_tries)" );
 				sleep( 5 );
 				if($try_count >= $this->number_of_tries){
-					die( "could not get url after $this->number_of_tries \n\n");
-					return '';
+					print "could not get url after $this->number_of_tries \n\n";
+					return false;
 				}
 				$try_count++;
 				return $this->doRequest( $url, $post_vars, $get_fresh, $try_count );
