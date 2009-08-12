@@ -12,9 +12,17 @@ class CodeAuthorListView extends CodeView {
 		$authors = $this->mRepo->getAuthorList();
 		$name = $this->mRepo->getName();
 		$text = wfMsg( 'code-authors-text' ) . "\n";
-		foreach ( $authors as $user ) {
-			if ( $user )
-				$text .= "* [[Special:Code/$name/author/$user|$user]]\n";
+		foreach ( $authors as $committer ) {
+			if ( $committer ) {
+				$text .= "* [[Special:Code/$name/author/$committer|$committer]]";
+				$user = $this->mRepo->authorWikiUser($committer);
+				if( $user ) {
+					$title = htmlspecialchars( $user->getUserPage()->getPrefixedText() );
+					$name = htmlspecialchars( $user->getName() );
+					$text .= " ([[$title|$name]])";
+				}
+				$text .= "\n";
+			}
 		}
 		$wgOut->addWikiText( $text );
 	}
