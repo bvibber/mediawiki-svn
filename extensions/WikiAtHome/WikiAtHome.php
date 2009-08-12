@@ -29,7 +29,6 @@ foreach($tmpExt as $ext){
 
 $wgExtensionMessagesFiles['WikiAtHome'] = "$exDir/WikiAtHome.i18n.php";
 $wgExtensionAliasesFiles['WikiAtHome'] = "$exDir/WikiAtHome.alias.php";
-$wgHooks['LanguageGetMagic'][] = 'NonFreeVideoHandler::registerMagicWords';
 
 //special pages
 $wgAutoloadClasses['SpecialWikiAtHome']		= "$exDir/SpecialWikiAtHome.php";

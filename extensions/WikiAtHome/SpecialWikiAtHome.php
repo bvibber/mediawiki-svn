@@ -5,7 +5,6 @@
 class SpecialWikiAtHome extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'SpecialWikiAtHome' );
-		wfLoadExtensionMessages( 'WikiAtHome' );
 
 		if ( method_exists( 'SpecialPage', 'setGroup' ) ) {
 			parent::setGroup( 'SpecialWikiAtHome', 'media' );

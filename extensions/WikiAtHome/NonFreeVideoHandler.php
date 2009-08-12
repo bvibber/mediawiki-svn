@@ -6,19 +6,11 @@
 class NonFreeVideoHandler extends MediaHandler {
 	const METADATA_VERSION = 22;
 
-	static $magicDone = false;
-
 	function isEnabled() {
 		return true;
 	}
 
-	static function registerMagicWords( &$magicData, $code ) {
-		wfLoadExtensionMessages( 'WikiAtHome' );
-		return true;
-	}
-
 	function getParamMap() {
-		wfLoadExtensionMessages( 'WikiAtHome' );
 		/*return array(
 			'img_width' => 'width',
 			'ogg_noplayer' => 'noplayer',
@@ -240,7 +232,6 @@ class NonFreeVideoHandler extends MediaHandler {
 	}
 	function getShortDesc( $file ) {
 		global $wgLang;
-		wfLoadExtensionMessages( 'WikiAtHome' );
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -260,7 +251,6 @@ class NonFreeVideoHandler extends MediaHandler {
 
 	function getLongDesc( $file ) {
 		global $wgLang;
-		wfLoadExtensionMessages( 'WikiAtHome' );
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -297,7 +287,6 @@ class NonFreeVideoHandler extends MediaHandler {
 
 	function getDimensionsString( $file ) {
 		global $wgLang;
-		wfLoadExtensionMessages( 'WikiAtHome' );
 		if ( $file->getWidth() ) {
 			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ),
 				$wgLang->formatNum( $file->getWidth() ),
@@ -321,7 +310,6 @@ class MediaQueueTransformOutput extends MediaTransformOutput {
 	function toHtml( $options = array() ) {
 		global $wgJobTypeConfig;
 
-		wfLoadExtensionMessages( 'WikiAtHome' );
 		if( $this->percDone == -1){
 			$waitHtml =  wfMsgWikiHtml( 'wah-transcode-fail');
 		}else{

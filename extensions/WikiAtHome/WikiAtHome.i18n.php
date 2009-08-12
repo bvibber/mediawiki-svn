@@ -5,6 +5,8 @@
  * @addtogroup Extensions
 */
 
+require_once( dirname(__FILE__) . '/WikiAtHome.i18n.magic.php' );
+
 $messages = array();
 
 /** English
