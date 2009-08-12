@@ -8,6 +8,8 @@
  * @license GNU General Public Licence 2.0 or later
  */
 
+require_once( dirname(__FILE__) . '/Plotters.i18n.magic.php' );
+
 $messages = array();
 
 /** English
