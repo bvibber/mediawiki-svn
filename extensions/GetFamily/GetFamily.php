@@ -13,7 +13,7 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-	echo "[ <b> Error <b /> ] This is not a valid entry point.\n";
+	echo "[ <b> Error </b> ] This is not a valid entry point.\n";
 	exit( 1 );
 }
 
