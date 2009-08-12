@@ -131,8 +131,8 @@ fn: {
 						.attr( 'id', action.id )
 						.html( action.html )
 						.data( 'context', context )
-						.each( action.init )
 						.appendTo( $j( 'body' ) )
+						.each( action.init )
 						.dialog( dialogConf );
 				}
 				$j( '#' + action.id ).dialog( 'open' );
