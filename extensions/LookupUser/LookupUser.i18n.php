@@ -1004,8 +1004,13 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'lookupuser-nonexistent' => "Errore: L'utende non g'esiste",
+	'lookupuser-not-authenticated' => 'non autendicate',
 	'lookupuser-id' => "ID de l'utende: <tt>#$1</tt>",
+	'lookupuser-no-email' => "non g'è previste",
 	'lookupuser-realname' => 'Nome vere: $1',
+	'lookupuser-registration' => 'Date de reggistrazione: $1',
+	'lookupuser-no-registration' => 'no reggistrate',
+	'lookupuser-useroptions' => 'Opzione utende:',
 );
 
 /** Russian (Русский)

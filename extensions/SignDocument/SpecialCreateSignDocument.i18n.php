@@ -538,6 +538,13 @@ Vous pouvez [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} le tester].',
 Il ne peut l’être une seconde fois.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'createsigndoc-pagename' => 'Pâge :',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

@@ -805,17 +805,18 @@ Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
  */
 $messages['et'] = array(
 	'ogg-desc' => 'Ogg Theora ja Vorbis failide töötleja JavaScript-esitajaga.',
-	'ogg-play' => 'Mängi',
+	'ogg-long-error' => '(Vigane Ogg-fail: $1)',
+	'ogg-play' => 'Esita',
 	'ogg-pause' => 'Paus',
 	'ogg-stop' => 'Peata',
-	'ogg-play-video' => 'Mängi videot',
-	'ogg-play-sound' => 'Mängi heli',
+	'ogg-play-video' => 'Esita video',
+	'ogg-play-sound' => 'Esita heli',
 	'ogg-no-player' => 'Kahjuks ei paista su süsteemis olevat ühtki ühilduvat esitustarkvara.
 Palun <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laadi tarkvara alla</a>.',
 	'ogg-player-selected' => '(valitud)',
 	'ogg-more' => 'Lisa...',
-	'ogg-dismiss' => 'Sulge',
-	'ogg-download' => 'Lae fail alla',
+	'ogg-dismiss' => 'Sule',
+	'ogg-download' => 'Laadi fail alla',
 	'ogg-desc-link' => 'Info faili kohta',
 );
 

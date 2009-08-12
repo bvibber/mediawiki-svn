@@ -34,6 +34,13 @@ $messages['be-tarask'] = array(
 	'clientside-desc' => 'Дадае функцыі для стварэньня коду ў кліенцкіх фарматах, такіх як HTML, CSS і JavaScript',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'clientside-desc' => "Pourchas a ra arc'hwelioù evit genel kodoù e furmadoù kliant evel HTML, CSS ha JavaScript",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

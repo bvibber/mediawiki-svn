@@ -578,6 +578,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Eroare la trimitere!',
+	'communityvoice-ratings-scale-status-thanks' => 'Mulţumim pentru vot!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vot exprimat|voturi exprimate}})',
 );
 

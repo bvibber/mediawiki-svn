@@ -116,6 +116,7 @@ Molimo definirajte klasu tabele tako da ima najviše 255 znakova.',
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author MF-Warburg
  * @author Sebastian Wallroth
  */
@@ -123,6 +124,9 @@ $messages['de'] = array(
 	'plotters' => 'Plotter',
 	'plotters-title' => 'Plotter',
 	'plotters-uses' => 'Nutzungen',
+	'plotters-missing-script' => 'Es wurde kein Skript definiert.',
+	'plotters-missing-arguments' => 'Keine Argumente festgelegt.',
+	'plotters-no-data' => 'Es wurden keine Daten angegeben.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

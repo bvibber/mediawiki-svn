@@ -132,10 +132,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'useroptionstats' => 'Προαιρετικά στατιστικά χρήστη',
+	'uos-warn' => 'Το PHPlot δεν είναι εγκατεστημένο!',
 	'uos-unknown' => '*Προεπιλογή',
 	'uos-other' => '*Άλλο',
 );

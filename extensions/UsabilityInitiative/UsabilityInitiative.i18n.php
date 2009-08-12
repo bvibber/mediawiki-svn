@@ -272,6 +272,14 @@ $messages['nl'] = array(
 	'usabilityinitiative-desc' => 'Functionaliteit die door het Wikipedia Bruikbaarheidsinitiatief is ontwikkeld ter verbetering van de bruikbaarheid van MediaWiki',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Stigmj
+ */
+$messages['no'] = array(
+	'usabilityinitiative' => 'Initiativet for brukervennlighet',
+	'usabilityinitiative-desc' => "Funksjoner utviklet av ''Wikipedias initiativ for brukervennlighet'', for å forbedre MediaWikis brukervennlighet",
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

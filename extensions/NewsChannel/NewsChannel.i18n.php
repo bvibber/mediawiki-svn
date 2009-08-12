@@ -216,6 +216,15 @@ $messages['fr'] = array(
 	'newschannel_submit_button' => 'Créer le flux',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'newschannel_format' => 'Formato :',
+	'newschannel_limit' => 'Limita :',
+	'newschannel_include_category' => 'Catègorie(s) suplèmentère(s) :',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

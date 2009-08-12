@@ -102,6 +102,14 @@ Vi ste pokušali: '''$1'''",
 	'rt-nomatches' => 'Nisu pronađeni odgovarajući RT kuponi',
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'rt-inactive' => 'Die RT-Erweiterung ist nicht aktiv',
+	'rt-badquery' => 'Die RT-Erweiterung hat einen Fehler bei der der Kommunikation mit der RT-Datenbank festgestellt',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

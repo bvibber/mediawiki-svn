@@ -2472,9 +2472,13 @@ $messages['ro'] = array(
 	'contribstats-day' => 'Zi',
 	'contribstats-month' => 'Lună',
 	'contribstats-currency' => 'Valută',
+	'contribstats-amount' => 'Sumă (USD)',
 	'contribstats-contributions' => 'Contribuţii',
 	'contribstats-total' => 'Total (USD)',
+	'contribstats-avg' => 'Medie (USD)',
+	'contribstats-max' => 'Maxim (USD)',
 	'contribstats-percentage-ytd' => 'Procentaj (YTD)',
+	'contribstats-total-ytd' => 'Total (YTD)',
 	'contribstats-value-exactly' => 'Exact $1',
 	'contribstats-value-under' => 'Sub $1',
 	'contribstats-value-over' => 'Peste $1',
@@ -2482,7 +2486,12 @@ $messages['ro'] = array(
 	'fundraiserstats-day' => 'Ziua $1 din $2',
 	'fundraiserstats-contributions' => 'Contribuţii',
 	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Medie (USD)',
+	'fundraiserstats-max' => 'Maxim (USD)',
+	'fundraiserstats-tab-totals' => 'Totaluri (USD)',
 	'fundraiserstats-tab-contributions' => 'Număr de contribuţii',
+	'fundraiserstats-tab-averages' => 'Medii (USD)',
+	'fundraiserstats-tab-maximums' => 'Maximuri (USD)',
 );
 
 /** Tarandíne (Tarandíne)

@@ -264,6 +264,14 @@ $messages['fr'] = array(
 	'randomincategory-submit' => 'Lancer',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'randomincategory-label' => 'Catègorie :',
+	'randomincategory-submit' => 'Lanciér',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -487,6 +495,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'randomincategory-label' => 'ವರ್ಗ:',
+	'randomincategory-submit' => 'ಹೋಗು',
 );
 
 /** Krio (Krio)

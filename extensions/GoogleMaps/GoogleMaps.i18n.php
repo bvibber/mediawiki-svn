@@ -1797,6 +1797,20 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$wgGoogleMapsMessages['frp'] = array(
+	'gm-width' => 'Largior',
+	'gm-height' => 'Hôtior',
+	'gm-zoom-control' => 'Navigacion',
+	'gm-large' => 'Granta',
+	'gm-small' => 'Pechou',
+	'gm-no-zoom-control' => 'Nan',
+	'gm-yes' => 'Ouè',
+	'gm-no' => 'Nan',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

@@ -1919,8 +1919,11 @@ Se tiver alguma questão sobre este sistema de distribuição de extensões, por
  */
 $messages['ro'] = array(
 	'extensiondistributor' => 'Descarcă extensia MediaWiki',
+	'extdist-no-such-extension' => 'Extensia "$1" inexistentă',
+	'extdist-no-such-version' => 'Extensia "$1" nu există în versiunea "$2".',
 	'extdist-submit-extension' => 'Continuă',
 	'extdist-submit-version' => 'Continuă',
+	'extdist-want-more' => 'Obţine altă extensie',
 );
 
 /** Tarandíne (Tarandíne)

@@ -300,6 +300,13 @@ $messages['fr'] = array(
 	'inspectcache-list' => 'Liste',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'inspectcache-ok' => 'Lanciér',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

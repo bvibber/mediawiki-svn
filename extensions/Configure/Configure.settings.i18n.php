@@ -1207,9 +1207,14 @@ $messages['ar'] = array(
 	'configure-setting-wgUseGzip' => 'GZIP إستخدم ترميز',
 	'configure-setting-wgAllowDisplayTitle' => 'اسمح باستخدام <nowiki>{{DISPLAYTITLE}}</nowiki>',
 	'configure-setting-wgAllowExternalImages' => 'إسمح لتحويل الرابط الساخن للملف',
+	'configure-setting-wgAllowExternalImagesFrom' => 'إستثناءات $wgAllowExternalImages = خطأ',
 	'configure-setting-wgEnableImageWhitelist' => 'مكّن استخدام "MediaWiki:External file whitelist"',
+	'configure-setting-wgExternalLinkTarget' => 'هدف السمة الإفتراضي للوصلات الخارجية',
+	'configure-setting-wgCleanSignatures' => 'قوالب بديلة في التواقيع',
+	'configure-setting-wgGrammarForms' => 'استمارات قواعد اللغة لمهام قواعد اللغة للمترجم اللغوي',
 	'configure-setting-wgParserConf' => 'ضبط المحلل',
 	'configure-setting-wgParserCacheExpireTime' => 'زمن انتهاء كاش المحلل',
+	'configure-setting-wgParserTestFiles' => 'ملفات للتشغيل من أجل parserTests.php',
 	'configure-setting-wgAmericanDates' => "طالب ب'May 12' بدلًا من '12 May' في اللغة الإنجليزية",
 	'configure-setting-wgDisableLangConversion' => 'تعطيل تحويل اللغة',
 	'configure-setting-wgInputEncoding' => 'تكويد النص المدخل',
@@ -2465,7 +2470,6 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
- * @author IAlex
  * @author MF-Warburg
  * @author Purodha
  * @author Umherirrender
@@ -3295,8 +3299,10 @@ $messages['es'] = array(
 	'configure-setting-wgExtensionCredits' => 'Lista global de créditos de extensiones',
 	'configure-setting-wgExtensionFunctions' => 'Funciones de extensión',
 	'configure-setting-wgExternalStores' => 'Configuración de almacenamiento externo',
+	'configure-setting-wgHooks' => 'Extensiones',
 	'configure-setting-wgGroupPermissions' => 'Asignación de derechos de grupo',
 	'configure-setting-wgGroupPermissions-value' => 'Derechos asignados',
+	'configure-setting-wgRevokePermissions-value' => 'Derechos retirados',
 	'configure-setting-wgAddGroups' => 'Grupos agregables',
 	'configure-setting-wgAddGroups-value' => 'Grupos agregables',
 	'configure-setting-wgRemoveGroups' => 'Grupos removibles',
@@ -6972,7 +6978,6 @@ $messages['ko'] = array(
 );
 
 /** Ripoarisch (Ripoarisch)
- * @author IAlex
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -7070,7 +7075,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgExtraLanguageNames-value' => 'Name',
 	'configure-setting-wgExtraRandompageSQL' => 'Donn [[Special:Random|{{#special:Random}}]] beschränke, övvere ene Ußdrock för en en <code lang="en">WHERE</code> <i lang="en">clause</i> för de Daatebangk',
 	'configure-setting-wgExtraSubtitle' => 'Ungertittel, dä onger de Siggetittelle jezeisch weedt',
-	'configure-setting-wgHideInterlanguageLinks' => 'Donn de Lengks op ander shprooche aan de Kant vun de Sigge onerdröke',
+	'configure-setting-wgHideInterlanguageLinks' => 'Donn de Lengks op ander Shprooche aan de Kant vun de Sigge ongerdröke',
 	'configure-setting-wgLegalTitleChars' => 'Zeijsche, di en Siggetittelle zohjelohße sin, en dä Form vun ene Klaß vun Zeische uss en <i lang="en">regular expression</i>',
 	'configure-setting-wgMaxArticleSize' => 'De Aanzahl Kilo<i lang="en">bytes</i> en de jüüßte zohjelohße Sigg',
 	'configure-setting-wgMaxRedirects' => 'De jrüüßte zohjelohße Aanzahl Ömleidunge, dänne et Wiki automattesch follje sull',
@@ -10226,6 +10231,7 @@ $messages['ro'] = array(
 	'configure-setting-wgExtraLanguageNames-value' => 'Nume',
 	'configure-setting-wgMaxArticleSize' => 'Mărimea maximă a paginilor (kB)',
 	'configure-setting-wgPageShowWatchingUsers' => 'Arată care utilizatori urmăresc o pagină',
+	'configure-setting-wgEnableUploads' => 'Activează încărcările',
 	'configure-setting-wgFileBlacklist' => 'Extensii de fişier nepermise',
 	'configure-setting-wgFileExtensions' => 'Extensii de fişier preferate',
 	'configure-setting-wgVersion' => 'Versiune MediaWiki',
@@ -10233,18 +10239,27 @@ $messages['ro'] = array(
 	'configure-setting-wgSpecialPageGroups-key' => 'Grup',
 	'configure-setting-wgAutopromote-value' => 'Condiţii',
 	'configure-setting-wgDisabledActions' => 'Dezactivează acţiunile paginilor',
+	'configure-setting-wgEnableAPI' => 'Activează API',
 	'configure-setting-wgRestrictionTypes' => 'Acţiuni care pot fi restricţionate',
+	'configure-setting-wgEnableUserEmail' => 'Activează e-mail între utilizatori',
 	'configure-setting-wgSMTP' => 'Server SMTP',
 	'configure-setting-wgDebugLogGroups-value' => 'Fişier',
 	'configure-setting-wgDisableQueryPageUpdate' => 'Pagini speciale dezactivate',
 	'configure-setting-wgFixDoubleRedirects' => 'Repară redirectările duble după mutarea paginii',
+	'configure-setting-wgUseSquid' => 'Activează Squid',
 	'configure-setting-wgSpecialPages' => 'Pagini speciale personalizate',
+	'configure-setting-wgRevokePermissions-value' => 'Drepturi revocate',
 	'configure-setting-wgValidSkinNames-key' => 'Nume intern',
+	'configure-setting-wgExtraNamespaces-key' => 'ID spaţiu de nume:',
+	'configure-setting-wgExtraNamespaces-value' => 'Numele spaţiului de nume',
+	'configure-setting-wgMaxCredits' => 'Număr maxim de autori creditaţi',
+	'configure-setting-wgActiveUserDays' => 'Perioada după care un utilizator devine inactiv',
 	'configure-setting-wgAllowRealName' => 'Permite nume reale',
 	'configure-setting-wgMaxNameChars' => 'Numărul maxim de octeţi în numele de utilizator',
 	'configure-setting-wgMinimalPasswordLength' => 'Lungimea minimă a parolei',
 	'configure-setting-wgSecretKey' => 'Cheie secretă',
 	'configure-setting-wgExternalServers' => 'Servere MySQL externe',
+	'configure-setting-wgAllowTitlesInSVG' => 'Permite titluri în fişiere SVG',
 	'configure-setting-wgSVGConverter' => 'Convertor SVG',
 	'configure-setting-wgSVGConverters' => 'Convertoare SVG',
 	'configure-setting-wgSVGConverters-key' => 'Numele convertorului',
@@ -10256,6 +10271,7 @@ $messages['ro'] = array(
 	'configure-setting-wgLocaltimezone' => 'Fus orar local',
 	'configure-setting-wgLocalTZoffset' => 'Diferenţă de fus orar',
 	'configure-setting-wgUseAjax' => 'Activează AJAX',
+	'configure-setting-wgLivePreview' => 'Activează previzualizare live',
 	'configure-setting-wgMimeTypeBlacklist' => 'Tipuri MIME nepermise',
 );
 

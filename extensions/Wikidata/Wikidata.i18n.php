@@ -384,14 +384,30 @@ $messages['af'] = array(
 	'langman_iso639-2' => 'ISO 639-2-kode:',
 	'langman_wikimedia' => 'Wikimedia-kode:',
 	'langman_field_optional' => '(opsioneel)',
+	'datasearch_language' => 'Taal:',
+	'datasearch_found_word' => 'Woord gevind',
+	'datasearch_meaning' => 'Betekenis',
+	'datasearch_within_words' => 'Binne woorde:',
+	'ow_exporttsv_languages' => 'Tale:',
 	'ow_save' => 'Stoor',
 	'ow_history' => 'Geskiedenis',
 	'ow_noedit_title' => 'Geen regte om te wysig',
+	'ow_uiprefs' => 'Wikidata',
+	'ow_none_selected' => 'Niks gekies',
+	'ow_transaction_from_transaction' => 'Van transaksie:',
+	'ow_transaction_count' => 'Aantal:',
+	'ow_transaction_user' => 'Gebruiker:',
+	'ow_transaction_no_action' => 'Doen niks nie',
+	'ow_transaction_previous_version' => 'Vorige weergawe',
+	'ow_transaction_remove' => 'Skrap',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nie ingevoer',
 	'ow_AlternativeDefinition' => 'Alternatiewe definisie',
 	'ow_AlternativeDefinitions' => 'Alternatiewe definisies',
 	'ow_Annotation' => 'Annotasie',
+	'ow_Class' => 'Klasse',
+	'ow_ClassAttributeAttribute' => 'Attribuut',
+	'ow_ClassAttributes' => 'Klasattribute',
 	'ow_ClassAttributeType' => 'Tipe',
 	'ow_Collection' => 'Versameling',
 	'ow_Definition' => 'Definisie',
@@ -413,6 +429,9 @@ $messages['af'] = array(
 	'ow_TranslatedTextAttributeValues' => 'Vertaalbare teks',
 	'ow_LinkAttributeValues' => 'Skakels',
 	'ow_Value' => 'Waarde',
+	'ow_create' => 'Skep',
+	'ow_suggest_previous' => 'Vorige',
+	'ow_suggest_next' => 'Volgende',
 );
 
 /** Amharic (አማርኛ)
@@ -1813,6 +1832,7 @@ Molimo kontaktirajte operatora servera ili administratora.',
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Paucabot
  * @author SMP
  * @author Solde
  * @author Toniher
@@ -1820,16 +1840,25 @@ Molimo kontaktirajte operatora servera ili administratora.',
 $messages['ca'] = array(
 	'languages' => 'Wikidata: Gestor de llengües',
 	'langman_title' => 'Gestor de llengües',
+	'langman_not_allowed' => 'No teniu permís per canviar la llengua.',
 	'langman_header' => 'Introduïu el codi de la llengua i el seu nom en anglès a continuació:',
 	'langman_req_fields' => 'Cal el nom de la llengua i el seu codi ISO 639-3!',
+	'langman_adding' => 'Afegint llengua $1 amb la clau $2.',
 	'langman_langname' => 'Nom de la llengua:',
 	'langman_iso639-3' => 'Codi ISO 639-3:',
 	'langman_iso639-2' => 'Codi ISO 639-2:',
 	'langman_wikimedia' => 'Codi Wikimedia:',
 	'langman_field_optional' => '(opcional)',
+	'langman_addlang' => 'Afegeix llengua',
+	'importlangnames' => 'Wikidata: Importeu els noms de les llengües',
 	'importlangnames_title' => 'Importa els noms dels idiomes',
 	'importlangnames_not_allowed' => 'No teniu permisos per a importar els noms dels idiomes.',
 	'datasearch_language' => 'Idioma:',
+	'datasearch_ext_identifier' => 'Identificador extern',
+	'datasearch_search_text' => 'Cerca text:',
+	'ow_importtsv_importing' => 'Important dades TSV',
+	'ow_importtsv_import_failed' => 'Importació fallida',
+	'ow_importtsv_file' => 'Fitxer TSV:',
 	'ow_save' => 'Desa',
 	'ow_history' => 'Historial',
 	'ow_transaction_user' => "Nom d'usuari:",
@@ -6300,6 +6329,8 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'ow_history' => 'ಇತಿಹಾಸ',
+	'ow_transaction_summary' => 'ಸಾರಾಂಶ',
 	'ow_Language' => 'ಭಾಷೆ',
 );
 
@@ -7030,12 +7061,19 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'langman-desc' => 'Додавајте и менувајте јазични нагодувања со [Special:Languages]]',
+	'langman_title' => 'Раководител со јазик',
+	'langman_not_allowed' => 'Немате дозвола да менувате јазични прилагодувања.',
+	'langman_header' => 'Подолу внесете го јазичниот код и името на јазикот на англиски',
+	'langman_req_fields' => 'Се бараат и името на јазикот и неговиот ISO 639-3 код!',
+	'langman_adding' => 'Додавање на јазик $1 со кодот $2.',
 	'langman_langname' => 'Име на јазик:',
 	'langman_iso639-3' => 'ISO 639-3 код:',
 	'langman_iso639-2' => 'ISO 639-2 код:',
 	'langman_wikimedia' => 'Викимедија код:',
 	'langman_field_optional' => '(изборно)',
 	'langman_addlang' => 'Додај јазик',
+	'datasearch_found_word' => 'Зборот е пронајден',
 	'ow_save' => 'Зачувај',
 	'ow_history' => 'Историја',
 	'ow_uipref_datasets' => 'Основен поглед',
@@ -7123,6 +7161,8 @@ $messages['ml'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'ow_transaction_rollback_button' => 'Буцаах',
+	'ow_transaction_rollback_header' => 'Буцаах',
 	'ow_Source' => 'Эх үүсвэр',
 );
 

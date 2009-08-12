@@ -188,7 +188,6 @@ $messages['am'] = array(
 
 /** Arabic (العربية)
  * @author ;Hiba;1
- * @author IAlex
  * @author Meno25
  * @author Orango
  * @author OsamaK
@@ -1372,6 +1371,19 @@ Vous ne pourrez plus vous connecter avec cet OpenID.",
 	'openid-provider-label-yahoo' => 'Vous connecter en utilisant votre compte Yahoo',
 	'openid-provider-label-aol' => 'Entrez votre nom AOL',
 	'openid-provider-label-other-username' => 'Entrez votre nom d’utilisateur $1',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'openidemail' => 'Adrèce de mèl :',
+	'openidlanguage' => 'Lengoua',
+	'openidtimezone' => 'Fus horèro :',
+	'openidchoosepassword' => 'Mot de pâssa :',
+	'openiddelete-button' => 'Confirmar',
+	'openid-urls-action' => 'Accion',
+	'openid-urls-delete' => 'Suprimar',
 );
 
 /** Irish (Gaeilge)
@@ -3491,10 +3503,15 @@ $messages['roa-tara'] = array(
 	'openidfullname' => 'Nome comblete',
 	'openidemail' => 'Indirizze e-mail',
 	'openidlanguage' => 'Lènghe',
+	'openidchoosefull' => "'U nome comblete tue ($1)",
 	'openidchoosemanual' => "Scacchie 'nu nome:",
 	'openidchoosepassword' => 'password:',
 	'openidnousername' => 'Nisciune nome utende specificate.',
 	'openidbadusername' => "'U nome utende specificate non g'è valide.",
+	'openiddelete-button' => 'Conferme',
+	'openid-prefstext' => 'Preferenze [http://openid.net/ OpenID]',
+	'openid-urls-action' => 'Azione',
+	'openid-urls-delete' => 'Scangille',
 	'openid-provider-label-google' => "Tràse ausanne 'u cunde utende de Google",
 	'openid-provider-label-yahoo' => "Tràse ausanne 'u cunde utende de Yahoo",
 	'openid-provider-label-aol' => "Mitte 'u tue nome utende AOL",

@@ -117,6 +117,14 @@ Don't change '|' character.",
 	'tasks_status_open' => 'This is an adjective.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'tasks_previous' => 'Vorige',
+	'tasks_next' => 'Volgende',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -469,10 +477,28 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'tasks_form_new' => 'Crea una nova tasca',
+	'tasks_form_comment' => 'Comentari',
+	'tasks_ok1' => "S'ha creat una nova tasca!",
+	'tasks_existing_header' => 'Tasques existents',
+	'tasks_assign_me' => 'Assigna-me-la a mi',
+	'tasks_assign_to' => 'Assigna a',
+	'tasks_close' => 'Tanca la tasca',
 	'tasks_delete' => 'Elimina',
+	'tasks_action_delete' => 'Una tasca ha estat eliminada.',
+	'tasks_task_was_deleted' => "S'ha eliminat satisfactòriament la tasca.",
+	'tasks_here' => 'aquí',
+	'tasks_plain_text_only' => '(text pla, només 256 caràcters)',
+	'tasks_help_page' => 'Tasques',
+	'tasks_more_like_it' => 'més',
+	'tasks_event_on_creation' => 'Comprova',
+	'tasks_event_on_creation_anon' => 'Comprova',
+	'tasks_search_form_title' => 'Cerca',
+	'tasks_search_tasks' => 'Tasques',
 	'tasks_previous' => 'Anterior',
 	'tasks_next' => 'Següent',
 	'tasks_status_open' => 'Obre',

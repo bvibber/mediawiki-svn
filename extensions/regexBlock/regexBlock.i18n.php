@@ -587,6 +587,7 @@ Nejskerjej taki wužywaŕ njejo.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -600,6 +601,7 @@ $messages['el'] = array(
 	'regexblock-form-match' => 'Ακριβής αντιστοιχία',
 	'regexblock-form-account-block' => 'Φραγή δημιουργίας νέων λογαριασμών',
 	'regexblock-form-submit' => 'Φραγή αυτού του χρήστη',
+	'regexblock-form-submit-regex' => 'Μη έγκυρη τακτική έκφραση',
 	'regexblock-nodata-found' => 'Δεν βρέθηκαν δεδομένα',
 	'regexblock-unblock-success' => 'Η άρση φραγής ολοκληρώθηκε επιτυχώς',
 	'regexblock-view-blocked' => 'Προβολή φραγμένων από:',
@@ -801,6 +803,17 @@ Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, [[$1|
 	'regexblock-view-empty' => 'La liste des utilisateurs et des adresses IP bloqués est vide.',
 	'regexblock-view-time' => 'le $1',
 	'right-regexblock' => 'Bloquer en écriture les utilisateurs sur tout les wikis de la ferme wiki',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'regexblock-form-reason' => 'Rêson :',
+	'regexblock-form-expiry' => 'Èxpiracion :&#160;',
+	'regexblock-view-all' => 'Tôs',
+	'regexblock-view-go' => 'Lanciér',
+	'regexblock-view-reason' => 'rêson : $1',
 );
 
 /** Western Frisian (Frysk)
@@ -1400,6 +1413,13 @@ $messages['km'] = array(
 	'regexblock-view-block-unblock' => 'ឈប់ហាមឃាត់',
 	'regexblock-view-empty' => 'បញ្ជីឈ្មោះអ្នកប្រើប្រាស់និងអាសយដ្ឋានIPគឺទទេ។',
 	'regexblock-view-time' => 'នៅ $1',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'regexblock-view-go' => 'ಹೋಗು',
 );
 
 /** Krio (Krio)

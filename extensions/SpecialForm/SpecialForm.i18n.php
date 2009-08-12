@@ -219,6 +219,17 @@ Molimo popunite {{PLURAL:$2|ga|ih}}.',
 	'formsaveerrortext' => "Desila se nepoznata greška pri spremanju stranice '$1'.",
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'form' => 'Formulari',
+	'formbadname' => 'Nom del formulari incorrecte',
+	'formtitlepattern' => 'Afegeix un nou $1',
+	'formsave' => 'Desa',
+	'formsaveerror' => 'Error desant el formulari',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung

@@ -148,6 +148,13 @@ $messages['eo'] = array(
 	'cooperationstatistics-legendmore' => 'aŭ pliaj redaktoj.',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'cooperationstatistics-tablevalue' => 'Número de editores',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -409,6 +416,13 @@ Vejatz tanben las [[Special:MostRevisors|'''paginas amb lo mai de relectors''']]
 	'cooperationstatistics-nblessusers' => 'an $1 editors o mens',
 	'cooperationstatistics-nbmoreusers' => 'an $1 editors o mens',
 	'cooperationstatistics-legendmore' => "o mai d'editors.",
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pagină|pagini}}',
 );
 
 /** Russian (Русский)

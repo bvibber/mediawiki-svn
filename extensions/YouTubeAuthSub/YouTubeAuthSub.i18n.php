@@ -341,6 +341,7 @@ Molimo budite strpljivi.',
 /** Catalan (Català)
  * @author Aleator
  * @author Jordi Roqué
+ * @author Paucabot
  * @author SMP
  * @author Solde
  */
@@ -364,6 +365,8 @@ YouTube pot necessitar algun temps per a processar el vostre vídeo, per la qual
 
 Per incloure el vostre vídeo en una pàgina wiki, afegiu el següent codi en la pàgina:
 <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Per carregar un vídeo, primer us haureu de registrar a YouTube',
+	'youtubeauthsub_uploadhere' => "Carregueu el vostre vídeo des d'aquí:",
 	'youtubeauthsub_uploadbutton' => 'Carrega',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
@@ -371,6 +374,7 @@ Per incloure el vostre vídeo en una pàgina wiki, afegiu el següent codi en la
 	'youtubeauthsub_summary' => "S'està carregant el vídeo de YouTube",
 	'youtubeauthsub_uploading' => "El teu vídeo s'està carregant.
 Si us plau, tingues paciència.",
+	'youtubeauthsub_viewpage' => 'Alternativament, podeu [[$1|veure el vostre vídeo]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Si us plau, introdueixi 1 o més paraules.',
 	'youtubeauthsub_jserror_notitle' => 'Si us plau, introdueixi un títol pel vídeo.',
 	'youtubeauthsub_jserror_nodesc' => 'Si us plau, introdueixi una descripció per al vídeo.',
@@ -1628,7 +1632,7 @@ $messages['mg'] = array(
  */
 $messages['mk'] = array(
 	'youtubeauthsub' => 'Подигни YouTube видеоснимка',
-	'youtubeauthsub-desc' => 'Овозможување корисниците да [[Special:YouTubeAuthSub|подигнуваат видео записи]] директно на YouTube',
+	'youtubeauthsub-desc' => 'Овозможува корисниците да [[Special:YouTubeAuthSub|подигаат видео записи]] директно на YouTube',
 	'youtubeauthsub_info' => 'За подигнување на видео запис на YouTube вгнезден во страница, пополнете ги следните информации:',
 	'youtubeauthsub_title' => 'Наслов',
 	'youtubeauthsub_description' => 'Опис',
@@ -1639,7 +1643,7 @@ $messages['mk'] = array(
 	'youtubeauthsub_submit' => 'Најавување',
 	'youtubeauthsub_clickhere' => 'Кликни тука за најавување на YouTube',
 	'youtubeauthsub_tokenerror' => 'Грешка при генерирање на авторизациски токен, обидете се повторно.',
-	'youtubeauthsub_success' => "Честитки!
+	'youtubeauthsub_success' => "Честитаме!
 Вашиот видео запис е подигнат.
 <a href='http://www.youtube.com/watch?v=$1'>Погледнете го вашиот видео запис</a>.
 Можеби ќе треба некое време YouTube да го подготви ведео записот, па нема да може да го погледнете токму сега.
@@ -1655,7 +1659,7 @@ $messages['mk'] = array(
 	'youtubeauthsub_summary' => 'Подигнување на YouTube видео запис',
 	'youtubeauthsub_uploading' => 'Видео записот се подигнува.
 Почекајте ...',
-	'youtubeauthsub_viewpage' => 'Алтернативно, може да го [[$1|погледнете видео записот]].',
+	'youtubeauthsub_viewpage' => 'Или пак можете да го [[$1|погледнете видео записот]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Внесете еден или повеќе клучни зборови.',
 	'youtubeauthsub_jserror_notitle' => 'Внесете наслов на видео записот.',
 	'youtubeauthsub_jserror_nodesc' => 'Внесете опис на видео записот.',

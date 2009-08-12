@@ -490,6 +490,13 @@ $messages['fr'] = array(
 	'right-patroller' => 'Pages de patrouille',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'patrol-revert-reason' => 'Rêson :',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -977,6 +984,15 @@ $messages['ml'] = array(
 	'group-patroller' => 'റോന്തു ചുറ്റുന്നവര്‍',
 	'group-patroller-member' => 'റോന്തു ചുറ്റുന്നവര്‍',
 	'grouppage-patroller' => '{{ns:project}}:റോന്തു ചുറ്റുന്നവര്‍',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'patrol-reverting' => 'Буцааж байна: $1',
+	'patrol-reverted-ok' => 'Засвар буцаагдав.',
+	'patrol-reverted-failed' => 'Засварыг буцааж чадсангүй.',
 );
 
 /** Marathi (मराठी)

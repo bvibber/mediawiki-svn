@@ -2309,6 +2309,23 @@ Ou bien être autorisé à <a href="$3">Ajouter le flux</a>',
 	'right-mv_edit_stream' => 'Modifier les fichiers de flux',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'mv_tool_search' => 'Rechèrchiér',
+	'mv_tool_navigate' => 'Navigar',
+	'mv_edit' => 'Changiér',
+	'mv_history' => 'Historico',
+	'mv_days' => '$1 {{PLURAL:$1|jorn|jorns}}',
+	'mv_hours' => '$1 hor{{PLURAL:$1|a|es}}',
+	'mv_hours_singular' => '$1 hora',
+	'mv_minutes' => '$1 minut{{PLURAL:$1|a|es}}',
+	'mv_minutes_singular' => '$1 minuta',
+	'mv_seconds' => '$1 segond{{PLURAL:$1|a|es}}',
+	'mv_seconds_singular' => '$1 segonda',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -4336,6 +4353,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'mv_history' => 'ಇತಿಹಾಸ',
 	'mv_existing_categories' => '{{PLURAL:$1|ವರ್ಗ|ವರ್ಗಗಳು}}:',
 );
 

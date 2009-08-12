@@ -878,3 +878,11 @@ $3',
 	'latexdoc-desc' => '协作编辑 LaTex 文件',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'latexdoc_get_dvi' => '取得DVI',
+	'latexdoc_get_pdf' => '取得PDF',
+);
+

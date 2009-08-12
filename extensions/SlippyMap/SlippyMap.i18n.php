@@ -343,6 +343,14 @@ $messages['fr'] = array(
 	'slippymap_clicktoactivate' => 'Cliquez pour activer la carte',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'slippymap_error' => 'Èrror $1 : $2',
+	'slippymap_errors' => 'Èrrors $1 :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -731,6 +739,9 @@ $messages['pt-br'] = array(
 	'slippymap_desc' => 'Permite o uso da marca <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para apresentar um mapa corrediço OpenLayers. Os mapas provêm de [http://openstreetmap.org openstreetmap.org]',
 	'slippymap_error' => '$1 erro: $2',
 	'slippymap_errors' => '$1 erros:',
+	'slippymap_error_missing_attribute_lat' => 'Faltando o atributo <tt>lat</tt> (para a latitude).',
+	'slippymap_error_missing_attribute_lon' => 'Faltando o atributo <tt>lon</tt> (para a longitude).',
+	'slippymap_error_missing_attribute_zoom' => 'Faltando o atributo <tt>zoom</tt> (para o nível de aproximação).',
 	'slippymap_code' => 'Código wiki para esta vista do mapa:',
 	'slippymap_button_code' => 'Buscar código wiki',
 	'slippymap_resetview' => 'Reiniciar vista',

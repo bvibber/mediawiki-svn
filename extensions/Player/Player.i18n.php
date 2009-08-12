@@ -384,6 +384,15 @@ $messages['fr'] = array(
 	'player-goto-file' => 'fichier',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'player-play' => 'Liére',
+	'player-goto-page' => 'Pâge',
+	'player-goto-file' => 'fichiér',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

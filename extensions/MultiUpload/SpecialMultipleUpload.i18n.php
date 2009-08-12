@@ -1223,9 +1223,14 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'multipleupload' => "Carecamende de cchiù file 'nzieme",
+	'multipleupload-desc' => "Permette a l'utinde de [[Special:MultipleUpload|carecà cchiù file jndr'à 'na botta sole]]",
+	'multipleupload-ignoreallwarnings' => "Ignore '''tutte l'avvise''' e reggistre le file.",
 	'multipleupload-saveallfiles' => 'Reggistre tutte le file',
 	'multiupload-fileuploaded' => 'File carechete.',
 	'multiupload-toolbox' => "Carecamende de cchiù file 'nzieme",
+	'multiupload-no-files' => "Pe piacere scacchie almene 'nu file da carecà",
+	'multiupload-blank' => 'Nisciune file scacchiate',
 );
 
 /** Russian (Русский)

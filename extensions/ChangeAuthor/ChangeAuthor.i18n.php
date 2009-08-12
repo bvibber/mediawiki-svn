@@ -1109,6 +1109,13 @@ $messages['km'] = array(
 	'changeauthor-logpagename' => 'កំណត់ហេតុនៃការផ្លាស់ប្តូរអ្នកនិពន្ធ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'changeauthor-pagenameform-go' => 'ಹೋಗು',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Yknok29

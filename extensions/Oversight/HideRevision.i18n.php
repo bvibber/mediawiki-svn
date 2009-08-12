@@ -558,28 +558,48 @@ Otkrivanje ovih informacija može rezultirati stalnim gubitkom privilegija nazdo
  */
 $messages['ca'] = array(
 	'hiderevision' => 'Oculta aquestes revisions permanentment',
-	'hiderevision-desc' => 'Amaga revisions individuals de tots els usuaris per raons legals, etc.',
-	'right-oversight' => 'Vegeu una revisió prèviament amagada',
-	'right-hiderevision' => 'Amagar revisions dels administradors',
-	'hiderevision-prompt' => 'Número de la revisió a suprimir:',
+	'hiderevision-desc' => 'Oculta revisions individuals de tots els usuaris per raons legals, etc.',
+	'group-oversight' => 'Supervisors',
+	'group-oversight-member' => 'supervisor',
+	'grouppage-oversight' => '{{ns:project}}:Supervisió',
+	'right-oversight' => 'Vegeu una revisió prèviament ocultada',
+	'right-hiderevision' => 'Oculta revisions dels administradors',
+	'hiderevision-prompt' => 'Número de la revisió a eliminar:',
 	'hiderevision-continue' => 'Continua',
+	'hiderevision-text' => "Aquesta funció '''només''' s'hauria d'aplicar en els següents casos:
+* Informació personal inapropiada
+*: ''adreces o números de telèfon, números de la seguretat social, etc''
+
+'''L'abús d'aquesta funció comportarà la pèrdua d'aquests privilegis.'''
+
+Els ítems eliminats no seran visibles per ningú a través del lloc web, però els esborrats són registrats i es poden restaurar manualment per l'administrador de la base de dades si cometeu un error.",
 	'hiderevision-reason' => 'Motiu (es registrarà de forma privada):',
-	'hiderevision-submit' => 'Amaga aquestes dades permanentment',
-	'hiderevision-tab' => 'Amaga la revisió',
+	'hiderevision-submit' => 'Oculta aquestes dades permanentment',
+	'hiderevision-tab' => 'Oculta la revisió',
 	'hiderevision-link' => "Contribucions d'usuaris ocultes",
-	'hiderevision-norevisions' => 'NO heu especificat cap revisió per esborrar.',
+	'hiderevision-norevisions' => 'No heu especificat cap revisió per eliminar.',
 	'hiderevision-noreason' => "Descriviu la raó de l'eliminació.",
 	'hiderevision-status' => 'Revisió $1: $2',
-	'hiderevision-success' => 'Arxivada i esborrada correctament.',
+	'hiderevision-success' => 'Arxivada i eliminada correctament.',
 	'hiderevision-error-missing' => "No s'ha trobat a la base de dades.",
 	'hiderevision-error-current' => "No s'ha pogut eliminar la darrera edició de la pàgina.
 Revertiu aquest canvi abans.",
 	'hiderevision-error-delete' => "No s'ha pogut arxivar. S'havia esborrat ja prèviament?",
 	'hiderevision-archive-status' => 'Revisió eliminada de $1: $2',
-	'oversight-log-hiderev' => 'esborrada una edició de $1',
+	'oversight-nodiff' => 'No ha estat possible rastrejar els canvis ja que no hi ha cap revisió anterior per aquesta pàgina.
+* O bé la pàgina ha estat eliminada
+* O bé aquesta revisió oculta era la primera',
+	'oversight-log-hiderev' => 'eliminada una edició de $1',
+	'oversight' => 'Supervisió',
 	'oversight-view' => 'detalls',
+	'oversight-difference' => '(Diferència amb la versió existent anterior)',
 	'oversight-prev' => 'Darrera revisió anterior',
 	'oversight-hidden' => 'Revisió oculta',
+	'oversight-header' => 'A continuació hi ha una llista de revisions recentment ocultades de la vista pública.
+Difondre aquesta informació pot resultar en una pèrdua permanent dels privilegis de Supervisió.',
+	'oversight-legend' => "Cerca al registre d'ocultació de revisions",
+	'oversight-oversighter' => 'Supervisor:',
+	'oversight-offender' => 'Ofensor:',
 );
 
 /** Corsican (Corsu) */
@@ -928,6 +948,7 @@ $messages['et'] = array(
 	'hiderevision-link' => 'peidetud kaastööd',
 	'hiderevision-success' => 'Arhiveerimine ja kustutamine õnnestus.',
 	'hiderevision-error-missing' => 'Ei leidu andmebaasis.',
+	'oversight-log-hiderev' => 'eemaldas muudatuste leheküljelt $1',
 	'oversight-view' => 'üksikasjad',
 );
 
@@ -2319,6 +2340,14 @@ $messages['ml'] = array(
 	'oversight-hidden' => 'മറഞ്ഞിരിക്കുന്ന പതിപ്പ്',
 	'oversight-header' => 'സമീപ കാലത്ത് പൊതുജനങ്ങളുടെ കാഴ്ചയില്‍ നിന്നു മറയ്ക്കപ്പെട്ട പതിപ്പുകളുടെ പട്ടികയാണു താഴെ.
 ഈ വിവരം പുറത്താക്കുന്നതു മേല്‍നോട്ട അവകാശങ്ങള്‍ സ്ഥിരമായി നഷ്ടമാകുന്നതിനു കാരണമാകും.',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'hiderevision-error-current' => 'Хуудас руух сүүлийн засварыг устгаж чадсангүй.
+Энэ өөрчлөлтийг эхлээд буцаана уу.',
 );
 
 /** Marathi (मराठी)

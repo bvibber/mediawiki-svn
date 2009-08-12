@@ -388,6 +388,13 @@ $messages['fr'] = array(
 	'errorhandler-trace-line-internal' => '[fonction interne] : $1',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'errorhandler-errors' => 'Èrrors :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -914,6 +921,7 @@ $messages['ro'] = array(
 	'errorhandler-errors' => 'Erori:',
 	'errorhandler-error-fatal' => 'Eroare fatală',
 	'errorhandler-error-warning' => 'Avertizare',
+	'errorhandler-error-parse' => 'Eroare de parser',
 	'errorhandler-error-notice' => 'Notificare',
 	'errorhandler-error-deprecated' => 'Învechit',
 	'errorhandler-error-compile-error' => 'Eroare de compilare',

@@ -429,6 +429,15 @@ $messages['fr'] = array(
 	'right-passwordreset' => 'Réinitialise le mot de passe d’un utilisateur ([[Special:PasswordReset|page spéciale]])',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'passwordreset-invalidusername' => 'Nom d’utilisator envalido.',
+	'passwordreset-username' => 'Nom d’utilisator :',
+	'passwordreset-newpass' => 'Novél mot de pâssa :',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

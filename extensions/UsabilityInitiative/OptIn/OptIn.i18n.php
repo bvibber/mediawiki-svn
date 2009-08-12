@@ -161,6 +161,9 @@ $messages['af'] = array(
 	'optin-try' => 'Probeer Beta',
 	'optin-leave' => 'Verlaat Beta',
 	'optin-feedback' => 'Beta terugvoer',
+	'optin-survey-yes' => 'Ja',
+	'optin-survey-no' => 'Nee',
+	'optin-survey-answer-changes-other' => 'Ander:',
 );
 
 /** Arabic (العربية)
@@ -686,6 +689,92 @@ Pokud se chcete o projektu dozvědět více nebo se zapojit, navštivte [http://
 Děkujeme a budeme se těšit na vaše názory!',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'optin' => 'Deltag i initiativet til brugervenlighed',
+	'optin-desc' => 'Giver brugere mulighed for at prøve Beta, Wikipedias initiativ til brugervenligheds seneste forbedringer af brugervenligheden.',
+	'optin-title-optedout' => 'Prøv Beta',
+	'optin-title-optedin' => 'Forlad Beta',
+	'optin-title-justoptedin' => 'Velkommen til Beta',
+	'optin-title-justoptedout' => 'Tak for at prøve vores Beta',
+	'optin-title-feedback' => 'Tilbagemelding om Beta',
+	'optin-needlogin' => 'Du skal [$1 logge på] for at prøve Beta.',
+	'optin-intro' => 'Wikipedias initiativ til brugervenlighed har arbejdet hårdt for at forbedre Wikipedias brugervenlighed.
+Har du lyst til at prøve vores Beta?',
+	'optin-feedback-intro' => 'Tak for at du prøver Beta.
+Vi vil gerne vide hvad du mener om vores nye grænseflade, så vi vil sætte pris på det hvis du udfylder den frivillige undersøgelse herunder.',
+	'optin-feedback-back' => 'Hvis du ikke vil udfylde undersøgelsen, kan du gå tilbage til $1.',
+	'optin-success-in' => 'Du prøver nu Beta.
+Du kan når som helst vælge at gå tilbage ved at klikke på "{{int:optin-leave}}"-henvisningen øverst på siden.',
+	'optin-leave-cancel' => 'Hvis du vil fortsætte med at bruge Beta, kan du gå tilbage til $1.',
+	'optin-success-out' => 'Du har nu forladt Beta.
+Du kan til hver en tid prøve det igen ved at klikke på "{{int:optin-try}}"-henvisningen øverst på siden.',
+	'optin-success-feedback' => 'Tak for din tilbagemelding!',
+	'optin-accept-short' => 'Gør det!',
+	'optin-accept-long' => 'Prøv Beta',
+	'optin-accept-long-anon' => 'Log på og prøv Beta',
+	'optin-deny-short' => 'Nej tak',
+	'optin-deny-long' => 'Gå tilbage til den forrige side',
+	'optin-submit-out' => 'Forlad Beta',
+	'optin-submit-feedback' => 'Giv en tilbagemelding',
+	'optin-try' => 'Prøv Beta',
+	'optin-leave' => 'Forlad Beta',
+	'optin-feedback' => 'Tilbagemelding om Beta',
+	'optin-survey-yes' => 'Ja',
+	'optin-survey-no' => 'Nej',
+	'optin-survey-intro' => 'Tak for at du har prøvet Beta.
+Vi vil gerne vide hvad du synes om vores nye grænseflade, så vi vil sætte pris på det hvis du udfylder den frivillige undersøgelse herunder før du trykker på "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'Hvad kunne lide ved Beta? Hvad kunne du ikke lide ved Beta?',
+	'optin-survey-question-whyoptout' => 'Hvorfor forlader du Beta? (Vælg venligst alle som passer).',
+	'optin-survey-answer-whyoptout-hard' => 'Den var for vanskelig at bruge.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Den fungerede ikke ordentligt.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Den virkede uforudsigelig.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Jeg kunne ikke lide udseendet.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Jeg kunne ikke lide de nye faneblade og layoutet.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Jeg kunne ikke lide den nye værktøjslinje.',
+	'optin-survey-answer-whyoptout-other' => 'Anden grund:',
+	'optin-survey-question-explain' => 'Forklar eller uddyb gerne dit svar herover:',
+	'optin-survey-question-techfail' => 'Oplevede du nogen tekniske fejl mens du brugte Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Hvis ja, uddyb eller forklar venligst:',
+	'optin-survey-question-usedtoolbar' => 'Har du brugt den nye udvidelige værktøjslinje til at redigere en side?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Hvis ja, hvad kunne lide ved den? Hvad kunne du ikke lide ved den?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Hvis nej, hvorfor ikke? Vil du gøre det på et senere tidspunkt? Forklar veligst.',
+	'optin-survey-question-different' => 'Hvad kunne vi have gjort anderledes for at få dig til at fortsætte med at bruge Beta?',
+	'optin-survey-question-feedback' => 'Fortæl os venligst alle andre kommentarer, overvejelser eller tanker som du har til os - enhver tilbagemelding er nyttig:',
+	'optin-survey-question-browser' => 'Hvilken browser bruger du?',
+	'optin-survey-answer-browser-other' => 'Anden browswer:',
+	'optin-survey-question-os' => 'Hvilket styresystem bruger du?',
+	'optin-survey-answer-os-other' => 'Andet styresystem:',
+	'optin-survey-question-res' => 'Hvor stor er din skærmopløsning?',
+	'optin-survey-question-changes' => 'Hvilke foranndringer kunne du tænke dig at se i Beta fremover (vælg venligst alle som passer)?',
+	'optin-survey-answer-changes-nav' => 'Gør den generelle navigering på websiderne nemmere at bruge.',
+	'optin-survey-answer-changes-edittools' => 'Udbyg og forbedr redigeringsværktøjerne.',
+	'optin-survey-answer-changes-upload' => 'Forbedr oplægning af indhold og media.',
+	'optin-survey-answer-changes-richtext' => 'Udvikl redigeringsværktøjer som ligner tekstbehandlingsprogrammer.',
+	'optin-survey-answer-changes-lookfeel' => 'Opdater websidernes udseende og virkemåde.',
+	'optin-survey-answer-changes-predictability' => 'Forbedr forudsigeligheden af virkemåden.',
+	'optin-survey-answer-changes-custom' => 'Giv mulighed for flere individuelle tilpasninger.',
+	'optin-survey-answer-changes-other' => 'Andet:',
+	'optin-improvements' => '== Hvad er blevet forbedret? ==
+[[File:UsabilityNavigation.png|left|link=]]
+;Forbedret navigering
+Det nye navigationssystem gør det nemmere at se hvor du er og hvad du gør, samt hvorhen du kan gå og hvordan du kommer dertil. Med søgefeltet i det øvre højre hjørne er søgefunktionen nemmere at finde og hurtigere at bruge.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;Forbedringer i værktøjslinjen
+Nye og forbedrede ikoner gør det tydeligere hvilken funktion hvert værktøj udfører. Udvidelige afsnit reducerer støjen, men gør samtidig at sjældent brugte værktøjer kun er et klik væk.
+Hjælpeafsnittet giver hurtig adgang til en reference over almindeligt brugte wiki-koder.
+<div style="clear:both;"></div>
+
+== Hvordan du kan deltage ==
+For at få mere at vide om projektet eller for at deltage, kan du besøge [http://usability.wikimedia.org wikien for initiativet for brugervenlighed]. Der finder du information om vores bevillinger, forskning, design & udvikling og udgaver. Til at stille spørgsmål eller komme med generelle kommentarer kan du bruge vores [http://usability.wikimedia.org/wiki/Talk:Prototype diskusionsside for prototypen]. For at tage specifikke emner op brug venligst de respektive diskussionssider. Hvis du finder fejl, bedes du venligst kommentere dette på [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acaiudgavens diskussionsside] eller [https://bugzilla.wikimedia.org Bugzilla].
+
+Tak, vi ser frem til at høre fra dig!',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Benzen
@@ -874,6 +963,8 @@ $messages['el'] = array(
 	'optin-title-justoptedout' => 'Σας ευχαριστούμε που δοκιμάσατε την Beta μας',
 	'optin-title-feedback' => 'Ανατροφοδότηση beta',
 	'optin-needlogin' => 'Πρέπει να [$1 συνδεθείς] για να δοκιμάσεις την Beta',
+	'optin-intro' => 'Η Πρωτοβουλία Χρησιμότητας Wikipedia έχει δουλέψει σκληρά για τη βελτίωση της χρησιμότητας της Wikipedia. 
+Θα θέλατε να δοκιμάσετε την Beta;',
 	'optin-feedback-intro' => 'Ευχαριστούμε που δοκιμάσατε την Beta.
 Θα θέλαμε να μάθουμε τι νομίζετε για την νέα διεπαφή μας. Θα το εκιμούσαμε αν συμπληρώνατε την προαιρετική φόρμα αξιολόγησης παρακάτω.',
 	'optin-feedback-back' => 'Αν δεν θες να συμπληρώσεις τη δημοσκόπηση, μπορείς να επιστρέψεις πίσω στο $1.',
@@ -895,6 +986,8 @@ $messages['el'] = array(
 	'optin-feedback' => 'Ανατροφοδότηση beta',
 	'optin-survey-yes' => 'Ναι',
 	'optin-survey-no' => 'Όχι',
+	'optin-survey-intro' => 'Ευχαριστούμε για την δοκιμή της Beta.
+Θα θέλαμε να ξέρουμε τι πιστεύετε για τη νέα μας επιφάνεια, ώστε να μπορέσουμε να το εκτιμήσουμε αν συμπληρώσατε την προαιρετική δημοσκόπηδη πριν πατήσετε "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'Τι σας άρεσε στη Beta; Τι δεν σας άρεσε στη Beta;',
 	'optin-survey-question-whyoptout' => 'Γιατί εγκαταλείπετε τη Beta; (Παρακαλώ επιλέξτε όλα όσα εφαρμόζονται.)',
 	'optin-survey-answer-whyoptout-hard' => 'Ήταν δύσχρηστο.',
@@ -905,10 +998,13 @@ $messages['el'] = array(
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Δεν μου άρεσε η νέα μπάρα εργαλείων.',
 	'optin-survey-answer-whyoptout-other' => 'Άλλος λόγος:',
 	'optin-survey-question-explain' => 'Παρακαλώ δώστε μία πληρέστερη εξήγηση της παραπάνω απάντησής σας:',
+	'optin-survey-question-techfail' => 'Έχετε τεχνικές δυσκολίες ενώ χρησιμοποιείτε τη Beta;',
 	'optin-survey-question-techfail-ifyes' => 'Εάν ναι, παρακαλώ δώστε μία πληρέστερη εξήγηση:',
 	'optin-survey-question-usedtoolbar' => 'Χρησιμοποιήσατε τη νέα επεκτάσιμη μπάρα εργασιών για να επεξεργαστείτε μια σελίδα;',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Εάν ναι, τι σας άρεσε και τι δεν σας άρεσε σε αυτό;',
 	'optin-survey-question-usedtoolbar-ifno' => 'Αν όχι, γιατί όχι; Πρόκειται στο μέλλον; Παρακαλώ εξηγήστε.',
+	'optin-survey-question-different' => 'Τι θα μπορούσαμε να κάνουμε διαφορετικό για να συνεχίσετε να χρησιμοποιείτε τη Beta;',
+	'optin-survey-question-feedback' => 'Παρακαλώ ενημερώστε μας για οποιαδήποτε σχόλια, παρατηρήσεις ή σκέψεις έχετε για μας - οποιαδήποτε ανάδραση είναι χρήσιμη:',
 	'optin-survey-question-browser' => 'Ποιον πλοηγό (browser) χρησιμοποιείτε;',
 	'optin-survey-answer-browser-ie5' => 'Internet Explorer 5',
 	'optin-survey-answer-browser-ie6' => 'Internet Explorer 6',
@@ -935,6 +1031,7 @@ $messages['el'] = array(
 	'optin-survey-answer-changes-nav' => 'Μετατροπή της όλης πλοήγησης στον ιστότοπο πιο εύχρηστη.',
 	'optin-survey-answer-changes-edittools' => 'Αυξήστε και ενισχύστε τα εργαλεία επεξεργασίας.',
 	'optin-survey-answer-changes-upload' => 'Βελτίωση περιεχομένου και φορτώσεις μέσων.',
+	'optin-survey-answer-changes-richtext' => 'Ανάπτυξη εργαλείων επεξεργασίας παρόμοιων με πρόγραμμα διόρθωσης πλούσιου κειμένου.',
 	'optin-survey-answer-changes-lookfeel' => 'Αλλαγή της εμφάνισης του ιστοτόπου.',
 	'optin-survey-answer-changes-predictability' => 'Βελτίωση προβλεψιμότητας της απόδοσης.',
 	'optin-survey-answer-changes-custom' => 'Επέτρεψε μεγαλύτερη προσαρμογή χρήστη.',
@@ -1029,6 +1126,7 @@ Dankegon, kaj ni antaŭĝojas viajn komentojn!',
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  * @author Locos epraix
  * @author Toliño
  */
@@ -1079,6 +1177,7 @@ Nos gustaría conocer que opinas acerca de la nueva interfaz, apreciaríamos si 
 	'optin-survey-question-os' => 'Cuál sistema operativo usas?',
 	'optin-survey-answer-os-other' => 'Otro sistema operativo:',
 	'optin-survey-question-res' => 'Cuál es la resolución de tu pantalla?',
+	'optin-survey-answer-changes-other' => 'Otro:',
 	'optin-improvements' => '== Qué ha sido mejorado? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Navegación mejorada
@@ -3184,6 +3283,22 @@ Vi vil gjerne vite hva du tenker om vårt nye grensesnitt, så vi vil sette pris
 	'optin-survey-answer-changes-predictability' => 'Forbedre forutsigbarheten av responsen/hastigheten til nettsidene.',
 	'optin-survey-answer-changes-custom' => 'Tillat mere skreddersydde innstillinger.',
 	'optin-survey-answer-changes-other' => 'Andre ting:',
+	'optin-improvements' => '== Hva har blitt forbedret? ==
+[[File:UsabilityNavigation.png|left|link=]]
+;Forbedret navigering
+Det nye systemet for navigasjon gjør det enklere å se hvor du er og hva du gjør samt hvor du kan gå hvordan du kommer dit. Med søkefeltet i det øvre høyre hjørnet så er søkefunksjonen lettere å finne og kjappere å bruke. (Observer at bildene til venstre ikke bruker den norske oversettelsen som finnes).
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;Forbedringer i verktøylinja
+Nye og forbedrede ikoner gjør det tydeligere hvilken funksjon hvert verktøy er koblet til. Utvidbare seksjoner reduserer den visuelle støyen, men gjør samtidig verktøyene som brukes sjelden tilgjengelige.
+Seksjonen for hjelp gir rask tilgang til forklaringer på vanlig bruk av kodene i wikiteksten.
+<div style="clear:both;"></div>
+
+== Hvordan du kan engasjere deg ==
+For å få mer informasjon om prosjektet eller for å engasjere deg, vennligst besøk [http://usability.wikimedia.org wikien for Wikipedias initiativ for brukervennlighet]. Der finner du mer informasjon om ovårt stipendiat, forskning, design, utvikling og kommende utgaver. For å stille spørsmål eller komme med generelle kommentarer, bruk vår [http://usability.wikimedia.org/wiki/Talk:Prototype diskusjonsside for prototypen]. For å ta opp spesifikke emner, bruk de respektive diskusjonssidene. Dersom du finner feil/bugger så kan du kommentere dette på [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acaiutgavens diskusjonsside] eller [https://bugzilla.wikimedia.org Bugzilla].
+
+Takk for din interesse og vi ser fram til å høre fra deg!',
 );
 
 /** Occitan (Occitan)
@@ -3314,7 +3429,7 @@ W każdej chwili możesz ją wyłączyć poprzez kliknięcie linku „{{int:opti
 	'optin-success-out' => 'Wyłączyłeś wersję testową.
 W każdej chwili możesz ją przywrócić poprzez kliknięcie linku „{{int:optin-try}}” znajdującego się na górze, po prawej stronie.',
 	'optin-success-feedback' => 'Dziękujemy za przesłaną opinię!',
-	'optin-accept-short' => 'Tak!',
+	'optin-accept-short' => 'Tak, chcę!',
 	'optin-accept-long' => 'Wypróbuj wersję testową',
 	'optin-accept-long-anon' => 'Zaloguj się i wypróbuj wersję testową',
 	'optin-deny-short' => 'Nie, dziękuję',
@@ -3381,7 +3496,7 @@ Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z
 	'optin-improvements' => '== Co zostało poprawione? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Poprawiono nawigację
-Nowy sposób nawigacji umożliwia łatwiejsze zorientowanie się o aktualnym położeniu oraz wykonywanej czynności, jak również gdzie można się udać i jak tam dotrzeć. Umieszczenie wyszukiwania w prawym górnym rogu strony ułatwiło i przyspieszyło do niego dostęp.
+Nowy sposób nawigacji umożliwia łatwiejsze zorientowanie się w aktualnym położeniu oraz wykonywanej czynności, jak również gdzie można się udać i jak tam dotrzeć. Umieszczenie wyszukiwania w prawym górnym rogu strony ułatwiło i przyspieszyło do niego dostęp.
 <div style="clear:both;"></div> 
 
 [[File:UsabilityToolbar.png|left|link=]]
@@ -3391,7 +3506,7 @@ Sekcja pomocy  umożliwia szybki dostęp do pomocy kontekstowej dla często wyko
 <div style="clear:both;"></div>
 
 == Jak można pomóc? ==
-Aby dowiedzieć się więcej o projekcie lub wziąć w nim udział odwiedź witrynę [http://usability.wikimedia.org projektu użyteczności wiki]. Odnajdziesz tam informacje o tym jak nas wesprzeć finansowo, badaniach, w projektowaniu, rozwoju oraz wydawaniu wersji. Pytania można zadawać poprzez ogólny system opiniowania, używając [http://usability.wikimedia.org/wiki/Talk:Prototype prototypowej strony dyskusji]. Konkretne problemy należy poruszać na powiązanych stronach dyskusji. Odnalezione błędy należy zgłaszać pozostawiając komentarz na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai stronie dyskusji wersji Acai] lub korzystając z [https://bugzilla.wikimedia.org Bugzilli].
+Aby dowiedzieć się więcej o projekcie lub wziąć w nim udział odwiedź witrynę [http://usability.wikimedia.org projektu użyteczności wiki]. Odnajdziesz tam informacje o tym jak nas wesprzeć finansowo, w badaniach, projektowaniu, rozwoju oraz wydawaniu wersji. Pytania można zadawać poprzez ogólny system opiniowania, używając [http://usability.wikimedia.org/wiki/Talk:Prototype prototypowej strony dyskusji]. Konkretne problemy należy poruszać na powiązanych stronach dyskusji. Odnalezione błędy należy zgłaszać pozostawiając komentarz na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai stronie dyskusji wersji Acai] lub korzystając z [https://bugzilla.wikimedia.org Bugzilli].
 
 Dziękujemy i zapraszamy!',
 );
@@ -3636,6 +3751,13 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'optin-title-optedout' => 'Pruève Beta',
 	'optin-title-optedin' => 'Lasse Beta',
+	'optin-title-justoptedin' => "Bovegne jndr'à Beta",
+	'optin-title-feedback' => 'Segnale a Beta',
+	'optin-needlogin' => 'Tu è abbesogne de [$1 trasè] pe pruvà Beta.',
+	'optin-submit-feedback' => "Danne 'na segnalazione",
+	'optin-try' => 'Pruève Beta',
+	'optin-leave' => 'Lasse Beta',
+	'optin-feedback' => 'Segnale a Beta',
 	'optin-survey-yes' => 'Sìne',
 	'optin-survey-no' => 'None',
 	'optin-survey-answer-whyoptout-other' => 'Otre mutive:',

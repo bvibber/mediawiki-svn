@@ -47,6 +47,16 @@ $messages['be-tarask'] = array(
 	'right-getfamily' => 'стварэньня файла групы вікі-праектаў для pywikipediabot',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'getfamily-desc' => 'Genel a ra un diell familh evit pywikipediabot',
+	'getfamily' => 'Kaout familh pywikipediabot',
+	'getfamily-interwikierror' => "Fazi : kefluniadur etrewiki faziek, kit e darempred gant ar merour lec'hel.",
+	'right-getfamily' => 'Sevem ur restr faimlh evit pywikipediabot',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

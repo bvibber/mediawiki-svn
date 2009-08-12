@@ -595,6 +595,23 @@ $messages['fr'] = array(
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'recordadmin-submit' => 'Sometre',
+	'recordadmin-buttonsearch' => 'Rechèrchiér',
+	'recordadmin-buttoncreate' => 'Crèar',
+	'recordadmin-buttonreset' => 'Tornar inicialisar',
+	'recordadmin-searchresult' => 'Rèsultats de la rechèrche',
+	'recordadmin-buttonsave' => 'Sôvar',
+	'recordadmin-viewlink' => 'vêre',
+	'recordadmin-editlink' => 'changiér',
+	'recordadmin-created' => 'Crèâ',
+	'recordadmin-modified' => 'Modifiâ',
+	'recordadmin-actions' => 'Accions',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

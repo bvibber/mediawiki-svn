@@ -127,6 +127,7 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'contributiontracking' => 'Rastreig de contribucions',
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Enviament de formulari no vàlid',
 	'contrib-tracking-submitting' => 'Enviant al processador de pagaments...',

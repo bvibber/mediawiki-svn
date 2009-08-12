@@ -285,6 +285,13 @@ $messages['fr'] = array(
 	'showprocesslist-info' => 'Informations',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'showprocesslist-user' => 'Utilisator',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

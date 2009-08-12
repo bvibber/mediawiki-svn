@@ -208,6 +208,13 @@ $messages['fr'] = array(
 	'pageby-anon' => "''anonymes''",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'pageby-contributors' => 'Contributors :',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

@@ -74,6 +74,13 @@ $wgCustomToolbarMessages['qqq'] = array(
 	'ct_user_sample' => '{{Identical|Username}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$wgCustomToolbarMessages['af'] = array(
+	'ct_italic_sample' => 'Skuins teks',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -385,11 +392,16 @@ $wgCustomToolbarMessages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $wgCustomToolbarMessages['ca'] = array(
 	'ct_bold_caption' => 'Negreta',
+	'ct_upload' => 'Carrega $1',
+	'ct_select' => 'Seleccioneu $1 per carregar:',
 	'ct_submit' => 'Vés-hi!',
+	'ct_user_caption' => "Enllaç d'usuari",
+	'ct_user_sample' => "Nom d'usuari",
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
@@ -1440,6 +1452,13 @@ $wgCustomToolbarMessages['km'] = array(
 	'ct_user_tip' => 'ដាក់​តំណ​ជាមួយ​ទំព័រ​អ្នកប្រើប្រាស់',
 	'ct_user_caption' => 'តំណ​អ្នកប្រើប្រាស់',
 	'ct_user_sample' => 'ឈ្មោះអ្នកប្រើប្រាស់',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$wgCustomToolbarMessages['kn'] = array(
+	'ct_submit' => 'ಹೋಗು!',
 );
 
 /** Ripoarisch (Ripoarisch)

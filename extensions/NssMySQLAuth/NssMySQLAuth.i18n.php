@@ -323,6 +323,18 @@ $messages['fr'] = array(
 	'nss-db-error' => 'Erreur pendant la lecture de la base de données d’authentification',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'accountmanager' => 'Crèators de comptos',
+	'am-username' => 'Nom d’utilisator',
+	'am-email' => 'Mèl',
+	'nss-save-changes' => 'Sôvar los changements',
+	'nss-create-account-header' => 'Féte un novél compto',
+	'nss-create-account' => 'Fâre un compto',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

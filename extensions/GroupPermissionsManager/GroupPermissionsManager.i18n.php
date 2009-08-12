@@ -900,6 +900,18 @@ $messages['fr'] = array(
 	'right-readold' => 'Voir le contenu des anciennes versions et des diffs',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'grouppermissions-search' => 'Tropa :',
+	'grouppermissions-dologin' => 'Branchement',
+	'grouppermissions-dosearch' => 'Lanciér',
+	'grouppermissions-true' => 'Verê',
+	'grouppermissions-sp-save' => 'Sôvar',
+	'grouppermissions-sp-remove' => 'Enlevar',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -1552,6 +1564,13 @@ $messages['km'] = array(
 	'right-recentchanges' => 'មើលបំលាស់ប្តូរថ្មីៗ',
 	'right-edittalk' => 'កែប្រែទំព័រពិភាក្សា',
 	'right-edit-new' => 'កែប្រែទំព័រ (ដែលមិនមែនជាទំព័រពិភាក្សា)',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'grouppermissions-dosearch' => 'ಹೋಗು',
 );
 
 /** Korean (한국어)

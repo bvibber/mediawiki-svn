@@ -239,6 +239,15 @@ $messages['fr'] = array(
 	'searchbox-namespaces' => 'Espaces de nom :',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'searchbox-search' => 'Rechèrchiér',
+	'searchbox-go' => 'Lanciér',
+	'searchbox-namespaces' => 'Èspâços de nom :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -393,6 +402,13 @@ $messages['km'] = array(
 	'searchbox-search' => 'ស្វែងរក',
 	'searchbox-go' => 'ទៅ',
 	'searchbox-namespaces' => 'លំហឈ្មោះ៖',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'searchbox-go' => 'ಹೋಗು',
 );
 
 /** Ripoarisch (Ripoarisch)

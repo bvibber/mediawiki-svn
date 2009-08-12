@@ -287,6 +287,7 @@ Kliknite na dugme ispod da se prijavite.',
  * @author Paucabot
  */
 $messages['ca'] = array(
+	'povwatch_invalid_title' => 'El títol especificat no és vàlid',
 	'povwatch_unknown_subpage' => 'Subpàgina desconeguda.',
 	'povwatch_title' => 'Títol:',
 	'povwatch_added' => 'Afegit',
@@ -617,6 +618,14 @@ Cliquez sur le bouton ci-dessous pour vous abonner.',
 	'right-povwatch_user' => 'Ajouter des pages à la liste de suivi d’autres utilisateurs',
 	'action-povwatch_admin' => 'administrer les droits d’utilisateur pour PovWatch',
 	'action-povwatch_user' => 'ajouter cette page à la liste de suivi d’un autre utilisateur',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'povwatch_title' => 'Titro :',
+	'povwatch_comment' => 'Comentèro por lo jornal :',
 );
 
 /** Galician (Galego)

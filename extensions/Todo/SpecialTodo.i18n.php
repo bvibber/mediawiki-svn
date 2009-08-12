@@ -288,9 +288,11 @@ $4',
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'todo' => 'Llista de feines per fer',
 	'todo-item-list' => 'Els teus ítems',
 	'todo-form-submit' => 'Tramet una consulta',
 );

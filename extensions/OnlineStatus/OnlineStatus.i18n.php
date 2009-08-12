@@ -354,6 +354,13 @@ $messages['fr'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Changer mon statut à hors ligne quand je me déconnecte',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'onlinestatus-tab' => 'Statut',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

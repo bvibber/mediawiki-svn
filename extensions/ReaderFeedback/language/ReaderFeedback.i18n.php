@@ -356,6 +356,7 @@ $messages['de-formal'] = array(
  * @author Nepl1
  */
 $messages['dsb'] = array(
+	'readerfeedback-desc' => 'Pśekontrolěrowanje nastawkow zmóžnja cytarjam w formje kategoriskich pógódnośenjow jich měnjenje zwurazniś',
 	'readerfeedback' => 'Co źaržyš wó toś tom boku?',
 	'readerfeedback-text' => "''Pšosym wzij wokognuśe casa a pógódnoś toś ten bok. Twójo měnjenje jo gódne a pomaga nam našo websedło pólěpšyś.''",
 	'readerfeedback-reliability' => 'Spušćobnosć',
@@ -377,6 +378,7 @@ $messages['dsb'] = array(
 	'readerfeedback-finished' => 'Źěkujomy se!',
 	'readerfeedback-tagfilter' => 'Toflicka:',
 	'tooltip-ca-ratinghist' => 'Pógódnośenja cytarjow za toś ten bok',
+	'specialpages-group-feedback' => 'Měnjenje wobglědowarja',
 );
 
 /** Greek (Ελληνικά)
@@ -462,6 +464,7 @@ $messages['es'] = array(
 	'readerfeedback-voted' => "'''Parece que ya valoraste esta página''' ([$3 comentarios o preguntas?]).",
 	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => '¡Gracias!',
+	'readerfeedback-tagfilter' => 'Etiqueta:',
 	'tooltip-ca-ratinghist' => 'Valoraciones de los lectores de esta página',
 );
 
@@ -552,6 +555,7 @@ $messages['fi'] = array(
  * @author Zetud
  */
 $messages['fr'] = array(
+	'readerfeedback-desc' => 'La validation d’articles permet aux lecteurs de rendre leur avis sous forme d’évaluations par catégorie',
 	'readerfeedback' => 'Que pensez-vous de cette page ?',
 	'readerfeedback-text' => "''Veuillez consacrer un instant pour évaluer cette page ci-dessous. Vos impressions sont précieuses et nous aident à améliorer notre site web.''",
 	'readerfeedback-reliability' => 'Fiabilité',
@@ -573,6 +577,7 @@ $messages['fr'] = array(
 	'readerfeedback-finished' => 'Merci !',
 	'readerfeedback-tagfilter' => 'Balise:',
 	'tooltip-ca-ratinghist' => 'Évaluations de cette page par les lecteurs',
+	'specialpages-group-feedback' => 'Opinion du lecteur',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -717,6 +722,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'readerfeedback-desc' => 'Přepruwowanje nastawkow zmóžnja čitarjam we formje kategoriskich pohodnoćenjow jich měnjenje zwuraznić',
 	'readerfeedback' => 'Što mysliš wo tutej stronje?',
 	'readerfeedback-text' => "''Prošu bjer sej wokomik čas, zo by tutu stronu pohódnoćił. Twoja wotmołwa je hódnotna a pomha nam naše websydło polěpšić.''",
 	'readerfeedback-reliability' => 'Spušćomnosć',
@@ -738,6 +744,7 @@ $messages['hsb'] = array(
 	'readerfeedback-finished' => 'Wutrobny dźak!',
 	'readerfeedback-tagfilter' => 'Taflička:',
 	'tooltip-ca-ratinghist' => 'Pohódnoćenja čitarjow tuteje strony',
+	'specialpages-group-feedback' => 'Měnjenje wobhladowarja',
 );
 
 /** Hungarian (Magyar)
@@ -938,6 +945,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'readerfeedback-desc' => 'Määt et müjjelesch för der Lesser, noh sing Enschäzung för Sigge beshtemmpte Zoote vun Note ze verdeile.',
 	'readerfeedback' => 'Wat dengkß De övver hee di Sigg?',
 	'readerfeedback-text' => "''Beß esu joot un donn Der ene Momang nämme, öm dä Sigg hee dronge Note ze jävve. Ding Enschäzung hät iere Wäät un hellef met, de Websigge hee bäßer ze maache.''",
 	'readerfeedback-reliability' => 'De Zohverläßeschkeit',
@@ -959,6 +967,7 @@ $messages['ksh'] = array(
 	'readerfeedback-finished' => 'Ene schöne Dangk och!',
 	'readerfeedback-tagfilter' => 'Makeerung:',
 	'tooltip-ca-ratinghist' => 'Wi de Lesser hee di Sigg ennschäze un wat se ier för Note jävve',
+	'specialpages-group-feedback' => 'Enschäzunge vum Lesser',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

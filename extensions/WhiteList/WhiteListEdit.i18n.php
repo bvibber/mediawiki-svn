@@ -850,9 +850,13 @@ $messages['el'] = array(
 	'whitelisttablesetedit' => 'Έτοιμο για επεξεργασία',
 	'whitelisttablesetview' => 'Έτοιμο για εμφάνιση',
 	'whitelisttableremove' => 'Αφαίρεση',
+	'whitelistnewpagesfor' => 'Προσθέτει νέεςς σελίδες στην άσπρη λίστα του <b>$1</b><br />
+Χρησιμοποιήστε είτε * ή % ως χαρακτήρα μπαλαντέρ',
 	'whitelistnewtabledate' => 'Ημερομηνία λήξης:',
 	'whitelistnewtableedit' => 'Έτοιμο για επεξεργασία',
 	'whitelistnewtableview' => 'Έτοιμο για εμφάνιση',
+	'whitelistnowhitelistedusers' => 'Δεν υπάρχουν χρήστες στην ομάδα "{{MediaWiki:Group-restricted}}".
+Πρέπει να [[Special:UserRights|προσθέσετε χρήστες στην ομάδα]] πριν προσθέσετε σελίδες σε μια άσπρη λίστα ενός χρήστη.',
 	'whitelistnewtableprocess' => 'Πρόοδος',
 	'whitelistnewtablereview' => 'Επιθεώρηση',
 	'whitelistselectrestricted' => '== Επιλογή περιορισμένου ονόματος χρήστη ==',
@@ -868,9 +872,14 @@ $messages['el'] = array(
 
 $2',
 	'whitelistrequestconf' => 'Η πρόταση για νέες σελίδες στάλθηκε σε $1',
+	'whitelistnonrestricted' => "Ο χρήστης '''$1''' δεν είναι ένας περιορισμένος χρήστης.
+Αυτή η σελίδα είναι κατάλληλη μόνο για τους περιορισμένους χρήστες",
 	'whitelistnever' => 'ποτέ',
 	'whitelistnummatches' => '  - {{PLURAL:$1|ένα αποτέλεσμα|$1 αποτελέσματα}}',
 	'right-editwhitelist' => 'Τροποποίηση της άσπρης λίστας για τωρινούς χρήστες',
+	'right-restricttowhitelist' => 'Επεξεργασία και προβολή σελίδων στην άσπρη λίστα μόνο',
+	'action-editwhitelist' => 'τροποποίηση της άσπρης λίστας για τους υπάρχοντες χρήστες',
+	'action-restricttowhitelist' => 'επεξεργασία και προβολή σελίδων στην άσπρη λίστα μόνο',
 	'group-restricted' => 'Περιορισμένοι χρήστες',
 	'group-restricted-member' => 'Περιορισμένος χρήστης',
 	'group-manager' => 'Διαχειριστές',

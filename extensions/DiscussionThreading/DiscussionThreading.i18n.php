@@ -199,6 +199,13 @@ $messages['fr'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Commencer un nouveau fil de discussion',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'discussionthreading-threadnewsection' => 'novél',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

@@ -750,6 +750,15 @@ $messages['fr'] = array(
 	'review_comment' => 'Commentaire',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'review_total_statistics' => 'Soma',
+	'review_statistics_left_corner' => 'Rèvision',
+	'review_version_link' => 'Rèvision #$1',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

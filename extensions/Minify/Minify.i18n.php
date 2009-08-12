@@ -37,6 +37,13 @@ $messages['be-tarask'] = array(
 	'minify-desc' => 'Скарачае вывад CSS і JavaScript ад action=raw',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'minify-desc' => 'Strishaat a ra ezvont CSS ha JavaScript da action=raw',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

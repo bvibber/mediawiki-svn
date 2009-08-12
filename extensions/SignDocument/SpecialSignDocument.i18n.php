@@ -830,6 +830,7 @@ $1',
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -851,6 +852,8 @@ $messages['el'] = array(
 	'sign-list-hidephone' => 'Μην περιλαμβάνετε το τηλέφωνο',
 	'sign-list-hidebday' => 'Μην περιλαμβάνετε την ηλικία',
 	'sign-list-hideemail' => 'Μην περιλαμβάνετε την ηλεκτρονική διεύθυνση',
+	'sign-submit' => 'Πιστοποίηση εγγράφου',
+	'sign-view-selectfields' => '<b>Πεδία προς προβολή:</b>',
 	'sign-viewfield-entryid' => 'Καταχώρηση ταυτότητας',
 	'sign-viewfield-timestamp' => 'Ημερομηνία',
 	'sign-viewfield-realname' => 'Όνομα',
@@ -1027,6 +1030,7 @@ $1',
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} bloquear registro] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
 --></span>',
+	'sign-viewfield-stricken' => 'Tachado',
 	'sign-viewfield-reviewedby' => 'Revisor',
 	'sign-viewfield-reviewcomment' => 'Comentario',
 	'sign-detail-uniquequery' => 'Entidades similares',
@@ -1275,6 +1279,14 @@ $1',
 	'sign-uniquequery-similarphone' => 'Numéro de téléphone semblable',
 	'sign-uniquequery-similaremail' => 'Adresse de courriel semblable',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] a authentifié [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'sign-viewfield-realname' => 'Nom',
+	'sign-signatures' => 'Signatures',
 );
 
 /** Western Frisian (Frysk)

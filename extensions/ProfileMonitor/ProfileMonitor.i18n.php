@@ -280,6 +280,13 @@ $messages['fr'] = array(
 	'profiling-no-data' => 'Aucune donnée correspondante trouvée',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'profiling-ok' => 'Confirmar',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

@@ -516,6 +516,18 @@ Mise à jour effectuée.",
 	'right-import_users' => 'Importer des utilisateurs en masse',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'importusers-log-summary' => 'Rèsumâ :',
+	'importusers-log-summary-all' => 'Soma',
+	'importusers-login-name' => 'Nom d’utilisator',
+	'importusers-password' => 'Mot de pâssa',
+	'importusers-email' => 'Mèl',
+	'importusers-realname' => 'Veré nom',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -893,6 +905,13 @@ $messages['km'] = array(
 	'importusers-password' => 'ពាក្យសំងាត់',
 	'importusers-email' => 'អ៊ីមែល',
 	'importusers-realname' => 'ឈ្មោះពិត',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'importusers-log-summary' => 'ಸಾರಾಂಶ',
 );
 
 /** Korean (한국어)

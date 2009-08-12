@@ -825,6 +825,13 @@ $messages['km'] = array(
 	'spamregex-summary-log' => '(សេចក្តីសង្ខេប)',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'spamregex-summary-log' => '(ಸಾರಾಂಶ)',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

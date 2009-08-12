@@ -631,6 +631,7 @@ $messages['el'] = array(
 	'inplace_scaler_not_enough_params' => 'Όχι αρκετοί παράμετροι',
 	'inplace_scaler_invalid_image' => 'Μη έγκυρη εικόνα, δεν ήταν δυνατό να αποφασιστεί το μέγεθος.',
 	'inplace_scaler_no_handler' => 'Κανένας χειριστής για την μεταμόρφωση αυτού του τύπου MIME',
+	'inplace_scaler_no_output' => 'Κανένα αρχείο εξόδου δεν παρήχθη μέσω του μετασχηματισμού.',
 	'webstore_access' => 'Η υπηρεσία είναι περιορισμένη από τον εξυπηρετητή ΙΡ.',
 	'webstore_path_invalid' => 'Το όνομα αρχείου ήταν άκυρο.',
 	'webstore_dest_open' => 'Αδύνατο να ανοίξει το αρχείο προορισμού "$1".',

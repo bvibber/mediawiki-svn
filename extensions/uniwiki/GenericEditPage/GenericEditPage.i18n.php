@@ -477,7 +477,7 @@ Ajoutez-en en utilisant les outils dans la barre de menu.',
  */
 $messages['frp'] = array(
 	'gep-categories' => 'Catègories',
-	'gep-addcategory' => 'Apondre una catègoria',
+	'gep-addcategory' => 'Apondre una catègorie',
 	'gep-addcategorybutton' => 'Apondre',
 	'gep-suggestcategorybutton' => 'Sometre',
 	'gep-sections' => 'Sèccions',

@@ -25,6 +25,15 @@ $messages['qqq'] = array(
 	'unicodeconverter-ok' => '{{Identical|OK}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Oorspronklike teks:',
+	'unicodeconverter-newtext' => 'Omgeskakelde teks:',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

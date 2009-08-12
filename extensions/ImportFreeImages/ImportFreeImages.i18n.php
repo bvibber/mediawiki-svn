@@ -384,6 +384,13 @@ Pour ce faire, vous êtes prié{{GENDER:||e|(e)}} d’obtenir une clef API à pa
 	'importfreeimages_nophpflickr' => 'Vous n’avez pas installé phpFlickr, configurer $wgIFphpFlickr dans votre LocalSettings.php.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'importfreeimages_owner' => 'Ôtor',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -987,6 +994,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'importfreeimages_owner' => 'Autore',
+	'importfreeimages_importthis' => "'mborte quiste",
 	'importfreeimages_next' => 'Prossime $1',
 	'importfreeimages_promptuserforfilename' => "Pe piacere scrive 'u nome d'u file de destinazione:",
 );

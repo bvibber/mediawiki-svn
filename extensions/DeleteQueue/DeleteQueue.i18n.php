@@ -1808,6 +1808,18 @@ Vous pouvez [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} enregistrer ici] votre 
 	'deletequeue-case-needs-review' => 'Ce cas requiert une [[$1|revue]].',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'deletequeue-list-search' => 'Rechèrchiér',
+	'deletequeue-list-header-page' => 'Pâge',
+	'deletequeue-list-header-discusspage' => 'Pâge de discussion',
+	'deletequeue-case-page' => 'Pâge :',
+	'deletequeue-case-reason' => 'Rêson :',
+	'deletequeue-case-expiry' => 'Èxpiracion :',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */
@@ -4187,9 +4199,18 @@ Você pode registrar que também apóia, ou oferecer objeção a essa eliminaç�
  */
 $messages['ro'] = array(
 	'deletequeue-action-queued' => 'Ştergeri',
+	'deletequeue-generic-reasons' => '* Motive generice
+** Vandalism
+** Spam
+** Întreţinere
+** În afara scopului proiectului',
+	'deletequeue-speedy-title' => 'Marchează "$1" pentru ştergere rapidă',
+	'deletequeue-prod-title' => 'Propune ştergerea lui "$1"',
 	'deletequeue-delnom-reason' => 'Motiv pentru nominalizare:',
 	'deletequeue-delnom-otherreason' => 'Alt motiv',
+	'right-prod-nominate' => 'Propune ştergerea paginii',
 	'deletequeue-queue-speedy' => 'Ştergere rapidă',
+	'deletequeue-queue-prod' => 'Ştergere propusă',
 	'deletequeue-review-reason' => 'Comentarii:',
 	'deletequeue-review-newreason' => 'Motiv nou:',
 	'deletequeue-review-submit' => 'Salvaţi recenzie',

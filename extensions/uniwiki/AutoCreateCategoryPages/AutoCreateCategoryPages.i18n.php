@@ -83,9 +83,11 @@ Ona prikazuje sve stranice u kategoriji "$1" kao i sve podkategorije unutar kate
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'autocreatecategorypages-desc' => 'Crea les pàgines de les categories demanades automàticament en desar.',
 	'autocreatecategorypages-editor' => 'Creador automàtic de categories',
 );
 
@@ -412,6 +414,10 @@ Afişează toate paginile din categoria "$1" şi toate subcategoriile categoriei
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'autocreatecategorypages-desc' => 'Ccreje le categorije mangante automaticamende quanne reggistre',
+	'autocreatecategorypages-stub' => 'Queste è \'na pàgene de categorije.
+Elenghe tutte le pàggene jndr\'à categorije "$1" cu tutte le sotto categorije d\'a categorije "$1" ce esistene.',
+	'autocreatecategorypages-createdby' => "Ccrejate automaticamende da l'estenzione AutoCreateCategoryPages.",
 	'autocreatecategorypages-editor' => 'Ccreatore automateche de categorije',
 );
 

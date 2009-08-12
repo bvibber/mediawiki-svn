@@ -60,7 +60,9 @@ $messages['rtm'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'tasklist' => 'Taaklys',
 	'tasklistincorrectuser' => 'Foutiewe gebruikersnaam',
+	'tasklistemail' => 'Beste %s',
 );
 
 /** Arabic (العربية)
@@ -204,6 +206,14 @@ Neko je postavio za Vas novi zadatak na %s.
 Da pogledate Vaš cijeli spisak zadataka idite na %s.
 
 Vaš prijateljski %s sistem obavijesti',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'tasklistunknownproject' => 'Projecte desconegut',
+	'tasklistincorrectuser' => "Nom d'usuari incorrecte",
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)

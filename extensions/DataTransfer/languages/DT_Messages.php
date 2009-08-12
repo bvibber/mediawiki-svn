@@ -429,6 +429,7 @@ $messages['es'] = array(
 	'dt_xml_freetext' => 'Texto libre',
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor seleccione el archivo $1 a importar:',
+	'dt_import_editsummary' => '$1 importación',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán creadas del archivo $2.',
 	'importcsv' => 'Importar CSV',
@@ -511,6 +512,18 @@ $messages['fr'] = array(
 	'importcsv' => 'Import CSV',
 	'dt_importcsv_badheader' => 'Erreur : le titre de colonne $1, « $2 », doit être soit « $3 », « $4 » ou de la forme « nom_du_modèle[nom_du_champ] »',
 	'right-datatransferimport' => 'Importer des données',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'dt_viewxml_categories' => 'Catègories',
+	'dt_viewxml_namespaces' => 'Èspâços de noms',
+	'dt_xml_namespace' => 'Èspâço de noms',
+	'dt_xml_pages' => 'Pâges',
+	'dt_xml_page' => 'Pâge',
+	'dt_xml_template' => 'Modèlo',
 );
 
 /** Western Frisian (Frysk)
@@ -1312,11 +1325,16 @@ $messages['ro'] = array(
 	'dt_viewxml_namespaces' => 'Spaţii de nume',
 	'dt_viewxml_simplifiedformat' => 'Format simplificat',
 	'dt_xml_namespace' => 'Spaţiu de nume',
+	'dt_xml_pages' => 'Pagini',
 	'dt_xml_page' => 'Pagină',
 	'dt_xml_field' => 'Câmp',
 	'dt_xml_name' => 'Nume',
 	'dt_xml_title' => 'Titlu',
 	'dt_xml_id' => 'ID',
+	'importxml' => 'Importă XML',
+	'dt_import_importing' => 'Importare...',
+	'importcsv' => 'Importă CSV',
+	'right-datatransferimport' => 'Importă date',
 );
 
 /** Tarandíne (Tarandíne)

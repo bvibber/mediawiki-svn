@@ -126,6 +126,7 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'oai-desc' => 'Seab üles [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-hoidlaliidese.',
+	'oairepository' => 'OAI-hoidla',
 );
 
 /** Persian (فارسی)

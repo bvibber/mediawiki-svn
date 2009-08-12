@@ -163,14 +163,19 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author MF-Warburg
  */
 $messages['de'] = array(
+	'indexfunc-badtitle' => 'Ungültiger Titel: „$1“',
+	'indexfunc-index-exists' => 'Die Seite „$1“ ist bereits vorhanden',
 	'index' => 'Indexsuche',
 	'index-legend' => 'Den Index durchsuchen',
 	'index-search' => 'Suche:',
+	'index-submit' => 'Senden',
 	'index-disambig-start' => "'''$1''' steht für:",
 	'index-hide-detail' => 'Seitenliste verstecken',
+	'index-no-results' => 'Die Suche ergab keine Ergebnisse',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -252,6 +257,13 @@ Enlevez « $1 » de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|de la page|des page
 
 Tapez les premiers caractères et pressez sur le bouton de soumission pour chercher les titres des pages qui débutent avec chaîne de recherche.',
 	'index-details-explain' => "Les entrées avec des flèches sont des entrées d'index, cliquez sur la flèche pour voir toutes les pages indexées sous ce titre.",
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'index-search' => 'Chèrchiér :',
 );
 
 /** Galician (Galego)
@@ -623,5 +635,6 @@ Klicka på pilen för att se hela innehållsförteckningen.',
 $messages['zh-hant'] = array(
 	'index-search' => '搜尋：',
 	'index-submit' => '遞交',
+	'index-hide-detail' => '隱藏頁面清單',
 );
 

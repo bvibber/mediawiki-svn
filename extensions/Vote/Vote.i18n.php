@@ -74,6 +74,7 @@ riddler|Riddler',
 	'vote-results-none' => 'Daar is nog geen stemme uitgebring nie.',
 	'vote-login' => 'U moet [$1 inteken] om te kan stem.',
 	'vote-invalid-choice' => 'U moet een van die beskikbare opsies kies.',
+	'right-vote' => 'Stem',
 );
 
 /** Amharic (አማርኛ)
@@ -275,10 +276,14 @@ riddler|Zagonetka',
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'vote-desc' => 'Proporciona un mecanisme simple de vot',
 	'vote-submit' => 'Vota',
+	'vote-registered' => 'El vostre vot ha estat registrat.',
+	'vote-view-results' => 'Visualitza resultats',
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)

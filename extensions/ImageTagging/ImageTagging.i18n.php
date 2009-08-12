@@ -543,6 +543,16 @@ Veuillez attendre la fin de l’action en cours.',
 	'tag-logpagetext' => 'Ceci est le journal de tous les ajouts et de toutes les suppressions des balises d’image.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'imagetagging-article' => 'Pâge :',
+	'imagetagging-imghistory' => 'Historico',
+	'imagetagging-images' => 'émâges',
+	'imagetagging-taggedimages-title' => 'Émâges de "$1"',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -929,6 +939,13 @@ $messages['km'] = array(
 	'imagetagging-removetagsuccess' => 'ស្លាក​ដែល​បាន​ដក​ចេញ​។',
 	'imagetagging-imagetag-seemoreimages' => 'មើល​រូបភាព​បន្ថែម​នៃ "$1" ($2)',
 	'imagetagging-taggedimages-displaying' => 'កំពុង​បង្ហាញ $1 - $2 នៃ $3 រូបភាព​នៃ "$4"',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'imagetagging-imghistory' => 'ಇತಿಹಾಸ',
 );
 
 /** Krio (Krio)

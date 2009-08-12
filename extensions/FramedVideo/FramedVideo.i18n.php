@@ -592,8 +592,15 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'framedvideo_errors' => 'Au avut loc mai multe erori!',
 	'framedvideo_error' => 'A avut loc o eroare!',
+	'framedvideo_error_no_id_given' => 'Parametrul "id" lipsă.',
+	'framedvideo_error_height_required' => 'Tipul video "$1" necesită parametrul "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Tipul video "$1" necesită parametrul "height", nu doar parametrul "width".',
+	'framedvideo_error_width_too_big' => 'Valoarea dată pentru parametrul "width" este prea mare.',
+	'framedvideo_error_height_too_big' => 'Valoarea dată pentru parametrul "height" este prea mare.',
+	'framedvideo_error_no_integer' => 'Valoarea dată pentru "$1" nu este număr pozitiv.',
 	'framedvideo_error_limit' => 'Valoarea maximă permisă este $1.',
 	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_height_and_width_required' => 'Tipul video "$1" necesită parametrii "height" şi "width2" sau "width".',
 );
 
 /** Tarandíne (Tarandíne)

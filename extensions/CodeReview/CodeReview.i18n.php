@@ -965,7 +965,9 @@ $messages['ca'] = array(
 	'code-rev-rev' => 'Revisió:',
 	'code-rev-paths' => 'Rutes modificades:',
 	'code-rev-modified-a' => 'afegit',
+	'code-rev-modified-r' => 'Reemplaçat',
 	'code-rev-modified-d' => 'esborrat',
+	'code-rev-modified-m' => 'modificat',
 	'code-rev-imagediff' => 'Canvis de la imatge',
 	'code-rev-status' => 'Estat:',
 	'code-rev-status-set' => "Canvia l'estat",
@@ -987,6 +989,13 @@ $messages['ca'] = array(
 	'codereview-batch-submit' => 'Envia',
 	'codereview-reply-link' => 'Contesta',
 	'codereview-email-subj' => '[$1] [r$2]: Nou comentari afegit',
+	'codereview-email-body' => 'L\'usuari "$1" ha fet un comentari a r$3
+
+URL complet: $2
+
+Comentari:
+
+$4',
 	'repoadmin-new-button' => 'Crear',
 	'repoadmin-edit-bug' => 'Ruta de Bugzilla:',
 	'repoadmin-edit-button' => 'OK',
@@ -1358,6 +1367,14 @@ Dopołny URL: $3
 Zespominanje pśenjasenja:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Awtomatiski test jo regresiju nadejšeł.',
+	'codereview-email-body3' => 'Awtomatiski test jo regresiju změnow w r$1 dla nadejšeł.
+
+Dopołny URL: $2
+
+Zapominanje:
+
+$3',
 	'repoadmin' => 'Administracija repozitoriuma',
 	'repoadmin-new-legend' => 'Nowy repozitorium napóraś',
 	'repoadmin-new-label' => 'Mě repozitoriuma:',
@@ -1495,6 +1512,7 @@ $4',
 Υποβολή περίληψης:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Η αυτόματη δοκιμή εντόπισε παλινδρόμηση',
 	'repoadmin' => 'Διαχείριση του αποθηκευτηρίου',
 	'repoadmin-new-legend' => 'Δημιουργία νέου αποθηκευτηρίου',
 	'repoadmin-new-label' => 'Όνομα αποθηκευτηρίου:',
@@ -1655,6 +1673,7 @@ $messages['es'] = array(
 	'code-no-repo' => '¡No está configurado el repositorio!',
 	'code-load-diff' => 'Cargando diferencias...',
 	'code-notes' => 'comentarios recientes',
+	'code-statuschanges' => 'cambios de status',
 	'code-authors' => 'autores',
 	'code-status' => 'status',
 	'code-tags' => 'etiquetas',
@@ -2215,6 +2234,14 @@ URL complète : $3
 Résumé des modifications :
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2] : le test automatique a détecté une régression',
+	'codereview-email-body3' => 'Le test automatique a révélé une régression à cause des changements intervenus dans la version r$1.
+
+URL complète : $2
+
+Résumé lors de la soumission :
+
+$3',
 	'repoadmin' => 'Administration des dépôts',
 	'repoadmin-new-legend' => 'Créer un nouveau dépôt',
 	'repoadmin-new-label' => 'Nom du dépôt :',
@@ -2965,6 +2992,14 @@ Dopołny URL: $3
 Zjeće přenjesenja:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Awtomatiski test je regresiju wotkrył',
+	'codereview-email-body3' => 'Awtomatiski test je změnow w r$1 dla regresiju wotkrył.
+
+Dospołny URL: $2
+
+Zjeće:
+
+$3',
 	'repoadmin' => 'Administracija repozitorija',
 	'repoadmin-new-legend' => 'Nowy repozitorij wutworić',
 	'repoadmin-new-label' => 'Mjeno repozitorija:',
@@ -3903,6 +3938,15 @@ Loor op de URL: $3
 Singe Kommentaa dozo:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: En automattesche Prööfung hät ene Fähler (widder)jefonge.',
+	'codereview-email-body3' => 'Et automattesche Prööfe hät ene Fähler opjedeck,
+dä met dä Version $1 (widder) opjetrodde es.
+
+Der kumplätte URL es: $2
+
+Beim Afshpeishere wood aanjejovve:
+
+$3',
 	'repoadmin' => 'Repositorijums-Verwalldung',
 	'repoadmin-new-legend' => 'E neu Repositorijum aanlääje',
 	'repoadmin-new-label' => 'Däm Repositorijum singe Name:',
@@ -4215,6 +4259,13 @@ $messages['mk'] = array(
 	'code-status-reverted' => 'вратено',
 	'code-status-resolved' => 'разрешено',
 	'code-status-ok' => 'ok',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'code-status-reverted' => 'буцаагдав',
 );
 
 /** Malay (Bahasa Melayu)
@@ -5406,10 +5457,14 @@ $4',
  */
 $messages['ro'] = array(
 	'code-comments' => 'Comentarii',
+	'code-old-status' => 'Statut vechi',
+	'code-new-status' => 'Statut nou',
 	'code-authors' => 'autori',
+	'code-tests' => 'Cazuri de test',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentator',
 	'code-field-timestamp' => 'Dată',
+	'code-field-tests' => 'Teste',
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Dată:',
 	'code-rev-message' => 'Comentariu:',

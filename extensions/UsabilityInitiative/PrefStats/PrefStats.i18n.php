@@ -61,6 +61,7 @@ $messages['af'] = array(
 	'prefstats-xaxis' => 'Tydsduur (ure)',
 	'prefstats-factors' => 'Wys per: $1',
 	'prefstats-factor-hour' => 'uur',
+	'prefstats-factor-sixhours' => 'ses uur',
 	'prefstats-factor-day' => 'dag',
 	'prefstats-factor-week' => 'week',
 	'prefstats-factor-twoweeks' => 'twee weke',
@@ -243,6 +244,7 @@ Konfigurer $wgPrefStatsTrackPrefs for at spore indstillinger.',
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author MF-Warburg
  * @author Metalhead64
  * @author Omnipaedista
@@ -270,6 +272,8 @@ Klicke auf eine, um Statistiken darüber zu erhalten.',
 	'prefstats-factor-week' => 'Woche',
 	'prefstats-factor-twoweeks' => 'zwei Wochen',
 	'prefstats-factor-fourweeks' => 'vier Wochen',
+	'prefstats-legend-out' => 'Abgemeldet',
+	'prefstats-legend-in' => 'Angemeldet',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -357,6 +361,7 @@ Konfiguru $wgPrefStatsTrackPrefs por sekvi preferojn.',
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  * @author Locos epraix
  * @author Omnipaedista
  */
@@ -368,8 +373,11 @@ $messages['es'] = array(
 Selecciona una para ver estadísticas acerca de ella.',
 	'prefstats-xaxis' => 'Duración (horas)',
 	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'seis horas',
 	'prefstats-factor-day' => 'día',
 	'prefstats-factor-week' => 'semana',
+	'prefstats-factor-twoweeks' => 'dos semanas',
+	'prefstats-factor-fourweeks' => 'cuatro semanas',
 );
 
 /** Estonian (Eesti)
@@ -378,7 +386,7 @@ Selecciona una para ver estadísticas acerca de ella.',
  */
 $messages['et'] = array(
 	'prefstats-desc' => 'Kogub arvandmeid kindlate eelistuste kasutatavuse kohta.',
-	'prefstats-xaxis' => 'Kestvus (tundides)',
+	'prefstats-xaxis' => 'Kestus (tundides)',
 	'prefstats-factor-hour' => 'tund',
 	'prefstats-factor-day' => 'päev',
 	'prefstats-factor-week' => 'nädal',
@@ -449,6 +457,8 @@ Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
 	'prefstats-factor-twoweeks' => 'deux semaines',
 	'prefstats-factor-fourweeks' => 'quatre semaines',
 	'prefstats-factor-default' => "revenir à l'échelle par défaut",
+	'prefstats-legend-out' => 'Ne veut plus participer',
+	'prefstats-legend-in' => 'Veut participer',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -708,7 +718,7 @@ $messages['ja'] = array(
 	'prefstats-factor-twoweeks' => '2週間',
 	'prefstats-factor-fourweeks' => '4週間',
 	'prefstats-factor-default' => 'デフォルトの縮尺に戻る',
-	'prefstats-legend-out' => '非参加',
+	'prefstats-legend-out' => '不参加',
 	'prefstats-legend-in' => '参加',
 );
 
@@ -979,6 +989,8 @@ Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
 	'prefstats-factor-twoweeks' => 'doas setmanas',
 	'prefstats-factor-fourweeks' => 'quatre setmanas',
 	'prefstats-factor-default' => "tornar a l'escala per defaut",
+	'prefstats-legend-out' => 'Vòl pas pus participar',
+	'prefstats-legend-in' => 'Vòl participar',
 );
 
 /** Polish (Polski)
@@ -1007,7 +1019,8 @@ Kliknij na jednej aby zobaczyć statystyki jej dotyczące.',
 	'prefstats-factor-twoweeks' => 'dwa tygodnie',
 	'prefstats-factor-fourweeks' => 'cztery tygodnie',
 	'prefstats-factor-default' => 'powrót do domyślnej skali',
-	'prefstats-legend-out' => 'Wycofane',
+	'prefstats-legend-out' => 'Korzystali',
+	'prefstats-legend-in' => 'Korzystają',
 );
 
 /** Portuguese (Português)
@@ -1080,6 +1093,14 @@ $messages['roa-tara'] = array(
 	'prefstats-list-intro' => 'Pe mò, le seguende preferenze stonne avènene tracciate.
 Cazze sus a une de le statisteche da vedè.',
 	'prefstats-noprefs' => 'Nisciuna preferenze ha state tracciate pe mò. Configure $wgPrefStatsTrackPrefs pe traccià le preferenze.',
+	'prefstats-xaxis' => 'Durate (ore)',
+	'prefstats-factors' => 'Visite pe: $1',
+	'prefstats-factor-hour' => 'ore',
+	'prefstats-factor-sixhours' => 'sei ore',
+	'prefstats-factor-day' => 'sciurne',
+	'prefstats-factor-week' => 'sumáne',
+	'prefstats-factor-twoweeks' => 'doje sumáne',
+	'prefstats-factor-fourweeks' => 'quattre sumáne',
 );
 
 /** Russian (Русский)

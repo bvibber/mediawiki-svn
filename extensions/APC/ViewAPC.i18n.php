@@ -1202,6 +1202,7 @@ APC no parece estar ejecutándose.',
 	'viewapc-delete-ok' => 'Entrada cache <nowiki>$1</nowiki> está borrada.',
 	'viewapc-delete-failed' => 'Fracasó en borrar la entrada cache cache <nowiki>$1</nowiki>.',
 	'viewapc-version-info' => 'Información de versión',
+	'viewapc-version-changelog' => 'Log de cambios',
 	'viewapc-version-ok' => 'Usted está corriendo la última versión de APC ($1)',
 	'viewapc-version-old' => 'Usted está corriendo una versión más antigua de APC ($1).
 Versión más nueva $2 está disponible en http://pecl.php.net/package/APC/$2',
@@ -2767,6 +2768,13 @@ $messages['km'] = array(
 	'viewapc-version-old' => 'អ្នក​កំពុងតែ​ដំណើរការ​កំណែ​ចាស់​នៃ APC ($1)។
 
 កំណែ​ថ្មី $2 អាចរកបាន​នៅ http://pecl.php.net/package/APC/$2',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'viewapc-ls-submit' => 'ಹೋಗು!',
 );
 
 /** Korean (한국어)

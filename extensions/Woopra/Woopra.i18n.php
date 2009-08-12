@@ -246,6 +246,13 @@ $messages['lt'] = array(
 	'woopra-desc' => 'Leidžia [http://www.woopra.com/ Woopra Live Tracking Software] dirbti jūsų MediaWiki instaliavime',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'woopra-desc' => 'Му овозможува на [http://www.woopra.com/ Woopra софтверот за следење во живо] да работи со вашата МедијаВики инсталација',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

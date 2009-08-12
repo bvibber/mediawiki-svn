@@ -113,6 +113,15 @@ $messages['bs'] = array(
 	'assert_edit_message' => 'Određeni zahtjev ($1) nije uspjeo.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'assert_edit_title' => 'Asserció fallida',
+	'assert_edit_desc' => "Afegeix assercions d'edició per usar amb els bots",
+	'assert_edit_message' => "L'asserció especificada ($1) ha fallat.",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -179,7 +188,9 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'assert_edit_title' => 'Kinnitus ebaõnnestunud',
 	'assert_edit_desc' => 'Lisab roboti kasutusele redigeerimiskinnituse.',
+	'assert_edit_message' => 'Määratud kinnitus ($1) ebaõnnestus.',
 );
 
 /** Basque (Euskara)

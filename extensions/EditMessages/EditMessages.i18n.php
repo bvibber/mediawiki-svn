@@ -380,6 +380,13 @@ $messages['fr'] = array(
 	'editmsg-patch-success' => 'Patch appliqué avec succès.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'editmsg-search' => 'Rechèrchiér',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

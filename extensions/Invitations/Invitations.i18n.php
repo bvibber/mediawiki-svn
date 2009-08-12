@@ -1219,3 +1219,10 @@ $messages['vi'] = array(
 	'invitations-invite-success' => 'Bạn đã mời $1 sử dụng tính năng này!',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'invite-logpage' => '邀請記錄',
+);
+

@@ -171,6 +171,18 @@ $messages['el'] = array(
 	'mostrevisors-viewcontributors' => 'Εμφάνιση κύριων συνεισφέροντων',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'mostrevisors-namespace' => 'Espacio de nombres:',
+	'mostrevisors-submit' => 'Ir',
+	'mostrevisors-showredir' => 'Mostrar página de redirección',
+	'mostrevisors-hideredir' => 'Esconder páginas de redirección',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editores}}',
+	'mostrevisors-viewcontributors' => 'Mostrar colaboradores principales',
+);
+
 /** Estonian (Eesti)
  * @author Avjoska
  */
@@ -210,6 +222,13 @@ $messages['fr'] = array(
 	'mostrevisors-hideredir' => 'masquer les pages de redirection',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|éditeur|éditeurs}}',
 	'mostrevisors-viewcontributors' => 'Voir les contributeurs principaux',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'mostrevisors-submit' => 'Sometre',
 );
 
 /** Galician (Galego)
@@ -363,6 +382,13 @@ $messages['ja'] = array(
 	'mostrevisors-hideredir' => 'リダイレクトページを非表示',
 	'mostrevisors-users' => '- $1{{PLURAL:$1|人の編集者}}',
 	'mostrevisors-viewcontributors' => '主執筆者を見る',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'mostrevisors-submit' => 'ಹೋಗು',
 );
 
 /** Ripoarisch (Ripoarisch)

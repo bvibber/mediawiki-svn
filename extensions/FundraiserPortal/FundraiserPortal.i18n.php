@@ -188,9 +188,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  */
 $messages['es'] = array(
 	'fundraiserportal' => 'Portal de recaudador de fondos',
+	'fundraiserportal-ruby-button' => 'Dona Ahora',
+	'fundraiserportal-rubytext-button' => 'Dona Ahora',
+	'fundraiserportal-sapphire-button' => 'Dona Ahora',
+	'fundraiserportal-tourmaline-button' => 'Dona Ahora',
 );
 
 /** Estonian (Eesti)
@@ -496,8 +501,10 @@ $messages['oc'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'fundraiserportal-plain-button' => 'Sprijiniţi Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Donează acum',
 	'fundraiserportal-rubytext-button' => 'Donează acum',
 	'fundraiserportal-sapphire-button' => 'Donează acum',

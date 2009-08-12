@@ -184,6 +184,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -193,6 +194,7 @@ $messages['el'] = array(
 	'security-info-toggle' => 'περιορισμοί ασφαλείας',
 	'security-inforestrict' => 'Ο $1 είναι περιορισμένος στο $2',
 	'security-manygroups' => 'ομάδες $1 και $2',
+	'security-unchain' => 'Τροποποίηση ενεργειών ατομικά',
 	'security-type-category' => 'κατηγορία',
 	'security-type-namespace' => 'περιοχή ονομάτων',
 );
@@ -262,6 +264,14 @@ $messages['fr'] = array(
 	'security-type-category' => 'catégorie',
 	'security-type-namespace' => 'espace de noms',
 	'security-restricttogroup' => 'Accès au contenu réservé aux membres de « $1 »',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'security-type-category' => 'Catègorie',
+	'security-type-namespace' => 'Èspâço de noms',
 );
 
 /** Galician (Galego)

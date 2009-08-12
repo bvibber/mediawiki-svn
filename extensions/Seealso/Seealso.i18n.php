@@ -191,6 +191,13 @@ $messages['fr'] = array(
 	'seealso-desc' => 'En-tête « Voir aussi » utilisée par la balise <code><nowiki><seealso></nowiki></code>',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ */
+$messages['frp'] = array(
+	'seealso' => 'Vêde avouéc',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño
