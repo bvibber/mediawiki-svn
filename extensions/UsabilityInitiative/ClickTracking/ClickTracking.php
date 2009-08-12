@@ -18,8 +18,6 @@
 
 /* Configuration */
 
-$wgClickTrackStyleVersion = 1;
-
 //functions should check if this is set before logging clicktrack events
 $wgClickTrackEnabled = true;
 
@@ -29,8 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Click Tracking',
 	'author' => 'Nimish Gautam',
 	'version' => '0.1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'clicktracking-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative'
 );
 
 // Includes parent extension
@@ -41,4 +38,3 @@ $wgAutoloadClasses['ClickTrackingHooks'] =
 	dirname( __FILE__ ) . '/ClickTracking.hooks.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
-

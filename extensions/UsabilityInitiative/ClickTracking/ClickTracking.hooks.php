@@ -11,7 +11,7 @@ class ClickTrackingHooks {
 
 	/* Static Functions */
 	public static function schema() {
-		global $wgExtNewTables, $wgExtNewFields;
+		global $wgExtNewTables;
 		
 		$wgExtNewTables[] = array(
 			'click_tracking',
@@ -29,26 +29,23 @@ class ClickTrackingHooks {
 	 * @param $contribs contributions the user has made (or NULL if user not logged in)
 	 * @return true if the event was stored in the DB
 	 */
-	public static function trackEvent($is_logged_in, $namespace, $event_id, $contribs=-1){
+	public static function trackEvent($is_logged_in, $namespace, $event_id, $contribs=0){
 		
 		$dbw = wfGetDB( DB_MASTER );
-		if ($contribs < 0) { //meaning the user is not logged in
-			$contribs = "NULL"; 
-		}
-		
+			
 		$dbw->begin();
 		// Builds insert information
+		
 		$data = array(
-			'is_logged_in' => $is_logged_in,
+			'is_logged_in' => (bool) $is_logged_in,
 			'namespace' => (int) $namespace,
 			'event_id' => (int) $event_id,
-			'user_contribs' => $contribs
+			'user_contribs' => ($is_logged_in?$contribs:null)
 		);
 		
 		$db_status = $dbw->insert('click_tracking', $data, __METHOD__);
 		$dbw->commit();
 		return $db_status;
 	}
-	
-	
+		
 }
