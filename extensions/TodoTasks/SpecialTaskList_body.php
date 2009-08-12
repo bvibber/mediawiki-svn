@@ -18,15 +18,6 @@ function wfTodoParserFunction_Setup() {
         $wgParser->setFunctionHook( 'todo', 'wfTodoParserFunction_Render' );
 }
 
-function wfTodoParserFunction_Magic( &$magicWords, $langCode ) {
-        # Add the magic word
-        # The first array element is case sensitive, in this case it is not case sensitive
-        # All remaining elements are synonyms for our parser function
-        $magicWords['todo'] = array( 0, 'todo' );
-        # unless we return true, other parser functions extensions won't get loaded.
-        return true;
-}
-
 # only create the following function if it was not already installed with the User Contact Links extension
 if (!function_exists('getUserIDFromUserText')) {
     function getUserIDFromUserText($user) {

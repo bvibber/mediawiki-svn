@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 if (!defined('MEDIAWIKI')) die();
 
-$wgTodoTasksExtensionVersion = '0.9.7';
+$wgTodoTasksExtensionVersion = '0.10.0';
 
 $wgExtensionCredits['parserhook'][]    = array(
 	'path'           => __FILE__,
@@ -61,5 +61,4 @@ $wgHooks['PersonalUrls'][]             = 'addPersonalUrl';
 $wgHooks['AlternateEdit'][]            = 'todoPreviewAction';
 $wgHooks['EditPage::attemptSave'][]    = 'todoSavePreparser';
 $wgExtensionFunctions[]                = 'wfTodoParserFunction_Setup';
-$wgHooks['LanguageGetMagic'][]         = 'wfTodoParserFunction_Magic';
 
