@@ -1,7 +1,7 @@
 <?php
 /**
- * WikiRuby
- * @package WikiRuby
+ * Negref
+ * @package Negref
  * @author Daniel Friesen (http://mediawiki.org/wiki/User:Dantman) <mediawiki@danielfriesen.name>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  *
@@ -26,35 +26,17 @@ $wgExtensionCredits['parserhook'][] = array (
 	"path" => __FILE__,
 	"name" => "Negref",
 	"author" => "[http://mediawiki.org/wiki/User:Dantman Daniel Friesen]",
-	"description" => "Provides a tag to negotiate the location of any <nowiki><ref/></nowiki> tags inside of input text to fix some template use cases."
+	"description-msg" => 'negref-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Negref',
 );
 
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['NegRef'] = $dir . 'Negref.i18n.php';
 $wgExtensionFunctions[] = 'efNegrefSetup';
-$wgHooks['LanguageGetMagic'][]   = 'efNegrefSetupLanguageMagic';
-
-function efNegrefSetup() {
-	global $wgParser, $wgHooks;
-
-	// Check for SFH_OBJECT_ARGS capability
-	if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-		$wgHooks['ParserFirstCallInit'][] = 'efNegrefRegisterParser';
-	} else {
-		if ( class_exists( 'StubObject' ) && !StubObject::isRealObject( $wgParser ) ) {
-			$wgParser->_unstub();
-		}
-		efNegrefRegisterParser( $wgParser );
-	}
-
-	return true;
-}
+$wgHooks['ParserFirstCallInit'][] = 'efNegrefRegisterParser';
 
 function efNegrefRegisterParser( &$parser ) {
 	$parser->setFunctionHook( 'negref', 'efNegrefHook' );
-	return true;
-}
-
-function efNegrefSetupLanguageMagic( &$magicWords, $langCode ) {
-	$magicWords['negref'] = array( 0, 'negref' );
 	return true;
 }
 
