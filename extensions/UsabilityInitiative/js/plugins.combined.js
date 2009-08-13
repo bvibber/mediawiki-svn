@@ -1107,6 +1107,8 @@ fn: {
 			case 'button':
 				$button = $( '<img />' ).attr( {
 					'src': $.wikiEditor.modules.toolbar.imgPath + tool.icon,
+					'width': 22,
+					'height': 22,
 					'alt': label,
 					'title': label,
 					'rel': id,

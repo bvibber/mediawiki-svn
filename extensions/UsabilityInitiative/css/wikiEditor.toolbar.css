@@ -4,7 +4,8 @@
 	position: relative;
 	width: 100%;
 }
-/* Sections */
+
+/* Expandable Sections */
 .wikiEditor-ui .wikiEditor-ui-toolbar .sections {
 	float: left;
 	width: 100%;
@@ -60,7 +61,6 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .sections .loading .spinner {
 	position: relative;
 	float: left;
 	height: 26px;
-	padding: 0;
 }
 body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .tabs,
 body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .section-main {

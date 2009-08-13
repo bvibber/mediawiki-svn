@@ -11,6 +11,9 @@ padding:0;
 width:100%;
 margin:-1px;
 }
+.ui-widget{
+font-size:13px !important;
+}
 .wikiEditor-ui .wikiEditor-ui-text > textarea#wpTextbox1{
 margin:0;
 }
@@ -36,7 +39,7 @@ position:relative;
 border:solid silver 1px;
 width:100%;
 }
-.wikiEditor-ui .wikiEditor-ui-toc{
+.wikiEditor-ui-toc{
 position:absolute;
 right:-1px;
 top:0;
@@ -44,18 +47,18 @@ padding:0;
 border-left:solid silver 1px;
 overflow:auto;
 }
-body.rtl .wikiEditor-ui .wikiEditor-ui-toc{
+body.rtl .wikiEditor-ui-toc{
 right:auto;
 left:-1px;
 border-left:none;
 border-right:solid silver 1px;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul{
+.wikiEditor-ui-toc ul{
 padding:0;
 margin:0.5em 1em;
 list-style:none;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul ul{
+.wikiEditor-ui-toc ul ul{
 padding:0;
 margin:0;
 margin-left:0.75em;
@@ -63,18 +66,18 @@ margin-bottom:0 !important;
 margin-top:0 !important;
 list-style:none;
 }
-body.rtl .wikiEditor-ui .wikiEditor-ui-toc ul ul{
+body.rtl .wikiEditor-ui-toc ul ul{
 margin-left:0;
 margin-right:0.75em;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul li a{
+.wikiEditor-ui-toc ul li a{
 display:block;
 font-size:0.9em;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul li a.currentSelection{
+.wikiEditor-ui-toc ul li a.currentSelection{
 font-weight:bold;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul li a.section-0{
+.wikiEditor-ui-toc ul li a.section-0{
 font-size:1em;
 border-bottom:solid 1px #DDDDDD;
 }
@@ -135,7 +138,6 @@ float:right;
 position:relative;
 float:left;
 height:26px;
-padding:0;
 }
 body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .tabs,
 body.rtl .wikiEditor-ui .wikiEditor-ui-toolbar .section-main{
