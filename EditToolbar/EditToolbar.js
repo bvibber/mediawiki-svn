@@ -94,10 +94,10 @@ var editToolbarConfiguration = {
 								var notexistsImg = $j.wikiEditor.modules.toolbar.imgPath + 'insert-link-notexists.png';
 								var invalidImg = $j.wikiEditor.modules.toolbar.imgPath + 'insert-link-invalid.png';
 								var loadingImg = $j.wikiEditor.modules.toolbar.imgPath + 'loading.gif';
-								var existsMsg = gM( 'edittoolbar-link-int-target-status-exists' );
-								var notexistsMsg = gM( 'edittoolbar-link-int-target-status-notexists' );
-								var invalidMsg = gM( 'edittoolbar-link-int-target-status-invalid' );
-								var loadingMsg = gM( 'edittoolbar-link-int-target-status-loading' );
+								var existsMsg = gM( 'edittoolbar-tool-link-int-target-status-exists' );
+								var notexistsMsg = gM( 'edittoolbar-tool-link-int-target-status-notexists' );
+								var invalidMsg = gM( 'edittoolbar-tool-link-int-target-status-invalid' );
+								var loadingMsg = gM( 'edittoolbar-tool-link-int-target-status-loading' );
 								$j( '#edittoolbar-link-int-target-status' )
 									.html(	'<img id="edittoolbar-link-int-target-status-exists" src="' + existsImg + '" alt="' + existsMsg + '" title="' + existsMsg + '" />' +
 										'<img id="edittoolbar-link-int-target-status-notexists" src="' + notexistsImg + '" alt="' + notexistsMsg + '" title="' + notexistsMsg + '" />' +
@@ -172,8 +172,7 @@ var editToolbarConfiguration = {
 									// FIXME: Make 250 configurable elsewhere
 									var timerID = setTimeout( updateExistence, 250 );
 									$j(this).data( 'timerID', timerID );
-								});
-								$j( '#edittoolbar-link-int-target' ).change( function() {
+								}).change( function() {
 									// Cancel the running timer if applicable
 									if ( typeof $j(this).data( 'timerID' ) != 'undefined' )
 										clearTimeout( $j(this).data( 'timerID' ) );
@@ -187,34 +186,42 @@ var editToolbarConfiguration = {
 								buttons: {
 									'edittoolbar-tool-link-insert': function() {
 										function escapeInternalText( s ) {
-											// FIXME: Escapes ]]]] as <nowiki>]]</nowiki><nowiki>]]</nowiki>
-											return s.replace( /]]/g, '<nowiki>]]</nowiki>' );
+											return s.replace( /(]{2,})/g, '<nowiki>$1</nowiki>' );
 										}
 										function escapeExternalTarget( s ) {
 											return s.replace( / /g, '%20' )
 												.replace( /]/g, '%5D' );
 										}
 										function escapeExternalText( s ) {
-											// FIXME: Escapes ]] as <nowiki>]</nowiki>
-											return s.replace( /]/g, '<nowiki>]</nowiki>' );
+											return s.replace( /(]+)/g, '<nowiki>$1</nowiki>' );
 										}
 										var insertText = '';
 										switch ( $j( '#edittoolbar-link-tabs' ).tabs( 'option', 'selected' ) ) {
 											case 0: // Internal link
-												// TODO: Escape this stuff
-												// TODO: Refuse to insert links to invalid titles
-												insertText = '[[' +
-													$j( '#edittoolbar-link-int-target' ).val() +
-													'|' +
-													escapeInternalText( $j( '#edittoolbar-link-int-text' ).val() ) +
-													']]';
+												// FIXME: Exactly how fragile is this?
+												if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' ) ) {
+													// Refuse to add links to invalid titles
+													alert( gM( 'edittoolbar-tool-link-int-invalid' ) );
+													return;
+												}
+												var target = $j( '#edittoolbar-link-int-target' ).val();
+												var text = $j( '#edittoolbar-link-int-text' ).val();
+												if ( target == text )
+													insertText = '[[' + target + ']]';
+												else
+													insertText = '[[' + target + '|' + escapeInternalText( text ) + ']]';
 											break;
 											case 1:
-												insertText = '[' +
-													escapeExternalTarget( $j( '#edittoolbar-link-ext-target' ).val() ) +
-													' ' +
-													escapeExternalText( $j( '#edittoolbar-link-ext-text' ).val() ) +
-													']';
+												var target = $j( '#edittoolbar-link-ext-target' ).val();
+												var text = $j( '#edittoolbar-link-ext-text' ).val();
+												var escTarget = escapeExternalTarget( target );
+												var escText = escapeExternalText( text );
+												if ( escTarget == escText )
+													insertText = escTarget;
+												else if ( text == '' )
+													insertText = '[' + escTarget + ']';
+												else
+													insertText = '[' + escTarget + ' ' + escText + ']';
 											break;
 										}
 										$j.wikiEditor.modules.toolbar.fn.doAction( $j(this).data( 'context' ), {
