@@ -69,12 +69,16 @@ var editToolbarConfiguration = {
 							titleMsg: 'edittoolbar-tool-link-title',
 							id: 'edittoolbar-link-dialog',
 							// TODO: break this line
-							html: '<div id="edittoolbar-link-tabs"><ul><li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li><li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li></ul><div id="edittoolbar-link-dialog-tab-int"><form><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label><input type="text" id="edittoolbar-link-int-target" style="display:block;" /><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label><input type="text" id="edittoolbar-link-int-text" style="display:block;" /></form></div><div id="edittoolbar-link-dialog-tab-ext"><form><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label><input type="text" id="edittoolbar-link-ext-target" style="display:block;" /><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label><input type="text" id="edittoolbar-link-ext-text" style="display:block;" /></form></div></div>',
+							html: '<div id="edittoolbar-link-tabs"><ul><li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li><li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li></ul><div id="edittoolbar-link-dialog-tab-int"><form><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label> <input type="text" id="edittoolbar-link-int-target" /> <div id="edittoolbar-link-int-target-status" style="display: inline;"></div><br /><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label> <input type="text" id="edittoolbar-link-int-text" /></form></div><div id="edittoolbar-link-dialog-tab-ext"><form><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label> <input type="text" id="edittoolbar-link-ext-target" /><br /><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label> <input type="text" id="edittoolbar-link-ext-text" /></form></div></div>',
 							init: function() {
 								$j(this).find( '[rel]' ).each( function() {
 									$j(this).html( gM( $j(this).attr( 'rel' ) ) );
 								});
 								$j( '#edittoolbar-link-tabs' ).tabs();
+								
+								// Link int-target and int-text fields
+								// This means mirroring the contents of int-target in int-text
+								// as long as int-text itself hasn't been changed by the user
 								$j( '#edittoolbar-link-int-target' ).bind( 'keypress paste', function() {
 									// $j(this).val() is the old value, before the keypress
 									if ( $j( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
@@ -83,6 +87,99 @@ var editToolbarConfiguration = {
 								});
 								$j( '#edittoolbar-link-int-text' ).bind( 'keypress paste', function() {
 									$j(this).data( 'untouched', false );
+								});
+								
+								// Page existence check widget
+								var existsImg = $j.wikiEditor.modules.toolbar.imgPath + 'insert-link-exists.png';
+								var notexistsImg = $j.wikiEditor.modules.toolbar.imgPath + 'insert-link-notexists.png';
+								var invalidImg = $j.wikiEditor.modules.toolbar.imgPath + 'insert-link-invalid.png';
+								var loadingImg = $j.wikiEditor.modules.toolbar.imgPath + 'loading.gif';
+								var existsMsg = gM( 'edittoolbar-link-int-target-status-exists' );
+								var notexistsMsg = gM( 'edittoolbar-link-int-target-status-notexists' );
+								var invalidMsg = gM( 'edittoolbar-link-int-target-status-invalid' );
+								var loadingMsg = gM( 'edittoolbar-link-int-target-status-loading' );
+								$j( '#edittoolbar-link-int-target-status' )
+									.html(	'<img id="edittoolbar-link-int-target-status-exists" src="' + existsImg + '" alt="' + existsMsg + '" title="' + existsMsg + '" />' +
+										'<img id="edittoolbar-link-int-target-status-notexists" src="' + notexistsImg + '" alt="' + notexistsMsg + '" title="' + notexistsMsg + '" />' +
+										'<img id="edittoolbar-link-int-target-status-invalid" src="' + invalidImg + '" alt="' + invalidMsg + '" title="' + invalidMsg + '" />' +
+										'<img id="edittoolbar-link-int-target-status-loading" src="' + loadingImg + '" alt="' + loadingMsg + '" title="' + loadingMsg + '" />' )
+									.data( 'cache', {} )
+									.children().hide();
+								
+								function updateExistence( target ) {
+									function updateWidget( status ) {
+										$j( '#edittoolbar-link-int-target-status' ).children().hide();
+										$j( '#edittoolbar-link-int-target-status-' + status ).show();
+									}
+									
+									// Abort previous request
+									var request = $j( '#edittoolbar-link-int-target-status' ).data( 'request' );
+									if ( request )
+										request.abort();
+									
+									var target = $j( '#edittoolbar-link-int-target' ).val();
+									var cache = $j( '#edittoolbar-link-int-target-status' ).data( 'cache' );
+									if ( cache[target] ) {
+										updateWidget( cache[target] );
+										return;
+									}
+									
+									if ( target == '' ) {
+										// Hide the widget when the textbox is empty
+										$j( '#edittoolbar-link-int-target-status' ).children().hide();
+										return;
+									}
+									if ( target.indexOf( '|' ) != -1 ) {
+										// Title contains | , which means it's invalid
+										// but confuses the API. Show invalid and bypass API
+										updateWidget( 'invalid' );
+										return;
+									}
+									
+									updateWidget( 'loading' );
+									var request = $j.ajax( {
+										url: wgScriptPath + '/api.php',
+										dataType: 'json',
+										data: {
+											'action': 'query',
+											'indexpageids': '',
+											'titles': target,
+											'format': 'json'
+										},
+										success: function( data ) {
+											// TODO: What happens if data.query.pageids is undefined?
+											var page = data.query.pages[data.query.pageids[0]];
+											var status = 'exists';
+											if ( typeof page.missing != 'undefined' )
+												status = 'notexists';
+											else if ( typeof page.invalid != 'undefined' )
+												status = 'invalid';
+											
+											cache[target] = status;
+											updateWidget( status );
+										}
+									});
+									// Save request object so it can be aborted if necessary
+									$j( '#edittoolbar-link-int-target-status' ).data( 'request', request );	
+								}
+								
+								$j( '#edittoolbar-link-int-target' ).bind( 'keypress paste', function() {
+									// Cancel the running timer if applicable
+									if ( typeof $j(this).data( 'timerID' ) != 'undefined' )
+										clearTimeout( $j(this).data( 'timerID' ) );
+									
+									// Delay fetch for a while
+									// FIXME: Make 250 configurable elsewhere
+									var timerID = setTimeout( updateExistence, 250 );
+									$j(this).data( 'timerID', timerID );
+								});
+								$j( '#edittoolbar-link-int-target' ).change( function() {
+									// Cancel the running timer if applicable
+									if ( typeof $j(this).data( 'timerID' ) != 'undefined' )
+										clearTimeout( $j(this).data( 'timerID' ) );
+									
+									// Fetch right now
+									updateExistence();
 								});
 							},
 							dialog: {
@@ -105,7 +202,7 @@ var editToolbarConfiguration = {
 										switch ( $j( '#edittoolbar-link-tabs' ).tabs( 'option', 'selected' ) ) {
 											case 0: // Internal link
 												// TODO: Escape this stuff
-												// TODO: Verify internal target validity
+												// TODO: Refuse to insert links to invalid titles
 												insertText = '[[' +
 													$j( '#edittoolbar-link-int-target' ).val() +
 													'|' +
@@ -138,9 +235,11 @@ var editToolbarConfiguration = {
 								},
 								open: function() {
 									// Pre-fill text fields
+									// val() doesn't trigger the change event, so let's do that ourselves
 									$j( '#edittoolbar-link-int-text, #edittoolbar-link-ext-text, #edittoolbar-link-int-target' )
-										.val( $j(this).data( 'context' ).$textarea.getSelection() );
-									$j( '#edittoolbar-link-ext-target' ).val( 'http://' );
+										.val( $j(this).data( 'context' ).$textarea.getSelection() )
+										.change();
+									$j( '#edittoolbar-link-ext-target' ).val( 'http://' ).change();
 									$j( '#edittoolbar-link-int-text' ).data( 'untouched', true );
 								}
 							}
@@ -399,13 +498,14 @@ var editToolbarConfiguration = {
 							titleMsg: 'edittoolbar-tool-replace-title',
 							id: 'edittoolbar-replace-dialog',
 							// TODO: break this line
-							html: '<form><fieldset><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label><input type="text" id="edittoolbar-replace-search" style="display:block;" /><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label><input type="text" id="edittoolbar-replace-replace" style="display:block;" /><input type="checkbox" id="edittoolbar-replace-case" /><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label><br /><input type="checkbox" id="edittoolbar-replace-regex" /><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label><br /><input type="checkbox" id="edittoolbar-replace-all" /><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></fieldset></form>',
+							html: '<form><fieldset><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label> <input type="text" id="edittoolbar-replace-search" /><br /><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label> <input type="text" id="edittoolbar-replace-replace" /><br /><input type="checkbox" id="edittoolbar-replace-case" /><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label><br /><input type="checkbox" id="edittoolbar-replace-regex" /><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label><br /><input type="checkbox" id="edittoolbar-replace-all" /><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></fieldset></form>',
 							init: function() {
 								$j(this).find( '[rel]' ).each( function() {
 									$j(this).html( gM( $j(this).attr( 'rel' ) ) );
 								});
 							},
 							dialog: {
+								width: 350, // FIXME: autoresize width
 								buttons: {
 									'edittoolbar-tool-replace-button': function() {
 										var searchStr = $j( '#edittoolbar-replace-search' ).val();
