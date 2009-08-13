@@ -41,6 +41,8 @@ class LocalisationUpdate {
 		global $IP, $wgLocalisationUpdateSVNURL;
 
 		// Find the right SVN folder
+		// @fixme this prevents pulling trunk updates when we're on a deployment branch.
+		// Base URL should be fully configurable and make no branch assumptions.
 		$svnFolder = SpecialVersion::getSvnRevision( dirname( $file ), false, false, true );
 
 		// Create a full path
