@@ -66,6 +66,15 @@ $messages['bn'] = array(
 	'simplesearch-search' => 'অনুসন্ধান',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'simplesearch' => 'Klask eeun',
+	'simplesearch-desc' => "Ouzhpennañ a ra arc'hwelioù all d'ar c'hlask eeunaet Vector",
+	'simplesearch-search' => 'Klask',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -132,8 +141,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Locos epraix
+ * @author Omnipaedista
  */
 $messages['es'] = array(
+	'simplesearch' => 'Búsqueda simple',
 	'simplesearch-search' => 'Búsqueda',
 );
 
@@ -175,9 +186,10 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'simplesearch-search' => 'Rechèrchiér',
+	'simplesearch-search' => 'Rechèrche',
 );
 
 /** Galician (Galego)

@@ -963,8 +963,8 @@ $messages['el'] = array(
 	'optin-title-justoptedout' => 'Σας ευχαριστούμε που δοκιμάσατε την Beta μας',
 	'optin-title-feedback' => 'Ανατροφοδότηση beta',
 	'optin-needlogin' => 'Πρέπει να [$1 συνδεθείς] για να δοκιμάσεις την Beta',
-	'optin-intro' => 'Η Πρωτοβουλία Χρησιμότητας Wikipedia έχει δουλέψει σκληρά για τη βελτίωση της χρησιμότητας της Wikipedia. 
-Θα θέλατε να δοκιμάσετε την Beta;',
+	'optin-intro' => 'Η Πρωτοβουλία Χρηστικότητας της Wikipedia έχει δουλέψει σκληρά για τη βελτίωση της χρηστικότητας της Wikipedia. 
+Θα θέλατε να δοκιμάσετε τη Beta;',
 	'optin-feedback-intro' => 'Ευχαριστούμε που δοκιμάσατε την Beta.
 Θα θέλαμε να μάθουμε τι νομίζετε για την νέα διεπαφή μας. Θα το εκιμούσαμε αν συμπληρώνατε την προαιρετική φόρμα αξιολόγησης παρακάτω.',
 	'optin-feedback-back' => 'Αν δεν θες να συμπληρώσεις τη δημοσκόπηση, μπορείς να επιστρέψεις πίσω στο $1.',
@@ -987,7 +987,7 @@ $messages['el'] = array(
 	'optin-survey-yes' => 'Ναι',
 	'optin-survey-no' => 'Όχι',
 	'optin-survey-intro' => 'Ευχαριστούμε για την δοκιμή της Beta.
-Θα θέλαμε να ξέρουμε τι πιστεύετε για τη νέα μας επιφάνεια, ώστε να μπορέσουμε να το εκτιμήσουμε αν συμπληρώσατε την προαιρετική δημοσκόπηδη πριν πατήσετε "[[#leave|{{int:optin-submit-out}}]]".',
+Θα θέλαμε να ξέρουμε τι πιστεύετε για τη νέα μας διεπαφή, ώστε να μπορέσουμε να το εκτιμήσουμε αν συμπληρώσατε την προαιρετική δημοσκόπηση πριν πατήσετε "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'Τι σας άρεσε στη Beta; Τι δεν σας άρεσε στη Beta;',
 	'optin-survey-question-whyoptout' => 'Γιατί εγκαταλείπετε τη Beta; (Παρακαλώ επιλέξτε όλα όσα εφαρμόζονται.)',
 	'optin-survey-answer-whyoptout-hard' => 'Ήταν δύσχρηστο.',
@@ -1036,6 +1036,21 @@ $messages['el'] = array(
 	'optin-survey-answer-changes-predictability' => 'Βελτίωση προβλεψιμότητας της απόδοσης.',
 	'optin-survey-answer-changes-custom' => 'Επέτρεψε μεγαλύτερη προσαρμογή χρήστη.',
 	'optin-survey-answer-changes-other' => 'Άλλο:',
+	'optin-improvements' => '== Τι έχει βελτιωθεί ==
+[[File:UsabilityNavigation.png|left|link=]]
+;Ενισχυμένη πλοήγηση
+Το νέο σύστημα πλοήγησης σας διευκολύνει να δείτε που είστε και τι κάνετε, καθώς επίσης και που μπορείτε να πάτε και πως να φτάσετε εκεί. Με το κουτί αναζήτησης που βρίσκεται πάνω δεξιά, το χαρακτηριστικό αναζήτησης είναι ευκολότερο να βρεθεί και γρηγορότερο στη χρήση.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;Επεξεργασία βελτιώσεων γραμμής εργασιών
+Νέα-και-βελτιωμένα εικονίδια κάνουν σαφέστερο το τι ενέργεια εκτελεί το κάθε εργαλείο. Επεκτάσιμοι τομείς μειώνουν το σωρό ενώ τα μη συχνά χρησιμοποιούμενα εργαλεία είναι μόνο ένα "κλικ" μακρία.
+Ο τομέας βοήθειας παρέχει γρήγορη πρόσβαση σε μια παραπομπή για κοινές χρήσεις της βικισήμανσης.
+<div style="clear:both;"></div>
+== Πως να περιληφθείτε ==
+Για να μάθετε περισσότερα σχετικά με το εγχείρημα ή για να περιληφθείτε, παρακαλώ επισκεφθείτε το [http://usability.wikimedia.org βίκι της Πρωτοβουλίας Χρηστικότητας].  Εκεί θα βρείτε πληροφορίες για την επιχορήγηση, την έρευνα, τον σχεδιασμό + ανάπτυξη, και τις εκδόσεις.  Για να ρωτήσετε κάτι ή να αναδράσετε, παρακαλώ χρησιμοποιήστε την [http://usability.wikimedia.org/wiki/Talk:Prototype πρωτότυπη σελίδα συζήτησης] μας.  Για την αντιμετώπιση ιδιαίτερων θεμάτων, παρακαλώ χρησιμοποιήστε τις σχετικές σελίδες συζήτησης.  Αν βρείτε σφάλματα, παρακαλώ αφήστε τα σχόλιά σας στη [http://usability.wikimedia.org/wiki/Talk:Releases/Acai σελίδα συζήτησης της έκδοσης Acai] ή χρησιμοποιώντας το [https://bugzilla.wikimedia.org Bugzilla].
+
+Ευχαριστούμε και αναμένουμε την ανταπόκρισή σας!',
 );
 
 /** Esperanto (Esperanto)
@@ -1478,11 +1493,12 @@ Merci, nous nous réjouissons de votre intérêt !',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'optin-survey-yes' => 'Ouè',
 	'optin-survey-no' => 'Nan',
-	'optin-survey-answer-changes-other' => 'Ôtra :',
+	'optin-survey-answer-changes-other' => 'Ôtro :',
 );
 
 /** Irish (Gaeilge)
@@ -2752,6 +2768,7 @@ $messages['lv'] = array(
 	'optin-title-optedin' => 'Pamest Beta',
 	'optin-title-feedback' => 'Atsauksmes par Beta',
 	'optin-accept-long' => 'Izmēģināt Beta',
+	'optin-submit-out' => 'Pamest Beta',
 	'optin-try' => 'Izmēģināt Beta',
 	'optin-leave' => 'Pamest Beta',
 	'optin-feedback' => 'Atsauksmes par Beta',
@@ -3193,11 +3210,17 @@ Dank u wel en we zien uit naar uw mening!',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
-	'optin-needlogin' => 'Du må [$1 logga inn] for å prøva ut Beta.',
+	'optin-title-optedout' => 'Prøv betautgåva',
+	'optin-title-optedin' => 'Forlat betautgåva',
+	'optin-title-justoptedin' => 'Velkommen til betautgåva',
+	'optin-title-justoptedout' => 'Takk for at du prøver betautgåva',
+	'optin-title-feedback' => 'Tilbakemelding om betautgåva',
+	'optin-needlogin' => 'Du må [$1 logga inn] for å prøve betautgåva.',
 	'optin-survey-no' => 'Nei',
 	'optin-survey-question-whyoptout' => 'Kvifor går du ut av Beta! (Ver venleg å vél alle aktuelle grunnar.)',
 	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskeleg å bruka.',
@@ -4319,6 +4342,14 @@ $messages['te'] = array(
 ఈ ప్రాజెక్టు గురించి మరింత సమాచారం తెలుసుకొనేందుకు, లేదా పాల్గొనేందుకు, [http://usability.wikimedia.org వాడుక సౌలభ్యం వికీ] ని సందర్శించండి. అక్కడ మా గ్ర్రాంటులు, పరిశోధన, రూపకల్పన, అభివృద్ధి, విడుదలలు మొదలైన ఎన్నో విషయాల గురించి తెలుసుకోవచ్చు. ప్రశ్నలడటానికైనా, లేదా అభిప్రాయాలు తెలియజేయాలన్నా [http://usability.wikimedia.org/wiki/Talk:Prototype మా ప్రోటోటైప్ చర్చాపేజీ]ని వాడండి. మీకు తప్పులు కనిపిస్తే, [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai విడుదలపై చర్చా పేజీ] లేదా [https://bugzilla.wikimedia.org బగ్‌జిల్లా] లో తెలియజేయండి.
 
 ధన్యవాదాలు మీ అమూల్యమైన సలహాల కోసం ఎదురు చూస్తుంటాము.',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'optin-survey-yes' => 'Ҳа',
+	'optin-survey-no' => 'Не',
 );
 
 /** Turkish (Türkçe)
