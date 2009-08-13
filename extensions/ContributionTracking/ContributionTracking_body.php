@@ -27,8 +27,8 @@ class ContributionTracking extends UnlistedSpecialPage {
 		
 		$db = contributionTrackingConnection();
 
-		$ts = wfTimeStamp( 'TS_DB' );
-		
+		$ts = $db->timestamp();
+
 		$tracked_contribution = array(
 			'note' => $wgRequest->getText('comment', NULL),
 			'referrer' => $wgRequest->getText('referrer', NULL),
