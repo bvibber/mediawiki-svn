@@ -8,3 +8,4 @@ require_once ( getenv('MW_INSTALL_PATH') !== false
 	: dirname( __FILE__ ) . '/../../maintenance/commandLine.inc' );
 
 HoneypotIntegration::loadHoneypotData();
+HoneypotIntegration::loadHoneypotURLs();
