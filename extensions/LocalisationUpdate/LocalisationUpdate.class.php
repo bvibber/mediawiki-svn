@@ -5,7 +5,7 @@ class LocalisationUpdate {
 		$dbr = wfGetDB ( DB_SLAVE );
 
 		// Get the messages from the database
-		$res = $dbr->selectField( 'localisation', 
+		$res = $dbr->select( 'localisation', 
 			array( 'lo_key', 'lo_value' ),
 			array( 'lo_language' => $langcode ), 
 			__METHOD__ ); 
@@ -236,12 +236,12 @@ class LocalisationUpdate {
 		$changedStrings = array_diff_assoc( $base_messages, $compare_messages );
 
 		// If we want to save the differences
-		if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
+		if ( $saveResults && !empty($changedStrings) && is_array($changedStrings)) {
 			self::myLog( "--Checking languagecode {$langcode}--" );
 			// The save them
 			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode, $verbose );
 			self::myLog( "{$updates} messages updated for {$langcode}." );
-		} elseif($saveResults === true) {
+		} elseif ( $saveResults ) {
 			self::myLog( "--{$langcode} hasn't changed--" );
 		}
 
@@ -257,6 +257,13 @@ class LocalisationUpdate {
 		return $changedStrings;
 	}
 
+	/**
+	 * Checks whether a messages file has a certain hash
+	 * TODO: Swap return values, this is insane
+	 * @param $file string Filename
+	 * @param $hash string Hash
+	 * @return bool True if $file does NOT have hash $hash, false if it does
+	 */
 	public static function checkHash( $file, $hash ) {
 		$db = wfGetDB( DB_MASTER );
 
@@ -271,10 +278,15 @@ class LocalisationUpdate {
 	
 	public static function saveHash ($file, $hash) {
 		$db = wfGetDB ( DB_MASTER );
-		$hashConds = array( 'lfh_file' => $file, 'lfh_hash' => $hash );
-		$conds = array( 'lfh_file' => $file );
-		$db->delete( 'localisation_file_hash', $conds , __METHOD__ );
-		$db->insert( 'localisation_file_hash', $hashConds, __METHOD__ );
+		// Double query sucks but we wanna make sure we don't update
+		// the timestamp when the hash hasn't changed
+		if ( self::checkHash( $file, $hash ) )
+			$db->replace( 'localisation_file_hash', array( 'lfh_file' ), array(
+					'lfh_file' => $file,
+					'lfh_hash' => $hash,
+					'lfh_timestamp' => $db->timestamp( wfTimestamp() )
+				), __METHOD__
+			);
 	}
 
 	public static function saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode, $verbose ) {
@@ -458,9 +470,10 @@ class LocalisationUpdate {
 	}
 
 	public static function schemaUpdates() {
-		global $wgExtNewTables;
+		global $wgExtNewTables, $wgExtNewFields;
 		$dir = dirname( __FILE__ );
 		$wgExtNewTables[] = array( 'localisation', "$dir/schema.sql" );
+		$wgExtNewFields[] = array( 'localisation_file_hash', 'lfh_timestamp', "$dir/patch-lfh_timestamp.sql" );
 		return true;
 	}
 
@@ -480,32 +493,26 @@ class LocalisationUpdate {
 }
 
 class LUDependency extends CacheDependency {
-	var $hashes;
+	var $timestamp;
 
 	function isExpired() {
-		# FIXME: make this faster by changing the schema to include a last update timestamp
-		$hashes = $this->getHashesFromDB();
-		return $hashes !== $this->hashes;
+		$timestamp = $this->getTimestamp();
+		return $timestamp !== $this->timestamp;
 	}
 
 	function loadDependencyValues() {
-		$this->hashes = $this->getHashesFromDB();
+		$this->timestamp = $this->getTimestamp();
 	}
 
-	function getHashesFromDB() {
+	function getTimestamp() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 
-			'localisation_file_hash', '*', false, __METHOD__,
-			array( 'ORDER BY' => 'lfh_file' ) );
-		$hashes = '';
-		foreach ( $res as $row ) {
-			$hashes .= "{$row->lfh_file} {$row->lfh_hash}\n";
-		}
-		return $hashes;
+		return $dbr->selectField( 
+			'localisation_file_hash', 'MAX(lfh_timestamp)', '',
+			__METHOD__ );
 	}
 
 	function __sleep() {
 		$this->loadDependencyValues();
-		return array( 'hashes' );
+		return array( 'timestamp' );
 	}
 }
