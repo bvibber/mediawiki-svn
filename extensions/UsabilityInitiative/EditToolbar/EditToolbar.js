@@ -86,6 +86,7 @@ var editToolbarConfiguration = {
 								$j( '#edittoolbar-link-int-text' ).bind( 'keypress paste', function() {
 									$j(this).data( 'untouched', false );
 								});
+								$j( '#edittoolbar-link-ext-target' ).val( 'http://' );
 								
 								// Page existence check widget
 								var existsImg = $j.wikiEditor.modules.toolbar.imgPath + 'insert-link-exists.png';
@@ -239,13 +240,43 @@ var editToolbarConfiguration = {
 									$j(this).find( 'input' ).val( '' );
 								},
 								open: function() {
-									// Pre-fill text fields
-									// val() doesn't trigger the change event, so let's do that ourselves
-									$j( '#edittoolbar-link-int-text, #edittoolbar-link-ext-text, #edittoolbar-link-int-target' )
-										.val( $j(this).data( 'context' ).$textarea.getSelection() )
-										.change();
-									$j( '#edittoolbar-link-ext-target' ).val( 'http://' ).change();
-									$j( '#edittoolbar-link-int-text' ).data( 'untouched', true );
+									// Smart pre-fill text fields
+									// TODO: Replace selection, replace button
+									// TODO: Don't clear fields in other tab
+									var selection = $j(this).data( 'context' ).$textarea.getSelection();
+									if ( selection != '' ) {
+										var inttext, inttarget, exttext, exttarget;
+										var matches;
+										var tab = -1;
+										if ( ( matches = selection.match( /^\s*\[\[([^\]\|]+)(\|([^\]\|]*))?\]\]\s*$/ ) ) ) {
+											// [[foo|bar]] or [[foo]]
+											inttarget = matches[1];
+											inttext = ( matches[3] ? matches[3] : matches[1] );
+											exttarget = 'http://';
+											exttext = '';
+											tab = 0;
+										} else if ( ( matches = selection.match( /^\s*\[([^\] ]+)( ([^\]]+))?\]\s*$/ ) ) ) {
+											// [http://www.example.com foo] or [http://www.example.com]
+											exttarget = matches[1];
+											exttext = ( matches[3] ? matches[3] : '' );
+											inttarget = '';
+											inttext = '';
+											tab = 1;
+										} else {
+											inttarget = inttext = exttext = selection;
+											exttarget = 'http://';
+										}
+										
+										// val() doesn't trigger the change event, so let's do that ourselves
+										$j( '#edittoolbar-link-int-text' ).val( inttext ).change();
+										$j( '#edittoolbar-link-int-target' ).val( inttarget ).change();
+										$j( '#edittoolbar-link-ext-text' ).val( exttext ).change();
+										$j( '#edittoolbar-link-ext-target' ).val( exttarget ).change();
+										if ( tab != -1 )
+											$j( '#edittoolbar-link-tabs' ).tabs( 'select', tab );
+									}
+									if ( $j( '#edittoolbar-link-int-text' ).val() == $j( '#edittoolbar-link-int-target' ).val() )
+										$j( '#edittoolbar-link-int-text' ).data( 'untouched', true );
 								}
 							}
 						}
