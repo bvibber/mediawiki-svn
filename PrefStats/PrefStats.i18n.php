@@ -146,6 +146,24 @@ $messages['bn'] = array(
 	'prefstats-factor-fourweeks' => 'চার সপ্তাহ',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'prefstats' => 'Stadegoù war ar penndibaboù',
+	'prefstats-desc' => 'Stadegoù war an niver a implijerien o deus diuzet penndibaboù zo',
+	'prefstats-title' => 'Stadegoù war ar penndibaboù',
+	'prefstats-xaxis' => 'Pad (eurvezhioù)',
+	'prefstats-factors' => 'Diskouez dre : $1',
+	'prefstats-factor-hour' => 'eur',
+	'prefstats-factor-sixhours' => "c'hwec'h eur",
+	'prefstats-factor-day' => 'deiz',
+	'prefstats-factor-week' => 'sizhun',
+	'prefstats-factor-twoweeks' => 'pemzektez',
+	'prefstats-factor-fourweeks' => 'peder sizhun',
+	'prefstats-factor-default' => "distreiñ d'ar skeul dre ziouer",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -909,6 +927,18 @@ $messages['mk'] = array(
 	'prefstats-legend-in' => 'Напуштил',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'prefstats-factor-hour' => 'цяс',
+	'prefstats-factor-sixhours' => 'кото цяст',
+	'prefstats-factor-day' => 'чи',
+	'prefstats-factor-week' => 'тарго',
+	'prefstats-factor-twoweeks' => 'кавто таргт',
+	'prefstats-factor-fourweeks' => 'ниле таргт',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1246,6 +1276,7 @@ Klicka på en inställning för att visa statistik om den.',
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Ravichandra
  * @author Veeven
  */
@@ -1256,6 +1287,7 @@ $messages['te'] = array(
 ఒక్కోదాని గణాంకాలు చూడడానికి దానిపై నొక్కండి.',
 	'prefstats-xaxis' => 'సమయం (గంటల్లో)',
 	'prefstats-factor-hour' => 'గంట',
+	'prefstats-factor-sixhours' => 'ఆరు గంటలు',
 	'prefstats-factor-day' => 'రోజు',
 	'prefstats-factor-week' => 'వారం',
 	'prefstats-factor-twoweeks' => 'రెండు వారాలు',
@@ -1301,6 +1333,7 @@ Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
 );
 
 /** Ukrainian (Українська)
+ * @author A1
  * @author AS
  */
 $messages['uk'] = array(
@@ -1309,6 +1342,10 @@ $messages['uk'] = array(
 	'prefstats-title' => 'Статистика налаштувань',
 	'prefstats-list-intro' => 'Зараз відстежуються такі налаштування.
 Натисніть на якомусь, щоб побачити його статистику.',
+	'prefstats-xaxis' => 'Тривалість (у годинах)',
+	'prefstats-factors' => 'Перегляд за: $1',
+	'prefstats-factor-hour' => 'годину',
+	'prefstats-factor-sixhours' => 'шість годин',
 );
 
 /** Vèneto (Vèneto)
@@ -1320,6 +1357,15 @@ $messages['vec'] = array(
 	'prefstats-title' => 'Statìsteghe de le preferense',
 	'prefstats-list-intro' => 'Al momento, vien tegnù tràcia de le seguenti preferense.
 Strucando su de una te vedi le so statìsteghe.',
+	'prefstats-xaxis' => 'Durata (ore)',
+	'prefstats-factors' => 'Viste par: $1',
+	'prefstats-factor-hour' => 'ora',
+	'prefstats-factor-sixhours' => 'sié ore',
+	'prefstats-factor-day' => 'zorno',
+	'prefstats-factor-week' => 'setimana',
+	'prefstats-factor-twoweeks' => 'do setimane',
+	'prefstats-factor-fourweeks' => 'quatro setimane',
+	'prefstats-factor-default' => 'torna a la scala predefinìa',
 );
 
 /** Vietnamese (Tiếng Việt)
