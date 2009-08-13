@@ -1,7 +1,7 @@
 <?php
 class LocalisationUpdate {
 	// DB Search funtion
-	public static function onRecache( $lc, $code, &$data ) {
+	public static function onRecache( $lc, $langcode, &$cache ) {
 		$dbr = wfGetDB ( DB_SLAVE );
 
 		// Get the messages from the database
