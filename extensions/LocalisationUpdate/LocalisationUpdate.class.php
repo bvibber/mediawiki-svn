@@ -141,8 +141,11 @@ class LocalisationUpdate {
 		// use cURL to get the SVN contents
 		if ( preg_match( "/^http/", $basefile ) ) {
 			while( !$basefilecontents && $attempts <= $wgLocalisationUpdateRetryAttempts) {
-				if($attempts > 0)
-					sleep(1);
+				if($attempts > 0) {
+					$delay = 1;
+					self::myLog( "Failed to download " . $basefile . "; retrying in ${delay}s..." );
+					sleep( $delay );
+				}
 				$basefilecontents = Http::get( $basefile );
 				$attempts++;
 			}
