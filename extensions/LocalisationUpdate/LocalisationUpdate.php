@@ -22,9 +22,12 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Use the right hook
-$wgHooks['MessageNotInMwNs'][] = "LocalisationUpdate::FindUpdatedMessage";
+$wgHooks['LocalisationCacheRecache'][] = 'LocalisationUpdate::onRecache'; // MW 1.16+
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['LocalisationUpdate'] = $dir . 'LocalisationUpdate.i18n.php';
 $wgAutoloadClasses['LocalisationUpdate'] = $dir . 'LocalisationUpdate.class.php';
+$wgAutoloadClasses['LUDependency'] = $dir . 'LocalisationUpdate.class.php';
+
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LocalisationUpdate::schemaUpdates';
+

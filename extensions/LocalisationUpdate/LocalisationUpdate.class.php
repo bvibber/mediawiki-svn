@@ -1,31 +1,19 @@
 <?php
 class LocalisationUpdate {
 	// DB Search funtion
-	public static function FindUpdatedMessage( &$message, $lckey, $langcode, $isFullKey ) {
-		// Define a cache
-		static $cache = array();
-		$db = wfGetDB ( DB_SLAVE );
+	public static function onRecache( $lc, $code, &$data ) {
+		$dbr = wfGetDB ( DB_SLAVE );
 
-		// If the key also contains the language code remove the language code from the key
-		if ( $isFullKey ) {
-			$lckey = preg_replace( "/\/" . $langcode . "/", "", $lckey );
+		// Get the messages from the database
+		$res = $dbr->selectField( 'localisation', 
+			array( 'lo_key', 'lo_value' ),
+			array( 'lo_language' => $langcode ), 
+			__METHOD__ ); 
+
+		foreach ( $res as $row ) {
+			$cache['messages'][$row->lo_key] = $row->lo_value;
 		}
-
-		// If message is in the cache, don't get an update!
-		if ( array_key_exists( $lckey . "/" . $langcode, $cache ) ) {
-			$message = $cache[$lckey . "/" . $langcode];
-			return true;
-		}
-
-		// Get the message from the database
-		$conds  = array( 'lo_key' => $lckey, 'lo_language' => $langcode );
-		$result = $db->selectField( 'localisation', 'lo_value', $conds, __METHOD__ ); // Check if the database has any updated message
-		if ( $result === false ) { // If no results found, exit here
-			return true;
-		}
-
-		$message = $result;
-		$cache[$lckey . "/" . $langcode] = $result; // Update the cache
+		$cache['deps'][] = new LUDependency;
 		return true;
 	}
 
@@ -489,5 +477,35 @@ class LocalisationUpdate {
 		$vars = $ce->getVars();
 		return @$vars[$varname];
 	}
+}
 
+class LUDependency extends CacheDependency {
+	var $hashes;
+
+	function isExpired() {
+		# FIXME: make this faster by changing the schema to include a last update timestamp
+		$hashes = $this->getHashesFromDB();
+		return $hashes !== $this->hashes;
+	}
+
+	function loadDependencyValues() {
+		$this->hashes = $this->getHashesFromDB();
+	}
+
+	function getHashesFromDB() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 
+			'localisation_file_hash', '*', false, __METHOD__,
+			array( 'ORDER BY' => 'lfh_file' ) );
+		$hashes = '';
+		foreach ( $res as $row ) {
+			$hashes .= "{$row->lfh_file} {$row->lfh_hash}\n";
+		}
+		return $hashes;
+	}
+
+	function __sleep() {
+		$this->loadDependencyValues();
+		return array( 'hashes' );
+	}
 }
