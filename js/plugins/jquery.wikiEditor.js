@@ -109,15 +109,15 @@ for ( module in $.wikiEditor.modules ) {
 		}
 	}
 }
-// Each browser seems to do this differently, so let's keep our editor
-// consistent by allways starting at the begining
-context.$textarea.scrollToCaretPosition( 0 );
 // If there was a configuration passed, it's assumed to be for the addModule
 // API call, so we can just send it on it's way right now
 if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 	context.api.addModule( context, arguments[0] );
 }
+//Each browser seems to do this differently, so let's keep our editor
+//consistent by always starting at the begining
+context.$textarea.scrollToCaretPosition( 0 );
 // Store the context for next time, and support chaining
-return $(this).data( 'context', context );;
+return $(this).data( 'context', context );
 
 };})(jQuery);
