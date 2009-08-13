@@ -43,6 +43,13 @@ $messages['be-tarask'] = array(
 	'Editsectionhilitelink-desc' => 'Пазначэньне адпаведнай сэкцыі старонкі, калі Вы наводзіце курсор мышкі на спасылку рэдагаваньня',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'Editsectionhilitelink-desc' => 'Lakaat war wel ar rannbennad a zegouezh pa lakaer al logodenn war al liamm Kemmañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

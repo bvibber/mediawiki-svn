@@ -61,6 +61,13 @@ $messages['bs'] = array(
 	'delaydef-error-redef' => 'Greška: pokušano ponovno definisanje $1.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'delaydef-error-no-name' => 'Error: No heu especificat un nom de paràmetre',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

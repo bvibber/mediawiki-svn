@@ -49,6 +49,13 @@ $messages['bs'] = array(
 	'contributorsaddon-desc' => "Dodaje JavaScript popupove na linkove ''Glavnih urednika''",
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'contributorsaddon-desc' => 'Afegeix finestres emergents JavaScript als enllaços dels "Editors principals"',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

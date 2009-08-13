@@ -102,6 +102,25 @@ $messages['bar'] = array(
 	'adminlinks_importexport' => 'Impoatian und expoatian',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'adminlinks' => 'Спасылкі для адміністратараў',
+	'adminlinks-desc' => 'Дадае [[Special:AdminLinks|спэцыяльную старонку]], якая ўтрымлівае спасылкі карысныя для адміністратараў',
+	'adminlinks_documentation' => 'Дакумэнтацыя $1',
+	'adminlinks_general' => 'Агульныя',
+	'adminlinks_editsidebar' => 'Рэдагаваць бакавую панэль',
+	'adminlinks_editcss' => 'Рэдагаваць CSS-файл',
+	'adminlinks_editmainpagename' => 'Рэдагаваць назву галоўнай старонкі',
+	'adminlinks_users' => 'Удзельнікі',
+	'adminlinks_createuser' => 'Стварыць рахунак',
+	'adminlinks_browsesearch' => 'Агляд і пошук',
+	'adminlinks_importexport' => 'Імпартаваньне і экспартаваньне',
+	'right-adminlinks' => 'бачыць спасылку на [[Special:AdminLinks|спасылкі для адміністратараў]]',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -375,6 +394,24 @@ $messages['he'] = array(
 	'right-adminlinks' => 'הצגת הקישור לדף [[Special:AdminLinks|קישורים למפעילי מערכת]]',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'adminlinks' => 'Administratorske poveznice',
+	'adminlinks-desc' => 'Dodaje [[Special:AdminLinks|posebnu stranicu]] koja sadrži korisne poveznice za administratore',
+	'adminlinks_documentation' => '$1 dokumentacija',
+	'adminlinks_general' => 'Općenito',
+	'adminlinks_editsidebar' => 'Uredi izbornik sastrane',
+	'adminlinks_editcss' => 'Uredi CSS datoteku',
+	'adminlinks_editmainpagename' => 'Uredi ime glavne stranice',
+	'adminlinks_users' => 'Suradnici',
+	'adminlinks_createuser' => 'Stvori suradnika',
+	'adminlinks_browsesearch' => 'Pregledavanje i pretraživanje',
+	'adminlinks_importexport' => 'Uvoz i izvoz',
+	'right-adminlinks' => 'Pogledajte poveznicu na [[Special:AdminLinks|administratorske poveznice]]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -593,6 +630,24 @@ $messages['ml'] = array(
 	'adminlinks_browsesearch' => 'തിരച്ചിലും മേച്ചിലും',
 	'adminlinks_importexport' => 'കയറ്റുമതിയും ഇറക്കുമതിയും',
 	'right-adminlinks' => '[[Special:AdminLinks|കാര്യനിവാഹക കണ്ണികളിലേക്കുള്ള]] കണ്ണികള്‍ കാണുക',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'adminlinks' => 'Администраторонь сюлмавома пенеть',
+	'adminlinks-desc' => 'Полады [[Special:AdminLinks|башка лопа]], конасонть администраторонь туртов лезэв сюлмавома пенеть',
+	'adminlinks_documentation' => '$1 документациясь',
+	'adminlinks_general' => 'Овсекс',
+	'adminlinks_editsidebar' => 'Витнемс-петнемс бокасо лазнэнть',
+	'adminlinks_editcss' => 'Витнемс-петнемс CSS файла',
+	'adminlinks_editmainpagename' => 'Витнемс-петнемс прякс лопанть лемензэ',
+	'adminlinks_users' => 'Совицят',
+	'adminlinks_createuser' => 'Шкамс совиця',
+	'adminlinks_browsesearch' => 'Якавтомат-пакавтомат ды вешнэма',
+	'adminlinks_importexport' => 'Совавтомат-ливтемат',
+	'right-adminlinks' => 'Ваномс [[Special:AdminLinks|администраторонь сюлмавома пенетнень]]',
 );
 
 /** Dutch (Nederlands)

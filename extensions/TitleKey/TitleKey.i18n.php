@@ -285,6 +285,13 @@ $messages['lt'] = array(
 	'titlekey-desc' => 'Pavadinimo prefikso paieška pasiūlymo sugrąžinimui',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'titlekey-desc' => 'Сугерирање при пребарувањето на префикс на наслови',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

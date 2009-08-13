@@ -159,6 +159,13 @@ U slučaju problema možete pokušati <b>{{#special:call}}/DebuG</b>",
 	'call-save-failed' => 'Slijedeći tekst NEĆE biti spremljen na stranicu <big>[[$1]]</big> jer ova stranica već postoji.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'call-save-success' => 'El següent text ha estat desat a la pàgina <big>[[$1]]</big> .',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

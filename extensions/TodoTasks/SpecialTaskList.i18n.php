@@ -212,6 +212,7 @@ Vaš prijateljski %s sistem obavijesti',
  * @author Paucabot
  */
 $messages['ca'] = array(
+	'tasklist' => 'Llista de tasques',
 	'tasklistunknownproject' => 'Projecte desconegut',
 	'tasklistincorrectuser' => "Nom d'usuari incorrecte",
 );

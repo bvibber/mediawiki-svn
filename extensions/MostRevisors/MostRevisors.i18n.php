@@ -43,6 +43,13 @@ $messages['qqq'] = array(
 	'mostrevisors-users' => '* $1 is the number of contributors to a page, it supports PLURAL.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'mostrevisors-submit' => 'OK',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -116,6 +123,18 @@ $messages['bs'] = array(
 	'mostrevisors-hideredir' => 'Sakrij stranice preusmjerenja',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|uređivač|uređivači}}',
 	'mostrevisors-viewcontributors' => 'Vidi glavne urednike',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'mostrevisors-namespace' => 'Espai de noms:',
+	'mostrevisors-submit' => 'Vés-hi!',
+	'mostrevisors-showredir' => 'Mostra les redireccions',
+	'mostrevisors-hideredir' => 'Oculta les redireccions',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editors}}',
+	'mostrevisors-viewcontributors' => 'Mostra els editors principals',
 );
 
 /** German (Deutsch)
@@ -195,6 +214,7 @@ $messages['et'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -202,7 +222,7 @@ $messages['fi'] = array(
 	'mostrevisors-submit' => 'Siirry',
 	'mostrevisors-showredir' => 'Näytä ohjaussivut',
 	'mostrevisors-hideredir' => 'Piilota ohjaussivut',
-	'mostrevisors-viewcontributors' => 'Tarkastele merkittävimpiä muokkaajia',
+	'mostrevisors-viewcontributors' => 'Tarkastele päämuokkaajia',
 );
 
 /** French (Français)

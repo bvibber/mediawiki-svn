@@ -325,6 +325,14 @@ $messages['lb'] = array(
 	'right-userrights-shared' => 'Gedeelte Benotzerrechter geréieren',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'shareduserrights' => 'Управување со заеднички кориснички права',
+	'right-userrights-shared' => 'Раководете ги заедничките кориснички права',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

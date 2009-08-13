@@ -86,6 +86,13 @@ $messages['bs'] = array(
 	'webchat-desc' => 'Dodaje [[Special:WebChat|posebnu stranicu]] za dopisivanje u realnom vremenu sa drugim wiki korisnicima',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'webchat' => 'Xat web',
+);
+
 /** German (Deutsch)
  * @author Merlissimo
  */

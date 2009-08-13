@@ -103,6 +103,13 @@ $messages['bs'] = array(
   #</pre><!-- ne mijenjajte ovaj red -->',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'editsubpages-desc' => 'Permet als administradors desbloquejar una pàgina i totes les seves subpàgines per a les edicions anònimes a través de [[MediaWiki:Unlockedpages]]',
+);
+
 /** German (Deutsch)
  * @author Flominator
  */

@@ -351,14 +351,14 @@ $2',
  */
 $messages['fi'] = array(
 	'userrightsnotifysubject' => 'Käyttäjäryhmän jäsenyyden vaihto wikissä $1',
-	'userrightsnotifybody' => 'Hei vaan $1.
+	'userrightsnotifybody' => 'Hei $1.
 
-Täten haluamme ilmoittaa teille, että ryhmien jäsenyytenne $2 verkkosivustolla on tullut muutetuksi käyttäjän $3 toimesta, päiväyksenä $4.
+Tämä on ilmoitus, että käyttäjäryhmien jäsenyyttäsi on muutettu sivustolla $2 käyttäjän $3 toimesta $4.
 
 Lisättiin: $5
 Poistettiin: $6
 
-Ystävällisin terveisin,
+Terveisin,
 
 $2',
 	'userrightsnotif-desc' => 'Lähettää sähköpostiviestin käyttäjille, kun heidän oikeuksiaan muutetaan.',
@@ -674,6 +674,22 @@ Mat beschte Gréiss,
 
 $2',
 	'userrightsnotif-desc' => 'Schéckt dem Benotzer eng Informatioun per E-mail wa seng Rechter änneren',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'userrightsnotifybody' => 'Здраво $1.
+
+Би сакале да ве информираме дека вашите членства во групите на страницата $2 беа променети од $3 во $4.
+
+Додадени: $5
+Отстранети: $6
+
+Со почит,
+
+$2',
 );
 
 /** Malayalam (മലയാളം)

@@ -840,11 +840,13 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'profiling-ok' => 'సరే',
 	'profiling-data-process' => 'ప్రక్రియ',
+	'profiling-data-count' => 'లెక్క',
 	'profiling-data-time' => 'సమయం (అన్నీ)',
 	'profiling-data-average' => 'సమయం (సగటు)',
 	'profiling-no-data' => 'సరిపోలిన డాటా కనబడలేదు.',

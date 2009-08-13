@@ -149,9 +149,15 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author Paucabot
  */
 $messages['ca'] = array(
+	'ajax-se-desc' => 'Mostra els editors que estan editant la mateixa pàgina',
+	'ajax-se-title' => 'Actualment editant:',
+	'ajax-se-idling' => '(fa $1s)',
+	'ajax-se-pagedoesnotexist' => 'la pàgina no existeix',
 	'ajax-se-userinvalid' => 'Error: usuari no vàlid',
+	'ajax-se-usernotfound' => "Error: no s'ha trobat l'usuari",
 );
 
 /** Czech (Česky)

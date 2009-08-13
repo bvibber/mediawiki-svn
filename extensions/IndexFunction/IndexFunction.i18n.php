@@ -56,6 +56,16 @@ $messages['qqq'] = array(
 	'index-search-explain' => 'If your language permits, you can replace <code>submit</code> with <code>{<nowiki />{int:{{msg-mw|index-submit}}}}</code> for the button label.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'index' => 'Indeks',
+	'index-legend' => 'Die indeks deursoek',
+	'index-search' => 'Soek:',
+	'index-submit' => 'OK',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -160,6 +170,15 @@ $messages['bs'] = array(
 	'index-disambig-start' => "'''$1''' se može odnositi na nekoliko stranica:",
 	'index-missing-param' => 'Ova stranica ne može biti korištena bez parametara',
 	'index-emptylist' => 'Nema stranica povezanih sa "$1"',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'index-search' => 'Cerca:',
+	'index-submit' => 'Envia',
+	'index-hide-detail' => 'Oculta la llista de pàgines',
 );
 
 /** German (Deutsch)
@@ -322,10 +341,14 @@ Druck uf dr Boge go alli Syte aazeige, wu unter däm Titel ufglischtet sin.',
  * @author YaronSh
  */
 $messages['he'] = array(
+	'indexfunc-badtitle' => 'כותרת שגויה: "$1"',
 	'indexfunc-index-exists' => 'הדף "$1" כבר קיים',
 	'index' => 'חיפוש באינדקס',
 	'index-legend' => 'חיפוש באינדקס',
 	'index-search' => 'חיפוש:',
+	'index-disambig-start' => "המונח '''$1''' עלול להפנות לכמה דפים:",
+	'index-hide-detail' => 'הסתרת רשימת הדפים',
+	'index-no-results' => 'החיפוש לא החזיר תוצאות',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

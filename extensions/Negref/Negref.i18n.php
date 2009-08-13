@@ -37,6 +37,13 @@ $messages['fr'] = array(
 	'negref-desc' => 'Fournit une balise permettant de négocier l’emplacement de n’importe quelle balise <nowiki><ref/></nowiki> présente dans le texte saisi, afin de régler certains cas d’utilisations des modèles.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'negref-desc' => 'Stellt e Markierig z Verfiegig go dr Ort vum Befähl <code><nowiki><ref/></nowiki></code> bstimme im Text, wu yygee wird, go d Verwändig vu bstimmte Vorlage repariere.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -51,10 +58,38 @@ $messages['ja'] = array(
 	'negref-desc' => '一部のテンプレート使用に伴う問題の解決手段として、入力テキスト内の<nowiki><ref/></nowiki>タグの位置を処理するタグを提供する。',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'negref-desc' => 'Biedt en Makeerung, om dä Plats vun däm Befähl <code><nowiki><ref/></nowiki></code> ze beshtemme, em enjejovve Täx, för beschtemmpte Schabloone iere Jebruch ze rette.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'negref-desc' => 'Biedt een tag om de plaats van de tag <nowiki><ref/></nowiki> te bepalen binnen invoertekst om bepaald gebruik van sjablonen te repareren',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'negref-desc' => "Provesís una balisa que permet de negociar l’emplaçament d’una balisa quina que siá <nowiki><ref/></nowiki> presenta dins lo tèxte picat, pr'amor de reglar d'unes cases d’utilizacions dels modèls.",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'negref-desc' => 'Предоставляет тег для установления местоположения любого тега <nowiki><ref/></nowiki> внутри поля ввода, для устранения некоторых случаях использование шаблонов',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'negref-desc' => 'Poskytuje značku na vyjednanie umiestnenia akýchkoľvek značiek <nowiki><ref/></nowiki> v zadávanom texte na opravu niektorých prípadov použitia šablón.',
 );
 

@@ -376,6 +376,14 @@ $messages['lt'] = array(
 	'seealso' => 'Žiūrėkite taip pat',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'seealso' => 'Видете исто така',
+	'seealso-desc' => "Локализирани наслови 'Видете исто така' кои ја користат ознаката <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  */

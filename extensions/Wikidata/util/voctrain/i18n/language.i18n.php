@@ -47,6 +47,7 @@ $fallback = array(
 	'lfn' => 'en',
 	'lt' => 'en',
 	'mhr' => 'en',
+	'mk' => 'en',
 	'mt' => 'en',
 	'myv' => 'en',
 	'nah' => 'en',
@@ -1996,6 +1997,20 @@ $messages['lt'] = array(
 $messages['mhr'] = array(
 	'voctrain_logout' => 'лекташ',
 	'voctrain_User_name' => 'Пайдаланышын лӱмжӧ',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'voctrain_Hello_World' => 'ЗДРАВО ВИКИ!',
+	'voctrain_Permission_Denied' => 'Барањето за дозвола е одбиено',
+	'voctrain_try_again_' => 'повторно?',
+	'voctrain_Action_unknown' => 'Непознато дејство',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Не знам што да правам со '%action'.",
+	'voctrain_User_added' => 'Додадено од корисник',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Здраво, %username, добредојде на обучувачот за јазици Омега',
+	'voctrain_continue' => 'продолжи',
 );
 
 /** Maltese (Malti)

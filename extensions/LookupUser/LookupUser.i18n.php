@@ -805,6 +805,14 @@ $messages['ms'] = array(
 	'lookupuser-useroptions' => 'Pilihan pengguna:',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'lookupuser-realname' => 'Алкуксонь лемесь: $1',
+	'lookupuser-no-registration' => 'апак сёрмадсто',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

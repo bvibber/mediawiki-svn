@@ -193,6 +193,40 @@ $messages['bs'] = array(
 	'right-closewikis' => 'Zatvaranje wikija',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'closewikis-desc' => 'Permet tancar llocs wiki en granges de wikis',
+	'closewikis-page' => 'Tanca el wiki',
+	'closewikis-page-close' => 'Tanca el wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Motiu (mostrat):',
+	'closewikis-page-close-reason' => 'Motiu (registrat):',
+	'closewikis-page-close-submit' => 'Tanca',
+	'closewikis-page-close-success' => "El wiki s'ha tancat amb èxit",
+	'closewikis-page-reopen' => 'Reobre el wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Motiu:',
+	'closewikis-page-reopen-submit' => 'Reobre',
+	'closewikis-page-reopen-success' => "El wiki s'ha reobert satisfactòriament",
+	'closewikis-page-err-nowiki' => 'Wiki especificat no vàlid',
+	'closewikis-page-err-closed' => 'El wiki ja està tancat',
+	'closewikis-page-err-opened' => 'El wiki no està tancat',
+	'closewikis-list' => 'Llista de wikis tancats',
+	'closewikis-list-intro' => 'Aquesta llista conté els wikis tancats pels stewards',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Tancat per',
+	'closewikis-list-header-timestamp' => 'Tancat el',
+	'closewikis-list-header-dispreason' => 'Motiu mostrat',
+	'closewikis-log' => 'Registre de tancament de wikis',
+	'closewikis-log-header' => 'Aquí teniu un registre de tots els tancaments i reobertures de wikis fetes pels stewards',
+	'closewikis-log-close' => 'tancat $2',
+	'closewikis-log-reopen' => 'reobert $2',
+	'right-editclosedwikis' => 'Edita els wikis tancats',
+	'right-closewikis' => 'Tanca wikis',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung

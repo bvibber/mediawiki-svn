@@ -209,6 +209,20 @@ $messages['bs'] = array(
 	'watchers_less_than_x' => 'Manje od $1 {{PLURAL:$1|korisnika ima|korisnika imaju}} ovu stranicu na svom spisku praćenja.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'watchers' => 'Vigilants',
+	'watchers-desc' => 'Mostra [[Special:Watchers|quins usuaris tenen una pàgina a la seva llista de seguiment]]',
+	'watchers_link_title' => 'Qui vigila aquesta pàgina?',
+	'watchers_error_article' => "'''Error:''' La pàgina no existeix.",
+	'watchers_header' => '{{PLURAL:$2|usuari està|usuaris estan}} vigilant "$1"',
+	'watchers_noone_watches' => 'Ningú vigila aquesta pàgina.',
+	'watchers_x_or_more' => '$1 o més {{PLURAL:$1|usuaris|usuaris}} tenen aquesta pàgina a la seva llista de seguiment.',
+	'watchers_less_than_x' => 'Menys de $1 {{PLURAL:$1|usuaris|usuaris}} tenen aquesta pàgina a la seva llista de seguiment.',
+);
+
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */

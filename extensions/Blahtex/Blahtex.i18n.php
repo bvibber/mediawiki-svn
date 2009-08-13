@@ -469,8 +469,11 @@ Razmislite o upotrebi "\\mathop".',
 
 /** Catalan (Català)
  * @author Aleator
+ * @author Paucabot
  */
 $messages['ca'] = array(
+	'math_CannotCreateTexFile' => "No s'ha pogut crear el fitxer tex",
+	'math_CannotRunLatex' => 'No es pot executar latex',
 	'math_InvalidColour' => 'El color "$1" és invàlid',
 );
 

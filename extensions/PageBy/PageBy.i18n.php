@@ -392,11 +392,12 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'pageby-desc' => 'Прикажува уредувачи на самата вики страница со користење на приврзокот <code><nowiki><pageby></nowiki></code>',
-	'pageby-first' => 'Страница креирана од $1, $2',
+	'pageby-desc' => 'Прикажува уредувачи на самата вики страница со користење на ознаката <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Страницата е создадена од $1, $2',
 	'pageby-last' => 'Последно <a href="$3">модифицирано</a> од $1, $2',
 	'pageby-contributors' => 'Уредувачи:',
 	'pageby-anon' => '<i>анонимни</i>',

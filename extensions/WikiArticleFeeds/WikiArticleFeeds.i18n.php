@@ -46,12 +46,27 @@ $messages['be-tarask'] = array(
 	'wikiarticlefeeds_combined_description' => 'Гэта камбінаваная стужка, якая ўтрымлівае элемэнты з некалькіх крынічных стужак.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wikiarticlefeeds-desc' => 'Produiñ a ra lanvadoù adal pajennoù MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'Setu aze ul lanvad kenaozet ennañ elfennoù diwar meur a vammenn.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
 	'wikiarticlefeeds-desc' => 'Proizvodi fidove generisane iz MediaWiki članaka',
 	'wikiarticlefeeds_combined_description' => 'Ovo je kombinirani fid, sadrži stavke iz nekoliko fid izvora.',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'wikiarticlefeeds-desc' => 'Produeix fils RSS generats per les pàgines MediaWiki',
 );
 
 /** German (Deutsch)
@@ -80,9 +95,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
-	'wikiarticlefeeds-desc' => 'Valmistaa syötteitä jotka synnytetään MediaWikin sivuista',
+	'wikiarticlefeeds-desc' => 'Valmistaa syötteitä, jotka tuotetaan MediaWikin sivuista',
 );
 
 /** French (Français)

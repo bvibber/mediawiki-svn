@@ -326,10 +326,12 @@ Pśidaj někotare z rědami w menijowej kšomje.',
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'gep-emailsubject' => '[$1] Πρόταση κατηγορίας: $2',
+	'gep-emailsuccess' => 'Ευχαριστούμε που προτείνατε την κατηγορία: $1.',
 	'gep-categories' => 'Κατηγορίες',
 	'gep-addcategory' => 'Πρόσθηκη μιας κατηγορίας',
 	'gep-addcategorybutton' => 'Προσθήκη',
@@ -826,7 +828,9 @@ $messages['mk'] = array(
 	'gep-addcategory' => 'Додај категорија',
 	'gep-addcategorybutton' => 'Додај',
 	'gep-suggestcategory' => 'Предложи категорија',
+	'gep-suggestcategorybutton' => '*Зачувај',
 	'gep-sections' => 'Секции',
+	'gep-addsectionbutton' => 'Додај',
 );
 
 /** Erzya (Эрзянь)

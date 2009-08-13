@@ -43,6 +43,7 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'onlinestatus-subtitle-offline' => 'Hierdie gebruiker is aflyn',
 	'onlinestatus-subtitle-online' => 'Hierdie gebruiker is aanlyn',
+	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'U status:',
 	'onlinestatus-toggle-offline' => 'Aflyn',
 	'onlinestatus-toggle-online' => 'Aanlyn',

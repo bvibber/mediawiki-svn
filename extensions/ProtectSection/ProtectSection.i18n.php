@@ -346,6 +346,17 @@ $messages['lb'] = array(
 	'right-protectsection' => 'Abschnitter vun enger Säit spären',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'protectsection_desc' => 'Овоможува потврдени корисници да заштитуваат делови од страници користејќи ја ознаката <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Се обидовте да додадете или отстраните заштитен пасус',
+	'protectsection_modify' => 'Се обидовте да измените заштитен текст',
+	'protectsection_forbidden' => 'Забрането',
+	'right-protectsection' => 'Заштитување на делови од страници',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

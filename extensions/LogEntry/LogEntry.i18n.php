@@ -87,6 +87,13 @@ $messages['bs'] = array(
 	'logentry-invalidtoken' => 'Nevaljan token',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'logentry-invalidpage' => 'Pàgina no vàlida',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

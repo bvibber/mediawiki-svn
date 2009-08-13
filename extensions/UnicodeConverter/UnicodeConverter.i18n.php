@@ -237,10 +237,11 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'unicodeconverter-ok' => 'D’acôrd',
-	'unicodeconverter-oldtext' => 'Tèxte d’origina :',
+	'unicodeconverter-oldtext' => 'Tèxto d’origina :',
 );
 
 /** Galician (Galego)

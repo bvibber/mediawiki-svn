@@ -121,6 +121,37 @@ $messages['bg'] = array(
 	'tog-riched_disable_ns_category_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Category_talk}}“',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'fckeditor-desc' => 'Aotren a ra implijout ar skridaozer WYSIWYG FCKeditor evit degas kemmoù',
+	'textrichditor' => 'Skridaozer Pinvidikaet',
+	'prefs-fckeditor' => 'Skridaozer Pinvidikaet',
+	'tog-riched_disable' => 'Diweredekaat ar skridaozer pinvidikaet',
+	'tog-riched_disable_ns_main' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv pennañ.',
+	'tog-riched_disable_ns_talk' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:talk}}"',
+	'tog-riched_disable_ns_user' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:user}}"',
+	'tog-riched_disable_ns_user_talk' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:user_talk}}"',
+	'tog-riched_disable_ns_project' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:project}}"',
+	'tog-riched_disable_ns_project_talk' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:project_talk}}"',
+	'tog-riched_disable_ns_image' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:file}}"',
+	'tog-riched_disable_ns_image_talk' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:file_talk}}"',
+	'tog-riched_disable_ns_mediawiki' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:mediawiki}}"',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:mediawiki_talk}}"',
+	'tog-riched_disable_ns_template' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:template}}"',
+	'tog-riched_disable_ns_template_talk' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:template_talk}}"',
+	'tog-riched_disable_ns_help' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:help}}"',
+	'tog-riched_disable_ns_help_talk' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:help_talk}}"',
+	'tog-riched_disable_ns_category' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:category}}"',
+	'tog-riched_disable_ns_category_talk' => 'Diweredekaat ar skridaozer pinvidikaet en esaouenn anv "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Digeriñ ar Skridaozer pinvidikaet en ur prenestr nevez',
+	'tog-riched_start_disabled' => 'Kregiñ gant ar skridaozer pinvidikaet diweredekaet',
+	'tog-riched_use_popup' => 'Digeriñ ar skridaozer pinvidikaet en ur popup',
+	'tog-riched_use_toggle' => "Ober gant un diuzer evit mont eus ar skidaozer orin WikiText d'ar skridaozer pinvidikaet",
+	'tog-riched_toggle_remember_state' => "Derc'hel soñj eus diuzadenn ziwezhañ ar skridaozer",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

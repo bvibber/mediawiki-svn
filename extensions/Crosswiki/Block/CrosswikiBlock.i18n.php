@@ -343,12 +343,21 @@ Nazad na:
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
+	'crosswikiblock-expiry' => 'Venç:',
 	'crosswikiblock-reason' => 'Motiu:',
+	'crosswikiblock-submit' => 'Bloqueja aquest usuari',
+	'crosswikiblock-anononly' => 'Bloqueja només usuaris anònims',
 	'crosswikiunblock-reason' => 'Motiu:',
+	'crosswikiblock-nousername' => "No heu especificat cap nom d'usuari",
+	'crosswikiblock-dbnotfound' => 'La base de dades $1 no existeix',
+	'crosswikiblock-noname' => '"$1" no és un nom vàlid d\'usuari.',
+	'crosswikiblock-nouser' => 'No s\'ha trobat l\'usuari "$3".',
+	'crosswikiblock-noreason' => "No s'ha especificat cap motiu.",
 	'crosswikiblock-alreadyblocked' => "L'usuari $3 ja està blocat.",
 );
 

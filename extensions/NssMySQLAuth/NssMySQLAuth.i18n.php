@@ -44,6 +44,15 @@ Do not translate or change tag names, or link anchors.',
 	'nss-create-account' => '{{Identical|Create account}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'am-email' => 'e-pos',
+	'am-active' => 'aktief',
+	'nss-rights' => 'regte',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -569,6 +578,14 @@ $messages['lb'] = array(
 	'nss-welcome-mail' => 'E Benotzerkont mat dem Benotzernumm $1 an dem Passwuert $2 gouf fir Iech opgemaach.',
 	'nss-welcome-mail-subject' => 'Benotzerkont opmaachen',
 	'nss-db-error' => 'Feeler beim Liese vun der Datebank mat den Authentifikatiounen',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'accountmanager' => 'Раководител со сметки',
+	'nss-desc' => 'Приклучок за утврдување веродостојност со проверка на libnss-mysql базата на податоци. Содржи [[Special:AccountManager|раководител со сметки]]',
 );
 
 /** Nahuatl (Nāhuatl)

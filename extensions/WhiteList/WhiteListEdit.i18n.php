@@ -1140,12 +1140,13 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'mywhitelistpages' => 'Mas pâges',
+	'mywhitelistpages' => 'Mes pâges',
 	'whitelisttablemodify' => 'Changiér',
 	'whitelisttablemodifyall' => 'Tot',
-	'whitelisttablemodifynone' => 'Nion',
+	'whitelisttablemodifynone' => 'Ren',
 	'whitelisttableedit' => 'Changiér',
 	'whitelisttableview' => 'Fâre vêre',
 );
@@ -1970,6 +1971,7 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -1987,6 +1989,12 @@ $messages['mk'] = array(
 	'whitelisttableview' => 'Преглед',
 	'whitelisttablenewdate' => 'Нов датум:',
 	'whitelisttablechangedate' => 'Промени датум на истекување',
+	'whitelisttableremove' => 'Отстрани',
+	'whitelistnummatches' => '- {{PLURAL:$1|едно совпаѓање|$1 совпаѓања}}',
+	'group-restricted' => 'Ограничени корисници',
+	'group-restricted-member' => 'Ограничен корисник',
+	'group-manager' => 'Раководители',
+	'group-manager-member' => 'Раководител',
 );
 
 /** Malayalam (മലയാളം)

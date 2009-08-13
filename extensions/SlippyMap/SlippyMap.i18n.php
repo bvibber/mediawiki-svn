@@ -179,6 +179,15 @@ $messages['bs'] = array(
 	'slippymap_clicktoactivate' => 'Kliknite za aktivaciju mape',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'slippymap_errors' => '$1 errors:',
+	'slippymap_code' => 'Codi wiki per aquesta vista de mapa:',
+	'slippymap_button_code' => 'Obtén el codi wiki',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

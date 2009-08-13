@@ -21,11 +21,25 @@ $messages['qqq'] = array(
 	'categorytests-desc' => '{{desc}}',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'categorytests-desc' => 'Funcions per a proves de categories',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
 	'categorytests-desc' => 'Funkcije za testowanje kategorijow',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'categorytests-desc' => 'Λειτουργίες για δοκιμή κατηγορίας',
 );
 
 /** French (Français)

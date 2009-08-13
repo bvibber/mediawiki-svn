@@ -127,6 +127,14 @@ $3',
 	'latexdoc-desc' => 'Zajedničko uređivanje LaTeX dokumenata',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'latexdoc_cant_write' => "No s'ha pogut escriure al fitxer $1",
+	'latexdoc-desc' => 'Edició col·laborativa de documents LaTeX',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Melancholie

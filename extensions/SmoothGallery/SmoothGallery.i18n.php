@@ -154,6 +154,15 @@ Molimo ispunite izvještaj o grešci.',
 	'smoothgallery-javascript-disabled' => 'Da bi ste pravilno pregledali ovu galeriju neophodna Vam je Javascript.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'smoothgallery-desc' => "Permet als usuaris crear galeries amb les imatges carregades.
+Permet la majoria d'opcions de SmoothGallery",
+	'smoothgallery-gallery-not-found' => 'La galeria requerida no no existeix.',
+);
+
 /** German (Deutsch)
  * @author MF-Warburg
  * @author Purodha

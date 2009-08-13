@@ -877,11 +877,12 @@ Veuillez patienter.',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'youtubeauthsub_title' => 'Titro',
 	'youtubeauthsub_description' => 'Dèscripcion',
-	'youtubeauthsub_password' => 'Mot de pâssa sus Youtube',
+	'youtubeauthsub_password' => 'Mot de pâssa dessus YouTube',
 	'youtubeauthsub_category' => 'Catègorie',
 	'youtubeauthsub_submit' => 'Sometre',
 	'youtubeauthsub_uploadbutton' => 'Tèlèchargiér',
@@ -2767,6 +2768,7 @@ $messages['te'] = array(
 	'youtubeauthsub_category' => 'వర్గం',
 	'youtubeauthsub_submit' => 'దాఖలుచెయ్యి',
 	'youtubeauthsub_clickhere' => 'యూట్యూబ్ లోనికి ప్రవేశించడానికి ఇక్కడ నొక్కండి',
+	'youtubeauthsub_tokenerror' => 'గుర్తింపు టోకేనును సృష్టించడంలో పొరపాటు జరిగినది, మళ్లీ ప్రయత్నించండి.',
 	'youtubeauthsub_authsubinstructions' => 'ఒక వీడియోని ఎగుమతి చేయడానికి, మీరు ముందు యూట్యూబు లోనికి ప్రవేశించాల్సివుంటుంది.',
 	'youtubeauthsub_uploadhere' => 'మీ వీడియోని ఇక్కడ నుండి ఎగుమతి చేయండి:',
 	'youtubeauthsub_uploadbutton' => 'ఎగుమతిచెయ్యండి',

@@ -127,6 +127,16 @@ $messages['bs'] = array(
 	'security-restricttogroup' => 'Pristup sadržaju onemogućen članovima "$1"',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'security' => 'Registre de seguretat',
+	'security-info-toggle' => 'Restriccions de seguretat',
+	'security-type-category' => 'categoria',
+	'security-type-namespace' => 'espai de noms',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Purodha

@@ -74,6 +74,13 @@ Da bi ovo izbjegli [[Special:UserLogin|prijavite se ili napravite račun]].',
 	'cspammer-log-page' => 'Zapisnik spamerskih komentara',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'commentspammer-log-msg' => 'edició de [[Special:Contributions/$1|$1]] a [[:$2]].',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

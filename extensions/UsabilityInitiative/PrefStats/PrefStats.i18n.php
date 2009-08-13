@@ -121,11 +121,14 @@ $messages['be-tarask'] = array(
 	'prefstats-xaxis' => 'Працягласьць (у гадзінах)',
 	'prefstats-factors' => 'Адзінка шкалы часу: $1',
 	'prefstats-factor-hour' => 'гадзіна',
+	'prefstats-factor-sixhours' => 'шэсьць гадзінаў',
 	'prefstats-factor-day' => 'дзень',
 	'prefstats-factor-week' => 'тыдзень',
 	'prefstats-factor-twoweeks' => 'два тыдні',
 	'prefstats-factor-fourweeks' => 'чатыры тыдні',
 	'prefstats-factor-default' => 'вярнуцца да маштабу па змоўчваньні',
+	'prefstats-legend-out' => 'Пакінулі тэставаньне',
+	'prefstats-legend-in' => 'Прынялі ўдзел',
 );
 
 /** Bengali (বাংলা)
@@ -318,6 +321,13 @@ $messages['el'] = array(
 Κάντε "κλικ" σε μια για να δείτε τα στατιστικά για αυτή.',
 	'prefstats-noprefs' => 'Αυτή τη στιγμή δεν παρακολουθούνται καθόλου προτιμήσεις.
 Διαμορφώστε το $wgPrefStatsTrackPrefs για να παρακολουθήσετε τις προτιμήσεις.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|χρήστης έχει|χρήστες έχουν}} ενεργοποιήσει αυτήν την προτίμηση από τότε που τα στατιστικά προτίμησης ενεργοποιήθηκαν
+** $2 {{PLURAL:$2|χρήστης ακόμη το έχει|χρήστες ακόμα το έχουν}} ενεργοποιημένο
+** $3 {{PLURAL:$3|χρήστης το έχει|χρήστες το έχουν}} απενεργοποιήσει από τότε',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|ο χρήστης έχει|οι χρήστες έχουν}} ενεργοποιήσει αυτήν την προτίμηση από τότε που τα στατιστικά προτίμησης ενεργοποιήθηκαν
+** $2 {{PLURAL:$2|ο χρήστης ακόμη το έχει|οι χρήστες ακόμα το έχουν}} ενεργοποιημένο
+** $3 {{PLURAL:$3|ο χρήστης το έχει|οι χρήστες το έχουν}} απενεργοποιήσει από τότε
+* Συνολικά, $4 {{PLURAL:$4|ο χρήστης έχει|οι χρήστες έχουν}} θέσει αυτήν την προτίμηση',
 	'prefstats-xaxis' => 'Διάρκεια (ώρες)',
 	'prefstats-factors' => 'Εμφάνιση ανά: $1',
 	'prefstats-factor-hour' => 'ώρα',
@@ -463,13 +473,14 @@ Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'prefstats-factor-hour' => 'hora',
-	'prefstats-factor-sixhours' => 'Siéx hores',
+	'prefstats-factor-sixhours' => 'siéx hores',
 	'prefstats-factor-day' => 'jorn',
 	'prefstats-factor-week' => 'semana',
-	'prefstats-factor-twoweeks' => 'doux semanes',
+	'prefstats-factor-twoweeks' => 'doves semanes',
 	'prefstats-factor-fourweeks' => 'quatro semanes',
 );
 
@@ -650,6 +661,7 @@ Clicca super un pro vider statisticas super illo.',
 ** $2 {{PLURAL:$2|usator|usatores}} lo ha activate
 ** $3 {{PLURAL:$3|usator|usatores}} lo ha disactivate
 * In total, iste preferentia es active pro $4 {{PLURAL:$4|usator|usatores}}',
+	'prefstats-xaxis' => 'Durata (horas)',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -764,6 +776,14 @@ $messages['km'] = array(
 	'prefstats-factor-week' => 'សប្តាហ៍',
 	'prefstats-factor-twoweeks' => '២ សប្តាហ៍',
 	'prefstats-factor-fourweeks' => '៤ សប្តាហ៍',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'prefstats-factor-sixhours' => 'ಆರು ಘಂಟೆಗಳು',
+	'prefstats-factor-day' => 'ದಿನ',
 );
 
 /** Korean (한국어)
@@ -1240,6 +1260,16 @@ $messages['te'] = array(
 	'prefstats-factor-week' => 'వారం',
 	'prefstats-factor-twoweeks' => 'రెండు వారాలు',
 	'prefstats-factor-fourweeks' => 'నాలుగు వారాలు',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'prefstats-factor-hour' => 'соат',
+	'prefstats-factor-sixhours' => 'шаш соат',
+	'prefstats-factor-day' => 'рӯз',
+	'prefstats-factor-week' => 'ҳафта',
 );
 
 /** Turkish (Türkçe)

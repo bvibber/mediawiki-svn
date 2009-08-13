@@ -414,8 +414,12 @@ $messages['af'] = array(
 	'mv_edit' => 'Wysig',
 	'mv_history' => 'Geskiedenis',
 	'mv_remove' => 'skrap',
+	'mv_start_desc' => 'Begintyd',
+	'mv_end_desc' => 'Eindtyd',
 	'mv_search_category' => 'Kategorie',
 	'mv_search_and' => 'en',
+	'mv_search_or' => 'of',
+	'mv_search_not' => 'nie',
 	'mv_category' => 'kategorie',
 );
 
@@ -1267,6 +1271,49 @@ $messages['bn'] = array(
 	'mv_tool_search' => 'অনুসন্ধান',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Embanner meta-roadennoù video & Klask Media]',
+	'specialpages-group-mv_group' => 'Pajennoù dibar MetaVidWiki',
+	'mv_move_delete_msg' => 'kaset da $1',
+	'mv_path_type_label' => 'seurt hent',
+	'mv_duration_label' => 'Pad',
+	'mv_save_changes' => "Enrollañ ar c'hemmoù",
+	'mv_upload_file' => 'Enporzhiañ ar restr',
+	'mv_external_file' => 'Restr diavaez',
+	'mv_tool_search' => 'Klask',
+	'mv_tool_navigate' => 'Merdeiñ',
+	'mv_tool_export' => 'Ezporzhiañ',
+	'mv_click_to_edit' => 'klikañ evit kemmañ',
+	'ht_en' => 'Treuzskrivañ',
+	'anno_en' => 'Notadurioù ha rummadoù',
+	'mv_data_page_title' => '$1 evit $2 adal $3',
+	'mv_time_separator' => '$1 da $2',
+	'mv_play' => 'Lenn',
+	'mv_edit' => 'Kemmañ',
+	'mv_history' => 'Istor',
+	'mv_edit_title' => 'Kemmañ an destenn',
+	'mv_remove' => 'tennañ',
+	'mv_adjust' => 'Lakaat da glotañ',
+	'mv_adjust_submit' => 'Enrollañ ar glotadenn',
+	'mv_adjust_title' => 'Lakaat deroù ha dibenn ar pad da glotañ',
+	'mv_adjust_preview_stop' => 'Paouez da rakwelet',
+	'mv_start_desc' => 'Pad en deroù',
+	'mv_end_desc' => 'Pad en dibenn',
+	'mv_advanced_edit' => 'Kemm araokaet',
+	'mv_basic_edit' => 'Kemm diazez',
+	'mv_remove_category' => 'Tennañ ar rummad kuit',
+	'mv_existing_categories' => '{{PLURAL:$1|rummad|rummad}}',
+	'mv_add_category' => 'Ouzhpennañ ur rummatadur',
+	'mv_basic_text_desc' => 'Deskrivadur an destenn (diret)',
+	'mv_viewnext' => 'Gwelet ($1)',
+	'mv_viewprevnext' => 'Gwelet ($1) ($2)',
+	'mediasearch' => 'Klask media',
+	'mv_search_sel_t' => 'Dibab ar mod klask',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -1672,7 +1719,7 @@ $messages['el'] = array(
 	'mv_path_type_label' => 'τύποι μονοπατιών',
 	'mv_duration_label' => 'Διάρκεια',
 	'mv_save_changes' => 'Αποθήκευση αλλαγών',
-	'mv_media_path' => 'μονοπάτι μέσου',
+	'mv_media_path' => 'διαδρομή μέσων',
 	'mv_upload_file' => 'Φόρτωση αρχείου',
 	'mv_external_file' => 'Εξωτερικό αρχείο',
 	'mv_tool_search' => 'Αναζήτηση',
@@ -2008,28 +2055,35 @@ $messages['fi'] = array(
 	'mv_add_category' => 'Lisää luokitus',
 	'mv_basic_text_desc' => 'Sanallinen kuvailu (valinnainen)',
 	'mediasearch' => 'Mediahaku',
+	'mv_results_for' => 'Tulokset kohdetta $1 varten',
 	'mv_video_search' => 'Videohaku',
+	'mv_page_search' => 'Tee haku wikisivuilta kohdetta $1 koskien',
 	'mv_add_filter' => 'Lisää suodatin',
 	'mv_search_match' => 'Hae tekstiä',
+	'mv_search_spoken_by' => 'Kenen puhumana',
 	'mv_search_categories' => 'Luokat',
 	'mv_search_category' => 'Luokka',
+	'mv_search_smw_property' => 'Semanttiset ominaisuudet',
 	'mv_search_and' => 'ja',
 	'mv_search_or' => 'tai',
 	'mv_search_not' => 'ei',
-	'mv_search_date_range' => 'Aikajakso',
+	'mv_search_date_range' => 'Aikaväli',
 	'mv_date_range' => 'aikaväli',
 	'mv_date_last_week' => 'Viime viikko',
 	'mv_category_results' => 'Luokan tulokset',
-	'mv_most_relevant' => 'Asiaan selkeimmin liittyvät',
+	'mv_most_relevant' => 'Asiaankuuluvimmat',
+	'mv_most_recent' => 'Tuoreimmat',
 	'mv_most_viewed' => 'Katsotuimmat',
 	'mv_category' => 'luokka',
+	'mv_search_no_results' => 'Ei täsmääviä hakutuloksia mediatiedostoista',
 	'mv_remove_filter' => 'poista suodatin',
+	'mv_advaced_search' => 'Edistynyt mediatiedosto-haku',
 	'mv_view_wiki_page' => 'Näytä wikisivu',
 	'mv_editor_mode' => 'Muokkaustila',
 	'mv_sequence_add_manual' => 'Lisää nimenmukaisesti',
 	'mv_sequence_add_search' => 'Lisää haunmukaisesti',
 	'mv_sequence_edit_text' => 'Siirry tekstimuotoiseen editoriin',
-	'mv_sequence_edit_visual_editor' => 'Vaihda graafisen käyttöliittymän editoriin',
+	'mv_sequence_edit_visual_editor' => 'Vaihda graafisen editoriin',
 	'mv_other_options' => 'Muut asetukset',
 	'mv_days' => '$1 {{PLURAL:$1|päivä|päivää}}',
 	'mv_hours' => '$1 {{PLURAL:$1|tunti|tuntia}}',
@@ -2937,6 +2991,7 @@ $messages['he'] = array(
 	'mv_path_type_label' => 'סוג הנתיב',
 	'mv_duration_label' => 'משך',
 	'mv_save_changes' => 'שמירת השינויים',
+	'mv_media_path' => 'נתיב המדיה',
 	'mv_remove_reason' => 'סיבת המחיקה:',
 	'mv_metavid_file' => 'קובץ קיים בשרת',
 	'mv_upload_file' => 'העלאת קובץ',
@@ -4405,10 +4460,7 @@ $messages['ksh'] = array(
 	'mv_add_stream' => '<i lang="en">MetaVid</i> Dahteshtrohm dobei donn',
 	'mv_edit_stream' => '<i lang="en">MetaVid</i> Dahteshtrohm ändere',
 	'mvexportsearch' => '<i lang="en">MetaVid</i> Expoot',
-	'mvexportsequence' => '
-<i lang="en">MetaVid</i> 
-sequence  
-expoteere',
+	'mvexportsequence' => '<i lang="en">MetaVid</i> Afschpellleß expoteere',
 	'mvexportstream' => '<i lang="en">MetaVid</i> Dahteshtrohm expooteere',
 	'mv_move_delete_msg' => 'op $1 ömjenannt',
 	'mv_add_stream_page' => '<i lang="en">MetaVid</i> Dahteshtrohm dobei donn',
@@ -4588,12 +4640,8 @@ Jangk op di Aansech als Dahteshtrohm: $2',
 	'mv_view_in_stream_interface' => 'Mem Engerfäiß för Daateshtröhm beloore',
 	'mv_view_wiki_page' => 'Sigg em Wiki aanloore',
 	'mv_error_mvd_not_found' => 'Ene Fähler es opjetrodde: <i lang="en">mvd</i> nit jefonge',
-	'mv_edit_sequence' => '
-De 
-sequence
-„$1“ aam Ändere',
-	'mv_sequence_player_title' => 'Afshpellprojramm för
-sequence',
+	'mv_edit_sequence' => 'De Afschpellleß „$1“ Ändere',
+	'mv_sequence_player_title' => 'Afshpellprojramm för Afschpellleß',
 	'mv_resource_not_found' => "Daatequell '''$1''' nit jefonge",
 	'mv_resource_not_supported' => 'Daatequell $1 — met dä Zoot künne mer nit ömjonn',
 	'mv_resource_locator' => 'Daatequell fenge',
@@ -4604,21 +4652,14 @@ sequence',
 	'mv_simple_editor_desc' => 'Eijfach Beärbeide (em Shtil vun <i lang="en">iMovie</i>)',
 	'mv_advanced_editor_desc' => 'Beärbeide met alle Schikaane (em Shtil vun <i lang="en">Final Cut</i>)',
 	'mv_transitions' => 'Övverjäng',
-	'mv_save_sequence' => 'Donn de 
-Sequenz 
-afspeichere',
-	'mv_sequence_page_desc' => '
-Donn de aktoälle 
-sequence
-speishere',
+	'mv_save_sequence' => 'Donn di Afschpellleß afshpeichere',
+	'mv_sequence_page_desc' => 'Donn de aktoälle Afschpellleß shpeishere',
 	'mv_sequence_add' => 'Donn Ußschnedde dobei',
 	'mv_sequence_add_manual' => 'Övver der Name dobei donn',
 	'mv_sequence_add_manual_desc' => 'Donn Ußschnedde övver dä Dahteshtrohm-Name dobei',
 	'mv_sequence_add_search' => 'Dobei donn övver et Söhke',
 	'mv_sequence_add_search_desc' => 'Donn Ußschnedde övver et Medije-Söke derbei',
-	'mv_seq_add_end' => 'Aam Engk vun en 
-<i lang="en">sequence</i>
-dobei donn',
+	'mv_seq_add_end' => 'Aam Engk vun dä Afschpellleß aanhänge',
 	'mv_sequence_edit_text' => 'Op dat Täxprojramm zom Beärbeide ömschallde',
 	'mv_sequence_edit_visual_editor' => 'Op dat Beldscherrem_Projramm zom Beärbeide ömschallde',
 	'mv_other_options' => 'Ander Ußwahle',
@@ -4631,15 +4672,9 @@ dobei donn',
 	'mv_seconds' => '{{PLURAL:$1|Ei Sekundt|$1 Sekunde|kein Sekundt}}',
 	'mv_seconds_singular' => '$1 Sekunde',
 	'mv_stream_length' => 'Dämm Viddejo sing jesampte Duuer:',
-	'mv_sequence_timeline' => '
-Sequence 
-Zick-Reih:',
-	'mv_edit_sequence_desc_help' => '
-Sequence 
-beschrevve',
-	'mv_edithelpsequence' => 'Help:
-Sequence
-_Beärbeide',
+	'mv_sequence_timeline' => 'Dä Afschpellleß ier Zick-Reih:',
+	'mv_edit_sequence_desc_help' => 'De Afschpellleß beschrevve',
+	'mv_edithelpsequence' => 'Help:Afschpellleßte_Beärbeide',
 	'mv_seq_summary' => 'Koot Zosammejefass',
 	'mv_add_clip_by_name' => 'Donn ene Ußschnedde övver singe Name derbei',
 	'mv_stream_resource_export' => 'Dahteshtröhm expotteere',
@@ -4868,8 +4903,8 @@ $messages['mk'] = array(
 	'mv_existing_categories' => '{{PLURAL:$1|категорија|категории}}:',
 	'mv_add_category' => 'Додај категоризација',
 	'mv_basic_text_desc' => 'Текстуален опис (изборно)',
-	'mv_viewnext' => 'Види ($1)',
-	'mv_viewprevnext' => 'Види ($1) ($2)',
+	'mv_viewnext' => 'Видете ($1)',
+	'mv_viewprevnext' => 'Видете ($1) ($2)',
 	'mediasearch' => 'Пребарај медија',
 	'mv_prev_cat' => 'Претходна категорија: $1',
 	'mv_next_cat' => 'Следна категорија: $1',

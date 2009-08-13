@@ -144,10 +144,13 @@ Móžoš toś to warnowanje we wótrězku {{int:prefs-editing}} swójich nastaje
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'editwarning' => 'Προειδοποίηση επεξεργασίας',
 	'editwarning-desc' => 'Προβολή μίας προειδοποίησης όταν ένας χρήστης επιχειρεί να εγκαταλείψει τη φόρμα επεξεργασίας χωρίς πρώτα να έχει αποθηκεύσει',
+	'editwarning-warning' => 'Αφήνοντας αυτή τη σελίδα μπορεί να σας κάνει να χάσετε κάποιες αλλαγές που έχετε κάνει.
+Μπορείτε να απενεργοποιήσετε αυτή την προειδοποίηση στο τμήμα "{{int:prefs-editing}}" των προτιμήσεών σας.',
 	'editwarning-preference' => 'Να με προειδοποιείς όταν εγκαταλείπω μία σελίδα επεξεργασίας χωρίς να έχω πρώτα αποθηκεύσει τις αλλαγές',
 );
 
@@ -177,7 +180,11 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'editwarning' => 'Muutmishoiatus',
 	'editwarning-desc' => 'Kuvab hoiatuse, kui kasutaja üritab redigeerimisvormi salvestamata sulgeda.',
+	'editwarning-warning' => 'Sellelt leheküljelt lahkumise tõttu võivad tehtud muudatused kaotsi minna.
+Selle hoiatuse saad keelata eelistuste alaosas "{{int:prefs-editing}}".',
+	'editwarning-preference' => 'Hoiata mind, kui lahkun redigeerimisleheküljelt muudatusi salvestamata',
 );
 
 /** Basque (Euskara)

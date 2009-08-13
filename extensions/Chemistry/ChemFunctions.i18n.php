@@ -174,12 +174,16 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author Paucabot
  */
 $messages['ca'] = array(
 	'chemicalsource-desc' => "Afegeix l'etiqueta <nowiki><chemform></nowiki>, per a fórmules químiques",
 	'chemFunctions_DataList' => 'A continuació disposeu d\'una llista d\'enllaços a llocs que ofereixen informació sobre les substàncies químiques que esteu cercant.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS a l\'Oxford University (RU) (no es pot cercar)</a><br />',
+	'chemFunctions_CAS' => 'Nombre CAS',
+	'chemFunctions_Formula' => 'Fórmula',
+	'chemFunctions_Name' => 'Nom IUPAC',
 );
 
 /** Czech (Česky)

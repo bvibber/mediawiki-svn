@@ -121,6 +121,17 @@ $messages['bs'] = array(
 	'showprocesslist-info' => 'Informacije',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'showprocesslist-user' => 'Usuari',
+	'showprocesslist-db' => 'Base de dades',
+	'showprocesslist-command' => 'Ordre',
+	'showprocesslist-state' => 'Estat',
+	'showprocesslist-info' => 'Info',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'showprocesslist-user' => 'Utilizatore',

@@ -231,6 +231,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'vote' => 'Votiñ',
+	'vote-desc' => 'Aotren a ra sevel sontadegoù aes-tre',
 	'vote-header' => "Amañ e c'hallit votiñ evit '''mestr an Hollved''' boulc'hurun !",
 	'vote-current' => "Votet hoc'h eus evit '''$1'''.",
 	'vote-legend' => 'Lakaat ur vot pe distreiñ warnañ',
@@ -245,8 +246,10 @@ sfinks|Sfinks',
 	'vote-results-choice' => 'Dibab',
 	'vote-results-count' => 'Mouezh',
 	'vote-results-none' => "N'eus bet lakaet vot ebet evit c'hoazh",
-	'vote-login' => "Ret eo deoc'h [$1 en em enrollañ] evit votiñ.",
+	'vote-login' => "Ret eo deoc'h [$1 en em lugañ] evit votiñ.",
 	'vote-invalid-choice' => "Ret eo deoc'h dibab unan eus an dibarzhioù hegerz.",
+	'right-vote' => 'Vot',
+	'right-voteadmin' => "Gwelet disoc'hoù ar votadeg",
 );
 
 /** Bosnian (Bosanski)
@@ -629,9 +632,10 @@ sphinx|Sphinx',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'vote-results-choice' => 'Ch.ouèx',
+	'vote-results-choice' => 'Chouèx',
 	'vote-results-count' => 'Vouèx',
 );
 
@@ -1682,6 +1686,7 @@ riddler|Czowjek-Cweka',
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
@@ -1691,6 +1696,7 @@ $messages['te'] = array(
 	'vote-registered' => 'మీ వోటు నమోదయ్యింది.',
 	'vote-view-results' => 'ఫలితాలు చూడండి',
 	'vote-results' => 'వోటు ఫలితాలు',
+	'vote-results-count' => 'లెక్క',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

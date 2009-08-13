@@ -55,10 +55,16 @@ $messages['qqq'] = array(
  * @author SPQRobin
  */
 $messages['af'] = array(
+	'player' => 'Mediaspeler',
+	'player-title' => 'Mediaspeler',
+	'player-playertitle' => 'Speler: $1',
 	'player-file' => 'Lêernaam',
 	'player-play' => 'Speel',
 	'player-not-allowed' => 'ontoelaatbare formaat',
+	'player-not-found' => 'lêer nie gevind nie',
+	'player-invalid-title' => 'ongeldige titel',
 	'player-clicktoplay' => 'Speel $1',
+	'player-goto-player' => 'mediaspeler',
 	'player-goto-page' => 'Bladsy',
 	'player-goto-file' => 'lêer',
 );

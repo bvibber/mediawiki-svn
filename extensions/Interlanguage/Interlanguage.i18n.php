@@ -20,11 +20,25 @@ $messages['qqq'] = array(
 	'interlanguage-desc' => '{{desc}}',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'interlanguage-desc' => "Recull interwikis d'una altra wiki",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
 	'interlanguage-desc' => 'Zběra mjazyrěcne wótkaze z drugego wikija',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'interlanguage-desc' => 'Επιλέγει τυχαία συνδέσμους μεταξύ γλωσσών από ένα άλλο wiki',
 );
 
 /** French (Français)
@@ -62,10 +76,38 @@ $messages['ksh'] = array(
 	'interlanguage-desc' => 'Hollt de Lenks zwesche de Shprooche vun enem ander Wiki.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'interlanguage-desc' => "Erlaabt et d'Linke tëschent Sproochen vun enger anerer Wiki z'iwwerhuelen",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'interlanguage-desc' => 'Haalt intertaalverwijzingen uit een andere wiki',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'interlanguage-desc' => 'Permet de collectar los ligams interlengas d’un autre wiki',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'interlanguage-desc' => 'Захватывает межъязыковые ссылки из дрогой вики',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'interlanguage-desc' => 'Získa medzijazykové odkazy z inej wiki',
 );
 

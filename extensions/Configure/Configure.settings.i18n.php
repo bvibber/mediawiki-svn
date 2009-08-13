@@ -2052,7 +2052,7 @@ $messages['be-tarask'] = array(
 	'configure-setting-wgMathDirectory' => 'Шлях у файлавай сыстэме да дырэкторыі, якая ўтрымлівае выявы формулаў LaTeX',
 	'configure-setting-wgMathPath' => 'Базавы URL-адрас дырэкторыі, якая ўтрымлівае выявы формулаў LaTeX',
 	'configure-setting-wgRedirectScript' => 'URL-адрас redirect.php, неабходны для адваротнай сумяшчальнасьці',
-	'configure-setting-wgPhpCli' => 'Назва праграмы cli кліента PHP (PHP/PHP5)',
+	'configure-setting-wgPhpCli' => 'Назва праграмы cli кліента PHP (php/php5)',
 	'configure-setting-wgProto' => 'Прэфікс бясьпечнага сэрвэра',
 	'configure-setting-wgScript' => 'URL-адрас index.php',
 );
@@ -2208,12 +2208,18 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Loupeter
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'configure-setting-wgSitename' => 'Nom del lloc',
 	'configure-setting-wgActionPaths-key' => 'Acció',
+	'configure-setting-wgDBtype' => 'Tipus de base de dades a usar',
+	'configure-setting-wgUseGzip' => 'Usa compressió GZIP',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Nom de la pàgina',
 	'configure-setting-wgExtraLanguageNames-key' => "Codi de l'idioma",
 	'configure-setting-wgExtraLanguageNames-value' => 'Nom',
+	'configure-setting-wgSiteNotice' => 'Avís del Lloc',
 	'configure-setting-wgSpecialPageGroups-key' => 'grup',
 	'configure-setting-wgDebugLogGroups-value' => 'Fitxer',
 	'configure-setting-wgDisableSearchContext' => "S'ha desactivat informació extra per a dates i revisions de pàgines específiques als resultats de la cerca.",
@@ -5508,6 +5514,7 @@ $messages['he'] = array(
 	'configure-setting-wgLegalTitleChars' => 'תווים המורשים לשימוש בשמות הדפים (מחלקת תווים בביטויים רגולאריים)',
 	'configure-setting-wgMaxArticleSize' => 'גודל הדף המירבי (בקילובייט)',
 	'configure-setting-wgNoFollowLinks' => 'הוספת rel="nofollow" לקישורים',
+	'configure-setting-wgPageShowWatchingUsers' => 'הצגת אילו משתמשים צופים בדף',
 	'configure-setting-wgSiteNotice' => 'הודעת אתר',
 	'configure-setting-wgSiteSupportPage' => 'דף עם נתונים למתן תרומה',
 	'configure-setting-wgUniversalEditButton' => 'הפעלת לחצן לעריכה אוניברסלית',
@@ -5560,10 +5567,13 @@ $messages['he'] = array(
 	'configure-setting-wgDisableSearchUpdate' => 'ביטול עדכונים לחיפוש',
 	'configure-setting-wgFixDoubleRedirects' => 'תיקון הפניות כפולות לאחר העברת עמוד',
 	'configure-setting-wgExtensionFunctions' => 'פונקציות ההרחבה',
+	'configure-setting-wgEnableMWSuggest' => 'הפעלת הצעות חיפוש',
+	'configure-setting-wgValidSkinNames' => 'שמות ערכות עיצוב תקניים',
 	'configure-setting-wgValidSkinNames-key' => 'שם פנימי',
 	'configure-setting-wgValidSkinNames-value' => 'שם לתצוגה',
 	'configure-setting-wgExtraNamespaces-key' => 'מספר מרחב השם',
 	'configure-setting-wgExtraNamespaces-value' => 'שם מרחב השם',
+	'configure-setting-wgNamespaceAliases' => 'הפניות מרחבי שם',
 	'configure-setting-wgNamespaceAliases-key' => 'שם הכינוי',
 	'configure-setting-wgNamespaceProtection' => 'הגנת מרחב שם',
 	'configure-setting-wgNamespaceRobotPolicies-value' => 'מדיניות הרובוטים',
@@ -5742,6 +5752,29 @@ $messages['hu'] = array(
 	'configure-setting-wgMainCacheType' => 'Az elsődleges gyorsítótár-rendszer típusa',
 	'configure-setting-wgCacheEpoch' => 'A gyorsítótár érvénytelenülésének ideje',
 	'configure-setting-wgCachePages' => 'Oldalak kliensoldali gyorsítótárazásának engedélyezése',
+	'configure-setting-wgFileCacheDirectory' => 'A fájl-gyorsítótár könyvtára',
+	'configure-setting-wgUseFileCache' => 'Fájl-gyorsítótár használata',
+	'configure-setting-wgUseGzip' => 'GZIP-es törmörítés használata',
+	'configure-setting-wgAllowDisplayTitle' => '<nowiki>{{DISPLAYTITLE}}</nowiki> használatának engedélyezése',
+	'configure-setting-wgAllowExternalImages' => 'Fájlok közvetlen hivatkozásának engedélyezése wikiszövegben',
+	'configure-setting-wgAllowExternalImagesFrom' => 'A $wgAllowExternalImages = false kivételei',
+	'configure-setting-wgExpensiveParserFunctionLimit' => 'Lapoknént maximálisan meghívható költséges elemzőfüggvények',
+	'configure-setting-wgCleanSignatures' => 'Sablonok beillesztése az aláírásokba',
+	'configure-setting-wgMaxPPExpandDepth' => 'Sablonok kibontásakor az előfeldolgozó veremmérete',
+	'configure-setting-wgMaxPPNodeCount' => 'Maximálisan feldolgozott csomók száma',
+	'configure-setting-wgMaxTemplateDepth' => 'Maximális sablonmélység az előfeldolgozáskor',
+	'configure-setting-wgMaxTocLevel' => 'A tartalomjegyzék maximális behúzásának szintje',
+	'configure-setting-wgParserConf' => 'Az elemző beállítása',
+	'configure-setting-wgParserCacheExpireTime' => 'Az elemző gyorsítótárának lejárati ideje',
+	'configure-setting-wgParserTestFiles' => 'A parserTests.php által futtatott fájlok',
+	'configure-setting-wgDisableLangConversion' => 'Nyelvvariánsok közötti átalakítás letiltása',
+	'configure-setting-wgDisableTitleConversion' => 'Nyelvvariánsok közötti átalakítások letiltása a lapcímeknél',
+	'configure-setting-wgInputEncoding' => 'A bemeneti szöveg kódolása',
+	'configure-setting-wgInterwikiMagic' => 'Nyelvközi hivatkozások megjelenítése egy speciális listán',
+	'configure-setting-wgLanguageCode' => 'Az oldal nyelvkódja',
+	'configure-setting-wgLegacyEncoding' => 'Az oldal korábbi kódolása, amiről át kell alakítani',
+	'configure-setting-wgLoginLanguageSelector' => 'Nyelvválaszási lehetőség a bejelentkezésnél és a regisztrációs űrlapnál',
+	'configure-setting-wgOutputEncoding' => 'A kimeneti szöveg kódolása',
 );
 
 /** Interlingua (Interlingua)

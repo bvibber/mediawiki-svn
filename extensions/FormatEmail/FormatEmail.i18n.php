@@ -88,6 +88,13 @@ Ovaj e-mail Vam je poslan putem e-mail sistema sa stranice {{SITENAME}} od stran
 $2',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'email-desc' => 'Permet afegir encapçalaments/peus de pàgina personalitzats als correus electrònics dels usuaris',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

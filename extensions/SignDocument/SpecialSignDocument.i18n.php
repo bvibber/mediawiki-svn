@@ -1110,6 +1110,7 @@ $messages['ext'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Nike
  * @author Silvonen
  * @author Str4nd
@@ -1147,7 +1148,7 @@ $messages['fi'] = array(
 	'sign-viewfield-country' => 'Maa',
 	'sign-viewfield-zip' => 'Postinumero',
 	'sign-viewfield-ip' => 'IP-osoite',
-	'sign-viewfield-agent' => 'Käyttäjäagentti',
+	'sign-viewfield-agent' => 'Selaintunniste',
 	'sign-viewfield-phone' => 'Puhelin',
 	'sign-viewfield-email' => 'Sähköpostiosoite',
 	'sign-viewfield-age' => 'Ikä',

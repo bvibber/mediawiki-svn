@@ -173,9 +173,14 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'openidoptional' => 'Opsioneel',
 	'openidrequired' => 'Verpligtend',
+	'openidnickname' => 'Noemnaam',
+	'openidfullname' => 'Volledige naam',
 	'openidemail' => 'E-pos adres',
 	'openidlanguage' => 'Taal',
+	'openidtimezone' => 'Tydsone',
 	'openidchoosepassword' => 'wagwoord:',
+	'openid-urls-action' => 'Aksie',
+	'openid-urls-delete' => 'Skrap',
 );
 
 /** Amharic (አማርኛ)
@@ -2775,8 +2780,14 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'openidoptional' => 'Мелень коряс',
+	'openidnickname' => 'Путонь лем',
+	'openidfullname' => 'Лем педе-пес',
+	'openidemail' => 'Е-сёрма парго',
 	'openidlanguage' => 'Кель',
+	'openidtimezone' => 'Шкань каркс',
 	'openidchoosepassword' => 'совамо валось:',
+	'openiddelete-button' => 'Кемекстамс',
 );
 
 /** Nahuatl (Nāhuatl)

@@ -878,18 +878,19 @@ Veuillez vérifier vos paramètres de blocage des fenêtres intruses.',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $wgCustomToolbarMessages['frp'] = array(
-	'ct_bold_sample' => 'Tèxte grâs',
+	'ct_bold_sample' => 'Tèxto grâs',
 	'ct_bold_caption' => 'Grâs',
 	'ct_italic_sample' => 'Tèxto étalico',
 	'ct_internal_caption' => 'Lim de dedens',
 	'ct_external_caption' => 'Lim de defôr',
 	'ct_math_caption' => 'Formula',
 	'ct_upload' => 'Tèlèchargiér $1',
-	'ct_submit' => 'Alar !',
+	'ct_submit' => 'Lanciér !',
 	'ct_user_user' => 'Utilisator',
-	'ct_user_caption' => "Lim de l'utilisator",
+	'ct_user_caption' => 'Lim a l’utilisator',
 	'ct_user_sample' => 'Nom d’utilisator',
 );
 
@@ -1560,6 +1561,13 @@ Kuckt w.e.g. d'Astellunge vu ärem Popup-Blocker no.",
 	'ct_user_tip' => 'E Link op eng Benotzersäit drasetzen',
 	'ct_user_caption' => 'Benotzer Link',
 	'ct_user_sample' => 'Benotzernumm',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$wgCustomToolbarMessages['mk'] = array(
+	'ct-desc' => 'Додава алатник на отворање',
 );
 
 /** Erzya (Эрзянь)

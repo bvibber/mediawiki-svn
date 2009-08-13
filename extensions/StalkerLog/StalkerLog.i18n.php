@@ -176,9 +176,10 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'stalkerlog-log-login' => 'Branchiér.',
+	'stalkerlog-log-login' => 'branchiê.',
 );
 
 /** Galician (Galego)

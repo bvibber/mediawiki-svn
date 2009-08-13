@@ -82,11 +82,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'authors-desc' => 'Afegeix una llista de contribuïdors a les pàgines',
+	'authors-desc' => "Afegeix una llista d'editors a les pàgines",
 	'authors_authors' => 'Autors',
 	'authors_anonymous' => 'Anònim',
 );

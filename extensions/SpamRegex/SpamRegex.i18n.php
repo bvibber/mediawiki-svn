@@ -510,9 +510,10 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'spamregex-text' => '(Tèxte)',
+	'spamregex-text' => '(Tèxto)',
 	'spamregex-summary-log' => '(Rèsumâ)',
 );
 

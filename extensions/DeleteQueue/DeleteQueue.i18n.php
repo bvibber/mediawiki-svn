@@ -857,10 +857,20 @@ Ako, nakon pet dana, niko ne bude imao sugestija za brisanje ove stranice, ona �
 
 /** Catalan (Català)
  * @author Loupeter
+ * @author Paucabot
  * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
+	'deletequeue-desc' => "Crea un [[Special:DeleteQueue|sistema de coa per gestionar l'eliminació de pàgines]]",
+	'deletequeue-generic-reasons' => '* Motius genèrics
+** Vandalisme
+** Publicitat
+** Manteniment
+** Fora dels objectius del projecte',
+	'deletequeue-delnom-otherreason' => 'Un altre motiu',
+	'deletequeue-delnom-extra' => 'Informació addicional:',
+	'deletequeue-queue-speedy' => 'Supressió ràpida',
 	'deletequeue-review-reason' => 'Comentaris:',
 	'deletequeue-vote-reason' => 'Comentaris:',
 	'deletequeue-vote-submit' => 'Tramet',
@@ -1246,16 +1256,32 @@ Móžoš k toś tomu wulašowanjeju [{{fullurl:{{FULLPAGENAME}}|action=delvote}}
  */
 $messages['el'] = array(
 	'deletequeue-action-queued' => 'Διαγραφή',
+	'deletequeue-action' => 'Πρόταση για διαγραφή',
+	'deletequeue-action-title' => 'Πρόταση για διαγραφή του "$1"',
+	'deletequeue-prod-title' => 'Πρόταση για διαγραφή του "$1"',
+	'deletequeue-delnom-reason' => 'Λόγος υποψηφιότητας:',
 	'deletequeue-delnom-otherreason' => 'Άλλος λόγος',
 	'deletequeue-delnom-extra' => 'Επιπλέον πληροφορίες:',
 	'deletequeue-delnom-submit' => 'Υποβολή υποψηφιότητας',
+	'deletequeue-review-delete' => 'Διαγραφή αυτής της σελίδας.',
 	'deletequeue-review-reason' => 'Σχόλια:',
 	'deletequeue-review-newreason' => 'Νέος λόγος:',
 	'deletequeue-review-newextra' => 'Επιπλέον πηροφορίες:',
 	'deletequeue-review-submit' => 'Αποθήκευση Επιθεώρησης',
+	'deletequeue-review-original' => 'Αιτιολογία υποψηφιότητας',
+	'deletequeue-reviewspeedy-tab' => 'Επιθεώρηση ταχείας διαγραφής',
+	'deletequeue-reviewdeletediscuss-tab' => 'Επιθεώρηση διαγραφής',
+	'deletequeue-vote-reason' => 'Σχόλια:',
 	'deletequeue-vote-submit' => 'Υποβολή',
+	'deletequeue-list-search-legend' => 'Αναζήτηση σελίδων',
+	'deletequeue-list-queue' => 'Ουρά:',
 	'deletequeue-list-search' => 'Αναζήτηση',
+	'deletequeue-list-header-page' => 'Σελίδα',
+	'deletequeue-list-header-expiry' => 'Λήξη',
+	'deletequeue-list-header-reason' => 'Λόγος διαγραφής',
+	'deletequeue-case-page' => 'Σελίδα:',
 	'deletequeue-case-reason' => 'Αιτία:',
+	'deletequeue-case-expiry' => 'Λήξη:',
 );
 
 /** Esperanto (Esperanto)
@@ -2183,12 +2209,18 @@ $messages['he'] = array(
   ** תחזוקה
   ** מחוץ לטווח המיזם',
 	'deletequeue-nom-alreadyqueued' => 'דף זה נמצא כבר בתור המחיקה.',
+	'deletequeue-speedy-title' => 'סימון "$1" למחיקה מהירה',
 	'deletequeue-prod-title' => 'הצעת מחיקה של "$1"',
 	'deletequeue-delnom-reason' => 'הסיבה להצעת המחיקה:',
 	'deletequeue-delnom-otherreason' => 'סיבה אחרת',
 	'deletequeue-delnom-extra' => 'מידע נוסף:',
 	'deletequeue-delnom-submit' => 'הגשת הצעה',
 	'right-prod-nominate' => 'הצעת מחיקה של דף',
+	'right-deletediscuss-nominate' => 'פתיחת דיוני מחיקה',
+	'right-deletediscuss-review' => 'סגירת דיוני מחיקה',
+	'deletequeue-queue-speedy' => 'מחיקה מהירה',
+	'deletequeue-queue-prod' => 'מחיקה מוצעת',
+	'deletequeue-queue-deletediscuss' => 'דיון מחיקה',
 	'deletequeue-review-delete' => 'מחיקת הדף.',
 	'deletequeue-review-reason' => 'הערות:',
 	'deletequeue-review-newreason' => 'סיבה חדשה:',
@@ -2196,12 +2228,20 @@ $messages['he'] = array(
 	'deletequeue-review-submit' => 'שמירת הסקירה',
 	'deletequeue-review-original' => 'הסיבה להצעת המחיקה',
 	'deletequeue-review-badaction' => 'ציינתם פעולה בלתי חוקית',
+	'deletequeue-reviewspeedy-tab' => 'סקירת המחיקה המהירה',
+	'deletequeue-reviewspeedy-title' => 'סקירת מועמדות "$1" למחיקה מהירה',
+	'deletequeue-reviewprod-tab' => 'סקירת הצעת מחיקה',
+	'deletequeue-reviewprod-title' => 'סקירת ההצעה למחיקת "$1"',
 	'deletequeue-reviewdeletediscuss-tab' => 'סקירת המחיקה',
 	'deletequeue-review-success-title' => 'הסקירה הושלמה',
+	'deletequeue-discusscreate-summary' => 'יצירת דיון למחיקת [[$1]].',
+	'deletequeue-discusscreate-text' => 'המחיקה הוצעה מהסיבה הבאה: $2',
 	'deletequeue-role-vote-endorse' => 'בעד המחיקה',
 	'deletequeue-role-vote-object' => 'נגד המחיקה',
 	'deletequeue-vote-tab' => 'הצבעה על המחיקה',
+	'deletequeue-vote-legend' => 'תמיכה/התנגדות למחיקה',
 	'deletequeue-vote-action' => 'המלצה:',
+	'deletequeue-vote-endorse' => 'תמיכה במחיקה.',
 	'deletequeue-vote-object' => 'פריט למחיקה.',
 	'deletequeue-vote-reason' => 'הערות:',
 	'deletequeue' => 'תור המחיקות',
@@ -3122,6 +3162,7 @@ $messages['kw'] = array(
 $messages['la'] = array(
 	'deletequeue-action-queued' => 'Deletio',
 	'deletequeue-delnom-otherreason' => 'Causa alia',
+	'deletequeue-list-search-legend' => 'Quaerere paginas',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

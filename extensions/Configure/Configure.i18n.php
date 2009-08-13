@@ -1068,6 +1068,7 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author SMP
  * @author Solde
  */
@@ -1080,7 +1081,15 @@ $messages['ca'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Extensions',
 	'configure-ext-settings' => 'Paràmetres',
+	'configure-ext-use-extension' => 'Usa aquesta extensió',
+	'configure-ext-use' => 'Usa-la',
+	'configure-form-reason' => 'Motiu pel canvi:',
+	'configure-btn-save' => 'Desa les preferències',
 	'configure-js-remove' => 'Elimina',
+	'configure-js-remove-row' => 'Elimina aquesta entrada',
+	'configure-js-get-image-url' => 'Converteix el nom del fitxer a una URL',
+	'configure-js-biglist-show' => '[mostra detalls]',
+	'configure-js-biglist-hide' => '[Oculta detalls]',
 	'configure-js-search-prompt' => 'Consulta:',
 	'configure-section-email' => 'Correu electrònic',
 	'configure-section-category' => 'Categories',
@@ -5297,7 +5306,7 @@ $messages['mk'] = array(
 	'configure-viewconfig-default-diff' => 'Промени на основните нагодувања',
 	'configure-ext-ext-dependencies' => "'''Предупредување:''' ова дополнување бара да се {{PLURAL:$2|активира следново дополнување|активираат следниве дополнувања}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Грешка:''' дополнувањето $1 бара да се активира дополнувањето $2.",
-	'configure-ext-doc' => 'Види on-line документација',
+	'configure-ext-doc' => 'Видете документација на интернет',
 	'configure-ext-schemachange' => "'''Предупредување:''' ова дополнуваењ бара надградба на базата на податоци за да работи како што треба!",
 	'configure-ext-settings' => 'Нагодувања',
 	'configure-ext-settings-dep-errors' => 'Ова дополнување не може да се овозможи бидејќи {{PLURAL:$1|следново прилагодување има|следниве прилагодувања имаат}} неприфатлива вредност:',
@@ -5306,7 +5315,7 @@ $messages['mk'] = array(
 	'configure-form-reason' => 'Причина за промена:',
 	'configure-customised' => "''Ова нагодување било менувано''",
 	'configure-arrayinput-oneperline' => "''(еден во линија)''",
-	'configure-summary' => 'Оваа специјална страница овозможува нагодување на ова вики, види [http://www.mediawiki.org/wiki/Manual:Configuration_settings Конфигурациски нагодувања] за повеќе информации.',
+	'configure-summary' => 'Оваа специјална страница овозможува нагодување на ова вики, видете [http://www.mediawiki.org/wiki/Manual:Configuration_settings Конфигурациски нагодувања] за повеќе информации.',
 	'configure-btn-save' => 'Зачувај нагодувања',
 	'configure-db-error' => 'Наведената база на податоци за чување на конфигурацијата ($1) не постои,
 Прво создадетеја а потоа извршете го configure.sql или корегирајте го нејзиното име.',
@@ -8018,7 +8027,7 @@ $messages['te'] = array(
 	'configure-setting-not-available' => 'ఈ మీడియావికీ సంచికలో ఆ అమరిక అందుబాటులో  లేదు',
 	'configure-view' => 'చూడండి',
 	'configure-view-not-allowed' => 'ఈ అమరికని చూడడానికి మీకు అనుమతి లేదు',
-	'configure-throttle-action-rollback' => 'వెనక్కుతిప్పు',
+	'configure-throttle-action-rollback' => 'రద్దుచేయి',
 	'configure-throttle-group-anon' => 'అందరు అజ్ఞాత వాడుకరులు',
 	'configure-throttle-group' => 'రకం',
 	'configure-throttle-limit' => 'పరిమితి',

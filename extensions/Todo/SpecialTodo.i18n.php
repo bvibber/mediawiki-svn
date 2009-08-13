@@ -293,7 +293,14 @@ $4',
  */
 $messages['ca'] = array(
 	'todo' => 'Llista de feines per fer',
+	'todo-tab' => 'per fer',
+	'todo-new-queue' => 'nou',
 	'todo-item-list' => 'Els teus ítems',
+	'todo-add-queue' => 'Afegeix a la coa...',
+	'todo-move-queue' => 'Mou a la coa...',
+	'todo-list-change' => 'Canvia',
+	'todo-list-cancel' => 'Cancel·la',
+	'todo-new-item' => 'Nou ítem',
 	'todo-form-submit' => 'Tramet una consulta',
 );
 
@@ -559,12 +566,12 @@ $messages['fi'] = array(
 	'todo-tab' => 'tehtävät',
 	'todo-new-queue' => 'uusi',
 	'todo-mail-subject' => 'Suoritettu tehtävä $1:n muistilistalta',
-	'todo-mail-body' => 'Pyysit sähköposti-vahvistusta $1:n verkossa pidetylle tehtävä muistilistalle lisäämäsi tehtävän suorittamisesta.
+	'todo-mail-body' => 'Pyysit sähköpostivahvistusta käyttäjän $1 tehtävämuistilistalle lisäämäsi tehtävän suorittamisesta.
 
 Tehtävä: $2
 Lisätty: $3
 
-Tämä tehtävä on merkitty suoritetuksi, tämän huomion kera:
+Tämä tehtävä on merkitty suoritetuksi kommentilla:
 $4',
 	'todo-invalid-item' => 'Puuttuva tai virheellinen tehtävä',
 	'todo-update-else-item' => 'Yritetään päivittää jonkin muun tehtävää',
@@ -628,13 +635,14 @@ $4',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'todo-new-queue' => 'Novél',
 	'todo-list-change' => 'Changiér',
 	'todo-list-cancel' => 'Anular',
-	'todo-new-item' => 'Novél elèment',
-	'todo-issue-summary' => 'Resumâ du problèmo :',
+	'todo-new-item' => 'Novél èlèment',
+	'todo-issue-summary' => 'Rèsumâ du problèmo :',
 	'todo-form-details' => 'Dètalys :',
 );
 

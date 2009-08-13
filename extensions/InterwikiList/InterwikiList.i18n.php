@@ -115,6 +115,18 @@ $messages['cy'] = array(
 	'interwikilist-prefix' => 'Rhagddodiad rhyngwici:',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'interwikilist' => 'Interwikiliste',
+	'interwikilist-desc' => 'Tilføjer en [[Special:Interwikilist|specialside]] til at vise tilgængelige interwikihenvisninger',
+	'interwikilist-linkname' => 'Interwikihenvisning',
+	'interwikilist-target' => 'Mål-URL',
+	'interwikilist-filter' => 'Filtrér liste',
+	'interwikilist-prefix' => 'Interwikipræfiks:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

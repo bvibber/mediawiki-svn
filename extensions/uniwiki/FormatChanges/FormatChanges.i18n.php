@@ -342,6 +342,13 @@ $messages['lb'] = array(
 	'formatchanges-editedby' => '$1 - geännert vum $2 ($3)',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'formatchanges-createdby' => '$1 - создадена од $2 ($3)',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

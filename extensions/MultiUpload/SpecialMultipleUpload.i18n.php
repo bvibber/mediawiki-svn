@@ -999,7 +999,7 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'multipleupload' => 'Йовкстамс файлат',
+	'multipleupload' => 'Йовкстамс зярыя файлат',
 	'multipleupload-saveallfiles' => 'Ванстомс весе файлатнень',
 	'multiupload-fileuploaded' => 'Файлась йовкстазь.',
 	'multiupload-blank' => 'Кочказь файла арась',

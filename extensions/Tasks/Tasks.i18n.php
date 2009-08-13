@@ -481,14 +481,19 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'tasks' => 'Tasques',
+	'tasks_desc' => 'Una extensió per gestionar tasques',
+	'tasks_tab' => 'Tasques',
 	'tasks_form_new' => 'Crea una nova tasca',
 	'tasks_form_comment' => 'Comentari',
 	'tasks_ok1' => "S'ha creat una nova tasca!",
+	'tasks_create_header' => 'Crea una nova tasca',
 	'tasks_existing_header' => 'Tasques existents',
 	'tasks_assign_me' => 'Assigna-me-la a mi',
 	'tasks_assign_to' => 'Assigna a',
 	'tasks_close' => 'Tanca la tasca',
 	'tasks_delete' => 'Elimina',
+	'tasks_no_task_delete_title' => 'No permès',
 	'tasks_action_delete' => 'Una tasca ha estat eliminada.',
 	'tasks_task_was_deleted' => "S'ha eliminat satisfactòriament la tasca.",
 	'tasks_here' => 'aquí',
@@ -501,6 +506,7 @@ $messages['ca'] = array(
 	'tasks_search_tasks' => 'Tasques',
 	'tasks_previous' => 'Anterior',
 	'tasks_next' => 'Següent',
+	'tasks_sort' => 'Ordena',
 	'tasks_status_open' => 'Obre',
 	'tasks_status_assigned' => 'Assignat',
 	'tasks_status_closed' => 'Tancat',
@@ -1145,30 +1151,31 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'tasks' => 'Tâches',
-	'tasks_tab' => 'Tâches',
-	'tasks_title' => 'Tâches pôr "$1"',
-	'tasks_form_new' => 'Crèar tâche',
+	'tasks' => 'Travâlys',
+	'tasks_tab' => 'Travâlys',
+	'tasks_title' => 'Travâlys por « $1 »',
+	'tasks_form_new' => 'Fâre un novél travâly',
 	'tasks_form_comment' => 'Comentèro',
 	'tasks_delete' => 'Suprimar',
-	'tasks_here' => 'Iqué',
-	'tasks_help_page' => 'Tâches',
+	'tasks_here' => 'ique',
+	'tasks_help_page' => 'Travâlys',
 	'tasks_more_like_it' => 'més',
-	'tasks_task_types' => '1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write|7:check:Check',
-	'tasks_event_on_creation' => 'Vèrifiér',
-	'tasks_event_on_creation_anon' => 'Vèrifiér',
+	'tasks_task_types' => '1:cleanup:Neteyér|2:wikify:Vouiquifiar|3:rewrite:Rècrire|4:delete:Suprimar|5:create:Fâre|6:write:Ècrire|7:check:Controlar',
+	'tasks_event_on_creation' => 'controlar',
+	'tasks_event_on_creation_anon' => 'controlar',
 	'tasks_table_header_page' => 'Pâge',
 	'tasks_search_form_title' => 'Rechèrchiér',
-	'tasks_search_tasks' => 'Tâches',
+	'tasks_search_tasks' => 'Travâlys',
 	'tasks_search_status' => 'Statut',
 	'tasks_search_results' => 'Rèsultats de la rechèrche',
 	'tasks_previous' => 'Devant',
 	'tasks_next' => 'Aprés',
-	'tasks_sort' => 'Cièrdre',
-	'tasks_status_open' => 'Uvèrta',
-	'tasks_logentry' => 'Pôr « [[$1]] »',
+	'tasks_sort' => 'Triyér',
+	'tasks_status_open' => 'Uvèrt',
+	'tasks_logentry' => 'Por « [[$1]] »',
 );
 
 /** Galician (Galego)

@@ -100,6 +100,16 @@ $messages['bs'] = array(
 	'cooperationstatistics-legendmore' => 'ili više urednika.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'cooperationstatistics-tablearticle' => 'Recompte de pàgines',
+	'cooperationstatistics-tablevalue' => "Nombre d'editors",
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pàgina|pàgines}}',
+	'cooperationstatistics-legendmore' => 'o més editors.',
+);
+
 /** German (Deutsch)
  * @author Pill
  * @author Umherirrender

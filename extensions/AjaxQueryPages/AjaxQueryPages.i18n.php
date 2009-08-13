@@ -159,6 +159,13 @@ $messages['fr'] = array(
 	'ajax-qp-desc' => 'Ajoute du script AJAX aux pages de requêtes telles que [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'ajax-qp-desc' => 'Foeget wat AJAX ta oan fraachsiden lykas [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

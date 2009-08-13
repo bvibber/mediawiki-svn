@@ -60,6 +60,9 @@ $messages['niu'] = array(
  * @author SPQRobin
  */
 $messages['af'] = array(
+	'passwordreset-invalidusername' => 'Ongeldige gebruiker',
+	'passwordreset-emptyusername' => 'Gebruiker nie gespesifiseerd nie',
+	'passwordreset-nopassmatch' => 'Die wagwoorde kom nie ooreen nie',
 	'passwordreset-username' => 'Gebruikersnaam',
 	'passwordreset-newpass' => 'Nuwe wagwoord',
 );

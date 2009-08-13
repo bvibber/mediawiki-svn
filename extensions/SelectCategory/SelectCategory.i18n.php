@@ -303,6 +303,15 @@ $messages['lb'] = array(
 	'selectcategory-subtitle' => 'Shift + Maus fir méi Rubriken hannereneen unzewielen, Ctrl + Maus fir eenzel Rubriken unzewielen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'selectcategory-title' => 'Изберете категории',
+	'selectcategory-desc' => 'Му овоможува на корисникот да избира од постоечките категории кога уредува страница',
+	'selectcategory-subtitle' => 'Држете Shift и влечете со глушецот за да одберете повеќе последователни ставки, Држете Ctrl и влечете со глушецот за да одбирате непоследователни ставки.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

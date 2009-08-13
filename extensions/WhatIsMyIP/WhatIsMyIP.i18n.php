@@ -98,6 +98,16 @@ $messages['bg'] = array(
 	'whatismyip-out' => 'Текущ IP адрес:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'whatismyip' => 'Petra eo ma IP',
+	'whatismyip-desc' => "Diskouez a ra [[Special:WhatIsMyIP|chomlec'h IP]] red an implijer",
+	'whatismyip-out' => "Ho chomlec'h IP :",
+	'right-whatismyip' => "Gwelet [[Special:WhatIsMyIP|chomlec'h IP an-unan]]",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -106,6 +116,16 @@ $messages['bs'] = array(
 	'whatismyip-desc' => 'Prikazuje trenutnu [[Special:WhatIsMyIP|IP adresu]] korisnika',
 	'whatismyip-out' => 'Vaša IP adresa:',
 	'right-whatismyip' => 'Pregledati [[Special:WhatIsMyIP|vlastitu IP adresu]]',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'whatismyip' => 'Quina és la meva IP',
+	'whatismyip-desc' => "Mostra l'[[Special:WhatIsMyIP|adreça IP]] actual de l'usuari",
+	'whatismyip-out' => 'La vostra adreça IP:',
+	'right-whatismyip' => 'Mostra [[Special:WhatIsMyIP|la pròpia adreça IP]]',
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
@@ -442,7 +462,7 @@ $messages['mg'] = array(
  */
 $messages['mk'] = array(
 	'whatismyip' => 'Која е мојата IP адреса',
-	'whatismyip-desc' => 'Прикажува моментална корисничка IP адреса на [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Ја прикажува моменталната [[Special:WhatIsMyIP|IP адреса]] на корисникот',
 	'whatismyip-out' => 'Ваша IP адреса:',
 	'right-whatismyip' => 'Погледајте ја [[Special:WhatIsMyIP|вашата IP адреса]]',
 );

@@ -129,9 +129,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'emergencydesysop-submit' => 'Envia',
+	'emergencydesysop-incomplete' => 'Tots els camps del formulari són obligatoris, tornau-ho a provar.',
 	'emergencydesysop-nogroups' => 'Cap',
 );
 
@@ -336,7 +339,11 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'emergencydesysop-reason' => 'סיבת ההסרה',
 	'emergencydesysop-submit' => 'שליחה',
+	'emergencydesysop-incomplete' => 'כל שדות הטופס נדרשים, אנא נסו שוב.',
+	'emergencydesysop-notasysop' => 'משתמש היעד איננו בקבוצת המנהלים.',
+	'emergencydesysop-invalidtarget' => 'משתמש היעד אינו קיים.',
 );
 
 /** Croatian (Hrvatski)

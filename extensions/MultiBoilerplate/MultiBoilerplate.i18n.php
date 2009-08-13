@@ -94,6 +94,13 @@ $messages['bs'] = array(
 	'multiboilerplate-submit' => 'Učitaj',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'multiboilerplate-submit' => 'Carrega',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Pill

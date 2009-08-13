@@ -432,6 +432,22 @@ $1',
 	'webstore_php_error' => 'PHP greške koje su se desile:',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'inplace_access_disabled' => "L'accés a aquest servei ha estat deshabilitat a tots els clients.",
+	'webstore_access' => 'Aquest servei està restringit a la IP del client.',
+	'webstore_path_invalid' => 'El nom del fitxer no és vàlid.',
+	'webstore_no_file' => "No s'ha carregat cap fitxer.",
+	'webstore_curl' => 'Error de cURL: $1',
+	'webstore_404' => "No s'ha trobat el fitxer.",
+	'webstore_php_warning' => 'Avís PHP: $1',
+	'webstore_metadata_not_found' => "No s'ha trobat el fitxer: $1",
+	'webstore_no_response' => 'Cap resposta del servidor',
+	'webstore_php_error' => "S'han trobat errors PHP:",
+);
+
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
@@ -1453,6 +1469,16 @@ $1',
 $1',
 	'webstore_php_error' => 'Dës PHP Feeler sinn opgetratt:',
 	'webstore_no_handler' => 'Dësen Typ vu MIME kann net ëmgewandelt ginn',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'inplace_scaler_not_enough_params' => 'Нема доволно параметри.',
+	'webstore_path_invalid' => 'Името на податотеката е погрешно.',
+	'webstore_dest_mkdir' => 'Не може да се создаде целниот именик „$1“.',
+	'webstore_archive_mkdir' => 'Не можеше да се создаде архивскиот директориум „$1“.',
 );
 
 /** Malayalam (മലയാളം)

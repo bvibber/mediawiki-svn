@@ -492,6 +492,15 @@ $messages['lb'] = array(
 	'layouts_tagline' => "Dës Säit gouf mam '''$1''' Layout generéiert.",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'layouts-desc' => 'Пополни ги новосоздадените страници со уредливи „распореди“ за да поттикнете една иста структура за сите страници',
+	'layouts_title' => 'Создај страница',
+	'layouts_chooselayout' => 'Изберете распоред за $1:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

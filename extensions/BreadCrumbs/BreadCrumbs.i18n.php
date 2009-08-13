@@ -155,6 +155,13 @@ $messages['fr'] = array(
 	'breadcrumbs-desc' => 'Affiche le lien des dernières pages que l’utilisateur a visitées dans le wiki',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'breadcrumbs-desc' => 'Lit it paad sjen dat meidoggers yn de wiki berinne.',
+);
+
 /** Galician (Galego)
  * @author Alma
  */

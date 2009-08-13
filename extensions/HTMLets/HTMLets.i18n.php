@@ -46,6 +46,13 @@ $messages['bs'] = array(
 	'htmlets-desc' => 'Dopunjava oznaku <tt><nowiki><htmlet></nowiki></tt> za ubacivanje HTML snippeta',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'htmlets-desc' => "Permet inserir snippets HTML de fitxers usant l'etiqueta <tt><nowiki><htmlet></nowiki></tt>",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

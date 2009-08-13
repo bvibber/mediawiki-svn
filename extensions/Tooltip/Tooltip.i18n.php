@@ -79,6 +79,13 @@ $messages['cy'] = array(
 	'tooltip-desc' => 'Yn ychwanegu tagiau <tt><nowiki><tooltip></nowiki></tt> a <tt><nowiki>{{#tooltip:}}</nowiki></tt> tag',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'tooltip-desc' => 'Tilføjer taggene <tt><nowiki><tooltip></nowiki></tt> og <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender

@@ -1025,8 +1025,10 @@ Nowša wersija $2 stoj na http://pecl.php.net/package/APC/$2 k dispoziciji.',
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'viewapc-display-inode' => 'Inode',
 	'viewapc-display-creation_time' => 'Δημιουργημένος',
 	'viewapc-display-deletion_time' => 'Διαγραμμένος',
 	'viewapc-display-mem_size' => 'Μέγεθος',
@@ -1128,6 +1130,7 @@ APC verŝajne ne funkcias.',
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Omnipaedista
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -1167,6 +1170,7 @@ APC no parece estar ejecutándose.',
 	'viewapc-display-device' => 'Dispositivo',
 	'viewapc-display-info' => 'Nombre',
 	'viewapc-display-ttl' => 'Tiempo de expiración',
+	'viewapc-display-inode' => 'Inodo',
 	'viewapc-display-type' => 'Tipo',
 	'viewapc-display-type-file' => 'archivo en cache',
 	'viewapc-display-mtime' => 'Modificado',
@@ -1696,6 +1700,7 @@ $messages['grc'] = array(
 	'viewapc-display-value' => 'Τιμή',
 	'viewapc-display-device' => 'Σκεῦος',
 	'viewapc-display-info' => 'Ὄνομα',
+	'viewapc-display-inode' => 'Inode',
 	'viewapc-display-type' => 'Τύπος',
 	'viewapc-display-mtime' => 'Τετροποποιημένη',
 	'viewapc-display-creation_time' => 'Κτιστός',
@@ -3930,6 +3935,13 @@ Możliwe, że APC nie jest uruchomione.',
 Nowa wersja $2 dostępna jest na stronie http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''Pamięć podręczna plików została wyczyszczona.'''''",
 	'viewapc-usercache-cleared' => "'''''Pamięć podręczna aplikacji została wyczyszczona.'''''",
+);
+
+/** Pontic (Ποντιακά)
+ * @author Omnipaedista
+ */
+$messages['pnt'] = array(
+	'viewapc-display-inode' => 'Inode',
 );
 
 /** Pashto (پښتو)

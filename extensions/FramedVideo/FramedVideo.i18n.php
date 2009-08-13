@@ -136,6 +136,16 @@ $messages['bs'] = array(
 	'framedvideo-desc' => 'Omogućuje uključivanje video snimaka sa raznih web stranica koristeći oznaku <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'framedvideo_error' => 'Hi ha hagut un error!',
+	'framedvideo_error_no_id_given' => 'Manca el paràmetre "id".',
+	'framedvideo_error_limit' => 'El valor màxim permès és $1.',
+	'framedvideo_helppage' => 'Ajuda:Vídeo',
+);
+
 /** Danish (Dansk)
  * @author BabelFrode
  */

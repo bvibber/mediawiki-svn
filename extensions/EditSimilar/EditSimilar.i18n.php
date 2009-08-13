@@ -109,6 +109,15 @@ Pogledajte {{PLURAL:$2|ovu povezanu stranicu|ove povezane stranice}}: $1.',
 	'tog-edit-similar' => 'Omogući sugestije za slične stranice',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'editsimilar-desc' => 'Anima als usuaris a editar pàgines similars quan han desat una pàgina',
+	'editsimilar-thankyou' => 'Gràcies per la seva contribució, $1!',
+	'tog-edit-similar' => 'Activa els suggeriments de pàgines similars',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian

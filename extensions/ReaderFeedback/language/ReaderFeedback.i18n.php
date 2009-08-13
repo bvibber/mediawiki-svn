@@ -661,6 +661,7 @@ $messages['grc'] = array(
  * @author Melancholie
  */
 $messages['gsw'] = array(
+	'readerfeedback-desc' => 'Sytevalidierig macht s Läser megli e Ruckmäldig z gee in Form vu kategorisierte Note',
 	'readerfeedback' => 'Was dänksch iber die Syte?',
 	'readerfeedback-text' => "''Bitte nimm Der e Momänt derzyt un bewärt die Syte. Dyyni Ruckmäldig isch wärtvoll un hilft is, s Aagebot z verbessere.''",
 	'readerfeedback-reliability' => 'Zueverlässigkeit',
@@ -684,6 +685,7 @@ $messages['gsw'] = array(
 	'readerfeedback-finished' => 'Merci!',
 	'readerfeedback-tagfilter' => 'Tag:',
 	'tooltip-ca-ratinghist' => 'Läserwärtige vu däre Syte',
+	'specialpages-group-feedback' => 'Meinig vum Läser',
 );
 
 /** Hebrew (עברית)
@@ -1076,6 +1078,7 @@ $messages['nah'] = array(
  * @author Tvdm
  */
 $messages['nl'] = array(
+	'readerfeedback-desc' => 'Paginavalidatie laat lezers terugkoppeling geven in de vorm van categoriale beoordelingen',
 	'readerfeedback' => 'Wat vindt u van deze pagina?',
 	'readerfeedback-text' => "''Neem de moeite om deze pagina hieronder te waarderen.
 Uw terugkoppeling is waardevol en helpt ons deze website te verbeteren.''",
@@ -1100,6 +1103,7 @@ Uw terugkoppeling is waardevol en helpt ons deze website te verbeteren.''",
 	'readerfeedback-finished' => 'Bedankt!',
 	'readerfeedback-tagfilter' => 'Label:',
 	'tooltip-ca-ratinghist' => 'Waardering van deze pagina door lezers',
+	'specialpages-group-feedback' => 'Mening van de lezer',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1167,6 +1171,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'readerfeedback-desc' => 'La validacion d’articles permet als lectors de balhar lor vejaire jos forma d’evaluacions per categoria',
 	'readerfeedback' => "Qué pensatz d'aquesta pagina ?",
 	'readerfeedback-text' => "''Consacratz un moment per notar aquesta pagina çaijós. Vòstras impressions son preciosas e nos ajudan a melhorar nòstre sit internet.''",
 	'readerfeedback-reliability' => 'Fisabilitat',
@@ -1188,6 +1193,7 @@ $messages['oc'] = array(
 	'readerfeedback-finished' => 'Mercés !',
 	'readerfeedback-tagfilter' => 'Balisa :',
 	'tooltip-ca-ratinghist' => "Apreciacions dels lectors d'aquesta pagina",
+	'specialpages-group-feedback' => 'Opinion del lector',
 );
 
 /** Polish (Polski)
@@ -1323,6 +1329,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'readerfeedback-desc' => 'Проверка страниц позволяет читателям оставлять отзывы в форме оценок по категориям',
 	'readerfeedback' => 'Что вы думаете об этой странице?',
 	'readerfeedback-text' => "''Пожалуйста, дайте оценку этой странице. Ваши отзывы очень ценны для нас, они помогают работать над улучшением сайта.''",
 	'readerfeedback-reliability' => 'Достоверность',
@@ -1344,6 +1351,7 @@ $messages['ru'] = array(
 	'readerfeedback-finished' => 'Спасибо!',
 	'readerfeedback-tagfilter' => 'Метка:',
 	'tooltip-ca-ratinghist' => 'Читательская оценка этой страницы',
+	'specialpages-group-feedback' => 'Мнение читателей',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
@@ -1357,6 +1365,7 @@ $messages['sh'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'readerfeedback-desc' => 'Overenie stránky umožňuje čitateľom poslať komentáre vo formulári kategorických hodnotení',
 	'readerfeedback' => 'Čo si myslíte o tejto stránke?',
 	'readerfeedback-text' => "''Prosím, venujte chvíľu ohodnoteniu tejto stránky. Ceníme si vaše pripomienky, pomáhajú nám zlepšiť našu webstránku''",
 	'readerfeedback-reliability' => 'Spoľahlivosť',
@@ -1378,6 +1387,7 @@ $messages['sk'] = array(
 	'readerfeedback-finished' => 'Ďakujeme!',
 	'readerfeedback-tagfilter' => 'Značka:',
 	'tooltip-ca-ratinghist' => 'Hodnotenie tejto stránky čitateľmi',
+	'specialpages-group-feedback' => 'Názor čitateľa',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

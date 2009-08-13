@@ -46,6 +46,13 @@ $messages['dsb'] = array(
 	'uploadblacklist-desc' => 'Pśidawa carnu lisćinu za nagraśa',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'uploadblacklist-desc' => 'Προσθέτει μια λειτουργικότητα μαύρης λίστας για τις επιφορτώσεις',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

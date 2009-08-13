@@ -162,12 +162,15 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'fundraiserportal' => 'Πύλη Εράνου',
+	'fundraiserportal-desc' => 'Προσθέτει μια "παρακαλώ δωρίστε" πύλη στην κορυφή της πλαϊνής μπάρας.',
 	'fundraiserportal-plain-button' => 'Υποστηρίξτε τη Βικιπαίδεια!',
 	'fundraiserportal-ruby-button' => 'Δωρίστε Τώρα',
 	'fundraiserportal-rubytext-button' => 'Δωρίστε Τώρα',
+	'fundraiserportal-rubytext-message' => 'Κάθε δωρεά μας βοηθάει να κρατήσουμε τη Wikipedia ελεύθερη για όλους.',
 	'fundraiserportal-rubytext-close' => 'Απόκρυψη αυτού από τώρα',
 	'fundraiserportal-sapphire-button' => 'Δωρίστε Τώρα',
 	'fundraiserportal-tourmaline-button' => 'Δωρίστε Τώρα',
+	'fundraiserportal-tourmaline-message' => 'Κάθε δωρεά μας βοηθάει να κρατήσουμε τη Wikipedia ελεύθερη για όλους.',
 	'fundraiserportal-tourmaline-close' => 'Απόκρυψη αυτού από τώρα',
 );
 
@@ -543,6 +546,23 @@ $messages['sk'] = array(
 	'fundraiserportal-tourmaline-button' => 'Prispejte teraz',
 	'fundraiserportal-tourmaline-message' => 'Každý dar nám pomáha zachovať Wikipédiu slobodnou pre každého.',
 	'fundraiserportal-tourmaline-close' => 'Odteraz nezobrazovať',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'fundraiserportal' => 'Donationsportal',
+	'fundraiserportal-desc' => 'Lägger till en "vänligen donera"-portal längst upp i sidofältet.',
+	'fundraiserportal-plain-button' => 'Stöd Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Donera nu',
+	'fundraiserportal-rubytext-button' => 'Donera nu',
+	'fundraiserportal-rubytext-message' => 'Varje donation hjälper oss att hålla Wikipedia fritt för alla.',
+	'fundraiserportal-rubytext-close' => 'Dölj detta framöver',
+	'fundraiserportal-sapphire-button' => 'Donera nu',
+	'fundraiserportal-tourmaline-button' => 'Donera nu',
+	'fundraiserportal-tourmaline-message' => 'Varje donation hjälper oss att hålla Wikipedia fritt för alla.',
+	'fundraiserportal-tourmaline-close' => 'Dölj detta framöver',
 );
 
 /** Telugu (తెలుగు)

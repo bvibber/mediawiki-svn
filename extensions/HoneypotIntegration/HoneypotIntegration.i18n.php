@@ -65,6 +65,13 @@ $messages['bs'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Broj nedavnih događaja koja je IP adresa pokrenula, u skladu s projektom Honey Pot',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'honeypot-desc' => 'Proporciona als llocs Mediawiki integració amb el [http://projecthoneypot.org/ Projecte Honey Pot]',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */
@@ -79,6 +86,14 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'honeypot-desc' => 'Zmóžnja integraciju do [http://projecthoneypot.org/ projekta Honey Pot] za sedła MediaWiki',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Licba aktualnych tšojenjow, kótarež IP-adresa jo zapušćiła, pó projekśe Honey Pot',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'honeypot-desc' => 'Παρέχει ενοποίηση με το [http://projecthoneypot.org/ Εγχείρημα Honey Pot] για ιστοτόπους MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Αριθμός προσφάτων γεγονότων που προξένησε αυτή η διεὐθυνση IP, σύμφωνα με το εγχείρημα Honey Pot',
 );
 
 /** Spanish (Español)

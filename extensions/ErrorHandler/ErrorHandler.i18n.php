@@ -191,9 +191,13 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author Paucabot
  */
 $messages['ca'] = array(
+	'errorhandler-errors' => 'Errors:',
+	'errorhandler-error-fatal' => 'Error fatal',
 	'errorhandler-error-compile-error' => 'Error de compilació',
+	'errorhandler-error-user-error' => "Error d'usuari",
 );
 
 /** German (Deutsch)

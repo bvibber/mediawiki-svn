@@ -107,7 +107,7 @@ Vi ste pokušali: '''$1'''",
  */
 $messages['de'] = array(
 	'rt-inactive' => 'Die RT-Erweiterung ist nicht aktiv',
-	'rt-badquery' => 'Die RT-Erweiterung hat einen Fehler bei der der Kommunikation mit der RT-Datenbank festgestellt',
+	'rt-badquery' => 'Die RT-Erweiterung hat einen Fehler bei der Kommunikation mit der RT-Datenbank festgestellt',
 );
 
 /** Lower Sorbian (Dolnoserbski)

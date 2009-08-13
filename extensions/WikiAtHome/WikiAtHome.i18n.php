@@ -418,6 +418,28 @@ $messages['lb'] = array(
 	'wah-loading' => 'wiki@home Interface lueden <blink>...</blink>',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'wah-desc' => 'Овозможува дистрибуирање на задачи за видео транскодирање на клиенти со помош на firefogg',
+	'wah-user-desc' => 'Wiki@Home им овозможува на членовите на заедницата да донираат одвишок процесорски циклуси како помош во операции кои бараат доста ресурси',
+	'wah-short-audio' => '$1 аудиоснимка, $2',
+	'wah-short-video' => '$1 видеоснимка, $2',
+	'wah-short-general' => '$1 снимка, $2',
+	'wah-long-audio' => '($1 снимка, времетраење $2, $3)',
+	'wah-long-video' => '($1 видеоснимка, времетраење $2, $4×$5 пиксели, $3)',
+	'wah-long-multiplexed' => '(мултиплексирана аудио/видео снимка, $1, времетраење $2, $4×$5 пиксели, $3 долж снимката)',
+	'wah-long-general' => '(снимка, времетраење $2, $3)',
+	'wah-long-error' => '(ffmpeg не можеше да ја прочита оваа податотека: $1)',
+	'wah-transcode-working' => 'Оваа видеоснимка се обработува, обидете се подоцна',
+	'wah-transcode-helpout' => 'Снимката е $1 завршена.
+Можете да помогнете со транскодирање на оваа видеоснимка ако ја посетите страницата [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Оваа податотека не успеа да се транскодира.',
+	'wah-javascript-off' => 'Мора да имате овозможено JavaScript за да учествувате во Wiki@Home',
+	'wah-loading' => 'се вчитува интерфејсот на Wiki@Home <blink>...</blink>',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

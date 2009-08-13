@@ -50,6 +50,13 @@ $messages['bs'] = array(
 	'gotocategory-desc' => "Provjerava traženi pojam u kategorijama: imenski prostor za funkcionalnost 'jump to page' (skoči na stranicu)",
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'gotocategory-desc' => "Comprova els termes de la cerca a l'espai de noms Categoria: per la funció 'Vés-hi'",
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

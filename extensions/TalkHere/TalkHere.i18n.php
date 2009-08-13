@@ -350,10 +350,11 @@ Le gestionnaire du site n’est pas responsable de leur contenu.',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'talkhere-talkpage' => 'pâge de discussion',
-	'talkhere-addcomment' => 'Apondre un comentèro',
+	'talkhere-addcomment' => 'apondre un comentèro',
 );
 
 /** Galician (Galego)

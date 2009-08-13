@@ -48,6 +48,13 @@ $messages['bs'] = array(
 	'clientside-desc' => 'Omogućuje funkcije za generisanje koda u formatu za klijenta poput HTML, CSS i JavaScript',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'clientside-desc' => 'Proporciona funcions per generar codi en formats per al client com HTML, CSS i JavaScript',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

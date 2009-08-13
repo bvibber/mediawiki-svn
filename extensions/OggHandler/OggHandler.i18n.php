@@ -688,6 +688,7 @@ Pšosym <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Cient_downlo
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Dead3y3
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -707,6 +708,8 @@ $messages['el'] = array(
 	'ogg-play-sound' => 'Αναπαραγωγή ήχου',
 	'ogg-no-player' => 'Συγγνώμη, το σύστημά σας δεν φαίνεται να έχει κάποιο υποστηριζόμενο λογισμικό αναπαραγωγής.<br />
 Παρακαλώ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">κατεβάστε ένα πρόγραμμα αναπαραγωγής</a>.',
+	'ogg-no-player-js' => 'Συγνώμη, το σύστημά σας είτε έχει απενεργοποιημένη την JavaScript είτε δεν έχει κάποιον υποστηριζόμενο αναπαραγωγέα.<br />
+Μπορείτε <a href="$1">να κατεβάσετε το κλιπ</a><br />ή<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">να κατεβάσετε έναν αναπαραγωγέα</a> να αναπαράγει το κλιπ στον πλοηγό σας.',
 	'ogg-no-xiphqt' => 'Δεν φαίνεται να έχετε το στοιχείο XiphQT για το πρόγραμμα QuickTime.<br />
 Το πρόγραμμα QuickTime δεν μπορεί να αναπαράγει αρχεία Ogg χωρίς αυτό το στοιχείο.<br />
 Παρακαλώ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">κατεβάστε το XiphQT</a> ή επιλέξτε ένα άλλο πρόγραμμα αναπαραγωγής.',
@@ -1885,6 +1888,7 @@ $messages['lv'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -1900,7 +1904,7 @@ $messages['mk'] = array(
 	'ogg-play' => 'Почни',
 	'ogg-pause' => 'Паузирај',
 	'ogg-stop' => 'Стопирај',
-	'ogg-play-video' => 'Види видео снимка',
+	'ogg-play-video' => 'Пушти видеоснимка',
 	'ogg-play-sound' => 'Слушни аудио снимка',
 	'ogg-no-player' => 'Изгледа дека вашиот систем нема инсталирано било каков софтвер за преслушување/прегледување на аудио или видео записи.
 Можете <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да симнете некој софтвер за оваа намена од тука</a>.',

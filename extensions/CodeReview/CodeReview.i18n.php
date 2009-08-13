@@ -611,7 +611,7 @@ $messages['be-tarask'] = array(
 	'code-status' => 'станы',
 	'code-tags' => 'тэгі',
 	'code-tests' => 'Тэсты',
-	'code-authors-text' => 'Ніжэй пададзены сьпіс аўтараў коду ў сховішчы ў парадку апошніх зьменаў.',
+	'code-authors-text' => 'Ніжэй пададзены сьпіс аўтараў коду ў сховішчы ў парадку апошніх зьменаў. Рахункі лякальнай вікі паказаныя ў дужках.',
 	'code-author-haslink' => 'Гэты аўтар асацыяваны з удзельнікам $1',
 	'code-author-orphan' => 'Гэты аўтар ня мае спасылкі на рахунак удзельніка вікі',
 	'code-author-dolink' => 'Стварыць спасылку на рахунак удзельніка вікі для гэтага аўтара:',
@@ -693,6 +693,14 @@ $4',
 Кароткае апісаньне зьменаў:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Аўтаматычнае тэставаньне выявіла рэгрэсію',
+	'codereview-email-body3' => 'Аўтаматычнае тэставаньне выявіла рэгрэсію ў сувязі са зьменамі ў r$1.
+
+Поўны URL-адрас: $2
+
+Апісаньне зьменаў:
+
+$3',
 	'repoadmin' => 'Кіраваньне сховішчам коду',
 	'repoadmin-new-legend' => 'Стварыць новае сховішча',
 	'repoadmin-new-label' => 'Назва сховішча:',
@@ -1285,7 +1293,7 @@ $messages['dsb'] = array(
 	'code-status' => 'statusy',
 	'code-tags' => 'toflicki',
 	'code-tests' => 'Testowe pady',
-	'code-authors-text' => 'to jo lisćina awtorow repozitoriuma w rěźe aktualnych nagraśow.',
+	'code-authors-text' => 'To jo lisćina awtorow repozitoriuma w rěźe aktualnych nagraśow. Konta lokalnego wikija pokazuju se w spinkach.',
 	'code-author-haslink' => 'Awtor jo z wikijowym wužywarjom $1 zwězany',
 	'code-author-orphan' => 'Toś ten awtor njama wótkaz k wikijowemu kontoju',
 	'code-author-dolink' => 'Toś togo awtora z wikijowym wužywarjom zwězaś:',
@@ -1430,7 +1438,7 @@ $messages['el'] = array(
 	'code-status' => 'καταστάσεις',
 	'code-tags' => 'ετικέτες',
 	'code-tests' => 'Περιπτώσεις δοκιμής',
-	'code-authors-text' => 'Παρακάτω είναι ένας κατάλογος των συγγραφέων αποθηκευτηρίου σε σειρά προσφάτων προσθηκών.',
+	'code-authors-text' => 'Παρακάτω είναι ένας κατάλογος των συγγραφέων αποθηκευτηρίου κατά σειρά προσφάτων προσθηκών. Οι τοπικοί λογαριασμοί βίκι εμφανίζονται σε παρενθέσεις.',
 	'code-author-haslink' => 'Αυτός ο συγγραφέας είναι συνδεδεμένος με τον χρήστη wiki $1',
 	'code-author-orphan' => 'Αυτός ο συγγραφέας δεν έχει σύνδεσμο με ένα λογαριασμό wiki',
 	'code-author-dolink' => 'Σύνδεση αυτού του χρήστη με έναν χρήστη wiki:',
@@ -1513,6 +1521,13 @@ $4',
 
 $4',
 	'codereview-email-subj3' => '[$1] [r$2]: Η αυτόματη δοκιμή εντόπισε παλινδρόμηση',
+	'codereview-email-body3' => 'Η αυτόματη δοκιμή αποκάλυψε μια οπισθοδρόμηση εξαιτίας των αλλαγών στο r$1.
+
+Πλήρες URL: $2
+
+Υποβολή σύνοψης:
+
+$3',
 	'repoadmin' => 'Διαχείριση του αποθηκευτηρίου',
 	'repoadmin-new-legend' => 'Δημιουργία νέου αποθηκευτηρίου',
 	'repoadmin-new-label' => 'Όνομα αποθηκευτηρίου:',
@@ -1657,6 +1672,7 @@ $4',
  * @author Dferg
  * @author Imre
  * @author McDutchie
+ * @author Omnipaedista
  * @author Remember the dot
  * @author Sanbec
  */
@@ -1675,7 +1691,7 @@ $messages['es'] = array(
 	'code-notes' => 'comentarios recientes',
 	'code-statuschanges' => 'cambios de status',
 	'code-authors' => 'autores',
-	'code-status' => 'status',
+	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
 	'code-authors-text' => 'Abajo hay una lista de los autores de repositorios por orden de tareas recientes.',
 	'code-author-haslink' => 'Este autor está enlazado con el usuario $1',
@@ -2152,7 +2168,7 @@ $messages['fr'] = array(
 	'code-status' => 'états',
 	'code-tags' => 'balises',
 	'code-tests' => 'Cas de test',
-	'code-authors-text' => 'Ci-dessous se trouve une liste des auteurs de dépôts dans l’ordre des publications récentes.',
+	'code-authors-text' => 'Ci-dessous se trouve une liste des auteurs de dépôts dans l’ordre des publications récentes. Les comptes du wiki local sont affichés entre parenthèses.',
 	'code-author-haslink' => 'Cet auteur est lié au compte $1 de ce wiki',
 	'code-author-orphan' => 'Cet auteur n’a pas de lien avec un compte wiki',
 	'code-author-dolink' => 'Associer cet auteur à un utilisateur wiki local :',
@@ -2530,7 +2546,7 @@ $messages['gsw'] = array(
 	'code-status' => 'Status',
 	'code-tags' => 'Tag',
 	'code-tests' => 'Teschtfäll',
-	'code-authors-text' => 'Des isch d Lischt vu dr autore in dr Reihefolg vu dr Yyspiilige.',
+	'code-authors-text' => 'Des isch d Lischt vu dr Autore in dr Reihefolg vu dr Yyspiilige. Benutzer vu däm Wiki wäre in Chlammere ufgfiert.',
 	'code-author-haslink' => 'Dää Autor isch zum Wiki-Benutzer $1 vergleicht',
 	'code-author-orphan' => 'Dää Autor het kei Gleich zue me Wiki-Benutzerkonto',
 	'code-author-dolink' => 'Dää Autor zue me Wiki-Benutzerkonto vergleiche:',
@@ -2612,6 +2628,14 @@ Volli URL: $3
 Ibertragzämmefassig:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: E automatischi Priefig het e Fähler gfunde, wu schon emol ufträtten isch',
+	'codereview-email-body3' => 'E automatischi Priefig het e Fähler ufdeckt, wu dr Änderigen in r$1 wider ufträtten isch
+
+Vollständigi URL: $2
+
+Zämmefassig vu dr Bearbeitig:
+
+$3',
 	'repoadmin' => 'Adminischtration vum Repositorium',
 	'repoadmin-new-legend' => 'Nej Repositorium aalege',
 	'repoadmin-new-label' => 'Name vum Repositorium:',
@@ -2910,7 +2934,7 @@ $messages['hsb'] = array(
 	'code-status' => 'statusy',
 	'code-tags' => 'taflički',
 	'code-tests' => 'Testowe pady',
-	'code-authors-text' => 'To je lisćina awtorojo repozitorija po porjedźe aktualnych nahraćow.',
+	'code-authors-text' => 'To je lisćina awtorojo repozitorija po porjedźe aktualnych nahraćow. Lokalny wiki so w spinkach pokazuje.',
 	'code-author-haslink' => 'Tutón awtor ma wotkaz na wikijoweho wužiwarja $1',
 	'code-author-orphan' => 'Tutón awtor nima wotkaz k wikijowemu kontu',
 	'code-author-dolink' => 'Tutoho awtora z wikijowym wužiwarjom zwjazać:',
@@ -3856,7 +3880,7 @@ $messages['ksh'] = array(
 	'code-status' => 'Shtattuße',
 	'code-tags' => 'Makeerunge',
 	'code-tests' => 'Prööf-Fäll',
-	'code-authors-text' => 'Hee kütt en Leß met dä Schriever aan dämm Repositorijum, en dä Reijefolch, wie se jespeichert hann.',
+	'code-authors-text' => 'Hee kütt en Leß met dä Schriever aan dämm Repositorijum, en dä Reijefolch, wie se zoläz jät jespeichert hann. Metmaacher hee aam Wiki sen en Klammere met dobei.',
 	'code-author-haslink' => 'Dä Schriiver es em Wiki mem Metmaacher $1 verlengk',
 	'code-author-orphan' => 'Dä Schriiver es nit met enem Metmaacher em Wiki verlengk',
 	'code-author-dolink' => 'Donn dä Schriiver hee met enem Metmaacher em Wiki verlengke:',
@@ -4227,7 +4251,7 @@ $messages['mk'] = array(
 	'code-change-removed' => 'избришано:',
 	'code-change-added' => 'додадено:',
 	'code-authors' => 'автори',
-	'code-tags' => 'приврзоци',
+	'code-tags' => 'ознаки',
 	'code-field-id' => 'Ревизија',
 	'code-field-author' => 'Автор',
 	'code-field-status' => 'Статус',
@@ -4245,9 +4269,9 @@ $messages['mk'] = array(
 	'code-rev-modified-m' => 'изменето',
 	'code-rev-status' => 'Статус:',
 	'code-rev-status-set' => 'Промени статус',
-	'code-rev-tags' => 'Приврзоци:',
+	'code-rev-tags' => 'Ознаки:',
 	'code-rev-tag-add' => 'Додај ознаки:',
-	'code-rev-tag-remove' => 'Бриши приврзоци:',
+	'code-rev-tag-remove' => 'Избриши ги ознаките:',
 	'code-rev-comment-by' => 'Забелешка од $1',
 	'code-rev-comment-submit' => 'Потврди забелешка',
 	'code-rev-comment-preview' => 'Преглед',
@@ -4553,7 +4577,8 @@ $messages['nl'] = array(
 	'code-status' => 'statussen',
 	'code-tags' => 'labels',
 	'code-tests' => 'Testcases',
-	'code-authors-text' => 'Hieronder staat een lijst met auteurs uit de repository, degene met de meest recente commit bovenaan.',
+	'code-authors-text' => 'Hieronder staat een lijst met auteurs uit de repository, degene met de meest recente commit bovenaan.
+Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-author-haslink' => 'Deze auteur is gekoppeld aan de wikigebruiker $1',
 	'code-author-orphan' => 'Deze auteur is niet gekoppeld aan een wikigebruiker',
 	'code-author-dolink' => 'Deze auteur met een wikigebruiker koppelen:',
@@ -4635,6 +4660,14 @@ Volledige URL: $3
 Toelichting bij commit:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Regressie ontdekt tijdens automatisch testen',
+	'codereview-email-body3' => 'Tijdens het automatisch testen is gebleken dat er een regressie is ontstaan door de wijzigingen in r$1
+
+Volledige URL: $2
+
+Commitsamenvatting:
+
+$3',
 	'repoadmin' => 'Repositorybeheer',
 	'repoadmin-new-legend' => 'Nieuwe repository instellen',
 	'repoadmin-new-label' => 'Repositorynaam:',
@@ -5006,6 +5039,14 @@ URL completa : $3
 Resumit de las modificacions :
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2] : lo tèst automatic a detectat una regression',
+	'codereview-email-body3' => 'Lo tèst automatic a revelat una regression a causa dels cambiaments intervenguts dins la version r$1.
+
+URL completa : $2
+
+Resumit al moment de la somission :
+
+$3',
 	'repoadmin' => 'Administracion dels depausses',
 	'repoadmin-new-legend' => 'Crear un depaus novèl',
 	'repoadmin-new-label' => 'Nom del depaus :',
@@ -5567,7 +5608,7 @@ $messages['ru'] = array(
 	'code-status' => 'состояния',
 	'code-tags' => 'метки',
 	'code-tests' => 'Тестовые запросы',
-	'code-authors-text' => 'Ниже находится список авторов в порядке свежести вносимых ими изменений (более новые — сверху).',
+	'code-authors-text' => 'Ниже находится список авторов хранилища в порядке свежести вносимых ими изменений. Учётные записи локальной вики показаны в скобках.',
 	'code-author-haslink' => 'Этот автор ассоциирован с участником $1',
 	'code-author-orphan' => 'Для этого автора не установлена связь с учётной записью вики-проекта',
 	'code-author-dolink' => 'Установить для этого автора связь с участником:',
@@ -5649,6 +5690,14 @@ $4',
 Описание изменения:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Автоматическая проверка обнаружила регрессию',
+	'codereview-email-body3' => 'Автоматическая проверка выявила регрессию в связи с изменениями в r$1.
+
+Полный URL: $2
+
+Описание изменений:
+
+$3',
 	'repoadmin' => 'Управление хранилищем программного кода',
 	'repoadmin-new-legend' => 'Создать новое хранилище',
 	'repoadmin-new-label' => 'Название хранилища:',
@@ -5924,7 +5973,7 @@ $messages['sk'] = array(
 	'code-status' => 'stavy',
 	'code-tags' => 'značky',
 	'code-tests' => 'Testovacie prípady',
-	'code-authors-text' => 'Toto je zoznam autorov v úložisku v poradí podľa posledných commitov.',
+	'code-authors-text' => 'Toto je zoznam autorov v úložisku v poradí podľa posledných commitov. V zátvorkách sú zobrazené lokálne účty wiki.',
 	'code-author-haslink' => 'Tento autor je zviazaný s používateľom wiki $1',
 	'code-author-orphan' => 'Tento autor nie je zviazaný s používateľom wiki',
 	'code-author-dolink' => 'Zviazať tohto autora s používateľom wiki:',
@@ -6006,6 +6055,14 @@ Plný URL: $3
 Zhrnutie commitu:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Automatický test zistil regresiu',
+	'codereview-email-body3' => 'Automatický test odhalil regresiu kvôli zmenám vykonaným v r$1.
+
+Plný URL: $2
+
+Zhrnutie commitu:
+
+$3',
 	'repoadmin' => 'Správa úložiska',
 	'repoadmin-new-legend' => 'Vytvoriť nové úložisko',
 	'repoadmin-new-label' => 'Názov úložiska',
@@ -7513,6 +7570,7 @@ $4',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author FireJackey
  * @author Skjackey tse
  */
 $messages['zh-hant'] = array(

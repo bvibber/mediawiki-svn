@@ -184,6 +184,16 @@ $messages['bs'] = array(
 	'invitations-invite-success' => 'Uspješno se pozvali $1 da koristi ovu mogućnost!',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'invitations-inviteform-submit' => 'Convida',
+	'invitations-error-baduser' => "L'usuari especificat no sembla existir.",
+	'invitations-error-alreadyinvited' => "L'usuari especificat ja té accés a aquesta funciónalitat!",
+	'invitations-invite-success' => 'Heu convidat $1 a usar aquesta funcionalitat amb èxit!',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Pill

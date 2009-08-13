@@ -57,6 +57,13 @@ $messages['bs'] = array(
 	'i18ntags-desc' => 'Pristupa i18n funkcijama za formatiranje brojeva, gramatike i množine na svim dostupnim jezicima',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'i18ntags-desc' => 'Accediu a les funcions i18n per a la formatació de nombres, gramàtica i plural en qualsevol llengua disponible',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

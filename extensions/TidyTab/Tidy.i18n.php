@@ -243,6 +243,15 @@ $messages['lb'] = array(
 	'untidy' => 'Net klasséieren',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'tidy-desc' => "Додава јазиче за избор на 'средено' или 'несредено' (зависно од \$wgUseTidy) на нормални страници, што овозможува наложување на изборот врз глобално наместената HTML 'среденост' за единечен поглед",
+	'tidy' => 'Средено',
+	'untidy' => 'Несредено',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

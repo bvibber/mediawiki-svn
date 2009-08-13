@@ -265,6 +265,19 @@ $messages['bs'] = array(
 	'imagetagging-taggedimages-displaying' => 'Prikazane su $1 - $2 od $3 slika iz "$4"',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'imagetagging-article' => 'Pàgina:',
+	'imagetagging-imghistory' => 'Historial',
+	'imagetagging-tag-button' => 'Etiqueta',
+	'imagetagging-tagcancel-button' => 'Cancel·la',
+	'imagetagging-addtagsuccess' => 'Etiqueta afegida.',
+	'imagetagging-removetagsuccess' => 'Etiqueta eliminada.',
+	'imagetagging-taggedimages-title' => 'Imatges de "$1"',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

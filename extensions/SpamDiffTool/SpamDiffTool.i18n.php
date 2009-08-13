@@ -476,9 +476,10 @@ Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comp
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'spamdifftool_option_none' => 'Pas ren',
+	'spamdifftool_option_none' => 'ren',
 	'spamdifftool_block' => 'Blocar :',
 	'spamdifftool_submit_buttom' => 'Sometre',
 );
@@ -845,6 +846,18 @@ $messages['mr'] = array(
 	'spamdifftool_option_none' => 'कोणतेचानाही',
 	'spamdifftool_block' => 'ब्लॉक:',
 	'spamdifftool_submit_buttom' => 'पाठवा',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'spamdifftool_option_domain' => 'те доменэнть весемензэ',
+	'spamdifftool_option_subdomain' => 'те алкс доменэнть весемензэ',
+	'spamdifftool_option_directory' => 'те алкс доменэнть ды директориянть',
+	'spamdifftool_option_none' => 'мезеяк а теемс',
+	'spamdifftool_block' => 'Озавтомс саймес:',
+	'spamdifftool_submit_buttom' => 'Максомс',
 );
 
 /** Nahuatl (Nāhuatl)

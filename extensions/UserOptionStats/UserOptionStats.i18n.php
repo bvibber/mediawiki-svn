@@ -76,6 +76,16 @@ $messages['bs'] = array(
 	'uos-title' => 'Raspored vrijednosti korisničke opcije $1',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'uos-warn' => 'PHPlot no està instal·lat!',
+	'uos-choose' => "Triau una de les següents opcions d'usuari: $1",
+	'uos-unknown' => '*Per defecte',
+	'uos-other' => '*Altres',
+);
+
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
@@ -201,10 +211,11 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'uos-unknown' => '* Per dèfôt',
-	'uos-other' => '* Ôtros',
+	'uos-other' => '* Ôtres',
 );
 
 /** Galician (Galego)
@@ -343,6 +354,14 @@ $messages['lb'] = array(
 	'uos-unknown' => '*Standardastellung',
 	'uos-other' => '*Anerer',
 	'uos-title' => 'Verdeelung vun de Werter vun der Benotzerastellung $1',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'uos-unknown' => '*По основно',
+	'uos-other' => '*Друго',
 );
 
 /** Dutch (Nederlands)

@@ -446,7 +446,7 @@ $messages['fi'] = array(
 	'patrol-endorsed-ok' => 'Muokkaus merkittiin tarkastetuksi.',
 	'patrol-endorsed-failed' => 'Muokkausta ei voitu merkitä tarkastetuksi.',
 	'patrol-reverted-ok' => 'Muokkaus kumottiin.',
-	'patrol-reverted-failed' => 'Muokkausta ei voitu takaisinpalauttaa.',
+	'patrol-reverted-failed' => 'Muokkausta ei voitu palauttaa.',
 	'patrol-skipped-ok' => 'Ohitetaan muokkaus.',
 	'patrol-reasons' => '* Selvää vandalismia
 * Tulokkaan kokeilu

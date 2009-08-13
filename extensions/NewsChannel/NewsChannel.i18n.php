@@ -34,6 +34,14 @@ $messages['qqq'] = array(
 	'newschannel-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'newschannel_format' => 'Formaat:',
+	'newschannel_limit' => 'Limiet:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

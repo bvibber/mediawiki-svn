@@ -90,6 +90,14 @@ Ovo Vam omogućava da koristite Vašu korisničku stranicu kao i Vaš OpenID.',
 	'linkopenid-prefstext-v2url' => 'URL servera za OpenID verziju 2:',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'linkopenid-desc' => 'Permet als usuaris enllaçar el seu compte a un OpenID extern',
+	'linkopenid-prefstext-openid' => 'El vostre OpenID:',
+);
+
 /** German (Deutsch)
  * @author Michael Holzt <kju@fqdn.org>
  */

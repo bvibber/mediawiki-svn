@@ -707,20 +707,21 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'usagestatisticsinterval' => 'Intervalle',
+	'usagestatisticsinterval' => 'Entèrvalo',
 	'usagestatisticstype' => 'Tipo',
 	'usagestatisticsstart' => 'Dâta de comencement',
 	'usagestatisticsend' => 'Dâta de fin',
-	'usagestatisticssubmit' => 'Gènèrér les statistiques',
+	'usagestatisticssubmit' => 'Fâre les statistiques',
 	'usagestatisticsintervalday' => 'Jorn',
 	'usagestatisticsintervalweek' => 'Semana',
 	'usagestatisticsintervalmonth' => 'Mês',
-	'usagestatisticsincremental' => 'Incrèmentala',
-	'usagestatisticsincremental-text' => 'Incrèmentalas',
-	'usagestatisticscumulative' => 'Cumulâtif',
-	'usagestatisticscumulative-text' => 'Cumulâtives',
+	'usagestatisticsincremental' => 'Encrèmentâl',
+	'usagestatisticsincremental-text' => 'encrèmentâles',
+	'usagestatisticscumulative' => 'Cumulatif',
+	'usagestatisticscumulative-text' => 'cumulatives',
 );
 
 /** Irish (Gaeilge)

@@ -189,6 +189,14 @@ $messages['fr'] = array(
 	'abcdownload' => 'Télécharger :',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'abcdesc' => 'Foegt mark <tt>&lt;abc&gt;</tt> ta foar de opmaak fan ABC-muzyk',
+	'abcdownload' => 'Ynlade:',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

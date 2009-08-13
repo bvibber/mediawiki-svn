@@ -52,6 +52,13 @@ $messages['bs'] = array(
 	'localisationupdate-desc' => 'Zadržavanje lokaliziranih poruka ažurnim koliko je god moguće',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'localisationupdate-desc' => 'Manté els missatges localitzats tan actualitzats com sigui possible',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */
