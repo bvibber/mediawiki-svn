@@ -605,3 +605,30 @@ $messages['vi'] = array(
 	'lua_overflow_time' => 'Quá thời gian chạy tối đa',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'lua_desc'               => '通过支持嵌入[http://www.lua.org/ Lua]代码段来扩展解析器。'
+	'lua_error'              => '第$1行有错误',
+	'lua_extension_notfound' => '未配置Lua插件',
+	'lua_interp_notfound'    => '未找到Lua解释器',
+	'lua_error_internal'     => '内部错误',
+	'lua_overflow_recursion' => '递归越限',
+	'lua_overflow_loc'       => '代码行数越限',
+	'lua_overflow_time'      => '运行时间越限',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hant'] = array(
+	'lua_desc'               => '透過支援嵌入[http://www.lua.org/ Lua]程式碼段來拓展解析器。'
+	'lua_error'              => '第$1行有錯誤',
+	'lua_extension_notfound' => '未設定Lua插件',
+	'lua_interp_notfound'    => '未找到Lua直譯器',
+	'lua_error_internal'     => '內部錯誤',
+	'lua_overflow_recursion' => '遞回越限',
+	'lua_overflow_loc'       => '程式碼行數越限',
+	'lua_overflow_time'      => '執行時間越限',
+);
