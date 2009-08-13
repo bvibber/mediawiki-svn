@@ -27,7 +27,6 @@ class LocalisationUpdate {
 		
 		// Update all Extension messages
 		foreach ( $wgExtensionMessagesFiles as $extension => $locFile ) {
-			var_dump( $locFile );
 			$result += self::updateExtensionMessages( $locFile, $extension, $verbose );
 		}
 
@@ -41,14 +40,20 @@ class LocalisationUpdate {
 	public static function updateExtensionMessages( $file, $extension, $verbose ) {
 		global $IP, $wgLocalisationUpdateSVNURL;
 		
+		$relfile = wfRelativePath( $file, "$IP/extensions" );
+		if( substr( $relfile, 0, 2 ) == ".." ) {
+			self::myLog( "Skipping $file; not in $IP/extensions\n" );
+			return false;
+		}
+		
 		// Create a full path
-		$localfile = $IP . "/" . $file; // note $file should start with "extensions/"
+		$localfile = "$IP/extensions/$relfile";
 
 		// Get the full SVN directory path
-		$svndir = "$wgLocalisationUpdateSVNURL/$file";
+		$svnfile = "$wgLocalisationUpdateSVNURL/extensions/$relfile";
 
 		// Compare the 2 files
-		$result = self::compareExtensionFiles( $extension, $svndir . "/" . basename( $file ), $file, $verbose, false, true );
+		$result = self::compareExtensionFiles( $extension, $svnfile, $file, $verbose, false, true );
 		return $result;
 	}
 
