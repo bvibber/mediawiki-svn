@@ -48,6 +48,12 @@ class HoneypotIntegration {
 		if (!$wgHoneypotAutoLoad)
 			return array( 'http://www.google.com' ); // Dummy URL
 			
+		return self::loadHoneypotURLs();
+	}
+	
+	public static function loadHoneypotURLs() {
+		$key = wfMemcKey( 'honeypot-integration-urls' );
+		
 		global $wgHoneypotURLSource;
 		// Curl opt is a hack because the honeypot folks don't seem to have a valid
 		//  certificate.
@@ -58,7 +64,7 @@ class HoneypotIntegration {
 		
 		$wgMemc->set( $key, $urls, 86400 );
 		
-		return $urls;
+		return $urls;		
 	}
 
 	public static function generateHoneypotLink( $randomText = null ) {
