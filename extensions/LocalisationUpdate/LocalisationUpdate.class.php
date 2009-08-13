@@ -115,7 +115,7 @@ class LocalisationUpdate {
 	public static function cleanupFile( $contents ) {
 		// We don't need any PHP tags
 		$contents = preg_replace( "/<\\?php/", "", $contents );
-		$contents = preg_replace( "/\?>/", "", $contents );
+		$contents = preg_replace( "/\?" . ">/", "", $contents );
 		$results = array();
 		// And we only want the messages array
 		preg_match( "/\\\$messages(.*\s)*?\);/", $contents, $results );
@@ -323,7 +323,7 @@ class LocalisationUpdate {
 	public static function cleanupExtensionFile( $contents ) {
 		// We don't want PHP tags
 		$contents = preg_replace( "/<\?php/", "", $contents );
-		$contents = preg_replace( "/\?>/", "", $contents );
+		$contents = preg_replace( "/\?" . ">/", "", $contents );
 		$results = array();
 		// And we only want message arrays
 		preg_match_all( "/\\\$messages(.*\s)*?\);/", $contents, $results );
