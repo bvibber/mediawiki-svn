@@ -6,10 +6,19 @@ $IP = strval( getenv( 'MW_INSTALL_PATH' ) ) !== ''
 
 require_once( "$IP/maintenance/commandLine.inc" );
 
-$verbose = false;
+if( isset( $options['help'] ) ) {
+	print "Fetches updated localisation files from MediaWiki development SVN\n";
+	print "and saves into local database to merge with release defaults.\n";
+	print "\n";
+	print "Usage: php extensions/LocalisationUpdate/update.php\n";
+	print "Options:\n";
+	print "  --quiet  Suppress progress output\n";
+	print "\n";
+	exit( 0 );
+}
 
-if ( $argc > 1 && $argv[0] == "verbose" )
-	$verbose = true;
+
+$verbose = !isset( $options['quiet'] );
 
 $starttime = microtime( true );
 
