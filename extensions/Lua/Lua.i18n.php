@@ -609,7 +609,7 @@ $messages['vi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
-	'lua_desc'               => '通过支持嵌入[http://www.lua.org/ Lua]代码段来扩展解析器。'
+	'lua_desc'               => '通过支持嵌入[http://www.lua.org/ Lua]代码段来扩展解析器。',
 	'lua_error'              => '第$1行有错误',
 	'lua_extension_notfound' => '未配置Lua插件',
 	'lua_interp_notfound'    => '未找到Lua解释器',
@@ -623,7 +623,7 @@ $messages['zh-hans'] = array(
  * @author PhiLiP
  */
 $messages['zh-hant'] = array(
-	'lua_desc'               => '透過支援嵌入[http://www.lua.org/ Lua]程式碼段來拓展解析器。'
+	'lua_desc'               => '透過支援嵌入[http://www.lua.org/ Lua]程式碼段來拓展解析器。',
 	'lua_error'              => '第$1行有錯誤',
 	'lua_extension_notfound' => '未設定Lua插件',
 	'lua_interp_notfound'    => '未找到Lua直譯器',
