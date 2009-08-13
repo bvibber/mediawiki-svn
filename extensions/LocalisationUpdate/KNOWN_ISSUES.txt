@@ -1,2 +1,16 @@
 - Only works with SVN revision 50605 or later of the
   MediaWiki core
+
+
+
+Key issues at the moment:
+* Seems to want to store a copy of the localization updates in each local database.
+We've got hundreds of wikis run from the same installation set; we don't want to multiply our effort by 1000.
+
+* The SVN URL is missing the protocol and the branch path, which are mysteriously hardcoded to
+'http://' (ok in our case) and the SVN checkout of the current working directory of your MW install
+(very bad, since it makes it impossible to pull trunk updates for wmf-deployment branch; also
+means you couldn't run it on a release tarball)
+
+* It doesn't seem to be using available memcached stuff; unsure yet whether this is taken care of
+by the general message caching or if we're going to end up making extra hits we don't need.
