@@ -7,7 +7,7 @@ KNOWN ISSUES:
 
 // Configuration
 
-$wgLocalisationUpdateSVNURL = "svn.wikimedia.org/svnroot/mediawiki/";
+$wgLocalisationUpdateSVNURL = "http://svn.wikimedia.org/svnroot/mediawiki/trunk";
 $wgLocalisationUpdateRetryAttempts = 5;
 
 // Info about me!

@@ -27,6 +27,7 @@ class LocalisationUpdate {
 		
 		// Update all Extension messages
 		foreach ( $wgExtensionMessagesFiles as $extension => $locFile ) {
+			var_dump( $locFile );
 			$result += self::updateExtensionMessages( $locFile, $extension, $verbose );
 		}
 
@@ -39,17 +40,12 @@ class LocalisationUpdate {
 	// Update Extension Messages
 	public static function updateExtensionMessages( $file, $extension, $verbose ) {
 		global $IP, $wgLocalisationUpdateSVNURL;
-
-		// Find the right SVN folder
-		// @fixme this prevents pulling trunk updates when we're on a deployment branch.
-		// Base URL should be fully configurable and make no branch assumptions.
-		$svnFolder = SpecialVersion::getSvnRevision( dirname( $file ), false, false, true );
-
+		
 		// Create a full path
-		$localfile = $IP . "/" . $file;
+		$localfile = $IP . "/" . $file; // note $file should start with "extensions/"
 
 		// Get the full SVN directory path
-		$svndir = "http://" . $wgLocalisationUpdateSVNURL . $svnFolder;
+		$svndir = "$wgLocalisationUpdateSVNURL/$file";
 
 		// Compare the 2 files
 		$result = self::compareExtensionFiles( $extension, $svndir . "/" . basename( $file ), $file, $verbose, false, true );
@@ -67,22 +63,13 @@ class LocalisationUpdate {
 		$dirname = "languages/messages";
 
 		// Get the full path to the directory
-		$dirname = $IP . "/" . $dirname;
+		$localdir = $IP . "/" . $dirname;
 
-		// Get the SVN folder used for the checkout
-		$svnFolder = SpecialVersion::getSvnRevision( $dirname, false, false, true );
-
-		// Do not update if not from SVN
-		if ( empty( $svnFolder ) ) {
-			self::myLog( 'Cannot update localisation as the files are not retrieved from SVN' );
-			return 0;
-		}
-		
 		// Get the full SVN Path
-		$svndir = "http://" . $wgLocalisationUpdateSVNURL . $svnFolder;
+		$svndir = "$wgLocalisationUpdateSVNURL/phase3/$dirname";
 
 		// Open the directory
-		$dir = opendir( $dirname );
+		$dir = opendir( $localdir );
 		while ( false !== ( $file = readdir( $dir ) ) ) {
 			$m = array();
 
@@ -96,7 +83,7 @@ class LocalisationUpdate {
 		closedir( $dir );
 
 		// Find the changed English strings (as these messages won't be updated in ANY language)
-		$changedEnglishStrings = self::compareFiles( $dirname . "/MessagesEn.php", $svndir . "/MessagesEn.php", $verbose );
+		$changedEnglishStrings = self::compareFiles( $localdir . "/MessagesEn.php", $svndir . "/MessagesEn.php", $verbose );
 
 		// Count the changes
 		$changedCount = 0;
@@ -105,7 +92,7 @@ class LocalisationUpdate {
 		sort($files);
 		foreach ( $files as $file ) {
 			$svnfile = $svndir . "/" . $file;
-			$localfile = $dirname . "/" . $file;
+			$localfile = $localdir . "/" . $file;
 
 			// Compare the files
 			$result = self::compareFiles( $svnfile, $localfile, $verbose, $changedEnglishStrings, false, true );
