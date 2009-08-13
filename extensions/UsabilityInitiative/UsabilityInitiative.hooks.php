@@ -19,15 +19,15 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 5 ),
 				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 5 ),
-				array( 'src' => 'css/smoothness/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
+				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'combined' => array(
 				array( 'src' => 'css/combined.css', 'version' => 7 ),
-				array( 'src' => 'css/smoothness/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
+				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'minified' => array(
 				array( 'src' => 'css/combined.min.css', 'version' => 7 ),
-				array( 'src' => 'css/smoothness/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
+				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 		)
 	);
