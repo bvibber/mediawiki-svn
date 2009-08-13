@@ -1495,7 +1495,7 @@ oder <a href="$3">füge den Stream hinzu</a>.',
 	'mv_file_list' => 'Stream-Dateien',
 	'mv_label_stream_name' => 'Stream-Name',
 	'mv_label_stream_desc' => 'Stream-Beschreibung',
-	'add_stream_permission' => 'Dir hast keine Erlaubnis, einen neuen Stream hinzuzufügen',
+	'add_stream_permission' => 'Du hast keine Erlaubnis, einen neuen Stream hinzuzufügen',
 	'edit_stream_missing' => 'Fehlender Stream-Name',
 	'mv_missing_req_time' => 'Fehlende Anforderungszeit',
 	'mv_missing_cat' => 'Fehlender Kategorienname',
@@ -1543,7 +1543,7 @@ Dieses Overlay kann verwendet werden, um Videosektionen zu kategorisieren oder A
 Quelltexte werden von C-SPAN’s c-spanarchives.org synchronisiert.',
 	'mvd_default_mismatch' => 'Fehler in der Einstellungs-Datei',
 	'mvd_default_mismatch_text' => 'Deine Einstellungsdatei ist fehlerhaft.
-$mvMVDTypeDefaultDisp sollte eine Teilmenge von $mvMVDTypeAllAvailable sein',
+<code>$mvMVDTypeDefaultDisp</code> sollte eine Teilmenge von <code>$mvMVDTypeAllAvailable</code> sein',
 	'mv_data_page_title' => '$1 für $2 von $3',
 	'mv_time_separator' => '$1 bis $2',
 	'mv_list_streams' => 'Metavid Streams auflisten',
@@ -1697,12 +1697,21 @@ Zur Stream-Ansicht springen: $2',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Pill
  * @author Revolus
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'mv_stream_added' => 'Sie haben den Stream $1 hinzugefügt',
+	'mv_missing_stream_text' => 'Der angeforderte Stream <b>$1</b> ist nicht verfügbar.<br />
+Schauen Sie in die <a href="$2">Streamliste</a><br />
+oder <a href="$3">fügen Sie den Stream hinzu</a>.',
 	'mv_user_cant_edit' => 'Sie können sich zum Bearbeiten [$1 anmelden], $2',
+	'add_stream_permission' => 'Sie haben keine Erlaubnis, einen neuen Stream hinzuzufügen',
+	'mvd_default_mismatch_text' => 'Ihre Einstellungsdatei ist fehlerhaft.
+<code>$mvMVDTypeDefaultDisp</code> sollte eine Teilmenge von <code>$mvMVDTypeAllAvailable</code> sein',
+	'mv_adjust_old_title_missing' => 'Die Seite, die Sie von ($1) verschieben wollen, existiert nicht',
 );
 
 /** Greek (Ελληνικά)
@@ -1807,6 +1816,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'mv_ogg_high_quality' => 'Calidad alta - Ogg Theora 900 kbit/s',
 	'mv_error_stream_missing' => '<span class="error">Error: No hay video asociado con este stream.</span><br />
 Por favor reporta esto al [[{{MediaWiki:Grouppage-sysop}}|administrator del sitio]].',
 	'mv_stream_added' => 'Has agregado el stream $1',
@@ -1861,6 +1871,7 @@ o puedes desear <a href="$3">Agregar el stream</a>.',
 	'mv_watch_clip' => 'Ver clip',
 	'mv_close_clip' => 'Cerrar clip',
 	'mv_improve_transcript' => 'Mejorar transcripción',
+	'mv_category_matches' => 'Coincidencias de título de categoría',
 	'mv_click_to_edit' => 'hacer click para editar',
 	'ht_en' => 'Transcribir',
 	'anno_en' => 'Anotaciones y categorías',

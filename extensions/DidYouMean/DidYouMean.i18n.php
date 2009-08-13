@@ -161,6 +161,13 @@ $messages['fr'] = array(
 	'didyoumean-desc' => 'Ajoute des liens aux pages avec des titres « semblables »',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'didyoumean-desc' => 'Foegje keppelings ta nei siden mei "lyksoartige nammen" nammen',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

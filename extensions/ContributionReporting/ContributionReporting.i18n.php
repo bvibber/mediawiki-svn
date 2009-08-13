@@ -576,6 +576,7 @@ $messages['cu'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Metalhead64
  * @author Omnipaedista
  * @author Purodha
@@ -614,7 +615,9 @@ $messages['de'] = array(
 	'contribstats-value-under' => 'Weniger als $1',
 	'contribstats-value-from' => 'Zwischen $1 und $2',
 	'contribstats-value-over' => 'Mehr als $1',
+	'contribstats-day-totals' => 'Gesamtsumme heute',
 	'contribstats-week' => 'Woche',
+	'contribstats-clicks' => 'Klicks',
 	'contribstats-donations' => 'Spenden',
 	'contribstats-template' => 'Vorlage',
 	'fundraiserstatistics' => 'Spendenstatistiken',
@@ -843,6 +846,7 @@ $messages['es'] = array(
 	'contribstats-value-from' => 'De $1 a $2',
 	'contribstats-value-over' => 'Sobre $1',
 	'contribstats-week' => 'Semana',
+	'contribstats-clicks' => 'Clics',
 	'contribstats-donations' => 'Donaciones',
 	'contribstats-template' => 'Plantilla',
 	'fundraiserstatistics' => 'Estadísticas del recaudador de fondos',
@@ -1646,6 +1650,14 @@ $messages['ja'] = array(
 	'contribstats-value-under' => '$1 以下',
 	'contribstats-value-from' => '$1 以上 $2 以下',
 	'contribstats-value-over' => '$1 以上',
+	'contributiontrackingstatistics' => '寄付追跡統計',
+	'contribstats-day-totals' => '今日の合計',
+	'contribstats-week' => '週',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|今週の合計|過去$1週間の1週あたりの合計}}',
+	'contribstats-clicks' => 'クリック数',
+	'contribstats-donations' => '寄付数',
+	'contribstats-conversion' => 'コンバージョン率 (%)',
+	'contribstats-template' => 'テンプレート',
 	'fundraiserstatistics' => '資金調達統計',
 	'fundraiserstats-date' => '日付',
 	'fundraiserstats-day' => '$2 の$1日目',
@@ -1900,6 +1912,14 @@ $messages['lb'] = array(
 	'contribstats-value-under' => 'Manner wéi $1',
 	'contribstats-value-from' => 'Tësche(n) $1 a(n) $2',
 	'contribstats-value-over' => 'Méi wéi $1',
+	'contributiontrackingstatistics' => 'Statistike vun der Opzeechnung vun Donen',
+	'contribstats-day-totals' => 'Total fir haut',
+	'contribstats-week' => 'Woch',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Total fir dës Woch|Totaler vun de Wochen wàhrend de leschten $1 Wochen}}',
+	'contribstats-clicks' => 'Klicken',
+	'contribstats-donations' => 'Donen',
+	'contribstats-conversion' => 'Ëmrechnungs-Cours (%)',
+	'contribstats-template' => 'Schabloun',
 	'fundraiserstatistics' => 'Statistike vun den Donen',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 vu(n) $2',
@@ -3149,6 +3169,11 @@ $messages['vec'] = array(
 	'contribstats-value-under' => 'Manco de $1',
 	'contribstats-value-from' => 'Da $1 a $2',
 	'contribstats-value-over' => 'Piassè de $1',
+	'contribstats-day-totals' => 'Totàl de uncuò',
+	'contribstats-week' => 'Setimana',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Totàl de sta setimana|Totali setimanali de le ultime $1 setimane}}',
+	'contribstats-clicks' => 'Nùmaro de click',
+	'contribstats-donations' => 'Donassioni',
 	'fundraiserstatistics' => 'Statìsteghe de la racolta fondi',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Zorno $1 de $2',

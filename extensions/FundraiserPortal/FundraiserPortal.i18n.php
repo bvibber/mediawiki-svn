@@ -485,6 +485,18 @@ $messages['nl'] = array(
 	'fundraiserportal-tourmaline-close' => 'Dit onderdeel vanaf nu verbergen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Simny
+ */
+$messages['no'] = array(
+	'fundraiserportal-plain-button' => 'Støtt Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Gi nå',
+	'fundraiserportal-rubytext-button' => 'Gi nå',
+	'fundraiserportal-rubytext-close' => 'Skjul dette fra nå av',
+	'fundraiserportal-sapphire-button' => 'Gi nå',
+	'fundraiserportal-tourmaline-button' => 'Gi nå',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

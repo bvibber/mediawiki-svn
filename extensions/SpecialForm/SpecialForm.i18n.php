@@ -264,7 +264,7 @@ $messages['de'] = array(
 	'form-desc' => 'Eine [[Special:Form|Eingabemaske]] für das Erzeugen von neuen Seiten',
 	'form' => 'Formular',
 	'formnoname' => 'Kein Formularname',
-	'formnonametext' => 'Du musst einen Formularnamen angeben, z. B. „{{ns:Special}}:Form/Formularname“.',
+	'formnonametext' => 'Du musst einen Formularnamen angeben, z. B. „{{#special:Form}}/Formularname“.',
 	'formbadname' => 'Falscher Formularname',
 	'formbadnametext' => 'Es gibt kein Formular mit diesem Namen.',
 	'formpattern' => '$1-Formular',
@@ -282,6 +282,13 @@ Bitte fülle {{PLURAL:$2|es|sie}} aus.',
 	'formsavesummary' => 'Neue Seite, die auf dem [[Special:Form/$1|Formular $1]] basiert',
 	'formsaveerror' => 'Fehler beim Speichern des Formulares',
 	'formsaveerrortext' => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'formnonametext' => 'Sie müssen einen Formularnamen angeben, z. B. „{{#special:Form}}/Formularname“.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -476,6 +476,7 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'dplforum-edited' => '- Меельседе витнезь-петнезь',
 	'dplforum-never' => 'Зярдояк',
 );
 

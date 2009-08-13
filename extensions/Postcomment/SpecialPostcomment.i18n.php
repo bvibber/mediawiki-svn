@@ -165,6 +165,15 @@ $messages['de'] = array(
 	'postcomment_nopostingtoadd' => 'Nichts zum Hinzufügen.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'postcomment_notloggedin' => 'Sie sind nicht angemeldet.',
+	'postcomment_youareloggedinas' => 'Sie sind jetzt als $1 angemeldet.',
+	'postcomment_addcommentdiscussionpage' => 'Fügen Sie Ihren Kommentar auf dieser Diskussionsseite hinzu',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

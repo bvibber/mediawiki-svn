@@ -2363,15 +2363,19 @@ Bitte kontaktiere den Serveradminstrator.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author Imre
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'langman_not_allowed' => 'Sie haben nicht die Berechtigung die Spracheneinstellungen zu ändern.',
+	'langman_header' => 'Geben Sie den Sprachencode ein und darunter seinen englischsprachigen Namen:',
 	'importlangnames_not_allowed' => 'Sie haben keine Berechtigung um Sprachennamen zu importieren.',
 	'ow_importtsv_header' => '<p>Definitionen und Übersetzungen aus einer Textdatei, die Tabulatoren als Trenner verwendet, importieren. Diese Datei kann aus OpenOffice.org, Excel oder einem anderen Tabellenkalkulationsprogramm exportiert sein.</p>
 <p>Das Format der Datei muss mit dem Format der Dateien übereinstimmen, die auf der [[Special:ExportTSV|ExportTSV]]-Seite exportiert werden können. Wenn Sie die Spaltennamen geändert haben, wird der Import fehlschlagen. Wenn Sie die ID oder den bestimmenden Ausdruck einer festgelegten Bedeutung geändert haben, wird diese Zeile ignoriert werden. Wenn Sie Spalten hinzugefügt haben, müssen diese „definitions_iso“ oder „translations_iso“ heißen, wobei „iso“ ein ISO 693-3-Sprachcode ist.</p>
 <p>Wenn das „Testlauf“-Häkchen gesetzt ist, werden alle Änderungen, die vorgenommen werden würden, gemeldet, aber keine Änderungen wirklich durchgeführt. Es wird empfohlen, vor dem eigentlichen Import einen Testlauf durchzuführen.</p>',
 	'ow_importtsv_not_allowed' => 'Sie haben nicht die Berechtigung, einen TSV-Import durchzuführen.',
+	'ow_importtsv_not_utf8' => '<p>Dies scheint keine UTF-8-enkodierte Datei zu sein. Die Datei <i>muss</i> UTF-8-enkodiert sein.
+Stellen Sie sicher, dass die Anwendung die Datei richtig gespeichert oder exportiert hat.</p>',
 	'ow_exporttsv_header' => '<p>Eine Sammlung in eine Textdatei exportieren, die Tabulatoren als Trenner verwendet. Diese kann in OpenOffice.org, Excel oder andere Tabellenkalkulationsprogramme importiert werden.<br />
 Wählen Sie eine Sammlung aus, die Sie exportieren wollen. Geben Sie im Sprachen-Textfeld eine durch Kommata getrennte Liste von ISO 639-3-Sprachcodes an. Geben Sie zuerst die Sprachen an, aus denen Sie übersetzen werden (geben Sie so viele an, wie Sie wollen) und dann diejenigen, in die Sie übersetzen werden. Klicken Sie danach auf „Erstellen“, um die Datei zu erstellen.</p>',
 	'ow_exporttsv_not_allowed' => 'Sie haben nicht die Berechtigung, einen TSV-Export durchzuführen.',
@@ -4615,6 +4619,7 @@ $messages['he'] = array(
 	'datasearch_ext_identifier' => 'אמצעי זיהוי חיצוני',
 	'datasearch_search_text' => 'חיפוש טקסט:',
 	'datasearch_within_words' => 'בתוך המילים:',
+	'importtsv' => 'ויקידאטא: ייבוא TSV',
 	'ow_importtsv_title1' => 'ייבוא TSV',
 	'ow_importtsv_title2' => 'ייבוא הגדרות ותרגומים',
 	'ow_importtsv_not_allowed' => 'אינכם מורשים לייבא TSV.',
@@ -4625,6 +4630,8 @@ $messages['he'] = array(
 	'ow_importtsv_nothing_added' => 'לא נוסף דבר.',
 	'ow_importtsv_nothing_added_test' => 'לא נוסף דבר (זוהי הרצת בדיקה).',
 	'ow_importtsv_results' => 'נוספו {{PLURAL:$1|הגדרה אחת|$1 הגדרות}} ו{{PLURAL:$2|תרגום אחד|־$2 תרגומים}}.',
+	'ow_impexptsv_unknown_lang' => '<p>השפה אינה מוכרת או שגויה: $1.<br />
+על השפות להיות מיוצגות על ידי קוד השפה המתאים ב־ISO 639-3.</p>',
 	'exporttsv' => 'ויקי־דאטא: ייצוא TSV',
 	'ow_exporttsv_title' => 'ייצוא אוסף ל־TSV',
 	'ow_exporttsv_languages' => 'שפות:',
@@ -4672,6 +4679,7 @@ $messages['he'] = array(
 אנא בדקו את כתובת האינטרנט.',
 	'ow_dm_missing' => 'נראה כי דף זה מפנה למשמעות מוגדרת (DefinedMeaning - תפיסה) שאינה קיימת.
 אנא בדקו את כתובת האינטרנט.',
+	'ow_AddHint' => 'הזנת שורות חדשות להוספה',
 	'ow_AlternativeDefinition' => 'משמעות חלופית',
 	'ow_AlternativeDefinitions' => 'משמעויות חלופיות',
 	'ow_Annotation' => 'פירוש',
@@ -4700,6 +4708,7 @@ $messages['he'] = array(
 	'ow_Language' => 'שפה',
 	'ow_LevelAnnotation' => 'פירוש',
 	'ow_Multiple_meanings' => 'מספר משמעויות:',
+	'ow_NewExactMeaning' => 'משמעות מדוייקת חדשה',
 	'ow_OptionAttribute' => 'מאפיין',
 	'ow_OptionAttributeOption' => 'אפשרות',
 	'ow_OptionAttributeOptions' => 'אפשרויות',
@@ -4738,6 +4747,7 @@ $messages['he'] = array(
 	'ow_meaningsoftitle' => 'המשמעויות של "$1"',
 	'ow_meaningsofsubtitle' => '<em>קישור ויקי:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>הגישה נדחתה</h2>',
+	'copy' => 'ויקידאטא: העתקה',
 	'ow_copy_no_action_specified' => 'אנא הגדירו פעולה',
 	'ow_copy_help' => 'אפשרות העזרה לא פותחה עדיין.',
 	'ow_please_proved_dmid' => 'נראה שלקלט שלכם חסר "<span dir="ltr">?dmid=<ID></span>" (הפירוש של dmid: מספר משמעות מוגדרת)<br />
@@ -7324,12 +7334,16 @@ $messages['mwl'] = array(
 $messages['myv'] = array(
 	'languages' => 'Келень кирдий',
 	'langman_title' => 'Келень кирдий',
+	'langman_req_fields' => 'Келенть лемезэ ды ISO 639-3 кодозо кавтонест эрявить!',
 	'langman_langname' => 'Келенть лемезэ:',
+	'langman_field_optional' => '(мелень коряс)',
+	'langman_addlang' => 'Поладомс кель',
 	'datasearch' => 'Викидата: Датань вешнэма',
 	'datasearch_language' => 'Келесь:',
 	'datasearch_found_word' => 'Муезь вал',
 	'datasearch_meaning' => 'Смустезэ',
 	'datasearch_within_words' => 'Неть валтнэнь йутксто:',
+	'ow_importtsv_title1' => 'Совавтомс TSV-нть',
 	'ow_importtsv_nothing_added' => 'Мезеяк апак поладо.',
 	'ow_exporttsv_languages' => 'Кельтне:',
 	'ow_save' => 'Ванстомс',
@@ -7338,6 +7352,7 @@ $messages['myv'] = array(
 	'ow_none_selected' => 'Вейкеяк апакКочка',
 	'ow_transaction_restore' => 'Вельмевтемс',
 	'ow_transaction_remove' => 'Нардамс',
+	'ow_dm_OK' => 'ОК',
 	'ow_dm_not_present' => 'апак совавто',
 	'ow_dm_not_found' => 'датабазасто а муеви эли берянь хвормазо',
 	'ow_ClassAttributeType' => 'Тип',
@@ -7357,11 +7372,17 @@ $messages['myv'] = array(
 	'ow_TranslatedTextAttribute' => 'Уликсчи',
 	'ow_TranslatedText' => 'Ютавтонь текст',
 	'ow_TranslatedTextAttributeValue' => 'Текст',
+	'ow_Link' => 'Сюлмавома пене',
 	'ow_LinkAttribute' => 'Уликсчи',
 	'ow_LinkAttributeValues' => 'Сюлмавома пенеть',
 	'ow_Property' => 'Уликсчи',
+	'ow_added' => 'Поладозь',
+	'ow_removed' => 'Нардазь',
 	'ow_meaningsoftitle' => '"$1" чарькодеви',
 	'ow_class_attr_type_link' => 'Сюлмавома пе',
+	'ow_create' => 'Шкамс',
+	'ow_suggest_previous' => 'Седе икелев',
+	'ow_suggest_next' => 'Седе тов',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -9318,15 +9339,21 @@ Poate aţi ajuns la această pagină direct? În mod normal nu ar trebui să fi�
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'languages' => 'UicchiData: Gestore de lènghe',
+	'langman_title' => 'Gestore de lènghe',
 	'langman_langname' => "Nome d'a lènghe:",
 	'langman_iso639-3' => 'Codece ISO 639-3:',
 	'langman_iso639-2' => 'Codece ISO 639-2:',
 	'langman_field_optional' => '(opzionale)',
 	'langman_addlang' => "Aggiunge 'na lènghe",
 	'datasearch_language' => 'Lènghe:',
+	'datasearch_found_word' => 'Parole acchiate',
+	'datasearch_meaning' => 'Significate',
 	'datasearch_search_text' => "Cirche 'u teste:",
+	'importtsv' => "UicchiData: 'Mborte TSV",
 	'ow_importtsv_title1' => "'Mborte TSV",
 	'ow_importtsv_file' => 'File TSV:',
+	'exporttsv' => 'UicchiData: Esporte TSV',
 	'ow_exporttsv_not_allowed' => "Tu non ge tìne 'u permesse pe esportà 'nu file TSV.",
 	'ow_save' => 'Reggìstre',
 	'ow_history' => 'Storie',
@@ -9335,8 +9362,12 @@ $messages['roa-tara'] = array(
 	'ow_none_selected' => 'Nisciuna selezione',
 	'ow_transaction_count' => 'Condegge:',
 	'ow_transaction_user' => "Nome de l'utende:",
+	'ow_transaction_rollback_button' => 'Annulle',
+	'ow_transaction_rollback_header' => 'Annulle',
+	'ow_transaction_no_action' => 'No fà ninde',
 	'ow_transaction_restore' => 'Repristine',
 	'ow_transaction_remove' => 'Live',
+	'ow_transaction_operation' => 'Operazione',
 	'ow_transaction_object' => 'Oggette',
 	'ow_transaction_summary' => 'Riepileghe',
 	'ow_dm_OK' => 'OK',
@@ -10879,10 +10910,13 @@ $messages['te'] = array(
 	'languages' => 'వికీడాటా: భాషా నిర్వహణ',
 	'langman_title' => 'భాషా నిర్వహణ',
 	'langman_langname' => 'భాష పేరు:',
+	'langman_iso639-3' => 'ISO 639-3 కోడు:',
+	'langman_iso639-2' => 'ISO 639-2 కోడు:',
 	'langman_field_optional' => '(ఐచ్ఛికం)',
 	'langman_addlang' => 'భాషని చేర్చు',
 	'datasearch' => 'వికీడాటా: డాటా అన్వేషణ',
 	'datasearch_language' => 'భాష:',
+	'datasearch_search_text' => 'పాఠ్యంలో వెతకండి:',
 	'ow_exporttsv_languages' => 'భాషలు:',
 	'ow_save' => 'భద్రపరచు',
 	'ow_history' => 'చరిత్ర',
@@ -10904,6 +10938,7 @@ $messages['te'] = array(
 	'ow_add_concept_link' => 'ఇతర భావనలకు లింకు చేర్చండి',
 	'ow_AlternativeDefinition' => 'ప్రత్యామ్నాయ నిర్వచనం',
 	'ow_AlternativeDefinitions' => 'ప్రత్యామ్నాయ నిర్వచనాలు',
+	'ow_Annotation' => 'వివరణ',
 	'ow_ApproximateMeanings' => 'సమానార్థాలు',
 	'ow_Class' => 'తరగతి',
 	'ow_ClassAttributes' => 'తరగతి స్వభావాలు',
@@ -10914,6 +10949,7 @@ $messages['te'] = array(
 	'ow_Collection_colon' => 'సేకరణ:',
 	'ow_CollectionMembership' => 'సేకరణ సభ్యత్వం',
 	'ow_Definition' => 'నిర్వచనం',
+	'ow_DefinedMeaningAttributes' => 'వివరణ',
 	'ow_DefinedMeaning' => 'నిర్వచిత అర్థం',
 	'ow_DefinedMeaningReference' => 'నిర్వచిత అర్థం',
 	'ow_ExactMeanings' => 'ఖచ్చిత అర్థాలు',
@@ -10922,11 +10958,14 @@ $messages['te'] = array(
 	'ow_Expressions' => 'వ్యక్తీకరణలు',
 	'ow_GotoSource' => 'మూలానికి వెళ్ళు',
 	'ow_Language' => 'భాష',
+	'ow_LevelAnnotation' => 'వివరణ',
+	'ow_Multiple_meanings' => 'బహు అర్ధములు:',
 	'ow_OptionAttribute' => 'లక్షణం',
 	'ow_OptionAttributeOption' => 'ఎంపిక',
 	'ow_OptionAttributeOptions' => 'ఎంపికలు',
 	'ow_OptionAttributeValues' => 'ఎంపిక విలువలు',
 	'ow_OtherDefinedMeaning' => 'ఇతర నిర్వచిత అర్థం',
+	'ow_PopupAnnotation' => 'వివరణ',
 	'ow_Relations' => 'సంబంధాలు',
 	'ow_RelationType' => 'సంబంధ రకం',
 	'ow_Remove' => 'తొలగించు',
@@ -10948,6 +10987,8 @@ $messages['te'] = array(
 	'ow_User' => 'వాడుకరి',
 	'ow_Property' => 'లక్షణం',
 	'ow_Value' => 'విలువ',
+	'ow_added' => 'చేర్చినవి',
+	'ow_removed' => 'తొలిగించబడినది',
 	'ow_meaningsoftitle' => '"$1" యొక్క అర్థాలు',
 	'ow_meaningsofsubtitle' => '<em>వికీ లింకు:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>అనుమతి నిరాకరించాం</h2>',
@@ -10956,9 +10997,14 @@ $messages['te'] = array(
 	'ow_copy_successful' => '<h2>కాపీ విజయవంతం</h2>మీ భోగట్టా విజయవంతంగా కాపీ అయింది. కానీ మరోసారి సరిచూచుకోవడం మర్చిపోకండి!',
 	'ow_class_attr_type_xlate' => 'అనువదించదగ్గ పాఠ్యం',
 	'ow_class_attr_type_plain' => 'సాదా పాఠ్యం',
+	'ow_class_attr_type_link' => 'లంకె',
 	'ow_needs_xlation_source_lang' => 'మూల భాష:',
 	'ow_needs_xlation_dest_lang' => 'లక్ష్యిత భాష:',
+	'ow_show' => 'చూపించు',
+	'ow_upload' => 'ఎగుమతిచెయ్యండి',
+	'ow_create' => 'సృష్టించు',
 	'ow_suggest_previous' => 'గత',
+	'ow_suggest_next' => 'తర్వాతి',
 );
 
 /** Tetum (Tetun)
@@ -11395,6 +11441,7 @@ $messages['ug-latn'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author A1
  * @author AS
  * @author Ahonc
  * @author Aleksandrit
@@ -11417,6 +11464,12 @@ $messages['uk'] = array(
 	'importlangnames_title' => 'Імпорт назв мов',
 	'importlangnames_not_allowed' => 'У вас нема дозволу імпортувати назви мов.',
 	'datasearch' => 'Вікідані: Пошук даних',
+	'datasearch_search_text' => 'Пошук тексту:',
+	'datasearch_within_words' => 'Серед слів:',
+	'datasearch_within_ext_ids' => 'Серед зовнішніх ідентифікаторів:',
+	'datasearch_showing_only' => 'Показано не більше $1 {{PLURAL:$1|результати|результатів|результатів}}.',
+	'datasearch_match_ext_ids' => 'Зовнішні ідентифікатори, що відповідають <i>$1</i>',
+	'datasearch_match_words' => 'Слова, що відповідають "$1", і пов\'язані значення',
 	'ow_save' => 'Зберегти',
 	'ow_history' => 'Історія',
 	'ow_datasets' => 'Вибір набору даних',
@@ -11427,11 +11480,11 @@ $messages['uk'] = array(
 	'ow_uiprefs' => 'Вікідані',
 	'ow_none_selected' => 'Нічого не обрано',
 	'ow_conceptmapping_help' => '<p>можливі дії: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... вставити відповідність</li>
-<li>&action=get&concept=<concept_id> зчитати відповідність</li>
-<li>&action=list_sets вивести список можливих префісів контекстів даних і місць, куди вони посилаються.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  вставити відповідність</li>
+<li>&action=get&concept=<concept_id>  зчитати відповідність</li>
+<li>&action=list_sets  вивести список можливих префісів контекстів даних і місць, куди вони посилаються.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для одного визначеного значення у формулюванні вивести всі інші</li>
-<li>&action=help Показати довідку.</li>
+<li>&action=help  Показати довідку.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Встановлення відповідностей концептів дозволяє вам вказати яке певне значення в одному наборі даних тотожне певним значенням в інших наборах даних.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Дія «$1» не підтримується.',
@@ -11500,7 +11553,7 @@ $messages['uk'] = array(
 	'ow_Permission_denied' => '<h2>Доступ заборонений</h2>',
 	'ow_copy_no_action_specified' => 'Будь ласка, зазначте дію',
 	'ow_copy_help' => 'Довідка ще не реалізована.',
-	'ow_please_proved_dmid' => "Схоже, що у вхідних даних відсутнє «?dmid=<ID>» (dmid — ідентифікатор певного значення)<br />
+	'ow_please_proved_dmid' => "Схоже, що у вхідних даних відсутнє «?dmid=<ID>» (dmid — ідентифікатор певного значення)<br /> 
 Будь ласка, зв'яжіться з адміністратором сервера.",
 	'ow_please_proved_dc1' => "Схоже, що у вхідних даних відсутнє «?dc1=<щось>» (dc1 — контекст набору даних; набір даних, звідки копіювати)<br /> Будь ласка, зв'яжіться з адміністратором сервера.",
 	'ow_copy_unsuccessful' => '<h3>Копіювання невдале</h3>

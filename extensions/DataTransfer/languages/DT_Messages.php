@@ -433,6 +433,7 @@ $messages['es'] = array(
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán creadas del archivo $2.',
 	'importcsv' => 'Importar CSV',
+	'right-datatransferimport' => 'Importar datos',
 );
 
 /** Basque (Euskara)

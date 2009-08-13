@@ -225,6 +225,21 @@ $messages['de'] = array(
 	'invitations-invite-success' => 'Du hast erfolgreich $1 zu dieser Softwarefunktion eingeladen!',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'invitations-invitedlist-description' => 'Sie haben Zugang zu den folgenden einladungsbasierten Softwarefunktionen. Um Einladungen für eine bestimmte Softwarefunktion zu verwalten, klicken Sie auf ihren Namen.',
+	'invitations-invitedlist-none' => 'Sie haben bisher keine Einladung zur Nutzung von einladungsbasierten Softwarefunktionen erhalten.',
+	'invitations-uninvitedlist-description' => 'Sie haben keinen Zugang zu anderen einladungsbasierten Softwarefunktionen.',
+	'invitations-feature-access' => 'Sie haben Zugang zur Nutzung von <i>$1</i>.',
+	'invitations-feature-numleft' => '{{PLURAL:$2|Ihnen steht noch eine Einladung|Ihnen stehen noch <b>$1</b> von insgesamt $2 Einladungen}} zur Verfügung.',
+	'invitations-feature-noneleft' => 'Sie haben alle Ihnen zugewiesenen Einladungen für diese Softwarefunktion verbraucht.',
+	'invitations-feature-noneyet' => 'Ihnen wurden noch keine Einladungen für diese Softwarefunktion zugewiesen.',
+	'invitations-feature-notallowed' => 'Sie haben keine Berechtigung, um <i>$1</i> zu nutzen.',
+	'invitations-invite-success' => 'Sie haben erfolgreich $1 zu dieser Softwarefunktion eingeladen!',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

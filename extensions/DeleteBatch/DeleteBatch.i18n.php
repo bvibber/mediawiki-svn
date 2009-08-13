@@ -245,9 +245,11 @@ Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional ein
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author Imre
  */
 $messages['de-formal'] = array(
 	'deletebatch-link-back' => 'Sie können zur Erweiterung zurückgehen',
+	'deletebatch-select-yourself' => 'Sie',
 );
 
 /** Lower Sorbian (Dolnoserbski)

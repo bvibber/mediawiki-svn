@@ -233,6 +233,13 @@ $messages['de'] = array(
 	'slippymap_clicktoactivate' => 'Klicken, um die Karte zu aktivieren',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'slippymap_error_missing_arguments' => 'Sie haben mit dem &lt;$1&gt;-Tag keine Attribute angegeben. In der [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax Syntax-Hilfe] finden Sie Informationen darüber, wie man sie aufruft.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -441,7 +448,11 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'slippymap_desc' => 'מתן האפשרות לשימוש בתגית <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> המאפשרת הטמעת מפות סטאטיות ודינאמיות. קיימת תמיכה במספר שרותי מפות כולל [http://openstreetmap.org OpenStreetMap]ו־Worldwind של NASA',
+	'slippymap_error' => 'שגיאה ב־$1: $2',
 	'slippymap_errors' => '$1 שגיאות:',
+	'slippymap_error_missing_attribute_lat' => 'המאפיין <tt>lat</tt> חסר (עבור קו רוחב).',
+	'slippymap_error_missing_attribute_lon' => 'הערך <tt>lon</tt> חסר (עבור קו האורך).',
+	'slippymap_error_missing_attribute_zoom' => 'הערך <tt>zoom</tt> חסר (עבור רמת התקריב).',
 	'slippymap_code' => 'קוד הוויקי להצגת מפה זו:',
 	'slippymap_button_code' => 'איחזור קוד הוויקי',
 	'slippymap_resetview' => 'איפוס התצוגה',

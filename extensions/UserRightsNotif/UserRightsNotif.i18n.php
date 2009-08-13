@@ -353,7 +353,7 @@ $messages['fi'] = array(
 	'userrightsnotifysubject' => 'Käyttäjäryhmän jäsenyyden vaihto wikissä $1',
 	'userrightsnotifybody' => 'Hei $1.
 
-Tämä on ilmoitus, että käyttäjäryhmien jäsenyyttäsi on muutettu sivustolla $2 käyttäjän $3 toimesta $4.
+Tämä on ilmoitus, että jäsenyyttäsi käyttäjäryhmissä on muutettu sivustolla $2 käyttäjän $3 toimesta $4.
 
 Lisättiin: $5
 Poistettiin: $6

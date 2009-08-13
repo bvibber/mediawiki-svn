@@ -298,6 +298,13 @@ Mit den Werkzeugen an der Seite können welche hinzugefügt werden.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'gep-emailfailure' => 'Leider konnte Ihr Vorschlag nicht verarbeitet werden.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

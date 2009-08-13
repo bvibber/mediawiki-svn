@@ -105,6 +105,13 @@ $messages['de'] = array(
 	'minnamelength-desc' => 'Erzwinge eine Mindestlänge des Benutzernamens',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'minnamelength-error' => 'Ihr Benutzername ist zu kurz. Die Mindestlänge beträgt $1 Zeichen.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

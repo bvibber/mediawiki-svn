@@ -77,6 +77,13 @@ $messages['de'] = array(
 	'right-getfamily' => 'Eine Familiendatei für pywikipediabot erstellen',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'getfamily-interwikierror' => 'Fehler: Fehlerhaftes Interwiki-Setup, kontaktieren Sie einen lokalen Administrator.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

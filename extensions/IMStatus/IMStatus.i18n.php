@@ -272,13 +272,31 @@ $messages['de'] = array(
 	'imstatus_gtalk_width' => 'Breite der Box in Pixel.',
 	'imstatus_icq_id' => 'deine ICQ-UIN',
 	'imstatus_icq_style' => 'eine Zahl zwischen 0 und 26 (ja, es gibt 27 verschiedene Stile …).',
-	'imstatus_live_code' => 'deine Live Messenger Website-ID',
-	'imstatus_live_get_code' => 'deine Live Messenger Website-ID: <strong>Das ist nicht deine E-Mail-Adresse</strong>.
-Du musst dir eine in den <a href="$1">Live Messenger Optionen</a> erstellen.
+	'imstatus_live_code' => 'deine Live-Messenger-Website-ID',
+	'imstatus_live_get_code' => 'deine Live-Messenger-Website-ID: <strong>Das ist nicht deine E-Mail-Adresse</strong>.
+Du musst dir eine in den <a href="$1">Live-Messenger-Optionen</a> erstellen.
 Die ID, die du benötigst, sind die Zahlen und Buchstaben zwischen „$2“ und „$3“.',
 	'imstatus_skype_nbstyle' => 'Hinweis: wenn du einen Stil aussuchst, der auch eine Aktion beinhaltet, wird deine Aktionsauswahl durch die Aktion des Stiles ersetzt.',
 	'imstatus_xfire_size' => 'die Größe der Schaltfläche, von $1 (größte) bis $2 (kleinste).',
 	'imstatus_yahoo_style' => 'der Stil der Schaltfläche, von $1 (kleinste) bis $2 (größte), $3 und $4 sind für Voicemail.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'imstatus_your_name' => 'Ihr $1-Name',
+	'imstatus_aim_presence' => '$1 zeigt Ihren Status mit einem Link, der AIM startet (sofern er installiert ist), um Ihnen eine Nachricht zu senden.',
+	'imstatus_aim_api' => '$1 zeigt Ihren Status mit einem Link, der eine <b>Browser</b>, JavaScript Version von AIM, startet, um Ihnen eine Nachricht zu senden.',
+	'imstatus_gtalk_code' => 'Ihr Google-Talk-Code',
+	'imstatus_gtalk_get_code' => 'Ihren Google-Talk-Code erhalten Sie bei $1.',
+	'imstatus_icq_id' => 'Ihre ICQ-UIN',
+	'imstatus_live_code' => 'Ihre Live-Messenger-Website-ID',
+	'imstatus_live_get_code' => 'Ihre Live-Messenger-Website-ID: <strong>Das ist nicht Ihre E-Mail-Adresse</strong>.
+Sie müssen sich eine in den <a href="$1">Live-Messenger-Optionen</a> erstellen.
+Die ID, die Sie benötigen, sind die Zahlen und Buchstaben zwischen „$2“ und „$3“.',
+	'imstatus_skype_nbstyle' => 'Hinweis: wenn Sie einen Stil aussuchen, der auch eine Aktion beinhaltet, wird Ihre Aktionsauswahl durch die Aktion des Stiles ersetzt.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

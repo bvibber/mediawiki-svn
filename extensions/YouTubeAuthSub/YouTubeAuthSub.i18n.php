@@ -537,8 +537,10 @@ Bitte habe Geduld.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author Imre
  */
 $messages['de-formal'] = array(
+	'youtubeauthsub_info' => 'Um ein Video zu YouTube hochzuladen, um es anschließend auf einer Seite einzubetten, müssen Sie folgende Felder ausfüllen:',
 	'youtubeauthsub_success' => "Gratulation!
 Ihr Video wurde hochgeladen.
 <a href='http://www.youtube.com/watch?v=$1'>Sehen Sie sich ihr Video an</a>.
@@ -546,7 +548,13 @@ YouTube könnte etwas Zeit brauchen, um dein Video zu verarbeiten, sodass die Se
 
 Um das Video auf einer Seite einzubetten, fügen Sie folgenden Text ein:
 <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Sie müssen sich zuerst bei YouTube einloggen, um ein Video hochzuladen.',
+	'youtubeauthsub_uploading' => 'Ihr Video wird gerade hochgeladen.
+Bitte haben Sie Geduld.',
 	'youtubeauthsub_viewpage' => 'Alternativ können Sie [[$1|Ihr Video ansehen]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Bitte geben Sie ein oder mehr Schlüsselwörter an.',
+	'youtubeauthsub_jserror_notitle' => 'Bitte geben Sie einen Titel für das Video an.',
+	'youtubeauthsub_jserror_nodesc' => 'Bitte geben Sie eine Beschreibung für das Video an.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -889,11 +897,20 @@ $messages['frp'] = array(
 );
 
 /** Western Frisian (Frysk)
+ * @author SK-luuut
  * @author Snakesteuben
  */
 $messages['fy'] = array(
+	'youtubeauthsub' => 'YouTube-filmke oanbiede',
+	'youtubeauthsub_title' => 'Namme',
 	'youtubeauthsub_description' => 'Beskriuwing',
+	'youtubeauthsub_password' => 'YouTube-wachtwurd',
+	'youtubeauthsub_username' => 'YouTube-meidoggersnamme',
+	'youtubeauthsub_keywords' => 'Stekwurden',
 	'youtubeauthsub_category' => 'Kategory',
+	'youtubeauthsub_submit' => 'Oanbiede',
+	'youtubeauthsub_clickhere' => 'Klik hjir om dy by YouTube oan te melden',
+	'youtubeauthsub_tokenerror' => 'Flater by het meitsjen fan it tagongskaartsje, fernij de side.',
 );
 
 /** Irish (Gaeilge)
@@ -1829,6 +1846,7 @@ $messages['myv'] = array(
 	'youtubeauthsub_description' => 'Чарькодевтемгакс',
 	'youtubeauthsub_password' => 'YouTube совамо вал',
 	'youtubeauthsub_username' => 'YouTube теицянь лем',
+	'youtubeauthsub_keywords' => 'Панжомакс вал',
 	'youtubeauthsub_category' => 'Явовкс',
 	'youtubeauthsub_submit' => 'Максомс',
 	'youtubeauthsub_uploadbutton' => 'Ёвкстамс',
@@ -2017,7 +2035,7 @@ Per incorporar vòstra vidèo dins una pagina del wiki, inserissètz lo còde se
 	'youtubeauthsub_uploading' => 'Vòstra vidèo es en cors d’importacion.
 Siatz pacient.',
 	'youtubeauthsub_viewpage' => 'Siquenon, podètz [[$1|visionar vòstra vidèo]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Mercés de picar un o mantuns mots claus.',
+	'youtubeauthsub_jserror_nokeywords' => 'Mercés de picar un o mantun mot clau.',
 	'youtubeauthsub_jserror_notitle' => 'Mercés de picar un títol per la vidèo.',
 	'youtubeauthsub_jserror_nodesc' => 'Picatz una descripcion per la vidèo.',
 );
@@ -2967,6 +2985,7 @@ $messages['ug-arab'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author A1
  * @author AS
  * @author Ahonc
  */
@@ -2983,7 +3002,7 @@ $messages['uk'] = array(
 	'youtubeauthsub_submit' => 'Надіслати',
 	'youtubeauthsub_clickhere' => 'Клацніть сюди, щоб увійти до YouTube',
 	'youtubeauthsub_tokenerror' => 'Помилка створення токена авторизації, спробуйте оновити сторінку.',
-	'youtubeauthsub_success' => "ітаємо!
+	'youtubeauthsub_success' => "Вітаємо!
 Ваше відео завантажене.
 <a href='http://www.youtube.com/watch?v=$1'>Переглянути відео</a>.
 YouTube може знадобитися деякий час, щоб обробити ваше відео, тому воно може бути недоступним прямо зараз.

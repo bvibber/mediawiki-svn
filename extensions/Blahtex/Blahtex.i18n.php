@@ -612,6 +612,17 @@ Versuche die problematischen Zeichen in „\\text{…}“ einzuschließen.',
 Probiere die Anweisung „$3{…}“ aus.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'math_IllegalCommandInMathModeWithHint' => 'Im mathematischen Modus ist die Anweisung „$1“ nicht erlaubt.
+Vielleicht möchten Sie „$2“ stattdessen verwenden?',
+	'math_IllegalCommandInTextModeWithHint' => 'Im Textmodus ist die Anweisung „$1“ nicht erlaubt.
+Vielleicht möchten Sie „$2“ stattdessen verwenden?',
+	'math_IllegalRedefinition' => 'Die Anweisung „$1“ wurde bereits definiert; Sie können sie nicht überschreiben',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -838,6 +849,7 @@ Ehkä sinun piti käyttää komentoa ”$2”?',
 	'math_LatexFontNotSpecified' => 'LaTeX-kirjasinta ei ole määritelty kohteelle ”$1”.',
 	'math_LatexPackageUnavailable' => 'PNG-kuvaa piirtäminen ei onnistu, koska LaTeX-paketti ”$1” ei ole saatavilla.',
 	'math_MismatchedBeginAndEnd' => 'Komennot ”$1” ja ”$2” eivät täsmää.',
+	'math_MissingDelimiter' => 'Puuttuvat erotinmerkki "$1" jälkeen',
 	'math_NotEnoughArguments' => 'Liian vähän argumentteja komennolle $1.',
 	'math_PngIncompatibleCharacter' => 'Merkin $1 sisältävän PNG-tiedoston luominen oikein ei onnistu',
 	'math_ReservedCommand' => 'Komento <tt>$1</tt> on varattu blahtexin sisäiseen käyttöön',
@@ -2412,6 +2424,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'math_CannotRunDvipng' => 'Non ge pozze eseguì dvipng',
 	'math_CannotRunLatex' => 'Non ge pozze eseguì latex',
+	'math_TooManyTokens' => "L'input ète troppe luènghe",
 );
 
 /** Russian (Русский)

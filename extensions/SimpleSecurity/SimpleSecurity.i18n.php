@@ -278,10 +278,11 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'security-type-category' => 'Catègorie',
-	'security-type-namespace' => 'Èspâço de noms',
+	'security-type-category' => 'catègorie',
+	'security-type-namespace' => 'èspâço de noms',
 );
 
 /** Galician (Galego)

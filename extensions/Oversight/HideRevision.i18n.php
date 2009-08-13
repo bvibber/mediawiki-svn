@@ -1155,7 +1155,7 @@ $messages['frp'] = array(
 	'grouppage-oversight' => '{{ns:project}}:Supèrvisor',
 	'right-oversight' => 'Vêre les vèrsions cachiês dês devant',
 	'right-hiderevision' => 'Cachiér des vèrsions ux administrators',
-	'hiderevision-prompt' => 'Numerô de vèrsion a suprimar :',
+	'hiderevision-prompt' => 'Numerô de la vèrsion a suprimar :',
 	'hiderevision-continue' => 'Continuar',
 	'hiderevision-text' => "Ceta fonccionalitât dêt étre utilisâ '''ren que''' dens cetos câs :
 * Enformacions a sè que vont pas avouéc :
@@ -3428,11 +3428,14 @@ $messages['szl'] = array(
 
 /** Telugu (తెలుగు)
  * @author Chaduvari
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'hiderevision' => 'కూర్పులను శాశ్వతంగా దాచు',
 	'hiderevision-desc' => 'చట్టబద్ధమైన, మొదలగు కారణాల వల్ల అందరు వాడుకర్ల నుండి వ్యక్తిగత కూర్పులను దాచు',
+	'group-oversight' => 'పరాకు అధికారులు',
+	'group-oversight-member' => 'పరాకు',
 	'right-hiderevision' => 'నిర్వాహకులకు కనబడకుండా ఉన్న కూర్పులను సమీక్షించి పౌనస్థాపించు',
 	'hiderevision-prompt' => 'తొలగించాల్సిన కూర్పు సంఖ్య:',
 	'hiderevision-continue' => 'కొనసాగించు',
@@ -3446,10 +3449,12 @@ $messages['te'] = array(
 	'hiderevision-error-current' => 'ఈ పేజీకి జరిగిన చిట్ట చివరి మార్పుని తొలగించలేము. ఈ మార్పుని మొదట తిరగ్గొట్టండి.',
 	'hiderevision-archive-status' => '$1 నుండి తొలగించిన కూర్పు: $2',
 	'oversight-log-hiderev' => '$1 నుండి ఓ మార్పుని తొలగించాం',
+	'oversight' => 'పరాకు',
 	'oversight-view' => 'వివరాలు',
 	'oversight-difference' => '(గతంలో ఉన్న కూర్పు నుండి తేడా)',
 	'oversight-prev' => 'చివరి గత కూర్పు',
 	'oversight-hidden' => 'దాచిన కూర్పు',
+	'oversight-oversighter' => 'పరాకు కలిగినవారు:',
 );
 
 /** Tetum (Tetun)

@@ -788,7 +788,9 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'importfreeimages' => 'Совавтомс стякодонь артовкст',
 	'importfreeimages_owner' => 'Теицязо',
+	'importfreeimages_importthis' => 'совавтык тень',
 );
 
 /** Nahuatl (Nāhuatl)

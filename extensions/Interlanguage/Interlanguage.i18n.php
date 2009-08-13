@@ -97,6 +97,13 @@ $messages['oc'] = array(
 	'interlanguage-desc' => 'Permet de collectar los ligams interlengas d’un autre wiki',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'interlanguage-desc' => 'Pigghie le collegaminde inderlènghe da otre Uicchi',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -109,5 +116,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'interlanguage-desc' => 'Získa medzijazykové odkazy z inej wiki',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'interlanguage-desc' => 'అంతర భాషా లింకులను వేరొక వికీ నుంచి సంపాదిస్తుంది',
 );
 

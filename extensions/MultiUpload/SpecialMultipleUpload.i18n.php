@@ -522,10 +522,11 @@ Les images non pertinentes pourront être supprimées immédiatement. Voyez la p
 );
 
 /** Western Frisian (Frysk)
+ * @author SK-luuut
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'multipleupload' => 'Triemmen oplade',
+	'multipleupload' => 'Meardere triemmen oanbiede',
 );
 
 /** Galician (Galego)

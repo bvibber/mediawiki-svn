@@ -180,6 +180,13 @@ $messages['de'] = array(
 	'intersection_noincludecats' => 'Fehler: Du musst mindestens eine Kategorie einbinden oder gib einen Namensraum an!',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'intersection_noincludecats' => 'Fehler: Sie müssen mindestens eine Kategorie einbinden oder einen Namensraum angeben!',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

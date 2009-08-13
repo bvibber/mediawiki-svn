@@ -456,11 +456,14 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Revolus
  */
 $messages['de-formal'] = array(
 	'review_your_review' => 'Ihre Prüfung dieser Seite/Version:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Sie haben schon andere Versionen dieser Seite geprüft. Ihre anderen Bewertungen werden mit dieser Prüfung verschmolzen wo Sie „keine Meinung“ ausgewählt haben.',
 	'review_has_been_stored' => 'Ihre Prüfung wurde gespeichert!',
+	'review_blocked' => 'Sie sind gesperrt und können an der Codeprüfung nicht teilnehmen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

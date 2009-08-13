@@ -561,6 +561,17 @@ Schwebe mit der Maus über eine Berechtigung, um eine Beschreibung anzuzeigen.',
 	'right-readold' => 'Betrachte den Inhalt von alten Versionen und Versionsunterschieden',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'grouppermissions-header' => 'Mit dieser Spezialseite können Sie die Berechtigungen von Benutzergruppen ändern.',
+	'grouppermissions-error' => 'Es ist ein unbekannter Fehler aufgetreten. Klicken Sie bitte auf die Zurück-Schaltfläche Ihres Browsers und senden Sie die Seite erneut ab.',
+	'grouppermissions-needjs' => 'Warnung: JavaScript ist in Ihrem Browser deaktiviert. Einige Funktionen stehen möglicherweise nicht zur Verfügung.',
+	'grouppermissions-sp-header' => 'Auf dieser Spezialseite können Sie Berechtigungen sortieren und neue Berechtigungen einrichten. Ziehen Sie die Maus über eine Berechtigung, um eine Beschreibung anzuzeigen.',
+	'grouppermissions-rug-header' => 'Auf dieser Seite können Sie Benutzer aus unbenutzten (gelöschten) Gruppen entfernen.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

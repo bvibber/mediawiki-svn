@@ -617,6 +617,15 @@ $messages['ms'] = array(
 	'findspam-notextfound' => 'Tiada sumbangan dijumpai',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'findspam-ip' => 'IP адресэзэ:',
+	'findspam-ok' => 'ОК',
+	'findspam-notextfound' => 'Кодамояк путовкст а муевить',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

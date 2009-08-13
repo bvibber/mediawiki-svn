@@ -938,6 +938,7 @@ På grund af din indvending er siden blevet flyttet til køen $1.',
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
+ * @author Imre
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -1047,7 +1048,7 @@ Der Löschantragsgrund war ''$2''.",
 	'deletequeue-vote-object' => 'Löschung ablehnen.',
 	'deletequeue-vote-reason' => 'Kommentare:',
 	'deletequeue-vote-submit' => 'Abschicken',
-	'deletequeue-vote-success-endorse' => 'Die hast erfolgreich die Löschung dieser Seite befürwortet.',
+	'deletequeue-vote-success-endorse' => 'Du hast erfolgreich die Löschung dieser Seite befürwortet.',
 	'deletequeue-vote-success-object' => 'Du hast erfolgreich die Löschung dieser Seite abgelehnt.',
 	'deletequeue-vote-requeued' => 'Du hast erfolgreich die Löschung dieser Seite abgelehnt.
 Durch deinen Widerspruch wurde die Seite in die Lösch-Warteschlange $1 verschoben.',
@@ -1091,10 +1092,30 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'deletequeue-permissions-noedit' => 'Sie müssen eine Seite bearbeiten können, um ihren Löschstatus zu verändern.',
+	'deletequeue-speedy-text' => "Auf dieser Seite können Sie „'''$1'''“ zur Schnelllöschung vorschlagen.
+
+Ein Administrator wird den Antrag begutachten und, wenn er gut begründet ist, die Seite löschen.
+Sie müssen einen Löschgrund aus dem untenstehenden Dropdown-Menü auswählen und alle weiteren relevanten Informationen hinzufügen.",
+	'deletequeue-prod-text' => "Auf dieser Seite können Sie „'''$1'''“ zur Löschung vorschlagen.
+
+Wenn nach fünf Tagen niemand Einspruch gegen die Löschung eingelegt hat, wird die Seite nach Begutachtung durch einen Administrator gelöscht.",
+	'deletequeue-notqueued' => 'Die von Ihnen ausgewählte Seite ist momentan in keiner Lösch-Warteschlange',
+	'deletequeue-actiondisabled-involved' => 'Die folgende Aktion ist deaktiviert, weil Sie in dieser Löschsache bereits als $1 teilgenommen haben:',
+	'deletequeue-review-badaction' => 'Sie haben eine ungültige Aktion angegeben',
+	'deletequeue-review-actiondenied' => 'Sie haben eine Aktion angegeben, die für diese Seite deaktiviert ist',
+	'deletequeue-reviewspeedy-text' => "Auf dieser Seite können Sie den Schnelllöschantrag für „'''$1'''“ überprüfen.
+Bitte stellen Sie sicher, dass diese Seite in Übereinstimmung mit den Richtlinien schnellgelöscht werden kann.",
+	'deletequeue-reviewprod-text' => "Auf dieser Seite können Sie den unumstrittenen Löschantrag für „'''$1'''“ prüfen.",
 	'deletequeue-review-success' => 'Sie haben erfolgreich die Löschung dieser Seite geprüft',
+	'deletequeue-vote-success-endorse' => 'Sie haben erfolgreich die Löschung dieser Seite befürwortet.',
+	'deletequeue-vote-success-object' => 'Sie haben erfolgreich die Löschung dieser Seite abgelehnt.',
+	'deletequeue-vote-requeued' => 'Sie haben erfolgreich die Löschung dieser Seite abgelehnt.
+Durch Ihren Widerspruch wurde die Seite in die Lösch-Warteschlange $1 verschoben.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

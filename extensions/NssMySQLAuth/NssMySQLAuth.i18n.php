@@ -204,6 +204,13 @@ $messages['de'] = array(
 	'nss-db-error' => 'Fehler beim Lesen aus der Authentifizierungs-Datenbank',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'nss-welcome-mail' => 'Ein Benutzerkonto mit dem Benutzernamen „$1“ und dem Passwort „$2“ wurde für Sie erstellt.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -749,6 +749,14 @@ Diese Seite gilt nur für beschränkte Bentzer.",
 	'group-manager-member' => 'Verwalter',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'whitelistnowhitelistedusers' => 'Es gibt keine Benutzer, die der Gruppe „{{MediaWiki:Group-restricted}}“ angehören.
+Sie müssen [[Special:UserRights|Benutzer zu der Gruppe hinzufügen]] bevor Sie Seiten auf die Beobachtungsliste eines Benutzers setzen können.',
+);
+
 /** Zazaki (Zazaki)
  * @author Belekvor
  */
@@ -3058,12 +3066,15 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'mywhitelistpages' => 'నా పేజీలు',
 	'whitelistfor' => '<center><b>$1</b> కొరకు ప్రస్తుత సమాచారం</center>',
+	'whitelisttablemodify' => 'మార్చు',
 	'whitelisttablemodifyall' => 'అన్నీ',
+	'whitelisttablemodifynone' => 'ఏదీకాదు',
 	'whitelisttablepage' => 'వికీ పేజీ',
 	'whitelisttableexpires' => 'కాలంచెల్లు తేదీ',
 	'whitelisttablemodby' => 'చివరగా మార్చినది',
@@ -3083,6 +3094,8 @@ $2',
 	'whitelistnummatches' => ' - {{PLURAL:$1|ఒక పోలిక|$1 పోలికలు}}',
 	'group-restricted' => 'నియంత్రిత వాడుకరులు',
 	'group-restricted-member' => 'నియంత్రిత వాడుకరి',
+	'group-manager' => 'మేనేజర్లు',
+	'group-manager-member' => 'మేనేజరు',
 );
 
 /** Tetum (Tetun)

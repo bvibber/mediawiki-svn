@@ -84,6 +84,13 @@ $messages['es'] = array(
 	'Editsectionhilitelink-desc' => 'Resaltar la sección apropiada de una página cuando pase el mouse por encima del vínculo de edición',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'Editsectionhilitelink-desc' => 'Korostaa sivun osiota kun siirrät hiiren muokkauslinkin päälle',
+);
+
 /** French (Français)
  * @author Crochet.david
  */

@@ -202,6 +202,13 @@ $messages['nn'] = array(
 	'clientside-desc' => 'Gjev funksjonar for å oppretta kodar i klientside format, til dømes HTML, CSS og JavaScript',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Simny
+ */
+$messages['no'] = array(
+	'clientside-desc' => 'Ordner med funkjoner for å opprette koder i klientsideformat, for eksempel HTML, CSS og JavaScript',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

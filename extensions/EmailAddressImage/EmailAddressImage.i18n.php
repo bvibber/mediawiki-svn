@@ -125,6 +125,13 @@ $messages['fr'] = array(
 	'emailaddressimage-desc' => 'Ajoute <tt>&lt;email&gt;</tt> pour afficher une adresse courriel comme image',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'emailaddressimage-desc' => 'Foegje <tt>&lt;email&gt;</tt> ta om in netpostberjocht as in plaatsje sjen te litten.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

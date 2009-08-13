@@ -49,6 +49,13 @@ $messages['fr'] = array(
 	'categorytests-desc' => 'Fonctions pour des tests de catégorie',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'categorytests-desc' => 'Funksjes foar kategorytests',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -117,5 +124,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'categorytests-desc' => 'Funkcie na testovanie kategórie',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'categorytests-desc' => 'వర్గముల పరీక్షకు ఫంక్షన్సు',
 );
 

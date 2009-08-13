@@ -163,6 +163,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'cooperationstatistics-tablevalue' => 'Número de editores',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
 );
 
 /** Basque (Euskara)

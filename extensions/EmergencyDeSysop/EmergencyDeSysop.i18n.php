@@ -799,11 +799,13 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'emergencydesysop-reason' => 'తొలగింపునకు కారణం',
 	'emergencydesysop-submit' => 'దాఖలుచెయ్యి',
+	'emergencydesysop-nogroups' => 'ఏదీకాదు',
 );
 
 /** Thai (ไทย)

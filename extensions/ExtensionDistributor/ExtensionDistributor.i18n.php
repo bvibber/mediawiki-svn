@@ -437,9 +437,11 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author MichaelFrey
  */
 $messages['de-formal'] = array(
+	'extdist-choose-extension' => 'Bitte wählen Sie eine Erweiterung zum Herunterladen aus:',
 	'extdist-choose-version' => '<big>Sie laden die <b>$1</b>-Erweiterung herunter.</big>
 
 Bitte wählen Sie ihre MediaWiki-Version.

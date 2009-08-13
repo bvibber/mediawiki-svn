@@ -284,6 +284,19 @@ Zum Anschauen deiner kompletten Aufgabenliste siehe %s.
 Dein freundliches %s-Benachrichtungssystem',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'tasklistemailbody' => ',
+
+Jemand hat Ihnen eine neue Aufgabe bei %s zugeordnet.
+
+Zum Anschauen Ihrer kompletten Aufgabenliste siehe %s.
+
+Ihr freundliches %s-Benachrichtungssystem',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

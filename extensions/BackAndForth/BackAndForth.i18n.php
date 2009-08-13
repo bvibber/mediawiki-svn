@@ -296,6 +296,14 @@ $messages['frp'] = array(
 	'backforth-prev' => 'Prècèdent ($1)',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'backforth-next' => 'Folgjende ($1)',
+	'backforth-prev' => 'Foarige ($1)',
+);
+
 /** Gagauz (Gagauz)
  * @author Cuman
  */

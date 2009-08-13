@@ -58,6 +58,7 @@ $messages['en'] = array(
  * @author Tgr
  */
 $messages['qqq'] = array(
+	'readerfeedback-desc' => '{{desc}}',
 	'readerfeedback-submit' => '{{Identical|Submit}}',
 	'readerfeedback-main' => '{{Identical|Content page}}',
 	'readerfeedback-submitting' => '{{flaggedrevs}}
@@ -305,6 +306,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Imre
  * @author MF-Warburg
  * @author Melancholie
  * @author Merlissimo
@@ -337,6 +339,7 @@ $messages['de'] = array(
 	'readerfeedback-finished' => 'Dankeschön!',
 	'readerfeedback-tagfilter' => 'Markierung:',
 	'tooltip-ca-ratinghist' => 'Leserbewertungen dieser Seite',
+	'specialpages-group-feedback' => 'Meinung der Betrachter',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -877,6 +880,7 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
+	'readerfeedback-desc' => 'ページの判定は、読者が尺度別評価の形でフィードバックを与えることを可能にします',
 	'readerfeedback' => 'このページをどう思いますか',
 	'readerfeedback-text' => "''このページの評価にぜひご協力ください。貴重なご意見が私たちのウェブサイト改善に役立ちます。''",
 	'readerfeedback-reliability' => '信頼度',
@@ -898,6 +902,7 @@ $messages['ja'] = array(
 	'readerfeedback-finished' => 'ありがとうございます！',
 	'readerfeedback-tagfilter' => 'タグ:',
 	'tooltip-ca-ratinghist' => 'このページの読者による評価',
+	'specialpages-group-feedback' => '読者の意見',
 );
 
 /** Khmer (ភាសាខ្មែរ)

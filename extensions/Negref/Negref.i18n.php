@@ -79,6 +79,13 @@ $messages['oc'] = array(
 	'negref-desc' => "Provesís una balisa que permet de negociar l’emplaçament d’una balisa quina que siá <nowiki><ref/></nowiki> presenta dins lo tèxte picat, pr'amor de reglar d'unes cases d’utilizacions dels modèls.",
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'negref-desc' => "Ause 'nu tag pe negozià 'a locazzione de ogne tag <nowiki><ref/></nowiki> jndr'à 'u teste de input pe fissà certe template ca usane stu case",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

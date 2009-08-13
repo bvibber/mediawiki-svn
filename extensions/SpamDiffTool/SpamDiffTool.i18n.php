@@ -291,10 +291,17 @@ Stelle sicher, dass du nicht komplette Domains blockierst, die separate Benutzer
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'spamdifftool_cantedit' => 'Sie haben keine Berechtigung zur Bearbeitung der Spam-Blacklist.',
+	'spamdifftool_confirm' => "Bestätigen Sie, dass Sie diese Einträge der Spam-Blacklist hinzufügen möchten.
+(Klicken Sie <a href='$1' target='new'>hier</a>, um ein Problem zu melden.)",
+	'spamdifftool_urls_detected' => 'Die folgenden URLs wurden in der Bearbeitung gefunden, welche davon möchten Sie der Spam-Blacklist hinzufügen?
+Die Reihenfolge geht von sehr einschränkend bis weniger einschränkend, das Eintragen einer ganzen Domain blockiert alle Links, die von dieser Domain kommen.
+
+Stellen Sie sicher, dass Sie nicht komplette Domains blockieren, die separate Benutzerinhalte bereitstellen, wie z. B. blogspot.com, geocities.com usw.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

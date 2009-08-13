@@ -349,8 +349,11 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'scanset_opendir_error' => 'Tõrge: Kausta $1 ei saa avada',
+	'scanset_no_files' => 'Tõrge: Määratletud kaustas ei ole faile.',
 	'scanset_next' => 'Järgmine &gt;',
 	'scanset_prev' => '&lt; Eelmine',
 );

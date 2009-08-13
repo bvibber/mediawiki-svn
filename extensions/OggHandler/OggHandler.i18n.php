@@ -2998,6 +2998,8 @@ $messages['vec'] = array(
 	'ogg-play-video' => 'Varda el video',
 	'ogg-play-sound' => 'Scolta el file',
 	'ogg-no-player' => 'Semo spiacenti, ma sul to sistema no risulta instalà nissun software de riproduzion conpatibile. Par piaser <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scàrichete un letor</a> che vaga ben.',
+	'ogg-no-player-js' => 'El to computer o el ga JavaScript disabilità o no\'l gà nissun riprodutor suportà.<br />
+Te pol <a href="$1">descargar el video</a><br />o<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargar un riprodutor</a> par vardartelo sul to browser.',
 	'ogg-no-xiphqt' => 'No risulta mìa instalà el conponente XiphQT de QuickTime. Senza sto conponente no se pode mìa riprodur i file Ogg con QuickTime. Par piaser, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scàrichete XiphQT</a> o siegli n\'altro letor.',
 	'ogg-player-videoElement' => 'Suporto browser zà de suo (nativo)',
 	'ogg-player-oggPlugin' => 'Plugin browser',

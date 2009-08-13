@@ -267,6 +267,7 @@ Achtung: Das Aktualisieren kann auf großen Wikis länger dauern.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Revolus
  * @author Umherirrender
  */
@@ -275,6 +276,7 @@ $messages['de-formal'] = array(
 Sobald Sie alle Spezialseiten zum Aktualisieren ausgewählt haben, drücken Sie die Aktualisieren-Schaltfläche, um die Aktualisierung zu starten.
 Achtung: Das Aktualisieren kann auf großen Wikis länger dauern.',
 	'refreshspecial-js-disabled' => '(<i>Sie können nicht alle Seiten auswählen, wenn Sie Javascript deaktiviert haben</i>)',
+	'refreshspecial-none-selected' => 'Sie haben keine Spezialseiten ausgewählt; somit Zurücksetzung auf die Standardauswahl.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

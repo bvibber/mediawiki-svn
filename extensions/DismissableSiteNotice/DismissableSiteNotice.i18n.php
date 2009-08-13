@@ -306,10 +306,12 @@ $messages['fur'] = array(
 );
 
 /** Western Frisian (Frysk)
+ * @author SK-luuut
  * @author Snakesteuben
  */
 $messages['fy'] = array(
 	'sitenotice_close' => 'net mear sjen litte',
+	'sitenotice-desc' => 'Stiet meidogger ta sideberjochten te sluten',
 );
 
 /** Irish (Gaeilge)

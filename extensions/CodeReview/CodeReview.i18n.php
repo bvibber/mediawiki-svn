@@ -193,6 +193,11 @@ $1 = Repository name',
 * <code>$2</code> – Number of the revision that has been followed upon.
 * <code>$3</code> – URL to the new revision.
 * <code>$4</code> – Commit message of the new revision.',
+	'codereview-email-subj3' => '* <code>$1</code> – Repository name
+* <code>$2</code> – Number of the revision',
+	'codereview-email-body3' => '* <code>$1</code> – Number of the revision where a regression has been introduced
+* <code>$2</code> – URL to the revision
+* <code>$3</code> – Commit message for the revision',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',
@@ -1711,6 +1716,7 @@ $messages['es'] = array(
 	'code-field-status' => 'Estatus',
 	'code-field-timestamp' => 'Fecha',
 	'code-field-comments' => 'Apuntes',
+	'code-field-tests' => 'Pruebas',
 	'code-field-path' => 'Ruta',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Seleccionar',
@@ -3450,7 +3456,7 @@ $messages['ja'] = array(
 	'code-status' => '状態',
 	'code-tags' => 'タグ',
 	'code-tests' => 'テストケース',
-	'code-authors-text' => '以下は最新コミット順のリポジトリ作成者一覧です。',
+	'code-authors-text' => '以下は最新コミット順のリポジトリ作成者一覧です。ローカルのウィキにおけるアカウントを括弧内に示します。',
 	'code-author-haslink' => 'この著者はウィキの利用者 $1 と対応付けられています。',
 	'code-author-orphan' => 'この著者にはウィキのアカウントとの対応付けがありません。',
 	'code-author-dolink' => 'この著者とウィキの利用者を対応付ける:',
@@ -3532,6 +3538,14 @@ $4',
 コミットの要約:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: 自動的なテストによってリグレッションが検出されました',
+	'codereview-email-body3' => '自動的なテストによって、r$1 における変更のためにリグレッションが起きたことが明らかになりました。
+
+Full URL: $2
+
+コミットの要約:
+
+$3',
 	'repoadmin' => 'リポジトリ管理',
 	'repoadmin-new-legend' => '新規リポジトリを作成',
 	'repoadmin-new-label' => 'リポジトリ名:',
@@ -6473,6 +6487,7 @@ $4',
 
 /** Telugu (తెలుగు)
  * @author C.Chandra Kanth Rao
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
@@ -6502,6 +6517,7 @@ $messages['te'] = array(
 	'code-status-reverted' => 'వెనక్కి తీసుకోబడినది',
 	'code-status-ok' => 'సరి',
 	'code-rev-submit' => 'మార్పులను భద్రపరచు',
+	'repoadmin-new-button' => 'సృష్టించు',
 	'repoadmin-edit-button' => 'సరే',
 	'specialpages-group-developer' => 'వికాసకుల పనిముట్లు',
 );
@@ -7023,7 +7039,7 @@ $messages['vec'] = array(
 	'code-status' => 'stati',
 	'code-tags' => 'tag',
 	'code-tests' => 'Casi de test',
-	'code-authors-text' => 'Qua soto ghe xe na lista dei autori del deposito ordenà par i salvatagi pi reçenti.',
+	'code-authors-text' => 'Qua soto ghe xe na lista dei autori del deposito ordenà par i salvatagi pi recenti. I account wiki locali i xe mostrà tra parentesi.',
 	'code-author-haslink' => "Sto autor el xe ligà a l'utente wiki $1",
 	'code-author-orphan' => "Sto autor no'l xe ligà a nissun utente wiki",
 	'code-author-dolink' => 'Ligar sto autor a un utente wiki:',

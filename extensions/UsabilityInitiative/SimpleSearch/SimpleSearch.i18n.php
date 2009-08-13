@@ -554,11 +554,13 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author A1
  * @author Pavlo Shevelo
  */
 $messages['uk'] = array(
 	'simplesearch' => 'Простий пошук',
 	'simplesearch-desc' => 'Додає більше функціональності до спрощеного пошуку Vector',
+	'simplesearch-search' => 'Пошук',
 );
 
 /** Vèneto (Vèneto)

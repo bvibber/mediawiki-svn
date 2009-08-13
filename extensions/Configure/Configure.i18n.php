@@ -1672,15 +1672,21 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author Imre
  */
 $messages['de-formal'] = array(
+	'configure-summary' => 'Diese Spezialseite ermöglicht Ihnen die Konfiguration dieses Wikis, siehe [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfigurationsoptionen] für weitere Informationen.',
 	'configure-db-error' => 'Die Datenbank, die nach Ihren Angaben die Konfiguration ($1) enthalten soll, existiert nicht.
 Bitte erstellen Sie sie und führen Sie configure.sql darin aus oder korrigieren sie ihren Namen.',
 	'configure-db-table-error' => 'Die Datenbank, die Sie angegeben haben, enthält nicht die benötigten Tabellen. Bitte führen Sie configure.sql in dieser Datenbank aus.',
+	'configure-edit-old' => "'''Achtung:''' Sie bearbeiten eine <strong>alte</strong> Version der Konfiguration (vom $2, $3 Uhr).",
 	'configure-js-image-error' => 'Beim Abruf der URL ist ein Fehler aufgetreten. Bitte stellen Sie sicher, dass die Datei existiert.',
+	'configure-no-transwiki' => 'Sie haben keine Berechtigung, Einstellungen in anderen Wikis zu ändern',
+	'configure-old-not-available' => 'Die alte Version der Einstellungen, die Sie angefragt haben, $1, ist nicht vorhanden',
 	'configure-image-url-explanation' => 'Geben Sie die URL zu einem Bild oder den Namen eines Bildes auf diesem Wiki (ohne den Namensraum) an. Wenn Sie das Feld verlassen, wird eine Vorschau angezeigt.',
 	'configure-select-wiki-desc' => 'Wählen Sie das Wiki aus, dessen Einstellungen Sie bearbeiten möchten.',
 	'configure-select-wiki-view-desc' => 'Wählen Sie ein Wiki, für welches Sie die Versionen sehen möchten.',
+	'configure-view-not-allowed' => 'Es ist Ihnen nicht gestattet diese Einstellung einzusehen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -8012,6 +8018,7 @@ $messages['te'] = array(
 	'configure-section-cache' => 'కోశం',
 	'configure-section-groups' => 'గుంపులు',
 	'configure-section-cookie' => 'కుకీలు',
+	'configure-section-upload' => 'ఎగుమతిచెయ్యండి',
 	'configure-section-images' => 'బొమ్మలు',
 	'configure-section-specialpages' => 'ప్రత్యేక పేజీలు',
 	'configure-section-recentchanges' => 'ఇటీవలి మార్పులు',

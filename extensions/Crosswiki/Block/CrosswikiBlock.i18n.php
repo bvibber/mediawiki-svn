@@ -436,6 +436,16 @@ Zurück zu:
 	'right-crosswikiblock' => 'Benutzer auf anderen Wikis sperren oder entsperren',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'crosswikiblock-header' => 'Diese Spezialseite erlaubt die Sperre eines Benutzers in einem anderen Wiki.
+Bitte prüfen Sie, ob Sie die Befugnis haben, in diesem anderen Wiki zu sperren und ob Ihre Aktion deren Richtlinien entspricht.',
+	'crosswikiunblock-header' => 'Diese Spezialseite erlaubt die Aufhebung einer Benutzersperre in einem anderen Wiki.
+Bitte prüfen Sie, ob Sie die Befugnis haben, in diesem anderen Wiki zu sperren und ob Ihre Aktion deren Richtlinien entspricht.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -536,6 +536,13 @@ Bitte überprüfe deinen Popup-Blocker.',
 	'ct_user_sample' => 'Benutzername',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$wgCustomToolbarMessages['de-formal'] = array(
+	'ct_popupblocked' => 'Das Hochladen-Popup wurde am Öffnen gehindert. Bitte überprüfen Sie Ihren Popup-Blocker.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -1580,6 +1587,7 @@ $wgCustomToolbarMessages['myv'] = array(
 	'ct_italic_tip_wrap' => 'Те текстэнть комавтык',
 	'ct_italic_caption' => 'Комавтонь текст',
 	'ct_internal_caption' => 'Потмонь сюлмавома пе',
+	'ct_image_caption' => 'Поладомс артовкс',
 	'ct_submit' => 'Адя!',
 );
 

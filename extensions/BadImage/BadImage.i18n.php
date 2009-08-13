@@ -2332,6 +2332,7 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author A1
  * @author Ahonc
  */
 $messages['uk'] = array(
@@ -2355,6 +2356,7 @@ $messages['uk'] = array(
 	'badimages-log-add' => '[[$1]] додане до списку небажаних зображень',
 	'badimages-log-remove' => '[[$1]] вилучене зі списку небажаних зображень',
 	'badimages-page' => '{{ns:help}}:Список небажаних зображень',
+	'right-badimages' => 'Оновити список небажаних зображень',
 );
 
 /** Vietnamese (Tiếng Việt)

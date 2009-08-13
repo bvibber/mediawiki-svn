@@ -1825,6 +1825,7 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Chaduvari
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
@@ -1845,6 +1846,7 @@ $messages['te'] = array(
 	'usagestatisticsintervalmonth' => 'నెల',
 	'usagestatisticscumulative' => 'సంచిత',
 	'usagestatisticscumulative-text' => 'సంచిత',
+	'usagestatisticscalselect' => 'ఎంచుకోండి',
 	'usagestatistics-editindividual' => 'వ్యక్తిగత వాడుకరి $1 మార్పుల గణాంకాలు',
 	'usagestatistics-editpages' => 'వ్యక్తిగత వాడుకరి $1 పేజీల గణాంకాలు',
 );
@@ -1926,6 +1928,36 @@ $messages['tr'] = array(
 	'usagestatisticsintervalmonth' => 'Ay',
 	'usagestatisticsincremental' => 'Artımlı',
 	'usagestatisticscumulative' => 'Kümülatif',
+);
+
+/** Ukrainian (Українська)
+ * @author A1
+ */
+$messages['uk'] = array(
+	'specialuserstats' => 'Статистика використання',
+	'usagestatistics' => 'Статистика використання',
+	'usagestatistics-desc' => 'Показує індивідуальну для користувача і загальну для вікі статистику використання',
+	'usagestatisticsfor' => '<h2>Статистика використання для користувача [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Статистика використання для всіх користувачів</h2>',
+	'usagestatisticsinterval' => 'Інтервал',
+	'usagestatisticstype' => 'Тип',
+	'usagestatisticsstart' => 'Дата початку',
+	'usagestatisticsend' => 'Дата закінчення',
+	'usagestatisticssubmit' => 'Згенерувати статистику',
+	'usagestatisticsnostart' => 'Будь ласка, зазначте дату початку',
+	'usagestatisticsnoend' => 'Будь ласка, зазначте дату закінчення',
+	'usagestatisticsbadstartend' => '<b>Невірна дата <i>початку</i> та/або <i>закінчення</i>!</b>',
+	'usagestatisticsintervalday' => 'День',
+	'usagestatisticsintervalweek' => 'Тиждень',
+	'usagestatisticsintervalmonth' => 'Місяць',
+	'usagestatisticsincremental' => 'Приріст',
+	'usagestatisticsincremental-text' => 'приріст',
+	'usagestatisticscumulative' => 'Сукупна',
+	'usagestatisticscumulative-text' => 'сукупна',
+	'usagestatisticscalselect' => 'Вибрати',
+	'usagestatistics-editindividual' => 'Статистика $1 для індивідуальних редагувань',
+	'usagestatistics-editpages' => 'Статистика $1 для сторінок користувача',
+	'right-viewsystemstats' => 'перегляд [[Special:UserStats|статистики використання вікі]]',
 );
 
 /** Veps (Vepsan kel')

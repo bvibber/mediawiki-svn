@@ -720,12 +720,14 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'layouts_title' => 'ఒక పేజీని సృష్టించండి',
 	'layouts_continue' => 'కొనసాగించు',
 	'layouts_choosecategory' => '$1కి ఒక వర్గాన్ని ఎంచుకోండి:',
+	'layouts_unknown' => 'అజ్ఞాతం',
 	'layouts_tagline' => "ఈ పేజీ '''$1''' అమరిక ద్వారా తయారైంది.",
 );
 

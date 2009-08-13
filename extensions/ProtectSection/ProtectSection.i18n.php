@@ -110,6 +110,14 @@ $messages['de'] = array(
 	'right-protectsection' => 'Abschnitte einer Seite schützen',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'protectsection_add_remove' => 'Sie haben versucht, einen geschützten Abschnitt hinzuzufügen oder zu entfernen.',
+	'protectsection_modify' => 'Sie haben versucht, einen geschützten Text zu bearbeiten.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

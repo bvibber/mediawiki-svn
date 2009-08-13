@@ -346,6 +346,20 @@ Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werde und es gi
 	'action-povwatch_user' => 'füge diese Seite zu der Beobachtungsliste eines anderen Benutzers hinzu',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'povwatch_not_allowed_push' => 'Sie sind kein PovWatch-Administrator und können fremden Beobachtungslisten keine Seiten hinzufügen.',
+	'povwatch_already_subscribed' => 'Sie sind bereits für PovWatch registriert',
+	'povwatch_subscribed' => 'Sie sind nun für PovWatch registriert',
+	'povwatch_not_subscribed' => 'Sie sind nicht für PovWatch registriert; eine Abmeldung ist daher nicht möglich.',
+	'povwatch_unsubscribed' => 'Sie sind nun von PovWatch abgemeldet',
+	'povwatch_not_allowed_subscribers' => 'Sie haben keine Berechtigung, die PovWatch-Benutzerliste einzusehen.',
+	'povwatch_unsubscribe_intro' => 'Sie sind für PovWatch registriert. Klicken Sie auf die Schaltfläche, um sich abzumelden.',
+	'povwatch_subscribe_intro' => 'Sie sind nicht für PovWatch registriert. Klicken Sie auf die Schaltfläche, um sich anzumelden.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

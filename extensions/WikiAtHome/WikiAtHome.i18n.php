@@ -157,6 +157,15 @@ Du kannst dabei helfen dieses Video zu verarbeiten, indem du [[Special:WikiAtHom
 	'wah-loading' => 'Lade Wiki@Home-Benutzeroberfläche <blink>…</blink>',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'wah-transcode-helpout' => 'Der Clip ist zu $1 % verarbeitet.
+Sie können dabei helfen dieses Video zu verarbeiten, indem Sie [[Special:WikiAtHome|Wiki@Home]] besuchen',
+	'wah-javascript-off' => 'Sie müssen JavaScript aktiviert haben, um bei Wiki@Home teilnehmen zu können',
+);
+
 /** Greek (Ελληνικά)
  * @author ZaDiak
  */

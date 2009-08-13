@@ -240,6 +240,14 @@ $messages['frp'] = array(
 	'assert_edit_message' => 'L’entrebetâ endicâ ($1) at pas reussia.',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'assert_edit_title' => 'Befêstiging mislearre',
+	'assert_edit_message' => 'De frege befêstiging ($1) mislearre.',
+);
+
 /** Galician (Galego)
  * @author Alma
  */

@@ -1179,7 +1179,7 @@ $messages['myv'] = array(
 	'vote-header' => "Тесэ маштови кочкамс '''Масторлангонь Менельалдонь Ине Азор'''!",
 	'vote-caption' => 'Мезе кочкить:',
 	'vote-submit' => 'Каямс вайгель',
-	'vote-login' => 'Вайгелень каямга эряви [$1 совамс].',
+	'vote-login' => 'Вайгелень каямга эряви [совамс $1 лопантень].',
 	'vote-invalid-choice' => 'Эряви кочкамс максозетнень эйстэ.',
 );
 
@@ -1690,6 +1690,7 @@ riddler|Czowjek-Cweka',
  * @author Veeven
  */
 $messages['te'] = array(
+	'vote' => 'వోటేయండి',
 	'vote-current' => "మీ ప్రస్తుత వోటు '''$1'''కి వేసారు.",
 	'vote-caption' => 'మీ ఎంపిక:',
 	'vote-submit' => 'వోటేయండి',
@@ -1697,6 +1698,7 @@ $messages['te'] = array(
 	'vote-view-results' => 'ఫలితాలు చూడండి',
 	'vote-results' => 'వోటు ఫలితాలు',
 	'vote-results-count' => 'లెక్క',
+	'right-vote' => 'వోటు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

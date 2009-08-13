@@ -201,9 +201,11 @@ Möchtest Du die existierende Seite bearbeiten?',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'createpage_instructions' => 'Geben Sie den Namen der neu zu erstellenden Seite ein:',
 	'createpage_entertitle' => 'Titel für Ihre Seite.',
 	'createpage_titleexists' => 'Eine Seite mit dem Namen [[$1]] existiert bereits.
 Möchten Sie die existierende Seite bearbeiten?',
@@ -561,6 +563,14 @@ $messages['mk'] = array(
 	'createpage_tryagain' => 'Не. Сакам да креирам нова страница со различен наслов.',
 	'createpage_editexisting' => 'Да. Сакам да ја уредувам постоечката страница.',
 	'createpage-badtitle' => '"$1" не може да се искористи како наслов на страница',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'createpage' => 'Шкамс лопа',
+	'createpage_submitbutton' => 'Максомс',
 );
 
 /** Low German (Plattdüütsch)

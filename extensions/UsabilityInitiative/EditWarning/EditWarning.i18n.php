@@ -131,6 +131,14 @@ Du kannst das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich dei
 	'editwarning-preference' => 'Warne mich, wenn ich eine „Bearbeiten“-Seite mit nicht gesicherten Änderungen verlasse',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass Ihre Änderungen verloren gehen.
+Sie können die Anzeige dieser Warnung im „{{int:prefs-editing}}“-Bereich Ihrer Einstellungen abschalten.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -564,7 +572,9 @@ $messages['uk'] = array(
 $messages['vec'] = array(
 	'editwarning' => 'Ocio a le modìfeghe',
 	'editwarning-desc' => "Fà vedar n'avertimento co che un utente el vole lassar la casèla de modìfega sensa ver salvà le so modìfeghe",
-	'editwarning-warning' => 'Se te vè via da sta pagina te perdi tute le modìfeghe che te ghè fato.',
+	'editwarning-warning' => 'Se te vè via da sta pagina te podaressi pèrdar tute le modìfeghe che te ghè fato.
+Te poli disabilitar sto aviso in te la sezion "{{int:prefs-editing}} de le to preferense.',
+	'editwarning-preference' => 'Dime se sto lassando na pagina de modifica sensa aver salvà',
 );
 
 /** Vietnamese (Tiếng Việt)

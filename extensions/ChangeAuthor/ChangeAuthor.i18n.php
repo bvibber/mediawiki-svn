@@ -419,6 +419,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author DaSch
+ * @author Imre
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -438,13 +439,23 @@ $messages['de'] = array(
 	'changeauthor-nosuchuser' => 'Es gibt keinen Benutzer „$1“.',
 	'changeauthor-revview' => 'Version #$1 von $2',
 	'changeauthor-nosuchtitle' => 'Es gibt keine Seite „$1“.',
-	'changeauthor-weirderror' => 'Ein sehr seltener Fehler ist aufgetreten. Bitte wiederhole deine Änderung. Wenn dieser Fehler erneut auftritt, ist vermutlich die Datenbank zerstört.',
+	'changeauthor-weirderror' => 'Ein sehr seltener Fehler ist aufgetreten. Bitte wiederhole deine Änderung. Wenn dieser Fehler erneut auftritt, ist vermutlich die Datenbank fehlerhaft.',
 	'changeauthor-invalidform' => 'Bitte benutze das Formular auf der [[Special:ChangeAuthor|Spezialseite]].',
 	'changeauthor-success' => 'Deine Änderung wurde erfolgreich durchgeführt.',
 	'changeauthor-logentry' => 'änderte Autorenname der $2 von $1 von $3 auf $4',
 	'changeauthor-logpagename' => 'Autorenänderungs-Logbuch',
 	'changeauthor-rev' => 'Version $1',
 	'right-changeauthor' => 'Ändere den Autor einer Version',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'changeauthor-explanation-multi' => 'Mit diesem Formular können Sie die Autoren der Versionen ändern. Ändern Sie einfach einen oder mehrere Autorennamen in der Liste, ergänzen Sie einen Kommentar (optional) und klicken Sie auf die „Autor ändern“-Schaltfläche.',
+	'changeauthor-explanation-single' => 'Mit diesem Formular können Sie den Autoren einer Version ändern. Ändern Sie einfach den Autorennamen in der Liste, ergänzen Sie einen Kommentar (optional) und klicken Sie auf die „Autor ändern“-Schaltfläche.',
+	'changeauthor-weirderror' => 'Ein sehr seltener Fehler ist aufgetreten. Bitte wiederholen Sie Ihre Änderung. Wenn dieser Fehler erneut auftritt, ist vermutlich die Datenbank fehlerhaft.',
+	'changeauthor-success' => 'Ihre Änderung wurde erfolgreich durchgeführt.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

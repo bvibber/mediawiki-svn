@@ -348,6 +348,14 @@ $messages['ms'] = array(
 	'authors_anonymous' => 'Tanpa nama',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'authors_authors' => 'Сёрмадыцянзо',
+	'authors_anonymous' => 'Лемтеме',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

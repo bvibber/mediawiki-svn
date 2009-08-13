@@ -110,6 +110,15 @@ Die Seite wurde nicht gespeichert.
 	'cspammer-log-page' => 'Kommentar-Spammer Logbuch',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'commentspammer-save-blocked' => 'Ihre IP-Adresse stammt mutmaßlich von einem Kommentar-Spammer.
+Die Seite wurde nicht gespeichert.
+[[Special:UserLogin|Melden Sie sich an oder erstellen Sie ein Benutzerkonto]], um diese Warnung zu unterbinden.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

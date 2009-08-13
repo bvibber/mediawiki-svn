@@ -128,6 +128,16 @@ Diese E-Mail wurde dir von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
 $2',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Diese E-Mail wurde Ihnen von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
+
+$2',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

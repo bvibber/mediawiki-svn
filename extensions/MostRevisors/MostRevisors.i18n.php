@@ -194,6 +194,7 @@ $messages['el'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'mostrevisors-limitlinks' => 'Mostrar hasta $1 páginas',
 	'mostrevisors-namespace' => 'Espacio de nombres:',
 	'mostrevisors-submit' => 'Ir',
 	'mostrevisors-showredir' => 'Mostrar página de redirección',

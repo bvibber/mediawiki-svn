@@ -50,6 +50,14 @@ $messages['de'] = array(
 Verwende: &lt;stockchart ticker="AAPL" /&gt;',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'stockcharts-missingticker' => 'Um eine Aktien-Grafik einzufügen, müssen Sie mindestens einen Ticker angeben.
+Verwenden Sie: &lt;stockchart ticker="AAPL" /&gt;',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

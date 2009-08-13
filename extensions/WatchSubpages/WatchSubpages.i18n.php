@@ -193,6 +193,13 @@ $messages['de'] = array(
 	'watchsubpages-form' => 'Wähle die Seiten aus, die deiner Beobachtungsliste hinzugefügt werden sollen.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'watchsubpages-addedtowatchlist' => 'Die folgenden Seiten wurden Ihrer Beobachtungsliste hinzugefügt.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

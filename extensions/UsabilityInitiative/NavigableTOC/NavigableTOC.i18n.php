@@ -25,6 +25,14 @@ $messages['be-tarask'] = array(
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'navigabletoc' => 'Navigovatelný obsah',
+	'navigabletoc-desc' => 'Přidává do formuláře úprav obsah, který se po kliknutí na sekci přesune',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */

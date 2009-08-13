@@ -148,15 +148,24 @@ $messages['cs'] = array(
 	'contrib-tracking-button' => 'Pokračovat',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Imre
+ */
 $messages['de'] = array(
 	'contributiontracking-desc' => 'Spendenverfolgung für die Wikimedia Spendenkampagne',
 	'contributiontracking' => 'Spendenverfolgung',
 	'contrib-tracking-error' => 'Fehler',
 	'contrib-tracking-error-text' => 'Ungültiges Übertragungsformular',
 	'contrib-tracking-submitting' => 'Übertragung an den Zahlungsprovider …',
-	'contrib-tracking-continue' => 'Wenn Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf „Weiter“, um Ihre Spende über PayPal zu abzuschließen.',
+	'contrib-tracking-continue' => 'Wenn du nicht automatisch weitergeleitet wirst, klicke bitte auf „Weiter“, um deine Spende über PayPal abzuschließen.',
 	'contrib-tracking-button' => 'Weiter',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'contrib-tracking-continue' => 'Wenn Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf „Weiter“, um Ihre Spende über PayPal abzuschließen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -852,13 +852,14 @@ $messages['szl'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'watchers' => 'వీక్షకులు',
 	'watchers_link_title' => 'ఈ పేజీని ఎవరెవరు గమనిస్తున్నారు?',
 	'watchers_error_article' => '<b>పొరపాటు:</b> పేజీ ఉనికిలో లేదు.',
-	'watchers_header' => '"$1"గురు ఈ పేజీని చూస్తున్నారు',
+	'watchers_header' => '{{PLURAL:$2|వాడుకరి|మంది వాడుకరులు }}  "$1" పేజీని చూస్తున్నారు',
 	'watchers_noone_watches' => 'ఈ పేజీని ఎవరూ గమనించట్లేదు.',
 );
 

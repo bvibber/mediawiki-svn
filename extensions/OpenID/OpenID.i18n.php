@@ -853,13 +853,30 @@ Du wirst dich nicht mehr mit dieser OpenID anmelden können.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
+ * @author Imre
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'openidserverlogininstructions' => 'Geben Sie Ihr Passwort unten ein, um sich als Benutzer $2 an $3 anzumelden (Benutzerseite $1).',
+	'openidtrustinstructions' => 'Prüfen Sie, ob Sie Daten mit $1 teilen möchten.',
+	'openidnotavailable' => 'Ihr bevorzugter Benutzername ($1) wird bereits von einem anderen Benutzer verwendet.',
+	'openidnotprovided' => 'Ihr OpenID-Server unterstützt keine Nicknamen (entweder, weil er es nicht kann, oder weil Sie es ihm nicht erlaubt haben).',
+	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
+Sie können einen aus der untenstehenden Liste auswählen.',
+	'openidchoosefull' => 'Ihr vollständiger Name ($1)',
+	'openidchooseurl' => 'Ein Name aus Ihrer OpenID ($1)',
+	'openidchoosemanual' => 'Ein Name Ihrer Wahl:',
+	'openidconvertinstructions' => 'Mit diesem Formular können Sie Ihr Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',
+	'openidconvertsuccesstext' => 'Sie haben die Konvertierung Ihrer OpenID nach $1 erfolgreich durchgeführt.',
+	'openidalreadyloggedin' => "'''Sie sind bereits angemeldet, $1!'''
+
+Wenn Sie OpenID für künftige Anmeldevorgänge nutzen möchten, können Sie [[Special:OpenIDConvert|Ihr Benutzerkonto nach OpenID konvertieren]].",
+	'openidclientonlytext' => 'Sie können keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
 	'openiddelete-text' => 'Wenn Sie auf den Button „{{int:openiddelete-button}}“ klicken, löschen Sie die OpenID $1 von Ihrem Benutzerkonto.
 Sie werden sich nicht mehr mit dieser OpenID anmelden können.',
 	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von Ihrem Benutzerkonto entfernt.',
 	'openiddelete-error' => 'Beim Entfernen der OpenID von Ihrem Benutzerkonto ist ein Fehler aufgetreten.',
+	'openid-pref-hide' => 'Verstecken Sie Ihre OpenID auf Ihrer Benutzerseite, wenn Sie sich mit OpenID anmelden.',
 	'openid-urls-desc' => 'Mit Ihrem Benutzerkonto verbundene OpenIDs:',
 	'openid-provider-label-openid' => 'Geben Sie Ihre OpenID-URL an',
 	'openid-provider-label-google' => 'Mit Ihrem Google-Benutzerkonto anmelden',
@@ -4331,9 +4348,9 @@ $messages['ug-latn'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author A1
  * @author AS
  * @author Aleksandrit
- * @author IAlex
  */
 $messages['uk'] = array(
 	'openid-desc' => 'Вхід у вікі за допомогою [http://openid.net/ OpenID], а також вхід на інші сайти, що підтримують OpenID за допомогою акаунта в вікі',
@@ -4366,6 +4383,7 @@ $messages['uk'] = array(
 	'openidfullname' => "Повне ім'я",
 	'openidemail' => 'Адреса ел. пошти',
 	'openidlanguage' => 'Мова',
+	'openidtimezone' => 'Часовий пояс',
 	'openidnotavailable' => 'Зазначений вами псевдонім ($1) вже використовується іншим учасником.',
 	'openidnotprovided' => 'Ваш сервер OpenID не надав псевдонім (чи тому, що він не може, чи тому, що ви вказали не робити цього).',
 	'openidchooseinstructions' => 'Кожен користувач повинен мати псевдонім;
@@ -4376,7 +4394,8 @@ $messages['uk'] = array(
 	'openidchoosemanual' => "Ім'я на ваш вибір:",
 	'openidchooseexisting' => 'Існуючий акаунт на цій вікі:',
 	'openidchoosepassword' => 'пароль:',
-	'openidconvertinstructions' => 'Ця форма дозволяє вам змінити використання акаунту на використання адреси OpenID.',
+	'openidconvertinstructions' => 'Ця форма дозволяє вам змінити використання Вашого облікового запису на використання адреси OpenID або додати кілька адрес OpenID.',
+	'openidconvertoraddmoreids' => 'Перетворити на OpenID або додати іншу адресу OpenID',
 	'openidconvertsuccess' => 'Успішне перетворення в OpenID',
 	'openidconvertsuccesstext' => 'Ви успішно перетворили ваш OpenID в $1.',
 	'openidconvertyourstext' => 'Це вже ваш OpenID.',
@@ -4390,7 +4409,33 @@ $messages['uk'] = array(
 Якщо цього не сталося, спробуйте натиснути на кнопку «Continue» (Продовжити).',
 	'openidclientonlytext' => 'Ви не можете використовувати акаунти з цієї вікі, як OpenID на іншому сайті.',
 	'openidloginlabel' => 'Адреса OpenID',
+	'openidlogininstructions' => "{{SITENAME}} підтримує стандарт [http://openid.net/ OpenID], що дозволяє використовувати один обліковий запис для входу на різні веб-сайти.
+OpenID дозволяє вам заходити на різні веб-сайти без указання різних паролів для них
+(детальніше див. [http://uk.wikipedia.org/wiki/OpenID статтю про OpenID в Вікіпедії]).
+
+Якщо ви вже маєте обліковий запис на {{SITENAME}}, Ви можете [[Special:UserLogin|війти]] як звичайно, використовуючи Ваші ім'я користувача і пароль.
+Щоб використовувати надалі OpenID, Ви можете [[Special:OpenIDConvert|перетворити Ваш обліковий запис на OpenID]], після того, як ви ввійшли звичайним образом.
+
+Існує безліч [http://wiki.openid.net/Public_OpenID_providers загальнодоступних провайдерів OpenID], можливо, Ви вже маєте обліковий запис OpenID на іншому сайті.",
+	'openidupdateuserinfo' => 'Оновити мою особисту інформацію',
+	'openiddelete' => 'Видалити OpenID',
+	'openiddelete-text' => 'Натиснувши на кнопку «{{int:openiddelete-button}}», Ви видалите OpenID $1 зі свого облікового запису. Ви більше не зможете входити із цим OpenID.',
+	'openiddelete-button' => 'Підтвердити',
+	'openiddelete-sucess' => 'OpenID успішно вилучений з Вашого облікового запису.',
+	'openiddelete-error' => 'Відбулася помилка при видаленні OpenID з Вашого облікового запису.',
+	'openid-prefstext' => 'Параметри [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Приховувати ваш OpenID на вашій сторінці користувача, якщо ви ввійшли з допомогою OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Оновлювати наступну інформацію про мене через OpenID щораз, коли я представляюся системі:',
+	'openid-urls-desc' => "OpenID, пов'язані з Вашим обліковим записом:",
+	'openid-urls-action' => 'Дія',
+	'openid-urls-delete' => 'Видалити',
+	'openid-add-url' => 'Додати новий OpenID',
+	'openidsigninorcreateaccount' => 'Представитися системі або створити новий обліковий запис',
+	'openid-provider-label-openid' => 'Введіть URL Вашого OpenID',
+	'openid-provider-label-google' => 'Представитися, використовуючи обліковий запис Google',
+	'openid-provider-label-yahoo' => 'Представитися, використовуючи обліковий запис Yahoo',
+	'openid-provider-label-aol' => "Введіть ваше ім'я в AOL",
+	'openid-provider-label-other-username' => "Введіть Ваше ім'я користувача $1",
 );
 
 /** Vèneto (Vèneto)

@@ -1027,6 +1027,13 @@ $messages['ms'] = array(
 	'imagemap_poly_odd' => 'Ralat: terdapat poligon dengan bilangan koordinat yang ganjil dalam baris $1',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'imagemap_description' => 'Те артовкстонть',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
