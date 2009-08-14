@@ -98,10 +98,26 @@ var editToolbarConfiguration = {
 								var invalidMsg = gM( 'edittoolbar-tool-link-int-target-status-invalid' );
 								var loadingMsg = gM( 'edittoolbar-tool-link-int-target-status-loading' );
 								$j( '#edittoolbar-link-int-target-status' )
-									.html(	'<img id="edittoolbar-link-int-target-status-exists" src="' + existsImg + '" alt="' + existsMsg + '" title="' + existsMsg + '" />' +
-										'<img id="edittoolbar-link-int-target-status-notexists" src="' + notexistsImg + '" alt="' + notexistsMsg + '" title="' + notexistsMsg + '" />' +
-										'<img id="edittoolbar-link-int-target-status-invalid" src="' + invalidImg + '" alt="' + invalidMsg + '" title="' + invalidMsg + '" />' +
-										'<img id="edittoolbar-link-int-target-status-loading" src="' + loadingImg + '" alt="' + loadingMsg + '" title="' + loadingMsg + '" />' )
+									.append( $j( '<img />' ).attr( {
+										'id': 'edittoolbar-link-int-target-status-exists',
+										'src': existsImg,
+										'alt': existsMsg,
+										'title': existsMsg } ) )
+									.append( $j( '<img />' ).attr( {
+										'id': 'edittoolbar-link-int-target-status-notexists',
+										'src': notexistsImg,
+										'alt': notexistsMsg,
+										'title': notexistsMsg } ) )
+									.append( $j( '<img />' ).attr( {
+										'id': 'edittoolbar-link-int-target-status-invalid',
+										'src': invalidImg,
+										'alt': invalidMsg,
+										'title': invalidMsg } ) )
+									.append( $j( '<img />' ).attr( {
+										'id': 'edittoolbar-link-int-target-status-loading',
+										'src': loadingImg,
+										'alt': loadingMsg,
+										'title': loadingMsg } ) )
 									.data( 'cache', {} )
 									.children().hide();
 								
@@ -195,6 +211,7 @@ var editToolbarConfiguration = {
 											return s.replace( /(]+)/g, '<nowiki>$1</nowiki>' );
 										}
 										var insertText = '';
+										var whitespace = [ '', '' ];
 										switch ( $j( '#edittoolbar-link-tabs' ).tabs( 'option', 'selected' ) ) {
 											case 0: // Internal link
 												// FIXME: Exactly how fragile is this?
@@ -205,6 +222,7 @@ var editToolbarConfiguration = {
 												}
 												var target = $j( '#edittoolbar-link-int-target' ).val();
 												var text = $j( '#edittoolbar-link-int-text' ).val();
+												whitespace = $j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace' );
 												if ( target == text )
 													insertText = '[[' + target + ']]';
 												else
@@ -215,6 +233,7 @@ var editToolbarConfiguration = {
 												var text = $j( '#edittoolbar-link-ext-text' ).val();
 												var escTarget = escapeExternalTarget( target );
 												var escText = escapeExternalText( text );
+												whitespace = $j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace' );
 												if ( escTarget == escText )
 													insertText = escTarget;
 												else if ( text == '' )
@@ -223,8 +242,10 @@ var editToolbarConfiguration = {
 													insertText = '[' + escTarget + ' ' + escText + ']';
 											break;
 										}
+										// Preserve whitespace in selection when replacing
+										insertText = whitespace[0] + insertText + whitespace[1];
 										$j.wikiEditor.modules.toolbar.fn.doAction( $j(this).data( 'context' ), {
-											type: 'encapsulate',
+											type: 'replace',
 											options: {
 												pre: insertText
 											}
@@ -235,48 +256,49 @@ var editToolbarConfiguration = {
 										$j(this).dialog( 'close' );
 									}
 								},
-								close: function() {
-									// Clear text fields
-									$j(this).find( 'input' ).val( '' );
-								},
 								open: function() {
 									// Smart pre-fill text fields
-									// TODO: Replace selection, replace button
-									// TODO: Don't clear fields in other tab
 									var selection = $j(this).data( 'context' ).$textarea.getSelection();
 									if ( selection != '' ) {
 										var inttext, inttarget, exttext, exttarget;
 										var matches;
 										var tab = -1;
-										if ( ( matches = selection.match( /^\s*\[\[([^\]\|]+)(\|([^\]\|]*))?\]\]\s*$/ ) ) ) {
+										$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
+										$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
+										if ( ( matches = selection.match( /^(\s*)\[\[([^\]\|]+)(\|([^\]\|]*))?\]\](\s*)$/ ) ) ) {
 											// [[foo|bar]] or [[foo]]
-											inttarget = matches[1];
-											inttext = ( matches[3] ? matches[3] : matches[1] );
-											exttarget = 'http://';
-											exttext = '';
+											inttarget = matches[2];
+											inttext = ( matches[4] ? matches[4] : matches[2] );
 											tab = 0;
-										} else if ( ( matches = selection.match( /^\s*\[([^\] ]+)( ([^\]]+))?\]\s*$/ ) ) ) {
+											// Preserve whitespace when replacing
+											$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ matches[1], matches[5] ] );
+										} else if ( ( matches = selection.match( /^(\s*)\[([^\] ]+)( ([^\]]+))?\](\s*)$/ ) ) ) {
 											// [http://www.example.com foo] or [http://www.example.com]
-											exttarget = matches[1];
-											exttext = ( matches[3] ? matches[3] : '' );
-											inttarget = '';
-											inttext = '';
+											exttarget = matches[2];
+											exttext = ( matches[4] ? matches[4] : '' );
 											tab = 1;
+											// Preserve whitespace when replacing
+											$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ matches[1], matches[5] ] );
 										} else {
 											inttarget = inttext = exttext = selection;
 											exttarget = 'http://';
 										}
 										
 										// val() doesn't trigger the change event, so let's do that ourselves
-										$j( '#edittoolbar-link-int-text' ).val( inttext ).change();
-										$j( '#edittoolbar-link-int-target' ).val( inttarget ).change();
-										$j( '#edittoolbar-link-ext-text' ).val( exttext ).change();
-										$j( '#edittoolbar-link-ext-target' ).val( exttarget ).change();
+										if ( typeof inttext != 'undefined' )
+											$j( '#edittoolbar-link-int-text' ).val( inttext ).change();
+										if ( typeof inttarget != 'undefined' )
+											$j( '#edittoolbar-link-int-target' ).val( inttarget ).change();
+										if ( typeof exttext != 'undefined' )
+											$j( '#edittoolbar-link-ext-text' ).val( exttext ).change();
+										if ( typeof exttarget != 'undefined' )
+											$j( '#edittoolbar-link-ext-target' ).val( exttarget ).change();
 										if ( tab != -1 )
 											$j( '#edittoolbar-link-tabs' ).tabs( 'select', tab );
 									}
-									if ( $j( '#edittoolbar-link-int-text' ).val() == $j( '#edittoolbar-link-int-target' ).val() )
-										$j( '#edittoolbar-link-int-text' ).data( 'untouched', true );
+									$j( '#edittoolbar-link-int-text' ).data( 'untouched',
+										$j( '#edittoolbar-link-int-text' ).val() == $j( '#edittoolbar-link-int-target' ).val()
+									);
 								}
 							}
 						}

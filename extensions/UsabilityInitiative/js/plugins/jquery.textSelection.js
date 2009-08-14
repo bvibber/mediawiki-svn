@@ -2,18 +2,6 @@
  * These plugins provide extra functionality for interaction with textareas.
  */
 ( function( $ ) { $.fn.extend( {
-/**
- * Ported from skins/common/edit.js by Trevor Parscal
- * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
- * 
- * Inserts text at the begining and end of a text selection, optionally
- * inserting text at the caret when selection is empty.
- * 
- * @param pre Text to insert before selection
- * @param peri Text to insert at caret if selection is empty
- * @param post Text to insert after selection
- * @param ownline If true, put the inserted text is on its own line
- */
 
 getSelection: function() {
 	var e = this.jquery ? this[0] : this;
@@ -28,8 +16,22 @@ getSelection: function() {
 	}
 	return retval;
 },
+
+/**
+ * Ported from skins/common/edit.js by Trevor Parscal
+ * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
+ * 
+ * Inserts text at the begining and end of a text selection, optionally
+ * inserting text at the caret when selection is empty.
+ * 
+ * @param pre Text to insert before selection
+ * @param peri Text to insert at caret if selection is empty
+ * @param post Text to insert after selection
+ * @param ownline If true, put the inserted text is on its own line
+ * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
+ */
  
-encapsulateSelection: function( pre, peri, post, ownline ) {
+encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 	/**
 	 * Check if the selected text is the same as the insert text
 	 */ 
@@ -37,6 +39,8 @@ encapsulateSelection: function( pre, peri, post, ownline ) {
 		if ( !selText ) {
 			selText = peri;
 			isSample = true;
+		} else if ( replace ) {
+			selText = peri;
 		} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
 			// Exclude ending space char
 			selText = selText.substring(0, selText.length - 1);
@@ -111,7 +115,7 @@ encapsulateSelection: function( pre, peri, post, ownline ) {
 		}
 		e.scrollTop = textScroll;
 	}
-	$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline ] );
+	$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
 },
 /**
  * Ported from Wikia's LinkSuggest extension
