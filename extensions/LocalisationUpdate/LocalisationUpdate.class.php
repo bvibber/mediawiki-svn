@@ -88,7 +88,7 @@ class LocalisationUpdate {
 		closedir( $dir );
 
 		// Find the changed English strings (as these messages won't be updated in ANY language)
-		$changedEnglishStrings = self::compareFiles( $localdir . "/MessagesEn.php", $svndir . "/MessagesEn.php", $verbose );
+		$changedEnglishStrings = self::compareFiles( $localdir . "/MessagesEn.php", $svndir . "/MessagesEn.php", $verbose, true );
 
 		// Count the changes
 		$changedCount = 0;
@@ -184,8 +184,8 @@ class LocalisationUpdate {
 		$basefilecontents = preg_replace( "/\\\$messages/", "\$base_messages", $basefilecontents );
 
 		$basehash = md5( $basefilecontents );
-		// If this is the remote file check if the file has changed since our last update
-		if ( preg_match( "/^http/", $basefile ) && !$alwaysGetResult ) {
+		// Check if the file has changed since our last update
+		if ( !$alwaysGetResult ) {
 			if ( !self::checkHash( $basefile, $basehash ) ) {
 				self::myLog( "Skipping {$langcode} since the remote file hasn't changed since our last update" );
 				return array();
@@ -243,13 +243,9 @@ class LocalisationUpdate {
 		}
 
 		
-		if ( preg_match( "/^http/", $basefile )) {
-			self::saveHash( $basefile, $basehash );
-		}
+		self::saveHash( $basefile, $basehash );
 		
-		if ( preg_match( "/^http/", $comparefile )) {
-			self::saveHash( $comparefile, $comparehash );
-		}
+		self::saveHash( $comparefile, $comparehash );
 		
 		return $changedStrings;
 	}
@@ -455,13 +451,9 @@ class LocalisationUpdate {
 		// And log some stuff
 		self::myLog( "Updated " . $updates . " messages for the '{$extension}' extension" );
 
-		if ( preg_match( "/^http/", $basefile )) {
-			self::saveHash( $basefile, $basehash );
-		}
+		self::saveHash( $basefile, $basehash );
 		
-		if ( preg_match( "/^http/", $comparefile )) {
-			self::saveHash( $comparefile, $comparehash );
-		}
+		self::saveHash( $comparefile, $comparehash );
 		
 		return $updates;
 	}
