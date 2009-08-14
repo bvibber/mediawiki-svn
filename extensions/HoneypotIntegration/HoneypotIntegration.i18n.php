@@ -272,6 +272,14 @@ $messages['sk'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Počet udalostí v poslednej dobe, ktoré IP adresa spustila podľa projektu Honey Pot',
 );
 
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'honeypot-desc' => 'Tillhandahåller integration med [http://projecthoneypot.org/ Project Honey Pot] för webbplatser som använder MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Antal nyligen inträffade händelser som IP-adressen har utlöst, enligt Project Honey Pot',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

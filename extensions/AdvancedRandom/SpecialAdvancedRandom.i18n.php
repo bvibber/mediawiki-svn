@@ -66,6 +66,7 @@ $messages['avk'] = array(
  */
 $messages['be-tarask'] = array(
 	'advancedrandom' => 'Палепшаная выпадковая старонка',
+	'advancedrandom-desc' => 'Вяртае выпадковую старонку з любой прасторы назваў, на старонцы ці падстаронцы абмеркаваньня якой існуе спасылка на пададзеную старонку. Можа выкарыстоўвацца па прыкладу [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]], каб атрымаць старонку абмеркаваньня выпадковага выбранага артыкула альбо [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], каб атрымаць выпадковы файл з ліцэнзіяй GFDL',
 );
 
 /** Bengali (বাংলা)

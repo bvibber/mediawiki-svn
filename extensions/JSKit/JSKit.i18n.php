@@ -191,6 +191,13 @@ $messages['lb'] = array(
 	'jskit-desc' => 'Integréiert JS-Kit-Toolen a Wiki-Säiten',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'jskit-desc' => 'Интегрира js-kit алатки на викистраница',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

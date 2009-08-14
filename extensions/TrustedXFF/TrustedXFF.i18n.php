@@ -257,6 +257,13 @@ $messages['lt'] = array(
 	'trustedxff-desc' => 'Patikrintų proxy adresų sąrašas ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'trustedxff-desc' => 'раководење со листа на прокси адреси од доверба ([http://meta.wikimedia.org/wiki/XFF_project проект XFF])',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

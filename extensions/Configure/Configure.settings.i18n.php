@@ -2044,7 +2044,7 @@ $messages['be-tarask'] = array(
 	'configure-setting-wgUseSharedUploads' => 'Выкарыстоўваць агульныя загрузкі',
 	'configure-setting-wgAppleTouchIcon' => 'Іконка закладкі Apple Touch',
 	'configure-setting-wgArticlePath' => 'Базавы URL-адрас унутраных спасылак у MediaWiki',
-	'configure-setting-wgDirectoryMode' => 'Правы для новых дырэкторыяў',
+	'configure-setting-wgDirectoryMode' => 'Правы доступу для новых дырэкторыяў',
 	'configure-setting-wgDiff' => 'Шлях да праграмы GNU diff',
 	'configure-setting-wgDiff3' => 'Шлях да праграмы GNU diff3',
 	'configure-setting-wgFavicon' => 'URL-адрас іконкі сайта',
@@ -2055,6 +2055,11 @@ $messages['be-tarask'] = array(
 	'configure-setting-wgPhpCli' => 'Назва праграмы cli кліента PHP (php/php5)',
 	'configure-setting-wgProto' => 'Прэфікс бясьпечнага сэрвэра',
 	'configure-setting-wgScript' => 'URL-адрас index.php',
+	'configure-setting-wgScriptExtension' => 'Пашырэньне, якое дадаецца да назваў скрыптоў па змоўчваньні',
+	'configure-setting-wgScriptPath' => 'Базавы URL-шлях',
+	'configure-setting-wgServer' => 'Базавы URL-адрас сэрвэра',
+	'configure-setting-wgServerName' => 'Назва сэрвэра без пратаколу',
+	'configure-setting-wgSQLiteDataDirMode' => 'Правы доступу да дырэкторыі па змоўчваньні для зьвестак дырэкторыі SQLite пад час стварэньня',
 );
 
 /** Bulgarian (Български)
@@ -3288,6 +3293,7 @@ $messages['es'] = array(
 	'configure-setting-wgEnableEmail' => 'Habilitar características de correo electrónico',
 	'configure-setting-wgPasswordSender' => 'Dirección de correo electrónico recordador de contraseña',
 	'configure-setting-wgPasswordReminderResendTime' => 'Tiempo mínimo, en horas, el cual debe transcurrir entre recordadores de contraseña',
+	'configure-setting-wgSMTP' => 'servidor SMTP',
 	'configure-setting-wgDebugLogGroups-value' => 'Archivo',
 	'configure-setting-wgJobRunRate' => 'Número de taeas a ejecutar por vista de página',
 	'configure-setting-wgUpdateRowsPerJob' => 'Número de filas a actualizar por tarea',
@@ -3356,8 +3362,11 @@ $messages['es'] = array(
 	'configure-setting-wgImportSources' => 'Lista de prefijos interwiki para transwiki',
 	'configure-setting-wgLocalInterwiki' => 'Prefijo interwiki local',
 	'configure-setting-wgProxyList' => 'Direcciones IP prohibidas',
+	'configure-setting-wgProxyWhitelist' => 'Lista blanca de proxy',
 	'configure-setting-wgSecretKey' => 'Clave secreta',
 	'configure-setting-wgDBmysql5' => 'Usar codificacion UTF-8',
+	'configure-setting-wgDBprefix' => 'Prefijo de tabla',
+	'configure-setting-wgDBClusterTimeout' => 'Timeout de base de datos',
 	'configure-setting-wgDBservers' => 'Servidores de base de datos',
 	'configure-setting-wgExternalServers' => 'Servidores externos MySQL',
 	'configure-setting-wgAntivirus' => 'Nombre interno de antivirus',
@@ -3485,6 +3494,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Nike
  * @author Silvonen
  * @author Str4nd
@@ -3713,6 +3723,7 @@ $messages['fi'] = array(
 	'configure-setting-wgStyleDirectory' => 'Tiedostojärjestelmän polku skins-hakemistoon',
 	'configure-setting-wgStylePath' => 'Ulkoasuhakemiston URL',
 	'configure-setting-wgTmpDirectory' => 'Väliaikaishakemiston URL',
+	'configure-setting-wgUsePathInfo' => "Käytä 'kaunistettuja' URL-osoitteita",
 	'configure-setting-wgUploadNavigationUrl' => 'URL tiedostojen tallentamiseen valikossa',
 	'configure-setting-wgUploadPath' => 'Tiedostojen tallennushakemiston URL',
 	'configure-setting-wgPutIPinRC' => 'Lisää IP-osoitteet ”recentchanges”-tauluun',
@@ -5803,6 +5814,14 @@ $messages['hu'] = array(
 	'configure-setting-wgEnableUploads' => 'Feltöltés engedélyezése',
 	'configure-setting-wgFileBlacklist' => 'Tiltott fájlkiterjesztések',
 	'configure-setting-wgFileStore' => 'Törölt fájlok tárolásának helye',
+	'configure-setting-wgHTTPProxy' => 'A használt HTTP-proxy',
+	'configure-setting-wgVersion' => 'A MediaWiki verziója',
+	'configure-setting-wgAllowSpecialInclusion' => 'Speciális lapok beillesztésének engedélyezése',
+	'configure-setting-wgExportAllowHistory' => 'Exportáláskor a teljes laptörténet kimenthető',
+	'configure-setting-wgExportAllowListContributors' => 'A közreműködök listája exportálható',
+	'configure-setting-wgExportMaxHistory' => 'Az [[Special:Export|exportálás]] során maximálisan kimenthető változatok száma',
+	'configure-setting-wgFavicon' => 'Az oldal favikonjának URL-címe',
+	'configure-setting-wgLogo' => 'Az oldal logójának URL-címe',
 );
 
 /** Interlingua (Interlingua)

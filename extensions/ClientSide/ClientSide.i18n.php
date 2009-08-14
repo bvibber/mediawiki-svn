@@ -279,6 +279,13 @@ $messages['su'] = array(
 	'clientside-desc' => 'Nyadiakeun fungsi pikeun nyieun kode kawas HTML, CSS sarta Javascript',
 );
 
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'clientside-desc' => 'Tillhandahåller funktioner för att generera kod i klientformat som HTML, CSS och JavaScript',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

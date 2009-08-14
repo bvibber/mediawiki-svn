@@ -558,6 +558,35 @@ $messages['bg'] = array(
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] подписа [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'sign-selectdoc' => 'Teul :',
+	'sign-realname' => 'Anv :',
+	'sign-address' => "Chomlec'h :",
+	'sign-city' => 'Kêr :',
+	'sign-state' => 'Stad :',
+	'sign-zip' => 'Kod-post :',
+	'sign-country' => 'Bro :',
+	'sign-phone' => 'Niverenn bellgomz :',
+	'sign-bday' => 'Oad :',
+	'sign-email' => "Chomlec'h postel :",
+	'sign-viewfield-realname' => 'Anv',
+	'sign-viewfield-address' => "Chomlec'h",
+	'sign-viewfield-city' => 'Kêr',
+	'sign-viewfield-state' => 'Stad',
+	'sign-viewfield-country' => 'Bro',
+	'sign-viewfield-zip' => 'Kod-post',
+	'sign-viewfield-ip' => "Chomlec'h IP",
+	'sign-viewfield-phone' => 'Pellgomz',
+	'sign-viewfield-email' => 'Postel',
+	'sign-viewfield-age' => 'Oad',
+	'sign-viewfield-options' => 'Dibarzhioù',
+	'sign-closed' => 'serr',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] en deus kadarnaet [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -736,6 +765,14 @@ $messages['de-formal'] = array(
 	'sign-nodocselected' => 'Bitte wählen Sie das zu signierende Dokument aus.',
 	'sign-docheader' => '<div class="noarticletext">Bitte benutzen Sie dieses Formular, um das hierunter angezeigte Dokument „[[$1]]“ zu signieren.
 Bitte lesen Sie das gesammte Dokument und wenn Sie ihm Ihre Zustimmung geben, füllen Sie bitte die nötigen Felder aus, um es zu signieren.</div>',
+	'sign-information' => '<div class="noarticletext">Danke, dass Sie sich die Zeit genommen haben, dieses Dokument durchzulesen.
+Wenn Sie ihm zustimmen, zeigen Sie dies bitte indem Sie die benötigten Felder unten ausfüllen und anschließend auf „Dokument unterschreiben“ klicken.
+Bitte stellen Sie sicher, dass Ihre persönlichen Informationen korrekt sind und dass wir die Möglichkeit haben, Sie zur Feststellung Ihrer Identität zu kontaktieren.
+Beachten Sie, dass Ihre IP-Adresse und andere persönliche Informationen von diesem Formular aufgezeichnet werden und dass sie von Moderatoren benutzt werden, um doppelte Unterschriften zu beseitigen und Ihre Daten zu verifizieren.
+Da die Benutzung offener Proxys uns in der Durchführung dieser Aufgabe einschränkt, werden Unterschriften über solche Proxys in der Regel nicht bearbeitet.
+Sollten Sie gerade über einen solchen Server verbunden sein, trennen Sie bitte die Verbindung von ihm und nutzen Sie eine Standardverbindung.</div>
+
+$1',
 	'sig-success' => 'Sie haben das Dokument erfolgreich unterschrieben.',
 );
 

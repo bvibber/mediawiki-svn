@@ -235,6 +235,13 @@ $messages['lt'] = array(
 	'substall-desc' => 'Sukuria <nowiki><substall></nowiki> žymę, kuri išplečia visus šablonus į wikisintaksę',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'substall-desc' => 'Создава ознака <nowiki><substall></nowiki> која ги проширува сите шаблони до викисинтакса',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

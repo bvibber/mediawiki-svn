@@ -314,6 +314,13 @@ $messages['li'] = array(
 	'doublewiki-desc' => "Toent 'n pagina en de vertaling oet 'n andere wiki in twie kolomme op dezelfde pagina",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'doublewiki-desc' => 'Прикажува страница и нејзин превод од друго вики во две колони на истата страница',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

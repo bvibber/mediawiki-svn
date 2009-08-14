@@ -207,6 +207,13 @@ $messages['lb'] = array(
 	'javascript-desc' => 'Setzt uniwiki.js op all Säit derbäi op däer JavaScript-Code de vu verschiddenen Uniwiki Erweiderunge benotzt gëtt',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'javascript-desc' => 'Го додава uniwiki.js на секоја страница што содржи JavaScript код кој е заеднички за Uniwiki проширувањата',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

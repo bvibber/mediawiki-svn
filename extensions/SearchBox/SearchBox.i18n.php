@@ -241,11 +241,12 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'searchbox-search' => 'Rechèrchiér',
 	'searchbox-go' => 'Lanciér',
-	'searchbox-namespaces' => 'Èspâços de nom :',
+	'searchbox-namespaces' => 'Èspâços de noms :',
 );
 
 /** Galician (Galego)
@@ -446,9 +447,11 @@ $messages['lfn'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
+	'searchbox-desc' => 'Дозволи вклучување на форми на пребарување',
 	'searchbox-search' => 'Барај',
 	'searchbox-go' => 'Оди',
 	'searchbox-namespaces' => 'Именски простори:',

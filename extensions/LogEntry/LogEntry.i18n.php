@@ -152,11 +152,13 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'logentry-append' => 'Lisää',
+	'logentry-parserhook-desc' => 'Tämä merkintäkoodi laajennos tarjoaa lomakkeen jonka avulla voidaan lisätä tekstiä lokisivujen edelle tai perään',
 	'logentry-invalidpage' => 'Virheellinen sivu',
 	'logentry-invalidtoken' => 'Virheellinen lipuke',
 );
@@ -255,6 +257,18 @@ $messages['id'] = array(
 	'logentry' => 'LogEntry',
 	'logentry-invalidpage' => 'Halaman tidak sah',
 	'logentry-invalidtoken' => 'Token tidak sah',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'logentry-append' => 'Aggiungi',
+	'logentry-parserhook-desc' => "Questa estensione tag fornisce un modulo per aggiungere del testo all'inizio o alla fine della pagine dei registri",
+	'logentry-specialpage-desc' => 'Questa estensione tag fornisce un processo per aggiungere alle pagine dei registri',
+	'logentry' => 'LogEntry',
+	'logentry-invalidpage' => 'Pagina non valida',
+	'logentry-invalidtoken' => 'Token non valido',
 );
 
 /** Japanese (日本語)

@@ -952,11 +952,13 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'languageselector' => '语言',
-	'languageselector-setlang' => '設置',
+	'languageselector-desc' => '在每一页面上添加语言选择项，对匿名访问者亦有效',
+	'languageselector-setlang' => '设置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

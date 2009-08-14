@@ -228,6 +228,13 @@ $messages['lb'] = array(
 	'formatsearch-desc' => "Botzt d'Säit mat de Resultater vun der Sich",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'formatsearch-desc' => 'Ја исчистува страницата со резултати од пребарување',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

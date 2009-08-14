@@ -33,6 +33,13 @@ $messages['qqq'] = array(
 * $3 is the time at which the page was changed',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'formatchanges-anonymous' => 'Anoniem',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -347,6 +354,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'formatchanges-createdby' => '$1 - создадена од $2 ($3)',
+	'formatchanges-editedby' => '$1 - уредено од $2 ($3)',
 );
 
 /** Nahuatl (Nāhuatl)

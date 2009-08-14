@@ -21,15 +21,22 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Darth Kule
  * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'gur-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
-	'gur-rightslog-entry' => 'Similar to {{msg-mw|Rightslogentry}}.',
-	'right-userrights-global' => '{{doc-right}}',
+	'gur-desc' => '{{desc}}
+
+See also {{msg-mw|Gblrights-desc}}',
+	'gur-rightslog-name' => 'See also {{msg-mw|Gblrights-logpage}}',
+	'gur-rightslog-header' => 'See also {{msg-mw|Gblrights-pagetext}}',
+	'gur-rightslog-entry' => 'Identical to {{msg-mw|Gblrights-rights-entry}}.
+
+Similar to {{msg-mw|Rightslogentry}}.',
+	'right-userrights-global' => '{{doc-right}}
+
+See also {{msg-mw|Right-userrights-shared}}',
 );
 
 /** Arabic (العربية)

@@ -95,10 +95,12 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Matěj Grabovský
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'seealso' => 'Vizte též',
+	'seealso-desc' => 'Lokalizované nadpisy „Související články“ pomocí značky &lt;seealso&gt;',
 );
 
 /** Welsh (Cymraeg)

@@ -214,6 +214,8 @@ $1 = Repository name',
  */
 $messages['af'] = array(
 	'code-comments' => 'Opmerkings',
+	'code-old-status' => 'Ou status',
+	'code-new-status' => 'Nuwe status',
 	'code-authors' => 'outeurs',
 	'code-author-name' => "Sleutel 'n gebruikersnaam in:",
 	'code-field-author' => 'Outeur',
@@ -1044,7 +1046,7 @@ $messages['cs'] = array(
 	'code-status' => 'stavy',
 	'code-tags' => 'značky',
 	'code-tests' => 'Testování',
-	'code-authors-text' => 'Toto je seznam autorů v úložišti seřazený podle posledních commitů.',
+	'code-authors-text' => 'Toto je seznam autorů v úložišti seřazený podle posledních commitů. V závorkách jsou uživatelská jména na této wiki.',
 	'code-author-haslink' => 'Tento autor je spojen s wiki uživatelem $1',
 	'code-author-orphan' => 'Tento autor není svázaný s žádným wikiuživatelem',
 	'code-author-dolink' => 'Svázat tohoto autora s wikiuživatelem:',
@@ -1126,6 +1128,14 @@ $4',
 Komentář ke změně:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Automatické testování detekovalo regresi',
+	'codereview-email-body3' => 'Automatické testování odhalilo regresi způsobenou změnami v r$1.
+
+Úplné URL: $2
+
+Komentář ke commitu:
+
+$3',
 	'repoadmin' => 'Správa úložišť',
 	'repoadmin-new-legend' => 'Vytvořit nové úložiště',
 	'repoadmin-new-label' => 'Název úložiště:',
@@ -1172,7 +1182,7 @@ $messages['de'] = array(
 	'code-status' => 'Status',
 	'code-tags' => 'Tags',
 	'code-tests' => 'Testfälle',
-	'code-authors-text' => 'Dies ist die Liste der Autoren in der Reihefolge der Einspielungen.',
+	'code-authors-text' => 'Unten folgt eine Liste der Repositoriumsautoren, sortiert nach den neuesten Übertragungen. Lokale Wikikonten werden in runden Klammern angezeigt.',
 	'code-author-haslink' => 'Dieser Autor ist mit dem Wiki-Benutzer $1 verlinkt',
 	'code-author-orphan' => 'Dieser Autor hat keinen Link zu einem Wiki-Benutzerkonto',
 	'code-author-dolink' => 'Diesen Autor zu einem Wiki-Benutzerkonto verlinken:',
@@ -1254,6 +1264,14 @@ Volle URL: $3
 Übertragungszusammenfassung:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Die automatische Prüfung entdeckte einen Rückgang',
+	'codereview-email-body3' => 'Die automatische Prüfung entdeckte einen Rückgang aufgrund der Änderungen in r$1.
+
+Vollständige URL: $2
+
+Übertragungszusammenfassung:
+
+$3',
 	'repoadmin' => 'Repositoriums-Administration',
 	'repoadmin-new-legend' => 'Neues Repositorium erstellen',
 	'repoadmin-new-label' => 'Name des Repositoriums:',
@@ -2823,9 +2841,10 @@ $messages['hr'] = array(
 	'code-load-diff' => 'Učitavam razliku...',
 	'code-notes' => 'nedavni komentari',
 	'code-authors' => 'autori',
-	'code-status' => 'status',
+	'code-status' => 'statusi',
 	'code-tags' => 'oznake',
-	'code-authors-text' => 'Ispod je popis autora iz repozitorija u redu po nedavnim predajama.',
+	'code-tests' => 'Testni slučajevi',
+	'code-authors-text' => 'Ispod je popis autora iz repozitorija posloženih po nedavnim predajama. Lokalni wiki računi prikazani su u zagradama.',
 	'code-author-haslink' => 'Ovaj autor je povezan s wiki suradnikom $1',
 	'code-author-orphan' => 'Ovaj autor nema poveznicu s wiki računom',
 	'code-author-dolink' => 'Poveži ovog autora na wiki suradnika:',
@@ -3338,7 +3357,7 @@ $messages['it'] = array(
 	'code-authors' => 'autori',
 	'code-status' => 'stato',
 	'code-tags' => 'tag',
-	'code-authors-text' => 'Di seguito viene presentata una lista di autori relativi al repository, in ordine cronologico per i commit recenti.',
+	'code-authors-text' => 'Di seguito viene presentata una lista di autori relativi al repository, in ordine cronologico per i commit recenti. Gli account wiki locali sono mostrati fra parentesi.',
 	'code-author-haslink' => "Questo autore è collegato all'utente wiki $1",
 	'code-author-orphan' => 'Questo autore non è collegato a un utente wiki',
 	'code-author-dolink' => 'Collegare questo autore a un utente wiki:',
@@ -6360,6 +6379,7 @@ $4',
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Fluff
  * @author Gabbe.g
  * @author Najami
  * @author Rotsee
@@ -6384,7 +6404,8 @@ $messages['sv'] = array(
 	'code-authors' => 'författare',
 	'code-status' => 'status',
 	'code-tags' => 'taggar',
-	'code-authors-text' => 'Nedan är en lista av repo-författare ordnade efter senaste commits.',
+	'code-tests' => 'Testfall',
+	'code-authors-text' => 'Nedan är en lista av repo-författare ordnade efter senaste bidrag. Lokala wikikonton visas inom parentes.',
 	'code-author-haslink' => 'Denna författare är länkad till wiki-användaren $1',
 	'code-author-orphan' => 'Författaren är inte länkad med något wiki-konto',
 	'code-author-dolink' => 'Länka denna författare till en wiki-användare :',
@@ -6402,6 +6423,7 @@ $messages['sv'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Noter',
+	'code-field-tests' => 'Test',
 	'code-field-path' => 'Sökväg',
 	'code-field-text' => 'Not',
 	'code-field-select' => 'Välj',
@@ -6465,6 +6487,14 @@ Full URL:  $3
 Sammanfattning:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Regression upptäcktes vid automatisk testning',
+	'codereview-email-body3' => 'Vid automatisk testning upptäcktes regression på grund av förändringar i r$1.
+
+Fullständig webbadress: $2
+
+Bidragssammanfattning:
+
+$3',
 	'repoadmin' => 'Databasadministration',
 	'repoadmin-new-legend' => 'Skapa en ny databas',
 	'repoadmin-new-label' => 'Databasnamn:',
@@ -7121,6 +7151,14 @@ URL par intiero: $3
 Ojeto de la modifica:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: el test automatico el gà catà na regression',
+	'codereview-email-body3' => 'El test automatico el gà catà na regression dovùa ai canbiamenti de la version r$1.
+
+URL conpleto: $2
+
+Ogeto de la modifica:
+
+$3',
 	'repoadmin' => "'Ministrassion dei depositi",
 	'repoadmin-new-legend' => 'Crea un deposito novo',
 	'repoadmin-new-label' => 'Nome del deposito:',
@@ -7489,23 +7527,30 @@ $4',
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Gaoxuewei
+ * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'code' => '查看代码',
+	'code-rev-title' => 'r$1 - 代码复核',
 	'code-comments' => '评论',
-	'code-change-status' => "改变了这一修订版本的'''状态'''",
-	'code-change-tags' => "改变了这一修订版本的'''标签'''",
+	'code-references' => '后续修订',
+	'code-change-status' => "改变了r$1的'''状态'''",
+	'code-change-tags' => "改变了r$1的'''标签'''",
 	'code-change-removed' => '移除：',
 	'code-change-added' => '增加：',
+	'code-old-status' => '旧状态',
+	'code-new-status' => '新状态',
 	'code-prop-changes' => '状态与标签记录',
 	'code-desc' => '使用[[Special:RepoAdmin|Subversion支持]]的[[Special:Code|代码检查工具]]',
 	'code-no-repo' => '储存库未被设置！',
 	'code-load-diff' => '加载差异中...',
-	'code-notes' => '检查注释',
+	'code-notes' => '新近发言',
+	'code-statuschanges' => '更改状态',
 	'code-authors' => '作者',
 	'code-status' => '状态',
 	'code-tags' => '标签',
+	'code-tests' => '测试情况',
 	'code-author-haslink' => '作者与维基用户 $1 相关联',
 	'code-author-orphan' => '作者没有与维基帐户相关联',
 	'code-author-dolink' => '将作者与维基用户相关联：',
@@ -7523,8 +7568,10 @@ $messages['zh-hans'] = array(
 	'code-field-status' => '状态',
 	'code-field-timestamp' => '日期',
 	'code-field-comments' => '注释',
+	'code-field-tests' => '测试',
 	'code-field-path' => '路径',
 	'code-field-text' => '注释',
+	'code-field-select' => '选定',
 	'code-rev-author' => '作者：',
 	'code-rev-date' => '日期：',
 	'code-rev-message' => '评论：',
@@ -7556,7 +7603,11 @@ $messages['zh-hans'] = array(
 	'code-pathsearch-path' => '路径：',
 	'code-rev-submit' => '保存修改',
 	'code-rev-submit-next' => '保存，并处理下一条',
+	'code-batch-status' => '更改状态：',
+	'code-batch-tags' => '更改标签：',
 	'codereview-batch-submit' => '提交',
+	'code-release-startrev' => '开始修订：',
+	'code-release-endrev' => '结束修订：',
 	'codereview-reply-link' => '回复',
 	'codereview-email-subj' => '[$1] [r$2]: 新的评论已添加',
 	'codereview-email-body' => '用户 "$1" 在 r$3 上添加了一条评论。
@@ -7566,6 +7617,22 @@ $messages['zh-hans'] = array(
 评论:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]：后续更改',
+	'codereview-email-body2' => '用户“$1”对r$2作出了后续更改。
+
+URL链接：$3
+
+提交摘要：
+
+$4',
+	'codereview-email-subj3' => '[$1] [r$2]：自动测试发现已知错误',
+	'codereview-email-body3' => '自动测试发现r$1导致了已知的错误。
+
+URL链接：$2
+
+提交摘要：
+
+$3',
 	'repoadmin' => '储存库管理',
 	'repoadmin-new-legend' => '建立新的储存库',
 	'repoadmin-new-label' => '储存库名称：',
@@ -7577,6 +7644,7 @@ $4',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => '储存库"[[Special:Code/$1|$1]]"已被成功修改。',
 	'right-repoadmin' => '管理代码储存库',
+	'right-codereview-use' => '使用Special:Code',
 	'right-codereview-add-tag' => '添加新标签到修订',
 	'right-codereview-remove-tag' => '自修订移除标签',
 	'right-codereview-post-comment' => '添加评论到修订',

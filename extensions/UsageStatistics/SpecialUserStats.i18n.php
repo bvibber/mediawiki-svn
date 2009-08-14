@@ -1151,6 +1151,15 @@ $messages['km'] = array(
 	'usagestatistics-editpages' => 'អ្នកប្រើប្រាស់​បុគ្គល $1 ស្ថិតិ​ទំព័រ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'usagestatisticsintervalday' => 'ದಿನ',
+	'usagestatisticsintervalweek' => 'ವಾರ',
+	'usagestatisticsintervalmonth' => 'ತಿಂಗಳು',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -1213,6 +1222,7 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -1239,6 +1249,7 @@ $messages['mk'] = array(
 	'usagestatisticscalselect' => 'Избери',
 	'usagestatistics-editindividual' => 'Статистики на уредување за корисник $1',
 	'usagestatistics-editpages' => 'Статистики на страници за корисник $1',
+	'right-viewsystemstats' => 'Погледајте ги [[Special:UserStats|статистиките за употребата на викито]]',
 );
 
 /** Malayalam (മലയാളം)

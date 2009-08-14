@@ -171,6 +171,13 @@ $messages['lb'] = array(
 	'localisationupdate-desc' => 'hält déi lokaliséiert Messagen esou aktuell wéi méiglech.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'localisationupdate-desc' => 'Ги одржува локализираните пораки колку што е можно пообновени и повеќе во тек со настаните',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

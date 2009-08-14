@@ -424,10 +424,11 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'opensearchxml-desc' => '提供文字撷取的[http://www.opensearch.org OpenSearch] XML界面',
+	'opensearchxml-desc' => '提供文本获取的[http://www.opensearch.org OpenSearch]XML界面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

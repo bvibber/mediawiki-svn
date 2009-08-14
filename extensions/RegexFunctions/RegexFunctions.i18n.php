@@ -200,6 +200,13 @@ $messages['li'] = array(
 	'regexfunctions-desc' => 'Regelierexpressieparserfunksje',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'regexfunctions-desc' => 'Парсерски функции со регуларен израз',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

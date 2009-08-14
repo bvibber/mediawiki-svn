@@ -30,6 +30,15 @@ $messages['en'] = array(
 	'replaceset-error-regexbadmodifier' => 'The regex modifier \'$1\' is not valid.'
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'replaceset-error-calllimit' => 'Была дасягнутая мяжа выклікаў ReplaceSet.',
+	'replaceset-error-regexnoend' => 'Ва ўзоры рэгулярнага выразу «$1» адсутнічае канчатковы падзяляльнік «$2»',
+	'replaceset-error-regexbadmodifier' => 'Няслушны мадыфікатар рэгулярнага выразу «$1».',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -64,6 +73,15 @@ $messages['hsb'] = array(
 	'replaceset-error-calllimit' => 'Limit zawołanjow ReplaceSet je docpěty.',
 	'replaceset-error-regexnoend' => 'Mustrej regularnych wurazow "$1" kónčne dźělatko \'$2\' pobrachuje',
 	'replaceset-error-regexbadmodifier' => "Modifikator regularnych wurazow '$1' płaćiwy njeje.",
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'replaceset-error-calllimit' => 'Il limite di chiamate ReplaceSet è stato raggiunto.',
+	'replaceset-error-regexnoend' => 'Il delimitatore finale \'$2\' manca al pattern della regex "$1"',
+	'replaceset-error-regexbadmodifier' => "Il modificatore della regex '$1' non è valido.",
 );
 
 /** Japanese (日本語)

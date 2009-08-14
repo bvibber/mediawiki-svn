@@ -25,11 +25,14 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'edituser-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'edituser-username' => '{{Identical|Name}}',
 	'edituser-dosearch' => '{{Identical|Search}}',
+	'right-edituser' => '{{doc-right|edituser}}',
+	'right-edituser-exempt' => '{{doc-right|edituser-exempt}}',
 );
 
 /** Karelian (Karjala)

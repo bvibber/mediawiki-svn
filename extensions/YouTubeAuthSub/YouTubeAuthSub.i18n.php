@@ -499,6 +499,7 @@ Vær tålmodig.',
  * @author ChrisiPK
  * @author Purodha
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'youtubeauthsub' => 'YouTube-Video hochladen',
@@ -520,7 +521,7 @@ YouTube könnte etwas Zeit brauchen, um dein Video zu verarbeiten, sodass die Se
 
 Um das Video auf einer Seite einzubetten, füge folgenden Text ein:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'Du musst dich zuerst bei YouTube einloggen, um ein Video hochzuladen.',
+	'youtubeauthsub_authsubinstructions' => 'Du musst dich zuerst bei YouTube anmelden, um ein Video hochzuladen.',
 	'youtubeauthsub_uploadhere' => 'Video von dort hochladen:',
 	'youtubeauthsub_uploadbutton' => 'Hochladen',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
@@ -538,6 +539,7 @@ Bitte habe Geduld.',
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Imre
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'youtubeauthsub_info' => 'Um ein Video zu YouTube hochzuladen, um es anschließend auf einer Seite einzubetten, müssen Sie folgende Felder ausfüllen:',
@@ -548,7 +550,7 @@ YouTube könnte etwas Zeit brauchen, um dein Video zu verarbeiten, sodass die Se
 
 Um das Video auf einer Seite einzubetten, fügen Sie folgenden Text ein:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'Sie müssen sich zuerst bei YouTube einloggen, um ein Video hochzuladen.',
+	'youtubeauthsub_authsubinstructions' => 'Sie müssen sich zuerst bei YouTube anmelden, um ein Video hochzuladen.',
 	'youtubeauthsub_uploading' => 'Ihr Video wird gerade hochgeladen.
 Bitte haben Sie Geduld.',
 	'youtubeauthsub_viewpage' => 'Alternativ können Sie [[$1|Ihr Video ansehen]].',

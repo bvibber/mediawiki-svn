@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'whosonline-desc' => 'Displays [[Special:WhosOnline|a list]] of logged-in and anonymous users currently online',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'whosonline' => 'Wie is aanlyn',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

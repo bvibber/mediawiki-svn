@@ -589,10 +589,18 @@ $messages['gsw'] = array(
  * @author MacTire02
  */
 $messages['gv'] = array(
+	'bookinfo-header' => 'Oayllys lioar',
+	'bookinfo-desc' => 'Mooadaghey [[Special:Booksources|yn duillag er lheh ry hoi farraneyn-fys lioar]] lesh oayllys veih shirveish voggyl.',
 	'bookinfo-result-title' => 'Ennym:',
 	'bookinfo-result-author' => 'Ughtar:',
 	'bookinfo-result-publisher' => 'Soilsheyder:',
 	'bookinfo-result-year' => 'Blein:',
+	'bookinfo-error-invalidisbn' => 'ISBN neuchiart currit stiagh.',
+	'bookinfo-error-nosuchitem' => 'Cha nel y nhee ayn ny cha row eh er geddyn magh.',
+	'bookinfo-error-nodriver' => 'Cha nel eh jargal yn Immanagh Oayllys Lioar y ghoaill toshiaght.',
+	'bookinfo-error-noresponse' => 'Cha row freggyrt ayn ny haghyr jerrey traa lesh yn aghin.',
+	'bookinfo-purchase' => 'Kionnee yn lioar shoh veih $1',
+	'bookinfo-provider' => 'Kiareyder fysseree: $1',
 );
 
 /** Hebrew (עברית)

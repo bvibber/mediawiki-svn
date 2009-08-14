@@ -472,9 +472,9 @@ $messages['de'] = array(
 	'regexblock-help' => "Verwende das folgende Formular um eine IP-Adresse oder einen angemeldeten Benutzer zu sperren.
 Diese Funktion sollte nur zur Verhinderung von Vandalismus und gemäß der Richtlinien eingesetzt werden.
 ''Diese Seite erlaubt es auch nicht existierende Benutzerkonten zu sperren, sowie solche, die ähnliche Namen zu bestehenden Konten haben, zum Beispiel eine Sperre von „Test” sperrt auch „Test 2“ usw.
-Du kannst auch ganze IP-Adressen sperren, so dass niemand der sich unter diesen IP-Adressen einloggt, Seiten editieren kann.
+Du kannst auch ganze IP-Adressen sperren, so dass niemand der sich unter diesen IP-Adressen anmeldet, Seiten bearbeiten kann.
 Achtung: Teile von IP-Adressen werden als Benutzernamen beim Sperren aufgefasst.
-Falls kein Sperrgrund angegeben ist, wird ein Standard-Begründung verwendet.''",
+Falls kein Sperrgrund angegeben ist, wird eine Standard-Begründung verwendet.''",
 	'regexblock-page-title-1' => 'Sperre Adressen anhand regulärer Ausdrücke',
 	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten, Seiten zu bearbeiten, da von dieser IP-Adresse – von dir oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, [[$1|nimm bitte Kontakt mit uns auf]].',
@@ -490,7 +490,7 @@ Bitte melde dich mit einem anderen Benutzernamen an oder [[$1|nimm Kontakt mit u
 	'regexblock-form-submit' => 'Sperre diesen Benutzer',
 	'regexblock-form-submit-empty' => 'Einen Benutzernamen oder eine IP-Adresse für die Sperrung angeben.',
 	'regexblock-form-submit-regex' => 'Ungültiger regulärer Ausdruck.',
-	'regexblock-form-submit-expiry' => 'Bitte wähle einen Verfallszeitraum.',
+	'regexblock-form-submit-expiry' => 'Bitte wähle einen Ablaufzeitraum.',
 	'regexblock-match-stats-record' => '$1 sperrte „$2“ auf „$3“ am $6 um $7 Uhr, angemeldet von Adresse „$5“',
 	'regexblock-nodata-found' => 'Keine Daten gefunden',
 	'regexblock-stats-title' => 'Regex-Sperrstatistiken',
@@ -508,7 +508,6 @@ Vermutlich gibt es keinen solchen Benutzer.',
 	'regexblock-view-reason' => 'Grund: $1',
 	'regexblock-view-reason-default' => 'allgemeiner Grund',
 	'regexblock-view-block-infinite' => 'permanente Sperrung',
-	'regexblock-view-block-expired' => 'Abgelaufen am',
 	'regexblock-view-block-by' => 'gesperrt von:',
 	'regexblock-view-block-unblock' => 'entsperren',
 	'regexblock-view-stats' => 'Statistiken',
@@ -518,13 +517,24 @@ Vermutlich gibt es keinen solchen Benutzer.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'regexblock-help' => "Verwenden Sie das folgende Formular um eine IP-Adresse oder einen angemeldeten Benutzer zu sperren.
+Diese Funktion sollte nur zur Verhinderung von Vandalismus und gemäß der Richtlinien eingesetzt werden.
+''Diese Seite erlaubt es auch nicht existierende Benutzerkonten zu sperren, sowie solche, die ähnliche Namen zu bestehenden Konten haben, zum Beispiel eine Sperre von „Test” sperrt auch „Test 2“ usw.
+Sie können auch ganze IP-Adressen sperren, so dass niemand der sich unter diesen IP-Adressen anmeldet, Seiten bearbeiten kann.
+Achtung: Teile von IP-Adressen werden als Benutzernamen beim Sperren aufgefasst.
+Falls kein Sperrgrund angegeben ist, wird eine Standard-Begründung verwendet.''",
 	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu, Seiten zu bearbeiten, da von dieser IP-Adresse – von Ihnen oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
 Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, [[$1|nehmen Sie bitte Kontakt mit uns auf]].',
 	'regexblock-reason-name' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem Verhalten, verboten, Seiten zu bearbeiten.
 Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, [[$1|nehmen Sie bitte Kontakt mit uns auf]].',
+	'regexblock-reason-regex' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem Verhalten eines Benutzers mit einem ähnliches Benutzernamen, verboten, Seiten zu bearbeiten.
+Bitte melden Sie sich mit einem anderen Benutzernamen an oder [[$1|nehmen Sie Kontakt mit uns auf]].',
+	'regexblock-form-submit-expiry' => 'Bitte wählen Sie einen Ablaufzeitraum.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -679,11 +689,11 @@ Probablemente no existe tal usuario.',
 	'regexblock-view-blocked' => 'Ver bloqueos por:',
 	'regexblock-view-all' => 'Todos',
 	'regexblock-view-go' => 'Ir',
+	'regexblock-view-match' => '(coincidencia exacta)',
 	'regexblock-view-account' => '(bloqueo de creación de cuenta)',
 	'regexblock-view-reason' => 'Motivo: $1',
 	'regexblock-view-reason-default' => 'razón genérica',
 	'regexblock-view-block-infinite' => 'bloqueo permanente',
-	'regexblock-view-block-expired' => 'EXPIRA en',
 	'regexblock-view-block-by' => 'bloqueado por:',
 	'regexblock-view-block-unblock' => 'desbloquear',
 	'regexblock-view-stats' => 'Estadísticas',

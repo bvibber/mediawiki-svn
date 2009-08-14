@@ -47,6 +47,8 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'mostrevisors-namespace' => 'Naamruimte:',
+	'mostrevisors-none' => 'Geen bladsye gevind.',
 	'mostrevisors-submit' => 'OK',
 );
 
@@ -219,10 +221,17 @@ $messages['et'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'mostrevisors' => 'Sivut joilla on eniten muokkaajia',
+	'mostrevisors-header' => "'''Tämä sivu luettelee tämän wikin {{PLURAL:$1|sivun jolla|$1 sivua joilla}} on eniten muokkaajia.'''",
+	'mostrevisors-limitlinks' => 'Näytä enintään $1 sivua',
 	'mostrevisors-namespace' => 'Nimiavaruus',
+	'mostrevisors-none' => 'Sivuja ei löytynyt.',
+	'mostrevisors-ns-header' => "'''Tällä sivulla esitetään $2 nimiavaruudessa {{PLURAL:$1|oleva sivu jolla|olevien $1 sivun luettelo sivuista}} joilla on eniten muokkaajia.'''",
+	'mostrevisors-showing' => 'Esitetään {{PLURAL:$1|sivu|luettelo $1 sivusta}}:',
 	'mostrevisors-submit' => 'Siirry',
 	'mostrevisors-showredir' => 'Näytä ohjaussivut',
 	'mostrevisors-hideredir' => 'Piilota ohjaussivut',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|muokkaaja|muokkaajaa}}',
 	'mostrevisors-viewcontributors' => 'Tarkastele päämuokkaajia',
 );
 

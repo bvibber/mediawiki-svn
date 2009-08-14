@@ -28,6 +28,13 @@ $messages['ca'] = array(
 	'categorytests-desc' => 'Funcions per a proves de categories',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'categorytests-desc' => 'Funkce pro testování kategorií',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -70,6 +77,20 @@ $messages['hsb'] = array(
 	'categorytests-desc' => 'Funkcije za testowanje kategorijow',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'categorytests-desc' => 'Fungsi untuk menguji kategori',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'categorytests-desc' => 'Funzioni di prova per le categorie',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -98,11 +119,25 @@ $messages['nl'] = array(
 	'categorytests-desc' => 'Functies voor categorietests',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Simny
+ */
+$messages['no'] = array(
+	'categorytests-desc' => 'Funksjoner for kategoritesting',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'categorytests-desc' => 'Foncions per de tèsts de categoria',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'categorytests-desc' => 'Funcţii pentru testarea categoriilor',
 );
 
 /** Tarandíne (Tarandíne)

@@ -79,6 +79,9 @@ $wgCustomToolbarMessages['qqq'] = array(
  */
 $wgCustomToolbarMessages['af'] = array(
 	'ct_italic_sample' => 'Skuins teks',
+	'ct_nowiki_caption' => 'Geen wikiteks',
+	'ct_submit' => 'OK',
+	'ct_close' => 'Sluit venster',
 );
 
 /** Amharic (አማርኛ)
@@ -1286,6 +1289,7 @@ $wgCustomToolbarMessages['it'] = array(
 	'ct_italic_tip_ins' => 'Inserisci testo in corsivo',
 	'ct_italic_tip_wrap' => 'Rendi questo testo in corsivo',
 	'ct_italic_caption' => 'Corsivo',
+	'ct_internal_sample' => 'NomePagina',
 	'ct_internal_tip_ins' => 'Inserisci un link interno',
 	'ct_internal_tip_wrap' => 'Rendi questo testo un link interno',
 	'ct_internal_caption' => 'Collegamento interno',
@@ -1303,6 +1307,7 @@ $wgCustomToolbarMessages['it'] = array(
 	'ct_nowiki_sample' => 'Inserisci qui il testo non formattato',
 	'ct_nowiki_tip_ins' => 'Ignora la formattazione wiki',
 	'ct_nowiki_tip_wrap' => 'Ignora la formattazione wiki per questo testo',
+	'ct_horizontal_tip' => 'Inserisci una linea orizzontale (usare con parsimonia)',
 	'ct_horizontal_caption' => 'Linea orizzontale',
 	'ct_upload' => 'Carica $1',
 	'ct_select' => 'Seleziona $1 da caricare:',

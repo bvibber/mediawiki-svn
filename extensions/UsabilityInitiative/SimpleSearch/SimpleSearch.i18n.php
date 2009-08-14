@@ -553,6 +553,14 @@ $messages['tr'] = array(
 	'simplesearch-search' => 'Ara',
 );
 
+/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+ * @author Rinatus
+ */
+$messages['tt-cyrl'] = array(
+	'simplesearch' => 'Гади эзләү',
+	'simplesearch-search' => 'Эзләү',
+);
+
 /** Ukrainian (Українська)
  * @author A1
  * @author Pavlo Shevelo
@@ -568,6 +576,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'simplesearch' => 'Riserca sènplise',
+	'simplesearch-desc' => 'Zonta funsionalità agiuntive a la riserca senplificà de Vector',
 	'simplesearch-search' => 'Serca',
 );
 
@@ -594,7 +603,7 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'simplesearch' => '简易搜索',
-	'simplesearch-desc' => '向Vector的简化搜索中添加附加功能',
+	'simplesearch-desc' => '向Vector的简易搜索中添加附加功能',
 	'simplesearch-search' => '搜索',
 );
 

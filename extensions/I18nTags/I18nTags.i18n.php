@@ -203,6 +203,13 @@ $messages['lb'] = array(
 	'i18ntags-desc' => "Zougrëff op d'i18n-Fonctioune fir d'Formatéiere vun Zuelen, d'Grammatik- an d'Méizuelregelen an allen disponibele Sproochen",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'i18ntags-desc' => 'Пристап до i18n функциите за форматирање на броеви, граматика и множина на секој јазик на располагање',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -350,3 +357,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'i18ntags-desc' => '提供存取任何語言的數字格式、文法和複數型等i18n相關資訊',
 );
+

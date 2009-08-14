@@ -226,11 +226,12 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'newschannel_format' => 'Formato :',
+	'newschannel_format' => 'Format :',
 	'newschannel_limit' => 'Limita :',
-	'newschannel_include_category' => 'Catègorie(s) suplèmentère(s) :',
+	'newschannel_include_category' => 'Catègorie(s) de ples :',
 );
 
 /** Irish (Gaeilge)

@@ -222,6 +222,13 @@ $messages['mg'] = array(
 	'tab0-desc' => "Manampy ny onglet \"0\" manome lalana makany amin'ny pejim-panovàn'ny fizaràna voalohany amin'ilay pejy.",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'tab0-desc' => 'Додава јазиче „0“ во страницата за уредување, поврзувајќи го првиот дел од страницата со страницата за уредување',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

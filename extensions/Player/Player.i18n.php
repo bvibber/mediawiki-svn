@@ -392,9 +392,10 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'player-play' => 'Liére',
+	'player-play' => 'Jouyér',
 	'player-goto-page' => 'Pâge',
 	'player-goto-file' => 'fichiér',
 );

@@ -293,8 +293,17 @@ Klicke auf eine, um Statistiken darüber zu erhalten.',
 	'prefstats-factor-week' => 'Woche',
 	'prefstats-factor-twoweeks' => 'zwei Wochen',
 	'prefstats-factor-fourweeks' => 'vier Wochen',
+	'prefstats-factor-default' => 'zurück zum Standard-Maßstab',
 	'prefstats-legend-out' => 'Abgemeldet',
 	'prefstats-legend-in' => 'Angemeldet',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'prefstats-list-intro' => 'Derzeit werden die folgenden Einstellungen aufgezeichnet.
+Klicken Sie auf eine, um Statistiken darüber zu erhalten.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -613,11 +622,14 @@ Kliknite na jednu kako biste vidjeli njezinu statistiku.',
 	'prefstats-xaxis' => 'Trajanje (sati)',
 	'prefstats-factors' => 'Pregled po: $1',
 	'prefstats-factor-hour' => 'sat',
+	'prefstats-factor-sixhours' => 'šest sati',
 	'prefstats-factor-day' => 'dan',
 	'prefstats-factor-week' => 'tjedan',
 	'prefstats-factor-twoweeks' => 'dva tjedna',
 	'prefstats-factor-fourweeks' => 'četiri tjedna',
 	'prefstats-factor-default' => 'nazad na zadanu ljestvicu',
+	'prefstats-legend-out' => 'Bez',
+	'prefstats-legend-in' => 'Sa',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -800,8 +812,12 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'prefstats-factor-hour' => 'ಘಂಟೆ',
 	'prefstats-factor-sixhours' => 'ಆರು ಘಂಟೆಗಳು',
 	'prefstats-factor-day' => 'ದಿನ',
+	'prefstats-factor-week' => 'ವಾರ',
+	'prefstats-factor-twoweeks' => 'ಎರಡು ವಾರಗಳು',
+	'prefstats-factor-fourweeks' => 'ನಾಲ್ಕು ವಾರಗಳು',
 );
 
 /** Korean (한국어)
@@ -911,7 +927,7 @@ $messages['mk'] = array(
 ** $2 {{PLURAL:$2|корисник сеуште ја чува вклучена|корисници сеуште ја чуваат вклучена}}
 ** $3 {{PLURAL:$3|корисникот во меѓувреме ја оневозможил|корисниците во меѓувреме ја оневозможиле}}',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|корисник ја има|корисници ја имаат}} вклучено оваа можност од кога е активирана статистиката на прилагодувања
-** $2 {{PLURAL:$2|корисник сеуште ја чува вклучена|корисници сеуште ја чуваат вклучена}}
+** $2 {{PLURAL:$2|корисник сè уште ја чува вклучена|корисници сè уште ја чуваат вклучена}}
 ** $3 {{PLURAL:$3|корисникот во меѓувреме ја оневозможил|корисниците во меѓувреме ја оневозможиле}}
 * Вкупно $4 {{PLURAL:$4|корисник ја има вклучено оваа можност|корисници ја имаат вклучено оваа можност}}',
 	'prefstats-xaxis' => 'Времетрање (часови)',
@@ -1074,6 +1090,7 @@ Kliknij na jednej aby zobaczyć statystyki jej dotyczące.',
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1082,6 +1099,13 @@ $messages['pt'] = array(
 	'prefstats-title' => 'Estatísticas de preferências',
 	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão a ser monitorizadas.
 Clique numa para ver as estatísticas sobre ela.',
+	'prefstats-xaxis' => 'Duração (horas)',
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'seis horas',
+	'prefstats-factor-day' => 'dia',
+	'prefstats-factor-week' => 'semana',
+	'prefstats-factor-twoweeks' => 'duas semanas',
+	'prefstats-factor-fourweeks' => 'quatro semanas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1241,6 +1265,21 @@ $messages['sl'] = array(
 	'prefstats' => 'Statistika nastavitev',
 	'prefstats-desc' => 'Spremlja statistike o tem, koliko uporabnikov ima omogočene določene nastavitve',
 	'prefstats-title' => 'Statistika nastavitev',
+	'prefstats-list-intro' => 'Trenutno so naslednje nastavitve spremljane.
+Kliknite na eno, če si želite ogledati njeno statistiko.',
+	'prefstats-noprefs' => 'Trenutno nastavitve niso spremljane.
+Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
+	'prefstats-xaxis' => 'Trajanje (ur)',
+	'prefstats-factors' => 'Poglejte na: $1',
+	'prefstats-factor-hour' => 'ura',
+	'prefstats-factor-sixhours' => 'šest ur',
+	'prefstats-factor-day' => 'dan',
+	'prefstats-factor-week' => 'teden',
+	'prefstats-factor-twoweeks' => 'dva tedna',
+	'prefstats-factor-fourweeks' => 'štiri tedni',
+	'prefstats-factor-default' => 'nazaj na privzeto lestvico',
+	'prefstats-legend-out' => 'Onemogočeno',
+	'prefstats-legend-in' => 'Omogočeno',
 );
 
 /** Swedish (Svenska)
@@ -1332,6 +1371,18 @@ Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
 	'prefstats-factor-default' => 'varsayılan ölçeğe dön',
 );
 
+/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+ * @author Rinatus
+ */
+$messages['tt-cyrl'] = array(
+	'prefstats-factor-hour' => 'сәгать',
+	'prefstats-factor-sixhours' => 'алты сәгать',
+	'prefstats-factor-day' => 'көн',
+	'prefstats-factor-week' => 'атна',
+	'prefstats-factor-twoweeks' => 'ике атна',
+	'prefstats-factor-fourweeks' => 'дүрт атна',
+);
+
 /** Ukrainian (Українська)
  * @author A1
  * @author AS
@@ -1395,6 +1446,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Jimmy xu wrk
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -1411,6 +1463,17 @@ $messages['zh-hans'] = array(
 ** $2名用户启用了它
 ** $3名用户禁用了它
 * 总的来说，$4名用户设置了此选项',
+	'prefstats-xaxis' => '持续时间（小时）',
+	'prefstats-factors' => '每$1查看',
+	'prefstats-factor-hour' => '小时',
+	'prefstats-factor-sixhours' => '6小时',
+	'prefstats-factor-day' => '天',
+	'prefstats-factor-week' => '周',
+	'prefstats-factor-twoweeks' => '2周',
+	'prefstats-factor-fourweeks' => '4周',
+	'prefstats-factor-default' => '恢复默认程度',
+	'prefstats-legend-out' => '已禁用',
+	'prefstats-legend-in' => '已启用',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

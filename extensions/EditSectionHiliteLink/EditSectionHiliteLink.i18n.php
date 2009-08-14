@@ -182,6 +182,13 @@ $messages['lb'] = array(
 	'Editsectionhilitelink-desc' => "Den entspriechenden Abschnitt ervierhiewen wann Dir mat der Maus iwwert den 'Änneren'-Link fuert",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'Editsectionhilitelink-desc' => 'Посинете го соодветниот дел од страницата кога ќе го донесете глушецот до врската за уредување',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -272,6 +279,13 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'Editsectionhilitelink-desc' => 'Ističe odgovarajući odeljak strane kada se mišem pređe preko veze za njegovu izmenu',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'Editsectionhilitelink-desc' => "మౌస్ ని '''మార్చు''' లంకె మీదుగా తీసుకెళ్ళినప్పుడు వ్యాసములోని భాగమును గుర్తించేటట్టు చేస్తుంది",
 );
 
 /** Vietnamese (Tiếng Việt)

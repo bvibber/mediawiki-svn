@@ -269,10 +269,14 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
+	'rightfunctions-desc' => 'Парсер функции на основа на дозволи',
+	'rightfunctions-casc' => '(од каскадни извори)',
 	'rightfunctions-local' => '(од локална страница)',
+	'rightfunctions-ns' => '(од заштита на именски простор)',
 );
 
 /** Marathi (मराठी)

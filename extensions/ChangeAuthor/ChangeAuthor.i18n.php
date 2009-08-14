@@ -623,6 +623,7 @@ Yritä uudestaan.
 Jos tämä virhe toistuu, tietokanta on luultavasti rikki.',
 	'changeauthor-success' => 'Pyyntö on suoritettu onnistuneesti.',
 	'changeauthor-logpagename' => 'Tekijämuutosloki',
+	'right-changeauthor' => 'Vaihda version tekijätietoa',
 );
 
 /** French (Français)

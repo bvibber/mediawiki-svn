@@ -119,6 +119,7 @@ Molimo definirajte klasu tabele tako da ima najviše 255 znakova.',
  * @author Imre
  * @author MF-Warburg
  * @author Sebastian Wallroth
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'plotters' => 'Plotter',
@@ -126,7 +127,24 @@ $messages['de'] = array(
 	'plotters-uses' => 'Nutzungen',
 	'plotters-missing-script' => 'Es wurde kein Skript definiert.',
 	'plotters-missing-arguments' => 'Keine Argumente festgelegt.',
+	'plotters-excessively-long-scriptname' => 'Der Skriptname ist zu lang.
+Bitte lege ein Skript fest, dessen Titel 255 Zeichen nicht übersteigt.',
+	'plotters-excessively-long-preprocessorname' => 'Der Name des Präprozessors ist zu lang.
+Bitte lege einen Präprozessor fest, dessen Name 255 Zeichen nicht übersteigt.',
 	'plotters-no-data' => 'Es wurden keine Daten angegeben.',
+	'plotters-invalid-renderer' => 'Es wurde ein ungültiger Renderer ausgewählt.',
+	'plotters-errors' => 'Plotter{{PLURAL:$1|fehler|fehler}}:',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'plotters-excessively-long-scriptname' => 'Der Skriptname ist zu lang.
+Bitte legen Sie ein Skript fest, dessen Titel 255 Zeichen nicht übersteigt.',
+	'plotters-excessively-long-preprocessorname' => 'Der Name des Präprozessors ist zu lang.
+Bitte legen Sie einen Präprozessor fest, dessen Name 255 Zeichen nicht übersteigt.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -384,6 +402,13 @@ $messages['nn'] = array(
 	'plotters-missing-script' => 'Inkje skript var definert.',
 	'plotters-missing-arguments' => 'Ingen argument spesifiserte.',
 	'plotters-no-data' => 'Ingen data var tilrettelagt.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Simny
+ */
+$messages['no'] = array(
+	'plotters-uses' => 'Brukere',
 );
 
 /** Occitan (Occitan)

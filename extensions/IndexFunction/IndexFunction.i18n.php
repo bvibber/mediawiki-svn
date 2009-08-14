@@ -193,6 +193,8 @@ $messages['de'] = array(
 	'index-search' => 'Suche:',
 	'index-submit' => 'Senden',
 	'index-disambig-start' => "'''$1''' steht für:",
+	'index-emptylist' => 'Es gibt keine Seiten, die mit „$1“ verbunden sind',
+	'index-expand-detail' => 'Zeige Seiten, die unter diesem Titel indiziert sind',
 	'index-hide-detail' => 'Seitenliste verstecken',
 	'index-no-results' => 'Die Suche ergab keine Ergebnisse',
 );

@@ -46,6 +46,20 @@ $messages['qqq'] = array(
 	'gep-categorypage' => '{{optional}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'gep-categories' => 'Kategorieë',
+	'gep-addcategory' => "Voeg 'n kategorie by",
+	'gep-addcategorybutton' => 'Byvoeg',
+	'gep-suggestcategory' => "Stel 'n kategorie voor",
+	'gep-suggestcategorybutton' => 'OK',
+	'gep-addsectionbutton' => 'Byvoeg',
+	'gep-classicmode' => 'Klassieke modus',
+	'gep-genericmode' => 'Algemene modus',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -838,6 +852,8 @@ $messages['mk'] = array(
 	'gep-suggestcategorybutton' => '*Зачувај',
 	'gep-sections' => 'Секции',
 	'gep-addsectionbutton' => 'Додај',
+	'gep-classicmode' => 'Класичен изглед',
+	'gep-genericmode' => 'Генерички изглед',
 );
 
 /** Erzya (Эрзянь)

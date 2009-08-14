@@ -39,6 +39,13 @@ $messages['arz'] = array(
 	'ajax-qp-desc' => 'أضف بعض الأجاكس إلى صفحات الاستعلام مثل [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'ajax-qp-desc' => 'Дадае тэхнялёгію AJAX у старонкі запыту, такія як [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

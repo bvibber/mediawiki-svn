@@ -434,9 +434,10 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'passwordreset-invalidusername' => 'Nom d’utilisator envalido.',
+	'passwordreset-invalidusername' => 'Nom d’utilisator encognu',
 	'passwordreset-username' => 'Nom d’utilisator :',
 	'passwordreset-newpass' => 'Novél mot de pâssa :',
 );

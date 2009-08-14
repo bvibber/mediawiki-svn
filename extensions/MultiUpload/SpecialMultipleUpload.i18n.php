@@ -323,6 +323,7 @@ Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupl
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -334,6 +335,7 @@ Klicken Sie auf „Browse“ und wählen Sie jede Datei aus, die Sie hochladen m
 Sie können wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für Ihre Dateien.
 
 Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]].",
+	'multiupload-no-files' => 'Bitte wählen Sie mindestens eine Datei zum Hochladen aus',
 );
 
 /** Lower Sorbian (Dolnoserbski)

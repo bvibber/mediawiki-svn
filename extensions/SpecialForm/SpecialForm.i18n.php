@@ -285,10 +285,13 @@ Bitte fülle {{PLURAL:$2|es|sie}} aus.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'formnonametext' => 'Sie müssen einen Formularnamen angeben, z. B. „{{#special:Form}}/Formularname“.',
+	'formrequiredfielderror' => '{{PLURAL:$2|Das Feld $1 ist ein Pfichtfeld|Die Felder $1 sind Pfichtfelder}}.
+Bitte füllen Sie {{PLURAL:$2|es|sie}} aus.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -394,6 +397,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Jack Phoenix
  */
@@ -410,6 +414,7 @@ $messages['fi'] = array(
 	'formarticleexists' => 'Sivu on jo olemassa',
 	'formarticleexiststext' => 'Sivu [[$1]] on jo olemassa.',
 	'formbadpagename' => 'Huono sivun nimi',
+	'formbadrecaptcha' => 'Väärät vastausarvot reCaptcha-varmistusohjelmalle. Yritä uudestaan.',
 	'formbadpagenametext' => 'Antamasi lomakkeen tiedot tekevät huonon sivun nimen, "$1".',
 	'formrequiredfielderror' => '{{PLURAL:$2|Kenttä $1 on|Kentät $1 ovat}} pakollisia tässä lomakkeessa.
 Ole hyvä ja täytä {{PLURAL:$2|se|ne}}.',

@@ -48,9 +48,13 @@ Do not translate or change tag names, or link anchors.',
  * @author Naudefj
  */
 $messages['af'] = array(
+	'am-username' => 'gebruikersnaam',
 	'am-email' => 'e-pos',
 	'am-active' => 'aktief',
 	'nss-rights' => 'regte',
+	'nss-create-account-header' => 'Skep nuwe gebruiker',
+	'nss-create-account' => 'Skep gebruiker',
+	'nss-no-mail' => 'Moet nie e-pos stuur nie',
 );
 
 /** Arabic (العربية)
@@ -341,14 +345,15 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'accountmanager' => 'Crèators de comptos',
+	'accountmanager' => 'Administrator de comptos',
 	'am-username' => 'Nom d’utilisator',
-	'am-email' => 'Mèl',
+	'am-email' => 'mèl',
 	'nss-save-changes' => 'Sôvar los changements',
-	'nss-create-account-header' => 'Féte un novél compto',
-	'nss-create-account' => 'Fâre un compto',
+	'nss-create-account-header' => 'Fâre un novél compto',
+	'nss-create-account' => 'Fâre lo compto',
 );
 
 /** Irish (Gaeilge)

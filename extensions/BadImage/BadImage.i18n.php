@@ -1412,6 +1412,7 @@ $messages['mk'] = array(
 	'badimages-log-add' => 'додадено [[$1]] во листата на лоши слики',
 	'badimages-log-remove' => 'избришано [[$1]] од листата на лоши слики',
 	'badimages-page' => '{{ns:help}}:Листа на лоши слики',
+	'right-badimages' => 'Обновете ја листата на лоши слики',
 );
 
 /** Malayalam (മലയാളം)
@@ -2442,30 +2443,32 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
-	'badimages' => '损坏的图像列表',
-	'badimages-desc' => '增加{{int:badimages}}到MediaWiki',
+	'badimages' => '不雅图像列表',
+	'badimages-desc' => '为MediaWiki增扩{{int:badimages}}功能',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已经加入 $1 到列表中。',
-	'badimages-count' => "共有'''$1'''张图像损坏。",
+	'badimages-count' => "共有'''$1'''张图像被列入不雅图像列表。",
 	'badimages-name' => '名称：',
-	'badimages-not-added' => '这幅图像不能加入。',
-	'badimages-not-removed' => '这幅图像不能移除。',
-	'badimages-reason' => '原因:',
-	'badimages-remove' => '(移除)',
+	'badimages-not-added' => '无法加入该图像。',
+	'badimages-not-removed' => '无法移除该图像。',
+	'badimages-reason' => '原因：',
+	'badimages-remove' => '（移除）',
 	'badimages-remove-btn' => '移除',
-	'badimages-remove-confirm' => '请确认您打算要将 $1 由列表中移除:',
-	'badimages-removed' => '$1 已经从列表中移除。',
-	'badimages-subheading' => '当前的项目',
-	'badimages-unprivileged' => '(您没有足够的权限去修改这个列表)',
-	'badimages-log-name' => '坏图像列表',
-	'badimages-log-header' => '这是在[[{{MediaWiki:Badimages-page}}|坏图像列表]]中的修订记录。',
-	'badimages-log-add' => '已经加入 [[$1]] 到坏图像列表',
-	'badimages-log-remove' => '在损坏的图像列表中已经移除了[[$1]]',
-	'badimages-page' => '{{ns:help}}:损坏的图像列表',
+	'badimages-remove-confirm' => '请确认您要将$1从列表中移除：',
+	'badimages-removed' => '$1已从列表中移除。',
+	'badimages-subheading' => '当前项目',
+	'badimages-unprivileged' => '（您没有足够的权限去修改此列表）',
+	'badimages-log-name' => '不雅图像列表',
+	'badimages-log-header' => '这是[[{{MediaWiki:Badimages-page}}|不雅图像列表]]的更改日志。',
+	'badimages-log-add' => '已将[[$1]]加入到不雅图像列表',
+	'badimages-log-remove' => '已从不雅图像列表中移除了[[$1]]',
+	'badimages-page' => '{{ns:help}}:不雅图像列表',
+	'right-badimages' => '更新不雅图像列表',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

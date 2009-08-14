@@ -283,6 +283,15 @@ $messages['lb'] = array(
 	'stalepages-summary' => 'Dëst ass eng Lëscht vu Säiten, déi an de {{PLURAL:$1|läschte 24 Stonnen|läschte(n) $1 Deeg}} net verännert goufen.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'stalepages' => 'Бајати страници',
+	'stalepages-desc' => 'Создава [[Special:Stalepages|листа на страници]] кои не биле уредувани во последно време',
+	'stalepages-summary' => 'Ова е листа на страници кои не се уредувани веќе $1 {{PLURAL:$1|ден|дена}}.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  */

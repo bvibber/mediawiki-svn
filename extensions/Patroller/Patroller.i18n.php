@@ -438,6 +438,7 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'patrol' => 'Tarkasta muokkauksia',
 	'patrol-desc' => 'Tehostettu liittymä, joka mahdollistaa työtaakan jakamisen.',
+	'patrol-endorse' => 'Kannatetaan',
 	'patrol-revert' => 'Palauta',
 	'patrol-revert-reason' => 'Syy',
 	'patrol-skip' => 'Ohita',

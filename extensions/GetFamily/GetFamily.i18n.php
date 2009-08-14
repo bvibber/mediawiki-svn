@@ -219,6 +219,16 @@ $messages['lb'] = array(
 	'getfamily-desc' => 'E Familjefichier fir Pywikipediabot generéieren',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'getfamily-desc' => 'Создава семејна податотека за pywikipediabot',
+	'getfamily' => 'Преземете pywikipediabot семејство',
+	'getfamily-interwikierror' => 'Грешка: погрешно наместени интервикија, контактирајте го вашиот локален администратор.',
+	'right-getfamily' => 'Создајте семејна податотека за pywikipediabot',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

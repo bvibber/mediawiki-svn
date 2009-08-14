@@ -282,9 +282,10 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'profiling-ok' => 'Confirmar',
+	'profiling-ok' => 'Accèptar',
 );
 
 /** Galician (Galego)

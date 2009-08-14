@@ -263,6 +263,18 @@ $messages['id'] = array(
 	'right-createsigndocument' => 'Buat dokumen yang dapat ditandatangani',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'signaturelogpage' => 'Registro firme',
+	'signature-desc' => 'Abilita [[Special:SignDocument|firma]] di documenti',
+	'signaturelogpagetext' => 'Di seguito sono elencate [[Special:SignDocument|tutte le firme aggiunge ai documenti]].',
+	'signaturelogentry' => 'ha firmato il documento $1',
+	'right-sigadmin' => 'Amministra le firme di documenti',
+	'right-createsigndocument' => 'Crea documenti che possono essere firmati',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -362,12 +374,14 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Simny
  */
 $messages['no'] = array(
 	'signaturelogpage' => 'Signaturlogg',
 	'signature-desc' => 'Slår på [[Special:SignDocument|dokumentsignering]]',
 	'signaturelogpagetext' => 'Dette er en logg over [[Special:SignDocument|alle signaturer lagt til dokumenter]].',
 	'signaturelogentry' => 'signerte dokumentet $1',
+	'right-createsigndocument' => 'Lag dokumenter som kan signeres',
 );
 
 /** Occitan (Occitan)

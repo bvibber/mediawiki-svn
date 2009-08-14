@@ -176,6 +176,13 @@ $messages['gsw'] = array(
 	'breadcrumbs-desc' => 'Zeigt dr Weg vum Benutzer dur s Wiki.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'breadcrumbs-desc' => 'Taishbyney cassan ny h-ymmydeyryn trooid y wiki.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -392,6 +399,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através do wiki.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'breadcrumbs-desc' => 'Arată calea utilizatorilor prin wiki.',
 );
 
 /** Tarandíne (Tarandíne)

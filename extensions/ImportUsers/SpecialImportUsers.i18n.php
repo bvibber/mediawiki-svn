@@ -518,14 +518,15 @@ Mise à jour effectuée.",
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'importusers-log-summary' => 'Rèsumâ :',
-	'importusers-log-summary-all' => 'Soma',
+	'importusers-log-summary' => 'Rèsumâ',
+	'importusers-log-summary-all' => 'Tôs',
 	'importusers-login-name' => 'Nom d’utilisator',
-	'importusers-password' => 'Mot de pâssa',
-	'importusers-email' => 'Mèl',
-	'importusers-realname' => 'Veré nom',
+	'importusers-password' => 'mot de pâssa',
+	'importusers-email' => 'adrèce de mèl',
+	'importusers-realname' => 'veré nom',
 );
 
 /** Western Frisian (Frysk)

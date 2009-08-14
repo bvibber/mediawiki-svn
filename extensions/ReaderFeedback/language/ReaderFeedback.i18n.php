@@ -162,6 +162,7 @@ $messages['bcc'] = array(
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
+	'readerfeedback-desc' => 'Праверка старонак дазваляе чытачам даваць водгукі ў форме безумоўных адзнакаў',
 	'readerfeedback' => 'Што Вы мяркуеце пра гэтую старонку?',
 	'readerfeedback-text' => "''Калі ласка, знайдзіце хвіліну для адзнакі гэтай старонкі. Вашы водгукі вельмі каштоўныя і дапамагаюць паляпшаць {{GRAMMAR:вінавальны|{{SITENAME}}}}.''",
 	'readerfeedback-reliability' => 'Пэўнасьць',
@@ -183,6 +184,7 @@ $messages['be-tarask'] = array(
 	'readerfeedback-finished' => 'Дзякуем!',
 	'readerfeedback-tagfilter' => 'Метка:',
 	'tooltip-ca-ratinghist' => 'Адзнакі гэтай старонкі чытачамі',
+	'specialpages-group-feedback' => 'Меркаваньні чытачоў',
 );
 
 /** Bulgarian (Български)
@@ -316,6 +318,7 @@ $messages['cs'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'readerfeedback-desc' => 'Ergänzt eine Möglichkeit, die dem Leser erlaubt eine Rückmeldung in Form von vorgegebenden Bewertungen über die Seite zu geben',
 	'readerfeedback' => 'Was denkst du über diese Seite?',
 	'readerfeedback-text' => "''Bitte nimm dir einen Moment Zeit und bewerte diese Seite. Deine Rückmeldung ist wertvoll und hilft uns, das Angebot zu verbessern.''",
 	'readerfeedback-reliability' => 'Zuverlässigkeit',
@@ -521,7 +524,9 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'readerfeedback-desc' => 'Sivun tarkistaminen sallii lukijoiden antaa palautteensa luokkakohtaisten arvosanojen muodossa',
 	'readerfeedback' => 'Mitä mieltä olet tästä sivusta?',
+	'readerfeedback-text' => "''Käytäthän hetken arvioidaksesi alla olevan sivun. Palautteesi on arvokas ja auttaa meitä parantamaan verkkosivustoamme.''",
 	'readerfeedback-reliability' => 'Luettavuus',
 	'readerfeedback-completeness' => 'Täydellisyys',
 	'readerfeedback-npov' => 'Neutraalius',
@@ -535,6 +540,8 @@ $messages['fi'] = array(
 	'readerfeedback-level-4' => 'Todella mainio',
 	'readerfeedback-submit' => 'Lähetä',
 	'readerfeedback-main' => 'Vain sisältösivuja voi arvioida.',
+	'readerfeedback-success' => "'''Kiitos kun arvioit tämän sivun!''' ([$3 Kommentteja tai kysymyksiä?]).",
+	'readerfeedback-voted' => "'''Näyttäisi siltä että olet ja antanut tälle sivulle arvosanat''' ([$3 Kommentteja tai kysymyksiä?]).",
 	'readerfeedback-submitting' => 'Lähetetään…',
 	'readerfeedback-finished' => 'Kiitos!',
 	'tooltip-ca-ratinghist' => 'Lukijoiden arviot tästä sivusta',
@@ -880,7 +887,7 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'readerfeedback-desc' => 'ページの判定は、読者が尺度別評価の形でフィードバックを与えることを可能にします',
+	'readerfeedback-desc' => '読者が尺度別評価式フィードバックによるページ評価ができるようにする',
 	'readerfeedback' => 'このページをどう思いますか',
 	'readerfeedback-text' => "''このページの評価にぜひご協力ください。貴重なご意見が私たちのウェブサイト改善に役立ちます。''",
 	'readerfeedback-reliability' => '信頼度',
@@ -1010,7 +1017,9 @@ $messages['lb'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'readerfeedback-desc' => 'Потврдувањето на страницата им дава можност на читателите да искажат свое мислење во облик на категорични оценки',
 	'readerfeedback' => 'Што мислите за оваа страница?',
+	'readerfeedback-text' => "''Ве молиме одвојте малку време да ја оцените страницава подолу. Вашите мислења се значајни и ни помагаат да ја подобриме страницата.''",
 	'readerfeedback-reliability' => 'Доверливост',
 	'readerfeedback-completeness' => 'Комплетност',
 	'readerfeedback-npov' => 'Неутралност',
@@ -1028,7 +1037,9 @@ $messages['mk'] = array(
 	'readerfeedback-voted' => "'''Изгледа дека веќе ја имате оценувано оваа страница''' ([$3 Коментари или прашања?]).",
 	'readerfeedback-submitting' => 'Зачување...',
 	'readerfeedback-finished' => 'Ви благодариме!',
+	'readerfeedback-tagfilter' => 'Ознака:',
 	'tooltip-ca-ratinghist' => 'Оценки на читателите за оваа страница',
+	'specialpages-group-feedback' => 'Мислења од гледачите',
 );
 
 /** Malay (Bahasa Melayu)

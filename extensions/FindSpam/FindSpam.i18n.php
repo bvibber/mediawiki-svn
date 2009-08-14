@@ -24,11 +24,13 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'findspam-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'findspam-ip' => '{{Identical|IP Address}}',
 	'findspam-ok' => '{{Identical|OK}}',
+	'right-findspam' => '{{doc-right|findspam}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1035,15 +1037,16 @@ $messages['zh-cn'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
-	'findspam' => '查找垃圾信息',
-	'findspam-desc' => '添加一个[[Special:FindSpam|特殊页面]]来查找最近加入的垃圾信息',
+	'findspam' => '查找垃圾链接',
+	'findspam-desc' => '添加一页[[Special:FindSpam|特殊页面]]来查找最近加入的垃圾链接',
 	'findspam-ip' => 'IP地址：',
 	'findspam-ok' => '确定',
 	'findspam-notextfound' => '没有查找到贡献',
-	'right-findspam' => '搜索最近增加的垃圾信息',
+	'right-findspam' => '搜索最近增加的垃圾链接',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

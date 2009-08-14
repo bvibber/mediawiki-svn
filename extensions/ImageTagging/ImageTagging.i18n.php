@@ -76,9 +76,12 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'imagetagging-imghistory' => 'Geskiedenis',
+	'imagetagging-images' => 'beelde',
+	'imagetagging-tagcancel-button' => 'Kanselleer',
 );
 
 /** Amharic (አማርኛ)
@@ -558,19 +561,22 @@ Veuillez attendre la fin de l’action en cours.',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'imagetagging-article' => 'Pâge :',
 	'imagetagging-imghistory' => 'Historico',
 	'imagetagging-images' => 'émâges',
-	'imagetagging-taggedimages-title' => 'Émâges de "$1"',
+	'imagetagging-taggedimages-title' => 'Émâges de « $1 »',
 );
 
 /** Western Frisian (Frysk)
+ * @author SK-luuut
  * @author Snakesteuben
  */
 $messages['fy'] = array(
 	'imagetagging-article' => 'Side:',
+	'imagetagging-tagcancel-button' => 'Ofbrekke',
 );
 
 /** Galician (Galego)

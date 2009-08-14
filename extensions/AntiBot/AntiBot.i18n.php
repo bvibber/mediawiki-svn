@@ -523,10 +523,11 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'antibot-desc' => '防垃圾机械人检查和触发的简单框架',
+	'antibot-desc' => '防止垃圾链接机器人检查并触发酬载的简单框架',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

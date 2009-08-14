@@ -482,10 +482,11 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'fixedimage-desc' => '加入 <tt><nowiki><fundraising></nowiki></tt> 标签作为一幅图像',
+	'fixedimage-desc' => '加入<tt><nowiki><fundraising></nowiki></tt>标签作为一幅图像',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

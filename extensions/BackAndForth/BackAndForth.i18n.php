@@ -922,11 +922,13 @@ $messages['yue'] = array(
 	'backforth-prev' => '上一篇 ($1)',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
 $messages['zh-hans'] = array(
-	'backforth-next' => '下一条 ($1)',
-	'backforth-desc' => '在页面的最上面增加「上一条」和「下一条」的连结',
-	'backforth-prev' => '上一条 ($1)',
+	'backforth-next' => '下一条（$1）',
+	'backforth-desc' => '在页面顶部增加“上一条”和“下一条”链接',
+	'backforth-prev' => '上一条（$1）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

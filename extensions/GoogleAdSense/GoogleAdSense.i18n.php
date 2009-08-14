@@ -248,6 +248,13 @@ $messages['lt'] = array(
 	'googleadsense-desc' => 'Prideda [http://www.google.com/adsense Google AdSense] į šoninę juostą',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'googleadsense-desc' => 'Го додава [http://www.google.com/adsense Google AdSense] во страничната лента',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */

@@ -481,6 +481,22 @@ Operator situs ini tidak bertanggung jawab atas isi komentar-komentar tersebut.'
 	'talkhere-collapse' => 'sembunyikan editor',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'talkhere-desc' => 'Mette la pagina di discussione nella pagina',
+	'talkhere-foottext' => 'I commenti precedenti potrebbero essere stati lasciati da ospiti.
+
+I gestori del sito non possono assumersi la responsabilità per il contenuto di tali commenti.',
+	'talkhere-talkpage' => 'pagina di discussione',
+	'talkhere-notalk' => "''(nessun commento finora)''",
+	'talkhere-addcomment' => 'aggiungi commento',
+	'talkhere-beforeinput' => 'È possibile aggiungere un commento qui sotto',
+	'talkhere-loading' => 'caricamento editor…',
+	'talkhere-collapse' => 'nascondi editor',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

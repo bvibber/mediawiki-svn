@@ -208,6 +208,13 @@ $messages['lb'] = array(
 	'wikitextloggedinout-desc' => 'Zwou Parser_Klameren <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> fir jeweils en aneren Text ze weisen je nodeem ob de Benotzer ageloggt ass oder net.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'wikitextloggedinout-desc' => 'Две варијанти на парсирање, <tt>&lt;loggedin&gt;</tt> и <tt>&lt;loggedout&gt;</tt> за приказ на различен текст зависно од тоа дали е најавен корисникот',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

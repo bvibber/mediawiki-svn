@@ -36,6 +36,13 @@ $messages['qqq'] = array(
 	'right-asksql' => '{{doc-right}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'asksql' => 'SQL-soekopdrag',
+);
+
 /** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */

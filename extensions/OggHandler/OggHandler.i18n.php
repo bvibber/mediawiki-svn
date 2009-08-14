@@ -1206,6 +1206,8 @@ $messages['hr'] = array(
 	'ogg-play-video' => 'Pokreni video',
 	'ogg-play-sound' => 'Sviraj zvuk',
 	'ogg-no-player' => "Oprostite, izgleda da Vaš operacijski sustav nema instalirane medijske preglednike. Molimo <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">instalirajte medijski preglednik (''player'')</a>.",
+	'ogg-no-player-js' => 'Nažalost, Vaš sustav ili ima onemogućen JavaScript ili nema neki od podržanih uređaja za reprodukciju. <br /> 
+Možete <a href="$1">preuzeti isječak</a><br />ili<br /> <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">preuzeti uređaj</a>za reprodukciju isječka u Vašem pregledniku.',
 	'ogg-no-xiphqt' => "Nemate instaliranu XiphQT komponentu za QuickTime (ili je neispravno instalirana). QuickTime ne može pokretati Ogg datoteke bez ove komponente. Molimo <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">instalirajte XiphQT</a> ili izaberite drugi preglednik (''player'').",
 	'ogg-player-videoElement' => 'Ugrađena podrška za preglednik',
 	'ogg-player-oggPlugin' => 'Plugin preglednika',
@@ -1903,6 +1905,8 @@ $messages['mk'] = array(
 	'ogg-play-sound' => 'Слушни аудио снимка',
 	'ogg-no-player' => 'Изгледа дека вашиот систем нема инсталирано било каков софтвер за преслушување/прегледување на аудио или видео записи.
 Можете <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да симнете некој софтвер за оваа намена од тука</a>.',
+	'ogg-no-player-js' => 'Жалиме, но или вашиот систем има оневозможено JavaScript или нема поддржан преслушувач.<br />
+Можете да <a href="$1">ја преземете снимката</a><br />или да<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">преземете преслушувач</a> за да ја пуштите снимката во вашиот прелистувач.',
 	'ogg-no-xiphqt' => 'Изгледа ја немате инсталирано XiphQT компонентата за QuickTime.
 QuickTime не може да преслушува/прегледува Ogg податотеки без оваа компонента.
 Можете да го <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">симнете XiphQT</a> или да изберете некој друг софтвер за преслушување/прегледување.',

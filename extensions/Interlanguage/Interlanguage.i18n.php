@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'interlanguage-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'interlanguage-desc' => 'Захоплівае міжмоўныя спасылкі зь іншай вікі',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */
@@ -62,6 +69,20 @@ $messages['hsb'] = array(
 	'interlanguage-desc' => 'Zběra mjezyrěčne wotkazy z druheho wikija',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'interlanguage-desc' => 'Ambil pranala antarbahasa dari wiki lain',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'interlanguage-desc' => 'Raccoglie link interlingua da un altro sito wiki',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
@@ -95,6 +116,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'interlanguage-desc' => 'Permet de collectar los ligams interlengas d’un autre wiki',
+);
+
+/** Portuguese (Português)
+ * @author Giro720
+ */
+$messages['pt'] = array(
+	'interlanguage-desc' => 'Obtém interwikis de idiomas a partir de outra wiki',
 );
 
 /** Tarandíne (Tarandíne)

@@ -226,6 +226,13 @@ $messages['lb'] = array(
 	'gnuplot-desc' => 'Setzt den tag <code><nowiki><gnuplot></nowiki></code> derbäi fir Gnuplot ze benotzen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'gnuplot-desc' => 'Ја додава ознаката <code><nowiki><gnuplot></nowiki></code> за користење на Gnuplot',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

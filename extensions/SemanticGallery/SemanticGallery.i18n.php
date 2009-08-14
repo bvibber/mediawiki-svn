@@ -164,6 +164,13 @@ $messages['li'] = array(
 	'semanticgallery-desc' => "Voog 'n galerieoetveurformaat toe aan zeukopdrachte via Semantic MediaWiki",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'semanticgallery-desc' => 'Додава галериски излезен формат на SMW барањата во редовите',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

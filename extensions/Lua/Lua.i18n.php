@@ -31,6 +31,13 @@ $messages['qqq'] = array(
 	'lua_error_internal' => '{{Identical|Internal error}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'lua_error_internal' => 'Interne fout',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -632,3 +639,4 @@ $messages['zh-hant'] = array(
 	'lua_overflow_loc'       => '程式碼行數越限',
 	'lua_overflow_time'      => '執行時間越限',
 );
+

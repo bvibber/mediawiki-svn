@@ -50,8 +50,16 @@ $messages['rtm'] = array(
  */
 $messages['af'] = array(
 	'contributors' => 'Bydraers',
+	'contributors-desc' => "Opsomming van die belangrikste skrywers van 'n bladsy",
+	'contributors-toolbox' => 'Belangrikste bydraers',
+	'contributors-legend' => "Lys die belangrikste bydraers van 'n bladsy",
 	'contributors-target' => 'Titel:',
 	'contributors-submit' => 'Wys',
+	'contributors-subtitle' => 'Belangrikste bydraers tot $1',
+	'contributors-others-long' => 'Daar {{PLURAL:$1|is 1 ander bydraer|is $1 andere bydraers}} tot die bladsy.',
+	'contributors-others' => 'en $1 {{PLURAL:$1|ander|ander}}',
+	'contributors-badtitle' => 'Ongeldige titel.',
+	'contributors-nosuchpage' => 'Die bladsy $1 bestaan nie.',
 );
 
 /** Amharic (አማርኛ)

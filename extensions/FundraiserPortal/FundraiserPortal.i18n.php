@@ -33,6 +33,17 @@ $messages['qqq'] = array(
 	'fundraiserportal-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'fundraiserportal-plain-button' => 'Steun Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Skenk nou',
+	'fundraiserportal-rubytext-button' => 'Skenk nou',
+	'fundraiserportal-sapphire-button' => 'Skenk nou',
+	'fundraiserportal-tourmaline-button' => 'Skenk nou',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -195,6 +206,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'fundraiserportal' => 'Portal de recaudador de fondos',
+	'fundraiserportal-plain-button' => '¡Apoya Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Dona Ahora',
 	'fundraiserportal-rubytext-button' => 'Dona Ahora',
 	'fundraiserportal-sapphire-button' => 'Dona Ahora',
@@ -314,12 +326,16 @@ $messages['hil'] = array(
  * @author Suradnik13
  */
 $messages['hr'] = array(
+	'fundraiserportal' => 'Portal donacija',
+	'fundraiserportal-desc' => 'Dodaje portal "molimo donirajte" na vrh izbornika sa stranice.',
 	'fundraiserportal-plain-button' => 'Podržite Wikipediju!',
 	'fundraiserportal-ruby-button' => 'Donirajte sada',
 	'fundraiserportal-rubytext-button' => 'Donirajte sada',
+	'fundraiserportal-rubytext-message' => 'Svaka donacija pomaže nam da održimo Wikipediju slobodnu za svakoga.',
 	'fundraiserportal-rubytext-close' => 'Sakrij ovo od sada',
 	'fundraiserportal-sapphire-button' => 'Donirajte sada',
 	'fundraiserportal-tourmaline-button' => 'Donirajte sada',
+	'fundraiserportal-tourmaline-message' => 'Svaka donacija pomaže nam da zadržimo Wikipediju slobodnu za svakoga.',
 	'fundraiserportal-tourmaline-close' => 'Sakrij ovo od sada',
 );
 
@@ -489,12 +505,17 @@ $messages['nl'] = array(
  * @author Simny
  */
 $messages['no'] = array(
+	'fundraiserportal' => 'Doneringsportal',
+	'fundraiserportal-desc' => 'Legger til en "Vær så snill- Gi oss ditt bidrag"-portal på toppen av sideverktøylinja.',
 	'fundraiserportal-plain-button' => 'Støtt Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Gi nå',
 	'fundraiserportal-rubytext-button' => 'Gi nå',
+	'fundraiserportal-rubytext-message' => 'Hvert bidrag hjelper oss med å holde Wikipedia gratis for alle.',
 	'fundraiserportal-rubytext-close' => 'Skjul dette fra nå av',
 	'fundraiserportal-sapphire-button' => 'Gi nå',
 	'fundraiserportal-tourmaline-button' => 'Gi nå',
+	'fundraiserportal-tourmaline-message' => 'Hvert bidrag hjelper oss med å holde Wikipedia gratis for alle.',
+	'fundraiserportal-tourmaline-close' => 'Skjul dette fra nå av',
 );
 
 /** Occitan (Occitan)
@@ -512,6 +533,15 @@ $messages['oc'] = array(
 	'fundraiserportal-tourmaline-button' => 'Fasètz un don tre ara',
 	'fundraiserportal-tourmaline-message' => 'Cada don nos permet de gardar Wikipèdia liura per tot lo monde.',
 	'fundraiserportal-tourmaline-close' => 'Amagar aquò ara',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'fundraiserportal-sapphire-button' => 'Doe Agora',
+	'fundraiserportal-tourmaline-button' => 'Doe Agora',
+	'fundraiserportal-tourmaline-message' => 'Toda doação nos ajuda a manter a Wikipédia livre para todos.',
 );
 
 /** Romanian (Română)

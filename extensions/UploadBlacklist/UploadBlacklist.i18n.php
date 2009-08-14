@@ -195,6 +195,13 @@ $messages['sv'] = array(
 	'uploadblacklist-desc' => 'Lägger till en funktion för att svartlista vissa uppladdningar',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'uploadblacklist-desc' => 'Zonta na funsionalità de lista nera par i caricamenti',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

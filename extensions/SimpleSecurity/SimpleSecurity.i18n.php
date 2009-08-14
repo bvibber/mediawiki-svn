@@ -241,14 +241,17 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'security' => 'Tietoturvaloki',
 	'security-logpage' => 'Tietoturvaloki',
+	'security-info' => 'Tällä sivulla on $1',
 	'security-info-toggle' => 'turvallisuusrajoitukset',
 	'security-inforestrict' => '$1 on rajoitettu ryhmälle $2',
+	'security-infosysops' => 'Rajoitukset eivät koske sinua koska sinä kuulut "sysop" ryhmään',
 	'security-type-category' => 'luokka',
 	'security-type-namespace' => 'nimiavaruus',
 );
@@ -733,6 +736,14 @@ $messages['sk'] = array(
 	'security-type-category' => 'kategória',
 	'security-type-namespace' => 'menný priestor',
 	'security-restricttogroup' => 'Prístup k obsahu obmedzenému len pre členov skupiny „$1“',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'security' => 'Säkerhetslogg',
+	'security-desc' => 'Utökar MediaWikis sidskydd genom att tillåta begränsning av att sidinnehållet visas.',
 );
 
 /** Telugu (తెలుగు)

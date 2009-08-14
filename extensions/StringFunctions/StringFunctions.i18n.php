@@ -234,6 +234,13 @@ $messages['lb'] = array(
 	'stringfunctions-desc' => 'Verbessert de parser mat String-Funktiounen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'stringfunctions-desc' => 'Го обогатува парсерот со низни функции',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

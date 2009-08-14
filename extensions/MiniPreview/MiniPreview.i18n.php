@@ -210,12 +210,14 @@ Por ejemplo, "* PD-" No mostrará todas las categorías que comiencen con "PD-",
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'minipreview-files_in_category' => "Tämä luokka sisältää '''$1''' {{PLURAL:$1|tiedoston|tiedostoa}}.",
 	'minipreview-files_in_gallery' => "Tämä galleria sisältää '''$1''' {{PLURAL:$1|tiedoston|tiedostoa}}.",
+	'minipreview-no_more_files_here' => 'Ei enempää tiedostoja tässä suunnassa.',
 	'minipreview-no_category_gallery' => 'Luokkia tai gallerioita ei ole.',
 );
 

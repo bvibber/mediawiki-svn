@@ -48,6 +48,7 @@ $messages['en'] = array(
  * @author Bennylin
  * @author Darth Kule
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'closewikis-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
@@ -56,6 +57,22 @@ $messages['qqq'] = array(
 	'closewikis-page-reopen-reason' => '{{Identical|Reason}}',
 	'closewikis-list-header-wiki' => '{{Identical|Wiki}}',
 	'right-editclosedwikis' => '{{doc-right}}',
+	'right-closewikis' => '{{doc-right|closewikis}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'closewikis-page' => 'Sluit wiki',
+	'closewikis-page-close' => 'Sluit wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-reason' => 'Rede (vir logboek):',
+	'closewikis-page-close-submit' => 'Sluit',
+	'closewikis-page-close-success' => 'Die wiki is nou gesluit',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Rede:',
+	'closewikis-page-reopen-submit' => 'Heropen',
 );
 
 /** Arabic (العربية)

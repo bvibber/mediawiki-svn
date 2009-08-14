@@ -183,6 +183,13 @@ $messages['de'] = array(
 	'smoothgallery-javascript-disabled' => 'JavaScript wird benötigt, um die Galerie darzustellen.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'smoothgallery-unexpected-error' => 'Es ist ein unerwarteter Fehler aufgetreten. Bitte schreiben Sie eine Fehlermeldung.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

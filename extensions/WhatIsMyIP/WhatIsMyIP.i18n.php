@@ -142,7 +142,8 @@ $messages['ckb-arab'] = array(
 $messages['cs'] = array(
 	'whatismyip' => 'Jaká je moje IP',
 	'whatismyip-desc' => 'Zobrazí IP adresu aktuálního uživatele na [[Special:WhatIsMyIP|speciální stránce]]',
-	'whatismyip-out' => 'Vaše IP:',
+	'whatismyip-out' => 'Vaše IP adresa:',
+	'right-whatismyip' => 'Zobrazí [[Special:WhatIsMyIP|vlastní IP adresu]]',
 );
 
 /** Welsh (Cymraeg)

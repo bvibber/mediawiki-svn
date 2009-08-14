@@ -671,11 +671,14 @@ $messages['lt'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'ajax-se-desc' => 'Прикажува активни корисници кои уредуваат иста страница',
 	'ajax-se-title' => 'Во моментот уредуваат:',
+	'ajax-se-pending' => 'во исчекување на превчитувањето… (кликнете ја кутијава за да започнете со уредувањето)',
+	'ajax-se-idling' => '(пред $1s)',
 	'ajax-se-pagedoesnotexist' => 'страницата не постои',
 	'ajax-se-userinvalid' => 'Грешка: погрешен корисник',
 	'ajax-se-usernotfound' => 'Грешка: не е пронајден корисник',

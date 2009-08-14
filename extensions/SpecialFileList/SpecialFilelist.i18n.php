@@ -498,6 +498,16 @@ $messages['mdf'] = array(
 	'filelist-image-desc' => 'колга',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'filelist' => 'Листа на податотеки',
+	'filelist-desc' => '[[Special:Filelist|Специјална страница]] за наведување на подигнати податотеки',
+	'filelist-show-list' => 'Прикажи листа',
+	'filelist-image-desc' => 'опис',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

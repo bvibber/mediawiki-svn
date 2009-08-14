@@ -228,6 +228,16 @@ $messages['de'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Status auf offline ändern, wenn ich mich abmelde',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'onlinestatus-js-anon' => 'Fehler: Sie müssen angemeldet sein, um diese Funktion nutzen zu können',
+	'onlinestatus-js-changed' => 'Ihr Status wurde in „$1“ geändert',
+	'onlinestatus-toggles-desc' => 'Ihr Status:',
+	'onlinestatus-toggles-explain' => 'Diese Einstellung ermöglicht Ihnen, anderen Benutzern auf Ihrer Benutzerseite zu zeigen, ob Sie online oder offline sind.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -317,6 +327,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Jaakonam
  * @author Nike
  * @author Vililikku
@@ -331,6 +342,8 @@ $messages['fi'] = array(
 	'onlinestatus-tab' => 'Tila',
 	'onlinestatus-toggles-desc' => 'Tilasi:',
 	'onlinestatus-toggles-show' => 'Näytä sisäänkirjautumisen tila käyttäjäsivullani',
+	'onlinestatus-toggle-offline' => 'Verkkoyhteydettä',
+	'onlinestatus-toggle-online' => 'Verkkoyhteydessä',
 );
 
 /** French (Français)

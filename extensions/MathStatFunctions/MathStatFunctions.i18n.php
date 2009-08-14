@@ -192,9 +192,13 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Silvonen
  */
 $messages['fi'] = array(
+	'msfunc_desc' => 'Kokoelma matemaattisia ja tilastollisia funktioita',
+	'msfunc_nan' => 'Tulos ei ole numero',
+	'msfunc_inf' => 'Tuloksena on ääretön',
 	'msfunc_div_zero' => 'Jako nollalla',
 );
 

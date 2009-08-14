@@ -162,6 +162,13 @@ $messages['lb'] = array(
 	'pipeescape-desc' => 'Parserfonctioun <code>#!</code> fir den Trenn-Parameter als normale Buchstaw ze benotzen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'pipeescape-desc' => 'Парсерска функција <code>#!</code> која се користи кога сакате цртите да бидат само црти',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

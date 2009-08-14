@@ -306,6 +306,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Purodha
  * @author Raimond Spekking
  * @author Umherirrender
@@ -330,7 +331,7 @@ Ein Logbuch der über mittels PovWatch hinzugefügten Seiten ist verfügbar unte
 	'povwatch_unknown_subpage' => 'Unbekannte Unterseite',
 	'povwatch_push' => 'Hinzufügen',
 	'povwatch_push_intro' => 'Benutze das Formular, um Seiten den Beobachtungslisten der registrierten Benutzer hinzuzufügen.
-Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werde und es gibt keinen Weg, dies rückgängig zu machen.',
+Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werden und es gibt keinen Weg, dies rückgängig zu machen.',
 	'povwatch_title' => 'Seitenname:',
 	'povwatch_comment' => 'Logbuch-Kommentar:',
 	'povwatch_no_log' => 'Das Logbuch enthält keine Einträge.',
@@ -356,6 +357,8 @@ $messages['de-formal'] = array(
 	'povwatch_not_subscribed' => 'Sie sind nicht für PovWatch registriert; eine Abmeldung ist daher nicht möglich.',
 	'povwatch_unsubscribed' => 'Sie sind nun von PovWatch abgemeldet',
 	'povwatch_not_allowed_subscribers' => 'Sie haben keine Berechtigung, die PovWatch-Benutzerliste einzusehen.',
+	'povwatch_push_intro' => 'Benutzen Sie das Formular, um Seiten den Beobachtungslisten der registrierten Benutzer hinzuzufügen.
+Bitte beachten Sie: Auch nicht vorhandene Seiten können hinzugefügt werden und es gibt keinen Weg, dies rückgängig zu machen.',
 	'povwatch_unsubscribe_intro' => 'Sie sind für PovWatch registriert. Klicken Sie auf die Schaltfläche, um sich abzumelden.',
 	'povwatch_subscribe_intro' => 'Sie sind nicht für PovWatch registriert. Klicken Sie auf die Schaltfläche, um sich anzumelden.',
 );

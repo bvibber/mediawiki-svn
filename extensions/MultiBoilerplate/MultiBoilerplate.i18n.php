@@ -160,10 +160,16 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'multiboilerplate-desc' => 'Mahdollistaa vakiotekstin valitsemisen tiputusvalikosta joka sijaitsee muokkaus lomakekentän yläpuolella sivuja muokattaessa',
+	'multiboilerplate-legend' => 'Valitse vakioteksti',
 	'multiboilerplate-submit' => 'Lataa',
+	'boilerplates' => 'Käytettävissä olevat vakiotekstit',
+	'multiboilerplate-special-define-in-localsettings' => 'Vakiotekstit määritellään LocalSettings:issä.',
+	'multiboilerplate-special-define-in-interface' => 'Vakiotekstit määritellään [[MediaWiki:Multiboilerplate]]:ssä.',
 );
 
 /** French (Français)

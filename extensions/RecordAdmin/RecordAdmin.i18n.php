@@ -62,6 +62,7 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'recordadmin-desc' => 'Short desciption of this extension.
@@ -79,6 +80,7 @@ Do not translate or change tag names, or link anchors.',
 	'recordadmin-editlink' => '{{Identical|Edit}}',
 	'recordadmin-actions' => '{{Identical|Action}}',
 	'recordadmin-typeinfo' => '$1 is a record type. Could be read as "A record of type $1"',
+	'right-recordadmin' => '{{doc-right|recordadmin}}',
 );
 
 /** Arabic (العربية)
@@ -341,10 +343,12 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author Revolus
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'recordadmin-categoryempty' => 'Derzeit gibt es keine Aufzeichnungstypen. Bitte kategorisieren Sie Aufzeichnungsvorlagen unter [[:$1|$1]].',
 	'recordadmin-select' => 'Wählen Sie den zu verwaltenden Aufzeichnungstyp',
 );
 
@@ -486,6 +490,7 @@ $messages['es'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Acciones',
 	'recordadmin-needscontent' => 'Agregar contenido...',
+	'recordadmin-typeinfo' => 'Registro de $1',
 	'right-recordadmin' => 'Encontrar y editar páginas de registro',
 );
 
@@ -529,15 +534,20 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'recordadmin-select' => 'Valitse',
 	'recordadmin-submit' => 'Lähetä',
+	'recordadmin-alreadyexist' => 'Valitettavasti "$1" on jo olemassa!',
+	'recordadmin-createsuccess' => '$1 luotiin',
+	'recordadmin-createerror' => 'Virhe tapahtui kun yritettiin luoda $1!',
 	'recordadmin-badtitle' => 'Virheellinen otsikko!',
 	'recordadmin-invert' => 'Käänteinen valinta',
 	'recordadmin-buttonsearch' => 'Etsi',
 	'recordadmin-buttoncreate' => 'Luo',
+	'recordadmin-buttonreset' => 'Palautetaan alkutilaan',
 	'recordadmin-searchresult' => 'Hakutulokset',
 	'recordadmin-updatesuccess' => '$1 päivitetty',
 	'recordadmin-updateerror' => 'Päivityksessä tapahtui virhe',
 	'recordadmin-buttonsave' => 'Tallenna',
 	'recordadmin-createlink' => 'luo sellainen',
+	'recordadmin-summary-typecreated' => 'Uusi $1 luotiin',
 	'recordadmin-viewlink' => 'näytä',
 	'recordadmin-editlink' => 'muokkaa',
 	'recordadmin-created' => 'Luotu',
@@ -597,18 +607,19 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'recordadmin-submit' => 'Sometre',
 	'recordadmin-buttonsearch' => 'Rechèrchiér',
-	'recordadmin-buttoncreate' => 'Crèar',
+	'recordadmin-buttoncreate' => 'Fâre',
 	'recordadmin-buttonreset' => 'Tornar inicialisar',
 	'recordadmin-searchresult' => 'Rèsultats de la rechèrche',
 	'recordadmin-buttonsave' => 'Sôvar',
 	'recordadmin-viewlink' => 'vêre',
 	'recordadmin-editlink' => 'changiér',
-	'recordadmin-created' => 'Crèâ',
-	'recordadmin-modified' => 'Modifiâ',
+	'recordadmin-created' => 'Fêt',
+	'recordadmin-modified' => 'Changiê',
 	'recordadmin-actions' => 'Accions',
 );
 

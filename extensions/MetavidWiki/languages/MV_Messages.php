@@ -1457,7 +1457,7 @@ $messages['de'] = array(
 	'mv_archive_org_mp4' => 'In Archive.org-MP4 verpackter H.264-Stream',
 	'mv_archive_org_link' => 'Links zu Original-MPEG2-Dateien von Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Fehler: Es ist keine Videodatei mit diesem Stream verknüpft.</span><br />
-Bitte berichten Sie dieses Problem dem [[{{MediaWiki:Grouppage-sysop}}|Seitenadministrator]].',
+Bitte berichte dieses Problem dem [[{{MediaWiki:Grouppage-sysop}}|Seitenadministrator]].',
 	'mv_stream_added' => 'Du hast den Stream $1 hinzugefügt',
 	'mv_stream_meta' => 'Stream-Seite',
 	'mv_add_stream' => 'Metavid Stream hinzufügen',
@@ -2026,7 +2026,11 @@ $messages['fi'] = array(
 	'mv_ogg_high_quality' => 'Hyvälaatuinen – Ogg Theora 900 kbit/s',
 	'mvexportsearch' => 'MetaVid-vienti',
 	'mv_move_delete_msg' => 'siirretty kohteeseen $1',
+	'mv_path_type_url_anx' => 'mediatiedoston täysi URL',
+	'mv_path_type_wiki_title' => 'mediatiedostonimi wikissä',
+	'mv_duration_label' => 'Kesto',
 	'mv_save_changes' => 'Tallenna muutokset',
+	'mv_user_cant_edit' => 'Saattaa olla että sinun tulee [$1 kirjautua sisään] voidaksesi muokata, $2',
 	'mv_media_path' => 'mediapolku',
 	'mv_missing_cat' => 'Luokan nimi puuttuu',
 	'mv_remove_reason' => 'Poiston syy',
@@ -2041,6 +2045,7 @@ $messages['fi'] = array(
 	'mv_close_clip' => 'Sulje leike',
 	'mv_category_matches' => 'Luokkien vastaavuudet',
 	'mv_click_to_edit' => 'Klikkaa muokataksesi',
+	'mvd_default_mismatch' => 'Virhe asetustiedostossa',
 	'mv_time_separator' => '$1 – $2',
 	'video_feed_cat' => 'Videosyöte luokkaan kohdistuen:',
 	'mv_play' => 'Soita',
@@ -2066,6 +2071,7 @@ $messages['fi'] = array(
 	'mv_add_category' => 'Lisää luokitus',
 	'mv_basic_text_desc' => 'Sanallinen kuvailu (valinnainen)',
 	'mediasearch' => 'Mediahaku',
+	'mv_search_sel_t' => 'Valitse haun muoto',
 	'mv_results_for' => 'Tulokset kohdetta $1 varten',
 	'mv_video_search' => 'Videohaku',
 	'mv_page_search' => 'Tee haku wikisivuilta kohdetta $1 koskien',
@@ -2109,6 +2115,7 @@ $messages['fi'] = array(
 	'mv_prev_cat' => 'Edellinen luokka: $1',
 	'mv_next_cat' => 'Seuraava luokka: $1',
 	'mv_mang_layers' => 'Hallitse tasoja',
+	'mv_protect_source_material' => 'Valmiiksi tarjottu lähdeaineisto suojattu muokkauksilta',
 	'right-mv_edit_stream' => 'Muokata virtatiedostoja',
 );
 
@@ -2376,19 +2383,20 @@ Ou bien être autorisé à <a href="$3">Ajouter le flux</a>',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'mv_tool_search' => 'Rechèrchiér',
-	'mv_tool_navigate' => 'Navigar',
+	'mv_tool_navigate' => 'Navegar',
 	'mv_edit' => 'Changiér',
 	'mv_history' => 'Historico',
-	'mv_days' => '$1 {{PLURAL:$1|jorn|jorns}}',
+	'mv_days' => '$1 jorn{{PLURAL:$1||s}}',
 	'mv_hours' => '$1 hor{{PLURAL:$1|a|es}}',
 	'mv_hours_singular' => '$1 hora',
-	'mv_minutes' => '$1 minut{{PLURAL:$1|a|es}}',
-	'mv_minutes_singular' => '$1 minuta',
-	'mv_seconds' => '$1 segond{{PLURAL:$1|a|es}}',
-	'mv_seconds_singular' => '$1 segonda',
+	'mv_minutes' => '$1 menut{{PLURAL:$1|a|es}}',
+	'mv_minutes_singular' => '$1 menuta',
+	'mv_seconds' => '$1 second{{PLURAL:$1|a|es}}',
+	'mv_seconds_singular' => '$1 seconda',
 );
 
 /** Western Frisian (Frysk)
@@ -4729,6 +4737,7 @@ $messages['ku-latn'] = array(
  * @author לערי ריינהארט
  */
 $messages['lb'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editeur vu Metadaten vu Videoen & Medie sichen]',
 	'metavid' => 'Metavid-Säit',
 	'mv_missing_stream' => 'De Stream $1 feelt',
 	'specialpages-group-mv_group' => 'MetaVidWiki Spezialsäiten',
@@ -4891,7 +4900,7 @@ $messages['mk'] = array(
 	'mvexportsearch' => 'Metavid извоз',
 	'mvexportsequence' => 'Metavid секвенца за извоз',
 	'mvexportstream' => 'Metavid извозен поток',
-	'mv_move_delete_msg' => 'mvd преместено во $1',
+	'mv_move_delete_msg' => 'преместено на $1',
 	'mv_save_changes' => 'Зачувај измени',
 	'mv_upload_file' => 'Подигни податотека',
 	'mv_external_file' => 'Надворешна податотека',

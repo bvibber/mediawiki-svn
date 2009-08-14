@@ -577,6 +577,7 @@ $4',
 	'todo-update-else-item' => 'Yritetään päivittää jonkin muun tehtävää',
 	'todo-unrecognize-type' => 'Tunnistamaton tyyppi',
 	'todo-user-invalide' => 'Annettu tehtävä on kelvoton tai puuttuva, tai käyttäjä on sopimaton.',
+	'todo-item-list' => 'Sinun tehtäväsi',
 	'todo-no-item' => 'Ei tehtäviä.',
 	'todo-invalid-owner' => 'Tässä tehtävässä on virheellinen omistaja',
 	'todo-add-queue' => 'Lisää jonoon…',
@@ -644,6 +645,13 @@ $messages['frp'] = array(
 	'todo-new-item' => 'Novél èlèment',
 	'todo-issue-summary' => 'Rèsumâ du problèmo :',
 	'todo-form-details' => 'Dètalys :',
+);
+
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'todo-list-cancel' => 'Ofbrekke',
 );
 
 /** Galician (Galego)
@@ -1040,6 +1048,43 @@ $messages['lb'] = array(
  */
 $messages['mhr'] = array(
 	'todo-list-cancel' => 'Чараш',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'todo' => 'Листа на задачи',
+	'todo-desc' => 'Експериментално проширување за лична [[Special:Todo|листа на задачи]]',
+	'todo-tab' => 'задачи',
+	'todo-new-queue' => 'нова',
+	'todo-mail-subject' => 'Завршена задача на листата на задачи на $1',
+	'todo-mail-body' => 'Побаравте потврда по е-пошта за завршувањето на задача која сте ја поставиле на листата на задачи на $1.
+
+Задача: $2
+Поставено: $3
+
+Оваа задача е означена како завршена, заедно со следниов коментар:
+$4',
+	'todo-invalid-item' => 'Изгубена или неважечка задача',
+	'todo-update-else-item' => 'Обид за ажурирање на туѓи задачи',
+	'todo-unrecognize-type' => 'Непризнаен тип',
+	'todo-user-invalide' => 'На задачите им е зададен погрешен или отсутен корисник, или пак корисник кој нема надлежност за задачата.',
+	'todo-item-list' => 'Ваши задачи',
+	'todo-no-item' => 'Нема задачи.',
+	'todo-invalid-owner' => 'Погрешен сопственик за оваа задача',
+	'todo-add-queue' => 'Додај ред на чекање...',
+	'todo-move-queue' => 'Премести во редот на чекање...',
+	'todo-list-for' => 'Листа на задачи за $1',
+	'todo-list-change' => 'Смени',
+	'todo-list-cancel' => 'Откажи',
+	'todo-new-item' => 'Нова задача',
+	'todo-issue-summary' => 'Преглед на проблемот:',
+	'todo-form-details' => 'Детали:',
+	'todo-form-email' => 'За да добивате известување по е-пошта кога некоја задача е затворена, внесете ја вашата адреса:',
+	'todo-form-submit' => 'Постави барање',
+	'right-todo' => 'Имање на листа на задачи',
+	'right-todosubmit' => 'Ограничување на правото на листата на задачи на еден корисник',
 );
 
 /** Malayalam (മലയാളം)

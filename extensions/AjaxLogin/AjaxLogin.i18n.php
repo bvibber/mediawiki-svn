@@ -252,6 +252,18 @@ Basi madula ang mga ginpang obra mo sa diri nga pahina kung mahalin ka subong sa
 	'ajaxlogin-create' => 'Himuon ang akawnt',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'ajaxlogin-desc' => 'Dinamički okvir koji omogućava suradnicima prijavu i pamćenje lozinke',
+	'ajaxLogin1' => 'Kako biste se prijavili, morate unijeti novu lozinku.
+To će Vas odvesti s ove stranice i mogli biste izgubiti sve nesačuvane izmjene.',
+	'ajaxLogin2' => 'Jeste li sigurni?
+Mogli biste izgubiti sve izmjene na ovoj stranici ukoliko je sada zatvorite.',
+	'ajaxlogin-create' => 'Stvorite račun',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -512,6 +524,7 @@ Você perderá as suas edições se abandonar a página agora.',
  * @author Pixi
  */
 $messages['ro'] = array(
+	'ajaxlogin-desc' => 'Casetă dinamică care permite utilizatorilor să se autentifice şi să-şi reamintească parola',
 	'ajaxLogin1' => 'Pentru a te autentifica, trebuie să introduci o parolă nouă.
 Aceasta înseamnă că vei părăsi pagina de editare şi vei pierde editările efectuate până acum.',
 	'ajaxLogin2' => 'Eşti sigur?

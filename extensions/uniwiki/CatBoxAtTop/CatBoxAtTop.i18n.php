@@ -283,9 +283,11 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
+	'catboxattop-desc' => 'Додава кутија за категорија горе-десно во страниците',
 	'catboxattop-categories' => 'Категории',
 );
 

@@ -180,6 +180,13 @@ $messages['lb'] = array(
 	'htmlets-desc' => 'Léisst Iech HTML-Schnëppele vu Fichiere mat Hellëf vun der <tt><nowiki><htmlet></nowiki></tt> Markéierung asetzen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'htmlets-desc' => 'Дозволува вметнување на HTML снипети (парчиња код) во самиот текст од податоци кои ја користат ознаката <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

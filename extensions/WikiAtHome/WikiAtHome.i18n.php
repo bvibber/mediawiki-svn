@@ -180,6 +180,14 @@ $messages['el'] = array(
 	'wah-transcode-working' => 'Αυτό το βίντεο προωθείται, παρακαλώ δοκιμαστε ξανά αργότερα',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'wah-short-video' => 'Archivo de vídeo $1, $2',
+	'wah-short-general' => 'Archivo de media $1, $2',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

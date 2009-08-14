@@ -45,6 +45,7 @@ Uploaded files should contain page name and optional reason, separated by a "|" 
  * @author Jon Harald Søby
  * @author Malafaya
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'deletebatch-desc' => 'Short description of the :Deletebatch extension, shown in [[Special:Version]]. Do not translate or change links.',
@@ -52,6 +53,7 @@ $messages['qqq'] = array(
 	'deletebatch-delete' => '{{Identical|Delete}}',
 	'deletebatch-select-script' => 'User name. Entry in dropdown for user that should execute the deletions',
 	'deletebatch-select-yourself' => 'Entry in dropdown for user that should execute the deletions',
+	'right-deletebatch' => '{{doc-right|deletebatch}}',
 );
 
 /** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
@@ -59,6 +61,13 @@ $messages['qqq'] = array(
  */
 $messages['gom-latn'] = array(
 	'deletebatch-success-subtitle' => '$1 khatir',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'deletebatch-select-yourself' => 'u',
 );
 
 /** Arabic (العربية)

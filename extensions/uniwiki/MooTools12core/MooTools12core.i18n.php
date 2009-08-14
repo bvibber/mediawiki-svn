@@ -230,6 +230,13 @@ $messages['lb'] = array(
 	'mootools12core-desc' => 'Setzt [http://mootools.net mootools-1.2-core-yc.js], e kompakte JavaScript Programm, op all Säit derbäi',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mootools12core-desc' => 'Додава [http://mootools.net mootools-1.2-core-yc.js], компактна JavaScript шема, на секоја страница',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

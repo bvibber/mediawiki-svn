@@ -118,8 +118,13 @@ $messages['rtm'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'grouppermissions-search' => 'Groep:',
 	'grouppermissions-dosearch' => 'Gaan',
 	'grouppermissions-comment' => 'Opmerking:',
+	'grouppermissions-true' => 'Waar',
+	'grouppermissions-false' => 'Onwaar',
+	'grouppermissions-never' => 'Nooit',
+	'grouppermissions-sp-save' => 'Stoor',
 	'grouppermissions-sp-remove' => 'verwyder',
 );
 
@@ -913,14 +918,15 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'grouppermissions-search' => 'Tropa :',
 	'grouppermissions-dologin' => 'Branchement',
 	'grouppermissions-dosearch' => 'Lanciér',
-	'grouppermissions-true' => 'Verê',
+	'grouppermissions-true' => 'Veré',
 	'grouppermissions-sp-save' => 'Sôvar',
-	'grouppermissions-sp-remove' => 'Enlevar',
+	'grouppermissions-sp-remove' => 'enlevar',
 );
 
 /** Western Frisian (Frysk)

@@ -364,6 +364,13 @@ $messages['mk'] = array(
 	'uos-other' => '*Друго',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'uos-other' => '*Бусад',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  */

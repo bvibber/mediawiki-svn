@@ -201,6 +201,7 @@ $wgGoogleMapsMessages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $wgGoogleMapsMessages['af'] = array(
 	'gm-balloon-title' => 'Titel:',
@@ -215,9 +216,15 @@ $wgGoogleMapsMessages['af'] = array(
 	'gm-yes' => 'Ja',
 	'gm-no' => 'Nee',
 	'gm-search' => 'Soek',
+	'gm-meters' => 'meters',
+	'gm-miles' => 'myle',
 	'gm-save-path' => 'Stoor',
 	'gm-line-width' => 'Wydte',
 	'gm-back' => 'terug',
+	'gm-kml-loading' => 'besig om te laai...',
+	'gm-earth' => 'Aarde',
+	'gm-moon' => 'Maan',
+	'gm-mars' => 'Mars',
 );
 
 /** Amharic (አማርኛ)
@@ -1799,13 +1806,14 @@ $wgGoogleMapsMessages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $wgGoogleMapsMessages['frp'] = array(
 	'gm-width' => 'Largior',
 	'gm-height' => 'Hôtior',
 	'gm-zoom-control' => 'Navigacion',
 	'gm-large' => 'Granta',
-	'gm-small' => 'Pechou',
+	'gm-small' => 'Petiôta',
 	'gm-no-zoom-control' => 'Nan',
 	'gm-yes' => 'Ouè',
 	'gm-no' => 'Nan',
@@ -3266,6 +3274,7 @@ $wgGoogleMapsMessages['ml'] = array(
 $wgGoogleMapsMessages['mn'] = array(
 	'gm-yes' => 'Тийм',
 	'gm-search' => 'Хайх',
+	'gm-kml-loading' => 'уншиж байна...',
 );
 
 /** Marathi (मराठी)

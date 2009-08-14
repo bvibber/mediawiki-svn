@@ -58,6 +58,20 @@ $messages['qqq'] = array(
 * $3 is "@apps.messenger"',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'imstatus_syntax' => 'Sintaks',
+	'imstatus_default' => 'Standaard',
+	'imstatus_example' => 'Voorbeeld',
+	'imstatus_possible_val' => 'Moontlike waardes',
+	'imstatus_max' => 'maks.',
+	'imstatus_min' => 'min.',
+	'imstatus_or' => 'of',
+	'imstatus_your_name' => 'u naam by $1',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

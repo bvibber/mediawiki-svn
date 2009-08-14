@@ -275,6 +275,7 @@ $messages['de-formal'] = array(
 	'refreshspecial-help' => 'Diese Spezialseite stellt ein Werkzeug zum manuellen Aktualisieren der Spezialseiten bereit.
 Sobald Sie alle Spezialseiten zum Aktualisieren ausgewählt haben, drücken Sie die Aktualisieren-Schaltfläche, um die Aktualisierung zu starten.
 Achtung: Das Aktualisieren kann auf großen Wikis länger dauern.',
+	'refreshspecial-fail' => 'Bitte haken Sie mindestens eine Spezialseite zum Auffrischen ab.',
 	'refreshspecial-js-disabled' => '(<i>Sie können nicht alle Seiten auswählen, wenn Sie Javascript deaktiviert haben</i>)',
 	'refreshspecial-none-selected' => 'Sie haben keine Spezialseiten ausgewählt; somit Zurücksetzung auf die Standardauswahl.',
 );

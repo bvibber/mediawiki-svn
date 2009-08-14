@@ -37,6 +37,13 @@ $messages['qqq'] = array(
 	'createpage-badtitle' => 'Error message displayed in CreatePage special page when is specified an invalid title. See for example [[Special:CreatePage/]]',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'createpage_submitbutton' => 'OK',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -553,7 +560,7 @@ $messages['lzh'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'createpage' => 'Создади страница',
+	'createpage' => 'Создај страница',
 	'createpage-desc' => 'Додава [[Special:CreatePage|специјална страница]] за создавање на нови страници',
 	'createpage_submitbutton' => 'Потврди',
 	'createpage_instructions' => 'Внесете наслов на страницата која сакате да ја креирате:',

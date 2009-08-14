@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'negref-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'negref-desc' => 'Дадае тэг для высьвятленьня знаходжаньня любога тэгу <nowiki><ref/></nowiki> унутры ўваходнага тэксту для выпраўленьня праблемаў з выкарыстаньнем некаторых шаблёнаў',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -49,6 +56,20 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'negref-desc' => 'Skići tafličku, zo by so městno tafličkow <nowiki><ref/></nowiki> znutřka zapodateho teksta zwěsćiło, zo bychu so někotre pady wužiwanja předłohow porjedźili',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'negref-desc' => 'Menyediakan sebuah tag untuk menegosiasikan lokasi tag <nowiki><ref/></nowiki> pada sebuah teks masukan untuk membetulkan beberapa penggunaan templat',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'negref-desc' => "Fornisce un tag a negoziare la posizione di ogni tag <nowiki><ref/></nowiki> all'interno dei testi di input per risolvere alcuni casi di uso di template",
 );
 
 /** Japanese (日本語)

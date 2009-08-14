@@ -22,13 +22,19 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Darth Kule
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'gblrights-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
-	'right-userrights-shared' => '{{doc-right|userrights-shared}}',
+	'gblrights-desc' => '{{desc}}
+
+See also {{msg-mw|Gur-desc}}',
+	'gblrights-logpage' => 'See also {{msg-mw|Gur-rightslog-name}}',
+	'gblrights-pagetext' => 'See also {{msg-mw|Gur-rightslog-header}}',
+	'gblrights-rights-entry' => 'See also {{msg-mw|Gur-rightslog-entry}}',
+	'right-userrights-shared' => '{{doc-right|userrights-shared}}
+
+See also {{msg-mw|Right-userrights-global}}',
 );
 
 /** Arabic (العربية)
@@ -271,6 +277,18 @@ $messages['id'] = array(
 	'right-userrights-shared' => 'Kelola hak pengguna yang dibagikan',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'shareduserrights' => 'Gestione dei diritti utente condivisi',
+	'gblrights-desc' => 'Facile [[Special:SharedUserRights|gestione dei diritti utente globali]]',
+	'gblrights-logpage' => 'Registro dei diritti globali',
+	'gblrights-pagetext' => 'Questo è un registro dei cambiamenti effettuati alla tabella dei diritti globali della famiglia di siti wiki.',
+	'gblrights-rights-entry' => "ha cambiato l'appartenenza ai gruppi globali per $1 da $2 a $3",
+	'right-userrights-shared' => 'Gestisce i diritti utente globali',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
@@ -354,6 +372,18 @@ $messages['nn'] = array(
 	'gblrights-logpage' => 'Logg over globale rettar',
 	'gblrights-pagetext' => 'Dette er ein logg over alle endringane i wikifamilien sin tabell over globale rettar.',
 	'gblrights-rights-entry' => 'endra globalt gruppemedlemskap for $1 frå $2 til $3',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Simny
+ */
+$messages['no'] = array(
+	'shareduserrights' => 'Administrering av delte brukerrettigheter',
+	'gblrights-desc' => 'Enkel [[Special:SharedUserRights|administrering av globale brukerrettigheter]]',
+	'gblrights-logpage' => 'Logg over globale rettigheter',
+	'gblrights-pagetext' => 'Dette er en logg over alle endringene som er gjort i wikifamiliens tabell over globale rettigheter',
+	'gblrights-rights-entry' => 'endret globalt gruppemedlemskap for $1 frå $2 til $3',
+	'right-userrights-shared' => 'Administrer delte brukerrettigheter',
 );
 
 /** Occitan (Occitan)

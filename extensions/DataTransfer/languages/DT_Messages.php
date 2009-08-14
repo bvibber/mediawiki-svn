@@ -98,8 +98,13 @@ $messages['af'] = array(
 	'dt_viewxml_categories' => 'Ketagorieë',
 	'dt_viewxml_namespaces' => 'Naamruimtes',
 	'dt_xml_namespace' => 'Naamruimte',
+	'dt_xml_pages' => 'Bladsye',
+	'dt_xml_page' => 'Bladsy',
+	'dt_xml_template' => 'Sjabloon',
+	'dt_xml_field' => 'Veld',
 	'dt_xml_name' => 'Naam',
 	'dt_xml_title' => 'Titel',
+	'dt_xml_id' => 'ID',
 );
 
 /** Amharic (አማርኛ)

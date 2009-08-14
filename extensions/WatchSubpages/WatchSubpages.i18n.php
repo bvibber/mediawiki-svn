@@ -198,6 +198,7 @@ $messages['de'] = array(
  */
 $messages['de-formal'] = array(
 	'watchsubpages-addedtowatchlist' => 'Die folgenden Seiten wurden Ihrer Beobachtungsliste hinzugefügt.',
+	'watchsubpages-form' => 'Wählen Sie die Seiten aus, die Ihrer Beobachtungsliste hinzugefügt werden sollen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

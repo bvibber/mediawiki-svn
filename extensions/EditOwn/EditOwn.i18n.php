@@ -248,6 +248,13 @@ $messages['lb'] = array(
 	'editown-desc' => 'Benotzer ouni "editall"-Rechter kënnen nëmme Säiten ànneren déi si ugeluecht hunn',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'editown-desc' => 'Корисниците без правото editall можат да уредуваат само страници коишто тие самите ги создале',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

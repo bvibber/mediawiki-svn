@@ -208,6 +208,13 @@ $messages['li'] = array(
 	'crowdauthentication-desc' => 'Authenticatieplugin veur Atlassian Crowd',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'crowdauthentication-desc' => 'Приклучок за потврдување корисници на Atlassian Crowd',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
