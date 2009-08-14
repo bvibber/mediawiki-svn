@@ -94,6 +94,7 @@ class WikiAtHome {
 		'keyframeInterval'	=> "--key",
 		'denoise'			=> array("--pp", "de"),
 		'novideo'			=> array("--novideo", "--no-skeleton"),
+		'bufDelay'			=> "--buf-delay",
 
 		//audio
 		'audioQuality'		=> "-a",
@@ -275,7 +276,8 @@ $wgDerivativeSettings[ WikiAtHome::ENC_SAVE_BANDWITH ] =
 			'maxSize'			=> '200',
 			'noUpscaling'		=> 'true',
 			'twopass'			=> 'true',
-			'keyframeInterval'	=> '64'
+			'keyframeInterval'	=> '64',
+			'bufDelay'			=> '128'
 		);
 $wgDerivativeSettings[ WikiAtHome::ENC_WEB_STREAM ] =
 		array(
@@ -284,7 +286,8 @@ $wgDerivativeSettings[ WikiAtHome::ENC_WEB_STREAM ] =
 			'audioBitrate'		=> '96',
 			'noUpscaling'		=> 'true',
 			'twopass'			=> 'true',
-			'keyframeInterval'	=> '128'
+			'keyframeInterval'	=> '128',
+			'bufDelay'			=> '256'
 		);
 
 $wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
