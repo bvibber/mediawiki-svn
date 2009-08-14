@@ -6,8 +6,6 @@ $IP = strval( getenv( 'MW_INSTALL_PATH' ) ) !== ''
 
 require_once( "$IP/maintenance/commandLine.inc" );
 
-
-
 function evalExtractArray( $php, $varname ) {
 	eval( $php );
 	return @$$varname;
@@ -39,23 +37,14 @@ foreach( $sources as $sourceFile ) {
 	$out = str_replace( '/', '-', $rel );
 	
 	$sourceData = file_get_contents( $sourceFile );
-	$sourceData = preg_replace( "/<\\?php/", "", $sourceData );
-	$sourceData = preg_replace( "/\?" . ">/", "", $sourceData );
 	
-	/*
-	preg_match( "/\\\$messages(.*\s)*?\);/", $sourceData, $results ); // i bet this is wrong
-
-	// If there is any!
-	if ( !empty( $results[0] ) ) {
-		$sourceData = $results[0];
+	if( preg_match( '!extensions/!', $sourceFile ) ) {
+		$sourceData = LocalisationUpdate::cleanupExtensionFile( $sourceData );
+		$items = 'langs';
 	} else {
-		$sourceData = "";
-		print "MISSING \$messages array in $rel\n";
+		$sourceData = LocalisationUpdate::cleanupFile( $sourceData );
+		$items = 'messages';
 	}
-	*/
-	
-	// Windows vs Unix always stinks when comparing files
-	$sourceData = preg_replace( "/\\\r\\\n?/", "\n", $sourceData );
 	
 	file_put_contents( "$out.txt", $sourceData );
 
@@ -72,8 +61,8 @@ foreach( $sources as $sourceFile ) {
 	$countEval = count( (array)$eval);
 	$countToken = count( (array)$token );
 	
-	printf( "%s %s %d langs - %0.1fms - eval\n", $rel, $hashEval, $countEval, $deltaEval * 1000 );
-	printf( "%s %s %d langs - %0.1fms - token\n", $rel, $hashToken, $countToken, $deltaToken * 1000 );
+	printf( "%s %s %d $items - %0.1fms - eval\n", $rel, $hashEval, $countEval, $deltaEval * 1000 );
+	printf( "%s %s %d $items - %0.1fms - token\n", $rel, $hashToken, $countToken, $deltaToken * 1000 );
 	
 	if( $hashEval !== $hashToken ) {
 		echo "FAILED on $rel\n";
