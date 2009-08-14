@@ -7,7 +7,18 @@ KNOWN ISSUES:
 
 // Configuration
 
+/**
+ * This should point to either an HTTP-accessible Subversion repository containing
+ * MediaWiki's 'phase3' and 'extensions' directory, *or* a local directory containing
+ * checkouts of them:
+ *
+ * cd /path/to/mediawiki-trunk
+ * svn co http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3
+ * svn co http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions
+ * $wgLocalisationUpdateSVNURL = '/path/to/mediawiki-trunk';
+ */
 $wgLocalisationUpdateSVNURL = "http://svn.wikimedia.org/svnroot/mediawiki/trunk";
+
 $wgLocalisationUpdateRetryAttempts = 5;
 
 // Info about me!

@@ -236,7 +236,7 @@ class LocalisationUpdate {
 		if ( $saveResults && !empty($changedStrings) && is_array($changedStrings)) {
 			self::myLog( "--Checking languagecode {$langcode}--" );
 			// The save them
-			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode, $verbose );
+			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $compare_messages, $base_messages, $langcode, $verbose );
 			self::myLog( "{$updates} messages updated for {$langcode}." );
 		} elseif ( $saveResults ) {
 			self::myLog( "--{$langcode} hasn't changed--" );
@@ -286,7 +286,7 @@ class LocalisationUpdate {
 			);
 	}
 
-	public static function saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode, $verbose ) {
+	public static function saveChanges( $changedStrings, $forbiddenKeys, $compare_messages, $base_messages, $langcode, $verbose ) {
 		// Gonna write to the DB again
 		$db = wfGetDB ( DB_MASTER );
 
@@ -313,7 +313,7 @@ class LocalisationUpdate {
 				
 				// Output extra logmessages when needed
 				if ( $verbose ) {
-					self::myLog( "Updated message {$key} from {$compare_messages[$key]} to {$base_messages[$key]}" );
+					self::myLog( "Updated message {$key} from '{$compare_messages[$key]}' to '{$base_messages[$key]}'" );
 				}
 
 				// Update the counter
@@ -445,7 +445,7 @@ class LocalisationUpdate {
 			if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
 				self::myLog( "--Checking languagecode {$language}--" );
 				// The save them
-				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $messages, $language, $verbose );
+				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $compare_messages, $messages, $language, $verbose );
 				self::myLog( "{$updates} messages updated for {$language}." );
 			} elseif($saveResults === true) {
 				self::myLog( "--{$language} hasn't changed--" );
