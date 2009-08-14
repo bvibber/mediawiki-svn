@@ -78,9 +78,9 @@ function pickDonateButton() {
 }
 
 function setDonateButton( button ) {
-        // Store cookie so portal is hidden for four weeks
+        // Store cookie so portal is set for three weeks
         var e = new Date();
-        e.setTime( e.getTime() + 28 * 24 * 60 * 60 * 10000 ) ;
+        e.setTime( e.getTime() + 21 * 24 * 60 * 60 * 1000 ) ;
         var work = 'donateButton=' + button + '; expires=' + e.toGMTString() + '; path=/';
         document.cookie = work;
 }
@@ -397,7 +397,7 @@ function updateFundraiserPortal() {
 	}
 }
 function setFundraiserPortalCookie( state ) {
-	// Store cookie so portal is hidden for four weeks
+	// Store cookie so portal is hidden for three weeks
 	var e = new Date();
 	e.setTime( e.getTime() + ( 21 * 24 * 60 * 60 * 1000 ) );
 	var work = 'hidefrportal=' + ( state ? 1 : 0 ) + '; expires=' + e.toGMTString() + '; path=/';
