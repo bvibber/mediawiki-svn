@@ -42,7 +42,6 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 */
 
-error_reporting(E_ALL | E_WARNING | E_STRICT);
 if ( !defined( 'MEDIAWIKI' ) )
 {
     die( 'This file is a MediaWiki extension, not a valid entry point.' );
@@ -62,12 +61,12 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-    $wgHooks['ParserFirstCallInit'][] = 'efTransliterator_Setup';
+    $wgHooks['ParserFirstCallInit'][] = 'ExtTransliterator::setup';
 } else {
-    $wgExtensionFunctions[] = 'efTransliterator_Setup';
+    $wgExtensionFunctions[] = 'ExtTransliterator::setup';
 }
 $wgExtensionMessagesFiles['Transliterator'] = dirname(__FILE__).'/Transliterator.i18n.php';
-$wgHooks['LanguageGetMagic'][]       = 'efTransliterator_Magic';
+$wgHooks['LanguageGetMagic'][]       = 'ExtTransliterator::getMagic';
 $wgHooks['ArticleDeleteComplete'][]  = 'ExtTransliterator::purgeMap';
 $wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeMap';
 $wgHooks['ArticlePurge'][]  = 'ExtTransliterator::purgeMap';
@@ -499,19 +498,26 @@ class ExtTransliterator {
         }
         return true;
     }
-}
-
-function efTransliterator_Setup() {
-    global $wgParser;
-
-    $trans = new ExtTransliterator;
-    $wgParser->setFunctionHook( 'transliterate', array( $trans, 'render' ) );
-    return true;
-}
  
-function efTransliterator_Magic( &$magicWords, $langCode ) {
-    wfLoadExtensionMessages('Transliterator');
+    /**
+     * Load the magic words
+     */
+    static function getMagic( &$magicWords, $langCode ) {
+        wfLoadExtensionMessages('Transliterator');
 
-    $magicWords['transliterate'] = array( 0, 'transliterate', wfMsg( 'transliterator-invoke' ) );
-    return true;
+        $magicWords['transliterate'] = array( 0, 'transliterate', wfMsg( 'transliterator-invoke' ) );
+        return true;
+    }
+
+    /**
+     * Called on first use to create singleton
+     */
+    static function setup() {
+        global $wgParser;
+
+        $trans = new ExtTransliterator;
+        $wgParser->setFunctionHook( 'transliterate', array( $trans, 'render' ) );
+        return true;
+    }
 }
+
