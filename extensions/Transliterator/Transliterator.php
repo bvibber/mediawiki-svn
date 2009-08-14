@@ -20,6 +20,8 @@
  *     addition of answer parameter
  * @version 1.2.0
  *     semi-case-sensitive by default, fix bugs with edge-detection and html-entities
+ * @version 1.2.1
+ *     added cache support
  */
 
 /**
@@ -66,6 +68,9 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 }
 $wgExtensionMessagesFiles['Transliterator'] = dirname(__FILE__).'/Transliterator.i18n.php';
 $wgHooks['LanguageGetMagic'][]       = 'efTransliterator_Magic';
+$wgHooks['ArticleDeleteComplete'][]  = 'ExtTransliterator::purgeMap';
+$wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeMap';
+$wgHooks['ArticlePurge'][]  = 'ExtTransliterator::purgeMap';
 
 class ExtTransliterator {
 
@@ -152,23 +157,31 @@ class ExtTransliterator {
     }
     /**
      * Get a map function, either from the local cache or from the page,
-     * TODO: discuss whether memcache should be used in any of this.
+     * TODO: I am uncomfortable with cache integration.
      */
     function getMap( $prefix, $name ) {
+        global $wgMemc;
 
         $mappage = $prefix.$name;
 
+        // Have we used it on thie page already?
         if ( isset( $this->mMaps[$mappage] ) ) 
             return $this->mMaps[$mappage];
 
-        $existing = $this->getExistingMapNames( $prefix );
+        // Have we used it recently?
+        $cached = $wgMemc->get( "extTransliterator:$name" );
+        if ( $cached ) 
+            return $this->mMaps[$mappage] = ($cached == "false" ? false : $cached);
 
+        // Does it exist at all?
+        $existing = $this->getExistingMapNames( $prefix );
         if (! isset( $existing[$mappage] ) ) 
             $map = false;
 
         else
             $map = $this->readMap( wfMsg( $mappage ), $mappage );
 
+        $wgMemc->set( "extTransliterator:$name", ($map == false ? "false" : $map));
         return $this->mMaps[$mappage] = $map;
     }
 
@@ -230,9 +243,10 @@ class ExtTransliterator {
                 $map['__sensitive__'] = true;
             }
             array_shift( $lines );
+            $count--;
         }
 
-        if ( count( $lines ) > $wgTransliteratorRuleCount )
+        if ( $count > $wgTransliteratorRuleCount )
             return wfMsgExt( 'transliterator-error-rulecount', array('parsemag'), $wgTransliteratorRuleCount, $mappage );
 
         foreach ( $lines as $line ) {
@@ -259,8 +273,9 @@ class ExtTransliterator {
 
             // Now we've looked at our syntax we can remove html escaping to reveal the true form
             $from = html_entity_decode( $from, ENT_QUOTES, 'UTF-8' );
-            if ( $decompose ) // Undo the NFCing of MediaWiki
+            if ( $decompose ) { // Undo the NFCing of MediaWiki
                 $from = UtfNormal::toNFD( $from );
+            }
 
             // If $map[$from] is set we can skip the filling in of sub-strings as there is a longer rule
             if ( isset( $map[$from] ) ) {
@@ -447,24 +462,42 @@ class ExtTransliterator {
         $map = $this->getMap( $prefix, $mapname );
 
         if ( !$map ) { // False if map was not found
-            $title = Title::newFromText( $mappage, NS_MEDIAWIKI );
             $output = $other;
 
         } else if ( is_string( $map ) ) { // An error message
-            $title = Title::newFromRow( $this->mPages[$mappage] );
             $output = '<span class="transliterator error"> '.$map.' </span>';
 
         } else { // A Map
-            $title = Title::newFromRow( $this->mPages[$mappage] );
-            $output = UtfNormal::toNFC( $this->transliterate( html_entity_decode( $word, ENT_QUOTES, 'UTF-8' ), $map ) );
-            $output = str_replace( '$1', $output, $format );
-
+            $trans = UtfNormal::toNFC( $this->transliterate( html_entity_decode( $word, ENT_QUOTES, 'UTF-8' ), $map ) );
+            $output = str_replace( '$1', $trans, $format );
         }
+
         // Populate the dependency table so that we get re-rendered if the map changes.
+        if ( isset( $this->mPages[$mappage] ) ) 
+            $title = Title::newFromRow( $this->mPages[$mappage] );
+        else
+            $title = Title::newFromText( $mappage, NS_MEDIAWIKI );
+
         if ($title)
             $parser->mOutput->addTemplate( $title, $title->getArticleID(), null );
 
         return $output;
+    }
+
+    /**
+     * Called on ArticlePurge, ArticleDeleteComplete and NewRevisionFromEditComplete in order to purge cache
+     */
+    static function purgeMap( &$article, $a=false, $b=false, $c=false, $d=false ) {
+        global $wgMemc;
+        $title = $article->getTitle();
+        if ( $title->getNamespace() == NS_MEDIAWIKI ) {
+            $text = $title->getText();
+            $prefix = wfMsg( 'transliterator-prefix' );
+            if ( strpos( $text, $prefix ) === 0 ) {
+                $wgMemc->delete( str_replace( $prefix, '', $text ) );
+            }
+        }
+        return true;
     }
 }
 
