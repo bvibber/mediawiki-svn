@@ -14,40 +14,31 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['variable'][] = array(
 	'path' => __FILE__,
 	'name' => 'Autoincrement',
-	'description' => 'a variable hook that adds an autoincrementing variable, <nowiki>{{AUTOINCREMENT}}</nowiki>',
 	'author' => 'Ævar Arnfjörð Bjarmason',
+	'description' => 'A variable hook that adds an autoincrementing variable, <nowiki>{{AUTOINCREMENT}}</nowiki>',
+	'description-desc' => 'autoincrement-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Autoincrement',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Autoincrement'] = $dir . 'Autoincrement.i18n.php';
+$wgExtensionMessagesFiles['AutoincrementMagic'] = $dir . 'Autoincrement.i18n.magic.php';
+
 class Autoincrement {
 	var $mCount;
-	
+
 	function Autoincrement() {
 		global $wgHooks;
-		
+
 		$this->mCount = 0;
-		
-		$wgHooks['MagicWordwgVariableIDs'][] = array( $this, 'wfAutoincrementHookVariables' );
-		$wgHooks['LanguageGetMagic'][] = array( $this, 'wfAutoincrementHookRaw' );
+
 		$wgHooks['ParserGetVariableValueSwitch'][] = array( $this, 'wfAutoincrementHookSwitch' );
-	}
-	
-	function wfAutoincrementHookVariables( &$wgVariableIDs ) {
-		$wgVariableIDs[] = 'autoincrement';
-
-		return true;
-	}
-	
-	function wfAutoincrementHookRaw( &$raw ) {
-		$raw['autoincrement'] = array( 0, 'AUTOINCREMENT' );
-
-		return true;
 	}
 
 	function wfAutoincrementHookSwitch( &$parser, &$varCache, &$index, &$ret ) {
 		if ( $index === 'autoincrement' )
 			$ret = ++$this->mCount; // No formatNum() just like url autonumbering
-	
+
 		return true;
 	}
 }

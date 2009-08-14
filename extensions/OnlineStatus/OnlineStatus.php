@@ -4,7 +4,7 @@
  * Extension that adds a new toggle in user preferences to show if the user is
  * aviabled or not. See http://mediawiki.org/wiki/Extension:OnlineStatus for
  * more informations.
- * Require MediaWiki 1.15 alpha r49790 or higher to work.
+ * Require MediaWiki 1.16 alpha r52503 or higher to work.
  *
  * @addtogroup Extensions
  * @author Alexandre Emsenhuber
@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'OnlineStatus',
 	'author'         => 'Alexandre Emsenhuber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
-	'version'        => '2009-04-25',
+	'version'        => '2009-08-14',
 	'description'    => 'Add a preference to show if the user is currently present or not on the wiki',
 	'descriptionmsg' => 'onlinestatus-desc',
 );
@@ -37,22 +37,20 @@ $wgDefaultUserOptions['showonline'] = 0;
 $wgDefaultUserOptions['onlineonlogin'] = 1;
 $wgDefaultUserOptions['offlineonlogout'] = 1;
 
+// Add messages files
+$wgExtensionMessagesFiles['OnlineStatus'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.php';
+$wgExtensionMessagesFiles['OnlineStatusMagic'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.magic.php';
 
 // FIXME: Should be a separate class file
 class OnlineStatus {
-
+	// FIXME: Can't this just be in the core bit instead of the class? The init() will not have to be called
 	static function init(){
-		global $wgExtensionMessagesFiles, $wgExtensionFunctions, $wgHooks, $wgAjaxExportList;
-
-		// Add messages file
-		$wgExtensionMessagesFiles['OnlineStatus'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.php';
+		global $wgExtensionFunctions, $wgHooks, $wgAjaxExportList;
 
 		// Hooks for the Parser
 		$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
 
 		// Magic words hooks
-		$wgHooks['MagicWordwgVariableIDs'][] = 'OnlineStatus::MagicWordVariable';
-		$wgHooks['LanguageGetMagic'][] = 'OnlineStatus::LanguageGetMagic';
 		$wgHooks['ParserGetVariableValueSwitch'][] = 'OnlineStatus::ParserGetVariable';
 
 		// Hooks for Special:Preferences
@@ -166,26 +164,6 @@ class OnlineStatus {
 		} else {
 			return $status;
 		}
-	}
-
-	/**
-	 * Hook function for MagicWordwgVariableIDs
-	 */
-	static function MagicWordVariable( &$magicWords ) {
-		$magicWords[] = 'onlinestatus_word';
-		$magicWords[] = 'onlinestatus_word_raw';
-		return true;
-	}
-
-	/**
-	 * Hook function for LanguageGetMagic
-	 * @todo maybe allow localisation
-	 */
-	static function LanguageGetMagic( &$magicWords, $langCode ) {
-		$magicWords['onlinestatus_word'] = array( 1, 'ONLINESTATUS' );
-		$magicWords['onlinestatus_word_raw'] = array( 1, 'RAWONLINESTATUS' );
-		$magicWords['anyuseronlinestatus'] = array( 0, 'anyuseronlinestatus' );
-		return true;
 	}
 
 	/**
