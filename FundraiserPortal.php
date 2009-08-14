@@ -37,7 +37,7 @@ $wgFundraiserPortalTemplates = array(
 				);
 
 // Set this to the public path where your js is pulled from
-$wgNoticeProjectPath = 'http://192.168.250.128/sandbox';
+$wgFundraiserPortalPath = 'http://192.168.250.128/sandbox';
 
 // Set this to the systme path location that the button js file will be written to
 // Must be reachable by the address in $wgNoticeProjectPath
@@ -69,20 +69,19 @@ $wgExtensionMessagesFiles['FundraiserPortal'] =
 $wgExtensionFunctions[] = 'efFundraiserPortalSetup';
 
 
-// Setup everything
+// Register hooks
 function efFundraiserPortalSetup() {
 	global $wgHooks;
 
 	$wgHooks['BeforePageDisplay'][] = 'efFundraiserPortalLoader';
 	$wgHooks['SkinBuildSidebar'][] = 'efFundraiserPortalNoticeDisplay';
-
 }
 
 // Load the js that will choose the button client side
 function efFundraiserPortalLoader( $out, $skin ) {
 	global $wgOut, $wgLang;
 	global $wgJsMimeType, $wgStyleVersion;
-	global $wgNoticeProject, $wgNoticeProjectPath, $wgFundraiserPortalShow, $wgFundraiserPortalProject;
+	global $wgFundraiserPortalShow, $wgFundraiserPortalProject, $wgFundraiserPortalPath;
 	
 	// Only proceed if we are configured to show the portal
 	if ( !$wgFundraiserPortalShow ) {
@@ -91,8 +90,8 @@ function efFundraiserPortalLoader( $out, $skin ) {
 
 	// Pull in our loader
 	$lang = $wgLang->getCode();
-	$fundraiserLoader = "$wgNoticeProject/$wgFundraiserPortalProject/$lang/fundraiserportal.js";
-	$encFundraiserLoader = htmlspecialchars( "$wgNoticeProjectPath/$fundraiserLoader" );
+	$fundraiserLoader = "$wgFundraiserPortalProject/$lang/fundraiserportal.js";
+	$encFundraiserLoader = htmlspecialchars( "$wgFundraiserPortalPath/$fundraiserLoader" );
 	$wgOut->addInlineScript( "var wgFundraiserPortal='';");
 	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$encFundraiserLoader?$wgStyleVersion\"></script>\n" );
 
