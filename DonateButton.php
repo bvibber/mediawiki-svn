@@ -217,7 +217,7 @@ div#fundraiserportal-button a:hover {
 				<div>
 					<div>
 						<div>
-							<a href=" $button_url ">< wfMsg( 'fundraiserportal-ruby-button' ) ></a>
+							<a href=" $button_url "> wfMsg( 'fundraiserportal-ruby-button' ) </a>
 						</div>
 					</div>
 				</div>
@@ -416,7 +416,7 @@ updateFundraiserPortal();
 				<div>
 					<div>
 						<div>
-							<a href=" $button_url ">< wfMsg( 'fundraiserportal-rubytext-button' ) ></a>
+							<a href=" $button_url "> wfMsg( 'fundraiserportal-rubytext-button' ) </a>
 						</div>
 					</div>
 				</div>
@@ -429,13 +429,13 @@ updateFundraiserPortal();
 		<div>
 			<div>
 				<div>
-					<p>< wfMsg( 'fundraiserportal-rubytext-message' ) ></p>
+					<p> wfMsg( 'fundraiserportal-rubytext-message' ) </p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div id="fundraiserportal-close"><a href="#" onclick="toggleFundraiserPortal();return false;" title=" wfMsg( 'fundraiserportal-rubytext-close' ) "></a></div>
+<div id="fundraiserportal-close"><a href="#" onclick="toggleFundraiserPortal();return false;" title=" wfMsg( 'fundraiserportal-rubytext-close' ) " </a></div>
 END;
 		break;
 	case "Tourmaline":
@@ -643,10 +643,10 @@ updateFundraiserPortal();
 <div id="fundraiserportal-box">
 	<div>
 		<div id="fundraiserportal-message">
-			<div id="fundraiserportal-close"><a href="#" onclick="toggleFundraiserPortal();return false;" title="< wfMsg( 'fundraiserportal-tourmaline-close' ) >"></a></div>
-			< wfMsg( 'fundraiserportal-tourmaline-message' ) >
+			<div id="fundraiserportal-close"><a href="#" onclick="toggleFundraiserPortal();return false;" title=" wfMsg( 'fundraiserportal-tourmaline-close' )  "></a></div>
+			 wfMsg( 'fundraiserportal-tourmaline-message' )  
 		</div>
-		<div id="fundraiserportal-button"><div><div><div><div><div><div><div><div><a href=" $button_url ">< wfMsg( 'fundraiserportal-tourmaline-button' ) ></a></div></div></div></div></div></div></div></div></div>
+		<div id="fundraiserportal-button"><div><div><div><div><div><div><div><div><a href=" $button_url "> wfMsg( 'fundraiserportal-tourmaline-button' )  </a></div></div></div></div></div></div></div></div></div>
 	</div>
 </div>
 <div id="fundraiserportal-box-bottom"><div><div></div></div></div>
@@ -744,7 +744,7 @@ div#fundraiserportal-button a:hover {
 	text-decoration: none;
 }
 </style>
-<div id="fundraiserportal-button"><div><div><div><div><div><div><div><div><a href=" $button_url ">< wfMsg( 'fundraiserportal-sapphire-button' ) ></a></div></div></div></div></div></div></div></div></div>
+<div id="fundraiserportal-button"><div><div><div><div><div><div><div><div><a href=" $button_url "> wfMsg( 'fundraiserportal-sapphire-button' ) </a></div></div></div></div></div></div></div></div></div>
 END;
 		break;
 		} 
