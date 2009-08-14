@@ -1,8 +1,8 @@
 <?php
 /*
-* RegexFunctions extension by Ryan Schmidt
-* Regular Expression parser functions
-*/
+ * RegexFunctions extension by Ryan Schmidt
+ * Regular Expression parser functions
+ */
 
 if( !defined( 'MEDIAWIKI' ) ) {
 	echo "This file is an extension of the MediaWiki software and cannot be used standalone\n";
@@ -17,13 +17,14 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'RegexFunctions',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:RegexFunctions',
-	'version'        => '1.3',
+	'version'        => '1.4',
 	'description'    => 'Regular Expression parser functions',
 	'descriptionmsg' => 'regexfunctions-desc',
 );
 
-$wgExtensionMessagesFiles['RegexFunctions'] = dirname(__FILE__) . '/RegexFunctions.i18n.php';
-$wgHooks['LanguageGetMagic'][] = 'wfRegexFunctionsLanguageGetMagic';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['RegexFunctions'] = $dir . 'RegexFunctions.i18n.php';
+$wgExtensionMessagesFiles['RegexFunctionsMagic'] = $dir . 'RegexFunctions.i18n.magic.php';
 
 //default globals
 //how many functions are allowed in a single page? Keep this at least above 3 for usability
@@ -48,16 +49,6 @@ function wfRegexFunctions() {
 	$wgParser->setFunctionHook( 'rmatch', array(&$wgExtRegexFunctions, 'rmatch') );
 	$wgParser->setFunctionHook( 'rsplit', array(&$wgExtRegexFunctions, 'rsplit') );
 	$wgParser->setFunctionHook( 'rreplace', array(&$wgExtRegexFunctions, 'rreplace') );
-}
-
-function wfRegexFunctionsLanguageGetMagic( &$magicWords, $langCode ) {
-	switch ( $langCode ) {
-	default:
-		$magicWords['rmatch'] = array( 0, 'rmatch' );
-		$magicWords['rsplit'] = array( 0, 'rsplit' );
-		$magicWords['rreplace'] = array( 0, 'rreplace' );
-	}
-	return true;
 }
 
 class ExtRegexFunctions {
