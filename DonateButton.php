@@ -44,11 +44,11 @@ class DonateButton extends UnlistedSpecialPage {
 			$buttons[$template] = $this->getButtonText( $template );
 		}
 
+		$encButtons = json_encode( $buttons );
+
         	return $this->getScriptFunctions() .
-			'wgFundraiserPortalButtons=(' .
-				Xml::encodeJsVar( $buttons ) .
-				");\n" .
-				"wgFundraiserPortal=wgFundraiserPortalButtons[0];\n";
+			'wgFundraiserPortalButtons=' . $encButtons . ";\n" .
+			"wgFundraiserPortal=wgFundraiserPortalButtons[wgDonateButton];\n";
     	}
 
 	public function getScriptFunctions() {
@@ -439,7 +439,7 @@ updateFundraiserPortal();
 <div id="fundraiserportal-close"><a href="#" onclick="toggleFundraiserPortal();return false;" title=" wfMsg( 'fundraiserportal-rubytext-close' ) "></a></div>
 END;
 		break;
-	case "Tourlamine":
+	case "Tourmaline":
         	$template = <<<END
 <style type="text/css">
 /* Monobook Style */
