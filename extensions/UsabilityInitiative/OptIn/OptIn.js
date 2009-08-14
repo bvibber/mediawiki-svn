@@ -45,20 +45,22 @@ function optInGetPOSTData() {
 		case 'win':
 			osIndex = 'windows';
 		break;
-		case 'iemobile':
-			osIndex = 'windowsmobile';
-		break;
 		case 'mac':
 			osIndex = 'macos';
+		break;
+		case 'linux':
+			osIndex = 'linux';
+		break;
+	}
+	switch ( $j.browser.name ) {
+		case 'iemobile':
+			osIndex = 'windowsmobile';
 		break;
 		case 'iphone':
 			osIndex = 'iphoneos';
 		break;
 		case 'ipod':
 			osIndex = 'iphoneos';
-		break;
-		case 'linux':
-			osIndex = 'linux';
 		break;
 	}
 	return { 'survey-browser': browserIndex, 'survey-os': osIndex,
