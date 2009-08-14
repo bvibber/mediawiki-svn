@@ -628,7 +628,8 @@ class OggTransformOutput extends MediaTransformOutput {
 			$s = Xml::tags( 'video', $videoAttr,
 					Xml::tags('div', array(
 							'style'=>"overflow:hidden;".
-								"width:{$width}px;height:{$playerHeight}px"
+								"width:{$width}px;height:{$playerHeight}px;".
+								"border:solid thin black;padding:5px;"
 						),
 						wfMsg('ogg-no-player-js', $url)
 					)
