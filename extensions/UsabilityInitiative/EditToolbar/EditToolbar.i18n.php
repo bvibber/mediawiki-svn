@@ -68,8 +68,8 @@ $messages['en'] = array(
 	'edittoolbar-tool-subscript-example' => 'Subscript text',
 	'edittoolbar-group-insert' => 'Insert',
 	'edittoolbar-tool-gallery' => 'Picture gallery',
-	'edittoolbar-tool-gallery-example' => "File:Example.jpg|Caption1
-File:Example.jpg|Caption2",
+	'edittoolbar-tool-gallery-example' => "{{ns:file}}:Example.jpg|Caption1
+{{ns:file}}:Example.jpg|Caption2",
 	'edittoolbar-tool-newline' => 'New line',
 	'edittoolbar-tool-table' => 'Table',
 	'edittoolbar-tool-table-example' => "-
@@ -154,7 +154,7 @@ File:Example.jpg|Caption2",
 	'edittoolbar-help-content-olist-syntax' => '# List item<br /># List item',
 	'edittoolbar-help-content-olist-result' => '<ol><li>List item</li><li>List item</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Embedded file',
-	'edittoolbar-help-content-file-syntax' => '[[File:Example.png|thumb|Caption text]]',
+	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Caption text]]',
 	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Caption text</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Reference',
 	'edittoolbar-help-content-reference-syntax' => 'Page text.&lt;ref name="test"&gt;[http://www.example.org Link text], additional text.&lt;/ref&gt;',
