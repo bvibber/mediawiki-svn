@@ -19,18 +19,32 @@
 
 /* Configuration */
 
+// on/off Switch
 $wgFundraiserPortalShow = true;
+
+// Set this to the base target of any button 
 $wgFundraiserPortalURL = 'http://wikimediafoundation.org/wiki/Donate/Now/en?utm_medium=sidebar&utm_campaign=spontaneous_donation';
+
+// Set this to the location the extensions images
+$wgImageUrl = $wgScriptPath . '/extensions/FundraiserPortal/images';
+
 // Allowable templates: Plain, Ruby, RubyText, Sapphire, Tourmaline
 $wgFundraiserPortalTemplates = array( 
-				'Tourmaline' => 25,
 				'Ruby' => 25,
+				'Tourmaline' => 25,
 				'RubyText' => 25,
-				'Sapphire' => 25,);
+				'Sapphire' => 25,
+				);
 
+// Set this to the public path where your js is pulled from
 $wgNoticeProjectPath = 'http://192.168.250.128/sandbox';
 
-$wgFundraiserPortalDirectory = '/mnt/upload5/wikipedia/en';
+// Set this to the systme path location that the button js file will be written to
+// Must be reachable by the address in $wgNoticeProjectPath
+$wgFundraiserPortalDirectory = '/var/www/sandbox';
+
+// Only running this on wikipedia for now
+$wgFundraiserPortalProject = 'wikipedia';
 
 /* Setup */
 
@@ -60,15 +74,15 @@ function efFundraiserPortalSetup() {
 	global $wgHooks;
 
 	$wgHooks['BeforePageDisplay'][] = 'efFundraiserPortalLoader';
-	$wgHooks['BuildSideBar'][] = 'efFundraiserPortalDisplay';
+	$wgHooks['SkinBuildSidebar'][] = 'efFundraiserPortalNoticeDisplay';
 
 }
 
 // Load the js that will choose the button client side
 function efFundraiserPortalLoader( $out, $skin ) {
-	global $wgOut,$wgLang;
+	global $wgOut, $wgLang;
 	global $wgJsMimeType, $wgStyleVersion;
-	global $wgNoticeProject, $wgNoticeProjectPath, $wgFundraiserPortalShow;
+	global $wgNoticeProject, $wgNoticeProjectPath, $wgFundraiserPortalShow, $wgFundraiserPortalProject;
 	
 	// Only proceed if we are configured to show the portal
 	if ( !$wgFundraiserPortalShow ) {
@@ -76,9 +90,8 @@ function efFundraiserPortalLoader( $out, $skin ) {
 	}
 
 	// Pull in our loader
-	//$lang = $wgLang->getCode();
-	//$fundraiserLoader = "$wgNoticeProject/$lang/fundraiserportal.js";
-	$fundraiserLoader = "fundraiserportal.js";
+	$lang = $wgLang->getCode();
+	$fundraiserLoader = "$wgNoticeProject/$wgFundraiserPortalProject/$lang/fundraiserportal.js";
 	$encFundraiserLoader = htmlspecialchars( "$wgNoticeProjectPath/$fundraiserLoader" );
 	$wgOut->addInlineScript( "var wgFundraiserPortal='';");
 	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$encFundraiserLoader?$wgStyleVersion\"></script>\n" );

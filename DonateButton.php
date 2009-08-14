@@ -104,7 +104,6 @@ if ( ! wgDonateButton ) {
         setDonateButton( wgDonateButton );
 }
 
-document.write( wgDonateButton );
 \n\n";
 		return $script;
 	}

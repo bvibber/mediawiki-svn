@@ -2,8 +2,9 @@
 
 require_once dirname( dirname( dirname( __FILE__ ) ) ) . "/maintenance/commandLine.inc";
 
-if ( ! $wgFundraiserProtalDirectory ) {
+if ( ! $wgFundraiserPortalDirectory ) {
 	echo "\$wgFundraiserProtalDirectory isn't set -- we're not configured to build static templates.";
+	die();
 }
 
 if ( isset( $options['help'] ) ) {
@@ -11,15 +12,17 @@ if ( isset( $options['help'] ) ) {
 	echo "Usage:\n";
 	echo "  php extensions/FundraiserPortal/rebuildButtons [-o|Output to disk]\n";
 } else {
-	echo "Rebuilding templates ...\n";	
+	echo "Rebuilding button templates ...\n";	
   
 	$builder = new DonateButton();
 	$js = $builder->getJsOutput();
 
 	if ( isset( $options['o'] ) ) {
-		$outputDir = "$wgNoticeCentralDirectory";
+		$outputDir = "$wgFundraiserPortalDirectory";
 		if ( wfMkDirParents( $outputDir ) ) {
-			$outputFile = "$outputDir/fundraiserportal.js";
+	
+			$lang = $wgLang->getCode();
+			$outputFile = "$outputDir/wikipedia/$lang/fundraiserportal.js";
 			$ok = file_put_contents( $outputFile, $js );
 			if ( !$ok ) {
                         	echo "FAILED to write $outputFile!\n";
