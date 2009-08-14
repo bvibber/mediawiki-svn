@@ -9,11 +9,6 @@ require_once( "$IP/maintenance/commandLine.inc" );
 
 
 function evalExtractArray( $php, $varname ) {
-	// a bunch of files use require()s which makes them un-eval'able
-	if( preg_match( '/^require(_once)?\(.*__FILE__/m', $php ) ) {
-		echo "File contains a path-relative 'require' call which cannot be fulfilled.\n";
-		return false;
-	}
 	eval( $php );
 	return @$$varname;
 }
@@ -30,12 +25,39 @@ function confExtractArray( $php, $varname ) {
 	return $retval;
 }
 
-$sources = glob("$IP/extensions/*/*.i18n.php") + glob("$IP/languages/messages/Messages*.php");
+if( count( $args ) ) {
+	$sources = $args;
+} else {
+	$sources = 
+		array_merge(
+			glob("$IP/extensions/*/*.i18n.php"),
+			glob("$IP/languages/messages/Messages*.php") );
+}
 
 foreach( $sources as $sourceFile ) {
+	$rel = wfRelativePath( $sourceFile, $IP );
+	$out = str_replace( '/', '-', $rel );
+	
 	$sourceData = file_get_contents( $sourceFile );
 	$sourceData = preg_replace( "/<\\?php/", "", $sourceData );
 	$sourceData = preg_replace( "/\?" . ">/", "", $sourceData );
+	
+	/*
+	preg_match( "/\\\$messages(.*\s)*?\);/", $sourceData, $results ); // i bet this is wrong
+
+	// If there is any!
+	if ( !empty( $results[0] ) ) {
+		$sourceData = $results[0];
+	} else {
+		$sourceData = "";
+		print "MISSING \$messages array in $rel\n";
+	}
+	*/
+	
+	// Windows vs Unix always stinks when comparing files
+	$sourceData = preg_replace( "/\\\r\\\n?/", "\n", $sourceData );
+	
+	file_put_contents( "$out.txt", $sourceData );
 
 	$start = microtime(true);
 	$eval = evalExtractArray( $sourceData, 'messages' );
@@ -47,18 +69,19 @@ foreach( $sources as $sourceFile ) {
 	
 	$hashEval = md5(serialize($eval));
 	$hashToken = md5(serialize($token));
+	$countEval = count( (array)$eval);
+	$countToken = count( (array)$token );
 	
-	$rel = wfRelativePath( $sourceFile, $IP );
-	printf( "%s %s %0.1f - eval\n", $rel, $hashEval, $deltaEval * 1000 );
-	printf( "%s %s %0.1f - token\n", $rel, $hashToken, $deltaToken * 1000 );
+	printf( "%s %s %d langs - %0.1fms - eval\n", $rel, $hashEval, $countEval, $deltaEval * 1000 );
+	printf( "%s %s %d langs - %0.1fms - token\n", $rel, $hashToken, $countToken, $deltaToken * 1000 );
 	
 	if( $hashEval !== $hashToken ) {
 		echo "FAILED on $rel\n";
-		$out = str_replace( '/', '-', $rel );
 		file_put_contents( "$out-eval.txt", var_export( $eval, true ) );
 		file_put_contents( "$out-token.txt", var_export( $token, true ) );
 		#die("check eval.txt and token.txt\n");
 	}
+	echo "\n";
 }
 
 echo "ok\n";
