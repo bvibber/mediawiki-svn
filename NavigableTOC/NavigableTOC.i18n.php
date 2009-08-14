@@ -301,6 +301,7 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'navigabletoc' => 'Navigacijsko kazalo vsebine',
+	'navigabletoc-desc' => 'V urejevano okno doda tabelo vsebine, ki ob kliku na razdelek odpre urejevalno polje za izbrani razdelek',
 );
 
 /** Swedish (Svenska)

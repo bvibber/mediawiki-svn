@@ -317,7 +317,8 @@ Anda dapat mematikan peringatan ini lewat {{int:prefs-editing}} pada halaman pre
 $messages['it'] = array(
 	'editwarning' => 'Avviso di modifica',
 	'editwarning-desc' => 'Visualizza un avviso quando un utente cerca di lasciare il modulo di modifica senza salvare',
-	'editwarning-warning' => 'Lasciare questa pagina potrebbe provocare la perdita di tutti i cambiamenti effettuati.',
+	'editwarning-warning' => 'Lasciare questa pagina potrebbe provocare la perdita di tutti i cambiamenti effettuati.
+È possibile disattivare questo avviso nella sezione "{{int:prefs-editing}}" delle proprie preferenze.',
 	'editwarning-preference' => 'Avvisa quando lascio una pagina di modifica con modifiche non salvate',
 );
 
@@ -462,6 +463,7 @@ Możesz wyłączyć pojawianie się tego ostrzeżenia za pomocą ustawienia w sw
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Heldergeovane
  * @author Lijealso
  * @author Waldir
@@ -469,7 +471,9 @@ Możesz wyłączyć pojawianie się tego ostrzeżenia za pomocą ustawienia w sw
 $messages['pt'] = array(
 	'editwarning' => 'Aviso de edição',
 	'editwarning-desc' => 'Exibir um aviso quando um utilizador tenta deixar a caixa de edição sem gravar',
-	'editwarning-warning' => 'Abandonar esta página fará com que você perca todas as alterações que fez.',
+	'editwarning-warning' => 'Abandonar esta página fará com que você perca todas as alterações que fez.
+Você pode desabilitar este aviso na seção "{{int:prefs-editing}}" em suas preferências.',
+	'editwarning-preference' => 'Avisar-me ao abandonar uma página editada sem gravar as alterações.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -603,7 +607,7 @@ $messages['yue'] = array(
 $messages['zh-hans'] = array(
 	'editwarning' => '编辑警告',
 	'editwarning-desc' => '当用户尝试离开未保存的编辑时显示警告',
-	'editwarning-warning' => '离开这个页面会令到您所作的更改遗失。',
+	'editwarning-warning' => '离开这个页面会令您遗失之前的所有更改。您可在您参数设置的“{{int:prefs-editing}}”节中关闭此警告。',
 	'editwarning-preference' => '当我在更改未保存时离开页面时警告我',
 );
 
