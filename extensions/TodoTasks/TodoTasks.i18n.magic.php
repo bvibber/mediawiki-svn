@@ -9,3 +9,7 @@ $magicWords['en'] = array(
 $magicWords['ar'] = array(
 	'todo'   => array( '0', 'للعمل', 'todo' ),
 );
+
+$magicWords['nl'] = array(
+	'todo'   => array( '0', 'tedoen', 'todo' ),
+);
