@@ -419,17 +419,17 @@ class SpecialRecordAdmin extends SpecialPage {
 			$form = $form->getContent();
 			
 			# Extract form's class and other attributes (except method and action)
-			if ( preg_match( "|<form\s*([^>]+)\s*>.+</form>|s", $form, $atts )) {
+			if ( preg_match( "|<form\s*([^>]+)\s*>.+</form>|is", $form, $atts )) {
 				if ( preg_match( "|class\s*=\s*[\"'](.+?)['\"]|", $atts[1], $m ) ) $this->formClass .= ' ' . $m[1];
 				$this->formAtts = ' ' . trim( preg_replace( "/(class|action|method)\s*=\s*[\"'](.*?)['\"]/", "", $atts[1] ) );
 			}
 			
 			# Process content
-			$form = preg_replace( '#<input.+?type=[\'"]?submit["\']?.+?/(input| *)>#', '', $form );    # remove submits
-			$form = preg_replace( '#^.+?<form.*?>#s', '', $form );                                     # remove up to and including form open
-			$form = preg_replace( '#</form>.+?$#s', '', $form );                                       # remove form close and everything after
-			$form = preg_replace( '#name\s*=\s*([\'"])(.*?)\\1#s', 'name="ra_$2"', $form );            # prefix input names with ra_
-			$form = preg_replace( '#(<select.+?>)\s*(?!<option/>)#s', '$1<option selected/>', $form ); # ensure all select lists have default blank
+			$form = preg_replace( '#<input.+?type=[\'"]?submit["\']?.+?/(input| *)>#i', '', $form );    # remove submits
+			$form = preg_replace( '#^.+?<form.*?>#is', '', $form );                                     # remove up to and including form open
+			$form = preg_replace( '#</form>.+?$#is', '', $form );                                       # remove form close and everything after
+			$form = preg_replace( '#name\s*=\s*([\'"])(.*?)\\1#is', 'name="ra_$2"', $form );            # prefix input names with ra_
+			$form = preg_replace( '#(<select.+?>)\s*(?!<option/>)#is', '$1<option selected/>', $form ); # ensure all select lists have default blank
 		}
 		else {
 
@@ -456,7 +456,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		foreach( $this->types as $k => $type ) {
 
 			# Get this input element's html text and position and length
-			preg_match( "|<([a-zA-Z]+)[^<]+?name=\"ra_$k\\[?\\]?\".*?>(.*?</\\1>)?|s", $this->form, $m, PREG_OFFSET_CAPTURE );
+			preg_match( "|<([a-z]+)[^<]+?name=\"ra_$k\\[?\\]?\".*?>(.*?</\\1>)?|is", $this->form, $m, PREG_OFFSET_CAPTURE );
 			list( $html, $pos ) = $m[0];
 			$len = strlen( $html );
 
@@ -465,27 +465,27 @@ class SpecialRecordAdmin extends SpecialPage {
 			$v = isset( $values[$k] ) ? $values[$k] : '';
 			switch ( $type ) {
 				case 'text':
-					$html = preg_replace( "|value\s*=\s*\".*?\"|", "", $html );
+					$html = preg_replace( "|value\s*=\s*\".*?\"|i", "", $html );
 					if ( $v ) $html = preg_replace( "|(/?>)$|", " value=\"$v\" $1", $html );
 				break;
 				case 'bool':
-					$html = preg_replace( "|checked|", "", $html );
+					$html = preg_replace( "|checked|i", "", $html );
 					if ( $v ) $html = preg_replace( "|(/?>)$|", " checked $1", $html );
 				break;
 				case 'list':
 					$html = preg_replace_callback("|\{\{.+\}\}|s", array($this, 'parsePart'), $html);  # parse any braces
 					#if ( empty( $this->record ) ) 
-					$html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html ); # remove the currently selected option
+					$html = preg_replace( "|(<option[^<>]*) selected|i", "$1", $html ); # remove the currently selected option
 					if ( $v ) {
 						foreach( split( "\n", $v ) as $v ) {
-							$html = preg_match( "|<option[^>]+value\s*=|s", $html )
-								? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|s", "$1 selected$2", $html )
-								: preg_replace( "|(<option[^>]*)(?=>$v</option>)|s", "$1 selected", $html );
+							$html = preg_match( "|<option[^>]+value\s*=|is", $html )
+								? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|is", "$1 selected$2", $html )
+								: preg_replace( "|(<option[^>]*)(?=>$v</option>)|is", "$1 selected", $html );
 						}
 					}
 				break;
 				case 'blob':
-					$html = preg_replace( "|>.*?(?=</textarea>)|s", ">$v", $html );
+					$html = preg_replace( "|>.*?(?=</textarea>)|is", ">$v", $html );
 				break;
 			}
 
@@ -501,7 +501,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		global $wgUser, $wgParser;
 		$options = ParserOptions::newFromUser( $wgUser );
 		$html = $wgParser->parse($part[0], $this->title, $options, true, true )->getText();		
-		return preg_match("|(<option.+</option>)|s", $html, $m) ? $m[1] : '';
+		return preg_match("|(<option.+</option>)|is", $html, $m) ? $m[1] : '';
 	}
 
 	/**
@@ -510,10 +510,10 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function examineForm() {
 		$this->types = array();
-		preg_match_all( "|<([a-zA-Z]+)[^<]+?name=\"ra_(.+?)\\[?\\]?\".*?>|", $this->form, $m );
+		preg_match_all( "|<([a-z]+)[^<]+?name=\"ra_(.+?)\\[?\\]?\".*?>|i", $this->form, $m );
 		foreach ( $m[2] as $i => $k ) {
 			$tag = $m[1][$i];
-			$type = preg_match( "|type\s*=\s*\"(.+?)\"|", $m[0][$i], $n ) ? $n[1] : '';
+			$type = preg_match( "|type\s*=\s*\"(.+?)\"|i", $m[0][$i], $n ) ? $n[1] : '';
 			switch ( $tag ) {
 				case 'input':
 					switch ( $type ) {
@@ -672,7 +672,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$template = false;
 		$count    = false;
 		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
-			if ( preg_match( "/^(.+?)\\s*=\\s*(.+)$/", $arg, $match ) ) {
+			if ( preg_match( "|^(.+?)\s*=\s*(.+)$|i", $arg, $match ) ) {
 				list( , $k, $v ) = $match;
 				if ( $k == 'title' ) $title = $v;
 				elseif ( $k == 'name' )     $name     = $v;
@@ -700,7 +700,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$parser->mOutput->mCacheTime = -1;
 		$regexp = '';
 		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
-			if ( preg_match( "/^(.+?)\\s*=\\s*(.+)$/", $arg, $match ) ) {
+			if ( preg_match( "|^(.+?)\s*=\s*(.+)$|", $arg, $match ) ) {
 				list( , $k, $v ) = $match;
 				if ( $k == 'type' ) $type = $v;
 				elseif ( $k == 'record' ) $record = $v;
