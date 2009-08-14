@@ -221,6 +221,7 @@ fn: {
 	 */
 	doAction: function( context, action ) {
 		switch ( action.type ) {
+			case 'replace':
 			case 'encapsulate':
 				var parts = { 'pre': '', 'peri': '', 'post': '' };
 				for ( part in parts ) {
@@ -235,7 +236,8 @@ fn: {
 				}
 				context.$textarea.encapsulateSelection(
 					parts.pre, parts.peri, parts.post,
-					action.options.ownline
+					action.options.ownline,
+					action.type == 'replace'
 				);
 			break;
 			case 'dialog':
