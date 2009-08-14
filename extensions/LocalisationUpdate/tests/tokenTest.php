@@ -9,18 +9,28 @@ require_once( "$IP/maintenance/commandLine.inc" );
 
 
 function evalExtractArray( $php, $varname ) {
+	// a bunch of files use require()s which makes them un-eval'able
+	if( preg_match( '/^require(_once)?\(.*__FILE__/m', $php ) ) {
+		echo "File contains a path-relative 'require' call which cannot be fulfilled.\n";
+		return false;
+	}
 	eval( $php );
 	return @$$varname;
 }
 
 function confExtractArray( $php, $varname ) {
-	$ce = new ConfEditor("<?php $php");
-	$vars = $ce->getVars();
-	$retval = @$vars[$varname];
+	try {
+		$ce = new ConfEditor("<?php $php");
+		$vars = $ce->getVars();
+		$retval = @$vars[$varname];
+	} catch( Exception $e ) {
+		print $e . "\n";
+		$retval = null;
+	}
 	return $retval;
 }
 
-$sources = glob("$IP/languages/messages/Messages*.php");
+$sources = glob("$IP/extensions/*/*.i18n.php") + glob("$IP/languages/messages/Messages*.php");
 
 foreach( $sources as $sourceFile ) {
 	$sourceData = file_get_contents( $sourceFile );
@@ -43,9 +53,11 @@ foreach( $sources as $sourceFile ) {
 	printf( "%s %s %0.1f - token\n", $rel, $hashToken, $deltaToken * 1000 );
 	
 	if( $hashEval !== $hashToken ) {
-		file_put_contents( 'eval.txt', var_export( $eval, true ) );
-		file_put_contents( 'token.txt', var_export( $token, true ) );
-		die("check eval.txt and token.txt\n");
+		echo "FAILED on $rel\n";
+		$out = str_replace( '/', '-', $rel );
+		file_put_contents( "$out-eval.txt", var_export( $eval, true ) );
+		file_put_contents( "$out-token.txt", var_export( $token, true ) );
+		#die("check eval.txt and token.txt\n");
 	}
 }
 
