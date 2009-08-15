@@ -244,11 +244,13 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
  * @author ZeiP
  */
 $messages['fi'] = array(
+	'emergencydesysop' => 'Ylläpitäjän-oikeuksien poistotoimintomenetelmä kiireellisissä hätätapauksissa',
 	'emergencydesysop-desc' => 'Mahdollistaa ylläpitäjän uhraamaan omat oikeutensa poistaakseen ylläpitäjän oikeudet toiselta ylläpitäjältä.',
 	'emergencydesysop-title' => 'Poista ylläpitäjän oikeudet sekä nykyiseltä käyttäjältä että toiselta ylläpitäjältä',
 	'emergencydesysop-otheradmin' => 'Ryhmästä poistettava toinen ylläpitäjä',

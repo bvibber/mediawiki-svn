@@ -614,6 +614,8 @@ $messages['fi'] = array(
 	'changeauthor-explanation-multi' => 'Voit muuttaa tällä lomakkeella version tekijöitä.
 Muutat vain yhtä tai useampaa käyttäjänimeä alla olevassa listassa, lisäät kommentin (valinnainen) ja napsautat ”Muuta tekijöitä”-painiketta.',
 	'changeauthor-changeauthors-single' => 'Muuta tekijä',
+	'changeauthor-explanation-single' => "Tällä lomakkeella voit muuttaa version tekijän.
+Vaihda vain allaoleva käyttäjätunnus, lisää (valinnainen) kommentti ja napsauta 'Muuta tekijä' -painiketta.",
 	'changeauthor-invalid-username' => 'Virheellinen käyttäjätunnus ”$1”.',
 	'changeauthor-nosuchuser' => 'Käyttäjää ”$1” ei ole olemassa.',
 	'changeauthor-revview' => 'Versio #$1/$2',
@@ -621,9 +623,12 @@ Muutat vain yhtä tai useampaa käyttäjänimeä alla olevassa listassa, lisää
 	'changeauthor-weirderror' => 'Tapahtui hyvin outo virhe.
 Yritä uudestaan.
 Jos tämä virhe toistuu, tietokanta on luultavasti rikki.',
+	'changeauthor-invalidform' => 'Käytä lomaketta jonka [[Special:ChangeAuthor|toimintosivu tarjoaa]] sen sijaan että räätälöisitte omanne.',
 	'changeauthor-success' => 'Pyyntö on suoritettu onnistuneesti.',
+	'changeauthor-logentry' => 'Muutettiin sivun $2 $1 tekijää siten että muokkaaja $3 vaihdettiin tekijäksi $4',
 	'changeauthor-logpagename' => 'Tekijämuutosloki',
-	'right-changeauthor' => 'Vaihda version tekijätietoa',
+	'changeauthor-rev' => 'versio $1 sivun historiassa',
+	'right-changeauthor' => 'Vaihtaa version tekijätietoa',
 );
 
 /** French (Français)

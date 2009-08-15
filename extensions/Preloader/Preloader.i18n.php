@@ -190,6 +190,13 @@ $messages['lb'] = array(
 	'preloader-desc' => 'Erméiglecht et personabiliséierten Text fir nei Säiten pro Nummraum derbäizesetzen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'preloader-desc' => 'Овозможува кориснички-прилагодлив фиксен текст за нови страници',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

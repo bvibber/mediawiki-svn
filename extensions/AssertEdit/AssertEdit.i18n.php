@@ -448,6 +448,15 @@ $messages['mg'] = array(
 	'assert_edit_desc' => "Manampy assertion ny fanovàna hoan'ny fampiasàna rindrankajy (bot)",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'assert_edit_title' => 'Тврдењето не успеа',
+	'assert_edit_desc' => 'Додава тврдења за уредувања за користење од страна на ботови',
+	'assert_edit_message' => 'Назначеното тврдење ($1) не успеа.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  */

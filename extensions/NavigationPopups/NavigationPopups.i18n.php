@@ -193,6 +193,13 @@ $messages['lb'] = array(
 	'navigationpopups-desc' => 'Lued dem Lupin seng Popup-Skripten a MediaWiki',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'navigationpopups-desc' => 'Ги вчитува скокачките прозорчиња на навигациските скрипти на Lupin во МедијаВики',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -192,6 +192,14 @@ $messages['lb'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Zuel vun den aktuellen Evenementer déi duerch d'IP-Adress ausgeléist goufen, esou wéi et aus dem Projet ''Honey Pot'' ervirgeet",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'honeypot-desc' => 'Овозможува интеграција со [http://projecthoneypot.org/ Project Honey Pot] за проекти и страници на МедијаВики',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Број на скорешни настани поттикнати од IP адресата, според Project Honey Pot',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

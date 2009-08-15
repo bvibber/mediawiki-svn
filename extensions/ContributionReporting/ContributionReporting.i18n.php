@@ -452,6 +452,13 @@ $messages['bs'] = array(
 	'contribstats-value-under' => 'ispod $1',
 	'contribstats-value-from' => 'Između $1 - $2',
 	'contribstats-value-over' => 'preko $1',
+	'contributiontrackingstatistics' => 'Statistike praćenja doprinosa',
+	'contribstats-day-totals' => 'Ukupno za danas',
+	'contribstats-week' => 'Sedmica',
+	'contribstats-clicks' => 'Klikovi',
+	'contribstats-donations' => 'Donacije',
+	'contribstats-conversion' => 'Stopa pretvaranja (%)',
+	'contribstats-template' => 'Šablon',
 	'fundraiserstatistics' => 'Statistike donatora',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dan $1 od $2',
@@ -2432,6 +2439,7 @@ $messages['pdc'] = array(
  * @author Leinad
  * @author Maikking
  * @author Qblik
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'contributionreporting-desc' => 'Bieżące sprawozdanie na temat zebranych funduszy dla Wikimedia',
@@ -2467,6 +2475,14 @@ $messages['pl'] = array(
 	'contribstats-value-under' => 'Poniżej $1',
 	'contribstats-value-from' => 'Pomiędzy $1 a $2',
 	'contribstats-value-over' => 'Powyżej $1',
+	'contributiontrackingstatistics' => 'Statystyki wkładu',
+	'contribstats-day-totals' => 'Ogółem na dziś',
+	'contribstats-week' => 'Tydzień',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Ogółem w tym tygodniu|Sumy tygodniowe za ostatnie $1 tygodnie|Sumy tygodniowe za ostatnich $1 tygodni}}',
+	'contribstats-clicks' => 'Kliknięcia',
+	'contribstats-donations' => 'Darowizny',
+	'contribstats-conversion' => 'Współczynnik konwersji (%)',
+	'contribstats-template' => 'Szablon',
 	'fundraiserstatistics' => 'Statystyka zebranych funduszy',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dzień $1 z $2',

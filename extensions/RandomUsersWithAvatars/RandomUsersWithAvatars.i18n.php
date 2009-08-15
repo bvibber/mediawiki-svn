@@ -217,6 +217,14 @@ $messages['lb'] = array(
 	'random-users-avatars-desc' => "Setzt den <tt>&lt;randomuserswithavatars&gt;</tt> Tag derbäi fir d'Avataren vun zoufälleg ausgesichte Benotzer ze weisen",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'random-users-avatars-title' => 'Запознајте ја заедницата',
+	'random-users-avatars-desc' => 'Додава ознака <tt>&lt;randomuserswithavatars&gt;</tt> за прикажување на аватари на случајно-избрани корисници',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author Tvdm

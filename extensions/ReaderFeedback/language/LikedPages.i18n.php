@@ -101,6 +101,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'likedpages' => 'Υψηλά βαθμολογημένες σελίδες',
 	'likedpages-graphs' => 'δεδομένα βαθμολόγησης',
 );
 

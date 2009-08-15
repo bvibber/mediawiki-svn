@@ -221,6 +221,7 @@ $messages['el'] = array(
 	'smoothgallery-smoothgallerytitle' => 'ΟμαλήΣυλλογή: $1',
 	'smoothgallery-error' => '<b>Σφάλμα ΟμαλήΣυλλογή:</b>',
 	'smoothgallery-gallery-not-found' => 'Η συλλογή που απαιτήθηκε δεν υπάρχει.',
+	'smoothgallery-javascript-disabled' => 'Η JavaScript χρειάζεται για να εμφανιστεί αυτή η συλλογή κανονικά.',
 );
 
 /** Esperanto (Esperanto)

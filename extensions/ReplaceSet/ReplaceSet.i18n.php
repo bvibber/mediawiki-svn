@@ -33,8 +33,10 @@ $messages['en'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'replaceset-desc' => 'Дадае функцыю парсэру <nowiki>{{#replaceset}}</nowiki>, якая выкарыстоўваецца для замены частак тэксту з фарматаванымі зьвесткамі',
 	'replaceset-error-calllimit' => 'Была дасягнутая мяжа выклікаў ReplaceSet.',
 	'replaceset-error-regexnoend' => 'Ва ўзоры рэгулярнага выразу «$1» адсутнічае канчатковы падзяляльнік «$2»',
 	'replaceset-error-regexbadmodifier' => 'Няслушны мадыфікатар рэгулярнага выразу «$1».',
@@ -44,6 +46,7 @@ $messages['be-tarask'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'replaceset-desc' => 'Pśidawa parserowu funkciju <nowiki>{{#replaceset}}</nowiki>, wužywanu za wuměnjenje tekstowych wótrězkow z formatěrowanymi datami',
 	'replaceset-error-calllimit' => 'Limit zawołanjow ReplaceSet jo dojśpjony.',
 	'replaceset-error-regexnoend' => 'Mustroju regularnych wurazow "$1" falujo kóńcne źělatko \'$2\'',
 	'replaceset-error-regexbadmodifier' => "Modifikator regularnych wurazow '$1' njejo płaśiwy.",
@@ -71,6 +74,7 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'replaceset-desc' => 'Přidawa parserowu funkciju <nowiki>{{#replaceset}}</nowiki>, wužiwanu za narunanje tekstowych wotrězkow z formatowanymi datami',
 	'replaceset-error-calllimit' => 'Limit zawołanjow ReplaceSet je docpěty.',
 	'replaceset-error-regexnoend' => 'Mustrej regularnych wurazow "$1" kónčne dźělatko \'$2\' pobrachuje',
 	'replaceset-error-regexbadmodifier' => "Modifikator regularnych wurazow '$1' płaćiwy njeje.",
@@ -129,6 +133,15 @@ $messages['oc'] = array(
 	'replaceset-error-regexbadmodifier' => 'Lo modificador d’expression regulara  « $1 » es invalid.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'replaceset-error-calllimit' => 'Został osiągnięty limit liczby wywołań ReplaceSet.',
+	'replaceset-error-regexnoend' => "Brak końcowego separatora '$2' w wyrażeniu regularnym wzorca „$1”",
+	'replaceset-error-regexbadmodifier' => "Nieprawidłowy modyfikator '$1' wyrażenia regularnego.",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -145,5 +158,14 @@ $messages['sk'] = array(
 	'replaceset-error-calllimit' => 'Bol dosiahnutý limit volaní ReplaceSet.',
 	'replaceset-error-regexnoend' => 'Regulárnemu výrazu „$1“ chýba ukončovací oddeľovač „$2“',
 	'replaceset-error-regexbadmodifier' => 'Modifikátor regulárneho výrazu „$1“ nie je platný.',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'replaceset-desc' => 'Lägger till parsefunktionen <nowiki>{{#replaceset}}</nowiki> som används för att ersätta sektioner av text med formaterad data',
+	'replaceset-error-calllimit' => 'Begränsningen i antal anrop till funktionen ReplaceSet har uppnåtts.',
+	'replaceset-error-regexnoend' => 'Det reguljära uttrycket "$1" saknar en avslutande avgränsare \'$2\'',
 );
 

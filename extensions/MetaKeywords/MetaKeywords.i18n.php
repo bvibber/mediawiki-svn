@@ -235,6 +235,13 @@ $messages['lb'] = array(
 	'metakeywords-desc' => 'Erlaabt d\'Konfiguratioun vun <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> Tagen pro Nummraum',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'metakeywords-desc' => 'Овозможува конфигурирање на ознаките <tt><nowiki><meta "keywords"></nowiki></tt> и <tt><nowiki><meta "description"></nowiki></tt> по именски простор',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Zamwan
  */

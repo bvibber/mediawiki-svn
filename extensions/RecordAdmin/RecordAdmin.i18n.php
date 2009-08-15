@@ -528,15 +528,16 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'recordadmin-select' => 'Valitse',
 	'recordadmin-submit' => 'Lähetä',
-	'recordadmin-alreadyexist' => 'Valitettavasti "$1" on jo olemassa!',
+	'recordadmin-alreadyexist' => '”$1” on jo olemassa.',
 	'recordadmin-createsuccess' => '$1 luotiin',
-	'recordadmin-createerror' => 'Virhe tapahtui kun yritettiin luoda $1!',
+	'recordadmin-createerror' => 'Tapahtui virhe, kun yritettiin luoda $1.',
 	'recordadmin-badtitle' => 'Virheellinen otsikko!',
 	'recordadmin-invert' => 'Käänteinen valinta',
 	'recordadmin-buttonsearch' => 'Etsi',
@@ -1283,7 +1284,7 @@ $messages['pl'] = array(
 	'recordadmin-buttonreset' => 'Resetuj',
 	'recordadmin-searchresult' => 'Wyniki wyszukiwania',
 	'recordadmin-nomatch' => 'Nie znaleziono pasujących rekordów!',
-	'recordadmin-edit' => 'Edytowanie $1',
+	'recordadmin-edit' => 'Edycja rekordu „$1” typu $2',
 	'recordadmin-typeupdated' => 'Właściwości $1 zaktualizowane',
 	'recordadmin-updatesuccess' => '$1 zaktualizowane',
 	'recordadmin-updateerror' => 'Wystąpił błąd w trakcie aktualizacji',

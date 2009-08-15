@@ -104,6 +104,13 @@ $messages['lb'] = array(
 	'interlanguage-desc' => "Erlaabt et d'Linke tëschent Sproochen vun enger anerer Wiki z'iwwerhuelen",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'interlanguage-desc' => 'Презема меѓујазични врски од друго вики',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -116,6 +123,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'interlanguage-desc' => 'Permet de collectar los ligams interlengas d’un autre wiki',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'interlanguage-desc' => 'Przechwytuje linki do projektów w innych językach z innej wiki',
 );
 
 /** Portuguese (Português)

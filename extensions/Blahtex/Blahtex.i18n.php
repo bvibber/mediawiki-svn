@@ -944,10 +944,12 @@ $messages['frp'] = array(
 	'math_DoubleSubscript' => 'Doux segnos sont rapondus a la méma bâsa, yon solèt est pèrmês.',
 	'math_DoubleSuperscript' => 'Doux èxposents sont rapondus a la méma bâsa, yon solèt est pèrmês.',
 	'math_IllegalCharacter' => 'Caractèro dèfendu dens la balyê buchiê',
-	'math_IllegalCommandInMathMode' => 'La comanda « $1 » est dèfendua en môdo math.',
-	'math_IllegalCommandInMathModeWithHint' => 'La comanda « $1 » est dèfendua en môdo math (pôt-étre voliâd-vos utilisar « $2 » a la place ?).',
-	'math_IllegalCommandInTextMode' => 'La comanda « $1 » est dèfendua en môdo tèxte.',
-	'math_IllegalCommandInTextModeWithHint' => 'La comanda « $1 » est dèfendua en môdo tèxte (pôt-étre voliâd-vos utilisar « $2 » a la place ?).',
+	'math_IllegalCommandInMathMode' => 'La comanda « $1 » est dèfendua en fôrma math.',
+	'math_IllegalCommandInMathModeWithHint' => 'La comanda « $1 » est dèfendua en fôrma math
+(pôt-étre voliâd-vos utilisar « $2 » a la place ?).',
+	'math_IllegalCommandInTextMode' => 'La comanda « $1 » est dèfendua en fôrma tèxto.',
+	'math_IllegalCommandInTextModeWithHint' => 'La comanda « $1 » est dèfendua en fôrma tèxto
+(pôt-étre voliâd-vos utilisar « $2 » a la place ?).',
 	'math_IllegalDelimiter' => 'Dèlimitior dèfendu aprés « $1 »',
 	'math_IllegalFinalBackslash' => 'Lo caractèro « \\ » pôt pas aparêtre a la fin de la buchiê.',
 	'math_IllegalNestedFontEncodings' => 'Les comandes d’encodâjo de caractèros pôvont pas étre embrecâs.',
@@ -957,7 +959,8 @@ $messages['frp'] = array(
 	'math_LatexFontNotSpecified' => 'Niona police de caractèros LaTeX at étâ spècefiâ por « $1 ».',
 	'math_LatexPackageUnavailable' => 'Pôt pas rendre lo fichiér PNG perce que lo paquetâjo LaTeX « $1 » est pas accèssiblo.',
 	'math_MismatchedBeginAndEnd' => 'Les comandes « $1 » et « $2 » corrèspondont pas.',
-	'math_MisplacedLimits' => 'La comanda « $1 » dêt aparêtre aprés un opèrator quand en môdo math (suggèstion : èprovâd « mathop »).',
+	'math_MisplacedLimits' => 'La comanda « $1 » dêt aparêtre aprés un opèrator quand en fôrma math
+(consèly : èprovâd « mathop »).',
 	'math_MissingCommandAfterNewcommand' => 'Un novél nom de comanda est manquent ou fôtif aprés « \\newcommand » (dêt y avêr cllârament una comanda dèfenia, dêt comenciér per « \\ » et contegnir ren que des caractèros alfabèticos).',
 	'math_MissingDelimiter' => 'Un dèlimitior manque aprés « $1 ».',
 	'math_MissingOpenBraceAfter' => 'La balisa « { » manque aprés « $1 ».',
@@ -965,7 +968,8 @@ $messages['frp'] = array(
 	'math_MissingOpenBraceBefore' => 'La balisa « { » manque devant « $1 ».',
 	'math_MissingOrIllegalParameterCount' => 'Dècompto de paramètres manquents ou fôtifs dens la dèfinicion de « $1 » (dêt étre un solèt chifro comprês entre-mié 1 et 9 encllusivament)',
 	'math_MissingOrIllegalParameterIndex' => 'Endèxe de paramètres manquents ou fôtifs dens la dèfinicion de « $1 »',
-	'math_NonAsciiInMathMode' => 'Los caractèros en defôr d’ASCII pôvont solament étre utilisâs en môdo tèxte (tâchiéd de betar los caractèros pas de sûr dens « \\text{...} »).',
+	'math_NonAsciiInMathMode' => 'Los caractèros en defôr d’ASCII pôvont solament étre utilisâs en fôrma tèxto
+(tâchiéd de betar los caractèros pas de sûr dedens « \\text{...} »).',
 	'math_NotEnoughArguments' => 'Pas prod d’arguments buchiês por « $1 »',
 	'math_PngIncompatibleCharacter' => 'Pôt pas g·ènèrar lo fichiér PNG que contint lo caractèro $1.',
 	'math_ReservedCommand' => 'La comanda « $1 » est resèrvâ a blahtex.',

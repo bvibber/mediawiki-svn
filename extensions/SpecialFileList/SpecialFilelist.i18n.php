@@ -505,6 +505,7 @@ $messages['mk'] = array(
 	'filelist' => 'Листа на податотеки',
 	'filelist-desc' => '[[Special:Filelist|Специјална страница]] за наведување на подигнати податотеки',
 	'filelist-show-list' => 'Прикажи листа',
+	'filelist-show-gallery' => 'Прикажи галерија',
 	'filelist-image-desc' => 'опис',
 );
 

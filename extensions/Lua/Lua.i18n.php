@@ -178,9 +178,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'lua_error' => 'Σφάλμα στη γραμμή $1',
+	'lua_error_internal' => 'Εσωτερικό σφάλμα',
 );
 
 /** Esperanto (Esperanto)

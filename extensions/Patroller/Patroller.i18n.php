@@ -354,8 +354,11 @@ $messages['el'] = array(
 	'patrol-skip' => 'Παράβλεψη',
 	'patrol-reverting' => 'Επαναφορά: $1',
 	'patrol-endorsed-ok' => 'Η επεξεργασία σημάνθηκε ως περιπολημένο.',
+	'patrol-endorsed-failed' => 'Η επεξεργασία δεν μπορεί να σημανθεί ως υπό περιπολία.',
 	'patrol-reverted-ok' => 'Η επεξεργασία αναστράφηκε.',
+	'patrol-reverted-failed' => 'Η επεξεργασία δεν μπορούσε να αναστραφεί.',
 	'patrol-skipped-ok' => 'Αγνόηση επεξεργασίας.',
+	'patrol-another' => 'Προβολή άλλης επεξεργασίας, εάν είναι διαθέσιμη.',
 	'patrol-resume' => 'Πατήστε εδώ για συνέχεια.',
 	'group-patroller' => 'Περιπολητές',
 	'group-patroller-member' => 'περιπολητής',
@@ -1632,6 +1635,7 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Karduelis
  * @author Suelnur
  */
 $messages['tr'] = array(
@@ -1654,9 +1658,9 @@ $messages['tr'] = array(
 	'patrol-another' => 'Varsa, başka bir değişikliği göster.',
 	'patrol-stopped' => 'Başka bir değişikliği gözlememeyi seçtiniz. $1',
 	'patrol-resume' => 'Devam etmek için buraya tıklayın.',
-	'group-patroller' => 'Devriyeciler',
-	'group-patroller-member' => 'devriyeci',
-	'grouppage-patroller' => '{{ns:project}}:Devriyeci',
+	'group-patroller' => 'Devriyeler',
+	'group-patroller-member' => 'Devriye',
+	'grouppage-patroller' => '{{ns:project}}:Devriye',
 	'right-patroller' => 'Sayfaları gözle',
 );
 

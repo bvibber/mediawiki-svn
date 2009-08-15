@@ -334,6 +334,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Mobe
  * @author Nike
  * @author Vililikku
@@ -355,6 +356,7 @@ $messages['fi'] = array(
 	'errorhandler-error-user-notice' => 'Koodissa määritelty huomautus',
 	'errorhandler-error-user-deprecated' => 'Koodissa määritelty käytöstä poistuva -varoitus',
 	'errorhandler-error-strict' => 'Tiukat standardit',
+	'errorhandler-error-recoverable' => 'Vakava virhe joka kyetään korjaamaan',
 	'errorhandler-msg-text' => '$1 : $2 kohteessa $3 (rivi $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> kohteessa <b>$3</b> (rivi <b>$4</b>)',
 	'errorhandler-trace' => 'pinolistaus:',

@@ -318,7 +318,7 @@ $messages['cs'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'readerfeedback-desc' => 'Ergänzt eine Möglichkeit, die dem Leser erlaubt eine Rückmeldung in Form von vorgegebenden Bewertungen über die Seite zu geben',
+	'readerfeedback-desc' => 'Ergänzt eine Möglichkeit, die dem Leser erlaubt eine Rückmeldung in Form von vorgegebenen Bewertungen über die Seite zu geben',
 	'readerfeedback' => 'Was denkst du über diese Seite?',
 	'readerfeedback-text' => "''Bitte nimm dir einen Moment Zeit und bewerte diese Seite. Deine Rückmeldung ist wertvoll und hilft uns, das Angebot zu verbessern.''",
 	'readerfeedback-reliability' => 'Zuverlässigkeit',
@@ -412,6 +412,7 @@ $messages['el'] = array(
 	'readerfeedback-submitting' => 'Υποβολή ...',
 	'readerfeedback-finished' => 'Σας ευχαριστούμε!',
 	'readerfeedback-tagfilter' => 'Ετικέτα:',
+	'specialpages-group-feedback' => 'Γνώμη θεατή',
 );
 
 /** Esperanto (Esperanto)
@@ -524,7 +525,7 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'readerfeedback-desc' => 'Sivun tarkistaminen sallii lukijoiden antaa palautteensa luokkakohtaisten arvosanojen muodossa',
+	'readerfeedback-desc' => 'Sivun tarkistaminen mahdollistaa lukijoiden antaa palautteensa luokkakohtaisten arvosanojen muodossa.',
 	'readerfeedback' => 'Mitä mieltä olet tästä sivusta?',
 	'readerfeedback-text' => "''Käytäthän hetken arvioidaksesi alla olevan sivun. Palautteesi on arvokas ja auttaa meitä parantamaan verkkosivustoamme.''",
 	'readerfeedback-reliability' => 'Luettavuus',

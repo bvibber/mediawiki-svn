@@ -376,6 +376,19 @@ Pels utilizaires anonims, un escais es creat automaticament, mas aqueste pòt è
 	'right-webchat' => 'Pòt utilizar lo [[Special:WebChat|chat web]]',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'webchat' => 'Czat webowy',
+	'webchat-desc' => 'Dodaje [[Special:WebChat|stronę specjalną]] pozwalającą na prowadzenie rozmów w czasie rzeczywistym z innymi użytkownikami wiki',
+	'webchat-header' => 'Ta specjalna strona pozwala na współpracę w czasie rzeczywistym z innymi użytkownikami wiki.
+Aby się połączyć po prostu naciśnij przycisk „Połącz”.
+Jeśli jesteś zalogowany pseudonim zostanie wstępnie ustawiony.
+Anonimowi użytkownicy otrzymują automatycznie wygenerowany pseudonim, ale mogą go zmienić.',
+	'right-webchat' => 'Dostęp do korzystania z [[Special:WebChat|czatu webowego]]',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

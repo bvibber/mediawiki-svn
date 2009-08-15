@@ -145,6 +145,13 @@ $messages['dsb'] = array(
 Konto nowego wužywarja, $2, jo se załožyło $4 na $3 .',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'newusernotifsubj' => 'Νέα ειδοποίηση χρήστη για τον $1',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -365,6 +372,17 @@ $messages['lb'] = array(
 	'newusernotifbody' => 'Bonjour $1,
 
 E neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'newusernotifsubj' => 'Известување за нов корисник на $1',
+	'newusernotif-desc' => 'Испраќа известувања по е-пошта при создавање на кориснички сметки',
+	'newusernotifbody' => 'Здраво $1,
+
+На $3 е создадена е нова корисничка сметка по име $2 во $4.',
 );
 
 /** Malayalam (മലയാളം)

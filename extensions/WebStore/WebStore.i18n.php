@@ -644,6 +644,8 @@ $1',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'inplace_access_disabled' => 'Η πρόσβαση σε αυτή την υπηρεσία έχει απενεργοποιηθεί για όλους τους πελάτες.',
+	'inplace_access_denied' => 'Η υπηρεσία είναι περιορισμένη από τον πάροχο IP',
 	'inplace_scaler_not_enough_params' => 'Όχι αρκετοί παράμετροι',
 	'inplace_scaler_invalid_image' => 'Μη έγκυρη εικόνα, δεν ήταν δυνατό να αποφασιστεί το μέγεθος.',
 	'inplace_scaler_no_handler' => 'Κανένας χειριστής για την μεταμόρφωση αυτού του τύπου MIME',
@@ -675,6 +677,7 @@ $messages['el'] = array(
 	'webstore_postfile_not_found' => 'Δεν βρέθηκε το αρχείο προς δημοσίευση.',
 	'webstore_no_response' => 'Καμία απόκριση από τον εξυπηρετητή',
 	'webstore_php_error' => 'Τα σφάλματα PHP αντιμετωπίστηκαν:',
+	'webstore_no_handler' => 'Κανένας διαχειριστής για τη μετατροπή αυτού του τύπου MIME',
 );
 
 /** Esperanto (Esperanto)

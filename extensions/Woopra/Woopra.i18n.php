@@ -102,6 +102,13 @@ $messages['dsb'] = array(
 	'woopra-desc' => 'Dowólujo za [http://www.woopra.com/ Woopra Live Tracking Software] gromaduźěłanje z twójeju instalaciju MediaWiki',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'woopra-desc' => 'Επιτρέπει στο [http://www.woopra.com/ Λογισμικό Παρακολούθησης Woopra Live] να δουλέψει για την εγκατάσταση του MediaWiki',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

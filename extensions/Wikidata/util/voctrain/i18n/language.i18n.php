@@ -1139,6 +1139,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Mobe
  * @author Nike
  */
@@ -1206,6 +1207,7 @@ $messages['fi'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Piilota kyselykieliset määritelmät',
 	'voctrain_hide_words_in_question_language' => 'Piilota kyselykieliset sanat',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Valitse useita kieliä erottamalla arvot pilkuilla.',
+	'voctrain_other' => 'jokin muu',
 );
 
 /** French (Français)

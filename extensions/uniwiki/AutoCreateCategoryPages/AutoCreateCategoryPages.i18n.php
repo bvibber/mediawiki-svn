@@ -129,6 +129,7 @@ Nalistujo wšykne boki w kategoriji "$1" a wšykne pódkategorije kategorije "$1
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'autocreatecategorypages-desc' => 'Δημιουργία ζητούμενων σελίδων κατηγοριών αυτόματα στην αποθήκευση',
 	'autocreatecategorypages-editor' => 'Αυτόματος δημιουργός κατηγοριών',
 );
 

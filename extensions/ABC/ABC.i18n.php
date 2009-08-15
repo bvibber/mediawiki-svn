@@ -36,6 +36,14 @@ $messages['qqq'] = array(
 	'abcvorbis' => '{{optional}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'abcdesc' => "Maak 'n <tt>&lt;abc&gt;</tt> etiket beskikbaar vir die opmaak van ABC-musiek",
+	'abcdownload' => 'Aflaai:',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Bresta
  */

@@ -252,6 +252,7 @@ $messages['el'] = array(
 	'lookupuser-realname' => 'Πραγματικό όνομα: $1',
 	'lookupuser-registration' => 'Ημερομηνία εγγραφής: $1',
 	'lookupuser-no-registration' => 'μη καταγεγραμμένο',
+	'lookupuser-info-authenticated' => 'Επιβεβαίωση ηλεκτρονικής διεύθυνσης: $1',
 	'lookupuser-useroptions' => 'Επιλογές χρήστη:',
 );
 
@@ -665,6 +666,7 @@ $messages['jv'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'lookupuser' => 'រកមើល​ព័ត៌មាន​នៃ​អ្នកប្រើប្រាស់',
@@ -680,7 +682,7 @@ $messages['km'] = array(
 	'lookupuser-registration' => 'កាលបរិច្ឆេទចុះឈ្មោះ​៖ $1',
 	'lookupuser-no-registration' => 'មិនបានកត់ត្រាទុកទេ',
 	'lookupuser-touched' => 'រក្សាទុក​អ្នកប្រើប្រាស់ ដែលបានប៉ះ​ចុងក្រោយ​៖ $1',
-	'lookupuser-info-authenticated' => 'ការពិនត្យផ្ទៀងផ្ទាត់​អ៊ីមែល: $1',
+	'lookupuser-info-authenticated' => 'ការពិនិត្យផ្ទៀងផ្ទាត់​អ៊ីមែល: $1',
 	'lookupuser-useroptions' => 'ជម្រើសនៃអ្នកប្រើប្រាស់ ៖',
 );
 

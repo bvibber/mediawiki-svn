@@ -148,6 +148,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'useroptionstats' => 'Προαιρετικά στατιστικά χρήστη',
 	'uos-warn' => 'Το PHPlot δεν είναι εγκατεστημένο!',
+	'uos-choose' => 'Επιλογή μιας από τις παρακάτω επιλογές χρήστη: $1',
 	'uos-unknown' => '*Προεπιλογή',
 	'uos-other' => '*Άλλο',
 );
@@ -193,6 +194,7 @@ $messages['fi'] = array(
 	'uos-choose' => 'Valitse yksi seuraavista käyttäjän valinnoista: $1',
 	'uos-unknown' => '*Oletus',
 	'uos-other' => '*Muu',
+	'uos-title' => 'Käyttäjän asetusvalintojen tilastollinen jakauma valinnan $1 kohdalla',
 );
 
 /** French (Français)

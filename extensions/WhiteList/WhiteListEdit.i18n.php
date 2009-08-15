@@ -1645,10 +1645,13 @@ Devi [[Special:UserRights|aggiungere utenti al gruppo]] prima di poter aggiunger
 	'whitelistoverviewsa' => "* Impostato l'accesso a '''$1''' per [[:$2|$2]]",
 	'whitelistoverviewrm' => "* Rimosso l'accesso a [[:$1|$1]]",
 	'whitelistoverviewna' => "* Aggiunta la pagina [[:$1|$1]] con livello di accesso '''$2''' e data di scadenza '''$3''' alla whitelist",
+	'whitelistrequest' => "Richiedi l'accesso ad altre pagine",
 	'whitelistrequestmsg' => "$1 ha richiesto l'accesso {{PLURAL:$3|alla seguente pagina|alle seguenti pagine}}:
 
 $2",
+	'whitelistrequestconf' => 'La richiesta di accesso a nuove pagine è stata inviata a $1',
 	'whitelistnever' => 'mai',
+	'whitelistnummatches' => '  - {{PLURAL:$1|una corrispondenza|$1 corrispondenze}}',
 	'right-editwhitelist' => 'Modifica la whitelist per gli utenti esistenti',
 	'right-restricttowhitelist' => 'Modifica e visualizza solo le pagine presenti nella whitelist',
 	'action-editwhitelist' => 'modificare la whitelist per gli utenti esistenti',

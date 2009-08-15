@@ -995,6 +995,7 @@ $messages['pl'] = array(
 	'imstatus_gtalk_width' => 'szerokość okna w pikselach.',
 	'imstatus_icq_id' => 'identyfikator ICQ',
 	'imstatus_icq_style' => 'liczba z zakresu od 0 do 26 (tak, jest aż 27 dostępnych stylów...).',
+	'imstatus_live_code' => 'Twój identyfikator webowy Live Messengera',
 );
 
 /** Portuguese (Português)

@@ -423,6 +423,19 @@ $messages['lb'] = array(
 Dir kënnt dës Sàit net uleeën, awer Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} s'änneren], [{{fullurl:{{FULLPAGENAME}}}} liest] oder wielt fir eng aner Säit unzeleeë mat Hellëf vun der Kescht ënnendrënner.",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'createbox-desc' => 'Специјализирана вносна кутија за создавање страници',
+	'createbox-create' => 'Создај',
+	'createbox-exists' => "Жалиме, но „'''{{FULLPAGENAME}}'''“ веќе постои.
+
+Не можете да ја создадете оваа страница, но можете да ја [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредите], [{{fullurl:{{FULLPAGENAME}}}} прочитате], или да изберете да создадете друга страница со помош на кутијата подолу.
+
+<createbox>break=no</createbox>",
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

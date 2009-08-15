@@ -231,6 +231,7 @@ Awtory toś togo sedła njamógu pśewześ žednu zagronitosć za wopśimjeśe t
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'talkhere-desc' => 'Βάζει τη σελίδα συζήτησης στην σελίδα',
 	'talkhere-foottext' => 'Τα παραπάνω σχόλια μπορεί να γράφτηκαν από επισκέπτες.
 
 Οι χειριστές αυτής της περιοχής δεν μπορούν να πάρουν την ευθύνη για το περιεχόμενο αυτών των σχολίων.',

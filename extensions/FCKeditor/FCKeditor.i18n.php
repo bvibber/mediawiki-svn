@@ -820,9 +820,13 @@ $messages['oc'] = array(
 	'tog-riched_toggle_remember_state' => "Se remembrar de la darrièra seleccion de l'editor",
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
+	'fckeditor-desc' => 'Umożliwia korzystanie z edytora WYSIWYG o nazwie FCKeditor',
 	'textrichditor' => 'Rich Editor',
+	'prefs-fckeditor' => 'Zaawansowany edytor',
 	'tog-riched_disable' => 'Wyłącz Rich Editora',
 	'tog-riched_disable_ns_main' => 'Wyłącz Rich Editora wewątrz głównej przestrzeni nazw',
 	'tog-riched_disable_ns_talk' => 'Wyłącz Rich Editora wewątrz przestrzeni nazw "{{ns:talk}}"',

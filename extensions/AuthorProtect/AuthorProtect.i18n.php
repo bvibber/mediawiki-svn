@@ -1395,8 +1395,11 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'authorprotect' => '防止非作者编辑页面',
+	'authorprotect-desc' => '允许页面的作者禁止其他用户编辑',
 	'authorprotect-notauthor' => '您并非本页面的原作者',
 	'authorprotect-confirm' => '更改保护级别',
 	'authorprotect-expiry' => '终止时间',

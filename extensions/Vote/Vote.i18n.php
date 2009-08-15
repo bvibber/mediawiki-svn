@@ -1093,6 +1093,20 @@ $messages['mg'] = array(
 	'vote-results-none' => 'Tsy nisy vato nalatsaka ankehitriny.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'vote-desc' => 'Дава едноставни можности за гласање',
+	'vote-header' => "Можете да гласате за '''Врховниот Владетел на Светот''' овде!",
+	'vote-current' => "Вашиот моментален глас е за '''$1'''.",
+	'vote-legend' => 'Дај или измнени глас',
+	'vote-submit' => 'Гласај',
+	'vote-registered' => 'Вашиот глас е заведен.',
+	'vote-results-choice' => 'Избор',
+	'right-vote' => 'Гласање',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

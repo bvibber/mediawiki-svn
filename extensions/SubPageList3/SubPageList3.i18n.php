@@ -131,6 +131,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'spl3_debug' => 'Άγνωστη αξία για την επιλογή $1.',
+	'spl3_nosubpages' => 'Η $1 δεν έχει υποσελίδες για καταγραφή.',
 );
 
 /** Esperanto (Esperanto)

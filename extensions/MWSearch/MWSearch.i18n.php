@@ -314,6 +314,13 @@ $messages['lv'] = array(
 	'mwsearch-desc' => 'MWSearch spraudnis',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mwsearch-desc' => 'MWSearch приклучок',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

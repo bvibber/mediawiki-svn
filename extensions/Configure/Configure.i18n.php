@@ -6479,9 +6479,13 @@ $messages['pl'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Rozszerzenia',
 	'configure-viewconfig-default-diff' => 'Zmiany pomiędzy ustawieniami domyślnymi',
+	'configure-ext-ext-dependencies' => "'''Uwaga –''' to rozszerzenie wymaga aktywacji {{PLURAL:$2|rozszerzenia|następujących rozszerzeń:}} $1.",
+	'configure-ext-ext-dependency-err' => "'''Błąd –''' rozszerzenie $1 wymaga aktywnego rozszerzenia $2.",
 	'configure-ext-doc' => 'Zobacz dokumentację techniczną online',
 	'configure-ext-schemachange' => "'''Ostrzeżenie:''' Prawidłowa praca rozszerzenia wymaga aktualizacji bazy danych!",
 	'configure-ext-settings' => 'Ustawienia',
+	'configure-ext-settings-dep-errors' => 'Nie można włączyć tego rozszerzenia, ponieważ {{PLURAL:$1|następujące ustawienie ma|następujące ustawienia mają}} niedopuszczalne wartości:',
+	'configure-ext-settings-dep-error' => '$1: wymagana wartość: $2, obecna wartość: $3',
 	'configure-ext-use-extension' => 'Użyj tego rozszerzenia',
 	'configure-ext-use' => 'Zastosuj',
 	'configure-form-reason' => 'Powód zmiany',
@@ -6645,6 +6649,9 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-boolop-description-or' => 'Przynajmniej jeden warunek musi zostać spełniony',
 	'configure-boolop-description-xor' => 'Dokładnie jeden warunek musi zostać spełniony',
 	'configure-boolop-description-not' => 'Brak wymogów do spełnienia',
+	'configure-farmer-settings' => '[[Special:Configure|Konfiguracja tej wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Konfiguracja rozszerzeń tej wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Spis rozszerzeń dostępnych na tej wiki]].',
 );
 
 /** Pashto (پښتو)
@@ -8022,7 +8029,19 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-condition-name-6' => 'Användarens IP-adress i CIDR-block',
 	'configure-condition-name-7' => 'Minsta tid från första redigering',
 	'configure-autopromote-noconds' => 'Inga förutsättningar',
+	'configure-condition-description-1' => 'Minsta antal redigeringar: $1',
+	'configure-condition-description-2' => 'Kontot skall vara minst $1 {{PLURAL:$1|sekund|sekunder}} gammalt',
+	'configure-condition-description-3' => 'E-postadress bekräftad',
+	'configure-condition-description-4' => 'I {{PLURAL:$2|gruppen $1|alla grupperna $1}}',
 	'configure-condition-description-5' => 'Användarens Ip-adress är $1',
+	'configure-condition-description-6' => 'Användarens IP-adress är i intervallet $1',
+	'configure-boolop-description-and' => 'Alla villkor måste vara sanna',
+	'configure-boolop-description-or' => 'Minst ett villkor måste vara sant',
+	'configure-boolop-description-xor' => 'Exakt ett villkor måste vara sant',
+	'configure-boolop-description-not' => 'Inga villkor får vara sanna',
+	'configure-farmer-settings' => '[[Special:Configure|Konfigurera den här wikin]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Konfigurera tillägg för den här wikin]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Lista tillgängliga tillägg för den här wikin]].',
 );
 
 /** Swahili (Kiswahili)

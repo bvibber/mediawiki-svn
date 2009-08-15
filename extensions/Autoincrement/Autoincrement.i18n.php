@@ -48,11 +48,39 @@ $messages['ja'] = array(
 	'autoincrement-desc' => '自動インクリメント変数 <nowiki>{{AUTOINCREMENT}}</nowiki> を追加する変数フック',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'autoincrement-desc' => 'Ene Hooke, dä de automattesch huhjezallte Varijaable <nowiki>{{AUTOINCREMENT}}</nowiki> en et Wiki brängk.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'autoincrement-desc' => 'Повикувач на променливи кој ја додава автоинкрементирачката променлива <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'autoincrement-desc' => 'Voegt een variabele <nowiki>{{AUTOINCREMENT}}</nowiki> toe die automatisch wordt opgehoogd',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'autoincrement-desc' => 'Dodaje zmienną <nowiki>{{AUTOINCREMENT}}</nowiki> o automatycznie zwiększanej wartości',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'autoincrement-desc' => 'Na variabila che a gionta la variabila auto-ancrementanta <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
 /** Telugu (తెలుగు)

@@ -326,6 +326,7 @@ Pšosym wupołń {{PLURAL:$2|jo|jej|je|je}}.',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'form-desc' => 'Μια [[Special:Form|φόρμα επιφάνειας]] για έναρξη νέων σελίδων',
 	'form' => 'Φόρμα',
 	'formnoname' => 'Κανένα όνομα φόρμας',
 	'formbadname' => 'Κακό όνομα φόρμας',
@@ -336,6 +337,7 @@ $messages['el'] = array(
 	'formarticleexists' => 'Η σελίδα υπάρχει',
 	'formarticleexiststext' => 'Η σελίδα [[$1]] υπάρχει ήδη.',
 	'formbadpagename' => 'Κακό όνομα σελίδας',
+	'formsavesummary' => 'Νέα σελίδα που χρησιμοποιεί τη [[Special:Form/$1|φόρμα $1]]',
 	'formsaveerror' => 'Σφάλμα στην αποθήκευση της φόρμας',
 );
 
@@ -414,7 +416,7 @@ $messages['fi'] = array(
 	'formarticleexists' => 'Sivu on jo olemassa',
 	'formarticleexiststext' => 'Sivu [[$1]] on jo olemassa.',
 	'formbadpagename' => 'Huono sivun nimi',
-	'formbadrecaptcha' => 'Väärät vastausarvot reCaptcha-varmistusohjelmalle. Yritä uudestaan.',
+	'formbadrecaptcha' => 'Väärät vastausarvot reCaptcha-varmistukselle. Yritä uudestaan.',
 	'formbadpagenametext' => 'Antamasi lomakkeen tiedot tekevät huonon sivun nimen, "$1".',
 	'formrequiredfielderror' => '{{PLURAL:$2|Kenttä $1 on|Kentät $1 ovat}} pakollisia tässä lomakkeessa.
 Ole hyvä ja täytä {{PLURAL:$2|se|ne}}.',

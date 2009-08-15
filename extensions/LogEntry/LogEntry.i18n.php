@@ -118,6 +118,13 @@ $messages['dsb'] = array(
 	'logentry-invalidtoken' => 'Njepłaśiwy token',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'logentry-invalidpage' => 'Μη έγκυρη σελίδα',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -153,12 +160,13 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'logentry-append' => 'Lisää',
-	'logentry-parserhook-desc' => 'Tämä merkintäkoodi laajennos tarjoaa lomakkeen jonka avulla voidaan lisätä tekstiä lokisivujen edelle tai perään',
+	'logentry-parserhook-desc' => 'Tämä merkintälaajennus tarjoaa lomakkeen, jonka avulla voidaan lisätä tekstiä lokisivujen alkuun tai loppuun.',
 	'logentry-invalidpage' => 'Virheellinen sivu',
 	'logentry-invalidtoken' => 'Virheellinen lipuke',
 );

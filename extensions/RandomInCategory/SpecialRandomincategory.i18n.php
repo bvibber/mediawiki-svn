@@ -701,9 +701,11 @@ $messages['os'] = array(
  */
 $messages['pl'] = array(
 	'randomincategory' => 'Losowa strona w kategorii',
+	'randomincategory-desc' => '[[Special:Randomincategory|Strona specjalna]] zwracająca losową stronę z kategorii',
 	'randomincategory-toolbox' => 'Losowa strona',
 	'randomincategory-nocategory' => 'Kategoria $1 nie istnieje lub jest pusta',
 	'randomincategory-label' => 'Kategoria',
+	'randomincategory-submit' => 'Dalej',
 );
 
 /** Pashto (پښتو)

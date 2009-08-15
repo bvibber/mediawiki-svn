@@ -302,6 +302,14 @@ $messages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'donationform-desc' => 'Додава ознака <tt>&lt;donateform&gt;</tt> за поддршка на донации преку PayPal',
+	'donationform-submit' => 'Донирајте преку PayPal',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

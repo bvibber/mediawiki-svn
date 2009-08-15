@@ -267,12 +267,14 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'inspectcache' => 'Tutki välimuistia',
+	'inspectcache-desc' => 'Yksinkertainen virheenjäljitys ja toiminnantarkastus -väline joka mahdollistaa tutustumisen yhteisesti jaetun välimuistin sisältöön',
 	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Yleinen välimuisti',
 	'inspectcache-parser' => 'Jäsentimen välimuisti',

@@ -243,6 +243,7 @@ $messages['el'] = array(
 	'am-username' => 'όνομα χρήστη',
 	'am-email' => 'ηλεκτρονική διεύθυνση',
 	'am-active' => 'ενεργός',
+	'am-updated' => 'Οι αλλαγές σας έχουν αποθηκευτεί επιτυχώς',
 	'nss-rights' => 'δικαιώματα',
 	'nss-save-changes' => 'Αποθήκευση αλλαγών',
 	'nss-create-account-header' => 'Δημιουργία νέου λογαριασμού',

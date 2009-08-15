@@ -226,6 +226,13 @@ $messages['lb'] = array(
 	'contributorsaddon-desc' => 'Setzt de Popup JavaScript onMouseOver op d\'Linke vun den "Haaptkontributeuren"',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'contributorsaddon-desc' => 'Додава JavaScript скокачки прозорчиња во врските за „Главни уредници“',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -670,11 +670,15 @@ $messages['mg'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'chemicalsources' => 'Хемиски извори',
 	'chemicalsource-desc' => 'Ја додава ознаката <nowiki><chemform></nowiki>, за хемиски формули',
+	'chemFunctions_ListPage' => 'Хемиски извори',
 	'chemFunctions_DataList' => 'Еве листа на врски кон страници кои може да ви дадат информации за хемиската материја која ја барате.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Сложена $MIXCASNameFormula на НИСТ</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">МСДС на Оксфордскиот универзитет (нема пребарување)</a><br />',
 	'chemFunctions_CAS' => 'CAS број',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
 	'chemFunctions_Formula' => 'Формула',
 	'chemFunctions_Name' => 'IUPAC назив',
 	'chemFunctions_ChemFormInputError' => 'Хемформ: Грешка во внесеното!',

@@ -258,6 +258,14 @@ $messages['lb'] = array(
 	'othersites-desc' => 'Réckelt interwiki-Linken déi keng Sproochlinke sinn an hir eege Këscht',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'othersites' => 'Други интернет-страници',
+	'othersites-desc' => 'Ги преместува интервики врските, кои не се јазични врски, во посебни места',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Zamwan
  */

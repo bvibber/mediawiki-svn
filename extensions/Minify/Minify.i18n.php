@@ -164,6 +164,13 @@ $messages['lb'] = array(
 	'minify-desc' => "Reduzéiert d'Resultat vum CSS a JavaScript bäi acrtion=raw",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'minify-desc' => 'Ги смалува CSS и JavaScript излезните податоци од action=raw',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

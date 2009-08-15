@@ -99,6 +99,7 @@ $messages['es'] = array(
  */
 $messages['fi'] = array(
 	'wikiarticlefeeds-desc' => 'Valmistaa syötteitä, jotka tuotetaan MediaWikin sivuista',
+	'wikiarticlefeeds_combined_description' => 'Tämä on yhdistetty syöte, joka sisältää kohteita useasta syötelähteestä.',
 );
 
 /** French (Français)
@@ -195,6 +196,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'wikiarticlefeeds-desc' => 'Mécht "Feeds" aus MediaWiki-Säiten',
+	'wikiarticlefeeds_combined_description' => 'Dëst ass e kombinéierte "Feed" an deem Objeten aus verschiddene "Feed" Quellen dra sinn.',
 );
 
 /** Macedonian (Македонски)

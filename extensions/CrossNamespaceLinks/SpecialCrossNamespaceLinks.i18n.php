@@ -642,6 +642,16 @@ $messages['lv'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|saite|saites}} uz $3',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'crossnamespacelinks' => 'Врски преку различни именски простори',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Наведува врски преку различни именски простори]] кои не би требало да постојат на {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Оваа страница дава листа на врски од страница во главниот именски простор кон страница во други именски простори (освен за именски простори од типот {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}), кои не се препорачува да се користат.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|врска|врски}} кон $3',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  * @author Shijualex

@@ -364,6 +364,15 @@ $messages['lt'] = array(
 Gali būti naudojamas kaip [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] norint gauti atsitiktinį pavyzdinio straipsnio aptarimą, ar kaip [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] norint gauti atsitiktinį GFDL failą',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'advancedrandom' => 'Случајна-напредно',
+	'advancedrandom-desc' => 'Добивање на случајна страница за било кој именски простор, чија страница за разговор или потстраница има врска до дадена страница.
+Може да се користи како [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] за добивање на случајна страница за разговор на некоја избрана статија, или пак како [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] за добивање на случајна GFDL податотека',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

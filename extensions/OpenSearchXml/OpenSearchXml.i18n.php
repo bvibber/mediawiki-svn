@@ -248,6 +248,13 @@ $messages['li'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-interface die tekstextracte levertj',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML интерфејсот овозможува извадоци од текст',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

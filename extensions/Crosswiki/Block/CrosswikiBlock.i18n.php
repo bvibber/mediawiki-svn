@@ -366,6 +366,9 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'crosswikiblock-desc' => 'Umožňuje blokování uživatelů na jiných wiki pomocí [[Special:Crosswikiblock|speciální stránky]]',
+	'crosswikiblock' => 'Zablokovat uživatele na jiné wiki',
+	'crosswikiblock-header' => 'Tato stránka umožňuje zablokovat uživatele na jiné wiki.
+Prosím, ověřte si, že můžete na dané wiki provádět takové akce a že vaše konání odpovídá všem pravidlům.',
 	'crosswikiblock-expiry' => 'Vypršení:',
 	'crosswikiblock-reason' => 'Důvod:',
 	'crosswikiblock-submit' => 'Zablokovat tohoto uživatele',

@@ -279,6 +279,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'slippymap_error' => '$1 σφάλμα: $2',
 	'slippymap_errors' => '$1 λάθη:',
+	'slippymap_code' => 'Wikicode για αυτή την προβολή χάρτη:',
 	'slippymap_button_code' => 'Αποκτήστε βικικώδικα',
 	'slippymap_resetview' => 'Επαναφορά προβολής',
 	'slippymap_clicktoactivate' => 'Κάντε "κλικ" για να ενεργοποιήσετε το χάρτη',

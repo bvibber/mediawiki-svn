@@ -458,6 +458,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Jack Phoenix
  * @author Nike
@@ -484,6 +485,7 @@ $messages['fi'] = array(
 	'importusers-password' => 'salasana',
 	'importusers-email' => 'sähköposti',
 	'importusers-realname' => 'oikea nimi',
+	'right-import_users' => 'Käyttäjien massatuonti',
 );
 
 /** French (Français)

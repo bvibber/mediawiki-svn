@@ -178,6 +178,7 @@ $messages['el'] = array(
 	'plotters-uses' => 'Χρήσεις',
 	'plotters-missing-script' => 'Δεν προσδιορίστηκε κανένα σκριπτ',
 	'plotters-missing-arguments' => 'Δεν καθορίστηκαν επιχειρήματα',
+	'plotters-no-data' => 'Δεν παρασχέθηκαν δεδομένα.',
 	'plotters-errors' => 'Σχεδιοποιητές {{PLURAL:$1|σφάλματος|σφαλμάτων}}:',
 );
 

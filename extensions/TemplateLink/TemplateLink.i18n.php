@@ -133,6 +133,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'templatelink' => 'Σύνδεσμος προτύπου',
+	'templatelink_desc' => 'Αυτή η επέκταση μπορεί να εμφανίσει ένα πρότυπο σαν μια νέα σελίδα',
 	'templatelink_empty' => 'Πρέπει να ορίσετε μια παράμετρο.',
 	'templatelink_newtitle' => '$1 (υπερκλείσθηκε)',
 );

@@ -221,8 +221,8 @@ $messages['et'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'mostrevisors' => 'Sivut joilla on eniten muokkaajia',
-	'mostrevisors-header' => "'''Tämä sivu luettelee tämän wikin {{PLURAL:$1|sivun jolla|$1 sivua joilla}} on eniten muokkaajia.'''",
+	'mostrevisors' => 'Sivut, joilla on eniten muokkaajia',
+	'mostrevisors-header' => "'''Tämä sivu luettelee tämän wikin {{PLURAL:$1|sivun, jolla|$1 sivua, joilla}} on eniten muokkaajia.'''",
 	'mostrevisors-limitlinks' => 'Näytä enintään $1 sivua',
 	'mostrevisors-namespace' => 'Nimiavaruus',
 	'mostrevisors-none' => 'Sivuja ei löytynyt.',
@@ -231,7 +231,7 @@ $messages['fi'] = array(
 	'mostrevisors-submit' => 'Siirry',
 	'mostrevisors-showredir' => 'Näytä ohjaussivut',
 	'mostrevisors-hideredir' => 'Piilota ohjaussivut',
-	'mostrevisors-users' => '- $1 {{PLURAL:$1|muokkaaja|muokkaajaa}}',
+	'mostrevisors-users' => '– $1 {{PLURAL:$1|muokkaaja|muokkaajaa}}',
 	'mostrevisors-viewcontributors' => 'Tarkastele päämuokkaajia',
 );
 

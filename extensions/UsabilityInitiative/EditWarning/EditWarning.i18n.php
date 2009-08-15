@@ -295,7 +295,8 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'editwarning' => 'Advertimento de modification',
 	'editwarning-desc' => 'Monstra un advertimento quando un usator tenta quitar un formulario de modification sin immagazinar',
-	'editwarning-warning' => 'Quitar iste pagina pote causar le perdita de omne modificationes que tu ha facite.',
+	'editwarning-warning' => 'Quitar iste pagina pote causar le perdita de omne modificationes que tu ha facite.
+(Es possibile disactivar iste aviso in le section "{{int:prefs-editing}}" del Preferentias.)',
 );
 
 /** Indonesian (Bahasa Indonesia)

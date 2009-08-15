@@ -262,10 +262,16 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'onlinestatus-js-changed' => 'Η κατάστασή σας έχει αλλάξει σε "$1"',
+	'onlinestatus-subtitle-offline' => 'Αυτός ο χρήστης είναι τώρα εκτός σύνδεσης',
+	'onlinestatus-subtitle-online' => 'Αυτός ο χρηστής είναι εντός σύνδεσης',
 	'onlinestatus-tab' => 'Κατάσταση',
 	'onlinestatus-toggles-desc' => 'Η κατάστασή σας:',
+	'onlinestatus-toggles-show' => 'Εμφάνιση online κατάστασης στη σελίδα χρήστη μου',
 	'onlinestatus-toggle-offline' => 'Αποσυνδεδεμένος',
 	'onlinestatus-toggle-online' => 'Συνδεδεμένος',
+	'onlinestatus-pref-onlineonlogin' => 'Αλλαγή της κατάστασης μου συνδεδεμένος όταν συνδέομαι',
+	'onlinestatus-pref-offlineonlogout' => 'Αλλαγή της κατάστασής μου σε αποσυνδεδεμένος όταν αποσυνδέομαι',
 );
 
 /** Esperanto (Esperanto)
@@ -328,6 +334,7 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Jaakonam
  * @author Nike
  * @author Vililikku
@@ -342,8 +349,8 @@ $messages['fi'] = array(
 	'onlinestatus-tab' => 'Tila',
 	'onlinestatus-toggles-desc' => 'Tilasi:',
 	'onlinestatus-toggles-show' => 'Näytä sisäänkirjautumisen tila käyttäjäsivullani',
-	'onlinestatus-toggle-offline' => 'Verkkoyhteydettä',
-	'onlinestatus-toggle-online' => 'Verkkoyhteydessä',
+	'onlinestatus-toggle-offline' => 'Ei kirjautuneena',
+	'onlinestatus-toggle-online' => 'Kirjautuneena',
 );
 
 /** French (Français)

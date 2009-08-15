@@ -447,6 +447,13 @@ $messages['lb'] = array(
 	'framedvideo-desc' => 'Erlaabt et Videoen vu verschiddenen Internetsiten matt dem Tag <tt><nowiki><video></nowiki></tt> anzebannen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'framedvideo_helppage' => 'Help:Видео',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

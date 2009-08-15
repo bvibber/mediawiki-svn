@@ -319,6 +319,14 @@ $messages['lb'] = array(
 	'nstab-comments' => 'Kommentar',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'commentpages-desc' => 'Страници за коментари за главниот именски простор',
+	'nstab-comments' => 'Коментар',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

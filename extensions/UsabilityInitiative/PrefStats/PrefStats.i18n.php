@@ -174,6 +174,17 @@ $messages['bs'] = array(
 	'prefstats-list-intro' => 'Trenutno, slijedeće postavke se prate.
 Kliknite na jednu od njih da pogledate njene statistike.',
 	'prefstats-noprefs' => 'Nijedna postavka se trenutno ne prati. Podesite $wgPrefStatsTrackPrefs za praćenje postavki.',
+	'prefstats-xaxis' => 'Trajanje (sati)',
+	'prefstats-factors' => 'Pregled prema: $1',
+	'prefstats-factor-hour' => 'sat',
+	'prefstats-factor-sixhours' => 'šest sati',
+	'prefstats-factor-day' => 'dan',
+	'prefstats-factor-week' => 'sedmica',
+	'prefstats-factor-twoweeks' => 'dvije sedmice',
+	'prefstats-factor-fourweeks' => 'četiri sedmice',
+	'prefstats-factor-default' => 'nazad na pretpostavljenu skalu',
+	'prefstats-legend-out' => 'Odjavljen',
+	'prefstats-legend-in' => 'Prijavljen',
 );
 
 /** Catalan (Català)
@@ -712,6 +723,17 @@ Klik pada salah satu untuk melihat statistiknya.',
 	'prefstats-factor-week' => 'pekan',
 	'prefstats-factor-twoweeks' => 'dua pekan',
 	'prefstats-factor-fourweeks' => 'empat pekan',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'prefstats-factor-hour' => 'horo',
+	'prefstats-factor-day' => 'dio',
+	'prefstats-factor-week' => 'semano',
+	'prefstats-factor-twoweeks' => 'du semani',
+	'prefstats-factor-fourweeks' => 'quar semani',
 );
 
 /** Italian (Italiano)
@@ -1464,14 +1486,14 @@ $messages['zh-hans'] = array(
 ** $3名用户禁用了它
 * 总的来说，$4名用户设置了此选项',
 	'prefstats-xaxis' => '持续时间（小时）',
-	'prefstats-factors' => '每$1查看',
-	'prefstats-factor-hour' => '小时',
+	'prefstats-factors' => '查看时限：$1',
+	'prefstats-factor-hour' => '1小时',
 	'prefstats-factor-sixhours' => '6小时',
-	'prefstats-factor-day' => '天',
-	'prefstats-factor-week' => '周',
+	'prefstats-factor-day' => '1天',
+	'prefstats-factor-week' => '1周',
 	'prefstats-factor-twoweeks' => '2周',
 	'prefstats-factor-fourweeks' => '4周',
-	'prefstats-factor-default' => '恢复默认程度',
+	'prefstats-factor-default' => '恢复默认设置',
 	'prefstats-legend-out' => '已禁用',
 	'prefstats-legend-in' => '已启用',
 );

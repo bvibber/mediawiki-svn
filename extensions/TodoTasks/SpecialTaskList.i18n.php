@@ -339,6 +339,7 @@ $messages['el'] = array(
 	'tasklistemail' => 'Αγαπητέ %s',
 	'tasklistemailsubject' => '[%s] Αλλαγή λίστας εργασιών',
 	'tasklistmytasks' => 'Οι εργασίες μου',
+	'tasklistbyprojname' => "Ανατεθειμένες εργασίες για '''%s'''",
 	'tasklistchooseproj' => 'Επιλογή εγχειρήματος:',
 	'tasklistprojdisp' => 'Ανάλυση',
 	'tasklistbyname' => '== Λίστα todo για το %s ==',

@@ -126,6 +126,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'catboxattop-desc' => 'Προσθέτει ένα κουτί κατηγορίας πάνω δεξιά από τις σελίδες',
 	'catboxattop-categories' => 'Κατηγορίες',
 );
 

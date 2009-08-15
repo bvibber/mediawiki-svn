@@ -62,11 +62,39 @@ $messages['ja'] = array(
 	'magicnonumberedheadings-desc' => 'マジックワード "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" を追加する',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'magicnonumberedheadings-desc' => 'Deiht dat „Zauberwoot“ „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“ en et Wiki.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'magicnonumberedheadings-desc' => 'Setzt dat magescht Wuert "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" derbäi',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'magicnonumberedheadings-desc' => 'Го додава волшебниот збор „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'magicnonumberedheadings-desc' => 'Voegt het magische woord "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" toe',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'magicnonumberedheadings-desc' => 'Dodaje magiczne słowo „<nowiki>__NONUMBEREDHEADINGS__</nowiki>”',
 );
 
 /** Russian (Русский)

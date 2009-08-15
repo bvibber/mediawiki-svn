@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'categorytests-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'categorytests-desc' => 'دوال لاختبار التاصنيف',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */
@@ -47,6 +54,13 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'categorytests-desc' => 'Λειτουργίες για δοκιμή κατηγορίας',
+);
+
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'categorytests-desc' => 'Luokkien testaus funktiot',
 );
 
 /** French (Français)
@@ -112,6 +126,13 @@ $messages['lb'] = array(
 	'categorytests-desc' => 'Fonctioune fir Teste vu Kategorien',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'categorytests-desc' => 'Функции за тестирање на категории',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -131,6 +152,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'categorytests-desc' => 'Foncions per de tèsts de categoria',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'categorytests-desc' => 'Funkcje do testowania kategorii',
 );
 
 /** Romanian (Română)

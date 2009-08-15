@@ -242,6 +242,14 @@ $messages['mg'] = array(
 Manome fapitahana ampidirina anaty pejy, ilaina be hoan'ny Wikivao",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'catfeed-desc' => 'Кориснички делчиња од напојувања за скорешни промени.
+Создава верзија во самата страница, особено корисно за Викивести',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

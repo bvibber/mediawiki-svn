@@ -459,6 +459,14 @@ Apakah Anda ingin menyunting halaman tersebut?',
  */
 $messages['it'] = array(
 	'createpage' => 'Crea una pagina',
+	'createpage-desc' => 'Aggiunge una [[Special:CreatePage|pagina speciale]] per la creazione di nuove pagine',
+	'createpage_submitbutton' => 'Invia',
+	'createpage_instructions' => 'Inserire il titolo della pagina che si desidera creare:',
+	'createpage_entertitle' => 'Inserire un titolo per la propria pagina.',
+	'createpage_titleexists' => 'Esiste già una pagina con il titolo [[$1]].
+Si desidera modificare la pagina esistente?',
+	'createpage_tryagain' => 'No. Voglio creare una nuova pagina con un titolo distinto.',
+	'createpage_editexisting' => 'Sì. Voglio contribuire alla pagina esistente.',
 	'createpage-badtitle' => '"$1" non può essere usato come titolo di una pagina',
 );
 

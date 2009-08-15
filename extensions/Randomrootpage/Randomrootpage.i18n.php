@@ -259,6 +259,14 @@ $messages['oc'] = array(
 	'randomrootpage-desc' => "[[Special:Randomrootpage|Pagina especiala]] que va quérre una pagina raiç a l'azard",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'randomrootpage' => 'Losowa strona tytułowa',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Strona specjalna]] zwracająca losową stronę tytułową',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

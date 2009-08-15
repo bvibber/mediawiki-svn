@@ -326,6 +326,7 @@ $messages['el'] = array(
 	'refreshspecial-no-page' => 'Καμιά τέτοια ειδική σελίδα',
 	'refreshspecial-reconnected' => 'Επανασυνδέθηκε.',
 	'refreshspecial-reconnecting' => 'Η σύνδεση απέτυχε, επανασύνδεση σε 10 δευτερόλεπτα...',
+	'refreshspecial-page-result' => 'πήρε $1 {{PLURAL:$1|σειρά|σειρές}} σε',
 	'right-refreshspecial' => 'Ανανέωση ειδικών σελίδων',
 );
 

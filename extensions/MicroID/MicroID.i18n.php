@@ -220,6 +220,14 @@ $messages['lb'] = array(
 	'tog-microid' => 'Eng <a href="http://microid.org/">MicroID</a> verëffentleche fir de Benotzerkont mat externe Servicer ze confirméieren',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'microid-desc' => 'Додава [http://www.microid.org/ MicroID] во кориснички страници за потврдување на поседување сметка кај надворешни услуги',
+	'tog-microid' => 'Објава на <a href="http://microid.org/">MicroID</a> за потврдување на сметка кај надворешни услужители',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

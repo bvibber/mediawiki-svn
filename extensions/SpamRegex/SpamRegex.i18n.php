@@ -368,10 +368,12 @@ $messages['el'] = array(
 	'spamregex-block-success' => 'Η φραγή ήταν επιτυχής',
 	'spamregex-block-message' => "Η φράση '''$1''' έχει φραγεί.",
 	'spamregex-warning-1' => 'Δώστε μια φράση για φραγή.',
+	'spamregex-warning-2' => 'Παρακαλώ ελέγξτε τουλάχιστον μια λειτουργία φραγής.',
 	'spamregex-already-blocked' => 'Ο "$1" είναι ήδη φραγμένος',
 	'spamregex-phrase-block' => 'Φράση για φραγή:',
 	'spamregex-phrase-block-text' => 'γραφή φράσης στο κείμενο της σελίδας',
 	'spamregex-phrase-block-summary' => 'φραγή φράση στη σύνοψη',
+	'spamregex-block-submit' => 'Φραγή&nbsp;της&nbsp;φράσης',
 	'spamregex-text' => '(κείμενο)',
 	'spamregex-summary-log' => '(Περίληψη)',
 );

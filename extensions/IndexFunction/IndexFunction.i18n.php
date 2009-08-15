@@ -414,7 +414,25 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'indexfunc-desc' => 'Funzione del parser per creare redirect automatici e pagine di disambiguazione',
+	'indexfunc-badtitle' => 'Titolo non valido: "$1"',
+	'indexfunc-editwarning' => 'Attenzione: questo titolo è il titolo di un indice per {{PLURAL:$2|la seguente pagina|le seguenti pagine}}: $1. Assicurasi che la pagina che si sta per creare non esista già con un altro titolo.
+Se si crea questa pagina, rimuovere questo titolo dal <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|nella pagina precedente|nelle pagine precedenti}}.',
+	'indexfunc-index-exists' => 'La pagina "$1" esiste già',
+	'indexfunc-movewarn' => 'Attenzione: "$1" è un titolo di un indice per {{PLURAL:$3|la seguente pagina|le seguenti pagine}}: $2. Rimuovere "$1" dal <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|nella pagina precedente|nelle pagine precedenti}}.',
+	'index-legend' => "Cerca l'indice",
 	'index-search' => 'Ricerca:',
+	'index-submit' => 'Invia',
+	'index-disambig-start' => "'''$1''' può riferirsi a più pagine:",
+	'index-emptylist' => 'Non ci sono pagine associate con "$1"',
+	'index-expand-detail' => 'Visualizza le pagine indicizzate sotto questo titolo',
+	'index-hide-detail' => "Nascondi l'elenco delle pagine",
+	'index-no-results' => 'La ricerca non ha restituito risultati',
+	'index-search-explain' => 'Questa pagina utilizza una ricerca per prefissi.
+
+Digitare i primi caratteri e premere il pulsante Invia per la ricerca di titoli di pagine e voci che iniziano con la stringa di ricerca',
+	'index-details-explain' => "Le voci con le frecce sono voci dell'indice.
+Fare clic sulla freccia per visualizzare tutte le pagine indicizzate sotto quel titolo.",
 );
 
 /** Japanese (日本語)

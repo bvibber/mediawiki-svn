@@ -371,6 +371,14 @@ $messages['lt'] = array(
 	'newuseredit-summary' => 'Prideda [[{{int:newusermessage-template}}|pasveikinimo pranešimą]] į naujo naudotojo aptarimo puslapį',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'newusermessage-desc' => 'Поставува порака на страниците за разговор на новосоздадени корисници',
+	'newuseredit-summary' => 'Додавање на [[{{int:newusermessage-template}}|добредојде]] на страницата за разговор на нов корисник',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

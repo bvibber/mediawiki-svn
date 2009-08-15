@@ -149,6 +149,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'gblrights-logpage' => 'Αρχείο Καταγραφής Δικαιωμάτων',
 	'right-userrights-shared' => 'Διαχείριση κοινών δικαιωμάτων χρηστών',
 );
 
@@ -465,6 +466,17 @@ $messages['sk'] = array(
 	'gblrights-pagetext' => 'Toto je záznam všetkých zmien v tabuľke globálnych práv tejto rodiny wiki',
 	'gblrights-rights-entry' => 'zmenené globálne členstvo v skupine používateľa $1 z $2 na $3',
 	'right-userrights-shared' => 'Spravovať zdieľané používateľské práva',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'gblrights-desc' => 'Enkel [[Special:SharedUserRights|administration av globala användarrättigheter]]',
+	'gblrights-logpage' => 'Logg över globala rättigheter',
+	'gblrights-pagetext' => 'Detta är en logg över de förändringar som görs i wikifamiljens globala rättighetstabell',
+	'gblrights-rights-entry' => 'ändrade globalt gruppmedlemskap för $1 från $2 till $3',
+	'right-userrights-shared' => 'Hantera delade användarrättigheter',
 );
 
 /** Telugu (తెలుగు)

@@ -86,6 +86,13 @@ $messages['ksh'] = array(
 	'negref-desc' => 'Biedt en Makeerung, om dä Plats vun däm Befähl <code><nowiki><ref/></nowiki></code> ze beshtemme, em enjejovve Täx, för beschtemmpte Schabloone iere Jebruch ze rette.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'negref-desc' => 'Дава ознака за нагодување на локацијата на било кои <nowiki><ref/></nowiki> ознаки во влезен текст за поправка на извесни случаи на употреба на шаблони',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -98,6 +105,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'negref-desc' => "Provesís una balisa que permet de negociar l’emplaçament d’una balisa quina que siá <nowiki><ref/></nowiki> presenta dins lo tèxte picat, pr'amor de reglar d'unes cases d’utilizacions dels modèls.",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'negref-desc' => 'Dostarcza znacznik pomagający w ustaleniu położenia w tekście wszystkich znaczników <nowiki><ref/></nowiki> ułatwiając poprawienie użycia szablonów',
 );
 
 /** Tarandíne (Tarandíne)

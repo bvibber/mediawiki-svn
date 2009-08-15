@@ -604,6 +604,8 @@ $messages['el'] = array(
 	'regexblock' => 'Τακτική έκφραση φραγής',
 	'regexblock-already-blocked' => 'Ο $1 είναι ήδη φραγμένος',
 	'regexblock-block-success' => 'Η φραγή πέτυχε',
+	'regexblock-currently-blocked' => 'Υπάρχουσες φραγμένες διευθύνσεις:',
+	'regexblock-page-title' => 'Κανονική φραγή ονόματος έκφρασης',
 	'regexblockstats' => 'Τακτική έκφραση στατιστικών φραγής',
 	'regexblock-form-username' => 'Διεύθυνση IP ή όνομα χρήστη',
 	'regexblock-form-reason' => 'Λόγος:',
@@ -2353,6 +2355,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Fluff
  * @author M.M.S.
  * @author Najami
  */
@@ -2363,6 +2366,7 @@ $messages['sv'] = array(
 	'regexblock-block-success' => 'Blockering lyckades',
 	'regexblock-currently-blocked' => 'Nuvarande blockerade adresser:',
 	'regexblock-desc' => 'Tillägg som används för att blockera användarnamn och IP-adresser med hjälp av reguljära uttryck. Innehåller både blockeringsmekansimen och en [[Special:Regexblock|specialsida]] för att lägga till och ändra blockeringar',
+	'regexblock-expire-duration' => '1 timme,2 timmar,4 timmar,6 timmar,1 dag,3 dagar,1 vecka,2 veckor,1 månad,3 månader,6 månader,1 år, oändlig',
 	'regexblock-page-title' => 'Blockering med hjälp av reguljära uttryck',
 	'regexblockstats' => 'Regex-blockeringsstatistik',
 	'regexblock-help' => 'Använd formuläret nedan för att blockera vissa IP-adresser eller användarnamn från att redigera. 
@@ -2372,12 +2376,12 @@ Du kan också blockera fulla IP-adresser, vilket betyder att ingen som loggar in
 Notera att delvisa IP-adresser kommer behandlas som användarnamn under blockering.
 Om ingen beskrivning uppges kommer en standardbeskrivning användas.\'\'',
 	'regexblock-page-title-1' => 'Blockera adress med hjälp av reguljära uttryck',
-	'regexblock-reason-ip' => 'Den här IP-adressen är hindrad från att redigera på grund av vandalism eller annan förstörelse av dig eller någon annan som använder samma IP-adress.
-Om du menar att detta är ett fel, var god $1',
-	'regexblock-reason-name' => 'Det här användarnamnet är hindrad från att redigera på grund av vandalism eller annan förstörelse.
-Om du menar att detta är ett fel, var god $1',
-	'regexblock-reason-regex' => 'Den här IP-adressen är hindrad från att redigera på grund av vandalism eller annan förstörelse av en användare med liknande namn. 
-Var god skapa ett annat användarnamn eller $1 om problemet.',
+	'regexblock-reason-ip' => 'Den här IP-adressen är blockerad från att redigera på grund av vandalism eller annan förstörelse av dig eller någon annan som använder samma IP-adress.
+Om du anser att detta är fel, var god [[$1|kontakta oss]]',
+	'regexblock-reason-name' => 'Det här användarnamnet är blockerat från att redigera på grund av vandalism eller annan förstörelse.
+Om du anser att detta är fel, var god [[$1|kontakta oss]]',
+	'regexblock-reason-regex' => 'Den här IP-adressen är blockerad från att redigera på grund av vandalism eller annan förstörelse av en användare med liknande namn. 
+Var god skapa ett annat användarnamn eller [[$1|kontakta oss]] om problemet.',
 	'regexblock-form-username' => 'IP adress eller användarnamn:',
 	'regexblock-form-reason' => 'Anledning:',
 	'regexblock-form-expiry' => 'Utgång:',
@@ -2387,11 +2391,13 @@ Var god skapa ett annat användarnamn eller $1 om problemet.',
 	'regexblock-form-submit-empty' => 'Ange ett användarnamn eller en IP-adress att blockera.',
 	'regexblock-form-submit-regex' => 'Ogiltigt reguljärt uttryck',
 	'regexblock-form-submit-expiry' => 'Var god ange en utgångstid.',
+	'regexblock-nodata-found' => 'Hittade ingen data',
 	'regexblock-stats-title' => 'Regex-blockeringsstatistik',
 	'regexblock-unblock-success' => 'Avblockering lyckades',
 	'regexblock-unblock-log' => "Användarnamnet eller IP-adressen '''$1''' har avblockerats",
 	'regexblock-unblock-error' => 'Fel under avblockering av $1.
 Troligen så finns det ingen användare med det namnet.',
+	'regexblock-regex-filter' => ' eller det reguljära uttrycket:',
 	'regexblock-view-blocked' => 'Visa de blockerade efter:',
 	'regexblock-view-all' => 'Alla',
 	'regexblock-view-go' => 'Gå',
@@ -2401,12 +2407,12 @@ Troligen så finns det ingen användare med det namnet.',
 	'regexblock-view-reason' => 'anledning: $1',
 	'regexblock-view-reason-default' => 'generisk grund',
 	'regexblock-view-block-infinite' => 'permanent blockering',
-	'regexblock-view-block-expired' => 'GICK UT på',
-	'regexblock-view-block-by' => 'blockerad av',
+	'regexblock-view-block-by' => 'blockerad av:',
 	'regexblock-view-block-unblock' => 'avblockera',
 	'regexblock-view-stats' => 'statistik',
 	'regexblock-view-empty' => 'Listan över blockerade namn och adresser är tom.',
 	'regexblock-view-time' => 'på $1',
+	'right-regexblock' => 'Blockerar användare från att redigera på alla wikis i wikisamlingen',
 );
 
 /** Silesian (Ślůnski)

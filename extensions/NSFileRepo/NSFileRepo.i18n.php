@@ -148,6 +148,13 @@ $messages['ksh'] = array(
 	'nsfilerepo-desc' => 'Jit för huhjelaade Datteije Müjjeleschkeijte, di op de Name vun Appachtemangs opboue.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'nsfilerepo-desc' => 'Дава елементи базирани на именскиот простор на подигнати податотеки',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

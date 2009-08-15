@@ -191,9 +191,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
-	'csshooks-desc' => 'បន្ថែម CSS ទៅ​ក្នុង​ទិន្នផល HTML នៃ​ទំព័រ​សម្រាប់​រចនាប័ទ្ម​ប្រសើរ​ជាង​នេះ',
+	'csshooks-desc' => 'បន្ថែម CSS ទៅ​ក្នុង​ទិន្នផល HTML នៃ​ទំព័រ​សម្រាប់​រចនាបទ​​ប្រសើរ​ជាង​នេះ',
 );
 
 /** Ripoarisch (Ripoarisch)

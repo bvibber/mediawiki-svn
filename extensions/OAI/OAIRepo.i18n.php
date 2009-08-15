@@ -272,6 +272,13 @@ $messages['li'] = array(
 	'oai-desc' => 'Gef interface aan [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH-repository]',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'oai-desc' => 'Дава интерфејс за [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] складот',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

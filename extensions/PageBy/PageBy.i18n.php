@@ -149,6 +149,8 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'pageby-first' => 'Η σελίδα δημιουργήθηκε από τον $1, $2',
+	'pageby-last' => 'Τελευταία <a href="$3">επεξεργασία</a> από $1, $2',
 	'pageby-contributors' => 'Συνεισφέροντες:',
 	'pageby-anon' => '<i>ανώνυμος</i>',
 );

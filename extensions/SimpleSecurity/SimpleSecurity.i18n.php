@@ -203,6 +203,7 @@ $messages['el'] = array(
 	'security-info' => 'Υπάρχουν $1 σε αυτή τη σελίδα',
 	'security-info-toggle' => 'περιορισμοί ασφαλείας',
 	'security-inforestrict' => 'Ο $1 είναι περιορισμένος στο $2',
+	'security-desc-PR' => '(έτοιμο από την καρτέλα "προστασία")',
 	'security-manygroups' => 'ομάδες $1 και $2',
 	'security-unchain' => 'Τροποποίηση ενεργειών ατομικά',
 	'security-type-category' => 'κατηγορία',
@@ -242,6 +243,7 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Silvonen
  * @author Str4nd
  */
@@ -251,7 +253,7 @@ $messages['fi'] = array(
 	'security-info' => 'Tällä sivulla on $1',
 	'security-info-toggle' => 'turvallisuusrajoitukset',
 	'security-inforestrict' => '$1 on rajoitettu ryhmälle $2',
-	'security-infosysops' => 'Rajoitukset eivät koske sinua koska sinä kuulut "sysop" ryhmään',
+	'security-infosysops' => 'Rajoitukset eivät koske sinua, koska kuulut ylläpitäjäryhmään',
 	'security-type-category' => 'luokka',
 	'security-type-namespace' => 'nimiavaruus',
 );
@@ -629,13 +631,14 @@ $messages['pl'] = array(
 	'security-info' => 'Dostęp do tej strony jest $1',
 	'security-info-toggle' => 'ograniczony',
 	'security-inforestrict' => '$1 jest ograniczone do $2',
-	'security-desc-LS' => "''(ma zastosowanie, ponieważ ta strona jest w '''$2 $1''')''",
-	'security-desc-PR' => "''(ustawione poprzez zakładkę '''zabezpiecz''')''",
-	'security-infosysops' => "Brak obowiązujących ograniczeń, ponieważ jesteś członkiem grupy '''administratorzy'''.",
+	'security-desc-LS' => '(ma zastosowanie, ponieważ ta strona jest w „$2 $1”)',
+	'security-desc-PR' => '(ustawione poprzez zakładkę „zabezpiecz”)',
+	'security-infosysops' => 'Brak obowiązujących ograniczeń, ponieważ jesteś członkiem grupy „administratorzy”.',
 	'security-manygroups' => 'grup $1 oraz $2',
 	'security-unchain' => 'Zmiana działania indywidualnie',
 	'security-type-category' => 'kategoria',
 	'security-type-namespace' => 'przestrzeń nazw',
+	'security-restricttogroup' => 'Dostęp do zawartości ograniczony do członków „$1”',
 );
 
 /** Portuguese (Português)
@@ -744,6 +747,12 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'security' => 'Säkerhetslogg',
 	'security-desc' => 'Utökar MediaWikis sidskydd genom att tillåta begränsning av att sidinnehållet visas.',
+	'security-infosysops' => 'Inga restriktioner är aktiva eftersom du tillhör gruppen "Administratörer"',
+	'security-manygroups' => 'grupperna $1 och $2',
+	'security-unchain' => 'Ändra åtgärderna individuellt',
+	'security-type-category' => 'kategori',
+	'security-type-namespace' => 'namnrymd',
+	'security-restricttogroup' => 'Tillgång till innehållet är begränsat till medlemmar av "$1"',
 );
 
 /** Telugu (తెలుగు)

@@ -40,10 +40,11 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'ajax-qp-desc' => 'Дадае тэхнялёгію AJAX у старонкі запыту, такія як [[Special:Shortpages|{{int:shortpages}}]]',
+	'ajax-qp-desc' => 'Дадае тэхналёгію AJAX у старонкі запытаў, такія як [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Bulgarian (Български)

@@ -204,6 +204,7 @@ $messages['el'] = array(
 	'profiling-data-count' => 'Καταμέτρηση',
 	'profiling-data-time' => 'Χρόνος (όλα)',
 	'profiling-data-average' => 'Χρόνος (μ.ο.)',
+	'profiling-no-data' => 'Δεν βρέθηκαν δεδομένα αντιστοίχισης',
 );
 
 /** Esperanto (Esperanto)
@@ -518,7 +519,9 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'profiling-desc' => '[[Special:Profiling|Spezialsäit]] fir Profildaten ze sichen an auszewäerten',
 	'profiling-ok' => 'ok',
+	'profiling-data' => "Profildate vu(n) '$1'",
 	'profiling-data-process' => 'Verschaffen',
 	'profiling-data-count' => 'Zielen',
 	'profiling-data-time' => 'Dauer (total)',

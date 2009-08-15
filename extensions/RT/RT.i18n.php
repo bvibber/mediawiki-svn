@@ -492,6 +492,26 @@ Skúšali ste: '''$1'''",
 	'rt-nomatches' => 'Neboli nájdené zodpovedajúce požiadavky v RT',
 );
 
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'rt-desc' => 'Fint gränssnitt för RT (Request Tracker)',
+	'rt-inactive' => 'RT-tillägget är inte aktivt',
+	'rt-badquery' => 'RT-tillägget stötte på ett fel i kommunikationen med RT-databasen',
+	'rt-badlimit' => "Ogiltig LIMIT (l) argument: måste vara ett nummer.
+Du försökte: '''$1'''",
+	'rt-badorderby' => "Ogiltig ORDER BY (ob) argument: måste vara ett standardfält (se dokumentationen).
+Du försökte: '''$1'''",
+	'rt-badstatus' => "Ogiltig status (s) argument: måste vara ett standardfält (se dokumentationen).
+Du försökte: '''$1'''",
+	'rt-badqueue' => "Ogiltigt queue (q) argument: måste vara ett enkelt ord.
+Du försökte: '''$1'''",
+	'rt-badowner' => "Ogiltigt owner (o) argument: måste vara ett giltigt användarnamn.
+Du försökte: '''$1'''",
+	'rt-nomatches' => 'Inga matchande RT-tickets hittades',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

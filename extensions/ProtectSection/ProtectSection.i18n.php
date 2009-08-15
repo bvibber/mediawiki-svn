@@ -134,6 +134,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'protectsection_forbidden' => 'Απαγορευμένο',
+	'right-protectsection' => 'Προστασία τμημάτων σελίδων',
 );
 
 /** Esperanto (Esperanto)
@@ -439,9 +440,11 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'protectsection_desc' => 'Umożliwia uprawnionym użytkownikom zabezpieczenie części strony poprzez wstawienie znacznika <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Próbujesz dodać lub usunąć zabezpieczoną sekcję',
 	'protectsection_modify' => 'Próbujesz zmienić zabezpieczony tekst',
 	'protectsection_forbidden' => 'Zabezpieczony',
+	'right-protectsection' => 'Zabezpieczanie sekcji strony',
 );
 
 /** Portuguese (Português)

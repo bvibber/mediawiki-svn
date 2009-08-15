@@ -188,6 +188,13 @@ $messages['ksh'] = array(
 	'clientside-desc' => 'Jitt uns Fungxjohne för Kood udder Daate en Fomaate for der Aanwender ze maache, zem Beijshpell als <i lang="en">HTML</i>, <i lang="en">CSS</i>, un JavaSkrepp.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'clientside-desc' => 'Овозможува функции за создавање код во форматите од клинетска страна како  HTML, CSS и JavaScript',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

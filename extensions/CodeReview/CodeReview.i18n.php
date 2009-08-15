@@ -835,7 +835,7 @@ $messages['bs'] = array(
 	'code-status' => 'statusi',
 	'code-tags' => 'oznake',
 	'code-tests' => 'Probni slučajevi',
-	'code-authors-text' => 'Ispod je spisak autora repozitorijuma poredanih po nedavnim doprinosima.',
+	'code-authors-text' => 'Ispod je spisak autora repozitorijuma poredanih po nedavnim doprinosima. Lokalni wiki računi su prikazani pod navodnicima.',
 	'code-author-haslink' => 'Ovaj autor je povezan wiki korisničkim računom $1',
 	'code-author-orphan' => 'Ovaj autor nije povezan sa wiki računom',
 	'code-author-dolink' => 'Poveži ovog autora sa wiki korisnikom:',
@@ -3187,7 +3187,7 @@ $messages['ia'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'statos',
 	'code-tags' => 'etiquettas',
-	'code-authors-text' => 'Infra es un lista de autores del deposito in ordine de publicationes recente.',
+	'code-authors-text' => 'Infra es un lista de autores del deposito in ordine de publicationes recente. Le contos del wiki local es monstrate inter parentheses.',
 	'code-author-haslink' => 'Iste autor es ligate al usator $1 de iste wiki',
 	'code-author-orphan' => 'Iste autor ha nulle ligamine con un conto wiki',
 	'code-author-dolink' => 'Ligar iste autor con un usator del wiki:',
@@ -4990,7 +4990,7 @@ $messages['oc'] = array(
 	'code-status' => 'estats',
 	'code-tags' => 'balisas',
 	'code-tests' => 'Cases de tèst',
-	'code-authors-text' => 'Çaijós se tròba una lista dels autors dels depauses per òrdre de publicacions recentas.',
+	'code-authors-text' => 'Çaijós se tròba una lista dels autors de depauses per òrdre de publicacions recentas. Los comptes del wiki local son afichats entre parentèsis.',
 	'code-author-haslink' => "Aqueste autor es ligat al compte $1 d'aqueste wiki",
 	'code-author-orphan' => 'Aqueste autor a pas de ligam amb un compte wiki',
 	'code-author-dolink' => 'Associar aqueste autor a un compte wiki local :',
@@ -5156,7 +5156,7 @@ $messages['pl'] = array(
 	'code-status' => 'statusy',
 	'code-tags' => 'znaczniki',
 	'code-tests' => 'Argumenty testu',
-	'code-authors-text' => 'Poniżej znajduje się lista autorów repozytorium w kolejności ostatnio dodanej poprawki do kodu źródłowego.',
+	'code-authors-text' => 'Poniżej znajduje się lista autorów repozytorium w kolejności ostatnio dodanej poprawki. Lokalne konta wiki zostały wyświetlone w nawiasach.',
 	'code-author-haslink' => 'Ten autor jest podlinkowany do konta użytkownika na wiki jako $1',
 	'code-author-orphan' => 'Ten autor nie jest podlinkowany do żadnego konta użytkownika na wiki',
 	'code-author-dolink' => 'Podlinkuj tego autora do konta użytkownika na wiki:',
@@ -5238,6 +5238,14 @@ Pełny adres URL: $3
 Skrócony opis:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Automatyczne testowanie wykrytej regresji',
+	'codereview-email-body3' => 'Automatyczne testowanie regresji wykazało współzależności ze zmianami w wersji $1.
+
+Pełny adres URL: $2
+
+Opis zmian w wersji:
+
+$3',
 	'repoadmin' => 'Administrowanie repozytorium',
 	'repoadmin-new-legend' => 'Utwórz nowe repozytorium',
 	'repoadmin-new-label' => 'Nazwa repozytorium',

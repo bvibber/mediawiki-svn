@@ -165,6 +165,15 @@ $messages['lb'] = array(
 Benotzt: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'stockcharts-desc' => 'Додава ознака <nowiki><stockchart ticker="AAPL"/></nowiki> за интерактивен графикон за берзански акции',
+	'stockcharts-missingticker' => 'За да вметнете графикон за берзански акции, треба барем да назначите тикер.
+Користете: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

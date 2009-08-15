@@ -310,6 +310,13 @@ $messages['mg'] = array(
 	'breadcrumbs-desc' => "Mampiseho ny rohy ny pejy notsidian'ny mpikambana teto ambon'ity wiki ity.",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'breadcrumbs-desc' => 'Ја прикажува патеката на корисникот преку викито.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
