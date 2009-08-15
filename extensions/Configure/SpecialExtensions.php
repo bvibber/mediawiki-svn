@@ -126,33 +126,33 @@ class SpecialExtensions extends ConfigurationPage {
 
 		$ret = '';
 		$globalDone = false;
-		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
-			if( !$ext->isInstalled() )
+		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $wikiExt ) {
+			if( !$wikiExt->isInstalled() )
 				continue; // must exist
 
-			$ext->setPageObj( $this );
+			$wikiExt->setPageObj( $this );
 
 			if ( $this->mIsPreview )
-				$ext->setTempActivated( $wgRequest->getCheck( $ext->getCheckName() ) );
+				$wikiExt->setTempActivated( $wgRequest->getCheck( $ext->getCheckName() ) );
 
-			$settings = $ext->getSettings();
+			$settings = $wikiExt->getSettings();
 			foreach ( $settings as $setting => $type ) {
-				if ( !isset( $this->conf[$setting] ) && $ext->canIncludeFile() ) {
+				if ( !isset( $this->conf[$setting] ) && $wikiExt->canIncludeFile() ) {
 					if ( !$globalDone ) {
 						extract( $GLOBALS, EXTR_REFS );
 						global $wgHooks;
 						$oldHooks = $wgHooks;
 						$globalDone = true;
 					}
-					require_once( $ext->getFile() );
+					require_once( $wikiExt->getFile() );
 					if ( isset( $$setting ) )
 						$this->conf[$setting] = $$setting;
 				}
 			}
 			if ( $globalDone )
 				$GLOBALS['wgHooks'] = $oldHooks;
-
-			$ret .= $ext->getHtml();
+	
+			$ret .= $wikiExt->getHtml();
 		}
 
 		return $ret;
