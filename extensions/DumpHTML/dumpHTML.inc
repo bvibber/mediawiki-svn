@@ -1409,4 +1409,3 @@ function wfDumpStartTagHandler( $parser, $name, $attribs ) {
 function wfDumpEndTagHandler( $parser, $name ) {}
 
 # vim: syn=php
-?>
