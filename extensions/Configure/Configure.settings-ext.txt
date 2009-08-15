@@ -1,3 +1,13 @@
+ABC
+settings[] = abcm2ps: text, abcps2pdf: text
+settings[] = abcPath: text, abcURL: text, abc2midi: text
+settings[] = abcOggHandler: text, abctimidity: text
+settings[] = abcMIDIvoice: int
+settings[] = abcDelayedRendering: bool
+empty[] = abcPath: false, abcURL: false, abc2midi: false
+empty[] = abcOggHandler: false, abctimidity: false
+url = http://www.mediawiki.org/wiki/Extension:ABC
+
 AbsenteeLandlord
 settings[] = wgAbsenteeLandlordMaxDays: int
 url = http://www.mediawiki.org/wiki/Extension:AbsenteeLandlord
@@ -31,6 +41,12 @@ url = http://www.mediawiki.org/wiki/Extension:Admin_Links
 
 AdvancedRandom
 file = SpecialAdvancedRandom.php
+url = http://www.mediawiki.org/wiki/Extension:AdvancedRandom
+
+AjaxLogin
+settings[] = wgEnableAjaxLogin: array
+url = http://www.mediawiki.org/wiki/Extension:AjaxLogin
+array[] = wgEnableAjaxLogin: assoc
 
 AjaxQueryPages
 file = Load.php
@@ -41,6 +57,13 @@ file = Load.php
 settings[] = wgAjaxShowEditorsTimeout: int
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:AjaxShowEditors
+
+AmazonPlus
+settings[] = wgAmazonPlusJSVersion: int
+settings[] = wgAmazonPlusAWS: text, wgAmazonPlusDefaultSearch: text, wgAmazonPlusDecimal: text
+settings[] = wgAmazonPlusAssociates: array
+array[] = wgAmazonPlusAssociates: assoc
+url = http://www.mediawiki.org/wiki/Extension:AmazonPlus
 
 AntiBot
 settings[] = wgAntiBotSecret: text, wgAntiBotPayloads: array
@@ -121,10 +144,22 @@ url = http://www.mediawiki.org/wiki/Extension:Call
 CategoryIntersection
 url = http://www.mediawiki.org/wiki/Extension:CategoryIntersection
 
+CategoryOnUpload
+settings[] = wgCategoryOnUploadAllowNone: bool
+settings[] = wgCategoryTreeAllowTag: bool, wgCategoryTreeDisableCache: bool
+settings[] = wgCategoryOnUploadDefault: text
+settings[] = wgCategoryOnUploadList: array
+empty[] = wgCategoryOnUploadDefault: null, wgCategoryOnUploadList: null
+array[] = wgCategoryOnUploadList: simple
+url = http://www.mediawiki.org/wiki/Extension:CategoryOnUpload
+
 CategoryStepper
 settings[] = wgCategoryStepper: array
 array[] = wgCategoryStepper: assoc
 url = http://www.mediawiki.org/wiki/Extension:CategoryStepper
+
+CategoryTests
+url = http://www.mediawiki.org/wiki/Extension:CategoryTests
 
 CategoryTree
 settings[] = wgCategoryTreeMaxChildren: int, wgCategoryTreeMaxChildren: int,
@@ -144,7 +179,12 @@ array[] = wgCategoryTreeCategoryPageOptions: assoc, wgCategoryTreeSpecialPageOpt
 array[] = wgCategoryTreeSidebarOptions: assoc, wgCategoryTreePageCategoryOptions: assoc
 url = http://www.mediawiki.org/wiki/Extension:CategoryTree
 
+CategoryWatch
+settings[] = wgCategoryWatchNotifyEditor: bool, wgCategoryWatchUseAutoCat: bool
+url = http://www.mediawiki.org/wiki/Extension:CategoryWatch
+
 catfeed
+url = http://wikidev.net
 
 CentralAuth
 settings[] = wgCentralAuthDatabase: text, wgCentralAuthAutoNew: bool
@@ -187,8 +227,8 @@ settings[] = wgCheckUserForceSummary: bool
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CheckUser
 
-ChemFunctions
-dir = Chemistry
+Chemistry
+file = ChemFunctions.php
 url = http://www.mediawiki.org/wiki/Extension:Chemistry
 
 Chemicalsources
