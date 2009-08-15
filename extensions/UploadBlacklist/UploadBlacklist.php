@@ -17,7 +17,10 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'UploadBlacklist',
 	'description'    => 'Upload blacklist',
 	'descriptionmsg' => 'uploadblacklist-desc',
+	'url'            => 'http://www.wikimedia.org/wiki/UploadBlacklist',
 );
+
+$wgExtensionMessagesFiles['UploadBlacklist'] = dirname( __FILE__ ) . '/UploadBlacklist.i18n.php';
 
 $ubUploadBlacklist = array();
 $wgHooks['UploadVerification'][] = 'ubVerifyHash';
