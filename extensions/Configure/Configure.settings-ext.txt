@@ -648,7 +648,6 @@ file = SpecialRenameuser.php
 url = http://www.mediawiki.org/wiki/Extension:Renameuser
 
 ReplaceSet
-url = http://mediawiki.org/wiki/Extension:ReplaceSet
 
 ReplaceText
 url = http://www.mediawiki.org/wiki/Extension:Replace_Text
@@ -884,7 +883,7 @@ UploadBlacklist
 settings[] = ubUploadBlacklist: array
 array[] = ubUploadBlacklist: simple
 empty[] = ubUploadBlacklist: array
-url = http://www.wikimedia.org/wiki/UploadBlacklist
+url = http://www.mediawiki.org/wiki/Extension:UploadBlacklist
 
 UsageStatistics
 settings[] = wgUserStatsGoogleCharts: int
@@ -907,7 +906,6 @@ UsernameBlacklist
 url = http://www.mediawiki.org/wiki/Extension:Username_Blacklist
 
 UserOptionStats
-url = http://www.mediawiki.org/wiki/Extension:UserOptionStats
 
 UserRightsNotification
 url = http://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification
@@ -918,7 +916,6 @@ url = http://www.mediawiki.org/wiki/Extension:Vote
 Watchers
 settings[] = wgWatchersLimit: int
 empty[] = wgWatchersLimit: null
-url = http://www.mediawiki.org/wiki/Extension:Watchers
 
 WatchSubpages
 url = http://www.mediawiki.org/wiki/Extension:WatchSubpages
