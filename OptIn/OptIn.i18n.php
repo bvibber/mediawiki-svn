@@ -2147,6 +2147,15 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'optin-try' => 'Probez la Beta',
+	'optin-survey-yes' => 'Yes',
+	'optin-survey-no' => 'No',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos
@@ -4695,6 +4704,21 @@ Te podi entrar da novo quando te vol strucando su "{{int:optin-try}}" in alto a 
 	'optin-survey-intro' => 'Grassie de ver proà la Beta.
 Gavaressimo caro savér cossa te ghe ne pensi de la nostra interfacia nova, quindi ne piasarìa che te conpilessi el sondagio facoltativo qua soto prima de strucar su "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'Cossa te ga piasso de la Beta? Cossa no te ga piasso?',
+	'optin-survey-question-whyoptout' => "Com'èla che te vol 'ndar fora da la Beta? (Te pol selessionar anca pi de una risposta.)",
+	'optin-survey-answer-whyoptout-hard' => 'Massa fadiga dopararla.',
+	'optin-survey-answer-whyoptout-didntwork' => 'No la funsiona mia ben.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'No la funsiona come se se spetarìa.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'No me piase come la se vede.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'No me piase le schede nove e la dispoxission grafica.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'No me piase la nova bara dei strumenti.',
+	'optin-survey-answer-whyoptout-other' => 'Altra motivassion:',
+	'optin-survey-question-explain' => 'Par piaser spiega mejo la to risposta:',
+	'optin-survey-question-browser' => 'Che browser dòparito?',
+	'optin-survey-answer-browser-other' => 'Altro browser:',
+	'optin-survey-question-os' => 'Che sistema operativo dòparito?',
+	'optin-survey-answer-os-other' => 'Altro sistema operativo:',
+	'optin-survey-question-res' => 'Quala xea la risolussion del to schermo?',
+	'optin-survey-answer-changes-other' => 'Altro:',
 	'optin-improvements' => '== Cossa gavemo fato de mejo? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Navigassion piessè potente

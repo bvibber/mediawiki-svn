@@ -167,7 +167,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'usabilityinitiative' => 'Iniciatiwa wužiwajomnosće',
-	'usabilityinitiative-desc' => 'Funkcije, wuwity přez iniciatiwu wužiwajomnosće Wikipedije, za polěpšenje wužiwajomnosće MediaWiki',
+	'usabilityinitiative-desc' => 'Funkcije, wuwite přez iniciatiwu wužiwajomnosće Wikipedije, za polěpšenje wužiwajomnosće MediaWiki',
 );
 
 /** Hungarian (Magyar)
