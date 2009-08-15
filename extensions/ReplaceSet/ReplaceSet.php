@@ -27,7 +27,8 @@ $wgExtensionCredits['parserhook'][] = array (
 	'url' => 'http://mediawiki.org/wiki/Extension:ReplaceSet',
 	'version' => '1.1a',
 	'author' => "[http://mediawiki.org/wiki/User:Dantman Daniel Friesen]",
-	'description' => "Adds a <nowiki>{{#replaceset}}</nowiki> parserfunction used for replacing sections of text with specially formatted data."
+	'description' => "Adds a <nowiki>{{#replaceset}}</nowiki> parser function used for replacing sections of text with formatted data"
+	'descriptionmsg' => 'replaceset-desc'
 );
 
 $wgExtensionFunctions[] = 'efReplaceSetSetup';

@@ -25,6 +25,7 @@ require_once( dirname(__FILE__) . '/ReplaceSet.i18n.magic.php' );
 $messages = array();
 
 $messages['en'] = array(
+	'replaceset-desc' => 'Adds a <nowiki>{{#replaceset}}</nowiki> parser function used for replacing sections of text with formatted data',
 	'replaceset-error-calllimit' => 'The ReplaceSet call limit has been reached.',
 	'replaceset-error-regexnoend' => 'The regex pattern "$1" is missing the ending delimiter \'$2\'',
 	'replaceset-error-regexbadmodifier' => 'The regex modifier \'$1\' is not valid.'
