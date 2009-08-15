@@ -331,6 +331,7 @@ FancyCaptcha
 dir = ConfirmEdit
 settings[] = wgCaptchaDirectory: text, wgCaptchaDirectoryLevels: int
 settings[] = wgCaptchaSecret: text
+url = http://www.mediawiki.org/wiki/Extension:ConfirmEdit#FancyCaptcha_addon
 
 MathCaptcha
 dir = ConfirmEdit
@@ -705,7 +706,7 @@ settings[] = smwgQConceptMaxSize : int
 settings[] = smwgQConceptMaxDepth: int
 settings[] = smwgQConceptFeatures: int
 settings[] = smwgQConceptCacheLifetime: int
-settings[] = smwgResultFormats: array 
+settings[] = smwgResultFormats: array
 settings[] = smwgPDefaultType: text
 settings[] = smwgRSSEnabled: bool
 settings[] = smwgRSSWithPages: bool
