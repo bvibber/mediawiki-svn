@@ -647,8 +647,22 @@ Renameuser
 file = SpecialRenameuser.php
 url = http://www.mediawiki.org/wiki/Extension:Renameuser
 
+ReplaceSet
+url = http://mediawiki.org/wiki/Extension:ReplaceSet
+
 ReplaceText
 url = http://www.mediawiki.org/wiki/Extension:Replace_Text
+
+RT
+settings[] = wgRequestTracker_TIMEFORMAT_LASTUPDATED: text, wgRequestTracker_TIMEFORMAT_LASTUPDATED2: text
+settings[] = wgRequestTracker_TIMEFORMAT_CREATED: text, wgRequestTracker_TIMEFORMAT_CREATED2: text
+settings[] = wgRequestTracker_TIMEFORMAT_RESOLVED: text, wgRequestTracker_TIMEFORMAT_RESOLVED2: text
+settings[] = wgRequestTracker_TIMEFORMAT_NOW: text
+settings[] = wgRequestTracker_URL: text, wgRequestTracker_DBconn: text
+settings[] = wgRequestTracker_Cachepage: bool, wgRequestTracker_Useballoons: bool, wgRequestTracker_Active: bool
+settings[] = wgTitleBlacklistSources: array
+array[] = wgTitleBlacklistSources: assoc
+url = http://www.mediawiki.org/wiki/Extension:RT
 
 SemanticDrilldown
 file = includes/SD_Settings.php
@@ -866,6 +880,24 @@ dir = uniwiki/MooTools12core
 file = MooTools12core.php
 url = http://www.mediawiki.org/wiki/Extension:MooTools_1.2_Core
 
+UploadBlacklist
+settings[] = ubUploadBlacklist: array
+array[] = ubUploadBlacklist: simple
+empty[] = ubUploadBlacklist: array
+url = http://www.wikimedia.org/wiki/UploadBlacklist
+
+UsageStatistics
+settings[] = wgUserStatsGoogleCharts: int
+url = http://www.mediawiki.org/wiki/Extension:Usage_Statistics
+
+UserContactLinks
+file = UserSignature.php
+url = http://www.mediawiki.org/wiki/Extension:User_Contact_Links
+
+UserImages
+settings[] = wgUserImagesNoCache: bool
+url = http://www.mediawiki.org/wiki/Extension:User_Image_Gallery
+
 UserMerge
 settings[] = wgUserMergeProtectedGroups: array
 array[] = wgUserMergeProtectedGroups: simple
@@ -874,8 +906,71 @@ url = http://www.mediawiki.org/wiki/Extension:User_Merge_and_Delete
 UsernameBlacklist
 url = http://www.mediawiki.org/wiki/Extension:Username_Blacklist
 
+UserOptionStats
+url = http://www.mediawiki.org/wiki/Extension:UserOptionStats
+
+UserRightsNotification
+url = http://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification
+
+Vote
+url = http://www.mediawiki.org/wiki/Extension:Vote
+
+Watchers
+settings[] = wgWatchersLimit: int
+empty[] = wgWatchersLimit: null
+url = http://www.mediawiki.org/wiki/Extension:Watchers
+
+WatchSubpages
+url = http://www.mediawiki.org/wiki/Extension:WatchSubpages
+
+WebChat
+settings[] = wgWebChatServer: text, wgWebChatChannel: text, wgWebChatClient: text
+url = http://www.mediawiki.org/wiki/Extension:WebChat
+
+WhatIsMyIP
+url = http://www.mediawiki.org/wiki/Extension:WhatIsMyIP
+
+WhoIsWatching
+settings[] = whoiswatching_nametype: text
+settings[] = whoiswatching_allowaddingpeople: bool, whoiswatching_showifzero: bool
+file = SpecialWhoIsWatching.php
+url = http://www.mediawiki.org/wiki/Extension:WhoIsWatching
+
+WhosOnline
+settings[] = wgWhosOnlineShowAnons: bool
+schema = true
+url = http://www.mediawiki.org/wiki/Extension:WhosOnline
+
+WikiAtHome
+settings[] = tmpExt: array
+array[] = tmpExt: simple
+schema = true
+extensions-dependencies[] = OggHandler
+url = http://www.mediawiki.org/wiki/Extension:WikiAtHome
+
+WikimediaIncubator
+settings[] = wmincPref: text
+url = http://www.mediawiki.org/wiki/Extension:WikimediaIncubator
+
+WikimediaMessages
+url = http://www.mediawiki.org/wiki/Extension:WikimediaMessages
+
+WikiTextLoggedInOut
+url = http://www.mediawiki.org/wiki/Extension:WikiTextLoggedInOut
+
+Woopra
+url = http://www.mediawiki.org/wiki/Extension:Woopra
+
+YouTubeAuthSub
+settings[] = wgYTAS_User: text, wgYTAS_Password: text, wgYTAS_DeveloperId: text
+settings[] = wgYTAS_DefaultCategory: bool, wgYTAS_EnableLogging: bool, wgYTAS_UseNamespace: bool, wgYTAS_UseClientLogin: bool
+url = http://www.mediawiki.org/wiki/Extension:YouTubeAuthSub
+
 Widgets
 url = http://www.mediawiki.org/wiki/Extension:Widgets
+
+WikiArticleFeeds
+url = http://jimbojw.com/wiki/index.php?title=WikiArticleFeeds
 
 wikihiero
 url = http://www.mediawiki.org/wiki/Extension:WikiHiero
