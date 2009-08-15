@@ -68,7 +68,7 @@ class SpecialExtensions extends ConfigurationPage {
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
 			if ( !count( $ext->getExtensionsDependencies() ) || !$wgRequest->getCheck( $ext->getCheckName() ) )
 				continue;
-			
+
 			foreach ( $ext->getExtensionsDependencies() as $depName ) {
 				$dep = $this->mConfSettings->getExtension( $depName );
 				if ( !is_object( $dep ) )
@@ -151,7 +151,7 @@ class SpecialExtensions extends ConfigurationPage {
 			}
 			if ( $globalDone )
 				$GLOBALS['wgHooks'] = $oldHooks;
-	
+
 			$ret .= $wikiExt->getHtml();
 		}
 
