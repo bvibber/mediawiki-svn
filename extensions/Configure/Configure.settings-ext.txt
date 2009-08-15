@@ -246,12 +246,24 @@ SpecialCite
 dir = Cite
 url = http://www.mediawiki.org/wiki/Extension:Cite/Special:Cite.php
 
+CLDR
+file = LanguageNames.php
+url = http://unicode.org/cldr/repository_access.html
+
 CleanChanges
 settings[] = wgCCUserFilter: bool, wgCCTrailerFilter: bool
 url = http://www.mediawiki.org/wiki/Extension:CleanChanges
 
 Click
 url = http://www.mediawiki.org/wiki/Extension:Click
+
+ClientSide
+url = http://www.mediawiki.org/wiki/Extension:ClientSide
+
+CloseWikis
+settings[] = wgCloseWikisDatabase: text
+schema = true
+url = http://www.mediawiki.org/wiki/Extension:CloseWikis
 
 CodeReview
 settings[] = wgCodeReviewENotif: bool, wgCodeReviewImgRegex: text
@@ -280,6 +292,11 @@ CommentSpammer
 settings[] = wgCommentSpammerLog: array
 array[] = wgCommentSpammerLog: assoc
 url = http://www.mediawiki.org/wiki/Extension:CommentSpammer
+
+CommunityVoice
+settings[] = egCommunityVoiceResourcesPath: text
+schema = true
+url = http://www.mediawiki.org/wiki/Extension:CommunityVoice
 
 ConfirmAccount
 file = SpecialConfirmAccount.php
