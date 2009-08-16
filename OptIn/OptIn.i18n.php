@@ -428,18 +428,39 @@ $messages['br'] = array(
 	'optin-title-optedin' => 'Dilezel Beta',
 	'optin-title-justoptedin' => 'Degemer mat war Beta',
 	'optin-title-justoptedout' => "Trugarez deoc'h evit esaeañ ar Beta",
+	'optin-title-feedback' => 'Roit ho soñj war ar Beta',
+	'optin-needlogin' => "Ret eo deoc'h bezañ [$1 luget] evit ober gant Beta.",
+	'optin-feedback-intro' => "Trugarez deoc'h da esaeañ Beta.
+Ni a garfe gouzout petra a soñjit diwar-benn an etredas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
+	'optin-success-in' => "Emaoc'h oc'h esaeañ Beta.
+Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
+	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
 	'optin-accept-long' => 'Esaeañ Beta',
+	'optin-accept-long-anon' => 'Emlugit ha grit un taol-esae gant Beta',
 	'optin-deny-short' => 'Ket, trugarez',
+	'optin-deny-long' => "Distreiñ d'ar bajenn gent",
 	'optin-submit-out' => 'Dilezel Beta',
 	'optin-submit-feedback' => 'Roit ho soñj',
 	'optin-try' => 'Esaeañ Beta',
 	'optin-leave' => 'Dilezel Beta',
+	'optin-feedback' => 'Roit ho soñj',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Ket',
+	'optin-survey-intro' => 'Trugarez da esaeañ ar Beta.
+Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma respontfec\'h d\'ar goulennoù dindan a-raok klikañ war "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => "Petra zo plijet deoc'h er Beta ? Petra n'eus displijet deoc'h ?",
 	'optin-survey-question-whyoptout' => "Perak e fell deoc'h dilezel ar Beta ? (dibabit kement tra a glot gant ho soñj)",
+	'optin-survey-answer-whyoptout-hard' => 'Start e oa da embreger.',
+	'optin-survey-answer-whyoptout-didntwork' => "Ne'z ae ket plaen en-dro.",
+	'optin-survey-answer-whyoptout-notpredictable' => "Ne'z ae ket en-dro en un doare poellek.",
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Ne blije ket din an tres anezhañ.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne blije ket din ar varrenn ostilhoù nevez.',
 	'optin-survey-answer-whyoptout-other' => 'Abeg all',
+	'optin-survey-question-browser' => 'Peseurt merdeer a rit gantañ ?',
 	'optin-survey-answer-browser-other' => 'Merdeer all :',
+	'optin-survey-question-os' => 'Peseurt reizhiad korvoiñ a rit gantañ ?',
+	'optin-survey-question-res' => 'Petra eo spisder ho skramm ?',
 	'optin-survey-answer-changes-other' => 'Traoù all :',
 );
 
@@ -2151,7 +2172,7 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
  * @author Malafaya
  */
 $messages['io'] = array(
-	'optin-try' => 'Probez la Beta',
+	'optin-try' => 'Probez Beta',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
 );
@@ -4713,6 +4734,11 @@ Gavaressimo caro savér cossa te ghe ne pensi de la nostra interfacia nova, quin
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'No me piase la nova bara dei strumenti.',
 	'optin-survey-answer-whyoptout-other' => 'Altra motivassion:',
 	'optin-survey-question-explain' => 'Par piaser spiega mejo la to risposta:',
+	'optin-survey-question-techfail' => 'Se gà verificà qualche problema tecnico doparando Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Se sì, spiega:',
+	'optin-survey-question-usedtoolbar' => 'Gheto doparà la nova bara dei strumenti espandibile par modificar na pagina?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Se sì, cossa te gà piasso? Cossa no te gà piasso?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Se no, parché de no? Podaressito dopararla in futuro? Spiega, par piaser.',
 	'optin-survey-question-browser' => 'Che browser dòparito?',
 	'optin-survey-answer-browser-other' => 'Altro browser:',
 	'optin-survey-question-os' => 'Che sistema operativo dòparito?',
@@ -4819,6 +4845,15 @@ Các biểu tượng mới và được cải tiến để làm rõ hơn các ch
 Để tìm hiểu thêm về dự án hoặc tham gia vào dự án, xin mời thăm [http://usability.wikimedia.org wiki của Sáng kiến Khả dụng].  Tại đó bạn sẽ tìm thấy những thông tin về số tiền được cấp, nghiên cứu, thiết kế + phát triển, và các bản phát hành. Để đặt câu hỏi hoặc để lại hồi đáp, xin hãy sử dụng [http://usability.wikimedia.org/wiki/Talk:Prototype trang thảo luận prototype của chúng tôi].  Để bàn về các chủ đề cụ thể, hãy sử dụng các trang thảo luận đi kèm. Nếu bạn nhận thấy có lỗi phần mềm, xin để lại lời nhắn tại  [http://usability.wikimedia.org/wiki/Talk:Releases/Acai trang thảo luận bản phát hành Acai] hoặc sử dụng [https://bugzilla.wikimedia.org Bugzilla].
 
 Cảm ơn và mong hồi âm từ bạn!',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'optin-try' => 'Sperimäntolös el Beta',
+	'optin-survey-yes' => 'Si',
+	'optin-survey-no' => 'No',
 );
 
 /** Yue (粵語)

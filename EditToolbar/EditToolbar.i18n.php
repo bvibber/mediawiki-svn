@@ -2075,6 +2075,7 @@ $messages['et'] = array(
 	'edittoolbar-tool-bold-example' => 'Rasvane kiri',
 	'edittoolbar-tool-italic' => 'Kursiiv',
 	'edittoolbar-tool-italic-example' => 'Kaldkiri',
+	'edittoolbar-tool-link-int-target' => 'Artikli pealkiri:',
 	'edittoolbar-tool-file' => 'Manusfail',
 	'edittoolbar-tool-file-example' => 'Näide.jpg',
 	'edittoolbar-tool-reference' => 'Viide',
@@ -2121,6 +2122,10 @@ $messages['et'] = array(
 | rida 2, lahter 1
 | rida 2, lahter 2
 | rida 2, lahter 3',
+	'edittoolbar-tool-replace' => 'Asenda',
+	'edittoolbar-tool-replace-title' => 'Otsi ja asenda',
+	'edittoolbar-tool-replace-button' => 'Asenda',
+	'edittoolbar-tool-replace-close' => 'Sulge',
 	'edittoolbar-section-characters' => 'Erimärgid',
 	'edittoolbar-characters-page-latin' => 'Ladina',
 	'edittoolbar-characters-page-latinextended' => 'Ladina (laiendatud)',
@@ -2465,6 +2470,7 @@ $messages['fi'] = array(
  * @author IAlex
  * @author McDutchie
  * @author Omnipaedista
+ * @author PieRRoMaN
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -2479,7 +2485,7 @@ $messages['fr'] = array(
 	'edittoolbar-tool-link' => 'Lien',
 	'edittoolbar-tool-link-title' => 'Insérer un lien',
 	'edittoolbar-tool-link-int' => 'Vers un article / une page wiki',
-	'edittoolbar-tool-link-int-target' => 'Titre de l’article :',
+	'edittoolbar-tool-link-int-target' => 'Titre de la page :',
 	'edittoolbar-tool-link-int-text' => 'Texte du lien :',
 	'edittoolbar-tool-link-ext' => 'Vers une page web externe',
 	'edittoolbar-tool-link-ext-target' => 'URL cible du lien :',
@@ -2489,6 +2495,7 @@ $messages['fr'] = array(
 	'edittoolbar-tool-link-int-target-status-exists' => 'La page existe',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'La page n’existe pas',
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titre invalide',
+	'edittoolbar-tool-link-int-target-status-loading' => "Vérification de l'existence de la page...",
 	'edittoolbar-tool-link-int-invalid' => 'Le titre que vous avez spécifié est incorrect.',
 	'edittoolbar-tool-file' => 'Fichier inséré',
 	'edittoolbar-tool-file-example' => 'Exemple.jpg',
@@ -2510,10 +2517,10 @@ $messages['fr'] = array(
 	'edittoolbar-tool-olist-example' => 'Élément de la liste numérotée',
 	'edittoolbar-group-size' => 'Taille',
 	'edittoolbar-tool-big' => 'Grand',
-	'edittoolbar-tool-big-example' => 'Texte en gras',
+	'edittoolbar-tool-big-example' => 'Gros texte',
 	'edittoolbar-tool-small' => 'Petit',
 	'edittoolbar-tool-small-example' => 'Petit texte',
-	'edittoolbar-group-baseline' => 'Niveau',
+	'edittoolbar-group-baseline' => 'Ligne de base',
 	'edittoolbar-tool-superscript' => 'Exposant',
 	'edittoolbar-tool-superscript-example' => 'Texte en exposant',
 	'edittoolbar-tool-subscript' => 'Indice',
@@ -2548,10 +2555,10 @@ $messages['fr'] = array(
 	'edittoolbar-tool-replace-replace' => 'Remplacer avec :',
 	'edittoolbar-tool-replace-case' => 'Faire correspondre la casse',
 	'edittoolbar-tool-replace-regex' => 'Traiter la chaîne de recherche comme une expression régulière',
-	'edittoolbar-tool-replace-all' => 'remplacer toutes les occurrences',
+	'edittoolbar-tool-replace-all' => 'Remplacer toutes les occurrences',
 	'edittoolbar-tool-replace-button' => 'Remplacer',
 	'edittoolbar-tool-replace-close' => 'Fermer',
-	'edittoolbar-tool-replace-nomatch' => 'Votre recherche n’a trouvé aucune correspondance.',
+	'edittoolbar-tool-replace-nomatch' => 'Votre recherche n’a abouti à aucune correspondance.',
 	'edittoolbar-section-characters' => 'Caractères spéciaux',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Latin étendu',
@@ -2623,7 +2630,7 @@ $messages['fr'] = array(
 	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Nom d'utilisateur</a> (<a href='#' title='{{#special:mytalk}}'>discuter</a>) 10 Juin 2009 à 15:54 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'Signature',
 	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Nom d'utilisateur</a> (<a href='#' title='{{#special:mytalk}}'>discuter</a>)",
-	'edittoolbar-help-content-indent-description' => 'Identation',
+	'edittoolbar-help-content-indent-description' => 'Indentation',
 	'edittoolbar-help-content-indent-syntax' => 'Texte normal<br />:Texte indenté<br />::Texte indenté',
 	'edittoolbar-help-content-indent-result' => 'Texte normal<dl><dd>Texte indenté<dl><dd>Texte indenté</dd></dl></dd></dl>',
 );
@@ -2653,7 +2660,7 @@ $messages['frp'] = array(
 	'edittoolbar-group-list' => 'Lista',
 	'edittoolbar-group-size' => 'Talye',
 	'edittoolbar-tool-big' => 'Grant',
-	'edittoolbar-tool-big-example' => 'Grant tèxto',
+	'edittoolbar-tool-big-example' => 'Grôs tèxto',
 	'edittoolbar-tool-small' => 'Petiôt',
 	'edittoolbar-tool-small-example' => 'Petiôt tèxto',
 	'edittoolbar-group-baseline' => 'Legne de bâsa',
@@ -3945,6 +3952,7 @@ $messages['it'] = array(
 	'edittoolbar-tool-big-example' => 'Testo grande',
 	'edittoolbar-tool-small' => 'Piccolo',
 	'edittoolbar-tool-small-example' => 'Testo piccolo',
+	'edittoolbar-group-baseline' => 'Baseline',
 	'edittoolbar-tool-superscript' => 'Apice',
 	'edittoolbar-tool-superscript-example' => 'Testo in apice',
 	'edittoolbar-tool-subscript' => 'Pedice',
@@ -3959,6 +3967,7 @@ $messages['it'] = array(
 	'edittoolbar-tool-replace-title' => 'Cerca e sostituisci',
 	'edittoolbar-tool-replace-search' => 'Cerca per:',
 	'edittoolbar-tool-replace-replace' => 'Sostituisci con:',
+	'edittoolbar-tool-replace-case' => 'Maiuscole/minuscole',
 	'edittoolbar-tool-replace-regex' => "Tratta la stringa di ricerca come un'espressione regolare",
 	'edittoolbar-tool-replace-all' => 'Sostituisci tutte le occorrenze',
 	'edittoolbar-tool-replace-button' => 'Sostituisci',
@@ -4194,9 +4203,9 @@ $messages['ja'] = array(
 	'edittoolbar-help-content-showreferences-description' => '脚注の表示',
 	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>リンクタイトル</a>、追加テキスト</li></ol>",
 	'edittoolbar-help-content-signaturetimestamp-description' => '時刻付き署名',
-	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>利用者名</a> (<a href='#' title='{{#special:mytalk}}'>会話</a>) 2009年6月10日 (水) 15:54 (UTC)",
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>利用者名</a> （<a href='#' title='{{#special:mytalk}}'>会話</a>） 2009年6月10日 （水） 15:54 （UTC）",
 	'edittoolbar-help-content-signature-description' => '署名',
-	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>利用者名</a> (<a href='#' title='{{#special:mytalk}}'>会話</a>)",
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>利用者名</a> （<a href='#' title='{{#special:mytalk}}'>会話</a>）",
 	'edittoolbar-help-content-indent-description' => 'インデント',
 	'edittoolbar-help-content-indent-syntax' => '通常の文章<br />:インデントされた文章<br />::インデントされた文章',
 	'edittoolbar-help-content-indent-result' => '通常の文章<dl><dd>インデントされた文章<dl><dd>インデントされた文章</dd></dl></dd></dl>',
@@ -6442,6 +6451,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -6463,6 +6473,11 @@ $messages['pt-br'] = array(
 	'edittoolbar-tool-link-ext-text' => 'Texto da ligação:',
 	'edittoolbar-tool-link-insert' => 'Inserir ligação',
 	'edittoolbar-tool-link-cancel' => 'Cancelar',
+	'edittoolbar-tool-link-int-target-status-exists' => 'A página existe',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'A página não existe',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Título inválido',
+	'edittoolbar-tool-link-int-target-status-loading' => 'Verificando existência da página...',
+	'edittoolbar-tool-link-int-invalid' => 'O título que você especificou é inválido.',
 	'edittoolbar-tool-file' => 'Arquivo embutido',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referência',
@@ -7591,6 +7606,13 @@ $messages['sv'] = array(
 	'edittoolbar-help-content-indent-result' => 'Normal text<dl><dd>indragen text<dl><dd>indragen text</dd></dl></dd></dl>',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'edittoolbar-help-page-file' => 'Mafaili',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Ravichandra
@@ -8470,9 +8492,9 @@ $messages['zh-hans'] = array(
 	'edittoolbar-help-content-showreferences-description' => '显示参考文献',
 	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>链接文本</a>，附加文本。</li></ol>",
 	'edittoolbar-help-content-signaturetimestamp-description' => '带时间戳的签名',
-	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>用户名</a> (<a href='#' title='{{#special:mytalk}}'>讨论</a>) 2009年6月10日 (三) 15:54 (UTC)",
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>用户名</a> （<a href='#' title='{{#special:mytalk}}'>讨论</a>） 2009年6月10日 （三） 15:54 （UTC）",
 	'edittoolbar-help-content-signature-description' => '签名',
-	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>用户名</a> (<a href='#' title='{{#special:mytalk}}'>讨论</a>)",
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>用户名</a> （<a href='#' title='{{#special:mytalk}}'>讨论</a>）",
 	'edittoolbar-help-content-indent-description' => '缩进',
 	'edittoolbar-help-content-indent-syntax' => '标准文本<br />:缩进文本<br />::缩进文本',
 	'edittoolbar-help-content-indent-result' => '标准文本<dl><dd>缩进文本<dl><dd>缩进文本</dd></dl></dd></dl>',
@@ -8602,9 +8624,9 @@ $messages['zh-hant'] = array(
 	'edittoolbar-help-content-showreferences-description' => '顯示喜好',
 	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>拎文字</a>，附加文字。</li></ol>",
 	'edittoolbar-help-content-signaturetimestamp-description' => '簽名加上時間截記',
-	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>用戶名</a> (<a href='#' title='{{#special:mytalk}}'>討論</a>) 15:54, 10 June 2009 (UTC)",
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>用戶名</a> （<a href='#' title='{{#special:mytalk}}'>討論</a>） 15:54, 10 June 2009 （UTC）",
 	'edittoolbar-help-content-signature-description' => '簽名',
-	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>用戶名</a> (<a href='#' title='{{#special:mytalk}}'>討論</a>)",
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>用戶名</a> （<a href='#' title='{{#special:mytalk}}'>討論</a>）",
 	'edittoolbar-help-content-indent-description' => '縮排',
 	'edittoolbar-help-content-indent-syntax' => '標準文字<br />:縮排文字<br />::縮排文字',
 	'edittoolbar-help-content-indent-result' => '標準文字<dl><dd>縮排文字<dl><dd>縮排文字</dd></dl></dd></dl>',
