@@ -28,13 +28,13 @@ $messages['en'] = array(
 	'ratinghistory-table-rating' => 'Rating',
 	'ratinghistory-table-votes'  => 'Votes',
 	'ratinghistory-none'    => 'There is not enough reader feedback data available for graphs at this time.',
-	'ratinghistory-legend'  => 'The \'\'\'daily average rating\'\'\' <font color="blue">\'\'(blue)\'\'</font> and 
-	\'\'\'running average rating\'\'\' <font color="green">\'\'(green)\'\'</font> are graphed below, by date. The 
-	\'\'\'running average rating\'\'\' is simply the average of all the daily ratings \'\'within\'\' this time frame for each day.
+	'ratinghistory-ratings' => '\'\'\'Legend:\'\'\' \'\'\'(1)\'\'\' - Poor; \'\'\'(2)\'\'\' - Low; \'\'\'(3)\'\'\' - Fair; \'\'\'(4)\'\'\' - High; \'\'\'(5)\'\'\' - Excellent;',
+	'ratinghistory-legend'  => 'The \'\'\'daily number of reviews\'\'\' <font color="red">\'\'(red)\'\'</font>, \'\'\'daily average rating\'\'\' <font color="blue">\'\'(blue)\'\'</font>,
+	and \'\'\'running average rating\'\'\' <font color="green">\'\'(green)\'\'</font> are graphed below, by date.
+	The \'\'\'running average rating\'\'\' is simply the average of all the daily ratings \'\'within\'\' this time frame for each day.
+	The ratings are as follows:
 	
-Scale: \'\'\'[1]\'\'\' - Poor; \'\'\'[2]\'\'\' - Low; \'\'\'[3]\'\'\' - Fair; \'\'\'[4]\'\'\' - High; \'\'\'[5]\'\'\' - Excellent;
-
-	The \'\'\'number of reviews per day\'\'\' <font color="red">\'\'(red)\'\'</font> is shown on the graphs below; the scale is given for each graph.',
+	\'\'\'(1)\'\'\' - Poor; \'\'\'(2)\'\'\' - Low; \'\'\'(3)\'\'\' - Fair; \'\'\'(4)\'\'\' - High; \'\'\'(5)\'\'\' - Excellent;',
 	'ratinghistory-graph-scale' => '\'\'\'Reviews per day\'\'\' <font color="red">\'\'(red)\'\'</font> shown on a \'\'1:$1\'\' scale.',
 	'right-feedback' => 'Use the feedback form to rate a page',
 );

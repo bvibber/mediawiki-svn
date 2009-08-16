@@ -73,11 +73,14 @@ class RatingHistory extends UnlistedSpecialPage
 		global $wgOut;
 		# Show latest month of results
 		$html = ReaderFeedback::getVoteAggregates( $this->page, $this->period, array(),
-			$this->doPurge ? 'skipCache' : 'useCache'
+			($this->doPurge ? 'skipCache' : 'useCache')
 		);
-		if( $html ) {
-			$wgOut->addHTML( '<h2>'.wfMsgHtml('ratinghistory-table')."</h2>\n".
-				"<div class='rfb-reader_feedback_ratings'>$html</div>" );
+		if( $html != '' ) {
+			$wgOut->addHTML(
+				'<h2>' . wfMsgHtml('ratinghistory-table') . "</h2>\n" .
+				wfMsgExt( 'ratinghistory-ratings', 'parse' ) . "\n" .
+				"<div class='rfb-reader_feedback_ratings'>$html</div>"
+			);
 		}
 	}
 	
