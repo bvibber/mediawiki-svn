@@ -3,7 +3,7 @@ loadGM({
     "select_transcript_set" : "Select Layers",
 	"auto_scroll" : "auto scroll",
 	"close" : "close",
-	"improve_transcript" : "Improve",
+	"improve_transcript" : "Improve"
 })
 
 // text interface object (for inline display captions) 
