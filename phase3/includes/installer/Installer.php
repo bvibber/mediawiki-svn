@@ -118,7 +118,6 @@ abstract class Installer {
 	 * @protected
 	 */
 	var $objectCaches = array( 
-		'turck' => 'mmcache_get',
 		'xcache' => 'xcache_get',
 		'apc' => 'apc_fetch',
 		'eaccel' => 'eaccelerator_get'
