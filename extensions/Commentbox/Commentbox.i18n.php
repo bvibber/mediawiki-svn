@@ -15,7 +15,7 @@ You have a comment on this page? Add it here or <span class="plainlinks">[{{full
 	'commentbox-savebutton' => 'Save comment',
 	'commentbox-name' => 'Name:',
 	'commentbox-name-explanation' => '<small>(Tip: If you [[Special:Userlogin|log in]], you will not have to fill in your name here manually)</small>',
-	'commentbox-log' => 'New Comments',
+	'commentbox-log' => 'New comments',
 	'commentbox-first-comment-heading' => '== Comments ==',
 	'commentbox-regex' => '/\n==\s*Comments\s*==\s*\n/i', # should match the above heading
 	'commentbox-errorpage-title' => 'Error while creating comment',
