@@ -80,7 +80,7 @@ abstract class Installer {
 	/**
 	 * Minimum memory size in MB
 	 */
-	var $minMemory = 50;
+	private $minMemorySize = 50;
 
 	/**
 	 * Cached DB installer instances, access using getDBInstaller()
