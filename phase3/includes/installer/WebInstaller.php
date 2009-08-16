@@ -1200,7 +1200,6 @@ class WebInstaller_Options extends WebInstallerPage {
 		$licenseJs = 'showControlArray("config__LicenseCode_cc-choose", ["config-cc-wrapper"]);';
 		$emailJs = 'enableControlArray("config_wgEnableEmail", ["config_wgPasswordSender"]);';
 		$uploadJs = 'enableControlArray("config_wgEnableUploads", ["config_wgDeletedDirectory"]);';
-		$caches = $this->getVar( '_AvailableCaches' );
 
 		$this->startForm();
 		$this->parent->output->addHTML(
@@ -1261,13 +1260,6 @@ class WebInstaller_Options extends WebInstallerPage {
 
 			# Advanced settings
 			$this->parent->getFieldsetStart( 'config-advanced-settings' ) .
-			( $caches ? $this->parent->getRadioSet( array(
-				'var' => '_Cache',
-				'label' => 'config-caching',
-				'itemLabelPrefix' => 'config-caching-',
-				'values' => array_keys( $caches ),
-			) ) .
-			$this->parent->getHelpBox( 'config-caching-help' ) : '' ) .
 			$this->parent->getFieldsetEnd() .
 
 			"<script type=\"text/javascript\">$licenseJs $emailJs $uploadJs</script>\n"

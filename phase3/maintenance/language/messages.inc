@@ -3254,11 +3254,6 @@ $wgMessageStructure = array(
 		'config-cc-again',
 		'config-cc-not-chosen',
 		'config-advanced-settings',
-		'config-caching',
-		'config-caching-help',
-		'config-caching-xcache',
-		'config-caching-apc',
-		'config-caching-eaccel',
 	),
 );
 

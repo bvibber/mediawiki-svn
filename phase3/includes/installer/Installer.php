@@ -46,8 +46,7 @@ abstract class Installer {
 		'_SafeMode' => false,
 		'_RaiseMemory' => false,
 		'_UpgradeDone' => false,
-		'_AvailableCaches' => array(),
-		'_Cache' => false,
+		'_Caches' => array(),
 		'_InstallUser' => 'root',
 		'_InstallPassword' => '',
 		'_SameAccount' => true,
@@ -439,7 +438,7 @@ abstract class Installer {
 		if ( !$caches ) {
 			$this->showMessage( 'config-no-cache' );
 		}
-		$this->setVar( '_AvailableCaches', $caches );
+		$this->setVar( '_Caches', $caches );
 	}
 
 	/** Search for GNU diff3 */
