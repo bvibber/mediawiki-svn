@@ -139,6 +139,13 @@ $messages['pt'] = array(
 	'interlanguage-desc' => 'Obtém interwikis de idiomas a partir de outra wiki',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'interlanguage-desc' => 'Obtém interwikis de idiomas a partir de outra wiki',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

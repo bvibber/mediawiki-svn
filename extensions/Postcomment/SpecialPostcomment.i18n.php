@@ -142,6 +142,7 @@ $messages['cs'] = array(
 	'postcomment_said' => 'řekl',
 	'postcomment_invalidrequest' => 'Neplatný požadavek.',
 	'postcomment_replyto' => 'Odpovědět $1',
+	'postcomment_nopostingtoadd' => 'Žádný příspěvek k přidání.',
 );
 
 /** German (Deutsch)

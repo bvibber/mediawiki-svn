@@ -536,12 +536,21 @@ $messages['oc'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Giro720
  */
 $messages['pt-br'] = array(
+	'fundraiserportal' => 'Portal de Arrecadação',
+	'fundraiserportal-desc' => 'Adiciona o portal "por favor doe" ao topo da barra lateral.',
+	'fundraiserportal-plain-button' => 'Ajude a Wikipédia!',
+	'fundraiserportal-ruby-button' => 'Doe Agora',
+	'fundraiserportal-rubytext-button' => 'Doe Agora',
+	'fundraiserportal-rubytext-message' => 'Toda doação nos ajuda a manter a Wikipédia livre e gratuita para todos.',
+	'fundraiserportal-rubytext-close' => 'Esconder isto a partir de agora',
 	'fundraiserportal-sapphire-button' => 'Doe Agora',
 	'fundraiserportal-tourmaline-button' => 'Doe Agora',
 	'fundraiserportal-tourmaline-message' => 'Toda doação nos ajuda a manter a Wikipédia livre para todos.',
+	'fundraiserportal-tourmaline-close' => 'Esconder isto a partir de agora',
 );
 
 /** Romanian (Română)

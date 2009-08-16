@@ -72,6 +72,13 @@ $messages['ca'] = array(
 	'honeypot-desc' => 'Proporciona als llocs Mediawiki integració amb el [http://projecthoneypot.org/ Projecte Honey Pot]',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'honeypot-desc' => 'Poskytuje integraci [http://projecthoneypot.org/ projektu Honey Pot] pro MediaWiki wiki',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */

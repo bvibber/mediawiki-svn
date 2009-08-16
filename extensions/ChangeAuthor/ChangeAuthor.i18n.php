@@ -614,8 +614,8 @@ $messages['fi'] = array(
 	'changeauthor-explanation-multi' => 'Voit muuttaa tällä lomakkeella version tekijöitä.
 Muutat vain yhtä tai useampaa käyttäjänimeä alla olevassa listassa, lisäät kommentin (valinnainen) ja napsautat ”Muuta tekijöitä”-painiketta.',
 	'changeauthor-changeauthors-single' => 'Muuta tekijä',
-	'changeauthor-explanation-single' => "Tällä lomakkeella voit muuttaa version tekijän.
-Vaihda vain allaoleva käyttäjätunnus, lisää (valinnainen) kommentti ja napsauta 'Muuta tekijä' -painiketta.",
+	'changeauthor-explanation-single' => 'Tällä lomakkeella voit muuttaa version tekijän.
+Muuta käyttäjätunnus, lisää kommentti (valinnainen) ja napsauta ”Muuta tekijä” -painiketta.',
 	'changeauthor-invalid-username' => 'Virheellinen käyttäjätunnus ”$1”.',
 	'changeauthor-nosuchuser' => 'Käyttäjää ”$1” ei ole olemassa.',
 	'changeauthor-revview' => 'Versio #$1/$2',
@@ -623,11 +623,11 @@ Vaihda vain allaoleva käyttäjätunnus, lisää (valinnainen) kommentti ja naps
 	'changeauthor-weirderror' => 'Tapahtui hyvin outo virhe.
 Yritä uudestaan.
 Jos tämä virhe toistuu, tietokanta on luultavasti rikki.',
-	'changeauthor-invalidform' => 'Käytä lomaketta jonka [[Special:ChangeAuthor|toimintosivu tarjoaa]] sen sijaan että räätälöisitte omanne.',
+	'changeauthor-invalidform' => 'Käytä [[Special:ChangeAuthor|toimintosivun lomaketta]] oman lomakkeen sijasta.',
 	'changeauthor-success' => 'Pyyntö on suoritettu onnistuneesti.',
-	'changeauthor-logentry' => 'Muutettiin sivun $2 $1 tekijää siten että muokkaaja $3 vaihdettiin tekijäksi $4',
+	'changeauthor-logentry' => 'Muutti sivun $2 version $1 tekijän $3 tekijäksi $4',
 	'changeauthor-logpagename' => 'Tekijämuutosloki',
-	'changeauthor-rev' => 'versio $1 sivun historiassa',
+	'changeauthor-rev' => '$1',
 	'right-changeauthor' => 'Vaihtaa version tekijätietoa',
 );
 
@@ -1064,9 +1064,9 @@ $messages['ja'] = array(
 	'changeauthor-pagenameform-go' => '検索',
 	'changeauthor-comment' => '変更理由:',
 	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|著者}}を変更',
-	'changeauthor-explanation-multi' => 'このフォームから各版の著者を変更することができます。下に記載されている一人または複数の利用者名を変更し、コメントを付記し (省略可能)、変更ボタンを押してください。',
+	'changeauthor-explanation-multi' => 'このフォームから各版の著者を変更することができます。下に記載されている一人または複数の利用者名を変更し、コメントを付記し （省略可能）、変更ボタンを押してください。',
 	'changeauthor-changeauthors-single' => '変更',
-	'changeauthor-explanation-single' => 'このフォームから版の著者を変更することができます。下記の利用者名を変更し、コメントを付記し (省略可能)、変更ボタンを押してください。',
+	'changeauthor-explanation-single' => 'このフォームから版の著者を変更することができます。下記の利用者名を変更し、コメントを付記し （省略可能）、変更ボタンを押してください。',
 	'changeauthor-invalid-username' => '"$1" は不正な利用者名です。',
 	'changeauthor-nosuchuser' => '"$1" という利用者は存在しません。',
 	'changeauthor-revview' => '$2 の特定版 #$1',

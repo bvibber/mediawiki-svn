@@ -564,8 +564,8 @@ $messages['ja'] = array(
 	'chemFunctions_ListPage' => '化学関連の検索',
 	'chemFunctions_DataList' => '以下の一覧は、あなたが検索した化学物質に関する情報を提供している可能性の高いサイトです。
 
-* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula 化合物 (アメリカ国立標準技術研究所)</a><br />
-* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">化学物質安全性データシート (英オックスフォード大学、検索できません)</a><br />',
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula 化合物 （アメリカ国立標準技術研究所）</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">化学物質安全性データシート （英オックスフォード大学、検索できません）</a><br />',
 	'chemFunctions_CAS' => 'CAS登録番号',
 	'chemFunctions_ATCCode' => 'ATC分類',
 	'chemFunctions_ECNumber' => 'EC番号',

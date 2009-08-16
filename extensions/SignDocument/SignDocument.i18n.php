@@ -398,9 +398,15 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author ToSter
  */
 $messages['pl'] = array(
+	'signaturelogpage' => 'Spis podpisów',
+	'signature-desc' => 'Umożliwia [[Special:SignDocument|podpisywanie]] dokumentów',
+	'signaturelogpagetext' => 'To jest spis [[Special:SignDocument|wszystkich podpisów dodanych do dokumentów]].',
 	'signaturelogentry' => 'podpisał dokument $1',
+	'right-sigadmin' => 'Administracja podpisywania dokumentów',
+	'right-createsigndocument' => 'Tworzenie dokumentów, które można podpisywać',
 );
 
 /** Piedmontese (Piemontèis)

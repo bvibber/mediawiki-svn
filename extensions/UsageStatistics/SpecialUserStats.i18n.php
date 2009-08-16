@@ -1057,6 +1057,7 @@ $messages['it'] = array(
 	'usagestatisticscalselect' => 'Seleziona',
 	'usagestatistics-editindividual' => 'Statistiche $1 sulle modifiche per singolo utente',
 	'usagestatistics-editpages' => 'Statistiche $1 sulle pagine per singolo utente',
+	'right-viewsystemstats' => 'Visualizza [[Special:UserStats|statistiche di uso del sito wiki]]',
 );
 
 /** Japanese (日本語)

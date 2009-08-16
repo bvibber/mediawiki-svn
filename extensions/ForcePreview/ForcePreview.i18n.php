@@ -283,7 +283,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'forcepreview' => 'ページを保存 (初めにプレビューを使用してください)',
+	'forcepreview' => 'ページを保存 （初めにプレビューを使用してください）',
 	'forcepreview-desc' => '権限をもたない利用者にプレビューを強制させる',
 	'right-forcepreviewexempt' => 'プレビューを行わずに保存できます',
 );

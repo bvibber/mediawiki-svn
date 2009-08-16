@@ -551,13 +551,13 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
-	'ajax-qp-desc' => '在查询页面(如[[Special:Shortpages]])加入AJAX',
+	'ajax-qp-desc' => '在查询页面（如[[Special:Shortpages]]）加入AJAX',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
  */
 $messages['zh-hant'] = array(
-	'ajax-qp-desc' => '在查詢頁面(如[[Special:Shortpages]])加入AJAX',
+	'ajax-qp-desc' => '在查詢頁面（如[[Special:Shortpages]]）加入AJAX',
 );
 

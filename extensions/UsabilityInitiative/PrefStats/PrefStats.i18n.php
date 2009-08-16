@@ -746,6 +746,7 @@ $messages['it'] = array(
 	'prefstats-title' => 'Statistiche delle preferenze',
 	'prefstats-list-intro' => 'Attualmente, le seguenti preferenze vengono seguite.
 Fare clic su una per vedere le statistiche su di essa.',
+	'prefstats-noprefs' => 'Nessuna preferenza è al momento monitorata. Configurare $wgPrefStatsTrackPrefs per monitorare le preferenze.',
 	'prefstats-xaxis' => 'Durata (ore)',
 	'prefstats-factor-hour' => 'ora',
 	'prefstats-factor-sixhours' => 'sei ore',
@@ -1131,6 +1132,7 @@ Clique numa para ver as estatísticas sobre ela.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -1157,6 +1159,8 @@ Configure $wgPrefStatsTrackPrefs para monitorar preferências.',
 	'prefstats-factor-twoweeks' => 'duas semanas',
 	'prefstats-factor-fourweeks' => 'quatro semanas',
 	'prefstats-factor-default' => 'retornar à escala padrão',
+	'prefstats-legend-out' => 'Saiu',
+	'prefstats-legend-in' => 'Entrou',
 );
 
 /** Quechua (Runa Simi)

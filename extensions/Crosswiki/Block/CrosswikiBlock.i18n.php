@@ -369,14 +369,42 @@ $messages['cs'] = array(
 	'crosswikiblock' => 'Zablokovat uživatele na jiné wiki',
 	'crosswikiblock-header' => 'Tato stránka umožňuje zablokovat uživatele na jiné wiki.
 Prosím, ověřte si, že můžete na dané wiki provádět takové akce a že vaše konání odpovídá všem pravidlům.',
+	'crosswikiblock-target' => 'IP adresa nebo uživatelské jméno a cílová wiki:',
 	'crosswikiblock-expiry' => 'Vypršení:',
 	'crosswikiblock-reason' => 'Důvod:',
 	'crosswikiblock-submit' => 'Zablokovat tohoto uživatele',
 	'crosswikiblock-anononly' => 'Zablokovat všechny anonymní uživatele',
 	'crosswikiblock-nocreate' => 'Zabránit tvorbě účtů',
+	'crosswikiblock-autoblock' => 'Automaticky blokovat poslední IP adresu, kterou tento uživatel použil a jakékoli další adresy, z kterých se pokusí editovat.',
 	'crosswikiblock-noemail' => 'Zabránit uživateli odesílat e-mail',
 	'crosswikiunblock' => 'Odblokovat uživatele na jiné wiki',
+	'crosswikiunblock-header' => 'Tato stránka umožňuje odblokovat uživatele na jiných wiki.
+Prosím, zkontrolujte, že můžete na této wiki provádět takovéto akce a že vaše konání odpovídá všem pravidlům.',
+	'crosswikiunblock-user' => 'Uživatelské jméno, IP adresa nebo ID bloku a cílová wiki:',
+	'crosswikiunblock-reason' => 'Důvod:',
 	'crosswikiunblock-submit' => 'Odblokovat tohoto uživatele',
+	'crosswikiunblock-success' => "Uživatel '''$1''' byl úspěšně odblokován.
+
+Vrátit se na:
+* [[Special:CrosswikiBlock|Blokovací formulář]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Nebylo zadáno uživatelské jméno.',
+	'crosswikiblock-local' => 'Toto rozhraní nepodporuje místní blokování. Použijte [[Special:BlockIP|{{int:blockip}}]].',
+	'crosswikiblock-dbnotfound' => 'Databáze $1 neexistuje',
+	'crosswikiblock-noname' => '„$1“ není platné uživatelské jméno.',
+	'crosswikiblock-nouser' => 'Uživatel „$3“ nebyl nalezen.',
+	'crosswikiblock-noexpiry' => 'Neplatné vypršení: $1.',
+	'crosswikiblock-noreason' => 'Nebyl uveden důvod.',
+	'crosswikiblock-notoken' => 'Neplatný editační token.',
+	'crosswikiblock-alreadyblocked' => 'Uživatel $3 je již zablokován.',
+	'crosswikiblock-noblock' => 'Tento uživatel není zablokován.',
+	'crosswikiblock-success' => "Uživatel '''$3''' byl úspěšně zablokován.
+
+Vrátit se na:
+* [[Special:CrosswikiBlock|Blokovací formulář]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Toto rozhraní nepodporuje místní odblokování. Použije [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Blokovat a odblokovat uživatele na jiných wiki.',
 );
 
 /** Danish (Dansk)

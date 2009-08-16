@@ -1640,7 +1640,7 @@ $messages['zh-hans'] = array(
 	'duplicator-options' => '选项',
 	'duplicator-source' => '来源:',
 	'duplicator-dest' => '目标:',
-	'duplicator-dotalk' => '复制讨论页 (如可用的话)',
+	'duplicator-dotalk' => '复制讨论页 （如可用的话）',
 	'duplicator-submit' => '复制',
 	'duplicator-summary' => '由[[$1]]复制过来',
 	'duplicator-success' => "<big>'''[[$1]]已经复制到[[$2]]。'''</big>",
@@ -1652,7 +1652,7 @@ $messages['zh-hans'] = array(
 	'duplicator-source-notexist' => '[[$1]]并不存在。请提供一个已经存在的页面标题。',
 	'duplicator-dest-invalid' => '请提供一个正确的目标标题。',
 	'duplicator-dest-exists' => '[[$1]]已经存在。请提供一个未存在的目标标题。',
-	'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修订，不能够复制。当前的上限有$3次。',
+	'duplicator-toomanyrevisions' => '[[$1]]有太多 （$2次） 修订，不能够复制。当前的上限有$3次。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1667,7 +1667,7 @@ $messages['zh-hant'] = array(
 	'duplicator-options' => '選項',
 	'duplicator-source' => '來源:',
 	'duplicator-dest' => '目標:',
-	'duplicator-dotalk' => '複製討論頁 (如可用的話)',
+	'duplicator-dotalk' => '複製討論頁 （如可用的話）',
 	'duplicator-submit' => '複製',
 	'duplicator-summary' => '由[[$1]]複製過來',
 	'duplicator-success' => "<big>'''[[$1]]已經複製到[[$2]]。'''</big>",
@@ -1679,6 +1679,6 @@ $messages['zh-hant'] = array(
 	'duplicator-source-notexist' => '[[$1]]並不存在。請提供一個已經存在的頁面標題。',
 	'duplicator-dest-invalid' => '請提供一個正確的目標標題。',
 	'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
-	'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，不能夠複製。目前的上限有$3次。',
+	'duplicator-toomanyrevisions' => '[[$1]]有太多 （$2次） 修訂，不能夠複製。目前的上限有$3次。',
 );
 

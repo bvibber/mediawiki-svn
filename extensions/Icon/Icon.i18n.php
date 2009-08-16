@@ -134,6 +134,15 @@ $messages['dsb'] = array(
 	'icon-desc' => 'Dowólujo wobraze ako symbole a symbolowe wótkaze wužywaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'icon-badimage' => 'Κακή εικόνα',
+	'icon-badwidth' => 'Κακό πλάτος',
+	'icon-desc' => 'Επιτρέπει τη χρήση εικόνων ως εικονίδια και ως εικονίδια σύνδεσμων',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

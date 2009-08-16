@@ -58,9 +58,10 @@ $messages['el'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
-	'categorytests-desc' => 'Luokkien testaus funktiot',
+	'categorytests-desc' => 'Funktioita luokkien testaamiseen.',
 );
 
 /** French (Français)
@@ -159,6 +160,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'categorytests-desc' => 'Funkcje do testowania kategorii',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'categorytests-desc' => 'Funções para teste de categorias',
 );
 
 /** Romanian (Română)

@@ -192,6 +192,15 @@ $messages['oc'] = array(
 Utilizacion : &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Polish (Polski)
+ * @author ToSter
+ */
+$messages['pl'] = array(
+	'stockcharts-desc' => 'Uzupełnia znacznik <nowiki><stockchart ticker="AAPL"/></nowiki> dla interaktywnego wykresu finansowych akcji',
+	'stockcharts-missingticker' => 'Żeby zagnieździć wykres giełdowy, musisz wybrać co najmniej jeden ticker.
+Użyj: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -485,7 +485,7 @@ $messages['fi'] = array(
 	'importusers-password' => 'salasana',
 	'importusers-email' => 'sähköposti',
 	'importusers-realname' => 'oikea nimi',
-	'right-import_users' => 'Käyttäjien massatuonti',
+	'right-import_users' => 'Massatuoda käyttäjiä',
 );
 
 /** French (Français)
@@ -821,7 +821,30 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'importusers' => 'Importazione utenti',
+	'importusers-desc' => '[[Special:ImportUsers|Importa utenti]] in massa da file CSV; codifica: UTF-8',
+	'importusers-uploadfile' => 'Carica un file',
+	'importusers-form-caption' => 'File di input CSV (UTF-8)',
+	'importusers-form-file' => 'Formato file utente (CSV):',
+	'importusers-form-replace-present' => 'Sostituire gli utenti esistenti',
+	'importusers-form-button' => 'Importa',
+	'importusers-user-added' => "Utente '''$1''' è stato aggiunto.",
+	'importusers-user-present-update' => "Utente '''$1''' esiste già.
+Aggiornato.",
+	'importusers-user-present-not-update' => "Utente '''$1''' esiste già.
+Non aggiornato.",
+	'importusers-user-invalid-format' => 'Dati utente nella riga #$1 hanno un formato non valido o sono vuoti.
+Saltato.',
+	'importusers-log' => 'Registro importazione utenti',
+	'importusers-log-summary' => 'Oggetto',
+	'importusers-log-summary-all' => 'Tutti',
+	'importusers-log-summary-added' => 'Aggiunto',
+	'importusers-log-summary-updated' => 'Aggiornato',
+	'importusers-login-name' => 'Nome utente',
+	'importusers-password' => 'password',
 	'importusers-email' => 'indirizzo e-mail',
+	'importusers-realname' => 'nome vero',
+	'right-import_users' => 'Importa utenti in massa',
 );
 
 /** Japanese (日本語)
@@ -830,10 +853,10 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'importusers' => '利用者のインポート',
-	'importusers-desc' => 'CSVファイル (文字コード: UTF-8) から一括して[[Special:ImportUsers|利用者をインポート]]',
+	'importusers-desc' => 'CSVファイル （文字コード: UTF-8） から一括して[[Special:ImportUsers|利用者をインポート]]',
 	'importusers-uploadfile' => 'アップロード',
-	'importusers-form-caption' => 'CSVファイルを入力してください (UTF-8)',
-	'importusers-form-file' => '利用者ファイル形式 (CSV):',
+	'importusers-form-caption' => 'CSVファイルを入力してください （UTF-8）',
+	'importusers-form-file' => '利用者ファイル形式 （CSV）:',
 	'importusers-form-replace-present' => '既存利用者を置き換える',
 	'importusers-form-button' => 'インポート',
 	'importusers-user-added' => "利用者 '''$1''' を追加しました。",

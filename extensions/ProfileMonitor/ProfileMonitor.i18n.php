@@ -462,8 +462,8 @@ $messages['ja'] = array(
 	'profiling-data' => '`$1` のプロファイリングデータ',
 	'profiling-data-process' => 'プロセス',
 	'profiling-data-count' => '件数',
-	'profiling-data-time' => '時間 (合計)',
-	'profiling-data-average' => '時間 (平均)',
+	'profiling-data-time' => '時間 （合計）',
+	'profiling-data-average' => '時間 （平均）',
 	'profiling-no-data' => '一致するデータは見つかりませんでした。',
 );
 
@@ -972,8 +972,8 @@ $messages['zh-hans'] = array(
 	'profiling-data' => '正在检核`$1`的数据',
 	'profiling-data-process' => '处理',
 	'profiling-data-count' => '数量',
-	'profiling-data-time' => '时间 (全部)',
-	'profiling-data-average' => '时间 (平均)',
+	'profiling-data-time' => '时间 （全部）',
+	'profiling-data-average' => '时间 （平均）',
 	'profiling-no-data' => '找不到匹配的数据。',
 );
 
@@ -988,8 +988,8 @@ $messages['zh-hant'] = array(
 	'profiling-data' => '正在檢核`$1`的資料',
 	'profiling-data-process' => '處理',
 	'profiling-data-count' => '數量',
-	'profiling-data-time' => '時間 (全部)',
-	'profiling-data-average' => '時間 (平均)',
+	'profiling-data-time' => '時間 （全部）',
+	'profiling-data-average' => '時間 （平均）',
 	'profiling-no-data' => '找不到對應的資料。',
 );
 

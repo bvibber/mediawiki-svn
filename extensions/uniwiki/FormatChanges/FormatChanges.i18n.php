@@ -305,8 +305,8 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'formatchanges-desc' => '[[Special:RecentChanges|最近の更新]]を再フォーマットする',
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '$1 - $2 による作成 ($3)',
-	'formatchanges-editedby' => '$1 - $2 による編集 ($3)',
+	'formatchanges-createdby' => '$1 - $2 による作成 （$3）',
+	'formatchanges-editedby' => '$1 - $2 による編集 （$3）',
 );
 
 /** Javanese (Basa Jawa)
@@ -353,6 +353,8 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'formatchanges-desc' => 'Ги преформатира [[Special:RecentChanges|скорешните промени]]',
+	'formatchanges-anonymous' => 'Анонимно',
 	'formatchanges-createdby' => '$1 - создадена од $2 ($3)',
 	'formatchanges-editedby' => '$1 - уредено од $2 ($3)',
 );
@@ -587,8 +589,8 @@ $messages['vo'] = array(
 $messages['zh-hans'] = array(
 	'formatchanges-desc' => '将[[Special:RecentChanges|最近更新]]重新格式化',
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '$1 - 由 $2 创建 ($3)',
-	'formatchanges-editedby' => '$1 - 由 $2 编辑 ($3)',
+	'formatchanges-createdby' => '$1 - 由 $2 创建 （$3）',
+	'formatchanges-editedby' => '$1 - 由 $2 编辑 （$3）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -596,7 +598,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '$1-建立者：$2 ($3)',
-	'formatchanges-editedby' => '$1-編輯者：$2 ($3)',
+	'formatchanges-createdby' => '$1-建立者：$2 （$3）',
+	'formatchanges-editedby' => '$1-編輯者：$2 （$3）',
 );
 

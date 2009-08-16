@@ -442,9 +442,9 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'backforth-next' => '次へ ($1)',
+	'backforth-next' => '次へ （$1）',
 	'backforth-desc' => 'ページ上部に"次へ"と"前へ"のリンクを追加する',
-	'backforth-prev' => '前へ ($1)',
+	'backforth-prev' => '前へ （$1）',
 );
 
 /** Javanese (Basa Jawa)
@@ -933,8 +933,8 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
-	'backforth-next' => '下一條 ($1)',
+	'backforth-next' => '下一條 （$1）',
 	'backforth-desc' => '在頁面的最上面增加「上一條」和「下一條」的連結',
-	'backforth-prev' => '上一條 ($1)',
+	'backforth-prev' => '上一條 （$1）',
 );
 

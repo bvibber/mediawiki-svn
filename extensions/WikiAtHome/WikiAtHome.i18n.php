@@ -369,11 +369,11 @@ $messages['ja'] = array(
 	'wah-short-audio' => '$1音声ファイル、$2',
 	'wah-short-video' => '$1動画ファイル、$2',
 	'wah-short-general' => '$1メディアファイル、$2',
-	'wah-long-audio' => '($1音声ファイル、長さ：$2、$3)',
-	'wah-long-video' => '($1動画ファイル、長さ：$2、$4×$5ピクセル、$3)',
-	'wah-long-multiplexed' => '(多重化された音声/動画ファイル、$1、長さ：$2、$4×$5ピクセル、全体で$3)',
-	'wah-long-general' => '(メディアファイル、長さ：$2、$3)',
-	'wah-long-error' => '(ffmpeg はこのファイルを読み取れませんでした: $1)',
+	'wah-long-audio' => '（$1音声ファイル、長さ：$2、$3）',
+	'wah-long-video' => '（$1動画ファイル、長さ：$2、$4×$5ピクセル、$3）',
+	'wah-long-multiplexed' => '（多重化された音声/動画ファイル、$1、長さ：$2、$4×$5ピクセル、全体で$3）',
+	'wah-long-general' => '（メディアファイル、長さ：$2、$3）',
+	'wah-long-error' => '（ffmpeg はこのファイルを読み取れませんでした: $1）',
 	'wah-transcode-working' => 'この動画は現在処理中です。後でまた試してください。',
 	'wah-transcode-helpout' => 'このクリップは$1%完了しています。[[Special:WikiAtHome|Wiki@Home]] を使用すると、この動画のトランスコードをあなたが手伝うことができます',
 	'wah-transcode-fail' => 'このファイルはトランスコードに失敗しました。',
@@ -500,6 +500,28 @@ $messages['oc'] = array(
 	'wah-transcode-fail' => 'Aqueste fichièr a pas pogut èsser transcodat.',
 	'wah-javascript-off' => 'Vos cal activar JavaScript per participar a Wiki@Home',
 	'wah-loading' => "cargament de l'interfàcia Wiki@Home <blink>...</blink>",
+);
+
+/** Polish (Polski)
+ * @author ToSter
+ */
+$messages['pl'] = array(
+	'wah-desc' => 'Włącza rozsyłanie zadań przekodowywania wideo do klientów za pomocą firefogg',
+	'wah-user-desc' => 'Wiki@Home pozwala członkom społeczności na dzielenie się wolnymi cyklami procesora, aby pomóc w operacjach intensywnie używających zasobów',
+	'wah-short-audio' => 'Plik dźwiękowy $1, $2',
+	'wah-short-video' => 'Plik wideo $1, $2',
+	'wah-short-general' => 'Plik multimedialny $1, $2',
+	'wah-long-audio' => 'Plik dźwiękowy $1, długość $2, $3',
+	'wah-long-video' => 'Plik wideo $1, długość $2, $4×$5 pikseli, $3',
+	'wah-long-multiplexed' => '(multipleksowany plik audio/wideo, $1, długość $2, $4×$5 pikseli, razem $3)',
+	'wah-long-general' => '(plik multimedialny, długość $2, $3)',
+	'wah-long-error' => '(ffmpeg nie mógł przeczytać tego pliku $1)',
+	'wah-transcode-working' => 'Ten plik wideo jest przetwarzany, spróbuj ponownie później',
+	'wah-transcode-helpout' => 'Klip jest wykonany w $1 procentach.
+Możesz pomóc w przekodowywaniu tego wideo, odwiedzając stronę [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Nie udało się przekodować tego pliku.',
+	'wah-javascript-off' => 'Musisz mieć włączony JavaScript, aby brać udział w Wiki@Home',
+	'wah-loading' => 'ładowanie interfejsu Wiki@Home <blink>...</blink>',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

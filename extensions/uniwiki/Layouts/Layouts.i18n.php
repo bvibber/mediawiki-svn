@@ -418,7 +418,14 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'layouts-desc' => 'Riempie le pagine create di recente con "layout" modificabili per favorire una struttura comune per le pagine',
+	'layouts_title' => 'Crea una pagina',
+	'layouts_chooselayout' => 'Scegli un layout per $1:',
+	'layouts_nolayout' => 'Nessun layout',
 	'layouts_continue' => 'Continua',
+	'layouts_choosecategory' => 'Scegli una categoria per $1:',
+	'layouts_unknown' => 'Sconosciuto',
+	'layouts_tagline' => "Questa pagina è stata generata dal layout '''$1'''.",
 );
 
 /** Japanese (日本語)

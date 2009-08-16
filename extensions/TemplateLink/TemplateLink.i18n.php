@@ -261,6 +261,7 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'templatelink' => 'Collegamento template',
 	'templatelink_desc' => 'Questa estensione può mostrare un template come una nuova pagina',
 	'templatelink_empty' => 'È necessario fornire un parametro.',
 	'templatelink_newtitle' => '$1 (inclusi)',
@@ -274,7 +275,7 @@ $messages['ja'] = array(
 	'templatelink' => 'テンプレートリンク',
 	'templatelink_desc' => 'この拡張機能は、テンプレートを新しいページとして表示することができる',
 	'templatelink_empty' => 'パラメーターを設定する必要があります。',
-	'templatelink_newtitle' => '$1 (テンプレート呼出)',
+	'templatelink_newtitle' => '$1 （テンプレート呼出）',
 );
 
 /** Javanese (Basa Jawa)

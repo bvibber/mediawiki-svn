@@ -1432,6 +1432,15 @@ $wgGoogleMapsMessages['es'] = array(
 	'gm-mars' => 'Marte',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$wgGoogleMapsMessages['et'] = array(
+	'gm-balloon-title' => 'Pealkiri:',
+	'gm-refresh-list' => 'Värskenda loendit',
+	'gm-are-you-sure' => 'Oled sa kindel?',
+);
+
 /** Basque (Euskara)
  * @author Bengoa
  * @author Kobazulo
@@ -2618,10 +2627,10 @@ $wgGoogleMapsMessages['ja'] = array(
 	'gm-desc' => 'ラベルにウィキリンクのついた地図を簡単に作成する',
 	'gm-incompatible-browser' => 'ここに表示される地図を確認するためには、互換性のあるウェブブラウザを利用する必要があります。',
 	'gm-incompatible-browser-link' => '互換性のあるブラウザの一覧を確認するには、ここをクリックしてください。',
-	'gm-no-editor' => '残念ですが、あなたのブラウザは対話的な地図作成機能に対応していません。<a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) か <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows、Mac、Linux) の最新バージョンを試してください。',
+	'gm-no-editor' => '残念ですが、あなたのブラウザは対話的な地図作成機能に対応していません。<a href="http://www.microsoft.com/ie">Internet Explorer</a> （Windows） か <a href="http://www.mozilla.org/products/firefox">Firefox</a> （Windows、Mac、Linux） の最新バージョンを試してください。',
 	'gm-balloon-title' => 'タイトル:',
-	'gm-balloon-link-article' => 'このページにリンクする (任意):',
-	'gm-make-marker' => 'キャプション (ウィキマークアップも可能):',
+	'gm-balloon-link-article' => 'このページにリンクする （任意）:',
+	'gm-make-marker' => 'キャプション （ウィキマークアップも可能）:',
 	'gm-remove' => '削除',
 	'gm-caption' => 'キャプション',
 	'gm-tab-title' => 'タブタイトル',
@@ -5790,8 +5799,8 @@ $wgGoogleMapsMessages['zh-hans'] = array(
 	'gm-incompatible-browser-link' => '按此处以查看相容浏览器的列表。',
 	'gm-no-editor' => '抱歉！您的浏览器不支持此互动式地图制作元件，请尝试最新版Windows下的<a href="http://www.microsoft.com/ie">Internet Explorer</a>，或可安装于Windows，Mac和Linux的<a href="http://www.mozilla.org/products/firefox">Mozilla Firefox</a>。',
 	'gm-balloon-title' => '标题：',
-	'gm-balloon-link-article' => '连结至此页(可选择性使用的)：',
-	'gm-make-marker' => '建立标记 (wiki 标记 OK):',
+	'gm-balloon-link-article' => '连结至此页（可选择性使用的）：',
+	'gm-make-marker' => '建立标记 （wiki 标记 OK）:',
 	'gm-remove' => '移除',
 	'gm-caption' => '说明',
 	'gm-tab-title' => '选项卡标题名称',
@@ -5861,26 +5870,26 @@ $wgGoogleMapsMessages['zh-hans'] = array(
 $wgGoogleMapsMessages['zh-hant'] = array(
 	'gm-incompatible-browser' => '您必須使用相容的網頁瀏覽器以利設查看所設定於此處的地圖',
 	'gm-incompatible-browser-link' => '按此處以查看相容瀏覽器的清單。',
-	'gm-no-editor' => '很遺憾！您的瀏覽器不支援此互動式地圖製作元件，請試試看最新版的 <a href="http://www.microsoft.com/ie">IE</a> 或<a href="http://www.mozilla.org/products/firefox">火狐狸(Firefox)</a>',
+	'gm-no-editor' => '很遺憾！您的瀏覽器不支援此互動式地圖製作元件，請試試看最新版的 <a href="http://www.microsoft.com/ie">IE</a> 或<a href="http://www.mozilla.org/products/firefox">火狐狸（Firefox）</a>',
 	'gm-balloon-title' => '標題：',
-	'gm-balloon-link-article' => '連結至此頁(可選擇性使用的)：',
-	'gm-make-marker' => '標題(維基標記 OK)：',
+	'gm-balloon-link-article' => '連結至此頁（可選擇性使用的）：',
+	'gm-make-marker' => '標題（維基標記 OK）：',
 	'gm-remove' => '移除',
 	'gm-caption' => '標題',
 	'gm-tab-title' => '頁籤標題',
 	'gm-tab' => '頁籤',
-	'gm-start-path' => '起啟路徑(start a path)',
-	'gm-trace-area' => '沿著某區域(trace an area)',
+	'gm-start-path' => '起啟路徑（start a path）',
+	'gm-trace-area' => '沿著某區域（trace an area）',
 	'gm-save-point' => '儲存 &amp; 關閉',
 	'gm-load-map-from-article' => '從此頁載入地圖',
 	'gm-no-maps' => '在此頁內無可供載入的地圖。',
-	'gm-refresh-list' => '更新清單(Refresh list)',
+	'gm-refresh-list' => '更新清單（Refresh list）',
 	'gm-load-map' => '載入地圖',
 	'gm-clip-result' => '新增至地圖',
 	'gm-no-results' => '抱歉！查無結果',
 	'gm-searching' => '搜尋......',
 	'gm-map' => '地圖',
-	'gm-note' => '注意：請確認，在您按下「載入地圖」、「儲存」或「預覽」之前，複製您所想要的到頁面頁面內(見下方)！',
+	'gm-note' => '注意：請確認，在您按下「載入地圖」、「儲存」或「預覽」之前，複製您所想要的到頁面頁面內（見下方）！',
 	'gm-instructions' => '以下是可供建立上面地圖的維基語法標記。',
 	'gm-are-you-sure' => '您已確定了嗎？',
 	'gm-clear-all-points' => '清除所有的標示點',
@@ -5888,7 +5897,7 @@ $wgGoogleMapsMessages['zh-hant'] = array(
 	'gm-width' => '寛度',
 	'gm-height' => '高度',
 	'gm-scale-control' => '比例尺',
-	'gm-overview-control' => '瀏覽(Overview)',
+	'gm-overview-control' => '瀏覽（Overview）',
 	'gm-selector-control' => '地圖/衛星選取器',
 	'gm-zoom-control' => '導航',
 	'gm-large' => '大型',

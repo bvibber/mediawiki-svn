@@ -202,6 +202,13 @@ $messages['id'] = array(
 	'woopra-desc' => 'Mengizinkan [http://www.woopra.com/ perangkat lunak Woopra Live Tracking] untuk bekerja dalam instalasi MediaWiki Anda',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'woopra-desc' => 'Consente al [http://www.woopra.com/ programma di monitoraggio in diretta Woopra] di funzionare sulla propria installazione di MediaWiki',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

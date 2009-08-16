@@ -335,6 +335,7 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Mobe
  * @author Nike
  * @author Vililikku
@@ -356,7 +357,7 @@ $messages['fi'] = array(
 	'errorhandler-error-user-notice' => 'Koodissa määritelty huomautus',
 	'errorhandler-error-user-deprecated' => 'Koodissa määritelty käytöstä poistuva -varoitus',
 	'errorhandler-error-strict' => 'Tiukat standardit',
-	'errorhandler-error-recoverable' => 'Vakava virhe joka kyetään korjaamaan',
+	'errorhandler-error-recoverable' => 'Vakava virhe, joka kyetään korjaamaan',
 	'errorhandler-msg-text' => '$1 : $2 kohteessa $3 (rivi $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> kohteessa <b>$3</b> (rivi <b>$4</b>)',
 	'errorhandler-trace' => 'pinolistaus:',
@@ -614,10 +615,10 @@ $messages['ja'] = array(
 	'errorhandler-error-user-deprecated' => 'ユーザー非推奨',
 	'errorhandler-error-strict' => '厳格基準',
 	'errorhandler-error-recoverable' => '捕捉可能な致命的エラー',
-	'errorhandler-msg-text' => '$1 : $2 (ファイル $3、行 $4)',
-	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> (ファイル <b>$3</b>、行 <b>$4</b>)',
+	'errorhandler-msg-text' => '$1 : $2 （ファイル $3、行 $4）',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> （ファイル <b>$3</b>、行 <b>$4</b>）',
 	'errorhandler-trace' => 'トレース:',
-	'errorhandler-trace-line' => '$1 (行 $2): $3',
+	'errorhandler-trace-line' => '$1 （行 $2）: $3',
 	'errorhandler-trace-line-internal' => '[内部関数]: $1',
 );
 
@@ -1181,10 +1182,10 @@ $messages['zh-hans'] = array(
 	'errorhandler-error-user-notice' => '用户提示',
 	'errorhandler-error-user-deprecated' => '用户不推荐使用',
 	'errorhandler-error-strict' => '严格的标准',
-	'errorhandler-msg-text' => '$1 : $2 在 $3 中 (第$4行)',
-	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> 在 <b>$3</b> 中(第 <b>$4</b> 行)',
+	'errorhandler-msg-text' => '$1 : $2 在 $3 中 （第$4行）',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> 在 <b>$3</b> 中（第 <b>$4</b> 行）',
 	'errorhandler-trace' => '跟踪：',
-	'errorhandler-trace-line' => '$1 (第$2行): $3',
+	'errorhandler-trace-line' => '$1 （第$2行）: $3',
 	'errorhandler-trace-line-internal' => '[内部函数]: $1',
 );
 

@@ -435,9 +435,16 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author ToSter
  */
 $messages['pl'] = array(
+	'useroptionstats' => 'Statystyki opcji użytkowników',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Strona specjalna]] przedstawiająca użycie opcji dostępnych dla użytkowników MediaWiki',
+	'uos-warn' => 'PHPlot nie jest zainstalowany!',
+	'uos-choose' => 'Wybierz jedną z następujących opcji użytkowników: $1',
+	'uos-unknown' => '*Domyślny',
+	'uos-other' => '*Inny',
+	'uos-title' => 'Rozkład wartości opcji użytkowników $1',
 );
 
 /** Portuguese (Português)
@@ -453,9 +460,11 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
+	'useroptionstats' => 'Estatísticas de opções de utilizador',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Special page]] para reportar o uso de opção de usuário do MediaWiki',
 	'uos-warn' => 'PHPlot não está instalado!',
 	'uos-choose' => 'Escolha uma das seguintes opções de usuário: $1',

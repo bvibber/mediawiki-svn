@@ -837,6 +837,7 @@ $messages['it'] = array(
 	'dt_viewxml_simplifiedformat' => 'Formato semplificato',
 	'dt_xml_namespace' => 'Namespace',
 	'dt_xml_page' => 'Pagina',
+	'dt_xml_template' => 'Template',
 	'dt_xml_field' => 'Campo',
 	'dt_xml_name' => 'Nome',
 	'dt_xml_title' => 'Titolo',
@@ -1317,9 +1318,13 @@ $messages['pt-br'] = array(
 	'dt_xml_freetext' => 'Texto Livre',
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor selecione o arquivo $1 para importar:',
+	'dt_import_encodingtype' => 'Codificação',
 	'dt_import_editsummary' => 'Importação de $1',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do arquivo $2.',
+	'importcsv' => 'Importar CSV',
+	'dt_importcsv_badheader' => "Erro: o cabeçalho da coluna $1, '$2', deve ser '$3', ou '$4' ou da forma 'nome_modelo[nome_campo]'",
+	'right-datatransferimport' => 'Importar dados',
 );
 
 /** Romanian (Română)
@@ -1487,6 +1492,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Fluff
  * @author Gabbe.g
  * @author Lejonel
  * @author M.M.S.
@@ -1507,6 +1513,7 @@ $messages['sv'] = array(
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Fritext',
+	'importcsv' => 'Importera CSV',
 );
 
 /** Silesian (Ślůnski)

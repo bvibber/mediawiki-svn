@@ -292,7 +292,7 @@ $messages['ja'] = array(
 	'multiboilerplate-legend' => '定型句の選択',
 	'multiboilerplate-submit' => '読み込み',
 	'boilerplates' => '利用可能な定型句',
-	'multiboilerplate-special-pagetext' => 'これらの雛型はページ作成時に先行読み込みすることが可能です。(<span class=plainlinks>[{{fullurl:このページは存在しません|action=edit}} 実演]</span>)',
+	'multiboilerplate-special-pagetext' => 'これらの雛型はページ作成時に先行読み込みすることが可能です。（<span class=plainlinks>[{{fullurl:このページは存在しません|action=edit}} 実演]</span>）',
 	'multiboilerplate-special-define-in-localsettings' => '定型句は LocalSettings にて定義されています。',
 	'multiboilerplate-special-define-in-interface' => '定型句は [[MediaWiki:Multiboilerplate]] にて定義されています。',
 );

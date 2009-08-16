@@ -24,6 +24,7 @@ You have a comment on this page? Add it here or <span class="plainlinks">[{{full
 	'commentbox-error-empty-comment' => 'Empty comments are not allowed!',
 );
 
+/** Message documentation (Message documentation) */
 $messages['qqq'] = array(
 	'commentbox-regex' => 'Regular expression that should match {{msg-mw|commentbox-first-comment-heading}}',
 );
@@ -44,3 +45,24 @@ Du hast einen Kommentar zu dieser Seite? Trag ihn hier ein oder <span class="pla
 	'commentbox-error-namespace' => 'Kommentare sind in diesem Namensraum nicht erlaubt!',
 	'commentbox-error-empty-comment' => 'Leere Kommentare sind nicht erlaubt!',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'commentbox-desc' => "Voegt een opmerkingenvenster toe aan bepaalde pagina's",
+	'commentbox-intro' => '== U kunt een opmerking toevoegen... ==
+Hebt u een opmerking over deze pagina?
+Voeg deze hier toe of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} bewerk deze pagina direct]</span>.',
+	'commentbox-savebutton' => 'Opmerking opslaan',
+	'commentbox-name' => 'Naam:',
+	'commentbox-name-explanation' => '<small>Tip: Als u zich [[Special:UserLogin|aanmeld]], hoeft u uw naam hier niet in de voeren.</small>',
+	'commentbox-log' => 'Nieuwe opmerkingen',
+	'commentbox-first-comment-heading' => '== Opmerkingen ==',
+	'commentbox-regex' => '/\\n==\\s*Opmerkingen\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Er is een fout opgetreden bij het opslaan van de opmerking',
+	'commentbox-error-page-nonexistent' => 'Deze pagina bestaat niet!',
+	'commentbox-error-namespace' => 'Opmerkingen zijn niet toegestaan in deze naamruimte!',
+	'commentbox-error-empty-comment' => 'Lege opmerkingen zijn niet toegestaan!',
+);
+

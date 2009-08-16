@@ -1764,7 +1764,7 @@ $messages['ja'] = array(
 '''このシステムを悪用したり乱用したりすると、その権限を失う事になります。'''
 
 消去されたアイテムはウェブサイト上では誰も見る事が出来ません。但し、消去はログ化されている為、貴方が間違って消去した場合に、データベース管理者により手動で復帰する事が出来ます。",
-	'hiderevision-reason' => '理由(内密にログ化されます):',
+	'hiderevision-reason' => '理由（内密にログ化されます）:',
 	'hiderevision-submit' => '永久にこのデータを秘匿する',
 	'hiderevision-tab' => '版の秘匿',
 	'hiderevision-link' => '利用者の秘匿された投稿履歴',
@@ -3905,7 +3905,7 @@ $messages['zh-hans'] = array(
 
 删除这个项目，将会使这个网站上何任人都无法看到此项目,
 如果您误删了修订版本，必须请管理员从资料库中手动恢复。",
-	'hiderevision-reason' => '理由 (这个记录将不会公开):',
+	'hiderevision-reason' => '理由 （这个记录将不会公开）:',
 	'hiderevision-submit' => '永久隐藏这项资料',
 	'hiderevision-tab' => '隐藏此修订',
 	'hiderevision-link' => '隐藏用户贡献',
@@ -3923,7 +3923,7 @@ $messages['zh-hans'] = array(
 	'oversight-log-hiderev' => '隐藏 $1 中的一个修订版本',
 	'oversight' => '监督',
 	'oversight-view' => '内容',
-	'oversight-difference' => '(与之前存在之修订版本的差异)',
+	'oversight-difference' => '（与之前存在之修订版本的差异）',
 	'oversight-prev' => '最后一个之前的修订版本',
 	'oversight-hidden' => '隐藏修订',
 	'oversight-header' => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
@@ -3953,7 +3953,7 @@ $messages['zh-hant'] = array(
 
 刪除這個項目，將會使這個網站上何任人都無法看到此項目,
 如果您誤刪了修訂版本，必須請管理員從資料庫中手動恢復。",
-	'hiderevision-reason' => '理由 (這個記錄將不會公開):',
+	'hiderevision-reason' => '理由 （這個記錄將不會公開）:',
 	'hiderevision-submit' => '永久隱藏這項資料',
 	'hiderevision-tab' => '隱藏此修訂',
 	'hiderevision-link' => '隱藏用戶貢獻',
@@ -3971,7 +3971,7 @@ $messages['zh-hant'] = array(
 	'oversight-log-hiderev' => '隱藏 $1 中的一個修訂版本',
 	'oversight' => '監督',
 	'oversight-view' => '內容',
-	'oversight-difference' => '(與之前存在之修訂版本的差異)',
+	'oversight-difference' => '（與之前存在之修訂版本的差異）',
 	'oversight-prev' => '最後一個之前的修訂版本',
 	'oversight-hidden' => '隱藏修訂',
 	'oversight-header' => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',

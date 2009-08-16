@@ -226,6 +226,13 @@ Zapódaj nejpjerwjej někotare znamuška a klikni tłocašk {{int:index-submit}}
 	'index-details-explain' => 'Zapiski ze šypkami su indeksowe zapiski, klikni na šypku, aby wše boki pokazali, kótarež su pód tym titelom indicěrowane.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'index-search' => 'Αναζήτηση:',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

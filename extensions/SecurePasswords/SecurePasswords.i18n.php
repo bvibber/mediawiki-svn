@@ -327,6 +327,22 @@ Kata sandi Anda harus:',
 	'securepasswords-word' => 'tidak boleh sebuah kata (dalam bahasa Inggris)',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'securepasswords-desc' => 'Crea hash password più sicuri e aggiunge un controllore della complessità delle password',
+	'securepasswords-valid' => 'La password non è valida o è troppo corta.
+Deve:',
+	'securepasswords-minlength' => 'essere lunga almeno $1 {{PLURAL:$1|carattere|caratteri}}',
+	'securepasswords-lowercase' => 'contenere almeno 1 lettera minuscola',
+	'securepasswords-uppercase' => 'contenere almeno 1 lettera maiuscola',
+	'securepasswords-digit' => 'contenere almeno 1 cifra',
+	'securepasswords-special' => 'contenere almeno 1 carattere speciale (caratteri speciali sono: $1)',
+	'securepasswords-username' => 'essere diversa dal proprio nome utente',
+	'securepasswords-word' => 'non essere una parola',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -340,7 +356,7 @@ $messages['ja'] = array(
 	'securepasswords-lowercase' => '最低1文字は小文字を含む',
 	'securepasswords-uppercase' => '最低1文字は大文字を含む',
 	'securepasswords-digit' => '最低1文字は数字を含む',
-	'securepasswords-special' => '最低1文字は特殊文字を含む (特殊文字: $1)',
+	'securepasswords-special' => '最低1文字は特殊文字を含む （特殊文字: $1）',
 	'securepasswords-username' => '利用者名とは異なる',
 	'securepasswords-word' => '単語ではない',
 );

@@ -301,6 +301,14 @@ $messages['es'] = array(
 	'right-lookupuser' => 'Ver preferencias de usuario',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'lookupuser-realname' => 'Õige nimi: $1',
+	'lookupuser-registration' => 'Registreerimise kuupäev: $1',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

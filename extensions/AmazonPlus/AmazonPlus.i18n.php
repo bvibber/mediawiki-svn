@@ -258,6 +258,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Consta
  * @author Crazymadlover
  * @author Konsnos
  */
@@ -268,8 +269,10 @@ $messages['el'] = array(
 	'amazonplus-german' => 'Γερμανικά',
 	'amazonplus-french' => 'Γαλλικά',
 	'amazonplus-japanese' => 'Ιαπωνικά',
+	'amazonplus-new' => 'νέο',
 	'amazonplus-none' => 'Δεν υπάρχουν αντίτυπα αυτού του προϊόντος προς πώληση.',
 	'amazonplus-cp-none' => 'Κανένας',
+	'amazonplus-more' => 'περισσότερα',
 );
 
 /** Esperanto (Esperanto)

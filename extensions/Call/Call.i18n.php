@@ -545,7 +545,7 @@ $messages['ja'] = array(
 例1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
 例2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
 例3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
-例4 (ブラウザURL): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:MyPage,parm1=value1</tt>
+例4 （ブラウザURL）: &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:MyPage,parm1=value1</tt>
 
 ページ呼び出し拡張機能は、与えられたページをパラメータ付きで呼び出します。<br />あなたは呼び出されたページ内容とページ名を見ることはできますが、ページの「タイプ」は特別ページとなり、<br />つまりそのページを編集することはできません。<br />ページ内容は指定したパラメータによって変化します。
 

@@ -114,6 +114,13 @@ $messages['pl'] = array(
 	'negref-desc' => 'Dostarcza znacznik pomagający w ustaleniu położenia w tekście wszystkich znaczników <nowiki><ref/></nowiki> ułatwiając poprawienie użycia szablonów',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'negref-desc' => 'Provê uma marca para negociar a localização de quaisquer marcas <nowiki><ref/></nowiki> dentro do texto para corrigir alguns casos de uso de predefinições',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

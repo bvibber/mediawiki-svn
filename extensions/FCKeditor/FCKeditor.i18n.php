@@ -609,7 +609,7 @@ $messages['ja'] = array(
 	'rich_editor_new_window' => 'リッチエディタを新規ウィンドウで開く',
 	'tog-riched_start_disabled' => '開始時にはリッチエディタを無効にしておく',
 	'tog-riched_use_popup' => 'リッチエディタをポップアップ・ウィンドウで開く',
-	'tog-riched_use_toggle' => 'ウィキテキストとリッチエディタを切り替えるトグルスイッチを利用する (テキストエリアをリッチエディタで置き換える)',
+	'tog-riched_use_toggle' => 'ウィキテキストとリッチエディタを切り替えるトグルスイッチを利用する （テキストエリアをリッチエディタで置き換える）',
 	'tog-riched_toggle_remember_state' => '最後のトグル状態を記憶する',
 );
 

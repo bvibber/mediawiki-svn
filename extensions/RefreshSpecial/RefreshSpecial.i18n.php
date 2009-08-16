@@ -648,7 +648,7 @@ $messages['ja'] = array(
 	'refreshspecial-refreshing' => '特別ページを更新中',
 	'refreshspecial-skipped' => '負荷が低いので飛ばしました',
 	'refreshspecial-choice' => '特別ページを更新中',
-	'refreshspecial-js-disabled' => '(<i>JavaScript を無効にしていると「すべてのページを選択」機能が使えません</i>)',
+	'refreshspecial-js-disabled' => '（<i>JavaScript を無効にしていると「すべてのページを選択」機能が使えません</i>）',
 	'refreshspecial-select-all-pages' => 'すべてのページを選択',
 	'refreshspecial-link-back' => '元のページに戻る',
 	'refreshspecial-none-selected' => '特別ページを一つも選択していません。デフォルトの選択状態に戻します。',
@@ -658,7 +658,7 @@ $messages['ja'] = array(
 	'refreshspecial-reconnected' => '再接続しました。',
 	'refreshspecial-reconnecting' => '接続失敗、10秒間の再接続中…',
 	'refreshspecial-page-result' => '$1{{PLURAL:$1|行}}を取得',
-	'refreshspecial-total-display' => '$1{{PLURAL:$1|ページ}} (データベース{{PLURAL:$2|行数}}合計: $2) を $3で更新しました (スクリプトの全実行時間: $4)',
+	'refreshspecial-total-display' => '$1{{PLURAL:$1|ページ}} （データベース{{PLURAL:$2|行数}}合計: $2） を $3で更新しました （スクリプトの全実行時間: $4）',
 	'right-refreshspecial' => '特別ページを更新する',
 );
 

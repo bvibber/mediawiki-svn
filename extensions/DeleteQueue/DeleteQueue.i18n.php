@@ -2675,6 +2675,9 @@ $messages['it'] = array(
 *Se si crede che questa pagina debba essere ''cancellata immediatamente'', lo si può suggerire [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} qui].
 *Se questa pagina non può essere cancellata immediatamente ma la sua ''cancellazione sarà probabilmente incontroversa'', dovrebbe essere [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} proposta per la cancellazione].
 *Se la cancellazione di questa pagina è ''probabilmente discutibile'', si dovrebbe [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} aprire una discussione].",
+	'deletequeue-action-text-queued' => 'È possibile visualizzare le pagine seguenti per questa cancellazione:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Visualizza i supporti e le obiezioni attuali].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Supporta o opponiti alla cancellazione di questa pagina].',
 	'deletequeue-permissions-noedit' => 'Si deve essere in grado di modificare una pagina per modificarne lo stato di cancellazione.',
 	'deletequeue-generic-reasons' => '*Motivazioni generiche
 ** Vandalismo
@@ -2704,6 +2707,7 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'right-prod-review' => 'Controlla le proposte di cancellazione non contestate',
 	'right-deletediscuss-nominate' => 'Inizia le discussioni sulla cancellazione',
 	'right-deletediscuss-review' => 'Chiude le discussioni sulla cancellazione',
+	'right-deletequeue-vote' => 'Supporta o si oppone alle cancellazioni',
 	'deletequeue-queue-speedy' => 'Cancellazione immediata',
 	'deletequeue-queue-prod' => 'Cancellazione proposta',
 	'deletequeue-queue-deletediscuss' => 'Discussione sulla cancellazione',
@@ -2737,6 +2741,8 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'deletequeue-reviewdeletediscuss-text' => "È possibile utilizzare questo modulo per controllare la discussione sulla cancellazione di \"'''\$1'''\".
 
 È disponibile un [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} elenco] dei supporti e delle opposizioni a questa cancellazione e la discussione può essere trovata a [[\$2]]. Assicurarsi di prendere una decisione in base al consenso raggiunto nella discussione.",
+	'deletequeue-review-success' => 'Hai correttamente verificato la cancellazione di questa pagina',
+	'deletequeue-review-success-title' => 'Verifica completa',
 	'deletequeue-deletediscuss-discussionpage' => 'Questa è la pagina di discussione per la cancellazione di [[$1]]. Ci sono al momento $2 {{PLURAL:$2|utente che supporta|utenti che supportano}} la cancellazione e $3 {{PLURAL:$3|utente che si oppone|utenti che si oppongono}} a essa. È possibile [{{fullurl:$1|action=delvote}} supportare oppure opporsi] alla cancellazione o [{{fullurl:$1|action=delviewvotes}} visualizzare tutti i supporti e le opposizioni].',
 	'deletequeue-discusscreate-summary' => 'Creazione della discussione sulla cancellazione di [[$1]].',
 	'deletequeue-discusscreate-text' => 'Cancellazione proposta per il seguente motivo: $2',
@@ -2782,10 +2788,13 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'deletequeue-list-header-discusspage' => 'Pagina di discussione',
 	'deletequeue-case-intro' => 'Questa pagina elenca le informazioni su una specifica cancellazione',
 	'deletequeue-list-header-reason' => 'Motivazione per la cancellazione',
+	'deletequeue-case-votes' => 'Supporti/opposizioni:',
 	'deletequeue-case-title' => 'Dettagli sulla cancellazione',
+	'deletequeue-case-details' => 'Informazioni di base',
 	'deletequeue-case-page' => 'Pagina:',
 	'deletequeue-case-reason' => 'Motivo:',
 	'deletequeue-case-expiry' => 'Scadenza:',
+	'deletequeue-case-needs-review' => 'Questo caso richiede una [[$1|verifica]].',
 );
 
 /** Japanese (日本語)
@@ -2907,7 +2916,7 @@ $messages['ja'] = array(
 	'deletequeue-list-status' => '状況:',
 	'deletequeue-list-expired' => '終了が必要な提案のみを表示',
 	'deletequeue-list-search' => '検索',
-	'deletequeue-list-anyqueue' => '(任意)',
+	'deletequeue-list-anyqueue' => '（任意）',
 	'deletequeue-list-votes' => '票一覧',
 	'deletequeue-list-votecount' => '賛成$1{{PLURAL:$1|票}}、反対$2{{PLURAL:$2|票}}',
 	'deletequeue-list-header-page' => 'ページ',

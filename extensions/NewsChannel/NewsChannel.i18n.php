@@ -332,6 +332,8 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'newschannel' => 'Canale di informazione',
+	'newschannel-desc' => 'Implementa un canale di notizie come una [[Special:NewsChannel|pagina speciale]] dinamica',
 	'newschannel_format' => 'Formato:',
 	'newschannel_limit' => 'Limite:',
 	'newschannel_include_category' => 'Ulteriori categorie:',

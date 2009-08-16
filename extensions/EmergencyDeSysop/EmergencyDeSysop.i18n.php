@@ -250,7 +250,7 @@ $messages['eu'] = array(
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'emergencydesysop' => 'Ylläpitäjän-oikeuksien poistotoimintomenetelmä kiireellisissä hätätapauksissa',
+	'emergencydesysop' => 'Ylläpitäjyyden hätäpoisto',
 	'emergencydesysop-desc' => 'Mahdollistaa ylläpitäjän uhraamaan omat oikeutensa poistaakseen ylläpitäjän oikeudet toiselta ylläpitäjältä.',
 	'emergencydesysop-title' => 'Poista ylläpitäjän oikeudet sekä nykyiseltä käyttäjältä että toiselta ylläpitäjältä',
 	'emergencydesysop-otheradmin' => 'Ryhmästä poistettava toinen ylläpitäjä',

@@ -5735,7 +5735,7 @@ $messages['ja'] = array(
 	'langman_iso639-3' => 'ISO 639-3 コード:',
 	'langman_iso639-2' => 'ISO 639-2 コード:',
 	'langman_wikimedia' => 'ウィキメディア・コード:',
-	'langman_field_optional' => '(任意)',
+	'langman_field_optional' => '（任意）',
 	'langman_addlang' => '言語を追加',
 	'importlangnames' => 'ウィキデータ: 言語名の取り込み',
 	'importlangnames_title' => '言語名の取り込み',
@@ -5905,11 +5905,11 @@ $messages['ja'] = array(
 	'copy' => 'ウィキデータ: 複製',
 	'ow_copy_no_action_specified' => '操作を指定してください',
 	'ow_copy_help' => 'ヘルプはまだ実装されていません。',
-	'ow_please_proved_dmid' => 'あなたの入力には "?dmid=<ID>" (dmid = 意味定義識別子) が欠けているようです。<br />
+	'ow_please_proved_dmid' => 'あなたの入力には "?dmid=<ID>" （dmid = 意味定義識別子） が欠けているようです。<br />
 サーバー管理者に連絡してください。',
-	'ow_please_proved_dc1' => 'あなたの入力には "?dc1=<何か>" (dc1 = データ集合コンテキスト1、複製元のデータ集合) が欠けているようです。<br />
+	'ow_please_proved_dc1' => 'あなたの入力には "?dc1=<何か>" （dc1 = データ集合コンテキスト1、複製元のデータ集合） が欠けているようです。<br />
 サーバー管理者に連絡してください。',
-	'ow_please_proved_dc2' => 'あなたの入力には "?dc2=<何か>" (dc2 = データ集合コンテキスト2、複製先のデータ集合) が欠けているようです。<br />
+	'ow_please_proved_dc2' => 'あなたの入力には "?dc2=<何か>" （dc2 = データ集合コンテキスト2、複製先のデータ集合） が欠けているようです。<br />
 サーバー管理者に連絡してください。',
 	'ow_copy_successful' => '<h2>コピー成功</h2>
 あなたのデータのコピーは成功したようです。確実性のためには二重に確認することを忘れないでください。',
@@ -11846,33 +11846,72 @@ $messages['zh-cn'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Gaoxuewei
+ * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'wikidata-desc' => '为各种类型的内容添加类wiki数据库',
+	'wikidata-handler-namespace-move-error' => '在由Wikidata扩展处理的名字空间中的页面不能被移动。',
 	'languages' => 'Wikidata: 语言管理员',
 	'langman_title' => '语言管理员',
 	'langman_not_allowed' => '您无权修改语言设置。',
 	'langman_header' => '输入语言代码和English名称：',
 	'langman_req_fields' => '语言名称和ISO 639-3代码都需要输入！',
+	'langman_adding' => '使用键$2添加语言$1',
 	'langman_langname' => '语言名称：',
 	'langman_iso639-3' => 'ISO 639-3 代码：',
 	'langman_iso639-2' => 'ISO 639-2 代码：',
 	'langman_wikimedia' => '维基媒体代码：',
 	'langman_field_optional' => '（可选）',
 	'langman_addlang' => '增加语言',
+	'importlangnames' => 'Wikidata：导入语言名称',
+	'importlangnames_title' => '导入语言名称',
+	'importlangnames_not_allowed' => '你没有权限导入语言名称。',
+	'importlangnames_added' => '“$1”的语言名称已添加。',
+	'importlangnames_not_found' => '<strong>找不到“$1”语言项！</strong>',
 	'datasearch' => 'Wikidata: 数据搜寻',
 	'datasearch_language' => '语言：',
+	'datasearch_found_word' => '找到了文字',
 	'datasearch_meaning' => '意思',
+	'datasearch_ext_identifier' => '外部标识符',
+	'datasearch_search_text' => '搜索文字：',
+	'datasearch_within_words' => '含有文字：',
+	'datasearch_showing_only' => '最多显示$1个匹配。',
+	'datasearch_match_ext_ids' => '外部标识符匹配<i>$1</i>',
+	'datasearch_match_words' => '文字匹配<i>$1</i>和相关的含义',
+	'datasearch_match_words_lang' => '<i>$1</i>中的文字匹配<i>$2</i>和相关的含义',
+	'importtsv' => 'Wikidata：导入TSV（制表符分隔文件）',
+	'ow_importtsv_title1' => '导入TSV（制表符分隔文件）',
+	'ow_importtsv_title2' => '导入定义和翻译',
+	'ow_importtsv_not_allowed' => '你没有权限导入TSV。',
+	'ow_importtsv_importing' => '导入TSV（制表符分隔文件）数据',
+	'ow_importtsv_import_failed' => '导入失败',
+	'ow_importtsv_file' => 'TSV文件：',
+	'ow_importtsv_test_run' => '测试运行：',
+	'ow_importtsv_not_utf8' => '<p>这个文件看起来不是UTF-8编码的。文件<i>必须</i>以UTF-8编码。
+确保你的应用程序正确保存或导出了文件。</p>',
+	'ow_importtsv_not_tsv' => '<p>这看起来不是一个有效的TSV文件。</p>',
+	'ow_importtsv_bad_columns' => '<p>错误的列名“$1”。<br />
+列应该命名为“definition_iso”或“translations_iso”，
+其中iso为语言代码。</p>',
+	'ow_importtsv_test_run_title' => '导入TSV数据的测试运行',
+	'ow_importtsv_nothing_added' => '没有添加任何东西。',
+	'ow_importtsv_nothing_added_test' => '没有添加任何东西（你进行了一次测试运行）。',
+	'exporttsv' => 'Wikidata：导出TSV',
+	'ow_exporttsv_languages' => '语言：',
+	'ow_exporttsv_not_allowed' => '你没有导出TSV的权限。',
+	'ow_exporttsv_export_failed' => '导出失败',
 	'ow_save' => '保存',
 	'ow_history' => '历史',
 	'ow_datasets' => '选择数据集',
 	'ow_noedit_title' => '无权进行编辑',
 	'ow_noedit' => '您无权在 "$1" 中编辑页面。
 请见[[{{MediaWiki:Ow editing policy url}}|我们的编辑政策]]。',
-	'ow_uipref_datasets' => '默认视图',
+	'ow_uipref_datasets' => '默认视图：',
 	'ow_uiprefs' => 'Wiki数据',
 	'ow_none_selected' => '未选择',
+	'ow_transaction_count' => '计数：',
 	'ow_conceptmapping_help' => '<p>可能的action： <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  插入一个映射</li>
 <li>&action=get&concept=<concept_id>  阅读映射返回</li>
@@ -11885,7 +11924,22 @@ $messages['zh-hans'] = array(
 	'ow_OptionAttributeOptions' => '选项',
 	'ow_Source' => '来源',
 	'ow_Text' => '文本',
+	'ow_Label' => '标签',
+	'ow_Link' => '链接',
+	'ow_LinkAttribute' => '属性',
 	'ow_LinkAttributeValues' => '链接',
+	'ow_User' => '用户',
+	'ow_Property' => '属性',
+	'ow_Value' => '值',
+	'ow_added' => '已添加',
+	'ow_removed' => '已移除',
+	'ow_meaningsoftitle' => '“$1”的含义',
+	'ow_show' => '显示',
+	'ow_upload' => '上传',
+	'ow_create' => '创建',
+	'ow_suggest_previous' => '上一个',
+	'ow_suggest_next' => '下一个',
+	'ow_suggest_clear' => '清除',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -11904,7 +11958,7 @@ $messages['zh-hant'] = array(
 	'langman_iso639-3' => 'ISO 639-3 代碼：',
 	'langman_iso639-2' => 'ISO 639-2 代碼：',
 	'langman_wikimedia' => '維基媒體代碼：',
-	'langman_field_optional' => '(可選)',
+	'langman_field_optional' => '（可選）',
 	'langman_addlang' => '增加語言',
 	'importlangnames' => 'Wikidata:匯入語言名稱',
 	'importlangnames_title' => '匯入語言名稱',

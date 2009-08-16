@@ -1209,13 +1209,13 @@ $messages['ja'] = array(
 	'extdist-choose-extension' => 'ダウンロードしたい拡張機能を選択してください:',
 	'extdist-wc-empty' => '指定されたコピー先ディレクトリにダウンロードする拡張機能が存在しません！',
 	'extdist-submit-extension' => '続行',
-	'extdist-current-version' => '開発バージョン (trunk)',
+	'extdist-current-version' => '開発バージョン （trunk）',
 	'extdist-choose-version' => '<big>拡張機能 <b>$1</b> をダウンロードしようとしています。</big>
 
 あなたが利用しているMediaWikiのバージョンを選択してください。
 
 多くの拡張機能は複数のバージョンで利用できますが、あなたの使用しているMediaWikiのバージョンが下記にない場合、最新版にアップデートする必要があります。',
-	'extdist-no-versions' => '選択された拡張機能($1)は全てのバージョンで利用できません！',
+	'extdist-no-versions' => '選択された拡張機能（$1）は全てのバージョンで利用できません！',
 	'extdist-submit-version' => '選択',
 	'extdist-no-remote' => 'subversionクライアントと接続できませんでした。',
 	'extdist-remote-error' => 'subversionクライアントがエラーを返しました: <pre>$1</pre>',
@@ -2428,14 +2428,14 @@ $messages['zh-hans'] = array(
 	'extdist-choose-extension' => '选择您要去下载的扩展:',
 	'extdist-wc-empty' => '设置的工作复本目录无可发布之扩展！',
 	'extdist-submit-extension' => '继续',
-	'extdist-current-version' => '开发员版 (trunk)',
+	'extdist-current-version' => '开发员版 （trunk）',
 	'extdist-choose-version' => '
 <big>您现正下载 <b>$1</b> 扩展。</big>
 
 选择您要的 MediaWiki 版本。
 
 多数的扩展都可以在多个 MediaWiki 版本上运行，如果您的 MediaWiki 版本不存在，又或者您需要最新的扩展功能的话，可尝试用最新的版本。',
-	'extdist-no-versions' => '所选择扩展 ($1) 不适用于任何的版本！',
+	'extdist-no-versions' => '所选择扩展 （$1） 不适用于任何的版本！',
 	'extdist-submit-version' => '继续',
 	'extdist-no-remote' => '不能够联络远端 subversion 客户端。',
 	'extdist-remote-error' => '自远端 subversion 客户端的错误: <pre>$1</pre>',
@@ -2480,14 +2480,14 @@ $messages['zh-hant'] = array(
 	'extdist-choose-extension' => '選擇您要去下載的擴展:',
 	'extdist-wc-empty' => '設定的工作複本目錄無可發佈之擴展！',
 	'extdist-submit-extension' => '繼續',
-	'extdist-current-version' => '現時版本 (trunk)',
+	'extdist-current-version' => '現時版本 （trunk）',
 	'extdist-choose-version' => '
 <big>您現正下載 <b>$1</b> 擴展。</big>
 
 選擇您要的 MediaWiki 版本。
 
 多數的擴展都可以在多個 MediaWiki 版本上運行，如果您的 MediaWiki 版本不存在，又或者您需要最新的擴展功能的話，可嘗試用最新的版本。',
-	'extdist-no-versions' => '所選擇擴展 ($1) 不適用於任何的版本！',
+	'extdist-no-versions' => '所選擇擴展 （$1） 不適用於任何的版本！',
 	'extdist-submit-version' => '繼續',
 	'extdist-no-remote' => '不能夠聯絡遠端 subversion 客戶端。',
 	'extdist-remote-error' => '自遠端 subversion 客戶端的錯誤: <pre>$1</pre>',

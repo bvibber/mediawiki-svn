@@ -185,6 +185,16 @@ $messages['id'] = array(
 	'right-getfamily' => 'Buatkan sebuah berkas keluarga untuk pywikipediabot',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'getfamily-desc' => 'Genera un file di famiglia per pywikipediabot',
+	'getfamily' => 'Ottenere famiglia pywikipediabot',
+	'getfamily-interwikierror' => 'Errore: impostazione interwiki errata, rivolgersi al proprio amministratore locale.',
+	'right-getfamily' => 'Crea un file di famiglia per pywikipediabot',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

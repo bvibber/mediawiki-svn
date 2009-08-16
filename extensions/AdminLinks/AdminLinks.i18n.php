@@ -226,6 +226,14 @@ $messages['dsb'] = array(
 	'right-adminlinks' => 'Glědaj wótkaz k [[Special:AdminLinks|wótkazam za administratorow]]',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'adminlinks_users' => 'Χρήστες',
+	'adminlinks_createuser' => 'Δημιουργία χρήστη',
+);
+
 /** Esperanto (Esperanto)
  * @author Jagwar
  */

@@ -412,11 +412,14 @@ Pšosym cakaj, až eksistěrujuca akcija jo se skóńcyła.',
 );
 
 /** Greek (Ελληνικά)
+ * @author Consta
  * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'imagetagging-article' => 'Σελίδα:',
 	'imagetagging-imghistory' => 'Ιστορικό',
+	'imagetagging-images' => 'εικόνες',
 	'imagetagging-tag-button' => 'Ετικέτα',
 	'imagetagging-tagcancel-button' => 'Ακύρωση',
 );
@@ -931,7 +934,7 @@ $messages['ja'] = array(
 	'imagetagging-canteditneedloginmessage' => 'あなたはこの画像を編集できません。画像にラベル付けするにはログインしなければならないことがあります。今ログインしますか？',
 	'imagetagging-oneactionatatimemessage' => 'ラベル付けの操作は一度に一回しかできません。前の操作が完了するのを待ってください。',
 	'imagetagging-oneuniquetagmessage' => 'この画像は既にこの名前でラベル付けされています。',
-	'imagetagging-imagetag-seemoreimages' => '「$1」($2) の画像をもっと見る',
+	'imagetagging-imagetag-seemoreimages' => '「$1」（$2） の画像をもっと見る',
 	'imagetagging-taggedimages-title' => '「$1」の画像',
 	'imagetagging-taggedimages-displaying' => '「$4」の画像$3個中 $1 - $2個目を表示しています',
 	'tag-logpagename' => 'ラベル付け記録',

@@ -205,7 +205,7 @@ $messages['it'] = array(
  * @author Aotake
  */
 $messages['ja'] = array(
-	'trustedxff-desc' => '信頼できるプロキシアドレス一覧の管理 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+	'trustedxff-desc' => '信頼できるプロキシアドレス一覧の管理 （[http://meta.wikimedia.org/wiki/XFF_project XFF project]）',
 );
 
 /** Javanese (Basa Jawa)
@@ -443,13 +443,13 @@ $messages['yue'] = array(
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'trustedxff-desc' => '处理一个可信的Proxy地址一览 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+	'trustedxff-desc' => '处理一个可信的Proxy地址一览 （[http://meta.wikimedia.org/wiki/XFF_project XFF project]）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'trustedxff-desc' => '處理一個可信的Proxy地址一覽 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+	'trustedxff-desc' => '處理一個可信的Proxy地址一覽 （[http://meta.wikimedia.org/wiki/XFF_project XFF project]）',
 );
 

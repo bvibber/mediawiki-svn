@@ -648,7 +648,6 @@ podeu triar-ne un de les opcions a continuació.',
 );
 
 /** Czech (Česky)
- * @author IAlex
  * @author Matěj Grabovský
  * @author Mormegil
  */
@@ -693,7 +692,7 @@ Prosím, poraďte se se [[Special:ListUsers/sysop|správcem]].',
 	'openidchoosemanual' => 'Jméno, které si vyberete:',
 	'openidchooseexisting' => 'Existující účet na této wiki:',
 	'openidchoosepassword' => 'heslo:',
-	'openidconvertinstructions' => 'Tento formulář vám umožňuje změnit váš učet, aby používal OpenID URL.',
+	'openidconvertinstructions' => 'Tento formulář vám umožňuje změnit váš učet, aby používal OpenID URL, nebo přidat více URL OpenID.',
 	'openidconvertoraddmoreids' => 'Převést na OpenID nebo přidat jinou OpenID URL',
 	'openidconvertsuccess' => 'Úspěšně převedeno na OpenID',
 	'openidconvertsuccesstext' => 'Úspěšně jste převedli váš OpenID na $1.',
@@ -2257,7 +2256,6 @@ Non si potrà più effettuare il login con questo OpenID.',
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
- * @author IAlex
  */
 $messages['ja'] = array(
 	'openid-desc' => '[http://openid.net/ OpenID]によるウィキへのログインを可能にし、ウィキユーザーアカウントを他のOpenID対応サイトにログインすることを可能にする。',
@@ -2278,7 +2276,7 @@ $messages['ja'] = array(
 	'openidsuccess' => '検証成功',
 	'openidsuccesstext' => 'OpenID URLの検証は成功しました。',
 	'openidusernameprefix' => 'OpenIDユーザー',
-	'openidserverlogininstructions' => '$3 に利用者 $2 (利用者ページ $1) としてログインするには以下にパスワードを入力してください。',
+	'openidserverlogininstructions' => '$3 に利用者 $2 （利用者ページ $1） としてログインするには以下にパスワードを入力してください。',
 	'openidtrustinstructions' => '$1 とデータを共有したいか確認してください。',
 	'openidallowtrust' => '$1 がこの利用者アカウントを信用するのを許可する。',
 	'openidnopolicy' => 'サイトはプライバシーに関する方針を明記していません。',
@@ -2290,12 +2288,12 @@ $messages['ja'] = array(
 	'openidemail' => '電子メールアドレス',
 	'openidlanguage' => '言語',
 	'openidtimezone' => 'タイムゾーン',
-	'openidnotavailable' => 'あなたが選んだニックネーム ($1) は既に他の利用者が使っています。',
+	'openidnotavailable' => 'あなたが選んだニックネーム （$1） は既に他の利用者が使っています。',
 	'openidnotprovided' => 'あなたの OpenID サーバーはニックネームを提供していません（提供できない場合と、提供しないようあなたが指示している場合とがあります）。',
 	'openidchooseinstructions' => 'すべての利用者はニックネームが必要です。以下の選択肢から1つを選ぶことができます。',
-	'openidchoosefull' => 'あなたのフルネーム ($1)',
-	'openidchooseurl' => 'あなたの OpenID から選んだ名前 ($1)',
-	'openidchooseauto' => '自動生成された名前 ($1)',
+	'openidchoosefull' => 'あなたのフルネーム （$1）',
+	'openidchooseurl' => 'あなたの OpenID から選んだ名前 （$1）',
+	'openidchooseauto' => '自動生成された名前 （$1）',
 	'openidchoosemanual' => '名前を別に設定する:',
 	'openidchooseexisting' => 'このウィキに存在するアカウント:',
 	'openidchoosepassword' => 'パスワード:',
@@ -2310,7 +2308,7 @@ $messages['ja'] = array(
 将来は OpenID を使ってログインしたい場合は、[[Special:OpenIDConvert|あなたのアカウントを OpenID を使うように変換する]]ことができます。",
 	'openidnousername' => '利用者名が指定されていません。',
 	'openidbadusername' => '利用者名の指定が不正です。',
-	'openidautosubmit' => 'このページにあるフォームはあなたが JavaScript を有効にしていれば自動的に送信されるはずです。そうならない場合は、 "Continue" (続ける) ボタンを試してください。',
+	'openidautosubmit' => 'このページにあるフォームはあなたが JavaScript を有効にしていれば自動的に送信されるはずです。そうならない場合は、 "Continue" （続ける） ボタンを試してください。',
 	'openidclientonlytext' => 'あなたはこのウィキのアカウントを他のサイトで OpenID として使うことができません。',
 	'openidloginlabel' => 'OpenID URL',
 	'openidlogininstructions' => '{{SITENAME}} はウェブサイト間でのシングルサインオンのための [http://openid.net/ OpenID] 規格に対応しています。OpenID によって、個別のパスワードを使うことなく、たくさんの様々なウェブサイトにログインできるようになります（より詳しい情報は[http://ja.wikipedia.org/wiki/OpenID ウィキペディアの OpenID についての記事]を参照してください）。
@@ -4687,7 +4685,6 @@ kanol välön bali sökölas.',
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
- * @author IAlex
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
@@ -4709,7 +4706,7 @@ $messages['zh-hans'] = array(
 	'openidsuccess' => '验证成功',
 	'openidsuccesstext' => 'OpenID地址验证成功。',
 	'openidusernameprefix' => 'OpenID用户',
-	'openidserverlogininstructions' => '请在下面输入您的密码以便以用户$2登陆$3 (用户页面$1)。',
+	'openidserverlogininstructions' => '请在下面输入您的密码以便以用户$2登陆$3 （用户页面$1）。',
 	'openidtrustinstructions' => '请确认您是否愿与$1分享数据。',
 	'openidallowtrust' => '允许$1信任这个用户的账户。',
 	'openidnopolicy' => '站点没有提供隐私政策。',
@@ -4720,7 +4717,7 @@ $messages['zh-hans'] = array(
 	'openidfullname' => '全称',
 	'openidemail' => '电子邮件地址',
 	'openidlanguage' => '语言',
-	'openidnotavailable' => '您选择的昵称($1)已经被其他用户使用。',
+	'openidnotavailable' => '您选择的昵称（$1）已经被其他用户使用。',
 	'openidnotprovided' => '您的OpenID服务器没有提供昵称（可能无法提供，或者您选择不提供）。',
 	'openidchooseinstructions' => '所有的用户都需要提供昵称；
 您可以从下面任选一个。',
@@ -4764,7 +4761,7 @@ $messages['zh-hant'] = array(
 	'openidemail' => '電郵地址',
 	'openidlanguage' => '語言',
 	'openidtimezone' => '時區',
-	'openidchoosefull' => '您的全名 ($1)',
+	'openidchoosefull' => '您的全名 （$1）',
 	'openidchoosepassword' => '密碼：',
 	'openidconvertyourstext' => '這已是您的OpenID了。',
 	'openidloginlabel' => 'OpenID網址',

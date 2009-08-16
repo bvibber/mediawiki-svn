@@ -165,12 +165,13 @@ $messages['be-tarask'] = array(
 	'ratinghistory-table-rating' => 'Адзнака',
 	'ratinghistory-table-votes' => 'Галасы',
 	'ratinghistory-none' => 'У гэты час недастаткова адзнак чытачоў для стварэньня графіка.',
-	'ratinghistory-legend' => "Ніжэй пададзеныя '''сярэднесутачная''' <font color=\"blue\">''(блакітны)''</font> і  
-'''цяперашняя сярэдняя''' <font color=\"green\">''(зялёны)''</font> адзнакі. '''Цяперашняя сярэдняя адзнака''' — сярэдняе значэньне ўсіх штодзённых адзнак ''за'' пэрыяд часу кожнага дня.
+	'ratinghistory-ratings' => "'''Легенда:''' '''(1)''' — благая; '''(2)''' — нізкая; '''(3)''' — сярэдняя; '''(4)''' — высокая; '''(5)''' — выдатная;",
+	'ratinghistory-legend' => "Ніжэй пададзеныя '''колькасьць праверак за дзень''' <font color=\"red\">''(чырвоны)''</font>, '''сярэднесутачная''' <font color=\"blue\">''(блакітны)''</font> і  
+'''цяперашняя сярэдняя''' <font color=\"green\">''(зялёны)''</font> адзнакі па датах.
+'''Цяперашняя сярэдняя адзнака''' — сярэдняе значэньне ўсіх штодзённых адзнак ''за'' пэрыяд часу кожнага дня.
+Выкарыстоўваюцца наступныя адзнакі:
 
-Шкала: '''[1]''' - Благая; '''[2]''' - Нізкая; '''[3]''' - Сярэдняя; '''[4]''' - Высокая; '''[5]''' - Выдатная;
-
-'''Колькасьць праверак за дзень''' <font color=\"red\">''(чырвоны)''</font> паказана на графіку ніжэй, у маштабе ''1:\$1''.",
+'''(1)''' — благая; '''(2)''' — нізкая; '''(3)''' — сярэдняя; '''(4)''' — высокая; '''(5)''' — выдатная;",
 	'right-feedback' => 'Выкарыстоўвайце форму зваротнай сувязі для адзнакі старонкі',
 );
 
@@ -872,16 +873,16 @@ $messages['ja'] = array(
 	'ratinghistory-purge' => 'キャッシュ削除',
 	'ratinghistory-table' => '読者評価の概観',
 	'ratinghistory-users' => '評価を行った利用者',
-	'ratinghistory-graph' => '「$3」の$2 ($1回の{{PLURAL:$1|評価}})',
+	'ratinghistory-graph' => '「$3」の$2 （$1回の{{PLURAL:$1|評価}}）',
 	'readerfeedback-svg' => 'SVGとして表示',
 	'ratinghistory-table-rating' => '評価',
 	'ratinghistory-table-votes' => '票数',
 	'ratinghistory-none' => '現時点ではグラフを表示するのに十分な読者評価データがありません。',
-	'ratinghistory-legend' => "日ごとの'''日間平均評価''' <font color=\"blue\">''(青)''</font> と'''移動平均評価''' <font color=\"green\">''(緑)''</font> を以下のグラフに表示します。'''移動平均評価'''とは単にこの期間中のすべての日間評価の平均のことです。
+	'ratinghistory-legend' => "日ごとの'''日間平均評価''' <font color=\"blue\">''（青）''</font> と'''移動平均評価''' <font color=\"green\">''（緑）''</font> を以下のグラフに表示します。'''移動平均評価'''とは単にこの期間中のすべての日間評価の平均のことです。
 
 目盛り: '''[1]''' - {{int:readerfeedback-level-0}}、'''[2]''' - {{int:readerfeedback-level-1}}、'''[3]''' - {{int:readerfeedback-level-2}}、'''[4]''' - {{int:readerfeedback-level-3}}、'''[5]''' - {{int:readerfeedback-level-4}}
 
-'''日ごとの評価回数''' <font color=\"red\">''(赤)''</font> を以下のグラフに\$1分の1の縮尺で表示します。",
+'''日ごとの評価回数''' <font color=\"red\">''（赤）''</font> を以下のグラフに\$1分の1の縮尺で表示します。",
 	'right-feedback' => 'ページを評価するためのフォームを使用する',
 );
 
@@ -980,6 +981,7 @@ $messages['lb'] = array(
 	'ratinghistory-table-rating' => 'Bewäertung',
 	'ratinghistory-table-votes' => 'Stëmmen',
 	'ratinghistory-none' => 'Et gëtt zu dësem Zäitpunkt net genuch Bewäertunge vu Lieser fir eng Grafik opzestellen.',
+	'ratinghistory-ratings' => "'''Skala:''' '''[1]''' - Aarmséileg; '''[2]''' - Niddreg; '''[3]''' - An der Rei; '''[4]''' - Héich; '''[5]''' - Exzellent;",
 	'ratinghistory-legend' => "Den '''Duerchschnëtt vun der deeglecher Bewäertung''' <font color=\"blue\">''(blo)''</font> an de '''momentanen Duerchschnëtt vun der Bewäertung''' <font color=\"green\">''(gréng)''</font> sinn ënnendrënner grafesch pro Dag duergestallt.
 
 De '''momentanen Duerchschnëtt vun der Bewäertung''' ass einfach den Duerchschnëtt vun allen deegleche Bewäertunge ''bannent'' dësem Zäitraum fir all Dag.
@@ -987,6 +989,7 @@ De '''momentanen Duerchschnëtt vun der Bewäertung''' ass einfach den Duerchsch
 Skala: '''[1]''' - Aarmséileg; '''[2]''' - Niddreg; '''[3]''' - An der Rei; '''[4]''' - Héich; '''[5]''' - Exzellent;
 
 D''''Zuel vun de Bewäertunge pro Dag''' <font color=\"red\">''(rout)''</font> gëtt an der Grafik ënnendrënner op enger ''1:\$1'' Skala gewisen.",
+	'ratinghistory-graph-scale' => "D''''Zuel vun de Bewäertunge pro Dag''' <font color=\"red\">''(rout)''</font> gëtt an der Grafik ënnendrënner op enger ''1:\$1'' Skala gewisen.",
 	'right-feedback' => 'De Feedback-Formulaire benotze fir eng Säit ze bewerten',
 );
 
@@ -1083,13 +1086,13 @@ $messages['nl'] = array(
 	'ratinghistory-table-rating' => 'Waardering',
 	'ratinghistory-table-votes' => 'Stemmen',
 	'ratinghistory-none' => 'Er is onvoldoende terugkoppeling van lezers aanwezig om een grafiek te maken.',
-	'ratinghistory-legend' => "De '''dagelijkse gemiddelde waardering''' <font color=\"blue\">''(blauw)''</font> en
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Slecht; '''(2)''' - Laag; '''(3)''' - Redelijk; '''(4)''' - Hoog; '''(5)''' - Uitstekend;",
+	'ratinghistory-legend' => "Het '''aantal dagelijkse beoordelingen''' <font color=\"red\">''(rood)''</font>, de '''dagelijkse gemiddelde waardering''' <font color=\"blue\">''(blauw)''</font> en
 de '''gemiddelde waardering van de aangegeven periode''' <font color=\"green\">''(groen)''</font> staan hieronder in een grafiek op datum.
 De '''gemiddelde waardering van de aangegeven periode''' is het gemiddelde van alle dagelijkse gemiddelde waarderingen ''binnnen'' dit tijdvak voor iedere dag.
 
-Schaal: '''[1]''' - Slecht; '''[2]''' - Laag; '''[3]''' - Redelijk; '''[4]''' - Hoog; '''[5]''' - Uitstekend;
-
-Het '''aantal waarderingen per dag''' <font color=\"red\">''(rood)''</font> wordt hieronder weergegeven in de grafieken op een schaal van ''1:\$1''.",
+'''(1)''' - Slecht; '''(2)''' - Laag; '''(3)''' - Redelijk; '''(4)''' - Hoog; '''(5)''' - Uitstekend;",
+	'ratinghistory-graph-scale' => "'''Beoordelingen per dag''' <font color=\"red\">''(rood)''</font> worden weergegeven op de schaal ''1:\$1''.",
 	'right-feedback' => 'Het waarderingsformulier gebruiken om een pagina te waarderen',
 );
 

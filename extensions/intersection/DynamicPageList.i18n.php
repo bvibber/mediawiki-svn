@@ -712,14 +712,15 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Putnik
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'intersection-desc' => 'Выводит в маркированный список последние добавления в категорию или объединение нескольких категорий',
-	'intersection_toomanycats' => 'Error: слишком много категорий!',
-	'intersection_toofewcats' => 'Error: слишком мало категорий!',
-	'intersection_noresults' => 'Error: нет результатов!',
-	'intersection_noincludecats' => 'Error: вы должны включить хотя бы одну категорию или указать пространство имён!',
+	'intersection_toomanycats' => 'Ошибка: слишком много категорий!',
+	'intersection_toofewcats' => 'Ошибка: слишком мало категорий!',
+	'intersection_noresults' => 'Ошибка: нет результатов!',
+	'intersection_noincludecats' => 'Ошибка: вы должны включить хотя бы одну категорию или указать пространство имён!',
 );
 
 /** Yakut (Саха тыла)

@@ -205,7 +205,7 @@ $messages['id'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'tidy-desc' => '通常ページでグローバルな HTML Tidy 利用設定 ($wgUseTidy) を一画面単位でオーバーライドできるようにするタブを追加する',
+	'tidy-desc' => '通常ページでグローバルな HTML Tidy 利用設定 （$wgUseTidy） を一画面単位でオーバーライドできるようにするタブを追加する',
 	'tidy' => 'Tidy を使う',
 	'untidy' => 'Tidy を使わない',
 );

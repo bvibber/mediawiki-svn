@@ -97,10 +97,24 @@ $messages['pl'] = array(
 	'magicnonumberedheadings-desc' => 'Dodaje magiczne słowo „<nowiki>__NONUMBEREDHEADINGS__</nowiki>”',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'magicnonumberedheadings-desc' => 'Adiciona a palavra mágica "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'magicnonumberedheadings-desc' => 'Добавляет волшебное слово «<nowiki>__NONUMBEREDHEADINGS__</nowiki>»',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'magicnonumberedheadings-desc' => 'Lägger till det magiska ordet "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 

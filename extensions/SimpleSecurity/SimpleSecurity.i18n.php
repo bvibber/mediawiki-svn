@@ -436,13 +436,22 @@ $messages['id'] = array(
  * @author Marco 27
  */
 $messages['it'] = array(
+	'security' => 'Registro di sicurezza',
+	'security-desc' => 'Estende la protezione delle pagine di MediaWiki per permettere di limitare la visualizzazione del contenuto di pagine',
+	'security-logpage' => 'Registro di sicurezza',
+	'security-logpagetext' => "Di seguito sono elencate le azioni bloccate dall'[http://www.mediawiki.org/wiki/Extension:SimpleSecurity estensione SimpleSecurity].",
+	'badaccess-read' => "'''Attenzione:''' \"\$1\" è riferito qui, ma non si dispone dei permessi sufficienti per accedervi.",
 	'security-info' => 'Sono presenti $1 in questa pagina',
 	'security-info-toggle' => 'restrizioni di sicurezza',
+	'security-inforestrict' => '$1 è limitata a $2',
+	'security-desc-LS' => '(si applica perché questa pagina è in "$2 $1")',
 	'security-desc-PR' => '(impostato dalla scheda "proteggi")',
 	'security-infosysops' => 'Non sono applicate restrizioni perché sei un membro del gruppo "sysop"',
 	'security-manygroups' => 'gruppi $1 e $2',
+	'security-unchain' => 'Modificare azioni individualmente',
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'namespace',
+	'security-restricttogroup' => 'Accesso al contenuto riservato ai membri di "$1"',
 );
 
 /** Japanese (日本語)
@@ -460,8 +469,8 @@ $messages['ja'] = array(
 	'security-info' => 'このページには$1があります',
 	'security-info-toggle' => 'セキュリティ制限',
 	'security-inforestrict' => '$1は$2に限定されています',
-	'security-desc-LS' => '(この記事が「$2 $1」にあるため)',
-	'security-desc-PR' => '(「保護」タブからの設定)',
+	'security-desc-LS' => '（この記事が「$2 $1」にあるため）',
+	'security-desc-PR' => '（「保護」タブからの設定）',
 	'security-infosysops' => 'あなたは「管理者」グループに所属しているため、制限は無効です',
 	'security-manygroups' => 'グループ $1 および $2',
 	'security-unchain' => '操作別に変更する',

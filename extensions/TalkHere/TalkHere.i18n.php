@@ -508,7 +508,7 @@ $messages['ja'] = array(
 
 このサイトの運営者はそのようなコメントの内容について責任を取ることはできません。',
 	'talkhere-talkpage' => '会話ページ',
-	'talkhere-notalk' => "''(まだコメントなし)''",
+	'talkhere-notalk' => "''（まだコメントなし）''",
 	'talkhere-addcomment' => 'コメントの追加',
 	'talkhere-beforeinput' => '以下にコメントを追加できます',
 	'talkhere-loading' => 'エディタを読み込み中…',
@@ -1052,8 +1052,8 @@ $messages['zh-hant'] = array(
 	'talkhere-foottext' => '此上方可能有討論留言
 
 在此的留言不代表本站立場，站長對站內之留言不負任何責任',
-	'talkhere-talkpage' => '討論頁面(talk page)',
-	'talkhere-notalk' => "''(尚未有討論留言)''",
+	'talkhere-talkpage' => '討論頁面（talk page）',
+	'talkhere-notalk' => "''（尚未有討論留言）''",
 	'talkhere-addcomment' => '留言討論',
 	'talkhere-beforeinput' => '您可於下方留言討論',
 	'talkhere-loading' => '載入編輯器...',

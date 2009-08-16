@@ -182,6 +182,13 @@ $messages['id'] = array(
 	'csshooks-desc' => 'Menambahkan CSS ke output halaman HTML agar tampak lebih bagus',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'csshooks-desc' => "Aggiunge CSS all'output HTML delle pagine per un migliore stile",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

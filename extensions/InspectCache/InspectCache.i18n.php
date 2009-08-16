@@ -223,6 +223,7 @@ $messages['ee'] = array(
  */
 $messages['el'] = array(
 	'inspectcache-ok' => 'Εντάξει',
+	'inspectcache-delete' => 'Διαγραφή',
 	'inspectcache-list' => 'Λίστα',
 );
 
@@ -274,7 +275,7 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'inspectcache' => 'Tutki välimuistia',
-	'inspectcache-desc' => 'Yksinkertainen virheenjäljitys ja toiminnantarkastus -väline joka mahdollistaa tutustumisen yhteisesti jaetun välimuistin sisältöön',
+	'inspectcache-desc' => 'Yksinkertainen virheenjäljitys ja toiminnantarkastus -väline, joka mahdollistaa tutustumisen jaetun välimuistin sisältöön.',
 	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Yleinen välimuisti',
 	'inspectcache-parser' => 'Jäsentimen välimuisti',
@@ -507,8 +508,16 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'inspectcache' => 'Ispezionare cache',
+	'inspectcache-desc' => 'Un semplice strumento di debug per ispezionare il contenuto della cache condivisa',
 	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => 'Cache generale',
+	'inspectcache-parser' => 'Cache del parser',
+	'inspectcache-message' => 'Cache dei messaggi',
+	'inspectcache-get' => 'Ottenere',
 	'inspectcache-delete' => 'Cancella',
+	'inspectcache-deleted' => 'Cache cancellata',
+	'inspectcache-list' => 'Elenco',
 );
 
 /** Japanese (日本語)

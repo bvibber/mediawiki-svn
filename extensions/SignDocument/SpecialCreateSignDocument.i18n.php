@@ -1193,15 +1193,21 @@ $messages['pdc'] = array(
  * @author Derbeth
  * @author Maikking
  * @author Sp5uhe
+ * @author ToSter
  */
 $messages['pl'] = array(
+	'createsigndocument' => 'Włącz podpisywanie dokumentów',
 	'createsigndoc-pagename' => 'Strona:',
+	'createsigndoc-allowedgroup' => 'Dozwolone grupy:',
 	'createsigndoc-email' => 'Adres e‐mail:',
 	'createsigndoc-address' => 'Adres domowy',
 	'createsigndoc-extaddress' => 'Miejscowość, kraj',
 	'createsigndoc-phone' => 'Numer telefonu:',
 	'createsigndoc-bday' => 'Data urodzenia:',
 	'createsigndoc-minage' => 'Minimalny wiek',
+	'createsigndoc-introtext' => 'Wstęp:',
+	'createsigndoc-hidden' => 'Ukryte',
+	'createsigndoc-optional' => 'Nieobowiązkowe',
 	'createsigndoc-create' => 'Utwórz',
 	'createsigndoc-error-generic' => 'Błąd: $1',
 	'createsigndoc-error-pagenoexist' => 'Błąd: Strona [[$1]] nie istnieje',

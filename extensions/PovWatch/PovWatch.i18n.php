@@ -295,6 +295,47 @@ $messages['ca'] = array(
 	'right-povwatch_user' => "Afegeix pàgines a les llistes de seguiment d'altres usuaris",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Rozšíření pro [[Special:PovWatch|přidávání stránek na seznam sledovaných stránek]] ostatních uživatelů.',
+	'povwatch_no_session' => 'Chyba: Nelze odeslat formulář kvůli ztrátě relačních dat.',
+	'povwatch_not_allowed_push' => 'Nejste správce PovWatch, nemůžete přidávat stránky na seznamy sledovaných.',
+	'povwatch_already_subscribed' => 'Už jste se přihlásil na odběr PovWatch.',
+	'povwatch_subscribed' => 'Nyní jste přihlášen na odběr PovWatch.',
+	'povwatch_not_subscribed' => 'Nejste přihlášen na odběr PovWatch, tudíž se nemůžete odhlásit.',
+	'povwatch_unsubscribed' => 'Nyní jste odhlášen z odběru PovWatch.',
+	'povwatch_invalid_title' => 'Zadaný název je neplatný.',
+	'povwatch_pushed' => 'Stránka [[$1]] byla úspěšně přidána na seznam sledovaných stránek {{PLURAL:$2|jednoho uživatele|$2 uživatelů}}.',
+	'povwatch_intro' => 'PovWatch je služba, která umožňuje diskrétně přidávat stránky na seznamy sledovaných stránek správců, kteří si to objednali.
+
+Záznam posledních přidání do seznamu je k nahlédnutí na [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Je dostupný [[Special:PovWatch/subscribers|seznam odběratelů]].',
+	'povwatch_subscriber_list_intro' => '<strong>Seznam odběratelů</strong>',
+	'povwatch_not_allowed_subscribers' => 'Nemáte oprávnění prohlížet seznam odběratelů PovWatch.',
+	'povwatch_unknown_subpage' => 'Neznámá podstránka.',
+	'povwatch_push' => 'Přidat',
+	'povwatch_push_intro' => 'Použijte tento formulář pro přidání stránek na seznam sledovaných stránek uživatelů, kteří jej odebírají.
+Prosím, dávejte pozor při psaní názvu stránky, mohou být přidány i neexistující stránky a stránku nelze odstranit, jakmile byla přidána.',
+	'povwatch_title' => 'Název:',
+	'povwatch_comment' => 'Komentář v záznamu:',
+	'povwatch_no_log' => 'V záznamu nejsou žádné položky.',
+	'povwatch_no_subscribers' => 'Nejsou žádní odběratelé.',
+	'povwatch_unsubscribe_intro' => 'Jste přihlášeni k doběru PovWatch.
+Klikněte na tlačítko níže pro odhlášení.',
+	'povwatch_unsubscribe' => 'Odhlásit odběr',
+	'povwatch_subscribe_intro' => 'Nejste přihlášeni k odběru PovWatch.
+Klikněte na tlačítko níže pro přihlášení.',
+	'povwatch_subscribe' => 'Přihlásit odběr',
+	'povwatch_added' => 'přidáno',
+	'right-povwatch_admin' => 'Spravovat oprávnění pro přidávání stránek do seznamu sledovaných jiných uživatelů',
+	'right-povwatch_user' => 'Přidávat stránky do seznamu sledovaných jiných uživatelů',
+	'action-povwatch_admin' => 'spravovat práva uživatelů PovWatch',
+	'action-povwatch_user' => 'přidat tuto stránku na seznam sledovaných stránek jiného uživatele',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  * @author Jon Harald Søby

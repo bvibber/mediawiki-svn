@@ -663,7 +663,7 @@ I file caricati dovrebbero contenere il nome della pagina e un motivo opzionale 
 $messages['ja'] = array(
 	'deletebatch' => 'ページを一括削除する',
 	'deletebatch-desc' => '[[Special:DeleteBatch|ページを一括削除する]]',
-	'deletebatch-help' => 'ページを一括削除することができます。ページ毎の削除の他に、ファイルに列挙したページ群を削除することができます。削除記録に表示される利用者を選択してください。アップロードされたファイルについては、各行にページ名とパイプ記号 (|) で区切った理由の追加説明を記す必要があります。',
+	'deletebatch-help' => 'ページを一括削除することができます。ページ毎の削除の他に、ファイルに列挙したページ群を削除することができます。削除記録に表示される利用者を選択してください。アップロードされたファイルについては、各行にページ名とパイプ記号 （|） で区切った理由の追加説明を記す必要があります。',
 	'deletebatch-caption' => 'ページ一覧:',
 	'deletebatch-title' => '一括削除',
 	'deletebatch-link-back' => '特別ページに戻る',

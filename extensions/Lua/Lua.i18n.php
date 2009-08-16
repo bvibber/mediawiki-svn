@@ -370,6 +370,20 @@ $messages['id'] = array(
 	'lua_overflow_time' => 'Batas waktu eksekusi telah dicapai',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'lua_desc' => 'Estende il parser con il supporto per blocchi incorporati di codice [http://www.lua.org/ Lua]',
+	'lua_error' => 'Errore nella linea $1',
+	'lua_extension_notfound' => 'Estensione Lua non configurata',
+	'lua_interp_notfound' => 'Interprete Lua non trovato',
+	'lua_error_internal' => 'Errore interno',
+	'lua_overflow_recursion' => 'Raggiunto il limite di ricorsione',
+	'lua_overflow_loc' => 'Limite di numero massimo di righe di codice raggiunto',
+	'lua_overflow_time' => 'Tempo massimo di esecuzione raggiunto',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -577,6 +591,20 @@ $messages['sk'] = array(
 	'lua_overflow_recursion' => 'Bol dosiahnutý limit rekurzie',
 	'lua_overflow_loc' => 'Bol dosiahnutý limit počtu riadkov kódu',
 	'lua_overflow_time' => 'Bol dosiahnutý limit času behu',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'lua_desc' => 'Utökar tolken med stöd för inbäddade block av [http://www.lua.org/ Luakod]',
+	'lua_error' => 'Fel på rad $1',
+	'lua_extension_notfound' => 'Lua-tillägget ej konfigurerat',
+	'lua_interp_notfound' => 'Hittade inte Lua-tolken',
+	'lua_error_internal' => 'Internt fel',
+	'lua_overflow_recursion' => 'Rekursionsgräns uppnådd',
+	'lua_overflow_loc' => 'Maximalt antal kodrader uppnått',
+	'lua_overflow_time' => 'Maximal exekveringstid uppnådd',
 );
 
 /** Telugu (తెలుగు)

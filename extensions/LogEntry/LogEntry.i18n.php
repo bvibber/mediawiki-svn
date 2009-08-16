@@ -445,9 +445,13 @@ $messages['sq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Fluff
  * @author Najami
  */
 $messages['sv'] = array(
+	'logentry-append' => 'Lägg till efter',
+	'logentry-parserhook-desc' => 'Detta märkestillägget ger ett formulär för att lägga till element före/efter andra element på loggsidor',
+	'logentry' => 'Loggelement',
 	'logentry-invalidpage' => 'Ogiltig sida',
 );
 

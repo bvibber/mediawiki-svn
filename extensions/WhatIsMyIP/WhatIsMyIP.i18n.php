@@ -745,11 +745,12 @@ $messages['zh-cn'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'whatismyip' => '显示我的IP',
 	'whatismyip-desc' => '在[[Special:WhatIsMyIP]]上显示现有用户的IP地址',
-	'whatismyip-out' => '您的IP为：',
+	'whatismyip-out' => '您的IP地址：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -896,7 +896,7 @@ $messages['ja'] = array(
 	'readerfeedback-npov' => '中立度',
 	'readerfeedback-presentation' => '分かりやすさ',
 	'readerfeedback-overall' => '総合',
-	'readerfeedback-level-none' => '(わからない)',
+	'readerfeedback-level-none' => '（わからない）',
 	'readerfeedback-level-0' => 'ひどい',
 	'readerfeedback-level-1' => '低い',
 	'readerfeedback-level-2' => '可',
@@ -904,8 +904,8 @@ $messages['ja'] = array(
 	'readerfeedback-level-4' => 'すばらしい',
 	'readerfeedback-submit' => '送信',
 	'readerfeedback-main' => '評価の対象となるのは記事のみです。',
-	'readerfeedback-success' => "'''評価にご協力いただきありがとうございます！'''([$3 ご意見・お問い合わせ])",
-	'readerfeedback-voted' => "'''このページは既に評価されているようです。'''([$3 ご意見・お問い合わせ])",
+	'readerfeedback-success' => "'''評価にご協力いただきありがとうございます！'''（[$3 ご意見・お問い合わせ]）",
+	'readerfeedback-voted' => "'''このページは既に評価されているようです。'''（[$3 ご意見・お問い合わせ]）",
 	'readerfeedback-submitting' => '送信中…',
 	'readerfeedback-finished' => 'ありがとうございます！',
 	'readerfeedback-tagfilter' => 'タグ:',
@@ -1011,6 +1011,7 @@ $messages['lb'] = array(
 	'readerfeedback-finished' => 'Merci!',
 	'readerfeedback-tagfilter' => 'Markéierung:',
 	'tooltip-ca-ratinghist' => 'Lieserbewertunge vun dëser Säit',
+	'specialpages-group-feedback' => 'Meenung vun deem dee kuckt',
 );
 
 /** Macedonian (Македонски)
@@ -1226,6 +1227,7 @@ $messages['oc'] = array(
  * @author ToSter
  */
 $messages['pl'] = array(
+	'readerfeedback-desc' => 'Ocenianie stron pozwala czytelnikom przedstawić swoją opinię w formie kategoryzacji',
 	'readerfeedback' => 'Co myślisz o tej stronie?',
 	'readerfeedback-text' => "''Poświęć chwilę, aby ocenić tę stronę. Twoja opinia jest ważna i pomoże nam w ulepszeniu naszej witryny.''",
 	'readerfeedback-reliability' => 'Solidność',
@@ -1247,6 +1249,7 @@ $messages['pl'] = array(
 	'readerfeedback-finished' => 'Dziękujemy!',
 	'readerfeedback-tagfilter' => 'Znacznik',
 	'tooltip-ca-ratinghist' => 'Oceny czytelników tej strony',
+	'specialpages-group-feedback' => 'Opinia czytelnika',
 );
 
 /** Portuguese (Português)

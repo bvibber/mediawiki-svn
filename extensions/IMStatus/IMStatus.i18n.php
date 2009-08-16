@@ -694,7 +694,7 @@ $messages['id'] = array(
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'imstatus-desc' => '各種インスタントメッセンジャーのオンライン状態を示すためのタグを追加する (AIM、Google トーク、ICQ、MSN/Live メッセンジャー、Skype、Xfire、Yahoo)',
+	'imstatus-desc' => '各種インスタントメッセンジャーのオンライン状態を示すためのタグを追加する （AIM、Google トーク、ICQ、MSN/Live メッセンジャー、Skype、Xfire、Yahoo）',
 	'imstatus_syntax' => '構文',
 	'imstatus_default' => 'デフォルト',
 	'imstatus_example' => '例',
@@ -996,6 +996,9 @@ $messages['pl'] = array(
 	'imstatus_icq_id' => 'identyfikator ICQ',
 	'imstatus_icq_style' => 'liczba z zakresu od 0 do 26 (tak, jest aż 27 dostępnych stylów...).',
 	'imstatus_live_code' => 'Twój identyfikator webowy Live Messengera',
+	'imstatus_skype_nbstyle' => 'Uwaga: Jeśli wybierzesz styl, który jest związany z jakąś akcją, wybrane działanie zostanie nadpisane domyślną akcją odpowiadającą wybranemu stylowi.',
+	'imstatus_xfire_size' => 'wielkość przycisku od $1 (największy) do $2 (najmniejszy).',
+	'imstatus_yahoo_style' => 'styl przycisku od $1 (najmniejszy) do $2 (największy), $3 i $4 dla poczty głosowej.',
 );
 
 /** Portuguese (Português)
@@ -1379,7 +1382,7 @@ $messages['zh-hans'] = array(
 	'imstatus_live_get_code' => '您的Live Messenger网站ID：<strong>并不是您的电子邮件地址</strong>，您需要在<a href="$1">您的live messenger选项
 </a>中生成。
 需要提供的ID由"$2"和"$3"之间的数字、字母组成。',
-	'imstatus_xfire_size' => '按钮的大小，可从 $1 (最大) 到 $2 (最小)供选择。',
+	'imstatus_xfire_size' => '按钮的大小，可从 $1 （最大） 到 $2 （最小）供选择。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
