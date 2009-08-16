@@ -34,7 +34,8 @@ $messages['en'] = array(
 	
 Scale: \'\'\'[1]\'\'\' - Poor; \'\'\'[2]\'\'\' - Low; \'\'\'[3]\'\'\' - Fair; \'\'\'[4]\'\'\' - High; \'\'\'[5]\'\'\' - Excellent;
 
-	The \'\'\'number of reviews per day\'\'\' <font color="red">\'\'(red)\'\'</font> is shown on the graphs below, on a \'\'1:$1\'\' scale.',
+	The \'\'\'number of reviews per day\'\'\' <font color="red">\'\'(red)\'\'</font> is shown on the graphs below; the scale is given for each graph.',
+	'ratinghistory-graph-scale' => '\'\'\'Reviews per day\'\'\' <font color="red">\'\'(red)\'\'</font> shown on a \'\'1:$1\'\' scale.',
 	'right-feedback' => 'Use the feedback form to rate a page',
 );
 
