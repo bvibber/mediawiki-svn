@@ -5,8 +5,6 @@
  * @addtogroup Extensions
  */
 
-if (!defined('MEDIAWIKI')) die();
-
 $messages = array();
 
 $messages['en'] = array(
@@ -16,7 +14,7 @@ $messages['en'] = array(
 You have a comment on this page? Add it here or <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} edit the page directly]</span>.',
 	'commentbox-savebutton' => 'Save comment',
 	'commentbox-name' => 'Name:',
-	'commentbox-name-explanation' => '<small>(Tip: If you [[Special:Userlogin|log in]], you won\'t have to fill in your name here manually)</small>',
+	'commentbox-name-explanation' => '<small>(Tip: If you [[Special:Userlogin|log in]], you will not have to fill in your name here manually)</small>',
 	'commentbox-log' => 'New Comments',
 	'commentbox-first-comment-heading' => '== Comments ==',
 	'commentbox-regex' => '/\n==\s*Comments\s*==\s*\n/i', # should match the above heading
@@ -24,6 +22,10 @@ You have a comment on this page? Add it here or <span class="plainlinks">[{{full
 	'commentbox-error-page-nonexistent' => 'This page does not exist!',
 	'commentbox-error-namespace' => 'Comments are not allowed in this namespace!',
 	'commentbox-error-empty-comment' => 'Empty comments are not allowed!',
+);
+
+$messages['qqq'] = array(
+	'commentbox-regex' => 'Regular expression that should match {{msg-mw|commentbox-first-comment-heading}}',
 );
 
 $messages['de'] = array(
@@ -42,4 +44,3 @@ Du hast einen Kommentar zu dieser Seite? Trag ihn hier ein oder <span class="pla
 	'commentbox-error-namespace' => 'Kommentare sind in diesem Namensraum nicht erlaubt!',
 	'commentbox-error-empty-comment' => 'Leere Kommentare sind nicht erlaubt!',
 );
-

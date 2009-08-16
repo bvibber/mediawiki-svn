@@ -284,6 +284,12 @@ array[] = wgCollectionArticleNamespaces: ns-simple, wgCollectionFormats: assoc
 empty[] = wgCollectionMWServeCert: null, wgLicenseName: null, wgLicenseURL: null
 url = http://www.mediawiki.org/wiki/Extension:Collection
 
+Commentbox
+settings[] = wgCommentboxNamespaces: array
+settings[] = wgCommentboxRows: int, wgCommentboxColumns: int
+array[] = wgCommentboxNamespaces: ns-simple
+url = http://www.mediawiki.org/wiki/Extension:Commentbox
+
 CommentPages
 settings[] = wgCommentPagesNS: int
 url = http://www.mediawiki.org/wiki/Extension:CommentPages

@@ -9,13 +9,13 @@
  * @author Thomas Bleher <ThomasBleher@gmx.de>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Commentbox',
 	'path'           => __FILE__,
 	'author'         => '[http://spiele.j-crew.de Thomas Bleher]',
-	'version'        => '0.1',
+	'version'        => '0.2',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Commentbox',
 	'description'    => 'Adds a commentbox to certain pages',
 	'descriptionmsg' => 'commentbox-desc',
@@ -28,7 +28,7 @@ $wgCommentboxNamespaces = array (
 $wgCommentboxRows = 5;
 $wgCommentboxColumns = 80;
 
-$wgExtensionMessagesFiles['Commentbox'] = dirname(__FILE__) . '/Commentbox.i18n.php';
+$wgExtensionMessagesFiles['Commentbox'] = dirname( __FILE__ ) . '/Commentbox.i18n.php';
 $wgSpecialPages['AddComment'] = 'SpecialAddComment';
 $wgAutoloadClasses['SpecialAddComment'] = dirname( __FILE__ ) . '/SpecialAddComment_body.php';
 $wgHooks['OutputPageBeforeHTML'][] = 'wfExtensionCommentbox_Add';
@@ -38,23 +38,23 @@ function wfExtensionCommentbox_Add( &$op, &$text ) {
 	       $wgCommentboxNamespaces, $wgCommentboxRows,
 	       $wgCommentboxColumns;
 
-	if( !$wgTitle->exists() )
+	if ( !$wgTitle->exists() )
 		return true;
 
-	if( !$wgTitle->userCan('edit', true) )
+	if ( !$wgTitle->userCan( 'edit', true ) )
 		return true;
-	if( !array_key_exists( $wgTitle->getNamespace(), $wgCommentboxNamespaces )
+	if ( !array_key_exists( $wgTitle->getNamespace(), $wgCommentboxNamespaces )
 	|| !$wgCommentboxNamespaces[ $wgTitle->getNamespace() ] )
 		return true;
-	if( !( $action == 'view' || $action == 'purge' || $action == 'submit' ) )
+	if ( !( $action == 'view' || $action == 'purge' || $action == 'submit' ) )
 		return true;
-	if(  $wgRequest->getCheck( 'wpPreview' )
+	if (  $wgRequest->getCheck( 'wpPreview' )
 	  || $wgRequest->getCheck( 'wpLivePreview' )
 	  || $wgRequest->getCheck( 'wpDiff' ) )
 		return true;
-	if( !is_null( $wgRequest->getVal( 'preview' ) ) )
+	if ( !is_null( $wgRequest->getVal( 'preview' ) ) )
 		return true;
-	if( !is_null( $wgRequest->getVal( 'diff' ) ) )
+	if ( !is_null( $wgRequest->getVal( 'diff' ) ) )
 		return true;
 
 	$newaction = Title::newFromText( 'AddComment', NS_SPECIAL )->escapeFullURL();
