@@ -1200,9 +1200,11 @@ class WebInstaller_Options extends WebInstallerPage {
 		$licenseJs = 'showControlArray("config__LicenseCode_cc-choose", ["config-cc-wrapper"]);';
 		$emailJs = 'enableControlArray("config_wgEnableEmail", ["config_wgPasswordSender"]);';
 		$uploadJs = 'enableControlArray("config_wgEnableUploads", ["config_wgDeletedDirectory"]);';
+		$caches = $this->getVar( '_AvailableCaches' );
 
 		$this->startForm();
 		$this->parent->output->addHTML(
+			# User Rights
 			$this->parent->getRadioSet( array(
 				'var' => '_RightsProfile',
 				'label' => 'config-profile',
@@ -1210,6 +1212,8 @@ class WebInstaller_Options extends WebInstallerPage {
 				'values' => array_keys( $this->parent->rightsProfiles ),
 			) ) .
 			$this->parent->getHelpBox( 'config-profile-help' ) .
+
+			# Licensing
 			$this->parent->getRadioSet( array(
 				'var' => '_LicenseCode',
 				'label' => 'config-license',
@@ -1219,6 +1223,8 @@ class WebInstaller_Options extends WebInstallerPage {
 			) ) .
 			$this->getCCChooser() .
 			$this->parent->getHelpBox( 'config-license-help' ) .
+			
+			# E-mail
 			$this->parent->getFieldsetStart( 'config-email-settings' ) .
 			$this->parent->getCheckBox( array(
 				'var' => 'wgEnableEmail',
@@ -1232,6 +1238,8 @@ class WebInstaller_Options extends WebInstallerPage {
 			) ) .
 			$this->parent->getHelpBox( 'config-email-sender-help' ) .
 			$this->parent->getFieldsetEnd() .
+
+			# Uploading
 			$this->parent->getFieldsetStart( 'config-upload-settings' ) .
 			$this->parent->getCheckBox( array( 
 				'var' => 'wgEnableUploads',
@@ -1250,6 +1258,18 @@ class WebInstaller_Options extends WebInstallerPage {
 			) ) .
 			$this->parent->getHelpBox( 'config-logo-help' ) .
 			$this->parent->getFieldsetEnd() .
+
+			# Advanced settings
+			$this->parent->getFieldsetStart( 'config-advanced-settings' ) .
+			( $caches ? $this->parent->getRadioSet( array(
+				'var' => '_Cache',
+				'label' => 'config-caching',
+				'itemLabelPrefix' => 'config-caching-',
+				'values' => array_keys( $caches ),
+			) ) .
+			$this->parent->getHelpBox( 'config-caching-help' ) : '' ) .
+			$this->parent->getFieldsetEnd() .
+
 			"<script type=\"text/javascript\">$licenseJs $emailJs $uploadJs</script>\n"
 
 		);
@@ -1424,11 +1444,11 @@ class WebInstaller_ReleaseNotes extends WebInstaller_Document {
 		return $text;
 	}
 	private static function replaceBugLinks( $matches ) {
-		return '(<span class="config-buglink">[https://bugzilla.wikimedia.org/show_bug.cgi?id=' .
+		return '(<span class="config-plainlink">[https://bugzilla.wikimedia.org/show_bug.cgi?id=' .
 			$matches[1] . ' bug ' . $matches[1] . '])';
 	}
 	private static function replaceConfigLinks( $matches ) {
-		return '<span class="config-buglink">[http://www.mediawiki.org/wiki/Manual:' .
+		return '<span class="config-plainlink">[http://www.mediawiki.org/wiki/Manual:' .
 			$matches[1] . ' ' . $matches[1] . ']';
 	}
 }

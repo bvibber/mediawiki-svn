@@ -145,7 +145,7 @@
 	height: 54em; 
 }
 
-.config-buglink a {
+.config-plainlink a {
 	background: none !important;
 	padding: 0 !important;
 }

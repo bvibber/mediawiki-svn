@@ -4310,6 +4310,13 @@ If you don't want a logo, leave this box blank.",
 'config-cc-error' => 'The Creative Commons license chooser gave no result. Please enter the license name manually.',
 'config-cc-again' => 'Pick again...',
 'config-cc-not-chosen' => 'Please choose which Creative Commons license you want and click "proceed".',
+'config-advanced-settings' => 'Advanced configuration',
+'config-caching' => 'Object caching',
+'config-caching-help' => 'Object caching is generally recommended for most medium and large sites',
+'config-caching-turck' => 'Turck MMCache',
+'config-caching-xcache' => 'XCache',
+'config-caching-apc' => 'APC',
+'config-caching-eaccel' => 'eAccelerator',
 
 # Special:Version
 'version'                          => 'Version',
