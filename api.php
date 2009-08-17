@@ -49,25 +49,10 @@ wfProfileIn('api.php');
 // which will end up triggering HTML detection and execution, hence
 // XSS injection and all that entails.
 //
-// Ensure that all access is through the canonical entry point...
-//
-if( isset( $_SERVER['SCRIPT_NAME'] ) ) {
-	$url = $_SERVER['SCRIPT_NAME'];
-} else {
-	$url = $_SERVER['URL'];
-}
-
-// Live-hack to let api.php work with secure.wikimedia.org
-// Andrew 2009-06-17
-if (substr( $wgServer, 0, 5 ) == 'https') {
-	$url = "/$site/$lang$url";
-}
-// End live hack
-
-if( strcmp( "$wgScriptPath/api$wgScriptExtension", $url ) ) {
+if( $wgRequest->isPathInfoBad() ) {
 	wfHttpError( 403, 'Forbidden',
-		'API must be accessed through the primary script entry point. Expected '.
-		"$wgScriptPath/api$wgScriptExtension but got $url" );
+		'Invalid file extension found in PATH_INFO. ' . 
+		'The API must be accessed through the primary script entry point.' );
 	return;
 }
 
