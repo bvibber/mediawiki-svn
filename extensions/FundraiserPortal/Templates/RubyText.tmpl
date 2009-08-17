@@ -38,25 +38,25 @@ div#p-DONATE.collapsed {
 	display: none;
 }
 div#fundraiserportal-button {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-c.png);
+	background-image: url({{{imageUrl}}}/rubytext-c.png);
 	margin: 0;
 	margin-left: 10px;
 	margin-right: 10px;
 }
 div#fundraiserportal-button div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-t.png);
+	background-image: url({{{imageUrl}}}/rubytext-t.png);
 	background-position: top;
 	background-repeat: repeat-x;
 	margin: 0;
 }
 div#fundraiserportal-button div div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-b.png);
+	background-image: url({{{imageUrl}}}/rubytext-b.png);
 	background-position: bottom;
 	background-repeat: repeat-x;
 	margin: 0;
 }
 div#fundraiserportal-button div div div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-tl.png);
+	background-image: url({{{imageUrl}}}/rubytext-tl.png);
 	background-position: top left;
 	background-repeat: no-repeat;
 	margin: 0;
@@ -64,19 +64,19 @@ div#fundraiserportal-button div div div {
 	margin-right: -10px;
 }
 div#fundraiserportal-button div div div div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-bl.png);
+	background-image: url({{{imageUrl}}}/rubytext-bl.png);
 	background-position: bottom left;
 	background-repeat: no-repeat;
 	margin: 0;
 }
 div#fundraiserportal-button div div div div div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-tr.png);
+	background-image: url({{{imageUrl}}}/rubytext-tr.png);
 	background-position: top right;
 	background-repeat: no-repeat;
 	margin: 0;
 }
 div#fundraiserportal-button div div div div div div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-br.png);
+	background-image: url({{{imageUrl}}}/rubytext-br.png);
 	background-position: bottom right;
 	background-repeat: no-repeat;
 	margin: 0;
@@ -93,7 +93,7 @@ div#fundraiserportal-button a:hover {
 }
 div#fundraiserportal-message {
 	background-color: white;
-	background-image: url(<?php echo $imageUrl ?>/rubytext-b-b.png);
+	background-image: url({{{imageUrl}}}/rubytext-b-b.png);
 	background-position: bottom;
 	background-repeat: repeat-x;
 	margin: 0;
@@ -102,7 +102,7 @@ div#fundraiserportal-message {
 	padding: 0;
 }
 div#fundraiserportal-message div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-b-br.png);
+	background-image: url({{{imageUrl}}}/rubytext-b-br.png);
 	background-position: bottom right;
 	background-repeat: no-repeat;
 	margin: 0;
@@ -111,7 +111,7 @@ div#fundraiserportal-message div {
 	padding: 0;
 }
 div#fundraiserportal-message div div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-b-bl.png);
+	background-image: url({{{imageUrl}}}/rubytext-b-bl.png);
 	background-position: bottom left;
 	background-repeat: no-repeat;
 	margin: 0;
@@ -119,14 +119,14 @@ div#fundraiserportal-message div div {
 	padding-bottom: 10px;
 }
 div#fundraiserportal-message div div div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-b-l.png);
+	background-image: url({{{imageUrl}}}/rubytext-b-l.png);
 	background-position: left;
 	background-repeat: repeat-y;
 	margin: 0;
 	padding: 0;
 }
 div#fundraiserportal-message div div div div {
-	background-image: url(<?php echo $imageUrl ?>/rubytext-b-r.png);
+	background-image: url({{{imageUrl}}}/rubytext-b-r.png);
 	background-position: right;
 	background-repeat: repeat-y;
 	margin: 0;
@@ -145,7 +145,7 @@ div#fundraiserportal-close a {
 	display: block;
 	width: 13px;
 	height: 13px;
-	background-image: url(<?php echo $imageUrl ?>/rubytext-b-close.png);
+	background-image: url({{{imageUrl}}}/rubytext-b-close.png);
 	background-position: top left;
 	background-repeat: no-repeat;
 }
@@ -165,9 +165,9 @@ function updateFundraiserPortal() {
 	}
 }
 function setFundraiserPortalCookie( state ) {
-	// Store cookie so portal is hidden for one week
+	// Store cookie so portal is hidden for three weeks
 	var e = new Date();
-	e.setTime( e.getTime() + ( 7 * 24 * 60 * 60 * 1000 ) );
+	e.setTime( e.getTime() + ( 21 * 24 * 60 * 60 * 1000 ) );
 	var work = 'hidefrportal=' + ( state ? 1 : 0 ) + '; expires=' + e.toGMTString() + '; path=/';
 	document.cookie = work;
 }
@@ -184,7 +184,7 @@ updateFundraiserPortal();
 				<div>
 					<div>
 						<div>
-							<a href="<?php echo $wgFundraiserPortalURL ?>"><?php echo wfMsg( 'fundraiserportal-rubytext-button' ) ?></a>
+							<a href="{{{buttonUrl}}}">{{msg:fundraiserportal-rubytext-button}}</a>
 						</div>
 					</div>
 				</div>
@@ -197,10 +197,10 @@ updateFundraiserPortal();
 		<div>
 			<div>
 				<div>
-					<p><?php echo wfMsg( 'fundraiserportal-rubytext-message' ) ?></p>
+					<p>{{msg:fundraiserportal-rubytext-message}}</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div id="fundraiserportal-close"><a href="#" onclick="toggleFundraiserPortal();return false;" title="<?php echo wfMsg( 'fundraiserportal-rubytext-close' ) ?>"></a></div>
+<div id="fundraiserportal-close"><a href="#" onclick="toggleFundraiserPortal();return false;" title="{{msg:fundraiserportal-rubytext-close}}"></a></div>
