@@ -11,7 +11,7 @@ if (isset($_SERVER['REDIRECT_URL'])) {
 }
 	
 # Is this a thumbnail?
-if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*)/' . 
+if ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*)/' . 
 	'(page(\d*)-)*(\d*)px-([^/]*)$!', $uri, $matches ) )
 {
 	list( $all, $site, $lang, $arch, $filename, $pagefull, $pagenum, $size, $fn2 ) = $matches;
@@ -25,7 +25,7 @@ if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/arc
 	if ( $arch ) {
 		$params['archived'] = 1;
 	}
-} elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*\.(?:(?i)ogg|ogv|oga))/' . 
+} elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*\.(?:(?i)ogg|ogv|oga))/' . 
 	'(mid|seek(?:=|%3D|%3d)\d+)-([^/]*)$!', $uri, $matches ) ) 
 {
 	list( $all, $site, $lang, $arch, $filename, $timeFull, $fn2 ) = $matches;
@@ -189,7 +189,9 @@ EOT;
 	# Error message, suppress cache
 	header( 'HTTP/1.1 500 Internal server error' );
 	header( 'Cache-Control: no-cache' );
-} else {
+} 
+/* we don't use caching servers any more
+else {
 	# Cache the file locally if this is a cache server
 	$uname = posix_uname();
 	$server = $uname['nodename'];
@@ -209,6 +211,7 @@ EOT;
 		}
 	}
 }
+*/
 
 if ( !$contentType ) {
 	header( 'Content-Type:' );
@@ -219,7 +222,7 @@ print $text;
 curl_close( $ch );
 
 function pathFromUrl( $url ) {
-	if( preg_match( '!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/(\w)/(\w\w)/([^/]*)/([^/]*)$!',
+	if( preg_match( '!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|)/(\w)/(\w\w)/([^/]*)/([^/]*)$!',
 		$url, $matches ) ) {
 		$parts = array_map( 'rawurldecode', $matches );
 		list( $all, $site, $lang, $arch, $hash1, $hash2, $filename, $fn2 ) = $parts;
