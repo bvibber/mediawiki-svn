@@ -540,10 +540,21 @@ $messages['vi'] = array(
 	'whosonline-desc' => 'Hiển thị [[Special:WhosOnline|danh sách]] các thành viên đã đăng nhập lẫn vô danh hiện đang trực tuyến',
 );
 
+$messages['yue'] = array(
+	'whosonline'      => '邊位上線',
+	'whosonline-desc' => '顯示而家在線嘅登入同匿名用戶嘅[[Special:WhosOnline一覽]]',
+);
+
+$messages['zh-hans'] = array(
+	'whosonline' => '谁正联机',
+	'whosonline-desc' => '显示现时联机的登入与匿名用户的[[Special:WhosOnline列表]]',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'whosonline' => '誰正在線',
+	'whosonline-desc' => '顯示現時在線的登入與匿名用戶的[[Special:WhosOnline列表]]',
 );
 
