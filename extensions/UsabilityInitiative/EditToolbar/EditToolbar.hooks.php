@@ -46,6 +46,9 @@ class EditToolbarHooks {
 		UsabilityInitiativeHooks::addScript(
 			'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
 		);
+		UsabilityInitiativeHooks::addStyle(
+			'EditToolbar/EditToolbar.css', $wgEditToolbarStyleVersion
+		);
 		// Internationalization
 		wfLoadExtensionMessages( 'EditToolbar' );
 		// Adds messages to page
@@ -108,6 +111,15 @@ class EditToolbarHooks {
 				'edittoolbar-tool-newline',
 				'edittoolbar-tool-table',
 				'edittoolbar-tool-table-example',
+				'edittoolbar-tool-table-example-header',
+				'edittoolbar-tool-table-title',
+				'edittoolbar-tool-table-dimensions',
+				'edittoolbar-tool-table-dimensions-rows',
+				'edittoolbar-tool-table-dimensions-columns',
+				'edittoolbar-tool-table-dimensions-headerrows',
+				'edittoolbar-tool-table-dimensions-headercolumns',
+				'edittoolbar-tool-table-insert',
+				'edittoolbar-tool-table-cancel',
 				'edittoolbar-tool-replace',
 				'edittoolbar-tool-replace-title',
 				'edittoolbar-tool-replace-search',

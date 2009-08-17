@@ -70,7 +70,7 @@ var editToolbarConfiguration = {
 							html: '<div id="edittoolbar-link-tabs"><ul><li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li><li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li></ul><div id="edittoolbar-link-dialog-tab-int"><form><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label> <input type="text" id="edittoolbar-link-int-target" /> <div id="edittoolbar-link-int-target-status" style="display: inline;"></div><br /><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label> <input type="text" id="edittoolbar-link-int-text" /></form></div><div id="edittoolbar-link-dialog-tab-ext"><form><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label> <input type="text" id="edittoolbar-link-ext-target" /><br /><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label> <input type="text" id="edittoolbar-link-ext-text" /></form></div></div>',
 							init: function() {
 								$j(this).find( '[rel]' ).each( function() {
-									$j(this).html( gM( $j(this).attr( 'rel' ) ) );
+									$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 								});
 								$j( '#edittoolbar-link-tabs' ).tabs();
 								
@@ -523,12 +523,70 @@ var editToolbarConfiguration = {
 						type: 'button',
 						icon: 'insert-table.png',
 						action: {
-							type: 'encapsulate',
-							options: {
-								pre: "{| class=\"wikitable\" border=\"1\"\n|",
-								periMsg: 'edittoolbar-tool-table-example',
-								post: "\n|}",
-								ownline: true
+							type: 'dialog',
+							titleMsg: 'edittoolbar-tool-table-title',
+							id: 'edittoolbar-table-dialog',
+							html: '<form><fieldset><legend rel="edittoolbar-tool-table-dimensions"></legend>' +
+								'<table><tr><td class="label"><label for="edittoolbar-table-dimensions-columns"' +
+								' rel="edittoolbar-tool-table-dimensions-columns"></label></td>' +
+								'<td><input type="text" id="edittoolbar-table-dimensions-columns" size="2" /></td>' +
+								'<td class="label"><label for="edittoolbar-table-dimensions-rows"' +
+								' rel="edittoolbar-tool-table-dimensions-rows"></label></td>' +
+								'<td><input type="text" id="edittoolbar-table-dimensions-rows" size="2" /></td></tr>' +
+								'<tr><td class="label"><label for="edittoolbar-table-dimensions-headercolumns"' +
+								' rel="edittoolbar-tool-table-dimensions-headercolumns"></label></td>' +
+								'<td><input type="text" id="edittoolbar-table-dimensions-headercolumns" size="2" /></td>' +
+								'<td class="label"><label for="edittoolbar-table-dimensions-headerrows"' +
+								' rel="edittoolbar-tool-table-dimensions-headerrows"></label></td>' +
+								'<td><input type="text" id="edittoolbar-table-dimensions-headerrows" size="2" /></td></tr>' +
+								'</table></fieldset></form>',
+							init: function() {
+								$j(this).find( '[rel]' ).each( function() {
+									$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+								});
+							},
+							dialog: {
+								width: 350, // FIXME: autoresize
+								buttons: {
+									'edittoolbar-tool-table-insert': function() {
+										var rows = parseInt( $j( '#edittoolbar-table-dimensions-rows' ).val() );
+										var cols = parseInt( $j( '#edittoolbar-table-dimensions-columns' ).val() );
+										var hrows = parseInt( $j( '#edittoolbar-table-dimensions-headerrows' ).val() );
+										var hcols = parseInt( $j( '#edittoolbar-table-dimensions-headercolumns' ).val() );
+										
+										var table = "{|\n";
+										for ( var r = 0; r < rows; r++ ) {
+											table += "|-\n";
+											for ( var c = 0; c < cols; c++ ) {
+												var isHeader = ( r < hrows && c < hcols );
+												var delim = isHeader ? '!' : '|';
+												if ( c > 0 )
+													delim += delim;
+												table += delim + ' ' +
+													gM( isHeader ?
+														'edittoolbar-tool-table-example-header' :
+														'edittoolbar-tool-table-example',
+														[ r + 1, c + 1 ] ) + ' ';
+											}
+											// Replace trailing space by newline
+											// table[table.length - 1] is read-only
+											table = table.substr( 0, table.length - 1 ) + "\n";
+										}
+										table += "|}";
+										$j.wikiEditor.modules.toolbar.fn.doAction(
+											$j(this).data( 'context' ), {
+												type: 'encapsulate',
+												options: {
+													pre: table,
+													ownline: true
+												}
+											});
+										$j(this).dialog( 'close' );
+									},
+									'edittoolbar-tool-table-cancel': function() {
+										$j(this).dialog( 'close' );
+									}
+								}
 							}
 						}
 					},
@@ -559,7 +617,7 @@ var editToolbarConfiguration = {
 							html: '<form><fieldset><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label> <input type="text" id="edittoolbar-replace-search" /><br /><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label> <input type="text" id="edittoolbar-replace-replace" /><br /><input type="checkbox" id="edittoolbar-replace-case" /><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label><br /><input type="checkbox" id="edittoolbar-replace-regex" /><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label><br /><input type="checkbox" id="edittoolbar-replace-all" /><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></fieldset></form>',
 							init: function() {
 								$j(this).find( '[rel]' ).each( function() {
-									$j(this).html( gM( $j(this).attr( 'rel' ) ) );
+									$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 								});
 							},
 							dialog: {
