@@ -72,18 +72,16 @@ $messages['en'] = array(
 {{ns:file}}:Example.jpg|Caption2",
 	'edittoolbar-tool-newline' => 'New line',
 	'edittoolbar-tool-table' => 'Table',
-	'edittoolbar-tool-table-example' => "-
-! header 1
-! header 2
-! header 3
-|-
-| row 1, cell 1
-| row 1, cell 2
-| row 1, cell 3
-|-
-| row 2, cell 1
-| row 2, cell 2
-| row 2, cell 3",
+	'edittoolbar-tool-table-example' => 'Row $1, cell $2',
+	'edittoolbar-tool-table-example-header' => 'Row $1, cell $2 (header)',
+	'edittoolbar-tool-table-title' => 'Insert table',
+	'edittoolbar-tool-table-dimensions' => 'Dimensions',
+	'edittoolbar-tool-table-dimensions-rows' => 'Rows',
+	'edittoolbar-tool-table-dimensions-columns' => 'Columns',
+	'edittoolbar-tool-table-dimensions-headerrows' => 'Header rows',
+	'edittoolbar-tool-table-dimensions-headercolumns' => 'Header columns',
+	'edittoolbar-tool-table-insert' => 'Insert',
+	'edittoolbar-tool-table-cancel' => 'Cancel',
 	'edittoolbar-tool-replace' => 'Replace',
 	'edittoolbar-tool-replace-title' => 'Search and replace',
 	'edittoolbar-tool-replace-search' => 'Search for:',
