@@ -3,7 +3,7 @@ addOnloadHook(function() {
 		var logo = document.getElementById('p-logo');
 		if (logo) {
 			var div = document.createElement('div');
-			div.id = "p-donate-button";
+			div.id = "p-DONATE";
 			div.className = "portlet";
 			div.innerHTML = wgFundraiserPortal;
 			if (logo.nextSibling == null) {
