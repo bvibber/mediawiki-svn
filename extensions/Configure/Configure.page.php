@@ -388,18 +388,23 @@ abstract class ConfigurationPage extends SpecialPage {
 			$userLink = '';
 			if( !$data['userwiki'] || !$data['username'] ) {
 				$userLink = '';
+				$username = '';
 			} else if ( $data['userwiki'] == wfWikiId() ) {
 				$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), htmlspecialchars( $data['username'] ) );
+				$username = $data['username'];
 			} elseif ( $wiki = WikiMap::getWiki( $data['userwiki'] ) ) {
 				$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), htmlspecialchars( $data['username'].'@'.$data['userwiki'] ) );
+				$username = '';
 			} else {
 				## Last-ditch
 				$userLink = htmlspecialchars( $data['username'].'@'.$data['userwiki'] );
+				$username = '';
 			}
 
 			$comment = $data['reason'] ? $skin->commentBlock( $data['reason'] ) : '';
 
-			$text = wfMsgExt( 'configure-old-summary', array( 'replaceafter', 'parseinline' ), array( $link, $userLink, $diffLink, $comment ) );
+			$text = wfMsgExt( 'configure-old-summary', array( 'parseinline' ), array( '$1', '$2', '$3', '$4', $username ) );
+			$text = wfMsgReplaceArgs( $text, array( $link, $userLink, $diffLink, $comment ) );
 
 			$prev = $ts;
 
