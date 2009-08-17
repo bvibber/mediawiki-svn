@@ -10,9 +10,8 @@
  *	);
  * ...using the API, which is still be finished.
  */
-(function($) {
-$.wikiEditor = { 'modules': {}, 'instances': [] };
-$.fn.wikiEditor = function() {
+jQuery.wikiEditor = { 'modules': {}, 'instances': [] };
+( function( $ ) { $.fn.wikiEditor = function() {
 
 /* Initialization */
 
@@ -34,9 +33,7 @@ if ( typeof context !== 'undefined' ) {
 		// Handle API calls
 		var call = arguments.shift();
 		if ( call in context.api ) {
-			context.api[call](
-				context, arguments[0] == undefined ? {} : arguments[0]
-			);
+			context.api[call]( context, arguments[0] == undefined ? {} : arguments[0] );
 		}
 		// Store the context for next time and return
 		return $(this).data( 'context', context );
@@ -48,26 +45,20 @@ if ( typeof context !== 'undefined' ) {
 /* Construction */
 
 var instance = $.wikiEditor.instances.length;
-context = {
-	'$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance
-};
+context = { '$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance };
 $.wikiEditor.instances[instance] = $(this);
 
 // Encapsulate the textarea with some containers for layout
 $(this)
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' )
-		.attr( 'id', 'wikiEditor-ui' ) )
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' )
-		.attr( 'id', 'wikiEditor-ui-bottom' ) )
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' )
-		.attr( 'id', 'wikiEditor-ui-text' ) );
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ).attr( 'id', 'wikiEditor-ui' ) )
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ).attr( 'id', 'wikiEditor-ui-bottom' ) )
+	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ).attr( 'id', 'wikiEditor-ui-text' ) );
 
 // Get a reference to the outer container
 context.$ui = $(this).parent().parent().parent();
 context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 // Attach a container in the top
-context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' )
-	.attr( 'id', 'wikiEditor-ui-top' ) );
+context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
 
 // Create a set of standard methods for internal and external use
 context.api = {

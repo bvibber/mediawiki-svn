@@ -16,7 +16,6 @@ getSelection: function() {
 	}
 	return retval;
 },
-
 /**
  * Ported from skins/common/edit.js by Trevor Parscal
  * (c) 2009 Wikimedia Foundation (GPLv2) - http://www.wikimedia.org
@@ -30,7 +29,6 @@ getSelection: function() {
  * @param ownline If true, put the inserted text is on its own line
  * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
  */
- 
 encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 	/**
 	 * Check if the selected text is the same as the insert text
@@ -66,14 +64,15 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			range2.collapse();
 			range2.moveStart( 'character', -1 );
 			// FIXME: Which check is correct?
-			if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" )
+			if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
 				pre = "\n" + pre;
-			
+			}
 			var range3 = document.selection.createRange();
 			range3.collapse( false );
 			range3.moveEnd( 'character', 1 );
-			if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" )
+			if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
 				post += "\n";
+			}
 		}
 		checkSelectedText();
 		range.text = pre + selText + post;
@@ -98,19 +97,19 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 		var endPos = e.selectionEnd;
 		checkSelectedText();
 		if ( ownline ) {
-			if ( startPos != 0 && e.value.charAt( startPos - 1 ) != "\n" )
+			if ( startPos != 0 && e.value.charAt( startPos - 1 ) != "\n" ) {
 				pre = "\n" + pre;
-			if ( e.value.charAt( endPos ) != "\n" )
+			}
+			if ( e.value.charAt( endPos ) != "\n" ) {
 				post += "\n";
+			}
 		}
-		e.value = e.value.substring( 0, startPos ) + pre + selText + post +
-			e.value.substring( endPos, e.value.length );
+		e.value = e.value.substring( 0, startPos ) + pre + selText + post + e.value.substring( endPos, e.value.length );
 		if ( isSample ) {
 			e.selectionStart = startPos + pre.length;
 			e.selectionEnd = startPos + pre.length + selText.length;
 		} else {
-			e.selectionStart =
-				startPos + pre.length + selText.length + post.length;
+			e.selectionStart = startPos + pre.length + selText.length + post.length;
 			e.selectionEnd = e.selectionStart;
 		}
 		e.scrollTop = textScroll;
@@ -129,7 +128,7 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
  getCaretPosition: function() {
 	function getCaret( e ) {
 		var caretPos = 0;
-		if($.browser.msie) {
+		if ( $.browser.msie ) {
 			// IE Support
 			var postFinished = false;
 			var periFinished = false;
@@ -161,8 +160,7 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			 */
 			do {
 				if ( !postFinished ) {
-					if ( preRange.
-							compareEndPoints( "StartToEnd", preRange ) == 0 ) {
+					if ( preRange.compareEndPoints( "StartToEnd", preRange ) == 0 ) {
 						postFinished = true;
 					} else {
 						preRange.moveEnd( "character", -1 )
@@ -174,8 +172,7 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 					}
 				}
 				if ( !periFinished ) {
-					if ( periRange.
-							compareEndPoints( "StartToEnd", periRange ) == 0 ) {
+					if ( periRange.compareEndPoints( "StartToEnd", periRange ) == 0 ) {
 						periFinished = true;
 					} else {
 						periRange.moveEnd( "character", -1 )
@@ -187,8 +184,7 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 					}
 				}
 				if ( !postFinished ) {
-					if ( postRange.
-							compareEndPoints("StartToEnd", postRange) == 0 ) {
+					if ( postRange.compareEndPoints("StartToEnd", postRange) == 0 ) {
 						postFinished = true;
 					} else {
 						postRange.moveEnd( "character", -1 )
@@ -255,13 +251,11 @@ scrollToCaretPosition: function( pos ) {
 				break;
 			}
 		}
-		if( nextSpace > lineLength && caret <= lineLength ) {
+		if ( nextSpace > lineLength && caret <= lineLength ) {
 			charInLine = caret - lastSpaceInLine;
 			row++;
 		}
-		return (
-			$.os.name == 'mac' ? 13 : ( $.os.name == 'linux' ? 15 : 16 )
-		) * row;
+		return ( $.os.name == 'mac' ? 13 : ( $.os.name == 'linux' ? 15 : 16 ) ) * row;
 	}
 	return this.each(function() {
 		$(this).focus();
@@ -296,7 +290,7 @@ scrollToCaretPosition: function( pos ) {
 			}
 		}
 		$(this).trigger( 'scrollToPosition' );
-	});
+	} );
 }
 
 } ); } )( jQuery );

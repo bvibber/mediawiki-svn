@@ -1,7 +1,8 @@
 /**
  * TOC Module for wikiEditor
  */
-(function($) { $.wikiEditor.modules.toc = {
+( function( $ ) { $.wikiEditor.modules.toc = {
+
 /**
  * API accessible functions
  */
@@ -81,15 +82,13 @@ fn: {
 			// know what section it is in
 			if ( !( position < context.data.outline[0].position - 1 ) ) {
 				while (
-					section < context.data.outline.length &&
-					context.data.outline[section].position - 1 < position
+					section < context.data.outline.length && context.data.outline[section].position - 1 < position
 				) {
 					section++;
 				}
 				section = Math.max( 0, section );
 			}
-			context.modules.$toc.find( 'a.section-' + section )
-				.addClass( 'currentSelection' );
+			context.modules.$toc.find( 'a.section-' + section ).addClass( 'currentSelection' );
 		}
 	},
 	/**
@@ -136,10 +135,7 @@ fn: {
 							.data( 'textbox', context.$textarea )
 							.data( 'position', structure[i].position )
 							.click( function( event ) {
-								$(this).data( 'textbox' )
-									.scrollToCaretPosition(
-											$(this).data( 'position' )
-									);
+								$(this).data( 'textbox' ).scrollToCaretPosition( $(this).data( 'position' ) );
 								event.preventDefault();
 							} )
 							.text( structure[i].text )
@@ -191,12 +187,7 @@ fn: {
 			var level = Math.min( startLevel, endLevel );
 			text = $.trim( text.substr( level, text.length - ( level * 2 ) ) );
 			// Add the heading data to the outline
-			outline[h] = {
-				'text': text,
-				'position': position,
-				'level': level,
-				'index': h + 1
-			};
+			outline[h] = { 'text': text, 'position': position, 'level': level, 'index': h + 1 };
 		}
 		// Normalize heading levels for list creation
 		// This is based on Linker::generateTOC() so, it should behave like the
@@ -218,16 +209,11 @@ fn: {
 		// section 0, if needed
 		var structure = buildStructure( outline );
 		if ( $( 'input[name=wpSection]' ).val() == '' )
-			structure.unshift( {
-				'text': wgPageName.replace(/_/g, ' '),
-				'level': 1,
-				'index': 0,
-				'position': 0 
-			});
+			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		context.modules.$toc.html( buildList( structure ) );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}
 }
 
-};})(jQuery);
+}; } ) ( jQuery );
