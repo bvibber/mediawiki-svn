@@ -40,7 +40,37 @@ Configure $wgPrefStatsTrackPrefs to track preferences.',
 	'prefstats-legend-in' => 'Opted in',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ * @author Siebrand
+ */
+$messages['qqq'] = array(
+	'prefstats-factors' => '$1 is a list of values with a link each, and separated by {{msg-mw|pipe-separator}}.',
+	'prefstats-factor-hour' => 'One hour. Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
+	'prefstats-factor-day' => 'One day. Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
+	'prefstats-factor-week' => 'One week. Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
+	'prefstats-factor-twoweeks' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
+	'prefstats-factor-fourweeks' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
+	'prefstats-factor-default' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'prefstats-xaxis' => 'Tydsduur (ure)',
+	'prefstats-factors' => 'Wys per: $1',
+	'prefstats-factor-hour' => 'uur',
+	'prefstats-factor-sixhours' => 'ses uur',
+	'prefstats-factor-day' => 'dag',
+	'prefstats-factor-week' => 'week',
+	'prefstats-factor-twoweeks' => 'twee weke',
+	'prefstats-factor-fourweeks' => 'vier weke',
+);
+
 /** Arabic (العربية)
+ * @author Meno25
+ * @author Orango
  * @author OsamaK
  */
 $messages['ar'] = array(
@@ -57,6 +87,17 @@ $messages['ar'] = array(
 ** فعّلها {{PLURAL:$2||مستخدم واحد|مستخدمان|$2 مستخدمين|$2 مستخدمًا|$2 مستخدم}}
 ** عطّلها {{PLURAL:$3||مستخدم واحد|مستخدمان|$3 مستخدمين|$3 مستخدمًا|$3 مستخدم}}
 * في المحصلة، ضبط {{PLURAL:$4||مستخدم واحد|مستخدمان|$4 مستخدمين|$4 مستخدمًا|$4 مستخدم}} هذه التفضيلة',
+	'prefstats-xaxis' => 'المدة (بالساعات)',
+	'prefstats-factors' => 'عرض كل: $1',
+	'prefstats-factor-hour' => 'ساعة',
+	'prefstats-factor-sixhours' => 'ست ساعات',
+	'prefstats-factor-day' => 'يوم',
+	'prefstats-factor-week' => 'أسبوع',
+	'prefstats-factor-twoweeks' => 'أسبوعين',
+	'prefstats-factor-fourweeks' => 'أربعة أسابيع',
+	'prefstats-factor-default' => 'عد إلى الجدول الإفتراضي',
+	'prefstats-legend-out' => 'اختارت',
+	'prefstats-legend-in' => 'مشترك',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -77,6 +118,50 @@ $messages['be-tarask'] = array(
 ** У $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} яна уключаная
 ** У $3 {{PLURAL:$3|удзельніка|удзельнікаў|удзельнікаў}} яна выключаная
 * Агулам $4 {{PLURAL:$4|удзельнік устанавіў|удзельнікі устанавілі|удзельнікаў устанавілі}} гэтую магчымасьць',
+	'prefstats-xaxis' => 'Працягласьць (у гадзінах)',
+	'prefstats-factors' => 'Адзінка шкалы часу: $1',
+	'prefstats-factor-hour' => 'гадзіна',
+	'prefstats-factor-sixhours' => 'шэсьць гадзінаў',
+	'prefstats-factor-day' => 'дзень',
+	'prefstats-factor-week' => 'тыдзень',
+	'prefstats-factor-twoweeks' => 'два тыдні',
+	'prefstats-factor-fourweeks' => 'чатыры тыдні',
+	'prefstats-factor-default' => 'вярнуцца да маштабу па змоўчваньні',
+	'prefstats-legend-out' => 'Пакінулі тэставаньне',
+	'prefstats-legend-in' => 'Прынялі ўдзел',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'prefstats' => 'পছন্দনীয় পরিসংখ্যান',
+	'prefstats-title' => 'পছন্দনীয় পরিসংখ্যান',
+	'prefstats-xaxis' => 'সময় (ঘন্টা)',
+	'prefstats-factor-hour' => 'ঘন্টা',
+	'prefstats-factor-sixhours' => 'ছয় ঘন্টা',
+	'prefstats-factor-day' => 'দিন',
+	'prefstats-factor-week' => 'সপ্তাহ',
+	'prefstats-factor-twoweeks' => 'দুই সপ্তাহ',
+	'prefstats-factor-fourweeks' => 'চার সপ্তাহ',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'prefstats' => 'Stadegoù war ar penndibaboù',
+	'prefstats-desc' => 'Stadegoù war an niver a implijerien o deus diuzet penndibaboù zo',
+	'prefstats-title' => 'Stadegoù war ar penndibaboù',
+	'prefstats-xaxis' => 'Pad (eurvezhioù)',
+	'prefstats-factors' => 'Diskouez dre : $1',
+	'prefstats-factor-hour' => 'eur',
+	'prefstats-factor-sixhours' => "c'hwec'h eur",
+	'prefstats-factor-day' => 'deiz',
+	'prefstats-factor-week' => 'sizhun',
+	'prefstats-factor-twoweeks' => 'pemzektez',
+	'prefstats-factor-fourweeks' => 'peder sizhun',
+	'prefstats-factor-default' => "distreiñ d'ar skeul dre ziouer",
 );
 
 /** Bosnian (Bosanski)
@@ -89,6 +174,17 @@ $messages['bs'] = array(
 	'prefstats-list-intro' => 'Trenutno, slijedeće postavke se prate.
 Kliknite na jednu od njih da pogledate njene statistike.',
 	'prefstats-noprefs' => 'Nijedna postavka se trenutno ne prati. Podesite $wgPrefStatsTrackPrefs za praćenje postavki.',
+	'prefstats-xaxis' => 'Trajanje (sati)',
+	'prefstats-factors' => 'Pregled prema: $1',
+	'prefstats-factor-hour' => 'sat',
+	'prefstats-factor-sixhours' => 'šest sati',
+	'prefstats-factor-day' => 'dan',
+	'prefstats-factor-week' => 'sedmica',
+	'prefstats-factor-twoweeks' => 'dvije sedmice',
+	'prefstats-factor-fourweeks' => 'četiri sedmice',
+	'prefstats-factor-default' => 'nazad na pretpostavljenu skalu',
+	'prefstats-legend-out' => 'Odjavljen',
+	'prefstats-legend-in' => 'Prijavljen',
 );
 
 /** Catalan (Català)
@@ -101,6 +197,13 @@ $messages['ca'] = array(
 	'prefstats-list-intro' => "Actualment s'estan registrant les següents preferències.
 Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 	'prefstats-noprefs' => 'No s\'està registrant cap preferència. Configurau $wgPrefStatsTrackPrefs per registrar les preferències.',
+	'prefstats-xaxis' => 'Durada (hores)',
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'sis hores',
+	'prefstats-factor-day' => 'dia',
+	'prefstats-factor-week' => 'setmana',
+	'prefstats-factor-twoweeks' => 'dues setmanes',
+	'prefstats-factor-fourweeks' => 'quatre setmanes',
 );
 
 /** Czech (Česky)
@@ -120,10 +223,63 @@ Kliknutím zobrazíte příslušné statistiky.',
 ** $2 {{PLURAL:$2|uživatel si ji zapnul|uživatelé si ji zapnuli|uživatelů si ji zapnulo}}
 ** $3 {{PLURAL:$3|uživatel si ji vypnul|uživatelé si ji vypnuli|uživatelů si ji vypnulo}}
 * Celkem {{PLURAL:$4|má|mají|má}} tuto volbu nastavenu $4 {{PLURAL:$4|uživatel|uživatelé|uživatelů}}',
+	'prefstats-xaxis' => 'Doba (hodin)',
+	'prefstats-factors' => 'Zobrazit po: $1',
+	'prefstats-factor-hour' => 'hodinách',
+	'prefstats-factor-sixhours' => 'šesti hodinách',
+	'prefstats-factor-day' => 'dnech',
+	'prefstats-factor-week' => 'týdnech',
+	'prefstats-factor-twoweeks' => 'dvou týdnech',
+	'prefstats-factor-fourweeks' => 'čtyřech týdnech',
+	'prefstats-factor-default' => 'zpět na základní měřítko',
+	'prefstats-legend-out' => 'Odhlášení',
+	'prefstats-legend-in' => 'Přihlášení',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author Omnipaedista
+ */
+$messages['cu'] = array(
+	'prefstats-factor-hour' => 'часъ',
+	'prefstats-factor-day' => 'дьнь',
+);
+
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'prefstats' => 'Statistik over indstillinger',
+	'prefstats-desc' => 'Statistik over antal brugere som har bestemte indstillinger',
+	'prefstats-title' => 'Statistik over indstillinger',
+	'prefstats-list-intro' => 'I øjeblikket bliver følgende indstillinger sporet.
+Klik på en for at se statistik om den.',
+	'prefstats-noprefs' => 'Ingen ingen indstillinger bliver sporet.
+Konfigurer $wgPrefStatsTrackPrefs for at spore indstillinger.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|bruger|brugere}} har aktiveret denne indstilling siden sporingen blev startet
+** $2 {{PLURAL:$2|bruger|brugere}} har den stadig aktiveret
+** $3 {{PLURAL:$3|bruger|brugere}} har deaktiveret den igen',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|bruger|brugere}} har aktiveret denne indstilling siden sporingen blev startet
+** $2 {{PLURAL:$2|bruger|brugere}} har den stadig aktiveret
+** $3 {{PLURAL:$3|bruger|brugere}} har deaktiveret den igen
+* I alt har $4 {{PLURAL:$4|bruger|brugere}} indstillingen aktiv',
+	'prefstats-xaxis' => 'Varighed (timer)',
+	'prefstats-factors' => 'Vis per: $1',
+	'prefstats-factor-hour' => 'time',
+	'prefstats-factor-sixhours' => 'seks timer',
+	'prefstats-factor-day' => 'dag',
+	'prefstats-factor-week' => 'uge',
+	'prefstats-factor-twoweeks' => 'to uger',
+	'prefstats-factor-fourweeks' => 'fire uger',
+	'prefstats-factor-default' => 'tilbage til standardskalering',
+	'prefstats-legend-out' => 'Fravalgt',
+	'prefstats-legend-in' => 'Tilvalgt',
 );
 
 /** German (Deutsch)
+ * @author Imre
+ * @author MF-Warburg
  * @author Metalhead64
+ * @author Omnipaedista
  * @author Pill
  */
 $messages['de'] = array(
@@ -140,6 +296,25 @@ Klicke auf eine, um Statistiken darüber zu erhalten.',
 ** $2 Benutzer {{PLURAL:$2|hat|haben}} sie aktiviert
 ** $3 Benutzer {{PLURAL:$3|hat|haben}} sie deaktiviert
 * Insgesamt {{PLURAL:$4|hat|haben}} $4 Benutzer diese Einstellung gesetzt',
+	'prefstats-xaxis' => 'Dauer (Stunden)',
+	'prefstats-factors' => 'Zugriffe pro: $1',
+	'prefstats-factor-hour' => 'Stunde',
+	'prefstats-factor-sixhours' => 'sechs Stunden',
+	'prefstats-factor-day' => 'Tag',
+	'prefstats-factor-week' => 'Woche',
+	'prefstats-factor-twoweeks' => 'zwei Wochen',
+	'prefstats-factor-fourweeks' => 'vier Wochen',
+	'prefstats-factor-default' => 'zurück zum Standard-Maßstab',
+	'prefstats-legend-out' => 'Abgemeldet',
+	'prefstats-legend-in' => 'Angemeldet',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'prefstats-list-intro' => 'Derzeit werden die folgenden Einstellungen aufgezeichnet.
+Klicken Sie auf eine, um Statistiken darüber zu erhalten.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -159,14 +334,49 @@ Klikni na jadne z nich, aby se statistiku wó nim woglědał.',
 ** $2 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$2|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}
 ** $3 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$3|znjemóžnił|znjemóžniłej|znjemóžnili|znjemóžniło}}
 *Dogromady $4 {{PLURAL:$4|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} toś to nastajenje {{PLURAL:$4|stajił|stajiłej|stajili|stajiło}}',
+	'prefstats-xaxis' => 'Cas (goźiny)',
+	'prefstats-factors' => 'Naglěd za: $1',
+	'prefstats-factor-hour' => 'góźinu',
+	'prefstats-factor-sixhours' => 'šesć góźinow',
+	'prefstats-factor-day' => 'źeń',
+	'prefstats-factor-week' => 'tyźeń',
+	'prefstats-factor-twoweeks' => 'dwa tyźenja',
+	'prefstats-factor-fourweeks' => 'styri tyźenje',
+	'prefstats-factor-default' => 'slědk k standardnemu měritkoju',
+	'prefstats-legend-out' => 'Wótzjawjony',
+	'prefstats-legend-in' => 'Pśizjawjony',
 );
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
-	'prefstats' => 'Στατιστικά προτίμησης',
-	'prefstats-title' => 'Στατιστικά προτίμησης',
+	'prefstats' => 'Στατιστικά προτιμήσεων',
+	'prefstats-desc' => 'Παρακολούθηση στατιστικών για το πόσοι χρήστες έχουν ενεργοποιημένες συγκεκριμένες προτιμήσεις',
+	'prefstats-title' => 'Στατιστικά προτιμήσεων',
+	'prefstats-list-intro' => 'Τώρα, οι παρακάτω προτιμήσεις παρακολουθούνται.
+Κάντε "κλικ" σε μια για να δείτε τα στατιστικά για αυτή.',
+	'prefstats-noprefs' => 'Αυτή τη στιγμή δεν παρακολουθούνται καθόλου προτιμήσεις.
+Διαμορφώστε το $wgPrefStatsTrackPrefs για να παρακολουθήσετε τις προτιμήσεις.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|χρήστης έχει|χρήστες έχουν}} ενεργοποιήσει αυτήν την προτίμηση από τότε που τα στατιστικά προτίμησης ενεργοποιήθηκαν
+** $2 {{PLURAL:$2|χρήστης ακόμη το έχει|χρήστες ακόμα το έχουν}} ενεργοποιημένο
+** $3 {{PLURAL:$3|χρήστης το έχει|χρήστες το έχουν}} απενεργοποιήσει από τότε',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|ο χρήστης έχει|οι χρήστες έχουν}} ενεργοποιήσει αυτήν την προτίμηση από τότε που τα στατιστικά προτίμησης ενεργοποιήθηκαν
+** $2 {{PLURAL:$2|ο χρήστης ακόμη το έχει|οι χρήστες ακόμα το έχουν}} ενεργοποιημένο
+** $3 {{PLURAL:$3|ο χρήστης το έχει|οι χρήστες το έχουν}} απενεργοποιήσει από τότε
+* Συνολικά, $4 {{PLURAL:$4|ο χρήστης έχει|οι χρήστες έχουν}} θέσει αυτήν την προτίμηση',
+	'prefstats-xaxis' => 'Διάρκεια (ώρες)',
+	'prefstats-factors' => 'Εμφάνιση ανά: $1',
+	'prefstats-factor-hour' => 'ώρα',
+	'prefstats-factor-sixhours' => 'έξι ώρες',
+	'prefstats-factor-day' => 'ημέρα',
+	'prefstats-factor-week' => 'εβδομάδα',
+	'prefstats-factor-twoweeks' => 'δύο εβδομάδες',
+	'prefstats-factor-fourweeks' => 'τέσσερις εβδομάδες',
+	'prefstats-factor-default' => 'πίσω στην προεπιλεγμένη κλίμακα',
+	'prefstats-legend-out' => 'Μη συμμετοχή',
+	'prefstats-legend-in' => 'Συμμετοχή',
 );
 
 /** Esperanto (Esperanto)
@@ -187,11 +397,21 @@ Konfiguru $wgPrefStatsTrackPrefs por sekvi preferojn.',
 ** $2 {{PLURAL:$2|uzanto|uzantoj}} ŝaltis ĝin
 ** $3 {{PLURAL:$3|uzanto|uzantoj}} malŝaltis ĝin
 * Sume, $4 {{PLURAL:$4|uzanto|uzantoj}} uzas ĉi tiun preferon.',
+	'prefstats-xaxis' => 'Daŭro (horoj)',
+	'prefstats-factors' => 'Vidi laŭ: $1',
+	'prefstats-factor-hour' => 'horo',
+	'prefstats-factor-day' => 'tago',
+	'prefstats-factor-week' => 'semajno',
+	'prefstats-factor-twoweeks' => 'du semajnoj',
+	'prefstats-factor-fourweeks' => 'kvar semajnoj',
+	'prefstats-factor-default' => 'reuzi defaŭltan skalon',
 );
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  * @author Locos epraix
+ * @author Omnipaedista
  */
 $messages['es'] = array(
 	'prefstats' => 'Estadísticas de preferencia',
@@ -199,13 +419,27 @@ $messages['es'] = array(
 	'prefstats-title' => 'Estadísticas de preferencia',
 	'prefstats-list-intro' => 'De momento, las siguientes preferencias están siendo seguidas.
 Selecciona una para ver estadísticas acerca de ella.',
+	'prefstats-xaxis' => 'Duración (horas)',
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'seis horas',
+	'prefstats-factor-day' => 'día',
+	'prefstats-factor-week' => 'semana',
+	'prefstats-factor-twoweeks' => 'dos semanas',
+	'prefstats-factor-fourweeks' => 'cuatro semanas',
 );
 
 /** Estonian (Eesti)
+ * @author Avjoska
  * @author Pikne
  */
 $messages['et'] = array(
 	'prefstats-desc' => 'Kogub arvandmeid kindlate eelistuste kasutatavuse kohta.',
+	'prefstats-xaxis' => 'Kestus (tundides)',
+	'prefstats-factor-hour' => 'tund',
+	'prefstats-factor-day' => 'päev',
+	'prefstats-factor-week' => 'nädal',
+	'prefstats-factor-twoweeks' => 'kaks nädalat',
+	'prefstats-factor-fourweeks' => 'neli nädalat',
 );
 
 /** Basque (Euskara)
@@ -219,6 +453,8 @@ Klikatu batean bere estatistikak ikusteko.',
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -227,12 +463,23 @@ $messages['fi'] = array(
 	'prefstats-title' => 'Asetusten tilastot',
 	'prefstats-list-intro' => 'Tällä hetkellä seuraavia asetuksia seurataan.
 Tilastot näkyvät painamalla asetusta.',
+	'prefstats-noprefs' => 'Yhtään asetusta ei seurata tällä hetkellä.
+Aseta $wgPrefStatsTrackPrefs asetusten seuraamiseksi.',
+	'prefstats-xaxis' => 'Kesto (tuntia)',
+	'prefstats-factor-hour' => 'tunti',
+	'prefstats-factor-sixhours' => 'kuusi tuntia',
+	'prefstats-factor-day' => 'päivä',
+	'prefstats-factor-week' => 'viikko',
+	'prefstats-factor-twoweeks' => 'kaksi viikkoa',
+	'prefstats-factor-fourweeks' => 'neljä viikkoa',
+	'prefstats-factor-default' => 'takaisin oletusmittakaavaan',
 );
 
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
  * @author Kropotkine 113
+ * @author Omnipaedista
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -249,6 +496,30 @@ Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
 ** $2 {{PLURAL:$2|utilisateur a|utilisateurs ont}} activé cette préférence
 ** $3 {{PLURAL:$3|utilisateur a|utilisateurs ont}} désactivé cette préférence
 * Au total, $4 {{PLURAL:$4|utilisateur a|utilisateurs ont}} défini cette préférence',
+	'prefstats-xaxis' => 'Durée (heures)',
+	'prefstats-factors' => 'Afficher par : $1',
+	'prefstats-factor-hour' => 'heure',
+	'prefstats-factor-sixhours' => 'six heures',
+	'prefstats-factor-day' => 'jour',
+	'prefstats-factor-week' => 'semaine',
+	'prefstats-factor-twoweeks' => 'deux semaines',
+	'prefstats-factor-fourweeks' => 'quatre semaines',
+	'prefstats-factor-default' => "revenir à l'échelle par défaut",
+	'prefstats-legend-out' => 'Ne veut plus participer',
+	'prefstats-legend-in' => 'Veut participer',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'siéx hores',
+	'prefstats-factor-day' => 'jorn',
+	'prefstats-factor-week' => 'semana',
+	'prefstats-factor-twoweeks' => 'doves semanes',
+	'prefstats-factor-fourweeks' => 'quatro semanes',
 );
 
 /** Galician (Galego)
@@ -261,6 +532,26 @@ $messages['gl'] = array(
 	'prefstats-list-intro' => 'Actualmente as seguintes preferencias están sendo seguidas.
 Prema sobre unha para ver as estatísticas sobre ela.',
 	'prefstats-noprefs' => 'Actualmente non se segue preferencia algunha. Configure $wgPrefStatsTrackPrefs para seguir preferencias.',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'prefstats' => 'Στατιστικὰ προτιμήσεων',
+	'prefstats-desc' => 'Παρακολουθεῖν τὰ στατιστικὰ περὶ τοῦ ἀριθμοῦ χρωμένων οἵπερ ἔχουσιν ἐνεργοποιημένας συγκεκριμένας προτιμήσεις',
+	'prefstats-title' => 'Στατιστικὰ προτιμήσεων',
+	'prefstats-xaxis' => 'Διάρκεια (ὧραι)',
+	'prefstats-factors' => 'Προβάλλειν ἀνά: $1',
+	'prefstats-factor-hour' => 'ὥρα',
+	'prefstats-factor-sixhours' => 'ἓξ ὧραι',
+	'prefstats-factor-day' => 'ἡμέρα',
+	'prefstats-factor-week' => 'ἑβδομάς',
+	'prefstats-factor-twoweeks' => 'δύο ἑβδομάδες',
+	'prefstats-factor-fourweeks' => 'τέσσαρες ἑβδομάδες',
+	'prefstats-factor-default' => 'ὀπίσω εἰς τὴν προεπειλεγμένην κλίμακα',
+	'prefstats-legend-out' => 'Μὴ συμμετοχή',
+	'prefstats-legend-in' => 'Συμμετοχή',
 );
 
 /** Swiss German (Alemannisch)
@@ -281,6 +572,17 @@ Druck uf eini go Statischtike iber si aaluege.',
 ** $2 {{PLURAL:$2|Benutzer het|Benutzer hän}} si megli gmacht
 ** $3 {{PLURAL:$3|Benutzer het|Benutzer hän}} si abgstellt
 * $4 {{PLURAL:$4|Benutzer het si insgsamt|Benutzer hän si insgsamt}} die Yystellig megli gmacht',
+	'prefstats-xaxis' => 'Duur (Stunde)',
+	'prefstats-factors' => 'Aaluege fir: $1',
+	'prefstats-factor-hour' => 'Stund',
+	'prefstats-factor-sixhours' => 'segs Stunde',
+	'prefstats-factor-day' => 'Tag',
+	'prefstats-factor-week' => 'Wuche',
+	'prefstats-factor-twoweeks' => 'Zwo Wuche',
+	'prefstats-factor-fourweeks' => 'Vier Wuche',
+	'prefstats-factor-default' => 'Zruck zur dr Standardskala',
+	'prefstats-legend-out' => 'Abgmäldet',
+	'prefstats-legend-in' => 'Aagmäldet',
 );
 
 /** Hebrew (עברית)
@@ -301,6 +603,14 @@ $messages['he'] = array(
 ** {{PLURAL:$2|משתמש אחד|$2 משתמשים}} הפעילו אותה
 ** {{PLURAL:$3|משתמש אחד|$3 משתמשים}} ביטלו אותה
 * סך הכל, {{PLURAL:$4|משתמש אחד|$4 משתמשים}} הגדירו העדפה זו',
+	'prefstats-xaxis' => 'משך (בשעות)',
+	'prefstats-factor-hour' => 'שעה',
+	'prefstats-factor-sixhours' => 'שש שעות',
+	'prefstats-factor-day' => 'יום',
+	'prefstats-factor-week' => 'שבוע',
+	'prefstats-factor-twoweeks' => 'שבועיים',
+	'prefstats-factor-fourweeks' => 'ארבעה שבועות',
+	'prefstats-factor-default' => 'חזרה למימדי ברירת המחדל',
 );
 
 /** Croatian (Hrvatski)
@@ -312,6 +622,25 @@ $messages['hr'] = array(
 	'prefstats-title' => 'Statistike postavki',
 	'prefstats-list-intro' => 'Trenutačno su sljedeće postavke praćene. 
 Kliknite na jednu kako biste vidjeli njezinu statistiku.',
+	'prefstats-noprefs' => 'Trenutačno se ne prati niti jedna postavka. Podesite $wgPrefStatsTrackPrefss za praćenje postavki.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|suradnik je omogućio|suradnika su omogućili}} ovu postavku od kada je aktivirana statistika postavki
+** $2 {{PLURAL:$2|suradnik ju je omogućio|suradnika ju je omogućilo}}
+** $3 {{PLURAL:$2|suradnik ju je onemogućio|suradnika ju je onemogućilo}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|suradnik je omogućio|suradnika su omogućili}} ovu postavku od kada je aktivirana statistika postavki
+** $2 {{PLURAL:$2|suradnik ju je omogućio|suradnika ju je omogućilo}}
+** $3 {{PLURAL:$2|suradnik ju je onemogućio|suradnika ju je onemogućilo}}
+* Ukupno, $4 {{PLURAL:$4|suradnik je postavio|suradnika je postavilo}} ovu postavku',
+	'prefstats-xaxis' => 'Trajanje (sati)',
+	'prefstats-factors' => 'Pregled po: $1',
+	'prefstats-factor-hour' => 'sat',
+	'prefstats-factor-sixhours' => 'šest sati',
+	'prefstats-factor-day' => 'dan',
+	'prefstats-factor-week' => 'tjedan',
+	'prefstats-factor-twoweeks' => 'dva tjedna',
+	'prefstats-factor-fourweeks' => 'četiri tjedna',
+	'prefstats-factor-default' => 'nazad na zadanu ljestvicu',
+	'prefstats-legend-out' => 'Bez',
+	'prefstats-legend-in' => 'Sa',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -330,6 +659,17 @@ $messages['hsb'] = array(
 ** $2 {{PLURAL:$2|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}
 ** $3 {{PLURAL:$3|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|znjemóžnił|znjemóžniłoj|znjemóžnili|znjemóžniło}}
 Dohromady $4 {{PLURAL:$4|wužiwar je|wužiwarjej saj|wužiwarjo su|wužiwarjow je}} tute nastajenje {{PLURAL:$4|stajił|stajiłoj|stajili|stajiło}}',
+	'prefstats-xaxis' => 'Traće (hodźiny)',
+	'prefstats-factors' => 'Přehlad za: $1',
+	'prefstats-factor-hour' => 'hodźinu',
+	'prefstats-factor-sixhours' => 'šěsć hodźin',
+	'prefstats-factor-day' => 'dźeń',
+	'prefstats-factor-week' => 'tydźeń',
+	'prefstats-factor-twoweeks' => 'njedźeli',
+	'prefstats-factor-fourweeks' => 'štyri njedźele',
+	'prefstats-factor-default' => 'wróćo k standardnemu měritku',
+	'prefstats-legend-out' => 'Wotzjewjeny',
+	'prefstats-legend-in' => 'Přizjewjeny',
 );
 
 /** Hungarian (Magyar)
@@ -362,10 +702,12 @@ Clicca super un pro vider statisticas super illo.',
 ** $2 {{PLURAL:$2|usator|usatores}} lo ha activate
 ** $3 {{PLURAL:$3|usator|usatores}} lo ha disactivate
 * In total, iste preferentia es active pro $4 {{PLURAL:$4|usator|usatores}}',
+	'prefstats-xaxis' => 'Durata (horas)',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kandar
  * @author Rex
  */
 $messages['id'] = array(
@@ -375,10 +717,28 @@ $messages['id'] = array(
 	'prefstats-list-intro' => 'Saat ini, preferensi-preferensi berikut sedang ditelusuri.
 Klik pada salah satu untuk melihat statistiknya.',
 	'prefstats-noprefs' => 'Tidak ada preferensi yang sedang ditelusuri. Konfigurasikan $wgPrefStatsTrackPrefs untuk menelusuri preferensi.',
+	'prefstats-xaxis' => 'Durasi (jam)',
+	'prefstats-factor-hour' => 'jam',
+	'prefstats-factor-day' => 'hari',
+	'prefstats-factor-week' => 'pekan',
+	'prefstats-factor-twoweeks' => 'dua pekan',
+	'prefstats-factor-fourweeks' => 'empat pekan',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'prefstats-factor-hour' => 'horo',
+	'prefstats-factor-day' => 'dio',
+	'prefstats-factor-week' => 'semano',
+	'prefstats-factor-twoweeks' => 'du semani',
+	'prefstats-factor-fourweeks' => 'quar semani',
 );
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Melos
  */
 $messages['it'] = array(
 	'prefstats' => 'Statistiche delle preferenze',
@@ -386,6 +746,15 @@ $messages['it'] = array(
 	'prefstats-title' => 'Statistiche delle preferenze',
 	'prefstats-list-intro' => 'Attualmente, le seguenti preferenze vengono seguite.
 Fare clic su una per vedere le statistiche su di essa.',
+	'prefstats-noprefs' => 'Nessuna preferenza è al momento monitorata. Configurare $wgPrefStatsTrackPrefs per monitorare le preferenze.',
+	'prefstats-xaxis' => 'Durata (ore)',
+	'prefstats-factor-hour' => 'ora',
+	'prefstats-factor-sixhours' => 'sei ore',
+	'prefstats-factor-day' => 'giorno',
+	'prefstats-factor-week' => 'settimana',
+	'prefstats-factor-twoweeks' => 'due settimane',
+	'prefstats-factor-fourweeks' => 'quattro settimane',
+	'prefstats-factor-default' => 'ritorna alla scala predefinita',
 );
 
 /** Japanese (日本語)
@@ -405,6 +774,32 @@ $messages['ja'] = array(
 ** $2人の利用者がこれを有効にしています
 ** $3人の利用者がこれを無効にしています
 * 合計では、$4人の利用者がこの項目を設定しています',
+	'prefstats-xaxis' => '期間（単位：時間）',
+	'prefstats-factors' => '表示する縮尺: $1',
+	'prefstats-factor-hour' => '1時間',
+	'prefstats-factor-sixhours' => '6時間',
+	'prefstats-factor-day' => '1日',
+	'prefstats-factor-week' => '1週間',
+	'prefstats-factor-twoweeks' => '2週間',
+	'prefstats-factor-fourweeks' => '4週間',
+	'prefstats-factor-default' => 'デフォルトの縮尺に戻る',
+	'prefstats-legend-out' => '不参加',
+	'prefstats-legend-in' => '参加',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'prefstats' => 'Statistik preferensi',
+	'prefstats-desc' => 'Statistik ngenani ana pira panganggo sing ngaktifaké preferensi tinamtu',
+	'prefstats-title' => 'Statistik preferensi',
+	'prefstats-factor-hour' => 'jam',
+	'prefstats-factor-sixhours' => 'enem jam',
+	'prefstats-factor-day' => 'dina',
+	'prefstats-factor-week' => 'minggu',
+	'prefstats-factor-twoweeks' => 'rong minggu',
+	'prefstats-factor-fourweeks' => 'patang minggu',
 );
 
 /** Georgian (ქართული)
@@ -426,6 +821,26 @@ $messages['ka'] = array(
 $messages['km'] = array(
 	'prefstats' => 'ស្ថិតិ​ ចំណូលចិត្ត​',
 	'prefstats-title' => 'ស្ថិតិ​ ចំណូលចិត្ត​',
+	'prefstats-xaxis' => 'រយៈពេល​ (ម៉ោង​)',
+	'prefstats-factors' => 'មើល​ក្នុងមួយ​៖ $1',
+	'prefstats-factor-hour' => 'ម៉ោង',
+	'prefstats-factor-sixhours' => 'ប្រាំ​មួយ​ម៉ោង​',
+	'prefstats-factor-day' => 'ថ្ងៃ',
+	'prefstats-factor-week' => 'សប្តាហ៍',
+	'prefstats-factor-twoweeks' => '២ សប្តាហ៍',
+	'prefstats-factor-fourweeks' => '៤ សប្តាហ៍',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'prefstats-factor-hour' => 'ಘಂಟೆ',
+	'prefstats-factor-sixhours' => 'ಆರು ಘಂಟೆಗಳು',
+	'prefstats-factor-day' => 'ದಿನ',
+	'prefstats-factor-week' => 'ವಾರ',
+	'prefstats-factor-twoweeks' => 'ಎರಡು ವಾರಗಳು',
+	'prefstats-factor-fourweeks' => 'ನಾಲ್ಕು ವಾರಗಳು',
 );
 
 /** Korean (한국어)
@@ -447,6 +862,36 @@ $messages['ksh'] = array(
 	'prefstats-list-intro' => 'Em Momang donn mer heh di Enshtellunge vun de Metmaacher biobachte.
 Donn op ein dovun drop klecke, öm dä ier Shtatistik ze belooere.',
 	'prefstats-noprefs' => 'De Enshtellunge wääde nit Verfollsch. Donn <code lang="en">$wgPrefStatsTrackPrefs</code> opsäze, öm dat ze ändere.',
+	'prefstats-counters' => '* {{PLURAL:$1|Eine Metmaacher hät|$1 Metmaacher han|Keine Metmaacher hät}} di Enshtellung aanjemaat zick dämm de Shtatistike ennjeschalldt woode sin.
+** {{PLURAL:$2|Eine Metmaacher hät|$2 Metmaacher han|Keine Metmaacher hät}} se jäz noch aanjeschalldt.
+** {{PLURAL:$3|Eine Metmaacher hät|$3 Metmaacher han|Keine Metmaacher hät}} se zick dämm ußjeschalldt.',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|Eine Metmaacher hät|$1 Metmaacher han|Keine Metmaacher hät}} di Enshtellung aanjemaat zick dämm de Shtatistike ennjeschalldt woode sin.
+** {{PLURAL:$2|Eine Metmaacher hät|$2 Metmaacher han|Keine Metmaacher hät}} se jäz noch aanjeschalldt.
+** {{PLURAL:$3|Eine Metmaacher hät|$3 Metmaacher han|Keine Metmaacher hät}} se zick dämm ußjeschalldt.
+* Ennsjesamp, {{PLURAL:$4|hät eine Metmaacher|hann_er $4 Metmaacher|keine Metmaacher}} se övverhoub_ens jesaz.',
+	'prefstats-xaxis' => 'Duuer en Stunde',
+	'prefstats-factors' => 'Beloore för: $1',
+	'prefstats-factor-hour' => 'Shtund',
+	'prefstats-factor-sixhours' => 'sechs Shtunde',
+	'prefstats-factor-day' => 'Daach',
+	'prefstats-factor-week' => 'Woch',
+	'prefstats-factor-twoweeks' => 'Zwei Woche',
+	'prefstats-factor-fourweeks' => 'Vier Woche',
+	'prefstats-factor-default' => 'Retuur op der Shtandatt',
+	'prefstats-legend-out' => 'Afjemeldt',
+	'prefstats-legend-in' => 'Aanjemelldt',
+);
+
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'sex hores',
+	'prefstats-factor-day' => 'dies',
+	'prefstats-factor-week' => 'hebdomas',
+	'prefstats-factor-twoweeks' => 'duae hebdomades',
+	'prefstats-factor-fourweeks' => 'quattuor hebdomades',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -466,6 +911,17 @@ Klickt op eng fir Statistiken iwwer hire Gebrauch ze gesinn.',
 ** $2 {{PLURAL:$2|Benotzer huet|Benotzer hunn}} et ageschalt
 ** $3 {{PLURAL:$3|Benotzer huet|Benotzer hunn}} et ausgeschalt
 * am Ganzen, $4 {{PLURAL:$3|Benotzer huet|Benotzer hunn}} dës Astellung konfiguréiert",
+	'prefstats-xaxis' => 'Dauer (Stonnen)',
+	'prefstats-factors' => 'Gekuckt pro: $1',
+	'prefstats-factor-hour' => 'Stonn',
+	'prefstats-factor-sixhours' => 'sechs Stonnen',
+	'prefstats-factor-day' => 'Dag',
+	'prefstats-factor-week' => 'Woch',
+	'prefstats-factor-twoweeks' => 'zwou Wochen',
+	'prefstats-factor-fourweeks' => 'véier Wochen',
+	'prefstats-factor-default' => "zréck op d'Standard-Gréisst",
+	'prefstats-legend-out' => 'Mécht net mat',
+	'prefstats-legend-in' => 'Mécht mat',
 );
 
 /** Lithuanian (Lietuvių)
@@ -477,6 +933,49 @@ $messages['lt'] = array(
 	'prefstats-title' => 'Nustatymų statistika',
 	'prefstats-list-intro' => 'Šiuo metu yra sekami šie pasirinkimai.
 Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'prefstats' => 'Статистики за прилагодувања',
+	'prefstats-desc' => 'Следи ги статистиките кои кажуваат колку корисници имаат овозможено извесни прилагодувања',
+	'prefstats-title' => 'Статистики за прилагодувања',
+	'prefstats-list-intro' => 'Моментално ги следите следниве прилагодувања.
+Кликнете на едно од нив за да ги видите статистиките за него.',
+	'prefstats-noprefs' => 'Моментално не се следите никакви прилагодувања.
+Конфигурирајте го $wgPrefStatsTrackPrefs за да следите прилагодувања.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|корисник ја има|корисници ја имаат}} вклучено оваа можност од кога е активирана статистиката на прилагодувања
+** $2 {{PLURAL:$2|корисник сеуште ја чува вклучена|корисници сеуште ја чуваат вклучена}}
+** $3 {{PLURAL:$3|корисникот во меѓувреме ја оневозможил|корисниците во меѓувреме ја оневозможиле}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|корисник ја има|корисници ја имаат}} вклучено оваа можност од кога е активирана статистиката на прилагодувања
+** $2 {{PLURAL:$2|корисник сè уште ја чува вклучена|корисници сè уште ја чуваат вклучена}}
+** $3 {{PLURAL:$3|корисникот во меѓувреме ја оневозможил|корисниците во меѓувреме ја оневозможиле}}
+* Вкупно $4 {{PLURAL:$4|корисник ја има вклучено оваа можност|корисници ја имаат вклучено оваа можност}}',
+	'prefstats-xaxis' => 'Времетрање (часови)',
+	'prefstats-factors' => 'Поглед по: $1',
+	'prefstats-factor-hour' => 'час',
+	'prefstats-factor-sixhours' => 'шест часа',
+	'prefstats-factor-day' => 'ден',
+	'prefstats-factor-week' => 'седмица',
+	'prefstats-factor-twoweeks' => 'две седмици',
+	'prefstats-factor-fourweeks' => 'четири седмици',
+	'prefstats-factor-default' => 'врати основно зададен размер',
+	'prefstats-legend-out' => 'Пристапил',
+	'prefstats-legend-in' => 'Напуштил',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'prefstats-factor-hour' => 'цяс',
+	'prefstats-factor-sixhours' => 'кото цяст',
+	'prefstats-factor-day' => 'чи',
+	'prefstats-factor-week' => 'тарго',
+	'prefstats-factor-twoweeks' => 'кавто таргт',
+	'prefstats-factor-fourweeks' => 'ниле таргт',
 );
 
 /** Dutch (Nederlands)
@@ -497,6 +996,17 @@ Stel $wgPrefStatsTrackPrefs in om voorkeuren bij te houden.',
 ** $2 {{PLURAL:$2|gebruiker heeft|gebruikers hebben}} deze nog insteld.
 ** $3 {{PLURAL:$3|gebruiker heeft|gebruikers hebben}} deze weer uitgeschakeld.
 * In totaal {{PLURAL:$4|heeft $4 gebruiker|hebben $4 gebruikers}} deze voorkeur ingesteld.',
+	'prefstats-xaxis' => 'Duur (uren)',
+	'prefstats-factors' => 'Weergeven per: $1',
+	'prefstats-factor-hour' => 'uur',
+	'prefstats-factor-sixhours' => 'zes uur',
+	'prefstats-factor-day' => 'dag',
+	'prefstats-factor-week' => 'week',
+	'prefstats-factor-twoweeks' => 'twee weken',
+	'prefstats-factor-fourweeks' => 'vier weken',
+	'prefstats-factor-default' => 'terug naar de standaardschaal',
+	'prefstats-legend-out' => 'Afgemeld',
+	'prefstats-legend-in' => 'Aangemeld',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -512,6 +1022,8 @@ Trykk på éi for å sjå statistikk for ho.',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
+ * @author Simny
+ * @author Stigmj
  */
 $messages['no'] = array(
 	'prefstats' => 'Statistikk over innstillinger',
@@ -520,6 +1032,24 @@ $messages['no'] = array(
 	'prefstats-list-intro' => 'For tiden blir følgende innstillinger sporet.
 Klikk på en for å se statistikk om den.',
 	'prefstats-noprefs' => 'Ingen preferanser blir sporet. Konfigurer $wgPrefStatsTrackPrefs for å spore preferanser',
+	'prefstats-counters' => '* {{PLURAL:$1|Én bruker|$1 brukere}} har aktivert denne innstillingen siden sporingen ble startet
+** {{PLURAL:$2|Én bruker|$2 brukere}} har den fortsatt aktivert
+** {{PLURAL:$3|Én bruker|$3 brukere}} har deaktivert den igjen',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|Én bruker|$1 brukere}} har aktivert denne innstillingen siden sporingen ble startet
+** {{PLURAL:$2|Én bruker|$2 brukere}} har den fortsatt aktivert
+** {{PLURAL:$3|Én bruker|$3 brukere}} har deaktivert den igjen
+* Sammenlagt har {{PLURAL:$4|én bruker|$4 brukere}} innstillingen aktivert',
+	'prefstats-xaxis' => 'Varighet (timer)',
+	'prefstats-factors' => 'Vis etter $1',
+	'prefstats-factor-hour' => 'time',
+	'prefstats-factor-sixhours' => 'seks timer',
+	'prefstats-factor-day' => 'dag',
+	'prefstats-factor-week' => 'uke',
+	'prefstats-factor-twoweeks' => 'to uker',
+	'prefstats-factor-fourweeks' => 'fire uker',
+	'prefstats-factor-default' => 'tilbake til standardskalering',
+	'prefstats-legend-out' => 'Valgt vekk',
+	'prefstats-legend-in' => 'Valgt',
 );
 
 /** Occitan (Occitan)
@@ -532,6 +1062,24 @@ $messages['oc'] = array(
 	'prefstats-list-intro' => "En aqueste moment, las preferéncias seguentas son seguidas.
 Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
 	'prefstats-noprefs' => 'Cap de preferéncia es pas seguida actualament. Configuratz $wgPrefStatsTrackPrefs per seguir de preferéncias.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utilizaire a|utilizaires an}} activat aquesta preferéncia dempuèi que las estatisticas de preferéncias son estadas activadas
+** $2 {{PLURAL:$2|utilizaire a|utilizaires an}} activat aquesta preferéncia
+** $3 {{PLURAL:$3|utilizaire a|utilizaires an}} desactivat aquesta preferéncia',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utilizaire a|utilizaires an}} activat aquesta preferéncia dempuèi que las estatisticas de preferéncias son estadas activadas
+** $2 {{PLURAL:$2|utilizaire a|utilizaires an}} activat aquesta preferéncia
+** $3 {{PLURAL:$3|utilizaire a|utilizaires an}} desactivat aquesta preferéncia
+* Al total, $4 {{PLURAL:$4|utilizaire a|utilizaires an}} definit aquesta preferéncia',
+	'prefstats-xaxis' => 'Durada (oras)',
+	'prefstats-factors' => 'Afichar per : $1',
+	'prefstats-factor-hour' => 'ora',
+	'prefstats-factor-sixhours' => 'sièis oras',
+	'prefstats-factor-day' => 'jorn',
+	'prefstats-factor-week' => 'setmana',
+	'prefstats-factor-twoweeks' => 'doas setmanas',
+	'prefstats-factor-fourweeks' => 'quatre setmanas',
+	'prefstats-factor-default' => "tornar a l'escala per defaut",
+	'prefstats-legend-out' => 'Vòl pas pus participar',
+	'prefstats-legend-in' => 'Vòl participar',
 );
 
 /** Polish (Polski)
@@ -551,9 +1099,21 @@ Kliknij na jednej aby zobaczyć statystyki jej dotyczące.',
 ** $2 {{PLURAL:$2|użytkownik|użytkowników}} ma tę opcję włączoną
 ** $3 {{PLURAL:$3|użytkownik|użytkowników}} ma tę opcję wyłączoną
 * Ogólnie $4  {{PLURAL:$4|użytkownik|użytkowników}} ustawiło tę opcję',
+	'prefstats-xaxis' => 'Czas trwania (godz.)',
+	'prefstats-factors' => 'Widoczny okres – $1',
+	'prefstats-factor-hour' => 'godzina',
+	'prefstats-factor-sixhours' => 'sześć godzin',
+	'prefstats-factor-day' => 'dzień',
+	'prefstats-factor-week' => 'tydzień',
+	'prefstats-factor-twoweeks' => 'dwa tygodnie',
+	'prefstats-factor-fourweeks' => 'cztery tygodnie',
+	'prefstats-factor-default' => 'powrót do domyślnej skali',
+	'prefstats-legend-out' => 'Korzystali',
+	'prefstats-legend-in' => 'Korzystają',
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -562,6 +1122,45 @@ $messages['pt'] = array(
 	'prefstats-title' => 'Estatísticas de preferências',
 	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão a ser monitorizadas.
 Clique numa para ver as estatísticas sobre ela.',
+	'prefstats-xaxis' => 'Duração (horas)',
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'seis horas',
+	'prefstats-factor-day' => 'dia',
+	'prefstats-factor-week' => 'semana',
+	'prefstats-factor-twoweeks' => 'duas semanas',
+	'prefstats-factor-fourweeks' => 'quatro semanas',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'prefstats' => 'Estatísticas de preferências',
+	'prefstats-desc' => 'Monitore estatísticas sobre quantos usuários têm certas preferências ativadas',
+	'prefstats-title' => 'Estatísticas de preferências',
+	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão sendo monitoradas.
+Clique em uma para ver as estatísticas sobre ela.',
+	'prefstats-noprefs' => 'Nenhuma preferência está sendo monitorada no momento.
+Configure $wgPrefStatsTrackPrefs para monitorar preferências.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|usuário habilitou|usuários habilitaram}} esta preferência desde que as estatísticas foram ativadas
+** $2 Ela foi habilitada por {{PLURAL:$2|usuário|usuários}}
+** $3 Ela foi desabilitada por {{PLURAL:$3|usuário|usuários}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|habilitou|habilitaram}} esta preferência desde que as estatísticas de preferências foram habilitadas
+** $2 Ela foi habilitada por {{PLURAL:$2|usuário|usuários}}
+** $3 Ela foi desabilitada por {{PLURAL:$3|usuário|usuários}}
+* Ao todo, $4 {{PLURAL:$4|usuário|usuários}} definiram esta preferência',
+	'prefstats-xaxis' => 'Duração (horas)',
+	'prefstats-factors' => 'Visualizar por: $1',
+	'prefstats-factor-hour' => 'Hora',
+	'prefstats-factor-sixhours' => 'seis horas',
+	'prefstats-factor-day' => 'dia',
+	'prefstats-factor-week' => 'semana',
+	'prefstats-factor-twoweeks' => 'duas semanas',
+	'prefstats-factor-fourweeks' => 'quatro semanas',
+	'prefstats-factor-default' => 'retornar à escala padrão',
+	'prefstats-legend-out' => 'Saiu',
+	'prefstats-legend-in' => 'Entrou',
 );
 
 /** Quechua (Runa Simi)
@@ -594,6 +1193,14 @@ $messages['roa-tara'] = array(
 	'prefstats-list-intro' => 'Pe mò, le seguende preferenze stonne avènene tracciate.
 Cazze sus a une de le statisteche da vedè.',
 	'prefstats-noprefs' => 'Nisciuna preferenze ha state tracciate pe mò. Configure $wgPrefStatsTrackPrefs pe traccià le preferenze.',
+	'prefstats-xaxis' => 'Durate (ore)',
+	'prefstats-factors' => 'Visite pe: $1',
+	'prefstats-factor-hour' => 'ore',
+	'prefstats-factor-sixhours' => 'sei ore',
+	'prefstats-factor-day' => 'sciurne',
+	'prefstats-factor-week' => 'sumáne',
+	'prefstats-factor-twoweeks' => 'doje sumáne',
+	'prefstats-factor-fourweeks' => 'quattre sumáne',
 );
 
 /** Russian (Русский)
@@ -615,6 +1222,17 @@ $messages['ru'] = array(
 ** $2 {{PLURAL:$2|участник включил|участника включили|участников включили}} параметр
 ** $3 {{PLURAL:$3|участник выключил|участника выключили|участников выключили}} параметр
 * Всего этот параметр установлен у $4 {{PLURAL:$4|участника|участников|участников}}',
+	'prefstats-xaxis' => 'Продолжительность (в часах)',
+	'prefstats-factors' => 'Просмотр по: $1',
+	'prefstats-factor-hour' => 'час',
+	'prefstats-factor-sixhours' => 'шесть часов',
+	'prefstats-factor-day' => 'день',
+	'prefstats-factor-week' => 'неделя',
+	'prefstats-factor-twoweeks' => 'две недели',
+	'prefstats-factor-fourweeks' => 'четыре недели',
+	'prefstats-factor-default' => 'назад к масштабу по умолчанию',
+	'prefstats-legend-out' => 'Отключиться',
+	'prefstats-legend-in' => 'Включиться',
 );
 
 /** Yakut (Саха тыла)
@@ -653,6 +1271,41 @@ Po kliknutí na niektoré z nich zobrazíte štatistiku o ňom.',
 ** $2 {{PLURAL:$2|používateľ ju zapol|používatelia ju zapli|používateľov ju zaplo}}
 ** $3 {{PLURAL:$3|používateľ ju vypol|používatelia ju vypli|používateľov ju vyplo}}
 * Celkom {{PLURAL:$4|má|majú}} túto voľbu zapnutú $4 {{PLURAL:$4|používateľ|používatelia|používateľov}}',
+	'prefstats-xaxis' => 'Trvanie (hodín)',
+	'prefstats-factors' => 'Zobrazenie za: $1',
+	'prefstats-factor-hour' => 'hodina',
+	'prefstats-factor-sixhours' => 'šesť hodín',
+	'prefstats-factor-day' => 'deň',
+	'prefstats-factor-week' => 'týždeň',
+	'prefstats-factor-twoweeks' => 'dva týždne',
+	'prefstats-factor-fourweeks' => 'štyri týždne',
+	'prefstats-factor-default' => 'späť na predvolenú mierku',
+	'prefstats-legend-out' => 'Odhlásený',
+	'prefstats-legend-in' => 'Prihlásený',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Smihael
+ */
+$messages['sl'] = array(
+	'prefstats' => 'Statistika nastavitev',
+	'prefstats-desc' => 'Spremlja statistike o tem, koliko uporabnikov ima omogočene določene nastavitve',
+	'prefstats-title' => 'Statistika nastavitev',
+	'prefstats-list-intro' => 'Trenutno so naslednje nastavitve spremljane.
+Kliknite na eno, če si želite ogledati njeno statistiko.',
+	'prefstats-noprefs' => 'Trenutno nastavitve niso spremljane.
+Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
+	'prefstats-xaxis' => 'Trajanje (ur)',
+	'prefstats-factors' => 'Poglejte na: $1',
+	'prefstats-factor-hour' => 'ura',
+	'prefstats-factor-sixhours' => 'šest ur',
+	'prefstats-factor-day' => 'dan',
+	'prefstats-factor-week' => 'teden',
+	'prefstats-factor-twoweeks' => 'dva tedna',
+	'prefstats-factor-fourweeks' => 'štiri tedni',
+	'prefstats-factor-default' => 'nazaj na privzeto lestvico',
+	'prefstats-legend-out' => 'Onemogočeno',
+	'prefstats-legend-in' => 'Omogočeno',
 );
 
 /** Swedish (Svenska)
@@ -674,9 +1327,22 @@ Klicka på en inställning för att visa statistik om den.',
 ** $2 {{PLURAL:$2|användare|användare}} har slagit på den
 ** $3 {{PLURAL:$3|användare|användare}} har slagit av den
 * Sammanlagt har $4 {{PLURAL:$4|användare|användare}} den här inställningen påslagen',
+	'prefstats-xaxis' => 'Varaktighet (timmar)',
+	'prefstats-factors' => 'Visa efter $1',
+	'prefstats-factor-hour' => 'timme',
+	'prefstats-factor-sixhours' => 'sex timmar',
+	'prefstats-factor-day' => 'dag',
+	'prefstats-factor-week' => 'vecka',
+	'prefstats-factor-twoweeks' => 'två veckor',
+	'prefstats-factor-fourweeks' => 'fyra veckor',
+	'prefstats-factor-default' => 'återgå till standardskala',
+	'prefstats-legend-out' => 'Lämnat',
+	'prefstats-legend-in' => 'Deltar',
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
@@ -684,6 +1350,23 @@ $messages['te'] = array(
 	'prefstats-title' => 'అభిరుచుల గణాంకాలు',
 	'prefstats-list-intro' => 'ప్రస్తుతం, ఈ క్రింది అభిరుచులను గమనిస్తున్నాం.
 ఒక్కోదాని గణాంకాలు చూడడానికి దానిపై నొక్కండి.',
+	'prefstats-xaxis' => 'సమయం (గంటల్లో)',
+	'prefstats-factor-hour' => 'గంట',
+	'prefstats-factor-sixhours' => 'ఆరు గంటలు',
+	'prefstats-factor-day' => 'రోజు',
+	'prefstats-factor-week' => 'వారం',
+	'prefstats-factor-twoweeks' => 'రెండు వారాలు',
+	'prefstats-factor-fourweeks' => 'నాలుగు వారాలు',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'prefstats-factor-hour' => 'соат',
+	'prefstats-factor-sixhours' => 'шаш соат',
+	'prefstats-factor-day' => 'рӯз',
+	'prefstats-factor-week' => 'ҳафта',
 );
 
 /** Turkish (Türkçe)
@@ -695,9 +1378,39 @@ $messages['tr'] = array(
 	'prefstats-title' => 'Tercih istatistikleri',
 	'prefstats-list-intro' => 'Şu anda, aşağıdaki tercihler izleniyor.
 İlgili istatistikleri görmek için birine tıklayın.',
+	'prefstats-noprefs' => 'Şu anda hiçbir tercih izlenmiyor.
+Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
+	'prefstats-counters' => '* Tercih istatistikleri etkinleşirildiğinden beri $1 {{PLURAL:$1|kullanıcı|kullanıcı}} bu tercihi etkinleştirdi.
+** $2 {{PLURAL:$2|kullancı|kullanıcı}} hala etkin olarak kullanıyor
+** $3 {{PLURAL:$3|kullanıcı|kullanıcı}} şimdiye kadar devre dışı bıraktı',
+	'prefstats-counters-expensive' => '* Tercih istatistikleri etkinleşirildiğinden beri $1 {{PLURAL:$1|kullanıcı|kullanıcı}} bu tercihi etkinleştirdi.
+** $2 {{PLURAL:$2|kullancı|kullanıcı}} hala etkin olarak kullanıyor
+** $3 {{PLURAL:$3|kullanıcı|kullanıcı}} şimdiye kadar devre dışı bıraktı
+* Toplamda, $4 {{PLURAL:$4|kullanıcı|kullanıcı}} bu tercihi ayarladı',
+	'prefstats-xaxis' => 'Süre (saat)',
+	'prefstats-factors' => 'Görüntüleme sıklığı: $1',
+	'prefstats-factor-hour' => 'saat',
+	'prefstats-factor-day' => 'gün',
+	'prefstats-factor-week' => 'hafta',
+	'prefstats-factor-twoweeks' => 'iki hafta',
+	'prefstats-factor-fourweeks' => 'dört hafta',
+	'prefstats-factor-default' => 'varsayılan ölçeğe dön',
+);
+
+/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+ * @author Rinatus
+ */
+$messages['tt-cyrl'] = array(
+	'prefstats-factor-hour' => 'сәгать',
+	'prefstats-factor-sixhours' => 'алты сәгать',
+	'prefstats-factor-day' => 'көн',
+	'prefstats-factor-week' => 'атна',
+	'prefstats-factor-twoweeks' => 'ике атна',
+	'prefstats-factor-fourweeks' => 'дүрт атна',
 );
 
 /** Ukrainian (Українська)
+ * @author A1
  * @author AS
  */
 $messages['uk'] = array(
@@ -706,6 +1419,10 @@ $messages['uk'] = array(
 	'prefstats-title' => 'Статистика налаштувань',
 	'prefstats-list-intro' => 'Зараз відстежуються такі налаштування.
 Натисніть на якомусь, щоб побачити його статистику.',
+	'prefstats-xaxis' => 'Тривалість (у годинах)',
+	'prefstats-factors' => 'Перегляд за: $1',
+	'prefstats-factor-hour' => 'годину',
+	'prefstats-factor-sixhours' => 'шість годин',
 );
 
 /** Vèneto (Vèneto)
@@ -717,6 +1434,15 @@ $messages['vec'] = array(
 	'prefstats-title' => 'Statìsteghe de le preferense',
 	'prefstats-list-intro' => 'Al momento, vien tegnù tràcia de le seguenti preferense.
 Strucando su de una te vedi le so statìsteghe.',
+	'prefstats-xaxis' => 'Durata (ore)',
+	'prefstats-factors' => 'Viste par: $1',
+	'prefstats-factor-hour' => 'ora',
+	'prefstats-factor-sixhours' => 'sié ore',
+	'prefstats-factor-day' => 'zorno',
+	'prefstats-factor-week' => 'setimana',
+	'prefstats-factor-twoweeks' => 'do setimane',
+	'prefstats-factor-fourweeks' => 'quatro setimane',
+	'prefstats-factor-default' => 'torna a la scala predefinìa',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -746,6 +1472,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Jimmy xu wrk
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -762,6 +1489,17 @@ $messages['zh-hans'] = array(
 ** $2名用户启用了它
 ** $3名用户禁用了它
 * 总的来说，$4名用户设置了此选项',
+	'prefstats-xaxis' => '持续时间（小时）',
+	'prefstats-factors' => '查看时限：$1',
+	'prefstats-factor-hour' => '1小时',
+	'prefstats-factor-sixhours' => '6小时',
+	'prefstats-factor-day' => '1天',
+	'prefstats-factor-week' => '1周',
+	'prefstats-factor-twoweeks' => '2周',
+	'prefstats-factor-fourweeks' => '4周',
+	'prefstats-factor-default' => '恢复默认设置',
+	'prefstats-legend-out' => '已禁用',
+	'prefstats-legend-in' => '已启用',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

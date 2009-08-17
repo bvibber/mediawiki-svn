@@ -25,6 +25,22 @@ $messages['be-tarask'] = array(
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'navigabletoc' => 'Navigovatelný obsah',
+	'navigabletoc-desc' => 'Přidává do formuláře úprav obsah, který se po kliknutí na sekci přesune',
+);
+
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'navigabletoc' => 'Navigerbar indholdsfortegnelse',
+	'navigabletoc-desc' => 'Tilføjer en indholdsfortegnelse til redigeringsformularen som ruller tekstfeltet når der klikkes på et afsnit',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
@@ -46,6 +62,13 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'navigabletoc' => 'Περιηγήσιμος πίνακας περιεχομένων',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'navigabletoc' => 'Navigebla tabelo de enhavo',
 );
 
 /** Spanish (Español)
@@ -170,10 +193,20 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'navigabletoc' => 'Inhaltsverzeechnis fir ze navigéieren',
+	'navigabletoc' => 'Inhaltsverzeechnes fir ze navigéieren',
+	'navigabletoc-desc' => 'Setzt en Inhaltsverzeechnes op den Ännerungsformulaire derbäi, deen den Text scrollt, wann en Abschnitt ugeklickt gëtt',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'navigabletoc' => 'Содржина со навигација',
+	'navigabletoc-desc' => 'Додава содржина на статијата во образецот за уредување која ја поместува кутијата за текст кога ќе се кликне на пасус',
 );
 
 /** Malay (Bahasa Melayu)
@@ -261,6 +294,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'navigabletoc' => 'Navigovateľný Obsah',
 	'navigabletoc-desc' => 'Pridáva do formulára úprav Obsah, ktorý sa posunie na správne miesto po kliknutí na sekciu',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Smihael
+ */
+$messages['sl'] = array(
+	'navigabletoc' => 'Navigacijsko kazalo vsebine',
+	'navigabletoc-desc' => 'V urejevano okno doda tabelo vsebine, ki ob kliku na razdelek odpre urejevalno polje za izbrani razdelek',
 );
 
 /** Swedish (Svenska)
