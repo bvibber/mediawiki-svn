@@ -16,10 +16,11 @@ Click <a href=\'$1\'>here</a> to continue.',
 	'spamdifftool_confirm'          => 'Confirm that you want to add these entries to the spam blacklist.
 (Click <a href=\'$1\' target=\'new\'>here</a> to report a problem.)',
 	'spamdifftool_summary'          => 'Adding to spam blacklist',
-	'spamdifftool_urls_detected'    => 'The following URLs were detected in the edit(s), which ones would you like to add to the spam blacklist?
+	'spamdifftool_urls_detected'    => 'The following URLs were detected in the edit(s).
+Which ones would you like to add to the spam blacklist?
 These options order from more restrictive to less restrictive, blocking the entire domain will block all links to anything coming from that domain.
 
-Be sure not to block entire domains that host user accounts, like blogpost.com, geocities.com, etc.',
+Be sure not to block entire domains that host user accounts, like blogspot.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => 'No urls were detected.
 Click <a href=\'$1\'>here</a> to return.',
 	'spamdifftool_spam_link_text'   => 'add to spam',
