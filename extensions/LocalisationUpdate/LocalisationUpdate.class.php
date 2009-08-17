@@ -18,15 +18,27 @@ class LocalisationUpdate {
 	}
 
 	// Called from the cronjob to fetch new messages from SVN
-	public static function updateMessages( $verbose = false ) {
-		// Need this later
-		global $wgExtensionMessagesFiles;
-
+	public static function updateMessages( $verbose = false, $all = false ) {
 		// Update all MW core messages
 		$result = self::updateMediawikiMessages( $verbose );
 		
 		// Update all Extension messages
-		foreach ( $wgExtensionMessagesFiles as $extension => $locFile ) {
+		if( $all ) {
+			global $IP;
+			$extFiles = array();
+			$messageFiles = glob( "$IP/extensions/*/*.i18n.php" );
+			foreach( $messageFiles as $pathname ) {
+				$filename = basename( $pathname );
+				if( preg_match( '/^(.*)\.i18n\.php$/', $filename, $matches ) ) {
+					$group = $matches[1];
+					$extFiles[$group] = $pathname;
+				}
+			}
+		} else {
+			global $wgExtensionMessagesFiles;
+			$extFiles = $wgExtensionMessagesFiles;
+		}
+		foreach ( $extFiles as $extension => $locFile ) {
 			$result += self::updateExtensionMessages( $locFile, $extension, $verbose );
 		}
 
@@ -294,8 +306,8 @@ class LocalisationUpdate {
 		}
 
 		foreach ( $changedStrings as $key => $value ) {
-			// If this message wasn't changed in English
-			if ( !array_key_exists( $key , $forbiddenKeys ) ) {
+			// If this message wasn't changed in English, and is in fact set
+			if ( !array_key_exists( $key , $forbiddenKeys ) && isset( $compare_messages[$key] ) ) {
 				// See if we can update the database
 				
 				$values = array(
@@ -475,8 +487,13 @@ class LocalisationUpdate {
 	}
 	
 	public static function parsePHP( $php, $varname ) {
-		$reader = new QuickArrayReader("<?php $php");
-		return $reader->getVar( $varname );
+		try {
+			$reader = new QuickArrayReader("<?php $php");
+			return $reader->getVar( $varname );
+		} catch( Exception $e ) {
+			self::myLog( "Failed to read file: " . $e );
+			return false;
+		}
 	}
 }
 

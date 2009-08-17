@@ -13,12 +13,14 @@ if( isset( $options['help'] ) ) {
 	print "Usage: php extensions/LocalisationUpdate/update.php\n";
 	print "Options:\n";
 	print "  --quiet  Suppress progress output\n";
+	print "  --all    Fetch all present extensions, not just those enabled\n";
 	print "\n";
 	exit( 0 );
 }
 
 
 $verbose = !isset( $options['quiet'] );
+$all = isset( $options['all'] );
 
 $starttime = microtime( true );
 
@@ -26,7 +28,7 @@ $starttime = microtime( true );
 set_time_limit( 0 );
 ini_set( "max_execution_time", 0 );
 
-LocalisationUpdate::updateMessages( $verbose );
+LocalisationUpdate::updateMessages( $verbose, $all );
 
 $endtime = microtime( true );
 $totaltime = ( $endtime - $starttime );
