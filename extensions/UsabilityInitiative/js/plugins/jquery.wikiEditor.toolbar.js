@@ -14,142 +14,146 @@ imgPath : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/tool
  */
 api : {
 	addToToolbar : function( context, data ) {
-	for ( type in data ) {
-		switch ( type ) {
-			case 'sections':
-				var $sections = context.modules.$toolbar
-				.find( 'div.sections' );
-				var $tabs = context.modules.$toolbar
-				.find( 'div.tabs' );
-				for ( section in data[type] ) {
-					if ( section == 'main' ) {
+		for ( type in data ) {
+			switch ( type ) {
+				case 'sections':
+					var $sections = context.modules.$toolbar
+					.find( 'div.sections' );
+					var $tabs = context.modules.$toolbar
+					.find( 'div.tabs' );
+					for ( section in data[type] ) {
+						if ( section == 'main' ) {
+							// Section
+							context.modules.$toolbar
+							.prepend(
+								$.wikiEditor.modules.toolbar.fn.buildSection(
+									context, section, data[type][section]
+								)
+							);
+							continue;
+						}
 						// Section
-						context.modules.$toolbar
-						.prepend(
-							$.wikiEditor.modules.toolbar.fn.buildSection(
-								context, section, data[type][section]
-							)
+						$sections.append(
+							$.wikiEditor.modules.toolbar.fn.buildSection( context, section, data[type][section] )
 						);
+						// Tab
+						$tabs.append(
+							$.wikiEditor.modules.toolbar.fn.buildTab( context, section, data[type][section] )
+						);
+					}
+					break;
+				case 'groups':
+					if ( ! ( 'section' in data ) ) {
 						continue;
 					}
-					// Section
-					$sections.append(
-						$.wikiEditor.modules.toolbar.fn.buildSection( context, section, data[type][section] )
+					var $section = context.modules.$toolbar
+					.find( 'div[rel=' + data.section + '].section' );
+					for ( group in data[type] ) {
+						// Group
+						$section
+						.append( $.wikiEditor.modules.toolbar.fn.buildGroup( context, group, data[type][group] ) );
+					}
+					break;
+				case 'tools':
+					if ( ! ( 'section' in data && 'group' in data ) ) {
+						continue;
+					}
+					var $group = context.modules.$toolbar
+					.find( 'div[rel=' + data.section + '].section ' + 'div[rel=' + data.group + '].group' );
+					for ( tool in data[type] ) {
+						// Tool
+						$group.append( $.wikiEditor.modules.toolbar.fn.buildTool( context, tool,data[type][tool] ) );
+					}
+					break;
+				case 'pages':
+					if ( ! ( 'section' in data ) ) {
+						continue;
+					}
+					var $pages = context.modules.$toolbar
+					.find( 'div[rel=' + data.section + '].section .pages' );
+					var $index = context.modules.$toolbar
+					.find( 'div[rel=' + data.section + '].section .index' );
+					for ( page in data[type] ) {
+						// Page
+						$pages.append( $.wikiEditor.modules.toolbar.fn.buildPage( context, page, data[type][page] ) );
+						// Index
+						$index.append(
+							$.wikiEditor.modules.toolbar.fn.buildBookmark( context, page, data[type][page] )
+						);
+					}
+					$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, page, $pages, $index );
+					break;
+				case 'rows':
+					if ( ! ( 'section' in data && 'page' in data ) ) {
+						continue;
+					}
+					var $table = context.modules.$toolbar.find(
+						'div[rel=' + data.section + '].section ' + 'div[rel=' + data.page + '].page table'
 					);
-					// Tab
-					$tabs.append( $.wikiEditor.modules.toolbar.fn.buildTab( context, section, data[type][section] ) );
-				}
-				break;
-			case 'groups':
-				if ( ! ( 'section' in data ) ) {
-					continue;
-				}
-				var $section = context.modules.$toolbar
-				.find( 'div[rel=' + data.section + '].section' );
-				for ( group in data[type] ) {
-					// Group
-					$section
-					.append( $.wikiEditor.modules.toolbar.fn.buildGroup( context, group, data[type][group] ) );
-				}
-				break;
-			case 'tools':
-				if ( ! ( 'section' in data && 'group' in data ) ) {
-					continue;
-				}
-				var $group = context.modules.$toolbar
-				.find( 'div[rel=' + data.section + '].section ' + 'div[rel=' + data.group + '].group' );
-				for ( tool in data[type] ) {
-					// Tool
-					$group.append( $.wikiEditor.modules.toolbar.fn.buildTool( context, tool,data[type][tool] ) );
-				}
-				break;
-			case 'pages':
-				if ( ! ( 'section' in data ) ) {
-					continue;
-				}
-				var $pages = context.modules.$toolbar
-				.find( 'div[rel=' + data.section + '].section .pages' );
-				var $index = context.modules.$toolbar
-				.find( 'div[rel=' + data.section + '].section .index' );
-				for ( page in data[type] ) {
-					// Page
-					$pages.append( $.wikiEditor.modules.toolbar.fn.buildPage( context, page, data[type][page] ) );
-					// Index
-					$index.append( $.wikiEditor.modules.toolbar.fn.buildBookmark( context, page, data[type][page] ) );
-				}
-				$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, page, $pages, $index );
-				break;
-			case 'rows':
-				if ( ! ( 'section' in data && 'page' in data ) ) {
-					continue;
-				}
-				var $table = context.modules.$toolbar.find(
-					'div[rel=' + data.section + '].section ' + 'div[rel=' + data.page + '].page table'
-				);
-				for ( row in data[type] ) {
-					// Row
-					$table.append( $.wikiEditor.modules.toolbar.fn.buildRow( context, data[type][row] ) );
-				}
-				break;
-			case 'characters':
-				if ( ! ( 'section' in data && 'page' in data ) ) {
-					continue;
-				}
-				$characters = context.modules.$toolbar.find(
-					'div[rel=' + data.section + '].section ' + 'div[rel=' + data.page + '].page div'
-				);
-				var actions = $characters.data( 'actions' );
-				for ( character in data[type] ) {
-					// Character
-					$characters
-					.append(
-						$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
-							.click( function() {
-								$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
-								$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
-								return false;
-							} )
+					for ( row in data[type] ) {
+						// Row
+						$table.append( $.wikiEditor.modules.toolbar.fn.buildRow( context, data[type][row] ) );
+					}
+					break;
+				case 'characters':
+					if ( ! ( 'section' in data && 'page' in data ) ) {
+						continue;
+					}
+					$characters = context.modules.$toolbar.find(
+						'div[rel=' + data.section + '].section ' + 'div[rel=' + data.page + '].page div'
 					);
-				}
-				break;
-			default: break;
+					var actions = $characters.data( 'actions' );
+					for ( character in data[type] ) {
+						// Character
+						$characters
+						.append(
+							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
+								.click( function() {
+									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
+									$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
+									return false;
+								} )
+						);
+					}
+					break;
+				default: break;
+			}
 		}
-	}
-},
-removeFromToolbar : function( context, data ) {
-	if ( typeof data.section == 'string' ) {
-		// Section
-		var tab = 'div.tabs span[rel=' + data.section + '].tab';
-		var target = 'div[rel=' + data.section + '].section';
-		if ( typeof data.group == 'string' ) {
-			// Toolbar group
-			target += ' div[rel=' + data.group + '].group';
-			if ( typeof data.tool == 'string' ) {
-				// Tool
-				target += ' div[rel=' + data.tool + '].tool';
-			}
-		} else if ( typeof data.page == 'string' ) {
-			// Booklet page
-			var index = target + ' div.index div[rel=' + data.page + ']';
-			target += ' div.pages div[rel=' + data.page + '].page';
-			if ( typeof data.character == 'string' ) {
-				// Character
-				target += ' a[rel=' + data.character + ']';
-			} else if ( typeof data.row == 'number' ) {
-				// Table row
-				target += ' table tr:not(:has(th)):eq(' + data.row + ')';
+	},
+	removeFromToolbar : function( context, data ) {
+		if ( typeof data.section == 'string' ) {
+			// Section
+			var tab = 'div.tabs span[rel=' + data.section + '].tab';
+			var target = 'div[rel=' + data.section + '].section';
+			if ( typeof data.group == 'string' ) {
+				// Toolbar group
+				target += ' div[rel=' + data.group + '].group';
+				if ( typeof data.tool == 'string' ) {
+					// Tool
+					target += ' div[rel=' + data.tool + '].tool';
+				}
+			} else if ( typeof data.page == 'string' ) {
+				// Booklet page
+				var index = target + ' div.index div[rel=' + data.page + ']';
+				target += ' div.pages div[rel=' + data.page + '].page';
+				if ( typeof data.character == 'string' ) {
+					// Character
+					target += ' a[rel=' + data.character + ']';
+				} else if ( typeof data.row == 'number' ) {
+					// Table row
+					target += ' table tr:not(:has(th)):eq(' + data.row + ')';
+				} else {
+					// Just a page, remove the index too!
+					context.modules.$toolbar.find( index ).remove();
+					$.wikiEditor.modules.toolbar.fn.updateBookletSelection(
+						context,
+						null,
+						context.modules.$toolbar.find( target ),
+						context.modules.$toolbar.find( index )
+					);
+				}
 			} else {
-				// Just a page, remove the index too!
-				context.modules.$toolbar.find( index ).remove();
-				$.wikiEditor.modules.toolbar.fn.updateBookletSelection(
-					context,
-					null,
-					context.modules.$toolbar.find( target ),
-					context.modules.$toolbar.find( index )
-				);
-			}
-		} else {
-			// Just a section, remove the tab too!
+				// Just a section, remove the tab too!
 				context.modules.$toolbar.find( tab ).remove();
 			}
 			context.modules.$toolbar.find( target ).remove();
