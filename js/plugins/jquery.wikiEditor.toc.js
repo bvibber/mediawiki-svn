@@ -187,7 +187,7 @@ fn: {
 					break;
 				}
 			}
-			// Use the lowest common denominator as the actual level
+			// Use the lowest number of =s as the actual level
 			var level = Math.min( startLevel, endLevel );
 			text = $.trim( text.substr( level, text.length - ( level * 2 ) ) );
 			// Add the heading data to the outline
@@ -212,7 +212,7 @@ fn: {
 				nLevel -= Math.max( 1, lastLevel - outline[i].level );
 			}
 			outline[i].nLevel = nLevel;
-			lastLevel = nLevel;
+			lastLevel = outline[i].level;
 		}
 		// Recursively build the structure and add special item for
 		// section 0, if needed
