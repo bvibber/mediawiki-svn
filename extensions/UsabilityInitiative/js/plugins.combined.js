@@ -894,11 +894,16 @@ fn: {
 			outline[i].nLevel = nLevel;
 			lastLevel = nLevel;
 		}
-		// Recursively build the structure and adds special item for section 0
+		// Recursively build the structure and add special item for
+		// section 0, if needed
 		var structure = buildStructure( outline );
-		structure.unshift(
-			{ 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 }
-		);
+		if ( $( 'input[name=wpSection]' ).val() == '' )
+			structure.unshift( {
+				'text': wgPageName.replace(/_/g, ' '),
+				'level': 1,
+				'index': 0,
+				'position': 0 
+			});
 		context.modules.$toc.html( buildList( structure ) );
 		// Cache the outline for later use
 		context.data.outline = outline;
