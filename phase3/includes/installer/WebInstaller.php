@@ -1431,8 +1431,8 @@ class WebInstaller_ReleaseNotes extends WebInstaller_Document {
 	function getFileName() { return 'RELEASE-NOTES'; } 
 	function getFileContents() {
 		$text = parent::getFileContents();
-		$text = preg_replace_callback('/\(bug (\d+)\)/', 'WebInstaller_ReleaseNotes::replaceBugLinks', $text );
-		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', 'WebInstaller_ReleaseNotes::replaceConfigLinks', $text );
+		$text = preg_replace_callback('/\(bug (\d+)\)/', array( 'WebInstaller_ReleaseNotes', 'replaceBugLinks' ), $text );
+		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( 'WebInstaller_ReleaseNotes', 'replaceConfigLinks' ), $text );
 		return $text;
 	}
 	private static function replaceBugLinks( $matches ) {
