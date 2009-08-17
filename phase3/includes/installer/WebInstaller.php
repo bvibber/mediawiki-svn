@@ -338,8 +338,7 @@ class WebInstaller extends Installer {
 		$name = wfMsg( 'config-page-' . strtolower( $pageName ) );
 		if ( $enabled ) {
 			$query = array( 'page' => $pageName );
-			if ( in_array( $pageName, $this->pageSequence ) ||
-				in_array( $pageName, $this->otherPages ) ) {
+			if ( !in_array( $pageName, $this->pageSequence ) ) {
 				if ( in_array( $currentPageName, $this->pageSequence ) ) {
 					$query['lastPage'] = $currentPageName;
 				}
