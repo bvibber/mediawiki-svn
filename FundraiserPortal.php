@@ -1,4 +1,4 @@
-<?php error_reporting(E_ALL);
+<?php
 /**
  * FundraiserPortal extension
  *
@@ -26,7 +26,7 @@ $wgFundraiserPortalShow = true;
 $wgFundraiserPortalURL = 'http://wikimediafoundation.org/wiki/Donate/Now/en?utm_medium=sidebar&utm_campaign=spontaneous_donation';
 
 // Set this to the location the extensions images
-$wgImageUrl = $wgScriptPath . '/extensions/FundraiserPortal/images';
+$wgFundraiserImageUrl = $wgScriptPath . '/extensions/FundraiserPortal/images';
 
 // Allowable templates: Plain, Ruby, RubyText, Sapphire, Tourmaline
 $wgFundraiserPortalTemplates = array( 
@@ -74,7 +74,7 @@ function efFundraiserPortalSetup() {
 	global $wgHooks;
 
 	$wgHooks['BeforePageDisplay'][] = 'efFundraiserPortalLoader';
-	$wgHooks['SkinBuildSidebar'][] = 'efFundraiserPortalNoticeDisplay';
+	//$wgHooks['SkinBuildSidebar'][] = 'efFundraiserPortalNoticeDisplay';
 }
 
 // Load the js that will choose the button client side
@@ -94,16 +94,18 @@ function efFundraiserPortalLoader( $out, $skin ) {
 	$encFundraiserLoader = htmlspecialchars( "$wgFundraiserPortalPath/$fundraiserLoader" );
 	$wgOut->addInlineScript( "var wgFundraiserPortal='';");
 	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$encFundraiserLoader?$wgStyleVersion\"></script>\n" );
+	$loader = file_get_contents( dirname( __FILE__ ) . '/Templates/loader.js' );
+	$wgOut->addInlineScript( $loader );
 
 	return true;
 }
 
 // Finally display it if we got content
 function efFundraiserPortalNoticeDisplay( $skin, &$bar ) {
-	$bar =
+	$loader = 
 		"<script type='text/javascript'>" .
-		"if (wgFundraiserPortal != '') document.writeln(wgFundraiserPortal);" .
-		"</script>" .
-		$bar;
+		"if (wgFundraiserPortal != '') { var document.writeln(wgFundraiserPortal);" .
+		"</script>";
+	$bar['Donate'] = $loader;
 	return true;
 }

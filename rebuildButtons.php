@@ -10,7 +10,7 @@ if ( ! $wgFundraiserPortalDirectory ) {
 if ( isset( $options['help'] ) ) {
 	echo "Rebuild all static button templates\n";
 	echo "Usage:\n";
-	echo "  php extensions/FundraiserPortal/rebuildButtons [-o|Output to disk]\n";
+	echo "  php extensions/FundraiserPortal/rebuildButtons.php [-o|Output to disk]\n";
 } else {
 	echo "Rebuilding button templates ...\n";	
   
@@ -18,15 +18,15 @@ if ( isset( $options['help'] ) ) {
 	$js = $builder->getJsOutput();
 
 	if ( isset( $options['o'] ) ) {
-		$outputDir = "$wgFundraiserPortalDirectory";
+		$lang = $wgLang->getCode();
+		$outputDir = "$wgFundraiserPortalDirectory/wikipedia/$lang";
 		if ( wfMkDirParents( $outputDir ) ) {
 	
-			$lang = $wgLang->getCode();
-			$outputFile = "$outputDir/wikipedia/$lang/fundraiserportal.js";
+			$outputFile = "$outputDir/fundraiserportal.js";
 			$ok = file_put_contents( $outputFile, $js );
 			if ( !$ok ) {
-                        	echo "FAILED to write $outputFile!\n";
-                        }
+				echo "FAILED to write $outputFile!\n";
+			}
 		} else {
 			echo "FAILED to create $outputDir!\n";
 		}
