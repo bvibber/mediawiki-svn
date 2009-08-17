@@ -1,9 +1,5 @@
 function pickDonateButton() {
-        var b = new Array();
-        b['Ruby'] = 25;
-        b['Tourmaline'] = 25;
-        b['RubyText'] = 25;
-        b['Sapphire'] = 25;
+        var b = {{{templateWeights}}};
 
         var r = new Array();
         var total = 0;

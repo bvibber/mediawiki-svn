@@ -180,23 +180,6 @@ div#fundraiserportal-box-bottom div div {
 	height: 12px;
 }
 </style>
-<script language="javascript" type="text/javascript">
-function toggleFundraiserPortal() {
-	fundraiserPortalToggleState = !fundraiserPortalToggleState;
-	setFundraiserPortalCookie( fundraiserPortalToggleState );
-	updateFundraiserPortal();
-}
-function updateFundraiserPortal() {
-	var portal = document.getElementById( 'p-DONATE' );
-	if ( !fundraiserPortalToggleState ) {
-		portal.className = portal.className.replace( 'collapsed', '' );
-	} else {
-		portal.className += ' collapsed';
-	}
-}
-var fundraiserPortalToggleState = getDonateButton();
-updateFundraiserPortal();
-</script>
 <div id="fundraiserportal-box-top"><div><div></div></div></div>
 <div id="fundraiserportal-box">
 	<div>

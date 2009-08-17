@@ -58,11 +58,16 @@ class DonateButton extends UnlistedSpecialPage {
 	}
 
 	public function getScriptFunctions() {
-		return $this->fetchTemplate( 'donateScripts.js' );
+		global $wgFundraiserPortalTemplates;
+		$text = $this->fetchTemplate( 'donateScripts.js' );
+		return strtr( $text,
+			array( '{{{templateWeights}}}' =>
+				json_encode( $wgFundraiserPortalTemplates ) ) );
 	}
 
 	public function getButtonText( $template ) {
-		global $wgFundraiserImageUrl,$wgFundraiserPortalURL;
+		global $wgFundraiserImageUrl, $wgFundraiserPortalURL;
+		global $wgFundraiserPortalTemplates;
 
 		wfLoadExtensionMessages( 'FundraiserPortal' );
 
@@ -70,7 +75,7 @@ class DonateButton extends UnlistedSpecialPage {
 		$buttonUrl = $wgFundraiserPortalURL . "&utm_source=$template";
 
 		// Switch statement of horror
-		if( in_array( $template, $this->templates ) ) {
+		if( isset( $wgFundraiserPortalTemplates[$template] ) ) {
 			$text = $this->fetchTemplate( "$template.tmpl" );
 			
 			$text = strtr( $text, array(
