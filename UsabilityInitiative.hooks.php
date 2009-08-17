@@ -58,14 +58,14 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 10 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 5 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 15 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 16 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 15 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 16 ),
 			),
 		),
 	);

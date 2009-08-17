@@ -130,12 +130,20 @@ api: {
 						'div[rel=' + data.section + '].section ' +
 						'div[rel=' + data.page + '].page div'
 					);
+					var actions = $characters.data( 'actions' );
 					for ( character in data[type] ) {
 						// Character
 						$characters.append(
-							$.wikiEditor.modules.toolbar.fn.buildCharacter(
-								context, data[type][character]
-							)
+							$( $.wikiEditor.modules.toolbar.fn.buildCharacter(
+								 data[type][character],
+								 actions
+							) ).click( function() {
+								$.wikiEditor.modules.toolbar.fn.doAction(
+									$(this).parent().data( 'context' ),
+									$(this).parent().data( 'actions' )[$(this).attr( 'rel' )]
+								);
+								return false;
+							} )
 						);
 					}
 					break;
@@ -206,7 +214,7 @@ fn: {
 		if ( '$toolbar' in context.modules ) {
 			return;
 		}
-		context.modules.$toolbar = $( '<div></div>' )
+		context.modules.$toolbar = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toolbar' )
 			.attr( 'id', 'wikiEditor-ui-toolbar' );
 		$.wikiEditor.modules.toolbar.fn.build( context, config );
@@ -258,7 +266,7 @@ fn: {
 					}
 					
 					// Create the dialog <div>
-					$j( '<div></div> ')
+					$j( '<div /> ')
 						.attr( 'id', action.id )
 						.html( action.html )
 						.data( 'context', context )
@@ -272,14 +280,14 @@ fn: {
 		}
 	},
 	buildGroup: function( context, id, group ) {
-		var $group = $( '<div></div>' ).attr( {
+		var $group = $( '<div />' ).attr( {
 			'class': 'group group-' + id,
 			'rel': id
 		} );
 		var label = $.wikiEditor.modules.toolbar.fn.autoMsg( group, 'label' );
 		if ( label ) {
 			$group.append(
-				$( '<div></div>' ).text( label ).addClass( 'label' )
+				'<div class="label">' + label + '</div>'
 			)
 		}
 		if ( 'tools' in group ) {
@@ -334,11 +342,11 @@ fn: {
 				}
 				return $button;
 			case 'select':
-				var $select = $( '<select></select>' ).attr( {
+				var $select = $( '<select />' ).attr( {
 					'rel': id,
 					'class': 'tool tool-' + id
 				} );
-				$select.append( $( '<option></option>' ).text( label ) )
+				$select.append( $( '<option />' ).text( label ) )
 				if ( 'list' in tool ) {
 					$select
 						.data( 'list', tool.list )
@@ -362,7 +370,7 @@ fn: {
 								tool.list[option], 'label'
 							);
 						$select.append(
-							$( '<option></option>' )
+							$( '<option />' )
 								.text( optionLabel )
 								.attr( 'value', option )
 						);
@@ -374,7 +382,7 @@ fn: {
 	},
 	buildBookmark: function( context, id, page ) {
 		var label = $.wikiEditor.modules.toolbar.fn.autoMsg( page, 'label' );
-		return $( '<div></div>' )
+		return $( '<div />' )
 			.text( label )
 			.attr( 'rel', id )
 			.data( 'context', context )
@@ -400,41 +408,35 @@ fn: {
 			} );
 	},
 	buildPage: function( context, id, page ) {
-		var $page = $( '<div></div>' ).attr( {
+		var $page = $( '<div />' ).attr( {
 			'class': 'page page-' + id,
 			'rel': id
 		} );
 		switch( page.layout ) {
 			case 'table':
 				$page.addClass( 'page-table' );
-				var $table = $( '<table></table>' ).attr( {
-					'cellpadding': '0',
-					'cellspacing': '0',
-					'border': '0',
-					'width': '100%',
-					'class': 'table table-' + id
-				} );
+				var html = '<table cellpadding=0 cellspacing=0 ' +
+					'border=0 width="100%" class="table table-"' + id + '">';
 				if ( 'headings' in page ) {
-					$table.append(
-						$.wikiEditor.modules.toolbar.fn.buildHeading(
+					html += $.wikiEditor.modules.toolbar.fn.buildHeading(
 							context, page.headings
 						)
-					);
 				}
 				if ( 'rows' in page ) {
 					for ( row in page.rows ) {
-						$table.append(
-							$.wikiEditor.modules.toolbar.fn.buildRow(
+						html += $.wikiEditor.modules.toolbar.fn.buildRow(
 								context, page.rows[row]
 							)
-						);
 					}
 				}
-				$page.append( $table );
+				$page.html( html );
 				break;
 			case 'characters':
 				$page.addClass( 'page-characters' );
-				$characters = $( '<div></div>' );
+				$characters = $( '<div />' )
+					.data( 'context', context )
+					.data( 'actions', {} );
+				var actions = $characters.data( 'actions' );
 				if ( 'language' in page ) {
 					$characters.attr( 'lang', page.language );
 				}
@@ -442,13 +444,19 @@ fn: {
 					$characters.attr( 'dir', page.direction );
 				}
 				if ( 'characters' in page ) {
+					var html = '';
 					for ( character in page.characters ) {
-						$characters.append(
-							$.wikiEditor.modules.toolbar.fn.buildCharacter(
-								context, page.characters[character]
-							)
-						);
+						html += $.wikiEditor.modules.toolbar.fn.buildCharacter(
+								page.characters[character], actions );
 					}
+					$characters.html( html )
+						.children().click( function() {
+							$.wikiEditor.modules.toolbar.fn.doAction(
+								$(this).parent().data( 'context' ),
+								$(this).parent().data( 'actions' )[$(this).attr( 'rel' )]
+							);
+							return false;
+						} );
 				}
 				$page.append( $characters );
 				break;
@@ -456,39 +464,24 @@ fn: {
 		return $page;
 	},
 	buildHeading: function( context, headings ) {
-		var $headings = $( '<tr></tr>' );
+		var html = '<tr>';
 		for ( heading in headings ) {
-			$headings.append(
-				$( '<th></th>' ).text(
-					$.wikiEditor.modules.toolbar.fn.autoMsg(
-						headings[heading], 'content'
-					)
-				)
-			);
+			html += '<th>' + $.wikiEditor.modules.toolbar.fn.autoMsg(
+				headings[heading], 'content' ) + '</th>';
 		}
-		return $headings;
+		return html;
 	},
 	buildRow: function( context, row ) {
-		var $row = $( '<tr></tr>' );
+		var html = '<tr>';
 		for ( cell in row ) {
-			$row.append(
-				$( '<td></td>' )
-					.attr( {
-						'class': 'cell cell-' + cell,
-						'valign': 'top'
-					} )
-					.append(
-						$( '<span></span>' ).html(
-							$.wikiEditor.modules.toolbar.fn.autoMsg(
-								row[cell], 'content'
-							)
-						)
-					)
-				);
+			html += '<td class="cell cell-' + cell + '" valign="top"><span>' +
+				$.wikiEditor.modules.toolbar.fn.autoMsg( row[cell], 'content' ) +
+				'</span></td>';
 		}
-		return $row;
+		html += '</tr>';
+		return html;
 	},
-	buildCharacter: function( context, character ) {
+	buildCharacter: function( character, actions ) {
 		if ( typeof character == 'string' ) {
 			character = {
 				'label': character,
@@ -507,32 +500,22 @@ fn: {
 			};
 		}
 		if ( 'action' in character && 'label' in character ) {
-			return $( '<a></a>' )
-				.attr( 'rel', character.label )
-				.attr( 'href', '#' )
-				.text( character.label )
-				.data( 'context', context )
-				.data( 'action', character.action )
-				.click( function() {
-					$.wikiEditor.modules.toolbar.fn.doAction(
-						$(this).data( 'context' ),
-						$(this).data( 'action' )
-					);
-					return false;
-				} );
+			actions[character.label] = character.action;
+			return '<a rel="' + character.label + '" href="#">' +
+				character.label + '</a>';
 		}
 	},
 	buildTab: function( context, id, section ) {
 		var selected = $.cookie(
 			'wikiEditor-' + context.instance + '-toolbar-section'
 		);
-		return $( '<span></span>' )
+		return $( '<span />' )
 			.attr( {
 				'class': 'tab tab-' + id,
 				'rel': id
 			} )
 			.append(
-				$( '<a></a>' )
+				$( '<a />' )
 				.addClass( selected == id ? 'current' : null )
 				.attr( 'href', '#' )
 				.text(
@@ -573,7 +556,7 @@ fn: {
 		var $section;
 		switch ( section.type ) {
 			case 'toolbar':
-				var $section = $( '<div></div>' ).attr( {
+				var $section = $( '<div />' ).attr( {
 					'class': 'toolbar section section-' + id,
 					'rel': id
 				} );
@@ -588,10 +571,9 @@ fn: {
 				}
 				break;
 			case 'booklet':
-				var $pages = $( '<div></div>' ).attr( 'class', 'pages' );
-				var $index = $( '<div></div>' ).attr( 'class', 'index' );
+				var $pages = $( '<div />' ).addClass( 'pages' );
+				var $index = $( '<div />' ).addClass( 'index' );
 				if ( 'pages' in section ) {
-
 					for ( page in section.pages ) {
 						$pages.append(
 							$.wikiEditor.modules.toolbar.fn.buildPage(
@@ -605,7 +587,7 @@ fn: {
 						);
 					}
 				}
-				$section = $( '<div></div>' )
+				$section = $( '<div />' )
 					.attr( {
 						'class': 'booklet section section-' + id,
 						'rel': id
@@ -626,24 +608,25 @@ fn: {
 		var cookie =
 			'wikiEditor-' + context.instance + '-booklet-' + id + '-page';
 		var selected = $.cookie( cookie );
-		if ( $index.find( '*[rel=' + selected + ']' ).size() == 0 ) {
-			selected = $index.find( ':first' ).attr( 'rel' );
+		var $selectedIndex = $index.find( '*[rel=' + selected + ']' );
+		if ( $selectedIndex.size() == 0 ) {
+			selected = $index.children().eq( 0 ).attr( 'rel' );
 			$.cookie( cookie, selected );
 		}
 		$pages.children().hide();
 		$pages.find( '*[rel=' + selected + ']' ).show();
 		$index.children().removeClass( 'current' );
-		$index.find( '*[rel=' + selected + ']' ).addClass( 'current' );
+		$selectedIndex.addClass( 'current' );
 	},
 	build: function( context, config ) {
-		var $tabs = $( '<div></div>' )
+		var $tabs = $( '<div />' )
 			.addClass( 'tabs' )
 			.appendTo( context.modules.$toolbar );
-		var $sections = $( '<div></div>' )
+		var $sections = $( '<div />' )
 			.addClass( 'sections' )
 			.appendTo( context.modules.$toolbar );
 		context.modules.$toolbar.append(
-			$( '<div></div>' ).css( 'clear', 'both' )
+			$( '<div />' ).css( 'clear', 'both' )
 		);
 		var sectionQueue = [];
 		for ( section in config ) {

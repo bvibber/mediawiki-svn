@@ -23,11 +23,11 @@ var context = $(this).data( 'context' );
 /* API */
 
 // The first time this is called, we expect context to be undefined, meaning
-// the editing ui has not yet been, and still needs to be built, however each
+// the editing UI has not yet been, and still needs to be, built. However, each
 // additional call after that is expected to be an API call, which contains a
-// string as the first argument which corrosponds to a supported api call
+// string as the first argument which corresponds to a supported API call
 if ( typeof context !== 'undefined' ) {
-	// Since javascript gives arugments as an object, we need to convert them
+	// Since javascript gives arguments as an object, we need to convert them
 	// so they can be used more easily
 	arguments = $.makeArray( arguments );
 	if ( arguments.length > 0 ) {
@@ -68,6 +68,7 @@ context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 // Attach a container in the top
 context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' )
 	.attr( 'id', 'wikiEditor-ui-top' ) );
+
 // Create a set of standard methods for internal and external use
 context.api = {
 	/**
