@@ -26,7 +26,9 @@ class ContributionTracking extends UnlistedSpecialPage {
 		}
 		
 		$db = contributionTrackingConnection();
-		
+
+		$ts = $db->timestamp();
+
 		$tracked_contribution = array(
 			'note' => $wgRequest->getText('comment', NULL),
 			'referrer' => $wgRequest->getText('referrer', NULL),
@@ -36,6 +38,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 			'utm_campaign' => $wgRequest->getText('utm_campaign', NULL),
 			'optout' => ($wgRequest->getCheck('email', 0) ? 0 : 1),
 			'language' => $wgRequest->getText('language', NULL),
+			'ts' => $ts,
 		);
 		
 		// Make all empty strings NULL
