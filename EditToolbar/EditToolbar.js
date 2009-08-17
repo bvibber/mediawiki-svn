@@ -558,7 +558,7 @@ var editToolbarConfiguration = {
 										for ( var r = 0; r < rows; r++ ) {
 											table += "|-\n";
 											for ( var c = 0; c < cols; c++ ) {
-												var isHeader = ( r < hrows && c < hcols );
+												var isHeader = ( r < hrows || c < hcols );
 												var delim = isHeader ? '!' : '|';
 												if ( c > 0 )
 													delim += delim;
