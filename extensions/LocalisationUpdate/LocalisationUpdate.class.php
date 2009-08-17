@@ -475,9 +475,8 @@ class LocalisationUpdate {
 	}
 	
 	public static function parsePHP( $php, $varname ) {
-		$ce = new ConfEditor("<?php $php");
-		$vars = $ce->getVars();
-		return @$vars[$varname];
+		$reader = new QuickArrayReader("<?php $php");
+		return $reader->getVar( $varname );
 	}
 }
 

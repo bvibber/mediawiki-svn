@@ -23,6 +23,12 @@ function confExtractArray( $php, $varname ) {
 	return $retval;
 }
 
+function quickTokenExtractArray( $php, $varname ) {
+	$reader = new QuickArrayReader("<?php $php");
+	return $reader->getVar( $varname );
+}
+
+
 if( count( $args ) ) {
 	$sources = $args;
 } else {
@@ -33,7 +39,7 @@ if( count( $args ) ) {
 }
 
 foreach( $sources as $sourceFile ) {
-	$rel = wfRelativePath( $sourceFile, $IP );
+	$rel = basename( $sourceFile );
 	$out = str_replace( '/', '-', $rel );
 	
 	$sourceData = file_get_contents( $sourceFile );
@@ -53,24 +59,33 @@ foreach( $sources as $sourceFile ) {
 	$deltaEval = microtime(true) - $start;
 	
 	$start = microtime(true);
+	$quick = quickTokenExtractArray( $sourceData, 'messages' );
+	$deltaQuick = microtime(true) - $start;
+	
+	$start = microtime(true);
 	$token = confExtractArray( $sourceData, 'messages' );
 	$deltaToken = microtime(true) - $start;
 	
 	$hashEval = md5(serialize($eval));
 	$hashToken = md5(serialize($token));
+	$hashQuick = md5(serialize($quick));
 	$countEval = count( (array)$eval);
 	$countToken = count( (array)$token );
+	$countQuick = count( (array)$quick );
 	
 	printf( "%s %s %d $items - %0.1fms - eval\n", $rel, $hashEval, $countEval, $deltaEval * 1000 );
-	printf( "%s %s %d $items - %0.1fms - token\n", $rel, $hashToken, $countToken, $deltaToken * 1000 );
+	printf( "%s %s %d $items - %0.1fms - QuickArrayReader\n", $rel, $hashQuick, $countQuick, $deltaQuick * 1000 );
+	printf( "%s %s %d $items - %0.1fms - ConfEditor\n", $rel, $hashToken, $countToken, $deltaToken * 1000 );
 	
-	if( $hashEval !== $hashToken ) {
+	if( $hashEval !== $hashToken || $hashEval !== $hashQuick ) {
 		echo "FAILED on $rel\n";
 		file_put_contents( "$out-eval.txt", var_export( $eval, true ) );
 		file_put_contents( "$out-token.txt", var_export( $token, true ) );
+		file_put_contents( "$out-quick.txt", var_export( $quick, true ) );
 		#die("check eval.txt and token.txt\n");
 	}
 	echo "\n";
 }
 
 echo "ok\n";
+

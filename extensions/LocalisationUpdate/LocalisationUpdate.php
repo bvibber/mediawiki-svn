@@ -39,6 +39,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['LocalisationUpdate'] = $dir . 'LocalisationUpdate.i18n.php';
 $wgAutoloadClasses['LocalisationUpdate'] = $dir . 'LocalisationUpdate.class.php';
 $wgAutoloadClasses['LUDependency'] = $dir . 'LocalisationUpdate.class.php';
+$wgAutoloadClasses['QuickArrayReader'] = $dir . 'QuickArrayReader.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LocalisationUpdate::schemaUpdates';
 
