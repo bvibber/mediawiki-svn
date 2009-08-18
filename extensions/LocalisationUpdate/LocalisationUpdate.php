@@ -33,6 +33,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Use the right hook
+$wgHooks['MessageNotInMwNs'][] = 'LocalisationUpdate::FindUpdatedMessages'; // MW <= 1.15
 $wgHooks['LocalisationCacheRecache'][] = 'LocalisationUpdate::onRecache'; // MW 1.16+
 
 $dir = dirname( __FILE__ ) . '/';

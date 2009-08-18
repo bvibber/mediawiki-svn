@@ -1,6 +1,34 @@
 <?php
 class LocalisationUpdate {
 	// DB Search funtion
+	// MW <= 1.15
+	public static function FindUpdatedMessage( &$message, $lckey, $langcode, $isFullKey ) {
+		// Define a cache
+		static $cache = array();
+		$db = wfGetDB ( DB_SLAVE );
+
+		// If the key also contains the language code remove the language code from the key
+		if ( $isFullKey ) {
+			$lckey = preg_replace( "/\/" . $langcode . "/", "", $lckey );
+		}
+		
+		// If message is in the cache, don't get an update!
+		if ( array_key_exists( $lckey . "/" . $langcode, $cache ) ) {
+			$message = $cache[$lckey . "/" . $langcode];
+
+		// Get the message from the database
+		$conds  = array( 'lo_key' => $lckey, 'lo_language' => $langcode );
+		$result = $db->selectField( 'localisation', 'lo_value', $conds, __METHOD__ ); // Check if the database has any updated message
+		if ( $result === false ) { // If no results found, exit here
+			return true;
+		}
+
+		$message = $result;
+		$cache[$lckey . "/" . $langcode] = $result; // Update the cache
+		return true;
+	}
+	
+	// MW 1.16+
 	public static function onRecache( $lc, $langcode, &$cache ) {
 		$dbr = wfGetDB ( DB_SLAVE );
 
