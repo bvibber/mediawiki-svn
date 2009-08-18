@@ -18,28 +18,41 @@ class LocalisationUpdate {
 	}
 
 	// Called from the cronjob to fetch new messages from SVN
-	public static function updateMessages( $verbose = false, $all = false ) {
+	public static function updateMessages( $options ) {
+		$verbose = !isset( $options['quiet'] );
+		$all = isset( $options['all'] );
+		$skipCore = isset( $options['skip-core'] );
+		$skipExtensions = isset( $options['skip-extensions'] );
+		
 		// Update all MW core messages
-		$result = self::updateMediawikiMessages( $verbose );
+		if( !$skipCore ) {
+			$result = self::updateMediawikiMessages( $verbose );
+		}
 		
 		// Update all Extension messages
-		if( $all ) {
-			global $IP;
-			$extFiles = array();
-			$messageFiles = glob( "$IP/extensions/*/*.i18n.php" );
-			foreach( $messageFiles as $pathname ) {
-				$filename = basename( $pathname );
-				if( preg_match( '/^(.*)\.i18n\.php$/', $filename, $matches ) ) {
-					$group = $matches[1];
-					$extFiles[$group] = $pathname;
+		if( !$skipExtensions ) {
+			if( $all ) {
+				global $IP;
+				$extFiles = array();
+				
+				// Look in extensions/ for all available items...
+				$dirs = new RecursiveDirectoryIterator( "$IP/extensions/" );
+				
+				// I ain't kidding... RecursiveIteratorIterator.
+				foreach( new RecursiveIteratorIterator( $dirs ) as $pathname => $item ) {
+					$filename = basename( $pathname );
+					if( preg_match( '/^(.*)\.i18n\.php$/', $filename, $matches ) ) {
+						$group = $matches[1];
+						$extFiles[$group] = $pathname;
+					}
 				}
+			} else {
+				global $wgExtensionMessagesFiles;
+				$extFiles = $wgExtensionMessagesFiles;
 			}
-		} else {
-			global $wgExtensionMessagesFiles;
-			$extFiles = $wgExtensionMessagesFiles;
-		}
-		foreach ( $extFiles as $extension => $locFile ) {
-			$result += self::updateExtensionMessages( $locFile, $extension, $verbose );
+			foreach ( $extFiles as $extension => $locFile ) {
+				$result += self::updateExtensionMessages( $locFile, $extension, $verbose );
+			}
 		}
 
 		// And output the result!
