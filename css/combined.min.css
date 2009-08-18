@@ -26,6 +26,7 @@ body.rtl .wikiEditor-ui{
 float:right;
 }
 .wikiEditor-ui .wikiEditor-ui-bottom{
+position:relative;
 border:solid silver 1px;
 border-top-width:0;
 width:100%;
