@@ -40,3 +40,6 @@ body.rtl .wikiEditor-ui {
 	border: solid silver 1px;
 	width: 100%;
 }
+.ui-dialog-content fieldset table td {
+	padding: 0.25em;
+}
