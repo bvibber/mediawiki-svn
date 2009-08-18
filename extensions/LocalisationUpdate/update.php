@@ -12,15 +12,14 @@ if( isset( $options['help'] ) ) {
 	print "\n";
 	print "Usage: php extensions/LocalisationUpdate/update.php\n";
 	print "Options:\n";
-	print "  --quiet  Suppress progress output\n";
-	print "  --all    Fetch all present extensions, not just those enabled\n";
+	print "  --quiet           Suppress progress output\n";
+	print "  --skip-core       Don't fetch MediaWiki core files\n";
+	print "  --skip-extensions Don't fetch any extension files\n";
+	print "  --all             Fetch all present extensions, not just those enabled\n";
 	print "\n";
 	exit( 0 );
 }
 
-
-$verbose = !isset( $options['quiet'] );
-$all = isset( $options['all'] );
 
 $starttime = microtime( true );
 
@@ -28,7 +27,7 @@ $starttime = microtime( true );
 set_time_limit( 0 );
 ini_set( "max_execution_time", 0 );
 
-LocalisationUpdate::updateMessages( $verbose, $all );
+LocalisationUpdate::updateMessages( $options );
 
 $endtime = microtime( true );
 $totaltime = ( $endtime - $starttime );
