@@ -23,6 +23,9 @@ function getFundraiserPortalCookie() {
 }
 var fundraiserPortalToggleState = getFundraiserPortalCookie();
 addOnloadHook(function() {
+	if (wgFundraiserPortalCSS != '') {
+		appendCSS(wgFundraiserPortalCSS);
+	}
 	if (wgFundraiserPortal != '') {
 		var logo = document.getElementById('p-logo');
 		if (logo) {
@@ -32,11 +35,7 @@ addOnloadHook(function() {
 			if (fundraiserPortalToggleState)
 				div.className += ' collapsed';
 			div.innerHTML = '<div class="body pBody">' + wgFundraiserPortal + '</div>';
-			if (logo.nextSibling == null) {
-				logo.parentNode.appendChild(div);
-			} else {
-				logo.parentNode.insertBefore(div, logo.nextSibling);
-			}
+			logo.parentNode.insertBefore(div, logo.nextSibling);
 		}
 	}
 });

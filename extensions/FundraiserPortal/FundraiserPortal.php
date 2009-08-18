@@ -74,13 +74,11 @@ function efFundraiserPortalSetup() {
 	global $wgHooks;
 
 	$wgHooks['BeforePageDisplay'][] = 'efFundraiserPortalLoader';
-	//$wgHooks['SkinBuildSidebar'][] = 'efFundraiserPortalNoticeDisplay';
 }
 
 // Load the js that will choose the button client side
 function efFundraiserPortalLoader( $out, $skin ) {
-	global $wgOut, $wgLang;
-	global $wgJsMimeType, $wgStyleVersion;
+	global $wgOut, $wgContLang;
 	global $wgFundraiserPortalShow, $wgFundraiserPortalProject, $wgFundraiserPortalPath;
 	
 	// Only proceed if we are configured to show the portal
@@ -89,23 +87,13 @@ function efFundraiserPortalLoader( $out, $skin ) {
 	}
 
 	// Pull in our loader
-	$lang = $wgLang->getCode();
+	$lang = $wgContLang->getCode(); // note: this is English-only for now
 	$fundraiserLoader = "$wgFundraiserPortalProject/$lang/fundraiserportal.js";
-	$encFundraiserLoader = htmlspecialchars( "$wgFundraiserPortalPath/$fundraiserLoader" );
-	$wgOut->addInlineScript( "var wgFundraiserPortal='';");
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$encFundraiserLoader?$wgStyleVersion\"></script>\n" );
-	$loader = file_get_contents( dirname( __FILE__ ) . '/Templates/loader.js' );
-	$wgOut->addInlineScript( $loader );
+	$encFundraiserLoader = Xml::encodeJsVar( "$wgFundraiserPortalPath/$fundraiserLoader" );
+	$wgOut->addInlineScript(
+		"var wgFundraiserPortal='', wgFundraiserPortalCSS='';\n" .
+		"importScriptURI($encFundraiserLoader);\n"
+	);
 
-	return true;
-}
-
-// Finally display it if we got content
-function efFundraiserPortalNoticeDisplay( $skin, &$bar ) {
-	$loader = 
-		"<script type='text/javascript'>" .
-		"if (wgFundraiserPortal != '') { var document.writeln(wgFundraiserPortal);" .
-		"</script>";
-	$bar['Donate'] = $loader;
 	return true;
 }

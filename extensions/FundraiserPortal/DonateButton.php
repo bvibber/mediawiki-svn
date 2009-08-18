@@ -48,13 +48,18 @@ class DonateButton extends UnlistedSpecialPage {
 	
 		foreach( $wgFundraiserPortalTemplates as $template => $weight ) {
 			$buttons[$template] = $this->getButtonText( $template );
+			$styles[$template] = $this->getButtonStyle( $template );
 		}
 
 		$encButtons = json_encode( $buttons );
+		$encStyles = json_encode( $styles );
 
 		return $this->getScriptFunctions() .
 			'wgFundraiserPortalButtons=' . $encButtons . ";\n" .
-			"wgFundraiserPortal=wgFundraiserPortalButtons[wgDonateButton];\n";
+			'wgFundraiserPortalStyles=' . $encStyles . ";\n" .
+			"wgFundraiserPortal=wgFundraiserPortalButtons[wgDonateButton];\n" .
+			"wgFundraiserPortalCSS=wgFundraiserPortalStyles[wgDonateButton];\n" .
+			$this->getLoaderScript();
 	}
 
 	public function getScriptFunctions() {
@@ -65,31 +70,42 @@ class DonateButton extends UnlistedSpecialPage {
 				json_encode( $wgFundraiserPortalTemplates ) ) );
 	}
 
+	public function getLoaderScript() {
+		return $this->fetchTemplate( 'loader.js' );
+	}
+
 	public function getButtonText( $template ) {
-		global $wgFundraiserImageUrl, $wgFundraiserPortalURL;
-		global $wgFundraiserPortalTemplates;
+		global $wgFundraiserPortalURL;
 
 		wfLoadExtensionMessages( 'FundraiserPortal' );
 
 		// Add our tracking identifiet
 		$buttonUrl = $wgFundraiserPortalURL . "&utm_source=$template";
 
-		// Switch statement of horror
-		if( isset( $wgFundraiserPortalTemplates[$template] ) ) {
-			$text = $this->fetchTemplate( "$template.tmpl" );
-			
-			$text = strtr( $text, array(
-				'{{{imageUrl}}}' => $wgFundraiserImageUrl,
-				'{{{buttonUrl}}}' => $buttonUrl ));
-			
-			// Note these are raw; no HTML translation or anything...
-			$text = preg_replace_callback( '/\{\{msg:(.*?)\}\}/',
-				array( $this, 'templateMessageCallback' ),
-				$text );
-			
-			return $text;
-		}
-		return false;
+		$text = $this->fetchTemplate( "$template.tmpl" );
+		
+		$text = strtr( $text, array(
+			'{{{buttonUrl}}}' => $buttonUrl ));
+		
+		// Note these are raw; no HTML translation or anything...
+		$text = preg_replace_callback( '/\{\{msg:(.*?)\}\}/',
+			array( $this, 'templateMessageCallback' ),
+			$text );
+		
+		return $text;
+	}
+	
+	public function getButtonStyle( $template ) {
+		global $wgFundraiserImageUrl;
+
+		wfLoadExtensionMessages( 'FundraiserPortal' );
+
+		$text = $this->fetchTemplate( "$template.css" );
+		
+		$text = strtr( $text, array(
+			'{{{imageUrl}}}' => $wgFundraiserImageUrl ) );
+		
+		return $text;
 	}
 	
 	function templateMessageCallback( $matches ) {
