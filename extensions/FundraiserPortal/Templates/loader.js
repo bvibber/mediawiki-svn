@@ -31,7 +31,7 @@ addOnloadHook(function() {
 			div.className = "portlet";
 			if (fundraiserPortalToggleState)
 				div.className += ' collapsed';
-			div.innerHTML = '<div class="pBody">' + wgFundraiserPortal + '</div>';
+			div.innerHTML = '<div class="body pBody">' + wgFundraiserPortal + '</div>';
 			if (logo.nextSibling == null) {
 				logo.parentNode.appendChild(div);
 			} else {
