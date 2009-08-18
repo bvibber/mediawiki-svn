@@ -28,7 +28,6 @@ form#editform {
 	background-color: #f3f3f3;
 }
 .wikiEditor-ui .wikiEditor-ui-bottom {
-	position: relative;
 	border: solid silver 1px;
 	border-top-width: 0;
 }
@@ -36,4 +35,7 @@ form#editform {
 	position: relative;
 	border: solid silver 1px;
 	border-bottom-width: 0;
+}
+.ui-dialog-content fieldset table td {
+	padding: 0.25em;
 }

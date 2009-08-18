@@ -576,7 +576,8 @@ $(this)
 	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
 	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
 	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
-// Get a refrence to the outter container
+
+// Get a reference to the outer container
 context.$ui = $(this).parent().parent().parent();
 context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 // Attach a container in the top
@@ -878,18 +879,39 @@ api: {
 		//
 	},
 	modifyToolbar: function( context, data ) {
-		//
+		// 
 	},
 	removeFromToolbar: function( context, data ) {
 		if ( typeof data.section == 'string' ) {
-			var selector = 'div[rel=' + data.section + '].section';
+			// Section
+			var tab = 'div.tabs span[rel=' + data.section + '].tab';
+			var target = 'div[rel=' + data.section + '].section';
 			if ( typeof data.group == 'string' ) {
-				selector += ' div[rel=' + data.group + '].group';
+				// Toolbar group
+				target += ' div[rel=' + data.group + '].group';
 				if ( typeof data.tool == 'string' ) {
-					selector += ' div[rel=' + data.tool + '].tool';
+					// Tool
+					target += ' div[rel=' + data.tool + '].tool';
 				}
+			} else if ( typeof data.page == 'string' ) {
+				// Booklet page
+				var index = target + ' div.index div[rel=' + data.page + ']';
+				target += ' div.pages div[rel=' + data.page + '].page';
+				if ( typeof data.character == 'string' ) {
+					// Character
+					target += ' a[rel=' + data.character + ']';
+				} else if ( typeof data.row == 'number' ) {
+					// Table row
+					target += ' table tr:not(:has(th)):eq(' + data.row + ')';
+				} else {
+					// Just a page, remove the index too!
+					context.modules.$toolbar.find( index ).remove();
+				}
+			} else {
+				// Just a section, remove the tab too!
+				context.modules.$toolbar.find( tab ).remove();
 			}
-			context.modules.$toolbar.find( selector ).remove();
+			context.modules.$toolbar.find( target ).remove();
 		}
 	}
 },
@@ -1012,12 +1034,18 @@ fn: {
 		var label = $.wikiEditor.modules.toolbar.fn.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
+				var src = tool.icon;
+				if ( src.indexOf( 'http://' ) !== 0 && src.indexOf( 'https://' ) !== 0 ) {
+					src = $.wikiEditor.modules.toolbar.imgPath + src;
+				}
 				$button = $( '<img />' ).attr( {
-					'src': $.wikiEditor.modules.toolbar.imgPath + tool.icon,
-					'alt': label,
-					'title': label,
-					'rel': id,
-					'class': 'tool tool-' + id
+					'src' : src,
+					'width' : 22,
+					'height' : 22,
+					'alt' : label,
+					'title' : label,
+					'rel' : id,
+					'class' : 'tool tool-button'
 				} );
 				if ( 'action' in tool ) {
 					$button
@@ -1033,40 +1061,33 @@ fn: {
 				}
 				return $button;
 			case 'select':
-				var $select = $( '<select></select>' ).attr( {
-					'rel': id,
-					'class': 'tool tool-' + id
-				} );
-				$select.append( $( '<option></option>' ).text( label ) )
+				var $select = $( '<div />' )
+					.attr( { 'rel' : id, 'class' : 'tool tool-select' } )
+					.click( function() {
+						var $options = $(this).find( '.options' );
+						$options.animate( { 'opacity': 'toggle' }, 'fast' );
+					} );
+				$options = $( '<div />' ).addClass( 'options' );
 				if ( 'list' in tool ) {
-					$select
-						.data( 'list', tool.list )
-						.data( 'context', context )
-						.click( function() {
-							var list = $(this).data( 'list' );
-							var val = $(this).val();
-							if ( val in list && 'action' in list[val] ) {
-								$.wikiEditor.modules.toolbar.fn.doAction(
-									$(this).data( 'context' ), list[val].action
-								);
-							}
-							$(this)
-								.find(":selected").attr( 'selected', false )
-								.find(":first").attr( 'selected', true );
-							return false;
-						} );
 					for ( option in tool.list ) {
-						var optionLabel =
-							$.wikiEditor.modules.toolbar.fn.autoMsg(
-								tool.list[option], 'label'
-							);
-						$select.append(
-							$( '<option></option>' )
+						var optionLabel = $.wikiEditor.modules.toolbar.fn.autoMsg( tool.list[option], 'label' );
+						$options.append(
+							$( '<a />' )
+								.data( 'action', tool.list[option].action )
+								.data( 'context', context )
+								.click( function() {
+									$.wikiEditor.modules.toolbar.fn.doAction(
+										$(this).data( 'context' ), $(this).data( 'action' )
+									);
+								} )
 								.text( optionLabel )
-								.attr( 'value', option )
+								.addClass( 'option' )
+								.attr( 'rel', option )
 						);
 					}
 				}
+				$select.append( $( '<div />' ).addClass( 'menu' ).append( $options ) );
+				$select.append( $( '<div />' ).addClass( 'label' ).text( label ) );
 				return $select;
 			default: return null;
 		}
@@ -1207,6 +1228,7 @@ fn: {
 						}
 						if ( 'action' in tool && 'label' in tool ) {
 							var $character = $( '<a></a>' )
+								.attr( 'rel', tool.label )
 								.attr( 'href', '#' )
 								.text( tool.label )
 								.data( 'context', context )
