@@ -1,15 +1,16 @@
 /* JavaScript for EditToolbar extension */
 
 js2AddOnloadHook( function() {
-	$j( 'textarea#wpTextbox1' ).wikiEditor(
-		{ 'toolbar': editToolbarConfiguration }
-	);
-});
+	if ( $j.wikiEditor.isSupported() ) {
+		// Remove the old toolbar
+		$j( '#toolbar' ).remove();
+		// Build a wikiEditor around the textarea
+		$j( 'textarea#wpTextbox1' ).wikiEditor( { 'toolbar': editToolbarConfiguration } );
+	}
+} );
 
 /**
- * This enormous structure is what makes the toolbar what it is. Customization
- * of this structure prior to the document being ready and thus executing the
- * initialization procedure for the toolbar will result in a custom toolbar.
+ * Configuration of toolbar
  */
 var editToolbarConfiguration = {
 	// Main section

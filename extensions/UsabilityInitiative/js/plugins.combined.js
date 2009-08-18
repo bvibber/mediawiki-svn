@@ -528,8 +528,22 @@ scrollToCaretPosition: function( pos ) {
  *	);
  * ...using the API, which is still be finished.
  */
-(function($) {
-$.wikiEditor = { 'modules': {}, 'instances': [] };
+( function( $ ) {
+
+$.wikiEditor = {
+	'modules': {},
+	'instances': [],
+	'isSupported': function() {
+		function isSupported( supportedBrowsers ) {
+			return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
+		}
+		var supportedBrowsers = {
+			'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
+			'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
+		};
+		return isSupported( supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+	}
+};
 $.fn.wikiEditor = function() {
 
 /* Initialization */
@@ -634,7 +648,8 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 // Store the context for next time, and support chaining
 return $(this).data( 'context', context );;
 
-};})(jQuery);/**
+};})(jQuery);
+/**
  * TOC Module for wikiEditor
  */
 (function($) { $.wikiEditor.modules.toc = {
