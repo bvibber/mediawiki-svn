@@ -40,7 +40,9 @@ body.rtl .wikiEditor-ui {
 	border: solid silver 1px;
 	width: 100%;
 }
-/* wikiEditor toc module */
+.ui-dialog-content fieldset table td {
+	padding: 0.25em;
+}/* wikiEditor toc module */
 
 .wikiEditor-ui-toc {
 	/* width is set dynamically */

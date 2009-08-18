@@ -10,8 +10,17 @@
  *	);
  * ...using the API, which is still be finished.
  */
-jQuery.wikiEditor = { 'modules': {}, 'instances': [] };
-( function( $ ) { $.fn.wikiEditor = function() {
+( function( $ ) {
+
+$.wikiEditor = {
+	'modules': {},
+	'instances': [],
+	'isSupported': function() {
+		var supportedBrowsers = { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 };
+		return ( $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name] );
+	}
+};
+$.fn.wikiEditor = function() {
 
 /* Initialization */
 
