@@ -22,6 +22,8 @@
  *     semi-case-sensitive by default, fix bugs with edge-detection and html-entities
  * @version 1.2.1
  *     added cache support
+ * @version 1.2.2
+ *     use new magic word i18n system
  */
 
 /**
@@ -53,7 +55,7 @@ $wgTransliteratorRuleSize  =  10;	// maximum number of characters in left side o
 
 $wgExtensionCredits['parserhook'][] = array(
     'name' => 'Transliterator',
-    'version' => '1.2.0',
+    'version' => '1.2.2',
     'descriptionmsg' => 'transliterator-desc',
     'author' => 'Conrad Irwin',
     'url' => 'http://www.mediawiki.org/wiki/Extension:Transliterator',
@@ -66,7 +68,6 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
     $wgExtensionFunctions[] = 'ExtTransliterator::setup';
 }
 $wgExtensionMessagesFiles['Transliterator'] = dirname(__FILE__).'/Transliterator.i18n.php';
-$wgHooks['LanguageGetMagic'][]       = 'ExtTransliterator::getMagic';
 $wgHooks['ArticleDeleteComplete'][]  = 'ExtTransliterator::purgeMap';
 $wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeMap';
 $wgHooks['ArticlePurge'][]  = 'ExtTransliterator::purgeMap';
@@ -496,16 +497,6 @@ class ExtTransliterator {
                 $wgMemc->delete( str_replace( $prefix, '', $text ) );
             }
         }
-        return true;
-    }
- 
-    /**
-     * Load the magic words
-     */
-    static function getMagic( &$magicWords, $langCode ) {
-        wfLoadExtensionMessages('Transliterator');
-
-        $magicWords['transliterate'] = array( 0, 'transliterate', wfMsg( 'transliterator-invoke' ) );
         return true;
     }
 

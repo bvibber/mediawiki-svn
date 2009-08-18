@@ -2,6 +2,9 @@
 /**
  * Internationalization file for Transliterator
  */
+
+require_once( dirname(__FILE__) . '/Transliterator.i18n.magic.php' );
+
 $messages = array();
 
 /**
@@ -11,7 +14,6 @@ $messages = array();
  */
 $messages['en'] = array(
 	'transliterator-desc' => "Provides a configurable parser function for transliteration",
-	'transliterator-invoke' => 'transliterate', // {{#transliterate:blah}}
 	'transliterator-prefix' => 'Transliterator:', // [[MediaWiki:Transliterator:blah]] NOTE: changing this requires moving all maps
 	// $1 is the line from the map, 'a => z', $2 is the map-page including prefix.
 	'transliterator-error-ambiguous' => "Ambiguous rule <code>$1</code> in [[MediaWiki:$2]]",
@@ -28,7 +30,6 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'transliterator-desc' => 'This is a short description of the extension. It is shown in [[Special:Version]].', 
-	'transliterator-invoke' => "This is the name of a parserfunction: {<nowiki />{#transliterate:''blah''}}", 
 	'transliterator-prefix' => "This is a prefix for the transliteration maps, used in the MediaWiki namespace like [<nowiki />[MediaWiki:Transliterator:''blah'']]. Changing this requires moving all maps.", 
 	'transliterator-error-ambiguous' => 'Parameters:
 * $1 is the line from the map, such as: <code>a => z</code>
@@ -51,12 +52,10 @@ $messages['qqq'] = array(
  */
 $messages['de'] = array(
 	'transliterator-desc' => 'Stellt eine konfigurierbare Parserfunktion zur Transliteration bereit.',
-	'transliterator-invoke' => 'transliterate', 
-	'transliterator-prefix' => 'Transliterator:',
 	'transliterator-error-ambiguous' => 'Mehrdeutige Regel <code>$1</code> in [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Fehlerhafte Syntax in Regel <code>$1</code> in [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mehr als die {{PLURAL:$1|erlaubte eine Regel|die erlabubten $1 Regeln}} in [[MediaWiki:$2]]',
-	'transliterator-error-rulesize' => 'In der Regel <code>$1</code> {{PLURAL:$3|ist|sind}} mehr als $3 Zeichen auf der ligken Seite in [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'In der Regel <code>$1</code> {{PLURAL:$3|ist|sind}} mehr als $3 Zeichen auf der linken Seite in [[MediaWiki:$2]]',
 );
 
 /**
@@ -65,8 +64,6 @@ $messages['de'] = array(
  */
 $messages['ksh'] = array(
 	'transliterator-desc' => 'Deiht en ennstellbaa Paaserfunxjuhn en et Wiki, di Boochshtabe tuusche kann.', 
-	'transliterator-invoke' => 'transliterate', 
-	'transliterator-prefix' => 'Transliterator:',
 	'transliterator-error-ambiguous' => 'En unkloh Rejel <code>$1</code> es en [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'En kappodde Syntax <code>$1</code> es en [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Et {{PLURAL:$1|es mieh wi ein Rejel|sinn_er mieh wi $1 Rejelle|es kei Rejel}} en [[MediaWiki:$2]]',
