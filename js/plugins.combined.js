@@ -1041,8 +1041,14 @@ $.wikiEditor = {
 	'modules': {},
 	'instances': [],
 	'isSupported': function() {
-		var supportedBrowsers = { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 };
-		return ( $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name] );
+		function isSupported( supportedBrowsers ) {
+			return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
+		}
+		var supportedBrowsers = {
+			'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
+			'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
+		};
+		return isSupported( supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
 	}
 };
 $.fn.wikiEditor = function() {
@@ -1182,10 +1188,11 @@ fn: {
 		);
 		// Make some css modifications to make room for the toc on the right...
 		// Perhaps this could be configurable?
-		context.modules.$toc.css( 'width', '12em' );
-		context.$ui.find( '.wikiEditor-ui-text' ).css(
-			( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em'
-		);
+		context.modules.$toc
+			.css( 'width', '12em' )
+			.css( 'marginTop', -( context.$ui.find( '.wikiEditor-ui-bottom' ).height() ) );
+		context.$ui.find( '.wikiEditor-ui-text' )
+			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
 		$.wikiEditor.modules.toc.fn.update( context );

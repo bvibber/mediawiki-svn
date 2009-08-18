@@ -34,10 +34,11 @@ fn: {
 		);
 		// Make some css modifications to make room for the toc on the right...
 		// Perhaps this could be configurable?
-		context.modules.$toc.css( 'width', '12em' );
-		context.$ui.find( '.wikiEditor-ui-text' ).css(
-			( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em'
-		);
+		context.modules.$toc
+			.css( 'width', '12em' )
+			.css( 'marginTop', -( context.$ui.find( '.wikiEditor-ui-bottom' ).height() ) );
+		context.$ui.find( '.wikiEditor-ui-text' )
+			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
 		$.wikiEditor.modules.toc.fn.update( context );
