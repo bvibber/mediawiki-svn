@@ -277,7 +277,7 @@ fn : {
 					'alt' : label,
 					'title' : label,
 					'rel' : id,
-					'class' : 'tool tool-' + id
+					'class' : 'tool tool-button'
 				} );
 				if ( 'action' in tool ) {
 					$button
@@ -292,32 +292,33 @@ fn : {
 				}
 				return $button;
 			case 'select':
-				var $select = $( '<select />' ).attr( { 'rel' : id, 'class' : 'tool tool-' + id } );
-				$select.append( $( '<option />' ).text( label ) )
+				var $select = $( '<div />' )
+					.attr( { 'rel' : id, 'class' : 'tool tool-select' } )
+					.click( function() {
+						var $options = $(this).find( '.options' );
+						$options.animate( { 'opacity': 'toggle' }, 'fast' );
+					} );
+				$options = $( '<div />' ).addClass( 'options' );
 				if ( 'list' in tool ) {
-					$select
-						.data( 'list', tool.list )
-						.data( 'context', context )
-						.click( function() {
-							var list = $(this).data( 'list' );
-							var val = $(this).val();
-							if ( val in list && 'action' in list[val] ) {
-								$.wikiEditor.modules.toolbar.fn.doAction(
-									$(this).data( 'context' ), list[val].action
-								);
-							}
-							$(this)
-								.find( ":selected" )
-								.attr( 'selected', false )
-								.find( ":first" )
-								.attr( 'selected', true );
-							return false;
-						} );
 					for ( option in tool.list ) {
 						var optionLabel = $.wikiEditor.modules.toolbar.fn.autoMsg( tool.list[option], 'label' );
-						$select.append( $( '<option />' ).text( optionLabel ).attr( 'value', option ) );
+						$options.append(
+							$( '<a />' )
+								.data( 'action', tool.list[option].action )
+								.data( 'context', context )
+								.click( function() {
+									$.wikiEditor.modules.toolbar.fn.doAction(
+										$(this).data( 'context' ), $(this).data( 'action' )
+									);
+								} )
+								.text( optionLabel )
+								.addClass( 'option' )
+								.attr( 'rel', option )
+						);
 					}
 				}
+				$select.append( $( '<div />' ).addClass( 'menu' ).append( $options ) );
+				$select.append( $( '<div />' ).addClass( 'label' ).text( label ) );
 				return $select;
 			default:
 				return null;

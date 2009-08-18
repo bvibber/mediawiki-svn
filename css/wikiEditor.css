@@ -16,10 +16,6 @@ form#editform {
 	width: 100%;
 	margin: -1px;
 }
-/* This class is used by jQuery UI*/
-.ui-widget {
-	font-size: 13px !important;
-}
 .wikiEditor-ui .wikiEditor-ui-text > textarea#wpTextbox1 {
 	margin: 0;
 }
@@ -35,7 +31,6 @@ body.rtl .wikiEditor-ui {
 	float: right;
 }
 .wikiEditor-ui .wikiEditor-ui-bottom {
-	position: relative;
 	border: solid silver 1px;
 	border-top-width: 0;
 	width: 100%;
