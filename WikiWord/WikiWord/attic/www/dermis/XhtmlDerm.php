@@ -115,7 +115,7 @@ class XhtmlDerm extends DermisProcessor {
 
 	function stylelinkEntry($proc, $args) {
 		$u = $this->escape($args['entry']);
-		$media = 'screen,projection,print,emboss,handheld'; //TODO...!!!
+		$media = 'screen,print,emboss,handheld'; //TODO...!!!
 
 		return '<link rel="stylesheet" type="text/css" media="'.$media.'" href="'.$u.'"/>';
 	}
@@ -136,7 +136,7 @@ class XhtmlDerm extends DermisProcessor {
 
 	function styleEntry($proc, $args) {
 		$code = $args['entry'];
-		$media = 'screen,projection,print,emboss,handheld'; //TODO...!!!
+		$media = 'screen,print,emboss,handheld'; //TODO...!!!
 
 		return '<style type="text/css" media="'.$media.'">/*<![CDATA[*/'.$code.'/*]]>*/</style>';
 	}
@@ -242,7 +242,7 @@ class XhtmlDerm extends DermisProcessor {
 		<?= $this->meta('robots', 'robotspolicy') ?>
 		<?= $this->meta('keywords', 'keywords') ?>
 		<?= $this->link('shortcut icon', 'favicon') ?>
-		<?= $this->stylelink('screen,projection', 'maincss') ?>
+		<?= $this->stylelink('screen', 'maincss') ?>
 		<?= $this->stylelink('print', 'printcss') ?>
 		<?= $this->stylelink('handheld', 'pdacss') ?>
 		<?

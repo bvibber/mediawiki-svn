@@ -401,11 +401,11 @@ print'
         <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-                <link rel="stylesheet" type="text/css" media="screen, projection" href="../ow/styles.css" />
-                <link rel="stylesheet" type="text/css" media="screen, projection" href="http://www.omegawiki.org/extensions/Wikidata/OmegaWiki/tables.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="../ow/styles.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="http://www.omegawiki.org/extensions/Wikidata/OmegaWiki/tables.css" />
                 <link rel="shortcut icon" href="http://www.omegawiki.org/favicon.ico" />
                 <title>OmegaWiki gateway</title>
-                <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "http://www.omegawiki.org/skins/monobook/main.css?55"; /*]]>*/</style>
+                <style type="text/css" media="screen">/*<![CDATA[*/ @import "http://www.omegawiki.org/skins/monobook/main.css?55"; /*]]>*/</style>
                 <link rel="stylesheet" type="text/css" media="print" href="http://www.omegawiki.org/skins/common/commonPrint.css?55" />
                 <link rel="stylesheet" type="text/css" media="handheld" href="http://www.omegawiki.org/skins/monobook/handheld.css?55" />
                 <link rel="stylesheet" type="text/css" media="screen" href="css/training.css" />

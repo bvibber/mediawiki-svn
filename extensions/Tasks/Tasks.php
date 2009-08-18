@@ -1185,7 +1185,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$wgOut->addLink(array(
 				'rel'	=> 'stylesheet',
 				'type'	=> 'text/css',
-				'media'	=> 'screen,projection',
+				'media'	=> 'screen',
 				'href'	=> TASKS_CSS,
 			));
 			$wgOut->setSubtitle( wfMsgHTML( 'tasks_title', $title->getPrefixedText() ) );
@@ -1532,7 +1532,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$wgOut->addLink(array(
 				'rel'	=> 'stylesheet',
 				'type'	=> 'text/css',
-				'media'	=> 'screen,projection',
+				'media'	=> 'screen',
 				'href'	=> TASKS_CSS,
 			));
 			$this->setHeaders();

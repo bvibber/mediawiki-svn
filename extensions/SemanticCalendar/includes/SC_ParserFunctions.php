@@ -96,7 +96,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 	$wgOut->addLink( array(
 		'rel' => 'stylesheet',
 		'type' => 'text/css',
-		'media' => "screen, projection, print",
+		'media' => "screen, print",
 		'href' => $scgScriptPath . "/skins/SC_main.css"
 	));
 

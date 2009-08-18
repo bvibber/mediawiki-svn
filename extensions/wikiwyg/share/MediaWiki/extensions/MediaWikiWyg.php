@@ -75,7 +75,7 @@ function registerWikiwygExtension() {
         $wgWikiwygImagePath = "$wgWikiwygPath/share/MediaWiki/images";
     }
 
-    $wgOut->addScript("<style type=\"text/css\" media=\"screen,projection\">/*<![CDATA[*/ @import \"$wgWikiwygCssPath/MediaWikiwyg.css\"; /*]]>*/</style>\n");
+    $wgOut->addScript("<style type=\"text/css\" media=\"screen\">/*<![CDATA[*/ @import \"$wgWikiwygCssPath/MediaWikiwyg.css\"; /*]]>*/</style>\n");
     if (isset($wgWysiwygEnabled) && ($wgWysiwygEnabled == true)) {
 	    $useWysiwygTrue = 1;
     } else {

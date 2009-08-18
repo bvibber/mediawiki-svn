@@ -103,7 +103,7 @@ class MediaWikiConverter {
 			$ret .= '<html xmlns="http://www.w3.org/1999/xhtml">' ;
 		else $ret .= '<html>' ;
 		$ret .= '<head>' ;
-		#$ret .= '<link rel="stylesheet" type="text/css" media="screen,projection" href="http://de.wikipedia.org/skins-1.5/monobook/main.css" />' ;
+		#$ret .= '<link rel="stylesheet" type="text/css" media="screen" href="http://de.wikipedia.org/skins-1.5/monobook/main.css" />' ;
 		#$ret .= '<link rel="stylesheet" type="text/css" media="print" href="http://en.wikipedia.org/skins-1.5/common/commonPrint.css" />' ;
 		$ret .= '<link rel="stylesheet" type="text/css" href="href://' ;
 		$ret .= $params["site_base_url"] . 'index.php?title=MediaWiki:Common.css&amp;action=raw" />' ;

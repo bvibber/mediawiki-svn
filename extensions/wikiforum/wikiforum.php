@@ -98,7 +98,7 @@ class NewThread {
 		$wgOut->addLink(array(
 			'rel'   => 'stylesheet',
 			'type'  => 'text/css',
-			'media' => 'screen,projection',
+			'media' => 'screen',
 			'href'  => FORUM_CSS
 		));
 		
@@ -213,7 +213,7 @@ class Forum {
 		$wgOut->addLink(array(
 			'rel'   => 'stylesheet',
 			'type'  => 'text/css',
-			'media' => 'screen, projection',
+			'media' => 'screen',
 			'href'  => FORUM_CSS
 		));
 		if(FORUM_USE_JS) {

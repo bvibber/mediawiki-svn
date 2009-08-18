@@ -45,7 +45,7 @@ function wfCreatePageSpecial( $par ) {
 		$wgWikiwygImagePath = "$wgWikiwygPath/share/MediaWiki/images";
 	}
 
-    $wgOut->addScript("<style type=\"text/css\" media=\"screen,projection\">/*<![CDATA[*/ @import \"$wgWikiwygCssPath/MediaWikiwyg.css\"; /*]]>*/</style>\n");
+    $wgOut->addScript("<style type=\"text/css\" media=\"screen\">/*<![CDATA[*/ @import \"$wgWikiwygCssPath/MediaWikiwyg.css\"; /*]]>*/</style>\n");
         /* load main js file when not loaded yet */
 	if (wfGetDependingOnSkin () == 0) {
 		if (isset($wgWysiwygEnabled) && ($wgWysiwygEnabled == true)) {

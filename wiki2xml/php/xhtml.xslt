@@ -38,7 +38,7 @@
 <html>
 <head>
 	<title><xsl:value-of select="@title" /></title>
-	<style type="text/css" media="screen,projection">@import "http://en.wikipedia.org/w/skins-1.5/monobook/main.css";</style>
+	<style type="text/css" media="screen">@import "http://en.wikipedia.org/w/skins-1.5/monobook/main.css";</style>
 </head>
 <body class="ns-0 ltr">
 <div id="globalWrapper">

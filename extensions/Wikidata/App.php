@@ -133,8 +133,8 @@ function addWikidataHeader( &$out, &$skin ) {
 		$rtl = '';
 	}
 
-	$out->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen, projection', 'href' => "$wgScriptPath/extensions/Wikidata/OmegaWiki/suggest$rtl.css" ) );
-	$out->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen, projection', 'href' => "$wgScriptPath/extensions/Wikidata/OmegaWiki/tables$rtl.css" ) );
+	$out->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => "$wgScriptPath/extensions/Wikidata/OmegaWiki/suggest$rtl.css" ) );
+	$out->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => "$wgScriptPath/extensions/Wikidata/OmegaWiki/tables$rtl.css" ) );
 	return true;
 }
 

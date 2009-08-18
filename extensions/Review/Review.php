@@ -79,7 +79,7 @@ function wfReviewExtensionInitMessages () {
 	$wgOut->addLink(array(
 		'rel'	=> 'stylesheet',
 		'type'	=> 'text/css',
-		'media'	=> 'screen,projection',
+		'media'	=> 'screen',
 		'href'	=> REVIEW_CSS,
 	));
 

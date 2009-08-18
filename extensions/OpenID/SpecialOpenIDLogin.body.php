@@ -100,7 +100,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->addLink( array(
 			'rel' => 'stylesheet',
 			'type' => 'text/css',
-			'media' => 'screen, projection',
+			'media' => 'screen',
 			'href' => $oidScriptPath . ( $wgOpenIDShowProviderIcons ? '/skin/openid.css' : '/skin/openid-plain.css' )
 		) );
 
