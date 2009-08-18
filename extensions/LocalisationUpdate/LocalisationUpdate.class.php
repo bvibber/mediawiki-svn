@@ -490,6 +490,12 @@ class LocalisationUpdate {
 		$wgExtNewFields[] = array( 'localisation_file_hash', 'lfh_timestamp', "$dir/patch-lfh_timestamp.sql" );
 		return true;
 	}
+	
+	public static function parserTestTables( &$tables ) {
+		$tables[] = 'localisation';
+		$tables[] = 'localisation_file_hash';
+		return true;
+	}
 
 	public static function myLog( $log ) {
 		if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
