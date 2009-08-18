@@ -21,37 +21,38 @@ clear:both;
 width:100%;
 line-height:1em;
 background-color:#f3f3f3;
+border:solid silver 1px;
 }
 body.rtl .wikiEditor-ui{
 float:right;
 }
 .wikiEditor-ui .wikiEditor-ui-bottom{
-position:relative;
-border:solid silver 1px;
-border-top-width:0;
 width:100%;
 }
 .wikiEditor-ui .wikiEditor-ui-top{
 position:relative;
-border:solid silver 1px;
 width:100%;
+border-bottom:solid silver 1px;
 }
 .ui-dialog-content fieldset table td{
 padding:0.25em;
 }
-.wikiEditor-ui-toc{
-position:absolute;
-right:-1px;
-top:0;
-padding:0;
+.wikiEditor-ui-text{
+border-right:solid silver 1px;
+}
+body.rtl .wikiEditor-ui-text{
+border-right:none;
 border-left:solid silver 1px;
+}
+.wikiEditor-ui-toc{
+float:right;
+padding:0;
 overflow:auto;
 }
 body.rtl .wikiEditor-ui-toc{
 right:auto;
 left:-1px;
 border-left:none;
-border-right:solid silver 1px;
 }
 .wikiEditor-ui-toc ul{
 padding:0;
@@ -97,16 +98,11 @@ float:right;
 display:none;
 float:left;
 width:100%;
-margin-left:-1px;
-border-left:solid silver 1px;
-border-right:solid silver 1px;
 border-top:solid 1px #DDDDDD;
 background-color:#F3F3F3;
 }
 body.rtl .wikiEditor-ui-toolbar .sections .section{
 float:right;
-margin-left:auto;
-margin-right:-1px;
 }
 .wikiEditor-ui-toolbar .sections .loading{
 padding-top:0.5em;

@@ -18,16 +18,11 @@ body.rtl .wikiEditor-ui-toolbar .sections {
 	display: none;
 	float: left;
 	width: 100%;
-	margin-left: -1px;
-	border-left: solid silver 1px;
-	border-right: solid silver 1px;
 	border-top: solid 1px #DDDDDD;
 	background-color: #F3F3F3;
 }
 body.rtl .wikiEditor-ui-toolbar .sections .section {
 	float: right;
-	margin-left: auto;
-	margin-right: -1px;
 }
 .wikiEditor-ui-toolbar .sections .loading {
 	padding-top: 0.5em;
