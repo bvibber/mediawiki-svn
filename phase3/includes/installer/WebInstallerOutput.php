@@ -57,6 +57,14 @@ class WebInstallerOutput {
 		}
 	}
 
+	function getDir() {
+		global $wgLang;
+		if( !is_object( $wgLang ) || !$wgLang->isRtl() )
+			return 'ltr';
+		else
+			return 'rtl';
+	}
+
 	function outputHeader() {
 		global $wgVersion;
 		$this->headerDone = true;
@@ -89,7 +97,7 @@ class WebInstallerOutput {
 	<script type="text/javascript" src="../skins/common/config.js"></script>
 </head>
 
-<body>
+<body class="<?php print $this->getDir(); ?>">
 <noscript>
 <style>
 .config-help-message { display: block; }
