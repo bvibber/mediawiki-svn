@@ -378,7 +378,12 @@ abstract class ConfigurationPage extends SpecialPage {
 		foreach ( $versions as $data ) {
 			$ts = $data['timestamp'];
 			$count++;
-			$link = $skin->linkKnown( $title, $wgLang->timeAndDate( $ts ), array(), array( 'version' => $ts ) );
+			$datetime = wfMsgExt( 'configure-old-summary-datetime', array( 'parsemag', 'escape' ),
+				$wgLang->timeAndDate( $ts ),
+				$wgLang->date( $ts ),
+				$wgLang->time( $ts )
+			);
+			$link = $skin->linkKnown( $title, $datetime, array(), array( 'version' => $ts ) );
 			$diffLink = '';
 			if ( $prev )
 				$diffLink =  '(' . $skin->linkKnown( SpecialPage::getTitleFor( 'ViewConfig' ),

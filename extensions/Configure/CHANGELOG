@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.14.12 - 17 August 2009
+  (bug 19058) Added configure-old-summary-datetime message for better date and
+  time localisation in configure-old-summary message
+
 0.14.11 - 16 August 2009
   * (bug 19057) Added user name parameter to configure-viewconfig-line message
   * (bug 19058) Added user name parameter to configure-old-summary message
