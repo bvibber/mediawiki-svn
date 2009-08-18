@@ -15,6 +15,8 @@ class LocalisationUpdate {
 		// If message is in the cache, don't get an update!
 		if ( array_key_exists( $lckey . "/" . $langcode, $cache ) ) {
 			$message = $cache[$lckey . "/" . $langcode];
+			return true;
+		}
 
 		// Get the message from the database
 		$conds  = array( 'lo_key' => $lckey, 'lo_language' => $langcode );
