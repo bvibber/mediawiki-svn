@@ -5,7 +5,7 @@
  * @file
  * @ingroup Extensions
  */
-
+ 
 $messages = array();
 
 /** English
@@ -31,6 +31,13 @@ $messages['ar'] = array(
 	'localisationupdate-desc' => 'يبقي الرسائل المترجمة محدثة كأفضل ما يكون',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'localisationupdate-desc' => "Lokalisiade Texte und Nåchrichtn so aktuell håidn wia's gråd gehd",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -45,6 +52,13 @@ $messages['bs'] = array(
 	'localisationupdate-desc' => 'Zadržavanje lokaliziranih poruka ažurnim koliko je god moguće',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'localisationupdate-desc' => 'Manté els missatges localitzats tan actualitzats com sigui possible',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */
@@ -57,6 +71,20 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'localisationupdate-desc' => 'Źaržy lokalizěrowane powěźeńki tak aktualne ako móžno',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'localisationupdate-desc' => 'Mantener los mensajes localizados tan actualizados como sean posibles',
+);
+
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'localisationupdate-desc' => 'Pitää käännetyt viestit niin ajantasaisina kuin mahdollista',
 );
 
 /** French (Français)
@@ -94,11 +122,32 @@ $messages['hsb'] = array(
 	'localisationupdate-desc' => 'Dźerži lokalizowane zdźělenki tak aktualne kaž móžno',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'localisationupdate-desc' => 'Frissíti a lefordított üzeneteket',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'localisationupdate-desc' => 'Mantene le messages localisate tanto actual como possibile',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'localisationupdate-desc' => 'Mengusahakan agar pesan-pesan yang telah diterjemahkan tetap semutakhir mungkin',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'localisationupdate-desc' => 'Mantiene i messaggi localizzati quanto più aggiornati è possibile',
 );
 
 /** Japanese (日本語)
@@ -122,11 +171,25 @@ $messages['lb'] = array(
 	'localisationupdate-desc' => 'hält déi lokaliséiert Messagen esou aktuell wéi méiglech.',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'localisationupdate-desc' => 'Ги одржува локализираните пораки колку што е можно пообновени и повеќе во тек со настаните',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'localisationupdate-desc' => 'Houdt de gelokaliseerde berichten zo actueel mogelijk',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'localisationupdate-desc' => 'Held dei lokaliserte meldingane så oppdaterte som mogleg',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -150,6 +213,34 @@ $messages['pl'] = array(
 	'localisationupdate-desc' => 'Uaktualnia lokalne komunikaty w miarę możliwości na bieżąco',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'localisationupdate-desc' => 'A manten i messagi localisà ël pì agiornà possìbil',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'localisationupdate-desc' => 'Mantém as mensagens localizadas tão atualizadas quanto possível',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'localisationupdate-desc' => 'Mantém as mensagens localizadas tão atualizadas quanto possível',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'localisationupdate-desc' => 'Menţine mesajele localizate cât mai actualizate',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -157,11 +248,25 @@ $messages['roa-tara'] = array(
 	'localisationupdate-desc' => "Mandine le messagge localizzate 'u cchiù aggiornate possibbile",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'localisationupdate-desc' => 'Поддерживает актуальность локализованных сообщений, насколько это возможно',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'localisationupdate-desc' => 'Giữ các thông điệp bản địa hóa được cập nhật nhất có thể',
 );
 
 /** Yue (粵語)

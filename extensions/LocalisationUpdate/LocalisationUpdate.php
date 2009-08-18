@@ -7,7 +7,18 @@ KNOWN ISSUES:
 
 // Configuration
 
-$wgLocalisationUpdateSVNURL = "svn.wikimedia.org/svnroot/mediawiki/";
+/**
+ * This should point to either an HTTP-accessible Subversion repository containing
+ * MediaWiki's 'phase3' and 'extensions' directory, *or* a local directory containing
+ * checkouts of them:
+ *
+ * cd /path/to/mediawiki-trunk
+ * svn co http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3
+ * svn co http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions
+ * $wgLocalisationUpdateSVNURL = '/path/to/mediawiki-trunk';
+ */
+$wgLocalisationUpdateSVNURL = "http://svn.wikimedia.org/svnroot/mediawiki/trunk";
+
 $wgLocalisationUpdateRetryAttempts = 5;
 
 // Info about me!
@@ -22,9 +33,13 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Use the right hook
-$wgHooks['MessageNotInMwNs'][] = "LocalisationUpdate::FindUpdatedMessage";
+$wgHooks['LocalisationCacheRecache'][] = 'LocalisationUpdate::onRecache'; // MW 1.16+
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['LocalisationUpdate'] = $dir . 'LocalisationUpdate.i18n.php';
 $wgAutoloadClasses['LocalisationUpdate'] = $dir . 'LocalisationUpdate.class.php';
+$wgAutoloadClasses['LUDependency'] = $dir . 'LocalisationUpdate.class.php';
+$wgAutoloadClasses['QuickArrayReader'] = $dir . 'QuickArrayReader.php';
+
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LocalisationUpdate::schemaUpdates';
+

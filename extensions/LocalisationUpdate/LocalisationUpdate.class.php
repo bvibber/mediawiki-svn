@@ -1,44 +1,44 @@
 <?php
 class LocalisationUpdate {
 	// DB Search funtion
-	public static function FindUpdatedMessage( &$message, $lckey, $langcode, $isFullKey ) {
-		// Define a cache
-		static $cache = array();
-		$db = wfGetDB ( DB_SLAVE );
+	public static function onRecache( $lc, $langcode, &$cache ) {
+		$dbr = wfGetDB ( DB_SLAVE );
 
-		// If the key also contains the language code remove the language code from the key
-		if ( $isFullKey ) {
-			$lckey = preg_replace( "/\/" . $langcode . "/", "", $lckey );
+		// Get the messages from the database
+		$res = $dbr->select( 'localisation', 
+			array( 'lo_key', 'lo_value' ),
+			array( 'lo_language' => $langcode ), 
+			__METHOD__ ); 
+
+		foreach ( $res as $row ) {
+			$cache['messages'][$row->lo_key] = $row->lo_value;
 		}
-
-		// If message is in the cache, don't get an update!
-		if ( array_key_exists( $lckey . "/" . $langcode, $cache ) ) {
-			$message = $cache[$lckey . "/" . $langcode];
-			return true;
-		}
-
-		// Get the message from the database
-		$conds  = array( 'lo_key' => $lckey, 'lo_language' => $langcode );
-		$result = $db->selectField( 'localisation', 'lo_value', $conds, __METHOD__ ); // Check if the database has any updated message
-		if ( $result === false ) { // If no results found, exit here
-			return true;
-		}
-
-		$message = $result;
-		$cache[$lckey . "/" . $langcode] = $result; // Update the cache
+		$cache['deps'][] = new LUDependency;
 		return true;
 	}
 
 	// Called from the cronjob to fetch new messages from SVN
-	public static function updateMessages( $verbose = false ) {
-		// Need this later
-		global $wgExtensionMessagesFiles;
-
+	public static function updateMessages( $verbose = false, $all = false ) {
 		// Update all MW core messages
 		$result = self::updateMediawikiMessages( $verbose );
 		
 		// Update all Extension messages
-		foreach ( $wgExtensionMessagesFiles as $extension => $locFile ) {
+		if( $all ) {
+			global $IP;
+			$extFiles = array();
+			$messageFiles = glob( "$IP/extensions/*/*.i18n.php" );
+			foreach( $messageFiles as $pathname ) {
+				$filename = basename( $pathname );
+				if( preg_match( '/^(.*)\.i18n\.php$/', $filename, $matches ) ) {
+					$group = $matches[1];
+					$extFiles[$group] = $pathname;
+				}
+			}
+		} else {
+			global $wgExtensionMessagesFiles;
+			$extFiles = $wgExtensionMessagesFiles;
+		}
+		foreach ( $extFiles as $extension => $locFile ) {
 			$result += self::updateExtensionMessages( $locFile, $extension, $verbose );
 		}
 
@@ -51,18 +51,21 @@ class LocalisationUpdate {
 	// Update Extension Messages
 	public static function updateExtensionMessages( $file, $extension, $verbose ) {
 		global $IP, $wgLocalisationUpdateSVNURL;
-
-		// Find the right SVN folder
-		$svnFolder = SpecialVersion::getSvnRevision( dirname( $file ), false, false, true );
-
+		
+		$relfile = wfRelativePath( $file, "$IP/extensions" );
+		if( substr( $relfile, 0, 2 ) == ".." ) {
+			self::myLog( "Skipping $file; not in $IP/extensions\n" );
+			return false;
+		}
+		
 		// Create a full path
-		$localfile = $IP . "/" . $file;
+		$localfile = "$IP/extensions/$relfile";
 
 		// Get the full SVN directory path
-		$svndir = "http://" . $wgLocalisationUpdateSVNURL . $svnFolder;
+		$svnfile = "$wgLocalisationUpdateSVNURL/extensions/$relfile";
 
 		// Compare the 2 files
-		$result = self::compareExtensionFiles( $extension, $svndir . "/" . basename( $file ), $file, $verbose, false, true );
+		$result = self::compareExtensionFiles( $extension, $svnfile, $file, $verbose, false, true );
 		return $result;
 	}
 
@@ -77,22 +80,13 @@ class LocalisationUpdate {
 		$dirname = "languages/messages";
 
 		// Get the full path to the directory
-		$dirname = $IP . "/" . $dirname;
+		$localdir = $IP . "/" . $dirname;
 
-		// Get the SVN folder used for the checkout
-		$svnFolder = SpecialVersion::getSvnRevision( $dirname, false, false, true );
-
-		// Do not update if not from SVN
-		if ( empty( $svnFolder ) ) {
-			self::myLog( 'Cannot update localisation as the files are not retrieved from SVN' );
-			return 0;
-		}
-		
 		// Get the full SVN Path
-		$svndir = "http://" . $wgLocalisationUpdateSVNURL . $svnFolder;
+		$svndir = "$wgLocalisationUpdateSVNURL/phase3/$dirname";
 
 		// Open the directory
-		$dir = opendir( $dirname );
+		$dir = opendir( $localdir );
 		while ( false !== ( $file = readdir( $dir ) ) ) {
 			$m = array();
 
@@ -106,7 +100,7 @@ class LocalisationUpdate {
 		closedir( $dir );
 
 		// Find the changed English strings (as these messages won't be updated in ANY language)
-		$changedEnglishStrings = self::compareFiles( $dirname . "/MessagesEn.php", $svndir . "/MessagesEn.php", $verbose );
+		$changedEnglishStrings = self::compareFiles( $localdir . "/MessagesEn.php", $svndir . "/MessagesEn.php", $verbose, true );
 
 		// Count the changes
 		$changedCount = 0;
@@ -115,7 +109,7 @@ class LocalisationUpdate {
 		sort($files);
 		foreach ( $files as $file ) {
 			$svnfile = $svndir . "/" . $file;
-			$localfile = $dirname . "/" . $file;
+			$localfile = $localdir . "/" . $file;
 
 			// Compare the files
 			$result = self::compareFiles( $svnfile, $localfile, $verbose, $changedEnglishStrings, false, true );
@@ -133,7 +127,7 @@ class LocalisationUpdate {
 	public static function cleanupFile( $contents ) {
 		// We don't need any PHP tags
 		$contents = preg_replace( "/<\\?php/", "", $contents );
-		$contents = preg_replace( "/\?>/", "", $contents );
+		$contents = preg_replace( "/\?" . ">/", "", $contents );
 		$results = array();
 		// And we only want the messages array
 		preg_match( "/\\\$messages(.*\s)*?\);/", $contents, $results );
@@ -159,8 +153,11 @@ class LocalisationUpdate {
 		// use cURL to get the SVN contents
 		if ( preg_match( "/^http/", $basefile ) ) {
 			while( !$basefilecontents && $attempts <= $wgLocalisationUpdateRetryAttempts) {
-				if($attempts > 0)
-					sleep(1);
+				if($attempts > 0) {
+					$delay = 1;
+					self::myLog( "Failed to download " . $basefile . "; retrying in ${delay}s..." );
+					sleep( $delay );
+				}
 				$basefilecontents = Http::get( $basefile );
 				$attempts++;
 			}
@@ -199,8 +196,8 @@ class LocalisationUpdate {
 		$basefilecontents = preg_replace( "/\\\$messages/", "\$base_messages", $basefilecontents );
 
 		$basehash = md5( $basefilecontents );
-		// If this is the remote file check if the file has changed since our last update
-		if ( preg_match( "/^http/", $basefile ) && !$alwaysGetResult ) {
+		// Check if the file has changed since our last update
+		if ( !$alwaysGetResult ) {
 			if ( !self::checkHash( $basefile, $basehash ) ) {
 				self::myLog( "Skipping {$langcode} since the remote file hasn't changed since our last update" );
 				return array();
@@ -208,9 +205,7 @@ class LocalisationUpdate {
 		}
 
 		// Get the array with messages
-		$fileEditor = new ConfEditor( $basefilecontents );
-		$vars = $fileEditor->getVars();
-		$base_messages = $vars['base_messages'];
+		$base_messages = self::parsePHP( $basefilecontents, 'base_messages' );
 
 		$comparefilecontents = self::getFileContents( $comparefile );
 		if ( $comparefilecontents === false || $comparefilecontents === "" ) return array(); // Failed
@@ -230,9 +225,7 @@ class LocalisationUpdate {
 			}
 		}
 		// Get the array
-		$fileEditor = new ConfEditor( $comparefilecontents );
-		$vars = $fileEditor->getVars();
-		$compare_messages = $vars['compare_messages'];
+		$compare_messages = self::parsePHP( $comparefilecontents, 'compare_messages' );
 
 		// if the localfile and the remote file are the same, skip them!
 		if ( $basehash == $comparehash && !$alwaysGetResult ) {
@@ -252,27 +245,30 @@ class LocalisationUpdate {
 		$changedStrings = array_diff_assoc( $base_messages, $compare_messages );
 
 		// If we want to save the differences
-		if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
+		if ( $saveResults && !empty($changedStrings) && is_array($changedStrings)) {
 			self::myLog( "--Checking languagecode {$langcode}--" );
 			// The save them
-			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode, $verbose );
+			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $compare_messages, $base_messages, $langcode, $verbose );
 			self::myLog( "{$updates} messages updated for {$langcode}." );
-		} elseif($saveResults === true) {
+		} elseif ( $saveResults ) {
 			self::myLog( "--{$langcode} hasn't changed--" );
 		}
 
 		
-		if ( preg_match( "/^http/", $basefile )) {
-			self::saveHash( $basefile, $basehash );
-		}
+		self::saveHash( $basefile, $basehash );
 		
-		if ( preg_match( "/^http/", $comparefile )) {
-			self::saveHash( $comparefile, $comparehash );
-		}
+		self::saveHash( $comparefile, $comparehash );
 		
 		return $changedStrings;
 	}
 
+	/**
+	 * Checks whether a messages file has a certain hash
+	 * TODO: Swap return values, this is insane
+	 * @param $file string Filename
+	 * @param $hash string Hash
+	 * @return bool True if $file does NOT have hash $hash, false if it does
+	 */
 	public static function checkHash( $file, $hash ) {
 		$db = wfGetDB( DB_MASTER );
 
@@ -287,13 +283,18 @@ class LocalisationUpdate {
 	
 	public static function saveHash ($file, $hash) {
 		$db = wfGetDB ( DB_MASTER );
-		$hashConds = array( 'lfh_file' => $file, 'lfh_hash' => $hash );
-		$conds = array( 'lfh_file' => $file );
-		$db->delete( 'localisation_file_hash', $conds , __METHOD__ );
-		$db->insert( 'localisation_file_hash', $hashConds, __METHOD__ );
+		// Double query sucks but we wanna make sure we don't update
+		// the timestamp when the hash hasn't changed
+		if ( self::checkHash( $file, $hash ) )
+			$db->replace( 'localisation_file_hash', array( 'lfh_file' ), array(
+					'lfh_file' => $file,
+					'lfh_hash' => $hash,
+					'lfh_timestamp' => $db->timestamp( wfTimestamp() )
+				), __METHOD__
+			);
 	}
 
-	public static function saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode, $verbose ) {
+	public static function saveChanges( $changedStrings, $forbiddenKeys, $compare_messages, $base_messages, $langcode, $verbose ) {
 		// Gonna write to the DB again
 		$db = wfGetDB ( DB_MASTER );
 
@@ -305,8 +306,8 @@ class LocalisationUpdate {
 		}
 
 		foreach ( $changedStrings as $key => $value ) {
-			// If this message wasn't changed in English
-			if ( !array_key_exists( $key , $forbiddenKeys ) ) {
+			// If this message wasn't changed in English, and is in fact set
+			if ( !array_key_exists( $key , $forbiddenKeys ) && isset( $compare_messages[$key] ) ) {
 				// See if we can update the database
 				
 				$values = array(
@@ -320,7 +321,7 @@ class LocalisationUpdate {
 				
 				// Output extra logmessages when needed
 				if ( $verbose ) {
-					self::myLog( "Updated message {$key} from {$compare_messages[$key]} to {$base_messages[$key]}" );
+					self::myLog( "Updated message {$key} from '{$compare_messages[$key]}' to '{$base_messages[$key]}'" );
 				}
 
 				// Update the counter
@@ -333,7 +334,7 @@ class LocalisationUpdate {
 	public static function cleanupExtensionFile( $contents ) {
 		// We don't want PHP tags
 		$contents = preg_replace( "/<\?php/", "", $contents );
-		$contents = preg_replace( "/\?>/", "", $contents );
+		$contents = preg_replace( "/\?" . ">/", "", $contents );
 		$results = array();
 		// And we only want message arrays
 		preg_match_all( "/\\\$messages(.*\s)*?\);/", $contents, $results );
@@ -377,10 +378,8 @@ class LocalisationUpdate {
 		}
 
 		// And get the real contents
-		$fileEditor = new ConfEditor( $basefilecontents );
-		$vars = $fileEditor->getVars();
-		$base_messages = $vars['base_messages'];
-
+		$base_messages = self::parsePHP( $basefilecontents, 'base_messages' );
+		
 		$comparefilecontents = self::getFileContents( $comparefile );
 		if ( $comparefilecontents === false || $comparefilecontents === "" ) return 0; // Failed
 
@@ -398,9 +397,7 @@ class LocalisationUpdate {
 			}
 		}
 		// Get the real array
-		$fileEditor = new ConfEditor( $comparefilecontents );
-		$vars = $fileEditor->getVars();
-		$compare_messages = $vars['compare_messages'];
+		$compare_messages = self::parsePHP( $comparefilecontents, 'compare_messages' );
 
 		// If both files are the same, they can be skipped
 		if ( $basehash == $comparehash && !$alwaysGetResult ) {
@@ -456,7 +453,7 @@ class LocalisationUpdate {
 			if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
 				self::myLog( "--Checking languagecode {$language}--" );
 				// The save them
-				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $messages, $language, $verbose );
+				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $compare_messages, $messages, $language, $verbose );
 				self::myLog( "{$updates} messages updated for {$language}." );
 			} elseif($saveResults === true) {
 				self::myLog( "--{$language} hasn't changed--" );
@@ -466,21 +463,18 @@ class LocalisationUpdate {
 		// And log some stuff
 		self::myLog( "Updated " . $updates . " messages for the '{$extension}' extension" );
 
-		if ( preg_match( "/^http/", $basefile )) {
-			self::saveHash( $basefile, $basehash );
-		}
+		self::saveHash( $basefile, $basehash );
 		
-		if ( preg_match( "/^http/", $comparefile )) {
-			self::saveHash( $comparefile, $comparehash );
-		}
+		self::saveHash( $comparefile, $comparehash );
 		
 		return $updates;
 	}
 
 	public static function schemaUpdates() {
-		global $wgExtNewTables;
+		global $wgExtNewTables, $wgExtNewFields;
 		$dir = dirname( __FILE__ );
 		$wgExtNewTables[] = array( 'localisation', "$dir/schema.sql" );
+		$wgExtNewFields[] = array( 'localisation_file_hash', 'lfh_timestamp', "$dir/patch-lfh_timestamp.sql" );
 		return true;
 	}
 
@@ -491,5 +485,39 @@ class LocalisationUpdate {
 			print( $log . "\n" );
 		}
 	}
+	
+	public static function parsePHP( $php, $varname ) {
+		try {
+			$reader = new QuickArrayReader("<?php $php");
+			return $reader->getVar( $varname );
+		} catch( Exception $e ) {
+			self::myLog( "Failed to read file: " . $e );
+			return false;
+		}
+	}
+}
 
+class LUDependency extends CacheDependency {
+	var $timestamp;
+
+	function isExpired() {
+		$timestamp = $this->getTimestamp();
+		return $timestamp !== $this->timestamp;
+	}
+
+	function loadDependencyValues() {
+		$this->timestamp = $this->getTimestamp();
+	}
+
+	function getTimestamp() {
+		$dbr = wfGetDB( DB_SLAVE );
+		return $dbr->selectField( 
+			'localisation_file_hash', 'MAX(lfh_timestamp)', '',
+			__METHOD__ );
+	}
+
+	function __sleep() {
+		$this->loadDependencyValues();
+		return array( 'timestamp' );
+	}
 }
