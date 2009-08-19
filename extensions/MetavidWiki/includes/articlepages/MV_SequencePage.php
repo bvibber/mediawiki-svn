@@ -32,7 +32,7 @@ class MV_SequencePage extends Article {
 	function getSequenceSMIL(){
 		global $wgParser,$wgOut, $wgUser, $wgEnableParserCache;
 		//temporally stop cache:
-		$wgEnableParserCache=false;
+		$wgEnableParserCache = $parserOutput =false;
 
 		if($wgEnableParserCache){
 			$mvParserCache = & MV_ParserCache::singleton();
