@@ -727,6 +727,7 @@ $1',
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Fluence
  * @author Sanbec
@@ -739,7 +740,10 @@ Poner $wgLocalTmpDirectory a un directorio editable.',
 	'inplace_scaler_not_enough_params' => 'Sin parámetros suficientes.',
 	'inplace_scaler_invalid_image' => 'Imagen inválida, no podría determinarse tamaño.',
 	'inplace_scaler_failed' => 'Un error fue encontrado durante el escalado de la imagen: $1',
+	'inplace_scaler_no_handler' => 'No existe un conversor para transformar este tipo MIME',
+	'inplace_scaler_no_output' => 'No se generó archivo de salida',
 	'inplace_scaler_zero_size' => 'Transformación produjo un archivo de salida de tamaño nulo.',
+	'webstore-desc' => 'Conectividad exclusiva para Web de almacenamiento de archivos (no NFS)',
 	'webstore_access' => 'Este servicio está restringido por el cliente IP.',
 	'webstore_path_invalid' => 'El nombre de archivo no es válido.',
 	'webstore_dest_open' => 'No es posible abrir el archivo de destino «$1».',

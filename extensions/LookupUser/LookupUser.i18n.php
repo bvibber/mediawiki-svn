@@ -127,6 +127,28 @@ $messages['bg'] = array(
 	'right-lookupuser' => 'Изследване на потребителските предпочитания',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'lookupuser' => 'Sellet ouzh titouroù an implijer',
+	'lookupuser-desc' => "[[Special:LookupUser|Adpakañ a ra an titouroù]] a denn d'un implijer bennak evel ar chomlec'h elektronek hag an niverenn ID",
+	'lookupuser-intro' => 'Merkaén un anv implijer da sellet ouzh e benndibaboù.',
+	'lookupuser-nonexistent' => "Fazi : n'eus ket eus an implijer-mañ",
+	'lookupuser-authenticated' => 'Aotreet e $1',
+	'lookupuser-not-authenticated' => "n'eo ket aotreet",
+	'lookupuser-id' => 'ID an implijer : <tt>#$1</tt>',
+	'lookupuser-email' => 'Postel : [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => "N'eo ket bet pourchaset",
+	'lookupuser-realname' => 'Anv gwir : $1',
+	'lookupuser-registration' => 'Deiziad enrollañ : $1',
+	'lookupuser-no-registration' => "n'eo ket enrollet",
+	'lookupuser-touched' => 'Enrolladenn an implijer bet tizhet da ziwezhañ : $1',
+	'lookupuser-info-authenticated' => 'Gwiriañ ar postel : $1',
+	'lookupuser-useroptions' => 'Dibarzhioù an implijer :',
+	'right-lookupuser' => 'Sellet ouzh ar penndibaboù implijout',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -689,6 +689,15 @@ $messages['pl'] = array(
 	'languageselector-setlang' => 'ustaw',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'languageselector' => 'Lenga',
+	'languageselector-desc' => 'Seletor ëd la lenga an dzora a mincadun-a pàgina, ëdcò për ij visitador',
+	'languageselector-setlang' => 'Ampòsta',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

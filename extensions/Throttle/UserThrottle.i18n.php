@@ -326,6 +326,17 @@ Poczekaj chwilę i wciśnij „odśwież” w przeglądarce by ponowić operacj�
 	'acct_creation_global_soft_throttle_hit-desc' => 'Ogranicza częstotliwość rejestracji nowych użytkowników',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'acct_creation_global_soft_throttle_hit' => "La creassion ëd cont a l'é stàita automaticament sospèisa për cheich moment a motiv ëd n'insolit gròss nùmer ëd tentativ ëd login.
+Për piasì speta cheich minute e preuva torna.",
+	'acct_creation_global_hard_throttle_hit' => "la creassion ëd cont a l'é stàita automaticament sospèisa për cheich second për bassé l'atach d'inondassion ëd registrassion.
+Për piasì speta un moment e fà 'reload' an tò browser për torna prové.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Throttle user creation',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

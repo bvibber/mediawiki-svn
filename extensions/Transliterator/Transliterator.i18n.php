@@ -122,6 +122,17 @@ $messages['hsb'] = array(
 	'transliterator-error-rulesize' => 'Prawidło <code>$1</code> ma wjace hač $3 {{PLURAL:$3|znamješko|znamješce|znamješka|znamješkow}} nalěwo w [[MediaWiki:$2]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'transliterator-desc' => 'Menyediakan fungsi parser yang dapat dikonfigurasi untuk transliterasi',
+	'transliterator-error-ambiguous' => 'Aturan ambigu <code>$1</code> pada [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaks tidak sah <code>$1</code> pada [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Lebih dari $1 {{PLURAL:$1||}}aturan pada [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Aturan <code>$1</code> memiliki lebih dari $3 {{PLURAL:$3||}}karakter di sebelah kiri di [[MediaWiki:$2]]',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -140,6 +151,28 @@ $messages['ksh'] = array(
 	'transliterator-error-syntax' => 'En kappodde Syntax <code>$1</code> es en [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Et {{PLURAL:$1|es mieh wi ein Rejel|sinn_er mieh wi $1 Rejelle|es kei Rejel}} en [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'En de Rejel <code>$1</code> {{PLURAL:$3|es|sinn_er}} mieh wi $3 Zeische op de lengke Sigg, en [[MediaWiki:$2]]',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'transliterator-desc' => 'Biedt een instelbare parserlaag voor transliteratie',
+	'transliterator-error-ambiguous' => 'Dubbelzinnige regel <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Ongeldige syntaxis <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Meer dan $1 {{PLURAL:$1|regel|regels}} in [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Regel <code>$1</code> heeft meer dan $3 {{PLURAL:$3|teken|tekens}} aan de linkerkant in [[MediaWiki:$2]]',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'transliterator-desc' => 'Provesís una foncion parser configurabla per la transliteracion',
+	'transliterator-error-ambiguous' => 'Règla ambigua <code>$1</code> dins [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaxi incorrècta <code>$1</code> dins [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Mai de $1 {{PLURAL:$1|règla|règlas}} dins [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => "La règla <code>$1</code> a mai de $3 {{PLURAL:$3|caractèr|caractèrs}} sus l'esquèrra dins [[MediaWiki:$2]]",
 );
 
 /** Russian (Русский)

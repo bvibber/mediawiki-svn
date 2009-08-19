@@ -2784,6 +2784,7 @@ Du kan antingen <a href="$1">ladda ner mediefilen</a><br />eller<br /><a href="h
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  * @author వైజాసత్య
  */
@@ -2802,7 +2803,7 @@ $messages['te'] = array(
 	'ogg-play-video' => 'వీడియోని ఆడించు',
 	'ogg-play-sound' => 'శబ్ధాన్ని వినిపించు',
 	'ogg-player-videoElement' => 'విహారిణిలో సహజాత తోడ్పాటు',
-	'ogg-player-oggPlugin' => 'Ogg ప్లగిన్',
+	'ogg-player-oggPlugin' => 'బ్రౌజరు ప్లగిన్',
 	'ogg-player-thumbnail' => 'నిచ్చల చిత్రాలు మాత్రమే',
 	'ogg-player-soundthumb' => 'ప్లేయర్ లేదు',
 	'ogg-player-selected' => '(ఎంచుకున్నారు)',

@@ -423,6 +423,7 @@ $messages['af'] = array(
 	'ow_OptionAttributeOption' => 'Opsie',
 	'ow_OptionAttributeOptions' => 'Opsies',
 	'ow_PopupAnnotation' => 'Annotasie',
+	'ow_Remove' => 'Verwyder',
 	'ow_Spelling' => 'Spelling',
 	'ow_Synonyms' => 'Sinonieme',
 	'ow_Source' => 'Bron',
@@ -2990,6 +2991,7 @@ Neniu kopia operacio okazis.',
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Ascánder
  * @author Baiji
  * @author BicScope
@@ -2999,6 +3001,8 @@ Neniu kopia operacio okazis.',
  * @author Sanbec
  */
 $messages['es'] = array(
+	'wikidata-desc' => 'Agrega base de datos tipo wiki para varios tipos de contenido',
+	'wikidata-handler-namespace-move-error' => 'Las páginas en el espacio de nombres manejado por la extensión Wikidata no pueden trasladarse',
 	'languages' => 'Wikidata: Gestor de lenguas',
 	'langman-desc' => 'Agregue y cambie configuraciones de lenguaje con [[Special:Languages]]',
 	'langman_title' => 'Gestor de lenguas',
@@ -3044,7 +3048,7 @@ $messages['es'] = array(
 Asegúrate que tu aplicación ha sido grabada o se exportó el archivo correctamente.</p>',
 	'ow_importtsv_not_tsv' => '<p>Parece ser que no aparece un archivo TSV válido.</p>',
 	'ow_importtsv_bad_columns' => "<p>Nombre de columna incorrecto '$1'.<br />
-Las columnas deberían ser nombradas 'definition_iso' o 'translations_iso',
+Las columnas deberían ser nombradas 'definition_iso' o 'translations_iso',  
 donde iso es el código del lenguaje.</p>",
 	'ow_importtsv_test_run_title' => 'Corre examen para la importación de datos TSV',
 	'ow_importtsv_nothing_added' => 'Nada se ha añadido.',
@@ -3089,11 +3093,11 @@ Seleccionar una colección a exportar. En la tabla de textos de lenguajes, ingre
 	'conceptmapping' => 'Wikidata: mapeamento de conceptos',
 	'ow_conceptmapping_title' => 'Mapeo conceptual',
 	'ow_conceptmapping_help' => '<p>acciones posibles: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... insertar una correspondencia</li>
-<li>&action=get&concept=<concept_id> leer una correspondencia almacenada</li>
-<li>&action=list_sets devuelve una lista de posibles prefijos de contexto de datos y a qué se pueden referir</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  insertar una correspondencia</li>
+<li>&action=get&concept=<concept_id>  leer una correspondencia almacenada</li>
+<li>&action=list_sets  devuelve una lista de posibles prefijos de contexto de datos y a qué se pueden referir</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para un sentido definido en un concepto, devuelve todos los otros</li>
-<li>&action=help Muestra un mensaje de ayuda.</li>
+<li>&action=help  Muestra un mensaje de ayuda.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Ligar los conceptos permite identificar los sentidos definidos en un juego de datos que son idénticos a sentidos definidos en otros juegos de datos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'La acción «$1» no está soportada.',
@@ -3179,6 +3183,7 @@ Seleccionar una colección a exportar. En la tabla de textos de lenguajes, ingre
 	'ow_meaningsoftitle' => 'Significado de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wiki enlace:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMISO NEGADO</h2>',
+	'copy' => 'Wikidata: Copia',
 	'ow_copy_no_action_specified' => 'Especifique una acción por favor',
 	'ow_copy_help' => 'La ayuda no está implementada aún.',
 	'ow_please_proved_dmid' => 'Falta un ?dmid=<...> (dmid=Id de SentidoDefinido)
@@ -3215,6 +3220,7 @@ Contacta por favor el operador o el administrador del servicio.',
 	'ow_nstab_definedmeaning' => 'significado definido',
 	'ow_nstab_edit_copy' => 'editar copia',
 	'right-addlanguage' => 'Agregar y cambiar configuraciones de lenguaje',
+	'ow_shown_datasets' => 'Conjunto de datos mostrados',
 );
 
 /** Estonian (Eesti)

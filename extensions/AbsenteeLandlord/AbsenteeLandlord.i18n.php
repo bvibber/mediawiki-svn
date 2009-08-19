@@ -79,6 +79,14 @@ $messages['bg'] = array(
 	'absenteelandlord-desc' => 'Автоматично заключва базата от данни ако всички администратори са неактивни за известен период от време',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'absenteelandlord-reason' => 'Prennet eo bet ar bank roadennoù ent emgefre rak chomet dioberiant e oa ar verourien.',
+	'absenteelandlord-desc' => 'Prennañ ar bank roadennoù ent emgefre ma chom dioberiant ar verourien e-pad ur frapad bennak',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

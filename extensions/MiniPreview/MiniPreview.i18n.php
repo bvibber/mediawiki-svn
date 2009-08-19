@@ -587,10 +587,12 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
-	'minipreview-files_in_category' => 'an total a-i son $1 archivi an sta categorìa-sì.',
-	'minipreview-files_in_gallery' => 'an total a-i son $1 archivi an sta galerìa-sì.',
+	'minipreview-desc' => 'MiniPreview a mosta, vzin a na figura, cite anteprime d\'àutri "media" ant le mideme categorìe o visualisà an sle mideme pàgine',
+	'minipreview-files_in_category' => "Sta categorìa-sì a conten '''$1''' {{PLURAL:$1|archivi|archivi}}.",
+	'minipreview-files_in_gallery' => "Sta galerìa-sì a conten '''$1''' {{PLURAL:$1|archivi|archivi}}.",
 	'minipreview-no_more_files_here' => 'Pa pì gnun archivi an sta diression-sì.',
 	'minipreview-no_category_gallery' => "Nì 'd categorìe, nì 'd galerìe!",
 	'minipreview-ignore_categories' => 'Ambelessì a-i é na lista ëd nòm ëd categorìa ò d\'inissiaj dij nòm. Ste categorìe-sì a saran pa smonùe ant la mini-presentassion. Pr\'esempi, "* PD-" a smon nen gnun-a categorìa dont nòm as anandia për "PD-", coma "PD-old". * GFDL- * GFDL * CC- * PD- * Self',

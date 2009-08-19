@@ -146,12 +146,17 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Dferg
  * @author Locos epraix
  */
 $messages['es'] = array(
 	'webchat' => 'Web chat',
 	'webchat-desc' => 'Añade una [[Special:WebChat|página especial]] usada para chatear en vivo con otros usuarios del proyecto',
+	'webchat-header' => 'Esta página especial le permite colaborar en tiempo real con otros usuarios de la wiki.
+Para conectarse oprima simplemente el botón "Conectar"-
+Si Ud. ya se ha logueado, su nombre de usuario estará preseleccionado.
+Los usuarios anónimos obtienen un usuario generado automáticamente, que puede modificarse.',
 );
 
 /** Basque (Euskara)

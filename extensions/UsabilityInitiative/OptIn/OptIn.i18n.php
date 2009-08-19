@@ -1227,6 +1227,7 @@ Dankegon, kaj ni antaŭĝojas viajn komentojn!',
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Imre
  * @author Locos epraix
@@ -1287,14 +1288,14 @@ El nuevo sistema de navegación hace más fácil ver en donde estás y qué est�
 <div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=]]
-;Mejoramientos de la barra de herramientas de edición
-Nuevos-y-mejorados iconos hacen más claro qué acción realiza cada herramienta. Secciones expansibles reducen el amontonamiento mientras mantienen herramientas usadas infrecuentemente solo a un clic de distancia.
+;Mejoras de la barra de herramientas de edición
+Nuevos-y-mejores íconos clarifican la acción de cada herramienta. Secciones expandibles reducen la saturación y mantienen herramientas poco usadas a solo un clic de distancia.
 La sección de ayuda provee acceso rápido a una referencia para usos comunes del lenguaje wiki.
 <div style="clear:both;"></div>
 == Cómo involucrarse ==
-Para aprender más acerca del proyecto o involucrarse, por favor visita la[http://usability.wikimedia.org Iniciativa de usabilidad de wiki].  Allí encontrarás información acerca de nuestra subvención, investigación, diseño + desarrollo, y versiones.  Para preguntar o dejar retroalimentación general, por favor use nuestra [http://usability.wikimedia.org/wiki/Talk:Prototype página de discusión prototipo].  Para dirigir temas particulares, por favor usa las páginas de discusión asociadas.  Si encuentras errores, por favor deja tus comentarios en la [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discusión versión Acai] o usando [https://bugzilla.wikimedia.org Bugzilla].
+Para aprender más acerca del proyecto o involucrarse, por favor visita la [http://usability.wikimedia.org Iniciativa de usabilidad de wiki].  Allí encontrarás información acerca de nuestra subvención, investigación, diseño + desarrollo, y versiones.  Para preguntar o dejar retroalimentación general, por favor utiliza nuestra [http://usability.wikimedia.org/wiki/Talk:Prototype página de discusión prototipo].  Para plantear temas particulares, por favor usa las páginas de discusión específicas.  Si encuentras errores, por favor deja tus comentarios en la [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discusión versión Acai] o usando [https://bugzilla.wikimedia.org Bugzilla].
 
-Thanks and we look forward to hearing from you!',
+Gracias, y esperamos saber pronto de tí!',
 );
 
 /** Estonian (Eesti)

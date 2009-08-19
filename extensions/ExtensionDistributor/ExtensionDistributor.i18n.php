@@ -650,10 +650,11 @@ Si tienes algunas preguntas acerca de éste sistema de distribución de extensio
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Ker
  * @author Pikne
  */
 $messages['et'] = array(
-	'extdist-no-such-version' => 'Versioonis "$2" puudub lisa "$1".',
+	'extdist-no-such-version' => 'Versioonis "$2" puudub laiendus "$1".',
 	'extdist-submit-extension' => 'Jätka',
 	'extdist-submit-version' => 'Jätka',
 );

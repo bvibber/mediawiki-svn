@@ -529,6 +529,16 @@ $messages['pl'] = array(
 	'simpleantispam-desc' => 'Dodaje do formularzy proste zabezpieczenie przed spamem i automatami',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'simpleantispam' => "Toa modìfica a l'ha ativà ël mecànism anti-spam",
+	'simpleantispam-label' => "Control anti-spam.
+Vemp '''PA''' sòn-sì!",
+	'simpleantispam-desc' => 'A gionta un sempi control spam/bot a le forme',
+);
+
 /** Portuguese (Português)
  * @author 555
  */

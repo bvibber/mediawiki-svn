@@ -290,13 +290,14 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Drini
  * @author Imre
  */
 $messages['es'] = array(
 	'importfreeimages' => 'Importar imágenes libres',
-	'importfreeimages-desc' => 'Provea una manera de [[Special:ImportFreeImages|importar adecuadamente fotografías licensiadas]] de [http://www.flickr.com flickr]',
+	'importfreeimages-desc' => 'Provee una manera de [[Special:ImportFreeImages|importar adecuadamente fotografías licenciadas]] de [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Esta página le permite buscar correctamente fotografías licensiadas de flickr e importarlas dentro de su wiki.',
 	'importfreeimages_noapikey' => 'No has configurado tu Clave API Flickr
 Para hacerlo, por favor obtén una [http://www.flickr.com/services/api/misc.api_keys.html clave API] y configura $wgFlickrAPIKey  en ImportFreeImages.php.',
@@ -308,6 +309,7 @@ Para hacerlo, por favor obtén una [http://www.flickr.com/services/api/misc.api_
 	'importfreeimages_filefromflickr' => '$1 por usuario <b>[$2]</b> de flickr. URL original',
 	'importfreeimages_promptuserforfilename' => 'Por favor ingresar un nombre de archivo de destino',
 	'importfreeimages_returntoform' => "O, haga click <a href='$1'>aquí</a> para retornar a sus resultados de búsqueda",
+	'importfreeimages_nophpflickr' => 'Ud. no tiene instalado phpFlickr: por favor configure $wgIFphpFlickr en su archivo LocalSettings.php.',
 );
 
 /** Basque (Euskara)

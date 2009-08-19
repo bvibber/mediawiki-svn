@@ -140,11 +140,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Locos epraix
  * @author Omnipaedista
  */
 $messages['es'] = array(
 	'simplesearch' => 'Búsqueda simple',
+	'simplesearch-desc' => 'Agrega funcionalidades extra al vector de búsqueda simple',
 	'simplesearch-search' => 'Búsqueda',
 );
 
@@ -410,6 +412,13 @@ $messages['pl'] = array(
 	'simplesearch' => 'Proste wyszukiwanie',
 	'simplesearch-desc' => 'Dodaje dodatkową funkcjonalność prostego wyszukiwania w skórce Vector',
 	'simplesearch-search' => 'Szukaj',
+);
+
+/** Pontic (Ποντιακά)
+ * @author Consta
+ */
+$messages['pnt'] = array(
+	'simplesearch-search' => 'Αράεμαν',
 );
 
 /** Pashto (پښتو)

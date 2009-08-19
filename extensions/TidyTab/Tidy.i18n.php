@@ -306,6 +306,15 @@ $messages['pl'] = array(
 	'untidy' => 'Anuluj uporządkowanie',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'tidy-desc' => "A gionta un tab d'ordinament o ëd mancà ordinament (an dipendensa da \$wgUseTidy) an dzora a pàgine normaj për coaté l'ampostassion d'ordinament HTML global për na sola vista",
+	'tidy' => 'Órdina',
+	'untidy' => 'Órdina nen',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

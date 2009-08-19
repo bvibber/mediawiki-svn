@@ -88,6 +88,7 @@ Do not translate or change tag names, or link anchors.',
  */
 $messages['af'] = array(
 	'recordadmin-buttonsave' => 'Stoor',
+	'recordadmin-editlink' => 'wysig',
 );
 
 /** Arabic (العربية)

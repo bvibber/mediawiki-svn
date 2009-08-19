@@ -345,6 +345,15 @@ $messages['pl'] = array(
 	'spl3_nosubpages' => 'Nie można wyświetlić podstron strony $1.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'spl3-desc' => 'A crea automaticament na lista dle sotpàgine ëd na pàgina an dovrand ël tag <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => "Valor pa conossù për l'opsion $1.",
+	'spl3_nosubpages' => "$1 a l'ha pa ëd sotpàgine da listé.",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

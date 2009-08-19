@@ -556,6 +556,13 @@ $messages['pl'] = array(
 	'searchbox-namespaces' => 'Przestrzenie nazw',
 );
 
+/** Pontic (Ποντιακά)
+ * @author Consta
+ */
+$messages['pnt'] = array(
+	'searchbox-search' => 'Αράεμαν',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

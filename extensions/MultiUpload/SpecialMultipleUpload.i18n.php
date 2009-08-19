@@ -1440,10 +1440,11 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
-	'multipleupload' => 'ఫైళ్ళను ఎగుమతించు',
+	'multipleupload' => 'పలు ఫైళ్ళను ఎగుమతిచేయి',
 	'multipleupload-ignoreallwarnings' => "'''అన్ని హెచ్చరికల'''ను పట్టించుకోకుండా ఎలాగైనా ఆ ఫైళ్ళను భద్రపరచు.",
 	'multipleupload-saveallfiles' => 'అన్ని ఫైళ్ళనూ భద్రపరచు',
 	'multipleupload-addresswarnings' => 'ఫైళ్ళను తిరిగి ఎగుమతి చేసేముందు హెచ్చరికలు లేకుండా సరిచూడండి.',

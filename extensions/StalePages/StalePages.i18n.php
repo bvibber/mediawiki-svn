@@ -364,6 +364,15 @@ $messages['pl'] = array(
 	'stalepages-summary' => 'Poniżej znajduje się lista stron, które nie były edytowane od co najmniej $1 {{PLURAL:$1|dzień|dni}}.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'stalepages' => 'Pàgine fërme',
+	'stalepages-desc' => 'A génera na [[Special:Stalepages|lista ëd pàgine]] che a son pa stàite modificà ëd ressent',
+	'stalepages-summary' => "Sta sì a l'é na lista ëd pàgine che a son pa stàite modificà ant j'ùltim $1 {{PLURAL:$1|di|di}}.",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

@@ -405,11 +405,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
 	'spamregex-desc' => '[[Special:SpamRegex|Filtrar]] frases no deseadas en páginas editadas, basadas en expresiones regulares',
+	'spamregex-error-unblocking' => 'Error desbloqueando "$1". Probablemente no existe tal ruta.',
 	'spamregex-summary' => 'El texto fue encontrado en el resumen de página.',
 	'spamregex-currently-blocked' => "'''Frases actualmente bloqueadas:'''",
 	'spamregex-move' => 'La razón que ha ingresado contiene una frase bloqueada.',

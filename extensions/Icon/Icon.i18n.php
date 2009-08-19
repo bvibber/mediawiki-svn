@@ -464,6 +464,15 @@ $messages['pl'] = array(
 	'icon-desc' => 'Pozwala używać grafiki jako ikony oraz jako ikony z linkami',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'icon-badimage' => 'Figura pa bon-a',
+	'icon-badwidth' => 'Larghëssa pa bon-a',
+	'icon-desc' => "At përmëtt ëd dovré le figure com icon-e e anliure d'icon-e",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

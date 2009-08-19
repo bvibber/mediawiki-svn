@@ -181,11 +181,27 @@ $messages['el'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'wah-desc' => 'Permitir la distribución de videos convertidos a los clientes utilizando firefogg',
+	'wah-user-desc' => 'Wiki@Home permite a los miembros de la comunidad donar ciclos ociosos de cpu para ayudar en operaciones intensivas',
+	'wah-short-audio' => 'Archivo de sonido $1, $2',
 	'wah-short-video' => 'Archivo de vídeo $1, $2',
 	'wah-short-general' => 'Archivo de media $1, $2',
+	'wah-long-audio' => '( archivo de sonido $1, tamaño $2, $3)',
+	'wah-long-video' => '(archivo de video $1, tamaño $2, $4x$5 pixels, $3)',
+	'wah-long-multiplexed' => '(archivo mutiplexado de audio/video, $1, largo $2, $4x$5 pixeles, total $3)',
+	'wah-long-general' => '(archivo de media, tamaño $2, $3)',
+	'wah-long-error' => '(ffmpeg no puede leer el archivo: $1)',
+	'wah-transcode-working' => 'Este video está siendo procesado, por favor intente de nuevo mas tarde.',
+	'wah-transcode-helpout' => 'El fragmento está $1 por ciento terminado.
+Ud. puede ayudar a convertir este video visitando [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Falló la conversión del archivo.',
+	'wah-javascript-off' => 'Ud. debe tener JavaScript activo para participar en Wiki@Home',
+	'wah-loading' => 'cargando interfaz Wiki@Home <blink>...</blink>',
 );
 
 /** Basque (Euskara)

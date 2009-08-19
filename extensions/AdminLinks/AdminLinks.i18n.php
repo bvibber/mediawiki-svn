@@ -141,6 +141,24 @@ $messages['bg'] = array(
 	'adminlinks_importexport' => 'Внасяне и изнасяне',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'adminlinks' => 'Liammoù merañ',
+	'adminlinks-desc' => 'Ouzhpennañ a ra ur [[Special:AdminLinks|bajenn zibar]] enni liammoù talvoudus evit ar verourien',
+	'adminlinks_documentation' => 'dafar $1',
+	'adminlinks_general' => 'Hollek',
+	'adminlinks_editsidebar' => 'Kemmañ ar varrenn gostez',
+	'adminlinks_editcss' => 'Kemmañ ar restr CSS',
+	'adminlinks_editmainpagename' => 'Kemmañ anv ar bajenn bennañ',
+	'adminlinks_users' => 'Implijerien',
+	'adminlinks_createuser' => 'Krouiñ un implijer',
+	'adminlinks_browsesearch' => 'Furchal ha klask',
+	'adminlinks_importexport' => 'Enporzhiañ hag ezporzhiañ',
+	'right-adminlinks' => 'Gwelet al liamm war-du [[Special:AdminLinks|liammoù merañ]]',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

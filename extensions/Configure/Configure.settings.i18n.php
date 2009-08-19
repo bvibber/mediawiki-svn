@@ -2117,7 +2117,10 @@ $messages['be-tarask'] = array(
 	'configure-setting-wgDebugProfiling' => 'Вызначаць несупадзеньні выклікаў wfProfileIn/wfProfileOut',
 	'configure-setting-wgDebugSquid' => 'Шмат вывадаў наладкі са SquidUpdate.php',
 	'configure-setting-wgProfileCallTree' => 'Выводзіць неапрацаванае дрэва выклікаў замест справаздачы па функцыям',
+	'configure-setting-wgProfileLimit' => 'Запісваць інфармацыю пра прафіляваньне толькі для старонак, якія занялі болей чым гэта',
 	'configure-setting-wgProfileOnly' => 'Не зьмяшчаць у файл журнала інфармацыю, якая не датычыцца прафіляваньня',
+	'configure-setting-wgProfilePerHost' => 'Запісваць хост сэрвэра даставаньняў ў табліцу прафіляваньня',
+	'configure-setting-wgProfileToDatabase' => 'Запісваць сумы з прафіляваньня ў табліцу прафіляваньня базы зьвестак',
 	'configure-setting-wgUDPProfilerHost' => 'Хост для прафайлера UDP',
 	'configure-setting-wgUDPProfilerPort' => 'Порт для прафайлера UDP',
 );
@@ -2196,6 +2199,27 @@ $messages['bg'] = array(
 	'configure-setting-wgBlockAllowsUTEdit' => 'Позволяване на блокираните потребители да редактират своята дискусионна страница',
 	'configure-setting-wgSysopEmailBans' => 'Позволяване на администраторите да спират достъпа на потребители до [[Special:EmailUser]]',
 	'configure-setting-wgSysopUserBans' => 'Позволяване на администраторите да банват влезли потребители',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'configure-setting-wgSitename' => "Anv al lec'hienn",
+	'configure-setting-wgActionPaths-value' => 'Patrom URL',
+	'configure-setting-wgSharedTables' => 'Anv an taolennoù da rannañ',
+	'configure-setting-wgMediaHandlers-key' => 'Seurt MIME',
+	'configure-setting-wgFileCacheDirectory' => "Kavlec'h krubuilh ar restroù",
+	'configure-setting-wgUseFileCache' => 'Ober gant krubuilh ar restr',
+	'configure-setting-wgLanguageCode' => "Kod yezh al lec'hienn",
+	'configure-setting-wgArticleRobotPolicies-key' => 'Anv ar bajenn',
+	'configure-setting-wgExemptFromUserRobotsControl' => 'Esaouennoù anv na aotreont ket ober gant <nowiki>__INDEX__</nowiki> ha <nowiki>__NOINDEX__</nowiki>',
+	'configure-setting-wgExtraLanguageNames-key' => 'Kod yezh',
+	'configure-setting-wgExtraLanguageNames-value' => 'Anv ar yezh',
+	'configure-setting-wgNoFollowLinks' => 'Ouzhpennañ rel="nofollow" d\'al liammoù',
+	'configure-setting-wgPageShowWatchingUsers' => 'Diskwel an implijerien a heuilh ur bajenn bennak',
+	'configure-setting-wgStyleVersion' => 'Stumm restroù CSS/JS MediaWiki',
+	'configure-setting-wgCheckFileExtensions' => 'Gwiriañ astennoù ar restr',
 );
 
 /** Bosnian (Bosanski)
@@ -8266,6 +8290,7 @@ $messages['lb'] = array(
 	'configure-setting-wgMaxNameChars' => 'Maximal Byte-Längt vum Benotzernumm',
 	'configure-setting-wgMinimalPasswordLength' => 'Mindest Längt vun de Passwieder',
 	'configure-setting-wgCompressRevisions' => 'Al Versioune wa méigellch kompriméieren',
+	'configure-setting-wgUseAutomaticEditSummaries' => 'Automatesche Resumé vun den Ännerunge benotzen',
 	'configure-setting-wgSecretKey' => 'Geheime Schlëssel',
 	'configure-setting-wgDBmysql4' => 'Verbessert Volltext-Sich benotzen',
 	'configure-setting-wgDBClusterTimeout' => 'Timeout vun der Datebank',
@@ -8276,6 +8301,7 @@ $messages['lb'] = array(
 	'configure-setting-wgXhtmlNamespaces-key' => 'Nummraum',
 	'configure-setting-wgLocaltimezone' => 'Lokal Zäitzon',
 	'configure-setting-wgUseAjax' => 'AJAX aschalten',
+	'configure-setting-wgFavicon' => 'URL vum Favicon vum Site',
 	'configure-setting-wgRCLinkDays' => 'Limit vun den Deeg déi bäi de rezenten Ännerungen ugewise ginn',
 	'configure-setting-wgRCShowChangedSize' => 'Zuel vun de geännerten Zeechen an de rezenten Ännerunge weisen',
 	'configure-setting-wgBlockAllowsUTEdit' => "Engem gespaarte Benotzer erlaben seng eegen Diskussiounssäit z'änneren",
