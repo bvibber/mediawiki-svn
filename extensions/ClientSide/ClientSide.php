@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionMessagesFiles['ClientSide'] =  dirname(__FILE__) . '/ClientSide.i18n.php';
 
-abstract class Html {
+abstract class CsHtml {
 
 	/* Static Functions */
 
@@ -206,7 +206,7 @@ abstract class Html {
 	}
 }
 
-abstract class Css {
+abstract class CsCss {
 
 	/* Static Functions */
 
@@ -223,7 +223,7 @@ abstract class Css {
 	}
 }
 
-abstract class Js {
+abstract class CsJs {
 
 	/* Static Functions */
 
