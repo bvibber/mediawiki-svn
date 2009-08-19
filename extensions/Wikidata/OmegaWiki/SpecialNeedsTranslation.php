@@ -54,6 +54,31 @@
 
 				$dbr = wfGetDB( DB_SLAVE );
 
+				$sqlcount = 'SELECT COUNT(*)' .
+					" FROM ({$dc}_syntrans source_syntrans, {$dc}_expression source_expression)";
+
+				if ( $collectionId != '' )
+					$sqlcount .= " JOIN {$dc}_collection_contents ON source_syntrans.defined_meaning_id = member_mid";
+
+				$sqlcount .= ' WHERE source_syntrans.expression_id = source_expression.expression_id';
+
+				if ( $sourceLanguageId != '' )
+					$sqlcount .= ' AND source_expression.language_id = ' . $sourceLanguageId;
+				if ( $collectionId != '' )
+					$sqlcount .= " AND {$dc}_collection_contents.collection_id = " . $collectionId .
+						' AND ' . getLatestTransactionRestriction( "{$dc}_collection_contents" );
+
+				$sqlcount .= ' AND NOT EXISTS (' .
+					" SELECT * FROM {$dc}_syntrans destination_syntrans, {$dc}_expression destination_expression" .
+					' WHERE destination_syntrans.expression_id = destination_expression.expression_id AND destination_expression.language_id = ' . $destinationLanguageId .
+					' AND source_syntrans.defined_meaning_id = destination_syntrans.defined_meaning_id' .
+					' AND ' . getLatestTransactionRestriction( 'destination_syntrans' ) .
+					' AND ' . getLatestTransactionRestriction( 'destination_expression' ) .
+					')' .
+					' AND ' . getLatestTransactionRestriction( 'source_syntrans' ) .
+					' AND ' . getLatestTransactionRestriction( 'source_expression' ) ;
+
+
 				$sql = 'SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id' .
 					" FROM ({$dc}_syntrans source_syntrans, {$dc}_expression source_expression)";
 
@@ -80,6 +105,13 @@
 					' LIMIT 100';
 
 				$queryResult = $dbr->query( $sql );
+
+				$queryResultCount_r = mysql_query( $sqlcount );
+				$queryResultCount_a = mysql_fetch_row( $queryResultCount_r );
+				$queryResultCount = $queryResultCount_a[0];
+				$nbshown = min ( 100, $queryResultCount ) ;
+
+
 				$definitionAttribute = new Attribute( "definition", wfMsg( "ow_Definition" ), "definition" );
 				$recordSet = new ArrayRecordSet( new Structure( $o->definedMeaningId, $o->expressionId, $o->expression, $definitionAttribute ), new Structure( $o->definedMeaningId, $o->expressionId ) );
 
@@ -101,6 +133,7 @@
 
 				global $wgOut;
 
+				$wgOut->addHTML( "Showing $nbshown out of $queryResultCount" ) ;
 				$wgOut->addHTML( $editor->view( new IdStack( "expression" ), $recordSet ) );
 			}
 		}
