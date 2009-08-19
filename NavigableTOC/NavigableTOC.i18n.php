@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'navigabletoc-desc' => 'Adds a table of contents to the edit form that scrolls the text box when a section is clicked',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'navigabletoc' => 'فهرس محتويات قابل للإبحار',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -27,10 +34,11 @@ $messages['be-tarask'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'navigabletoc' => 'Navigovatelný obsah',
-	'navigabletoc-desc' => 'Přidává do formuláře úprav obsah, který se po kliknutí na sekci přesune',
+	'navigabletoc-desc' => 'Přidává na editační stránku obsah, pomocí kterého se lze pohybovat v editovaném textu',
 );
 
 /** Danish (Dansk)
@@ -246,6 +254,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'navigabletoc' => 'Nawigacyjny spis treści',
 	'navigabletoc-desc' => 'Przewija tekst w formularzu edycji, jeśli zostanie kliknięty kliknięty tytuł sekcji w dodanym do formularza spisie treści',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'navigabletoc' => 'Tàula dij contnù navigàbil',
+	'navigabletoc-desc' => "A gionta na tàula dij contnù a la form ëd modìfica ch'a scor la casela quand che as clica na session",
 );
 
 /** Portuguese (Português)
