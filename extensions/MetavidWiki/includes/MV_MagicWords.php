@@ -310,6 +310,7 @@ FROM `mv_streams` ');
 		return $o;
 	}
 	function formatOutputItems($outItems){
+		$o='';
 		$class_attr = ( $this->params['class'] != '' ) ? ' class="' . htmlspecialchars($this->params['class']) . '"':'';
 		if ( $this->params['format'] == 'ul_list' ) {
 			$o .= '<ul' . $class_attr . '>';
