@@ -69,7 +69,8 @@ table.mw-codereview-meta td {
 }
 
 .mw-codereview-status-reverted td {
-	background: #ccc !important;
+	background: #ddd !important;
+	color: #666 !important;
 	text-decoration: line-through !important;
 }
 .mw-codereview-status-reverted:hover td {
