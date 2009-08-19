@@ -42,7 +42,7 @@ public class Configure {
 		
 		if( ! new File(mediawiki+"/LocalSettings.php").exists() ){
 			System.out.println("ERROR: "+mediawiki+" does not appear to contain a MediaWiki installation. ");
-			System.out.println("Please give full path to root directory (where LocaliseSettings.php is) of your MediWiki installation. ");
+			System.out.println("Please give full path to root directory (where LocalSettings.php is) of your MediWiki installation. ");
 			return;
 		}
 		
@@ -84,7 +84,7 @@ public class Configure {
 		return Command.exec(new String[] { 
 				"/bin/bash", 
 				"-c", 
-				"cd "+mediawiki+" && (echo \"return \\$"+var+"\" | php maintenance/eval.php | sed -e 's/^> // ; /^$/d')"}).trim();
+				"cd "+mediawiki+" && (echo \"return \\$"+var+"\" | php maintenance/eval.php --conf "+mediawiki+"/LocalSettings.php | sed -e 's/^> // ; /^$/d')"}).trim();
 	}
 	
 	/** create config file from template, replacing variables 
