@@ -121,7 +121,8 @@ public class SearcherCache {
 						}
 						for(int i=0;i<reader.maxDoc();i++){
 							for(CacheBuilder b : builders){
-								b.cache(i,reader.document(i));
+								if( !reader.isDeleted(i) )
+									b.cache(i,reader.document(i));
 							}
 						}
 						for(CacheBuilder b : builders){
@@ -504,12 +505,20 @@ public class SearcherCache {
 				ArrayList<InitialDeployer> threads = new ArrayList<InitialDeployer>();
 				
 				// divide mys list into chunks and assign them to different worker threads
-				int inc = mys.size() / threadNum + 1;
-				int start = 0;
+				float inc = (float)mys.size() / threadNum;
+				if( inc < 1 )
+					inc = 1;
+				float start = 0;
 				for(int i=0;i<threadNum;i++){
-					threads.add(new InitialDeployer(
-							mys.subList(start, Math.min(start+inc, mys.size()))));
+					int end = Math.min((int)(start+inc), mys.size());
+					if( i == threadNum-1 )
+						end = mys.size(); // take rest of the list
+					
+					threads.add(new InitialDeployer( mys.subList((int)(start), end) ));
 					start += inc;
+					// config error, too many threads
+					if( start >= mys.size())
+						break;
 				}
 				
 				// start all threads

@@ -102,6 +102,9 @@ public class IncrementalUpdater {
 		HashSet<String> firstPass = new HashSet<String>(); // if dbname is here, then it's our update pass
 		String defaultTimestamp = "2001-01-01";
 		boolean errors = false;
+		boolean requestSnapshot = false;
+		String noOptimizationDBlistFile = null;
+		HashSet<String> noOptimizationDBs = new HashSet<String>();
 		
 		// args
 		for(int i=0; i<args.length; i++){
@@ -123,6 +126,10 @@ public class IncrementalUpdater {
 				excludeFile = args[++i];
 			else if(args[i].equals("-n"))
 				notification = true;
+			else if(args[i].equals("-sn"))
+				requestSnapshot = true;
+			else if(args[i].equals("-nof"))
+				noOptimizationDBlistFile = args[++i];
 			else if(args[i].equals("--help"))
 				break;
 			else if(args[i].startsWith("-")){
@@ -135,6 +142,9 @@ public class IncrementalUpdater {
 			dbnames.addAll(global.getMyIndexDBnames());
 		dbnames.addAll(readDBList(dblist));
 		excludeList.addAll(readDBList(excludeFile));
+		if( noOptimizationDBlistFile != null)
+			noOptimizationDBs.addAll(readDBList(noOptimizationDBlistFile));
+		
 		if(dbnames.size() == 0){
 			System.out.println("Syntax: java IncrementalUpdater [-d] [-s sleep] [-t timestamp] [-e dbname] [-f dblist] [-n] [--no-ranks] dbname1 dbname2 ...");
 			System.out.println("Options:");
@@ -147,7 +157,8 @@ public class IncrementalUpdater {
 			System.out.println("  -n   - wait for notification of flush after done updating one db (default: "+notification+")");
 			System.out.println("  -e   - exclude dbname from incremental updates (overrides -f)");
 			System.out.println("  -ef  - exclude db names listed in dblist file");
-			
+			System.out.println("  -sn  - immediately make unoptimized snapshot as updates finish ");
+			System.out.println("  -nof - use with -sn to specify a file with databases not to be optimized");
 			return;
 		}
 		// preload
@@ -232,10 +243,10 @@ public class IncrementalUpdater {
 						String host = iid.getIndexHost();
 						boolean req = messenger.requestFlushAndNotify(dbname,host);
 						if(req){
-							log.info("Waiting for flush notification");
+							log.info("Waiting for flush notification for "+dbname);
 							Boolean succ = null;
 							do{
-								Thread.sleep(3000);
+								Thread.sleep(1500);
 								succ = messenger.isSuccessfulFlush(dbname,host);
 								if(succ != null){
 									if(succ){
@@ -248,6 +259,21 @@ public class IncrementalUpdater {
 									}
 								}
 							} while(succ == null);
+							if(requestSnapshot){
+								boolean optimize = !noOptimizationDBs.contains(dbname);
+								// snapshot the content and highlight indexes without optimizing them
+								String p = dbname+"|"+dbname+".pa*|"+dbname+".ns*|"+dbname+".h*";
+								messenger.requestSnapshotAndNotify(host, optimize, p, false);
+								log.info("Waiting for snapshot notification for "+dbname);
+								while( !messenger.snapshotFinished(host,optimize,p,false) ){
+									try {
+										Thread.sleep(1500);
+									} catch (InterruptedException e) {
+										log.warn("Interrupted", e);
+									}
+								}
+								log.info("Snapshot of "+dbname+" successful");
+							}
 						} else 
 							continue main_loop;
 					}

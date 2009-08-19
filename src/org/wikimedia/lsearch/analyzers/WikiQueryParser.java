@@ -644,7 +644,7 @@ public class WikiQueryParser {
 				// check if it's a valid field
 				String f = new String(buffer,0,length);
 				
-				List fieldOperators = getFieldOperators();
+				List<String> fieldOperators = getFieldOperators();
 				
 				if(		f.equals(namespaceAllKeyword)
 						|| fieldOperators.contains(f)
@@ -661,8 +661,8 @@ public class WikiQueryParser {
 		return TokenType.WORD; 
 	}
 	
-	private List getFieldOperators() {
-		List fieldOperators = new ArrayList();
+	private List<String> getFieldOperators() {
+		List<String> fieldOperators = new ArrayList<String>();
 		fieldOperators.add("intitle");
 		fieldOperators.add("incategory");
 		fieldOperators.add("inthread");

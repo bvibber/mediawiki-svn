@@ -62,7 +62,7 @@ public class IndexDaemon {
 		snapshotPrecursors("","true");
 	}
 	public void snapshotPrecursors(String pattern){
-		indexer.makeSnapshotsNow(false,pattern,true);
+		indexer.makeSnapshotsNow(true,pattern,true);
 	}
 	
 	public void snapshotPrecursors(String pattern, String optimize){

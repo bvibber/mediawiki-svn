@@ -271,7 +271,7 @@ public class UpdateThread extends Thread {
 				// rsync
 				log.info("Starting rsync of "+iid);
 				String snapshotpath = iid.getRsyncSnapshotPath()+"/"+li.timestamp;
-				Command.exec(rsyncPath+" "+rsyncParams+" -W --delete -r rsync://"+iid.getIndexHost()+snapshotpath+" "+iid.getUpdatePath());
+				Command.exec(rsyncPath+" "+rsyncParams+" -W --delete -u -t -r rsync://"+iid.getIndexHost()+snapshotpath+" "+iid.getUpdatePath());
 				log.info("Finished rsync of "+iid+" in "+(System.currentTimeMillis()-startTime)+" ms");
 
 			}

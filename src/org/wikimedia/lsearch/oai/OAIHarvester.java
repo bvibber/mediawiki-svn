@@ -58,6 +58,7 @@ public class OAIHarvester {
 	}
 	
 	protected void read(URL url) throws IOException {
+		log.info("Reading records from "+url);
 		collector = new IndexUpdatesCollector(iid);
 		InputStream in = new BufferedInputStream(url.openStream());
 		parser = new OAIParser(in,collector);

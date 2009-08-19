@@ -106,13 +106,13 @@ public class IndexThread extends Thread {
 		boolean optimize = true;
 		
 		public Pattern(boolean optimize, String pattern, boolean forPrecursors){
-			this(pattern,forPrecursors,false);
-			this.optimize = optimize;
+			this(pattern,forPrecursors,false,optimize);
 		}
-		public Pattern(String pattern, boolean forPrecursors, boolean not){
+		public Pattern(String pattern, boolean forPrecursors, boolean not, boolean optimize){
 			this.pattern = pattern;
 			this.forPrecursors = forPrecursors;
 			this.not = not;
+			this.optimize = optimize;
 		}
 		@Override
 		public int hashCode() {
@@ -218,7 +218,7 @@ public class IndexThread extends Thread {
 		ArrayList<Pattern> rawPatterns = new ArrayList<Pattern>();
 		synchronized (snapshotPatterns) {
 			for(Pattern p : snapshotPatterns){ // convert wildcards into regexp				 
-				pat.add(new Pattern(StringUtils.wildcardToRegexp(p.pattern),p.forPrecursors,p.pattern.startsWith("^")));
+				pat.add(new Pattern(StringUtils.wildcardToRegexp(p.pattern),p.forPrecursors,p.pattern.startsWith("^"),p.optimize));
 				rawPatterns.add(p);
 			}
 			snapshotPatterns.clear();
@@ -247,11 +247,13 @@ public class IndexThread extends Thread {
 			try{
 				if(iid.isLogical())
 					continue;
-				if(matchesPattern(pat,iid)){
+				Pattern p = matchesPattern(pat,iid);
+				if( p != null){
 					// enforce outer transaction lock to connect optimization & snapshot
 					lock = iid.getTransactionLock(IndexId.Transaction.INDEX);
 					lock.lock();
-					optimizeIndex(iid);
+					if( p.optimize )
+						optimizeIndex(iid);
 					makeIndexSnapshot(iid,iid.getIndexPath());
 					lock.unlock();
 					lock = null;
@@ -269,7 +271,7 @@ public class IndexThread extends Thread {
 		for( IndexId iid : indexes ){
 			if(iid.isLogical() || badOptimization.contains(iid))
 				continue;
-			if(matchesPattern(pat,iid)){
+			if(matchesPattern(pat,iid) != null){
 
 				registry.refreshSnapshots(iid);				
 			}
@@ -281,16 +283,17 @@ public class IndexThread extends Thread {
 		}
 	}
 	
-	private boolean matchesPattern(ArrayList<Pattern> pat, IndexId iid) {
+	/** Returns the matching pattern or null if none is matching */
+	private Pattern matchesPattern(ArrayList<Pattern> pat, IndexId iid) {
 		String string = iid.toString();
 		for(Pattern p : pat){
 			if((iid.isPrecursor() && !p.forPrecursors) ||(!iid.isPrecursor() && p.forPrecursors))
 				continue;
 			boolean match = p.pattern.equals("")? true : string.matches(p.pattern); 
 			if((match && !p.not) || (!match && p.not))
-				return true;
+				return p;
 		}
-		return false;
+		return null;
 	}
 
 	public static void makeIndexSnapshot(IndexId iid, String indexPath){

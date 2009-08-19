@@ -84,7 +84,7 @@ public class Configure {
 		return Command.exec(new String[] { 
 				"/bin/bash", 
 				"-c", 
-				"cd "+mediawiki+" && (echo \"return \\$"+var+"\" | php maintenance/eval.php)"}).trim();
+				"cd "+mediawiki+" && (echo \"return \\$"+var+"\" | php maintenance/eval.php | sed -e 's/^> // ; /^$/d')"}).trim();
 	}
 	
 	/** create config file from template, replacing variables 

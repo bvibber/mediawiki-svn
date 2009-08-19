@@ -231,7 +231,7 @@ public class KStemData7 {
 "shameless","shammy","shampoo","shamrock","shandy",
 "shanghai","shank","shantung","shanty","shantytown",
 "shape","shaped","shapely","shard","share",
-"sharecropper","shareholder","shares","shark","sharkskin",
+"sharecropper","shareholder","shark","sharkskin",
 "sharp","sharpen","sharpener","sharper","sharpshooter",
 "shatter","shave","shaver","shaving","shawl",
 "shay","she","sheaf","shear","shears",

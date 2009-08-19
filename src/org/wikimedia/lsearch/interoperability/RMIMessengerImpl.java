@@ -61,11 +61,16 @@ public class RMIMessengerImpl implements RMIMessenger {
 		long[] timestamps = new long[dbroles.length];
 		int i=0;
 		for(String dbrole : dbroles){
-			LocalIndex li = indexRegistry.getLatestSnapshot(IndexId.get(dbrole));
-			if(li != null)
-				timestamps[i++] = li.timestamp;
-			else
+			try{
+				LocalIndex li = indexRegistry.getLatestSnapshot(IndexId.get(dbrole));
+				if(li != null)
+					timestamps[i++] = li.timestamp;
+				else
+					timestamps[i++] = 0;
+			} catch(RuntimeException e){
+				log.warn("Error getting snapshot for index "+dbrole, e);
 				timestamps[i++] = 0;
+			}
 		}
 		log.debug(" <-/ replying: "+Arrays.toString(timestamps));
 		return timestamps;
