@@ -369,7 +369,7 @@ url = http://www.mediawiki.org/wiki/Extension:ContributorsAddon
 
 CountEdits
 settings[] = wgCountEditsMostActive: bool
-url = http://www.mediawiki.wiki/wiki/Extension:CountEdits
+url = http://www.mediawiki.org/wiki/Extension:CountEdits
 
 CreateBox
 url = http://www.mediawiki.org/wiki/Extension:CreateBox
