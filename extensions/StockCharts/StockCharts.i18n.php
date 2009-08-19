@@ -193,12 +193,22 @@ Utilizacion : &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author ToSter
  */
 $messages['pl'] = array(
-	'stockcharts-desc' => 'Uzupełnia znacznik <nowiki><stockchart ticker="AAPL"/></nowiki> dla interaktywnego wykresu finansowych akcji',
+	'stockcharts-desc' => 'Dodaje znacznik <nowiki><stockchart ticker="AAPL"/></nowiki> tworzący interaktywny wykres operacji finansowych',
 	'stockcharts-missingticker' => 'Żeby zagnieździć wykres giełdowy, musisz wybrać co najmniej jeden ticker.
-Użyj: &lt;stockchart ticker="AAPL"/&gt;',
+Użyj &lt;stockchart ticker="AAPL"/&gt;',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'stockcharts-desc' => 'A gionta ël tag <nowiki><stockchart ticker="AAPL"/></nowiki> për na stock chart interativa finansiaria',
+	'stockcharts-missingticker' => 'Për anserì na stoch chart, it deuve almanch spessifié un ticker.
+Dòvra: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Portuguese (Português)

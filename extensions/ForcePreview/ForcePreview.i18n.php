@@ -413,6 +413,15 @@ $messages['pl'] = array(
 	'right-forcepreviewexempt' => 'Możliwość zapisywania bez użycia „Pokaż podgląd”',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'forcepreview' => 'Salva la pàgina (fala vëdde prima)',
+	'forcepreview-desc' => "Fòrsa a fela vëdde prima për j'utent pa privilegià",
+	'right-forcepreviewexempt' => 'A peul salvé sensa dovré Fa vëdde prima',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

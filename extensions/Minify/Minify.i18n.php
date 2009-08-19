@@ -234,6 +234,13 @@ $messages['sk'] = array(
 	'minify-desc' => 'Zmenší výstup CSS a JavaScript z action=raw',
 );
 
+/** Swedish (Svenska)
+ * @author Skalman
+ */
+$messages['sv'] = array(
+	'minify-desc' => 'Minimerar CSS och JavaScript i utdata från action=raw',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

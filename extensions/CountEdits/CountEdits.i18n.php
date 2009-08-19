@@ -1059,15 +1059,17 @@ Nie oceniaj użytkownika po jego liczbie edycji.",
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'countedits' => 'Total dle modìfiche',
+	'countedits-desc' => "[[Special:CountEdits|Pàgina special]] che a conta le modìfiche dl'utent e a dà na lista dij prim des contribudor",
 	'countedits-warning' => "'''Avis:''' Mai giudiché un lìber da soa coertin-a. Ch'a giùdica pa n'utent da vàire modìfiche ch'a l'ha fait.",
 	'countedits-username' => 'Stranòm:',
 	'countedits-ok' => 'Bin parèj',
 	'countedits-nosuchuser' => "A-i é pa gnun ch'a l'abia lë stranòm $1.",
 	'countedits-resultheader' => 'Arzultà për $1',
-	'countedits-resulttext' => "$1 a l'ha fait $2 modìfiche",
+	'countedits-resulttext' => "$1 a l'ha fait $2 {{PLURAL:$2|modìfica|modìfiche}}",
 	'countedits-mostactive' => 'Contributor pì ativ',
 	'countedits-nocontribs' => "A-i é pa anco' sta-ie gnun-a modìfica a sta wiki-sì.",
 );

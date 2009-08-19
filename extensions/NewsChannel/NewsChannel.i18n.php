@@ -645,6 +645,16 @@ $messages['vo'] = array(
 	'newschannel_exclude_category' => 'Plödakipön kladi:',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'newschannel' => '新闻频道',
+	'newschannel_format' => '格式：',
+	'newschannel_limit' => '限制：',
+	'newschannel_submit_button' => '创建供稿',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

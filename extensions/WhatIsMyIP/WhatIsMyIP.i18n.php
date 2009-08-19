@@ -138,12 +138,13 @@ $messages['ckb-arab'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'whatismyip' => 'Jaká je moje IP',
 	'whatismyip-desc' => 'Zobrazí IP adresu aktuálního uživatele na [[Special:WhatIsMyIP|speciální stránce]]',
 	'whatismyip-out' => 'Vaše IP adresa:',
-	'right-whatismyip' => 'Zobrazí [[Special:WhatIsMyIP|vlastní IP adresu]]',
+	'right-whatismyip' => 'Zjišťování [[Special:WhatIsMyIP|vlastní IP adresy]]',
 );
 
 /** Welsh (Cymraeg)
@@ -749,8 +750,9 @@ $messages['zh-cn'] = array(
  */
 $messages['zh-hans'] = array(
 	'whatismyip' => '显示我的IP',
-	'whatismyip-desc' => '在[[Special:WhatIsMyIP]]上显示现有用户的IP地址',
+	'whatismyip-desc' => '显示当前用户的[[Special:WhatIsMyIP|IP地址]]',
 	'whatismyip-out' => '您的IP地址：',
+	'right-whatismyip' => '查看[[Special:WhatIsMyIP|自己的IP地址]]',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

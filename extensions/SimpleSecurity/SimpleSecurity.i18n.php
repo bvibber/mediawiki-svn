@@ -210,6 +210,17 @@ $messages['el'] = array(
 	'security-type-namespace' => 'περιοχή ονομάτων',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'security' => 'Protokolo pri sekureco',
+	'security-info' => 'Estas $1 en ĉi tiu paĝo',
+	'security-manygroups' => 'grupoj $1 kaj $2',
+	'security-type-category' => 'kategorio',
+	'security-type-namespace' => 'nomspaco',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -526,6 +537,7 @@ $messages['lb'] = array(
 	'security-unchain' => 'Aktiounen individuell änneren',
 	'security-type-category' => 'Kategorie',
 	'security-type-namespace' => 'Nummraum',
+	'security-restricttogroup' => 'Zougang zum Inhalt limitéiert fir Membere vu(n) "$1"',
 );
 
 /** Mongolian (Монгол)
@@ -752,10 +764,12 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Rotsee
  */
 $messages['sv'] = array(
 	'security' => 'Säkerhetslogg',
 	'security-desc' => 'Utökar MediaWikis sidskydd genom att tillåta begränsning av att sidinnehållet visas.',
+	'security-logpage' => 'Säkerhetslogg',
 	'security-infosysops' => 'Inga restriktioner är aktiva eftersom du tillhör gruppen "Administratörer"',
 	'security-manygroups' => 'grupperna $1 och $2',
 	'security-unchain' => 'Ändra åtgärderna individuellt',

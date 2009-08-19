@@ -1276,7 +1276,7 @@ Ota yhteyttä [[Special:ListUsers/sysop|ylläpitäjään]].',
 	'openidusernameprefix' => 'OpenID-käyttäjä',
 	'openidserverlogininstructions' => 'Kirjaudu sisään sivustolle $3 käyttäjänä $2 (käyttäjäsivu $1) syöttämällä salasana alle.',
 	'openidtrustinstructions' => 'Tarkista, haluatko jakaa tietoja kohteen $1 kanssa.',
-	'openidallowtrust' => 'Salli $1 sivuston luottaa tähän käyttäjätiliin.',
+	'openidallowtrust' => 'Salli sivuston $1 luottaa tähän käyttäjätiliin.',
 	'openidnopolicy' => 'Sivusto ei ole määritellyt yksityisyyskäytäntöä.',
 	'openidpolicy' => 'Lisää tietoa on <a target="_new" href="$1">yksityisyyskäytännöissä</a>.',
 	'openidoptional' => 'Valinnainen',
@@ -3112,10 +3112,9 @@ Du vil ikke lenger ha mulighet til å logge inn med denne OpenID.',
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author IAlex
  */
 $messages['oc'] = array(
-	'openid-desc' => "Se connecta al wiki amb [http://openid.net/ OpenID] e se connecta a d'autres sits internet OpenID amb un wiki utilizant un compte d'utilizaire.",
+	'openid-desc' => "Se connècta al wiki amb [http://openid.net/ OpenID] e se connècta a d'autres sites internet OpenID amb un wiki qu'utiliza un compte d'utilizaire.",
 	'openidlogin' => 'Se connectar amb OpenID',
 	'openidserver' => 'Servidor OpenID',
 	'openidxrds' => 'Fichièr Yadis',
@@ -3137,7 +3136,7 @@ Metetz-vos en rapòrt amb l’[[Special:ListUsers/sysop|administrator]].",
 	'openidserverlogininstructions' => "Picatz vòstre senhal çaijós per vos connectar sus $3 coma utilizaire '''$2''' (pagina d'utilizaire $1).",
 	'openidtrustinstructions' => 'Marcatz se desiratz partejar las donadas amb $1.',
 	'openidallowtrust' => "Autoriza $1 a far fisança a aqueste compte d'utilizaire.",
-	'openidnopolicy' => 'Lo sit a pas indicat una politica de las donadas personnalas.',
+	'openidnopolicy' => 'Lo site a pas indicat una politica de donadas personalas.',
 	'openidpolicy' => 'Verificar la <a target="_new" href="$1">Politica de las donadas personalas</a> per mai d’entresenhas.',
 	'openidoptional' => 'Facultatiu',
 	'openidrequired' => 'Exigit',
@@ -3168,15 +3167,15 @@ Se desiratz utilizar vòstra OpenID per vos connectar ulteriorament, podètz [[S
 	'openidbadusername' => 'Un nom d’utilizaire marrit es estat indicat.',
 	'openidautosubmit' => "Aquesta pagina conten un formulari que poiriá èsser mandat automaticament s'avètz activat JavaScript.
 S’èra pas lo cas, ensajatz lo boton « Continue » (Contunhar).",
-	'openidclientonlytext' => 'Podètz pas utilizar de comptes dempuèi aqueste wiki en tant qu’OpenID sus d’autres sits.',
+	'openidclientonlytext' => 'Podètz pas utilizar de comptes dempuèi aqueste wiki en tant qu’OpenID sus d’autres sites.',
 	'openidloginlabel' => 'Adreça OpenID',
-	'openidlogininstructions' => "{{SITENAME}} supòrta lo format [http://openid.net/ OpenID] estandard per una sola signatura entre de sits Internet.
-OpenID vos permet de vos connectar sus maites sits diferents sens aver d'utilizar un senhal diferent per cadun d’entre eles.
+	'openidlogininstructions' => "{{SITENAME}} supòrta lo format [http://openid.net/ OpenID] estandard per una sola signatura entre de sites Internet.
+OpenID vos permet de vos connectar sus mantun site diferent sens aver d'utilizar un senhal diferent per cadun d’entre eles.
 (Vejatz [http://en.wikipedia.org/wiki/OpenID Wikipedia's OpenID article] per mai d'entresenhas.)
 
 S'avètz ja un compte sus {{SITENAME}}, vos podètz [[Special:UserLogin|connectar]] amb vòstre nom d'utilizaire e son senhal coma de costuma. Per utilizar OpenID, a l’avenidor, podètz [[Special:OpenIDConvert|convertir vòstre compte en OpenID]] aprèp vos èsser connectat normalament.
 
-Existís maites [http://wiki.openid.net/Public_OpenID_providers provesidors d'OpenID publicas], e podètz ja obténer un compte OpenID activat sus un autre servici.",
+Existís mantun [http://wiki.openid.net/Public_OpenID_providers provesidor d'OpenID publicas], e podètz ja obténer un compte OpenID activat sus un autre servici.",
 	'openidupdateuserinfo' => 'Metre a jorn mas donadas personalas',
 	'openiddelete' => "Suprimir l'OpenID",
 	'openiddelete-text' => "En clicant sul boton « {{int:openiddelete-button}} », suprimtz l'OpenID $1 de vòstre compte.
@@ -3573,10 +3572,12 @@ $messages['roa-tara'] = array(
 	'openidchoosepassword' => 'password:',
 	'openidnousername' => 'Nisciune nome utende specificate.',
 	'openidbadusername' => "'U nome utende specificate non g'è valide.",
+	'openidloginlabel' => 'URL de OpenID',
 	'openiddelete-button' => 'Conferme',
 	'openid-prefstext' => 'Preferenze [http://openid.net/ OpenID]',
 	'openid-urls-action' => 'Azione',
 	'openid-urls-delete' => 'Scangille',
+	'openid-provider-label-openid' => "Mitte l'URL toje de OpenID",
 	'openid-provider-label-google' => "Tràse ausanne 'u cunde utende de Google",
 	'openid-provider-label-yahoo' => "Tràse ausanne 'u cunde utende de Yahoo",
 	'openid-provider-label-aol' => "Mitte 'u tue nome utende AOL",
@@ -4685,9 +4686,11 @@ kanol välön bali sökölas.',
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'openid-desc' => '使用一个[http://openid.net/ OpenID]来登录到这个wiki，以及使用wiki用户帐号登录到其他接受OpenID的网站',
 	'openidlogin' => '使用OpenID登陆',
 	'openidserver' => 'OpenID服务器',
 	'openidxrds' => 'Yadis文件',
@@ -4717,6 +4720,7 @@ $messages['zh-hans'] = array(
 	'openidfullname' => '全称',
 	'openidemail' => '电子邮件地址',
 	'openidlanguage' => '语言',
+	'openidtimezone' => '时区',
 	'openidnotavailable' => '您选择的昵称（$1）已经被其他用户使用。',
 	'openidnotprovided' => '您的OpenID服务器没有提供昵称（可能无法提供，或者您选择不提供）。',
 	'openidchooseinstructions' => '所有的用户都需要提供昵称；
@@ -4728,6 +4732,7 @@ $messages['zh-hans'] = array(
 	'openidchooseexisting' => '本维基已经存在的帐户：',
 	'openidchoosepassword' => '密码：',
 	'openidconvertinstructions' => '本表单可以将您的用户账号修改为OpenID地址。',
+	'openidconvertoraddmoreids' => '转换到OpenID或添加另一个OpenID URL',
 	'openidconvertsuccess' => '成功转换为OpenID',
 	'openidconvertsuccesstext' => '您已经成功的将您的OpenID转化为$1。',
 	'openidconvertyourstext' => '这已经是您的OpenID。',
@@ -4739,9 +4744,23 @@ $messages['zh-hans'] = array(
 	'openidbadusername' => '指定的用户名是错误的。',
 	'openidautosubmit' => '本页包含的表单在启用JavaScript的情况下可以自动提交。
 如果没有自动提交，请按 "Continue" （继续）按钮。',
+	'openidclientonlytext' => '你不能在其他站点上使用这个wiki的帐号作为OpenID。',
 	'openidloginlabel' => 'OpenID地址',
+	'openidupdateuserinfo' => '更新我的个人信息',
+	'openiddelete' => '删除OpenID',
+	'openiddelete-button' => '确认',
+	'openid-prefstext' => '[http://openid.net/ OpenID]参数设置',
 	'openid-pref-hide' => '如果使用OpenID登陆，您可以在您的用户页隐藏您的OpenID。',
+	'openid-urls-desc' => '和你的帐号关联的OpenID：',
+	'openid-urls-action' => '动作',
 	'openid-urls-delete' => '删除',
+	'openid-add-url' => '添加一个新的OpenID',
+	'openidsigninorcreateaccount' => '登录或创建新帐号',
+	'openid-provider-label-openid' => '输入你的OpenID URL',
+	'openid-provider-label-google' => '使用你的Google帐号登录',
+	'openid-provider-label-yahoo' => '使用你的Yahoo帐号登录',
+	'openid-provider-label-aol' => '输入你的AOL屏幕名称',
+	'openid-provider-label-other-username' => '输入你的$1用户名',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -717,10 +717,10 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'intersection-desc' => 'Выводит в маркированный список последние добавления в категорию или объединение нескольких категорий',
-	'intersection_toomanycats' => 'Ошибка: слишком много категорий!',
-	'intersection_toofewcats' => 'Ошибка: слишком мало категорий!',
-	'intersection_noresults' => 'Ошибка: нет результатов!',
-	'intersection_noincludecats' => 'Ошибка: вы должны включить хотя бы одну категорию или указать пространство имён!',
+	'intersection_toomanycats' => 'Ошибка. Слишком много категорий!',
+	'intersection_toofewcats' => 'Ошибка. Слишком мало категорий!',
+	'intersection_noresults' => 'Ошибка. Нет результатов!',
+	'intersection_noincludecats' => 'Ошибка. Вы должны включить хотя бы одну категорию или указать пространство имён!',
 );
 
 /** Yakut (Саха тыла)

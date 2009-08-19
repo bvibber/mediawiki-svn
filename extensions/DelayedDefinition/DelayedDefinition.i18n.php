@@ -234,6 +234,16 @@ $messages['oc'] = array(
 	'delaydef-error-redef' => 'Error : temptativa de redefinicion de $1.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'delaydef-desc' => 'Dodaje &lt;define&gt; i &lt;display&gt; pozwalające na zdefiniowanie kodu w innym miejscu niż wyświetlenie',
+	'delaydef-error-missing-def' => 'Błąd – nie znaleziono definicji potrzebnej dla &lt;display name="$1"&gt;.',
+	'delaydef-error-no-name' => 'Błąd – brak parametru name.',
+	'delaydef-error-redef' => 'Błąd – próba ponownej definicji $1.',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

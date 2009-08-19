@@ -555,13 +555,14 @@ Pozrite sa na {{PLURAL:$2|túto súvisiacu stránku|tieto súvisiace stránky}}:
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Skalman
  */
 $messages['sv'] = array(
 	'editsimilar-desc' => 'Uppmuntrar användare att redigera liknande sidor efter att ha sparat en sida',
 	'editsimilar-thanks' => 'Tack för ditt bidrag.
-Kolla dessa relaterade sidor: $1.',
+Kolla {{PLURAL:$2|denna relaterade sida|dessa relaterade sidor}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Tack för ditt bidrag.
-Dessa sidor kan också behöva din hjälp: $1.',
+{{PLURAL:$2|Denna sida|Dessa sidor}} kan också behöva din hjälp: $1.',
 	'editsimilar-thankyou' => 'Tack för ditt bidrag, $1!',
 	'editsimilar-link-disable' => 'ändra inställningar',
 	'tog-edit-similar' => 'Slå på förslag för liknande sidor',

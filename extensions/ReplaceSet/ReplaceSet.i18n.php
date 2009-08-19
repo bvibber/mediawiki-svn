@@ -31,6 +31,13 @@ $messages['en'] = array(
 	'replaceset-error-regexbadmodifier' => 'The regex modifier \'$1\' is not valid.'
 );
 
+/** Message documentation (Message documentation)
+ * @author Fryed-peach
+ */
+$messages['qqq'] = array(
+	'replaceset-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -53,9 +60,11 @@ $messages['dsb'] = array(
 );
 
 /** French (Français)
+ * @author PieRRoMaN
  * @author Verdy p
  */
 $messages['fr'] = array(
+	'replaceset-desc' => 'Ajoute une fonction parseur <nowiki>{{#replaceset}}</nowiki> utilisée pour remplacer des sections de texte avec des données formatées',
 	'replaceset-error-calllimit' => "La limite des appels à la fonction ''ReplaceSet'' a été atteinte.",
 	'replaceset-error-regexnoend' => 'Le délimiteur de fin « $2 » est manquant dans le motif de l’expression régulière « $1 »',
 	'replaceset-error-regexbadmodifier' => 'Le modificateur d’expression régulière  « $1 » est invalide.',
@@ -65,6 +74,7 @@ $messages['fr'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'replaceset-desc' => 'Fiegt e <nowiki>{{#replaceset}}</nowiki> Parserfunktion yy, wu mer Abschnitt vu Text cha ersetze dur formatierti Date',
 	'replaceset-error-calllimit' => 'D Gränz vu dr Aaruef vu ReplaceSet isch erreicht wore.',
 	'replaceset-error-regexnoend' => "Bim Regexbitmuschter „$1“ fählt s Änd-Begränzigszeiche '$2'",
 	'replaceset-error-regexbadmodifier' => "Dr Regex-Modifier '$1' isch nit giltig.",
@@ -94,6 +104,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'replaceset-desc' => 'テキストの一部分を整形されたデータで置き換えるためのパーサー関数 <nowiki>{{#replaceset}}</nowiki> を追加する',
 	'replaceset-error-calllimit' => 'ReplaceSet の呼び出し回数が上限に達しました。',
 	'replaceset-error-regexnoend' => '指定した正規表現 "$1" には、終わりを区切る記号 \'$2\' が不足しています',
 	'replaceset-error-regexbadmodifier' => "'$1' は正規表現の修飾子として無効です。",
@@ -113,6 +124,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'replaceset-desc' => "Setzt eng <nowiki>{{#replaceset}}</nowiki> Parser-Fonctioun derbäi déi benotzt gëtt fir Text-Abschnitter duerch formatéiert Daten z'ersetzen",
 	'replaceset-error-calllimit' => "D'Limit fir d'Opruffe vu ''ReplaceSet'' gouf erreecht.",
 );
 
@@ -130,6 +142,7 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'replaceset-desc' => 'Apond una foncion parser <nowiki>{{#replaceset}}</nowiki> utilizada per remplaçar de seccions de tèxte amb de donadas formatadas',
 	'replaceset-error-calllimit' => "Lo limit dels apèls a la foncion ''ReplaceSet'' es estat atench.",
 	'replaceset-error-regexnoend' => 'Lo delimitador de fin « $2 » es mancant dins lo motiu de l’expression regulara « $1 »',
 	'replaceset-error-regexbadmodifier' => 'Lo modificador d’expression regulara  « $1 » es invalid.',
@@ -159,6 +172,7 @@ $messages['pt-br'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'replaceset-desc' => 'Добавляет функцию парсера <nowiki>{{#replaceset}}</nowiki>, для замены участков текста с форматированными данными',
 	'replaceset-error-calllimit' => 'Достигнут предел вызовов ReplaceSet.',
 	'replaceset-error-regexnoend' => 'В шаблоне регулярного выражения «$1» отсутствует завершающий разделитель «$2»',
 	'replaceset-error-regexbadmodifier' => 'Модификатор регулярного выражения «$1» недействителен.',
@@ -168,6 +182,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'replaceset-desc' => 'Pridáva funkciu syntaktického analyzátora <nowiki>{{#replaceset}}</nowiki> na náhradu sekcií textu formátovanými údajmi',
 	'replaceset-error-calllimit' => 'Bol dosiahnutý limit volaní ReplaceSet.',
 	'replaceset-error-regexnoend' => 'Regulárnemu výrazu „$1“ chýba ukončovací oddeľovač „$2“',
 	'replaceset-error-regexbadmodifier' => 'Modifikátor regulárneho výrazu „$1“ nie je platný.',

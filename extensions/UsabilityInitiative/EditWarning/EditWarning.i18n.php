@@ -181,7 +181,8 @@ Vi povas malŝalti ĉi tiun averton en la sekcio "{{int:prefs-editing}}" de viaj
 $messages['es'] = array(
 	'editwarning' => 'Alerta de edición',
 	'editwarning-desc' => 'Mostrar una advertencia cuando un usuario intente dejar el formulario de edición sin grabar',
-	'editwarning-warning' => 'Dejar esta página le causará pérdida de los cambios que ha hecho.',
+	'editwarning-warning' => 'Dejar esta página te causará pérdida de los cambios que has hecho.
+Puedes deshabilitar esta advertencia en la sección "{{int:prefs-editing}}" de tus preferencias.',
 );
 
 /** Estonian (Eesti)
@@ -197,11 +198,14 @@ Selle hoiatuse saad keelata eelistuste alaosas "{{int:prefs-editing}}".',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Theklan
  */
 $messages['eu'] = array(
 	'editwarning' => 'Oharra aldatu',
 	'editwarning-desc' => 'Oharra erakusten du lankide batek editatzeko orritik irteten denean gorde gabe',
-	'editwarning-warning' => 'Orrialde honetatik irteten bazara, egindako aldaketak galdu egingo dira.',
+	'editwarning-warning' => 'Orrialde honetatik irteten bazara, egindako aldaketak galdu egingo dira.
+Mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:prefs-editing}}" atalean.',
+	'editwarning-preference' => 'Abisa nazazu gorde gabeko aldaketak eginez orrialde bat uzten dudanean',
 );
 
 /** Finnish (Suomi)
@@ -254,7 +258,8 @@ Du chasch s Anzeige vu däre Warnig im „{{int:prefs-editing}}“-Beryych vu Dy
 $messages['he'] = array(
 	'editwarning' => 'אזהרת עריכה',
 	'editwarning-desc' => 'הצגת אזהרה כאשר משתמש מנסה לעזוב את טופס העריכה בלי לשמור',
-	'editwarning-warning' => 'עזיבת דף זה תגרום לאובדן כל השינויים שבוצעו.',
+	'editwarning-warning' => 'עזיבת דף זה תגרום לאובדן כל השינויים שבוצעו.
+ניתן לבטל אזהרה זו מהאגף "{{int:prefs-editing}}" שבהעדפות שלכם.',
 	'editwarning-preference' => 'הצגת אזהרה במידה שדף העריכה עם השינויים שטרם נשמרו עומד להנטש',
 );
 
@@ -584,11 +589,14 @@ Te poli disabilitar sto aviso in te la sezion "{{int:prefs-editing}} de le to pr
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'editwarning' => 'Cảnh báo sửa đổi',
 	'editwarning-desc' => 'Hiện cảnh báo khi người dùng rời khỏi trang sửa đổi mà chưa lưu trang',
-	'editwarning-warning' => 'Tất cả các sửa đổi của bạn sẽ bị hủy nếu rời khỏi trang này.',
+	'editwarning-warning' => 'Rời khỏi trang này sẽ khiến bạn mất các sửa đổi đã thực hiện.
+Bạn có thể tắt cảnh báo này tại mục “{{int:prefs-editing}}” trong tùy chọn cá nhân.',
+	'editwarning-preference' => 'Cảnh báo khi tôi thoát trang sửa đổi mà chưa lưu trang',
 );
 
 /** Yue (粵語)

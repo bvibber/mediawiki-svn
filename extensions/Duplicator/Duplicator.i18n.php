@@ -381,6 +381,7 @@ Estus utila por disigo de artikoloj, ktp.',
 	'duplicator-dest-invalid' => 'Bonvolu provizi validan destinan titolon.',
 	'duplicator-dest-exists' => '[[$1]] jam ekzistas. Bonvolu provizi destinan titolon kiu ne ekzistas.',
 	'duplicator-toomanyrevisions' => '[[$1]] havas tro multajn ($2) reviziojn kaj ne povas esti kopiata. La aktuala limo estas $3.',
+	'right-duplicate' => 'Duplikataj paĝoj',
 );
 
 /** Spanish (Español)

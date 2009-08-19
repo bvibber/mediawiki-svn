@@ -138,6 +138,13 @@ $messages['el'] = array(
 	'ajaxlogin-create' => 'Δημιουργία λογαριασμού',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'ajaxlogin-create' => 'Krei konton',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Juan David Ruiz
@@ -161,8 +168,12 @@ $messages['et'] = array(
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'ajaxlogin-desc' => 'Erabiltzaileak sartu eta pasahitza gogoratzea baimentzen duen kutxa dinamikoa',
+	'ajaxLogin1' => 'Sartzen bukatzeko psahitz berria idatzi behar duzu.
+Honek edizio orrialde honetatik kanpo eramango zaitu eta orain arte idatzitakoa galdu dezakezu.',
 	'ajaxLogin2' => 'Ziur al zaude?
 Orrialde honetan egindako aldaketak gal ditzakezu orrialde honetatik orain alde eginez gero.',
 	'ajaxlogin-create' => 'Kontua sortu',
@@ -193,6 +204,18 @@ Cela vous fera quitter cette page et vous pourriez perdre vos modifications en c
 	'ajaxLogin2' => 'Êtes-vous certain ?
 Vous pourriez perdre vos modifications en cours sur cette page si vous la quittez maintenant.',
 	'ajaxlogin-create' => 'Créer un compte',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'ajaxlogin-desc' => 'Formulèro dinamico que pèrmèt ux utilisators de sè branchiér et pués retegnir lor mot de pâssa.',
+	'ajaxLogin1' => 'Por complètar voutron branchement, vos dête buchiér un novél mot de pâssa.
+Cen vos farat quitar ceta pâge et pués vos porriâd pèrdre voutros changements en cors.',
+	'ajaxLogin2' => 'Éte-vos de sûr ?
+Vos porriâd pèrdre voutros changements en cors sur ceta pâge se vos la quitâd ora.',
+	'ajaxlogin-create' => 'Fâre un compto',
 );
 
 /** Irish (Gaeilge)

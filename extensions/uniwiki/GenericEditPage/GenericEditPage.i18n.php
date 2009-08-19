@@ -1413,6 +1413,7 @@ $messages['vo'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'gep-desc' => '使编辑页面对用户更加友好',
@@ -1425,6 +1426,7 @@ $messages['zh-hans'] = array(
 	'gep-addcategorybutton' => '增加',
 	'gep-suggestcategory' => '推荐一个分类',
 	'gep-suggestcategorybutton' => '提交',
+	'gep-sections' => '节',
 	'gep-addsection' => '增加一个段落',
 	'gep-addsectionbutton' => '增加',
 	'gep-classicmode' => '经典模式',

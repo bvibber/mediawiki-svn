@@ -370,3 +370,10 @@ $messages['vi'] = array(
 	'tab0-desc' => 'Thêm tab "0", liên kết đến trang sửa đổi tại đề mục đầu tiên của trang',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'tab0-desc' => '添加“0”选项卡，链接到页面的第一节的编辑页面',
+);
+

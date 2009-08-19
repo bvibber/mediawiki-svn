@@ -325,7 +325,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'eval' => 'PHPコードとして評価',
-	'eval-desc' => 'PHPの<code>eval（）</code>関数を呼び出す[[Special:Eval|インタフェース]]を提供する',
+	'eval-desc' => 'PHPの<code>eval()</code>関数を呼び出す[[Special:Eval|インタフェース]]を提供する',
 	'eval_submit' => 'コード評価',
 	'eval_escape' => 'エスケープ出力',
 	'eval_out' => '出力結果',

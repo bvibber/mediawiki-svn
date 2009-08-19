@@ -457,6 +457,14 @@ $messages['pl'] = array(
 	'newuseredit-summary' => 'Dodanie [[{{int:newusermessage-template}}|wiadomości powitalnej]] do strony dyskusji nowego użytkownika',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'newusermessage-desc' => "A gionta un messagi a le pàgine ëd discussion dj'utent pen-e creà",
+	'newuseredit-summary' => "I gionto [[{{int:newusermessage-template}}|messagi ëd bin ëvnù]] a la pàgina ëd discussion d'un neuv utent",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

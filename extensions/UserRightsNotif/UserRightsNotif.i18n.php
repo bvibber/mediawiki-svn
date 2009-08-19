@@ -1103,3 +1103,22 @@ $messages['vo'] = array(
 	'userrightsnotifysubject' => 'Votükam grupalimanama in $1',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Jimmy xu wrk
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'userrightsnotifysubject' => '$1上的用户群组资格改变',
+	'userrightsnotifybody' => '$1您好，
+
+这个消息通知您您在$2的用户权限已在$4被$3更改。
+
+添加了：$5
+移除了：$6
+
+此致，
+
+$2',
+	'userrightsnotif-desc' => '在权限改变时给用户发送电子邮件通知',
+);
+

@@ -75,6 +75,14 @@ $messages['el'] = array(
 	'tspoll-id-error' => 'Δεν έχει δωθεί κανένα ID!',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'tspoll-fetch-error' => 'Eraro atingante la URL-on!',
+	'tspoll-id-error' => 'Neniu idnetigo estas donata!',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -321,5 +329,12 @@ $messages['vi'] = array(
 	'tspoll-desc' => 'Thêm [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] làm thẻ HTML',
 	'tspoll-fetch-error' => 'Có lỗi khi truy xuất URL!',
 	'tspoll-id-error' => 'Chưa cung cấp ID!',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'tspoll-id-error' => '没有提供ID！',
 );
 

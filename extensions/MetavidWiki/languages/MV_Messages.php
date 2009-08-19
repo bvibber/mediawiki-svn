@@ -407,6 +407,7 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'mv_upload_file' => 'Laai lêer',
 	'mv_tool_search' => 'Soek',
 	'mv_tool_export' => 'Eksporteer',
 	'mv-category-media-count' => 'Daar is {{PLURAL:$1|een lêer|$1 lêers}} in die kategorie.',
@@ -698,6 +699,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_mang_layers' => 'التحكم بالطبقات',
 	'mv_mang_layers_title' => 'التحكم بمجموعة عرض الطبقة للستريم الحالي',
 	'mv_protect_source_material' => 'المادة المصدر الأصلية محمية من التعديلات',
+	'right-mv_edit_stream' => 'عدل ملفات الستريم',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -1884,6 +1886,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'metavid' => 'Metavid paĝo',
+	'specialpages-group-mv_group' => 'Specialajn paĝojn de MetaVidWiki',
 	'mv_stream_meta' => 'Datumstria paĝo',
 	'mv_add_stream_submit' => 'Aldoni datumstrion',
 	'mv_edit_stream_files' => 'Redakti datumstriaj dosieroj',
@@ -1907,6 +1910,7 @@ $messages['eo'] = array(
 	'mv_tool_navigate' => 'Navigado',
 	'mv_tool_export' => 'Eksportu',
 	'mv_tool_embed' => 'Enigu',
+	'mv_tool_mang_layers' => 'Konfiguri lamenojn',
 	'mv_category_matches' => 'Kategoriaj pafoj',
 	'mv_click_to_edit' => 'klaku redakti',
 	'mv_data_page_title' => '$1 por $2 de $3',
@@ -1930,6 +1934,7 @@ $messages['eo'] = array(
 	'mv_add_filter' => 'Aldonu Filtrilon',
 	'mv_search_match' => 'Serĉi tekston',
 	'mv_search_spoken_by' => 'Parolata de',
+	'mv_search_categories' => 'Kategorioj',
 	'mv_search_category' => 'Kategorio',
 	'mv_search_and' => 'kaj',
 	'mv_search_or' => 'aŭ',
@@ -1940,6 +1945,14 @@ $messages['eo'] = array(
 	'mv_category' => 'kategorio',
 	'mv_remove_filter' => 'forigu filtrilon',
 	'mv_view_wiki_page' => 'Rigardu vikian paĝon',
+	'mv_days' => '$1 {{PLURAL:$1|tago|tagoj}}',
+	'mv_hours' => '$1 {{PLURAL:$1|horo|horoj}}',
+	'mv_hours_singular' => '$1 horo',
+	'mv_minutes' => '$1 {{PLURAL:$1|minuto|minutoj}}',
+	'mv_minutes_singular' => '$1 minuto',
+	'mv_seconds' => '$1 {{PLURAL:$1|sekundo|sekundoj}}',
+	'mv_seconds_singular' => '$1 sekundo',
+	'mv_edit_time' => 'Redakti Tempon',
 	'mv_stream_tool_heading' => 'Datumstriaj iloj',
 );
 
@@ -6334,11 +6347,20 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Jwitos
+ * @author Leinad
  * @author Maikking
  * @author McMonster
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Edytor Metadanych Wideo i Wyszukiwarka Multimediów]',
+	'metavid' => 'Strona MetaVid',
+	'mv_missing_stream' => 'Brakujący strumień: $1',
+	'specialpages-group-mv_group' => 'Strony specjalne MetaVidWiki',
+	'mv_warning_wiki' => '<i>Uwaga: zapisy nagrań wideo MetaVid [[Help:FAQ#How_accurate_is_the_information.3F|mogą zawierać niedoskonałości]], pomóż w budowie [[Help:Participation#Improving_Archive_Accuracy|ulepszonego archiwum]]</i>',
+	'mv_ogg_low_quality' => 'Niska jakość (internetowa) – Ogg Theora 300 kbit/s',
+	'mv_ogg_high_quality' => 'Wysoka jakość – Ogg Theora 900 kbit/s',
+	'mv_flash_low_quality' => 'Niska jakość (internetowa) – wideo we Flashu',
 	'mv_add_stream_submit' => 'Dodaj strumień',
 	'mv_save_changes' => 'Zapisz zmiany',
 	'mv_removed_file_stream' => 'Usunięto plik strumienia: $1',

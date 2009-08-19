@@ -151,6 +151,16 @@ $messages['dsb'] = array(
 	'interwikilist-prefix' => 'Prefiks interwiki:',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'interwikilist' => 'Λίστα Interwiki',
+	'interwikilist-desc' => 'Προσθέτει μια [[Special:Interwikilist|ειδική σελίδα]] για την εμφάνιση των διαθέσιμων συνδέσμων interwiki',
+	'interwikilist-target' => 'Στόχος URL',
+	'interwikilist-filter' => 'Λίστα φίλτρου',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

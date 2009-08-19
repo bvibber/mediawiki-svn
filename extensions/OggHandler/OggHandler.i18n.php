@@ -1116,6 +1116,7 @@ $messages['gv'] = array(
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -1134,8 +1135,8 @@ $messages['he'] = array(
 	'ogg-play-video' => 'נגן וידאו',
 	'ogg-play-sound' => 'נגן שמע',
 	'ogg-no-player' => 'מצטערים, נראה שהמערכת שלכם אינה כוללת תוכנת נגן נתמכת. אנא <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">הורידו נגן</a>.',
-	'ogg-no-player-js' => 'אנו מתנצלים אך יתכן שהתמיכה ב־JavaScript אינה פעילה או שאין לכם נגן נתמך.<br />
-תוכלו <a href="$1">להוריד את הסרטון</a><br />או<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">להוריד נגן</a> כדי לנגן את הסרטון בדפדפן שלכם.',
+	'ogg-no-player-js' => 'אנו מתנצלים, אך התמיכה ב־JavaScript אינה פעילה במערכת שלכם או שאין לכם נגן נתמך.<br />
+תוכלו <a href="$1">להוריד את הסרטון</a> או <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">להוריד נגן</a> כדי לנגן את הסרטון בדפדפן שלכם.',
 	'ogg-no-xiphqt' => 'נראה שלא התקנתם את רכיב XiphQT של QuickTime, אך QuickTime אינו יכול לנגן קובצי Ogg בלי רכיב זה. אנא <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">הורידו את XiphQT</a> או בחרו נגן אחר.',
 	'ogg-player-videoElement' => 'תמיכה טבעית של הדפדפן',
 	'ogg-player-oggPlugin' => 'תוסף לדפדפן',

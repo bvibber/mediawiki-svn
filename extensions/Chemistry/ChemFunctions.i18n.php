@@ -810,7 +810,7 @@ $messages['oc'] = array(
 	'chemicalsources' => 'Fonts per la quimia',
 	'chemicalsource-desc' => 'Apond la balisa <nowiki><chemform></nowiki>, per las formulas quimicas',
 	'chemFunctions_ListPage' => 'Fonts per la quimia',
-	'chemFunctions_DataList' => 'Seguís una lista de ligams cap a de sits que pòdon aportar d\'entresenhas a prepaus de las substàncias quimicas que recercatz. * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Compausat $MIXCASNameFormula], NIST * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Universitat d\'Oxford',
+	'chemFunctions_DataList' => 'Seguís una lista de ligams cap a de sites que pòdon aportar d\'entresenhas a prepaus de las substàncias quimicas que recercatz. * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Compausat $MIXCASNameFormula], NIST * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Universitat d\'Oxford',
 	'chemFunctions_CAS' => 'Numèro CAS',
 	'chemFunctions_ATCCode' => 'Còde ATC',
 	'chemFunctions_ECNumber' => 'Nomenclatura EC',
@@ -858,14 +858,18 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'chemicalsources' => 'Sorgiss Chìmiche',
+	'chemicalsource-desc' => 'A gionta ël tag <nowiki><chemform></nowiki>, për fórmule chìmiche',
 	'chemFunctions_ListPage' => 'Sorgiss Chìmiche',
 	'chemFunctions_DataList' => 'Di seguito viene presentato un elenco di collegamenti a siti presso i quali si possono referire informazioni sui composti chimici cercati.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del composto $MIXCASNameFormula presso il NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">Scheda di sicurezza MSDS presso la Oxford University (UK) (ricerca non attiva)</a><br />',
 	'chemFunctions_CAS' => 'Nùmer dël CAS',
+	'chemFunctions_ATCCode' => 'Còdes ATC',
+	'chemFunctions_ECNumber' => 'Nùmer EC',
 	'chemFunctions_Formula' => 'Fòrmula',
 	'chemFunctions_Name' => 'Nòm IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: eror ant ij dat!',

@@ -409,6 +409,13 @@ $messages['vi'] = array(
 	'stringfunctions-desc' => 'Bổ sung các hàm chuỗi trong bộ phân tích',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'stringfunctions-desc' => '使用字符串函数来增强解析器',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Tomchiukc
  */

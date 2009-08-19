@@ -468,9 +468,11 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'spl3_debug' => '未知的选项$1的数值',
+	'spl3_nosubpages' => '$1没有子页面来显示',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

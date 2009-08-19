@@ -409,6 +409,14 @@ $messages['pl'] = array(
 	'categoryonupload-label' => 'Kategoria',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categoryonupload-desc' => "A ciama a l'utent ëd selessioné na categorìa quand a caria un file",
+	'categoryonupload-label' => 'Categorìa:',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

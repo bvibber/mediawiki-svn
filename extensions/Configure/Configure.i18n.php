@@ -263,6 +263,9 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 * $2 is an internal or external link the user who made the version with the user name as the link anchor, or empty, or a text identifying the user without a link
 * $3 is a link to the diff page of this version and the version preceeding it, or empty
 * $4 is the comment, as provided by the user, which may be empty',
+	'configure-old-summary-datetime' => '* $1 date/time
+* $2 date
+* $3 time',
 	'configure-section-pages' => '{{Identical|Pages}}',
 	'configure-section-email' => '{{Identical|E-mail}}',
 	'configure-section-timezone' => '{{Identical|Time zone}}',
@@ -814,13 +817,23 @@ $messages['as'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Cesco
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'configure' => 'Канфігурацыя {{GRAMMAR:родны|{{SITENAME}}}}',
+	'configure-desc' => 'Дазваляе удзельнікам з адпаведнымі правамі [[Special:Configure|канфігураваць]] {{GRAMMAR:родны|{{SITENAME}}}} праз ўэб-інтэрфэйс',
 	'configure-desc-group' => 'Група',
+	'configure-desc-key' => 'Ключ',
 	'configure-desc-ns' => 'Прасторы назваў',
 	'configure-desc-val' => 'Значэньне',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Пашырэньні',
+	'configure-viewconfig-default-diff' => 'Зьмены ў параўнаньні з устаноўкамі па змоўчваньні',
+	'configure-ext-ext-dependencies' => "'''Папярэджаньне:''' гэтак пашырэньне патрабуе актывацыі {{PLURAL:$2|наступнага пашырэньня|наступных пашырэньняў}}: $1.",
+	'configure-ext-ext-dependency-err' => "'''Памылка:''' пашырэньне $1 патрабуе актывацыі пашырэньня $2.",
+	'configure-ext-doc' => 'Глядзіце дакумэнтацыю',
+	'configure-ext-schemachange' => "'''Папярэджаньне:''' для карэктнай працы гэтага пашырэньня патрабуецца абнаўленьня базы зьвестак!",
+	'configure-ext-settings' => 'Устаноўкі',
 	'configure-js-remove' => 'Выдаліць',
 	'configure-js-biglist-show' => '[паказаць падрабязнасьці]',
 	'configure-js-biglist-hide' => '[схаваць падрабязнасьці]',
@@ -965,6 +978,15 @@ $messages['bg'] = array(
 	'configure-condition-operator-not' => 'Не',
 	'configure-condition-name-4' => 'В групи',
 	'configure-condition-name-5' => 'Потребителски IP адрес',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'configure-js-biglist-show' => '[diskouez dre ar munud]',
+	'configure-js-biglist-hide' => '[kuzhat ar munudoù]',
+	'configure-condition-operator-and' => 'Ha(g)',
 );
 
 /** Bosnian (Bosanski)
@@ -1888,19 +1910,39 @@ $messages['el'] = array(
 	'configure-desc-key' => 'Κλειδί',
 	'configure-desc-ns' => 'Περιοχή ονομάτων',
 	'configure-desc-val' => 'Τιμή',
+	'configure-edit-ext' => 'Επεκτάσεις',
 	'configure-ext-settings' => 'Ρυθμίσεις',
+	'configure-ext-use' => 'Χρήση',
 	'configure-js-prompt-group' => 'Εισάγετε το όνομα της νέας ομάδας:',
+	'configure-js-remove' => 'Διαγραφή',
 	'configure-js-biglist-show' => '[προβολή λεπτομερειών]',
+	'configure-js-search-prompt' => 'Αίτημα:',
 	'configure-old-changes' => 'αλλαγές',
+	'configure-section-pages' => 'Σελίδες',
+	'configure-section-paths' => 'Διαδρομές',
+	'configure-section-db' => 'Βάση δεδομένων',
 	'configure-section-timezone' => 'Ζώνη ώρας',
+	'configure-section-debug' => 'Αποσφαλμάτωση',
 	'configure-section-namespaces' => 'Περιοχές ονομάτων',
 	'configure-section-category' => 'Κατηγορίες',
+	'configure-section-cache' => 'Λανθάνουσα μνήμη',
+	'configure-section-groups' => 'Ομάδες',
+	'configure-section-mime' => 'Τύποι MIME',
+	'configure-section-images' => 'Αρχεία',
+	'configure-section-antivirus' => 'Αντι-ιικό',
+	'configure-section-parser' => 'Λεξιαναλυτής',
+	'configure-section-feed' => 'Ροή',
 	'configure-section-search' => 'Αναζήτηση',
+	'configure-section-copyright' => 'Πνευματικά δικαιώματα',
+	'configure-section-output' => 'Έξοδος',
+	'configure-select-wiki-view-all' => 'Όλα τα wiki',
 	'configure-select-wiki-submit' => 'Επιλογή',
+	'configure-view' => 'Προβολή',
 	'configure-throttle-action-edit' => 'Επεξεργασία',
 	'configure-throttle-group' => 'Τύπος',
 	'configure-throttle-limit' => 'Όριο',
 	'configure-condition-name' => 'Προϋπόθεση',
+	'configure-condition-requirement' => 'Απαίτηση',
 );
 
 /** Esperanto (Esperanto)
@@ -1913,7 +1955,8 @@ $messages['eo'] = array(
 	'configure-desc-group' => 'Grupo',
 	'configure-desc-key' => 'Ŝlosilo',
 	'configure-desc-ns' => 'Nomspaco',
-	'configure-desc-val' => 'Valuto',
+	'configure-desc-val' => 'Valoro',
+	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Etendiloj',
 	'configure-viewconfig-default-diff' => 'Ŝanĝoj de defaŭltaj preferoj',
 	'configure-ext-doc' => 'Vidu interretan dokumentaron',
@@ -1921,6 +1964,7 @@ $messages['eo'] = array(
 	'configure-ext-use-extension' => 'Uzi ĉi tiun etendilon',
 	'configure-ext-use' => 'Uzo',
 	'configure-form-reason' => 'Kialo por ŝanĝo:',
+	'configure-arrayinput-oneperline' => "''(po unu por linio)''",
 	'configure-btn-save' => 'Konservi preferojn',
 	'configure-edit-old' => 'Averto: vi redaktas <strong>malnovan</strong> version de la konfiguro (kiel ĉe $1).',
 	'configure-error' => 'La konfiguro ne eblis esti konservita.',
@@ -2012,7 +2056,9 @@ $messages['eo'] = array(
 	'configure-condition-requirement' => 'Postulspecifo',
 	'configure-condition-name-1' => 'Minimuma nombro de redaktoj',
 	'configure-condition-name-2' => 'Minimuma aĝo',
+	'configure-condition-name-3' => 'Retpoŝto konfirmita',
 	'configure-condition-name-4' => 'En grupoj',
+	'configure-condition-name-5' => 'IP-adreso de uzanto',
 	'configure-condition-description-1' => 'Minimuma nombro de redaktoj estas $1',
 	'configure-condition-description-2' => 'Minimuma aĝo de konto estas $1 {{PLURAL:$1|sekundo|sekundoj}}',
 	'configure-condition-description-3' => 'Retpoŝto konfirmita',
@@ -4331,7 +4377,7 @@ $messages['ja'] = array(
 	'configure-no-diff' => '選択した版の間には差異がありません。',
 	'configure-no-directory' => '設定の格納に使われているディレクトリ <tt>$1</tt> は存在しません。この拡張機能を使うにはディレクトリを作成するか変更してください。',
 	'configure-no-old' => '構成設定の利用可能な古い版はありません。',
-	'configure-no-setup' => 'この拡張機能を使うには、あなたは LocalSettings.php ファイルで <code>efConfigureSetup（）</code> を明示的に呼び出す必要があります。',
+	'configure-no-setup' => 'この拡張機能を使うには、あなたは LocalSettings.php ファイルで <code>efConfigureSetup()</code> を明示的に呼び出す必要があります。',
 	'configure-no-transwiki' => 'あなたは他ウィキの設定を変更することは許可されてません',
 	'configure-old' => '古い版',
 	'configure-old-versions' => '構成設定の古い版を一覧:',
@@ -6333,10 +6379,10 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-section-html' => 'HTML',
 	'configure-section-debug' => 'Debogatge',
 	'configure-section-profiling' => 'Perfilatge',
-	'configure-section-site' => 'Personalizacion del sit',
+	'configure-section-site' => 'Personalizacion del site',
 	'configure-section-css-js' => 'CSS e JavaScript',
 	'configure-section-namespaces' => 'Espacis de noms',
-	'configure-section-stats' => 'Estatisticas del sit',
+	'configure-section-stats' => 'Estatisticas del site',
 	'configure-section-skin' => 'Abilhatge',
 	'configure-section-category' => 'Categorias',
 	'configure-section-cache' => 'Amagatal',
@@ -8057,6 +8103,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'configure-section-recentchanges' => 'Mabadiliko ya karibuni',
 	'configure-throttle-action-move' => 'Sogeza',
 );
 

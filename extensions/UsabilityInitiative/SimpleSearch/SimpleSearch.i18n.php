@@ -535,6 +535,13 @@ $messages['sv'] = array(
 	'simplesearch-search' => 'Sök',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'simplesearch-search' => 'Kutafuta',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  * @author Veeven

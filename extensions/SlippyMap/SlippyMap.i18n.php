@@ -285,6 +285,17 @@ $messages['el'] = array(
 	'slippymap_clicktoactivate' => 'Κάντε "κλικ" για να ενεργοποιήσετε το χάρτη',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'slippymap_error' => '$1 eraro: $2',
+	'slippymap_errors' => '$1 eraroj:',
+	'slippymap_code' => 'Vikikodo por ĉi tiu mapvido:',
+	'slippymap_button_code' => 'Akiri vikikodon',
+	'slippymap_resetview' => 'Restarigi vidon',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -623,6 +634,7 @@ $messages['lb'] = array(
 	'slippymap_errors' => '$1-Feeler:',
 	'slippymap_error_missing_attribute_lat' => 'Attribut <tt>lat</tt> ((fir déi geographesch Breet)) feelt.',
 	'slippymap_error_missing_attribute_lon' => 'Attribut <tt>lon</tt> (fir déi geographesch Längt) feelt.',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'De Wäert <tt>$1</tt> ass net valabel fir de <tt>lag t</tt>-Attribut (geografesch Längt), de Wäert muss eng valabel Zuel sinn.',
 	'slippymap_error_unknown_attribute' => 'Den Attribut <tt>$1</tt> ass onbekannt.',
 	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
 	'slippymap_button_code' => 'Wikicode weisen',

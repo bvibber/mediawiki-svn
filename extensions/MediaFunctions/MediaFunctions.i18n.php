@@ -141,8 +141,10 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'mediafunctions-desc' => 'Media fitxategien inguruko informazioa jasotzeko parser funtzioa',
 	'mediafunctions-invalid-title' => '"$1" ez da izenburu zuzena',
 	'mediafunctions-not-exist' => '"$1" ez da existitzen',
 );

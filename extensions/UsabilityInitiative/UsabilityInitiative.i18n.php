@@ -299,6 +299,14 @@ $messages['pl'] = array(
 	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'usabilityinitiative' => 'Inissiativa ëd dovrabilità',
+	'usabilityinitiative-desc' => 'Caraterìstiche dësvilupà da la Wikipedia Usability Initiative për mijoré la dovrabilità ëd MediaWiki',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Waldir

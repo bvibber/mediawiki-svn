@@ -505,15 +505,15 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'bookinfo-header' => 'Enformacions sur les ôvres',
-	'bookinfo-desc' => 'Ètend [[Special:Booksources]] avouéc des enformacions dês un sèrviço Vouèbe.',
+	'bookinfo-desc' => 'Complète la [[Special:Booksources|pâge spèciâla de les sôrses d’ôvres de refèrence]] avouéc des enformacions dês un sèrviço Vouèbe.',
 	'bookinfo-result-title' => 'Titro :',
 	'bookinfo-result-author' => 'Ôtor :',
 	'bookinfo-result-publisher' => 'Èditor :',
 	'bookinfo-result-year' => 'An :',
 	'bookinfo-error-invalidisbn' => 'ISBN envalido.',
-	'bookinfo-error-nosuchitem' => 'Cél èlèment ègziste pas ou il at pas possu étre trovâ.',
+	'bookinfo-error-nosuchitem' => 'Cél èlèment ègziste pas ou ben il at pas possu étre trovâ.',
 	'bookinfo-error-nodriver' => 'Empossiblo d’inicialisar un motor d’enformacion sur les ôvres.',
-	'bookinfo-error-noresponse' => 'Gins de rèponsa ou de dèpassement du dèlê.',
+	'bookinfo-error-noresponse' => 'Gins de rèponsa ou ben de dèpassement du dèlê.',
 	'bookinfo-purchase' => 'Achetar cél lévro dessus $1',
 	'bookinfo-provider' => 'Fornissor de les balyês : $1',
 );

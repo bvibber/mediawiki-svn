@@ -131,6 +131,13 @@ Sy wopytał: '''$1'''",
 	'rt-nomatches' => 'Wótpowědne nastupnosće RT njejsu se namakali',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'rt-inactive' => 'Η επέκταση RT δεν είναι ενεργή',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -293,18 +300,18 @@ Anda mencoba: '''$1'''",
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'rt-desc' => '要求追跡 (RT) システムの装飾的なインタフェース',
+	'rt-desc' => '要求追跡 （RT） システムの装飾的なインタフェース',
 	'rt-inactive' => 'RT 拡張機能は無効になっています',
 	'rt-badquery' => 'RT 拡張機能は、RT データベースとの通信時にエラーに遭遇しました',
-	'rt-badlimit' => "LIMIT (l) の引数が不正: 数値でなくてはなりません。
+	'rt-badlimit' => "LIMIT （l） の引数が不正: 数値でなくてはなりません。
 与えられた値: '''$1'''",
-	'rt-badorderby' => "ORDER BY (ob) の引数が不正: 標準のフィールドでなくてはなりません（ドキュメントを参照）。
+	'rt-badorderby' => "ORDER BY （ob） の引数が不正: 標準のフィールドでなくてはなりません（ドキュメントを参照）。
 与えられた値: '''$1'''",
-	'rt-badstatus' => "status (s) の引数が不正: 標準のフィールドでなくてはなりません（ドキュメントを参照）。
+	'rt-badstatus' => "status （s） の引数が不正: 標準のフィールドでなくてはなりません（ドキュメントを参照）。
 与えられた値: '''$1'''",
-	'rt-badqueue' => "queue (q) の引数が不正: 単純な語でなくてはなりません。
+	'rt-badqueue' => "queue （q） の引数が不正: 単純な語でなくてはなりません。
 与えられた値: '''$1'''",
-	'rt-badowner' => "owner (o) の引数が不正: 有効な利用者名でなくてはなりません。
+	'rt-badowner' => "owner （o） の引数が不正: 有効な利用者名でなくてはなりません。
 与えられた値: '''$1'''",
 	'rt-nomatches' => '一致する RT チケットは見つかりませんでした',
 );

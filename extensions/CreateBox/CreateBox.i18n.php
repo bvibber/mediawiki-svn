@@ -529,6 +529,19 @@ Nie możesz utworzyć tej strony, lecz możesz ją [{{fullurl:{{FULLPAGENAME}}|a
 <createbox>break=no</createbox>",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'createbox-desc' => 'Inputbox specialisà për creassion ëd pàgine',
+	'createbox-create' => 'Crea',
+	'createbox-exists' => "Am dëspias, \"'''{{FULLPAGENAME}}'''\" a esist già.
+
+It peule pa creé sta pàgina-sì, ma it peule [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifichela], [{{fullurl:{{FULLPAGENAME}}}} lesla], o serne ëd creé na pàgina diferenta an dovrand ël box sota.
+
+<createbox>break=no</createbox>",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

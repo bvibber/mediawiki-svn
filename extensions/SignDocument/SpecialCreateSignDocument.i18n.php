@@ -223,6 +223,23 @@ $messages['bg'] = array(
 	'createsigndoc-error-pagenoexist' => 'Грешка: Страницата [[$1]] не съществува.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'createsigndoc-pagename' => 'Pajenn :',
+	'createsigndoc-allowedgroup' => 'Strollad aotreet :',
+	'createsigndoc-email' => "Chomlec'h postel :",
+	'createsigndoc-address' => "Chomlec'h post :",
+	'createsigndoc-extaddress' => 'Kêr, bro/proviñs/departamant, Stad :',
+	'createsigndoc-phone' => 'Niverenn bellgomz',
+	'createsigndoc-bday' => 'Deiziad ganedigezh :',
+	'createsigndoc-minage' => 'Oad yaouankañ :',
+	'createsigndoc-introtext' => 'Digoradur :',
+	'createsigndoc-hidden' => 'Kuzhet',
+	'createsigndoc-error-pagenoexist' => "Fazi : Ar bajenn [[$1]] n'eus ket anezhi.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -1215,6 +1232,7 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'createsigndocument' => 'Visché la firma digital ëd na pàgina coma document',
@@ -1246,7 +1264,10 @@ Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mande
 	'createsigndoc-create' => 'Buté an firma',
 	'createsigndoc-error-generic' => 'Eror: $1',
 	'createsigndoc-error-pagenoexist' => "Eror: a-i é pa gnun-a pàgina ch'as ciama [[$1]].",
-	'createsigndoc-success' => "La procedura për buté an firma [[$1]] a l'é andaita a bonfin. Për provela, për piasì ch'a varda [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ambelessì].",
+	'createsigndoc-success' => "La procedura për buté an firma [[$1]] a l'é andaita a bonfin. 
+Për provela, për piasì ch'a [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} la preuva].",
+	'createsigndoc-error-alreadycreated' => 'La firma dël document "$1" a esist già.
+Sòn sì a peul pa esse fàit na sconda vira.',
 );
 
 /** Pashto (پښتو)

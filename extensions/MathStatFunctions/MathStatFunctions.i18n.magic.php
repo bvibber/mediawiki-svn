@@ -38,6 +38,7 @@ $magicWords['ar'] = array(
 	'exp'      => array( '0', 'أس', 'exp' ),
 	'log'      => array( '0', 'لوغاريتم', 'log' ),
 	'ln'       => array( '0', 'لوغاريتم_طبيعي', 'ln' ),
+	'tan'      => array( '0', 'ظا', 'tan' ),
 	'cos'      => array( '0', 'جتا', 'cos' ),
 	'sin'      => array( '0', 'جا', 'sin' ),
 );

@@ -405,6 +405,14 @@ $messages['pl'] = array(
 	'nstab-comments' => 'Komentarz',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'commentpages-desc' => 'Pàgine ëd coment për ël namespace prinsipal',
+	'nstab-comments' => 'Coment',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

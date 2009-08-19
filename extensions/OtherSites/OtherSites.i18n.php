@@ -301,7 +301,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'othersites' => 'autres sits',
+	'othersites' => 'autres sites',
 	'othersites-desc' => "Deplaça los ligams interwiki autres que los ligams ligats a la lenga de lors compausants d'interfàcia pròpris.",
 );
 
@@ -311,6 +311,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'othersites' => 'Inne witryny',
 	'othersites-desc' => 'Przesuwa linki interwiki inne niż łącza językowe do ich własnych portletów',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'othersites' => 'Àutri sit',
+	'othersites-desc' => 'A tramuda le anliure anterwiki e le anliure dla lenga an toa portlet',
 );
 
 /** Portuguese (Português)

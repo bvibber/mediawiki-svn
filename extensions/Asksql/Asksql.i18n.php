@@ -405,16 +405,16 @@ $messages['frc'] = array(
  */
 $messages['frp'] = array(
 	'asksql' => 'Requéta SQL',
-	'asksqltext' => "Utilisâd ceti formulèro por fâre una requéta drêta
-dens la bâsa de balyês.
+	'asksql-desc' => 'Fât des requétes SQL a travèrs una [[Special:Asksql|pâge spèciâla]].',
+	'asksqltext' => "Utilisâd ceti formulèro por fâre una requéta drêta dens la bâsa de balyês.
 Utilisâd les apostrofes ('d’ense') por les chênes de caractèros.
-Cen pôt sovent surchargiér lo sèrvior. Donc, utilisâd
-cela fonccion avouéc parcimonie.",
+Cen pôt sovent surchargiér lo sèrvor. A côsa de cen, utilisâd cela fonccion avouéc parcimonie.",
 	'sqlislogged' => 'Notâd bien que totes les requétes sont jornalisâs.',
-	'sqlquery' => 'Entrâd la requéta',
+	'sqlquery' => 'Buchiéd la requéta',
 	'querybtn' => 'Sometre la requéta',
-	'selectonly' => 'Solètes les requétes en lèctures solètes sont pèrmêses.',
+	'selectonly' => 'Solament les requétes en lèctura solèta sont pèrmêses.',
 	'querysuccessful' => 'La requéta at étâ ègzécutâ avouéc reusséta.',
+	'right-asksql' => 'Fâre des requétes SQL',
 );
 
 /** Galician (Galego)
@@ -856,9 +856,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'asksql' => 'Operassion SQL',
+	'asksql-desc' => 'Fà dle query SQL con na [[Special:Asksql|pàgina special]]',
 	'asksqltext' => "Ch'a dòvra ël quàder ëd domanda ambelessì sota për fé dj'operassion bele drita ant sla base dat.
 Ch'a dòvra le virgolëtte sìngole ('parèj') për marchèj'espression leteraj.
 Sòn soèns a men-a a carié ëd travaj la màchina serventa, donca për piasì ch'a lo dòvra con criteri.",
@@ -867,6 +869,7 @@ Sòn soèns a men-a a carié ëd travaj la màchina serventa, donca për piasì 
 	'querybtn' => "Mandé an là l'operassion",
 	'selectonly' => 'As peul mach fesse operassion ëd letura.',
 	'querysuccessful' => 'Operassion andaita a bon fin',
+	'right-asksql' => 'A fà dle query SQL',
 );
 
 /** Portuguese (Português)
@@ -1091,6 +1094,14 @@ Detta kan leda till väsentlig belastning av servern, så använd denna funktion
 	'selectonly' => 'Endast läs-frågor tillåts.',
 	'querysuccessful' => 'Frågan lyckades',
 	'right-asksql' => 'Göra SQL-frågningar',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'asksql' => 'SQL కొర్రి',
+	'sqlquery' => 'క్యూరీ ని raayandi',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

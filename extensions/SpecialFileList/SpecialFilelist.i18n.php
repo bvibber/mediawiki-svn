@@ -871,9 +871,12 @@ $messages['vro'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'filelist' => '文件列表',
+	'filelist-show-list' => '显示列表',
+	'filelist-show-gallery' => '显示画廊',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

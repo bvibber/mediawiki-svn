@@ -354,6 +354,14 @@ $messages['pl'] = array(
 	'catboxattop-categories' => 'Kategorie',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'catboxattop-desc' => 'A gionta na casela dla categorìa an sima a drita dla pàgina',
+	'catboxattop-categories' => 'Categorìe',
+);
+
 /** Western Punjabi (پنجابی)
  * @author Khalid Mahmood
  */

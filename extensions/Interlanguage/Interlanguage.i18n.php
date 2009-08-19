@@ -48,6 +48,13 @@ $messages['el'] = array(
 	'interlanguage-desc' => 'Επιλέγει τυχαία συνδέσμους μεταξύ γλωσσών από ένα άλλο wiki',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'interlanguage-desc' => 'Beste wiki bateko hizkuntzen arteko loturak hartzen ditu',
+);
+
 /** French (Français)
  * @author Verdy p
  */
@@ -60,6 +67,13 @@ $messages['fr'] = array(
  */
 $messages['gsw'] = array(
 	'interlanguage-desc' => 'Holt Interwikigleicher us eme andere Wiki',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'interlanguage-desc' => 'לכידת קישורי בינלשוניים מאתר ויקי אחר',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -130,6 +144,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'interlanguage-desc' => 'Przechwytuje linki do projektów w innych językach z innej wiki',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'interlanguage-desc' => 'A cheuj anliure antërlenga da àutre wiki',
 );
 
 /** Portuguese (Português)

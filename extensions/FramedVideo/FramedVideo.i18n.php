@@ -230,6 +230,14 @@ $messages['el'] = array(
 	'framedvideo-desc' => 'Επιτρέπει την ενσωμάτωση βίντεο από διάφορους ιστοτόπους χρησιμοποιώντας την ετικέτα <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'framedvideo_errors' => 'Pluraj eraroj okazis!',
+	'framedvideo_error' => 'Eraro okazis!',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -535,7 +543,7 @@ $messages['oc'] = array(
 	'framedvideo_helppage' => 'Help:Vidèo',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mai a prepaus de la sintaxi]].',
 	'framedvideo_error_height_and_width_required' => 'Lo tipe de vidèo « $1 » requerís los paramètres « height » e « width2 »  o « width ».',
-	'framedvideo-desc' => "Permet d'integrar de vidèos de diferents sits web en utilizant la balisa <tt><nowiki><video></nowiki></tt>",
+	'framedvideo-desc' => "Permet d'integrar de vidèos de diferents sites web en utilizant la balisa <tt><nowiki><video></nowiki></tt>",
 );
 
 /** Polish (Polski)

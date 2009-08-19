@@ -348,14 +348,19 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'form' => 'Formulario',
 	'formnoname' => 'Neniu nomo de kamparo',
+	'formnonametext' => 'Vi devas provizi formularan nomon, ekzemple "Special:Form/NomoDeFormularo".',
+	'formbadname' => 'Malbona nomo de formularo',
+	'formbadnametext' => 'Ne estas formularo kun tiu nomo.',
 	'formpattern' => '$1-formularo',
 	'formtitlepattern' => 'Aldoni nova $1',
 	'formsave' => 'Konservi',
 	'formarticleexists' => 'Paĝo ekzistas',
 	'formarticleexiststext' => 'La paĝo [[$1]] jam ekzistas.',
 	'formbadpagename' => 'Fuŝa paĝnomo',
+	'formbadrecaptcha' => 'Malkorektaj valoroj por reCaptcha. Reprovu.',
 	'formrequiredfielderror' => 'La kampo $1 estas deviga por ĉi tiu kamparo.
 Bonvolu plenumi ĝin.',
+	'formsaveerror' => 'Eraro konservante formularon',
 	'formsaveerrortext' => "Estis nekonata eraro konservante paĝon '$1'.",
 );
 
@@ -641,6 +646,33 @@ $messages['id'] = array(
  */
 $messages['is'] = array(
 	'formsave' => 'Vista',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'form-desc' => "Un'[[Special:Form|interfaccia di modulo]] per iniziare nuove pagine",
+	'form' => 'Modulo',
+	'formnoname' => 'Nessun nome per il modulo',
+	'formnonametext' => 'È necessario fornire un nome per il modulo, come "Special:Form/Nomedelmodulo"',
+	'formbadname' => 'Nome modulo errato',
+	'formbadnametext' => 'Non ci sono moduli con quel nome.',
+	'formpattern' => '$1-modulo',
+	'formtitlepattern' => 'Aggiungere un nuovo $1',
+	'formsave' => 'Salva',
+	'formindexmismatch-title' => 'Modello del nome e template non corrispondono',
+	'formindexmismatch' => "Questo modulo ha modelli di nome e template che non corrispondono a partire dall'indice $1.",
+	'formarticleexists' => 'La pagina esiste',
+	'formarticleexiststext' => 'La pagina [[$1]] esiste già.',
+	'formbadpagename' => 'Nome pagina errato',
+	'formbadrecaptcha' => 'Valori errati per reCaptcha. Provare di nuovo.',
+	'formbadpagenametext' => 'I dati inseriti nel modulo generano un nome pagina errato, "$1".',
+	'formrequiredfielderror' => '{{PLURAL:$2|Il campo $1 è richiesto|I campi $1 sono richiesti}} per questo modulo.
+{{PLURAL:$2|Compilarlo|Compilarli}}.',
+	'formsavesummary' => 'Nuova pagina utilizzando il [[Special:Form/$1|modulo $1]]',
+	'formsaveerror' => 'Errore durante il salvataggio del modulo',
+	'formsaveerrortext' => "Si è verificato un errore sconosciuto durante il salvataggio della pagina '$1'.",
 );
 
 /** Japanese (日本語)
@@ -1411,10 +1443,19 @@ Fulükolös oni.',
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
+	'form' => '表单',
+	'formnoname' => '没有表单名',
+	'formnonametext' => '你必须提供一个表单名，如“Special:Form/表单名”。',
+	'formbadname' => '错误的表单名',
+	'formbadnametext' => '没有这个名字的表单。',
+	'formpattern' => '$1-表单',
+	'formtitlepattern' => '添加新的$1',
 	'formsave' => '保存',
 	'formarticleexists' => '页面存在',
+	'formbadpagename' => '错误的表单名',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

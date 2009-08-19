@@ -1716,7 +1716,7 @@ $messages['es'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-authors-text' => 'Abajo hay una lista de los autores de repositorios por orden de tareas recientes.',
+	'code-authors-text' => 'Abajo hay una lista de los autores de repositorios por orden de tareas recientes. Cuentas de wiki locales se muestran entre paréntesis.',
 	'code-author-haslink' => 'Este autor está enlazado con el usuario $1',
 	'code-author-orphan' => 'Este autor no está enlazado con ningún usuario de la wiki',
 	'code-author-dolink' => 'Enlazar este autor con un usuario:',
@@ -2450,6 +2450,7 @@ $4',
  */
 $messages['grc'] = array(
 	'code' => 'Ἐπιθεωρεῖν τὸν Κώδικα',
+	'code-rev-title' => 'r$1 - Ἐπιθεώρησις κώδικος',
 	'code-comments' => 'Σχόλια',
 	'code-change-status' => "μεταβεβλημένον τὸ '''καθεστὼς''' τῆς ἀναθεωρήσεως r$1",
 	'code-change-tags' => "μεταβλητέα εἰσὶ τὰ '''πρότυπα''' διὰ τὴν ἀναθεώρησιν r$1",
@@ -2463,7 +2464,7 @@ $messages['grc'] = array(
 	'code-authors' => 'δημιουργοί',
 	'code-status' => 'καταστάσεις',
 	'code-tags' => 'προσαρτήματα',
-	'code-authors-text' => 'Κάτωθι ἐστὶ καταλογή τις δημιουργῶν τῆς ἀποθήκης κατατάξει τῶν πλείω προσφάτων καταθέσεων.',
+	'code-authors-text' => 'Κάτωθι ἐστὶ καταλογή τις δημιουργῶν τῆς ἀποθήκης κατατάξει τῶν πλείω προσφάτων καταθέσεων. Τοπικοὶ βικι-λογισμοὶ δείκνυνται ἐν παρενθέσεσιν.',
 	'code-author-haslink' => 'Ὅδε ὁ δημιουργὸς συνδεδεμένος ἐστὶ μετὰ τοῦ βικι-χρωμένου $1',
 	'code-author-orphan' => 'Ὅδε ὁ χρώμενος οὐκ ἔχει σύνδεσμον μετὰ βικι-λογισμοῦ τινός',
 	'code-author-dolink' => 'Συνδεῖσθαι τόνδε τὸν δημιουργὸν μετὰ βικι-χρωμένου τινός:',
@@ -2481,6 +2482,7 @@ $messages['grc'] = array(
 	'code-field-status' => 'Κατάστασις',
 	'code-field-timestamp' => 'Ἡμερομηνία',
 	'code-field-comments' => 'Σημειώματα',
+	'code-field-tests' => 'Δοκιμαί',
 	'code-field-path' => 'Ἀτραπός',
 	'code-field-text' => 'Σημείωμα',
 	'code-field-select' => 'Ἐπιλέγειν',
@@ -2712,7 +2714,7 @@ $messages['he'] = array(
 	'code-status' => 'מצבים',
 	'code-tags' => 'תגיות',
 	'code-tests' => 'מקרים לבדיקה',
-	'code-authors-text' => 'להלן רשימת הכותבים במאגר לפי סדר השינויים האחרונים בקוד.',
+	'code-authors-text' => 'להלן רשימת הכותבים במאגר לפי סדר השינויים האחרונים בקוד. חשבונות בוויקי המקומי מופיעים בסוגריים.',
 	'code-author-haslink' => 'כותב זה מקושר למשתמש הוויקי $1',
 	'code-author-orphan' => 'כותב זה אינו מקושר למשתמש בוויקי',
 	'code-author-dolink' => 'קישור כותב זה למשתמש ויקי:',
@@ -4120,6 +4122,7 @@ Bemierkung:
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Ännerungen doropshinn',
+	'codereview-email-subj3' => '[$1] [r$2]: Den automateschen Test huet eng Regressioun fonnt',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-bug' => 'Bugzilla Pad:',
 	'repoadmin-edit-view' => 'Pad op ViewVC:',
@@ -5424,15 +5427,19 @@ $messages['pt-br'] = array(
 	'code-change-tags' => "alterou as '''etiquetas''' da revisão r$1",
 	'code-change-removed' => 'removido:',
 	'code-change-added' => 'adicionado:',
+	'code-old-status' => 'Estado anterior',
+	'code-new-status' => 'Novo estado',
 	'code-prop-changes' => "''Status'' e registro de etiquetagem",
 	'code-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte à subversão]]',
 	'code-no-repo' => 'Nenhum repositório configurado!',
 	'code-load-diff' => 'Carregando diferenças…',
 	'code-notes' => 'comentários recentes',
+	'code-statuschanges' => 'mudanças de estado',
 	'code-authors' => 'autores',
-	'code-status' => 'estado',
+	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-authors-text' => 'Abaixo está uma lista de autores de repositório ordenados pelas tarefas mais recentes',
+	'code-tests' => 'Casos de teste',
+	'code-authors-text' => 'Abaixo está uma lista de autores do repositório ordenados pelos envios mais recentes. Contas do wiki local são exibidas entre parênteses.',
 	'code-author-haslink' => 'Este autor está ligado ao usuário wiki $1',
 	'code-author-orphan' => 'Este autor não tem ligação com uma conta wiki',
 	'code-author-dolink' => 'Ligar este autor a um usuário wiki:',
@@ -5450,6 +5457,7 @@ $messages['pt-br'] = array(
 	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
+	'code-field-tests' => 'Testes',
 	'code-field-path' => 'Caminho',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Selecionar',
@@ -5513,6 +5521,14 @@ URL Completa: $3
 Sumário do envio:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Teste automático detectou regressão',
+	'codereview-email-body3' => 'Teste automático revelou uma regressão devido a mudanças na r$1.
+
+URL completa: $2
+
+Sumário do envio:
+
+$3',
 	'repoadmin' => 'Administração de Repositório',
 	'repoadmin-new-legend' => 'Criar um novo repositório',
 	'repoadmin-new-label' => 'Nome do repositório:',

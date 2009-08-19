@@ -214,6 +214,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'block_title_error_page_title' => 'Titro envalido',
+	'block_title_error-desc' => 'Balye una mètoda simpla por èvitar que des pâges avouéc un sé-quint titro pouessont étre sôvâs ou ben fêtes.',
 	'block_title_error' => 'Dèsolâ, lo titro de cela pâge est pas ôtorisâ a étre sôvâ.',
 );
 
@@ -531,10 +532,12 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'block_title_error_page_title' => 'Tìtol blocà',
-	'block_title_error' => "Ch'a scusa, ma ës tìtol-sì as peul nen dovresse",
+	'block_title_error-desc' => 'A dà na manera base për ampedì che pàgine con serti tìtoj a sio salvà o creà',
+	'block_title_error' => "Ch'a scusa, ël tìtol dë sta pàgina-sì as peul nen salvesse.",
 );
 
 /** Pashto (پښتو)

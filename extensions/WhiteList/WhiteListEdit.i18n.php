@@ -3344,6 +3344,7 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
@@ -3368,6 +3369,12 @@ $messages['zh-hans'] = array(
 	'whitelistpagelist' => '$1 的{{SITENAME}}页面',
 	'whitelistoverview' => '== 查看 $1 的更改 ==',
 	'whitelistoverviewcd' => "* [[:$2|$2]]，修改日期为 '''$1'''",
+	'whitelistrequestmsg' => '$1请求访问以下页面：
+
+$2',
+	'whitelistrequestconf' => '新页面请求已发送到$1',
+	'whitelistnonrestricted' => "用户'''$1'''不是一个受限制的用户。
+这个页面只适用于受限制的用户",
 	'whitelistnever' => '从不',
 	'whitelistnummatches' => '  - {{PLURAL:$1|1个匹配|$1 个匹配}}',
 	'right-editwhitelist' => '修改现有用户的白名单',

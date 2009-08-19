@@ -247,6 +247,7 @@ $messages['es'] = array(
  * @author Theklan
  */
 $messages['eu'] = array(
+	'layouts-desc' => 'Orrialde sortu berriak aldatu daitezkeen "egiturekin" populatzen ditu, orrialdeek egitura komunak izan ditzaten',
 	'layouts_title' => 'Orrialde bat sortu',
 	'layouts_chooselayout' => '$1(r)entzat itxura bat aukeratu:',
 	'layouts_nolayout' => 'Ez dago itxurarik',
@@ -804,11 +805,14 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'layouts_title' => '建立一个页面',
+	'layouts_nolayout' => '没有布局',
 	'layouts_continue' => '继续',
 	'layouts_choosecategory' => '为$1选择一个分类：',
+	'layouts_unknown' => '未知',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

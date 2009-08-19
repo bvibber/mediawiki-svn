@@ -453,6 +453,15 @@ $messages['pl'] = array(
 	'categorystepper-start' => '(Początek kategorii)',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categorystepper-desc' => 'A visualisa na casela stepper ëd la categorìa an përmëttend a un ëd navighé anand e andré alfabeticament ant le categorìe ëd na pàgina',
+	'categorystepper-end' => '(Fin ëd la categorìa)',
+	'categorystepper-start' => '(Prinsipi dla categorìa)',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

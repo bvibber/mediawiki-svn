@@ -235,9 +235,9 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'assert_edit_title' => 'Falyita de l’entrebetâ',
-	'assert_edit_desc' => 'Apond des èdicions d’entrebetâ por l’usâjo per des bots.',
-	'assert_edit_message' => 'L’entrebetâ endicâ ($1) at pas reussia.',
+	'assert_edit_title' => 'Falyita de l’assèrcion',
+	'assert_edit_desc' => 'Apond des assèrcions de changement por l’usâjo per des bots.',
+	'assert_edit_message' => 'L’assèrcion spècefiâ ($1) at pas reussia.',
 );
 
 /** Western Frisian (Frysk)
@@ -545,6 +545,15 @@ $messages['pl'] = array(
 	'assert_edit_title' => 'Brak wystąpień',
 	'assert_edit_desc' => 'Dodaje funkcjonalność weryfikacji zalogowania oraz flagi bota przy próbie edycji do wykorzystania przez boty',
 	'assert_edit_message' => 'Określone żądanie ($1) nie wystąpiło.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'assert_edit_title' => 'Assersion falìa',
+	'assert_edit_desc' => 'A gionta assersion ëd modìfica da dovré dai bot',
+	'assert_edit_message' => "L'assersion spessificà ($1) a l'é falìa.",
 );
 
 /** Portuguese (Português)

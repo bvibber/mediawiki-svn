@@ -248,6 +248,14 @@ $messages['pl'] = array(
 	'wikiarticlefeeds_combined_description' => 'Ten kanał zbiera informacje z kilku źródeł.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'wikiarticlefeeds-desc' => 'A prodov feed generà da le pàgine ëd MediaWiki',
+	'wikiarticlefeeds_combined_description' => "Sto sì a l'é un feed combinà, che a conten element da vàire sorziss ëd feed.",
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

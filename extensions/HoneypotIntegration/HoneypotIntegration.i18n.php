@@ -74,9 +74,11 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'honeypot-desc' => 'Poskytuje integraci [http://projecthoneypot.org/ projektu Honey Pot] pro MediaWiki wiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Počet nedávných událostí způsobených touto IP adresou podle projektu Honey Pot',
 );
 
 /** German (Deutsch)
@@ -245,6 +247,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'honeypot-desc' => 'Zapewnia integrację pomiędzy [http://projecthoneypot.org/ Projektem Honey Pot] a witrynami MediaWiki',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Liczba ostatnich zdarzeń wywołanych adresem IP, zgodnie z Projektem Honey Pot',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'honeypot-desc' => "A dà l'antegrassion con ël [http://projecthoneypot.org/ Proget Honey Pot] për ij sit MediaWiki",
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Nùmer d'event ressent che l'adrëssa IP a l'ha ativà, d'acòrdi con ël Proget Honey Pot",
 );
 
 /** Portuguese (Português)

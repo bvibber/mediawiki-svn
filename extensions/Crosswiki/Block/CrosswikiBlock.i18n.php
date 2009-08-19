@@ -363,6 +363,7 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'crosswikiblock-desc' => 'Umožňuje blokování uživatelů na jiných wiki pomocí [[Special:Crosswikiblock|speciální stránky]]',
@@ -404,7 +405,7 @@ Vrátit se na:
 * [[Special:CrosswikiBlock|Blokovací formulář]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Toto rozhraní nepodporuje místní odblokování. Použije [[Special:IPBlockList|{{int:ipblocklist}}]]',
-	'right-crosswikiblock' => 'Blokovat a odblokovat uživatele na jiných wiki.',
+	'right-crosswikiblock' => 'Blokování a odblokovávání uživatelů na jiných wiki',
 );
 
 /** Danish (Dansk)

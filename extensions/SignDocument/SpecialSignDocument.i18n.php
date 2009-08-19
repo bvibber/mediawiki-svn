@@ -2180,6 +2180,14 @@ $messages['km'] = array(
 	'sign-uniquequery-similaremail' => 'អ៊ីមែលស្រដៀងគ្នា',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'sign-realname' => 'ಹೆಸರು:',
+	'sign-viewfield-realname' => 'ಹೆಸರು',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

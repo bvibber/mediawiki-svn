@@ -168,6 +168,7 @@ $messages['eo'] = array(
 	'categorywatch-catmoveout' => 'movis $1 el kategorio $2 en $3',
 	'categorywatch-catadd' => 'aldonis $1 al kategorio $2',
 	'categorywatch-catsub' => 'eligis $1 de kategorio $2',
+	'categorywatch-autocat' => 'Aŭtomate atentita de $1',
 );
 
 /** Spanish (Español)
@@ -194,6 +195,7 @@ $messages['eu'] = array(
 	'categorywatch-catmoveout' => '$1 $3 kategoriatik $2(e)ra atera',
 	'categorywatch-catadd' => '$1 $2 kategoria gehitu',
 	'categorywatch-catsub' => '$1 $2 kategoriatik kendu',
+	'categorywatch-autocat' => '$1(e)k automatikoki jarraitua',
 );
 
 /** Finnish (Suomi)

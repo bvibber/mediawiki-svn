@@ -199,7 +199,7 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'msfunc_desc' => 'Kokoelma matemaattisia ja tilastollisia funktioita.',
 	'msfunc_nan' => 'Tulos ei ole numero',
-	'msfunc_inf' => 'Tuloksena on ääretön',
+	'msfunc_inf' => 'Tulos on ääretön',
 	'msfunc_div_zero' => 'Jako nollalla',
 );
 

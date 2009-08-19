@@ -51,6 +51,13 @@ $messages['gsw'] = array(
 	'negref-desc' => 'Stellt e Markierig z Verfiegig go dr Ort vum Befähl <code><nowiki><ref/></nowiki></code> bstimme im Text, wu yygee wird, go d Verwändig vu bstimmte Vorlage repariere.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'negref-desc' => 'אספקת תגית לניהול משא ומתן אודות המיקום של תגיות <nowiki><ref/></nowiki> כלשהן בתוך קלט טקסט לתיקון מספר מצבים לשימוש בתבנית',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -112,6 +119,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'negref-desc' => 'Dostarcza znacznik pomagający w ustaleniu położenia w tekście wszystkich znaczników <nowiki><ref/></nowiki> ułatwiając poprawienie użycia szablonów',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'negref-desc' => "A dà un tag për negossié la locassion ëd minca tag <nowiki><ref/></nowiki> an drinta ij test d'input për arzòlve cheich cas d'utilisassion djë stamp",
 );
 
 /** Brazilian Portuguese (Português do Brasil)

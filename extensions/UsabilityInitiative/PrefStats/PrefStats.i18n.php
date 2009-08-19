@@ -400,11 +400,14 @@ Konfiguru $wgPrefStatsTrackPrefs por sekvi preferojn.',
 	'prefstats-xaxis' => 'Daŭro (horoj)',
 	'prefstats-factors' => 'Vidi laŭ: $1',
 	'prefstats-factor-hour' => 'horo',
+	'prefstats-factor-sixhours' => 'ses horoj',
 	'prefstats-factor-day' => 'tago',
 	'prefstats-factor-week' => 'semajno',
 	'prefstats-factor-twoweeks' => 'du semajnoj',
 	'prefstats-factor-fourweeks' => 'kvar semajnoj',
 	'prefstats-factor-default' => 'reuzi defaŭltan skalon',
+	'prefstats-legend-out' => 'Elektis ne partopreni',
+	'prefstats-legend-in' => 'Elektis partopreni',
 );
 
 /** Spanish (Español)
@@ -444,12 +447,24 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Theklan
  */
 $messages['eu'] = array(
 	'prefstats' => 'Hobespen estatistikak',
 	'prefstats-title' => 'Hobespen estatistikak',
 	'prefstats-list-intro' => 'Une honetan, ondorengo hobespenak jarraitzen ari dira.
 Klikatu batean bere estatistikak ikusteko.',
+	'prefstats-xaxis' => 'Iraupena (ordutan)',
+	'prefstats-factors' => 'Ikusi: $1',
+	'prefstats-factor-hour' => 'ordu',
+	'prefstats-factor-sixhours' => 'sei ordu',
+	'prefstats-factor-day' => 'egun',
+	'prefstats-factor-week' => 'aste',
+	'prefstats-factor-twoweeks' => 'bi aste',
+	'prefstats-factor-fourweeks' => 'lau aste',
+	'prefstats-factor-default' => 'itzuli berezko eskalara',
+	'prefstats-legend-out' => 'Irten zara',
+	'prefstats-legend-in' => 'Bat egin duzu',
 );
 
 /** Finnish (Suomi)
@@ -966,6 +981,14 @@ $messages['mk'] = array(
 	'prefstats-legend-in' => 'Напуштил',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'prefstats' => 'Statistik keutamaan',
+	'prefstats-desc' => 'Jejaki statistik mengenai seberapa ramai pengguna yang membolehkan keutamaan tertentu',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -1380,16 +1403,17 @@ $messages['tr'] = array(
 İlgili istatistikleri görmek için birine tıklayın.',
 	'prefstats-noprefs' => 'Şu anda hiçbir tercih izlenmiyor.
 Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
-	'prefstats-counters' => '* Tercih istatistikleri etkinleşirildiğinden beri $1 {{PLURAL:$1|kullanıcı|kullanıcı}} bu tercihi etkinleştirdi.
+	'prefstats-counters' => '* Tercih istatistikleri etkinleştirildiğinden beri $1 {{PLURAL:$1|kullanıcı|kullanıcı}} bu tercihi etkinleştirdi.
 ** $2 {{PLURAL:$2|kullancı|kullanıcı}} hala etkin olarak kullanıyor
 ** $3 {{PLURAL:$3|kullanıcı|kullanıcı}} şimdiye kadar devre dışı bıraktı',
-	'prefstats-counters-expensive' => '* Tercih istatistikleri etkinleşirildiğinden beri $1 {{PLURAL:$1|kullanıcı|kullanıcı}} bu tercihi etkinleştirdi.
+	'prefstats-counters-expensive' => '* Tercih istatistikleri etkinleştirildiğinden beri $1 {{PLURAL:$1|kullanıcı|kullanıcı}} bu tercihi etkinleştirdi.
 ** $2 {{PLURAL:$2|kullancı|kullanıcı}} hala etkin olarak kullanıyor
 ** $3 {{PLURAL:$3|kullanıcı|kullanıcı}} şimdiye kadar devre dışı bıraktı
 * Toplamda, $4 {{PLURAL:$4|kullanıcı|kullanıcı}} bu tercihi ayarladı',
 	'prefstats-xaxis' => 'Süre (saat)',
 	'prefstats-factors' => 'Görüntüleme sıklığı: $1',
 	'prefstats-factor-hour' => 'saat',
+	'prefstats-factor-sixhours' => 'altı saat',
 	'prefstats-factor-day' => 'gün',
 	'prefstats-factor-week' => 'hafta',
 	'prefstats-factor-twoweeks' => 'iki hafta',
@@ -1434,6 +1458,14 @@ $messages['vec'] = array(
 	'prefstats-title' => 'Statìsteghe de le preferense',
 	'prefstats-list-intro' => 'Al momento, vien tegnù tràcia de le seguenti preferense.
 Strucando su de una te vedi le so statìsteghe.',
+	'prefstats-noprefs' => 'In sto momento no vien monitorà nissuna preferensa. Configura $wgPrefStatsTrackPrefs par monitorar le preferense.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utente el|utenti i}} gà abilità sta preferensa da quando le statìsteghe su le preferense le xe ative
+** $2 {{PLURAL:$2|utente el|utenti i}} la gà ancora abilità
+** $3 {{PLURAL:$3|utente el|utenti i}} la gà in seguito disabilità',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utente el|utenti i}} gà abilità sta preferensa da quando le statìsteghe su le preferense le xe ative
+** $2 {{PLURAL:$2|utente el|utenti i}} la gà ancora abilità
+** $3 {{PLURAL:$3|utente el|utenti i}} la gà in seguito disabilità
+* In total, $4 {{PLURAL:$4|utente el|utenti i}} gà inpostà sta preferensa',
 	'prefstats-xaxis' => 'Durata (ore)',
 	'prefstats-factors' => 'Viste par: $1',
 	'prefstats-factor-hour' => 'ora',
@@ -1456,6 +1488,24 @@ $messages['vi'] = array(
 	'prefstats-list-intro' => 'Hiện đang theo dõi các tùy chọn sau.
 Hãy nhấn vào một tùy chọn để xem thống kê về nó.',
 	'prefstats-noprefs' => 'Không có tùy chọn nào được theo dõi. Hãy cấu hình $wgPrefStatsTrackPrefs để theo dõi tùy chọn.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|thành viên|thành viên}} bật tùy chọn này từ khi thống kê tùy chọn được kích hoạt
+** $2 {{PLURAL:$2|thành viên|thành viên}} vẫn bật nó
+** $3 {{PLURAL:$3|thành viên|thành viên}} từ đó đã tắt nó đi',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|thành viên|thành viên}} bật tùy chọn này từ khi thống kê tùy chọn được kích hoạt
+** $2 {{PLURAL:$2|thành viên|thành viên}} vẫn bật nó
+** $3 {{PLURAL:$3|thành viên|thành viên}} từ đó đã tắt nó đi
+* Tổng cộng, có $4 {{PLURAL:$4|thành viên|thành viên}} đã thiết lập tùy chọn này',
+	'prefstats-xaxis' => 'Khoảng thời gian (tiếng)',
+	'prefstats-factors' => 'Xem theo: $1',
+	'prefstats-factor-hour' => 'tiếng',
+	'prefstats-factor-sixhours' => 'sáu tiếng',
+	'prefstats-factor-day' => 'ngày',
+	'prefstats-factor-week' => 'tuần',
+	'prefstats-factor-twoweeks' => 'hai tuần',
+	'prefstats-factor-fourweeks' => 'bốn tuần',
+	'prefstats-factor-default' => 'trở lại mức mặc định',
+	'prefstats-legend-out' => 'Không dùng nữa',
+	'prefstats-legend-in' => 'Dùng thử',
 );
 
 /** Yue (粵語)

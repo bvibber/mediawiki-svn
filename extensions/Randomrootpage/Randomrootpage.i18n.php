@@ -267,6 +267,14 @@ $messages['pl'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Strona specjalna]] zwracająca losową stronę tytułową',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'randomrootpage' => 'Pàgina root a cas',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Pàgina special]]  che a pësca na pàgina ëd root a cas',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

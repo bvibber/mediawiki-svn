@@ -714,9 +714,9 @@ Sidens operatører kan ikke ta ansvar for innholdet i slike kommentarer.',
  */
 $messages['oc'] = array(
 	'talkhere-desc' => 'Met la pagina de discussion dins la pagina',
-	'talkhere-foottext' => 'Los comentaris çaisús son estats daissats per de vesitaires.
+	'talkhere-foottext' => 'Los comentaris çaisús son estats daissats per de visitaires.
 
-Lo gestionari del sit es pas responsable de lor contengut.',
+Lo gestionari del site es pas responsable de lor contengut.',
 	'talkhere-talkpage' => 'pagina de dscussion',
 	'talkhere-notalk' => "''(cap de comentari actualament)''",
 	'talkhere-addcomment' => 'apondre un comentari',
@@ -1038,9 +1038,16 @@ Guvans bevüresodatopäda at no gididons demü ninäd küpetas at.',
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'talkhere-desc' => '把讨论页内容转移至页面',
+	'talkhere-talkpage' => '对话页',
+	'talkhere-notalk' => "''（还没有评论）''",
+	'talkhere-addcomment' => '添加评论',
+	'talkhere-beforeinput' => '你可以在下面添加一个评论',
+	'talkhere-loading' => '正在载入编辑器……',
+	'talkhere-collapse' => '隐藏编辑器',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

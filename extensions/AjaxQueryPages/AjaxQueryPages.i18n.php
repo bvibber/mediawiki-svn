@@ -167,6 +167,13 @@ $messages['fr'] = array(
 	'ajax-qp-desc' => 'Ajoute du script AJAX aux pages de requêtes telles que [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'ajax-qp-desc' => 'Apond de script AJAX a les pâges de requétes coment [[Special:Shortpages|{{int:shortpages}}]].',
+);
+
 /** Western Frisian (Frysk)
  * @author SK-luuut
  */

@@ -340,9 +340,13 @@ $messages['frc'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'ajax-se-title' => 'Aprés étre modifiâ per :',
-	'ajax-se-pending' => 'rafrèchissement en cors ... (clicâd sur ceti mèssâjo ou modifiâd la pâge)',
+	'ajax-se-desc' => 'Montre los utilisators que sont aprés changiér la méma pâge.',
+	'ajax-se-title' => 'En cors de changement per :',
+	'ajax-se-pending' => 'actualisacion en atenta... (clicâd sur ceti mèssâjo ou ben changiéd la pâge)',
 	'ajax-se-idling' => '(cen fât $1 s)',
+	'ajax-se-pagedoesnotexist' => 'la pâge ègziste pas',
+	'ajax-se-userinvalid' => 'Èrror : utilisator envalido',
+	'ajax-se-usernotfound' => 'Èrror : utilisator entrovâblo',
 );
 
 /** Irish (Gaeilge)

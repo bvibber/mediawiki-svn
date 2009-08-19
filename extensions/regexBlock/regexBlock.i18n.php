@@ -641,6 +641,7 @@ $messages['eo'] = array(
 	'regexblock-form-username' => 'IP Adreso aŭ salutnomo:',
 	'regexblock-form-reason' => 'Kialo:',
 	'regexblock-form-expiry' => 'Findato:',
+	'regexblock-form-match' => 'Preciza kongruo',
 	'regexblock-form-submit' => 'Forbari ĉi tiun uzanton',
 	'regexblock-unblock-success' => 'Malforbaro sukcesis',
 	'regexblock-unblock-log' => "Salutnomo aŭ IP-adreso '''$1''' estis restarigita.",
@@ -650,8 +651,10 @@ Verŝajne ne estas uzanto kun tiu nomo.',
 	'regexblock-view-go' => 'Ek!',
 	'regexblock-view-reason' => 'kialo: $1',
 	'regexblock-view-reason-default' => 'malspecifa kialo',
+	'regexblock-view-block-infinite' => 'ĉiama bloko',
 	'regexblock-view-block-by' => 'forbarita de',
 	'regexblock-view-block-unblock' => 'restarigu',
+	'regexblock-view-stats' => 'statistikoj',
 	'regexblock-view-time' => 'je $1',
 );
 
@@ -1670,10 +1673,12 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
 	'regexblock-already-blocked' => '"$1" diġà bblokkjat',
+	'regexblock-expire-duration' => 'siegħa,sagħtejn,4 sigħat,6 sigħat,ġurnata,3 ġranet,ġimgħa,ġimgħatejn,xahar,3 xhur,6 xhur,sena,infinta',
 );
 
 /** Erzya (Эрзянь)

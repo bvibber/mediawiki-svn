@@ -555,6 +555,26 @@ $messages['id'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Ganti status saya menjadi luring (di luar jaringan) jika keluar log',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'onlinestatus-desc' => "Aggiungi una preferenza per mostrare se l'utente è al momento presente o meno sul sito",
+	'onlinestatus-js-anon' => "Errore: è necessario effettuare l'accesso per utilizzare questa funzione",
+	'onlinestatus-js-changed' => 'Lo stato è stato cambiato in "$"',
+	'onlinestatus-js-error' => 'Impossibile modificare lo stato, il valore "$1" non è valido',
+	'onlinestatus-subtitle-offline' => 'Questo utente non è attualmente connesso',
+	'onlinestatus-subtitle-online' => 'Questo utente è attualmente connesso',
+	'onlinestatus-tab' => 'Stato',
+	'onlinestatus-toggles-desc' => 'Proprio stato:',
+	'onlinestatus-toggles-explain' => 'Questo permette di mostrare ad altri utenti se si è attualmente in linea o meno visualizzando la propria pagina utente.',
+	'onlinestatus-toggles-show' => 'Visualizza lo stato di connessione sulla propria pagina utente',
+	'onlinestatus-toggle-offline' => 'Non connesso',
+	'onlinestatus-toggle-online' => 'Connesso',
+	'onlinestatus-pref-onlineonlogin' => 'Cambia lo stato in connesso al momento del login',
+	'onlinestatus-pref-offlineonlogout' => 'Cambia lo stato in non connesso al momento del logout',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
@@ -1068,10 +1088,14 @@ $messages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'onlinestatus-subtitle-offline' => '这个用户当前离线',
+	'onlinestatus-subtitle-online' => '这个用户当前在线',
 	'onlinestatus-tab' => '状态',
+	'onlinestatus-toggles-show' => '在我的用户页显示在线状态',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

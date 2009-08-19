@@ -175,6 +175,16 @@ $3',
 	'latexdoc-desc' => 'Zgromadne wobźěłowanje dokumentow LaTeX',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'latexdoc_cant_create_dir' => 'Δεν μπορεί να δημιουργήσει τον προσωρινό προορισμό $1',
+	'latexdoc_cant_write' => 'Δεν μπορεί να γράψει στο αρχείο $1',
+	'latexdoc_get_dvi' => 'Λήψη DVI',
+	'latexdoc_get_pdf' => 'Λήψη PDF',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -215,8 +225,12 @@ $3',
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'latexdoc_no_text' => 'Orrialdeak ez du testurik, ezin da sortu DVIrik',
+	'latexdoc_cant_create_dir' => 'Ezin da sortu behin-behineko $1 direktorioa',
+	'latexdoc_cant_write' => 'Ezin da idatzi $1 fitxategian',
 	'latexdoc_error' => 'LaTeX errorea
 
 Komandoa: $1
@@ -226,6 +240,7 @@ Irteera: $2
 $3',
 	'latexdoc_get_dvi' => 'DVIa eskuratu',
 	'latexdoc_get_pdf' => 'PDFa eskuratu',
+	'latexdoc-desc' => 'LaTeX dokumentuen aldaketa kolaboratiboa',
 );
 
 /** Finnish (Suomi)

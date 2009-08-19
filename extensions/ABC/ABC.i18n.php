@@ -197,6 +197,14 @@ $messages['fr'] = array(
 	'abcdownload' => 'Télécharger :',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'abcdesc' => 'Apond una balisa <tt>&lt;abc&gt;</tt> por formatar la musica ABC.',
+	'abcdownload' => 'Tèlèchargiér :',
+);
+
 /** Western Frisian (Frysk)
  * @author SK-luuut
  */
@@ -476,6 +484,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'abcdesc' => 'Dodaje znacznik <tt>&lt;abc&gt;</tt> dla muzyki w formacie ABC',
 	'abcdownload' => 'Pobierz:',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'abcdesc' => 'A gionta ël tag <tt>&lt;abc&gt;</tt> a la mùsica an formà ABC',
+	'abcdownload' => 'Dëscaria:',
 );
 
 /** Pashto (پښتو)

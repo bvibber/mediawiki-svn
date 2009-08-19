@@ -358,6 +358,14 @@ $messages['pl'] = array(
 	'purge-desc' => "Dodaje zakładkę '''wyczyść''' dla wszystkich zwykłych stron oraz omija testowanie stanu czyszczenia dla anonimowych użytkowników aby szybko wyczyścić pamięć podręczną",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'purge' => 'polida',
+	'purge-desc' => 'A gionta un tab ëd "purga" a tute le pàgine normaj, e a bypassa ël control ëd purga për j\'utent anònim, an përmëttend na purga lesta dla cache',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya

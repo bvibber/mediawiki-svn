@@ -82,6 +82,7 @@ $wgCustomToolbarMessages['af'] = array(
 	'ct_nowiki_caption' => 'Geen wikiteks',
 	'ct_submit' => 'OK',
 	'ct_close' => 'Sluit venster',
+	'ct_user_user' => 'Gebruiker',
 );
 
 /** Amharic (አማርኛ)

@@ -209,3 +209,10 @@ $messages['vi'] = array(
 	'uploadblacklist-desc' => 'Thêm chức năng danh sách đen tải lên',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'uploadblacklist-desc' => '添加一个上传黑名单功能',
+);
+

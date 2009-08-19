@@ -220,9 +220,12 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'inspectcache-ok' => 'Εντάξει',
+	'inspectcache-general' => 'Γενική λανθάνουσα μνήμη',
+	'inspectcache-get' => 'Λήψη',
 	'inspectcache-delete' => 'Διαγραφή',
 	'inspectcache-list' => 'Λίστα',
 );
@@ -559,6 +562,13 @@ $messages['km'] = array(
 	'inspectcache-delete' => 'លុបចេញ',
 	'inspectcache-deleted' => 'លុបឃ្លាំងសំងាត់ចេញ',
 	'inspectcache-list' => 'បញ្ជី',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'inspectcache-list' => 'ಪಟ್ಟಿ',
 );
 
 /** Krio (Krio)

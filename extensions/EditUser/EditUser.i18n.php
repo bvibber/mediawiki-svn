@@ -643,6 +643,13 @@ $messages['km'] = array(
 	'right-edituser' => 'កែប្រែ​ចំណង់ចំណូលចិត្ត​របស់​អ្នកប្រើប្រាស់​ដទៃ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'edituser-username' => 'ಹೆಸರು',
+);
+
 /** Korean (한국어)
  * @author ToePeu
  */
@@ -1183,6 +1190,19 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'edituser-username' => 'Adı',
 	'edituser-dosearch' => 'Ara',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Yildiz
+ */
+$messages['tt-cyrl'] = array(
+	'edituser' => 'Катнашучыны үзгәртү',
+	'edituser-logout' => 'Катнашучы эшләү вакытын ябу.',
+	'edituser-username' => 'Исем',
+	'edituser-dosearch' => 'Эзләү',
+	'edituser-nouser' => 'Әлеге катнашучы теркәлмәгән.',
+	'edituser-exempt' => 'Әлеге катнашучы төзәтелә алмый',
+	'right-edituser' => 'Башка катнашучылар көйләүләрен төзәтү',
 );
 
 /** Veps (Vepsan kel')

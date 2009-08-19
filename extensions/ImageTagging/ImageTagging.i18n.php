@@ -420,8 +420,10 @@ $messages['el'] = array(
 	'imagetagging-article' => 'Σελίδα:',
 	'imagetagging-imghistory' => 'Ιστορικό',
 	'imagetagging-images' => 'εικόνες',
+	'imagetagging-new' => '<sup><span style="color:red">Νέο!</span></sup>',
 	'imagetagging-tag-button' => 'Ετικέτα',
 	'imagetagging-tagcancel-button' => 'Ακύρωση',
+	'imagetagging-taggedimages-title' => 'Εικόνες του "$1"',
 );
 
 /** Esperanto (Esperanto)

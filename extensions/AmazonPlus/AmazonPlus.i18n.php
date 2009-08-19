@@ -406,6 +406,22 @@ $messages['fr'] = array(
 	'amazonplus-less' => 'moins',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'amazonplus-used' => 'utilisâ',
+	'amazonplus-german' => 'Alemand',
+	'amazonplus-french' => 'Francês',
+	'amazonplus-japanese' => 'J·aponês',
+	'amazonplus-amazon' => 'Prix d’Amazon',
+	'amazonplus-new' => 'novél',
+	'amazonplus-currency' => '$1&nbsp;$3 ($2)$4',
+	'amazonplus-cp-none' => 'Nion',
+	'amazonplus-more' => 'més',
+	'amazonplus-less' => 'muens',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

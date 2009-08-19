@@ -467,6 +467,7 @@ $messages['eo'] = array(
 	'vote-results-count' => 'Nombro',
 	'vote-login' => 'Vi devas [$1 ensaluti] por voĉdoni.',
 	'right-vote' => 'Voĉdoni',
+	'right-voteadmin' => 'Vidi rezultojn de voĉdono',
 );
 
 /** Spanish (Español)
@@ -637,6 +638,32 @@ sphinx|Sphinx',
 $messages['frp'] = array(
 	'vote-results-choice' => 'Chouèx',
 	'vote-results-count' => 'Vouèx',
+);
+
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'vote' => 'Stimme',
+	'vote-desc' => 'Makket simpele stimmings mûglik',
+	'vote-header' => "Jo kinne hjirre foar '''Baas fan de Wrâld''' stimme!",
+	'vote-current' => "Op it stuit stimme jo foar '''$1'''.",
+	'vote-legend' => 'Stimme of stim feroarje',
+	'vote-caption' => 'Jo kar:',
+	'vote-choices' => 'joker|De Joker
+pinguin|De Pinguin
+grapmakker|De Grapmakker',
+	'vote-submit' => 'Stimme',
+	'vote-registered' => 'Jo stim is fêstlein.',
+	'vote-view-results' => 'Utslaggen besjen',
+	'vote-results' => 'Utslaggen ferkiezings',
+	'vote-results-choice' => 'Kar',
+	'vote-results-count' => 'Oantal',
+	'vote-results-none' => 'Der binne noch gjin stimmen útbrocht.',
+	'vote-login' => 'Jo moatte jo [$1 oanmelde] om te kinne stimmen.',
+	'vote-invalid-choice' => 'Jo moatte ien fan de beskikbere opsjes kiezen.',
+	'right-vote' => 'Stimme',
+	'right-voteadmin' => 'Sjoch útslaggen ferkiezings',
 );
 
 /** Irish (Gaeilge)
@@ -1908,6 +1935,7 @@ riddler|謎人',
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -1927,8 +1955,10 @@ riddler|谜人',
 	'vote-results-choice' => '选择',
 	'vote-results-count' => '数量',
 	'vote-results-none' => '在这个时间无放任何投票。',
-	'vote-login' => '您一定要[$1 登入]先可以投票。',
+	'vote-login' => '你必须[$1 登录]以投票。',
 	'vote-invalid-choice' => '您一定要在可以选择的选项中选择一个。',
+	'right-vote' => '投票',
+	'right-voteadmin' => '查看投票结果',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -60,6 +60,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'indexfunc-badtitle' => 'Ongeldige bladsynaam: "$1"',
 	'index' => 'Indeks',
 	'index-legend' => 'Die indeks deursoek',
 	'index-search' => 'Soek:',
@@ -228,9 +229,26 @@ Zapódaj nejpjerwjej někotare znamuška a klikni tłocašk {{int:index-submit}}
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'indexfunc-badtitle' => 'Μη έγκυρος τίτλος: "$1"',
+	'indexfunc-index-exists' => 'Η σελίδα "$1" υπάρχει ήδη',
+	'index' => 'Δείκτης αναζήτησης',
 	'index-search' => 'Αναζήτηση:',
+	'index-submit' => 'Καταχώρηση',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'indexfunc-index-exists' => 'La paĝo "$1" jam ekzistas',
+	'index' => 'Indeksa serĉo',
+	'index-legend' => 'Serĉi la indekson',
+	'index-search' => 'Serĉi',
+	'index-submit' => 'Enmeti',
+	'index-hide-detail' => 'Kaŝi la liston de paĝoj',
 );
 
 /** Spanish (Español)

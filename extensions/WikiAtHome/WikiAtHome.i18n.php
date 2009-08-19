@@ -282,6 +282,7 @@ Du chasch hälfe des Video z verarbeite, indäm Du [[Special:WikiAtHome|Wiki@Hom
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -292,15 +293,15 @@ $messages['he'] = array(
 	'wah-short-general' => 'קובץ מדיה מסוג $1, $2',
 	'wah-long-audio' => '(קובץ שמע מסוג $1, באורך $2, $3)',
 	'wah-long-video' => '(קובץ וידאו מסוג $1, באורך $2, $4×$5 פיקסלים, $3)',
-	'wah-long-multiplexed' => '(קובץ שמע/וידאו מרובב, $1, באורך $2, $4×$5 פיקסלים, $3 באופן כללי)',
+	'wah-long-multiplexed' => '(קובץ שמע/וידאו מרובב, $1, באורך $2, $4×$5 פיקסלים, $3 בסך הכול)',
 	'wah-long-general' => '(קובץ מדיה, באורך $2, $3)',
-	'wah-long-error' => '(ל־ffmpeg לא היתה אפשרות לקרוא קובץ זה: $1)',
-	'wah-transcode-working' => 'קובץ זה נמצא בתהליכי עיבוד, נא לנסות שוב מאוחר יותר',
+	'wah-long-error' => '(ffmpeg לא הצליח לקרוא קובץ זה: $1)',
+	'wah-transcode-working' => 'וידאו זה נמצא בתהליכי עיבוד, נא לנסות שוב מאוחר יותר',
 	'wah-transcode-helpout' => 'עיבוד סרטון זה הושלם ב־$1 אחוזים.
 ניתן לעזור בקידוד הווידאו הזה על ידי ביקור בדף [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'קידוד קובץ זה נכשל.',
 	'wah-javascript-off' => 'עליכם להפעיל את תכונת ה־JavaScript כדי לקחת חלק ב־Wiki@Home',
-	'wah-loading' => 'מנשק Wiki@Home נטען כעת <blink>...</blink>',
+	'wah-loading' => 'ממשק Wiki@Home נטען כעת <blink>...</blink>',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -503,22 +504,23 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author ToSter
  */
 $messages['pl'] = array(
 	'wah-desc' => 'Włącza rozsyłanie zadań przekodowywania wideo do klientów za pomocą firefogg',
-	'wah-user-desc' => 'Wiki@Home pozwala członkom społeczności na dzielenie się wolnymi cyklami procesora, aby pomóc w operacjach intensywnie używających zasobów',
+	'wah-user-desc' => 'Wiki@Home umożliwia członkom społeczności na dzielenie się wolnymi cyklami procesora, aby pomóc w operacjach intensywnie wykorzystujących zasoby',
 	'wah-short-audio' => 'Plik dźwiękowy $1, $2',
 	'wah-short-video' => 'Plik wideo $1, $2',
 	'wah-short-general' => 'Plik multimedialny $1, $2',
-	'wah-long-audio' => 'Plik dźwiękowy $1, długość $2, $3',
-	'wah-long-video' => 'Plik wideo $1, długość $2, $4×$5 pikseli, $3',
-	'wah-long-multiplexed' => '(multipleksowany plik audio/wideo, $1, długość $2, $4×$5 pikseli, razem $3)',
+	'wah-long-audio' => '(plik dźwiękowy $1, długość $2, $3)',
+	'wah-long-video' => '(plik wideo $1, długość $2, $4×$5 pikseli, $3)',
+	'wah-long-multiplexed' => '(multipleksowany plik audio i wideo, $1, długość $2, $4×$5 pikseli, w sumie $3)',
 	'wah-long-general' => '(plik multimedialny, długość $2, $3)',
-	'wah-long-error' => '(ffmpeg nie mógł przeczytać tego pliku $1)',
+	'wah-long-error' => '(ffmpeg nie mógł odczytać pliku – $1)',
 	'wah-transcode-working' => 'Ten plik wideo jest przetwarzany, spróbuj ponownie później',
-	'wah-transcode-helpout' => 'Klip jest wykonany w $1 procentach.
-Możesz pomóc w przekodowywaniu tego wideo, odwiedzając stronę [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-helpout' => 'Klip został przetworzony w $1 procentach.
+Możesz pomóc w przekodowywaniu wideo, odwiedzając stronę [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Nie udało się przekodować tego pliku.',
 	'wah-javascript-off' => 'Musisz mieć włączony JavaScript, aby brać udział w Wiki@Home',
 	'wah-loading' => 'ładowanie interfejsu Wiki@Home <blink>...</blink>',
@@ -655,6 +657,23 @@ Du kan hjälpa till att konvertera den här videon genom att besöka [[Special:W
 	'wah-transcode-fail' => 'Kunde inte konvertera den här filen.',
 	'wah-javascript-off' => 'Du måste ha JavaScript aktiverat för att delta i Wiki@Home',
 	'wah-loading' => 'laddar gränssnittet för Wiki@Home <blink>...</blink>',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'wah-short-audio' => '$1声音文件，$2',
+	'wah-short-video' => '$1视频文件，$2',
+	'wah-short-general' => '$1媒体文件，$2',
+	'wah-long-audio' => '（$1声音文件，长度$2，$3）',
+	'wah-long-video' => '（$1视频文件，长度$2，$4×$5像素，$3）',
+	'wah-long-general' => '（媒体文件，长度$2，$3）',
+	'wah-long-error' => '（ffmpeg不能读取这个文件：$1）',
+	'wah-transcode-working' => '这个视频正在被处理，请稍后再试',
+	'wah-transcode-fail' => '这个文件转码失败',
+	'wah-javascript-off' => '你必须启用JavaScript以参与Wiki@Home',
+	'wah-loading' => '正在载入Wiki@Home界面<blink>……</blink>',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

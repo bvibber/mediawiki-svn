@@ -213,9 +213,11 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'languageselector' => 'Γλώσσα',
+	'languageselector-setlang' => 'ρύθμιση',
 );
 
 /** Esperanto (Esperanto)

@@ -48,11 +48,14 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'cooperationstatistics-tablearticle' => 'عدد الصفحات',
 	'cooperationstatistics-tablevalue' => 'عدد المحررين',
 	'cooperationstatistics-articles' => '{{PLURAL:$1||صفحة واحدة|صفحتان|$1 صفحات|$1 صفحة}}',
+	'cooperationstatistics-legendmore' => 'أو أكثر من المحررين.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -147,6 +150,13 @@ Glědaj teke [[Special:MostRevisors|'''boki z nejwěcej pśeglědarjami''']] a [
 	'cooperationstatistics-legendmore' => 'abo wobźěłarjow.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|σελίδα|σελίδες}}',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -168,8 +178,10 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'cooperationstatistics-tablearticle' => 'Orrialde kopurua',
 	'cooperationstatistics-articles' => '{{PLURAL:$1|Orrialde bat|$1 orrialde}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$1|Editore bat|$1 editore}} {{PLURAL:$2|du|ditu}}',
 );
@@ -241,14 +253,15 @@ Luege au d [[Special:MostRevisors|'''Syte mit dr meischte Bearbeiter''']] un d [
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'cooperationstatistics' => 'סטטיסטיקת שיתוף פעולה',
 	'cooperationstatistics-desc' => 'הצגת [[Special:CooperationStatistics|סטטיסטיקת שיתוף פעולה במרחב השם הראשי]].',
-	'cooperationstatistics-text' => "הצגת נתוני שיתוף פעולה במרחב השם הראשי.
-מ־[[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] עד [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}} או יותר]] מבקרים.<br />
-עיינו גם ב[[Special:MostRevisors|'''דפים עם הכי הרבה מבקרים''']] וב[[Special:MostRevisions|דפים עם הכי הרבה גרסאות]].",
+	'cooperationstatistics-text' => "הצגת סטטיסטיקות שיתוף פעולה במרחב השם הראשי.
+מ־[[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] עד [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}} או יותר]] בודקים.<br />
+עיינו גם ב[[Special:MostRevisors|'''דפים עם הכי הרבה בודקים''']] וב[[Special:MostRevisions|דפים עם הכי הרבה גרסאות]].",
 	'cooperationstatistics-tablearticle' => 'מונה דפים',
 	'cooperationstatistics-tablevalue' => 'מספר העורכים',
 	'cooperationstatistics-articles' => '{{PLURAL:$1|דף אחד|$1 דפים}}',
@@ -427,6 +440,24 @@ Vejatz tanben las [[Special:MostRevisors|'''paginas amb lo mai de relectors''']]
 	'cooperationstatistics-nblessusers' => 'an $1 editors o mens',
 	'cooperationstatistics-nbmoreusers' => 'an $1 editors o mens',
 	'cooperationstatistics-legendmore' => "o mai d'editors.",
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'cooperationstatistics' => 'Estatísticas de cooperação',
+	'cooperationstatistics-desc' => 'Exibe [[Special:CooperationStatistics|estatísticas de cooperação no domínio principal]].',
+	'cooperationstatistics-text' => "Exibe estatísticas de cooperação no domínio principal.
+De [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}} ou mais]] editores.<br />
+Veja também as [[Special:MostRevisors|'''páginas com mais editores''']] e [[Special:MostRevisions|páginas com mais edições]].",
+	'cooperationstatistics-tablearticle' => 'Contagem de páginas',
+	'cooperationstatistics-tablevalue' => 'Número de editores',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|tem}} $1 {{PLURAL:$1|editor|editores}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|tem|têm}} $1 {{PLURAL:$1|editor|ou menos editores}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|tem|têm}} $1 or more editores',
+	'cooperationstatistics-legendmore' => 'ou mais editores.',
 );
 
 /** Romanian (Română)

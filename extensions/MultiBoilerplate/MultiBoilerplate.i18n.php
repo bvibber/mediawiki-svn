@@ -169,7 +169,7 @@ $messages['fi'] = array(
 	'multiboilerplate-legend' => 'Valitse vakioteksti',
 	'multiboilerplate-submit' => 'Lataa',
 	'boilerplates' => 'Käytettävissä olevat vakiotekstit',
-	'multiboilerplate-special-define-in-localsettings' => 'Vakiotekstit määritellään LocalSettings:issä.',
+	'multiboilerplate-special-define-in-localsettings' => 'Vakiotekstit määritellään asetustiedostossa LocalSettings.',
 	'multiboilerplate-special-define-in-interface' => 'Vakiotekstit määritellään järjestelmäviestillä [[MediaWiki:Multiboilerplate]].',
 );
 

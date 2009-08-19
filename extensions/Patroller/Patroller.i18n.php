@@ -1240,9 +1240,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'patrol' => 'Patojé le modìfiche',
+	'patrol-desc' => 'Antërfacia ëd verìfica mijorà con condivision dël càrich ëd travaj',
 	'patrol-endorse' => 'Aprové',
 	'patrol-revert' => "Buté com a l'era",
 	'patrol-revert-reason' => 'Rason:',
@@ -1263,6 +1265,7 @@ $messages['pms'] = array(
 	'group-patroller' => 'Gent ëd patoja',
 	'group-patroller-member' => 'ëd patoja',
 	'grouppage-patroller' => '{{ns:project}}:patoja',
+	'right-patroller' => 'Verìrica le pàgine',
 );
 
 /** Pashto (پښتو)

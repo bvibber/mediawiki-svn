@@ -122,6 +122,13 @@ $messages['es'] = array(
 	'tooltip-desc' => 'Añade las etiquetas <tt><nowiki><tooltip></nowiki></tt> y <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt> eta <tt><nowiki>{{#tooltip:}}</nowiki></tt> etiketan gehitzen ditu',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Str4nd

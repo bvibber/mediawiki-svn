@@ -336,6 +336,7 @@ $messages['et'] = array(
 /** Basque (Euskara)
  * @author Kobazulo
  * @author Pi
+ * @author Theklan
  */
 $messages['eu'] = array(
 	'authorprotect' => 'Babestu orria ez-egileetatik',
@@ -351,6 +352,7 @@ $messages['eu'] = array(
 	'authorprotect-failure' => 'Babestea ez da behar bezala egin',
 	'protect-level-author' => 'Babestu ez-egileetatik',
 	'restriction-level-author' => 'Auto-babesturik',
+	'right-authorprotect' => 'Autore orrialdeak babestu',
 );
 
 /** Persian (فارسی)
@@ -406,6 +408,26 @@ $messages['fr'] = array(
 	'protect-level-author' => 'Protéger des non-auteurs',
 	'restriction-level-author' => 'Auteur-protégé',
 	'right-authorprotect' => 'Protéger la page des auteurs',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'authorprotect' => 'Protègiér la pâge des nan-ôtors',
+	'authorprotect-desc' => 'Pèrmèt a l’ôtor d’una pâge de la protègiér des ôtros utilisators.',
+	'authorprotect-notauthor' => 'Vos éte pas l’ôtor de cela pâge',
+	'authorprotect-confirm' => 'Changiér lo nivél de protèccion',
+	'authorprotect-edit' => 'Rètrendre l’èdicion ux ôtors',
+	'authorprotect-move' => 'Rètrendre lo changement de nom ux ôtors',
+	'authorprotect-expiry' => 'Temps d’èxpiracion',
+	'authorprotect-reason' => 'Rêson',
+	'authorprotect-intro' => 'Utilisâd ceti formulèro por vèrrolyér cela pâge des nan-ôtors.',
+	'authorprotect-success' => 'Protèccion reussia !',
+	'authorprotect-failure' => 'Falyita de la protèccion',
+	'protect-level-author' => 'Protègiér des nan-ôtors',
+	'restriction-level-author' => 'Ôtor-protègiê',
+	'right-authorprotect' => 'Protègiér les pâges des ôtors',
 );
 
 /** Galician (Galego)

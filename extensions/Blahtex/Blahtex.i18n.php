@@ -823,6 +823,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Nike
  * @author Str4nd
  * @author Vililikku
@@ -855,7 +856,7 @@ Ehkä sinun piti käyttää komentoa ”$2”?',
 	'math_ReservedCommand' => 'Komento <tt>$1</tt> on varattu blahtexin sisäiseen käyttöön',
 	'math_TooManyTokens' => 'Syöte on liian pitkä.',
 	'math_UnavailableSymbolFontCombination' => 'Symbolia <tt>$1</tt> ei löydy fontista $2.',
-	'math_UnexpectedNextCell' => 'Komento "&" voi esiintyä ainoastaan "\\begin ... \\end" tyyppisen lohkon sisällä',
+	'math_UnexpectedNextCell' => 'Komento "&" voi esiintyä ainoastaan "\\begin ... \\end" -tyyppisen lohkon sisällä',
 	'math_UnexpectedNextRow' => 'Komento "\\\\" voi esiintyä ainoastaan "\\begin ... \\end" tyyppisen lohkon sisällä',
 	'math_UnmatchedBegin' => 'Kohdattiin "\\begin" ilman sen kanssa vastaavaa "\\end" merkintää',
 	'math_UnmatchedCloseBrace' => 'Kohdattiin sulkeva aaltosulje "}" ilman vastaavaa avaavaa aaltosuljetta "{"',

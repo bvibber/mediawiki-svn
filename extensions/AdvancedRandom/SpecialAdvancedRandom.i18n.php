@@ -196,7 +196,8 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'advancedrandom' => 'Accès a l’hasârd avanciê',
-	'advancedrandom-desc' => 'Obtint una pâge a l’hasârd dês una discussion ou un lim d’un sujèt vers una pâge balyê. Pôt étre utilisâ coment [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] por obtegnir un articllo de qualitât a l’hasârd ou ben coment [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] por obtegnir un fichiér desot licence GFDL a l’hasârd.',
+	'advancedrandom-desc' => 'At una pâge a l’hasârd dens quint que seye èspâço de noms que la pâge de sujèt ou ben de discussion est liyê a una pâge balyê.
+Pôt étre utilisâ coment [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] por avêr per hasârd la pâge de discussion d’un articllo de qualitât, ou ben coment [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] por avêr un fichiér desot Licence de documentacion abada GNU (GFDL).',
 );
 
 /** Galician (Galego)
@@ -439,6 +440,15 @@ $messages['pl'] = array(
 	'advancedrandom' => 'Losowa strona (zaawansowane)',
 	'advancedrandom-desc' => 'Wyświetla losową stronę, na której (lub na jej stronie dyskusji) znajduje się link do danej strony.
 Funkcje można wywołać na przykład jako [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]], co wylosuje artykuł medalowy, lub [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], co wylosuje dowolny plik opatrzony licencją GFDL.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'advancedrandom' => 'Random avansà',
+	'advancedrandom-desc' => "Pija ma pàgina random da minca namespace, discussion o sotpàgina ch'a pòrta a na pàgina dàita.
+It peule dovré com [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] për pijé na discussion ëd n'artìcol a cas, o com [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]  për pijé un file GDFL a cas",
 );
 
 /** Pashto (پښتو)

@@ -330,9 +330,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author ToSter
  */
 $messages['pl'] = array(
 	'rightfunctions-desc' => 'Funkcje parsera pracujące na uprawnieniach',
+	'rightfunctions-casc' => '(ze źródeł kaskadowych)',
+	'rightfunctions-local' => '(z lokalnej strony)',
+	'rightfunctions-ns' => '(z zabezpieczenia przestrzeni nazw)',
 );
 
 /** Portuguese (Português)

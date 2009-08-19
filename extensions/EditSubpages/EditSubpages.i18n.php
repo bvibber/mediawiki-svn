@@ -504,6 +504,22 @@ $messages['pl'] = array(
   #</pre><!-- nie zmieniaj treści tej linii -->',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'editsubpages-desc' => "A përmëtt a j'aministrador ëd dësbloché na pàgina e tute le sotpàgine ëd cola pàgina për modìfiche anònime con [[MediaWiki:Unlockedpages]]",
+	'unlockedpages' => "  #<!-- leave this line alone --><pre>
+# Buta sì sota le pàgine che it veule dësloché an dovrand
+# * Nòm pàgina
+# Le pàgine dësblocà a deuvo ancaminé con në * për esse contà,
+# tut àutr a l'é considrà un coment
+# Ij nòm pàgina a peule esse [[anliure]] e a son case-sensitive
+# Ëdcò, le pàgine ëd discussion a saran automaticament dësblocà con la pàgina
+# Varda http://www.mediawiki.org/wiki/Extension:EditSubpages për savèjne ëd pì
+  #</pre><!-- leave this line alone -->",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

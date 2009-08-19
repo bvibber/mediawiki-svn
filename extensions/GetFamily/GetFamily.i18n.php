@@ -94,6 +94,13 @@ $messages['dsb'] = array(
 	'right-getfamily' => 'Swójźbnu dataju za pywikipediabot napóraś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'right-getfamily' => 'Krei familian dosieron por pywikipediabot',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

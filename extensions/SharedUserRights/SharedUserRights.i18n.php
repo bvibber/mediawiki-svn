@@ -346,12 +346,13 @@ $messages['lb'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
 	'shareduserrights' => 'Управување со заеднички кориснички права',
 	'gblrights-desc' => 'Лесно [[Special:SharedUserRights|раководење со глобални кориснички права]]',
 	'gblrights-logpage' => 'Дневник на глобални права',
-	'gblrights-pagetext' => 'Ова е дневник на сите промени направени на табелата на глобални кориснички права на вики семејство',
+	'gblrights-pagetext' => 'Ова е дневник на сите промени направени во табелата на глобални кориснички права на вики семејство',
 	'gblrights-rights-entry' => 'променета припадност на глобална група за $1 од $2 до $3',
 	'right-userrights-shared' => 'Раководете ги заедничките кориснички права',
 );

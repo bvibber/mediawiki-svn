@@ -632,7 +632,30 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'tasklist' => 'Elenco compiti',
+	'tasklist-parser-desc' => 'Aggiunge la funzione del parser <nowiki>{{#todo:}}</nowiki> per assegnare compiti',
+	'tasklist-special-desc' => "Aggiunge una pagina speciale per la revisione dell'[[Special:TaskList|assegnazione di compiti]]",
+	'tasklistbyproject' => 'Elenco compiti per progetto',
+	'tasklistunknownproject' => 'Progetto sconosciuto',
+	'tasklistunspecuser' => 'Utente non specificato',
 	'tasklistincorrectuser' => 'Nome utente errato',
+	'tasklistemail' => 'Gentile %s',
+	'tasklistemailsubject' => '[%s] Cambiamento elenco compiti',
+	'tasklistmytasks' => 'I propri compiti',
+	'tasklistbyprojectbad' => "Il progetto '''%s''' non è un progetto valido.
+Per un elenco dei progetti validi consultare [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Compiti assegnati per '''%s'''",
+	'tasklistchooseproj' => 'Seleziona progetto:',
+	'tasklistprojdisp' => 'Visualizzare',
+	'tasklistbyname' => '== Elenco delle cose da fare per %s ==',
+	'tasklistnoprojects' => "Errore: sembra che sia stato attivato '''\$wgUseProjects''' ma non è stato creato [[MediaWiki:TodoTasksValidProjects]]. Consultare le [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 istruzioni di installazione] per maggiori dettagli.",
+	'tasklistemailbody' => ",
+
+Qualcuno ha assegnato un nuovo compito per te su %s.
+
+Per vedere l'elenco completo dei propri compiti andare su %s.
+
+Il tuo caro sistema di notifica di %s",
 );
 
 /** Japanese (日本語)

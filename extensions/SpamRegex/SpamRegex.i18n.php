@@ -1573,3 +1573,11 @@ $messages['vo'] = array(
 	'spamregex-text' => '(Vödem)',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'spamregex-text' => '（文字）',
+	'spamregex-summary-log' => '（摘要）',
+);
+

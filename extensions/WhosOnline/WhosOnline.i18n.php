@@ -391,6 +391,14 @@ $messages['pl'] = array(
 	'whosonline-desc' => 'Wyświetla [[Special:WhosOnline|listę]] zalogowanych i anonimowych użytkowników będących online',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'whosonline' => "Chi a l'é an linia",
+	'whosonline-desc' => "A visualisa [[Special:WhosOnline|na lista]] dj'utent logà e anònim al moment an linia",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -540,11 +548,13 @@ $messages['vi'] = array(
 	'whosonline-desc' => 'Hiển thị [[Special:WhosOnline|danh sách]] các thành viên đã đăng nhập lẫn vô danh hiện đang trực tuyến',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
-	'whosonline'      => '邊位上線',
+	'whosonline' => '邊位上線',
 	'whosonline-desc' => '顯示而家在線嘅登入同匿名用戶嘅[[Special:WhosOnline一覽]]',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'whosonline' => '谁正联机',
 	'whosonline-desc' => '显示现时联机的登入与匿名用户的[[Special:WhosOnline列表]]',

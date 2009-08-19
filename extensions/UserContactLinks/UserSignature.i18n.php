@@ -162,9 +162,11 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Theklan
  */
 $messages['eu'] = array(
 	'usercontactlink-baduser' => 'Lankide izen okerra',
+	'usercontactlink-desc' => '^^^lankidea^^^ sintaxia erabilita beste lankide baten erabiltzaile izena erabiltzea baimentzen du',
 );
 
 /** Persian (فارسی)
@@ -388,6 +390,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'usercontactlink-baduser' => 'Nieprawidłowa nazwa użytkownika',
 	'usercontactlink-desc' => 'Umożliwia w prosty i logiczny sposób dodawanie nowych nazw użytkownika za pomocą polecenia ^^^user^^^.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'usercontactlink-baduser' => 'Nòm utent nen giust',
+	'usercontactlink-desc' => 'A dà la possibilità ëd gionté an manera sempia e coerenta àutri nòm utent an dovrand la sintass ^^^user^^^',
 );
 
 /** Pashto (پښتو)

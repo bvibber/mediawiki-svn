@@ -297,6 +297,7 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'povwatch' => 'PovWatch',
@@ -330,8 +331,8 @@ Klikněte na tlačítko níže pro odhlášení.',
 Klikněte na tlačítko níže pro přihlášení.',
 	'povwatch_subscribe' => 'Přihlásit odběr',
 	'povwatch_added' => 'přidáno',
-	'right-povwatch_admin' => 'Spravovat oprávnění pro přidávání stránek do seznamu sledovaných jiných uživatelů',
-	'right-povwatch_user' => 'Přidávat stránky do seznamu sledovaných jiných uživatelů',
+	'right-povwatch_admin' => 'Správa oprávnění pro přidávání stránek jiným uživatelům do seznamu sledovaných',
+	'right-povwatch_user' => 'Přidávání stránek jiným uživatelům do seznamu sledovaných',
 	'action-povwatch_admin' => 'spravovat práva uživatelů PovWatch',
 	'action-povwatch_user' => 'přidat tuto stránku na seznam sledovaných stránek jiného uživatele',
 );

@@ -435,15 +435,16 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  * @author ToSter
  */
 $messages['pl'] = array(
 	'useroptionstats' => 'Statystyki opcji użytkowników',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Strona specjalna]] przedstawiająca użycie opcji dostępnych dla użytkowników MediaWiki',
-	'uos-warn' => 'PHPlot nie jest zainstalowany!',
+	'uos-warn' => 'PHPlot nie został zainstalowany!',
 	'uos-choose' => 'Wybierz jedną z następujących opcji użytkowników: $1',
-	'uos-unknown' => '*Domyślny',
-	'uos-other' => '*Inny',
+	'uos-unknown' => '*Domyślna',
+	'uos-other' => '*Inna',
 	'uos-title' => 'Rozkład wartości opcji użytkowników $1',
 );
 
@@ -566,9 +567,11 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'uos-unknown' => '*默认',
 	'uos-other' => '*其他',
 );
 

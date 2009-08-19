@@ -298,6 +298,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -306,11 +307,11 @@ $messages['he'] = array(
 	'fundraiserportal-plain-button' => 'תמכו בוויקיפדיה!',
 	'fundraiserportal-ruby-button' => 'תרמו כעת',
 	'fundraiserportal-rubytext-button' => 'תרמו כעת',
-	'fundraiserportal-rubytext-message' => 'כל תרומה מסייעת לשמור על ויקיפדיה חופשית לכולם.',
+	'fundraiserportal-rubytext-message' => 'כל תרומה עוזרת לנו לשמור על ויקיפדיה חופשית לכולם.',
 	'fundraiserportal-rubytext-close' => 'הסתרת ההצעה מעתה ואילך',
 	'fundraiserportal-sapphire-button' => 'תרמו כעת',
 	'fundraiserportal-tourmaline-button' => 'תרמו כעת',
-	'fundraiserportal-tourmaline-message' => 'כל תרומה מסייעת לשמור על ויקיפדיה חופשית לכולם.',
+	'fundraiserportal-tourmaline-message' => 'כל תרומה עוזרת לנו לשמור על ויקיפדיה חופשית לכולם.',
 	'fundraiserportal-tourmaline-close' => 'הסתרת ההצעה מעתה ואילך',
 );
 
@@ -431,6 +432,15 @@ $messages['km'] = array(
 	'fundraiserportal-rubytext-button' => 'វិភាគទាន ឥឡូវ​នេះ​',
 	'fundraiserportal-sapphire-button' => 'វិភាគទាន ឥឡូវ​នេះ​',
 	'fundraiserportal-tourmaline-button' => 'វិភាគទាន ឥឡូវ​នេះ​',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'fundraiserportal-plain-button' => '위키백과를 지원해주세요!',
+	'fundraiserportal-ruby-button' => '지금 기부하기',
+	'fundraiserportal-rubytext-button' => '지금 기부하기',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -192,6 +192,17 @@ $messages['el'] = array(
 	'mostrevisors-viewcontributors' => 'Εμφάνιση κύριων συνεισφέροντων',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'mostrevisors-limitlinks' => 'Montri ĝis $1 paĝoj',
+	'mostrevisors-namespace' => 'Nomspaco:',
+	'mostrevisors-submit' => 'Ek',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|redaktanto|redaktantoj}}',
+	'mostrevisors-viewcontributors' => 'Vidi ĉefajn kontribuantojn',
+);
+
 /** Spanish (Español)
  * @author Imre
  */
@@ -232,7 +243,7 @@ $messages['fi'] = array(
 	'mostrevisors-showredir' => 'Näytä ohjaussivut',
 	'mostrevisors-hideredir' => 'Piilota ohjaussivut',
 	'mostrevisors-users' => '– $1 {{PLURAL:$1|muokkaaja|muokkaajaa}}',
-	'mostrevisors-viewcontributors' => 'Tarkastele päämuokkaajia',
+	'mostrevisors-viewcontributors' => 'Näytä päämuokkaajat',
 );
 
 /** French (Français)
@@ -444,6 +455,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'mostrevisors' => 'Säiten déi vun de meeschte Leit iwwerliest goufen',
 	'mostrevisors-limitlinks' => 'Bis zu $1 Säite weisen',
 	'mostrevisors-namespace' => 'Nummraum:',
 	'mostrevisors-none' => 'Näischt fonnt.',
@@ -498,11 +510,39 @@ $messages['oc'] = array(
 	'mostrevisors-viewcontributors' => 'Veire los contributors principals',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'mostrevisors' => 'Strony z największą liczbą odwiedzających',
+	'mostrevisors-desc' => 'Lista [[Special:MostRevisors|stron z największą liczbą odwiedzających]]',
+	'mostrevisors-header' => "'''Ta strona zawiera {{PLURAL:$1|stronę|listę $1 stron}} z największa liczbą odwiedzających na tej wiki.'''",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
 	'mostrevisors-submit' => 'ورځه',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'mostrevisors' => 'Páginas com mais editores',
+	'mostrevisors-desc' => 'Lista [[Special:MostRevisors|páginas com mais editores]]',
+	'mostrevisors-header' => "'''Esta página lista {{PLURAL:$1|a página|as $1 pages}} com mais editores nesta wiki.'''",
+	'mostrevisors-limitlinks' => 'Exibir até $1 {{PLURAL:$1|página|páginas}}',
+	'mostrevisors-namespace' => 'Domínio:',
+	'mostrevisors-none' => 'Nenhuma entrada encontrada.',
+	'mostrevisors-ns-header' => "'''Esta página lista {{PLURAL:$1|a página|as $1 páginas}} com mais editores no domínio $2.'''",
+	'mostrevisors-showing' => 'Listando $1 {{PLURAL:$1|página|páginas}}:',
+	'mostrevisors-submit' => 'Ir',
+	'mostrevisors-showredir' => 'Exibir páginas de redirecionamento',
+	'mostrevisors-hideredir' => 'Esconder páginas de redirecionamento',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editores}}',
+	'mostrevisors-viewcontributors' => 'Ver principais contribuidores',
 );
 
 /** Romanian (Română)

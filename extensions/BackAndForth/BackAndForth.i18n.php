@@ -292,8 +292,9 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'backforth-next' => 'Siuvent ($1)',
-	'backforth-prev' => 'Prècèdent ($1)',
+	'backforth-next' => 'Aprés ($1)',
+	'backforth-desc' => 'Apond des lims de navigacion alfabèticos « Aprés » et « Devant » d’amont les pâges.',
+	'backforth-prev' => 'Devant ($1)',
 );
 
 /** Western Frisian (Frysk)

@@ -437,12 +437,45 @@ Definissètz una classa de tablèu que fa mens de 255 caractèrs.',
 	'plotters-errors' => '{{PLURAL:$1|Error|Errors}} de traçadors :',
 );
 
+/** Polish (Polski)
+ * @author ToSter
+ */
+$messages['pl'] = array(
+	'plotters-uses' => 'Liczba użyć',
+	'plotters-missing-script' => 'Nie zdefiniowano skryptu.',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */
 $messages['pt'] = array(
 	'plotters-uses' => 'Usos',
 	'plotters-no-data' => 'Não foram providenciados dados.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'plotters-desc' => 'Permite aos utilizadores que usem código JavaScript personalizado em marcas jsplot',
+	'plotters' => 'Plotters',
+	'plotters-title' => 'Plotters',
+	'plotters-pagetext' => 'Abaixo está uma lista de "plotters" especiais que os utilizadores podem usar em suas marcas jsplot, como definido por [[MediaWiki:Plotters-definition]].
+Este resumo provê acesso fácil as páginas de mensagens de sistema que definem código e descrição de cada "plotter".',
+	'plotters-uses' => 'Usos',
+	'plotters-missing-script' => 'Nenhum script foi definido.',
+	'plotters-missing-arguments' => 'Nenhum argumento especificado.',
+	'plotters-excessively-long-scriptname' => 'O nome do script é muito longo.
+Por favor defina um script cujo nome tenha no máximo 255 caracteres.',
+	'plotters-excessively-long-preprocessorname' => 'O nome do preprocessador é muito longo.
+Por favor defina um preprocessador cujo nome tenha no máximo 255 caracteres.',
+	'plotters-excessively-long-name' => 'O nome do plot é muito longo.
+Por favor defina um plot cujo nome tenha no máximo 255 caracteres.',
+	'plotters-excessively-long-tableclass' => 'A tableclass é muito longa.
+Por favor defina uma tableclass cujo nome tenha no máximo 255 caracteres.',
+	'plotters-no-data' => 'Não foram fornecidos dados.',
+	'plotters-invalid-renderer' => 'Um renderizador inválido foi selecionado.',
+	'plotters-errors' => '{{PLURAL:$1|Erro|Erros}} nos plotters:',
 );
 
 /** Romanian (Română)

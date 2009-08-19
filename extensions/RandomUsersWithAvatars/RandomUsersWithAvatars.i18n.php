@@ -266,6 +266,14 @@ $messages['pl'] = array(
 	'random-users-avatars-desc' => 'Dodaje znacznik <tt>&lt;randomuserswithavatars&gt;</tt> wyświetlający portret losowo wybranego użytkownika',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'random-users-avatars-title' => 'Ancontra la comunità',
+	'random-users-avatars-desc' => "A gionta ël tag <tt>&lt;randomuserswithavatars&gt;</tt> për visualisé j'avatar dj'utent sërnù a cas",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

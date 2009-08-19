@@ -262,6 +262,8 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'deletequeue-review-reason' => 'Opmerkings:',
 	'deletequeue-vote-reason' => 'Opmerkings:',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-case-reason' => 'Rede:',
 );
 
 /** Amharic (አማርኛ)
@@ -1384,6 +1386,11 @@ Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
 	'deletequeue-list-header-votes' => 'Aproboj kaj malaproboj',
 	'deletequeue-list-header-expiry' => 'Findato',
 	'deletequeue-list-header-discusspage' => 'Diskuto-paĝo',
+	'deletequeue-list-header-reason' => 'Kialo por forigado',
+	'deletequeue-case-details' => 'Bazaj detaloj',
+	'deletequeue-case-page' => 'Paĝo:',
+	'deletequeue-case-reason' => 'Kialo:',
+	'deletequeue-case-expiry' => 'Findaŭro:',
 );
 
 /** Spanish (Español)
@@ -4846,6 +4853,13 @@ Du koast dien oaine Unnerstutsenge of Oulienenge fon ju Läskenge [{{fullurl:{{F
 	'deletequeue-list-header-votes' => 'Unnerstutsengen un Oulienengen',
 	'deletequeue-list-header-expiry' => 'Ouloopdoatum',
 	'deletequeue-list-header-discusspage' => 'Diskussionssiede',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'deletequeue-case-reason' => 'Alesan:',
 );
 
 /** Swedish (Svenska)

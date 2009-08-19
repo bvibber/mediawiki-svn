@@ -137,6 +137,14 @@ $messages['el'] = array(
 	'right-webchat' => 'Επιτρέπεται να χρησιμοποιεί τη [[Special:WebChat|δικτυακή συζήτηση]]',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'webchat' => 'Retbabilo',
+	'right-webchat' => 'Permesita uzi [[Special:WebChat|Babilejon]]',
+);
+
 /** Spanish (Español)
  * @author Dferg
  * @author Locos epraix
@@ -433,6 +441,19 @@ Pripojíte sa jednoducho stlačením tlačidla „Pripojiť“.
 Ak ste prihlásený, vaša prezývka bude vyplnená automaticky.
 Anonymní používatelia dostanú automaticky vytvorenú prezývku, ale možno ju zmeniť.',
 	'right-webchat' => 'Povolené používať [[Special:WebChat|webový chat]]',
+);
+
+/** Swedish (Svenska)
+ * @author Skalman
+ */
+$messages['sv'] = array(
+	'webchat' => 'Webbchatt',
+	'webchat-desc' => 'Lägger till en [[Special:WebChat|specialsida]] för att chatta i realtid med andra wikianvändare',
+	'webchat-header' => 'Den här specialsidan låter dig samarbeta i realtid med andra användare på den här wikin.
+För att ansluta, tryck helt enkelt på Anslut-knappen.
+Om du är inloggad kommer ditt användarnamn vara förifyllt.
+Anonyma användare får ett automatiskt genererat användarnamn, men det kan ändras.',
+	'right-webchat' => 'Får använda [[Special:WebChat|webbchatten]]',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

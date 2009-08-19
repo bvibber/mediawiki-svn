@@ -486,6 +486,17 @@ Ta wiadomość została wysłana poprzez system pocztowy {{SITENAME}} przez $1.
 $2',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'email-desc' => "A përmëtt che antestassion e p ëd pàgina përsonalisà a sio giontà a j'e-mail ëd j'utent",
+	'email_footer' => "----------------------------------------------------------------------------
+St'e-mail-sì a l'é state mandà con ël sistema d'e-mail ëd {{SITENAME}} da $1.
+
+$2",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

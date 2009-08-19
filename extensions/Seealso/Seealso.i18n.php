@@ -456,6 +456,14 @@ $messages['pl'] = array(
 	'seealso-desc' => 'Umiejscawianie nagłówka „Zobacz też” za pomocą znacznika <code><nowiki><seealso></nowiki></code>',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'seealso' => 'Varda ëdcò',
+	'seealso-desc' => "Antestassion 'Varda ëdcò' localisà an dovrand ël tag <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

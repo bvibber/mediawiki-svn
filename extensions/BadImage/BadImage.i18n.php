@@ -690,10 +690,11 @@ $messages['frc'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'badimages' => 'Lista de les émâges endèsirâbles',
+	'badimages' => 'Lista de les crouyes émâges',
+	'badimages-desc' => 'Ôgmente la capacitât de la lista de les crouyes émâges de MediaWiki.',
 	'badimages-add-btn' => 'Apondre',
 	'badimages-added' => '$1 at étâ apondua a la lista.',
-	'badimages-count' => "Y at '''$1''' émâges dens la lista de les émâges endèsirâbles.",
+	'badimages-count' => "Y at '''$1''' émâge{{PLURAL:$1||s}} dens la lista de les crouyes émâges.",
 	'badimages-name' => 'Nom :',
 	'badimages-not-added' => 'L’émâge at pas possu étre apondua.',
 	'badimages-not-removed' => 'L’émâge at pas possu étre enlevâ.',
@@ -703,12 +704,13 @@ $messages['frp'] = array(
 	'badimages-remove-confirm' => 'Volyéd confirmar que vos voléd enlevar $1 de la lista :',
 	'badimages-removed' => '$1 at étâ enlevâ de la lista.',
 	'badimages-subheading' => 'Lista d’ora',
-	'badimages-unprivileged' => '(Vos avéd pas la pèrmission de modifiar la lista.)',
-	'badimages-log-name' => 'Lista de les émâges endèsirâbles',
-	'badimages-log-header' => 'Cen est l’historico de les modificacions de la [[{{MediaWiki:Badimages-page}}|lista de les émâges endèsirâbles]].',
-	'badimages-log-add' => 'at apondu [[$1]] a la lista de les émâges endèsirâbles',
-	'badimages-log-remove' => 'at enlevâ [[$1]] de la lista de les émâges endèsirâbles',
-	'badimages-page' => '{{ns:help}}:Lista de les émâges endèsirâbles',
+	'badimages-unprivileged' => '(Vos avéd pas la pèrmission de changiér la lista.)',
+	'badimages-log-name' => 'Lista de les crouyes émâges',
+	'badimages-log-header' => 'Cen est l’historico des changements de la [[{{MediaWiki:Badimages-page}}|lista de les crouyes émâges]].',
+	'badimages-log-add' => 'at apondu [[$1]] a la lista de les crouyes émâges',
+	'badimages-log-remove' => 'at enlevâ [[$1]] de la lista de les crouyes émâges',
+	'badimages-page' => '{{ns:help}}:Lista de les crouyes émâges',
+	'right-badimages' => 'Changiér la lista de les crouyes émâges',
 );
 
 /** Western Frisian (Frysk)
@@ -1200,6 +1202,13 @@ $messages['km'] = array(
 	'badimages-log-remove' => 'បានដកចេញ [[$1]] ពី បញ្ជី រូបភាពអន់',
 	'badimages-page' => '{{ns:help}}:បញ្ជីរូបភាពមិនល្អ',
 	'right-badimages' => 'បន្ទាន់សម័យ​បញ្ជីរូបភាពអន់​',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'badimages-name' => 'ಹೆಸರು:',
 );
 
 /** Korean (한국어)

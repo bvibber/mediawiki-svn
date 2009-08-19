@@ -459,6 +459,7 @@ $messages['el'] = array(
 	'todo' => 'Λίστα εργασιών',
 	'todo-tab' => 'τα πρακτέα',
 	'todo-new-queue' => 'Νέο',
+	'todo-mail-subject' => 'Ολοκληρώθηκε το αντικείμενο στην todo λίστα της $1',
 	'todo-invalid-item' => 'Χαμένο ή άκυρο στοιχείο',
 	'todo-update-else-item' => 'Προσπάθεια ενημέρωσης αντικειμένων κάποιου άλλου',
 	'todo-unrecognize-type' => 'Μη αναγνωρισμένος τύπος',
@@ -501,6 +502,7 @@ $messages['eo'] = array(
 	'todo-issue-summary' => 'Enmeti resumon:',
 	'todo-form-details' => 'Detaloj:',
 	'todo-form-submit' => 'Enigi serĉomendon',
+	'right-todo' => 'Havi taskliston',
 );
 
 /** Spanish (Español)

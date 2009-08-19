@@ -1016,6 +1016,7 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
@@ -1026,6 +1027,7 @@ $messages['zh-hans'] = array(
 	'postcomment_addcommentdiscussionpage' => '在此讨论页加入您的评论',
 	'postcomment_leavemessagefor' => '为$1留言',
 	'postcomment_post' => '发表',
+	'postcomment_on' => '于',
 	'postcomment_said' => '说',
 	'postcomment_invalidrequest' => '无效请求。',
 	'postcomment_replyto' => '回复$1',

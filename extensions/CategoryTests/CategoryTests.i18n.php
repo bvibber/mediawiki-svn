@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'categorytests-desc' => 'دوال لاختبار التاصنيف',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'categorytests-desc' => 'Funkcije za testiranje kategorije',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */
@@ -83,6 +90,13 @@ $messages['fy'] = array(
  */
 $messages['gsw'] = array(
 	'categorytests-desc' => 'Funktione go Kategorie priefe',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'categorytests-desc' => 'פונקציות לבדיקת קטגוריות',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -160,6 +174,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'categorytests-desc' => 'Funkcje do testowania kategorii',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categorytests-desc' => 'Funsion për test ëd categorìa',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

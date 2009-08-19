@@ -957,6 +957,17 @@ $messages['vo'] = array(
 	'nss-welcome-mail-subject' => 'Kalijafam',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'am-username' => '用户名',
+	'am-email' => '电子邮件',
+	'am-active' => '活跃',
+	'nss-rights' => '权利',
+	'nss-save-changes' => '保存更改',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

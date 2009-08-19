@@ -1043,10 +1043,12 @@ $messages['el'] = array(
 	'viewapc-ls-header-deleted' => 'Διαγραμμένος',
 	'viewapc-ls-delete' => '[Διαγραφή τώρα]',
 	'viewapc-ls-scope-deleted' => 'Διαγραμμένος',
+	'viewapc-ls-scope-both' => 'Και τα δύο',
 	'viewapc-ls-sort-size' => 'Μέγεθος',
 	'viewapc-ls-sort-name' => 'Όνομα',
 	'viewapc-ls-sort-created' => 'Δημιουργημένος',
 	'viewapc-ls-sort-deleted' => 'Διαγραμμένος',
+	'viewapc-ls-limit-none' => 'Όλα',
 	'viewapc-version-info' => 'Πληροφορίες έκδοσης',
 );
 
@@ -1088,7 +1090,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-fragmentation-info' => 'Fragmentiĝo: $1 ($2 el $3 en $4 {{PLURAL:$4|fragmento|fragmentoj}})',
 	'viewapc-fragmentation-none' => 'Fragmentiĝo: neniom da fragmentiĝo',
 	'viewapc-display-attribute' => 'Atribuo',
-	'viewapc-display-value' => 'Valuto',
+	'viewapc-display-value' => 'Valoro',
 	'viewapc-display-filename' => 'Dosiernomo',
 	'viewapc-display-device' => 'Aparato',
 	'viewapc-display-info' => 'Nomo',
@@ -2790,7 +2792,10 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'viewapc-display-info' => 'ಹೆಸರು',
 	'viewapc-ls-submit' => 'ಹೋಗು!',
+	'viewapc-ls-header-name' => 'ಹೆಸರು',
+	'viewapc-ls-sort-name' => 'ಹೆಸರು',
 );
 
 /** Korean (한국어)

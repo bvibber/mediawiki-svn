@@ -31,10 +31,12 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Naudefj
  * @author SPQRobin
  */
 $messages['af'] = array(
 	'showprocesslist-user' => 'Gebruiker',
+	'showprocesslist-time' => 'Tyd',
 );
 
 /** Arabic (العربية)

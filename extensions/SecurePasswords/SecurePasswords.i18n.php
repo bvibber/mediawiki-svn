@@ -165,6 +165,21 @@ $messages['el'] = array(
 	'securepasswords-word' => 'να μην είναι μία λέξη',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'securepasswords-valid' => 'Via pasvorto estas malvalida aŭ tro mallonga.
+Ĝi devas:',
+	'securepasswords-minlength' => 'esti longa almenaŭ $1 {{PLURAL:$1|signo|signoj}}',
+	'securepasswords-lowercase' => 'enhavi almenaŭ 1 minusklan signon',
+	'securepasswords-uppercase' => 'enhavi almenaŭ 1 majusklan signon',
+	'securepasswords-digit' => 'enhavi almenaŭ 1 ciferon',
+	'securepasswords-special' => 'enhavi almenaŭ 1 specialan signon (specialaj signoj estas: $1)',
+	'securepasswords-username' => 'esti malsama de via salutnomo',
+	'securepasswords-word' => 'ne esti vorto',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Sanbec

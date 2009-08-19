@@ -94,6 +94,7 @@ $messages['ar'] = array(
 	'readerfeedback-finished' => 'شكرا لك!',
 	'readerfeedback-tagfilter' => 'وسم:',
 	'tooltip-ca-ratinghist' => 'تقييمات القراء لهذه الصفحة',
+	'specialpages-group-feedback' => 'رأي المشاهد',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -439,6 +440,7 @@ $messages['eo'] = array(
 	'readerfeedback-voted' => "'''Verŝajne vi jam taksis ĉi tiun paĝon.''' ([$3 Ĉu komentoj aŭ demandoj?]).",
 	'readerfeedback-submitting' => 'Sendante...',
 	'readerfeedback-finished' => 'Dankon!',
+	'readerfeedback-tagfilter' => 'Etikedo:',
 	'tooltip-ca-ratinghist' => 'Taksoj de legintoj de ĉi tiu paĝo',
 );
 
@@ -527,7 +529,7 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'readerfeedback-desc' => 'Sivun tarkistaminen mahdollistaa lukijoiden antaa palautteensa luokkakohtaisten arvosanojen muodossa.',
 	'readerfeedback' => 'Mitä mieltä olet tästä sivusta?',
-	'readerfeedback-text' => "''Käytäthän hetken arvioidaksesi alla olevan sivun. Palautteesi on arvokas ja auttaa meitä parantamaan verkkosivustoamme.''",
+	'readerfeedback-text' => "''Käytäthän hetken arvioidaksesi alla olevan sivun. Palautteesi on arvokas ja auttaa parantamaan verkkosivustoamme.''",
 	'readerfeedback-reliability' => 'Luettavuus',
 	'readerfeedback-completeness' => 'Täydellisyys',
 	'readerfeedback-npov' => 'Neutraalius',
@@ -541,7 +543,7 @@ $messages['fi'] = array(
 	'readerfeedback-level-4' => 'Todella mainio',
 	'readerfeedback-submit' => 'Lähetä',
 	'readerfeedback-main' => 'Vain sisältösivuja voi arvioida.',
-	'readerfeedback-success' => "'''Kiitos kun arvioit tämän sivun!''' ([$3 Kommentteja tai kysymyksiä?]).",
+	'readerfeedback-success' => "'''Kiitos tämän sivun arvioimisesta.''' ([$3 Kommentteja tai kysymyksiä?]).",
 	'readerfeedback-voted' => "'''Näyttäisi siltä että olet ja antanut tälle sivulle arvosanat''' ([$3 Kommentteja tai kysymyksiä?]).",
 	'readerfeedback-submitting' => 'Lähetetään…',
 	'readerfeedback-finished' => 'Kiitos!',
@@ -705,9 +707,11 @@ $messages['gsw'] = array(
  * @author Ori229
  * @author Rotemliss
  * @author StuB
+ * @author YaronSh
  * @author דניאל ב.
  */
 $messages['he'] = array(
+	'readerfeedback-desc' => 'אימות דפים מאפשר לקוראים לתת משוב באמצעות הטופס לדירוגים על בסיס קטגוריה',
 	'readerfeedback' => 'מה אתם חושבים על הדף הזה?',
 	'readerfeedback-text' => "'''אנא השקיעו רגע מזמנכם כדי לדרג דף זה. למשוב שתתנו יש ערך רב והוא יעזור לנו לשפר את האתר.'''",
 	'readerfeedback-reliability' => 'מהמינות',
@@ -727,7 +731,9 @@ $messages['he'] = array(
 	'readerfeedback-voted' => "'''נראה שכבר דירגתם דף זה''' ([$3 הערות או שאלות?]).",
 	'readerfeedback-submitting' => 'נשלח...',
 	'readerfeedback-finished' => 'תודה!',
+	'readerfeedback-tagfilter' => 'תגית:',
 	'tooltip-ca-ratinghist' => 'דירוג קוראים לדף זה',
+	'specialpages-group-feedback' => 'דעת הצופה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -827,6 +833,7 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
+	'readerfeedback-desc' => 'Validasi halaman memungkinkan pengguna untuk memberikan umpan balik dalam bentuk peringkat berkategori',
 	'readerfeedback' => 'Bagaimana menurut Anda halaman ini?',
 	'readerfeedback-text' => "''Silakan menilai halaman di bawah ini. Umpan balik Anda sangat berharga dan membantu meningkatkan situs web ini.''",
 	'readerfeedback-reliability' => 'Reliabilitas',
@@ -848,6 +855,7 @@ $messages['id'] = array(
 	'readerfeedback-finished' => 'Terima kasih!',
 	'readerfeedback-tagfilter' => 'Tag:',
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca atas halaman ini:',
+	'specialpages-group-feedback' => 'Opini pembaca',
 );
 
 /** Italian (Italiano)
@@ -990,6 +998,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'readerfeedback-desc' => 'Page validation erlaabt de Liser e Feedback a Form vun enger Bewertung mat kategorien ze ginn',
 	'readerfeedback' => 'Wat haalt Dir vun dëser Säit?',
 	'readerfeedback-text' => "''Huelt Iech w.e.g. e Moment fir dës Säit ze bewerten. Äre Feedback ass wertvoll an hëlleft eis eisen Internet-Site ze verbesseren.''",
 	'readerfeedback-reliability' => 'Zouverlässigkeet',
@@ -1191,7 +1200,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'readerfeedback-desc' => 'La validacion d’articles permet als lectors de balhar lor vejaire jos forma d’evaluacions per categoria',
 	'readerfeedback' => "Qué pensatz d'aquesta pagina ?",
-	'readerfeedback-text' => "''Consacratz un moment per notar aquesta pagina çaijós. Vòstras impressions son preciosas e nos ajudan a melhorar nòstre sit internet.''",
+	'readerfeedback-text' => "''Consacratz un moment per notar aquesta pagina çaijós. Vòstras impressions son preciosas e nos ajudan a melhorar nòstre site internet.''",
 	'readerfeedback-reliability' => 'Fisabilitat',
 	'readerfeedback-completeness' => 'Estat complet',
 	'readerfeedback-npov' => 'Neutralitat',
@@ -1312,6 +1321,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'readerfeedback-desc' => "Pàgene de validazione ca permette a le letture de dà 'nu retorne jndr'à 'u module de le pundegge de categorije",
 	'readerfeedback' => 'Ce pinze de sta pàgene?',
 	'readerfeedback-text' => "''Pe piacere pigghiate 'nu mumende pe dà 'nu pundegge a 'a pàgene d'aqquà sotte. 'A valutazione toje jè 'mbortande e 'n'aiute a aggiustà 'u site.''",
 	'readerfeedback-reliability' => 'Affedabbeletà',
@@ -1333,6 +1343,7 @@ $messages['roa-tara'] = array(
 	'readerfeedback-finished' => "Grazie 'mbà",
 	'readerfeedback-tagfilter' => 'Tag:',
 	'tooltip-ca-ratinghist' => 'Pundegge de le letture de sta pàgene',
+	'specialpages-group-feedback' => "Visitatore de l'opiniune",
 );
 
 /** Russian (Русский)

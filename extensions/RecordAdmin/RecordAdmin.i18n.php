@@ -83,6 +83,13 @@ Do not translate or change tag names, or link anchors.',
 	'right-recordadmin' => '{{doc-right|recordadmin}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'recordadmin-buttonsave' => 'Stoor',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda
@@ -437,6 +444,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'recordadmin-select' => 'Elekti',
 	'recordadmin-newsearch' => 'Nova $1 serĉo',
 	'recordadmin-submit' => 'Ek!',
 	'recordadmin-create' => 'Trovi aŭ krei rikordon "$1"',
@@ -447,7 +455,7 @@ $messages['eo'] = array(
 	'recordadmin-buttonsearch' => 'Serĉi',
 	'recordadmin-buttoncreate' => 'Krei',
 	'recordadmin-searchresult' => 'Rezultoj de serĉo',
-	'recordadmin-edit' => 'Redaktante $1',
+	'recordadmin-edit' => 'Redaktante $2 rekordon "$1"',
 	'recordadmin-updatesuccess' => '$1 ĝisdatigita',
 	'recordadmin-buttonsave' => 'Konservi',
 	'recordadmin-createlink' => 'krei unu',
@@ -455,6 +463,11 @@ $messages['eo'] = array(
 	'recordadmin-viewlink' => 'vidi',
 	'recordadmin-editlink' => 'redakti',
 	'recordadmin-created' => 'Kreita',
+	'recordadmin-modified' => 'Modifita',
+	'recordadmin-actions' => 'Agoj',
+	'recordadmin-needscontent' => 'Aldoni enhavon...',
+	'recordadmin-editwithform' => 'Redakti per formularo',
+	'recordadmin-typeinfo' => '$1 rekordo',
 );
 
 /** Spanish (Español)
@@ -534,21 +547,22 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'recordadmin-select' => 'Valitse',
+	'recordadmin-newsearch' => 'Uusi haku $1',
 	'recordadmin-submit' => 'Lähetä',
 	'recordadmin-alreadyexist' => '”$1” on jo olemassa.',
 	'recordadmin-createsuccess' => '$1 luotiin',
 	'recordadmin-createerror' => 'Tapahtui virhe, kun yritettiin luoda $1.',
-	'recordadmin-badtitle' => 'Virheellinen otsikko!',
+	'recordadmin-badtitle' => 'Virheellinen otsikko.',
 	'recordadmin-invert' => 'Käänteinen valinta',
 	'recordadmin-buttonsearch' => 'Etsi',
 	'recordadmin-buttoncreate' => 'Luo',
-	'recordadmin-buttonreset' => 'Palautetaan alkutilaan',
+	'recordadmin-buttonreset' => 'Tyhjennä',
 	'recordadmin-searchresult' => 'Hakutulokset',
 	'recordadmin-updatesuccess' => '$1 päivitetty',
 	'recordadmin-updateerror' => 'Päivityksessä tapahtui virhe',
 	'recordadmin-buttonsave' => 'Tallenna',
 	'recordadmin-createlink' => 'luo sellainen',
-	'recordadmin-summary-typecreated' => 'Uusi $1 luotiin',
+	'recordadmin-summary-typecreated' => 'Luotiin uusi $1',
 	'recordadmin-viewlink' => 'näytä',
 	'recordadmin-editlink' => 'muokkaa',
 	'recordadmin-created' => 'Luotu',
@@ -1264,11 +1278,14 @@ $messages['pdc'] = array(
  * @author Derbeth
  * @author Leinad
  * @author Sp5uhe
+ * @author ToSter
  */
 $messages['pl'] = array(
 	'recordadmin' => 'Administracja rekordami',
 	'recordadmin-desc' => '[[Special:RecordAdmin|Strona specjalna]] służąca do wyszukiwania i edytowania stron ze zbiorami danych (rekordami) przy użyciu formularza',
 	'recordadmin-select' => 'Wybierz typ rekordu, którym chcesz zarządzać',
+	'recordadmin-createtype' => 'Podaj nazwę nowego typu rekordowego, który chcesz utworzyć',
+	'recordadmin-recordtype' => 'typ rekordowy',
 	'recordadmin-newsearch' => 'Nowe wyszukiwanie $1',
 	'recordadmin-newrecord' => 'Wybierz inny typ rekordu',
 	'recordadmin-submit' => 'OK',
@@ -1296,6 +1313,11 @@ $messages['pl'] = array(
 	'recordadmin-viewlink' => 'zobacz',
 	'recordadmin-editlink' => 'edytuj',
 	'recordadmin-created' => 'Utworzony',
+	'recordadmin-modified' => 'Zmienione',
+	'recordadmin-actions' => 'Operacje',
+	'recordadmin-needscontent' => 'Dodaj zawartość...',
+	'recordadmin-editwithform' => 'Edytuj za pomocą formularza',
+	'recordadmin-typeinfo' => 'Rekord typu $1',
 	'right-recordadmin' => 'Znajdywanie i edycja stron z rekordami danych',
 );
 

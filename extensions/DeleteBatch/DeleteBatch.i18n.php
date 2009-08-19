@@ -67,6 +67,7 @@ $messages['gom-latn'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'deletebatch-delete' => 'Skrap',
 	'deletebatch-select-yourself' => 'u',
 );
 
@@ -299,7 +300,7 @@ $messages['eo'] = array(
 	'deletebatch-help' => 'Por forigi aron de paĝoj. Vi povas aŭ fari unuopan forigon, aŭ forigi paĝojn listitajn en dosiero.
 Selektu uzanton kiu estos montrata en forigadaj protokoloj.
 Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "|" en ĉiu linio.',
-	'deletebatch-caption' => 'Paĝlisto',
+	'deletebatch-caption' => 'Paĝlisto:',
 	'deletebatch-title' => 'Forigi aron',
 	'deletebatch-link-back' => 'Vi povas reiri al la etendilo',
 	'deletebatch-as' => 'Voki la skripton kiel',

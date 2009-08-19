@@ -155,6 +155,13 @@ $messages['fr'] = array(
 	'breadcrumbs-desc' => 'Affiche le lien des dernières pages que l’utilisateur a visitées dans le wiki',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'breadcrumbs-desc' => 'Montre lo lim de les dèrriéres pâges que l’utilisator at visitâs dens lo vouiqui.',
+);
+
 /** Western Frisian (Frysk)
  * @author SK-luuut
  */

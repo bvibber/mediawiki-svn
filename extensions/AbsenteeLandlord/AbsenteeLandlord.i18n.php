@@ -181,6 +181,14 @@ $messages['fr'] = array(
 	'absenteelandlord-desc' => 'Verrouille automatiquement la base de données si tous les administrateurs sont inactifs depuis un certain temps',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'absenteelandlord-reason' => 'La bâsa de balyês at étâ vèrrolyê a côsa de l’inactivitât des administrators.',
+	'absenteelandlord-desc' => 'Vèrrolye ôtomaticament la bâsa de balyês se tôs los administrators font ren du tot dês quârque temps.',
+);
+
 /** Western Frisian (Frysk)
  * @author Pyt
  */
@@ -456,6 +464,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'absenteelandlord-reason' => 'Baza danych została automatycznie zablokowana z powodu braku aktywności administratorów.',
 	'absenteelandlord-desc' => 'Automatyczna blokada bazy danych wiki, jeśli wszyscy administratorzy będą nieaktywni przez określony czas',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'absenteelandlord-reason' => "Ël database a l'é stàit automaticament blocà a causa dl'inatività dj'aministrador.",
+	'absenteelandlord-desc' => "Blòca automaticament ël database dla wiki se j'aministrador a son tùit inativ për cheich temp",
 );
 
 /** Portuguese (Português)

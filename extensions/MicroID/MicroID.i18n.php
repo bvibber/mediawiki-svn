@@ -275,6 +275,14 @@ $messages['pl'] = array(
 	'tog-microid' => 'Publikuj <a href="http://microid.org/">MicroID</a> aby potwierdzić konto dla usług zewnętrznych',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'microid-desc' => 'A gionta un [http://www.microid.org/ MicroID] a le pàgine utent për confermé ël cont con dij servissi estern',
+	'tog-microid' => 'Pùblica un <a href="http://microid.org/">MicroID</a> për confermé ël cont con dij servissi estern',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -386,6 +394,14 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'microid-desc' => 'Thêm [http://www.microid.org/ MicroID] vào các trang cá nhân để xác nhận được nhận dạng tại các dịch vụ ngoài',
 	'tog-microid' => 'Xuất bản một <a href="http://microid.org/">MicroID</a> để xác nhận tài khoản bằng những dịch vụ bên ngoài',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'microid-desc' => '添加一个[http://www.microid.org/ MicroID]到你的用户页以供外部服务确认帐号',
+	'tog-microid' => '发布一个<a href="http://microid.org/">MicroID</a>以供外部服务确认帐号',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

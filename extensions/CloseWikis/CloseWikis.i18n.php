@@ -371,6 +371,7 @@ $messages['eo'] = array(
 	'closewikis-list-header-wiki' => 'Vikio',
 	'closewikis-list-header-by' => 'Fermis de',
 	'closewikis-list-header-timestamp' => 'Fermis je',
+	'closewikis-list-header-dispreason' => 'Montrita kialo',
 	'closewikis-log' => 'Protokolo pri vikia fermado',
 	'closewikis-log-header' => 'Jen protokolo de ĉiuj viki-fermadoj kaj remalfermadoj de stevardoj',
 	'closewikis-log-close' => 'fermis $2',
@@ -1119,7 +1120,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'closewikis-desc' => 'Permet de clausurar los sits wiki dins aqueste gestionari de wiki',
+	'closewikis-desc' => 'Permet de clausurar los sites wiki dins aqueste gestionari de wiki',
 	'closewikis-page' => 'Clausar lo wiki',
 	'closewikis-page-close' => 'Clausurar lo wiki',
 	'closewikis-page-close-wiki' => 'Wiki :',
@@ -1460,6 +1461,13 @@ $messages['stq'] = array(
 	'right-closewikis' => 'Wikis sluute',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'closewikis-page-reopen-reason' => 'Alesan:',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
@@ -1497,13 +1505,33 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
+	'closewikis-desc' => 'ఈ వికీ ఫాంలలోని వికీ సైటులను మూసివేయనిస్తుంది',
+	'closewikis-page' => 'వికీని మూసివేయండి',
+	'closewikis-page-close' => 'వికీని మూసివేయండి',
 	'closewikis-page-close-wiki' => 'వికీ:',
+	'closewikis-page-close-dreason' => 'కారణము (చూపించబడినది):',
+	'closewikis-page-close-reason' => 'కారణము (లాగ్ అయినది):',
+	'closewikis-page-close-submit' => 'మూసివేయండి',
+	'closewikis-page-close-success' => 'వికీ విజయవంతముగా మూసివేయబడినది',
+	'closewikis-page-reopen' => 'వికీని తిరిగి తెరవండి',
 	'closewikis-page-reopen-wiki' => 'వికీ:',
 	'closewikis-page-reopen-reason' => 'కారణం:',
+	'closewikis-page-reopen-submit' => 'తిరిగి తెరవండి',
+	'closewikis-page-err-closed' => 'వికీ ఇదివరకే మూసివేయబడినది',
+	'closewikis-page-err-opened' => 'వికీ మూయబడలేదు',
+	'closewikis-list' => 'మూసివేయబడిన వికీల జాబితా',
 	'closewikis-list-header-wiki' => 'వికీ',
+	'closewikis-list-header-by' => 'ద్వారా మూసివేయబడినది',
+	'closewikis-list-header-timestamp' => 'మూసివేయబడిన రోజు',
+	'closewikis-list-header-dispreason' => 'ప్రదర్శింపబడిన కారణము',
+	'closewikis-log' => 'వికీ మూసివేతల లాగు',
+	'closewikis-log-close' => '$2 మూసివేయబడినది',
+	'closewikis-log-reopen' => '$2 తిరిగి తెరవబడినది',
+	'right-closewikis' => 'వికీలను మూసివేయండి',
 );
 
 /** Tetum (Tetun)

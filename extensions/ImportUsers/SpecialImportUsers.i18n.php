@@ -76,8 +76,10 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'importusers-form-button' => 'importeer',
+	'importusers-uploadfile' => 'Laai lêer',
+	'importusers-form-button' => 'Importeer',
 	'importusers-log-summary-all' => 'Alle',
+	'importusers-log-summary-updated' => 'Opgedateer',
 	'importusers-password' => 'wagwoord',
 	'importusers-email' => 'e-pos',
 	'importusers-realname' => 'regte naam',
@@ -788,6 +790,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'importusers' => 'Impor pengguna',
+	'importusers-desc' => '[[Special:ImportUsers|Impor pengguna]] secara massal dari berkas CSV; enkode: UTF-8',
 	'importusers-uploadfile' => 'Muatkan berkas',
 	'importusers-form-caption' => 'Input berkas CSV (UTF-8)',
 	'importusers-form-file' => 'Format berkas pengguna (CSV):',
@@ -798,6 +801,8 @@ $messages['id'] = array(
 Diperbarui.",
 	'importusers-user-present-not-update' => "Pengguna '''$1''' telah ada.
 Tidak diperbarui.",
+	'importusers-user-invalid-format' => 'Data pengguna pada baris #$1 tidak memiliki format yang sah atau kosong.
+Dilompati.',
 	'importusers-log' => 'Impor log pengguna',
 	'importusers-log-summary' => 'Ringkasan',
 	'importusers-log-summary-all' => 'Semua',

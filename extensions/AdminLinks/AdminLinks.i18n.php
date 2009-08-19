@@ -39,6 +39,13 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'adminlinks_users' => 'Gebruikers',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Bresta
  */
@@ -236,10 +243,15 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Jagwar
+ * @author Yekrats
  */
 $messages['eo'] = array(
+	'adminlinks' => 'Ligiloj por administrantoj',
+	'adminlinks_documentation' => '$1 dokumentaro',
+	'adminlinks_general' => 'Ĝenerala',
 	'adminlinks_editsidebar' => 'eldoni iltrabon',
 	'adminlinks_editcss' => 'eldoni dosieron CSS',
+	'adminlinks_editmainpagename' => 'Redakti nomon de ĉefpaĝo',
 	'adminlinks_users' => 'uzantoj',
 	'adminlinks_createuser' => 'krei uzanton',
 	'adminlinks_browsesearch' => 'Tralego kaj Serĉo',
@@ -320,6 +332,24 @@ $messages['fr'] = array(
 	'adminlinks_browsesearch' => 'Navigation et recherche',
 	'adminlinks_importexport' => 'Importer et exporter',
 	'right-adminlinks' => "Voir le lien vers [[Special:AdminLinks|liens d'administration]]",
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'adminlinks' => 'Lims d’administracion',
+	'adminlinks-desc' => 'Apond una [[Special:AdminLinks|pâge spèciâla]] que contint des lims utilos por los administrators.',
+	'adminlinks_documentation' => 'documentacion de $1',
+	'adminlinks_general' => 'G·ènèral',
+	'adminlinks_editsidebar' => 'Changiér la bârra de fllanc',
+	'adminlinks_editcss' => 'Changiér lo fichiér CSS',
+	'adminlinks_editmainpagename' => 'Changiér lo nom de la pâge de reçua',
+	'adminlinks_users' => 'Utilisators',
+	'adminlinks_createuser' => 'Fâre un utilisator',
+	'adminlinks_browsesearch' => 'Navigacion et rechèrche',
+	'adminlinks_importexport' => 'Importar et èxportar',
+	'right-adminlinks' => 'Vêre lo lim de vers los [[Special:AdminLinks|lims d’administracion]]',
 );
 
 /** Galician (Galego)
@@ -766,6 +796,24 @@ $messages['pt'] = array(
 	'adminlinks_general' => 'Geral',
 	'adminlinks_editsidebar' => 'Editar barra lateral',
 	'adminlinks_editcss' => 'Editar ficheiro CSS',
+	'adminlinks_editmainpagename' => 'Editar nome da página principal',
+	'adminlinks_users' => 'Utilizadores',
+	'adminlinks_createuser' => 'Criar um utilizador',
+	'adminlinks_browsesearch' => 'Navegação e pesquisa',
+	'adminlinks_importexport' => 'Importação e exportação',
+	'right-adminlinks' => 'Ver a ligação para [[Special:AdminLinks|ligações Admin]]',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'adminlinks' => 'Ligações para administradores',
+	'adminlinks-desc' => 'Adiciona uma [[Special:AdminLinks|página especial]] que possui ligações úteis para administradores',
+	'adminlinks_documentation' => 'Documentação sobre $1',
+	'adminlinks_general' => 'Geral',
+	'adminlinks_editsidebar' => 'Editar barra lateral',
+	'adminlinks_editcss' => 'Editar arquivo CSS',
 	'adminlinks_editmainpagename' => 'Editar nome da página principal',
 	'adminlinks_users' => 'Utilizadores',
 	'adminlinks_createuser' => 'Criar um utilizador',

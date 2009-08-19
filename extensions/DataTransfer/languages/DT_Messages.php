@@ -404,12 +404,17 @@ $messages['eo'] = array(
 	'dt_viewxml_namespaces' => 'Nomspacoj',
 	'dt_viewxml_simplifiedformat' => 'Simpligita formato',
 	'dt_xml_namespace' => 'Nomspaco',
+	'dt_xml_pages' => 'Paĝoj',
 	'dt_xml_page' => 'Paĝo',
+	'dt_xml_template' => 'Ŝablono',
 	'dt_xml_field' => 'Kampo',
 	'dt_xml_name' => 'Nomo',
 	'dt_xml_title' => 'Titolo',
 	'dt_xml_id' => 'identigo',
 	'dt_xml_freetext' => 'Libera Teksto',
+	'dt_import_editsummary' => '$1 importo',
+	'dt_import_importing' => 'Importante...',
+	'importcsv' => 'Importi CSV',
 );
 
 /** Spanish (Español)
@@ -674,6 +679,7 @@ $messages['he'] = array(
 	'dt_xml_freetext' => 'טקסט חופשי',
 	'importxml' => 'ייבוא XML',
 	'dt_import_selectfile' => 'אנא בחרו את קובץ ה־$1 לייבוא:',
+	'dt_import_encodingtype' => 'סוג הקידוד',
 	'dt_import_editsummary' => 'ייבוא $1',
 	'dt_import_importing' => 'בתהליכי ייבוא...',
 	'dt_import_success' => '{{PLURAL:$1|דף אחד ייוצר|$1 דפים ייוצרו}} מקובץ ה־$2.',
@@ -916,6 +922,13 @@ $messages['km'] = array(
 	'dt_import_editsummary' => '$1 នាំចូល​',
 	'dt_import_importing' => 'កំពុងនាំចូល​...',
 	'right-datatransferimport' => 'នាំចូល​ទិន្នន័យ​',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'dt_xml_name' => 'ಹೆಸರು',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -1193,7 +1206,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'dt-desc' => "Permet l’impòrt e l’expòrt de donadas contengudas dins d'apèls de modèls",
 	'viewxml' => 'Veire XML',
-	'dt_viewxml_docu' => 'Secconatz demest las categorias e los espacis de nomenatges per visionar en format XML.',
+	'dt_viewxml_docu' => 'Seleccionatz demest las categorias e los espacis de nomenatges per visionar en format XML.',
 	'dt_viewxml_categories' => 'Categorias',
 	'dt_viewxml_namespaces' => 'Espacis de nomenatge',
 	'dt_viewxml_simplifiedformat' => 'Format simplificat',

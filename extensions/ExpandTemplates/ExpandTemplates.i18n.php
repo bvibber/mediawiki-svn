@@ -1396,9 +1396,11 @@ Wykonywane jest to poprzez wywołanie odpowiedniego przebiegu (etapu) parsera z 
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'expandtemplates' => 'Anàlisi djë stamp',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|A espand jë stamp, le funsion dël parser e le variabij]] për mosté ël wikitest espandù e fé vëdde la pàgina final',
 	'expand_templates_intro' => "Sta pàgina special-sì a pija dël test e a-i fa n'anàlisi arcorsiva ëd tuti jë stamp ch'a l'ha andrinta. 
 A l'analisa ëdcò le fonsion anterpretà coma
 <nowiki>{{</nowiki>#if:...}}, e le variabij coma
@@ -1407,8 +1409,10 @@ Sòn a lo fa ën ciamand l'anterprete dal programa MediaWiki.",
 	'expand_templates_title' => 'Tìtol ëd contest për {{PAGENAME}} e via fòrt:',
 	'expand_templates_input' => 'Test da analisé:',
 	'expand_templates_output' => 'Arzultà',
+	'expand_templates_xml_output' => 'Output an XML',
 	'expand_templates_ok' => 'Bin parèj',
 	'expand_templates_remove_comments' => 'Gava via ij coment',
+	'expand_templates_generate_xml' => "Mosta l'erbo ëd parse XML",
 	'expand_templates_preview' => 'Preuva',
 );
 
@@ -1788,7 +1792,7 @@ $messages['tr'] = array(
 	'expand_templates_intro' => 'Bu özel sayfa biraz metni alır ve içindeki tüm şablonları yinelemeli olarak genişletir.
 Ayrıca şu gibi derleyici fonksiyonlarını da genişletir
 <nowiki>{{</nowiki>#if:…}}, ve şu gibi değişkenleri
-<nowiki>{{</nowiki>CURRENTDAY}}&mdash;aslında çift-bağlı hemen herşey.
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;aslında çift-bağlı hemen her şey.
 Bunu, ilgili derleyici aşamasını MedyaVikinin kendisinden çağırarak yapar.',
 	'expand_templates_title' => 'Durum başlığı, ör {{PAGENAME}} için.:',
 	'expand_templates_input' => 'Giriş metni:',
