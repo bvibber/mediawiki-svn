@@ -368,24 +368,10 @@ $.fn.suggestions = function( param, param2 ) {
 				conf._data.keypressed_count = 0;
 			})
 			.keypress( function() {
-				// When arrow up/down keys are held down,
-				// keypress events fire rapidly. Slow this down
-				// to one in every 120 ms
-				if ( conf._data.keypressed == 38 || conf._data.keypressed == 40 ) {
-					var now = new Date().getTime();
-					if ( now - conf._data.last_keypress < 120 ) {
-						return;
-					}
-				}
-				conf._data.last_keypress = now;
 				conf._data.keypressed_count++;
 				processKey( conf._data.keypressed );
 			})
 			.keyup( function() {
-				// Reset last_keypress here instead of in
-				// keydown because at least in Firefox, all
-				// keypresses are preceded by a keydown
-				conf._data.last_keypress = 0;
 				// Some browsers won't throw keypress() for
 				// arrow keys. If we got a keydown and a keyup
 				// without a keypress in between, solve that
