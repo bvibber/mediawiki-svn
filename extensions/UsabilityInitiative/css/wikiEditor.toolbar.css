@@ -217,7 +217,7 @@ body.rtl .wikiEditor-ui-toolbar .group .tool-select .menu {
 	padding: 0.5em;
 	text-decoration: none;
 	color: black;
-	whitespace: nowrap;
+	white-space: nowrap;
 }
 .wikiEditor-ui-toolbar .group .tool-select .options .option:hover {
 	background-color: #f3f3f3;
