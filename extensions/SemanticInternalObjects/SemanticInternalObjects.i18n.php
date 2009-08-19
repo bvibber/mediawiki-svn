@@ -17,7 +17,7 @@ $messages = array();
  *  @author Yaron Koren
  */
 $messages['en'] = array(
-	'semanticinternalobjects-desc'              => 'Setting of internal objects in Semantic MediaWiki',
+	'semanticinternalobjects-desc' => 'Setting of internal objects in Semantic MediaWiki',
 );
 
 /** Message documentation (Message documentation)

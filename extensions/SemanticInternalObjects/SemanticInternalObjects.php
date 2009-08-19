@@ -7,11 +7,11 @@
  * @author Yaron Koren
  */
 
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define('SIO_VERSION', '0.1');
+define( 'SIO_VERSION', '0.1' );
 
-$wgExtensionCredits['parserhook'][]= array(
+$wgExtensionCredits['parserhook'][] = array(
 	'name'	=> 'Semantic Internal Objects',
 	'version'	=> SIO_VERSION,
 	'author'	=> 'Yaron Koren',
@@ -30,7 +30,7 @@ $wgAutoloadClasses['SIOHandler'] = $siogIP . '/SemanticInternalObjects_body.php'
 
 function siofParserFunctions() {
 	global $wgHooks, $wgParser;
-	if( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 		$wgHooks['ParserFirstCallInit'][] = 'siofRegisterParserFunctions';
 	} else {
 		if ( class_exists( 'StubObject' ) && !StubObject::isRealObject( $wgParser ) ) {
@@ -40,8 +40,8 @@ function siofParserFunctions() {
 	}
 }
 
-function siofRegisterParserFunctions(&$parser) {
-	$parser->setFunctionHook( 'set_internal', array('SIOHandler','doSetInternal') );
+function siofRegisterParserFunctions( &$parser ) {
+	$parser->setFunctionHook( 'set_internal', array( 'SIOHandler', 'doSetInternal' ) );
 	return true; // always return true, in order not to stop MW's hook processing!
 }
 
