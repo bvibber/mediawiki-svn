@@ -976,7 +976,7 @@ class MV_SpecialMediaSearch {
 		$result = $dbr->select( 'page', 'page_title', array (
 			'page_namespace' => NS_CATEGORY,
 			'`page_title` LIKE \'%' . mysql_escape_string( $val
-		) . '%\' COLLATE utf8_bin' ), __METHOD__, array (
+		) . '%\' COLLATE latin1_swedish_ci' ), __METHOD__, array (
 			'LIMIT' => $result_limit
 		) );
 		$match_count = $dbr->numRows( $result );
@@ -998,7 +998,7 @@ class MV_SpecialMediaSearch {
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
 			'cl_to' => $category,
 			'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
-		) . '%\'  COLLATE utf8_bin' ), __METHOD__, array (
+		) . '%\'  COLLATE latin1_swedish_ci' ), __METHOD__, array (
 			'LIMIT' => $result_limit
 		) );
 		// print 'ran: ' .  $dbr->lastQuery();
@@ -1025,7 +1025,7 @@ class MV_SpecialMediaSearch {
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
 			'cl_to' => 'Person',
 			'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
-		) . '%\' COLLATE utf8_bin' ), __METHOD__, array (
+		) . '%\' COLLATE latin1_swedish_ci' ), __METHOD__, array (
 			'LIMIT' => $result_limit
 		) );
 		$out = '';

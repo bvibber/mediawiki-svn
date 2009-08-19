@@ -348,7 +348,7 @@ function mv_scroll2Time(sec_time){
     js_log('f:mv_doShowVideoDownload');
     //restores orginal state before showing download links:     
     mv_stream_interface.doRestore();
-    return $j('#embed_vid').get(0).org_showVideoDownload();
+    return $j('#embed_vid').get(0).org_showDownload();
 }*/
 /* the mvdObject
  *

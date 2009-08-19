@@ -75,7 +75,7 @@ $mvBillInSearchResult = true;
 // if we should load images from an external server:
 $mvExternalImages = false;
 // path to metavidWiki install that is serving images:
-$mvExternalImgServerPath = 'http://mvprime.cse.ucsc.edu/wiki/index.php';
+$mvExternalImgServerPath = 'http://metavid.org/w/index.php';
 
 $mvWebImgLoc = $mvgScriptPath . '/stream_images';
 // full local path for images (if hosted locally)

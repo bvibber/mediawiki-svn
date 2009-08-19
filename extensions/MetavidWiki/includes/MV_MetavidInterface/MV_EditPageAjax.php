@@ -217,7 +217,7 @@
 			$this->showIntro();
 
 		if ( $this->mTitle->isTalkPage() ) {
-			$wgOut->addWikiText( wfMsg( 'talkpagetext' ) );
+			$wgOut->addWikiMsg( 'talkpagetext' );
 		}
 
 		# Attempt submission here.  This will check for edit conflicts,
