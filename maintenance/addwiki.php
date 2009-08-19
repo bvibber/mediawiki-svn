@@ -51,6 +51,7 @@ function addWiki( $lang, $site, $dbName )
 	dbsource( "$IP/extensions/Oversight/hidden.sql", $dbw );
 	dbsource( "$IP/extensions/GlobalBlocking/localdb_patches/setup-global_block_whitelist.sql", $dbw );
 	dbsource( "$IP/extensions/AbuseFilter/abusefilter.tables.sql", $dbw );
+	dbsource( "$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.sql", $dbw );
 
 	$dbw->query( "INSERT INTO site_stats(ss_row_id) VALUES (1)" );
 

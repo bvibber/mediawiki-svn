@@ -52,6 +52,7 @@ class HoneypotIntegration {
 	}
 	
 	public static function loadHoneypotURLs() {
+		global $wgMemc, $wgHoneypotURLSource;
 		$key = wfMemcKey( 'honeypot-integration-urls' );
 		
 		global $wgHoneypotURLSource;

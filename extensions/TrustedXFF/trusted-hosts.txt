@@ -1184,3 +1184,12 @@ cache-out-1.inet.fi.
 # IWF proxy at kcom.com
 213.249.193.2
 
+# UAE ISP proxies (Emirates Telecommunication Corporation) -- domas -
+# 2009-08-12
+195.229.242.52
+195.229.242.53
+195.229.242.54
+195.229.242.55
+195.229.242.56
+195.229.242.57
+195.229.242.58
