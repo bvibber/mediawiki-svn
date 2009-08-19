@@ -411,6 +411,7 @@ Konfiguru $wgPrefStatsTrackPrefs por sekvi preferojn.',
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Imre
  * @author Locos epraix
@@ -422,6 +423,9 @@ $messages['es'] = array(
 	'prefstats-title' => 'Estadísticas de preferencia',
 	'prefstats-list-intro' => 'De momento, las siguientes preferencias están siendo seguidas.
 Selecciona una para ver estadísticas acerca de ella.',
+	'prefstats-counters' => '* $1  {{PLURAL:$1|usuario ha|usuarios han}} activado esta preferencia desde que la estadística fue activada.
+** $2  {{PLURAL:$2|usuario aún tiene|usuarios aún tienen}} esta preferencia activada
+** $3  {{PLURAL:$1|usuario la ha|usuarios la han}} desactivado',
 	'prefstats-xaxis' => 'Duración (horas)',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
@@ -987,6 +991,11 @@ $messages['mk'] = array(
 $messages['ms'] = array(
 	'prefstats' => 'Statistik keutamaan',
 	'prefstats-desc' => 'Jejaki statistik mengenai seberapa ramai pengguna yang membolehkan keutamaan tertentu',
+	'prefstats-title' => 'Statistik keutamaan',
+	'prefstats-list-intro' => 'Keutamaan-keutamaan berikut sedang dijejaki.
+Klik salah satu untuk melihat statistik mengenainya.',
+	'prefstats-noprefs' => 'Tiada keutamaan sedang dijejaki buat masa ini.
+Tatarajahkan $wgPrefStatsTrackPrefs untuk menjejaki keutamaan-keutamaan.',
 );
 
 /** Erzya (Эрзянь)

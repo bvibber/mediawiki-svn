@@ -259,6 +259,14 @@ $messages['mk'] = array(
 	'usabilityinitiative-desc' => 'Алатки и можности изработени од Иницијативата за употребливост на Википедија со цел да се подобри употребливоста на МедијаВики',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'usabilityinitiative' => 'Inisiatif Kebolehgunaan',
+	'usabilityinitiative-desc' => 'Tamplian-tampilan yang dibangunkan oleh Inisiatif Kebolehgunaan Wikipedia demi meningkatkan kebolehgunaan MediaWiki',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
