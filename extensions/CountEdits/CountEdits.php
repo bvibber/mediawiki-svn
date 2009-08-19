@@ -15,7 +15,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Rob Church',
 	'description' => '[[Special:CountEdits|Special page]] that counts user edits and provides a top-ten contributor list',
 	'descriptionmsg' => 'countedits-desc',
-	'url' => 'http://www.mediawiki.wiki/wiki/Extesion:CountEdits',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CountEdits',
 );
 
 $dir = dirname(__FILE__) . '/';
