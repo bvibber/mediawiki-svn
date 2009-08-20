@@ -157,10 +157,11 @@ class LuceneResult extends SearchResult {
 	 * Construct a result object from single result line
 	 * 
 	 * @param array $lines
+	 * @param string $method - method used to fetch these results
 	 * @return array (float, Title)
 	 * @access private
 	 */
-	function LuceneResult( $lines ) {
+	function LuceneResult( $lines, $method ) {
 		global $wgContLang;
 		
 		$score = null;
@@ -244,7 +245,8 @@ class LuceneResult extends SearchResult {
 			$this->mSectionTitle = Title::newFromText($t);
 		} 
 		
-		if($this->mInterwiki == '')
+		# fetch revision info if not an interwiki title, and not using prefix search
+		if($this->mInterwiki == '' && $method != 'prefix')
 			$this->mRevision = Revision::newFromTitle( $this->mTitle );
 			
 		if(!is_null($this->mTitle) && $this->mTitle->getNamespace() == NS_IMAGE)
@@ -527,7 +529,7 @@ class LuceneSearchSet extends SearchResultSet {
 					while(!self::startsWith($resultLines[$interwikiLen],"#results")) 
 						$interwikiLen++;
 					$interwikiLines = array_splice($resultLines,0,$interwikiLen);
-					$interwiki = new LuceneSearchSet( $query, $interwikiLines, intval($iwCount), intval($iwTotal) );
+					$interwiki = new LuceneSearchSet( $method, $query, $interwikiLines, intval($iwCount), intval($iwTotal) );
 				}
 				
 				# how many results we got
@@ -539,7 +541,7 @@ class LuceneSearchSet extends SearchResultSet {
 		}
 		
 		
-		$resultSet = new LuceneSearchSet( $query, $resultLines, $resultCount, $totalHits, 
+		$resultSet = new LuceneSearchSet( $method, $query, $resultLines, $resultCount, $totalHits, 
 		             $suggestion, $info, $interwiki );
 		
 		if($wgLuceneSearchCacheExpiry > 0){
@@ -557,7 +559,8 @@ class LuceneSearchSet extends SearchResultSet {
 	
 	/**
 	 * Private constructor. Use LuceneSearchSet::newFromQuery().
-	 *
+	 * 
+	 * @param string $method
 	 * @param string $query
 	 * @param array $lines
 	 * @param int $resultCount
@@ -566,7 +569,8 @@ class LuceneSearchSet extends SearchResultSet {
 	 * @param string $info
 	 * @access private
 	 */
-	function LuceneSearchSet( $query, $lines, $resultCount, $totalHits = null, $suggestion = null, $info = null, $interwiki = null ) {
+	function LuceneSearchSet( $method, $query, $lines, $resultCount, $totalHits = null, $suggestion = null, $info = null, $interwiki = null ) {
+		$this->mMethod            = $method;
 		$this->mQuery             = $query;
 		$this->mTotalHits         = $totalHits;
 		$this->mResults           = $lines;
@@ -740,7 +744,7 @@ class LuceneSearchSet extends SearchResultSet {
 		if($group == false)
 			return false;
 		else
-			return new LuceneResult( $group );
+			return new LuceneResult( $group, $this->mMethod );
 	}
 	
 }
