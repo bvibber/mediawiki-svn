@@ -1527,6 +1527,24 @@ $messages['yue'] = array(
 	'prefstats-list-intro' => '直到而家，下面嘅喜好設定會追蹤落來。
 撳其中一樣去睇有關佢嘅統計。',
 	'prefstats-noprefs' => '無喜好可以追蹤得到。設定 $wgPrefStatsTrackPrefs 去追蹤喜好。',
+	'prefstats-counters' => '* $1 位用戶自從開着咗喜好統計之後開咗呢個設定
+** $2 位用戶已經將佢開咗
+** $3 位用戶已經將佢閂咗',
+	'prefstats-counters-expensive' => '* $1 位用戶自從開着咗喜好統計之後開咗呢個設定
+** $2 位用戶已經將佢開咗
+** $3 位用戶已經將佢閂咗
+* 總共，$4位用戶已經設定咗呢選項',
+	'prefstats-xaxis' => '持續時間 (鐘頭)',
+	'prefstats-factors' => '睇吓每: $1',
+	'prefstats-factor-hour' => '1個鐘頭',
+	'prefstats-factor-sixhours' => '6個鐘頭',
+	'prefstats-factor-day' => '1日',
+	'prefstats-factor-week' => '1個星期',
+	'prefstats-factor-twoweeks' => '2個星期',
+	'prefstats-factor-fourweeks' => '4個星期',
+	'prefstats-factor-default' => '返去預設比例',
+	'prefstats-legend-out' => '選出咗',
+	'prefstats-legend-in' => '選入咗',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -1571,5 +1589,23 @@ $messages['zh-hant'] = array(
 	'prefstats-list-intro' => '直到現時，以下的喜好設定會追蹤下來。
 點擊其中一種設定去查看有關它的統計。',
 	'prefstats-noprefs' => '無喜好可供追蹤。設定 $wgPrefStatsTrackPrefs 去追蹤喜好。',
+	'prefstats-counters' => '* $1名用戶在統計啟用之後啟用了此選項
+** $2名用戶啟用了它
+** $3名用戶禁用了它',
+	'prefstats-counters-expensive' => '* $1名用戶在統計啟用之後啟用了此選項
+** $2名用戶啟用了它
+** $3名用戶禁用了它
+* 總的來說，$4名用戶設定了此選項',
+	'prefstats-xaxis' => '持續時間（小時）',
+	'prefstats-factors' => '檢視時限︰$1',
+	'prefstats-factor-hour' => '1小時',
+	'prefstats-factor-sixhours' => '6小時',
+	'prefstats-factor-day' => '1天',
+	'prefstats-factor-week' => '1週',
+	'prefstats-factor-twoweeks' => '2週',
+	'prefstats-factor-fourweeks' => '4週',
+	'prefstats-factor-default' => '恢復預設設定',
+	'prefstats-legend-out' => '已停用',
+	'prefstats-legend-in' => '已啟用',
 );
 

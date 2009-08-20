@@ -605,7 +605,9 @@ Bạn có thể tắt cảnh báo này tại mục “{{int:prefs-editing}}” t
 $messages['yue'] = array(
 	'editwarning' => '編輯警告',
 	'editwarning-desc' => '當用戶試吓離開未保存編輯嗰陣顯示警告',
-	'editwarning-warning' => '離開呢一版會令到你嘅修改唔見咗。',
+	'editwarning-warning' => '離開呢一版會令到你嘅修改唔見咗。
+你可以響你嘅喜好設定嘅"{{int:prefs-editing}}"小節度停用呢個警告。',
+	'editwarning-preference' => '當我離開未保存好嘅修改嗰陣警告我',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -626,6 +628,9 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'editwarning' => '編輯警告',
 	'editwarning-desc' => '當用戶嘗試離開未保存的編輯時顯示警告',
-	'editwarning-warning' => '離開這個頁面會令您所作的更改遺失。',
+	'editwarning-warning' => '離開這個頁面會令您所作的更改遺失。
+您可在您參數設置的「{{int:prefs-editing}}」一節中關閉此警告。',
+	'editwarning-preference' => '當我在更改未保存時離開頁面時警告我',
+',
 );
 
