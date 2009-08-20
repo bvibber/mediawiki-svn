@@ -54,6 +54,13 @@ $wgJs2VideoTagOut = true;
 // Location of the FFmpeg binary
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 
+/**
+ * enable oggz_chop support
+ * if enabled the mv_embed player will use temporal urls
+ * for helping with seeking with some plugin types
+ */
+$wgEnableTemporalOggUrls = false;
+
 // Filename or URL path to the Cortado Java player applet.
 //
 // If no path is included, the path to this extension's
