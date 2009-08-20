@@ -734,6 +734,10 @@ public class WikiIndexModifier {
 		String contents = article.getContents();
 		contents = article.getTitle()+". "+contents;
 		
+		if( article.DiscussionThreadingInfo.containsKey("ThreadSubject") ) {
+			contents = article.DiscussionThreadingInfo.get("ThreadSubject") + ". " + contents;
+		}
+		
 		/** Following fields can be optionally case-dependent */  
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();
