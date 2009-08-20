@@ -195,8 +195,30 @@ fn : {
 	 * 
 	 * @param {Object} context
 	 * @param {Object} action
+	 * @param {Object} source
 	 */
-	doAction : function( context, action ) {
+	doAction : function( context, action, source ) {
+		// Verify that this has been called from a source that's within the toolbar
+		if ( source.closest( '.wikiEditor-ui-toolbar' ).size() ) {
+			// Build a unique id for this action by tracking the parent rel attributes up to the toolbar level
+			var rels = [];
+			var step = source;
+			var i = 0;
+			while ( !step.hasClass( 'wikiEditor-ui-toolbar' ) ) {
+				if ( i > 25 ) {
+					break;
+				}
+				i++;
+				var rel = step.attr( 'rel' );
+				if ( rel ) {
+					rels.push( step.attr( 'rel' ) );
+				}
+				step = step.parent();
+			}
+			rels.reverse();
+			var id = rels.join( '.' );
+			// PERFORM CLICK TRACKING HERE!
+		}
 		switch ( action.type ) {
 			case 'replace':
 			case 'encapsulate':
@@ -285,7 +307,7 @@ fn : {
 						.data( 'context', context )
 						.click( function() {
 							$.wikiEditor.modules.toolbar.fn.doAction(
-								$(this).data( 'context' ), $(this).data( 'action' )
+								$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 							);
 							return false;
 						} );
@@ -308,7 +330,7 @@ fn : {
 								.data( 'context', context )
 								.click( function() {
 									$.wikiEditor.modules.toolbar.fn.doAction(
-										$(this).data( 'context' ), $(this).data( 'action' )
+										$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 									);
 								} )
 								.text( optionLabel )
@@ -385,7 +407,8 @@ fn : {
 						.click( function() {
 							$.wikiEditor.modules.toolbar.fn.doAction(
 								$(this).parent().data( 'context' ),
-								$(this).parent().data( 'actions' )[$(this).attr( 'rel' )]
+								$(this).parent().data( 'actions' )[$(this).attr( 'rel' )],
+								$(this)
 							);
 							return false;
 						} );

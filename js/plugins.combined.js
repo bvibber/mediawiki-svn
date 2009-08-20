@@ -625,24 +625,10 @@ $.fn.suggestions = function( param, param2 ) {
 				conf._data.keypressed_count = 0;
 			})
 			.keypress( function() {
-				// When arrow up/down keys are held down,
-				// keypress events fire rapidly. Slow this down
-				// to one in every 120 ms
-				if ( conf._data.keypressed == 38 || conf._data.keypressed == 40 ) {
-					var now = new Date().getTime();
-					if ( now - conf._data.last_keypress < 120 ) {
-						return;
-					}
-				}
-				conf._data.last_keypress = now;
 				conf._data.keypressed_count++;
 				processKey( conf._data.keypressed );
 			})
 			.keyup( function() {
-				// Reset last_keypress here instead of in
-				// keydown because at least in Firefox, all
-				// keypresses are preceded by a keydown
-				conf._data.last_keypress = 0;
 				// Some browsers won't throw keypress() for
 				// arrow keys. If we got a keydown and a keyup
 				// without a keypress in between, solve that
@@ -1568,8 +1554,30 @@ fn : {
 	 * 
 	 * @param {Object} context
 	 * @param {Object} action
+	 * @param {Object} source
 	 */
-	doAction : function( context, action ) {
+	doAction : function( context, action, source ) {
+		// Verify that this has been called from a source that's within the toolbar
+		if ( source.closest( '.wikiEditor-ui-toolbar' ).size() ) {
+			// Build a unique id for this action by tracking the parent rel attributes up to the toolbar level
+			var rels = [];
+			var step = source;
+			var i = 0;
+			while ( !step.hasClass( 'wikiEditor-ui-toolbar' ) ) {
+				if ( i > 25 ) {
+					break;
+				}
+				i++;
+				var rel = step.attr( 'rel' );
+				if ( rel ) {
+					rels.push( step.attr( 'rel' ) );
+				}
+				step = step.parent();
+			}
+			rels.reverse();
+			var id = rels.join( '.' );
+			// PERFORM CLICK TRACKING HERE!
+		}
 		switch ( action.type ) {
 			case 'replace':
 			case 'encapsulate':
@@ -1658,7 +1666,7 @@ fn : {
 						.data( 'context', context )
 						.click( function() {
 							$.wikiEditor.modules.toolbar.fn.doAction(
-								$(this).data( 'context' ), $(this).data( 'action' )
+								$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 							);
 							return false;
 						} );
@@ -1681,7 +1689,7 @@ fn : {
 								.data( 'context', context )
 								.click( function() {
 									$.wikiEditor.modules.toolbar.fn.doAction(
-										$(this).data( 'context' ), $(this).data( 'action' )
+										$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 									);
 								} )
 								.text( optionLabel )
@@ -1758,7 +1766,8 @@ fn : {
 						.click( function() {
 							$.wikiEditor.modules.toolbar.fn.doAction(
 								$(this).parent().data( 'context' ),
-								$(this).parent().data( 'actions' )[$(this).attr( 'rel' )]
+								$(this).parent().data( 'actions' )[$(this).attr( 'rel' )],
+								$(this)
 							);
 							return false;
 						} );
