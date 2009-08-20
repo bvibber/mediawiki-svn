@@ -28,6 +28,8 @@ public class OAIHarvester {
 	protected IndexId iid;
 	protected String resumptionToken, responseDate;
 	protected String host;
+	/** number of retries before giving up, useful when there are broken servers in the cluster */
+	protected int retries = 5;
 	
 	public OAIHarvester(IndexId iid, String url, Authenticator auth) throws MalformedURLException{
 		this.urlbase = url;
@@ -59,13 +61,24 @@ public class OAIHarvester {
 	
 	protected void read(URL url) throws IOException {
 		log.info("Reading records from "+url);
-		collector = new IndexUpdatesCollector(iid);
-		InputStream in = new BufferedInputStream(url.openStream());
-		parser = new OAIParser(in,collector);
-		parser.parse();
-		resumptionToken = parser.getResumptionToken();
-		responseDate = parser.getResponseDate();
-		in.close();
+		// try reading from url a number of times before giving up
+		for(int tryNum = 1; tryNum <= this.retries; tryNum++){
+			try{
+				collector = new IndexUpdatesCollector(iid);
+				InputStream in = new BufferedInputStream(url.openStream());
+				parser = new OAIParser(in,collector);
+				parser.parse();
+				resumptionToken = parser.getResumptionToken();
+				responseDate = parser.getResponseDate();
+				in.close();
+				break;
+			} catch(IOException e){				
+				if(tryNum == this.retries)
+					throw e;
+				else
+					log.warn("Error reading from url (will retry): "+url);
+			}
+		}
 	}
 
 	/** Invoke ListRecords using the last resumption token, get atLeast num of records */

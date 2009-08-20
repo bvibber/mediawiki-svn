@@ -9,10 +9,15 @@ else
   [ -e $dumps ]  || mkdir $dumps
   dumpfile="$dumps/dump-$dbname.xml"
   timestamp=`date -u +%Y-%m-%d`
-  slave=`php $mediawiki/maintenance/getSlaveServer.php $dbname`
+  slave=`php $mediawiki/maintenance/getSlaveServer.php \
+    $dbname \
+    --conf $mediawiki/LocalSettings.php \
+    --aconf $mediawiki/AdminSettings.php`
   echo "Dumping $dbname..."
   cd $mediawiki && php maintenance/dumpBackup.php \
     $dbname \
+    --conf $mediawiki/LocalSettings.php \
+    --aconf $mediawiki/AdminSettings.php \
     --current \
     --server=$slave > $dumpfile
   [ -e $indexes/status ] || mkdir -p $indexes/status
