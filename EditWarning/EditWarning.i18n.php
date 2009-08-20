@@ -631,6 +631,4 @@ $messages['zh-hant'] = array(
 	'editwarning-warning' => '離開這個頁面會令您所作的更改遺失。
 您可在您參數設置的「{{int:prefs-editing}}」一節中關閉此警告。',
 	'editwarning-preference' => '當我在更改未保存時離開頁面時警告我',
-',
 );
-
