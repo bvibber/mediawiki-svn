@@ -21,12 +21,17 @@
 //functions should check if this is set before logging clicktrack events
 $wgClickTrackEnabled = true;
 
+
+//set the time window for what we consider 'recent' contributions, in days
+$wgClickTrackContribTimeValue = 60 * 60 * 24 * 365 / 2; //half a year
+
 // Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Click Tracking',
 	'author' => 'Nimish Gautam',
 	'version' => '0.1.1',
+	'descriptionmsg' => 'clicktracking-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative'
 );
 
@@ -37,4 +42,12 @@ require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 $wgAutoloadClasses['ClickTrackingHooks'] =
 	dirname( __FILE__ ) . '/ClickTracking.hooks.php';
 
+$wgAutoloadClasses['ApiClickTracking'] = dirname( __FILE__ ) . '/ApiClickTracking.php';
+
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
+
+$wgHooks['ArticleSaveComplete'][] = 'ClickTrackingHooks::storeNewContrib';
+
+$wgAPIModules['clicktracking'] = 'ApiClickTracking';
+
+$wgHooks['EditPage::showEditForm:initial'] [] = 'ClickTrackingHooks::addJS';
