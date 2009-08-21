@@ -12,6 +12,7 @@ class UsabilityInitiativeHooks {
 	
 	private static $doOutput = false;
 	private static $messages = array();
+	private static $variables = array();
 	private static $styles = array();
 	private static $styleFiles = array(
 		'base_sets' => array(
@@ -143,17 +144,32 @@ class UsabilityInitiativeHooks {
 			self::$messages[$i] =
 				"'{$escapedMessageKey}':'{$escapedMessageValue}'";
 		}
-		// Converts array of object members to a comma delimited list
-		$messagesList = implode( ',', self::$messages );
 		// Add javascript to document
-		$out->addScript(
-			Xml::tags(
-				'script',
-				array( 'type' => $wgJsMimeType ),
-				"loadGM({{$messagesList}});"
-			)
-		);
-		
+		if ( count( self::$messages ) > 0 ) {
+			$out->addScript(
+				Xml::tags(
+					'script',
+					array( 'type' => $wgJsMimeType ),
+					'loadGM({' . implode( ',', self::$messages ) . '});'
+				)
+			);
+		}
+		// Transforms variables into javascript global variables
+		foreach ( self::$variables as $key => $value ) {
+			$escapedVariableValue = Xml::escapeJsString( $value );
+			$escapedVariableKey = Xml::escapeJsString( $key );
+			self::$variables[$key] =
+				"var {$escapedVariableKey} = '{$escapedVariableValue}';";
+		}
+		if ( count( self::$variables ) > 0 ) {
+			$out->addScript(
+				Xml::tags(
+					'script',
+					array( 'type' => $wgJsMimeType ),
+					implode( self::$variables )
+				)
+			);
+		}
 		// Loops over each style
 		foreach ( self::$styles as $style ) {
 			// Add css for various styles
@@ -195,5 +211,14 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addMessages( $messages ) {
 		self::$messages = array_merge( self::$messages, $messages );
+	}
+	
+	/**
+	 * Adds internationalized message definitions to the document for access
+	 * via javascript using the gM() function
+	 * @param array $messages Key names of messages to load
+	 */
+	public static function addVariables( $variables ) {
+		self::$variables = array_merge( self::$variables, $variables );
 	}
 }
