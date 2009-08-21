@@ -1,7 +1,7 @@
 /* JavaScript for EditToolbar extension */
 
 js2AddOnloadHook( function() {
-	if ( $j.wikiEditor.isSupported() ) {
+	if ( $j.wikiEditor != undefined && $j.wikiEditor.isSupported() || !$j.wikiEditor.isSupportKnown() ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
 		// Build a wikiEditor around the textarea

@@ -15,16 +15,20 @@
 $.wikiEditor = {
 	'modules': {},
 	'instances': [],
-	'isSupported': function() {
-		function isSupported( supportedBrowsers ) {
-			return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
-		}
-		var supportedBrowsers = {
-			'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
-			'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
-		};
-		return isSupported( supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+	'supportedBrowsers': {
+		'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
+		'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
 	}
+};
+$.wikiEditor.isSupportKnown = function() {
+	return ( function( supportedBrowsers ) {
+		return $.browser.name in supportedBrowsers;
+	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+};
+$.wikiEditor.isSupported = function() {
+	return ( function( supportedBrowsers ) {
+		return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
+	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
 };
 $.fn.wikiEditor = function() {
 
