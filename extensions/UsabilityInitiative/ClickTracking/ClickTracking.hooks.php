@@ -155,10 +155,13 @@ class ClickTrackingHooks {
 	 * @param $namespace Integer: namespace the user is editing
 	 * @param $event_id Integer: event type
 	 * @param $contribs Integer: contributions the user has made (or NULL if user not logged in)
-	 * @param $contribs_in_timespan Integer: number of contributions user has made in a given timespan
+	 * @param $contribs_in_timespan1 Integer: number of contributions user has made in timespan of granularity 1 (defined by ClickTracking/$wgClickTrackContribGranularity1)
+	 * @param $contribs_in_timespan2 Integer: number of contributions user has made in timespan of granularity 2 (defined by ClickTracking/$wgClickTrackContribGranularity2)
+	 * @param $contribs_in_timespan3 Integer: number of contributions user has made in timespan of granularity 3 (defined by ClickTracking/$wgClickTrackContribGranularity3)
 	 * @return true if the event was stored in the DB
 	 */
-	public static function trackEvent( $session_id, $is_logged_in, $namespace, $event_id, $contribs = 0, $contribs_in_timespan = 0 ){
+	public static function trackEvent( $session_id, $is_logged_in, $namespace, $event_id, $contribs = 0, 
+									   $contribs_in_timespan1 = 0, $contribs_in_timespan2 = 0, $contribs_in_timespan3 = 0 ){
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->begin();
@@ -168,7 +171,9 @@ class ClickTrackingHooks {
 			'session_id' => (string) $session_id,
 			'is_logged_in' => (bool) $is_logged_in,
 			'user_total_contribs' => ( $is_logged_in ? (int) $contribs : null ),
-			'user_contribs_span' => ( $is_logged_in ? (int) $contribs_in_timespan : null ),
+			'user_contribs_span1' => ( $is_logged_in ? (int) $contribs_in_timespan1 : null ),
+			'user_contribs_span2' => ( $is_logged_in ? (int) $contribs_in_timespan2 : null ),
+			'user_contribs_span3' => ( $is_logged_in ? (int) $contribs_in_timespan3 : null ),
 			'namespace' => (int) $namespace,
 			'event_id' => (int) $event_id
 		);
