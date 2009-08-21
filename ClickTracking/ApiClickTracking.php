@@ -13,7 +13,7 @@ class ApiClickTracking extends ApiBase {
 	 * @see includes/api/ApiBase#execute()
 	 */
 	public function execute(){
-		global $wgUser, $wgTitle, $wgClickTrackContribTimeValue;
+		global $wgUser, $wgTitle, $wgClickTrackContribGranularity1, $wgClickTrackContribGranularity2, $wgClickTrackContribGranularity3;
 
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
@@ -24,6 +24,18 @@ class ApiClickTracking extends ApiBase {
 		$event_id = ClickTrackingHooks::getEventIDFromName( urldecode( $eventid_to_lookup ) );
 
 		$is_logged_in = $wgUser->isLoggedIn();
+		$now = time();
+		$granularity1 = $is_logged_in? 
+						ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity1 )
+						: 0;
+		
+		$granularity2 = $is_logged_in?
+						ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity2 )
+						: 0;
+		
+		$granularity3 = $is_logged_in?
+						ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity3 )
+						: 0;
 
 		ClickTrackingHooks::trackEvent(
 			$session_id,  // randomly generated session ID
@@ -31,10 +43,9 @@ class ApiClickTracking extends ApiBase {
 			$wgTitle->getNamespace(), 			 // what namespace are they editing?
 			$event_id,							 // event ID passed in
 			( $is_logged_in ? $wgUser->getEditCount() : 0 ), // total edit count or 0 if anonymous
-			( $is_logged_in ?
-		  		( ClickTrackingHooks::getEditCountSince( time() - $wgClickTrackContribTimeValue ) ) 
-				: 0
-			) // contributions since whatever the time value is, or 0 if anonymous
+			$granularity1, //contributions made in granularity 1 time frame
+			$granularity2, //contributions made in granularity 2 time frame
+			$granularity3  //contributions made in granularity 3 time frame
 		);
 	}
 
