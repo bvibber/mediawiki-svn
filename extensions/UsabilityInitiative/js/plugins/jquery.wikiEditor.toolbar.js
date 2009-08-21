@@ -199,7 +199,8 @@ fn : {
 	 */
 	doAction : function( context, action, source ) {
 		// Verify that this has been called from a source that's within the toolbar
-		if ( source.closest( '.wikiEditor-ui-toolbar' ).size() ) {
+		// 'trackAction' defined in click tracking
+		if ($.trackAction != undefined && source.closest( '.wikiEditor-ui-toolbar' ).size() ) {
 			// Build a unique id for this action by tracking the parent rel attributes up to the toolbar level
 			var rels = [];
 			var step = source;
@@ -217,7 +218,7 @@ fn : {
 			}
 			rels.reverse();
 			var id = rels.join( '.' );
-			// PERFORM CLICK TRACKING HERE!
+			$.trackAction(id);
 		}
 		switch ( action.type ) {
 			case 'replace':
