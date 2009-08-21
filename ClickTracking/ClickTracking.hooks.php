@@ -65,7 +65,7 @@ class ClickTrackingHooks {
 		global $wgUser;
 
 		// convert to just the day
-		$time = gmdate( 'Ymd', wfTimestamp( TS_UNIX, $ts ) );
+		$time = gmdate( 'Y-m-d', wfTimestamp( TS_UNIX, $ts ) );
 
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -74,7 +74,7 @@ class ClickTrackingHooks {
 			'SUM(contribs)',
 			array(
 				'user_id' => $wgUser->getId(),
-				"day < '$time'"
+				"day >= '$time'"
 			),
 			__METHOD__
 		);
@@ -98,6 +98,7 @@ class ClickTrackingHooks {
 		$sql = 
 		"INSERT INTO user_daily_contribs (user_id,day,contribs) VALUES ({$wgUser->getId()},$today,1) ON DUPLICATE KEY UPDATE contribs=contribs+1;";
 		$dbw->query($sql, __METHOD__);
+		
 		return true;
 	}
 

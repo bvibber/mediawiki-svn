@@ -5,6 +5,7 @@
  * @file
  * @ingroup API
  */
+
 class ApiClickTracking extends ApiBase {
 
 	/**
@@ -12,7 +13,7 @@ class ApiClickTracking extends ApiBase {
 	 * @see includes/api/ApiBase#execute()
 	 */
 	public function execute(){
-		global $wgUser, $wgTitle;
+		global $wgUser, $wgTitle, $wgClickTrackContribTimeValue;
 
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
