@@ -1026,16 +1026,20 @@ scrollToCaretPosition: function( pos ) {
 $.wikiEditor = {
 	'modules': {},
 	'instances': [],
-	'isSupported': function() {
-		function isSupported( supportedBrowsers ) {
-			return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
-		}
-		var supportedBrowsers = {
-			'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
-			'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
-		};
-		return isSupported( supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+	'supportedBrowsers': {
+		'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
+		'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
 	}
+};
+$.wikiEditor.isSupportKnown = function() {
+	return ( function( supportedBrowsers ) {
+		return $.browser.name in supportedBrowsers;
+	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
+};
+$.wikiEditor.isSupported = function() {
+	return ( function( supportedBrowsers ) {
+		return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
+	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
 };
 $.fn.wikiEditor = function() {
 
@@ -1558,7 +1562,8 @@ fn : {
 	 */
 	doAction : function( context, action, source ) {
 		// Verify that this has been called from a source that's within the toolbar
-		if ( source.closest( '.wikiEditor-ui-toolbar' ).size() ) {
+		// 'trackAction' defined in click tracking
+		if ($.trackAction != undefined && source.closest( '.wikiEditor-ui-toolbar' ).size() ) {
 			// Build a unique id for this action by tracking the parent rel attributes up to the toolbar level
 			var rels = [];
 			var step = source;
@@ -1576,7 +1581,7 @@ fn : {
 			}
 			rels.reverse();
 			var id = rels.join( '.' );
-			// PERFORM CLICK TRACKING HERE!
+			$.trackAction(id);
 		}
 		switch ( action.type ) {
 			case 'replace':
