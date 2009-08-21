@@ -253,14 +253,15 @@ Du chasch s Anzeige vu däre Warnig im „{{int:prefs-editing}}“-Beryych vu Dy
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'editwarning' => 'אזהרת עריכה',
 	'editwarning-desc' => 'הצגת אזהרה כאשר משתמש מנסה לעזוב את טופס העריכה בלי לשמור',
-	'editwarning-warning' => 'עזיבת דף זה תגרום לאובדן כל השינויים שבוצעו.
-ניתן לבטל אזהרה זו מהאגף "{{int:prefs-editing}}" שבהעדפות שלכם.',
-	'editwarning-preference' => 'הצגת אזהרה במידה שדף העריכה עם השינויים שטרם נשמרו עומד להנטש',
+	'editwarning-warning' => 'עזיבת דף זה עשויה לגרום לאובדן כל השינויים שביצעתם.
+ניתן לבטל אזהרה זו בחלק "{{int:prefs-editing}}" שבהעדפות שלכם.',
+	'editwarning-preference' => 'הצגת אזהרה אם אני עומד לעזוב דף עריכה עם שינויים שטרם נשמרו',
 );
 
 /** Croatian (Hrvatski)
@@ -632,3 +633,4 @@ $messages['zh-hant'] = array(
 您可在您參數設置的「{{int:prefs-editing}}」一節中關閉此警告。',
 	'editwarning-preference' => '當我在更改未保存時離開頁面時警告我',
 );
+
