@@ -18,12 +18,11 @@
 
 /* Configuration */
 
-//functions should check if this is set before logging clicktrack events
+// functions should check if this is set before logging clicktrack events
 $wgClickTrackEnabled = true;
 
-
-//set the time window for what we consider 'recent' contributions, in days
-$wgClickTrackContribTimeValue = 60 * 60 * 24 * 365 / 2; //half a year
+// set the time window for what we consider 'recent' contributions, in days
+$wgClickTrackContribTimeValue = 60 * 60 * 24 * 365 / 2; // half a year
 
 // Credits
 $wgExtensionCredits['other'][] = array(
@@ -39,15 +38,14 @@ $wgExtensionCredits['other'][] = array(
 require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 
 // Adds Autoload Classes
-$wgAutoloadClasses['ClickTrackingHooks'] =
-	dirname( __FILE__ ) . '/ClickTracking.hooks.php';
+$dir = dirname( __FILE__ ) . '/';
+$wgAutoloadClasses['ClickTrackingHooks'] = $dir . 'ClickTracking.hooks.php';
+$wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
 
-$wgAutoloadClasses['ApiClickTracking'] = dirname( __FILE__ ) . '/ApiClickTracking.php';
-
+// Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
-
 $wgHooks['ArticleSaveComplete'][] = 'ClickTrackingHooks::storeNewContrib';
+$wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJS';
 
+// Set up the new API module
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
-
-$wgHooks['EditPage::showEditForm:initial'] [] = 'ClickTrackingHooks::addJS';
