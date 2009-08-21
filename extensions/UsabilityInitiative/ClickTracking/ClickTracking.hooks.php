@@ -42,9 +42,9 @@ class ClickTrackingHooks {
 	public static function addJS(){
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript('ClickTracking/ClickTracking.js');
-		UsabilityInitiativeHooks::addVariables(array(
-									'wgEditId' => ClickTrackingHooks::get_session_id()
-									));
+		UsabilityInitiativeHooks::addVariables(
+			array( 'wgTrackingToken' => ClickTrackingHooks::get_session_id() )
+		);
 		return true;
 	}
 	

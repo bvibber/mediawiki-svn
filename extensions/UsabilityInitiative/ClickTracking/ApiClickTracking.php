@@ -9,7 +9,7 @@
 class ApiClickTracking extends ApiBase {
 
 	/**
-	 * runs when the api is called with "clicktracking", takes in "eventid" and an edit token given to the user, "editid"
+	 * runs when the api is called with "clicktracking", takes in "eventid" and an edit token given to the user, "token"
 	 * @see includes/api/ApiBase#execute()
 	 */
 	public function execute(){
@@ -18,7 +18,7 @@ class ApiClickTracking extends ApiBase {
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];
-		$session_id = $params['editid'];
+		$session_id = $params['token'];
 		
 		//Event ID lookup table
 		$event_id = ClickTrackingHooks::getEventIDFromName(urldecode($eventid_to_lookup));
@@ -44,7 +44,7 @@ class ApiClickTracking extends ApiBase {
 	 * @return unknown_type
 	 */
  	protected function validateParams( $params ) {
-        $required = array( 'eventid', 'editid');
+        $required = array( 'eventid', 'token');
         foreach( $required as $arg ) {
             if ( !isset( $params[$arg] ) ) {
                 $this->dieUsageMsg( array( 'missingparam', $arg ) );
@@ -57,7 +57,7 @@ class ApiClickTracking extends ApiBase {
     public function getParamDescription() {
         return array(
             'eventid' => 'string of eventID',
-        	'editid'  => 'unique edit ID for this edit session'
+        	'token'  => 'unique edit ID for this edit session'
         );
     }
     
@@ -71,7 +71,7 @@ class ApiClickTracking extends ApiBase {
             'eventid' => array(
                 ApiBase::PARAM_TYPE => 'string'
             ),
-            'editid' => array(
+            'token' => array(
                 ApiBase::PARAM_TYPE => 'string'
             )
             );
