@@ -70,7 +70,7 @@ function efAssertEditHook( &$editpage ) {
 		return false;
 	}
 }
-function efAssertApiEditHook( &$editPage, $textBox, &$result ) {
+function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 	global $wgOut, $wgRequest;
 
 	$assertName = $wgRequest->getVal( 'assert' );

@@ -198,14 +198,14 @@ function addPersonalUrl( &$personal_urls, $title )
     return true;
 }
 
-function todoPreviewAction(&$q) {
+function todoPreviewAction($q) {
     global $todoPreview;
 
     $todoPreview = $q;
     return true;
 }
 
-function todoSavePreparser(&$q) {
+function todoSavePreparser($q) {
     // update the text of the todo so that it has a propper full name in it.
     // this way, the <dpl> search will work better
     $newpagetext = '';
