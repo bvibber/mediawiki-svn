@@ -747,7 +747,9 @@ Poner $wgLocalTmpDirectory a un directorio editable.',
 	'webstore_access' => 'Este servicio está restringido por el cliente IP.',
 	'webstore_path_invalid' => 'El nombre de archivo no es válido.',
 	'webstore_dest_open' => 'No es posible abrir el archivo de destino «$1».',
+	'webstore_dest_lock' => 'No se pudo acceder al archivo de destino "$1".',
 	'webstore_dest_mkdir' => 'No es posible crear el directorio de destino «$1».',
+	'webstore_archive_lock' => 'No se pudo acceder al archivo "$1".',
 	'webstore_archive_mkdir' => 'Incapaz de crear directorio de archivos "$1".',
 	'webstore_src_open' => 'Incapaz de abrir archivo fuente "$1".',
 	'webstore_src_close' => 'Error cerrando archivo fuente "$1".',
@@ -780,6 +782,7 @@ $1',
 
 $1',
 	'webstore_php_error' => 'Errores PHP fueron encontrados:',
+	'webstore_no_handler' => 'No hay procesador para transformar este tipo MIME.',
 );
 
 /** Basque (Euskara)

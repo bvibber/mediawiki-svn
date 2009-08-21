@@ -1052,6 +1052,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Giro720
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1068,6 +1069,7 @@ $messages['pt'] = array(
 	'authorprotect-failure' => 'Protecção sem sucesso',
 	'protect-level-author' => 'Proteger de não-autores',
 	'restriction-level-author' => 'Protegida pelo autor',
+	'right-authorprotect' => 'Proteger páginas com autor',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

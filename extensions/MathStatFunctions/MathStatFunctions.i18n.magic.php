@@ -47,3 +47,13 @@ $magicWords['nl'] = array(
 	'median'   => array( '0', 'mediaan', 'median' ),
 	'mean'     => array( '0', 'gemiddelde', 'mean' ),
 );
+
+$magicWords['ru'] = array(
+	'const'    => array( '0', 'конст', 'const' ),
+	'median'   => array( '0', 'медиана', 'median' ),
+	'mean'     => array( '0', 'среднее', 'mean' ),
+	'tan'      => array( '0', 'tg', 'tan' ),
+	'atan'     => array( '0', 'arctg', 'atan', 'arctan' ),
+	'cot'      => array( '0', 'ctg', 'cot' ),
+	'acot'     => array( '0', 'arcctg', 'acot', 'arccot' ),
+);

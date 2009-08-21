@@ -67,8 +67,10 @@ $messages['bar'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'categoryonupload-desc' => 'Дазваляе ўдзельніку выбіраць катэгорыю пад час загрузкі файла',
 	'categoryonupload-label' => 'Катэгорыя:',
 );
 

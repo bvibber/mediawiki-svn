@@ -51,6 +51,13 @@ $messages['qqq'] = array(
 	'security-type-namespace' => '{{Identical|Namespace}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'security-type-category' => 'kategorie',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -445,13 +452,14 @@ $messages['id'] = array(
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Marco 27
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'security' => 'Registro di sicurezza',
 	'security-desc' => 'Estende la protezione delle pagine di MediaWiki per permettere di limitare la visualizzazione del contenuto di pagine',
 	'security-logpage' => 'Registro di sicurezza',
 	'security-logpagetext' => "Di seguito sono elencate le azioni bloccate dall'[http://www.mediawiki.org/wiki/Extension:SimpleSecurity estensione SimpleSecurity].",
-	'badaccess-read' => "'''Attenzione:''' \"\$1\" è riferito qui, ma non si dispone dei permessi sufficienti per accedervi.",
+	'badaccess-read' => "'''Attenzione:''' la pagina \"\$1\" è richiamata qui, ma non si dispone di permessi sufficienti per accedervi.",
 	'security-info' => 'Sono presenti $1 in questa pagina',
 	'security-info-toggle' => 'restrizioni di sicurezza',
 	'security-inforestrict' => '$1 è limitata a $2',

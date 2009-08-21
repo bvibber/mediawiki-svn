@@ -72,6 +72,15 @@ $messages['bg'] = array(
 	'authors_anonymous' => 'Анонимни',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'authors-desc' => 'Ouzhpennañ a ra ur roll eus an aozerien er pajennoù',
+	'authors_authors' => 'Aozerien',
+	'authors_anonymous' => 'Dizanv',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -414,6 +423,15 @@ $messages['pl'] = array(
 	'authors-desc' => 'Dołącza do stron listę autorów',
 	'authors_authors' => 'Autorzy',
 	'authors_anonymous' => 'Anonimowy',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'authors-desc' => 'A gionta na lista ëd contribudor a la pàgina',
+	'authors_authors' => 'Autor',
+	'authors_anonymous' => 'Anònim',
 );
 
 /** Western Punjabi (پنجابی)

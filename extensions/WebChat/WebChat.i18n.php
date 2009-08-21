@@ -157,6 +157,7 @@ $messages['es'] = array(
 Para conectarse oprima simplemente el botón "Conectar"-
 Si Ud. ya se ha logueado, su nombre de usuario estará preseleccionado.
 Los usuarios anónimos obtienen un usuario generado automáticamente, que puede modificarse.',
+	'right-webchat' => 'Se permite usar [[Special:WebChat|web chat]]',
 );
 
 /** Basque (Euskara)

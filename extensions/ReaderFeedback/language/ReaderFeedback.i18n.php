@@ -65,6 +65,13 @@ $messages['qqq'] = array(
 {{identical|submitting}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'readerfeedback-submit' => 'Dien in',
+);
+
 /** Arabic (العربية)
  * @author Antime
  * @author Meno25
@@ -540,14 +547,16 @@ $messages['fi'] = array(
 	'readerfeedback-level-1' => 'Alhainen',
 	'readerfeedback-level-2' => 'Kohtalainen',
 	'readerfeedback-level-3' => 'Hyvä',
-	'readerfeedback-level-4' => 'Todella mainio',
+	'readerfeedback-level-4' => 'Erinomainen',
 	'readerfeedback-submit' => 'Lähetä',
 	'readerfeedback-main' => 'Vain sisältösivuja voi arvioida.',
 	'readerfeedback-success' => "'''Kiitos tämän sivun arvioimisesta.''' ([$3 Kommentteja tai kysymyksiä?]).",
 	'readerfeedback-voted' => "'''Näyttäisi siltä että olet ja antanut tälle sivulle arvosanat''' ([$3 Kommentteja tai kysymyksiä?]).",
 	'readerfeedback-submitting' => 'Lähetetään…',
 	'readerfeedback-finished' => 'Kiitos!',
+	'readerfeedback-tagfilter' => 'Merkintä:',
 	'tooltip-ca-ratinghist' => 'Lukijoiden arviot tästä sivusta',
+	'specialpages-group-feedback' => 'Katsojan mielipide',
 );
 
 /** French (Français)
@@ -711,7 +720,7 @@ $messages['gsw'] = array(
  * @author דניאל ב.
  */
 $messages['he'] = array(
-	'readerfeedback-desc' => 'אימות דפים מאפשר לקוראים לתת משוב באמצעות הטופס לדירוגים על בסיס קטגוריה',
+	'readerfeedback-desc' => 'אימות דפים המאפשר לקוראים לתת משוב באמצעות טופס לדירוג לפי קטגוריה',
 	'readerfeedback' => 'מה אתם חושבים על הדף הזה?',
 	'readerfeedback-text' => "'''אנא השקיעו רגע מזמנכם כדי לדרג דף זה. למשוב שתתנו יש ערך רב והוא יעזור לנו לשפר את האתר.'''",
 	'readerfeedback-reliability' => 'מהמינות',

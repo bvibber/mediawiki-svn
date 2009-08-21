@@ -287,6 +287,16 @@ $messages['pl'] = array(
 	'right-getfamily' => 'Tworzenie pliku „family” dla pywikipediabot',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'getfamily-desc' => 'A génera un file ëd famija për pywikipediabot',
+	'getfamily' => 'Pija na famija ëd pywikipediabot',
+	'getfamily-interwikierror' => 'Eror: ampostassion interwiki pa giusta, contata ël tò admin local.',
+	'right-getfamily' => 'Crea un file ëd famija për ij pywikipediabot',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya

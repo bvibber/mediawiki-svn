@@ -41,3 +41,7 @@ $magicWords['nl'] = array(
 $magicWords['ro'] = array(
 	'languagename'   => array( '0', 'numelimba', 'languagename' ),
 );
+
+$magicWords['ru'] = array(
+	'languagename'   => array( '0', 'названиеязыка', 'languagename' ),
+);

@@ -739,6 +739,13 @@ $messages['te'] = array(
 	'layouts_tagline' => "ఈ పేజీ '''$1''' అమరిక ద్వారా తయారైంది.",
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'layouts_unknown' => 'Näbelli',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

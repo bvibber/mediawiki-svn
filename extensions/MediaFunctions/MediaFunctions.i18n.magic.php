@@ -36,3 +36,12 @@ $magicWords['nl'] = array(
 	'mediawidth'        => array( '0', 'mediabreedte', 'mediawidth' ),
 	'mediadimensions'   => array( '0', 'mediaafmetingen', 'mediadimensions' ),
 );
+
+$magicWords['ru'] = array(
+	'mediamime'         => array( '0', 'mimeмедиа', 'mediamime' ),
+	'mediasize'         => array( '0', 'размермедиа', 'mediasize' ),
+	'mediaheight'       => array( '0', 'высотамедиа', 'mediaheight' ),
+	'mediawidth'        => array( '0', 'ширинамедиа', 'mediawidth' ),
+	'mediadimensions'   => array( '0', 'размерымедиа', 'mediadimensions' ),
+	'mediaexif'         => array( '0', 'exifмедиа', 'mediaexif' ),
+);

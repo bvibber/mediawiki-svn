@@ -450,7 +450,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'titlekey-desc' => 'Motor de sugerimento de riçerca par prefissi de titolo',
+	'titlekey-desc' => 'Motor de sugerimento de riserca par prefissi de titolo',
 );
 
 /** Vietnamese (Tiếng Việt)

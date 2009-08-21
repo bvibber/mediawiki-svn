@@ -123,6 +123,7 @@ Don't change '|' character.",
 $messages['af'] = array(
 	'tasks_form_comment' => 'Opmerking',
 	'tasks_delete' => 'Skrap',
+	'tasks_search_form_title' => 'Soek',
 	'tasks_search_status' => 'Status',
 	'tasks_previous' => 'Vorige',
 	'tasks_next' => 'Volgende',

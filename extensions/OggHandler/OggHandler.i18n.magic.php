@@ -28,3 +28,10 @@ $magicWords['nl'] = array(
 	'ogg_thumbtime'   => array( '0', 'miniatuurtijd=$1', 'thumbtime=$1' ),
 	'ogg_endtime'     => array( '0', 'eind=$1', 'end=$1' ),
 );
+
+$magicWords['ru'] = array(
+	'ogg_noplayer'    => array( '0', 'нетпроигрывателя', 'noplayer' ),
+	'ogg_noicon'      => array( '0', 'нетзначка', 'noicon' ),
+	'ogg_starttime'   => array( '0', 'начало=$1', 'start=$1' ),
+	'ogg_endtime'     => array( '0', 'окончание=$1', 'end=$1' ),
+);

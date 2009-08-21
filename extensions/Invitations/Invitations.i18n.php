@@ -195,6 +195,7 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author Jens Liebenau
  * @author Melancholie
  * @author Pill
  * @author Raimond Spekking
@@ -210,7 +211,7 @@ $messages['de'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eine Einladung/Aufforderung|$1 Einladungen/Aufforderungen}} verfügbar)',
 	'invitations-pagetitle' => 'Softwarefunktionen auf Einladungs-Basis',
 	'invitations-uninvitedlist-description' => 'Du hast keinen Zugang zu anderen einladungsbasierten Softwarefunktionen.',
-	'invitations-uninvitedlist-none' => 'Zur Zeit sind keine weiteren Softwarefunktionen einladungsbasiert.',
+	'invitations-uninvitedlist-none' => 'Zurzeit sind keine weiteren Softwarefunktionen einladungsbasiert.',
 	'invitations-feature-pagetitle' => 'Einladungs-Verwaltung - $1',
 	'invitations-feature-access' => 'Du hast Zugang zur Nutzung von <i>$1</i>.',
 	'invitations-feature-numleft' => '{{PLURAL:$2|Dir steht noch eine Einladung|Dir stehen noch <b>$1</b> von insgesamt $2 Einladungen}} zur Verfügung.',

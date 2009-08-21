@@ -1854,6 +1854,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -1898,6 +1899,7 @@ Voltar para:
 * [[Special:CrosswikiBlock|Formulário de bloqueio]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Desbloqueios locais são podem ser efectuados a partir deste interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Bloquear e desbloquear utilizadores em outras wikis',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

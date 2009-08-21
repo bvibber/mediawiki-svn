@@ -105,6 +105,15 @@ $messages['cs'] = array(
 	'right-forcepreviewexempt' => 'Ukládání stránky bez používání náhledu',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'forcepreview' => 'Gem siden (brug forhåndsvisning først)',
+	'forcepreview-desc' => 'Tvinger brugere uden privilegier til at forhåndsvise',
+	'right-forcepreviewexempt' => 'Må gemme uden at bruge forhåndsvisning',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author sokai

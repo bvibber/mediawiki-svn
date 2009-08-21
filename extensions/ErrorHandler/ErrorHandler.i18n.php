@@ -58,6 +58,13 @@ $messages['qqq'] = array(
 	'errorhandler-trace-line-internal' => '* $1: function name',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'errorhandler-errors' => 'Foute:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

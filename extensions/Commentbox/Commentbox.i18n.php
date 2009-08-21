@@ -88,6 +88,13 @@ $messages['eo'] = array(
 	'commentbox-error-page-nonexistent' => 'Ĉi tiu paĝo ne ekzistas!',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'commentbox-first-comment-heading' => '== Comentarios==',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

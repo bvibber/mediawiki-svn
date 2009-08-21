@@ -21,3 +21,7 @@ $magicWords['ksh'] = array(
 $magicWords['nl'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__GEENGENUMMERDEKOPPEN__', '__NONUMBEREDHEADINGS__' ),
 );
+
+$magicWords['ru'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__БЕЗНОМЕРОВЗАГОЛОВКОВ__', '__NONUMBEREDHEADINGS__' ),
+);

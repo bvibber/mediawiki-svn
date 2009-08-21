@@ -410,12 +410,18 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'amazonplus-desc' => 'Una èxtension fina pèrsonalisâbla por fâre vêre des enformacions d’Amazon.',
+	'amazonplus-nores' => 'Èrror : nion rèsultat at étâ trovâ !',
+	'amazonplus-noidres' => 'Èrror : un numerô de marchandie at pas possu étre trovâ !',
+	'amazonplus-fgcerr' => 'Èrror : les balyês d’Amazon ont pas possu étre rècupèrâs !',
+	'amazonplus-slserr' => 'Èrror : les balyês d’Amazon ont pas possu étre analisâs !',
 	'amazonplus-used' => 'utilisâ',
 	'amazonplus-german' => 'Alemand',
 	'amazonplus-french' => 'Francês',
 	'amazonplus-japanese' => 'J·aponês',
 	'amazonplus-amazon' => 'Prix d’Amazon',
 	'amazonplus-new' => 'novél',
+	'amazonplus-none' => 'Niona copia de ceti articllo est disponibla a l’emplèta.',
 	'amazonplus-currency' => '$1&nbsp;$3 ($2)$4',
 	'amazonplus-cp-none' => 'Nion',
 	'amazonplus-more' => 'més',

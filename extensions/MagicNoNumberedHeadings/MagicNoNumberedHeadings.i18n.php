@@ -34,6 +34,13 @@ $messages['dsb'] = array(
 	'magicnonumberedheadings-desc' => 'Pśidawa magiske słowo "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'magicnonumberedheadings-desc' => 'Agrega palabra mágica "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -137,6 +144,13 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'magicnonumberedheadings-desc' => 'A gionta la paròla màgica "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
+/** Portuguese (Português)
+ * @author Giro720
+ */
+$messages['pt'] = array(
+	'magicnonumberedheadings-desc' => 'Adiciona palavra mágica "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

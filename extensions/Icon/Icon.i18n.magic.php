@@ -17,3 +17,7 @@ $magicWords['ar'] = array(
 $magicWords['nl'] = array(
 	'icon'   => array( '0', 'icoon', 'icon' ),
 );
+
+$magicWords['ru'] = array(
+	'icon'   => array( '0', 'значок', 'icon' ),
+);

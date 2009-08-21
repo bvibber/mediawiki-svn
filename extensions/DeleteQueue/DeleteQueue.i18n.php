@@ -262,7 +262,9 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'deletequeue-review-reason' => 'Opmerkings:',
 	'deletequeue-vote-reason' => 'Opmerkings:',
+	'deletequeue-vote-submit' => 'Dien in',
 	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-search' => 'Soek',
 	'deletequeue-case-reason' => 'Rede:',
 );
 
@@ -2256,10 +2258,10 @@ $messages['he'] = array(
 	'deletequeue-review-submit' => 'שמירת הסקירה',
 	'deletequeue-review-original' => 'הסיבה להצעת המחיקה',
 	'deletequeue-review-badaction' => 'ציינתם פעולה בלתי חוקית',
-	'deletequeue-reviewspeedy-tab' => 'סקירת המחיקה המהירה',
-	'deletequeue-reviewspeedy-title' => 'סקירת מועמדות "$1" למחיקה מהירה',
-	'deletequeue-reviewprod-tab' => 'סקירת הצעת מחיקה',
-	'deletequeue-reviewprod-title' => 'סקירת ההצעה למחיקת "$1"',
+	'deletequeue-reviewspeedy-tab' => 'בדיקת המחיקה המהירה',
+	'deletequeue-reviewspeedy-title' => 'בדיקת המועמדות של "$1" למחיקה מהירה',
+	'deletequeue-reviewprod-tab' => 'בדיקת הצעות מחיקה',
+	'deletequeue-reviewprod-title' => 'בדיקת ההצעה למחיקת "$1"',
 	'deletequeue-reviewdeletediscuss-tab' => 'סקירת המחיקה',
 	'deletequeue-review-success-title' => 'הסקירה הושלמה',
 	'deletequeue-discusscreate-summary' => 'יצירת דיון למחיקת [[$1]].',

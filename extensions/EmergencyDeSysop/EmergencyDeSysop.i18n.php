@@ -44,6 +44,13 @@ Do not translate or change tag names, or link anchors.',
 	'right-emergencydesysop' => 'This is a user right description, as shown on [[Special:ListGroupRights]], e.g.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'emergencydesysop-submit' => 'Dien in',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda
@@ -338,13 +345,14 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'emergencydesysop-reason' => 'סיבת ההסרה',
 	'emergencydesysop-submit' => 'שליחה',
 	'emergencydesysop-incomplete' => 'כל שדות הטופס נדרשים, אנא נסו שוב.',
-	'emergencydesysop-notasysop' => 'משתמש היעד איננו בקבוצת המנהלים.',
+	'emergencydesysop-notasysop' => 'משתמש היעד איננו בקבוצת מפעילי המערכת.',
 	'emergencydesysop-invalidtarget' => 'משתמש היעד אינו קיים.',
 );
 

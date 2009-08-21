@@ -31,6 +31,13 @@ Do not translate or change tag names, or link anchors.',
 	'searchbox-namespaces' => '{{Identical|Namespaces}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'searchbox-search' => 'Soek',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

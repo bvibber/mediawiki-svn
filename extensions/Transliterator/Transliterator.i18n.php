@@ -81,6 +81,17 @@ $messages['dsb'] = array(
 	'transliterator-error-rulesize' => 'Pšawidło <code>$1</code> ma wěcej ako $3 {{PLURAL:$3|znamuško|znamušce|znamuška|znamuškow}} nalěwo w [[MediaWiki:$2]]',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'transliterator-desc' => 'Provee una función analizadora configurable para transliteración',
+	'transliterator-error-ambiguous' => 'Regla ambigua <code>$1</code> en [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaxis inválido <code>$1</code> en [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Más de $1 {{PLURAL:$1|regla|reglas}} en [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Regla <code>$1</code> tiene más de $3 {{PLURAL:$3|caracter|caracteres}} en la izquierda en [[MediaWiki:$2]]',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author PieRRoMaN
@@ -105,10 +116,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'transliterator-error-rulecount' => 'למעלה מ{{PLURAL:$1|כלל אחד|־$1 כללים}} תחת [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'יש יותר מ{{PLURAL:$1|כלל אחד|־$1 כללים}} בדף [[MediaWiki:$2]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

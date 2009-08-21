@@ -40,6 +40,13 @@ $messages['qqq'] = array(
 	'dplforum-toomany' => 'Part of the [http://www.mediawiki.org/wiki/Extension:DPLforum DPLforum extension]. DPL stands for Dynamic Page Listing.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'dplforum-never' => 'Nooit',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

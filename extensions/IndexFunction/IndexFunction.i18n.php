@@ -365,15 +365,16 @@ Druck uf dr Boge go alli Syte aazeige, wu unter däm Titel ufglischtet sin.',
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'indexfunc-badtitle' => 'כותרת שגויה: "$1"',
+	'indexfunc-badtitle' => 'כותרת בלתי תקינה: "$1"',
 	'indexfunc-index-exists' => 'הדף "$1" כבר קיים',
 	'index' => 'חיפוש באינדקס',
 	'index-legend' => 'חיפוש באינדקס',
 	'index-search' => 'חיפוש:',
-	'index-disambig-start' => "המונח '''$1''' עלול להפנות לכמה דפים:",
+	'index-disambig-start' => "המונח '''$1''' עשוי להתייחס למספר דפים:",
 	'index-hide-detail' => 'הסתרת רשימת הדפים',
 	'index-no-results' => 'החיפוש לא החזיר תוצאות',
 );
@@ -522,6 +523,9 @@ $messages['lb'] = array(
 	'index-expand-detail' => 'Déi Säite weisen déi ënner dësem Titel indexéiert sinn',
 	'index-hide-detail' => "D'Lëscht vu Säite verstoppen",
 	'index-no-results' => "D'Sich hat keng Resultater",
+	'index-search-explain' => 'Dës Säit benotzt Prefix-Sich.
+
+Tippt déi éischt Buchstawen an dréckt op de {{int:index-submit ("Schécken")}} Knäppchen fir no Säitentitelen ze sichen déi mat dem ufänken wat Dir aginn hutt.',
 );
 
 /** Mongolian (Монгол)

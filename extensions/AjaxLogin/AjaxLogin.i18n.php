@@ -60,6 +60,18 @@ $messages['bg'] = array(
 	'ajaxlogin-create' => 'Създаване на сметка',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'ajaxlogin-desc' => "Furmskrid dinamek a dalvez da anavezout an implijerien ha zerc'hel soñj eus o ger-tremen.",
+	'ajaxLogin1' => "A-benn kas oc'h enrolladenn da benn vat e rankit lakaat ur ger-termen nevez.
+Ret e vo deoc'h kuitaat ar bajenn emaoc'h o tegas kemmoù enni hag e c'hallfec'h koll ar pezh hoc'h eus graet.",
+	'ajaxLogin2' => "Ha sur oc'h ?
+Koll ar cheñchamantoù hoc'h eus graet d'ar bajenn-mañ a c'hallit ober ma kuitait ar bajenn bremañ.",
+	'ajaxlogin-create' => 'Krouiñ ur gont',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -507,6 +519,18 @@ Obecne edytowana strona zostanie zmieniana co może spowodować utratę wprowadz
 	'ajaxLogin2' => 'Czy jesteś pewien?
 Możesz stracić zmiany które zrobiłeś na tej stronie, jeśli ją teraz opuścisz.',
 	'ajaxlogin-create' => 'Załóż konto',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'ajaxlogin-desc' => "Casela dinàmica ch'a përmëtt a j'utent ëd loghesse e d'arcordé la ciav",
+	'ajaxLogin1' => 'Për completé ël tò login, it deuve anserì na neuva ciav.
+Sòn sì at porterà via da sta pàgina ëd modìfica-sì e it podras perdi toa modìfica corenta.',
+	'ajaxLogin2' => "It ses-to sicur?
+It peule perdi toe modìfiche a sta pàgina-sì s'it lasse sta pàgina-sì or.",
+	'ajaxlogin-create' => 'Crea un cont',
 );
 
 /** Pashto (پښتو)

@@ -434,6 +434,7 @@ $messages['af'] = array(
 	'ow_LinkAttributeValues' => 'Skakels',
 	'ow_User' => 'Gebruiker',
 	'ow_Value' => 'Waarde',
+	'ow_show' => 'Wys',
 	'ow_create' => 'Skep',
 	'ow_suggest_previous' => 'Vorige',
 	'ow_suggest_next' => 'Volgende',
@@ -4649,7 +4650,7 @@ $messages['he'] = array(
 	'ow_importtsv_nothing_added' => 'לא נוסף דבר.',
 	'ow_importtsv_nothing_added_test' => 'לא נוסף דבר (זוהי הרצת בדיקה).',
 	'ow_importtsv_results' => 'נוספו {{PLURAL:$1|הגדרה אחת|$1 הגדרות}} ו{{PLURAL:$2|תרגום אחד|־$2 תרגומים}}.',
-	'ow_impexptsv_unknown_lang' => '<p>השפה אינה מוכרת או שגויה: $1.<br />
+	'ow_impexptsv_unknown_lang' => '<p>השפה שגויה או אינה מוכרת: $1.<br />
 על השפות להיות מיוצגות על ידי קוד השפה המתאים ב־ISO 639-3.</p>',
 	'exporttsv' => 'ויקי־דאטא: ייצוא TSV',
 	'ow_exporttsv_title' => 'ייצוא אוסף ל־TSV',
@@ -4698,7 +4699,7 @@ $messages['he'] = array(
 אנא בדקו את כתובת האינטרנט.',
 	'ow_dm_missing' => 'נראה כי דף זה מפנה למשמעות מוגדרת (DefinedMeaning - תפיסה) שאינה קיימת.
 אנא בדקו את כתובת האינטרנט.',
-	'ow_AddHint' => 'הזנת שורות חדשות להוספה',
+	'ow_AddHint' => 'הקלידו שורות חדשות להוספה',
 	'ow_AlternativeDefinition' => 'משמעות חלופית',
 	'ow_AlternativeDefinitions' => 'משמעויות חלופיות',
 	'ow_Annotation' => 'פירוש',
@@ -4727,7 +4728,7 @@ $messages['he'] = array(
 	'ow_Language' => 'שפה',
 	'ow_LevelAnnotation' => 'פירוש',
 	'ow_Multiple_meanings' => 'מספר משמעויות:',
-	'ow_NewExactMeaning' => 'משמעות מדוייקת חדשה',
+	'ow_NewExactMeaning' => 'משמעות מדויקת חדשה',
 	'ow_OptionAttribute' => 'מאפיין',
 	'ow_OptionAttributeOption' => 'אפשרות',
 	'ow_OptionAttributeOptions' => 'אפשרויות',
@@ -6369,9 +6370,12 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'datasearch_language' => 'ಭಾಷೆ:',
+	'datasearch_meaning' => 'ಅರ್ಥ',
 	'ow_history' => 'ಇತಿಹಾಸ',
 	'ow_transaction_summary' => 'ಸಾರಾಂಶ',
+	'ow_Definition' => 'ವ್ಯಾಖ್ಯಾನ',
 	'ow_Language' => 'ಭಾಷೆ',
+	'ow_show' => 'ತೋರಿಸು',
 );
 
 /** Korean (한국어)
@@ -8745,6 +8749,8 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'wikidata-desc' => 'Adiciona base de dados semelhante a wiki para vários tipos de conteúdos',
+	'wikidata-handler-namespace-move-error' => 'Páginas em espaços nominais geridos pela extensão Wikidata não podem ser movidas.',
 	'languages' => 'Wikidata: Gestor de línguas',
 	'langman-desc' => 'Adicione e modifique configurações de línguas com [[Special:Languages]]',
 	'langman_title' => 'Gestor de línguas',
@@ -8790,7 +8796,7 @@ $messages['pt'] = array(
 Certifique-se de que a sua aplicação gravou ou exportou o ficheiro correctamente.</p>',
 	'ow_importtsv_not_tsv' => '<p>Este ficheiro não aparenta ser um ficheiro TSV válido.</p>',
 	'ow_importtsv_bad_columns' => "<p>Nome de coluna '$1' incorrecto.<br />
-As colunas deverão ter o nome 'definition_iso' ou 'translations_iso',
+As colunas deverão ter o nome 'definition_iso' ou 'translations_iso',  
 onde iso é o código da língua.</p>",
 	'ow_importtsv_test_run_title' => 'Teste de execução de importação de dados TSV',
 	'ow_importtsv_nothing_added' => 'Nada adicionado.',
@@ -8927,6 +8933,7 @@ Seleccione uma colecção a exportar. Na caixa de texto das línguas, introduza 
 	'ow_meaningsoftitle' => 'Significados de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Ligação Wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMISSÃO NEGADA</h2>',
+	'copy' => 'Wikidata: Copiar',
 	'ow_copy_no_action_specified' => 'Por favor, especifique uma acção',
 	'ow_copy_help' => 'A ajuda ainda não está implementada.',
 	'ow_please_proved_dmid' => 'Epá, parece que está a faltar um "?dmid=<qualquercoisa>" (dmid=ID do Significado Definido) aos dados introduzidos<br />
@@ -8962,6 +8969,7 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
 	'ow_nstab_definedmeaning' => 'significado definido',
 	'ow_nstab_edit_copy' => 'editar cópia',
 	'right-addlanguage' => 'Adicionar e modificar configurações de línguas',
+	'ow_shown_datasets' => 'Conjuntos de dados mostrados',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

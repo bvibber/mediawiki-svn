@@ -13,6 +13,13 @@ $messages['qqq'] = array(
 	'autoincrement-desc' => '{{desc}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'autoincrement-desc' => 'Argemmenn gevreañ a ouzhpenn an argemmenn <nowiki>{{AUTOINCREMENT}}</nowiki> ent emgefre',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -25,6 +32,13 @@ $messages['bs'] = array(
  */
 $messages['dsb'] = array(
 	'autoincrement-desc' => 'Wariablowa kokula, kótaraž pśidawa awtomatiski licecu wariablu <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
+/** Spanish (Español)
+ * @author Antur
+ */
+$messages['es'] = array(
+	'autoincrement-desc' => 'Una variable de conexión que agrega la variable <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
 /** Basque (Euskara)
@@ -49,10 +63,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'autoincrement-desc' => 'תכונת מפענח המוסיפה את המשתנה להוספה אוטומטית <nowiki>{{AUTOINCREMENT}}</nowiki>',
+	'autoincrement-desc' => 'תכונת מפענח המוסיפה את המשתנה <nowiki>{{AUTOINCREMENT}}</nowiki> הגדל באופן אוטומטי',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -87,8 +87,11 @@ Do not translate or change tag names, or link anchors.',
  * @author Naudefj
  */
 $messages['af'] = array(
+	'recordadmin-submit' => 'Dien in',
+	'recordadmin-buttonsearch' => 'Soek',
 	'recordadmin-buttonsave' => 'Stoor',
 	'recordadmin-editlink' => 'wysig',
+	'recordadmin-actions' => 'Aksies',
 );
 
 /** Arabic (العربية)

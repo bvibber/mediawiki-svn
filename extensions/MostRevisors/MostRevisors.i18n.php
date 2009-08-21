@@ -317,10 +317,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'mostrevisors' => 'הדפים בעלי מספר המבקרים הגבוה ביותר',
+	'mostrevisors' => 'הדפים בעלי מספר הבודקים הגבוה ביותר',
 	'mostrevisors-namespace' => 'מרחב שם:',
 	'mostrevisors-none' => 'לא נמצאו רשומות.',
 	'mostrevisors-showredir' => 'הצגת דפי הפניה',

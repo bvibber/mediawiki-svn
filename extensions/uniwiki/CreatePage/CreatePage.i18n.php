@@ -119,6 +119,22 @@ $messages['bg'] = array(
 	'createpage_editexisting' => 'Да. Искам да допринеса за съществуващата страница.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'createpage' => 'Krouiñ ur bajenn',
+	'createpage-desc' => 'Ouzhpennañ a ra ur [[Special:CreatePage|bajenn zibar]] evit krouiñ pajennoù nevez',
+	'createpage_submitbutton' => 'Kas',
+	'createpage_instructions' => "Merkañ titl ar bajenn a fell deoc'h krouiñ :",
+	'createpage_entertitle' => 'Merkit un titl evit ar bajenn',
+	'createpage_titleexists' => "Ur bajenn dezhi an hevelep anv [[$1]] zo c'hoazh.
+Ha fellout a ra deoc'h degas kemmoù war ar bajenn-se ?",
+	'createpage_tryagain' => "Ket - C'hoant am eus da grouiñ ur bajenn nevez ganti un anv disheñvel",
+	'createpage_editexisting' => "Ya, 'vat. C'hoant am eus kemer perzh er bajenn-se.",
+	'createpage-badtitle' => 'N\'haller ket ober gant "$1" da ditl ur bajenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

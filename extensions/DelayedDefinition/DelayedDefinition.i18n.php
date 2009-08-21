@@ -244,6 +244,16 @@ $messages['pl'] = array(
 	'delaydef-error-redef' => 'Błąd – próba ponownej definicji $1.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'delaydef-desc' => "A gionta &lt;define&gt; e &lt;display&gt; për përmëtte al còdes d'esse riposissionà",
+	'delaydef-error-missing-def' => 'Eror: Definission nessessaria për &lt;display name="$1"&gt; pa trovà.',
+	'delaydef-error-no-name' => 'Eror: pa gnun nòm paràmeter spessifià.',
+	'delaydef-error-redef' => 'Eror: tentà la ridefinission ëd $1.',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

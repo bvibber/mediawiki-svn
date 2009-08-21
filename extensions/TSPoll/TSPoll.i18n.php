@@ -251,6 +251,15 @@ $messages['pl'] = array(
 	'tspoll-id-error' => 'Nie podano ID!',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'tspoll-desc' => 'Anseriss ël [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] com un HTML tag',
+	'tspoll-fetch-error' => "Eror an cariand l'URL!",
+	'tspoll-id-error' => 'Pa dàit gnun ID!',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

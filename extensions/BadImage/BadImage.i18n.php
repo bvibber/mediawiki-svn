@@ -1749,12 +1749,14 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'badimages' => 'Lista dle figure da deje deuit',
+	'badimages-desc' => 'Estend le possibilità ëd MediaWiki ëd listé le figure grame',
 	'badimages-add-btn' => 'Gionta',
 	'badimages-added' => "$1 a l'é stait giontà a la lista.",
-	'badimages-count' => "A-i son '''$1''' figure marcà ch'a venta deje deuit.",
+	'badimages-count' => "A-i {{PLURAL:$1|é|son}} '''$1''' {{PLURAL:$1|figura|figure}} marcà ch'a venta deje deuit.",
 	'badimages-name' => 'Nòm:',
 	'badimages-not-added' => "La figura a l'é pa podusse gionté.",
 	'badimages-not-removed' => "La figura a l'é pa podusse gavé.",
@@ -1769,6 +1771,8 @@ $messages['pms'] = array(
 	'badimages-log-header' => "Sossì a l'é lòn ch'a l'é riva-ie a la [[{{MediaWiki:Badimages-page}}|lista dle figure ch'a venta deje deuit]].",
 	'badimages-log-add' => "[[$1]] a l'é stait marcà ch'a venta deje deuit.",
 	'badimages-log-remove' => "[[$1]] a l'é stait gavà da lòn ch'a venta deje deuit.",
+	'badimages-page' => '{{ns:help}}:Lista dle figure grame',
+	'right-badimages' => 'Modìfica la lista dle figure grame',
 );
 
 /** Pashto (پښتو)

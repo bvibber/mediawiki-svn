@@ -598,12 +598,13 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'patrol-revert-reason' => 'סיבה:',
 	'patrol-skip' => 'דילוג',
-	'patrol-skipped-ok' => 'התעלמות מעריכה.',
+	'patrol-skipped-ok' => 'התעלמות מהעריכה.',
 	'patrol-resume' => 'לחצו כאן להמשך.',
 );
 

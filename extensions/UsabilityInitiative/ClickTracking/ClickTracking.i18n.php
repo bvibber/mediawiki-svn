@@ -15,3 +15,12 @@ $messages['en'] = array(
 	'clicktracking' => 'Usability Initiative click tracking',
 	'clicktracking-desc' => 'Click tracking, intended for tracking events that do not cause a page refresh'
 );
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'clicktracking' => "Traciamento click de l'Inissiativa par l'Usabilità",
+	'clicktracking-desc' => 'Traciamento dei click, par traciare i eventi che no provoca mia un refresh de la pagina.',
+);
+

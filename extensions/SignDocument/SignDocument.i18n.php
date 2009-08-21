@@ -401,11 +401,11 @@ $messages['oc'] = array(
  * @author ToSter
  */
 $messages['pl'] = array(
-	'signaturelogpage' => 'Spis podpisów',
+	'signaturelogpage' => 'Rejestr podpisywania',
 	'signature-desc' => 'Umożliwia [[Special:SignDocument|podpisywanie]] dokumentów',
 	'signaturelogpagetext' => 'To jest spis [[Special:SignDocument|wszystkich podpisów dodanych do dokumentów]].',
 	'signaturelogentry' => 'podpisał dokument $1',
-	'right-sigadmin' => 'Administracja podpisywania dokumentów',
+	'right-sigadmin' => 'Zarządzanie podpisywaniem dokumentów',
 	'right-createsigndocument' => 'Tworzenie dokumentów, które można podpisywać',
 );
 

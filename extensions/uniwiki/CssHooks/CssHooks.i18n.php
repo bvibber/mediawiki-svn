@@ -337,6 +337,13 @@ $messages['sv'] = array(
 	'csshooks-desc' => 'Lägger till CSS till en sidas HTML för bättre utseende',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'csshooks-desc' => 'ఇంకా మంచి స్టైలింగ్ కోసము  పేజీల హెచ్టిఏమెల్ ఔట్పుట్ కి సీఎసేస్ ని కలుపుతుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

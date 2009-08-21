@@ -881,6 +881,7 @@ $messages['es'] = array(
 	'contribstats-value-under' => 'Debajo de $1',
 	'contribstats-value-from' => 'De $1 a $2',
 	'contribstats-value-over' => 'Sobre $1',
+	'contribstats-day-totals' => 'Total por hoy',
 	'contribstats-week' => 'Semana',
 	'contribstats-clicks' => 'Clics',
 	'contribstats-donations' => 'Donaciones',
@@ -1277,6 +1278,7 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -1313,10 +1315,10 @@ $messages['he'] = array(
 	'contribstats-value-under' => 'פחות מ־$1',
 	'contribstats-value-from' => 'בין $1 ל־$2',
 	'contribstats-value-over' => 'יותר מ־$1',
-	'contributiontrackingstatistics' => 'סטטיסטיקת מעקב אחר תרומות',
-	'contribstats-day-totals' => 'סך הכל להיום',
+	'contributiontrackingstatistics' => 'סטטיסטיקות מעקב אחרי תרומות',
+	'contribstats-day-totals' => 'סך הכול להיום',
 	'contribstats-week' => 'שבוע',
-	'contribstats-weekly-totals' => '{{PLURAL:$1|סך הכל לשבוע זה|סיכומים שבועיים עבור $1 השבועות האחרונים כולל}}',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|סיכום לשבוע זה|סיכומים שבועיים עבור $1 השבועות האחרונים כולל}}',
 	'contribstats-clicks' => 'לחיצות',
 	'contribstats-donations' => 'תרומות',
 	'contribstats-conversion' => 'יחס ההמרה (%)',

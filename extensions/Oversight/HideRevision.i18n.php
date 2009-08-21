@@ -2034,10 +2034,11 @@ $messages['km'] = array(
  * @author Albamhandae
  * @author Kwj2772
  * @author Pi.C.Noizecehx
+ * @author ToePeu
  */
 $messages['ko'] = array(
 	'hiderevision' => '영구히 특정 판을 숨기기',
-	'hiderevision-desc' => '법적인 이유 등으로 인하여 특정 판을 숨김',
+	'hiderevision-desc' => '법적인 이유 등으로 모든 사용자가 볼 수 없도록 특정 판을 숨긴다.',
 	'group-oversight' => '오버사이트',
 	'group-oversight-member' => '오버사이트',
 	'grouppage-oversight' => '{{ns:project}}:오버사이트',
@@ -2052,7 +2053,7 @@ $messages['ko'] = array(
 '''이 기능을 남용할 경우 권한이 해제될 수 있습니다.'''
 
 삭제된 편집은 웹 사이트를 통해 아무에게도 보여지지 않을 것입니다. 하지만 삭제된 편집은 실수를 했을 때 데이터베이스 관리자에 의해 수동으로 복구될 수 있습니다.",
-	'hiderevision-reason' => '이유 (비공개적으로 기록될 것입니다):',
+	'hiderevision-reason' => '이유 (비공개적으로 기록):',
 	'hiderevision-submit' => '이 데이터를 영구히 숨기기',
 	'hiderevision-tab' => '이 판을 숨기기',
 	'hiderevision-link' => '숨겨진 사용자 기여',
@@ -2068,7 +2069,7 @@ $messages['ko'] = array(
 	'oversight-nodiff' => '이 문서의 이전 판이 없기 때문에 차이를 보여 줄 수 없습니다. 아마도:
 *문서가 삭제되었거나,
 *숨겨진 판이 문서의 첫 판일 수 있습니다.',
-	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
+	'oversight-log-hiderev' => ' 사용자가 $1에서의 편집을 숨김',
 	'oversight' => '오버사이트',
 	'oversight-view' => '내용 보기',
 	'oversight-difference' => '(이전의 존재하는 판과의 차이)',

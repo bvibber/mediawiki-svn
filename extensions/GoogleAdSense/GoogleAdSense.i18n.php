@@ -79,6 +79,13 @@ $messages['cs'] = array(
 	'googleadsense-desc' => 'Přidává do postranního panelu [http://www.google.com/adsense Google AdSense]',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'googleadsense-desc' => 'Tilføjer [http://google.com/adsense Google AdSense] til sidemenuen',
+);
+
 /** German (Deutsch)
  * @author MichaelFrey
  */

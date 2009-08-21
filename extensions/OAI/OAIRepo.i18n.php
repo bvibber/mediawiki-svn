@@ -245,9 +245,10 @@ $messages['jv'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author ToePeu
  */
 $messages['ko'] = array(
-	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] 저장소 인터페이스를 제공',
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] 저장소 인터페이스를 제공한다.',
 );
 
 /** Ripoarisch (Ripoarisch)

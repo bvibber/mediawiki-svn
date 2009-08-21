@@ -414,6 +414,15 @@ $messages['pl'] = array(
 	'simplesearch-search' => 'Szukaj',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'simplesearch' => 'Arserca sempia',
+	'simplesearch-desc' => "A gionta funsionalità extra a l'arserca semplifià ëd Vector",
+	'simplesearch-search' => 'Arserca',
+);
+
 /** Pontic (Ποντιακά)
  * @author Consta
  */
@@ -431,10 +440,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Waldir
  */
 $messages['pt'] = array(
-	'simplesearch' => 'Pesquisa Simples',
+	'simplesearch' => 'Pesquisa simples',
 	'simplesearch-desc' => 'Adiciona funcionalidades extra à pesquisa simplificada do Vector.',
 	'simplesearch-search' => 'Pesquisa',
 );

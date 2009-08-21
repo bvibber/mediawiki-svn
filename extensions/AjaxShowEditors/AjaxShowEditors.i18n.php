@@ -188,13 +188,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Jens Liebenau
  * @author Pill
  * @author Raimond Spekking
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'ajax-se-desc' => 'Zeigt Benutzer, die momentan dieselbe Seite bearbeiten',
-	'ajax-se-title' => 'Wird zur Zeit bearbeitet von:',
+	'ajax-se-title' => 'Wird zurzeit bearbeitet von:',
 	'ajax-se-pending' => 'bevorstehende Aktualisierungen … (klicke auf diesen Kasten oder beginne mit der Bearbeitung)',
 	'ajax-se-idling' => '(vor $1 s)',
 	'ajax-se-pagedoesnotexist' => 'Seite existiert nicht',
@@ -832,11 +833,16 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'ajax-se-desc' => "A mosta j'utent ch'a son an mente ch'a modìfico la midema pàgina",
 	'ajax-se-title' => "Antramentr ch'as modìfica:",
 	'ajax-se-pending' => "a l'ha dë esse agiornà ... (Ch'a-i bata ansima a sta casela ò pura ch'a fasa che fé soa modìfica)",
 	'ajax-se-idling' => '(da $1 second)',
+	'ajax-se-pagedoesnotexist' => 'la pàgina a esist pa',
+	'ajax-se-userinvalid' => 'Eror: utent pa bon',
+	'ajax-se-usernotfound' => 'Eror: utent pa trovà',
 );
 
 /** Pashto (پښتو)

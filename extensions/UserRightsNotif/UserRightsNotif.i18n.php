@@ -808,6 +808,24 @@ $2',
 	'userrightsnotif-desc' => 'Wyślij informację do użytkowników o zmianach uprawnień',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'userrightsnotifysubject' => "Cambi dl'apartenensa dël grup an dzora a $1",
+	'userrightsnotifybody' => "Cerea $1.
+
+Sòn sì a l'é për anformete che ël tò grup d'apartenensa an dzora a $2 a l'é stàit cambià da $3 a $4.
+
+Giontà: $5
+Gavà: $6
+
+Tante bele còse,
+
+$2",
+	'userrightsnotif-desc' => "A manda na e-mail ëd notìfica a j'utent con un cambiament ëd drit",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

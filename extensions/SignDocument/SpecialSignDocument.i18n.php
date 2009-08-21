@@ -2186,6 +2186,7 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'sign-realname' => 'ಹೆಸರು:',
 	'sign-viewfield-realname' => 'ಹೆಸರು',
+	'sign-viewfield-country' => 'ದೇಶ',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -3001,7 +3002,7 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-email' => 'Adres e‐mail:',
 	'sign-indicates-req' => '<small><i><font color="red">*</font> oznacza wymagane pole.</i></small>',
 	'sign-hide-note' => '<small><i><font color="red">**</font> Uwaga – ukryte przez Ciebie informacje nadal będą widoczne dla administratorów.</i></small>',
-	'sign-list-anonymous' => 'Wypisz anonimowo',
+	'sign-list-anonymous' => 'Lista anonimowych',
 	'sign-list-hideaddress' => 'Nie pokazuj adresu',
 	'sign-list-hideextaddress' => 'Nie pokazuj miejscowości, kodu pocztowego ani kraju.',
 	'sign-list-hidephone' => 'Nie pokazuj numeru telefonu',
@@ -3024,16 +3025,16 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-viewfield-email' => 'E‐mail',
 	'sign-viewfield-age' => 'Wiek',
 	'sign-viewfield-options' => 'Opcje',
-	'sign-sigadmin-currentlyopen' => 'Podpisywanie jest teraz włączone dla tego dokumentu.',
+	'sign-sigadmin-currentlyopen' => 'Podpisanie tego dokumentu jest obecnie włączone.',
 	'sign-sigadmin-close' => 'Wyłącz podpisywanie',
-	'sign-sigadmin-currentlyclosed' => 'Podpisywanie jest teraz wyłączone dla tego dokumentu.',
+	'sign-sigadmin-currentlyclosed' => 'Podpisanie tego dokumentu jest obecnie wyłączone.',
 	'sign-sigadmin-open' => 'Włącz podpisywanie',
 	'sign-signatures' => 'Podpisy',
 	'sign-sigadmin-closesuccess' => 'Wyłączono podpisywanie.',
 	'sign-sigadmin-opensuccess' => 'Włączono podpisywanie.',
-	'sign-viewsignatures' => 'obejrzyj podpisy',
+	'sign-viewsignatures' => 'zobacz podpisy',
 	'sign-closed' => 'zamknięte',
-	'sign-error-closed' => 'Podpisywanie tego dokumentu jest aktualnie wyłączone.',
+	'sign-error-closed' => 'Podpisywanie tego dokumentu jest obecnie wyłączone.',
 	'sig-anonymous' => '<i>anonim</i>',
 	'sig-private' => '<i>prywatne</i>',
 	'sign-sigdetails' => 'Szczegóły podpisu',
@@ -3055,11 +3056,11 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-detail-strike' => 'Wykreśl podpis',
 	'sign-reviewsig' => 'Sprawdź podpis',
 	'sign-review-comment' => 'Komentarz',
-	'sign-submitreview' => 'Wyślij wynik kontroli',
+	'sign-submitreview' => 'Wyślij wynik sprawdzenia',
 	'sign-uniquequery-similarname' => 'Podobna nazwa',
 	'sign-uniquequery-similaraddress' => 'Podobny adres',
 	'sign-uniquequery-similarphone' => 'Podobny numer telefonu',
-	'sign-uniquequery-similaremail' => 'Podobny adres e-mail',
+	'sign-uniquequery-similaremail' => 'Podobny adres e‐mail',
 );
 
 /** Piedmontese (Piemontèis)

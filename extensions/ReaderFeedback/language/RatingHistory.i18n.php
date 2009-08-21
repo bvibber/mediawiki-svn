@@ -239,6 +239,35 @@ $messages['ca'] = array(
 	'ratinghistory-table-votes' => 'Vots',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'ratinghistory' => 'Sidebedømmelseshistorik',
+	'ratinghistory-leg' => 'Bedømmelseshistorikdata for [[:$1|$1]]',
+	'ratinghistory-tab' => 'bedømmelse',
+	'ratinghistory-link' => 'Sidebedømmelse',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Tak fordi at du brugte tid til at bedømme denne side!</font>''",
+	'ratinghistory-period' => 'Periode:',
+	'ratinghistory-month' => 'Seneste måned',
+	'ratinghistory-3months' => 'seneste 3 måneder',
+	'ratinghistory-year' => 'seneste år',
+	'ratinghistory-3years' => 'seneste 3 år',
+	'ratinghistory-ave' => 'Snit: $1',
+	'ratinghistory-chart' => 'Læserbedømmelser over tid',
+	'ratinghistory-purge' => 'opdatér cache',
+	'ratinghistory-table' => 'Oversigt over læserbedømmelser',
+	'ratinghistory-users' => 'Brugere som har bedømt siden',
+	'ratinghistory-graph' => '$2 af "$3" ($1 {{PLURAL:$1|bedømmelse|bedømmelser}})',
+	'readerfeedback-svg' => 'Vis som SVG',
+	'ratinghistory-table-rating' => 'Bedømmelse',
+	'ratinghistory-table-votes' => 'Stemmer',
+	'ratinghistory-none' => 'Der er endnu ikke nok læserbedømmelser til at vise grafer.',
+	'ratinghistory-ratings' => "'''Forklaring:''' '''(1)''' - Lav; '''(2)''' - Under middel; '''(3)''' - Middel; '''(4)''' - Over middel; '''(5)''' - Høj;",
+	'ratinghistory-graph-scale' => "'''Bedømmelser per dag''' <font color=\"red\">''(rød)''</font> vist i forholdet ''1:\$1''.",
+	'right-feedback' => 'Brug tilbagemeldingsformularen til at bedømme en side',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
@@ -470,6 +499,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'ratinghistory' => 'Sivun arvosteluhistoria',
+	'ratinghistory-leg' => 'Sivun [[:$1|$1]] arviointihistoria',
 	'ratinghistory-tab' => 'arvostelu',
 	'ratinghistory-link' => 'Sivun arvostelu',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Kiitos, että tarkistit tämän sivun!</font>''",
@@ -487,6 +517,14 @@ $messages['fi'] = array(
 	'ratinghistory-table-rating' => 'Arvostelu',
 	'ratinghistory-table-votes' => 'Äänet',
 	'ratinghistory-none' => 'Ei ole tarpeeksi lukijapalautetta, jotta taulukko voitaisiin esittää.',
+	'ratinghistory-ratings' => "'''Kuvaaja:''' '''(1)''' – {{int:readerfeedback-level-0}}; '''(2)''' – {{int:readerfeedback-level-1}}; '''(3)''' – {{int:readerfeedback-level-2}}; '''(4)''' – {{int:readerfeedback-level-3}}; '''(5)''' – {{int:readerfeedback-level-4}}",
+	'ratinghistory-legend' => "'''Päivittäinen arviointimäärä''' <font color=\"red\">''(punainen)''</font>, '''päivittäinen keskiarvo''' <font color=\"blue\">''(sininen)''</font>
+ja '''valitun ajanjakson keskiarvo''' <font color=\"green\">''(vihreä)''</font> on listattu alla päivämäärän mukaan lajiteltuna.
+'''Valitun ajanjakson arviointien keskiarvo''' on yksinkertaisesti kaikkien päivittäisten arvioiden keskiarvo tämän aikavälin ''sisällä'' joka päivältä.
+Arvioinnit ovat seuraavia:
+
+'''(1)''' – {{int:readerfeedback-level-0}}; '''(2)''' – {{int:readerfeedback-level-1}}; '''(3)''' – {{int:readerfeedback-level-2}}; '''(4)''' – {{int:readerfeedback-level-3}}; '''(5)''' – {{int:readerfeedback-level-4}}",
+	'ratinghistory-graph-scale' => "'''Arvioita päivittäin''' <font color=\"red\">''(punainen)''</font> näkyy ''1:\$1''-mittakaavassa.",
 	'right-feedback' => 'Käyttää palautelomaketta sivujen arvosteluun',
 );
 
@@ -693,7 +731,7 @@ $messages['he'] = array(
 דירוג: '''[1]''' - גרוע; '''[2]''' - נמוך; '''[3]''' - בינוני; '''[4]''' - גבוה; '''[5]''' - מצוין;
 
 '''מספר הביקורות ליום''' <font color=\"red\">'''(באדום)'''</font> מוצגים בטבלאות למטה, ביחס של ''1:\$1''.",
-	'ratinghistory-graph-scale' => "'''סקירות ליום''' <font color=\"red\">''(אדום)''</font> מופיעים ביחס של ''1:\$1''.",
+	'ratinghistory-graph-scale' => "'''סקירות ליום''' <font color=\"red\">''(אדום)''</font> מופיעות ביחס של ''1:\$1''.",
 	'right-feedback' => 'השתמשו בטופס המשוב כדי לדרג דף',
 );
 

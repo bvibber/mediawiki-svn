@@ -48,6 +48,13 @@ $messages['el'] = array(
 	'interlanguage-desc' => 'Επιλέγει τυχαία συνδέσμους μεταξύ γλωσσών από ένα άλλο wiki',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'interlanguage-desc' => 'Coge vínculos interidiomáticos de otro wiki',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -70,10 +77,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'interlanguage-desc' => 'לכידת קישורי בינלשוניים מאתר ויקי אחר',
+	'interlanguage-desc' => 'קבלת קישורים בינלשוניים מאתר ויקי אחר',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

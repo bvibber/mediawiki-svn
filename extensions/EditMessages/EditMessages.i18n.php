@@ -170,6 +170,14 @@ $messages['bn'] = array(
 	'editmsg-search' => 'অনুসন্ধান',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'editmsg-search' => 'Klask',
+	'editmsg-new-search' => 'Klask nevez',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

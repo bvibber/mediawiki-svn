@@ -13,3 +13,7 @@ $magicWords['ar'] = array(
 $magicWords['nl'] = array(
 	'interlanguage'   => array( '0', 'intertaal', 'interlanguage' ),
 );
+
+$magicWords['ru'] = array(
+	'interlanguage'   => array( '0', 'межязык', 'interlanguage' ),
+);

@@ -13,3 +13,7 @@ $magicWords['ar'] = array(
 $magicWords['nl'] = array(
 	'autoincrement'   => array( '0', 'AUTOMATISCHOPHOGEN', 'AUTOINCREMENT' ),
 );
+
+$magicWords['ru'] = array(
+	'autoincrement'   => array( '0', 'АВТОИНКРЕМЕНТ', 'AUTOINCREMENT' ),
+);

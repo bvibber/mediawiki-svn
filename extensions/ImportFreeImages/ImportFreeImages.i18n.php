@@ -947,6 +947,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -962,6 +963,7 @@ $messages['pt'] = array(
 	'importfreeimages_filefromflickr' => '$1 pelo utilizador <b>[$2]</b> do flickr. URL original',
 	'importfreeimages_promptuserforfilename' => 'Por favor, introduza um nome de ficheiro destino:',
 	'importfreeimages_returntoform' => "Ou clique <a href='$1'>aqui</a> para voltar aos resultados da sua pesquisa",
+	'importfreeimages_nophpflickr' => 'Você não possui phpFlickr instalado, por favor configure $wgIFphpFlickr em seu LocalSettings.php.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1195,6 +1197,7 @@ Bunu yapmak için, [http://www.flickr.com/services/api/misc.api_keys.html burada
 	'importfreeimages_filefromflickr' => "$1 Flickr'daki <b>[$2]</b> kullanıcısı tarafından. Orjinal URL",
 	'importfreeimages_promptuserforfilename' => 'Lütfen bir hedef dosya adı girin:',
 	'importfreeimages_returntoform' => "Ya da, arama sonuçlarınıza dönmek için <a href='$1'>buraya</a> tıklayın",
+	'importfreeimages_nophpflickr' => "phpFlickr'ı yüklemediniz, lütfen LocalSettings.php'nizde \$wgIFphpFlickr'ı ayarlayın.",
 );
 
 /** Ukrainian (Українська)

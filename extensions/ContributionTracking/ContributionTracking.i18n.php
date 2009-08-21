@@ -34,6 +34,13 @@ $messages['qqq'] = array(
 	'contrib-tracking-button' => '{{Identical|Continue}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'contrib-tracking-error' => 'Fout',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

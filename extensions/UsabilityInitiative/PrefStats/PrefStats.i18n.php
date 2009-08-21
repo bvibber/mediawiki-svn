@@ -328,11 +328,11 @@ $messages['dsb'] = array(
 Klikni na jadne z nich, aby se statistiku wó nim woglědał.',
 	'prefstats-noprefs' => 'Tuchylu žedne nastajenja se slěduju. Konfigurěruj $wgPrefStatsTrackPrefs, aby nastajenja slědował.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} toś to nastajenje {{PLURAL:$1|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}, wót togo, až statistika nastajenjow jo se aktiwěrowała
-** $2 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$1|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}
-** $3 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$1|znjemóžnił|znjemóžniłej|znjemóžnili|znjemóžniło}}',
+** $2 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$2|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}
+** $3 {{PLURAL:$3|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$3|znjemóžnił|znjemóžniłej|znjemóžnili|znjemóžniło}}',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} toś to nastajenje {{PLURAL:$1|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}, wót togo, až statistika nastajenjow jo se aktiwěrowała
 ** $2 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$2|zmóžnił|zmóžniłej|zmóžnili|zmóžniło}}
-** $3 {{PLURAL:$2|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$3|znjemóžnił|znjemóžniłej|znjemóžnili|znjemóžniło}}
+** $3 {{PLURAL:$3|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} jo {{PLURAL:$3|znjemóžnił|znjemóžniłej|znjemóžnili|znjemóžniło}}
 *Dogromady $4 {{PLURAL:$4|wužywaŕ jo|wužywarja stej|wužywarje su|wužywarjow jo}} toś to nastajenje {{PLURAL:$4|stajił|stajiłej|stajili|stajiło}}',
 	'prefstats-xaxis' => 'Cas (goźiny)',
 	'prefstats-factors' => 'Naglěd za: $1',
@@ -426,6 +426,10 @@ Selecciona una para ver estadísticas acerca de ella.',
 	'prefstats-counters' => '* $1  {{PLURAL:$1|usuario ha|usuarios han}} activado esta preferencia desde que la estadística fue activada.
 ** $2  {{PLURAL:$2|usuario aún tiene|usuarios aún tienen}} esta preferencia activada
 ** $3  {{PLURAL:$1|usuario la ha|usuarios la han}} desactivado',
+	'prefstats-counters-expensive' => '* $1  {{PLURAL:$1|usuario ha|usuarios han}} activado esta preferencia desde el inicio de la estadística de preferencias.
+** $2 {{PLURAL:$2|usuario todavía la mantiene|usuarios todavía la mantienen}} activada.
+** $3 {{PLURAL:$3|usuario la ha|usuarios la han}} desactivado
+* En total $4 {{PLURAL:$4|usuario ha|usuarios han}} utilizado esta preferencia',
 	'prefstats-xaxis' => 'Duración (horas)',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
@@ -433,6 +437,9 @@ Selecciona una para ver estadísticas acerca de ella.',
 	'prefstats-factor-week' => 'semana',
 	'prefstats-factor-twoweeks' => 'dos semanas',
 	'prefstats-factor-fourweeks' => 'cuatro semanas',
+	'prefstats-factor-default' => 'regresar a la escala por defecto',
+	'prefstats-legend-out' => 'Desactivado',
+	'prefstats-legend-in' => 'Activado',
 );
 
 /** Estonian (Eesti)
@@ -606,6 +613,7 @@ Druck uf eini go Statischtike iber si aaluege.',
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -615,13 +623,13 @@ $messages['he'] = array(
 	'prefstats-list-intro' => 'כרגע, ההעדפות הבאות נמצאות במעקב.
 לחצו על אחת כדי לצפות בסטטיסטיקות אודותיה.',
 	'prefstats-noprefs' => 'נכון לעכשיו לא מתבצע מעקב אחר העדפות. יש להגדיר את $wgPrefStatsTrackPrefs כדי לעקוב אחר העדפות.',
-	'prefstats-counters' => '* {{PLURAL:$1|משתמש אחד|$1 משתמשים}} הפעילו העדפה זו מאז שהופעלו סטטיסטיקות ההעדפות
-** {{PLURAL:$2|משתמש אחד|$2 משתמשים}} הפעילו אותה
-** {{PLURAL:$3|משתמש אחד|$3 משתמשים}} ביטלו אותה',
-	'prefstats-counters-expensive' => '* {{PLURAL:$1|משתמש אחד|$1 משתמשים}} הפעילו העדפה זו מאז שהופעלו סטטיסטיקות ההעדפות
-** {{PLURAL:$2|משתמש אחד|$2 משתמשים}} הפעילו אותה
-** {{PLURAL:$3|משתמש אחד|$3 משתמשים}} ביטלו אותה
-* סך הכל, {{PLURAL:$4|משתמש אחד|$4 משתמשים}} הגדירו העדפה זו',
+	'prefstats-counters' => '* {{PLURAL:$1|משתמש אחד הפעיל|$1 משתמשים הפעילו}} העדפה זו מאז שהופעלו סטטיסטיקות ההעדפות
+** {{PLURAL:$2|משתמש אחד השאיר|$2 משתמשים השאירו}} אותה מופעלת
+** {{PLURAL:$3|משתמש אחד ביטל|$3 משתמשים ביטלו}} אותה מאז',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|משתמש אחד הפעיל|$1 משתמשים הפעילו}} העדפה זו מאז שהופעלו סטטיסטיקות ההעדפות
+** {{PLURAL:$2|משתמש אחד השאיר|$2 משתמשים השאירו}} אותה מופעלת
+** {{PLURAL:$3|משתמש אחד ביטל|$3 משתמשים ביטלו}} אותה מאז
+* בסך הכול, תכונה זו מופעלת אצל {{PLURAL:$4|משתמש אחד|$4 משתמשים}}',
 	'prefstats-xaxis' => 'משך (בשעות)',
 	'prefstats-factor-hour' => 'שעה',
 	'prefstats-factor-sixhours' => 'שש שעות',
@@ -672,11 +680,11 @@ $messages['hsb'] = array(
 	'prefstats-list-intro' => 'Tuchwilu so slědowace nastajenja sćěhuja. Klikń na jedne z nich, zo by sej statistiku wo nim wobhladał.',
 	'prefstats-noprefs' => 'Tuchwilu so žane nastajenja njesćěhuja. Konfiguruj $wgPrefStatsTrackPrefs, zo by nastajenja sćěhował.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} tute nastajenje {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}, wot toho, zo statistika nastajenjow je so aktiwizowała
-** $2 {{PLURAL:$2|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}
-** $3 {{PLURAL:$3|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|znjemóžnił|znjemóžniłoj|znjemóžnili|znjemóžniło}}',
+** $2 {{PLURAL:$2|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$2|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}
+** $3 {{PLURAL:$3|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$3|znjemóžnił|znjemóžniłoj|znjemóžnili|znjemóžniło}}',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} tute nastajenje {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}, wot toho, zo statistika nastajenjow je so aktiwizowała
-** $2 {{PLURAL:$2|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}
-** $3 {{PLURAL:$3|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$1|znjemóžnił|znjemóžniłoj|znjemóžnili|znjemóžniło}}
+** $2 {{PLURAL:$2|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$2|zmóžnił|zmóžniłoj|zmóžnili|zmóžniło}}
+** $3 {{PLURAL:$3|wužiwar je|wužiwarjej staj|wužiwarjo su|wužiwarjow je}} jo {{PLURAL:$3|znjemóžnił|znjemóžniłoj|znjemóžnili|znjemóžniło}}
 Dohromady $4 {{PLURAL:$4|wužiwar je|wužiwarjej saj|wužiwarjo su|wužiwarjow je}} tute nastajenje {{PLURAL:$4|stajił|stajiłoj|stajili|stajiło}}',
 	'prefstats-xaxis' => 'Traće (hodźiny)',
 	'prefstats-factors' => 'Přehlad za: $1',
@@ -1176,11 +1184,11 @@ Clique em uma para ver as estatísticas sobre ela.',
 	'prefstats-noprefs' => 'Nenhuma preferência está sendo monitorada no momento.
 Configure $wgPrefStatsTrackPrefs para monitorar preferências.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|usuário habilitou|usuários habilitaram}} esta preferência desde que as estatísticas foram ativadas
-** $2 Ela foi habilitada por {{PLURAL:$2|usuário|usuários}}
-** $3 Ela foi desabilitada por {{PLURAL:$3|usuário|usuários}}',
+** Ela foi habilitada por $2 {{PLURAL:$2|usuário|usuários}}
+** Ela foi desabilitada por $3 {{PLURAL:$3|usuário|usuários}}',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|habilitou|habilitaram}} esta preferência desde que as estatísticas de preferências foram habilitadas
-** $2 Ela foi habilitada por {{PLURAL:$2|usuário|usuários}}
-** $3 Ela foi desabilitada por {{PLURAL:$3|usuário|usuários}}
+** Ela foi habilitada por $2 {{PLURAL:$2|usuário|usuários}}
+** Ela foi desabilitada por $3 {{PLURAL:$3|usuário|usuários}}
 * Ao todo, $4 {{PLURAL:$4|usuário|usuários}} definiram esta preferência',
 	'prefstats-xaxis' => 'Duração (horas)',
 	'prefstats-factors' => 'Visualizar por: $1',

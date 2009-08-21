@@ -37,6 +37,13 @@ $messages['dsb'] = array(
 	'negref-desc' => 'Bitujo toflicku, aby se zwěsćiło městno toflickow <nowiki><ref/></nowiki> w zapódanego teksta, aby se pórěźili někotare pady wužywanja pśedłogow',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'negref-desc' => 'Provee una etiqueta para negociar la ubicación de cualquier etiqueta <nowiki><ref/></nowiki> dentro de textos ingresados para reparar alguna plantillas usando mayúsculas',
+);
+
 /** French (Français)
  * @author Verdy p
  */
@@ -52,10 +59,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'negref-desc' => 'אספקת תגית לניהול משא ומתן אודות המיקום של תגיות <nowiki><ref/></nowiki> כלשהן בתוך קלט טקסט לתיקון מספר מצבים לשימוש בתבנית',
+	'negref-desc' => 'הוספת תגית להסדרת המיקום של תגיות <nowiki><ref/></nowiki> כלשהן בתוך טקסט קלט, כדי לתקן מספר מצבים של שימוש בתבניות',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

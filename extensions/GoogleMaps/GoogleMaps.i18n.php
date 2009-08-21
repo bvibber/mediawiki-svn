@@ -587,6 +587,7 @@ $wgGoogleMapsMessages['bn'] = array(
  * @author Fulup
  */
 $wgGoogleMapsMessages['br'] = array(
+	'gm-desc' => 'Krouiñ kartennoù aes gant an ereadur wiki',
 	'gm-incompatible-browser' => 'Para ver o mapa que iria neste espaço, você precisará usar um navegador compatível.',
 	'gm-incompatible-browser-link' => 'Klikañ amañ a-benn gwelet ur roll merdeerioù kenglotus.',
 	'gm-no-editor' => 'Infelizmente, o seu navegador não suporta o recurso de mapa interativo. Experimente uma versão mais recente do <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) ou do <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, Linux).',

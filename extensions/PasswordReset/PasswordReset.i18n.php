@@ -243,11 +243,12 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
-	'passwordreset-username' => 'Brugernavn',
-	'passwordreset-newpass' => 'Ny adgangskode',
+	'passwordreset-username' => 'Brugernavn:',
+	'passwordreset-newpass' => 'Ny adgangskode:',
 	'passwordreset-submit' => 'Nullstille passord',
 );
 

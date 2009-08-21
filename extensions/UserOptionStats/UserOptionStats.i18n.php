@@ -247,12 +247,13 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'useroptionstats' => 'סטטיסטיקות אפשרויות המשתמש',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|דף מיוחד]] שמטרתו לדווח על השימוש באפשרויות המשתמש',
-	'uos-warn' => 'התוספת PHPlot אינה מותקנת!',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|דף מיוחד]] לדיווח על השימוש באפשרויות המשתמש במדיה־ויקי',
+	'uos-warn' => 'PHPlot אינה מותקנת!',
 	'uos-choose' => 'בחרו באחת מאפשרויות המשתמש הבאות: $1',
 	'uos-unknown' => '*ברירת מחדל',
 	'uos-other' => '*אחר',

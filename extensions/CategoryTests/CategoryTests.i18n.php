@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'categorytests-desc' => 'دوال لاختبار التاصنيف',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'categorytests-desc' => 'Функцыі для праверкі катэгорыяў',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -61,6 +68,13 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'categorytests-desc' => 'Λειτουργίες για δοκιμή κατηγορίας',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'categorytests-desc' => 'Funciones para prueba de categoría',
 );
 
 /** Finnish (Suomi)
@@ -181,6 +195,13 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'categorytests-desc' => 'Funsion për test ëd categorìa',
+);
+
+/** Portuguese (Português)
+ * @author Giro720
+ */
+$messages['pt'] = array(
+	'categorytests-desc' => 'Funções para teste de categoria',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

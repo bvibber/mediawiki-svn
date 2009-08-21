@@ -72,6 +72,14 @@ $messages['qqq'] = array(
 {{Identical|Error}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'slippymap_error' => '$1-fout: $2',
+	'slippymap_errors' => '$1-foute:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -297,6 +305,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  */
 $messages['es'] = array(
@@ -306,6 +315,17 @@ $messages['es'] = array(
 	'slippymap_error' => '$1 error: $2',
 	'slippymap_errors' => '$1 errores:',
 	'slippymap_error_missing_arguments' => 'No proveíste ningún atributo a la etiqueta &lt;$1&gt; , ver [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax información de uso] para cómo llamarlo.',
+	'slippymap_error_missing_attribute_lat' => 'Falta el atributo <tt>lat</tt> (para latitud).',
+	'slippymap_error_missing_attribute_lon' => 'Falta el atributo <tt>lon</tt> (para longitud).',
+	'slippymap_error_missing_attribute_zoom' => 'Falta el atributo <tt>zoom</tt> (para el nivel de zoom).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'El valor <tt>$1</tt> no es válido para el atributo <tt>lat</tt> (latitud): debe ser un número válido.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'El valor <tt>$1</tt>  no es válido para el atributo <tt>lon</tt> (longitud): debe ser un valor númerico válido.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'El valor <tt>$1</tt> no es válido para el atributo <tt>zoom</tt>: debe ser un número válido.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'El valor <tt>$1</tt> no es válido para el atributo <tt>width</tt>: debe ser un número válido.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'El valor <tt>$1</tt>  no es válido para el atributo <tt>height</tt>: debe ser un número válido.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'El valor <tt>$1</tt> no es válido para el atributo <tt>mode</tt>: los modos válidos son $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'El valor  <tt>$1</tt> no es válido para el atributo <tt>layer</tt>: layers válidos son $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'El valor <tt>$1</tt> no es válido para el atributo <tt>marker</tt>: markers válidos son $2.',
 	'slippymap_error_unknown_attribute' => 'El atributo <tt>$1</tt> es desconocido.',
 	'slippymap_code' => 'Wikicode para esta vista de mapa:',
 	'slippymap_button_code' => 'Obtener wikicode',
@@ -456,15 +476,16 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'slippymap_desc' => 'מתן האפשרות לשימוש בתגית <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> המאפשרת הטמעת מפות סטאטיות ודינאמיות. קיימת תמיכה במספר שרותי מפות כולל [http://openstreetmap.org OpenStreetMap]ו־Worldwind של NASA',
 	'slippymap_error' => 'שגיאה ב־$1: $2',
-	'slippymap_errors' => '$1 שגיאות:',
-	'slippymap_error_missing_attribute_lat' => 'המאפיין <tt>lat</tt> חסר (עבור קו רוחב).',
-	'slippymap_error_missing_attribute_lon' => 'הערך <tt>lon</tt> חסר (עבור קו האורך).',
-	'slippymap_error_missing_attribute_zoom' => 'הערך <tt>zoom</tt> חסר (עבור רמת התקריב).',
+	'slippymap_errors' => 'שגיאות של $1:',
+	'slippymap_error_missing_attribute_lat' => 'המאפיין <tt>lat</tt> חסר (עבור קו הרוחב).',
+	'slippymap_error_missing_attribute_lon' => 'המאפיין <tt>lon</tt> חסר (עבור קו האורך).',
+	'slippymap_error_missing_attribute_zoom' => 'המאפיין <tt>zoom</tt> חסר (עבור רמת התקריב).',
 	'slippymap_code' => 'קוד הוויקי להצגת מפה זו:',
 	'slippymap_button_code' => 'איחזור קוד הוויקי',
 	'slippymap_resetview' => 'איפוס התצוגה',
@@ -782,15 +803,15 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'slippymap_desc' => 'Pozwala na korzystanie ze znacznika <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> powodującego wyświetlenie statycznych oraz dynamicznych map. Wspierane są różne serwisy z mapami, w tym m.in. [http://openstreetmap.org OpenStreetMap] i NASA Worldwind.',
-	'slippymap_error' => 'Błąd $1: $2',
-	'slippymap_errors' => 'Błędy $1:',
-	'slippymap_error_missing_attribute_lat' => 'Brak atrybutu <tt>lat</tt> (szerokość).',
-	'slippymap_error_missing_attribute_lon' => 'Brak atrybutu <tt>lon</tt> (długość).',
-	'slippymap_error_missing_attribute_zoom' => 'Brak atrybutu <tt>zoom</tt> (poziom przybliżenia).',
+	'slippymap_error' => 'Błąd w rozszerzeniu $1 – $2',
+	'slippymap_errors' => 'Błędy w rozszerzeniu $1:',
+	'slippymap_error_missing_attribute_lat' => 'Brak atrybutu <tt>lat</tt> (określenie szerokości geograficznej).',
+	'slippymap_error_missing_attribute_lon' => 'Brak atrybutu <tt>lon</tt> (określenie długości geograficznej).',
+	'slippymap_error_missing_attribute_zoom' => 'Brak atrybutu <tt>zoom</tt> (określenie skali).',
 	'slippymap_code' => 'Kod wiki dla tego widoku mapy:',
 	'slippymap_button_code' => 'Pobierz kod wiki',
 	'slippymap_resetview' => 'Zresetuj widok',
-	'slippymap_clicktoactivate' => 'Kliknij, by aktywować mapę',
+	'slippymap_clicktoactivate' => 'Kliknij, aby aktywować mapę',
 );
 
 /** Portuguese (Português)

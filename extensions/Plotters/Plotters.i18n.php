@@ -276,12 +276,13 @@ Die Ibersicht isch e eifach Zuegang zue dr Syschtemnochrichte, wu d Bschrybig un
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'plotters-desc' => 'מתן אפשרות לשימוש ב־JavaScript מותאם אישית בתגיות jsplot',
 	'plotters-missing-script' => 'לא הוגדר סקריפט.',
-	'plotters-missing-arguments' => 'לא צויינו ארגומנטים.',
+	'plotters-missing-arguments' => 'לא צוינו ארגומנטים.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

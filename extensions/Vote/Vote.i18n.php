@@ -1015,6 +1015,13 @@ $messages['km'] = array(
 	'right-voteadmin' => 'មើល​លទ្ធផល​ការបោះឆ្នោត​',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'vote-results' => 'ಚುನಾವಣೆಯ ಫಲಿತಾಂಶಗಳು',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772
