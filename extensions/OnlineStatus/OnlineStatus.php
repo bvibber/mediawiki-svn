@@ -54,6 +54,7 @@ class OnlineStatus {
 		$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
 
 		// Magic words hooks
+		$wgHooks['MagicWordwgVariableIDs'][] = 'OnlineStatus::MagicWordVariable';
 		$wgHooks['ParserGetVariableValueSwitch'][] = 'OnlineStatus::ParserGetVariable';
 
 		// Hooks for Special:Preferences
@@ -167,6 +168,15 @@ class OnlineStatus {
 		} else {
 			return $status;
 		}
+	}
+
+	/**
+	 * Hook function for MagicWordwgVariableIDs
+	 */
+	static function MagicWordVariable( &$magicWords ) {
+		$magicWords[] = 'onlinestatus_word';
+		$magicWords[] = 'onlinestatus_word_raw';
+		return true;
 	}
 
 	/**
