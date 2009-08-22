@@ -32,7 +32,14 @@ class Autoincrement {
 
 		$this->mCount = 0;
 
+		$wgHooks['MagicWordwgVariableIDs'][] = array( $this, 'wfAutoincrementHookVariables' );
 		$wgHooks['ParserGetVariableValueSwitch'][] = array( $this, 'wfAutoincrementHookSwitch' );
+	}
+
+	function wfAutoincrementHookVariables( &$wgVariableIDs ) {
+		$wgVariableIDs[] = 'autoincrement';
+
+		return true;
 	}
 
 	function wfAutoincrementHookSwitch( &$parser, &$varCache, &$index, &$ret ) {
