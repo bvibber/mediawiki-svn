@@ -7453,14 +7453,18 @@ $messages['yue'] = array(
 	'code-change-tags' => "改咗 r$1 嘅'''標籤'''",
 	'code-change-removed' => '拎走咗：',
 	'code-change-added' => '加咗：',
+	'code-old-status' => '舊狀態',
+	'code-new-status' => '新狀態',
 	'code-prop-changes' => '狀態同標籤紀錄',
 	'code-desc' => '帶有[[Special:RepoAdmin|Subversion支援]]嘅[[Special:Code|代碼複查工具]]',
 	'code-no-repo' => '無檔案庫設定！',
 	'code-load-diff' => '載入差異中…',
 	'code-notes' => '之前嘅註解',
 	'code-authors' => '作者',
+	'code-statuschanges' => '狀態變動',
 	'code-status' => '狀態',
 	'code-tags' => '標籤',
+	'code-tests' => '測試個案',
 	'code-authors-text' => '下面係檔案庫作者對於最近遞交嘅表。',
 	'code-author-haslink' => '呢位作者係連結到wiki用戶$1',
 	'code-author-orphan' => '呢位作者無連結到一個wiki戶口',
@@ -7542,6 +7546,14 @@ $4',
 遞交摘要：
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]：自動測試偵測到表達式問題',
+	'codereview-email-body3' => '自動測試發現到響 r$1 嘅改動之中出咗表達式問題。
+
+完整URL：$2
+
+遞交摘要：
+
+$3',
 	'repoadmin' => '檔案室庫管理',
 	'repoadmin-new-legend' => '開一個新檔案庫',
 	'repoadmin-new-label' => '檔案庫名：',
