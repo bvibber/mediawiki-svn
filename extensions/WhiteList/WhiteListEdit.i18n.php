@@ -150,12 +150,15 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'whitelisttablemodifyall' => 'Alle',
 	'whitelisttablemodifynone' => 'Geen',
+	'whitelisttableexpires' => 'Verval op',
 	'whitelisttableedit' => 'Wysig',
 	'whitelisttableremove' => 'Skrap',
+	'whitelistnewtableprocess' => 'Verwerk',
 	'whitelistnever' => 'nooit',
 );
 
@@ -2689,6 +2692,7 @@ $messages['roa-tara'] = array(
  * @author Aleksandrit
  * @author Ferrer
  * @author Innv
+ * @author Kaganer
  * @author Rubin
  * @author Александр Сигачёв
  */
@@ -2719,7 +2723,7 @@ $messages['ru'] = array(
 	'whitelistnewtableedit' => 'Установить для редактирования',
 	'whitelistnewtableview' => 'Установить для просмотра',
 	'whitelistnowhitelistedusers' => 'В группе «{{MediaWiki:Group-restricted}}» нет участников.
-Вы должны [[Special:UserRights|добавить пользователей в группу]], прежде чем вы сможете добавить страницы участников в белый список.',
+Прежде чем вы сможете добавить страницы участников в белый список, вы должны [[Special:UserRights|добавить участников в эту группу]].',
 	'whitelistnewtableprocess' => 'Процесс',
 	'whitelistnewtablereview' => 'Обзор',
 	'whitelistselectrestricted' => '== Выберите имя участника ==',

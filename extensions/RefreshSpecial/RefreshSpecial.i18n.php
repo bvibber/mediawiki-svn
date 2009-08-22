@@ -69,6 +69,14 @@ Text displayed in the subtitle below the actual page title once the user has pre
 	'right-refreshspecial' => '{{doc-right}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'refreshspecial' => 'Verfris spesiale bladsye',
+	'refreshspecial-title' => 'Verfris spesiale bladsye',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

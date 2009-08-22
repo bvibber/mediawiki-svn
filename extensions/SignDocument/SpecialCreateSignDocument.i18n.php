@@ -54,7 +54,8 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'createsigndoc-pagename' => 'Bladsy:',
-	'createsigndoc-email' => 'E-pos adres',
+	'createsigndoc-email' => 'E-posadres:',
+	'createsigndoc-phone' => 'Telefoonnommer:',
 	'createsigndoc-create' => 'Skep',
 );
 

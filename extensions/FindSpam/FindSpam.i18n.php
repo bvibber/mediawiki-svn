@@ -35,8 +35,10 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'findspam-ip' => 'IP-adres:',
 	'findspam-ok' => 'OK',
 );
 

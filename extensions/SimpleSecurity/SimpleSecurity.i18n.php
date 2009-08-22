@@ -56,6 +56,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'security-type-category' => 'kategorie',
+	'security-type-namespace' => 'naamruimte',
 );
 
 /** Arabic (العربية)
@@ -229,6 +230,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  */
 $messages['es'] = array(
@@ -241,10 +243,12 @@ $messages['es'] = array(
 	'security-info-toggle' => 'restricciones de seguridad',
 	'security-inforestrict' => '$1 está restringido a $2',
 	'security-desc-LS' => '(aplica porque esta página está en el "$2 $1")',
+	'security-infosysops' => 'No tiene restricciones activas porque Ud. es miembro del grupo "administradores".',
 	'security-manygroups' => 'grupos $1 y $2',
 	'security-unchain' => 'modificar acciones individualmente',
 	'security-type-category' => 'categoría',
 	'security-type-namespace' => 'espacio de nombre',
+	'security-restricttogroup' => 'Acceso a contenidos restringido a miembros de "$1"',
 );
 
 /** Basque (Euskara)

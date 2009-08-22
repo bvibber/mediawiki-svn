@@ -781,13 +781,14 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'showprocesslist' => 'Показать список процессов',
 	'showprocesslist-desc' => 'Показывает вывод команды MySQL «[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]»',
 	'showprocesslist-id' => 'Id',
-	'showprocesslist-user' => 'Пользователь',
+	'showprocesslist-user' => 'Участник',
 	'showprocesslist-host' => 'Хост',
 	'showprocesslist-db' => 'БД',
 	'showprocesslist-command' => 'Команда',

@@ -81,6 +81,19 @@ $messages['bg'] = array(
 	'categorywatch-catsub' => 'премахна $1 от категория $2',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'categorywatch-desc' => "Astenn a ra arc'hwelerezh ar roll evezhiañ a-benn lakaat ennañ kemennoù diwar-benn ar c'hemmoù degaset da roll izili ar rummadoù evezhiet.",
+	'categorywatch-emailsubject' => 'Oberiantiz a denn d\'ar rummad evezhiet "$1"',
+	'categorywatch-catmovein' => 'en deus lakaet ar bajenn $1 a oa e $3 er rummad $2',
+	'categorywatch-catmoveout' => 'en deus tennet ar bajenn $1 a oa e $2 ha lakaet anezhi e $3',
+	'categorywatch-catadd' => 'en deus ouzhpennet ar bajenn $1 e $2',
+	'categorywatch-catsub' => 'en deus tennet kuit $1 eus $2',
+	'categorywatch-autocat' => 'Heuliet ent emgefre gant $1',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 	'catboxattop-categories' => '{{Identical|Categories}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'catboxattop-categories' => 'Kategorieë',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

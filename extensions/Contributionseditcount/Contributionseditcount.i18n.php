@@ -69,6 +69,14 @@ $messages['bn'] = array(
 	'contributionseditcount' => 'এ ব্যবহারকারীর $1 সম্পাদনা হয়েছে।',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'contributionseditcount' => '{{PLURAL:$1|Un degasadenn|$1 degasadenn}} zo deuet gant an implijer-mañ.',
+	'contributionseditcount-desc' => "Diskwel a ra ur c'honter kemmoù war [[Special:Contributions|pajenn degasadennoù an implijer]]",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

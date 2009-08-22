@@ -164,6 +164,26 @@ $messages['bg'] = array(
 	'authorprotect-failure' => 'Защитата беше неуспешна',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'authorprotect' => "Gwareziñ ar bajenn diouzh ar re n'int ket aozerien anezhi",
+	'authorprotect-desc' => "Aotren a ra aozer ur bajenn d'he gwareziñ diouzh an implijerien all",
+	'authorprotect-notauthor' => "N'oc'h ket c'hwi aozer ar bajenn-mañ",
+	'authorprotect-confirm' => 'Kemmañ al liveoù gwareziñ',
+	'authorprotect-edit' => "Strishaat ar gwir kemmañ d'an aozerien hepken",
+	'authorprotect-move' => "Strishaat ar gwir adenvel d'an aozerien hepken",
+	'authorprotect-expiry' => 'Deiziad termen',
+	'authorprotect-reason' => 'Abeg',
+	'authorprotect-intro' => "Ober gant ar furmskrid-mañ evit prennañ ar bajenn-mañ d'ar re n'int ket aozerien",
+	'authorprotect-success' => 'Gwareziñ sevenet !',
+	'authorprotect-failure' => "C'hwitet ar gwareziñ !",
+	'protect-level-author' => "Gwareziñ diouzh ar re n'int ket aozerien",
+	'restriction-level-author' => 'Aozer-gwarezet',
+	'right-authorprotect' => 'Gwareziñ pajenn an aozerien',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  * @author Seha

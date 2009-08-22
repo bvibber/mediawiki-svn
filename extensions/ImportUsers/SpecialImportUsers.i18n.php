@@ -79,6 +79,7 @@ $messages['af'] = array(
 	'importusers-uploadfile' => 'Laai lêer',
 	'importusers-form-button' => 'Importeer',
 	'importusers-log-summary-all' => 'Alle',
+	'importusers-log-summary-added' => 'Bygevoeg',
 	'importusers-log-summary-updated' => 'Opgedateer',
 	'importusers-password' => 'wagwoord',
 	'importusers-email' => 'e-pos',

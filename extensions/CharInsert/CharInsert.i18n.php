@@ -73,6 +73,13 @@ $messages['bn'] = array(
 	'charinsert-desc' => 'আদর্শ নয় এমন ক্যারেক্টার অনুপ্রবেশ করানোর জন্য জাভাস্ক্রিপ্ট বাক্স সৃষ্টি অনুমোদন করে',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'charinsert-desc' => "Aotren a ra krouiñ ur voest JavaScript evit [[MediaWiki:Edittools|ensoc'hañ arouezennoù na gaver ket war ar c'hlavierioù boas]]",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

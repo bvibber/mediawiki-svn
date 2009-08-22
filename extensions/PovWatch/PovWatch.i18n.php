@@ -64,9 +64,12 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'povwatch_title' => 'Titel:',
+	'povwatch_comment' => 'Boekstaaf opmerking:',
+	'povwatch_added' => 'bygevoeg',
 );
 
 /** Amharic (አማርኛ)

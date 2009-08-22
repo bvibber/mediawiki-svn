@@ -418,10 +418,13 @@ $messages['af'] = array(
 	'mv_start_desc' => 'Begintyd',
 	'mv_end_desc' => 'Eindtyd',
 	'mv_existing_categories' => '{{PLURAL:$1|kategorie|kategorieë}}:',
+	'mv_search_categories' => 'Kategorieë',
 	'mv_search_category' => 'Kategorie',
 	'mv_search_and' => 'en',
 	'mv_search_or' => 'of',
 	'mv_search_not' => 'nie',
+	'mv_search_date_range' => 'Periode',
+	'mv_date_range' => 'periode',
 	'mv_category' => 'kategorie',
 );
 

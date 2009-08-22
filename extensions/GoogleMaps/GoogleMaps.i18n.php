@@ -206,6 +206,7 @@ $wgGoogleMapsMessages['niu'] = array(
 $wgGoogleMapsMessages['af'] = array(
 	'gm-balloon-title' => 'Titel:',
 	'gm-remove' => 'skrap',
+	'gm-no-results' => 'Jammer, geen resultate',
 	'gm-width' => 'Wydte',
 	'gm-height' => 'Hoogte',
 	'gm-overview-control' => 'Oorsig',

@@ -165,6 +165,17 @@ $messages['ksh'] = array(
 	'transliterator-error-rulesize' => 'En de Rejel <code>$1</code> {{PLURAL:$3|es|sinn_er}} mieh wi $3 Zeische op de lengke Sigg, en [[MediaWiki:$2]]',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'transliterator-desc' => 'liwwert eng Parser Fonctioun déi agestallt ka gi fir Transliteratioun',
+	'transliterator-error-ambiguous' => 'Zweeeiteg Regel <code>$1</code> a [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Falsch Syntax <code>$1</code> a [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Méi wéi $1 {{PLURAL:$1|Regel|Regelen}} a [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => "D'Regel <code>$1</code> huet méi wéi $3 {{PLURAL:$3|Zeeche|Zeeche}} lenks a [[MediaWiki:$2]]",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

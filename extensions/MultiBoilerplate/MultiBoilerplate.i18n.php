@@ -449,10 +449,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'multiboilerplate-desc' => 'Позволяет пользователям выбирать типовые тексты из выпадающего списка над полем редактирования',
+	'multiboilerplate-desc' => 'Позволяет участникам выбирать типовые тексты из выпадающего списка над полем редактирования',
 	'multiboilerplate-legend' => 'Выбор образца',
 	'multiboilerplate-submit' => 'Загрузить',
 	'boilerplates' => 'Доступные заготовки страниц',

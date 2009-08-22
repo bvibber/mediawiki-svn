@@ -304,7 +304,7 @@ $messages['br'] = array(
 	'badimages-desc' => 'Kreskiñ a ra barregezh roll skeudennoù da argas MediaWiki',
 	'badimages-add-btn' => 'Ouzhpennañ',
 	'badimages-added' => "Ouzhpennet eo bet $1 d'ar roll.",
-	'badimages-count' => "'''$1''' skeudenn zo war roll ar skeudennoù fall.",
+	'badimages-count' => "'''$1''' {{PLURAL:$1|skeudenn|skeudenn}} {{PLURAL:$1|zo|zo}} war roll ar skeudennoù fall.",
 	'badimages-name' => 'Anv :',
 	'badimages-not-added' => "N'eus ket bet gallet ouzhpennañ ar skeudenn.",
 	'badimages-not-removed' => "N'eus ket bet gallet tennañ ar skeudenn.",
@@ -320,6 +320,7 @@ $messages['br'] = array(
 	'badimages-log-add' => "ouzhpennet eo bet [[$1]] d'ar roll skeudennoù fall",
 	'badimages-log-remove' => 'tennet eo bet [[$1]] a-ziwar ar roll skeudennoù fall',
 	'badimages-page' => '{{ns:help}}:Roll ar skeudennoù didalvoud',
+	'right-badimages' => 'Hizivaat roll ar skeudennoù fall',
 );
 
 /** Bosnian (Bosanski)

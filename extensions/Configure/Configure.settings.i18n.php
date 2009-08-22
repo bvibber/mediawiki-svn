@@ -1149,6 +1149,7 @@ $messages['af'] = array(
 	'configure-setting-wgActionPaths-key' => 'Handeling',
 	'configure-setting-wgExtraLanguageNames-value' => 'Naam',
 	'configure-setting-wgSpecialPageGroups-key' => 'Groep',
+	'configure-setting-wgDebugLogGroups-value' => 'Lêer',
 );
 
 /** Aragonese (Aragonés)

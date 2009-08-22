@@ -46,6 +46,7 @@ It might be easier/clearer to translate this message as if it said "process invo
  */
 $messages['af'] = array(
 	'profiling-ok' => 'OK',
+	'profiling-data-process' => 'Verwerk',
 	'profiling-data-count' => 'Aantal',
 );
 

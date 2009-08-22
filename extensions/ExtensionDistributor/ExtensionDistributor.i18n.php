@@ -69,6 +69,15 @@ $messages['qqq'] = array(
 * $5 - filename',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'extensiondistributor' => 'Laai MediaWiki-uitbreiding af',
+	'extdist-submit-extension' => 'Gaan voort',
+	'extdist-submit-version' => 'Gaan voort',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

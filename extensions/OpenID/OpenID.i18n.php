@@ -175,10 +175,11 @@ $messages['af'] = array(
 	'openidrequired' => 'Verpligtend',
 	'openidnickname' => 'Noemnaam',
 	'openidfullname' => 'Volledige naam',
-	'openidemail' => 'E-pos adres',
+	'openidemail' => 'E-posadres',
 	'openidlanguage' => 'Taal',
 	'openidtimezone' => 'Tydsone',
 	'openidchoosepassword' => 'wagwoord:',
+	'openiddelete-button' => 'Bevestig',
 	'openid-urls-action' => 'Aksie',
 	'openid-urls-delete' => 'Skrap',
 );
@@ -3587,7 +3588,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Ferrer
- * @author IAlex
+ * @author Kaganer
  * @author Lockal
  * @author Александр Сигачёв
  */
@@ -3611,7 +3612,7 @@ $messages['ru'] = array(
 	'openidsuccess' => 'Проверка прошла успешно',
 	'openidsuccesstext' => 'Проверка адреса OpenID прошла успешно.',
 	'openidusernameprefix' => 'УчастникOpenID',
-	'openidserverlogininstructions' => 'Введите ниже ваш пароль, чтобы войти на $3 как пользователь $2 (личная страница $1).',
+	'openidserverlogininstructions' => 'Введите ниже ваш пароль, чтобы войти на $3 как участник $2 (личная страница $1).',
 	'openidtrustinstructions' => 'Отметьте, если вы хотите предоставить доступ к данным для $1.',
 	'openidallowtrust' => 'Разрешить $1 доверять этой учётной записи.',
 	'openidnopolicy' => 'Сайт не указал политику конфиденциальности.',
@@ -3652,10 +3653,10 @@ $messages['ru'] = array(
 OpenID позволяет вам заходить на различные веб-сайты без указания разных паролей для них
 (подробнее см. [http://ru.wikipedia.org/wiki/OpenID статью об OpenID в Википедии]).
 
-Если вы уже имеете учётную запись на {{SITENAME}}, вы можете [[Special:UserLogin|войти]] как обычно, используя  ваши имя пользователя и пароль.
-Чтобы использовать в дальнейшем OpenID, вы можете [[Special:OpenIDConvert|преобразовать вашу учётную запись в  OpenID]], после того, как вы вошли обычным образом.
+Если вы уже имеете учётную запись на {{SITENAME}}, вы можете [[Special:UserLogin|войти]] как обычно, используя своё имя учётной записи и пароль.
+Чтобы использовать в дальнейшем OpenID, вы можете [[Special:OpenIDConvert|преобразовать вашу учётную запись в OpenID]], после того, как вы вошли обычным образом.
 
-Существует множество [http://wiki.openid.net/Public_OpenID_providers общедоступных провайдеров OpenID], возможно, вы уже имеете учётную запись OpenID на другом сайте.',
+Существует множество [http://openid.net/get/ общедоступных провайдеров OpenID], возможно, вы уже имеете учётную запись OpenID на другом сайте.',
 	'openidupdateuserinfo' => 'Обновить мою личную информацию',
 	'openiddelete' => 'Удалить OpenID',
 	'openiddelete-text' => 'Нажав на кнопку «{{int:openiddelete-button}}», Вы удалите OpenID $1 из своей учётной записи.

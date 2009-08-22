@@ -39,6 +39,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'contrib-tracking-error' => 'Fout',
+	'contrib-tracking-button' => 'Gaan voort',
 );
 
 /** Aragonese (Aragonés)

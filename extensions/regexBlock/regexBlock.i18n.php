@@ -121,7 +121,9 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'regexblock-already-blocked' => '$1 is reeds geblok.',
+	'regexblock-expire-duration' => '1 uur,2 uur,4 uur,6 uur,1 dag,3 dae,1 week,2 weke,1 maand,3 maande,6 maande,1 jaar,onbepaald',
 	'regexblock-form-reason' => 'Rede:',
+	'regexblock-form-expiry' => 'Verval:',
 	'regexblock-view-all' => 'Alles',
 	'regexblock-view-go' => 'Gaan',
 	'regexblock-view-reason' => 'rede: $1',

@@ -69,6 +69,14 @@ $messages['bg'] = array(
 	'nstab-comments' => 'Коментари',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'commentpages-desc' => 'Pajennoù evezhiadennoù evit an esaouenn anv pennañ',
+	'nstab-comments' => 'Evezhiadenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

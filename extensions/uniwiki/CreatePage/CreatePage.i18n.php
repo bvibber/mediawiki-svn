@@ -41,6 +41,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'createpage' => "Skep 'n bladsy",
 	'createpage_submitbutton' => 'OK',
 );
 

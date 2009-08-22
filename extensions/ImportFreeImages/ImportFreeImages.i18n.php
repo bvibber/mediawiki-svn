@@ -40,9 +40,11 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'importfreeimages_owner' => 'Outeur',
+	'importfreeimages_next' => 'Volgende $1',
 );
 
 /** Arabic (العربية)

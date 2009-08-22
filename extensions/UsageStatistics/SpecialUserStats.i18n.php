@@ -81,6 +81,8 @@ $messages['af'] = array(
 	'usagestatisticsintervalday' => 'Dag',
 	'usagestatisticsintervalweek' => 'Week',
 	'usagestatisticsintervalmonth' => 'Maand',
+	'usagestatisticscumulative' => 'Kumulatief',
+	'usagestatisticscumulative-text' => 'kumulatief',
 );
 
 /** Amharic (አማርኛ)

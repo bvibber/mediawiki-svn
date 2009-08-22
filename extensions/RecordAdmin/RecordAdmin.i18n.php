@@ -89,6 +89,7 @@ Do not translate or change tag names, or link anchors.',
 $messages['af'] = array(
 	'recordadmin-submit' => 'Dien in',
 	'recordadmin-buttonsearch' => 'Soek',
+	'recordadmin-buttoncreate' => 'Skep',
 	'recordadmin-buttonsave' => 'Stoor',
 	'recordadmin-editlink' => 'wysig',
 	'recordadmin-actions' => 'Aksies',
@@ -300,6 +301,7 @@ $messages['bs'] = array(
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Dodaj sadržaj...',
 	'recordadmin-editwithform' => 'Uređivanje sa obrascom',
+	'recordadmin-typeinfo' => '$1 zapis',
 	'right-recordadmin' => 'Traženje i uređivanje stranica zapisa',
 );
 

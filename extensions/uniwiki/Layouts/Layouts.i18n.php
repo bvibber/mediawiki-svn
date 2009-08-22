@@ -34,6 +34,14 @@ $messages['qqq'] = array(
 	'layouts_unknown' => '{{Identical|Unknown}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'layouts_title' => "Skep 'n bladsy",
+	'layouts_continue' => 'Volgende',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda

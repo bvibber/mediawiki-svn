@@ -430,10 +430,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'breadcrumbs-desc' => 'Показывает путь пользователей по вики.',
+	'breadcrumbs-desc' => 'Показывает путь участников по вики.',
 );
 
 /** Yakut (Саха тыла)

@@ -174,6 +174,9 @@ $messages['bs'] = array(
 	'prefstats-list-intro' => 'Trenutno, slijedeće postavke se prate.
 Kliknite na jednu od njih da pogledate njene statistike.',
 	'prefstats-noprefs' => 'Nijedna postavka se trenutno ne prati. Podesite $wgPrefStatsTrackPrefs za praćenje postavki.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|korisnik je|korisnika su|korisnika je}} omogućilo ove postavke od kako su omogućene statistike postavki
+** $2 {{PLURAL:$2|korisnik još je|korisnika su još|korisnika je još}} omogućilo
+** $3 {{PLURAL:$3|korisnik je|korisnika su|korisnika je}} od tada onemogućilo',
 	'prefstats-xaxis' => 'Trajanje (sati)',
 	'prefstats-factors' => 'Pregled prema: $1',
 	'prefstats-factor-hour' => 'sat',
@@ -423,6 +426,8 @@ $messages['es'] = array(
 	'prefstats-title' => 'Estadísticas de preferencia',
 	'prefstats-list-intro' => 'De momento, las siguientes preferencias están siendo seguidas.
 Selecciona una para ver estadísticas acerca de ella.',
+	'prefstats-noprefs' => 'No se han establecido preferencias.
+Configure $wgPrefStatsTrackPrefs para establecerlas.',
 	'prefstats-counters' => '* $1  {{PLURAL:$1|usuario ha|usuarios han}} activado esta preferencia desde que la estadística fue activada.
 ** $2  {{PLURAL:$2|usuario aún tiene|usuarios aún tienen}} esta preferencia activada
 ** $3  {{PLURAL:$1|usuario la ha|usuarios la han}} desactivado',
@@ -431,6 +436,7 @@ Selecciona una para ver estadísticas acerca de ella.',
 ** $3 {{PLURAL:$3|usuario la ha|usuarios la han}} desactivado
 * En total $4 {{PLURAL:$4|usuario ha|usuarios han}} utilizado esta preferencia',
 	'prefstats-xaxis' => 'Duración (horas)',
+	'prefstats-factors' => 'Vista por: $1',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
 	'prefstats-factor-day' => 'día',
@@ -730,6 +736,7 @@ Clicca super un pro vider statisticas super illo.',
 ** $3 {{PLURAL:$3|usator|usatores}} lo ha disactivate
 * In total, iste preferentia es active pro $4 {{PLURAL:$4|usator|usatores}}',
 	'prefstats-xaxis' => 'Durata (horas)',
+	'prefstats-factors' => 'Monstrar per: $1',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1245,11 +1252,12 @@ Cazze sus a une de le statisteche da vedè.',
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'prefstats' => 'Статистика настроек',
-	'prefstats-desc' => 'Отслеживание статистики о том, сколько пользователей включили у себя те или иные настройки',
+	'prefstats-desc' => 'Отслеживание статистики о том, сколько участников включили у себя те или иные настройки',
 	'prefstats-title' => 'Статистика настроек',
 	'prefstats-list-intro' => 'Сейчас отслеживаются следующие настройки.
 Выберите одну из них для просмотра статистики.',

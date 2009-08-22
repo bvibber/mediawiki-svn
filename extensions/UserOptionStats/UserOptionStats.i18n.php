@@ -31,6 +31,13 @@ $messages['qqq'] = array(
 	'uos-other' => '{{Identical|Other}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'uos-unknown' => '*Standaardinstelling',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

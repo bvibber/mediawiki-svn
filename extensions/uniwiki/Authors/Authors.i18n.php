@@ -26,6 +26,13 @@ $messages['qqq'] = array(
 	'authors_anonymous' => '{{Identical|Anonymous}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'authors_anonymous' => 'Anoniem',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

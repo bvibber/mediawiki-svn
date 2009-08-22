@@ -70,6 +70,13 @@ $messages['qqq'] = array(
 	'amazonplus-cp-jpy' => '{{optional}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'amazonplus-nores' => 'Fout: geen resultate gevind!',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -950,7 +957,7 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'amazonplus-german' => 'Hochdeitsch',
-	'amazonplus-french' => 'French',
+	'amazonplus-french' => 'Franzeesisch',
 	'amazonplus-new' => 'nei',
 	'amazonplus-cp-none' => 'Ken',
 	'amazonplus-more' => 'meh',

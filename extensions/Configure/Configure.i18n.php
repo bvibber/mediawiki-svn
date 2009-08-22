@@ -351,8 +351,9 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'configure-desc-group' => 'Groep',
-	'configure-desc-ns' => 'Naamruimtes',
+	'configure-desc-ns' => 'Naamruimte',
 	'configure-desc-val' => 'Waarde',
+	'configure-edit-ext' => 'Uitbreidings',
 	'configure-js-remove' => 'Skrap',
 	'configure-section-paths' => 'Paaie',
 	'configure-section-db' => 'Databasis',
@@ -363,10 +364,18 @@ $messages['af'] = array(
 	'configure-section-access' => 'Toegang',
 	'configure-section-groups' => 'Groepe',
 	'configure-section-block' => 'Versperrings',
+	'configure-section-images' => 'Media',
 	'configure-section-specialpages' => 'Spesiale bladsye',
+	'configure-section-recentchanges' => 'Onlangse wysigings',
 	'configure-section-users' => 'Gebruikers',
+	'configure-section-extension' => 'Uitbreidings',
 	'configure-section-search' => 'Soek',
 	'configure-throttle-action-edit' => 'Wysig',
+	'configure-throttle-action-move' => 'Skuif',
+	'configure-throttle-action-rollback' => 'Terugrol',
+	'configure-condition-operator-and' => 'En',
+	'configure-condition-name-3' => 'E-posadres is bevestig',
+	'configure-condition-description-3' => 'E-posadres is bevestig',
 );
 
 /** Amharic (አማርኛ)
@@ -7162,6 +7171,7 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  * @author Flrn
  * @author Innv
+ * @author Kaganer
  * @author Lockal
  * @author Putnik
  * @author Александр Сигачёв
@@ -7242,7 +7252,7 @@ $messages['ru'] = array(
 	'configure-section-zh-conversion' => 'Преобразования для китайского',
 	'configure-section-debug' => 'Отладка',
 	'configure-section-profiling' => 'Профилирование',
-	'configure-section-site' => 'Приспособление сайта под пользователя',
+	'configure-section-site' => 'Донастройка сайта для удобства участника',
 	'configure-section-css-js' => 'CSS и JavaScript',
 	'configure-section-namespaces' => 'Пространства имён',
 	'configure-section-stats' => 'Статистика сайта',

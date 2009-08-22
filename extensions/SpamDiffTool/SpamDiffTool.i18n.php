@@ -66,6 +66,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'spamdifftool_option_none' => 'niks',
 	'spamdifftool_submit_buttom' => 'OK',
 );
 

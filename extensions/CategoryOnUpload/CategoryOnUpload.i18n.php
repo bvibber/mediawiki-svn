@@ -90,6 +90,14 @@ $messages['bn'] = array(
 	'categoryonupload-label' => 'বিষয়শ্রেণী:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'categoryonupload-desc' => 'Broudañ a ra an implijer da ziuzañ ur rummad pa bellgarg ur restr',
+	'categoryonupload-label' => 'Rummad :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

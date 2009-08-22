@@ -218,6 +218,7 @@ $messages['af'] = array(
 	'code-new-status' => 'Nuwe status',
 	'code-authors' => 'outeurs',
 	'code-author-name' => "Sleutel 'n gebruikersnaam in:",
+	'code-field-id' => 'Weergawe',
 	'code-field-author' => 'Outeur',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
@@ -227,6 +228,7 @@ $messages['af'] = array(
 	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Opmerking:',
 	'code-rev-repo' => 'Repository:',
+	'code-rev-rev' => 'Weergawe:',
 	'code-rev-modified-a' => 'bygevoeg',
 	'code-rev-modified-r' => 'vervang',
 	'code-rev-modified-d' => 'verwyder',
@@ -918,6 +920,14 @@ Puni URL: $3
 Napravljeni sažetak:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Automatska proba je otkrila regresiju',
+	'codereview-email-body3' => 'Automatska proba je otkrila regresiju zbog izmjena u r$1.
+
+Puni URL: $2
+
+Sažetak prenosa:
+
+$3',
 	'repoadmin' => 'Administracija repozitorijuma',
 	'repoadmin-new-legend' => 'Napravi novi repozitorijum',
 	'repoadmin-new-label' => 'Naziv repozitorija:',
@@ -5750,7 +5760,7 @@ $messages['ru'] = array(
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Последующие изменения',
-	'codereview-email-body2' => 'Пользователь «$1» внёс изменения в r$2.
+	'codereview-email-body2' => 'Участник «$1» внёс изменения в r$2.
 
 Полный  URL: $3
 
@@ -7460,8 +7470,8 @@ $messages['yue'] = array(
 	'code-no-repo' => '無檔案庫設定！',
 	'code-load-diff' => '載入差異中…',
 	'code-notes' => '之前嘅註解',
-	'code-authors' => '作者',
 	'code-statuschanges' => '狀態變動',
+	'code-authors' => '作者',
 	'code-status' => '狀態',
 	'code-tags' => '標籤',
 	'code-tests' => '測試個案',

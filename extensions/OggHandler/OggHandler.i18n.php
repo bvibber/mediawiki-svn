@@ -2291,8 +2291,10 @@ Możesz <a href="$1">pobrać klip</a><br />lub<br /><a href="http://www.mediawik
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'ogg-desc' => 'Gestor për ij file Ogg Theora e Vorbis, con riprodotor JavaScript',
 	'ogg-short-audio' => 'Registrassion Ogg $1, $2',
 	'ogg-short-video' => 'Film Ogg $1, $2',
 	'ogg-short-general' => 'Archivi Multimojen Ogg $1, $2',
@@ -2307,9 +2309,11 @@ $messages['pms'] = array(
 	'ogg-play-video' => 'Smon ël film',
 	'ogg-play-sound' => 'Smon ël sonòr',
 	'ogg-no-player' => "Darmagi, ma sò calcolator a smija ch'a l'abia pa gnun programa ch'a peul smon-e dj'archivi multi-mojen. Për piasì <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">ch'as në dëscaria un</a>.",
+	'ogg-no-player-js' => 'Spiasent, ël tò sistema a l\'ha JavaScript disabilità o a supòrta pa ël riprodotor.<br />
+It peule <a href="$1">dëscarié ël clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">dëscarié un riprodotor</a> për visualisé ël clip ant tò browser.',
 	'ogg-no-xiphqt' => "A smija che ansima a sò calcolator a-i sia nen ël component XiphQT dël programa QuickTime. QuickTime a-i la fa pa a dovré dj'archivi an forma Ogg files s'a l'ha nen ës component-lì. Për piasì <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">ch'as dëscaria XiphQT</a> ò pura ch'as sërna n'àotr programa për dovré j'archivi multi-mojen.",
-	'ogg-player-videoElement' => 'element <video>',
-	'ogg-player-oggPlugin' => 'Spinòt për Ogg',
+	'ogg-player-videoElement' => 'Apògg browser nativ',
+	'ogg-player-oggPlugin' => 'Spinòt (plugin) për browser',
 	'ogg-player-thumbnail' => 'Mach na figurin-a fissa',
 	'ogg-player-soundthumb' => 'Gnun programa për vardé/scoté',
 	'ogg-player-selected' => '(selessionà)',
