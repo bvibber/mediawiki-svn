@@ -1661,7 +1661,7 @@ public class WikiQueryParser {
 		
 		Query sections = makeSectionsQuery(noStopWords,SECTIONS_BOOST);
 		// wordnet synonyms
-		ArrayList<ArrayList<String>> wordnet = WordNet.replaceOne(noStopWords.extractFirst(),iid.getLangCode());
+		ArrayList<ArrayList<String>> wordnet = WordNet.replaceOne(words.extractFirst(),iid.getLangCode());
 				
 		BooleanQuery combined = new BooleanQuery(true);
 		// combined various queries into mainphrase 
