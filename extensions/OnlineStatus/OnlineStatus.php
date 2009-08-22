@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'OnlineStatus',
 	'author'         => 'Alexandre Emsenhuber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
-	'version'        => '2009-08-14',
+	'version'        => '2009-08-22',
 	'description'    => 'Add a preference to show if the user is currently present or not on the wiki',
 	'descriptionmsg' => 'onlinestatus-desc',
 );
