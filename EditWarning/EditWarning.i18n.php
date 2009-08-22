@@ -174,6 +174,7 @@ Vi povas malŝalti ĉi tiun averton en la sekcio "{{int:prefs-editing}}" de viaj
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author McDutchie
  * @author XalD
@@ -183,6 +184,7 @@ $messages['es'] = array(
 	'editwarning-desc' => 'Mostrar una advertencia cuando un usuario intente dejar el formulario de edición sin grabar',
 	'editwarning-warning' => 'Dejar esta página te causará pérdida de los cambios que has hecho.
 Puedes deshabilitar esta advertencia en la sección "{{int:prefs-editing}}" de tus preferencias.',
+	'editwarning-preference' => 'Advertirme cuando abandone una página editada con cambios sin grabar',
 );
 
 /** Estonian (Eesti)

@@ -1246,19 +1246,23 @@ $messages['es'] = array(
 Te gustaría probar Beta?',
 	'optin-feedback-intro' => 'Gracias por probar Beta.
 Deseamos saber qué piensa de nuestra interfaz, por lo que le agradeceremos completar la encuesta opcional que se muestra a continuación.',
+	'optin-feedback-back' => 'Si no desea llenar la encuesta, puede volver a $1.',
 	'optin-success-in' => 'Estás probando ahora Beta.
 Puedes volver a dejar de formar parte en cualquier momento haciendo click en el vínculo "{{int:optin-leave}}" en la parte superior derecha de la pantalla.',
 	'optin-leave-cancel' => 'Si te gustaría continuar usando Beta, puedes regresar a $1',
 	'optin-success-out' => 'Has abandonado exitosamente Beta.
 Puedes probarlo nuevamente en cualquier momento haciendo click en el vínculo "{{int:optin-try}}" en la parte superior derecha de la pantalla.',
+	'optin-success-feedback' => 'Gracias por su respuesta!',
 	'optin-accept-short' => 'Hagámoslo!',
 	'optin-accept-long' => 'Probar Beta',
+	'optin-accept-long-anon' => 'Regístrese y pruebe Beta',
 	'optin-deny-short' => 'No gracias',
 	'optin-deny-long' => 'regresar a la página anterior',
 	'optin-submit-out' => 'Abandonar Beta',
 	'optin-submit-feedback' => 'Haga sus observaciones',
 	'optin-try' => 'Probar Beta',
 	'optin-leave' => 'Abandonar Beta',
+	'optin-feedback' => 'Retroalimentación de Beta',
 	'optin-survey-yes' => 'Sí',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => 'Gracias por probar Beta.
@@ -1285,9 +1289,12 @@ Nos gustaría conocer que opinas acerca de la nueva interfaz, apreciaríamos si 
 	'optin-survey-question-os' => 'Cuál sistema operativo usas?',
 	'optin-survey-answer-os-other' => 'Otro sistema operativo:',
 	'optin-survey-question-res' => 'Cuál es la resolución de tu pantalla?',
+	'optin-survey-question-changes' => '¿ Cuáles cambios desearía ver en Beta en el futuro ? (por favor seleccione todo lo que coincida)',
+	'optin-survey-answer-changes-nav' => 'Hace la navegación general del sitio mas fácil de usar.',
 	'optin-survey-answer-changes-edittools' => 'Aumenta y mejora las herramientas de edición.',
 	'optin-survey-answer-changes-upload' => 'Mejorar contenido y cargas de medios.',
 	'optin-survey-answer-changes-richtext' => 'Herramientas de edición similares a los editores de texto enriquecido.',
+	'optin-survey-answer-changes-custom' => 'Permite una gran personalización del usuario.',
 	'optin-survey-answer-changes-other' => 'Otro:',
 	'optin-improvements' => '== Qué ha sido mejorado? ==
 [[File:UsabilityNavigation.png|left|link=]]
