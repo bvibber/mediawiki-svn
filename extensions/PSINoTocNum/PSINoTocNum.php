@@ -58,7 +58,7 @@ $wgExtensionMessagesFiles['PSINoTocNumMagic'] = $dir . 'PSINoTocNum.i18n.magic.p
 $wgHooks['ParserBeforeInternalParse'][] = 'PSINoTocNumParserBeforeInternalParse';
 
 function PSINoTocNumParserBeforeInternalParse($parser, $text, $stripState) {
-	if (MagicWord::get( MAG_NOTOCNUM )->matchAndRemove( $text ) ) {
+	if (MagicWord::get( 'MAG_NOTOCNUM' )->matchAndRemove( $text ) ) {
 		global $wgOut;
 		$wgOut->addScript('
 			<style type="text/css"><!-- .tocnumber {display:none;} --></style>
