@@ -1207,7 +1207,7 @@ Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľský
 	'spamdifftool_submit_buttom' => 'Odoslať',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1223,7 +1223,7 @@ $messages['sr-ec'] = array(
 	'spamdifftool_submit_buttom' => 'Прихвати',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

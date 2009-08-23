@@ -429,7 +429,7 @@ $messages['gl'] = array(
 	'player-goto-file' => 'ficheiro',
 );
 
-/** Gothic
+/** Gothic (Gothic)
  * @author Crazymadlover
  * @author Jocke Pirat
  */
@@ -1148,7 +1148,7 @@ $messages['sk'] = array(
 	'player-goto-file' => 'súbor',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1168,7 +1168,7 @@ $messages['sr-ec'] = array(
 	'player-goto-file' => 'фајл',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

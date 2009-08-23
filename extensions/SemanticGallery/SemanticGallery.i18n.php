@@ -213,6 +213,13 @@ $messages['pl'] = array(
 	'semanticgallery-desc' => 'Dodaje wyświetlanie w formie galerii dla zapytań SMW',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'semanticgallery-desc' => "A gionta un formà d'output a j'antërogassion SMW an linia",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

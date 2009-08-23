@@ -623,7 +623,7 @@ $messages['sk'] = array(
 	'block_title_error' => 'Prepáčte, stránky s týmto názvom nie je povolené ukladať.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -633,7 +633,7 @@ $messages['sr-ec'] = array(
 	'block_title_error' => 'Жао нам је, наслов ове странице није могуће снимити.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

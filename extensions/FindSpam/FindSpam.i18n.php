@@ -835,7 +835,7 @@ $messages['sk'] = array(
 	'right-findspam' => 'Hľadať iba nedávno pridaný spam',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -848,7 +848,7 @@ $messages['sr-ec'] = array(
 	'right-findspam' => 'Потражи скоро додати спам',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

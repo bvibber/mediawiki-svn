@@ -29,6 +29,14 @@ $messages['qqq'] = array(
 	'filelist-image-desc' => '{{Identical|Description}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'filelist' => 'Lêerlys',
+	'filelist-image-desc' => 'beskrywing',
+);
+
 /** Amharic (አማርኛ) */
 $messages['am'] = array(
 	'filelist-image-desc' => 'መግለጫ',
@@ -699,7 +707,7 @@ $messages['sk'] = array(
 	'filelist-image-desc' => 'popis',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -711,7 +719,7 @@ $messages['sr-ec'] = array(
 	'filelist-image-desc' => 'опис',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

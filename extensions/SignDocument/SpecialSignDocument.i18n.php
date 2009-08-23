@@ -140,18 +140,23 @@ $messages['niu'] = array(
  * @author SPQRobin
  */
 $messages['af'] = array(
+	'signdocument' => 'Onderteken dokument',
 	'sign-realname' => 'Naam:',
 	'sign-city' => 'Stad:',
+	'sign-state' => 'Staat:',
 	'sign-country' => 'Land:',
 	'sign-phone' => 'Telefoonnommer:',
 	'sign-email' => 'E-posadres:',
+	'sign-submit' => 'Onderteken dokument',
 	'sign-viewfield-realname' => 'Naam',
 	'sign-viewfield-city' => 'Stad',
+	'sign-viewfield-state' => 'Staat',
 	'sign-viewfield-country' => 'Land',
 	'sign-viewfield-ip' => 'IP-adres',
 	'sign-viewfield-email' => 'E-pos',
 	'sign-viewfield-options' => 'Opsies',
 	'sign-signatures' => 'Handtekeninge',
+	'sig-private' => '<i>Privaat</i>',
 	'sign-viewfield-reviewcomment' => 'Opmerking',
 	'sign-review-comment' => 'Opmerking',
 );
@@ -3646,7 +3651,7 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] podpísal [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -3736,7 +3741,7 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] потписан [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -55,6 +55,14 @@ $messages['hsb'] = array(
 	'clicktracking-desc' => 'Kliknjenske přesćěhanje, myslene za přesćěhowanje podawkow, kotrež aktualizaciju strony njezawinuja',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'clicktracking' => 'Traciamento de clics del Initiativa de Usabilitate',
+	'clicktracking-desc' => 'Traciamento de clics, pro traciar eventos que non causa un recargamento de pagina',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author 青子守歌
@@ -70,6 +78,22 @@ $messages['ja'] = array(
 $messages['lb'] = array(
 	'clicktracking' => 'Benotzerfrëndlechkeetsinitiative Suivi vun de Klicken',
 	'clicktracking-desc' => "Suivi vun de Clicken, fir déi Aktiounen z'erfaassen déi net zu engem neie Llueden vun der Säit féieren",
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'clicktracking' => 'Следење на кликнувања на Иницијативата за употребливост',
+	'clicktracking-desc' => 'Следење на кликнувања, наменето за следење на постапки кои не предизвикуваат превчитување на страницата',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'clicktracking' => 'Pengesanan klik Inisiatif Kebolehgunaan',
+	'clicktracking-desc' => 'Pengesanan klik, bertujuan untuk mengesan peristiwa-peristiwa yang tidak menyebabkan penyegaran semula sebuah laman.',
 );
 
 /** Dutch (Nederlands)

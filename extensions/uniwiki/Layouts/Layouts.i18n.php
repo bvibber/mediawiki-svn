@@ -689,7 +689,7 @@ $messages['sk'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -699,7 +699,7 @@ $messages['sr-ec'] = array(
 	'layouts_unknown' => 'Непознато',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

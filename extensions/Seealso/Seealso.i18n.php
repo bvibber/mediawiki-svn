@@ -338,6 +338,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'seealso' => '함께 보기',
+	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> 태그를 이용해 번역된 '더 보기' 제목을 보여 줌",
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -610,6 +611,13 @@ $messages['vo'] = array(
  */
 $messages['xal'] = array(
 	'seealso' => 'Дәкәд хәләтн',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'seealso' => 'זעט אויך',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

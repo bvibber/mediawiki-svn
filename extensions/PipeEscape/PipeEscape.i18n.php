@@ -211,6 +211,13 @@ $messages['pl'] = array(
 	'pipeescape-desc' => 'Funkcja parsera <code>#!</code> pozwalająca na użycie znaku pionowej kreski',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'pipeescape-desc' => 'Fonsion dël parser <code>#!</code> për quand it veule che un caràter "pipe" a sia mach un caràter "pipe"',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

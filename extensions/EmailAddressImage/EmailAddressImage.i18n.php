@@ -71,6 +71,13 @@ $messages['cs'] = array(
 	'emailaddressimage-desc' => 'Přidává značku <tt>&lt;email&gt;</tt> zajišťující zobrazení e-mailové adresy jako obrázku',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'emailaddressimage-desc' => 'Yn ychwanegu <tt>&lt;email&gt;</tt> er mwyn dangos cyfeiriad e-bost ar ffurf llun',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'emailaddressimage-desc' => 'Ergänzt das <tt>&lt;email&gt;</tt>-Tag, um eine E-Mail-Adresse als Bild darzustellen',
@@ -386,14 +393,14 @@ $messages['sq'] = array(
 	'emailaddressimage-desc' => 'Vendosë kodin <tt>&lt;email&gt;</tt> që të paraqesë adresën e postës elektronike si figurë',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'emailaddressimage-desc' => 'Додаје <tt>&lt;email&gt;</tt> таг, за приказивање имејл адреса као слика',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

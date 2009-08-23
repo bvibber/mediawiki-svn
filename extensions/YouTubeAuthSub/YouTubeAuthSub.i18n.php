@@ -133,6 +133,14 @@ $messages['ar'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'رجاءً أدخل وصفا للفيديو.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'youtubeauthsub_category' => 'ܣܕܪܐ',
+	'youtubeauthsub_uploadbutton' => 'ܐܣܩ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -2522,7 +2530,7 @@ Ju lutemi keni durim.',
 	'youtubeauthsub_jserror_nodesc' => 'Ju lutemi vendosni përshkrim për video copën tuaj.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Јованвб
  * @author Михајло Анђелковић
@@ -2562,7 +2570,7 @@ $messages['sr-ec'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'Молимо Вас, унесите опис видеа.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

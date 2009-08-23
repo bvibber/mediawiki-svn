@@ -437,7 +437,7 @@ $messages['sq'] = array(
 	'didyoumean-desc' => 'Vendosë lidhje në faqet me tituj "të ngjashëm"',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(

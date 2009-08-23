@@ -267,6 +267,13 @@ $messages['pl'] = array(
 	'pnghandler-desc' => 'Zmiana rozmiaru obrazu w formacie PNG z użyciem „pngds”',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'pnghandler-desc' => 'A redimension-a PNGs an dovrand pngds',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -309,14 +316,14 @@ $messages['sk'] = array(
 	'pnghandler-desc' => 'Zmeniť veľkosť obrázkov PNG pomocou pngds',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
 	'pnghandler-desc' => 'Промени величину ПНГ слика користећи pngds',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

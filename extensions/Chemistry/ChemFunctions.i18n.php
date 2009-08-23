@@ -1000,7 +1000,7 @@ $messages['sk'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Chybný vstup!',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1016,7 +1016,7 @@ $messages['sr-ec'] = array(
 	'chemFunctions_ChemFormInputError' => 'ХемФормула: грешка!',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

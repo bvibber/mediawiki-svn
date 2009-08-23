@@ -295,7 +295,6 @@ $messages['arc'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
- * @author IAlex
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -468,7 +467,6 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
- * @author IAlex
  */
 $messages['bg'] = array(
 	'openidlogin' => 'Влизане с OpenID',
@@ -533,7 +531,6 @@ OpenID позволява влизането в много различни са
 
 /** Bosnian (Bosanski)
  * @author CERminator
- * @author IAlex
  */
 $messages['bs'] = array(
 	'openid-desc' => 'Prijava na wiki sa [http://openid.net/ OpenID] i prijava na druge stranice koje podržavaju OpenID sa wiki korisničkim računom',
@@ -897,7 +894,6 @@ Sie werden sich nicht mehr mit dieser OpenID anmelden können.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
- * @author IAlex
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -1035,7 +1031,6 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
- * @author IAlex
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1109,7 +1104,6 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
  * @author Ascánder
  * @author Crazymadlover
  * @author Drini
- * @author IAlex
  * @author Imre
  * @author McDutchie
  * @author Sanbec
@@ -1551,7 +1545,6 @@ $messages['grc'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
- * @author IAlex
  */
 $messages['gsw'] = array(
 	'openid-desc' => 'Mit eme Wiki-Benutzerkonto in däm Wiki mit ere [http://openid.net/ OpenID] aamälde un bi andere Netzsyte aamälde, wu OpenID unterstitze',
@@ -1656,7 +1649,6 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
- * @author IAlex
  * @author Rotemliss
  * @author YaronSh
  */
@@ -1748,7 +1740,6 @@ OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מב�
 );
 
 /** Hindi (हिन्दी)
- * @author IAlex
  * @author Kaustubh
  */
 $messages['hi'] = array(
@@ -1810,7 +1801,6 @@ $messages['hr'] = array(
 );
 
 /** Upper Sorbian (Hornjoserbsce)
- * @author IAlex
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -1896,7 +1886,6 @@ Je wjele [http://openid.net/get/ poskićowarjow OpenID], snano maš hižo konto 
 
 /** Hungarian (Magyar)
  * @author Dani
- * @author IAlex
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -1967,7 +1956,6 @@ Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolg�
 );
 
 /** Interlingua (Interlingua)
- * @author IAlex
  * @author Malafaya
  * @author McDutchie
  */
@@ -2060,7 +2048,6 @@ Tu non potera plus aperir un session con iste OpenID.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
- * @author IAlex
  * @author Rex
  */
 $messages['id'] = array(
@@ -2161,7 +2148,6 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Darth Kule
- * @author IAlex
  * @author McDutchie
  * @author Nemo bis
  * @author Pietrodn
@@ -2371,7 +2357,6 @@ $messages['ka'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author IAlex
  * @author Lovekhmer
  * @author T-Rithy
  * @author Thearith
@@ -2433,7 +2418,6 @@ $messages['ko'] = array(
 );
 
 /** Ripoarisch (Ripoarisch)
- * @author IAlex
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2535,7 +2519,6 @@ Dann kanns De met dä <i lang="en">OpenID</i> nit mieh heh enlogge.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
- * @author IAlex
  * @author Les Meloures
  * @author Robby
  */
@@ -2696,7 +2679,6 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
- * @author IAlex
  * @author Kaustubh
  */
 $messages['mr'] = array(
@@ -2843,7 +2825,6 @@ $messages['nah'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author IAlex
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -2934,7 +2915,6 @@ Het is dan niet langer mogelijk aan te melden met de OpenID "$1".',
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
- * @author IAlex
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
@@ -3021,7 +3001,6 @@ Du vil ikkje lenger ha høve til å logga inn med denne OpenIDen.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author IAlex
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
@@ -3333,7 +3312,6 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
- * @author IAlex
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -3680,7 +3658,6 @@ OpenID позволяет вам заходить на различные веб
 );
 
 /** Sicilian (Sicilianu)
- * @author IAlex
  * @author Melos
  * @author Santu
  */
@@ -3767,7 +3744,6 @@ $messages['si'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author IAlex
  */
 $messages['sk'] = array(
 	'openid-desc' => 'Prihlásenie sa na wiki pomocou [http://openid.net/ OpenID] a prihlásenie na iné stránky podporujúce OpenID pomocou používateľského účtu wiki',
@@ -3861,7 +3837,7 @@ $messages['sli'] = array(
 	'openidemail' => 'E-Mail-Atresse:',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -3907,7 +3883,7 @@ $messages['sr-ec'] = array(
 	'openid-pref-update-userinfo-on-login' => 'Актуализуј моје информације са OpenID личност сваки пут кад се улогујем',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -3952,7 +3928,6 @@ Možete da izaberete jednu od opcija ispod.',
 );
 
 /** Seeltersk (Seeltersk)
- * @author IAlex
  * @author Pyt
  */
 $messages['stq'] = array(
@@ -4054,7 +4029,6 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author Fluff
- * @author IAlex
  * @author Jon Harald Søby
  * @author Lokal Profil
  * @author M.M.S.
@@ -4211,7 +4185,6 @@ $messages['th'] = array(
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
- * @author IAlex
  */
 $messages['tl'] = array(
 	'openid-desc' => 'Lumagda sa wiki na may [http://openid.net/ OpenID], at lumagda sa iba pang mga websayt na nakakaalam sa/nakababatid ng OpenID na may kuwenta/akawnt na pang-wiki',
@@ -4479,7 +4452,6 @@ OpenID дозволяє вам заходити на різні веб-сайт�
 
 /** Vèneto (Vèneto)
  * @author Candalua
- * @author IAlex
  */
 $messages['vec'] = array(
 	'openid-desc' => "Entra con [http://openid.net/ OpenID] in te la wiki, e entra in tei altri siti web che dòpara OpenID co' na utensa wiki",
@@ -4572,7 +4544,6 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
- * @author IAlex
  * @author Minh Nguyen
  * @author Vinhtantran
  */

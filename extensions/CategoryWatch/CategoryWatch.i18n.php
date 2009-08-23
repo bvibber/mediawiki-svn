@@ -612,7 +612,7 @@ $messages['sk'] = array(
 	'categorywatch-autocat' => 'Automaticky sleduje $1',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(

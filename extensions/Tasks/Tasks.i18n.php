@@ -122,7 +122,9 @@ Don't change '|' character.",
  */
 $messages['af'] = array(
 	'tasks_form_comment' => 'Opmerking',
+	'tasks_noone' => 'niemand',
 	'tasks_delete' => 'Skrap',
+	'tasks_table_header_page' => 'Bladsy',
 	'tasks_search_form_title' => 'Soek',
 	'tasks_search_status' => 'Status',
 	'tasks_previous' => 'Vorige',
@@ -2916,7 +2918,7 @@ $messages['sk'] = array(
 	'tasks-pref-showtaskcomments' => 'Transklúzia diskusnej stránky úlohy.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2980,7 +2982,7 @@ $messages['sr-ec'] = array(
 	'tasks_logentry' => 'За "[[$1]]"',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

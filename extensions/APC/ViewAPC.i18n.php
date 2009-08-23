@@ -207,6 +207,7 @@ $messages['af'] = array(
 	'viewapc-display-filename' => 'Lêernaam',
 	'viewapc-display-info' => 'Naam',
 	'viewapc-display-type' => 'Tipe',
+	'viewapc-display-creation_time' => 'Geskep',
 	'viewapc-display-deletion_time' => 'Geskrap',
 	'viewapc-display-mem_size' => 'Grootte',
 	'viewapc-ls-options-legend' => 'Opsies',
@@ -214,12 +215,14 @@ $messages['af'] = array(
 	'viewapc-ls-header-name' => 'Naam',
 	'viewapc-ls-header-size' => 'Grootte',
 	'viewapc-ls-header-accessed' => 'Laas gebruik',
+	'viewapc-ls-header-modified' => 'Laas gewysig',
 	'viewapc-ls-header-created' => 'Geskep',
 	'viewapc-ls-header-deleted' => 'Geskrap',
 	'viewapc-ls-scope-deleted' => 'Geskrap',
 	'viewapc-ls-sort-size' => 'Grootte',
 	'viewapc-ls-sort-name' => 'Naam',
 	'viewapc-ls-sort-accessed' => 'Laas gebruik',
+	'viewapc-ls-sort-modified' => 'Laas gewysig',
 	'viewapc-ls-sort-created' => 'Geskep',
 	'viewapc-ls-sort-deleted' => 'Geskrap',
 	'viewapc-ls-limit-none' => 'Alles',
@@ -1387,10 +1390,11 @@ $messages['fa'] = array(
  * @author Crt
  * @author Jaakonam
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'viewapc' => 'APC-tiedot',
-	'viewapc-desc' => '[[Special:ViewAPC|Tarkastella ja hallita APC-muistia]] MediaWikillä',
+	'viewapc-desc' => '[[Special:ViewAPC|Tarkastele ja hallitse APC-muistia]] MediaWikillä.',
 	'right-apc' => 'Käyttää kaikkia ominaisuuksia sivulla [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Tietoja ei saatavilla.
 APC ei näytä olevan käytössä.',
@@ -2962,6 +2966,8 @@ $messages['lb'] = array(
 	'viewapc-start-time' => 'Ufankszäit',
 	'viewapc-uptime' => 'Betriebszäit (Uptime)',
 	'viewapc-upload-support' => "Ënnerstetzung fir d'Eropluede vu Fichieren",
+	'viewapc-usercache-info' => 'Informatiounen vum Benotzer-Cache',
+	'viewapc-cached-files' => 'Tëschegespäichert Fichieren',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|Fichier|Fichieren}} ($2)',
 	'viewapc-hits' => 'Treffer',
 	'viewapc-rps' => '$1 Ufroe pro Sekonn',
@@ -2971,6 +2977,7 @@ $messages['lb'] = array(
 	'viewapc-memory-used' => 'Benotzt: $1 ($2)',
 	'viewapc-memory-hits' => 'Treffer: $1 ($2)',
 	'viewapc-memory-miss' => 'Verfeelt: $1 ($2)',
+	'viewapc-memoryfragmentation' => 'Detailer vum Späichergebrauch a -fragmentatioun',
 	'viewapc-fragmentation-info' => 'Fragmentatioun: $1 ($2 vun $3 an $4 {{PLURAL:$4|Fragment|Fragmenter}})',
 	'viewapc-fragmentation-none' => 'Fragmentatioun: keng Fragmentatioun',
 	'viewapc-display-attribute' => 'Eegeschaft',
@@ -4557,7 +4564,7 @@ Novšia verzia $2 je dostupná na http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Vyrovnávacia pamäť aplikácie bola vyčistená.'''''",
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -4649,7 +4656,7 @@ $messages['sr-ec'] = array(
 	'viewapc-usercache-cleared' => "'''''Кеш програма је очишћен.'''''",
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

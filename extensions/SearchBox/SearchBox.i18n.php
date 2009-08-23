@@ -643,14 +643,14 @@ $messages['sk'] = array(
 	'searchbox-namespaces' => 'Menné priestory:',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'searchbox-namespaces' => 'Именски простори:',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

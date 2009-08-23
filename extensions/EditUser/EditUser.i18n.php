@@ -1066,14 +1066,14 @@ $messages['sq'] = array(
 	'right-edituser-exempt' => 'Të tjerët nuk mund të ndryshojnë parapëlqimet e këtij përdoruesi',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
 	'edituser-dosearch' => 'Претрага',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

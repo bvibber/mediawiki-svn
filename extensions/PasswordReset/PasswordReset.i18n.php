@@ -64,7 +64,8 @@ $messages['af'] = array(
 	'passwordreset-emptyusername' => 'Gebruiker nie gespesifiseerd nie',
 	'passwordreset-nopassmatch' => 'Die wagwoorde kom nie ooreen nie',
 	'passwordreset-username' => 'Gebruikersnaam',
-	'passwordreset-newpass' => 'Nuwe wagwoord',
+	'passwordreset-newpass' => 'Nuwe wagwoord:',
+	'passwordreset-submit' => 'Herstel wagwoord',
 );
 
 /** Aragonese (Aragonés)
@@ -375,6 +376,7 @@ $messages['eu'] = array(
 	'passwordreset-username' => 'Lankide izena:',
 	'passwordreset-newpass' => 'Pasahitz berria:',
 	'passwordreset-confirmpass' => 'Pasahitza egiaztatu:',
+	'passwordreset-submit' => 'Pasahitza berrezarri',
 );
 
 /** Finnish (Suomi)
@@ -768,15 +770,16 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'passwordreset-invalidusername' => 'Jeneng panganggo ora absah',
 	'passwordreset-emptyusername' => 'Jeneng panganggo kosong',
 	'passwordreset-nopassmatch' => 'Tembung sandhiné ora cocog',
 	'passwordreset-badtoken' => 'Token panyuntingan ora absah',
-	'passwordreset-username' => 'Jeneng panganggo',
-	'passwordreset-newpass' => 'Tembung sandhi anyar',
-	'passwordreset-confirmpass' => 'Konfirmasi tembung sandhi',
+	'passwordreset-username' => 'Jeneng panganggo:',
+	'passwordreset-newpass' => 'Tembung sandi anyar:',
+	'passwordreset-confirmpass' => 'Konfirmasi tembung sandi:',
 	'passwordreset-submit' => 'Reset tembung sandhi',
 );
 
@@ -1281,7 +1284,7 @@ $messages['sk'] = array(
 	'right-passwordreset' => 'Vygenerovať nové heslo pre používateľa ([[Special:PasswordReset|špeciálna stránka]])',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1301,7 +1304,7 @@ $messages['sr-ec'] = array(
 	'disabledusers' => 'Онемогућени корисници',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

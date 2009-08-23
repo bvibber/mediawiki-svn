@@ -32,6 +32,14 @@ $messages['be-tarask'] = array(
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'navigabletoc' => 'Sadržaj sa navigacijom',
+	'navigabletoc-desc' => 'Dodaje sadržaj u obrazac za uređivanje koji pomjera kutiju tekst kada se klikne na sekciju',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -219,10 +227,11 @@ $messages['mk'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'navigabletoc' => 'Navigasi kandungan',
-	'navigabletoc-desc' => "Menambahkan jadual kandungan dalam bahagian suntingan yang ''scroll'' ke bawah.",
+	'navigabletoc-desc' => 'Menambahkan isi kandungan ke borang sunting yang akan menatalkan kotak teks bila salah satu bahagian diklik.',
 );
 
 /** Dutch (Nederlands)

@@ -829,7 +829,7 @@ $messages['sk'] = array(
 	'nss-db-error' => 'Chyba pri čítaní z overovacej databázy',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -845,7 +845,7 @@ $messages['sr-ec'] = array(
 	'nss-welcome-mail-subject' => 'Прављење налога',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

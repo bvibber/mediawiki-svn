@@ -818,7 +818,7 @@ $messages['sk'] = array(
 	'createpage-badtitle' => '„$1“ nemožno použiť ako názov stránky',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(

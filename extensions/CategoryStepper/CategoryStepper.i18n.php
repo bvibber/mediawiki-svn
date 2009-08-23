@@ -523,7 +523,7 @@ $messages['sk'] = array(
 	'categorystepper-start' => '(začiatok kategórie)',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -531,7 +531,7 @@ $messages['sr-ec'] = array(
 	'categorystepper-start' => '(Почетак категорије)',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -424,14 +424,14 @@ $messages['sk'] = array(
 	'antibot-desc' => 'Jednoduchý framework na kontrolu spambotov a zachytávanie špecifických úprav',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'antibot-desc' => 'Једноставни фрејмворк за спамбот-провере и реаговање на одређене квоте активности',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

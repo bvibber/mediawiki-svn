@@ -105,6 +105,7 @@ $messages['af'] = array(
 	'dt_xml_name' => 'Naam',
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Vrye teks',
 );
 
 /** Amharic (አማርኛ)
@@ -257,6 +258,7 @@ $messages['bs'] = array(
 	'dt_xml_freetext' => 'Slobodni tekst',
 	'importxml' => 'Uvezi XML',
 	'dt_import_selectfile' => 'Molimo odaberite $1 datoteku za uvoz:',
+	'dt_import_encodingtype' => 'Tip šifriranja',
 	'dt_import_editsummary' => '$1 uvoz',
 	'dt_import_importing' => 'Uvoz...',
 	'dt_import_success' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti napravljeno iz $2 datoteke.',
@@ -584,7 +586,7 @@ $messages['gl'] = array(
 	'right-datatransferimport' => 'Importar datos',
 );
 
-/** Gothic
+/** Gothic (Gothic)
  * @author Jocke Pirat
  */
 $messages['got'] = array(
@@ -629,6 +631,7 @@ $messages['gsw'] = array(
 	'dt_xml_freetext' => 'Freje Täxt',
 	'importxml' => 'XML importiere',
 	'dt_import_selectfile' => 'Bitte wehl d $1-Datei zum importiere uus:',
+	'dt_import_encodingtype' => 'Verschlisseligstyp',
 	'dt_import_editsummary' => '$1-Import',
 	'dt_import_importing' => 'Am Importiere ...',
 	'dt_import_success' => '$1 {{PLURAL:$1|Syte|Syte}} wäre us dr $2-Datei aagleit.',
@@ -737,6 +740,7 @@ $messages['hsb'] = array(
 	'dt_xml_freetext' => 'Swobodny tekst',
 	'importxml' => 'XML importować',
 	'dt_import_selectfile' => 'Prošu wubjer dataju $1 za importowanje:',
+	'dt_import_encodingtype' => 'Typ znamješkoweho koda',
 	'dt_import_editsummary' => 'Importowanje $1',
 	'dt_import_importing' => 'Importuje so...',
 	'dt_import_success' => '$1 {{PLURAL:$1|strona so z dataje $2 twori|stronje so z dataje $2 tworitej|strony so z dataje $2 tworja|stronow so z dataje $2 twori}}.',
@@ -874,6 +878,7 @@ $messages['ja'] = array(
 	'dt_xml_freetext' => '自由形式テキスト',
 	'importxml' => 'XMLインポート',
 	'dt_import_selectfile' => 'インポートする $1 ファイルを選択してください:',
+	'dt_import_encodingtype' => 'エンコーディング方式',
 	'dt_import_editsummary' => '$1 のインポート',
 	'dt_import_importing' => 'インポート中…',
 	'dt_import_success' => '$2ファイルから$1{{PLURAL:$1|ページ}}がインポートされます。',
@@ -960,6 +965,7 @@ $messages['ksh'] = array(
 	'dt_xml_freetext' => 'Freije Täx',
 	'importxml' => '<i lang="en">XML</i> Empotteere',
 	'dt_import_selectfile' => 'Söhk de <i lang="en">$1</i>-Dattei för zem Empotteere uß:',
+	'dt_import_encodingtype' => 'Zoot Kodeerung för de Bohchshtahbe un Zeishe',
 	'dt_import_editsummary' => 'uss ene <i lang="en">$1</i>-Datei empotteet',
 	'dt_import_importing' => 'Ben aam Empotteere{{int:Ellipsis}}',
 	'dt_import_success' => '{{PLURAL:$1|Ein Sigg weed_uß|$1 Sigge weede uß|Kein einzelne Sigg weed_uß}} dä <i lang="en">$2</i>-Dattei empotteet.',
@@ -1406,6 +1412,7 @@ $messages['ru'] = array(
 	'dt_xml_freetext' => 'Свободный текст',
 	'importxml' => 'Импорт XML',
 	'dt_import_selectfile' => 'Пожалуйста, выберите файл $1 для импорта:',
+	'dt_import_encodingtype' => 'Тип кодировки',
 	'dt_import_editsummary' => 'импорт $1',
 	'dt_import_importing' => 'Импортирование...',
 	'dt_import_success' => '$1 {{PLURAL:$1|страница была|страницы были|страниц были}} созданы из файла $2.',
@@ -1435,6 +1442,7 @@ $messages['sk'] = array(
 	'dt_xml_freetext' => 'Voľný text',
 	'importxml' => 'Importovať XML',
 	'dt_import_selectfile' => 'Prosím, vyberte $1 súbor, ktorý chcete importovať:',
+	'dt_import_encodingtype' => 'Typ kódovania',
 	'dt_import_editsummary' => 'Import $1',
 	'dt_import_importing' => 'Prebieha import...',
 	'dt_import_success' => 'Z $2 súboru sa {{PLURAL:$1|importuje $1 stránka|importujú $1 stránky|importuje $1 stránok}}.',
@@ -1443,7 +1451,7 @@ $messages['sk'] = array(
 	'right-datatransferimport' => 'Importovať údaje',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1462,7 +1470,7 @@ $messages['sr-ec'] = array(
 	'dt_xml_id' => 'ID',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -32,11 +32,23 @@ $messages['be-tarask'] = array(
 	'uploadblacklist-desc' => 'Дадае магчымасьць выкарыстаньня чорнага сьпісу загрузак',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'uploadblacklist-desc' => 'Dodaje funkcionalnost postavljanja zabranjenih spiskova',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'uploadblacklist-desc' => 'Přidává funkcionalitu černé listiny pro načítání souborů',
+);
+
+/** German (Deutsch) */
+$messages['de'] = array(
+	'uploadblacklist-desc' => 'Fügt eine schwarze Liste für die Hochladen-Funktion hinzu',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -74,6 +86,13 @@ $messages['eu'] = array(
 	'uploadblacklist-desc' => 'Igoerako zerrenda beltza funtzionalitatea gehitzen du',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'uploadblacklist-desc' => 'Lisää musta lista -toiminnon tiedostojen tallennukselle.',
+);
+
 /** French (Français)
  * @author Crochet.david
  */
@@ -86,6 +105,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'uploadblacklist-desc' => 'Engade unha funcionalidade de lista negra de carga',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'uploadblacklist-desc' => 'Fiegt e Schwarzi-Lischte-Funktion yy fir s Uffelade',
 );
 
 /** Hebrew (עברית)
@@ -103,6 +129,13 @@ $messages['hr'] = array(
 	'uploadblacklist-desc' => 'Dodaje funkcionalnost crne liste postavljanja',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'uploadblacklist-desc' => 'Přidawa funkcionalnosć čorneje lisćiny za nahraća',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  * @author Glanthor Reviol
@@ -118,11 +151,32 @@ $messages['ia'] = array(
 	'uploadblacklist-desc' => 'Adde le functionalitate de un lista nigre pro le cargamento de files',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'uploadblacklist-desc' => 'Menambahkan fungsionalitas mengunggahkan daftar hitam',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'uploadblacklist-desc' => 'Aggiunge una funzionalità di blacklist per i caricamenti',
+);
+
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'uploadblacklist-desc' => 'アップロード・ブラックリスト機能を追加する',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'uploadblacklist-desc' => 'Deit de Müjjeleschkeit för en „schwazze Leß“ beim Datteije Huhlaade en et Wiki.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -181,11 +235,25 @@ $messages['roa-tara'] = array(
 	'uploadblacklist-desc' => "Aggiunge 'na funzionalitate pe 'na lista gnore pe le carecaminde",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'uploadblacklist-desc' => 'Добавляет возможность использования чёрного списка загрузок',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
 	'uploadblacklist-desc' => 'Киллэрии (суруттарыы) хара испииһэгин туһанары баар гынар',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'uploadblacklist-desc' => 'Pridáva funkcionalitu čiernej listiny nahrávaní',
 );
 
 /** Swedish (Svenska)

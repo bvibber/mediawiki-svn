@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 	'discussionthreading-threadnewsection' => '{{Identical|New}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'discussionthreading-threadnewsection' => 'nuut',
+);
+
 /** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */

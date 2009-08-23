@@ -529,8 +529,10 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'userimages-desc' => "Génera galarìe ëd figure carià da l'utent con <code><nowiki><userimage /></nowiki></code>",
 	'userimages-caption' => 'Figure carià da $1',
 	'userimages-noname' => "Stranòm nen bon ò ch'a-i é nen d'autut.",
 	'userimages-noimages' => "$1 a l'ha pa carià gnun-a figura.",
@@ -638,7 +640,7 @@ $messages['sr'] = array(
 	'userimages-noimages' => '$1 нема послатих слика.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -648,7 +650,7 @@ $messages['sr-ec'] = array(
 	'userimages-noimages' => '$1 нема послатих слика.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

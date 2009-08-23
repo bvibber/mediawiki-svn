@@ -255,6 +255,13 @@ $messages['es'] = array(
 	'framedvideo_error_height_and_width_required' => 'Tipo de video "$1" requiere parámetros "height" y "width2" o "width".',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'framedvideo_helppage' => 'Help:Bideoa',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -382,6 +389,27 @@ $messages['ia'] = array(
 	'framedvideo-desc' => 'Permitte incastrar videos ab varie sitos web con le etiquetta <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'framedvideo_errors' => 'Beberapa kesalahan terjadi!',
+	'framedvideo_error' => 'Sebuah kesalahan terjadi!',
+	'framedvideo_error_unknown_type' => 'Penyedia jasa video tidak diketahui id ("$1): cek parameter "type".',
+	'framedvideo_error_no_id_given' => 'Parameter "id" tidak dicantumkan.',
+	'framedvideo_error_height_required' => 'Jenis video "$1" membutuhkan parameter "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Jenis video "$1" membutuhkan parameter "height", tidak hanya parameter "width".',
+	'framedvideo_error_width_too_big' => 'Nilai parameter "width" yang diberikan terlalu besar.',
+	'framedvideo_error_height_too_big' => 'Nilai parameter "height" yang diberikan terlalu besar.',
+	'framedvideo_error_no_integer' => 'Nilai "$1" yang diberikan bukan angka positif.',
+	'framedvideo_error_limit' => 'Nilai terbesar yang diijinkan adalah $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Nilai parameter "full" dan "size" yang diberikan tidak diijinkan untuk penyedia jasa video id "$1".',
+	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Lebih lanjut tentang sintaks]].',
+	'framedvideo_error_height_and_width_required' => 'Jenis video "$1" membutuhkan parameter "height" dan "width" atau "width2".',
+	'framedvideo-desc' => 'Mengijinkan memasang video dari berbagai situs web dengan menggunakan tag <tt><nowiki><video></nowiki></tt>',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -435,6 +463,7 @@ enzebenge, övver dä <code>&lt;video&gt;=</code>“ Befähl.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -452,7 +481,7 @@ $messages['lb'] = array(
 	'framedvideo_helppage' => 'Help:Video',
 	'framedvideo_error_see_help' => "[[{{MediaWiki:Framedvideo_helppage}}|Méi iwwert d'Syntax]]",
 	'framedvideo_error_height_and_width_required' => 'De Video-Typ "$1" verlaangt d\'Parameter "height" an "width2" oder "width".',
-	'framedvideo-desc' => 'Erlaabt et Videoen vu verschiddenen Internetsiten matt dem Tag <tt><nowiki><video></nowiki></tt> anzebannen',
+	'framedvideo-desc' => 'Erlaabt et Videoe vu verschidden Internetsäite mat der Markéierung <tt><nowiki><video></nowiki></tt> anzebannen',
 );
 
 /** Macedonian (Македонски)

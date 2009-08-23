@@ -27,6 +27,13 @@ $messages['be-tarask'] = array(
 	'interlanguage-desc' => 'Захоплівае міжмоўныя спасылкі зь іншай вікі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'interlanguage-desc' => 'Dastum a ra liammoù etreyezhoù adalek ur wiki all',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

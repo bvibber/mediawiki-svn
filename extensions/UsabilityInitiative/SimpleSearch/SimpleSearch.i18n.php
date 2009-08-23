@@ -19,9 +19,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Bennylin
+ * @author Mormegil
  */
 $messages['qqq'] = array(
-	'simplesearch-search' => '{{Identical/Search}}',
+	'simplesearch-search' => 'Greyed out default text in the simple search box in the Vector skin. (It disappears and lets the user enter the requested search terms when the search box receives focus.)
+
+{{Identical|Search}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -91,6 +94,15 @@ $messages['ca'] = array(
 	'simplesearch' => 'Cerca simple',
 	'simplesearch-desc' => 'Afegeix funcionalitat extra a cerca simplificada de Vector',
 	'simplesearch-search' => 'Cerca',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'simplesearch' => 'Zjednodušené hledání',
+	'simplesearch-desc' => 'Rozšiřuje funkcionalitu zjednodušeného hledání ve vzhledu Vektor',
+	'simplesearch-search' => 'Hledat',
 );
 
 /** Danish (Dansk)
@@ -311,6 +323,14 @@ $messages['km'] = array(
 	'simplesearch-search' => 'ស្វែងរក​',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'simplesearch' => '간단한 검색',
+	'simplesearch-search' => '검색',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -529,7 +549,7 @@ $messages['sl'] = array(
 	'simplesearch-search' => 'Iskanje',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -537,7 +557,7 @@ $messages['sr-ec'] = array(
 	'simplesearch-search' => 'Претрага',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -579,7 +599,7 @@ $messages['tr'] = array(
 	'simplesearch-search' => 'Ara',
 );
 
-/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
  */
 $messages['tt-cyrl'] = array(

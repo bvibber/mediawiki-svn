@@ -79,6 +79,7 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'imagetagging-article' => 'Bladsy:',
 	'imagetagging-imghistory' => 'Geskiedenis',
 	'imagetagging-images' => 'beelde',
 	'imagetagging-tagcancel-button' => 'Kanselleer',
@@ -1569,7 +1570,7 @@ Počkajte prosím, kým sa dokončí prebiehajúca operácia.',
 	'tag-logpagetext' => 'Toto je záznam všetkých pridaní a odstránení značiek obrázkov.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1607,7 +1608,7 @@ $messages['sr-ec'] = array(
 	'tag-logpagetext' => 'Ово је историја свих додавања и брисања тагова са слика',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

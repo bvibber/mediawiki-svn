@@ -272,6 +272,15 @@ Nevhodné soubory budou okmažitě smazány, vizte [[{{MediaWiki:Multipleupload-
 	'multiupload-blank' => 'Nebyl vybrán žádný soubor',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'multipleupload' => 'Uwchlwytho nifer o ffeiliau',
+	'multipleupload-desc' => 'Yn galluogi defnyddiwr i [[Special:MultipleUpload|uwchlwytho nifer o ffeiliau ar unwaith]]',
+	'multipleupload-saveallfiles' => "Rhoi'r holl ffeiliau ar gadw",
+);
+
 /** Danish (Dansk)
  * @author BabelFrode
  * @author Byrial
@@ -1354,7 +1363,7 @@ $messages['sq'] = array(
 	'multiupload-toolbox' => 'Ngarko skeda të shumta',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1369,7 +1378,7 @@ $messages['sr-ec'] = array(
 	'multiupload-blank' => 'Ни један фајл није био назначен за слање',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

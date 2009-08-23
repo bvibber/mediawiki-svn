@@ -436,7 +436,7 @@ $messages['sk'] = array(
 	'donationform-submit' => 'Darujte pomocou PayPal',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -444,7 +444,7 @@ $messages['sr-ec'] = array(
 	'donationform-submit' => 'Донирајте преко PayPal',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

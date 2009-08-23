@@ -610,6 +610,15 @@ $messages['ja'] = array(
 	'slippymap_clicktoactivate' => 'クリックして地図をアクティブにする',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'slippymap_code' => 'កូដឹវិគី​សម្រាប់​មើល​ផែនទី​នេះ​៖',
+	'slippymap_button_code' => 'យក​កូដវិគី',
+	'slippymap_resetview' => 'កំណត់​ការមើល​ឡើងវិញ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

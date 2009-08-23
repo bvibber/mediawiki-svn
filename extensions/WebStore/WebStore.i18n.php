@@ -83,6 +83,7 @@ Shown in [[Special:Version]].',
  */
 $messages['af'] = array(
 	'inplace_scaler_not_enough_params' => 'Nie genoeg parameters nie.',
+	'webstore_404' => 'Lêer nie gevind nie.',
 	'webstore_no_response' => 'Geen antwoord van die bediener',
 );
 
@@ -2216,7 +2217,7 @@ $1',
 	'webstore_no_handler' => 'Pre transformáciu tohto typu MIME neexistuje obsluha',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2264,7 +2265,7 @@ $1',
 	'webstore_no_handler' => 'Није дефинисано трансформисање овог MIME типа',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2666,6 +2667,13 @@ $messages['vo'] = array(
 $1',
 	'webstore_no_response' => 'Gespik nonik se dünanünöm',
 	'webstore_php_error' => 'Pöls-PHP petuvons:',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'inplace_scaler_not_enough_params' => 'נישטא גענוג פאראמעטערס',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

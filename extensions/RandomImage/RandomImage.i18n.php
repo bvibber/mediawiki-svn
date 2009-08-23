@@ -265,6 +265,13 @@ $messages['pl'] = array(
 	'randomimage-desc' => 'Zwraca losowy plik z użyciem znacznika <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'randomimage-desc' => 'A dà na cartela ëd file casuaj an dovrand <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -314,14 +321,14 @@ $messages['sq'] = array(
 	'randomimage-desc' => 'Mundëson hapje të rastësishme të mediave duke përdorur <tt>&lt;randomimage /&gt;</tt>',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'randomimage-desc' => 'Приказује случајно изабрану слику помоћу тага <tt>&lt;randomimage /&gt;</tt>',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

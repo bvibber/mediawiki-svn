@@ -41,9 +41,9 @@ $messages['af'] = array(
 	'commentbox-name' => 'Naam:',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'commentbox-desc' => 'Fügt in bestimmte Seiten ein Kommentarfeld ein',
-	'commentbox-prefill' => '',
 	'commentbox-intro' => '== Kommentar hinzufügen... ==
 Du hast einen Kommentar zu dieser Seite? Trag ihn hier ein oder <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeite die Seite direkt]</span>.',
 	'commentbox-savebutton' => 'Kommentar speichern',
@@ -51,7 +51,7 @@ Du hast einen Kommentar zu dieser Seite? Trag ihn hier ein oder <span class="pla
 	'commentbox-name-explanation' => '<small>(Tipp: Wenn Du Dich [[Spezial:Anmelden|anmeldest]], musst Du nicht mehr hier Deinen Namen angeben)</small>',
 	'commentbox-log' => 'Neuer Kommentar',
 	'commentbox-first-comment-heading' => '== Kommentare ==',
-	'commentbox-regex' => '/\n==\s*Kommentare\s*==\s*\n/i',
+	'commentbox-regex' => '/\\n==\\s*Kommentare\\s*==\\s*\\n/i',
 	'commentbox-errorpage-title' => 'Fehler bei der Erzeugung des Kommentars',
 	'commentbox-error-page-nonexistent' => 'Die Seite existiert nicht!',
 	'commentbox-error-namespace' => 'Kommentare sind in diesem Namensraum nicht erlaubt!',

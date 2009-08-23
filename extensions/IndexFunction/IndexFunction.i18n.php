@@ -164,12 +164,19 @@ Klikit war ar bir evit gwelet an holl bajennoù menegeret dindan an titl-se.',
 $messages['bs'] = array(
 	'indexfunc-desc' => 'Parserska funkcija za pravljenje automatskih preusmjerenja i čvor stranica',
 	'indexfunc-badtitle' => 'Nevaljan naslov: "$1"',
+	'indexfunc-editwarning' => 'Upozorenje: Ovaj naslov je naslov indeksa za {{PLURAL:$2|slijedeću stranicu|slijedeće stranice}}:
+$1
+Provjerite da stranica koju namjeravate napraviti ranije već ne postoji pod drugim naslovom.
+Ako napravite ovu stranicu, uklonite ovaj naslov iz <nowiki>{{#index:}}</nowiki> sa {{PLURAL:$2|gornje stranice|gornjih stranica}}.',
 	'indexfunc-index-exists' => 'Stranica "$1" već postoji',
+	'indexfunc-movewarn' => 'Upozorenje: "$1" je naslov indeksa za {{PLURAL:$3|slijedeću stranicu|slijedeće stranice}}:
+$2
+Molimo uklonite "$1" iz <nowiki>{{#index:}}</nowiki> sa {{PLURAL:$3|gornje stranice|gornjih stranica}}.',
+	'index' => 'Indeks',
 	'index-legend' => 'Pretraživanje indeksa',
 	'index-search' => 'Traži:',
 	'index-submit' => 'Pošalji',
 	'index-disambig-start' => "'''$1''' se može odnositi na nekoliko stranica:",
-	'index-missing-param' => 'Ova stranica ne može biti korištena bez parametara',
 	'index-emptylist' => 'Nema stranica povezanih sa "$1"',
 );
 
@@ -258,12 +265,21 @@ $messages['es'] = array(
 	'indexfunc-desc' => 'Función analizadora para crear redirecciones y páginas de desambiguación',
 	'indexfunc-badtitle' => 'Título inválido: "$1"',
 	'indexfunc-index-exists' => 'La página "$1" ya existe',
+	'index' => 'Índice',
 	'index-legend' => 'Buscar el índice',
 	'index-search' => 'Buscar:',
 	'index-submit' => 'Enviar',
 	'index-disambig-start' => "'''$1''' puede referir a varias páginas:",
-	'index-missing-param' => 'Esta página no puede ser usada sin parámetros',
 	'index-emptylist' => 'No hay páginas asociadas con "$1"',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'indexfunc-badtitle' => 'Izenburu baliogabea: "$1"',
+	'index-search' => 'Bilatu:',
+	'index-submit' => 'Bidali',
 );
 
 /** Finnish (Suomi)
@@ -326,11 +342,11 @@ Se crea esta páxina, elimine este título de <nowiki>{{#index:}}</nowiki> {{PLU
 	'indexfunc-movewarn' => 'Aviso: "$1" é un título de índice para {{PLURAL:$3|a seguinte páxina|as seguintes páxinas}}:
 $2
 Por favor, elimine "$1" de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|na páxina de enriba|nas páxinas de enriba}}.',
+	'index' => 'Índice',
 	'index-legend' => 'Procurar no índice',
 	'index-search' => 'Procurar:',
 	'index-submit' => 'Enviar',
 	'index-disambig-start' => "'''$1''' pódese referir a varias páxinas:",
-	'index-missing-param' => 'Esta páxina non se pode usar sen parámetros',
 	'index-emptylist' => 'Non hai páxinas asociadas con "$1"',
 );
 
@@ -406,18 +422,32 @@ Zapodaj najprjedy někotre znamješka a klikń na tłóčatko {{int:index-submit
 	'index-details-explain' => 'Zapiski z šipkami su indeksowe zapiski, klikń na šipk, zo by wšě strony pokazał, kotrež su pod tym titulom indikowane.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'index-search' => 'Keresés:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'indexfunc-desc' => 'Function del analysator syntactic pro le creation automatic de redirectiones e paginas de disambiguation',
 	'indexfunc-badtitle' => 'Titulo invalide: "$1"',
+	'indexfunc-editwarning' => 'Attention: Iste titulo es un titulo de indice pro le sequente {{PLURAL:$2|pagina|paginas}}:
+$1
+Assecura te que le pagina que tu va crear non ja existe sub un altere titulo.
+Si tu crea iste pagina, remove iste titulo del <nowiki>{{#index:}}</nowiki> in le {{PLURAL:$2|pagina|paginas}} ci supra.',
 	'indexfunc-index-exists' => 'Le pagina "$1" ja existe',
+	'indexfunc-movewarn' => 'Attention: Iste titulo es un titulo de indice pro le sequente {{PLURAL:$3|pagina|paginas}}:
+$2
+Per favor remove "$1" del <nowiki>{{#index:}}</nowiki> in le {{PLURAL:$3|pagina|paginas}} ci supra.',
+	'index' => 'Indice',
 	'index-legend' => 'Cercar in le indice',
 	'index-search' => 'Cerca:',
 	'index-submit' => 'Submitter',
 	'index-disambig-start' => "'''$1''' pote referer a plure paginas:",
-	'index-missing-param' => 'Iste pagina non pote esser usate sin parametros',
 	'index-emptylist' => 'Il non ha paginas associate con "$1"',
 );
 
@@ -428,11 +458,11 @@ $messages['id'] = array(
 	'indexfunc-desc' => 'Fungsi parser untuk membuat pengalihan otomatis dan halaman disambiguasi',
 	'indexfunc-badtitle' => 'Judul tidak sah: "$1"',
 	'indexfunc-index-exists' => 'Halaman "$1" sudah ada',
+	'index' => 'Indeks',
 	'index-legend' => 'Cari di indeks',
 	'index-search' => 'Cari:',
 	'index-submit' => 'Kirim',
 	'index-disambig-start' => "'''$1''' dapat mengacu kepada:",
-	'index-missing-param' => 'Halaman ini tidak dapat digunakan tanpa parameter',
 	'index-emptylist' => 'Tidah ada halaman yang berhubungan dengan "$1"',
 );
 
@@ -498,13 +528,27 @@ $2
 $messages['ksh'] = array(
 	'indexfunc-desc' => 'Paaserfunxjuhn för Ömleijdunge un „Watt ėßß datt?“-Sigge automattesch jemaat ze krijje.',
 	'indexfunc-badtitle' => '„$1“ es ene onjöltije Sigge-Tittel.',
+	'indexfunc-editwarning' => 'Opjepaß: Dat es ene Tittel för en automattesche Ömleijdung udder „Watt ėßß datt?“-Sigg, för heh di {{PLURAL:$2|Sigg |Sigge|Fähler!}}:
+$1
+Bes sescher, dat et di Sigg, di De aanlääje wells, anderswoh nit ald onger enem andere Tittel jitt.
+Wann De heh di Sigg aanlääje wells, dann nemm op dä {{PLURAL:$2|Sigg|Sigge|Fähler}} bovve heh dä Tittel uß däm <nowiki>{{#index:}}</nowiki> eruß!',
 	'indexfunc-index-exists' => 'Di Sigg „$1“ jitt et ald.',
+	'indexfunc-movewarn' => 'Opjepaß: „$1“ es ene Tittel för en automattesche Ömleijdung udder „Watt ėßß datt?“-Sigg, för heh di {{PLURAL:$3|Sigg |Sigge|Fähler!}}:
+$2
+Nemm op dä {{PLURAL:$3|Sigg|Sigge|Fähler}} dat „$1“ uß däm <nowiki>{{#index:}}</nowiki> eruß!',
+	'index' => 'index',
 	'index-legend' => 'Donn en de automatesche Ömleidunge un „Watt ėßß datt?“-Leßte söhke',
 	'index-search' => 'Söhk noh:',
 	'index-submit' => 'Lohß Jonn!',
 	'index-disambig-start' => "Dä Tittel '''$1''' deiht op ongerscheidlijje Sigge paße:",
-	'index-missing-param' => 'Heh di Sigg kann nit der oohne ene Parremeter jebruch wääde.',
 	'index-emptylist' => 'Mer han kein Sigge, di met „$1“ verbonge wöhre.',
+	'index-expand-detail' => 'Zeijsch all di automattesche Ömleijdunge un automattesche „Watt ėßß datt?“-Sigge onger däm Tittel',
+	'index-hide-detail' => 'Donn de Sigge-Leß vershteishe',
+	'index-no-results' => 'Bei däm Söke es nix eruß jekumme',
+	'index-search-explain' => 'Heh di Sigg beedt et Söhke noh Aanfäng.
+
+Donn de eezte pa Bochshtave udder Zeijsche tippe, un donn dann dä Knopp „{{int:index-submit}}“ dröcke, öm noh Sigge ier Tittelle un noh Endrääsch för automattesche Ömleijdunge un automattesche „Watt ėßß datt?“-Sigge ze söhke, di met jenou dä Bochshtave udder Zeijsche aanfange.',
+	'index-details-explain' => 'Endrääsch met piele en för för automattesche Ömleijdunge un automattesche „Watt ėßß datt?“-Sigge. Donn op dä Piel klecke, öm all di automattesche Ömleijdunge un automattesche „Watt ėßß datt?“-Sigge jezeijsch ze krijje, di dä Tittel han.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

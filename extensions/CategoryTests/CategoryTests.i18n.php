@@ -35,6 +35,13 @@ $messages['be-tarask'] = array(
 	'categorytests-desc' => 'Функцыі для праверкі катэгорыяў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'categorytests-desc' => "Arc'hwelioù evit arnodiñ rummadoù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

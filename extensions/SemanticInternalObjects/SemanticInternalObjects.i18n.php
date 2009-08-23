@@ -90,6 +90,13 @@ $messages['ksh'] = array(
 	'semanticinternalobjects-desc' => 'De ennere Objäkte vum Semantesch MedijaWiki enschtälle.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'semanticinternalobjects-desc' => 'Astellung vun internen Objeten a Semantic MediaWiki',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -355,7 +355,7 @@ $messages['sk'] = array(
 	'catfeed-desc' => 'Používa kúsky z kanálov posledných zmien. Vytvorí verziu v rámci stránky. Obzvlášť užitočné pre Wikinews.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -363,7 +363,7 @@ $messages['sr-ec'] = array(
 Прави верзију унутар стране, посебно корисну за Викивести.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

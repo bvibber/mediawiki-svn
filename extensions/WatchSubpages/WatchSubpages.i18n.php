@@ -702,7 +702,7 @@ Stránku pridáte tak, že označíte pole vedľa nej a kliknete na „Pridať s
 Pri označovaní alebo odznačovaní viacerých stránok môžete držaním klávesu Shift a kliknutím na začiatok a koniec rozsahu vybrať viacero po sebe idúcich polí súčasne.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -712,7 +712,7 @@ $messages['sr-ec'] = array(
 	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додај све подстранице]] странице на списак надгледања',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

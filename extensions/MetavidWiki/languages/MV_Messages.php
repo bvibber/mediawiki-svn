@@ -407,6 +407,7 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'mv_remove_reason' => 'Rede vir skrapping:',
 	'mv_upload_file' => 'Laai lêer',
 	'mv_tool_search' => 'Soek',
 	'mv_tool_export' => 'Eksporteer',
@@ -1709,6 +1710,8 @@ Zur Stream-Ansicht springen: $2',
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'mv_error_stream_missing' => '<span class="error">Fehler: Es ist keine Videodatei mit diesem Stream verknüpft.</span><br />
+Bitte berichten Sie dieses Problem dem [[{{MediaWiki:Grouppage-sysop}}|Seitenadministrator]].',
 	'mv_stream_added' => 'Sie haben den Stream $1 hinzugefügt',
 	'mv_missing_stream_text' => 'Der angeforderte Stream <b>$1</b> ist nicht verfügbar.<br />
 Schauen Sie in die <a href="$2">Streamliste</a><br />
@@ -7273,7 +7276,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'right-mv_edit_stream' => 'Upraviť súbory streamov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -7427,7 +7430,7 @@ $messages['sr-ec'] = array(
 	'mv_new_anno_en' => 'Нови таг или белешка',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

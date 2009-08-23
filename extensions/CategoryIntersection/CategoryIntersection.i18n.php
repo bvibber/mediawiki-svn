@@ -548,7 +548,7 @@ $messages['sk'] = array(
 	'categoryintersection-results' => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -559,7 +559,7 @@ $messages['sr-ec'] = array(
 	'categoryintersection-results' => 'Претрага је вратила $1 {{PLURAL:$1|резултат|резултата}}.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -298,7 +298,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'i18ntags-desc' => 'Prístup k i18n funkciám pre formátovanie čísel, gramatiku a plurál v ktoromkoľvek z dostupných jazykov',
+	'i18ntags-desc' => 'Prístup k i18n funkciám na formátovanie čísel, gramatiku a plurál v ktoromkoľvek z dostupných jazykov',
 );
 
 /** Seeltersk (Seeltersk)

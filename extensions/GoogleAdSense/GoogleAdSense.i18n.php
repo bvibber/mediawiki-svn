@@ -382,14 +382,14 @@ $messages['sq'] = array(
 	'googleadsense-desc' => 'Vendosë [http://www.google.com/adsense Google AdSense] në kolonat anësore',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'googleadsense-desc' => 'Додаје [http://www.google.com/adsense Гуглов AdSense] сајдбару Вашег пројекта',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

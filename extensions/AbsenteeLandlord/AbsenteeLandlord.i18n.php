@@ -547,7 +547,7 @@ $messages['sk'] = array(
 	'absenteelandlord-desc' => 'Automaticky zamyká wiki databázu ak sú všetci správcovia po určitú dobu neaktívni',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -555,7 +555,7 @@ $messages['sr-ec'] = array(
 	'absenteelandlord-desc' => 'Аутоматски закључава Вики базу података уколико су сви администратори неактивни неко време.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

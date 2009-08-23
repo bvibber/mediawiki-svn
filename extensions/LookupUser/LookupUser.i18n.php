@@ -41,6 +41,13 @@ $messages['qqq'] = array(
 	'right-lookupuser' => '{{doc-right}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'lookupuser-no-email' => 'nie verskaf nie',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -204,6 +211,13 @@ $messages['cs'] = array(
 	'lookupuser-info-authenticated' => 'Ověření emailu: $1',
 	'lookupuser-useroptions' => 'Nastavení uživatele:',
 	'right-lookupuser' => 'Prohlížení nastavení jiných uživatelů',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'lookupuser-email' => 'E-bost: [[Special:EmailUser/$2|$1]]',
 );
 
 /** German (Deutsch)
@@ -1142,7 +1156,7 @@ $messages['sli'] = array(
 	'lookupuser-realname' => 'Wirklicher Noame: $1',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1158,7 +1172,7 @@ $messages['sr-ec'] = array(
 	'lookupuser-info-authenticated' => 'Потврда имејла: $1',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

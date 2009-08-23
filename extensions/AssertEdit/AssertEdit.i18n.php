@@ -636,7 +636,7 @@ $messages['sk'] = array(
 	'assert_edit_message' => 'Uvedený predpoklad ($1) zlyhal.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -645,7 +645,7 @@ $messages['sr-ec'] = array(
 	'assert_edit_message' => 'Одређена тврдња ($1) није успела.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

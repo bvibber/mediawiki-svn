@@ -217,6 +217,13 @@ $messages['hi'] = array(
 	'ajax-qp-desc' => 'पृच्छापन्नोंमें [[Special:Shortpages|{{int:shortpages}}]] जैसे AJAX बढायें',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'ajax-qp-desc' => 'Dugangan ang AJAX para matan-awan ang mga pahina parehas sang [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
@@ -458,14 +465,14 @@ $messages['sk'] = array(
 	'ajax-qp-desc' => 'Pridáva AJAX na stránky požiadaviek ako [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'ajax-qp-desc' => 'AJAX додаци за стране претрага попут [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

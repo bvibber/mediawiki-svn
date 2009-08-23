@@ -222,6 +222,7 @@ $messages['af'] = array(
 	'code-field-author' => 'Outeur',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
+	'code-field-comments' => 'Notas',
 	'code-field-path' => 'Pad',
 	'code-field-text' => 'Opmerking',
 	'code-rev-author' => 'Outeur:',
@@ -237,9 +238,12 @@ $messages['af'] = array(
 	'code-rev-status-set' => 'Wysigingsstatus',
 	'code-rev-comment-by' => 'Opmerking van $1',
 	'code-rev-comment-preview' => 'Voorskou',
+	'code-status-new' => 'nuut',
 	'code-status-resolved' => 'opgelos',
+	'code-status-ok' => 'ok',
 	'code-pathsearch-path' => 'Pad:',
 	'codereview-batch-submit' => 'Dien in',
+	'codereview-subtitle' => 'Vir $1',
 	'codereview-reply-link' => 'antwoord',
 	'repoadmin-new-button' => 'Skep',
 	'repoadmin-edit-button' => 'OK',
@@ -5760,7 +5764,7 @@ $messages['ru'] = array(
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Последующие изменения',
-	'codereview-email-body2' => 'Участник «$1» внёс изменения в r$2.
+	'codereview-email-body2' => 'Пользователь «$1» внёс изменения в r$2.
 
 Полный  URL: $3
 
@@ -6160,7 +6164,7 @@ $3',
 	'specialpages-group-developer' => 'Nástroje vývojárov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Јованвб
  * @author Михајло Анђелковић
  */
@@ -6244,7 +6248,7 @@ $messages['sr-ec'] = array(
 	'specialpages-group-developer' => 'Девлоперски алати',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

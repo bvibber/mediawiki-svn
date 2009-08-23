@@ -78,6 +78,8 @@ $messages['af'] = array(
 	'usagestatisticsstart' => 'Begindatum',
 	'usagestatisticsend' => 'Einddatum',
 	'usagestatisticssubmit' => 'Genereer statistieke',
+	'usagestatisticsnoend' => "Spesifiseer 'n einddatum",
+	'usagestatisticsbadstartend' => '<b>Slegte <i>begindatum</i> en/of <i>einddatum</i>!</b>',
 	'usagestatisticsintervalday' => 'Dag',
 	'usagestatisticsintervalweek' => 'Week',
 	'usagestatisticsintervalmonth' => 'Maand',
@@ -1717,7 +1719,7 @@ $messages['sk'] = array(
 	'right-viewsystemstats' => 'Zobraziť [[Special:UserStats|štatistiku použitia wiki]]',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1746,7 +1748,7 @@ $messages['sr-ec'] = array(
 	'usagestatistics-editpages' => 'Статистике страна индивидуалних корисника $1',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

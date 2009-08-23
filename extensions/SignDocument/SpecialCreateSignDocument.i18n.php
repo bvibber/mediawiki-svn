@@ -56,6 +56,8 @@ $messages['af'] = array(
 	'createsigndoc-pagename' => 'Bladsy:',
 	'createsigndoc-email' => 'E-posadres:',
 	'createsigndoc-phone' => 'Telefoonnommer:',
+	'createsigndoc-hidden' => 'Verborge',
+	'createsigndoc-optional' => 'Opsioneel',
 	'createsigndoc-create' => 'Skep',
 );
 
@@ -1469,7 +1471,7 @@ Otestovať ho môžete na [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} t
 Túto operáciu nie je možné druhýkrát vrátiť.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1489,7 +1491,7 @@ $messages['sr-ec'] = array(
 	'createsigndoc-error-generic' => 'Грешка: $1',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -413,13 +413,17 @@ $messages['af'] = array(
 	'ow_ClassAttributes' => 'Klasattribute',
 	'ow_ClassAttributeType' => 'Tipe',
 	'ow_Collection' => 'Versameling',
+	'ow_Collection_colon' => 'Versameling:',
 	'ow_Definition' => 'Definisie',
 	'ow_DefinedMeaningAttributes' => 'Annotasie',
+	'ow_DefinedMeaning' => 'Bepaalde betekenis',
+	'ow_DefinedMeaningReference' => 'Bepaalde betekenis',
 	'ow_Expression' => 'Uitdrukking',
 	'ow_Expressions' => 'Uitdrukkings',
 	'ow_GotoSource' => 'Gaan na bron',
 	'ow_Language' => 'Taal',
 	'ow_LevelAnnotation' => 'Annotasie',
+	'ow_OptionAttribute' => 'Eienskap',
 	'ow_OptionAttributeOption' => 'Opsie',
 	'ow_OptionAttributeOptions' => 'Opsies',
 	'ow_PopupAnnotation' => 'Annotasie',
@@ -428,12 +432,17 @@ $messages['af'] = array(
 	'ow_Synonyms' => 'Sinonieme',
 	'ow_Source' => 'Bron',
 	'ow_Text' => 'Teks',
+	'ow_TextAttribute' => 'Eienskap',
+	'ow_TranslatedTextAttribute' => 'Eienskap',
 	'ow_TranslatedText' => 'Vertaalde teks',
 	'ow_TranslatedTextAttributeValue' => 'Teks',
 	'ow_TranslatedTextAttributeValues' => 'Vertaalbare teks',
+	'ow_LinkAttribute' => 'Eienskap',
 	'ow_LinkAttributeValues' => 'Skakels',
 	'ow_User' => 'Gebruiker',
+	'ow_Property' => 'Eienskap',
 	'ow_Value' => 'Waarde',
+	'ow_Permission_denied' => '<h2>Toestemming geweier</h2>',
 	'ow_show' => 'Wys',
 	'ow_create' => 'Skep',
 	'ow_suggest_previous' => 'Vorige',
@@ -703,6 +712,7 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'langman_title' => 'ܡܕܒܪܢܐ ܕܠܫܢܐ',
+	'langman_adding' => 'ܬܘܣܦܬܐ ܕܠܫܢܐ $1 ܥܡ ܩܠܝܕܐ $2.',
 	'langman_langname' => 'ܫܡܐ ܕܠܫܢܐ:',
 	'langman_addlang' => 'ܐܘܣܦ ܠܫܢܐ',
 	'datasearch_language' => 'ܠܫܢܐ:',
@@ -712,11 +722,13 @@ $messages['arc'] = array(
 	'ow_save' => 'ܢܛܘܪ',
 	'ow_history' => 'ܬܫܥܝܬܐ',
 	'ow_transaction_user' => 'ܫܡܐ ܕܡܦܠܚܢܐ:',
+	'ow_transaction_operation' => 'ܥܡܠܝܬܐ',
 	'ow_transaction_object' => 'ܓܘܫܡܐ',
 	'ow_transaction_summary' => 'ܦܣܝܩܬ̈ܐ',
 	'ow_dm_OK' => 'ܛܒ',
 	'ow_Annotation' => 'ܣܦܐ',
 	'ow_ClassAttributeLevel' => 'ܫܘܝܐ',
+	'ow_ClassAttributeType' => 'ܐܕܫܐ',
 	'ow_DefinedMeaningAttributes' => 'ܣܦܐ',
 	'ow_GotoSource' => 'ܙܠ ܠܥܩܪܐ',
 	'ow_Language' => 'ܠܫܢܐ',
@@ -783,7 +795,7 @@ $messages['arz'] = array(
 	'ow_importtsv_title1' => 'استيراد تى إس فى',
 	'ow_importtsv_title2' => 'استيراد التعريفات والترجمات',
 	'ow_importtsv_header' => "<p>استورد التعريفات والترجمات من ملف نص محدد بألسنة ربما تكون صدرته من OpenOffice.org، إكسل أو برنامج صحائف آخر.</p>
-<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة فى صفحة [[Special:ExportTSV|ExportTSV]]. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف لأى معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
+<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة فى صفحة [[Special:ExportTSV|ExportTSV]]. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف  لأى معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
 <p>لو أن صندوق 'تشغيل تجربة' معلم، فأى أفعال ستتخذ سيتم إبلاغها، لكن لا تغييرات سيتم عملها فعلا. أنت مشجع على عمل تشغيل تجربة قبل عمل استيراد فعلى.</p>",
 	'ow_importtsv_not_allowed' => 'أنت لا تمتلك السماح لعمل استيراد TSV.',
 	'ow_importtsv_importing' => 'استيراد بيانات TSV',
@@ -794,7 +806,7 @@ $messages['arz'] = array(
 تأكد من أن تطبيقك حفظ أو صدر الملف بطريقة صحيحة.</p>',
 	'ow_importtsv_not_tsv' => '<p>هذا لا يبدو ملف TSV صحيح.</p>',
 	'ow_importtsv_bad_columns' => "<p>اسم عامود غير صحيح '$1'.<br />
-العواميد ينبغى أن تسمى 'definition_iso' أو 'translations_iso'،
+العواميد ينبغى أن تسمى 'definition_iso' أو 'translations_iso'،   
 حيث iso هو كود اللغة.</p>",
 	'ow_importtsv_test_run_title' => 'تشغيل تجربة لاستيراد بيانات TSV',
 	'ow_importtsv_nothing_added' => 'ا شىء تمت إضافته.',
@@ -840,11 +852,11 @@ $messages['arz'] = array(
 	'conceptmapping' => 'ويكى داتا: تخطيط المبدأ',
 	'ow_conceptmapping_title' => 'تخطيط المبدأ',
 	'ow_conceptmapping_help' => '<p>الأفعال الممكنة: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... إدراج رابطة</li>
-<li>&action=get&concept=<concept_id> قراءة رابطة</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  إدراج رابطة</li>
+<li>&action=get&concept=<concept_id>  قراءة رابطة</li>
 <li>&action=list_sets عرض قائمة لبوادىء سياقات البيانات الممكنة وما الذى تشير إليه.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> لمعنى معرف واحد فى مبدأ، يعرض الآخرون كلهم</li>
-<li>&action=help عرض مساعدة مفيدة.</li>
+<li>&action=help  عرض مساعدة مفيدة.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ربط المبدأ يسمح لك بتعرف أى معنى معرف فى مجموعة بيانات مطابق لمعانى معرفة فى مجموعات بيانات أخرى.</p>',
 	'ow_conceptmapping_no_action_specified' => 'العمليه "$1" مش مدعومه.',
@@ -934,11 +946,11 @@ $messages['arz'] = array(
 	'ow_Permission_denied' => '<h2>السماح مرفوض</h2>',
 	'ow_copy_no_action_specified' => 'من فضلك حدد فعلا',
 	'ow_copy_help' => 'المساعدة لسه ما اشتغلتش.',
-	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something> (dmid=رقم المعنى المعرف)<br />
+	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something>  (dmid=رقم المعنى المعرف)<br />
 من فضلك اتصل بإدارى خادم.',
-	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something> (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
+	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something>  (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
 من فضلك اتصل بإدارى خادم.',
-	'ow_please_proved_dc2' => 'على ما يبدو فدخلك يفقد ?dc2=<something> (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />
+	'ow_please_proved_dc2' => 'على ما يبدو فدخلك يفقد ?dc2=<something>  (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />
 من فضلك اتصل بإدارى خادم.',
 	'ow_copy_successful' => '<h2>النسخ نجح</h2>
 بياناتك يبدو أنها قد تم نسخها بنجاح.
@@ -998,11 +1010,11 @@ $messages['avk'] = array(
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Mecoba rebana',
 	'ow_conceptmapping_help' => '<p>rotisa tegira se : <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... walbura va skura</li>
-<li>&action=get&concept=<concept_id> sutera va dimskura</li>
-<li>&action=list_sets va vexala dem rotisa orkafa osta yo is sinafa vuestera buldar.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  walbura va skura</li>
+<li>&action=get&concept=<concept_id>  sutera va dimskura</li>
+<li>&action=list_sets  va vexala dem rotisa orkafa osta yo is sinafa vuestera buldar.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> tori tanoya tentunafa sugdala ke envaks, va kotar buldar</li>
-<li>&action=help Nedira va pomapara.</li>
+<li>&action=help  Nedira va pomapara.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Envaksskura pu rin rictal da inde tentunafa sugdala koe tanoya origlospa tir milkafa gu tentunafa sugdala se koe ara origlospa yo ropilkomodal.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Skalewé ! Jin me grupaskí inde "$1".',
@@ -1472,7 +1484,7 @@ $messages['br'] = array(
 Bezit sur eo bet enrollet pe ezporzhiet ar restr ent reizh gant hoc'h arload.</p>",
 	'ow_importtsv_not_tsv' => "<p>Evit doare n'eo ket ur restr TSV reizh.</p>",
 	'ow_importtsv_bad_columns' => "<p>Anv bann direizh '$1'.<br />
-Rankout a ra ar bannoù bezañ anvet 'definition_iso' pe 'translations_iso',
+Rankout a ra ar bannoù bezañ anvet 'definition_iso' pe 'translations_iso',  
 e-lec'h m'eo iso kod ar yezh.</p>",
 	'ow_importtsv_test_run_title' => 'Test enporzhiañ roadennoù TSV',
 	'ow_importtsv_nothing_added' => "N'eus bet ouzhpenn netra.",
@@ -2025,11 +2037,11 @@ Prosím, podívejte se na [[{{MediaWiki:Ow editing policy url}}|naše pravidla o
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'žádné vybrané',
 	'ow_conceptmapping_help' => '<p>možné činnosti: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... vložit mapování</li>
-<li>&action=get&concept=<concept_id> přečíst mapování</li>
-<li>&action=list_sets vrátit seznam možných předpon datových kontextů a na co odkazují</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pro jeden definovaný význam v rámci pojmu, vrátit všechny ostatní</li>
-<li>&action=help zobrazit nápovědu</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  vložit mapování</li>
+<li>&action=get&concept=<concept_id>  přečíst mapování</li>
+<li>&action=list_sets  vrátit seznam možných předpon datových kontextů a na co odkazují</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix>  pro jeden definovaný význam v rámci pojmu, vrátit všechny ostatní</li>
+<li>&action=help  zobrazit nápovědu</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mapování pojmů vám umožňuje určit, který definovaný význam v jedné množině dat je shodný s definovanými významy v ostatních možinách dat.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akce „$1“ není podporována.',
@@ -7244,11 +7256,11 @@ $messages['mr'] = array(
 	'ow_uiprefs' => 'विकिविदा',
 	'ow_none_selected' => 'कोणतेही निवडले नाही',
 	'ow_conceptmapping_help' => '<p>शक्य क्रिया: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... एक मॅपिंग टाका</li>
-<li>&action=get&concept=<concept_id> एक मॅपिंग वाचा</li>
-<li>&action=list_sets शक्य असलेले डाटा कन्टेक्स्ट उपपदांची यादी व ती काय दर्शवितात त्याच्यासकट द्या.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  एक मॅपिंग टाका</li>
+<li>&action=get&concept=<concept_id>  एक मॅपिंग वाचा</li>
+<li>&action=list_sets  शक्य असलेले डाटा कन्टेक्स्ट उपपदांची यादी व ती काय दर्शवितात त्याच्यासकट द्या.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> एखाद्या विशिष्ट अर्थासाठी, इतर सर्व द्या</li>
-<li>&action=help माहितीपूर्ण मदत दाखवा.</li>
+<li>&action=help  माहितीपूर्ण मदत दाखवा.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>कन्सेप्ट मॅपिंग मुळे तुम्हाला एखाद्या डाटाबेस मध्ये असणारा अर्थ दुसर्‍या डाटाबेस मधल्या कुठल्या अर्थाशी तंतोतंत जुळतो हे कळते.</p>',
 	'ow_conceptmapping_no_action_specified' => '"$1" कसे करावे मला ठावूक नाही,क्षमस्व',
@@ -7744,7 +7756,7 @@ $messages['nn'] = array(
 Forviss deg om at programmet ditt har lagra eller eksportert fila på rett vis.</p>',
 	'ow_importtsv_not_tsv' => '<p>Dette ser ikkje ut til å vera ei gyldig TSV-fil.</p>',
 	'ow_importtsv_bad_columns' => "<p>Ikkje rett kolonnenamn '$1'.<br />
-Kolonner skal verta kalla 'definition_iso' eller 'translations_iso',
+Kolonner skal verta kalla 'definition_iso' eller 'translations_iso',  
 der iso er språkkoda.</p>",
 	'ow_importtsv_test_run_title' => 'Testkøyring for importering av TSV-data',
 	'ow_importtsv_nothing_added' => 'Ingenting lagt til.',
@@ -7789,11 +7801,11 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
 	'conceptmapping' => 'Wikidata: Omgrepskartlegging',
 	'ow_conceptmapping_title' => 'Omgrepskartlegging',
 	'ow_conceptmapping_help' => '<p>moglege handlingar: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... set inn eit kart</li>
-<li>&action=get&concept=<concept_id> sjå att eit kart</li>
-<li>&action=list_sets viser ei liste over moglege datakontekst-prefiks og kva dei refererer til.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  set inn eit kart</li>
+<li>&action=get&concept=<concept_id>  sjå att eit kart</li>
+<li>&action=list_sets  viser ei liste over moglege datakontekst-prefiks og kva dei refererer til.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> viser alle andre for ei definert tyding i eit konsept</li>
-<li>&action=help Viser hjelp.</li>
+<li>&action=help  Viser hjelp.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Kart over konsept lèt deg finne ut kva definert tyding i ei datavising som er lik definerte tydingar i andre datavisingar.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Handlinga «$1» er ikkje støtta.',
@@ -8706,11 +8718,11 @@ $messages['ps'] = array(
 	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
 	'ow_conceptmapping_help' => '<p>شونې کړنې: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... insert a mapping</li>
-<li>&action=get&concept=<concept_id> read a mapping back</li>
-<li>&action=list_sets return a list of possible data context prefixes and what they refer to.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
+<li>&action=get&concept=<concept_id>  read a mapping back</li>
+<li>&action=list_sets  return a list of possible data context prefixes and what they refer to.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> for one defined meaning in a concept, return all others</li>
-<li>&action=help Show helpful help.</li>
+<li>&action=help  Show helpful help.</li>
 </ul></p>',
 	'ow_conceptmapping_no_action_specified' => 'بښنه غواړم، زه نه پوهېږم چې څنګه "$1".',
 	'ow_dm_not_present' => 'نه دی ورکړ شوی',
@@ -10034,7 +10046,7 @@ $messages['sq'] = array(
 	'ow_Collection' => 'Koleksioni',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Михајло Анђелковић
  */
@@ -10202,7 +10214,7 @@ $messages['sr-ec'] = array(
 	'ow_shown_datasets' => 'Приказани низови података',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -10544,7 +10556,7 @@ Sproaken mouten dän ISO-639-3-Sproakencode äntspreeke.</p>',
 	'ow_copy_help' => 'Der is noch neen Hälpe implementierd.',
 	'ow_please_proved_dmid' => 'Dät lät, dät an dien Iengoawe failt "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Kontaktier dän Serveradminstrator.',
-	'ow_please_proved_dc1' => 'Dät lät, as wan an dien Iengoawe failt "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
+	'ow_please_proved_dc1' => 'Dät lät, as wan an dien Iengoawe  failt "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
 Kontaktier dän Serveradminstrator.',
 	'ow_please_proved_dc2' => 'Dät lät, as wan an dien Iengoawe failt "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO) <br />
 Kontaktier dän Serveradminstrator.',
@@ -10838,11 +10850,11 @@ $messages['szl'] = array(
 	'ow_uiprefs' => 'Dane wiki',
 	'ow_none_selected' => 'Ńic ńy je zaznoczůne',
 	'ow_conceptmapping_help' => '<p>możliwe dziołańo: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... wstowjo mapowańy</li>
-<li>&action=get&concept=<concept_id> uodczytujy mapowańy</li>
-<li>&action=list_sets zwroco lista możliwych prefiksůw kůnteksta danych a jeich uodnośńikůw</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  wstowjo mapowańy</li>
+<li>&action=get&concept=<concept_id>  uodczytujy mapowańy</li>
+<li>&action=list_sets  zwroco lista możliwych prefiksůw kůnteksta danych a jeich uodnośńikůw</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> w uodńyśeńu do jednygo zdefińjowanygo znoczyńo w pojyńću zwroco pozostołe definicyje</li>
-<li>&action=help pokozuje půmoc</li>
+<li>&action=help  pokozuje půmoc</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Uodwzorowywańy pojyńć dozwalo na identyfikacyjo tego, kere ze zdefińjowanych w jednym zestowj danych znoczyń sům identyczne do znoczy0ń zdefińjowanych we drugim zestowje danych.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Wyboczće, ńy wjym, jako zuůnaczyć "$1".',
@@ -11230,7 +11242,7 @@ $messages['tl'] = array(
 	'ow_importtsv_title2' => 'Angkatin ang mga kahulugan at mga salinwika',
 	'ow_importtsv_header' => "<p>Umangkat ng mga kahulugan at mga salinwika mula sa isang teksto ng talaksang hinangganan ng panglaylay/tab na maaaring iniluwas mo mula sa OpenOffice.org, Excel o iba pang sopwer na may \"nakalatag na pilas\" (''spreadsheet'').</p>
 <p>Ang anyo/pormat ng talaksan ay dapat na katulad ng sa mga talaksang iniluwas sa ibabaw ng pahinang [[Special:ExportTSV|ExportTSV]]. Kung binago mo ang mga pangalan ng pababang hanay, mabibigo ang pag-aangkat. Kung binago mo ang id o ang pagsasaad na nagbibigay ng kahulugan sa anumang nilarawang kahulugan, hindi papansinin ang guhit na iyan. Kung nagdagdag ka ng pababang mga hanay, dapat silang nasa anyong 'definitions_iso' o 'translations_iso', kung saan ang iso ay isang kodigo ng wika ng ISO 639-3.</p>
-<p>Kung may tsek ang kahong 'pagpapatakbong sinusubok', iuulat ang alin mang mga galaw na isasagawa, subalit wala talagang ginagawang mga pagbabago. Hinihikayat kang magsagawa muna ng isang pagpapatakbong sinusubok bago ka magsakatapuran ng isang tunay na pag-aangkat.</p>",
+<p>Kung may tsek ang kahong 'pagpapatakbong sinusubok', iuulat ang alin mang mga galaw na isasagawa, subalit wala talagang ginagawang mga pagbabago.  Hinihikayat kang magsagawa muna ng isang pagpapatakbong sinusubok bago ka magsakatapuran ng isang tunay na pag-aangkat.</p>",
 	'ow_importtsv_not_allowed' => 'Wala kang pahintulot na gumawa ng isang pag-angkat ng isang TSV.',
 	'ow_importtsv_importing' => 'Inaangkat ang dato ng TSV',
 	'ow_importtsv_import_failed' => 'Nabigo ang pag-aangkat',
@@ -11240,7 +11252,7 @@ $messages['tl'] = array(
 Pakitiyak lamang na tama ang pagkakasagip o pag-aangkat ng talaksan na ginawa ng iyong aplikasyon/sopwer.</p>',
 	'ow_importtsv_not_tsv' => '<p>Mukhang hindi ito isang tanggap na talaksang TSV.</p>',
 	'ow_importtsv_bad_columns' => "<p>Hindi tamang pangalan ng pahabang hanay ang '$1'.<br />
-Dapat na pangalanan ang pahabang mga hanay bilang 'definition_iso' o 'translations_iso',
+Dapat na pangalanan ang pahabang mga hanay bilang 'definition_iso' o 'translations_iso',  
 kung saan ang iso ay isang kodigo ng wika.</p>",
 	'ow_importtsv_test_run_title' => 'Pagpapatakbong sinusubok para sa pag-aangkat ng dato ng TSV',
 	'ow_importtsv_nothing_added' => 'Walang idinagdag.',
@@ -11260,7 +11272,7 @@ Pumili ng isang kalipunang iluluwas. Sa loob ng kahon ng tektso ng mga wika, mag
 	'ow_history' => 'Kasaysayan',
 	'ow_datasets' => 'Pampili ng pangkat ng dato',
 	'ow_noedit_title' => 'Wala kang pahintulot upang makagawa ng pagbabago',
-	'ow_noedit' => 'Wala kang pahintulot para makapagbago ng mga pahina sa loob ng pangkat ng datong "$1".
+	'ow_noedit' => 'Wala kang pahintulot para makapagbago ng mga pahina sa loob ng pangkat ng datong "$1". 
 Pakitingnan ang [[{{MediaWiki:Ow editing policy url}}|aming patakaran sa pamamatnugot]].',
 	'ow_uipref_datasets' => 'Likas na nakatakdang anyo ng tinitingnan:',
 	'ow_uiprefs' => 'Wikidata',
@@ -11286,11 +11298,11 @@ Pakitingnan ang [[{{MediaWiki:Ow editing policy url}}|aming patakaran sa pamamat
 	'conceptmapping' => 'Wikidata: Pagmamapa ng diwa',
 	'ow_conceptmapping_title' => 'Pagmamapa ng Diwa',
 	'ow_conceptmapping_help' => '<p>mga maaaring gawin: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... magsingit ng isang pagmamapa</li>
-<li>&action=get&concept=<concept_id> magbasa ng isang pagmamapang pabalik</li>
-<li>&action=list_sets magbalik ng isang talaan ng mga maaaring maging unlaping kontekstong pangdato at kung ano ang tinutukoy nila.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  magsingit ng isang pagmamapa</li>
+<li>&action=get&concept=<concept_id>  magbasa ng isang pagmamapang pabalik</li>
+<li>&action=list_sets  magbalik ng isang talaan ng mga maaaring maging unlaping kontekstong pangdato at kung ano ang tinutukoy nila.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para sa isang tinukoy/nilarawang kahulugan sa loob ng isang diwa o konsepto, ibalik ang lahat ng iba pa</li>
-<li>&action=help Ipakita ang mga nakakatulong na pantulong.</li>
+<li>&action=help  Ipakita ang mga nakakatulong na pantulong.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => "<p>Nagpapahintulot ang Pagmamapa ng Konsepto o ng Diwa (''Concept Mapping'') na matukoy mo kung anong nilarawang kahulugang nagmula sa isang pangkat ng dato ang katulad sa nilarawang mga kahulugang nasa iba pang mga kapangkatan ng dato.</p>",
 	'ow_conceptmapping_no_action_specified' => 'Hindi tinatangkilik/sinusuportahan ang galaw na "$1".',
@@ -11392,7 +11404,7 @@ Huwag kalimutang suriin uli para makatiyak!',
 	'ow_copy_unsuccessful' => '<h3>Hindi matagumpay ang pagkopya</h3>
 Walang naganap na pagsasakatuparan ng pagkopya',
 	'ow_no_action_specified' => '<h3>Walang tinukoy na galaw</h3>
-Maaaring tuwiran kang nakarating sa pahinang ito? Sa karaniwan, hindi mo kailangang magparito.',
+Maaaring tuwiran kang nakarating sa pahinang ito?  Sa karaniwan, hindi mo kailangang magparito.',
 	'ow_db_consistency_not_found' => "<h2>Kamalian</h2>
 Mayroong suliranin hinggil sa pagkakasundu-sundo ng kalipunan ng dato, hindi matagpuan ng ''wikidata'' (dato ng wiki/wikidato) ang tanggap na datong may kaugnayan sa ID (pagkakakilanlan) ng nilarawang kahulugang ito.
 Maaaring nawala ito.

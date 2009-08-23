@@ -49,6 +49,7 @@ Do not translate or change tag names, or link anchors.',
  */
 $messages['af'] = array(
 	'emergencydesysop-submit' => 'Dien in',
+	'emergencydesysop-nogroups' => 'Geen',
 );
 
 /** Arabic (العربية)
@@ -748,7 +749,7 @@ $messages['sk'] = array(
 	'right-emergencydesysop' => 'Dokáže odstrániť správcovské práva iného používateľa zároveň so svojimi',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -768,7 +769,7 @@ $messages['sr-ec'] = array(
 	'right-emergencydesysop' => 'Омогућава администратору да одузме администраторска права себи и другом администратору',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

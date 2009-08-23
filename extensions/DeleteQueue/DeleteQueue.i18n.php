@@ -260,12 +260,19 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'deletequeue-delnom-otherreason' => 'Ander rede',
+	'deletequeue-delnom-extra' => 'Ekstra inligting:',
 	'deletequeue-review-reason' => 'Opmerkings:',
+	'deletequeue-review-newextra' => 'Ekstra inligting:',
 	'deletequeue-vote-reason' => 'Opmerkings:',
 	'deletequeue-vote-submit' => 'Dien in',
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Soek',
+	'deletequeue-list-header-page' => 'Bladsy',
+	'deletequeue-list-header-expiry' => 'Vervaldatum',
+	'deletequeue-case-page' => 'Bladsy:',
 	'deletequeue-case-reason' => 'Rede:',
+	'deletequeue-case-expiry' => 'Verval:',
 );
 
 /** Amharic (አማርኛ)
@@ -4637,7 +4644,7 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
 	'deletequeue-case-needs-review' => 'Tento prípad vyžaduje [[$1|kontrolu]].',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(

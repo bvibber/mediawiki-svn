@@ -655,7 +655,7 @@ Qualcuno ha assegnato un nuovo compito per te su %s.
 
 Per vedere l'elenco completo dei propri compiti andare su %s.
 
-Il tuo caro sistema di notifica di %s",
+Il sistema di notifica di %s, al tuo servizio",
 );
 
 /** Japanese (日本語)
@@ -1192,7 +1192,7 @@ Svoj kompletný Zoznam úloh si môžete pozrieť na %s.
 Váš priateľský upozorňovací systém %s',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1210,7 +1210,7 @@ $messages['sr-ec'] = array(
 	'tasklistprojdisp' => 'Прикажи',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

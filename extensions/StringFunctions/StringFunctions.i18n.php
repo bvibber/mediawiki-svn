@@ -283,6 +283,13 @@ $messages['pl'] = array(
 	'stringfunctions-desc' => 'Rozszerza analizator składni o funkcje operujące na łańcuchach znaków',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'stringfunctions-desc' => 'Mijora ël parser con le fonsion "string"',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -332,14 +339,14 @@ $messages['sk'] = array(
 	'stringfunctions-desc' => 'Rozširuje syntaktický analyzátor o funkcie na prácu s reťazcami',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'stringfunctions-desc' => 'Обогаћује парсер функцијама за стрингове',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

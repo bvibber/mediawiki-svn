@@ -79,6 +79,13 @@ $messages['csb'] = array(
 	'editown-desc' => 'Brëkòwnicë bez editorsczich praw mògą editowac blós starnë chtërné sómi ùsôdzelë',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'editown-desc' => "Dim ond y tudalennau hynny a ddechreuwyd gan y defnyddiwr ei hunan y gall defnyddiwr heb y gallu 'editall' eu golygu",
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
@@ -367,14 +374,14 @@ $messages['sq'] = array(
 	'editown-desc' => 'Përdoruesit pa të drejtë redaktimi mund të redaktojnë vetëm faqet që kanë krijuar vetë',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'editown-desc' => 'Корисници без editall права могу да мењају само стране које су сами направили',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

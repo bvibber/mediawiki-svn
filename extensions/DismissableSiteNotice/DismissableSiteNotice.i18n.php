@@ -749,7 +749,7 @@ $messages['sq'] = array(
 	'sitenotice_close' => 'fshihe',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -757,7 +757,7 @@ $messages['sr-ec'] = array(
 	'sitenotice-desc' => 'омогући корисницима да искључе обавештење на сајту',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

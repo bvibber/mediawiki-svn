@@ -277,6 +277,13 @@ $messages['pl'] = array(
 	'formatsearch-desc' => 'Czyści stronę z wynikami wyszukiwania',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'formatsearch-desc' => "A scansela la pàgina dj'arzultà dl'arserca",
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -326,14 +333,14 @@ $messages['sq'] = array(
 	'formatsearch-desc' => 'Pastron faqen e rezultateve të kërkimit',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'formatsearch-desc' => 'Чисти страну са резултатима претраге',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

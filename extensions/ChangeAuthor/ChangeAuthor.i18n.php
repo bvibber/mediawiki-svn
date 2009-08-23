@@ -1723,7 +1723,7 @@ $messages['sk'] = array(
 	'right-changeauthor' => 'Zmeniť autora revízie',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */

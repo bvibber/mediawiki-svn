@@ -1120,7 +1120,7 @@ $messages['sk'] = array(
 	'scanset_prev' => '&lt; Späť',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  */
@@ -1139,7 +1139,7 @@ $messages['sr-ec'] = array(
 	'scanset_prev' => '&lt; Прет.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

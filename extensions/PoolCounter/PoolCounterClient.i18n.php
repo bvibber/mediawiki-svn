@@ -18,6 +18,28 @@ $messages['en'] = array(
 	'poolcounter-remote-error' => 'Pool counter server error: $1',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'poolcounter-desc' => 'This is a short description of this extension.
+It is shown on [[Special:Version]].
+Do not translate "<code>poolcounter.py</code>"
+
+A pool counter keeps track of the running processes on a cluster of processors, and may or may not grant a job access to the processing pool. (Note, the word "counter" relates to the counter in a shop, bank, or hotel, not to the verb "to count")',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'poolcounter-desc' => 'Кліент MediaWiki для лічыльніка poolcounter.py',
+	'poolcounter-connection-error' => 'Памылка далучэньня для сэрвэра лічыльніка: $1',
+	'poolcounter-read-error' => 'Памылка чытаньня з сэрвэра лічыльніка',
+	'poolcounter-write-error' => 'Памылка запісу на сэрвэр лічыльніка',
+	'poolcounter-remote-error' => 'Памылка сэрвэра лічыльніка: $1',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -27,6 +49,17 @@ $messages['br'] = array(
 	'poolcounter-read-error' => 'Fazi lenn a-berzh servijer kanastell ar strollad',
 	'poolcounter-write-error' => 'Fazi e-ser skrivañ war servijer kanastell ar strollad',
 	'poolcounter-remote-error' => 'Fazi servijer kanastell ar strollad : $1',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'poolcounter-desc' => 'MediaWiki klijent daemon za pool brojač poolcounter.py',
+	'poolcounter-connection-error' => 'Greška pri povezivanju na server pool brojača: $1',
+	'poolcounter-read-error' => 'Greška pri čitanju sa servera pool brojača',
+	'poolcounter-write-error' => 'Greška pri pisanju na server pool brojača',
+	'poolcounter-remote-error' => 'Greška na serveru pool brojača: $1',
 );
 
 /** Spanish (Español)
@@ -50,6 +83,17 @@ $messages['fr'] = array(
 	'poolcounter-remote-error' => 'Erreur du serveur de compteur de groupement : $1',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'poolcounter-desc' => 'Cliente para MediaWiki do servidor de contador de recursos comúns poolcounter.py',
+	'poolcounter-connection-error' => 'Erro na conexión co servidor de contador de recursos comúns: $1',
+	'poolcounter-read-error' => 'Erro na lectura do servidor de contador de recursos comúns',
+	'poolcounter-write-error' => 'Erro na escritura do servidor de contador de recursos comúns',
+	'poolcounter-remote-error' => 'Erro do servidor de contador de recursos comúns: $1',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -59,6 +103,28 @@ $messages['gsw'] = array(
 	'poolcounter-read-error' => 'Fähler bim Läse vum Poolcounter-Server',
 	'poolcounter-write-error' => 'Fähler bim Schrybe an Poolcounter-Server',
 	'poolcounter-remote-error' => 'Poolcounter-Server-Fähler: $1',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'poolcounter-desc' => 'Klient MediaWiki demona skupinskeho ličaka poolcounter.py',
+	'poolcounter-connection-error' => 'Zmylk při zwjazowanju ze serwerom skupinskeho ličaka: $1',
+	'poolcounter-read-error' => 'Zmylk při čitanju ze serwera skupinskeho ličaka',
+	'poolcounter-write-error' => 'Zmylk při pisanju na serwer skupinskeho ličaka',
+	'poolcounter-remote-error' => 'Zmylk serwera skupinskeho ličaka: $1',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'poolcounter-desc' => 'Cliente MediaWiki pro le daemon contator de ressources commun poolcounter.py',
+	'poolcounter-connection-error' => 'Error durante le connexion al contator de ressources commun: $1',
+	'poolcounter-read-error' => 'Error durante le lectura del contator de ressources commun',
+	'poolcounter-write-error' => 'Error durante le scriptura al contator de ressources commun',
+	'poolcounter-remote-error' => 'Error del contator de ressources commun: $1',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -132,5 +198,27 @@ $messages['pt-br'] = array(
 	'poolcounter-read-error' => 'Erro ao ler do servidor do pool counter',
 	'poolcounter-write-error' => 'Erro ao escrever no servidor do pool counter',
 	'poolcounter-remote-error' => 'Erro no servidor do pool counter: $1',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'poolcounter-desc' => 'Клиент MediaWiki для демона счётчика пула poolcounter.py',
+	'poolcounter-connection-error' => 'Ошибка при подключении к серверу-счётчику пула: $1',
+	'poolcounter-read-error' => 'Ошибка чтения с сервера-счётчика пула',
+	'poolcounter-write-error' => 'Ошибка записи при обращении к серверу-счётчику пула',
+	'poolcounter-remote-error' => 'Ошибка сервера-счётчика пула: $1',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'poolcounter-desc' => 'Klient MediaWiki démona počítadla skupiny poolcounter.py',
+	'poolcounter-connection-error' => 'Chyba pri pripájaní na server počítadla skupiny: $1',
+	'poolcounter-read-error' => 'Chyba pri čítaní zo servera počítadla skupiny',
+	'poolcounter-write-error' => 'Chyba pri zapisovaní na server počítadla skupiny',
+	'poolcounter-remote-error' => 'Chyba servera počítadla skupiny: $1',
 );
 

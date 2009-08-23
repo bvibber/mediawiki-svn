@@ -449,6 +449,7 @@ $messages['gsw'] = array(
 	'importfreeimages_filefromflickr' => '$1 vu Benutzer <b>[$2]</b> vu flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Bitte gib e Ziil-Dateiname yy:',
 	'importfreeimages_returntoform' => "Oder druck <a href='$1'>do</a> go uf d Syte mit dr Suechergebniss zruggzchu.",
+	'importfreeimages_nophpflickr' => 'Du hesch phpFlickr nit inschtalliert, bitte setz $wgIFphpFlickr in Dyni LocalSettings.php.',
 );
 
 /** Manx (Gaelg)
@@ -703,6 +704,7 @@ en <code>LocalSettings.php</code> setze.",
 	'importfreeimages_filefromflickr' => "$1 vum ''flickr''-Metmaacher <b>[$2]</b> — der ojinaal-URL es—",
 	'importfreeimages_promptuserforfilename' => 'Bes esu joot, un jif ene Dateiname aan, för dat Beld do dronger afzeschpeischere:',
 	'importfreeimages_returntoform' => 'udder <a href="$1">jangk zerök op di Sigg met dä jefonge Bellder</a>.',
+	'importfreeimages_nophpflickr' => 'Ühr hatt <code lang="en">phpFlickr</code> nit inshtalleet, dröm doht <code lang="en">$wgIFphpFlickr</code> en Ühre <code lang="en">LocalSettings.php</code> säze.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

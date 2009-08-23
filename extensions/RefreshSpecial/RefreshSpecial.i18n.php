@@ -75,6 +75,8 @@ Text displayed in the subtitle below the actual page title once the user has pre
 $messages['af'] = array(
 	'refreshspecial' => 'Verfris spesiale bladsye',
 	'refreshspecial-title' => 'Verfris spesiale bladsye',
+	'refreshspecial-refreshing' => 'besig met die verfris van spesiale bladsye',
+	'refreshspecial-choice' => 'besig met die verfris van spesiale bladsye',
 );
 
 /** Arabic (العربية)

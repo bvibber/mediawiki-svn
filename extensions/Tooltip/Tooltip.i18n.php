@@ -323,6 +323,13 @@ $messages['pl'] = array(
 	'tooltip-desc' => 'Dodaje znaczniki <tt><nowiki><tooltip></nowiki></tt> i <tt><nowiki>{{#tooltip:}}</nowiki></tt>.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'tooltip-desc' => 'A gionta ël tag <tt><nowiki><tooltip></nowiki></tt> e ël tag <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -365,14 +372,14 @@ $messages['sq'] = array(
 	'tooltip-desc' => 'Vendosë kodet <tt><nowiki><tooltip></nowiki></tt> dhe <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'tooltip-desc' => 'Додаје <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt> тагове',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

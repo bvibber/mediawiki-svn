@@ -1560,7 +1560,7 @@ $4',
 	'right-todosubmit' => 'Obmedziť právo používateľa na zoznam čo treba spraviť',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1579,7 +1579,7 @@ $messages['sr-ec'] = array(
 	'todo-form-submit' => 'Пошањи упит',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

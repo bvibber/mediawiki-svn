@@ -324,6 +324,13 @@ $messages['pl'] = array(
 	'woopra-desc' => 'Pozwala współpracować z MediaWiki oprogramowaniu śledzącemu [http://www.woopra.com/ „Woopra”]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'woopra-desc' => 'A përmëtt che [http://www.woopra.com/ Woopra Live Tracking Software] a travaja për installassion neuve ëd MediaWiki',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -380,14 +387,14 @@ $messages['sq'] = array(
 	'woopra-desc' => 'Lejon që [http://www.woopra.com/ Softueri Për Ndjekje Woopra] të punojë për MediaWiki instalimin tuaj',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'woopra-desc' => 'Омогућава [http://www.woopra.com/ Woopra Софтверу за праћење уживо] да ради са Вашом инсталацијом МедијаВикија.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

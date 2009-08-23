@@ -1357,7 +1357,7 @@ $messages['sma'] = array(
 	'spamregex-text' => '(Tjaalege)',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1386,7 +1386,7 @@ $messages['sr-ec'] = array(
 	'right-spamregex' => 'Блокирајте спам-фразе помоћу [[Special:SpamRegex]]',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

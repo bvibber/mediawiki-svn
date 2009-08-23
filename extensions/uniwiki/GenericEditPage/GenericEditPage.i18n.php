@@ -958,7 +958,7 @@ Legg til noen med verktøyene i menyen.',
 $messages['oc'] = array(
 	'gep-desc' => 'Suplear lo formulari de modificacion per èsser de melhor utilizar',
 	'gep-emailsubject' => '[$1] Suggestion de categoria : $2',
-	'gep-emailbody' => "L'utilizaire « $1 » a suggerit la categoria « $2 » pel sit « $3 ».",
+	'gep-emailbody' => "L'utilizaire « $1 » a suggerit la categoria « $2 » pel site « $3 ».",
 	'gep-emailfailure' => 'O planhèm, vòstra suggestion a pas pogut èsser efectuada.',
 	'gep-emailsuccess' => 'Mercés per aver suggerit la categoria : $1.',
 	'gep-categories' => 'Categorias',
@@ -1174,7 +1174,7 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1198,7 +1198,7 @@ $messages['sr-ec'] = array(
 	'gep-nocategories' => 'Молимо вас да изаберете макар једну категорију пре снимања',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

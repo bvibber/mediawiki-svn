@@ -1150,6 +1150,7 @@ $messages['af'] = array(
 	'configure-setting-wgExtraLanguageNames-value' => 'Naam',
 	'configure-setting-wgSpecialPageGroups-key' => 'Groep',
 	'configure-setting-wgDebugLogGroups-value' => 'Lêer',
+	'configure-setting-wgXhtmlNamespaces-key' => 'Naamruimte',
 );
 
 /** Aragonese (Aragonés)
@@ -4432,7 +4433,6 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
- * @author IAlex
  * @author Kobazulo
  * @author Toliño
  */
@@ -5019,7 +5019,6 @@ $messages['grc'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
- * @author IAlex
  */
 $messages['gsw'] = array(
 	'configure-setting-wgSitename' => 'Name vu dr Netzsyte',
@@ -8406,6 +8405,13 @@ $messages['mn'] = array(
 	'configure-setting-wgXhtmlNamespaces-key' => 'Нэрний зай',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'configure-setting-wgActionPaths-key' => 'Tindakan',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -8417,7 +8423,6 @@ $messages['nah'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author IAlex
  * @author McDutchie
  * @author Siebrand
  */
@@ -10322,7 +10327,6 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
- * @author IAlex
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -11521,7 +11525,6 @@ $messages['ru'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author IAlex
  */
 $messages['sk'] = array(
 	'configure-setting-desc' => 'Popisy konfiguračných volieb MediaWiki',
@@ -12083,7 +12086,7 @@ $messages['sk'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'Port UDP profilovacieho nástroja',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -13181,7 +13184,6 @@ $messages['tg-cyrl'] = array(
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
- * @author IAlex
  */
 $messages['tl'] = array(
 	'configure-setting-wgSitename' => 'Pangalan ng sayt',

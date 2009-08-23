@@ -398,7 +398,7 @@ $messages['sk'] = array(
 	'spl3_nosubpages' => '$1 nemá zobraziteľné podstránky.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -407,7 +407,7 @@ $messages['sr-ec'] = array(
 	'spl3_nosubpages' => '$1 нема подстрана.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -740,7 +740,7 @@ $messages['sk'] = array(
 	'contrib-tracking-button' => 'Pokračovať',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Јованвб
  */
 $messages['sr-ec'] = array(
@@ -748,7 +748,7 @@ $messages['sr-ec'] = array(
 	'contrib-tracking-button' => 'Настави',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

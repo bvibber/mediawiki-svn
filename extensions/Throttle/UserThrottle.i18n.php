@@ -380,7 +380,7 @@ $messages['sk'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Obmedzí rýchlosť vytvárania používateľských účtov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -391,7 +391,7 @@ $messages['sr-ec'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Ограничава учесталост корисничких регистрација',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -49,6 +49,7 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'randomincategory-toolbox' => 'Lukrake bladsy',
 	'randomincategory-label' => 'Kategorie:',
 	'randomincategory-submit' => 'Gaan',
 );
@@ -793,7 +794,7 @@ $messages['sk'] = array(
 	'randomincategory-submit' => 'Vykonať',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -805,7 +806,7 @@ $messages['sr-ec'] = array(
 	'randomincategory-submit' => 'Иди',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

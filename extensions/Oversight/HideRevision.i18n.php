@@ -104,6 +104,8 @@ $2 = revision status',
  * @author Naudefj
  */
 $messages['af'] = array(
+	'group-oversight' => 'Toesighouers',
+	'group-oversight-member' => 'Toesighouer',
 	'hiderevision-continue' => 'Gaan voort',
 	'hiderevision-error-missing' => 'Nie in databasis gevind nie.',
 	'oversight-view' => 'details',
@@ -945,9 +947,12 @@ $messages['et'] = array(
 	'right-oversight' => 'Vaadata eelnevalt peidetud redaktsioone',
 	'right-hiderevision' => 'Peita redaktsioone ülemate eest',
 	'hiderevision-continue' => 'Jätka',
+	'hiderevision-submit' => 'Peida need andmed jäädavalt',
 	'hiderevision-link' => 'peidetud kaastööd',
 	'hiderevision-success' => 'Arhiveerimine ja kustutamine õnnestus.',
 	'hiderevision-error-missing' => 'Ei leidu andmebaasis.',
+	'hiderevision-error-current' => 'Lehekülje viimast muudatust ei saa kustutada.
+Kõigepealt eemalda see.',
 	'oversight-log-hiderev' => 'eemaldas muudatuste leheküljelt $1',
 	'oversight-view' => 'üksikasjad',
 );
@@ -3222,7 +3227,7 @@ $messages['sr'] = array(
 	'oversight-view' => 'детаљи',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Михајло Анђелковић
  */
@@ -3268,7 +3273,7 @@ $messages['sr-ec'] = array(
 	'oversight-header' => 'Испод се налази списак верзија претходно сакривених од јавности. Ако откријеш ове податке можеш заувек изгубити оверсајт права.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  * @author Sasa Stefanovic
  */

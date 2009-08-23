@@ -336,6 +336,13 @@ $messages['pl'] = array(
 	'oai-desc' => 'Dostarcza interfejs do repozytoriów [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'oai-desc' => "A dà n'antërfacia për archivi [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -378,14 +385,14 @@ $messages['sk'] = array(
 	'oai-desc' => 'Poskytuje rozhranie k úložisku [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'oai-desc' => 'Даје складиште интерфејса [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH].',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

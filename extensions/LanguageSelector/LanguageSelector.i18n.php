@@ -809,7 +809,7 @@ $messages['sli'] = array(
 	'languageselector-setlang' => 'setza',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -819,7 +819,7 @@ $messages['sr-ec'] = array(
 	'languageselector-setlang' => 'постави',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

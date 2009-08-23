@@ -1097,6 +1097,7 @@ $wgCustomToolbarMessages['hsb'] = array(
 	'ct_internal_tip_ins' => 'Interny wotkaz zasunyć',
 	'ct_internal_tip_wrap' => 'Tutón tekst do interneho wotkaza přetworić',
 	'ct_internal_caption' => 'Interny wotkaz',
+	'ct_external_sample' => 'http://example.com',
 	'ct_external_tip_ins' => 'Eksterny wotkaz zasunyć',
 	'ct_external_tip_wrap' => 'Tutón tekst do eksterneho wotkaza přetworić',
 	'ct_external_caption' => 'Eksterny wotkaz',
@@ -2182,7 +2183,7 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
 	'ct_user_sample' => 'Používateľské meno',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $wgCustomToolbarMessages['sr-ec'] = array(
@@ -2227,7 +2228,7 @@ $wgCustomToolbarMessages['sr-ec'] = array(
 	'ct_user_sample' => 'Корисничко име',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $wgCustomToolbarMessages['sr-el'] = array(

@@ -124,6 +124,7 @@ $messages['af'] = array(
 	'contribstats-percentage-ytd' => 'Persentasie (die jaar)',
 	'contribstats-total-ytd' => 'Totaal (die jaar)',
 	'contribstats-template' => 'Sjabloon',
+	'fundraiserstats-date' => 'Datum',
 );
 
 /** Amharic (አማርኛ)
@@ -2881,7 +2882,7 @@ $messages['sk'] = array(
 	'specialpages-group-contribution' => 'Prispievateľov/fundraising',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Јованвб
  * @author Михајло Анђелковић
  */
@@ -2909,7 +2910,7 @@ $messages['sr-ec'] = array(
 	'fundraiserstats-max' => 'Максимум (USD)',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

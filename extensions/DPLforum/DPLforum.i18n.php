@@ -665,14 +665,14 @@ $messages['sk'] = array(
 	'dplforum-toomany' => 'DPL fórum: Príliš mnoho kategórií!',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'dplforum-by' => 'од $1',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

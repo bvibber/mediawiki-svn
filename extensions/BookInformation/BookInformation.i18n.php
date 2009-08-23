@@ -1451,7 +1451,7 @@ $messages['sk'] = array(
 	'bookinfo-provider' => 'Poskytovateľ údajov: $1',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -1465,7 +1465,7 @@ $messages['sr-ec'] = array(
 	'bookinfo-provider' => 'Подаци из: $1',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -272,6 +272,13 @@ $messages['pl'] = array(
 	'tab0-desc' => 'Dodaje zakładkę „0”, linkującą do edycji pierwszej sekcji na stronie',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'tab0-desc' => 'A gionta ël tab "0", colegand a la pàgina ëd modìfica dle prima session ëd dla pàgina',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -307,14 +314,14 @@ $messages['sk'] = array(
 	'tab0-desc' => 'Pridá záložku „0” vedúcu na úpravu prvej sekcie stránky',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'tab0-desc' => 'Додаје језичак "0", повезујући ка форми за измену прве секције странице',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

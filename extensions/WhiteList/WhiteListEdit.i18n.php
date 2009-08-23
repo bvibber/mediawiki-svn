@@ -153,12 +153,17 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'mywhitelistpages' => 'My bladsye',
 	'whitelisttablemodifyall' => 'Alle',
 	'whitelisttablemodifynone' => 'Geen',
 	'whitelisttableexpires' => 'Verval op',
 	'whitelisttableedit' => 'Wysig',
+	'whitelisttablenewdate' => 'Nuwe datum:',
+	'whitelisttablechangedate' => 'Wysig vervaldatum',
 	'whitelisttableremove' => 'Skrap',
+	'whitelistnewtabledate' => 'Vervaldatum:',
 	'whitelistnewtableprocess' => 'Verwerk',
+	'whitelistnewtablereview' => 'Kontroleer',
 	'whitelistnever' => 'nooit',
 );
 
@@ -255,6 +260,7 @@ $messages['arc'] = array(
 	'whitelisttableedit' => 'ܫܚܠܦ',
 	'whitelisttableview' => 'ܚܙܝ',
 	'whitelistnewtableprocess' => 'ܥܡܠܝܬܐ',
+	'whitelistnewtablereview' => 'ܬܢܝܬܐ',
 	'whitelistnever' => 'ܠܐ ܡܡܬܘܡ',
 );
 
@@ -2813,7 +2819,7 @@ Táto stránka sa týka iba obmedzneých používateľov.",
 	'group-manager-member' => 'Správca',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -2844,7 +2850,7 @@ $2',
 	'whitelistnever' => 'никад',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -405,6 +405,13 @@ $messages['pl'] = array(
 	'poem-desc' => 'Dodaje znacznik <tt>&lt;poem&gt;</tt> służący do formatowania wierszy',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'poem-desc' => 'A gionta ël tag <tt>&lt;poem&gt;</tt> për formatassion ëd poema',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -482,7 +489,7 @@ $messages['sq'] = array(
 	'poem-desc' => 'Vendosë kodin <tt>&lt;poem&gt;</tt> për formatim të poezive',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Nikola Smolenski
  */
@@ -490,7 +497,7 @@ $messages['sr-ec'] = array(
 	'poem-desc' => 'Додаје <tt>&lt;poem&gt;</tt> ознаку за форматирање песама.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

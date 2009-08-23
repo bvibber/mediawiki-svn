@@ -354,7 +354,9 @@ $messages['af'] = array(
 	'configure-desc-ns' => 'Naamruimte',
 	'configure-desc-val' => 'Waarde',
 	'configure-edit-ext' => 'Uitbreidings',
+	'configure-ext-settings' => 'Instellings',
 	'configure-js-remove' => 'Skrap',
+	'configure-section-pages' => 'Bladsye',
 	'configure-section-paths' => 'Paaie',
 	'configure-section-db' => 'Databasis',
 	'configure-section-email' => 'E-pos',
@@ -373,6 +375,7 @@ $messages['af'] = array(
 	'configure-throttle-action-edit' => 'Wysig',
 	'configure-throttle-action-move' => 'Skuif',
 	'configure-throttle-action-rollback' => 'Terugrol',
+	'configure-condition-operator-or' => 'Of',
 	'configure-condition-operator-and' => 'En',
 	'configure-condition-name-3' => 'E-posadres is bevestig',
 	'configure-condition-description-3' => 'E-posadres is bevestig',
@@ -7252,7 +7255,7 @@ $messages['ru'] = array(
 	'configure-section-zh-conversion' => 'Преобразования для китайского',
 	'configure-section-debug' => 'Отладка',
 	'configure-section-profiling' => 'Профилирование',
-	'configure-section-site' => 'Донастройка сайта для удобства участника',
+	'configure-section-site' => 'Донастройка сайта',
 	'configure-section-css-js' => 'CSS и JavaScript',
 	'configure-section-namespaces' => 'Пространства имён',
 	'configure-section-stats' => 'Статистика сайта',
@@ -7577,7 +7580,7 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Zoznam rozšírení dostupných pre túto wiki]].',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -7739,7 +7742,7 @@ $messages['sr-ec'] = array(
 	'configure-boolop-description-not' => 'Ни један од услова не сме бити истинит',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

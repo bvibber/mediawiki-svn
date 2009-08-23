@@ -532,10 +532,10 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'icon-badimage' => 'Zlý obrázok',
 	'icon-badwidth' => 'Zlá šírka',
-	'icon-desc' => 'Umožnuje použíť obrázky ako ikony a ikony odkazov',
+	'icon-desc' => 'Umožnuje použiť obrázky ako ikony a ikony odkazov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -544,7 +544,7 @@ $messages['sr-ec'] = array(
 	'icon-desc' => 'Омогућује коришћење слика као икона и њихових спољашњих веза',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

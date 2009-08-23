@@ -539,7 +539,7 @@ $messages['gl'] = array(
 	'right-patroller' => 'Patrullar páxinas',
 );
 
-/** Gothic
+/** Gothic (Gothic)
  * @author Crazymadlover
  * @author Jocke Pirat
  */
@@ -1424,7 +1424,7 @@ $messages['sk'] = array(
 	'right-patroller' => 'Sledovať stránky',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1451,7 +1451,7 @@ $messages['sr-ec'] = array(
 	'right-patroller' => 'Патролирање страна',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

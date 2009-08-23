@@ -26,6 +26,13 @@ $messages['be-tarask'] = array(
 	'mwreleases-desc' => 'Дадае [[Mediawiki:Mwreleases-list|сьпіс]] вэрсіяў, якія падтрымліваюцца, даступны праз API',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'mwreleases-desc' => 'Dodaje [[Mediawiki:Mwreleases-list|spisak]] podržanih izdanja, dostupnih preko API',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -80,6 +87,13 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'mwreleases-desc' => 'Deiht en [[Mediawiki:Mwreleases-list|Leß met ongerschtöz Ußjabe]] en et Wiki dobei, di mer och mem <code lang="en">API</code> afroofe kann.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'mwreleases-desc' => 'Setzt eng [[Mediawiki:Mwreleases-list|Lëscht]] vun ënnerstetzte Versiounen derbäi, déi iwwer den API zougänglech sinn',
 );
 
 /** Dutch (Nederlands)

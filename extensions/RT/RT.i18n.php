@@ -34,11 +34,12 @@ You tried: '''\$1'''",
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author McDutchie
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'rt-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change link targets or tag names.',
+	'rt-desc' => '{{desc}}',
 	'rt-badlimit' => '* \'\'\'Do not translate "LIMIT (l)".\'\'\' The "l" is a lowercase L.
 * Translate "arg" as argument, parameter.',
 	'rt-badorderby' => "* '''Do not translate \"ORDER BY (ob)\".'''
@@ -104,11 +105,30 @@ Vi ste pokušali: '''$1'''",
 
 /** German (Deutsch)
  * @author Imre
+ * @author Pill
  */
 $messages['de'] = array(
 	'rt-inactive' => 'Die RT-Erweiterung ist nicht aktiv',
 	'rt-badquery' => 'Die RT-Erweiterung hat einen Fehler bei der Kommunikation mit der RT-Datenbank festgestellt',
+	'rt-badlimit' => "Parameter „LIMIT (l)“ ungültig: Muss eine Zahl sein.
+Deine Eingabe: '''$1'''",
+	'rt-badqueue' => "Parameter „queue (q)“ ungültig: Muss ein einfaches Wort sein.
+Deine Eingabe: '''$1'''",
+	'rt-badowner' => "Parameter „owner (o)“ ungültig: Muss ein gültiger Benutzername sein.
+Deine Eingabe: '''$1'''",
 	'rt-nomatches' => 'Es wurden keine passenden RT-Tickets gefunden',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'rt-badlimit' => "Parameter „LIMIT (l)“ ungültig: Muss eine Zahl sein.
+Ihre Eingabe: '''$1'''",
+	'rt-badqueue' => "Parameter „queue (q)“ ungültig: Muss ein einfaches Wort sein.
+Ihre Eingabe: '''$1'''",
+	'rt-badowner' => "Parameter „owner (o)“ ungültig: Muss ein gültiger Benutzername sein.
+Ihre Eingabe: '''$1'''",
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -139,6 +159,7 @@ $messages['el'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  */
 $messages['es'] = array(
@@ -154,6 +175,7 @@ Intentaste: '''$1'''",
 Intentaste: '''$1'''",
 	'rt-badowner' => "propietario inválido (o) arg: debe ser un nombre de usuario.
 Intentaste: '''$1'''",
+	'rt-nomatches' => 'No se encontraron tickets RT coincidentes.',
 );
 
 /** Finnish (Suomi)
@@ -456,6 +478,13 @@ Você tentou: '''$1'''",
  */
 $messages['ro'] = array(
 	'rt-inactive' => 'Extensia RT nu este activă',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'rt-inactive' => "L'estenzione RT non g'è attivate",
 );
 
 /** Russian (Русский)

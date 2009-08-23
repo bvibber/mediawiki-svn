@@ -250,6 +250,13 @@ $messages['pl'] = array(
 	'regexfunctions-desc' => 'Funkcje parsera obsługi wyrażeń regularnych',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'regexfunctions-desc' => "Fonsion ëd parser d'espression regolar",
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -292,14 +299,14 @@ $messages['sk'] = array(
 	'regexfunctions-desc' => 'Funkcie syntaktického analyzátora regulárnych výrazov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'regexfunctions-desc' => 'Парсерске функције за регуларне изразе',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

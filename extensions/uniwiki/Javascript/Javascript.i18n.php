@@ -256,6 +256,13 @@ $messages['pl'] = array(
 	'javascript-desc' => 'Dodaje uniwiki.js do każdej strony zawierającej kod JavaScript dzielony pomiędzy rozszerzenia Uniwiki',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'javascript-desc' => "A gionta uniwiki.js a minca pàgina ch'a conten còdes JavaScript condivis an tra estension Uniwiki",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -298,14 +305,14 @@ $messages['sq'] = array(
 	'javascript-desc' => 'Vendosë uniwiki.js në çdo faqe që përmban kodin JavaScript të ndarë mes prapashtesave në Uniwiki',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'javascript-desc' => 'Додаје uniwiki.js на сваку страну која садржи јаваскрипт код који се користи између више Унивики екстензија',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

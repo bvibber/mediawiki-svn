@@ -348,6 +348,13 @@ $messages['pl'] = array(
 	'titlekey-desc' => 'Obsługa podpowiedzi w wyszukiwarce na podstawie wpisanego początku tytułu',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'titlekey-desc' => '"Backend" dij sugeriment dl\'arserca dij prefiss dij tìtoj',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -390,14 +397,14 @@ $messages['sk'] = array(
 	'titlekey-desc' => 'Backend pre návrh prefixového vyhľadávania názvu stránky',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'titlekey-desc' => 'Позадинска машина за претрагу префикса наслова.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

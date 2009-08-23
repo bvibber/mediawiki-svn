@@ -64,6 +64,10 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'cooperationstatistics' => 'Статыстыка супрацоўніцтва',
+	'cooperationstatistics-desc' => 'Паказвае [[Special:CooperationStatistics|статыстыку супрацоўніцтва ў галоўнай прасторы назваў]].',
+	'cooperationstatistics-text' => "Паказаць статыстыку супрацоўніцтва ў галоўнай прасторы назваў.
+Ад [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] да [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] рэдактараў.<br />
+Глядзіце так сама [[Special:MostRevisors|'''старонкі з самай вялікай колькасьцю рэцэнзэнтаў''']] і [[Special:MostRevisions|старонкі з самай вялікай колькасьцю вэрсіяў]].",
 	'cooperationstatistics-tablearticle' => 'Лічыльнік старонак',
 	'cooperationstatistics-tablevalue' => 'Колькасьць рэдактараў',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|старонка|старонкі|старонак}}',
@@ -223,7 +227,7 @@ $messages['gl'] = array(
 	'cooperationstatistics-desc' => 'Mostra as [[Special:CooperationStatistics|estatísticas de cooperación do espazo de nomes principal]].',
 	'cooperationstatistics-text' => "Mostra as estatísticas de cooperación do espazo de nomes principal.
 De [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a
-[[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisores)<br />
+[[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisores.<br />
 Olle tamén as [[Special:MostRevisors|'''páxinas con máis revisores''']] e as [[Special:MostRevisions|páxinas con máis revisións]].",
 	'cooperationstatistics-tablearticle' => 'Número de páxinas',
 	'cooperationstatistics-tablevalue' => 'Número de editores',
@@ -278,7 +282,7 @@ $messages['hsb'] = array(
 	'cooperationstatistics' => 'Kooperaciska statistika',
 	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|Kooperacisku statistiku wo hłownym mjenowym rumje]] pokazać.',
 	'cooperationstatistics-text' => "Kooperacisku statistiku wo hłownym mjenowym rumje pokazać.
-Z [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] do [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] kontrolerow.<br />
+Z [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] do [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]]  kontrolerow.<br />
 Hlej tež [[Special:MostRevisors|'''strony z najwjace kontrolerami''']] a [[Special:MostRevisions|strony z najwjace wersijemi]].",
 	'cooperationstatistics-tablearticle' => 'Ličenje stronow',
 	'cooperationstatistics-tablevalue' => 'Ličba wobdźěłarjow',
@@ -415,6 +419,10 @@ Kuckt och d'[[Special:MostRevisors|'''Säite mat de meeschte Reviseuren''']] an 
  */
 $messages['nl'] = array(
 	'cooperationstatistics' => 'Samenwerkingsstatistieken',
+	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|Samenwerkingsstatistieken over de hoofdnaamruimte]] weergeven.',
+	'cooperationstatistics-text' => "Geeft samenwerkingsstatistieken over de hoofdnaamruimte weer.
+Van [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] tot [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] bewerkers.<br />
+Zie ook de [[Special:MostRevisors|'''pagina's met de meeste bewerkers''']] en [[Special:MostRevisions|pagina's met de meeste versies]].",
 	'cooperationstatistics-tablearticle' => "Aantal pagina's",
 	'cooperationstatistics-tablevalue' => 'Aantal bewerkers',
 	'cooperationstatistics-articles' => "$1 {{PLURAL:$1|pagina|pagina's}}",

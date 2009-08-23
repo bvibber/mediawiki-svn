@@ -220,6 +220,13 @@ $messages['pl'] = array(
 	'redirect-desc' => 'Umożliwia łatwą konfigurację przekierowań na [[MediaWiki:Redirect-addnewaccount|utworzenie konta]] i [[MediaWiki:Redirect-userlogoutcomplete|wylogowanie]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'redirect-desc' => 'A përmëtt na configurassion bel fé dle rediression an [[MediaWiki:Redirect-addnewaccount|creassion dij cont]] e an [[MediaWiki:Redirect-userlogoutcomplete|logout]]',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

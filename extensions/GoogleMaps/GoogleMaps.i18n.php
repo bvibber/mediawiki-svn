@@ -210,6 +210,7 @@ $wgGoogleMapsMessages['af'] = array(
 	'gm-width' => 'Wydte',
 	'gm-height' => 'Hoogte',
 	'gm-overview-control' => 'Oorsig',
+	'gm-zoom-control' => 'Navigasie',
 	'gm-large' => 'Groot',
 	'gm-medium' => 'Medium',
 	'gm-small' => 'Klein',
@@ -1667,7 +1668,7 @@ $wgGoogleMapsMessages['fa'] = array(
  * @author Tarmo
  */
 $wgGoogleMapsMessages['fi'] = array(
-	'gm-desc' => 'Yksinkertaisella tavalla luoda karttoja jotka käyttävät wikitettyjä markkereita.',
+	'gm-desc' => 'Karttojen luonti helposti wikimerkinnöillä.',
 	'gm-incompatible-browser' => 'Tässä oleva kartta näkyy vain yhteensopivilla selaimilla.',
 	'gm-incompatible-browser-link' => 'Saat listan yhteensopivista selaimista napsauttamalla tästä.',
 	'gm-no-editor' => 'Valitettavasti selaimesi ei tue interaktiivisia kartanlaatimistoimintoja. Yritä uusinta versiota <a href="http://www.microsoft.com/ie">Internet Explorerista</a> (Windows) tai <a href="http://www.mozilla.org/products/firefox">Firefoxista</a> (Windows, Mac ja Linux).',
@@ -4654,7 +4655,7 @@ $wgGoogleMapsMessages['sq'] = array(
 	'gm-mars' => 'Marsi',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -4724,7 +4725,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-mars' => 'Марс',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $wgGoogleMapsMessages['sr-el'] = array(
@@ -5380,7 +5381,7 @@ $wgGoogleMapsMessages['tr'] = array(
 	'gm-mars' => 'Mars',
 );
 
-/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ерней
  */
 $wgGoogleMapsMessages['tt-cyrl'] = array(

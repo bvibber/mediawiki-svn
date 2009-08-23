@@ -1593,7 +1593,7 @@ $messages['sq'] = array(
 	'vote-invalid-choice' => 'Duhet të zgjidhni një nga zgjedhjet e mundshme.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1619,7 +1619,7 @@ pecenje|Печење',
 	'right-voteadmin' => 'Прегледање резултата гласања',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

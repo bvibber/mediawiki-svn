@@ -520,7 +520,7 @@ $messages['sk'] = array(
 Je možné ho použiť na získanie náhodného odporúčaného článku v tvare [[{{#special:advancedrandom}}/{{ns:template}}:Odporúčané/{{ns:talk}}]] alebo na získanie náhodného GFDL súboru v tvare [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -529,7 +529,7 @@ $messages['sr-ec'] = array(
 Може да се користи као [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] да би се добила страна која укључује наведени шаблон, или слично [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], итд.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

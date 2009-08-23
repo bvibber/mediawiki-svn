@@ -1363,7 +1363,7 @@ $messages['sk'] = array(
 	'imagemap_poly_odd' => 'Chyba: nájdený mnohouholník s nepárnym počtom súradníc na riadku $1',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -1384,7 +1384,7 @@ $messages['sr-ec'] = array(
 	'imagemap_poly_odd' => 'Грешка: нађен је полигон са непарним бројем координата у линији $1',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

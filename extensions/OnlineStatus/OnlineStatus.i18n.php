@@ -923,7 +923,7 @@ $messages['sk'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Zmeniť môj stav na offline počas odhlasovania',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -943,7 +943,7 @@ $messages['sr-ec'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Промени мој статус на офлајн када се излогујем',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

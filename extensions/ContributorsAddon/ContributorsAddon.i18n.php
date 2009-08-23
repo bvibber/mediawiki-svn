@@ -332,7 +332,7 @@ $messages['sq'] = array(
 	'contributorsaddon-desc' => 'Vendosë dritare JavaScript në lidhjet "Kontribuuesit kryesorë"',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(

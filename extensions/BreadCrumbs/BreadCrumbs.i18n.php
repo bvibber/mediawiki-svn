@@ -458,14 +458,14 @@ $messages['sq'] = array(
 	'breadcrumbs-desc' => 'Tregon rrugën e përdoruesit nëpër wiki.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'breadcrumbs-desc' => 'Показује путање корисника кроз Вики.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

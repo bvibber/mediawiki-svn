@@ -663,7 +663,9 @@ Si tienes algunas preguntas acerca de éste sistema de distribución de extensio
  * @author Pikne
  */
 $messages['et'] = array(
+	'extdist-no-such-extension' => 'Laiendus "$1" puudub',
 	'extdist-no-such-version' => 'Versioonis "$2" puudub laiendus "$1".',
+	'extdist-choose-extension' => 'Vali laiendus, mida soovid alla laadida:',
 	'extdist-submit-extension' => 'Jätka',
 	'extdist-submit-version' => 'Jätka',
 );

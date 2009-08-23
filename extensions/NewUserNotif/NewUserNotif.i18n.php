@@ -552,7 +552,7 @@ $messages['sk'] = array(
 $3 na $4 bol vytvorený nový používateľský účet $2.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -563,7 +563,7 @@ $messages['sr-ec'] = array(
 Нови кориснички налог, $2, је направљен на $3 у $4.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

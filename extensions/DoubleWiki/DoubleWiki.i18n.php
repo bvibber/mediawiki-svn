@@ -103,6 +103,13 @@ $messages['cs'] = array(
 	'doublewiki-desc' => 'Zobrazí stránku a její překlad z jiné wiki ve dvou sloupcích na jedné straně',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'doublewiki-desc' => 'Yn dangos un tudalen, a thudalen ar yr un pwnc oddi ar wici mewn iaith arall, ochr yn ochr ar yr un ddalen.',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */
@@ -454,14 +461,14 @@ $messages['sq'] = array(
 	'doublewiki-desc' => 'Paraqet një faqe dhe përkthimin nga një wiki tjetër në dy kolona në faqen e njejtë',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'doublewiki-desc' => 'Приказује страну и њен превод с другог викија у две колоне на истој страни.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

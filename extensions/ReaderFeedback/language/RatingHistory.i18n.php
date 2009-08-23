@@ -1516,7 +1516,7 @@ $messages['sq'] = array(
 	'ratinghistory-table-votes' => 'Votat',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Михајло Анђелковић
  */
@@ -1536,7 +1536,7 @@ $messages['sr-ec'] = array(
 	'ratinghistory-none' => 'Још увек нема довољно мишљења читалаца да би се формирали графикони.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

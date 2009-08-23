@@ -456,7 +456,7 @@ Obsahuje všetky stránky v kategórii „$1“ ako aj všeky podkategórie kate
 	'autocreatecategorypages-editor' => 'Autoamtická tvorba kategórií',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -464,7 +464,7 @@ $messages['sr-ec'] = array(
 	'autocreatecategorypages-editor' => 'Аутоматско прављење категорија',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

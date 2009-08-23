@@ -216,6 +216,9 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'simpleantispam' => 'Sinu muudatus päästis valla rämpspostivastase seadeldise.',
+	'simpleantispam-label' => "Rämpspostikontroll.
+'''ÄRA''' täida seda välja!",
 	'simpleantispam-desc' => 'Lisab lihtsa rämpsposti- ja robotikontrolli vormiväljade jaoks.',
 );
 
@@ -589,7 +592,7 @@ $messages['sk'] = array(
 	'simpleantispam-desc' => 'Pridáva k formulárom jednoduchú ochranu prosti botom/spamu.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -598,7 +601,7 @@ $messages['sr-ec'] = array(
 	'simpleantispam-desc' => 'Додаје једноставну спам/бот проверу у форме.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

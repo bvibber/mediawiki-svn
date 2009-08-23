@@ -25,8 +25,8 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
- * @author Purodha
  * @author Fryed-peach
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'transliterator-desc' => 'This is a short description of the extension. It is shown in [[Special:Version]].',

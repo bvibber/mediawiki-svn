@@ -1602,7 +1602,7 @@ $messages['sq'] = array(
 	'expand_templates_remove_comments' => 'Hiq komentet',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -1624,7 +1624,7 @@ $messages['sr-ec'] = array(
 	'expand_templates_preview' => 'Приказ',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

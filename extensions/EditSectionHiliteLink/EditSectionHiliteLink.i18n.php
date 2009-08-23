@@ -65,6 +65,13 @@ $messages['ca'] = array(
 	'Editsectionhilitelink-desc' => "Ressalta la secció apropiada d'una pàgina quan passeu el ratolí per a sobre l'enllaç per a editar",
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'Editsectionhilitelink-desc' => "Yn amlygu'r rhan berthnasol o'r dudalen pan fod y llygoden yn symud dros y cyswllt golygu",
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'Editsectionhilitelink-desc' => 'Hebt den entsprechenden Abschnitt einer Seite hervor, wenn die Maus über den „Bearbeiten“-Link bewegt wird',
@@ -267,14 +274,14 @@ $messages['sk'] = array(
 	'Editsectionhilitelink-desc' => 'Zvýrazniť príslušnú sekciu článku keď podržíte ukazovateľ myši nad odkazom „upraviť“',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'Editsectionhilitelink-desc' => 'Истиче одговарајући одељак стране када се мишем пређе преко везе за његову измену',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

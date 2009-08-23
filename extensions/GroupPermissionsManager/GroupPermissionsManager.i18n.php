@@ -119,6 +119,7 @@ $messages['rtm'] = array(
  */
 $messages['af'] = array(
 	'grouppermissions-search' => 'Groep:',
+	'grouppermissions-dologin' => 'Teken in',
 	'grouppermissions-dosearch' => 'Gaan',
 	'grouppermissions-comment' => 'Opmerking:',
 	'grouppermissions-true' => 'Waar',
@@ -2481,7 +2482,7 @@ $messages['sk'] = array(
 	'right-readold' => 'Zobrazovať obsah starých revízií a ich rozdiely',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2534,7 +2535,7 @@ $messages['sr-ec'] = array(
 	'right-readold' => 'Преглед садржаја старих ревизија и дифова',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -262,6 +262,14 @@ $messages['he'] = array(
 	'abcdownload' => 'הורדה:',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'abcdesc' => 'Dugangang <tt>&lt;abc&gt;</tt> tag para ma-formatan ABC musika',
+	'abcdownload' => 'i-download:',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -582,7 +590,7 @@ $messages['sq'] = array(
 	'abcdownload' => 'Shkarko:',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -590,7 +598,7 @@ $messages['sr-ec'] = array(
 	'abcdownload' => 'Сними:',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

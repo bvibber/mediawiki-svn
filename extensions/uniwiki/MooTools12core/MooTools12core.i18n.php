@@ -280,6 +280,13 @@ $messages['pl'] = array(
 	'mootools12core-desc' => 'Dodaje do każdej strony [http://mootools.net mootools-1.2-core-yc.js], nieduży framwork javascriptowy',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mootools12core-desc' => 'A gionta [http://mootools.net mootools-1.2-core-yc.js], un "framework" JavaScript compat, a minca pàgina',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir
@@ -323,14 +330,14 @@ $messages['sk'] = array(
 	'mootools12core-desc' => 'Pridáva kompaktnú javascriptovú platformu [http://mootools.net mootools-1.2-core-yc.js] na každú stránku',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'mootools12core-desc' => 'Додаје свакој страни [http://mootools.net mootools-1.2-core-yc.js], компактни јаваскрипт фрејмворк',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

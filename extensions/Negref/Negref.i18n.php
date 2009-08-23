@@ -30,6 +30,13 @@ $messages['be-tarask'] = array(
 	'negref-desc' => 'Дадае тэг для высьвятленьня знаходжаньня любога тэгу <nowiki><ref/></nowiki> унутры ўваходнага тэксту для выпраўленьня праблемаў з выкарыстаньнем некаторых шаблёнаў',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'negref-desc' => 'Omogućuje oznaku za pronalazak mjesta neke <nowiki><ref/></nowiki> oznake unutar teksta unosa zbog ispravljanja korištenja nekih šablona',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

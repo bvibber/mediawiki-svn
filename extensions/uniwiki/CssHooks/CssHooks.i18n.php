@@ -267,6 +267,13 @@ $messages['pl'] = array(
 	'csshooks-desc' => 'Dodaje CSS do stron HTML dla lepszego wyglądu',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'csshooks-desc' => "A gionta ij CSS a l'output HTML dle pàgine për në stil pì bel",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -302,14 +309,14 @@ $messages['sk'] = array(
 	'csshooks-desc' => 'Pridáva CSS do HTML výstupu stránok na zlepšenie štýlu',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'csshooks-desc' => 'Додаје CSS на HTML излаз страна зарад бољег стилизовања',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

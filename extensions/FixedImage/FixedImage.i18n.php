@@ -102,6 +102,13 @@ $messages['cs'] = array(
 	'fixedimage-desc' => 'Přidává značku <tt>&lt;fundraising&gt;</tt> jako obrázek',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'fixedimage-desc' => "Yn ychwanegu'r tag <tt><nowiki><fundraising></nowiki></tt> ar ffurf llun",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -403,14 +410,14 @@ $messages['sq'] = array(
 	'fixedimage-desc' => 'Vendos shenjë <tt><nowiki><fundraising></nowiki></tt> në figurë',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'fixedimage-desc' => 'Додаје ознаку <tt><nowiki><fundraising></nowiki></tt> као слику.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

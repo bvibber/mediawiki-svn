@@ -304,6 +304,13 @@ $messages['pl'] = array(
 	'opensearchxml-desc' => 'Interfejs XML [http://www.opensearch.org OpenSearch] dla wycinków tekstu',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'opensearchxml-desc' => "A dà n'antërfacia XML d'[http://www.opensearch.org OpenSearch] për l'estrassion ëd test",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -353,14 +360,14 @@ $messages['sli'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Schnittstelle fier Textoausziege',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML интерфејс, који пружа извлачење делова текста',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

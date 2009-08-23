@@ -955,7 +955,7 @@ $messages['sk'] = array(
 	'ajax-se-usernotfound' => 'CHYBA: používateľ nebol nájdený',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -968,7 +968,7 @@ $messages['sr-ec'] = array(
 	'ajax-se-usernotfound' => 'ГРЕШКА: корисник није пронађен',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -565,14 +565,38 @@ Haga clic en el botón abajo para subscribirse.',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Laiendus, mis võimaldab teiste kasutajate [[Special:PovWatch|jälgimisloenditesse lehekülgi lisada]].',
+	'povwatch_no_session' => 'Tõrge: Vorm jäi seansiandmete kao tõttu saatmata.',
+	'povwatch_not_allowed_push' => 'Sa ei saa lehekülgi jälgimisloenditesse lisada, sest sa pole laienduse PovWatch ülem.',
+	'povwatch_already_subscribed' => 'Oled juba PovWatchiga liitunud.',
+	'povwatch_subscribed' => 'Oled nüüd PovWatchiga liitunud',
+	'povwatch_not_subscribed' => 'Sa ei saa tellimust tühistada, sest sa pole PovWatchiga liitunud.',
+	'povwatch_unsubscribed' => 'Oled nüüd PovWatchi tellimuse tühistanud.',
+	'povwatch_invalid_title' => 'Antud pealkiri oli vigane',
+	'povwatch_pushed' => '[[$1]] on edukalt $2 kasutaja {{PLURAL:$2|jälgimisloendisse|jälgimisloenditesse}} lisatud.',
+	'povwatch_intro' => 'PovWatch on laiendus, mis võimaldab tülikad leheküljed liitunud ülemate jälgimisloenditesse lisada.
+
+Viimati jälgimisloenditesse lisatu logi on leheküljel [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|Liitunute nimekiri]] on saadaval.',
+	'povwatch_subscriber_list_intro' => '<strong>Liitunute nimekiri</strong>',
+	'povwatch_not_allowed_subscribers' => 'Sul pole lubatud PovWatchiga liitunute nimekirja vaadata.',
 	'povwatch_unknown_subpage' => 'Tundmatu alaleht.',
+	'povwatch_push' => 'Lisa',
+	'povwatch_push_intro' => 'Kasuta allolevat vormi lehekülgede liitunud kasutajate jälgimisloenditesse lisamiseks.
+Ole pealkirja sisestamisel hoolikas – ka olematud leheküljed lisatakse ja pärast lisamist ei ole võimalik lehekülge enam eemaldada.',
 	'povwatch_title' => 'Pealkiri:',
 	'povwatch_comment' => 'Logi kommentaar:',
 	'povwatch_no_log' => 'Logi sissekandeid ei ole.',
 	'povwatch_no_subscribers' => 'Tellijaid ei ole.',
+	'povwatch_unsubscribe_intro' => 'Oled PovWatchiga liitunud.
+Tellimuse tühistamiseks klõpsa allolevat nuppu.',
 	'povwatch_unsubscribe' => 'Lõpeta tellimus',
+	'povwatch_subscribe_intro' => 'Sa pole PovWatchiga liitunud.
+Liitumiseks klõpsa allolevat nuppu.',
 	'povwatch_subscribe' => 'Telli',
 	'povwatch_added' => 'lisatud',
 	'action-povwatch_user' => 'lisa see lehekülg teise kasutaja jälgimisloendisse',
@@ -1929,14 +1953,14 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 	'action-povwatch_user' => 'pridať túto stránku na zoznam sledovaných stránok iného používateľa',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
 	'povwatch_title' => 'Наслов:',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

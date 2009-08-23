@@ -467,14 +467,14 @@ $messages['sq'] = array(
 	'charinsert-desc' => 'Lejon krijimin e kutive JavaScript për [[MediaWiki:Edittools|inserting karaktere jo standarde]]',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'charinsert-desc' => 'Омогућава прављење јаваскрипт кутијице за [[MediaWiki:Edittools|inserting non-standard characters]]',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

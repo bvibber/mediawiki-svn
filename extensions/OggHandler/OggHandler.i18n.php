@@ -63,11 +63,11 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 $messages['qqq'] = array(
 	'ogg-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'ogg-short-general' => 'File details for generic (non-audio, non-video) Ogg files, short version.
-Parameters are:
+Parameters are: 
 * $1 file type, e.g. Vorbis, Speex
 * $2 ?',
 	'ogg-long-audio' => 'File details for Ogg files, shown after the filename in the image description page.
-Parameters are:
+Parameters are: 
 * $1 file codec, f.e. Vorbis, Speex
 * $2 file duration, f.e. 1m34s
 * $3 file sampling rate, f.e. 97kbps',
@@ -112,7 +112,7 @@ $messages['af'] = array(
 	'ogg-player-soundthumb' => 'Geen mediaspeler',
 	'ogg-player-selected' => '(geselekteer)',
 	'ogg-use-player' => 'Gebruik speler:',
-	'ogg-more' => 'Meer...',
+	'ogg-more' => 'Meer…',
 	'ogg-dismiss' => 'Sluit',
 	'ogg-download' => 'Laai lêer af',
 	'ogg-desc-link' => 'Aangaande die lêer',
@@ -740,10 +740,10 @@ $messages['eo'] = array(
 	'ogg-stop' => 'Halti',
 	'ogg-play-video' => 'Montri videon',
 	'ogg-play-sound' => 'Aŭdigi sonon',
-	'ogg-no-player' => 'Ŝajnas ke via sistemo malhavas ian medilegilan programon por legi tian dosieron.
+	'ogg-no-player' => 'Ŝajnas ke via sistemo malhavas ian medilegilan programon por legi tian dosieron. 
 Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti iun</a>.',
-	'ogg-no-xiphqt' => 'Ŝajnas ke vi malhavas la XiphQT-komponaĵon por QuickTime.
-QuickTime ne kapablas aŭdigi sondosierojn sentiu komponaĵo.
+	'ogg-no-xiphqt' => 'Ŝajnas ke vi malhavas la XiphQT-komponaĵon por QuickTime. 
+QuickTime ne kapablas aŭdigi sondosierojn sentiu komponaĵo. 
 Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti XiphQT</a> aux elektu alian legilon.',
 	'ogg-player-videoElement' => 'Fundamenta subteno per retumilo',
 	'ogg-player-oggPlugin' => 'Retumila kromprogramo',
@@ -1244,7 +1244,7 @@ $messages['hsb'] = array(
 	'ogg-play-sound' => 'Zynk wothrać',
 	'ogg-no-player' => 'Bohužel twój system po wšěm zdaću nima wothrawansku software. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń wothrawak</a>.',
 	'ogg-no-player-js' => 'Wodaj, na twojim systemje je pak JavaScript znjemóžnjeny pak nima podpěrany wothrawak.<br />
-Móžeš <a href="$1">klip sćahnyć</a><br />abo<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrał.',
+Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrał.',
 	'ogg-no-xiphqt' => 'Po wšěm zdaću nimaš komponentu XiphQT za QuickTime. QuickTime njemóže Ogg-dataje bjez tuteje komponenty wothrawać. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń XiphQT</a> abo wubjer druhi wothrawak.',
 	'ogg-player-videoElement' => 'Element <video>',
 	'ogg-player-oggPlugin' => 'Tykač Ogg',
@@ -1524,7 +1524,7 @@ $messages['jv'] = array(
 	'ogg-stop' => 'Mandeg',
 	'ogg-play-video' => 'Main vidéo',
 	'ogg-play-sound' => 'Main swara',
-	'ogg-no-player' => 'Nuwun sèwu, sistém panjenengan katoné ora ndarbèni siji-sijia piranti empuk sing didukung.
+	'ogg-no-player' => 'Nuwun sèwu, sistém panjenengan katoné ora ndarbèni siji-sijia piranti empuk sing didukung. 
 Mangga <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ngundhuh salah siji piranti pamain</a>.',
 	'ogg-no-xiphqt' => 'Katoné panjenengan ora ana komponèn XiphQT kanggo QuickTime.
 QuickTime ora bisa mainaké berkas-berkas Ogg tanpa komponèn iki.
@@ -2216,8 +2216,8 @@ $messages['oc'] = array(
 	'ogg-play-video' => 'Legir la vidèo',
 	'ogg-play-sound' => 'Legir lo son',
 	'ogg-no-player' => 'O planhèm, aparentament, vòstre sistèma a pas cap de lectors suportats. Installatz <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/oc">un dels lectors suportats</a>.',
-	'ogg-no-player-js' => 'O planhèm, sus vòstre sistèma, siá JavaScript es desactivat o a pas de lector suportat.<br />
-Podètz <a href="$1">telecargar lo clip</a><br />o<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">telecargar un lector</a> per legir lo clip dins vòstre navigator.',
+	'ogg-no-player-js' => 'O planhèm, sus vòstre sistèma, siá JavaScript es desactivat o i a pas de lector suportat.<br />
+Podètz <a href="$1">telecargar lo clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">telecargar un lector</a> per legir lo clip dins vòstre navigator.',
 	'ogg-no-xiphqt' => 'Aparentament avètz pas lo compausant XiphQT per Quicktime. Quicktime pòt pas legir los fiquièrs Ogg sens aqueste compausant. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr"> Telecargatz-lo XiphQT</a> o causissètz un autre lector.',
 	'ogg-player-videoElement' => 'Supòrt del navigador natiu',
 	'ogg-player-oggPlugin' => 'Plugin del navigador',
@@ -2629,7 +2629,7 @@ $messages['sq'] = array(
 	'ogg-desc-link' => 'Rreth kësaj skede',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -2661,7 +2661,7 @@ $messages['sr-ec'] = array(
 	'ogg-desc-link' => 'О овом фајлу',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2710,7 +2710,7 @@ $messages['stq'] = array(
 	'ogg-play-video' => 'Video ouspielje',
 	'ogg-play-sound' => 'Audio ouspielje',
 	'ogg-no-player' => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
-	'ogg-no-xiphqt' => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje.
+	'ogg-no-xiphqt' => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
 Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
 	'ogg-player-videoElement' => 'Anweesende Browser-Unnerstutsenge',
 	'ogg-player-oggPlugin' => 'Browser-Plugin',

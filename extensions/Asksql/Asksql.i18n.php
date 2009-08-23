@@ -358,7 +358,7 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'asksql' => 'SQL-kysely',
-	'asksql-desc' => 'Mahdollistaa SQL-kyselyiden tekemisen [[Special:Asksql|toimintosivun]] kautta',
+	'asksql-desc' => 'Mahdollistaa SQL-kyselyiden tekemisen [[Special:Asksql|toimintosivun]] kautta.',
 	'asksqltext' => "Käytä alla olevaa lomaketta tehdäksesi suoria kyselyitä tietokannasta. Merkkijonovakioita merkitään yksinkertaisilla lainausmerkeillä ('näin'). Kyselyt voivat usein kuormittaa palvelinta huomattavasti, joten käytä tätä toimintoa säästeliäästi.",
 	'sqlislogged' => 'Huomioithan, että kaikki kyselyt kirjataan.',
 	'sqlquery' => 'Kirjoita kysely',
@@ -1026,7 +1026,7 @@ používajte túto funkciu s rozmyslom.",
 	'right-asksql' => 'Zadávanie SQL požiadaviek',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -1035,7 +1035,7 @@ $messages['sr-ec'] = array(
 	'querysuccessful' => 'Упит успешан',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -1203,7 +1203,7 @@ $messages['sr'] = array(
 	'countedits-nocontribs' => 'Не постоје прилози на овој вики.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1220,7 +1220,7 @@ $messages['sr-ec'] = array(
 	'countedits-nocontribs' => 'Не постоје прилози на овој вики.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  * @author Sasa Stefanovic
  */

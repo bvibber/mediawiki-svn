@@ -241,6 +241,7 @@ $messages['he'] = array(
 	'purgecache-warning' => 'פעולה זו תרוקן את טבלאות המטמון.',
 	'purgecache-purged' => 'המטמון התרוקן.',
 	'purgecache-button' => 'ריקון',
+	'right-purgecache' => 'ריקון הטבלה OBJECTCACHE',
 );
 
 /** Hindi (हिन्दी)
@@ -543,7 +544,7 @@ $messages['sk'] = array(
 	'right-purgecache' => 'Vyčistiť tabuľku OBJECTCACHE',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -553,7 +554,7 @@ $messages['sr-ec'] = array(
 	'purgecache-button' => 'Освежи',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

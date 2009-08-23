@@ -35,6 +35,7 @@ $messages['qqq'] = array(
  * @author SPQRobin
  */
 $messages['af'] = array(
+	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Gebruiker',
 	'showprocesslist-time' => 'Tyd',
 );
@@ -788,7 +789,7 @@ $messages['ru'] = array(
 	'showprocesslist' => 'Показать список процессов',
 	'showprocesslist-desc' => 'Показывает вывод команды MySQL «[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]»',
 	'showprocesslist-id' => 'Id',
-	'showprocesslist-user' => 'Участник',
+	'showprocesslist-user' => 'Пользователь',
 	'showprocesslist-host' => 'Хост',
 	'showprocesslist-db' => 'БД',
 	'showprocesslist-command' => 'Команда',
@@ -813,7 +814,7 @@ $messages['sk'] = array(
 	'showprocesslist-info' => 'Informácie',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -827,7 +828,7 @@ $messages['sr-ec'] = array(
 	'showprocesslist-state' => 'Стање',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

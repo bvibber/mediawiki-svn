@@ -764,7 +764,7 @@ $messages['sk'] = array(
 	'backforth-prev' => 'Predošlé ($1)',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */

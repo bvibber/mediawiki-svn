@@ -1466,7 +1466,7 @@ $messages['sq'] = array(
 	'sitematrix' => 'Lista e wiki-ve të Wikimedia-s',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author לערי ריינהארט
@@ -1484,7 +1484,7 @@ $messages['sr-ec'] = array(
 	'sitematrix-fishbowl' => 'забрана мењања',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  * @author לערי ריינהארט
  */

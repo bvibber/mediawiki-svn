@@ -1238,7 +1238,7 @@ $messages['sr'] = array(
 	'contributors-nosuchpage' => 'Чланак $1 не постоји.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1256,7 +1256,7 @@ $messages['sr-ec'] = array(
 	'contributors-nosuchpage' => 'Чланак $1 не постоји.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  * @author Sasa Stefanovic
  */
@@ -1402,7 +1402,7 @@ $messages['tr'] = array(
 	'contributors-submit' => 'Göster',
 );
 
-/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ерней
  */
 $messages['tt-cyrl'] = array(

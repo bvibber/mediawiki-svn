@@ -88,6 +88,7 @@ Do not translate or change tag names, or link anchors.',
  */
 $messages['af'] = array(
 	'recordadmin-submit' => 'Dien in',
+	'recordadmin-invert' => 'Omgekeerde seleksie',
 	'recordadmin-buttonsearch' => 'Soek',
 	'recordadmin-buttoncreate' => 'Skep',
 	'recordadmin-buttonsave' => 'Stoor',
@@ -1546,7 +1547,7 @@ $messages['sk'] = array(
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1556,7 +1557,7 @@ $messages['sr-ec'] = array(
 	'recordadmin-buttonsave' => 'Сними',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

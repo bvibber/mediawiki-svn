@@ -1430,7 +1430,7 @@ $messages['sk'] = array(
 	'specialpages-group-feedback' => 'Názor čitateľa',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -1453,7 +1453,7 @@ $messages['sr-ec'] = array(
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

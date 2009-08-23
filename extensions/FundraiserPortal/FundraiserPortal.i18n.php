@@ -107,6 +107,23 @@ $messages['br'] = array(
 	'fundraiserportal-tourmaline-close' => 'Kuzhat hiviziken',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'fundraiserportal' => 'Donatorski portal',
+	'fundraiserportal-desc' => 'Dodaje portal "please donate" na vrh navigacijske trake.',
+	'fundraiserportal-plain-button' => 'Podržite Wikipediju!',
+	'fundraiserportal-ruby-button' => 'Donirajte sad',
+	'fundraiserportal-rubytext-button' => 'Donirajte sada',
+	'fundraiserportal-rubytext-message' => 'Svaka donacija nam pomaže da Wikipedia ostane slobodna za svakog.',
+	'fundraiserportal-rubytext-close' => 'Ubuduće ovo sakrij',
+	'fundraiserportal-sapphire-button' => 'Donirajte sada',
+	'fundraiserportal-tourmaline-button' => 'Donirajte sada',
+	'fundraiserportal-tourmaline-message' => 'Svaka donacija nam pomaže da Wikipedia ostane slobodna za svakog.',
+	'fundraiserportal-tourmaline-close' => 'Ubuduće ovo sakrij',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */
@@ -124,19 +141,43 @@ $messages['ca'] = array(
 	'fundraiserportal-tourmaline-close' => "Amaga això a partir d'ara",
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'fundraiserportal' => 'Fundraisingový portál',
+	'fundraiserportal-desc' => 'Přidává nad postranní panel portál „prosíme, přispějte“.',
+	'fundraiserportal-plain-button' => 'Podpořte {{grammar:4sg|{{SITENAME}}}}!',
+	'fundraiserportal-ruby-button' => 'Přispějte',
+	'fundraiserportal-rubytext-button' => 'Přispějte',
+	'fundraiserportal-rubytext-message' => 'Každý dar nám pomáhá udržet Wikipedii volně dostupnou všem.',
+	'fundraiserportal-rubytext-close' => 'Toto už nezobrazovat',
+	'fundraiserportal-sapphire-button' => 'Přispějte',
+	'fundraiserportal-tourmaline-button' => 'Přispějte',
+	'fundraiserportal-tourmaline-message' => 'Každý dar nám pomáhá udržet Wikipedii volně dostupnou všem.',
+	'fundraiserportal-tourmaline-close' => 'Toto už nezobrazovat',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'fundraiserportal' => 'Porth Codi Arian',
+	'fundraiserportal-desc' => 'Yn ychwanegu cyswllt at y porth "rhoi" ar ben y panel llywio',
 	'fundraiserportal-plain-button' => 'Cefnogwch Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Rhoi Nawr',
 	'fundraiserportal-rubytext-button' => 'Rhoi Nawr',
+	'fundraiserportal-rubytext-message' => "Mae pob rhodd yn ein cynorthwyo i gadw Wikipedia'n rhydd i bawb ei ddefnyddio.",
 	'fundraiserportal-rubytext-close' => 'Cuddio hwn o hyn ymlaen',
+	'fundraiserportal-sapphire-button' => 'Rhoi Nawr',
+	'fundraiserportal-tourmaline-button' => 'Rhoi Nawr',
+	'fundraiserportal-tourmaline-message' => "Mae pob rhodd yn ein cynorthwyo i gadw Wikipedia'n rhydd i bawb ei ddefnyddio.",
 	'fundraiserportal-tourmaline-close' => 'Cuddio hwn o hyn ymlaen',
 );
 
 /** German (Deutsch)
  * @author Metalhead64
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'fundraiserportal' => 'Sponsoren-Portal',
@@ -145,9 +186,11 @@ $messages['de'] = array(
 	'fundraiserportal-ruby-button' => 'Jetzt spenden',
 	'fundraiserportal-rubytext-button' => 'Jetzt spenden',
 	'fundraiserportal-rubytext-message' => 'Jede Spende hilft uns, Wikipedia für jeden frei verfügbar zu halten.',
+	'fundraiserportal-rubytext-close' => 'Von nun an verbergen',
 	'fundraiserportal-sapphire-button' => 'Jetzt spenden',
 	'fundraiserportal-tourmaline-button' => 'Jetzt spenden',
 	'fundraiserportal-tourmaline-message' => 'Jede Spende hilft uns, Wikipedia für jeden frei verfügbar zu halten.',
+	'fundraiserportal-tourmaline-close' => 'Von nun an verbergen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -229,7 +272,22 @@ $messages['et'] = array(
 	'fundraiserportal-tourmaline-close' => 'Peida see edaspidi',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'fundraiserportal' => 'Funts Bilketaren Ataria',
+	'fundraiserportal-plain-button' => 'Lagundu Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Dohaintza Egin Orain',
+	'fundraiserportal-rubytext-button' => 'Dohaintza Egin Orain',
+	'fundraiserportal-rubytext-message' => 'Dohaintza bakoitzak Wikipedia guztientzako libre mantentzen laguntzen gaitu.',
+	'fundraiserportal-sapphire-button' => 'Dohaintza Egin Orain',
+	'fundraiserportal-tourmaline-button' => 'Dohaintza Egin Orain',
+	'fundraiserportal-tourmaline-message' => 'Dohaintza bakoitzak Wikipedia guztientzako libre mantentzen laguntzen gaitu.',
+);
+
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
  */
@@ -240,9 +298,11 @@ $messages['fi'] = array(
 	'fundraiserportal-ruby-button' => 'Lahjoita nyt',
 	'fundraiserportal-rubytext-button' => 'Lahjoita nyt',
 	'fundraiserportal-rubytext-message' => 'Jokainen lahjoitus auttaa meitä pitämään Wikipedian vapaana kaikille.',
+	'fundraiserportal-rubytext-close' => 'Piilota tämä tästedes',
 	'fundraiserportal-sapphire-button' => 'Lahjoita nyt',
 	'fundraiserportal-tourmaline-button' => 'Lahjoita nyt',
 	'fundraiserportal-tourmaline-message' => 'Jokainen lahjoitus auttaa meitä pitämään Wikipedian vapaana kaikille.',
+	'fundraiserportal-tourmaline-close' => 'Piilota tämä tästedes',
 );
 
 /** French (Français)
@@ -378,6 +438,15 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'fundraiserportal' => 'Portal pro collecta de fundos',
 	'fundraiserportal-desc' => 'Adde un portal "per favor dona" in alto del barra lateral.',
+	'fundraiserportal-plain-button' => 'Supporta Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Donar ora',
+	'fundraiserportal-rubytext-button' => 'Donar ora',
+	'fundraiserportal-rubytext-message' => 'Cata donation nos adjuta a mantener Wikipedia libere a omnes.',
+	'fundraiserportal-rubytext-close' => 'Celar isto a partir de ora',
+	'fundraiserportal-sapphire-button' => 'Donar ora',
+	'fundraiserportal-tourmaline-button' => 'Donar ora',
+	'fundraiserportal-tourmaline-message' => 'Cata donation nos adjuta a mantener Wikipedia libere a omnes.',
+	'fundraiserportal-tourmaline-close' => 'Celar isto a partir de ora',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -386,6 +455,15 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'fundraiserportal' => 'Portal Penggalangan Dana',
 	'fundraiserportal-desc' => 'Menambahkan portal "menyumbang" di bagian atas kotak samping.',
+	'fundraiserportal-plain-button' => 'Dukung Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Menyumbang',
+	'fundraiserportal-rubytext-button' => 'Menyumbang',
+	'fundraiserportal-rubytext-message' => 'Setiap sumbangan membantu agar Wikipedia tetap gratis untuk siapa saja.',
+	'fundraiserportal-rubytext-close' => 'Sembunyikan ini untuk saat ini',
+	'fundraiserportal-sapphire-button' => 'Menyumbang',
+	'fundraiserportal-tourmaline-button' => 'Menyumbang',
+	'fundraiserportal-tourmaline-message' => 'Setiap sumbangan membantu agar Wikipedia tetap gratis untuk siapa saja.',
+	'fundraiserportal-tourmaline-close' => 'Sembunyikan ini untuk saat ini',
 );
 
 /** Italian (Italiano)
@@ -461,12 +539,13 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'fundraiserportal' => 'Portal vun den Donen',
 	'fundraiserportal-desc' => 'Setzt e "Maacht en Don"-Portal uewen op d\'Sidebar derbäi.',
-	'fundraiserportal-plain-button' => 'Ënnerstetzt Wikipedia!',
+	'fundraiserportal-plain-button' => 'Ënnerstëtzt Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Maacht Elo en Don',
 	'fundraiserportal-rubytext-button' => 'Maacht Elo en Don',
 	'fundraiserportal-rubytext-message' => 'All Don hëlleft eis fir Wikipedia fir jidferee fräi zougänglech ze maachen.',
@@ -495,6 +574,7 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -503,11 +583,11 @@ $messages['nl'] = array(
 	'fundraiserportal-plain-button' => 'Steun Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Nu schenken',
 	'fundraiserportal-rubytext-button' => 'Nu schenken',
-	'fundraiserportal-rubytext-message' => 'Elke donatie helpt ons om Wikipedia gratis voor iedereen te houden.',
+	'fundraiserportal-rubytext-message' => 'Elke donatie helpt ons om Wikipedia voor iedereen vrij beschikbaar te houden.',
 	'fundraiserportal-rubytext-close' => 'Dit onderdeel vanaf nu verbergen',
 	'fundraiserportal-sapphire-button' => 'Nu schenken',
 	'fundraiserportal-tourmaline-button' => 'Nu schenken',
-	'fundraiserportal-tourmaline-message' => 'Elke donatie helpt ons om Wikipedia gratis voor iedereen te houden.',
+	'fundraiserportal-tourmaline-message' => 'Elke donatie helpt ons om Wikipedia voor iedereen vrij beschikbaar te houden.',
 	'fundraiserportal-tourmaline-close' => 'Dit onderdeel vanaf nu verbergen',
 );
 
@@ -545,6 +625,24 @@ $messages['oc'] = array(
 	'fundraiserportal-tourmaline-close' => 'Amagar aquò ara',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'fundraiserportal' => 'Portal zbierania funduszy',
+	'fundraiserportal-desc' => 'Dodaje „Wspomóż nas” na górze paska bocznego.',
+	'fundraiserportal-plain-button' => 'Wspomóż Wikipedię!',
+	'fundraiserportal-ruby-button' => 'Wspomóż nas',
+	'fundraiserportal-rubytext-button' => 'Wspomóż nas',
+	'fundraiserportal-rubytext-message' => 'Każda darowizna pomaga, aby Wikipedia była dostępna dla wszystkich za darmo.',
+	'fundraiserportal-rubytext-close' => 'Ukryj',
+	'fundraiserportal-sapphire-button' => 'Wspomóż nas',
+	'fundraiserportal-tourmaline-button' => 'Wspomóż nas',
+	'fundraiserportal-tourmaline-message' => 'Każda darowizna pomaga, aby Wikipedia była dostępna dla wszystkich za darmo.',
+	'fundraiserportal-tourmaline-close' => 'Ukryj',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Giro720
@@ -577,6 +675,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'fundraiserportal' => 'Портал пожертвований',
@@ -584,12 +683,29 @@ $messages['ru'] = array(
 	'fundraiserportal-plain-button' => 'Поддержать Википедию!',
 	'fundraiserportal-ruby-button' => 'Пожертвовать сейчас',
 	'fundraiserportal-rubytext-button' => 'Пожертвовать сейчас',
-	'fundraiserportal-rubytext-message' => 'Каждое пожертвование помогает нам сохранять Википедию бесплатной для всех.',
-	'fundraiserportal-rubytext-close' => 'Скрыть это',
+	'fundraiserportal-rubytext-message' => 'Каждое пожертвование помогает нам сохранять Википедию свободной и бесплатной для всех.',
+	'fundraiserportal-rubytext-close' => 'Больше не показывать',
 	'fundraiserportal-sapphire-button' => 'Пожертвовать сейчас',
 	'fundraiserportal-tourmaline-button' => 'Пожертвовать сейчас',
-	'fundraiserportal-tourmaline-message' => 'Каждое пожертвование помогает нам сохранять Википедию бесплатной для всех.',
-	'fundraiserportal-tourmaline-close' => 'Скрыть это',
+	'fundraiserportal-tourmaline-message' => 'Каждое пожертвование помогает нам сохранять Википедию свободной и бесплатной для всех.',
+	'fundraiserportal-tourmaline-close' => 'Больше не показывать',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'fundraiserportal' => 'Сиэртибэлээһин портаала',
+	'fundraiserportal-desc' => 'Сиэртибэлииргэ ыҥырыыны ойоҕос панельга эбэр.',
+	'fundraiserportal-plain-button' => 'Бикипиэдьийэни өйөө!',
+	'fundraiserportal-ruby-button' => 'Билигин сиэртибэлииргэ',
+	'fundraiserportal-rubytext-button' => 'Билигин сиэртибэлииргэ',
+	'fundraiserportal-rubytext-message' => 'Хас биирдии сиэртибэ Бикипиэдьийэ көҥүл-босхо туттулларыгар көмөлөһөр.',
+	'fundraiserportal-rubytext-close' => 'Маны кистииргэ',
+	'fundraiserportal-sapphire-button' => 'Билигин сиэртибэлииргэ',
+	'fundraiserportal-tourmaline-button' => 'Билигин сиэртибэлииргэ',
+	'fundraiserportal-tourmaline-message' => 'Хас биирдии сиэртибэ Бикипиэдьийэни көҥүл-босхо туһанарга көмөлөһөр.',
+	'fundraiserportal-tourmaline-close' => 'Маны кистииргэ',
 );
 
 /** Slovak (Slovenčina)
@@ -673,8 +789,7 @@ $messages['vec'] = array(
 	'fundraiserportal-tourmaline-close' => 'Scondi da desso in avanti',
 );
 
-/** 
- * Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -691,8 +806,7 @@ $messages['yue'] = array(
 	'fundraiserportal-tourmaline-close' => '而家閂咗佢',
 );
 
-/** 
- * Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -709,8 +823,7 @@ $messages['zh-hans'] = array(
 	'fundraiserportal-tourmaline-close' => '现在就隐藏这个',
 );
 
-/** 
- * Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

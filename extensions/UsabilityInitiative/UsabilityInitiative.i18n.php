@@ -49,6 +49,14 @@ $messages['ca'] = array(
 	'usabilityinitiative-desc' => "Funcions desenvolupades per la ''Wikipedia Usability Initiative'' per millorar la usabilitat del Mediawiki",
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'usabilityinitiative' => 'Iniciativa použitelnosti',
+	'usabilityinitiative-desc' => 'Vylepšení použitelnosti MediaWiki vyvinutá v rámci Iniciativy použitelnosti Wikipedie',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */

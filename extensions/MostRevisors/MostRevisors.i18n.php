@@ -82,10 +82,12 @@ $messages['be-tarask'] = array(
 	'mostrevisors-limitlinks' => 'Паказваць да $1 {{PLURAL:$1|старонкі|старонак|старонак}}',
 	'mostrevisors-namespace' => 'Прастора назваў:',
 	'mostrevisors-none' => 'Запісы ня знойдзеныя.',
+	'mostrevisors-ns-header' => "'''На гэтай старонцы пададзены сьпіс $1 {{PLURAL:$1|старонкі|старонак|старонак}} з самай вялікай колькасьцю рэцэнзэнтаў у прасторы назваў $2.'''",
 	'mostrevisors-showing' => 'Утрымлівае $1 {{PLURAL:$1|старонку|старонкі|старонак}}:',
 	'mostrevisors-submit' => 'Паказаць',
 	'mostrevisors-showredir' => 'Паказаць перанакіраваньні',
 	'mostrevisors-hideredir' => 'Схаваць перанакіраваньні',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|рэдактар|рэдактары|рэдактараў}}',
 	'mostrevisors-viewcontributors' => 'Паказаць асноўных аўтараў',
 );
 
@@ -313,6 +315,7 @@ $messages['gsw'] = array(
 	'mostrevisors-submit' => 'Gang',
 	'mostrevisors-showredir' => 'Wyterleitigssyte zeige',
 	'mostrevisors-hideredir' => 'Wyterleitigssyte verstecke',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|Bearbeiter|Bearbeiter}}',
 	'mostrevisors-viewcontributors' => 'Hauptbyyträger zeige',
 );
 
@@ -508,6 +511,7 @@ $messages['oc'] = array(
 	'mostrevisors-submit' => 'Sometre',
 	'mostrevisors-showredir' => 'Afichar las paginas de redireccion',
 	'mostrevisors-hideredir' => 'amagar las paginas de redireccion',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editors}}',
 	'mostrevisors-viewcontributors' => 'Veire los contributors principals',
 );
 
@@ -560,6 +564,7 @@ $messages['ro'] = array(
 /** Russian (Русский)
  * @author EugeneZelenko
  * @author Ferrer
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -574,6 +579,7 @@ $messages['ru'] = array(
 	'mostrevisors-submit' => 'Перейти',
 	'mostrevisors-showredir' => 'Показать страницы перенаправлений',
 	'mostrevisors-hideredir' => 'Скрыть страницы перенаправлений',
+	'mostrevisors-users' => '— $1 {{PLURAL:$1|редактор|редактора|редакторов}}',
 	'mostrevisors-viewcontributors' => 'Показать основных редакторов',
 );
 

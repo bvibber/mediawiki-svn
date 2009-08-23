@@ -31,6 +31,13 @@ Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'logentry-append' => 'Byvoeg',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

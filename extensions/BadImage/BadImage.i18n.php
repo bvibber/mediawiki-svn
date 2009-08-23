@@ -758,7 +758,7 @@ $messages['gl'] = array(
 	'right-badimages' => 'Actualizar a lista imaxes malas',
 );
 
-/** Gothic
+/** Gothic (Gothic)
  * @author Jocke Pirat
  */
 $messages['got'] = array(
@@ -2038,7 +2038,7 @@ $messages['sr'] = array(
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -2065,7 +2065,7 @@ $messages['sr-ec'] = array(
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

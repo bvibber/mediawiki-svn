@@ -252,6 +252,13 @@ $messages['pl'] = array(
 	'psinotocnum-desc' => 'Nowe magiczne słowo „<nowiki>__NOTOCNUM__</nowiki>”',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'psinotocnum-desc' => 'Neuva pàrola màgica "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -301,14 +308,14 @@ $messages['sq'] = array(
 	'psinotocnum-desc' => 'Fjalë e re magjike "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'psinotocnum-desc' => 'Нова магична реч "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

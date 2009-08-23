@@ -44,10 +44,11 @@ Please define a tableclass that has 255 characters at most.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'plotters-desc' => 'Short description of the Plotters extension. Used on [[Special:Version]]. Do not translate link targets.',
+	'plotters-desc' => '{{desc}}',
 	'plotters-errors' => 'Parameters:
 $1 = number of messages following. Can be used with PLURAL.',
 );
@@ -329,6 +330,29 @@ Per favor defini un classe de tabula que ha 255 characteres al maximo.',
 	'plotters-errors' => '{{PLURAL:$1|Error|Errores}} de plotter:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'plotters-desc' => 'Memungkinkan pengguna menggunakan JavaScript di tag jsplot',
+	'plotters' => 'Plotter',
+	'plotters-title' => 'Plotter',
+	'plotters-uses' => 'Menggunakan',
+	'plotters-missing-script' => 'Skrip tidak dicantumkan.',
+	'plotters-missing-arguments' => 'Argumen tidak dicantumkan.',
+	'plotters-excessively-long-scriptname' => 'Nama skrip terlalu panjang.
+Cantumkan nama skrip yang panjangnya maksimal 255 karakter.',
+	'plotters-excessively-long-preprocessorname' => 'Nama pre-pemroses terlalu panjang.
+Cantumkan nama pre-pemroses yang panjangnya maksimal 255 karakter.',
+	'plotters-excessively-long-name' => 'Nama plot terlalu panjang.
+Cantumkan nama plot yang panjangnya maksimal 255 karakter.',
+	'plotters-excessively-long-tableclass' => 'Nama kelas tabel terlalu panjang.
+Cantumkan sebuah kelas tabel yang panjangnya maksimal 255 karakter.',
+	'plotters-no-data' => 'Data tidak disediakan.',
+	'plotters-invalid-renderer' => 'Penampil yang tidak sah dipilih.',
+	'plotters-errors' => '{{PLURAL:$1||}}Kesalahan Plotter:',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -368,6 +392,14 @@ $messages['ksh'] = array(
 	'plotters-no-data' => 'Kei Date aanjejovve.',
 	'plotters-invalid-renderer' => 'En onjöltsch Aanzeijeprojramm wood ußjesohk.',
 	'plotters-errors' => '{{PLURAL:$1|Eine|$1|Keine}} Fähler en de <i lang="en">Plotters</i>:',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'plotters-uses' => 'Benotzt',
+	'plotters-missing-script' => 'Et gouf kee Script definéiert.',
 );
 
 /** Dutch (Nederlands)

@@ -56,17 +56,11 @@ $messages['qqq'] = array(
 	'right-deletebatch' => '{{doc-right|deletebatch}}',
 );
 
-/** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
- * @author Deepak D'Souza
- */
-$messages['gom-latn'] = array(
-	'deletebatch-success-subtitle' => '$1 khatir',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
 $messages['af'] = array(
+	'deletebatch-or' => '<b>Of</b>',
 	'deletebatch-delete' => 'Skrap',
 	'deletebatch-select-yourself' => 'u',
 );
@@ -119,8 +113,6 @@ $messages['arz'] = array(
 	'deletebatch-both-modes' => 'من فضلك اختر إما صفحة واحدة أو قائمة معطاة من الصفحات.',
 	'deletebatch-or' => '<b>أو</b>',
 	'deletebatch-page' => 'الصفحات للحذف:',
-	'deletebatch-reason' => 'سبب الحذف',
-	'deletebatch-success-subtitle' => 'ل$1',
 	'deletebatch-omitting-nonexistant' => 'إزالة صفحة غير موجودة $1.',
 	'deletebatch-omitting-invalid' => 'إزالة صفحة غير صحيحة $1.',
 	'deletebatch-file-bad-format' => 'الملف ينبغى أن يكون نصا خالصا',
@@ -183,8 +175,6 @@ $messages['bs'] = array(
 	'deletebatch-as' => 'Pokreni skriptu kao:',
 	'deletebatch-or' => '<b>ili</b>',
 	'deletebatch-page' => 'Stranice koje će biti obrisane:',
-	'deletebatch-reason' => 'Razlog brisanja',
-	'deletebatch-success-subtitle' => 'za $1',
 	'deletebatch-file-missing' => 'Ne možete se pročitati navedena datoteka',
 	'deletebatch-select-yourself' => 'vi',
 );
@@ -206,8 +196,6 @@ El fitxer indicat només pot contenir el títol de la pàgina i el motiu per a e
 	'deletebatch-both-modes' => 'Escolliu una pàgina especificada o una llista de pàgines donada.',
 	'deletebatch-or' => '<b>o</b>',
 	'deletebatch-page' => 'Pàgines a esborrar:',
-	'deletebatch-reason' => 'Motiu per a ser esborrat',
-	'deletebatch-success-subtitle' => 'per $1',
 	'deletebatch-omitting-nonexistant' => "S'ha omès la pàgina inexistent $1.",
 	'deletebatch-omitting-invalid' => "S'ha omès la pàgina no vàlida $1.",
 	'deletebatch-file-bad-format' => 'El fitxer ha de ser de text pla',
@@ -409,13 +397,6 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
 	'right-deletebatch' => 'Supprimer des pages en lot',
 );
 
-/** Western Frisian (Frysk)
- * @author Snakesteuben
- */
-$messages['fy'] = array(
-	'deletebatch-reason' => 'Reden foar it wiskjen',
-);
-
 /** Galician (Galego)
  * @author Toliño
  */
@@ -451,7 +432,6 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
  */
 $messages['grc'] = array(
 	'deletebatch-or' => '<b>ἢ</b>',
-	'deletebatch-success-subtitle' => 'διὰ τὸ $1',
 	'deletebatch-select-yourself' => 'σύ',
 );
 
@@ -482,13 +462,6 @@ D Datei, wu soll uffeglade wäre, sott pro Zyyle ei Sytetitel haa un s cha optio
 	'deletebatch-select-yourself' => 'Du',
 	'deletebatch-no-page' => 'Bitte gib äntwäder zmindescht ei Syten aa, wu glescht soll wäre, oder wehl e Datei, wu s e Lischt din het vu Syte, wu glescht solle wäre.',
 	'right-deletebatch' => 'E Zyylete vu Syte lesche',
-);
-
-/** Hawaiian (Hawai`i)
- * @author Kalani
- */
-$messages['haw'] = array(
-	'deletebatch-reason' => 'Ke kumu no ke kāpae ʻana',
 );
 
 /** Hebrew (עברית)
@@ -753,19 +726,10 @@ $messages['lb'] = array(
 	'deletebatch-both-modes' => 'Wielt entweder eng spezifesch Säit oder eng spezifesch Lëscht vu Säiten.',
 	'deletebatch-or' => '<b>ODER</b>',
 	'deletebatch-page' => 'Säite fir ze läschen:',
-	'deletebatch-reason' => 'Grond fir ze läschen',
-	'deletebatch-success-subtitle' => 'fir $1',
 	'deletebatch-omitting-nonexistant' => "D'Säit $1 déi et net gëtt iwwersprangen.",
 	'deletebatch-omitting-invalid' => 'Déi ongëlteg Säit $1 iwwersprangen.',
 	'deletebatch-select-script' => 'de Script vun der Säit läschen',
 	'deletebatch-select-yourself' => 'Dir',
-);
-
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'deletebatch-reason' => 'Шӧрымын амалже',
 );
 
 /** Erzya (Эрзянь)
@@ -779,8 +743,6 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'deletebatch-reason' => 'Tlapololiztli īxtlamatiliztli',
-	'deletebatch-success-subtitle' => '$1 ītechcopa',
 	'deletebatch-select-yourself' => 'teh',
 );
 
@@ -832,10 +794,8 @@ Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteår
 	'deletebatch-both-modes' => 'Vel éi sida eller ei lista over sider.',
 	'deletebatch-or' => '<b>eller</b>',
 	'deletebatch-page' => 'Sider som skal bli sletta:',
-	'deletebatch-reason' => 'Sletteårsak',
 	'deletebatch-processing-from-file' => 'slettar sider frå lista over filer',
 	'deletebatch-processing-from-form' => 'slettar sider frå skjemaet',
-	'deletebatch-success-subtitle' => 'for $1',
 	'deletebatch-omitting-nonexistant' => 'Tek ikkje med sida $1 som ikkje finst.',
 	'deletebatch-omitting-invalid' => 'Tek ikkje med den ugyldige sida $1.',
 	'deletebatch-file-bad-format' => 'Fila bør innehalda rein tekst',
@@ -864,8 +824,6 @@ En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slet
 	'deletebatch-both-modes' => 'Velg én side eller en liste over sider.',
 	'deletebatch-or' => '<b>eller</b>',
 	'deletebatch-page' => 'Sider som skal slettes:',
-	'deletebatch-reason' => 'Slettingsårsak',
-	'deletebatch-success-subtitle' => 'for $1',
 	'deletebatch-omitting-nonexistant' => 'Utelater den ikke-eksisterende siden $1.',
 	'deletebatch-omitting-invalid' => 'Utelater den ugyldige siden $1.',
 	'deletebatch-file-bad-format' => 'Filen bør inneholde ren tekst',
@@ -903,14 +861,6 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
 	'deletebatch-select-yourself' => 'vos',
 	'deletebatch-no-page' => 'Indicatz al mens una pagina de suprimir O un fichièr donat que conten una tièra de paginas.',
 	'right-deletebatch' => 'Suprimir de paginas en lòt',
-);
-
-/** Deitsch (Deitsch)
- * @author Xqt
- */
-$messages['pdc'] = array(
-	'deletebatch-reason' => 'Grund fers Lösche',
-	'deletebatch-success-subtitle' => 'fer $1',
 );
 
 /** Polish (Polski)
@@ -962,8 +912,6 @@ O ficheiro carregado deverá conter o nome da página e um motivo opcional, sepa
 	'deletebatch-both-modes' => 'Por favor, escolha uma página especificada ou uma dada lista de páginas.',
 	'deletebatch-or' => '<b>ou</b>',
 	'deletebatch-page' => 'Páginas a eliminar:',
-	'deletebatch-reason' => 'Motivo da eliminação',
-	'deletebatch-success-subtitle' => 'para $1',
 	'deletebatch-omitting-nonexistant' => 'A omitir página não existente $1.',
 	'deletebatch-omitting-invalid' => 'A omitir página inválida $1.',
 	'deletebatch-file-bad-format' => 'O ficheiro deve conter texto pleno',
@@ -1020,7 +968,6 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'deletebatch-or' => '<b>o</b>',
-	'deletebatch-success-subtitle' => 'pe $1',
 	'deletebatch-select-yourself' => 'tu',
 );
 
@@ -1102,8 +1049,6 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
 	'deletebatch-both-modes' => 'Var god välj antingen en specifierad sida eller en lista över sidor.',
 	'deletebatch-or' => '<b>ELLER</b>',
 	'deletebatch-page' => 'Sidor som ska raderas:',
-	'deletebatch-reason' => 'Anledning för radering',
-	'deletebatch-success-subtitle' => 'för $1',
 	'deletebatch-omitting-nonexistant' => 'Utelämna ej existerande sida $1.',
 	'deletebatch-omitting-invalid' => 'Utelämna ogiltig sida $1.',
 	'deletebatch-file-bad-format' => 'Filen ska innehålla ren text',
@@ -1122,14 +1067,6 @@ $messages['te'] = array(
 	'deletebatch-caption' => 'పేజీల జాబితా:',
 	'deletebatch-or' => '<b>లేదా</b>',
 	'deletebatch-page' => 'తొలగించాల్సిన పేజీలు:',
-	'deletebatch-reason' => 'తొలగింపునకు కారణం',
-);
-
-/** Tetum (Tetun)
- * @author MF-Warburg
- */
-$messages['tet'] = array(
-	'deletebatch-reason' => 'Motivu ba halakon:',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -1137,8 +1074,6 @@ $messages['tet'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'deletebatch-caption' => 'Феҳристи саҳифа',
-	'deletebatch-reason' => 'Сабаби ҳазв',
-	'deletebatch-success-subtitle' => 'барои $1',
 	'deletebatch-select-yourself' => 'шумо',
 );
 
@@ -1158,8 +1093,6 @@ Dapat na naglalaman ang ikinargang talaksan ng pangalan ng pahina at maaaring hi
 	'deletebatch-both-modes' => 'Pakipili ang isang tinukoy na pahina o isang ibinigay na talaan ng mga pahina.',
 	'deletebatch-or' => '<b>o</b>',
 	'deletebatch-page' => 'Mga pahinang buburahin:',
-	'deletebatch-reason' => 'Dahilan ng pagbura',
-	'deletebatch-success-subtitle' => 'para sa $1',
 	'deletebatch-omitting-nonexistant' => 'Hindi isinasali ang hindi umiiral na pahinang $1.',
 	'deletebatch-omitting-invalid' => 'Hindi isinasali ang hindi tanggap na pahinang $1.',
 	'deletebatch-file-bad-format' => 'Dapat na teksto lamang ang talaksan',
@@ -1195,8 +1128,6 @@ $messages['uk'] = array(
 	'deletebatch-both-modes' => 'Виберіть або одну вказану сторінку, або наданий список сторінок.',
 	'deletebatch-or' => '<b>або</b>',
 	'deletebatch-page' => 'Сторінки до вилучення:',
-	'deletebatch-reason' => 'Причина вилучення',
-	'deletebatch-success-subtitle' => 'для $1',
 	'deletebatch-omitting-nonexistant' => 'Пропускання неіснуючої сторінки $1.',
 	'deletebatch-file-missing' => 'Не в змозі прочитати наданий файл',
 	'deletebatch-select-yourself' => 'ви',
@@ -1213,7 +1144,6 @@ $messages['vep'] = array(
 	'deletebatch-both-modes' => "Olgat hüväd, valikat lehtpol' vai lehtpoliden nimikirjutez.",
 	'deletebatch-or' => '<b>vai</b>',
 	'deletebatch-page' => 'Lehtpoled čutes:',
-	'deletebatch-reason' => 'Čudandan sü',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -1232,8 +1162,6 @@ Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tá
 	'deletebatch-both-modes' => 'Xin hãy chọn một trang hoặc một danh sách trang cho trước.',
 	'deletebatch-or' => '<b>hoặc</b>',
 	'deletebatch-page' => 'Các trang sẽ bị xóa:',
-	'deletebatch-reason' => 'Lý do xóa',
-	'deletebatch-success-subtitle' => 'đối với $1',
 	'deletebatch-omitting-nonexistant' => 'Đang bỏ trang $1 không tồn tại.',
 	'deletebatch-omitting-invalid' => 'Đang bỏ trang $1 không hợp lệ.',
 	'deletebatch-file-bad-format' => 'Tập tin nên ở dạng thuần ký tự',
@@ -1255,8 +1183,6 @@ $messages['vo'] = array(
 	'deletebatch-title' => 'Moükön padamödoti',
 	'deletebatch-or' => '<b>u</b>',
 	'deletebatch-page' => 'Pads moükabik:',
-	'deletebatch-reason' => 'Kod moükama',
-	'deletebatch-success-subtitle' => 'pro $1',
 	'deletebatch-omitting-nonexistant' => 'Pad no dabinöl $1 pamoädon.',
 	'deletebatch-omitting-invalid' => 'Pad no lonöföl $1 pamoädon.',
 	'deletebatch-file-missing' => 'No mögos ad reidön ragivi pavilöl',
@@ -1269,7 +1195,6 @@ $messages['vo'] = array(
 $messages['zh-hans'] = array(
 	'deletebatch-caption' => '页面列表',
 	'deletebatch-or' => '<b>或</b>',
-	'deletebatch-reason' => '删除原因',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1279,6 +1204,5 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'deletebatch-caption' => '頁面清單',
 	'deletebatch-or' => '<b>或</b>',
-	'deletebatch-reason' => '刪除原因',
 );
 

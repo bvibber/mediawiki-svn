@@ -246,6 +246,13 @@ $messages['pl'] = array(
 	'preloader-desc' => 'Zapewnia odrębny dla każdej przestrzeni nazw domyślny tekst nowej strony',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'preloader-desc' => 'A dà test përsonalisà për-namespace për neuve pàgine',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

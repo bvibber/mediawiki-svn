@@ -162,10 +162,12 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author Kobazulo
  * @author Pi
  */
 $messages['eu'] = array(
 	'whosonline' => 'Zein konektaturik',
+	'whosonline-desc' => 'Une honetan linean dauden erabiltzaile erregistratu eta anonimoen [[Special:WhosOnline|zerrenda]] erakusten du',
 );
 
 /** Finnish (Suomi)
@@ -460,7 +462,7 @@ $messages['sk'] = array(
 	'whosonline-desc' => 'Zobrazuje [[Special:WhosOnline|zoznam]] prihlásených a anonymných používateľov, ktorí sú momentálne online',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -468,7 +470,7 @@ $messages['sr-ec'] = array(
 	'whosonline-desc' => 'Приказује [[Special:WhosOnline|списак]] улогованих и анонимних корисника, који су тренутно присутни',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

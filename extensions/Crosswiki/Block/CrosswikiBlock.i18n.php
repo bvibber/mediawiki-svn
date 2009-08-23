@@ -88,7 +88,9 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'crosswikiblock-expiry' => 'Duur:',
 	'crosswikiblock-reason' => 'Rede:',
+	'crosswikiblock-submit' => 'Versper die gebruiker',
 	'crosswikiblock-anononly' => 'Blokkeer slegs anonieme gebruikers',
 	'crosswikiblock-nocreate' => 'Blokkeer registrasie van gebruikers',
 	'crosswikiblock-noemail' => 'Verbied gebruiker om e-pos te stuur',
@@ -826,7 +828,7 @@ Voltar a:
 	'right-crosswikiblock' => 'Bloquear e desbloquear usuarios noutros wikis',
 );
 
-/** Gothic
+/** Gothic (Gothic)
  * @author Jocke Pirat
  */
 $messages['got'] = array(
@@ -2107,7 +2109,7 @@ Vrátiť sa na:
 	'right-crosswikiblock' => 'Blokovať a odblokovať používateľov na iných wiki',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -2115,7 +2117,7 @@ $messages['sr-ec'] = array(
 	'crosswikiunblock-reason' => 'Разлог:',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

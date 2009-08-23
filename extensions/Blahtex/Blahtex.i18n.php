@@ -2562,7 +2562,7 @@ $messages['sk'] = array(
 	'math_WrongFontEncodingWithHint' => 'Symbol „$1“ sa nemôže nachádzať v kódovaní písma „$2“ (skúste použiť príkaz „$3{...}“)',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -2621,7 +2621,7 @@ $messages['sr-ec'] = array(
 Покушајте да употребите команду "$3{...}".',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
