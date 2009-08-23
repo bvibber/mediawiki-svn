@@ -305,6 +305,7 @@ $messages['ia'] = array(
 	'editwarning-desc' => 'Monstra un advertimento quando un usator tenta quitar un formulario de modification sin immagazinar',
 	'editwarning-warning' => 'Quitar iste pagina pote causar le perdita de omne modificationes que tu ha facite.
 (Es possibile disactivar iste aviso in le section "{{int:prefs-editing}}" del Preferentias.)',
+	'editwarning-preference' => 'Advertir me quando io quita un pagina de modification sin publicar le cambiamentos',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -416,6 +417,17 @@ $messages['mk'] = array(
 	'editwarning-preference' => 'Предупреди ме кога сакам да напуштам страница за уредување без да ги имам зачувано промените',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'editwarning' => 'Amaran penyuntingan',
+	'editwarning-desc' => 'Menunjuk amaran apabila seseorang pengguna cuba untuk meninggalkan borang sunting tanpa menyimpan',
+	'editwarning-warning' => 'Meninggalkan laman ini mungkin akan menyebabkan anda kehilangan sebarang perubahan yang telah anda lakukan.
+Anda boleh melumpuhkan amaran in di bahagian "{{int:prefs-editing}}" dalam keutamaan anda.',
+	'editwarning-preference' => 'Beri saya amaran apabila saya meninggalkan sesebuah laman penyuntingan tanpa menyimpan perubahan.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -515,7 +527,9 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'editwarning' => 'Уларытыы сэрэтиитэ',
 	'editwarning-desc' => 'Кыттааччы көннөрбүтүн бигэргэппэккэ эрэ тахсан эрэрин сэрэтэр',
-	'editwarning-warning' => 'Атын сирэйгэ көстөххүнэ билигин оҥорбут уларытыыларыҥ барыта сүтэн хаалыахтара.',
+	'editwarning-warning' => 'Атын сирэйгэ көстөххүнэ билигин оҥорбут уларытыыларыҥ барыта сүтэн хаалыахтара.
+Бу сэрэтиини туруорууларыҥ бу сирэйдэригэр «{{int:prefs-editing}}» араарыаххын сөп.',
+	'editwarning-preference' => 'Эрэдээксийэлиир сирэйтэн уларытыыларбын бигэргэппэккэ тахсаары гыннахпына сэрэтээр',
 );
 
 /** Slovak (Slovenčina)

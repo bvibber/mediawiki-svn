@@ -228,7 +228,7 @@ $messages['ar'] = array(
 	'optin-survey-question-usedtoolbar-ifno' => 'إذا كانت الإجابة بلا، فلم لم تستخدمه؟ أستسخدمه في المستقبل؟ من فضلك وضّح الإجابة.',
 	'optin-survey-question-different' => 'ماذا كان بإمكاننا فعله لكي تستمر في استخدام البيتا؟',
 	'optin-survey-question-feedback' => 'من فضلك أطلعنا على أي ملاحظات أو مخاوف أو آراء أخرى عن المشروع - كل ملاحظة مفيدة!:',
-	'optin-survey-question-browser' => 'ما هو المتصفح الذي تستخدمه؟',
+	'optin-survey-question-browser' => 'ما المتصفح الذي تستخدمه؟',
 	'optin-survey-answer-browser-other' => 'متصفح آخر:',
 	'optin-survey-question-os' => 'ما نظام التشغيل الذي تستخدمه؟',
 	'optin-survey-answer-os-other' => 'نظام تشغيل آخر:',
@@ -535,15 +535,17 @@ Možete se bilo kada ponovno prijaviti putem klika na link "{{int:optin-try}}" u
 	'optin-improvements' => '== Šta je poboljšano? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Poboljšana navigacija
-Jasna naznaka stanja "čitanja" i "uređivanja" kada ste na stranici članka ili stranici za razgovor. Kutija za pretaživanje je uklonjena iz navigacione trake sa lijeve strane u gornji desni ugao zbog lakšeg pristupa i bržeg traženja.
+Novi sistem navigacije čini jednostavnije da se vidi gdje ste i šta radite, kao i gdje idete i kako do tamo stići. Sa kutijom za pretaživanje u gornjem desnom uglu, osobina pretrage je lahka i brza za upotrebu.
 <div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=]]
 ;Poboljšanja trake za uređivanje
-Traka za uređivanje koja se može sakriti može sakriti ikone alata koji se ne upotrebljavaju često. Potvrđeni korisnici mogu proširiti alatnu traku i pristupiti posebnim ikonama.
-Pomoćne informacije (prečice) su ugrađene u alatnu traku.
-Ikone alatne trake su nanovo dizajnirane koristeći ikone Tango i Gnome.
-<div style="clear:both;"></div>',
+Nove i poboljšane ikone prikazuju akcije koje svaki alat izvrši dosta pregledijim. Proširive sekcije smanjuju traku dok čuvaju ne mnogo korištene alate sakrivene, ali dostupne u jednom kliku. Sekcija pomoći omogućuje brzi pristup referencama za zajedničku upotrebu wiki jezika.
+<div style="clear:both;"></div>
+== Kako se uključiti ==
+Da biste naučili više o projektu, posjetite [http://usability.wikimedia.org wiki Inicijative upotrebljivosti]. Tamo ćete naći informacije o našem istraživanju, dizajnu, razvoju i izdanjima. Da biste pitali ili ostavili opći fidbek, molimo koristite našu [http://usability.wikimedia.org/wiki/Talk:Prototype probnu stranicu za razgovor]. Da biste komentirali određenu temu, molimo koristite povezanu stranicu za razgovor. Ako nađete grešku, molimo ostavite komentar na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai stranici za razgovor izdanja] ili putem [https://bugzilla.wikimedia.org Bugzille].
+
+Hvala i nadamo se da ćete nam se javiti!',
 );
 
 /** Catalan (Català)
@@ -3012,13 +3014,15 @@ $messages['mn'] = array(
  * @author Kurniasan
  */
 $messages['ms'] = array(
+	'optin' => 'Opt-in Inisiatif Kebolehgunaan',
+	'optin-desc' => 'Membenarkan para pengguna mencuba Beta, peningkatan kebolehgunaan Inisiatif Kebolehgunaan terbaru.',
 	'optin-title-optedout' => 'Cuba Beta',
-	'optin-title-optedin' => 'Singkiran Versi Beta',
+	'optin-title-optedin' => 'Tinggalkan Beta',
 	'optin-title-justoptedin' => 'Selamat datang ke Beta',
 	'optin-title-justoptedout' => 'Terima kasih kerana menggunakan versi Beta kami',
 	'optin-title-feedback' => 'Maklum balas Beta',
 	'optin-needlogin' => 'Anda perlu [$1 log masuk] untuk mencuba versi Beta.',
-	'optin-intro' => 'Program Inisiatif Penggunaan Wikipedia telah berusaha untuk membaiki sistem penggunaan Wikipedia. Adakah anda ingin mencuba versi Beta kami?',
+	'optin-intro' => 'Program Inisiatif Kebolehgunaan Wikipedia telah berusaha keras untuk memperbaiki kebolehgunaan Wikipedia. Sudikah anda mencuba versi Beta kami?',
 	'optin-feedback-intro' => 'Terima kasih kerana sudi menggunakan Beta.
 Kami ingin mengetahui pendapat anda tentang versi ini. Oleh itu, amat kami hargai sekiranya anda sudi mengisi soal selidik di bawah.',
 	'optin-feedback-back' => 'Sekiranya anda tidak ingin mengisi soal selidik di bawah, kembali ke $1.',
@@ -3029,10 +3033,15 @@ Sekiranya anda tidak ingin menggunakan versi ini, sila tekan "{{int:optin-leave}
 Sekiranya anda ingin mencuba versi Beta, sila tekan "{{int:optin-try}}" pada bahagian kiri atas skrin anda.',
 	'optin-success-feedback' => 'Terima kasih atas pendapat anda!',
 	'optin-accept-short' => 'Lakukan sekarang!',
-	'optin-deny-short' => 'Tidak',
+	'optin-accept-long' => 'Cuba Beta',
+	'optin-accept-long-anon' => 'Daftar masuk dan cuba Beta',
+	'optin-deny-short' => 'Tidak, terima kasih',
+	'optin-deny-long' => 'Kembali ke laman sebelumnya',
+	'optin-submit-out' => 'Tinggalkan Beta',
+	'optin-submit-feedback' => 'Berikan maklum balas',
 	'optin-try' => 'Cuba Beta',
 	'optin-leave' => 'Tinggalkan Beta',
-	'optin-feedback' => 'Maklumbalas Beta',
+	'optin-feedback' => 'Maklum balas Beta',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Tidak',
 	'optin-survey-intro' => 'Terima kasih kerana mencuba Beta.
@@ -3060,6 +3069,29 @@ Kami ingin ketahui pandangan anda tentang antara muka baru kami, jadi kami mengh
 	'optin-survey-answer-os-other' => 'Lain-lain:',
 	'optin-survey-question-res' => 'Apakah resolusi skrin anda?',
 	'optin-survey-question-changes' => 'Perubahan apakah yang anda ingin lihat pada Beta di masa akan datang (sila pilih semua yang sesuai)?',
+	'optin-survey-answer-changes-nav' => 'Menjadikan pandu arah keseluruhan tapak lebih mudah digunakan.',
+	'optin-survey-answer-changes-edittools' => 'Menambah dan meningkatkan alatan penyuntingan.',
+	'optin-survey-answer-changes-upload' => 'Memperbaiki muat naik kandungan dan media.',
+	'optin-survey-answer-changes-richtext' => 'Membangun peralatan suntingan serupa dengan penyunting teks kaya.',
+	'optin-survey-answer-changes-lookfeel' => 'Menjadikan "rupa dan suasana" tapak ini lebih terkini.',
+	'optin-survey-answer-changes-predictability' => 'Memperbaiki kebolehjankaan prestasi.',
+	'optin-survey-answer-changes-custom' => 'Benarkan pengubahsuaian penguna yang lebih besar.',
+	'optin-survey-answer-changes-other' => 'Lain-lain:',
+	'optin-improvements' => '== Apa yang telah dipertingkatkan? ==
+[[File:UsabilityNavigation.png|left|link=]]
+;Pandu arah yang dipertingkatkan
+Sistem pandu arah yang baru memudahkan anda untuk melihat di mana anda berada dan apa yang anda lakukan, dan juga di mana anda boleh pergi dan bagaimana mahu ke sana. Dengan kotak carian diletakkan di bahagian atas sebelah kanan, tampilan pencarian adalah lebih mudah ditemui dan dan lebih cepat untuk digunakan.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;Penambahbaikan kotak alat tulis
+Arca-arca yang baru dan diperbaiki menjadikan tindakan yang akan dilakukan bagi setiap alat lebih jelas. Bahagian-bahagian yang boleh dikembangkan mengurangkan sepah sementara mengekalkan peralatan yang jarang digunakan cuma dalam jarak seklik sahaja.
+Bahagian bantuan membekalkan capaian pantas kepada rujukan bagi penanda wiki yang sering digunakan.
+<div style="clear:both;"></div>
+== Cara untuk menyertai ==
+Bagi mengetahui lebih lanjut akan projek ini ataupun ingin turut serta, sila lawati [http://usability.wikimedia.org Wiki Inisiatif Kepenggunaan].  Di sana anda akan temukan maklumat mengenai geran kami, kajian, rekaan + pembangunan, dan keluaran-keluaran. Bagi pertanyaan soalan dan maklum balas umum, sila gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype laman perbincangan prototaip] kami.  Bagi mengemukakan sesuatu subjek, sila gunakan laman-laman perbincangan yang berkaitan.  Sekiranya anda menemui sebarang pepijat, sila tinggalkan komen anda di [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Laman perbincangan keluaran Acai] ataupun melalui [https://bugzilla.wikimedia.org Bugzilla].
+
+Terima kasih, kami berharap untuk mendengar daripada anda!',
 );
 
 /** Maltese (Malti)
@@ -3950,7 +3982,7 @@ $messages['ru'] = array(
 	'optin-feedback-back' => 'Если вы не хотите участвовать в опросе, вы можете вернуться к $1.',
 	'optin-success-in' => 'Теперь вы принимаете участие в опробовании бета-версии интерфейса.
 Вы можете отключиться от программы в любое время, нажав  на ссылку «{{int:optin-leave}}» в верхней части экрана.',
-	'optin-leave-cancel' => 'Если вы хотите продолжить использовать Beta, вы можете вернуться к $1.',
+	'optin-leave-cancel' => 'Если вы хотите продолжить использовать бета-версию, вы можете вернуться к $1.',
 	'optin-success-out' => 'Вы успешно вышли из режима опробования бета-версии интерфейса.
 Вы можете ещё раз попробовать эту версию, нажав ссылку «{{int:optin-try}}» в правом верхнем углу экрана.',
 	'optin-success-feedback' => 'Спасибо за отзыв!',
@@ -4242,7 +4274,7 @@ Lahko jo poskusite znova kadarkoli s klikom na povezavo »{{int:optin-try}}« na
 	'optin-submit-feedback' => 'Pošlji povratne informacije',
 	'optin-try' => 'Poskusite Beta različico',
 	'optin-leave' => 'Zapusti Beta različico',
-	'optin-feedback' => 'Povratne informacije Beta rezličice',
+	'optin-feedback' => 'Povratne informacije Beta različice',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Ne',
 	'optin-survey-intro' => 'Zahvaljujemo se vam za preizkušanje Beta različice.
@@ -4366,7 +4398,7 @@ $messages['sr-ec'] = array(
 	'optin-survey-answer-changes-other' => 'Друго:',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -4647,7 +4679,7 @@ Yardım bölümü, viki-biçimlendirmesinin genel kullanımı için bir referans
 <div style="clear:both;"></div>',
 );
 
-/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
  */
 $messages['tt-cyrl'] = array(
@@ -4887,6 +4919,22 @@ $messages['vo'] = array(
 	'optin-try' => 'Sperimäntolös el Beta',
 	'optin-survey-yes' => 'Si',
 	'optin-survey-no' => 'No',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'optin' => 'זיך אײַנמעלדן צו דער ניצלעכקייט איניציאטיוו',
+	'optin-desc' => "דערלויבן באניצער אויספרובירן בעטאַ, דער ניצלעכקייט איניציאטיוו'ס לעצטע ניצלעכקייט פֿארבעסערונגען.",
+	'optin-title-optedout' => 'פרובירן בעטא',
+	'optin-title-optedin' => 'פֿארלאזן בעטא',
+	'optin-title-justoptedin' => 'ברוך־הבא צו בעטא',
+	'optin-title-justoptedout' => 'ייש"כ פאר פרובירן אונזער בעטא',
+	'optin-title-feedback' => 'בעטא פֿידבעק',
+	'optin-needlogin' => 'איר דארפֿט [$1 אריינלאגירן] צו פרובירן בעטא.',
+	'optin-intro' => 'די וויקיפעדיע ניצלעכקייט איניציאטיוו האט געארבעט שווער צו פארבעסערן די ניצלעכקייט פון וויקיפעדיע.
+אפשר ווילט איר פרובירן אונזער בעטא?',
 );
 
 /** Yue (粵語)

@@ -177,6 +177,10 @@ Kliknite na jednu od njih da pogledate njene statistike.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|korisnik je|korisnika su|korisnika je}} omogućilo ove postavke od kako su omogućene statistike postavki
 ** $2 {{PLURAL:$2|korisnik još je|korisnika su još|korisnika je još}} omogućilo
 ** $3 {{PLURAL:$3|korisnik je|korisnika su|korisnika je}} od tada onemogućilo',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|korisnik je|korisnika su|korisnika je}} omogućilo ove postavke od kako su aktivirane statistike postavki
+** $2 {{PLURAL:$2|korisnik|korisnika|korisnika}} još uvijek ima omogućene postavke
+** $3 {{PLURAL:$3|korisnik|korisnika|korisnika}} je onemogućilo postavke
+* Ukupno, $4 {{PLURAL:$4|korisnik|korisnika|korisnika}} ima postavljene ove postavke',
 	'prefstats-xaxis' => 'Trajanje (sati)',
 	'prefstats-factors' => 'Pregled prema: $1',
 	'prefstats-factor-hour' => 'sat',
@@ -737,6 +741,15 @@ Clicca super un pro vider statisticas super illo.',
 * In total, iste preferentia es active pro $4 {{PLURAL:$4|usator|usatores}}',
 	'prefstats-xaxis' => 'Durata (horas)',
 	'prefstats-factors' => 'Monstrar per: $1',
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'sex horas',
+	'prefstats-factor-day' => 'die',
+	'prefstats-factor-week' => 'septimana',
+	'prefstats-factor-twoweeks' => 'duo septimanas',
+	'prefstats-factor-fourweeks' => 'quatro septimanas',
+	'prefstats-factor-default' => 'retornar al scala predefinite',
+	'prefstats-legend-out' => 'Non active',
+	'prefstats-legend-in' => 'Active',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1011,6 +1024,24 @@ $messages['ms'] = array(
 Klik salah satu untuk melihat statistik mengenainya.',
 	'prefstats-noprefs' => 'Tiada keutamaan sedang dijejaki buat masa ini.
 Tatarajahkan $wgPrefStatsTrackPrefs untuk menjejaki keutamaan-keutamaan.',
+	'prefstats-counters' => '* $1 pengguna telah membolehkan keutamaan ini sejak statistik keutamaan diaktifkan
+** $2 pengguna masih membolehkannya
+** $3 pengguna telah melumpuhkannya',
+	'prefstats-counters-expensive' => '* $1 orang pengguna telah membolehkan keutamaan ini sejak statistik keutamaan diaktifkan
+** $2 orang pengguna masih membolehkannya
+** $3 orang pengguna telah melumpuhkannya
+* Secara keseluruhan, $4 orang pengguna mempunyai set keutamaan ini',
+	'prefstats-xaxis' => 'Tempoh (jam)',
+	'prefstats-factors' => 'Papar per: $1',
+	'prefstats-factor-hour' => 'jam',
+	'prefstats-factor-sixhours' => 'enam jam',
+	'prefstats-factor-day' => 'hari',
+	'prefstats-factor-week' => 'minggu',
+	'prefstats-factor-twoweeks' => 'dua minggu',
+	'prefstats-factor-fourweeks' => 'empat minggu',
+	'prefstats-factor-default' => 'kembali ke skala lalai',
+	'prefstats-legend-out' => 'Berhenti',
+	'prefstats-legend-in' => 'Menyertai',
 );
 
 /** Erzya (Эрзянь)
@@ -1292,6 +1323,26 @@ $messages['sah'] = array(
 	'prefstats-title' => 'Туруоруулар статиистикалара',
 	'prefstats-list-intro' => 'Билигин маннык туруоруулар ааҕыллыахтарын сөп.
 Статиистикатын көрөргө ханныгы эмит биири тал.',
+	'prefstats-noprefs' => 'Билигин туруоруулар кэтэммэттэр.
+Ону кэтиир гынарга $wgPrefStatsTrackPrefs туруор.',
+	'prefstats-counters' => '* $1 кыттааччы бу туруорууну холбоммут (туруоруулары ааҕар кэмтэн ыла)
+** $2 кыттааччы холбообут
+** $3 кыттааччы араарбыт',
+	'prefstats-counters-expensive' => '* $1 кыттааччы бу туруорууну холбоммут (туруоруулары ааҕар кэмтэн ыла)
+** $2 кыттааччы холбообут
+** $3 кыттааччы араарбыт
+* Барыта бу туруорууну $4 кыттааччы холбообут.',
+	'prefstats-xaxis' => 'Болдьоҕо, уһуна (чааһынан)',
+	'prefstats-factors' => 'Баччалыынан көрдөр: $1',
+	'prefstats-factor-hour' => 'чаас',
+	'prefstats-factor-sixhours' => 'алта чаас',
+	'prefstats-factor-day' => 'хонук',
+	'prefstats-factor-week' => 'нэдиэлэ',
+	'prefstats-factor-twoweeks' => 'икки нэдиэлэ',
+	'prefstats-factor-fourweeks' => 'түөрт нэдиэлэ',
+	'prefstats-factor-default' => 'төттөрү, ыйыллыбатаҕына көстөр улаханыгар (масштаабыгар)',
+	'prefstats-legend-out' => 'Арахсарга',
+	'prefstats-legend-in' => 'Холбонорго',
 );
 
 /** Sicilian (Sicilianu)
@@ -1446,7 +1497,7 @@ Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
 	'prefstats-factor-default' => 'varsayılan ölçeğe dön',
 );
 
-/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
  */
 $messages['tt-cyrl'] = array(
