@@ -54,8 +54,7 @@ class HoneypotIntegration {
 	public static function loadHoneypotURLs() {
 		global $wgMemc, $wgHoneypotURLSource;
 		$key = wfMemcKey( 'honeypot-integration-urls' );
-		
-		global $wgHoneypotURLSource;
+
 		// Curl opt is a hack because the honeypot folks don't seem to have a valid
 		//  certificate.
 		$data = Http::get( $wgHoneypotURLSource, 'default',
