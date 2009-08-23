@@ -250,7 +250,7 @@ var editToolbarConfiguration = {
 											options: {
 												pre: insertText
 											}
-										});
+										}, $j(this) );
 										$j(this).dialog( 'close' );
 									},
 									'edittoolbar-tool-link-cancel': function() {
@@ -260,12 +260,12 @@ var editToolbarConfiguration = {
 								open: function() {
 									// Smart pre-fill text fields
 									var selection = $j(this).data( 'context' ).$textarea.getSelection();
+										$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
+										$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
 									if ( selection != '' ) {
 										var inttext, inttarget, exttext, exttarget;
 										var matches;
 										var tab = -1;
-										$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
-										$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
 										if ( ( matches = selection.match( /^(\s*)\[\[([^\]\|]+)(\|([^\]\|]*))?\]\](\s*)$/ ) ) ) {
 											// [[foo|bar]] or [[foo]]
 											inttarget = matches[2];
@@ -581,7 +581,7 @@ var editToolbarConfiguration = {
 													pre: table,
 													ownline: true
 												}
-											});
+											}, $j(this) );
 										$j(this).dialog( 'close' );
 									},
 									'edittoolbar-tool-table-cancel': function() {
