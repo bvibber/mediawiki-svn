@@ -249,7 +249,17 @@ $messages['af'] = array(
 	'edittoolbar-loading' => 'Besig om te laai...',
 	'edittoolbar-tool-bold' => 'Vet',
 	'edittoolbar-tool-bold-example' => 'Vetgedrukte teks',
+	'edittoolbar-tool-italic' => 'Kursief',
+	'edittoolbar-tool-link' => 'Skakel',
 	'edittoolbar-tool-link-cancel' => 'kanselleer',
+	'edittoolbar-tool-file-example' => 'Voorbeeld.jpg',
+	'edittoolbar-tool-heading' => 'Opskrif',
+	'edittoolbar-tool-heading-1' => 'Vlak 1',
+	'edittoolbar-tool-heading-2' => 'Vlak 2',
+	'edittoolbar-tool-heading-3' => 'Vlak 3',
+	'edittoolbar-tool-heading-4' => 'Vlak 4',
+	'edittoolbar-tool-heading-5' => 'Vlak 5',
+	'edittoolbar-tool-heading-example' => 'Opskrifteks',
 	'edittoolbar-group-list' => 'Lys',
 	'edittoolbar-group-size' => 'Grootte',
 	'edittoolbar-tool-big' => 'Groot',
@@ -532,6 +542,7 @@ $messages['be-tarask'] = array(
 {{ns:file}}:Example.jpg|Подпіс2',
 	'edittoolbar-tool-newline' => 'Новы радок',
 	'edittoolbar-tool-table' => 'Табліца',
+	'edittoolbar-tool-table-example' => 'Радок $1, ячэйка $2',
 	'edittoolbar-tool-table-example-header' => 'Радок $1, ячэйка $2 (назва)',
 	'edittoolbar-tool-table-title' => 'Уставіць табліцу',
 	'edittoolbar-tool-table-dimensions' => 'Памеры',
@@ -1636,9 +1647,14 @@ $messages['de'] = array(
 {{ns:file}}:Beispiel.jpg|Beschreibung2',
 	'edittoolbar-tool-newline' => 'Neue Zeile',
 	'edittoolbar-tool-table' => 'Tabelle',
+	'edittoolbar-tool-table-example' => 'Zeile $1, Zelle $2',
+	'edittoolbar-tool-table-example-header' => 'Zeile $1, Zelle $2 (Überschrift)',
 	'edittoolbar-tool-table-title' => 'Tabelle einfügen',
+	'edittoolbar-tool-table-dimensions' => 'Maße',
 	'edittoolbar-tool-table-dimensions-rows' => 'Zeilen',
 	'edittoolbar-tool-table-dimensions-columns' => 'Spalten',
+	'edittoolbar-tool-table-dimensions-headerrows' => 'Kopfzeilen',
+	'edittoolbar-tool-table-dimensions-headercolumns' => 'Kopfspalten',
 	'edittoolbar-tool-table-insert' => 'Einfügen',
 	'edittoolbar-tool-table-cancel' => 'Abbrechen',
 	'edittoolbar-tool-replace' => 'Ersetzen',
@@ -3794,6 +3810,7 @@ $messages['hsb'] = array(
 {{ns:file}}:Example.jpg|Popis2',
 	'edittoolbar-tool-newline' => 'Nowa linka',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example' => 'Rjadka $1, cela $2',
 	'edittoolbar-tool-table-example-header' => 'Rjadka $1, cela $2 (hłowa)',
 	'edittoolbar-tool-table-title' => 'Tabelu zasunyć',
 	'edittoolbar-tool-table-dimensions' => 'Wotměry',
@@ -5049,18 +5066,7 @@ $messages['ksh'] = array(
 {{ns:file}}:Beishpell.jpg|zweijte Beld-Täx',
 	'edittoolbar-tool-newline' => 'Neu Reih',
 	'edittoolbar-tool-table' => 'Tabäll',
-	'edittoolbar-tool-table-example' => '
-! Kopp 1
-! Kopp 2
-! Kopp 3
-|-
-| Reih 1, Shpallde 1
-| Reih 1, Shpallde 2
-| Reih 1, Shpallde 3
-|-
-| Reih 2, Shpallde 1
-| Reih 2, Shpallde 2
-| Reih 2, Shpallde 3',
+	'edittoolbar-tool-table-example' => 'De $2. Kolommne en de $1. Reij',
 	'edittoolbar-tool-table-example-header' => 'De $2. Kolommne en de $1. Reij (Kopp)',
 	'edittoolbar-tool-table-title' => 'Tabäll ennfööje',
 	'edittoolbar-tool-table-dimensions' => 'Ömfang un Afmeßunge',
@@ -6665,6 +6671,7 @@ $messages['oc'] = array(
 {{ns:file}}:Exemple.jpg|Descripcion 2',
 	'edittoolbar-tool-newline' => 'Saut de linha',
 	'edittoolbar-tool-table' => 'Tablèu',
+	'edittoolbar-tool-table-example' => 'Linha $1, cellula $2',
 	'edittoolbar-tool-table-example-header' => 'Linha $1, cellula $2 (entèsta)',
 	'edittoolbar-tool-table-title' => 'Inserir un tablèu',
 	'edittoolbar-tool-table-dimensions' => 'Dimensions',
@@ -7492,6 +7499,7 @@ $messages['ru'] = array(
 {{ns:file}}:Example.jpg|Описание2',
 	'edittoolbar-tool-newline' => 'Новая строка',
 	'edittoolbar-tool-table' => 'Таблица',
+	'edittoolbar-tool-table-example' => 'Строка $1, ячейка $2',
 	'edittoolbar-tool-table-example-header' => 'Строка $1, ячейка $2 (заголовок)',
 	'edittoolbar-tool-table-title' => 'Вставить таблицу',
 	'edittoolbar-tool-table-dimensions' => 'Размеры',
@@ -8469,6 +8477,7 @@ $messages['tr'] = array(
 {{ns:file}}:Örnek.jpg|Resimyazısı2',
 	'edittoolbar-tool-newline' => 'Yeni satır',
 	'edittoolbar-tool-table' => 'Tablo',
+	'edittoolbar-tool-table-example' => 'Satır $1, hücre $2',
 	'edittoolbar-tool-table-example-header' => 'Satır $1, hücre $2 (başlık)',
 	'edittoolbar-tool-table-title' => 'Tablo ekle',
 	'edittoolbar-tool-table-dimensions' => 'Boyutlar',
@@ -8709,6 +8718,7 @@ $messages['vec'] = array(
 {{ns:file}}:Esenpio.jpg|Didascalia2',
 	'edittoolbar-tool-newline' => 'Riga nova',
 	'edittoolbar-tool-table' => 'Tabèla',
+	'edittoolbar-tool-table-example' => 'Lìnia $1, colòna $2',
 	'edittoolbar-tool-table-example-header' => 'Lìnia $1, colòna $2 (intestassion)',
 	'edittoolbar-tool-table-title' => 'Inserissi na tabèla',
 	'edittoolbar-tool-table-dimensions' => 'Dimensioni',
@@ -9156,18 +9166,7 @@ $messages['zh-hans'] = array(
 {{ns:file}}:Example.jpg|标题2',
 	'edittoolbar-tool-newline' => '换行',
 	'edittoolbar-tool-table' => '表格',
-	'edittoolbar-tool-table-example' => '-
-! 表头 1
-! 表头 2
-! 表头 3
-|-
-| 行 1, 格 1
-| 行 1, 格 2
-| 行 1, 格 3
-|-
-| 行 2, 格 1
-| 行 2, 格 2
-| 行 2, 格 3',
+	'edittoolbar-tool-table-example' => '行$1，列$2',
 	'edittoolbar-tool-table-example-header' => '行$1，列$2（标题）',
 	'edittoolbar-tool-table-title' => '插入表格',
 	'edittoolbar-tool-table-dimensions' => '大小',
