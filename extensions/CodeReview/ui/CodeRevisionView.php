@@ -609,7 +609,7 @@ class CodeRevisionView extends CodeView {
 				'name' => "wpReply{$parent}",
 				'id' => "wpReplyTo{$parent}",
 				'cols' => 40,
-				'rows' => 5 ) ) .
+				'rows' => 10 ) ) .
 			$text .
 			'</textarea>' .
 			'</div>' .
