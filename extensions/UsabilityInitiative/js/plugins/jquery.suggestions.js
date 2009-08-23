@@ -263,7 +263,7 @@ $.fn.suggestions = function( param, param2 ) {
 	function highlightResult( result, updateTextbox ) {
 		// TODO: Use our own class here
 		var selected = getHighlightedRow();
-		if ( selected.get( 0 ) != result.get( 0 ) ) {
+		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
 				result = selected.prev();
 			} else if ( result == 'next' ) {
