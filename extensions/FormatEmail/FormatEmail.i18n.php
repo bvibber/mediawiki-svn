@@ -77,6 +77,16 @@ $messages['bg'] = array(
 $2',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'email-desc' => "Aotren a ra ouzhpennañ talbennoù pe traoñ pajennoù personelaet er posteloù kaset d'an implijerien dezho ur c'homlec'h elektronek.",
+	'email_footer' => "Kaset eo bet ar postel-mañ deoc'h gant $1 dre reizhiad postelañ {{SITENAME}}.
+
+$2",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -167,6 +177,17 @@ $messages['es'] = array(
 	'email-desc' => 'Permite configurar encabezados y pies para añadir a los correos electrónicos del usuario.',
 	'email_footer' => '----------------------------------------------------------------------------
 Este correo ha sido enviado por $1 a través del sistema de correo electrónico de {{SITENAME}}.
+
+$2',
+);
+
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'email-desc' => 'Lubab saata lehekülje poolt kohandatud päiseid/jalusid, mis lisatakse kasutajate e-kirjadele',
+	'email_footer' => '----------------------------------------------------------------------------
+See kirja on saatnud $1, läbi {{SITENAME}} e-kirjade süsteemi.
 
 $2',
 );
@@ -707,6 +728,15 @@ $messages['vi'] = array(
 	'email-desc' => 'Cho phép thêm phần đầu/cuối tùy chọn vào thư điện tử người dùng.',
 	'email_footer' => '----------------------------------------------------------------------------
 E-mail này được gửi đến cho bạn từ hệ thống e-mail của $1.
+
+$2',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'email_footer' => 'דעם דאזיקן ע-פאסט איז געשיקט געווארן צו אייך דורך דער {{SITENAME}} ע-פאסט סיסטעם פון $1.
 
 $2',
 );

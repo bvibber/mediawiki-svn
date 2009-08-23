@@ -125,9 +125,11 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'intersection-desc' => 'Diskwel a ra ur roll padelliget eus ar pennadoù nevesañ en ur rummad, pe en ur skourr a veur a rummad',
 	'intersection_toomanycats' => 'Error: Re a rummadoù !',
 	'intersection_toofewcats' => 'Error: Re nebeut a rummadoù !',
 	'intersection_noresults' => "Error: Disoc'h ebet !",
+	'intersection_noincludecats' => "Fazi : Ret eo deoc'h merkañ ur rummad da nebeutañ, pe spisaat un esaouenn anv",
 );
 
 /** Bosnian (Bosanski)

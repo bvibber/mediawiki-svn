@@ -313,6 +313,13 @@ $messages['tl'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Bilang ng kamakailang mga kaganapang pinagalaw ng adres ng IP, ayon sa \"Proyektong Palayok ng Pulot-pukyutan\" (''Project Honey Pot'')",
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'honeypot-desc' => 'MedyaViki siteleri için [http://projecthoneypot.org/ Honey Pot Projesi] ile entegrasyonunu sağlar',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

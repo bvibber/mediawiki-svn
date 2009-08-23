@@ -1378,9 +1378,11 @@ riddler|Człowiek-Zagadka',
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'vote' => 'Voté',
+	'vote-desc' => 'A dà na possibilità ëd sondagi sempi',
 	'vote-header' => "A peul voté për '''ël superbargé dl<nowiki>'</nowiki>ann''' ambelessì!",
 	'vote-current' => "Sò vot corent a l'é për '''$1'''.",
 	'vote-legend' => 'Voté ò cambié sò vot',
@@ -1395,8 +1397,10 @@ Gioanin|Gioanin',
 	'vote-results-choice' => 'Sërnùa',
 	'vote-results-count' => 'Cont',
 	'vote-results-none' => "Al dì d'ancheuj a l'ha anco' pa votà gnun.",
-	'vote-login' => "Për voté a venta [$1 ch'a rintra ant ël sistema].",
+	'vote-login' => 'It deuve [$1 intré ant ël sistema] për voté.',
 	'vote-invalid-choice' => "A venta ch'as selession-a un-a dj'opsion disponibij.",
+	'right-vote' => 'Vota',
+	'right-voteadmin' => "Varda j'arzultà dij vot",
 );
 
 /** Pashto (پښتو)

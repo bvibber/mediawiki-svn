@@ -69,6 +69,13 @@ $messages['he'] = array(
 	'magicnonumberedheadings-desc' => 'הוספת מילת הקסם "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'magicnonumberedheadings-desc' => 'Nagadugang sang magic word "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

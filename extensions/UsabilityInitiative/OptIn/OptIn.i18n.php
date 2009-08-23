@@ -155,6 +155,7 @@ $messages['af'] = array(
 	'optin-needlogin' => 'U moet [$1 aanteken] voordat u Beta kan gebruik.',
 	'optin-success-feedback' => 'Baie dankie vir u terugvoer!',
 	'optin-accept-short' => 'Inskakeling',
+	'optin-accept-long-anon' => 'Teken in en probeer Beta',
 	'optin-deny-short' => 'Nee dankie',
 	'optin-deny-long' => 'Terug na die vorige bladsy',
 	'optin-submit-out' => 'Verlaat Beta',
@@ -4935,6 +4936,17 @@ $messages['yi'] = array(
 	'optin-needlogin' => 'איר דארפֿט [$1 אריינלאגירן] צו פרובירן בעטא.',
 	'optin-intro' => 'די וויקיפעדיע ניצלעכקייט איניציאטיוו האט געארבעט שווער צו פארבעסערן די ניצלעכקייט פון וויקיפעדיע.
 אפשר ווילט איר פרובירן אונזער בעטא?',
+	'optin-accept-long' => 'פרובירן בעטא',
+	'optin-accept-long-anon' => 'ארײַנלאגירן און אויספרובירן בעטא',
+	'optin-submit-out' => 'פֿארלאזן בעטא',
+	'optin-try' => 'פרובירן בעטא',
+	'optin-survey-yes' => 'יא',
+	'optin-survey-no' => 'ניין',
+	'optin-survey-question-browser' => 'וועלכער בלעטערער ניצט איר?',
+	'optin-survey-answer-browser-other' => 'אנדער בלעטערער:',
+	'optin-survey-question-os' => 'וועלכע אפערירן סיסטעם ניצט איר?',
+	'optin-survey-answer-os-other' => 'אנדער אפערירן סיסטעם:',
+	'optin-survey-question-res' => 'וואס איז די רעזאלוציע פון אייער עקראן?',
 );
 
 /** Yue (粵語)

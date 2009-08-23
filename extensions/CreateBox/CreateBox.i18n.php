@@ -87,6 +87,19 @@ $messages['bg'] = array(
 	'createbox-create' => 'Създаване',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'createbox-desc' => "Boest skridaozañ gouestlet d'ar c'hrouiñ pajennoù",
+	'createbox-create' => 'Krouiñ',
+	'createbox-exists' => "Ho tigarez, bez' ez eus eus \"'''{{FULLPAGENAME}}'''\" c'hoazh.
+
+N'haller ket krouiñ ar bajenn-mañ, met gallout a reer [{{fullurl:{{FULLPAGENAME}}|action=edit}} degas kemmoù enni], [{{fullurl:{{FULLPAGENAME}}}} lenn anezhi], pe dibab krouiñ ur bajenn all en ur implijout ar voest a-is.
+
+<createbox>break=no</createbox>",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

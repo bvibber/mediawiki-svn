@@ -91,6 +91,13 @@ $messages['he'] = array(
 	'interlanguage-desc' => 'קבלת קישורים בינלשוניים מאתר ויקי אחר',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'interlanguage-desc' => 'Gakuha sang interlengwahe halin sa lain nga wiki',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

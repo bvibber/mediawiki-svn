@@ -82,6 +82,13 @@ $messages['bn'] = array(
 	'mwsearch-desc' => 'MWSearch প্লাগইন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'mwsearch-desc' => "Adveziant MWSearch evit ar c'hlaskoù e MediaWiki",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

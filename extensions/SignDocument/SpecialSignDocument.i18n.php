@@ -2195,6 +2195,7 @@ $messages['kn'] = array(
 	'sign-realname' => 'ಹೆಸರು:',
 	'sign-viewfield-realname' => 'ಹೆಸರು',
 	'sign-viewfield-country' => 'ದೇಶ',
+	'sign-viewfield-email' => 'ಇ-ಅಂಚೆ',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -4362,6 +4363,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'sign-realname' => 'נאמען:',
 	'sign-closed' => 'פֿאַרמאַכט',
 );
 

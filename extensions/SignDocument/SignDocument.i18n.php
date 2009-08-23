@@ -411,11 +411,15 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'signaturelogpage' => 'Registr dle firme',
-	'signaturelogpagetext' => "Sòn a l'é ël registr dle firme giontà ant sëj document ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].",
+	'signature-desc' => 'A abìlita la [[Special:SignDocument|firma]] ëd document',
+	'signaturelogpagetext' => "Sòn a l'é ël registr ëd [[Special:SignDocument|tute le firme digitaj giontà ai document]].",
 	'signaturelogentry' => "a l'é firmasse ël document $1",
+	'right-sigadmin' => 'A aministra le firme dij document',
+	'right-createsigndocument' => 'Crea dij document che a peulo esse firmà',
 );
 
 /** Portuguese (Português)

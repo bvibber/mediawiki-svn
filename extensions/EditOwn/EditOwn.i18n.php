@@ -57,6 +57,13 @@ $messages['be-tarask'] = array(
 	'editown-desc' => 'Удзельнікі без правоў рэдагаваньня могуць рэдагаваць толькі старонкі, якія яны самі стварылі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'editown-desc' => "An implijerien bet berzet outo ar gwir da gemmañ pajennoù n'hallont kemmañ nemet ar pajennoù bet krouet ganto",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

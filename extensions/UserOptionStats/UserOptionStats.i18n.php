@@ -35,8 +35,13 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'useroptionstats' => 'Statistieke oor gebruikersinstellings',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Spesiale bladsy]] vir rapportering van Mediawiki gebruikersinstellings',
+	'uos-warn' => 'PHPlot is nie geïnstalleer nie!',
+	'uos-choose' => 'Kies een van die volgende gebruikersinstellings: $1',
 	'uos-unknown' => '*Standaardinstelling',
 	'uos-other' => '*Ander',
+	'uos-title' => 'Verdeling van die waardes vir van gebruikersinstelling $1',
 );
 
 /** Arabic (العربية)

@@ -61,6 +61,13 @@ $messages['gsw'] = array(
 	'mwreleases-desc' => 'Fiegt e [[Mediawiki:Mwreleases-list|Lischt vu dr unterstitzte Usgabe]] yy, wu mer au mit API cha abruefe',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'mwreleases-desc' => 'Gadugang sang [[Mediawiki:Mwreleases-list|list]] sa mga gin paguha na, nga makita paagi sa API',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

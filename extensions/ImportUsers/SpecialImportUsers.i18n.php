@@ -944,6 +944,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'importusers-log-summary' => 'ಸಾರಾಂಶ',
+	'importusers-email' => 'ಇ-ಅಂಚೆ',
 );
 
 /** Korean (한국어)

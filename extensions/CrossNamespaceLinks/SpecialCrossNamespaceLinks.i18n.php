@@ -1040,6 +1040,15 @@ $messages['vo'] = array(
 	'crossnamespacelinkstext' => '$1: {{PLURAL:$2|yüm|yüms}} $2 lü $3',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'crossnamespacelinks' => 'אריבער־נאמענטייל לינקען',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|רשימה פון לינקען צווישן נאמענטיילן]] וואס דארפן נישט עקזיסטירן אויף {{SITENAME}}',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|לינק|לינקען}} צו $3',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'crossnamespacelinks' => '跨空間名連結',

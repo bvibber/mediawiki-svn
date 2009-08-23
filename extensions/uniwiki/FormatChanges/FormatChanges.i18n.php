@@ -416,6 +416,16 @@ $messages['pl'] = array(
 	'formatchanges-editedby' => '$1 – edytowana przez $2 ($3)',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'formatchanges-desc' => "A torna formaté j'[[Special:RecentChanges|ùltime modìfiche]]",
+	'formatchanges-anonymous' => 'Anònim',
+	'formatchanges-createdby' => '$1 - creà da $2 ($3)',
+	'formatchanges-editedby' => '$1 - modificà da $2 ($3)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

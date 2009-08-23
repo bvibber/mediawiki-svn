@@ -42,6 +42,13 @@ $messages['be-tarask'] = array(
 	'contributorsaddon-desc' => 'Дадае JavaScript да спасылак «Асноўныя аўтары»',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'contributorsaddon-desc' => 'Ouzhpennañ a ra ar popup JavaScript da liammoù an "Aozerien bennañ"',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

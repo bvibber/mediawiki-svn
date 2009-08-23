@@ -54,6 +54,13 @@ $messages['bg'] = array(
 	'didyoumean-desc' => 'Добавя препратки към страници със „подобни” заглавия',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'didyoumean-desc' => 'Ouzhpennañ a ra liammoù d\'ar pajennoù dezho titloù "damheñvel"',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -62,6 +62,13 @@ $messages['gsw'] = array(
 	'semanticinternalobjects-desc' => 'Intärni Objäkt in Semantic MediaWiki yysetze',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'semanticinternalobjects-desc' => 'Pagplastar sang internal na mga bagay sa Semantik MedyaWiki',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

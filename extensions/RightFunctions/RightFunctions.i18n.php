@@ -339,6 +339,16 @@ $messages['pl'] = array(
 	'rightfunctions-ns' => '(z zabezpieczenia przestrzeni nazw)',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'rightfunctions-desc' => 'Funsion dël parser basà an sij përmess',
+	'rightfunctions-casc' => '(da sorziss a cascà)',
+	'rightfunctions-local' => '(da pàgina local)',
+	'rightfunctions-ns' => '(da protession namespace)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

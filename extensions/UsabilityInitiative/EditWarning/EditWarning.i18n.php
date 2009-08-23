@@ -483,6 +483,17 @@ Możesz wyłączyć pojawianie się tego ostrzeżenia za pomocą ustawienia w sw
 	'editwarning-preference' => 'Ostrzegaj mnie, gdy opuszczam stronę edycji bez zapisania zmian',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'editwarning' => 'Avis ëd modìfica',
+	'editwarning-desc' => "Mosta n'avis quand che n'utent a serca ëd lassé la forma ëd modìfica sensa salvé",
+	'editwarning-warning' => "Lassé sta pàgina-sì a peul fé an manera che it perde tute le modìfiche ch'it l'has fàit.
+It peule disabilité st'avis-sì ant la session \"{{int:prefs-editing}}\" dij tò gust",
+	'editwarning-preference' => 'Avisme quand che i lasso na pàgina ëd modìfiche con modìfiche nen salvà',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Heldergeovane

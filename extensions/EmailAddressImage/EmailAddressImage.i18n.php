@@ -49,6 +49,13 @@ $messages['bg'] = array(
 	'emailaddressimage-desc' => 'Добавя <tt>&lt;email&gt;</tt> за показване на адреси за е-поща като картинки',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'emailaddressimage-desc' => "Ouzhpennañ a ra <tt>&lt;email&gt;</tt> evit diskwel ur chomlec'h postel da skeudenn",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

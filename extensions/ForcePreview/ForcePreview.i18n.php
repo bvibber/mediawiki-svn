@@ -78,6 +78,15 @@ $messages['be-tarask'] = array(
 	'right-forcepreviewexempt' => 'магчымасьць захаваньня старонак без папярэдняга прагляду',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'forcepreview' => 'Enrollañ ar bajenn (rakwelet a-raok)',
+	'forcepreview-desc' => 'Gwallañ a ra ar rakweled evit an implijerien diaotre',
+	'right-forcepreviewexempt' => "A c'hall enrollañ hep ober gant ar rakweled",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

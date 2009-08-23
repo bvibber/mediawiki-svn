@@ -43,6 +43,13 @@ $messages['be-tarask'] = array(
 	'gotocategory-desc' => 'Правярае умовы пошуку ў катэгорыі: прастора назваў для функцыянальнай магчымасьці «пераход на старонку»',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'gotocategory-desc' => "Gwiriañ a ra an termenoù klask a-enep ar Rummad : esaouenn anv evit an arc'hwel 'mont d'ar bajenn'",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

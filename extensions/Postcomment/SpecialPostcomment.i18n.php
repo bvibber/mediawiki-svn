@@ -37,6 +37,13 @@ $messages['qqq'] = array(
 	'postcomment_replyto' => '$1 is the user that has posted previous comment. For example see http://www.wikihow.com/Discussion:Main-Page',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'postcomment_said' => 'het gesê',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

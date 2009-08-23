@@ -564,6 +564,16 @@ $messages['pl'] = array(
 	'searchbox-namespaces' => 'Przestrzenie nazw',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'searchbox-desc' => "Përmëtt anseriment ëd forme d'arserca",
+	'searchbox-search' => 'Serca',
+	'searchbox-go' => 'Va',
+	'searchbox-namespaces' => 'Spassi nominaj:',
+);
+
 /** Pontic (Ποντιακά)
  * @author Consta
  */

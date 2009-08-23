@@ -36,6 +36,11 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'webchat' => 'Webchat',
+	'webchat-desc' => "Voeg 'n [[Special:WebChat|Spesiale bladsy]] by om met andere wikigebruikers te kan klets",
+	'webchat-header' => 'Via hierdie spesiale bladsy kan u met ander gebruikers van die wiki saamwerk.
+Kliek eenvoudig op die "Connect"-knoppie om in te skakel.
+As u aangeteken is sal u gebruikersnaam as noemnaam gebruik word.
+Anonieme gebruikers kry \'n outomaties gegenereerde gebruikersnaam wat later gewysig kan word.',
 	'right-webchat' => 'Maak dit moontlik om [[Special:WebChat|webchat]] te gebruik',
 );
 
@@ -401,6 +406,19 @@ Aby się połączyć po prostu naciśnij przycisk „Połącz”.
 Jeśli jesteś zalogowany pseudonim zostanie wstępnie ustawiony.
 Anonimowi użytkownicy otrzymują automatycznie wygenerowany pseudonim, ale mogą go zmienić.',
 	'right-webchat' => 'Dostęp do korzystania z [[Special:WebChat|czatu webowego]]',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'webchat' => 'Chat web',
+	'webchat-desc' => 'A gionta na [[Special:WebChat|pàgina special]] dovrà për ciaté an temp real con àutri utent ëd la wiki',
+	'webchat-header' => 'Sta pàgina special-sì at përmëtt ëd colaboré an temp real con àutri utent ëd la wiki.
+Për coleghete fà mach che sgnaché ël boton "Coleghte".
+Se it ses logà con tò stranòm, a sarà precompilà.
+A j\'utent anònim aj na ven dàit un generà automaticament, a a peul esse cambià.',
+	'right-webchat' => 'Autorisà a dovré la [[Special:WebChat|chat web]]',
 );
 
 /** Pashto (پښتو)

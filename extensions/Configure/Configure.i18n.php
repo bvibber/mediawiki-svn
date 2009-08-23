@@ -291,6 +291,8 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-section-extension' => '{{Identical|Extensions}}',
 	'configure-section-search' => '{{Identical|Search}}',
 	'configure-section-htcp' => 'See Wikipedia articles on [[:wikipedia:HTCP|HTCP]] and [[:wikipedia:multicast|multicast]].',
+	'configure-select-wiki-view-desc' => 'The extensions "Configure" makes it possible to administer wiki configuration settings for multiple wikis, and keep different versions of it. This versies can be viewed.',
+	'configure-select-wiki-submit' => '{{Identical|Select}}',
 	'configure-transwiki-not-in-range' => '* $1 is the wiki, as given by the user
 * $2 is the list of allowed wikis
 * $3 is the number of items in $2',
@@ -372,6 +374,8 @@ $messages['af'] = array(
 	'configure-section-users' => 'Gebruikers',
 	'configure-section-extension' => 'Uitbreidings',
 	'configure-section-search' => 'Soek',
+	'configure-select-wiki-view-desc' => 'Kies die wiki waarvoor u die weergawes van die instellings wil sien.',
+	'configure-select-wiki-submit' => 'Kies',
 	'configure-throttle-action-edit' => 'Wysig',
 	'configure-throttle-action-move' => 'Skuif',
 	'configure-throttle-action-rollback' => 'Terugrol',
@@ -1748,7 +1752,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-section-output' => 'Ausgabe',
 	'configure-select-wiki' => 'Wiki-Auswahl',
 	'configure-select-wiki-desc' => 'Wähle das Wiki aus, dessen Einstellungen du bearbeiten möchtest.',
-	'configure-select-wiki-view-desc' => 'Wähle ein Wiki, für welches du die Versionen sehen möchtest.',
+	'configure-select-wiki-view-desc' => 'Wähle ein Wiki, für welches du die Konfigurations-Versionen sehen möchtest.',
 	'configure-select-wiki-view-all' => 'Alle Wikis',
 	'configure-select-wiki-view-specific' => 'Bestimmtes Wiki:',
 	'configure-select-wiki-submit' => 'Auswählen',
@@ -1820,6 +1824,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Imre
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'configure-summary' => 'Diese Spezialseite ermöglicht Ihnen die Konfiguration dieses Wikis, siehe [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfigurationsoptionen] für weitere Informationen.',
@@ -1832,7 +1837,7 @@ Bitte erstellen Sie sie und führen Sie configure.sql darin aus oder korrigieren
 	'configure-old-not-available' => 'Die alte Version der Einstellungen, die Sie angefragt haben, $1, ist nicht vorhanden',
 	'configure-image-url-explanation' => 'Geben Sie die URL zu einem Bild oder den Namen eines Bildes auf diesem Wiki (ohne den Namensraum) an. Wenn Sie das Feld verlassen, wird eine Vorschau angezeigt.',
 	'configure-select-wiki-desc' => 'Wählen Sie das Wiki aus, dessen Einstellungen Sie bearbeiten möchten.',
-	'configure-select-wiki-view-desc' => 'Wählen Sie ein Wiki, für welches Sie die Versionen sehen möchten.',
+	'configure-select-wiki-view-desc' => 'Wählen Sie ein Wiki, für welches Sie die Konfigurations-Versionen sehen möchten.',
 	'configure-view-not-allowed' => 'Es ist Ihnen nicht gestattet diese Einstellung einzusehen',
 );
 
@@ -3742,7 +3747,7 @@ Prošu wutwor abo změń jón, zo by tute rozšěrjenje wužiwał.',
 	'configure-section-output' => 'Wudaće',
 	'configure-select-wiki' => 'Wikijowy wuběr',
 	'configure-select-wiki-desc' => 'Wubjer wiki, kotryž chceš konfigurować.',
-	'configure-select-wiki-view-desc' => 'Wubjer wiki, za kotryž chceš wersije widźeć.',
+	'configure-select-wiki-view-desc' => 'Wubjer wiki, za kotryž chceš konfiguraciske wersije widźeć.',
 	'configure-select-wiki-view-all' => 'Wšě wikije',
 	'configure-select-wiki-view-specific' => 'Specifiski wiki:',
 	'configure-select-wiki-submit' => 'Wubrać',
@@ -4380,7 +4385,7 @@ Assegnare a PHP il diritto di scrittura su di essa per utilizzare questa estensi
 	'configure-section-output' => 'Output',
 	'configure-select-wiki' => 'Selezione del sito wiki',
 	'configure-select-wiki-desc' => 'Selezionare il sito wiki da configurare.',
-	'configure-select-wiki-view-desc' => 'Selezionare un sito wiki di cui visualizzare le versioni.',
+	'configure-select-wiki-view-desc' => 'Selezionare un sito wiki di cui visualizzare le versioni di configurazione.',
 	'configure-select-wiki-view-all' => 'Tutti i siti wiki',
 	'configure-select-wiki-view-specific' => 'Sito wiki specifico:',
 	'configure-select-wiki-submit' => 'Seleziona',
@@ -4570,7 +4575,7 @@ $messages['ja'] = array(
 	'configure-section-output' => '出力',
 	'configure-select-wiki' => 'ウィキを選択',
 	'configure-select-wiki-desc' => '設定したいウィキを選んでください。',
-	'configure-select-wiki-view-desc' => 'バージョンを見たいウィキを選んでください。',
+	'configure-select-wiki-view-desc' => '構成バージョンを見たいウィキを選んでください。',
 	'configure-select-wiki-view-all' => 'すべてのウィキ',
 	'configure-select-wiki-view-specific' => '特定のウィキ:',
 	'configure-select-wiki-submit' => '選択',
@@ -4825,6 +4830,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'configure-section-email' => 'ಇ-ಅಂಚೆ',
 	'configure-section-timezone' => 'ಸಮಯ ವಲಯ',
 );
 
@@ -4992,7 +4998,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-section-output' => 'Ußjabe',
 	'configure-select-wiki' => 'Wiki ußsöhke',
 	'configure-select-wiki-desc' => 'Donn dat Wiki ußsöhke, ann dämm sing Enshtellunge De je donn wells.',
-	'configure-select-wiki-view-desc' => 'Donn e Wiki ußsöke, för wat De de Versione sinn wells.',
+	'configure-select-wiki-view-desc' => 'Donn e Wiki ußsöke, dämm singe Enshtellunge ier Versione De sinn wells.',
 	'configure-select-wiki-view-all' => 'All Wikis',
 	'configure-select-wiki-view-specific' => 'Dat beschtemmpte Wiki:',
 	'configure-select-wiki-submit' => 'Ußsöke!',
@@ -5977,7 +5983,7 @@ Er wordt een voorvertoning weergegeven als u het veld verlaat.',
 	'configure-section-output' => 'Uitvoer',
 	'configure-select-wiki' => 'Wikiselectie',
 	'configure-select-wiki-desc' => 'Selecteer de wiki die u wilt instellen.',
-	'configure-select-wiki-view-desc' => 'Selecteer de wiki waarvoor u de versies wilt bekijken.',
+	'configure-select-wiki-view-desc' => 'Selecteer de wiki waarvoor u de versies van de instellingen wilt bekijken.',
 	'configure-select-wiki-view-all' => "Alle wiki's",
 	'configure-select-wiki-view-specific' => 'Specifieke wiki:',
 	'configure-select-wiki-submit' => 'Selecteren',
@@ -7175,6 +7181,7 @@ $messages['roa-tara'] = array(
  * @author Flrn
  * @author Innv
  * @author Kaganer
+ * @author Kv75
  * @author Lockal
  * @author Putnik
  * @author Александр Сигачёв
@@ -7194,7 +7201,7 @@ $messages['ru'] = array(
 	'configure-ext-doc' => 'Смотрите документацию в сети',
 	'configure-ext-schemachange' => "'''Внимание.''' Для корректной работы этого расширения необходимо обновление базы данных!",
 	'configure-ext-settings' => 'Настройки',
-	'configure-ext-settings-dep-errors' => 'Это расширение не может быть включено из-за {{PLURAL:$1|следующей настройки с неприемлимым значением|следующих настроек с неприемлимыми значениеми}} :',
+	'configure-ext-settings-dep-errors' => 'Это расширение не может быть включено из-за {{PLURAL:$1|следующей настройки с неприемлемым значением|следующих настроек с неприемлемыми значениями}} :',
 	'configure-ext-settings-dep-error' => '$1: требуемое значение: $2, текущее значение: $3',
 	'configure-ext-use-extension' => 'Использовать это расширение',
 	'configure-ext-use' => 'Использовать',
@@ -7296,7 +7303,7 @@ $messages['ru'] = array(
 	'configure-section-output' => 'Вывод',
 	'configure-select-wiki' => 'Выбор вики',
 	'configure-select-wiki-desc' => 'Выберите вики, которую вы хотите настроить',
-	'configure-select-wiki-view-desc' => 'Выберите вики, версии которой вы хотите просмотреть.',
+	'configure-select-wiki-view-desc' => 'Выберите вики, версии настроек которой вы хотите просмотреть.',
 	'configure-select-wiki-view-all' => 'Все вики',
 	'configure-select-wiki-view-specific' => 'Конкретная вики:',
 	'configure-select-wiki-submit' => 'Выбрать',

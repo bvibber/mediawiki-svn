@@ -149,6 +149,7 @@ Tennet : $6
 A galon,
 
 $2",
+	'userrightsnotif-desc' => "Kas a ra ur postel kelaouiñ d'an implijerien zo bet kemmet o gwirioù",
 );
 
 /** Bosnian (Bosanski)

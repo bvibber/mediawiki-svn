@@ -44,6 +44,13 @@ $messages['be-tarask'] = array(
 	'crowdauthentication-desc' => 'Дапаўненьне аўтэнтыфікацыі для Atlassian Crowd',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'crowdauthentication-desc' => 'Adveziant gwiriañ an ostilh muzuliañ ar red evit Atlassian Crowd',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

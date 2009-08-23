@@ -200,9 +200,16 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'viewapc' => 'APC-inligting',
 	'viewapc-info-general' => 'Algemene inligting',
 	'viewapc-apc-version' => 'APC weergawe',
 	'viewapc-php-version' => 'PHP weergawe',
+	'viewapc-start-time' => 'Begintyd',
+	'viewapc-uptime' => 'Optyd',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|lêer|lêers}} ($2)',
+	'viewapc-memory-usage' => 'Geheuegebruik',
+	'viewapc-memory-free' => 'Vry: $1 ($2)',
+	'viewapc-memory-used' => 'Gebruik: $1 ($2)',
 	'viewapc-display-value' => 'Waarde',
 	'viewapc-display-filename' => 'Lêernaam',
 	'viewapc-display-info' => 'Naam',

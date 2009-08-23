@@ -388,6 +388,17 @@ Gromadzi ona wszystkie strony, którym przypisana jest kategoria „$1”, a tak
 	'autocreatecategorypages-editor' => 'Automatyczne tworzenie kategorii',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'autocreatecategorypages-desc' => "Crea le pàgine dle categorìe mancante automaticament quand ch'as salva",
+	'autocreatecategorypages-stub' => 'Sta-sì a l\'é na pàgina ëd categorìa.
+A lista tute le pàgine ant la categorìa "$1" com tute le sotcategorìe dla categorìa "$1" se a esisto.',
+	'autocreatecategorypages-createdby' => "Creà automaticament da l'estension AutoCreateCategoryPages.",
+	'autocreatecategorypages-editor' => 'Creator automàtich ëd categorìa',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

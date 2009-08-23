@@ -63,6 +63,7 @@ Cumulative statistics means that for each interval the number of edits in that i
 	'usagestatisticscumulative-text' => 'This message is used as parameter $1 both in {{msg|Usagestatistics-editindividual}} and in {{msg|Usagestatistics-editpages}} ($1 can also be {{msg|Usagestatisticsincremental-text}}).
 
 {{Identical|Cumulative}}',
+	'usagestatisticscalselect' => '{{Identical|Select}}',
 	'usagestatistics-editindividual' => "Text in usage statistics graph. Parameter $1 can be either 'cumulative' ({{msg|Usagestatisticscumulative-text}}) or 'incremental' ({{msg|Usagestatisticsincremental-text}})",
 	'usagestatistics-editpages' => "Text in usage statistics graph. Parameter $1 can be either 'cumulative' ({{msg|Usagestatisticscumulative-text}}) or 'incremental' ({{msg|Usagestatisticsincremental-text}})",
 	'right-viewsystemstats' => '{{doc-right|viewsystemstats}}',
@@ -85,6 +86,7 @@ $messages['af'] = array(
 	'usagestatisticsintervalmonth' => 'Maand',
 	'usagestatisticscumulative' => 'Kumulatief',
 	'usagestatisticscumulative-text' => 'kumulatief',
+	'usagestatisticscalselect' => 'Kies',
 );
 
 /** Amharic (አማርኛ)

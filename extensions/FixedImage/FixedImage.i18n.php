@@ -81,6 +81,13 @@ $messages['bn'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> ট্যাগ চিত্র হিসেবে যোগ করো',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'fixedimage-desc' => 'Ouzhpennañ a ra ar valizenn <tt><nowiki><fundraising></nowiki></tt> evel ur skeudenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

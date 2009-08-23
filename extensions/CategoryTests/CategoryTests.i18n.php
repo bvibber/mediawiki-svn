@@ -120,6 +120,13 @@ $messages['he'] = array(
 	'categorytests-desc' => 'פונקציות לבדיקת קטגוריות',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'categorytests-desc' => 'Pagfunksiyon para sa kategorya nga gina testingan',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

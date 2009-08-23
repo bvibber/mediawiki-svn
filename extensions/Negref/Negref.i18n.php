@@ -73,6 +73,13 @@ $messages['he'] = array(
 	'negref-desc' => 'הוספת תגית להסדרת המיקום של תגיות <nowiki><ref/></nowiki> כלשהן בתוך טקסט קלט, כדי לתקן מספר מצבים של שימוש בתבניות',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'negref-desc' => 'Gahatag sang tag para maka negosyar ang ginhalinan sang bisan ano <nowiki><ref/></nowiki> nga mga tag sa sulod sang input teksto para makayo sang iban nga templeyt use cases',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

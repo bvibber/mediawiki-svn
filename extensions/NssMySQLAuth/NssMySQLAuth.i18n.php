@@ -542,6 +542,13 @@ $messages['km'] = array(
 	'nss-welcome-mail-subject' => 'ការបង្កើត​គណនី',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'am-email' => 'ಇ-ಅಂಚೆ',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Joebertj
  */

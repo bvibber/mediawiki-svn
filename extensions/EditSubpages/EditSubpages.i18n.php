@@ -87,6 +87,22 @@ $messages['bg'] = array(
 	'editsubpages-desc' => 'Позволява на администраторите чрез [[MediaWiki:Unlockedpages]] да свалят защитата на страница и всички нейни подстраници за анонимно редактиране',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'editsubpages-desc' => "Talvezout a ra d'ar verourien da zibrennañ ur bajenn hag an holl ispajennoù stag outi evit ar c'hemmoù dizanv, dre [[MediaWiki:Unlockedpages]]",
+	'unlockedpages' => "  #<!-- lezel al linenn-mañ evel m'emañ --><pre>
+# Merkit a-is ar pajennoù a fell deoc'h prennañ en ur skrivañ
+# * Anv ar bajenn
+# Ret eo d'ar pajennoù bet dibrennet kregiñ gant ur badellig a-benn bezañ kontet,
+# nep arouezenn all a vo sellet outi evel ouzh un notenn
+# [[liammoù]] a c'hall bezañ anv ar pajennoù ha ret eo doujañ d'an direnneg
+# Dibrennet e vo ar pajennoù kaozeal ent emgefre a-gevret gant ar bajenn
+# Gwelet http://www.mediawiki.org/wiki/Extension:EditSubpages evit gouzout hiroc'h
+  #</pre><!-- lezel al linenn-mañ evel m'emañ -->",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -31,6 +31,14 @@ $messages['bs'] = array(
 	'clicktracking-desc' => 'Praćenje klikova, napravljeno za praćenje događaja koji ne proizvode osvježavanje stanice',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'clicktracking' => 'Sledování kliknutí pro Iniciativu použitelnosti',
+	'clicktracking-desc' => 'Sledování kliknutí pro sledování událostí, které nezpůsobují znovunačtení stránky',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -70,6 +78,14 @@ $messages['ia'] = array(
 $messages['ja'] = array(
 	'clicktracking' => 'Usability Initiative クリック追跡',
 	'clicktracking-desc' => 'クリック追跡：ページの再描画を引き起こさないイベントを追跡記録する機能',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'clicktracking' => 'Dä <i lang="en">Wikipedia Usability Initiative</i> ier Kleckverfolljung',
+	'clicktracking-desc' => 'Klecks un Akßuhne Verfollje, di kein neu Sigg afroofe donn.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -541,6 +541,16 @@ $messages['pl'] = array(
 	'right-whatismyip' => 'Zobaczyć [[Special:WhatIsMyIP|własny adres IP]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'whatismyip' => "Col a l'é mè IP",
+	'whatismyip-desc' => "Mosta l'[[Special:WhatIsMyIP|adrëssa IP]] corenta ëd l'utent",
+	'whatismyip-out' => 'Toa adrëssa IP:',
+	'right-whatismyip' => 'Varda ël [[Special:WhatIsMyIP|pròpi adrëssa IP]]',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

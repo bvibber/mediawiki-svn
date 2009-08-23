@@ -54,6 +54,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 /** Message documentation (Message documentation)
  * @author Aotake
  * @author BrokenArrow
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Meno25
  * @author Mormegil
@@ -61,7 +62,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'ogg-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'ogg-desc' => '{{desc}}',
 	'ogg-short-general' => 'File details for generic (non-audio, non-video) Ogg files, short version.
 Parameters are: 
 * $1 file type, e.g. Vorbis, Speex
@@ -376,7 +377,7 @@ $messages['be-tarask'] = array(
 	'ogg-play-sound' => 'Прайграць аўдыё',
 	'ogg-no-player' => 'Прабачце, Ваша сыстэма ня мае неабходнага праграмнага забесьпячэньня для прайграваньня файлаў. Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце прайгравальнік</a>.',
 	'ogg-no-player-js' => 'Прабачце, але ў Вашай сыстэме адключаны JavaScript, альбо яна ня мае ніякага адпаведнага прайгравальніка.<br />
-Вы можаце <a href="$1">загрузіць кліп</a><br />альбо<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
+Вы можаце <a href="$1">загрузіць кліп</a> альбо <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
 	'ogg-no-xiphqt' => 'Адсутнічае кампанэнт  XiphQT для QuickTime.
 QuickTime ня можа прайграваць файлы ў фармаце Ogg бяз гэтага кампанэнта.
 Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце XiphQT</a> альбо выберыце іншы прайгравальнік.',
@@ -574,7 +575,7 @@ $messages['cs'] = array(
 	'ogg-play-sound' => 'Přehrát zvuk',
 	'ogg-no-player' => 'Váš systém zřejmě neobsahuje žádný podporovaný přehrávač. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Váš systém zřejmě neobsahuje žádný podporovaný přehrávač. </a>.',
 	'ogg-no-player-js' => 'Je nám líto, ale máte vypnutý JavaScript nebo váš systém neobsahuje žádný podporovaný přehrávač.<br />
-Můžete si <a href="$1">klip stáhnout</a><br />nebo<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/cs">si nainstalovat přehrávač</a>.',
+Můžete si <a href="$1">klip stáhnout</a> nebo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/cs">si nainstalovat přehrávač,</a> abyste si mohli klip přehrát v&nbsp;prohlížeči.',
 	'ogg-no-xiphqt' => 'Nemáte rozšíření XiphQT pro QuickTime. QuickTime nemůže přehrávat soubory ogg bez tohoto rozšíření. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Stáhněte XiphQT</a> nebo vyberte jiný přehrávač.',
 	'ogg-player-videoElement' => 'Vestavěná podpora v prohlížeči',
 	'ogg-player-oggPlugin' => 'Zásuvný modul do prohlížeče',
@@ -597,6 +598,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Metalhead64
  * @author MichaelFrey
  * @author Raimond Spekking
  * @author Umherirrender
@@ -618,7 +620,7 @@ $messages['de'] = array(
 	'ogg-play-sound' => 'Audio abspielen',
 	'ogg-no-player' => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
 	'ogg-no-player-js' => 'Entschuldigung, auf deinem System ist JavaScript deaktiviert oder es ist keine unterstützte Abspielsoftware vorhanden.<br />
-Du kannst <a href="$1">den Clip herunterladen</a><br />oder<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
+Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'ogg-no-xiphqt' => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder wähle eine andere Abspielsoftware.',
 	'ogg-player-videoElement' => 'Vorhandene Browserunterstützung',
 	'ogg-player-oggPlugin' => 'Browser-Plugin',
@@ -639,7 +641,7 @@ Du kannst <a href="$1">den Clip herunterladen</a><br />oder<br /><a href="http:/
 $messages['de-formal'] = array(
 	'ogg-no-player' => 'Ihr System scheint über keine Abspielsoftware zu verfügen. Bitte installieren Sie <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
 	'ogg-no-player-js' => 'Entschuldigung, auf Ihrem System ist JavaScript deaktiviert oder es ist keine unterstützte Abspielsoftware vorhanden.<br />
-Sie können <a href="$1">den Clip herunterladen</a><br />oder<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
+Sie können <a href="$1">den Clip herunterladen</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'ogg-no-xiphqt' => 'Ihr System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
 );
 
@@ -917,6 +919,7 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author Jean-Frédéric
  * @author Seb35
  * @author Sherbrooke
  * @author Urhixidur
@@ -938,8 +941,8 @@ $messages['fr'] = array(
 	'ogg-play-video' => 'Lire la vidéo',
 	'ogg-play-sound' => 'Lire le son',
 	'ogg-no-player' => 'Désolé, votre système ne possède apparemment aucun des lecteurs supportés. Veuillez installer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un des lecteurs supportés</a>.',
-	'ogg-no-player-js' => 'Désolé, sur votre système, soit JavaScript est désactivé ou n‘a pas de lecteur supporté.<br />
-Vous pouvez <a href="$1">télécharger le clip</a><br />ou<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">télécharger un lecteur</a> pour lire le clip dans votre navigateur.',
+	'ogg-no-player-js' => 'Désolé, sur votre système, soit JavaScript est désactivé, soit vous ne possédez pas de lecteur supporté.<br />
+Vous pouvez <a href="$1">télécharger l’extrait</a><br /> ou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">télécharger un lecteur</a> pour lire l’extrait dans votre navigateur.',
 	'ogg-no-xiphqt' => 'Vous n’avez apparemment pas le composant XiphQT pour Quicktime. Quicktime ne peut pas lire les fichiers Ogg sans ce composant. Veuillez <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">télécharger XiphQT</a> ou choisir un autre lecteur.',
 	'ogg-player-videoElement' => 'Support du navigateur natif',
 	'ogg-player-oggPlugin' => 'Module complémentaire du navigateur',
@@ -1422,7 +1425,7 @@ $messages['it'] = array(
 	'ogg-play-sound' => 'Riproduci il file sonoro',
 	'ogg-no-player' => 'Siamo spiacenti, ma non risulta installato alcun software di riproduzione compatibile. Si prega di <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scaricare un lettore</a> adatto.',
 	'ogg-no-player-js' => 'Il sistema in uso ha JavaScript disabilitato o non ha alcun riproduttore supportato.<br />
-È possibile <a href="$1">scaricare il clip</a><br />o<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scaricare un riproduttore</a> per visualizzare il clip nel proprio browser.',
+È possibile <a href="$1">scaricare il clip</a>o<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scaricare un riproduttore</a> per visualizzare il clip nel proprio browser.',
 	'ogg-no-xiphqt' => 'Non risulta installato il componente XiphQT di QuickTime. Senza tale componente non è possibile la riproduzione di file Ogg con QuickTime. Si prega di <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scaricare XiphQT</a> o scegliere un altro lettore.',
 	'ogg-player-videoElement' => 'Supporto browser nativo',
 	'ogg-player-oggPlugin' => 'Plugin browser',
@@ -1443,7 +1446,7 @@ $messages['it'] = array(
  * @author Kahusi
  */
 $messages['ja'] = array(
-	'ogg-desc' => 'Theora及びVorbis形式のOggファイルハンドラとJavaScriptプレイヤー',
+	'ogg-desc' => 'Theora および Vorbis 形式の Ogg ファイルハンドラーと JavaScript プレイヤー',
 	'ogg-short-audio' => 'Ogg $1 音声ファイル、$2',
 	'ogg-short-video' => 'Ogg $1 動画ファイル、$2',
 	'ogg-short-general' => 'Ogg $1 メディアファイル、$2',
@@ -1451,7 +1454,7 @@ $messages['ja'] = array(
 	'ogg-long-video' => '（Ogg $1 動画ファイル、長さ $2、$4×$5px、$3）',
 	'ogg-long-multiplexed' => '（Ogg 多重音声/動画ファイル、$1、長さ $2、$4×$5 ピクセル、$3）',
 	'ogg-long-general' => '（Ogg メディアファイル、長さ $2、$3）',
-	'ogg-long-error' => '（無効なOggファイル: $1）',
+	'ogg-long-error' => '（無効な Ogg ファイル: $1）',
 	'ogg-play' => '再生',
 	'ogg-pause' => '一時停止',
 	'ogg-stop' => '停止',
@@ -1459,8 +1462,8 @@ $messages['ja'] = array(
 	'ogg-play-sound' => '音声を再生',
 	'ogg-no-player' => '申し訳ありません、あなたのシステムには対応する再生ソフトウェアがインストールされていないようです。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここからダウンロードしてください</a>。',
 	'ogg-no-player-js' => '申し訳ありません、あなたのシステムでは JavaScript が無効になっているか、対応したプレイヤーをもっていません。<br />
-<a href="$1">クリップをダウンロード</a>する<br />か、または<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">プレイヤーをダウンロード</a>してブラウザでクリップを再生することができます。',
-	'ogg-no-xiphqt' => 'QuickTime用XiphQTコンポーネントがインストールされていないようです。QuickTimeでOggファイルを再生するには、このコンポーネントが必要です。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここからXiphQTをダウンロードする</a>か、別の再生ソフトをインストールしてください。',
+<a href="$1">クリップをダウンロード</a>するか、または<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">プレイヤーをダウンロード</a>してブラウザでクリップを再生することができます。',
+	'ogg-no-xiphqt' => 'QuickTime 用 XiphQT コンポーネントがインストールされていないようです。QuickTime で Ogg ファイルを再生するには、このコンポーネントが必要です。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここから XiphQT をダウンロードする</a>か、別の再生ソフトをインストールしてください。',
 	'ogg-player-videoElement' => 'ネイティヴ・ブラウザをサポート',
 	'ogg-player-oggPlugin' => 'ブラウザ・プラグイン',
 	'ogg-player-thumbnail' => '静止画像のみ',
@@ -1735,7 +1738,7 @@ $messages['ksh'] = array(
 Affspellprojramm hät, wat mer öngerstoze däte.
 Beß esu joot, un <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">donn e Affspellprojramm erunger lade</a>.',
 	'ogg-no-player-js' => 'Deit mer leid, Dinge Rääschner hät entweeder JavaSkrepp afjeschalldt udder kei zopaß Affspellprojramm.<br />
-Do kanns <a href="$1">di Dattei eronger laade</a><br />udder<br />en <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">zopaß Affspellprojramm eronger laade</a> öm dat Schtöck en Dingen Brauser affzeschpelle.',
+Do kanns <a href="$1">di Dattei eronger laade</a> udder en <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">zopaß Affspellprojramm eronger laade</a> öm dat Schtöck en Dingen Brauser affzeschpelle.',
 	'ogg-no-xiphqt' => 'Deijt mer leid, süüd_esu uß, wi wann Dinge Kompjutor nit
 dat XiphQT Affspellprojrammstöck för <i lang="en">QuickTime</i> hät,
 ävver <i lang="en">QuickTime</i> kann <i lang="en">Ogg</i>-Dateie
@@ -2114,9 +2117,7 @@ $messages['nl'] = array(
 	'ogg-no-player' => 'Uw systeem heeft geen van de ondersteunde mediaspelers.
 Installeer <a href="http://www.java.com/nl/download/manual.jsp">Java</a>.',
 	'ogg-no-player-js' => 'Uw systeem heeft JavaScript uitgeschakeld of er is geen ondersteunde mediaspeler.<br />
-U kunt <a href="$1">de clip downloaden</a><br />
-of<br />
-<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">een mediaspeler downloaden</a> om de clip af te spelen in uw browser.',
+U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">een mediaspeler downloaden</a> om de clip af te spelen in uw browser.',
 	'ogg-no-xiphqt' => 'Het lijkt erop dat u de component XiphQT voor QuickTime niet hebt.
 QuickTime kan Ogg-bestanden niet afspelen zonder deze component.
 Download <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> of kies een andere speler.',
@@ -2472,6 +2473,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ahonc
+ * @author Kv75
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -2490,8 +2492,8 @@ $messages['ru'] = array(
 	'ogg-play-video' => 'Воспроизвести видео',
 	'ogg-play-sound' => 'Воспроизвести звук',
 	'ogg-no-player' => 'Извините, ваша система не имеет необходимого программного обеспечение для воспроизведения файлов. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте проигрыватель</a>.',
-	'ogg-no-player-js' => 'К сожалению, в вашей системе отлучён JavaScript, или данная технология не поддерживается проигрывателем.<br />
-Вы можете <a href="$1">скачать ролик</a><br />или<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачать проигрыватель</a> для воспроизведения ролика в браузере.',
+	'ogg-no-player-js' => 'К сожалению, в вашей системе отключён JavaScript, или данная технология не поддерживается проигрывателем.<br />
+Вы можете <a href="$1">скачать ролик</a> или <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачать проигрыватель</a> для воспроизведения ролика в браузере.',
 	'ogg-no-xiphqt' => 'Отсутствует компонент XiphQT для QuickTime. QuickTime не может воспроизвести файл Ogg без этого компонента. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте XiphQT</a> или выберите другой проигрыватель.',
 	'ogg-player-videoElement' => 'Встроенная поддержка браузером',
 	'ogg-player-oggPlugin' => 'Ogg модуль',
@@ -3004,7 +3006,7 @@ $messages['vec'] = array(
 	'ogg-play-sound' => 'Scolta el file',
 	'ogg-no-player' => 'Semo spiacenti, ma sul to sistema no risulta instalà nissun software de riproduzion conpatibile. Par piaser <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scàrichete un letor</a> che vaga ben.',
 	'ogg-no-player-js' => 'El to computer o el ga JavaScript disabilità o no\'l gà nissun riprodutor suportà.<br />
-Te pol <a href="$1">descargar el video</a><br />o<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargar un riprodutor</a> par vardartelo sul to browser.',
+Te pol <a href="$1">descargar el video</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargar un riprodutor</a> par vardartelo sul to browser.',
 	'ogg-no-xiphqt' => 'No risulta mìa instalà el conponente XiphQT de QuickTime. Senza sto conponente no se pode mìa riprodur i file Ogg con QuickTime. Par piaser, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scàrichete XiphQT</a> o siegli n\'altro letor.',
 	'ogg-player-videoElement' => 'Suporto browser zà de suo (nativo)',
 	'ogg-player-oggPlugin' => 'Plugin browser',

@@ -709,12 +709,13 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Kv75
  * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'emergencydesysop' => 'Аварийное снятие прав администратора',
-	'emergencydesysop-desc' => 'Позволяет администратору жертвовать свои привелегии для снятия прав другого администратора',
+	'emergencydesysop-desc' => 'Позволяет администратору жертвовать свои привилегии для снятия прав другого администратора',
 	'emergencydesysop-title' => 'Снять права администратора у текущего участника и другого администратора',
 	'emergencydesysop-otheradmin' => 'Другой администратор для снятия прав',
 	'emergencydesysop-reason' => 'Причина удаления',

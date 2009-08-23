@@ -70,6 +70,13 @@ $messages['he'] = array(
 	'autoincrement-desc' => 'תכונת מפענח המוסיפה את המשתנה <nowiki>{{AUTOINCREMENT}}</nowiki> הגדל באופן אוטומטי',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'autoincrement-desc' => 'Isa ka variable nga hook nga nagadugang sang autoincrementing variable <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
