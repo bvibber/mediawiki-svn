@@ -894,45 +894,12 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Inject JavaScripts and Stylesheets in page output
 	 */
 	protected function injectScriptsAndStyles() {
-		global $wgOut, $wgScriptPath, $wgUseAjax, $wgJsMimeType, $wgConfigureStyleVersion;
+		global $wgOut, $wgScriptPath, $wgJsMimeType, $wgConfigureStyleVersion, $wgConfigureAddJsVariables;
+
+		$wgConfigureAddJsVariables = true; // tell efConfigureMakeGlobalVariablesScript() to add JS variables
 
 		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}" );
-
-		$add = Xml::encodeJsVar( wfMsg( 'configure-js-add' ) );
-		$remove = Xml::encodeJsVar( wfMsg( 'configure-js-remove' ) );
-		$removeRow = Xml::encodeJsVar( wfMsg( 'configure-js-remove-row' ) );
-		$promptGroup = Xml::encodeJsVar( wfMsg( 'configure-js-prompt-group' ) );
-		$groupExists = Xml::encodeJsVar( wfMsg( 'configure-js-group-exists' ) );
-		$getimgurl = Xml::encodeJsVar( wfMsg( 'configure-js-get-image-url' ) );
-		$imageerror = Xml::encodeJsVar( wfMsg( 'configure-js-image-error' ) );
-		$biglist_shown = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-shown' ) );
-		$biglist_hidden = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hidden' ) );
-		$biglist_show = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-show' ) );
-		$biglist_hide = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hide' ) );
-		$summary_none = Xml::encodeJsVar( wfMsg( 'configure-js-summary-none' ) );
-		$throttle_summary = Xml::encodeJsVar( wfMsg( 'configure-throttle-summary' ) );
-
-		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
-		$script = array(
-			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
-			"var wgConfigureAdd = {$add};",
-			"var wgConfigureRemove = {$remove};",
-			"var wgConfigureRemoveRow = {$removeRow};",
-			"var wgConfigurePromptGroup = {$promptGroup};",
-			"var wgConfigureGroupExists = {$groupExists};",
-			"var wgConfigureUseAjax = {$ajax};",
-			"var wgConfigureGetImageUrl = {$getimgurl};",
-			"var wgConfigureImageError = {$imageerror};",
-			"var wgConfigureBiglistShown = {$biglist_shown};",
-			"var wgConfigureBiglistHidden = {$biglist_hidden};",
-			"var wgConfigureBiglistShow = {$biglist_show};",
-			"var wgConfigureBiglistHide = {$biglist_hide};",
-			"var wgConfigureSummaryNone = {$summary_none};",
-			"var wgConfigureThrottleSummary = {$throttle_summary};",
-		 	"/*]]>*/</script>",
-			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
-		);
-		$wgOut->addScript( implode( "\n\t\t", $script ) . "\n" );
+		$wgOut->addScriptClass( 'Configure' );
 	}
 
 	/**
