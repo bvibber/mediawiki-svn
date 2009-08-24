@@ -131,3 +131,15 @@ $messages['ru'] = array(
 	'mwreleases-desc' => 'Добавляет [[Mediawiki:Mwreleases-list|список]] поддерживаемых выпусков, доступных через API',
 );
 
+$messages['yue'] = array(
+	'mwreleases-desc' => '加入一個支援發佈嘅[[Mediawiki:Mwreleases-list|一覽]]，可經API訪問',
+);
+
+$messages['zh-hans'] = array(
+	'mwreleases-desc' => '加入一个支持发布的[[Mediawiki:Mwreleases-list|列表]]，可经API访问',
+);
+
+$messages['zh-hant'] = array(
+	'mwreleases-desc' => '加入一個支援發佈的[[Mediawiki:Mwreleases-list|列表]]，可經API訪問',
+);
+
