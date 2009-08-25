@@ -540,7 +540,7 @@ class CodeRevisionView extends CodeView {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
 
-		if ( $comment->id === null ) {
+		if ( $comment->id === 0 ) {
 			$linkId = 'cpreview';
 			$permaLink = "<b>Preview:</b> ";
 		} else {
