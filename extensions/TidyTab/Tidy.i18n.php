@@ -196,7 +196,7 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
-	'tidy-desc' => 'Menambahkan tab "rapi" atau "takrapi" (tergantung dari $wgUseTidy) sebagai halaman biasa yang memungkinkan untuk seting global perapian HTML diacuhkan untuk tampilan tunggal',
+	'tidy-desc' => 'Menambahkan tab "rapi" atau "takrapi" (tergantung dari $wgUseTidy) pada halaman biasa yang akan menimpa seting HTML global untuk tampilan tunggal',
 	'tidy' => 'Rapi',
 	'untidy' => 'Takrapi',
 );

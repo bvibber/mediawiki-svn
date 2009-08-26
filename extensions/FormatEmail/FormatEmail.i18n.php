@@ -182,12 +182,13 @@ $2',
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
-	'email-desc' => 'Lubab saata lehekülje poolt kohandatud päiseid/jalusid, mis lisatakse kasutajate e-kirjadele',
+	'email-desc' => 'Võimaldab kasutaja e-kirjale kohandatud päise või jaluse lisada',
 	'email_footer' => '----------------------------------------------------------------------------
-See kirja on saatnud $1, läbi {{SITENAME}} e-kirjade süsteemi.
+Selle e-kirja saatis teile $1 võrgukohast {{SITENAME}}.
 
 $2',
 );

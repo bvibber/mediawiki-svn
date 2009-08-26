@@ -58,6 +58,7 @@ Shown in [[Special:Version]].',
  */
 $messages['af'] = array(
 	'vote' => 'Stem',
+	'vote-desc' => 'Maak eenvoudige opiniepeilins moontlik',
 	'vote-header' => "U kan hier stem vir '''Alleenheerser oor die Wêreld'''!",
 	'vote-current' => "U stem is tans vir '''$1'''.",
 	'vote-legend' => 'Stem of wysig stem',
@@ -75,6 +76,7 @@ riddler|Riddler',
 	'vote-login' => 'U moet [$1 inteken] om te kan stem.',
 	'vote-invalid-choice' => 'U moet een van die beskikbare opsies kies.',
 	'right-vote' => 'Stem',
+	'right-voteadmin' => 'Resultate van stemmings bekyk',
 );
 
 /** Amharic (አማርኛ)

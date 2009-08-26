@@ -446,6 +446,17 @@ $messages['pl'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Zacznij nowy wątek',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'discussionthreading-desc' => 'Gionta ël threading a le pàgine ëd discussion',
+	'discussionthreading-replysection' => 'arspond',
+	'discussionthreading-replysectionhint' => 'Arspond a sto messagi-sì',
+	'discussionthreading-threadnewsection' => 'neuv',
+	'discussionthreading-threadnewsectionhint' => 'Fa parte un neuv thread',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

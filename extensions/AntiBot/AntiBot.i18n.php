@@ -277,10 +277,11 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Matasg
  */
 $messages['lt'] = array(
-	'antibot-desc' => 'Paprasta sustena spamboto patikroms ir trigerio užkrovoms',
+	'antibot-desc' => 'Nesudėtinga aplinka spamboto patikrinimams ir trigerio užkrovoms',
 );
 
 /** Macedonian (Македонски)

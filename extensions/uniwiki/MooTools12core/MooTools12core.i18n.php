@@ -50,6 +50,13 @@ $messages['bg'] = array(
 	'mootools12core-desc' => '!Добавя [http://mootools.net mootools-1.2-core-yc.js], компактна Джаваскрипт платформа, към всяка страница',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'mootools12core-desc' => 'Ouzhpennañ a ra [http://mootools.net mootools-1.2-core-yc.js], un endro labour JavaScript krenn, war pep pajenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

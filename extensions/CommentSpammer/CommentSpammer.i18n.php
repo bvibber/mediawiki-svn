@@ -54,6 +54,20 @@ $messages['arz'] = array(
 	'cspammer-log-page' => 'سجل تعليق السبام',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'commentspammer-save-blocked' => 'Ваш IP-адрас падазраецца ў разьмяшчэньні спам-камэнтараў, таму старонка ня будзе захаваная.
+[[Special:UserLogin|Увайдзіце ў сыстэму]], каб пазьбегнуць гэтага.',
+	'commentspammer-desc' => 'Адхіляе рэдагаваньні ад падазроных спамэраў у камэнтатарах згодна чорнага сьпісу DNS',
+	'commentspammer-log-msg' => 'рэдагаваньне [[Special:Contributions/$1|$1]] у [[:$2]].',
+	'commentspammer-log-msg-info' => 'Апошні выпадак спаму $1 {{PLURAL:$1|дзень|дні|дзён}} таму, узровень пагрозы — $2, код парушэньня — $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Глядзіце падрабязнасьці] альбо [[Special:Blockip/$4|заблякуйце]].',
+	'cspammerlogpagetext' => 'Сьпіс рэдагаваньняў, якія былі дазволеныя альбо адхіленыя на аснове таго, ці была крыніца вядома як спамэр у камэнтатарах.',
+	'cspammer-log-page' => 'Журнал спамэраў у камэнтарах',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

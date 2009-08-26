@@ -320,7 +320,15 @@ $messages['he'] = array(
  * @author Suradnik13
  */
 $messages['hr'] = array(
+	'communityvoice' => 'Glas zajednice',
+	'communityvoice-desc' => 'Alati za sudjelovanje zajednice',
+	'communityvoice-ratings' => 'Rejtinzi',
 	'communityvoice-ratings-scale-status-sending' => 'Šaljem ...',
+	'communityvoice-ratings-scale-status-error' => 'Greška pri slanju!',
+	'communityvoice-ratings-scale-status-thanks' => 'Hvala na glasovanju!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|glas dat|glasa data|glasova datih}})',
+	'communityvoice-ratings-error-no-category' => 'U oznaci rejtinga nedostaje atribut kategorije.',
+	'communityvoice-ratings-error-no-title' => 'U oznaci rejtinga nedostaje naslovni atribut.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

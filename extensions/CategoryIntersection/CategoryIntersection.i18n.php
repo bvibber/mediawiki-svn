@@ -470,6 +470,17 @@ $messages['pl'] = array(
 	'categoryintersection-results' => 'Wyszukiwanie zwróciło $1 {{PLURAL:$1|wynik|wyniki|wyników}}',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categoryintersection' => 'Antërsession ëd categorìe',
+	'categoryintersection-desc' => 'A manten na tabela con i valor hash për [[Special:CategoryIntersection|Antërsession ëd categorìa]] an drinta a na pàgina',
+	'categoryintersection-doit' => 'Lista le pàgine an tute ste categorìe-sì',
+	'categoryintersection-maxcategories' => 'Ël màssim nùmer ëd categorìe antërsecante an $1.',
+	'categoryintersection-results' => "L'arserca a l'é rëndù $1 {{PLURAL:$1|arzultà|arzultà}}.",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

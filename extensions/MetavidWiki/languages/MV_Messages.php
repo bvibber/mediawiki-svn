@@ -2248,9 +2248,9 @@ $messages['fi'] = array(
 	'mv_most_recent' => 'Tuoreimmat',
 	'mv_most_viewed' => 'Katsotuimmat',
 	'mv_category' => 'luokka',
-	'mv_search_no_results' => 'Ei täsmääviä hakutuloksia mediatiedostoista',
+	'mv_search_no_results' => 'Ei osumia medioista',
 	'mv_remove_filter' => 'poista suodatin',
-	'mv_advaced_search' => 'Edistynyt mediatiedosto-haku',
+	'mv_advaced_search' => 'Edistynyt mediahaku',
 	'mv_view_wiki_page' => 'Näytä wikisivu',
 	'mv_editor_mode' => 'Muokkaustila',
 	'mv_sequence_add_manual' => 'Lisää nimenmukaisesti',
@@ -6360,7 +6360,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Edytor Metadanych Wideo i Wyszukiwarka Multimediów]',
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Edytor metadanych wideo oraz wyszukiwarka multimediów]',
 	'metavid' => 'Strona MetaVid',
 	'mv_missing_stream' => 'Brakujący strumień: $1',
 	'specialpages-group-mv_group' => 'Strony specjalne MetaVidWiki',
@@ -8538,6 +8538,7 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author PhiLiP
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
@@ -8548,6 +8549,7 @@ $messages['zh-hans'] = array(
 	'mv_upload_file' => '上载文件',
 	'mv_external_file' => '外部文件',
 	'mv_tool_search' => '搜索',
+	'mv_remove' => '移除',
 	'mv_search_stream_name' => '流名称',
 	'mv_stream_name' => '流名称',
 );

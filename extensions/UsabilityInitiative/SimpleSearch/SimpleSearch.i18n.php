@@ -89,10 +89,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'simplesearch' => 'Cerca simple',
-	'simplesearch-desc' => 'Afegeix funcionalitat extra a cerca simplificada de Vector',
+	'simplesearch-desc' => 'Afegeix funcionalitat extra a la cerca simplificada de Vector',
 	'simplesearch-search' => 'Cerca',
 );
 

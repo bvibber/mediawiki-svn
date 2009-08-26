@@ -47,6 +47,13 @@ $messages['be-tarask'] = array(
 	'trustedxff-desc' => 'Апрацоўка сьпісу давераных проксі-адрасоў ([http://meta.wikimedia.org/wiki/XFF_project Праект XFF])',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'trustedxff-desc' => "Merañ ur roll c'homlec'hioù servijerioù proksi fizius ([http://meta.wikimedia.org/wiki/XFF_project raktres XFF])",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

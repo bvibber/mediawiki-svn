@@ -68,6 +68,20 @@ $messages['qqq'] = array(
 	'wah-transcode-helpout' => 'You can use PLURAL on $1.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wah-short-audio' => '$1-klanklêer, $2',
+	'wah-short-video' => '$1-videolêer, $2',
+	'wah-short-general' => '$1-medialêer, $2',
+	'wah-long-video' => '($1-videolêer, lengte $2, $4×$5 pixsels, $3)',
+	'wah-long-general' => '(medialêer, lengte $2, $3)',
+	'wah-long-error' => '(ffmpeg kon die lêer nie lees nie: $1)',
+	'wah-javascript-off' => 'JavaScript moet geaktiveer wees om aan Wiki@Home deel te neem',
+	'wah-loading' => 'Die Wiki@Home-koppelvlak is besig om te laai <blink>...</blink>',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -113,7 +127,7 @@ $messages['br'] = array(
 	'wah-short-general' => 'restr media $1, $2',
 	'wah-long-audio' => '(restr son $1, pad $2, $3)',
 	'wah-long-video' => '(restr video $1, pad $2, $4×$5 piksel, $3)',
-	'wah-long-multiplexed' => '(restr klevet / video liesplekset $1, pad $2, $4×$5 piksel, $3 hollad)',
+	'wah-long-multiplexed' => '(restr klevet/video liesplezhet $1, pad $2, $4×$5 piksel, $3 hollad)',
 	'wah-long-general' => '(restr media, pad $2, $3)',
 	'wah-long-error' => "(n'eo ket bet ffmpeg evit lenn ar restr-mañ : $1)",
 	'wah-transcode-working' => "Emeur o treuzkodañ ar video, klaskit en-dro diwezhatoc'hik",
@@ -220,7 +234,7 @@ $messages['eu'] = array(
  * @author Silvonen
  */
 $messages['fi'] = array(
-	'wah-user-desc' => 'Wiki@Homen avulla yhteisön jäsenet voivat lahjoittaa käyttämättömiä keskusprosessori-syklejään paljon resursseja kuluttaviin operaatioihin',
+	'wah-user-desc' => 'Wiki@Homen avulla yhteisön jäsenet voivat lahjoittaa käyttämätöntä suoritinaikaa paljon resursseja kuluttaviin operaatioihin.',
 	'wah-short-audio' => 'Äänitiedosto $1, $2',
 	'wah-short-video' => 'Videotiedosto $1, $2',
 	'wah-short-general' => 'Mediatiedosto $1, $2',
@@ -269,8 +283,10 @@ $messages['gl'] = array(
 	'wah-long-multiplexed' => '(ficheiro multiplex de audio/vídeo, $1, duración $2, $4×$5 píxeles, $3 total)',
 	'wah-long-general' => '(ficheiro multimedia, duración $2, $3)',
 	'wah-long-error' => '(ffmpeg non puido ler este ficheiro: $1)',
-	'wah-transcode-working' => 'Este vídeo está sendo transcodificado; feito ao $1%',
-	'wah-transcode-helpout' => 'Pode axudar na transcodificación deste vídeo visitando o [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-working' => 'Este vídeo está sendo procesado, por favor, inténteo máis tarde',
+	'wah-transcode-helpout' => 'O vídeo está feito ao $1%.
+Pode axudar na transcodificación deste vídeo visitando o [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Fallou a transcodificación do ficheiro.',
 	'wah-javascript-off' => 'Debe ter o Javascript activado para participar no Wiki@Home',
 	'wah-loading' => 'cargando a interface do Wiki@Home <blink>...</blink>',
 );
@@ -432,6 +448,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -446,7 +463,7 @@ $messages['lb'] = array(
 	'wah-long-general' => '(Mediefichier, Längt $2, $3)',
 	'wah-long-error' => '(ffmpeg konnt de Fichier $1 net liesen)',
 	'wah-transcode-working' => 'Dëse Video gëtt elo ëmgewandelt, versicht et spéider w.e.g. nach eng kéier',
-	'wah-transcode-helpout' => 'De Clip ass zu $1 % fäerdeg. Dir kënnt hëllefen dëse Video ze transcdéieren wann Dir [[Special:WikiAtHome|Wiki@Home]] besicht',
+	'wah-transcode-helpout' => 'De Clip ass zu $1 % fäerdeg. Dir kënnt hëllefen dëse Video ze transcodéiere wann Dir [[Special:WikiAtHome|Wiki@Home]] besicht',
 	'wah-transcode-fail' => 'Dëse Fichier konnt net ëmgeschriwwe ginn.',
 	'wah-javascript-off' => 'Dir musst JavaScript zouloossen fir bäi Wiki@Doheem matzemaachen',
 	'wah-loading' => 'wiki@home Interface lueden <blink>...</blink>',

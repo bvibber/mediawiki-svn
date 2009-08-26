@@ -147,6 +147,14 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'מספר האירועים האחרונים שבוצעו מכתובת ה־IP, לפי מיזם Honey Pot',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'honeypot-desc' => 'Omogućuje intergraciju s [http://projecthoneypot.org/ projektom Honey Pot] za MediaWiki stranice',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Broj nedavnih događaja koje je IP adresa pokrenula, u skladu s projektom Honey Pot',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -287,6 +295,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'honeypot-desc' => 'Обеспечивает интеграцию MediaWiki-сайтов с [http://projecthoneypot.org/ проектом Honey Pot]',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Количество последних событий, вызвавших попадание IP-адреса в соответствие с проектом Honey Pot',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'honeypot-desc' => 'MediaWiki-саайтары [http://projecthoneypot.org/ Honey Pot бырайыагы] кытта холбуу үлэлииллэрин хааччыйар',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Honey Pot бырайыак иһинэн киирбит IP-аадырыстары хааччыйбыт түбэлтэлэр ахсааннара',
 );
 
 /** Slovak (Slovenčina)

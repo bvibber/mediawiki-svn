@@ -456,7 +456,7 @@ $messages['fi'] = array(
 * Tulokkaan kokeilu
 * Katso keskustelusivu',
 	'patrol-another' => 'Näytä toinen muokkaus, jos saatavilla.',
-	'patrol-stopped' => 'Olet tehnyt valinnan olla partioimatta lisää muokkauksia. $1',
+	'patrol-stopped' => 'Olet valinnut olla tarkastamatta lisää muokkauksia. $1',
 	'patrol-resume' => 'Napsauta jatkaaksesi.',
 	'group-patroller' => 'tarkastajat',
 	'group-patroller-member' => 'tarkastaja',
@@ -1723,6 +1723,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'patrol' => 'פאטראלירן רעדאקטירונגען',
+	'patrol-revert-reason' => 'אורזאַך:',
 	'patrol-skip' => 'איבערהיפן',
 	'patrol-reverting' => 'צוריקשטעלן: $1',
 	'group-patroller' => 'פאטראלירער',

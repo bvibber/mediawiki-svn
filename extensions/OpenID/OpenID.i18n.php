@@ -1795,9 +1795,38 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
+	'openid-desc' => 'Prijava na wiki s [http://openid.net/ OpenID] i prijava na druge stranice koje podržavaju OpenID s wiki suradničkim računom',
+	'openidlogin' => 'Prijava s OpenID',
+	'openidserver' => 'OpenID poslužitelj',
+	'openidxrds' => 'Yadis datoteka',
+	'openidconvert' => 'OpenID pretvarač',
+	'openiderror' => 'Greška pri provjeri',
+	'openiderrortext' => 'Došlo je do pogreške pri provjeri OpenID URL adrese',
+	'openidconfigerror' => 'Greška OpenID postavki',
+	'openidconfigerrortext' => 'OpenID konfiguracija spremanja za ovaj wiki nije valjana.  
+Molimo savjetujte se s [[Special:ListUsers/sysop|administratorom]].',
+	'openidpermission' => 'Greška kod OpenID prava pristupa',
 	'openidchoosepassword' => 'lozinka:',
+	'openidupdateuserinfo' => 'Ažuriraj moje osobne informacije',
+	'openiddelete' => 'Izbriši OpenID',
+	'openiddelete-button' => 'Potvrdi',
+	'openiddelete-sucess' => 'OpenID je uspješno uklonjen iz vašeg računa.',
+	'openiddelete-error' => 'Došlo je do pogreška pri uklanjanju OpenID iz Vašeg računa.',
+	'openid-prefstext' => '[http://openid.net/ OpenID] postavke',
+	'openid-pref-hide' => 'Sakrij Vaš OpenID na Vašoj suradničkoj stranici, ako ste prijavljeni s OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Ažuriraj sljedeće informacije iz OpenID identiteta svaki put kad se prijavim:',
+	'openid-urls-action' => 'Radnja',
+	'openid-urls-delete' => 'Izbriši',
+	'openid-add-url' => 'Dodaj novi OpenID',
+	'openidsigninorcreateaccount' => 'Prijavite se ili napravite novi račun',
+	'openid-provider-label-openid' => 'Unesite Vaš OpenID URL',
+	'openid-provider-label-google' => 'Prijava putem Vašeg Google računa',
+	'openid-provider-label-yahoo' => 'Prijava putem Vašeg Yahoo računa',
+	'openid-provider-label-aol' => 'Unesite Vaš AOL nadimak',
+	'openid-provider-label-other-username' => 'Unesite Vaše $1 suradničko ime',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2561,9 +2590,9 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidchooseurl' => 'En Numm gouf vun ärer OpenID ($1) geholl',
 	'openidchooseauto' => 'Een Numm deen automatesch generéiert gouf ($1)',
 	'openidchoosemanual' => 'E Numm vun ärer Wiel:',
-	'openidchooseexisting' => 'E Benotzerkont den et op dëser Wiki scho gëtt:',
+	'openidchooseexisting' => 'E Benotzerkont deen et op dëser Wiki scho gëtt:',
 	'openidchoosepassword' => 'Passwuert:',
-	'openidconvertinstructions' => "Mat dësem Formaulaire kënnt dir Äre Benotzerkont ännere fir eng OpenID URL ze benotzen oder méi OpenID URL'en derbäizetzen.",
+	'openidconvertinstructions' => "Mat dësem Formulaire kënnt dir Äre Benotzerkont ännere fir eng OpenID URL ze benotzen oder méi OpenID URL'en derbäizesetzen.",
 	'openidconvertoraddmoreids' => 'An en OpenID ëmwandelen oder eng aner OpenID URL derbäisetzen',
 	'openidconvertsuccess' => 'An en OpenID-Benotzerkont ëmgewandelt',
 	'openidconvertsuccesstext' => 'Dir hutt Är OpenID op $1 ëmgewandelt.',

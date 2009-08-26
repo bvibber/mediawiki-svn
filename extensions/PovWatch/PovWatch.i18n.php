@@ -599,6 +599,7 @@ Tellimuse tühistamiseks klõpsa allolevat nuppu.',
 Liitumiseks klõpsa allolevat nuppu.',
 	'povwatch_subscribe' => 'Telli',
 	'povwatch_added' => 'lisatud',
+	'right-povwatch_user' => 'Teiste kasutajate jälgimisloenditesse lehekülgi lisada',
 	'action-povwatch_user' => 'lisa see lehekülg teise kasutaja jälgimisloendisse',
 );
 

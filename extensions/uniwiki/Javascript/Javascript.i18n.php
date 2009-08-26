@@ -50,6 +50,13 @@ $messages['bg'] = array(
 	'javascript-desc' => 'Добавя uniwiki.js към всяка страница, съдържаща Джаваскрипт код, използван от разширенията Uniwiki',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'javascript-desc' => 'Ouzhpennañ a ra uniwiki.js war pep pajenn enni kod JavaScript rannet etre an astennoù Uniwiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

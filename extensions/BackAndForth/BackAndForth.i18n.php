@@ -32,10 +32,12 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Naudefj
  * @author SPQRobin
  */
 $messages['af'] = array(
 	'backforth-next' => 'Volgende ($1)',
+	'backforth-desc' => 'Voeg alfabetiese skakels na "Vorige" en "Volgende" blaaie by boaan bladsye',
 	'backforth-prev' => 'Vorige ($1)',
 );
 

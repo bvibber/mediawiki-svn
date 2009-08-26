@@ -50,6 +50,13 @@ $messages['bg'] = array(
 	'formatsearch-desc' => 'Почиства страницата с резултати от търсенето',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'formatsearch-desc' => "Riñsañ pajenn disoc'hoù an enklaskoù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

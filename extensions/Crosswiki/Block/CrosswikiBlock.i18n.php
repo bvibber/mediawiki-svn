@@ -2524,3 +2524,11 @@ Geikön lü:
 	'crosswikiunblock-local' => 'Säblokams su vük at no kanons paledunön medü pad at. Gebolös padi: [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'crosswikiblock-reason' => 'אורזאַך:',
+	'crosswikiunblock-reason' => 'אורזאַך:',
+);
+

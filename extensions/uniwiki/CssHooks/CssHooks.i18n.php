@@ -51,6 +51,13 @@ $messages['bg'] = array(
 	'csshooks-desc' => 'Добавя CSS към HTML-изходния код на страниците са по-добро оформление',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'csshooks-desc' => 'Ouzhpennañ a ra CSS da ginnig HTML ar pajennoù evit gwellaat ar stil',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

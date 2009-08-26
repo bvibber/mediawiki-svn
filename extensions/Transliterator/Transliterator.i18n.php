@@ -104,6 +104,17 @@ $messages['fr'] = array(
 	'transliterator-error-rulesize' => 'La règle <code>$1</code> a plus de $3 {{PLURAL:$3|caractère|caractères}} sur la gauche dans [[MediaWiki:$2]]',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'transliterator-desc' => 'Proporciona unha función analítica configurable para a transliteración',
+	'transliterator-error-ambiguous' => 'Regra ambigua <code>$1</code> en [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaxe incorrecta <code>$1</code> en [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Máis {{PLURAL:$1|dunha regra|de $1 regras}} en [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'A regra <code>$1</code> ten máis {{PLURAL:$3|dun carácter|de $3 caracteres}} á esquerda en [[MediaWiki:$2]]',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -207,5 +218,16 @@ $messages['ru'] = array(
 	'transliterator-error-syntax' => 'Ошибочный синтаксис <code>$1</code> в [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Более $1 {{PLURAL:$1|правила|правил|правил}} в [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Правило <code>$1</code> содержит более $3 {{PLURAL:$3|символа|символов|символов}} слева в [[MediaWiki:$2]]',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'transliterator-desc' => 'Poskytuje konfigurovateľnú funkciu syntaktického analyzátora na transliteráciu',
+	'transliterator-error-ambiguous' => 'Nejednoznačné pravidlo <code>$1</code> v [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Chybná syntax <code>$1</code> v [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Viac než $1 {{PLURAL:$1|pravidlo|pravidlá|pravidiel}} v [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Pravidlo <code>$1</code> má viac než $3 {{PLURAL:$3|znak|znaky|znakov}} naľavo v [[MediaWiki:$2]]',
 );
 

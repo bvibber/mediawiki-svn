@@ -190,9 +190,13 @@ $messages['bs'] = array(
 	'refreshspecial' => 'Osvježenje posebnih stranica',
 	'refreshspecial-desc' => 'Omogućava [[Special:RefreshSpecial|posebnu stranicu za ručno osvježavanje]] posebnih stranica',
 	'refreshspecial-title' => 'Osvježi posebne stranice',
+	'refreshspecial-help' => "Ova posebna stranica omogućuje da se ručno osvježe posebne stranice.
+Kada odaberete sve stranice koje želite osvježiti, kliknite dugme \"Odabrano osvježavanje\" ispod za osvježavanje odabranih posebnih stranica.
+'''Upozorenje:''' Osvježavanje može duže trajati na većim wikijima.",
 	'refreshspecial-button' => 'Odabrano osvježavanje',
 	'refreshspecial-fail' => 'Molimo odaberite najmanje jednu posebnu stranicu za osvježavanje.',
 	'refreshspecial-refreshing' => 'osvježavam specijalne stranice',
+	'refreshspecial-skipped' => 'nevažno, preskočeno',
 	'refreshspecial-choice' => 'osvježavam posebne stranice',
 	'refreshspecial-js-disabled' => '(<i>Ne možete odabrati sve stranice ako je JavaScript onemogućen</i>)',
 	'refreshspecial-select-all-pages' => 'Odaberi sve stranice',
@@ -200,8 +204,11 @@ $messages['bs'] = array(
 	'refreshspecial-none-selected' => 'Niste odabrali nijednu posebnu stranicu. Vraćam na pretpostavljeni odabir.',
 	'refreshspecial-db-error' => 'Neuspjelo: greška baze podataka',
 	'refreshspecial-no-page' => 'Nema takve specijalne stranice',
+	'refreshspecial-slave-lagged' => 'Zastoj pomoćnog servera, čekam...',
 	'refreshspecial-reconnected' => 'Ponovno spojeno.',
 	'refreshspecial-reconnecting' => 'Spajanje nije uspjelo, ponovno spajanje za 10 sekundi...',
+	'refreshspecial-page-result' => 'ima $1 {{PLURAL:$1|red|reda|redova}} u',
+	'refreshspecial-total-display' => 'Osvježeno $1 {{PLURAL:$1|stranica|stranice|stranica}} ukupno $2 {{PLURAL:$2|red|reda|redova}} u vremenu $3 (ukupno vrijeme pokretanja skripte je $4)',
 	'right-refreshspecial' => 'Osvježavanje posebnih stranica',
 );
 

@@ -995,6 +995,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1003,7 +1004,7 @@ $messages['lb'] = array(
 	'sitematrix-desc' => 'Weis eng  [[Special:SiteMatrix|Lëscht vun de Wikimedia-Wikien]]',
 	'sitematrix-language' => 'Sprooch',
 	'sitematrix-project' => 'Numm vum Projet, Interprojet-Link an Interwiki-Link',
-	'sitematrix-others' => 'Aner Wikimedia-Projetën',
+	'sitematrix-others' => 'Aner Wikimedia-Projeten',
 	'sitematrix-total' => "'''Total vum Kont: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privat',

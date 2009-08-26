@@ -77,12 +77,13 @@ Možete isključiti ovo upozorenje u "{{int:prefs-editing}}" dijelu vaših opcij
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'editwarning' => "Avís d'edició",
 	'editwarning-desc' => 'Mostra un avís quan un usuari intenti sortir del formulari sense desar.',
-	'editwarning-warning' => 'Si sortiu d\'aquesta pàgina, perdreu tots els canvis que heu fet.
-Podeu eliminar aquest avís a la secció "{{int:prefs-editing}}" de les vostres preferències.',
+	'editwarning-warning' => "Si sortiu d'aquesta pàgina, perdreu tots els canvis que heu fet.
+Podeu eliminar aquest avís a la secció «{{int:prefs-editing}}» de les vostres preferències.",
 	'editwarning-preference' => "Avisa'm quan surti d'una pàgina d'edició amb canvis sense desar",
 );
 
@@ -239,7 +240,9 @@ Vous pouvez retirer cet avertissement dans la section {{int:prefs-editing}} de v
 $messages['gl'] = array(
 	'editwarning' => 'Advertencia de edición',
 	'editwarning-desc' => 'Mostrar unha advertencia cando un usuario intente deixar o formulario de edición sen gardar',
-	'editwarning-warning' => 'Se deixa esta páxina causará a perda de todos os cambios que feitos.',
+	'editwarning-warning' => 'Deixar esta páxina pode causar a perda de calquera cambio feito.
+Pode desactivar esta mensaxe de advertencia na sección "{{int:prefs-editing}}" das súas preferencias.',
+	'editwarning-preference' => 'Avisádeme cando deixe unha páxina de edición cos cambios sen gardar',
 );
 
 /** Swiss German (Alemannisch)

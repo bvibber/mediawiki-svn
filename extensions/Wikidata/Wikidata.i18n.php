@@ -340,6 +340,7 @@ This is visible when a SynTrans is annotated, or while editing a page.
 	'ow_Value' => '{{Identical|Value}}',
 	'ow_Permission_denied' => "Visible on [http://www.omegawiki.org/Special:Copy this OmegaWiki page] (make sure you're not logged in)
 {{Identical|Permission denied}}",
+	'copy' => '{{Identical|Copy}}',
 	'ow_needs_xlation_title' => 'Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki page].',
 	'ow_needs_xlation_source_lang' => 'Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki page].',
 	'ow_needs_xlation_dest_lang' => 'Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki page].',
@@ -443,6 +444,7 @@ $messages['af'] = array(
 	'ow_Property' => 'Eienskap',
 	'ow_Value' => 'Waarde',
 	'ow_Permission_denied' => '<h2>Toestemming geweier</h2>',
+	'copy' => 'Wikidata: Kopieer',
 	'ow_show' => 'Wys',
 	'ow_create' => 'Skep',
 	'ow_suggest_previous' => 'Vorige',
@@ -1440,7 +1442,10 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'wikidata-desc' => 'Ouzhpennañ a ra diazoù titouroù a denn da wikioù evit danvezioù a bep seurt',
+	'wikidata-handler-namespace-move-error' => "N'haller ket dilec'hiañ ar pajennoù zo en esaouennoù anv kemeret e kont gant Wikidata.",
 	'languages' => 'Wikidata: Merer yezhoù',
+	'langman-desc' => 'Ouzhpennañ ha kemmañ an arventennoù yezh gant [[Special:Languages]]',
 	'langman_title' => 'Merer yezhoù',
 	'langman_not_allowed' => "N'oc'h ket aotreet da zegas kemmoù en arventennoù yezh.",
 	'langman_header' => "Merkit ar c'hod yezh hag anv ar yezh e saozneg evel a-is :",
@@ -1613,6 +1618,7 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
 	'ow_meaningsoftitle' => 'Sterioù "$1"',
 	'ow_meaningsofsubtitle' => '<em>Liamm Wiki :</em> [[$1]]',
 	'ow_Permission_denied' => "<h2>AOTRE NAC'HET</h2>",
+	'copy' => 'Wikidata: Eilañ',
 	'ow_copy_no_action_specified' => 'Spisait un ober mar plij',
 	'ow_copy_help' => "N'eus tamm skoazell ebet da gaout evit ar mare.",
 	'ow_please_proved_dmid' => 'Mankout a ra un ?dmid=<...> (dmid=SterTermenet ID)<br />Kit e darempred gant merour ar servijer.',
@@ -1643,6 +1649,8 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
 	'ow_suggest_clear' => 'Riñsañ',
 	'ow_nstab_definedmeaning' => 'ster termenet',
 	'ow_nstab_edit_copy' => 'Kemmañ an eiladenn',
+	'right-addlanguage' => 'Ouzhpennañ ha kemmañ an arventennoù yezh',
+	'ow_shown_datasets' => 'Diskwel ar strolladoù roadennoù',
 );
 
 /** Bosnian (Bosanski)
@@ -1716,6 +1724,8 @@ Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivan
 	'ow_transaction_count' => 'Brojanje:',
 	'ow_transaction_user' => 'Ime korisnika:',
 	'ow_transaction_show_rollback' => 'Pokaži kontrole za vraćanje:',
+	'ow_transaction_rollback_button' => 'Vrati',
+	'ow_transaction_rollback_header' => 'Vraćanje',
 	'ow_transaction_no_action' => 'Ne radi ništa',
 	'ow_transaction_previous_version' => 'Prethodna verzija',
 	'ow_transaction_restore' => 'Vrati',

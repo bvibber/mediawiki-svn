@@ -419,6 +419,8 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'math_noblahtex' => 'Ne može se izvršiti blahtex, koji bi trebao biti na $1',
 	'math-desc' => 'MathML izlaz za &lt;math&gt; oznake',
+	'math_AmbiguousInfix' => 'Na ovom mjestu "$1" je dvosmisleno.
+Pokušajte staviti dodatne zagrade "{ ... }" radi jasnoće.',
 	'math_CannotChangeDirectory' => 'Ne mogu promijeniti radni direktorijum',
 	'math_CannotCreateTexFile' => 'Ne može se napraviti tex datoteka',
 	'math_CannotRunDvipng' => 'Ne može se pokrenuti dvipng',
@@ -435,8 +437,11 @@ Samo jedan je dopušten.',
 	'math_IllegalCommandInMathModeWithHint' => 'Komanda "$1" je nevaljana u math načinu
 Možda ste htjeli da koristite "$2"?',
 	'math_IllegalCommandInTextMode' => 'Komanda "$1" nije valjana u tekstualnom modu',
+	'math_IllegalCommandInTextModeWithHint' => 'Komanda "$1" je nevaljana u tekstualnom načinu
+Pokušajte isto sa komandom "$2"?',
 	'math_IllegalDelimiter' => 'Nevaljan razdvojnik nakon "$1"',
 	'math_IllegalFinalBackslash' => 'Nevaljana kosa crta "\\" na kraju unosa',
+	'math_IllegalNestedFontEncodings' => 'Komande za dekodiranje slova možda nisu uklopljene',
 	'math_IllegalRedefinition' => 'Komanda "$1" je već definirana, ne možete je predefinirati',
 	'math_InvalidColour' => 'Boja "$1" nije valjana',
 	'math_InvalidUtf8Input' => 'Uneseni znak nije validni UTF-8',
@@ -445,13 +450,22 @@ Možda ste htjeli da koristite "$2"?',
 	'math_MismatchedBeginAndEnd' => 'Komande "$1" i "$2" se ne podudaraju',
 	'math_MisplacedLimits' => 'Komanda "$1" se može pojaviti samo nakon math operatora.
 Razmislite o upotrebi "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'Nedostajuće ili nevaljano novo ime komande nakon "\\newcommand".
+Mora biti tačno definisana jedna komanda;
+mora počinjati sa kosom crtom "\\" i sadržavati samo slova.',
 	'math_MissingDelimiter' => 'Nedostaje oznaka razdvajanja nakon "$1"',
 	'math_MissingOpenBraceAfter' => 'Nedostaje otvorena zagrada "{" poslije "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Nedostaje otvorena zagrada "{" na kraju unosa',
 	'math_MissingOpenBraceBefore' => 'Nedostaje otvorena zagrada "{" ispred "$1"',
+	'math_MissingOrIllegalParameterCount' => 'Nedostajuči ili nevaljani broj parametara u definiciji "$1".
+Mora biti jedna cifra između 1 i 9 uključujući.',
 	'math_MissingOrIllegalParameterIndex' => 'Nedostajući ili nevaljan parametar indeksa u definiciji "$1"',
+	'math_NonAsciiInMathMode' => 'Znakovi koji nisu ASCII se mogu koristiti samo u tekstualnom načinu.
+Pokušajte staviti problematične znakove u "\\text{...}".',
 	'math_NotEnoughArguments' => 'Nije navedeno dovoljno argumenata za "$1"',
+	'math_PngIncompatibleCharacter' => 'Ne može se pravilno generisati PNG koji sadrži karakter $1',
 	'math_ReservedCommand' => 'Komanda "$1" je rezervirana za internu upotrebu proširenja blahtex',
+	'math_SubstackRowTooBig' => 'Može biti samo jedna stavka u svakom redu bloka "substack"',
 	'math_TooManyMathmlNodes' => 'Ima previše čvorova u MathML drvetu',
 	'math_TooManyTokens' => 'Unos je predug',
 	'math_UnavailableSymbolFontCombination' => 'Simbol "$1" nije dostupan u fontu "$2"',
@@ -465,6 +479,9 @@ Razmislite o upotrebi "\\mathop".',
 	'math_UnmatchedOpenBracket' => 'Pronađena otvorena zagrada "[" bez odgovarajuće zatvorene zagrade "]"',
 	'math_UnmatchedRight' => 'Pronađeno "\\right" bez pripadajućeg "\\left"',
 	'math_UnrecognisedCommand' => 'Neprepoznata komanda "$1"',
+	'math_WrongFontEncoding' => 'Simbol "$1" se možda neće prikazati u prikazu slova "$2"',
+	'math_WrongFontEncodingWithHint' => 'Simbol "$1" se ne može prikazati u kodu slova "$2".
+Pokušajte koristiti komandu "$3{...}".',
 );
 
 /** Catalan (Català)
@@ -850,7 +867,7 @@ Ehkä sinun piti käyttää komentoa ”$2”?',
 	'math_LatexFontNotSpecified' => 'LaTeX-kirjasinta ei ole määritelty kohteelle ”$1”.',
 	'math_LatexPackageUnavailable' => 'PNG-kuvaa piirtäminen ei onnistu, koska LaTeX-paketti ”$1” ei ole saatavilla.',
 	'math_MismatchedBeginAndEnd' => 'Komennot ”$1” ja ”$2” eivät täsmää.',
-	'math_MissingDelimiter' => 'Puuttuvat erotinmerkki "$1" jälkeen',
+	'math_MissingDelimiter' => 'Puuttuva erotinmerkki ”$1” jälkeen',
 	'math_NotEnoughArguments' => 'Liian vähän argumentteja komennolle $1.',
 	'math_PngIncompatibleCharacter' => 'Merkin $1 sisältävän PNG-tiedoston luominen oikein ei onnistu',
 	'math_ReservedCommand' => 'Komento <tt>$1</tt> on varattu blahtexin sisäiseen käyttöön',
@@ -858,7 +875,7 @@ Ehkä sinun piti käyttää komentoa ”$2”?',
 	'math_UnavailableSymbolFontCombination' => 'Symbolia <tt>$1</tt> ei löydy fontista $2.',
 	'math_UnexpectedNextCell' => 'Komento "&" voi esiintyä ainoastaan "\\begin ... \\end" -tyyppisen lohkon sisällä',
 	'math_UnexpectedNextRow' => 'Komento "\\\\" voi esiintyä ainoastaan "\\begin ... \\end" tyyppisen lohkon sisällä',
-	'math_UnmatchedBegin' => 'Kohdattiin "\\begin" ilman sen kanssa vastaavaa "\\end" merkintää',
+	'math_UnmatchedBegin' => 'Kohdattiin ”\\begin” ilman sen kanssa vastaavaa ”\\end”-merkintää',
 	'math_UnmatchedCloseBrace' => 'Kohdattiin sulkeva aaltosulje "}" ilman vastaavaa avaavaa aaltosuljetta "{"',
 	'math_UnmatchedEnd' => 'Kohdattiin "\\end" ilman vastaavaa "\\begin" merkintää',
 	'math_UnmatchedLeft' => 'Kohdattiin "\\left" ilman vastaavaa "\\right" merkintää',

@@ -2961,9 +2961,12 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'grouppermissions-never' => '从不',
+	'grouppermissions-sp-save' => '保存',
+	'grouppermissions-sp-remove' => '移除',
 );
 

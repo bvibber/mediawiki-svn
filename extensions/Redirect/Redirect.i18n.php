@@ -157,10 +157,11 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'redirect-desc' => 'Erlaabt et Viruleedungen beim [[MediaWiki:Redirect-addnewaccount|Benotzerkont opmaachen]] an [[MediaWiki:Redirect-userlogoutcomplete|Ausloggen ]] einfach ze configuréieren.',
+	'redirect-desc' => 'Erlaabt et Viruleedungen beim [[MediaWiki:Redirect-addnewaccount|Opmaache vum Benotzerkont]] a beim [[MediaWiki:Redirect-userlogoutcomplete|Ausloggen]] einfach ze configuréieren.',
 );
 
 /** Limburgish (Limburgs)

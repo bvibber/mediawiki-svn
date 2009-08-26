@@ -485,6 +485,13 @@ $messages['oc'] = array(
 	'abcdownload' => 'Telecargar :',
 );
 
+/** Picard (Picard)
+ * @author Geoleplubo
+ */
+$messages['pcd'] = array(
+	'abcdownload' => 'Télécarquer:',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe

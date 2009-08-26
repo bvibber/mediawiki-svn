@@ -166,7 +166,9 @@ This is the text next to an input box which allows the map-maker to add a captio
 {{Identical|Width}}',
 	'gm-make-map' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-hide-map' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
-	'gm-back' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-back' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Back}}',
 	'gm-kml-include-link' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-kml-loading' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
 

@@ -837,7 +837,7 @@ $messages['lb'] = array(
 	'gep-nosectioninstructions' => 'Et gëtt keng Abschnitter op dëser Säit.
 Setzt der mat den Toolen am Menü derbäi.',
 	'gep-nocategories' => 'Wielt w.e.g. mindestens eng Kategorie aus ier Dir ofspäichert',
-	'gep-categorypage' => 'MediaWiki:Säitenännerungs-Tagen',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Macedonian (Македонски)

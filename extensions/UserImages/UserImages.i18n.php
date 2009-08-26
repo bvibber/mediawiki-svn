@@ -113,6 +113,16 @@ $messages['bn'] = array(
 	'userimages-noimages' => '$1 কোন চিত্র আপলোড করেন নাই।',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'userimages-desc' => 'Genel a ra skeudennaouegi enporzhiet gant implijerien gant <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'Skeudennoù enporzhiet gant $1',
+	'userimages-noname' => 'Mankout a ra an anv implijer pe faziek eo',
+	'userimages-noimages' => "$1 n'en deus ket enporzhiet skeudennoù.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -609,9 +619,12 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Smihael
  * @author Yerpo
  */
 $messages['sl'] = array(
+	'userimages-desc' => 'Ustvari galerije uporabnikovih naloženih slik z uporabo <nowiki><userimage /></nowiki>',
+	'userimages-caption' => 'Slike dodal $1',
 	'userimages-noname' => 'Neveljavno ali neznano uporabniško ime.',
 );
 

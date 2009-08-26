@@ -2245,6 +2245,7 @@ $messages['bs'] = array(
 	'configure-setting-wgDBserver' => 'Ime domaćina ili IP adresa servera baze podataka',
 	'configure-setting-wgDBtype' => 'Vrsta baze podataka koja se koristi',
 	'configure-setting-wgDBuser' => 'Korisničko ime za prijavu na bazu podataka',
+	'configure-setting-wgLocalDatabases' => 'Ostale baze podataka koje se mogu administrirati sa ovog servera',
 	'configure-setting-wgSharedDB' => 'Dijeljeno ime baze podataka',
 	'configure-setting-wgSharedPrefix' => 'Prefiks dijeljene baze podataka',
 	'configure-setting-wgSharedTables' => 'Tabele za dijeljenje',
@@ -4651,6 +4652,7 @@ $messages['gl'] = array(
 	'configure-setting-wgMiserMode' => 'Desactivar algunhas características que requiran interpretacións intensivas',
 	'configure-setting-wgShowHostnames' => 'Expor o nome do host a través dos comentarios API e HTML',
 	'configure-setting-wgUseDumbLinkUpdate' => 'Usar <code>DELETE</code>/<code>INSERT</code> para ligar as actualizacións no canto das substitucións',
+	'configure-setting-wgCacheVaryCookies' => 'Unha lista de cookies que varían a caché',
 	'configure-setting-wgCookieDomain' => 'Domino explícito para as cookies de rexistro',
 	'configure-setting-wgCookieExpiration' => 'Caducidade da cookie HTTP',
 	'configure-setting-wgCookieHttpOnly' => 'Fixar as cookies de autenticación do http',
@@ -5902,6 +5904,7 @@ $messages['hsb'] = array(
 	'configure-setting-wgRemoteUploads' => 'Wotkaz za nahraća wužiwać, hdyž nahraća su znjemóžnjene',
 	'configure-setting-wgUploadSizeWarning' => 'Warnowanski próh za wulkosć nahraća',
 	'configure-setting-wgMaxUploadSize' => 'Maksimalna dowolena wulkosć nahraćow',
+	'configure-setting-wgHTTPProxy' => 'Serwer Proksy, kotryž ma so wužiwać',
 	'configure-setting-wgVersion' => 'Wersija MediaWiki',
 	'configure-setting-wgAllowSpecialInclusion' => 'Zapřijimanje specialnych stronow dowolić',
 	'configure-setting-wgExportAllowListContributors' => 'Eksportowanje lisćiny spisaćelow dowolić',
@@ -5986,8 +5989,12 @@ $messages['hsb'] = array(
 	'configure-setting-wgMinimalPasswordLength' => 'Minimalna dołhosć hesła',
 	'configure-setting-wgShellLocale' => 'Lokala za <code>LC_CTYPE</code>',
 	'configure-setting-wgUseAutomaticEditSummaries' => 'Awtomatiske wobdźěłanske zjeća wužiwać',
+	'configure-setting-wgInterwikiCache' => 'Interwikijowy pufrowak zmóžnić',
+	'configure-setting-wgLocalInterwiki' => 'Lokalny interwikijowy prefiks',
 	'configure-setting-wgProxyList' => 'Zatamane IP-adresy',
+	'configure-setting-wgProxyWhitelist' => 'Běła lisćina za proksy',
 	'configure-setting-wgSecretKey' => 'Potajny kluč',
+	'configure-setting-wgSorbsUrl' => 'URL k čornej lisćinje Sorbs',
 	'configure-setting-wgDBmysql4' => 'Polěpšene połnotekstowe pytanje wužiwać',
 	'configure-setting-wgDBmysql5' => 'Kodowanje UTF-8 wužiwać',
 	'configure-setting-wgDBprefix' => 'Tabelowy prefiks',
@@ -6030,6 +6037,7 @@ $messages['hsb'] = array(
 	'configure-setting-wgSharedUploadDBname' => 'Datowa banka za zhromadne nahraća',
 	'configure-setting-wgSharedUploadDBprefix' => 'Prefiks datoweje banki za zhromadne nahraća',
 	'configure-setting-wgUseSharedUploads' => 'Zhromadne nahraća wužiwać',
+	'configure-setting-wgArticlePath' => 'Bazowy URL za interne wotkazy MediaWiki',
 	'configure-setting-wgLogo' => 'URL sydłoweho loga',
 	'configure-setting-wgProto' => 'Prefiks wěsteho serwera',
 	'configure-setting-wgScript' => 'URL dataje index.php',
@@ -13186,6 +13194,13 @@ $messages['sv'] = array(
 	'configure-setting-wgSysopEmailBans' => 'Tillåt administratörer att blockera användare från att komma åt [[Special:EmailUser]]',
 	'configure-setting-wgSysopRangeBans' => 'Tillåt administratörer att blockera intervall av IP-adresser',
 	'configure-setting-wgSysopUserBans' => 'Tillåt administratörer att blockera inloggade användare',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'configure-setting-wgXhtmlNamespaces-key' => 'Eneo la wiki',
 );
 
 /** Telugu (తెలుగు)

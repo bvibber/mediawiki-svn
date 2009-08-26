@@ -118,8 +118,14 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'watchsubpages' => 'Evezhiañ an ispajennoù',
+	'watchsubpages-addedtowatchlist' => "Ouzpennet eo bet ar pezh zo da-heul d'ho rollad evezhiañ.",
 	'watchsubpages-addtitles' => 'Ouzhpennañ pajennoù',
 	'watchsubpages-addtitlestowatchlist' => "Ouzhpennañ pajennoù d'ar roll evezhiañ",
+	'watchsubpages-desc' => "Ouzhpennañ a ra fonnus [[Special:WatchSubpages|holl ispajennoù]] ur bajenn d'ar roll evezhiañ",
+	'watchsubpages-form' => 'Diuzit a-is ar pajennoù da vezañ ouzhpennet d\'ho roll evezhiañ.
+A-benn ouzhpennañ ur bajenn, klikit ouzh ar voest zo e-kichenik, ha klikit war "Ouzhpennañ pajennoù".
+
+Evit askañ pe diaskañ meur a bajenn war un dro e c\'hallit derc\'hel da bouezañ war ar stokell "pennlizherenn" en ur glikañ en daou benn d\'ar strollad logoù zo da vezañ asket.',
 );
 
 /** Bosnian (Bosanski)

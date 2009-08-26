@@ -92,6 +92,14 @@ $messages['bn'] = array(
 	'usercontactlink-baduser' => 'বেঠিক ব্যবহারকারী নাম',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'usercontactlink-baduser' => 'Anv implijer faziek',
+	'usercontactlink-desc' => 'Talvezout a ra da ouzhpennañ aes hag ingal anvioù implijer all en ur ober gant an ereadur ^^^user^^^',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

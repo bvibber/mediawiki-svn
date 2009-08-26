@@ -196,6 +196,7 @@ Kliknite na jednu od njih da pogledate njene statistike.',
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'prefstats' => 'Estadístiques de les preferències',
@@ -204,13 +205,22 @@ $messages['ca'] = array(
 	'prefstats-list-intro' => "Actualment s'estan registrant les següents preferències.
 Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 	'prefstats-noprefs' => 'No s\'està registrant cap preferència. Configurau $wgPrefStatsTrackPrefs per registrar les preferències.',
+	'prefstats-counters' => "* $1 {{PLURAL:$1|usuari ha|usuaris han}} activat aquesta preferència des que les estadístiques de preferència es van activar.
+** $2 {{PLURAL:$2|usuari encara la té|usuaris encara la tenen}} activada.
+** $3 {{PLURAL:$3|usuari l'ha|usuaris l'han}} desactivada des de llavors.",
+	'prefstats-counters-expensive' => "* $1 {{PLURAL:$1|usuari ha|usuaris han}} activat aquesta preferència des que les estadístiques de preferència es van activar.
+** $2 {{PLURAL:$2|usuari encara la té|usuaris encara la tenen}} activada.
+** $3 {{PLURAL:$3|usuari l'ha|usuaris l'han}} desactivada des de llavors.
+* En total, $4 {{PLURAL:$4|usuari té|usuaris tenen}} aquesta preferència activa.",
 	'prefstats-xaxis' => 'Durada (hores)',
+	'prefstats-factors' => 'Veure-ho segons: $1',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'sis hores',
 	'prefstats-factor-day' => 'dia',
 	'prefstats-factor-week' => 'setmana',
 	'prefstats-factor-twoweeks' => 'dues setmanes',
 	'prefstats-factor-fourweeks' => 'quatre setmanes',
+	'prefstats-factor-default' => "torna a l'escala per defecte",
 );
 
 /** Czech (Česky)
@@ -568,6 +578,24 @@ $messages['gl'] = array(
 	'prefstats-list-intro' => 'Actualmente as seguintes preferencias están sendo seguidas.
 Prema sobre unha para ver as estatísticas sobre ela.',
 	'prefstats-noprefs' => 'Actualmente non se segue preferencia algunha. Configure $wgPrefStatsTrackPrefs para seguir preferencias.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|usuario ten|usuarios teñen}} activada esta preferencia des que as estatísticas de preferencias foron habilitadas
+** $2 {{PLURAL:$2|usuario aínda a ten|usuarios aínda a teñen}} activada
+** $3 {{PLURAL:$3|usuario tena|usuarios téñena}} desactivada',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|usuario ten|usuarios teñen}} activada esta preferencia des que as estatísticas de preferencias foron habilitadas
+** $2 {{PLURAL:$2|usuario aínda a ten|usuarios aínda a teñen}} activada
+** $3 {{PLURAL:$3|usuario tena|usuarios téñena}} desactivada
+* En total, $4 {{PLURAL:$4|usuario ten|usuarios teñen}} definida esta preferencia',
+	'prefstats-xaxis' => 'Duración (horas)',
+	'prefstats-factors' => 'Vista por: $1',
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'seis horas',
+	'prefstats-factor-day' => 'día',
+	'prefstats-factor-week' => 'semana',
+	'prefstats-factor-twoweeks' => 'dúas semanas',
+	'prefstats-factor-fourweeks' => 'catro semanas',
+	'prefstats-factor-default' => 'voltar á escala por defecto',
+	'prefstats-legend-out' => 'Deixou de participar',
+	'prefstats-legend-in' => 'Quixo participar',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -766,6 +794,7 @@ Klik pada salah satu untuk melihat statistiknya.',
 	'prefstats-noprefs' => 'Tidak ada preferensi yang sedang ditelusuri. Konfigurasikan $wgPrefStatsTrackPrefs untuk menelusuri preferensi.',
 	'prefstats-xaxis' => 'Durasi (jam)',
 	'prefstats-factor-hour' => 'jam',
+	'prefstats-factor-sixhours' => 'enam jam',
 	'prefstats-factor-day' => 'hari',
 	'prefstats-factor-week' => 'pekan',
 	'prefstats-factor-twoweeks' => 'dua pekan',

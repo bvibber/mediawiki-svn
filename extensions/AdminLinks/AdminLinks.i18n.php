@@ -803,6 +803,13 @@ $messages['pl'] = array(
 	'right-adminlinks' => 'Zobacz link do [[Special:AdminLinks|Linki dla administratorów]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'adminlinks' => "Anliure d'aministrador",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

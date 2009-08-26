@@ -34,8 +34,9 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'whatismyip' => 'Wat is my IP-adres',
-	'whatismyip-desc' => 'Wys huidige gebruiker se IP-adres op [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'Jou IP-adres',
+	'whatismyip-desc' => 'Wys huidige gebruiker se [[Special:WhatIsMyIP|IP-adres]]',
+	'whatismyip-out' => 'U IP-adres:',
+	'right-whatismyip' => 'Sien [[Special:WhatIsMyIP|my eie IP-adres]]',
 );
 
 /** Arabic (العربية)
@@ -222,11 +223,12 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'whatismyip' => 'Mis on minu IP',
-	'whatismyip-desc' => 'Näitab praeguse kasutaja IP-aadressi [[Special:WhatIsMyIP]] lehel',
-	'whatismyip-out' => 'Sinu IP:',
+	'whatismyip-desc' => 'Näitab kasutaja praegust [[Special:WhatIsMyIP|IP-aadressi]].',
+	'whatismyip-out' => 'Sinu IP-aadress:',
 );
 
 /** Basque (Euskara)

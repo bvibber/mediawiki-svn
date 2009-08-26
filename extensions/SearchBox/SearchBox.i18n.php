@@ -36,6 +36,7 @@ Do not translate or change tag names, or link anchors.',
  */
 $messages['af'] = array(
 	'searchbox-search' => 'Soek',
+	'searchbox-go' => 'OK',
 	'searchbox-namespaces' => 'Naamruimtes:',
 );
 

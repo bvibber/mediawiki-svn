@@ -484,6 +484,13 @@ $messages['sv'] = array(
 	'multiboilerplate-submit' => 'Ladda',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'multiboilerplate-submit' => 'లోడు',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */
@@ -521,6 +528,13 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'multiboilerplate-submit' => 'Lodön',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'multiboilerplate-submit' => '载入',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

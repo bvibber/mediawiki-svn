@@ -32,6 +32,13 @@ $messages['be-tarask'] = array(
 	'uploadblacklist-desc' => 'Дадае магчымасьць выкарыстаньня чорнага сьпісу загрузак',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'uploadblacklist-desc' => "Ouzhpennañ a ra un arc'hwel listennad du evit ar pellgargadennoù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

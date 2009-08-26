@@ -61,6 +61,15 @@ $messages['bar'] = array(
 	'nstab-comments' => 'Kommentar',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'commentpages-desc' => 'Старонкі камэнтараў для асноўнай прасторы назваў',
+	'nstab-comments' => 'Камэнтар',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

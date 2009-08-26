@@ -364,6 +364,7 @@ es aam $5 öm $6 Uhr en de $3 neu aanjemeldt woode.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -371,7 +372,7 @@ $messages['lb'] = array(
 	'newusernotif-desc' => 'Schéckt eng Informatioun per e-Mail wann e neie Benotzerkont opgemaach gëtt',
 	'newusernotifbody' => 'Bonjour $1,
 
-E neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',
+En neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',
 );
 
 /** Macedonian (Македонски)

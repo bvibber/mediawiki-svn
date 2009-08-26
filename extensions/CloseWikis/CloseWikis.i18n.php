@@ -47,12 +47,14 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Bennylin
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Purodha
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'closewikis-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'closewikis-page-close-wiki' => '{{Identical|Wiki}}',
+	'closewikis-page-close-submit' => '{{Identical|Close}}',
 	'closewikis-page-reopen-wiki' => '{{Identical|Wiki}}',
 	'closewikis-page-reopen-reason' => '{{Identical|Reason}}',
 	'closewikis-list-header-wiki' => '{{Identical|Wiki}}',
@@ -145,8 +147,16 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'closewikis-desc' => 'Дазваляе закрываць вікі-сайты ў вікі-фэрмах',
+	'closewikis-page' => 'Закрыць вікі',
+	'closewikis-page-close' => 'Закрыць вікі',
+	'closewikis-page-close-wiki' => 'Вікі:',
+	'closewikis-page-close-dreason' => 'Прычына (якая будзе паказвацца):',
+	'closewikis-page-close-reason' => 'Прычына (для журнала):',
+	'closewikis-page-close-submit' => 'Закрыць',
 	'closewikis-page-reopen-reason' => 'Прычына:',
 );
 
@@ -1677,6 +1687,7 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'closewikis-page-close-wiki' => 'וויקי:',
 	'closewikis-page-reopen-wiki' => 'וויקי:',
+	'closewikis-page-reopen-reason' => 'אורזאַך:',
 	'closewikis-list-header-wiki' => 'וויקי:',
 );
 

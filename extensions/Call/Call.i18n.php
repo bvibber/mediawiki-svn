@@ -905,8 +905,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'call' => 'Call',
-	'call-desc' => 'Vytvorí hyperodkaz na šablónu (alebo na bežnú wiki stránku) s odovzdávaním parametrov. 
-Môže byť použitý z riadka s adresou v prehliadači alebo v rámci wiki textu',
+	'call-desc' => 'Vytvorí hyperodkaz na šablónu (alebo na bežnú wiki stránku) s odovzdávaním parametrov. Je možné použiť z riadka s adresou v prehliadači alebo v rámci wiki textu.',
 	'call-text' => "Rozšírenie Call očakáva ako argumenty stránku wiki a voliteľné parametre danej stránky.<br /><br />
 Príklad 1: &nbsp; <tt>[[{{#special:call}}/Moja šablóna,parm1=value1]]</tt><br />
 Príklad 2: &nbsp; <tt>[[{{#special:call}}/Diskusia:Moja diskusia,parm1=value1]]</tt><br />

@@ -104,6 +104,13 @@ $messages['ar'] = array(
 	'specialpages-group-feedback' => 'رأي المشاهد',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'readerfeedback-finished' => 'ܬܘܕܝ!',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II
@@ -238,6 +245,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'readerfeedback-desc' => 'Ocjenjivanje stranica omogućuje čitaocima da ostave povratne informacije u obliku kategorisanih rejtinga',
 	'readerfeedback' => 'Šta mislite o ovoj stranici?',
 	'readerfeedback-text' => "''Molimo odvojite trenutak vremena i ocijenite stranicu ispod. Vaša povratna informacija je korisna i pomaže nam da poboljšamo našu web stranicu.''",
 	'readerfeedback-reliability' => 'Pouzdanost',
@@ -259,6 +267,7 @@ $messages['bs'] = array(
 	'readerfeedback-finished' => 'Hvala Vam!',
 	'readerfeedback-tagfilter' => 'Oznaka:',
 	'tooltip-ca-ratinghist' => 'Ocjene čitaoca ove stranice',
+	'specialpages-group-feedback' => 'Mišljenje čitaoca',
 );
 
 /** Catalan (Català)
@@ -634,6 +643,7 @@ $messages['frp'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
+	'readerfeedback-desc' => 'A validación de páxinas permite que os lectores dean a súa opinión en forma de valoracións categóricas',
 	'readerfeedback' => 'Que pensa sobre esta páxina?',
 	'readerfeedback-text' => "''Por favor, tome un momento para valorar esta páxina. A súa impresión é valiosa e axúdanos a mellorar a nosa páxina web.''",
 	'readerfeedback-reliability' => 'Fiabilidade',
@@ -655,6 +665,7 @@ $messages['gl'] = array(
 	'readerfeedback-finished' => 'Grazas!',
 	'readerfeedback-tagfilter' => 'Etiqueta:',
 	'tooltip-ca-ratinghist' => 'Valoracións dos lectores desta páxina',
+	'specialpages-group-feedback' => 'Opinión do lector',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

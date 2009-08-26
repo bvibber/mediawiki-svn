@@ -686,6 +686,7 @@ $messages['gl'] = array(
 	'recordadmin-actions' => 'Accións',
 	'recordadmin-needscontent' => 'Engadir o contido...',
 	'recordadmin-editwithform' => 'Editar con formulario',
+	'recordadmin-typeinfo' => 'Rexistro de tipo $1',
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
@@ -1732,10 +1733,12 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'recordadmin-badtitle' => '标题错误！',
 	'recordadmin-buttonreset' => '重置',
+	'recordadmin-buttonsave' => '保存',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

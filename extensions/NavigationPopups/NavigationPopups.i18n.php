@@ -326,14 +326,17 @@ $messages['vi'] = array(
 	'navigationpopups-desc' => 'Mở công cụ popup chuyển hướng của Lupin trong MediaWiki',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'navigationpopups-desc' => '響MediaWiki載入Lupin嘅Popup導航popup script',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'navigationpopups-desc' => '在MediaWiki中载入Lupin的Popup导航popup script',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'navigationpopups-desc' => '在MediaWiki中載入Lupin的Popup導航popup script',
 );

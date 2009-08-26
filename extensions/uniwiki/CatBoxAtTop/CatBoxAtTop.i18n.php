@@ -81,6 +81,14 @@ $messages['bg'] = array(
 	'catboxattop-categories' => 'Категории',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'catboxattop-desc' => 'Ouzhpennañ a ra ur voest rummadoù e laez ar pajennoù a-zehoù.',
+	'catboxattop-categories' => 'Rummadoù',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

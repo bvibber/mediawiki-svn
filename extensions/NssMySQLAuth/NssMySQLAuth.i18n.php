@@ -581,6 +581,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -592,7 +593,7 @@ $messages['lb'] = array(
 	'nss-desc' => "E Plugin fir sech an enger ''libnss-mysql'' anzeloggen, inlusiv engem [[Special:AccountManager|Gestionnaire vun de Benotzerkonten]]",
 	'nss-rights' => 'Rechter',
 	'nss-save-changes' => 'Ännerunge späicheren',
-	'nss-create-account-header' => 'Een neie Benotzerkont opmaachen',
+	'nss-create-account-header' => 'En neie Benotzerkont opmaachen',
 	'nss-create-account' => 'Benotzerkont opmaachen',
 	'nss-no-mail' => 'Keng E-Mail schécken',
 	'nss-welcome-mail' => 'E Benotzerkont mat dem Benotzernumm $1 an dem Passwuert $2 gouf fir Iech opgemaach.',
@@ -659,12 +660,23 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
+ * @author Simny
  */
 $messages['no'] = array(
+	'accountmanager' => 'Administrer konto',
 	'am-username' => 'brukernavn',
 	'am-email' => 'e-post',
 	'am-active' => 'aktiv',
 	'am-updated' => 'Dine endringer ble lagret',
+	'nss-desc' => 'Et programtillegg for å identifisere mot en libnss-mysql-database. Inneholder en [[Special:AccountManager|kontoadministrerer]]',
+	'nss-rights' => 'rettigheter',
+	'nss-save-changes' => 'Lagre endringer',
+	'nss-create-account-header' => 'Opprett ny konto',
+	'nss-create-account' => 'Opprett konto',
+	'nss-no-mail' => 'Ikke send e-post',
+	'nss-welcome-mail' => 'En konto med brukernavnet $1 og passordet $2 har blitt opprettet for deg.',
+	'nss-welcome-mail-subject' => 'Kontoopprettelse',
+	'nss-db-error' => 'En feil oppstod under lesing av identifiseringsdatabasen',
 );
 
 /** Occitan (Occitan)

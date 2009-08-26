@@ -608,6 +608,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'inspectcache' => 'Tëschespäicher iwwerpréifen',
 	'inspectcache-ok' => 'Lass',
 	'inspectcache-message' => 'Tëschespäicher (Cache) vun de Messagen',
 	'inspectcache-get' => 'Kréien',

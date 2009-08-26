@@ -215,6 +215,7 @@ $messages['bs'] = array(
 	'ratinghistory-table-rating' => 'Rejting',
 	'ratinghistory-table-votes' => 'Glasovi',
 	'ratinghistory-none' => 'Trenutno nema dovoljno podataka povratne veze čitaoca za prikaz grafikonom.',
+	'ratinghistory-ratings' => "'''Objašnjenje:''' '''(1)''' - Slabo; '''(2)''' - Nisko; '''(3)''' - Dobro; '''(4)''' - Visoko; '''(5)''' - Odlično;",
 	'ratinghistory-legend' => "'''Broj pregleda po danu''' <font color=\"red\">''(crveno)''</font>, '''dnevni prosječni rejting''' <font color=\"blue\">''(plavo)''</font> i  
 '''tekući prosječni rejting''' <font color=\"green\">''(zeleno)''</font> je prikazan na grafikonu ispod, po datumu.
 '''Tekući prosječni rejting''' je jednostavni prosjek svih dnevnih rejtinga ''unutar'' ovog vremenskog perioda za svaki dan.
@@ -222,6 +223,7 @@ $messages['bs'] = array(
 Rejtinzi su slijedeći:
 
 '''[1]''' - Slab; '''[2]''' - Loš; '''[3]''' - Solidan; '''[4]''' - Visok; '''[5]''' - odličan;",
+	'ratinghistory-graph-scale' => "'''Provjere po danu''' <font color=\"red\">''(crveno)''</font> prikazano u razmjeri ''1:\$1''.",
 	'right-feedback' => 'Korištenje obrasca povratne veze za ocjenjivanje stranice',
 );
 
@@ -633,13 +635,13 @@ $messages['gl'] = array(
 	'ratinghistory-table-rating' => 'Valoración',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Arestora non hai suficientes datos das reaccións dos lectores dispoñibles para as gráficas.',
-	'ratinghistory-legend' => "A '''valoración do promedio diario''' <font color=\"blue\">''(azul)''</font> e
-a '''valoración do promedio en curso''' <font color=\"green\">''(verde)''</font> están, por data, na gráfica de embaixo. A  
-'''valoración do promedio en curso''' é simplemente a valoración de todas as valoracións diarias ''dentro'' do período de tempo de cada día.
+	'ratinghistory-ratings' => "'''Lenda:''' '''(1)''' - Pobre; '''(2)''' - Baixa; '''(3)''' - Boa; '''(4)''' - Alta; '''(5)''' - Excelente;",
+	'ratinghistory-legend' => "O '''número de revisións ao día''' <font color=\"red\">''(vermello)''</font>, a '''valoración do promedio diario''' <font color=\"blue\">''(azul)''</font> e a '''valoración do promedio en curso''' <font color=\"green\">''(verde)''</font> están, por data, na gráfica de embaixo.
+A '''valoración do promedio en curso''' é simplemente a valoración de todas as valoracións diarias ''dentro'' do período de tempo de cada día.
+As valoracións son como segue:
 
-Escala: '''[1]''' - Pobre; '''[2]''' - Baixo; '''[3]''' - Ben; '''[4]''' - Alto; '''[5]''' - Excelente;
-
-O '''número de revisións ao día''' <font color=\"red\">''(vermello)''</font> móstrase embaixo, cunha escala de ''1:\$1''.",
+'''(1)''' - Pobre; '''(2)''' - Baixa; '''(3)''' - Boa; '''(4)''' - Alta; '''(5)''' - Excelente;",
+	'ratinghistory-graph-scale' => "As '''revisións por día''' <font color=\"red\">''(vermello)''</font> móstranse cunha escala de ''1:\$1''.",
 	'right-feedback' => 'Usar o formulario de reacción para valorar unha páxina',
 );
 

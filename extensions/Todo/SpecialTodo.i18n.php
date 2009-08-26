@@ -893,6 +893,7 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'todo-list-cancel' => 'Annulla',
 	'todo-form-details' => 'Dettagli:',
 );
 

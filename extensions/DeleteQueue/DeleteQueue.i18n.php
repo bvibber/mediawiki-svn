@@ -5380,6 +5380,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'deletequeue-list-search' => 'זוכן',
+	'deletequeue-case-reason' => 'אורזאַך:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -252,21 +252,38 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'taggedimages' => 'Označene slike',
 	'imagetagging-desc' => 'Omogućuje korisniku da odabere regione uklopljene slike i poveže ih sa željenom stranicom',
 	'imagetagging-addimagetag' => 'Označi ovu sliku',
 	'imagetagging-article' => 'Stranica:',
+	'imagetagging-articletotag' => 'Stranica za označavanje',
+	'imagetagging-canteditothermessage' => 'Ne možete uređivati ovu stranicu, ili nemate prava da to učinite ili jer je stranica zaključana iz drugih razloga.',
 	'imagetagging-imghistory' => 'Historija',
 	'imagetagging-images' => 'slike',
 	'imagetagging-inthisimage' => 'Na ovoj slici: $1',
+	'imagetagging-logentry' => 'Uklonjene oznake sa stranice [[$1]] od strane $2',
+	'imagetagging-log-tagged' => 'Slika [[$1|$2]] je označena na stranici [[$3]] od strane $4',
 	'imagetagging-new' => '<sup><span style="color:red">Novo!</span></sup>',
+	'imagetagging-removetag' => 'uklanjanje oznake',
 	'imagetagging-done-button' => 'Završi označavanje',
 	'imagetagging-tag-button' => 'Označi',
 	'imagetagging-tagcancel-button' => 'Odustani',
+	'imagetagging-tagging-instructions' => 'Kliknite na osobe ili predmete na slici da ih označite.',
 	'imagetagging-addingtag' => 'Dodajem oznaku…',
 	'imagetagging-removingtag' => 'Uklanjam oznaku…',
+	'imagetagging-addtagsuccess' => 'Dodana oznaka.',
+	'imagetagging-removetagsuccess' => 'Uklonjena oznaka.',
+	'imagetagging-canteditneedloginmessage' => 'Ne možete uređivati ovu stranicu.
+Razlog može biti Vaša prijava za označavanje slika.
+Da li se želite odmah prijaviti?',
+	'imagetagging-oneactionatatimemessage' => 'Samo jedna akcija označavanja odjednom je dozvoljena.
+Molimo pričekajte da se trenutna akcija završi.',
+	'imagetagging-oneuniquetagmessage' => 'Ova slika već ima oznaku sa ovim nazivom.',
 	'imagetagging-imagetag-seemoreimages' => 'Vidi više slika od "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Slike od "$1"',
 	'imagetagging-taggedimages-displaying' => 'Prikazane su $1 - $2 od $3 slika iz "$4"',
+	'tag-logpagename' => 'Zapisnik označavanja',
+	'tag-logpagetext' => 'Ovo je zapisnik svih dodavanja i uklanjanja oznaka slika.',
 );
 
 /** Catalan (Català)

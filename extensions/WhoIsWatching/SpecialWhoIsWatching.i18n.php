@@ -119,6 +119,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'whoiswatching' => 'Implijerien o sellet ouzh ur bajenn eus ar wiki',
+	'whoiswatching-desc' => 'Pourchas a ra ur roll eus an implijerien a heuilh ur bajenn wiki',
 	'specialwhoiswatchingthepage' => 'Implijerien o sellet %s',
 	'specialwhoiswatchingusage' => "N'hall ket ar bajenn dibar-mañ bezañ implijet en hec'h-unan. Kit dre [[MediaWiki:Number_of_watching_users_pageview]] evit termeniñ ul lec'h mont davet ar bajenn-mañ.",
 	'specialwhoiswatchingaddusers' => 'Ouzhpennit an implijerien evit gwelet ar bajenn',
@@ -258,7 +259,7 @@ $messages['fi'] = array(
 	'whoiswatching' => 'Kuka on tarkkailemassa wikisivua',
 	'whoiswatching-desc' => 'Mahdollistaa wikisivun tarkkailijoidan listauksen.',
 	'specialwhoiswatchingthepage' => 'Kuka tarkkailee sivua %s',
-	'specialwhoiswatchingusage' => 'Tätä toimintosivua ei voida käyttää sen sellaisenaan.
+	'specialwhoiswatchingusage' => 'Tätä toimintosivua ei voi käyttää sellaisenaan.
 Käytä sivua [[MediaWiki:Number_of_watching_users_pageview]] määritelläksesi liityntäkohdan tähän toimintosivuun.',
 	'specialwhoiswatchingaddusers' => 'Lisää käyttäjiä tarkkailemaan sivua',
 	'specialwhoiswatchingaddbtn' => 'Lisää valitut käyttäjät',

@@ -758,10 +758,11 @@ $messages['vo'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'unicodeconverter' => 'Unicode转换器',
-	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-ok' => '确定',
 	'unicodeconverter-oldtext' => '原文字：',
 	'unicodeconverter-newtext' => '转换后文字',
 );

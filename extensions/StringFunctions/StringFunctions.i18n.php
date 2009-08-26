@@ -178,6 +178,13 @@ $messages['hil'] = array(
 	'stringfunctions-desc' => 'Ginapanami ang parser upod sang string panksiyones',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'stringfunctions-desc' => 'Proširuje parser sa string funkcijama',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

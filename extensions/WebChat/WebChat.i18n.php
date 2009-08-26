@@ -88,7 +88,13 @@ Ul lesanv a vo lakaet d'an implijerien dianv dre ziouer, met gallout a ra bezañ
  * @author CERminator
  */
 $messages['bs'] = array(
+	'webchat' => 'Web dopisivanje',
 	'webchat-desc' => 'Dodaje [[Special:WebChat|posebnu stranicu]] za dopisivanje u realnom vremenu sa drugim wiki korisnicima',
+	'webchat-header' => 'Ova posebna stranica Vam omogućava zajednički rad u realnom vremenu sa drugim korisnicima wikija.
+Da se spojite, samo pritisnite dugme "Spoji".
+Ako ste prijavljeni sa Vašim nadimkom, podaci će već biti uneseni.
+Anonimnim korisnicima će biti automatski dodijeljen nadimak, ali može biti naknadno promijenen.',
+	'right-webchat' => 'Dozvoljena upotreba [[Special:WebChat|web dopisivanja]]',
 );
 
 /** Catalan (Català)
@@ -208,7 +214,7 @@ $messages['gl'] = array(
 Para conectarse simplemente prema no botón "Conectar".
 Se está rexistrado o seu nome de usuario será fixado por defecto.
 Aos usuarios anónimos concederáselles un nome automático, que pode ser cambiado.',
-	'right-webchat' => 'Autorizado para usar o chat web',
+	'right-webchat' => 'Autorizado para usar o [[Special:WebChat|chat web]]',
 );
 
 /** Swiss German (Alemannisch)

@@ -323,17 +323,17 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'postcomment_desc' => 'Permite aos usuarios publicar comentarios directamente nas páxinas de conversa.',
-	'postcomment_discussionprotected' => 'A páxina de conversa foi protexida de novas publicacións.',
+	'postcomment_discussionprotected' => 'A páxina de conversa foi protexida fronte a novos comentarios.',
 	'postcomment_notloggedin' => 'Non está rexistrado.',
 	'postcomment_youareloggedinas' => 'Está rexistrado como $1',
-	'postcomment_addcommentdiscussionpage' => 'Engade o teu comentario na páxina de conversa',
+	'postcomment_addcommentdiscussionpage' => 'Engada o seu comentario na páxina de conversa',
 	'postcomment_leavemessagefor' => 'Deixar unha mensaxe para $1',
 	'postcomment_post' => 'Publicar',
-	'postcomment_on' => 'En',
+	'postcomment_on' => 'O',
 	'postcomment_said' => 'dixo',
 	'postcomment_invalidrequest' => 'Petición non válida.',
-	'postcomment_replyto' => 'Respostar a $1',
-	'postcomment_nopostingtoadd' => 'Non pongas a engadir.',
+	'postcomment_replyto' => 'Responder a $1',
+	'postcomment_nopostingtoadd' => 'Non hai comentarios que engadir.',
 );
 
 /** Swiss German (Alemannisch)

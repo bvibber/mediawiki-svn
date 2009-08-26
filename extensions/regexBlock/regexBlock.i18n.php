@@ -2670,6 +2670,13 @@ $messages['vo'] = array(
 	'right-regexblock' => 'Blokön gebanis in vüks valik vükafarma',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'regexblock-form-reason' => 'אורזאַך:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

@@ -1085,18 +1085,20 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'contributors' => "A l'han contribuì",
+	'contributors-desc' => 'A lista i prinsipaj contribudor ëd na pàgina',
 	'contributors-toolbox' => 'Contributor prinsipaj',
-	'contributors-legend' => "Lista dij contributor prinsipaj a n'artìcol",
+	'contributors-legend' => 'Lista ij contributor prinsipaj ëd na pàgina',
 	'contributors-target' => 'Tìtol:',
 	'contributors-submit' => 'Smon',
 	'contributors-subtitle' => 'Contributor prinsipaj ëd $1',
-	'contributors-others-long' => "J'àotri contributor dë sta pàgina-sì a son antra $1.",
-	'contributors-others' => "e antra $1 dj'àotri",
+	'contributors-others-long' => 'A-i {{PLURAL:$1|é 1 àutr contribudor|son $1 àutr contribudor}} a sta pàgina-sì.',
+	'contributors-others' => "e {{PLURAL:$1|n'àutr|$1 àutri}}",
 	'contributors-badtitle' => 'Tìtol nen bon',
-	'contributors-nosuchpage' => "L'artìcol $1 a-i é pa.",
+	'contributors-nosuchpage' => 'La pàgina $1 a esist pa.',
 );
 
 /** Pashto (پښتو)

@@ -56,6 +56,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'player' => 'Mediaspeler',
+	'player-desc' => "Geïntegreerde mediaspeler wat gebruik maak van algemene webblaaier uitbreidings en 'n [[Special:Player|spesiale bladsy]]",
 	'player-title' => 'Mediaspeler',
 	'player-playertitle' => 'Speler: $1',
 	'player-file' => 'Lêernaam',

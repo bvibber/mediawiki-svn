@@ -101,9 +101,15 @@ Gwelet ivez ar [[Special:MostRevisors|'''pajennoù dezho ar muiañ a adlennerien
 $messages['bs'] = array(
 	'cooperationstatistics' => 'Statistike kooperacije',
 	'cooperationstatistics-desc' => 'Prikazuje [[Special:CooperationStatistics|statistike saradnje u glavnom imenskom prostoru]].',
+	'cooperationstatistics-text' => "Prikazuje statistike kooperacije u glavnom imenskom prostoru.
+Od [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] do [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}} i više]] revizora.<br />
+Pogledajte također [[Special:MostRevisors|'''stranice sa najviše urednika''']] i [[Special:MostRevisions|stranice sa najviše revizija]].",
 	'cooperationstatistics-tablearticle' => 'Broj stranica',
+	'cooperationstatistics-tablevalue' => 'Broj urednika',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|stranica|stranice|stranica}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$2|ima|imaju}} $1 {{PLURAL:$1|uređivač|uređivača}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|ima|imaju}} $1 {{PLURAL:$1|urednika|ili manje urednika}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|ima|imaju}} $1 ili više urednika',
 	'cooperationstatistics-legendmore' => 'ili više urednika.',
 );
 

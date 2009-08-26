@@ -1150,6 +1150,7 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
@@ -1158,7 +1159,7 @@ $messages['te'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|ఒక ఆహ్వానం|$1 ఆహ్వానాలు}} ఉన్నాయి)',
 	'invitations-feature-pagetitle' => 'ఆహ్వాన నిర్వహణ - $1',
 	'invitations-feature-access' => '<i>$1</i>ని వాడడానికి ప్రస్తుతం మీకు అనుమతి ఉంది.',
-	'invitations-feature-numleft' => 'మీ $2 ఆహ్వనాలలో మీ దగ్గర ఇంకా <b>$1</b> మిగిలివున్నాయి.',
+	'invitations-feature-numleft' => 'మీ దగ్గర  ఇంకా  {{PLURAL:$2|ఒక ఆహ్వానము ఉంది|$2 ఆహ్వనాలలో<b>$1</b> మిగిలివున్నాయి}}.',
 	'invitations-inviteform-title' => '$1ని వాడడానికి ఓ వాడుకరిని ఆహ్వానించండి',
 	'invitations-inviteform-username' => 'ఆహ్వానించాల్సిన వాడుకరి',
 	'invitations-inviteform-submit' => 'ఆహ్వానించు',

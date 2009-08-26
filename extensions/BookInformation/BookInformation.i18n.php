@@ -49,6 +49,7 @@ $messages['af'] = array(
 	'bookinfo-result-year' => 'Jaar:',
 	'bookinfo-error-invalidisbn' => 'Ongeldige ISBN ingetik.',
 	'bookinfo-error-nosuchitem' => 'Item bestaan nie of kon nie gevind word nie.',
+	'bookinfo-error-nodriver' => 'Kon nie die regte "Book Information Driver" inisialiseer nie.',
 	'bookinfo-error-noresponse' => 'Geen antwoord of versoek neem te lank.',
 	'bookinfo-purchase' => 'Koop die boek vanaf $1',
 	'bookinfo-provider' => 'Gegewens verskaf deur: $1',

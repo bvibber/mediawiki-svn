@@ -580,6 +580,13 @@ $messages['vi'] = array(
 	'uos-title' => 'Phân phối giá trị tùy chọn cá nhân $1',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'uos-other' => '*אנדער',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  * @author PhiLiP

@@ -2361,7 +2361,7 @@ $messages['gl'] = array(
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
 	'code-tests' => 'Casos de proba',
-	'code-authors-text' => 'Embaixo hai unha lista dos autores das respostas por orde de tarefas recentes.',
+	'code-authors-text' => 'A continuación hai unha lista dos autores das respostas por orde de tarefas recentes. As contas de wiki local móstranse entre parénteses.',
 	'code-author-haslink' => 'O autor é ligado co usuario do wiki chamado $1',
 	'code-author-orphan' => 'Este autor non ten ningunha ligazón con algunha conta do wiki',
 	'code-author-dolink' => 'Ligar este autor cun usuario do wiki:',
@@ -2443,6 +2443,14 @@ Enderezo URL completo: $3
 Resumo:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: a proba automática detectou unha regresión',
+	'codereview-email-body3' => 'A proba automática detectou unha regresión debido a variacións na versión r$1.
+
+Enderezo URL completo: $2
+
+Resumo do envío:
+
+$3',
 	'repoadmin' => 'Administración do repositorio',
 	'repoadmin-new-legend' => 'Crear un novo repositorio',
 	'repoadmin-new-label' => 'Nome do repositorio:',
@@ -3328,6 +3336,7 @@ $messages['id'] = array(
 	'code-field-timestamp' => 'Tanggal',
 	'code-field-comments' => 'Catatan',
 	'code-field-path' => 'Jalan',
+	'code-field-select' => 'Pilih',
 	'code-rev-author' => 'Pembuat:',
 	'code-rev-date' => 'Tanggal:',
 	'code-rev-message' => 'Komentar:',
@@ -7664,7 +7673,7 @@ $messages['zh-hans'] = array(
 	'code-status-fixme' => '修正',
 	'code-status-reverted' => '回复',
 	'code-status-resolved' => '解决',
-	'code-status-ok' => 'ok',
+	'code-status-ok' => '确定',
 	'code-status-deferred' => '推迟',
 	'code-pathsearch-path' => '路径：',
 	'code-rev-submit' => '保存修改',
@@ -7707,7 +7716,7 @@ $3',
 	'repoadmin-edit-path' => '储存库路径：',
 	'repoadmin-edit-bug' => 'Bugzilla路径：',
 	'repoadmin-edit-view' => 'ViewVC路径：',
-	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-button' => '确定',
 	'repoadmin-edit-sucess' => '储存库"[[Special:Code/$1|$1]]"已被成功修改。',
 	'right-repoadmin' => '管理代码储存库',
 	'right-codereview-use' => '使用Special:Code',

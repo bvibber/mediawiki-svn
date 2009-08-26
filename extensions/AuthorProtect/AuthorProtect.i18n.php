@@ -1437,6 +1437,13 @@ $messages['vo'] = array(
 	'restriction-level-author' => 'Redakamadäl te lautane',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'authorprotect-reason' => 'אורזאַך',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author PhiLiP

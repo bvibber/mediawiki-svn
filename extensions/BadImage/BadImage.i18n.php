@@ -925,6 +925,7 @@ $messages['hr'] = array(
 	'badimages-log-add' => 'dodana [[$1]] na popis loših slika',
 	'badimages-log-remove' => 'izbačena [[$1]] s popisa loših slika',
 	'badimages-page' => '{{ns:help}}:Popis loših slika',
+	'right-badimages' => 'Ažuriranje popisa loših slika',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2427,6 +2428,13 @@ $messages['vo'] = array(
 	'badimages-log-add' => '[[$1]] peläükon lisede magodas badik',
 	'badimages-log-remove' => '[[$1]] pemoükon se lised magodas badik',
 	'badimages-page' => '{{ns:help}}:Lised magodas badik',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'badimages-reason' => 'אורזאַך:',
 );
 
 /** Yue (粵語)
