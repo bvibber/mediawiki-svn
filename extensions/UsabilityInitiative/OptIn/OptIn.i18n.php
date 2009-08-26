@@ -73,6 +73,8 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-browser-cb' => 'Google Chrome Beta',
 	'optin-survey-answer-browser-c1' => 'Google Chrome 1',
 	'optin-survey-answer-browser-c2' => 'Google Chrome 2',
+	'optin-survey-answer-browser-c3' => 'Google Chrome 3',
+	'optin-survey-answer-browser-c4' => 'Google Chrome 4',
 	'optin-survey-answer-browser-s3' => 'Safari 3',
 	'optin-survey-answer-browser-s4' => 'Safari 4',
 	'optin-survey-answer-browser-o9' => 'Opera 9',
