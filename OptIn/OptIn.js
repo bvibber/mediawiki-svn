@@ -23,7 +23,7 @@ function optInGetPOSTData() {
 			browserIndex = 'ff' + parseInt( $j.browser.versionNumber );
 		break;
 		case 'chrome':
-			// FIXME: Chrome Beta?
+			// FIXME: Chrome Alpha/Beta?
 			browserIndex = 'c' + parseInt( $j.browser.versionNumber );
 		break;
 		case 'safari':
