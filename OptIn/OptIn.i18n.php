@@ -553,6 +553,7 @@ Hvala i nadamo se da ćete nam se javiti!',
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'optin' => 'Iniciativa de millora de la Usabilitat',
@@ -568,11 +569,11 @@ Voleu provar Beta?",
 	'optin-feedback-intro' => "Gràcies per provar Beta.
 Volem saber que n'opinau de la nova interfície, per això us agrairíem que responguéssiu l'enquesta voluntària que teniu a continuació.",
 	'optin-feedback-back' => "Si no voleu respondre l'enquesta, podeu tornar a $1.",
-	'optin-success-in' => 'Ara estau provant Beta.
-Podeu sortir en qualsevol moment clicant sobre l\'enllaç "{{int:optin-leave}}" que teniu al cantó superior dret.',
+	'optin-success-in' => "Ara estau provant Beta.
+Podeu sortir en qualsevol moment clicant sobre l'enllaç «{{int:optin-leave}}» que teniu al cantó superior dret.",
 	'optin-leave-cancel' => 'Si voleu continuar usant Beta, podeu tornar a $1.',
-	'optin-success-out' => 'Heu sortit de Beta.
-Podeu provar-la una altra vegada en qualsevol moment clicant sobre l\'enllaç "{{int:optin-try}}" que teniu al cantó superior dret de la pantalla.',
+	'optin-success-out' => "Heu sortit de Beta.
+Podeu provar-la una altra vegada en qualsevol moment clicant sobre l'enllaç «{{int:optin-try}}» que teniu al cantó superior dret de la pantalla.",
 	'optin-success-feedback' => 'Gràcies per la vostra opinió!',
 	'optin-accept-short' => 'Fem-ho!',
 	'optin-accept-long' => 'Provau Beta',
@@ -583,11 +584,11 @@ Podeu provar-la una altra vegada en qualsevol moment clicant sobre l\'enllaç "{
 	'optin-submit-feedback' => 'Donau la vostra opinió',
 	'optin-try' => 'Provau Beta',
 	'optin-leave' => 'Sortiu de Beta',
-	'optin-feedback' => 'Doneu la vostra opinió',
+	'optin-feedback' => 'Donau la vostra opinió',
 	'optin-survey-yes' => 'Sí',
 	'optin-survey-no' => 'No',
-	'optin-survey-intro' => 'Gràcies per provar Beta.
-Volem saber què n\'opinau de la nova interfície, així que us agrairíem que responguéssiu l\'enquesta voluntària que teniu a continuació abans de clicar "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-intro' => "Gràcies per provar Beta.
+Volem saber què n'opinau de la nova interfície, així que us agrairíem que responguéssiu l'enquesta voluntària que teniu a continuació abans de clicar «[[#leave|{{int:optin-submit-out}}]]».",
 	'optin-survey-question-likedislike' => 'Què us ha agradat de Beta? Què no us ha agradat de Beta?',
 	'optin-survey-question-whyoptout' => 'Perquè deixau Beta? (Seleccionau totes les opcions escaients)',
 	'optin-survey-answer-whyoptout-hard' => "Ha estat massa difícil d'usar.",
@@ -1641,7 +1642,7 @@ $messages['gl'] = array(
 	'optin-intro' => 'A Iniciativa de usabilidade da Wikipedia traballou duro para mellorar a usabilidade da Wikipedia.
 Quere probar Beta?',
 	'optin-feedback-intro' => 'Grazas por probar Beta.
-Queremos saber que pensas da nosa nova interface, polo que lle agradeceriamos que enchese a enquisa opcional que aparece a continuación.',
+Queremos saber que pensa da nosa nova interface, polo que lle agradeceriamos que enchese a enquisa opcional que aparece a continuación.',
 	'optin-feedback-back' => 'Se non quere encher a enquisa, pode voltar a "$1".',
 	'optin-success-in' => 'Xa está probando Beta.
 Pode saír en calquera momento facendo clic na ligazón "{{int:optin-leave}}" que aparecerá na parte superior da pantalla.',
@@ -1653,7 +1654,7 @@ Pode participar nas probas en calquera momento facendo clic na ligazón "{{int:o
 	'optin-accept-long' => 'Probar Beta',
 	'optin-accept-long-anon' => 'Acceda ao sistema e probe Beta',
 	'optin-deny-short' => 'Non, grazas',
-	'optin-deny-long' => 'voltar á páxina anterior',
+	'optin-deny-long' => 'Voltar á páxina anterior',
 	'optin-submit-out' => 'Deixar Beta',
 	'optin-submit-feedback' => 'Enviar a opinión',
 	'optin-try' => 'Probar Beta',
@@ -1662,7 +1663,7 @@ Pode participar nas probas en calquera momento facendo clic na ligazón "{{int:o
 	'optin-survey-yes' => 'Si',
 	'optin-survey-no' => 'Non',
 	'optin-survey-intro' => 'Grazas por probar Beta.
-Gustaríanos saber o que pensa sobre a nosa nova interface, de forma que lle agradeceriamos que enchese a enquisa opcional de embaixo antes de premer en "[[#leave|{{int:optin-submit-out}}]]".',
+Queremos saber que pensa da nosa nova interface, polo que lle agradeceriamos que enchese a enquisa opcional que aparece a continuación antes de premer en "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'Que é o que lle gusta de Beta? E que non?',
 	'optin-survey-question-whyoptout' => 'Por que está a saír desta beta? (por favor, seleccione o que sexa conveniente)',
 	'optin-survey-answer-whyoptout-hard' => 'Foi moi difícil de usar.',
@@ -1704,7 +1705,11 @@ O novo sistema de navegación fai máis doado ver onde se está e que se está f
 ;Melloras na barra de ferramentas de edición
 As novas e melloradas iconas fan máis clara a identificación da acción que realiza cada unha. As seccións expansibles reducen a desorde á vez que manteñen as ferramentas menos usadas a só un clic de distancia.
 A sección de axuda proporciona un acceso rápido a unha referencia cos usos comúns do formato wiki.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+== Como involucrarse ==
+Para coñecer máis sobre o proxecto ou involucrarse nel existe o [http://usability.wikimedia.org wiki da Iniciativa de usabilidade], onde se atopa a información sobre as nosas subvencións, investigacións, deseño e desenvolvemento e lanzamentos. Para facer preguntas ou valoracións xerais existe a nosa [http://usability.wikimedia.org/wiki/Talk:Prototype páxina de conversa do prototipo], así como outras páxinas de conversa asociadas a asuntos particulares. En caso de se atopar algún erro hai á disposición a [http://usability.wikimedia.org/wiki/Talk:Releases/Acai páxina de discusión da versión Acai] ou mesmo [https://bugzilla.wikimedia.org Bugzilla].
+
+Grazas, e agardamos calquera opinión que nos axude a mellorar!',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -4940,6 +4945,8 @@ $messages['yi'] = array(
 אפשר ווילט איר פרובירן אונזער בעטא?',
 	'optin-accept-long' => 'פרובירן בעטא',
 	'optin-accept-long-anon' => 'ארײַנלאגירן און אויספרובירן בעטא',
+	'optin-deny-short' => 'ניין א דאנק',
+	'optin-deny-long' => 'צוריק צום פריערדיקן בלאט',
 	'optin-submit-out' => 'פֿארלאזן בעטא',
 	'optin-try' => 'פרובירן בעטא',
 	'optin-survey-yes' => 'יא',
@@ -4949,6 +4956,7 @@ $messages['yi'] = array(
 	'optin-survey-question-os' => 'וועלכע אפערירן סיסטעם ניצט איר?',
 	'optin-survey-answer-os-other' => 'אנדער אפערירן סיסטעם:',
 	'optin-survey-question-res' => 'וואס איז די רעזאלוציע פון אייער עקראן?',
+	'optin-survey-answer-changes-other' => 'אנדער:',
 );
 
 /** Yue (粵語)

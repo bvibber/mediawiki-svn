@@ -23,6 +23,14 @@ $messages['qqq'] = array(
 	'clicktracking-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'clicktracking' => 'Сачэньне за націскамі кампутарнай мышшу ў межах ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня',
+	'clicktracking-desc' => 'Сачэньне за націскамі кампутарнай мышшу, прызначанае для сачэньня за здарэньнямі, якія не вядуць да абнаўленьня старонкі',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -37,6 +45,14 @@ $messages['bs'] = array(
 $messages['cs'] = array(
 	'clicktracking' => 'Sledování kliknutí pro Iniciativu použitelnosti',
 	'clicktracking-desc' => 'Sledování kliknutí pro sledování událostí, které nezpůsobují znovunačtení stránky',
+);
+
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'clicktracking' => 'Benutzerfreundlichkeitsinitiative Klickverfolgung',
+	'clicktracking-desc' => 'Klickverfolgung, gedacht für die Aufzeichnung von Aktionen, die nicht zu einer Seitenaktualisierung führen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -55,6 +71,30 @@ $messages['fr'] = array(
 	'clicktracking-desc' => 'Suivi de clics, visant à traquer les événements qui ne causent pas un rechargement de page',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'clicktracking' => 'Seguimento dos clics da Iniciativa de usabilidade',
+	'clicktracking-desc' => 'Seguimento dos clics, co obxectivo de seguir os acontecementos que non causan unha actualización da páxina',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'clicktracking' => 'D Klickverfolgig vu dr Benutzerfrejndligkeits-Initiative',
+	'clicktracking-desc' => 'Klickverfolgig, fir Aktione, wu kei Syteaktualisierig verursache',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'clicktracking' => 'Praćenje klikova u Inicijativi za uporabljivosti',
+	'clicktracking-desc' => 'Praćenje klikova, napravljeno za praćenje događaja koji ne dovode do osvježavanja stanice',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -69,6 +109,14 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'clicktracking' => 'Traciamento de clics del Initiativa de Usabilitate',
 	'clicktracking-desc' => 'Traciamento de clics, pro traciar eventos que non causa un recargamento de pagina',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'clicktracking' => 'Pelacak klik Inisiatif Kebergunaan',
+	'clicktracking-desc' => "Pelacak klik, digunakan untuk melacak kejadian yang tidak menyebabkan ''refresh'' halaman",
 );
 
 /** Japanese (日本語)
@@ -128,6 +176,14 @@ $messages['oc'] = array(
 	'clicktracking-desc' => 'Seguit de clics, visant a tracar los eveniments que causan pas un recargament de pagina',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'clicktracking' => 'Śledzenie kliknięć dla inicjatywy użyteczności',
+	'clicktracking-desc' => 'Śledzenie kliknięć, przeznaczone do poszukiwania zdarzeń, które nie powodują odświeżenia strony',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
@@ -142,6 +198,22 @@ $messages['pms'] = array(
 $messages['ru'] = array(
 	'clicktracking' => 'Отслеживание нажатий в рамках Инициативы юзабилити',
 	'clicktracking-desc' => 'Отслеживание нажатий. Предназначается для отслеживания событий, не приводящих к обновлению страницы',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'clicktracking' => 'Sledovanie kliknutí pre Iniciatívu použiteľnosti',
+	'clicktracking-desc' => 'Sledovanie kliknutí, na sledovanie udalostí, ktoré nespôsobujú opätovné načítanie stránky',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Smihael
+ */
+$messages['sl'] = array(
+	'clicktracking' => 'Sledenje klikom Iniciative za uporabnost',
+	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
 );
 
 /** Vèneto (Vèneto)

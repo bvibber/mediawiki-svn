@@ -33,6 +33,14 @@ $messages['be-tarask'] = array(
 	'usabilityinitiative-desc' => 'Дапаўненьні распрацаваныя ў межах ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня MediaWiki',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'usabilityinitiative' => 'Intrudu Implijusted',
+	'usabilityinitiative-desc' => "Arc'hwelioù diorroet gant Intrudu Implijusted Wikipedia evit gwellaat implijusted MediaWiki",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
