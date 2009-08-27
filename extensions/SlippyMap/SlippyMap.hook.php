@@ -37,13 +37,13 @@ class SlippyMapHook {
 		// Hook for adding JS variables to <head>
 		$wgHooks['MakeGlobalVariablesScript'][] = array( &$this, 'jsVariables' );
 
-		// Add JavaScript files to <head>
+		// Add JavaScript files to <head>, starting with OpenLayers so that it is available in SlippyMap.js
+		$wgOut->addScriptFile( $wgScriptPath . '/extensions/SlippyMap/OpenLayers/public/OpenLayers.js?' . $wgStyleVersion );
 		if ( method_exists( $wgOut, 'addScriptClass' ) ) {
 			$wgOut->addScriptClass( 'SlippyMap' );
 		} else {
 			$wgOut->addScriptFile( $wgScriptPath . '/extensions/SlippyMap/js/' . $wgSlippyMapJs . '?' . $wgStyleVersion );
 		}
-		$wgOut->addScriptFile( $wgScriptPath . '/extensions/SlippyMap/OpenLayers/public/OpenLayers.js?' . $wgStyleVersion );
 
 		// Add our CSS to <head>
 		$wgOut->addExtensionStyle( $wgScriptPath . '/extensions/SlippyMap/SlippyMap.css?' . $wgStyleVersion );
