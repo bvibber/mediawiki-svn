@@ -342,3 +342,13 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
 	'commentbox-error-empty-comment' => 'Prázdne komentáre nie sú povolené!',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'commentbox-savebutton' => 'వ్యాఖ్యని భద్రపరచు',
+	'commentbox-name' => 'పేరు:',
+	'commentbox-log' => 'కొత్త వ్యాఖ్యలు',
+	'commentbox-first-comment-heading' => '== వ్యాఖ్యలు ==',
+);
+

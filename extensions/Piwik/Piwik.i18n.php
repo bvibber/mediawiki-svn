@@ -410,6 +410,17 @@ $messages['pl'] = array(
 	'right-viewpiwik' => 'Dostęp do [[Special:Piwik|statystyk Piwik]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'piwik-desc' => 'A anseriss djë script Piwik ant le pàgine MediaWiki për trassé e për gionté [[Special:Piwik|cheich statìstiche]]',
+	'piwik-lastvisits' => 'Ùltime vìsite',
+	'piwik-countries' => 'Pais',
+	'piwik-browsers' => 'Browser',
+	'right-viewpiwik' => 'Varda le [[Special:Piwik|statìstiche Piwik]]',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

@@ -471,7 +471,7 @@ $messages['br'] = array(
 	'ogg-stop' => 'Paouez',
 	'ogg-play-video' => 'Lenn ar video',
 	'ogg-play-sound' => 'Lenn ar son',
-	'ogg-player-videoElement' => 'elfenn <video>',
+	'ogg-player-videoElement' => 'Skor ar merdeer orin',
 	'ogg-player-soundthumb' => 'Lenner ebet',
 	'ogg-use-player' => 'Ober gant al lenner :',
 	'ogg-more' => "Muioc'h...",
@@ -708,7 +708,7 @@ $messages['el'] = array(
 	'ogg-no-player' => 'Συγγνώμη, το σύστημά σας δεν φαίνεται να έχει κάποιο υποστηριζόμενο λογισμικό αναπαραγωγής.<br />
 Παρακαλώ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">κατεβάστε ένα πρόγραμμα αναπαραγωγής</a>.',
 	'ogg-no-player-js' => 'Συγνώμη, το σύστημά σας είτε έχει απενεργοποιημένη την JavaScript είτε δεν έχει κάποιον υποστηριζόμενο αναπαραγωγέα.<br />
-Μπορείτε <a href="$1">να κατεβάσετε το κλιπ</a><br />ή<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">να κατεβάσετε έναν αναπαραγωγέα</a> να αναπαράγει το κλιπ στον πλοηγό σας.',
+Μπορείτε <a href="$1">να κατεβάσετε το κλιπ</a> ή <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">να κατεβάσετε έναν αναπαραγωγέα</a> να αναπαράγει το κλιπ στον πλοηγό σας.',
 	'ogg-no-xiphqt' => 'Δεν φαίνεται να έχετε το στοιχείο XiphQT για το πρόγραμμα QuickTime.<br />
 Το πρόγραμμα QuickTime δεν μπορεί να αναπαράγει αρχεία Ogg χωρίς αυτό το στοιχείο.<br />
 Παρακαλώ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">κατεβάστε το XiphQT</a> ή επιλέξτε ένα άλλο πρόγραμμα αναπαραγωγής.',
@@ -2933,6 +2933,8 @@ $messages['tr'] = array(
 	'ogg-play-sound' => 'Sesi oynat',
 	'ogg-no-player' => 'Üzgünüz, sisteminiz desteklenen herhangi bir oynatıcı yazılımına sahip gibi görünmüyor.
 Lütfen <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">bir oynatıcı indirin</a>.',
+	'ogg-no-player-js' => 'Üzgünüz, sisteminizde JavaScript devre dışı ya da desteklenen bir oynatıcınız yok.<br />
+<a href="$1">Klibi indirebilir</a> ya da klibi tarayıcınızda oynatmak için <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">bir oynatıcı indirebilirsiniz</a>.',
 	'ogg-no-xiphqt' => 'QuickTime için XiphQT bileşenine sahip değil görünüyorsunuz.
 QuickTime bu bileşen olmadan Ogg dosyalarını oynatamaz.
 Lütfen <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT\'i indirin</a> ya da başka bir oynatıcı seçin.',

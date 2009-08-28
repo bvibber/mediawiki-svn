@@ -642,6 +642,13 @@ $messages['sv'] = array(
    #</pre><!-- låt denna linje vara ifred -->',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'editsubpages-desc' => 'ఒక పేజీని మరియు దాని అన్ని ఉపపేజీలను గుప్తముగా మార్చడానికి [[MediaWiki:Unlockedpages]] ద్వారా సంరక్షణ తీసివేసేందుకు  సిస్ఆప్స్కు అవకాసము లభిస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

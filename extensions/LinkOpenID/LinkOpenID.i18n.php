@@ -375,6 +375,18 @@ Aquò vos permet tanben d'utilizar vòstra pagina d'utilizaire coma OpenID.",
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL :',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'linkopenid-desc' => "A përmëtt a j'utent ëd coleghé ël sò cont a n'OpenID estern",
+	'linkopenid-prefstext-pre' => "S'it l'has n'OpenID da un provider estern it peule spessifielo ambelessì.
+Sòn sì at përmëtt ëd dovré toa pàgina utent com n'OpenID.",
+	'linkopenid-prefstext-openid' => 'Ël tò OpenID:',
+	'linkopenid-prefstext-v1url' => 'Server-URL për OpenID Vërsion 1.1:',
+	'linkopenid-prefstext-v2url' => 'Server-URL për OpenID Vërsion 2:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -568,6 +568,13 @@ Kolla {{PLURAL:$2|denna relaterade sida|dessa relaterade sidor}}: $1.',
 	'tog-edit-similar' => 'Slå på förslag för liknande sidor',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'editsimilar-link-disable' => 'అభిరుచులను పేర్కొను',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

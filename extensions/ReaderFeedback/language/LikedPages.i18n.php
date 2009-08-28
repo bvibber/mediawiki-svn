@@ -381,6 +381,17 @@ $messages['pl'] = array(
 	'likedpages-graphs' => 'ocena danych',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'likedpages' => 'Pàgine motobin vardà',
+	'likedpages-leg' => 'Treuva le pàgine pì vardà',
+	'likedpages-list' => 'Sota a-i é na lista ëd pàgine ordinà për ël sò feedback dij letor.',
+	'likedpages-none' => 'A-i é pa ëd pàgine an sta lista-sì',
+	'likedpages-graphs' => 'dat ëd le valutassion',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

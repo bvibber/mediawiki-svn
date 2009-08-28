@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'googleadsense-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'googleadsense-desc' => 'Voeg [http://www.google.com/adsense Google AdSense] by die kantstrook by',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

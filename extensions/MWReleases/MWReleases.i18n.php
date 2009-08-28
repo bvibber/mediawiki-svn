@@ -82,6 +82,13 @@ $messages['id'] = array(
 	'mwreleases-desc' => 'Menambahkan sebuah [[Mediawiki:Mwreleases-list|daftar]] keluaran yang didukung, dapat diakses melalui API',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'mwreleases-desc' => 'Aggiunge un [[Mediawiki:Mwreleases-list|elenco]] di versioni supportate, accessibile tramite API',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

@@ -63,6 +63,17 @@ $messages['bn'] = array(
 	'editwarning' => 'সম্পাদনা সতর্কীকরণ',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'editwarning' => "Kemenn-diwall d'ar c'hemmoù",
+	'editwarning-desc' => "Diskouez ur c'hemenn-diwall ma klask un implijer kuitaat ar furmskrid hep enrollañ e gemmoù",
+	'editwarning-warning' => "Mar kuitait ar bajenn-mañ e c'hallit koll ar c'hemmoù degaset ganeoc'h.
+Gallout a rit diweredekaaat ar c'hemenn-diwall-mañ e rann \"{{int:prefs-editing}}\" ho penndibaboù.",
+	'editwarning-preference' => 'Kas keloù din pa guitaan ur bajenn degaset kemmoù enni hep enrollañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  * @author Smooth O
@@ -594,7 +605,8 @@ $messages['te'] = array(
 $messages['tr'] = array(
 	'editwarning' => 'Değişiklik uyarısı',
 	'editwarning-desc' => 'Bir kullanıcı kaydetmeden değişiklik formundan çıkmaya çalışırsa bir uyarı göster',
-	'editwarning-warning' => 'Bu sayfadan ayrılmak yaptığınız herhangi bir değişikliği kaybetmenize sebep olacaktır.',
+	'editwarning-warning' => 'Bu sayfadan ayrılmak yaptığınız herhangi bir değişikliği kaybetmenize sebep olabilir.
+Bu uyarıyı, tercihlerinizin "{{int:prefs-editing}}" bölümünde devre dışı bırakabilirsiniz.',
 	'editwarning-preference' => 'Kaydedilmemiş değişikliğe sahip bir değişiklik sayfasından çıkarken beni uyar',
 );
 

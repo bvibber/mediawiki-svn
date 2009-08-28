@@ -5330,6 +5330,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Crazymadlover
  * @author Malafaya
  * @author Waldir
  */
@@ -5348,9 +5349,9 @@ $messages['pt'] = array(
 	'code-load-diff' => 'A carregar diferenças…',
 	'code-notes' => 'comentários recentes',
 	'code-authors' => 'autores',
-	'code-status' => 'estado',
+	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-authors-text' => 'Abaixo encontra-se uma lista de autores do repositório por ordem das efectivações recentes.',
+	'code-authors-text' => 'Abaixo encontra-se uma lista de autores do repositório por ordem das efectivações recentes. Contas do wiki locais são mostrados entre parênteses.',
 	'code-author-haslink' => 'Este autor está associado ao utilizador de wiki $1',
 	'code-author-orphan' => 'Este autor não está associado a nenhuma conta wiki',
 	'code-author-dolink' => 'Associar este autor a um utilizador de wiki:',
@@ -6574,6 +6575,13 @@ $3',
 	'specialpages-group-developer' => 'Utvecklarverktyg',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'code-rev-message' => 'Maelezo:',
+);
+
 /** Telugu (తెలుగు)
  * @author C.Chandra Kanth Rao
  * @author Kiranmayee
@@ -6889,7 +6897,8 @@ $messages['tr'] = array(
 	'code-authors' => 'yazarlar',
 	'code-status' => 'durum',
 	'code-tags' => 'etiketler',
-	'code-authors-text' => 'Aşağıdaki, yakın zamandaki teslimlerine göre sıralanmış depo yazarları listesidir.',
+	'code-tests' => 'Test durumları',
+	'code-authors-text' => 'Aşağıdaki, yakın zamandaki teslimlerine göre sıralanmış depo yazarları listesidir. Yerel viki hesapları parantez içinde gösterilmiştir.',
 	'code-author-haslink' => 'Bu yazar $1 viki kullanıcısına bağlıdır',
 	'code-author-orphan' => 'Bu yazarın bir viki hesabıyla bağı yoktur',
 	'code-author-dolink' => 'Bu yazarı bir viki kullanıcısına bağla:',
@@ -6971,6 +6980,14 @@ Tam URL: $3
 Teslim özeti:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Otomatik test gerileme saptadı',
+	'codereview-email-body3' => 'Otomatik test r$1 revizyonundaki değişikliklerden dolayı bir gerileme ortaya çıkardı.
+
+Tam URL: $2
+
+Teslimat özeti:
+
+$3',
 	'repoadmin' => 'Depo Yönetimi',
 	'repoadmin-new-legend' => 'Yeni bir depo oluştur',
 	'repoadmin-new-label' => 'Depo adı:',

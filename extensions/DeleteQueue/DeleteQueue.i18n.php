@@ -5029,6 +5029,7 @@ Du kan själv [{{fullurl:\$1|action=delvote}} bifalla eller invända] mot raderi
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
@@ -5039,6 +5040,7 @@ $messages['te'] = array(
 	'deletequeue-review-newextra' => 'అదనపు సమాచారం:',
 	'deletequeue-vote-reason' => 'వ్యాఖ్యలు:',
 	'deletequeue-list-status' => 'స్థితి:',
+	'deletequeue-list-search' => 'వెతుకు',
 	'deletequeue-list-anyqueue' => '(ఏదైనా)',
 	'deletequeue-list-header-page' => 'పేజీ',
 	'deletequeue-list-header-discusspage' => 'చర్చా పేజీ',

@@ -134,7 +134,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'sitenotice_close' => 'kuzhat',
-	'sitenotice-desc' => 'Aotren a ra an implijerien da serriñ ar sitenotice',
+	'sitenotice-desc' => "Aotren a ra an implijerien da serriñ kemennadenn al lec'hienn greiz",
 );
 
 /** Bosnian (Bosanski)

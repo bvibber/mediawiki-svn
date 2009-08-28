@@ -334,6 +334,7 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'honeypot-desc' => 'MedyaViki siteleri için [http://projecthoneypot.org/ Honey Pot Projesi] ile entegrasyonunu sağlar',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Project Honey Pot'a göre, IP adresinin tetiklediği son olayların sayısı",
 );
 
 /** Vietnamese (Tiếng Việt)

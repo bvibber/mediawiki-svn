@@ -15,6 +15,13 @@ $messages['qqq'] = array(
 	'i18ntags-desc' => 'Short description of the I18ntags extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'i18ntags-desc' => 'Verskaf toegang tot i18n-funksies vir die formatering van getalle, grammatika en meervoude in alle beskikbare tale',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -8360,6 +8360,7 @@ $messages['lb'] = array(
 	'configure-setting-wgAvailableRights' => 'Lëscht vun den disponibele Rechter',
 	'configure-setting-wgDisableInternalSearch' => 'Intern Sich ausschalten',
 	'configure-setting-wgExtensionFunctions' => 'Erweiderungsfunktiounen',
+	'configure-setting-wgExtensionMessagesFiles' => 'Erweiderung vun de Fichieren vun de Messagen',
 	'configure-setting-wgHooks' => 'Klameren',
 	'configure-setting-wgSpecialPages' => 'Zousätzlech Spezialsäiten',
 	'configure-setting-wgGroupPermissions-value' => 'Zougewise Rechter',
@@ -10370,6 +10371,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Crazymadlover
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -10688,7 +10690,7 @@ $messages['pt'] = array(
 	'configure-setting-wgHTCPPort' => 'Porta para purga de multicast HTCP',
 	'configure-setting-wgCheckCopyrightUpload' => 'Verificar informações sobre direitos de autor ao fazer carregamentos',
 	'configure-setting-wgCopyrightIcon' => 'HTML para o ícone de direitos de autor',
-	'configure-setting-wgEnableCreativeCommonsRdf' => 'Incluir informação de licenciamento CC',
+	'configure-setting-wgEnableCreativeCommonsRdf' => 'Incluir informação de licenciamento Creative Commons',
 	'configure-setting-wgEnableDublinCoreRdf' => 'Usar metadados RDF',
 	'configure-setting-wgMaxCredits' => 'Número máximo de autores creditados',
 	'configure-setting-wgRightsIcon' => 'Ícone de copyright',

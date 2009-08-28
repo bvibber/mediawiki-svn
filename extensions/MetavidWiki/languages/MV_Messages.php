@@ -341,6 +341,7 @@ Jump to stream view: $2',
 $messages['qqq'] = array(
 	'mv-desc' => '{{desc}}',
 	'mv_edit_strea_docu' => "\"'''Admin'''\" here means that you are editing the stream as an admin, allowing you to do more than as a regular user.",
+	'mv_duration_label' => '{{Identical|Duration}}',
 	'mv_user_cant_edit' => '$1 is login link and $2 is a link with {{msg-mw|cancel}} as label.',
 	'mv_label_stream_name' => '{{Identical|Stream name}}',
 	'mv_remove_reason' => '{{Identical|Reason for deletion}}',
@@ -407,6 +408,7 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'mv_duration_label' => 'Duur',
 	'mv_remove_reason' => 'Rede vir skrapping:',
 	'mv_upload_file' => 'Laai lêer',
 	'mv_tool_search' => 'Soek',
@@ -4894,7 +4896,7 @@ $messages['ku-latn'] = array(
  * @author לערי ריינהארט
  */
 $messages['lb'] = array(
-	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editeur vu Metadaten vu Videoen & Medie sichen]',
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editeur vu Metadate vu Videoen & Medie sichen]',
 	'metavid' => 'Metavid-Säit',
 	'mv_missing_stream' => 'De Stream $1 feelt',
 	'specialpages-group-mv_group' => 'MetaVidWiki Spezialsäiten',
@@ -4939,6 +4941,7 @@ $messages['lb'] = array(
 	'mv_close_clip' => 'Clip zoumaachen',
 	'mv_click_to_edit' => "klickt fir z'änneren",
 	'anno_en' => 'Bemierkungen a Kategorien',
+	'mvd_default_mismatch' => 'Feeler am Fichier mat den Astellungen',
 	'mv_data_page_title' => '$1 fir $2 vum $3 un',
 	'mv_time_separator' => '$1 op $2',
 	'mv_list_streams_none' => 'Et gëtt kee Stream',
@@ -5012,10 +5015,12 @@ $messages['lb'] = array(
 	'mv_embed_options' => 'Optioune vum Abannen',
 	'mv_prev_speech' => 'Vireg Ried: $1',
 	'mv_next_speech' => 'Nächst Ried: $1',
+	'mv_prev_bill' => 'Vireg Rechnung: $1',
 	'mv_next_bill' => 'Nächst Rechnung: $1',
 	'mv_prev_cat' => 'Vireg Kategorie: $1',
 	'mv_next_cat' => 'Nächst Kategorie: $1',
 	'mv_search_stream' => 'Stream sichen',
+	'right-mv_delete_mvd' => 'MetaVid Metadate läschen',
 	'right-mv_edit_stream' => 'Stream-Fichieren änneren',
 );
 

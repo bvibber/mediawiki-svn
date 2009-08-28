@@ -67,7 +67,7 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'antibot-desc' => "Endro gwiriañ eeun a-enep d'ar spamerioù ha d'an endalc'hadoù loc'hañ emgefre",
+	'antibot-desc' => "Endro gwiriañ eeun a-enep d'ar robotoù strobañ ha d'an endalc'hadoù loc'hañ emgefre",
 );
 
 /** Bosnian (Bosanski)

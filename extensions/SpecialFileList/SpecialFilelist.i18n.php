@@ -615,6 +615,13 @@ $messages['pl'] = array(
 	'filelist-image-desc' => 'opis',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'filelist' => 'Lista dij file',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'pnghandler-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'pnghandler-desc' => 'Verklein PNG-lêers met pngds',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

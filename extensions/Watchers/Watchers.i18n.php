@@ -296,6 +296,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'watchers' => 'Παρατηρητές',
+	'watchers-desc' => 'Εμφανίζει [[Special:Watchers|ποιοι χρήστες έχουν μια σελίδα στη λίστα παρακολούθησής τους]]',
 	'watchers_link_title' => 'Ποιος παρατηρεί αυτήν τη σελίδα;',
 	'watchers_error_article' => '<b>Σφάλμα:</b> Η σελίδα δεν υπάρχει.',
 	'watchers_header' => '{{PLURAL:$2|Χρήστης που παρακολουθεί|Χρήστες που παρακολουθούν}} το "$1"',

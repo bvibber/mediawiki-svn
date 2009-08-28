@@ -181,6 +181,8 @@ $messages['bs'] = array(
 	'slippymap_desc' => 'Dodaje oznaku <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> koja omogućuje uklapanje statičkih i dinamičkih mapa. Podržava usluge višestrukih mapa uključujući [http://openstreetmap.org openstreetmap.org] i NASA Worldwind',
 	'slippymap_error' => '$1 greška: $2',
 	'slippymap_errors' => '$1 greške:',
+	'slippymap_error_missing_attribute_lat' => 'Nedostaje atribut <tt>lat</tt> (za geografsku širinu).',
+	'slippymap_error_missing_attribute_lon' => 'Nedostaje atribut <tt>lon</tt> (za geografsku dužinu).',
 	'slippymap_error_invalid_attribute_width_value_nan' => 'Vrijednost <tt>$1</tt> nije valjana za atribut <tt>width</tt>, navedena vrijednost mora biti valjan broj.',
 	'slippymap_error_unknown_attribute' => 'Atribut <tt>$1</tt> je nepoznat.',
 	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Vrijednost <tt>$1</tt> nije valjana za atribut <tt>lat</tt> (geografska širina). Geografske širini moraju biti između -90 i 90 stepeni.',
@@ -493,6 +495,13 @@ $messages['he'] = array(
 	'slippymap_button_code' => 'איחזור קוד הוויקי',
 	'slippymap_resetview' => 'איפוס התצוגה',
 	'slippymap_clicktoactivate' => 'לחצו כדי להפעיל את המפה',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'slippymap_button_code' => 'Preuzmi wikikod',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

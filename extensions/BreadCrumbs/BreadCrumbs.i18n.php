@@ -176,6 +176,13 @@ $messages['gl'] = array(
 	'breadcrumbs-desc' => 'Amosa aos usuarios a traxectoria a través do wiki.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'breadcrumbs-desc' => 'Δεικνύει τὴν ἀτραπὸν ἑκάστου τοῦ χρωμένου.',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

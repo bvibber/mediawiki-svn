@@ -71,6 +71,17 @@ $messages['bg'] = array(
 Тя съдържа всички страници в категория „$1“ както и всички подкатегории на категорията „$1“, ако такива са налични.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'autocreatecategorypages-desc' => 'Krouiñ a ra pajennoù ar rummadoù a vank ent emgefre pa vez enrollet',
+	'autocreatecategorypages-stub' => 'Ur bajenn rummadoù eo homañ.
+Rollañ a ra an holl bajennoù zo er rummad "$1" hag an holl isrummadoù stag outañ mar bez.',
+	'autocreatecategorypages-createdby' => 'Krouet ent emgefre gant an astenn AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Krouer rummadoù emgefre',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

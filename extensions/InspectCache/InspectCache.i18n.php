@@ -1081,6 +1081,13 @@ $messages['vi'] = array(
 	'inspectcache-list' => 'Liệt kê',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'inspectcache-delete' => 'אויסמעקן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Wrightbus
  */

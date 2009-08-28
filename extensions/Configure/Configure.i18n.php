@@ -368,6 +368,7 @@ $messages['af'] = array(
 	'configure-section-access' => 'Toegang',
 	'configure-section-groups' => 'Groepe',
 	'configure-section-block' => 'Versperrings',
+	'configure-section-upload' => 'Oplaai',
 	'configure-section-images' => 'Media',
 	'configure-section-specialpages' => 'Spesiale bladsye',
 	'configure-section-recentchanges' => 'Onlangse wysigings',
@@ -6908,6 +6909,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Crazymadlover
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -7028,7 +7030,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-section-output' => 'Saída',
 	'configure-select-wiki' => 'Seleção de wiki',
 	'configure-select-wiki-desc' => 'Seleccione a wiki que deseja configurar',
-	'configure-select-wiki-view-desc' => 'Selecione um wiki do qual deseja ver as versões.',
+	'configure-select-wiki-view-desc' => 'Selecione um wiki do qual deseja ver as versões de configuração.',
 	'configure-select-wiki-view-all' => 'Todos os wikis',
 	'configure-select-wiki-view-specific' => 'Wiki específico:',
 	'configure-select-wiki-submit' => 'Selecionar',
@@ -8967,6 +8969,7 @@ Jafolös oni u votükolös oni ad gebön veitükumami at.',
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'configure-js-remove' => 'אויסמעקן',
 	'configure-section-search' => 'זוכן',
 	'configure-section-copyright' => 'קאפירעכט',
 	'configure-view' => 'זען',

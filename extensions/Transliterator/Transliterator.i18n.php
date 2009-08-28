@@ -47,6 +47,17 @@ This is a prefix for the transliteration maps, used in the MediaWiki namespace l
 * $3 is the limit on the length of the left hand side (e.g. <code>alpha => beta</code> has 5)',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'transliterator-desc' => "Bied 'n instelbare ontlederfunksie vir transliterasie",
+	'transliterator-error-ambiguous' => 'Dubbelsinnige reël <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Ongeldige sintaks <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Meer as $1 {{PLURAL:$1|reël|reëls}} in [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Reël <code>$1</code> het meer as $3 {{PLURAL:$3|karakter|karakters}} aan die linkerkant in [[MediaWiki:$2]]',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -57,6 +68,13 @@ $messages['be-tarask'] = array(
 	'transliterator-error-syntax' => 'Няслушны сынтаксіс <code>$1</code> у [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Больш за $1 {{PLURAL:$1|правіла|правілы|правілаў}} у [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Правіла <code>$1</code> мае больш за $3 {{PLURAL:$3|сымбаль у|сымбалі ў|сымбаляў у}} у левай частцы ў [[MediaWiki:$2]]',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'transliterator-desc' => 'Omogućava podešavajući parser funkcije za transliteraciju',
 );
 
 /** German (Deutsch)
@@ -145,6 +163,15 @@ $messages['hsb'] = array(
 	'transliterator-error-rulesize' => 'Prawidło <code>$1</code> ma wjace hač $3 {{PLURAL:$3|znamješko|znamješce|znamješka|znamješkow}} nalěwo w [[MediaWiki:$2]]',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'transliterator-desc' => 'Forni un function configurabile de analysator syntactic pro transliteration',
+	'transliterator-error-ambiguous' => 'Regula ambigue <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Syntaxe invalide <code>$1</code> in [[MediaWiki:$2]]',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
@@ -154,6 +181,17 @@ $messages['id'] = array(
 	'transliterator-error-syntax' => 'Sintaks tidak sah <code>$1</code> pada [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Lebih dari $1 {{PLURAL:$1||}}aturan pada [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Aturan <code>$1</code> memiliki lebih dari $3 {{PLURAL:$3||}}karakter di sebelah kiri di [[MediaWiki:$2]]',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'transliterator-desc' => 'Fornisce una funzione configurabile del parser per la traslitterazione',
+	'transliterator-error-ambiguous' => 'Regola ambigua <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintassi <code>$1</code> non valida in [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Più di $1 {{PLURAL:$1|regola|regole}} in [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Regola <code>$1</code> ha più di $3 {{PLURAL:$3|carattere|caratteri}} a sinistra in [[MediaWiki:$2]]',
 );
 
 /** Japanese (日本語)

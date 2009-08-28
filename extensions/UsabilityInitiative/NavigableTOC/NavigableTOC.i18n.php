@@ -32,6 +32,14 @@ $messages['be-tarask'] = array(
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'navigabletoc' => 'Taolenn verdeeus',
+	'navigabletoc-desc' => "Ouzhpennañ a ra taolenn an titloù d'ar furmskrid kemmañ a zibun an destenn pa vez kliket war ur rann.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

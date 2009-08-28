@@ -416,6 +416,17 @@ $messages['pl'] = array(
 	'problempages-graphs' => 'ocena danych',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'problempages' => 'Pàgine pòch valutà',
+	'problempages-leg' => 'Treuva le pàgine pòch valutà',
+	'problempages-list' => 'Sota a-i é na lista ëd pàgine ordinà për la soa valutassion dij letor.',
+	'problempages-none' => 'A-i é pa ëd pàgine an sta lista-sì',
+	'problempages-graphs' => 'dat ëd valutassion',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya

@@ -891,7 +891,7 @@ Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-raj
  */
 $messages['es'] = array(
 	'hiderevision' => 'Esconder revisiones permanentemente',
-	'hiderevision-desc' => 'Esconde revisiones individuales de todos los usuarios para motivos legales etc.',
+	'hiderevision-desc' => 'Esconde revisiones individuales de todos los usuarios por motivos legales, etc.',
 	'group-oversight' => 'Oversighters',
 	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisor',

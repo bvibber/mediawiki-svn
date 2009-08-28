@@ -76,6 +76,19 @@ $messages['be-tarask'] = array(
 	'uos-title' => 'Разьмеркаваньне значэньняў ўстановак удзельнікаў $1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'useroptionstats' => 'Stadegoù dibarzhioù an implijer',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Pajenn zibar]] da ziskwel implij an dibarzhioù implijer war MediaWiki',
+	'uos-warn' => "N'eo ket staliet PHPlot !",
+	'uos-choose' => 'Dibab unan eus an dibarzhioù implijer da-heul : $1',
+	'uos-unknown' => '* Dre ziouer',
+	'uos-other' => '* Re all',
+	'uos-title' => 'Dasparzh talvoudennoù an dibarzh implijer $1',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

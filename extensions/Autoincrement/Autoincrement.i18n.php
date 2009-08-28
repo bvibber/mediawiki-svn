@@ -34,6 +34,13 @@ $messages['dsb'] = array(
 	'autoincrement-desc' => 'Wariablowa kokula, kótaraž pśidawa awtomatiski licecu wariablu <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'autoincrement-desc' => 'Μία μεταβλητή άγκιστρο που προσθέτει την αυτόματα αυξανόμενη μεταβλητή <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Spanish (Español)
  * @author Antur
  */

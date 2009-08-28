@@ -3181,6 +3181,7 @@ $messages['tr'] = array(
 	'contributiontrackingstatistics' => 'Katkı izleme istatistikleri',
 	'contribstats-day-totals' => 'Bugün için toplam',
 	'contribstats-week' => 'Hafta',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Bu hafta için toplam|Son $1 haftayı içeren haftalık toplamlar}}',
 	'contribstats-clicks' => 'Tıklama',
 	'contribstats-donations' => 'Bağışlar',
 	'contribstats-conversion' => 'Dönüşüm oranı (%)',

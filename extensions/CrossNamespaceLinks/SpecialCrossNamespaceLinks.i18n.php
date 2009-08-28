@@ -131,7 +131,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'crossnamespacelinks' => 'Liammoù esaouennoù anv kroaziet',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Rollañ a ra al liammoù a-dreuz an esaouennoù anv]] na zlefe ket bezañ war {{SITENAME}}',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Rollañ a ra al liammoù a dreuz an esaouennoù anv]] na zlefent ket bezañ war {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Pourchas a ra ar bajenn-mañ roll pajennoù an esaouenn anv pennañ enno liammoù war-du un esaouenn anv all (nemet evit an esaouennoù anv {{ns:special}}, {{ns:talk}}, {{ns:project}}, ha{{ns:template}}), na erbeder ket ober ganto.',
 	'crossnamespacelinkstext' => '$2 {{PLURAL:$2|liamm|liamm}} zo e $1 war-du an esaouenn $3',
 );

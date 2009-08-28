@@ -41,6 +41,13 @@ $messages['qqq'] = array(
 	'invitations-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'invite-logentry' => 'het $1 uitgenodig om die funksie <i>$2</i> te gebruik.',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

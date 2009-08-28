@@ -324,6 +324,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Academo
  * @author Crazymadlover
+ * @author Dferg
  * @author Drini
  * @author Imre
  * @author Sanbec
@@ -338,7 +339,7 @@ $messages['es'] = array(
 	'authorprotect-expiry' => 'Tiempo de caducidad',
 	'authorprotect-reason' => 'Motivo',
 	'authorprotect-intro' => 'Usar este formulario para bloquear la página a no-autores.',
-	'authorprotect-success' => 'Protección exitosa!',
+	'authorprotect-success' => '¡Protección exitosa!',
 	'authorprotect-failure' => 'Protección no exitosa',
 	'protect-level-author' => 'Proteger de no-autores.',
 	'restriction-level-author' => 'Protegido por autor',

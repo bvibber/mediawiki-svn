@@ -40,6 +40,15 @@ $messages['bg'] = array(
 	'tspoll-id-error' => 'Не е посочен номер!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'tspoll-desc' => "Ensoc'hañ a ra an [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] dre ur valizenn HTML",
+	'tspoll-fetch-error' => 'Fazi en ur glask an URL !',
+	'tspoll-id-error' => "N'eus bet lakaet ID ebet !",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

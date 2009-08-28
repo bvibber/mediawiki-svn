@@ -668,6 +668,17 @@ $messages['pl'] = array(
 	'intersection_noincludecats' => 'Błąd – musisz załączyć co najmniej jedną kategorię lub określić przestrzeń nazw!',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'intersection-desc' => "A visualisa na lista pontà dij pì ressent element anserì ant na categorìa, o ant l'antërsession ëd pì categorìe",
+	'intersection_toomanycats' => 'Eror: tròpe categorìe!',
+	'intersection_toofewcats' => 'Eror: Tròp pòche categorìe!',
+	'intersection_noresults' => 'Eror: Gnun arzultà!',
+	'intersection_noincludecats' => 'Eror: It deuve anserì almanch na categorìa, o spessifié në spassi nominal!',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya

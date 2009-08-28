@@ -138,9 +138,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
+ * @author Tgr
  */
 $messages['hu'] = array(
-	'gotocategory-desc' => "Ellenőrzi a keresett kifejezéseket a 'Kategória'' névtérben a ''Menj!'' (lapra ugrás) funkcióhoz",
+	'gotocategory-desc' => "A kereső ''Menj!'' (megadott nevű lapra ugrás) funkcióját kiterjeszti a ''Kategória'' névtérre",
 );
 
 /** Interlingua (Interlingua)

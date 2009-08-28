@@ -279,7 +279,7 @@ $messages['ja'] = array(
 	'gur-desc' => '[[Special:GlobalUserRights|グローバル利用者権限]]の簡易管理',
 	'gur-rightslog-name' => 'グローバル権限変更記録',
 	'gur-rightslog-header' => 'これはグローバル権限の変更記録です。',
-	'gur-rightslog-entry' => 'が$1 のグローバルグループ所属を $2 から $3 へ変更しました',
+	'gur-rightslog-entry' => '$1 のグローバルグループ所属を$2から$3へ変更しました',
 	'right-userrights-global' => 'グローバル利用者権限を管理する',
 );
 

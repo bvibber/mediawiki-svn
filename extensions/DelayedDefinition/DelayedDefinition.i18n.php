@@ -284,3 +284,10 @@ $messages['sk'] = array(
 	'delaydef-error-redef' => 'Chyba: Pokus o predefinovanie $1.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'delaydef-error-no-name' => "పొరపాటు: 'పేరు' అనబడే ఏ పారామీటర్ను పేర్కొనలేదు",
+);
+

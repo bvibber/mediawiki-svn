@@ -447,6 +447,17 @@ $messages['pl'] = array(
 	'right-protectsection' => 'Zabezpieczanie sekcji strony',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'protectsection_desc' => 'A përmëtt a utent autorisà ëd protegi part ëd na pàgina an dovrand ël tag tag <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => "It l'has provà a gionté o gavé na session protegiùa",
+	'protectsection_modify' => "It l'has provà a modifié dël test protegiù",
+	'protectsection_forbidden' => 'Vietà',
+	'right-protectsection' => 'Protegg dle session ëd na pàgina',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya

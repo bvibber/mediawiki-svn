@@ -635,6 +635,7 @@ Upewnij się, czy {{PLURAL:$3|szukana grafika istnieje|szukane grafiki istnieją
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'smoothgallery' => 'SmoothGallery',
@@ -642,7 +643,9 @@ $messages['pms'] = array(
 	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
 	'smoothgallery-error' => '<b>SmoothGallery eror:</b>',
 	'smoothgallery-not-found' => "A l'é pa giontasse gnun-a figura a la galerìa. Për piasì, ch'a në gionta almanch un-a.",
-	'smoothgallery-no-images' => "Pa gnun-a figura trovà ant sta galerìa-sì. Ch'a contròla che le figure dont a fa da manca a-i sio da bon. A son nen trovasse ste figure-sì: $1",
+	'smoothgallery-no-images' => "Pa gnun-a figura trovà ant sta galerìa-sì. 
+Ch'a contròla che {{PLURAL:$3|la figura|le figure}} dont a fa da manca a-i sio da bon. 
+{{PLURAL:$2|La figura a l'é|Le figure a son}} pa trovasse: $1",
 	'smoothgallery-unexpected-error' => "A l'é sta-ie n'eror amprevist. Për piasì, ch'a-j lo segnala aj programator.",
 );
 

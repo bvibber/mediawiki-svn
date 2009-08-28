@@ -3504,6 +3504,13 @@ $messages['vo'] = array(
 	'tasks_logpagetext' => 'Is palisedons votükams vobodas',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'tasks_delete' => 'אויסמעקן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent

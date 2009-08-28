@@ -1809,15 +1809,69 @@ $messages['hr'] = array(
 	'openidconfigerrortext' => 'OpenID konfiguracija spremanja za ovaj wiki nije valjana.  
 Molimo savjetujte se s [[Special:ListUsers/sysop|administratorom]].',
 	'openidpermission' => 'Greška kod OpenID prava pristupa',
+	'openidpermissiontext' => 'OpenIDu kojeg ste naveli nije dopušteno prijaviti se na ovaj poslužitelj.',
+	'openidcancel' => 'Provjera otkazana',
+	'openidcanceltext' => 'Provjera OpenID URL-a je otkazana.',
+	'openidfailure' => 'Provjera nije uspjela',
+	'openidfailuretext' => 'Provjera URL-a za OpenID nije uspjela. Greška: "$1"',
+	'openidsuccess' => 'Provjera uspješna',
+	'openidsuccesstext' => 'Provjera URL-a za OpenID je uspjela.',
+	'openidusernameprefix' => 'OpenIDSuradnik',
+	'openidserverlogininstructions' => 'Unesite ispod Vašu lozinku da biste se prijavili na $3 kao suradnik $2 (suradnička stranica $1).',
+	'openidtrustinstructions' => 'Provjerite želite li dijeliti podatke s $1.',
+	'openidallowtrust' => 'Omogući $1 da vjeruje ovom suradničkom računu.',
+	'openidnopolicy' => 'Stranica nema navedena pravila privatnosti.',
+	'openidpolicy' => 'Provjerite <a target="_new" href="$1">politiku privatnosti</a> za više informacija.',
+	'openidoptional' => 'Neobavezno',
+	'openidrequired' => 'Obavezno',
+	'openidnickname' => 'Nadimak',
+	'openidfullname' => 'Puno ime',
+	'openidemail' => 'E-pošta',
+	'openidlanguage' => 'Jezik',
+	'openidtimezone' => 'Vremenska zona',
+	'openidnotavailable' => 'Željeni nadimak ($1) već rabi drugi suradnik.',
+	'openidnotprovided' => 'Vaš OpenID poslužitelj nije poslao nadimak (bilo da ne može ili da ste ga Vi spriječili).',
+	'openidchooseinstructions' => 'Svi suradnici trebaju imati nadimak;
+možete odabrati jedan od niže ponuđenih.',
+	'openidchoosefull' => 'Vaše puno ime ($1)',
+	'openidchooseurl' => 'Ime uzeto s Vašeg OpenID ($1)',
+	'openidchooseauto' => 'Automatski generirano ime ($1)',
+	'openidchoosemanual' => 'Ime po Vašem izboru:',
+	'openidchooseexisting' => 'Postojeći račun na ovom wiki:',
 	'openidchoosepassword' => 'lozinka:',
+	'openidconvertinstructions' => 'Ovaj obrazac Vam omogućuje da promijenite Vaš suradničkii račun za upotrebu URL OpenID ili da dodate više OpenID URLova',
+	'openidconvertoraddmoreids' => 'Pretvorite u OpenID ili dodajte drugi OpenID URL',
+	'openidconvertsuccess' => 'Uspješno pretvoreno u OpenID',
+	'openidconvertsuccesstext' => 'Uspješno ste pretvorili Vaš OpenID u $1.',
+	'openidconvertyourstext' => 'To je već Vaš OpenID.',
+	'openidconvertothertext' => 'To je OpenID koji pripada nekom drugom.',
+	'openidalreadyloggedin' => "'''Vi ste već prijavljeni, $1!'''
+
+Ako želite rabiti OpenID za buduće prijave, možete [[Special:OpenIDConvert|promijeniti Vaš račun za uporabu OpenID]].",
+	'openidnousername' => 'Nije navedeno suradničko ime.',
+	'openidbadusername' => 'Navedeno je neispravno suradničko ime.',
+	'openidautosubmit' => 'Ova stranica uključuje obrazac koji bi trebao biti automatski poslan ako je kod Vas omogućen JavaScript. Ako nije, pokušajte nastaviti dalje putem "Continue".',
+	'openidclientonlytext' => 'Ne možete rabiti račune s ove wiki kao OpenID na drugoj stranici.',
+	'openidloginlabel' => 'OpenID URL',
+	'openidlogininstructions' => '{{SITENAME}} podržava [http://openid.net/ OpenID] standard za jedinstvenu prijavu između web stranica.
+OpenID omogućuje da se prijavite na mnoge različite web stranice bez uporabe različitih lozinki za svaku od njih.
+(Pogledajte [http://en.wikipedia.org/wiki/OpenID članak na Wikipediji o OpenID-u] za više informacija.)
+
+Ako već imate račun na {{SITENAME}}, možete se [[Special:UserLogin|prijaviti]] s Vašim korisničkim imenom i šifrom kao i uvijek.
+Da bi koristili OpenID u buduće, možete [[Special:OpenIDConvert|pretvoriti vaš račun u OpenID]] nakon što se normalno prijavite.
+
+Postoji mnogo [http://wiki.openid.net/Public_OpenID_providers javnih pružatelja usluga za OpenID], i možda već imate neki račun na drugom servisu koji podržava OpenID.',
 	'openidupdateuserinfo' => 'Ažuriraj moje osobne informacije',
 	'openiddelete' => 'Izbriši OpenID',
+	'openiddelete-text' => 'Klikom na "{{int:openiddelete-button}}" uklonit ćete OpenID $1 s Vašeg računa.
+Nećete više biti u mogućnosti prijaviti se s ovim OpenID.',
 	'openiddelete-button' => 'Potvrdi',
 	'openiddelete-sucess' => 'OpenID je uspješno uklonjen iz vašeg računa.',
 	'openiddelete-error' => 'Došlo je do pogreška pri uklanjanju OpenID iz Vašeg računa.',
 	'openid-prefstext' => '[http://openid.net/ OpenID] postavke',
 	'openid-pref-hide' => 'Sakrij Vaš OpenID na Vašoj suradničkoj stranici, ako ste prijavljeni s OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Ažuriraj sljedeće informacije iz OpenID identiteta svaki put kad se prijavim:',
+	'openid-urls-desc' => 'OpenID-ovi povezani s Vašim računom:',
 	'openid-urls-action' => 'Radnja',
 	'openid-urls-delete' => 'Izbriši',
 	'openid-add-url' => 'Dodaj novi OpenID',
@@ -3914,6 +3968,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Suradnik13
  */
 $messages['sr-el'] = array(
 	'openidserver' => 'OpenID server',
@@ -3937,7 +3992,7 @@ $messages['sr-el'] = array(
 	'openidlanguage' => 'Jezik',
 	'openidchooseinstructions' => 'Svaki korisnik treba da ima nadimak;
 Možete da izaberete jednu od opcija ispod.',
-	'openidchoosefull' => 'Važe puno ime ($1)',
+	'openidchoosefull' => 'Vaše puno ime ($1)',
 	'openidchooseurl' => 'Ime preuzeto od vašeg OpenID ($1)',
 	'openidchooseauto' => 'Automatski generisano korisničko ime ($1)',
 	'openidchoosemanual' => 'Izaberite korisničko ime:',
@@ -4683,6 +4738,13 @@ kanol välön bali sökölas.',
 	'openidchoosepassword' => 'letavöd:',
 	'openidnousername' => 'Gebananem nonik pegivon.',
 	'openidbadusername' => 'Gebananem no lonöföl pegivon.',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'openid-urls-delete' => 'אויסמעקן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

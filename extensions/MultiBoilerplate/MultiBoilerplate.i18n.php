@@ -92,6 +92,10 @@ $messages['bs'] = array(
 	'multiboilerplate-desc' => 'Omogućuje da se odabere tekstualni šablon sa opadajućeg spisak smještenog iznad obrasca za uređivanje pri uređivanju stranica',
 	'multiboilerplate-legend' => 'Odaberi tekstualni šablon',
 	'multiboilerplate-submit' => 'Učitaj',
+	'boilerplates' => 'Dostupni šabloni',
+	'multiboilerplate-special-pagetext' => 'Ovi šabloinu mogu biti prethodno učitani pri pravljenju stranice. (<span class=plainlinks>[{{fullurl:Ova stranica ne postoji|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Šabloni su definirani u LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Šabloni su definirani u [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Catalan (Català)

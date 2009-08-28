@@ -381,29 +381,51 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'regexblock' => 'Regex blokiranje',
 	'regexblock-already-blocked' => '$1 je već blokiran.',
 	'regexblock-block-log' => "Korisničko ime ili IP adresa '''$1''' je blokiran.",
 	'regexblock-block-success' => 'Blokada uspješna',
 	'regexblock-currently-blocked' => 'Trenutno blokirane adrese:',
+	'regexblock-desc' => 'Proširenje koje se koristi za blokiranje korisničkim imena i IP adresa putem redovnih izraza. Sadrži i mehanizam za blokiranje i [[Special:Regexblock|posebnu stranicu]] za dodavanj/upravljanje blokadama',
 	'regexblock-expire-duration' => '1 sat,2 sata,4 sata,6 sati,1 dan,3 dana,1 sedmica,2 sedmice,1 mjesec,3 mjeseca,6 mjeseci,1 godina,neograničeno',
+	'regexblock-page-title' => 'Blokiranje imena putem redovnih izraza',
 	'regexblockstats' => 'Statistike regex bloka',
+	'regexblock-help' => "Koristite obrazac ispod za blokiranje prava pisanja sa određene IP adrese ili korisničkog imena.
+Ovo se koristi samo za prevenciju vandalizma i u skladu sa pravilima.
+''Ova stranica će Vam omogućiti da blokirate i one koji nisu korisnici a i korisnike sa sličnim imenom tj. ''Test'' će biti blokiran zajedno sa ''Test 2'' itd.
+Možete također blokirati pune IP adrese, što znači da ne niko ne može s njih prijaviti za uređivanje stranica.
+Pažnja: djelimična blokada IP adresa će se smatrati kao korisničko ime pri određivanju blokade.
+Ako nije naveden razlog, bit će korišten uobičajeni generički razlog.''",
 	'regexblock-page-title-1' => 'Blokiranje adrese koristeći obične izraze',
+	'regexblock-reason-ip' => 'Ova IP adresa je onemogućena za uređivanje zbog vandalizma ili drugih sličnih akcija od strane Vas ili nekog drugog s kim dijelite Vašu IP adresu.
+Ako mislite da je u pitanju greška, molimo [[$1|kontaktirajte nas]]',
+	'regexblock-reason-name' => 'Ovo korisničko ime je blokirano za uređivanje zbog vandalizma ili drugih nepoželjnih radnji.
+Ako mislite da je greška, molimo [[$1|kontaktirajte nas]]',
+	'regexblock-reason-regex' => 'Ovo korisničko ime je onemogućeno za uređivanje zbog vandalizma i drugih radnji od strane korisnika sa sličnim imenom.
+Molimo napravite drugo korisničko ime ili [[$1|nas obavijestite]] o problemu',
 	'regexblock-form-username' => 'IP adresa ili korisničko ime:',
 	'regexblock-form-reason' => 'Razlog:',
 	'regexblock-form-expiry' => 'Ističe:',
 	'regexblock-form-match' => 'Tačno slaganje',
 	'regexblock-form-account-block' => 'Blokiranje pravljenja novih računa',
 	'regexblock-form-submit' => 'Blokiraj ovog korisnika',
+	'regexblock-form-submit-empty' => 'Navedite korisničko ime ili IP adresu za blokiranje.',
 	'regexblock-form-submit-regex' => 'Nevaljan regularni izraz.',
 	'regexblock-form-submit-expiry' => 'Molimo odredite vrijeme isteka.',
+	'regexblock-match-stats-record' => "$1 blokiran korisnik '$2' na '$3' u '$4', zapisnik sa adrese '$5'",
 	'regexblock-nodata-found' => 'Podaci nisu nađeni',
+	'regexblock-stats-title' => 'Statistike blokade putem regexa',
 	'regexblock-unblock-success' => 'Deblokiranje uspjelo',
+	'regexblock-unblock-log' => "Korisničko ime ili IP adresa '''$1''' je deblokiran.",
 	'regexblock-unblock-error' => 'Greška pri deblokadi $1.
 Moguće da ne postoji takav korisnik.',
 	'regexblock-regex-filter' => '  ili regex vrijednost:',
+	'regexblock-view-blocked' => 'Pregled blokiran od strane:',
 	'regexblock-view-all' => 'Sve',
 	'regexblock-view-go' => 'Idi',
 	'regexblock-view-match' => '(tačno slaganje)',
+	'regexblock-view-regex' => '(slaganje regexa)',
+	'regexblock-view-account' => '(blokiranje pravljenja računa)',
 	'regexblock-view-reason' => 'razlog: $1',
 	'regexblock-view-reason-default' => 'opći razlog',
 	'regexblock-view-block-infinite' => 'trajna blokada',

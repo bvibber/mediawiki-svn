@@ -36,7 +36,7 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'uploadblacklist-desc' => "Ouzhpennañ a ra un arc'hwel listennad du evit ar pellgargadennoù",
+	'uploadblacklist-desc' => "Ouzhpennañ a ra un arc'hwel listennad du evit ar pellgargañ",
 );
 
 /** Bosnian (Bosanski)
@@ -268,6 +268,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'uploadblacklist-desc' => 'Lägger till en funktion för att svartlista vissa uppladdningar',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'uploadblacklist-desc' => 'Bir yükleme karalistesi işlevselliği ekler',
 );
 
 /** Vèneto (Vèneto)

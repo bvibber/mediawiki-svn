@@ -72,12 +72,21 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'wah-desc' => "Maak dit moontlik om die transkodering van video's na kliënte te versprei via firefogg",
+	'wah-user-desc' => 'Wiki@Home maak dit vir gemeenskapslede moontlik om rekenaartyd te skenk om sodoende te help met die uitvoer van moeilike take',
 	'wah-short-audio' => '$1-klanklêer, $2',
 	'wah-short-video' => '$1-videolêer, $2',
 	'wah-short-general' => '$1-medialêer, $2',
+	'wah-long-audio' => '($1-klanklêer, lengte $2, $3)',
 	'wah-long-video' => '($1-videolêer, lengte $2, $4×$5 pixsels, $3)',
+	'wah-long-multiplexed' => '(gemultiplekseerde klank/videolêer, $1, lengte $2, $4×$5 pixels, $3 totaal)',
 	'wah-long-general' => '(medialêer, lengte $2, $3)',
 	'wah-long-error' => '(ffmpeg kon die lêer nie lees nie: $1)',
+	'wah-transcode-working' => 'Hierdie video word tans verwerk.
+Probeer later weer.',
+	'wah-transcode-helpout' => 'Die klip is $1 persent voltooi.
+U kan help om die lêer te transkodeer deur na [[Special:WikiAtHome|Wiki@Home]] te gaan',
+	'wah-transcode-fail' => 'Die transkodering van die lêer het misluk.',
 	'wah-javascript-off' => 'JavaScript moet geaktiveer wees om aan Wiki@Home deel te neem',
 	'wah-loading' => 'Die Wiki@Home-koppelvlak is besig om te laai <blink>...</blink>',
 );
