@@ -24,6 +24,8 @@
  *     added cache support
  * @version 1.2.2
  *     use new magic word i18n system
+ * @version 1.3.1
+ *     made ^ act more like $ (i.e. ^μπ => doesn't prevent μ => from matching), fix bug with cache refresh
  */
 
 /**
@@ -44,8 +46,7 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 */
 
-if ( !defined( 'MEDIAWIKI' ) )
-{
+if ( !defined( 'MEDIAWIKI' ) ) {
     die( 'This file is a MediaWiki extension, not a valid entry point.' );
 }
 
@@ -68,9 +69,11 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
     $wgExtensionFunctions[] = 'ExtTransliterator::setup';
 }
 $wgExtensionMessagesFiles['Transliterator'] = dirname(__FILE__).'/Transliterator.i18n.php';
-$wgHooks['ArticleDeleteComplete'][]  = 'ExtTransliterator::purgeMap';
-$wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeMap';
-$wgHooks['ArticlePurge'][]  = 'ExtTransliterator::purgeMap';
+$wgHooks['ArticleDeleteComplete'][]  = 'ExtTransliterator::purgeArticle';
+$wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeArticle';
+$wgHooks['ArticlePurge'][]  = 'ExtTransliterator::purgeArticle';
+$wgHooks['ArticleUndelete'][]  = 'ExtTransliterator::purgeTitle';
+$wgHooks['TitleMoveComplete'][] = 'ExtTransliterator::purgeNewtitle';
 
 class ExtTransliterator {
 
@@ -265,10 +268,10 @@ class ExtTransliterator {
             $fromlast = strlen( $from ) - 1;
             if ( $fromlast > 0 ) {
                 if ( $from[0] == "^" && $fromlast > 0)
-                    $from[0] = ExtTransliterator::DELIMITER;
+                    $from[0] = self::DELIMITER;
 
                 if ( $from[$fromlast] == "$")
-                    $from[$fromlast] = ExtTransliterator::DELIMITER;
+                    $from[$fromlast] = self::DELIMITER;
             }
 
             // Now we've looked at our syntax we can remove html escaping to reveal the true form
@@ -324,7 +327,6 @@ class ExtTransliterator {
         $sensitive = isset( $map["__sensitive__"] ); // Are we in case-sensitive mode, or not
         $ucfirst = false;                            // We are in case-sensitive mode and the first character of the current match was upper-case originally
         $last_upper = null;                          // We have lower-cased the current letter, but we need to keep track of the original (dotted I for example)
-        $withstart = false;                          // Have we inserted a start character into the current $current
 
         $output = "";               // The output
         $last_match = 0;            // The position of the last character matched, or the first character of the current run
@@ -336,14 +338,6 @@ class ExtTransliterator {
         while ( $last_match < $count ) {
 
             if ( $i < $count ) {
-
-                // if this is the start of a word, first try the form with the start indicator
-                if ( $withstart ) {
-                    $withstart = false;
-                } else if ( $alphamap[$i] && ($last_trans == null) && ( $i == 0 || !$alphamap[$i - 1] ) ) {
-                    $current = ExtTransliterator::DELIMITER;
-                    $withstart = true;
-                }
 
                 $next = $current.$letters[$i];
 
@@ -365,55 +359,54 @@ class ExtTransliterator {
             // We had no match at all, pass through one character
             if ( is_null( $last_trans ) ) {
 
-                // This was a fake character that we inserted
-                if ( $withstart ) {
-                    $current = "";
-                    continue;
+                $last_letter = $letters[$last_match];
+                $last_lower = $sensitive ? $last_letter : mb_strtolower( $last_letter );
 
-                // It was a real character that we were supposed to transliterate
+                // If we are not being sensitive, we can try down-casing the previous letter
+                if ( $last_letter != $last_lower ) {
+                    $ucfirst = true;
+                    $letters[$last_match] = $last_lower;
+                    $last_upper = $last_letter;
+
+                // Might be nice to output a ? if we don't understand
+                } else if ( isset( $map[''] ) ) {
+
+                    if ( $ucfirst ) {
+                        $output .= str_replace( '$1', $last_upper , $map[''] );
+                        $ucfirst = false;
+                    } else {
+                        $output .= str_replace( '$1', $last_letter, $map[''] );
+                    }
+                    $i = ++$last_match;
+                    $current = "";
+
+                // Or the input if it's likely to be correct enough
                 } else {
 
-                    $last_letter = $letters[$last_match];
-                    $last_lower = $sensitive ? $last_letter : mb_strtolower( $last_letter );
-
-                    // If we are not being sensitive, we can try down-casing the previous letter
-                    if ( $last_letter != $last_lower ) {
-                        $ucfirst = true;
-                        $letters[$last_match] = $last_lower;
-                        $last_upper = $last_letter;
-
-                    // Might be nice to output a ? if we don't understand
-                    } else if ( isset( $map[''] ) ) {
-
-                        if ( $ucfirst ) {
-                            $output .= str_replace( '$1', $last_upper , $map[''] );
-                            $ucfirst = false;
-                        } else {
-                            $output .= str_replace( '$1', $last_letter, $map[''] );
-                        }
-                        $i = ++$last_match;
-                        $current = "";
-
-                    // Or the input if it's likely to be correct enough
+                    if ( $ucfirst ) {
+                        $output .= $last_upper;
+                        $ucfirst = false;
                     } else {
-
-                        if ( $ucfirst ) {
-                            $output .= $last_upper;
-                            $ucfirst = false;
-                        } else {
-                            $output .= $last_letter;
-                        }
-                        $i = ++$last_match;
-                        $current = "";
+                        $output .= $last_letter;
                     }
+                    $i = ++$last_match;
+                    $current = "";
                 }
 
             // Output the previous match
             } else {
 
+                // If this match is at the start of a word, see whether we have a more specific rule
+                if ( ( $last_match == 0 || !$alphamap[$last_match-1]) && $alphamap[$last_match] ) {
+                    $try = self::DELIMITER . $current;
+                    if ( isset( $map[$try] ) && is_string( $map[$try] ) ) {
+                        $last_trans = $map[$try];
+                        $current = $try;
+                    }
+                }
                 // If this match is at the end of a word, see whether we have a more specific rule
                 if ( $alphamap[$i-1] && ( $i == $count || !$alphamap[$i] ) ) {
-                    $try = $current . ExtTransliterator::DELIMITER;
+                    $try = $current . self::DELIMITER;
                     if ( isset( $map[$try] ) && is_string( $map[$try] ) ) {
                         $last_trans = $map[$try];
                     }
@@ -487,17 +480,30 @@ class ExtTransliterator {
     /**
      * Called on ArticlePurge, ArticleDeleteComplete and NewRevisionFromEditComplete in order to purge cache
      */
-    static function purgeMap( &$article, $a=false, $b=false, $c=false, $d=false ) {
+    static function purgeArticle( &$article, $a=false, $b=false, $c=false, $d=false ) {
+        return self::purgeTitle( $article->getTitle() );
+    }
+
+    /**
+     * Called on TitleMoveComplete
+     */
+    static function purgeNewTitle ( &$title, &$newtitle, $a=false, $b=false, $c=false ) {
+        return self::purgeTitle( $newtitle );
+    }
+    /**
+     * Called on ArticleUndelete (and by other purge hook handlers)
+     */
+    static function purgeTitle( &$title, $a=false ) {
         global $wgMemc;
-        $title = $article->getTitle();
         if ( $title->getNamespace() == NS_MEDIAWIKI ) {
             $text = $title->getText();
             $prefix = wfMsg( 'transliterator-prefix' );
             if ( strpos( $text, $prefix ) === 0 ) {
-                $wgMemc->delete( str_replace( $prefix, '', $text ) );
+                $wgMemc->delete( 'extTransliterator:'.str_replace( $prefix, '', $text ) );
             }
         }
         return true;
+
     }
 
     /**
