@@ -1,5 +1,6 @@
 //the core javascript file of the wiki@home extension
 
+// FIXME: needs localisation support.
 //load msgs:
 loadGM({
 	"wah-menu-jobs"	: "Jobs",
@@ -12,22 +13,22 @@ loadGM({
 	"wah-start-on-visit": "Start up Wiki@Home anytime I visit this site",
 	"wah-jobs-while-away": "Only run jobs when I have been away from my browser for 20 minnutes",
 	
-	"wah-nojobfound" 	: "No Job Found, Will retry in $1",
+	"wah-nojobfound" 	: "No job found. Will retry in $1",
 	
 	"wah-notoken-login" : "Could not get a token. Are you logged in?",
-	"wah-apioff"		: "The api appears to be off. Please Contact your Wiki Admin",
+	"wah-apioff"		: "The api appears to be off. Please contact your wiki administrator",
 	
 	"wah-doing-job"		: "Job: <i>$1</i> on: <i>$2</i>",
-	"wah-downloading"	: "Downloading File <i>$1%</i> done",
-	"wah-encoding"		: "Encoding File <i>$1%</i> done",
+	"wah-downloading"	: "Downloading file <i>$1%</i> complete",
+	"wah-encoding"		: "Encoding file <i>$1%</i> complete",
 	
-	"wah-encoding-fail"	: "Encoding Failed. Please reload this page or try back latter.",
+	"wah-encoding-fail"	: "Encoding failed. Please reload this page or try back latter.",
 	
-	"wah-uploading"		: "Uploading File <i>$i</i> done",
-	"wah-uploadfail"	: "Uploading Failed",
-	"wah-doneuploading" : "Done Uploading. Thanks for your Contribution.",
+	"wah-uploading"		: "Uploading file <i>$i</i> done",
+	"wah-uploadfail"	: "Uploading failed",
+	"wah-doneuploading" : "Upload complete. Thank you for your contribution.",
 	
-	"wah-needs-firefogg": "To particate in wiki@home you need to install firefogg."
+	"wah-needs-firefogg": "To particate in Wiki@Home you need to install Firefogg."
 	
 });
 
