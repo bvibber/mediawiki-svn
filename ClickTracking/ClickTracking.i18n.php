@@ -31,6 +31,14 @@ $messages['be-tarask'] = array(
 	'clicktracking-desc' => 'Сачэньне за націскамі кампутарнай мышшу, прызначанае для сачэньня за здарэньнямі, якія не вядуць да абнаўленьня старонкі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'clicktracking' => 'Heuliañ klikoù an intrudu implijadusted',
+	'clicktracking-desc' => "Heuliañ klikoù, talvezout a ra da heuliañ an darvoudoù na vez ket adkarget ur bajenn d'ho heul",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -61,6 +69,14 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'clicktracking' => 'Kliknjeńske pśeslědowanje iniciatiwy wužywajobnosći',
 	'clicktracking-desc' => 'Kliknjeńske pśeslědowanje, myslone za slědowanje tšojenjow, kótarež njezawinuju aktualizaciju boka',
+);
+
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'clicktracking' => 'Πατήστε παρακολούθηση της Πρωτοβουλίας Χρηστικότητας',
+	'clicktracking-desc' => 'Πατήστε παρακολούθηση, προορίζεται για την παρακολούθηση εκδηλώσεων που δεν προκαλούν ανανέωση σελίδας',
 );
 
 /** French (Français)
@@ -214,6 +230,14 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'clicktracking' => 'Sledenje klikom Iniciative za uporabnost',
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'clicktracking' => 'Kullanılabilirlik Girişimi tıklama izleme',
+	'clicktracking-desc' => 'Tıklama izleme, bir sayfa yenilemesine sebep olmadan olayları izleme amaçlı',
 );
 
 /** Vèneto (Vèneto)

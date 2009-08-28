@@ -37,8 +37,8 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'usabilityinitiative' => 'Intrudu Implijusted',
-	'usabilityinitiative-desc' => "Arc'hwelioù diorroet gant Intrudu Implijusted Wikipedia evit gwellaat implijusted MediaWiki",
+	'usabilityinitiative' => 'Intrudu Implijadusted',
+	'usabilityinitiative-desc' => "Arc'hwelioù diorroet gant Intrudu Implijadusted Wikipedia evit gwellaat implijadusted MediaWiki",
 );
 
 /** Bosnian (Bosanski)

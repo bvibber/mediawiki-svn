@@ -1524,6 +1524,8 @@ Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
 	'prefstats-factor-twoweeks' => 'iki hafta',
 	'prefstats-factor-fourweeks' => 'dört hafta',
 	'prefstats-factor-default' => 'varsayılan ölçeğe dön',
+	'prefstats-legend-out' => 'Ayrılan',
+	'prefstats-legend-in' => 'Katılan',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

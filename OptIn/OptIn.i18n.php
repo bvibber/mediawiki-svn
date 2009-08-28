@@ -427,30 +427,30 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'optin-title-optedout' => 'Esaeañ Beta',
+	'optin-title-optedout' => 'Amprouiñ Beta',
 	'optin-title-optedin' => 'Dilezel Beta',
 	'optin-title-justoptedin' => 'Degemer mat war Beta',
-	'optin-title-justoptedout' => "Trugarez deoc'h evit esaeañ ar Beta",
+	'optin-title-justoptedout' => "Trugarez deoc'h da amprouiñ ar Beta",
 	'optin-title-feedback' => 'Roit ho soñj war ar Beta',
 	'optin-needlogin' => "Ret eo deoc'h bezañ [$1 luget] evit ober gant Beta.",
-	'optin-feedback-intro' => "Trugarez deoc'h da esaeañ Beta.
-Ni a garfe gouzout petra a soñjit diwar-benn an etredas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
+	'optin-feedback-intro' => "Trugarez deoc'h da amprouiñ Beta.
+Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
 	'optin-success-in' => "Emaoc'h oc'h amprouiñ Beta.
 Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
-	'optin-accept-long' => 'Esaeañ Beta',
+	'optin-accept-long' => 'Amprouiñ Beta',
 	'optin-accept-long-anon' => 'Emlugit ha grit un taol-esae gant Beta',
 	'optin-deny-short' => 'Ket, trugarez',
 	'optin-deny-long' => "Distreiñ d'ar bajenn gent",
 	'optin-submit-out' => 'Dilezel Beta',
 	'optin-submit-feedback' => 'Roit ho soñj',
-	'optin-try' => 'Esaeañ Beta',
+	'optin-try' => 'Amprouiñ Beta',
 	'optin-leave' => 'Dilezel Beta',
 	'optin-feedback' => 'Roit ho soñj',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Ket',
-	'optin-survey-intro' => 'Trugarez da esaeañ ar Beta.
+	'optin-survey-intro' => 'Trugarez da amprouiñ ar Beta.
 Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma respontfec\'h d\'ar goulennoù dindan a-raok klikañ war "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => "Petra zo plijet deoc'h er Beta ? Petra n'eus displijet deoc'h ?",
 	'optin-survey-question-whyoptout' => "Perak e fell deoc'h dilezel ar Beta ? (dibabit kement tra a glot gant ho soñj)",
@@ -459,7 +459,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-whyoptout-notpredictable' => "Ne'z ae ket en-dro en un doare poellek.",
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Ne blije ket din an tres anezhañ.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne blije ket din ar varrenn ostilhoù nevez.',
-	'optin-survey-answer-whyoptout-other' => 'Abeg all',
+	'optin-survey-answer-whyoptout-other' => 'Abeg all :',
 	'optin-survey-question-browser' => 'Peseurt merdeer a rit gantañ ?',
 	'optin-survey-answer-browser-other' => 'Merdeer all :',
 	'optin-survey-question-os' => 'Peseurt reizhiad korvoiñ a rit gantañ ?',
@@ -4684,7 +4684,12 @@ Yeni dolaşım sistemi, nerede olduğunuzu ve ne yaptığınızı görmenizi, ay
 ;Değiştirme araç çubuğu geliştirmeleri
 Yeni-ve-geliştirilmiş simgeler her aracın ne eylemi yaptığını daha netleştirir. Genişletilebilir bölümler dağınıklığı azaltırken az kullanılan araçları sadece bir tık ötesinde saklar.
 Yardım bölümü, viki-biçimlendirmesinin genel kullanımı için bir referansa kolay erişim sağlar.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+
+== Nasıl dahil olunur ==
+Proje hakkında daha fazla bilgi edinmek ya da dahil olmak için lütfen [http://usability.wikimedia.org Kullanılabilirlik Girşimi\'nin vikisini] ziyaret edin. Orada, araştırmamız, tasarım + geliştirmemiz, ve yayınlarımız hakkında bilgi bulabilirsiniz. Soru sormak veya genel geridönüt bırakmak için, lütfen [http://usability.wikimedia.org/wiki/Talk:Prototype prototip tartışma sayfamızı] kullanın. Belirli konulardan bahsetmek için, lütfen ilgili tartışma sayfalarını kullanın. Eğer hata bulursanız, lütfen yorumlarınızı [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai sürüm tartışma sayfasına] bırakın ya da [https://bugzilla.wikimedia.org Bugzilla]\'yı kullanın.
+
+Teşekkürler, sizden haber bekliyoruz!',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

@@ -579,6 +579,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'simplesearch' => 'Tafuti sahili',
 	'simplesearch-search' => 'Kutafuta',
 );
 
