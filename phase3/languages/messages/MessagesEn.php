@@ -4167,6 +4167,9 @@ In <b>binary mode</b>, MediaWiki stores UTF-8 text to the database in binary fie
 'config-sqlite-dir-help' => 'SQLite stores table data into files in the filesystem.
 This directory must be writable by the webserver.
 It should <strong>not</strong> accessible via the web.',
+'config-sqlite-permissions' => 'Permission for data directory:',
+'config-sqlite-permissions-help' => 'Please specify the default permissions for the data directory.
+If you don\'t know, it\'s probably safe to leave the default.',
 'config-type-mysql' => 'MySQL',
 'config-type-postgres' => 'PostgreSQL',
 'config-type-sqlite' => 'SQLite',

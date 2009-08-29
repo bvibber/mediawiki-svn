@@ -3,7 +3,8 @@
 class SqliteInstaller extends InstallerDBType {
 	var $globalNames = array(
 		'wgDBname',
-		'wgSQLiteDataDir'
+		'wgSQLiteDataDir',
+		'wgSQLiteDataDirMode',
 	);
 
 	function getName() {
@@ -20,7 +21,12 @@ class SqliteInstaller extends InstallerDBType {
 
 	function getGlobalDefaults() {
 		if ( isset( $_SERVER['DOCUMENT_ROOT'] ) ) {
-			return array( 'wgSQLiteDataDir' => dirname( $_SERVER['DOCUMENT_ROOT'] ) . '/data' );
+			$path = str_replace( 
+				array( '/', '\\' ), 
+				DIRECTORY_SEPARATOR, 
+				dirname( $_SERVER['DOCUMENT_ROOT'] ) . '/data' 
+			);
+			return array( 'wgSQLiteDataDir' => $path );
 		} else {
 			return array();
 		}
@@ -31,19 +37,22 @@ class SqliteInstaller extends InstallerDBType {
 			$this->getTextBox( 'wgSQLiteDataDir', 'config-sqlite-dir' ) .
 			$this->parent->getHelpBox( 'config-sqlite-dir-help' ) .
 			$this->getTextBox( 'wgDBname', 'config-db-name' ) .
-			$this->parent->getHelpBox( 'config-sqlite-name-help' );			
+			$this->parent->getHelpBox( 'config-sqlite-name-help' ) .
+			$this->getTextBox( 'wgSQLiteDataDirMode', 'config-sqlite-permissions' ) .
+			$this->parent->getHelpBox( 'config-sqlite-permissions-help' );
 	}
 
 	function submitConnectForm() {
 		global $wgSQLiteDataDirMode, $wgSQLiteDataDir;
-		$newValues = $this->setVarsFromRequest( array( 'wgSQLiteDataDir', 'wgDBname' ) );
+		$newValues = $this->setVarsFromRequest( array( 'wgSQLiteDataDir', 'wgDBname', 'wgSQLiteDataDirMode' ) );
 		$dir = $newValues['wgSQLiteDataDir'];
+		$mode = $newValues['wgSQLiteDataDir'];
 		if ( !is_dir( $dir ) ) {
 			if ( !is_writable( dirname( $dir ) ) ) {
 				return Status::newFatal( 'config-sqlite-parent-unwritable', $dir, dirname( $dir ) );
 			}
 			wfSuppressWarnings();
-			$ok = wfMkdirParents( $dir, $wgSQLiteDataDirMode );
+			$ok = wfMkdirParents( $dir, $mode );
 			wfRestoreWarnings();
 			if ( !$ok ) {
 				return Status::newFatal( 'config-sqlite-mkdir-error', $dir );
