@@ -200,8 +200,11 @@ fn: {
 			if ( outline[i].level > lastLevel ) {
 				nLevel++;
 			}
-			else if ( outline[i].level < lastLevel ) {
+			else if ( outline[i].level < nLevel ) {
 				nLevel -= Math.max( 1, lastLevel - outline[i].level );
+			}
+			if ( nLevel <= 0 ) {
+				nLevel = 1;
 			}
 			outline[i].nLevel = nLevel;
 			lastLevel = outline[i].level;
