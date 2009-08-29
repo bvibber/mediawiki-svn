@@ -77,7 +77,9 @@ $wgHooks['TitleMoveComplete'][] = 'ExtTransliterator::purgeNewtitle';
 
 class ExtTransliterator {
 
-    const DELIMITER = "\x1F"; // A character that will be inserted in places where the ^ and $ should match
+    const FIRST = "\x1F"; // A character that will be inserted in places where the ^ and $ should match
+    const LAST = "\x1E"; // A character that will be inserted in places where the ^ and $ should match
+    const CACHE_PREFIX = "extTransliterator.2:"; // The prefix to use for cache items (the number should be incremented when the map format changes)
     var $mPages = null;  // An Array of "transliterator:$mapname" => The database row for that template.
     var $mMaps = array();// An Array of "$mapname" => The map parsed from that page.
 
@@ -172,7 +174,7 @@ class ExtTransliterator {
             return $this->mMaps[$mappage];
 
         // Have we used it recently?
-        $cached = $wgMemc->get( "extTransliterator:$name" );
+        $cached = $wgMemc->get( self::CACHE_PREFIX . $name );
         if ( $cached ) 
             return $this->mMaps[$mappage] = ($cached == "false" ? false : $cached);
 
@@ -184,7 +186,7 @@ class ExtTransliterator {
         else
             $map = $this->readMap( wfMsg( $mappage ), $mappage );
 
-        $wgMemc->set( "extTransliterator:$name", ($map == false ? "false" : $map));
+        $wgMemc->set( self::CACHE_PREFIX . $name, ($map == false ? "false" : $map));
         return $this->mMaps[$mappage] = $map;
     }
 
@@ -262,16 +264,18 @@ class ExtTransliterator {
             $from = $pair[0];
             $to = html_entity_decode( $pair[1], ENT_QUOTES, 'UTF-8' );
 
-            // Convert the ^ and $ selectors into the DELIMITER so that it can be used with a negligable chance of conflict
+            // Convert the ^ and $ selectors into special characters for matching
             // Leave single ^ and $'s alone incase someone wants to use them
             // Still permits the creation of the rule "^$=>" that will never match, but hey
             $fromlast = strlen( $from ) - 1;
             if ( $fromlast > 0 ) {
-                if ( $from[0] == "^" && $fromlast > 0)
-                    $from[0] = self::DELIMITER;
+                if ( $from[0] == "^" ) {
+                    $from = substr( $from, 1 ) . self::FIRST;
+                    $fromlast--;
+                }
 
                 if ( $from[$fromlast] == "$")
-                    $from[$fromlast] = self::DELIMITER;
+                    $from[$fromlast] = self::LAST;
             }
 
             // Now we've looked at our syntax we can remove html escaping to reveal the true form
@@ -334,6 +338,7 @@ class ExtTransliterator {
         $i = 0;                     // The current position in the string
         $count = count($letters);   // The total number of characters in the string
         $current = "";              // The substring that we are currently trying to find the longest match for.
+        $current_start = 0;         // The position that $current starts at
 
         while ( $last_match < $count ) {
 
@@ -353,6 +358,28 @@ class ExtTransliterator {
                     $i++;
                     $current = $next;
                     continue;
+                }
+            }
+
+
+            // If this match is at the end of a word, see whether we have a more specific rule
+            if ( $alphamap[$i-1] && ( $i == $count || !$alphamap[$i] ) ) {
+                $try = $current . self::LAST;
+                if ( isset( $map[$try] ) ) {
+                    if ( is_string( $map[$try] ) ) {
+                        $last_trans = $map[$try];
+                    }
+                    if ( isset( $map[$try . self::FIRST] ) ) {
+                        $current = $try;
+                    }
+                }
+            }
+
+            // If this match is at the start of a word, see whether we have a more specific rule
+            if ( ( $current_start == 0 || !$alphamap[$current_start-1]) && $alphamap[$current_start] ) {
+                $try = $current . self::FIRST;
+                if ( isset( $map[$try] ) && is_string( $map[$try] ) ) {
+                    $last_trans = $map[$try];
                 }
             }
 
@@ -377,7 +404,7 @@ class ExtTransliterator {
                     } else {
                         $output .= str_replace( '$1', $last_letter, $map[''] );
                     }
-                    $i = ++$last_match;
+                    $i = $current_start = ++$last_match;
                     $current = "";
 
                 // Or the input if it's likely to be correct enough
@@ -389,28 +416,12 @@ class ExtTransliterator {
                     } else {
                         $output .= $last_letter;
                     }
-                    $i = ++$last_match;
+                    $i = $current_start = ++$last_match;
                     $current = "";
                 }
 
             // Output the previous match
             } else {
-
-                // If this match is at the start of a word, see whether we have a more specific rule
-                if ( ( $last_match == 0 || !$alphamap[$last_match-1]) && $alphamap[$last_match] ) {
-                    $try = self::DELIMITER . $current;
-                    if ( isset( $map[$try] ) && is_string( $map[$try] ) ) {
-                        $last_trans = $map[$try];
-                        $current = $try;
-                    }
-                }
-                // If this match is at the end of a word, see whether we have a more specific rule
-                if ( $alphamap[$i-1] && ( $i == $count || !$alphamap[$i] ) ) {
-                    $try = $current . self::DELIMITER;
-                    if ( isset( $map[$try] ) && is_string( $map[$try] ) ) {
-                        $last_trans = $map[$try];
-                    }
-                }
 
                 if ( $ucfirst ) {
                     $output .= mb_strtoupper( mb_substr( $last_trans, 0, 1 ) ).mb_substr( $last_trans, 1 );
@@ -418,7 +429,7 @@ class ExtTransliterator {
                 } else {
                     $output .= $last_trans;
                 }
-                $i = ++$last_match;
+                $i = $current_start = ++$last_match;
                 $last_trans = null;
                 $current = "";
 
@@ -499,7 +510,7 @@ class ExtTransliterator {
             $text = $title->getText();
             $prefix = wfMsg( 'transliterator-prefix' );
             if ( strpos( $text, $prefix ) === 0 ) {
-                $wgMemc->delete( 'extTransliterator:'.str_replace( $prefix, '', $text ) );
+                $wgMemc->delete( self::CACHE_PREFIX . str_replace( $prefix, '', $text ) );
             }
         }
         return true;
