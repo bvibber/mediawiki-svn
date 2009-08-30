@@ -291,7 +291,7 @@ class wiki2xml
 			$l1 = strlen ( $x ) ;
 			if ( !$this->p_internal_link_text ( $b , $x , false , "}}" ) ) return false ;
 			$v = substr ( $x , $l1 ) ;
-			$v = explode ( "=" , $v ) ;
+			$v = explode ( "=" , $v, 2 ) ;
 			if ( count ( $v ) < 2 ) $vk = $vcount ;
 			else {
 				$vk = trim ( array_shift ( $v ) ) ;
