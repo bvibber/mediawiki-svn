@@ -11,6 +11,8 @@ $messages['en'] = array(
 	'protectsection_desc'       => 'Allows authorised users to protect parts of a page using the tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'You tried to add or remove a protected section',
 	'protectsection_modify'     => 'You tried to modify protected text',
+	// new error string added in version 1.1; needs to be translated into other languages
+	'protectsection_add_above' => 'You tried to insert text in front of a protected section',
 	'protectsection_forbidden'  => 'Forbidden',
 	'right-protectsection'      => 'Protect page sections',
 );
