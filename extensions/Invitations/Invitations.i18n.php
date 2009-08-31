@@ -634,6 +634,36 @@ Pro gerer le invitationes a un function particular, clicca super le nomine de il
 	'invitations-invite-success' => 'Tu ha invitate $1 a usar iste function con successo!',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'invite-logpage' => 'Log Undangan',
+	'invite-logpagetext' => 'Ini adalah log pengguna mengundang satu sama lain dalam menggunakan berbagai fitur perangkat lunak.',
+	'invite-logentry' => 'mengundang $1 menggunakan <i>$2</i> fitur.',
+	'invitations' => 'Pengelolaan undangan untuk fitur perangkat lunak',
+	'invitations-desc' => 'Memungkinkan [[Special:Invitations|manajemen fitur baru]] dengan membatasi mereka dalam sistem berbasis-undangan',
+	'invitations-invitedlist-description' => 'Anda memiliki akses ke hanya-mengundang fitur perangkat lunak ini. 
+Untuk mengelola undangan untuk setiap fitur, klik pada namanya.',
+	'invitations-invitedlist-none' => 'Anda belum diundang untuk menggunakan hanya-mengundang fitur perangkat lunak.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Satu undangan|$1 undangan}} tersedia)',
+	'invitations-pagetitle' => 'Hanya-Undang fitur perangkat lunak',
+	'invitations-uninvitedlist-description' => 'Anda tidak memiliki akses ke hanya-mengundang fitur perangkat lunak yang lain.',
+	'invitations-uninvitedlist-none' => 'Saat ini, tidak ada fitur perangkat lunak lain yang ditunjukkan sebagai hanya-undangan.',
+	'invitations-feature-pagetitle' => 'Pengelolaan Undangan - $1',
+	'invitations-feature-access' => 'Saat ini Anda memiliki akses untuk menggunakan <i>$1</i>.',
+	'invitations-feature-numleft' => 'Anda masih memiliki {{PLURAL:$2|satu undangan tersisa|<b>$1</b> dari $2 undangan keluar  tersisa}}.',
+	'invitations-feature-noneleft' => 'Anda sudah menggunakan semua alokasi undangan dari fitur ini',
+	'invitations-feature-noneyet' => 'Andan belum menerima alokasi untuk undangan dari fitur ini.',
+	'invitations-feature-notallowed' => 'Anda tidak memiliki akses untuk menggunakan <i>$1</i>.',
+	'invitations-inviteform-title' => 'Undang pengguna untuk menggunakan $1',
+	'invitations-inviteform-username' => 'Pengguna untuk diundang',
+	'invitations-inviteform-submit' => 'Undangan',
+	'invitations-error-baduser' => 'Pengguna yang anda tuju tidak terlihat keberadaanya.',
+	'invitations-error-alreadyinvited' => 'Pengguna yang anda tuju sudah memiliki akses pada fitur ini!',
+	'invitations-invite-success' => 'Anda berhasil mengundang $1 untuk menggunakan fitur ini!',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

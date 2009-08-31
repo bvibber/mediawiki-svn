@@ -23,12 +23,14 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Nike
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'useroptionstats-desc' => '{{desc}}',
 	'uos-unknown' => '{{Identical|Default}}',
 	'uos-other' => '{{Identical|Other}}',
+	'uos-title' => 'If the translation is longer than the English string, break it into multiple lines not much longer than the English text each.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -81,7 +83,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'useroptionstats' => 'Stadegoù dibarzhioù an implijer',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Pajenn zibar]] da ziskwel implij an dibarzhioù implijer war MediaWiki',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Pajenn dibar]] da ziskwel implij an dibarzhioù implijer war MediaWiki',
 	'uos-warn' => "N'eo ket staliet PHPlot !",
 	'uos-choose' => 'Dibab unan eus an dibarzhioù implijer da-heul : $1',
 	'uos-unknown' => '* Dre ziouer',
@@ -131,6 +133,19 @@ $messages['cs'] = array(
 	'uos-unknown' => '*Implicitní',
 	'uos-other' => '*Jiné',
 	'uos-title' => 'Rozdělení hodnot uživatelského nastavení „$1“',
+);
+
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'useroptionstats' => 'Statistik over brugerindstillinger',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Specialside]] til rapportering om brugen af brugerindstillinger i MediaWiki',
+	'uos-warn' => 'PHPlot er ikke installeret!',
+	'uos-choose' => 'Vælg en af følgende brugerindstillinger: $1',
+	'uos-unknown' => '*Standard',
+	'uos-other' => '*Andet',
+	'uos-title' => 'Fordeling af værdier for brugerindstilling $1',
 );
 
 /** German (Deutsch)
@@ -210,6 +225,7 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Nike
  * @author Silvonen
  * @author Str4nd
  */
@@ -220,7 +236,7 @@ $messages['fi'] = array(
 	'uos-choose' => 'Valitse yksi seuraavista käyttäjän valinnoista: $1',
 	'uos-unknown' => '*Oletus',
 	'uos-other' => '*Muu',
-	'uos-title' => 'Käyttäjän asetusvalintojen tilastollinen jakauma valinnan $1 kohdalla',
+	'uos-title' => 'Asetuksen $1 arvojen jakauma',
 );
 
 /** French (Français)

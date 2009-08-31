@@ -86,6 +86,13 @@ $messages['dsb'] = array(
 	'crowdauthentication-desc' => 'Tykac awtentifikacije za Atlassian Crowd',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'crowdauthentication-desc' => 'Plugin επιβεβαίωσης για το Atlassian Crowd',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

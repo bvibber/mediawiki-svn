@@ -150,10 +150,15 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'wah-desc' => 'Omogućava distribuciju transkodiranih video poslova klijentima putem Firefogga',
+	'wah-user-desc' => 'Wiki@Home omogućava članovima zajednice da doniraju neiskorištene cpu cikluse za pomoć pri operacijama koje zahtjevaju dosta resursa',
 	'wah-short-audio' => '$1 zvučna datoteka, $2',
 	'wah-short-video' => '$1 video datoteka, $2',
 	'wah-short-general' => '$1 medijalna datoteka, $2',
+	'wah-long-audio' => '($1 zvučna datoteka, dužina $2, $3)',
+	'wah-long-video' => '($1 video datoteka, dužina $2, $4×$5 piksela, $3)',
 	'wah-long-general' => '(medijalna datoteka, dužina $2, $3)',
+	'wah-long-error' => '(ffmpeg nije mogao pročitati ovu datoteku: $1)',
 );
 
 /** German (Deutsch)
@@ -389,17 +394,28 @@ Tu pote adjutar a transcodificar iste video per visitar [[Special:WikiAtHome|Wik
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Kandar
  */
 $messages['id'] = array(
+	'wah-desc' => '
+
+Memungkinkan mendistribusikan pekerjaan video transcoding untuk klien yang menggunakan Firefogg',
+	'wah-user-desc' => 'Wiki@Home memungkinkan anggotan komunitas untuk mendonasikan cadangan CPU untuk membantu beroperasi intensif sumber daya',
 	'wah-short-audio' => '$1 berkas suara, $2',
 	'wah-short-video' => '$1 berkas video, $2',
 	'wah-short-general' => '$1 berkas media, $2',
 	'wah-long-audio' => '($1 berkas suara, panjang $2, $3)',
 	'wah-long-video' => '($1 berkas video, panjang $2, $4×$5 piksel, $3)',
+	'wah-long-multiplexed' => '(Berkas multiplexed audio/video, $1, lama $2, $4x$5 piksel, $3 keseluruhan)',
 	'wah-long-general' => '(berkas media, panjang $2, $3)',
 	'wah-long-error' => '(ffmpeg tak bisa membaca berkas ini: $1)',
 	'wah-transcode-working' => 'Video ini sedang diolah, silahkan coba lagi nanti',
+	'wah-transcode-helpout' => 'Klip, $1 persen selesai. 
+Anda dapat membantu video transcode ini dengan mengunjungi [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Berkas ini gagal untuk di transcode.',
+	'wah-javascript-off' => 'Anda harus mengaktifkan JavaScript agar dapat berpartisipasi di Wiki@Home',
+	'wah-loading' => 'Memuat Antarmuka Wiki@Home <blink>...</blink>',
 );
 
 /** Japanese (日本語)

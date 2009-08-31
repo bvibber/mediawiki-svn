@@ -197,11 +197,15 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'dplforum-desc' => 'Επέκταση DPL-based φόρουμ',
 	'dplforum-by' => 'από $1',
 	'dplforum-edited' => '- Τελευταία επεξεργασμένη',
 	'dplforum-never' => 'Ποτέ',
+	'dplforum-toofew' => 'DPL Φόρουμ: Πολύ λίγες κατηγορίες!',
+	'dplforum-toomany' => 'DPL Φόρουμ: Πάρα πολλές κατηγορίες!',
 );
 
 /** Esperanto (Esperanto)
@@ -573,6 +577,18 @@ $messages['pl'] = array(
 	'dplforum-never' => 'Nigdy',
 	'dplforum-toofew' => 'Forum DPL: Zbyt mało kategorii!',
 	'dplforum-toomany' => 'Forum DPL: Zbyt wiele kategorii!',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'dplforum-desc' => 'Estension dël forum basà an dzora a DPL',
+	'dplforum-by' => 'da $1',
+	'dplforum-edited' => "- Modificà l'ùltima vira",
+	'dplforum-never' => 'Mai',
+	'dplforum-toofew' => 'Forum DPL: Tròp pòche categorìe!',
+	'dplforum-toomany' => 'Forum DPL: Tròpe categorìe!',
 );
 
 /** Pashto (پښتو)

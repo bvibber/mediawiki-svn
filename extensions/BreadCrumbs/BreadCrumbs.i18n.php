@@ -44,6 +44,13 @@ $messages['bar'] = array(
 	'breadcrumbs-desc' => "Zoagt in Weg vu dem Benutza duach's Wiki.",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'breadcrumbs-desc' => 'Паказвае шлях удзельнікаў праз {{GRAMMAR:вінавальны|{{SITENAME}}}}.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

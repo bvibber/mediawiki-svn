@@ -714,9 +714,26 @@ Wopytaj pśikaz "$3{...}" wužywaś.',
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Konsnos
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'math_noblahtex' => 'Δεν μπορεί να εκτελεθεί το blahtex, που θα έπρεπε να είναι στο $1',
+	'math-desc' => 'Έξοδος MathML για &lt;math&gt; ετικέτες',
+	'math_CannotChangeDirectory' => 'Δεν μπορεί να αλλάξει την διαδρομή εργασίας',
+	'math_CannotCreateTexFile' => 'Δεν μπορείτε να δημιουργήσετε ένα αρχείο tex',
+	'math_CannotRunDvipng' => 'Δεν μπορεί να τρέξει το dvipng',
+	'math_CannotRunLatex' => 'Δεν μπορεί να τρέξει το latex',
+	'math_CannotWritePngDirectory' => 'Δεν μπορεί να γράψει στην έξοδο της διαδρομής PNG',
+	'math_CannotWriteTexFile' => 'Δεν μπορεί να γράψει στο αρχείο tex',
+	'math_IllegalCharacter' => 'Παράνομος χαρακτήρας στην είσοδο',
+	'math_IllegalDelimiter' => 'Παράνομος delimiter ακολουθεί "$1"',
 	'math_InvalidColour' => 'Το χρώμα "$1" είναι άκυρο',
+	'math_MismatchedBeginAndEnd' => 'Οι εντολές "$1" και "$2" δεν ταιριάζουν',
+	'math_MissingDelimiter' => 'Αγνοούμενος delimiter μετά από "$1"',
+	'math_MissingOpenBraceAfter' => 'Αγνοείται ανοιχτό brace "{" μετά από "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Αγνοούμενο ανοιχτό brace "{" στο τέλος της εισόδου',
+	'math_MissingOpenBraceBefore' => 'Αγνοούμενο ανοιχτό brace "{" πριν το "$1"',
+	'math_TooManyTokens' => 'Η είσοδος είναι πολύ μακριά',
 	'math_UnrecognisedCommand' => 'Άγνωστη εντολή "$1"',
 );
 

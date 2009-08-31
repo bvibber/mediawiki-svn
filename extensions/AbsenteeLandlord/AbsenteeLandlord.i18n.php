@@ -20,6 +20,14 @@ $messages['qqq'] = array(
 	'absenteelandlord-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'absenteelandlord-reason' => 'Die databasis is outomaties gesluit omdat die administrateurs nie aktief is nie.',
+	'absenteelandlord-desc' => "Sluit die wiki outomaties as die administrateurs vir 'n geruime tyd nie aktief is nie",
+);
+
 /** Gheg Albanian (Gegë)
  * @author Bresta
  */

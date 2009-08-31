@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'randomimage-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'randomimage-desc' => "Voeg die etiket <tt>&lt;randomimage /&gt;</tt> by vir die kies van 'n willekeurig medialêer",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -38,6 +45,13 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'randomimage-desc' => 'Дазваляе выпадкова выбіраць мэдыя-файлы з дапамогай тэга <tt>&lt;randomimage /&gt;</tt>',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'randomimage-desc' => 'Porurchas a ra ur restr liesmedia dre zegouezh en ur ober gant <tt>&lt;randomimage /&gt;</tt>',
 );
 
 /** Bosnian (Bosanski)

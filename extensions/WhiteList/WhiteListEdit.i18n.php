@@ -1096,11 +1096,12 @@ Tätä sivua sovelletaan ainoastaan rajoituksenalaisiin käyttäjiin",
  * @author Grondin
  * @author McDutchie
  * @author PieRRoMaN
+ * @author Verdy p
  * @author Zetud
  */
 $messages['fr'] = array(
 	'whitelist-desc' => 'Modifie les permissions d’accès des utilisateurs à pouvoirs restreints',
-	'whitelistedit' => 'Éditeur de la liste blanche des accès',
+	'whitelistedit' => 'Modificateur de la liste blanche des accès',
 	'whitelist' => 'Pages de listes blanches',
 	'mywhitelistpages' => 'Mes pages',
 	'whitelistfor' => '<center>Informations actuelles pour <b>$1</b></center>',

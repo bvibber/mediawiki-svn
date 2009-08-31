@@ -270,6 +270,7 @@ $messages['dsb'] = array(
  * @author Consta
  * @author Crazymadlover
  * @author Konsnos
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'amazonplus-nores' => 'Σφάλμα: Δεν υπήρξαν αποτελέσματα!',
@@ -278,10 +279,12 @@ $messages['el'] = array(
 	'amazonplus-german' => 'Γερμανικά',
 	'amazonplus-french' => 'Γαλλικά',
 	'amazonplus-japanese' => 'Ιαπωνικά',
+	'amazonplus-amazon' => 'τιμή amazon',
 	'amazonplus-new' => 'νέο',
 	'amazonplus-none' => 'Δεν υπάρχουν αντίτυπα αυτού του προϊόντος προς πώληση.',
 	'amazonplus-cp-none' => 'Κανένας',
 	'amazonplus-more' => 'περισσότερα',
+	'amazonplus-less' => 'λιγότερο',
 );
 
 /** Esperanto (Esperanto)

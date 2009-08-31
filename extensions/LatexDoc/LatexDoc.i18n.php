@@ -176,11 +176,19 @@ $3',
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'latexdoc_cant_create_dir' => 'Δεν μπορεί να δημιουργήσει τον προσωρινό προορισμό $1',
 	'latexdoc_cant_write' => 'Δεν μπορεί να γράψει στο αρχείο $1',
+	'latexdoc_error' => 'Σφάλμα LaTeX
+
+Εντολή: $1
+
+Έξοδος: $2
+
+$3',
 	'latexdoc_get_dvi' => 'Λήψη DVI',
 	'latexdoc_get_pdf' => 'Λήψη PDF',
 );

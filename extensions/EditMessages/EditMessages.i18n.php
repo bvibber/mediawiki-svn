@@ -368,9 +368,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'editmessages-desc' => '[[Special:EditMessages|Édition basée sur Internet]] d’un grand nombre de fichiers Messages*.php',
+	'editmessages-desc' => '[[Special:EditMessages|Modification basée sur Internet]] d’un grand nombre de fichiers Messages*.php',
 	'editmessages' => 'Modifier les messages',
 	'editmsg-target' => 'Message cible :',
 	'editmsg-search' => 'Rechercher',

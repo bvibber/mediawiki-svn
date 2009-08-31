@@ -225,10 +225,15 @@ $messages['ee'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'inspectcache' => 'Επιθεώρηση λανθάνουσας μνήμης',
+	'inspectcache-desc' => 'Ἐνα απλό εργαλείο αποσφαλμάτωσης για την επιθεώρηση περιεχομένων της κοινής λανθάνουσας μνήμης',
 	'inspectcache-ok' => 'Εντάξει',
 	'inspectcache-general' => 'Γενική λανθάνουσα μνήμη',
+	'inspectcache-parser' => 'Λανθάνουσα μνήμη λεξιαναλυτών',
+	'inspectcache-message' => 'Λανθάνουσα μνήμη μηνυμάτων',
 	'inspectcache-get' => 'Λήψη',
 	'inspectcache-delete' => 'Διαγραφή',
+	'inspectcache-deleted' => 'Διαγραμμένη λανθάνουσα μνήμη',
 	'inspectcache-list' => 'Λίστα',
 );
 

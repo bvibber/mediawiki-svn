@@ -144,9 +144,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'editown-desc' => 'Les utilisateurs privés du droit de modifier les pages ne peuvent éditer que celles qu’ils ont créées',
+	'editown-desc' => 'Les utilisateurs privés du droit de modifier toutes les pages ne peuvent le faire que sur celles qu’ils ont créées',
 );
 
 /** Galician (Galego)

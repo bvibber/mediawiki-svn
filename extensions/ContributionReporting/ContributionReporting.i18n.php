@@ -86,6 +86,7 @@ $messages['en'] = array(
  * @author Darth Kule
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Irwangatot
  * @author Jon Harald Søby
  * @author Malafaya
  * @author Purodha
@@ -523,6 +524,9 @@ $messages['ca'] = array(
 	'contribstats-value-under' => 'Inferior a $1',
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Per sobre $1',
+	'contribstats-week' => 'Setmana',
+	'contribstats-clicks' => 'Clics',
+	'contribstats-donations' => 'Donatius',
 	'fundraiserstatistics' => 'Estadístiques de les donacions',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dia $1 de $2',
@@ -856,6 +860,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'contributiontotal' => 'Contribución total',
 	'contributionhistory' => 'Historial de contribuciones',
+	'contrib-hist-header' => 'Comentarios de donantes en tiempo real alrededor del mundo',
 	'contrib-hist-name' => 'Nombre',
 	'contrib-hist-date' => 'Fecha y hora',
 	'contrib-hist-amount' => 'Cantidad',
@@ -885,6 +890,7 @@ $messages['es'] = array(
 	'contribstats-value-over' => 'Sobre $1',
 	'contribstats-day-totals' => 'Total por hoy',
 	'contribstats-week' => 'Semana',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Total para esta semana|Totales  semanales para las pasadas $1 semanas inclusive}}',
 	'contribstats-clicks' => 'Clics',
 	'contribstats-donations' => 'Donaciones',
 	'contribstats-template' => 'Plantilla',
@@ -1515,6 +1521,9 @@ $messages['hu'] = array(
 	'fundraiserstats-total' => 'Összesen (USD)',
 	'fundraiserstats-avg' => 'Átlagosan (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
+	'fundraiserstats-tab-totals' => 'Összesen (USD)',
+	'fundraiserstats-tab-averages' => 'Átlagosan (USD)',
+	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 );
 
 /** Interlingua (Interlingua)
@@ -1570,15 +1579,29 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Kandar
  */
 $messages['id'] = array(
 	'contributionreporting-desc' => 'Laporan langsung pada penggalangan dana Wikimedia',
+	'contributiontotal' => 'Total kontribusi',
 	'contributionhistory' => 'Riwayat kontribusi',
+	'contrib-hist-header' => 'Penyumbang komentar secara langsung dari seluruh dunia',
 	'contrib-hist-name' => 'Nama',
 	'contrib-hist-date' => 'Waktu dan tanggal',
+	'contrib-hist-amount' => 'Jumlah',
+	'contrib-hist-next' => 'Sumbangan sebelumnya',
+	'contrib-hist-previous' => 'Sumbangan terbaru',
 	'contrib-hist-anonymous' => 'Anonim',
 	'contributionstatistics' => 'Statistika kontribusi',
+	'contribstats-desc' => 'Menampilkan statistik untuk kontribusi yang dibuat untuk Wikimedia Foundation',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Jumlah hari ini|Jumlah harian untuk $1 hari sebelumnya}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Jumlah untuk bulan ini|Jumlah perbulan untuk $1 bulan sebelumnya}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Jumlah untuk $1 bulan|Jumlah perbulan untuk $1 bulan}}',
+	'contribstats-currency-range-totals' => 'Jumlah saatini (dari $1 sampai $2)',
+	'contribstats-contribution-range-breakdown' => 'Perincian nilai kontribusi oleh (dari $1 sampai $2)',
+	'contribstats-currency-totals' => 'Mata uang total untuk tahun fiskal $1',
+	'contribstats-contribution-breakdown' => 'Kontribusi dengan rincian nilai untuk tahun fiskal $1',
 	'contribstats-day' => 'Hari',
 	'contribstats-month' => 'Bulan',
 	'contribstats-currency' => 'Mata uang',
@@ -1593,6 +1616,14 @@ $messages['id'] = array(
 	'contribstats-value-under' => 'Di bawah $1',
 	'contribstats-value-from' => 'Dari $1 - $2',
 	'contribstats-value-over' => 'Melebihi $1',
+	'contributiontrackingstatistics' => 'Pelacakan statistik kontribusi',
+	'contribstats-day-totals' => 'Jumlah untuk hari ini.',
+	'contribstats-week' => 'Minggu',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Total untuk minggu ini|Jumlah Mingguan selama $1 minggu inklusif}}',
+	'contribstats-clicks' => 'Clicks',
+	'contribstats-donations' => 'Sumbangan',
+	'contribstats-conversion' => 'Tingkat konversi (%)',
+	'contribstats-template' => 'Templat',
 	'fundraiserstatistics' => 'Statistika penggalang dana',
 	'fundraiserstats-date' => 'Tanggal',
 	'fundraiserstats-day' => 'Hari $1 dari $2',

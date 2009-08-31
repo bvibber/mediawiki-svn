@@ -164,7 +164,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'asksql' => 'Reked SQL',
-	'asksql-desc' => 'Sevel a ra rekedoù SQL dre ur [[Special:Asksql|bajenn zibar]]',
+	'asksql-desc' => 'Sevel a ra rekedoù SQL dre ur [[Special:Asksql|bajenn dibar]]',
 	'asksqltext' => "Ober gant ar furmskrid a-is evit sevel ur reked war-eeun ouzh ar bank titouroù.
 Ober gant unskraboù('evel-hen') evit termeniñ an neudennad.
 An dra-se a c'hall kargañ ar servijer spontus, setu n'emañ ket da vezañ implijet re alies.",
@@ -173,6 +173,7 @@ An dra-se a c'hall kargañ ar servijer spontus, setu n'emañ ket da vezañ impli
 	'querybtn' => 'Kas ar reked',
 	'selectonly' => "N'eo aotreet nemet ar rekedoù lenn-hepken",
 	'querysuccessful' => "Reked disoc'het",
+	'right-asksql' => 'Krouiñ a ra rekedoù SQL',
 );
 
 /** Bosnian (Bosanski)

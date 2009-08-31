@@ -528,8 +528,10 @@ Slědk k:
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'crosswikiblock-expiry' => 'Λήξη:',
 	'crosswikiblock-reason' => 'Λόγος:',
 	'crosswikiunblock-reason' => 'Λόγος',
 );
@@ -1087,6 +1089,7 @@ Retornar a:
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Kandar
  * @author Rex
  */
@@ -1103,7 +1106,7 @@ $messages['id'] = array(
 	'crosswikiblock-nouser' => 'Pengguna "$3" tidak ditemukan.',
 	'crosswikiblock-noreason' => 'Tak ada penjelasan.',
 	'crosswikiblock-notoken' => 'Token penyuntingan tidak sah.',
-	'crosswikiblock-alreadyblocked' => 'Pengguna $1 telah diblokir.',
+	'crosswikiblock-alreadyblocked' => 'Pengguna $3 telah diblokir.',
 	'crosswikiblock-noblock' => 'Pengguna ini tidak diblok.',
 );
 

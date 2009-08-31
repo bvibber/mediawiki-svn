@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 "Main contributions" comes from {{msg-mw|contributors-toolbox}}.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'contributorsaddon-desc' => 'Voeg Javascript-opspringe by die "Belangrikste bydraers"-skakel',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

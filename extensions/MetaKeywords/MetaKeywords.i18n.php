@@ -72,6 +72,13 @@ $messages['bg'] = array(
 	'metakeywords-desc' => 'Позволява конфигурирането на етикетите <tt><nowiki><meta "keywords"></nowiki></tt> и <tt><nowiki><meta "description"></nowiki></tt> за всяко именно пространство',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'metakeywords-desc' => 'Talvezout a ra da gefluniañ balizennoù <tt><nowiki><meta "keywords"></nowiki></tt> ha <tt><nowiki><meta "description"></nowiki></tt> dre esaouenn anv',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -400,10 +400,24 @@ $wgCustomToolbarMessages['bs'] = array(
  * @author Solde
  */
 $wgCustomToolbarMessages['ca'] = array(
+	'ct_bold_sample' => 'Text en negreta',
+	'ct_bold_tip_ins' => 'Insereix text en negreta',
+	'ct_bold_tip_wrap' => 'Fes aquest text en negreta',
 	'ct_bold_caption' => 'Negreta',
+	'ct_italic_sample' => 'Text en cursiva',
+	'ct_italic_tip_ins' => 'Insereix text en cursiva',
+	'ct_italic_tip_wrap' => 'Fes aquest text en cursiva',
+	'ct_italic_caption' => 'Cursiva',
+	'ct_internal_tip_ins' => 'Insereix un enllaç intern',
+	'ct_internal_tip_wrap' => 'Fes aquest text un enllaç intern',
+	'ct_internal_caption' => 'Enllaç intern',
+	'ct_external_tip_ins' => 'Insereix un enllaç extern',
+	'ct_external_tip_wrap' => 'Fes aquest text un enllaç extern',
+	'ct_external_caption' => 'Enllaç extern',
 	'ct_upload' => 'Carrega $1',
 	'ct_select' => 'Seleccioneu $1 per carregar:',
 	'ct_submit' => 'Vés-hi!',
+	'ct_user_user' => 'Usuari',
 	'ct_user_caption' => "Enllaç d'usuari",
 	'ct_user_sample' => "Nom d'usuari",
 );

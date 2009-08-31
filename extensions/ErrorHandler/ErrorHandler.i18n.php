@@ -271,9 +271,11 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'errorhandler-errors' => 'Σφάλματα:',
+	'errorhandler-error-warning' => 'Προειδοποίηση',
 	'errorhandler-error-notice' => 'Σημείωση',
 	'errorhandler-error-user-error' => 'Σφάλμα χρήστη',
 	'errorhandler-error-strict' => 'Υψηλά στάνταρ',
+	'errorhandler-msg-text' => '$1 : $2 στο $3 (γραμμή $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (γραμμή <b>$4</b>)',
 	'errorhandler-trace' => 'ίχνος:',
 	'errorhandler-trace-line' => '$1 (γραμμή $2): $3',

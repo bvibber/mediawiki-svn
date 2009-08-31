@@ -357,6 +357,23 @@ $messages['dsb'] = array(
 	'right-closewikis' => 'Wikije zacyniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'closewikis-page' => 'Κλείσιμο του βίκι',
+	'closewikis-page-close' => 'Κλείσιμο του βίκι',
+	'closewikis-page-close-wiki' => 'Βίκι:',
+	'closewikis-page-close-submit' => 'Κλείσιμο',
+	'closewikis-page-reopen' => 'Ξανάνοιγμα του βίκι',
+	'closewikis-page-reopen-wiki' => 'Βίκι:',
+	'closewikis-page-reopen-reason' => 'Αιτία:',
+	'closewikis-page-reopen-submit' => 'Ξανάνοιγμα',
+	'closewikis-list-header-wiki' => 'Βίκι',
+	'right-closewikis' => 'Κλείσιμο των βίκι',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

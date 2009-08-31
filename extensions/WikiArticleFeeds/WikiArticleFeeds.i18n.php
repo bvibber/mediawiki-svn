@@ -23,6 +23,14 @@ $messages['qqq'] = array(
 	'wikiarticlefeeds-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikiarticlefeeds-desc' => 'Produseer voere wat van MediaWiki-bladsye gegenereer word',
+	'wikiarticlefeeds_combined_description' => "Hierdie is 'n gekombineerde voer, met items vanuit verskeie bronne.",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

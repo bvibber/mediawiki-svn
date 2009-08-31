@@ -203,6 +203,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'emergencydesysop' => 'Επείγουσα αφαίρεση δικαιωμάτων διαχειριστή',
 	'emergencydesysop-reason' => 'Αιτία για την αφαίρεση:',
 	'emergencydesysop-submit' => 'Υποβολή',
 	'emergencydesysop-nogroups' => 'Κανένα',

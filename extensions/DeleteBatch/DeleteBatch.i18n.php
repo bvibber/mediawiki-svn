@@ -279,6 +279,13 @@ Nagrata dataja by měła mě boka a opcionelnu pśicynu wopśimjeś, kótarejž 
 	'right-deletebatch' => 'Někotare boki wulašowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'deletebatch-select-yourself' => 'Εσείς',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -432,7 +439,7 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
  */
 $messages['grc'] = array(
 	'deletebatch-or' => '<b>ἢ</b>',
-	'deletebatch-select-yourself' => 'σύ',
+	'deletebatch-select-yourself' => 'Σύ',
 );
 
 /** Swiss German (Alemannisch)

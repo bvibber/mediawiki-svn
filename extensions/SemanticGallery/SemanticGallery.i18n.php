@@ -44,6 +44,13 @@ $messages['be-tarask'] = array(
 	'semanticgallery-desc' => 'Дадае выходны фармат галерэі ў запыты Semantic MediaWiki',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'semanticgallery-desc' => 'Ouzhpennañ a ra ur furmad ezmont eus ar palier er rekedoù enlinenn SMW',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

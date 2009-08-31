@@ -473,6 +473,20 @@ $messages['pl'] = array(
 	'cspammer-log-page' => 'Rejestr spammerów',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'commentspammer-save-blocked' => "Toa adrëssa IP a l'é un sospet spammer ëd coment, parèj la pàgina a l'é pa stàita salvà.
+[[Special:UserLogin|Intra o crea un cont]] për evité sòn-sì.",
+	'commentspammer-desc' => "Arfuda le modìfiche dai sospet spammer ëd coment ch'a son an dzora ëd na lista nèira dël DNS",
+	'commentspammer-log-msg' => 'modìfica da [[Special:Contributions/$1|$1]] a [[:$2]].',
+	'commentspammer-log-msg-info' => "Ùltim spam $1 {{PLURAL:$1|di|di}} fa, ël livel ëd mnassa a l'é $2, e ël còdes d'atach a l'é $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Varda ij detaj], o [[Special:Blockip/$4|blòca]].",
+	'cspammerlogpagetext' => 'Registr ëd le modìfiche përmëttùe o vietà a second che la sorziss a fussa në spammer conossù.',
+	'cspammer-log-page' => 'Registr djë spammer ëd coment',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -139,10 +139,11 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'stalepages' => 'Pages vieillies',
-	'stalepages-desc' => 'Crée une [[Special:Stalepages|liste des pages]] qui n’ont pas été éditées récemment',
+	'stalepages-desc' => 'Crée une [[Special:Stalepages|liste des pages]] qui n’ont pas été modifiées récemment',
 	'stalepages-summary' => 'Ceci est une liste de pages qui n’ont pas été modifiées depuis $1 jour{{PLURAL:$1||s}}.',
 );
 

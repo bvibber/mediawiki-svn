@@ -56,6 +56,13 @@ $messages['bg'] = array(
 	'pnghandler-desc' => 'Преоразмеряване на PNG с помощта на pngds',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'pnghandler-desc' => 'Adventañ PNGoù a-drugarez da pngds',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

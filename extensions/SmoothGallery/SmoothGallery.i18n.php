@@ -639,14 +639,19 @@ Upewnij się, czy {{PLURAL:$3|szukana grafika istnieje|szukane grafiki istnieją
  */
 $messages['pms'] = array(
 	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => "A përmëtt a j'utent ëd creé ëd galerìe con figure che a son stàite carià.
+A përmëtt pì opsion dë SmoothGallery",
 	'smoothgallery-title' => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
 	'smoothgallery-error' => '<b>SmoothGallery eror:</b>',
+	'smoothgallery-gallery-not-found' => 'La galerìa ciamà a esist pa.',
 	'smoothgallery-not-found' => "A l'é pa giontasse gnun-a figura a la galerìa. Për piasì, ch'a në gionta almanch un-a.",
 	'smoothgallery-no-images' => "Pa gnun-a figura trovà ant sta galerìa-sì. 
 Ch'a contròla che {{PLURAL:$3|la figura|le figure}} dont a fa da manca a-i sio da bon. 
 {{PLURAL:$2|La figura a l'é|Le figure a son}} pa trovasse: $1",
+	'smoothgallery-invalid-images' => "{{PLURAL:$2|La figura sota ciamà a l'era|Le figure sota ciamà a j'ero}} ëd na sòrt pa bon-a: $1",
 	'smoothgallery-unexpected-error' => "A l'é sta-ie n'eror amprevist. Për piasì, ch'a-j lo segnala aj programator.",
+	'smoothgallery-javascript-disabled' => 'A-i é dabzògn ëd Javascript për vëdde sta galerìa-sì da bin.',
 );
 
 /** Pashto (پښتو)

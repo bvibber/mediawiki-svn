@@ -48,6 +48,13 @@ $messages['be-tarask'] = array(
 	'pipeescape-desc' => 'Функцыя парсэра <code>#!</code>, якая сочыць, каб калі Вы жадаеце дадаць сымбаль «|», дадаваліся толькі сымбаль «|».',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'pipeescape-desc' => 'Arc\'hwel parser <code>#!</code> evit ensoc\'hañ arouezenn ur varrenn sonn "|" evel un arouezenn barrenn sonn hepmuiken',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

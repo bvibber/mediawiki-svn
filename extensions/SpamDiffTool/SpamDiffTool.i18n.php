@@ -343,6 +343,7 @@ Klikni <a href='$1'>sem</a>, aby se wróśił.",
  */
 $messages['el'] = array(
 	'spamdifftool' => 'Διαχείριση μαύρης λίστας των σπαμ',
+	'spamdifftool_summary' => 'Προσθήκη στη μαύρη λίστα των σπαμ',
 	'spamdifftool_spam_link_text' => 'Προσθήκη στο spam',
 	'spamdifftool_option_domain' => 'όλα από αυτή την περιοχή',
 	'spamdifftool_option_subdomain' => 'όλα από αυτή την υποπεριοχή',

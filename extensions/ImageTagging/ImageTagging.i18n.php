@@ -860,15 +860,18 @@ Per favor attende le completion del action in curso.',
  */
 $messages['id'] = array(
 	'taggedimages' => 'Gambar yang diberi tag',
+	'imagetagging-desc' => 'Memungkinkan pengguna memilih wilayah gambar tertanam dan menghubungkan halaman dengan wilayah itu',
 	'imagetagging-addimagetag' => 'Beri tag pada gambar ini',
 	'imagetagging-article' => 'Halaman:',
 	'imagetagging-articletotag' => 'Halaman yang akan diberi tag',
+	'imagetagging-canteditothermessage' => 'Anda tidak dapat mengedit halaman ini, baik karena Anda tidak memiliki hak untuk melakukannya atau karena halaman dikunci karena alasan lain.',
 	'imagetagging-imghistory' => 'Versi',
 	'imagetagging-images' => 'gambar',
 	'imagetagging-inthisimage' => 'Pada gambar ini: $1',
 	'imagetagging-logentry' => 'Hapus tag ke halaman [[$1]] oleh $2',
 	'imagetagging-log-tagged' => 'Gambar [[$1|$2]] diberi tag ke halaman [[$3]] oleh $4',
 	'imagetagging-new' => '<sup><span style="color:red">Baru!</span></sup>',
+	'imagetagging-removetag' => 'Singkirkan penanda',
 	'imagetagging-done-button' => 'Selesai memberi tag',
 	'imagetagging-tag-button' => 'Tag',
 	'imagetagging-tagcancel-button' => 'Batalkan',
@@ -877,6 +880,13 @@ $messages['id'] = array(
 	'imagetagging-removingtag' => 'Menghilangkan tag...',
 	'imagetagging-addtagsuccess' => 'Tag ditambahkan.',
 	'imagetagging-removetagsuccess' => 'Tag dihilangkan.',
+	'imagetagging-canteditneedloginmessage' => '
+
+Anda tidak dapat menyunting halaman ini. 
+Mungkin karena Anda perlu login ke tag gambar. 
+Apakah Anda ingin login sekarang?',
+	'imagetagging-oneactionatatimemessage' => 'Hanya satu tindakan penandaan pada suatu waktu yang diperbolehkan. 
+Silakan tunggu tindakan yang ada untuk selesai.',
 	'imagetagging-oneuniquetagmessage' => 'Gambar ini telah memiliki tag dengan nama ini.',
 	'imagetagging-imagetag-seemoreimages' => 'Lihat gambar lain dari "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Gambar-gambar "$1"',

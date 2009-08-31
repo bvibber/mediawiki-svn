@@ -522,6 +522,13 @@ $messages['pl'] = array(
 	'categorywatch-autocat' => 'Automatycznie obserwowane przez $1',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categorywatch-catadd' => "$1 a l'é stàit giontà a $2",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

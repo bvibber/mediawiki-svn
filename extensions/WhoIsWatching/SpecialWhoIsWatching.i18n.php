@@ -594,6 +594,19 @@ $messages['pl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Dodaj wybranych użytkowników',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'whoiswatching' => 'Chi a sta vardand na pàgina wiki',
+	'whoiswatching-desc' => "A dà na lista d'utent che a stan vardand na pàgina wiki",
+	'specialwhoiswatchingthepage' => "Chi a l'é an mente ch'a varda %s",
+	'specialwhoiswatchingusage' => "Sta pàgina special-sì a peul pa esse dovrà da sola.
+Për piasì dovra la pàgina [[MediaWiki:Number_of_watching_users_pageview]] për defin^ un pont d'intrada a sta pàgina special-sì.",
+	'specialwhoiswatchingaddusers' => 'Gionta utent për vardé la pàgina',
+	'specialwhoiswatchingaddbtn' => "Gionta j'utent selessionà",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

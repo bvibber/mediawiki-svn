@@ -268,7 +268,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'expandtemplates' => 'Emled ar patromoù',
 	'expandtemplates-desc' => "[[Special:ExpandTemplates|Astenn a ra ar patromoù, an arc'hwelioù parser hag an argemmoù]] evit diskouez an testennoù wiki astennet ha rakwelet tres ar bajenn",
-	'expand_templates_intro' => "Kemer a ra ar bajenn zibar-mañ tammoù testenn hag astenn a ra an holl batromoù enni en un doare azkizat.
+	'expand_templates_intro' => "Kemer a ra ar bajenn dibar-mañ tammoù testenn hag astenn a ra an holl batromoù enni en un doare azkizat.
 Astenn a ra ivez an arc'hwelioù parser evel
 <nowiki>{{</nowiki>#if:…}}, hag an argemmoù evel
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash; e gwirionez, koulz lavaret kement tra zo etre briataennoù.
@@ -1428,12 +1428,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'expandtemplates' => 'Expandir pré-definições',
+	'expandtemplates' => 'Expandir predefinições',
 	'expandtemplates-desc' => 'Expande predefinições, funções do analisador "parser" e variáveis para mostrar texto wiki expandido e prever o aspecto da página',
-	'expand_templates_intro' => 'Esta página especial pega em algum texto e expande todas as pré-definições nele existentes recursivamente. Também expande funções do analisador (parser) como <nowiki>{{</nowiki>#if:...}}, e variáveis como <nowiki>{{</nowiki>CURRENTDAY}}&mdash;de facto, tudo entre chavetas duplas. Isto é feito através da chamada ao estágio do analisador (parser) relevante do próprio MediaWiki.',
+	'expand_templates_intro' => 'Esta página especial pega em algum texto e expande todas as predefinições nele existentes recursivamente. Também expande funções do analisador (parser) como <nowiki>{{</nowiki>#if:...}}, e variáveis como <nowiki>{{</nowiki>CURRENTDAY}}&mdash;de facto, tudo entre chavetas duplas. Isto é feito através da chamada ao estágio do analisador (parser) relevante do próprio MediaWiki.',
 	'expand_templates_title' => 'Título de contexto para {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto de entrada:',
 	'expand_templates_output' => 'Resultado',

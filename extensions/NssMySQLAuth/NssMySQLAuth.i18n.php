@@ -486,6 +486,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'accountmanager' => 'Pengelola akun',
@@ -493,6 +494,7 @@ $messages['id'] = array(
 	'am-email' => 'surel',
 	'am-active' => 'aktif',
 	'am-updated' => 'Perubahan yang Anda lakukan telah disimpan',
+	'nss-desc' => 'Sebuah plugin untuk mengotentikasi terhadap database libnss-mysql . Berisi [[Special:AccountManager|account manager]]',
 	'nss-rights' => 'hak',
 	'nss-save-changes' => 'Simpan perubahan',
 	'nss-create-account-header' => 'Buat akun baru',

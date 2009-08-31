@@ -173,9 +173,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'honeypot-desc' => 'Menyediakan integrasi dengan [http://projecthoneypot.org/ Proyek Honey Pot] untuk situs-situs MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Nomor dari kejadian terakhir alamat IP telah terpicu, menurut proyek Honey Pot',
 );
 
 /** Italian (Italiano)

@@ -353,7 +353,10 @@ ID, kótaryž musyš pódaś, su licby a pismiki mjazy "$2 a "$3".',
 $messages['el'] = array(
 	'imstatus_default' => 'Προεπιλογή',
 	'imstatus_example' => 'Παράδειγμα',
+	'imstatus_max' => 'μεγ',
+	'imstatus_min' => 'ελαχ',
 	'imstatus_or' => 'ή',
+	'imstatus_your_name' => 'το όνομά σας $1',
 );
 
 /** Esperanto (Esperanto)
@@ -1021,6 +1024,7 @@ $messages['pl'] = array(
 	'imstatus_action' => 'działanie, kiedy zostanie kliknięty przycisk',
 	'imstatus_details_saa' => 'Aby uzyskać więcej informacji na temat wszystkich stylów i działania, zobacz $1.',
 	'imstatus_your_name' => 'Twoja $1 nazwa',
+	'imstatus_aim_presence' => '$1 pokazuje Twój status oraz link który uruchamia AIM przesyłając mu Twój identyfikator jeśli użytkownik ma zainstalowany program komunikatora.',
 	'imstatus_gtalk_code' => 'kod komunikatora google',
 	'imstatus_gtalk_get_code' => 'kod komunikatora google – uzyskaj go z $1.',
 	'imstatus_gtalk_height' => 'wysokość okna w pikselach.',

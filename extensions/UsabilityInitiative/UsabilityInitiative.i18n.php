@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'usabilityinitiative-desc' => 'Features developed by the Wikipedia Usability Initiative to enhance the usability of MediaWiki',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'usabilityinitiative' => 'Bruikbaarheid-inisiatief',
+	'usabilityinitiative-desc' => 'Funksionaliteit wat deur Wikipedia se Bruikbaarheid-inisiatief ontwikkel is om MediaWiki meer bruikbaarheid te maak',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

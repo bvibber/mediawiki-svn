@@ -68,6 +68,13 @@ $messages['bg'] = array(
 	'skinperpage-desc' => 'Добавя етикета <tt>&lt;skin&gt;</tt> за използване на различни облици на страниците',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'skinperpage-desc' => 'Ouzhpennañ a ra ar valizenn <tt>&lt;skin&gt;</tt> evit implijout gwiskadurioù disheñvel dre bajenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

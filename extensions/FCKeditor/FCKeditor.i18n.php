@@ -366,10 +366,11 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'fckeditor-desc' => 'Permet la modification en utilisant l’éditeur WYSIWYG FCKeditor',
-	'textrichditor' => 'Éditeur enrichi',
+	'textrichditor' => 'Éditeur de texte enrichi',
 	'prefs-fckeditor' => 'Éditeur enrichi',
 	'tog-riched_disable' => "Désactiver l'éditeur enrichi",
 	'tog-riched_disable_ns_main' => "Désactiver l'éditeur enrichi dans l'espace de noms principal.",

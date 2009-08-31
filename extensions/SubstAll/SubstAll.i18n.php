@@ -61,6 +61,13 @@ $messages['bg'] = array(
 	'substall-desc' => 'Създава етикет <nowiki><substall></nowiki> за преобразуване на всички шаблони в уикисинтаксис',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'substall-desc' => 'Krouiñ a ra ur valizenn <nowiki><substall></nowiki> a amdro an holl batromoù en ereadur wiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

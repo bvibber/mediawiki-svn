@@ -26,6 +26,13 @@ $messages['be-tarask'] = array(
 	'mwreleases-desc' => 'Дадае [[Mediawiki:Mwreleases-list|сьпіс]] вэрсіяў, якія падтрымліваюцца, даступны праз API',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'mwreleases-desc' => 'Ouzhpennañ a ra ur [[Mediawiki:Mwreleases-list|roll]] eus ar stummoù skoret, hegerz dre an API',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -124,11 +131,25 @@ $messages['oc'] = array(
 	'mwreleases-desc' => 'Apond una [[Mediawiki:Mwreleases-list|lista]] de las versions suportadas, accessibla via l’API',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'mwreleases-desc' => 'Dodaje [[Mediawiki:Mwreleases-list|spis]] obsługiwanych wydań, dostępnych poprzez API',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'mwreleases-desc' => 'A gionta na [[Mediawiki:Mwreleases-list|lista]] dle vërsion apogià, visibila via API',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'mwreleases-desc' => "Adiciona uma [[Mediawiki:Mwreleases-list|lista]] de 'releases' suportados, acessível via API",
 );
 
 /** Russian (Русский)

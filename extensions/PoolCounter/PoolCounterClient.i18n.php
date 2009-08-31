@@ -62,6 +62,17 @@ $messages['bs'] = array(
 	'poolcounter-remote-error' => 'Greška na serveru pool brojača: $1',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'poolcounter-desc' => 'Klient MediaWiki za demon pool counter poolcounter.py',
+	'poolcounter-connection-error' => 'Zmólka pśi zwězowanju ze serwerom pool counter: $1',
+	'poolcounter-read-error' => 'Zmólka pśi cytanju ze serwera pool counter',
+	'poolcounter-write-error' => 'Zmólka pśi pisanju na serwer pool counter',
+	'poolcounter-remote-error' => 'Zmólka serwera pool counter: $1',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

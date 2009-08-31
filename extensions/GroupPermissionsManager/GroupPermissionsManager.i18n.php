@@ -660,6 +660,7 @@ $messages['ee'] = array(
  */
 $messages['el'] = array(
 	'grouppermissions-search' => 'Ομάδα:',
+	'grouppermissions-dologin' => 'Είσοδος',
 	'grouppermissions-dosearch' => 'Μετάβαση',
 	'grouppermissions-comment' => 'Σχόλιο:',
 	'grouppermissions-true' => 'Αληθινός',
@@ -668,6 +669,7 @@ $messages['el'] = array(
 	'grouppermissions-sort-edit' => 'Επεξεργασία',
 	'grouppermissions-sort-manage' => 'Διαχείριση',
 	'grouppermissions-sort-admin' => 'Διοίκηση',
+	'grouppermissions-sort-tech' => 'Τεχνικό',
 	'grouppermissions-sort-misc' => 'Διάφορα',
 	'grouppermissions-sp-save' => 'Αποθηκεύστε',
 	'grouppermissions-sp-remove' => 'αφαίρεση',
@@ -851,6 +853,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'grouppermissions' => 'Gérer les permissions des groupes',
@@ -880,7 +883,7 @@ $messages['fr'] = array(
 	'grouppermissions-never' => 'Jamais',
 	'grouppermissions-nooldrev' => 'Une erreur est intervenue lors de la tentative d’archivage du fichier de configuration. Aucune archive ne sera créée.',
 	'grouppermissions-sort-read' => 'Lecture',
-	'grouppermissions-sort-edit' => 'Édition',
+	'grouppermissions-sort-edit' => 'Modification',
 	'grouppermissions-sort-manage' => 'Gestion',
 	'grouppermissions-sort-admin' => 'Administration',
 	'grouppermissions-sort-tech' => 'Technique',

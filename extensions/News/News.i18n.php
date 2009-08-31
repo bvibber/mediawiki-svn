@@ -35,6 +35,13 @@ $messages['be-tarask'] = array(
 	'newsextension-desc' => 'Паказаць налады апошніх зьменаў як старонкі вікі ці у выглядзе RSS ці Atom',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'newsextension-desc' => "Diskouez a ra ar c 'hemmoù personelaat diwezhañ war ur bajenn wiki pe evel ul lanvad RSS pe Atom",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

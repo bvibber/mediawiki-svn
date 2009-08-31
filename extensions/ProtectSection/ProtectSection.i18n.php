@@ -66,6 +66,7 @@ $messages['be-tarask'] = array(
 	'protectsection_desc' => 'Дазваляе аўтарызаваным удзельнікам абараняць часткі старонак з дапамогай тэгу <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Вы спрабуеце дадаць ці выдаліць абароненую сэкцыю',
 	'protectsection_modify' => 'Вы спрабуеце зьмяніць абаронены тэкст',
+	'protectsection_add_above' => 'Вы спрабуеце ўставіць тэкст перад абароненай сэкцыяй',
 	'protectsection_forbidden' => 'Забаронены',
 	'right-protectsection' => 'абарона сэкцый старонак',
 );
@@ -87,6 +88,7 @@ $messages['bs'] = array(
 	'protectsection_desc' => 'Omogućuje potvrđenim korisnicima da zaštite dijelove stranice koristeći oznaku <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Pokušavate da dodate ili uklonite zaštićenu sekciju',
 	'protectsection_modify' => 'Pokušavate da mijenjate zaštićeni tekst',
+	'protectsection_add_above' => 'Pokušali ste ubaciti tekst ispred zaštićene sekcije',
 	'protectsection_forbidden' => 'Zabranjeno',
 	'right-protectsection' => 'Zaštita sekcija stranice',
 );
@@ -127,6 +129,7 @@ $messages['dsb'] = array(
 	'protectsection_desc' => 'Dowólujo awtorizěrowanym wužywarjam šćitaś źěle boka z pomocu toflicki <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Sy wopytał pśidaś abo wótpóraś šćitany wótrězk',
 	'protectsection_modify' => 'Sy wopytał změniś šćitany tekst.',
+	'protectsection_add_above' => 'Sy wopytał tekst pśed šćitanym wótrězkom zasunuś',
 	'protectsection_forbidden' => 'Zakazany',
 	'right-protectsection' => 'Wótrězki boka šćitaś',
 );
@@ -186,12 +189,14 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'protectsection_desc' => 'Permet aux utilisateurs autorisés de protéger des parties d’une page au moyen de la balise <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Vous avez tenté d’ajouter ou d’effacer une section protégée.',
 	'protectsection_modify' => 'Vous avez tenté de modifier du texte protégé.',
+	'protectsection_add_above' => "Vous avez essayé d'insérer du texte devant une section protégée",
 	'protectsection_forbidden' => 'Interdit',
 	'right-protectsection' => 'Protéger les sections de page',
 );
@@ -202,8 +207,9 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'protectsection_desc' => 'Permítelle aos usuarios autorizados que protexan partes dunha páxina usando a etiqueta <tt>&lt;protect&gt;</tt>',
-	'protectsection_add_remove' => 'Tentou engadir ou eliminar unha sección protexida',
-	'protectsection_modify' => 'Tentou modificar un texto protexido',
+	'protectsection_add_remove' => 'Intentou engadir ou eliminar unha sección protexida',
+	'protectsection_modify' => 'Intentou modificar un texto protexido',
+	'protectsection_add_above' => 'Intentou inserir un texto diante dunha sección protexida',
 	'protectsection_forbidden' => 'Prohibido',
 	'right-protectsection' => 'Protexer seccións de páxinas',
 );
@@ -222,6 +228,7 @@ $messages['gsw'] = array(
 	'protectsection_desc' => 'Erlaubt berächtigte Benutzer, Teil vun ere Syte mit em <tt>&lt;protect&gt;</tt>-Tag z schitze.',
 	'protectsection_add_remove' => 'Du hesch versuecht, e gschitzte Abschnitt zuezfiegen oder usezneh.',
 	'protectsection_modify' => 'Du hesch versuecht, e gschitzte Täxt z bearbeite.',
+	'protectsection_add_above' => 'Du hesch versuecht, Text yyzfiege vor eme gschitzte Abschnitt',
 	'protectsection_forbidden' => 'Verbotte',
 	'right-protectsection' => 'Abschnitt vun ere Syte schitze',
 );
@@ -260,6 +267,7 @@ $messages['hsb'] = array(
 	'protectsection_desc' => 'Dowola awtorizowanym wužiwarjam dźěle strony z pomocu taflički <tt>&lt;protect&gt;</tt> škitać',
 	'protectsection_add_remove' => 'Sy spytał škitany wotrězk přidać abo wotstronić.',
 	'protectsection_modify' => 'Sy spytał škitany tekst změnić.',
+	'protectsection_add_above' => 'Sy spytał tekst před škitanym wotrězkom zasunyć',
 	'protectsection_forbidden' => 'Zakazany',
 	'right-protectsection' => 'Wotrězki strony škitać',
 );
@@ -292,6 +300,7 @@ $messages['id'] = array(
 	'protectsection_desc' => 'Mengijinkan pengguna yang berhak untuk melindungi bagian dari sebuah halaman dengan menggunakan tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Anda berusaha untuk menambah atau menghilangkan bagian yang dilindungi',
 	'protectsection_modify' => 'Anda berusaha untuk mengubah teks yang dilindungi',
+	'protectsection_add_above' => 'Anda berusaha untuk memasukkan teks di depan sebuah bagian yang dilindungi',
 	'protectsection_forbidden' => 'Terlarang',
 	'right-protectsection' => 'Lindungi bagian halaman',
 );
@@ -314,6 +323,7 @@ $messages['ja'] = array(
 	'protectsection_desc' => '権限のある利用者が <tt>&lt;protect&gt;</tt> タグを使ってページの一部を保護できるようにする',
 	'protectsection_add_remove' => 'あなたは保護されたセクションを追加または除去しようとしました',
 	'protectsection_modify' => 'あなたは保護された文章を変更しようとしました',
+	'protectsection_add_above' => 'あなたは保護されたセクションの前に文章を挿入しようとしました',
 	'protectsection_forbidden' => '禁止されています',
 	'right-protectsection' => 'ページのセクションを保護する',
 );
@@ -342,6 +352,7 @@ $messages['ksh'] = array(
 	'protectsection_desc' => 'Määt et müjjelesch, dat Metmaacher met däm Rääsch dozoh Aandeile en Sigge met dämm Befääl <tt> &lt;protect&gt; </tt> schötze künne.',
 	'protectsection_add_remove' => 'Do häß versooht, ene jeschötzde Affschnett dobei ze donn, udder fott ze lohße.',
 	'protectsection_modify' => 'Do häß versooht, ene jeschötzde Täx ze ändere.',
+	'protectsection_add_above' => 'Do häs versöhk, jät füür ene jeschöz Afschnedd_erenn zu donn',
 	'protectsection_forbidden' => 'Verbodde',
 	'right-protectsection' => 'Aandeile en Sigge schötze',
 );
@@ -353,6 +364,7 @@ $messages['lb'] = array(
 	'protectsection_desc' => 'Erlaabt et autoriséierte Benotzer fir Deeler vun enger Säit mat helëf vum Tag <tt>&lt;protect&gt;</tt> ze spären.',
 	'protectsection_add_remove' => 'Dir hutt versicht, e protegéierten Abschnitt derbäizesetzen oder ze läschen.',
 	'protectsection_modify' => "Dir hutt versicht fir protegéierten Text z'änneren.",
+	'protectsection_add_above' => 'Dir hutt versicht Text virun e gespaarten Abschnitt derbäizesetzen',
 	'protectsection_forbidden' => 'Verbueden',
 	'right-protectsection' => 'Abschnitter vun enger Säit spären',
 );
@@ -480,6 +492,7 @@ $messages['pt-br'] = array(
 	'protectsection_desc' => 'Permite que utilizadores autorizados protejam partes de uma página usando a marca <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Você tentou adicionar ou remover uma seção protegida',
 	'protectsection_modify' => 'Você tentou modificar texto protegido',
+	'protectsection_add_above' => 'Você tentou inserir texto antes de uma seção protegida',
 	'protectsection_forbidden' => 'Proibido',
 	'right-protectsection' => 'Proteger seções da página',
 );
@@ -499,6 +512,7 @@ $messages['ru'] = array(
 	'protectsection_desc' => 'Позволяет авторизованным участникам защищать часть страницы, используя тег <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Вы пытаетесь добавить или удалить защищённый раздел',
 	'protectsection_modify' => 'Вы пытаетесь изменить защищённый текст',
+	'protectsection_add_above' => 'Вы пытались вставить текст перед защищённым разделом',
 	'protectsection_forbidden' => 'Запрещённый',
 	'right-protectsection' => 'защита разделов страницы',
 );

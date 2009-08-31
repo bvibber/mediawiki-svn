@@ -932,9 +932,12 @@ $messages['el'] = array(
 	'sig-anonymous' => '<i>Ανώνυμος</i>',
 	'sig-private' => '<i>Ιδιωτικός</i>',
 	'sign-sigdetails' => 'Λεπτομέρειες υπογραφής',
+	'sign-viewfield-stricken' => 'Σβησμένο',
 	'sign-viewfield-reviewedby' => 'Κριτικός',
 	'sign-viewfield-reviewcomment' => 'Σχόλιο',
+	'sign-detail-uniquequery' => 'Παρόμοιες οντότητες',
 	'sign-detail-uniquequery-run' => 'Εκτέλεση αιτήματος',
+	'sign-detail-strike' => 'Σβήσιμο υπογραφής',
 	'sign-reviewsig' => 'Επισκόπηση υπογραφής',
 	'sign-review-comment' => 'Σχόλιο',
 	'sign-submitreview' => 'Καταχώρηση κριτικής',
@@ -2239,7 +2242,7 @@ Beß esu joot, un liß dat janze Dokkemänt. Wann De dämm dann Ding Zohshtemmun
 	'sign-information' => '<div class="noarticletext">Merci, dat De Der de Zick jenumme häs, dorch hee dat Dokkemänt ze lässe.
 Wann de dämm zostemme kanns, dann donn Ding Ongerstötzung dodorch ußdröcke, dat De hee unge de notwendijje Felder ußföllß, un dann op „{{int:sign-submit}}“ klecks.
 Paß joot drop op, dat dat wat De övver Dech sellver enndrähß och rechtech es, un dat mer winnichsdens eine Wääch hät, öm met Der en Kuntack ze kumme, öm ze kike, wä De bes, un öm ze ovverpröfe, dat dat all ääsch es.
-Opjepaß: Ding aktoälle IP-Addräß un ander ähnlijje Date wäde zosamme met dä Date us dämm Dommulaa faßjehallde. Se wäde vun de Moderatore jebruch, öm dubbel dijjitaale Ongerschreffte eruß ze sammelle, un de Rechtechkeit vun Ding päsönlejje Date eruß ze krijje.
+Opjepaß: Ding aktoälle IP-Addräß un ander ähnlijje Date wäde zosamme met dä Date us dämm Fommulaa faßjehallde. Se wäde vun de Moderatore jebruch, öm dubbel dijjitaale Ongerschreffte eruß ze sammelle, un de Rechtechkeit vun Ding päsönlejje Date eruß ze krijje.
 Weil de Moderatore fö_jewööhnlesch esu en Pröfunge för Fobendunge övver offe, un namelos maachende <i lang="en">proxy server</i> täschnesch koum udder jaa nit maache künne, es et müjjelech, un beinah secher, dat Ungerschreffte övver esu en <i lang="en">proxies</i> nit jezallt weede.
 Wann de jrad övver ene <i lang="en">proxy</i> am Netz am hange bes, dann bes esu joot, donn Dich för ene Momang vun em trenne, un nemm en nommaale Verbendung för et Ongerschriive.</div>
 

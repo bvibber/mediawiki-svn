@@ -417,6 +417,18 @@ $messages['pl'] = array(
 	'right-userrights-shared' => 'Zarządzanie wspólnymi między projektami uprawnieniami użytkowników',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'shareduserrights' => 'Gestion dij Drit Utent Condivis',
+	'gblrights-desc' => "[[Special:SharedUserRights|Aministrassion dij drit globaj dj'utent]] bel fé",
+	'gblrights-logpage' => 'Registr dij Drit Globaj',
+	'gblrights-pagetext' => "Sto sì a l'é un registr ëd tùit ij cambi fàit a la tabela dij drit globaj dla famija dle wiki",
+	'gblrights-rights-entry' => "a l'ha tramudà l'apartenensa a le partìe globaj për $1 da $2 a $3",
+	'right-userrights-shared' => 'Gestiss ij drit utent condivis',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

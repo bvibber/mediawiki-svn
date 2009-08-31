@@ -77,6 +77,15 @@ Maš komentar na toś tom boku? Pśidaj jen sem abo <span class="plainlinks">[{{
 	'commentbox-error-empty-comment' => 'Prozne komentary njejsu dowólone!',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'commentbox-name' => 'Όνομα:',
+	'commentbox-first-comment-heading' => '== Σχόλια ==',
+	'commentbox-regex' => '/\\n==\\s*Σχόλια\\s*==\\s*\\n/i',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -92,7 +101,19 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'commentbox-desc' => 'Agrega un cuadro de comentarios a ciertas páginas',
+	'commentbox-intro' => '== Agregar un comentario... ==
+Tienes un comentario a esta página? Agrégalo aquí o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} edita la página directamente]</span>.',
+	'commentbox-savebutton' => 'Grabar comentario',
+	'commentbox-name' => 'Nombre:',
+	'commentbox-name-explanation' => '<small>(Tip: Si [[Special:UserLogin|inicias sesión]], no tendrás que llenar tu nombre manualmente)</small>',
+	'commentbox-log' => 'Nuevos comentarios',
 	'commentbox-first-comment-heading' => '== Comentarios==',
+	'commentbox-regex' => '/\\n==\\s*Comentarios\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Error cuando se creaba un comentario',
+	'commentbox-error-page-nonexistent' => 'Esta página no existe!',
+	'commentbox-error-namespace' => 'Los comentarios no estan permitidos en este espacio de nombre!',
+	'commentbox-error-empty-comment' => 'Comentarios vacíos no están permitidos!',
 );
 
 /** French (Français)
@@ -155,9 +176,22 @@ Maš komentar na tutej stronje? Přidaj jón tu abo <span class="plainlinks">[{{
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
+	'commentbox-desc' => 'Menambahkan box komentar pada halaman tertentu',
+	'commentbox-intro' => '== Tambah komentar ... ==
+Anda memiliki komentar di halaman ini? Tambahkan di sini atau <span class="plainlinks"> [((fullurl:((FULLPAGENAME))|action=edit)) sunting halaman langsung] </span>.',
+	'commentbox-savebutton' => 'Simpan komentar',
 	'commentbox-name' => 'Nama:',
+	'commentbox-name-explanation' => '<small> (Tip: Jika Anda [[Special:UserLogin|log in]], Anda tidak perlu mengisi nama Anda di sini secara manual) </small>',
+	'commentbox-log' => 'Komentar baru',
+	'commentbox-first-comment-heading' => '== Komentar ==',
+	'commentbox-regex' => '/\\n==\\s*Komentar\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Kesalahan selagi membuat komentar',
+	'commentbox-error-page-nonexistent' => 'Halaman ini tidak ada!',
+	'commentbox-error-namespace' => 'Komentar tidak diperbolehkan pada ruang nama ini!',
+	'commentbox-error-empty-comment' => 'Komentar kosong tidak diperbolehkan!',
 );
 
 /** Italian (Italiano)
@@ -282,6 +316,25 @@ Avètz un comentari sus aquesta pagina ? Apondètz-o aicí o <span class="plainl
 	'commentbox-error-page-nonexistent' => 'Aquesta pagina existís pas !',
 	'commentbox-error-namespace' => 'Los comentaris son pas autorizats dins aqueste espaci de noms !',
 	'commentbox-error-empty-comment' => 'Los comentaris voids son pas autorizats !',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'commentbox-desc' => 'Dodaje okienko komentarzy do niektórych stron',
+	'commentbox-intro' => '== Dodawanie komentarza... ==
+Masz komentarz na tej stronie? Dodaj ten komentarz lub <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} wyedytuj treść strony]</span>.',
+	'commentbox-savebutton' => 'Zapisz komentarz',
+	'commentbox-name' => 'Imię i nazwisko',
+	'commentbox-name-explanation' => '<small>(Podpowiedź – jeśli [[Special:UserLogin|się zalogujesz]] nie będziesz musiał wypełniać podpisu ręcznie)</small>',
+	'commentbox-log' => 'Nowe komentarze',
+	'commentbox-first-comment-heading' => '== Komentarze ==',
+	'commentbox-regex' => '/\\n==\\s*Komentarze\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Wystąpił błąd w trakcie tworzenia komentarza',
+	'commentbox-error-page-nonexistent' => 'Strona nie istnieje!',
+	'commentbox-error-namespace' => 'W tej przestrzeni nazw nie można umieszczać komentarzy!',
+	'commentbox-error-empty-comment' => 'Komentarz nie może być pusty!',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -57,6 +57,13 @@ $messages['bg'] = array(
 	'i18ntags-desc' => 'Достъп до функциите за i18n за форматиране на числа, граматика и множествено число на всички налични езици',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'i18ntags-desc' => "Aotren a ra ar moned d'an arc'hwelioù i18n evit furmad an niveroù, ar yezhadur hag al liester e kement yezh pledet ganti.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

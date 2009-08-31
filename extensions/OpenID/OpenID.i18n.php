@@ -529,6 +529,20 @@ OpenID позволява влизането в много различни са
 	'openid-pref-hide' => 'Скриване на OpenID от потребителската страница ако влезете чрез OpenID.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'openidoptional' => 'Diret',
+	'openidrequired' => 'Rekis',
+	'openidnickname' => 'Lesanv',
+	'openidfullname' => 'Anv klok',
+	'openidemail' => "Chomlec'h postel",
+	'openidlanguage' => 'Yezh',
+	'openidtimezone' => 'Takad eur :',
+	'openidchoosefull' => "Hoc'h anv klok ($1)",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

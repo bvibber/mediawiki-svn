@@ -339,6 +339,13 @@ $messages['sk'] = array(
 	'right-getfamily' => 'Vytvoriť súbor rodiny pre pywikipediabot',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'getfamily' => 'పివైవికీపీడియాబాట్ కుటుంబాన్ని తీసుకురా',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

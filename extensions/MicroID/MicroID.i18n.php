@@ -52,6 +52,14 @@ $messages['bg'] = array(
 	'tog-microid' => 'Публикува <a href="http://microid.org/">MicroID</a> за потвърждаване на сметката с външни услуги',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'microid-desc' => 'Ouzhpennañ a ra ur [http://www.microid.org/ MicroID] da pajennoù an implijerien a-benn kadarnaat ar gont gant servijoù diavaez',
+	'tog-microid' => 'Embann ur <a href="http://microid.org/">MicroID</a> a-benn kadarnaat ar gont gant servijoù diavaez',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

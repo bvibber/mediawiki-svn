@@ -250,6 +250,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'mostrevisors' => 'Pages avec le plus des relecteurs',
@@ -263,7 +264,7 @@ $messages['fr'] = array(
 	'mostrevisors-submit' => 'Soumettre',
 	'mostrevisors-showredir' => 'Afficher les pages de redirection',
 	'mostrevisors-hideredir' => 'masquer les pages de redirection',
-	'mostrevisors-users' => '- $1 {{PLURAL:$1|éditeur|éditeurs}}',
+	'mostrevisors-users' => '– $1 modificateur{{PLURAL:$1||s}}',
 	'mostrevisors-viewcontributors' => 'Voir les contributeurs principaux',
 );
 

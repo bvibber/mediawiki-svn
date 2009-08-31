@@ -39,6 +39,13 @@ $messages['be-tarask'] = array(
 	'regexfunctions-desc' => 'Функцыі парсэра для працы з рэгулярнымі выразамі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'regexfunctions-desc' => "Arc'hwelioù parser lavarennoù reoliek",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

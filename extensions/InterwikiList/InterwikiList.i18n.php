@@ -490,6 +490,18 @@ $messages['pl'] = array(
 	'interwikilist-prefix' => 'Przedrostek interwiki:',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'interwikilist' => 'Lista interwiki',
+	'interwikilist-desc' => 'A gionta na  [[Special:Interwikilist|pàgina special]] për vëdde ij colegament interwiki disponìbij',
+	'interwikilist-linkname' => 'Colegament interwiki',
+	'interwikilist-target' => 'URL ëd destinassion',
+	'interwikilist-filter' => 'Lista dij filtror',
+	'interwikilist-prefix' => 'Prefiss interwiki:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

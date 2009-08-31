@@ -232,7 +232,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'sitematrix' => 'Roll holl raktresoù Wikimedia',
-	'sitematrix-summary' => 'Diskouez a ra ar bajenn zibar-mañ holl wikioù Diazezadur Wikimedia.',
+	'sitematrix-summary' => 'Diskouez a ra ar bajenn dibar-mañ holl wikioù Diazezadur Wikimedia.',
 	'sitematrix-language' => 'Yezh',
 	'sitematrix-others' => 'Raktresoù all eus Wikimedia',
 	'sitematrix-total' => "'''Hollad ar gont : $1'''",
@@ -1294,13 +1294,20 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  * @author לערי ריינהארט
  */
 $messages['pms'] = array(
 	'sitematrix' => 'Lista ëd le wiki gestìe da Wikimedia',
+	'sitematrix-summary' => 'Sta pàgina special-sì a lista tute le wiki ëd Wikimedia.',
+	'sitematrix-desc' => 'A visualisa na [[Special:SiteMatrix|lista dle wiki ëd Wikimedia]]',
 	'sitematrix-language' => 'Lenga',
 	'sitematrix-project' => 'Nòm dël proget, anliura antra proget e anliura antrawiki',
 	'sitematrix-others' => 'Àutri proget ëd Wikimedia',
+	'sitematrix-total' => "'''Total count: $1'''",
+	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private' => 'privà',
+	'sitematrix-fishbowl' => 'modìfica riservà',
 );
 
 /** Pashto (پښتو)

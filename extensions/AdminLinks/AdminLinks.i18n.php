@@ -146,7 +146,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'adminlinks' => 'Liammoù merañ',
-	'adminlinks-desc' => 'Ouzhpennañ a ra ur [[Special:AdminLinks|bajenn zibar]] enni liammoù talvoudus evit ar verourien',
+	'adminlinks-desc' => 'Ouzhpennañ a ra ur [[Special:AdminLinks|bajenn dibar]] enni liammoù talvoudus evit ar verourien',
 	'adminlinks_documentation' => 'dafar $1',
 	'adminlinks_general' => 'Hollek',
 	'adminlinks_editsidebar' => 'Kemmañ ar varrenn gostez',
@@ -253,10 +253,22 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'adminlinks' => 'Σύνδεσμοι διαχειριστών',
+	'adminlinks-desc' => 'Προσθέτει μία [[Special:AdminLinks|ειδική σελίδα]] η οποία περιέχει χρήσιμους συνδέσμους για τους διαχειριστές',
+	'adminlinks_documentation' => '$1 τεκμηρίωση',
+	'adminlinks_general' => 'Γενικά',
+	'adminlinks_editsidebar' => 'Επεξεργασία πλαϊνής μπάρας',
+	'adminlinks_editcss' => 'Επεξεργασία αρχείου CSS',
+	'adminlinks_editmainpagename' => 'Επεξεργασία ονόματος της κύριας σελίδας',
 	'adminlinks_users' => 'Χρήστες',
 	'adminlinks_createuser' => 'Δημιουργία χρήστη',
+	'adminlinks_browsesearch' => 'Πλοήγηση και αναζήτηση',
+	'adminlinks_importexport' => 'Εισαγωγή και εξαγωγή',
+	'right-adminlinks' => 'Δείτε τον σύνδεσμο στους [[Special:AdminLinks|Διαχειριστικούς Συνδέσμους]]',
 );
 
 /** Esperanto (Esperanto)

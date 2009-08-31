@@ -39,6 +39,13 @@ $messages['be-tarask'] = array(
 	'htmlets-desc' => 'Дазваляе Вам выводзіць з файлаў фрагмэнты HTML з дапамогай тэга <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'htmlets-desc' => "Talvezout a ra da ensoc'hañ lodennoù HTML adalek restroù a ra gant ar valizenn <tt><nowiki><htmlet></nowiki></tt> tag",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -90,9 +97,10 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'htmlets-desc' => 'Vous laisse le lien HTML abrégé en ligne depuis les fichiers utilisant la balise <tt><nowiki><htmlet></nowiki></tt>',
+	'htmlets-desc' => 'Vous permet d’insérer en ligne des extraits de code HTML depuis les fichiers utilisant la balise <tt><nowiki><htmlet></nowiki></tt>',
 );
 
 /** Galician (Galego)

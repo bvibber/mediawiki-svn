@@ -21,6 +21,14 @@ $messages['qqq'] = array(
 	'commentpages-desc' => 'Short description of the Commentpages extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'commentpages-desc' => 'Opmerkingsbladsye vir die hoof naamruimte',
+	'nstab-comments' => 'Opmerkings',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

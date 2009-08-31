@@ -42,6 +42,13 @@ $messages['bg'] = array(
 	'psinotocnum-desc' => 'Нова вълшебна думичка „<nowiki>__NOTOCNUM__</nowiki>“',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'psinotocnum-desc' => 'Ger burzhudus nevez "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

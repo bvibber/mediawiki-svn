@@ -427,7 +427,7 @@ $messages['hu'] = array(
 	'findspam-ip' => 'IP-cím:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nem találtam ilyen szerkesztést.',
-	'right-findspam' => 'Újonnan hozzáadott spam keresése',
+	'right-findspam' => 'újonnan hozzáadott spamek keresése',
 );
 
 /** Interlingua (Interlingua)
@@ -733,6 +733,18 @@ $messages['pl'] = array(
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nie odnaleziono żadnych edycji',
 	'right-findspam' => 'Wyszukaj ostatnio dodany spam',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'findspam' => 'Treuva lë spam',
+	'findspam-desc' => "A gionta na  [[Special:FindSpam|pàgina special]] ch'a përmëtt ëd trové lë spam giontà ëd ressent",
+	'findspam-ip' => 'Adrëssa IP:',
+	'findspam-ok' => 'Bin parèj',
+	'findspam-notextfound' => 'Pa gnun-e contribussion trovà',
+	'right-findspam' => 'Serca lë spam pì ressent',
 );
 
 /** Pashto (پښتو)

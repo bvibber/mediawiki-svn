@@ -46,6 +46,13 @@ $messages['bg'] = array(
 	'tab0-desc' => 'Добавя етикет „0“, който позволява редактирането на първия раздел на страницата',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'tab0-desc' => 'Ouzhpennañ a ra ar pempilh "0" ul liamm evit kemmañ rann gentañ ar bajenn.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

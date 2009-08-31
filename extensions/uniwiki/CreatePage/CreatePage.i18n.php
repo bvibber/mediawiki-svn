@@ -125,7 +125,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'createpage' => 'Krouiñ ur bajenn',
-	'createpage-desc' => 'Ouzhpennañ a ra ur [[Special:CreatePage|bajenn zibar]] evit krouiñ pajennoù nevez',
+	'createpage-desc' => 'Ouzhpennañ a ra ur [[Special:CreatePage|bajenn dibar]] evit krouiñ pajennoù nevez',
 	'createpage_submitbutton' => 'Kas',
 	'createpage_instructions' => "Merkañ titl ar bajenn a fell deoc'h krouiñ :",
 	'createpage_entertitle' => 'Merkit un titl evit ar bajenn',

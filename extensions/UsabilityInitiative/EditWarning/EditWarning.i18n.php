@@ -309,6 +309,7 @@ $messages['hu'] = array(
 	'editwarning' => 'Figyelmeztetés szerkesztésnél',
 	'editwarning-desc' => 'Figyelmezteti a szerkesztőt, ha a szerkesztőlapot mentés nélkül akarja elhagyni.',
 	'editwarning-warning' => 'A lap elhagyásával az összes itt végzett változtatás elvész.',
+	'editwarning-preference' => 'Figyelmeztessen, ha szerkesztéskor a módosítások mentése nélkül akarom elhagyni a lapot',
 );
 
 /** Interlingua (Interlingua)

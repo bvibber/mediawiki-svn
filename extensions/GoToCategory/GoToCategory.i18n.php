@@ -305,6 +305,13 @@ $messages['sv'] = array(
 	'gotocategory-desc' => 'Checkar sökord upp mot kategorinamnrymden för "Gå"-funktionaliteten i sökboxen',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'gotocategory-desc' => 'అన్వేషణ పదాలను వర్గములో వెతుకుతుంది: "పేజీకి వెళ్ళు" యొక్క స్వభావముకు సమూహనామము',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

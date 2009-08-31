@@ -1051,8 +1051,10 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'form-desc' => "N'[[Special:Form|antëfacia ëd forma]] për fé parte neuve pàgine",
 	'form' => 'Domanda',
 	'formnoname' => 'Domanda sensa tìtol',
 	'formnonametext' => 'A venta deje un tìtol al mòdulo ëd domanda, coma "Special:Form/nòm_dla_domanda".',
@@ -1061,13 +1063,16 @@ $messages['pms'] = array(
 	'formpattern' => '$1-domanda',
 	'formtitlepattern' => 'Gionté $1 neuv',
 	'formsave' => 'Salvé',
+	'formindexmismatch-title' => 'Model dël nòm e stamp a corispondo pa',
 	'formindexmismatch' => "Ës mòdulo-sì a l'ha në schema ëd nòm e stamp malcobià a parte da 'nt l'ìndess $1.",
 	'formarticleexists' => 'La pàgina a-i é',
 	'formarticleexiststext' => 'La pàgina [[$1]] a-i é già',
 	'formbadpagename' => 'Nòm ëd pàgina pa bon',
+	'formbadrecaptcha' => 'Valor pa giust për reCaptcha. Prova torna.',
 	'formbadpagenametext' => 'Ij dat ant sël mòdulo ëd domanda ch\'a l\'ha butà a dan un nòm ëd pàgina nen bon, "$1".',
-	'formrequiredfielderror' => "Ël camp $1 a l'é obligatòri për ës mòdulo ëd domanda-sì. Për piasì, ch'a lo compila.",
-	'formsavesummary' => "Neuva pàgina ch'a dòvra [[Special:Form/$1]]",
+	'formrequiredfielderror' => "{{PLURAL:$2|Ël camp $1 a l'é|Ij camp $1 a son}} obligatòri për ës mòdulo ëd domanda-sì. 
+Për piasì, {{PLURAL:$2|ch'a lo|ch'a-j}} compila.",
+	'formsavesummary' => "Neuva pàgina ch'a dòvra [[Special:Form/$1|mòdul $1]]",
 	'formsaveerror' => 'Eror ën salvand ël mòdulo ëd domanda',
 	'formsaveerrortext' => "A-i é sta-ie n'eror amprevist ën salvand la pàgina '$1'.",
 );

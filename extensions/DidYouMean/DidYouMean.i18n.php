@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'didyoumean-desc' => 'Extension description displayed on [[Special:Version]].',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'didyoumean-desc' => 'Voeg skakels na bladsye met "soortgelyke" titels',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -66,6 +66,8 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'youtubeauthsub' => 'Laai YouTube-video op',
+	'youtubeauthsub-desc' => "Stel gebruikers in staat om video's direk na YouTube [[Special:YouTubeAuthSub|op te laai]]",
+	'youtubeauthsub_info' => "Verskaf die volgende inligting in om 'n video na YouTube op te laai sodat dit later op 'n bladsy bygevoeg kan word.",
 	'youtubeauthsub_title' => 'Titel',
 	'youtubeauthsub_description' => 'Beskrywing',
 	'youtubeauthsub_password' => 'YouTube-wagwoord',
@@ -74,8 +76,27 @@ $messages['af'] = array(
 	'youtubeauthsub_category' => 'Kategorie',
 	'youtubeauthsub_submit' => 'Oplaai',
 	'youtubeauthsub_clickhere' => 'Kliek hier om by YouTube aan te teken',
+	'youtubeauthsub_tokenerror' => 'Fout met die generasie van die sekuriteitsbewys. Herlaai die bladsy.',
+	'youtubeauthsub_success' => "Baie geluk! 
+Jou video is opgelaai.
+<a href='http://www.youtube.com/watch?v=$1'>Kyk na u video.</a>
+YouTube mag moontlik tyd neem om u video te verwerk en miskien is dit nog nie gereed nie.
+
+Gebruik die volgende kode om u video op 'n bladsy op die wiki te plaas:<code>
+{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => "U moet eers op YouTube aanteken alvorens u 'n video kan oplaai.",
+	'youtubeauthsub_uploadhere' => 'Laai u video van hier op:',
 	'youtubeauthsub_uploadbutton' => 'Laai op',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 U kan hierdie video kyk]',
+	'youtubeauthsub_summary' => 'Besig om YouTube-video op te laai',
+	'youtubeauthsub_uploading' => 'Jou video word opgelaai.
+Wees asseblief geduldig.',
+	'youtubeauthsub_viewpage' => 'Alternatiewelik kan u na [[$1|u video kyk]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Verskaf asseblief een of meer sleutelwoorde.',
+	'youtubeauthsub_jserror_notitle' => "Verskaf asseblief 'n titel vir die video.",
+	'youtubeauthsub_jserror_nodesc' => "Verskaf asseblief 'n beskrywing vir die video.",
 );
 
 /** Amharic (አማርኛ)
@@ -463,6 +484,13 @@ Buďte prosím trpěliví.',
  */
 $messages['cu'] = array(
 	'youtubeauthsub_category' => 'катигорі́ꙗ',
+);
+
+/** Welsh (Cymraeg)
+ * @author Fulup
+ */
+$messages['cy'] = array(
+	'youtubeauthsub_title' => 'Teitl',
 );
 
 /** Danish (Dansk)

@@ -72,6 +72,14 @@ $messages['bg'] = array(
 	'minnamelength-desc' => 'Налагане на ограничение за минимална дължина на потребителското име',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'minnamelength-error' => "Re verr eo hoc'h anv implijer. $1 eo an niver a arouezennoù bihanañ.",
+	'minnamelength-desc' => 'Termeniñ a ra un hed bihanañ evit un anv implijer',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -471,10 +479,12 @@ $messages['stq'] = array(
 );
 
 /** Sundanese (Basa Sunda)
+ * @author Irwangatot
  * @author Kandar
  */
 $messages['su'] = array(
 	'minnamelength-error' => 'Landihan anjeun pondok teuing. Paling henteu kudu $1.',
+	'minnamelength-desc' => 'Paké panjang saeutikna pikeun ngaran pamaké',
 );
 
 /** Swedish (Svenska)

@@ -182,12 +182,13 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'countedits' => 'Degasadennoù ar gont',
+	'countedits-desc' => '[[Special:CountEdits|Pajenn dibar]] a jed an niver a gemmoù degaset gant an implierien hag a bourchas roll an dek implijer oberiantañ.',
 	'countedits-warning' => "'''Diwallit :''' Ne varner ket ul levr diouzh ar golo anezhañ. Arabat barnañ un implijer diouzh an niver a zegasadennoù graet gantañ.",
 	'countedits-username' => 'Anv implijer :',
 	'countedits-ok' => 'Mat eo',
 	'countedits-nosuchuser' => "N'eus implijer ebet anvet $1.",
 	'countedits-resultheader' => "Disoc'hoù evit $1",
-	'countedits-resulttext' => '$2 degasadenn zo bet graet gant $1',
+	'countedits-resulttext' => '$2 {{PLURAL:$2|degasadenn|degasadenn}} zo bet graet gant $1',
 	'countedits-mostactive' => 'Implijerien oberiantañ',
 	'countedits-nocontribs' => 'Degasadenn ebet evit ar wiki-mañ.',
 );

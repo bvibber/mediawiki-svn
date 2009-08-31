@@ -410,6 +410,18 @@ $messages['pl'] = array(
 	'right-userrights-global' => 'Zarządzanie globalnymi uprawnieniami użytkownika',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'globaluserrights' => "Gestion dijj Drit Globaj dj'Utent",
+	'gur-desc' => "Aministrassion dij [[Special:GlobalUserRights|drit globaj dj'utent]] bel fé",
+	'gur-rightslog-name' => 'Registr dij drit globaj',
+	'gur-rightslog-header' => "Sto sì a l'é un registr dij cambi aj drit globaj",
+	'gur-rightslog-entry' => "a l'ha tramudà l'apartenensa a le partìe globaj për $1 da $2 a $3",
+	'right-userrights-global' => "Gestiss ij drit globaj ëd j'utent",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -709,6 +709,18 @@ $messages['pl'] = array(
 	'randomincategory-submit' => 'Dalej',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'randomincategory' => 'Pàgina a cas ant na categorìa',
+	'randomincategory-desc' => '[[Special:Randomincategory|Pàgina special]] për pijé na pàgina a cas ant na categorìa',
+	'randomincategory-toolbox' => 'Na pàgina qualsëssìa',
+	'randomincategory-nocategory' => "La categorìa $1 a esist pa o a l'é veuida",
+	'randomincategory-label' => 'Categorìa:',
+	'randomincategory-submit' => 'Va',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

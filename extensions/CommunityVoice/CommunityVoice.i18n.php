@@ -346,6 +346,13 @@ $messages['hsb'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atribut "title" w tafličce "rating" pobrachuje.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'communityvoice-ratings-scale-status-thanks' => 'Köszönjük, hogy szavaztál!',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

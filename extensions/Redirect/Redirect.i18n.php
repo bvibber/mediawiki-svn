@@ -38,6 +38,13 @@ $messages['be-tarask'] = array(
 	'redirect-desc' => 'Дазваляе лёгка канфігураваць перанакіраваньне на [[MediaWiki:Redirect-addnewaccount|стварэньне рахунку]] і [[MediaWiki:Redirect-userlogoutcomplete|выйсьце]]',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'redirect-desc' => 'Aotren a ra kefluniañ aes adkasoù pa vez [[MediaWiki:Redirect-addnewaccount|krouet ur gont]] hag [[MediaWiki:Redirect-userlogoutcomplete|emzilugañ]]',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -404,7 +404,10 @@ Postavite varijablu $wgLocalTmpDirectory kao direktorijum za pisanje.',
 	'inplace_scaler_not_enough_params' => 'Nema dovoljno parametara.',
 	'inplace_scaler_invalid_image' => 'Nevaljana slika, nije joj moguće odrediti veličinu.',
 	'inplace_scaler_failed' => 'Desila se greška pri promjeni veličine slike: $1',
+	'inplace_scaler_no_handler' => 'Nema programske rutine za transformiranje ovog MIME tipa',
+	'inplace_scaler_no_output' => 'Nije napravljena transformacijska izlazna datoteka.',
 	'inplace_scaler_zero_size' => 'Transformacija je proizvela datoteku veličine nula.',
+	'webstore-desc' => 'Web pristup arhivi datoteka (bez NFS)',
 	'webstore_access' => 'Ova usluga je onemogućena od IP klijenta.',
 	'webstore_path_invalid' => 'Naziv datoteke nije valjan.',
 	'webstore_dest_open' => 'Ne može se otvoriti odredišna datoteka "$1".',
@@ -423,13 +426,18 @@ Postavite varijablu $wgLocalTmpDirectory kao direktorijum za pisanje.',
 	'webstore_temp_copy' => 'Greška pri kopiranju privremene datoteke "$1" na odredišnu datoteku "$2".',
 	'webstore_temp_close' => 'Greška pri zatvaranju privremene datoteke "$1".',
 	'webstore_temp_lock' => 'Greška pri zaključavanju privremene datoteke "$1".',
+	'webstore_no_archive' => 'Odredišna datoteka postoji i nije navedena arhiva.',
 	'webstore_no_file' => 'Nijedna datoteka nije postavljena.',
+	'webstore_move_uploaded' => 'Greška pri premještanju postavljene datoteke "$1" na privremenu lokaciju "$2".',
 	'webstore_invalid_zone' => 'Nevaljana zona "$1".',
+	'webstore_no_deleted' => 'Nije definisan arhivski direktorijum za obrisane datoteke.',
 	'webstore_curl' => 'Greška iz cURL: $1',
 	'webstore_404' => 'Datoteka nije nađena.',
 	'webstore_php_warning' => 'PHP upozorenje: $1',
 	'webstore_metadata_not_found' => 'Datoteka nije nađena: $1',
 	'webstore_postfile_not_found' => 'Datoteka za slanje nije pronađena.',
+	'webstore_scaler_empty_response' => 'Skalar slika je vratio prazan odgovor sa kodom odgovora 200.
+Ovo se možda desilo zbog fatalne greške PHP u skalaru.',
 	'webstore_invalid_response' => 'Nevaljan odgovor od servera:
 
 $1',
@@ -438,6 +446,7 @@ $1',
 
 $1',
 	'webstore_php_error' => 'PHP greške koje su se desile:',
+	'webstore_no_handler' => 'Nema programske rutine za transformiranje ovog MIME tipa',
 );
 
 /** Catalan (Català)
@@ -683,6 +692,9 @@ $messages['el'] = array(
 	'webstore_php_warning' => 'Προειδοποίηση PHP: $1',
 	'webstore_metadata_not_found' => 'Το Αρχείο δεν βρέθηκε: $1',
 	'webstore_postfile_not_found' => 'Δεν βρέθηκε το αρχείο προς δημοσίευση.',
+	'webstore_invalid_response' => 'Μη έγκυρη απόκριση από τον εξυπηρετητή:
+
+$1',
 	'webstore_no_response' => 'Καμία απόκριση από τον εξυπηρετητή',
 	'webstore_php_error' => 'Τα σφάλματα PHP αντιμετωπίστηκαν:',
 	'webstore_no_handler' => 'Κανένας διαχειριστής για τη μετατροπή αυτού του τύπου MIME',

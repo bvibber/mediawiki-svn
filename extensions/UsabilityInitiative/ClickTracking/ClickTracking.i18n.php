@@ -119,6 +119,14 @@ $messages['hsb'] = array(
 	'clicktracking-desc' => 'Kliknjenske přesćěhanje, myslene za přesćěhowanje podawkow, kotrež aktualizaciju strony njezawinuja',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'clicktracking' => 'Usability Initiative kattintásszámláló',
+	'clicktracking-desc' => 'Kattintásszámláló, az olyan események rögzítésére, melyekhez nem szükséges a lap frissítése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -206,6 +214,14 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'clicktracking' => "Trassadura dij click ëd l'Usability Initiative",
 	'clicktracking-desc' => "Trassadura dij click, për trassé dj'event cha a causo pa ël refresh ëd na pàgina",
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'clicktracking' => 'Monitoramento de cliques da Iniciativa de Usabilidade',
+	'clicktracking-desc' => 'Monitoramento de cliques, destinado ao monitoramento de eventos que não causem uma atualização de página',
 );
 
 /** Russian (Русский)

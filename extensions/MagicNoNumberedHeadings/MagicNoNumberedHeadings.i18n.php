@@ -20,6 +20,13 @@ $messages['be-tarask'] = array(
 	'magicnonumberedheadings-desc' => 'Дадае магічнае слова «<nowiki>__NONUMBEREDHEADINGS__</nowiki>»',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'magicnonumberedheadings-desc' => 'Ouzhpennañ a ra ar ger burzhudus "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

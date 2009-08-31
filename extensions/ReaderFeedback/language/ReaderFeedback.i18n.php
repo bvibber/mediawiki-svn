@@ -429,6 +429,7 @@ $messages['el'] = array(
 	'readerfeedback-submitting' => 'Υποβολή ...',
 	'readerfeedback-finished' => 'Σας ευχαριστούμε!',
 	'readerfeedback-tagfilter' => 'Ετικέτα:',
+	'tooltip-ca-ratinghist' => 'Βαθμολογίες αναγνωστών για αυτή τη σελίδα',
 	'specialpages-group-feedback' => 'Γνώμη θεατή',
 );
 

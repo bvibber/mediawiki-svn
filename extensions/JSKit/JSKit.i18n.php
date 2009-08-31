@@ -50,6 +50,13 @@ $messages['be-tarask'] = array(
 	'jskit-desc' => 'Інтэгруе інструмэнты js-kit ў старонкі {{GRAMMAR:родны|{{SITENAME}}}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'jskit-desc' => 'Enframmañ a ra an ostilhoù js-kit en ur bajenn wiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

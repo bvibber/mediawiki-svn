@@ -49,6 +49,16 @@ $messages['be-tarask'] = array(
 	'replaceset-error-regexbadmodifier' => 'Няслушны мадыфікатар рэгулярнага выразу «$1».',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'replaceset-desc' => 'Dodaje parsersku funkciju nowiki>{{#replaceset}}</nowiki> korištenu za zamjenu sekcija teksta sa formatiranim podacima',
+	'replaceset-error-calllimit' => 'Ograničenje poziva ReplaceSet je dostignuto.',
+	'replaceset-error-regexnoend' => "Šemi regularnih izraza ''$1'' nedostaje završni razdjelnik '$2'",
+	'replaceset-error-regexbadmodifier' => "Modifikator regularnih izraza '$1' nije valjan.",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -88,6 +98,16 @@ $messages['hsb'] = array(
 	'replaceset-error-calllimit' => 'Limit zawołanjow ReplaceSet je docpěty.',
 	'replaceset-error-regexnoend' => 'Mustrej regularnych wurazow "$1" kónčne dźělatko \'$2\' pobrachuje',
 	'replaceset-error-regexbadmodifier' => "Modifikator regularnych wurazow '$1' płaćiwy njeje.",
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'replaceset-desc' => 'Masukan  <nowiki>{{#replaceset}}</nowiki> fungsi parser untuk menggantikan teks yang dipilih dengan data berformat.',
+	'replaceset-error-calllimit' => 'Pemanggilan ReplaceSet sudah mencapai limit.',
+	'replaceset-error-regexnoend' => 'Pola regex "$1" hilang pada akhir pemisah \'$2\'',
+	'replaceset-error-regexbadmodifier' => "Pengubah regex '$1' tidak sah.",
 );
 
 /** Italian (Italiano)

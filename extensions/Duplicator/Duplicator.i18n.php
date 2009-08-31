@@ -195,9 +195,10 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'duplicator' => 'Eilañ ur pennad',
-	'duplicator-toolbox' => 'Eilañ ar pennad-mañ',
-	'duplicator-header' => "Dre ar bajenn-mañ e c'haller eilañ ur pennad penn-da-benn ha sevel stummoù emren evit pep kemm degaset. Talvoudus eo evit diforc'hañ pennadoù, da skouer.",
+	'duplicator' => 'Eilañ ur pajenn',
+	'duplicator-desc' => "Krouiñ [[Special:Duplicate|eiladoù a-ziforc'h eus pajennoù]] gant istor klok ar c'hemmoù.",
+	'duplicator-toolbox' => 'Eilañ ar bajenn-mañ',
+	'duplicator-header' => "Dre ar bajenn-mañ e c'haller eilañ ur bajenn penn-da-benn ha sevel stummoù a-ziforc'h evit pep kemm degaset. Talvoudus eo evit diforc'hañ pennadoù, da skouer.",
 	'duplicator-options' => 'Dibarzhioù',
 	'duplicator-source' => 'Mammenn :',
 	'duplicator-dest' => "Lec'h-kas :",
@@ -205,7 +206,7 @@ $messages['br'] = array(
 	'duplicator-submit' => 'Eilañ',
 	'duplicator-summary' => 'Eilet eus [[$1]]',
 	'duplicator-success' => "<big>'''Eilet eo bet [[$1]] war [[$2]].'''</big>",
-	'duplicator-success-revisions' => '$1 kemm zo bet eilet.',
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|kemm|kemm}} zo bet eilet.',
 	'duplicator-success-talkcopied' => 'Eilet eo bet ar bajenn gaozeal ivez.',
 	'duplicator-success-talknotcopied' => "N'eus ket bet gallet eilañ ar bajenn gaozeal.",
 	'duplicator-failed' => "N'eus ket bet gallet eilañ ar bajenn-mañ. C'hoarvezet ez eus ur fazi digomprenus.",
@@ -214,6 +215,7 @@ $messages['br'] = array(
 	'duplicator-dest-invalid' => "Merkit un titl reizh evel lec'h-kas, mar plij",
 	'duplicator-dest-exists' => "Bez' ez eus eus [[$1]] c'hoazh. Merkit titl ul lec'h-kas n'eo ket bet krouet c'hoazh.",
 	'duplicator-toomanyrevisions' => "Re a ($2) gemmoù zo gant [[$1]]. N'haller ket o eilañ. $3 eo ar vevenn e talvoud.",
+	'right-duplicate' => 'Eilañ pajennoù',
 );
 
 /** Bosnian (Bosanski)
@@ -1162,11 +1164,14 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
-	'duplicator' => "Dupliché n'artìcol",
-	'duplicator-toolbox' => "Sdobié st'artìcol-sì",
-	'duplicator-header' => "Sòn a lassa feje na duplicassion completa a n'artìcol, ën fasend-ne ëdcò la còpia dla stòria. A ven motobin a taj quand n'artìcol a ven tròp gròss e a venta sdobielo, e via fòrt",
+	'duplicator' => 'Dupliché na pàgina',
+	'duplicator-desc' => 'Crea [[Special:Duplicate|còpie andipendente ëd na pàgina]] con stòria completa dle modìfiche',
+	'duplicator-toolbox' => 'Dùplica sta pàgina-sì',
+	'duplicator-header' => "Sta pàgina-sì a përmëtt la duplicassion completa ëd n'artìcol, ën fasend-ne ëdcò la còpia dla stòria. 
+A ven motobin a taj për sdobié na pàgina, e via fòrt.",
 	'duplicator-options' => 'Opsion',
 	'duplicator-source' => 'Sorgiss:',
 	'duplicator-dest' => 'Destinassion:',
@@ -1183,6 +1188,7 @@ $messages['pms'] = array(
 	'duplicator-dest-invalid' => "Për piasì, ch'a-i buta un tìtol bon ant la destinassion",
 	'duplicator-dest-exists' => "[[$1]] a-i é già. Për piasì, ch'a buta un tìtol ch'a-i sia anco' nen.",
 	'duplicator-toomanyrevisions' => "[[$1]] a l'ha tròpe ($2) revision e as peul pa copiesse. Al dì d'ancheuj ël màssim a l'é $3.",
+	'right-duplicate' => 'Sdobia pàgine',
 );
 
 /** Pontic (Ποντιακά)

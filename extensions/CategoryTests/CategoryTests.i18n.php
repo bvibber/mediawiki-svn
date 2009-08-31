@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'categorytests-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'categorytests-desc' => 'Funksies vir kategorie-toetse',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

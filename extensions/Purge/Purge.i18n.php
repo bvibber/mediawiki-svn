@@ -213,9 +213,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'purge' => 'purgasi',
+	'purge-desc' => 'Menambahkan tab pembersihan pada semua halaman normal, dan meloloskan cek pembersihan untuk pengguna anonim yang memungkinkan untuk membersihkan cepat dari cache',
 );
 
 /** Icelandic (Íslenska)

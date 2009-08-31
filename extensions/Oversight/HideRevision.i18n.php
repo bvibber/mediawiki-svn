@@ -1139,7 +1139,7 @@ Annulez d’abord cette modification en rétablissant la version précédente.',
 	'oversight-nodiff' => 'Impossible de détecter des changements prace qu’il n’existe pas de révision antérieure. Il se peut que :
 * La page ait été supprimée ; ou que
 * Cette révision cachée soit la toute première révision de la page.',
-	'oversight-log-hiderev' => 'a supprimé une édition de $1',
+	'oversight-log-hiderev' => 'a supprimé une modification par $1',
 	'oversight' => 'Oversight',
 	'oversight-view' => 'détails',
 	'oversight-difference' => '(Différence par rapport à la révision précédente)',
@@ -3435,6 +3435,14 @@ Användare som sprider den här informationen vidare kan få sina censorrättigh
 	'oversight-legend' => 'Sök i versionsborttagningsloggen',
 	'oversight-oversighter' => 'Censor:',
 	'oversight-offender' => 'Syndare:',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'hiderevision-error-current' => 'Haiwezekani kufuta sahihisho la mwisho la ukurasa fulani.
+Rejesha sahihisho hilo kwanza.',
 );
 
 /** Silesian (Ślůnski)

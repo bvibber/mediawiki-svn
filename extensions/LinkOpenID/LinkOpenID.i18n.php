@@ -375,6 +375,18 @@ Aquò vos permet tanben d'utilizar vòstra pagina d'utilizaire coma OpenID.",
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL :',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'linkopenid-desc' => 'Umożliwia użytkownikom podłączenie swojego konta do zewnętrznego OpenID',
+	'linkopenid-prefstext-pre' => 'Jeśli masz OpenID od zewnętrznego dostawcy możesz je tutaj określić.
+Możesz również jako OpenID użyć swojej strony użytkownika.',
+	'linkopenid-prefstext-openid' => 'Twoje OpenID',
+	'linkopenid-prefstext-v1url' => 'URL serwera OpenID w wersji 1.1',
+	'linkopenid-prefstext-v2url' => 'URL serwera OpenID w wersji 2',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

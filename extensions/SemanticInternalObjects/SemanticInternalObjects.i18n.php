@@ -34,6 +34,13 @@ $messages['be-tarask'] = array(
 	'semanticinternalobjects-desc' => "Устаноўкі ўнутраных аб'ектаў у Semantic MediaWiki",
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'semanticinternalobjects-desc' => 'Kefluniadur traezoù diabarzh e Semanctic MediaWiki',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -118,11 +125,25 @@ $messages['oc'] = array(
 	'semanticinternalobjects-desc' => 'Reglatge dels objèctes intèrnes dins Semantic MediaWiki',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'semanticinternalobjects-desc' => 'Ustawianie wewnętrznych obiektów Semantic MediaWiki.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'semanticinternalobjects-desc' => "Ampostassion d'oget intern an drinta a Semantic MediaWiki",
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'semanticinternalobjects-desc' => 'Definição de objetos internos no Semantic MediaWiki',
 );
 
 /** Russian (Русский)

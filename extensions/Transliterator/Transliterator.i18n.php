@@ -75,6 +75,10 @@ $messages['be-tarask'] = array(
  */
 $messages['bs'] = array(
 	'transliterator-desc' => 'Omogućava podešavajući parser funkcije za transliteraciju',
+	'transliterator-error-ambiguous' => 'Višeznačno pravilo <code>$1</code> u [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Nevaljana sintaksa <code>$1</code> u [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Ima više od $1 {{PLURAL:$1|pravila|pravila}} u [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Pravilo <code>$1</code> ima više od $3 {{PLURAL:$3|znaka|znaka|znakova}} na lijevoj strani u [[MediaWiki:$2]]',
 );
 
 /** German (Deutsch)
@@ -245,6 +249,35 @@ $messages['oc'] = array(
 	'transliterator-error-syntax' => 'Sintaxi incorrècta <code>$1</code> dins [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mai de $1 {{PLURAL:$1|règla|règlas}} dins [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => "La règla <code>$1</code> a mai de $3 {{PLURAL:$3|caractèr|caractèrs}} sus l'esquèrra dins [[MediaWiki:$2]]",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'transliterator-desc' => 'Dodaje funkcję analizatora składni do transliteracji',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'transliterator-desc' => 'A dà na funsion configurabla dël parser për la trasliterassion',
+	'transliterator-error-ambiguous' => 'Régola ambigua <code>$1</code> an [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintassi pa bon-a <code>$1</code> an [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Pì che $1 {{PLURAL:$1|régole|régole}} an [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => "La régola <code>$1</code> a l'ha pì che $3 {{PLURAL:$3|caràter|caràter}} an sla snista ëd [[MediaWiki:$2]]",
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'transliterator-desc' => 'Provê uma função de análise configurável para transliteração',
+	'transliterator-error-ambiguous' => 'Regra ambígua <code>$1</code> em [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaxe inválida <code>$1</code> em [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Mais de $1 {{PLURAL:$1|regra|regras}} em [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Regra <code>$1</code> tem mais que $3 {{PLURAL:$3|caracter|caracteres}} à esquerda em [[MediaWiki:$2]]',
 );
 
 /** Russian (Русский)

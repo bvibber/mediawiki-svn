@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'clientside-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'clientside-desc' => 'Bied funksies vir die skep van kode in kliënt-kant formate soos HTML, CSS en JavaScript',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

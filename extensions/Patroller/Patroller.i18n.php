@@ -476,7 +476,7 @@ $messages['fr'] = array(
 	'patrol-revert-reason' => 'Motif :',
 	'patrol-skip' => 'Sauter',
 	'patrol-reverting' => 'Annulation : $1',
-	'patrol-nonefound' => 'Aucune édition suivie n’a pu être trouvée pour la vérification.',
+	'patrol-nonefound' => 'Aucune modification correspondante n’a pu être trouvée pour la vérification.',
 	'patrol-endorsed-ok' => 'L’édition a été marquée comme vérifiée.',
 	'patrol-endorsed-failed' => 'L’édition n’a pu être vérifiée.',
 	'patrol-reverted-ok' => 'L’édition a été annulée.',
@@ -485,8 +485,8 @@ $messages['fr'] = array(
 	'patrol-reasons' => '* Simple vandalisme
 * Test de débutant
 * Voir page de discussion',
-	'patrol-another' => 'Voir une nouvelle édition, si elle est disponible.',
-	'patrol-stopped' => 'Vous avez choisi pour ne plus vérifier une autre édition. $1',
+	'patrol-another' => 'Voir une autre modification, si disponible.',
+	'patrol-stopped' => 'Vous avez choisi de ne pas vérifier une autre modification. $1',
 	'patrol-resume' => 'Cliquer ici pour reprendre.',
 	'group-patroller' => 'Patrouilleurs',
 	'group-patroller-member' => 'Patrouilleur',

@@ -388,6 +388,13 @@ $messages['oc'] = array(
 	'charinsert-desc' => 'Permet la creacion d’una bóstia JavaScript per [[MediaWiki:Edittools|l’insercion de caractèrs pas estandards]]',
 );
 
+/** Picard (Picard)
+ * @author Geoleplubo
+ */
+$messages['pcd'] = array(
+	'charinsert-desc' => "Pèrmet l'créhachon d’eune boéte JavaScript pou l’[[MediaWiki:Edittools|insérchon des caractéres absints d'chés cleftieus éd qhère]]",
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

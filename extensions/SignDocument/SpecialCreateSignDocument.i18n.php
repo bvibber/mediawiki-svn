@@ -528,16 +528,18 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'createsigndocument' => 'Activer l’authentification des documents',
-	'createsigndoc-head' => "Utilisez ce formulaire pour créer une « page d’authentification » de documents pour la page en question, de façon que chaque utilisateur soit capable de [[Special:SignDocument|l’authentifier]].
-Prière d’indiquer l’intitulé de la page pour lequel vous souhaitez activer la fonction, les membres du groupe d’utilisateurs, quels champs seront accessibles aux utilisateurs et ceux qui seront optionnels, l’âge minimal pour être membre du groupe (pas de minimum par défaut) ;
-et un bref document expliquant le document et donnant des instructions aux utilisateurs.
+	'createsigndoc-head' => "Utilisez ce formulaire pour créer une page de « document de signature » pour la page indiquée, afin que les utilisateurs soient capables de [[Special:SignDocument|l’authentifier]].
+Prière d’indiquer l’intitulé de la page pour laquelle vous souhaitez activer la signature numérique, les membres du groupe d’utilisateurs qui seront habilités à la signer, quels champs vous voulez rendre visibles aux utilisateurs et ceux qui seront optionnels, l’âge minimal pour être membre du groupe (pas de minimum par défaut) ;
+et un bref texte d’introduction pour décrire le document et donner des instructions aux utilisateurs.
 
-<b>Présentement, il n’y a aucun moyen d’effacer les documents une fois créés</b>, sauf en éditant la base de données du wiki. De plus, le texte de la page affiché sur la page authentifiée sera le texte ''courant'', peu importe les modifications faites par la suite.
-Pour cette raison, soyez certain que le document soit suffisamment stable pour être authentifié.
-''Avant de soumettre le formulaire'', vérifiez que vous avez bien choisi les champs tels que vous souhaitiez qu’ils soient.",
+<b>Il n’y a actuellement aucun moyen d’effacer un document de signature une fois celui-ci créé</b>, sauf en modifiant directement la base de données du wiki.
+De plus, le texte de la page affichée sur le document de signature sera son texte ''actuel'', quelles que soient ses modifications faites par la suite.
+Pour cette raison, soyez absolument certain que le document soit suffisamment stable pour être signé.
+''Avant de soumettre ce formulaire'', vérifiez que vous en avez renseigné tous les champs exactement comme ils devraient l’être.",
 	'createsigndoc-pagename' => 'Page :',
 	'createsigndoc-allowedgroup' => 'Groupe autorisé :',
 	'createsigndoc-email' => 'Addresse de courriel :',

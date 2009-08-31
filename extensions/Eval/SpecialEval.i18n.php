@@ -133,6 +133,10 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'eval' => 'Αποτιμ',
+	'eval-desc' => 'Προσθέτει [[Special:Eval|μία διεπαφή]] στη συνάρτηση <code>eval()</code>',
+	'eval_submit' => 'Εκτίμηση',
+	'eval_escape' => 'Αποφυγή της εξόδου',
 	'eval_out' => 'Έξοδος',
 	'eval_code' => 'Κώδικας',
 );
@@ -298,12 +302,13 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'eval' => 'Eval',
 	'eval-desc' => 'Menambahkan [[Special:Eval|sebuah antarmuka]] untuk fungsi <code>eval()</code>',
 	'eval_submit' => 'Evaluasi',
-	'eval_escape' => 'Keluaran "escape"',
+	'eval_escape' => 'Meloloskan keluaran',
 	'eval_out' => 'Keluaran',
 	'eval_code' => 'Kode',
 );
@@ -463,6 +468,18 @@ $messages['pl'] = array(
 	'eval_escape' => 'Wyjście awaryjne',
 	'eval_out' => 'Wynik',
 	'eval_code' => 'Kod',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => "A gionta [[Special:Eval|n'antërfacia]]  a la funsion <code>eval()</code>",
+	'eval_submit' => 'Vàluta',
+	'eval_escape' => "Fà l'Escape ëd l'output",
+	'eval_out' => 'Output',
+	'eval_code' => 'Còdes',
 );
 
 /** Portuguese (Português)

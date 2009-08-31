@@ -319,6 +319,13 @@ $messages['nds-nl'] = array(
 	'antibot-desc' => "Eenvoudig raamwark veur 't naokieken op spambots",
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'antibot-desc' => 'साधारण भार सञ्चालन गर्ने र स्पामबोट  जाँच गर्ने फ्रेमवर्क',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

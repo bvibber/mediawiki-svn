@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'formatsearch-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'formatsearch-desc' => 'Maak die soekresultate-bladsy skoon.',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

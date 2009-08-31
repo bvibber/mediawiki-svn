@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'uploadblacklist-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'uploadblacklist-desc' => "Maak 'n swartlys vir oplaaie beskikbaar",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

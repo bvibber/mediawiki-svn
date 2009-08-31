@@ -67,6 +67,14 @@ $messages['bg'] = array(
 	'donationform-submit' => 'Направете дарение чрез PayPal',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'donationform-desc' => 'Ouzhpennañ a ra ur valizenn <tt>&lt;donateform&gt;</tt> evit gellout kas roadoù gant PayPal',
+	'donationform-submit' => 'Ober ur prof gant PayPal',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

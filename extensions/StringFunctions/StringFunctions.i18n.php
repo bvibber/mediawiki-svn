@@ -51,6 +51,13 @@ $messages['bg'] = array(
 	'stringfunctions-desc' => 'Подобрява парсера с низови функции',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'stringfunctions-desc' => "Gwellaat a ra ar parser gant arc'hwelioù neudennadoù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

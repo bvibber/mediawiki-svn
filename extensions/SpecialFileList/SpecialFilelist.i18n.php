@@ -620,6 +620,10 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'filelist' => 'Lista dij file',
+	'filelist-desc' => '[[Special:Filelist|Pàgina special]] për listé ij file carià',
+	'filelist-show-list' => 'Mosta la lista',
+	'filelist-show-gallery' => 'Mosta la galerìa',
+	'filelist-image-desc' => 'a calé',
 );
 
 /** Pashto (پښتو)

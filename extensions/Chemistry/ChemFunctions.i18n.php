@@ -255,10 +255,18 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'chemicalsources' => 'Χημικές πηγές',
+	'chemicalsource-desc' => 'Προσθέτει την ετικέτα <nowiki><chemform></nowiki> για χημικούς τύπους',
 	'chemFunctions_ListPage' => 'Χημικές πηγές',
+	'chemFunctions_CAS' => 'Αριθμός CAS',
+	'chemFunctions_ATCCode' => 'Κώδικας ATC',
+	'chemFunctions_ECNumber' => 'Ονοματολογία EC',
+	'chemFunctions_Formula' => 'Τύπος',
+	'chemFunctions_Name' => 'Όνομα IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: λανθασμένη εισαγωγή δεδομένων!',
 );
 
 /** Esperanto (Esperanto)

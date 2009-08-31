@@ -481,6 +481,20 @@ Sprawdź też {{PLURAL:$2|podobny artykuł|podobne artykuły:}} $1.',
 	'tog-edit-similar' => 'Włącz sugestie edycji podobnych artykułów',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'editsimilar-desc' => "A ancoragia j'utent a modifiché na pagina parìa d'apress d'avèj salvà na pàgina",
+	'editsimilar-thanks' => 'Mersì për toa contribussion.
+Contròla {{PLURAL:$2|sta pàgina corelà-sì|ste pàgine corelà-sì}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'Mersì për toa contribussion.
+{{PLURAL:$2|Sta pàgina-sì|Ste pàgine-sì}} a peulo ëdcò avèj dabzògn ëd tò agiut: $1.',
+	'editsimilar-thankyou' => 'Mersì për toa contribussion, $1!',
+	'editsimilar-link-disable' => 'ampòsta ij mè gust',
+	'tog-edit-similar' => 'Abìlita ij sugeriment ëd pàgine smijante',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

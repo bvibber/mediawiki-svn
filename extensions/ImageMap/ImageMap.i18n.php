@@ -280,11 +280,13 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
- * @author Wegge
+ * @author Byrial
  */
 $messages['da'] = array(
+	'imagemap_desc' => 'Muliggør klikkbare billeder med brug af <tt><nowiki><imagemap></nowiki></tt>-tagget.',
 	'imagemap_no_image' => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: Billedet er ugyldigt eller findes ikke',
+	'imagemap_bad_image' => 'Fejl: billedet er sortlistet på denne side',
 	'imagemap_no_link' => '&lt;imagemap&gt;: Fandt ikke en brugbar henvisning i slutningen af linje $1',
 	'imagemap_invalid_title' => '&lt;imagemap&gt;: Ugyldig titel i henvisning på linje $1',
 	'imagemap_missing_coord' => '&lt;imagemap&gt;: Utilstrækkeligt antal koordinater til omridset i linje $1',
@@ -294,6 +296,7 @@ $messages['da'] = array(
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: Ugyldig specifikation af desc, skal være en af: <tt>$1</tt>',
 	'imagemap_description' => 'Om dette billede',
 	'imagemap_desc_types' => 'top-højre, bund-højre, bund-venstre, top-venstre, ingen',
+	'imagemap_poly_odd' => 'Fejl: fandt polygon med et ulige antal koordinater på linje $1',
 );
 
 /** German (Deutsch)

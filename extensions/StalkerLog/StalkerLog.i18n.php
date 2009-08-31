@@ -392,6 +392,17 @@ $messages['pl'] = array(
 	'stalkerlog-log-text' => 'To jest rejestr logowań i wylogowań użytkowników.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'stalkerlog-desc' => "A gionta [[Special:Log/stalkerlog|un registr]] dij login e dij logout ëd j'utent",
+	'stalkerlog-log-login' => 'intrà.',
+	'stalkerlog-log-logout' => 'surtì.',
+	'stalkerlog-log-type' => "Registr ëd j'antenticassion ëd j'utent",
+	'stalkerlog-log-text' => "Sto sì a l'é un registr dij login e dij logout ëd j'utent.",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

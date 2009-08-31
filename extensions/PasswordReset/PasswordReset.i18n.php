@@ -686,13 +686,21 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
+	'passwordreset' => 'Sandi diaturulang',
+	'passwordreset-desc' => "[[Special:PasswordReset|Wiki pengaturan ulang kunci pengguna]] - diperlukan hak 'passwordreset'",
+	'passwordreset-invalidusername' => 'Nama pengguna tidak sah',
+	'passwordreset-emptyusername' => 'Nama pengguna tidak diisi',
+	'passwordreset-nopassmatch' => 'Sandi tidak sesuai',
 	'passwordreset-badtoken' => 'Token penyuntingan tidak sah',
 	'passwordreset-username' => 'Nama pengguna:',
 	'passwordreset-newpass' => 'Kata sandi baru:',
 	'passwordreset-submit' => 'Buat ulang kata sandi',
+	'passwordreset-success' => 'Sandi telah diatur ulang untuk ID pengguna: $1',
+	'right-passwordreset' => 'Aturulang kunci untuk pengguna ([[Special:PasswordReset|special page]])',
 );
 
 /** Interlingue (Interlingue) */

@@ -125,12 +125,15 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Dead3y3
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'signaturelogpage' => 'Αρχείο καταγραφής υπογραφών',
 	'signature-desc' => 'Ενεργοποιεί την [[Special:SignDocument|υπογραφή]] εγγράφων',
 	'signaturelogpagetext' => 'Αυτό είναι ένα αρχείο καταγραφής [[Special:SignDocument|όλων των υπογραφών που προστέθηκαν σε έγγραφα]].',
 	'signaturelogentry' => 'υπέγραψε το έγγραφο $1',
+	'right-sigadmin' => 'Διαχείριση υπογραφής κειμένων',
+	'right-createsigndocument' => 'Δημιουργία κειμένων ικανών να πιστοποιηθούν',
 );
 
 /** Esperanto (Esperanto)

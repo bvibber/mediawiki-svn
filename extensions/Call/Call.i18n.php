@@ -41,6 +41,9 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'call' => 'Roep',
+	'call-save' => "Die afvoer van hierdie oproep sou in bladsy ''$1'' gestoor word.",
+	'call-save-success' => 'Die volgende teks is in bladsy <big>[[$1]]</big> gestoor.',
+	'call-save-failed' => 'Die volgende teks is NIE na bladsy <big>[[$1]]</big> gestoor nie omdat die bladsy reeds bestaan.',
 );
 
 /** Arabic (العربية)
@@ -123,11 +126,11 @@ $messages['br'] = array(
 	'call-desc' => 'Krouiñ a ra ur gourliamm davet ur patrom (pe ur pennad wiki boutin) en ur dremen arventennoù drezañ. Gallout a ra bezañ implijet evel linenn urzhiad adal ur merdeer pe e testenn ur wiki.',
 	'call-text' => "Ezhomm en deus an astenn galv eus ur bajenn wiki hag eus an arventennoù diret eviti.<br /><br />
 Skouer 1: &nbsp; <tt>[[{{#special:call}}/Ma fatrom,parm1=value1]]</tt><br />
-Skouer 2: &nbsp; <tt>[[{{#special:call}}/Kaozeal:Ma c'haozeadenn,parm1=value1]]</tt><br />
+Skouer 2: &nbsp; <tt>[[{{#special:call}}/Kaozeal:Ma c'haozeadennoù,parm1=value1]]</tt><br />
 Skouer 3: &nbsp; <tt>[[{{#special:call}}/:Ma fajenn,parm1=value1,parm2=value2]]</tt><br /><br />
 Skouer 4 (chomlec'h evit merdeer): &nbsp; <tt>http://madomani/mywiki/index.php?{{#special:call}}/:Ma fajenn,parm1=value1</tt><br /><br />
 
-Gervel a raio an astenn <i>Galv</i> ar bajenn merket en ur dremen an arventennoù drezi.<br />Gwelout a reot danvez ar bajenn hag an titl anezhi met 'tres' ur bajenn zibar a vo warni<br />ha n'hallo ket kemmoù bezañ degaset warni.<br />An titouroù a vo warni a vo diouzh talvoud an arventennoù bet merket ganeoc'h.<br /><br />
+Gervel a raio an astenn <i>Galv</i> ar bajenn merket en ur dremen an arventennoù drezi.<br />Gwelout a reot danvez ar bajenn hag an titl anezhi met 'tres' ur bajenn dibar a vo warni<br />ha n'hallo ket kemmoù bezañ degaset enni.<br />An titouroù a vo warni a vo diouzh talvoud an arventennoù bet merket ganeoc'h.<br /><br />
 Emsav-kenañ eo an <i>Astenn Galv</i> evit sevel arloadoù etregwezhiat gant MediaWiki.<br />Da skouer, gwelet <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br />
 M'ho pez kudennoù e c'hallit klask ober gant <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Gallout a rafe ar pezh zo merket gant ar galv-mañ bezañ enrollet en ur bajenn anvet ''$1''.",
@@ -801,6 +804,31 @@ W razie problemów, spróbuj <b>Specjalna:Wywołaj z parametrem/DebuG</b>",
 	'call-save' => "Rezultat tego wywołania zostanie zapisany na stronie ''$1''.",
 	'call-save-success' => 'Poniższy tekst został zapisany na stronie <big>[[$1]]</big>.',
 	'call-save-failed' => "Poniższy tekst '''NIE''' został zapisany na stronie <big>[[$1]]</big>, ponieważ ta strona już istnieje.",
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'call' => 'Ciamà',
+	'call-desc' => "Crea n'anliura a në stamp (o a na pàgina wiki normal) con passagi ëd paràmetr.
+A peul esse dovrà ant la linia ëd comand dël browser o an drinta ëd test wiki",
+	'call-text' => "L'estension ëd Call a speta na pàgina wiki e paramétr opsionaj për cola pàgina com n'argoment.<br /><br />
+
+Esempi 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Esempi 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+Esempi 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Esempi 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+L'<i>estension Call</i> a ciamrà la pàgina dàita e a passrà ij paràmetr.<br />
+It vëddras ij contnù ëd la pàgina ciamà e ij sò tìtoj ma ël sò 'type' a sarà col ëd na pàgina special, visadì com na pàgina ch'a peul pa esse modificà.<br />Ij contnù ch'it vëddras a peulo cambié a second dël valor dij paràmetr ch'it passe.<br /><br />
+
+L'<i>estension Call</i> a l'é ùtila për fé dj'aplicassion antëràtive con MediaWiki.<br />
+Për n'esempi varda <a href='http://semeb.com/dpldemo/Template:Catlist'>la GUI DPL</a> ..<br />
+An cas ëd problema it peule prové <b>{{#special:call}}/DebuG</b>",
+	'call-save' => "L'arzultà dë sta ciamà-sì a podrìa esse salvà dzora a na pàgina ciamà ''$1''.",
+	'call-save-success' => "Ël test sota a l'é stàit salvà a la pàgina <big>[[$1]]</big> .",
+	'call-save-failed' => "Ël test sota a l'é PA stàit salvà a la pàgina <big>[[$1]]</big> përchè la pàgina a esist già.",
 );
 
 /** Pashto (پښتو)

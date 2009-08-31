@@ -130,6 +130,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -137,6 +138,7 @@ $messages['el'] = array(
 	'purgecache-warning' => 'Αυτό θα εκκαθαρίσει τη λανθάνουσα μνήμη των πινάκων.',
 	'purgecache-purged' => 'Η λανθάνουσα μνήμη έχει εκκαθαριστεί.',
 	'purgecache-button' => 'Εκκαθάριση',
+	'right-purgecache' => 'Άδειασμα του πίνακα objectcache',
 );
 
 /** Esperanto (Esperanto)
@@ -470,6 +472,18 @@ $messages['pl'] = array(
 	'purgecache-purged' => 'Pamięć podręczna została wyczyszczona.',
 	'purgecache-button' => 'Wyczyść',
 	'right-purgecache' => 'Czyszczenie tabeli OBJECTCACHE',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'purgecache' => 'Polida la cache',
+	'purgecache-desc' => '[[Special:PurgeCache|Pàgina special]] dovrà për polidé la tabela OBJECTCACHE',
+	'purgecache-warning' => 'Sòn-sì a polidrà le tabele dla cache',
+	'purgecache-purged' => "La cache a l'é stàita polidà.",
+	'purgecache-button' => 'Polida',
+	'right-purgecache' => 'A polida la tabela OBJECTCACHE',
 );
 
 /** Pashto (پښتو)

@@ -42,6 +42,13 @@ $messages['be-tarask'] = array(
 	'preloader-desc' => 'Дадае тыпавыя тэксты для новых старонак, якія магчыма настройваць па прасторах назваў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'preloader-desc' => 'Pourchas a ra prenestroù testenn personeladus  evit pep esaouenn anv, evit ar pajennoù nevez',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

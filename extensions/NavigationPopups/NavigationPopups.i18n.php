@@ -37,6 +37,13 @@ $messages['be-tarask'] = array(
 	'navigationpopups-desc' => 'Загружае скрыпты навігацыі Lupin ў MediaWiki',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'navigationpopups-desc' => 'Karagañ a ra skriptoù prenestroù merdeiñ Lupin e MediaWiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  * @author Demicx

@@ -117,12 +117,14 @@ Molimo definirajte klasu tabele tako da ima najviše 255 znakova.',
 );
 
 /** German (Deutsch)
+ * @author Avatar
  * @author Imre
  * @author MF-Warburg
  * @author Sebastian Wallroth
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'plotters-desc' => 'Erlaubt Benutzern die Verwendung von spezifischem JavaScript in jsplot-Tags',
 	'plotters' => 'Plotter',
 	'plotters-title' => 'Plotter',
 	'plotters-uses' => 'Nutzungen',
@@ -332,11 +334,14 @@ Per favor defini un classe de tabula que ha 255 characteres al maximo.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'plotters-desc' => 'Memungkinkan pengguna menggunakan JavaScript di tag jsplot',
 	'plotters' => 'Plotter',
 	'plotters-title' => 'Plotter',
+	'plotters-pagetext' => 'Di bawah ini adalah daftar anggota kelompok khusus pengguna dapat menggunakan tag jsplot mereka, sebagaimana didefinisikan oleh [[MediaWiki:Plotters-definition]]. 
+Ikhtisar ini memberikan akses yang mudah ke halaman pesan sistem yang mendefinisikan deskripsi masing-masing anggota kelompok dan kode.',
 	'plotters-uses' => 'Menggunakan',
 	'plotters-missing-script' => 'Skrip tidak dicantumkan.',
 	'plotters-missing-arguments' => 'Argumen tidak dicantumkan.',

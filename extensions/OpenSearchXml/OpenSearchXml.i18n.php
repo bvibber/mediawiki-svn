@@ -47,6 +47,13 @@ $messages['be-tarask'] = array(
 	'opensearchxml-desc' => 'XML-інтэрфэйс [http://www.opensearch.org OpenSearch] для тэкставых вытрымак',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'opensearchxml-desc' => 'Etrefas XML evit [http://www.opensearch.org OpenSearch] pourchaset evit arroudennoù testenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

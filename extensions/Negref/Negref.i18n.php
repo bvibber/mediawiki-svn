@@ -30,6 +30,13 @@ $messages['be-tarask'] = array(
 	'negref-desc' => 'Дадае тэг для высьвятленьня знаходжаньня любога тэгу <nowiki><ref/></nowiki> унутры ўваходнага тэксту для выпраўленьня праблемаў з выкарыстаньнем некаторых шаблёнаў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'negref-desc' => "Pourchas a ra ur valizenn a dalvez da varc'hata lec'h ne vern pe balizenn <nowiki><ref/></nowiki> tags a gaver en desktenn skrivet, ha kempenn degouezhioù implij patromoù zo",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

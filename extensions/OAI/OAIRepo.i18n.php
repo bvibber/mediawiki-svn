@@ -65,6 +65,13 @@ $messages['be-tarask'] = array(
 	'oai-desc' => 'Дадае інтэрфэйс да сховішча [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'oai-desc' => 'Porchas a ra un etrefas gant ar sanailh [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

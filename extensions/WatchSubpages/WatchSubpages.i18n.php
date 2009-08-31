@@ -627,6 +627,21 @@ By dodać stronę, zaznacz pole obok jej tytułu, po czym kliknij polecenie „D
 Jeśli chcesz wybrać więcej niż jedną stronę, możesz posłużyć się klawiszem Shift; trzymając go kliknij pierwszą i ostatnią pozycję ciągłej listy stron, które chcesz obserwować.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'watchsubpages' => "Ten d'euj le sotpàgine",
+	'watchsubpages-addedtowatchlist' => "Sòn sì a l'é stàit giontà a lòn ch'it ten-e sot euj.",
+	'watchsubpages-addtitles' => 'Gionta le pàgine',
+	'watchsubpages-addtitlestowatchlist' => "Gionta le pàgine a lòn ch'it ten-e sot euj",
+	'watchsubpages-desc' => "[[Special:WatchSubpages|Gionta an pressa tute le sotpàgine]] ëd na pàgina a lòn ch'it ten-e sot euj.",
+	'watchsubpages-form' => 'Selession-a le pàgine da gionté a lòn ch\'it ten-e sot euj.
+Për gionté na pàgina, signa la casela d\'apress ëd chila, e sgnaca "Gionta pàgine".
+
+Quand it selession-e o deselession-e vàire pàgine, sgnacand la ciav "shift" at përmëtt ëd selessioné ëd casele consecutive, an clicand inissi e fin dël range da signé.',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

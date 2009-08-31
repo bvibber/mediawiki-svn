@@ -370,6 +370,14 @@ $messages['hsb'] = array(
 	'contrib-tracking-button' => 'Dale',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'contrib-tracking-error' => 'Hiba',
+	'contrib-tracking-button' => 'Folytatás',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

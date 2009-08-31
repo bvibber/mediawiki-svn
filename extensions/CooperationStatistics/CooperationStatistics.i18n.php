@@ -162,8 +162,10 @@ Glědaj teke [[Special:MostRevisors|'''boki z nejwěcej pśeglědarjami''']] a [
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'cooperationstatistics-tablevalue' => 'Αριθμός χρηστών που κάνουν επεξεργασίες',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|σελίδα|σελίδες}}',
 );
 
@@ -319,10 +321,14 @@ Vide etiam le [[Special:MostRevisors|'''paginas con le plus contributores''']] e
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'cooperationstatistics' => 'Statistik kerjasama',
 	'cooperationstatistics-desc' => 'Menampilkan [[Special:CooperationStatistics|statistik kerjasama di ruang nama utama]].',
+	'cooperationstatistics-text' => "Tampilkan statistik kerjasama pada ruangnama utama. 
+Dari [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] ke [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] pengubah. <br /> 
+Lihat juga  [[Special:MostRevisors|'''halaman dengan paling banyak pengubah''']] dan [[Special:MostRevisions|halaman dengan perubahan terbanyak]].",
 	'cooperationstatistics-tablearticle' => 'Jumlah halaman',
 	'cooperationstatistics-tablevalue' => 'Jumlah penyunting',
 	'cooperationstatistics-articles' => '$1 halaman',
@@ -454,6 +460,24 @@ Vejatz tanben las [[Special:MostRevisors|'''paginas amb lo mai de relectors''']]
 	'cooperationstatistics-nblessusers' => 'an $1 editors o mens',
 	'cooperationstatistics-nbmoreusers' => 'an $1 editors o mens',
 	'cooperationstatistics-legendmore' => "o mai d'editors.",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'cooperationstatistics' => 'Statystyki współpracy',
+	'cooperationstatistics-desc' => 'Pokazuje [[Special:CooperationStatistics|statystyki współpracy w głównej przestrzeni nazw]].',
+	'cooperationstatistics-text' => "Pokaż statystyki współpracy w głównej przestrzeni nazw.
+Od [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] do [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}]] lub więcej współautorów.<br />
+Zobacz również [[Special:MostRevisors|'''strony o największej liczbie współautorów''']] oraz [[Special:MostRevisions|strony o największej liczbie wersji]].",
+	'cooperationstatistics-tablearticle' => 'Liczba stron',
+	'cooperationstatistics-tablevalue' => 'Liczba edytujących',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|strona|strony|stron}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|ma|mają}} $1 {{PLURAL:$1|autora|współautorów}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|ma|mają}} $1 {{PLURAL:$1|autora|lub mniej współautorów}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|ma|mają}} nie mniej niż $1 współautorów',
+	'cooperationstatistics-legendmore' => 'lub więcej współautorów',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

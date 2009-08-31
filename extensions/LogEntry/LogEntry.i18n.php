@@ -126,9 +126,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'logentry-append' => 'Προσάρτηση',
+	'logentry' => 'Αρχείο καταχωρήσεων',
 	'logentry-invalidpage' => 'Μη έγκυρη σελίδα',
 );
 
@@ -379,6 +382,30 @@ $messages['oc'] = array(
 	'logentry' => 'Jornal de las entradas',
 	'logentry-invalidpage' => 'Pagina incorrècta',
 	'logentry-invalidtoken' => 'Presa incorrècta',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'logentry-append' => 'Dopisz',
+	'logentry-parserhook-desc' => 'Rozszerzenie dodaje znacznik wstawiający formularz umożliwiający dopisanie treści na początek lub koniec strony logu',
+	'logentry-specialpage-desc' => 'Rozszerzenie realizuje dodanie wpisu do strony logu',
+	'logentry' => 'WpisDoLogu',
+	'logentry-invalidpage' => 'Nieprawidłowa strona',
+	'logentry-invalidtoken' => 'Nieprawidłowy token',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'logentry-append' => 'Gionta',
+	'logentry-parserhook-desc' => 'Sta estension-sì dël tag a da na forma për gionté a fin/inissi dle pàgine dij registr',
+	'logentry-specialpage-desc' => 'Sta estension-sì dël tag a da un process për gionté a le pàgine dij registr',
+	'logentry' => 'LogEntry',
+	'logentry-invalidpage' => 'Pàgina pa bon-a',
+	'logentry-invalidtoken' => 'Token pa bon',
 );
 
 /** Portuguese (Português)

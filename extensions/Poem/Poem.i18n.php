@@ -88,6 +88,13 @@ $messages['bn'] = array(
 	'poem-desc' => 'কবিতার ফরমেটিং এর জন্য <tt>&lt;poem&gt;</tt> ট্যাগ যোগ করুন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'poem-desc' => 'Ouzhpennañ a ra ar valizenn <tt>&lt;poem&gt;</tt> da furmadiñ testennoù barzhonegoù.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

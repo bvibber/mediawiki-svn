@@ -496,8 +496,10 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
+	'changeauthor-pagenameform-go' => 'Πηγαίνετε',
 	'changeauthor-comment' => 'Σχόλιο:',
 	'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
 );

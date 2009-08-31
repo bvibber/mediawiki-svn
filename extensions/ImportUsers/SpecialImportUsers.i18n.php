@@ -389,6 +389,8 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'importusers-uploadfile' => 'Φόρτωση αρχείου',
+	'importusers-form-button' => 'Εισαγωγή',
 	'importusers-log-summary' => 'Περίληψη',
 	'importusers-log-summary-all' => 'Όλα',
 	'importusers-password' => 'κωδικός',

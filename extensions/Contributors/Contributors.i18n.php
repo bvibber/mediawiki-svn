@@ -299,10 +299,12 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Dead3y3
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'contributors' => 'Συνεισφέροντες',
 	'contributors-target' => 'Τίτλος:',
+	'contributors-submit' => 'Εμφάνιση',
 	'contributors-others-long' => '{{PLURAL:$1|Υπάρχει ένας άλλος συνεισφέροντας|Υπάρχουν $1 άλλοι συνεισφέροντες}} σε αυτή τη σελίδα.',
 	'contributors-others' => 'και {{PLURAL:$1|ένας άλλος|$1 άλλοι}}',
 	'contributors-badtitle' => 'Άκυρος τίτλος.',

@@ -280,7 +280,9 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'lookupuser' => 'Αναζήτηση πληροφοριών για τον χρήστη',
+	'lookupuser-intro' => 'Εισάγετε ένα όνομα χρήστη για να εμφανιστούν οι προτιμήσεις αυτού του χρήστη.',
 	'lookupuser-nonexistent' => 'Σφάλμα: Ο Χρήστης δεν υπάρχει',
+	'lookupuser-authenticated' => 'επιβεβαιωμένο στο $1',
 	'lookupuser-not-authenticated' => 'μη επικυρωμένος',
 	'lookupuser-id' => 'Ταυτότητα χρήστη: <tt>#$1</tt>',
 	'lookupuser-email' => 'Ηλεκτρονικό μήνυμα: [[Special:EmailUser/$2|$1]]',
@@ -288,8 +290,10 @@ $messages['el'] = array(
 	'lookupuser-realname' => 'Πραγματικό όνομα: $1',
 	'lookupuser-registration' => 'Ημερομηνία εγγραφής: $1',
 	'lookupuser-no-registration' => 'μη καταγεγραμμένο',
+	'lookupuser-touched' => 'Το ρεκόρ χρήστη άλλαξε τελευταία: $1',
 	'lookupuser-info-authenticated' => 'Επιβεβαίωση ηλεκτρονικής διεύθυνσης: $1',
 	'lookupuser-useroptions' => 'Επιλογές χρήστη:',
+	'right-lookupuser' => 'Δείτε τις προτιμήσεις χρήστη',
 );
 
 /** Esperanto (Esperanto)

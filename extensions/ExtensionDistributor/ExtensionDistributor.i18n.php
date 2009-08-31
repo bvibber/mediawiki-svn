@@ -1090,6 +1090,12 @@ $messages['hu'] = array(
 	'extdist-desc' => 'Kiegészítő kiegészítőcsomagok terjesztéséhez',
 	'extdist-not-configured' => 'Kérlek állítsd be a $wgExtDistTarDir és a $wgExtDistWorkingCopy értékeit',
 	'extdist-no-such-extension' => 'Nincs „$1” nevű kiegészítő',
+	'extdist-submit-extension' => 'Folytatás',
+	'extdist-current-version' => 'Fejlesztői verzió (trunk)',
+	'extdist-submit-version' => 'Folytatás',
+	'extdist-svn-error' => 'A Subversion hibával tért vissza: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Az „svn info” által visszaadott XML-t nem sikerült feldolgozni: <pre>$1</pre>',
+	'extdist-want-more' => 'Másik kiterjesztés letöltése',
 );
 
 /** Interlingua (Interlingua)
@@ -1146,11 +1152,26 @@ Si tu ha alcun questiones super iste systema de distribution de extensiones, per
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'extensiondistributor' => 'Unduh pengaya MediaWiki',
+	'extdist-desc' => 'Ekstensi untuk mendistribusikan arsip snapshot ekstensi',
+	'extdist-not-configured' => 'Silakan mengkonfigurasi $wgExtDistTarDir dan $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Konfigurasi direktori Copy pekerjaan tidak ada!',
+	'extdist-no-such-extension' => 'Tidak ada ekstensi "$1"',
+	'extdist-no-such-version' => '
+
+Ekstensi "$1" tidak ada dalam versi "$2".',
+	'extdist-choose-extension' => '
+
+Pilih ekstensi yang ingin Anda unduh:',
 	'extdist-submit-extension' => 'Lanjutkan',
+	'extdist-current-version' => 'Versi pengembangan (trunk)',
 	'extdist-submit-version' => 'Lanjutkan',
+	'extdist-want-more' => '
+
+Dapatkan ekstensi lain',
 );
 
 /** Italian (Italiano)

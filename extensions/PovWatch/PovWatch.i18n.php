@@ -1006,12 +1006,45 @@ Clicca le button infra pro inscriber te.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Ekstensi untuk [[Special:PovWatch|memaksa halaman untuk menjadi pantauan]] pengguna lain',
+	'povwatch_no_session' => 'Kesalahan: Tidak dapat mengirimkan formulir akibat terhapusnya data sesi.',
+	'povwatch_not_allowed_push' => 'Anda bukan pengurus PovWatch, Anda tidak dapat memaksa halaman menjadi pantauan.',
+	'povwatch_already_subscribed' => 'Anda sudah berlangganan PovWatch',
+	'povwatch_subscribed' => 'Anda sekarang berlangganan PovWatch',
+	'povwatch_not_subscribed' => 'Anda tidak berlangganan PovWatch, sehingga Anda tidak dapat berhenti berlangganan.',
+	'povwatch_unsubscribed' => 'Sekarang Anda telah berhenti berlangganan PovWatch',
+	'povwatch_invalid_title' => 'Judul ditentukan tidak sah',
+	'povwatch_pushed' => '[[$1]] berhasil diajukan ke {{PLURAL:$2|daftarpantau|daftarpantau}} $2 pengguna',
+	'povwatch_intro' => 'PovWatch adalah layanan yang membolehkan halaman perdepatan untuk didorong ke daftar pantauan dari pengelola yang berlangganan.
+
+Sebuah log dari daftar pantauan tersedia di [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|Daftar pelanggan]] kini tersedia.',
+	'povwatch_subscriber_list_intro' => '<strong>Daftar pelangan</strong>',
+	'povwatch_not_allowed_subscribers' => 'Anda tidak diperbolehkan untuk melihat daftar pelanggan PovWatc.',
+	'povwatch_unknown_subpage' => 'Subhalaman tak dikenal.',
+	'povwatch_push' => 'Tekan',
+	'povwatch_push_intro' => 'Gunakan formulir di bawah ini untuk mendorong halaman ke daftar pantauan dari pengguna yang berlangganan. 
+Harap berhati-hati mengetik judul: bahkan judul tidak ada dapat ditambahkan, dan tidak ada cara untuk menghapus judul telah didorong keluar.',
 	'povwatch_title' => 'Judul:',
 	'povwatch_comment' => 'Komentar log:',
+	'povwatch_no_log' => 'Tidak ada masukan log.',
+	'povwatch_no_subscribers' => 'Tidak ada yang berlangganan.',
+	'povwatch_unsubscribe_intro' => 'Anda berlangganan PovWatch.
+Click tombol dibawah untuk berhenti berlangganan.',
+	'povwatch_unsubscribe' => 'Berhenti berlangganan',
+	'povwatch_subscribe_intro' => 'Anda tidak berlangganan PovWatch.
+Click tombol dibawah untuk berlangganan.',
+	'povwatch_subscribe' => 'Berlangganan',
 	'povwatch_added' => 'telah ditambahkan',
+	'right-povwatch_admin' => 'Pengelolaan hak pengguna untuk menambahkan halaman ke daftar pantauan pengguna lain.',
+	'right-povwatch_user' => 'Tambahkan halam ke daftar pantauan pengguna lain',
+	'action-povwatch_admin' => 'Pengelolaan hak penggunan untuk PovWatch',
+	'action-povwatch_user' => 'tambahkan halam ini ke daftar pantaun dari pengguna lain',
 );
 
 /** Ido (Ido)

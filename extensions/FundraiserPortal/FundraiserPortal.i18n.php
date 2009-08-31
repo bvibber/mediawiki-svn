@@ -244,6 +244,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Barcex
  * @author Crazymadlover
  * @author Imre
  */
@@ -252,8 +253,12 @@ $messages['es'] = array(
 	'fundraiserportal-plain-button' => '¡Apoya Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Dona Ahora',
 	'fundraiserportal-rubytext-button' => 'Dona Ahora',
+	'fundraiserportal-rubytext-message' => 'Todas las donaciones nos ayudan a mantener Wikipedia libre para todos.',
+	'fundraiserportal-rubytext-close' => 'Ocultar esto de ahora en adelante',
 	'fundraiserportal-sapphire-button' => 'Dona Ahora',
 	'fundraiserportal-tourmaline-button' => 'Dona Ahora',
+	'fundraiserportal-tourmaline-message' => 'Todas las donaciones nos ayudan a mantener Wikipedia libre para todos.',
+	'fundraiserportal-tourmaline-close' => 'Ocultar este mensaje a partir de ahora',
 );
 
 /** Estonian (Eesti)

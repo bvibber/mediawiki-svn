@@ -517,6 +517,17 @@ $messages['pl'] = array(
 	'unicodeconverter-newtext' => 'Przekonwertowany tekst:',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'unicodeconverter' => 'Convertidor Unicode',
+	'unicodeconverter-desc' => "N'esempi sempi d'un mòdul ëd pàgina special. [[Special:UnicodeConverter|Dàita na stringa an UTF-8]], a lo convert an entità HTML adate për na pàgina web ISO 8859-1",
+	'unicodeconverter-ok' => 'Bin parèj',
+	'unicodeconverter-oldtext' => 'Test original:',
+	'unicodeconverter-newtext' => 'Test convertì:',
+);
+
 /** Western Punjabi (پنجابی)
  * @author Khalid Mahmood
  */

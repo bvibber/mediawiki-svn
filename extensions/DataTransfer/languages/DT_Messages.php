@@ -382,17 +382,21 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'dt_viewxml_categories' => 'Κατηγορίες',
 	'dt_viewxml_namespaces' => 'Περιοχές ονομάτων',
 	'dt_xml_namespace' => 'Περιοχή ονομάτων',
+	'dt_xml_pages' => 'Σελίδες',
 	'dt_xml_page' => 'Σελίδα',
 	'dt_xml_template' => 'Πρότυπο',
 	'dt_xml_field' => 'Πεδίο',
 	'dt_xml_name' => 'Όνομα',
 	'dt_xml_title' => 'Τίτλος',
 	'dt_xml_id' => 'ID',
+	'dt_import_importing' => 'Εισάγεται...',
+	'right-datatransferimport' => 'Εισαγωγή δεδομένων',
 );
 
 /** Esperanto (Esperanto)
@@ -601,6 +605,7 @@ $messages['grc'] = array(
 	'dt_viewxml_categories' => 'Κατηγορίαι',
 	'dt_viewxml_namespaces' => 'Ὀνοματεῖα',
 	'dt_xml_namespace' => 'Ὀνοματεῖον',
+	'dt_xml_pages' => 'Δέλτοι',
 	'dt_xml_page' => 'Δέλτος',
 	'dt_xml_template' => 'Πρότυπον',
 	'dt_xml_field' => 'Πεδίον',
