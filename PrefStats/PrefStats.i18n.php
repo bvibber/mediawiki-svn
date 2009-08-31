@@ -223,6 +223,16 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 	'prefstats-factor-default' => "torna a l'escala per defecte",
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'prefstats-factor-hour' => 'کاتژمێر',
+	'prefstats-factor-day' => 'ڕۆژ',
+	'prefstats-factor-week' => 'حەوتوو',
+	'prefstats-factor-twoweeks' => 'دوو حەوتوو',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -748,6 +758,24 @@ $messages['hu'] = array(
 	'prefstats-list-intro' => 'Jelenleg az alábbi beállításokról készül statisztika.
 Kattints rá valamelyikre a róla gyűjtött adatok megtekintéséhez.',
 	'prefstats-noprefs' => 'A beállítások nyomkövetése inaktív. Állítsd be megfelelően a $wgPrefStatsTrackPrefs értékét a beállítások követéséhez.',
+	'prefstats-counters' => '* {{PLURAL:$1|Egy|$1}} szerkesztő kapcsolta be ezt a beállítást a statisztika aktiválása óta
+** {{PLURAL:$2|egy|$2}} szerkesztőnél még mindig be van kapcsolva
+** {{PLURAL:$3|egy|$3}} már kikapcsolta azóta',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|Egy|$1}} szerkesztő kapcsolta be ezt a beállítást a statisztika aktiválása óta
+** {{PLURAL:$2|egy|$2}} szerkesztőnél még mindig be van kapcsolva
+** {{PLURAL:$3|egy|$3}} már kikapcsolta azóta
+* Összesen {{PLURAL:$4|egy|$4}} szerkesztőnél van bekapcsolva ez a beállítás',
+	'prefstats-xaxis' => 'Időtartam (óra)',
+	'prefstats-factors' => 'Időköz: $1',
+	'prefstats-factor-hour' => 'óránként',
+	'prefstats-factor-sixhours' => 'hat óránként',
+	'prefstats-factor-day' => 'naponként',
+	'prefstats-factor-week' => 'hetenként',
+	'prefstats-factor-twoweeks' => 'kéthetenként',
+	'prefstats-factor-fourweeks' => 'négyhetenként',
+	'prefstats-factor-default' => 'alapértelmezett időköz',
+	'prefstats-legend-out' => 'Kikapcsolások',
+	'prefstats-legend-in' => 'Bekapcsolások',
 );
 
 /** Interlingua (Interlingua)
@@ -782,6 +810,7 @@ Clicca super un pro vider statisticas super illo.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Kandar
  * @author Rex
  */
@@ -792,13 +821,24 @@ $messages['id'] = array(
 	'prefstats-list-intro' => 'Saat ini, preferensi-preferensi berikut sedang ditelusuri.
 Klik pada salah satu untuk melihat statistiknya.',
 	'prefstats-noprefs' => 'Tidak ada preferensi yang sedang ditelusuri. Konfigurasikan $wgPrefStatsTrackPrefs untuk menelusuri preferensi.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|pengguna telah|pengguna sudah}} mengaktifkan preferensi ini sejak statistik preferensi diaktifkan
+** $2 {{PLURAL:$2|pengguna|pengguna}} mengaktifkan
+** $3 {{PLURAL:$3|pengguna|pengguna}} menonaktifkan',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|pengguna telah|pengguna sudah}} mengaktifkan preferensi ini sejak statistik preferensi diaktifkan
+** $2 {{PLURAL:$2|pengguna|pengguna}} mengaktifkan
+** $3 {{PLURAL:$3|pengguna|pengguna}} menonaktifkan
+* dengan total, $4 {{PLURAL:$4|pengguna|pengguna}} mengatur preferensi ini',
 	'prefstats-xaxis' => 'Durasi (jam)',
+	'prefstats-factors' => 'Lihat per: $1',
 	'prefstats-factor-hour' => 'jam',
 	'prefstats-factor-sixhours' => 'enam jam',
 	'prefstats-factor-day' => 'hari',
 	'prefstats-factor-week' => 'pekan',
 	'prefstats-factor-twoweeks' => 'dua pekan',
 	'prefstats-factor-fourweeks' => 'empat pekan',
+	'prefstats-factor-default' => 'kembali ke sekala awal',
+	'prefstats-legend-out' => 'Membatalkan',
+	'prefstats-legend-in' => 'Disertakan',
 );
 
 /** Ido (Ido)

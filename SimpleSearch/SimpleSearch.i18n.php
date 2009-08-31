@@ -31,6 +31,8 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'simplesearch' => 'Eenvoudige soek',
+	'simplesearch-desc' => 'Voeg ekstra funksionaliteit by die vereenvoudigde soek in Vector',
 	'simplesearch-search' => 'Soek',
 );
 

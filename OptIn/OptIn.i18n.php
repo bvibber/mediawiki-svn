@@ -1300,6 +1300,7 @@ Nos gustaría conocer que opinas acerca de la nueva interfaz, apreciaríamos si 
 	'optin-survey-answer-changes-edittools' => 'Aumenta y mejora las herramientas de edición.',
 	'optin-survey-answer-changes-upload' => 'Mejorar contenido y cargas de medios.',
 	'optin-survey-answer-changes-richtext' => 'Herramientas de edición similares a los editores de texto enriquecido.',
+	'optin-survey-answer-changes-predictability' => 'Mejorar predictibilidad de desempeño',
 	'optin-survey-answer-changes-custom' => 'Permite una gran personalización del usuario.',
 	'optin-survey-answer-changes-other' => 'Otro:',
 	'optin-improvements' => '== Qué ha sido mejorado? ==
@@ -2157,20 +2158,25 @@ Gratias e nos spera audir de te!',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
 	'optin' => 'Bergabung dengan Proyek Inisiatif Kebergunaan',
-	'optin-desc' => 'Memungkinkan pengguna untuk bergabung dengan peningkatan kebergunaan dalam Proyek Inisiatif Kebergunaan',
+	'optin-desc' => 'Memungkinkan pengguna untuk bergabung dengan peningkatan kebergunaan dalam Proyek Inisiatif Kebergunaan versi Beta.',
 	'optin-title-optedout' => 'Coba Beta',
 	'optin-title-optedin' => 'Tinggalkan Beta',
 	'optin-title-justoptedin' => 'Selamat datang di Beta',
 	'optin-title-justoptedout' => 'Terima kasih telah mencoba Beta',
 	'optin-title-feedback' => 'Umpan balik Beta',
-	'optin-needlogin' => 'Anda harus [$1 masuk log] untuk dapat bergabung dengan peningkatan kebergunaan dari Proyek Inisiatif Kebergunaan.',
-	'optin-intro' => 'Proyek Inisiatif Kebergunaan Wikipedia telah mengembangkan sebuah skin baru dan batang alat penyuntingan baru yang ditujukan untuk meningkatkan kebergunaan Wikipedia. Peningkatan ini belum diaktifkan untuk semua pengguna, tapi Anda dapat bergabung dengan Proyek ini dengan mengklik "{{int:optin-submit-in}}" di bawah ini.',
+	'optin-needlogin' => 'Anda harus [$1 masuk log] untuk mencoba Beta.',
+	'optin-intro' => 'Proyek Inisiatif Kebergunaan Wikipedia berusaha untuk mengembangkan kegunaan dari Wikipedia. Apakah Anda ingin mencoba Beta?',
+	'optin-feedback-intro' => 'Terima kasih telah mencoba Beta.
+Kami ingin tahu apa pendapat Anda tentang antarmuka baru kami, sehingga kami sangat menghargai jika Anda mengisi survei opsional di bawah ini .',
+	'optin-feedback-back' => 'Jika Anda tidak ingin mengisi survei, Anda dapat kembali ke $1.',
 	'optin-success-in' => 'Anda saat ini sedang mencoba Beta.
 Anda dapat keluar kapan saja dengan menekan pranala "{{int:optin-submit-out}}" di bagian atas halaman.',
+	'optin-leave-cancel' => 'Jika Anda ingin terus menggunakan Beta, Anda dapat kembali ke $1.',
 	'optin-success-out' => 'Anda telah berhasil meninggalkan Beta.
 Anda dapat bergabung kembali kapan saja dengan menekan pranala "{{int:optin-submit-in}}" di bagian atas halaman.',
 	'optin-success-feedback' => 'Terima kasih atas umpan balik Anda!',
@@ -2186,21 +2192,54 @@ Anda dapat bergabung kembali kapan saja dengan menekan pranala "{{int:optin-subm
 	'optin-feedback' => 'Umpan balik Beta',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Tidak',
-	'optin-survey-intro' => 'Terima kasih untuk menguji coba peningkatan kebergunaan dari Proyek Inisiatif Kebergunaan.
-Anda dapat keluar dengan mengklik "{{int:optin-submit-out}}" pada bagian bawah halaman ini.
-
-Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, karenanya kami akan sangat menghargai jika Anda mengisi survei opsional berikut sebelum mengklik "{{int:optin-submit-out}}".',
+	'optin-survey-intro' => 'Terima kasih telah mencoba Beta.
+Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, karenanya kami akan sangat menghargai jika Anda mengisi survei di bawah ini sebelum mengklik "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'Apa yang Anda sukai tentang Beta? Apa yang Anda tidak sukai tentang Beta?',
 	'optin-survey-question-whyoptout' => 'Mengapa Anda ingin meninggalkan Beta? (Pilihlah semua yang Anda anggap benar.)',
 	'optin-survey-answer-whyoptout-hard' => 'Terlalu sulit untuk digunakan.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Tidak berfungsi dengan baik.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Tidak dapat diprediksi.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Saya tidak suka dengan penampilannya.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Saya tidak suka dengan tab baru dan tampilannya.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Aku tidak suka dengan kotak peralatan baru.',
 	'optin-survey-answer-whyoptout-other' => 'Alasan lain:',
+	'optin-survey-question-explain' => 'Harap menjelaskan atau menguraikan jawaban Anda di atas:',
+	'optin-survey-question-techfail' => 'Pernahkah anda mengalami kesalahan teknis ketika menggunakan Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Jika iya, silahkan uraikan atau jabarkan:',
+	'optin-survey-question-usedtoolbar' => 'Apakah anda menggunakan kotak peralatan baru yang dapat diperluas untuk menyunting halaman?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Jika iya, apa yang kamu sukai? Apa yang Anda tidak sukai?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Jika tidak, mengapa tidak? Apakah akan anda lakukan kemudian? Tolong jelaskan.',
+	'optin-survey-question-different' => 'Apa yang bisa kita lakukan dengan cara yang berbeda untuk menjaga Anda menggunakan Beta?',
 	'optin-survey-question-feedback' => 'Beritahukan kami tanggapan Anda:',
 	'optin-survey-question-browser' => 'Penjelajah web apa yang Anda gunakan?',
 	'optin-survey-answer-browser-other' => 'Penjelajah web lainnya:',
 	'optin-survey-question-os' => 'Sistem operasi apa yang Anda gunakan?',
 	'optin-survey-answer-os-other' => 'Sistem operasi lain:',
 	'optin-survey-question-res' => 'Berapa besar resolusi layar Anda?',
+	'optin-survey-question-changes' => 'Perubahan apa yang ingin Anda lihat dalam Beta di masa mendatang (silakan pilih yang sesuai)?',
+	'optin-survey-answer-changes-nav' => 'Membuat navigasi keseluruhan situs lebih mudah digunakan.',
+	'optin-survey-answer-changes-edittools' => 'Menambah dan memperbanyak alat penyuntingan.',
+	'optin-survey-answer-changes-upload' => 'Meningkatkan pemuatan konten dan media.',
+	'optin-survey-answer-changes-richtext' => 'Mengembangkan perangkat penyuntingan mirip dengan penyuntingan teks biasa.',
+	'optin-survey-answer-changes-lookfeel' => 'Memperbarui "tampilan dan nuansa" dari situs.',
+	'optin-survey-answer-changes-predictability' => 'Meningkatkan prediktabilitas dari kinerja.',
+	'optin-survey-answer-changes-custom' => 'Memperbolehkan Pengguna yang lebih tinggi untuk kustomisasi',
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
+	'optin-improvements' => '== Apa yang telah dikembangkan? ==
+[[File:UsabilityNavigation.png|left|link=]]
+;Perluasan navigasi
+Sistem navigasi yang baru membuat lebih mudah untuk melihat di mana Anda dan apa yang Anda lakukan, semudah anda dapat pergi dan bagaimana menuju ke sana. Dengan kotak pencarian yang terletak di pojok kanan atas, fitur pencarian mudah ditemukan dan cepat digunakan.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;Perbaikan alat penyuntingan
+Baru-dan-perbaikan ikon membuatnya lebih jelas tindakan apa yang dilakukan masing-masing alat. Bagian yang dapat diperluas mengurangi kekacauan sehingga alat yang jarang digunakan hanya dengan sekali klik.
+Bagian yang membantu memberikan akses cepat ke referensi untuk penggunaan umum markup-wiki .
+<div style="clear:both;"></div>
+== Bagaimana terlibat ==
+Untuk mempelajari lebih lanjut tentang proyek atau terlibat, silakan kunjungi [http://usability.wikimedia.org Usability Initiative\'s wiki]. Di sana Anda akan menemukan informasi tentang hibah, penelitian, desain + pengembangan, dan rilis. Untuk mengajukan pertanyaan atau meninggalkan umpan balik umum, silakan gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype prototipe halaman pembicaraan]. Untuk mengatasi mata pelajaran tertentu, silakan gunakan halaman diskusi yang terkait. Jika anda menemukan bug, silakan tinggalkan komentar Anda pada [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai rilis halaman pembicaraan] atau dengan menggunakan [https://bugzilla.wikimedia.org Bugzilla].
+
+Terima kasih dan kami berharap pendapat Anda!',
 );
 
 /** Ido (Ido)
@@ -3436,13 +3475,13 @@ Du kan velge å gå tilbake når som helst ved å klikke på "{{int:optin-leave}
 Du kan forsøke det igjen ved å klikke på "{{int:optin-try}}"-lenken på toppen av skjermen.',
 	'optin-success-feedback' => 'Takk for din tilbakemelding!',
 	'optin-accept-short' => 'La oss gjøre det!',
-	'optin-accept-long' => 'Forsøk Beta',
-	'optin-accept-long-anon' => 'Logg inn og forsøk Beta',
+	'optin-accept-long' => 'Prøv Beta',
+	'optin-accept-long-anon' => 'Logg inn og prøv Beta',
 	'optin-deny-short' => 'Neitakk',
 	'optin-deny-long' => 'Gå tilbake til forrige side',
 	'optin-submit-out' => 'Forlat Beta',
 	'optin-submit-feedback' => 'Gi tilbakemelding',
-	'optin-try' => 'Forsøk Beta',
+	'optin-try' => 'Prøv Beta',
 	'optin-leave' => 'Forlat Beta',
 	'optin-feedback' => 'Beta tilbakemelding',
 	'optin-survey-yes' => 'Ja',
@@ -3733,8 +3772,8 @@ $messages['pt'] = array(
 	'optin-title-justoptedout' => 'Obrigado por experimentar o Beta',
 	'optin-title-feedback' => 'Enviar comentários',
 	'optin-needlogin' => 'Você precisa [$1 autenticar-se] para experimentar o Beta.',
-	'optin-intro' => 'A Wikipedia Usability Initiative tem vindo a trabalhar arduamente para melhorar a usabilidade da Wikipédia.
-Gostaria de experimentar o Beta?',
+	'optin-intro' => 'A Iniciativa de Usabilidade da Wikipédia tem trabalhado arduamente para melhorar a usabilidade da Wikipédia.
+Gostaria de experimentar a versão Beta?',
 	'optin-feedback-intro' => 'Obrigado por experimentar Beta.
 Gostaríamos de saber o que você acha da nossa nova interface, por isso agradecíamos que preenchesse o inquérito opcional abaixo.',
 	'optin-feedback-back' => 'Se você não quiser preencher o inquérito, pode regressar a $1.',
@@ -3801,7 +3840,7 @@ Novos e melhorados ícones tornam mais claro que acção que cada ferramenta rea
 A secção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
 <div style="clear:both;"></div>
 == Como participar ==
-Para aprender mais ou participar do projecto, por favor visite a [http://usability.wikimedia.org Usability Initiative\'s wiki]. Lá você encontrará informações sobre nossa concessão, pesquisa,  desenho + desenvolvimento, e lançamentos. Para esclarecer dúvidas ou sugestões, por favor utilize nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão]. Para assuntos específicos, utilize uma das páginas de discussão associada. Caso encontro bugs, por favor deixe seu comentário na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão Acai] ou através do [https://bugzilla.wikimedia.org Bugzilla].
+Para aprender mais ou participar do projecto, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá você encontrará informações sobre nossa concessão, pesquisa,  desenho + desenvolvimento, e lançamentos. Para esclarecer dúvidas ou sugestões, por favor utilize nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão]. Para assuntos específicos, utilize uma das páginas de discussão associada. Caso encontro bugs, por favor deixe seu comentário na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão Acai] ou através do [https://bugzilla.wikimedia.org Bugzilla].
 
 Obrigado e estamos ansiosos para ouvir de você!',
 );
