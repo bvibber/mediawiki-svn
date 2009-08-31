@@ -12,14 +12,19 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Icon',
-	'version'        => '1.6',
+	'version'        => '1.6.1',
 	'author'         => 'Tim Laqua',
 	'description'    => 'Allows you to use images as icons and icon links',
 	'descriptionmsg' => 'icon-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Icon',
 );
 
-$wgExtensionFunctions[] = 'efIcon_Setup';
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'efIcon_Setup';
+} else {
+	$wgExtensionFunctions[] = 'efIcon_Setup';
+}
+$dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Icon'] = $dir . 'Icon.i18n.php';
 
 function efIcon_Setup() {
