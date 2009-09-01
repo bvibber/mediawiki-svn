@@ -167,13 +167,10 @@ fn : {
 	// Wraps gM from js2, but allows raw text to supercede
 	autoMsg : function( object, property ) {
 		// Accept array of possible properties, of which the first one found will be used
-		if ( typeof property == 'array' ) {
+		if ( typeof property == 'object' ) {
 			for ( i in property ) {
-				if ( property[i] in object ) {
+				if ( property[i] in object || property[i] + 'Msg' in object ) {
 					property = property[i];
-					break;
-				} else if ( property[i] + 'Msg' in object ) {
-					property = property[i] + 'Msg';
 					break;
 				}
 			}
