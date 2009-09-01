@@ -124,10 +124,10 @@ modules: {
 			$( '#edittoolbar-link-ext-target' ).val( 'http://' );
 			
 			// Page existence check widget
-			var existsImg = $.wikiEditor.modules.toolbar.imgPath + 'insert-link-exists.png';
-			var notexistsImg = $.wikiEditor.modules.toolbar.imgPath + 'insert-link-notexists.png';
-			var invalidImg = $.wikiEditor.modules.toolbar.imgPath + 'insert-link-invalid.png';
-			var loadingImg = $.wikiEditor.modules.toolbar.imgPath + 'loading.gif';
+			var existsImg = $.wikiEditor.imgPath + 'dialogs/' + 'insert-link-exists.png';
+			var notexistsImg = $.wikiEditor.imgPath + 'dialogs/' + 'insert-link-notexists.png';
+			var invalidImg = $.wikiEditor.imgPath + 'dialogs/' + 'insert-link-invalid.png';
+			var loadingImg = $.wikiEditor.imgPath + 'loading.gif';
 			var existsMsg = gM( 'edittoolbar-tool-link-int-target-status-exists' );
 			var notexistsMsg = gM( 'edittoolbar-tool-link-int-target-status-notexists' );
 			var invalidMsg = gM( 'edittoolbar-tool-link-int-target-status-invalid' );

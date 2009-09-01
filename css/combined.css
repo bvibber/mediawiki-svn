@@ -125,7 +125,7 @@ body.rtl .wikiEditor-ui-toolbar .sections .section {
 }
 .wikiEditor-ui-toolbar .sections .loading .spinner {
 	display: block;
-	background-image: url(../images/wikiEditor/toolbar/loading.gif);
+	background-image: url(../images/wikiEditor/loading.gif);
 	background-position: left center;
 	background-repeat: no-repeat;
 	padding-left: 32px;

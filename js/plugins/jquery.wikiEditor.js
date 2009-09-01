@@ -18,8 +18,15 @@ $.wikiEditor = {
 	'supportedBrowsers': {
 		'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
 		'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
-	}
+	},
+	/**
+	 * Path to images - this is a bit messy, and it would need to change if
+	 * this code (and images) gets moved into the core - or anywhere for
+	 * that matter...
+	 */
+	imgPath : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/'
 };
+
 $.wikiEditor.isSupportKnown = function() {
 	return ( function( supportedBrowsers ) {
 		return $.browser.name in supportedBrowsers;
