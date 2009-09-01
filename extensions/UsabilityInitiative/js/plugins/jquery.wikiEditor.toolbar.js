@@ -456,6 +456,12 @@ fn : {
 						$section.show();
 						$(this).addClass( 'current' );
 					}
+					
+					//click tracking
+					if($.trackAction != undefined){
+						$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
+					}
+					
 					$.cookie(
 						'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
 						show ? $section.attr( 'rel' ) : null
