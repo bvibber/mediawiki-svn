@@ -121,6 +121,22 @@ class UsabilityInitiativeHooks {
 		
 		if ( !self::$doOutput )
 			return true;
+		// Transforms variables into javascript global variables
+		foreach ( self::$variables as $key => $value ) {
+			$escapedVariableValue = Xml::escapeJsString( $value );
+			$escapedVariableKey = Xml::escapeJsString( $key );
+			self::$variables[$key] =
+				"var {$escapedVariableKey} = '{$escapedVariableValue}';";
+		}
+		if ( count( self::$variables ) > 0 ) {
+			$out->addScript(
+				Xml::tags(
+					'script',
+					array( 'type' => $wgJsMimeType ),
+					implode( self::$variables )
+				)
+			);
+		}
 		
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
@@ -153,22 +169,6 @@ class UsabilityInitiativeHooks {
 					'script',
 					array( 'type' => $wgJsMimeType ),
 					'loadGM({' . implode( ',', self::$messages ) . '});'
-				)
-			);
-		}
-		// Transforms variables into javascript global variables
-		foreach ( self::$variables as $key => $value ) {
-			$escapedVariableValue = Xml::escapeJsString( $value );
-			$escapedVariableKey = Xml::escapeJsString( $key );
-			self::$variables[$key] =
-				"var {$escapedVariableKey} = '{$escapedVariableValue}';";
-		}
-		if ( count( self::$variables ) > 0 ) {
-			$out->addScript(
-				Xml::tags(
-					'script',
-					array( 'type' => $wgJsMimeType ),
-					implode( self::$variables )
 				)
 			);
 		}
