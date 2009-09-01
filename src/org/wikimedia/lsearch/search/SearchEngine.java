@@ -60,7 +60,7 @@ import org.wikimedia.lsearch.statistics.UDPLogger;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
- * Search engine implementation. The implementation is independent of frontend used to
+ * Search engine implementation. The implementation is independent of frontend used to	
  * communicate with client. A generic container of search results is returned. 
  * 
  * @author rainman
@@ -411,6 +411,7 @@ public class SearchEngine {
 		public String toString(){
 			return key+" "+score+(!redirect.equals("")? " -> "+redirect : "");
 		}
+		
 	}
 	
 	public SearchResults searchPrefixLocal(IndexId iid, String searchterm, int limit, NamespaceFilter nsf, IndexSearcherMul searcher) {
@@ -482,8 +483,8 @@ public class SearchEngine {
 			
 			HashSet<String> selected = new HashSet<String>();
 			for(PrefixMatch m : results){
-				if(selected.contains(m) || (m.redirect!=null && selected.contains(m.redirect)))
-					continue;
+				if(selected.contains(m.key) || (m.redirect!=null && selected.contains(m.redirect)))
+					continue;				
 				if(res.getResults().size() >= limit)
 					break;
 				ResultSet rs = new ResultSet(m.key,m.score);
