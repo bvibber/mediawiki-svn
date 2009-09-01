@@ -101,7 +101,7 @@ function wfLanguageSelectorExtension() {
 	
 	if ( $wgLanguageSelectorLanguages === NULL ) {
 		$wgLanguageSelectorLanguages = array_keys( Language::getLanguageNames( true ) );
-		ksort( $wgLanguageSelectorLanguages );
+		sort( $wgLanguageSelectorLanguages );
 	}
 
 	$setlang = $wgRequest->getVal( 'setlang' );
