@@ -38,9 +38,10 @@ body.rtl .wikiEditor-ui {
 	position: relative;
 	width: 100%;
 	border-bottom: solid silver 1px;
-}
-.ui-dialog-content fieldset table td {
-	padding: 0.25em;
+}/* wikiEditor dialogs module */
+
+.ui-widget table td {
+	padding: 0.5em;
 }/* wikiEditor toc module */
 
 .wikiEditor-ui-text {

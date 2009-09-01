@@ -34,8 +34,8 @@ position:relative;
 width:100%;
 border-bottom:solid silver 1px;
 }
-.ui-dialog-content fieldset table td{
-padding:0.25em;
+.ui-widget table td{
+padding:0.5em;
 }
 .wikiEditor-ui-text{
 border-right:solid silver 1px;

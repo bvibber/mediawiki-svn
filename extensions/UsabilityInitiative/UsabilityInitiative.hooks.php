@@ -19,6 +19,7 @@ class UsabilityInitiativeHooks {
 			'raw' => array(
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 5 ),
+				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 1 ),
 				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 5 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
