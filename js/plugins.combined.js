@@ -1024,7 +1024,10 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
  * API accessible functions
  */
 api: {
-	open: function( context, data ) {
+	addDialog: function( context, data ) {
+		$.wikiEditor.modules.dialogs.fn.create( context, { 'modules': data } )
+	},
+	openDialog: function( context, data ) {
 		if ( data.dialog in $.wikiEditor.modules.dialogs.modules ) {
 			$( '#' + $.wikiEditor.modules.dialogs.modules[data.dialog].id ).dialog( 'open' );
 		}
@@ -1050,13 +1053,14 @@ fn: {
 		// Build out modules immediately
 		for ( module in $.wikiEditor.modules.dialogs.modules ) {
 			var module = $.wikiEditor.modules.dialogs.modules[module];
+			// Only create the dialog if it doesn't exist yet
 			if ( $( '#' + module.id ).size() == 0 ) {
 				var configuration = module.dialog;
 				// Add some stuff to configuration
 				configuration.bgiframe = true;
 				configuration.autoOpen = false;
 				configuration.modal = true;
-				configuration.title = gM( module.titleMsg );
+				configuration.title = $.wikiEditor.autoMsg( module, 'title' );
 				// Transform messages in keys
 				// Stupid JS won't let us do stuff like
 				// foo = { gM ('bar'): baz }
@@ -1456,6 +1460,26 @@ $.wikiEditor.isSupported = function() {
 		return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
 	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
 };
+// Wraps gM from js2, but allows raw text to supercede
+$.wikiEditor.autoMsg = function( object, property ) {
+	// Accept array of possible properties, of which the first one found will be used
+	if ( typeof property == 'object' ) {
+		for ( i in property ) {
+			if ( property[i] in object || property[i] + 'Msg' in object ) {
+				property = property[i];
+				break;
+			}
+		}
+	}
+	if ( property in object ) {
+		return object[property];
+	} else if ( property + 'Msg' in object ) {
+		return gM( object[property + 'Msg'] );
+	} else {
+		return '';
+	}
+};
+
 $.fn.wikiEditor = function() {
 
 /* Initialization */
@@ -1945,25 +1969,6 @@ api : {
  * Internally used functions
  */
 fn : {
-	// Wraps gM from js2, but allows raw text to supercede
-	autoMsg : function( object, property ) {
-		// Accept array of possible properties, of which the first one found will be used
-		if ( typeof property == 'object' ) {
-			for ( i in property ) {
-				if ( property[i] in object || property[i] + 'Msg' in object ) {
-					property = property[i];
-					break;
-				}
-			}
-		}
-		if ( property in object ) {
-			return object[property];
-		} else if ( property + 'Msg' in object ) {
-			return gM( object[property + 'Msg'] );
-		} else {
-			return '';
-		}
-	},
 	/**
 	 * Creates a toolbar module within a wikiEditor
 	 * 
@@ -2031,14 +2036,14 @@ fn : {
 				}
 				break;
 			case 'dialog':
-				context.$textarea.wikiEditor( 'open', { 'dialog': action.module } );
+				context.$textarea.wikiEditor( 'openDialog', { 'dialog': action.module } );
 				break;
 			default: break;
 		}
 	},
 	buildGroup : function( context, id, group ) {
 		var $group = $( '<div />' ).attr( { 'class' : 'group group-' + id, 'rel' : id } );
-		var label = $.wikiEditor.modules.toolbar.fn.autoMsg( group, 'label' );
+		var label = $.wikiEditor.autoMsg( group, 'label' );
 		if ( label ) {
 			$group.append( '<div class="label">' + label + '</div>' )
 		}
@@ -2057,7 +2062,7 @@ fn : {
 				}
 			}
 		}
-		var label = $.wikiEditor.modules.toolbar.fn.autoMsg( tool, 'label' );
+		var label = $.wikiEditor.autoMsg( tool, 'label' );
 		switch ( tool.type ) {
 			case 'button':
 				var src = tool.icon;
@@ -2095,7 +2100,7 @@ fn : {
 				$options = $( '<div />' ).addClass( 'options' );
 				if ( 'list' in tool ) {
 					for ( option in tool.list ) {
-						var optionLabel = $.wikiEditor.modules.toolbar.fn.autoMsg( tool.list[option], 'label' );
+						var optionLabel = $.wikiEditor.autoMsg( tool.list[option], 'label' );
 						$options.append(
 							$( '<a />' )
 								.data( 'action', tool.list[option].action )
@@ -2119,7 +2124,7 @@ fn : {
 		}
 	},
 	buildBookmark : function( context, id, page ) {
-		var label = $.wikiEditor.modules.toolbar.fn.autoMsg( page,
+		var label = $.wikiEditor.autoMsg( page,
 		'label' );
 		return $( '<div />' )
 			.text( label )
@@ -2193,7 +2198,7 @@ fn : {
 	buildHeading : function( context, headings ) {
 		var html = '<tr>';
 		for ( heading in headings ) {
-			html += '<th>' + $.wikiEditor.modules.toolbar.fn.autoMsg( headings[heading], ['html', 'text'] ) + '</th>';
+			html += '<th>' + $.wikiEditor.autoMsg( headings[heading], ['html', 'text'] ) + '</th>';
 		}
 		return html;
 	},
@@ -2201,7 +2206,7 @@ fn : {
 		var html = '<tr>';
 		for ( cell in row ) {
 			html += '<td class="cell cell-' + cell + '" valign="top"><span>' +
-				$.wikiEditor.modules.toolbar.fn.autoMsg( row[cell], ['html', 'text'] ) + '</span></td>';
+				$.wikiEditor.autoMsg( row[cell], ['html', 'text'] ) + '</span></td>';
 		}
 		html += '</tr>';
 		return html;
@@ -2242,7 +2247,7 @@ fn : {
 			$( '<a />' )
 				.addClass( selected == id ? 'current' : null )
 				.attr( 'href', '#' )
-				.text( $.wikiEditor.modules.toolbar.fn.autoMsg( section, 'label' ) )
+				.text( $.wikiEditor.autoMsg( section, 'label' ) )
 				.data( 'context', context )
 				.click( function() {
 					var $section =

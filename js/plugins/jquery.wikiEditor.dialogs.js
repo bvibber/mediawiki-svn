@@ -13,7 +13,10 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
  * API accessible functions
  */
 api: {
-	open: function( context, data ) {
+	addDialog: function( context, data ) {
+		$.wikiEditor.modules.dialogs.fn.create( context, { 'modules': data } )
+	},
+	openDialog: function( context, data ) {
 		if ( data.dialog in $.wikiEditor.modules.dialogs.modules ) {
 			$( '#' + $.wikiEditor.modules.dialogs.modules[data.dialog].id ).dialog( 'open' );
 		}
@@ -39,13 +42,14 @@ fn: {
 		// Build out modules immediately
 		for ( module in $.wikiEditor.modules.dialogs.modules ) {
 			var module = $.wikiEditor.modules.dialogs.modules[module];
+			// Only create the dialog if it doesn't exist yet
 			if ( $( '#' + module.id ).size() == 0 ) {
 				var configuration = module.dialog;
 				// Add some stuff to configuration
 				configuration.bgiframe = true;
 				configuration.autoOpen = false;
 				configuration.modal = true;
-				configuration.title = gM( module.titleMsg );
+				configuration.title = $.wikiEditor.autoMsg( module, 'title' );
 				// Transform messages in keys
 				// Stupid JS won't let us do stuff like
 				// foo = { gM ('bar'): baz }
