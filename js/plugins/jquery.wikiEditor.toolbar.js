@@ -166,6 +166,18 @@ api : {
 fn : {
 	// Wraps gM from js2, but allows raw text to supercede
 	autoMsg : function( object, property ) {
+		// Accept array of possible properties, of which the first one found will be used
+		if ( typeof property == 'array' ) {
+			for ( i in property ) {
+				if ( property[i] in object ) {
+					property = property[i];
+					break;
+				} else if ( property[i] + 'Msg' in object ) {
+					property = property[i] + 'Msg';
+					break;
+				}
+			}
+		}
 		if ( property in object ) {
 			return object[property];
 		} else if ( property + 'Msg' in object ) {
@@ -235,32 +247,13 @@ fn : {
 					parts.pre, parts.peri, parts.post, action.options.ownline, action.type == 'replace'
 				);
 				break;
-			case 'dialog':
-				if ( $j( '#' + action.id ).size() == 0 ) {
-					var dialogConf = action.dialog;
-					// Add some stuff to dialogConf
-					dialogConf.bgiframe = true;
-					dialogConf.autoOpen = false;
-					dialogConf.modal = true;
-					dialogConf.title = gM( action.titleMsg );
-					
-					// Transform messages in keys
-					// Stupid JS won't let us do stuff like
-					// foo = { gM ('bar'): baz }
-					for ( msg in dialogConf.buttons ) {
-						dialogConf.buttons[gM( msg )] = dialogConf.buttons[msg];
-						delete dialogConf.buttons[msg];
-					}
-					
-					// Create the dialog <div>
-					$j( '<div /> ' )
-						.attr( 'id', action.id )
-						.html( action.html )
-						.data( 'context', context )
-						.appendTo( $j( 'body' ) )
-						.each( action.init ).dialog( dialogConf );
+			case 'callback':
+				if ( typeof action.execute == 'function' ) {
+					action.execute( context );
 				}
-				$j( '#' + action.id ).dialog( 'open' );
+				break;
+			case 'dialog':
+				context.$textarea.wikiEditor( 'open', { 'dialog': action.module } );
 				break;
 			default: break;
 		}
@@ -422,7 +415,7 @@ fn : {
 	buildHeading : function( context, headings ) {
 		var html = '<tr>';
 		for ( heading in headings ) {
-			html += '<th>' + $.wikiEditor.modules.toolbar.fn.autoMsg( headings[heading], 'content' ) + '</th>';
+			html += '<th>' + $.wikiEditor.modules.toolbar.fn.autoMsg( headings[heading], ['html', 'text'] ) + '</th>';
 		}
 		return html;
 	},
@@ -430,7 +423,7 @@ fn : {
 		var html = '<tr>';
 		for ( cell in row ) {
 			html += '<td class="cell cell-' + cell + '" valign="top"><span>' +
-				$.wikiEditor.modules.toolbar.fn.autoMsg( row[cell], 'content' ) + '</span></td>';
+				$.wikiEditor.modules.toolbar.fn.autoMsg( row[cell], ['html', 'text'] ) + '</span></td>';
 		}
 		html += '</tr>';
 		return html;
