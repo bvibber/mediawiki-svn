@@ -21,6 +21,10 @@
 // functions should check if this is set before logging clicktrack events
 $wgClickTrackEnabled = true;
 
+// click throttle, should be seen as "1 out of every $wgClickTrackThrottle users will have it enabled"
+// setting this to 1 means all users will have it enabled
+$wgClickTrackThrottle = 1;
+
 // set the time window for what we consider 'recent' contributions, in days
 $wgClickTrackContribGranularity1 = 60 * 60 * 24 * 365 / 2; // half a year
 $wgClickTrackContribGranularity2 =60 * 60 * 24 * 365 / 4;  // 1/4 a year (3 months approx)
@@ -47,7 +51,7 @@ $wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
 $wgHooks['ArticleSaveComplete'][] = 'ClickTrackingHooks::storeNewContrib';
-$wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJS';
+$wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJSThrottle';
 
 // Set up the new API module
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';

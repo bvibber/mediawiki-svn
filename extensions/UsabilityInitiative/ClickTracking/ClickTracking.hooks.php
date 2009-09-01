@@ -35,16 +35,32 @@ class ClickTrackingHooks {
 		return true;
 	}
 
+	
+	
+	/*
+	 * Gives the user clicktrack JS if they're in the threshhold
+	 */
+	public static function addJSThrottle(){
+		global $wgClickTrackThrottle;
+		if(rand() % $wgClickTrackThrottle == 0){
+			ClickTrackingHooks::addJS();
+		}
+		return true;
+	}
+	
+	
 	/**
 	 * Adds JavaScript
 	 */
 	public static function addJS(){
-		UsabilityInitiativeHooks::initialize();
-		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
-		UsabilityInitiativeHooks::addVariables(
-			array( 'wgTrackingToken' => ClickTrackingHooks::get_session_id() )
-		);
+			UsabilityInitiativeHooks::initialize();
+			UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
+			UsabilityInitiativeHooks::addVariables(
+				array( 'wgTrackingToken' => ClickTrackingHooks::get_session_id() )
+			);
+		
 		return true;
+		
 	}
 
 	/**
