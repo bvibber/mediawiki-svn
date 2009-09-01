@@ -4,12 +4,6 @@
 ( function( $ ) { $.wikiEditor.modules.toolbar = {
 
 /**
- * Path to images - this is a bit messy, and it would need to change if
- * this code (and images) gets moved into the core - or anywhere for
- * that matter...
- */
-imgPath : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/toolbar/',
-/**
  * API accessible functions
  */
 api : {
@@ -262,7 +256,7 @@ fn : {
 			case 'button':
 				var src = tool.icon;
 				if ( src.indexOf( 'http://' ) !== 0 && src.indexOf( 'https://' ) !== 0 ) {
-					src = $.wikiEditor.modules.toolbar.imgPath + src;
+					src = $.wikiEditor.imgPath + 'toolbar/' + src;
 				}
 				$button = $( '<img />' ).attr( {
 					'src' : src,

@@ -1135,10 +1135,10 @@ modules: {
 			$( '#edittoolbar-link-ext-target' ).val( 'http://' );
 			
 			// Page existence check widget
-			var existsImg = $.wikiEditor.modules.toolbar.imgPath + 'insert-link-exists.png';
-			var notexistsImg = $.wikiEditor.modules.toolbar.imgPath + 'insert-link-notexists.png';
-			var invalidImg = $.wikiEditor.modules.toolbar.imgPath + 'insert-link-invalid.png';
-			var loadingImg = $.wikiEditor.modules.toolbar.imgPath + 'loading.gif';
+			var existsImg = $.wikiEditor.imgPath + 'dialogs/' + 'insert-link-exists.png';
+			var notexistsImg = $.wikiEditor.imgPath + 'dialogs/' + 'insert-link-notexists.png';
+			var invalidImg = $.wikiEditor.imgPath + 'dialogs/' + 'insert-link-invalid.png';
+			var loadingImg = $.wikiEditor.imgPath + 'loading.gif';
 			var existsMsg = gM( 'edittoolbar-tool-link-int-target-status-exists' );
 			var notexistsMsg = gM( 'edittoolbar-tool-link-int-target-status-notexists' );
 			var invalidMsg = gM( 'edittoolbar-tool-link-int-target-status-invalid' );
@@ -1497,8 +1497,15 @@ $.wikiEditor = {
 	'supportedBrowsers': {
 		'ltr': { 'msie': 7, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 },
 		'rtl': { 'msie': 8, 'firefox': 2, 'opera': 9, 'safari': 3, 'chrome': 1, 'camino': 1 }
-	}
+	},
+	/**
+	 * Path to images - this is a bit messy, and it would need to change if
+	 * this code (and images) gets moved into the core - or anywhere for
+	 * that matter...
+	 */
+	imgPath : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/'
 };
+
 $.wikiEditor.isSupportKnown = function() {
 	return ( function( supportedBrowsers ) {
 		return $.browser.name in supportedBrowsers;
@@ -1858,12 +1865,6 @@ fn: {
 ( function( $ ) { $.wikiEditor.modules.toolbar = {
 
 /**
- * Path to images - this is a bit messy, and it would need to change if
- * this code (and images) gets moved into the core - or anywhere for
- * that matter...
- */
-imgPath : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/toolbar/',
-/**
  * API accessible functions
  */
 api : {
@@ -2116,7 +2117,7 @@ fn : {
 			case 'button':
 				var src = tool.icon;
 				if ( src.indexOf( 'http://' ) !== 0 && src.indexOf( 'https://' ) !== 0 ) {
-					src = $.wikiEditor.modules.toolbar.imgPath + src;
+					src = $.wikiEditor.imgPath + 'toolbar/' + src;
 				}
 				$button = $( '<img />' ).attr( {
 					'src' : src,
@@ -2181,11 +2182,18 @@ fn : {
 			.data( 'context', context )
 			.click(
 				function() {
+					
 					$(this).parent().parent().find( '.page' ).hide();
 					$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
 					$(this).siblings().removeClass( 'current' );
 					$(this).addClass( 'current' );
 					var section = $(this).parent().parent().attr( 'rel' );
+					
+					//click tracking
+					if($.trackAction != undefined){
+						$.trackAction(section + '.' + $(this).attr('rel'));
+					}
+					
 					$.cookie(
 						'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
 						$(this).attr( 'rel' )
