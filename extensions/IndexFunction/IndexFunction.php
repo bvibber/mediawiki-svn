@@ -34,6 +34,7 @@ $wgHooks['SpecialMovepageAfterMove'][] = 'IndexFunctionHooks::afterMove';
 $wgHooks['BeforePageDisplay'][] = 'efIndexJS';
 # Schema updates for update.php
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efIndexUpdateSchema';
+$wgHooks['ParserTestTables'][] = 'efParserTestTables';
 
 # Setup the special page
 $wgSpecialPages['Index'] = 'SpecialIndex';
@@ -68,6 +69,10 @@ function efIndexUpdateSchema() {
 	$wgExtNewTables[] = array(
 		'indexes',
 		dirname( __FILE__ ) . '/indexes.sql' );
+	return true;
+}
+function efParserTestTables( &$tables ) {
+	$tables[] = 'indexes';
 	return true;
 }
 
