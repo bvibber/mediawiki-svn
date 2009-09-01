@@ -50,6 +50,11 @@ $wgLanguageSelectorDetectLanguage = LANGUAGE_SELECTOR_PREFER_CLIENT_LANG;
 */
 $wgLanguageSelectorLanguages = NULL;
 
+/**
+* Determine if language codes are shown in the selector, in addition to names;
+*/
+$wgLanguageSelectorShowCode = false;
+
 define( 'LANGUAGE_SELECTOR_MANUAL',    0 ); #don't place anywhere
 define( 'LANGUAGE_SELECTOR_AT_TOP_OF_TEXT', 1 ); #put at the top of page content
 define( 'LANGUAGE_SELECTOR_IN_TOOLBOX',  2 ); #put into toolbox
@@ -96,6 +101,7 @@ function wfLanguageSelectorExtension() {
 	
 	if ( $wgLanguageSelectorLanguages === NULL ) {
 		$wgLanguageSelectorLanguages = array_keys( Language::getLanguageNames( true ) );
+		ksort( $wgLanguageSelectorLanguages );
 	}
 
 	$setlang = $wgRequest->getVal( 'setlang' );
@@ -199,13 +205,21 @@ function wfLanguageSelectorTag($input, $args) {
 	$class = @$args['class'];
 	$selectorstyle = @$args['selectorstyle'];
 	$buttonstyle = @$args['buttonstyle'];
+	$showcode = @$args['showcode'];
 
 	if ($style) $style = htmlspecialchars($style);
 	if ($class) $class = htmlspecialchars($class);
 	if ($selectorstyle) $selectorstyle = htmlspecialchars($selectorstyle);
 	if ($buttonstyle) $buttonstyle = htmlspecialchars($buttonstyle);
 
-	return wfLanguageSelectorHTML( $style, $class, $selectorstyle, $buttonstyle );
+	if ($showcode) {
+	    $showcode = strtolower($showcode);
+	    if ($showcode == "true" || $showcode == "yes" || $showcode == "on") $showcode = true;
+	    else if ($showcode == "false" || $showcode == "no" || $showcode == "off") $showcode = false;
+	    else $showcode = NULL;
+	} else $showcode = NULL;
+
+	return wfLanguageSelectorHTML( $style, $class, $selectorstyle, $buttonstyle, $showcode );
 }
 
 function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
@@ -329,8 +343,10 @@ function wfLanguageSelectorAbortNewAccount( &$u ) { //FIXME: doesn't quite work 
 	return true;
 }
 
-function wfLanguageSelectorHTML( $style = NULL, $class = NULL, $selectorstyle = NULL, $buttonstyle = NULL ) {
-	global $wgLanguageSelectorLanguages, $wgTitle, $wgLang, $wgContLang, $wgScript;
+function wfLanguageSelectorHTML( $style = NULL, $class = NULL, $selectorstyle = NULL, $buttonstyle = NULL, $showCode = NULL ) {
+	global $wgLanguageSelectorLanguages, $wgTitle, $wgLang, $wgContLang, $wgScript, $wgLanguageSelectorShowCode;
+
+	if ($showCode === NULL) $showCode = $wgLanguageSelectorShowCode;
 
 	static $id = 0;
 	$id += 1;
@@ -344,7 +360,10 @@ function wfLanguageSelectorHTML( $style = NULL, $class = NULL, $selectorstyle = 
 	$html .= Xml::openElement('select', array('name' => 'setlang', 'id' => 'languageselector-select-'.$id, 'style' => $selectorstyle));
 
 	foreach ($wgLanguageSelectorLanguages as $ln) {
-		$html .= Xml::option($wgContLang->getLanguageName($ln), $ln, $ln == $code);
+		$name = $wgContLang->getLanguageName($ln);
+		if ($showCode) $name = wfBCP47($ln) . ' - ' . $name;
+
+		$html .= Xml::option($name, $ln, $ln == $code);
 	}
 
 	$html .= Xml::closeElement('select');
