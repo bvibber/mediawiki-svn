@@ -38,14 +38,16 @@ class ClickTrackingHooks {
 	
 	
 	/*
-	 * Gives the user clicktrack JS if they're in the threshhold
+	 * check to see if user is throttled
 	 */
-	public static function addJSThrottle(){
+	public static function isUserThrottled(){
 		global $wgClickTrackThrottle;
 		if(rand() % $wgClickTrackThrottle == 0){
-			ClickTrackingHooks::addJS();
+			return 'false';
 		}
-		return true;
+		else {
+			return 'true';
+		}
 	}
 	
 	
@@ -53,11 +55,14 @@ class ClickTrackingHooks {
 	 * Adds JavaScript
 	 */
 	public static function addJS(){
-			UsabilityInitiativeHooks::initialize();
-			UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
-			UsabilityInitiativeHooks::addVariables(
-				array( 'wgTrackingToken' => ClickTrackingHooks::get_session_id() )
-			);
+		UsabilityInitiativeHooks::initialize();
+		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
+		UsabilityInitiativeHooks::addVariables(
+			array( 
+				'wgTrackingToken' => ClickTrackingHooks::get_session_id(),
+				'wgClickTrackingIsThrottled' => ClickTrackingHooks::isUserThrottled()
+			)
+		);
 		
 		return true;
 		
