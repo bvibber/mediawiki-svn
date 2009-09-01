@@ -41,6 +41,13 @@ $messages['br'] = array(
 	'semanticinternalobjects-desc' => 'Kefluniadur traezoù diabarzh e Semanctic MediaWiki',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'semanticinternalobjects-desc' => 'Postavljanje unutrašnjih objekata u Semantic MediaWiki',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -62,6 +69,13 @@ $messages['fr'] = array(
 	'semanticinternalobjects-desc' => 'Réglage des objets internes dans Semantic MediaWiki',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'semanticinternalobjects-desc' => 'Configuracións de obxectos internos en Semantic MediaWiki',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -81,6 +95,13 @@ $messages['hil'] = array(
  */
 $messages['hsb'] = array(
 	'semanticinternalobjects-desc' => 'Nastajenje internych objektow w Semantic MediaWiki',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'semanticinternalobjects-desc' => 'Configuration de objectos interne in Semantic MediaWiki',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -151,5 +172,12 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'semanticinternalobjects-desc' => 'Установка внутренних объектов в Semantic MediaWiki',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'semanticinternalobjects-desc' => 'Nastavenie vnútorných objektov v Semantic MediaWiki',
 );
 

@@ -35,10 +35,11 @@ $messages['ar'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'usabilityinitiative' => 'Ініцыятыва па паляпшэньню зручнасьці і прастаты выкарыстаньня',
-	'usabilityinitiative-desc' => 'Дапаўненьні распрацаваныя ў межах ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня MediaWiki',
+	'usabilityinitiative' => 'Ініцыятыва па паляпшэньні зручнасьці і прастаты выкарыстаньня',
+	'usabilityinitiative-desc' => 'Дапаўненьні распрацаваныя ў межах ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня MediaWiki',
 );
 
 /** Breton (Brezhoneg)

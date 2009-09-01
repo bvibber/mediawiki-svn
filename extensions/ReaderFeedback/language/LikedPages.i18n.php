@@ -75,6 +75,17 @@ $messages['bs'] = array(
 	'likedpages-graphs' => 'podaci rejtinga',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'likedpages' => 'Sider som er bedømt som gode',
+	'likedpages-leg' => 'Find sider som er bedømt som gode',
+	'likedpages-list' => 'Nedenfor er en liste med sider sorteret efter deres læserbedømmelse.',
+	'likedpages-none' => 'Der er ingen sider i listen',
+	'likedpages-graphs' => 'Bedømmelsesdata',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */

@@ -86,6 +86,17 @@ $messages['bs'] = array(
 	'problempages-graphs' => 'podaci rejtinga',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'problempages' => 'Sider som er bedømt som dårlige',
+	'problempages-leg' => 'Find sider som er bedømt som dårlige',
+	'problempages-list' => 'Nedenfor er en liste med sider sorteret efter deres læserbedømmelse.',
+	'problempages-none' => 'Der er ingen sider i listen',
+	'problempages-graphs' => 'Bedømmelsesdata',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author UV

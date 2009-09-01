@@ -113,6 +113,13 @@ $messages['fy'] = array(
 	'categorytests-desc' => 'Funksjes foar kategorytests',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'categorytests-desc' => 'Funcións para facer probas de categoría',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

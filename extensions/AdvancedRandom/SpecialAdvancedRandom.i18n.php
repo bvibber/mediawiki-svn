@@ -144,9 +144,12 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'advancedrandom' => 'Προχωρημένη τυχαία πρόσβαση',
+	'advancedrandom-desc' => 'Πάρτε μια τυχαία σελίδα από μια οποιαδήποτε περιοχή, και συζητήστε ή δημιουργήστε σελίδες θεμάτων που συνδέει σε μια δωσμένη σελίδα.
+Μπορεί να χρησιμοποιηθεί σαν [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] για να πάρετε μια τυχαία συζήτηση ενός επιλεγμένου άρθρου, ή σαν το [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] για να πάρετε ένα τυχαίο αρχείο GFDL',
 );
 
 /** Esperanto (Esperanto)

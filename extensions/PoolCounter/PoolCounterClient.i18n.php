@@ -200,6 +200,17 @@ $messages['oc'] = array(
 	'poolcounter-remote-error' => 'Error del servidor de comptador de gropament : $1',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'poolcounter-desc' => 'Client MediaWiki për ël pool counter daemon poolcounter.py',
+	'poolcounter-connection-error' => 'Eror an colegandse al server ëd pool counter: $1',
+	'poolcounter-read-error' => 'Eror an lesend dal server ëd pool counter',
+	'poolcounter-write-error' => 'Eror an scrivend al server ëd pool counter',
+	'poolcounter-remote-error' => 'Eror dël server ëd pool counter: $1',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

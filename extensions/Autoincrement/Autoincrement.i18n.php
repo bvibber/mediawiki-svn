@@ -62,6 +62,13 @@ $messages['fr'] = array(
 	'autoincrement-desc' => "Une variable <nowiki>{{AUTOINCREMENT}}</nowiki> s'incrémentant à chaque appel",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'autoincrement-desc' => 'Unha variable de conexión que engade a variable autoincrementable <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

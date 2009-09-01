@@ -1166,9 +1166,43 @@ Ekstensi "$1" tidak ada dalam versi "$2".',
 	'extdist-choose-extension' => '
 
 Pilih ekstensi yang ingin Anda unduh:',
+	'extdist-wc-empty' => 'Konfigurasi direktori salinan pekerjaan Anda tidak memiliki ekstensi yang harus didistibusikan!',
 	'extdist-submit-extension' => 'Lanjutkan',
 	'extdist-current-version' => 'Versi pengembangan (trunk)',
+	'extdist-choose-version' => '<big>Anda mengunduh  <b>$1</b> ekstensi.</big>
+
+Pilih versi MediaWiki anda.
+
+Kebanyakan ekstensi bekerja di beberapa versi program MediaWiki, jadi jika versi MediaWiki Anda tidak ada di sini, atau jika Anda membutuhkan fitur ekstensi terbaru, coba gunakan versi terbaru.',
+	'extdist-no-versions' => 'Ekstensi terpilih ($1) tidak tersedia di versi manapun!',
 	'extdist-submit-version' => 'Lanjutkan',
+	'extdist-no-remote' => 'Tidak dapat terhubung ke client subversio.',
+	'extdist-remote-error' => 'Kesalahan dari subversion client: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'respon tidak sah dari subversion client.',
+	'extdist-svn-error' => 'Subversion mengalami masalah: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Tidak dapat memproses XML dari "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar Mengembalikan kode keluar $1:',
+	'extdist-created' => "Sebuah versi snapshot <b>$2</b> dari <b>$1</b> ekstensi untuk MediaWiki <b>$3</b> telah dibuat. Download anda akan dimulai secara otomatis dalam 5 detik. 
+
+URL untuk snapshot ini adalah:  
+:$4  
+Ini dapat digunakan untuk men-download langsung ke server, tapi tolong jangan tandai itu, karena isinya tidak akan diupdate, dan dapat dihapus di kemudian hari. 
+
+Arsip tar harus diekstrak ke direktori ekstensi anda. Sebagai contoh, pada sebuah OS unix-like:  
+
+<pre>  
+tar -xzf $5 -C /var/www/mediawiki/extensions  
+</pre>  
+
+Pada Windows, Anda dapat menggunakan [http://www.7-zip.org/ 7-zip] untuk mengekstrak file.  
+
+Jika Wiki Anda di server jauh, ekstrak file ke direktori sementara pada komputer lokal Anda, dan kemudian meng-upload'' 'semua''' file  yang diekstrak ke direktori ekstensi pada server. 
+
+Perhatikan bahwa beberapa ekstensi yang membutuhkan file yang bernama ExtensionFunctions.php, terletak di <tt>extensions/ExtensionFunctions.php</tt>, yaitu di''induk''direktori khusus ekstensi ini . Snapshot untuk perluasan ini berisi file ini sebagai tarbomb, diekstrak ke ./ExtensionFunctions.php. Jangan lalai untuk meng-upload file ini ke server jauh. 
+
+Setelah Anda ekstrak file, Anda harus mendaftarkan ekstensi di LocalSettings.php. Dokumentasi exktensi harus mempunyai petunjuk tentang cara untuk melakukan ini. 
+
+Jika Anda memiliki pertanyaan tentang sistem distribusi ekstensi ini, silakan ke [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => '
 
 Dapatkan ekstensi lain',

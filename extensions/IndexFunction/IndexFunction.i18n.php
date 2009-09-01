@@ -178,6 +178,14 @@ Molimo uklonite "$1" iz <nowiki>{{#index:}}</nowiki> sa {{PLURAL:$3|gornje stran
 	'index-submit' => 'Pošalji',
 	'index-disambig-start' => "'''$1''' se može odnositi na nekoliko stranica:",
 	'index-emptylist' => 'Nema stranica povezanih sa "$1"',
+	'index-expand-detail' => 'Prikaži stranice koje su indeksirane pod tim naslovom',
+	'index-hide-detail' => 'Sakrij spisak stranica',
+	'index-no-results' => 'Pretraga nije dala rezultata',
+	'index-search-explain' => 'Ova stranica koristi pretragu po prefiksima.
+
+Upišite prvih par znakova i pritisnite dugme Pošalji za traženje naslova stranica i indeksiranih stavki koje počinju sa traženim izrazom',
+	'index-details-explain' => 'Stavke sa strelicama su stavke indeksa.
+Kliknite na strelicu za prikaz svih stranica indeksiranih pod tim naslovom.',
 );
 
 /** Catalan (Català)
@@ -348,6 +356,14 @@ Por favor, elimine "$1" de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|na páxina d
 	'index-submit' => 'Enviar',
 	'index-disambig-start' => "'''$1''' pódese referir a varias páxinas:",
 	'index-emptylist' => 'Non hai páxinas asociadas con "$1"',
+	'index-expand-detail' => 'Mostrar as páxinas indexadas baixo este título',
+	'index-hide-detail' => 'Agochar a lista de páxinas',
+	'index-no-results' => 'A procura non devolveu resultados',
+	'index-search-explain' => 'Esta páxina usa unha procura por prefixos.  
+
+Insira os primeiros caracteres e prema o botón "Enviar" para buscar títulos de páxinas e entradas de índice que comezan coa secuencia de procura',
+	'index-details-explain' => 'As entradas con frechas son entradas de índice.
+Prema na frecha para mostrar todas as páxinas indexadas con ese título.',
 );
 
 /** Swiss German (Alemannisch)
@@ -453,17 +469,35 @@ Per favor remove "$1" del <nowiki>{{#index:}}</nowiki> in le {{PLURAL:$3|pagina|
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'indexfunc-desc' => 'Fungsi parser untuk membuat pengalihan otomatis dan halaman disambiguasi',
 	'indexfunc-badtitle' => 'Judul tidak sah: "$1"',
+	'indexfunc-editwarning' => 'Peringatan:
+Judul ini adalah judul indeks {{PLURAL:$2|halaman|halaman}} berikut :
+$1  
+Pastikan halaman yang akan Anda  buat tidak ada pada judul yang berbeda.  
+Jika Anda membuat halaman ini, hapus halaman ini dari <nowiki>{{#index:}}</nowiki> di atas {{PLURAL:$2|halaman|halaman}}.',
 	'indexfunc-index-exists' => 'Halaman "$1" sudah ada',
+	'indexfunc-movewarn' => 'Peringatan:
+"$1" adalah judul indeks {{PLURAL:$3|halaman|halaman}} berikut :  
+$2
+Hapus "$1" dari <nowiki>{{#index:}}</nowiki> di atas {{PLURAL:$3|halaman|halaman}}.',
 	'index' => 'Indeks',
 	'index-legend' => 'Cari di indeks',
 	'index-search' => 'Cari:',
 	'index-submit' => 'Kirim',
 	'index-disambig-start' => "'''$1''' dapat mengacu kepada:",
 	'index-emptylist' => 'Tidah ada halaman yang berhubungan dengan "$1"',
+	'index-expand-detail' => 'Lihat indek halaman dibawah judul ini',
+	'index-hide-detail' => 'Sembunyikan daftar halaman',
+	'index-no-results' => 'Pencarian, tidak ada hasil',
+	'index-search-explain' => 'Halaman ini menggunakan pencarian prefix.
+
+ketikan beberapa karakter pertama dan tekan tombol kirim untuk mencari judul halaman dan masukan indek yang dimulai dengan kata pencarian',
+	'index-details-explain' => 'Masukan dengan panah adalah masukan indek.
+Clik panah untuk melihat semua halaman indek dibawah judul itu.',
 );
 
 /** Italian (Italiano)
@@ -743,6 +777,14 @@ Ta bort "$1" från <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|sidan|sidorna}} ovan
 Skriv några inledande tecken och klicka på {{int:index-submit ("<index-submit>")}} för att hitta sidor och stycken som inleds med din söksträng.',
 	'index-details-explain' => 'Poster med pilar är innehållsförteckningar.
 Klicka på pilen för att se hela innehållsförteckningen.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'index-search' => 'వెతుకు:',
+	'index-submit' => 'దాఖలుచెయ్యి',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

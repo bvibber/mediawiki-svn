@@ -1289,14 +1289,21 @@ Probabilemente non existe tal usator.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
 	'regexblock-already-blocked' => '$1 telah diblokir.',
 	'regexblock-expire-duration' => '1 jam,2 jam,4 jam,6 jam,1 hari,3 hari,1 minggu,2 minggu,1 bulan,3 bulan,6 bulan,1 tahun,selamanya',
+	'regexblock-reason-name' => 'Pengguna ini dicegah dari penyuntingan karena vandalisme atau kekacauan lain.
+Jika anda percaya ini adalah kesalahan, silahkan [[$1|hubungi kami]]',
+	'regexblock-reason-regex' => 'Pengguna ini dicegah dari penyuntingan karena vandalisme atau kekacauan lain oleh pengguna dengan nama yang mirip.
+Silahkan buat nama pengguna lain atau [[$1|hubungi kami]] tentang permasalahan ini',
 	'regexblock-form-reason' => 'Alasan:',
 	'regexblock-form-expiry' => 'Kadaluwarsa:',
 	'regexblock-form-match' => 'Pertandingan tepat',
+	'regexblock-form-submit' => 'Blok pengguna ini',
+	'regexblock-match-stats-record' => "$1 diblok '$2' pada '$3' saat '$4', masuk log dari alamat '$5'",
 	'regexblock-view-all' => 'Semua',
 	'regexblock-view-go' => 'Tuju ke',
 	'regexblock-view-match' => '(pertandingan tepat)',

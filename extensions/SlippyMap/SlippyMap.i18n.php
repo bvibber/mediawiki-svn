@@ -579,8 +579,10 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
+	'slippymap_desc' => 'Menambahkan tag <tt>&lt;slippymap&gt;</tt> yang memungkinkan untuk melekatkan peta statis & dinamis . Mendukung beberapa layanan peta termasuk [http://openstreetmap.org OpenStreetMap] dan NASA Worldwind',
 	'slippymap_error' => 'Galat $1: $2',
 	'slippymap_errors' => 'Galat $1:',
 );

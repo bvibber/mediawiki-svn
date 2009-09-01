@@ -80,6 +80,16 @@ $messages['fr'] = array(
 	'replaceset-error-regexbadmodifier' => 'Le modificateur d’expression régulière  « $1 » est invalide.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'replaceset-desc' => 'Engade unha función analítica <nowiki>{{#replaceset}}</nowiki> utilizada para a substitución de fragmentos de texto por datos con formato',
+	'replaceset-error-calllimit' => 'Atinxiuse o límite de chamadas da función ReplaceSet.',
+	'replaceset-error-regexnoend' => 'Fáltalle o delimitador de peche "$2" ao patrón de expresións regulares "$1"',
+	'replaceset-error-regexbadmodifier' => 'O modificador de expresións regulares "$1" non é válido.',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -98,6 +108,16 @@ $messages['hsb'] = array(
 	'replaceset-error-calllimit' => 'Limit zawołanjow ReplaceSet je docpěty.',
 	'replaceset-error-regexnoend' => 'Mustrej regularnych wurazow "$1" kónčne dźělatko \'$2\' pobrachuje',
 	'replaceset-error-regexbadmodifier' => "Modifikator regularnych wurazow '$1' płaćiwy njeje.",
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'replaceset-desc' => 'Adde un function de analysator syntactic <nowiki>{{#replaceset}}</nowiki> pro reimplaciar sectiones de texto per datos formatate',
+	'replaceset-error-calllimit' => 'Le limite de appellos al function ReplaceSet ha essite attingite.',
+	'replaceset-error-regexnoend' => 'Al patrono del expression regular "$1" manca le delimitator final \'$2\'',
+	'replaceset-error-regexbadmodifier' => "Le modificator de expression regular '$1' non es valide.",
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -149,12 +169,13 @@ $messages['lb'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'replaceset-desc' => 'Voegt de parserfunctie <nowiki>{{#replaceset}}</nowiki> toe voor het vervangen van tekstdelen met opgemaakte gegevens',
 	'replaceset-error-calllimit' => 'De limiet van het aantal aanroepen van ReplaceSet is bereikt.',
-	'replaceset-error-regexnoend' => 'Het in het patroon "$1" van de reguliere expressie mist het sluitteken "$2"',
+	'replaceset-error-regexnoend' => 'In het regex-patroon "$1" ontbreekt het sluitteken \'$2\'',
 	'replaceset-error-regexbadmodifier' => 'De modifier "$1" van de reguliere expressie is niet geldig.',
 );
 

@@ -42,11 +42,16 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Aotake
  * @author Boivie
+ * @author Byrial
  * @author Purodha
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'ratinghistory-ave' => 'Average',
+	'ratinghistory-graph' => '$2 is a rating category (e.g. {{int:readerfeedback-reliability}}, {{int:readerfeedback-completeness}}, {{int:readerfeedback-npov}}, {{int:readerfeedback-presentation}}, or {{int:readerfeedback-overall}}).
+
+
+$3 is the page name for the rated page.',
 	'ratinghistory-ratings' => "'''(1)''' - {{int:readerfeedback-level-0}}
 '''(2)''' - {{int:readerfeedback-level-1}}
 '''(3)''' - {{int:readerfeedback-level-2}}
@@ -265,7 +270,13 @@ $messages['da'] = array(
 	'ratinghistory-table-rating' => 'Bedømmelse',
 	'ratinghistory-table-votes' => 'Stemmer',
 	'ratinghistory-none' => 'Der er endnu ikke nok læserbedømmelser til at vise grafer.',
-	'ratinghistory-ratings' => "'''Forklaring:''' '''(1)''' - Lav; '''(2)''' - Under middel; '''(3)''' - Middel; '''(4)''' - Over middel; '''(5)''' - Høj;",
+	'ratinghistory-ratings' => "'''Forklaring:''' '''(1)''' - Meget dårlig; '''(2)''' - Dårlig; '''(3)''' - Middel; '''(4)''' - God; '''(5)''' - Meget god;",
+	'ratinghistory-legend' => "Det '''daglige antal bedømmelser''' <font color=\"red\">''(rød)''</font>, den '''daglige gennemsnitsbedømmelse''' <font color=\"blue\">''(blå)''</font>
+og '''løbende gennemsnitsbedømmelse''' <font color=\"green\">''(grøn)''</font> vises i grafen nedenfor efter dato.
+Den '''løbende gennemsnitsbedømmelse''' er simpelthen gennemsnittet af alle de daglige bedømmelser ''inden for'' tidsperioden for hver dag.
+Bedømmelserne er:
+
+'''[1]''' - Meget dårlig; '''[2]''' - Dårlig; '''[3]''' - Middel; '''[4]''' - God; '''[5]''' - Meget god;",
 	'ratinghistory-graph-scale' => "'''Bedømmelser per dag''' <font color=\"red\">''(rød)''</font> vist i forholdet ''1:\$1''.",
 	'right-feedback' => 'Brug tilbagemeldingsformularen til at bedømme en side',
 );
@@ -833,13 +844,14 @@ $messages['ia'] = array(
 	'ratinghistory-table-rating' => 'Evalutation',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Non es disponibile sufficiente datos de evalutationes de lectores pro poter facer graphicos al momento.',
-	'ratinghistory-legend' => "Le '''evalutation medie de cata die''' <font color=\"blue\">''(blau)''</font> e  
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Mal; '''(2)''' - Mediocre; '''(3)''' - Acceptabile; '''(4)''' - Bon; '''(5)''' - Excellente;",
+	'ratinghistory-legend' => "Le '''numero de recensiones per die''' <font color=\"red\">''(rubie)''</font>, '''evalutation medie per die''' <font color=\"blue\">''(blau)''</font> e
 '''evalutation medie currente''' <font color=\"green\">''(verde)''</font> es representate infra, per data. Le  
-'''evalutation medie currente''' es simplemente le media de tote le evalutationes de cata die ''intra'' iste periodo de tempore pro cata die.
+'''evalutation medie currente''' es simplemente le media de tote le evalutationes per die ''intra'' iste periodo de tempore pro cata die.
+Le evalutationes es como seque:
 
-Scala: '''[1]''' - Mal; '''[2]''' - Basse; '''[3]''' - Medie; '''[4]''' - Alte; '''[5]''' - Excellente;
-
-Le '''numero de evalutationes per die''' <font color=\"red\">''(rubie)''</font> es monstrate in le graphicos infra, in scala ''1:\$1''.",
+'''(1)''' - Mal; '''(2)''' - Mediocre; '''(3)''' - Acceptabile; '''(4)''' - Bon; '''(5)''' - Excellente;",
+	'ratinghistory-graph-scale' => "Le '''numero de recensiones per die''' <font color=\"red\">''(rubie)''</font> es monstrate in scala ''1:\$1''.",
 	'right-feedback' => 'Usa le formulario de reaction pro evalutar un pagina',
 );
 

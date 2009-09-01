@@ -262,6 +262,17 @@ $messages['he'] = array(
 	'abcdownload' => 'הורדה:',
 );
 
+/** Hindi (हिन्दी)
+ * @author आलोक
+ */
+$messages['hi'] = array(
+	'abcabc' => 'एबीसी',
+	'abcpdf' => 'पीडीएफ़',
+	'abcps' => 'पोस्टस्क्रिप्ट',
+	'abcmidi' => 'मिडी',
+	'abcvorbis' => 'ओग वोर्बिस',
+);
+
 /** Hiligaynon (Ilonggo)
  * @author Tagimata
  */

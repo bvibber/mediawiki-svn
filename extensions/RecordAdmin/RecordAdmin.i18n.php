@@ -878,17 +878,24 @@ $messages['ia'] = array(
 	'recordadmin-modified' => 'Modificate',
 	'recordadmin-actions' => 'Actiones',
 	'recordadmin-needscontent' => 'Adder contento...',
+	'recordadmin-editwithform' => 'Modificar con formulario',
+	'recordadmin-typeinfo' => 'Registro de typo $1',
 	'right-recordadmin' => 'Cercar e modificar paginas de datos',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Kandar
  */
 $messages['id'] = array(
+	'recordadmin' => 'Catatan Administrasi',
+	'recordadmin-desc' => 'Sebuah [[Special:RecordAdmin|halaman istimewa]] untuk menemukan dan menyunting catatan halaman menggunakan formulir',
+	'recordadmin-categoryempty' => 'Tidak ada catatan. Silahkan catat kategori templat pada [[:$1|$1]].',
 	'recordadmin-select' => 'Pilih',
 	'recordadmin-createtype' => 'Masukkan nama tipe rekaman baru yang akan dibuat',
 	'recordadmin-recordtype' => 'tipe rekaman',
+	'recordadmin-newsearch' => 'Pencarian $1 baru',
 	'recordadmin-newrecord' => 'Pilih tipe rekaman lain',
 	'recordadmin-submit' => 'Kirim',
 	'recordadmin-create' => 'Pilih atau buat "$1" rekaman',
@@ -904,6 +911,7 @@ $messages['id'] = array(
 	'recordadmin-searchresult' => 'Hasil pencarian',
 	'recordadmin-nomatch' => 'Tidak ditemukan rekaman yang cocok!',
 	'recordadmin-edit' => 'Menyunting $2 rekaman "$1"',
+	'recordadmin-typeupdated' => '$1 perbaharui propertis',
 	'recordadmin-updatesuccess' => '$1 telah diperbarui',
 	'recordadmin-updateerror' => 'Ada kesalahan saat pembaruan',
 	'recordadmin-buttonsave' => 'Simpan',
@@ -916,6 +924,10 @@ $messages['id'] = array(
 	'recordadmin-created' => 'Telah dibuat',
 	'recordadmin-modified' => 'Dirubah',
 	'recordadmin-actions' => 'Tindakan',
+	'recordadmin-needscontent' => 'Menambah isi...',
+	'recordadmin-editwithform' => 'Sunting dengan formulir',
+	'recordadmin-typeinfo' => '$1 catatan',
+	'right-recordadmin' => 'Temukan dan sunting catatan halaman',
 );
 
 /** Italian (Italiano)

@@ -25,9 +25,10 @@ $messages['qqq'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'clicktracking' => 'Сачэньне за націскамі кампутарнай мышшу ў межах ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня',
+	'clicktracking' => 'Сачэньне за націскамі кампутарнай мышшу ў межах ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня',
 	'clicktracking-desc' => 'Сачэньне за націскамі кампутарнай мышшу, прызначанае для сачэньня за здарэньнямі, якія не вядуць да абнаўленьня старонкі',
 );
 
@@ -262,6 +263,14 @@ $messages['tr'] = array(
 $messages['vec'] = array(
 	'clicktracking' => "Traciamento click de l'Inissiativa par l'Usabilità",
 	'clicktracking-desc' => 'Traciamento dei click, par traciare i eventi che no provoca mia un refresh de la pagina.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'clicktracking' => 'Theo dõi nhấn chuột Sáng kiến Khả dụng',
+	'clicktracking-desc' => 'Theo dõi hành vi nhấn chuột, dùng để theo dõi các hoạt động không làm tươi trang',
 );
 
 /** Yue (粵語)

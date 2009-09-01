@@ -69,7 +69,30 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'readerfeedback-desc' => 'Die validering van bladsye maak dit vir lesers moontlik om terugvoer te gee in die vorm van kategoriese beoordelings',
+	'readerfeedback' => 'Wat dink u van hierdie bladsy?',
+	'readerfeedback-text' => "''Neem asseblief 'n oomblik om die bladsy hieronder te waardeer. 
+U terugvoer is waardevol en help ons om ons webwerf te verbeter.''",
+	'readerfeedback-reliability' => 'Betroubaarheid',
+	'readerfeedback-completeness' => 'Volledigheid',
+	'readerfeedback-npov' => 'Neutraliteit',
+	'readerfeedback-presentation' => 'Voorstelling',
+	'readerfeedback-overall' => 'Algeheel',
+	'readerfeedback-level-none' => '(onseker)',
+	'readerfeedback-level-0' => 'Sleg',
+	'readerfeedback-level-1' => 'Laag',
+	'readerfeedback-level-2' => 'In orde',
+	'readerfeedback-level-3' => 'Hoog',
+	'readerfeedback-level-4' => 'Uitstekend',
 	'readerfeedback-submit' => 'Dien in',
+	'readerfeedback-main' => 'Slegs inhoudelike bladsye kan gegradeer word.',
+	'readerfeedback-success' => "'''Dankie vir u waardering van hierdie bladsy!''' ([$3 Kommentaar of vrae?]).",
+	'readerfeedback-voted' => "'''U het al 'n waardering van die bladsy gemaak''' ([$3 Kommentaar of vrae?]).",
+	'readerfeedback-submitting' => 'Besig om in te dien…',
+	'readerfeedback-finished' => 'Baie dankie!',
+	'readerfeedback-tagfilter' => 'Etiket:',
+	'tooltip-ca-ratinghist' => 'Lesers se graderings van hierdie bladsy',
+	'specialpages-group-feedback' => 'Mening van die leser',
 );
 
 /** Arabic (العربية)
@@ -321,6 +344,35 @@ $messages['cs'] = array(
 	'readerfeedback-success' => "'''Děkujeme za posouzení této stránky!''' ([$3 Máte komentář nebo otázku?])",
 	'readerfeedback-voted' => "'''Zřejmě jste již tuto stránku hodnotili.'''  ([$3 Máte komentář nebo otázku?])",
 	'readerfeedback-submitting' => 'Odesílá se...',
+);
+
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'readerfeedback-desc' => 'Sidebedømmelse giver mulighed for læserne til at gve tilbagemeldinger i form af bedømmelse inden for et antal kategprier',
+	'readerfeedback' => 'Hvad synes du om denne side?',
+	'readerfeedback-text' => "''Brug gerne et øjeblik til at vurdere denne side nedenfor. Din tilbagemelding er værdifuld og hjælper os med at forbedre vores websider.''",
+	'readerfeedback-reliability' => 'Pålidelighed',
+	'readerfeedback-completeness' => 'Fuldstændighed',
+	'readerfeedback-npov' => 'Neutralitet',
+	'readerfeedback-presentation' => 'Præsentation',
+	'readerfeedback-overall' => 'Helhedsindtryk',
+	'readerfeedback-level-none' => '(ved ikke)',
+	'readerfeedback-level-0' => 'Meget dårlig',
+	'readerfeedback-level-1' => 'Dårlig',
+	'readerfeedback-level-2' => 'Middel',
+	'readerfeedback-level-3' => 'God',
+	'readerfeedback-level-4' => 'Meget god',
+	'readerfeedback-submit' => 'Indsend',
+	'readerfeedback-main' => 'Kun indholdssider kan bedømmes.',
+	'readerfeedback-success' => "'''Tak for at du bedømte denne side!''' ([$3 Kommentarer eller spørgsmål?])",
+	'readerfeedback-voted' => "'''Det ser ud til at du allerede har bedømt denne side.''' ([$3 Kommentarer eller spørgsmål?])",
+	'readerfeedback-submitting' => 'Indsender …',
+	'readerfeedback-finished' => 'Tak!',
+	'readerfeedback-tagfilter' => 'Bedømmelseskategori:',
+	'tooltip-ca-ratinghist' => 'Læserbedømmelser af denne side',
+	'specialpages-group-feedback' => 'Læserbedømmelse',
 );
 
 /** German (Deutsch)
@@ -826,6 +878,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'readerfeedback-desc' => 'Le validation de paginas permitte que lectores da lor opinion in forma de evalutationes per categoria',
 	'readerfeedback' => 'Que pensa tu de iste pagina?',
 	'readerfeedback-text' => "''Dedica un momento a judicar iste pagina. Tu opinion es importante e nos adjuta a meliorar nostre sito web.''",
 	'readerfeedback-reliability' => 'Accuratessa',
@@ -847,6 +900,7 @@ $messages['ia'] = array(
 	'readerfeedback-finished' => 'Gratias!',
 	'readerfeedback-tagfilter' => 'Etiquetta:',
 	'tooltip-ca-ratinghist' => 'Evalutationes de iste pagina per le lectores',
+	'specialpages-group-feedback' => 'Opinion del lector',
 );
 
 /** Indonesian (Bahasa Indonesia)

@@ -698,8 +698,15 @@ $messages['id'] = array(
 	'passwordreset-badtoken' => 'Token penyuntingan tidak sah',
 	'passwordreset-username' => 'Nama pengguna:',
 	'passwordreset-newpass' => 'Kata sandi baru:',
+	'passwordreset-confirmpass' => 'Konfirmasi password:',
 	'passwordreset-submit' => 'Buat ulang kata sandi',
 	'passwordreset-success' => 'Sandi telah diatur ulang untuk ID pengguna: $1',
+	'passwordreset-disableuser' => 'Akun pengguna di nonaktifkan?',
+	'passwordreset-disableuserexplain' => '(set password yang tidak valid - pengguna tidak dapat masuk log)',
+	'passwordreset-disablesuccess' => 'Akun pengguna telah di nonaktifkan untuk ID pengguna: $1',
+	'passwordreset-accountdisabled' => 'Akun telah di nonaktifkan',
+	'disabledusers' => 'Nonaktifkan pengguna',
+	'disabledusers-summary' => 'Ini adalah daftar pengguna yang telah di nonaktifkan melalui PasswordReset.',
 	'right-passwordreset' => 'Aturulang kunci untuk pengguna ([[Special:PasswordReset|special page]])',
 );
 
@@ -856,6 +863,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -872,7 +880,7 @@ $messages['lb'] = array(
 	'passwordreset-success' => "Passwuert fir d'Benotzernummer (User_id) $1 gouf zréckgesat",
 	'passwordreset-disableuser' => 'Benotzerkont deaktivéieren?',
 	'passwordreset-disableuserexplain' => '(en net vvalabele Passwuert-"Hash" setzen - de Benotzer ka sechnet aloggen)',
-	'passwordreset-disablesuccess' => 'De benotzerkont gouf desaktivéiert (Benotzernummer/user ID:$1)',
+	'passwordreset-disablesuccess' => 'De Benotzerkont gouf desaktivéiert (Benotzernummer/user ID:$1)',
 	'passwordreset-accountdisabled' => 'De Benotzerkont gouf desaktivéiert',
 	'disabledusers' => 'Desaktivéiert Benotzer',
 	'disabledusers-summary' => 'Dëst ass eng Lëscht vun den, iwwer PasswordReset, deaktivéierte Benotzer.',

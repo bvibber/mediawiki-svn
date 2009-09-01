@@ -65,6 +65,13 @@ $messages['fr'] = array(
 	'negref-desc' => 'Fournit une balise permettant de négocier l’emplacement de n’importe quelle balise <nowiki><ref/></nowiki> présente dans le texte saisi, afin de régler certains cas d’utilisations des modèles.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'negref-desc' => 'Proporciona unha etiqueta para negociar a localización de calquera etiqueta <nowiki><ref/></nowiki> dentro dun texto de entrada para corrixir as maiúsculas e minúsculas no uso dalgúns modelos',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -120,6 +127,13 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'negref-desc' => 'Biedt en Makeerung, om dä Plats vun däm Befähl <code><nowiki><ref/></nowiki></code> ze beshtemme, em enjejovve Täx, för beschtemmpte Schabloone iere Jebruch ze rette.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'negref-desc' => "Liwwert en Tag deen et erlaabt fir d'Plaz vun engem <nowiki><ref/></nowiki> Tag bannert engem Text, dee vu Bnotzer agi gëtt, festzelleeën, dëst fir datt verschidde Schabloune korrekt fonctionnéieren.",
 );
 
 /** Macedonian (Македонски)

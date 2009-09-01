@@ -53,6 +53,14 @@ $messages['bg'] = array(
 	'othersites' => 'Други сайтове',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'othersites' => "Lec'hiennoù all",
+	'othersites-desc' => "Dilec'hiañ a ra al liammoù etrewiki all estreget al liammoù yezh en o boest etrefas dezho o-unan",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

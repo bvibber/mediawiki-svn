@@ -51,6 +51,13 @@ $messages['bg'] = array(
 	'tooltip-desc' => 'Добавя етикетите <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'tooltip-desc' => 'Ouzhpennañ a ra ur valizenn <tt><nowiki><tooltip></nowiki></tt> ha <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

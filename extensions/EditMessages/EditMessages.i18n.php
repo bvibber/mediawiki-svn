@@ -641,10 +641,21 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Penyunting berbasis-Web]] dari berkas Messages*.php yang banyak',
+	'editmessages' => 'Sunting pesan',
+	'editmsg-target' => 'Pesan sasaran :',
 	'editmsg-search' => 'Cari',
+	'editmsg-show-list' => 'Menampilkan nilai untuk nama pesan "$1"',
+	'editmsg-new-search' => 'Pencarian baru',
+	'editmsg-warning-parse1' => '* Nama pesan regex tidak cocok: $1',
+	'editmsg-warning-parse2' => '* Karakter kutipan diharapkan setelah arrow: $1',
+	'editmsg-warning-parse3' => '* Nilai akhir string tidak ditemukan: $1',
+	'editmsg-warning-file' => '* Kesalahan membaca berkas yang muncul untuk {{PLURAL:$2|bahasa|bahasa}} berikut: $1',
+	'editmsg-warning-mismatch' => '* Teks aslinya tidak memiliki nilai yang diharapkan untuk {{PLURAL:$2|bahasa|bahasa}} berikut: $1',
 );
 
 /** Italian (Italiano)

@@ -85,6 +85,14 @@ $messages['bg'] = array(
 	'newuseredit-summary' => 'Добавяне на [[{{int:newusermessage-template}}|приветствие]] на дискусионната страница на нов потребител',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'newusermessage-desc' => 'Ouzhpennañ a ra ur gemennadenn war pajenn gaozeal an implijerien nevez',
+	'newuseredit-summary' => "Oc'h ouzhpennañ [[{{int:newusermessage-template}}|ur c'hemenn degemer mat]] war pajenn gaozeal an implijer nevez",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

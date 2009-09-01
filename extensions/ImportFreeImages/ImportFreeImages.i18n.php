@@ -262,12 +262,16 @@ Aby to cynił, wobstaraj se pšosym API-kluc wót [http://www.flickr.com/service
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'importfreeimages' => 'Εισαγωγή ελεύθερων εικόνων',
+	'importfreeimages_nophotosfound' => "Δεν βρέθηκαν καθόλου φωτογραφίες για τα κριτήρια αναζήτησής σας '$1', παρακαλώ δοκιμάστε ξανά.",
+	'importfreeimages_invalidurl' => 'Το URL "$1" δεν είναι έγκυρη εικόνα Flickr.',
 	'importfreeimages_owner' => 'Δημιουργός',
 	'importfreeimages_importthis' => 'εισάγετε αυτό',
 	'importfreeimages_next' => 'Επόμενα $1',
+	'importfreeimages_filefromflickr' => '$1 από τον χρήστη <b>[$2]</b> από το flickr. Αυθεντικό URL',
 	'importfreeimages_promptuserforfilename' => 'Εισάγετε παρακαλώ ένα όνομα αρχείου προορισμό:',
 	'importfreeimages_returntoform' => "Ή κάνετε κλικ <a href='$1'>εδώ</a> για να επιστρέψετε στα αποτελέσματα αναζήτησης",
 );

@@ -27,6 +27,13 @@ $messages['br'] = array(
 	'magicnonumberedheadings-desc' => 'Ouzhpennañ a ra ar ger burzhudus "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'magicnonumberedheadings-desc' => 'Dodaje magičnu riječ "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** German (Deutsch)
  * @author Imre
  */
@@ -60,6 +67,13 @@ $messages['eu'] = array(
  */
 $messages['fr'] = array(
 	'magicnonumberedheadings-desc' => 'Ajoute le mot magique « <nowiki>__NONUMBEREDHEADINGS__</nowiki> »',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'magicnonumberedheadings-desc' => 'Engade a palabra máxica "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
 /** Swiss German (Alemannisch)

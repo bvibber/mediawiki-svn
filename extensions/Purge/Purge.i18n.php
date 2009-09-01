@@ -62,6 +62,14 @@ $messages['bg'] = array(
 	'purge' => 'изчистване',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'purge' => 'spurjañ',
+	'purge-desc' => "Ouzhpennañ a ra ur pempilh spurjañ war an holl bajennoù normal ha tremen a ra dreist gwiriadenn spurjañ an implijerien dizanv a-benn ma c'hallfent spurjañ ar grubuilh fonnus.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

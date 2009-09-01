@@ -289,6 +289,7 @@ $messages['ia'] = array(
 	'protectsection_desc' => 'Permitte al usatores autorisate de proteger partes de un pagina per medio del etiquetta <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Tu ha tentate adder o remover un section protegite',
 	'protectsection_modify' => 'Tu ha tentate modificar texto protegite',
+	'protectsection_add_above' => 'Tu essayava inserer texto ante un section protegite',
 	'protectsection_forbidden' => 'Prohibite',
 	'right-protectsection' => 'Proteger sectiones de paginas',
 );
@@ -406,6 +407,7 @@ $messages['nl'] = array(
 	'protectsection_desc' => 'Stelt gebruikers met de juiste rechten in staat delen van pagina te beveiligen met de tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'U probeerde een beveiligde sectie toe te voegen of te verwijderen',
 	'protectsection_modify' => 'U probeerde beveiligde tekst te bewerken',
+	'protectsection_add_above' => 'U hebt geprobeerd tekst toe te voegen juist voor een beveiligd gedeelte',
 	'protectsection_forbidden' => 'Niet toegestaan',
 	'right-protectsection' => 'Paginasecties beveiligen',
 );
@@ -457,6 +459,7 @@ $messages['pl'] = array(
 	'protectsection_desc' => 'Umożliwia uprawnionym użytkownikom zabezpieczenie części strony poprzez wstawienie znacznika <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Próbujesz dodać lub usunąć zabezpieczoną sekcję',
 	'protectsection_modify' => 'Próbujesz zmienić zabezpieczony tekst',
+	'protectsection_add_above' => 'Próbowałeś wstawić tekst przed zabezpieczoną sekcją',
 	'protectsection_forbidden' => 'Zabezpieczony',
 	'right-protectsection' => 'Zabezpieczanie sekcji strony',
 );

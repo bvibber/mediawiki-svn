@@ -379,7 +379,10 @@ Njegóźece se dataje budu se ned lašowaś, glědaj [[{{MediaWiki:Multipleuploa
  */
 $messages['el'] = array(
 	'multipleupload' => 'Επιφόρτιση πολλαπλών αρχείων',
+	'multipleupload-desc' => 'Επιτρέπει στους χρήστες να [[Special:MultipleUpload|φορτώνουν πολλαπλά αρχεία με τη μία]]',
+	'multipleupload-ignoreallwarnings' => "Αγνόηση '''όλων των προειδοποιήσεων''' και αποθήκευση των αρχείων.",
 	'multipleupload-saveallfiles' => 'Αποθηκεύστε όλα τα αρχεία',
+	'multipleupload-addresswarnings' => 'Παρακαλώ υπολογίστε όλες τις προειδοποιήσεις πριν την επαναφόρτωση αρχείων.',
 	'multipleupload-page' => '{{ns:project}}:Πολιτική διαγραφής αρχείων',
 	'multiupload-fileuploaded' => 'Το αρχείο ανέβηκε.',
 	'multiupload-toolbox' => 'Επιφόρτιση πολλαπλών αρχείων',
@@ -689,9 +692,10 @@ Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleu
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'multipleupload' => 'Fájlok feltöltése',
+	'multipleupload' => 'Több fájl feltöltése',
 	'multipleupload-desc' => 'Lehetővé teszi a szerkesztők számára [[Special:MultipleUpload|egyszerre több fájl feltöltését]]',
 	'multipleupload-ignoreallwarnings' => "Az '''összes figyelmeztetés''' mellőzése és a fájlok elmentése.",
 	'multipleupload-saveallfiles' => 'Összes fájl mentése',
@@ -707,6 +711,7 @@ Megadhatod a fájl '''célnevét''' és a hozzá tartozó '''összefoglalót''' 
 A nem megfelelő fájlok azonnal törölve lesznek, lásd a [[{{MediaWiki:Multipleupload-page}}|fájltörlési irányelveket]].",
 	'multiupload-fileuploaded' => 'Fájl feltöltve.',
 	'multiupload-toolbox' => 'Több fájl feltöltése',
+	'multiupload-no-files' => 'Válassz ki legalább egy fájlt a feltöltéshez',
 );
 
 /** Interlingua (Interlingua)

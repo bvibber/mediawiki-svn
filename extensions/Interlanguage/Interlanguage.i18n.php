@@ -34,6 +34,13 @@ $messages['br'] = array(
 	'interlanguage-desc' => 'Dastum a ra liammoù etreyezhoù adalek ur wiki all',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'interlanguage-desc' => 'Preuzima međujezičke linkove sa druge wiki',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */
@@ -74,6 +81,13 @@ $messages['eu'] = array(
  */
 $messages['fr'] = array(
 	'interlanguage-desc' => 'Permet de collecter les liens interlangues d’un autre wiki',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'interlanguage-desc' => 'Permite a obtención de ligazóns interlingüísticas desde outro wiki',
 );
 
 /** Swiss German (Alemannisch)

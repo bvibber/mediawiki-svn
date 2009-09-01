@@ -26,12 +26,15 @@ You have a comment on this page? Add it here or <span class="plainlinks">[{{full
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Fryed-peach
  */
 $messages['qqq'] = array(
 	'commentbox-desc' => '{{desc}}',
 	'commentbox-name' => '{{Identical|Name}}',
-	'commentbox-regex' => 'Regular expression that should match {{msg-mw|commentbox-first-comment-heading}}',
+	'commentbox-first-comment-heading' => '{{Identical|Comment}}',
+	'commentbox-regex' => 'Regular expression that should match {{msg-mw|commentbox-first-comment-heading}}
+{{Identical|Comment}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -39,6 +42,47 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'commentbox-name' => 'Naam:',
+	'commentbox-first-comment-heading' => '== Opmerkings ==',
+	'commentbox-regex' => '/\\n==\\s*Opmerkings\\s*==\\s*\\n/i',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'commentbox-desc' => 'Дадае поле камэнтару для вызначаных старонак',
+	'commentbox-intro' => '== Даданьне камэнтару... ==
+Вы маеце камэнтар да гэтай старонкі? Дадайце яго тут альбо <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} непасрэдна адрэдагуйце старонку]</span>.',
+	'commentbox-savebutton' => 'Захаваць камэнтар',
+	'commentbox-name' => 'Імя:',
+	'commentbox-name-explanation' => '<small>(Падказка: Калі Вы [[Special:UserLogin|ўвойдзеце ў сыстэму]], Вам не патрэбна будзе ўводзіць Ваша тут імя ўручную)</small>',
+	'commentbox-log' => 'Новыя камэнтары',
+	'commentbox-first-comment-heading' => '== Камэнтары ==',
+	'commentbox-regex' => '/\\n==\\s*Камэнтары\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Памылка пад час стварэньня камэнтара',
+	'commentbox-error-page-nonexistent' => 'Гэта старонка не існуе!',
+	'commentbox-error-namespace' => 'У гэтай прасторы назваў камэнтары забароненыя!',
+	'commentbox-error-empty-comment' => 'Пустыя камэнтары не дазволеныя!',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'commentbox-desc' => 'Dodaje kutiju za komentare na određene stranice',
+	'commentbox-intro' => '== Dodajte komentar... ==
+Želite komentirati na ovoj stranici? Dodajte ovdje ili <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} direktno uredite stranicu]</span>.',
+	'commentbox-savebutton' => 'Sačuvaj komentar',
+	'commentbox-name' => 'Ime:',
+	'commentbox-name-explanation' => '<small>(Savjet: Ako se [[Special:UserLogin|prijavite]], nećete morati ovdje ručno popunjavati Vaše ime)</small>',
+	'commentbox-log' => 'Novi komentari',
+	'commentbox-first-comment-heading' => '== Komentari ==',
+	'commentbox-regex' => '/\\n==\\s*Komentari\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Greška pri pravljenju komentara',
+	'commentbox-error-page-nonexistent' => 'Ova stranica ne postoji!',
+	'commentbox-error-namespace' => 'Komentari nisu dozvoljeni u ovom imenskom prostoru!',
+	'commentbox-error-empty-comment' => 'Prazni komentari nisu dozvoljeni!',
 );
 
 /** German (Deutsch) */
@@ -134,6 +178,25 @@ Vous avez un commentaire sur cette page ? Ajoutez-le ici ou <span class="plainli
 	'commentbox-error-page-nonexistent' => "Cette page n'existe pas !",
 	'commentbox-error-namespace' => 'Les commentaires ne sont pas autorisés dans cet espace de noms !',
 	'commentbox-error-empty-comment' => 'Les commentaires vides ne sont pas autorisés !',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'commentbox-desc' => 'Engade unha caixa de comentarios a determinadas páxinas',
+	'commentbox-intro' => '== Engadir un comentario... ==
+Quere facer un comentario sobre esta páxina? Engádao aquí ou <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} edite a páxina directamente]</span>.',
+	'commentbox-savebutton' => 'Gardar o comentario',
+	'commentbox-name' => 'Nome:',
+	'commentbox-name-explanation' => '<small>(Consello: se [[Special:UserLogin|accede ao sistema]], non terá que encher manualmente o seu nome)</small>',
+	'commentbox-log' => 'Novos comentarios',
+	'commentbox-first-comment-heading' => '== Comentarios ==',
+	'commentbox-regex' => '/\\n==\\s*Comentarios\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Erro ao crear o comentario',
+	'commentbox-error-page-nonexistent' => 'Esta páxina non existe!',
+	'commentbox-error-namespace' => 'Os comentarios non están permitidos neste espazo de nomes!',
+	'commentbox-error-empty-comment' => 'Non se permiten comentarios baleiros!',
 );
 
 /** Swiss German (Alemannisch)

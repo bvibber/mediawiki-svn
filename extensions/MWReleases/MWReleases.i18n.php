@@ -61,6 +61,13 @@ $messages['fr'] = array(
 	'mwreleases-desc' => 'Ajoute une [[Mediawiki:Mwreleases-list|liste]] des versions supportées, accessible via l’API',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'mwreleases-desc' => 'Engade unha [[Mediawiki:Mwreleases-list|lista]] das versións soportadas, accesible a través da API',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -157,6 +164,13 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'mwreleases-desc' => 'Добавляет [[Mediawiki:Mwreleases-list|список]] поддерживаемых выпусков, доступных через API',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'mwreleases-desc' => 'Pridáva [[Mediawiki:Mwreleases-list|zoznam]] podporovaných vydaní prístupných prostredníctvom API',
 );
 
 $messages['yue'] = array(

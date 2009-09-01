@@ -64,6 +64,13 @@ $messages['be-tarask'] = array(
 	'titlekey-desc' => 'Праграмная забесьпячэньне для падказак па першых літарах назвы ў пошуку',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'titlekey-desc' => 'Stignad da ginnig enklaskoù dre rakgerioù titloù',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

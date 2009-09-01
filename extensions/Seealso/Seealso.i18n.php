@@ -23,10 +23,12 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Naudefj
  * @author SPQRobin
  */
 $messages['af'] = array(
 	'seealso' => 'Sien ook',
+	'seealso-desc' => "Gelokaliseerde 'Sien ook' opskrifte met behulp van die <code><nowiki><seealso></nowiki></code> etiket",
 );
 
 /** Arabic (العربية)

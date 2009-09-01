@@ -174,7 +174,11 @@ $messages['bs'] = array(
 	'deletebatch-link-back' => 'Nazad na posebnu stranicu',
 	'deletebatch-as' => 'Pokreni skriptu kao:',
 	'deletebatch-or' => '<b>ili</b>',
+	'deletebatch-delete' => 'Obriši',
 	'deletebatch-page' => 'Stranice koje će biti obrisane:',
+	'deletebatch-processing-from-file' => 'brisanje stranica sa spiska datoteka',
+	'deletebatch-processing-from-form' => 'brisanje stranica iz obrazca',
+	'deletebatch-file-bad-format' => 'Datoteka bi trebala biti u formi običnog teksta',
 	'deletebatch-file-missing' => 'Ne možete se pročitati navedena datoteka',
 	'deletebatch-select-yourself' => 'vi',
 );

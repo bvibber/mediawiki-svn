@@ -26,6 +26,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author Meno25
  */
@@ -33,6 +34,7 @@ $messages['qqq'] = array(
 	'expandtemplates-desc' => 'Short description of the ExpandTemplates extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'expand_templates_intro' => 'This is the explanation given in the heading of the [[Special:ExpandTemplates]] page; it describes its functionality to the users.',
 	'expand_templates_input' => '{{Identical|Input text}}',
+	'expand_templates_output' => '{{Identical|Result}}',
 	'expand_templates_ok' => '{{Identical|OK}}',
 	'expand_templates_preview' => '{{Identical|Preview}}',
 );

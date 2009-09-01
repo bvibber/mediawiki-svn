@@ -296,10 +296,23 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'authorprotect' => 'Προστασία σελίδων από μη-συγγραφείς',
+	'authorprotect-desc' => 'Επιτρέπει στον συγγραφέα μιας σελίδας να την προστατέψει από άλλους χρήστες',
+	'authorprotect-notauthor' => 'Δεν είστε ο συγγραφέας αυτής της σελίδας',
+	'authorprotect-confirm' => 'Αλλαγή επιπέδων προστασίας',
+	'authorprotect-edit' => 'Περιορισμός επεξεργασιών σε συγγραφείς',
+	'authorprotect-move' => 'Περιορισμός μετακίνησης στους συγγραφείς',
 	'authorprotect-expiry' => 'Χρόνος λήξης',
 	'authorprotect-reason' => 'Λόγος',
+	'authorprotect-intro' => 'Χρησιμοποιείστε αυτή τη φόρμα για να κλειδώσετε τη σελίδα από μη-συγγραφείς',
+	'authorprotect-success' => 'Επιτυχής προστασία!',
+	'authorprotect-failure' => 'Ανεπιτυχής προστασία',
+	'protect-level-author' => 'Προστασία από μη-συγγραφείς',
+	'restriction-level-author' => 'Συγγραφικά-προστατευμένο',
+	'right-authorprotect' => 'Συγγραφικά προστατευμένες σελίδες',
 );
 
 /** Esperanto (Esperanto)

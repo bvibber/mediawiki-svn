@@ -20,6 +20,7 @@ $messages['en'] = array(
  */
 $messages['af'] = array(
 	'whosonline' => 'Wie is aanlyn',
+	'whosonline-desc' => "Vertoon [[Special:WhosOnline|'n lys]] van aangetekende en anonieme gebruikers wat tans aanlyn is",
 );
 
 /** Arabic (العربية)

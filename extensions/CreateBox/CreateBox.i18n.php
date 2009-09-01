@@ -168,8 +168,10 @@ Njamóžoš tós ten bok napóraś, ale móžoš jen [{{fullurl:{{FULLPAGENAME}}
 
 /** Greek (Ελληνικά)
  * @author Konsnos
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'createbox-desc' => 'Ειδικευμένο inputbox για δημιουργία σελίδων',
 	'createbox-create' => 'Δημιουργία',
 );
 

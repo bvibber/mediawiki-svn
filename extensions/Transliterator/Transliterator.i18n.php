@@ -70,6 +70,17 @@ $messages['be-tarask'] = array(
 	'transliterator-error-rulesize' => 'Правіла <code>$1</code> мае больш за $3 {{PLURAL:$3|сымбаль у|сымбалі ў|сымбаляў у}} у левай частцы ў [[MediaWiki:$2]]',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'transliterator-desc' => "Pourchas a ra un arc'hwel dielfennañ arventennadus evit an treuzlizherenniñ",
+	'transliterator-error-ambiguous' => 'Reolenn amjestr <code>$1</code> e [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Ereadur faziek <code>$1</code> e [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Ouzhpenn $1 {{PLURAL:$1|reolenn|reolenn}} e [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Ouzhpenn $3 {{PLURAL:$3|arouezenn|arouezenn}} zo gant ar reolenn <code>$1</code> war an tu kleiz e [[MediaWiki:$2]]',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -174,6 +185,8 @@ $messages['ia'] = array(
 	'transliterator-desc' => 'Forni un function configurabile de analysator syntactic pro transliteration',
 	'transliterator-error-ambiguous' => 'Regula ambigue <code>$1</code> in [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Syntaxe invalide <code>$1</code> in [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Plus de $1 {{PLURAL:$1|regula|regulas}} in [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Le regula <code>$1</code> ha plus de $3 {{PLURAL:$3|character|characteres}} a sinistra in [[MediaWiki:$2]]',
 );
 
 /** Indonesian (Bahasa Indonesia)

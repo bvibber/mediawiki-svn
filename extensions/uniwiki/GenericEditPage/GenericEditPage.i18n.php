@@ -678,14 +678,29 @@ Adde alcunes con le instrumentos in le barra de menu.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Kandar
  */
 $messages['id'] = array(
+	'gep-desc' => 'Tambahan Halaman suntingan agar lebih mudah',
+	'gep-emailsubject' => '[$1] Saran kategori: $2',
+	'gep-emailbody' => 'Pengguna "$1" menyarankan kategori "$2" untuk situs "$3".',
+	'gep-emailfailure' => 'Maaf, saran anda tidak dapat di proses.',
+	'gep-emailsuccess' => 'Terimakasih untuk menyarankan kategori: $1.',
 	'gep-categories' => 'Kategori',
+	'gep-addcategory' => 'Tambah kategori',
 	'gep-addcategorybutton' => 'Tambahkan',
+	'gep-suggestcategory' => 'Saran kategori',
+	'gep-suggestcategorybutton' => 'Kirim',
+	'gep-sections' => 'Bagian',
+	'gep-sectionnotdisabled' => 'Bagian ini tidak dapat di nonaktifkan',
+	'gep-addsection' => 'Tambah bagian',
 	'gep-addsectionbutton' => 'Tambahkan',
 	'gep-classicmode' => 'Mode klasik',
 	'gep-genericmode' => 'Mode generik',
+	'gep-nosectioninstructions' => 'Tidak ada bagian pada halaman ini.
+Tambahkan, menggunakan alat pada menu bar.',
+	'gep-nocategories' => 'Silahkan pilih setidaknya satu kategori sebelum menyimpan',
 );
 
 /** Italian (Italiano)

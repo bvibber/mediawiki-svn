@@ -138,8 +138,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'categorystepper-desc' => 'Παραθέτει μια κατηγορία ενός stepper box επιτρέποντας σε κάποιον να πλοηγείται μπροστά και πίσω αλφαβητικά μέσω ενίς η περισσότερων κατηγοριών στις οποίες βρίσκεται μια σελίδα',
 	'categorystepper-end' => '(Τέλος της κατηγορίας)',
 	'categorystepper-start' => '(Αρχή της κατηγορίας)',
 );

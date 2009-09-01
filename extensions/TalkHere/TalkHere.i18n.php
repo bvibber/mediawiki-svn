@@ -39,6 +39,22 @@ $messages['qqq'] = array(
 	'talkhere-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'talkhere-desc' => 'Voeg die besprekingsblad in hierdie bladsy',
+	'talkhere-foottext' => 'Bogenoemde opmerkings is moontlik deur besoekers gelaat. 
+
+Die administrateurs van hierdie webwerf neem geen verantwoordelikheid vir die inhoud van hierdie opmerkings nie.',
+	'talkhere-talkpage' => 'besprekingsblad',
+	'talkhere-notalk' => "''(nog geen opmerkings nie)''",
+	'talkhere-addcomment' => 'voeg opmerking by',
+	'talkhere-beforeinput' => 'Voeg u kommentaar hieronder by',
+	'talkhere-loading' => 'Besig om die wysigingsvenster te laai...',
+	'talkhere-collapse' => 'versteek wysigingsvenster',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

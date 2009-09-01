@@ -51,11 +51,20 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  * @author SPQRobin
  */
 $messages['af'] = array(
+	'countedits' => 'Tel wysigings',
+	'countedits-desc' => '[[Special:CountEdits|Spesiale blad]] wat die bydraes van gebruikers tel en die top-10 gebruikers lys',
+	'countedits-warning' => "'''Waarskuwing:''' Moenie 'n boek op sy voorblad beoordeel nie en moenie 'n gebruiker slegs op sy aantal wysigings beoordeel nie.",
 	'countedits-username' => 'Gebruikersnaam:',
 	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => 'Daar geen gebruiker met die naam $1 nie.',
+	'countedits-resultheader' => 'Resultate vir $1',
+	'countedits-resulttext' => '$1 het $2 {{PLURAL:$2|wysiging|wysigings}} gemaak',
+	'countedits-mostactive' => 'Aktiefste bydraers',
+	'countedits-nocontribs' => 'Daar was geen bydraes tot die wiki nie.',
 );
 
 /** Amharic (አማርኛ)
