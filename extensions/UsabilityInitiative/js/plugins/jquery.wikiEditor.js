@@ -30,6 +30,26 @@ $.wikiEditor.isSupported = function() {
 		return $.browser.name in supportedBrowsers && $.browser.versionNumber >= supportedBrowsers[$.browser.name];
 	} )( $.wikiEditor.supportedBrowsers[$( 'body.rtl' ).size() ? 'rtl' : 'ltr'] );
 };
+// Wraps gM from js2, but allows raw text to supercede
+$.wikiEditor.autoMsg = function( object, property ) {
+	// Accept array of possible properties, of which the first one found will be used
+	if ( typeof property == 'object' ) {
+		for ( i in property ) {
+			if ( property[i] in object || property[i] + 'Msg' in object ) {
+				property = property[i];
+				break;
+			}
+		}
+	}
+	if ( property in object ) {
+		return object[property];
+	} else if ( property + 'Msg' in object ) {
+		return gM( object[property + 'Msg'] );
+	} else {
+		return '';
+	}
+};
+
 $.fn.wikiEditor = function() {
 
 /* Initialization */
