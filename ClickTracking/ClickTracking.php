@@ -51,7 +51,7 @@ $wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
 $wgHooks['ArticleSaveComplete'][] = 'ClickTrackingHooks::storeNewContrib';
-$wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJSThrottle';
+$wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJS';
 
 // Set up the new API module
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
