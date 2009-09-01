@@ -1088,7 +1088,30 @@ modules: {
 		titleMsg: 'edittoolbar-tool-link-title',
 		id: 'edittoolbar-link-dialog',
 		// TODO: break this line
-		html: '<div id="edittoolbar-link-tabs"><ul><li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li><li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li></ul><div id="edittoolbar-link-dialog-tab-int"><form><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label> <input type="text" id="edittoolbar-link-int-target" /> <div id="edittoolbar-link-int-target-status" style="display: inline;"></div><br /><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label> <input type="text" id="edittoolbar-link-int-text" /></form></div><div id="edittoolbar-link-dialog-tab-ext"><form><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label> <input type="text" id="edittoolbar-link-ext-target" /><br /><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label> <input type="text" id="edittoolbar-link-ext-text" /></form></div></div>',
+		html: '\
+			<div id="edittoolbar-link-tabs">\
+				<ul>\
+					<li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li>\
+					<li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li>\
+				</ul>\
+				<div id="edittoolbar-link-dialog-tab-int">\
+					<form>\
+						<label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label>\
+						<input type="text" id="edittoolbar-link-int-target" />\
+						<div id="edittoolbar-link-int-target-status" style="display: inline;"></div><br />\
+						<label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label>\
+						<input type="text" id="edittoolbar-link-int-text" />\
+					</form>\
+				</div>\
+				<div id="edittoolbar-link-dialog-tab-ext">\
+					<form>\
+						<label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label>\
+						<input type="text" id="edittoolbar-link-ext-target" /><br />\
+						<label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label>\
+						<input type="text" id="edittoolbar-link-ext-text" />\
+					</form>\
+				</div>\
+			</div>',
 		init: function() {
 			$(this).find( '[rel]' ).each( function() {
 				$(this).text( gM( $(this).attr( 'rel' ) ) );
@@ -1102,7 +1125,9 @@ modules: {
 				// $(this).val() is the old value, before the keypress
 				if ( $( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
 					// Defer this until $(this).val() has been updated
-					setTimeout("$( '#edittoolbar-link-int-text' ).val( $( '#edittoolbar-link-int-target' ).val() );", 0);
+					setTimeout( function() {
+						$( '#edittoolbar-link-int-text' ).val( $( '#edittoolbar-link-int-target' ).val() );
+					}, 0 );
 			});
 			$( '#edittoolbar-link-int-text' ).bind( 'keypress paste', function() {
 				$(this).data( 'untouched', false );
@@ -1326,20 +1351,30 @@ modules: {
 	'insert-table': {
 		titleMsg: 'edittoolbar-tool-table-title',
 		id: 'edittoolbar-table-dialog',
-		html: '<form><fieldset><legend rel="edittoolbar-tool-table-dimensions"></legend>' +
-			'<table><tr><td class="label"><label for="edittoolbar-table-dimensions-columns"' +
-			' rel="edittoolbar-tool-table-dimensions-columns"></label></td>' +
-			'<td><input type="text" id="edittoolbar-table-dimensions-columns" size="2" /></td>' +
-			'<td class="label"><label for="edittoolbar-table-dimensions-rows"' +
-			' rel="edittoolbar-tool-table-dimensions-rows"></label></td>' +
-			'<td><input type="text" id="edittoolbar-table-dimensions-rows" size="2" /></td></tr>' +
-			'<tr><td class="label"><label for="edittoolbar-table-dimensions-headercolumns"' +
-			' rel="edittoolbar-tool-table-dimensions-headercolumns"></label></td>' +
-			'<td><input type="text" id="edittoolbar-table-dimensions-headercolumns" size="2" /></td>' +
-			'<td class="label"><label for="edittoolbar-table-dimensions-headerrows"' +
-			' rel="edittoolbar-tool-table-dimensions-headerrows"></label></td>' +
-			'<td><input type="text" id="edittoolbar-table-dimensions-headerrows" size="2" /></td></tr>' +
-			'</table></fieldset></form>',
+		html: '\
+			<form>\
+				<fieldset>\
+					<legend rel="edittoolbar-tool-table-dimensions"></legend>\
+					<table>\
+						<tr>\
+							<td class="label"><label for="edittoolbar-table-dimensions-columns"\
+								rel="edittoolbar-tool-table-dimensions-columns"></label></td>\
+							<td><input type="text" id="edittoolbar-table-dimensions-columns" size="2" /></td>\
+							<td class="label"><label for="edittoolbar-table-dimensions-rows"\
+								rel="edittoolbar-tool-table-dimensions-rows"></label></td>\
+							<td><input type="text" id="edittoolbar-table-dimensions-rows" size="2" /></td>\
+						</tr>\
+						<tr>\
+							<td class="label"><label for="edittoolbar-table-dimensions-headercolumns"\
+								rel="edittoolbar-tool-table-dimensions-headercolumns"></label></td>\
+							<td><input type="text" id="edittoolbar-table-dimensions-headercolumns" size="2" /></td>\
+							<td class="label"><label for="edittoolbar-table-dimensions-headerrows"\
+								rel="edittoolbar-tool-table-dimensions-headerrows"></label></td>\
+							<td><input type="text" id="edittoolbar-table-dimensions-headerrows" size="2" /></td>\
+						</tr>\
+					</table>\
+				</fieldset>\
+			</form>',
 		init: function() {
 			$(this).find( '[rel]' ).each( function() {
 				$(this).text( gM( $(this).attr( 'rel' ) ) );
@@ -1393,7 +1428,21 @@ modules: {
 		titleMsg: 'edittoolbar-tool-replace-title',
 		id: 'edittoolbar-replace-dialog',
 		// TODO: break this line
-		html: '<form><fieldset><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label> <input type="text" id="edittoolbar-replace-search" /><br /><label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label> <input type="text" id="edittoolbar-replace-replace" /><br /><input type="checkbox" id="edittoolbar-replace-case" /><label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label><br /><input type="checkbox" id="edittoolbar-replace-regex" /><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label><br /><input type="checkbox" id="edittoolbar-replace-all" /><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></fieldset></form>',
+		html: '\
+			<form>\
+				<fieldset>\
+					<label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label>\
+					<input type="text" id="edittoolbar-replace-search" /><br />\
+					<label for="edittoolbar-replace-replace" rel="edittoolbar-tool-replace-replace"></label>\
+					<input type="text" id="edittoolbar-replace-replace" /><br />\
+					<input type="checkbox" id="edittoolbar-replace-case" />\
+					<label for="edittoolbar-replace-case" rel="edittoolbar-tool-replace-case"></label><br />\
+					<input type="checkbox" id="edittoolbar-replace-regex" />\
+					<label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label><br />\
+					<input type="checkbox" id="edittoolbar-replace-all" />\
+					<label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label>\
+				</fieldset>\
+			</form>',
 		init: function() {
 			$(this).find( '[rel]' ).each( function() {
 				$(this).text( gM( $(this).attr( 'rel' ) ) );
