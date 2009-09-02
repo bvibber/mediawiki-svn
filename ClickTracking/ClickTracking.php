@@ -47,6 +47,8 @@ require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ClickTrackingHooks'] = $dir . 'ClickTracking.hooks.php';
 $wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
+$wgAutoloadClasses['SpecialClickTracking'] = $dir . 'SpecialClickTracking.php';
+
 
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
@@ -55,3 +57,12 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJS';
 
 // Set up the new API module
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
+
+//Special page setup
+$wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
+
+
+
+// Adds Internationalized Messages
+$wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';
+$wgExtensionAliasesFiles['ClickTracking'] = $dir . 'ClickTracking.alias.php';

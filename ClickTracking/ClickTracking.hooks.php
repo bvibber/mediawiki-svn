@@ -59,7 +59,11 @@ class ClickTrackingHooks {
 		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
 		UsabilityInitiativeHooks::addVariables(
 			array( 
-				'wgTrackingToken' => ClickTrackingHooks::get_session_id(),
+				'wgTrackingToken' => ClickTrackingHooks::get_session_id()
+			)
+		);
+		UsabilityInitiativeHooks::addLiteralVariables(
+			array( 
 				'wgClickTrackingIsThrottled' => ClickTrackingHooks::isUserThrottled()
 			)
 		);
