@@ -184,7 +184,10 @@ if ( version_compare( $wgVersion, '1.7', '<' ) ) {
 }
 
 # Add Extension Functions
-$wgExtensionFunctions[] = 'wfWikiArticleFeedsParserSetup';
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) )
+	$wgHooks['ParserFirstCallInit'][] = 'wfWikiArticleFeedsParserSetup';
+else
+	$wgExtensionFunctions[] = 'wfWikiArticleFeedsParserSetup';
 
 # Sets up the WikiArticleFeeds Parser hooks
 function wfWikiArticleFeedsParserSetup() {
@@ -196,6 +199,7 @@ function wfWikiArticleFeedsParserSetup() {
 	$wgParser->setHook( 'itemTags', array( $wgWikiArticleFeedsParser, 'itemTagsTag' ) );
 
 	$wgParser->setFunctionHook( 'itemtags', array( $wgWikiArticleFeedsParser, 'itemTagsFunction' ) );
+	return true;
 }
 
 # Attach Hooks
