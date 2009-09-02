@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation for Usability Initiative OptIn extension 
+ * Internationalisation for Usability Initiative OptIn extension
  * This is a subset of OptIn.i18n.php containing only a minimum set of messages needed for rendering links in the
  * personal tools portal (see OptIn::personalUrls)
  *
@@ -18,7 +18,6 @@ $messages['en'] = array(
 	'optin-leave' => 'Leave Beta',
 	'optin-feedback' => 'Beta feedback',
 );
-
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
