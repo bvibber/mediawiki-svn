@@ -13,6 +13,7 @@ class UsabilityInitiativeHooks {
 	private static $doOutput = false;
 	private static $messages = array();
 	private static $variables = array();
+	private static $literalVariables = array();
 	private static $styles = array();
 	private static $styleFiles = array(
 		'base_sets' => array(
@@ -128,6 +129,14 @@ class UsabilityInitiativeHooks {
 			self::$variables[$key] =
 				"var {$escapedVariableKey} = '{$escapedVariableValue}';";
 		}
+		
+		//literal variables, ie ones we do not want escaped as strings
+		foreach( self::$literalVariables as $key => $value){
+			$escapedVariableValue = Xml::escapeJsString( $value );
+			$escapedVariableKey = Xml::escapeJsString( $key );
+			self::$variables[$key] =
+				"var {$escapedVariableKey} = {$escapedVariableValue};";
+		}
 		if ( count( self::$variables ) > 0 ) {
 			$out->addScript(
 				Xml::tags(
@@ -216,11 +225,19 @@ class UsabilityInitiativeHooks {
 	}
 	
 	/**
-	 * Adds internationalized message definitions to the document for access
-	 * via javascript using the gM() function
-	 * @param array $messages Key names of messages to load
+	 * Adds variables that will be turned into global variables in JS
+	 * @param $variables array of "name" => "value"
 	 */
 	public static function addVariables( $variables ) {
 		self::$variables = array_merge( self::$variables, $variables );
 	}
+	
+	/**
+	 * Adds variables that will be turned into global variables in JS, but not escaped as strings
+	 * @param $variables array of "name" => "value"
+	 */
+	public static function addLiteralVariables( $variables ) {
+		self::$literalVariables = array_merge( self::$literalVariables, $variables );
+	}
+	
 }

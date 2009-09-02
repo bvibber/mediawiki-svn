@@ -13,7 +13,8 @@ $messages = array();
  */
 $messages['en'] = array(
 	'clicktracking' => 'Usability Initiative click tracking',
-	'clicktracking-desc' => 'Click tracking, intended for tracking events that do not cause a page refresh'
+	'clicktracking-desc' => 'Click tracking, intended for tracking events that do not cause a page refresh',
+	'clicktracking-title' => 'Aggregated user clicks'
 );
 
 /** Message documentation (Message documentation)
