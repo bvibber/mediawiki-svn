@@ -38,9 +38,6 @@ You can try it out again at anytime by clicking the "{{int:optin-try}}" link on 
 	'optin-deny-long' => 'Return to previous page',
 	'optin-submit-out' => 'Leave Beta',
 	'optin-submit-feedback' => 'Give feedback',
-	'optin-try' => 'Try Beta',
-	'optin-leave' => 'Leave Beta',
-	'optin-feedback' => 'Beta feedback',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => "Thank you for trying the Beta.
