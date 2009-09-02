@@ -41,7 +41,7 @@ class OptInHooks {
 			return true;
 		
 		// Loads opt-in messages
-		wfLoadExtensionMessages( 'OptIn' );
+		wfLoadExtensionMessages( 'OptInLink' );
 		
 		$fromquery = array();
 		if ( !( $wgRequest->wasPosted() ) ) {
