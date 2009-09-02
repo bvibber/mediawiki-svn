@@ -148,6 +148,8 @@ $wgAutoloadClasses['OptInHooks'] =
 	dirname( __FILE__ ) . '/OptIn.hooks.php';
 
 // Adds Internationalized Messages
+$wgExtensionMessagesFiles['OptInLink'] =
+	dirname( __FILE__ ) . '/OptInLink.i18n.php';
 $wgExtensionMessagesFiles['OptIn'] =
 	dirname( __FILE__ ) . '/OptIn.i18n.php';
 $wgExtensionAliasesFiles['OptIn'] =
