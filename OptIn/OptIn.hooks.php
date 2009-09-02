@@ -60,8 +60,9 @@ class OptInHooks {
 		$addLinks = array();
 		// For opted-in users, add a feedback link
 		if ( SpecialOptIn::isOptedIn( $wgUser ) ) {
-			$addLinks['betafeedback'] = array(
+			$addLinks['optin-feedback'] = array(
 				'text' => wfMsg( 'optin-feedback' ),
+				'key' => 'optin-feedback',
 				'href' => SpecialPage::getTitleFor( 'OptIn' )->getFullURL(
 					array_merge( $query, array( 'opt' => 'feedback' ) )
 				),
@@ -69,10 +70,9 @@ class OptInHooks {
 			);
 		}
 		// Inserts a link into personal tools
-		$addLinks['acaibeta'] = array(
-			'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
-				wfMsg( 'optin-leave' ) :
-				wfMsg( 'optin-try' ),
+		$key = SpecialOptIn::isOptedIn( $wgUser ) ? 'optin-leave' : 'optin-try';
+		$addLinks[$key] = array(
+			'text' => wfMsg( $key ),
 			'href' => SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query ),
 			'class' => 'no-text-transform'
 		);
