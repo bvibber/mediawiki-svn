@@ -15,8 +15,11 @@ $messages = array();
  */
 $messages['en'] = array(
 	'optin-try' => 'Try Beta',
+	'tooltip-pt-optin-try' => 'Try out new features',
 	'optin-leave' => 'Leave Beta',
+	'tooltip-pt-optin-leave' => 'Turn off new features',
 	'optin-feedback' => 'Beta feedback',
+	'tooltip-pt-optin-feedback' => 'Provide feedback about your experience with the new features',
 );
 
 /** Message documentation (Message documentation)
