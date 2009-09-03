@@ -832,7 +832,7 @@ js2AddOnloadHook( function() {
 				} ) )
 				.append( $j( '<img />' ).attr( {
 					'id': 'edittoolbar-link-int-target-status-loading',
-					'src': $j.wikiEditor.imgPath + 'loading.gif',
+					'src': $j.wikiEditor.imgPath + 'dialogs/loading.gif',
 					'alt': loadingMsg,
 					'title': loadingMsg
 				} ) )
