@@ -3764,7 +3764,7 @@ $messages['nov'] = array(
  * @author Meno25
  */
 $messages['oc'] = array(
-	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sistèma de coa per gerir las supressions]]',
+	'deletequeue-desc' => 'Crèa un [[Special:DeleteQueue|sistèma de coa per gerir las supressions]]',
 	'deletequeue-action-queued' => 'Supression',
 	'deletequeue-action' => 'Suggerís la supression',
 	'deletequeue-action-title' => 'Suggerís la supression de « $1 »',

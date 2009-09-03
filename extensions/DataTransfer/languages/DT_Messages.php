@@ -95,8 +95,12 @@ $messages['rtm'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'dt-desc' => 'Maak die laai en ontlaai van gestruktureerde gegewens in sjabloonaanroepe moontlik',
+	'viewxml' => 'Sien XML',
+	'dt_viewxml_docu' => 'Kies een van die volgende kategorieë en naamruimtes om in XML-formaat te sien.',
 	'dt_viewxml_categories' => 'Ketagorieë',
 	'dt_viewxml_namespaces' => 'Naamruimtes',
+	'dt_viewxml_simplifiedformat' => 'Vereenvoudigde formaat',
 	'dt_xml_namespace' => 'Naamruimte',
 	'dt_xml_pages' => 'Bladsye',
 	'dt_xml_page' => 'Bladsy',
@@ -106,6 +110,15 @@ $messages['af'] = array(
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Vrye teks',
+	'importxml' => 'Laai XML',
+	'dt_import_selectfile' => 'Kies die $1 lêer om te laai:',
+	'dt_import_encodingtype' => 'Enkoderingstipe',
+	'dt_import_editsummary' => '$1-laai',
+	'dt_import_importing' => 'Besig om te laai...',
+	'dt_import_success' => '$1 {{PLURAL:$1|bladsy|bladsye}} sal geskep word vanaf die lêer $2.',
+	'importcsv' => 'Laai CSV',
+	'dt_importcsv_badheader' => 'Fout: Die opskrif van kolom $1, "$2", moet "$3" of "$4" wees, of in die vorm "sjabloonnaam[veldnaam]" genoteer word.',
+	'right-datatransferimport' => 'Laai data',
 );
 
 /** Amharic (አማርኛ)

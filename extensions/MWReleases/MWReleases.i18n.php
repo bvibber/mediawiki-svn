@@ -152,6 +152,13 @@ $messages['pms'] = array(
 	'mwreleases-desc' => 'A gionta na [[Mediawiki:Mwreleases-list|lista]] dle vërsion apogià, visibila via API',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'mwreleases-desc' => 'Adiciona uma [[Mediawiki:Mwreleases-list|lista]] de versões suportadas, acessível através da API',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

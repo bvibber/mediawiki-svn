@@ -88,6 +88,15 @@ $messages['bg'] = array(
 	'selectcategory-subtitle' => 'Shift + ляв бутон на мишката за избор на множество последователни записи, Ctrl + ляв бутон на мишката за избор на непоследователни записи.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'selectcategory-title' => 'Diuzañ ar rummadoù',
+	'selectcategory-desc' => "Talvezout a ra d'an implijerien da ziuzañ rummadoù zo anezho dija pa zegasont kemmoù war ur bajenn",
+	'selectcategory-subtitle' => 'Pennlizh.+klik da ziuzañ meur a enmont stok-ha-stok, Ctrl+klik da ziuzañ enmontoù distok.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

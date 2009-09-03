@@ -174,6 +174,17 @@ $messages['bg'] = array(
 	'slippymap_code' => 'Уикикод за тази карта:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'slippymap_desc' => 'Ouzhpennañ a ra ur valizenn <tt>&lt;slippymap&gt;</tt> a dalvez da enframmañ kartennoù statek ha dinamek. Skorañ a ra meur a servij kartennoù en o zouez [http://openstreetmap.org OpenStreetMap] ha NASA Worldwind',
+	'slippymap_error' => '$1 fazi : $2',
+	'slippymap_errors' => '$1 fazi :',
+	'slippymap_code' => 'Kod wiki evit gwelet ar gartenn-mañ :',
+	'slippymap_button_code' => "Tapout ar c'hod wiki",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

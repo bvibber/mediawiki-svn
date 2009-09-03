@@ -280,6 +280,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'lookupuser' => 'Αναζήτηση πληροφοριών για τον χρήστη',
+	'lookupuser-desc' => '[[Special:LookupUser|Ανάκτηση πληροφοριών]] σχετικά με ένα χρήστη σαν την ηλεκτρονική του διεύθυνση και την ταυτότητα such as e-mail address and ID',
 	'lookupuser-intro' => 'Εισάγετε ένα όνομα χρήστη για να εμφανιστούν οι προτιμήσεις αυτού του χρήστη.',
 	'lookupuser-nonexistent' => 'Σφάλμα: Ο Χρήστης δεν υπάρχει',
 	'lookupuser-authenticated' => 'επιβεβαιωμένο στο $1',

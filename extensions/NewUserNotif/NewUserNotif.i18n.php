@@ -100,6 +100,17 @@ $messages['bg'] = array(
 В $3 беше регистрирана нова потребителска сметка, $2, на $4.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'newusernotifsubj' => 'Kemenn un implijer nevez evit $1',
+	'newusernotif-desc' => "Kas ur c'hemenn dre bostel pa vez krouet kontoù implijer",
+	'newusernotifbody' => 'Salud $1,
+
+Ur gont implijer nevez, $2, zo bet krouet war $3 da $4.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

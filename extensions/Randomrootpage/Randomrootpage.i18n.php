@@ -54,6 +54,14 @@ $messages['bg'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Специална страница]], която извлича случайна начална страница',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'randomrootpage' => 'Pajenn wrizienn dargouezhek',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Pajenn dibar]] a zegas ur bajenn wrizienn bennak, forzh pehini',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

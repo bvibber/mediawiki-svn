@@ -171,6 +171,13 @@ $messages['pms'] = array(
 	'negref-desc' => "A dà un tag për negossié la locassion ëd minca tag <nowiki><ref/></nowiki> an drinta ij test d'input për arzòlve cheich cas d'utilisassion djë stamp",
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'negref-desc' => 'Fornece uma etiqueta para negociar a localização de quaisquer etiquetas <nowiki><ref/></nowiki> dentro do texto para corrigir alguns casos de uso de predefinições',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

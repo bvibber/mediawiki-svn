@@ -31,6 +31,7 @@ $messages['qqq'] = array(
 $messages['be-tarask'] = array(
 	'clicktracking' => 'Сачэньне за націскамі кампутарнай мышшу ў межах ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня',
 	'clicktracking-desc' => 'Сачэньне за націскамі кампутарнай мышшу, прызначанае для сачэньня за здарэньнямі, якія не вядуць да абнаўленьня старонкі',
+	'clicktracking-title' => 'Групаваныя націскі кнопак мышы ўдзельнікам',
 );
 
 /** Breton (Brezhoneg)
@@ -47,6 +48,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'clicktracking' => 'Praćenje klikova u Inicijativi upotrebljivosti',
 	'clicktracking-desc' => 'Praćenje klikova, napravljeno za praćenje događaja koji ne proizvode osvježavanje stanice',
+	'clicktracking-title' => 'Sveukupni klikovi korisnika',
 );
 
 /** Czech (Česky)
@@ -55,6 +57,7 @@ $messages['bs'] = array(
 $messages['cs'] = array(
 	'clicktracking' => 'Sledování kliknutí pro Iniciativu použitelnosti',
 	'clicktracking-desc' => 'Sledování kliknutí pro sledování událostí, které nezpůsobují znovunačtení stránky',
+	'clicktracking-title' => 'Souhrn klikání uživatelů',
 );
 
 /** German (Deutsch)
@@ -71,14 +74,25 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'clicktracking' => 'Kliknjeńske pśeslědowanje iniciatiwy wužywajobnosći',
 	'clicktracking-desc' => 'Kliknjeńske pśeslědowanje, myslone za slědowanje tšojenjow, kótarež njezawinuju aktualizaciju boka',
+	'clicktracking-title' => 'Nakopjone wužywarske kliknjenja',
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'clicktracking' => 'Πατήστε παρακολούθηση της Πρωτοβουλίας Χρηστικότητας',
 	'clicktracking-desc' => 'Πατήστε παρακολούθηση, προορίζεται για την παρακολούθηση εκδηλώσεων που δεν προκαλούν ανανέωση σελίδας',
+	'clicktracking-title' => 'Συναθροισμένα κλικ χρήστη',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'clicktracking' => 'Käytettävyyshankkeen klikkausten seuranta',
+	'clicktracking-desc' => 'Klikkausten seuranta, tarkoituksena seurata tapahtumia, jotka eivät aiheuta sivun uudelleenlataamista.',
 );
 
 /** French (Français)
@@ -87,6 +101,7 @@ $messages['el'] = array(
 $messages['fr'] = array(
 	'clicktracking' => "Suivi de clics de l'initiative d'utilisabilité",
 	'clicktracking-desc' => 'Suivi de clics, visant à traquer les événements qui ne causent pas un rechargement de page',
+	'clicktracking-title' => "Agrégation des clics d'utilisateurs",
 );
 
 /** Galician (Galego)
@@ -103,6 +118,7 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'clicktracking' => 'D Klickverfolgig vu dr Benutzerfrejndligkeits-Initiative',
 	'clicktracking-desc' => 'Klickverfolgig, fir Aktione, wu kei Syteaktualisierig verursache',
+	'clicktracking-title' => 'Zämmegfassti Benutzerklicks',
 );
 
 /** Croatian (Hrvatski)
@@ -119,6 +135,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'clicktracking' => 'Kliknjenske přesćěhanje iniciatiwy wužiwajomnosće',
 	'clicktracking-desc' => 'Kliknjenske přesćěhanje, myslene za přesćěhowanje podawkow, kotrež aktualizaciju strony njezawinuja',
+	'clicktracking-title' => 'Nahromadźene wužiwarske kliknjenja',
 );
 
 /** Hungarian (Magyar)
@@ -152,6 +169,7 @@ $messages['id'] = array(
 $messages['ja'] = array(
 	'clicktracking' => 'Usability Initiative クリック追跡',
 	'clicktracking-desc' => 'クリック追跡：ページの再描画を引き起こさないイベントを追跡記録する機能',
+	'clicktracking-title' => '利用者によるクリックの総計',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -160,6 +178,7 @@ $messages['ja'] = array(
 $messages['ksh'] = array(
 	'clicktracking' => 'Dä <i lang="en">Wikipedia Usability Initiative</i> ier Kleckverfolljung',
 	'clicktracking-desc' => 'Klecks un Akßuhne Verfollje, di kein neu Sigg afroofe donn.',
+	'clicktracking-title' => 'Jesammte Klecks',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -192,6 +211,7 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'clicktracking' => 'Klikvolgen voor het Bruikbaarheidsinitiatief',
 	'clicktracking-desc' => 'Klikvolgen voor het volgens van handelingen die niet het oproepen van een nieuwe pagina tot gevolg hebben',
+	'clicktracking-title' => 'Samengevoegde gebruikerskliks',
 );
 
 /** Occitan (Occitan)
@@ -216,6 +236,7 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'clicktracking' => "Trassadura dij click ëd l'Usability Initiative",
 	'clicktracking-desc' => "Trassadura dij click, për trassé dj'event cha a causo pa ël refresh ëd na pàgina",
+	'clicktracking-title' => "Click agregà dl'utent",
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -228,10 +249,12 @@ $messages['pt-br'] = array(
 
 /** Russian (Русский)
  * @author Kv75
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'clicktracking' => 'Отслеживание нажатий в рамках Инициативы юзабилити',
 	'clicktracking-desc' => 'Отслеживание нажатий. Предназначается для отслеживания событий, не приводящих к обновлению страницы',
+	'clicktracking-title' => 'Собранные щелчки участников',
 );
 
 /** Slovak (Slovenčina)
@@ -240,6 +263,7 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'clicktracking' => 'Sledovanie kliknutí pre Iniciatívu použiteľnosti',
 	'clicktracking-desc' => 'Sledovanie kliknutí, na sledovanie udalostí, ktoré nespôsobujú opätovné načítanie stránky',
+	'clicktracking-title' => 'Agregované kliknutia používateľa',
 );
 
 /** Slovenian (Slovenščina)
@@ -256,6 +280,7 @@ $messages['sl'] = array(
 $messages['tr'] = array(
 	'clicktracking' => 'Kullanılabilirlik Girişimi tıklama izleme',
 	'clicktracking-desc' => 'Tıklama izleme, bir sayfa yenilemesine sebep olmadan olayları izleme amaçlı',
+	'clicktracking-title' => 'Toplu kullanıcı tıklamaları',
 );
 
 /** Vèneto (Vèneto)

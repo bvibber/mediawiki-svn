@@ -487,7 +487,7 @@ Možete se bilo kada ponovno prijaviti putem klika na link "{{int:optin-try}}" u
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Nije mi se svidjelo kako izgleda.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ne sviđaju mi se novi jezičci i dizajn.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne sviđa mi se nova alatna traka.',
-	'optin-survey-answer-whyoptout-other' => 'Ostali preglednici:',
+	'optin-survey-answer-whyoptout-other' => 'Ostali razlozi:',
 	'optin-survey-question-explain' => 'Molimo objasnite Vaš odgovor odozgo:',
 	'optin-survey-question-techfail' => 'Da li ste primijetili neke tehničke pogreške dok ste koristili Beta?',
 	'optin-survey-question-techfail-ifyes' => 'Ako da, molimo objasnite:',
@@ -2582,6 +2582,7 @@ $messages['ko'] = array(
 );
 
 /** Ripoarisch (Ripoarisch)
+ * @author Melancholie
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2607,7 +2608,7 @@ Do kanns doh emmer wider eruß kumme, endämm dat De op „{{int:optin-leave}}�
 Do kanns emmer wider zerök kumme, endämm dat De op „{{int:optin-try}}“ klecks.',
 	'optin-success-feedback' => 'Häzlijje Dangk för Ding Rökmäldung.',
 	'optin-accept-short' => 'Lom_mer dat donn!',
-	'optin-accept-long' => '<i lang="en">Beta</i> ußprobeere',
+	'optin-accept-long' => 'Beta ußprobeere',
 	'optin-accept-long-anon' => 'Enlogge un de Beta ußprobeere',
 	'optin-deny-short' => 'Nää, dat wulle mer nit',
 	'optin-deny-long' => 'retuur op de vörijje Sigg',

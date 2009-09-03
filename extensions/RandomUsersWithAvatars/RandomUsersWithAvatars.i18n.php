@@ -55,6 +55,14 @@ $messages['bg'] = array(
 	'random-users-avatars-desc' => 'Добавя етикета <tt>&lt;randomuserswithavatars&gt;</tt> за показване на аватарите на случани потребители',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'random-users-avatars-title' => 'Ober anaoudegezh gant ar gumuniezh',
+	'random-users-avatars-desc' => 'Ouzhpennañ a ra ar valizenn <tt>&lt;randomuserswithavatars&gt;</tt> evit diskwel avataroù implijerien dibabet dre zegouezh',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

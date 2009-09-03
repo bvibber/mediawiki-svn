@@ -3174,6 +3174,8 @@ $messages['hu'] = array(
 	'code-rev-submit' => 'Változások elmentése',
 	'code-rev-submit-next' => 'Mentés & ugrás a következőre',
 	'code-batch-status' => 'Állapot módosítása:',
+	'codereview-batch-title' => 'Az összes kiválasztott változat módosítása',
+	'codereview-batch-submit' => 'Elküldés',
 	'code-releasenotes' => 'kiadási megjegyzések',
 	'code-release-startrev' => 'Első változat:',
 	'code-release-endrev' => 'Utolsó változat:',
@@ -3186,6 +3188,7 @@ Teljes cím: $2
 Hozzászólás:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: rákövetkező változtatások',
 	'repoadmin' => 'Tárhelyadminisztráció',
 	'repoadmin-new-legend' => 'Új tárhely készítése',
 	'repoadmin-new-label' => 'Tárhely neve:',
@@ -3358,10 +3361,12 @@ $messages['id'] = array(
 	'code-author-haslink' => 'Penulis ini terhubung ke pengguna wiki $1',
 	'code-author-orphan' => 'Penulis ini tidak terhubung dengan akun wiki',
 	'code-author-dolink' => 'Kaitkan penulis ke Wiki pengguna:',
+	'code-author-alterlink' => 'Ubah hubungan wiki pengguna ke penulis ini:',
 	'code-author-orunlink' => 'Atau buang kaitan wiki pengguna ini:',
 	'code-author-name' => 'Masukkan nama pengguna:',
 	'code-author-link' => 'pranala?',
 	'code-author-unlink' => 'hapus pranala?',
+	'code-author-unlinksuccess' => 'Hubungan penulis $1 telah di putus',
 	'code-field-id' => 'Revisi',
 	'code-field-author' => 'Pembuat',
 	'code-field-user' => 'Komentar',
@@ -3420,6 +3425,13 @@ Komentar:
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]:Menindaklanjuti perubahan',
+	'codereview-email-body2' => 'Pengguna "$1" menindak lanjuti perubahan ke r$2.
+
+URL lengkap: $3
+
+Ringkasan:
+
+$4',
 	'repoadmin' => 'Penyimpanan Admin',
 	'repoadmin-new-legend' => 'Buat penyimpanan baru',
 	'repoadmin-new-button' => 'Buat',

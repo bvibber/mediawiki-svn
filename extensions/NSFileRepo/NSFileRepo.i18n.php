@@ -183,6 +183,13 @@ $messages['pms'] = array(
 	'nsfilerepo-desc' => 'Fornì fonsion basà an dzora a namespace për carié dij file',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'nsfilerepo-desc' => 'Fornecer funcionalidades para ficheiros carregados, baseadas no domínio',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

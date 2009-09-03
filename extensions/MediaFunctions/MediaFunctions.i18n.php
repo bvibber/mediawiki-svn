@@ -66,6 +66,15 @@ $messages['bg'] = array(
 	'mediafunctions-not-exist' => '"$1" не съществува',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'mediafunctions-desc' => "Arc'hwel parser da dapout titouroù diwar-benn ar restroù media",
+	'mediafunctions-invalid-title' => 'N\'eo ket "$1" un titl reizh',
+	'mediafunctions-not-exist' => 'N\'eus ket eus "$1"',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

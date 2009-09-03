@@ -404,6 +404,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'adminlinks_general' => 'Γενικά',
 	'adminlinks_users' => 'Χρώμενοι',
 );
 

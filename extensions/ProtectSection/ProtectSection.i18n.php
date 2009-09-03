@@ -439,8 +439,9 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'protectsection_desc' => 'Permet als utilizaires autorizats a protegir de partidas d’una pagina en utilizant la balisa <tt>&lt;protect&gt;</tt>',
-	'protectsection_add_remove' => "Avètz ensajat d'ajustar o d'escafar una seccion protegida.",
+	'protectsection_add_remove' => "Avètz ensajat d'apondre o d'escafar una seccion protegida.",
 	'protectsection_modify' => 'Avètz ensajat de modificar de tèxte protegit.',
+	'protectsection_add_above' => "Avètz ensajat d'inserir de tèxte davant una seccion protegida",
 	'protectsection_forbidden' => 'Interdich',
 	'right-protectsection' => 'Protegir las seccions de pagina',
 );
@@ -471,6 +472,7 @@ $messages['pms'] = array(
 	'protectsection_desc' => 'A përmëtt a utent autorisà ëd protegi part ëd na pàgina an dovrand ël tag tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => "It l'has provà a gionté o gavé na session protegiùa",
 	'protectsection_modify' => "It l'has provà a modifié dël test protegiù",
+	'protectsection_add_above' => "It l'has provà a anserì dël test dëdnans a na session protegiùa",
 	'protectsection_forbidden' => 'Vietà',
 	'right-protectsection' => 'Protegg dle session ëd na pàgina',
 );
@@ -484,6 +486,7 @@ $messages['pt'] = array(
 	'protectsection_desc' => 'Permite que utilizadores autorizados protejam partes de uma página usando a tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Você tentou adicionar ou remover uma secção protegida',
 	'protectsection_modify' => 'Você tentou modificar texto protegido',
+	'protectsection_add_above' => 'Você tentou inserir texto antes de uma secção protegida',
 	'protectsection_forbidden' => 'Proibido',
 	'right-protectsection' => 'Proteger secções da página',
 );
@@ -527,6 +530,7 @@ $messages['sk'] = array(
 	'protectsection_desc' => 'Umožňuje oprávneným používateľom zamykať časti stránky pomocou značky <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Pokúsili ste sa pridať alebo odstrániť zamknutú sekciu',
 	'protectsection_modify' => 'Pokúsili ste sa upravovať zamknutý text',
+	'protectsection_add_above' => 'Pokúsili ste sa vložiť text pred chránenú sekciu',
 	'protectsection_forbidden' => 'Zakázané',
 	'right-protectsection' => 'Zamykať sekcie stránky',
 );

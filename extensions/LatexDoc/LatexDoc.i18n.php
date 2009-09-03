@@ -684,6 +684,14 @@ $messages['pl'] = array(
 	'latexdoc_cant_write' => 'Nie można pisać do pliku $1',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'latexdoc_no_text' => 'La pàgina a conten pa ëd test, as peul pa generesse un DVI',
+	'latexdoc_get_pdf' => 'Fà un PDF',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

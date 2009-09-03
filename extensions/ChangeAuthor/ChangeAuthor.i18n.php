@@ -108,7 +108,7 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'changeauthor-search-box' => 'Soek hersienings',
-	'changeauthor-pagenameform-go' => 'Gaan',
+	'changeauthor-pagenameform-go' => 'Laat waai',
 	'changeauthor-comment' => 'Opmerking:',
 	'changeauthor-invalid-username' => 'Ongeldige gebruikersnaam "$1".',
 	'changeauthor-nosuchuser' => 'Geen gebruiker "$1".',

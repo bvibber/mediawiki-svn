@@ -748,6 +748,13 @@ $messages['gsw'] = array(
 	'right-recordadmin' => 'Find Ufzeichnigssyte un bearbeit si',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'recordadmin-editlink' => 'e hoʻololi',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

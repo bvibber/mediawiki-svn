@@ -1233,7 +1233,9 @@ $wgGoogleMapsMessages['dsb'] = array(
  */
 $wgGoogleMapsMessages['el'] = array(
 	'gm-desc' => 'Εύκολη δημιουργία χαρτών μέσω βικι-ποιημένων σημειωτών',
+	'gm-incompatible-browser' => 'Για να δείτε το χάρτη που θα πήγαινε σε αυτό το κενό, θα χρειαστεί να χρησιμοποιήσετε έναν συμβατό web browser.',
 	'gm-incompatible-browser-link' => 'Πατήστε εδώ για να δείτε μια λίστα συμβατών browser.',
+	'gm-no-editor' => 'Δυστυχώς, ο πλοηγητής σου δεν υποστηρίζει διαδραστικές χαρτοποιητικές λειτουργίες. Δοκιμάστε την τελευταία εκδοχή του <a href=\\"http://www.microsoft.com/ie\\">Internet Explorer</a> (Windows) ή του <a href=\\"http://www.mozilla.org/products/firefox\\">Firefox</a> (Windows, Mac ή Linux).',
 	'gm-balloon-title' => 'Τίτλος:',
 	'gm-balloon-link-article' => 'Σύνδεσμος προς αυτή τη σελίδα (προαιρετικά):',
 	'gm-make-marker' => 'Επικεφαλίδα (wiki mark-up OK):',
@@ -1252,6 +1254,7 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-no-results' => 'Συγνώμη, δεν υπάρχουν αποτελέσματα',
 	'gm-searching' => 'αναζήτηση...',
 	'gm-map' => 'Χάρτης',
+	'gm-note' => 'Σημείωση: να είστε σίγουροι ότι αντιγράφετε ότι θέλετε να αποθηκεύσετε μέσα στη σελίδα (παρακάτω) πριν πατήσετε "Φόρτωση χάρτη", "Αποθήκευση" ή "Προεπισκόπηση"!',
 	'gm-instructions' => 'Παρακάτω βρίσκεται το μαρκάρισμα Βίκι για τη δημιουργία ρου παραπάνω χάρτη.',
 	'gm-are-you-sure' => 'Είστε σίγουροι;',
 	'gm-clear-all-points' => 'Εκκαθάριση όλων των πόντων',

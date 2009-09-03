@@ -526,7 +526,13 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'categorywatch-desc' => "A estend la funsionalità dë tnì d'euj fin a notifiché i cambi d'apartenensa dle categorìe tnùe d'euj",
+	'categorywatch-emailsubject' => 'Atività ch\'a deuv tnì d\'euj la categorìa "$1"',
+	'categorywatch-catmovein' => "$1 a l'é finì an $2 da $3",
+	'categorywatch-catmoveout' => "$1 a l'é finì da $2 an $3",
 	'categorywatch-catadd' => "$1 a l'é stàit giontà a $2",
+	'categorywatch-catsub' => "$1 a l'é stàit gavà da $2",
+	'categorywatch-autocat' => "Tnù d'euj automaticament da $1",
 );
 
 /** Portuguese (Português)

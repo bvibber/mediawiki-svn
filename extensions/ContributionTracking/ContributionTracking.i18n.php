@@ -667,6 +667,19 @@ $messages['pl'] = array(
 	'contrib-tracking-button' => 'Kontynuuj',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'contributiontracking-desc' => 'Trassadura dle contribussion për la racòlta fond ëd Wikimedia',
+	'contributiontracking' => 'Trassadura dle contribussion',
+	'contrib-tracking-error' => 'Eror',
+	'contrib-tracking-error-text' => 'Spedission ëd forma nen bon-a',
+	'contrib-tracking-submitting' => 'Spedission al motor ëd pagament ...',
+	'contrib-tracking-continue' => "S'it ses pa rediressionà automaticament, sgnaca ël boton për completé toa donassion a PayPal.",
+	'contrib-tracking-button' => 'Continua',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

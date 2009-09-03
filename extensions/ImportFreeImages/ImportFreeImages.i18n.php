@@ -266,6 +266,10 @@ Aby to cynił, wobstaraj se pšosym API-kluc wót [http://www.flickr.com/service
  */
 $messages['el'] = array(
 	'importfreeimages' => 'Εισαγωγή ελεύθερων εικόνων',
+	'importfreeimages-desc' => 'Παρέχει έναν τρόπο [[Special:ImportFreeImages|εισαγωγής σωστά αδειοδοτημένων φωτογραφιών]] από το [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Αυτή η σελίδα σας επιτρέπει να ψάχνετε τις σωστά αδειοδοτημένες φωτογραφίες από το flickr και να της εισάγετε στο βίκι σας.',
+	'importfreeimages_noapikey' => 'Δεν ρυθμίσατε το Κλειδί Flickr API σας.
+Για να το ρυθμίσετε, παρακαλώ αποκτήστε έν κλειδί API από [http://www.flickr.com/services/api/misc.api_keys.html εδώ] και θέστε $wgFlickrAPIKey στο ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Δεν βρέθηκαν καθόλου φωτογραφίες για τα κριτήρια αναζήτησής σας '$1', παρακαλώ δοκιμάστε ξανά.",
 	'importfreeimages_invalidurl' => 'Το URL "$1" δεν είναι έγκυρη εικόνα Flickr.',
 	'importfreeimages_owner' => 'Δημιουργός',
@@ -274,6 +278,7 @@ $messages['el'] = array(
 	'importfreeimages_filefromflickr' => '$1 από τον χρήστη <b>[$2]</b> από το flickr. Αυθεντικό URL',
 	'importfreeimages_promptuserforfilename' => 'Εισάγετε παρακαλώ ένα όνομα αρχείου προορισμό:',
 	'importfreeimages_returntoform' => "Ή κάνετε κλικ <a href='$1'>εδώ</a> για να επιστρέψετε στα αποτελέσματα αναζήτησης",
+	'importfreeimages_nophpflickr' => 'Δεν έχετε εγκαταστήσει το phpFlickr, παρακαλώ ρυθμίστε το wgIFphpFlickr  στο LocalSettings.php σας.',
 );
 
 /** Esperanto (Esperanto)
@@ -1096,6 +1101,7 @@ $messages['stq'] = array(
 	'importfreeimages_filefromflickr' => '$1 fon Benutser <b>[$2]</b> fon flickr. Originoal URL',
 	'importfreeimages_promptuserforfilename' => 'Reek n Siel-Doatäinoome ien:',
 	'importfreeimages_returntoform' => "Of klik <a href='$1'>hier</a>, uum tou ju Siede mäd do Säikresultoate touräächtoukuumen.",
+	'importfreeimages_nophpflickr' => 'Du moast „phpFlickr“ installierje: sät <tt>$wgIFphpFlickr</tt> in dien <tt>LocalSettings.php</tt>.',
 );
 
 /** Sundanese (Basa Sunda)

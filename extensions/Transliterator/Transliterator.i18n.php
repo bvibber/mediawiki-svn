@@ -114,6 +114,13 @@ $messages['dsb'] = array(
 	'transliterator-error-rulesize' => 'Pšawidło <code>$1</code> ma wěcej ako $3 {{PLURAL:$3|znamuško|znamušce|znamuška|znamuškow}} nalěwo w [[MediaWiki:$2]]',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'transliterator-error-rulecount' => 'Περισσότεροι από $1 {{PLURAL:$1|κανόνα|κανόνες}} στο [[MediaWiki:$2]]',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

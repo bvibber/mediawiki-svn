@@ -387,13 +387,21 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'importusers' => 'Εισαγωγή χρηστών',
 	'importusers-uploadfile' => 'Φόρτωση αρχείου',
 	'importusers-form-button' => 'Εισαγωγή',
+	'importusers-log' => 'Αρχείο καταγραφής εισαγωγής χρηστών',
 	'importusers-log-summary' => 'Περίληψη',
 	'importusers-log-summary-all' => 'Όλα',
+	'importusers-log-summary-added' => 'Προστέθηκε',
+	'importusers-log-summary-updated' => 'Ενημερώθηκε',
+	'importusers-login-name' => 'Όνομα σύνδεσης',
 	'importusers-password' => 'κωδικός',
+	'importusers-email' => 'ηλεκτρονική διεύθυνση',
+	'importusers-realname' => 'πραγματικό όνομα',
 );
 
 /** Esperanto (Esperanto)

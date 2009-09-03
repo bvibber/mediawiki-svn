@@ -157,8 +157,15 @@ $messages['bs'] = array(
 	'wah-short-general' => '$1 medijalna datoteka, $2',
 	'wah-long-audio' => '($1 zvučna datoteka, dužina $2, $3)',
 	'wah-long-video' => '($1 video datoteka, dužina $2, $4×$5 piksela, $3)',
+	'wah-long-multiplexed' => '(multipleksirana audio/video datoteka, $1, dužina $2, $4×$5 piksela, $3 sveukupno)',
 	'wah-long-general' => '(medijalna datoteka, dužina $2, $3)',
 	'wah-long-error' => '(ffmpeg nije mogao pročitati ovu datoteku: $1)',
+	'wah-transcode-working' => 'Ovaj video se obrađuje, molimo pokušajte kasnije',
+	'wah-transcode-helpout' => 'Isječak je završen $1 posto.
+Možete pomoći pri transkodiranju ovog videa ako posjetite [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Ova datoteka se nije uspjela transkodirati.',
+	'wah-javascript-off' => 'Morate imati omogućenu JavaScript za učestvovanje u Wiki@Home',
+	'wah-loading' => 'učitavam interfejs Wiki@Home <blink>...</blink>',
 );
 
 /** German (Deutsch)

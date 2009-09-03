@@ -203,11 +203,15 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'postcomment_desc' => 'Επιτρέπει στους χρήστες να δημοσιεύουν σχόλια απευθείας στις σελίδες συζήτησης.',
+	'postcomment_discussionprotected' => 'Αυτή η σελίδα συζήτησης έχει προστατευθεί έτσι ώστε να μην επιτρέπονται περαιτέρω δημοσιεύσεις.',
 	'postcomment_notloggedin' => 'Δεν έχετε συνδεθεί.',
 	'postcomment_youareloggedinas' => 'Είστε συνδεδεμένος σαν $1',
+	'postcomment_addcommentdiscussionpage' => 'Προσθήκη του σχολίου σας στην σελίδα συζήτησης',
 	'postcomment_leavemessagefor' => 'Αφήστε ένα μήνυμα για $1',
 	'postcomment_post' => 'Δημοσίευση',
 	'postcomment_on' => 'Μέσα',

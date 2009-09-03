@@ -28,6 +28,14 @@ $messages['qqq'] = array(
 	'ajaxlogin-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'ajaxLogin2' => 'Is u seker? U mag u wysigings aan die blad verloor as u hierdie bladsy nou verlaat.',
+	'ajaxlogin-create' => 'Registreer',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

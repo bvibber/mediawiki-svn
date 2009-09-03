@@ -35,6 +35,7 @@ Do not translate or change tag names, or link anchors.',
  * @author Naudefj
  */
 $messages['af'] = array(
+	'searchbox-desc' => 'Maak die insluiting van soek-vorms moontlik',
 	'searchbox-search' => 'Soek',
 	'searchbox-go' => 'OK',
 	'searchbox-namespaces' => 'Naamruimtes:',

@@ -2355,6 +2355,18 @@ $messages['nap'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => "Separa 'e valore cu comma pe ausà cciù llengue.",
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'voctrain_Switch_language' => 'भाषा बदल्ने',
+	'voctrain_Language' => 'भाषा',
+	'voctrain_Log_in' => 'प्रवेश',
+	'voctrain_Dictionary_definitions' => 'शब्दकोषिय_बयान',
+	'voctrain_Translation' => 'अनुवाद',
+	'voctrain_other' => 'अरु',
+);
+
 /** Dutch (Nederlands)
  * @author GerardM
  * @author SPQRobin

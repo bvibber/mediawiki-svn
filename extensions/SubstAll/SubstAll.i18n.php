@@ -281,7 +281,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'substall-desc' => 'Crea una balisa <nowiki><substall></nowiki> que convertís totes los modèls en sintaxi wiki.',
+	'substall-desc' => 'Crèa una balisa <nowiki><substall></nowiki> que convertís totes los modèls en sintaxi wiki.',
 );
 
 /** Polish (Polski)

@@ -350,7 +350,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'stalepages' => 'Paginas depassadas',
-	'stalepages-desc' => 'Crea una [[Special:Stalepages|tièra de las paginas]] que son pas estadas editadas recentament',
+	'stalepages-desc' => 'Crèa una [[Special:Stalepages|tièra de las paginas]] que son pas estadas editadas recentament',
 	'stalepages-summary' => 'Aquò es una lista de paginas que son pas estadas modificadas dempuèi {{PLURAL:$1|jorn|jorns}}.',
 );
 

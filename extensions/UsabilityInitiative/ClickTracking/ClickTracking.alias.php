@@ -11,3 +11,4 @@ $aliases = array();
 $aliases['en'] = array(
 	'ClickTracking' => array( 'ClickTracking' ),
 );
+

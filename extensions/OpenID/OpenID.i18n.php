@@ -1002,6 +1002,7 @@ Jo wjele [http://openid.net/get/ póbitowarjow OpenID] a snaź maš južo konto 
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'openid-desc' => 'Συνδεθείτε στο wiki με ένα [http://openid.net/ OpenID], και συνδεθείτε σε άλλους ιστοτόπους που λαμβάνουν υπόψη το OpenID με ένα λογαριασμό χρήστη wiki',
 	'openidlogin' => 'Σύνδεση με OpenID',
 	'openidserver' => 'Εξυπηρετητής OpenID',
 	'openidxrds' => 'Αρχείο Yadis.',
@@ -1009,7 +1010,10 @@ $messages['el'] = array(
 	'openiderror' => 'Σφάλμα επαλήθευσης',
 	'openiderrortext' => 'Προέκυψε ένα σφάλμα κατά τη διάρκεια της επιβεβαίωσης του OpenID URL σας.',
 	'openidconfigerror' => 'Σφάλμα διαμόρφωσης OpenID',
+	'openidconfigerrortext' => 'Η διαμόρφωση αποθήκευσης OpenID για αυτό το wiki είναι μη έγκυρη.
+Παρακαλώ συμβουλευθείτε έναν [[Special:ListUsers/sysop|διαχειριστή]].',
 	'openidpermission' => 'Σφάλμα αδειών OpenID',
+	'openidpermissiontext' => 'Το OpenID που παρείχες δεν είναι επιτρεπτό να συνδεθεί σε αυτόν τον εξυπηρετητή.',
 	'openidcancel' => 'Η επαλήθευση ακυρώθηκε',
 	'openidcanceltext' => 'Η επιβεβαίωση του OpenID URL ακυρώθηκε.',
 	'openidfailure' => 'Η επαλήθευση απέτυχε',
@@ -1017,9 +1021,11 @@ $messages['el'] = array(
 	'openidsuccess' => 'Η επαλήθευση ήταν επιτυχής',
 	'openidsuccesstext' => 'Η επιβεβαίωση του OpenID URL ήταν επιτυχής.',
 	'openidusernameprefix' => 'Χρήστης OpenID',
+	'openidserverlogininstructions' => 'Βάλτε τον κωδικό σας παρακάτω για να συνδεθείτε στο $3 ως χρήστης $2 (σελίδα χρήστη $1).',
 	'openidtrustinstructions' => 'Τσεκάρετε αν θέλετε να μοιραστείτε δεδομένα με το $1.',
 	'openidallowtrust' => 'Επέτρεψε στο $1 να εμπιστευτεί αυτό το λογαριασμό χρήστη.',
 	'openidnopolicy' => 'Ο ιστοτόπος δεν έχει καθορίσει μια πολιτική ιδιωτικότητας.',
+	'openidpolicy' => 'Ελέγξατε <a target="_new" href="$1">πολιτική διακριτικότητας</a> για περισσότερες πληροφορίες.',
 	'openidoptional' => 'Προαιρετικός',
 	'openidrequired' => 'Απαιτημένος',
 	'openidnickname' => 'Παρωνύμιο',
@@ -1027,6 +1033,8 @@ $messages['el'] = array(
 	'openidemail' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου',
 	'openidlanguage' => 'Γλώσσα',
 	'openidtimezone' => 'Ζώνη ώρας:',
+	'openidnotavailable' => 'Το προτιμώμενό σου παρώνυμο ($1) χρησιμοποιείται ήδη από άλλον χρήστη.',
+	'openidnotprovided' => 'Ο OpenID εξυπηρετητής σας δεν παρείχε ένα παρώνυμο (είτε επειδή δεν μπορεί, είτε επειδή εσείς δώσατε τη σχετική εντολή).',
 	'openidchooseinstructions' => 'Όλοι οι χρήστες χρειάζονται ένα nickname,
 για να επιλέξετε μια από τις παρακάτω επιλογές.',
 	'openidchoosefull' => 'Το πλήρες όνομά σας ($1)',
@@ -1035,17 +1043,33 @@ $messages['el'] = array(
 	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
 	'openidchooseexisting' => 'Ένας υπάρχων λογαριασμός σε αυτό το βίκι:',
 	'openidchoosepassword' => 'κωδικός:',
+	'openidconvertinstructions' => 'Αυτή η φόρμα σας επιτρέπει να αλλάξετε το λογαριασμό χρήστη σας για να χρησιμοποιήσετε ένα ή περισσόττερα URL OpenID',
 	'openidconvertoraddmoreids' => 'Μετατρέψτε το OpenID ή προσθέστε κι άλλο URL OpenID',
 	'openidconvertsuccess' => 'Μετατράπηκε επιτυχώς σε OpenID',
 	'openidconvertsuccesstext' => 'Έχετε επιτυχώς μετατρέψει το OpenID σας σε $1.',
 	'openidconvertyourstext' => 'Αυτό είναι ήδη το OpenID σας.',
 	'openidconvertothertext' => 'Αυτό είναι το OpenID κάποιου άλλου.',
+	'openidalreadyloggedin' => "'''Έχεις ήδη συνδεθεί, $1!'''
+
+Αν θέλεις να χρησιμοποιήσεις το OpenID για να συνδεθείς στο μέλλον, μπορείς να [[Special:OpenIDConvert|μετατρέψεις το λογαριασμό σου για να χρησιμοποιήσεις το OpenID]].",
 	'openidnousername' => 'Δεν καθορίστηκε κανένα όνομα χρήστη.',
 	'openidbadusername' => 'Καθορίστηκε κακό όνομα χρήστη.',
+	'openidautosubmit' => 'Αυτή η σελίδα περιλαμβάνει μια φόρμα που θα πρέπει να καταχωρηθεί αυτόματα αν έχετε ενεργοποιήσει το JavaScript.
+Αν όχι, πατήστε το κουμπί "Συνέχεια".',
 	'openidclientonlytext' => 'Δεν μπορείτε να χρησιμοποιείτε λογαριασμούς από το βίκι σαν OpenID σε άλλη ιστοσελίδα.',
 	'openidloginlabel' => 'OpenID URL',
+	'openidlogininstructions' => 'Ο ιστότοπος {{SITENAME}} υποστηρίζει το πρότυπο [http://openid.net/ OpenID] για μοναδικό υπογραφή μεταξύ ιστοτόπων.
+Το OpenID σου επιτρέπει να συνδεθείς σε πολλούς διαφορετικούς ιστοτόπους χωρίς τη χρήση διαφορετικού κωδικού για τον καθένα.
+(Δες το [http://en.wikipedia.org/wiki/OpenID άρθρο της Wikipedia για το OpenID] για περισσότερες πληροφορίες.)
+
+Αν έχεις ήδη έναν λογαριασμό στο {{SITENAME}}, μπορείς να [[Special:UserLogin|συνδεθείς]] με το όνομα χρήστη σου και τον κωδικό σου ως συνήθως.
+Για να χρησιμοποιήσεις το OpenID στο μέλλον, μπορείς να [[Special:OpenIDConvert|μετατρέψεις το λογαριασμό σου σε OpenID]] αφού έχεις συνδεθεί κανονικά.
+
+Υπάρχουν υπερβολικά πολλοί [http://openid.net/get/ παροχείς OpenID], και μπορεί να έχεις έναν ήδη ενεργοποιημένο με OpenID λογαριασμό σε άλλη υπηρεσία.',
 	'openidupdateuserinfo' => 'Ενημέρωση των προσωπικών πληροφοριών μου',
 	'openiddelete' => 'Διαγραφή OpenID',
+	'openiddelete-text' => 'Κάνωντας κλικ στο κουμπί "{{int:openiddelete-button}}", θα αφαιρέσετε το OpenID $1 από το λογαριασμό σας.
+Δεν θα είστε πλέον σε θέση να συνδεθείτε με αυτό το OpenID.',
 	'openiddelete-button' => 'Επιβεβαίωση',
 	'openiddelete-sucess' => 'Το OpenID αφαιρέθηκε επιτυχώς από τον λογαριασμό σας.',
 	'openiddelete-error' => 'Ένα σφάλμα προέκυψε κατά την αφαίρεση του OpenID από το λογαριασμό σας.',
@@ -4105,22 +4129,19 @@ Wan du OpenID foar kuumende Anmäldefoargonge nutsje moatest, koast du [[Special
 Fals nit, klik ap „Continue“ (Fääre).',
 	'openidclientonlytext' => 'Du koast neen Benutserkonten uut dissen Wiki as OpenID foar uur Sieden ferweende.',
 	'openidloginlabel' => 'OpenID-URL',
-	'openidlogininstructions' => "{{SITENAME}} unnerstutset dän [http://openid.net/ OpenID]-Standoard foar ne Anmäldenge foar moorere Websites.
+	'openidlogininstructions' => '{{SITENAME}} unnerstutset dän [http://openid.net/ OpenID]-Standoard foar ne eenhaidelke Anmäldenge foar moorere Websites.
 OpenID mäldet die bie fuul unnerscheedelke Websieden an, sunner dät du foar älke Siede n uur Paaswoud ferweende moast.
 (Moor Informatione bjut die [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikkel tou OpenID].)
 
 Fals du al n Benutserkonto bie {{SITENAME}} hääst, koast du die gans normoal mäd Benutsernoome un Paaswoud [[Special:UserLogin|anmäldje]].
 Wan du in n Toukumst OpenID ferweende moatest, koast du [[Special:OpenIDConvert|dien Account tou OpenID konvertierje]], ätter dät du die normoal ienlogged hääst.
 
-Dät rakt fuul [http://wiki.openid.net/Public_OpenID_providers eepentelke OpenID-Providere] un muugelkerwiese hääst du al n Benutserkonto mäd aktivierden OpenID bie n uur Anbjooder.
-
-; Uur Sites: Wan du al n Benutserkonto ap n Wiki mäd aktivierde OpenID hääst, as biespilswiese [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] of [http://kei.ki/ Keiki], koast du die bie {{SITENAME}} anmäldje, wan du ju '''komplette URL''' fon dien Benutsersiede ap dän uur Wiki in dät Textfäild hierbuppe ienrakst. Biespilswiese ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
-; [http://openid.yahoo.com/ Yahoo!]: Wan du n Yahoo!-Konto hääst, koast du die mäd ju fon Yahoo! anroate OpenID in dät Textfäild hierbuppe anmäldje. Yahoo!-OpenIDs hääbe ju Foarm ''<nowiki>https://me.yahoo.com/dienbenutsernoome</nowiki>''.
-; [http://dev.aol.com/aol-and-63-million-openids AOL]: Wan du n [http://www.aol.com/ AOL]-Konto hääst, biespilswiese n [http://www.aim.com/ AIM]-Benutserkonto, koast du die bie {{SITENAME}} anmäldje, wan du ju fon AOL anroate OpenID in dät Textfäild hierbuppe ienrakst. AOL-OpenIDs hääbe ju Foarm ''<nowiki>http://openid.aol.com/dienbenutsernoome</nowiki>''. Dien Benutsernoome schuul bloot uut litje Bouksteeuwen bestounde un neen Loosteekene änthoolde.
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Wan du ap disse Sieden n Blog hääst, reek ju URL fon dien Blog in dät Textfäild hierbuppe ien. Biespilswiese ''<nowiki>http://deinbenutzername.blogspot.com/</nowiki>'', ''<nowiki>http://deinbenutzername.wordpress.com/</nowiki>'', ''<nowiki>http://deinbenutzername.livejournal.com/</nowiki>'', of ''<nowiki>http://deinbenutzername.vox.com/</nowiki>''.",
+Dät rakt fuul [http://wiki.openid.net/Public_OpenID_providers eepentelke OpenID-Providere] un muugelkerwiese hääst du al n Benutserkonto mäd aktivierden OpenID bie n uur Anbjooder.',
 	'openidupdateuserinfo' => 'Persöönelke Doaten aktualisierje',
 	'openiddelete' => 'OpenID läskje',
 	'openiddelete-button' => 'Bestäätigje',
+	'openiddelete-sucess' => 'Ju OpenID wuud mäd Ärfoulch fon din Benutserkonto wächhoald.',
+	'openiddelete-error' => 'Bie dät Wächhoaljen fon ju OpenID fon din Benutserkonto is n Failer aptreeden.',
 	'openid-prefstext' => '[http://openid.net/ OpenID] Ienstaalengen',
 	'openid-pref-hide' => 'Fersteet dien OpenID ap dien Benutsersiede, wan du die mäd OpenID anmäldest.',
 	'openid-pref-update-userinfo-on-login' => 'Ju foulgjende Information fon dät OpenID-Konto bie älke Login aktualisierje',

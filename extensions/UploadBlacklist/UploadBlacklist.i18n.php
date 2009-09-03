@@ -235,6 +235,13 @@ $messages['pms'] = array(
 	'uploadblacklist-desc' => 'A gionta na funsionalità për carié la blacklist',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'uploadblacklist-desc' => 'Acrescenta uma funcionalidade de lista negra para carregamento de ficheiros',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

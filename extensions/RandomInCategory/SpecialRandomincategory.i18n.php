@@ -51,7 +51,7 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'randomincategory-toolbox' => 'Lukrake bladsy',
 	'randomincategory-label' => 'Kategorie:',
-	'randomincategory-submit' => 'Gaan',
+	'randomincategory-submit' => 'Laat waai',
 );
 
 /** Amharic (አማርኛ)

@@ -93,6 +93,14 @@ $messages['dsb'] = array(
 	'tog-microid' => '<a href="http://microid.org/">MicroID</a> za wobkšuśenje z eksternymi słužbami wózjawiś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'microid-desc' => 'Προσθέτει ένα [http://www.microid.org/ MicroID] στις σελίδες χρήστη για να επιβεβαιώσει το λογαριασμό με εξωτερικές υπηρεσίες',
+	'tog-microid' => 'Δημοσιεύστε ένα <a href="http://microid.org/">MicroID</a> για να επιβεβαιώσετε το λογαριασμό με εξωτερικές υπηρεσίες',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

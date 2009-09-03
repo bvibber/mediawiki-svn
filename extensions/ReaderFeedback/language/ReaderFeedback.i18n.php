@@ -241,6 +241,7 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'readerfeedback-desc' => "Kadarnaat ar pennadoù a ro an tu d'al lennerien da reiñ o soñj e stumm burutelladennoù dre rummad.",
 	'readerfeedback' => 'Petra a soñjit eus ar bajenn-mañ ?',
 	'readerfeedback-text' => "''Tapit un tamm amzer da briziañ ar bajenn a-is mar plij. Talvoudus eo deomp ho soñj pa skoazell ac'hanomp da wellaat hol lec'hienn web.''",
 	'readerfeedback-reliability' => 'Fiziuster :',
@@ -262,6 +263,7 @@ $messages['br'] = array(
 	'readerfeedback-finished' => 'Trugarez !',
 	'readerfeedback-tagfilter' => 'Balizenn :',
 	'tooltip-ca-ratinghist' => 'Priziadenn ar bajenn-mañ gant al lennerien',
+	'specialpages-group-feedback' => 'Soñj al lenner',
 );
 
 /** Bosnian (Bosanski)

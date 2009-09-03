@@ -331,7 +331,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'spl3-desc' => 'Crea automaticament una lista de sospaginas d’una pagina utilizant la balisa <code><nowiki><splist /></nowiki></code>',
+	'spl3-desc' => "Crèa automaticament una lista de sospaginas d’una pagina qu'utiliza la balisa <code><nowiki><splist /></nowiki></code>",
 	'spl3_debug' => 'Valor per l’opcion $1 desconeguda.',
 	'spl3_nosubpages' => "$1 a pas de sospaginas d'enumerar.",
 );

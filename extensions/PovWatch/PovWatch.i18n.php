@@ -54,7 +54,6 @@ Click the button below to subscribe.',
 $messages['qqq'] = array(
 	'povwatch_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'povwatch_title' => '{{Identical|Title}}',
-	'povwatch_comment' => '{{Identical|Log comment}}',
 	'povwatch_added' => '{{Identical|Added}}',
 	'right-povwatch_admin' => '{{doc-right}}',
 	'right-povwatch_user' => '{{doc-right|povwatch user}}',

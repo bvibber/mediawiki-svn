@@ -272,13 +272,18 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'errorhandler-errors' => 'Σφάλματα:',
 	'errorhandler-error-warning' => 'Προειδοποίηση',
+	'errorhandler-error-parse' => 'Σφάλμα λεξιαναλυτή',
 	'errorhandler-error-notice' => 'Σημείωση',
+	'errorhandler-error-compile-error' => 'Σφάλμα μεταγλώττισης',
+	'errorhandler-error-compile-warning' => 'Προειδοποίηση μεταγλώττισης',
 	'errorhandler-error-user-error' => 'Σφάλμα χρήστη',
+	'errorhandler-error-user-warning' => 'Προειδοποίηση χρήστη',
 	'errorhandler-error-strict' => 'Υψηλά στάνταρ',
 	'errorhandler-msg-text' => '$1 : $2 στο $3 (γραμμή $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (γραμμή <b>$4</b>)',
 	'errorhandler-trace' => 'ίχνος:',
 	'errorhandler-trace-line' => '$1 (γραμμή $2): $3',
+	'errorhandler-trace-line-internal' => '[εσωτερική συνάρτηση]: $1',
 );
 
 /** Esperanto (Esperanto)

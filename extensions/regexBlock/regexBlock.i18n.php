@@ -125,7 +125,7 @@ $messages['af'] = array(
 	'regexblock-form-reason' => 'Rede:',
 	'regexblock-form-expiry' => 'Verval:',
 	'regexblock-view-all' => 'Alles',
-	'regexblock-view-go' => 'Gaan',
+	'regexblock-view-go' => 'Laat waai',
 	'regexblock-view-reason' => 'rede: $1',
 	'regexblock-view-time' => 'op $1',
 );

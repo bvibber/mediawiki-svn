@@ -127,6 +127,14 @@ $messages['cy'] = array(
 	'newuseredit-summary' => 'Yn ychwanegu [[{{int:newusermessage-template}}|neges o groeso]] at dudalen sgwrs defnyddiwr newydd sbon',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'newusermessage-desc' => 'Placerer en besked på nye brugeres diskussionsside',
+	'newuseredit-summary' => 'Placerer en [[{{int:newusermessage-template}}|velkomstbesked]] på nye brugeres diskussionsside',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

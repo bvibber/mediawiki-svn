@@ -157,8 +157,10 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'interwikilist' => 'Λίστα Interwiki',
 	'interwikilist-desc' => 'Προσθέτει μια [[Special:Interwikilist|ειδική σελίδα]] για την εμφάνιση των διαθέσιμων συνδέσμων interwiki',
+	'interwikilist-linkname' => 'Σύνδεσμος interwiki',
 	'interwikilist-target' => 'Στόχος URL',
 	'interwikilist-filter' => 'Λίστα φίλτρου',
+	'interwikilist-prefix' => 'Πρόθεμα interwiki:',
 );
 
 /** Esperanto (Esperanto)

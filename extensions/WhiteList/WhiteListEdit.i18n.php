@@ -1351,7 +1351,7 @@ $messages['hak'] = array(
 $messages['haw'] = array(
 	'mywhitelistpages' => 'Ka‘u mau ‘ao‘ao',
 	'whitelisttablemodifyall' => 'Apau',
-	'whitelisttableedit' => 'E ho‘opololei',
+	'whitelisttableedit' => 'E hoʻololi',
 	'whitelisttableremove' => 'Kāpae',
 );
 

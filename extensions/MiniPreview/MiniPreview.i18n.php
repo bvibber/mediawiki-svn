@@ -175,9 +175,12 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'minipreview-files_in_category' => '$1 συνολικά {{PLURAL:$1|αρχείο υπάρχει|αρχεία υπάρχουν}} σε αυτήν την κατηγορία.',
+	'minipreview-no_more_files_here' => 'Όχι περισσότερα αρχεία σε αυτή την κατεύθυνση.',
+	'minipreview-no_category_gallery' => 'Καθόλου κατηγορίες ή συλλογές!',
 );
 
 /** Esperanto (Esperanto)

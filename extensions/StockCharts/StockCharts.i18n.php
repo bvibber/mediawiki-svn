@@ -31,6 +31,15 @@ $messages['be-tarask'] = array(
 Напрыклад: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'stockcharts-desc' => 'Ouzhpennañ a ra ar valizenn <nowiki><stockchart ticker="AAPL"/></nowiki> evit ur grafik teulioù moneizel etregwezhiat',
+	'stockcharts-missingticker' => 'Evit enframmañ un daolenn deulioù moneizel e rankit spisaat un ticker da nebeutañ.
+Ober gant : &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

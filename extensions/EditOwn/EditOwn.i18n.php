@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'editown-desc' => 'Extension description displayed on [[Special:Version]].',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'editown-desc' => "Gebruikers sonder die ''editall''-reg kan slegs blaaie wat hulle self geskep het wysig",
+);
+
 /** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */

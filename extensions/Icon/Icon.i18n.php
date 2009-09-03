@@ -70,6 +70,15 @@ $messages['bg'] = array(
 	'icon-desc' => 'Позволява да се използват картинките като икони и като иконни препратки',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'icon-badimage' => 'Skeudenn fall',
+	'icon-badwidth' => 'Ledander faziek',
+	'icon-desc' => "Aotren a ra ac'hanoc'h da implijout skeudennoù evel arlunioù pe liammoù e stumm arlunioù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

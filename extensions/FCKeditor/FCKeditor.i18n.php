@@ -854,9 +854,12 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'fckeditor-desc' => "A përmëtt ëd modifiché con l'editor WYSIWYG FCKeditor",
 	'textrichditor' => 'Editor svicio',
+	'prefs-fckeditor' => 'Editor rich',
 	'tog-riched_disable' => "Disabilité l'editor svicio",
 	'tog-riched_disable_ns_main' => "Disabilité l'editor svicio ant lë spassi nominal prinsipal",
 	'tog-riched_disable_ns_talk' => 'Disabilité l\'editor svicio ant lë spassi nominal "{{ns:talk}}"',
@@ -874,6 +877,11 @@ $messages['pms'] = array(
 	'tog-riched_disable_ns_help_talk' => 'Disabilité l\'editor svicio ant lë spassi nominal "{{ns:help_talk}}"',
 	'tog-riched_disable_ns_category' => 'Disabilité l\'editor svicio ant lë spassi nominal "{{ns:category}}"',
 	'tog-riched_disable_ns_category_talk' => 'Disabilité l\'editor svicio ant lë spassi nominal "{{ns:category_talk}}"',
+	'rich_editor_new_window' => "deurb l'Edito rich an na neuva fnesta",
+	'tog-riched_start_disabled' => "Part con l'Editor rich pa abilità",
+	'tog-riched_use_popup' => "deurb l'Editor rich ant un popup",
+	'tog-riched_use_toggle' => "Dòvra un toggle për cambié da wikitext a Editor rich (cambia la textarea con l'Editor rich)",
+	'tog-riched_toggle_remember_state' => "Arcòrda l'ùltim toggle stat",
 );
 
 /** Portuguese (Português)

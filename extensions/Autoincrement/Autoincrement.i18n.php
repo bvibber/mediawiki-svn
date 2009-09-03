@@ -161,6 +161,13 @@ $messages['pms'] = array(
 	'autoincrement-desc' => 'Na variabila che a gionta la variabila auto-ancrementanta <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'autoincrement-desc' => 'Um "hook" que adiciona a variável auto-incrementada <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

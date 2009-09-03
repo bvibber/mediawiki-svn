@@ -159,6 +159,17 @@ Toś ten e-mail jo se śi pśipósłała wót $1 pśez e-mailowy system {{GRAMMA
 $2',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'email-desc' => 'Επιτρέπει την προσθήκη συνηθισμένων επικεφαλίδων/υποσημειώσεων στα μέιλ χρηστών',
+	'email_footer' => '----------------------------------------------------------------------------
+Αυτό το e-mail εστάλη σε εσάς μέσω του συστήματος e-mail του {{SITENAME}} από τον/την $1.
+
+$2',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

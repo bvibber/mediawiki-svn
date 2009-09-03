@@ -270,11 +270,15 @@ $messages['dsb'] = array(
  * @author Consta
  * @author Crazymadlover
  * @author Konsnos
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'amazonplus-desc' => 'Μια άκρως προσαρμόσιμη επέκταση για προβολή πληροφοριών Amazon',
 	'amazonplus-nores' => 'Σφάλμα: Δεν υπήρξαν αποτελέσματα!',
+	'amazonplus-noidres' => 'Σφάλμα: Δεν ήταν δυνατό να βρεθεί μια ταυτότητα προϊόντος!',
 	'amazonplus-fgcerr' => 'Σφάλμα: Δεν έγινε ανάκτηση δεδομένων από το Amazon!',
+	'amazonplus-slserr' => 'Σφάλμα: Δεν ήταν δυνατό να αναλυθούν δεδομένα από το Amazon!',
 	'amazonplus-used' => 'χρησιμοποιημένος',
 	'amazonplus-german' => 'Γερμανικά',
 	'amazonplus-french' => 'Γαλλικά',

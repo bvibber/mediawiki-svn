@@ -55,6 +55,9 @@ $messages['af'] = array(
 	'chemicalsources' => 'Chemiese bronne',
 	'chemicalsource-desc' => "Maak 'n <nowiki><chemform></nowiki>-etiket beskikbaar vir chemiese formules",
 	'chemFunctions_ListPage' => 'Chemiese bronne',
+	'chemFunctions_DataList' => 'Hier is \'n lys van skakels na webwerwe wat inligting oor die chemiese stof wat jy soek kan gee.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbinding $MIXCASNameFormula op die NIST se webblad</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS op die webblad van die Oxford University (UK) (nie doorsoekbaar nie)</a><br />',
 	'chemFunctions_CAS' => 'CAS-nommer',
 	'chemFunctions_ATCCode' => 'ATC-kode',
 	'chemFunctions_ECNumber' => 'EC-nommer',
