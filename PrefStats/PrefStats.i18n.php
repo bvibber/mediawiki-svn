@@ -522,6 +522,7 @@ Tilastot näkyvät painamalla asetusta.',
 	'prefstats-noprefs' => 'Yhtään asetusta ei seurata tällä hetkellä.
 Aseta $wgPrefStatsTrackPrefs asetusten seuraamiseksi.',
 	'prefstats-xaxis' => 'Kesto (tuntia)',
+	'prefstats-factors' => 'Järjestä: $1',
 	'prefstats-factor-hour' => 'tunti',
 	'prefstats-factor-sixhours' => 'kuusi tuntia',
 	'prefstats-factor-day' => 'päivä',
@@ -529,6 +530,8 @@ Aseta $wgPrefStatsTrackPrefs asetusten seuraamiseksi.',
 	'prefstats-factor-twoweeks' => 'kaksi viikkoa',
 	'prefstats-factor-fourweeks' => 'neljä viikkoa',
 	'prefstats-factor-default' => 'takaisin oletusmittakaavaan',
+	'prefstats-legend-out' => 'Poistunut',
+	'prefstats-legend-in' => 'Liittynyt',
 );
 
 /** French (Français)
@@ -1123,6 +1126,18 @@ $messages['myv'] = array(
 	'prefstats-factor-week' => 'тарго',
 	'prefstats-factor-twoweeks' => 'кавто таргт',
 	'prefstats-factor-fourweeks' => 'ниле таргт',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'prefstats-factor-hour' => 'ure',
+	'prefstats-factor-sixhours' => 'zes uren',
+	'prefstats-factor-day' => 'dag',
+	'prefstats-factor-week' => 'weke',
+	'prefstats-factor-twoweeks' => 'twee weken',
+	'prefstats-factor-fourweeks' => 'vier weken',
 );
 
 /** Dutch (Nederlands)
