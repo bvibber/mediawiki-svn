@@ -35,7 +35,10 @@ function wfSpecialSuggest() {
 	SpecialPage::addPage( new SpecialSuggest() );
 }
 
-
+/**
+ * Creates and runs the appropriate SQL query when a combo box is clicked
+ * the combo box table is filled with the SQL query results
+ */
 function getSuggestions() {
 	$o = OmegaWikiAttributes::getInstance();
 	global $wgUser;
@@ -59,9 +62,9 @@ function getSuggestions() {
 			$sql = constructSQLWithFallback( $sqlActual, $sqlFallback, array( "member_mid", "spelling", "collection_mid" ) );
 			break;
 		case 'class':
-			$sqlActual = getSQLForCollectionOfType( 'CLAS', $wgUser->getOption( 'language' ) );
-			$sqlFallback = getSQLForCollectionOfType( 'CLAS', 'en' );
-			$sql = constructSQLWithFallback( $sqlActual, $sqlFallback, array( "member_mid", "spelling", "collection_mid" ) );
+			// constructSQLWithFallback is a bit broken in this case, showing several time the same lines
+			// so : not using it. The English fall back has been included in the SQL query
+			$sql = getSQLForClasses( $wgUser->getOption( 'language' ) );
 			break;
 		case 'defined-meaning-attribute':
 			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $annotationAttributeId, 'DM' );
@@ -142,6 +145,7 @@ function getSuggestions() {
 	if ( $offset > 0 )
 		$sql .= " $offset, ";
 		
+	// print only 10 results
 	$sql .= "10";
 	
 	# == Actual query here
@@ -364,6 +368,43 @@ function getSQLToSelectPossibleAttributesForLanguage( $definedMeaningId, $attrib
 	return $sql;
 }
 
+/**
+ * Returns the name of all classes and their spelling in the user language or in English
+ *
+ * @param $language the 2 letter wikimedia code
+ */
+function getSQLForClasses( $language ) {
+	$dc = wdGetDataSetContext();
+
+  $dbr =& wfGetDB( DB_SLAVE );
+  $lng = '( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' )';
+
+  // exp.spelling, txt.text_text
+	$sql = "SELECT member_mid, spelling " .
+        " FROM {$dc}_collection_contents col_contents, {$dc}_collection col, {$dc}_syntrans synt," .
+        " {$dc}_expression exp, {$dc}_defined_meaning dm" .
+        " WHERE col.collection_type='CLAS' " .
+        " AND col_contents.collection_id = col.collection_id " .
+        " AND synt.defined_meaning_id = col_contents.member_mid " .
+        " AND synt.identical_meaning=1 " .
+        " AND exp.expression_id = synt.expression_id " .
+        " AND dm.defined_meaning_id = synt.defined_meaning_id " .
+        " AND ( " .
+          " exp.language_id=$lng " .
+          " OR (" .
+            " exp.language_id=85 " .
+            " AND dm.defined_meaning_id NOT IN ( SELECT defined_meaning_id FROM {$dc}_syntrans synt, {$dc}_expression exp WHERE exp.expression_id = synt.expression_id AND exp.language_id=$lng ) " .
+          " ) " .
+        " ) " .
+        " AND " . getLatestTransactionRestriction( "col" ) .
+        " AND " . getLatestTransactionRestriction( "col_contents" ) .
+        " AND " . getLatestTransactionRestriction( "synt" ) .
+        " AND " . getLatestTransactionRestriction( "exp" ) .
+        " AND " . getLatestTransactionRestriction( "dm" ) ;
+
+	return $sql;
+}
+
 function getSQLForCollectionOfType( $collectionType, $language = "<ANY>" ) {
 	$dc = wdGetDataSetContext();
 	$sql = "SELECT member_mid, spelling, collection_mid " .
@@ -453,22 +494,30 @@ function getRelationTypeAsRecordSet( $queryResult ) {
 	return array( $recordSet, $editor );
 }
 
+/**
+ * Writes an html table from a sql table corresponding to the list of classes, as shown by
+ * http://www.omegawiki.org/index.php?title=Special:Suggest&query=class
+ *
+ * @param $queryResult the result of a SQL query to be made into an html table
+ */
 function getClassAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB( DB_SLAVE );
+	// Setting the two column, with titles
 	$classAttribute = new Attribute( "class", wfMsg( 'ow_Class' ), "short-text" );
-	$collectionAttribute = new Attribute( "collection", wfMsg( 'ow_Collection' ), "short-text" );
-	
-	$recordSet = new ArrayRecordSet( new Structure( $o->id, $classAttribute, $collectionAttribute ), new Structure( $o->id ) );
-	
-	while ( $row = $dbr->fetchObject( $queryResult ) )
-		$recordSet->addRecord( array( $row->member_mid, $row->spelling, definedMeaningExpression( $row->collection_mid ) ) );
+	$definitionAttribute = new Attribute( "definition", wfMsg( 'ow_Definition' ), "short-text" );
+
+	$recordSet = new ArrayRecordSet( new Structure( $o->id, $classAttribute, $definitionAttribute ), new Structure( $o->id ) );
+
+	while ( $row = $dbr->fetchObject( $queryResult ) ) {
+		$recordSet->addRecord( array( $row->member_mid, $row->spelling, getDefinedMeaningDefinition( $row->member_mid ) ) );
+  }
 
 	$editor = createSuggestionsTableViewer( null );
 	$editor->addEditor( createShortTextViewer( $classAttribute ) );
-	$editor->addEditor( createShortTextViewer( $collectionAttribute ) );
+	$editor->addEditor( createShortTextViewer( $definitionAttribute ) );
 
 	return array( $recordSet, $editor );
 }

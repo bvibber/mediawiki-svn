@@ -1006,6 +1006,12 @@ function removeOptionAttributeOption( $optionId ) {
 	$dbr->query( $sql );
 }
 
+/**
+ * Returns the definition of a definedMeaning in a given language
+ * @param $definedMeaningId
+ * @param $languageId
+ * @param $dc
+ */
 function getDefinedMeaningDefinitionForLanguage( $definedMeaningId, $languageId, $dc = null ) {
 	if ( is_null( $dc ) ) {
 		$dc = wdGetDataSetContext();
@@ -1025,6 +1031,11 @@ function getDefinedMeaningDefinitionForLanguage( $definedMeaningId, $languageId,
 		return "";
 }
 
+/**
+ * Returns the definition of a definedMeaning in any language
+ * according to which definition comes up first in the SQL query
+ * @param $definedMeaningId
+ */
 function getDefinedMeaningDefinitionForAnyLanguage( $definedMeaningId ) {
 	$dc = wdGetDataSetContext();
 	$dbr =& wfGetDB( DB_SLAVE );
@@ -1041,6 +1052,11 @@ function getDefinedMeaningDefinitionForAnyLanguage( $definedMeaningId ) {
 		return "";
 }
 
+/**
+ * Returns the definition of a definedMeaning in the user language, or in English, or in any other
+ * according to what is available
+ * @param $definedMeaningId
+ */
 function getDefinedMeaningDefinition( $definedMeaningId ) {
 	global
 		$wgUser;
@@ -1493,6 +1509,11 @@ function definingExpression( $definedMeaningId, $dc = null ) {
 	}
 }
 
+/**
+ * Returns one spelling of an expression corresponding to a given DM in a given language
+ * @param $definedMeaningId
+ * @param $languageId
+ */
 function definedMeaningExpressionForLanguage( $definedMeaningId, $languageId ) {
 	$dc = wdGetDataSetContext();
 	$dbr =& wfGetDB( DB_SLAVE );
@@ -1514,6 +1535,10 @@ function definedMeaningExpressionForLanguage( $definedMeaningId, $languageId ) {
 		return "";
 }
 
+/**
+ * Returns one spelling of an expression corresponding to a given DM in any language
+ * @param $definedMeaningId
+ */
 function definedMeaningExpressionForAnyLanguage( $definedMeaningId ) {
 	$dc = wdGetDataSetContext();
 	$dbr =& wfGetDB( DB_SLAVE );
@@ -1533,6 +1558,13 @@ function definedMeaningExpressionForAnyLanguage( $definedMeaningId ) {
 		return "";
 }
 
+/**
+ * Returns one spelling of an expression corresponding to a given DM
+ * - in a given language if it exists
+ * - or else in English
+ * - or else in any language
+ * @param $definedMeaningId
+ */
 function definedMeaningExpression( $definedMeaningId ) {
 	global
 		$wgUser;
@@ -1550,6 +1582,7 @@ function definedMeaningExpression( $definedMeaningId ) {
 			$result = "";
 		
 		if ( $result == "" ) {
+			// if no expression exists for the specified language : look for an expression in English
 			$result = definedMeaningExpressionForLanguage( $definedMeaningId, 85 );
 			
 			if ( $result == "" ) {

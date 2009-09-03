@@ -22,7 +22,7 @@
 				initializeOmegaWikiAttributes( new ViewInformation() );
 				$wgOut->setPageTitle( wfMsg( 'ow_needs_xlation_title' ) );
 
-                                $destinationLanguageId = array_key_exists( 'to-lang', $_GET ) ? $_GET['to-lang']:'';
+				$destinationLanguageId = array_key_exists( 'to-lang', $_GET ) ? $_GET['to-lang']:'';
 				$collectionId = array_key_exists( 'collection', $_GET ) ? $_GET['collection'] : '';
 				$sourceLanguageId = array_key_exists( 'from-lang', $_GET ) ? $_GET['from-lang'] : '';
                                                                 
@@ -42,7 +42,6 @@
 
 			protected function showExpressionsNeedingTranslation( $sourceLanguageId, $destinationLanguageId, $collectionId ) {
 
-				$o = OmegaWikiAttributes::getInstance();
 				$o = OmegaWikiAttributes::getInstance();
 
 				$dc = wdGetDataSetContext();
@@ -113,23 +112,30 @@
 
 
 				$definitionAttribute = new Attribute( "definition", wfMsg( "ow_Definition" ), "definition" );
-				$recordSet = new ArrayRecordSet( new Structure( $o->definedMeaningId, $o->expressionId, $o->expression, $definitionAttribute ), new Structure( $o->definedMeaningId, $o->expressionId ) );
+
+				$recordSet = new ArrayRecordSet( new Structure( $o->definedMeaningId, $o->expressionId, $o->definedMeaningReference, $definitionAttribute ), new Structure( $o->definedMeaningId, $o->expressionId ) );
 
 				while ( $row = $dbr->fetchObject( $queryResult ) ) {
-					$expressionRecord = new ArrayRecord( $o->expressionStructure );
-					$expressionRecord->language = $row->source_language_id;
-					$expressionRecord->spelling = $row->source_spelling;
+					$DMRecord = new ArrayRecord( $o->definedMeaningReferenceStructure );
+					$DMRecord->definedMeaningId = $row->source_defined_meaning_id ;
+					$DMRecord->definedMeaningLabel = $row->source_spelling ;
+					$DMRecord->definedMeaningDefiningExpression = $row->source_spelling ;
+					$DMRecord->language = $row->source_language_id;
 
-					$recordSet->addRecord( array( $row->source_defined_meaning_id, $row->source_expression_id, $expressionRecord, getDefinedMeaningDefinition( $row->source_defined_meaning_id ) ) );
+					$recordSet->addRecord( array( $row->source_defined_meaning_id, $row->source_expression_id, $DMRecord, getDefinedMeaningDefinition( $row->source_defined_meaning_id ) ) );
 				}
 
-				$expressionEditor = new RecordTableCellEditor( $o->expression );
+				$expressionEditor = new RecordTableCellEditor( $o->definedMeaningReference );
 				$expressionEditor->addEditor( new LanguageEditor( $o->language, new SimplePermissionController( false ), false ) );
-				$expressionEditor->addEditor( new SpellingEditor( $o->spelling, new SimplePermissionController( false ), false ) );
+				$expressionEditor->addEditor( new DefinedMeaningEditor( $o->definedMeaningId, new SimplePermissionController( false ), false ) );
 
 				$editor = new RecordSetTableEditor( null, new SimplePermissionController( false ), new ShowEditFieldChecker( true ), new AllowAddController( false ), false, false, null );
 				$editor->addEditor( $expressionEditor );
 				$editor->addEditor( new TextEditor( $definitionAttribute, new SimplePermissionController( false ), false, true, 75 ) );
+
+				// cosmetics : changing the titles of the columns
+				$o->definedMeaningReference->name = wfMsgSc( "Expression" ) ;
+				$o->definedMeaningId->name = wfMsgSc( "Spelling" ) ;
 
 				global $wgOut;
 

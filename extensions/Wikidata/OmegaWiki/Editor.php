@@ -1015,6 +1015,30 @@ class SpellingEditor extends ScalarEditor {
 	}
 }
 
+class DefinedMeaningEditor extends ScalarEditor {
+	public function getViewHTML( IdStack $idPath, $value ) {
+		return definedMeaningAsLink( $value );
+	}
+
+	public function getEditHTML( IdStack $idPath, $value ) {
+		return "";
+	}
+
+	public function add( IdStack $idPath ) {
+		if ( $this->isAddField )
+			return getTextBox( $this->addId( $idPath->getId() ) );
+		else
+			return "";
+	}
+
+	public function getInputValue( $id ) {
+		global
+			$wgRequest;
+
+		return trim( $wgRequest->getText( $id ) );
+	}
+}
+
 class DefinedMeaningHeaderEditor extends ScalarEditor {
 	protected $truncate;
 	protected $truncateAt;
