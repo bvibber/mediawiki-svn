@@ -17,15 +17,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'description' => 'Adds a <code>&lt;php&gt;</code> tag to use the PHP syntax highlighter',
 );
 
-if( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) )
-	$wgHooks['ParserFirstCallInit'][] = 'efSetPhp';
-else
-	$wgExtensionFunctions[] = 'efSetPhpOld';
-
-function efSetPhpOld(){
-	global $wgParser;
-	efSetPhp( $wgParser );
-}
+$wgHooks['ParserFirstCallInit'][] = 'efSetPhp';
 
 function efSetPhp( &$parser ){
 	$parser->setHook( 'php', 'efRenderPhp' );

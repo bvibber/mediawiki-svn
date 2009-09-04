@@ -58,13 +58,7 @@ $wgAutoloadClasses['LogEntryHooks'] = $dir . 'LogEntry.hooks.php';
 $wgAutoloadClasses['LogEntry'] = $dir . 'LogEntry.page.php';
 
 // Register parser hook
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	// Modern
-    $wgHooks['ParserFirstCallInit'][] = 'LogEntryHooks::register';
-} else {
-	// Legacy
-    $wgExtensionFunctions[] = 'LogEntryHooks::register';
-}
+$wgHooks['ParserFirstCallInit'][] = 'LogEntryHooks::register';
 
 // Register the LogEntry special page
 $wgSpecialPages['LogEntry'] = 'LogEntry';

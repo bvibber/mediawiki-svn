@@ -53,12 +53,7 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionMessagesFiles['AmazonPlus'] = dirname( __FILE__ ) . '/AmazonPlus.i18n.php';
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efAmazonPlusSetup';
-} else {
-	$wgExtensionFunctions[] = 'efAmazonPlusSetup';
-}
-
+$wgHooks['ParserFirstCallInit'][] = 'efAmazonPlusSetup';
 $wgHooks['BeforePageDisplay'][] = 'efAmazonPlusJavascript';
 
 $wgAmazonPlusJSVersion = 1; # Bump the version number every time you change AmazonPlus.js
@@ -74,9 +69,8 @@ define( 'AMAZONPLUS_NEW', 2 );
 define( 'AMAZONPLUS_USED', 3 );
 
 # Set up the tag extension
-function efAmazonPlusSetup() {
-	global $wgParser;
-	$wgParser->setHook( 'amazon', 'efAmazonPlusRender' );
+function efAmazonPlusSetup( &$parser ) {
+	$parser->setHook( 'amazon', 'efAmazonPlusRender' );
 	wfLoadExtensionMessages( 'AmazonPlus' );
 	return true;
 }

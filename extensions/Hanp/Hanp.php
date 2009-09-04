@@ -25,16 +25,10 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['hanp'] = $dir . 'Hanp.i18n.php';
 $wgAutoloadClasses['Hanp'] = $dir . 'Hanp.body.php';
 $wgHooks['LanguageGetMagic'][] = 'efHanpLanguageGetMagic';
+$wgHooks['ParserFirstCallInit'][] = 'efHanpInit';
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efHanpInit';
-} else {
-	$wgExtensionFunctions[] = 'efHanpInit';
-}
-
-function efHanpInit() {
-	global $wgParser;
-	$wgParser->setFunctionHook( 'hanp', array( 'Hanp', 'hangulParticle' ) );
+function efHanpInit( &$parser ) {
+	$parser->setFunctionHook( 'hanp', array( 'Hanp', 'hangulParticle' ) );
 	return true;
 }
 

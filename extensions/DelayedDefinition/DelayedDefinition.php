@@ -11,11 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * See http://www.mediawiki.org/wiki/Extension:DelayedDefinition for details.
 **/
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-        $wgHooks['ParserFirstCallInit'][] = 'wfDelayedDefinition';
-} else {
-        $wgExtensionFunctions[] = 'wfDelayedDefinition';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfDelayedDefinition';
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
@@ -31,7 +27,7 @@ $wgAutoloadClasses['ExtDelayedDefinition'] = $dir . '/DelayedDefinition_body.php
 $wgExtensionMessagesFiles['DelayedDefinition'] = $dir . '/DelayedDefinition.i18n.php';
 
 // Load the classes, which then attaches the parser hooks, etc.
-function wfDelayedDefinition() {
-	new ExtDelayedDefinition;
+function wfDelayedDefinition( &$parser ) {
+	new ExtDelayedDefinition( $parser );
 	return true;
 }

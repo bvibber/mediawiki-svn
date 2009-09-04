@@ -19,12 +19,7 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-// Avoid unstubbing $wgParser too early on modern (1.12+) MW versions, as per r35980
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfRandomUsersWithAvatars';
-} else {
-	$wgExtensionFunctions[] = 'wfRandomUsersWithAvatars';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfRandomUsersWithAvatars';
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['parserhook'][] = array(
@@ -40,9 +35,8 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['RandomUsersWithAvatars'] = $dir . 'RandomUsersWithAvatars.i18n.php';
 
-function wfRandomUsersWithAvatars() {
-	global $wgParser;
-	$wgParser->setHook( 'randomuserswithavatars', 'GetRandomUsersWithAvatars' );
+function wfRandomUsersWithAvatars( &$parser ) {
+	$parser->setHook( 'randomuserswithavatars', 'GetRandomUsersWithAvatars' );
 	return true;
 }
 

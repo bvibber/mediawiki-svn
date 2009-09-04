@@ -89,11 +89,7 @@ function wfLanguageSelectorExtension() {
 	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation;
 	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgOut, $wgJsMimeType, $wgHooks;
 
-	if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-		$wgHooks['ParserFirstCallInit'][] = 'wgLanguageSelectorSetHook';
-	} else {
-		wgLanguageSelectorSetHook();
-	}
+	$wgHooks['ParserFirstCallInit'][] = 'wgLanguageSelectorSetHook';
 
 	if ( $wgLanguageSelectorLanguages === NULL ) {
 		$wgLanguageSelectorLanguages = @$GLOBALS['wgPolyglotLanguages'];

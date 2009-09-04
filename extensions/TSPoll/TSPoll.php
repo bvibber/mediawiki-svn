@@ -34,19 +34,14 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 // Avoid unstubbing $wgParser on setHook() too early on modern (1.12+) MW versions, as per r35980
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efTSPollSetup';
-} else { // Otherwise do things the old fashioned way
-	$wgExtensionFunctions[] = 'efTSPollSetupHook';
-}
+$wgHooks['ParserFirstCallInit'][] = 'efTSPollSetup';
 
 $wgExtensionMessagesFiles['TSPoll'] = dirname( __FILE__ ) . '/TSPoll.i18n.php';
 
 //Set function fpr <tspoll ...> and <TSPoll ...> to efTSPollRender
-function efTSPollSetup() {
-	global $wgParser;
-	$wgParser->setHook( 'TSPoll', 'efTSPollRender' );
-	$wgParser->setHook( 'tspoll', 'efTSPollRender' );
+function efTSPollSetup( &$parser ) {
+	$parser->setHook( 'TSPoll', 'efTSPollRender' );
+	$parser->setHook( 'tspoll', 'efTSPollRender' );
 	return true;
 }
 

@@ -21,11 +21,11 @@ class ExtDelayedDefinition {
 	}
 
 	// Initialize hooks and tags
-	function ExtDelayedDefinition() {
-		global $wgParser, $wgHooks;
+	function ExtDelayedDefinition( &$parser ) {
+		global $wgHooks;
 
-		$wgParser->setHook( 'define', array( &$this, 'define' ) );
-		$wgParser->setHook( 'display', array( &$this, 'display' ) );
+		$parser->setHook( 'define', array( &$this, 'define' ) );
+		$parser->setHook( 'display', array( &$this, 'display' ) );
 
 		$wgHooks['ParserClearState'][] = array( &$this, 'clearState' );
 		$wgHooks['ParserAfterTidy'][] = array( &$this, 'replaceMarkers' );

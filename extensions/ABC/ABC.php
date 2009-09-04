@@ -61,18 +61,13 @@ $wgExtensionCredits['parserhooks'][] = array(
 	'descriptionmsg' => 'abcdesc',
 );
 $wgExtensionMessagesFiles['ABC'] =  dirname(__FILE__) . '/ABC.i18n.php';
-
-if (defined('MW_SUPPORTS_PARSERFIRSTCALLINIT')) {
-	$wgHooks['ParserFirstCallInit'][] = 'efABCInit';
-} else {
-	$wgExtensionFunctions[] = 'efABCParserInit';
-}
+$wgHooks['ParserFirstCallInit'][] = 'efABCInit';
 
 function
-efABCInit() {
-global	$wgParser, $wgOut, $abcOggHandler;
+efABCInit( &$parser ) {
+global	$wgOut, $abcOggHandler;
 	wfLoadExtensionMessages('ABC');
-	$wgParser->setHook( 'abc', 'efABCRender' );
+	$parser->setHook( 'abc', 'efABCRender' );
 	
 	if ($abcOggHandler) {
 		$oh = new OggHandler();

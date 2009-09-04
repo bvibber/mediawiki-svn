@@ -10,13 +10,7 @@
  * @link http://www.mediawiki.org/wiki/Extension:WikiTextLoggedInOut
  */
 
-//Avoid unstubbing $wgParser on setHook() too early on modern (1.12+) MW versions, as per r35980
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfWikiTextLoggedIn';
-} else {
-	$wgExtensionFunctions[] = 'wfWikiTextLoggedIn';
-}
-
+$wgHooks['ParserFirstCallInit'][] = 'wfWikiTextLoggedIn';
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['WikiTextLoginInOut'] = $dir . 'WikiTextLoggedInOut.i18n.php';
 
@@ -30,9 +24,8 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'wikitextloggedinout-desc'
 );
 
-function wfWikiTextLoggedIn() {
-	global $wgParser, $wgOut;
-	$wgParser->setHook( 'loggedin', 'OutputLoggedInText' );
+function wfWikiTextLoggedIn( &$parser ) {
+	$parser->setHook( 'loggedin', 'OutputLoggedInText' );
 	return true;
 }
 
@@ -46,15 +39,10 @@ function OutputLoggedInText( $input, $args, &$parser ) {
 	return "";
 }
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfWikiTextLoggedOut';
-} else {
-	$wgExtensionFunctions[] = 'wfWikiTextLoggedOut';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfWikiTextLoggedOut';
 
-function wfWikiTextLoggedOut() {
-	global $wgParser, $wgOut;
-	$wgParser->setHook( 'loggedout', 'OutputLoggedOutText' );
+function wfWikiTextLoggedOut( &$parser ) {
+	$parser->setHook( 'loggedout', 'OutputLoggedOutText' );
 	return true;
 }
 

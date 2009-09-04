@@ -19,20 +19,13 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Icon',
 );
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efIcon_Setup';
-} else {
-	$wgExtensionFunctions[] = 'efIcon_Setup';
-}
+$wgHooks['ParserFirstCallInit'][] = 'efIcon_Setup';
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Icon'] = $dir . 'Icon.i18n.php';
 
-function efIcon_Setup() {
-	global $wgParser;
-
+function efIcon_Setup( &$parser ) {
 	# Set a function hook associating the "example" magic word with our function
-	$wgParser->setFunctionHook( 'icon', 'efIcon_Render' );
-
+	$parser->setFunctionHook( 'icon', 'efIcon_Render' );
 	return true;
 }
 

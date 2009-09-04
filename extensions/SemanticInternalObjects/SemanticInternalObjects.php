@@ -20,25 +20,13 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'semanticinternalobjects-desc',
 );
 
-$wgExtensionFunctions[] = 'siofParserFunctions';
+$wgHooks['ParserFirstCallInit'][] = 'siofRegisterParserFunctions';
 $wgHooks['LanguageGetMagic'][] = 'siofLanguageGetMagic';
 $wgHooks['smwDeleteSemanticData'][] = 'SIOHandler::updateData';
 
 $siogIP = $IP . '/extensions/SemanticInternalObjects';
 $wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
 $wgAutoloadClasses['SIOHandler'] = $siogIP . '/SemanticInternalObjects_body.php';
-
-function siofParserFunctions() {
-	global $wgHooks, $wgParser;
-	if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-		$wgHooks['ParserFirstCallInit'][] = 'siofRegisterParserFunctions';
-	} else {
-		if ( class_exists( 'StubObject' ) && !StubObject::isRealObject( $wgParser ) ) {
-			$wgParser->_unstub();
-		}
-		siofRegisterParserFunctions( $wgParser );
-	}
-}
 
 function siofRegisterParserFunctions( &$parser ) {
 	$parser->setFunctionHook( 'set_internal', array( 'SIOHandler', 'doSetInternal' ) );

@@ -31,12 +31,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This is not a valid entry point.\n" );
 }
 
-// Avoid unstubbing $wgParser too early on modern (1.12+) MW versions, as per r35980
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfCreateBox';
-} else {
-	$wgExtensionFunctions[] = 'wfCreateBox';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfCreateBox';
 
 $wgHooks['UnknownAction'][] = 'actionCreate';
 $wgExtensionCredits['parserhook'][] = array(
@@ -52,9 +47,8 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['CreateBox'] = $dir . 'CreateBox.i18n.php';
 
-function wfCreateBox() {
-	global $wgParser;
-	$wgParser->setHook( 'createbox', 'acMakeBox' );
+function wfCreateBox( &$parser ) {
+	$parser->setHook( 'createbox', 'acMakeBox' );
 	return true;
 }
 

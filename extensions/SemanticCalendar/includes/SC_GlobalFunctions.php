@@ -19,7 +19,7 @@ $wgExtensionCredits['parserhook'][]= array(
 	'descriptionmsg' =>  'sc_desc',
 );
 
-$wgExtensionFunctions[] = 'scgParserFunctions';
+$wgHooks['ParserFirstCallInit'][] = 'scgRegisterParser';
 $wgHooks['LanguageGetMagic'][] = 'scgLanguageGetMagic';
 
 require_once($scgIP . '/includes/SC_ParserFunctions.php');

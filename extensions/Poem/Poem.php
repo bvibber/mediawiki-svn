@@ -18,11 +18,7 @@
 # For more information see its page at
 # http://meta.wikimedia.org/wiki/Poem_Extension
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfPoemExtension';
-} else {
-	$wgExtensionFunctions[] = 'wfPoemExtension';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfPoemExtension';
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Poem',
@@ -34,8 +30,8 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgParserTestFiles[] = dirname( __FILE__ ) . "/poemParserTests.txt";
 $wgExtensionMessagesFiles['Poem'] =  dirname(__FILE__) . '/Poem.i18n.php';
 
-function wfPoemExtension() {
-	$GLOBALS['wgParser']->setHook("poem","PoemExtension");
+function wfPoemExtension( &$parser ) {
+	$parser->setHook("poem","PoemExtension");
 	return true;
 }
 

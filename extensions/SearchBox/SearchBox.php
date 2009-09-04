@@ -44,10 +44,4 @@ $wgExtensionMessagesFiles['SearchBox'] = $dir . 'SearchBox.i18n.php';
 $wgAutoloadClasses['SearchBoxHooks'] = $dir . 'SearchBox.hooks.php';
 
 // Register parser hook
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	// Modern
-	$wgHooks['ParserFirstCallInit'][] = array( 'SearchBoxHooks::register' );
-} else {
-	// Legacy
-	$wgExtensionFunctions[] = array( 'SearchBoxHooks', 'register' );
-}
+$wgHooks['ParserFirstCallInit'][] = array( 'SearchBoxHooks::register' );

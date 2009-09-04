@@ -36,10 +36,6 @@ if (!isset($wgLuaMaxTime))
 	$wgLuaMaxTime = 5;
 
 
-if (defined('MW_SUPPORTS_PARSERFIRSTCALLINIT')) {
-	$wgHooks['ParserFirstCallInit'][] = 'LuaHooks::parserInit';
-} else {
-	$wgExtensionFunctions[] = 'LuaHooks::parserInit';
-}
+$wgHooks['ParserFirstCallInit'][] = 'LuaHooks::parserInit';
 $wgHooks['LanguageGetMagic'][] = 'LuaHooks::magic';
 $wgHooks['ParserBeforeTidy'][] = 'LuaHooks::beforeTidy';

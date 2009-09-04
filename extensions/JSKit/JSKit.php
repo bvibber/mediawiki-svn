@@ -37,11 +37,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgHooks['OutputPageBeforeHTML'][] = 'efJSKit';
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efJSKitSetup';
-} else {
-	$wgExtensionFunctions[] = 'efJSKitSetup';
-}
+$wgHooks['ParserFirstCallInit'][] = 'efJSKitSetup';
 
 $wgExtensionMessagesFiles['JSKit'] = dirname(__FILE__) . '/JSKit.i18n.php';
 
@@ -58,22 +54,22 @@ $wgJSKitNamespaces = array( NS_MAIN => true ); // Namespaces on which we want to
 $wgJSKitAlways = ''; // Should we always display something at the bottom of the page (in the namespaces above)?
 
 # Sets up the tag functions
-function efJSKitSetup() {
-	global $wgParser, $wgJSKitTypes;
+function efJSKitSetup( &$parser ) {
+	global $wgJSKitTypes;
 	if( $wgJSKitTypes['navigator'] ) {
-		$wgParser->setHook( 'top', 'efJSKitTop' );
+		$parser->setHook( 'top', 'efJSKitTop' );
 	}
 	if( $wgJSKitTypes['ratings'] ) {
-		$wgParser->setHook( 'rating', 'efJSKitRating' );
+		$parser->setHook( 'rating', 'efJSKitRating' );
 	}
 	if( $wgJSKitTypes['polls'] ) {
-		$wgParser->setHook( 'poll', 'efJSKitPoll' );
+		$parser->setHook( 'poll', 'efJSKitPoll' );
 	}
 	if( $wgJSKitTypes['comments'] ) {
-		$wgParser->setHook( 'comment', 'efJSKitComment' );
+		$parser->setHook( 'comment', 'efJSKitComment' );
 	}
 	if( $wgJSKitTypes['reviews'] ) {
-		$wgParser->setHook( 'review', 'efJSKitReview' );
+		$parser->setHook( 'review', 'efJSKitReview' );
 	}
 	wfLoadExtensionMessages( 'JSKit' );
 	return true;

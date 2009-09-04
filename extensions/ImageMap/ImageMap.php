@@ -3,11 +3,7 @@
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['ImageMap'] = $dir . 'ImageMap.i18n.php';
 $wgAutoloadClasses['ImageMap'] = $dir . 'ImageMap_body.php';
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfSetupImageMap';
-} else {
-	$wgExtensionFunctions[] = 'wfSetupImageMap_legacy';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfSetupImageMap';
 
 $wgExtensionCredits['parserhook']['ImageMap'] = array(
 	'path'           => __FILE__,
@@ -21,10 +17,4 @@ $wgExtensionCredits['parserhook']['ImageMap'] = array(
 function wfSetupImageMap( &$parser ) {
 	$parser->setHook( 'imagemap', array( 'ImageMap', 'render' ) );
 	return true;
-}
-
-/* Provided for pre-1.12 MediaWiki compatibility. */
-function wfSetupImageMap_legacy() {
-	global $wgParser;
-	return wfSetupImageMap( $wgParser );
 }

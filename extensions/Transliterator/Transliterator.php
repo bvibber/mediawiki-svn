@@ -63,11 +63,7 @@ $wgExtensionCredits['parserhook'][] = array(
     'path' => __FILE__,
 );
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-    $wgHooks['ParserFirstCallInit'][] = 'ExtTransliterator::setup';
-} else {
-    $wgExtensionFunctions[] = 'ExtTransliterator::setup';
-}
+$wgHooks['ParserFirstCallInit'][] = 'ExtTransliterator::setup';
 $wgExtensionMessagesFiles['Transliterator'] = dirname(__FILE__).'/Transliterator.i18n.php';
 $wgHooks['ArticleDeleteComplete'][]  = 'ExtTransliterator::purgeArticle';
 $wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeArticle';
@@ -520,11 +516,9 @@ class ExtTransliterator {
     /**
      * Called on first use to create singleton
      */
-    static function setup() {
-        global $wgParser;
-
+    static function setup( &$parser ) {
         $trans = new ExtTransliterator;
-        $wgParser->setFunctionHook( 'transliterate', array( $trans, 'render' ) );
+        $parser->setFunctionHook( 'transliterate', array( $trans, 'render' ) );
         return true;
     }
 }

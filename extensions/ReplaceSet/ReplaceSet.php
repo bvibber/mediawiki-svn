@@ -31,25 +31,11 @@ $wgExtensionCredits['parserhook'][] = array (
 	'descriptionmsg' => 'replaceset-desc',
 );
 
-$wgExtensionFunctions[] = 'efReplaceSetSetup';
+$wgHooks['ParserFirstCallInit'][] = 'efReplaceSetRegisterParser';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ReplaceSet'] = $dir . 'ReplaceSet.class.php';
 $wgExtensionMessagesFiles['ReplaceSet'] = $dir . 'ReplaceSet.i18n.php';
-
-function efReplaceSetSetup() {
-	global $wgParser;
-
-	// Check for SFH_OBJECT_ARGS capability
-	if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-		$wgHooks['ParserFirstCallInit'][] = 'efReplaceSetRegisterParser';
-	} else {
-		if ( class_exists( 'StubObject' ) && !StubObject::isRealObject( $wgParser ) ) {
-			$wgParser->_unstub();
-		}
-		efReplaceSetRegisterParser( $wgParser );
-	}
-}
 
 function efReplaceSetRegisterParser( &$parser ) {
 	$parser->setFunctionHook( 'replaceset', array( 'ReplaceSet', 'parserFunction' ) );

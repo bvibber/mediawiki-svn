@@ -25,21 +25,16 @@ $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['I18nTags'] = $dir . 'I18nTags_body.php';
 $wgExtensionMessagesFiles['I18nTags'] = $dir . 'I18nTags.i18n.php';
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efI18nTagsInit';
-} else {
-	$wgExtensionFunctions[] = 'efI18nTagsInit';
-}
+$wgHooks['ParserFirstCallInit'][] = 'efI18nTagsInit';
 
-
-function efI18nTagsInit() {
+function efI18nTagsInit( &$parser ) {
 	global $wgParser;
 	$class = 'I18nTags';
-	$wgParser->setHook( 'formatnum', array($class, 'formatNumber')  );
-	$wgParser->setHook( 'grammar',   array($class, 'grammar') );
-	$wgParser->setHook( 'plural',    array($class, 'plural') );
-	$wgParser->setHook( 'linktrail', array($class, 'linktrail') );
+	$parser->setHook( 'formatnum', array($class, 'formatNumber')  );
+	$parser->setHook( 'grammar',   array($class, 'grammar') );
+	$parser->setHook( 'plural',    array($class, 'plural') );
+	$parser->setHook( 'linktrail', array($class, 'linktrail') );
 	wfLoadExtensionMessages( 'I18nTags' ); // FOR BC
-	$wgParser->setFunctionHook( 'languagename',  array($class, 'languageName' ) );
+	$parser->setFunctionHook( 'languagename',  array($class, 'languageName' ) );
 	return true;
 }
