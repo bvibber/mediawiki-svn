@@ -1685,8 +1685,7 @@ $messages['de'] = array(
 	'edittoolbar-tool-table-dimensions' => 'Maße',
 	'edittoolbar-tool-table-dimensions-rows' => 'Zeilen',
 	'edittoolbar-tool-table-dimensions-columns' => 'Spalten',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Kopfzeilen',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Kopfspalten',
+	'edittoolbar-tool-table-dimensions-header' => 'Kopfzeile einschließen',
 	'edittoolbar-tool-table-insert' => 'Einfügen',
 	'edittoolbar-tool-table-cancel' => 'Abbrechen',
 	'edittoolbar-tool-replace' => 'Ersetzen',
@@ -4307,6 +4306,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
@@ -4373,8 +4373,7 @@ $messages['id'] = array(
 	'edittoolbar-tool-table-dimensions' => 'Dimensi',
 	'edittoolbar-tool-table-dimensions-rows' => 'Baris',
 	'edittoolbar-tool-table-dimensions-columns' => 'Kolom',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Kepala bagian baris',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Kepala bagian kolom',
+	'edittoolbar-tool-table-dimensions-header' => 'Sertakan baris',
 	'edittoolbar-tool-table-insert' => 'Masukkan',
 	'edittoolbar-tool-table-cancel' => 'Batalkan',
 	'edittoolbar-tool-replace' => 'Gantikan',
@@ -7816,8 +7815,7 @@ $messages['sah'] = array(
 	'edittoolbar-tool-table-dimensions' => 'Кээмэйдэрэ',
 	'edittoolbar-tool-table-dimensions-rows' => 'Устуруоката',
 	'edittoolbar-tool-table-dimensions-columns' => 'Колуонката',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Баһын устуруокатын ахсаана',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Баһын колуонкатын ахсаана',
+	'edittoolbar-tool-table-dimensions-header' => 'Бас устуруоканы эбии',
 	'edittoolbar-tool-table-insert' => 'Киллэрэргэ',
 	'edittoolbar-tool-table-cancel' => 'Бигэргэтимэ',
 	'edittoolbar-tool-replace' => 'Уларыт',

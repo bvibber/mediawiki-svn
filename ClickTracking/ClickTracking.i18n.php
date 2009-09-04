@@ -66,6 +66,7 @@ $messages['cs'] = array(
 $messages['de'] = array(
 	'clicktracking' => 'Benutzerfreundlichkeitsinitiative Klickverfolgung',
 	'clicktracking-desc' => 'Klickverfolgung, gedacht für die Aufzeichnung von Aktionen, die nicht zu einer Seitenaktualisierung führen',
+	'clicktracking-title' => 'Erzeugte Benutzerklicks',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -110,6 +111,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'clicktracking' => 'Seguimento dos clics da Iniciativa de usabilidade',
 	'clicktracking-desc' => 'Seguimento dos clics, co obxectivo de seguir os acontecementos que non causan unha actualización da páxina',
+	'clicktracking-title' => 'Clics de usuario engadidos',
 );
 
 /** Swiss German (Alemannisch)
@@ -156,10 +158,12 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'clicktracking' => 'Pelacak klik Inisiatif Kebergunaan',
 	'clicktracking-desc' => "Pelacak klik, digunakan untuk melacak kejadian yang tidak menyebabkan ''refresh'' halaman",
+	'clicktracking-title' => 'Diagregasikan pengguna mengklik',
 );
 
 /** Japanese (日本語)
@@ -255,6 +259,14 @@ $messages['ru'] = array(
 	'clicktracking' => 'Отслеживание нажатий в рамках Инициативы юзабилити',
 	'clicktracking-desc' => 'Отслеживание нажатий. Предназначается для отслеживания событий, не приводящих к обновлению страницы',
 	'clicktracking-title' => 'Собранные щелчки участников',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'clicktracking-desc' => 'Баттааһыны кэтээһин. Сирэйи саҥардыбат түбэлтэлэри кэтииргэ туттуллар',
+	'clicktracking-title' => 'Кыттааччылар баттааһыннарын хомуура',
 );
 
 /** Slovak (Slovenčina)
