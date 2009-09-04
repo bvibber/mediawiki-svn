@@ -11,10 +11,11 @@
  * @licence GNU General Public Licence 2.0 or later
  *
  * This extension extends and is dependent on extension Lockdown - see http://www.mediawiki.org/wiki/Extension:Lockdown
- * It must be included(required) after Lockdown!
+ * It must be included(required) after Lockdown!  Also, $wgHashedUploadDirectory must be true and cannot be changed once repository has files in it
  */
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
+if (!function_exists('lockdownUserCan')) die('You MUST load Extension Lockdown before NSFileRepo (http://www.mediawiki.org/wiki/Extension:Lockdown).');
 
 $wgImgAuthPublicTest = false;		// Must be set to false if you want to use more restrictive than general ['*']['read']
 $wgIllegalFileChars = isset($wgIllegalFileChars) ? $wgIllegalFileChars : "";  // For MW Versions <1.16
@@ -215,7 +216,7 @@ function NSFileRepoImgAuthCheck($title, $path, $name, $result) {
 
 # See if stored in a NS path
 
-	$subdirs = explode('/',$_SERVER['PATH_INFO']);
+	$subdirs = explode('/',$path);
 	if (strlen($subdirs[1]) == 3 && is_numeric($subdirs[1]) && $subdirs[1] >= 100)  {
 		$title = Title::makeTitleSafe( NS_FILE, $wgContLang->getNsText($subdirs[1]).":".$name );
 		if( !$title instanceof Title ) {

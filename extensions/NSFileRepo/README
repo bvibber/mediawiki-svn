@@ -1,8 +1,8 @@
 {{Page security extension disclaimer}}
-{{Extension by patch warning|version=}}
+{{Extension by patch warning|version=1.15.1}}
 {{Extension|templatemode=
 |name        = NSFileRepo
-|status      = beta
+|status      = stable
 |type1       = user rights
 |type2       =
 |hook1       = userCan
@@ -11,9 +11,9 @@
 |author      = <!-- add only if different from user name -->
 |description = implements per-namespace group permissions for image and file rights protection
 |image       =
-|version     = 0.0
-|update      = 2009-07-11
-|mediawiki   = 1.13, 1.14, 1.15
+|version     = 1.1
+|update      = 2009-09-4
+|mediawiki   = 1.13, 1.14, 1.15, 1.16
 |license     = GNU General Public Licence 2.0
 |download    = {{WikimediaDownload|NSFileRepo}}
 |readme      = [http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/NSFileRepo/README README]
@@ -25,7 +25,13 @@
 
 ==What can this extension do?==
 
-The '''NSFileRepo''' extension implements a way to restrict access to specific files and images to a given set of user groups. This provides a more fine grained security model and allows access restriction to users in specified groups.
+The '''NSFileRepo''' restricts access to upload and read files and images to a given set of user groups associated with protected namespaces. Using this extension (within the security limitations noted above), you can protect not only pages and areas of your wiki, but also any uploaded images or files within those namespaces.
+
+'''Namespaces''' are mechanism for grouping/separating wiki pages.
+
+* See [[Help:Namespaces]] for more '''user help documentation''' on what they are and how they are used.
+* See [[Manual:Namespace]] for '''system administration''' details on Mediawiki's namespace feature 
+* See [[Project:Namespaces]] for an explanation of how '''namespaces are used on mediawiki.org'''
 
 __TOC__
 ==Usage==
@@ -65,18 +71,19 @@ This extension was made possible by the introduction of Repository Classes by Ti
 
 == Announcements ==
 
+* Starting with version 1.16.0, this extension will require no patching.  Updates were made to make more efficient and easier to use.
 * The first version of this (Rel 0.0) was released 2009-07-11.  The following activities are underway to make this extension easier to install and use, including:
 ** Modifying and updating the standard version of img_auth.php to include localization and a hook necessary for this extension.  Will hopefully be approved for version 1.16
 ** Discussing ways to allow modification of wfStripIllegalFilenameChars so that future patching will not be needed.
 
 ==Download instructions==
 
-This Extension and the necessary patch/files may be downloaded from one of the following (SVN preferred)
+This Extension and the necessary patch/files may be downloaded from one of the following (SVN preferred).  The distribution is the same for all versions of MW, 1.13.0 through Current.
 
-* Revision 0.0 (beta)
-** [http://wiki.montcopa.org/PublicDownloads/NSFileRepo.tar tar] (May require eol conversion)
-** [http://wiki.montcopa.org/PublicDownloads/NSFileRepo.tar zip]
-** [http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/NSFileRepo SVN]
+
+* [http://wiki.montcopa.org/PublicDownloads/NSFileRepo_REL_1_1.tar Download tar] (May require eol conversion)
+* [http://wiki.montcopa.org/PublicDownloads/NSFileRepo_REL_1_1.zip Download zip]
+* [http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/NSFileRepo SVN]
 
 Copy all files and directories into directory:
 
@@ -91,30 +98,36 @@ You will need to read and understand two other required enhancements to MediaWik
 * [[Manual:Image Authorization | Image Authorization]].
 * [[Extension:Lockdown | Extension Lockdown]]
 
-Please read and understand the above before executing the following instructions
+Please read and understand before executing the following instructions
 
-# Download and install [[Extension:Lockdown | Extension Lockdown]]
+# Download and install [[Extension:Lockdown | Extension Lockdown]].  If you have not installed 
 # Download and copy the NSFileRepo extension into directory <nowiki>$IP/extensions/NSFileRepo</nowiki>
 # Activate the Image Authorization according to instructions found in [[Manual:Image Authorization | Image Authorization]]
-# Copy the img_auth.php and img_auth.i18.php from the distribution in directory <nowiki>{release}/phase3/</nowiki> to your wiki code base directory ($IP).  This will overwrite the existing img_auth.php file.  Alternately you could copy img_auth.php to another name in the same directory, then use that file name instead of img_auth.php (but still must be in the $IP directory and the localization file must still be img_auth.i18.php).
+<br>
+=== Installation on versions 1.13.0 through 1.15.1 ===
+Up until 1.16.0, MediaWiki required a small patch to includes/GlobalFunctions.php.  After that time, no patches are required, so you can skip to [[#Activating NSFileRepo | Activating NSFileRepo]] if you are using MW version 1.16.0 and higher.  '''NO PATCHES ARE NEEDED FOR MW Version 1.16.0 and higher.'''
+
+# Copy the img_auth.php the distribution in directory <nowiki>{release}/phase3/</nowiki> to your wiki code base directory ($IP).  This will overwrite the existing img_auth.php file.  Alternately you could copy img_auth.php to another name in the same directory, then use that file name instead of img_auth.php (but still must be in the $IP directory).
 # <nowiki>$IP/include/GlobalFunctions.php</nowiki> Must be patched.  This is a very minor patch to remove the disabling of colons (':').  You can do this one of three ways (whichever you're most comfortable with):
 ## Edit the file according to instructions [[#Patch_GlobalFunctions.php | below]]
 ## If you have not otherwise patched the file, you may want to copy it from the distribution, which will be in a directory corresponding to the release you are using under <nowiki>{release}/phase3/includes/GlobalFunctions.php</nowiki>
 ## Apply the patch which will be in a directory corresponding to the release you are using under <nowiki>{release}/phase3/includes/GlobalFunctions.patch</nowiki>
+
+== Activating NSFileRepo ==
 # To activate this extension, add the following to [[Manual:LocalSettings.php|LocalSettings.php]]:
 <source lang="php">
 require_once("$IP/extensions/NSFileRepo/NSFileRepo.php");
 </source>
 
-===Configuration parameters===
+==Configuration parameters==
 
 The user rights and configuration requiremements are are the same as described in [[Extension:Lockdown#Configuration | Extension Lockdown]].
 
 ==Patch GlobalFunctions.php==
 
-In version 1_13_0, a new function wfStripIllegalFilenameChars was added to <nowiki>includes/GlobalFunctions.php</nowiki>.  This prevents the protection namespace from being detectd.
+In version 1_13_0, a new function wfStripIllegalFilenameChars was added to <nowiki>includes/GlobalFunctions.php</nowiki>.  This prevents the extension from determining the namespace associated with the file/image.  For this extension to work in versions 1_13_0 through 1_15_1, you will need to make a minor patch to includes/GlobalFunctions.php as follows:
 
-<pre>
+<source lang=diff>
 Index: GlobalFunctions.php
 ===================================================================
 --- GlobalFunctions.php	(revision 52849)
@@ -127,10 +140,9 @@ Index: GlobalFunctions.php
 +	$name = preg_replace ( "/[^".Title::legalChars()."]/", '-', $name );
  	return $name;
  }
-</pre>
+</source>
 <br>
-<br>
-You need to remove the "or :" clause from the REGEX expression of wfStripIllegalFilenameChars by deleting the characters <nowiki>"|:"</nowiki>
+You need to remove the "or :" clause from the REGEX expression by deleting the characters <nowiki>"|:"</nowiki>
 <br>
 
 ==See also==
@@ -140,5 +152,5 @@ You need to remove the "or :" clause from the REGEX expression of wfStripIllegal
 
 [[Category:View page extensions]]
 [[Category:Edit extensions]]
-
+[[Category:Namespace extensions]]
 {{languages}}
