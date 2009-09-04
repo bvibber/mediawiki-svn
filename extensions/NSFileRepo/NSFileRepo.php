@@ -16,8 +16,13 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
+$wgImgAuthPublicTest = false;		// Must be set to false if you want to use more restrictive than general ['*']['read']
+$wgIllegalFileChars = isset($wgIllegalFileChars) ? $wgIllegalFileChars : "";  // For MW Versions <1.16
+$wgIllegalFileChars = str_replace(":","",$wgIllegalFileChars);			      // Remove the default illegal char ':' - need it to determine NS
+
 # Internationalisation file
-$wgExtensionMessagesFiles['NSFileRepo'] =  dirname(__FILE__) . '/NSFileRepo.i18n.php';
+$wgExtensionMessagesFiles['NSFileRepo'] =  dirname(__FILE__) .'/NSFileRepo.i18n.php';
+$wgExtensionMessagesFiles['img_auth'] =  dirname(__FILE__) .'/img_auth.i18n.php';
 
 
 $wgExtensionFunctions[] = 'NSFileRepoSetup';
@@ -25,16 +30,15 @@ $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
 	'name' => 'NSFileRepo',
 	'author' => 'Jack D. Pond',
-	'version' => '0.0.1',
+	'version' => '1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:NSFileRepo',
-	'description' => 'Provide namespace based features to uploaded files',
+	'description' => 'Provide namespace-based access restriction features to uploaded files/images',
 	'descriptionmsg' => 'nsfilerepo-desc'
 );
 
 
 /**
  * Set up hooks for NSFileRepo
- *
  */
 
 $wgHooks['UploadForm:BeforeProcessing'][] =  'NSFileRepoNSCheck';
@@ -171,7 +175,9 @@ class NSOldLocalFile extends OldLocalFile
  * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
 */
 function NSFileRepoSetup() {
-	global $wgLocalFileRepo;
+	global $wgLocalFileRepo,$wgVersion;
+	$xversion = explode(".",$wgVersion);
+	if ($xversion[0] <= "1" && $xversion[1] < "16") wfLoadExtensionMessages( 'img_auth' );  // loads img_auth messages for versions <1.16
 	wfLoadExtensionMessages( 'NSFileRepo' );
 	$wgLocalFileRepo['class'] = "NSLocalRepo";
 	RepoGroup::destroySingleton();
@@ -213,7 +219,7 @@ function NSFileRepoImgAuthCheck($title, $path, $name, $result) {
 	if (strlen($subdirs[1]) == 3 && is_numeric($subdirs[1]) && $subdirs[1] >= 100)  {
 		$title = Title::makeTitleSafe( NS_FILE, $wgContLang->getNsText($subdirs[1]).":".$name );
 		if( !$title instanceof Title ) {
-			$result = array(wfMsgHTML('image_auth-accessdenied'),wfMsgHTML('image_auth-badtitle',$name));
+			$result = array('img-auth-accessdenied','img-auth-badtitle',$name);
 			return false;
 		}
 	}
