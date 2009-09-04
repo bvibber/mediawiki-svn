@@ -624,7 +624,7 @@ $messages['stq'] = array(
 	'securepasswords-desc' => 'Moaket sicherere Paaswoud-Hashes un föiget ne Paaswoudstäärken-Wröige bietou',
 	'securepasswords-valid' => 'Dien Paaswoud is uungultich of tou kuut.
 Et mout:',
-	'securepasswords-minlength' => 'ap minste $1 Teekene loang weese',
+	'securepasswords-minlength' => 'ap minste $1 {{PLURAL:$1|Teeken|Teekene}} loang weese',
 	'securepasswords-lowercase' => 'ap minste ne Littikbouksteeuwe änthoolde',
 	'securepasswords-uppercase' => 'ap minste ne Grootbouksteeuwe änthoolde',
 	'securepasswords-digit' => 'ap minste een Ziffer änthoolde',

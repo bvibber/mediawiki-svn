@@ -916,6 +916,13 @@ $messages['pl'] = array(
 	'right-edituser-exempt' => 'Inni nie mogą edytować preferencji tego użytkownika',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'edituser' => 'Modìfica utent',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

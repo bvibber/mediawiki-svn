@@ -491,6 +491,19 @@ $messages['pl'] = array(
 	'uos-title' => 'Rozkład wartości opcji użytkowników $1',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'useroptionstats' => "Statìstiche dle opsion ëd j'utent",
+	'useroptionstats-desc' => "[[Special:UserOptionStats|Pàgina special]] për arporté an dzora a l'usagi dle opsoion utent MediaWiki",
+	'uos-warn' => "PHPlot a l'é pa anstalà!",
+	'uos-choose' => 'Sern un-a dle opsion utent sota: $1',
+	'uos-unknown' => '*Default',
+	'uos-other' => '*Àutr',
+	'uos-title' => "Distribussion ëd valor ëd l'opsion utent $1",
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya

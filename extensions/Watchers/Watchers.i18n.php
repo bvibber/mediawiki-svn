@@ -709,6 +709,20 @@ $messages['pl'] = array(
 	'watchers_less_than_x' => 'Mniej niż $1 {{PLURAL:$1|użytkownik|użytkowników}} obserwuje tę stronę.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'watchers' => 'Osservador',
+	'watchers-desc' => "A mosta  [[Special:Watchers|vàire utent a l'han na pàgina ch'as ten-o sot euj]]",
+	'watchers_link_title' => "Chi a ten d'euj sta pàgina-sì?",
+	'watchers_error_article' => "'''Eror:''' La pàgina a esist pa.",
+	'watchers_header' => "{{PLURAL:$2|Utent ch'a ten|Utent ch'a ten-o}} d'euj ''$1''.",
+	'watchers_noone_watches' => "Pa gnun ch'a ten-a d'euj sta pàgina-sì.",
+	'watchers_x_or_more' => "$1 o pì {{PLURAL:$1|utent|utent}} a ten-o d'euj sta pàgina-sì.",
+	'watchers_less_than_x' => "Men che $1 {{PLURAL:$1|utent|uten}} a ten-o d'euj sta pàgina-sì.",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

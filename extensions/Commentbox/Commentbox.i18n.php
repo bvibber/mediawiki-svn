@@ -199,6 +199,13 @@ Quere facer un comentario sobre esta páxina? Engádao aquí ou <span class="pla
 	'commentbox-error-empty-comment' => 'Non se permiten comentarios baleiros!',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'commentbox-name' => 'Ὄνομα:',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

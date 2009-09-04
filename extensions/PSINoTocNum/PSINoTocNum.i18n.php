@@ -154,6 +154,13 @@ $messages['hsb'] = array(
 	'psinotocnum-desc' => 'Nowe magiske słowo "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'psinotocnum-desc' => 'Új varázsszó: „<nowiki>__NOTOCNUM__</nowiki>”',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

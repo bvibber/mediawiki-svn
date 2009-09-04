@@ -2071,6 +2071,8 @@ $messages['lb'] = array(
 	'voctrain_unhide_definition' => 'Definitioun nees weisen',
 	'voctrain_unhide_words' => 'Wieder nees weisen',
 	'voctrain_hiding' => 'Verstoppen',
+	'voctrain_hide_definitions_in_question_language' => 'Definitiounen an der Sprooch vun der Fro verstoppen',
+	'voctrain_hide_words_in_question_language' => 'Wierder an der Sprooch vun der Fro verstoppen',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => "Trennt d'Werter mat Kommaen fir méi Sproochen ze gesinn.",
 	'voctrain_other' => 'aner Zuel',
 );

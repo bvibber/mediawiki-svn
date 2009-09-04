@@ -157,7 +157,23 @@ $messages['be-tarask'] = array(
 	'closewikis-page-close-dreason' => 'Прычына (якая будзе паказвацца):',
 	'closewikis-page-close-reason' => 'Прычына (для журнала):',
 	'closewikis-page-close-submit' => 'Закрыць',
+	'closewikis-page-close-success' => 'Вікі пасьпяхова закрытая',
+	'closewikis-page-reopen' => 'Адкрыць вікі ізноў',
+	'closewikis-page-reopen-wiki' => 'Вікі:',
 	'closewikis-page-reopen-reason' => 'Прычына:',
+	'closewikis-page-reopen-submit' => 'Адкрыць ізноў',
+	'closewikis-page-reopen-success' => 'Вікі пасьпяхова адкрытая ізноў',
+	'closewikis-page-err-nowiki' => 'Пазначаная няслушная вікі',
+	'closewikis-page-err-closed' => 'Вікі ўжо закрытая',
+	'closewikis-page-err-opened' => 'Вікі не закрытая',
+	'closewikis-list' => 'Сьпіс закрытых вікі',
+	'closewikis-list-intro' => 'Гэты сьпіс утрымлівае вікі, якія былі закрытыя сьцюардамі.',
+	'closewikis-list-header-wiki' => 'Вікі',
+	'closewikis-list-header-by' => 'Сьцюард',
+	'closewikis-list-header-timestamp' => 'Дата',
+	'closewikis-list-header-dispreason' => 'Прычына для паказу',
+	'closewikis-log' => 'Журнал закрыцьця вікі',
+	'closewikis-log-header' => 'Журнал усіх закрыцьцяй і адкрыцьцяй вікі сьцюардамі',
 );
 
 /** Bulgarian (Български)

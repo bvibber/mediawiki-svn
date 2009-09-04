@@ -506,7 +506,7 @@ $messages['sr-el'] = array(
  */
 $messages['stq'] = array(
 	'signaturelogpage' => 'Unnerschrifts-Logbouk',
-	'signaturelogpagetext' => 'Dit is dät Unnerschrifts-Logbouk foar Dokumente, do der uur ju Siede [[{{ns:special}}:SignDocument]] unnerschrieuwen wäide konnen.',
+	'signaturelogpagetext' => 'Dit is dät [[Special:SignDocument|Unnerschrifts-Logbouk foar Dokumente]].',
 	'signaturelogentry' => 'häd dät Dokument $1 unnerschrieuwen',
 );
 

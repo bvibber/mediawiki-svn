@@ -206,9 +206,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'purge' => 'frissít',
+	'purge-desc' => 'Új fület ad hozzá minden normál laphoz a gyorsítótár kiürítésére, és kihagyja az ürítettség-ellenőrzést nem bejelentkezett felhasználók esetén, ami lehetővé teszi a gyorsítótár gyors ürítését',
 );
 
 /** Interlingua (Interlingua)

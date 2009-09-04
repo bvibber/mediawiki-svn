@@ -406,6 +406,19 @@ $messages['pl'] = array(
 	'multiboilerplate-submit' => 'Prześlij',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'multiboilerplate-desc' => 'A përmëtt che na "boilerplate" a sia selessionà da un menù a tendin-a posissionà an dzora a la forma ëd modìfica quand che as modìfico dle pàgina',
+	'multiboilerplate-legend' => 'Selession-a la "boilerplate"',
+	'multiboilerplate-submit' => 'Carìa',
+	'boilerplates' => '"Boilerplate" disponìbij',
+	'multiboilerplate-special-pagetext' => "Sto stamp-sì a peul esse precarià quand ch'as crea na pàgina. (<span class=plainlinks>[{{fullurl:Sta pàgina-sì a esist pa|action=edit}} demo]</span>)",
+	'multiboilerplate-special-define-in-localsettings' => '"Boilerplate" com definì an LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => '"Boilerplate" com definì an [[MediaWiki:Multiboilerplate]].',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

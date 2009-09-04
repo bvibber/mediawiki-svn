@@ -552,9 +552,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'player' => 'Lejátszó',
+	'player-desc' => 'Beágyazott médialejátszás gyakori böngésző-pluginek használatával, és a hozzá tartozó [[Special:Player|speciális lap]]',
 	'player-title' => 'Lejátszó',
 	'player-playertitle' => 'Lejátszó: $1',
 	'player-file' => 'Fájl neve',

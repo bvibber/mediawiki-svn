@@ -181,13 +181,18 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'invite-logpage' => 'Zapisnik pozivnica',
 	'invite-logentry' => 'pozovi $1 da koristi mogućnost <i>$2</i>.',
+	'invitations-desc' => 'Omogućava [[Special:Invitations|upravljanje novim mogućnostima]] putem pozivanja',
 	'invitations-invitedlist-none' => 'Niste pozvani da koristite neku od mogućnosti softvera za pozivanje.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Jedan poziv|$1 poziva}} dostupno)',
 	'invitations-uninvitedlist-description' => 'Nemate pristup do ovih drugih osobina softvera samo za pozivanje.',
+	'invitations-feature-pagetitle' => 'Upravljanje pozivima - $1',
 	'invitations-feature-access' => 'Trenutno imate pristup za upotrebu <i>$1</i>.',
+	'invitations-feature-notallowed' => 'Nemate pristup za upotrebu <i>$1</i>.',
 	'invitations-inviteform-title' => 'Pozovi korisnika da koristi $1',
 	'invitations-inviteform-username' => 'Korisnik koji se poziva',
 	'invitations-inviteform-submit' => 'Pozovi',
+	'invitations-error-baduser' => 'Korisnik kojeg ste naveli ne postoji.',
+	'invitations-error-alreadyinvited' => 'Korisnik kojeg ste naveli već ima pristup ovoj mogućnosti!',
 	'invitations-invite-success' => 'Uspješno se pozvali $1 da koristi ovu mogućnost!',
 );
 
@@ -1145,7 +1150,7 @@ $messages['stq'] = array(
 	'invitations-uninvitedlist-none' => 'Apstuuns sunt neen wiedere Softwarefunktione ienleedengsbasierd',
 	'invitations-feature-pagetitle' => 'Ienleedengsferwaltenge - $1',
 	'invitations-feature-access' => 'Du hääst Tougoang toun Gebruuk fon <i>$1</i>.',
-	'invitations-feature-numleft' => 'Die stounde noch <b>$1</b> fon mädnunner $2 Ienleedengen tou Ferföigenge.',
+	'invitations-feature-numleft' => 'Die {{PLURAL:$2|stoant noch een Ienleedenge|stounde noch <b>$1</b> fon mädnunner $2 Ienleedengen}}  tou Ferföigenge.',
 	'invitations-feature-noneleft' => 'Du hääst aal die touwiesde Ienleedengen foar disse Softwarefunktion ferbruukt.',
 	'invitations-feature-noneyet' => 'Die wuuden noch neen Ienleedengen foar disse Softwarefunktion touwiesd.',
 	'invitations-feature-notallowed' => 'Du hääst neen Begjuchtigenge, uum <i>$1</i> tou bruuken.',

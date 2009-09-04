@@ -513,6 +513,20 @@ $messages['pl'] = array(
 	'lua_overflow_time' => 'Osiągnięto maksymalny czas wykonywania',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'lua_desc' => 'A estend ël parser con apògg për ij blòch antern dël còdes [http://www.lua.org/ Lua]',
+	'lua_error' => 'Eror an sla linia $1',
+	'lua_extension_notfound' => 'Estension Lua pa configurà',
+	'lua_interp_notfound' => 'Anterprete Lua pa trovà',
+	'lua_error_internal' => 'Eror antern',
+	'lua_overflow_recursion' => 'Lìmit ëd ricursion rivà',
+	'lua_overflow_loc' => 'Lìmit dël massim nùmer ëd linie ëd còdes rivà',
+	'lua_overflow_time' => "Temp massim d'esecussion rivà",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -557,6 +557,21 @@ $messages['pl'] = array(
 	'communityvoice-ratings-error-no-title' => 'Brak tytułu w atrybutach głosowania.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'communityvoice' => 'Vos ëd la comunità',
+	'communityvoice-desc' => 'Utis ëd partessipassion ëd la comunità',
+	'communityvoice-ratings' => 'Valutassion',
+	'communityvoice-ratings-scale-status-sending' => 'An spedission ...',
+	'communityvoice-ratings-scale-status-error' => 'Eror ant la spedission!',
+	'communityvoice-ratings-scale-status-thanks' => 'Mersì për avèj votà!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vot|vot}} dàit)',
+	'communityvoice-ratings-error-no-category' => 'Atribut ëd categorìa mancant ant ël tag ëd valutassion.',
+	'communityvoice-ratings-error-no-title' => 'Atribut dël tìtol mancant ant ël tag ëd valutassion.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

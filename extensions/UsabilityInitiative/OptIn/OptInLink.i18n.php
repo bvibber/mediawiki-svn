@@ -147,8 +147,11 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'optin-try' => 'Beta ausprobieren',
+	'tooltip-pt-optin-try' => 'Neue Features ausprobieren',
 	'optin-leave' => 'Beta verlassen',
+	'tooltip-pt-optin-leave' => 'Neue Features ausschalten',
 	'optin-feedback' => 'Feedback geben',
+	'tooltip-pt-optin-feedback' => 'Feedback über deine Erfahrungen mit den neuen Features abgeben',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -259,8 +262,11 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'optin-try' => 'Probar Beta',
+	'tooltip-pt-optin-try' => 'Probar as novas características',
 	'optin-leave' => 'Deixar Beta',
+	'tooltip-pt-optin-leave' => 'Desactivar as novas características',
 	'optin-feedback' => 'Dea a súa opinión',
+	'tooltip-pt-optin-feedback' => 'Ofrézanos as súas impresións sobre a experiencia coas novas características',
 );
 
 /** Swiss German (Alemannisch)
@@ -641,6 +647,13 @@ $messages['sr-ec'] = array(
 	'optin-try' => 'Пробајте бета-верзију',
 	'optin-leave' => 'Напустите бета-верзију',
 	'optin-feedback' => 'Повратна информација о бета-верзији',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'optin-try' => 'Beta uutprobierje',
 );
 
 /** Swedish (Svenska)

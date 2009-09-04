@@ -1094,20 +1094,46 @@ Retornar a:
  * @author Rex
  */
 $messages['id'] = array(
+	'crosswikiblock-desc' => 'Memungkinkan untuk memblokir pengguna di wiki lainnya menggunakan [[Special:Crosswikiblock|halaman istimewa]]',
+	'crosswikiblock' => 'Blokir pengguna di wiki lain',
+	'crosswikiblock-header' => 'Halaman ini memungkinkan untuk memblokir pengguna di wiki lain. 
+Silakan periksa jika Anda diperbolehkan untuk bertindak pada wiki ini dan tindakan Anda sesuai dengan semua kebijakan.',
+	'crosswikiblock-target' => 'Alamat IP atau pengguna dan wiki tujuan:',
+	'crosswikiblock-expiry' => 'Waktu berakhir:',
 	'crosswikiblock-reason' => 'Alasan:',
 	'crosswikiblock-submit' => 'Blokir pengguna ini',
 	'crosswikiblock-anononly' => 'Hanya blokir pengguna anonim',
 	'crosswikiblock-nocreate' => 'Cegah pembuatan akun',
 	'crosswikiblock-autoblock' => 'Blokir alamat IP terakhir yang digunakan pengguna ini secara otomatis, dan semua alamat berikutnya yang mereka coba gunakan untuk menyunting.',
 	'crosswikiblock-noemail' => 'Cegah pengguna mengirimkan surel',
+	'crosswikiunblock' => 'Hilangkan blokir pengguna di wiki lain',
+	'crosswikiunblock-header' => 'Halaman ini membolehkan untuk blokir pengguna di wiki lain.
+Silahkan periksa jika anda di bolehkan untuk bertindak di wiki ini dan aksi anda sesuai dengan semua kebijakan.',
+	'crosswikiunblock-user' => 'Nama pengguna, alamat IP atau blok ID dan wiki tujuan:',
 	'crosswikiunblock-reason' => 'Alasan:',
+	'crosswikiunblock-submit' => 'Hilangkan blokir pengguna ini',
+	'crosswikiunblock-success' => "Pengguna '''$1''' berhasil di buka blokirnya.
+
+Kembali ke:
+* [[Special:CrosswikiBlock|formulir blokir]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Nama pengguna tida diberikan',
+	'crosswikiblock-local' => 'Blokir lokal tidak di dukung melalui antarmuka ini. Gunakan [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound' => 'Basis data $1 tidak ada',
 	'crosswikiblock-noname' => 'Nama pengguna "$1" tidak sah.',
 	'crosswikiblock-nouser' => 'Pengguna "$3" tidak ditemukan.',
+	'crosswikiblock-noexpiry' => 'Kadaluarsa tidak sah: $1.',
 	'crosswikiblock-noreason' => 'Tak ada penjelasan.',
 	'crosswikiblock-notoken' => 'Token penyuntingan tidak sah.',
 	'crosswikiblock-alreadyblocked' => 'Pengguna $3 telah diblokir.',
 	'crosswikiblock-noblock' => 'Pengguna ini tidak diblok.',
+	'crosswikiblock-success' => "Pengguna '''$3''' blokir berhasil.
+
+Kembali ke:
+* [[Special:CrosswikiBlock|Formulir blokir]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Buka blokir lokal tidak didukung melalui antarmuka ini. Gunakan [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Blokir dan buka blokir pengguna di wiki lain',
 );
 
 /** Ido (Ido)

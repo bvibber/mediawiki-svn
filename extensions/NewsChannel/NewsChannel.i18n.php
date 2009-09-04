@@ -462,6 +462,19 @@ $messages['pl'] = array(
 	'newschannel_submit_button' => 'Utwórz kanał',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'newschannel' => 'Canal ëd neuve',
+	'newschannel-desc' => 'A amplementa un canal ëd neuve con na [[Special:NewsChannel|pàgina special]] dinàmica',
+	'newschannel_format' => 'Formà:',
+	'newschannel_limit' => 'Lìmit:',
+	'newschannel_include_category' => 'Categorìa adissional:',
+	'newschannel_exclude_category' => 'Categorìa scartà:',
+	'newschannel_submit_button' => 'Crea un feed',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

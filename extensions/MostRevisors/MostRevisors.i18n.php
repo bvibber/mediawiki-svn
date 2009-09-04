@@ -295,10 +295,12 @@ $messages['gl'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'mostrevisors-namespace' => 'Ὀνοματεῖον:',
+	'mostrevisors-submit' => 'Ἰέναι',
 );
 
 /** Swiss German (Alemannisch)

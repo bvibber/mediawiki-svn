@@ -394,9 +394,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'randomincategory' => 'Véletlen lap egy kategóriából',
+	'randomincategory-desc' => '[[Special:Randomincategory|Speciális lap]] véletlen lap eléréséhez adott kategóriában',
 	'randomincategory-toolbox' => 'Véletlen lap',
 	'randomincategory-nocategory' => '$1 névvel nem létezik kategória vagy üres.',
 	'randomincategory-label' => 'Kategória:',

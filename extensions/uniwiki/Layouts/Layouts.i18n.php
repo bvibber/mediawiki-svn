@@ -604,6 +604,19 @@ $messages['pl'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'layouts_title' => 'Crea na pàgina',
+	'layouts_chooselayout' => 'Sern un layaut për $1:',
+	'layouts_nolayout' => 'Pa gnun layaut',
+	'layouts_continue' => 'Continua',
+	'layouts_choosecategory' => 'Sern na categorìa për $1:',
+	'layouts_unknown' => 'Pa conossù',
+	'layouts_tagline' => "Sta pàgina-sì a l'é generà dal layout '''$1'''.",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

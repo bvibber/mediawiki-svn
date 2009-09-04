@@ -649,8 +649,8 @@ $messages['sli'] = array(
  */
 $messages['stq'] = array(
 	'whatismyip' => 'Wo lut mien IP-Adresse',
-	'whatismyip-desc' => 'Wiest ju apstuunse IP-Adresse fon dän Benutser ap [[Special:WhatIsMyIP]] an',
-	'whatismyip-out' => 'Dien IP-Adresse',
+	'whatismyip-desc' => 'Wiest ju apstuunse [[Special:WhatIsMyIP|IP-Adresse]] fon dän Benutser an',
+	'whatismyip-out' => 'Dien IP-Adresse:',
 );
 
 /** Sundanese (Basa Sunda)

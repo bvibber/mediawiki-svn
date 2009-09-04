@@ -520,6 +520,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'profiling' => 'Donnéeën evaluéieren',
 	'profiling-desc' => '[[Special:Profiling|Spezialsäit]] fir Profildaten ze sichen an auszewäerten',
 	'profiling-ok' => 'ok',
 	'profiling-data' => "Profildate vu(n) '$1'",

@@ -689,7 +689,18 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'latexdoc_no_text' => 'La pàgina a conten pa ëd test, as peul pa generesse un DVI',
+	'latexdoc_cant_create_dir' => 'A peul pa creé la directory temporanea $1',
+	'latexdoc_cant_write' => 'A peul pa scrive an sël file $1',
+	'latexdoc_error' => 'Eror LaTeX
+
+Comand: $1
+
+Output: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Oten DVI',
 	'latexdoc_get_pdf' => 'Fà un PDF',
+	'latexdoc-desc' => 'Modìfica colaborativa ëd document LaTeX',
 );
 
 /** Portuguese (Português)
