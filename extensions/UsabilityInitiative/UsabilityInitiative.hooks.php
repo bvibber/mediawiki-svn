@@ -43,7 +43,6 @@ class UsabilityInitiativeHooks {
 		'no_js2' => array(
 			'raw' => array(
 				array( 'src' => 'js/js2/jquery-1.3.2.js', 'version' => '1.3.2' ),
-				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2x' ),
 				array( 'src' => 'js/js2/js2.js', 'version' => 3 ),
 			),
 			'combined' => array(
@@ -65,6 +64,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 5 ),
+				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2x' ),
 			),
 			'combined' => array(
 				array( 'src' => 'js/plugins.combined.js', 'version' => 17 ),
