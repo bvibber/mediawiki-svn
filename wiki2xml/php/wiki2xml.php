@@ -354,8 +354,13 @@ class wiki2xml
 		} else {
 			$xml .= "<template><target>{$target}</target>";
 			for ( $i = 1 ; $i < $vcount ; $i++ ) {
-				if ( isset( $varnames[$i] ) ) $xml .= "<arg name=\"{$varnames[$i]}\">{$variables[$i]}</arg>";
-				else $xml .= "<arg>{$variables[$i]}</arg>";
+//				$v = htmlentities ( $variables[$i] ) ;
+				$v = htmlspecialchars ( $variables[$i] ) ;
+				if ( isset( $varnames[$i] ) ) {
+					$vn = htmlspecialchars ( $varnames[$i] ) ;
+					$xml .= "<arg name=\"{$vn}\">{$v}</arg>";
+				}
+				else $xml .= "<arg>{$v}</arg>";
 			}
 			$xml .= "</template>" ;
 			$a = $b ;
