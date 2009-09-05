@@ -301,6 +301,7 @@ $messages['tr'] = array(
 $messages['vec'] = array(
 	'clicktracking' => "Traciamento click de l'Inissiativa par l'Usabilità",
 	'clicktracking-desc' => 'Traciamento dei click, par traciare i eventi che no provoca mia un refresh de la pagina.',
+	'clicktracking-title' => 'Agregassion dei clic dei utenti',
 );
 
 /** Vietnamese (Tiếng Việt)

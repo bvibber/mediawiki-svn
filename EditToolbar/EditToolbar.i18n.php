@@ -7113,7 +7113,17 @@ $messages['pnt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'edittoolbar-tool-newline' => 'نوې کرښه',
+	'edittoolbar-tool-replace-close' => 'تړل',
+	'edittoolbar-section-characters' => 'ځانګړي توري',
+	'edittoolbar-characters-page-greek' => 'يوناني',
+	'edittoolbar-characters-page-cyrillic' => 'سرېليک',
+	'edittoolbar-characters-page-arabic' => 'عربي',
+	'edittoolbar-section-help' => 'لارښود',
+	'edittoolbar-help-page-link' => 'تړنې',
+	'edittoolbar-help-page-list' => 'لړليکونه',
 	'edittoolbar-help-page-file' => 'دوتنې',
+	'edittoolbar-help-page-discussion' => 'خبرې اترې',
 );
 
 /** Portuguese (Português)
@@ -8917,8 +8927,7 @@ $messages['vec'] = array(
 	'edittoolbar-tool-table-dimensions' => 'Dimensioni',
 	'edittoolbar-tool-table-dimensions-rows' => 'Lìnie',
 	'edittoolbar-tool-table-dimensions-columns' => 'Colone',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Lìnie de testa',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Colòne de testa',
+	'edittoolbar-tool-table-dimensions-header' => 'Includi la riga de intestassion',
 	'edittoolbar-tool-table-insert' => 'Inserissi',
 	'edittoolbar-tool-table-cancel' => 'Anùla',
 	'edittoolbar-tool-replace' => 'Sostituìssi',

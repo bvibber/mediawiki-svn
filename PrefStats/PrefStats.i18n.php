@@ -1003,10 +1003,11 @@ Donn op ein dovun drop klecke, öm dä ier Shtatistik ze belooere.',
 
 /** Latin (Latina)
  * @author Omnipaedista
+ * @author UV
  */
 $messages['la'] = array(
 	'prefstats-factor-hour' => 'hora',
-	'prefstats-factor-sixhours' => 'sex hores',
+	'prefstats-factor-sixhours' => 'sex horas',
 	'prefstats-factor-day' => 'dies',
 	'prefstats-factor-week' => 'hebdomas',
 	'prefstats-factor-twoweeks' => 'duae hebdomades',
