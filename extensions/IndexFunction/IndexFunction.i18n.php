@@ -244,14 +244,18 @@ Zapódaj nejpjerwjej někotare znamuška a klikni tłocašk {{int:index-submit}}
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'indexfunc-badtitle' => 'Μη έγκυρος τίτλος: "$1"',
 	'indexfunc-index-exists' => 'Η σελίδα "$1" υπάρχει ήδη',
 	'index' => 'Δείκτης αναζήτησης',
+	'index-legend' => 'Αναζήτηση στο ευρετήριο',
 	'index-search' => 'Αναζήτηση:',
 	'index-submit' => 'Καταχώρηση',
+	'index-hide-detail' => 'Απόκρυψη της λίστας σελίδων',
+	'index-no-results' => 'Η αναζήτηση δεν επέστρεψε αποτελέσματα',
 );
 
 /** Esperanto (Esperanto)
@@ -604,6 +608,8 @@ $messages['lb'] = array(
 	'index-search-explain' => 'Dës Säit benotzt Prefix-Sich.
 
 Tippt déi éischt Buchstawen an dréckt op de {{int:index-submit ("Schécken")}} Knäppchen fir no Säitentitelen ze sichen déi mat dem ufänken wat Dir aginn hutt.',
+	'index-details-explain' => "D'Donnéeë mat Feiler sinn Index-Donnéeën.
+Klickt op de Feil fir all Säiten ze gesinn déi ënner deem Titel indexéiert sinn.",
 );
 
 /** Mongolian (Монгол)

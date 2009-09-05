@@ -306,10 +306,13 @@ Njeposuź pśinosujucych pó licbje jich změnow.",
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'countedits' => 'Καταμέτρηση επεξεργασιών',
 	'countedits-username' => 'Όνομα χρήστη:',
 	'countedits-ok' => 'Εντάξει',
+	'countedits-resultheader' => 'Αποτελέσματα για $1',
 );
 
 /** Esperanto (Esperanto)

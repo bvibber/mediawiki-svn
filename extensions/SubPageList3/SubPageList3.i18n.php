@@ -81,6 +81,15 @@ $messages['bg'] = array(
 	'spl3_nosubpages' => '$1 не съдържа подстраници, които да бъдат показани.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'spl3-desc' => 'Sevel a ra ent emgefre roll ispajennoù ur bajenn en ur ober gant ar valizenn <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Talvoudenn dianav evit an dibarzh $1',
+	'spl3_nosubpages' => "N'eus ispajenn ebet da rollañ evit $1",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

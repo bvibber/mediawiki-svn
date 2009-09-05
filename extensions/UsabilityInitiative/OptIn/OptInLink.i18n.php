@@ -154,6 +154,13 @@ $messages['de'] = array(
 	'tooltip-pt-optin-feedback' => 'Feedback über deine Erfahrungen mit den neuen Features abgeben',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'tooltip-pt-optin-feedback' => 'Feedback über Ihre Erfahrungen mit den neuen Features abgeben',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -706,8 +713,11 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'optin-try' => 'Próa la Beta',
+	'tooltip-pt-optin-try' => 'Próa le funsionalità nove',
 	'optin-leave' => 'Và fora da Beta',
+	'tooltip-pt-optin-leave' => 'Destaca le funsionalità nove',
 	'optin-feedback' => 'Cossa ghe ne pénsito de Beta',
+	'tooltip-pt-optin-feedback' => "Dane la to inpression su l'utiliso de ste funsionalità nove",
 );
 
 /** Vietnamese (Tiếng Việt)

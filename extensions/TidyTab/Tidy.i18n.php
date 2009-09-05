@@ -56,6 +56,15 @@ $messages['be-tarask'] = array(
 	'untidy' => 'Неакуратны HTML',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'tidy-desc' => 'Ouzhpennañ a ra un taolennata renket pe direnket (diouzh $wgUseTidy) wa rpajennoù boutin, ar pezh a dalvez da drement hebioù d\'an arventennoù hollek HTML renket, evit un taol sell',
+	'tidy' => 'Renkañ',
+	'untidy' => 'Direnkañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

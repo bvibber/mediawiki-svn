@@ -133,6 +133,7 @@ $messages['el'] = array(
 	'logentry-append' => 'Προσάρτηση',
 	'logentry' => 'Αρχείο καταχωρήσεων',
 	'logentry-invalidpage' => 'Μη έγκυρη σελίδα',
+	'logentry-invalidtoken' => 'Μή έγκυρο δείγμα',
 );
 
 /** Esperanto (Esperanto)

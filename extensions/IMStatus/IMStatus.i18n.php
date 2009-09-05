@@ -355,10 +355,12 @@ $messages['el'] = array(
 	'imstatus_syntax' => 'Συντακτικό',
 	'imstatus_default' => 'Προεπιλογή',
 	'imstatus_example' => 'Παράδειγμα',
+	'imstatus_possible_val' => 'Πιθανές τιμές',
 	'imstatus_max' => 'μεγ',
 	'imstatus_min' => 'ελαχ',
 	'imstatus_or' => 'ή',
 	'imstatus_your_name' => 'το όνομά σας $1',
+	'imstatus_icq_id' => 'η ταυτότητα ICQ σας',
 );
 
 /** Esperanto (Esperanto)

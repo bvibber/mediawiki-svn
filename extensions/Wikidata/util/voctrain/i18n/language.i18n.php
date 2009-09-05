@@ -2880,6 +2880,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Heldergeovane
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -2928,11 +2929,11 @@ $messages['pt'] = array(
 	'voctrain_Start_a_new_exercise' => 'Iniciar um novo exercício',
 	'voctrain_User_name' => 'Nome de utilizador',
 	'voctrain_Password' => 'Palavra-chave',
-	'voctrain_Login' => 'Entrar',
+	'voctrain_Login' => 'Autenticar-se',
 	'voctrain_Create_new_user' => 'Criar novo utilizador',
 	'voctrain_Switch_language' => 'Mudar língua',
 	'voctrain_Language' => 'Língua',
-	'voctrain_Log_in' => 'Autenticação',
+	'voctrain_Log_in' => 'Autenticar-se',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'Treinador de vocabulário do Omegawiki',
 	'voctrain_Definitions' => 'Definições',
 	'voctrain_Could_not_create_new_user' => 'Não foi possível criar novo utilizador',
@@ -2951,6 +2952,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'voctrain_Hello_World' => 'OLÁ WIKI!',
@@ -2998,11 +3000,11 @@ $messages['pt-br'] = array(
 	'voctrain_Start_a_new_exercise' => 'Iniciar um novo exercício',
 	'voctrain_User_name' => 'Nome de utilizador',
 	'voctrain_Password' => 'Palavra-chave',
-	'voctrain_Login' => 'Entrar',
+	'voctrain_Login' => 'Autenticar-se',
 	'voctrain_Create_new_user' => 'Criar novo utilizador',
 	'voctrain_Switch_language' => 'Mudar língua',
 	'voctrain_Language' => 'Língua',
-	'voctrain_Log_in' => 'Autenticação',
+	'voctrain_Log_in' => 'Autenticar-se',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'Treinador de vocabulário do Omegawiki',
 	'voctrain_Definitions' => 'Definições',
 	'voctrain_Could_not_create_new_user' => 'Não foi possível criar novo utilizador',

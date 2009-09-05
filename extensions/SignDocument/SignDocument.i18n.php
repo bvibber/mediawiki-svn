@@ -152,6 +152,7 @@ $messages['es'] = array(
 	'signature-desc' => 'Habilita [[Special:SignDocument|firma]] de documentos',
 	'signaturelogpagetext' => 'Este es un registro de [[Special:SignDocument|todas las firmas agregadas a los documentos]].',
 	'signaturelogentry' => 'firmado el documento $1',
+	'right-sigadmin' => 'Administrar firmado de documento',
 	'right-createsigndocument' => 'Crear documentos que puedan ser firmados',
 );
 

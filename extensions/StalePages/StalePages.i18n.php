@@ -59,6 +59,15 @@ $messages['bg'] = array(
 	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през {{PLURAL:$1|последния|последните}} $1 {{PLURAL:$1|ден|дни}}.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'stalepages' => 'Pajennoù dilezet',
+	'stalepages-desc' => "Sevel a ra ur [[Special:Stalepages|roll pajennoù]] n'int ket bet kemmet abaoe pell",
+	'stalepages-summary' => "Setu aze ur roll pajennoù n'int ket bet kemmet abaoe $1 {{PLURAL:$1|deiz}}.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

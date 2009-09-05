@@ -14,6 +14,14 @@ $magicWords['ar'] = array(
 	'languagename'   => array( '0', 'اسم_لغة', 'اسم_اللغة', 'languagename' ),
 );
 
+$magicWords['br'] = array(
+	'languagename'   => array( '0', 'anvyezh', 'languagename' ),
+);
+
+$magicWords['bs'] = array(
+	'languagename'   => array( '0', 'imejezika', 'languagename' ),
+);
+
 $magicWords['cs'] = array(
 	'languagename'   => array( '0', 'názevjazyka', 'languagename' ),
 );
@@ -28,6 +36,10 @@ $magicWords['fr'] = array(
 
 $magicWords['it'] = array(
 	'languagename'   => array( '0', 'nomelingua', 'languagename' ),
+);
+
+$magicWords['ja'] = array(
+	'languagename'   => array( '0', '言語名', 'languagename' ),
 );
 
 $magicWords['ksh'] = array(

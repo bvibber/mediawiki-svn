@@ -392,6 +392,8 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'importusers' => 'Εισαγωγή χρηστών',
 	'importusers-uploadfile' => 'Φόρτωση αρχείου',
+	'importusers-form-caption' => 'Εισαγωγή ενός αρχείου CSV (UTF-8)',
+	'importusers-form-file' => 'Φορμά αρχείου χρήστη (CSV):',
 	'importusers-form-button' => 'Εισαγωγή',
 	'importusers-log' => 'Αρχείο καταγραφής εισαγωγής χρηστών',
 	'importusers-log-summary' => 'Περίληψη',
@@ -679,11 +681,12 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author आलोक
  */
 $messages['hi'] = array(
 	'importusers' => 'सदस्य आयात करें',
 	'importusers-desc' => 'CSV-फ़ाईल से अनेक सदस्य आयात करें; एन्कोडिंग: UTF-8',
-	'importusers-uploadfile' => 'फ़ाइल अपलोड करें',
+	'importusers-uploadfile' => 'संचिका चढ़ाएँ',
 	'importusers-form-caption' => 'इनपुट CSV-फ़ाईल (UTF-8)',
 	'importusers-form-file' => 'सदस्य फ़ाईल का स्वरूप (CSV):',
 	'importusers-form-replace-present' => 'अभीके सदस्य रिप्लेस करें',

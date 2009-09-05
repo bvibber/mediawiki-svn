@@ -224,10 +224,12 @@ Gaž coš někotare boki wubraś abo wótwóliś, móžoš wubraś jaden za drug
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'watchsubpages' => 'Παρακολούθηση υποσελίδων',
+	'watchsubpages-addedtowatchlist' => 'Το παρακάτω προστέθηκε στη λίστα παρακολούθησής σου.',
 	'watchsubpages-addtitles' => 'Προσθήκη σελίδων',
 	'watchsubpages-addtitlestowatchlist' => 'Προσθήκη σελίδων στη λίστα παρακολούθησης',
 );

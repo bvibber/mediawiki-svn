@@ -635,6 +635,7 @@ $messages['el'] = array(
 	'regexblock-form-submit-regex' => 'Μη έγκυρη τακτική έκφραση',
 	'regexblock-nodata-found' => 'Δεν βρέθηκαν δεδομένα',
 	'regexblock-unblock-success' => 'Η άρση φραγής ολοκληρώθηκε επιτυχώς',
+	'regexblock-regex-filter' => ' ή τιμή τακτικής έκφρασης:',
 	'regexblock-view-blocked' => 'Προβολή φραγμένων από:',
 	'regexblock-view-all' => 'Όλα',
 	'regexblock-view-go' => 'Πήγαινε',

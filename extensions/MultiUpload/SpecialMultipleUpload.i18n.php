@@ -634,15 +634,16 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author आलोक
  */
 $messages['hi'] = array(
 	'multipleupload' => 'फ़ाईल अपलोड करें',
 	'multipleupload-desc' => 'सदस्योंको [[Special:MultipleUpload|एकसाथ अनेक फ़ाईल अपलोड]] करने की अनुमति देता हैं',
 	'multipleupload-ignoreallwarnings' => "'''सभी सूचना''' नजर अंदाज करें और फ़ाईल कैसे भी संजोयें।",
 	'multipleupload-saveallfiles' => 'सभी फ़ाइलें संजोयें',
-	'multipleupload-page' => '{{ns:project}}:फ़ाइल हटानेकी नीति',
-	'multiupload-fileuploaded' => 'फ़ाइल अपलोड हो गई।',
-	'multiupload-toolbox' => 'एकसे ज्यादा फ़ाइल अपलोड करें',
+	'multipleupload-page' => '{{ns:project}}:संचिका मिटाने की नीति',
+	'multiupload-fileuploaded' => 'संचिका चढ़ा दी गई है।',
+	'multiupload-toolbox' => 'अनेक संचिकाएँ चढ़ाएँ',
 );
 
 /** Hiligaynon (Ilonggo)

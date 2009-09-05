@@ -130,6 +130,13 @@ $messages['dsb'] = array(
 	'categoryintersection-results' => 'Pytanje jo $1 {{PLURAL:$1|wuslědk|wuslědka|wuslědki|wuslědkow}} wróśíło.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'categoryintersection' => 'Διατομή κατηγοριών',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

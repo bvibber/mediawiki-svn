@@ -153,6 +153,13 @@ $messages['dsb'] = array(
 	'msfunc_div_zero' => 'Diwizija pśez nul',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'msfunc_div_zero' => 'Διαίρεση διά του μηδενός',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

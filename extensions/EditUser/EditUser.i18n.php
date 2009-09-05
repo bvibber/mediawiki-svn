@@ -287,6 +287,7 @@ $messages['ee'] = array(
  */
 $messages['el'] = array(
 	'edituser' => 'Τροποποίηση χρήστη',
+	'edituser-logout' => 'Κλείσιμο συνεδρίας χρήστη',
 	'edituser-username' => 'Όνομα',
 	'edituser-dosearch' => 'Αναζήτηση',
 );
@@ -920,7 +921,15 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'edituser-desc' => 'A përmëtt a utent privilegià ëd modifiché ij "mè gust" ëd j\'àutr utent',
 	'edituser' => 'Modìfica utent',
+	'edituser-logout' => 'Seurt dal sistema',
+	'edituser-username' => 'Nòm',
+	'edituser-dosearch' => 'Serca',
+	'edituser-nouser' => "L'utent spessificà a esist pa",
+	'edituser-exempt' => "L'utent spessificà a peul pa esse modificà",
+	'right-edituser' => 'Modìfica ij "mè gust" ëd j\'àutr utent',
+	'right-edituser-exempt' => 'J\'àutr a peulo pa modifiché sti "mè gust"-sì',
 );
 
 /** Pashto (پښتو)

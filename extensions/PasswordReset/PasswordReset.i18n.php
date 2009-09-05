@@ -311,6 +311,7 @@ $messages['el'] = array(
 	'passwordreset-invalidusername' => 'Άκυρο όνομα χρήστη',
 	'passwordreset-emptyusername' => 'Κενό όνομα χρήστη',
 	'passwordreset-nopassmatch' => 'Οι Κωδικοί δεν αντιστοιχούν',
+	'passwordreset-badtoken' => 'Μη έγκυρο δείγμα επεξεργασίας',
 	'passwordreset-username' => 'Όνομα χρήστη:',
 	'passwordreset-newpass' => 'Νέος Κωδικός:',
 	'passwordreset-confirmpass' => 'Επιβεβαιώστε τον κωδικό πρόσβασης:',

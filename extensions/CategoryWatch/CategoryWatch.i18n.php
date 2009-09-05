@@ -171,6 +171,18 @@ $messages['dsb'] = array(
 	'categorywatch-autocat' => 'Wót $1 awtomatiski wobglědowany',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'categorywatch-emailsubject' => 'Δραστηριότητα που περιλαμβάνει την παρακολουθούμενη κατηγορία $1',
+	'categorywatch-catmovein' => 'Η $1 μετακινήθηκε στην $2 από την $3',
+	'categorywatch-catmoveout' => 'Η $1 μετακινήθηκε έξω από την $2 στην $3',
+	'categorywatch-catadd' => 'Η $1 προστέθηκε στην $2',
+	'categorywatch-catsub' => 'Η $1 αφαιρέθηκε από την $2',
+	'categorywatch-autocat' => 'Αυτόματα παρακολουθούμενο από τον $1',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

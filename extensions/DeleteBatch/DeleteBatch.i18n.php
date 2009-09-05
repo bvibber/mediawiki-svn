@@ -287,6 +287,9 @@ Nagrata dataja by měła mě boka a opcionelnu pśicynu wopśimjeś, kótarejž 
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'deletebatch-caption' => 'Λίστα σελίδων:',
+	'deletebatch-or' => '<b>ή</b>',
+	'deletebatch-delete' => 'Διαγραφή',
 	'deletebatch-select-yourself' => 'Εσείς',
 );
 

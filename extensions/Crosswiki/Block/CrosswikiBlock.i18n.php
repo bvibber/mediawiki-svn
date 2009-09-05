@@ -533,7 +533,11 @@ Slědk k:
 $messages['el'] = array(
 	'crosswikiblock-expiry' => 'Λήξη:',
 	'crosswikiblock-reason' => 'Λόγος:',
+	'crosswikiblock-submit' => 'Φραγή αυτού του χρήστη',
 	'crosswikiunblock-reason' => 'Λόγος',
+	'crosswikiunblock-submit' => 'Άρση φραγής αυτού του χρήστη',
+	'crosswikiblock-notoken' => 'Μη έγκυρο δείγμα επεξεργασίας',
+	'right-crosswikiblock' => 'Φραγή και απόφραξη χρηστών σε άλλα βίκι',
 );
 
 /** Esperanto (Esperanto)

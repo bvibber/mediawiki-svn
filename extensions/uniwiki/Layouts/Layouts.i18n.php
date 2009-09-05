@@ -608,6 +608,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'layouts-desc' => 'Vemp le neuve pàgine con "layouts" modificàbij për ancoragé na strutura comun-a dle pàgine',
 	'layouts_title' => 'Crea na pàgina',
 	'layouts_chooselayout' => 'Sern un layaut për $1:',
 	'layouts_nolayout' => 'Pa gnun layaut',

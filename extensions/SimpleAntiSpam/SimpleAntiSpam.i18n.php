@@ -114,6 +114,16 @@ $messages['bn'] = array(
 	'simpleantispam-desc' => 'ফরমগুলো যাচাই করার জন্য একটি স্প্যাম/বট যোগ করুন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'simpleantispam' => "Gweredekaet eo bet ar wikefre eneb-strob gant ar c'hemmoù hoc'h eus degaset",
+	'simpleantispam-label' => "Taol gwiriañ eneb-strob.
+'''Arabat''' merkañ tra pe dra amañ !",
+	'simpleantispam-desc' => "Ouzhpennañ a ra taol gwiriañ ur bot strober d'ar furmskridoù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

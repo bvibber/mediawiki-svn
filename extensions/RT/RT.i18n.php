@@ -441,6 +441,26 @@ Próbowałeś '''$1'''",
 	'rt-nomatches' => 'Brak pasujących zgłoszeń w „systemie obsługi zgłoszeń”',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'rt-desc' => "Antërfassa pensà për RT (Trassador d'arceste)",
+	'rt-inactive' => "L'estension RT a l'é pa ativa",
+	'rt-badquery' => "L'estension RT a l'ha ancontrà n'eror an parland al database RT",
+	'rt-badlimit' => "Arg LIMIT (1) pa bon: a deuv esse un nùmer.
+It l'has provà: '''$1'''",
+	'rt-badorderby' => "Arg ORDER BY (ob) pa bon: a deuv esse un camp standard (varda la documentassion).
+It l'has provà: '''$1'''",
+	'rt-badstatus' => "Arg status (s) pa bon: a deuv esse un camp standard (varda la documentassion).
+It l'has provà: '''$1'''",
+	'rt-badqueue' => "Arg queue (s) pa bon: a deuv esse na paròla sempia.
+It l'has provà: '''$1'''",
+	'rt-badowner' => "Arg owner (o) pa bon: a deuv esse në stranòm vàlid.
+It l'has provà: '''$1'''",
+	'rt-nomatches' => 'A son pa stàit trovà gnun ticket RT che a quadro',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya

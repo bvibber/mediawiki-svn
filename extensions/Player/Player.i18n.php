@@ -508,20 +508,21 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author आलोक
  */
 $messages['hi'] = array(
 	'player' => 'प्लेयर',
 	'player-title' => 'प्लेयर',
 	'player-playertitle' => 'प्लेयर: $1',
-	'player-file' => 'फ़ाइल नाम',
+	'player-file' => 'संचिका का नाम',
 	'player-play' => 'शुरू करें',
 	'player-not-allowed' => 'अवैध रुपरेखा',
-	'player-not-found' => 'फ़ाइल मिली नहीं',
+	'player-not-found' => 'संचिका नहीं मिला',
 	'player-invalid-title' => 'अवैध शीर्षक',
 	'player-clicktoplay' => '$1 शुरू करें',
 	'player-goto-player' => 'प्लेयर',
 	'player-goto-page' => 'पन्ना',
-	'player-goto-file' => 'फ़ाइल',
+	'player-goto-file' => 'संचिका',
 );
 
 /** Croatian (Hrvatski)

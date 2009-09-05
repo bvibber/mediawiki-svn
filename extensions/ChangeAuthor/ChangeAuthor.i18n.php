@@ -497,11 +497,14 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'changeauthor-search-box' => 'Αναζήτηση αναθεωρήσεων',
 	'changeauthor-pagenameform-go' => 'Πηγαίνετε',
 	'changeauthor-comment' => 'Σχόλιο:',
 	'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
+	'changeauthor-nosuchuser' => 'Κανένας χρήστης ονόματι "$1".',
 );
 
 /** Esperanto (Esperanto)

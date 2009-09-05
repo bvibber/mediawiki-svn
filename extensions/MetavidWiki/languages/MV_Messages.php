@@ -1777,7 +1777,9 @@ $messages['el'] = array(
 	'mv_add_stream_page' => 'MetaVid προσθήκη stream',
 	'mv_add_stream_submit' => 'Προσθήκη stream',
 	'mv_edit_stream_files' => 'Επεξεργασία αρχείων stream',
+	'mv_path_type_wiki_title' => 'Τίτλος βίκι του μέσου',
 	'mv_path_type_label' => 'τύποι μονοπατιών',
+	'mv_base_offset_label' => 'εκτόπισμα βάσης',
 	'mv_duration_label' => 'Διάρκεια',
 	'mv_save_changes' => 'Αποθήκευση αλλαγών',
 	'mv_user_cant_edit' => 'Μπρεί να πρέπει να [$1 συνδεθείς] για να επεξεργαστείς, $2',
@@ -1811,6 +1813,7 @@ $messages['el'] = array(
 	'mv_watch_clip' => 'Προβολή κλιπ',
 	'mv_close_clip' => 'Κλείσιμο κλιπ',
 	'mv_click_to_edit' => 'πατήστε για επεξεργασία',
+	'ht_en' => 'Μεταγραφή',
 	'mv_data_page_title' => '$1 για $2 από $3',
 	'mv_time_separator' => '$1 σε $2',
 	'mv_list_streams' => 'Λίστα stream MetaVid',
@@ -1920,6 +1923,7 @@ $messages['el'] = array(
 	'mv_export_cmml' => 'Εξαγωγή CMML',
 	'mv_stream_overview' => 'Επισκόπηση Stream',
 	'mv_edit_time' => 'Επεξεργασία Ημερομηνίας',
+	'mv_embed_options' => 'Ενσωμάτωση επιλογών',
 	'mv_stream_tool_heading' => 'Εργαλεία Ρεύματος',
 	'mv_prev_speech' => 'Προηγούμενη ομιλία: $1',
 	'mv_next_speech' => 'Επόμενη ομιλία: $1',
@@ -1929,6 +1933,8 @@ $messages['el'] = array(
 	'mv_next_cat' => 'Επόμενη κατηγορία: $1',
 	'mv_search_stream' => 'Αναζήτηση ρεύματος',
 	'mv_search_stream_title' => 'Αναζήτηση στο υπάρχων ρεύμα',
+	'mv_new_ht_en' => 'Νέα μεταγραφή',
+	'mv_new_anno_en' => 'Νέα ετικέτα ή ειδοποίηση',
 	'right-mv_edit_stream' => 'Επεξεργασία αρχείων ρεύματος',
 );
 
@@ -3330,6 +3336,7 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author आलोक
  */
 $messages['hi'] = array(
 	'metavid' => 'मेटाविड पन्ना',
@@ -3376,7 +3383,7 @@ $messages['hi'] = array(
 	'mv_label_stream_type' => 'स्ट्रीम प्रकार',
 	'mv_metavid_file' => 'सर्वर पर उपलब्ध संचिका',
 	'mv_metavid_live' => 'लाइव स्ट्रीम बनायें',
-	'mv_upload_file' => 'फ़ाइल अपलोड करें',
+	'mv_upload_file' => 'संचिका चढ़ाएँ',
 	'mv_external_file' => 'बाहरी फ़ाईल',
 	'mv_tool_search' => 'खोजें',
 	'mv_tool_search_title' => 'इस स्ट्रीम में खोजें',
@@ -4958,11 +4965,13 @@ $messages['lb'] = array(
 	'mv_edit_stream_files' => 'Stream-Fichieren änneren',
 	'mv_path_type_url_anx' => 'ganz Medien-URL',
 	'mv_path_type_wiki_title' => 'Wiki-Medientitel',
+	'mv_path_type_mp4_stream' => 'MP4 Stream-Server',
 	'mv_duration_label' => 'Dauer',
 	'mv_delete_stream_file' => 'Referenz vum Stream-Fichier läschen',
 	'mv_save_changes' => 'Ännerunge späicheren',
 	'mv_file_with_same_desc' => 'Feeler: Et gëtt schonn e Fichier mat dem selweschte Beschreiwungsschlëssel <i>$1</i>',
 	'mv_removed_file_stream' => 'Stream-Fichier ewechgeholl:$1',
+	'mv_user_cant_edit' => "Et ka sinn datt Dir [$1 Iech umelle] musst fir z'änneren, $2",
 	'mv_add_stream_file' => 'Stream-Fichier derbäisetzen',
 	'mv_file_list' => 'Stream-Fichieren',
 	'mv_label_stream_name' => "Numm vum ''Stream''",

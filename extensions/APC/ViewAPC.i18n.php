@@ -1138,6 +1138,7 @@ $messages['el'] = array(
 	'viewapc-version-info' => 'Πληροφορίες έκδοσης',
 	'viewapc-version-changelog' => 'Αρχείοαλλαγών',
 	'viewapc-filecache-cleared' => "'''''Εκκαθαρίστηκε η λανθάνουσα μνήμη του αρχείου.'''''",
+	'viewapc-usercache-cleared' => "'''''Η λανθάνουσα της εφαρμογής καθαρίστηκε.'''''",
 );
 
 /** Esperanto (Esperanto)
@@ -2057,6 +2058,7 @@ $messages['he'] = array(
 /** Hindi (हिन्दी)
  * @author Kaustubh
  * @author Kiranmayee
+ * @author आलोक
  */
 $messages['hi'] = array(
 	'viewapc' => 'APC ज़ानकारी',
@@ -2080,8 +2082,8 @@ $messages['hi'] = array(
 ($3 मेमरी, $4 लॉकिंग)',
 	'viewapc-start-time' => 'शुरुवात का समय',
 	'viewapc-uptime' => 'अपटाइम',
-	'viewapc-upload-support' => 'फ़ाइल अपलोड सहायता',
-	'viewapc-filecache-info' => 'फ़ाइल कैशे ज़ानकारी',
+	'viewapc-upload-support' => 'संचिका चढ़ाने संबंधी मदद',
+	'viewapc-filecache-info' => 'संचिका के संचय संबंधी जानकारी',
 	'viewapc-usercache-info' => 'सदस्य कैशे ज़ानकारी',
 	'viewapc-cached-files' => 'कैशे मेमरी में रखी फ़ाइलें',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|फ़ाईल|फ़ाईलें}} ($2)',

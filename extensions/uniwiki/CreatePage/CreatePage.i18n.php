@@ -715,6 +715,16 @@ $messages['pnb'] = array(
 	'createpage_submitbutton' => 'پیجو',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'createpage' => 'يو مخ جوړول',
+	'createpage_instructions' => 'د هغه مخ سرليک وټاپۍ چې تاسې يې جوړول غواړۍ:',
+	'createpage_entertitle' => 'لطفاً خپل مخ ته يو سرليک وټاپۍ.',
+	'createpage_editexisting' => 'هو، زه غواړم چې په همدې مخ کې ونډې ترسره کړم.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

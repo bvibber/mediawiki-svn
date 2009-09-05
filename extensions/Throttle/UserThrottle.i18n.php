@@ -72,6 +72,17 @@ $messages['bg'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Създаването на сметки беше автоматично спряно за малко заради необичайно големия брой опити за влизане. Изчакайте няколко минути и опитайте отново.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'acct_creation_global_soft_throttle_hit' => "Diweredekaet eo bet ent emgefre ar c'hrouiñ kontoù e-pad ur frapadig abalamour d'un niver iskis a lugadennoù a-vras.
+Gortozit un nebeud munutennoù ha klaskit en-dro.",
+	'acct_creation_global_hard_throttle_hit' => 'Diweredekaet eo bet ar c\'hrouiñ kontoù e-pad un nebeud eilennoù ent emgefre a-benn talaén ouzh an tagadennoù stlenn a sav kontoù nevez a-vloc\'h.
+Gortozit un tamm ha klikit war "adkargañ" en ho merdeer evit gellout goulenn en-dro.',
+	'acct_creation_global_soft_throttle_hit-desc' => "Bevenniñ a ra ar c'hrouiñ kontoù implijer",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

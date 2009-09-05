@@ -284,8 +284,10 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'editmsg-target' => 'Μήνυμα στόχος:',
 	'editmsg-search' => 'Αναζήτηση',
 	'editmsg-new-search' => 'Νέα αναζήτηση',
 );

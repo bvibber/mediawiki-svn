@@ -1378,6 +1378,7 @@ $messages['he'] = array(
 /** Hindi (हिन्दी)
  * @author Kaustubh
  * @author Shyam
+ * @author आलोक
  */
 $messages['hi'] = array(
 	'hiderevision' => 'अवतरण हमेशा के लिये छुपायें',
@@ -1389,13 +1390,13 @@ $messages['hi'] = array(
 	'right-hiderevision' => 'छुपायें हुए अवतरण देखें और पुनर्स्थापित करें',
 	'hiderevision-prompt' => 'हटाने योग्य अवतरण का क्रमांक:',
 	'hiderevision-continue' => 'कन्टिन्यू',
-	'hiderevision-text' => "यह '''केवल''' निम्न स्थितियों में उपयोगी है:
+	'hiderevision-text' => "इसका इस्तेमाल '''केवल''' निम्न स्थितियों में होना चाहिए:
 *अनुपयुक्त व्यक्तिगत सूचना
 *: '''गृह पता और दूरभाष क्रमांक, सामाजिक सुरक्षा क्रमांक, इत्यादि'''
 
-'''इस तंत्र के बारे में अपशब्द कहने पर विशेषाधिकार छीन लिए जायेंगे।'''
+'''इस प्रणाली का दुरुपयोग होने पर अधिकार छीन लिए जाएँगे'''
 
-वेब साईट के जरिये किसी को भी हटाये गए अंश दिखाई नहीं देंगे, लेकिन यदि आपने कोई गलती कर दी हो तो, निकाले गए अंश अभिलेखित हो जाते हैं और डेटाबेस प्रशासक उन्हें प्रतिस्थापित कर सकता है।",
+जालस्थल के जरिए किसी को भी हटाए गए मद दिखाई नहीं देंगे, लेकिन मिटाने का चिट्ठा रखा जाता है अतः यदि आपसे कोई गलती हुई हो तो मिटाए हुए मदों को आँकड़ाकोष संचालक, हस्तचालित विधि से वापस ला सकता है।",
 	'hiderevision-reason' => 'कारण (यह अलग रखा जायेगा):',
 	'hiderevision-submit' => 'यह डाटा हमेशाके लिये छुपायें',
 	'hiderevision-tab' => 'अवतरण छुपायें',
@@ -1417,8 +1418,8 @@ $messages['hi'] = array(
 	'oversight-difference' => '(बचे हुए पुराने अवतरणोंमें फर्क)',
 	'oversight-prev' => 'आखिरी पुराना अवतरण',
 	'oversight-hidden' => 'छुपाया हुआ अवतरण',
-	'oversight-header' => 'नीचे हाल में हमेशा के लिये छुपायें गयें अवतरणोंकी सूची हैं।
-अगर इसे रिलिज कर दिया तो ओवरसाईट अधिकार हमेशा के लिये निकाल दिये जायेंगे।',
+	'oversight-header' => 'नीचे सार्वजनिक मंच से हाल ही में छिपाए गए बदलावों की सूची है।
+इस जानकारी को वितरित करने पर, देखरेख के अधिकार स्थायी रूप से छिन सकते हैं।',
 );
 
 /** Croatian (Hrvatski)
@@ -2798,9 +2799,16 @@ Ujawnianie tych informacji może skutkować stałą utratą uprawnień Rewizora.
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'hiderevision' => 'Stërmé le revision na vira për tute',
+	'hiderevision-desc' => "Stërma le revision individuaj a tùit j'utent për rason legaj, etc.",
+	'group-oversight' => 'Oversighter',
+	'group-oversight-member' => 'oversight',
+	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'right-oversight' => 'Varda na vërsion precedenta stërmà',
+	'right-hiderevision' => "Stërma le revision a j'aministrador",
 	'hiderevision-prompt' => 'Nùmer ëd revision da gavé:',
 	'hiderevision-continue' => 'Tiré anans',
 	'hiderevision-text' => "Sòn a dovéia dovresse '''mach''' an cas che a-i sia:
@@ -2810,6 +2818,7 @@ $messages['pms'] = array(
 	'hiderevision-reason' => 'Rason (a resta ant ij registr an forma privà):',
 	'hiderevision-submit' => 'Stërmé sti dat-sì na vira për tute',
 	'hiderevision-tab' => 'Stërmé la revision',
+	'hiderevision-link' => "Stërma le contribussion ëd j'utent",
 	'hiderevision-norevisions' => "A l'é pa sërnusse gnun-a revision da scancelé.",
 	'hiderevision-noreason' => "A venta buté la rason ch'as ëscancela sossì.",
 	'hiderevision-status' => 'Revision $1: $2',
@@ -2828,6 +2837,9 @@ $messages['pms'] = array(
 	'oversight-prev' => 'Ùltima revision veja',
 	'oversight-hidden' => 'Revision stërmà',
 	'oversight-header' => "Ambelessì sota a-i é na lista dle revision stërmà ch'a l'é nen vàire. Publiché st'anformassion-sì a peul ëmné a perde ël drit ëd dovré ël sistema ëd coression dle gafade.",
+	'oversight-legend' => 'Serca ël registr dle revision stërmà',
+	'oversight-oversighter' => 'Autor dla rimossion:',
+	'oversight-offender' => "Autor dl'ofèisa:",
 );
 
 /** Pashto (پښتو)

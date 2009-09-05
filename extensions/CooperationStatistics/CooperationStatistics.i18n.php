@@ -165,8 +165,11 @@ Glědaj teke [[Special:MostRevisors|'''boki z nejwěcej pśeglědarjami''']] a [
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'cooperationstatistics' => 'Στατιστικά συνεργασίας',
+	'cooperationstatistics-tablearticle' => 'Καταμέτρηση σελίδων',
 	'cooperationstatistics-tablevalue' => 'Αριθμός χρηστών που κάνουν επεξεργασίες',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|σελίδα|σελίδες}}',
+	'cooperationstatistics-legendmore' => 'ή περισσότεροι συντάκτες.',
 );
 
 /** Esperanto (Esperanto)

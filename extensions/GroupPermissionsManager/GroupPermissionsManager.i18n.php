@@ -662,10 +662,15 @@ $messages['el'] = array(
 	'grouppermissions-search' => 'Ομάδα:',
 	'grouppermissions-dologin' => 'Είσοδος',
 	'grouppermissions-dosearch' => 'Μετάβαση',
+	'grouppermissions-searchlabel' => 'Αναζήτηση για ομάδα',
+	'grouppermissions-deletelabel' => 'Διαγραφή ομάδας',
+	'grouppermissions-add' => 'Προσθήκη ομάδας',
+	'grouppermissions-delete' => 'Διαγραφή ομάδας',
 	'grouppermissions-comment' => 'Σχόλιο:',
 	'grouppermissions-true' => 'Αληθινός',
 	'grouppermissions-false' => 'Ψεύτικος',
 	'grouppermissions-never' => 'Ποτέ',
+	'grouppermissions-sort-read' => 'Ανάγνωση',
 	'grouppermissions-sort-edit' => 'Επεξεργασία',
 	'grouppermissions-sort-manage' => 'Διαχείριση',
 	'grouppermissions-sort-admin' => 'Διοίκηση',
@@ -673,6 +678,7 @@ $messages['el'] = array(
 	'grouppermissions-sort-misc' => 'Διάφορα',
 	'grouppermissions-sp-save' => 'Αποθηκεύστε',
 	'grouppermissions-sp-remove' => 'αφαίρεση',
+	'right-search' => 'Αναζήτηση του βίκι',
 );
 
 /** Esperanto (Esperanto)

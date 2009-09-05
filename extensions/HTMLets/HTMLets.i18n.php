@@ -74,6 +74,13 @@ $messages['dsb'] = array(
 	'htmlets-desc' => 'Zasuwa HTML-kuski z datajow z pomocu toflicki <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'htmlets-desc' => 'Σας επιτρέπει να εισάγετε μέσα στη γραμμή αποσπάσματα κώδικα HTML από αρχεία χρησιμοποιώντας την ετικέτα  <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

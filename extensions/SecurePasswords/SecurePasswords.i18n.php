@@ -527,6 +527,22 @@ Musi ono:',
 	'securepasswords-word' => 'nie być słowem',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'securepasswords-desc' => 'A crea ciav casuaj pì sicure e a gionta un controlor ëd la fòrsa dla ciav',
+	'securepasswords-valid' => "Toa ciav a l'é pa bon-a o tròp curta.
+A deuv:",
+	'securepasswords-minlength' => 'esse almanch longa $1 {{PLURAL:$1|caràter|caràter}}',
+	'securepasswords-lowercase' => 'conten-e almanch 1 litra minùscula',
+	'securepasswords-uppercase' => 'conten-e almanch 1 litra maiùscola',
+	'securepasswords-digit' => 'conten almanch 1 sifra',
+	'securepasswords-special' => 'conten-e almanch 1 caràter special (caràter speciaj a son: $1)',
+	'securepasswords-username' => 'esse diferen da tò stranòm',
+	'securepasswords-word' => 'pa esse na paròla',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

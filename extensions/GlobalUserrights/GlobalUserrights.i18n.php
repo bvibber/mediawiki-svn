@@ -137,6 +137,13 @@ $messages['dsb'] = array(
 	'right-userrights-global' => 'Globalne wužywarske pšawy zastojaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'gur-rightslog-name' => 'Αρχείο καθολικών δικαιωμάτων',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

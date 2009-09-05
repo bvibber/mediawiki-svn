@@ -323,6 +323,7 @@ Pšosym wupołń {{PLURAL:$2|jo|jej|je|je}}.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -334,6 +335,8 @@ $messages['el'] = array(
 	'formpattern' => '$1-φόρμα',
 	'formtitlepattern' => 'Προσθήκη νέου $1',
 	'formsave' => 'Αποθηκεύστε',
+	'formindexmismatch-title' => 'Αναντιστοιχία μεταξύ μοτίβου ονόματος και προτύπου',
+	'formindexmismatch' => 'Αυτή η φόρμα παρουσιάζει αναντιστοιχία μεταξύ μοτίβου ονόματος και προτύπου στον δείκτη $1.',
 	'formarticleexists' => 'Η σελίδα υπάρχει',
 	'formarticleexiststext' => 'Η σελίδα [[$1]] υπάρχει ήδη.',
 	'formbadpagename' => 'Κακό όνομα σελίδας',
@@ -435,6 +438,7 @@ Ole hyvä ja täytä {{PLURAL:$2|se|ne}}.',
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Omnipaedista
  * @author Sherbrooke
  */
 $messages['fr'] = array(
@@ -447,7 +451,7 @@ $messages['fr'] = array(
 	'formpattern' => 'formulaire-$1',
 	'formtitlepattern' => 'Ajouter un(e) $1',
 	'formsave' => 'Sauvegarder',
-	'formindexmismatch-title' => 'Palette de nom et erreur de modèle',
+	'formindexmismatch-title' => 'Inadéquation entre la palette de nom et le modèle',
 	'formindexmismatch' => 'Ce formulaire a des patrons et des modèles qui ne correspondent pas à partir de $1.',
 	'formarticleexists' => 'La page existe déjà.',
 	'formarticleexiststext' => 'La page nommée [[$1]] existe déjà.',

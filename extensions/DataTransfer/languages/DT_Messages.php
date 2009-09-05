@@ -398,6 +398,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'viewxml' => 'Προβολή XML',
 	'dt_viewxml_categories' => 'Κατηγορίες',
 	'dt_viewxml_namespaces' => 'Περιοχές ονομάτων',
 	'dt_xml_namespace' => 'Περιοχή ονομάτων',
@@ -408,7 +409,10 @@ $messages['el'] = array(
 	'dt_xml_name' => 'Όνομα',
 	'dt_xml_title' => 'Τίτλος',
 	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Ελεύθερο Κείμενο',
+	'dt_import_editsummary' => 'Εισαγωγή $1',
 	'dt_import_importing' => 'Εισάγεται...',
+	'importcsv' => 'Εισαγωγή CSV',
 	'right-datatransferimport' => 'Εισαγωγή δεδομένων',
 );
 

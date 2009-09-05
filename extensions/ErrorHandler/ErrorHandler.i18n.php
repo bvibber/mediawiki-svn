@@ -271,9 +271,11 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'errorhandler-errors' => 'Σφάλματα:',
+	'errorhandler-error-fatal' => 'Θανάσιμο σφάλμα',
 	'errorhandler-error-warning' => 'Προειδοποίηση',
 	'errorhandler-error-parse' => 'Σφάλμα λεξιαναλυτή',
 	'errorhandler-error-notice' => 'Σημείωση',
+	'errorhandler-error-core-error' => 'Σφάλμα κώδικα',
 	'errorhandler-error-compile-error' => 'Σφάλμα μεταγλώττισης',
 	'errorhandler-error-compile-warning' => 'Προειδοποίηση μεταγλώττισης',
 	'errorhandler-error-user-error' => 'Σφάλμα χρήστη',

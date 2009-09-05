@@ -638,6 +638,7 @@ $wgCustomToolbarMessages['el'] = array(
 	'ct_math_tip_ins' => 'Εισαγωγή μαθηματικής φόρμουλας (LaTeX)',
 	'ct_math_tip_wrap' => 'Κάντε αυτό το κείμενο μια μαθηματική φόρμουλα (LaTeX)',
 	'ct_math_caption' => 'Φόρμουλα',
+	'ct_nowiki_sample' => 'Εισαγωγή μη μορφοποιημένου κειμένου εδώ',
 	'ct_nowiki_tip_ins' => 'Να αγνοηθεί η μορφοποίηση Wiki.',
 	'ct_nowiki_tip_wrap' => 'Να αγνοηθεί η μορφοποίηση wiki σε αυτό το κείμενο',
 	'ct_nowiki_caption' => 'Κανένα βίκι',

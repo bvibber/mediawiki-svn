@@ -95,6 +95,13 @@ $messages['dsb'] = array(
 	'wikitextloggedinout-desc' => 'Dwě parserowej kokulce, <tt>&lt;loggedin&gt;</tt> and <tt>&lt;loggedout&gt;</tt>, aby se drugi tekst we wotwisnosći pśizjawjeńskego statusa wužywarja pokazał',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'wikitextloggedinout-desc' => 'Δύο άγγιστρα λεξιαναλυτή, <tt>&lt;loggedin&gt;</tt> και <tt>&lt;loggedout&gt;</tt>, για να προβάλλουν διαφορετικό κείμενο ανάλογα με την κατάσταση σύνδεσης των χρηστών',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

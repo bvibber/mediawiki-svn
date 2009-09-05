@@ -200,6 +200,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'profiling' => 'Δεδομένα προφίλ',
 	'profiling-process' => 'Πρόοδος σειρών:',
+	'profiling-wildcard' => 'Χρήση μπαλαντέρ',
 	'profiling-ok' => 'Εντάξει',
 	'profiling-data-process' => 'Διαδικασία',
 	'profiling-data-count' => 'Καταμέτρηση',

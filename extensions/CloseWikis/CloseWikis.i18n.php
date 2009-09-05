@@ -386,7 +386,11 @@ $messages['el'] = array(
 	'closewikis-page-reopen-wiki' => 'Βίκι:',
 	'closewikis-page-reopen-reason' => 'Αιτία:',
 	'closewikis-page-reopen-submit' => 'Ξανάνοιγμα',
+	'closewikis-page-err-opened' => 'Το βίκι δεν είναι κλειστό',
 	'closewikis-list-header-wiki' => 'Βίκι',
+	'closewikis-list-header-dispreason' => 'Προβαλλόμενη αιτία',
+	'closewikis-log-close' => 'έκλεισε $2',
+	'closewikis-log-reopen' => 'ξανάνοιξε $2',
 	'right-closewikis' => 'Κλείσιμο των βίκι',
 );
 

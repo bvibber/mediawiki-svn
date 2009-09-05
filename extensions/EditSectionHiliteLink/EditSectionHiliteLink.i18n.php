@@ -84,6 +84,13 @@ $messages['dsb'] = array(
 	'Editsectionhilitelink-desc' => 'Gódny wurězk boka wuzwignuś, gaž gibaš myšku pśez wobźěłański wótkaz',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'Editsectionhilitelink-desc' => 'Υπερτονισμός του σχετικού τμήματος μιας σελίδας όταν μετακινείται το ποντίκι πάνω από τον υπερσύνδεσμο',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

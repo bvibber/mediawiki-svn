@@ -696,6 +696,9 @@ $messages['el'] = array(
 
 $1',
 	'webstore_no_response' => 'Καμία απόκριση από τον εξυπηρετητή',
+	'webstore_backend_error' => 'Σφάλμα από τον εξυπηρετητή αποθηκευτηρίου:
+
+$1',
 	'webstore_php_error' => 'Τα σφάλματα PHP αντιμετωπίστηκαν:',
 	'webstore_no_handler' => 'Κανένας διαχειριστής για τη μετατροπή αυτού του τύπου MIME',
 );
@@ -1114,9 +1117,10 @@ $1',
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author आलोक
  */
 $messages['hi'] = array(
-	'webstore_404' => 'फ़ाइल मिली नहीं।',
+	'webstore_404' => 'संचिका नहीं मिली।',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

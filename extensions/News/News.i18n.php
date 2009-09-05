@@ -63,6 +63,13 @@ $messages['dsb'] = array(
 	'newsextension-desc' => 'Pokazujo pśiměrjone aktualne změny na wikijowych bokach abo ako RSS abo kanal Atom',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'newsextension-desc' => 'Προβάλλει προσαρμοσμένες πρόσφατες αλλαγές σε μία σελίδα βίκι ή ως ροή RSS ή ως ροή Atom',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

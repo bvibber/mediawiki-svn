@@ -303,6 +303,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'contributors' => 'Συνεισφέροντες',
+	'contributors-toolbox' => 'Κύριοι συνεισφέροντες',
 	'contributors-target' => 'Τίτλος:',
 	'contributors-submit' => 'Εμφάνιση',
 	'contributors-others-long' => '{{PLURAL:$1|Υπάρχει ένας άλλος συνεισφέροντας|Υπάρχουν $1 άλλοι συνεισφέροντες}} σε αυτή τη σελίδα.',

@@ -264,6 +264,10 @@ $messages['el'] = array(
 	'chemicalsources' => 'Χημικές πηγές',
 	'chemicalsource-desc' => 'Προσθέτει την ετικέτα <nowiki><chemform></nowiki> για χημικούς τύπους',
 	'chemFunctions_ListPage' => 'Χημικές πηγές',
+	'chemFunctions_DataList' => 'Παρακάτω βρίσκεται μια λίστα συνδέσμων προς ιστοτόπους που μπορεί να παρέχουν πληροφορίες περί των χημικών ουσιών που αναζητείτε.
+
+* [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Composé $MIXCASNameFormula], NIST
+* [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Πανεπιστήμιο της Οξφόρδης',
 	'chemFunctions_CAS' => 'Αριθμός CAS',
 	'chemFunctions_ATCCode' => 'Κώδικας ATC',
 	'chemFunctions_ECNumber' => 'Ονοματολογία EC',
