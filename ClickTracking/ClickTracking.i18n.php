@@ -40,6 +40,7 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'clicktracking' => 'Heuliañ klikoù an intrudu implijadusted',
 	'clicktracking-desc' => "Heuliañ klikoù, talvezout a ra da heuliañ an darvoudoù na vez ket adkarget ur bajenn d'ho heul",
+	'clicktracking-title' => "Sammad ar c'hlikoù implijerien",
 );
 
 /** Bosnian (Bosanski)
@@ -191,6 +192,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'clicktracking' => 'Benotzerfrëndlechkeetsinitiative Suivi vun de Klicken',
 	'clicktracking-desc' => "Suivi vun de Clicken, fir déi Aktiounen z'erfaassen déi net zu engem neie Llueden vun der Säit féieren",
+	'clicktracking-title' => 'Vun de Benotzer gemaachte Klicken',
 );
 
 /** Macedonian (Македонски)
