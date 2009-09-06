@@ -1,0 +1,13 @@
+Source: mydumper
+Section: misc
+Priority: extra
+Maintainer: Domas Mituzas <domas.mituzas@gmail.com>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.0
+Homepage: http://launchpad.net/mydumper/
+
+Package: mydumper
+Architecture: any
+Depends: ${shlibs:Depends}
+Description:MySQL Data Dumper
+ Dumps stuff, faster than mysqldump :)
