@@ -153,6 +153,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Sanbec
  */
@@ -162,6 +163,7 @@ $messages['es'] = array(
 	'purgecache-warning' => 'Esto purgara las tablas de cache.',
 	'purgecache-purged' => 'El cache ha sido purgado.',
 	'purgecache-button' => 'Purgar',
+	'right-purgecache' => 'Purgar la tabla OBJECTCACHE',
 );
 
 /** Basque (Euskara)

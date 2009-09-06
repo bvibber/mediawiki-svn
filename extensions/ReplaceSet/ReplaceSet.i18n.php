@@ -49,6 +49,16 @@ $messages['be-tarask'] = array(
 	'replaceset-error-regexbadmodifier' => 'Няслушны мадыфікатар рэгулярнага выразу «$1».',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'replaceset-desc' => "Ouzhpennañ a ra un arc'hwel parser <nowiki>{{#replaceset}}</nowiki> a dalvez da erlec'hiañ lodennoù skrid gant roadennoù furmadet",
+	'replaceset-error-calllimit' => "Tizhet eo bet bevenn gervel an arc'hwel ReplaceSet.",
+	'replaceset-error-regexnoend' => 'Ezvezant eo ar bevenner dibenn \'$2\' er patrom regex "$1"',
+	'replaceset-error-regexbadmodifier' => "Direizh eo ar c'hemmer regex '$1'.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

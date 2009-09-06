@@ -79,7 +79,7 @@ $aliases['ksh'] = array(
 	'TemplateLink' => array( 'Schabloonelengk' ),
 );
 
-/** Cornish (Kernewek) */
+/** Cornish (Kernowek) */
 $aliases['kw'] = array(
 	'TemplateLink' => array( 'KevrenSkantlyn' ),
 );

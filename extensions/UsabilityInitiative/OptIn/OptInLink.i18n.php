@@ -81,8 +81,11 @@ $messages['be-tarask'] = array(
  */
 $messages['bn'] = array(
 	'optin-try' => 'বেটা চেষ্টা করুন',
+	'tooltip-pt-optin-try' => 'নতুন বৈশিষ্ট্যগুলো ব্যবহার করুন',
 	'optin-leave' => 'বেটা ছেড়ে যাও',
+	'tooltip-pt-optin-leave' => 'নতুন বৈশিষ্ট্যগুলো বন্ধ করো',
 	'optin-feedback' => 'বেটা ফিডব্যাক',
+	'tooltip-pt-optin-feedback' => 'নতুন বৈশিষ্ট্যগুলোতে আপনার অভিজ্ঞতার কথা ফিডব্যাকে পাঠান',
 );
 
 /** Breton (Brezhoneg)

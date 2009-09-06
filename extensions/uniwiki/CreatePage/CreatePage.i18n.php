@@ -708,6 +708,22 @@ Czy chcesz edytować istniejącą stronę?',
 	'createpage-badtitle' => '„$1” nie może być tytułem strony',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'createpage' => 'Crea na pàgina',
+	'createpage-desc' => 'A gionta na [[Special:CreatePage|pàgina special]] për creé neuve pàgine',
+	'createpage_submitbutton' => 'Spediss',
+	'createpage_instructions' => "Anseriss ël tìtol ëd la pàgina ch'it veule creé:",
+	'createpage_entertitle' => 'Për piasì anseriss un tìtol për toa pàgina.',
+	'createpage_titleexists' => 'Na pàgina con ël tìtol [[$1]] a esist già.
+It volës-to modifiché la pàgina esistenta?',
+	'createpage_tryagain' => 'No. Mi i veuj creé na neuva pàgina con un tìtol distint.',
+	'createpage_editexisting' => "E'! Mi i veuj contribuì a la pàgina esistenta.",
+	'createpage-badtitle' => '"$1" a peul pa esse dovrà com un tìtol ëd pàgina.',
+);
+
 /** Western Punjabi (پنجابی)
  * @author Khalid Mahmood
  */

@@ -1672,6 +1672,8 @@ $messages['lt'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
+	'youtubeauthsub' => 'Hampiditra video YouTube',
+	'youtubeauthsub_info' => "Fenoy ny tokony hofenoina rehefa te-hampiditra video avy any amin'ny YouTube :",
 	'youtubeauthsub_title' => 'Lohateny',
 	'youtubeauthsub_description' => 'Visavisa',
 	'youtubeauthsub_password' => "Tenimiafina amin'ny YouTube",

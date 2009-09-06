@@ -792,6 +792,22 @@ $messages['pl'] = array(
 	'inspectcache-list' => 'Lista',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'inspectcache' => 'Ispession-a la cache',
+	'inspectcache-desc' => 'Un sempi utiss ëd debug për ispessioné ël contnù dla cache condivisa',
+	'inspectcache-ok' => 'Va bin',
+	'inspectcache-general' => 'Cache general',
+	'inspectcache-parser' => 'Cache dël parser',
+	'inspectcache-message' => 'Cache dij messagi',
+	'inspectcache-get' => 'Oten',
+	'inspectcache-delete' => 'Scansela',
+	'inspectcache-deleted' => 'Cache scanselà',
+	'inspectcache-list' => 'Lista',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

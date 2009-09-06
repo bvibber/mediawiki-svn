@@ -2755,6 +2755,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Dragonòt
  * @author Valter Bergesio
  */
 $messages['pms'] = array(
@@ -2813,6 +2814,16 @@ $messages['pms'] = array(
 	'voctrain_Definitions' => 'Definission',
 	'voctrain_Could_not_create_new_user' => "As peul nen formesse n'utent neuv",
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Scriv un nòm utent e na paròla ciav (o preuva a intré con un nòm utent diferent)',
+	'voctrain_Vocview' => 'Visualisador dël vocabolari',
+	'voctrain_Dictionary_definitions' => 'definission dël dissionari',
+	'voctrain_Translation' => 'Viragi',
+	'voctrain_unhide_definition' => 'Dëscoata la definission',
+	'voctrain_unhide_words' => 'dëscoata le paròle',
+	'voctrain_hiding' => 'Stermé',
+	'voctrain_hide_definitions_in_question_language' => 'Stërma le definission an lenga ëd domande',
+	'voctrain_hide_words_in_question_language' => 'Stërma le paròle an lenga ëd domande',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Separa ij valor con vìrgole për dovré vàire lenghe.',
+	'voctrain_other' => 'àutr',
 );
 
 /** Pashto (پښتو)

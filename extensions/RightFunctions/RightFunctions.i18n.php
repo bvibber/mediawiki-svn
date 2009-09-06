@@ -59,6 +59,16 @@ $messages['be-tarask'] = array(
 	'rightfunctions-ns' => '(з абароны прасторы назваў)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'rightfunctions-desc' => "Arc'hwelioù parser diazezet war aotreoù",
+	'rightfunctions-casc' => '(adalek mammennoù e sklalierad)',
+	'rightfunctions-local' => "(adalek ur bajenn lec'hel)",
+	'rightfunctions-ns' => '(adalek ar gwarez esaouennoù anv)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

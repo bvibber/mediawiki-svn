@@ -421,6 +421,7 @@ Sea cuidadoso, las expresiones a prohibir no deberían ser muy cortas o muy comu
 	'spamregex-currently-blocked' => "'''Frases actualmente bloqueadas:'''",
 	'spamregex-move' => 'La razón que ha ingresado contiene una frase bloqueada.',
 	'spamregex-no-currently-blocked' => "'''No hay frases bloqueadas.'''",
+	'spamregex-log' => " '''$1''' $2 ([{{SERVER}}$3&text=$4 borrado]) agregado por  $5 sobre $6 en $7",
 	'spamregex-page-title-1' => 'Bloquear frase usando expresiones regulares',
 	'spamregex-unblock-success' => 'Desbloque fue un éxito',
 	'spamregex-unblock-message' => "Frase '''$1''' ha sido bloqueada de la edición.",

@@ -122,7 +122,7 @@ $aliases['ksh'] = array(
 	'WhatIsMyIP' => array( 'Ming IP Address' ),
 );
 
-/** Cornish (Kernewek) */
+/** Cornish (Kernowek) */
 $aliases['kw'] = array(
 	'WhatIsMyIP' => array( 'PythYwOwIP' ),
 );

@@ -478,11 +478,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
 	'recordadmin-select' => 'Seleccionar el tipo de registro a gestionar',
+	'recordadmin-createtype' => 'Ingrese el nombre de un nuevo tipo de registro para crear',
 	'recordadmin-recordtype' => 'tipo de registro',
 	'recordadmin-newrecord' => 'Seleccionar otro tipo de registro',
 	'recordadmin-submit' => 'Enviar',
@@ -496,6 +498,7 @@ $messages['es'] = array(
 	'recordadmin-buttoncreate' => 'Crear',
 	'recordadmin-buttonreset' => 'Reestablecer',
 	'recordadmin-searchresult' => 'Resultados de la búsqueda',
+	'recordadmin-nomatch' => 'No se encontraron registros coincidentes!',
 	'recordadmin-edit' => 'Editando registro $2 "$1"',
 	'recordadmin-typeupdated' => '$1 propiedades actualizadas',
 	'recordadmin-updatesuccess' => '$1 actualizado',

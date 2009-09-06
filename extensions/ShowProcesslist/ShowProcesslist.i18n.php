@@ -709,6 +709,22 @@ $messages['pl'] = array(
 	'showprocesslist-info' => 'Informacje',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'showprocesslist' => 'Mosta la lista dij process',
+	'showprocesslist-desc' => "Mosta l'output ëd [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]",
+	'showprocesslist-id' => 'Id',
+	'showprocesslist-user' => 'Utent',
+	'showprocesslist-host' => 'Host',
+	'showprocesslist-db' => 'Database',
+	'showprocesslist-command' => 'Comand',
+	'showprocesslist-time' => 'Temp',
+	'showprocesslist-state' => 'Stat',
+	'showprocesslist-info' => 'Anformassion',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

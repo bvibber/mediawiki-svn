@@ -422,6 +422,7 @@ La '''nombro de kontrolo po tago''' <font color=\"red\">''(ruĝa)''</font> estas
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  */
 $messages['es'] = array(
@@ -445,6 +446,7 @@ $messages['es'] = array(
 	'ratinghistory-table-rating' => 'Rating',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'No hay suficientes datos de retroalimentación de lector disponible para gráficos en este momento.',
+	'ratinghistory-ratings' => "'''Nota:''' '''(1)''' - Pobre; '''(2)''' - Bajo; '''(3)''' - Aceptable; '''(4)''' - Alto; '''(5)''' - Excelente;",
 	'ratinghistory-legend' => "El '''número de revisiones diarias''' <font color=\"red\">''(rojo)''</font>, '''valoración promedio diaria''' <font color=\"blue\">''(azul)''</font> y
 '''valoración promedio de ejecución''' <font color=\"green\">''(verde)''</font> están graficados abajo, por fecha. 
 La  '''valoración promedio de ejecución''' es simplemente el promedio de todas las valoraciones diarias ''dentro'' de este marco temporal por cada día.

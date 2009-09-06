@@ -821,6 +821,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'adminlinks' => "Anliure d'aministrador",
+	'adminlinks-desc' => "A gionta na [[Special:AdminLinks|pàgina special]] che a conten dij colegament ùtij për j'aministrador",
 );
 
 /** Portuguese (Português)

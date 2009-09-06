@@ -579,6 +579,7 @@ $messages['hr'] = array(
 	'authorprotect-failure' => 'Zaštićivanje neuspješno',
 	'protect-level-author' => 'Zaštiti za ne-autore',
 	'restriction-level-author' => 'Samo za autore',
+	'right-authorprotect' => 'Zaštićivanje autoriziranih stranica',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

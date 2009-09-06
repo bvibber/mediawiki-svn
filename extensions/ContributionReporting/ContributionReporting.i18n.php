@@ -543,6 +543,7 @@ $messages['ca'] = array(
 	'contribstats-value-under' => 'Inferior a $1',
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Per sobre $1',
+	'contribstats-day-totals' => "Total d'avui",
 	'contribstats-week' => 'Setmana',
 	'contribstats-clicks' => 'Clics',
 	'contribstats-donations' => 'Donatius',

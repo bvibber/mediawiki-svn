@@ -516,6 +516,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  * @author Drini
  * @author Imre
@@ -546,6 +547,7 @@ $messages['es'] = array(
 	'readerfeedback-finished' => '¡Gracias!',
 	'readerfeedback-tagfilter' => 'Etiqueta:',
 	'tooltip-ca-ratinghist' => 'Valoraciones de los lectores de esta página',
+	'specialpages-group-feedback' => 'Opinión del espectador',
 );
 
 /** Basque (Euskara)

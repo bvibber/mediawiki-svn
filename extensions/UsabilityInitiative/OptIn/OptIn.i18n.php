@@ -390,6 +390,7 @@ $messages['bn'] = array(
 	'optin-submit-feedback' => 'ফিডব্যাক দিন',
 	'optin-survey-yes' => 'হ্যা',
 	'optin-survey-no' => 'না',
+	'optin-survey-question-whyoptout' => 'আপনি বেটা কেন ছেড়ে যাচ্ছেন? (অনুগ্রহ করে যেগুলো প্রযোজ্য প্রয়োগ করুন)',
 	'optin-survey-answer-whyoptout-hard' => 'এতে কাজ করা কঠিন।',
 	'optin-survey-answer-whyoptout-didntwork' => 'এটি ঠিক মত কাজ করে না।',
 	'optin-survey-answer-whyoptout-notpredictable' => 'এটি আন্দাজ মত কাজ করে না।',
@@ -1188,6 +1189,7 @@ Dankegon, kaj ni antaŭĝojas viajn komentojn!',
 
 /** Spanish (Español)
  * @author Antur
+ * @author Barcex
  * @author Crazymadlover
  * @author Imre
  * @author Locos epraix
@@ -1195,7 +1197,7 @@ Dankegon, kaj ni antaŭĝojas viajn komentojn!',
  */
 $messages['es'] = array(
 	'optin' => 'Formar parte de la Iniciativa de usabilidad',
-	'optin-desc' => 'Permite a los usuarios probar Beta, los últimos mejoramientos de usabilidad de la iniciativa de Usabilidad.',
+	'optin-desc' => 'Permite a los usuarios probar Beta, las últimas mejoras de usabilidad de la Iniciativa de Usabilidad.',
 	'optin-title-optedout' => 'Probar Beta',
 	'optin-title-optedin' => 'Abandonar Beta',
 	'optin-title-justoptedin' => 'Bienvenido a Beta',
@@ -1203,7 +1205,7 @@ $messages['es'] = array(
 	'optin-title-feedback' => 'Retroalimentación beta',
 	'optin-needlogin' => 'Necesitas [$1 iniciar sesión] para probar Beta',
 	'optin-intro' => 'La Iniciativa de usabilidad de Wikipedia ha estado trabajando duro para mejorar la usabilidad de Wikipedia.
-Te gustaría probar Beta?',
+¿Te gustaría probar nuestra versión Beta?',
 	'optin-feedback-intro' => 'Gracias por probar Beta.
 Deseamos saber qué piensa de nuestra interfaz, por lo que le agradeceremos completar la encuesta opcional que se muestra a continuación.',
 	'optin-feedback-back' => 'Si no desea llenar la encuesta, puede volver a $1.',
@@ -1212,11 +1214,11 @@ Puedes volver a dejar de formar parte en cualquier momento haciendo click en el 
 	'optin-leave-cancel' => 'Si te gustaría continuar usando Beta, puedes regresar a $1',
 	'optin-success-out' => 'Has abandonado exitosamente Beta.
 Puedes probarlo nuevamente en cualquier momento haciendo click en el vínculo "{{int:optin-try}}" en la parte superior derecha de la pantalla.',
-	'optin-success-feedback' => 'Gracias por su respuesta!',
-	'optin-accept-short' => 'Hagámoslo!',
+	'optin-success-feedback' => '¡Gracias por sus comentarios!',
+	'optin-accept-short' => '¡Hagámoslo!',
 	'optin-accept-long' => 'Probar Beta',
 	'optin-accept-long-anon' => 'Regístrese y pruebe Beta',
-	'optin-deny-short' => 'No gracias',
+	'optin-deny-short' => 'No, gracias',
 	'optin-deny-long' => 'regresar a la página anterior',
 	'optin-submit-out' => 'Abandonar Beta',
 	'optin-submit-feedback' => 'Haga sus observaciones',
@@ -1238,15 +1240,15 @@ Nos gustaría conocer que opinas acerca de la nueva interfaz, apreciaríamos si 
 	'optin-survey-question-techfail-ifyes' => 'Si es sí, por favor desarrolla o explica:',
 	'optin-survey-question-usedtoolbar' => 'Usaste la nueva barra de herramientas expandible para editar una página?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Si es sí, qué te gustó de él? qué te disgustó de él?',
-	'optin-survey-question-usedtoolbar-ifno' => 'En caso negativo, ¿porqué?...  ¿Lo haría en el futuro? Por favor, explíquelo.',
+	'optin-survey-question-usedtoolbar-ifno' => 'En caso negativo, ¿por qué?...  ¿Lo haría en el futuro? Por favor, explíquelo.',
 	'optin-survey-question-different' => 'Qué podríamos haber hecho diferente para que te mantuvieses usando nuestra Beta?',
 	'optin-survey-question-feedback' => 'Por favor déjanos saber acercar de algunos otros comentarios, inquietudes u opiniones que tengas para nosotros - toda retroalimentación es útil!:',
-	'optin-survey-question-browser' => 'Cuál navegador usas?',
+	'optin-survey-question-browser' => '¿Qué navegador utiliza?',
 	'optin-survey-answer-browser-other' => 'Otro navegador:',
-	'optin-survey-question-os' => 'Cuál sistema operativo usas?',
+	'optin-survey-question-os' => '¿Qué sistema operativo utiliza?',
 	'optin-survey-answer-os-other' => 'Otro sistema operativo:',
-	'optin-survey-question-res' => 'Cuál es la resolución de tu pantalla?',
-	'optin-survey-question-changes' => '¿ Cuáles cambios desearía ver en Beta en el futuro ? (por favor seleccione todo lo que coincida)',
+	'optin-survey-question-res' => '¿Cuál es la resolución de su pantalla?',
+	'optin-survey-question-changes' => '¿Qué cambios desearía ver en Beta en el futuro? (por favor seleccione todo lo que coincida)',
 	'optin-survey-answer-changes-nav' => 'Hace la navegación general del sitio mas fácil de usar.',
 	'optin-survey-answer-changes-edittools' => 'Aumenta y mejora las herramientas de edición.',
 	'optin-survey-answer-changes-upload' => 'Mejorar contenido y cargas de medios.',

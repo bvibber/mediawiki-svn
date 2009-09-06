@@ -96,6 +96,16 @@ $messages['bn'] = array(
 	'msfunc_div_zero' => 'শূন্য দিয়ে বিভাজন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'msfunc_desc' => "Dastumad arc'hwelioù jedoniel ha stadegoù",
+	'msfunc_nan' => "An disoc'h n'eo ket un niver anezhañ",
+	'msfunc_inf' => "Anfin eo an disoc'h",
+	'msfunc_div_zero' => 'Rannadur dre mann',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

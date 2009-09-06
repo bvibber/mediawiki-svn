@@ -233,10 +233,14 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'sitematrix' => 'Roll holl raktresoù Wikimedia',
 	'sitematrix-summary' => 'Diskouez a ra ar bajenn dibar-mañ holl wikioù Diazezadur Wikimedia.',
+	'sitematrix-desc' => 'Diskwel a ra ur [[Special:SiteMatrix|roll wikioù eus Wikimedia]]',
 	'sitematrix-language' => 'Yezh',
+	'sitematrix-project' => 'Anv ar raktres, liamm etreraktres ha liamm etrewiki',
 	'sitematrix-others' => 'Raktresoù all eus Wikimedia',
 	'sitematrix-total' => "'''Hollad ar gont : $1'''",
 	'sitematrix-sitetotal' => 'Hollad',
+	'sitematrix-private' => 'prevez',
+	'sitematrix-fishbowl' => "Bevennet eo ar c'hemmañ",
 );
 
 /** Bosnian (Bosanski)

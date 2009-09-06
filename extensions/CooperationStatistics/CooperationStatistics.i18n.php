@@ -483,6 +483,24 @@ Zobacz również [[Special:MostRevisors|'''strony o największej liczbie współ
 	'cooperationstatistics-legendmore' => 'lub więcej współautorów',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'cooperationstatistics' => 'Statìstiche dle cooperassion',
+	'cooperationstatistics-desc' => 'Mosta [[Special:CooperationStatistics|le statìstiche ëd cooperassion ant lë spassi nominal prinsipal]].',
+	'cooperationstatistics-text' => "Mosta le statìstiche ëd cooperassion ant lë spassi nominal prinsipal.
+Da [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisor.<br />
+Varda ëdcò le [[Special:MostRevisors|'''pàgine con pì revisor''']] e le [[Special:MostRevisions|pàgine con pì revision]].",
+	'cooperationstatistics-tablearticle' => 'Nùmer ëd pàgine',
+	'cooperationstatistics-tablevalue' => "Nùmer d'autor",
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pàgina|pàgine}}',
+	'cooperationstatistics-nbusers' => "{{PLURAL:$2|a l'ha|a l'han}} $1 {{PLURAL:$1|autor|autor}}",
+	'cooperationstatistics-nblessusers' => "{{PLURAL:$2|a l'ha|a l'han}} $1 {{PLURAL:$1|autor|o men autor}}",
+	'cooperationstatistics-nbmoreusers' => "{{PLURAL:$2|a l'ha|a l'han}} $1 o pì autor",
+	'cooperationstatistics-legendmore' => 'o pì autor.',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

@@ -369,6 +369,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  */
 $messages['es'] = array(
@@ -378,6 +379,7 @@ $messages['es'] = array(
 	'refreshspecial-button' => 'Refrescar seleccionados',
 	'refreshspecial-fail' => 'Por favor chequee al menos una página especial a refrescar.',
 	'refreshspecial-refreshing' => 'refrescando páginas especiales',
+	'refreshspecial-skipped' => 'ordinario, omitido',
 	'refreshspecial-choice' => 'refrescando páginas especiales',
 	'refreshspecial-js-disabled' => '(<i>Usted no puede seleccionar todas las páginas donde JavaScript está deshabiltada</i>)',
 	'refreshspecial-select-all-pages' => 'Seleccione todas las páginas',
