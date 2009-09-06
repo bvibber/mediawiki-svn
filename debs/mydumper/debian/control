@@ -2,7 +2,7 @@ Source: mydumper
 Section: misc
 Priority: extra
 Maintainer: Domas Mituzas <domas.mituzas@gmail.com>
-Build-Depends: debhelper (>= 7)
+Build-Depends: debhelper (>= 6), libmysqlclient15-dev, libglib2.0-dev (>=2.8), libpcre3-dev, zlib1g-dev
 Standards-Version: 3.8.0
 Homepage: http://launchpad.net/mydumper/
 
