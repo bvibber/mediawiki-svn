@@ -364,7 +364,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'assert_edit_title' => 'アサーションの失敗',
 	'assert_edit_desc' => 'ボットが利用する編集情報を追加する',
-	'assert_edit_message' => 'アサーション （$1） に失敗しました。',
+	'assert_edit_message' => 'アサーション ($1) に失敗しました。',
 );
 
 /** Jutish (Jysk)

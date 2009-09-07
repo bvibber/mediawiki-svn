@@ -564,6 +564,7 @@ Nahrata dataja měła mjeno strony a opcionalnu přičinu wobsahować, kotrejž 
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'deletebatch' => 'Lapok tömeges törlése',
@@ -571,8 +572,18 @@ $messages['hu'] = array(
 	'deletebatch-help' => 'Törölhetsz egyetlen lapot, vagy egy fájlban listázottakat.
 Válaszd ki a felhasználói nevet, ami meg fog jelenni a törlési naplóban.
 A feltöltött fájl minden sora tartalmazhat „|” karakterrel elválasztva egy törlési okot.',
-	'deletebatch-caption' => 'Lapok listája',
+	'deletebatch-caption' => 'Lapok listája:',
 	'deletebatch-title' => 'Lapok tömeges törlése',
+	'deletebatch-link-back' => 'Vissza a speciális lapra',
+	'deletebatch-as' => 'A szkript futtatása mint:',
+	'deletebatch-or' => '<b>vagy</b>',
+	'deletebatch-delete' => 'Törlés',
+	'deletebatch-page' => 'Törlendő lapok:',
+	'deletebatch-file-bad-format' => 'A fájlnak egyszerű szövegnek kell lennie',
+	'deletebatch-file-missing' => 'A megadott fájl nem olvasható',
+	'deletebatch-select-script' => 'Laptörlés szkript',
+	'deletebatch-select-yourself' => 'te',
+	'right-deletebatch' => 'Lapok kötegelt törlése',
 );
 
 /** Interlingua (Interlingua)
@@ -651,7 +662,7 @@ I file caricati dovrebbero contenere il nome della pagina e un motivo opzionale 
 $messages['ja'] = array(
 	'deletebatch' => 'ページを一括削除する',
 	'deletebatch-desc' => '[[Special:DeleteBatch|ページを一括削除する]]',
-	'deletebatch-help' => 'ページを一括削除することができます。ページ毎の削除の他に、ファイルに列挙したページ群を削除することができます。削除記録に表示される利用者を選択してください。アップロードされたファイルについては、各行にページ名とパイプ記号 （|） で区切った理由の追加説明を記す必要があります。',
+	'deletebatch-help' => 'ページを一括削除することができます。ページ毎の削除の他に、ファイルに列挙したページ群を削除することができます。削除記録に表示される利用者を選択してください。アップロードされたファイルについては、各行にページ名とパイプ記号 (|) で区切った理由の追加説明を記す必要があります。',
 	'deletebatch-caption' => 'ページ一覧:',
 	'deletebatch-title' => '一括削除',
 	'deletebatch-link-back' => '特別ページに戻る',
@@ -1079,8 +1090,11 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
  */
 $messages['te'] = array(
 	'deletebatch-caption' => 'పేజీల జాబితా:',
+	'deletebatch-link-back' => 'తిరిగి ప్రత్యేక పేజీకి వెళ్ళండి',
 	'deletebatch-or' => '<b>లేదా</b>',
+	'deletebatch-delete' => 'తొలగించు',
 	'deletebatch-page' => 'తొలగించాల్సిన పేజీలు:',
+	'deletebatch-select-yourself' => 'మీరు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

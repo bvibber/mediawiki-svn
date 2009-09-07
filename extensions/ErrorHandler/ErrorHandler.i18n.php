@@ -631,10 +631,10 @@ $messages['ja'] = array(
 	'errorhandler-error-user-deprecated' => 'ユーザー非推奨',
 	'errorhandler-error-strict' => '厳格基準',
 	'errorhandler-error-recoverable' => '捕捉可能な致命的エラー',
-	'errorhandler-msg-text' => '$1 : $2 （ファイル $3、行 $4）',
-	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> （ファイル <b>$3</b>、行 <b>$4</b>）',
+	'errorhandler-msg-text' => '$1 : $2 (ファイル $3、行 $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> (ファイル <b>$3</b>、行 <b>$4</b>)',
 	'errorhandler-trace' => 'トレース:',
-	'errorhandler-trace-line' => '$1 （行 $2）: $3',
+	'errorhandler-trace-line' => '$1 (行 $2): $3',
 	'errorhandler-trace-line-internal' => '[内部関数]: $1',
 );
 

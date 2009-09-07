@@ -83,6 +83,17 @@ $messages['bg'] = array(
 	'discussionthreading-replysection' => 'отговаряне',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'discussionthreading-desc' => "Ouzhpennañ a ra an neudennoù d'ar bajenn gaozeal",
+	'discussionthreading-replysection' => 'Respont',
+	'discussionthreading-replysectionhint' => "Respont d'ar gemennadenn-mañ",
+	'discussionthreading-threadnewsection' => 'nevez',
+	'discussionthreading-threadnewsectionhint' => 'Sevel ur gaoz nevez',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

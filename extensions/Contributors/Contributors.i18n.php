@@ -187,15 +187,16 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'contributors' => 'Aozerien',
+	'contributors-desc' => 'Diskouez a ra ur rollig eus aozerien bennañ ur pennad bennak',
 	'contributors-toolbox' => 'Aozerien bennañ',
-	'contributors-legend' => 'Roll an aozerien bennañ evit ur pennad',
+	'contributors-legend' => 'Rollañ aozerien bennañ ur pennad bennak',
 	'contributors-target' => 'Titl :',
 	'contributors-submit' => 'Diskouez',
 	'contributors-subtitle' => 'Aozerien bennañ evit $1',
-	'contributors-others-long' => '$ aozer all o deus kemeret perzh e savidigezh ar bajenn-mañ.',
-	'contributors-others' => 'ha $1 all',
+	'contributors-others-long' => '{{PLURAL:$1|Un aozer all en deus|$1 aozer all o deus}} kemeret perzh er pennad-mañ.',
+	'contributors-others' => '{{PLURAL:$1|hag unan all|ha $1 all}}',
 	'contributors-badtitle' => 'Titl fall.',
-	'contributors-nosuchpage' => "N'eus ket eus ar pennad $",
+	'contributors-nosuchpage' => "N'eus ket eus ar pennad $1.",
 );
 
 /** Bosnian (Bosanski)

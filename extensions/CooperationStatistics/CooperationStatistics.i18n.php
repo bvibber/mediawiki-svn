@@ -569,6 +569,25 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
  */
 $messages['te'] = array(
 	'cooperationstatistics' => 'సహకార గణాంకాలు',
+	'cooperationstatistics-tablearticle' => 'పేజీల సంఖ్య',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|పేజీ|పేజీలు}}',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'cooperationstatistics' => 'Thống kê cộng tác',
+	'cooperationstatistics-desc' => 'Hiển thị [[Special:CooperationStatistics|thống kê cộng tác trên không gian tên chính]].',
+	'cooperationstatistics-text' => "Hiển thị thống kê cộng tác trên không gian tên chính.
+Từ [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] đến [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] người chỉnh sửa.<br />
+Xem thêm [[Special:MostRevisors|'''trang có số người chỉnh sửa nhiều nhất''']] và [[Special:MostRevisions|trang có số phiên bản nhiều nhất]].",
+	'cooperationstatistics-tablearticle' => 'Số trang',
+	'cooperationstatistics-tablevalue' => 'Số biên tập viên',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|trang|trang}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|có|có}} $1 {{PLURAL:$1|biên tập viên|biên tập viên}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|có|có}} $1 {{PLURAL:$1|biên tập viên|biên tập viên trở xuống}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|có|có}} $1 biên tập viên trở lên',
+	'cooperationstatistics-legendmore' => 'biên tập viên trở lên.',
 );
 

@@ -445,9 +445,9 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'backforth-next' => '次へ （$1）',
+	'backforth-next' => '次へ ($1)',
 	'backforth-desc' => 'ページ上部に"次へ"と"前へ"のリンクを追加する',
-	'backforth-prev' => '前へ （$1）',
+	'backforth-prev' => '前へ ($1)',
 );
 
 /** Javanese (Basa Jawa)

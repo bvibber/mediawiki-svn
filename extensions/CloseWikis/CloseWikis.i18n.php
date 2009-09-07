@@ -174,6 +174,10 @@ $messages['be-tarask'] = array(
 	'closewikis-list-header-dispreason' => 'Прычына для паказу',
 	'closewikis-log' => 'Журнал закрыцьця вікі',
 	'closewikis-log-header' => 'Журнал усіх закрыцьцяй і адкрыцьцяй вікі сьцюардамі',
+	'closewikis-log-close' => 'закрытая $2',
+	'closewikis-log-reopen' => 'адкрытая ізноў $2',
+	'right-editclosedwikis' => 'рэдагаваньне ў закрытых вікі',
+	'right-closewikis' => 'закрыцьцё вікі',
 );
 
 /** Bulgarian (Български)
@@ -885,8 +889,8 @@ $messages['ja'] = array(
 	'closewikis-page' => 'ウィキを閉鎖する',
 	'closewikis-page-close' => 'ウィキを閉鎖する',
 	'closewikis-page-close-wiki' => 'ウィキ:',
-	'closewikis-page-close-dreason' => '理由 （表示用）:',
-	'closewikis-page-close-reason' => '理由 （記録用）:',
+	'closewikis-page-close-dreason' => '理由 (表示用):',
+	'closewikis-page-close-reason' => '理由 (記録用):',
 	'closewikis-page-close-submit' => '閉鎖',
 	'closewikis-page-close-success' => 'ウィキの閉鎖に成功しました',
 	'closewikis-page-reopen' => 'ウィキを再開する',

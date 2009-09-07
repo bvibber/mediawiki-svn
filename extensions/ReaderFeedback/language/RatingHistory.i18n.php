@@ -807,6 +807,7 @@ $messages['hu'] = array(
 	'ratinghistory-3years' => '3 év',
 	'ratinghistory-ave' => 'Átlag: $1',
 	'ratinghistory-chart' => 'Olvasói visszajelzések időrendben',
+	'ratinghistory-purge' => 'gyorsítótár kiürítése',
 	'ratinghistory-table' => 'Olvasói értékelések áttekintése',
 	'ratinghistory-users' => 'Szerkesztők, akik értékelték a lapot',
 	'ratinghistory-graph' => '$2 a „$3” oldalon ($1 {{PLURAL:$1|értékelés|értékelés}})',
@@ -814,11 +815,13 @@ $messages['hu'] = array(
 	'ratinghistory-table-rating' => 'Értékelés',
 	'ratinghistory-table-votes' => 'Szavazatok',
 	'ratinghistory-none' => 'Jelenleg még nem áll rendelkezésre elég visszajelzés a grafikonok elkészítéséhez.',
-	'ratinghistory-legend' => "Alább a '''napi átlagos értékelés''' <font color=\"blue\">''(kék színnel)''</font> és a '''megadott időtartam alatti átlagos értékelés''' <font color=\"green\">''(zöld színnel)''</font> grafikonja látható, dátum szerint. A '''megadott időtartam alatti átlagos értékelés''' egyszerűen az összes napi értékelés átlaga a megadott időtartam '''alatt'''.
+	'ratinghistory-ratings' => "'''Magyarázat:''' '''[1]''' – rossz; '''[2]''' – gyenge; '''[3]''' – közepes; '''[4]''' – jó; '''[5]''' – kitűnő;",
+	'ratinghistory-legend' => "Alább a '''napi értékelések száma ''' <font color=\"red\">''(vörös)''</font>, a '''napi átlagos értékelés''' <font color=\"blue\">''(kék)''</font> és a '''megadott időtartam alatti átlagos értékelés''' <font color=\"green\">''(zöld)''</font> grafikonja látható, dátum szerint. A '''megadott időtartam alatti átlagos értékelés''' egyszerűen az összes napi értékelés átlaga a megadott időtartam '''alatt'''.
 
-Értékek: '''[1]''' – rossz; '''[2]''' – gyenge; '''[3]''' – közepes; '''[4]''' – jó; '''[5]''' – kitűnő;
+Az értékek a következők lehetnek:
 
-A '''naponkénti értékelések száma''' <font color=\"red\">''(piros színnel)''</font> látható a grafikonokon, ''1:\$1'' arányon.",
+'''[1]''' – rossz; '''[2]''' – gyenge; '''[3]''' – közepes; '''[4]''' – jó; '''[5]''' – kitűnő;",
+	'ratinghistory-graph-scale' => "'''Visszajelzés / nap ''' <font color=\"red\">''(vörös színnel)''</font> ''1:\$1'' skálán megjelenítve.",
 	'right-feedback' => 'oldalak értékelése a visszajelzés-űrlap segítségével',
 );
 
@@ -946,7 +949,7 @@ $messages['ja'] = array(
 	'ratinghistory-purge' => 'キャッシュ削除',
 	'ratinghistory-table' => '読者評価の概観',
 	'ratinghistory-users' => '評価を行った利用者',
-	'ratinghistory-graph' => '「$3」の$2 （$1回の{{PLURAL:$1|評価}}）',
+	'ratinghistory-graph' => '「$3」の$2 ($1回の{{PLURAL:$1|評価}})',
 	'readerfeedback-svg' => 'SVGとして表示',
 	'ratinghistory-table-rating' => '評価',
 	'ratinghistory-table-votes' => '票数',

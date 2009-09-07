@@ -101,6 +101,13 @@ $messages['hsb'] = array(
 	'negref-desc' => 'Skići tafličku, zo by so městno tafličkow <nowiki><ref/></nowiki> znutřka zapodateho teksta zwěsćiło, zo bychu so někotre pady wužiwanja předłohow porjedźili',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'negref-desc' => 'Forni un etiquetta pro negotiar le position del etiquetta <nowiki><ref/></nowiki> in un texto de entrata pro solver alcun problemas de uso de patronos',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

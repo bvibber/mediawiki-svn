@@ -771,7 +771,7 @@ $messages['ja'] = array(
 	'spamregex-currently-blocked' => "'''現在ブロックされている語句:'''",
 	'spamregex-move' => 'あなたが入力した理由にはブロックされている語句が含まれていました。',
 	'spamregex-no-currently-blocked' => "'''ブロックされている語句はありません。'''",
-	'spamregex-log' => "* '''$1''' $2 （[{{SERVER}}$3&text=$4 除去]） が、$5 により $6 $7 に追加",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 除去]) が、$5 により $6 $7 に追加",
 	'spamregex-page-title-1' => '正規表現を使って語句をブロック',
 	'spamregex-unblock-success' => 'ブロック解除成功',
 	'spamregex-unblock-message' => "「'''$1'''」という語句を使えるようブロック解除しました。",
@@ -786,8 +786,8 @@ $messages['ja'] = array(
 	'spamregex-phrase-block-text' => '語句を本文中でブロック',
 	'spamregex-phrase-block-summary' => '語句を要約文中でブロック',
 	'spamregex-block-submit' => 'この語句をブロック',
-	'spamregex-text' => '（本文）',
-	'spamregex-summary-log' => '（要約）',
+	'spamregex-text' => '(本文)',
+	'spamregex-summary-log' => '(要約)',
 	'right-spamregex' => '[[Special:SpamRegex]] を使ってスパム語句をブロックする',
 );
 

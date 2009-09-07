@@ -492,8 +492,8 @@ $messages['ja'] = array(
 	'security-info' => 'このページには$1があります',
 	'security-info-toggle' => 'セキュリティ制限',
 	'security-inforestrict' => '$1は$2に限定されています',
-	'security-desc-LS' => '（この記事が「$2 $1」にあるため）',
-	'security-desc-PR' => '（「保護」タブからの設定）',
+	'security-desc-LS' => '(この記事が「$2 $1」にあるため)',
+	'security-desc-PR' => '(「保護」タブからの設定)',
 	'security-infosysops' => 'あなたは「管理者」グループに所属しているため、制限は無効です',
 	'security-manygroups' => 'グループ $1 および $2',
 	'security-unchain' => '操作別に変更する',
@@ -619,6 +619,8 @@ $messages['nn'] = array(
  * @author Simny
  */
 $messages['no'] = array(
+	'security-info' => 'Det finnes $1 på denne siden',
+	'security-info-toggle' => 'sikkerhetsrelaterte begrensninger',
 	'security-type-category' => 'kategori',
 );
 

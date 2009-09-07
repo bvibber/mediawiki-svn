@@ -298,8 +298,8 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'categorystepper-desc' => '1つ以上のカテゴリに所属するページを、辞書順に前後へ１つずつ表示できるボックスを追加する',
-	'categorystepper-end' => '（カテゴリの最後）',
-	'categorystepper-start' => '（カテゴリの先頭）',
+	'categorystepper-end' => '(カテゴリの最後)',
+	'categorystepper-start' => '(カテゴリの先頭)',
 );
 
 /** Javanese (Basa Jawa)

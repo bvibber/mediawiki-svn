@@ -2028,6 +2028,7 @@ Je wjele [http://openid.net/get/ poskićowarjow OpenID], snano maš hižo konto 
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -2061,6 +2062,7 @@ Lépj kapcsolatba egy [[Special:ListUsers/sysop|adminisztrátorral]].',
 	'openidfullname' => 'Teljes név',
 	'openidemail' => 'Email-cím',
 	'openidlanguage' => 'Nyelv',
+	'openidtimezone' => 'Időzóna',
 	'openidnotavailable' => 'Az alapértelmezett felhasználónevedet ($1) már használja valaki.',
 	'openidnotprovided' => 'Az OpenID szervered nem adta meg a felhasználónevedet (vagy azért, mert nem tudja, vagy mert nem engedted neki).',
 	'openidchooseinstructions' => 'Mindenkinek választania kell egy felhasználónevet; választhatsz egyet az alábbi opciókból.',
@@ -2070,7 +2072,7 @@ Lépj kapcsolatba egy [[Special:ListUsers/sysop|adminisztrátorral]].',
 	'openidchoosemanual' => 'Egy általad megadott név:',
 	'openidchooseexisting' => 'Egy létező felhasználónév erről a wikiről:',
 	'openidchoosepassword' => 'jelszó:',
-	'openidconvertinstructions' => 'Ezzel az űrlappal átállíthatod a felhasználói fiókodat, hogy egy OpenId URL-t használjon.',
+	'openidconvertinstructions' => 'Ezzel az űrlappal átállíthatod a felhasználói fiókodat, hogy egy OpenId URL-t használjon, vagy hozzáadhatsz több OpenID URL-t',
 	'openidconvertsuccess' => 'Sikeres átállás OpenID-re',
 	'openidconvertsuccesstext' => 'Sikeresen átállítottad az OpenID-det erre: $1.',
 	'openidconvertyourstext' => 'Ez az OpenID már a tiéd.',
@@ -2083,18 +2085,20 @@ Ha ezentúl az OpenID-del akarsz bejelentkezni, [[Special:OpenIDConvert|konvert�
 	'openidautosubmit' => 'Az ezen az oldalon lévő űrlap automatikusan elküldi az adatokat, ha a JavaScript engedélyezve van. Ha nem, használd a "Continue" (Tovább) gombot.',
 	'openidclientonlytext' => 'Az itteni felhasználónevedet nem használhatod OpenID-ként más weboldalon.',
 	'openidloginlabel' => 'OpenID URL',
-	'openidlogininstructions' => "A(z) {{SITENAME}} támogatja az [http://openid.net/ OpenID]-alapú bejelentkezést.
+	'openidlogininstructions' => 'A(z) {{SITENAME}} támogatja az [http://openid.net/ OpenID] szabványt a weboldalak közötti egységes bejelentkezéshez.
 A OpenID lehetővé teszi, hogy számos különböző weboldalra jelentkezz be úgy, hogy csak egyszer kell megadnod a jelszavadat. (Lásd [http://hu.wikipedia.org/wiki/OpenID a Wikipédia OpenID cikkét] további információkért.)
 
-Ha már regisztráltál korábban, [[Special:UserLogin|bejelentkezhetsz]] a felhasználóneveddel és a jelszavaddal, ahogy eddig is. Ha a továbbiakban OpenID-t akarsz használni, [[Special:OpenIDConvert|állítsd át a felhasználói fiókodat OpenID-re]], miután bejelentkeztél.
+Ha már regisztráltál korábban, [[Special:UserLogin|bejelentkezhetsz]] a felhasználóneveddel és a jelszavaddal, ahogy eddig is. Ha a továbbiakban OpenID-t szeretnél használni, [[Special:OpenIDConvert|állítsd át a felhasználói fiókodat OpenID-re]] miután bejelentkeztél.
 
-Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolgáltató] van, lehetséges, hogy van már OpenID-fiókod egy másik weboldalon.
-
-; Más wikik: ha regisztráltál egy OpenID-kompatibilis wikin, mint a [http://wikitravel.org/ Wikitravel], a [http://www.wikihow.com/ wikiHow], a [http://vinismo.com/ Vinismo], az [http://aboutus.org/ AboutUs] vagy a [http://kei.ki/ Keiki], bejelentkezhetsz ide az ottani felhasználói lapod '''teljes címének''' megadásával. (Például ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.)
-; [http://openid.yahoo.com/ Yahoo!] :  ha van Yahoo! azonosítód, bejelentkezhetsz a Yahoo! OpenID-d megadásával. A Yahoo! OpenID-k ''<nowiki>https://me.yahoo.com/felhasználónév</nowiki>'' alakúak.
-; [http://dev.aol.com/aol-and-63-million-openids AOL] : Ha van valamilyen [http://www.aol.com/ AOL] azonosítód, például egy [http://www.aim.com/ AIM] felhasználónév, bejelentkezhetsz az AOL OpenID-del. Az AOL OpenID-k ''<nowiki>http://openid.aol.com/felhasználónév</nowiki>'' alakúak (a felhasználónév csupa kisbetűvel, szóköz nélkül).
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : ezek a blogszolgáltatók mind biztosítanak OpenID-t, a következő formákban: ''<nowiki>http://felhasználónév.blogspot.com/</nowiki>'', ''<nowiki>http://felhasználónév.wordpress.com/</nowiki>'', ''<nowiki>http://felhasználónév.livejournal.com/</nowiki>'', or ''<nowiki>http://felhasználónév.vox.com/</nowiki>''.",
+Számos [http://openid.net/get/ OpenID szolgáltató] van, lehetséges, hogy van már OpenID-fiókod egy másik weboldalon.',
+	'openidupdateuserinfo' => 'Személyes információk frissítése',
+	'openiddelete' => 'OpenID törlése',
+	'openiddelete-button' => 'Megerősítés',
 	'openid-pref-hide' => 'Az OpenID-d elrejtése a felhasználói lapodon, amikor OpenID-vel jelentkezel be.',
+	'openid-urls-delete' => 'Törlés',
+	'openid-add-url' => 'Új OpenID hozzáadása',
+	'openid-provider-label-openid' => 'OpenID URL megadása',
+	'openid-provider-label-other-username' => 'Add meg a(z) $1 felhasználóneved',
 );
 
 /** Interlingua (Interlingua)
@@ -2405,7 +2409,7 @@ $messages['ja'] = array(
 	'openidsuccess' => '検証成功',
 	'openidsuccesstext' => 'OpenID URLの検証は成功しました。',
 	'openidusernameprefix' => 'OpenIDユーザー',
-	'openidserverlogininstructions' => '$3 に利用者 $2 （利用者ページ $1） としてログインするには以下にパスワードを入力してください。',
+	'openidserverlogininstructions' => '$3 に利用者 $2 (利用者ページ $1) としてログインするには以下にパスワードを入力してください。',
 	'openidtrustinstructions' => '$1 とデータを共有したいか確認してください。',
 	'openidallowtrust' => '$1 がこの利用者アカウントを信用するのを許可する。',
 	'openidnopolicy' => 'サイトはプライバシーに関する方針を明記していません。',
@@ -2417,12 +2421,12 @@ $messages['ja'] = array(
 	'openidemail' => '電子メールアドレス',
 	'openidlanguage' => '言語',
 	'openidtimezone' => 'タイムゾーン',
-	'openidnotavailable' => 'あなたが選んだニックネーム （$1） は既に他の利用者が使っています。',
-	'openidnotprovided' => 'あなたの OpenID サーバーはニックネームを提供していません（提供できない場合と、提供しないようあなたが指示している場合とがあります）。',
+	'openidnotavailable' => 'あなたが選んだニックネーム ($1) は既に他の利用者が使っています。',
+	'openidnotprovided' => 'あなたの OpenID サーバーはニックネームを提供していません(提供できない場合と、提供しないようあなたが指示している場合とがあります)。',
 	'openidchooseinstructions' => 'すべての利用者はニックネームが必要です。以下の選択肢から1つを選ぶことができます。',
-	'openidchoosefull' => 'あなたのフルネーム （$1）',
-	'openidchooseurl' => 'あなたの OpenID から選んだ名前 （$1）',
-	'openidchooseauto' => '自動生成された名前 （$1）',
+	'openidchoosefull' => 'あなたのフルネーム ($1)',
+	'openidchooseurl' => 'あなたの OpenID から選んだ名前 ($1)',
+	'openidchooseauto' => '自動生成された名前 ($1)',
 	'openidchoosemanual' => '名前を別に設定する:',
 	'openidchooseexisting' => 'このウィキに存在するアカウント:',
 	'openidchoosepassword' => 'パスワード:',
@@ -2437,10 +2441,10 @@ $messages['ja'] = array(
 将来は OpenID を使ってログインしたい場合は、[[Special:OpenIDConvert|あなたのアカウントを OpenID を使うように変換する]]ことができます。",
 	'openidnousername' => '利用者名が指定されていません。',
 	'openidbadusername' => '利用者名の指定が不正です。',
-	'openidautosubmit' => 'このページにあるフォームはあなたが JavaScript を有効にしていれば自動的に送信されるはずです。そうならない場合は、 "Continue" （続ける） ボタンを試してください。',
+	'openidautosubmit' => 'このページにあるフォームはあなたが JavaScript を有効にしていれば自動的に送信されるはずです。そうならない場合は、 "Continue" (続ける) ボタンを試してください。',
 	'openidclientonlytext' => 'あなたはこのウィキのアカウントを他のサイトで OpenID として使うことができません。',
 	'openidloginlabel' => 'OpenID URL',
-	'openidlogininstructions' => '{{SITENAME}} はウェブサイト間でのシングルサインオンのための [http://openid.net/ OpenID] 規格に対応しています。OpenID によって、個別のパスワードを使うことなく、たくさんの様々なウェブサイトにログインできるようになります（より詳しい情報は[http://ja.wikipedia.org/wiki/OpenID ウィキペディアの OpenID についての記事]を参照してください）。
+	'openidlogininstructions' => '{{SITENAME}} はウェブサイト間でのシングルサインオンのための [http://openid.net/ OpenID] 規格に対応しています。OpenID によって、個別のパスワードを使うことなく、たくさんの様々なウェブサイトにログインできるようになります(より詳しい情報は[http://ja.wikipedia.org/wiki/OpenID ウィキペディアの OpenID についての記事]を参照してください)。
 
 あなたが既に {{SITENAME}} でアカウントをもっている場合は、いつもどおりに利用者名とパスワードで[[Special:UserLogin|ログイン]]できます。将来、OpenID を使うためには、通常のログインをした後で[[Special:OpenIDConvert|あなたのアカウントを OpenID に変換する]]ことができます。
 
@@ -4276,6 +4280,7 @@ $messages['te'] = array(
 	'openidfullname' => 'పూర్తిపేరు',
 	'openidemail' => 'ఈ-మెయిల్ చిరునామా',
 	'openidlanguage' => 'భాష',
+	'openidtimezone' => 'కాలమానం',
 	'openidchoosefull' => 'మీ పూర్తి పేరు ($1)',
 	'openidchoosemanual' => 'మీరు ఎన్నుకున్న పేరు:',
 	'openidchooseexisting' => 'ఈ వికీలో ఇప్పటికే ఉన్న ఖాతా:',

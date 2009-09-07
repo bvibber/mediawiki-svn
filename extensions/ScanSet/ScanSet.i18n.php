@@ -662,7 +662,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'scanset-desc' => 'スキャンページ画像を、Andreas Grosz のCD/DVD索引形式で表示する',
-	'scanset_no_name' => 'Error: スキャンセット名を指定する必要があります　（例：&lt;scanset name="EB1911" /&gt;）',
+	'scanset_no_name' => 'Error: スキャンセット名を指定する必要があります　(例：&lt;scanset name="EB1911" /&gt;)',
 	'scanset_invalid_name' => 'Error: スキャンセットが見つからないか不正です',
 	'scanset_unrecognised_index_format' => 'Error: 対応していない索引形式です',
 	'scanset_opendir_error' => 'Error: ディレクトリ $1 を開くことができません',

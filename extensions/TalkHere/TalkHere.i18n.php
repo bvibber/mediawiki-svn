@@ -524,7 +524,7 @@ $messages['ja'] = array(
 
 このサイトの運営者はそのようなコメントの内容について責任を取ることはできません。',
 	'talkhere-talkpage' => '会話ページ',
-	'talkhere-notalk' => "''（まだコメントなし）''",
+	'talkhere-notalk' => "''(まだコメントなし)''",
 	'talkhere-addcomment' => 'コメントの追加',
 	'talkhere-beforeinput' => '以下にコメントを追加できます',
 	'talkhere-loading' => 'エディタを読み込み中…',

@@ -609,6 +609,7 @@ $messages['sk'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'mostrevisors-showing' => '{{PLURAL:$1|పేజీని|$1 పేజీలను}} చూపిస్తున్నాం:',
 	'mostrevisors-submit' => 'వెళ్ళు',
 );
 

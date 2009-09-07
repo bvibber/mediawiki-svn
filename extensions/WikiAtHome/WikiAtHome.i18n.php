@@ -201,6 +201,22 @@ Sie können dabei helfen dieses Video zu verarbeiten, indem Sie [[Special:WikiAt
 	'wah-javascript-off' => 'Sie müssen JavaScript aktiviert haben, um bei Wiki@Home teilnehmen zu können',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'wah-desc' => 'Zmóžnja rozdźělenje nadawkow wideopśekoděrowanja klientam z pomocu Firefogg',
+	'wah-short-audio' => 'Awdiodataja $1, $2',
+	'wah-short-video' => 'Wideodataja $1, $2',
+	'wah-short-general' => 'Medijowa dataja $1, $2',
+	'wah-long-audio' => '(Awdiodataja $1, dłujkosć $2, $3)',
+	'wah-long-video' => '(Wideodataja $1, dłujkosć $2, $4×$5 pikselow, $3)',
+	'wah-long-general' => '(medijowa dataja, dłujkosć $2, $3)',
+	'wah-long-error' => '(ffmpeg njejo mógł toś tu dataju cytaś: $1)',
+	'wah-transcode-working' => 'Wideo se pśeźěłujo, pšosym wopytaj póznjej hyšći raz',
+	'wah-javascript-off' => 'Musyš JavaScript zmóžniś, aby se na Wiki@Home wobźělił',
+);
+
 /** Greek (Ελληνικά)
  * @author ZaDiak
  */
@@ -434,11 +450,11 @@ $messages['ja'] = array(
 	'wah-short-audio' => '$1音声ファイル、$2',
 	'wah-short-video' => '$1動画ファイル、$2',
 	'wah-short-general' => '$1メディアファイル、$2',
-	'wah-long-audio' => '（$1音声ファイル、長さ：$2、$3）',
-	'wah-long-video' => '（$1動画ファイル、長さ：$2、$4×$5ピクセル、$3）',
-	'wah-long-multiplexed' => '（多重化された音声/動画ファイル、$1、長さ：$2、$4×$5ピクセル、全体で$3）',
-	'wah-long-general' => '（メディアファイル、長さ：$2、$3）',
-	'wah-long-error' => '（ffmpeg はこのファイルを読み取れませんでした: $1）',
+	'wah-long-audio' => '($1音声ファイル、長さ：$2、$3)',
+	'wah-long-video' => '($1動画ファイル、長さ：$2、$4×$5ピクセル、$3)',
+	'wah-long-multiplexed' => '(多重化された音声/動画ファイル、$1、長さ：$2、$4×$5ピクセル、全体で$3)',
+	'wah-long-general' => '(メディアファイル、長さ：$2、$3)',
+	'wah-long-error' => '(ffmpeg はこのファイルを読み取れませんでした: $1)',
 	'wah-transcode-working' => 'この動画は現在処理中です。後でまた試してください。',
 	'wah-transcode-helpout' => 'このクリップは$1%完了しています。[[Special:WikiAtHome|Wiki@Home]] を使用すると、この動画のトランスコードをあなたが手伝うことができます',
 	'wah-transcode-fail' => 'このファイルはトランスコードに失敗しました。',

@@ -244,9 +244,9 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'rightfunctions-desc' => 'パーミッションベースのパーサー関数',
-	'rightfunctions-casc' => '（カスケード元より）',
-	'rightfunctions-local' => '（ローカルページより）',
-	'rightfunctions-ns' => '（名前空間保護より）',
+	'rightfunctions-casc' => '(カスケード元より)',
+	'rightfunctions-local' => '(ローカルページより)',
+	'rightfunctions-ns' => '(名前空間保護より)',
 );
 
 /** Khmer (ភាសាខ្មែរ)

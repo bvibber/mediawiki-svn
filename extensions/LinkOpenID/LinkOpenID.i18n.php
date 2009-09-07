@@ -78,6 +78,18 @@ $messages['be-tarask'] = array(
 	'linkopenid-prefstext-v2url' => 'URL-адрас сэрвэра OpenID вэрсіі 2:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'linkopenid-desc' => "Talvezout a ra d'an implijerien da liammañ o c'hontoù ouzh un OpenID diavaez",
+	'linkopenid-prefstext-pre' => "Ma'z eus ganeoc'h un OpenID digant ur pourvezer diavaez e c'hallit en merkañ amañ.
+Talvezout a ra deoc'h da implijout ho pajenn implijer evel OpenID.",
+	'linkopenid-prefstext-openid' => "Hoc'h OpenID :",
+	'linkopenid-prefstext-v1url' => 'URL ar servijer evit stumm OpenID 1.1 :',
+	'linkopenid-prefstext-v2url' => 'URL ar servijer evit stumm OpenID 2 :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

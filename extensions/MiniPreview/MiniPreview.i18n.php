@@ -408,7 +408,7 @@ $messages['ja'] = array(
 	'minipreview-files_in_gallery' => "このギャラリーには'''$1'''{{PLURAL:$1|ファイル}}属しています。",
 	'minipreview-no_more_files_here' => 'この先にはファイルがありません。',
 	'minipreview-no_category_gallery' => 'カテゴリもギャラリーもありません。',
-	'minipreview-ignore_categories' => '以下は MiniPreview に表示しないカテゴリ名冒頭部の一覧です。ここにある文字列から始まるカテゴリは MiniPreview に表示されません。たとえば "* PD-" とあれば、 "PD-" から始まるカテゴリ（"PD-old"など）をすべて表示しません。
+	'minipreview-ignore_categories' => '以下は MiniPreview に表示しないカテゴリ名冒頭部の一覧です。ここにある文字列から始まるカテゴリは MiniPreview に表示されません。たとえば "* PD-" とあれば、 "PD-" から始まるカテゴリ("PD-old"など)をすべて表示しません。
 * GFDL-
 * GFDL
 * CC-

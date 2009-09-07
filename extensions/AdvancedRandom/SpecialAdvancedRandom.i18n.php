@@ -301,7 +301,7 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'advancedrandom' => 'おまかせ表示（ページ指定）',
+	'advancedrandom' => 'おまかせ表示(ページ指定)',
 	'advancedrandom-desc' => '指定ページにリンクしているノートページおよび主題ページの中からランダムに表示する。例えば [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] とすれば秀逸な記事をおまかせ表示、[[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] とすればGFDLファイルをおまかせ表示する',
 );
 

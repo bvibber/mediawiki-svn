@@ -212,11 +212,12 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'stalepages' => 'Elévült lapok',
 	'stalepages-desc' => 'A közelmúltban nem szerkesztett [[Special:Stalepages|lapok listája]]',
-	'stalepages-summary' => 'Ez a(z) $1 napnál régebben szerkesztett lapok listája.',
+	'stalepages-summary' => 'Ez az utóbbi {{PLURAL:$1|egy|$1}} napnál régebben szerkesztett lapok listája.',
 );
 
 /** Interlingua (Interlingua)

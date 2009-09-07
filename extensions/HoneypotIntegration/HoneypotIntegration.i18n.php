@@ -193,7 +193,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'honeypot-desc' => '[http://projecthoneypot.org/ Project Honey Pot] と MediaWiki サイトとの統合を提供する',
-	'abusefilter-edit-builder-vars-honeypot-list-count' => 'そのIPアドレスが引き起こした最近の出来事の数（Project Honey Pot 調べ）',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'そのIPアドレスが引き起こした最近の出来事の数(Project Honey Pot 調べ)',
 );
 
 /** Ripoarisch (Ripoarisch)

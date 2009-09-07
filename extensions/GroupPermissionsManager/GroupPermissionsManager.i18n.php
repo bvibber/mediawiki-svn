@@ -1492,7 +1492,7 @@ $messages['ja'] = array(
 	'removeunusedgroups' => '未使用グループの削除',
 	'grouppermissions-desc' => '[[Special:GroupPermissions|特別ページ]]を用いてグループの権限を管理する',
 	'grouppermissions-desc2' => '拡張権限システム',
-	'grouppermissions-desc3' => '許可する操作（各タブ）をカスタマイズできます',
+	'grouppermissions-desc3' => '許可する操作(各タブ)をカスタマイズできます',
 	'grouppermissions-desc4' => 'ツールボックスに追加項目を加えられます',
 	'grouppermissions-desc-nsm' => '特別ページを用いて名前空間を管理する',
 	'grouppermissions-header' => 'このページを使用することで、さまざまな利用者グループの権限を変更することができます。',
@@ -1533,7 +1533,7 @@ $messages['ja'] = array(
 	'grouppermissions-sp-addperm' => '権限を追加',
 	'grouppermissions-sp-remove' => '削除',
 	'grouppermissions-sp-deltype' => '分類種別を削除',
-	'grouppermissions-rug-header' => 'このページを使用すると、未使用（削除済み）のグループから利用者を除くことができます。',
+	'grouppermissions-rug-header' => 'このページを使用すると、未使用(削除済み)のグループから利用者を除くことができます。',
 	'grouppermissions-rug-success' => '未使用グループから利用者を正常に除きました！',
 	'grouppermissions-rug-confirm' => '未使用グループから利用者を除く',
 	'right-grouppermissions' => 'グループの権限を管理する',
@@ -1547,7 +1547,7 @@ $messages['ja'] = array(
 	'right-contributions' => '投稿記録を閲覧する',
 	'right-recentchanges' => '最近の更新を閲覧する',
 	'right-edittalk' => 'ノートページを編集する',
-	'right-edit-new' => '主ページ（ノートページではないページ）を編集する',
+	'right-edit-new' => '主ページ(ノートページではないページ)を編集する',
 	'right-readold' => '過去の版の内容および差分を閲覧する',
 );
 

@@ -148,6 +148,13 @@ $messages['hsb'] = array(
 	'categorytests-desc' => 'Funkcije za testowanje kategorijow',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'categorytests-desc' => 'Funkciók kategóriateszteléshez',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

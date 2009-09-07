@@ -464,8 +464,8 @@ $messages['ja'] = array(
 	'profiling-data' => '`$1` のプロファイリングデータ',
 	'profiling-data-process' => 'プロセス',
 	'profiling-data-count' => '件数',
-	'profiling-data-time' => '時間 （合計）',
-	'profiling-data-average' => '時間 （平均）',
+	'profiling-data-time' => '時間 (合計)',
+	'profiling-data-average' => '時間 (平均)',
 	'profiling-no-data' => '一致するデータは見つかりませんでした。',
 );
 

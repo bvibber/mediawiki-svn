@@ -595,6 +595,11 @@ Donn de eezte pa Bochshtave udder Zeijsche tippe, un donn dann dä Knopp „{{in
 $messages['lb'] = array(
 	'indexfunc-desc' => 'Parser-Fonctioun fir Viruleedungen an Homonymie-Säiten automatesch unzeleeën',
 	'indexfunc-badtitle' => 'Net valabelen Titel: "$1"',
+	'indexfunc-editwarning' => 'Opgepasst:
+Dësen Titel ass en Index-Titel fir dës {{PLURAL:$2|Säit|Säiten}}:
+$1
+Vergewëssert Iech datt déi Säit déi Dir amgaang sidd unzeleeën net schon ënner engem aneren Titel besteet.
+Wann Dir dës Säit uleet, dann huelt dësen Titel vu(n)  <nowiki>{{#index:}}</nowiki> op {{PLURAL:$2|der Säit|de Säiten}} uewendriwwer erof.',
 	'indexfunc-index-exists' => 'D\'Säit "$1" gëtt et schonn',
 	'index' => 'Index',
 	'index-legend' => 'Am Index sichen',

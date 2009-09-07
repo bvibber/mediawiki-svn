@@ -1772,7 +1772,7 @@ $messages['ja'] = array(
 '''このシステムを悪用したり乱用したりすると、その権限を失う事になります。'''
 
 消去されたアイテムはウェブサイト上では誰も見る事が出来ません。但し、消去はログ化されている為、貴方が間違って消去した場合に、データベース管理者により手動で復帰する事が出来ます。",
-	'hiderevision-reason' => '理由（内密にログ化されます）:',
+	'hiderevision-reason' => '理由(内密にログ化されます):',
 	'hiderevision-submit' => '永久にこのデータを秘匿する',
 	'hiderevision-tab' => '版の秘匿',
 	'hiderevision-link' => '利用者の秘匿された投稿履歴',
@@ -1790,7 +1790,7 @@ $messages['ja'] = array(
 	'oversight-log-hiderev' => '―― $1の編集を消去',
 	'oversight' => '秘匿版の閲覧',
 	'oversight-view' => '詳細',
-	'oversight-difference' => '（残存している前の版との差分）',
+	'oversight-difference' => '(残存している前の版との差分)',
 	'oversight-prev' => '残存している前の版',
 	'oversight-hidden' => '秘匿された版',
 	'oversight-header' => '下記は、最近非公開となった版の一覧です。ここで得られた情報を漏洩した場合、この閲覧権限を永久に失う事となるでしょう。',

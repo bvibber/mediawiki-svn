@@ -433,6 +433,13 @@ $2',
 	'group-manager-member' => 'Управител',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'mywhitelistpages' => 'আমার পাতাসমূহ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

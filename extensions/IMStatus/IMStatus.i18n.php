@@ -733,7 +733,7 @@ L\'id che bisogna fornire sono i numeri e le lettere fra "$2" e "$3".',
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'imstatus-desc' => '各種インスタントメッセンジャーのオンライン状態を示すためのタグを追加する （AIM、Google トーク、ICQ、MSN/Live メッセンジャー、Skype、Xfire、Yahoo）',
+	'imstatus-desc' => '各種インスタントメッセンジャーのオンライン状態を示すためのタグを追加する (AIM、Google トーク、ICQ、MSN/Live メッセンジャー、Skype、Xfire、Yahoo)',
 	'imstatus_syntax' => '構文',
 	'imstatus_default' => 'デフォルト',
 	'imstatus_example' => '例',
@@ -749,16 +749,16 @@ $messages['ja'] = array(
 	'imstatus_aim_api' => '$1は、あなたにインスタントメッセージを送信できるように、ブラウザーを起動して JavaScript 版の AIM を表示するリンクを付けて、あなたの状態を表示します。',
 	'imstatus_gtalk_code' => 'あなたのGoogleトークコード',
 	'imstatus_gtalk_get_code' => 'あなたのGoogleトークコード: $1で取得する。',
-	'imstatus_gtalk_height' => 'ボックスの高さ（ピクセル単位）',
-	'imstatus_gtalk_width' => 'ボックスの幅（ピクセル単位）',
+	'imstatus_gtalk_height' => 'ボックスの高さ(ピクセル単位)',
+	'imstatus_gtalk_width' => 'ボックスの幅(ピクセル単位)',
 	'imstatus_icq_id' => 'あなたのICQ ID',
-	'imstatus_icq_style' => '0から26の範囲の数（つまり、27の有効なスタイルが存在します...）',
+	'imstatus_icq_style' => '0から26の範囲の数(つまり、27の有効なスタイルが存在します...)',
 	'imstatus_live_code' => 'あなたのLive MessengerウェブサイトのID',
 	'imstatus_live_get_code' => 'あなたのLiveメッセンジャー・ウェブサイトのID: <strong>これは、あなたのeメールアドレスではなく</strong>、 <a href="$1">あなたのLiveメッセンジャーのオプション</a>で取得する必要があります。
 必要とされるIDは、"$2"と"$3"の間の文字と数字からなります。',
 	'imstatus_skype_nbstyle' => '註: もし、あなたがアクションをともなったスタイルを選択したならば、あなたの選択したアクションは、選択されたスタイルに適合するアクションで上書きされます。',
-	'imstatus_xfire_size' => '$1（最大）から$2（最小）のボタンのサイズ。',
-	'imstatus_yahoo_style' => '$1（最大）から$2（最小）のボタンのスタイル（$3と$4は、音声メール用）。',
+	'imstatus_xfire_size' => '$1(最大)から$2(最小)のボタンのサイズ。',
+	'imstatus_yahoo_style' => '$1(最大)から$2(最小)のボタンのスタイル($3と$4は、音声メール用)。',
 );
 
 /** Khmer (ភាសាខ្មែរ)

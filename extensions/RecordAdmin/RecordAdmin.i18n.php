@@ -91,6 +91,7 @@ $messages['af'] = array(
 	'recordadmin-invert' => 'Omgekeerde seleksie',
 	'recordadmin-buttonsearch' => 'Soek',
 	'recordadmin-buttoncreate' => 'Skep',
+	'recordadmin-buttonreset' => 'Herstel',
 	'recordadmin-buttonsave' => 'Stoor',
 	'recordadmin-editlink' => 'wysig',
 	'recordadmin-actions' => 'Aksies',

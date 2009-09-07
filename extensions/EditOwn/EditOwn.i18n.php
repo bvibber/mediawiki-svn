@@ -238,7 +238,7 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'editown-desc' => '全編集（editall）権限がない利用者に対し、自分の作成したページ以外は編集できないようにする',
+	'editown-desc' => '全編集(editall)権限がない利用者に対し、自分の作成したページ以外は編集できないようにする',
 );
 
 /** Khmer (ភាសាខ្មែរ)

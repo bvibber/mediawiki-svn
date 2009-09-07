@@ -303,13 +303,14 @@ Wobhladaj sej {{PLURAL:$2|tutu přiwuznu stronu|tutej přiwuznej stronje|tute p�
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'editsimilar-desc' => 'Lap elmentése után hasonló oldalak szerkesztését javasolja a szerkesztőknek',
-	'editsimilar-thanks' => 'Köszönjük a szerkesztésedet.
-Nézd meg ezeket a kapcsolódó lapokat: $1.',
-	'editsimilar-thanks-notsimilar' => 'Köszönjük a szerkesztésedet.
-Ezeknél a lapoknál is segítségedet vehetjük: $1.',
+	'editsimilar-thanks' => 'Köszönjük a közreműködésedet.
+Nézd meg a következő kapcsolódó {{PLURAL:$2|lapot|lapokat}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'Köszönjük a közreműködésedet.
+A következő {{PLURAL:$2|lapnál|lapoknál}} is számítunk a segítségedre: $1.',
 	'editsimilar-thankyou' => 'Köszönjük a szerkesztésedet, $1!',
 	'editsimilar-link-disable' => 'beállítás',
 	'tog-edit-similar' => 'Hasonló oldalak javasolása',

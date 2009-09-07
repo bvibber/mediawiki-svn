@@ -89,6 +89,13 @@ $messages['hsb'] = array(
 	'mwreleases-desc' => 'Přidawa [[Mediawiki:Mwreleases-list|lisćinu]] podpěranych wersijow, kotrež steja přez API k dispoziciji',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'mwreleases-desc' => 'Adde un [[Mediawiki:Mwreleases-list|lista]] de versiones supportate, accessibile via le API',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

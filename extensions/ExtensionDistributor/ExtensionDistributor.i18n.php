@@ -1276,13 +1276,13 @@ $messages['ja'] = array(
 	'extdist-choose-extension' => 'ダウンロードしたい拡張機能を選択してください:',
 	'extdist-wc-empty' => '指定されたコピー先ディレクトリにダウンロードする拡張機能が存在しません！',
 	'extdist-submit-extension' => '続行',
-	'extdist-current-version' => '開発バージョン （trunk）',
+	'extdist-current-version' => '開発バージョン (trunk)',
 	'extdist-choose-version' => '<big>拡張機能 <b>$1</b> をダウンロードしようとしています。</big>
 
 あなたが利用しているMediaWikiのバージョンを選択してください。
 
 多くの拡張機能は複数のバージョンで利用できますが、あなたの使用しているMediaWikiのバージョンが下記にない場合、最新版にアップデートする必要があります。',
-	'extdist-no-versions' => '選択された拡張機能（$1）は全てのバージョンで利用できません！',
+	'extdist-no-versions' => '選択された拡張機能($1)は全てのバージョンで利用できません！',
 	'extdist-submit-version' => '選択',
 	'extdist-no-remote' => 'subversionクライアントと接続できませんでした。',
 	'extdist-remote-error' => 'subversionクライアントがエラーを返しました: <pre>$1</pre>',

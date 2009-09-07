@@ -131,7 +131,12 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'findspam' => 'Klask strob',
+	'findspam-desc' => 'Ouzhpennañ a ra ur [[Special:FindSpam|bajenn dibar]] a dalvez da ziskoachañ ar strob bet ouzhpennet nevez zo',
+	'findspam-ip' => "Chomlec'h IP :",
 	'findspam-ok' => 'Mat eo',
+	'findspam-notextfound' => "N'eus bet kavet tamm degasadenn ebet",
+	'right-findspam' => 'Klask ar strob bet ouzhpennet nevez zo',
 );
 
 /** Bosnian (Bosanski)

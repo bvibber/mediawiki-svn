@@ -499,6 +499,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'onlinestatus-desc' => 'Beállítás, amivel a szerkesztő jelezheti, hogy online van-e egy adott időpontban a wikin.',
@@ -511,8 +512,10 @@ $messages['hu'] = array(
 	'onlinestatus-toggles-desc' => 'Állapotod:',
 	'onlinestatus-toggles-explain' => 'Lehetővé teszi számodra, hogy a szerkesztői lapodon jelezd más szerkesztők számára, hogy wikiközelben vagy-e vagy sem.',
 	'onlinestatus-toggles-show' => 'Elérhetőségi állapotom mutatása a szerkesztői lapomon',
+	'onlinestatus-toggle-offline' => 'Kijelentkezett',
 	'onlinestatus-toggle-online' => 'Elérhető',
 	'onlinestatus-pref-onlineonlogin' => 'Változtassa az állapotomat elérhetőre, ha bejelentkezek',
+	'onlinestatus-pref-offlineonlogout' => 'Kilépéskor változtassa az állapotomat „Kijelentkezett”-re',
 );
 
 /** Interlingua (Interlingua)

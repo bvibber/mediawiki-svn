@@ -87,6 +87,16 @@ $messages['bg'] = array(
 	'templatelink_empty' => 'Необходимо е да се въведе параметър.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'templatelink' => 'Liamm war-du ar patromoù',
+	'templatelink_desc' => 'Gallout a ra an astenn-mañ diskouez ur patrom evel ur bajenn nevez',
+	'templatelink_empty' => "Ret eo deoc'h lakaat un arventenn.",
+	'templatelink_newtitle' => '$1 (treuzklozet)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -275,7 +285,7 @@ $messages['ja'] = array(
 	'templatelink' => 'テンプレートリンク',
 	'templatelink_desc' => 'この拡張機能は、テンプレートを新しいページとして表示することができる',
 	'templatelink_empty' => 'パラメーターを設定する必要があります。',
-	'templatelink_newtitle' => '$1 （テンプレート呼出）',
+	'templatelink_newtitle' => '$1 (テンプレート呼出)',
 );
 
 /** Javanese (Basa Jawa)

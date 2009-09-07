@@ -305,8 +305,8 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'formatchanges-desc' => '[[Special:RecentChanges|最近の更新]]を再フォーマットする',
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '$1 - $2 による作成 （$3）',
-	'formatchanges-editedby' => '$1 - $2 による編集 （$3）',
+	'formatchanges-createdby' => '$1 - $2 による作成 ($3)',
+	'formatchanges-editedby' => '$1 - $2 による編集 ($3)',
 );
 
 /** Javanese (Basa Jawa)

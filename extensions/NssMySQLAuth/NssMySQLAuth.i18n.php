@@ -898,6 +898,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'am-username' => 'వాడుకరిపేరు',
 	'am-email' => 'ఈ-మెయిల్',
+	'nss-rights' => 'హక్కులు',
 	'nss-save-changes' => 'మార్పులను భద్రపరచు',
 	'nss-create-account-header' => 'కొత్త ఖాతాని సృష్టించండి',
 	'nss-welcome-mail-subject' => 'ఖాతా సృష్టింపు',

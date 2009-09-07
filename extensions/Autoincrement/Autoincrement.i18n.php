@@ -98,6 +98,13 @@ $messages['hsb'] = array(
 	'autoincrement-desc' => 'Wariablowa hóčka, kotraž awtomatisce ličacu wariablu <nowiki>{{AUTOINCREMENT}}</nowiki> přidawa',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'autoincrement-desc' => 'Egy hook változó ami létrehozza az automatikusan növekvő <nowiki>{{AUTOINCREMENT}}</nowiki> változót',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

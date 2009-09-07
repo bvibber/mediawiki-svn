@@ -291,6 +291,24 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'Необходимо е да се въведе описание на видеото.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'youtubeauthsub' => 'ইউটিউব ভিডিও আপলোড',
+	'youtubeauthsub_title' => 'শিরোনাম',
+	'youtubeauthsub_description' => 'বর্ণনা',
+	'youtubeauthsub_password' => 'ইউটিউব শব্দচাবি',
+	'youtubeauthsub_username' => 'ইউটিউব ব্যবহারকারী নাম',
+	'youtubeauthsub_keywords' => 'মূলশব্দসমূহ',
+	'youtubeauthsub_category' => 'বিষয়শ্রেণী',
+	'youtubeauthsub_submit' => 'জমা দিন',
+	'youtubeauthsub_clickhere' => 'ইউটিউবে লগইন করার জন্য এখানে ক্লিক করুন',
+	'youtubeauthsub_uploadbutton' => 'আপলোড',
+	'youtubeauthsub_jserror_nokeywords' => 'অনুগ্রহ করে এক বা একাধিক মূলশব্দ টাইপ করুন',
+	'youtubeauthsub_jserror_notitle' => 'অনুগ্রহ করে ভিডিও এর শিরোনাম দিন।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

@@ -1989,7 +1989,7 @@ $messages['ja'] = array(
 	'sign-nodocselected' => '署名したい文書を選んでください。',
 	'sign-selectdoc' => '文書:',
 	'sign-docheader' => '<div class="noarticletext">以下の文書「[[$1]]」に署名するにはこのフォームを使います。文書全体を熟読し、その文書に支持を表明すると決めた場合、必須欄を埋めて署名してください。</div>',
-	'sign-error-nosuchdoc' => 'あなたが要求した文書 （$1） は存在しません。',
+	'sign-error-nosuchdoc' => 'あなたが要求した文書 ($1) は存在しません。',
 	'sign-realname' => '名前:',
 	'sign-address' => '番地:',
 	'sign-city' => '市町村:',
@@ -2042,14 +2042,14 @@ $1',
 	'sig-private' => '<i>非公開</i>',
 	'sign-sigdetails' => '署名詳細',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] （[[User talk:$1|会話]] • <!--
+-->[[User:$1|$1]] ([[User talk:$1|会話]] • <!--
 -->[[Special:Contributions/$1|投稿記録]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
 -->[[Special:BlockIP/$1|ブロック]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} ブロック記録] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IPチェック]）<!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IPチェック])<!--
 --></span>',
 	'sign-viewfield-stricken' => '削除済',
 	'sign-viewfield-reviewedby' => '確認者',

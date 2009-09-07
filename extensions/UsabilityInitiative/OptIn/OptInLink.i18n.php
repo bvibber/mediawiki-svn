@@ -93,8 +93,11 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'optin-try' => 'Amprouiñ Beta',
+	'tooltip-pt-optin-try' => 'Esaeañ elfennoù nevez',
 	'optin-leave' => 'Dilezel Beta',
+	'tooltip-pt-optin-leave' => 'Diweredekaat an elfennoù nevez',
 	'optin-feedback' => 'Roit ho soñj',
+	'tooltip-pt-optin-feedback' => 'Rannit ho soñj ganeomp diwar-benn an elfennoù nevez',
 );
 
 /** Bosnian (Bosanski)
@@ -214,6 +217,7 @@ $messages['es'] = array(
 	'optin-leave' => 'Abandonar Beta',
 	'tooltip-pt-optin-leave' => 'Desactivar nuevas características',
 	'optin-feedback' => 'Retroalimentación de Beta',
+	'tooltip-pt-optin-feedback' => 'Proveer retroalimentación acerca de su experiencia sobre las nuevas funcionalidades',
 );
 
 /** Estonian (Eesti)
@@ -331,6 +335,7 @@ $messages['ia'] = array(
 	'optin-leave' => 'Quitar Beta',
 	'tooltip-pt-optin-leave' => 'Disactivar nove functiones',
 	'optin-feedback' => 'Da nos tu opinion',
+	'tooltip-pt-optin-feedback' => 'Da tu impression de tu experientia del nove functiones',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -539,8 +544,11 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'optin-try' => 'Wypróbuj wersję testową',
+	'tooltip-pt-optin-try' => 'Wypróbuj nowe funkcje',
 	'optin-leave' => 'Koniec testowania',
+	'tooltip-pt-optin-leave' => 'Wyłącz nowe funkcje',
 	'optin-feedback' => 'Opinia o wersji testowej',
+	'tooltip-pt-optin-feedback' => 'Prześlij opinię na temat nowych funkcji',
 );
 
 /** Piedmontese (Piemontèis)

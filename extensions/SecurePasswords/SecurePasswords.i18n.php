@@ -371,7 +371,7 @@ $messages['ja'] = array(
 	'securepasswords-lowercase' => '最低1文字は小文字を含む',
 	'securepasswords-uppercase' => '最低1文字は大文字を含む',
 	'securepasswords-digit' => '最低1文字は数字を含む',
-	'securepasswords-special' => '最低1文字は特殊文字を含む （特殊文字: $1）',
+	'securepasswords-special' => '最低1文字は特殊文字を含む (特殊文字: $1)',
 	'securepasswords-username' => '利用者名とは異なる',
 	'securepasswords-word' => '単語ではない',
 );

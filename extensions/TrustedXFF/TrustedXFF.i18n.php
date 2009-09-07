@@ -212,7 +212,7 @@ $messages['it'] = array(
  * @author Aotake
  */
 $messages['ja'] = array(
-	'trustedxff-desc' => '信頼できるプロキシアドレス一覧の管理 （[http://meta.wikimedia.org/wiki/XFF_project XFF project]）',
+	'trustedxff-desc' => '信頼できるプロキシアドレス一覧の管理 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
 /** Javanese (Basa Jawa)

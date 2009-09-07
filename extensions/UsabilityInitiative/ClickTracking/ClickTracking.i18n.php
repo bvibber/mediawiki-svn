@@ -89,6 +89,13 @@ $messages['el'] = array(
 	'clicktracking-title' => 'Συναθροισμένα κλικ χρήστη',
 );
 
+/** Spanish (Español)
+ * @author Antur
+ */
+$messages['es'] = array(
+	'clicktracking-title' => 'Clicks de usuario agregados',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -155,6 +162,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'clicktracking' => 'Traciamento de clics del Initiativa de Usabilitate',
 	'clicktracking-desc' => 'Traciamento de clics, pro traciar eventos que non causa un recargamento de pagina',
+	'clicktracking-title' => 'Clics aggregate de usatores',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -234,6 +242,7 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'clicktracking' => 'Śledzenie kliknięć dla inicjatywy użyteczności',
 	'clicktracking-desc' => 'Śledzenie kliknięć, przeznaczone do poszukiwania zdarzeń, które nie powodują odświeżenia strony',
+	'clicktracking-title' => 'Suma kliknięć użytkowników',
 );
 
 /** Piedmontese (Piemontèis)

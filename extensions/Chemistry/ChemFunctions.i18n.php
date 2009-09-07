@@ -112,6 +112,25 @@ $messages['az'] = array(
 	'chemFunctions_Formula' => 'Formul',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'chemicalsources' => 'Крыніцы па хіміі',
+	'chemicalsource-desc' => 'Дадае тэг <nowiki><chemform></nowiki> для хімічных формулаў',
+	'chemFunctions_ListPage' => 'Крыніцы па хіміі',
+	'chemFunctions_DataList' => 'Ніжэй пададзены сьпіс спасылак на сайты, якія могуць утрымліваць інфармацыю пра хімічныя субстанцыі, якія Вас цікавяць. <br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Злучэньне $MIXCASNameFormula на сайце NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS на сайце Оксфардзкага ўнівэрсытэта (Вялікабрытанія) (пошук адсутнічае)</a><br />',
+	'chemFunctions_CAS' => 'Нумар CAS',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_Formula' => 'Формула',
+	'chemFunctions_Name' => 'Назва IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Памылка ўводу!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -579,8 +598,8 @@ $messages['ja'] = array(
 	'chemFunctions_ListPage' => '化学関連の検索',
 	'chemFunctions_DataList' => '以下の一覧は、あなたが検索した化学物質に関する情報を提供している可能性の高いサイトです。
 
-* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula 化合物 （アメリカ国立標準技術研究所）</a><br />
-* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">化学物質安全性データシート （英オックスフォード大学、検索できません）</a><br />',
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula 化合物 (アメリカ国立標準技術研究所)</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">化学物質安全性データシート (英オックスフォード大学、検索できません)</a><br />',
 	'chemFunctions_CAS' => 'CAS登録番号',
 	'chemFunctions_ATCCode' => 'ATC分類',
 	'chemFunctions_ECNumber' => 'EC番号',

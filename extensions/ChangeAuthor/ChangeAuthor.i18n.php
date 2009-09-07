@@ -242,9 +242,17 @@ $messages['bar'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'changeauthor' => 'Зьмена аўтара вэрсіі',
+	'changeauthor-desc' => 'Дазваляе зьмяняць аўтара вэрсіі',
+	'changeauthor-title' => 'Зьмена аўтара вэрсіі',
+	'changeauthor-search-box' => 'Пошук вэрсіяў',
+	'changeauthor-pagename-or-revid' => 'Назва старонкі альбо ідэнтыфікатар вэрсіі:',
+	'changeauthor-pagenameform-go' => 'Далей',
 	'changeauthor-comment' => 'Камэнтар:',
+	'changeauthor-changeauthors-multi' => 'Зьмена {{PLURAL:$1|аўтара|аўтараў}}',
 );
 
 /** Bulgarian (Български)
@@ -503,6 +511,7 @@ $messages['el'] = array(
 	'changeauthor-search-box' => 'Αναζήτηση αναθεωρήσεων',
 	'changeauthor-pagenameform-go' => 'Πηγαίνετε',
 	'changeauthor-comment' => 'Σχόλιο:',
+	'changeauthor-changeauthors-single' => 'Αλλαγή δημιουργού',
 	'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
 	'changeauthor-nosuchuser' => 'Κανένας χρήστης ονόματι "$1".',
 );
@@ -1069,9 +1078,9 @@ $messages['ja'] = array(
 	'changeauthor-pagenameform-go' => '検索',
 	'changeauthor-comment' => '変更理由:',
 	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|著者}}を変更',
-	'changeauthor-explanation-multi' => 'このフォームから各版の著者を変更することができます。下に記載されている一人または複数の利用者名を変更し、コメントを付記し （省略可能）、変更ボタンを押してください。',
+	'changeauthor-explanation-multi' => 'このフォームから各版の著者を変更することができます。下に記載されている一人または複数の利用者名を変更し、コメントを付記し (省略可能)、変更ボタンを押してください。',
 	'changeauthor-changeauthors-single' => '変更',
-	'changeauthor-explanation-single' => 'このフォームから版の著者を変更することができます。下記の利用者名を変更し、コメントを付記し （省略可能）、変更ボタンを押してください。',
+	'changeauthor-explanation-single' => 'このフォームから版の著者を変更することができます。下記の利用者名を変更し、コメントを付記し (省略可能)、変更ボタンを押してください。',
 	'changeauthor-invalid-username' => '"$1" は不正な利用者名です。',
 	'changeauthor-nosuchuser' => '"$1" という利用者は存在しません。',
 	'changeauthor-revview' => '$2 の特定版 #$1',

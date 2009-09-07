@@ -643,6 +643,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'passwordreset' => 'Jelszó beállítása',
@@ -650,15 +651,18 @@ $messages['hu'] = array(
 	'passwordreset-emptyusername' => 'Nincs megadva felhasználói név',
 	'passwordreset-nopassmatch' => 'A jelszavak nem egyeznek meg',
 	'passwordreset-badtoken' => 'Hibás szerkesztési token',
-	'passwordreset-username' => 'Felhasználói név',
-	'passwordreset-newpass' => 'Új jelszó',
-	'passwordreset-confirmpass' => 'Jelszó megerősítése',
+	'passwordreset-username' => 'Felhasználónév:',
+	'passwordreset-newpass' => 'Új jelszó:',
+	'passwordreset-confirmpass' => 'Jelszó megerősítése:',
 	'passwordreset-submit' => 'Jelszó visszaállítása',
 	'passwordreset-success' => 'A(z) $1 azonosítószámú felhasználó jelszava be lett állítva',
 	'passwordreset-disableuser' => 'Felhasználói fiók letiltása?',
 	'passwordreset-disableuserexplain' => '(egy érvénytelen hasht állít be jelszónak, így a felhasználó nem tud bejelentkezni)',
 	'passwordreset-disablesuccess' => 'A felhasználói fiók le lett tiltva (azonosító: $1)',
 	'passwordreset-accountdisabled' => 'A felhasználói fiók le lett tiltva',
+	'disabledusers' => 'Letiltott szerkesztők',
+	'disabledusers-summary' => 'Azon szerkesztők listája, akik le lettek tiltva a PasswordReset segítségével.',
+	'right-passwordreset' => 'Szerkesztő jelszavának alaphelyzetbe állítása ([[Special:PasswordReset|speciális lap]])',
 );
 
 /** Interlingua (Interlingua)
@@ -765,7 +769,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'passwordreset' => 'パスワードの再設定',
-	'passwordreset-desc' => '[[Special:PasswordReset|ウィキ利用者のパスワードを再設定する]] - パスワード再設定権限 （passwordreset） が必要',
+	'passwordreset-desc' => '[[Special:PasswordReset|ウィキ利用者のパスワードを再設定する]] - パスワード再設定権限 (passwordreset) が必要',
 	'passwordreset-invalidusername' => '無効な利用者名',
 	'passwordreset-emptyusername' => '利用者名が空',
 	'passwordreset-nopassmatch' => 'パスワードが一致しません',
@@ -776,12 +780,12 @@ $messages['ja'] = array(
 	'passwordreset-submit' => 'パスワードを再設定',
 	'passwordreset-success' => '利用者ID $1 のパスワードを再設定しました。',
 	'passwordreset-disableuser' => '利用者アカウントを無効化しますか？',
-	'passwordreset-disableuserexplain' => '（不正なパスワードハッシュを設定。利用者はログインできない）',
+	'passwordreset-disableuserexplain' => '(不正なパスワードハッシュを設定。利用者はログインできない)',
 	'passwordreset-disablesuccess' => '利用者ID $1 のアカウントは無効化されています。',
 	'passwordreset-accountdisabled' => 'アカウントを無効化しました',
 	'disabledusers' => '無効化済利用者',
 	'disabledusers-summary' => 'これはパスワードの再設定を使って無効化された利用者の一覧です。',
-	'right-passwordreset' => '利用者のパスワードを再設定する （[[Special:PasswordReset|特別ページ]]）',
+	'right-passwordreset' => '利用者のパスワードを再設定する ([[Special:PasswordReset|特別ページ]])',
 );
 
 /** Javanese (Basa Jawa)
