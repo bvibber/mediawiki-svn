@@ -1,0 +1,37 @@
+This is the readme file for AjaxLogin extension.
+The newest documentation for this extension can always be found at
+<http://www.mediawiki.org/wiki/Extension:AjaxLogin>.
+
+==History==
+AjaxLogin was written by Inez Korczyński <korczynski(at)gmail(dot)com> for Wikia, Inc.
+
+Some code hacks were written by Jack Phoenix <jack@countervandalism.net>.
+
+Replaced YUI with JQuery - Chamindu Munasinghe <chamindu@calcey.com>.
+
+==License==
+GNU General Public License 2.0 or later
+
+==Dependency==
+
+JQuery
+
+==Manual modifications==
+You will need to modify one core MediaWiki file, includes/EditPage.php, if you want users to be able to log in with AjaxLogin
+on edit view (?action=edit) without losing their changes.
+
+Find protected function showFormBeforeText() and add this line inside the $wgOut->addHTML() call so that it'll be the first <input> to be added:
+
+	<input type='hidden' value=\"\" name=\"wpLogin\" id=\"wpLogin\" />
+
+==To-do & bugs==
+This extension is right now a major hack. It requires YUI and isn't pretty in any case,
+but it works and has been tested on MediaWiki 1.14alpha.
+
+The JavaScript file should be rewritten so that the YUI dependency could be removed.
+Obviously YAHOOTools.js should also be killed in the process.
+
+Patches are more than welcome and they can be submitted either through Bugzilla <https://bugzilla.wikimedia.org> or emailed to me
+<jack@countervandalism.net> directly.
+
+--Jack Phoenix, February 2009
