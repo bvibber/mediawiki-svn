@@ -61,6 +61,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bn'] = array(
 	'editwarning' => 'সম্পাদনা সতর্কীকরণ',
+	'editwarning-desc' => 'একটি সতর্কীকরণ বার্তা দিন যখন ব্যবহারকারী সংরক্ষণ না করে সম্পাদনা ফরম ত্যাগ করতে চান',
 );
 
 /** Breton (Brezhoneg)
@@ -304,11 +305,13 @@ Móžeš tute warnowanje we wotrězku {{int:prefs-editing}} swojich nastajenjow 
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'editwarning' => 'Figyelmeztetés szerkesztésnél',
 	'editwarning-desc' => 'Figyelmezteti a szerkesztőt, ha a szerkesztőlapot mentés nélkül akarja elhagyni.',
-	'editwarning-warning' => 'A lap elhagyásával az összes itt végzett változtatás elvész.',
+	'editwarning-warning' => 'A lap elhagyásával az összes itt végzett változtatás elvész.
+Ezt a figyelmeztetést letilthatod a beállításaid „{{int:prefs-editing}}” szakaszában.',
 	'editwarning-preference' => 'Figyelmeztessen, ha szerkesztéskor a módosítások mentése nélkül akarom elhagyni a lapot',
 );
 

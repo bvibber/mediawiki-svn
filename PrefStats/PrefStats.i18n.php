@@ -136,6 +136,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bn'] = array(
 	'prefstats' => 'পছন্দনীয় পরিসংখ্যান',
+	'prefstats-desc' => 'পরিসংখ্যান দেখুন, কতজন ব্যবহারকারী এই পছন্দসমূহ সক্রিয় করেছেন',
 	'prefstats-title' => 'পছন্দনীয় পরিসংখ্যান',
 	'prefstats-xaxis' => 'সময় (ঘন্টা)',
 	'prefstats-factor-hour' => 'ঘন্টা',
@@ -893,7 +894,7 @@ $messages['ja'] = array(
 ** $2人の利用者がこれを有効にしています
 ** $3人の利用者がこれを無効にしています
 * 合計では、$4人の利用者がこの項目を設定しています',
-	'prefstats-xaxis' => '期間（単位：時間）',
+	'prefstats-xaxis' => '期間(単位：時間)',
 	'prefstats-factors' => '表示する縮尺: $1',
 	'prefstats-factor-hour' => '1時間',
 	'prefstats-factor-sixhours' => '6時間',
