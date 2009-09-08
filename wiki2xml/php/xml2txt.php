@@ -68,7 +68,11 @@ class element {
 			return "" ;
 		}
 
-		if ( $tag == "LINK" ) {
+		if ( $tag == "EXTENSION" ) {
+			$sub = trim ( $this->sub_parse ( $tree ) ) ;
+			if ( $sub == '' ) return '' ;
+			return " [$sub] " ;
+		} else if ( $tag == "LINK" ) {
 			$sub = $this->sub_parse ( $tree ) ;
 			$link = "" ;
 			if ( isset ( $this->attrs['TYPE'] ) AND strtolower ( $this->attrs['TYPE'] ) == 'external' ) {
@@ -131,6 +135,7 @@ class element {
 				else array_push ( $tree->list , $x + 1 ) ; # Increase last counter
 			}
 		} else {
+			
 			if ( $tag == "ARTICLE" && isset ( $this->attrs["TITLE"] ) ) {
 				$ret .= strtoupper ( urldecode ( $this->attrs["TITLE"] ) ) . "\n" ;
 			}
