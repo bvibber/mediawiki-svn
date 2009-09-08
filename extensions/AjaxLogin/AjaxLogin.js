@@ -1,172 +1,163 @@
-/**
- * JavaScript for AjaxLogin extension
- * @todo FIXME: rewrite and document (see README)
- * @author Inez Korczyński <korczynski(at)gmail(dot)com>
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
- */
+(function($) {
+mediawiki = new Object;
 
-if( typeof wgEnableAjaxLogin != 'undefined' && wgEnableAjaxLogin ) {
+mediawiki.AjaxLogin = function() {
+	this._loginPanel = null;
+	this._loginForm = null;
+};
 
-	YAHOO.namespace("wikia.AjaxLogin");
+mediawiki.AjaxLogin.prototype.initialize = function() {
+	this._loginPanel = $("#userloginRound");
+	this._loginForm = $("#userajaxloginform");
+	if(this._loginPanel.length > 0) {
+		this._loginPanel.jqm({modal : true, toTop : true});
+		var that = this;
+		$("#pt-anonlogin, #pt-login").click( function(event) {
+			event.preventDefault();
+			that.showLoginPanel();
+		});
+		$("#wpLoginattempt").click(function(event) {
+			event.preventDefault();
+			that.postAjax("wpLoginattempt");
+		});
+		$("#wpMailmypassword").click(function(event) {
+			event.preventDefault();
+			that.postAjax("wpMailmypassword");
+		});
+		$("#wpAjaxRegister").click(function(event) {
+			that.doRegister(event);
+		});
+		$("#wpClose").click(function(event) {
+			that.doClose(event);
+		});
+	}
+};
 
-	(function() {
+mediawiki.AjaxLogin.prototype.showLoginPanel = function() {
+	this.refreshForm();
+	this._loginPanel.jqmShow();
+};
 
-	var Dom = YAHOO.util.Dom;
-	var Event = YAHOO.util.Event;
-	var DDM = YAHOO.util.DragDropMgr;
-
-	YAHOO.wikia.AjaxLogin = {
-		init: function() {
-			if( Dom.get( 'userloginRound' ) ) {
-				// Jack: changed to 'pt-anonlogin' from 'login'
-				Event.addListener( 'pt-anonlogin', 'click', YAHOO.wikia.AjaxLogin.showLoginPanel );
-			}
+mediawiki.AjaxLogin.prototype.postAjax = function(action) {
+	var actionURL = wgServer + wgScriptPath + '/api.php?action=ajaxlogin&format=json';
+	var dataString = this._loginForm.serialize();
+	dataString += "&" + action + "=" + action;
+	this.disableForm();
+	var that = this;
+	$.ajax({
+		type : "POST" ,
+		url : actionURL,
+		dataType : "json",
+		data : dataString,
+		success : function(data) {
+			that.requestSuccess(data);
 		},
-		showLoginPanel: function( e ) {
-			// Prevent the default action for clicked element (probably A)
-			if( e ) {
-				YAHOO.util.Event.preventDefault(e);
-			}
+		error : function(XMLHttpRequest, textStatus, errorThrown)
+		{
+			//TODO : add error handling here
+		}
+	});
+};
 
-			if( YAHOO.lang.isUndefined( YAHOO.wikia.AjaxLogin.loginPanel ) ) {
+mediawiki.AjaxLogin.prototype.enableForm = function() {
+	$("#wpName1").removeAttr("disabled");
+	$("#wpPassword1").removeAttr("disabled");
+	$("#wpLoginattempt").removeAttr("disabled");
+	$("#wpRemember").removeAttr("disabled");
+	$("#wpMailmypassword").removeAttr("disabled");
+	$("#wpPassword1").removeAttr("disabled");
+	$("#wpClose").removeAttr("disabled");
+};
 
-				var keylistenerHandler = function(type, args, obj) {
-					YAHOO.wikia.AjaxLogin.loginPanel.hide();
-				}
+mediawiki.AjaxLogin.prototype.disableForm = function() {
+	$("#wpName1").attr("disabled", "disabled");
+	$("#wpPassword1").attr("disabled", "disabled");
+	$("#wpLoginattempt").attr("disabled", "disabled");
+	$("#wpRemember").attr("disabled", "disabled");
+	$("#wpMailmypassword").attr("disabled", "disabled");
+	$("#wpPassword1").attr("disabled", "disabled");
+	$("#wpClose").attr("disabled", "disabled");
+};
 
-				YAHOO.wikia.AjaxLogin.keylistener = new YAHOO.util.KeyListener(document, { keys:[27] }, { fn:keylistenerHandler } );
+mediawiki.AjaxLogin.prototype.displayReason = function(reason) {
+	$("#wpError").html(reason + "<br /><br />").show();
+};
 
-				//YAHOO.log("Initiate and display loginPanel", "info", "AjaxLogin.js");
-				YAHOO.wikia.AjaxLogin.loginPanel = new YAHOO.widget.Panel('userloginRound', {
-					width: "auto",
-					modal: true,
-					constraintoviewport: true,
-					draggable: false,
-					fixedcenter: true,
-					underlay: "none",
-					visible: true,
-					keylisteners: YAHOO.wikia.AjaxLogin.keylistener
-				});
-				Dom.setStyle('userloginRound', 'display', '');
-				YAHOO.wikia.AjaxLogin.loginPanel.render(document.body);
-
-				// add submit event handler for login form
-				Event.addListener('userajaxloginform', 'submit', YAHOO.wikia.AjaxLogin.formSubmitHandler);
-				Event.addListener('wpAjaxRegister', 'click', YAHOO.wikia.AjaxLogin.ajaxRegisterConfirm);
-			} else {
-				//YAHOO.log("Display initiated loginPanel", "info", "AjaxLogin.js");
-				YAHOO.wikia.AjaxLogin.loginPanel.show();
-			}
-			if( Dom.get('wpName1') ) {
-				Dom.get('wpName1').focus();
-			}
-		},
-		formSubmitHandler: function( e ) {
-			// Prevent the default action for event (submit of form)
-			if( e ) {
-				YAHOO.util.Event.preventDefault(e);
-			}
-
-			var ajaxLoginCallback = {
-				success: YAHOO.wikia.AjaxLogin.handleSuccess,
-				failure: YAHOO.wikia.AjaxLogin.handleFailure,
-				scope: YAHOO.wikia.AjaxLogin
-			};
-
-			YAHOO.util.Connect.setForm('userajaxloginform');
-
-			// Let's block login form (disable buttons and input boxes)
-			YAHOO.wikia.AjaxLogin.blockLoginForm(true);
-
-			var actionURL = wgServer + wgScriptPath + '/api.php?action=ajaxlogin&format=json';
-			var cObj = YAHOO.util.Connect.asyncRequest('POST', actionURL, ajaxLoginCallback);
-		},
-		handleSuccess: function(o) {
-			var response = YAHOO.Tools.JSONParse(o.responseText);
-			var responseResult = response.ajaxlogin.result;
-			switch(responseResult) {
-				case 'Reset':
-					if( Dom.get( 'wpPreview' ) && Dom.get( 'wpLogin' ) ) {
-						if( typeof( ajaxLogin1 ) != 'undefined' && !confirm( ajaxLogin1 ) ) {
-							break;
-						}
-					}
-					Dom.get('userajaxloginform').action = wgServer + wgScriptPath + '/index.php?title=Special:Userlogin&action=submitlogin&type=login';
-					Event.removeListener('userajaxloginform', 'submit', YAHOO.wikia.AjaxLogin.formSubmitHandler);
-					YAHOO.wikia.AjaxLogin.blockLoginForm(false);
-					Dom.get('userajaxloginform').submit();
-					YAHOO.wikia.AjaxLogin.blockLoginForm(true);
-					break;
-				case 'Success':
-					// Jack: Special:RequestWiki probably doesn't exist outside Wikia sites...
-					/*if( wgCanonicalNamespace == 'Special' && wgCanonicalSpecialPageName == 'RequestWiki' ) {
-						Event.removeListener('pSubmit', 'click', YAHOO.wikia.AjaxLogin.showLoginPanel);
-						Dom.get('pSubmit').click();
-					} else*/ if( Dom.get('wpPreview') && Dom.get('wpLogin') ) {
-						if( Dom.get('wikiDiff') && (Dom.get('wikiDiff').childNodes.length > 0) ) {
-							Dom.get('wpDiff').click();
-						} else {
-							if( Dom.get('wikiPreview') && Dom.get('wikiPreview').childNodes.length == 0 ) {
-								Dom.get('wpLogin').value = 1;
-							}
-							Dom.get('wpPreview').click();
-						}
-					} else {
-						if( wgCanonicalSpecialPageName == 'Userlogout' ) {
-							window.location.href = wgServer + wgScriptPath;
-						} else {
-							window.location.reload(true);
-						}
-					}
-					break;
-				case 'NotExists':
-					this.blockLoginForm(false);
-					Dom.get('wpName1').value = '';
-					Dom.get('wpPassword1').value = '';
-					Dom.get('wpName1').focus();
-				case 'WrongPass':
-					this.blockLoginForm(false);
-					Dom.get('wpPassword1').value = '';
-					Dom.get('wpPassword1').focus();
-				default:
-					this.blockLoginForm(false);
-					this.displayReason(response.ajaxlogin.text);
-					break;
-			}
-		},
-		handleFailure: function() {
-			//YAHOO.log("YAHOO.wikia.AjaxLogin.handleFailure was called", "error", "AjaxLogin.js");
-		},
-		displayReason: function(reason) {
-			Dom.setStyle('wpError', 'display', '');
-			Dom.get('wpError').innerHTML = reason + '<br /><br />';
-		},
-		blockLoginForm: function(block) {
-			if( !YAHOO.lang.isBoolean(block) ) {
-				//YAHOO.log("YAHOO.wikia.AjaxLogin.blockLoginForm was called with parameter which is not boolean", "error", "AjaxLogin.js");
-				return;
-			}
-			if( Dom.get('wpName1') )
-				Dom.get('wpName1').disabled = block;
-			if( Dom.get('wpPassword1') )
-				Dom.get('wpPassword1').disabled = block;
-			if( Dom.get('wpLoginattempt') )
-				Dom.get('wpLoginattempt').disabled = block;
-			if( Dom.get('wpRemember') )
-				Dom.get('wpRemember').disabled = block;
-			if( Dom.get('wpMailmypassword') )
-				Dom.get('wpMailmypassword').disabled = block;
-		},
-		ajaxRegisterConfirm: function( e ) {
-			if( Dom.get( 'wpPreview' ) && Dom.get( 'wpLogin' ) ) {
-				if( typeof( ajaxLogin2 ) != 'undefined' && !confirm( ajaxLogin2 ) ) {
-					YAHOO.util.Event.preventDefault( e );
-				}
-			}
+mediawiki.AjaxLogin.prototype.doRegister = function(event){
+	if($("#wpPreview").length > 0 && $("#wpLogin").length > 0) {
+		if( typeof(ajaxLogin2) != 'undefined' && !confirm(ajaxLogin2)) {
+			event.preventDefault();
 		}
 	}
+};
 
-	Event.onDOMReady(YAHOO.wikia.AjaxLogin.init, YAHOO.wikia.AjaxLogin, true);
+mediawiki.AjaxLogin.prototype.refreshForm = function() {
+	$("#wpName1").val("");
+	$("#wpPassword1").val("");
+	$("#wpError").html("");
+	this.enableForm();
 
-	})();
-}
+};
+
+mediawiki.AjaxLogin.prototype.doClose = function(event){
+	this._loginPanel.jqmHide();
+};
+
+mediawiki.AjaxLogin.prototype.requestSuccess = function(data) {
+	var responseResult = data.ajaxlogin.result;
+	switch(responseResult) {
+		case "Reset":
+			if($("#wpPreview").length > 0  && $("#wpLogin").length > 0) {
+				if(typeof(ajaxLogin1) != 'undefined' && !confirm(ajaxLogin1)) {
+					break;
+				}
+			}
+			this._loginForm.attr("action", wgServer + wgScriptPath + "/index.php?title=Special:Userlogin&action=submitlogin&type=login");
+			this._loginForm.unbind("submit");
+			this.disableForm();
+			this._loginForm.submit();
+			this.enableForm();
+			break;
+		case "Success":
+			if($("#wpPreview").length > 0 && $("#wpLogin").length > 0) {
+				if($("#wikiDiff").length > 0 && ($("#wikiDiff").children.length > 0) ) {
+					$("#wpDiff").click();
+				} else {
+					if( $("#wikiPreview") && $("#wikiPreview").children.length == 0 ) {
+						$("#wpLogin").val(1);
+					}
+					$("#wpPreview").click();
+				}
+			} else {
+				if( wgCanonicalSpecialPageName == 'Userlogout' ) {
+					window.location.href = wgServer + wgScriptPath;
+				} else {
+					window.location.reload(true);
+				}
+			}
+			break;
+		case "NotExists":
+			this.enableForm();
+			$("#wpName1").value = "";
+			$("#wpPassword1").value = "";
+			$("#wpName1").focus();
+		case "WrongPass":
+			this.enableForm();
+			$("#wpPassword1").val("");
+			$("#wpPassword1").focus();
+		default:
+			this.enableForm();
+			this.displayReason(data.ajaxlogin.text);
+			break;
+	}
+};
+
+$(document).ready( function() {
+	if( typeof wgEnableAjaxLogin != 'undefined' && wgEnableAjaxLogin )
+	{
+		var ajaxLogin = new mediawiki.AjaxLogin();
+		ajaxLogin.initialize();
+	}
+});
+
+})(jQuery);

@@ -4,7 +4,7 @@
  *
  * @file
  * @ingroup Extensions
- * @version 1.1.1
+ * @version 2.0.0
  * @author Inez Korczyński <korczynski(at)gmail(dot)com>
  * @author Jack Phoenix <jack@countervandalism.net>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'AjaxLogin',
-	'version' => '1.1.1',
+	'version' => '2.0.0',
 	'author' => array( 'Inez Korczyński', 'Jack Phoenix' ),
 	'description' => 'Dynamic box which allow users to login and remind password',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxLogin',
@@ -58,19 +58,14 @@ function AjaxLoginJS( OutputPage $out ) {
 		return true;
 	}
 
-	// YUI library dependencies
-	// Utilities.js -- contains all stuff required by AjaxLogin and a tad bit more...
-	$out->addScript( '<script language="javascript" type="' . $wgJsMimeType . '" src="http://yui.yahooapis.com/2.6.0/build/utilities/utilities.js"></script>' . "\n" );
-	// DragDrop
-	$out->addScript( '<script language="javascript" type="' . $wgJsMimeType . '" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>' . "\n" );
-	// YUI styles -- these introduce some CSS warnings when included...
-	$out->addExtensionStyle( 'http://yui.yahooapis.com/2.7.0/build/container/assets/container.css' );
-	$out->addExtensionStyle( 'http://yui.yahooapis.com/2.7.0/build/container/assets/container-core.css' );
+
 	// Our custom CSS
 	$out->addStyle( '../..' . $wgScriptPath . '/extensions/AjaxLogin/AjaxLogin.css' );
-	// AjaxLogin's own JS file + YAHOOTools.js (because AjaxLogin.js calls a couple YAHOO.Tools functions...)
+	// JQuery and JQModal scripts
+	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jquery-1.3.2.min.js' );
+	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jqModal.js' );
 	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/AjaxLogin.js' );
-	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/YAHOOTools.js' );
+
 	return true;
 }
 
@@ -106,12 +101,19 @@ function GetAjaxLoginForm( &$data ) {
 		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
 		$link = $titleObj->getLocalUrl( 'type=signup' );
 		$wgOut->addHTML( '<!--[if lt IE 9]><style type="text/css">#userloginRound { width: 350px !important; }</style><![endif]-->
-<div id="userloginRound" class="roundedDiv yui-module yui-overlay yui-panel" style="display:none; background:none; border:none;">
+	<div id="userloginRound" class="roundedDiv jqmWindow">
 	<b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
 	<div class="r_boxContent">
-		<div class="boxHeader color1">' . wfMsg( 'login' ) . '</div>
+		<div>
+			<div name="wpClose"  id="wpClose"  value="' . wfMsg( 'close' ) . '" style ="float:right;cursor:pointer;"><a href="#" tabindex="108"><font size="4" color="white"><b>X</b></font></a>
+			</div>
+			<div class="boxHeader color1">
+		' . wfMsg( 'login' ) . '
+		</div>
+	</div>
 		<form action="" method="post" name="userajaxloginform" id="userajaxloginform" style="margin:5px">
-			<div id="wpError" style="width: 250px; line-height: 1.4em"></div>
+			<div id="wpError" style="width: 250px; line-height: 1.4em;"></div>
+			<label>' . wfMsg( 'loginprompt' ) . '</label><br /><br/>
 			<label for="wpName1">' . wfMsg( 'yourname' ) . '</label><br />
 			<input type="text" class="loginText" name="wpName" id="wpName1" tabindex="101" size="20" /><br />
 			<label for="wpPassword1">' . wfMsg( 'yourpassword' ) . '</label><br />
@@ -127,9 +129,8 @@ function GetAjaxLoginForm( &$data ) {
 		}
 		// Originally this used core message 'nologinlink' but it wouldn't work too well for Finnish, so I changed it. --Jack Phoenix
 		wfLoadExtensionMessages( 'AjaxLogin' );
-		$wgOut->addHTML( '<br /><a id="wpAjaxRegister" href="' . htmlspecialchars( $link ) . '">' . wfMsg( 'ajaxlogin-create' ) . '</a>
+		$wgOut->addHTML( '<br /><a id="wpAjaxRegister" tabindex="107" href="' . htmlspecialchars( $link ) . '">' . wfMsg( 'ajaxlogin-create' ) . '</a>
 		</form>
-
 	</div>
 	<b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
 </div>' );

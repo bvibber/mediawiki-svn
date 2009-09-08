@@ -18,6 +18,9 @@ This will take you away from this edit page and you may lose your current edit.'
 	'ajaxLogin2' => 'Are you sure?
 You may lose your changes to this page if you leave this page now.',
 	'ajaxlogin-create' => 'Create an account',
+	'nosuchuser' => 'There is no user by the name "$1".
+User names are case sensitive.
+Check your spelling.',
 );
 
 /** Message documentation (Message documentation)
@@ -288,7 +291,7 @@ $messages['he'] = array(
  */
 $messages['hil'] = array(
 	'ajaxlogin-desc' => 'Ang Dinamik box ay gapasugot sa mga naga-usar nga makasulod kag magapadumdom sang password',
-	'ajaxLogin1' => 'Para ma kumpleto ang imo pagsulod, kinahanglan nga magabutang ka sang bag-o nga pasword. 
+	'ajaxLogin1' => 'Para ma kumpleto ang imo pagsulod, kinahanglan nga magabutang ka sang bag-o nga pasword.
 Dayon magahalin ka diri sa ini nga pahina nga gina-islan kag madula ang imo gina islan subong.',
 	'ajaxLogin2' => 'Sigurado ka bala?
 Basi madula ang mga ginpang obra mo sa diri nga pahina kung mahalin ka subong sa diri nga pahina.',
@@ -677,7 +680,7 @@ Du kan förlora din redigering om du lämnar den här sidan nu.',
  */
 $messages['te'] = array(
 	'ajaxlogin-desc' => 'అప్పటికప్పుడు వాడుకరులను లాగిన్ అవ్వమని మరియు సంకేత పదం గుర్తు చేయమనేందుకు వాడే పెట్టె',
-	'ajaxLogin1' => 'మీరు లోనికి ప్రవేశించాలంటే కొత్త సంకేత పదమును ఎన్నుకోవాలి. 
+	'ajaxLogin1' => 'మీరు లోనికి ప్రవేశించాలంటే కొత్త సంకేత పదమును ఎన్నుకోవాలి.
 ఈ చర్య మిమ్మలిని మార్చు పేజీ నుంచి అవతలకు తీసుకేడుతుంది. మీరు చేసిన మార్పులు చేరిగిపోవచ్చు.',
 	'ajaxLogin2' => 'మీకు సమ్మతమేనా?
 మీరు ఈ పేజీని వదిలి వెళితే ఇప్పటి దాకా ఈ పేజీకి చేసిన మార్పులను కోల్పోవచ్చు.',

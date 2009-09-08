@@ -12,12 +12,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class ApiAjaxLogin extends ApiBase {
-
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action, 'wp' );
 	}
 
 	public function execute() {
+		session_start();
 		$Name = $Password = $Remember = $Loginattempt = $Mailmypassword = null;
 		extract( $this->extractRequestParams() );
 
@@ -63,6 +63,7 @@ class ApiAjaxLogin extends ApiBase {
 					break;
 				case LoginForm::NOT_EXISTS:
 					$result['result'] = 'NotExists';
+					wfLoadExtensionMessages( 'AjaxLogin' );
 					$result['text'] = wfMsg( 'nosuchuser', htmlspecialchars( $Name ) );
 					break;
 				case LoginForm::WRONG_PASS:
@@ -106,6 +107,7 @@ class ApiAjaxLogin extends ApiBase {
 					$result['text'] = wfMsg( 'noname' );
 				} else if ( 0 == $u->getID() ) {
 					$result['result'] = 'nosuchuser';
+					wfLoadExtensionMessages( 'AjaxLogin' );
 					$result['text'] = wfMsg( 'nosuchuser', $u->getName() );
 				} else if ( $u->isPasswordReminderThrottled() ) {
 					global $wgPasswordReminderResendTime;
@@ -136,10 +138,11 @@ class ApiAjaxLogin extends ApiBase {
 			'Remember' => null,
 			'Loginattempt' => null,
 			'Mailmypassword' => null
+
 		);
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiLogin.php 17065 2006-10-17 02:11:29Z yurik $';
+		return __CLASS__ . ': $Id$';
 	}
 }
