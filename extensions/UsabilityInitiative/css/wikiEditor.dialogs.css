@@ -3,3 +3,8 @@
 .ui-widget table td {
 	padding: 0.5em;
 }
+
+/* Put suggestions (default z-index 99) on top of dialogs (z-index 1002) */
+div.os-suggest {
+	z-index: 1099;
+}
