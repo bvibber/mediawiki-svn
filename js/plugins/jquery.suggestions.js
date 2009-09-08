@@ -134,6 +134,7 @@ $.fn.suggestions = function( param, param2 ) {
 			return;
 		}
 		
+		positionDiv();		
 		var table = conf._data.div.children( 'table' );
 		table.empty();
 		for ( var i = 0; i < conf.suggestions.length; i++ ) {
@@ -285,8 +286,13 @@ $.fn.suggestions = function( param, param2 ) {
 		if ( updateTextbox ) {
 			if ( result.size() == 0 )
 				restoreText();
-			else
+			else {
 				conf._data.textbox.val( result.data( 'text' ) );
+				
+				// Trigger the change event for listeners
+				// This isn't exactly pretty
+				conf._data.textbox.change();
+			}
 		}
 		
 		if ( result.size() > 0 && conf._data.visibleResults < conf.suggestions.length ) {
@@ -309,6 +315,15 @@ $.fn.suggestions = function( param, param2 ) {
 				// Need to scroll down
 				conf._data.div.scrollTop( ( to - conf._data.visibleResults + 1 ) * rowHeight );
 		}
+	}
+	
+	function positionDiv() {
+		conf._data.div.css( {
+			top: Math.round( conf._data.textbox.offset().top ) +
+				conf._data.textbox.get( 0 ).offsetHeight,
+			left: Math.round( conf._data.textbox.offset().left ),
+			width: conf._data.textbox.outerWidth()
+		});
 	}
 	
 	/**
@@ -345,13 +360,12 @@ $.fn.suggestions = function( param, param2 ) {
 		// Create container div for suggestions
 		conf._data.div = $( '<div />' )
 			.addClass( 'os-suggest' ) //TODO: use own CSS
-			.css( {
-				top: Math.round( $(this).offset().top ) + this.offsetHeight,
-				left: Math.round( $(this).offset().left ),
-				width: $(this).outerWidth()
-			})
 			.hide()
 			.appendTo( $( 'body' ) );
+		
+		// Recalculate position when <div> gets moved by jQuery Draggable
+		var draggableParent = conf._data.textbox.closest( '.ui-draggable' );
+		draggableParent.bind( 'drag', positionDiv );
 		
 		// Create results table
 		$( '<table />' )
