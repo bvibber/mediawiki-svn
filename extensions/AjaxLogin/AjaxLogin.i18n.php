@@ -18,7 +18,7 @@ This will take you away from this edit page and you may lose your current edit.'
 	'ajaxLogin2' => 'Are you sure?
 You may lose your changes to this page if you leave this page now.',
 	'ajaxlogin-create' => 'Create an account',
-	'nosuchuser' => 'There is no user by the name "$1".
+	'al-nosuchuser' => 'There is no user by the name "$1".
 User names are case sensitive.
 Check your spelling.',
 );
