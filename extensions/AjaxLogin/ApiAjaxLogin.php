@@ -94,10 +94,10 @@ class ApiAjaxLogin extends ApiBase {
 			if ( !$wgAuth->allowPasswordChange() ) {
 				$result['result'] = 'resetpass_forbidden';
 				$result['text'] = wfMsg( 'resetpass_forbidden' );
-			} else if ( $wgUser->isBlocked() ) {
+			} elseif ( $wgUser->isBlocked() ) {
 				$result['result'] = 'blocked-mailpassword';
 				$result['text'] = wfMsg( 'blocked-mailpassword' );
-			} else if ( '' == $loginForm->mName ) {
+			} elseif ( '' == $loginForm->mName ) {
 				$result['result'] = 'noname';
 				$result['text'] = wfMsg( 'noname' );
 			} else {
@@ -105,11 +105,11 @@ class ApiAjaxLogin extends ApiBase {
 				if ( is_null( $u ) ) {
 					$result['result'] = 'noname';
 					$result['text'] = wfMsg( 'noname' );
-				} else if ( 0 == $u->getID() ) {
+				} elseif ( 0 == $u->getID() ) {
 					$result['result'] = 'nosuchuser';
 					wfLoadExtensionMessages( 'AjaxLogin' );
 					$result['text'] = wfMsg( 'al-nosuchuser', $u->getName() );
-				} else if ( $u->isPasswordReminderThrottled() ) {
+				} elseif ( $u->isPasswordReminderThrottled() ) {
 					global $wgPasswordReminderResendTime;
 					$result['result'] = 'throttled-mailpassword';
 					$result['text'] = wfMsg( 'throttled-mailpassword', round( $wgPasswordReminderResendTime, 3 ) );

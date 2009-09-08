@@ -28,7 +28,8 @@ $wgExtensionCredits['other'][] = array(
 // Array of skins for which AjaxLogin is enabled.
 // Key is: 'skinname' => (true or false)
 $wgEnableAjaxLogin = array(
-	'monobook' => true
+	'monobook' => true,
+	'vector' => true
 );
 
 // Autoload AjaxLogin API interface
@@ -51,16 +52,15 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'efAddAjaxLoginVariables';
  * @return true
  */
 function AjaxLoginJS( OutputPage $out ) {
-	global $wgEnableAjaxLogin, $wgScriptPath, $wgJsMimeType;
+	global $wgEnableAjaxLogin, $wgScriptPath;
 
 	# Don't load anything if AjaxLogin isn't enabled
 	if ( !isset( $wgEnableAjaxLogin ) ) {
 		return true;
 	}
 
-
 	// Our custom CSS
-	$out->addStyle( '../..' . $wgScriptPath . '/extensions/AjaxLogin/AjaxLogin.css' );
+	$out->addExtensionStyle( $wgScriptPath . '/extensions/AjaxLogin/AjaxLogin.css' );
 	// JQuery and JQModal scripts
 	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jquery-1.3.2.min.js' );
 	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jqModal.js' );
@@ -105,7 +105,7 @@ function GetAjaxLoginForm( &$data ) {
 	<b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
 	<div class="r_boxContent">
 		<div>
-			<div name="wpClose"  id="wpClose"  value="' . wfMsg( 'close' ) . '" style ="float:right;cursor:pointer;"><a href="#" tabindex="108"><font size="4" color="white"><b>X</b></font></a>
+			<div name="wpClose" id="wpClose" value="' . wfMsg( 'close' ) . '" style ="float:right;cursor:pointer;"><a href="#" tabindex="108"><font size="4" color="white"><b>X</b></font></a>
 			</div>
 			<div class="boxHeader color1">
 		' . wfMsg( 'login' ) . '
