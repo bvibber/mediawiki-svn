@@ -34,8 +34,9 @@ class element {
 			} elseif ($child->name != 'ATTRS') {
 				$sub = $child->parse ( $tree ) ;
 				if ( $this->name == 'LINK' ) {
-					if ( $child->name == 'TARGET' ) $this->link_target = $sub ;
-					else if ( $child->name == 'PART' ) $this->link_parts[] = $sub ;
+					if ( $child->name == 'TARGET' ) {
+						$this->link_target = $sub ;
+					} else if ( $child->name == 'PART' ) $this->link_parts[] = $sub ;
 					else if ( $child->name == 'TRAIL' ) $this->link_trail = $sub ;
 				}
 				$ret .= $sub ;
@@ -91,8 +92,10 @@ class element {
 						$link = "\m(" . $nstext . ":" . $link . ")\n" ;
 					}
 				} else if ( $ns == -9 ) { # Adding newline to interlanguage link
+					if ( !$xmlg['keep_interlanguage'] ) return '' ;
 					$link = "\m" . $link ;
 				} else if ( $ns == -8 ) { # Adding newline to category link
+					if ( !$xmlg['keep_categories'] ) return '' ;
 					if ( $link_text == "!" || $link_text == '*' ) $link = "" ;
 					else $link = " ({$link})" ;
 					$link = "\m" . $this->link_target . $link . "\n" ;
