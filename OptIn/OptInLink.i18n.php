@@ -318,11 +318,14 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Hunyadym
  */
 $messages['hu'] = array(
 	'optin-try' => 'Bétateszt',
+	'tooltip-pt-optin-try' => 'Próbáld ki az új lehetőségeket',
 	'optin-leave' => 'A bétateszt befejezése',
+	'tooltip-pt-optin-leave' => 'Új lehetőségek kikapcsolása',
 	'optin-feedback' => 'Visszajelzés a bétáról',
 );
 
