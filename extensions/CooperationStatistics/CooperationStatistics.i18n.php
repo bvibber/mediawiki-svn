@@ -304,6 +304,14 @@ Hlej tež [[Special:MostRevisors|'''strony z najwjace kontrolerami''']] a [[Spec
 	'cooperationstatistics-legendmore' => 'abo wjace wobdźěłarjow.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'cooperationstatistics-tablearticle' => 'Lapszám',
+	'cooperationstatistics-tablevalue' => 'Szerkesztők száma',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -71,6 +71,13 @@ $messages['bg'] = array(
 	'seealso-desc' => "Добавя възможност за използване на раздел 'Вижте също' с помощта на етикет <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'seealso' => 'আরও দেখুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

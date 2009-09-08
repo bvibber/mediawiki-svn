@@ -55,6 +55,13 @@ $messages['bg'] = array(
 	'random-users-avatars-desc' => 'Добавя етикета <tt>&lt;randomuserswithavatars&gt;</tt> за показване на аватарите на случани потребители',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'random-users-avatars-title' => 'কমিউনিটির সাথে সাক্ষাৎ করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

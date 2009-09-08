@@ -348,9 +348,18 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'communityvoice' => 'Közösségi vélemény',
+	'communityvoice-desc' => 'Közösségi részvételi eszközök',
+	'communityvoice-ratings' => 'Értékelések',
+	'communityvoice-ratings-scale-status-sending' => 'Küldés…',
+	'communityvoice-ratings-scale-status-error' => 'Hiba a küldés közben!',
 	'communityvoice-ratings-scale-status-thanks' => 'Köszönjük, hogy szavaztál!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|egy|$2}} szavazat alapján)',
+	'communityvoice-ratings-error-no-category' => 'A kategória-attribútum hiányzik az értékelés tagben.',
+	'communityvoice-ratings-error-no-title' => 'A cím attribútum hiányzik az értékelés tagben.',
 );
 
 /** Interlingua (Interlingua)

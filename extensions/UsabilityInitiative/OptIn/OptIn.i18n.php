@@ -374,12 +374,15 @@ $messages['be-tarask'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'optin-desc' => 'ব্যবহারকারীদের বেটা ব্যবহারের সুযোগ দিন, ইউজাবিলিটি ইনিসিয়াটিভ হল সাম্প্রতিকতম ব্যবহারযোগ্যতা বৃদ্ধি।',
 	'optin-title-optedout' => 'বেটা চেষ্টা করুন',
 	'optin-title-optedin' => 'বেটা ছেড়ে যান',
 	'optin-title-justoptedin' => 'বেটায় স্বাগতম',
 	'optin-title-justoptedout' => 'বেটা চেষ্টা করার জন্য আপনাকে ধন্যবাদ',
 	'optin-title-feedback' => 'বেটা ফিডব্যাক',
 	'optin-needlogin' => 'বেটা চেষ্টা করার জন্য আপনাকে [$1 লগইন] করতে হবে।',
+	'optin-intro' => 'উইকিপিডিয়ার ব্যবহারযোগ্যতার উন্নয়ন করার জন্য উইকিপিডিয়া ইউজাবিলিটি ইনিসিয়েটিভ কঠর পরিশ্রম করে যাচ্ছে।
+আপনি বেটা ব্যবহার করতে চান?',
 	'optin-success-feedback' => 'আপনার ফিডব্যাকের জন্য ধন্যবাদ!',
 	'optin-accept-short' => 'চলুন শুরু করি!',
 	'optin-accept-long' => 'বেটা চেষ্টা করুন',
@@ -411,6 +414,8 @@ $messages['bn'] = array(
 	'optin-survey-question-os' => 'আপনি কোন অপারেটিং সিস্টেম ব্যবহার করেন?',
 	'optin-survey-answer-os-other' => 'অন্য অপারেটিং সিস্টেম:',
 	'optin-survey-question-res' => 'আপনার পর্দার রেজ্যুলেশন কত?',
+	'optin-survey-answer-changes-edittools' => 'সম্পাদনা টুল বৃদ্ধি এবং সমৃদ্ধ করা।',
+	'optin-survey-answer-changes-upload' => 'কন্টেন্ট এবং মিডিয়া আপলোড ব্যবস্থার উন্নয়ন।',
 	'optin-survey-answer-changes-lookfeel' => 'সাইটের "লুক এন্ড ফিল" হালনাগাদ করুন।',
 	'optin-survey-answer-changes-other' => 'অন্য:',
 );
@@ -1967,6 +1972,7 @@ Dźakujemy so a bychmy so wjeselili wot tebje słyšeć!',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Hunyadym
  */
 $messages['hu'] = array(
@@ -1991,6 +1997,13 @@ Szeretnénk tudni, hogy mit gondolsz az új felületről, így örülnénk neki,
 	'optin-submit-feedback' => 'Visszajelzés küldése',
 	'optin-survey-yes' => 'Igen',
 	'optin-survey-no' => 'Nem',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Nem tetszik ahogy kinéz.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Nem tetszenek az új fülek és az elrendezés.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nem tetszik az új szerkesztő-eszköztár.',
+	'optin-survey-answer-whyoptout-other' => 'Más indok:',
+	'optin-survey-answer-browser-other' => 'Más böngésző:',
+	'optin-survey-answer-changes-upload' => 'Tartalom és médiafájlok feltöltésének fejlesztése.',
+	'optin-survey-answer-changes-other' => 'Más:',
 	'optin-improvements' => '== Mit fejlesztettünk? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Fejlettebb navigáció

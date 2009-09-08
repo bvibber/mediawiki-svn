@@ -154,6 +154,13 @@ $messages['hsb'] = array(
 	'delaydef-error-redef' => 'Zmylk: Znowadefinowanje $1 spytane.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'delaydef-error-no-name' => 'Hiba: a név paraméter nincs megadva.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

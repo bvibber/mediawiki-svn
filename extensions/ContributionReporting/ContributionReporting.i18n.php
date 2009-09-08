@@ -1555,6 +1555,7 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Bdamokos
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'contributionreporting-desc' => 'Élő jelentés a Wikimédia adománygyűjtéséről',
@@ -1590,13 +1591,19 @@ $messages['hu'] = array(
 	'contribstats-value-under' => 'kevesebb, mint $1',
 	'contribstats-value-from' => '$1 és $2 között',
 	'contribstats-value-over' => 'több, mint $1',
+	'contribstats-week' => 'Hét',
+	'contribstats-clicks' => 'Kattintások',
+	'contribstats-donations' => 'Adományok',
+	'contribstats-template' => 'Sablon',
 	'fundraiserstatistics' => 'Adományozási statisztikák',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => '$2, $1. nap',
+	'fundraiserstats-contributions' => 'Közreműködések',
 	'fundraiserstats-total' => 'Összesen (USD)',
 	'fundraiserstats-avg' => 'Átlagosan (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
 	'fundraiserstats-tab-totals' => 'Összesen (USD)',
+	'fundraiserstats-tab-contributions' => 'Közreműködések száma',
 	'fundraiserstats-tab-averages' => 'Átlagosan (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 );

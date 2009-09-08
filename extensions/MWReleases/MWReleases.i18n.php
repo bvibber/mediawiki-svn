@@ -89,6 +89,13 @@ $messages['hsb'] = array(
 	'mwreleases-desc' => 'Přidawa [[Mediawiki:Mwreleases-list|lisćinu]] podpěranych wersijow, kotrež steja přez API k dispoziciji',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'mwreleases-desc' => 'Megjelenít egy [[Mediawiki:Mwreleases-list|listát]] a támogatott kiadásokról, elérhető az API-n keresztül',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

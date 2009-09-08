@@ -230,6 +230,14 @@ $messages['bg'] = array(
 	'right-spamregex' => 'Блокиране на спам фрази чрез [[Special:SpamRegex]]',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'spamregex-text' => '(লেখা)',
+	'spamregex-summary-log' => '(সারাংশ)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

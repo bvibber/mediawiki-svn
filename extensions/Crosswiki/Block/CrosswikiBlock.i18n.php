@@ -1046,6 +1046,16 @@ Wróćo k:
 	'right-crosswikiblock' => 'Wužiwarjow na druhich wikijach blokować a dowolić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'crosswikiblock-expiry' => 'Lejárat:',
+	'crosswikiblock-reason' => 'Indoklás:',
+	'crosswikiunblock-reason' => 'Indoklás:',
+	'crosswikiblock-noblock' => 'Ez a szerkesztő nincs blokkolva.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

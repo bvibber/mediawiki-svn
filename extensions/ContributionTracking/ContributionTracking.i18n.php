@@ -372,9 +372,13 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'contrib-tracking-error' => 'Hiba',
+	'contrib-tracking-error-text' => 'Érvénytelen űrlapküldés',
+	'contrib-tracking-submitting' => 'Küldés a fizetés-feldolgozóhoz…',
+	'contrib-tracking-continue' => 'Ha az oldal nem irányít át automatikusan, kattints a gombra hogy befejezd az adományozást a PayPalen.',
 	'contrib-tracking-button' => 'Folytatás',
 );
 

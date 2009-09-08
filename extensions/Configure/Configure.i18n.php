@@ -4357,6 +4357,7 @@ $messages['id'] = array(
 	'configure-select-wiki-submit' => 'Pilih',
 	'configure-view' => 'Lihat',
 	'configure-view-all-versions' => 'Daftar lengkap semua versi',
+	'configure-viewconfig-line' => '$1 $2 dengan $3 $5: $4',
 	'extensions' => 'Pengaturan ekstensi',
 	'right-configure' => 'Pengaturan wiki',
 	'right-configure-all' => 'Pengaturan semua pengatur wiki',

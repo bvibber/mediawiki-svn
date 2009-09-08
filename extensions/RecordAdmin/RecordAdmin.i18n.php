@@ -262,6 +262,15 @@ $messages['bg'] = array(
 	'recordadmin-actions' => 'Действия',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'recordadmin-select' => 'নির্বাচন',
+	'recordadmin-submit' => 'জমা দিন',
+	'recordadmin-badtitle' => 'মন্দ শিরোনাম!',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

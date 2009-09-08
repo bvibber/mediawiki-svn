@@ -2351,8 +2351,10 @@ $wgGoogleMapsMessages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $wgGoogleMapsMessages['hu'] = array(
+	'gm-desc' => 'Lehetővé teszi Google térképek könnyű beillesztését wikisített hely-jelölőkkel',
 	'gm-incompatible-browser' => 'Ahhoz, hogy láthasd az ide kerülő térképet, egy azzal kompatibilis webböngészőt kell használnod.',
 	'gm-incompatible-browser-link' => 'Kattints ide a kompatibilis böngészők listájának megtekintéséhez.',
 	'gm-no-editor' => 'A böngésződ sajnos nem támogatja az interaktív térképkészítő lehetőségeket. Próbálkozz a <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windowsra) vagy a <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windowsra, Macre, és Linuxra) legújabb verziójával.',
@@ -2361,6 +2363,8 @@ $wgGoogleMapsMessages['hu'] = array(
 	'gm-make-marker' => 'Cím (wikikód használható):',
 	'gm-remove' => 'eltávolítás',
 	'gm-caption' => 'Címke',
+	'gm-tab-title' => 'Fül címe',
+	'gm-tab' => 'Fül',
 	'gm-start-path' => 'útvonal indítása',
 	'gm-trace-area' => 'terület kijelölése',
 	'gm-save-point' => 'mentés &amp; bezárás',

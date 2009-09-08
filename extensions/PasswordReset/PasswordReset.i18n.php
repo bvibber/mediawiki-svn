@@ -1153,18 +1153,22 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'passwordreset' => 'Cambi ëd ciav',
+	'passwordreset-desc' => "[[Special:PasswordReset|A torna amposté le ciav ëd j'utent]] - a veul ël privilegi ëd 'passwordreset'",
 	'passwordreset-invalidusername' => 'Stranòm nen giust',
 	'passwordreset-emptyusername' => 'Stranòm veujd',
 	'passwordreset-nopassmatch' => 'Le doe ciav a son pa mideme',
 	'passwordreset-badtoken' => 'Còdes ëd modìfica nen bon',
-	'passwordreset-username' => 'Stranòm',
-	'passwordreset-newpass' => 'Ciav neuva',
-	'passwordreset-confirmpass' => 'Confermè la ciav',
+	'passwordreset-username' => 'Stranòm:',
+	'passwordreset-newpass' => 'Ciav neuva:',
+	'passwordreset-confirmpass' => 'Conferma la ciav:',
 	'passwordreset-submit' => 'Cambié la ciav',
 	'passwordreset-success' => "La ciav ëd l'utent $1 a l'é staita cambià",
+	'passwordreset-disableuser' => 'Disabilité ël cont utent?',
+	'passwordreset-disableuserexplain' => "(a amposta na ciav pa bon-a a cas - l'utent a peul pa intré)",
 );
 
 /** Pashto (پښتو)

@@ -1084,12 +1084,14 @@ Jeli maš prašenja wo systemje rozdźělowanja rozšěrjenjow, prošu dźi k [[
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'extensiondistributor' => 'MediaWiki-kigészítők letöltése',
 	'extdist-desc' => 'Kiegészítő kiegészítőcsomagok terjesztéséhez',
 	'extdist-not-configured' => 'Kérlek állítsd be a $wgExtDistTarDir és a $wgExtDistWorkingCopy értékeit',
 	'extdist-no-such-extension' => 'Nincs „$1” nevű kiegészítő',
+	'extdist-choose-extension' => 'Válaszd ki, melyik kiterjesztést szeretnéd letölteni:',
 	'extdist-submit-extension' => 'Folytatás',
 	'extdist-current-version' => 'Fejlesztői verzió (trunk)',
 	'extdist-submit-version' => 'Folytatás',

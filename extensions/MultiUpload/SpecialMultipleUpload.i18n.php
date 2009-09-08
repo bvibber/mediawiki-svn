@@ -721,6 +721,7 @@ A nem megfelelő fájlok azonnal törölve lesznek, lásd a [[{{MediaWiki:Multip
 	'multiupload-fileuploaded' => 'Fájl feltöltve.',
 	'multiupload-toolbox' => 'Több fájl feltöltése',
 	'multiupload-no-files' => 'Válassz ki legalább egy fájlt a feltöltéshez',
+	'multiupload-blank' => 'Nincs fájl kiválasztva',
 );
 
 /** Interlingua (Interlingua)
@@ -1161,6 +1162,30 @@ Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleup
 	'multiupload-toolbox' => 'Prześlij wiele plików',
 	'multiupload-no-files' => 'Wybierz co najmniej jeden plik do przesłania',
 	'multiupload-blank' => 'Nie wybrano pliku',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'multipleupload' => 'Carìa vàire file',
+	'multipleupload-desc' => "A përmëtt a j'utent ëd [[Special:MultipleUpload|carié vàire file ant un colp]]",
+	'multipleupload-ignoreallwarnings' => "Sàuta '''tùit j'avis''' e salva ij file ant tute manere.",
+	'multipleupload-saveallfiles' => 'Salva tùit ij file',
+	'multipleupload-addresswarnings' => "Për piasì varda tùit j'avis prima ëd torna carié ij file.",
+	'multipleupload-page' => '{{ns:project}}:Policy për la scanselassion dij file',
+	'multipleupload-text' => "Carìa vàire file ambelessì.
+
+Sern 'Browse' e selession-a minca file che it veule carié.
+It peule carié da 1 a $1 file për vira.
+
+It peule anserì un '''Filename ëd destinassion''' opsional e dé '''Resumé''' ch'a descriva tò file.
+
+File pa aproprià a saran scanselà sùbit, varda la [[{{MediaWiki:Multipleupload-page}}|polìtica dë scanselassion dij file]].",
+	'multiupload-fileuploaded' => 'File carià.',
+	'multiupload-toolbox' => 'Carìa vàire file',
+	'multiupload-no-files' => 'Për piasì selession-a almanch un file da carié',
+	'multiupload-blank' => 'Pa gnun file carià',
 );
 
 /** Pashto (پښتو)

@@ -211,6 +211,16 @@ $messages['bg'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Патрулиращи',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'patrol' => 'সম্পাদনা যাচাই',
+	'patrol-endorse' => 'সত্যায়িত',
+	'patrol-revert-reason' => 'কারণ:',
+	'patrol-skipped-ok' => 'সম্পাদনা উপেক্ষা করুন।',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

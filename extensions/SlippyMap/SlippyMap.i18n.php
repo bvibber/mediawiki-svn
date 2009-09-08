@@ -174,6 +174,13 @@ $messages['bg'] = array(
 	'slippymap_code' => 'Уикикод за тази карта:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'slippymap_code' => 'এই ম্যাপ দেখানোর জন্য উইকিকোড:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -608,6 +615,8 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'slippymap_desc' => 'Aggiunge il tag <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> che permette di incorporare mappe statiche e dinamiche. Supporta diverse mappe, comprese quelle di [http://openstreetmap.org OpenStreetMap] e NASA Worldwind',
+	'slippymap_error' => 'Errore $1: $2',
+	'slippymap_errors' => 'Errori $1:',
 	'slippymap_code' => 'Codice wiki per visualizzare questa mappa:',
 	'slippymap_button_code' => 'Ottieni codice wiki',
 	'slippymap_resetview' => 'Reimposta visuale',

@@ -99,6 +99,13 @@ $messages['bg'] = array(
 	'pageby-contributors' => 'Редактори:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'pageby-contributors' => 'অবদানকারী:',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

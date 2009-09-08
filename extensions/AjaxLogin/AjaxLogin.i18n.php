@@ -146,6 +146,9 @@ $messages['dsb'] = array(
 To buźo k drugemu bokoju wjasć a ty by mógał swóju aktualnu změnu zgubiś.',
 	'ajaxLogin2' => 'Sy wěsty? Jo móžno, až zgubijoš swóje změny, jolic něnto spušćaš toś ten bok.',
 	'ajaxlogin-create' => 'Konto załožyś',
+	'al-nosuchuser' => 'Wužywaŕ z mjenim "$1" njejo.
+Wužywarske mjenja źiwaju na wjelikopisanje.
+Skontrolěruj swój pšawopis.',
 );
 
 /** Greek (Ελληνικά)
@@ -319,6 +322,9 @@ $messages['hsb'] = array(
 To budźe će k druhej stronje wjesć a ty móhł swoju aktualnu změnu zhubić.',
 	'ajaxLogin2' => 'Sy wěsty? Je móžno, zo swoje změny zhubiš, jeli tutu stronu nětko wopušćeš.',
 	'ajaxlogin-create' => 'Konto załožić',
+	'al-nosuchuser' => 'Wužiwar z mjenom "$1" njeje.
+Wužiwarske mjena wobkedźbuja wulkopisanje.
+Skontroluj swój prawopis.',
 );
 
 /** Hungarian (Magyar)
@@ -349,6 +355,7 @@ Tu pote perder tu modificationes a iste pagina si tu quita iste pagina ora.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'ajaxlogin-desc' => 'Kotak dinamis yang memungkinkan pengguna untuk log masuk dan mengingatkan kata sandi',
@@ -357,6 +364,9 @@ Hal ini mengharuskan Anda untuk beranjak dari halaman suntingan ini dan Anda dap
 	'ajaxLogin2' => 'Apa Anda yakin?
 Anda dapat kehilangan perubahan yang telah Anda buat di halaman ini jika Anda meninggalkan halaman ini sekarang.',
 	'ajaxlogin-create' => 'Buat akun',
+	'al-nosuchuser' => 'Tidak ada pengguna dengan nama "$1".
+Nama pengguna bersifat sensitif terhadap kapitalisasi.
+Periksa ejaan anda.',
 );
 
 /** Italian (Italiano)
@@ -412,6 +422,9 @@ $messages['ksh'] = array(
 dä Sigg zom Ändere fott, un Ding neu jetippte Änderunge künnte verschött jon.',
 	'ajaxLogin2' => 'Bes De sescher, dat De dat wells? Ding Änderunge künnte verschött jon, wann De vun hee dä Sigg fott jeihß.',
 	'ajaxlogin-create' => 'Ene neue Metmaacher aanmelde',
+	'al-nosuchuser' => 'Mer han keine Metmaacher met dämm Naame „$1“.
+Jruuß- un Kleinboochshtabe shpelle en Roll en de Metmaacher iere Name.
+Donn noh Ding Schriefwiiß kike.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -481,6 +494,9 @@ Door deze handeling wordt u weggeleid van deze pagina, en verliest u mogelijk uw
 	'ajaxLogin2' => 'Wilt u doorgaan?
 U verliest mogelijk uw huidige bewerkingen als u deze pagina nu verlaat.',
 	'ajaxlogin-create' => 'Registreren',
+	'al-nosuchuser' => 'De gebruiker "$1" bestaat niet.
+Gebruikernamen zijn hoofdlettergevoelig.
+Controleer de schrijfwijze.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -613,6 +629,9 @@ $messages['ru'] = array(
 	'ajaxLogin2' => 'Вы уверены?
 Внесённые изменения могут быть утрачены, если сейчас покинуть эту страницу.',
 	'ajaxlogin-create' => 'Создать учётную запись',
+	'al-nosuchuser' => 'Не существует участника с именем «$1».
+Имя участника чувствительно к регистру символов.
+Проверьте написание.',
 );
 
 /** Yakut (Саха тыла)

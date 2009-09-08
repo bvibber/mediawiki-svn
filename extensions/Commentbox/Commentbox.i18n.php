@@ -246,6 +246,26 @@ Maš komentar na tutej stronje? Přidaj jón tu abo <span class="plainlinks">[{{
 	'commentbox-error-empty-comment' => 'Prózdne komentary njejsu dowolene!',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'commentbox-desc' => 'Hozzászólás beviteli mezőt ad egyes lapokhoz',
+	'commentbox-intro' => '== Hozzászólás írása… ==
+
+Hozzáfűznivalód van ezen az oldalon? Írd le itt, vagy <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkeszd a lapot közvetlenül.]</span>.',
+	'commentbox-savebutton' => 'Hozzászólás mentése',
+	'commentbox-name' => 'Név:',
+	'commentbox-name-explanation' => '<small>(Tipp: ha [[Special:UserLogin|bejelentkezel]], nem kell beírnod a nevedet kézzel)</small>',
+	'commentbox-log' => 'Új hozzászólások',
+	'commentbox-first-comment-heading' => '== Hozzászólások ==',
+	'commentbox-regex' => '/\\n==\\s*Hozzászólások\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Hiba a hozzászólás készítésekor',
+	'commentbox-error-page-nonexistent' => 'Ez a lap nem létezik!',
+	'commentbox-error-namespace' => 'A hozzászólások nincsenek engedélyezve ebben a névtérben!',
+	'commentbox-error-empty-comment' => 'Az üres hozzászólás nem engedélyezett!',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot

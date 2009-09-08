@@ -117,6 +117,14 @@ $messages['bg'] = array(
 	'searchbox-namespaces' => 'Именни пространства:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'searchbox-search' => 'অনুসন্ধান',
+	'searchbox-go' => 'যাও',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

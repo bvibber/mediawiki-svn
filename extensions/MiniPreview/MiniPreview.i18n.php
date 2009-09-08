@@ -468,6 +468,14 @@ $messages['lb'] = array(
 	'minipreview-files_in_gallery' => 'Et gëtt am ganzen $1 {{PLURAL:$1|Fichier|Fichieren}} an dëser Biller-Galerie.',
 	'minipreview-no_more_files_here' => 'Keng weider Fichieren an dëser Richtung.',
 	'minipreview-no_category_gallery' => 'Keng Kategorien oder Galerien!',
+	'minipreview-ignore_categories' => 'Dëst ass eng Lëscht mat Nimm vu Kategorien oder Ufäng vun Nimm.
+Dëse Kategorie ginnnet duerch MiniPreview ugewisen.
+Zum Beispill, "* PD-" weist net all Kategorien déi mat "PD-" ufänken, esou wéi "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
 );
 
 /** Lithuanian (Lietuvių)

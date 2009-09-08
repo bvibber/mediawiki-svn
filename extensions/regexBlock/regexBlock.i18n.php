@@ -377,6 +377,14 @@ $messages['bg'] = array(
 	'regexblock-view-time' => 'на $1',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'regexblock-view-all' => 'সমস্ত',
+	'regexblock-view-go' => 'যাও',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

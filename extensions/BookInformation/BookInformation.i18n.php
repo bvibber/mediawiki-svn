@@ -506,7 +506,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'bookinfo-header' => 'Enformacions sur les ôvres',
-	'bookinfo-desc' => 'Complète la [[Special:Booksources|pâge spèciâla de les sôrses d’ôvres de refèrence]] avouéc des enformacions dês un sèrviço Vouèbe.',
+	'bookinfo-desc' => 'Complète la [[Special:Booksources|pâge spèciâla de les sôrses d’ôvres de refèrence]] avouéc des enformacions dês un sèrviço vouèbe.',
 	'bookinfo-result-title' => 'Titro :',
 	'bookinfo-result-author' => 'Ôtor :',
 	'bookinfo-result-publisher' => 'Èditor :',

@@ -123,8 +123,13 @@ $messages['bg'] = array(
 	'filelist-image-desc' => 'описание',
 );
 
-/** Bengali (বাংলা) */
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
 $messages['bn'] = array(
+	'filelist' => 'ফাইলের তালিকা',
+	'filelist-show-list' => 'তালিকা দেখাও',
+	'filelist-show-gallery' => 'গ্যালারি দেখাও',
 	'filelist-image-desc' => 'বিবরণ',
 );
 

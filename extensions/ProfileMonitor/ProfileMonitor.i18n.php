@@ -123,6 +123,13 @@ $messages['bg'] = array(
 	'profiling-no-data' => 'Не са открити данни.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'profiling-ok' => 'ঠিক আছে',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

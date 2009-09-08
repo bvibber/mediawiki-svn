@@ -185,6 +185,18 @@ $messages['bg'] = array(
 	'formsaveerrortext' => "Възникна непозната грешка при опит да се съхрани страницата '$1'.",
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'form' => 'ফরম',
+	'formnoname' => 'কোনো ফরম নাম নাই',
+	'formbadname' => 'মন্দ ফরম নাম',
+	'formpattern' => '$1-ফরম',
+	'formtitlepattern' => 'নতুন $1 যোগ',
+	'formsave' => 'সংরক্ষণ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

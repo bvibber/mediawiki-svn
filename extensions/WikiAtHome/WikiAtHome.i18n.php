@@ -206,15 +206,21 @@ Sie können dabei helfen dieses Video zu verarbeiten, indem Sie [[Special:WikiAt
  */
 $messages['dsb'] = array(
 	'wah-desc' => 'Zmóžnja rozdźělenje nadawkow wideopśekoděrowanja klientam z pomocu Firefogg',
+	'wah-user-desc' => 'Wiki@Home zmóžnja cłonkam zgromaźenstwa liche CPU-cykluse dariś, aby pomagał pśi operacijach, kótarež pśetrjebuju wjele resursow',
 	'wah-short-audio' => 'Awdiodataja $1, $2',
 	'wah-short-video' => 'Wideodataja $1, $2',
 	'wah-short-general' => 'Medijowa dataja $1, $2',
 	'wah-long-audio' => '(Awdiodataja $1, dłujkosć $2, $3)',
 	'wah-long-video' => '(Wideodataja $1, dłujkosć $2, $4×$5 pikselow, $3)',
+	'wah-long-multiplexed' => '(multipleksna awdio/wideodataja, $1, dłujkosć $2, $4×$5 pikselow, $3 dogromady)',
 	'wah-long-general' => '(medijowa dataja, dłujkosć $2, $3)',
 	'wah-long-error' => '(ffmpeg njejo mógł toś tu dataju cytaś: $1)',
 	'wah-transcode-working' => 'Wideo se pśeźěłujo, pšosym wopytaj póznjej hyšći raz',
+	'wah-transcode-helpout' => 'Klip jo na $1 {{PLURAL:$1|procent|procenta|procenty|procentow}} gótowy.
+Móžoš pomagaś toś te wideo pśekoděrowaś, z tym až woglědujoš k [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-fail' => 'Toś ta dataja njejo se dała pśekoděrowaś.',
 	'wah-javascript-off' => 'Musyš JavaScript zmóžniś, aby se na Wiki@Home wobźělił',
+	'wah-loading' => 'Pówjerch Wiki@Home se zacytujo <blink>...</blink>',
 );
 
 /** Greek (Ελληνικά)

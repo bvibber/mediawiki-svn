@@ -648,6 +648,23 @@ $messages['pl'] = array(
 	'fundraiserportal-tourmaline-close' => 'Ukryj',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'fundraiserportal' => 'Portal për cheuje fond',
+	'fundraiserportal-desc' => 'A gionta un portal "për piasì don-a" an dzora a la sidebar.',
+	'fundraiserportal-plain-button' => 'Apògia Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Don-a adess',
+	'fundraiserportal-rubytext-button' => 'Don-a adess',
+	'fundraiserportal-rubytext-message' => 'Minca donassion an giuta a manten-e Wikipedia libra për mincadun.',
+	'fundraiserportal-rubytext-close' => 'Stërma sòn-sì da adess an peui',
+	'fundraiserportal-sapphire-button' => 'Don-a adess',
+	'fundraiserportal-tourmaline-button' => 'Don-a adess',
+	'fundraiserportal-tourmaline-message' => 'Minca donassion an giuta a manten-e Wikipedia libra për mincadun.',
+	'fundraiserportal-tourmaline-close' => 'Stërma sòn-sì da adess an peui',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Giro720

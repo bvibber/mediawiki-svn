@@ -685,10 +685,12 @@ $messages['bn'] = array(
 	'edittoolbar-tool-italic' => 'ইটালিক',
 	'edittoolbar-tool-italic-example' => 'ইটালিক লেখা',
 	'edittoolbar-tool-link' => 'লিংক',
+	'edittoolbar-tool-link-title' => 'লিংক যোগ করুন',
 	'edittoolbar-tool-link-int-target' => 'পাতার শিরোনাম:',
 	'edittoolbar-tool-link-int-text' => 'লিংক লেখা:',
 	'edittoolbar-tool-link-ext' => 'বহিঃস্থ কোনো ওয়েব পেইজে',
 	'edittoolbar-tool-link-ext-target' => 'লিংক ইউআরএল:',
+	'edittoolbar-tool-link-insert' => 'লিংক যোগ করুন',
 	'edittoolbar-tool-link-cancel' => 'বাতিল',
 	'edittoolbar-tool-link-int-target-status-exists' => 'পাতা রয়েছে',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'কোনো পাতা নাই',
@@ -696,6 +698,7 @@ $messages['bn'] = array(
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'তথ্যসূত্র',
 	'edittoolbar-tool-reference-example' => 'পাদটীকার লেখা এখানে যোগ করুন',
+	'edittoolbar-section-advanced' => 'উচ্চপর্যায়',
 	'edittoolbar-tool-heading' => 'স্তর',
 	'edittoolbar-tool-heading-1' => 'স্তর ১',
 	'edittoolbar-tool-heading-2' => 'স্তর ২',
@@ -4026,6 +4029,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'edittoolbar' => 'Szerkesztő eszköztár',
@@ -4100,6 +4104,7 @@ $messages['hu'] = array(
 	'edittoolbar-tool-replace-case' => 'Kis- és nagybetű-érzékenység',
 	'edittoolbar-tool-replace-regex' => 'A beírt szöveg egy reguláris kifejezés',
 	'edittoolbar-tool-replace-all' => 'Az összes előfordulás lecserélése',
+	'edittoolbar-tool-replace-button' => 'Csere',
 	'edittoolbar-tool-replace-close' => 'Bezárás',
 	'edittoolbar-tool-replace-nomatch' => 'Nincs egyetlen találat sem.',
 	'edittoolbar-section-characters' => 'Különleges karakterek',

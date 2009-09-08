@@ -118,6 +118,15 @@ $messages['bg'] = array(
 	'randomincategory-label' => 'Категория:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'randomincategory-toolbox' => 'অজানা পাতা',
+	'randomincategory-label' => 'বিশয়শ্রেণী:',
+	'randomincategory-submit' => 'যাও',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -158,6 +158,14 @@ $messages['bg'] = array(
 	'talkhere-collapse' => 'скриване на редактора',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'talkhere-talkpage' => 'আলাপ পাতা',
+	'talkhere-notalk' => "''(এখনও কোনো মন্তব্য নাই)''",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

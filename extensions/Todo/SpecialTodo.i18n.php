@@ -239,6 +239,16 @@ $messages['bg'] = array(
 	'todo-form-submit' => 'Изпращане на заявка',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'todo' => 'করণীয় তালিকা',
+	'todo-tab' => 'করণীয়',
+	'todo-new-queue' => 'নতুন',
+	'todo-form-details' => 'বিস্তারিত:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
