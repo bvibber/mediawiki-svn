@@ -114,7 +114,11 @@ api : {
 			}
 		}
 	},
+	modifyTool : function( context, data ){
+		
+	},
 	removeFromToolbar : function( context, data ) {
+		js_log("f:removeFromToolbar");
 		if ( typeof data.section == 'string' ) {
 			// Section
 			var tab = 'div.tabs span[rel=' + data.section + '].tab';
@@ -150,6 +154,7 @@ api : {
 				// Just a section, remove the tab too!
 				context.modules.$toolbar.find( tab ).remove();
 			}
+			js_log('target is: ' + target);
 			context.modules.$toolbar.find( target ).remove();
 		}
 	}
@@ -450,10 +455,10 @@ fn : {
 						$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
 					$(this).blur();
 					var show = $section.css( 'display' ) == 'none';
-					$section.parent().children().hide();
+					$section.parent().children().hide("fast");
 					$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 					if ( show ) {
-						$section.show();
+						$section.show("fast");
 						$(this).addClass( 'current' );
 					}
 					
