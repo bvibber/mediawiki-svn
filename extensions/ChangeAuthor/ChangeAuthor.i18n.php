@@ -38,11 +38,11 @@ $messages['en'] = array(
 	'changeauthor-pagenameform-go' => 'Go',
 	'changeauthor-comment' => 'Comment:',
 	'changeauthor-changeauthors-multi' => 'Change {{PLURAL:$1|author|authors}}',
-	'changeauthor-explanation-multi' => "With this form you can change revision authors.
-Simply change one or more usernames in the list below, add a comment (optional) and click the 'Change author(s)' button.",
+	'changeauthor-explanation-multi' => 'With this form you can change revision authors.
+Simply change one or more usernames in the list below, add a comment (optional) and click the "Change author(s)" button.',
 	'changeauthor-changeauthors-single' => 'Change author',
-	'changeauthor-explanation-single' => "With this form you can change a revision author.
-Simply change the username below, add a comment (optional) and click the 'Change author' button.",
+	'changeauthor-explanation-single' => 'With this form you can change a revision author.
+Simply change the username below, add a comment (optional) and click the "Change author" button.',
 	'changeauthor-invalid-username' => 'Invalid username "$1".',
 	'changeauthor-nosuchuser' => 'No such user "$1".',
 	'changeauthor-revview' => 'Revision #$1 of $2',
