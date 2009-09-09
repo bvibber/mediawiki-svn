@@ -915,6 +915,7 @@ $messages['ku-latn'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -929,9 +930,9 @@ $messages['lb'] = array(
 Wielt 'Browse' a wielt déi Fichieren eraus déi Dir eropluede wëllt.
 Dir kënnt vun 1 bis $1 Fichiere mateneen eroplueden.
 
-Dir kënnt en optionellen '''Zil-Fichiersnumm''' uginn an e '''Resumé''' aginn deen Äre Fichier beschreiwt.
+Dir kënnt en optionellen '''Zil-Fichiersnumm''' uginn an e '''Resumé''' aginn deen Äre Fichier beschreift.
 
-Net ubruechte Fichieren ginn direkt geläscht, kuckt d'[[{{MediaWiki:Multipleupload-page}}|Läsch-Richtlinnen fir Fichieren]].",
+Net ubruechte Fichiere ginn direkt geläscht, kuckt d'[[{{MediaWiki:Multipleupload-page}}|Läsch-Richtlinne fir Fichieren]].",
 	'multiupload-fileuploaded' => 'Fichier eropgelueden',
 	'multiupload-toolbox' => 'Méi Fichiere mateneen eroplueden',
 	'multiupload-no-files' => 'Sicht mindestens ee Fichier eraus fir eroplzelueden',

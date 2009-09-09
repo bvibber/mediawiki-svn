@@ -30,6 +30,14 @@ $messages['arz'] = array(
 	'catfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشئ نسخة فى الصفحة، مفيد خصوصا لويكى الأخبار.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'catfeed-desc' => 'Выкарыстоўвае некаторыя часткі стужкі апошніх зьменаў.
+Стварае яе вэрсію на старонцы, асабліва карысна для ВікіНавінаў.',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

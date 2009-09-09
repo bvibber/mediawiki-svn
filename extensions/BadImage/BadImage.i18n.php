@@ -226,6 +226,7 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'badimages' => 'Сьпіс забароненых выяваў',
@@ -238,6 +239,7 @@ $messages['be-tarask'] = array(
 	'badimages-remove' => '(выдаліць)',
 	'badimages-remove-btn' => 'Выдаліць',
 	'badimages-removed' => '$1 выдаленая са сьпісу.',
+	'badimages-log-name' => 'Сьпіс непажаданых выяваў',
 	'badimages-log-add' => '[[$1]] даданая ў сьпіс забароненых выяваў',
 	'badimages-log-remove' => '[[$1]] выдаленая са сьпісу забароненых выяваў',
 	'badimages-page' => '{{ns:help}}:Сьпіс забароненых выяваў',

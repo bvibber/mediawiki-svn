@@ -395,6 +395,13 @@ $messages['tl'] = array(
 	'contributorsaddon-desc' => 'Nagdaragdag ng "sulpot-litaw" (\'\'popups\'\') sa mga kawingan ng "Pangunahing mga tagapag-ambag"',
 );
 
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'contributorsaddon-desc' => '"Temel katkıda bulunanlar" bağlantılarına JavaScript açılır pencereleri ekler.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

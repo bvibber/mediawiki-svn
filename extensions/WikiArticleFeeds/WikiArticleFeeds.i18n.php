@@ -93,6 +93,13 @@ $messages['dsb'] = array(
 	'wikiarticlefeeds_combined_description' => 'To jo kombinaciski kanal, kótaryž wopśimujo zapiski z někotrych kanalowych žrědłow.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'wikiarticlefeeds-desc' => 'Δημιουργεί ροές παραγόμενες από σελίδες MediaWiki',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

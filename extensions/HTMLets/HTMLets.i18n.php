@@ -152,6 +152,13 @@ $messages['hsb'] = array(
 	'htmlets-desc' => 'Zmóžnja zasunjenje HTML-kuskow z datajow z pomocu taflički <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'htmlets-desc' => 'Lehetővé teszi HTML használatát oldalon belül a <tt><nowiki><htmlet></nowiki></tt> tag segítségével',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

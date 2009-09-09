@@ -128,6 +128,13 @@ $messages['hsb'] = array(
 	'redirect-desc' => 'Zmóžnja lochku konfiguraciju daleposrědkowanjow při [[MediaWiki:Redirect-addnewaccount|załoženju kontow]] a [[MediaWiki:Redirect-userlogoutcomplete|wotzjewjenju]]',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'redirect-desc' => 'Könnyű átirányítás-konfigurációt tesz lehetővé [[MediaWiki:Redirect-addnewaccount|felhasználói fiók létrehozásánál]] és [[MediaWiki:Redirect-userlogoutcomplete|kijelentkezésnél]]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

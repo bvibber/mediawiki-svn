@@ -133,6 +133,13 @@ $messages['bn'] = array(
 	'filelist-image-desc' => 'বিবরণ',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'filelist' => 'Roll restroù',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

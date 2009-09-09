@@ -211,6 +211,13 @@ $messages['hsb'] = array(
 	'oai-desc' => 'Staja interfejs za repozitorij [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] k dispoziciji',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] adattár interfész',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

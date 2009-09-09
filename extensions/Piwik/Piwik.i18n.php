@@ -268,12 +268,14 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'piwik-desc' => 'Beilleszt egy Piwik szkriptet a MediaWiki-oldalakra [[Special:Piwik|statisztika]] készítéséhez',
 	'piwik-lastvisits' => 'Előző látogatók',
 	'piwik-countries' => 'Országok',
 	'piwik-browsers' => 'Böngészők',
+	'right-viewpiwik' => '[[Special:Piwik|Piwik statisztika]] megjelenítése',
 );
 
 /** Interlingua (Interlingua)

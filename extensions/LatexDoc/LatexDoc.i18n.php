@@ -561,12 +561,13 @@ $3',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'latexdoc_no_text' => 'Et ass keen Text op der Säit, den DVI kann net gemaach ginn',
 	'latexdoc_cant_create_dir' => 'Den temporäre Repertoire $1 kann net ugeluecht ginn',
-	'latexdoc_cant_write' => 'Et ass net méiglech na de Fichier $1 ze schreiwen',
+	'latexdoc_cant_write' => 'Et ass net méiglech an de Fichier $1 ze schreiwen',
 	'latexdoc_error' => 'LaTeX-Feeler
 
 Opruf: $1

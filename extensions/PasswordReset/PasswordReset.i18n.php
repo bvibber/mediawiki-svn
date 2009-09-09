@@ -647,6 +647,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'passwordreset' => 'Jelszó beállítása',
+	'passwordreset-desc' => '[[Special:PasswordReset|Szerkesztő jelszavának visszaállítása]] ‒ „passwordreset” jogosultság szükséges hozzá',
 	'passwordreset-invalidusername' => 'Érvénytelen felhasználói név',
 	'passwordreset-emptyusername' => 'Nincs megadva felhasználói név',
 	'passwordreset-nopassmatch' => 'A jelszavak nem egyeznek meg',
@@ -1169,6 +1170,11 @@ $messages['pms'] = array(
 	'passwordreset-success' => "La ciav ëd l'utent $1 a l'é staita cambià",
 	'passwordreset-disableuser' => 'Disabilité ël cont utent?',
 	'passwordreset-disableuserexplain' => "(a amposta na ciav pa bon-a a cas - l'utent a peul pa intré)",
+	'passwordreset-disablesuccess' => "Ël cont ëd l'utent a l'é stàit disabilità për l'ID utent: $1",
+	'passwordreset-accountdisabled' => "Ël cont a l'é stàit disabilità",
+	'disabledusers' => 'Utent disabilità',
+	'disabledusers-summary' => "Sta-sì a l'é na lista d'utent che a son ëstaàit disabilità via PasswordReset.",
+	'right-passwordreset' => "Torna amposté la ciav ëd n'utent ([[Special:PasswordReset|pàgina special]])",
 );
 
 /** Pashto (پښتو)

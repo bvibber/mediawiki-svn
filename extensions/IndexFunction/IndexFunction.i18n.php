@@ -601,6 +601,10 @@ $1
 Vergewëssert Iech datt déi Säit déi Dir amgaang sidd unzeleeën net schon ënner engem aneren Titel besteet.
 Wann Dir dës Säit uleet, dann huelt dësen Titel vu(n)  <nowiki>{{#index:}}</nowiki> op {{PLURAL:$2|der Säit|de Säiten}} uewendriwwer erof.',
 	'indexfunc-index-exists' => 'D\'Säit "$1" gëtt et schonn',
+	'indexfunc-movewarn' => 'Opgepasst:
+"$1" ass en Index-Titel fir dës {{PLURAL:$3|Säit|Säiten}}:
+$2
+Huelt w.e.g. "$1" vum <nowiki>{{#index:}}</nowiki> erof op {{PLURAL:$3|der Säit|de Säiten}} uewendriwwer.',
 	'index' => 'Index',
 	'index-legend' => 'Am Index sichen',
 	'index-search' => 'Sichen:',

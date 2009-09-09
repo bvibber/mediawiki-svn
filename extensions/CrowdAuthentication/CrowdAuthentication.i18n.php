@@ -355,6 +355,13 @@ $messages['tl'] = array(
 	'crowdauthentication-desc' => "Pampasak ng pagpapatunay para sa ''Atlassian Crowd''",
 );
 
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'crowdauthentication-desc' => 'Atlassian Crowd için doğrulama verisi eklentisidir.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

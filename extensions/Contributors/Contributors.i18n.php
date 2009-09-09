@@ -1401,11 +1401,17 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Srhat
  * @author Suelnur
  */
 $messages['tr'] = array(
+	'contributors' => 'Katkıda bulunanlar',
+	'contributors-desc' => 'Sayfaya çok sık katkıda bulunanları özetler',
+	'contributors-toolbox' => 'Temel katkıda bulunanlar',
+	'contributors-legend' => 'Bir sayfanın temel katkıda bulunanlarını listele',
 	'contributors-target' => 'Başlık:',
 	'contributors-submit' => 'Göster',
+	'contributors-subtitle' => '$1 sayfasına temel katkıda bulunanlar',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

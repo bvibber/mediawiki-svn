@@ -237,6 +237,7 @@ $messages['eo'] = array(
 	'fundraiserportal-plain-button' => 'Subtenu Vikipedion!',
 	'fundraiserportal-ruby-button' => 'Donacu Nun',
 	'fundraiserportal-rubytext-button' => 'Donacu Nun',
+	'fundraiserportal-rubytext-message' => 'Ĉiu donaco helpas Vikipdion esti senkosta por ĉiuj.',
 	'fundraiserportal-rubytext-close' => 'Kaŝi ĉi tion ekde nun',
 	'fundraiserportal-sapphire-button' => 'Donacu Nun',
 	'fundraiserportal-tourmaline-button' => 'Donacu Nun',

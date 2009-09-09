@@ -291,8 +291,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'pageby-desc' => 'Megjeleníti a közreműködőket a wiki lapon belül a <code><nowiki><pageby></nowiki></code> tag használatával',
 	'pageby-first' => 'Az oldalt $1 készítette, $2-kor',
 	'pageby-last' => 'Legutoljára $1 <a href="$3">módosította</a>, $2-kor',
 	'pageby-contributors' => 'Szerkesztők:',

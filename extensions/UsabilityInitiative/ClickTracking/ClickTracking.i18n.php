@@ -89,6 +89,13 @@ $messages['el'] = array(
 	'clicktracking-title' => 'Συναθροισμένα κλικ χρήστη',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'clicktracking-desc' => 'Sekvado de klakoj, por sekvi klakeventojn kiu ne kaŭzas paĝan refreŝigon',
+);
+
 /** Spanish (Español)
  * @author Antur
  */
@@ -321,6 +328,7 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'clicktracking' => 'Theo dõi nhấn chuột Sáng kiến Khả dụng',
 	'clicktracking-desc' => 'Theo dõi hành vi nhấn chuột, dùng để theo dõi các hoạt động không làm tươi trang',
+	'clicktracking-title' => 'Tổng số nhấn chuột của thành viên',
 );
 
 /** Yue (粵語)

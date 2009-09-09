@@ -70,6 +70,13 @@ $messages['arz'] = array(
 	'categorywatch-catsub' => 'ازال $1 من التصنيف $2',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'categorywatch-desc' => 'Пашырае функцыянальнасьць сьпісу назіраньняў магчымасьцю паведамленьняў пра зьмены ў старонках, якія ўваходзяць у склад катэгорыяў са сьпісу назіраньня',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

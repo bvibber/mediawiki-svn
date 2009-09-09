@@ -240,6 +240,7 @@ $messages['he'] = array(
 	'protectsection_desc' => 'מתן האפשרות למשתמשים מורשים להגן על חלקים מהדף באמצעות התגית <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'ניסיתם להוסיף או להסיר קטע מוגן',
 	'protectsection_modify' => 'ניסיתם לשנות טקסט מוגן',
+	'protectsection_add_above' => 'ניסיתם להוסיף טקסט לפני סעיף מוגן',
 	'protectsection_forbidden' => 'אסור',
 	'right-protectsection' => 'הגנה על פסקאות בדף',
 );

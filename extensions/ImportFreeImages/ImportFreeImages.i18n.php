@@ -717,6 +717,7 @@ en <code>LocalSettings.php</code> setze.",
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -731,7 +732,7 @@ Fir dëst ze maachen, Frot w.e.g. en API Schlëssel [http://www.flickr.com/servi
 	'importfreeimages_importthis' => 'importéieren',
 	'importfreeimages_next' => 'Nächst $1',
 	'importfreeimages_filefromflickr' => '$1 vum Benotzer <b>[$2]</b> vun flickr. Original URL',
-	'importfreeimages_promptuserforfilename' => 'Gitt w.e.g een Numm fir den neie fichier un:',
+	'importfreeimages_promptuserforfilename' => 'Gitt w.e.g een Numm fir den neie Fichier un:',
 	'importfreeimages_returntoform' => "oder, klickt <a href='$1'>heihinn</a> fir op d'Resultat vun ärer Sich zréckzegoen",
 	'importfreeimages_nophpflickr' => 'Dir hutt phpFlickr net installéiert, stellt w.e.g. $wgIFphpFlickr an Äre <tt>LocalSettings.php</tt> an.',
 );

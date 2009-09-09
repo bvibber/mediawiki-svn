@@ -810,6 +810,7 @@ $messages['he'] = array(
 	'recordadmin-actions' => 'פעולות',
 	'recordadmin-needscontent' => 'הוספת תוכן...',
 	'recordadmin-editwithform' => 'עריכה באמצעות טופס',
+	'recordadmin-typeinfo' => 'רשומת $1',
 	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
 );
 

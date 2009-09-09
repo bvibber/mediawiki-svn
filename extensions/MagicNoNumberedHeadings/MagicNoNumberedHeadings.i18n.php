@@ -104,6 +104,13 @@ $messages['hsb'] = array(
 	'magicnonumberedheadings-desc' => 'Přidawa magiske słowo "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'magicnonumberedheadings-desc' => '„<nowiki>__NONUMBEREDHEADINGS__</nowiki>” varázsszó sorszámozatlan szakaszcímek kikényszerítésére',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

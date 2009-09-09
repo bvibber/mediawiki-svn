@@ -163,6 +163,7 @@ $3',
  */
 $messages['qqq'] = array(
 	'code-comments' => '{{Identical|Comments}}',
+	'code-change-added' => '{{Identical|Added}}',
 	'code-desc' => '{{desc}}',
 	'code-field-id' => '{{Identical|Revision}}',
 	'code-field-author' => '{{Identical|Author}}',
@@ -176,6 +177,7 @@ $messages['qqq'] = array(
 	'code-rev-date' => '{{Identical|Date}}',
 	'code-rev-message' => '{{Identical|Comment}}',
 	'code-rev-rev' => '{{Identical|Revision}}',
+	'code-rev-modified-a' => '{{Identical|Added}}',
 	'code-rev-status' => '{{Identical|Status}}',
 	'code-rev-comment-preview' => '{{Identical|Preview}}',
 	'code-status-new' => '{{Identical|New}}',
@@ -215,6 +217,7 @@ $1 = Repository name',
  */
 $messages['af'] = array(
 	'code-comments' => 'Opmerkings',
+	'code-change-added' => 'bygevoeg:',
 	'code-old-status' => 'Ou status',
 	'code-new-status' => 'Nuwe status',
 	'code-authors' => 'outeurs',

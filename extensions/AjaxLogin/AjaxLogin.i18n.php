@@ -220,6 +220,7 @@ Saatat menettää muokkauksesi jos lähdet tältä sivulta nyt.',
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  * @author Polytherion
  * @author Verdy p
  */
@@ -230,6 +231,9 @@ Cela vous fera quitter cette page et vous pourriez perdre vos modifications en c
 	'ajaxLogin2' => 'Êtes-vous certain ?
 Vous pourriez perdre vos modifications en cours sur cette page si vous la quittez maintenant.',
 	'ajaxlogin-create' => 'Créer un compte',
+	'al-nosuchuser' => "Il n'existe pas d'utilisateur nommé « $1 ».
+Les noms d'utilisateur sont sensibles à la casse.
+Vérifiez l'orthographe.",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -262,6 +266,9 @@ Isto levarao desta páxina de edición e pode perder a súa edición actual.',
 	'ajaxLogin2' => 'Está seguro?
 Pode perder os cambios feitos nesta páxina se sae dela agora.',
 	'ajaxlogin-create' => 'Crear unha conta',
+	'al-nosuchuser' => 'Non hai ningún usuario co nome "$1".
+Os nomes de usuario distinguen entre maiúsculas e minúsculas.
+Comprobe a ortografía.',
 );
 
 /** Swiss German (Alemannisch)
@@ -287,6 +294,9 @@ $messages['he'] = array(
 	'ajaxLogin2' => 'האם אתם בטוחים?
 אתם עלולים לאבד את השינויים שביצעתם בדף זה אם תעזבו אותו כעת.',
 	'ajaxlogin-create' => 'יצירת חשבון',
+	'al-nosuchuser' => 'אין משתמש העונה לכינוי "$1".
+שמות משתמשים הינם תלויי רישיות.
+אנא בדקו את האיות.',
 );
 
 /** Hiligaynon (Ilonggo)
@@ -391,6 +401,7 @@ $messages['ja'] = array(
 	'ajaxLogin2' => '本当によろしいでしょうか？
 今このページを離れると保存されていない編集は失われることになります。',
 	'ajaxlogin-create' => 'アカウント作成',
+	'al-nosuchuser' => '「$1」という名前の利用者はいません。利用者名では大文字・小文字が区別されます。綴りを確かめてください。',
 );
 
 /** Khmer (ភាសាខ្មែរ)

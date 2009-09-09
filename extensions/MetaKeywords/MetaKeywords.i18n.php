@@ -182,6 +182,13 @@ $messages['hsb'] = array(
 	'metakeywords-desc' => 'Dowola konfiguraciju tafličkow <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> na mjenowy rum',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'metakeywords-desc' => 'Lehetővé teszi a <tt><nowiki><meta "keywords"></nowiki></tt> és <tt><nowiki><meta "description"></nowiki></tt> tagek névterenkénti beállítását',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

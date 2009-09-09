@@ -200,8 +200,11 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'optin-try' => 'Provi Beta-version',
+	'tooltip-pt-optin-try' => 'Provi novajn atributojn',
 	'optin-leave' => 'Forlasi Beta-version',
+	'tooltip-pt-optin-leave' => 'Malŝalti novajn atributojn',
 	'optin-feedback' => 'Opinioj pri Beta-versio',
+	'tooltip-pt-optin-feedback' => 'Provizu opiniojn pri via sperto de la novaj ecoj',
 );
 
 /** Spanish (Español)
@@ -740,8 +743,11 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'optin-try' => 'Thử bản Beta',
+	'tooltip-pt-optin-try' => 'Thử những tính năng mới',
 	'optin-leave' => 'Rời Beta',
+	'tooltip-pt-optin-leave' => 'Tắt những tính năng mới',
 	'optin-feedback' => 'Phản hồi Beta',
+	'tooltip-pt-optin-feedback' => 'Phản hồi về trải nghiệm của bạn khi dùng tính năng mới',
 );
 
 /** Volapük (Volapük)

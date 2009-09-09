@@ -1953,6 +1953,7 @@ $messages['id'] = array(
 	'sign-viewfield-reviewcomment' => 'Komentar',
 	'sign-review-comment' => 'Komentar',
 	'sign-submitreview' => 'Kirim tinjauan',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] tandatangan [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Ido (Ido)

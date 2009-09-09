@@ -83,6 +83,13 @@ $messages['gsw'] = array(
 	'semanticinternalobjects-desc' => 'Intärni Objäkt in Semantic MediaWiki yysetze',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'semanticinternalobjects-desc' => 'הגדרות הפריטים הפנימיים במדיהוויקי הסמנטי',
+);
+
 /** Hiligaynon (Ilonggo)
  * @author Tagimata
  */

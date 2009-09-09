@@ -119,6 +119,13 @@ $messages['hsb'] = array(
 	'interlanguage-desc' => 'Zběra mjezyrěčne wotkazy z druheho wikija',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'interlanguage-desc' => 'Nyelvközi hivatkozások átvétele más wikiből',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

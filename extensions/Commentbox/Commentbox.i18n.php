@@ -429,6 +429,25 @@ Masz komentarz na tej stronie? Dodaj ten komentarz lub <span class="plainlinks">
 	'commentbox-error-empty-comment' => 'Komentarz nie może być pusty!',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'commentbox-desc' => 'A gionta na pàgina ëd coment a serte pàgine',
+	'commentbox-intro' => '== Gionta un coment... ==
+It l\'has-to un coment an sta pàgina-sì? Giontlo sì o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} modìfica la pàgina diretament]</span>.',
+	'commentbox-savebutton' => 'salva coment',
+	'commentbox-name' => 'Nòm:',
+	'commentbox-name-explanation' => "<small>(Tip: S'it [[Special:UserLogin|intre]], it l'avras pa da anserì tò nòm manualment)</small>",
+	'commentbox-log' => 'Coment neuv',
+	'commentbox-first-comment-heading' => '== Coment ==',
+	'commentbox-regex' => '/\\n==\\s*Coment\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Eror an creand un coment',
+	'commentbox-error-page-nonexistent' => 'Sta pàgina-sì a esist pa!',
+	'commentbox-error-namespace' => 'Ij coment a son pa possìbij an sto spassi nominal-sì!',
+	'commentbox-error-empty-comment' => 'Coment veuid a son pa possìbij!',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

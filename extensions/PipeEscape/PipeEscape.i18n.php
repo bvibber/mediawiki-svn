@@ -133,6 +133,13 @@ $messages['hsb'] = array(
 	'pipeescape-desc' => 'Parserowa funkcija <code>#!</code>, jeli chceš znamješko | schować (znamješko | ma so jenož předstajić, bjez wosebiteje funkcije)',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'pipeescape-desc' => '<code>#!</code> elemzőfüggvény, hogy szükség esetén a függőleges vonal (pipe) karaktert ne értelmezze speciálisan az elemző',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

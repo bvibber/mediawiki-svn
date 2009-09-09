@@ -260,9 +260,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'seealso' => 'Lásd még',
+	'seealso-desc' => 'Lokalizált „Lásd még” szakaszcímek a <code><nowiki><seealso></nowiki></code> tag használatával',
 );
 
 /** Interlingua (Interlingua)

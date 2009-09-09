@@ -2425,6 +2425,7 @@ Magbalik sa:
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Mach
+ * @author Srhat
  * @author Suelnur
  */
 $messages['tr'] = array(
@@ -2458,6 +2459,7 @@ Geri dön:
 	'crosswikiblock-nouser' => '"$3" kullanıcısı bulunamadı.',
 	'crosswikiblock-noexpiry' => 'Geçersiz bitiş: $1.',
 	'crosswikiblock-noreason' => 'Neden belirtilmedi.',
+	'crosswikiblock-notoken' => 'Geçersiz değişiklik dizgeciği',
 	'crosswikiblock-alreadyblocked' => '$3 kullanıcısı zaten engellendi.',
 	'crosswikiblock-noblock' => 'Bu kullanıcı engellenmemiş.',
 	'crosswikiblock-success' => "'''$3''' kullanıcısı başarıyla engellendi.
@@ -2466,6 +2468,7 @@ Geri dön:
 * [[Special:CrosswikiBlock|Engelleme formu]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Yerel engelleme kaldırmaları bu arayüz ile desteklenmez. [[Special:IPBlockList|{{int:ipblocklist}}]] kullanın',
+	'right-crosswikiblock' => 'Diğer vikilerdeki kullanıcıları engelleyin veya kullanıcıların engellemelerini kaldırın',
 );
 
 /** Vèneto (Vèneto)

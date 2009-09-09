@@ -75,6 +75,13 @@ $messages['gsw'] = array(
 	'mwreleases-desc' => 'Fiegt e [[Mediawiki:Mwreleases-list|Lischt vu dr unterstitzte Usgabe]] yy, wu mer au mit API cha abruefe',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'mwreleases-desc' => 'הוספת [[Mediawiki:Mwreleases-list|רשימה]]  של הפצות נתמכות, הזמינות באמצעות ה־API',
+);
+
 /** Hiligaynon (Ilonggo)
  * @author Tagimata
  */

@@ -122,6 +122,13 @@ $messages['hsb'] = array(
 	'minify-desc' => 'Pomjeńšuje wudaće CSS a JavaScript z action=raw',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'minify-desc' => 'Tömöríti a CSS és JavaScript kódot az <code>action=raw</code> kimenetről',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

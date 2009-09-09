@@ -1233,23 +1233,24 @@ $messages['gl'] = array(
 	'right-hiderevision' => 'Agochar revisións aos administradores',
 	'hiderevision-prompt' => 'Número de revisión a eliminar:',
 	'hiderevision-continue' => 'Continuar',
-	'hiderevision-text' => "Isto '''só''' debe ser usado para os seguintes casos:
-* Información persoal inapropiada
-*: ''enderezo do domicilio e números de teléfono, números da seguridade social, etc.''
+	'hiderevision-text' => "Isto '''só''' se debería usar nos seguintes casos:
+* Información persoal inapropiada:
+*: ''domicilio e números de teléfono, números da seguridade social, etc.''
 
 '''O uso indebido deste sistema terá como resultado a perda de privilexios.'''
 
-Os elementos eliminados non serán visíbeis para calquera persoa que visite a páxina web, pero os borrados son rexistrados e poden ser restaurados de forma manual por un administrador da base de datos en caso de erro.",
+Os elementos eliminados non serán visíbeis para ninguén que visite a páxina web, pero os borrados son rexistrados e poden ser restaurados de forma manual por un administrador da base de datos en caso de erro.",
 	'hiderevision-reason' => 'Motivo (rexistrarase de maneira privada):',
 	'hiderevision-submit' => 'Agochar estes datos permanentemente',
 	'hiderevision-tab' => 'Agochar revisión',
 	'hiderevision-link' => 'Contribucións agochadas do usuario',
-	'hiderevision-norevisions' => 'Non se especificaron revisións para eliminar.',
+	'hiderevision-norevisions' => 'Non se especificou ningunha revisión para borrar.',
 	'hiderevision-noreason' => 'Debe describir o motivo para esta eliminación.',
 	'hiderevision-status' => 'Revisión $1: $2',
-	'hiderevision-success' => 'Arquivada e eliminada sen problemas.',
+	'hiderevision-success' => 'Arquivada e borrada sen problemas.',
 	'hiderevision-error-missing' => 'Non se atopou na base de datos.',
-	'hiderevision-error-current' => 'Non se puido eliminar a última edición dunha páxina. Desfaga esta modificación primeiro.',
+	'hiderevision-error-current' => 'Non se puido eliminar a última edición dunha páxina.
+Desfaga esta modificación primeiro.',
 	'hiderevision-error-delete' => 'Non se puido arquivar; foi eliminada con anterioridade?',
 	'hiderevision-archive-status' => 'Revisión eliminada de "$1": $2',
 	'oversight-nodiff' => 'Foi imposíbel seguir as modificacións xa que non existe actualmente unha revisión anterior desta páxina. Pode que:

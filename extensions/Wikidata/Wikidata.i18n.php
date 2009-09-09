@@ -338,6 +338,7 @@ This is visible when a SynTrans is annotated, or while editing a page.
 	'ow_User' => '{{Identical|User}}',
 	'ow_Property' => '{{Identical|Property}}',
 	'ow_Value' => '{{Identical|Value}}',
+	'ow_added' => '{{Identical|Added}}',
 	'ow_Permission_denied' => "Visible on [http://www.omegawiki.org/Special:Copy this OmegaWiki page] (make sure you're not logged in)
 {{Identical|Permission denied}}",
 	'copy' => '{{Identical|Copy}}',
@@ -444,6 +445,7 @@ $messages['af'] = array(
 	'ow_User' => 'Gebruiker',
 	'ow_Property' => 'Eienskap',
 	'ow_Value' => 'Waarde',
+	'ow_added' => 'Bygevoeg',
 	'ow_Permission_denied' => '<h2>Toestemming geweier</h2>',
 	'copy' => 'Wikidata: Kopieer',
 	'ow_show' => 'Wys',

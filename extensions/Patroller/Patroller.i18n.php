@@ -700,6 +700,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'patrol' => 'Szerkesztések járőrözése',
+	'patrol-desc' => 'Továbbfejlesztett járőri felület munkamegosztással',
 	'patrol-endorse' => 'Jóváhagyás',
 	'patrol-revert' => 'Visszaállítás',
 	'patrol-revert-reason' => 'Ok:',

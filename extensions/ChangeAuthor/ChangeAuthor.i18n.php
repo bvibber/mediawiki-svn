@@ -110,6 +110,7 @@ $messages['af'] = array(
 	'changeauthor-search-box' => 'Soek hersienings',
 	'changeauthor-pagenameform-go' => 'Laat waai',
 	'changeauthor-comment' => 'Opmerking:',
+	'changeauthor-changeauthors-multi' => 'Wysig ((PLURAL:$1|outeur|outeurs))',
 	'changeauthor-invalid-username' => 'Ongeldige gebruikersnaam "$1".',
 	'changeauthor-nosuchuser' => 'Geen gebruiker "$1".',
 	'changeauthor-revview' => 'Hersiening #$1 van $2',
@@ -245,14 +246,30 @@ $messages['bar'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'changeauthor' => 'Зьмена аўтара вэрсіі',
-	'changeauthor-desc' => 'Дазваляе зьмяняць аўтара вэрсіі',
-	'changeauthor-title' => 'Зьмена аўтара вэрсіі',
+	'changeauthor' => 'Зьмена аўтарства вэрсіі',
+	'changeauthor-desc' => 'Дазваляе зьмяняць аўтарства вэрсіі',
+	'changeauthor-title' => 'Зьмена аўтарства вэрсіі',
 	'changeauthor-search-box' => 'Пошук вэрсіяў',
 	'changeauthor-pagename-or-revid' => 'Назва старонкі альбо ідэнтыфікатар вэрсіі:',
 	'changeauthor-pagenameform-go' => 'Далей',
 	'changeauthor-comment' => 'Камэнтар:',
 	'changeauthor-changeauthors-multi' => 'Зьмена {{PLURAL:$1|аўтара|аўтараў}}',
+	'changeauthor-explanation-multi' => 'З дапамогай гэтай формы Вы можаце зьмяніць аўтара вэрсіі рэдагаваньняў.
+Проста зьмяніце ніжэй адно ці некалькі імёнаў удзельнікаў, дадайце камэнтар (неабавязковы) і націсьніце кнопку «Зьмяніць аўтара(аў)».',
+	'changeauthor-changeauthors-single' => 'Зьмена аўтара',
+	'changeauthor-explanation-single' => 'З дапамогай гэтай формы можна зьмяніць аўтарства рэдагаваньня. Проста зьмяніце ніжэй імя ўдзельніка, дадайце камэнтар (неабавязковы) і націсьніце кнопку «Зьмяніць аўтара».',
+	'changeauthor-invalid-username' => 'Няслушнае імя ўдзельніка «$1».',
+	'changeauthor-nosuchuser' => 'Няма такога ўдзельніка «$1».',
+	'changeauthor-revview' => 'Вэрсія #$1 з $2',
+	'changeauthor-nosuchtitle' => 'Няма старонкі з назвай «$1».',
+	'changeauthor-weirderror' => 'Адбылася дзіўная памылка.
+Калі ласка, паўтарыце Ваш запыт.
+Калі памылка зноў узьнікне, гэта азначае, што база зьвестак пашкоджана.',
+	'changeauthor-invalidform' => 'Калі ласка, выкарыстоўвайце форму на [[Special:ChangeAuthor|спэцыяльнай старонцы]], а не якую-небудзь іншую.',
+	'changeauthor-success' => 'Ваш запыт быў пасьпяхова выкананы.',
+	'changeauthor-logentry' => 'зьмененае аўтарства $2 $1 з $3 на $4',
+	'changeauthor-logpagename' => 'Журнал зьменаў аўтарства',
+	'right-changeauthor' => 'зьмена аўтарства вэрсіі',
 );
 
 /** Bulgarian (Български)
