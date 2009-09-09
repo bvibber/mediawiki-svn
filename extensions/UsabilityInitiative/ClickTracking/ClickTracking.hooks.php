@@ -42,7 +42,7 @@ class ClickTrackingHooks {
 	 */
 	public static function isUserThrottled(){
 		global $wgClickTrackThrottle;
-		if(rand() % $wgClickTrackThrottle == 0){
+		if( ( $wgClickTrackThrottle >= 0 )  && ( rand() % $wgClickTrackThrottle == 0 )  ){
 			return 'false';
 		}
 		else {
