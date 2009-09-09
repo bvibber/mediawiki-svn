@@ -14,6 +14,7 @@ class POMPageTest extends PHPUnit_Framework_TestCase
 			array('{{sometemplate|var1=value with spaces}}'),
 			array('{{sometemplate|1234|var1=value with spaces}}'),
 			array('{{sometemplate|a=b|b=c|numbered}}'),
+			array('{{sometemplate|a={{othertemplate|x=y}}|b=c|numbered}}'),
 			array("sometext\nbefore first with spaces     {{sometemplate |var1=var2}}\nbefore second {{ someothertemplate|param1 = 0}}   plus another  {{someothertemplate
 |param2 = something
 }}    more text  at the end\n")
