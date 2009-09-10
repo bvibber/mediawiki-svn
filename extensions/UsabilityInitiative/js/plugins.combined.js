@@ -525,7 +525,7 @@ $.fn.suggestions = function() {
 			} else if ( typeof args[0] == 'string' ) {
 				if ( args.length > 1 ) {
 					// Set property values
-					$.suggestions.configure( context, args[0], args[1] );;
+					$.suggestions.configure( context, args[0], args[1] );
 				} else if ( returnValue == null ) {
 					// Get property values, but don't give access to internal data - returns only the first
 					returnValue = ( args[0] in context.config ? undefined : context.config[args[0]] );
@@ -557,7 +557,7 @@ $.fn.suggestions = function() {
 				.mouseover( function( e ) {
 					$.suggestions.highlight( context, $( e.target ).closest( '.suggestions-results div' ), false );
 				} )
-				.addClass( 'suggestions' ) // TODO: use own CSS
+				.addClass( 'suggestions' )
 				.append(
 					$( '<div />' ).addClass( 'suggestions-results' )
 						// Can't use click() because the container div is hidden when the textbox loses focus. Instead,
@@ -1897,7 +1897,7 @@ fn: {
 			var position = wikitext.indexOf( text, offset );
 			// Update offset to avoid stumbling on duplicate headings
 			if ( position > offset ) {
-				offset = position;
+				offset = position + 1;
 			} else if ( position == -1 ) {
 				// Not sure this is possible, or what should happen
 				continue;
