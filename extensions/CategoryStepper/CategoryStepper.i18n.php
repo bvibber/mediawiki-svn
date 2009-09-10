@@ -56,6 +56,15 @@ $messages['arz'] = array(
 	'categorystepper-start' => '(بداية التصنيف)',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'categorystepper-desc' => 'Паказвае навігацыйную панэль, якая дазваляе пераходзіць наперад і назад па альфабэтнаму сьпісу катэгорыяў ў якіх знаходзіцца старонка',
+	'categorystepper-end' => '(Канец катэгорыяў)',
+	'categorystepper-start' => '(Пачатак катэгорыяў)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -676,9 +676,13 @@ $messages['el'] = array(
 	'grouppermissions-sort-admin' => 'Διοίκηση',
 	'grouppermissions-sort-tech' => 'Τεχνικό',
 	'grouppermissions-sort-misc' => 'Διάφορα',
+	'grouppermissions-log-add' => 'προστεθειμένη ομάδα "$2"',
+	'grouppermissions-log-delete' => 'διαγραμμένη ομάδα "$2"',
+	'grouppermissions-sp-sort' => 'Ταξινόμηση αδειών',
 	'grouppermissions-sp-save' => 'Αποθηκεύστε',
 	'grouppermissions-sp-remove' => 'αφαίρεση',
 	'right-search' => 'Αναζήτηση του βίκι',
+	'right-recentchanges' => 'Προβολή προσφάτων αλλαγών',
 );
 
 /** Esperanto (Esperanto)

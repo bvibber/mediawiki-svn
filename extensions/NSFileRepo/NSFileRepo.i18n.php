@@ -148,6 +148,13 @@ $messages['ksh'] = array(
 	'nsfilerepo-desc' => 'Jit för huhjelaade Datteije Müjjeleschkeijte, di op de Name vun Appachtemangs opboue.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'nsfilerepo-desc' => 'Gëtt Nummraum baséiert Fonctioune fir eropgeluede Fichieren',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

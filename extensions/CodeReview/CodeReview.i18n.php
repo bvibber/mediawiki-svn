@@ -188,6 +188,7 @@ $messages['qqq'] = array(
 	'codereview-subtitle' => '{{Identical|For $1}}
 ----
 $1 = Repository name',
+	'codereview-reply-link' => '{{Identical|Reply}}',
 	'codereview-email-subj2' => 'Subject of an e-mail sent to a user whose revision has been followed upon.
 * <code>$1</code> – Repository name
 * <code>$2</code> – Number of the original revision (which has been followed upon)',

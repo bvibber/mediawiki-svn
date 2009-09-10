@@ -76,10 +76,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'mwreleases-desc' => 'הוספת [[Mediawiki:Mwreleases-list|רשימה]]  של הפצות נתמכות, הזמינות באמצעות ה־API',
+	'mwreleases-desc' => 'הוספת [[Mediawiki:Mwreleases-list|רשימה]] של גרסאות נתמכות, הזמינה באמצעות ה־API',
 );
 
 /** Hiligaynon (Ilonggo)
@@ -185,6 +186,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'mwreleases-desc' => "Adiciona uma [[Mediawiki:Mwreleases-list|lista]] de 'releases' suportados, acessível via API",
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mwreleases-desc' => "Aggiunge 'na [[Mediawiki:Mwreleases-list|liste]] de versiune supportate, accessibbele ausanne le API",
 );
 
 /** Russian (Русский)

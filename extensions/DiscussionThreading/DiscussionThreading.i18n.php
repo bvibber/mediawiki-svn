@@ -24,6 +24,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'discussionthreading-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'discussionthreading-replysection' => '{{Identical|Reply}}',
 	'discussionthreading-threadnewsection' => '{{Identical|New}}',
 );
 
@@ -31,6 +32,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'discussionthreading-replysection' => 'antwoord',
 	'discussionthreading-threadnewsection' => 'nuut',
 );
 

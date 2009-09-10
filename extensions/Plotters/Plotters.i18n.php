@@ -286,6 +286,9 @@ $messages['he'] = array(
 	'plotters-desc' => 'מתן אפשרות לשימוש ב־JavaScript מותאם אישית בתגיות jsplot',
 	'plotters-missing-script' => 'לא הוגדר סקריפט.',
 	'plotters-missing-arguments' => 'לא צוינו ארגומנטים.',
+	'plotters-excessively-long-scriptname' => 'שם הסקריפט ארוך מדי.
+אנא הגדירו שם לסקריפט באורך 255 תווים לכל היותר.',
+	'plotters-no-data' => 'לא סופקו נתונים.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

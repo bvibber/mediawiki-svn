@@ -280,6 +280,7 @@ $messages['el'] = array(
 	'errorhandler-error-compile-warning' => 'Προειδοποίηση μεταγλώττισης',
 	'errorhandler-error-user-error' => 'Σφάλμα χρήστη',
 	'errorhandler-error-user-warning' => 'Προειδοποίηση χρήστη',
+	'errorhandler-error-user-notice' => 'Ειδοποίηση χρήστη',
 	'errorhandler-error-strict' => 'Υψηλά στάνταρ',
 	'errorhandler-msg-text' => '$1 : $2 στο $3 (γραμμή $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (γραμμή <b>$4</b>)',

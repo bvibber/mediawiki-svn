@@ -2073,6 +2073,7 @@ Lépj kapcsolatba egy [[Special:ListUsers/sysop|adminisztrátorral]].',
 	'openidchooseexisting' => 'Egy létező felhasználónév erről a wikiről:',
 	'openidchoosepassword' => 'jelszó:',
 	'openidconvertinstructions' => 'Ezzel az űrlappal átállíthatod a felhasználói fiókodat, hogy egy OpenId URL-t használjon, vagy hozzáadhatsz több OpenID URL-t',
+	'openidconvertoraddmoreids' => 'Átalakítás OpenID-ra, vagy másik OpenID URL hozzáadása',
 	'openidconvertsuccess' => 'Sikeres átállás OpenID-re',
 	'openidconvertsuccesstext' => 'Sikeresen átállítottad az OpenID-det erre: $1.',
 	'openidconvertyourstext' => 'Ez az OpenID már a tiéd.',
@@ -2093,11 +2094,23 @@ Ha már regisztráltál korábban, [[Special:UserLogin|bejelentkezhetsz]] a felh
 Számos [http://openid.net/get/ OpenID szolgáltató] van, lehetséges, hogy van már OpenID-fiókod egy másik weboldalon.',
 	'openidupdateuserinfo' => 'Személyes információk frissítése',
 	'openiddelete' => 'OpenID törlése',
+	'openiddelete-text' => 'A {{int:openiddelete-button}} gomb megnyomásakor eltávolítod a következő OpenID-t a felhasználói fiókodból: $1.
+Ezután többé nem fogsz tudni bejelentkezni ezzel az OpenID-vel.',
 	'openiddelete-button' => 'Megerősítés',
+	'openiddelete-sucess' => 'Az OpenID sikeresen eltávolítva a felhasználói fiókodból.',
+	'openiddelete-error' => 'Hiba történt az OpenID felhasználói fiókodból való eltávolításakor.',
+	'openid-prefstext' => '[http://openid.net/ OpenID] beállítások',
 	'openid-pref-hide' => 'Az OpenID-d elrejtése a felhasználói lapodon, amikor OpenID-vel jelentkezel be.',
+	'openid-pref-update-userinfo-on-login' => 'A következő információ frissítése az OpenID fiókom alapján minden bejelentkezéskor:',
+	'openid-urls-desc' => 'A felhasználói fiókodhoz kapcsolt OpenID-k:',
+	'openid-urls-action' => 'Művelet',
 	'openid-urls-delete' => 'Törlés',
 	'openid-add-url' => 'Új OpenID hozzáadása',
+	'openidsigninorcreateaccount' => 'Bejelentkezés vagy új felhasználói fiók létrehozása',
 	'openid-provider-label-openid' => 'OpenID URL megadása',
+	'openid-provider-label-google' => 'Bejelentkezés a Google felhasználói fiókoddal',
+	'openid-provider-label-yahoo' => 'Bejelentkezés a Yahoo felhasználói fiókoddal',
+	'openid-provider-label-aol' => 'Add meg az AOL felhasználóneved',
 	'openid-provider-label-other-username' => 'Add meg a(z) $1 felhasználóneved',
 );
 
@@ -4265,6 +4278,7 @@ Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan re
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Ravichandra
  * @author Veeven
  */
@@ -4281,14 +4295,19 @@ $messages['te'] = array(
 	'openidemail' => 'ఈ-మెయిల్ చిరునామా',
 	'openidlanguage' => 'భాష',
 	'openidtimezone' => 'కాలమానం',
+	'openidchooseinstructions' => 'సభ్యులందరికీ ముద్దు పేరు ఉండవలెను. 
+క్రింద పేర్కొన్న వాటిలో ఒకటి ఎంచుకోండి',
 	'openidchoosefull' => 'మీ పూర్తి పేరు ($1)',
 	'openidchoosemanual' => 'మీరు ఎన్నుకున్న పేరు:',
 	'openidchooseexisting' => 'ఈ వికీలో ఇప్పటికే ఉన్న ఖాతా:',
 	'openidchoosepassword' => 'సంకేతపదం:',
 	'openidconvertyourstext' => 'అది ఇప్పటికే మీ ఓపెన్ఐడీ.',
+	'openidconvertothertext' => 'ఇది వేరొకరి ఓపెన్ ఐడి',
 	'openidnousername' => 'వాడుకరిపేరు ఇవ్వలేదు.',
+	'openiddelete' => 'ఓపెన్ ఐడి తొలగించు',
 	'openid-urls-delete' => 'తొలగించు',
 	'openid-provider-label-google' => 'మీ గూగుల్ ఖాతాని ఉపయోగించి ప్రవేశించండి',
+	'openid-provider-label-aol' => 'మీ ఎఓఎల్ స్క్రీన్ నామము ఇవ్వండి',
 );
 
 /** Tetum (Tetun)

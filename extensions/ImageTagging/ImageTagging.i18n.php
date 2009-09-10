@@ -441,6 +441,7 @@ $messages['el'] = array(
 	'imagetagging-articletotag' => 'Σελίδα στην οποία να μπει ετικέτα',
 	'imagetagging-imghistory' => 'Ιστορικό',
 	'imagetagging-images' => 'εικόνες',
+	'imagetagging-inthisimage' => 'Σε αυτήν την εικόνα: $1',
 	'imagetagging-new' => '<sup><span style="color:red">Νέο!</span></sup>',
 	'imagetagging-removetag' => 'αφαίρεση ετικέτας',
 	'imagetagging-done-button' => 'Η τοποθέτηση ετικετών ολοκληρώθηκε',

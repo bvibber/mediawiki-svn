@@ -350,6 +350,7 @@ Aktualny limit {{PLURAL:$3|jo 1 wersija|stej $3 wersiji|su $3 wersije|jo $3 wers
  */
 $messages['el'] = array(
 	'duplicator' => 'Παραγωγή διπλότυπου σελίδας',
+	'duplicator-toolbox' => 'Δημιουργία διπλοτύπου αυτής της σελίδας',
 	'duplicator-options' => 'Επιλογές',
 	'duplicator-source' => 'Πηγή:',
 	'duplicator-dest' => 'Προορισμός:',

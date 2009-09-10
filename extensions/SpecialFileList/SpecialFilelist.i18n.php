@@ -138,6 +138,10 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'filelist' => 'Roll restroù',
+	'filelist-desc' => '[[Special:Filelist|Pajenn dibar]] da rollañ ar restroù bet enporzhiet',
+	'filelist-show-list' => 'Diskouez ar roll',
+	'filelist-show-gallery' => 'Diskouez ar skeudennaoueg',
+	'filelist-image-desc' => 'deskriv',
 );
 
 /** Bosnian (Bosanski)

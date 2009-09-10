@@ -72,9 +72,16 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'categorywatch-desc' => 'Пашырае функцыянальнасьць сьпісу назіраньняў магчымасьцю паведамленьняў пра зьмены ў старонках, якія ўваходзяць у склад катэгорыяў са сьпісу назіраньня',
+	'categorywatch-emailsubject' => 'Зьмены, зьвязаныя з  катэгорыяй «$1» са сьпісу назіраньня',
+	'categorywatch-catmovein' => '$1 перанесеная ў катэгорыю $2 з $3',
+	'categorywatch-catmoveout' => '$1 перанесеная з катэгорыі $2 у $3',
+	'categorywatch-catadd' => '$1 дададзеная ў катэгорыю $2',
+	'categorywatch-catsub' => '$1 выдаленая з катэгорыі $2',
+	'categorywatch-autocat' => 'Аўтаматычна назіраецца $1',
 );
 
 /** Bulgarian (Български)
@@ -182,6 +189,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'categorywatch-desc' => 'Εκτείνει τη λειτουργικότητα της λίστας παρακολούθησης για να περιληφθούν ειδοποιήσεις σχετικά με τις αλλαγές ιδιότητας μέλους των παρακολουθούμενων κατηγοριών',
 	'categorywatch-emailsubject' => 'Δραστηριότητα που περιλαμβάνει την παρακολουθούμενη κατηγορία $1',
 	'categorywatch-catmovein' => 'Η $1 μετακινήθηκε στην $2 από την $3',
 	'categorywatch-catmoveout' => 'Η $1 μετακινήθηκε έξω από την $2 στην $3',

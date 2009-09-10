@@ -527,6 +527,24 @@ $messages['pl'] = array(
 	'mostrevisors-header' => "'''Ta strona zawiera {{PLURAL:$1|stronę|listę $1 stron}} z największa liczbą odwiedzających na tej wiki.'''",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mostrevisors' => 'Pàgine con pì revisor',
+	'mostrevisors-header' => "'''Sta pàgina-sì a lista {{PLURAL:$1|la pàgina|le $1 pàgine}} con pì revisor an sla wiki'''.",
+	'mostrevisors-limitlinks' => 'Mosta fin a $1 pàgine',
+	'mostrevisors-namespace' => 'Spassi nominal:',
+	'mostrevisors-none' => 'Pa trovà gnun-e pàgine.',
+	'mostrevisors-ns-header' => "'''Sta pàgina-sì a lista {{PLURAL:$1|la pàgina|le $1 pàgine}} con pì revisor ant lë spassi nominal $2.'''",
+	'mostrevisors-showing' => 'Listé {{PLURAL:$1|la pàgina|$1 pàgine}}:',
+	'mostrevisors-submit' => 'Va',
+	'mostrevisors-showredir' => 'Mosta le pàgine ëd rediression',
+	'mostrevisors-hideredir' => 'Stërma le pàgine ëd rediression:',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editor}}',
+	'mostrevisors-viewcontributors' => 'Varda ij contribudor prinsipaj',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

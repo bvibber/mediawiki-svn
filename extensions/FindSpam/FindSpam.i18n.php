@@ -40,6 +40,7 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'findspam-ip' => 'IP-adres:',
 	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Geen bydraes gevind nie',
 );
 
 /** Amharic (አማርኛ)

@@ -132,6 +132,13 @@ Pšosym pócakaj wokognuśe a klikni pótom na 'Znowego' we swójom wobglědowak
 	'acct_creation_global_soft_throttle_hit-desc' => 'Załoženje wužywarskich kontow wobgranicowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'acct_creation_global_soft_throttle_hit-desc' => 'Παρεμπόδιση δημιουργίας χρηστών',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

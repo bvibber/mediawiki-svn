@@ -111,6 +111,7 @@ $messages['af'] = array(
 	'changeauthor-pagenameform-go' => 'Laat waai',
 	'changeauthor-comment' => 'Opmerking:',
 	'changeauthor-changeauthors-multi' => 'Wysig ((PLURAL:$1|outeur|outeurs))',
+	'changeauthor-changeauthors-single' => 'Wysig outeur',
 	'changeauthor-invalid-username' => 'Ongeldige gebruikersnaam "$1".',
 	'changeauthor-nosuchuser' => 'Geen gebruiker "$1".',
 	'changeauthor-revview' => 'Hersiening #$1 van $2',
@@ -531,6 +532,7 @@ $messages['el'] = array(
 	'changeauthor-changeauthors-single' => 'Αλλαγή δημιουργού',
 	'changeauthor-invalid-username' => 'Άκυρο όνομα-χρήστη  "$1".',
 	'changeauthor-nosuchuser' => 'Κανένας χρήστης ονόματι "$1".',
+	'changeauthor-logpagename' => 'Ημερολόγιο αλλαγών ανά χρήστη',
 );
 
 /** Esperanto (Esperanto)

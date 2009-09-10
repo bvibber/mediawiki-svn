@@ -61,6 +61,8 @@ $messages['af'] = array(
 	'edituser-dosearch' => 'Soek',
 	'edituser-nouser' => 'Die gebruiker bestaan nie',
 	'edituser-exempt' => 'Die gebruiker kan nie gewysig word nie',
+	'right-edituser' => 'Verander ander gebruikers se voorkeure',
+	'right-edituser-exempt' => 'Ander kan nie die gebruiker se voorkeure verander nie',
 );
 
 /** Amharic (አማርኛ)

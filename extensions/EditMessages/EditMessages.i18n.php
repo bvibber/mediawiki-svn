@@ -287,6 +287,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'editmessages' => 'Επεξεργασία μηνυμάτων',
 	'editmsg-target' => 'Μήνυμα στόχος:',
 	'editmsg-search' => 'Αναζήτηση',
 	'editmsg-new-search' => 'Νέα αναζήτηση',

@@ -89,6 +89,15 @@ $messages['arz'] = array(
 	'call-save-failed' => 'النص التالى لم يتم حفظه لصفحة <big>[[$1]]</big> لأن هذه الصفحة موجودة بالفعل.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'call' => 'Выклік',
+	'call-desc' => 'Стварае гіпэрспасылку на шаблён (альбо звычайную вікі-старонку) з перадачай парамэтраў. Можа выкарыстоўвацца ў камандным радку браўзэра альбо ў вікі-тэксьце',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

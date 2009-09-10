@@ -50,6 +50,18 @@ $messages['arz'] = array(
 	'categoryintersection-results' => 'البحث أرجع $1 {{PLURAL:$1|نتيجة|نتيجة}}.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'categoryintersection' => 'Перасячэньне катэгорый',
+	'categoryintersection-desc' => 'Падтрымлівае табліцу з хэш-значэньнямі для [[Special:CategoryIntersection|перасячэньня катэгорыяў]] на старонцы',
+	'categoryintersection-doit' => 'Сьпіс старонак ва ўсіх гэтых катэгорыях',
+	'categoryintersection-maxcategories' => 'Максымальная дазволеная колькасьць катэгорыяў для перасячэньня — $1.',
+	'categoryintersection-results' => 'Пошук даў $1 {{PLURAL:$1|вынік|вынікі|вынікаў}}.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

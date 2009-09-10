@@ -534,6 +534,7 @@ $messages['el'] = array(
 	'crosswikiblock-expiry' => 'Λήξη:',
 	'crosswikiblock-reason' => 'Λόγος:',
 	'crosswikiblock-submit' => 'Φραγή αυτού του χρήστη',
+	'crosswikiblock-nocreate' => 'Παρεμπόδιση δημιουργίας λογαριασμού',
 	'crosswikiunblock-reason' => 'Λόγος',
 	'crosswikiunblock-submit' => 'Άρση φραγής αυτού του χρήστη',
 	'crosswikiblock-noexpiry' => 'Μη έγκυρη λήξη: $1.',

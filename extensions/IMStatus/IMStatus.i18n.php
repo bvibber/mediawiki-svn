@@ -360,6 +360,8 @@ $messages['el'] = array(
 	'imstatus_min' => 'ελαχ',
 	'imstatus_or' => 'ή',
 	'imstatus_your_name' => 'το όνομά σας $1',
+	'imstatus_gtalk_height' => 'ύψος κουτιού σε πίξελ',
+	'imstatus_gtalk_width' => 'πλάτος κουτιού σε πίξελ',
 	'imstatus_icq_id' => 'η ταυτότητα ICQ σας',
 );
 

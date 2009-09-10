@@ -615,6 +615,9 @@ $messages['he'] = array(
 	'patrol-revert-reason' => 'סיבה:',
 	'patrol-skip' => 'דילוג',
 	'patrol-skipped-ok' => 'התעלמות מהעריכה.',
+	'patrol-reasons' => '* השחתה פשוטה
+* נסיון של חדשים
+* ראו בדף השיחה',
 	'patrol-resume' => 'לחצו כאן להמשך.',
 );
 

@@ -183,6 +183,14 @@ $messages['hsb'] = array(
 	'tog-microid' => '<a href="http://microid.org/">MicroID</a> publikować, zo by so konto z wonkownymi słužbami potwjerdźiło',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'microid-desc' => '[http://www.microid.org/ MicroID] hozzáadása a szerkesztői lapokhoz, a fiók külső szolgáltatókkal történő hitelesítésére',
+	'tog-microid' => '<a href="http://microid.org/">MicroID</a> közzététele a fiók külső szolgáltatókkal való hitelesítésére',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

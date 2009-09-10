@@ -1068,6 +1068,13 @@ $messages['pl'] = array(
 	'right-authorprotect' => 'Zabezpieczanie stron autorskich',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'authorprotect' => 'Protegg la pàgina dai nen-autor',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

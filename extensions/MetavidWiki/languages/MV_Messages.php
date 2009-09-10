@@ -5014,6 +5014,7 @@ $messages['lb'] = array(
 	'mv_path_type_wiki_title' => 'Wiki-Medientitel',
 	'mv_path_type_mp4_stream' => 'MP4 Stream-Server',
 	'mv_duration_label' => 'Dauer',
+	'mv_file_desc_label' => 'Message vun der Beschreiwung vum Stream',
 	'mv_delete_stream_file' => 'Referenz vum Stream-Fichier läschen',
 	'mv_save_changes' => 'Ännerunge späicheren',
 	'mv_file_with_same_desc' => 'Feeler: Et gëtt schonn e Fichier mat dem selweschte Beschreiwungsschlëssel <i>$1</i>',

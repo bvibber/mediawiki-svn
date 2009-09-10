@@ -288,6 +288,7 @@ Nagrata dataja by měła mě boka a opcionelnu pśicynu wopśimjeś, kótarejž 
  */
 $messages['el'] = array(
 	'deletebatch-caption' => 'Λίστα σελίδων:',
+	'deletebatch-as' => 'Τρέξιμο του σκριπτ ως:',
 	'deletebatch-or' => '<b>ή</b>',
 	'deletebatch-delete' => 'Διαγραφή',
 	'deletebatch-select-yourself' => 'Εσείς',

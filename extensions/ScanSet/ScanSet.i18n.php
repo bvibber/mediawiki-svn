@@ -37,6 +37,16 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'scanset-desc' => 'Kyk na geskandeerde prente van Andreas Grosz se CD/DVD-stelle',
+	'scanset_no_name' => 'Fout: U moet \'n naam vir die geskandeerde stel verskaf, byvoorbeeld &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Fout: Die geskandeerde stel is ongeldige of nie gevind nie.',
+	'scanset_unrecognised_index_format' => 'Fout: Onbekende indeks formaat',
+	'scanset_opendir_error' => 'Fout: kan nie gids $1 oopmaak nie',
+	'scanset_no_files' => 'Fout: Daar is geen lêers in die gespesifiseerde gids nie.',
+	'scanset_no_volumes' => 'Fout: Geen gids vir volume gevind nie',
+	'scanset_missing_index_file' => 'Fout: Indekslêer $1 nie gevind nie',
+	'scanset_index_file_error' => 'Fout: Fout in die indekslêer op lyn $1',
+	'scanset_invalid_volume' => 'Fout: Ongeldige volume',
 	'scanset_next' => 'Volgende &gt;',
 	'scanset_prev' => '&lt; Vorige',
 );
@@ -1002,6 +1012,24 @@ $messages['pl'] = array(
 	'scanset_invalid_volume' => 'Błąd – nieprawidłowy wolumin',
 	'scanset_next' => 'Nast. &gt;',
 	'scanset_prev' => '&lt; Poprz.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'scanset-desc' => "Varda le figure dle pàgine scanerisà dai CD/DVD d'Andreas Grosz",
+	'scanset_no_name' => 'Eror: It deuve spessifiché un nòm dë scan set, për esempi &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Eror: Scan set pa bon o mancant.',
+	'scanset_unrecognised_index_format' => "Eror: Formà dl'ìndes pa conossù",
+	'scanset_opendir_error' => 'Eror: A peul pa deurbe la directory $1',
+	'scanset_no_files' => 'Eror: pa gnun file present ant la directory spessifià.',
+	'scanset_no_volumes' => 'Eror: pa gnun-e directory ëd volum trovà',
+	'scanset_missing_index_file' => 'Eror: File ìndes $1 pa trovà',
+	'scanset_index_file_error' => 'Eror: Eror ant ël formà dël file ìndes a la linia $1',
+	'scanset_invalid_volume' => 'Eror: Volum pa bon',
+	'scanset_next' => "&gt; ch'a ven",
+	'scanset_prev' => '&lt; Prima',
 );
 
 /** Pashto (پښتو)

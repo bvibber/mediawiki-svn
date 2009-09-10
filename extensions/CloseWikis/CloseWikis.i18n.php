@@ -393,8 +393,10 @@ $messages['el'] = array(
 	'closewikis-page-err-opened' => 'Το βίκι δεν είναι κλειστό',
 	'closewikis-list-header-wiki' => 'Βίκι',
 	'closewikis-list-header-dispreason' => 'Προβαλλόμενη αιτία',
+	'closewikis-log' => 'Ημερολόγιο κλεισίματος βίκι',
 	'closewikis-log-close' => 'έκλεισε $2',
 	'closewikis-log-reopen' => 'ξανάνοιξε $2',
+	'right-editclosedwikis' => 'Επεξεργασία κλεισμένων βίκι',
 	'right-closewikis' => 'Κλείσιμο των βίκι',
 );
 

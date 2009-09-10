@@ -171,11 +171,11 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'transliterator-desc' => 'אספקת פונקציות פענוח לצורך תעתוק',
-	'transliterator-error-ambiguous' => 'כלל רב־משמעי <code>$1</code> תחת [[MediaWiki:$2]]',
-	'transliterator-error-syntax' => 'תחביר שגוי <code>$1</code> תחת [[MediaWiki:$2]]',
+	'transliterator-desc' => 'הוספת פונקציות פענוח לתעתוק',
+	'transliterator-error-ambiguous' => 'כלל רב־משמעי <code>$1</code> בדף [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'תחביר שגוי <code>$1</code> בדף [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'יש יותר מ{{PLURAL:$1|כלל אחד|־$1 כללים}} בדף [[MediaWiki:$2]]',
-	'transliterator-error-rulesize' => 'לכלל <code>$1</code> יש יותר מ{{PLURAL:$3|תו אחד|־$3 תווים}} לשמאל תחת [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'בכלל <code>$1</code> יש יותר מ{{PLURAL:$3|תו אחד|־$3 תווים}} בשמאל בדף [[MediaWiki:$2]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

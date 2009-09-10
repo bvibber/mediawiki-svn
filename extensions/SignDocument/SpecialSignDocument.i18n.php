@@ -159,6 +159,7 @@ $messages['af'] = array(
 	'sig-private' => '<i>Privaat</i>',
 	'sign-viewfield-reviewcomment' => 'Opmerking',
 	'sign-review-comment' => 'Opmerking',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ondertekende [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Amharic (አማርኛ)
@@ -901,6 +902,8 @@ $messages['el'] = array(
 	'sign-phone' => 'Αριθμός τηλεφώνου:',
 	'sign-bday' => 'Ηλικία:',
 	'sign-email' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> υποδεικνύει τα υποχρεωτικά πεδία.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Σημείωση: Ακαταχώρητες πληροφορίες θα είναι ορατές στους μεσολαβητές.</i></small>',
 	'sign-list-anonymous' => 'Ανώνυμη κατάταξη',
 	'sign-list-hideaddress' => 'Μην περιλαβάνετε τη διεύθυνση',
 	'sign-list-hideextaddress' => 'Μην περιλαμβάνετε πόλη, πολιτεία, Τ.Κ., ή χώρα',

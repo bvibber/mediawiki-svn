@@ -709,6 +709,24 @@ $messages['pl'] = array(
 	'postcomment_nopostingtoadd' => 'Brak wiadomości do dodania.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'postcomment_desc' => "A përmëtt d'anserì coment diretament ant le pàgine ëd discussion.",
+	'postcomment_discussionprotected' => "Sta pàgina ëd discussin-sì a l'é stàita protegiùa da àutre modìfiche.",
+	'postcomment_notloggedin' => 'It ses pa intrà.',
+	'postcomment_youareloggedinas' => 'It ses intrà con $1',
+	'postcomment_addcommentdiscussionpage' => 'Gionta tò coment an sta pàgina ëd discussion-sì',
+	'postcomment_leavemessagefor' => 'Lassa un messagi për $1',
+	'postcomment_post' => 'Ansëriss',
+	'postcomment_on' => 'Ël',
+	'postcomment_said' => "a l'ha dit",
+	'postcomment_invalidrequest' => 'Arcesta pa bon-a.',
+	'postcomment_replyto' => 'Arspond a $1',
+	'postcomment_nopostingtoadd' => 'Pa gnun ansëriment da gionté.',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

@@ -84,10 +84,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'semanticinternalobjects-desc' => 'הגדרות הפריטים הפנימיים במדיהוויקי הסמנטי',
+	'semanticinternalobjects-desc' => 'הגדרות העצמים הפנימיים במדיה־ויקי הסמנטי',
 );
 
 /** Hiligaynon (Ilonggo)
@@ -172,6 +173,13 @@ $messages['pms'] = array(
  */
 $messages['pt-br'] = array(
 	'semanticinternalobjects-desc' => 'Definição de objetos internos no Semantic MediaWiki',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'semanticinternalobjects-desc' => "'Mboste le oggette inderne jndr'à MediaUicchi Semandiche",
 );
 
 /** Russian (Русский)
