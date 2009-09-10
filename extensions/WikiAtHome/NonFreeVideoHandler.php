@@ -1,7 +1,7 @@
 <?php
 /*
  * creates an stub for non-free video that is waiting to be transcoded once the free format file is available
- * it re-maps all requests to the free format file. (only transcoding jobs will recive the non-free file)
+ * it re-maps all requests to the free format file. (only transcoding jobs will get the non-free file)
  */
 class NonFreeVideoHandler extends MediaHandler {
 	const METADATA_VERSION = 22;
@@ -60,7 +60,7 @@ class NonFreeVideoHandler extends MediaHandler {
 		if ( isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if( isset($metadata['video'] )){
+		if( isset( $metadata['video'] )){
 			foreach ( $metadata['video'] as $stream ) {
 				return array(
 					$stream->width,
@@ -176,16 +176,10 @@ class NonFreeVideoHandler extends MediaHandler {
 					return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
 				}
 			}
-
 			return new OggTransformOutput( $file, $oggThumbUrl, $dstUrl, $width, $height, $length, $dstPath, $noIcon=false, $offset=0, 0);
-			//output using oggHandler:
-			//
-			//$oggHandle =  MediaHandler::getHandler( 'application/ogg' );
-			//return $oggHandle->doTransform( $file, "{$thumbPath}.ogg", $oggFile->getUrl(), $params);
-
 		}else{
 			//output our current progress
-			return new MediaQueueTransformOutput($file, $width, $height, $wjm->getDonePerc() );
+			return new MediaQueueTransformOutput($file, null, $width, $height, $wjm->getDonePerc() );
 		}
 	}
 
@@ -299,12 +293,13 @@ class NonFreeVideoHandler extends MediaHandler {
 class MediaQueueTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
 
-	function __construct( $file, $width, $height, $percDone )
+	function __construct( $file, $thumbUrl, $width, $height, $percDone )
 	{
 		$this->file = $file;
 		$this->width = round( $width );
 		$this->height = round( $height );
 		$this->percDone = $percDone;
+		$this->url = $thumbUrl;
 	}
 
 	function toHtml( $options = array() ) {
