@@ -1042,7 +1042,7 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'login'                      => 'Log in',
 'nav-login-createaccount'    => 'Log in / create account',
 'loginprompt'                => 'You must have cookies enabled to log in to {{SITENAME}}.',
-'userlogin'                  => 'Log in / create account',
+'userlogin'                  => 'Log in',
 'logout'                     => 'Log out',
 'userlogout'                 => 'Log out',
 'notloggedin'                => 'Not logged in',
@@ -2147,6 +2147,24 @@ If the problem persists, contact an [[Special:ListUsers/sysop|administrator]].',
 'upload-too-many-redirects' => 'The URL contained too many redirects',
 'upload-unknown-size'       => 'Unknown size',
 'upload-http-error'         => 'An HTTP error occured: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Access denied',
+'img-auth-nopathinfo'   => 'Missing PATH_INFO.
+Your server is not set up to pass this information.
+It may be CGI-based and cannot support img_auth.
+See http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-notindir'     => 'Requested path is not in the configured upload directory.',
+'img-auth-badtitle'     => 'Unable to construct a valid title from "$1".',
+'img-auth-nologinnWL'   => 'You are not logged in and "$1" is not in the whitelist.',
+'img-auth-nofile'       => 'File "$1" does not exist.',
+'img-auth-isdir'        => 'You are trying to access a directory "$1".
+Only file access is allowed.',
+'img-auth-streaming'    => 'Streaming "$1".',
+'img-auth-public'       => 'The function of img_auth.php is to output files from a private wiki.
+This wiki is configured as a public wiki.
+For optimal security, img_auth.php is disabled.',
+'img-auth-noread'       => 'User does not have access to read "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Could not reach URL',
@@ -4175,20 +4193,5 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 'htmlform-submit'              => 'Submit',
 'htmlform-reset'               => 'Undo changes',
 'htmlform-selectorother-other' => 'Other',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Add category',
-'ajax-add-category-submit'     => 'Add',
-'ajax-confirm-title'           => 'Confirm action',
-'ajax-confirm-prompt'          => 'You can provide an edit summary below.
-Click "Save" to save your edit.',
-'ajax-confirm-save'            => 'Save',
-'ajax-add-category-summary'    => 'Add category "$1"',
-'ajax-remove-category-summary' => 'Remove category "$1"',
-'ajax-confirm-actionsummary'   => 'Action to take:',
-'ajax-error-title'             => 'Error',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'It was not possible to remove this category.
-This usually occurs when the category has been added to the page in a template.',
 
 );
