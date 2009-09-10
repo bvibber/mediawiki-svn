@@ -139,8 +139,11 @@ $messages['cs'] = array(
  */
 $messages['da'] = array(
 	'optin-try' => 'Prøv Beta',
+	'tooltip-pt-optin-try' => 'Afprøv nye funktioner',
 	'optin-leave' => 'Forlad Beta',
+	'tooltip-pt-optin-leave' => 'Slå de nye funktioner fra igen',
 	'optin-feedback' => 'Tilbagemelding om Beta',
+	'tooltip-pt-optin-feedback' => 'Giv en tilbagemelding om dine oplevelser med de nye funktioner',
 );
 
 /** German (Deutsch)

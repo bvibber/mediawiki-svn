@@ -63,6 +63,7 @@ $messages['be-tarask'] = array(
 	'simplesearch' => 'Просты пошук',
 	'simplesearch-desc' => 'Дадае дадатковыя магчымасьці да спрошчанага пошуку ў афармленьні «Вэктар»',
 	'simplesearch-search' => 'Пошук',
+	'simplesearch-containing' => 'утрымлівае...',
 );
 
 /** Bengali (বাংলা)
@@ -108,6 +109,7 @@ $messages['cs'] = array(
 	'simplesearch' => 'Zjednodušené hledání',
 	'simplesearch-desc' => 'Rozšiřuje funkcionalitu zjednodušeného hledání ve vzhledu Vektor',
 	'simplesearch-search' => 'Hledat',
+	'simplesearch-containing' => 'obsahující…',
 );
 
 /** Danish (Dansk)
@@ -135,6 +137,7 @@ $messages['dsb'] = array(
 	'simplesearch' => 'Jadnore pytanje',
 	'simplesearch-desc' => 'Pśidawa zjadnorjonemu pytanjeju Vectora wósebnu funkcionalnosć.',
 	'simplesearch-search' => 'Pytaś',
+	'simplesearch-containing' => 'wopśimujo...',
 );
 
 /** Greek (Ελληνικά)
@@ -196,11 +199,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'simplesearch' => 'Recherche simple',
 	'simplesearch-desc' => "Ajoute des fonctionnalités à la recherche simplifiée de l'habillage Vector",
 	'simplesearch-search' => 'Rechercher',
+	'simplesearch-containing' => 'contenant...',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -255,6 +260,7 @@ $messages['hsb'] = array(
 	'simplesearch' => 'Jednore pytanje',
 	'simplesearch-desc' => 'Přidawa wosebitu funkcionalnosć k zjednorjenej pytanju Vectora.',
 	'simplesearch-search' => 'Pytać',
+	'simplesearch-containing' => 'wobsahuje...',
 );
 
 /** Hungarian (Magyar)
@@ -343,6 +349,7 @@ $messages['ksh'] = array(
 	'simplesearch' => 'Eifach Söhke',
 	'simplesearch-desc' => 'Deiht extra Müjjeleschkeijte beim „{{int:simplesearch}}“ vun de Bedeen-Bovverfläsh „Vektor“ bei.',
 	'simplesearch-search' => 'Söhke',
+	'simplesearch-containing' => 'dren änthallde…',
 );
 
 /** Latin (Latina)
