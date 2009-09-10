@@ -15,6 +15,7 @@ $messages['en'] = array(
 	'simplesearch' => 'Simple search',
 	'simplesearch-desc' => "Adds extra functionality to the Vector's simplified search",
 	'simplesearch-search' => 'Search',
+	'simplesearch-containing' => 'containing...',
 );
 
 /** Message documentation (Message documentation)
@@ -25,6 +26,7 @@ $messages['qqq'] = array(
 	'simplesearch-search' => 'Greyed out default text in the simple search box in the Vector skin. (It disappears and lets the user enter the requested search terms when the search box receives focus.)
 
 {{Identical|Search}}',
+	'simplesearch-containing' => 'Label used in the special item of the search suggestions list which gives the user an option to perform a full text search for the term.',
 );
 
 /** Afrikaans (Afrikaans)

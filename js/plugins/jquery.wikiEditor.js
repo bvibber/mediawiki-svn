@@ -63,7 +63,7 @@ $.fn.wikiEditor = function() {
 
 // The wikiEditor context is stored in the element, so when this function
 // gets called again we can pick up where we left off
-var context = $(this).data( 'context' );
+var context = $(this).data( 'wikiEditor-context' );
 
 /* API */
 
@@ -156,6 +156,6 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 //consistent by always starting at the begining
 context.$textarea.scrollToCaretPosition( 0 );
 // Store the context for next time, and support chaining
-return $(this).data( 'context', context );
+return $(this).data( 'wikiEditor-context', context );
 
 };})(jQuery);
