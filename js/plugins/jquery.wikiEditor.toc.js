@@ -160,7 +160,7 @@ fn: {
 			var position = wikitext.indexOf( text, offset );
 			// Update offset to avoid stumbling on duplicate headings
 			if ( position > offset ) {
-				offset = position;
+				offset = position + 1;
 			} else if ( position == -1 ) {
 				// Not sure this is possible, or what should happen
 				continue;
