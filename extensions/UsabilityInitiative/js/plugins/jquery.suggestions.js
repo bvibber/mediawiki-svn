@@ -76,7 +76,6 @@ $.suggestions = {
 			clearTimeout( context.data.timerID );
 		}
 		if ( delayed ) {
-			console.log( context.config.delay );
 			// Start a new asynchronous call
 			context.data.timerID = setTimeout( maybeFetch, context.config.delay );
 		} else {
@@ -332,7 +331,6 @@ $.fn.suggestions = function() {
 							context.data.mouseDownOn = $( e.target ).closest( '.suggestions-special' );
 						} )
 						.mouseup( function( e ) {
-							console.log( 123 );
 							var $special = $( e.target ).closest( '.suggestions-special' );
 							var $other = context.data.mouseDownOn;
 							context.data.mouseDownOn = $( [] );
