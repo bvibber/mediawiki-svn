@@ -61,7 +61,7 @@ mediawiki.AjaxLogin.prototype.postAjax = function( action ) {
 		error : function( XMLHttpRequest, textStatus, errorThrown ){
 			//TODO : add error handling here
 			if( typeof console != 'undefined' ){
-				console_log( 'Error in AjaxLogin.js!' );
+				console.log( 'Error in AjaxLogin.js!' );
 			}
 		}
 	});
