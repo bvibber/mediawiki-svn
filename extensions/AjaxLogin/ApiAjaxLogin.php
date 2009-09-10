@@ -81,7 +81,7 @@ class ApiAjaxLogin extends ApiBase {
 			$dbw->commit();
 
 			$this->getResult()->addValue( null, 'ajaxlogin', $result );
-		} else if ( !empty( $Mailmypassword ) ) {
+		} elseif ( !empty( $Mailmypassword ) ) {
 			// Remind password attempt
 			$params = new FauxRequest(
 				array(
@@ -90,7 +90,7 @@ class ApiAjaxLogin extends ApiBase {
 			);
 			$result = array();
 			$loginForm = new LoginForm( $params );
-			global $wgUser, $wgOut, $wgAuth;
+			global $wgUser, $wgAuth;
 			if ( !$wgAuth->allowPasswordChange() ) {
 				$result['result'] = 'resetpass_forbidden';
 				$result['text'] = wfMsg( 'resetpass_forbidden' );
