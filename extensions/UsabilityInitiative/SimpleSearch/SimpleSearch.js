@@ -69,9 +69,6 @@ js2AddOnloadHook( function() {
 				}
 			},
 			result: {
-				render: function( text ) {
-					$j(this).text( text );
-				},
 				select: function( $textbox ) {
 					$textbox.closest( 'form' ).submit();
 				}
