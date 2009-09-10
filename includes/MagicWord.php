@@ -185,7 +185,7 @@ class MagicWord {
 	 */
 	static function &get( $id ) {
 		wfProfileIn( __METHOD__ );
-		if (!array_key_exists( $id, self::$mObjects ) ) {
+		if ( !isset( self::$mObjects[$id] ) ) {
 			$mw = new MagicWord();
 			$mw->load( $id );
 			self::$mObjects[$id] = $mw;
@@ -228,6 +228,14 @@ class MagicWord {
 			self::$mDoubleUnderscoreArray = new MagicWordArray( self::$mDoubleUnderscoreIDs );
 		}
 		return self::$mDoubleUnderscoreArray;
+	}
+
+	/**
+	 * Clear the self::$mObjects variable
+	 * For use in parser tests
+	 */
+	public static function clearCache() {
+		self::$mObjects = array();
 	}
 
 	# Initialises this object with an ID

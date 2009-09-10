@@ -84,6 +84,11 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$select[] = 'wl_user';
 			$join_conds['watchlist'] = array( 'LEFT JOIN', "wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace" );
 		}
+		if ( $wgUser->isAllowed( 'rollback' ) ) {
+			$tables[] = 'page';
+			$join_conds['page'] = array('LEFT JOIN', 'rc_cur_id=page_id');
+			$select[] = 'page_latest';
+		}
 
 		ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds,
 			$query_options, $opts['tagfilter'] );
@@ -168,7 +173,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 	}
 	
 	function getExtraOptions( $opts ){
-		$opts->consumeValues( array( 'showlinkedto', 'target' ) );
+		$opts->consumeValues( array( 'showlinkedto', 'target', 'tagfilter' ) );
 		$extraOpts = array();
 		$extraOpts['namespace'] = $this->namespaceFilterForm( $opts );
 		$extraOpts['target'] = array( wfMsgHtml( 'recentchangeslinked-page' ),

@@ -12,7 +12,8 @@ class Revision {
 	const DELETED_COMMENT = 2;
 	const DELETED_USER = 4;
 	const DELETED_RESTRICTED = 8;
-
+	// Convenience field
+	const SUPPRESSED_USER = 12;
 	// Audience options for Revision::getText()
 	const FOR_PUBLIC = 1;
 	const FOR_THIS_USER = 2;
@@ -182,7 +183,7 @@ class Revision {
 	 * @access private
 	 * @static
 	 */
-	private static function newFromConds( $conditions ) {
+	public static function newFromConds( $conditions ) {
 		$db = wfGetDB( DB_SLAVE );
 		$row = Revision::loadFromConds( $db, $conditions );
 		if( is_null( $row ) && wfGetLB()->getServerCount() > 1 ) {
@@ -214,24 +215,6 @@ class Revision {
 		}
 		$ret = null;
 		return $ret;
-	}
-
-	/**
-	 * Return a wrapper for a series of database rows to
-	 * fetch all of a given page's revisions in turn.
-	 * Each row can be fed to the constructor to get objects.
-	 *
-	 * @param Title $title
-	 * @return ResultWrapper
-	 * @access public
-	 * @static
-	 */
-	public static function fetchAllRevisions( $title ) {
-		return Revision::fetchFromConds(
-			wfGetDB( DB_SLAVE ),
-			array( 'page_namespace' => $title->getNamespace(),
-			       'page_title'     => $title->getDBkey(),
-			       'page_id=rev_page' ) );
 	}
 
 	/**
@@ -954,7 +937,7 @@ class Revision {
 	 * @param int      $pageId ID number of the page to read from
 	 * @param string   $summary
 	 * @param bool     $minor
-	 * @return Revision
+	 * @return mixed Revision, or null on error
 	 */
 	public static function newNullRevision( $dbw, $pageId, $summary, $minor ) {
 		wfProfileIn( __METHOD__ );

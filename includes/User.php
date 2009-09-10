@@ -214,6 +214,8 @@ class User {
 		$mBlockreason, $mBlock, $mEffectiveGroups, $mBlockedGlobally,
 		$mLocked, $mHideName, $mOptions;
 	//@}
+	
+	static $idCacheByName = array();
 
 	/**
 	 * Lightweight constructor for an anonymous user.
@@ -456,14 +458,27 @@ class User {
 			# Illegal name
 			return null;
 		}
+		
+		if ( isset(self::$idCacheByName[$name]) ) {
+			return self::$idCacheByName[$name];
+		}
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		$s = $dbr->selectRow( 'user', array( 'user_id' ), array( 'user_name' => $nt->getText() ), __METHOD__ );
 
 		if ( $s === false ) {
-			return 0;
+			$result = 0;
 		} else {
-			return $s->user_id;
+			$result = $s->user_id;
 		}
+		
+		self::$idCacheByName[$name] = $result;
+		
+		if ( count(self::$idCacheByName) > 1000 ) {
+			self::$idCacheByName = array();
+		}
+		
+		return $result;
 	}
 
 	/**
@@ -601,21 +616,23 @@ class User {
 	/**
 	 * Is the input a valid password for this user?
 	 *
-	 * @param $password \string Desired password
-	 * @return \bool True or false
+	 * @param $password String Desired password
+	 * @return mixed: true on success, string of error message on failure
 	 */
 	function isValidPassword( $password ) {
 		global $wgMinimalPasswordLength, $wgContLang;
 
-		$result = null;
 		if( !wfRunHooks( 'isValidPassword', array( $password, &$result, $this ) ) )
 			return $result;
-		if( $result === false )
-			return false;
 
-		// Password needs to be long enough, and can't be the same as the username
-		return strlen( $password ) >= $wgMinimalPasswordLength
-			&& $wgContLang->lc( $password ) !== $wgContLang->lc( $this->mName );
+		// Password needs to be long enough
+		if( strlen( $password ) < $wgMinimalPasswordLength ) {
+			return 'passwordtooshort';
+		} elseif( $wgContLang->lc( $password ) == $wgContLang->lc( $this->mName ) ) {
+			return 'password-name-match';
+		} else {
+			return true;
+		}
 	}
 
 	/**
@@ -1646,9 +1663,6 @@ class User {
 	 * for reload on the next hit.
 	 */
 	function invalidateCache() {
-		if ( wfReadOnly() ) {
-			return;
-		}
 		$this->load();
 		if( $this->mId ) {
 			$this->mTouched = self::newTouchedTimestamp();
@@ -1702,9 +1716,10 @@ class User {
 				throw new PasswordError( wfMsg( 'password-change-forbidden' ) );
 			}
 
-			if( !$this->isValidPassword( $str ) ) {
+			$valid = $this->isValidPassword( $str );
+			if( $valid !== true ) {
 				global $wgMinimalPasswordLength;
-				throw new PasswordError( wfMsgExt( 'passwordtooshort', array( 'parsemag' ),
+				throw new PasswordError( wfMsgExt( $valid, array( 'parsemag' ),
 					$wgMinimalPasswordLength ) );
 			}
 		}
@@ -2674,32 +2689,6 @@ class User {
 	}
 
 	/**
-	 * Is the user active? We check to see if they've made at least
-	 * X number of edits in the last Y days.
-	 *
-	 * @return \bool True if the user is active, false if not.
-	 */
-	public function isActiveEditor() {
-		global $wgActiveUserEditCount, $wgActiveUserDays;
-		$dbr = wfGetDB( DB_SLAVE );
-
-		// Stolen without shame from RC
-		$cutoff_unixtime = time() - ( $wgActiveUserDays * 86400 );
-		$cutoff_unixtime = $cutoff_unixtime - ( $cutoff_unixtime % 86400 );
-		$oldTime = $dbr->addQuotes( $dbr->timestamp( $cutoff_unixtime ) );
-
-		$res = $dbr->select( 'revision', '1',
-				array( 'rev_user_text' => $this->getName(), "rev_timestamp > $oldTime"),
-				__METHOD__,
-				array('LIMIT' => $wgActiveUserEditCount ) );
-
-		$count = $dbr->numRows($res);
-		$dbr->freeResult($res);
-
-		return $count == $wgActiveUserEditCount;
-	}
-
-	/**
 	 * Check to see if the given clear-text password is one of the accepted passwords
 	 * @param $password \string user password.
 	 * @return \bool True if the given password is correct, otherwise False.
@@ -2713,7 +2702,7 @@ class User {
 		// to. Certain authentication plugins do NOT want to save
 		// domain passwords in a mysql database, so we should
 		// check this (incase $wgAuth->strict() is false).
-		if( !$this->isValidPassword( $password ) ) {
+		if( $this->isValidPassword( $password ) !== true ) {
 			return false;
 		}
 
@@ -3070,12 +3059,16 @@ class User {
 	static function getGroupPermissions( $groups ) {
 		global $wgGroupPermissions, $wgRevokePermissions;
 		$rights = array();
+		// grant every granted permission first
 		foreach( $groups as $group ) {
 			if( isset( $wgGroupPermissions[$group] ) ) {
 				$rights = array_merge( $rights,
 					// array_filter removes empty items
 					array_keys( array_filter( $wgGroupPermissions[$group] ) ) );
 			}
+		}
+		// now revoke the revoked permissions
+		foreach( $groups as $group ) {
 			if( isset( $wgRevokePermissions[$group] ) ) {
 				$rights = array_diff( $rights,
 					array_keys( array_filter( $wgRevokePermissions[$group] ) ) );
@@ -3550,6 +3543,10 @@ class User {
 	}
 	
 	protected function saveOptions() {
+		global $wgAllowPrefChange;
+
+		$extuser = ExternalUser::newFromUser( $this );
+
 		$this->loadOptions();
 		$dbw = wfGetDB( DB_MASTER );
 		
@@ -3563,7 +3560,8 @@ class User {
 			return;
 		
 		foreach( $saveOptions as $key => $value ) {
-			if ( ( is_null(self::getDefaultOption($key)) &&
+			# Don't bother storing default values
+			if ( ( is_null( self::getDefaultOption( $key ) ) &&
 					!( $value === false || is_null($value) ) ) ||
 					$value != self::getDefaultOption( $key ) ) {
 				$insert_rows[] = array(
@@ -3571,6 +3569,14 @@ class User {
 						'up_property' => $key,
 						'up_value' => $value,
 					);
+			}
+			if ( $extuser && isset( $wgAllowPrefChange[$key] ) ) {
+				switch ( $wgAllowPrefChange[$key] ) {
+					case 'local': case 'message':
+						break;
+					case 'semiglobal': case 'global':
+						$extuser->setPref( $key, $value );
+				}
 			}
 		}
 		
@@ -3580,4 +3586,49 @@ class User {
 		$dbw->commit();
 	}
 
+	/**
+	 * Provide an array of HTML 5 attributes to put on an input element
+	 * intended for the user to enter a new password.  This may include
+	 * required, title, and/or pattern, depending on $wgMinimalPasswordLength.
+	 *
+	 * Do *not* use this when asking the user to enter his current password!
+	 * Regardless of configuration, users may have invalid passwords for whatever
+	 * reason (e.g., they were set before requirements were tightened up).
+	 * Only use it when asking for a new password, like on account creation or
+	 * ResetPass.
+	 *
+	 * Obviously, you still need to do server-side checking.
+	 *
+	 * @return array Array of HTML attributes suitable for feeding to
+	 *   Html::element(), directly or indirectly.  (Don't feed to Xml::*()!
+	 *   That will potentially output invalid XHTML 1.0 Transitional, and will
+	 *   get confused by the boolean attribute syntax used.)
+	 */
+	public static function passwordChangeInputAttribs() {
+		global $wgMinimalPasswordLength;
+
+		if ( $wgMinimalPasswordLength == 0 ) {
+			return array();
+		}
+
+		# Note that the pattern requirement will always be satisfied if the
+		# input is empty, so we need required in all cases.
+		$ret = array( 'required' );
+
+		# We can't actually do this right now, because Opera 9.6 will print out
+		# the entered password visibly in its error message!  When other
+		# browsers add support for this attribute, or Opera fixes its support,
+		# we can add support with a version check to avoid doing this on Opera
+		# versions where it will be a problem.  Reported to Opera as
+		# DSK-262266, but they don't have a public bug tracker for us to follow.
+		/*
+		if ( $wgMinimalPasswordLength > 1 ) {
+			$ret['pattern'] = '.{' . intval( $wgMinimalPasswordLength ) . ',}';
+			$ret['title'] = wfMsgExt( 'passwordtooshort', 'parsemag',
+				$wgMinimalPasswordLength );
+		}
+		*/
+
+		return $ret;
+	}
 }

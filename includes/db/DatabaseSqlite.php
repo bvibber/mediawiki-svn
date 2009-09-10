@@ -21,12 +21,12 @@ class DatabaseSqlite extends DatabaseBase {
 	 * Constructor
 	 */
 	function __construct($server = false, $user = false, $password = false, $dbName = false, $failFunction = false, $flags = 0) {
-		global $wgSQLiteDataDir, $wgSQLiteDataDirMode;
-		if ("$wgSQLiteDataDir" == '') $wgSQLiteDataDir = dirname($_SERVER['DOCUMENT_ROOT']).'/data';
-		if (!is_dir($wgSQLiteDataDir)) wfMkdirParents( $wgSQLiteDataDir, $wgSQLiteDataDirMode );
+		global $wgSQLiteDataDir;
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
 		$this->mDatabaseFile = "$wgSQLiteDataDir/$dbName.sqlite";
+		if( !is_readable( $this->mDatabaseFile ) )
+			throw new DBConnectionError( $this, "SQLite database not accessible" );
 		$this->mName = $dbName;
 		$this->open($server, $user, $password, $dbName);
 	}
@@ -280,6 +280,10 @@ class DatabaseSqlite extends DatabaseBase {
 		return $this->lastErrno() ==  SQLITE_SCHEMA;
 	}
 
+	function wasReadOnlyError() {
+		return $this->lastErrno() == SQLITE_READONLY;
+	}
+
 	/**
 	 * @return string wikitext of a link to the server software's web site
 	 */
@@ -401,16 +405,6 @@ class DatabaseSqlite extends DatabaseBase {
 		}
 	}
 	
-	/** 
-	 * No-op lock functions
-	 */
-	public function lock( $lockName, $method ) {
-		return true;
-	}
-	public function unlock( $lockName, $method ) {
-		return true;
-	}
-	
 	public function getSearchEngine() {
 		return "SearchEngineDummy";
 	}
@@ -452,8 +446,12 @@ class DatabaseSqlite extends DatabaseBase {
 		return $s;
 	}
 
-	/** No-op */
-	public function setBigSelects( $value = true ) {}
+	/*
+	 * Build a concatenation list to feed into a SQL query
+	 */
+	function buildConcat( $stringList ) {
+		return '(' . implode( ') || (', $stringList ) . ')';
+	}
 
 } // end DatabaseSqlite class
 

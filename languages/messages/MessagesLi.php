@@ -12,6 +12,7 @@
  * @author Matthias
  * @author Ooswesthoesbes
  * @author Pahles
+ * @author Purodha
  * @author Remember the dot
  * @author Tibor
  * @author לערי ריינהארט
@@ -49,7 +50,7 @@ $namespaceAliases = array(
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'Dobbel doorverwiezinge' ),
 	'BrokenRedirects'           => array( 'Gebraoke doorverwiezinge' ),
-	'Disambiguations'           => array( 'Verdudelikingspazjena\'s' ),
+	'Disambiguations'           => array( 'Verdudelikingspagina\'s' ),
 	'Userlogin'                 => array( 'Aanmelje' ),
 	'Userlogout'                => array( 'Aafmelje' ),
 	'CreateAccount'             => array( 'Gebroeker aonmake' ),
@@ -60,17 +61,17 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Plaetjes' ),
 	'Newimages'                 => array( 'Nuuj plaetjes' ),
 	'Listusers'                 => array( 'Gebroekers' ),
-	'Listgrouprights'           => array( 'Groepsrechte weergeve' ),
-	'Statistics'                => array( 'Sjtatistieke' ),
-	'Randompage'                => array( 'Willekäörig artikkel' ),
-	'Lonelypages'               => array( 'Weispazjena\'s' ),
-	'Uncategorizedpages'        => array( 'Óngecategoriseerde pazjena\'s' ),
+	'Listgrouprights'           => array( 'Groepsrechte weergaeve' ),
+	'Statistics'                => array( 'Sjtattestieke' ),
+	'Randompage'                => array( 'Willekäörig artikel' ),
+	'Lonelypages'               => array( 'Weispagina\'s' ),
+	'Uncategorizedpages'        => array( 'Óngecategoriseerde pagina\'s' ),
 	'Uncategorizedcategories'   => array( 'Óngecategoriseerde categorieë' ),
 	'Uncategorizedimages'       => array( 'Óngecategoriseerde plaetjes' ),
 	'Uncategorizedtemplates'    => array( 'Óngecategorisserde sjablone' ),
 	'Unusedcategories'          => array( 'Óngebroekde categorieë' ),
 	'Unusedimages'              => array( 'Óngebroekde plaetjes' ),
-	'Wantedpages'               => array( 'Gewunsjde pazjena\'s' ),
+	'Wantedpages'               => array( 'Gewunsjde pagina\'s' ),
 	'Wantedcategories'          => array( 'Gewunsjde categorieë' ),
 	'Wantedfiles'               => array( 'Gevraogde besjtande' ),
 	'Wantedtemplates'           => array( 'Gevraogde sjablone' ),
@@ -79,25 +80,25 @@ $specialPageAliases = array(
 	'Mostlinkedtemplates'       => array( 'Meis gebroekde sjablone' ),
 	'Mostimages'                => array( 'Meis gebroekde plaetjes' ),
 	'Mostcategories'            => array( 'Meiste categorieë' ),
-	'Mostrevisions'             => array( 'Meis bewirkde pazjena\'s' ),
-	'Fewestrevisions'           => array( 'Winnigs bewirkde pazjena\'s' ),
-	'Shortpages'                => array( 'Kórte pazjena\'s' ),
-	'Longpages'                 => array( 'Lang pazjena\'s' ),
-	'Newpages'                  => array( 'Nuuj pazjena\'s' ),
-	'Ancientpages'              => array( 'Audste pazjena\'s' ),
-	'Deadendpages'              => array( 'Doedloupende pazjena\'s' ),
-	'Protectedpages'            => array( 'Beveiligde pazjena\'s' ),
+	'Mostrevisions'             => array( 'Meis bewirkde pagina\'s' ),
+	'Fewestrevisions'           => array( 'Winnigs bewirkde pagina\'s' ),
+	'Shortpages'                => array( 'Kórte pagina\'s' ),
+	'Longpages'                 => array( 'Lang pagina\'s' ),
+	'Newpages'                  => array( 'Nuuj pagina\'s' ),
+	'Ancientpages'              => array( 'Audste pagina\'s' ),
+	'Deadendpages'              => array( 'Doedloupende pagina\'s' ),
+	'Protectedpages'            => array( 'Beveiligde pagina\'s' ),
 	'Protectedtitles'           => array( 'Beveiligde titels' ),
-	'Allpages'                  => array( 'Alle pazjena\'s' ),
+	'Allpages'                  => array( 'Alle pagina\'s' ),
 	'Prefixindex'               => array( 'Alle artikele' ),
 	'Ipblocklist'               => array( 'Geblokkeerde IP\'s' ),
-	'Specialpages'              => array( 'Sjpeciaal pazjena\'s' ),
+	'Specialpages'              => array( 'Speciaal pagina\'s' ),
 	'Contributions'             => array( 'Biedrage' ),
 	'Emailuser'                 => array( 'E-maile' ),
 	'Confirmemail'              => array( 'E-mail bevestige' ),
 	'Whatlinkshere'             => array( 'Verwiezinge nao hie' ),
-	'Recentchangeslinked'       => array( 'Verwante wiezinge' ),
-	'Movepage'                  => array( 'Versjuve' ),
+	'Recentchangeslinked'       => array( 'Verwante verangeringe' ),
+	'Movepage'                  => array( 'Verplaatse' ),
 	'Blockme'                   => array( 'Blokkeer mich' ),
 	'Booksources'               => array( 'Bookwinkele' ),
 	'Categories'                => array( 'Categorieë' ),
@@ -112,21 +113,29 @@ $specialPageAliases = array(
 	'Unlockdb'                  => array( 'DB vriegaeve' ),
 	'Userrights'                => array( 'Gebroekersrechte' ),
 	'MIMEsearch'                => array( 'MIME zeuke' ),
-	'FileDuplicateSearch'       => array( 'Bestandsduplicate zeuke' ),
-	'Unwatchedpages'            => array( 'Neet-gevolgde pazjena\'s' ),
+	'FileDuplicateSearch'       => array( 'Besjtandsduplicate zeuke' ),
+	'Unwatchedpages'            => array( 'Neet-gevolgde pagina\'s' ),
 	'Listredirects'             => array( 'Doorverwiezinge' ),
-	'Revisiondelete'            => array( 'Versie eweghaole' ),
+	'Revisiondelete'            => array( 'Versie ewegsjaffe' ),
 	'Unusedtemplates'           => array( 'Óngebroekde sjablone' ),
 	'Randomredirect'            => array( 'Willekäörige doorverwiezing' ),
-	'Mypage'                    => array( 'Mien pazjena\'s' ),
+	'Mypage'                    => array( 'Mien pagina\'s' ),
 	'Mytalk'                    => array( 'Mien euverlèk' ),
 	'Mycontributions'           => array( 'Mien biedrage' ),
 	'Listadmins'                => array( 'Systeemwèrkers' ),
 	'Listbots'                  => array( 'Botlies' ),
-	'Popularpages'              => array( 'Populair pazjena\'s' ),
+	'Popularpages'              => array( 'Populair pagina\'s' ),
 	'Search'                    => array( 'Zeuke' ),
 	'Resetpass'                 => array( 'Wachwaord opnuuj insjtèlle' ),
 	'Withoutinterwiki'          => array( 'Gein interwiki' ),
+	'MergeHistory'              => array( 'Historie sameveuge' ),
+	'Filepath'                  => array( 'Besjtandspaad' ),
+	'Invalidateemail'           => array( 'E-mail annulere' ),
+	'Blankpage'                 => array( 'Laege pagina\'s' ),
+	'LinkSearch'                => array( 'Verwiezinge zeuke' ),
+	'DeletedContributions'      => array( 'Eweggesjafde biedrage' ),
+	'Tags'                      => array( 'Labels' ),
+	'Activeusers'               => array( 'Aktieve gebroekers' ),
 );
 
 $dateFormats = array(
@@ -160,7 +169,7 @@ $messages = array(
 'tog-editsectiononrightclick' => "Secties bewirke mit 'ne rechtermoesklik op sectietitels (JavaScript nudig)",
 'tog-showtoc'                 => "Inhaudsopgaaf veur pazjena's mit mie es 3 köpkes",
 'tog-rememberpassword'        => "Wachwaord ónthauwe bie 't aafmèlde",
-'tog-editwidth'               => 'Edit boks haet de vol breidte',
+'tog-editwidth'               => "Editveldj euver de vol breide van 't sjirm weergaeve",
 'tog-watchcreations'          => "Pazjena's die ich aanmaak automatisch volge",
 'tog-watchdefault'            => "Voog pazjena's die se bewirks toe aan dien volglies",
 'tog-watchmoves'              => "Pazjena's die ich verplaats automatisch volge",
@@ -357,7 +366,6 @@ $messages = array(
 'aboutsite'            => 'Euver {{SITENAME}}',
 'aboutpage'            => 'Project:Info',
 'copyright'            => 'De inhawd is besjikbaar ónger de $1.',
-'copyrightpagename'    => '{{SITENAME}} auteursrechte',
 'copyrightpage'        => '{{ns:project}}:Auteursrechte',
 'currentevents'        => "In 't nuujs",
 'currentevents-url'    => "Project:In 't nuujs",
@@ -395,7 +403,7 @@ $messages = array(
 'editsectionhint'         => 'Deilpazjena bewirke: $1',
 'toc'                     => 'Inhaud',
 'showtoc'                 => 'tuine',
-'hidetoc'                 => 'verberg',
+'hidetoc'                 => 'versjtaek',
 'thisisdeleted'           => '$1 tuine of trökzètte?',
 'viewdeleted'             => '$1 tuine?',
 'restorelink'             => '{{PLURAL:$1|ein eweggesjafde versie|$1 eweggesjafde versies}}',
@@ -675,10 +683,11 @@ Daoveur gebroeke v'r 't IP-adres óm de gebroeker te identificere.
 Det adres kan waere gedeild door mierdere gebroekers. 
 Es te 'ne anonieme gebroeker bis en de höbs 't geveul dat 'r ónrelevante commentare aan dich gerich zeen, kèns te 't bèste [[Special:UserLogin/signup|'n account crëere]] of [[Special:UserLogin|inlogge]] óm toekomstige verwarring mit anger anoniem gebroekers te veurkomme.''",
 'noarticletext'                    => 'Dees pagina bevat gein teks.
-De kèns [[Special:Search/{{PAGENAME}}|nao deze term zeuke]] in anger pagina\'s, <span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} de logbeuk doorzeuke] of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} dees pagina bewirke]</span>.',
+De kèns [[Special:Search/{{PAGENAME}}|nao deze term zeuke]] in anger pagina\'s, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} de logbeuk doorzeuke] of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} dees pagina bewirke]</span>.',
 'userpage-userdoesnotexist'        => 'Doe bewirks \'n gebroekerspazjena van \'ne gebroeker dae neet besjteit (gebroeker "$1"). Controlere ofs doe dees pazjena waal wils aanmake/bewirke.',
 'clearyourcache'                   => "'''Lèt op:''' Nao 't opsjlaon mós te diene browserbuffer wisse óm de verangeringe te zeen: '''Mozilla:''' klik ''Reload'' (of ''Ctrl-R''), '''Firefox / IE / Opera:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Ctrl-R''.",
-'usercssjsyoucanpreview'           => "'''Tip:''' Gebroek de knóp 'Bekiek dees bewirking' om dien nuuj CSS/JS te teste veurdets te opsjleis.",
+'usercssyoucanpreview'             => "'''Tip:''' Gebroek de knóp 'Bekiek dees bewirking' om dien nuuj CSS te teste veurdets te opsjleis.",
+'userjsyoucanpreview'              => "'''Tip:''' Gebroek de knóp 'Bekiek dees bewirking' om dien nuuj JS te teste veurdets te opsjleis.",
 'usercsspreview'                   => "'''Dit is allein 'n veurvertuun van dien perseunlike css, deze is neet opgeslage!'''",
 'userjspreview'                    => "'''Let op: doe tes noe dien perseunlik JavaScript. De pazjena is neet opgeslage!'''",
 'userinvalidcssjstitle'            => "'''Waorsjuwing:''' d'r is geine skin \"\$1\". Let op: dien eige .css- en .js-pazjena's beginne mèt  'ne kleine letter, bijveurbeeld {{ns:user}}:Naam/monobook.css in plaats van {{ns:user}}:Naam/Monobook.css.",
@@ -809,17 +818,17 @@ Wellich is d'r gewis of vernäömp.
 'rev-deleted-user'            => '(gebroeker weggehaold)',
 'rev-deleted-event'           => '(actie weggehaold)',
 'rev-deleted-text-permission' => "Dees bewerking is '''gewusj oet de publieke archieve'''.
-Dao kónne details aanwezig zeen in 't [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} wusjlogbook].",
+Dao kónne details aanwezig zeen in 't [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} wusjlogbook].",
 'rev-deleted-text-unhide'     => "Dees versie van de pagina is '''verwijderd'''.
-Achtergrönj zeen meugelik te vinje in 't [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwijderlogbook].
+Achtergrönj zeen meugelik te vinje in 't [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} verwijderlogbook].
 As beheerder kins se [$1 dees versie bekieke] as se wils.",
 'rev-deleted-text-view'       => "Dees bewèrking is '''gewösj oet de publieke archieve'''.
 Es beheerder kèns te deze zeen;
-dao kónne details aanwezig zeen in 't [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} wusjlogbook].",
+dao kónne details aanwezig zeen in 't [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} wusjlogbook].",
 'rev-deleted-no-diff'         => "De kins de versjille neet bekieke omdet ein van de versies oet 't '''publieke archief is verwiederd'''.
-Achtergrönj zeen meugelik te vinje in t [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwiederlogbook].",
+Achtergrönj zeen meugelik te vinje in t [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} verwiederlogbook].",
 'rev-deleted-unhide-diff'     => "Eine venne angerversjiller is '''gwösj oete pebliek archiever'''.
-Details in 't [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} wislog].
+Details in 't [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} wislog].
 Es behieërder kèns se nag [$1 de angering zeen] es se doearch wils gaon.",
 'rev-delundel'                => 'tuun/verberg',
 'revisiondelete'              => 'Verwijder/herstel bewerkinge',
@@ -865,6 +874,7 @@ Anger beheerders van {{SITENAME}} kinne de verborge inhoud benäöjere en de ver
 'revdelete-unhid'             => 'haet $1 zichbaar gemaak',
 'revdelete-log-message'       => '$1 veur $2 {{PLURAL:$2|versie|versies}}',
 'logdelete-log-message'       => '$1 veur $2 {{PLURAL:$2|logbookregel|logbookregels}}',
+'revdelete-edit-reasonlist'   => 'Reeje veur verwiedering bewèrke',
 
 # Suppression log
 'suppressionlog'     => 'Verbergingslogbook',
@@ -1002,7 +1012,7 @@ Wees zeker det deze wieziging de gesjiedenisdoorloupendheid van de pagina zal be
 'search-result-score'              => 'Relevantie: $1%',
 'search-redirect'                  => '(doorverwiezing $1)',
 'search-section'                   => '(subkop $1)',
-'search-suggest'                   => 'Bedoeldese: $1',
+'search-suggest'                   => 'Meins te sóms: $1',
 'search-interwiki-caption'         => 'Zösterprojecte',
 'search-interwiki-default'         => '$1 resultate:',
 'search-interwiki-more'            => '(meer)',
@@ -1014,7 +1024,6 @@ Wees zeker det deze wieziging de gesjiedenisdoorloupendheid van de pagina zal be
 'searchall'                        => 'alle',
 'showingresults'                   => 'Hieonger staon de <b>$1</b> {{PLURAL:$1|resultaat|resultaat}}, vanaaf #<b>$2</b>.',
 'showingresultsnum'                => "Hieonger {{PLURAL:$3|steit '''1''' resultaat|staon '''$3''' resultate}} vanaaf #<b>$2</b>.",
-'showingresultstotal'              => "Hiejónger {{PLURAL:$4|waert resultaat '''$1'''|waere de resultate '''$1 tót $2''' van '''$3'''}} weergegaeve",
 'nonefound'                        => "'''Lèt op:''' sjtandaard waere neet alle naamruumdes naogezeuk.
 Wens doe in dien zeukopdrach es veurvoegsel \"''all:''\" gebroeks waere alle pagina's naogezeuk (inclusief euverlèkpagina's, sjablone, enzoewiejer).
 Doe kèns ouch 'n naamruumde es veurvoegsel gebroeke.",
@@ -1042,7 +1051,7 @@ Mèrk op dat hun indexe van {{SITENAME}} content e bietje gedatierd kint zien.',
 'mypreferences'             => 'Mien veurkäöre',
 'prefs-edits'               => 'Aantal bewèrkinge:',
 'prefsnologin'              => 'Neet aangemèld',
-'prefsnologintext'          => 'De mós zeen <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} aagemeld]</span> óm dien veurkäöre te kónne insjtèlle.',
+'prefsnologintext'          => 'De mós zeen <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} aagemeld]</span> óm dien veurkäöre te kónne insjtèlle.',
 'changepassword'            => 'Wachwaord verangere',
 'prefs-skin'                => '{{SITENAME}}-uterlik',
 'skin-preview'              => 'Veurbesjouwing',
@@ -1142,7 +1151,7 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'userrights-unchangeable-col' => 'Gróppe dies te neet kèns behere',
 
 # Groups
-'group'               => 'Groep:',
+'group'               => 'Gróp:',
 'group-user'          => 'Gebroekers',
 'group-autoconfirmed' => 'Geregistreerde gebroekers',
 'group-bot'           => 'Bots',
@@ -1205,6 +1214,8 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'right-editprotected'         => "Beveiligde pagina's bewerke",
 'right-editinterface'         => 'De gebroekersinterface bewerke',
 'right-editusercssjs'         => 'De CSS- en JS-bestande van angere gebroekers bewerke',
+'right-editusercss'           => 'De CSS-bestande van angere gebroekers bewerke',
+'right-edituserjs'            => 'De JS-bestande van angere gebroekers bewerke',
 'right-rollback'              => "Snel de letste bewerking(e) van 'n gebroeker van 'n pagina terugdraaie",
 'right-markbotedits'          => 'Teruggedraaide bewerkinge markere es botbewerkinge',
 'right-noratelimit'           => "Heet gein ti'jdsafhankelijke beperkinge",
@@ -1407,6 +1418,7 @@ Lèver zeker te zeen detse gesjik bös om door te gaon met 't uploade van dit be
 'upload-curl-error28-text' => "'t Doorde te lang veurdet de website antwaord goof. Controleer a.u.b. of de website besjikbaar is, wach effe en probeer 't dan opnuuj. De kèns 't mesjiens probere es 't minder drök is.",
 
 'license'            => 'Lisènsie:',
+'license-header'     => 'Lisènsie:',
 'nolicense'          => "Maak 'ne keuze",
 'license-nopreview'  => '(Veurvertuun neet besjikbaar)',
 'upload_source_url'  => " ('ne geldige, publiek toegankelike URL)",
@@ -1692,7 +1704,7 @@ Zuuch ouch [[Special:WantedCategories|neet-bestaondje categorieë mit verwiezing
 'listgrouprights'                 => 'Rechte van gebroekersgróppe',
 'listgrouprights-summary'         => 'Op dees pazjena sjtaon de gebroekersgróppe in deze wiki besjreve, mit zien biebehurende rechte.
 Infermasie daoreuver èn de individueel rechter vinjs te [[{{MediaWiki:Listgrouprights-helppage}}|hie]].',
-'listgrouprights-group'           => 'Groep',
+'listgrouprights-group'           => 'Gróp',
 'listgrouprights-rights'          => 'Rechte',
 'listgrouprights-helppage'        => 'Help:Gebroekersrechte',
 'listgrouprights-members'         => '(ledelies)',
@@ -1776,7 +1788,7 @@ Ouch versjiene gevolgde pazjena\'s in \'t <b>vèt</b> in de [[Special:RecentChan
 'enotif_anon_editor'           => 'anonieme gebroeker $1',
 'enotif_body'                  => 'Bèste $WATCHINGUSERNAME,
 
-De {{SITENAME}}-pazjena "$PAGETITLE" is $CHANGEDORCREATED op $PAGEEDITDATE door $PAGEEDITOR, zuug $PAGETITLE_URL veur de hujige versie.
+De {{SITENAME}}-pazjena "$PAGETITLE" is $CHANGEDORCREATED op $PAGEEDITDATEANDTIME door $PAGEEDITOR, zuug $PAGETITLE_URL veur de hujige versie.
 
 $NEWPAGE
 
@@ -2077,7 +2089,7 @@ Zuug de [[Special:IPBlockList|lies van geblokkeerde IP-adresse]].',
 'block-log-flags-nousertalk'      => 'kan eige euverlèkpagina neet bewèrke',
 'block-log-flags-angry-autoblock' => 'oetgebreide automatische blokkade ingesjakeld',
 'block-log-flags-hiddenname'      => 'gebroeker verbórge',
-'range_block_disabled'            => "De meugelikheid veur beheerders om 'ne groep IP-adresse te blokkere is oetgesjakeld.",
+'range_block_disabled'            => "De meugelikheid veur beheerders om 'n gróp IP-adresse te blokkere is oetgesjakeld.",
 'ipb_expiry_invalid'              => 'Ongeldig verloup.',
 'ipb_expiry_temp'                 => 'Blokkaasj veur verbórge gebroekers mótte permanent zeen.',
 'ipb_hide_invalid'                => "Kinne gebroeker neet verbèrge; d'r haet te väöl angeringe.",
@@ -2203,8 +2215,6 @@ In 't letste geval kèns te ouch 'ne link gebroeken, bieveurbild [[{{#Special:Ex
 'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki:-naamruumde.
 Bezeuk [http://www.mediawiki.org/wiki/Localisation MediaWikilokalisaasje] en [http://translatewiki.net translatewiki.net] wense wils biedrage ane lokalisaasje.",
 'allmessagesnotsupportedDB' => "Deze pagina kan neet gebroek waere omdet '''\$wgUseDatabaseMessages''' oet steit.",
-'allmessagesfilter'         => 'Berich naamfilter:',
-'allmessagesmodified'       => 'Tuun allein gewiezigde systeemtekste',
 
 # Thumbnails
 'thumbnail-more'           => 'Vergroete',

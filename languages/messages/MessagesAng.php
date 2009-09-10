@@ -273,7 +273,8 @@ Edscēawa þīne wrītunge, oþþe brūc þone form under tō [[Special:UserLogi
 'newarticletext'             => "Þu hæfst bende tō tramete gefolgod þe nū gīet ne stendeþ.
 Tō scieppene þone tramet, onginn þyddan in þǣre boxe under (sēo þone [[{{MediaWiki:Helppage}}|helptramet]] for mā gefrǣge).
 Gif þu hider misfōn cōme, cnoca þā þīnne webbscēaweres '''on bæc''' cnæpp.",
-'usercssjsyoucanpreview'     => "'''Rǣd:''' Brūc þone 'Forescēawian' cnæpp tō āfandienne þīne nīwe css/js beforan sparunge.",
+'usercssyoucanpreview'       => "'''Rǣd:''' Brūc þone 'Forescēawian' cnæpp tō āfandienne þīne nīwe css/js beforan sparunge.",
+'userjsyoucanpreview'        => "'''Rǣd:''' Brūc þone 'Forescēawian' cnæpp tō āfandienne þīne nīwe css/js beforan sparunge.",
 'updated'                    => '(Ednīwod)',
 'editingcomment'             => 'Ādihtung $1 (ymbsprǣc)',
 'yourtext'                   => 'Þīn traht',
@@ -518,7 +519,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'unprotectedarticle'     => 'unweardod "[[$1]]"',
 'protect-title'          => 'Weardiende "$1"',
 'prot_1movedto2'         => '[[$1]] gefered tō [[$2]]',
-'protect-expiry-options' => '1 stund:1 hour, 2 stunda:2 hours,1 dæg:1 day,3 dagas:3 days,1 wucu:1 week,2 wuca:2 weeks,1 mōnaþ:1 month,3 mōnþas:3 months,6 mōnþas:6 months,1 gēar:1 year,unendiendlic:infinite',
+'protect-expiry-options' => '1 stund:1 hour,1 dæg:1 day,1 wucu:1 week,2 wuca:2 weeks,1 mōnaþ:1 month,3 mōnþas:3 months,6 mōnþas:6 months,1 gēar:1 year,unendiendlic:infinite',
 'restriction-type'       => 'Gelēafnes:',
 
 # Restrictions (nouns)

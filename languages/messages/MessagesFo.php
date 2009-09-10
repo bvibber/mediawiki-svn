@@ -283,7 +283,6 @@ $messages = array(
 'aboutsite'            => 'Um {{SITENAME}}',
 'aboutpage'            => 'Project:Um',
 'copyright'            => 'Innihald er tøkt undir $1.',
-'copyrightpagename'    => '{{SITENAME}} útgávurættur',
 'copyrightpage'        => '{{ns:project}}:Útgávurættur',
 'currentevents'        => 'Núverandi hendingar',
 'currentevents-url'    => 'Project:Núverandi hendingar',
@@ -652,8 +651,9 @@ fyri at leggja fílur upp.',
 
 'upload-file-error' => 'Innvortis brek',
 
-'license'   => 'Loyvi:',
-'nolicense' => 'Onki valt',
+'license'        => 'Loyvi:',
+'license-header' => 'Loyvi:',
+'nolicense'      => 'Onki valt',
 
 # Special:ListFiles
 'listfiles'      => 'Myndalisti',
@@ -987,8 +987,6 @@ Grein við navninum "[[:$1]]" finst longu. Ynskir tú at strika hana til tess at
 'allmessagestext'           => 'Hetta er eitt yvirlit av tøkum kervisboðum í MediaWiki-navnarúmi.
 Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net translatewiki.net] if you wish to contribute to the generic MediaWiki localisation.',
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:AllMessages''' er ikki stuðlað orsakað av at '''\$wgUseDatabaseMessages''' er sløkt.",
-'allmessagesfilter'         => 'Boð navn filtur:',
-'allmessagesmodified'       => 'Vís bert broytt',
 
 # Thumbnails
 'thumbnail-more' => 'Víðka',

@@ -3,8 +3,22 @@
  * careful what you put in here, since what looks good in one skin may not in
  * another, but don't ignore the poor non-Monobook users either.
  */
-.mw-plusminus-null { color: #aaa; }
 
+/* Colored watchlist and recent changes numbers */
+.mw-plusminus-pos { color: #006400; } /* dark green */
+.mw-plusminus-neg { color: #8b0000; } /* dark red */
+.mw-plusminus-null { color: #aaa; } /* gray */
+
+/* Comment and username portions of RC entries */
+span.comment {
+	font-style: italic;
+}
+
+span.changedby {
+	font-size: 95%;
+}
+
+/* Math */
 .texvc { direction: ltr; unicode-bidi: embed; }
 img.tex { vertical-align: middle; }
 span.texhtml { font-family: serif; }
@@ -64,7 +78,7 @@ li span.deleted, span.history-deleted {
 	background-color: #ffa;
 }
 
-span.unpatrolled {
+.unpatrolled {
 	font-weight: bold;
 	color: red;
 }
@@ -108,7 +122,8 @@ body.ltr .magnify { float:right; }
 
 /* Convenience links to edit block, delete and protect reasons */
 p.mw-ipb-conveniencelinks, p.mw-protect-editreasons,
-p.mw-filedelete-editreasons, p.mw-delete-editreasons {
+p.mw-filedelete-editreasons, p.mw-delete-editreasons,
+p.mw-revdel-editreasons {
 	font-size: 90%;
 	float: right;
 }
@@ -154,6 +169,9 @@ div.searchresult {
 .mw-search-formheader div.search-types {
 	float:left;
 	padding-left: 0.25em;
+}
+.rtl .mw-search-formheader div.search-types {
+	float: right;
 }
 .mw-search-formheader div.search-types ul {
 	margin: 0 !important;
@@ -210,9 +228,16 @@ fieldset#mw-searchoptions h4 {
 	margin: 0;
 	float: left;
 }
+.rtl fieldset#mw-searchoptions h4 {
+	float: right;
+}
 fieldset#mw-searchoptions div#mw-search-togglebox {
 	float: right;
 }
+.rtl fieldset#mw-searchoptions div#mw-search-togglebox {
+	float: left;
+}
+
 fieldset#mw-searchoptions div#mw-search-togglebox label {
 	margin-right: 0.25em;
 }
@@ -226,7 +251,13 @@ fieldset#mw-searchoptions table {
 fieldset#mw-searchoptions table td {
 	padding-right: 1em;
 }
+.rtl fieldset#mw-searchoptions table td {
+	padding-left: 1em;
+	padding-right: 0;
+}
 body.rtl fieldset#mw-searchoptions table {
+	margin-right: 0;
+	margin-left: 3em;
 	float: right;
 }
 fieldset#mw-searchoptions div.divider {
@@ -294,8 +325,7 @@ span.searchalttitle {
 
 div.searchdidyoumean {
 	font-size: 127%;
-	margin-bottom: 1ex;
-	margin-top: 1ex;
+	margin-top: 0.8em;
 	/* Note that this color won't affect the link, as desired. */
 	color: #c00;
 }
@@ -309,7 +339,7 @@ div.searchdidyoumean em {
 }
 
 table#mw-search-top-table {
-	background-color:inherit;
+	background-color: transparent;
 }
 
 
@@ -357,7 +387,6 @@ table.mw-userrights-groups * td,table.mw-userrights-groups * th {
 	border-color: #AAAAAA;
 	border-width: 1px;
 	z-index:99;
-	visibility:hidden;
 	font-size:95%;
 }
 
@@ -369,7 +398,7 @@ table.os-suggest-results {
 	width: 100%;
 }
 
-td.os-suggest-result, td.os-suggest-result-hl {
+.os-suggest-result, .os-suggest-result-hl {
 	white-space: nowrap;
 	background-color: white;
 	background-color: Window;
@@ -377,12 +406,12 @@ td.os-suggest-result, td.os-suggest-result-hl {
 	color: WindowText;
 	padding: 2px;
 }
-td.os-suggest-result-hl,
-td.os-suggest-result-hl-webkit {
+.os-suggest-result-hl,
+.os-suggest-result-hl-webkit {
 	background-color: #4C59A6;
 	color: white;
 }
-td.os-suggest-result-hl {
+.os-suggest-result-hl {
 	/* System colors are misimplemented in Safari 3.0 and earlier,
 	   making highlighted text illegible... */
 	background-color: Highlight;
@@ -414,6 +443,11 @@ td.os-suggest-result-hl {
 #pagehistory li.selected {
     background-color: #f9f9f9;
     border: 1px dashed #aaa;
+}
+
+/** Generic minor/bot/newpage styling */
+.newpage, .minor, .bot {
+	font-weight: bold;
 }
 
 /* Special:Contributions styling */
@@ -612,6 +646,23 @@ table.collapsed tr.collapsable {
 .imagelist .TablePager_col_img_description { white-space: normal }
 .imagelist th.TablePager_sort { background-color: #ccccff }
 
+ /* Allmessages table */
+#mw-allmessagestable .allmessages-customised td.am_default {
+	background-color: #fcffc4;
+}
+
+#mw-allmessagestable tr.allmessages-customised:hover td.am_default {
+	background-color: #faff90;
+}
+
+#mw-allmessagestable td.am_actual {
+	background-color: #e2ffe2;
+}
+
+#mw-allmessagestable tr.allmessages-customised:hover + tr.allmessages-customised td.am_actual {
+	background-color: #b1ffb1;
+}
+
 /* filetoc */
 ul#filetoc {
 	text-align: center;
@@ -668,4 +719,86 @@ table.mw_metadata th {
 
 table.mw_metadata td {
 	background-color: #fcfcfc;
+}
+
+/* Galleries */
+table.gallery {
+	border: 1px solid #ccc;
+	margin: 2px;
+	padding: 2px;
+	background-color: white;
+}
+
+table.gallery tr {
+	vertical-align: top;
+}
+
+table.gallery td {
+	vertical-align: top;
+	background-color: #f9f9f9;
+	border: solid 2px white;
+}
+table.gallery caption {
+	font-weight: bold;
+}
+
+div.gallerybox {
+	margin: 2px;
+}
+
+div.gallerybox div.thumb {
+	text-align: center;
+	border: 1px solid #ccc;
+	margin: 2px;
+}
+
+div.gallerytext {
+	overflow: hidden;
+	font-size: 94%;
+	padding: 2px 4px;
+}
+
+table.mw-enhanced-rc {
+	background: none;
+	padding:0;
+	border:0;
+	border-spacing:0;
+}
+td.mw-enhanced-rc {
+	white-space:nowrap;
+	vertical-align:top;
+	font-family:monospace
+}
+
+#mw-addcategory-prompt {
+	display: inline;
+	margin-left: 1em;
+}
+ 
+#mw-addcategory-prompt input {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+ 
+.mw-remove-category {
+	padding: 8px;
+	background-image: url(images/remove.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+ 
+.mw-ajax-addcategory {
+	padding-left: 20px;
+	background-image: url(images/add.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
+.mw-ajax-loader {
+	background-image: url(images/ajax-loader.gif);
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding: 16px;
+	position: relative;
+	top: -16px;
 }

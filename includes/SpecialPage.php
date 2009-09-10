@@ -27,8 +27,7 @@
  * page list.
  * @ingroup SpecialPage
  */
-class SpecialPage
-{
+class SpecialPage {
 	/**#@+
 	 * @access private
 	 */
@@ -124,7 +123,8 @@ class SpecialPage
 		'Preferences'               => 'SpecialPreferences',	
 		'Contributions'             => 'SpecialContributions',	
 		'Listgrouprights'           => 'SpecialListGroupRights',
-		'Listusers'                 => array( 'SpecialPage', 'Listusers' ),	
+		'Listusers'                 => array( 'SpecialPage', 'Listusers' ),
+		'Activeusers'               => 'SpecialActiveUsers',
 		'Userrights'                => 'UserrightsPage',
 
 		# Recent changes and logs
@@ -141,11 +141,11 @@ class SpecialPage
 		'Filepath'                  => array( 'SpecialPage', 'Filepath' ),
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
 		'FileDuplicateSearch'       => array( 'SpecialPage', 'FileDuplicateSearch' ),
-		'Upload'                    => array( 'SpecialPage', 'Upload' ),
+		'Upload'                    => 'UploadForm',
 
 		# Wiki data and tools
 		'Statistics'				=> 'SpecialStatistics',
-		'Allmessages'               => array( 'SpecialPage', 'Allmessages' ),
+		'Allmessages'               => 'SpecialAllmessages',
 		'Version'                   => 'SpecialVersion',
 		'Lockdb'                    => array( 'SpecialPage', 'Lockdb', 'siteadmin' ),
 		'Unlockdb'                  => array( 'SpecialPage', 'Unlockdb', 'siteadmin' ),
@@ -174,7 +174,7 @@ class SpecialPage
 		'Booksources'               => 'SpecialBookSources',
 		
 		# Unlisted / redirects
-		'Blankpage'                 => array( 'UnlistedSpecialPage', 'Blankpage' ),
+		'Blankpage'                 => 'SpecialBlankpage',
 		'Blockme'                   => array( 'UnlistedSpecialPage', 'Blockme' ),	
 		'Emailuser'                 => array( 'UnlistedSpecialPage', 'Emailuser' ),
 		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
@@ -602,13 +602,15 @@ class SpecialPage
 			$found = false;
 			foreach ( $aliases as $n => $values ) {
 				if ( strcasecmp( $name, $n ) === 0 ) {
-					wfWarn( "Found $n for $name with casefix" );
+					wfWarn( "Found alias defined for $n when searching for special page aliases
+for $name. Case mismatch?" );
 					$name = $values[0];
 					$found = true;
 					break;
 				}
 			}
-			if ( !$found ) wfWarn( "Did not find name for special page $name" );
+			if ( !$found ) wfWarn( "Did not find alias for special page '$name'.
+Perhaps no page aliases are defined for it?" );
 		}
 		if ( $subpage !== false && !is_null( $subpage ) ) {
 			$name = "$name/$subpage";
@@ -701,7 +703,12 @@ class SpecialPage
 	  * Accessor and mutator
 	  */
 	function name( $x = NULL ) { return wfSetVar( $this->mName, $x ); }
-	function restrictions( $x = NULL) { return wfSetVar( $this->mRestrictions, $x ); }
+	function restrictions( $x = NULL) {
+		# Use the one below this
+		wfDeprecated( __METHOD__ );
+		return wfSetVar( $this->mRestriction, $x );
+	}
+	function restriction( $x = NULL) { return wfSetVar( $this->mRestriction, $x ); }
 	function listed( $x = NULL) { return wfSetVar( $this->mListed, $x ); }
 	function func( $x = NULL) { return wfSetVar( $this->mFunction, $x ); }
 	function file( $x = NULL) { return wfSetVar( $this->mFile, $x ); }
@@ -821,7 +828,7 @@ class SpecialPage
 	/**
 	 * Get a self-referential title object
 	 */
-	function getTitle( $subpage = false) {
+	function getTitle( $subpage = false ) {
 		return self::getTitleFor( $this->mName, $subpage );
 	}
 

@@ -236,13 +236,13 @@ class ImageGallery
 		$i = 0;
 		foreach ( $this->mImages as $pair ) {
 			$nt = $pair[0];
-			$text = $pair[1];
+			$text = $pair[1]; # "text" means "caption" here
 
 			# Give extensions a chance to select the file revision for us
 			$time = $descQuery = false;
 			wfRunHooks( 'BeforeGalleryFindFile', array( &$this, &$nt, &$time, &$descQuery ) );
 
-			$img = wfFindFile( $nt, $time );
+			$img = wfFindFile( $nt, array( 'time' => $time ) );
 
 			if( $nt->getNamespace() != NS_FILE || !$img ) {
 				# We're dealing with a non-image, spit out the name and be done with it.
@@ -265,6 +265,15 @@ class ImageGallery
 					. htmlspecialchars( $img->getLastError() ) . '</div>';
 			} else {
 				$vpad = floor( ( 1.25*$this->mHeights - $thumb->height ) /2 ) - 2;
+				
+				$imageParameters = array(
+					'desc-link' => true,
+					'desc-query' => $descQuery
+				);
+				# In the absence of a caption, fall back on providing screen readers with the filename as alt text
+				if ( $text == '' ) {
+					$imageParameters['alt'] = $nt->getText();
+				}
 
 				$thumbhtml = "\n\t\t\t".
 					'<div class="thumb" style="padding: ' . $vpad . 'px 0; width: ' .($this->mWidths+30).'px;">'
@@ -272,7 +281,7 @@ class ImageGallery
 					# handlers since they may emit block-level elements as opposed to simple <img> tags.
 					# ref http://css-discuss.incutio.com/?page=CenteringBlockElement
 					. '<div style="margin-left: auto; margin-right: auto; width: ' .$this->mWidths.'px;">'
-					. $thumb->toHtml( array( 'desc-link' => true, 'desc-query' => $descQuery ) ) . '</div></div>';
+					. $thumb->toHtml( $imageParameters ) . '</div></div>';
 
 				// Call parser transform hook
 				if ( $this->mParser && $img->getHandler() ) {

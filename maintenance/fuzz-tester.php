@@ -138,7 +138,7 @@ Wiki configuration for testing:
   }
   // --------- End ---------
 
-  Also add/change this in AdminSettings.php:
+  Also add/change this in LocalSettings.php:
   // --------- Start ---------
   $wgEnableProfileInfo = true;
   $wgDBserver = "localhost"; // replace with DB server hostname
@@ -169,7 +169,7 @@ TODO:
 /////////////////////////// COMMAND LINE HELP ////////////////////////////////////
 
 // This is a command line script, load MediaWiki env (gives command line options);
-require('commandLine.inc');
+require_once( dirname(__FILE__) . '/commandLine.inc' );
 
 // if the user asked for an explanation of command line options.
 if ( isset( $options["help"] ) ) {
