@@ -26,7 +26,7 @@ class SimpleSearchHooks {
 		wfLoadExtensionMessages( 'SimpleSearch' );
 		// Adds messages to page
 		UsabilityInitiativeHooks::addMessages(
-			array( 'simplesearch-search' )
+			array( 'simplesearch-search', 'simplesearch-containing' )
 		);
 
 		// Continue

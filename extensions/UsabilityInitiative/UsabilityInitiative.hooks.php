@@ -18,6 +18,7 @@ class UsabilityInitiativeHooks {
 	private static $styleFiles = array(
 		'base_sets' => array(
 			'raw' => array(
+				array( 'src' => 'css/suggestions.css', 'version' => 5 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 5 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 1 ),
