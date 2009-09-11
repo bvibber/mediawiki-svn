@@ -1156,15 +1156,26 @@ js2AddOnloadHook( function() {
 					}
 					var regex = new RegExp( searchStr, flags );
 					var $textarea = $j(this).data( 'context' ).$textarea;
-					if ( !$textarea.val().match( regex ) ) {
+					var matches = $textarea.val().match( regex );
+					if ( !matches ) {
 						alert( gM( 'edittoolbar-tool-replace-nomatch' ) );
 					} else {
-						$textarea.val( $textarea.val().replace( regex, replaceStr ) );
+						var start, end;
+						for ( var i = 0; i < matches.length; i++ ) {
+							start = $textarea.val().indexOf( matches[i] );
+							end = start + matches[i].length;
+							$textarea.setSelection( start, end );
+							$textarea.encapsulateSelection( '', replaceStr, '', false, true );
+						}
+						if ( i > 1 )
+							alert( gM( 'edittoolbar-tool-replace-success', i ) );
+						$textarea.scrollToCaretPosition( start );
+						$textarea.setSelection( start, start + replaceStr.length );
 					}
-					// TODO: Hook for wikEd
 				},
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
+					$j(this).data( 'context' ).$textarea.focus();
 				}
 			}
 		}

@@ -205,6 +205,21 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 	}
 	return getCaret( this.get( 0 ) );
 },
+setSelection: function( start, end ) {
+	return this.each( function() {
+		if ( this.selectionStart || this.selectionStart == '0' ) {
+			this.selectionStart = start;
+			this.selectionEnd = end;
+		} else if ( document.body.createTextRange ) {
+			var selection = document.body.createTextRange;
+			selection.setToElementText( this );
+			var length = selection.text.length;
+			selection.moveStart( 'character', start );
+			selection.moveEnd( 'character', -length + end );
+			selection.select();
+		}
+	});
+},
 /**
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest

@@ -91,6 +91,7 @@ $messages['en'] = array(
 	'edittoolbar-tool-replace-button' => 'Replace',
 	'edittoolbar-tool-replace-close' => 'Close',
 	'edittoolbar-tool-replace-nomatch' => 'Your search did not match anything.',
+	'edittoolbar-tool-replace-success' => '$1 replacements made.',
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',
 	'edittoolbar-characters-page-latin' => 'Latin',
