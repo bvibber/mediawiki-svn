@@ -845,6 +845,21 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 	}
 	return getCaret( this.get( 0 ) );
 },
+setSelection: function( start, end ) {
+	return this.each( function() {
+		if ( this.selectionStart || this.selectionStart == '0' ) {
+			this.selectionStart = start;
+			this.selectionEnd = end;
+		} else if ( document.body.createTextRange ) {
+			var selection = document.body.createTextRange;
+			selection.setToElementText( this );
+			var length = selection.text.length;
+			selection.moveStart( 'character', start );
+			selection.moveEnd( 'character', -length + end );
+			selection.select();
+		}
+	});
+},
 /**
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
@@ -1162,9 +1177,51 @@ fn: {
 					.data( 'context', context )
 					.appendTo( $( 'body' ) )
 					.each( module.init )
-					.dialog( configuration );
+					.dialog( configuration )
+					.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+					.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+						$(this).closest( '.ui-dialog-content' ).each(
+							$.wikiEditor.modules.dialogs.fn.resize );
+					});
 			}
 		}
+	},
+	
+	/**
+	 * Resize a dialog so its contents fit
+	 *
+	 * Usage: dialog.each( resize ); or dialog.bind( 'blah', resize );
+	 */
+	resize: function() {
+		var wrapper = $(this).closest( '.ui-dialog' );
+		// Make sure elements don't wrapped so we get an accurate idea
+		// of whether they really fit. Also temporarily show hidden
+		// elements.
+		
+		// Work around jQuery bug where <div style="display:inline;" />
+		// inside a dialog is both :visible and :hidden 
+		var oldHidden = $(this).find( '*' ).not( ':visible' );
+		
+		// Save the style attributes of the hidden elements to restore
+		// them later. Calling hide() after show() messes up for
+		// elements hidden with a class
+		oldHidden.each( function() {
+			$(this).data( 'oldstyle', $(this).attr( 'style' ) );
+		});
+		oldHidden.show();
+		var oldWS = $(this).css( 'white-space' );
+		$(this).css( 'white-space', 'nowrap' );
+		
+		if ( wrapper.width() <= $(this).get(0).scrollWidth ) {
+			$(this).width( $(this).get(0).scrollWidth );
+			wrapper.width( wrapper.get(0).scrollWidth );
+			$(this).dialog( { 'width': wrapper.width() } );
+		}
+		
+		$(this).css( 'white-space', oldWS );
+		oldHidden.each( function() {
+			$(this).attr( 'style', $(this).data( 'oldstyle' ) );
+		});
 	}
 },
 'modules': {}
@@ -1792,7 +1849,7 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition',
+			.bind( 'mouseup scrollToPosition focus',
 				function( event ) {
 					var context = $(this).data( 'context' );
 					$(this).eachAsync( {
@@ -1802,7 +1859,14 @@ fn: {
 						}
 					} );
 				}
-			);
+			)
+			.blur( function() {
+				$.wikiEditor.modules.toc.fn.unhighlight( context );
+			});
+	},
+ 
+	unhighlight: function( context ) {
+		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -1810,7 +1874,7 @@ fn: {
 	 * @param {Object} context
 	 */
 	update: function( context ) {
-		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
+		$.wikiEditor.modules.toc.fn.unhighlight( context );
 		var position = context.$textarea.getCaretPosition();
 		var section = 0;
 		if ( context.data.outline.length > 0 ) {

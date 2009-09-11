@@ -92,7 +92,7 @@ body.rtl .wikiEditor-ui {
 }
 
 /* Put suggestions (default z-index 99) on top of dialogs (z-index 1002) */
-div.os-suggest {
+div.suggestions {
 	z-index: 1099;
 }
 /* wikiEditor toc module */
