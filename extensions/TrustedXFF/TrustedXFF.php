@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('MEDIAWIKI')) {
+	die(1);
+}
+
 /**
  * Trusted hosts file in CDB format.
  * The file can be generated using generate.php
@@ -10,7 +14,7 @@
  *
  * For details, see http://meta.wikimedia.org/wiki/XFF_project
  */
-$wgTrustedXffFile = dirname(__FILE__).'/trusted-xff.cdb';
+$wgTrustedXffFile = $IP . '/cache/trusted-xff.cdb';
 
 
 /** Registration */
