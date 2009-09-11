@@ -56,31 +56,30 @@ if( preg_match( '!\d+px-(.*)!i', $name, $m ) )
 
 // Check to see if the file exists
 if( !file_exists( $filename ) )
-	wfForbidden('img-auth-accessdenied','img-auth-nofile',htmlspecialchars($filename));
+	wfForbidden('img-auth-accessdenied','img-auth-nofile',$filename);
 
 // Check to see if tried to access a directory
 if( is_dir( $filename ) )
-	wfForbidden('img-auth-accessdenied','img-auth-isdir',htmlspecialchars($filename));
+	wfForbidden('img-auth-accessdenied','img-auth-isdir',$filename);
 
 
 $title = Title::makeTitleSafe( NS_FILE, $name );
 
 // See if could create the title object
 if( !$title instanceof Title ) 
-	wfForbidden('img-auth-accessdenied','img-auth-badtitle',htmlspecialchars($name));
+	wfForbidden('img-auth-accessdenied','img-auth-badtitle',$name);
 
 // Run hook
 if (!wfRunHooks( 'ImgAuthBeforeStream', array( &$title, &$path, &$name, &$result ) ) )
-	call_user_func_array('wfForbidden',merge_array(array($result[0],$result[1]),array_slice($result,2)));
+	wfForbidden($result[0],$result[1],array_slice($result,2));
 	
 //  Check user authorization for this title
 //  UserCanRead Checks Whitelist too
-if( !$title->userCanRead() )
-	wfForbidden('img-auth-accessdenied','img-auth-noread',htmlspecialchars($name));
-
+if( !$title->userCanRead() ) 
+	wfForbidden('img-auth-accessdenied','img-auth-noread',$name);
 
 // Stream the requested file
-wfDebugLog( 'img_auth', "Streaming `".htmlspecialchars($filename)."`." );
+wfDebugLog( 'img_auth', "Streaming `".$filename."`." );
 wfStreamFile( $filename, array( 'Cache-Control: private', 'Vary: Cookie' ) );
 wfLogProfilingData();
 
@@ -95,10 +94,10 @@ function wfForbidden($msg1,$msg2) {
 	$args = func_get_args();
 	array_shift( $args );
 	array_shift( $args );
-	$MsgHdr = wfMsgHTML($msg1);
-	$detailMsg = call_user_func_array('wfMsgHTML',array_merge(array($wgImgAuthDetails ? $msg2 : 'badaccess-group0'),$args));
+	$MsgHdr = htmlspecialchars(wfMsg($msg1));
+	$detailMsg = (htmlspecialchars(wfMsg(($wgImgAuthDetails ? $msg2 : 'badaccess-group0'),$args)));
 	wfDebugLog('img_auth', "wfForbidden Hdr:".wfMsgExt( $msg1, array('language' => 'en'))." Msg: ".
-				call_user_func_array('wfMsgExt',array_merge( array($msg2, array('language' => 'en')),$args)));
+				wfMsgExt($msg2,array('language' => 'en'),$args));
 	header( 'HTTP/1.0 403 Forbidden' );
 	header( 'Cache-Control: no-cache' );
 	header( 'Content-Type: text/html; charset=utf-8' );
