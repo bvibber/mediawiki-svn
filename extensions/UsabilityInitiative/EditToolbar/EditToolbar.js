@@ -936,7 +936,6 @@ js2AddOnloadHook( function() {
 			});
 		},
 		dialog: {
-			width: 550, // FIXME: autoresize width
 			buttons: {
 				'edittoolbar-tool-link-insert': function() {
 					function escapeInternalText( s ) {
@@ -1069,7 +1068,6 @@ js2AddOnloadHook( function() {
 			$j( '#edittoolbar-table-dimensions-columns' ).val( 2 );
 		},
 		dialog: {
-			width: 350, // FIXME: autoresize
 			buttons: {
 				'edittoolbar-tool-table-insert': function() {
 					var rows = parseInt( $j( '#edittoolbar-table-dimensions-rows' ).val() );
@@ -1139,7 +1137,6 @@ js2AddOnloadHook( function() {
 			});
 		},
 		dialog: {
-			width: 350, // FIXME: autoresize width
 			buttons: {
 				'edittoolbar-tool-replace-button': function() {
 					var searchStr = $j( '#edittoolbar-replace-search' ).val();
