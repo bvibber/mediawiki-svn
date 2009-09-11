@@ -24,19 +24,23 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @author Brion Vibber <brion at pobox.com>
  * @ingroup Maintenance
  */
 
-require_once( dirname(__FILE__) . '/cleanupTable.inc' );
+require_once( 'commandLine.inc' );
+require_once( 'cleanupTable.inc' );
 
+/**
+ * @ingroup Maintenance
+ */
 class TitleCleanup extends TableCleanup {
-	public function __construct() {
-		parent::__construct();
-		$this->mDescription = "Script to clean up broken, unparseable titles";
+	function __construct( $dryrun = false ) {
+		parent::__construct( 'page', $dryrun );
 	}
 
-	protected function processPage( $row ) {
+	function processPage( $row ) {
 		$current = Title::makeTitle( $row->page_namespace, $row->page_title );
 		$display = $current->getPrefixedText();
 
@@ -49,20 +53,20 @@ class TitleCleanup extends TableCleanup {
 		}
 
 		if( $row->page_namespace == NS_FILE && $this->fileExists( $row->page_title ) ) {
-			$this->output( "file $row->page_title needs cleanup, please run cleanupImages.php.\n" );
+			$this->log( "file $row->page_title needs cleanup, please run cleanupImages.php." );
 			return $this->progress( 0 );
 		} elseif( is_null( $title ) ) {
-			$this->output( "page $row->page_id ($display) is illegal.\n" );
+			$this->log( "page $row->page_id ($display) is illegal." );
 			$this->moveIllegalPage( $row );
 			return $this->progress( 1 );
 		} else {
-			$this->output( "page $row->page_id ($display) doesn't match self.\n" );
+			$this->log( "page $row->page_id ($display) doesn't match self." );
 			$this->moveInconsistentPage( $row, $title );
 			return $this->progress( 1 );
 		}
 	}
 
-	protected function fileExists( $name ) {
+	function fileExists( $name ) {
 		// XXX: Doesn't actually check for file existence, just presence of image record.
 		// This is reasonable, since cleanupImages.php only iterates over the image table.
 		$dbr = wfGetDB( DB_SLAVE );
@@ -70,7 +74,7 @@ class TitleCleanup extends TableCleanup {
 		return $row !== false;
 	}
 
-	protected function moveIllegalPage( $row ) {
+	function moveIllegalPage( $row ) {
 		$legal = 'A-Za-z0-9_/\\\\-';
 		$legalized = preg_replace_callback( "!([^$legal])!",
 			array( &$this, 'hexChar' ),
@@ -82,28 +86,28 @@ class TitleCleanup extends TableCleanup {
 		$title = Title::newFromText( $legalized );
 		if( is_null( $title ) ) {
 			$clean = 'Broken/id:' . $row->page_id;
-			$this->output( "Couldn't legalize; form '$legalized' still invalid; using '$clean'\n" );
+			$this->log( "Couldn't legalize; form '$legalized' still invalid; using '$clean'" );
 			$title = Title::newFromText( $clean );
 		} elseif( $title->exists() ) {
 			$clean = 'Broken/id:' . $row->page_id;
-			$this->output( "Legalized for '$legalized' exists; using '$clean'\n" );
+			$this->log( "Legalized for '$legalized' exists; using '$clean'" );
 			$title = Title::newFromText( $clean );
 		}
 
 		$dest = $title->getDBkey();
 		if( $this->dryrun ) {
-			$this->output( "DRY RUN: would rename $row->page_id ($row->page_namespace,'$row->page_title') to ($row->page_namespace,'$dest')\n" );
+			$this->log( "DRY RUN: would rename $row->page_id ($row->page_namespace,'$row->page_title') to ($row->page_namespace,'$dest')" );
 		} else {
-			$this->output( "renaming $row->page_id ($row->page_namespace,'$row->page_title') to ($row->page_namespace,'$dest')\n" );
+			$this->log( "renaming $row->page_id ($row->page_namespace,'$row->page_title') to ($row->page_namespace,'$dest')" );
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update( 'page',
 				array( 'page_title' => $dest ),
 				array( 'page_id' => $row->page_id ),
-				__METHOD__ );
+				'cleanupTitles::moveInconsistentPage' );
 		}
 	}
 
-	protected function moveInconsistentPage( $row, $title ) {
+	function moveInconsistentPage( $row, $title ) {
 		if( $title->exists() || $title->getInterwiki() ) {
 			if( $title->getInterwiki() ) {
 				$prior = $title->getPrefixedDbKey();
@@ -114,20 +118,20 @@ class TitleCleanup extends TableCleanup {
 			$verified = Title::makeTitleSafe( $row->page_namespace, $clean );
 			if( $verified->exists() ) {
 				$blah = "Broken/id:" . $row->page_id;
-				$this->output( "Couldn't legalize; form '$clean' exists; using '$blah'\n" );
+				$this->log( "Couldn't legalize; form '$clean' exists; using '$blah'" );
 				$verified = Title::makeTitleSafe( $row->page_namespace, $blah );
 			}
 			$title = $verified;
 		}
 		if( is_null( $title ) ) {
-			$this->error( "Something awry; empty title.", true );
+			wfDie( "Something awry; empty title.\n" );
 		}
 		$ns = $title->getNamespace();
 		$dest = $title->getDBkey();
 		if( $this->dryrun ) {
-			$this->output( "DRY RUN: would rename $row->page_id ($row->page_namespace,'$row->page_title') to ($row->page_namespace,'$dest')\n" );
+			$this->log( "DRY RUN: would rename $row->page_id ($row->page_namespace,'$row->page_title') to ($row->page_namespace,'$dest')" );
 		} else {
-			$this->output( "renaming $row->page_id ($row->page_namespace,'$row->page_title') to ($ns,'$dest')\n" );
+			$this->log( "renaming $row->page_id ($row->page_namespace,'$row->page_title') to ($ns,'$dest')" );
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update( 'page',
 				array(
@@ -135,12 +139,15 @@ class TitleCleanup extends TableCleanup {
 					'page_title' => $dest
 				),
 				array( 'page_id' => $row->page_id ),
-				__METHOD__ );
+				'cleanupTitles::moveInconsistentPage' );
 			$linkCache = LinkCache::singleton();
 			$linkCache->clear();
 		}
 	}
 }
 
-$maintClass = "TitleCleanup";
-require_once( DO_MAINTENANCE );
+$wgUser->setName( 'Conversion script' );
+$caps = new TitleCleanup( !isset( $options['fix'] ) );
+$caps->cleanup();
+
+

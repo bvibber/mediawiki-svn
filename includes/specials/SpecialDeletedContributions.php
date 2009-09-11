@@ -11,7 +11,7 @@ class DeletedContribsPager extends IndexPager {
 
 	function __construct( $target, $namespace = false ) {
 		parent::__construct();
-		foreach( explode( ' ', 'deletionlog undeleteviewlink diff' ) as $msg ) {
+		foreach( explode( ' ', 'deletionlog undeletebtn minoreditletter diff' ) as $msg ) {
 			$this->messages[$msg] = wfMsgExt( $msg, array( 'escape') );
 		}
 		$this->target = $target;
@@ -30,11 +30,8 @@ class DeletedContribsPager extends IndexPager {
 		list( $index, $userCond ) = $this->getUserCond();
 		$conds = array_merge( $userCond, $this->getNamespaceCond() );
 		// Paranoia: avoid brute force searches (bug 17792)
-		if( !$wgUser->isAllowed( 'deleterevision' ) ) {
-			$conds[] = $this->mDb->bitAnd('ar_deleted',Revision::DELETED_USER) . ' = 0';
-		} else if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
-			$conds[] = $this->mDb->bitAnd('ar_deleted',Revision::SUPPRESSED_USER) .
-				' != ' . Revision::SUPPRESSED_USER;
+		if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+			$conds[] = $this->mDb->bitAnd('ar_deleted', Revision::DELETED_USER) . ' = 0';
 		}
 		return array(
 			'tables' => array( 'archive' ),
@@ -74,10 +71,9 @@ class DeletedContribsPager extends IndexPager {
 		if ( isset( $this->mNavigationBar ) ) {
 			return $this->mNavigationBar;
 		}
-		$fmtLimit = $wgLang->formatNum( $this->mLimit );
 		$linkTexts = array(
-			'prev' => wfMsgExt( 'pager-newer-n', array( 'escape', 'parsemag' ), $fmtLimit ),
-			'next' => wfMsgExt( 'pager-older-n', array( 'escape', 'parsemag' ), $fmtLimit ),
+			'prev' => wfMsgHtml( 'pager-newer-n', $this->mLimit ),
+			'next' => wfMsgHtml( 'pager-older-n', $this->mLimit ),
 			'first' => wfMsgHtml( 'histlast' ),
 			'last' => wfMsgHtml( 'histfirst' )
 		);
@@ -142,33 +138,39 @@ class DeletedContribsPager extends IndexPager {
 
 		$reviewlink = $sk->linkKnown(
 			SpecialPage::getTitleFor( 'Undelete', $page->getPrefixedDBkey() ),
-			$this->messages['undeleteviewlink']
+			$this->messages['undeletebtn']
 		);
 
-		if( $wgUser->isAllowed('undelete') ) {
-			$last = $sk->linkKnown(
-				$undelete,
-				$this->messages['diff'],
-				array(),
-				array(
-					'target' => $page->getPrefixedText(),
-					'timestamp' => $rev->getTimestamp(),
-					'diff' => 'prev'
-				)
-			);
-		} else {
-			$last = $this->messages['diff'];
-		}
+		$link = $sk->linkKnown(
+			$undelete,
+			htmlspecialchars( $page->getPrefixedText() ),
+			array(),
+			array(
+				'target' => $page->getPrefixedText(),
+				'timestamp' => $rev->getTimestamp()
+			)
+		);
+
+		$last = $sk->linkKnown(
+			$undelete,
+			$this->messages['diff'],
+			array(),
+			array(
+				'target' => $page->getPrefixedText(),
+				'timestamp' => $rev->getTimestamp(),
+				'diff' => 'prev'
+			)
+		);
 
 		$comment = $sk->revComment( $rev );
-		$date = htmlspecialchars( $wgLang->timeanddate( $rev->getTimestamp(), true ) );
+		$d = htmlspecialchars( $wgLang->timeanddate( $rev->getTimestamp(), true ) );
 
-		if( !$wgUser->isAllowed('undelete') || !$rev->userCan(Revision::DELETED_TEXT) ) {
-			$link = $date; // unusable link
+		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+			$d = '<span class="history-deleted">' . $d . '</span>';
 		} else {
 			$link = $sk->linkKnown(
 				$undelete,
-				$date,
+				$d,
 				array(),
 				array(
 					'target' => $page->getPrefixedText(),
@@ -176,15 +178,11 @@ class DeletedContribsPager extends IndexPager {
 				)
 			);
 		}
-		// Style deleted items
-		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
-			$link = '<span class="history-deleted">' . $link . '</span>';
-		}
 
 		$pagelink = $sk->link( $page );
 
 		if( $rev->isMinor() ) {
-			$mflag = ChangesList::flag( 'minor' );
+			$mflag = '<span class="minor">' . $this->messages['minoreditletter'] . '</span> ';
 		} else {
 			$mflag = '';
 		}
@@ -325,7 +323,7 @@ class DeletedContributionsPage extends SpecialPage {
 		$sk = $wgUser->getSkin();
 
 		if ( 0 == $id ) {
-			$user = htmlspecialchars( $nt->getText() );
+			$user = $nt->getText();
 		} else {
 			$user = $sk->link( $nt, htmlspecialchars( $nt->getText() ) );
 		}
@@ -418,10 +416,7 @@ class DeletedContributionsPage extends SpecialPage {
 		$f .=  Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
 			Xml::tags( 'label', array( 'for' => 'target' ), wfMsgExt( 'sp-contributions-username', 'parseinline' ) ) . ' ' .
-			Html::input( 'target', $options['target'], 'text', array(
-				'size' => '20',
-				'required' => ''
-			) + ( $options['target'] ? array() : array( 'autofocus' ) ) ) . ' '.
+			Xml::input( 'target', 20, $options['target']) . ' '.
 			Xml::label( wfMsg( 'namespace' ), 'namespace' ) . ' ' .
 			Xml::namespaceSelector( $options['namespace'], '' ) . ' ' .
 			Xml::submitButton( wfMsg( 'sp-contributions-submit' ) ) .

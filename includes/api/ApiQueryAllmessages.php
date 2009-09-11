@@ -40,6 +40,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 	}
 
 	public function execute() {
+		global $wgMessageCache;
 		$params = $this->extractRequestParams();
 
 		if(!is_null($params['lang']))
@@ -52,7 +53,8 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		//Determine which messages should we print
 		$messages_target = array();
 		if( $params['messages'] == '*' ) {
-			$message_names = array_keys( Language::getMessagesFor( 'en' ) );
+			$wgMessageCache->loadAllMessages();
+			$message_names = array_keys( array_merge( Language::getMessagesFor( 'en' ), $wgMessageCache->getExtensionMessagesFor( 'en' ) ) );
 			sort( $message_names );
 			$messages_target = $message_names;
 		} else {

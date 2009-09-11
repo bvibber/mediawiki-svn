@@ -391,7 +391,7 @@ class SpecialAllpages extends IncludableSpecialPage {
 
 				$prevLink = $sk->linkKnown(
 					$self,
-					htmlspecialchars( wfMsg( 'prevpage', $pt ) ),
+					wfMsgHTML( 'prevpage', htmlspecialchars( $pt ) ),
 					array(),
 					$query
 				);
@@ -408,7 +408,7 @@ class SpecialAllpages extends IncludableSpecialPage {
 
 				$nextLink = $sk->linkKnown(
 					$self,
-					htmlspecialchars( wfMsg( 'nextpage', $t->getText() ) ),
+					wfMsgHtml( 'nextpage', htmlspecialchars( $t->getText() ) ),
 					array(),
 					$query
 				);

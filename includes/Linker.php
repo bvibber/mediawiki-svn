@@ -21,11 +21,13 @@ class Linker {
 	 * Get the appropriate HTML attributes to add to the "a" element of an ex-
 	 * ternal link, as created by [wikisyntax].
 	 *
+	 * @param string $title  The (unescaped) title text for the link
+	 * @param string $unused Unused
 	 * @param string $class  The contents of the class attribute; if an empty
 	 *   string is passed, which is the default value, defaults to 'external'.
 	 */
-	function getExternalLinkAttributes( $class = 'external' ) {
-		return $this->getLinkAttributesInternal( '', $class );
+	function getExternalLinkAttributes( $title, $unused = null, $class='' ) {
+		return $this->getLinkAttributesInternal( $title, $class, 'external' );
 	}
 
 	/**
@@ -38,7 +40,7 @@ class Linker {
 	 * @param string $class  The contents of the class attribute; if an empty
 	 *   string is passed, which is the default value, defaults to 'external'.
 	 */
-	function getInterwikiLinkAttributes( $title, $unused = null, $class = 'external' ) {
+	function getInterwikiLinkAttributes( $title, $unused = null, $class='' ) {
 		global $wgContLang;
 
 		# FIXME: We have a whole bunch of handling here that doesn't happen in
@@ -47,7 +49,7 @@ class Linker {
 		$title = $wgContLang->checkTitleEncoding( $title );
 		$title = preg_replace( '/[\\x00-\\x1f]/', ' ', $title );
 
-		return $this->getLinkAttributesInternal( $title, $class );
+		return $this->getLinkAttributesInternal( $title, $class, 'external' );
 	}
 
 	/**
@@ -85,16 +87,20 @@ class Linker {
 	/**
 	 * Common code for getLinkAttributesX functions
 	 */
-	private function getLinkAttributesInternal( $title, $class ) {
+	private function getLinkAttributesInternal( $title, $class, $classDefault = false ) {
 		$title = htmlspecialchars( $title );
+		if( $class === '' and $classDefault !== false ) {
+			# FIXME: Parameter defaults the hard way!  We should just have
+			# $class = 'external' or whatever as the default in the externally-
+			# exposed functions, not $class = ''.
+			$class = $classDefault;
+		}
 		$class = htmlspecialchars( $class );
 		$r = '';
-		if ( $class != '' ) {
+		if( $class !== '' ) {
 			$r .= " class=\"$class\"";
 		}
-		if ( $title != '') {
-			$r .= " title=\"$title\"";
-		}
+		$r .= " title=\"$title\"";
 		return $r;
 	}
 
@@ -206,7 +212,7 @@ class Linker {
 
 		$ret = null;
 		if( wfRunHooks( 'LinkEnd', array( $this, $target, $options, &$text, &$attribs, &$ret ) ) ) {
-			$ret = Html::rawElement( 'a', $attribs, $text );
+			$ret = Xml::openElement( 'a', $attribs ) . $text . Xml::closeElement( 'a' );
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -382,7 +388,7 @@ class Linker {
 			wfDebug("Hook LinkerMakeExternalImage changed the output of external image with url {$url} and alt text {$alt} to {$img}\n", true);
 			return $img;
 		}
-		return Html::element( 'img',
+		return Xml::element( 'img',
 			array(
 				'src' => $url,
 				'alt' => $alt ) );
@@ -441,7 +447,8 @@ class Linker {
 		$page = isset( $hp['page'] ) ? $hp['page'] : false;
 		if ( !isset( $fp['align'] ) ) $fp['align'] = '';
 		if ( !isset( $fp['alt'] ) ) $fp['alt'] = '';
-		if ( !isset( $fp['title'] ) ) $fp['title'] = '';
+		# Backward compatibility, title used to always be equal to alt text
+		if ( !isset( $fp['title'] ) ) $fp['title'] = $fp['alt'];
 
 		$prefix = $postfix = '';
 
@@ -484,7 +491,7 @@ class Linker {
 			# If  thumbnail width has not been provided, it is set
 			# to the default user option as specified in Language*.php
 			if ( $fp['align'] == '' ) {
-				$fp['align'] = $wgContLang->alignEnd();
+				$fp['align'] = $wgContLang->isRTL() ? 'left' : 'right';
 			}
 			return $prefix.$this->makeThumbLink2( $title, $file, $fp, $hp, $time, $query ).$postfix;
 		}
@@ -559,7 +566,8 @@ class Linker {
 		$page = isset( $hp['page'] ) ? $hp['page'] : false;
 		if ( !isset( $fp['align'] ) ) $fp['align'] = 'right';
 		if ( !isset( $fp['alt'] ) ) $fp['alt'] = '';
-		if ( !isset( $fp['title'] ) ) $fp['title'] = '';
+		# Backward compatibility, title used to always be equal to alt text
+		if ( !isset( $fp['title'] ) ) $fp['title'] = $fp['alt'];
 		if ( !isset( $fp['caption'] ) ) $fp['caption'] = '';
 
 		if ( empty( $hp['width'] ) ) {
@@ -696,7 +704,7 @@ class Linker {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
 		} else {
-			$img  = wfFindFile( $title, array( 'time' => $time ) );
+			$img  = wfFindFile( $title, $time );
 			if( $img ) {
 				$url  = $img->getURL();
 				$class = 'internal';
@@ -741,7 +749,7 @@ class Linker {
 	 * hook play with them, *then* expand it all at once. 
 	 */
 	function makeExternalLink( $url, $text, $escape = true, $linktype = '', $attribs = array() ) {
-		$attribsText = $this->getExternalLinkAttributes( 'external ' . $linktype );
+		$attribsText = $this->getExternalLinkAttributes( $url, $text, 'external ' . $linktype );
 		$url = htmlspecialchars( $url );
 		if( $escape ) {
 			$text = htmlspecialchars( $text );
@@ -753,7 +761,7 @@ class Linker {
 			return $link;
 		}
 		if ( $attribs ) {
-			$attribsText .= Html::expandAttributes( $attribs );
+			$attribsText .= Xml::expandAttributes( $attribs );
 		}
 		return '<a href="'.$url.'"'.$attribsText.'>'.$text.'</a>';
 	}
@@ -922,7 +930,7 @@ class Linker {
 
 		# Render autocomments and make links:
 		$comment = $this->formatAutoComments( $comment, $title, $local );
-		$comment = $this->formatLinksInComment( $comment, $title, $local );
+		$comment = $this->formatLinksInComment( $comment );
 
 		wfProfileOut( __METHOD__ );
 		return $comment;
@@ -1009,16 +1017,11 @@ class Linker {
 	 * @param string $comment Text to format links in
 	 * @return string
 	 */
-	public function formatLinksInComment( $comment, $title = null, $local = false ) {
-		$this->commentContextTitle = $title;
-		$this->commentLocal = $local;
-		$html = preg_replace_callback(
+	public function formatLinksInComment( $comment ) {
+		return preg_replace_callback(
 			'/\[\[:?(.*?)(\|(.*?))*\]\]([^[]*)/',
 			array( $this, 'formatLinksInCommentCallback' ),
 			$comment );
-		unset( $this->commentContextTitle );
-		unset( $this->commentLocal );
-		return $html;
 	}
 
 	protected function formatLinksInCommentCallback( $match ) {
@@ -1041,7 +1044,6 @@ class Linker {
 			$text = $match[1];
 		}
 		$submatch = array();
-		$thelink = null;
 		if( preg_match( '/^' . $medians . '(.*)$/i', $match[1], $submatch ) ) {
 			# Media link; trail not supported.
 			$linkRegexp = '/\[\[(.*?)\]\]/';
@@ -1058,102 +1060,14 @@ class Linker {
 			if (isset($match[1][0]) && $match[1][0] == ':')
 				$match[1] = substr($match[1], 1);
 			list( $inside, $trail ) = Linker::splitTrail( $trail );
-			
-			$linkText = $text;
-			$linkTarget = Linker::normalizeSubpageLink( $this->commentContextTitle,
-				$match[1], $linkText );
-			
-			$target = Title::newFromText( $linkTarget );
-			if( $target ) {
-				if( $target->getText() == '' && !$this->commentLocal && $this->commentContextTitle ) {
-					$newTarget = clone( $this->commentContextTitle );
-					$newTarget->setFragment( '#' . $target->getFragment() );
-					$target = $newTarget;
-				}
-				$thelink = $this->link(
-					$target,
-					$linkText . $inside
-				) . $trail;
-			}
+			$thelink = $this->link(
+				Title::newFromText( $match[1] ),
+				$text . $inside
+			) . $trail;
 		}
-		if( $thelink ) {
-			// If the link is still valid, go ahead and replace it in!
-			$comment = preg_replace( $linkRegexp, StringUtils::escapeRegexReplacement( $thelink ), $comment, 1 );
-		}
+		$comment = preg_replace( $linkRegexp, StringUtils::escapeRegexReplacement( $thelink ), $comment, 1 );
 
 		return $comment;
-	}
-	
-	static function normalizeSubpageLink( $contextTitle, $target, &$text ) {
-		# Valid link forms:
-		# Foobar -- normal
-		# :Foobar -- override special treatment of prefix (images, language links)
-		# /Foobar -- convert to CurrentPage/Foobar
-		# /Foobar/ -- convert to CurrentPage/Foobar, strip the initial / from text
-		# ../ -- convert to CurrentPage, from CurrentPage/CurrentSubPage
-		# ../Foobar -- convert to CurrentPage/Foobar, from CurrentPage/CurrentSubPage
-
-		wfProfileIn( __METHOD__ );
-		$ret = $target; # default return value is no change
-
-		# Some namespaces don't allow subpages,
-		# so only perform processing if subpages are allowed
-		if( $contextTitle && MWNamespace::hasSubpages( $contextTitle->getNamespace() ) ) {
-			$hash = strpos( $target, '#' );
-			if( $hash !== false ) {
-				$suffix = substr( $target, $hash );
-				$target = substr( $target, 0, $hash );
-			} else {
-				$suffix = '';
-			}
-			# bug 7425
-			$target = trim( $target );
-			# Look at the first character
-			if( $target != '' && $target{0} === '/' ) {
-				# / at end means we don't want the slash to be shown
-				$m = array();
-				$trailingSlashes = preg_match_all( '%(/+)$%', $target, $m );
-				if( $trailingSlashes ) {
-					$noslash = $target = substr( $target, 1, -strlen($m[0][0]) );
-				} else {
-					$noslash = substr( $target, 1 );
-				}
-
-				$ret = $contextTitle->getPrefixedText(). '/' . trim($noslash) . $suffix;
-				if( '' === $text ) {
-					$text = $target . $suffix;
-				} # this might be changed for ugliness reasons
-			} else {
-				# check for .. subpage backlinks
-				$dotdotcount = 0;
-				$nodotdot = $target;
-				while( strncmp( $nodotdot, "../", 3 ) == 0 ) {
-					++$dotdotcount;
-					$nodotdot = substr( $nodotdot, 3 );
-				}
-				if($dotdotcount > 0) {
-					$exploded = explode( '/', $contextTitle->GetPrefixedText() );
-					if( count( $exploded ) > $dotdotcount ) { # not allowed to go below top level page
-						$ret = implode( '/', array_slice( $exploded, 0, -$dotdotcount ) );
-						# / at the end means don't show full path
-						if( substr( $nodotdot, -1, 1 ) === '/' ) {
-							$nodotdot = substr( $nodotdot, 0, -1 );
-							if( '' === $text ) {
-								$text = $nodotdot . $suffix;
-							}
-						}
-						$nodotdot = trim( $nodotdot );
-						if( $nodotdot != '' ) {
-							$ret .= '/' . $nodotdot;
-						}
-						$ret .= $suffix;
-					}
-				}
-			}
-		}
-
-		wfProfileOut( __METHOD__ );
-		return $ret;
 	}
 
 	/**
@@ -1228,11 +1142,8 @@ class Linker {
 	/**
 	 * parameter level defines if we are on an indentation level
 	 */
-	function tocLine( $anchor, $tocline, $tocnumber, $level, $sectionIndex = false ) {
-		$classes = "toclevel-$level";
-		if ( $sectionIndex !== false )
-			$classes .= " tocsection-$sectionIndex";
-		return "\n<li class=\"$classes\"><a href=\"#" .
+	function tocLine( $anchor, $tocline, $tocnumber, $level ) {
+		return "\n<li class=\"toclevel-$level\"><a href=\"#" .
 			$anchor . '"><span class="tocnumber">' .
 			$tocnumber . '</span> <span class="toctext">' .
 			$tocline . '</span></a>';
@@ -1245,47 +1156,22 @@ class Linker {
 
 	/** @todo document */
 	function tocList($toc) {
+		global $wgJsMimeType;
 		$title = wfMsgHtml('toc') ;
 		return
-		   '<table id="toc" class="toc"><tr><td>'
+		   '<table id="toc" class="toc" summary="' . $title .'"><tr><td>'
 		 . '<div id="toctitle"><h2>' . $title . "</h2></div>\n"
 		 . $toc
 		 # no trailing newline, script should not be wrapped in a
 		 # paragraph
 		 . "</ul>\n</td></tr></table>"
-		 . Html::inlineScript(
-			'if (window.showTocToggle) {'
-			. ' var tocShowText = "' . Xml::escapeJsString( wfMsg('showtoc') ) . '";'
-			. ' var tocHideText = "' . Xml::escapeJsString( wfMsg('hidetoc') ) . '";'
-			. ' showTocToggle();'
-			. ' } ' )
-		. "\n";
-	}
-	
-	/**
-	 * Generate a table of contents from a section tree
-	 * @param $tree Return value of ParserOutput::getSections()
-	 * @return string HTML
-	 */
-	public function generateTOC( $tree ) {
-		$toc = '';
-		$lastLevel = 0;
-		foreach ( $tree as $section ) {
-			if ( $section['toclevel'] > $lastLevel )
-				$toc .= $this->tocIndent();
-			else if ( $section['toclevel'] < $lastLevel )
-				$toc .= $this->tocUnindent(
-					$lastLevel - $section['toclevel'] );
-			else
-				$toc .= $this->tocLineEnd();
-			
-			$toc .= $this->tocLine( $section['anchor'],
-				$section['line'], $section['number'],
-				$section['toclevel'], $section['index'] );
-			$lastLevel = $section['toclevel'];
-		}
-		$toc .= $this->tocLineEnd();
-		return $this->tocList( $toc );
+		 . '<script type="' . $wgJsMimeType . '">'
+		 . ' if (window.showTocToggle) {'
+		 . ' var tocShowText = "' . Xml::escapeJsString( wfMsg('showtoc') ) . '";'
+		 . ' var tocHideText = "' . Xml::escapeJsString( wfMsg('hidetoc') ) . '";'
+		 . ' showTocToggle();'
+		 . ' } '
+		 . "</script>\n";
 	}
 
 	/**
@@ -1353,12 +1239,13 @@ class Linker {
 	 * @return string HTML headline
 	 */
 	public function makeHeadline( $level, $attribs, $anchor, $text, $link, $legacyAnchor = false ) {
-		$ret = "<h$level$attribs"
+		$ret = "<a name=\"$anchor\" id=\"$anchor\"></a>"
+			. "<h$level$attribs"
 			. $link
-			. " <span class=\"mw-headline\" id=\"$anchor\">$text</span>"
+			. " <span class=\"mw-headline\">$text</span>"
 			. "</h$level>";
 		if ( $legacyAnchor !== false ) {
-			$ret = "<a id=\"$legacyAnchor\"></a>$ret";
+			$ret = "<a name=\"$legacyAnchor\" id=\"$legacyAnchor\"></a>$ret";
 		}
 		return $ret;
 	}
@@ -1897,7 +1784,7 @@ class Linker {
 		if ( $valign ) {
 			$frameParams['valign'] = $valign;
 		}
-		$file = wfFindFile( $title, array( 'time' => $time ) );
+		$file = wfFindFile( $title, $time );
 		return $this->makeImageLink2( $title, $file, $frameParams, $handlerParams, $time );
 	}
 
@@ -1941,9 +1828,6 @@ class Linker {
 	 * @deprecated Returns raw bits of HTML, use titleAttrib() and accesskey()
 	 */
 	public function tooltipAndAccesskey( $name ) {
-		global $wgEnableTooltipsAndAccesskeys;
-		if (!$wgEnableTooltipsAndAccesskeys)
-			return array();
 		# FIXME: If Sanitizer::expandAttributes() treated "false" as "output
 		# no attribute" instead of "output '' as value for attribute", this
 		# would be three lines.
@@ -1962,9 +1846,6 @@ class Linker {
 
 	/** @deprecated Returns raw bits of HTML, use titleAttrib() */
 	public function tooltip( $name, $options = null ) {
-		global $wgEnableTooltipsAndAccesskeys;
-		if ($wgEnableTooltipsAndAccesskeys)
-			return array();
 		# FIXME: If Sanitizer::expandAttributes() treated "false" as "output
 		# no attribute" instead of "output '' as value for attribute", this
 		# would be two lines.

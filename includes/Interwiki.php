@@ -17,7 +17,7 @@ class Interwiki {
 
 	protected $mPrefix, $mURL, $mLocal, $mTrans;
 
-	public function __construct( $prefix = null, $url = '', $local = 0, $trans = 0 ) {
+	function __construct( $prefix = null, $url = '', $local = 0, $trans = 0 ) {
 		$this->mPrefix = $prefix;
 		$this->mURL = $url;
 		$this->mLocal = $local;
@@ -104,24 +104,24 @@ class Interwiki {
 
 		wfDebug( __METHOD__ . "( $prefix )\n" );
 		if( !$db ) {
-			$db = CdbReader::open( $wgInterwikiCache );
+			$db = dba_open( $wgInterwikiCache, 'r', 'cdb' );
 		}
 		/* Resolve site name */
 		if( $wgInterwikiScopes>=3 && !$site ) {
-			$site = $db->get( '__sites:' . wfWikiID() );
+			$site = dba_fetch( '__sites:' . wfWikiID(), $db );
 			if ( $site == '' ) {
 				$site = $wgInterwikiFallbackSite;
 			}
 		}
 
-		$value = $db->get( wfMemcKey( $prefix ) );
+		$value = dba_fetch( wfMemcKey( $prefix ), $db );
 		// Site level
 		if ( $value == '' && $wgInterwikiScopes >= 3 ) {
-			$value = $db->get( "_{$site}:{$prefix}" );
+			$value = dba_fetch( "_{$site}:{$prefix}", $db );
 		}
 		// Global Level
 		if ( $value == '' && $wgInterwikiScopes >= 2 ) {
-			$value = $db->get( "__global:{$prefix}" );
+			$value = dba_fetch( "__global:{$prefix}", $db );
 		}
 		if ( $value == 'undef' )
 			$value = '';
@@ -186,7 +186,7 @@ class Interwiki {
 	 * @param $title string What text to put for the article name
 	 * @return string The URL
 	 */
-	public function getURL( $title = null ) {
+	function getURL( $title = null ) {
 		$url = $this->mURL;
 		if( $title != null ) {
 			$url = str_replace( "$1", $title, $url );
@@ -194,41 +194,12 @@ class Interwiki {
 		return $url;
 	}
 
-	/**
-	 * Is this a local link from a sister project, or is
-	 * it something outside, like Google
-	 * @return bool
-	 */
-	public function isLocal() {
+	function isLocal() {
 		return $this->mLocal;
 	}
 
-	/**
-	 * Can pages from this wiki be transcluded?
-	 * Still requires $wgEnableScaryTransclusion
-	 * @return bool
-	 */
-	public function isTranscludable() {
+	function isTranscludable() {
 		return $this->mTrans;
 	}
 
-	/**
-	 * Get the name for the interwiki site
-	 * @return String
-	 */
-	public function getName() {
-		$key = 'interwiki-name-' . $this->mPrefix;
-		$msg = wfMsgForContent( $key );
-		return wfEmptyMsg( $key, $msg ) ? '' : $msg;
-	}
-
-	/**
-	 * Get a description for this interwiki
-	 * @return String
-	 */
-	public function getDescription() {
-		$key = 'interwiki-desc-' . $this->mPrefix;
-		$msg = wfMsgForContent( $key );
-		return wfEmptyMsg( $key, $msg ) ? '' : $msg;
-	}
 }

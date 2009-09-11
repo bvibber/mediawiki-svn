@@ -154,13 +154,11 @@ class IPBlockForm {
 					{$mIpaddress}
 				</td>
 				<td class='mw-input'>" .
-					Html::input( 'wpBlockAddress', $this->BlockAddress, 'text', array(
-						'tabindex' => '1',
-						'id' => 'mw-bi-target',
-						'onchange' => 'updateBlockOptions()',
-						'size' => '45',
-						'required' => ''
-					) + ( $this->BlockAddress ? array() : array( 'autofocus' ) ) ). "
+					Xml::input( 'wpBlockAddress', 45, $this->BlockAddress,
+						array(
+							'tabindex' => '1',
+							'id' => 'mw-bi-target',
+							'onchange' => 'updateBlockOptions()' ) ). "
 				</td>
 			</tr>
 			<tr>"
@@ -205,12 +203,8 @@ class IPBlockForm {
 					{$mIpbreason}
 				</td>
 				<td class='mw-input'>" .
-				Html::input( 'wpBlockReason', $this->BlockReason, 'text', array(
-					'tabindex' => '5',
-					'id' => 'mw-bi-reason',
-					'maxlength' => '200',
-					'size' => '45'
-				) + ( $this->BlockAddress ? array( 'autofocus' ) : array() ) ) . "
+					Xml::input( 'wpBlockReason', 45, $this->BlockReason,
+						array( 'tabindex' => '5', 'id' => 'mw-bi-reason', 'maxlength'=> '200' ) ) . "
 				</td>
 			</tr>
 			<tr id='wpAnonOnlyRow'>
@@ -677,15 +671,15 @@ class IPBlockForm {
 		$query = array( 'action' => 'unblock' );
 
 		if( $this->BlockAddress ) {
-			$addr = strtr( $this->BlockAddress, '_', ' ' );
-			$message = wfMsg( 'ipb-unblock-addr', $addr );
+			$addr = htmlspecialchars( strtr( $this->BlockAddress, '_', ' ' ) );
+			$message = wfMsgHtml( 'ipb-unblock-addr', $addr );
 			$query['ip'] = $this->BlockAddress;
 		} else {
-			$message = wfMsg( 'ipb-unblock' );
+			$message = wfMsgHtml( 'ipb-unblock' );
 		}
 		return $skin->linkKnown(
 			$list,
-			htmlspecialchars($message),
+			$message,
 			array(),
 			$query
 		);
@@ -702,16 +696,16 @@ class IPBlockForm {
 		$query = array();
 
 		if( $this->BlockAddress ) {
-			$addr = strtr( $this->BlockAddress, '_', ' ' );
-			$message = wfMsg( 'ipb-blocklist-addr', $addr );
+			$addr = htmlspecialchars( strtr( $this->BlockAddress, '_', ' ' ) );
+			$message = wfMsgHtml( 'ipb-blocklist-addr', $addr );
 			$query['ip'] = $this->BlockAddress;
 		} else {
-			$message = wfMsg( 'ipb-blocklist' );
+			$message = wfMsgHtml( 'ipb-blocklist' );
 		}
 
 		return $skin->linkKnown(
 			$list,
-			htmlspecialchars($message),
+			$message,
 			array(),
 			$query
 		);

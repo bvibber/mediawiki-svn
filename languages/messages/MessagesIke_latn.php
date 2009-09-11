@@ -312,7 +312,8 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'delete_and_move'  => 'nipaqtipaa amma uajuq',
 
 # Namespace 8 related
-'allmessagesname' => 'atiq',
+'allmessagesname'     => 'atiq',
+'allmessagesmodified' => 'alakkatiqpaa sirlak tukilitaqtaapaa',
 
 # Import log
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|titiraqtaugiarngarut|titiraqtaugiarngarut}}',

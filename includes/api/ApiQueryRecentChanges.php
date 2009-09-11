@@ -82,23 +82,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	}
 
 	/**
-	 * Sets internal state to include the desired properties in the output.
-	 * @param $prop associative array of properties, only keys are used here
-	 */
-	public function initProperties( $prop ) {
-		$this->fld_comment = isset ($prop['comment']);
-		$this->fld_user = isset ($prop['user']);
-		$this->fld_flags = isset ($prop['flags']);
-		$this->fld_timestamp = isset ($prop['timestamp']);
-		$this->fld_title = isset ($prop['title']);
-		$this->fld_ids = isset ($prop['ids']);
-		$this->fld_sizes = isset ($prop['sizes']);
-		$this->fld_redirect = isset($prop['redirect']);
-		$this->fld_patrolled = isset($prop['patrolled']);
-		$this->fld_loginfo = isset($prop['loginfo']);
-	}
-
-	/**
 	 * Generates and outputs the result of this query based upon the provided parameters.
 	 */
 	public function execute() {
@@ -112,7 +95,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		 */
 		$db = $this->getDB();
 		$this->addTables('recentchanges');
-		$index = 'rc_timestamp'; // May change
+		$this->addOption('USE INDEX', array('recentchanges' => 'rc_timestamp'));
 		$this->addWhereRange('rc_timestamp', $params['dir'], $params['start'], $params['end']);
 		$this->addWhereFld('rc_namespace', $params['namespace']);
 		$this->addWhereFld('rc_deleted', 0);
@@ -151,21 +134,8 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			// Don't throw log entries out the window here
 			$this->addWhereIf('page_is_redirect = 0 OR page_is_redirect IS NULL', isset ($show['!redirect']));
 		}
-		
-		if(!is_null($params['user']) && !is_null($param['excludeuser']))
-			$this->dieUsage('user and excludeuser cannot be used together', 'user-excludeuser');
-		if(!is_null($params['user']))
-		{
-			$this->addWhereFld('rc_user_text', $params['user']);
-			$index = 'rc_user_text';
-		}
-		if(!is_null($params['excludeuser']))
-			// We don't use the rc_user_text index here because
-			// * it would require us to sort by rc_user_text before rc_timestamp
-			// * the != condition doesn't throw out too many rows anyway
-			$this->addWhere('rc_user_text != ' . $this->getDB()->addQuotes($params['excludeuser']));
 
-		/* Add the fields we're concerned with to our query. */
+		/* Add the fields we're concerned with to out query. */
 		$this->addFields(array (
 			'rc_timestamp',
 			'rc_namespace',
@@ -181,7 +151,16 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$prop = array_flip($params['prop']);
 
 			/* Set up internal members based upon params. */
-			$this->initProperties( $prop );
+			$this->fld_comment = isset ($prop['comment']);
+			$this->fld_user = isset ($prop['user']);
+			$this->fld_flags = isset ($prop['flags']);
+			$this->fld_timestamp = isset ($prop['timestamp']);
+			$this->fld_title = isset ($prop['title']);
+			$this->fld_ids = isset ($prop['ids']);
+			$this->fld_sizes = isset ($prop['sizes']);
+			$this->fld_redirect = isset($prop['redirect']);
+			$this->fld_patrolled = isset($prop['patrolled']);
+			$this->fld_loginfo = isset($prop['loginfo']);
 
 			global $wgUser;
 			if($this->fld_patrolled && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
@@ -213,7 +192,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		}
 		$this->token = $params['token'];
 		$this->addOption('LIMIT', $params['limit'] +1);
-		$this->addOption('USE INDEX', array('recentchanges' => $index));
 
 		$count = 0;
 		/* Perform the actual query. */
@@ -253,9 +231,9 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	 *
 	 * @param $row The row from which to extract the data.
 	 * @return An array mapping strings (descriptors) to their respective string values.
-	 * @access public
+	 * @access private
 	 */
-	public function extractRowInfo($row) {
+	private function extractRowInfo($row) {
 		/* If page was moved somewhere, get the title of the move target. */
 		$movedToTitle = false;
 		if (isset($row->rc_moved_to_title) && $row->rc_moved_to_title !== '')
@@ -396,12 +374,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => 'namespace'
 			),
-			'user' => array(
-				ApiBase :: PARAM_TYPE => 'user'
-			),
-			'excludeuser' => array(
-				ApiBase :: PARAM_TYPE => 'user'
-			),
 			'prop' => array (
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_DFLT => 'title|timestamp|ids',
@@ -461,8 +433,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			'end' => 'The timestamp to end enumerating.',
 			'dir' => 'In which direction to enumerate.',
 			'namespace' => 'Filter log entries to only this namespace(s)',
-			'user' => 'Only list changes by this user',
-			'excludeuser' => 'Don\'t list changes by this user',
 			'prop' => 'Include additional pieces of information',
 			'token' => 'Which tokens to obtain for each change',
 			'show' => array (

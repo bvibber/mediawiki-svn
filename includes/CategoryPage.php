@@ -86,7 +86,7 @@ class CategoryViewer {
 	 * @private
 	 */
 	function getHTML() {
-		global $wgOut, $wgCategoryMagicGallery, $wgCategoryPagingLimit, $wgContLang;
+		global $wgOut, $wgCategoryMagicGallery, $wgCategoryPagingLimit;
 		wfProfileIn( __METHOD__ );
 
 		$this->showGallery = $wgCategoryMagicGallery && !$wgOut->mNoGallery;
@@ -95,22 +95,11 @@ class CategoryViewer {
 		$this->doCategoryQuery();
 		$this->finaliseCategoryState();
 
-		$r = $this->getSubcategorySection() .
+		$r = $this->getCategoryTop() .
+			$this->getSubcategorySection() .
 			$this->getPagesSection() .
-			$this->getImageSection();
-
-		if( $r == '' ) {
-			// If there is no category content to display, only
-			// show the top part of the navigation links.
-			// FIXME: cannot be completely suppressed because it
-			//        is unknown if 'until' or 'from' makes this
-			//        give 0 results.
-			$r = $r . $this->getCategoryTop();
-		} else {
-			$r = $this->getCategoryTop() .
-				$r .
-				$this->getCategoryBottom();
-		}
+			$this->getImageSection() .
+			$this->getCategoryBottom();
 
 		// Give a proper message if category is empty
 		if ( $r == '' ) {
@@ -118,7 +107,7 @@ class CategoryViewer {
 		}
 
 		wfProfileOut( __METHOD__ );
-		return $wgContLang->convert($r);
+		return $r;
 	}
 
 	function clearCategoryState() {
@@ -153,10 +142,11 @@ class CategoryViewer {
 	 * @deprecated kept for compatibility, please use addSubcategoryObject instead
 	 */
 	function addSubcategory( $title, $sortkey, $pageLength ) {
+		global $wgContLang;
 		// Subcategory; strip the 'Category' namespace from the link text.
 		$this->children[] = $this->getSkin()->link(
 			$title,
-			null,
+			$wgContLang->convertHtml( $title->getText() ),
 			array(),
 			array(),
 			array( 'known', 'noclasses' )
@@ -204,16 +194,17 @@ class CategoryViewer {
 	 */
 	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
 		global $wgContLang;
+		$titletext = $wgContLang->convertHtml( $title->getPrefixedText() );
 		$this->articles[] = $isRedirect
 			? '<span class="redirect-in-category">' .
 				$this->getSkin()->link(
 					$title,
-					null,
+					$titletext,
 					array(),
 					array(),
 					array( 'known', 'noclasses' )
 				) . '</span>'
-			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
+			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title, $titletext );
 		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
 	}
 
@@ -272,11 +263,17 @@ class CategoryViewer {
 				$this->addPage( $title, $x->cl_sortkey, $x->page_len, $x->page_is_redirect );
 			}
 		}
+		$dbr->freeResult( $res );
 	}
 
 	function getCategoryTop() {
-		$r = $this->getCategoryBottom();
-		return $r === ''
+		$r = '';
+		if( $this->until != '' ) {
+			$r .= $this->pagingLinks( $this->title, $this->nextPage, $this->until, $this->limit );
+		} elseif( $this->nextPage != '' || $this->from != '' ) {
+			$r .= $this->pagingLinks( $this->title, $this->from, $this->nextPage, $this->limit );
+		}
+		return $r == ''
 			? $r
 			: "<br style=\"clear:both;\"/>\n" . $r;
 	}
@@ -370,60 +367,62 @@ class CategoryViewer {
 	 * Format a list of articles chunked by letter in a three-column
 	 * list, ordered vertically.
 	 *
-	 * TODO: Take the headers into account when creating columns, so they're
-	 * more visually equal.
-	 *
-	 * More distant TODO: Scrap this and use CSS columns, whenever IE finally
-	 * supports those.
-	 *
 	 * @param $articles Array
 	 * @param $articles_start_char Array
 	 * @return String
 	 * @private
 	 */
 	function columnList( $articles, $articles_start_char ) {
-		$columns = array_combine( $articles, $articles_start_char );
-		# Split into three columns
-		$columns = array_chunk( $columns, ceil( count( $columns )/3 ), true /* preserve keys */ );
+		// divide list into three equal chunks
+		$chunk = (int) ( count( $articles ) / 3 );
+		$remaining = count( $articles ) % 3;
 
-		$ret = '<table width="100%"><tr valign="top"><td>';
-		$prevchar = null;
+		// get and display header
+		$r = '<table width="100%"><tr valign="top">';
 
-		foreach ( $columns as $column ) {
-			$colContents = array();
+		$prev_start_char = 'none';
 
-			# Kind of like array_flip() here, but we keep duplicates in an
-			# array instead of dropping them.
-			foreach ( $column as $article => $char ) {
-				if ( !isset( $colContents[$char] ) ) {
-					$colContents[$char] = array();
+		// loop through the chunks
+		for( $startChunk = 0, $endChunk = $chunk, $chunkIndex = 0;
+			$chunkIndex < 3;
+			$chunkIndex++, $startChunk = $endChunk, $endChunk += $remaining == 0 ? $chunk : $chunk + 1 )
+		{
+			$r .= "<td>\n";
+			$atColumnTop = true;
+
+			// output all articles in category
+			for ($index = $startChunk ;
+				$index < $endChunk && $index < count($articles);
+				$index++ )
+			{
+				// check for change of starting letter or begining of chunk
+				if ( ($index == $startChunk) ||
+					 ($articles_start_char[$index] != $articles_start_char[$index - 1]) )
+
+				{
+					if( $atColumnTop ) {
+						$atColumnTop = false;
+					} else {
+						$r .= "</ul>\n";
+					}
+					$cont_msg = "";
+					if ( $articles_start_char[$index] == $prev_start_char )
+						$cont_msg = ' ' . wfMsgHtml( 'listingcontinuesabbrev' );
+					$r .= "<h3>" . htmlspecialchars( $articles_start_char[$index] ) . "$cont_msg</h3>\n<ul>";
+					$prev_start_char = $articles_start_char[$index];
 				}
-				$colContents[$char][] = $article;
+
+				$r .= "<li>{$articles[$index]}</li>";
 			}
-
-			$first = true;
-			foreach ( $colContents as $char => $articles ) {
-				$ret .= '<h3>' . htmlspecialchars( $char );
-				if ( $first && $char === $prevchar ) {
-					# We're continuing a previous chunk at the top of a new
-					# column, so add " cont." after the letter.
-					$ret .= ' ' . wfMsgHtml( 'listingcontinuesabbrev' );
-				}
-				$ret .= "</h3>\n";
-
-				$ret .= '<ul><li>';
-				$ret .= implode( "</li>\n<li>", $articles );
-				$ret .= '</li></ul>';
-
-				$first = false;
-				$prevchar = $char;
+			if( !$atColumnTop ) {
+				$r .= "</ul>\n";
 			}
+			$r .= "</td>\n";
 
-			$ret .= "</td>\n<td>";
+
 		}
-
-		$ret .= '</td></tr></table>';
-		return $ret;
+		$r .= '</tr></table>';
+		return $r;
 	}
 
 	/**
@@ -467,7 +466,7 @@ class CategoryViewer {
 		if( $first != '' ) {
 			$prevQuery = $query;
 			$prevQuery['until'] = $first;
-			$prevLink = $sk->linkKnown(
+			$prevLink = $sk->link(
 				$title,
 				$prevLink,
 				array(),
@@ -478,7 +477,7 @@ class CategoryViewer {
 		if( $last != '' ) {
 			$lastQuery = $query;
 			$lastQuery['from'] = $last;
-			$nextLink = $sk->linkKnown(
+			$nextLink = $sk->link(
 				$title,
 				$nextLink,
 				array(),

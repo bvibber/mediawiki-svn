@@ -35,7 +35,6 @@ class ApiFormatXml extends ApiFormatBase {
 
 	private $mRootElemName = 'api';
 	private $mDoubleQuote = false;
-	private $mXslt = null;
 
 	public function __construct($main, $format) {
 		parent :: __construct($main, $format);
@@ -56,15 +55,9 @@ class ApiFormatXml extends ApiFormatBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$this->mDoubleQuote = $params['xmldoublequote'];
-		$this->mXslt = $params['xslt'];
 
 		$this->printText('<?xml version="1.0"?>');
-		if (!is_null($this->mXslt))
-			$this->addXslt();
-		$this->printText(self::recXmlPrint($this->mRootElemName,
-				$this->getResultData(),
-				$this->getIsHtml() ? -2 : null,
-				$this->mDoubleQuote));
+		$this->recXmlPrint($this->mRootElemName, $this->getResultData(), $this->getIsHtml() ? -2 : null);
 	}
 
 	/**
@@ -80,8 +73,7 @@ class ApiFormatXml extends ApiFormatBase {
 	* If neither key is found, all keys become element names, and values become element content.
 	* The method is recursive, so the same rules apply to any sub-arrays.
 	*/
-	public static function recXmlPrint($elemName, $elemValue, $indent, $doublequote = false) {
-		$retval = '';
+	function recXmlPrint($elemName, $elemValue, $indent) {
 		if (!is_null($indent)) {
 			$indent += 2;
 			$indstr = "\n" . str_repeat(" ", $indent);
@@ -94,8 +86,8 @@ class ApiFormatXml extends ApiFormatBase {
 			case 'array' :
 				if (isset ($elemValue['*'])) {
 					$subElemContent = $elemValue['*'];
-					if ($doublequote)
-						$subElemContent = Sanitizer::encodeAttribute($subElemContent);
+					if ($this->mDoubleQuote)
+						$subElemContent = $this->doubleQuote($subElemContent);
 					unset ($elemValue['*']);
 					
 					// Add xml:space="preserve" to the
@@ -116,8 +108,8 @@ class ApiFormatXml extends ApiFormatBase {
 				$indElements = array ();
 				$subElements = array ();
 				foreach ($elemValue as $subElemId => & $subElemValue) {
-					if (is_string($subElemValue) && $doublequote)
-						$subElemValue = Sanitizer::encodeAttribute($subElemValue);
+					if (is_string($subElemValue) && $this->mDoubleQuote)
+						$subElemValue = $this->doubleQuote($subElemValue);
 					
 					if (gettype($subElemId) === 'integer') {
 						$indElements[] = $subElemValue;
@@ -135,58 +127,42 @@ class ApiFormatXml extends ApiFormatBase {
 					ApiBase :: dieDebug(__METHOD__, "($elemName, ...) has content and subelements");
 
 				if (!is_null($subElemContent)) {
-					$retval .= $indstr . Xml::element($elemName, $elemValue, $subElemContent);
+					$this->printText($indstr . Xml::element($elemName, $elemValue, $subElemContent));
 				} elseif (!count($indElements) && !count($subElements)) {
-						$retval .= $indstr . Xml::element($elemName, $elemValue);
+						$this->printText($indstr . Xml::element($elemName, $elemValue));
 				} else {
-					$retval .= $indstr . Xml::element($elemName, $elemValue, null);
+					$this->printText($indstr . Xml::element($elemName, $elemValue, null));
 
 					foreach ($subElements as $subElemId => & $subElemValue)
-						$retval .= self::recXmlPrint($subElemId, $subElemValue, $indent);
+						$this->recXmlPrint($subElemId, $subElemValue, $indent);
 
 					foreach ($indElements as $subElemId => & $subElemValue)
-						$retval .= self::recXmlPrint($subElemIndName, $subElemValue, $indent);
+						$this->recXmlPrint($subElemIndName, $subElemValue, $indent);
 
-					$retval .= $indstr . Xml::closeElement($elemName);
+					$this->printText($indstr . Xml::closeElement($elemName));
 				}
 				break;
 			case 'object' :
 				// ignore
 				break;
 			default :
-				$retval .= $indstr . Xml::element($elemName, null, $elemValue);
+				$this->printText($indstr . Xml::element($elemName, null, $elemValue));
 				break;
 		}
-		return $retval;
 	}
-	function addXslt() {
-		$nt = Title::newFromText( $this->mXslt );
-		if ( is_null( $nt ) || !$nt->exists() ) {
-			$this->setWarning( 'Invalid or non-existent stylesheet specified' );
-			return;
-		}
-		if ( $nt->getNamespace() != NS_MEDIAWIKI ) {
-			$this->setWarning( 'Stylesheet should be in the MediaWiki namespace.' );
-			return;
-		}
-		if ( substr( $nt->getText(), -4 ) !== '.xsl' ) {
-			$this->setWarning( 'Stylesheet should have .xsl extension.' );
-			return;
-		}
-		$this->printText( '<?xml-stylesheet href="' . $nt->escapeLocalURL( 'action=raw' ) . '" type="text/xml" ?>' );
+	private function doubleQuote( $text ) {
+		return Sanitizer::encodeAttribute( $text );
 	}
-	
+
 	public function getAllowedParams() {
 		return array (
-			'xmldoublequote' => false,
-			'xslt' => null,
+			'xmldoublequote' => false
 		);
 	}
 
 	public function getParamDescription() {
 		return array (
 			'xmldoublequote' => 'If specified, double quotes all attributes and content.',
-			'xslt' => 'If specified, adds <xslt> as stylesheet',
 		);
 	}
 

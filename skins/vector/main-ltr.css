@@ -21,7 +21,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	font-size: 1em;
+	font-size: 13px;
 }
 body {
 	background-color: #f3f3f3;
@@ -29,7 +29,7 @@ body {
 }
 /* Content */
 #content {
-	margin-left: 10em;
+	margin-left: 12em;
 	padding: 1em;
 	background-image: url(images/border.png);
 	background-position: top left;
@@ -38,16 +38,16 @@ body {
 }
 /* Head */
 #page-base {
-	height: 5em;
+	height: 6em;
 	background-color: white;
 	background-image: url(images/page-fade.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
 }
 #head-base {
-	margin-top: -5em;
-	margin-left: 10em;
-	height: 5em;
+	margin-top: -6em;
+	margin-left: 12em;
+	height: 6em;
 	background-image: url(images/border.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
@@ -62,10 +62,6 @@ body {
 	margin: 0;
 	padding: 0;
 }
-	/* Hide empty portlets */
-	div.emptyPortlet {
-		display: none;
-	}
 	/* Personal */
 	#p-personal {
 		position: absolute;
@@ -88,17 +84,17 @@ body {
 	#p-personal li {
 		margin-left: 0.75em;
 		margin-top: 0.5em;
-		font-size: 0.7em;
+		font-size: 0.9em;
 	}
 	/* Navigation Containers */
 	#left-navigation {
 		position: absolute;
-		left: 10em;
-		top: 2.5em;
+		left: 12em;
+		top: 3em;
 	}
 	#right-navigation {
 		float: right;
-		margin-top: 2.5em;
+		margin-top: 3em;
 	}
 	/* Navigation Labels */
 	div.vectorTabs h5,
@@ -152,9 +148,9 @@ body {
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div.vectorTabs li a {
 		display: inline-block;
-		height: 2.5em;
-		padding-left: 0.4em;
-		padding-right: 0.4em;
+		height: 3em;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 		background-image: url(images/tab-break.png);
 		background-position: bottom right;
 		background-repeat: no-repeat;
@@ -163,9 +159,6 @@ body {
 	div.vectorTabs li a span {
 		color: #0645ad;
 		cursor: pointer;
-	}
-	div.vectorTabs li a span {
-		font-size: 0.8em;
 	}
 	/* IGNORED BY IE6 */
 	div.vectorTabs li > a {
@@ -208,19 +201,14 @@ body {
 		direction: rtl;
 	}
 	/* @noflip */
-	#head div.vectorMenu h5 {
+	div.vectorMenu h5 {
 		float: left;
-		background-image: url(images/tab-break.png);
-		background-position: bottom left;
-		background-repeat: no-repeat;
-		padding-left: 1px;
-		margin-left: -1px;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div.vectorMenu h5 a {
 		display: inline-block;
 		width: 24px;
-		height: 2.5em;
+		height: 3em;
 		text-decoration: none;
 		background-image: url(images/tab-break.png);
 		background-position: bottom right;
@@ -268,7 +256,7 @@ body {
 	/* Fixes old versions of FireFox */
 	div.vectorMenu ul,
 	x:-moz-any-link {
-		min-width: 5em;
+		min-width: 6em;
 	}
 	/* Returns things back to normal in modern versions of FireFox */
 	div.vectorMenu ul,
@@ -292,16 +280,6 @@ body {
 	div.vectorMenu li > a {
 		display: block;
 	}
-	div.vectorMenu li a {
-		color: #0645ad;
-		cursor: pointer;
-		font-size: 0.8em;
-	}
-	div.vectorMenu li.selected a,
-	div.vectorMenu li.selected a:visited {
-		color: #333333;
-		text-decoration: none;
-	}
 	/* Search */
 	#p-search h5 {
 		display: none;
@@ -320,7 +298,7 @@ body {
 		margin-top: 0.4em;
 	}
 	#simpleSearch {
-		margin-top: 0.5em;
+		margin-top: 0.75em;
 		position: relative;
 		border: solid 1px #AAAAAA;
 		background-color: white;
@@ -328,15 +306,12 @@ body {
 		background-position: top left;
 		background-repeat: repeat-x;
 	}
-	#simpleSearch label {
-		font-size: 0.8em;
-	}
 	#simpleSearch input#searchInput {
 		margin: 0;
 		border-width: 0;
 		padding: 0.25em;
 		line-height: 1em;
-		font-size: 0.8em;
+		font-size: 0.9em;
 		width: 9em;
 		background-color: transparent;
 	}
@@ -357,37 +332,25 @@ body {
 	#simpleSearch > button#searchButton {
 		height: 100%;
 	}
-	.suggestions-special .special-label {
-		font-size: 0.8em;
-		color: gray;
-	}
-	.suggestions-special .special-query {
-		color: black;
-		font-style: italic;
-	}
-	.suggestions-special .special-hover {
-		background-color: silver;
-	}
 /* Panel */
 #panel {
 	position: absolute;
-	top: 160px;
-	padding-top: 1em;
-	width: 10em;
+	top: 12em;
+	width: 12em;
 	left: 0;
 }
 	#panel div.portal {
-		padding-bottom: 1.5em;
+		padding-top: 1.5em;
 	}
 	#panel div.portal h5 {
 		font-weight: normal;
 		color: #444444;
-		padding: 0.25em;
+		padding: 0.5em;
 		padding-top: 0;
-		padding-left: 1.75em;
+		padding-left: 1.25em;
 		cursor: default;
 		border: none;
-		font-size: 0.7em;
+		font-size: 0.9em;
 	}
 	#panel div.portal div.body {
 		margin: 0;
@@ -399,8 +362,6 @@ body {
 	}
 	#panel div.portal div.body ul {
 		list-style: none;
-		list-style-image: none;
-		list-style-type: none;
 		padding: 0;
 		margin: 0;
 	}
@@ -410,7 +371,7 @@ body {
 		padding-bottom: 0.5em;
 		margin: 0;
 		overflow: hidden;
-		font-size: 0.7em;
+		font-size: 0.9em;
 	}
 	#panel div.portal div.body ul li a {
 		color: #0645ad;
@@ -420,7 +381,7 @@ body {
 	}
 /* Footer */
 #footer {
-	margin-left: 10em;
+	margin-left: 12em;
 	margin-top: 0;
 	padding: 0.75em;
 	background-image: url(images/border.png);
@@ -440,7 +401,7 @@ body {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 	color: #333333;
-	font-size: 0.7em;
+	font-size: 0.9em;
 }
 #footer #footer-icons {
 	float: right;
@@ -464,17 +425,17 @@ body {
 /* Logo */
 #p-logo {
 	position: absolute;
-	top: -160px;
+	top: -12em;
 	left: 0;
-	width: 10em;
-	height: 160px;
+	height: 12em;
+	width: 12em;
 }
 #p-logo a {
 	display: block;
-	width: 10em;
-	height: 160px;
+	width: 12em;
+	height: 12em;
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: 50% 50%;
 	text-decoration: none;
 }
 
@@ -583,9 +544,6 @@ body {
  */
 #content {
 	line-height: 1.5em;
-}
-#bodyContent {
-	font-size: 0.8em;
 }
 /* Links */
 a {
@@ -889,7 +847,7 @@ img.thumbborder {
 /* Site Notice */
 #siteNotice {
 	text-align: center;
-	font-size: 0.8em;
+	font-size: 95%;
 	margin: 0;
 }
 	#siteNotice div,
@@ -952,7 +910,6 @@ h3, h4, h5 {
 	padding-top: 0;
 	margin-bottom: 0.1em;
 	line-height: 1.2em;
-	font-size: 1.6em;
 	padding-bottom: 0;
 }
 #content a.external,
@@ -1031,7 +988,10 @@ h3, h4, h5 {
 	padding-left: 15px !important;
 	text-transform: none;
 }
-
+/* To be sorted */
+span.newpage, span.minor, span.bot {
+	font-weight: bold;
+}
 .toccolours {
 	border: 1px solid #aaa;
 	background-color: #f9f9f9;

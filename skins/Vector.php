@@ -366,10 +366,14 @@ class VectorTemplate extends QuickTemplate {
 	 * Outputs the entire contents of the XHTML page
 	 */
 	public function execute() {
-		global $wgRequest, $wgOut, $wgContLang;
+		global $wgRequest, $wgOut, $wgContLang, $wgDevelopmentWarnings;
 
 		$this->skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
+
+		// Suppress warnings to prevent notices about missing indexes in
+		// $this->data (is this really the best way to handle this?)
+		$wgDevelopmentWarnings && wfSuppressWarnings();
 
 		// Build additional attributes for navigation urls
 		$nav = $this->skin->buildNavigationUrls();
@@ -574,6 +578,8 @@ class VectorTemplate extends QuickTemplate {
 	</body>
 </html>
 <?php
+		// We're done with abusing arrays now...
+		$wgDevelopmentWarnings && wfRestoreWarnings();
 	}
 
 	/**
@@ -691,8 +697,9 @@ class VectorTemplate extends QuickTemplate {
 			echo "\n<!-- {$name} -->\n";
 			switch ( $element ) {
 				case 'NAMESPACES':
+					if ( count( $this->data[ 'namespace_urls' ] ) > 0 ) {
 ?>
-<div id="p-namespaces" class="vectorTabs<?php if ( count( $this->data['namespace_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
+<div id="namespaces" class="vectorTabs">
 	<h5><?php $this->msg('namespaces') ?></h5>
 	<ul <?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['namespace_urls'] as $key => $link ): ?>
@@ -701,10 +708,12 @@ class VectorTemplate extends QuickTemplate {
 	</ul>
 </div>
 <?php
+					}
 				break;
 				case 'VARIANTS':
+					if ( count( $this->data[ 'variant_urls' ] ) > 0 ) {
 ?>
-<div id="p-variants" class="vectorMenu<?php if ( count( $this->data['variant_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
+<div id="variants" class="vectorMenu">
 	<h5><span><?php $this->msg('variants') ?></span><a href="#"></a></h5>
 	<div class="menu">
 		<ul <?php $this->html('userlangattributes') ?>>
@@ -715,10 +724,12 @@ class VectorTemplate extends QuickTemplate {
 	</div>
 </div>
 <?php
+					}
 				break;
 				case 'VIEWS':
+					if ( count( $this->data[ 'view_urls' ] ) > 0 ) {
 ?>
-<div id="p-views" class="vectorTabs<?php if ( count( $this->data['view_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
+<div id="views" class="vectorTabs">
 	<h5><?php $this->msg('views') ?></h5>
 	<ul <?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['view_urls'] as $key => $link ): ?>
@@ -727,10 +738,12 @@ class VectorTemplate extends QuickTemplate {
 	</ul>
 </div>
 <?php
+					}
 				break;
 				case 'ACTIONS':
+					if ( count( $this->data[ 'action_urls' ] ) > 0 ) {
 ?>
-<div id="p-cactions" class="vectorMenu<?php if ( count( $this->data['action_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
+<div id="p-cactions" class="vectorMenu">
 	<h5><span><?php $this->msg('actions') ?></span><a href="#"></a></h5>
 	<div class="menu">
 		<ul <?php $this->html('userlangattributes') ?>>
@@ -741,10 +754,12 @@ class VectorTemplate extends QuickTemplate {
 	</div>
 </div>
 <?php
+					}
 				break;
 				case 'PERSONAL':
+					if ( count( $this->data['personal_urls'] ) > 0 ) {
 ?>
-<div id="p-personal" class="<?php if ( count( $this->data['personal_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
+<div id="p-personal">
 	<h5><?php $this->msg('personaltools') ?></h5>
 	<ul <?php $this->html('userlangattributes') ?>>
 		<?php foreach($this->data['personal_urls'] as $key => $item): ?>
@@ -753,6 +768,7 @@ class VectorTemplate extends QuickTemplate {
 	</ul>
 </div>
 <?php
+					}
 				break;
 				case 'SEARCH':
 ?>
@@ -763,7 +779,7 @@ class VectorTemplate extends QuickTemplate {
 		<?php if ( $wgVectorUseSimpleSearch ): ?>
 		<div id="simpleSearch">
 			<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />
-			<button id="searchButton" type='submit' name='button' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>>&nbsp;</button>
+			<button id="searchButton" type='submit' name='fulltext' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>>&nbsp;</button>
 		</div>
 		<?php else: ?>
 		<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />

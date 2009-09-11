@@ -8,7 +8,7 @@
  */
 
 /** */
-require_once( dirname(__FILE__) . '/commandLine.inc' );
+require_once( 'commandLine.inc' );
 
 $mcc = new memcached( array('persistant' => true/*, 'debug' => true*/) );
 $mcc->set_servers( $wgMemCachedServers );

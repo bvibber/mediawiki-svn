@@ -435,9 +435,11 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'export' => "Spurta 'e ppaggene",
 
 # Namespace 8 related
-'allmessages'        => "'Mmasciate d''o sistema",
-'allmessagesname'    => 'Nomme',
-'allmessagescurrent' => "Testo 'e mo",
+'allmessages'         => "'Mmasciate d''o sistema",
+'allmessagesname'     => 'Nomme',
+'allmessagescurrent'  => "Testo 'e mo",
+'allmessagesfilter'   => "Lammecca ncopp' 'e mmasciate:",
+'allmessagesmodified' => 'Faje vedé solo chille cagnate',
 
 # Special:Import
 'import'                  => 'Mpurta paggene',

@@ -188,11 +188,14 @@ function wfSpecialNewimages( $par, $specialPage ) {
 		$searchpar
 	);
 
-	$showhide = $hidebots ? wfMsg( 'show' ) : wfMsg( 'hide' );
+	$message = wfMsgHtml(
+		'showhidebots',
+		( $hidebots ? wfMsgHtml( 'show' ) : wfMsgHtml( 'hide' ) )
+	);
 
 	$botLink = $sk->linkKnown(
 		$titleObj,
-		htmlspecialchars( wfMsg( 'showhidebots', $showhide ) ),
+		$message,
 		array(),
 		$query
 	);

@@ -42,6 +42,7 @@ class MediaWiki {
 	/**
 	 * Initialization of ... everything
 	 * Performs the request too
+	 * FIXME: why is this crap called "initialize" when it performs everything?
 	 *
 	 * @param $title Title ($wgTitle)
 	 * @param $article Article
@@ -49,12 +50,10 @@ class MediaWiki {
 	 * @param $user User
 	 * @param $request WebRequest
 	 */
-	function performRequestForTitle( &$title, &$article, &$output, &$user, $request ) {
+	function initialize( &$title, &$article, &$output, &$user, $request ) {
 		wfProfileIn( __METHOD__ );
 		
 		$output->setTitle( $title );
-		
-		wfRunHooks( 'BeforeInitialize', array( &$title, &$article, &$output, &$user, $request, $this ) );
 		
 		if( !$this->preliminaryChecks( $title, $output, $request ) ) {
 			wfProfileOut( __METHOD__ );
@@ -188,9 +187,7 @@ class MediaWiki {
 			if( $rdfrom = $request->getVal( 'rdfrom' ) ) {
 				$url = $title->getFullURL( 'rdfrom=' . urlencode( $rdfrom ) );
 			} else {
-				$query = $request->getValues();
-				unset( $query['title'] );
-				$url = $title->getFullURL( $query );
+				$url = $title->getFullURL();
 			}
 			/* Check for a redirect loop */
 			if( !preg_match( '/^' . preg_quote( $this->getVal('Server'), '/' ) . '/', $url ) && $title->isLocal() ) {
@@ -310,9 +307,8 @@ class MediaWiki {
 			wfRunHooks( 'InitializeArticleMaybeRedirect', 
 				array(&$title,&$request,&$ignoreRedirect,&$target,&$article) );
 
-			// Follow redirects only for... redirects.
-			// If $target is set, then a hook wanted to redirect.
-			if( !$ignoreRedirect && ($target || $article->isRedirect()) ) {
+			// Follow redirects only for... redirects
+			if( !$ignoreRedirect && $article->isRedirect() ) {
 				# Is the target already set by an extension?
 				$target = $target ? $target : $article->followRedirect();
 				if( is_string( $target ) ) {
@@ -533,13 +529,8 @@ class MediaWiki {
 				if( $request->getFullRequestURL() == $title->getInternalURL( 'action=history' ) ) {
 					$output->setSquidMaxage( $this->getVal( 'SquidMaxage' ) );
 				}
-				$history = new HistoryPage( $article );
+				$history = new PageHistory( $article );
 				$history->history();
-				break;
-			case 'revisiondelete':
-				# For show/hide submission from history page
-				$special = SpecialPage::getPage( 'Revisiondelete' );
-				$special->execute( '' );
 				break;
 			default:
 				if( wfRunHooks( 'UnknownAction', array( $action, $article ) ) ) {

@@ -21,6 +21,8 @@ class LanguageConverter {
 	var $mVariants, $mVariantFallbacks, $mVariantNames;
 	var $mTablesLoaded = false;
 	var $mTables;
+	var $mManualAddTables;
+	var $mManualRemoveTables;
 	var $mNamespaceTables;
 	var $mTitleDisplay='';
 	var $mDoTitleConvert=true, $mDoContentConvert=true;
@@ -86,6 +88,8 @@ class LanguageConverter {
 			$this->mManualLevel[$v]=array_key_exists($v,$manualLevel)
 								?$manualLevel[$v]
 								:'bidirectional';
+			$this->mManualAddTables[$v] = array();
+			$this->mManualRemoveTables[$v] = array();
 			$this->mNamespaceTables[$v] = array();
 			$this->mFlags[$v] = $v;
 		}
@@ -183,7 +187,7 @@ class LanguageConverter {
 				// explode by comma
 				$result = explode(',', $acceptLanguage);
 				
-				$languages = array();
+				$languages  = array();
 
 				foreach( $result as $elem ) {
 					// if $elem likes 'zh-cn;q=0.9'
@@ -196,36 +200,19 @@ class LanguageConverter {
 					}
 				}
 
-				$fallback_languages = array();
 				foreach( $languages as $language ) {
 					// strip whitespace
 					$language = trim( $language );
 					if( in_array( $language, $this->mVariants ) ) {
 						return $language;
-					}
-					else {
-						// To see if there are fallbacks of current language.
-						// We record these fallback variants, and process
-						// them later.
-						$fallbacks = $this->getVariantFallbacks( $language );
-						if( is_string( $fallbacks ) )
-							$fallback_languages[] = $fallbacks;
-						elseif( is_array( $fallbacks ) )
-							$fallback_languages = array_merge( $fallback_languages, $fallbacks );
-					}
-				}
-
-				// process fallback languages now
-				$fallback_languages = array_unique( $fallback_languages );
-				foreach( $fallback_languages as $language ) {
-					if( in_array( $language, $this->mVariants ) ) {
-						return $language;
+						break;
 					}
 				}
 			}
 		}
 
 		return $this->mMainLanguageCode;
+
 	}
 	
 	/**
@@ -387,7 +374,7 @@ class LanguageConverter {
 	 * prepare manual conversion table
 	 * @private
 	 */
-	function applyManualConv( $convRule ){
+	function prepareManualConv( $convRule ){
 		// use syntax -{T|zh:TitleZh;zh-tw:TitleTw}- for custom conversion in title
 		$title = $convRule->getTitle();
 		if( $title ){
@@ -398,20 +385,38 @@ class LanguageConverter {
 		//apply manual conversion table to global table
 		$convTable = $convRule->getConvTable();
 		$action = $convRule->getRulesAction();
-		foreach( $convTable as $variant => $pair ) {
-			if( !in_array( $variant, $this->mVariants ) )continue;
+		foreach( $convTable as $v => $t ) {
+			if( !in_array( $v, $this->mVariants ) )continue;
 			if( $action=="add" ) {
-				foreach( $pair as $from => $to ) {
+				foreach( $t as $from => $to ) {
 					// to ensure that $from and $to not be left blank
 					// so $this->translate() could always return a string
 					if ( $from || $to )
 						// more efficient than array_merge(), about 2.5 times.
-						$this->mTables[$variant]->setPair( $from, $to );
+						$this->mManualAddTables[$v][$from] = $to;
 				}
 			}
 			elseif ( $action == "remove" ) {
-				$this->mTables[$variant]->removeArray( $pair );
+				foreach ( $t as $from=>$to ) {
+					if ( $from || $to )
+						$this->mManualRemoveTables[$v][$from] = $to;
+				}
 			}
+		}
+	}
+
+	/**
+	 * apply manual conversion from $this->mManualAddTables and $this->mManualRemoveTables
+	 * @private
+	 */
+	function applyManualConv(){
+		//apply manual conversion table to global table
+		foreach($this->mVariants as $v) {
+			if (count($this->mManualAddTables[$v]) > 0) {
+				$this->mTables[$v]->mergeArray($this->mManualAddTables[$v]);
+			}
+			if (count($this->mManualRemoveTables[$v]) > 0)
+				$this->mTables[$v]->removeArray($this->mManualRemoveTables[$v]);
 		}
 	}
 
@@ -525,25 +530,28 @@ class LanguageConverter {
 		$tarray = StringUtils::explode( $this->mMarkup['end'], $text );
 		$text = '';
 
+		$marks = array();
 		foreach ( $tarray as $txt ) {
-
 			$marked = explode( $this->mMarkup['begin'], $txt, 2 );
-
-			if( $this->mDoContentConvert )
-				// Bug 19620: should convert a string immediately after a new rule added.
-				$text .= $this->autoConvert( $marked[0], $plang );
-
 			if ( array_key_exists( 1, $marked ) ) {
 				$crule = new ConverterRule($marked[1], $this);
 				$crule->parse( $plang );
-				$text .= $crule->getDisplay();
-				$this->applyManualConv( $crule );
+				$marked[1] = $crule->getDisplay();
+				$this->prepareManualConv( $crule );
 			}
 			else
-				$text .= $this->mMarkup['end'];
-
+				$marked[0] .= $this->mMarkup['end'];
+			array_push( $marks, $marked );
 		}
-
+		$this->applyManualConv();
+		foreach ( $marks as $marked ) {
+			if( $this->mDoContentConvert )
+				$text .= $this->autoConvert( $marked[0], $plang );
+			else
+				$text .= $marked[0];
+			if( array_key_exists( 1, $marked ) )
+				$text .= $marked[1];
+		}
 		// Remove the last delimiter (wasn't real)
 		$text = substr( $text, 0, -strlen( $this->mMarkup['end'] ) );
 
@@ -564,11 +572,6 @@ class LanguageConverter {
 	 * @public
 	 */
 	function findVariantLink( &$link, &$nt, $ignoreOtherCond = false ) {
-		# If the article has already existed, there is no need to
-		# check it again, otherwise it may cause a fault.
-		if ( $nt->exists() )
-			return;
-
 		global $wgDisableLangConversion, $wgDisableTitleConversion, $wgRequest, $wgUser;
 		$isredir = $wgRequest->getText( 'redirect', 'yes' );
 		$action = $wgRequest->getText( 'action' );
@@ -582,7 +585,7 @@ class LanguageConverter {
 			|| $action == 'submit' || $linkconvert == 'no' || $wgUser->getOption('noconvertlink') == 1 ) ) )
 			return;
 
-		if ( is_object( $nt ) )
+		if(is_object($nt))
 			$ns = $nt->getNamespace();
 
 		$variants = $this->autoConvertToAllVariants($link);

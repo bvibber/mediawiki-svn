@@ -332,7 +332,7 @@ class PageArchive {
 		}
 
 		if( $restoreText ) {
-			$textRestored = $this->undeleteRevisions( $timestamps, $unsuppress, $comment );
+			$textRestored = $this->undeleteRevisions( $timestamps, $unsuppress );
 			if($textRestored === false) // It must be one of UNDELETE_*
 				return false;
 		} else {
@@ -377,7 +377,7 @@ class PageArchive {
 	 *
 	 * @return mixed number of revisions restored or false on failure
 	 */
-	private function undeleteRevisions( $timestamps, $unsuppress = false, $comment = '' ) {
+	private function undeleteRevisions( $timestamps, $unsuppress = false ) {
 		if ( wfReadOnly() )
 			return false;
 		$restoreAll = empty( $timestamps );
@@ -523,10 +523,10 @@ class PageArchive {
 			}
 
 			if( $newid ) {
-				wfRunHooks( 'ArticleUndelete', array( &$this->title, true, $comment ) );
+				wfRunHooks( 'ArticleUndelete', array( &$this->title, true ) );
 				Article::onArticleCreate( $this->title );
 			} else {
-				wfRunHooks( 'ArticleUndelete', array( &$this->title, false, $comment ) );
+				wfRunHooks( 'ArticleUndelete', array( &$this->title, false ) );
 				Article::onArticleEdit( $this->title );
 			}
 
@@ -646,6 +646,11 @@ class UndeleteForm {
 			}
 		}
 		if( $this->mRestore && $this->mAction == "submit" ) {
+			global $wgUploadMaintenance;
+			if( $wgUploadMaintenance && $this->mTargetObj && $this->mTargetObj->getNamespace() == NS_FILE ) {
+				$wgOut->addWikiText('Deletion and restoration of images temporarily disabled during maintenance.' );
+				return;
+			}
 			return $this->undelete();
 		}
 		if( $this->mInvert && $this->mAction == "submit" ) {
@@ -766,25 +771,8 @@ class UndeleteForm {
 		} else {
 			$openDiv = '<div id="mw-undelete-revision">';
 		}
-		
-		$revdlink = '';
-		if( $wgUser->isAllowed( 'deleterevision' ) ) {
-			if( !$rev->userCan(Revision::DELETED_RESTRICTED ) ) {
-			// If revision was hidden from sysops
-				$revdlink = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
-					'('.wfMsgHtml('rev-delundel').')' );
-			} else {
-				$query = array(
-					'type'   => 'archive',
-					'target' => $this->mTargetObj->getPrefixedDBkey(),
-					'ids'    => $rev->getTimestamp()
-				);
-				$revdlink = $skin->revDeleteLink( $query, $rev->isDeleted( File::DELETED_RESTRICTED ) );
-			}
-		}
 
-		$wgOut->addHTML( $openDiv . wfMsgWikiHtml( 'undelete-revision', $link, $time, $user, $d, $t ) . 
-			$revdlink . '</div>' );
+		$wgOut->addHTML( $openDiv . wfMsgWikiHtml( 'undelete-revision', $link, $time, $user, $d, $t ) . '</div>' );
 		wfRunHooks( 'UndeleteShowRevision', array( $this->mTargetObj, $rev ) );
 
 		if( $this->mPreview ) {
@@ -975,7 +963,7 @@ class UndeleteForm {
 			$wgOut->setPagetitle( wfMsg( 'viewdeletedpage' ) );
 		}
 
-		$wgOut->wrapWikiMsg(  "<div class='mw-undelete-pagetitle'>\n$1</div>\n", array ( 'undeletepagetitle', $this->mTargetObj->getPrefixedText() ) );
+		$wgOut->addWikiMsg( 'undeletepagetitle', $this->mTargetObj->getPrefixedText() );
 
 		$archive = new PageArchive( $this->mTargetObj );
 		/*
@@ -985,14 +973,12 @@ class UndeleteForm {
 			return;
 		}
 		*/
-		$wgOut->addHTML( '<div class="mw-undelete-history">' );
 		if ( $this->mAllowed ) {
 			$wgOut->addWikiMsg( "undeletehistory" );
 			$wgOut->addWikiMsg( "undeleterevdel" );
 		} else {
 			$wgOut->addWikiMsg( "undeletehistorynoadmin" );
 		}
-		$wgOut->addHTML( '</div>' );
 
 		# List all stored revisions
 		$revisions = $archive->listRevisions();
@@ -1057,7 +1043,7 @@ class UndeleteForm {
 				Xml::fieldset( wfMsg( 'undelete-fieldset-title' ) ) .
 				Xml::openElement( 'table', array( 'id' => 'mw-undelete-table' ) ) .
 					"<tr>
-						<td colspan='2' class='mw-undelete-extrahelp'>" .
+						<td colspan='2'>" .
 							wfMsgWikiHtml( 'undeleteextrahelp' ) .
 						"</td>
 					</tr>

@@ -196,8 +196,7 @@ class RecentChange
 				$this->mAttribs['rc_timestamp'],
 				$this->mAttribs['rc_comment'],
 				$this->mAttribs['rc_minor'],
-				$this->mAttribs['rc_last_oldid'],
-				$this->mAttribs['rc_deleted'] );
+				$this->mAttribs['rc_last_oldid'] );
 		}
 	}
 	
@@ -583,10 +582,6 @@ class RecentChange
 	 */
 	public function getAttribute( $name ) {
 		return isset( $this->mAttribs[$name] ) ? $this->mAttribs[$name] : NULL;
-	}
-
-	public function getAttributes() {
-		return $this->mAttribs;
 	}
 
 	/**

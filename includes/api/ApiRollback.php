@@ -73,7 +73,7 @@ class ApiRollback extends ApiBase {
 			'title' => $titleObj->getPrefixedText(),
 			'pageid' => intval($details['current']->getPage()),
 			'summary' => $details['summary'],
-			'revid' => intval($details['newid']),
+			'revid' => intval($titleObj->getLatestRevID()),
 			'old_revid' => intval($details['current']->getID()),
 			'last_revid' => intval($details['target']->getID())
 		);

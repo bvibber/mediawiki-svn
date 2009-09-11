@@ -8,7 +8,6 @@
  * @file
  *
  * @author Consta
- * @author Crazymadlover
  * @author Omnipaedista
  * @author Sinopeus
  * @author Urhixidur
@@ -53,19 +52,13 @@ $dateFormats = array(
 $messages = array(
 # User preference toggles
 'tog-underline'           => 'Υπογράμμιση συνδεσμίων:',
-'tog-justify'             => 'Στοίχισην παραγραφίων',
 'tog-editondblclick'      => 'Άλλαγμαν σελιδίων με διπλόν κλικ (JavaScript)',
-'tog-previewonfirst'      => 'Δείξον πρώτον τέρεμαν σο πρώτον άλλαγμαν',
 'tog-shownumberswatching' => "Δείξον τοι χρήστς π' δεαβάζνε",
 'tog-showhiddencats'      => 'Δείξον κρυμμένα κατηγορίας',
 'tog-norollbackdiff'      => 'Χάσον τα διαφοράς ασην αναστροφήν κιάν',
 
 'underline-always' => 'Πάντα',
 'underline-never'  => 'Καμίαν',
-
-# Font style option in Special:Preferences
-'editfont-sansserif' => 'Γραμματοσειρά σαν-σερίφ',
-'editfont-serif'     => 'Γραμματοσειράν σερίφ',
 
 # Dates
 'sunday'        => 'Κερεκήν',
@@ -136,7 +129,6 @@ $messages = array(
 'listingcontinuesabbrev'         => 'συνεχίζεται...',
 
 'about'         => 'Περί',
-'article'       => 'Σελίδαν',
 'newwindow'     => "(ανοίγ' σ' άλλον παραθύρ)",
 'cancel'        => 'Χάτεμαν',
 'moredotdotdot' => 'Πλέα...',
@@ -161,27 +153,14 @@ $messages = array(
 'vector-action-delete'       => 'Σβήσον',
 'vector-action-move'         => 'Ετεροχλάεμαν',
 'vector-action-protect'      => 'Ασπάλιγμαν',
-'vector-action-undelete'     => 'Επαναφοράν',
-'vector-action-unprotect'    => 'Άνοιγμαν',
 'vector-namespace-category'  => 'Κατηγορίαν',
-'vector-namespace-help'      => 'Σελίδα βοήθειας',
 'vector-namespace-image'     => 'Αρχείον',
 'vector-namespace-main'      => 'Σελίδαν',
-'vector-namespace-media'     => 'Σελίδα μεσίων',
 'vector-namespace-mediawiki' => 'Μένεμαν',
-'vector-namespace-project'   => 'Σχετικά με',
-'vector-namespace-special'   => 'Ειδικόν σελίδαν',
 'vector-namespace-talk'      => 'Καλάτσεμαν',
 'vector-namespace-template'  => 'Πρότυπον',
 'vector-namespace-user'      => 'Σελίδαν χρήστε',
-'vector-view-create'         => 'Ποίσον',
 'vector-view-edit'           => 'Άλλαξον',
-'vector-view-history'        => 'Τερέστεν ιστορίαν',
-'vector-view-view'           => 'Δεάβασον',
-'vector-view-viewsource'     => 'Τερέστεν κωδικόν',
-'actions'                    => 'Ενέργειας',
-'namespaces'                 => 'Περιοχάς',
-'variants'                   => 'Παραλλαγάς',
 
 # Metadata in edit box
 'metadata_help' => 'Μεταδογμένα:',
@@ -190,7 +169,7 @@ $messages = array(
 'returnto'          => 'Επιστροφήν σο $1.',
 'tagline'           => 'Ασό {{SITENAME}}',
 'help'              => 'Βοήθειαν',
-'search'            => 'Αράεμαν',
+'search'            => 'αράεμαν',
 'searchbutton'      => 'Εύρον',
 'go'                => 'Δέβα',
 'searcharticle'     => 'Δέβα',
@@ -207,7 +186,6 @@ $messages = array(
 'create-this-page'  => 'Ποίσον τη σελίδαν',
 'delete'            => 'Σβήσον',
 'deletethispage'    => 'Σβήσεμαν τη σελίδας',
-'undelete_short'    => 'Επαναφοράν {{PLURAL:$1|αλλαγματί|$1 αλλαγματίων}}',
 'protect'           => 'Ασπάλιγμαν',
 'protect_change'    => 'Άλλαγμαν',
 'protectthispage'   => 'Ασπάλιγμα ατουνού τη σελίδας',
@@ -244,6 +222,7 @@ $messages = array(
 'aboutsite'            => 'Περί {{SITENAME}}',
 'aboutpage'            => 'Project:Σχετικά',
 'copyright'            => 'Το περιεχόμενον εν άμον ντο λεει η $1.',
+'copyrightpagename'    => '{{SITENAME}} δικαιώματα πνευματί',
 'copyrightpage'        => '{{ns:project}}:Δικαιώματα πνευματί',
 'currentevents'        => 'Ατωριζνά γεγονότα',
 'currentevents-url'    => 'Project:Ατωριζνά γεγονότα',
@@ -280,7 +259,6 @@ $messages = array(
 'toc'                     => 'Περιεχόμενα',
 'showtoc'                 => 'δείξον',
 'hidetoc'                 => 'κρύψον',
-'thisisdeleted'           => 'Τέρεμαν γιά επαναφοράν $1;',
 'viewdeleted'             => 'Τερέστεν το $1;',
 'feedlinks'               => 'Ροή δογμενίων:',
 'site-rss-feed'           => '$1 RSS Συνδρομή',
@@ -336,7 +314,7 @@ $messages = array(
 'protectedpagetext'    => "Αβούτη σελίδαν εν ασπαλιγμένον και 'κ αλλάζ'.",
 'viewsourcetext'       => "Επορείτε να τερείτε και ν' αντιγράφετε το κείμενον τ' ατεινές τη σελίδας:",
 'protectedinterface'   => "Αβούτη σελίδαν έχ' απές κείμενον για το interface τη software και για τ' ατό εν ασπαλιγμένον.",
-'namespaceprotected'   => "'Κ επορείτε να αλλάζετε σελίδας σην περιοχἠν ονοματίων '''$1'''.",
+'namespaceprotected'   => "'Κ επορείτε να αλλάζετε σελίδας σο namespace '''$1'''.",
 'customcssjsprotected' => "'Κ επορείτε να αλλάζετε αβούτο τη σελίδαν. Ατουπές, άλλος χρήστες έχ' τα προσωπικά τ'αγαπεμένα τ'.",
 'ns-specialprotected'  => "Τα ειδικά τα σελίδας 'κ επορούν ν' επεξεργάσκουνταν.",
 
@@ -382,7 +360,8 @@ $messages = array(
 Ποίστεν άλλο προσπάθειαν.",
 'wrongpasswordempty'         => 'Το σημάδι έτον εύκαιρον.
 Ποίστεν άλλο προσπάθειαν.',
-'passwordtooshort'           => "Το σημάδινεσουν πρέπ' να εχ' {{PLURAL:$1|1 γράμμαν|$1 γράμματα}}.",
+'passwordtooshort'           => "Το σημάδινεσουν εν πολλά μικρόν.
+Πρέπ' να εχ' {{PLURAL:$1|1 γράμμαν|$1 γράμματα}} κιαν και πρέπ' να εν αλλέτερον ασόν όνομαν τη χρήστε.",
 'mailmypassword'             => 'Αποστολή καινούρεου κωδικού',
 'passwordremindertitle'      => 'Καινούρεον σημάδιν για {{SITENAME}}',
 'passwordremindertext'       => 'Κάποιος (ίσως εσείς, ασήν διεύθυνσην IP $1)
@@ -396,7 +375,6 @@ $messages = array(
 Άμον ντο παίρετ\' ατό, εμπάτε ξαν.',
 'eauthentsent'               => "Έναν μένεμαν confirmation e-mail επήγεν σην διεύθυνσην ντ' εδώκατε.
 Πριχού να πηγαίνει άλλον μένεμαν σ' αβούτεν τη λογαρίαν, θα φτάτεν ατά ντο γραφ' σο μένεμαν απές. Αέτς πα θα δεκνίζετε το e-mail ατό εν το τεσέτερον.",
-'mailerror'                  => 'Σφάλμαν σην αποστολήν τη μενεματί: $1',
 'acct_creation_throttle_hit' => "Εποίκατε, ή ίσως αλλέτερος ασήν διεύθυνσήνεσουν IP, {{PLURAL:$1|1 λογαρίαν|$1 λογαρίας}}, το μέγιστον γι' ατώρα.
 'Κ επορείτε ν' εφτάτε άλλον.",
 'accountcreated'             => 'Έντον η λογαρίαν',
@@ -406,12 +384,10 @@ $messages = array(
 
 # Password reset dialog
 'resetpass'                 => 'Νέον σημάδιν',
-'resetpass_header'          => "Άλλαξον σημάδ'",
 'oldpassword'               => 'Παλαιόν σημάδιν:',
 'newpassword'               => 'Καινούρεον σημάδιν:',
 'retypenew'                 => 'Γράψον ξαν το νέον σημάδιν:',
 'resetpass-submit-loggedin' => 'Άλλαξον σημάδιν',
-'resetpass-temp-password'   => "Προσωρινόν σημάδ':",
 
 # Edit page toolbar
 'bold_sample'     => 'Χοντρόν κείμενον',
@@ -438,7 +414,7 @@ $messages = array(
 'subject'                          => 'Θέμα/επικεφαλίδα:',
 'minoredit'                        => 'Μικρόν αλλαγήν',
 'watchthis'                        => 'Ωρίαγμαν τη σελίδας',
-'savearticle'                      => 'Τοπλάεμαν σελίδας',
+'savearticle'                      => 'Αποθήκεμαν σελίδας',
 'preview'                          => 'Πρώτον τέρεμαν',
 'showpreview'                      => 'Πρώτον τέρεμαν',
 'showdiff'                         => 'Αλλαγάς',
@@ -489,10 +465,8 @@ $messages = array(
 Εάν 'κ θέλετε ν' εφτάτε αβούτεν τη σελίδαν, πατήστε το κουμπίν το λεει '''οπίς''' και δεβάτεν οπίς απ' όθεν έρθατεν.",
 'noarticletext'                    => "Αβούτεν η σελίδαν 'κ εχ' κείμενον απές ακόμαν. 
 [[Special:Search/{{PAGENAME}}|Εύρον αβούτον τον τίτλον]] σ' αλλέα τοι σελίδας,
-<span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} εύρον την σελίδαν σα σχετικά αρχεία],
+<span class=\"plainlinks\">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} εύρον την σελίδαν σα σχετικά αρχεία],
 ή [{{fullurl:{{FULLPAGENAME}}|action=edit}} άλλαξον αβούτεν την σελίδαν].",
-'updated'                          => '(Ενήμερον)',
-'note'                             => "'''Σημείωμαν:'''",
 'previewnote'                      => "'''Ατό πα πρώτον τέρεμαν εν και μόνον.
 Τ' αλλαγάς 'κ εκρατέθαν!'''",
 'editing'                          => 'Αλλαγήν $1',
@@ -546,26 +520,21 @@ $messages = array(
 'history-fieldset-title' => 'Εύρον σο ιστορικόν',
 'histfirst'              => "Ασ' όλεα παλαιόν",
 'histlast'               => "Ασ' όλεα καινούρ'",
-'historysize'            => '({{PLURAL:$1|1 byte|$1 bytes}})',
 'historyempty'           => '(εύκαιρον)',
 
 # Revision feed
 'history-feed-item-nocomment' => '$1 σο $2',
 
 # Revision deletion
-'rev-delundel'               => 'δείξον/κρύψον',
-'revdelete-show-file-submit' => 'Ναι',
-'revdel-restore'             => 'Ἀλλαγμαν ορατότητας',
-'pagehist'                   => 'Ιστορίαν σελίδας',
-'deletedhist'                => 'Σβηγμένον ιστορίαν',
-'revdelete-content'          => 'περιεχόμενον',
-'revdelete-summary'          => 'σύνοψην',
-'revdelete-uname'            => "όνεμαν χρήστ'",
-'revdelete-hid'              => 'κρυφόν $1',
-'revdelete-unhid'            => 'όχι κρυφόν $1',
+'rev-delundel'      => 'δείξον/κρύψον',
+'revdel-restore'    => 'Ἀλλαγμαν ορατότητας',
+'pagehist'          => 'Ιστορίαν σελίδας',
+'deletedhist'       => 'Σβηγμένον ιστορίαν',
+'revdelete-content' => 'περιεχόμενον',
+'revdelete-summary' => 'σύνοψην',
+'revdelete-uname'   => "όνεμαν χρήστ'",
 
 # History merging
-'mergehistory-from' => 'Σελίδα πηγή:',
 'mergehistory-into' => 'Σελίδα προορισμού:',
 
 # Merge log
@@ -585,8 +554,6 @@ $messages = array(
 'diff-height'             => 'ύψος',
 'diff-td'                 => "'''κελλίον'''",
 'diff-dt'                 => "'''όρον ορισμού'''",
-'diff-font'               => "'''γραμματοσειράν'''",
-'diff-big'                => "'''τρανόν'''",
 'diff-strike'             => "'''εγκάρσιον σβήσεμαν'''",
 
 # Search results
@@ -615,14 +582,14 @@ $messages = array(
 'search-mwsuggest-enabled'  => 'με οδηγίας',
 'search-mwsuggest-disabled' => 'θίχως οδηγίας',
 'searchall'                 => 'ούλαι',
-'nonefound'                 => "'''Σημείωση:''' Κανονικά ολίγα περιοχάς ονοματίων αραεύκουνταν μαναχόν. Βαλέστεν ''all:'' ασην λέξην εμπροστά για ίνεται το αράεμαν σ'όλεα τα σελίδας (και σελίδας καλατσεματί, πρότυπα κλπ.) ή βαλέστεν ους πρόθεμαν την περιοχήν ονοματίων π'θέλετε για να αραεύετε εκαικά.",
+'showingresultstotal'       => "Αδά επουκά επορείτε να ελέπετε {{PLURAL:$4|τ'αποτέλεσμαν '''$1''' ασα '''$3'''|τ'αποτελέσματα '''$1 - $2''' ασα '''$3'''}}",
+'nonefound'                 => "'''Σημείωση:''' Κανονικά ολίγα περιοχάς ονοματίων αραεύκουνταν μαναχόν. Βαλέστεν ''all:'' ασην λέξην εμπροστά για ίνεται το αράεμαν σ'όλεα τα σελίδας (και σελίδας καλατσεματί, πρότυπα κλπ.) ή βαλέστεν τ'όνομαν τη περιοχής π'θέλετε για να αραεύετε εκαικά.",
 'powersearch'               => 'Αναλυτικόν αράεμαν',
 'powersearch-legend'        => 'Αναλυτικόν αράεμαν',
 'powersearch-ns'            => "Αράεμαν σα τόπε τ' ονοματίων:",
 'powersearch-redir'         => 'Κατάλογον με διπλά συνδέσμ',
 'powersearch-field'         => 'Αράεμαν τη',
 'powersearch-toggleall'     => 'Όλια',
-'powersearch-togglenone'    => 'Τιδέν',
 'search-external'           => 'Εύρον σα εξ μερέαν',
 
 # Quickbar
@@ -637,24 +604,14 @@ $messages = array(
 'prefs-math'                => 'Απόδοσην μαθηματικίων',
 'prefs-datetime'            => 'Ημερομηνίαν και ώραν',
 'prefs-rc'                  => 'Υστερνά αλλαγάς',
-'prefs-watchlist'           => 'Κατάλογον ωριαγματί',
 'prefs-misc'                => 'Διαφ',
 'saveprefs'                 => 'Αποθήκεμαν',
 'searchresultshead'         => 'Εύρον',
 'timezonelegend'            => 'Χρονικόν ζώνην:',
 'localtime'                 => 'Τοπικόν χρόνον:',
 'timezoneoffset'            => 'Διαφοράν ωρίων¹:',
-'timezoneregion-africa'     => 'Αφρικήν',
-'timezoneregion-america'    => 'Αμερικήν',
-'timezoneregion-antarctica' => 'Ανταρκτικήν',
-'timezoneregion-arctic'     => 'Aρκτικός',
-'timezoneregion-asia'       => 'Ασίαν',
 'timezoneregion-atlantic'   => 'Ατλαντικόν Ωκεανός',
-'timezoneregion-australia'  => 'Αυστραλίαν',
-'timezoneregion-europe'     => 'Ευρώπην',
-'timezoneregion-indian'     => 'Ινδικόν Ωκεανός',
 'timezoneregion-pacific'    => 'Ειρηνικόν Ωκεανός',
-'default'                   => 'προεπιλογήν',
 'prefs-files'               => 'Αρχεία',
 'youremail'                 => 'Ελεκτρονικόν μένεμαν:',
 'username'                  => 'Όνεμα χρήστε:',
@@ -672,7 +629,6 @@ $messages = array(
 'prefs-help-realname'       => "'Κ επρέπ' να βάλετεν το τεσέτερον το πραματικόν τ' όνεμαν.
 Άμα αν εβάλετεν ατό, αμπορεί πα ν' αναγνωρίζκεται το τεσέτερον η δουλείαν.",
 'prefs-help-email-required' => 'Χρειάσκεται το ηλεκτρονικόν η διεύθυνση.',
-'prefs-signature'           => 'Υπογραφή',
 'prefs-diffs'               => 'Διαφοράς',
 
 # User rights
@@ -706,8 +662,6 @@ $messages = array(
 'right-createpage'    => "Ποίσον σελίδας (ντο 'κ εν σελίδας καλατζεματί)",
 'right-createtalk'    => 'Ποίσον σελίδας καλατζεματί',
 'right-createaccount' => 'Ποίσον καινούρεα λογαρίας χρηστίων',
-'right-move'          => 'Ετεροχλάεμαν σελιδίων',
-'right-movefile'      => 'Ετεροχλάεμαν αρχείων',
 'right-upload'        => 'Φόρτωσον αρχεία',
 'right-upload_by_url' => "Φόρτωσον αρχείον ασ' έναν URL",
 'right-delete'        => 'Σβήσον σελίδας',
@@ -721,11 +675,7 @@ $messages = array(
 'rightsnone' => '(τιδέν)',
 
 # Associated actions - in the sentence "You do not have permission to X"
-'action-read'          => 'δεάβασον αβούτεν την σελίδαν',
 'action-edit'          => 'άλλαγμαν τη σελίδας',
-'action-createpage'    => 'ποίσον σελίδας',
-'action-move'          => "κότζεμαν τη σελίδας σ' άλλον τίτλον",
-'action-movefile'      => 'ετεροχλάεμαν αβούτου τη αρχείου',
 'action-upload'        => 'φόρτωσον αβούτο το αρχείον',
 'action-upload_by_url' => "φόρτωσον αβούτο το αρχείον ασ' έναν URL",
 
@@ -776,9 +726,6 @@ $messages = array(
 'uploaderror'       => 'Έντον λάθος σο φόρτωμαν',
 'uploadlog'         => 'αρχείον με τα φορτώματα',
 'uploadlogpage'     => 'Αρχείον ανεβασματίων',
-'filename'          => 'Όνεμα αρχείου',
-'filedesc'          => 'Σύνοψη',
-'fileuploadsummary' => 'Σύνοψη:',
 'filesource'        => 'Πηγήν:',
 'uploadedfiles'     => 'Φορτωμένα αρχεία',
 'minlength1'        => "Τ' ονέματα τ' αρχείον πρέπ' να έχνε έναν γράμμαν και κιαλλαπάν.",
@@ -800,14 +747,11 @@ $messages = array(
 'listfiles_user'        => 'Χρήστες',
 'listfiles_size'        => 'Μέγεθος',
 'listfiles_description' => 'Σχόλιον',
-'listfiles_count'       => 'Εκδόσεις',
 
 # File description page
 'file-anchor-link'          => 'Εικόνα',
 'filehist'                  => "Ιστορικόν τ' αρχείου",
 'filehist-help'             => "Εφτάτε κλικ σ' έναν ημερομηνίαν/ώραν απάν αέτς για να τερείτε πως έτον τ' αρχείον σ' εκείνεν την ώραν.",
-'filehist-deleteone'        => 'σβήσεμαν',
-'filehist-revert'           => 'επαναφορά',
 'filehist-current'          => 'υστερινά',
 'filehist-datetime'         => 'Ώραν/Ημερομ.',
 'filehist-thumb'            => 'Εικονιδίον',
@@ -822,15 +766,12 @@ $messages = array(
 'nolinkstoimage'            => "'Κ εχ σελίδας ντο δεκνίζνε σ' αβούτεν εικόναν.",
 'sharedupload'              => "Αούτον τ' αρχείον εφορτώθεν ασό $1 για κοινόν κουλάνεμαν κι επορεί να χρησιμοποισκάται και σ' άλλα έργα.",
 'uploadnewversion-linktext' => "Σκώσ' καινούραιον έκδοσην τ' αρχείου",
-'shared-repo-from'          => 'ασό $1',
 
 # File reversion
 'filerevert-comment' => 'Σχόλιον:',
-'filerevert-submit'  => 'Επαναφορά',
 
 # File deletion
 'filedelete-comment'          => 'Αιτία για το σβήσεμαν:',
-'filedelete-submit'           => 'Σβήσον',
 'filedelete-reason-otherlist' => 'Άλλον αιτία',
 'filedelete-edit-reasonlist'  => "Άλλαξον τ' αιτίας σβησεματί",
 
@@ -860,18 +801,15 @@ $messages = array(
 'doubleredirects' => 'Περισσά διπλά συνδέσμ',
 
 'brokenredirects'        => 'Τσακωμένα διπλά συνδέσμ',
-'brokenredirects-edit'   => 'άλλαγμαν',
 'brokenredirects-delete' => 'σβήσεμαν',
 
 'withoutinterwiki'        => "Σελίδας ντο κ' έχνε συνδέσμ",
 'withoutinterwiki-legend' => 'Προθέκεμαν',
-'withoutinterwiki-submit' => 'Δείξον',
 
 'fewestrevisions' => "Σελίδας με τ' ασόλων λιγότερα αλλαγάς.",
 
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|byte|bytes}}',
-'ncategories'             => '{{PLURAL:$1|κατηγορίαν|κατηγορίας}}',
 'nlinks'                  => '$1 {{PLURAL:$1|σύνδεσμον|συνδέσμ}}',
 'nmembers'                => '$1 {{PLURAL:$1|μέλος|μέλη}}',
 'lonelypages'             => 'Ορφανά σελίδας',
@@ -895,7 +833,6 @@ $messages = array(
 'deadendpages'            => 'Αδιέξοδα σελίδας',
 'protectedpages'          => 'Ασπαλιγμένα σελίδας',
 'listusers'               => 'Κατάλογον χρηστίων',
-'usereditcount'           => '$1 {{PLURAL:$1|άλλαγμαν|αλλάγματα}}',
 'newpages'                => 'Καινούρεα σελίδας',
 'newpages-username'       => 'Όνεμα χρήστε:',
 'ancientpages'            => 'Ασ’ όλιον παλαιά σελίδας',
@@ -914,7 +851,7 @@ $messages = array(
 'specialloguserlabel'  => 'Χρήστες:',
 'speciallogtitlelabel' => 'Τίτλος:',
 'log'                  => 'Αρχεία',
-'all-logs-page'        => 'Όλεα τα δημόσεα αρχεία',
+'all-logs-page'        => "Όλεα τ' αρχεία",
 
 # Special:AllPages
 'allpages'       => 'Όλεα τα σελίδας',
@@ -934,16 +871,8 @@ $messages = array(
 'categoriespagetext' => "{{PLURAL:$1|Η αφκά κατηγορίαν εχ|Τ' αφκά τα κατηγορίας έχνε}} απές σελίδας και μέσα. [[Special:UnusedCategories|Κατηγορίας που 'κ εμεταχειρίσκουνταν]] 'κ επορείτε να ελέπετε τα αδακά.
 Τερέστεν και τα [[Special:WantedCategories|κατηγορίας που χρειάσκουνταν]].",
 
-# Special:DeletedContributions
-'sp-deletedcontributions-contribs' => "δουλείας ντ' εποίκε",
-
 # Special:LinkSearch
-'linksearch'    => 'Συνδέσμαι',
-'linksearch-ns' => 'Περιοχή ονοματίων:',
-'linksearch-ok' => 'Αράεμαν',
-
-# Special:ListUsers
-'listusers-submit' => 'Δείξον',
+'linksearch' => 'Συνδέσμαι',
 
 # Special:Log/newusers
 'newuserlogpage'          => 'Αρχείον ποισιματίων λογαρίων χρήστε',
@@ -955,11 +884,10 @@ $messages = array(
 'listgrouprights-members' => '(κατάλογον μελών)',
 
 # E-mail user
-'emailuser'    => 'Στείλον μένεμαν σον χρήστεν ατόν',
+'emailuser'    => 'Στείλον μένεμαν σον χρήστεν ατόν.',
 'emailfrom'    => 'Ασά:',
 'emailsubject' => 'Θέμαν:',
 'emailmessage' => 'Μένεμαν:',
-'emailsend'    => 'Αποστολήν',
 
 # Watchlist
 'watchlist'         => "Σελίδας ντ' ωριάζω",
@@ -982,15 +910,13 @@ $messages = array(
 'watching'   => 'Ωριάζω...',
 'unwatching' => "'κ ωριάζω...",
 
-'enotif_impersonal_salutation' => '{{SITENAME}} χρήστες',
-'changed'                      => 'ελλάγεν',
-'created'                      => 'έντον',
-'enotif_anon_editor'           => 'ανώνυμον χρήστες $1',
+'changed'            => 'ελλάγεν',
+'created'            => 'έντον',
+'enotif_anon_editor' => 'ανώνυμον χρήστες $1',
 
 # Delete
 'deletepage'            => 'Σβήσον τη σελίδαν',
 'exblank'               => 'σελίδα έτον εύκαιρον',
-'delete-legend'         => 'Σβήσεμαν',
 'historywarning'        => "Ωρία: Η σελίδαν που θα σβήετε έχ' ιστορικόν:",
 'confirmdeletetext'     => "Είστουν σουμά σο σβήσεμαν είνος σελίδας και ούλ' τ' ιστορίασατς εντάμαν.
 Παρακαλούμε σας να δείτε το τελικόν τη βεβαίωσην το θέλετε να εφτάτε το σβήσεμαν, τ' εγροικάτε τα συνέπειας τ' ατεινές τη πράξης και τ' εφτάτ' ατεν με βάσην [[{{MediaWiki:Policy-url}}|τη πολιτικήν]].",
@@ -999,22 +925,19 @@ $messages = array(
 Τερέστεν το $2 και δεαβάστεν για τα υστερνά τα σβησίματα.',
 'deletedarticle'        => 'νεβζινέθεν η "[[$1]]"',
 'dellogpage'            => "Κατάλογον με τ' ατά ντ' εσβήγαν",
-'deletionlog'           => 'αρχείον ασπαλιγματίων',
 'deletecomment'         => 'Λόγον για το σβήσιμο:',
 'deleteotherreason'     => 'Άλλον/αλλομίαν λόγον:',
 'deletereasonotherlist' => 'Άλλον λόγον',
 
 # Rollback
-'rollback'       => 'Φέρον ξαν σην υστερναίαν',
-'rollback_short' => 'Επαναφοράν',
-'rollbacklink'   => 'φέρον ξαν σην υστερναίαν',
+'rollbacklink' => 'φέρον ξαν σην υστερναίαν',
 
 # Protect
 'protectlogpage'              => 'Αρχείον ασπαλιγματίων',
 'protectedarticle'            => 'ασπαλιζμένον "[[$1]]"',
 'modifiedarticleprotection'   => 'έλλαξεν τ\'ωρίαγμαν για "[[$1]]"',
 'prot_1movedto2'              => '[[$1]] ετερχλαεύτεν σο [[$2]]',
-'protectcomment'              => 'Αιτίαν:',
+'protectcomment'              => 'Σχόλιον:',
 'protectexpiry'               => 'Τελείται:',
 'protect_expiry_invalid'      => "Ο χρόνον τελεματί 'κ εν σωστόν.",
 'protect_expiry_old'          => 'Ο χρόνον τελεματί πέρνιξον.',
@@ -1029,25 +952,18 @@ $messages = array(
 'protect-level-sysop'         => 'Νοματέοι μαναχόν',
 'protect-summary-cascade'     => 'διαδοχικόν',
 'protect-expiring'            => 'λήγει στις $1 (UTC)',
-'protect-expiry-indefinite'   => 'αόριστον',
 'protect-cascade'             => "Ασπάλιγμαν σελιδίων ντ' είν απές σ' αβούτεν σελίδαν (διαδοχικόν προστασίαν)",
 'protect-cantedit'            => "'Κι έχετε δικαίωμαν ν' αλλάζετε τ' επίπεδον ασπάλιγματι τ' ατεινές σελίδας.",
-'protect-expiry-options'      => '1 ώραν:1 hour,1 ημέραν:1 day,1 εβδομάδαν:1 week,2 εβδομάδας:2 weeks,1 μήναν:1 month,3 μήνας:3 months,6 μήνας:6 months,1 χρόνον:1 year,αόριστα:infinite',
+'protect-expiry-options'      => '2 ώραν:2 hour,1 ημέραν:1 day,1 εβδομάδαν:1 week,2 εβδομάδας:2 weeks,1 μήναν:1 month,3 μήνας:3 months,6 μήνας:6 months,1 χρόνον:1 year,αόριστα:infinite',
 'restriction-type'            => 'Δικαίωμαν:',
 'restriction-level'           => 'Επίπεδον περιορισμού:',
-'pagesize'                    => '(bytes)',
 
 # Restrictions (nouns)
-'restriction-edit'   => 'Ἀλλαγμαν',
-'restriction-move'   => 'Ετεροχλάεμαν',
-'restriction-create' => 'Ποίσον',
 'restriction-upload' => "Σκώσ' ατό",
 
 # Undelete
 'undeletebtn'               => 'Ποίσον ξαν',
 'undeletelink'              => 'τέρεμαν/επαναφορά',
-'undeleteviewlink'          => 'τέρεμα',
-'undeletecomment'           => 'Σχόλιον:',
 'undeletedarticle'          => 'επαναφορά τη "[[$1]]"',
 'undelete-search-submit'    => 'Εύρον',
 'undelete-show-file-submit' => 'Ναι',
@@ -1069,7 +985,6 @@ $messages = array(
 'sp-contributions-newbies'     => 'Τέρεμαν γραψιματίων τη καινούρεων λογαρίων μαναχόν',
 'sp-contributions-newbies-sub' => 'Για τα καινούρεα τοι λογαρίας',
 'sp-contributions-blocklog'    => 'Αρχείον ασπαλιγματίων',
-'sp-contributions-logs'        => 'αρχεία',
 'sp-contributions-talk'        => 'καλάτσεμαν',
 'sp-contributions-search'      => 'Εύρον συνεισφοράντας',
 'sp-contributions-username'    => 'Διεύθυνσην IP γιά όνεμαν χρήστε:',
@@ -1110,7 +1025,6 @@ $messages = array(
 'ipb-edit-dropdown'        => 'Άλλαξον αιτίας ασπαλιγματί',
 'ipblocklist'              => 'Ασπαλιγμένα IP και λογαρίας',
 'ipblocklist-submit'       => 'Εύρον',
-'infiniteblock'            => 'άπειρον',
 'blocklink'                => 'Ασπάλιγμαν',
 'unblocklink'              => 'άνοιγμαν ασπαλιγματί',
 'change-blocklink'         => "άλλαξον τ'ασπάλιγμαν",
@@ -1137,8 +1051,6 @@ $messages = array(
 'databasenotlocked'   => "Η βάση δογμενίων 'κ εν ασπαλιγμένον.",
 
 # Move page
-'move-page'               => 'Ετεροχλάεμαν $1',
-'move-page-legend'        => 'Ετεροχλάεμαν σελίδας',
 'movepagetext'            => "Εάν εφτάτε το ψαλαφίον αφκά θα δείτε άλλον όνομαν σ' έναν σελίδαν και θα παίρτεν τ' ιστορικόνατς εκαικά. Το παλαιόν η σελίδαν θα μεταβάλκεται σε σύνδεσμον σην καινούραιαν.
 
 Επορείτε να μεταβάλκετε τα συνδέσμαι που δεκνίζνε σο παλαιόν τη σελίδαν αυτόματα. Εάν 'κ φτάτε αέτς,
@@ -1174,20 +1086,16 @@ $messages = array(
 'movelogpage'             => 'Αρχείον ετεροχλαεματί',
 'movereason'              => 'Λόγον:',
 'revertmove'              => 'επαναφορά',
-'delete_and_move'         => 'Νεβζίνεμαν και ετεροχλάεμαν',
 
 # Export
 'export'            => 'Εξαγωγήν σελίδιων',
 'export-addcattext' => 'Βαλέστεν σελίδας ασήν κατηγορίαν:',
 'export-addcat'     => 'Βαλέστεν',
-'export-addns'      => 'Προστήκην',
 'export-download'   => 'Αποθήκεμαν άμον αρχείον',
 
 # Namespace 8 related
-'allmessages'               => 'Μενέματα συστηματί',
-'allmessagesname'           => 'Όνεμαν',
-'allmessages-filter-legend' => 'Φίλτρον',
-'allmessages-language'      => 'Λαλίαν:',
+'allmessages'     => 'Μενέματα συστηματί',
+'allmessagesname' => 'Όνεμαν',
 
 # Thumbnails
 'thumbnail-more'  => 'Ποίσον κι άλλο τρανόν',
@@ -1197,7 +1105,6 @@ $messages = array(
 # Special:Import
 'import'                  => 'Έμπαζμαν σελιδίων',
 'import-interwiki-submit' => 'Έμπαζμαν',
-'import-comment'          => 'Σχόλιον:',
 'importstart'             => 'Έμπαζμαν σελιδίων...',
 'import-noarticle'        => "'Κ εχ' σελίδαν για έμπαζμαν!",
 
@@ -1227,7 +1134,6 @@ $messages = array(
 'tooltip-search-go'               => 'Δέβα σε σελίδαν με αΐκον όνεμαν αν υπάρχει',
 'tooltip-search-fulltext'         => 'Εύρον αούτον το κείμενον',
 'tooltip-n-mainpage'              => 'Τερέστεν το αρχικόν τη σελίδαν',
-'tooltip-n-mainpage-description'  => 'Τερέστεν το αρχικόν τη σελίδαν',
 'tooltip-n-portal'                => 'Σχετικά με το Wiκi - πώς μπορείτε να εφτάτε γιαρτήμ, πού θα ευρίετε πράγματα',
 'tooltip-n-currentevents'         => "Εύρον άλλα πληροφορίας για τ' ατά ντ' ίντανε οψεκές.",
 'tooltip-n-recentchanges'         => "Κατάλογον με τ' υστερνά αλλαγάς σο wiki.",
@@ -1263,8 +1169,7 @@ $messages = array(
 'tooltip-undo'                    => 'Με την "Αναίρεση" χάται αούτον η αλλαγή και ανοίγ\' η φόρμα αλλαγματί άμον πρώτον τέρεμαν. Επιτρέπ\' την προσθήκην αιτίας ση περίληψην.',
 
 # Attribution
-'siteuser' => '{{SITENAME}} χρήστες $1',
-'others'   => "άλλ'",
+'others' => "άλλ'",
 
 # Spam protection
 'spamprotectiontitle' => 'Φίλτρον προστασίας ασό σπαμ',
@@ -1292,7 +1197,6 @@ $messages = array(
 # Special:NewFiles
 'newimages'        => 'Τερέστεν τα καινούρεα φωτογραφίας',
 'newimages-legend' => 'Φίλτρον',
-'showhidebots'     => '($1 μποτ)',
 'ilsubmit'         => 'Αράεμαν',
 'bydate'           => 'ημερομηνίας',
 
@@ -1340,28 +1244,14 @@ $messages = array(
 'exif-whitepoint'                  => "Χρωματικόν προσδιορισμός τ' άσπρου",
 'exif-primarychromaticities'       => 'Πρωτεύοντες χρωματισμοί',
 'exif-imagedescription'            => 'Τίτλος εικόνας',
-'exif-exposuretime-format'         => '$1 δευ ($2)',
-'exif-fnumber'                     => 'Αριθμός F',
-'exif-flash'                       => 'Φλάς',
 'exif-contrast'                    => 'Αντίθεσην',
-'exif-gpslatitude'                 => 'Γεωγραφικόν πλάτος',
-'exif-gpslongitude'                => 'Γεωγραφικόν μήκος',
-'exif-gpsaltitude'                 => 'Υψόμετρον',
-'exif-gpsspeedref'                 => 'Μονάδα ταχύτητας',
-
-'exif-orientation-1' => 'Νορμάλ',
 
 'exif-subjectdistance-value' => '$1 μέτρα',
 
-'exif-meteringmode-0'   => 'Άγνωστον',
 'exif-meteringmode-3'   => 'Μονοσημειακόν',
 'exif-meteringmode-255' => 'Άλλον',
 
-'exif-lightsource-4' => 'Φλας',
-
 'exif-focalplaneresolutionunit-2' => 'ίντζας',
-
-'exif-gaincontrol-0' => 'Τιδέν',
 
 'exif-subjectdistancerange-1' => 'Macro',
 
@@ -1381,9 +1271,6 @@ $messages = array(
 'watchlistall2'    => 'ούλαι',
 'namespacesall'    => 'ούλαι',
 'monthsall'        => 'ούλαι',
-
-# Trackbacks
-'trackbackremove' => '([$1 Σβήσον])',
 
 # Delete conflict
 'recreate' => 'Ποίσον αξάν',
@@ -1420,7 +1307,6 @@ $messages = array(
 # Special:Version
 'version'                  => 'Έκδοση',
 'version-specialpages'     => 'Ειδικά σελίδας',
-'version-variables'        => 'Μεταβλητάς',
 'version-other'            => 'Αλλέτερα',
 'version-hooks'            => 'Αγκιστρία',
 'version-license'          => 'Ἀδεια',
@@ -1452,7 +1338,6 @@ $messages = array(
 'tags-hitcount'        => '$1 {{PLURAL:$1|αλλαγή|αλλαγάς}}',
 
 # HTML forms
-'htmlform-submit'              => 'Στείλον',
 'htmlform-selectorother-other' => 'Άλλον',
 
 );

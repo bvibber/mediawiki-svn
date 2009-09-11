@@ -18,7 +18,7 @@ function tabbedprefs() {
 		if (children[i].nodeName.toLowerCase() == 'fieldset') {
 			children[i].id = 'prefsection-' + seci;
 			children[i].className = 'prefsection';
-			if (is_opera) {
+			if (is_opera || is_khtml) {
 				children[i].className = 'prefsection operaprefsection';
 			}
 			var legends = children[i].getElementsByTagName('legend');

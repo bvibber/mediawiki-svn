@@ -46,7 +46,7 @@ CREATE INDEX &mw_prefix.user_newtalk_i02 ON &mw_prefix.user_newtalk (user_ip);
 CREATE TABLE &mw_prefix.user_properties (
   up_user NUMBER NOT NULL,
   up_property VARCHAR2(32) NOT NULL,
-  up_value CLOB
+  up_value BLOB
 );
 CREATE UNIQUE INDEX &mw_prefix.user_properties_u01 on &mw_prefix.user_properties (up_user,up_property);
 CREATE INDEX &mw_prefix.user_properties_i01 on &mw_prefix.user_properties (up_property);
@@ -120,10 +120,7 @@ CREATE TABLE &mw_prefix.archive (
   ar_flags       VARCHAR2(255),
   ar_rev_id      NUMBER,
   ar_text_id     NUMBER,
-  ar_deleted     NUMBER      DEFAULT '0' NOT NULL,
-  ar_len         NUMBER,
-  ar_page_id     NUMBER,
-  ar_parent_id   NUMBER
+  ar_deleted     NUMBER      DEFAULT '0' NOT NULL
 );
 CREATE INDEX &mw_prefix.archive_i01 ON &mw_prefix.archive (ar_namespace,ar_title,ar_timestamp);
 CREATE INDEX &mw_prefix.archive_i02 ON &mw_prefix.archive (ar_user_text,ar_timestamp);
@@ -237,7 +234,7 @@ CREATE INDEX &mw_prefix.ipblocks_i02 ON &mw_prefix.ipblocks (ipb_range_start, ip
 CREATE INDEX &mw_prefix.ipblocks_i03 ON &mw_prefix.ipblocks (ipb_timestamp);
 CREATE INDEX &mw_prefix.ipblocks_i04 ON &mw_prefix.ipblocks (ipb_expiry);
 
-CREATE TABLE &mw_prefix.image (
+CREATE TABLE image (
   img_name         VARCHAR2(255)      NOT NULL,
   img_size         NUMBER   NOT NULL,
   img_width        NUMBER   NOT NULL,
@@ -363,8 +360,8 @@ CREATE INDEX &mw_prefix.watchlist_i01 ON &mw_prefix.watchlist (wl_namespace, wl_
 
 
 CREATE TABLE &mw_prefix.math (
-  math_inputhash              VARCHAR2(32)      NOT NULL,
-  math_outputhash             VARCHAR2(32)      NOT NULL,
+  math_inputhash              VARCHAR2(16)      NOT NULL,
+  math_outputhash             VARCHAR2(16)      NOT NULL,
   math_html_conservativeness  NUMBER  NOT NULL,
   math_html                   CLOB,
   math_mathml                 CLOB
@@ -564,13 +561,6 @@ ALTER TABLE &mw_prefix.valid_tag ADD CONSTRAINT &mw_prefix.valid_tag_pk PRIMARY 
 
 CREATE INDEX si_title_idx ON &mw_prefix.searchindex(si_title) INDEXTYPE IS ctxsys.context;
 CREATE INDEX si_text_idx ON &mw_prefix.searchindex(si_text) INDEXTYPE IS ctxsys.context;
-
-CREATE TABLE &mw_prefix.l10n_cache (
-  lc_lang varchar2(32) NOT NULL,
-  lc_key varchar2(255) NOT NULL,
-  lc_value clob NOT NULL
-);
-CREATE INDEX &mw_prefix.l10n_cache_u01 ON &mw_prefix.l10n_cache (lc_lang, lc_key);
 
 CREATE TABLE &mw_prefix.wiki_field_info_full (
 table_name VARCHAR2(35) NOT NULL,

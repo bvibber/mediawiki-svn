@@ -419,8 +419,7 @@ class Preprocessor_DOM implements Preprocessor {
 						'count' => $count );
 					$stack->push( $piece );
 					$accum =& $stack->getAccum();
-					$flags = $stack->getFlags();
-					extract( $flags );
+					extract( $stack->getFlags() );
 					$i += $count;
 				}
 			}
@@ -471,8 +470,7 @@ class Preprocessor_DOM implements Preprocessor {
 				// Unwind the stack
 				$stack->pop();
 				$accum =& $stack->getAccum();
-				$flags = $stack->getFlags();
-				extract( $flags );
+				extract( $stack->getFlags() );
 
 				// Append the result to the enclosing accumulator
 				$accum .= $element;
@@ -499,8 +497,7 @@ class Preprocessor_DOM implements Preprocessor {
 
 					$stack->push( $piece );
 					$accum =& $stack->getAccum();
-					$flags = $stack->getFlags();
-					extract( $flags );
+					extract( $stack->getFlags() );
 				} else {
 					# Add literal brace(s)
 					$accum .= htmlspecialchars( str_repeat( $curChar, $count ) );
@@ -600,8 +597,8 @@ class Preprocessor_DOM implements Preprocessor {
 					}
 					$enclosingAccum .= str_repeat( $piece->open, $skippedBraces );
 				}
-				$flags = $stack->getFlags();
-				extract( $flags );
+
+				extract( $stack->getFlags() );
 
 				# Add XML element to the enclosing accumulator
 				$accum .= $element;
@@ -1192,18 +1189,6 @@ class PPFrame_DOM implements PPFrame {
 		}
 	}
 
-	function getArguments() {
-		return array();
-	}
-
-	function getNumberedArguments() {
-		return array();
-	}
-
-	function getNamedArguments() {
-		return array();
-	}
-
 	/**
 	 * Returns true if there are no arguments in this frame
 	 */
@@ -1239,7 +1224,8 @@ class PPTemplateFrame_DOM extends PPFrame_DOM {
 	var $numberedExpansionCache, $namedExpansionCache;
 
 	function __construct( $preprocessor, $parent = false, $numberedArgs = array(), $namedArgs = array(), $title = false ) {
-		PPFrame_DOM::__construct( $preprocessor );
+		$this->preprocessor = $preprocessor;
+		$this->parser = $preprocessor->parser;
 		$this->parent = $parent;
 		$this->numberedArgs = $numberedArgs;
 		$this->namedArgs = $namedArgs;
@@ -1351,7 +1337,8 @@ class PPCustomFrame_DOM extends PPFrame_DOM {
 	var $args;
 
 	function __construct( $preprocessor, $args ) {
-		PPFrame_DOM::__construct( $preprocessor );
+		$this->preprocessor = $preprocessor;
+		$this->parser = $preprocessor->parser;
 		$this->args = $args;
 	}
 

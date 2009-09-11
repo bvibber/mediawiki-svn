@@ -14,7 +14,6 @@
  * - $wgCachePages
  * - $wgCacheEpoch
  * - $wgUseFileCache
- * - $wgCacheDirectory
  * - $wgFileCacheDirectory
  * - $wgUseGzip
  *
@@ -31,16 +30,7 @@ class HTMLFileCache {
 
 	public function fileCacheName() {
 		if( !$this->mFileCache ) {
-			global $wgCacheDirectory, $wgFileCacheDirectory, $wgRequest;
-
-			if ( $wgFileCacheDirectory ) {
-				$dir = $wgFileCacheDirectory;
-			} elseif ( $wgCacheDirectory ) {
-				$dir = "$wgCacheDirectory/html";
-			} else {
-				throw new MWException( 'Please set $wgCacheDirectory in LocalSettings.php if you wish to use the HTML file cache' );
-			}
-
+			global $wgFileCacheDirectory, $wgRequest;
 			# Store raw pages (like CSS hits) elsewhere
 			$subdir = ($this->mType === 'raw') ? 'raw/' : '';
 			$key = $this->mTitle->getPrefixedDbkey();

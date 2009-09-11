@@ -18,24 +18,16 @@ define( 'RE_IPV6_GAP', ':(?:0+:)*(?::(?:0+:)*)?' );
 define( 'RE_IPV6_V4_PREFIX', '0*' . RE_IPV6_GAP . '(?:ffff:)?' );
 // An IPv6 block is an IP address and a prefix (d1 to d128)
 define( 'RE_IPV6_PREFIX', '(12[0-8]|1[01][0-9]|[1-9]?\d)');
-// An IPv6 IP is made up of 8 octets. However abbreviations like "::" can be used.
-// This is lax! Number of octets/double colons validation not done.
-define( 'RE_IPV6_ADD',
-	'(' .
-		':(:' . RE_IPV6_WORD . '){1,7}' . // IPs that start with ":"
-	'|' .
-		RE_IPV6_WORD . '(:{1,2}' . RE_IPV6_WORD . '|::$){1,7}' . // IPs that don't start with ":"
-	')'
-);
+// An IPv6 IP is made up of 8 octets. However abbreviations like "::" can be used. This is lax!
+define( 'RE_IPV6_ADD', '(:(:' . RE_IPV6_WORD . '){1,7}|' . RE_IPV6_WORD . '(:{1,2}' . RE_IPV6_WORD . '|::$){1,7})' );
 define( 'RE_IPV6_BLOCK', RE_IPV6_ADD . '\/' . RE_IPV6_PREFIX );
 // This might be useful for regexps used elsewhere, matches any IPv6 or IPv6 address or network
 define( 'IP_ADDRESS_STRING',
 	'(?:' .
-		RE_IP_ADD . '(\/' . RE_IP_PREFIX . '|)' . // IPv4
+		RE_IP_ADD . '(\/' . RE_IP_PREFIX . '|)' .
 	'|' .
-		RE_IPV6_ADD . '(\/' . RE_IPV6_PREFIX . '|)' . // IPv6
-	')'
-);
+		RE_IPV6_ADD . '(\/' . RE_IPV6_PREFIX . '|)' .
+	')' );
 
 /**
  * A collection of public static functions to play with IP address
@@ -60,12 +52,10 @@ class IP {
 	public static function isIPv6( $ip ) {
 		if ( !$ip ) return false;
 		if( is_array( $ip ) ) {
-			throw new MWException( "invalid value passed to " . __METHOD__ );
+		  throw new MWException( "invalid value passed to " . __METHOD__ );
 		}
-		$doubleColons = substr_count($ip, '::');
 		// IPv6 IPs with two "::" strings are ambiguous and thus invalid
-		return preg_match( '/^' . RE_IPV6_ADD . '(\/' . RE_IPV6_PREFIX . '|)$/', $ip)
-			&& ( $doubleColons == 1 || substr_count($ip,':') == 7 );
+		return preg_match( '/^' . RE_IPV6_ADD . '(\/' . RE_IPV6_PREFIX . '|)$/', $ip) && ( substr_count($ip, '::') < 2);
 	}
 
 	public static function isIPv4( $ip ) {
@@ -133,20 +123,11 @@ class IP {
 		// Remove any whitespaces, convert to upper case
 		$ip = strtoupper( $ip );
 		// Expand zero abbreviations
-		$abbrevPos = strpos( $ip, '::' );
-		if ( $abbrevPos !== false ) {
-			// If the '::' is at the beginning...
-			if( $abbrevPos == 0 ) {
-				$repeat = '0:'; $extra = ''; $pad = 9; // 7+2 (due to '::')
-			// If the '::' is at the end...
-			} else if( $abbrevPos == (strlen($ip)-2) ) {
-				$repeat = ':0'; $extra = ''; $pad = 9; // 7+2 (due to '::')
-			// If the '::' is at the end...
-			} else {
-				$repeat = ':0'; $extra = ':'; $pad = 8; // 6+2 (due to '::')
-			}
-    		$ip = str_replace('::', str_repeat($repeat, $pad-substr_count($ip,':')).$extra, $ip);
+		if ( strpos( $ip, '::' ) !== false ) {
+    		$ip = str_replace('::', str_repeat(':0', 8 - substr_count($ip, ':')) . ':', $ip);
     	}
+    	// For IPs that start with "::", correct the final IP so that it starts with '0' and not ':'
+    	if ( $ip[0] == ':' ) $ip = "0$ip";
     	// Remove leading zereos from each bloc as needed
     	$ip = preg_replace( '/(^|:)0+' . RE_IPV6_WORD . '/', '$1$2', $ip );
     	return $ip;
@@ -541,10 +522,11 @@ class IP {
 		if ( self::isValid( $addr ) )
 			return $addr;
 
-		// Turn mapped addresses from ::ce:ffff:1.2.3.4 to 1.2.3.4
+		// Annoying IPv6 representations like ::ffff:1.2.3.4
 		if ( strpos($addr,':') !==false && strpos($addr,'.') !==false ) {
-			$addr = substr( $addr, strrpos($addr,':')+1 );
-			if( self::isIPv4($addr) ) return $addr;
+			$addr = str_replace( '.', ':', $addr );
+			if( IP::isIPv6( $addr ) )
+				return $addr;
 		}
 
 		// IPv6 loopback address

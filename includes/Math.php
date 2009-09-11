@@ -46,6 +46,7 @@ class MathRenderer {
 
 		if( !$this->_recall() ) {
 			# Ensure that the temp and output directories are available before continuing...
+			/*
 			if( !file_exists( $wgTmpDirectory ) ) {
 				if( !wfMkdirParents( $wgTmpDirectory ) ) {
 					return $this->_error( 'math_bad_tmpdir' );
@@ -57,6 +58,7 @@ class MathRenderer {
 			if( function_exists( 'is_executable' ) && !is_executable( $wgTexvc ) ) {
 				return $this->_error( 'math_notexvc' );
 			}
+			*/
 			$cmd = $wgTexvc . ' ' .
 					escapeshellarg( $wgTmpDirectory ).' '.
 					escapeshellarg( $wgTmpDirectory ).' '.
@@ -221,6 +223,10 @@ class MathRenderer {
 			$this->mathml = $rpage->math_mathml;
 
 			$filename = $this->_getHashPath() . "/{$this->hash}.png";
+
+			// Temp performance hack
+			return true;
+			
 			if( file_exists( $filename ) ) {
 				if( filesize( $filename ) == 0 ) {
 					// Some horrible error corrupted stuff :(
@@ -229,7 +235,7 @@ class MathRenderer {
 					return true;
 				}
 			}
-
+			
 			if( file_exists( $wgMathDirectory . "/{$this->hash}.png" ) ) {
 				$hashpath = $this->_getHashPath();
 

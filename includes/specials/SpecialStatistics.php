@@ -38,7 +38,6 @@ class SpecialStatistics extends SpecialPage {
 		$this->activeUsers = SiteStats::activeUsers();
 		$this->admins = SiteStats::numberingroup('sysop');
 		$this->numJobs = SiteStats::jobs();
-		$this->hook = '';
 	
 		# Staticic - views
 		$viewsStats = '';
@@ -75,12 +74,6 @@ class SpecialStatistics extends SpecialPage {
 		# Statistic - popular pages
 		if( !$wgDisableCounters && !$wgMiserMode ) {
 			$text .= $this->getMostViewedPages();
-		}
-		
-		# Statistic - other
-		$extraStats = array();
-		if( wfRunHooks( 'SpecialStatsAddExtra', array( &$extraStats ) ) ) {
-			$text .= $this->getOtherStats( $extraStats );
 		}
 
 		$text .= Xml::closeElement( 'table' );
@@ -251,9 +244,7 @@ class SpecialStatistics extends SpecialPage {
 				)
 			);
 			if( $res->numRows() > 0 ) {
-				$text .= Xml::openElement( 'tr' );
 				$text .= Xml::tags( 'th', array( 'colspan' => '2' ), wfMsgExt( 'statistics-mostpopular', array( 'parseinline' ) ) );
-				$text .= Xml::closeElement( 'tr' );
 				while( $row = $res->fetchObject() ) {
 					$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
 					if( $title instanceof Title ) {
@@ -265,23 +256,6 @@ class SpecialStatistics extends SpecialPage {
 				$res->free();
 			}
 		return $text;
-	}
-	
-	private function getOtherStats( $stats ) {
-		global $wgLang;
-		
-		$return = Xml::openElement( 'tr' ) .
-			Xml::tags( 'th', array( 'colspan' => '2' ), wfMsgExt( 'statistics-header-hooks', array( 'parseinline' ) ) ) .
-			Xml::closeElement( 'tr' );
-			
-		foreach( $stats as $name => $number ) {
-			$name = htmlspecialchars( $name );
-			$number = htmlspecialchars( $number );
-			
-			$return .= $this->formatRow( $name, $wgLang->formatNum( $number ), array( 'class' => 'mw-statistics-hook' ) );
-		}
-		
-		return $return;
 	}
 	
 	/**

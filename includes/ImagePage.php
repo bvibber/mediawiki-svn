@@ -492,7 +492,7 @@ EOT
 				$nofile = 'filepage-nofile';
 			}
 			$wgOut->setRobotPolicy( 'noindex,nofollow' );
-			$wgOut->wrapWikiMsg( "<div id='mw-imagepage-nofile' class='plainlinks'>\n$1\n</div>", $nofile );
+			$wgOut->wrapWikiMsg( '<div id="mw-imagepage-nofile" class="plainlinks">$1</div>', $nofile );
 		}
 	}
 
@@ -551,7 +551,7 @@ EOT
 		$wgOut->addHTML( "<br /><ul>\n" );
 
 		# "Upload a new version of this file" link
-		if( UploadBase::userCanReUpload($wgUser,$this->img->name) ) {
+		if( UploadForm::userCanReUpload($wgUser,$this->img->name) ) {
 			$ulink = $sk->makeExternalLink( $this->getUploadUrl(), wfMsg( 'uploadnewversion-linktext' ) );
 			$wgOut->addHTML( "<li id=\"mw-imagepage-reupload-link\"><div class=\"plainlinks\">{$ulink}</div></li>\n" );
 		}
@@ -720,6 +720,13 @@ EOT
 	 * Delete the file, or an earlier version of it
 	 */
 	public function delete() {
+		global $wgUploadMaintenance;
+		if( $wgUploadMaintenance && $this->mTitle && $this->mTitle->getNamespace() == NS_FILE ) {
+			global $wgOut;
+			$wgOut->addWikiText('Deletion and restoration of images temporarily disabled during maintenance.' );
+			return;
+		}
+
 		$this->loadFile();
 		if( !$this->img->exists() || !$this->img->isLocal() || $this->img->getRedirected() ) {
 			// Standard article deletion
@@ -861,6 +868,7 @@ class ImageHistoryList {
 				if( $iscur || !$file->userCan(File::DELETED_RESTRICTED) ) {
 					$del = wfMsgHtml( 'rev-delundel' );
 				} else {
+					// If the file was hidden, link to sha-1
 					list( $ts, $name ) = explode( '!', $img, 2 );
 					$del = $this->skin->link( $revdel, wfMsgHtml( 'rev-delundel' ),
 						array(),
@@ -875,7 +883,7 @@ class ImageHistoryList {
 					if( $file->isDeleted(File::DELETED_RESTRICTED) )
 						$del = "<strong>$del</strong>";
 				}
-				$row .= "<span class='mw-revdelundel-link'>$del</span>";
+				$row .= "<tt style='white-space: nowrap;'><small>$del</small></tt>";
 			}
 			$row .= '</td>';
 		}

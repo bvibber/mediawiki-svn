@@ -6,21 +6,20 @@
  * @file
  * @todo document
  * @ingroup Maintenance
- * @ingroup Wikimedia
  */
 
 /** */
 $oldCwd = getcwd();
 
 $optionsWithArgs = array( "o" );
-require_once( dirname(__FILE__) . '/commandLine.inc' );
+require( "commandLine.inc" );
 require( "dumpInterwiki.inc" );
 chdir( $oldCwd );
 
 # Output
 if ( isset( $options['o'] ) ) {
     # To database specified with -o
-    $dbFile = CdbWriter::open( $options['o'] );
+    $dbFile = dba_open( $options['o'], "n", "cdb_make" );
 } 
 
 getRebuildInterwikiDump();

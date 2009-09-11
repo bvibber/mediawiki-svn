@@ -128,12 +128,6 @@ class Profiler {
 	 * called by wfProfileClose()
 	 */
 	function close() {
-		global $wgProfiling;
-
-		# Avoid infinite loop
-		if( !$wgProfiling )
-			return;
-
 		while( count( $this->mWorkStack ) ){
 			$this->profileOut( 'close' );
 		}

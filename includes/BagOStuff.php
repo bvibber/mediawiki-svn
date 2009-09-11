@@ -37,122 +37,129 @@
  *
  * @ingroup Cache
  */
-abstract class BagOStuff {
-	var $debugMode = false;
+class BagOStuff {
+	var $debugmode;
 
-	public function set_debug( $bool ) {
-		$this->debugMode = $bool;
+	function __construct() {
+		$this->set_debug( false );
+	}
+
+	function set_debug($bool) {
+		$this->debugmode = $bool;
 	}
 
 	/* *** THE GUTS OF THE OPERATION *** */
 	/* Override these with functional things in subclasses */
 
-	/**
-	 * Get an item with the given key. Returns false if it does not exist.
-	 * @param $key string
-	 */
-	abstract public function get( $key );
+	function get($key) {
+		/* stub */
+		return false;
+	}
 
-	/**
-	 * Set an item. 
-	 * @param $key string
-	 * @param $value mixed
-	 * @param $exptime int Either an interval in seconds or a unix timestamp for expiry
-	 */
-	abstract public function set( $key, $value, $exptime = 0 );
+	function set($key, $value, $exptime=0) {
+		/* stub */
+		return false;
+	}
 
-	/*
-	 * Delete an item.
-	 * @param $key string
-	 * @param $time int Amount of time to delay the operation (mostly memcached-specific)
-	 */
-	abstract public function delete( $key, $time = 0 );
+	function delete($key, $time=0) {
+		/* stub */
+		return false;
+	}
 
-	public function lock( $key, $timeout = 0 ) {
+	function lock($key, $timeout = 0) {
 		/* stub */
 		return true;
 	}
 
-	public function unlock( $key ) {
+	function unlock($key) {
 		/* stub */
 		return true;
 	}
 
-	public function keys() {
+	function keys() {
 		/* stub */
 		return array();
 	}
 
 	/* *** Emulated functions *** */
 	/* Better performance can likely be got with custom written versions */
-	public function get_multi( $keys ) {
+	function get_multi($keys) {
 		$out = array();
-		foreach ( $keys as $key ) {
-			$out[$key] = $this->get( $key );
-		}
+		foreach($keys as $key)
+			$out[$key] = $this->get($key);
 		return $out;
 	}
 
-	public function set_multi( $hash, $exptime = 0 ) {
-		foreach ( $hash as $key => $value ) {
-			$this->set( $key, $value, $exptime );
-		}
+	function set_multi($hash, $exptime=0) {
+		foreach($hash as $key => $value)
+			$this->set($key, $value, $exptime);
 	}
 
-	public function add( $key, $value, $exptime = 0 ) {
-		if ( $this->get( $key ) == false ) {
-			$this->set( $key, $value, $exptime );
+	function add($key, $value, $exptime=0) {
+		if( $this->get($key) == false ) {
+			$this->set($key, $value, $exptime);
 			return true;
 		}
 	}
 
-	public function add_multi( $hash, $exptime = 0 ) {
-		foreach ( $hash as $key => $value ) {
-			$this->add( $key, $value, $exptime );
-		}
+	function add_multi($hash, $exptime=0) {
+		foreach($hash as $key => $value)
+			$this->add($key, $value, $exptime);
 	}
 
-	public function delete_multi( $keys, $time = 0 ) {
-		foreach ( $keys as $key ) {
-			$this->delete( $key, $time );
-		}
+	function delete_multi($keys, $time=0) {
+		foreach($keys as $key)
+			$this->delete($key, $time);
 	}
 
-	public function replace( $key, $value, $exptime = 0 ) {
-		if ( $this->get( $key ) !== false ) {
-			$this->set( $key, $value, $exptime );
-		}
+	function replace($key, $value, $exptime=0) {
+		if( $this->get($key) !== false )
+			$this->set($key, $value, $exptime);
 	}
 
-	public function incr( $key, $value = 1 ) {
-		if ( !$this->lock( $key ) ) {
+	function incr($key, $value=1) {
+		if ( !$this->lock($key) ) {
 			return false;
 		}
-		$value = intval( $value );
+		$value = intval($value);
+		if($value < 0) $value = 0;
 
 		$n = false;
-		if ( ( $n = $this->get( $key ) ) !== false ) {
+		if( ($n = $this->get($key)) !== false ) {
 			$n += $value;
-			$this->set( $key, $n ); // exptime?
+			$this->set($key, $n); // exptime?
 		}
-		$this->unlock( $key );
+		$this->unlock($key);
 		return $n;
 	}
 
-	public function decr( $key, $value = 1 ) {
-		return $this->incr( $key, -$value );
+	function decr($key, $value=1) {
+		if ( !$this->lock($key) ) {
+			return false;
+		}
+		$value = intval($value);
+		if($value < 0) $value = 0;
+
+		$m = false;
+		if( ($n = $this->get($key)) !== false ) {
+			$m = $n - $value;
+			if($m < 0) $m = 0;
+			$this->set($key, $m); // exptime?
+		}
+		$this->unlock($key);
+		return $m;
 	}
 
-	public function debug( $text ) {
-		if ( $this->debugMode )
-			wfDebug( "BagOStuff debug: $text\n" );
+	function _debug($text) {
+		if($this->debugmode)
+			wfDebug("BagOStuff debug: $text\n");
 	}
 
 	/**
 	 * Convert an optionally relative time to an absolute time
 	 */
-	protected function convertExpiry( $exptime ) {
-		if ( ( $exptime != 0 ) && ( $exptime < 3600 * 24 * 30 ) ) {
+	static function convertExpiry( $exptime ) {
+		if(($exptime != 0) && ($exptime < 3600*24*30)) {
 			return time() + $exptime;
 		} else {
 			return $exptime;
@@ -175,34 +182,30 @@ class HashBagOStuff extends BagOStuff {
 		$this->bag = array();
 	}
 
-	protected function expire( $key ) {
+	function _expire($key) {
 		$et = $this->bag[$key][1];
-		if ( ( $et == 0 ) || ( $et > time() ) ) {
+		if(($et == 0) || ($et > time()))
 			return false;
-		}
-		$this->delete( $key );
+		$this->delete($key);
 		return true;
 	}
 
-	function get( $key ) {
-		if ( !isset( $this->bag[$key] ) ) {
+	function get($key) {
+		if( !isset( $this->bag[$key] ) )
 			return false;
-		}
-		if ( $this->expire( $key ) ) {
+		if($this->_expire($key))
 			return false;
-		}
 		return $this->bag[$key][0];
 	}
 
-	function set( $key, $value, $exptime = 0 ) {
-		$this->bag[$key] = array( $value, $this->convertExpiry( $exptime ) );
+	function set($key,$value,$exptime=0) {
+		$this->bag[$key] = array( $value, BagOStuff::convertExpiry( $exptime ) );
 	}
 
-	function delete( $key, $time = 0 ) {
-		if ( !isset( $this->bag[$key] ) ) {
+	function delete($key,$time=0) {
+		if( !isset( $this->bag[$key] ) )
 			return false;
-		}
-		unset( $this->bag[$key] );
+		unset($this->bag[$key]);
 		return true;
 	}
 
@@ -212,187 +215,182 @@ class HashBagOStuff extends BagOStuff {
 }
 
 /**
- * Class to store objects in the database
+ * Generic class to store objects in a database
  *
  * @ingroup Cache
  */
-class SqlBagOStuff extends BagOStuff {
-	var $lb, $db;
-	var $lastExpireAll = 0;
+abstract class SqlBagOStuff extends BagOStuff {
+	var $table;
+	var $lastexpireall = 0;
 
-	protected function getDB() {
-		if ( !isset( $this->lb ) ) {
-			$this->lb = wfGetLBFactory()->newMainLB();
-			$this->db = $this->lb->getConnection( DB_MASTER );
-			$this->db->clearFlag( DBO_TRX );
-		}
-		return $this->db;
+	/**
+	 * Constructor
+	 *
+	 * @param $tablename String: name of the table to use
+	 */
+	function __construct($tablename = 'objectcache') {
+		$this->table = $tablename;
 	}
 
-	public function get( $key ) {
-		# expire old entries if any
+	function get($key) {
+		/* expire old entries if any */
 		$this->garbageCollect();
-		$db = $this->getDB();
-		$row = $db->selectRow( 'objectcache', array( 'value', 'exptime' ),
-			array( 'keyname' => $key ), __METHOD__ );
-		if ( !$row ) {
-			$this->debug( 'get: no matching rows' );
+
+		$res = $this->_query(
+			"SELECT value,exptime FROM $0 WHERE keyname='$1'", $key);
+		if(!$res) {
+			$this->_debug("get: ** error: " . $this->_dberror($res) . " **");
 			return false;
 		}
-
-		$this->debug( "get: retrieved data; expiry time is " . $row->exptime );
-		if ( $this->isExpired( $row->exptime ) ) {
-			$this->debug( "get: key has expired, deleting" );
-			try {
-				$db->begin();
-				# Put the expiry time in the WHERE condition to avoid deleting a 
-				# newly-inserted value
-				$db->delete( 'objectcache', 
-					array( 
-						'keyname' => $key,
-						'exptime' => $row->exptime
-					), __METHOD__ );
-				$db->commit();
-			} catch ( DBQueryError $e ) {
-				$this->handleWriteError( $e );
+		if($row=$this->_fetchobject($res)) {
+			$this->_debug("get: retrieved data; exp time is " . $row->exptime);
+			if ( $row->exptime != $this->_maxdatetime() &&
+			  wfTimestamp( TS_UNIX, $row->exptime ) < time() )
+			{
+				$this->_debug("get: key has expired, deleting");
+				$this->delete($key);
+				return false;
 			}
-			return false;
-		}
-		return $this->unserialize( $db->decodeBlob( $row->value ) );
-	}
-
-	public function set( $key, $value, $exptime = 0 ) {
-		$db = $this->getDB();
-		$exptime = intval( $exptime );
-		if ( $exptime < 0 ) $exptime = 0;
-		if ( $exptime == 0 ) {
-			$encExpiry = $this->getMaxDateTime();
+			return $this->_unserialize($this->_blobdecode($row->value));
 		} else {
-			if ( $exptime < 3.16e8 ) # ~10 years
+			$this->_debug('get: no matching rows');
+		}
+		return false;
+	}
+
+	function set($key,$value,$exptime=0) {
+		if ( $this->_readonly() ) {
+			return false;
+		}
+		$exptime = intval($exptime);
+		if($exptime < 0) $exptime = 0;
+		if($exptime == 0) {
+			$exp = $this->_maxdatetime();
+		} else {
+			if($exptime < 3.16e8) # ~10 years
 				$exptime += time();
-			$encExpiry = $db->timestamp( $exptime );
+			$exp = $this->_fromunixtime($exptime);
 		}
-		try {
-			$db->begin();
-			$db->delete( 'objectcache', array( 'keyname' => $key ), __METHOD__ );
-			$db->insert( 'objectcache', 
-				array( 
+		$this->_begin();
+		$this->_query(
+			"DELETE FROM $0 WHERE keyname='$1'", $key );
+		$this->_doinsert($this->getTableName(), array(
 					'keyname' => $key,
-					'value' => $db->encodeBlob( $this->serialize( $value ) ),
-					'exptime' => $encExpiry
-				), __METHOD__ );
-			$db->commit();
-		} catch ( DBQueryError $e ) {
-			$this->handleWriteError( $e );
-			return false;
-		}
-		return true;
+					'value' => $this->_blobencode($this->_serialize($value)),
+					'exptime' => $exp
+				));
+		$this->_commit();
+		return true; /* ? */
 	}
 
-	public function delete( $key, $time = 0 ) {
-		$db = $this->getDB();
-		try {
-			$db->begin();
-			$db->delete( 'objectcache', array( 'keyname' => $key ), __METHOD__ );
-			$db->commit();
-		} catch ( DBQueryError $e ) {
-			$this->handleWriteError( $e );
+	function delete($key,$time=0) {
+		if ( $this->_readonly() ) {
 			return false;
 		}
-		return true;
+		$this->_begin();
+		$this->_query(
+			"DELETE FROM $0 WHERE keyname='$1'", $key );
+		$this->_commit();
+		return true; /* ? */
 	}
 
-	public function incr( $key, $step = 1 ) {
-		$db = $this->getDB();
-		$step = intval( $step );
-
-		try {
-			$db->begin();
-			$row = $db->selectRow( 'objectcache', array( 'value', 'exptime' ),
-				array( 'keyname' => $key ), __METHOD__, array( 'FOR UPDATE' ) );
-			if ( $row === false ) {
-				// Missing
-				$db->commit();
-				return false;
-			}
-			$db->delete( 'objectcache', array( 'keyname' => $key ), __METHOD__ );
-			if ( $this->isExpired( $row->exptime ) ) {
-				// Expired, do not reinsert
-				$db->commit();
-				return false;
-			}
-
-			$oldValue = intval( $this->unserialize( $db->decodeBlob( $row->value ) ) );
-			$newValue = $oldValue + $step;
-			$db->insert( 'objectcache',
-				array(
-					'keyname' => $key,
-					'value' => $db->encodeBlob( $this->serialize( $newValue ) ),
-					'exptime' => $row->exptime
-				), __METHOD__ );
-			$db->commit();
-		} catch ( DBQueryError $e ) {
-			$this->handleWriteError( $e );
-			return false;
+	function keys() {
+		$res = $this->_query( "SELECT keyname FROM $0" );
+		if(!$res) {
+			$this->_debug("keys: ** error: " . $this->_dberror($res) . " **");
+			return array();
 		}
-		return $newValue;
-	}
-
-	public function keys() {
-		$db = $this->getDB();
-		$res = $db->select( 'objectcache', array( 'keyname' ), false, __METHOD__ );	
 		$result = array();
-		foreach ( $res as $row ) {
+		while( $row = $this->_fetchobject($res) ) {
 			$result[] = $row->keyname;
 		}
 		return $result;
 	}
 
-	protected function isExpired( $exptime ) {
-		return $exptime != $this->getMaxDateTime() && wfTimestamp( TS_UNIX, $exptime ) < time();
+	function getTableName() {
+		return $this->table;
 	}
 
-	protected function getMaxDateTime() {
-		if ( time() > 0x7fffffff ) {
-			return $this->getDB()->timestamp( 1 << 62 );
-		} else {
-			return $this->getDB()->timestamp( 0x7fffffff );
+	function _query($sql) {
+		$reps = func_get_args();
+		$reps[0] = $this->getTableName();
+		// ewwww
+		for($i=0;$i<count($reps);$i++) {
+			$sql = str_replace(
+				'$' . $i,
+				$i > 0 ? $this->_strencode($reps[$i]) : $reps[$i],
+				$sql);
 		}
+		$res = $this->_doquery($sql);
+		if($res == false) {
+			$this->_debug('query failed: ' . $this->_dberror($res));
+		}
+		return $res;
 	}
 
-	protected function garbageCollect() {
+	function _strencode($str) {
+		/* Protect strings in SQL */
+		return str_replace( "'", "''", $str );
+	}
+	function _blobencode($str) {
+		return $str;
+	}
+	function _blobdecode($str) {
+		return $str;
+	}
+
+	abstract function _doinsert($table, $vals);
+	abstract function _doquery($sql);
+
+	abstract function _readonly();
+
+	function _begin() {}
+	function _commit() {}
+
+	function _freeresult($result) {
+		/* stub */
+		return false;
+	}
+
+	function _dberror($result) {
+		/* stub */
+		return 'unknown error';
+	}
+
+	abstract function _maxdatetime();
+	abstract function _fromunixtime($ts);
+
+	function garbageCollect() {
 		/* Ignore 99% of requests */
 		if ( !mt_rand( 0, 100 ) ) {
-			$now = time();
+			$nowtime = time();
 			/* Avoid repeating the delete within a few seconds */
-			if ( $now > ( $this->lastExpireAll + 1 ) ) {
-				$this->lastExpireAll = $now;
-				$this->expireAll();
+			if ( $nowtime > ($this->lastexpireall + 1) ) {
+				$this->lastexpireall = $nowtime;
+				$this->expireall();
 			}
 		}
 	}
 
-	public function expireAll() {
-		$db = $this->getDB();
-		$now = $db->timestamp();
-		try {
-			$db->begin();
-			$db->delete( 'objectcache', array( 'exptime < ' . $db->addQuotes( $now ) ), __METHOD__ );
-			$db->commit();
-		} catch ( DBQueryError $e ) {
-			$this->handleWriteError( $e );
+	function expireall() {
+		/* Remove any items that have expired */
+		if ( $this->_readonly() ) {
+			return false;
 		}
+		$now = $this->_fromunixtime( time() );
+		$this->_begin();
+		$this->_query( "DELETE FROM $0 WHERE exptime < '$now'" );
+		$this->_commit();
 	}
 
-	public function deleteAll() {
-		$db = $this->getDB();
-		try {
-			$db->begin();
-			$db->delete( 'objectcache', '*', __METHOD__ );
-			$db->commit();
-		} catch ( DBQueryError $e ) {
-			$this->handleWriteError( $e );
+	function deleteall() {
+		/* Clear *all* items from cache table */
+		if ( $this->_readonly() ) {
+			return false;
 		}
+		$this->_begin();
+		$this->_query( "DELETE FROM $0" );
+		$this->_commit();
 	}
 
 	/**
@@ -403,9 +401,9 @@ class SqlBagOStuff extends BagOStuff {
 	 * @param $data mixed
 	 * @return string
 	 */
-	protected function serialize( &$data ) {
+	function _serialize( &$data ) {
 		$serial = serialize( $data );
-		if ( function_exists( 'gzdeflate' ) ) {
+		if( function_exists( 'gzdeflate' ) ) {
 			return gzdeflate( $serial );
 		} else {
 			return $serial;
@@ -417,39 +415,102 @@ class SqlBagOStuff extends BagOStuff {
 	 * @param $serial string
 	 * @return mixed
 	 */
-	protected function unserialize( $serial ) {
-		if ( function_exists( 'gzinflate' ) ) {
+	function _unserialize( $serial ) {
+		if( function_exists( 'gzinflate' ) ) {
 			$decomp = @gzinflate( $serial );
-			if ( false !== $decomp ) {
+			if( false !== $decomp ) {
 				$serial = $decomp;
 			}
 		}
 		$ret = unserialize( $serial );
 		return $ret;
 	}
-
-	/**
-	 * Handle a DBQueryError which occurred during a write operation.
-	 * Ignore errors which are due to a read-only database, rethrow others.
-	 */
-	protected function handleWriteError( $exception ) {
-		$db = $this->getDB();
-		if ( !$db->wasReadOnlyError() ) {
-			throw $exception;
-		}
-		try {
-			$db->rollback();
-		} catch ( DBQueryError $e ) {
-		}
-		wfDebug( __METHOD__ . ": ignoring query error\n" );
-		$db->ignoreErrors( false );
-	}
 }
 
 /**
- * Backwards compatibility alias
+ * Stores objects in the main database of the wiki
+ *
+ * @ingroup Cache
  */
-class MediaWikiBagOStuff extends SqlBagOStuff {}
+class MediaWikiBagOStuff extends SqlBagOStuff {
+	var $tableInitialised = false;
+	var $lb, $db;
+
+	function _getDB(){
+		if ( !isset( $this->lb ) ) {
+			$this->lb = wfGetLBFactory()->newMainLB();
+			$this->db = $this->lb->getConnection( DB_MASTER );
+			$this->db->clearFlag( DBO_TRX );
+		}
+		return $this->db;
+	}
+	function _begin() {
+		$this->_getDB()->begin();
+	}
+	function _commit() {
+		$this->_getDB()->commit();
+	}
+	function _doquery($sql) {
+		return $this->_getDB()->query( $sql, __METHOD__ );
+	}
+	function _doinsert($t, $v) {
+		return $this->_getDB()->insert($t, $v, __METHOD__, array( 'IGNORE' ) );
+	}
+	function _fetchobject($result) {
+		return $this->_getDB()->fetchObject($result);
+	}
+	function _freeresult($result) {
+		return $this->_getDB()->freeResult($result);
+	}
+	function _dberror($result) {
+		return $this->_getDB()->lastError();
+	}
+	function _maxdatetime() {
+		if ( time() > 0x7fffffff ) {
+			return $this->_fromunixtime( 1<<62 );
+		} else {
+			return $this->_fromunixtime( 0x7fffffff );
+		}
+	}
+	function _fromunixtime($ts) {
+		return $this->_getDB()->timestamp($ts);
+	}
+	/***
+	 * Note -- this should *not* check wfReadOnly().
+	 * Read-only mode has been repurposed from the original
+	 * "nothing must write to the database" to "users should not
+	 * be able to edit or alter anything user-visible".
+	 *
+	 * Backend bits like the object cache should continue
+	 * to work in this mode, otherwise things will blow up
+	 * like the message cache failing to save its state,
+	 * causing long delays (bug 11533).
+	 */
+	function _readonly(){
+		return false;
+	}
+	function _strencode($s) {
+		return $this->_getDB()->strencode($s);
+	}
+	function _blobencode($s) {
+		return $this->_getDB()->encodeBlob($s);
+	}
+	function _blobdecode($s) {
+		return $this->_getDB()->decodeBlob($s);
+	}
+	function getTableName() {
+		if ( !$this->tableInitialised ) {
+			$dbw = $this->_getDB();
+			/* This is actually a hack, we should be able
+			   to use Language classes here... or not */
+			if (!$dbw)
+				throw new MWException("Could not connect to database");
+			$this->table = $dbw->tableName( $this->table );
+			$this->tableInitialised = true;
+		}
+		return $this->table;
+	}
+}
 
 /**
  * This is a wrapper for Turck MMCache's shared memory functions.
@@ -467,7 +528,7 @@ class MediaWikiBagOStuff extends SqlBagOStuff {}
  * @ingroup Cache
  */
 class TurckBagOStuff extends BagOStuff {
-	public function get( $key ) {
+	function get($key) {
 		$val = mmcache_get( $key );
 		if ( is_string( $val ) ) {
 			$val = unserialize( $val );
@@ -475,22 +536,22 @@ class TurckBagOStuff extends BagOStuff {
 		return $val;
 	}
 
-	public function set( $key, $value, $exptime = 0 ) {
+	function set($key, $value, $exptime=0) {
 		mmcache_put( $key, serialize( $value ), $exptime );
 		return true;
 	}
 
-	public function delete( $key, $time = 0 ) {
+	function delete($key, $time=0) {
 		mmcache_rm( $key );
 		return true;
 	}
 
-	public function lock( $key, $waitTimeout = 0 ) {
+	function lock($key, $waitTimeout = 0 ) {
 		mmcache_lock( $key );
 		return true;
 	}
 
-	public function unlock( $key ) {
+	function unlock($key) {
 		mmcache_unlock( $key );
 		return true;
 	}
@@ -502,21 +563,21 @@ class TurckBagOStuff extends BagOStuff {
  * @ingroup Cache
  */
 class APCBagOStuff extends BagOStuff {
-	public function get( $key ) {
-		$val = apc_fetch( $key );
+	function get($key) {
+		$val = apc_fetch($key);
 		if ( is_string( $val ) ) {
 			$val = unserialize( $val );
 		}
 		return $val;
 	}
 
-	public function set( $key, $value, $exptime = 0 ) {
-		apc_store( $key, serialize( $value ), $exptime );
+	function set($key, $value, $exptime=0) {
+		apc_store($key, serialize($value), $exptime);
 		return true;
 	}
 
-	public function delete( $key, $time = 0 ) {
-		apc_delete( $key );
+	function delete($key, $time=0) {
+		apc_delete($key);
 		return true;
 	}
 }
@@ -531,7 +592,7 @@ class APCBagOStuff extends BagOStuff {
  * @ingroup Cache
  */
 class eAccelBagOStuff extends BagOStuff {
-	public function get( $key ) {
+	function get($key) {
 		$val = eaccelerator_get( $key );
 		if ( is_string( $val ) ) {
 			$val = unserialize( $val );
@@ -539,22 +600,22 @@ class eAccelBagOStuff extends BagOStuff {
 		return $val;
 	}
 
-	public function set( $key, $value, $exptime = 0 ) {
+	function set($key, $value, $exptime=0) {
 		eaccelerator_put( $key, serialize( $value ), $exptime );
 		return true;
 	}
 
-	public function delete( $key, $time = 0 ) {
+	function delete($key, $time=0) {
 		eaccelerator_rm( $key );
 		return true;
 	}
 
-	public function lock( $key, $waitTimeout = 0 ) {
+	function lock($key, $waitTimeout = 0 ) {
 		eaccelerator_lock( $key );
 		return true;
 	}
 
-	public function unlock( $key ) {
+	function unlock($key) {
 		eaccelerator_unlock( $key );
 		return true;
 	}
@@ -576,7 +637,7 @@ class XCacheBagOStuff extends BagOStuff {
 	 */
 	public function get( $key ) {
 		$val = xcache_get( $key );
-		if ( is_string( $val ) )
+		if( is_string( $val ) )
 			$val = unserialize( $val );
 		return $val;
 	}
@@ -609,24 +670,20 @@ class XCacheBagOStuff extends BagOStuff {
 }
 
 /**
- * Cache that uses DBA as a backend. 
- * Slow due to the need to constantly open and close the file to avoid holding 
- * writer locks. Intended for development use only,  as a memcached workalike 
- * for systems that don't have it.
- *
+ * @todo document
  * @ingroup Cache
  */
 class DBABagOStuff extends BagOStuff {
 	var $mHandler, $mFile, $mReader, $mWriter, $mDisabled;
 
-	public function __construct( $handler = 'db3', $dir = false ) {
+	function __construct( $handler = 'db3', $dir = false ) {
 		if ( $dir === false ) {
 			global $wgTmpDirectory;
 			$dir = $wgTmpDirectory;
 		}
 		$this->mFile = "$dir/mw-cache-" . wfWikiID();
 		$this->mFile .= '.db';
-		wfDebug( __CLASS__ . ": using cache file {$this->mFile}\n" );
+		wfDebug( __CLASS__.": using cache file {$this->mFile}\n" );
 		$this->mHandler = $handler;
 	}
 
@@ -635,7 +692,7 @@ class DBABagOStuff extends BagOStuff {
 	 */
 	function encode( $value, $expiry ) {
 		# Convert to absolute time
-		$expiry = $this->convertExpiry( $expiry );
+		$expiry = BagOStuff::convertExpiry( $expiry );
 		return sprintf( '%010u', intval( $expiry ) ) . ' ' . serialize( $value );
 	}
 
@@ -675,7 +732,7 @@ class DBABagOStuff extends BagOStuff {
 
 	function get( $key ) {
 		wfProfileIn( __METHOD__ );
-		wfDebug( __METHOD__ . "($key)\n" );
+		wfDebug( __METHOD__."($key)\n" );
 		$handle = $this->getReader();
 		if ( !$handle ) {
 			return null;
@@ -690,16 +747,16 @@ class DBABagOStuff extends BagOStuff {
 			$handle = $this->getWriter();
 			dba_delete( $key, $handle );
 			dba_close( $handle );
-			wfDebug( __METHOD__ . ": $key expired\n" );
+			wfDebug( __METHOD__.": $key expired\n" );
 			$val = null;
 		}
 		wfProfileOut( __METHOD__ );
 		return $val;
 	}
 
-	function set( $key, $value, $exptime = 0 ) {
+	function set( $key, $value, $exptime=0 ) {
 		wfProfileIn( __METHOD__ );
-		wfDebug( __METHOD__ . "($key)\n" );
+		wfDebug( __METHOD__."($key)\n" );
 		$blob = $this->encode( $value, $exptime );
 		$handle = $this->getWriter();
 		if ( !$handle ) {
@@ -713,7 +770,7 @@ class DBABagOStuff extends BagOStuff {
 
 	function delete( $key, $time = 0 ) {
 		wfProfileIn( __METHOD__ );
-		wfDebug( __METHOD__ . "($key)\n" );
+		wfDebug( __METHOD__."($key)\n" );
 		$handle = $this->getWriter();
 		if ( !$handle ) {
 			return false;
@@ -751,11 +808,11 @@ class DBABagOStuff extends BagOStuff {
 	function keys() {
 		$reader = $this->getReader();
 		$k1 = dba_firstkey( $reader );
-		if ( !$k1 ) {
+		if( !$k1 ) {
 			return array();
 		}
 		$result[] = $k1;
-		while ( $key = dba_nextkey( $reader ) ) {
+		while( $key = dba_nextkey( $reader ) ) {
 			$result[] = $key;
 		}
 		return $result;

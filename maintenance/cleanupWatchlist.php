@@ -24,34 +24,40 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @author Brion Vibber <brion at pobox.com>
  * @ingroup Maintenance
  */
 
-require_once( dirname(__FILE__) . '/cleanupTable.inc' );
+require_once( 'commandLine.inc' );
+require_once( 'cleanupTable.inc' );
 
+/**
+ * @ingroup Maintenance
+ */
 class WatchlistCleanup extends TableCleanup {
-	protected $targetTable = 'watchlist';
-	public function __construct() {
-		parent::__construct();
-		$this->mDescription = "Script to remove broken, unparseable titles in the Watchlist";
+	function __construct( $dryrun = false ) {
+		parent::__construct( 'watchlist', $dryrun );
 	}
 
-	protected function processPage( $row ) {
+	function processPage( $row ) {
 		$current = Title::makeTitle( $row->wl_namespace, $row->wl_title );
 		$display = $current->getPrefixedText();
+
 		$verified = UtfNormal::cleanUp( $display );
+
 		$title = Title::newFromText( $verified );
 
 		if( $row->wl_user == 0 || is_null( $title ) || !$title->equals( $current ) ) {
-			$this->output( "invalid watch by {$row->wl_user} for ({$row->wl_namespace}, \"{$row->wl_title}\")\n" );
+			$this->log( "invalid watch by {$row->wl_user} for ({$row->wl_namespace}, \"{$row->wl_title}\")" );
 			$this->removeWatch( $row );
 			return $this->progress( 1 );
 		}
+
 		$this->progress( 0 );
 	}
-
-	private function removeWatch( $row ) {
+	
+	function removeWatch( $row ) {
 		if( !$this->dryrun ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete( 'watchlist', array(
@@ -59,10 +65,13 @@ class WatchlistCleanup extends TableCleanup {
 				'wl_namespace' => $row->wl_namespace,
 				'wl_title'     => $row->wl_title ),
 			__METHOD__ );
-			$this->output( "- removed\n" );
+			$this->log( '- removed' );
 		}
 	}
 }
 
-$maintClass = "WatchlistCleanup";
-require_once( DO_MAINTENANCE );
+$wgUser->setName( 'Conversion script' );
+$caps = new WatchlistCleanup( !isset( $options['fix'] ) );
+$caps->cleanup();
+
+

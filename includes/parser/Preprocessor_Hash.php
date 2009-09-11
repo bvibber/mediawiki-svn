@@ -1139,18 +1139,6 @@ class PPFrame_Hash implements PPFrame {
 		}
 	}
 
-	function getArguments() {
-		return array();
-	}
-
-	function getNumberedArguments() {
-		return array();
-	}
-
-	function getNamedArguments() {
-		return array();
-	}
-
 	/**
 	 * Returns true if there are no arguments in this frame
 	 */
@@ -1186,7 +1174,8 @@ class PPTemplateFrame_Hash extends PPFrame_Hash {
 	var $numberedExpansionCache, $namedExpansionCache;
 
 	function __construct( $preprocessor, $parent = false, $numberedArgs = array(), $namedArgs = array(), $title = false ) {
-		PPFrame_Hash::__construct( $preprocessor );
+		$this->preprocessor = $preprocessor;
+		$this->parser = $preprocessor->parser;
 		$this->parent = $parent;
 		$this->numberedArgs = $numberedArgs;
 		$this->namedArgs = $namedArgs;
@@ -1298,7 +1287,8 @@ class PPCustomFrame_Hash extends PPFrame_Hash {
 	var $args;
 
 	function __construct( $preprocessor, $args ) {
-		PPFrame_Hash::__construct( $preprocessor );
+		$this->preprocessor = $preprocessor;
+		$this->parser = $preprocessor->parser;
 		$this->args = $args;
 	}
 

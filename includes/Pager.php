@@ -50,7 +50,7 @@ interface Pager {
  *      last page depending on the dir parameter.
  *
  *  Subclassing the pager to implement concrete functionality should be fairly
- *  simple, please see the examples in HistoryPage.php and
+ *  simple, please see the examples in PageHistory.php and
  *  SpecialIpblocklist.php. You just need to override formatRow(),
  *  getQueryInfo() and getIndexField(). Don't forget to call the parent
  *  constructor if you override it.
@@ -86,9 +86,6 @@ abstract class IndexPager implements Pager {
 	 */
 	public $mDefaultDirection;
 	public $mIsBackwards;
-
-	/** True if the current result set is the first one */
-	public $mIsFirst;
 
 	/**
 	 * Result object for the query. Warning: seek before use.
@@ -420,14 +417,6 @@ abstract class IndexPager implements Pager {
 		return array( 'prev' => $prev, 'next' => $next, 'first' => $first, 'last' => $last );
 	}
 
-	function isNavigationBarShown() {
-		if ( !$this->mQueryDone ) {
-			$this->doQuery();
-		}
-		// Hide navigation by default if there is nothing to page
-		return !($this->mIsFirst && $this->mIsLast);
-	}
-
 	/**
 	 * Get paging links. If a link is disabled, the item from $disabledTexts
 	 * will be used. If there is no such item, the unlinked text from
@@ -528,8 +517,6 @@ abstract class AlphabeticPager extends IndexPager {
 	function getNavigationBar() {
 		global $wgLang;
 
-		if ( !$this->isNavigationBarShown() ) return '';
-
 		if( isset( $this->mNavigationBar ) ) {
 			return $this->mNavigationBar;
 		}
@@ -610,8 +597,6 @@ abstract class ReverseChronologicalPager extends IndexPager {
 
 	function getNavigationBar() {
 		global $wgLang;
-
-		if ( !$this->isNavigationBarShown() ) return '';
 
 		if ( isset( $this->mNavigationBar ) ) {
 			return $this->mNavigationBar;
@@ -826,9 +811,6 @@ abstract class TablePager extends IndexPager {
 	 */
 	function getNavigationBar() {
 		global $wgStylePath, $wgContLang;
-
-		if ( !$this->isNavigationBarShown() ) return '';
-
 		$path = "$wgStylePath/common/images";
 		$labels = array(
 			'first' => 'table_pager_first',
@@ -837,22 +819,17 @@ abstract class TablePager extends IndexPager {
 			'last' => 'table_pager_last',
 		);
 		$images = array(
-			'first' => 'arrow_first_25.png',
-			'prev' => 'arrow_left_25.png',
-			'next' => 'arrow_right_25.png',
-			'last' => 'arrow_last_25.png',
+			'first' => $wgContLang->isRTL() ? 'arrow_last_25.png' : 'arrow_first_25.png',
+			'prev' =>  $wgContLang->isRTL() ? 'arrow_right_25.png' : 'arrow_left_25.png',
+			'next' =>  $wgContLang->isRTL() ? 'arrow_left_25.png' : 'arrow_right_25.png',
+			'last' =>  $wgContLang->isRTL() ? 'arrow_first_25.png' : 'arrow_last_25.png',
 		);
 		$disabledImages = array(
-			'first' => 'arrow_disabled_first_25.png',
-			'prev' => 'arrow_disabled_left_25.png',
-			'next' => 'arrow_disabled_right_25.png',
-			'last' => 'arrow_disabled_last_25.png',
+			'first' => $wgContLang->isRTL() ? 'arrow_disabled_last_25.png' : 'arrow_disabled_first_25.png',
+			'prev' =>  $wgContLang->isRTL() ? 'arrow_disabled_right_25.png' : 'arrow_disabled_left_25.png',
+			'next' =>  $wgContLang->isRTL() ? 'arrow_disabled_left_25.png' : 'arrow_disabled_right_25.png',
+			'last' =>  $wgContLang->isRTL() ? 'arrow_disabled_first_25.png' : 'arrow_disabled_last_25.png',
 		);
-		if( $wgContLang->isRTL() ) {
-			$keys = array_keys( $labels );
-			$images = array_combine( $keys, array_reverse( $images ) );
-			$disabledImages = array_combine( $keys, array_reverse( $disabledImages ) );
-		}
 
 		$linkTexts = array();
 		$disabledTexts = array();
@@ -879,19 +856,10 @@ abstract class TablePager extends IndexPager {
 	function getLimitSelect() {
 		global $wgLang;
 		$s = "<select name=\"limit\">";
-		foreach ( $this->mLimitsShown as $key => $value ) {
-			# The pair is either $index => $limit, in which case the $value
-			# will be numeric, or $limit => $text, in which case the $value
-			# will be a string.
-			if( is_int( $value ) ){
-				$limit = $value;
-				$text = $wgLang->formatNum( $limit );
-			} else {
-				$limit = $key;
-				$text = $value;
-			}
-			$selected = ( $limit == $this->mLimit ? 'selected="selected"' : '' );
-			$s .= "<option value=\"$limit\" $selected>$text</option>\n";
+		foreach ( $this->mLimitsShown as $limit ) {
+			$selected = $limit == $this->mLimit ? 'selected="selected"' : '';
+			$formattedLimit = $wgLang->formatNum( $limit );
+			$s .= "<option value=\"$limit\" $selected>$formattedLimit</option>\n";
 		}
 		$s .= "</select>";
 		return $s;
@@ -921,15 +889,14 @@ abstract class TablePager extends IndexPager {
 	 * Get a form containing a limit selection dropdown
 	 */
 	function getLimitForm() {
-		global $wgScript;
-
 		# Make the select with some explanatory text
+		$url = $this->getTitle()->escapeLocalURL();
 		$msgSubmit = wfMsgHtml( 'table_pager_limit_submit' );
 		return
-			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) . "\n" .		
+			"<form method=\"get\" action=\"$url\">" .
 			wfMsgHtml( 'table_pager_limit', $this->getLimitSelect() ) .
 			"\n<input type=\"submit\" value=\"$msgSubmit\"/>\n" .
-			$this->getHiddenFields( array( 'limit' ) ) .
+			$this->getHiddenFields( array('limit','title') ) .
 			"</form>\n";
 	}
 

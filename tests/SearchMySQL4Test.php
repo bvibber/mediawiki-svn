@@ -4,6 +4,10 @@ require_once( 'SearchEngineTest.php' );
 class SearchMySQL4Test extends SearchEngineTest {
 	var $db;
 
+	function __construct( $name ) {
+		parent::__construct( $name );
+	}
+
 	function setUp() {
 		$GLOBALS['wgContLang'] = new Language;
 		$this->db = $this->buildTestDatabase(

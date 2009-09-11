@@ -96,21 +96,7 @@ class SkinTemplate extends Skin {
 	 */
 	function setupSkinUserCss( OutputPage $out ){
 		$out->addStyle( 'common/shared.css', 'screen' );
-		$out->addStyle( 'common/commonPrint.css', 'print' );
-	}
-
-	/**
-	 * Add specific JavaScript the base Skin class.
-	 * FIXME: not called from anywhere
-	 */
-	function setupSkinUserJs( OutputPage $out ) {
-		global $wgUseSiteJs;
-		if( $wgUseSiteJs ) {
-			$jsCache = $this->loggedin ? '&smaxage=0' : '';
-			$siteGenScriptFile = self::makeUrl( '-',
-				"action=raw$jsCache&gen=js&useskin=" . urlencode( $this->getSkinName() ) );
-			$this->jsvarurl = $siteGenScriptFile;
-		}
+		$out->addStyle( 'common/commonPrint.css', 'print' );	
 	}
 
 	/**
@@ -250,12 +236,13 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'jsmimetype', $wgJsMimeType );
 		$tpl->setRef( 'charset', $wgOutputEncoding );
 		$tpl->set( 'headlinks', $out->getHeadLinks() );
+		$tpl->set( 'headscripts', $out->getScript() );
 		$tpl->set( 'csslinks', $out->buildCssLinks() );
 		$tpl->setRef( 'wgScript', $wgScript );
 		$tpl->setRef( 'skinname', $this->skinname );
 		$tpl->set( 'skinclass', get_class( $this ) );
 		$tpl->setRef( 'stylename', $this->stylename );
-		$tpl->set( 'printable', $out->isPrintable() );
+		$tpl->set( 'printable', $wgRequest->getBool( 'printable' ) );
 		$tpl->set( 'handheld', $wgRequest->getBool( 'handheld' ) );
 		$tpl->setRef( 'loggedin', $this->loggedin );
 		$tpl->set( 'notspecialpage', $this->mTitle->getNamespace() != NS_SPECIAL );
@@ -275,7 +262,7 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
 		$tpl->setRef( 'lang', $wgContLanguageCode );
-		$tpl->set( 'dir', $wgContLang->getDir() );
+		$tpl->set( 'dir', $wgContLang->isRTL() ? 'rtl' : 'ltr' );
 		$tpl->set( 'rtl', $wgContLang->isRTL() );
 		$tpl->set( 'capitalizeallnouns', $wgLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
@@ -331,7 +318,6 @@ class SkinTemplate extends Skin {
 				$out->setSquidMaxage( 0 );
 			}
 		} else if( count( $newtalks ) ) {
-			// _>" " for BC <= 1.16
 			$sep = str_replace( '_', ' ', wfMsgHtml( 'newtalkseparator' ) );
 			$msgs = array();
 			foreach( $newtalks as $newtalk ) {
@@ -470,9 +456,6 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'body_onload', false );
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
-
-		// Set the head scripts near the end, in case the above actions resulted in added scripts
-		$tpl->set( 'headscripts', $out->getScript() );
 
 		// original version by hansm
 		if( !wfRunHooks( 'SkinTemplateOutputPageBeforeExec', array( &$this, &$tpl ) ) ) {
@@ -615,7 +598,7 @@ class SkinTemplate extends Skin {
 				);
 			}
 		}
-
+		
 		wfRunHooks( 'PersonalUrls', array( &$personal_urls, &$title ) );
 		wfProfileOut( __METHOD__ );
 		return $personal_urls;
@@ -722,16 +705,16 @@ class SkinTemplate extends Skin {
 					'href' => $this->mTitle->getLocalUrl( $this->editUrlOptions() )
 				);
 
-				// adds new section link if page is a current revision of a talk page or
+				// adds new section link if page is a current revision of a talk page or 
 				if ( ( $wgArticle && $wgArticle->isCurrent() && $istalk ) || $wgOut->showNewSectionLink() ) {
 					if ( !$wgOut->forceHideNewSectionLink() ) {
 						$content_actions['addsection'] = array(
 							'class' => $section == 'new' ? 'selected' : false,
 							'text' => wfMsg( 'addsection' ),
 							'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
-						);
+						);					
 					}
-				}
+				}  
 			} elseif ( $this->mTitle->isKnown() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
@@ -903,12 +886,10 @@ class SkinTemplate extends Skin {
 		// A print stylesheet is attached to all pages, but nobody ever
 		// figures that out. :)  Add a link...
 		if( $this->iscontent && ( $action == 'view' || $action == 'purge' ) ) {
-			if ( !$wgOut->isPrintable() ) {
-				$nav_urls['print'] = array(
-					'text' => wfMsg( 'printableversion' ),
-					'href' => $wgRequest->appendQuery( 'printable=yes' )
-				);
-			}
+			$nav_urls['print'] = array(
+				'text' => wfMsg( 'printableversion' ),
+				'href' => $wgRequest->appendQuery( 'printable=yes' )
+			);
 
 			// Also add a "permalink" while we're at it
 			if ( $this->mRevisionId ) {
@@ -1004,6 +985,7 @@ class SkinTemplate extends Skin {
 	 */
 	function setupUserJs( $allowUserJs ) {
 		global $wgRequest, $wgJsMimeType;
+
 		wfProfileIn( __METHOD__ );
 
 		$action = $wgRequest->getVal( 'action', 'view' );
@@ -1032,10 +1014,6 @@ class SkinTemplate extends Skin {
 		wfProfileOut( __METHOD__ );
 		return $out;
 	}
-
-	public function commonPrintStylesheet() {
-		return false;
-	}
 }
 
 /**
@@ -1043,7 +1021,7 @@ class SkinTemplate extends Skin {
  * compatible with what we use of PHPTAL 0.7.
  * @ingroup Skins
  */
-abstract class QuickTemplate {
+class QuickTemplate {
 	/**
 	 * Constructor
 	 */
@@ -1080,7 +1058,9 @@ abstract class QuickTemplate {
 	 * Main function, used by classes that subclass QuickTemplate
 	 * to show the actual HTML output
 	 */
-	abstract public function execute();
+	public function execute() {
+		echo 'Override this function.';
+	}
 
 	/**
 	 * @private

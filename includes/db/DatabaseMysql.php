@@ -289,95 +289,10 @@ class DatabaseMysql extends DatabaseBase {
 		return '[http://www.mysql.com/ MySQL]';
 	}
 
-	function standardSelectDistinct() {
-		return false;
-	}
-
 	public function setTimeout( $timeout ) {
 		$this->query( "SET net_read_timeout=$timeout" );
 		$this->query( "SET net_write_timeout=$timeout" );
 	}
-
-	public function lock( $lockName, $method, $timeout = 5 ) {
-		$lockName = $this->addQuotes( $lockName );
-		$result = $this->query( "SELECT GET_LOCK($lockName, $timeout) AS lockstatus", $method );
-		$row = $this->fetchObject( $result );
-		$this->freeResult( $result );
-
-		if( $row->lockstatus == 1 ) {
-			return true;
-		} else {
-			wfDebug( __METHOD__." failed to acquire lock\n" );
-			return false;
-		}
-	}
-
-	public function unlock( $lockName, $method ) {
-		$lockName = $this->addQuotes( $lockName );
-		$result = $this->query( "SELECT RELEASE_LOCK($lockName) as lockstatus", $method );
-		$row = $this->fetchObject( $result );
-		return $row->lockstatus;
-	}
-
-	public function lockTables( $read, $write, $method, $lowPriority = true ) {
-		$items = array();
-
-		foreach( $write as $table ) {
-			$tbl = $this->tableName( $table ) . 
-					$lowPriority ? ' LOW_PRIORITY' : '' . 
-					' WRITE';
-			$items[] = $tbl;
-		}
-		foreach( $read as $table ) {
-			$items[] = $this->tableName( $table ) . ' READ';
-		}
-		$sql = "LOCK TABLES " . implode( ',', $items );
-		$this->query( $sql, $method );
-	}
-
-	public function unlockTables( $method ) {
-		$this->query( "UNLOCK TABLES", $method );
-	}
-	
-	public function setBigSelects( $value = true ) {
-		if ( $value === 'default' ) {
-			if ( $this->mDefaultBigSelects === null ) {
-				# Function hasn't been called before so it must already be set to the default
-				return;
-			} else {
-				$value = $this->mDefaultBigSelects;
-			}
-		} elseif ( $this->mDefaultBigSelects === null ) {
-			$this->mDefaultBigSelects = (bool)$this->selectField( false, '@@sql_big_selects' );
-		}
-		$encValue = $value ? '1' : '0';
-		$this->query( "SET sql_big_selects=$encValue", __METHOD__ );
-	}
-
-	
-	/**
-	 * Determines if the last failure was due to a deadlock
-	 */
-	function wasDeadlock() {
-		return $this->lastErrno() == 1213;
-	}
-
-	/**
-	 * Determines if the last query error was something that should be dealt 
-	 * with by pinging the connection and reissuing the query
-	 */
-	function wasErrorReissuable() {
-		return $this->lastErrno() == 2013 || $this->lastErrno() == 2006;
-	}
-
-	/**
-	 * Determines if the last failure was due to the database being read-only.
-	 */
-	function wasReadOnlyError() {
-		return $this->lastErrno() == 1223 || 
-			( $this->lastErrno() == 1290 && strpos( $this->lastError(), '--read-only' ) !== false );
-	}
-
 }
 
 /**

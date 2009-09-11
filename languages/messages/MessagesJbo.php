@@ -85,6 +85,7 @@ $messages = array(
 'aboutsite'            => 'About {{SITENAME}}',
 'aboutpage'            => 'Project:About',
 'copyright'            => "lo selvau cu gubni ja'i la'o gy. $1 .gy.",
+'copyrightpagename'    => "{{SITENAME}} fukyzifpo'e",
 'copyrightpage'        => "{{ns:project}}:fukyzifpo'e",
 'currentevents'        => "caca'a fasnu",
 'currentevents-url'    => "Project:caca'a fasnu",

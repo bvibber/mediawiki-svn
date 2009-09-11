@@ -193,14 +193,6 @@ abstract class DatabaseBase {
 	}
 
 	/**
-	 * Returns true if this database requires that SELECT DISTINCT queries require that all 
-       ORDER BY expressions occur in the SELECT list per the SQL92 standard
-	 */
-	function standardSelectDistinct() {
-		return true;
-	}
-
-	/**
 	 * Returns true if this database can do a native search on IP columns
 	 * e.g. this works as expected: .. WHERE rc_ip = '127.42.12.102/32';
 	 */
@@ -234,37 +226,14 @@ abstract class DatabaseBase {
 	 */
 	function isOpen() { return $this->mOpened; }
 
-	/**
-	 * Set a flag for this connection
-	 *
-	 * @param $flag Integer: DBO_* constants from Defines.php:
-	 *   - DBO_DEBUG: output some debug info (same as debug())
-	 *   - DBO_NOBUFFER: don't buffer results (inverse of bufferResults())
-	 *   - DBO_IGNORE: ignore errors (same as ignoreErrors())
-	 *   - DBO_TRX: automatically start transactions
-	 *   - DBO_DEFAULT: automatically sets DBO_TRX if not in command line mode
-	 *       and removes it in command line mode
-	 *   - DBO_PERSISTENT: use persistant database connection 
-	 */
 	function setFlag( $flag ) {
 		$this->mFlags |= $flag;
 	}
 
-	/**
-	 * Clear a flag for this connection
-	 *
-	 * @param $flag: same as setFlag()'s $flag param
-	 */
 	function clearFlag( $flag ) {
 		$this->mFlags &= ~$flag;
 	}
 
-	/**
-	 * Returns a boolean whether the flag $flag is set for this connection
-	 *
-	 * @param $flag: same as setFlag()'s $flag param
-	 * @return Boolean
-	 */
 	function getFlag( $flag ) {
 		return !!($this->mFlags & $flag);
 	}
@@ -964,24 +933,27 @@ abstract class DatabaseBase {
 	 * Returns estimated count, based on EXPLAIN output
 	 * Takes same arguments as Database::select()
 	 */
-	public function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
-		$options['EXPLAIN'] = true;
-		$res = $this->select( $table, $vars, $conds, $fname, $options );
+	
+	function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
+		$options['EXPLAIN']=true;
+		$res = $this->select ($table, $vars, $conds, $fname, $options );
 		if ( $res === false )
 			return false;
-		if ( !$this->numRows( $res ) ) {
+		if (!$this->numRows($res)) {
 			$this->freeResult($res);
 			return 0;
 		}
-
-		$rows = 1;
+		
+		$rows=1;
+	
 		while( $plan = $this->fetchObject( $res ) ) {
-			$rows *= $plan->rows > 0 ? $plan->rows : 1; // avoid resetting to zero
+			$rows *= ($plan->rows > 0)?$plan->rows:1; // avoid resetting to zero
 		}
-
+		
 		$this->freeResult($res);
 		return $rows;		
 	}
+	
 
 	/**
 	 * Removes most variables from an SQL query and replaces them with X or N for numbers.
@@ -1493,9 +1465,9 @@ abstract class DatabaseBase {
 	 * Escape string for safe LIKE usage
 	 */
 	function escapeLike( $s ) {
-		$s = str_replace( '\\', '\\\\', $s );
-		$s = $this->strencode( $s );
-		$s = str_replace( array( '%', '_' ), array( '\%', '\_' ), $s );
+		$s=str_replace('\\','\\\\',$s);
+		$s=$this->strencode( $s );
+		$s=str_replace(array('%','_'),array('\%','\_'),$s);
 		return $s;
 	}
 
@@ -1735,27 +1707,17 @@ abstract class DatabaseBase {
 
 	/**
 	 * Determines if the last failure was due to a deadlock
-	 * STUB
 	 */
 	function wasDeadlock() {
-		return false;
+		return $this->lastErrno() == 1213;
 	}
 
 	/**
 	 * Determines if the last query error was something that should be dealt 
-	 * with by pinging the connection and reissuing the query.
-	 * STUB
+	 * with by pinging the connection and reissuing the query
 	 */
 	function wasErrorReissuable() {
-		return false;
-	}
-
-	/**
-	 * Determines if the last failure was due to the database being read-only.
-	 * STUB
-	 */
-	function wasReadOnlyError() {
-		return false;
+		return $this->lastErrno() == 2013 || $this->lastErrno() == 2006;
 	}
 
 	/**
@@ -1981,12 +1943,14 @@ abstract class DatabaseBase {
 	/**
 	 * Returns a wikitext link to the DB's website, e.g.,
 	 *     return "[http://www.mysql.com/ MySQL]";
-	 * Should at least contain plain text, if for some reason
-	 * your database has no website.
+	 * Should probably be overridden to at least contain plain text, if for
+	 * some reason your database has no website.
 	 *
 	 * @return String: wikitext of a link to the server software's web site
 	 */
-	abstract function getSoftwareLink();
+	function getSoftwareLink() {
+		return '(no software link given)';
+	}
 
 	/**
 	 * A string describing the current software version, like from
@@ -2029,10 +1993,7 @@ abstract class DatabaseBase {
 				$row->State != 'Connecting to master' && 
 				$row->State != 'Queueing master event to the relay log' &&
 				$row->State != 'Waiting for master update' &&
-				$row->State != 'Requesting binlog dump' && 
-				$row->State != 'Waiting to reconnect after a failed master event read' &&
-				$row->State != 'Reconnecting after a failed master event read' &&
-				$row->State != 'Registering slave on master'
+				$row->State != 'Requesting binlog dump'
 				) {
 				# This is it, return the time (except -ve)
 				if ( $row->Time > 0x7fffffff ) {
@@ -2097,23 +2058,6 @@ abstract class DatabaseBase {
 		$error = $this->sourceStream( $fp, $lineCallback, $resultCallback );
 		fclose( $fp );
 		return $error;
-	}
-
-	/**
-	 * Get the full path of a patch file. Originally based on archive()
-	 * from updaters.inc. Keep in mind this always returns a patch, as 
-	 * it fails back to MySQL if no DB-specific patch can be found
-	 *
-	 * @param $patch String The name of the patch, like patch-something.sql
-	 * @return String Full path to patch file
-	 */
-	public static function patchPath( $patch ) {
-		global $wgDBtype, $IP;
-		if ( file_exists( "$IP/maintenance/$wgDBtype/archives/$name" ) ) {
-			return "$IP/maintenance/$wgDBtype/archives/$name";
-		} else {
-			return "$IP/maintenance/archives/$name";
-		}
 	}
 
 	/**
@@ -2224,17 +2168,15 @@ abstract class DatabaseBase {
 		return $this->indexName( $matches[1] );
 	}
 
-	/**
+	/*
 	 * Build a concatenation list to feed into a SQL query
-	 * @param $stringList Array: list of raw SQL expressions; caller is responsible for any quoting
-	 * @return String
-	 */
+	*/
 	function buildConcat( $stringList ) {
 		return 'CONCAT(' . implode( ',', $stringList ) . ')';
 	}
 	
 	/**
-	 * Acquire a named lock
+	 * Acquire a lock
 	 * 
 	 * Abstracted from Filestore::lock() so child classes can implement for
 	 * their own needs.
@@ -2243,44 +2185,32 @@ abstract class DatabaseBase {
 	 * @param $method String: Name of method calling us
 	 * @return bool
 	 */
-	public function lock( $lockName, $method, $timeout = 5 ) {
-		return true;
-	}
+	public function lock( $lockName, $method ) {
+		$lockName = $this->addQuotes( $lockName );
+		$result = $this->query( "SELECT GET_LOCK($lockName, 5) AS lockstatus", $method );
+		$row = $this->fetchObject( $result );
+		$this->freeResult( $result );
 
+		if( $row->lockstatus == 1 ) {
+			return true;
+		} else {
+			wfDebug( __METHOD__." failed to acquire lock\n" );
+			return false;
+		}
+	}
 	/**
 	 * Release a lock.
 	 * 
+	 * @todo fixme - Figure out a way to return a bool
+	 * based on successful lock release.
+	 * 
 	 * @param $lockName String: Name of lock to release
 	 * @param $method String: Name of method calling us
-	 *
-	 * FROM MYSQL DOCS: http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_release-lock
-	 * @return Returns 1 if the lock was released, 0 if the lock was not established
-	 * by this thread (in which case the lock is not released), and NULL if the named 
-	 * lock did not exist
 	 */
 	public function unlock( $lockName, $method ) {
-		return true;
-	}
-
-	/**
-	 * Lock specific tables
-	 *
-	 * @param $read Array of tables to lock for read access
-	 * @param $write Array of tables to lock for write access
-	 * @param $method String name of caller
-	 * @param $lowPriority bool Whether to indicate writes to be LOW PRIORITY
-	 */
-	public function lockTables( $read, $write, $method, $lowPriority = true ) {
-		return true;
-	}
-	
-	/**
-	 * Unlock specific tables
-	 *
-	 * @param $method String the caller
-	 */
-	public function unlockTables( $method ) {
-		return true;
+		$lockName = $this->addQuotes( $lockName );
+		$result = $this->query( "SELECT RELEASE_LOCK($lockName)", $method );
+		$this->freeResult( $result );
 	}
 	
 	/**
@@ -2302,7 +2232,18 @@ abstract class DatabaseBase {
 	 * @param mixed $value true for allow, false for deny, or "default" to restore the initial value
 	 */
 	public function setBigSelects( $value = true ) {
-		// no-op
+		if ( $value === 'default' ) {
+			if ( $this->mDefaultBigSelects === null ) {
+				# Function hasn't been called before so it must already be set to the default
+				return;
+			} else {
+				$value = $this->mDefaultBigSelects;
+			}
+		} elseif ( $this->mDefaultBigSelects === null ) {
+			$this->mDefaultBigSelects = (bool)$this->selectField( false, '@@sql_big_selects' );
+		}
+		$encValue = $value ? '1' : '0';
+		$this->query( "SET sql_big_selects=$encValue", __METHOD__ );
 	}
 }
 
@@ -2420,15 +2361,6 @@ class DBError extends MWException {
 		$this->db =& $db;
 		parent::__construct( $error );
 	}
-
-	function getText() {
-		global $wgShowDBErrorBacktrace;
-		$s = $this->getMessage() . "\n";
-		if ( $wgShowDBErrorBacktrace ) {
-			$s .= "Backtrace:\n" . $this->getTraceAsString() . "\n";
-		}
-		return $s;
-	}
 }
 
 /**
@@ -2456,6 +2388,10 @@ class DBConnectionError extends DBError {
 		return false;
 	}
 	
+	function getText() {
+		return $this->getMessage() . "\n";
+	}
+
 	function getLogMessage() {
 		# Don't send to the exception log
 		return false;
@@ -2472,7 +2408,7 @@ class DBConnectionError extends DBError {
 	}
 
 	function getHTML() {
-		global $wgLang, $wgMessageCache, $wgUseFileCache, $wgShowDBErrorBacktrace;
+		global $wgLang, $wgMessageCache, $wgUseFileCache;
 
 		$sorry = 'Sorry! This site is experiencing technical difficulties.';
 		$again = 'Try waiting a few minutes and reloading.';
@@ -2496,9 +2432,12 @@ class DBConnectionError extends DBError {
 		$noconnect = "<p><strong>$sorry</strong><br />$again</p><p><small>$info</small></p>";
 		$text = str_replace( '$1', $this->error, $noconnect );
 
-		if ( $wgShowDBErrorBacktrace ) {
-			$text .= '<p>Backtrace:</p><p>' . nl2br( htmlspecialchars( $this->getTraceAsString() ) );
-		}
+		/*
+		if ( $GLOBALS['wgShowExceptionDetails'] ) {
+			$text .= '</p><p>Backtrace:</p><p>' . 
+				nl2br( htmlspecialchars( $this->getTraceAsString() ) ) . 
+				"</p>\n";
+		}*/
 
 		$extra = $this->searchForm();
 
@@ -2615,16 +2554,11 @@ class DBQueryError extends DBError {
 	}
 
 	function getText() {
-		global $wgShowDBErrorBacktrace;
 		if ( $this->useMessageCache() ) {
-			$s = wfMsg( 'dberrortextcl', htmlspecialchars( $this->getSQL() ),
-				htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) ) . "\n";
-			if ( $wgShowDBErrorBacktrace ) {
-				$s .= "Backtrace:\n" . $this->getTraceAsString() . "\n";
-			}
-			return $s;
+			return wfMsg( 'dberrortextcl', htmlspecialchars( $this->getSQL() ),
+			  htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) ) . "\n";
 		} else {
-			return parent::getText();
+			return $this->getMessage();
 		}
 	}
 	
@@ -2647,17 +2581,12 @@ class DBQueryError extends DBError {
 	}
 
 	function getHTML() {
-		global $wgShowDBErrorBacktrace;
 		if ( $this->useMessageCache() ) {
-			$s = wfMsgNoDB( 'dberrortext', htmlspecialchars( $this->getSQL() ),
+			return wfMsgNoDB( 'dberrortext', htmlspecialchars( $this->getSQL() ),
 			  htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) );
 		} else {
-			$s = nl2br( htmlspecialchars( $this->getMessage() ) );
+			return nl2br( htmlspecialchars( $this->getMessage() ) );
 		}
-		if ( $wgShowDBErrorBacktrace ) {
-			$s .= '<p>Backtrace:</p><p>' . nl2br( htmlspecialchars( $this->getTraceAsString() ) );
-		}
-		return $s;
 	}
 }
 

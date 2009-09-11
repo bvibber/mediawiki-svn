@@ -244,6 +244,7 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} çинчен',
 'aboutpage'            => 'Project:çинчен',
 'copyright'            => 'Ку ăшлăх $1 килĕшӳллĕн сарăлать.',
+'copyrightpagename'    => '{{SITENAME}} проектăн автор прависем',
 'copyrightpage'        => '{{ns:project}}:Автор прависем',
 'currentevents'        => 'Хыпарсем',
 'currentevents-url'    => 'Project:Хыпарсем',
@@ -1030,9 +1031,10 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'export-templates' => 'Шаблонсене ĕçлеттер',
 
 # Namespace 8 related
-'allmessages'        => 'Система пĕлтерĕвĕсем',
-'allmessagesname'    => 'Пĕлтерӳ',
-'allmessagescurrent' => 'Хальхи текст',
+'allmessages'         => 'Система пĕлтерĕвĕсем',
+'allmessagesname'     => 'Пĕлтерӳ',
+'allmessagescurrent'  => 'Хальхи текст',
+'allmessagesmodified' => 'Улăштарнисене кăна кăтартмалла',
 
 # Thumbnails
 'thumbnail-more'           => 'Пысăклатмалли',

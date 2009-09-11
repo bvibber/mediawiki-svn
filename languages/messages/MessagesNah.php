@@ -261,6 +261,7 @@ $messages = array(
 'aboutsite'            => 'Ītechcopa {{SITENAME}}',
 'aboutpage'            => 'Project:Ītechcopa',
 'copyright'            => 'Tlahcuilōltzin cah yōllōxoxouhqui īpan $1',
+'copyrightpagename'    => '{{SITENAME}} copyright',
 'copyrightpage'        => '{{ns:project}}:Tlachīhualōni ītlapiyaliz',
 'currentevents'        => 'Āxcāncāyōtl',
 'currentevents-url'    => 'Project:Āxcāncāyōtl',
@@ -533,22 +534,21 @@ Hueliz ōmopolo huiqui nozo ōmozacac.
 [[Special:Search|Xitēmoa huiquipan]] yancuīc huēyi zāzaniltin.',
 
 # Revision deletion
-'rev-delundel'              => 'tiquittāz/tictlātīz',
-'revisiondelete'            => 'Tiquimpolōz/ahtiquimpolōz tlachiyaliztli',
-'revdelete-selected'        => "'''{{PLURAL:$2|Tlachiyaliztli ōmoēlēhui|Tlachiyaliztli ōmoēlēhuih}} [[:$1]] ītechcopa:'''",
-'revdelete-hide-text'       => 'Tictlātīz tlachiyaliztli ītlahcuilōl',
-'revdelete-hide-image'      => 'Tictlātīz tlahcuilōlli ītlapiyaliz',
-'revdel-restore'            => 'Ticpatlāz tlattaliztli',
-'pagehist'                  => 'Zāzanilli tlahcuilōlloh',
-'deletedhist'               => 'Ōtlapolo tlahcuilōlloh',
-'revdelete-content'         => 'tlapiyaliztli',
-'revdelete-summary'         => 'ticpatlāz tlahcuilōltōn',
-'revdelete-uname'           => 'tlatēquitiltilīltōcāitl',
-'revdelete-hid'             => 'xictlātia $1',
-'revdelete-unhid'           => 'tiquittāz $1',
-'revdelete-log-message'     => '$1 ic $2 {{PLURAL:$2|tlachiyaliztli|tlachiyaliztli}}',
-'logdelete-log-message'     => '$1 īhuīc $2 {{PLURAL:$2|tlachīhualiztli|tlachīhualiztli}}',
-'revdelete-edit-reasonlist' => 'Tiquimpatlāz īxtlamatiliztli tlapoloaliztechcopa',
+'rev-delundel'          => 'tiquittāz/tictlātīz',
+'revisiondelete'        => 'Tiquimpolōz/ahtiquimpolōz tlachiyaliztli',
+'revdelete-selected'    => "'''{{PLURAL:$2|Tlachiyaliztli ōmoēlēhui|Tlachiyaliztli ōmoēlēhuih}} [[:$1]] ītechcopa:'''",
+'revdelete-hide-text'   => 'Tictlātīz tlachiyaliztli ītlahcuilōl',
+'revdelete-hide-image'  => 'Tictlātīz tlahcuilōlli ītlapiyaliz',
+'revdel-restore'        => 'Ticpatlāz tlattaliztli',
+'pagehist'              => 'Zāzanilli tlahcuilōlloh',
+'deletedhist'           => 'Ōtlapolo tlahcuilōlloh',
+'revdelete-content'     => 'tlapiyaliztli',
+'revdelete-summary'     => 'ticpatlāz tlahcuilōltōn',
+'revdelete-uname'       => 'tlatēquitiltilīltōcāitl',
+'revdelete-hid'         => 'xictlātia $1',
+'revdelete-unhid'       => 'tiquittāz $1',
+'revdelete-log-message' => '$1 ic $2 {{PLURAL:$2|tlachiyaliztli|tlachiyaliztli}}',
+'logdelete-log-message' => '$1 īhuīc $2 {{PLURAL:$2|tlachīhualiztli|tlachīhualiztli}}',
 
 # History merging
 'mergehistory-from'           => 'Zāzanilhuīcpa:',
@@ -1012,7 +1012,7 @@ Nō xiquitta [[Special:WantedCategories|neneuhcāyōtl monequi]].',
 'enotif_anon_editor'           => 'ahtōcātlatequitiltilīlli $1',
 'enotif_body'                  => 'Mahuizoh $WATCHINGUSERNAME,
 
-{{SITENAME}} zāzanilli "$PAGETITLE" $CHANGEDORCREATED īpal tlatequitiltilīlli $PAGEEDITOR īpan $PAGEEDITDATEANDTIME.
+{{SITENAME}} zāzanilli "$PAGETITLE" $CHANGEDORCREATED īpal tlatequitiltilīlli $PAGEEDITOR īpan $PAGEEDITDATE.
 Āxcān tlachiyaliztli mopiya īpan {{fullurl:$PAGETITLE}}
 
 $NEWPAGE
@@ -1201,9 +1201,10 @@ Hueliz cah inīn huēyi tlapatlaliztli. Timitztlātlauhtia ticmatīz cuallōtl a
 'export-templates'  => 'Tiquimpiyāz nemachiyōtīlli',
 
 # Namespace 8 related
-'allmessages'        => 'Mochīntīn Huiquimedia tlahcuilōltzintli',
-'allmessagesname'    => 'Tōcāitl',
-'allmessagescurrent' => 'Āxcān tlahcuilōlli',
+'allmessages'         => 'Mochīntīn Huiquimedia tlahcuilōltzintli',
+'allmessagesname'     => 'Tōcāitl',
+'allmessagescurrent'  => 'Āxcān tlahcuilōlli',
+'allmessagesmodified' => 'Zan tiquinttāz inōn ōmopatlac',
 
 # Thumbnails
 'thumbnail-more'  => 'Tiquihuēyiyāz',

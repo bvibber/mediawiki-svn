@@ -92,12 +92,13 @@ function wfGetType( $filename, $safe = true ) {
 	if ( $safe ) {
 		global $wgFileBlacklist, $wgCheckFileExtensions, $wgStrictFileExtensions, 
 			$wgFileExtensions, $wgVerifyMimeType, $wgMimeTypeBlacklist, $wgRequest;
-		list( $partName, $extList ) = UploadBase::splitExtensions( $filename );
-		if ( UploadBase::checkFileExtensionList( $extList, $wgFileBlacklist ) ) {
+		$form = new UploadForm( $wgRequest );
+		list( $partName, $extList ) = $form->splitExtensions( $filename );
+		if ( $form->checkFileExtensionList( $extList, $wgFileBlacklist ) ) {
 			return 'unknown/unknown';
 		}
 		if ( $wgCheckFileExtensions && $wgStrictFileExtensions 
-			&& !UploadBase::checkFileExtensionList( $extList, $wgFileExtensions ) )
+			&& !$form->checkFileExtensionList( $extList, $wgFileExtensions ) )
 		{
 			return 'unknown/unknown';
 		}

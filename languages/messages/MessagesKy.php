@@ -87,6 +87,7 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} тууралуу',
 'aboutpage'            => 'Project:тууралуу',
+'copyrightpagename'    => '{{SITENAME}} автордук укугу',
 'copyrightpage'        => '{{ns:project}}:Автордук укуктар',
 'currentevents'        => 'Учурдагы окуялар',
 'currentevents-url'    => 'Project:Учурдагы окуялар',
@@ -206,8 +207,7 @@ $messages = array(
 'uploadedfiles'     => 'Жүктөлгөн файлдар',
 'savefile'          => 'Файлды сактап кой',
 
-'license'        => 'Лицензиялоо:',
-'license-header' => 'Лицензиялоо:',
+'license' => 'Лицензиялоо:',
 
 # Special:ListFiles
 'listfiles' => 'Файлдар тизмеси',
@@ -298,9 +298,10 @@ $messages = array(
 'delete_and_move_confirm' => 'Ооба, бул баракты өчүр',
 
 # Namespace 8 related
-'allmessages'        => 'Система билдирүүлөрү',
-'allmessagesname'    => 'Аталышы',
-'allmessagescurrent' => 'Учурдагы текст',
+'allmessages'         => 'Система билдирүүлөрү',
+'allmessagesname'     => 'Аталышы',
+'allmessagescurrent'  => 'Учурдагы текст',
+'allmessagesmodified' => 'Өзгөрүүгө учурагандарды гана көрсөт',
 
 # Attribution
 'others' => 'башкалар',

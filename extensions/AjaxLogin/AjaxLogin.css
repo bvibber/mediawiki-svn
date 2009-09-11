@@ -1,0 +1,30 @@
+/*** AJAX LOGIN ***/
+/* styles copied from monaco/css/header.css */
+#userloginRound_c { z-index: 2000 !important; }
+#userloginRound_mask { z-index: 1000 !important; }
+
+#userloginRound .r_boxContent {
+	background-color: #fff;
+	color: #000000;
+	border: solid 1px #aaaaaa;
+}
+
+#userloginRound .boxHeader {
+	padding: 3px 5px;
+	font-size: 12px; /* Jack: added this */
+}
+
+#userloginRound form {
+	padding: 3px;
+	font-size: 12px;
+/*	font-size: 0.9em; original -- doesn't look too good on monobook*/
+}
+
+/* copied from monaco/css/root.css */
+.color1, .color1 a, .yui-panel .hd {
+	background-color: #36C;
+	color: white;
+}
+.color2 {
+	background-color: #F5F5F5;
+}

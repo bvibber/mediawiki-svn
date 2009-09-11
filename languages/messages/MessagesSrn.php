@@ -357,6 +357,7 @@ $messages = array(
 'aboutsite'            => 'Abra {{SITENAME}}',
 'aboutpage'            => 'Project:Abra',
 'copyright'            => 'Ala san skrifi dyaso de ondro $1.',
+'copyrightpagename'    => '{{SITENAME}} kopi leti',
 'copyrightpage'        => '{{ns:project}}:Kopi leti',
 'currentevents'        => 'Ini a nyunsu',
 'currentevents-url'    => 'Project:Ini a nyunsu',

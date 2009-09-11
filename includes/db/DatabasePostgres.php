@@ -1232,7 +1232,7 @@ END;
 		}
 		$this->doQuery("DROP TABLE $safeschema.$ctest");
 
-		$res = $this->sourceFile( "../maintenance/postgres/tables.sql" );
+		$res = dbsource( "../maintenance/postgres/tables.sql", $this);
 
 		## Update version information
 		$mwv = $this->addQuotes($wgVersion);
@@ -1387,7 +1387,20 @@ END;
 		return implode( ' || ', $stringList );
 	}
 
+	/* These are not used yet, but we know we don't want the default version */
+
+	public function lock( $lockName, $method ) {
+		return true;
+	}
+	public function unlock( $lockName, $method ) {
+		return true;
+	}
+	
 	public function getSearchEngine() {
 		return "SearchPostgres";
 	}
+
+	/** No-op */
+	public function setBigSelects( $value = true ) {}
+
 } // end DatabasePostgres class

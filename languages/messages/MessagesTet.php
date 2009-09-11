@@ -219,6 +219,7 @@ $messages = array(
 'aboutsite'            => 'Kona-ba {{SITENAME}}',
 'aboutpage'            => 'Project:Kona-ba',
 'copyright'            => 'Testu pájina nian iha $1 okos.',
+'copyrightpagename'    => 'Direitu autór sira nian iha {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Direitu_autór_nian',
 'currentevents'        => 'Mamosuk atuál sira',
 'currentevents-url'    => 'Project:Mamosuk atuál sira',
@@ -330,7 +331,7 @@ Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
 'whitelistedittext'      => 'Ó tenke $1 ba edita pájina sira.',
 'loginreqpagetext'       => 'Ó tenke $1 ba haree pájina seluk.',
 'newarticle'             => '(Foun)',
-'noarticletext'          => "Iha momentu lá'os testu iha pájina ne'e, bele [[Special:Search/{{PAGENAME}}|buka naran pájina nian]] iha pájina seluk, <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} search the related logs], ka [{{fullurl:{{FULLPAGENAME}}|action=edit}} edita pájina ne'e].",
+'noarticletext'          => "Iha momentu lá'os testu iha pájina ne'e, bele [[Special:Search/{{PAGENAME}}|buka naran pájina nian]] iha pájina seluk, <span class=\"plainlinks\">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} search the related logs], ka [{{fullurl:{{FULLPAGENAME}}|action=edit}} edita pájina ne'e].",
 'editing'                => 'Edita $1',
 'editingcomment'         => 'Edita $1 (seksaun foun)',
 'yourtext'               => 'Ó-nia testu',
@@ -364,10 +365,9 @@ Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
 'history-feed-item-nocomment' => '$1 iha $2',
 
 # Revision deletion
-'rev-delundel'              => 'hatudu/subar',
-'revisiondelete'            => 'Halakon/restaurar versaun',
-'revdelete-hide-user'       => "Subar naran edita-na'in/IP",
-'revdelete-edit-reasonlist' => 'Edita lista motivu nian',
+'rev-delundel'        => 'hatudu/subar',
+'revisiondelete'      => 'Halakon/restaurar versaun',
+'revdelete-hide-user' => "Subar naran edita-na'in/IP",
 
 # Diffs
 'lineno' => 'Liña $1:',
@@ -479,15 +479,13 @@ Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
 'recentchangeslinked-feed'    => 'Muda sira',
 'recentchangeslinked-toolbox' => 'Muda sira',
 'recentchangeslinked-title'   => 'Mudansa iha pájina sira-ne\'ebé iha ligasaun husi "$1"',
-'recentchangeslinked-page'    => 'Naran pájina nian:',
 
 # Upload
 'upload'          => 'Tau iha arkivu laran',
 'uploadbtn'       => 'Tau iha arkivu laran',
 'watchthisupload' => "Hateke pájina ne'e",
 
-'license'        => 'Lisensa:',
-'license-header' => 'Lisensa:',
+'license' => 'Lisensa:',
 
 # Special:ListFiles
 'listfiles_date' => 'Tempu',

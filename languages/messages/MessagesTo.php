@@ -174,6 +174,7 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Kau ki: {{SITENAME}}',
 'aboutpage'            => 'Project:ʻo kau ki',
+'copyrightpagename'    => 'Foʻi mafai ke pulusi maʻa e {{SITENAME}}',
 'currentevents'        => 'Ngaahi ongoongo',
 'currentevents-url'    => 'Project:Ongoongo taka',
 'disclaimers'          => 'Ngaahi fakaʻataʻatā',
@@ -579,9 +580,8 @@ Ko e ʻuhinga loka ko e $1 ia.",
 'watchthisupload'             => 'Leʻo he pēsí ni',
 'filewasdeleted'              => 'Kuo hiki hake ʻa e faile mo e hingoa ʻeni pea naʻe tāmateʻi ia. Kuo pau te ke vakai ki he $1 ʻi muʻa haʻo feinga ʻo toe hiki hake ia.',
 
-'license'        => 'Laiseni:',
-'license-header' => 'Laiseni:',
-'nolicense'      => 'ʻIkai fili ha taha',
+'license'   => 'Laiseni:',
+'nolicense' => 'ʻIkai fili ha taha',
 
 # Special:ListFiles
 'listfiles_search_for'  => 'Kumi ki he hingoa ʻo e faitā:',
@@ -987,6 +987,8 @@ Vakai ki he [[Special:Log/delete|hokohoko tāmateʻi]] ki he lekooti ʻo e ngaah
 'allmessagescurrent'        => 'Tohi lolotonga',
 'allmessagestext'           => "Ko e hokohoko ʻeni ʻo e ngaahi tala fakafounga kātoa ʻi he vā hingoa ''MediaWiki''.",
 'allmessagesnotsupportedDB' => "ʻOku ʻikai ngāueʻaki mo e '''{{ns:special}}:Allmessages''' koeʻuhi ʻoku kamosiʻi mate ʻa e '''\$wgUseDatabaseMessages'''.",
+'allmessagesfilter'         => 'Meʻasivi ki he hingoa ʻo e tala:',
+'allmessagesmodified'       => 'ʻAsi mai meʻa kuo liliu pē',
 
 # Thumbnails
 'filemissing' => 'ʻOku pulia ʻa e faile',

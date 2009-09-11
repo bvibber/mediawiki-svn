@@ -36,7 +36,6 @@ if (!defined('MEDIAWIKI')) {
 abstract class ApiFormatBase extends ApiBase {
 
 	private $mIsHtml, $mFormat, $mUnescapeAmps, $mHelp, $mCleared;
-	private $mBufferResult = false, $mBuffer;
 
 	/**
 	 * Constructor
@@ -189,11 +188,10 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 	 * @param $text string
 	 */
 	public function printText($text) {
-		if ($this->mBufferResult) {
-			$this->mBuffer = $text;
-		} elseif ($this->getIsHtml()) {
+		if ($this->getIsHtml())
 			echo $this->formatHTML($text);
-		} else {
+		else
+		{
 			// For non-HTML output, clear all errors that might have been
 			// displayed if display_errors=On
 			// Do this only once, of course
@@ -204,19 +202,6 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 			}
 			echo $text;
 		}
-	}
-	
-	/**
-	 * Get the contents of the buffer.
-	 */
-	public function getBuffer() {
-		return $this->mBuffer;
-	}
-	/**
-	 * Set the flag to buffer the result instead of printing it.
-	 */
-	public function setBufferResult( $value ) {
-		$this->mBufferResult = $value;
 	}
 
 	/**

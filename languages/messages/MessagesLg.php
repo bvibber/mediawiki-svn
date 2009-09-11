@@ -127,6 +127,7 @@ $messages = array(
 'aboutsite'            => 'Okutangaaza ku {{SITENAME}}',
 'aboutpage'            => 'Project:Okutangaaza ku',
 'copyright'            => 'Ebiri kuno bifugibwa $1.',
+'copyrightpagename'    => "bino biriko ekikuguzo eky'obwananyi ekya {{SITENAME}}",
 'copyrightpage'        => "{{ns:project}}:Ebikugizo eby'obwa nannyini",
 'currentevents'        => 'Ebibindabinda',
 'currentevents-url'    => 'Project:Ebibindabinda',
@@ -479,11 +480,13 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 'export' => 'Okusomosa empapula',
 
 # Namespace 8 related
-'allmessages'        => 'Bubaka bwa sisitemu',
-'allmessagesname'    => 'Erinnya',
-'allmessagesdefault' => 'Ebigambo ebya bulijjo',
-'allmessagescurrent' => 'Ebiriwo kakano',
-'allmessagestext'    => "Luno lwe lukalala olw'obubaka obwa sisitemu obw'omu kkunngaanizo erya MediaWiki.",
+'allmessages'         => 'Bubaka bwa sisitemu',
+'allmessagesname'     => 'Erinnya',
+'allmessagesdefault'  => 'Ebigambo ebya bulijjo',
+'allmessagescurrent'  => 'Ebiriwo kakano',
+'allmessagestext'     => "Luno lwe lukalala olw'obubaka obwa sisitemu obw'omu kkunngaanizo erya MediaWiki.",
+'allmessagesfilter'   => "Amannya ag'obubaka gasunsuze:",
+'allmessagesmodified' => 'Lagako ebikyusidwa byokka',
 
 # Thumbnails
 'thumbnail-more'  => 'Gejjesa ekifaanayi',

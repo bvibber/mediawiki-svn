@@ -51,7 +51,7 @@ class ApiParse extends ApiBase {
 
 		// The parser needs $wgTitle to be set, apparently the
 		// $title parameter in Parser::parse isn't enough *sigh*
-		global $wgParser, $wgUser, $wgTitle, $wgEnableParserCache;
+		global $wgParser, $wgUser, $wgTitle;
 		$popts = new ParserOptions();
 		$popts->setTidy(true);
 		$popts->enableLimitReport();
@@ -98,15 +98,13 @@ class ApiParse extends ApiBase {
 				if(isset($prop['revid']))
 					$oldid = $articleObj->getRevIdFetched();
 				// Try the parser cache first
-				$p_result = false;
 				$pcache = ParserCache::singleton();
-				if($wgEnableParserCache)
-					$p_result = $pcache->get($articleObj, $wgUser);
+				$p_result = $pcache->get($articleObj, $wgUser);
 				if(!$p_result)
 				{
 					$p_result = $wgParser->parse($articleObj->getContent(), $titleObj, $popts);
-					
-					if($wgEnableParserCache)
+					global $wgUseParserCache;
+					if($wgUseParserCache)
 						$pcache->save($p_result, $articleObj, $popts);
 				}
 			}

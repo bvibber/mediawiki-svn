@@ -435,7 +435,7 @@ Du geavaheaddjidovddaldat lea dál anus.
 'rev-delundel'            => 'čájet dahje čiega',
 'revisiondelete'          => 'Sihko dahje máhcat veršuvnnaid',
 'revdelete-nooldid-title' => 'Ii veršuvdna',
-'revdelete-selected'      => "'''{{PLURAL:$2|Válljejuvvon veršuvdna|Válljejuvvon veršuvnnat}} siiddus [[:$1]]'''",
+'revdelete-selected'      => "'''{{PLURAL:$2|Válljejuvvon veršuvdna|Válljejuvvon veršuvnnat}} siiddus '''$1:''''''",
 'logdelete-selected'      => "'''{{PLURAL:$1|Válljejuvvon logmearkkastat|Válljejuvvon logmearkkastagat}}:'''",
 'revdelete-text'          => "'''Sihkojuvvon veršuvnnat oidnojit siiddu siidohistorjjás, muhto daid sisdoallu ii leat álmmolaš.'''
 
@@ -639,7 +639,6 @@ $1 | $2',
 'upload-curl-error6' => 'Čujuhus ii doaimma',
 
 'license'            => 'Liseansa',
-'license-header'     => 'Liseansa',
 'nolicense'          => 'Ii liseansa',
 'license-nopreview'  => '(ovdalgihtii geahččan ii leat vejolaš)',
 'upload_source_url'  => ' (almmolaš URL-čujuhus)',

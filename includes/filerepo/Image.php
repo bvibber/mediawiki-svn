@@ -19,7 +19,7 @@ class Image extends LocalFile {
 	 */
 	static function newFromTitle( $title, $time = false ) {
 		wfDeprecated( __METHOD__ );
-		$img = wfFindFile( $title, array( 'time' => $time ) );
+		$img = wfFindFile( $title, $time );
 		if ( !$img ) {
 			$img = wfLocalFile( $title );
 		}

@@ -7,7 +7,6 @@
  * @ingroup Language
  * @file
  *
- * @author Dalinanir
  * @author Zanatos
  */
 
@@ -15,9 +14,8 @@ $fallback = 'ar';
 
 $messages = array(
 # User preference toggles
-'tog-underline'      => 'krrj du izdayn:',
+'tog-underline'      => 'sttr f do-izdayn:',
 'tog-justify'        => 'skr lɛrd n-stor ɣ togzimin aygiddi',
-'tog-hidepatrolled'  => 'Hide patrolled edits in recent changes',
 'tog-numberheadings' => 'nmra n nsmiat wahdot',
 'tog-showtoolbar'    => 'sbaynd tizikrt n tbddil(JavaScript)',
 'tog-editwidth'      => 'tasnduqt n tbddil arttamz sfha kollot',
@@ -69,16 +67,16 @@ $messages = array(
 'november-gen'  => 'Nuwember',
 'december-gen'  => 'Dujanbir',
 'jan'           => 'yennayer',
-'feb'           => 'brayr',
+'feb'           => 'xubrayr',
 'mar'           => 'Mars',
 'apr'           => 'Ibrir',
 'may'           => 'Mayyuh',
 'jun'           => 'yunyu',
 'jul'           => 'yulyu',
-'aug'           => 'ɣuct',
-'sep'           => 'cutanbir',
+'aug'           => 'ɣusht',
+'sep'           => 'shutanbir',
 'oct'           => 'kṭuber',
-'nov'           => 'Nuwanber',
+'nov'           => 'Nuwember',
 'dec'           => 'Dujanbir',
 
 # Categories related messages
@@ -86,76 +84,30 @@ $messages = array(
 'category_header' => 'tiwriqin ɣ-omggrd "$1"',
 'subcategories'   => 'imggrad-mzin',
 
-'about'         => 'F',
-'article'       => 'Mayllan ɣ tasna',
-'newwindow'     => 'Murzemt ɣ tasatmt tamaynut',
-'cancel'        => 'Iḥiyd',
-'moredotdotdot' => 'Uggar...',
-'mypage'        => 'Tasnat inu',
-'mytalk'        => 'Assays inu',
-'anontalk'      => 'Amsgdal i w-ansa yad',
-'navigation'    => 'Tunigin',
-'and'           => '&#32; d',
+'cancel'        => 'qn',
+'moredotdotdot' => 'uggar...',
+'mypage'        => 'tawriqt niw',
+'mytalk'        => 'assays ino',
+'and'           => '&#32;z',
 
 # Cologne Blue skin
-'qbfind'         => 'Af',
-'qbbrowse'       => 'Cabba',
-'qbedit'         => 'Sbadl',
-'qbpageoptions'  => 'Tasnat ad',
-'qbpageinfo'     => 'Context',
-'qbmyoptions'    => 'Tisnatin inu',
-'qbspecialpages' => 'Tisnatin timzlay',
-'faq'            => 'Isqsitn li bdda tsutulnin',
-'faqpage'        => 'Project: Isqqsit li bdda',
+'qbfind'         => 'siggl',
+'qbedit'         => 'bddl',
+'qbpageoptions'  => 'tawriqt ad',
+'qbmyoptions'    => 'tiwriqin niw',
+'qbspecialpages' => 'tiwriqin tuzliyin',
+'faq'            => 'isqsitn li bahra itЗawadn',
 
-# Vector skin
-'vector-action-addsection'   => 'Zayd amli',
-'vector-action-delete'       => 'Ḥiyd',
-'vector-action-move'         => 'Smmatti',
-'vector-action-protect'      => 'Ḥbu',
-'vector-action-undelete'     => 'Rard may mayḥiydn',
-'vector-action-unprotect'    => 'Ḥiyd aḥbu',
-'vector-namespace-category'  => 'Taggayt',
-'vector-namespace-help'      => 'Tasnat n w-aws',
-'vector-namespace-image'     => 'Asdaw',
-'vector-namespace-main'      => 'Tasna',
-'vector-namespace-media'     => 'Tasnat ntuzzumt',
-'vector-namespace-mediawiki' => 'Tabrat',
-'vector-namespace-project'   => 'Tasnat n tuwuri',
-'vector-namespace-special'   => 'Tsnat timẓlit',
-'vector-namespace-talk'      => 'Amsgdal',
-'vector-namespace-template'  => 'Talɣa',
-'vector-namespace-user'      => 'Tasnat user',
-'vector-view-create'         => 'Skert',
-'vector-view-edit'           => 'Ara',
-'vector-view-history'        => 'Mel amzruy',
-'vector-view-view'           => 'ɣr',
-'vector-view-viewsource'     => 'Ẓr asagm',
-'actions'                    => 'Imskarn',
-'namespaces'                 => 'Ismawn n tɣula',
-
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
-'errorpagetitle'   => 'Laffut',
-'returnto'         => 'Urri s $1.',
-'tagline'          => 'Ž {{SITENAME}}',
-'help'             => 'Asaws',
-'search'           => 'Acnubc',
-'searchbutton'     => 'Cabba',
-'go'               => 'Balak',
-'searcharticle'    => 'Balak',
-'history'          => 'Amzruy n tasna',
-'history_short'    => 'Amzruy',
-'updatedmarker'    => 'Tuybddal z tizrink li iğuran',
-'info_short'       => 'Inɣmisn',
-'printableversion' => 'Tasna nu sugz',
-'permalink'        => 'Azday Bdda illan',
-'print'            => 'Siggz',
-'edit'             => 'Bddl',
+'tagline'          => 'mn {{SITENAME}}',
+'help'             => 'lmɜiwna',
+'search'           => 'siggl',
+'searchbutton'     => 'siggl',
+'go'               => 'ballak',
+'searcharticle'    => 'ballak',
+'printableversion' => 'igh trit ati tbзat',
+'permalink'        => 'azday izawmn',
+'edit'             => 'bddl',
 'create'           => 'skr',
-'editthispage'     => 'Ara tasna yad',
-'create-this-page' => 'Sker tasna yad',
 'delete'           => 'msḥ',
 'newpage'          => 'tawriqt tamaynut',
 'talkpagelinktext' => 'assays',
@@ -189,46 +141,19 @@ $messages = array(
 'site-rss-feed'      => "$1 lqm n' RSS",
 'site-atom-feed'     => "$1 lqm n' atom",
 'page-rss-feed'      => '"$1" tlqim RSS',
-'red-link-title'     => '$1 (tasnatad ur tlli)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'Tasnat',
-'nstab-user'      => 'Tasnat u-msxdam',
-'nstab-media'     => 'Tasnat Ntuzumt',
-'nstab-special'   => 'Tasna tamzlit',
-'nstab-project'   => 'Tasna n tuwuri',
-'nstab-image'     => 'Asdaw',
-'nstab-mediawiki' => 'Tabrat',
-'nstab-template'  => 'Talɣa',
-'nstab-help'      => 'Tasna n-aws',
-'nstab-category'  => 'Taggayt',
-
-# Main script and global functions
-'nosuchaction'      => 'Ur mat iskrn',
-'nosuchactiontext'  => 'Mytuskarn ɣu tansa yad ur tti tgi.
-
-Irwas is turit tansa yad skra mani yadnin ulla azday ur igi amya.
-
-Tzdar attili tmukrist ɣ {{SITENAME}}.',
-'nosuchspecialpage' => 'Urtlla tasna su w-assaɣad',
-'nospecialpagetext' => "<big>'''Trit yat tasna tamzlit ur illan.'''</big>
-
-Tifilit n tasnayin gaddanin ratn taft ɣid [[Special:SpecialPages|{{int:specialpages}}]].",
-
-# General errors
-'error'         => 'Laffut',
-'databaseerror' => 'Laffut ɣ database',
+'nstab-user'      => 'tawriqt o-msxdam',
+'nstab-mediawiki' => 'tabrat',
+'nstab-category'  => 'amgrd',
 
 # Login and logout pages
-'welcomecreation'         => '== Brrkat,  $1! ==
-lcont nek  tuyskar . 
- Adur tut atbaddlt [[Special:Preferences|{{SITENAME}} issusmen]]',
+'welcomecreation'         => '== brrk darnɣ, $1! ==
+
+lcont nk ati styaqyad. ador tot atbadlt {{SITENAME}} lmЗlomat nk.',
 'yourname'                => 'smiyt o-msxdam:',
 'yourpassword'            => 'awal iḥdan:',
 'yourpasswordagain'       => 'Зawd ara awal iḥdan:',
-'remembermypassword'      => 'Askti nu ukcum ɣ lurdinaturad',
-'yourdomainname'          => 'Taɣult nek',
-'externaldberror'         => 'Imma tlla ɣin kra lafut ɣu ukcumnk ulla urak ittuyskar at tsbddelt lkontnk nbrra.',
 'nav-login-createaccount' => 'kchem / qiyd amskhdam amaynu',
 'userlogin'               => 'kchem / qiyd amskhdam amaynu',
 'userlogout'              => 'foɣ',

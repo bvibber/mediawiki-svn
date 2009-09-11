@@ -31,7 +31,7 @@ if ( preg_match( '!^(.*)/config/[^/]*.php$!', $scriptUrl, $m ) ) {
 	<head>
 		<title>MediaWiki <?php echo htmlspecialchars( $wgVersion ); ?></title>
 		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-		<style type='text/css' media='screen'>
+		<style type='text/css' media='screen, projection'>
 			html, body {
 				color: #000;
 				background-color: #fff;

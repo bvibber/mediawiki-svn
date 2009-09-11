@@ -139,6 +139,7 @@ $magicWords = array(
 	'currentweek'           => array( '1', 'هلندڙهفتو', 'CURRENTWEEK' ),
 	'currentdow'            => array( '1', 'اڄوڪوڏينهن', 'CURRENTDOW' ),
 	'localweek'             => array( '1', 'مقاميهفتو', 'LOCALWEEK' ),
+	'localdow'              => array( '1', 'مقاميڏينهن', 'LOCALDOW' ),
 	'plural'                => array( '0', 'جمع', 'PLURAL:' ),
 	'fullurl'               => array( '0', 'مڪمليوآريل', 'FULLURL:' ),
 	'currenttimestamp'      => array( '1', 'هلندڙوقتمهر', 'CURRENTTIMESTAMP' ),
@@ -307,6 +308,7 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} بابت',
 'aboutpage'            => 'Project:بابت',
 'copyright'            => 'سمورو مواد $1 تحت ميسر ڪجي ٿو',
+'copyrightpagename'    => '{{SITENAME}} حق ۽ واسطا',
 'copyrightpage'        => '{{ns:project}}:حق ۽ واسطا',
 'currentevents'        => 'ھاڻوڪا واقعا',
 'currentevents-url'    => 'Project: اعداد',
@@ -836,9 +838,11 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'export' => 'صفحا برآمديو',
 
 # Namespace 8 related
-'allmessages'        => 'سرشتائي نياپا',
-'allmessagesname'    => 'نالو',
-'allmessagescurrent' => 'موجوده تحرير',
+'allmessages'         => 'سرشتائي نياپا',
+'allmessagesname'     => 'نالو',
+'allmessagescurrent'  => 'موجوده تحرير',
+'allmessagesfilter'   => 'نياپي نانءُ ڇاڻي:',
+'allmessagesmodified' => 'صرف ترميم شدھ ڏيکاريو',
 
 # Thumbnails
 'thumbnail-more' => 'وڏو ڪريو',

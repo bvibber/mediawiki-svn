@@ -62,7 +62,7 @@ class Skin extends Linker {
 		}
 		return $wgValidSkinNames;
 	}
-
+	
 	/**
 	 * Fetch the list of usable skins in regards to $wgSkipSkins.
 	 * Useful for Special:Preferences and other places where you
@@ -277,7 +277,7 @@ class Skin extends Linker {
 		$this->userpage = $wgUser->getUserPage()->getPrefixedText();
 		$this->usercss = false;
 	}
-
+	
 	/**
 	 * Set the title
 	 * @param Title $t The title to use
@@ -285,7 +285,7 @@ class Skin extends Linker {
 	public function setTitle( $t ) {
 		$this->mTitle = $t;
 	}
-
+	
 	/** Get the title */
 	public function getTitle() {
 		return $this->mTitle;
@@ -319,7 +319,7 @@ class Skin extends Linker {
 		$out->out( $out->mBodytext . "\n" );
 
 		$out->out( $this->afterContent() );
-
+		
 		$out->out( $afterContent );
 
 		$out->out( $this->bottomScripts() );
@@ -331,32 +331,28 @@ class Skin extends Linker {
 	}
 
 	static function makeVariablesScript( $data ) {
-		if( $data ) {
-			$r = array();
-			foreach ( $data as $name => $value ) {
-				$encValue = Xml::encodeJsVar( $value );
-				$r[] = "$name=$encValue";
-			}
-			$js = 'var ' . implode( ",\n", $r ) . ';';
-			return Html::inlineScript( "\n$js\n" );
-		} else {
-			return '';
+		global $wgJsMimeType;
+
+		$r = array( "<script type=\"$wgJsMimeType\">/*<![CDATA[*/" );
+		foreach ( $data as $name => $value ) {
+			$encValue = Xml::encodeJsVar( $value );
+			$r[] = "var $name = $encValue;";
 		}
+		$r[] = "/*]]>*/</script>\n";
+
+		return implode( "\n\t\t", $r );
 	}
 
 	/**
 	 * Make a <script> tag containing global variables
-	 * @param $skinName string Name of the skin
+	 * @param array $data Associative array containing one element:
+	 *     skinname => the skin name
 	 * The odd calling convention is for backwards compatibility
 	 * @TODO @FIXME Make this not depend on $wgTitle!
 	 */
-	static function makeGlobalVariablesScript( $skinName ) {
-		if ( is_array( $skinName ) ) {
-			# Weird back-compat stuff.
-			$skinName = $skinName['skinname'];
-		}
+	static function makeGlobalVariablesScript( $data ) {
 		global $wgScript, $wgTitle, $wgStylePath, $wgUser;
-		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang;
+		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang, $wgVariant;
 		global $wgCanonicalNamespaceNames, $wgOut, $wgArticle;
 		global $wgBreakFrames, $wgRequest, $wgVariantArticlePath, $wgActionPaths;
 		global $wgUseAjax, $wgAjaxWatch;
@@ -381,7 +377,7 @@ class Skin extends Linker {
 
 		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
 		$vars = array(
-			'skin' => $skinName,
+			'skin' => $data['skinname'],
 			'stylepath' => $wgStylePath,
 			'wgArticlePath' => $wgArticlePath,
 			'wgScriptPath' => $wgScriptPath,
@@ -399,6 +395,7 @@ class Skin extends Linker {
 			'wgIsArticle' => $wgOut->isArticle(),
 			'wgUserName' => $wgUser->isAnon() ? NULL : $wgUser->getName(),
 			'wgUserGroups' => $wgUser->isAnon() ? NULL : $wgUser->getEffectiveGroups(),
+			'wgUserVariant' => $wgVariant->getCode(),
 			'wgUserLanguage' => $wgLang->getCode(),
 			'wgContentLanguage' => $wgContLang->getCode(),
 			'wgBreakFrames' => $wgBreakFrames,
@@ -409,20 +406,11 @@ class Skin extends Linker {
 			'wgSeparatorTransformTable' => $compactSeparatorTransTable,
 			'wgDigitTransformTable' => $compactDigitTransTable,
 			'wgMainPageTitle' => $mainPage ? $mainPage->getPrefixedText() : null,
-			'wgFormattedNamespaces' => $wgContLang->getFormattedNamespaces(),
-			'wgNamespaceIds' => $wgContLang->getNamespaceIds(),
 		);
-		if ( $wgContLang->hasVariants() ) {
-			$vars['wgUserVariant'] = $wgContLang->getPreferredVariant();
+		if ( !( $wgContLang->hasVariants() ) ) {
+			unset( $vars['wgUserVariant'] );
 		}
-
-		//if on upload page output the extension list & js_upload
-		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ) {
-			global $wgFileExtensions, $wgAjaxUploadInterface;
-			$vars['wgFileExtensions'] = $wgFileExtensions;
-			$vars['wgAjaxUploadInterface'] = $wgAjaxUploadInterface;
-		}
-
+		
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ){
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();
 			$vars['wgDBname'] = $wgDBname;
@@ -453,39 +441,30 @@ class Skin extends Linker {
 
 		return self::makeVariablesScript( $vars );
 	}
-	/**
-	 * Return a random selection of the scripts we want in the header, 
-	 * according to no particular rhyme or reason.  Various other scripts are 
-	 * returned from a haphazard assortment of other functions scattered over 
-	 * various files.  This entire hackish system needs to be burned to the 
-	 * ground and rebuilt.
-	 *
-	 * @param $out OutputPage object, should be $wgOut
-	 *
-	 * @return string Raw HTML to output to <head>
-	 */
-	function getHeadScripts( OutputPage $out ) {
-		global $wgStylePath, $wgUser, $wgJsMimeType, $wgStyleVersion, $wgOut;
+
+	function getHeadScripts( $allowUserJs ) {
+		global $wgStylePath, $wgUser, $wgJsMimeType, $wgStyleVersion;
+
+		$vars = self::makeGlobalVariablesScript( array( 'skinname' => $this->getSkinName() ) );
+
+		$r = array( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/wikibits.js?$wgStyleVersion\"></script>" );
 		global $wgUseSiteJs;
-
-		$vars = self::makeGlobalVariablesScript( $this->getSkinName() );
-
 		if( $wgUseSiteJs ) {
 			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';
-			$wgOut->addScriptFile(  self::makeUrl( '-',
+			$r[] = "<script type=\"$wgJsMimeType\" src=\"".
+				htmlspecialchars( self::makeUrl( '-',
 					"action=raw$jsCache&gen=js&useskin=" .
-					urlencode( $this->getSkinName() )
-					)
-				);
+					urlencode( $this->getSkinName() ) ) ) .
+				"\"><!-- site js --></script>";
 		}
-		if( $out->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
+		if( $allowUserJs && $wgUser->isLoggedIn() ) {
 			$userpage = $wgUser->getUserPage();
-			$userjs = self::makeUrl(
-				$userpage->getPrefixedText() . '/' . $this->getSkinName() . '.js',
-				'action=raw&ctype=' . $wgJsMimeType );
-			$wgOut->addScriptFile( $userjs );
+			$userjs = htmlspecialchars( self::makeUrl(
+				$userpage->getPrefixedText().'/'.$this->getSkinName().'.js',
+				'action=raw&ctype='.$wgJsMimeType ) );
+			$r[] = '<script type="'.$wgJsMimeType.'" src="'.$userjs."\"></script>";
 		}
-		return $vars . "\n" . $out->mScripts;
+		return $vars . "\t\t" . implode ( "\n\t\t", $r );
 	}
 
 	/**
@@ -506,9 +485,7 @@ class Skin extends Linker {
 			return false;
 		if( !$wgRequest->wasPosted() )
 			return false;
-		if( !$this->mTitle->userCanEditCssSubpage() )
-			return false;
-		if( !$this->mTitle->userCanEditJsSubpage() )
+		if( !$this->mTitle->userCanEditCssJsSubpage() )
 			return false;
 		return $wgUser->matchEditToken(
 			$wgRequest->getVal( 'wpEditToken' ) );
@@ -525,20 +502,15 @@ class Skin extends Linker {
 	 * top.  For now Monobook.js will be maintained, but it should be consi-
 	 * dered deprecated.
 	 *
-	 * @param $force_skin string If set, overrides the skin name
-	 *
 	 * @return string
 	 */
-	public function generateUserJs( $skinName = null ) {
+	public function generateUserJs() {
 		global $wgStylePath;
 
 		wfProfileIn( __METHOD__ );
-		if( !$skinName ) {
-			$skinName =	$this->getSkinName();
-		}
 
 		$s = "/* generated javascript */\n";
-		$s .= "var skin = '" . Xml::escapeJsString($skinName ) . "';\n";
+		$s .= "var skin = '" . Xml::escapeJsString( $this->getSkinName() ) . "';\n";
 		$s .= "var stylepath = '" . Xml::escapeJsString( $wgStylePath ) . "';";
 		$s .= "\n\n/* MediaWiki:Common.js */\n";
 		$commonJs = wfMsgForContent( 'common.js' );
@@ -546,10 +518,10 @@ class Skin extends Linker {
 			$s .= $commonJs;
 		}
 
-		$s .= "\n\n/* MediaWiki:".ucfirst( $skinName ).".js */\n";
+		$s .= "\n\n/* MediaWiki:".ucfirst( $this->getSkinName() ).".js */\n";
 		// avoid inclusion of non defined user JavaScript (with custom skins only)
 		// by checking for default message content
-		$msgKey = ucfirst( $skinName ) . '.js';
+		$msgKey = ucfirst( $this->getSkinName() ).'.js';
 		$userJS = wfMsgForContent( $msgKey );
 		if ( !wfEmptyMsg( $msgKey, $userJS ) ) {
 			$s .= $userJS;
@@ -569,7 +541,7 @@ class Skin extends Linker {
 		wfProfileOut( __METHOD__ );
 		return $s;
 	}
-
+	
 	/**
 	 * Split for easier subclassing in SkinSimple, SkinStandard and SkinCologneBlue
 	 */
@@ -607,10 +579,6 @@ END;
 		if( !$wgUser->getOption( 'editsection' ) ) {
 			$s .= ".editsection { display: none; }\n";
 		}
-		$fontstyle = $wgUser->getOption( 'editfont' );
-		if ( $fontstyle !== 'default' ) {
-			$s .= "textarea { font-family: $fontstyle; }\n";
-		}
 		return $s;
 	}
 
@@ -631,8 +599,8 @@ END;
 		);
 
 		// Add any extension CSS
-		foreach ( $out->getExtStyle() as $url ) {
-			$out->addStyle( $url );
+		foreach( $out->getExtStyle() as $tag ) {
+			$out->addStyle( $tag['href'] );
 		}
 
 		// If we use the site's dynamic CSS, throw that in, too
@@ -712,12 +680,12 @@ END;
 		$a['onload'] = $wgOut->getOnloadHandler();
 		$a['class'] =
 			'mediawiki' .
-			' '.( $wgContLang->getDir() ).
+			' '.( $wgContLang->isRTL() ? 'rtl' : 'ltr' ).
 			' '.$this->getPageClasses( $this->mTitle ) .
 			' skin-'. Sanitizer::escapeClass( $this->getSkinName() );
 		return $a;
 	}
-
+	
 	function getPageClasses( $title ) {
 		$numeric = 'ns-'.$title->getNamespace();
 		if( $title->getNamespace() == NS_SPECIAL ) {
@@ -776,13 +744,13 @@ END;
 		} elseif( $left ) {
 			$s .= $this->getQuickbarCompensator( $rows );
 		}
-		$l = $wgContLang->alignStart();
+		$l = $wgContLang->isRTL() ? 'right' : 'left';
 		$s .= "<td {$borderhack} align='$l' valign='top'>\n";
 
 		$s .= $this->topLinks();
 		$s .= "<p class='subtitle'>" . $this->pageTitleLinks() . "</p>\n";
 
-		$r = $wgContLang->alignEnd();
+		$r = $wgContLang->isRTL() ? 'left' : 'right';
 		$s .= "</td>\n<td {$borderhack} valign='top' align='$r' nowrap='nowrap'>";
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br />" . $this->searchForm() . "</td>";
@@ -820,7 +788,7 @@ END;
 
 		// Use Unicode bidi embedding override characters,
 		// to make sure links don't smash each other up in ugly ways.
-		$dir = $wgContLang->getDir();
+		$dir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
 		$embed = "<span dir='$dir'>";
 		$pop = '</span>';
 
@@ -899,11 +867,14 @@ END;
 
 		$classes = 'catlinks';
 
-		if( strpos( $catlinks, '<div id="mw-normal-catlinks">' ) === false ) {
+		if( strpos( $catlinks, '<div id="mw-normal-catlinks">' ) === false &&
+			strpos( $catlinks, '<div id="mw-hidden-catlinks" class="mw-hidden-cats-hidden">' ) !== false ) {
 			$classes .= ' catlinks-allhidden';
 		}
 
-		return "<div id='catlinks' class='$classes'>{$catlinks}</div>";
+		if( !empty( $catlinks ) ){
+			return "<div id='catlinks' class='$classes'>{$catlinks}</div>";
+		}
 	}
 
 	function getQuickbarCompensator( $rows = 1 ) {
@@ -974,7 +945,8 @@ END;
 	 * @return String HTML-wrapped JS code to be put before </body>
 	 */
 	function bottomScripts() {
-		$bottomScriptText = "\n" . Html::inlineScript( 'if (window.runOnloadHook) runOnloadHook();' ) . "\n";
+		global $wgJsMimeType;
+		$bottomScriptText = "\n\t\t<script type=\"$wgJsMimeType\">if (window.runOnloadHook) runOnloadHook();</script>\n";
 		wfRunHooks( 'SkinAfterBottomScripts', array( $this, &$bottomScriptText ) );
 		return $bottomScriptText;
 	}
@@ -1096,13 +1068,9 @@ END;
 	function printableLink() {
 		global $wgOut, $wgFeedClasses, $wgRequest, $wgLang;
 
-		$s = array();
+		$printurl = $wgRequest->escapeAppendQuery( 'printable=yes' );
 
-		if ( !$wgOut->isPrintable() ) {
-			$printurl = $wgRequest->escapeAppendQuery( 'printable=yes' );
-			$s[] = "<a href=\"$printurl\" rel=\"alternate\">" . wfMsg( 'printableversion' ) . '</a>';
-		}
-
+		$s[] = "<a href=\"$printurl\" rel=\"alternate\">" . wfMsg( 'printableversion' ) . '</a>';
 		if( $wgOut->isSyndicated() ) {
 			foreach( $wgFeedClasses as $format => $class ) {
 				$feedurl = $wgRequest->escapeAppendQuery( "feed=$format" );
@@ -1382,7 +1350,7 @@ END;
 					$element[] = $this->emailUserLink();
 				}
 			}
-
+			
 			$s = implode( $element, $sep );
 
 			if ( $this->mTitle->getArticleId() ) {
@@ -1473,7 +1441,7 @@ END;
 		// Allow for site and per-namespace customization of copyright notice.
 		if( isset($wgArticle) )
 			wfRunHooks( 'SkinCopyrightFooter', array( $wgArticle->getTitle(), $type, &$msg, &$link ) );
-
+		
 		$out .= wfMsgForContent( $msg, $link );
 		return $out;
 	}
@@ -1490,7 +1458,7 @@ END;
 				$out .= '<a href="'.$url.'">';
 			}
 			$text = htmlspecialchars( $wgRightsText );
-			$out .= "<img src=\"$icon\" alt=\"$text\" width=\"88\" height=\"31\" />";
+			$out .= "<img src=\"$icon\" alt='$text' />";
 			if ( $wgRightsUrl ) {
 				$out .= '</a>';
 			}
@@ -1501,13 +1469,13 @@ END;
 	function getPoweredBy() {
 		global $wgStylePath;
 		$url = htmlspecialchars( "$wgStylePath/common/images/poweredby_mediawiki_88x31.png" );
-		$img = '<a href="http://www.mediawiki.org/"><img src="'.$url.'" height="31" width="88" alt="Powered by MediaWiki" /></a>';
+		$img = '<a href="http://www.mediawiki.org/"><img src="'.$url.'" alt="Powered by MediaWiki" /></a>';
 		return $img;
 	}
 
 	function lastModified() {
 		global $wgLang, $wgArticle;
-		if( $this->mRevisionId && $this->mRevisionId != $wgArticle->getLatest()) {
+		if( $this->mRevisionId ) {
 			$timestamp = Revision::getTimestampFromId( $wgArticle->getTitle(), $this->mRevisionId );
 		} else {
 			$timestamp = $wgArticle->getTimestamp();
@@ -1582,6 +1550,15 @@ END;
 		return $s;
 	}
 
+	function copyrightLink() {
+		$title = Title::newFromText( wfMsgForContent( 'copyrightpage' ) );
+		$s = $this->linkKnown(
+			$title,
+			wfMsg( 'copyrightpagename' )
+		);
+		return $s;
+	}
+
 	private function footerLink ( $desc, $page ) {
 		// if the link description has been set to "-" in the default language,
 		if ( wfMsgForContent( $desc )  == '-') {
@@ -1646,7 +1623,7 @@ END;
 	function editUrlOptions() {
 		global $wgArticle;
 
-		$options = array( 'action' => 'edit' );
+		$options = array( 'action' => 'edit' ); 
 
 		if( $this->mRevisionId && ! $wgArticle->isCurrent() ) {
 			$options['oldid'] = intval( $this->mRevisionId );
@@ -1735,7 +1712,7 @@ END;
 				SpecialPage::getTitleFor( 'Movepage' ),
 				wfMsg( 'movethispage' ),
 				array(),
-				array( 'target' => $this->mTitle->getPrefixedDBkey() ),
+				array( 'target' => $this->mTitle->getPrefixedURL() ),
 				array( 'known', 'noclasses' )
 			);
 		} else {
@@ -1836,7 +1813,7 @@ END;
 			$text = $wgContLang->getLanguageName( $nt->getInterwiki() );
 
 			if ( '' == $text ) { $text = $l; }
-			$style = $this->getExternalLinkAttributes();
+			$style = $this->getExternalLinkAttributes( $l, $text );
 			$s .= "<a href=\"{$url}\"{$style}>{$text}</a>";
 		}
 		if( $wgContLang->isRTL() ) $s .= '</span>';
@@ -2069,17 +2046,5 @@ END;
 		if ( $wgEnableSidebarCache ) $parserMemc->set( $key, $bar, $wgSidebarCacheExpiry );
 		wfProfileOut( __METHOD__ );
 		return $bar;
-	}
-
-	/**
-	 * Should we include common/wikiprintable.css?  Skins that have their own
-	 * print stylesheet should override this and return false.  (This is an
-	 * ugly hack to get Monobook to play nicely with
-	 * OutputPage::headElement().)
-	 *
-	 * @return bool
-	 */
-	public function commonPrintStylesheet() {
-		return true;
 	}
 }

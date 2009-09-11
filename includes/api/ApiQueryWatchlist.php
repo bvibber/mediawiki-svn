@@ -56,19 +56,10 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 		$this->selectNamedDB('watchlist', DB_SLAVE, 'watchlist');
 
-		$params = $this->extractRequestParams();
-
-		if (!is_null($params['owner']) && !is_null($params['token'])) {
-			$user = User::newFromName($params['owner']);
-			$token = $user->getOption('watchlisttoken');
-			if ($token == '' || $token != $params['token']) {
-				$this->dieUsage('Incorrect watchlist token provided -- please set a correct token in Special:Preferences', 'bad_wltoken');
-			}
-		} elseif (!$wgUser->isLoggedIn()) {
+		if (!$wgUser->isLoggedIn())
 			$this->dieUsage('You must be logged-in to have a watchlist', 'notloggedin');
-		} else {
-			$user = $wgUser;
-		}
+
+		$params = $this->extractRequestParams();
 
 		if (!is_null($params['prop']) && is_null($resultPageSet)) {
 
@@ -131,7 +122,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'recentchanges'
 		));
 
-		$userId = $user->getId();
+		$userId = $wgUser->getId();
 		$this->addWhere(array (
 			'wl_namespace = rc_namespace',
 			'wl_title = rc_title',
@@ -156,8 +147,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				$this->dieUsage("Incorrect parameter - mutually exclusive values may not be supplied", 'show');
 			}
 			
-			// Check permissions.  FIXME: should this check $user instead of
-			// $wgUser?
+			// Check permissions
 			global $wgUser;
 			if((isset($show['patrolled']) || isset($show['!patrolled'])) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
 				$this->dieUsage("You need the patrol right to request the patrolled flag", 'permissiondenied');
@@ -172,13 +162,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->addWhereIf('rc_patrolled = 0', isset($show['!patrolled']));
 			$this->addWhereIf('rc_patrolled != 0', isset($show['patrolled']));			
 		}
-
-		if(!is_null($params['user']) && !is_null($params['excludeuser']))
-			$this->dieUsage('user and excludeuser cannot be used together', 'user-excludeuser');
-		if(!is_null($params['user']))
-			$this->addWhereFld('rc_user_text', $params['user']);
-		if(!is_null($params['excludeuser']))
-			$this->addWhere('rc_user_text != ' . $this->getDB()->addQuotes($params['excludeuser']));
 
 
 		# This is an index optimization for mysql, as done in the Special:Watchlist page
@@ -285,12 +268,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => 'namespace'
 			),
-			'user' => array(
-				ApiBase :: PARAM_TYPE => 'user',
-			),
-			'excludeuser' => array(
-				ApiBase :: PARAM_TYPE => 'user',
-			),
 			'dir' => array (
 				ApiBase :: PARAM_DFLT => 'older',
 				ApiBase :: PARAM_TYPE => array (
@@ -331,12 +308,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 					'patrolled',
 					'!patrolled',
 				)
-			),
-			'owner' => array (
-				ApiBase :: PARAM_TYPE => 'user'
-			),
-			'token' => array (
-				ApiBase :: PARAM_TYPE => 'string'
 			)
 		);
 	}
@@ -347,17 +318,13 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'start' => 'The timestamp to start enumerating from.',
 			'end' => 'The timestamp to end enumerating.',
 			'namespace' => 'Filter changes to only the given namespace(s).',
-			'user' => 'Only list changes by this user',
-			'excludeuser' => 'Don\'t list changes by this user',
 			'dir' => 'In which direction to enumerate pages.',
 			'limit' => 'How many total results to return per request.',
 			'prop' => 'Which additional items to get (non-generator mode only).',
 			'show' => array (
 				'Show only items that meet this criteria.',
 				'For example, to see only minor edits done by logged-in users, set show=minor|!anon'
-			),
-			'owner' => "The name of the user whose watchlist you'd like to access",
-			'token' => "Give a security token (settable in preferences) to allow access to another user's watchlist"
+			)
 		);
 	}
 
@@ -371,8 +338,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'api.php?action=query&list=watchlist&wlprop=ids|title|timestamp|user|comment',
 			'api.php?action=query&list=watchlist&wlallrev&wlprop=ids|title|timestamp|user|comment',
 			'api.php?action=query&generator=watchlist&prop=info',
-			'api.php?action=query&generator=watchlist&gwlallrev&prop=revisions&rvprop=timestamp|user',
-			'api.php?action=query&list=watchlist&wlowner=Bob_Smith&wltoken=d8d562e9725ea1512894cdab28e5ceebc7f20237'
+			'api.php?action=query&generator=watchlist&gwlallrev&prop=revisions&rvprop=timestamp|user'
 		);
 	}
 

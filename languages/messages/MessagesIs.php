@@ -15,7 +15,6 @@
  * @author Spacebirdy
  * @author Steinninn
  * @author Urhixidur
- * @author Ævar Arnfjörð Bjarmason
  * @author לערי ריינהארט
  */
 
@@ -111,6 +110,7 @@ $magicWords = array(
 	'img_sub'               => array( '1', 'undir', 'sub' ),
 	'img_super'             => array( '1', 'yfir', 'super', 'sup' ),
 	'img_top'               => array( '1', 'efst', 'top' ),
+	'img_middle'            => array( '1', 'miðja', 'middle' ),
 	'img_bottom'            => array( '1', 'neðst', 'bottom' ),
 	'img_text_bottom'       => array( '1', 'texti-neðst', 'text-bottom' ),
 	'ns'                    => array( '0', 'NR:', 'NS:' ),
@@ -362,16 +362,6 @@ $messages = array(
 'faq'            => 'Algengar spurningar',
 'faqpage'        => 'Project:Algengar spurningar',
 
-# Vector skin
-'vector-action-delete'    => 'Eyða',
-'vector-action-move'      => 'Færa',
-'vector-action-protect'   => 'Vernda',
-'vector-action-unprotect' => 'Afvernda',
-'vector-namespace-image'  => 'Skrá',
-'vector-view-create'      => 'Skapa',
-'vector-view-edit'        => 'Breyta',
-'vector-view-history'     => 'Breytingaskrá',
-
 # Metadata in edit box
 'metadata_help' => 'Lýsigögn:',
 
@@ -434,6 +424,7 @@ $messages = array(
 'aboutsite'            => 'Um {{SITENAME}}',
 'aboutpage'            => 'Project:Um',
 'copyright'            => 'Efni má nota samkvæmt $1.',
+'copyrightpagename'    => 'Höfundarréttarreglum {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Höfundarréttur',
 'currentevents'        => 'Potturinn',
 'currentevents-url'    => 'Project:Potturinn',
@@ -767,7 +758,7 @@ Nokkrir notendur geta deilt sama vistfangi.
 Ef þú ert óþekktur notandi og finnst að óviðkomandi athugasemdum hafa verið beint að þér, gjörðu svo vel og [[Special:UserLogin/signup|búðu til aðgang]] eða [[Special:UserLogin|skráðu þig inn]] til þess að koma í veg fyrir þennan rugling við aðra óþekkta notendur í framtíðinni.''",
 'noarticletext'                    => 'Enginn texti er á þessari síðu enn sem komið er.
 Þú getur [[Special:Search/{{PAGENAME}}|leitað í öðrum síðum]],
-<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} leitað í tengdum skrám], eða [{{fullurl:{{FULLPAGENAME}}|action=edit}} breytt henni sjálfur]</span>.',
+<span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} leitað í tengdum skrám], eða [{{fullurl:{{FULLPAGENAME}}|action=edit}} breytt henni sjálfur]</span>.',
 'userpage-userdoesnotexist'        => 'Notandaaðgangurinn „$1“ er ekki skráður.
 Gjörðu svo vel og athugaðu hvort að þú viljir skapa/breyta þessari síðu.',
 'clearyourcache'                   => "'''Athugaðu - Eftir vistun, má vera að þú þurfir að komast hjá skyndiminni vafrans þíns til að sjá breytingarnar.'''
@@ -775,8 +766,7 @@ Gjörðu svo vel og athugaðu hvort að þú viljir skapa/breyta þessari síðu
 '''Konqueror: '''smelltu á ''Reload'' eða ýttu á ''F5'';
 '''Opera:''' hreinsaðu skyndiminnið í ''Tools → Prefernces'';
 '''Internet Explorer:''' haltu ''Ctrl'' og smelltu á ''Refresh'', eða ýttu á ''Ctrl-F5''.",
-'usercssyoucanpreview'             => "'''Ath:''' Hægt er að nota „Forskoða“ hnappinn til að prófa CSS og JavaScript-kóða áður en hann er vistaður.",
-'userjsyoucanpreview'              => "'''Ath:''' Hægt er að nota „Forskoða“ hnappinn til að prófa CSS og JavaScript-kóða áður en hann er vistaður.",
+'usercssjsyoucanpreview'           => "'''Ath:''' Hægt er að nota „Forskoða“ hnappinn til að prófa CSS og JavaScript-kóða áður en hann er vistaður.",
 'usercsspreview'                   => "'''Mundu að þú ert aðeins að forskoða CSS-kóðann þinn.'''
 '''Hann hefur ekki enn verið vistaður!'''",
 'userjspreview'                    => "'''Mundu að þú ert aðeins að prófa/forskoða JavaScript-kóðann þinn.'''
@@ -914,7 +904,6 @@ Prófaðu [[Special:Search|að leita á þessari wiki síðu]] að svipuðum sí
 'revdelete-restricted'      => 'hömlur settar á stjórnendur',
 'revdelete-unrestricted'    => 'fjarlægja hömlur á stjórnendur',
 'revdelete-log-message'     => '$1 fyrir $2 {{PLURAL:$2|breytingu|breytingar}}',
-'revdelete-edit-reasonlist' => 'Eyðingarástæður',
 
 # History merging
 'mergehistory'      => 'Sameina breytingaskrár',
@@ -993,7 +982,7 @@ Prófaðu [[Special:Search|að leita á þessari wiki síðu]] að svipuðum sí
 'viewprevnext'                     => 'Skoða ($1) ($2) ($3).',
 'searchmenu-legend'                => 'Leitarvalmöguleikar',
 'searchmenu-exists'                => "'''Það er síða að nafni „[[$1]]“ á þessum wiki'''",
-'searchmenu-new'                   => "'''Skapaðu síðuna \"[[:\$1]]\" á þessum wiki!'''",
+'searchmenu-new'                   => "'''[[:$1|Skapaðu]] síðuna ''$1'' á þessum wiki!'''",
 'searchhelp-url'                   => 'Help:Efnisyfirlit',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Leita að síðum með þessu forskeyti]]',
 'searchprofile-articles'           => 'Efnissíður',
@@ -1019,6 +1008,7 @@ Prófaðu [[Special:Search|að leita á þessari wiki síðu]] að svipuðum sí
 'searchall'                        => 'öllum',
 'showingresults'                   => "Sýni {{PLURAL:$1|'''1''' niðurstöðu|'''$1''' niðurstöður}} frá og með #'''$2'''.",
 'showingresultsnum'                => "Sýni {{PLURAL:$3|'''$3''' niðurstöðu|'''$3''' niðurstöður}} frá og með #<b>$2</b>.",
+'showingresultstotal'              => "Sýni að neðan {{PLURAL:$4|útkomu '''$1''' af '''$3'''|útkomur '''$1 - $2''' af '''$3'''}}",
 'nonefound'                        => "'''Athugaðu''': Það er aðeins leitað í sumum nafnrýmum sjálfkrafa. Prófaðu að setja forskeytið ''all:'' í fyrirspurnina til að leita í öllu efni (þar á meðal notandaspjallsíðum, sniðum, o.s.frv.), eða notaðu tileigandi nafnrými sem forskeyti.",
 'search-nonefound'                 => 'Engar niðurstöður pössuðu við fyrirspurnina.',
 'powersearch'                      => 'Ítarleg leit',
@@ -1044,7 +1034,7 @@ Athugaðu að skrár þeirra yfir {{SITENAME}}-efni kunna að vera úreltar.',
 'mypreferences'             => 'Stillingar',
 'prefs-edits'               => 'Fjöldi breytinga:',
 'prefsnologin'              => 'Ekki innskráður',
-'prefsnologintext'          => 'Þú verður að vera <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} skráð(ur) inn]</span> til að breyta notandastillingum.',
+'prefsnologintext'          => 'Þú verður að vera <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} skráð(ur) inn]</span> til að breyta notandastillingum.',
 'changepassword'            => 'Breyta lykilorði',
 'prefs-skin'                => 'Þema',
 'skin-preview'              => 'Forskoða',
@@ -1183,8 +1173,6 @@ Ef þú kýst að gefa það upp, verður það notað til að gefa þér heiðu
 'right-editprotected'        => 'Breyta verndaðar síður (án keðjuverndunar)',
 'right-editinterface'        => 'Breyta notandaviðmótinu',
 'right-editusercssjs'        => 'Breyta CSS- og JS-skrám annarra',
-'right-editusercss'          => 'Breyta CSS-skrám annarra',
-'right-edituserjs'           => 'Breyta JS-skrám annarra',
 'right-unwatchedpages'       => 'Skoða lista yfir óvaktaðar síður',
 'right-userrights'           => 'Breyta öllum notandaréttindum',
 'right-userrights-interwiki' => 'Breyta notandaréttindum annarra notenda á öðrum wiki-verkefnum',
@@ -1324,7 +1312,6 @@ Gjörðu svo vel og endurnefndu skrána og hladdu henni inn aftur.',
 'upload-curl-error28' => 'Innhleðslutími útrunninn',
 
 'license'            => 'Leyfisupplýsingar:',
-'license-header'     => 'Leyfisupplýsingar:',
 'nolicense'          => 'Ekkert valið',
 'license-nopreview'  => '(Forskoðun ekki fáanleg)',
 'upload_source_file' => '(skrá á tölvunni þinni)',
@@ -1681,7 +1668,7 @@ Sjáðu [[Special:ProtectedPages|listann yfir verndaðar síður]] fyrir núvera
 'protect-title'               => 'Vernda „$1“',
 'prot_1movedto2'              => '[[$1]] færð á [[$2]]',
 'protect-legend'              => 'Verndunarstaðfesting',
-'protectcomment'              => 'Ástæða:',
+'protectcomment'              => 'Ástæða',
 'protectexpiry'               => 'Rennur út:',
 'protect_expiry_invalid'      => 'Ógildur tími.',
 'protect_expiry_old'          => 'Tíminn er þegar runninn út.',
@@ -1702,7 +1689,7 @@ Núverandi staða síðunnar er '''$1''':",
 'protect-cantedit'            => 'Þú getur ekki breytt verndunarstigi þessarar síðu, vegna þess að þú hefur ekki réttindin til að breyta því.',
 'protect-othertime'           => 'Annar tími:',
 'protect-othertime-op'        => 'annar tími',
-'protect-expiry-options'      => '1 tím:1 hour,1 dag:1 day,1 viku:1 week,2 vikur:2 weeks,1 mánuð:1 month,3 mánuði:3 months,6 mánuði:6 months,1 ár:1 year,aldrei:infinite',
+'protect-expiry-options'      => '2 tíma:2 hours,1 dag:1 day,3 daga:3 days,1 viku:1 week,2 vikur:2 weeks,1 mánuð:1 month,3 mánuði:3 months,6 mánuði:6 months,1 ár:1 year,aldrei:infinite',
 'restriction-type'            => 'Réttindi:',
 'restriction-level'           => 'Takmarkaði við:',
 'minimum-size'                => 'Lágmarksstærð',
@@ -1972,6 +1959,7 @@ Síðan „[[:$1]]“ er þegar til. Viltu eyða henni til þess að rýma til f
 'allmessagestext'           => 'Þetta er listi yfir kerfismeldingar í Melding-nafnrýminu.
 Gjörðu svo vel og heimsæktu [http://www.mediawiki.org/wiki/Localisation MediaWiki-staðfæringuna] og [http://translatewiki.net translatewiki.net] ef þú vilt taka þátt í almennri MediaWiki-staðfæringu.',
 'allmessagesnotsupportedDB' => "Það er ekki hægt að nota '''{{ns:special}}:Allmessages''' því '''\$wgUseDatabaseMessages''' hefur verið gerð óvirk.",
+'allmessagesmodified'       => 'Sýna aðeins breyttar',
 
 # Thumbnails
 'thumbnail-more'  => 'Stækka',

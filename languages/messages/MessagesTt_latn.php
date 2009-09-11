@@ -1,5 +1,5 @@
 <?php
-/** Tatar (Latin) (Татарча/Tatarça (Latin))
+/** Tatar (Latin) (Tatarça/Татарча (Latin))
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -189,6 +189,7 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} Turında',
 'aboutpage'            => 'Project:Turında',
 'copyright'            => 'Eçtälek $1 buyınça ireşüle.',
+'copyrightpagename'    => '{{SITENAME}} qälämxaqı',
 'copyrightpage'        => '{{ns:project}}:Qälämxaq',
 'currentevents'        => 'Xäzerge waqíğalar',
 'currentevents-url'    => 'Project:Xäzerge waqíğalar',
@@ -639,6 +640,7 @@ yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 'allmessagesdefault' => 'Töpcay yazma',
 'allmessagescurrent' => 'Eligi yazma',
 'allmessagestext'    => 'Bu säxifäneñ MediaWiki: atarasında bulğan yazmalar tezmäse.',
+'allmessagesfilter'  => 'Yazma atalışına sözgiç:',
 
 # Thumbnails
 'thumbnail-more' => 'Zuraytası',

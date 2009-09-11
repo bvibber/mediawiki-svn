@@ -130,7 +130,7 @@ class ForeignAPIRepo extends FileRepo {
 			}
 			$this->mQueryCache[$url] = $data;
 		}
-		return FormatJson::decode( $this->mQueryCache[$url], true );
+		return json_decode( $this->mQueryCache[$url], true );
 	}
 	
 	function getImageInfo( $title, $time = false ) {

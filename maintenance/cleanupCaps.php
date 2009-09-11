@@ -24,33 +24,38 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @author Brion Vibber <brion at pobox.com>
  * @ingroup maintenance
  */
 
-require_once( dirname(__FILE__) . '/cleanupTable.inc' );
+$optionsWithArgs = array( 'namespace' );
 
+require_once( 'commandLine.inc' );
+require_once( 'cleanupTable.inc' );
+
+/**
+ * @ingroup Maintenance
+ */
 class CapsCleanup extends TableCleanup {
-	public function __construct() {
-		parent::__construct();
-		$this->mDescription = "Script to cleanup capitalization";
-		$this->addOption( 'namespace', 'Namespace number to run caps cleanup on', false, true );
+	function __construct( $dryrun = false, $namespace = 0 ) {
+		parent::__construct( 'page', $dryrun );
+		$this->namespace = intval( $namespace );
 	}
 
-	public function execute() {
-		global $wgCapitalLinks, $wgUser;
-		$this->namespace = intval( $this->getOption( 'namespace', 0 ) );
-		$this->dryrun = $this->hasOption( 'dry-run' );
-		$wgUser->setName( 'Conversion script' );
-		if( $wgCapitalLinks )
-			$this->error( "\$wgCapitalLinks is on -- no need for caps links cleanup.", true );
+	function cleanup() {
+		global $wgCapitalLinks;
+		if( $wgCapitalLinks ) {
+			echo "\$wgCapitalLinks is on -- no need for caps links cleanup.\n";
+			return false;
+		}
 
 		$this->runTable( $this->targetTable,
 			'WHERE page_namespace=' . $this->namespace,
 			array( &$this, 'processPage' ) );
 	}
 
-	protected function processPage( $row ) {
+	function processPage( $row ) {
 		global $wgContLang;
 
 		$current = Title::makeTitle( $row->page_namespace, $row->page_title );
@@ -58,26 +63,27 @@ class CapsCleanup extends TableCleanup {
 		$upper = $row->page_title;
 		$lower = $wgContLang->lcfirst( $row->page_title );
 		if( $upper == $lower ) {
-			$this->output( "\"$display\" already lowercase." );
+			$this->log( "\"$display\" already lowercase." );
 			return $this->progress( 0 );
 		}
 
 		$target = Title::makeTitle( $row->page_namespace, $lower );
 		$targetDisplay = $target->getPrefixedText();
 		if( $target->exists() ) {
-			$this->output( "\"$display\" skipped; \"$targetDisplay\" already exists" );
+			$this->log( "\"$display\" skipped; \"$targetDisplay\" already exists" );
 			return $this->progress( 0 );
 		}
 
 		if( $this->dryrun ) {
-			$this->output( "\"$display\" -> \"$targetDisplay\": DRY RUN, NOT MOVED" );
+			$this->log( "\"$display\" -> \"$targetDisplay\": DRY RUN, NOT MOVED" );
 			$ok = true;
 		} else {
 			$ok = $current->moveTo( $target, false, 'Converting page titles to lowercase' );
-			$this->output( "\"$display\" -> \"$targetDisplay\": $ok" );
+			$this->log( "\"$display\" -> \"$targetDisplay\": $ok" );
 		}
 		if( $ok === true ) {
 			$this->progress( 1 );
+
 			if( $row->page_namespace == $this->namespace ) {
 				$talk = $target->getTalkPage();
 				$row->page_namespace = $talk->getNamespace();
@@ -89,7 +95,10 @@ class CapsCleanup extends TableCleanup {
 			$this->progress( 0 );
 		}
 	}
+
 }
 
-$maintClass = "CapsCleanup";
-require_once( DO_MAINTENANCE );
+$wgUser->setName( 'Conversion script' );
+$ns = isset( $options['namespace'] ) ? $options['namespace'] : 0;
+$caps = new CapsCleanup( isset( $options['dry-run'] ), $ns );
+$caps->cleanup();

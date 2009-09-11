@@ -288,7 +288,7 @@ CREATE TABLE oldimage (
   oi_deleted       SMALLINT     NOT NULL DEFAULT 0,
   oi_sha1          TEXT         NOT NULL DEFAULT ''
 );
-ALTER TABLE oldimage ADD CONSTRAINT oldimage_oi_name_fkey_cascaded FOREIGN KEY (oi_name) REFERENCES image(img_name) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE oldimage ADD CONSTRAINT oldimage_oi_name_fkey_cascade FOREIGN KEY (oi_name) REFERENCES image(img_name) ON DELETE CASCADE;
 CREATE INDEX oi_name_timestamp    ON oldimage (oi_name,oi_timestamp);
 CREATE INDEX oi_name_archive_name ON oldimage (oi_name,oi_archive_name);
 CREATE INDEX oi_sha1              ON oldimage (oi_sha1);
@@ -437,16 +437,11 @@ CREATE TABLE logging (
   log_title       TEXT         NOT NULL,
   log_comment     TEXT,
   log_params      TEXT,
-  log_deleted     SMALLINT     NOT NULL DEFAULT 0,
-  log_user_text   TEXT         NOT NULL DEFAULT '',
-  log_page        INTEGER
+  log_deleted     SMALLINT     NOT NULL DEFAULT 0
 );
 CREATE INDEX logging_type_name ON logging (log_type, log_timestamp);
 CREATE INDEX logging_user_time ON logging (log_timestamp, log_user);
 CREATE INDEX logging_page_time ON logging (log_namespace, log_title, log_timestamp);
-CREATE INDEX logging_times ON logging (log_timestamp);
-CREATE INDEX logging_user_type_time ON logging (log_user, log_type, log_timestamp);
-CREATE INDEX logging_page_id_time ON logging (log_page, log_timestamp);
 
 CREATE TABLE log_search (
   ls_field   TEXT     NOT NULL,
@@ -621,9 +616,3 @@ CREATE TABLE mediawiki_version (
 INSERT INTO mediawiki_version (type,mw_version,sql_version,sql_date)
   VALUES ('Creation','??','$LastChangedRevision$','$LastChangedDate$');
 
-CREATE TABLE l10n_cache (
-  lc_lang     TEXT    NOT NULL,
-  lc_key      TEXT    NOT NULL,
-  lc_value    TEXT    NOT NULL
-);
-CREATE INDEX l10n_cache_lc_lang_key ON l10n_cache (lc_lang, lc_key);

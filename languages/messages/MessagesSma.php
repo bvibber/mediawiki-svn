@@ -278,8 +278,7 @@ Gïemhpes logge sïjse vihth männgan datne åtna låhka dïhte.',
 'accmailtext'            => 'Loevesbaakoe ihke ”$1” utnedh seedtedh gåajkoe $2.',
 'newarticle'             => '(Orre)',
 'noarticletext'          => 'Dïhte lea daelie ijje tjaalege sïjse dïhte bielie, dov dorje [[Special:Search/{{PAGENAME}}|ohtsedh ihke dïhte bielie nomme]] sïjse jeatjebh bielieh jallh [{{fullurl:{{FULLPAGENAME}}|action=edit}} värrhtoedimmie dïhte bielie].',
-'usercssyoucanpreview'   => "'''Tiipse:''' Nuhtjie 'Vuesehte åvte-vuesiehtidh' båaloe ihke pryövoe dov orre CSS åvte spååredh.",
-'userjsyoucanpreview'    => "'''Tiipse:''' Nuhtjie 'Vuesehte åvte-vuesiehtidh' båaloe ihke pryövoe dov orre JS åvte spååredh.",
+'usercssjsyoucanpreview' => "'''Tiipse:''' Nuhtjie 'Vuesehte åvte-vuesiehtidh' båaloe ihke pryövoe dov orre CSS/JS åvte spååredh.",
 'updated'                => '(Orrestahteme)',
 'note'                   => "'''Galtege:'''",
 'previewnote'            => "'''Dïhte lea aktegh åvte-vuesiehtidh; värrhtoedimmieh ånta ijje sjïdtedh spååredh!'''",
@@ -420,8 +419,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 
 'upload-file-error' => 'Sjisjnjie båajhtode',
 
-'license'        => 'Liseense',
-'license-header' => 'Liseense',
+'license' => 'Liseense',
 
 # Special:ListFiles
 'listfiles_search_for' => 'Ohtsedh ihke guvvie nomme:',

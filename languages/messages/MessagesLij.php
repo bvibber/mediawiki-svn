@@ -269,6 +269,7 @@ $messages = array(
 'aboutsite'            => 'Informaçioin in scia {{SITENAME}}',
 'aboutpage'            => 'Project:Informassioîn',
 'copyright'            => 'O contegnûo o se peu trovâ a $1.',
+'copyrightpagename'    => "Diritti d'autô de {{SITENAME}}",
 'copyrightpage'        => "{{ns:project}}:Diritti d'autô",
 'currentevents'        => 'Attualitæ',
 'currentevents-url'    => 'Project:Attualitæ',
@@ -625,9 +626,8 @@ E paggine in osservassion son dipinte in '''grascietto'''.",
 
 'upload-file-error' => 'Errô interno',
 
-'license'        => 'Permisso:',
-'license-header' => 'Permisso:',
-'nolicense'      => 'Nisciûnn-a liçensa indicâa',
+'license'   => 'Permisso:',
+'nolicense' => 'Nisciûnn-a liçensa indicâa',
 
 # Special:ListFiles
 'listfiles_search_for' => "Çerca pe nomme de l'imàgine:",
@@ -971,6 +971,8 @@ Inte 'sti câxi, se o se vêu fâ coscì, o se deive stramûâ ò azzonze manual
 'allmessagescurrent'        => 'Testo corrente',
 'allmessagestext'           => "Sta chie a l'è unn-a lista de messaggi do scistema in ta MediaWiki.",
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' o non ti te peu vedde, perchè '''\$wgUseDatabaseMessages''' o non l'è attivo.",
+'allmessagesfilter'         => 'Çernia de mesasggi:',
+'allmessagesmodified'       => 'Vanni vedde söo i cangiamenti',
 
 # Thumbnails
 'thumbnail-more'           => 'Ciû grande',

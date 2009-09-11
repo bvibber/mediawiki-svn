@@ -13,6 +13,7 @@ var os_map = {};
 var os_cache = {};
 // global variables for suggest_keypress
 var os_cur_keypressed = 0;
+var os_last_keypress = 0;
 var os_keypressed_count = 0;
 // type: Timer
 var os_timer = null;
@@ -106,9 +107,9 @@ function os_showResults(r){
 }
 
 function os_operaWidthFix(x){
-	// For browsers that don't understand overflow-x, estimate scrollbar width
-	if(typeof document.body.style.overflowX != "string"){
-		return 30;
+	// TODO: better css2 incompatibility detection here
+	if(is_opera || is_khtml || navigator.userAgent.toLowerCase().indexOf('firefox/1')!=-1){
+		return 30; // opera&konqueror & old firefox don't understand overflow-x, estimate scrollbar width
 	}
 	return 0;
 }
@@ -591,6 +592,14 @@ function os_eventKeypress(e){
 		return; // not our event
 
 	var keypressed = os_cur_keypressed;
+	if(keypressed == 38 || keypressed == 40){
+		var d = new Date()
+		var now = d.getTime();
+		if(now - os_last_keypress < 120){
+			os_last_keypress = now;
+			return;
+		}
+	}
 
 	os_keypressed_count++;
 	os_processKey(r,keypressed,targ);
@@ -607,6 +616,7 @@ function os_eventKeydown(e){
 	os_mouse_moved = false;
 
 	os_cur_keypressed = (e.keyCode == undefined) ? e.which : e.keyCode;
+	os_last_keypress = 0;
 	os_keypressed_count = 0;
 }
 
@@ -854,3 +864,4 @@ function os_MWSuggestInit() {
 }
 
 hookEvent("load", os_MWSuggestInit);
+

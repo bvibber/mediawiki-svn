@@ -117,6 +117,7 @@ $messages = array(
 'aboutsite'            => "Mu dheidhinn a' {{SITENAME}}",
 'aboutpage'            => 'Project:Mu',
 'copyright'            => 'Gheibhear brìgh na duilleig seo a-rèir an $1.',
+'copyrightpagename'    => '{{SITENAME}} dlighe-sgrìobhaidh',
 'copyrightpage'        => '{{ns:project}}:Dlighean-sgrìobhaidh',
 'currentevents'        => 'Cùisean an latha',
 'currentevents-url'    => 'Project:Cùisean an latha',

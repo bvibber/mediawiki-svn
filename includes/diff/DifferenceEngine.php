@@ -30,10 +30,6 @@ class DifferenceEngine {
 	var $mCacheHit = false; // Was the diff fetched from cache?
 	var $htmldiff;
 
-	// If true, line X is not displayed when X is 1, for example to increase
-	// readability and conserve space with many small diffs.
-	protected $mReducedLineNumbers = false;
-
 	protected $unhide = false;
 	/**#@-*/
 
@@ -82,10 +78,6 @@ class DifferenceEngine {
 		$this->mRefreshCache = $refreshCache;
 		$this->htmldiff = $htmldiff;
 		$this->unhide = $unhide;
-	}
-
-	function setReducedLineNumbers( $value = true ) {
-		$this->mReducedLineNumbers = $value;
 	}
 
 	function getTitle() {
@@ -304,10 +296,10 @@ CONTROL;
 		$newminor = '';
 
 		if( $this->mOldRev->isMinor() ) {
-			$oldminor = ChangesList::flag( 'minor' );
+			$oldminor = Xml::span( wfMsg( 'minoreditletter' ), 'minor' ) . ' ';
 		}
 		if( $this->mNewRev->isMinor() ) {
-			$newminor = ChangesList::flag( 'minor' );
+			$newminor = Xml::span( wfMsg( 'minoreditletter' ), 'minor' ) . ' ';
 		}
 
 		$rdel = ''; $ldel = '';
@@ -324,7 +316,10 @@ CONTROL;
 				$ldel = $sk->revDeleteLink( $query, $this->mOldRev->isDeleted( Revision::DELETED_RESTRICTED ) );
 			}
 			$ldel = "&nbsp;&nbsp;&nbsp;$ldel ";
-			if( !$this->mNewRev->userCan( Revision::DELETED_RESTRICTED ) ) {
+			// We don't currently handle well changing the top revision's settings
+			if( $this->mNewRev->isCurrent() ) {
+				$rdel = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.wfMsgHtml( 'rev-delundel' ).')' );
+			} else if( !$this->mNewRev->userCan( Revision::DELETED_RESTRICTED ) ) {
 				// If revision was hidden from sysops
 				$rdel = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.wfMsgHtml( 'rev-delundel' ).')' );
 			} else {
@@ -850,7 +845,6 @@ CONTROL;
 
 	function localiseLineNumbersCb( $matches ) {
 		global $wgLang;
-		if ( $matches[1] === '1' && $this->mReducedLineNumbers ) return '';
 		return wfMsgExt( 'lineno', 'escape', $wgLang->formatNum( $matches[1] ) );
 	}
 

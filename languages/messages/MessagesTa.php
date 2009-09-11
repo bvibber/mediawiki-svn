@@ -95,9 +95,6 @@ $messages = array(
 'underline-never'   => 'எப்போதுமில்லை',
 'underline-default' => 'உலாவி இயல்பிருப்பு',
 
-# Font style option in Special:Preferences
-'editfont-style' => 'தொகுத்தல் பெட்டி எழுத்துரு:',
-
 # Dates
 'sunday'        => 'ஞாயிறு',
 'monday'        => 'திங்கள்',
@@ -197,9 +194,6 @@ $messages = array(
 'faq'            => 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
 'faqpage'        => 'Project:அடிக்கடி கேட்கப்படும் கேள்விகள்',
 
-# Vector skin
-'vector-namespace-talk' => 'உரையாடல்',
-
 # Metadata in edit box
 'metadata_help' => 'மேல்நிலைத் தரவு:',
 
@@ -235,14 +229,14 @@ $messages = array(
 'talkpagelinktext'  => 'பேச்சு',
 'specialpage'       => 'சிறப்புப் பக்கம்',
 'personaltools'     => 'தனிப்பட்ட பயன்பாட்டுக் கருவிகள்',
-'postcomment'       => 'புதிய கருத்து',
+'postcomment'       => 'கருத்துக்களை அனுப்பு',
 'articlepage'       => 'உள்ளடக்கப் பக்கத்தைப் பார்',
 'talk'              => 'உரையாடல்',
 'views'             => 'பார்வைகள்',
 'toolbox'           => 'கருவிப் பெட்டி',
 'userpage'          => 'பயனர் பக்கத்தைப் பார்',
 'projectpage'       => 'திட்டப் பக்கத்தைப் பார்',
-'imagepage'         => 'கோப்புப் பக்கத்தை நோக்க',
+'imagepage'         => 'படிமப் பக்கத்தைப் பார்',
 'mediawikipage'     => 'தகவல் பக்கத்தைப் பார்',
 'templatepage'      => 'வார்ப்புரு பக்கத்தைப் பார்',
 'viewhelppage'      => 'உதவிப் பக்கததைப் பார்',
@@ -262,6 +256,7 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} பற்றி',
 'aboutpage'            => 'Project:விபரம்',
 'copyright'            => 'உள்ளடக்கங்கள் $1 இன் கீழ் கிடைக்கின்றன.',
+'copyrightpagename'    => '{{SITENAME}} பதிப்புரிமை',
 'copyrightpage'        => '{{ns:project}}:பதிப்புரிமை',
 'currentevents'        => 'தற்போதைய நிகழ்வுகள்',
 'currentevents-url'    => 'Project:நடப்பு நிகழ்வுகள்',
@@ -565,8 +560,7 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 '''கொன்குவெரர்: ''' ''Reload'' அல்லது ''F5'';
 '''ஒபேரா:''' ''Tools → Preferences'' இல் இடைமாற்றை அகற்றவும்;
 '''இண்டர்நெட் எக்ஸ்ப்ளோரர்:''' ''Ctrl-Refresh'' அல்லது ''Ctrl-F5''.",
-'usercssyoucanpreview'             => "'''உதவி:'''உங்களது சி.எஸ்.எஸ்/ஜெ.எஸ். ஐ சேமிக்கு முன்னதாக 'முன்தோற்றத்தைக் காட்டு' பொத்தானைப் பயனபடுத்தவும்",
-'userjsyoucanpreview'              => "'''உதவி:'''உங்களது சி.எஸ்.எஸ்/ஜெ.எஸ். ஐ சேமிக்கு முன்னதாக 'முன்தோற்றத்தைக் காட்டு' பொத்தானைப் பயனபடுத்தவும்",
+'usercssjsyoucanpreview'           => "'''உதவி:'''உங்களது சி.எஸ்.எஸ்/ஜெ.எஸ். ஐ சேமிக்கு முன்னதாக 'முன்தோற்றத்தைக் காட்டு' பொத்தானைப் பயனபடுத்தவும்",
 'usercsspreview'                   => "'''உங்களது பயனர் சி.எஸ்.எஸ். இன் முன் தோற்றத்தை மட்டுமே காண்கிறீர்கள் என்பதை நினைவில் கொள்ளவும்.'''
 '''இது இன்னமும் சேமிக்கப்படவில்லை!'''",
 'userjspreview'                    => "'''நீர் உமது ஜாவா நிரலை சோதிக்கிறீர் அல்லது முன் தோற்றத்தைப் பார்க்கிறீர் என்பதை நினைவக்கவும், இன்னமும் சேமிக்கப்படவில்லை!'''",
@@ -688,9 +682,9 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'rev-deleted-user'            => '(பயனர் பெயர் நீக்கப்பட்டது)',
 'rev-deleted-event'           => '(பதிவு செயற்பாடு நீக்கப்பட்டது)',
 'rev-deleted-text-permission' => 'இந்த பக்கத்திருத்தம் பொது பரணிலிருந்து நீக்கப்பட்டுள்ளது.
-இது தொடர்பான பதிவு [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} நீக்கல் பதிகையில்] காணப்படலாம்.',
+இது தொடர்பான பதிவு [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} நீக்கல் பதிகையில்] காணப்படலாம்.',
 'rev-deleted-text-view'       => 'இந்த பக்கத்திருத்தம் பொது பரணிலிருந்து நீக்கப்பட்டுள்ளது.
-{{SITENAME}} தளத்தின் நிர்வாகி என்ற வகையில் நீங்கள் அதைப் பார்க்கலாம் மேலும் இது தொடர்பான பதிவு [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} நீக்கல் பதிகையில்] காணப்படலாம்.',
+{{SITENAME}} தளத்தின் நிர்வாகி என்ற வகையில் நீங்கள் அதைப் பார்க்கலாம் மேலும் இது தொடர்பான பதிவு [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} நீக்கல் பதிகையில்] காணப்படலாம்.',
 'rev-delundel'                => 'காட்டு/மறை',
 'revisiondelete'              => 'திருத்தங்களை நீக்கு/மீட்டெடு',
 'revdelete-nooldid-title'     => 'செல்லுபடியற்ற இலக்குத் திருத்தம்',
@@ -729,7 +723,6 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'revdelete-unhid'             => '$1 காட்டுக',
 'revdelete-log-message'       => '$2 {{PLURAL:$2|திருத்தத்திற்கு|திருத்தங்களிற்கு}} $1',
 'logdelete-log-message'       => '$2 {{PLURAL:$2|நிகழ்விற்கு|நிகழ்வுகளிற்கு}} $1',
-'revdelete-edit-reasonlist'   => 'நீக்கல் காரணங்களைத் தொகு',
 
 # Suppression log
 'suppressionlog'     => 'அடக்கல் பதிகை',
@@ -829,6 +822,7 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'searchall'                        => 'அனைத்து',
 'showingresults'                   => "'''$2''' இலிருந்து தொடங்கும்  {{PLURAL:$1|'''1''' முடிவு கீழே காட்டப்பட்டுள்ளது|'''$1''' முடிவுகள் கீழே காட்டப்பட்டுள்ளன}}.",
 'showingresultsnum'                => "'''$2''' இலிருந்து தொடங்கும்  {{PLURAL:$3|'''1''' முடிவு கீழே காட்டப்பட்டுள்ளது|'''$3''' முடிவுகள் கீழே காட்டப்பட்டுள்ளன}}.",
+'showingresultstotal'              => "கீழ்வருவன {{PLURAL:$4|'''$3''' முடிவில் '''$1'''|'''$3''' முடிவுகளில் '''$1 - $2'''}}",
 'nonefound'                        => "<strong>குறிப்பு</strong>:சில பெயர்வெளிகள் மட்டுமே இயல்பிருப்பாக தேடப்படும்.
 
 அனைத்து உள்ளடக்கங்களையும் (பேச்சு பக்கங்கள், வார்புருகள் மற்றும் பல) காண ''all:''  என்பதை உங்கள் கேள்விக்கு முன்னொட்டி முயற்சிக்கவும் அல்லது விரும்பப்படும் பெயர்வெளியை முன்னொட்டியாக உபயோகிக்கவும்.",
@@ -853,7 +847,7 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'mypreferences'             => 'என் விருப்பத்தேர்வுகள்',
 'prefs-edits'               => 'தொகுப்புகளின் எண்ணிக்கை:',
 'prefsnologin'              => 'புகுபதிகை செய்யப்படவில்லை',
-'prefsnologintext'          => 'பயனர் விருப்பத்தேர்வுகளை அமைப்பதற்கு நீங்கள் <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} புகுபதிகை ]</span> செய்திருக்க வேண்டும்.',
+'prefsnologintext'          => 'பயனர் விருப்பத்தேர்வுகளை அமைப்பதற்கு நீங்கள் <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} புகுபதிகை ]</span> செய்திருக்க வேண்டும்.',
 'changepassword'            => 'கடவுச்சொல்லை மாற்று',
 'prefs-skin'                => 'தோல்',
 'skin-preview'              => 'முன்தோற்றம்',
@@ -1143,7 +1137,6 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'upload-curl-error28-text' => 'இத்தளம் பதில் கொடுக்க நீண்ட நேரம் எடுத்தது. அருள் கூர்ந்து இணையத் தளம் செயல்படுகிறதா என்பதை பார்த்து மீண்டும் முயல்க. அல்லது இணைய நெரிசல் குறைவான நேரத்தில் முயலவும்',
 
 'license'            => 'அனுமதி:',
-'license-header'     => 'அனுமதி:',
 'nolicense'          => 'தெரிவுச் செய்யப்படவில்லை',
 'license-nopreview'  => '(முன்தோற்றம் கையிலிருப்பில் இல்லை)',
 'upload_source_url'  => ' (செல்லுபடியான, இணைய முகவரி)',
@@ -1433,7 +1426,7 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'enotif_body'                  => 'வணக்கம் $WATCHINGUSERNAME,
 
 
-{{SITENAME}} தளத்தின் $PAGETITLE பக்கம் $PAGEEDITDATEANDTIME அன்று $PAGEEDITOR என்ற பெயருடைய பயனரால் $CHANGEDORCREATED, இப்பக்கத்தின் தற்போதைய பதிப்பை $PAGETITLE_URL என்ற இணைப்பின் வழிச் சென்றுக் காணலாம்.
+{{SITENAME}} தளத்தின் $PAGETITLE பக்கம் $PAGEEDITDATE அன்று $PAGEEDITOR என்ற பெயருடைய பயனரால் $CHANGEDORCREATED, இப்பக்கத்தின் தற்போதைய பதிப்பை $PAGETITLE_URL என்ற இணைப்பின் வழிச் சென்றுக் காணலாம்.
 
 
 $NEWPAGE
@@ -1450,7 +1443,7 @@ $NEWPAGE
 
 --
 உங்கள் கவனிப்புப் பட்டியல் அமைவுகளை மாற்ற
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:{{ns:special}}:Watchlist/edit}}
 
 பின்னூட்டம், மேலதிக உதவிகளுக்கு:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1804,6 +1797,8 @@ $1',
 'allmessagestext'           => 'இது மீடியாவிக்கி பெயர்வெளியிலுள்ள எல்லா முறைமை தகவல்களினதும் பட்டியலாகும்.
 மொழிபெயர்ப்பில் உதவ விரும்பின் அருள்கூர்ந்து [http://translatewiki.net பீட்டாவிக்கி], [http://www.mediawiki.org/wiki/Localisation மீடியாவிக்கி மொழியாக்க]  தளங்களுக்குச் செல்லவும்.',
 'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages''' முடக்கப்பட்டுள்ளப் படியால் இப்பக்கததை பயன்படுத்த முடியாது.",
+'allmessagesfilter'         => 'தகவல் பெயர் வடி:',
+'allmessagesmodified'       => 'மாற்றம் செய்யப்பட்டவற்றை மட்டும் காட்டு',
 
 # Thumbnails
 'thumbnail-more'           => 'பெரிதாக்கு',

@@ -18,18 +18,19 @@ class SkinStandard extends Skin {
 	/**
 	 *
 	 */
-	function getHeadScripts( OutputPage $out ) {
+	function getHeadScripts( $allowUserJs ) {
 		global $wgStylePath, $wgJsMimeType, $wgStyleVersion;
 
-		$s = parent::getHeadScripts( $out );
-		if ( 3 == $this->qbSetting() ) { # Floating left			
-			$out->addScriptFile ( "{$wgStylePath}/common/sticky.js" );
+		$s = parent::getHeadScripts( $allowUserJs );
+		if ( 3 == $this->qbSetting() ) { # Floating left
+			$s .= "<script language='javascript' type='$wgJsMimeType' " .
+			  "src='{$wgStylePath}/common/sticky.js?$wgStyleVersion'></script>\n";
 		}
 		return $s;
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	function setupSkinUserCss( OutputPage $out ){
 		if ( 3 == $this->qbSetting() ) { # Floating left
@@ -101,7 +102,7 @@ class SkinStandard extends Skin {
 		}
 		wfProfileOut( __METHOD__ . '-2' );
 		wfProfileIn( __METHOD__ . '-3' );
-		$l = $wgContLang->alignStart();
+		$l = $wgContLang->isRTL() ? 'right' : 'left';
 		$s .= "<td class='bottom' align='$l' valign='top'>";
 
 		$s .= $this->bottomLinks();

@@ -10,6 +10,9 @@ class SpecialPreferences extends SpecialPage {
 
 		$this->setHeaders();
 		$this->outputHeader();
+
+		$wgOut->addScriptFile( 'prefs.js' );
+
 		$wgOut->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
 
 		if ( $wgUser->isAnon() ) {
@@ -25,12 +28,10 @@ class SpecialPreferences extends SpecialPage {
 			$this->showResetForm();
 			return;
 		}
-		
-		$wgOut->addScriptFile( 'prefs.js' );
 
 		if ( $wgRequest->getCheck( 'success' ) ) {
 			$wgOut->wrapWikiMsg(
-				'<div class="successbox"><strong>$1</strong></div><div id="mw-pref-clear"></div>',
+				'<div class="successbox"><strong>$1</strong></div>',
 				'savedprefs'
 			);
 		}

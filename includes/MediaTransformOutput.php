@@ -80,19 +80,20 @@ abstract class MediaTransformOutput {
 		}
 	}
 
-	function getDescLinkAttribs( $title = null, $params = '' ) {
+	function getDescLinkAttribs( $alt = false, $params = '' ) {
 		$query = $this->page ? ( 'page=' . urlencode( $this->page ) ) : '';
 		if( $params ) {
 			$query .= $query ? '&'.$params : $params;
 		}
-		$attribs = array(
+		$title = $this->file->getTitle();
+		if ( strval( $alt ) === '' ) {
+			$alt = $title->getText();
+		}
+		return array(
 			'href' => $this->file->getTitle()->getLocalURL( $query ),
 			'class' => 'image',
+			'title' => $alt
 		);
-		if ( $title ) {
-			$attribs['title'] = $title;
-		}
-		return $attribs;
 	}
 }
 
@@ -150,22 +151,22 @@ class ThumbnailImage extends MediaTransformOutput {
 		}
 
 		$alt = empty( $options['alt'] ) ? '' : $options['alt'];
-
-		$query = empty( $options['desc-query'] )  ? '' : $options['desc-query'];
+		# Note: if title is empty and alt is not, make the title empty, don't
+		# use alt; only use alt if title is not set
+		$title = !isset( $options['title'] ) ? $alt : $options['title'];
+		$query = empty($options['desc-query'])  ? '' : $options['desc-query'];
 
 		if ( !empty( $options['custom-url-link'] ) ) {
 			$linkAttribs = array( 'href' => $options['custom-url-link'] );
-			if ( !empty( $options['title'] ) ) {
-				$linkAttribs['title'] = $options['title'];
+			if ( $alt ) {
+				$linkAttribs['title'] = $alt;
 			}
 		} elseif ( !empty( $options['custom-title-link'] ) ) {
 			$title = $options['custom-title-link'];
-			$linkAttribs = array(
-				'href' => $title->getLinkUrl(),
-				'title' => empty( $options['title'] ) ? $title->getFullText() : $options['title']
-			);
+			$linkAttribs = array( 'href' => $title->getLinkUrl(),
+					'title' => empty( $options['alt'] ) ? $title->getFullText() : $alt );
 		} elseif ( !empty( $options['desc-link'] ) ) {
-			$linkAttribs = $this->getDescLinkAttribs( empty( $options['title'] ) ? null : $options['title'], $query );
+			$linkAttribs = $this->getDescLinkAttribs( $title, $query );
 		} elseif ( !empty( $options['file-link'] ) ) {
 			$linkAttribs = array( 'href' => $this->file->getURL() );
 		} else {

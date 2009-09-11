@@ -215,6 +215,7 @@ $messages = array(
 'aboutsite'            => 'Heqa {{SITENAME}} de',
 'aboutpage'            => 'Project:Heqa',
 'copyright'            => 'Nuştey bınê Lisansê $1 de vêrenê.',
+'copyrightpagename'    => 'Heqa telifê {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Heqê telifi',
 'currentevents'        => 'Textey cerrebi',
 'currentevents-url'    => 'Project:Textey cerrebi',
@@ -361,7 +362,7 @@ Eq tı wazen yew bıvırazi, bınê eno nuşte dı yew quti esto u uca dı bınu
 Eg tı itiya semed yew heta ra amey, ser gocekê '''back'''i klik bıkin.",
 'noarticletext'                    => 'Ena pele dı hona çık çino.    
 Tı eşkeno zerre pelanê binan dı [[Special:Search/{{PAGENAME}}|ser ena name cıgeyro]],
-<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} ser logan cıgeyro],
+<span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} ser logan cıgeyro],
 ya zi [{{fullurl:{{FULLPAGENAME}}|action=edit}} ena pele bıvurno]</span>.',
 'previewnote'                      => "'''Teme! ena teyna verqeyda.'''
 Vurnayışê tu hama qeyd nıbiyo!",
@@ -433,6 +434,7 @@ Tı şeno/eşkeno [[:\$1|ena name dı nuşte bınusi]].",
 'search-interwiki-more'     => '(hona)',
 'search-mwsuggest-enabled'  => 'be teklifan',
 'search-mwsuggest-disabled' => 'teklifi çıniyê',
+'showingresultstotal'       => "mucneno bın  {{PLURAL:$4|netice '''$1''' of '''$3'''|neticeyan '''$1 - $2''' of '''$3'''}}",
 'nonefound'                 => "'''Teme''': Teyna tay namecayan cıgeyro beno. 
 Pe verbendi ''all:'', vaceyê xo bıvurni ki contenti hemi cıgeyro (pelanê mınaqeşe, templatenan, ucb.) ya zi cıgeyro ser namecay ki tı wazeni.",
 'powersearch'               => 'Cıgeyrayışo hera',

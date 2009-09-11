@@ -99,7 +99,7 @@ function wfSpecialFileDuplicateSearch( $par = null ) {
 	);
 
 	if( $hash != '' ) {
-		$align = $wgContLang->alignEnd();
+		$align = $wgContLang->isRtl() ? 'left' : 'right';
 
 		# Show a thumbnail of the file
 		$img = wfFindFile( $title );
@@ -125,14 +125,14 @@ function wfSpecialFileDuplicateSearch( $par = null ) {
 
 		# Show a short summary
 		if( $count == 1 ) {
-			$wgOut->wrapWikiMsg(
-				"<p class='mw-fileduplicatesearch-result-1'>\n$1\n</p>",
-				array( 'fileduplicatesearch-result-1', $filename )
+			$wgOut->addHTML( '<p class="mw-fileduplicatesearch-result-1">' .
+				wfMsgHtml( 'fileduplicatesearch-result-1', $filename ) .
+				'</p>'
 			);
 		} elseif ( $count > 1 ) {
-			$wgOut->wrapWikiMsg(
-				"<p class='mw-fileduplicatesearch-result-n'>\n$1\n</p>",
-				array( 'fileduplicatesearch-result-n', $filename, $wgLang->formatNum( $count - 1 ) )
+			$wgOut->addHTML( '<p class="mw-fileduplicatesearch-result-n">' .
+				wfMsgExt( 'fileduplicatesearch-result-n', array( 'parseinline' ), $filename, $wgLang->formatNum( $count - 1 ) ) .
+				'</p>'
 			);
 		}
 	}

@@ -8,7 +8,6 @@
  * @file
  *
  * @author Juanpabl
- * @author Malafaya
  * @author Remember the dot
  * @author Urhixidur
  * @author Willtron
@@ -330,6 +329,7 @@ $messages = array(
 'aboutsite'            => 'Informazión sobre {{SITENAME}}',
 'aboutpage'            => 'Project:Sobre',
 'copyright'            => 'O conteniu ye disponible baxo a lizenzia $1.',
+'copyrightpagename'    => "Dreitos d'autor de {{SITENAME}}",
 'copyrightpage'        => "{{ns:project}}:Dreitos d'autor",
 'currentevents'        => 'Autualidat',
 'currentevents-url'    => 'Project:Autualidat',
@@ -508,8 +508,7 @@ Comprebe si ha escrito bien o nombre u [[Special:UserLogin/signup|creye una nueb
 'nouserspecified'            => "Ha d'escribir un nombre d'usuario.",
 'wrongpassword'              => 'A palabra de paso endicata no ye correuta. Prebe unatra begada.',
 'wrongpasswordempty'         => 'No ha escrito garra palabra de paso. Prebe unatra begada.',
-'passwordtooshort'           => 'A contraseña ye masiau curta. 
-Ha de tener á lo menos {{PLURAL:$1|1 caráuter|$1 caráuters}}.',
+'passwordtooshort'           => "A suya palabra de paso no ye conforme u ye masiau curta. Ha de tener como menimo {{PLURAL:$1|1 caráuter|$1 caráuters}} y no puede estar o suyo nombre d'usuario.",
 'mailmypassword'             => 'Nimbiar una nueba palabra de paso por correu eletronico',
 'passwordremindertitle'      => 'Nueba palabra de paso temporal de {{SITENAME}}',
 'passwordremindertext'       => 'Belún (probablement busté, dende l\'adreza IP $1) demandó una nueba palabra de paso ta la suya cuenta en {{SITENAME}} ($4). S\'ha creyato una nueba palabra de paso temporal ta l\'usuario "$2", que ye "$3".
@@ -646,7 +645,7 @@ Si bi ha plegau por error, punche o botón d'o suyo nabegador ta tornar entazaga
 'anontalkpagetext'                 => "----''Ista ye a pachina de descusión d'un usuario anonimo que encara no ha creyato una cuenta, u no l'ha feito serbir. Por ixo, emos d'emplegar a suya adreza IP ta identificar-lo/a. 
 Barios usuarios pueden compartir una mesma adreza IP. 
 Si busté ye un usuario anonimo y creye que l'han escrito comentarios no relebants, [[Special:UserLogin/signup|creye una cuenta]] u [[Special:UserLogin/signup|identifique-se]] ta pribar confusions futuras con atros usuarios anonimos.''",
-'noarticletext'                    => 'Por agora no bi ha garra testo en ista pachina. Puet [[Special:Search/{{PAGENAME}}|mirar o títol d\'ista pachina]] en atras pachinas, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} mirar os rechistros relazionatos] u [{{fullurl:{{FULLPAGENAME}}|action=edit}} escribir ista pachina].',
+'noarticletext'                    => 'Por agora no bi ha garra testo en ista pachina. Puet [[Special:Search/{{PAGENAME}}|mirar o títol d\'ista pachina]] en atras pachinas, <span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} mirar os rechistros relazionatos] u [{{fullurl:{{FULLPAGENAME}}|action=edit}} escribir ista pachina].',
 'userpage-userdoesnotexist'        => 'A cuenta d\'usuario "$1" no ye rechistrada. Piense si quiere creyar u editar ista pachina.',
 'clearyourcache'                   => "'''Pare cuenta: Si quiere beyer os cambeos dimpués d'alzar l'archibo, puede estar que tienga que refrescar a caché d'o suyo nabegador ta beyer os cambeos.''' 
 
@@ -654,8 +653,7 @@ Si busté ye un usuario anonimo y creye que l'han escrito comentarios no releban
 *'''Konqueror: ''' punche ''Reload'' u prete ''F5;'' 
 *'''Opera:''' limpiar a caché en ''Tools → Preferences;'' 
 *'''Internet Explorer:''' prete ''Ctrl'' mientres puncha ''Refresh,'' u prete ''Ctrl-F5.''",
-'usercssyoucanpreview'             => "'''Consello:''' Faga serbir o botón «Amostrar prebisualizazión» ta prebar o nuebo css/js antes de grabar-lo.",
-'userjsyoucanpreview'              => "'''Consello:''' Faga serbir o botón «Amostrar prebisualizazión» ta prebar o nuebo css/js antes de grabar-lo.",
+'usercssjsyoucanpreview'           => "'''Consello:''' Faga serbir o botón «Amostrar prebisualizazión» ta prebar o nuebo css/js antes de grabar-lo.",
 'usercsspreview'                   => "'''Remere que isto no ye que una prebisualizazión d'o suyo CSS d'usuario.'''
 '''Encara no s'ha alzato!'''",
 'userjspreview'                    => "'''Remere que sólo ye prebisualizando o suyo javascript d'usuario y encara no ye grabato!'''",
@@ -788,9 +786,9 @@ Prebe de [[Special:Search|mirar en o wiki]] atras pachinas relebants.",
 'rev-deleted-user'            => "(s'ha sacato iste nombre d'usuario)",
 'rev-deleted-event'           => "(Aizión borrata d'o rechistro)",
 'rev-deleted-text-permission' => "Ista bersión d'a pachina s'ha '''borrato'''.
-Talment trobe más detalles en o [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rechistro de borratos].",
+Puede trobar más detalles en o [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rechistro de borratos].",
 'rev-deleted-text-view'       => "Ista bersión d'a pachina s'ha '''borrato'''.
-Como almenistrador, la puet beyer; talment trobe más detalles en o [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rechistro de borratos].",
+La puet beyer porque ye almenistrador/a; puede trobar más detalles en o [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rechistro de borratos].",
 'rev-delundel'                => 'amostrar/amagar',
 'revisiondelete'              => 'Borrar/esfer borrau de bersions',
 'revdelete-nooldid-title'     => 'A bersión de destino no ye conforme',
@@ -801,16 +799,15 @@ Como almenistrador, la puet beyer; talment trobe más detalles en o [{{fullurl:{
 'revdelete-nologid-text'      => 'No ha endicau sobre qué ebento rechistrau quiere fer serbir ista funzión u bien no esiste a dentrada de rechistro que ha endicau.',
 'revdelete-selected'          => "'''{{PLURAL:$2|Bersión trigata|Bersions trigatas}} de [[:$1]]:'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Escaizimiento d'o rechistro trigato|Escaizimientos d'o rechistro trigatos}}:'''",
-'revdelete-text'              => "'''As bersions y escaizimientos borratos encara apareixerán en o istorial d'a pachina y en o rechistros, pero bellas partes d'o suyo conteniu serán inaczesibles ta o publico.'''
-Atros almenistradors de {{SITENAME}} encara podrán azeder t'o conteniu amagato y podrán esfer o borrau á trabiés d'ista mesma interfaz, fueras de si s'estableixen restrizions adizionals.
+'revdelete-text'              => "'''As bersions borratas encara aparixerán en o istorial y o rechistro d'a pachina, pero os suyos contenius no serán azesibles ta o publico.'''
 
-Por fabor confirme que ye mirando de fer ísto, que entiende as consecuenzias, y que lo ye fendo d'alcuerdo con [[{{MediaWiki:Policy-url}}|as politicas]].",
+Atros almenistradors de {{SITENAME}} encara podrán azeder t'o contineiu amagato y podrán esfer o borrau á trabiés d'a mesma interfaz, fueras de si os operadors establen restrizions adizionals.",
 'revdelete-legend'            => 'Establir as restrizions de bisibilidat:',
 'revdelete-hide-text'         => "Amagar o testo d'a bersión",
 'revdelete-hide-name'         => 'Amagar aizión y obchetibo',
 'revdelete-hide-comment'      => "Amagar comentario d'edizión",
 'revdelete-hide-user'         => "Amagar o nombre/l'adreza IP d'o editor",
-'revdelete-hide-restricted'   => "Suprimir os datos d'os almenistradors igual como os d'a resta",
+'revdelete-hide-restricted'   => 'Aplicar istas restrizions á os almenistradors y bloqueyar ista interfaz',
 'revdelete-suppress'          => "Sacar os datos d'os almenistradors igual como os d'a resta d'usuarios",
 'revdelete-hide-image'        => "Amagar o conteniu de l'archibo",
 'revdelete-unsuppress'        => "Sacar restrizions d'as bersions restauradas",
@@ -946,7 +943,7 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'viewprevnext'                     => 'Beyer ($1) ($2) ($3)',
 'searchmenu-legend'                => 'Opzions de busca',
 'searchmenu-exists'                => "'''Bi ha una pachina clamada \"[[\$1]]\" en ista wiki'''",
-'searchmenu-new'                   => "'''Creyar a pachina \"[[:\$1]]\" en ista wiki!'''",
+'searchmenu-new'                   => "'''[[:\$1|Creyar]] a pachina \"[:\$1]\" en ista wiki!'''",
 'searchhelp-url'                   => 'Help:Aduya',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Beyer pachinas con iste prefixo]]',
 'searchprofile-articles'           => 'Articlos',
@@ -975,6 +972,7 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'searchall'                        => 'toz',
 'showingresults'                   => "Contino se bi {{PLURAL:$1|amuestra '''1''' resultau|amuestran '''$1''' resultaus}} prenzipiando por o numero '''$2'''.",
 'showingresultsnum'                => "Contino se bi {{PLURAL:$3|amuestra '''1''' resultau|amuestran os '''$3''' resultaus}} prenzipiando por o numero '''$2'''.",
+'showingresultstotal'              => "Contino {{PLURAL:$4|s'amuestra o resultau '''$1''' de '''$3'''|s'amuestran os resultaus '''$1 - $2''' de '''$3'''}}",
 'nonefound'                        => "'''Pare cuenta''': Por defeuto nomás se mira en bels espazios de nombres. Si quiere mirar en toz os contenius (encluyendo pachinas de descusión, plantillas, etc), adiba o prefixo ''all:'' u clabe como prefixo o espazio de nombres deseyau.",
 'search-nonefound'                 => "No s'ha trobato garra resultau que cumpla os criterios.",
 'powersearch'                      => 'Busca abanzata',
@@ -998,7 +996,7 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'mypreferences'             => 'Preferenzias',
 'prefs-edits'               => "Numero d'edizions:",
 'prefsnologin'              => 'No ye identificato',
-'prefsnologintext'          => 'Ha d\'aber <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} enzetato una sesión] </span> ta cambiar as preferenzias d\'usuario.',
+'prefsnologintext'          => 'Ha d\'aber <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} enzetato una sesión] </span> ta cambiar as preferenzias d\'usuario.',
 'changepassword'            => 'Cambiar a palabra de paso',
 'prefs-skin'                => 'Aparenzia',
 'skin-preview'              => 'Fer una prebatina',
@@ -1030,23 +1028,13 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'recentchangesdays-max'     => '(masimo $1 {{PLURAL:$1|día|días}})',
 'recentchangescount'        => "Numero d'edizions que s'amostrarán, por defeuto, en as pachinas de zaguers cambeos, istorials y rechistros:",
 'savedprefs'                => "S'han alzato as suyas preferenzias.",
-'timezonelegend'            => 'Fuso orario:',
+'timezonelegend'            => 'Fuso orario',
 'localtime'                 => 'Ora local:',
 'timezoneuseserverdefault'  => "Usar a zona d'o serbidor",
 'timezoneuseoffset'         => 'Atra (espezifica a esferenzia)',
 'timezoneoffset'            => 'Esferenzia¹:',
 'servertime'                => 'A ora en o serbidor ye:',
 'guesstimezone'             => "Emplir-lo con a ora d'o nabegador",
-'timezoneregion-africa'     => 'Africa',
-'timezoneregion-america'    => 'America',
-'timezoneregion-antarctica' => 'Antartica',
-'timezoneregion-arctic'     => 'Artico',
-'timezoneregion-asia'       => 'Asia',
-'timezoneregion-atlantic'   => 'Oziano Atlantico',
-'timezoneregion-australia'  => 'Australia',
-'timezoneregion-europe'     => 'Europa',
-'timezoneregion-indian'     => 'Oziano Indico',
-'timezoneregion-pacific'    => 'Oziano Pazifico',
 'allowemail'                => "Autibar a rezepzión de correu d'atros usuarios",
 'prefs-searchoptions'       => 'Opzions de busca',
 'prefs-namespaces'          => 'Espazios de nombres',
@@ -1161,8 +1149,6 @@ Abría de tener menos de $1 {{PLURAL:$1|caráuter|caráuters}}.',
 'right-editprotected'        => 'Editar pachinas protechitas (sin de protezión en cascada)',
 'right-editinterface'        => "Editar a interfizie d'usuario",
 'right-editusercssjs'        => "Editar os archibos CSS y JS d'atros usuarios",
-'right-editusercss'          => "Editar os archibos CSS d'atros usuarios",
-'right-edituserjs'           => "Editar os archibos JS d'atros usuarios",
 'right-rollback'             => "Esfer á escape a edizión d'a zaguer usuario que cambió una pachina",
 'right-markbotedits'         => 'Siñalar as edizions esfeitas como edizions de bot',
 'right-noratelimit'          => "No se les aplican as tasas masimas d'edizions",
@@ -1334,7 +1320,7 @@ Si encara quiere cargar ixe archibo, torne y faiga serbir un nuebo nombre. [[Fil
 'sourcefilename'              => "Nombre de l'archibo d'orichen:",
 'destfilename'                => "Nombre de l'archibo de destín:",
 'upload-maxfilesize'          => "Masima grandaria de l'archibo: $1",
-'watchthisupload'             => 'Cosirar iste fichero',
+'watchthisupload'             => 'Cosirar ista pachina',
 'filewasdeleted'              => 'Una archibo con iste mesmo nombre ya se cargó denantes y estió borrato dimpués. Abría de comprebar $1 antes de tornar á cargar-lo una atra begada.',
 'upload-wasdeleted'           => "'''Pare cuenta: Ye cargando un archibo que ya estió borrato d'antes más.'''
 
@@ -1369,7 +1355,6 @@ PICT # misz.
 'upload-curl-error28-text' => "O tiempo de respuesta d'a pachina ye masiau gran. Por fabor, comprebe si o serbidor ye funzionando, aspere bel tiempo y mire de tornar á fer-lo.  Talment deseye prebar de nuebo cuan o rete tienga menos carga.",
 
 'license'            => 'Lizenzia:',
-'license-header'     => 'Lizenzia:',
 'nolicense'          => "No s'en ha trigato garra",
 'license-nopreview'  => '(Ambiesta prebia no disponible)',
 'upload_source_url'  => ' (una URL conforme y publicament aczesible)',
@@ -1728,25 +1713,26 @@ L\'adreza de correu-e que endicó en as suyas [[Special:Preferences|preferenzias
 'enotif_body'                  => 'Quiesto/a $WATCHINGUSERNAME,
 
 A pachina «$PAGETITLE» de {{SITENAME}}
-ha estato $CHANGEDORCREATED por l\'usuario $PAGEEDITOR o $PAGEEDITDATEANDTIME. $REVINFO
+ha estato $CHANGEDORCREATED por l\'usuario $PAGEEDITOR o $PAGEEDITDATE.
+Puede trobar a bersión autual en {{fullurl:$PAGETITLE}}
 
 $NEWPAGE
 
 O resumen d\'a edizión ye: $PAGESUMMARY $PAGEMINOREDIT
 
 Ta comunicar-se con l\'usuario:
-por correu: $PAGEEDITOR_EMAIL
-en o wiki: $PAGEEDITOR_WIKI
+por correu: {{fullurl:Special:Emailuser|target=$PAGEEDITOR}}
+en o wiki: {{fullurl:User:$PAGEEDITOR}}
 
 Ta recullir nuebas notificazions de cambios d\'ista pachina abrá de besitar-la nuebament.
 Tamién puede cambiar, en a su lista de seguimiento, as opzions de notificazión d\'as pachinas que ye cosirando.
 
 Atentament,
-O sistema de notificazión de {{SITENAME}}.
+ O sistema de notificazión de {{SITENAME}}.
 
 --
 Ta cambiar as opzions d\'a suya lista de seguimiento en:
-{{fullurl:{{#special:Watchlist}}/edit}}
+{{fullurl:Special:Watchlist|edit=yes}}
 
 Ta obtenir más informazión y aduya:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1840,7 +1826,7 @@ Contino se i amuestran as opzions autuals d'a pachina '''$1''':",
 **Guerra d'edizions
 **Pachina muit besitada",
 'protect-edit-reasonlist'     => 'Editar as razons ta protecher',
-'protect-expiry-options'      => '1 ora:1 hour,1 día:1 day,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite',
+'protect-expiry-options'      => '2 oras:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite',
 'restriction-type'            => 'Premiso:',
 'restriction-level'           => 'Libel de restrizión:',
 'minimum-size'                => 'Grandaria menima',
@@ -1977,7 +1963,7 @@ as pachinas que s'han bandalizato).",
 'ipboptions'                      => '2 oras:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite',
 'ipbotheroption'                  => 'atro',
 'ipbotherreason'                  => 'Razons diferens u adizionals',
-'ipbhidename'                     => "Amagar o nombre d'usuario en edizions y listas",
+'ipbhidename'                     => "Amagar usuario en o rechistro de bloqueyos, a lista de bloqueyos autibos y a lista d'usuarios",
 'ipbwatchuser'                    => "Cosirar as pachinas d'usuario y de descusión d'iste usuario",
 'ipballowusertalk'                => 'Premitir que iste usuario edite a suya pachina de descusión en o tiempo que ye bloqueyato',
 'ipb-change-block'                => "Rebloquyear á l'usuario con istas condizions",
@@ -2160,6 +2146,8 @@ En iste zaguer caso tamién puede usar un binclo, por exemplo [[{{#Special:Expor
 'allmessagestext'           => "Ista ye una lista de toz os mensaches disponibles en o espazio de nombres MediaWiki.
 Besite por fabor [http://www.mediawiki.org/wiki/Localisation a pachina sobre localizazión de MediaWiki] y  [http://translatewiki.net translatewiki.net] si deseya contrebuyir t'a localizazión cheneral de MediaWiki.",
 'allmessagesnotsupportedDB' => 'Ista pachina no ye disponible porque wgUseDatabaseMessages ye desautibato.',
+'allmessagesfilter'         => "Filtrar por a etiqueta d'os mensaches:",
+'allmessagesmodified'       => 'Amostrar nomás os mensaches cambiatos',
 
 # Thumbnails
 'thumbnail-more'           => 'Fer más gran',
@@ -2372,7 +2360,7 @@ $1",
 
 # Media information
 'mediawarning'         => "'''Pare cuenta''': Iste archibo puede contener codigo endino; si l'executa, podría meter en un contornillo a seguridat d'o suyo sistema.<hr />",
-'imagemaxsize'         => "Limite de grandaria d'as imáchens:<br />''(ta pachinas de descripzión de fichers)''",
+'imagemaxsize'         => "Limitar as imachens en as pachinas de descripzión d'archibos á:",
 'thumbsize'            => "Midas d'a miniatura:",
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|pachina|pachinas}}',
 'file-info'            => "(grandaria de l'archibo: $1; tipo MIME: $2)",
@@ -2725,7 +2713,7 @@ Iste codigo de confirmazión zircunduzirá en $4.',
 'scarytranscludetoolong'  => '[O URL ye masiau largo]',
 
 # Trackbacks
-'trackbackbox'      => 'Retrobinclos (trackbacks) ta ista pachina:<br />
+'trackbackbox'      => 'Retrobinclos (trackbacks) ta iste articlo:<br />
 $1',
 'trackbackremove'   => '([$1 Borrar])',
 'trackbacklink'     => 'Retrobinclo (Trackback)',
@@ -2871,14 +2859,13 @@ Escriba o nombre de l\'archibo sin o prefixo "{{ns:file}}:".',
 'intentionallyblankpage' => "Esta pachina s'ha deixato en blanco aldredes y se fa serbir ta fer prebatinas, ezt.",
 
 # External image whitelist
-'external_image_whitelist' => "  #Deixe ista linia sin cambiar-la<pre>
+'external_image_whitelist' => " #No faiga cambeos en ista linia<pre>
 #Meta debaixo fragmentos d'esprisions regulars (nomás a parte que be entre //)
 #Se mirará si istas concuerdan con os URLs d'imáchens esternas (hotlinked)
-#As que concorden s'amostrarán como imáchens, en as que no, nomás s'amostrará un binclo t'a imachen
+#As que concuerden s'amostrarán como imáchens, en as que no, nomás s'amostrará un binclo t'a imachen
 #As ringleras que prenzipian por «#» se consideran comentarios
-#Tot isto ye insensible á las mayusclas/minusclas
 
-#Meta toz os fragmentos de regex denzima d'ista ringlera. No faiga cambeos en ista linia</pre>",
+#Meta toz os fragmentos de regex por denzima d'ista ringlera. No faiga cambeos en ista linia</pre>",
 
 # Special:Tags
 'tag-filter'              => 'Filtrar as [[Special:Tags|etiquetas]]:',

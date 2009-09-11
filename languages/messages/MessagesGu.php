@@ -369,6 +369,7 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} વિષે',
 'aboutpage'            => 'Project:વિષે',
 'copyright'            => '$1 હેઠળ માહિતિ ઉપલબ્ધ છે.',
+'copyrightpagename'    => '{{SITENAME}} પ્રકાશનાધિકાર',
 'copyrightpage'        => '{{ns:project}}:પ્રકાશનાધિકાર',
 'currentevents'        => 'વર્તમાન ઘટનાઓ',
 'currentevents-url'    => 'Project:વર્તમાન ઘટનાઓ',
@@ -418,7 +419,6 @@ $messages = array(
 'site-rss-feed'           => '$1 RSS Feed',
 'site-atom-feed'          => '$1 Atom Feed',
 'page-rss-feed'           => '"$1" RSS Feed',
-'page-atom-feed'          => '"$1" એટોમ ફીડ',
 'red-link-title'          => '$1 (પાનું અસ્તિત્વ ધરાવતું નથી)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
@@ -670,7 +670,7 @@ Please log in again after you receive it.
 <br />નવું પાનું બનાવવા માટે નીચે આપેલા ખાનામાં લખવાનું શરૂ કરો (વધુ માહિતિ માટે [[{{MediaWiki:Helppage}}|મદદ]] જુઓ).
 <br />જો આપ ભુલમાં અહીં આવી ગયા હોવ તો, આપનાં બ્રાઉઝર નાં '''બેક''' બટન પર ક્લિક કરીને પાછા વળો.",
 'noarticletext'                    => 'આ પાનામાં હાલમાં કોઇ માહિતિ નથી.
-તમે  [[Special:Search/{{PAGENAME}}|આ શબ્દ]] ધરાવતાં અન્ય લેખો શોધી શકો છો, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} સંલગ્ન માહિતિ પત્રકોમાં શોધી શકો છો],
+તમે  [[Special:Search/{{PAGENAME}}|આ શબ્દ]] ધરાવતાં અન્ય લેખો શોધી શકો છો, <span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} સંલગ્ન માહિતિ પત્રકોમાં શોધી શકો છો],
 અથવા  [{{fullurl:{{FULLPAGENAME}}|action=edit}} આ પાનામાં ફેરફાર કરી] માહિતિ ઉમેરવાનું શરૂ કરી શકો છો</span>.',
 'note'                             => "'''નોંધ:'''",
 'previewnote'                      => "'''આ ફક્ત પૂર્વાવલોકન છે;'''
@@ -731,9 +731,8 @@ Please log in again after you receive it.
 'history-feed-item-nocomment' => '$1, $2 સમયે',
 
 # Revision deletion
-'rev-delundel'              => 'બતાવો/છુપાવો',
-'revdel-restore'            => 'વિઝિબિલિટિ બદલો',
-'revdelete-edit-reasonlist' => 'ભુંસવાનું કારણ બદલો.',
+'rev-delundel'   => 'બતાવો/છુપાવો',
+'revdel-restore' => 'વિઝિબિલિટિ બદલો',
 
 # Merge log
 'revertmerge' => 'છુટુ પાડો',
@@ -771,6 +770,7 @@ Please log in again after you receive it.
 'search-interwiki-more'     => '(વધુ)',
 'search-mwsuggest-enabled'  => 'સુઝાવ સહિત',
 'search-mwsuggest-disabled' => 'સુઝાવ વિના',
+'showingresultstotal'       => "{{PLURAL:$4|'''$3'''નું '''$1''' પરિણામ |'''$3'''નાં '''$1 - $2''' પરિણામો}} નીચે દર્શાવ્યાં છે",
 'nonefound'                 => "'''નોંધ''':ફક્ત અમુકજ નામસ્થળોમાં આપોઆપ શોધાશે.
 તમારા શબ્દને ''બધા:'' ઉમેરી શોધવાનો પ્રયત્ન કરો, જેથી બધી માહિતિમાં (જેમકે ચર્ચાના પાના, ઢાંચા, વિગેરે)માં શોધ થઈ શકે, અથવાતો ઇચ્છિત નામસ્થળ પસંદ કરી શોધો બટન દબાવો.",
 'powersearch'               => 'શોધો (વધુ પર્યાય સાથે)',
@@ -794,10 +794,6 @@ Please log in again after you receive it.
 'prefs-datetime'            => 'તારીખ અને સમય',
 'prefs-watchlist'           => 'ધ્યાનસૂચિ',
 'searchresultshead'         => 'શોધો',
-'timezonelegend'            => 'સમય ક્ષેત્ર:',
-'localtime'                 => 'સ્થાનીક સમય:',
-'prefs-searchoptions'       => 'શોધ વિકલ્પો',
-'prefs-emailconfirm-label'  => 'ઇ-મેલ પુષ્ટી',
 'youremail'                 => 'ઇ-મેઇલ:',
 'username'                  => 'સભ્ય નામ:',
 'prefs-memberingroups'      => '{{PLURAL:$1|સમુહ|સમુહો}}ના સભ્ય:',
@@ -816,10 +812,6 @@ Please log in again after you receive it.
 'prefs-help-email'          => "ઇ-મેઇલ સરનામુ વૈકલ્પિક છે, પરંતુ જો તમે તમારી ગુપ્તસંજ્ઞા ભુલી ગયા હો તો એ દ્વારા તમને નવી ગુપ્તસંજ્ઞા ઇ-મેઇલ કરી શકાશે. 
 તમે એ પણ પસંદ કરી શકો કે, તમારી ઓળખ જાહેર થયા વગર, અન્ય લોકો તમારા 'મારા વિષે' કે 'મારી ચર્ચા'ના પાના પરથી તમારો સંપર્ક કરી શકે.",
 'prefs-help-email-required' => 'ઇ-મેઇલ સરનામુ જરૂરી.',
-
-# User rights
-'userrights-user-editname' => 'સભ્યનામ દાખલ કરો:',
-'editusergroup'            => 'સભ્ય સમુહો સંપાદીત કરો',
 
 # Groups
 'group'       => 'સમુહ',
@@ -841,29 +833,28 @@ Please log in again after you receive it.
 'action-edit' => 'આ પાનામાં ફેરફાર કરવાની',
 
 # Recent changes
-'nchanges'                       => '$1 {{PLURAL:$1|ફેરફાર|ફેરફારો}}',
-'recentchanges'                  => 'તાજા ફેરફારો',
-'recentchanges-legend'           => 'હાલમાં થયેલા ફેરફારોના વિકલ્પ',
-'recentchanges-feed-description' => 'આ ફીડ દ્વારા વિકિમાં થયેલા તાજા ફેરફારો પર ધ્યાન રાખો.',
-'rcnote'                         => "નીચે $5, $4 સુધીમાં અને તે પહેલાનાં '''$2''' દિવસમાં {{PLURAL:$1| થયેલો '''1''' માત્ર ફેરફાર|થયેલાં છેલ્લા  '''$1''' ફેરફારો}} દર્શાવ્યાં છે .",
-'rcnotefrom'                     => "નીચે '''$2'''થી થયેલાં '''$1''' ફેરફારો દર્શાવ્યાં છે.",
-'rclistfrom'                     => '$1 બાદ થયેલા નવા ફેરફારો બતાવો',
-'rcshowhideminor'                => 'નાના ફેરફારો $1',
-'rcshowhidebots'                 => 'બૉટો $1',
-'rcshowhideliu'                  => 'લૉગ ઇન થયેલાં સભ્યો $1',
-'rcshowhideanons'                => 'અનામિ સભ્યો $1',
-'rcshowhidemine'                 => 'મારા ફેરફારો $1',
-'rclinks'                        => 'છેલ્લાં $2 દિવસમાં થયેલા છેલ્લાં $1 ફેરફારો દર્શાવો<br />$3',
-'diff'                           => 'ભેદ',
-'hist'                           => 'ઇતિહાસ',
-'hide'                           => 'છુપાવો',
-'show'                           => 'બતાવો',
-'minoreditletter'                => 'નાનું',
-'newpageletter'                  => 'નવું',
-'boteditletter'                  => 'બૉટ',
-'rc_categories_any'              => 'કોઇ પણ',
-'rc-enhanced-expand'             => 'વિગતો બતાવો (જાવા સ્ક્રિપ્ટ જરૂરી છે)',
-'rc-enhanced-hide'               => 'વિગતો છુપાવો',
+'nchanges'             => '$1 {{PLURAL:$1|ફેરફાર|ફેરફારો}}',
+'recentchanges'        => 'તાજા ફેરફારો',
+'recentchanges-legend' => 'હાલમાં થયેલા ફેરફારોના વિકલ્પ',
+'rcnote'               => "નીચે $5, $4 સુધીમાં અને તે પહેલાનાં '''$2''' દિવસમાં {{PLURAL:$1| થયેલો '''1''' માત્ર ફેરફાર|થયેલાં છેલ્લા  '''$1''' ફેરફારો}} દર્શાવ્યાં છે .",
+'rcnotefrom'           => "નીચે '''$2'''થી થયેલાં '''$1''' ફેરફારો દર્શાવ્યાં છે.",
+'rclistfrom'           => '$1 બાદ થયેલા નવા ફેરફારો બતાવો',
+'rcshowhideminor'      => 'નાના ફેરફારો $1',
+'rcshowhidebots'       => 'બૉટો $1',
+'rcshowhideliu'        => 'લૉગ ઇન થયેલાં સભ્યો $1',
+'rcshowhideanons'      => 'અનામિ સભ્યો $1',
+'rcshowhidemine'       => 'મારા ફેરફારો $1',
+'rclinks'              => 'છેલ્લાં $2 દિવસમાં થયેલા છેલ્લાં $1 ફેરફારો દર્શાવો<br />$3',
+'diff'                 => 'ભેદ',
+'hist'                 => 'ઇતિહાસ',
+'hide'                 => 'છુપાવો',
+'show'                 => 'બતાવો',
+'minoreditletter'      => 'નાનું',
+'newpageletter'        => 'નવું',
+'boteditletter'        => 'બૉટ',
+'rc_categories_any'    => 'કોઇ પણ',
+'rc-enhanced-expand'   => 'વિગતો બતાવો (જાવા સ્ક્રિપ્ટ જરૂરી છે)',
+'rc-enhanced-hide'     => 'વિગતો છુપાવો',
 
 # Recent changes linked
 'recentchangeslinked'          => 'આની સાથે જોડાયેલા ફેરફાર',
@@ -1022,8 +1013,6 @@ Please log in again after you receive it.
 'alphaindexline' => '$1 થી $2',
 'nextpage'       => 'આગળનું પાનું ($1)',
 'prevpage'       => 'પાછળનું પાનું ($1)',
-'allpagesfrom'   => 'આનાથી શરૂ થતા પાના દર્શાવો:',
-'allpagesto'     => 'આનાથી અંત થતા પાના દર્શાવો:',
 'allarticles'    => 'બધા લેખ',
 'allpagesprev'   => 'પહેલાનું',
 'allpagesnext'   => 'પછીનું',
@@ -1150,7 +1139,7 @@ Please log in again after you receive it.
 'sp-contributions-newbies'     => 'માત્ર નવા ખુલેલાં ખાતાઓનું યોગદાન બતાવો',
 'sp-contributions-newbies-sub' => 'નવા ખાતાઓ માટે',
 'sp-contributions-blocklog'    => 'પ્રતિબંધ સૂચિ',
-'sp-contributions-talk'        => 'યોગદાનકર્તાની ચર્ચા',
+'sp-contributions-talk'        => 'ચર્ચા',
 'sp-contributions-search'      => 'યોગદાન શોધો',
 'sp-contributions-username'    => 'IP સરનામું અથવા સભ્યનામ:',
 'sp-contributions-submit'      => 'શોધો',
@@ -1274,8 +1263,6 @@ Please log in again after you receive it.
 'tooltip-n-help'                  => 'શોધવા માટેની જગ્યા.',
 'tooltip-t-whatlinkshere'         => 'અહીં જોડાતા બધાં વિકિ પાનાઓની યાદી',
 'tooltip-t-recentchangeslinked'   => 'આ પાના પરની કડીઓ વાળા લેખોમાં તાજેતરમાં થયેલા ફેરફારો',
-'tooltip-feed-rss'                => 'આ પાના માટે આર.એસ.એસ. ફીડ',
-'tooltip-feed-atom'               => 'આ પાના માટે એટોમ ફીડ',
 'tooltip-t-contributions'         => 'આ સભ્યનાં યોગદાનોની યાદી જુઓ',
 'tooltip-t-emailuser'             => 'આ સભ્યને ઇ-મેલ મોકલો',
 'tooltip-t-upload'                => 'ફાઇલ ચડાવો',

@@ -71,12 +71,10 @@ class UsersPager extends AlphabeticPager {
 	}
 
 	function getQueryInfo() {
-		global $wgUser;
 		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array();
 		// Don't show hidden names
-		if( !$wgUser->isAllowed('hideuser') )
-			$conds[] = 'ipb_deleted IS NULL';
+		$conds[] = 'ipb_deleted IS NULL';
 		if( $this->requestedGroup != '' ) {
 			$conds['ug_group'] = $this->requestedGroup;
 			$useIndex = '';
@@ -105,10 +103,8 @@ class UsersPager extends AlphabeticPager {
 				$this->creationSort ? 'user_id' : 'MAX(user_id) AS user_id',
 				'MAX(user_editcount) AS edits',
 				'COUNT(ug_group) AS numgroups',
-				'MAX(ug_group) AS singlegroup', // the usergroup if there is only one
-				'MIN(user_registration) AS creation',
-				'ipb_deleted' // block/hide status
-			),
+				'MAX(ug_group) AS singlegroup',
+				'MIN(user_registration) AS creation'),
 			'options' => array('GROUP BY' => $this->creationSort ? 'user_id' : 'user_name'),
 			'conds' => $conds
 		);
@@ -135,9 +131,6 @@ class UsersPager extends AlphabeticPager {
 		}
 
 		$item = wfSpecialList( $name, $groups );
-		if( $row->ipb_deleted ) {
-			$item = "<span class=\"deleted\">$item</span>";
-		}
 
 		global $wgEdititis;
 		if ( $wgEdititis ) {

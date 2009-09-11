@@ -43,10 +43,11 @@ if ( !function_exists( '__autoload' ) ) {
  * @ingroup HTTP
  */
 class WebRequest {
-	protected $data, $headers = array();
+	var $data = array();
+	var $headers;
 	private $_response;
 
-	public function __construct() {
+	function __construct() {
 		/// @fixme This preemptive de-quoting can interfere with other web libraries
 		///        and increases our memory footprint. It would be cleaner to do on
 		///        demand; but currently we have no wrapper for $_SERVER etc.
@@ -64,7 +65,7 @@ class WebRequest {
 	 * as we may need the list of language variants to determine
 	 * available variant URLs.
 	 */
-	public function interpolateTitle() {
+	function interpolateTitle() {
 		global $wgUsePathInfo;
 		if ( $wgUsePathInfo ) {
 			// PATH_INFO is mangled due to http://bugs.php.net/bug.php?id=31892
@@ -160,8 +161,9 @@ class WebRequest {
 	 * used for undoing the evil that is magic_quotes_gpc.
 	 * @param $arr array: will be modified
 	 * @return array the original array
+	 * @private
 	 */
-	private function &fix_magic_quotes( &$arr ) {
+	function &fix_magic_quotes( &$arr ) {
 		foreach( $arr as $key => $val ) {
 			if( is_array( $val ) ) {
 				$this->fix_magic_quotes( $arr[$key] );
@@ -177,11 +179,10 @@ class WebRequest {
 	 * through fix_magic_quotes to strip out the stupid slashes.
 	 * WARNING: This should only be done once! Running a second
 	 * time could damage the values.
+	 * @private
 	 */
-	private function checkMagicQuotes() {
-		$mustFixQuotes = function_exists( 'get_magic_quotes_gpc' )
-			&& get_magic_quotes_gpc();		
-		if( $mustFixQuotes ) {
+	function checkMagicQuotes() {
+		if ( function_exists( 'get_magic_quotes_gpc' ) && get_magic_quotes_gpc() ) {
 			$this->fix_magic_quotes( $_COOKIE );
 			$this->fix_magic_quotes( $_ENV );
 			$this->fix_magic_quotes( $_GET );
@@ -215,12 +216,9 @@ class WebRequest {
 	 * @param $name string
 	 * @param $default mixed
 	 * @return mixed
+	 * @private
 	 */
-	private function getGPCVal( $arr, $name, $default ) {
-		# PHP is so nice to not touch input data, except sometimes:
-		# http://us2.php.net/variables.external#language.variables.external.dot-in-names
-		# Work around PHP *feature* to avoid *bugs* elsewhere.
-		$name = strtr( $name, '.', '_' );
+	function getGPCVal( $arr, $name, $default ) {
 		if( isset( $arr[$name] ) ) {
 			global $wgContLang;
 			$data = $arr[$name];
@@ -248,7 +246,7 @@ class WebRequest {
 	 * @param $default string: optional default (or NULL)
 	 * @return string
 	 */
-	public function getVal( $name, $default = NULL ) {
+	function getVal( $name, $default = NULL ) {
 		$val = $this->getGPCVal( $this->data, $name, $default );
 		if( is_array( $val ) ) {
 			$val = $default;
@@ -266,7 +264,7 @@ class WebRequest {
 	 * @param $value mixed Value to set
 	 * @return mixed old value if one was present, null otherwise
 	 */
-	public function setVal( $key, $value ) {
+	function setVal( $key, $value ) {
 		$ret = isset( $this->data[$key] ) ? $this->data[$key] : null;
 		$this->data[$key] = $value;
 		return $ret;
@@ -281,7 +279,7 @@ class WebRequest {
 	 * @param $default array: optional default (or NULL)
 	 * @return array
 	 */
-	public function getArray( $name, $default = NULL ) {
+	function getArray( $name, $default = NULL ) {
 		$val = $this->getGPCVal( $this->data, $name, $default );
 		if( is_null( $val ) ) {
 			return null;
@@ -300,7 +298,7 @@ class WebRequest {
 	 * @param $default array: option default (or NULL)
 	 * @return array of ints
 	 */
-	public function getIntArray( $name, $default = NULL ) {
+	function getIntArray( $name, $default = NULL ) {
 		$val = $this->getArray( $name, $default );
 		if( is_array( $val ) ) {
 			$val = array_map( 'intval', $val );
@@ -316,7 +314,7 @@ class WebRequest {
 	 * @param $default int
 	 * @return int
 	 */
-	public function getInt( $name, $default = 0 ) {
+	function getInt( $name, $default = 0 ) {
 		return intval( $this->getVal( $name, $default ) );
 	}
 
@@ -327,7 +325,7 @@ class WebRequest {
 	 * @param $name string
 	 * @return int
 	 */
-	public function getIntOrNull( $name ) {
+	function getIntOrNull( $name ) {
 		$val = $this->getVal( $name );
 		return is_numeric( $val )
 			? intval( $val )
@@ -342,7 +340,7 @@ class WebRequest {
 	 * @param $default bool
 	 * @return bool
 	 */
-	public function getBool( $name, $default = false ) {
+	function getBool( $name, $default = false ) {
 		return $this->getVal( $name, $default ) ? true : false;
 	}
 
@@ -353,7 +351,7 @@ class WebRequest {
 	 * @param $name string
 	 * @return bool
 	 */
-	public function getCheck( $name ) {
+	function getCheck( $name ) {
 		# Checkboxes and buttons are only present when clicked
 		# Presence connotes truth, abscense false
 		$val = $this->getVal( $name, NULL );
@@ -372,7 +370,7 @@ class WebRequest {
 	 * @param $default string: optional
 	 * @return string
 	 */
-	public function getText( $name, $default = '' ) {
+	function getText( $name, $default = '' ) {
 		global $wgContLang;
 		$val = $this->getVal( $name, $default );
 		return str_replace( "\r\n", "\n",
@@ -384,7 +382,7 @@ class WebRequest {
 	 * If no arguments are given, returns all input values.
 	 * No transformation is performed on the values.
 	 */
-	public function getValues() {
+	function getValues() {
 		$names = func_get_args();
 		if ( count( $names ) == 0 ) {
 			$names = array_keys( $this->data );
@@ -409,7 +407,7 @@ class WebRequest {
 	 *
 	 * @return bool
 	 */
-	public function wasPosted() {
+	function wasPosted() {
 		return $_SERVER['REQUEST_METHOD'] == 'POST';
 	}
 
@@ -424,7 +422,7 @@ class WebRequest {
 	 *
 	 * @return bool
 	 */
-	public function checkSessionCookie() {
+	function checkSessionCookie() {
 		return isset( $_COOKIE[session_name()] );
 	}
 
@@ -432,7 +430,7 @@ class WebRequest {
 	 * Return the path portion of the request URI.
 	 * @return string
 	 */
-	public function getRequestURL() {
+	function getRequestURL() {
 		if( isset( $_SERVER['REQUEST_URI'] ) ) {
 			$base = $_SERVER['REQUEST_URI'];
 		} elseif( isset( $_SERVER['SCRIPT_NAME'] ) ) {
@@ -467,7 +465,7 @@ class WebRequest {
 	 * Return the request URI with the canonical service and hostname.
 	 * @return string
 	 */
-	public function getFullRequestURL() {
+	function getFullRequestURL() {
 		global $wgServer;
 		return $wgServer . $this->getRequestURL();
 	}
@@ -477,7 +475,7 @@ class WebRequest {
 	 * @param $query String: query string fragment; do not include initial '?'
 	 * @return string
 	 */
-	public function appendQuery( $query ) {
+	function appendQuery( $query ) {
 		global $wgTitle;
 		$basequery = '';
 		foreach( $_GET as $var => $val ) {
@@ -502,11 +500,11 @@ class WebRequest {
 	 * @param $query String: query string fragment; do not include initial '?'
 	 * @return string
 	 */
-	public function escapeAppendQuery( $query ) {
+	function escapeAppendQuery( $query ) {
 		return htmlspecialchars( $this->appendQuery( $query ) );
 	}
 
-	public function appendQueryValue( $key, $value, $onlyquery = false ) {
+	function appendQueryValue( $key, $value, $onlyquery = false ) {
 		return $this->appendQueryArray( array( $key => $value ), $onlyquery );
 	}
 
@@ -517,7 +515,7 @@ class WebRequest {
 	 *                   the complete URL
 	 * @return string
 	 */
-	public function appendQueryArray( $array, $onlyquery = false ) {
+	function appendQueryArray( $array, $onlyquery = false ) {
 		global $wgTitle;
 		$newquery = $_GET;
 		unset( $newquery['title'] );
@@ -535,7 +533,7 @@ class WebRequest {
 	 * @param $optionname String: to specify an option other than rclimit to pull from.
 	 * @return array first element is limit, second is offset
 	 */
-	public function getLimitOffset( $deflimit = 50, $optionname = 'rclimit' ) {
+	function getLimitOffset( $deflimit = 50, $optionname = 'rclimit' ) {
 		global $wgUser;
 
 		$limit = $this->getInt( 'limit', 0 );
@@ -557,7 +555,7 @@ class WebRequest {
 	 * @param $key String:
 	 * @return string or NULL if no such file.
 	 */
-	public function getFileTempname( $key ) {
+	function getFileTempname( $key ) {
 		if( !isset( $_FILES[$key] ) ) {
 			return NULL;
 		}
@@ -569,7 +567,7 @@ class WebRequest {
 	 * @param $key String:
 	 * @return integer
 	 */
-	public function getFileSize( $key ) {
+	function getFileSize( $key ) {
 		if( !isset( $_FILES[$key] ) ) {
 			return 0;
 		}
@@ -581,7 +579,7 @@ class WebRequest {
 	 * @param $key String:
 	 * @return integer
 	 */
-	public function getUploadError( $key ) {
+	function getUploadError( $key ) {
 		if( !isset( $_FILES[$key] ) || !isset( $_FILES[$key]['error'] ) ) {
 			return 0/*UPLOAD_ERR_OK*/;
 		}
@@ -599,7 +597,7 @@ class WebRequest {
 	 * @param $key String:
 	 * @return string or NULL if no such file.
 	 */
-	public function getFileName( $key ) {
+	function getFileName( $key ) {
 		if( !isset( $_FILES[$key] ) ) {
 			return NULL;
 		}
@@ -617,9 +615,9 @@ class WebRequest {
 	 * Return a handle to WebResponse style object, for setting cookies,
 	 * headers and other stuff, for Request being worked on.
 	 */
-	public function response() {
+	function response() {
 		/* Lazy initialization of response object for this request */
-		if ( !is_object( $this->_response ) ) {
+		if (!is_object($this->_response)) {
 			$this->_response = new WebResponse;
 		}
 		return $this->_response;
@@ -629,10 +627,11 @@ class WebRequest {
 	 * Get a request header, or false if it isn't set
 	 * @param $name String: case-insensitive header name
 	 */
-	public function getHeader( $name ) {
+	function getHeader( $name ) {
 		$name = strtoupper( $name );
 		if ( function_exists( 'apache_request_headers' ) ) {
-			if ( !$this->headers ) {
+			if ( !isset( $this->headers ) ) {
+				$this->headers = array();
 				foreach ( apache_request_headers() as $tempName => $tempValue ) {
 					$this->headers[ strtoupper( $tempName ) ] = $tempValue;
 				}
@@ -654,21 +653,13 @@ class WebRequest {
 	
 	/*
 	 * Get data from $_SESSION
-	 * @param $key String Name of key in $_SESSION
-	 * @return mixed
 	 */
-	public function getSessionData( $key ) {
+	function getSessionData( $key ) {
 		if( !isset( $_SESSION[$key] ) )
 			return null;
 		return $_SESSION[$key];
 	}
-	
-	/**
-	 * Set session data
-	 * @param $key String Name of key in $_SESSION
-	 * @param $data mixed
-	 */
-	public function setSessionData( $key, $data ) {
+	function setSessionData( $key, $data ) {
 		$_SESSION[$key] = $data;
 	}
 
@@ -706,65 +697,63 @@ class WebRequest {
  * @ingroup HTTP
  */
 class FauxRequest extends WebRequest {
-	private $wasPosted = false;
-	private $session = array();
+	var $wasPosted = false;
 
 	/**
 	 * @param $data Array of *non*-urlencoded key => value pairs, the
 	 *   fake GET/POST values
 	 * @param $wasPosted Bool: whether to treat the data as POST
 	 */
-	public function __construct( $data, $wasPosted = false, $session = null ) {
+	function FauxRequest( $data, $wasPosted = false, $session = null ) {
 		if( is_array( $data ) ) {
 			$this->data = $data;
 		} else {
 			throw new MWException( "FauxRequest() got bogus data" );
 		}
 		$this->wasPosted = $wasPosted;
-		if( $session )
-			$this->session = $session;
+		$this->headers = array();
+		$this->session = $session ? $session : array();
 	}
-
-	private function notImplemented( $method ) {
+	
+	function notImplemented( $method ) {
 		throw new MWException( "{$method}() not implemented" );
 	}
 
-	public function getText( $name, $default = '' ) {
+	function getText( $name, $default = '' ) {
 		# Override; don't recode since we're using internal data
 		return (string)$this->getVal( $name, $default );
 	}
 
-	public function getValues() {
+	function getValues() {
 		return $this->data;
 	}
 
-	public function wasPosted() {
+	function wasPosted() {
 		return $this->wasPosted;
 	}
 
-	public function checkSessionCookie() {
+	function checkSessionCookie() {
 		return false;
 	}
 
-	public function getRequestURL() {
+	function getRequestURL() {
 		$this->notImplemented( __METHOD__ );
 	}
 
-	public function appendQuery( $query ) {
+	function appendQuery( $query ) {
 		$this->notImplemented( __METHOD__ );
 	}
 
-	public function getHeader( $name ) {
+	function getHeader( $name ) {
 		return isset( $this->headers[$name] ) ? $this->headers[$name] : false;
 	}
 
-	public function getSessionData( $key ) {
+	function getSessionData( $key ) {
 		if( !isset( $this->session[$key] ) )
 			return null;
 		return $this->session[$key];
 	}
-
-	public function setSessionData( $key, $data ) {
+	function setSessionData( $key, $data ) {
 		$this->notImplemented( __METHOD__ );
 	}
 

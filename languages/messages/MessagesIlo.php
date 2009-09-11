@@ -18,7 +18,6 @@ $messages = array(
 'tog-highlightbroken'         => 'Formaten dagiti nadadael a panilpo <a href="" class="new">a kas itoy</a> (alternative: like this<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Limpiaen dagiti parapo',
 'tog-hideminor'               => 'Ilemmeng dagiti babasit a panagedit iti napalpalabas a panagbaliw',
-'tog-hidepatrolled'           => 'Ilemmeng dagiti mapatpatruliaan a panangbalbaliw kadagiti nabiit pay a balbaliw',
 'tog-extendwatchlist'         => 'Ikalawa ti listaan ti bambantayan tapno maipakita amin a maiyannatup a panagbaliw',
 'tog-usenewrc'                => 'Enhanced a naudi a panamalbaliw (JavaScript)',
 'tog-numberheadings'          => 'I-auto-number dagiti headings',
@@ -151,12 +150,6 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
-# Vector skin
-'vector-action-delete'  => 'Ikkaten',
-'vector-action-move'    => 'Iyakar',
-'vector-action-protect' => 'Saluadan',
-'vector-view-create'    => 'Parnuayen',
-
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -219,6 +212,7 @@ $messages = array(
 'aboutsite'            => 'Maipapan iti {{SITENAME}}',
 'aboutpage'            => 'Project:Maipapan',
 'copyright'            => 'Dagiti linaon ket maidaya babaen ti $1.',
+'copyrightpagename'    => '{{SITENAME}} karbengan-pablaak',
 'copyrightpage'        => '{{ns:project}}:Dagiti Karbengan-Panagipablaak',
 'currentevents'        => 'Paspasamak',
 'currentevents-url'    => 'Project:Agdama a paspasamak',
@@ -251,7 +245,6 @@ $messages = array(
 'editsection'             => 'baliwan',
 'editold'                 => 'baliwan',
 'viewsourceold'           => 'kitaen ti taudan',
-'editlink'                => 'baliwan',
 'editsectionhint'         => 'Baliwan ti benneg: $1',
 'toc'                     => 'Linaon',
 'showtoc'                 => 'ipakita',
@@ -266,7 +259,7 @@ $messages = array(
 'site-atom-feed'          => '$1 Atom Feed',
 'page-rss-feed'           => '"$1" RSS Feed',
 'page-atom-feed'          => 'Atom Feed ti "$1"',
-'red-link-title'          => '$1 (awan ti panid)',
+'red-link-title'          => '$1 (di pay naisurat)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Articulo',
@@ -333,9 +326,6 @@ Para kadagiti patarus, pangngaasim ta padasem nga aramaten ti [http://translatew
 'ns-specialprotected'  => 'Saan a mabalin  a baliwan dagiti espesial a panid.',
 'titleprotected'       => "Sinaluadan daytoy a titulo manipud iti pannakaparnuay ni [[User:$1|$1]].
 Ti naited a rason ket ''$2''.",
-
-# Virus scanner
-'virus-unknownscanner' => 'di am-ammo a pagpaksiat iti virus:',
 
 # Login and logout pages
 'logouttext'                 => "'''Nakaruarkan.'''
@@ -406,7 +396,7 @@ Saankan a makaaramid pay.',
 
 # Password reset dialog
 'resetpass'           => 'Sukatan ti pasesbalikas ti account',
-'resetpass_header'    => 'Sukatan ti pasesbalikas ti account',
+'resetpass_header'    => 'Sukatan ti pasesbalikas',
 'oldpassword'         => 'Daan a pasesbalikas:',
 'newpassword'         => 'Baro a pasesbalikas:',
 'retypenew'           => 'Isurat manen ti baro a pasesbalikas:',
@@ -655,6 +645,7 @@ Mabalinmo a [[:\$1|partuaten daytoy a panid]].",
 'searchall'                 => 'amin',
 'showingresults'            => "Maiparang iti baba ti agingga iti {{PLURAL:$1|'''1''' a resulta|'''$1''' a resresulta}} a mangrugi iti #'''$2'''.",
 'showingresultsnum'         => "Makita iti baba ti {{PLURAL:$3|'''1''' a resulta|'''$3''' a resresulta}} a mangrugi iti #'''$2'''.",
+'showingresultstotal'       => "Maiparang iti baba {{PLURAL:$3|ti resulta '''$1''' ti '''$3'''|dagiti resulta '''$1 - $2''' ti '''$3'''}}",
 'powersearch'               => 'agbirok',
 'powersearch-legend'        => 'Advanced a panagsapul',
 'powersearch-redir'         => 'Ilista dagiti panagibaw-ing',
@@ -857,7 +848,6 @@ Dagiti panid iti [[Special:Watchlist|listaan ti bambantayam]] ket '''naipuskol''
 'upload-curl-error28' => 'Timeout ti upload',
 
 'license'            => 'Lisensia:',
-'license-header'     => 'Lisensia:',
 'nolicense'          => 'Awan ti napili',
 'license-nopreview'  => '(Saan a mabalin ti preview)',
 'upload_source_url'  => ' (maysa a valido, ken maakses ti publico nga URL)',
@@ -1167,7 +1157,7 @@ Mabalinmo a sukatan ti level ti saluad daytoy a panid, ngem saanna nga apektaran
 'protect-expiring'            => 'agpaso inton $1 (UTC)',
 'protect-cascade'             => 'Saluadan dagiti pampanid a nairaman iti daytoy a panid (babaen ti cascading a saluad)',
 'protect-cantedit'            => 'Saanmo a masuktan ti level ti saluad daytoy a panid, ta awananka iti pammalubos a mangbalbaliw..',
-'protect-expiry-options'      => '1 nga oras:1 hour,1 nga aldaw:1 day,1 a lawas:1 week,2 a lawas:2 weeks,1 a bulan:1 month,3 a bulan:3 months,6 a bulan:6 months,1 a tawen:1 year,awan inggana:infinite',
+'protect-expiry-options'      => '2 nga oras:2 hours,1 nga aldaw:1 day,3 nga aldaw:3 days,1 a lawas:1 week,2 a lawas:2 weeks,1 a bulan:1 month,3 a bulan:3 months,6 a bulan:6 months,1 a tawen:1 year,awan inggana:infinite',
 'restriction-type'            => 'Pammalubos:',
 'restriction-level'           => 'Level ti pannakaiparit:',
 'minimum-size'                => 'Min a size',

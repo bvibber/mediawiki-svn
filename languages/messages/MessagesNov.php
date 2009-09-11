@@ -408,11 +408,12 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'delete_and_move_reason'  => 'Ekartat por fa spatie por movo',
 
 # Namespace 8 related
-'allmessages'        => 'Sisteme mesajes',
-'allmessagesname'    => 'Nome',
-'allmessagesdefault' => 'Non-spesifikati texte',
-'allmessagescurrent' => 'Nuni texte',
-'allmessagestext'    => 'Dise es liste de sistemen mesajes obtenabli in li MediaWiki nomal spatie.',
+'allmessages'         => 'Sisteme mesajes',
+'allmessagesname'     => 'Nome',
+'allmessagesdefault'  => 'Non-spesifikati texte',
+'allmessagescurrent'  => 'Nuni texte',
+'allmessagestext'     => 'Dise es liste de sistemen mesajes obtenabli in li MediaWiki nomal spatie.',
+'allmessagesmodified' => 'Montra nur modifikates',
 
 # Tooltip help for the actions
 'tooltip-pt-mytalk'      => 'Vun parla-pagine',

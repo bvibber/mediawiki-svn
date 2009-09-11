@@ -266,9 +266,6 @@ class WikiExporter {
 			if( $this->buffer == WikiExporter::STREAM ) {
 				$prev = $this->db->bufferResults( false );
 			}
-			
-			wfRunHooks( 'ModifyExportQuery',
-						array( $this->db, &$tables, &$cond, &$opts, &$join ) );
 
 			# Do the query!
 			$result = $this->db->select( $tables, '*', $cond, __METHOD__, $opts, $join );
@@ -448,9 +445,6 @@ class XmlDumpWriter {
 			$out .= '    ' . Xml::element( 'restrictions', array(),
 				strval( $row->page_restrictions ) ) . "\n";
 		}
-		
-		wfRunHooks( 'XmlDumpWriterOpenPage', array( $this, &$out, $row, $title ) );
-		
 		return $out;
 	}
 
@@ -509,8 +503,6 @@ class XmlDumpWriter {
 				array( 'id' => $row->rev_text_id ),
 				"" ) . "\n";
 		}
-		
-		wfRunHooks( 'XmlDumpWriterWriteRevision', array( &$this, &$out, $row, $text ) );
 
 		$out .= "    </revision>\n";
 
