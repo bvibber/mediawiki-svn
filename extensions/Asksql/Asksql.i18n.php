@@ -41,6 +41,16 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'asksql' => 'SQL-soekopdrag',
+	'asksql-desc' => "Voer SQL-soekopdragte uit deur middel van 'n [[Special:Asksql|spesiale bladsy]]",
+	'asksqltext' => "Die onderstaande vorm kan gebruik word om 'n soekopdrag teen die databasis uit te voer.
+Gebruik enkelaanhalingstekens ('soos die') om stringe aan te dui.
+Hierdie funksie kan 'n aansienlike lading op die bediener plaas, gebruik dit asseblief spaarsamig.",
+	'sqlislogged' => 'Let daarop dat alle navrae gelog word.',
+	'sqlquery' => 'Sleutel soekopdrag in',
+	'querybtn' => 'Voer soekopdrag uit',
+	'selectonly' => 'Slegs lees-alleen soekopgragte word toegelaat.',
+	'querysuccessful' => 'Soekopdrag suksesvol uitgevoer',
+	'right-asksql' => 'Skep SQL-soekopdragte',
 );
 
 /** Old English (Anglo-Saxon)

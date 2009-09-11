@@ -1277,6 +1277,7 @@ $messages['grc'] = array(
 	'tasks_delete' => 'Διαγράφειν',
 	'tasks_more_like_it' => 'πλείω',
 	'tasks_table_header_page' => 'Δέλτος',
+	'tasks_search_form_title' => 'Zήτησις',
 	'tasks_search_status' => 'Καθεστώς',
 	'tasks_previous' => 'Προηγούμεναι',
 	'tasks_next' => 'Ἑπόμεναι',

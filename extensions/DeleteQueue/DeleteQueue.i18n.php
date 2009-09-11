@@ -2483,10 +2483,17 @@ Móžeš [{{fullurl:{{FULLPAGENAME}}|action=delvote}} swoje schwalenje abo znap�
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'deletequeue-delnom-otherreason' => 'Más indok',
 	'deletequeue-review-reason' => 'Megjegyzések:',
 	'deletequeue-vote-reason' => 'Megjegyzések:',
+	'deletequeue-vote-submit' => 'Elküldés',
+	'deletequeue-list-search' => 'Keresés',
+	'deletequeue-list-anyqueue' => '(bármelyik)',
+	'deletequeue-list-votes' => 'Szavazatok listázása',
+	'deletequeue-list-header-page' => 'Lap',
 );
 
 /** Interlingua (Interlingua)

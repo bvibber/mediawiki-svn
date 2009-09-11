@@ -5026,6 +5026,7 @@ $messages['lb'] = array(
 	'mv_label_stream_desc' => 'Beschreiwung vum Stream',
 	'add_stream_permission' => 'Dir hutt net déi néideg Rechter fir e Stream derbäizesetzen',
 	'edit_stream_missing' => 'Den Numm vum Stream feelt',
+	'mv_missing_req_time' => 'Zäit vun der Ufro feelt',
 	'mv_missing_cat' => 'Den Numm vun der Kategorie feelt',
 	'mv_stream_already_exists' => 'De Stream <a href="$2">$1</a> gëtt et schonn',
 	'mv_redirect_and_delete_reason' => 'Viruleedungssäit ass ewech geholl ginn',
@@ -5089,6 +5090,7 @@ $messages['lb'] = array(
 	'mv_date_last_week' => 'Lescht Woch',
 	'mv_category_results' => 'REsultater aus de r Kategorie',
 	'mv_intrest_group_results' => 'Interessegruppen',
+	'mv_most_relevant' => 'Passt am beschten',
 	'mv_most_recent' => 'Neisten',
 	'mv_most_viewed' => 'Am dackste gekuckt',
 	'mv_spoken_by' => 'Geschwat vum',
@@ -5127,6 +5129,7 @@ $messages['lb'] = array(
 	'mv_next_cat' => 'Nächst Kategorie: $1',
 	'mv_search_stream' => 'Stream sichen',
 	'right-mv_delete_mvd' => 'MetaVid Metadate läschen',
+	'action-mv_delete_mvd' => 'dëse MetaVid Metadate-Segment läschen',
 	'right-mv_edit_stream' => 'Stream-Fichieren änneren',
 );
 

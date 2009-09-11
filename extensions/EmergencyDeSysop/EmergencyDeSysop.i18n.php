@@ -398,6 +398,26 @@ $messages['hsb'] = array(
 	'right-emergencydesysop' => 'Móžnosć druhemu wužiwarjej mjez sobu status administratora preč wzać',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'emergencydesysop' => 'Adminisztrátori jogosultság megvonása vészhelyzetben',
+	'emergencydesysop-desc' => 'Lehetővé teszi hogy egy adminisztrátor elvegye egy másik adminisztrátor jogosultságát a sajátja feláldozása árán',
+	'emergencydesysop-title' => 'Az adminisztrátori hozzáférés eltávolítása a jelenlegi és másik adminisztrátor fiókjáról',
+	'emergencydesysop-otheradmin' => 'Másik adminisztrátor eltávolítása a csoportból',
+	'emergencydesysop-reason' => 'Az eltávolítás indoka',
+	'emergencydesysop-submit' => 'Elküldés',
+	'emergencydesysop-incomplete' => 'Az űrlap minden beviteli mezőjét ki kell tölteni, kérlek próbáld újra.',
+	'emergencydesysop-notasysop' => 'A cél szerkesztő nem az „adminisztrátor” csoport tagja.',
+	'emergencydesysop-nogroups' => 'Nincs',
+	'emergencydesysop-done' => 'Művelet végrehajtva, a saját és [[$1]] szerkesztő adminisztrátori jogosultsága eltávolítva.',
+	'emergencydesysop-invalidtarget' => 'A cél szerkesztő nem létezik.',
+	'emergencydesysop-blocked' => 'A blokk időtartama alatt nem érheted el ezt az oldalt',
+	'emergencydesysop-noright' => 'Nincs megfelelő jogosultságod a lap eléréséhez',
+	'right-emergencydesysop' => 'Adminisztrátori jogosultság kölcsönös eltávolítása',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -647,6 +667,13 @@ $messages['pl'] = array(
 	'emergencydesysop-blocked' => 'Nie masz dostępu do tej strony, gdy jesteś zablokowany',
 	'emergencydesysop-noright' => 'Nie posiadasz wystarczających uprawnień by mieć dostęp do tej strony',
 	'right-emergencydesysop' => 'Możliwość odebrania uprawnień administratora innemu użytkownikowi, kosztem własnych uprawnień',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'emergencydesysop' => "DeSysop d'emergensa",
 );
 
 /** Pashto (پښتو)

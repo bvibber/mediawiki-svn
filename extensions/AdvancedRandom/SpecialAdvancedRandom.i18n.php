@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'advancedrandom-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'advancedrandom' => 'Willekeurige bladsy (gevorderd)',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Bresta
  */

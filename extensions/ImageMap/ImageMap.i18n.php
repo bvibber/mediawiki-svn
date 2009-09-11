@@ -524,14 +524,14 @@ $messages['gl'] = array(
 	'imagemap_no_image' => 'Erro: debe especificar unha imaxe na primeira liña',
 	'imagemap_invalid_image' => 'Erro: a imaxe non é válida ou non existe',
 	'imagemap_bad_image' => 'Erro: a imaxe atópase na lista negra desta páxina',
-	'imagemap_no_link' => 'Erro: foi atopada unha ligazón non válida ao final da liña $1',
+	'imagemap_no_link' => 'Erro: non se atopou ningunha ligazón válida ao final da liña $1',
 	'imagemap_invalid_title' => 'Erro: título non válido na ligazón na liña $1',
 	'imagemap_missing_coord' => 'Erro: non abondan as coordenadas para crear un polígono, na liña $1',
 	'imagemap_unrecognised_shape' => 'Erro: forma descoñecida na liña $1, cada liña debe comezar con un dos seguintes: por defecto, rectángulo, círculo ou polígono',
-	'imagemap_no_areas' => 'Erro: polo menos debe darse unha zona de especificación',
+	'imagemap_no_areas' => 'Erro: polo menos debe darse unha especificación de área',
 	'imagemap_invalid_coord' => 'Erro: coordenada non válida na liña $1, debe ser un número',
 	'imagemap_invalid_desc' => 'Erro: especificación da descrición non válida, debe ser unha de: <tt>$1</tt>',
-	'imagemap_description' => 'Sobre esta imaxe',
+	'imagemap_description' => 'Acerca desta imaxe',
 	'imagemap_poly_odd' => 'Erro: atopouse un polígono cun número impar de coordenadas na liña $1',
 );
 

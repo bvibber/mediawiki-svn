@@ -159,6 +159,7 @@ $messages['es'] = array(
 	'protectsection_desc' => 'Permite a usuarios autorizados proteger partes de una página usando la etiqueta <tt>&lt;proteger&gt;</tt>',
 	'protectsection_add_remove' => 'usted trató de agregar o remover una sección de protección',
 	'protectsection_modify' => 'usted trató de modificar un texto protegido',
+	'protectsection_add_above' => 'Trataste de insertar  texto al frente de una sección protegida',
 	'protectsection_forbidden' => 'Prohibido',
 	'right-protectsection' => 'Proteger secciones de página',
 );

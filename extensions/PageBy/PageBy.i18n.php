@@ -106,6 +106,17 @@ $messages['bn'] = array(
 	'pageby-contributors' => 'অবদানকারী:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'pageby-desc' => 'Diskouez a ra an aozerien enlinenn war ur bajenn wiki a ra gant ar valizenn <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Pajenn savet gant $1, $2',
+	'pageby-last' => '<a href="$3">Kemmet</a> da ziwezhañ gant $1, $2',
+	'pageby-contributors' => 'Aozerien :',
+	'pageby-anon' => '<i>dizanv</i>',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

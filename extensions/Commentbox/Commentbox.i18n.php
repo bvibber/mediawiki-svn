@@ -128,6 +128,7 @@ Maš komentar na toś tom boku? Pśidaj jen sem abo <span class="plainlinks">[{{
 $messages['el'] = array(
 	'commentbox-savebutton' => 'Αποθήκευση σχολίου',
 	'commentbox-name' => 'Όνομα:',
+	'commentbox-log' => 'Νέα σχόλια',
 	'commentbox-first-comment-heading' => '== Σχόλια ==',
 	'commentbox-regex' => '/\\n==\\s*Σχόλια\\s*==\\s*\\n/i',
 );

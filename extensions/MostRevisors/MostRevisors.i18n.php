@@ -532,6 +532,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'mostrevisors' => 'Pàgine con pì revisor',
+	'mostrevisors-desc' => 'Lista le [[Special:MostRevisors|pàgine con pì revisor]]',
 	'mostrevisors-header' => "'''Sta pàgina-sì a lista {{PLURAL:$1|la pàgina|le $1 pàgine}} con pì revisor an sla wiki'''.",
 	'mostrevisors-limitlinks' => 'Mosta fin a $1 pàgine',
 	'mostrevisors-namespace' => 'Spassi nominal:',

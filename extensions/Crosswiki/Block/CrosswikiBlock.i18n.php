@@ -1591,10 +1591,11 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
-	'crosswikiblock-anononly' => 'Ibblokkja l-utenti anonimi biss',
+	'crosswikiblock-anononly' => 'Imblokka biss l-utenti anonimi',
 	'crosswikiblock-alreadyblocked' => 'L-utent "$3" diġà bblokkjat',
 );
 

@@ -267,6 +267,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['el'] = array(
@@ -275,6 +276,7 @@ $messages['el'] = array(
 	'errorhandler-error-warning' => 'Προειδοποίηση',
 	'errorhandler-error-parse' => 'Σφάλμα λεξιαναλυτή',
 	'errorhandler-error-notice' => 'Σημείωση',
+	'errorhandler-error-deprecated' => 'Αποδοκιμασμένος',
 	'errorhandler-error-core-error' => 'Σφάλμα κώδικα',
 	'errorhandler-error-compile-error' => 'Σφάλμα μεταγλώττισης',
 	'errorhandler-error-compile-warning' => 'Προειδοποίηση μεταγλώττισης',

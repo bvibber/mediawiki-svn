@@ -370,6 +370,13 @@ Insira os primeiros caracteres e prema o botón "Enviar" para buscar títulos de
 Prema na frecha para mostrar todas as páxinas indexadas con ese título.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'index-search' => 'Zήτησις',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

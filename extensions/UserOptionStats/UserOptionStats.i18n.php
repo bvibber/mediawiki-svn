@@ -275,6 +275,13 @@ $messages['gl'] = array(
 	'uos-title' => 'Distribución dos valores da opción de usuario "$1"',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'uos-other' => '*Ἄλλον',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

@@ -521,7 +521,7 @@ $messages['gl'] = array(
 	'imstatus_live_code' => 'o seu ID da páxina web do Live Messenger',
 	'imstatus_live_get_code' => 'o seu ID da páxina web do Live Messenger: <strong>este non é o seu enderezo de correo electrónico</strong>, necesita xerar un <a href="$1">nas súas opcións do Live Messenger</a>.
 O ID que precisa proporcionar son os números e letras entre "$2" e "$3".',
-	'imstatus_skype_nbstyle' => 'Nota: se escolle un estilo que tamén sexa unha acción, a súa escolla da acción será sobreescrita pola acción que coincida co estilo elixido.',
+	'imstatus_skype_nbstyle' => 'Nota: se escolle un estilo que tamén sexa unha acción, a súa escolla da acción será sobrescrita pola acción que coincida co estilo elixido.',
 	'imstatus_xfire_size' => 'o botón do tamaño, de $1 (o maior) a $2 (o menor).',
 	'imstatus_yahoo_style' => 'o botón do estilo, de $1 (o menor) a $2 (o maior), $3 e $4 son para as mensaxes faladas.',
 );

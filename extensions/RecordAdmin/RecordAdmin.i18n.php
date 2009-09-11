@@ -523,6 +523,7 @@ $messages['es'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Acciones',
 	'recordadmin-needscontent' => 'Agregar contenido...',
+	'recordadmin-editwithform' => 'Editar este formulario',
 	'recordadmin-typeinfo' => 'Registro de $1',
 	'right-recordadmin' => 'Encontrar y editar páginas de registro',
 );
@@ -710,6 +711,7 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'recordadmin-select' => 'Ἐπιλέγειν',
 	'recordadmin-submit' => 'Ὑποβάλλειν',
+	'recordadmin-buttonsearch' => 'Ζητεῖν',
 	'recordadmin-buttoncreate' => 'Ποιεῖν',
 	'recordadmin-buttonreset' => 'Ἀνατιθέναι',
 	'recordadmin-buttonsave' => 'Γράφειν',

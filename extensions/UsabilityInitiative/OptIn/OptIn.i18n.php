@@ -1668,6 +1668,7 @@ Grazas, e agardamos calquera opinión que nos axude a mellorar!',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
@@ -1675,6 +1676,7 @@ $messages['grc'] = array(
 	'optin-survey-no' => 'Οὐ',
 	'optin-survey-answer-whyoptout-other' => 'Αἰτία ἄλλη:',
 	'optin-survey-answer-os-other' => 'Ἄλλον λειτουργικὸν σύστημα:',
+	'optin-survey-answer-changes-other' => 'Ἄλλον:',
 );
 
 /** Swiss German (Alemannisch)
@@ -2202,8 +2204,8 @@ $messages['io'] = array(
  * @author Stefano-c
  */
 $messages['it'] = array(
-	'optin' => 'Adesione al Progetto usabilità',
-	'optin-desc' => 'Consente agli utenti di provare Beta, gli ultimi miglioramenti del Progetto usabilità.',
+	'optin' => 'Adesione al progetto usabilità',
+	'optin-desc' => 'Consente agli utenti di provare la beta, gli ultimi miglioramenti del progetto usabilità.',
 	'optin-title-optedout' => 'Prova la Beta',
 	'optin-title-optedin' => 'Lascia Beta',
 	'optin-title-justoptedin' => 'Benvenuto in Beta',
@@ -2211,7 +2213,7 @@ $messages['it'] = array(
 	'optin-title-feedback' => 'Feedback della Beta',
 	'optin-needlogin' => "È necessario [$1 effettuare l'accesso] per provare Beta",
 	'optin-intro' => "Il progetto usabilità di Wikipedia sta lavorando intensamente per migliorare l'usabilità di Wikipedia.
-Si desidera provare Beta?",
+Vuoi provare la nostra beta?",
 	'optin-feedback-intro' => 'Ti ringraziamo per aver provato la Beta.
 Vorremmo sapere cosa ne pensi della nostra nuova interfaccia, quindi apprezzeremmo se compilassi il sondaggio facoltativo qui sotto.',
 	'optin-feedback-back' => 'Se non si desidera compilare il sondaggio, si può tornare a $1.',
@@ -2274,7 +2276,7 @@ Il nuovo sistema di navigazione rende più semplice vedere dove ti trovi e cosa 
 Le icone nuove e migliorate rendono più chiare le azioni che ciascuno strumento esegue. Le sezioni espandibili riducono l\'ingombro mantenendo gli strumenti usati di rado a un clic di distanza. La sezione di aiuto fornisce un rapido accesso a un riferimento per gli usi comuni della sintassi wiki.
 <div style="clear:both;"></div>
 == Come aiutare ==
-Per saperne di più sul progetto o aiutare, visita il [http://usability.wikimedia.org sito del Progetto usabilità]. Lì potrai trovare informazioni sulla nostra sovvenzione, ricerca, progettazione e sviluppo e nuove versioni. Per porre domande o lasciare un commento generale, usa la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina di discussione sui prototipi]. Per discutere di specifici argomenti, usa le pagine di discussione relative. Se trovi degli errori, lascia un commento nella [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina di discussione delle versioni di Acai] o usa [https://bugzilla.wikimedia.org Bugzilla].
+Per saperne di più sul progetto o aiutare, visita il [http://usability.wikimedia.org sito del progetto usabilità]. Lì potrai trovare informazioni sulla nostra sovvenzione, ricerca, progettazione e sviluppo e nuove versioni. Per porre domande o lasciare un commento generale, usa la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina di discussione sui prototipi]. Per discutere di specifici argomenti, usa le pagine di discussione relative. Se trovi degli errori, lascia un commento nella [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina di discussione delle versioni di Acai] o usa [https://bugzilla.wikimedia.org Bugzilla].
 
 Grazie; non vediamo l\'ora di sentirti.',
 );
