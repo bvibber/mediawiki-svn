@@ -55,7 +55,7 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition',
+			.bind( 'mouseup scrollToPosition focus',
 				function( event ) {
 					var context = $(this).data( 'context' );
 					$(this).eachAsync( {
@@ -65,7 +65,14 @@ fn: {
 						}
 					} );
 				}
-			);
+			)
+			.blur( function() {
+				$.wikiEditor.modules.toc.fn.unhighlight( context );
+			});
+	},
+ 
+	unhighlight: function( context ) {
+		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -73,7 +80,7 @@ fn: {
 	 * @param {Object} context
 	 */
 	update: function( context ) {
-		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
+		$.wikiEditor.modules.toc.fn.unhighlight( context );
 		var position = context.$textarea.getCaretPosition();
 		var section = 0;
 		if ( context.data.outline.length > 0 ) {
