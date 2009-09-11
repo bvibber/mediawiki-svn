@@ -104,6 +104,7 @@ class EditToolbarHooks {
 					'edittoolbar-tool-replace-button',
 					'edittoolbar-tool-replace-close',
 					'edittoolbar-tool-replace-nomatch',
+					'edittoolbar-tool-replace-success',
 					/* Special Characters Section */
 					'edittoolbar-section-characters',
 					'edittoolbar-characters-page-latin',
