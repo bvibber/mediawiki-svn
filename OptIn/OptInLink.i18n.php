@@ -642,8 +642,11 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'optin-try' => 'Beta-ны тургутуу',
+	'tooltip-pt-optin-try' => 'Саҥа кыахтары тургут',
 	'optin-leave' => 'Beta-ттан тахсыы',
+	'tooltip-pt-optin-leave' => 'Саҥа кыахтары туһанары араар',
 	'optin-feedback' => 'Сыанабылы ыытарга',
+	'tooltip-pt-optin-feedback' => 'Саҥаны туттубутуҥ туһунан кэпсээ',
 );
 
 /** Slovak (Slovenčina)
