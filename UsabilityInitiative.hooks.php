@@ -65,14 +65,14 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 2 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 7 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 8 ),
 				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2x' ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 18 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 19 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 18 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 19 ),
 			),
 		),
 	);
