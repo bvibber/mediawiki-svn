@@ -1,0 +1,104 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE=1
+
+DEB_HOST_GNU_TYPE    ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+CFLAGS = -O3 -Wall -fno-strict-aliasing
+
+# Enable IEEE-conformant floating point math on alphas (not the default)
+ifeq (alpha-linux-gnu,$(DEB_HOST_GNU_TYPE))
+  CFLAGS += -mieee
+endif
+
+ifeq ($(DEB_HOST_GNU_TYPE), $(findstring $(DEB_HOST_GNU_TYPE), ia64-linux-gnu powerpc64-linux-gnu))
+  CFLAGS += -g
+else
+  CFLAGS += -gstabs
+endif
+
+build: build-stamp
+
+build-stamp: configure-stamp
+	dh_testdir
+	$(MAKE)
+
+	sed "s#@EXTDIR@#`php-config5 --extension-dir`#" debian/xcache.ini.in > debian/xcache.ini
+
+	touch $@
+
+configure:  configure-stamp
+
+configure-stamp:
+	dh_testdir
+	phpize5 --clean
+	phpize5
+	CFLAGS="$(CFLAGS)" \
+	./configure --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE) \
+		--prefix=/usr \
+		--with-php-config=/usr/bin/php-config5 \
+		--enable-xcache=shared \
+		--enable-xcache-constant  \
+		--enable-xcache-optimizer \
+		--enable-xcache-coverager \
+		--enable-xcache-assembler \
+		--enable-xcache-encoder   \
+		--enable-xcache-decoder
+
+	touch $@
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f configure-php5-stamp
+	rm -f build-php5-stamp
+	rm -f install-stamp
+	rm -rf build-php5
+
+	if [ -f Makefile ] ; then $(MAKE) clean ; fi
+	phpize5 --clean
+
+	# These files seems not to be deleted by above commands
+	rm -f includes.i processor.h processor.out processor_real.c structinfo.m4
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	$(MAKE) install INSTALL_ROOT=debian/php5-xcache
+
+	# Admin interface
+	install -m755 -d debian/php5-xcache/usr/share/xcache
+	cp -a admin coverager debian/php5-xcache/usr/share/xcache
+
+	touch install-stamp
+
+# Build architecture-independent files here.
+binary-indep:
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_install
+	dh_installdocs README AUTHORS THANKS
+	dh_installexamples xcache.ini Decompiler.class.php
+	dh_installchangelogs ChangeLog
+	#dh_strip
+	dh_link
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	echo "php:Depends=phpapi-`php-config5 --phpapi`" >> debian/php5-xcache.substvars
+
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch binary-indep
+.PHONY: build clean binary-indep binary-arch binary install configure

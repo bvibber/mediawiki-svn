@@ -1,0 +1,19 @@
+XCache for Debian
+-----------------
+
+XCache is enabled automatically on standard Debian installation. You
+simply have to get your web server to reload it's configuration file
+(with something like 'invoke-rc.d apache2 reload').
+
+Default config file in /etc/php5/conf.d/xcache.ini loads module and sets
+cache size to 16 MB.  You will probably want to change this size and
+configure user name and password to access administrative interface.
+
+Administrative interface scripts are located in /usr/share/xcache/admin/
+and coverager in /usr/share/xcache/coverager/. Just symlink or alias
+them to some location accessible by web server if you want to use them.
+Please note that coverager is disabled by default and you need to define
+username and password in xcache.ini to be able to access administrative
+interface.
+
+ -- Michal Čihař <nijel@debian.org>  Tue, 22 May 2007 15:22:10 +0200

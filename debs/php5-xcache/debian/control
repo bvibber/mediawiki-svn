@@ -1,0 +1,23 @@
+Source: xcache
+Section: web
+Priority: optional
+Maintainer: Michal Čihař <nijel@debian.org>
+Build-Depends: debhelper (>= 4.2), php5-dev
+Standards-Version: 3.8.0
+Vcs-Svn: svn://svn.cihar.com/debian-xcache/trunk
+Vcs-Browser: http://viewsvn.cihar.com/debian-xcache/trunk
+Homepage: http://xcache.lighttpd.net/
+
+Package: php5-xcache
+Architecture: any
+Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}
+Description: Fast, stable PHP opcode cacher
+ XCache is a fast, stable PHP opcode cacher that has been tested and
+ is now running on production servers under high load.  It overcomes a
+ lot of problems that has been with other competing opcachers such as
+ being able to be used with new PHP versions.
+ .
+ PHP5 is an HTML-embedded scripting language. Much of its syntax is borrowed
+ from C, Java and Perl with a couple of unique PHP-specific features thrown
+ in. The goal of the language is to allow web developers to write
+ dynamically generated pages quickly.

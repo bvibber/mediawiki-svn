@@ -1,0 +1,123 @@
+xcache (1.3.0-1wm1) unstable; urgency=low
+
+  * Upstream 1.3.0
+  * Changed defaults in config template to match 
+    8-core boxes with lots of memory
+  * -O3 build
+  * Removed stripping
+
+ -- Domas Mituzas <domas@wikimedia.org>  Fri, 11 Sep 2009 20:40:00 +0300
+
+xcache (1.2.2-3) unstable; urgency=low
+
+  * Implement clean target in debian/rules (Closes: #489739).
+    - Some files have to be deleted manually.
+  * Update policy to 3.8.0 (no changes needed).
+
+ -- Michal Čihař <nijel@debian.org>  Mon, 07 Jul 2008 15:46:42 +0200
+
+xcache (1.2.2-2) unstable; urgency=low
+
+  * Adjusted Vcs-* headers to point to trunk.
+  * Fix name of enable_auth variable in default config (Closes: #475082).
+  * Load xcache as zend_extension as this is recommended way.
+  * Use dh_install to install some files instead of install commands.
+  * Cleanup debian/rules to use make install and drop support for more PHP
+    versions.
+
+ -- Michal Čihař <nijel@debian.org>  Wed, 09 Apr 2008 09:50:55 +0200
+
+xcache (1.2.2-1) unstable; urgency=low
+
+  * New upstream version.
+  * Update policy to 3.7.3 (no changes needed).
+  * Improve README.Debian (Closes: #458531).
+  * Enable all features in XCache, specially coverager. However you
+    still need to enable it in configuration.
+
+ -- Michal Čihař <nijel@debian.org>  Mon, 07 Jan 2008 01:58:52 +0900
+
+xcache (1.2.1-3) unstable; urgency=low
+
+  * Convert XS-Vcs fields to Vcs.
+  * Set cache size to 16M by default, so that after installation user has
+    working package.
+  * Document in README.Debian where admin scripts are located
+    (Closes: #454288).
+  * Package changelog.
+
+ -- Michal Čihař <nijel@debian.org>  Tue, 04 Dec 2007 23:07:06 +0900
+
+xcache (1.2.1-2) unstable; urgency=low
+
+  * Update home page to http://xcache.lighttpd.net/.
+  * Fix watch file to new URL.
+  * Use new Homepage field.
+
+ -- Michal Čihař <nijel@debian.org>  Thu, 13 Sep 2007 13:55:03 +0900
+
+xcache (1.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Michal Čihař <nijel@debian.org>  Tue, 17 Jul 2007 07:14:08 +0200
+
+xcache (1.2.0-2) unstable; urgency=low
+
+  * You should check opened bugs before upload.
+  * Acknowledge NMU, thanks Steve (Closes: #389318).
+  * Current version seems to build fine (Closes: #398244).
+  * We depend on current PHP API (Closes: #398091).
+  * Default xcache.ini for PHP is also installed since previous upload
+    (Closes: #397432).
+  * No reference PHP4 as there is no PHP4 package anymore (Closes: #389586).
+
+ -- Michal Čihař <nijel@debian.org>  Wed, 23 May 2007 09:15:24 +0200
+
+xcache (1.2.0-1) unstable; urgency=low
+
+  * New upstream release (Closes: #389329).
+  * New maintainer with approval from previous one.
+  * Dropped php4 support (Closes: #407407, #424807).
+  * Maintain package in SVN, add XS-Vcs headers.
+  * Install admin pages into /usr/share/xcache.
+  * Provide /etc/php5/conf.d/xcache.ini to ease configuration.
+
+ -- Michal Čihař <nijel@debian.org>  Tue, 22 May 2007 15:28:04 +0200
+
+xcache (1.0-4.1) unstable; urgency=low
+
+  * NMU from the Zurich BSP
+  * Apply a temporary fix for the broken code in mkstructinfo.awk -
+    cope with single-line structure typedefs. Closes: #389318 . The
+    real fix is to *not* to use an awk script to parse header files to
+    generate an m4 script to generate C source. Parsing C structures
+    reliably would be better done by using the C compiler itself!
+
+ -- Steve McIntyre <93sam@debian.org>  Sat,  7 Oct 2006 13:45:28 +0200
+
+xcache (1.0-4) unstable; urgency=low
+
+  * removing po-debconf dependency, debian/po/, debian/config (closes:
+    Bug#386539)
+
+ -- RISKO Gergely <risko@debian.org>  Fri,  8 Sep 2006 13:33:18 +0200
+
+xcache (1.0-3) unstable; urgency=low
+
+  * moving debconf note to README.Debian (closes: Bug#385962)
+
+ -- RISKO Gergely <risko@debian.org>  Mon,  4 Sep 2006 14:32:31 +0200
+
+xcache (1.0-2) unstable; urgency=low
+
+  * using po-debconf, should be done at first, but I missed
+
+ -- RISKO Gergely <risko@debian.org>  Fri,  1 Sep 2006 20:01:32 +0200
+
+xcache (1.0-1) unstable; urgency=low
+
+  * initial upload (closes: Bug#384884)
+
+ -- RISKO Gergely <risko@debian.org>  Fri,  1 Sep 2006 04:49:26 +0200
+
