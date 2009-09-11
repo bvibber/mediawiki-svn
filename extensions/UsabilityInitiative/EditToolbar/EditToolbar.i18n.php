@@ -81,7 +81,7 @@ $messages['en'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Include header row',
 	'edittoolbar-tool-table-insert' => 'Insert',
 	'edittoolbar-tool-table-cancel' => 'Cancel',
-	'edittoolbar-tool-replace' => 'Replace',
+	'edittoolbar-tool-replace' => 'Search and replace',
 	'edittoolbar-tool-replace-title' => 'Search and replace',
 	'edittoolbar-tool-replace-search' => 'Search for:',
 	'edittoolbar-tool-replace-replace' => 'Replace with:',
@@ -89,7 +89,7 @@ $messages['en'] = array(
 	'edittoolbar-tool-replace-regex' => 'Treat search string as a regular expression',
 	'edittoolbar-tool-replace-all' => 'Replace all occurences',
 	'edittoolbar-tool-replace-button' => 'Replace',
-	'edittoolbar-tool-replace-close' => 'Close',
+	'edittoolbar-tool-replace-close' => 'Cancel',
 	'edittoolbar-tool-replace-nomatch' => 'Your search did not match anything.',
 	'edittoolbar-tool-replace-success' => '$1 replacements made.',
 	/* Special characters Section */
