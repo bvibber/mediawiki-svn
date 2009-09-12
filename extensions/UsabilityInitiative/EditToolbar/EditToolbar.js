@@ -912,14 +912,15 @@ js2AddOnloadHook( function() {
 					var whitespace = [ '', '' ];
 					switch ( $j( '#edittoolbar-link-tabs' ).tabs( 'option', 'selected' ) ) {
 						case 0: // Internal link
+							var target = $j( '#edittoolbar-link-int-target' ).val();
+							var text = $j( '#edittoolbar-link-int-text' ).val();
 							// FIXME: Exactly how fragile is this?
-							if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' ) ) {
+							if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' )  ||
+									target == '' ) {
 								// Refuse to add links to invalid titles
 								alert( gM( 'edittoolbar-tool-link-int-invalid' ) );
 								return;
 							}
-							var target = $j( '#edittoolbar-link-int-target' ).val();
-							var text = $j( '#edittoolbar-link-int-text' ).val();
 							whitespace = $j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace' );
 							if ( target == text )
 								insertText = '[[' + target + ']]';
@@ -932,6 +933,12 @@ js2AddOnloadHook( function() {
 							var escTarget = escapeExternalTarget( target );
 							var escText = escapeExternalText( text );
 							whitespace = $j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace' );
+							if ( target == '' || target == 'http://' ) {
+								// Refuse to add links to invalid URLs
+								// TODO: More elaborate regex here?
+								alert( gM( 'edittoolbar-tool-link-ext-invalid' ) );
+								return;
+							}
 							if ( escTarget == escText )
 								insertText = escTarget;
 							else if ( text == '' )
