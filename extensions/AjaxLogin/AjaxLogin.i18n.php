@@ -81,6 +81,9 @@ Ret e vo deoc'h kuitaat ar bajenn emaoc'h o tegas kemmoù enni hag e c'hallfec'h
 	'ajaxLogin2' => "Ha sur oc'h ?
 Koll ar cheñchamantoù hoc'h eus graet d'ar bajenn-mañ a c'hallit ober ma kuitait ar bajenn bremañ.",
 	'ajaxlogin-create' => 'Krouiñ ur gont',
+	'al-nosuchuser' => 'N\'eus implijer ebet anvet "$1".
+E kont eo kemeret ar pennlizherennù en anvioù an implijerien.
+Gwiriit ho reizhskrivadur.',
 );
 
 /** Bosnian (Bosanski)
@@ -281,6 +284,9 @@ Des gschiht uf ere andere Syte, wäge däm verliersch villicht Dyyni aktuälle �
 	'ajaxLogin2' => 'Bisch sicher?
 Viliicht gehn Dyyni aktuällen Änderige verlore, wänn du die Syte verlosch.',
 	'ajaxlogin-create' => 'E Benutzerkonto aalege',
+	'al-nosuchuser' => 'S git kei Benutzer mit em Name „$1“.
+Bi Benutzernäme chunnt s uf d Groß- un Chleischrybig aa.
+Iberprief d Schrybwyys.',
 );
 
 /** Hebrew (עברית)
@@ -349,6 +355,9 @@ Ez elirányít a szerkesztőablakból, úgyhogy ezek a szerkesztéseid el fognak
 	'ajaxLogin2' => 'Biztos vagy benne?
 Az oldal elhagyásával a szerkesztéseid elvesznek.',
 	'ajaxlogin-create' => 'Új felhasználói fiók létrehozása',
+	'al-nosuchuser' => 'Nincs „$1” nevű szerkesztő.
+A szerkesztői nevek kis/nagybetű érzékenyek.
+Ellenőrizd hogy helyesen írtad-e.',
 );
 
 /** Interlingua (Interlingua)
@@ -448,6 +457,9 @@ Dëst wäert Iech op vun dëser Ännerungssäit erofbréngen an Dir kënnt Är a
 	'ajaxLogin2' => 'Sidd Dir sécher?
 Dir kënnt Är Ännerunge vun dëser Säit verléieren wann Dir elo vun dëser Säit erof gitt.',
 	'ajaxlogin-create' => 'E Benotzerkont uleeën',
+	'al-nosuchuser' => 'Et gëtt kee Benotzer mam Numm "$1".
+Bei Benotzernimm gëtt en Ënenrscheed tëschent klengen a gorusse Buchstawe gemaach.
+Kuckt no ob Dir den Numm richteg geschriwwen hutt.',
 );
 
 /** Limburgish (Limburgs)
@@ -569,6 +581,9 @@ Sòn sì at porterà via da sta pàgina ëd modìfica-sì e it podras perdi toa 
 	'ajaxLogin2' => "It ses-to sicur?
 It peule perdi toe modìfiche a sta pàgina-sì s'it lasse sta pàgina-sì or.",
 	'ajaxlogin-create' => 'Crea un cont',
+	'al-nosuchuser' => 'A-i é pa gnun utent con ël nòm "$1".
+Ij nòm utent a fan cas a minùscol/maiùscol.
+Contròla tò scrit.',
 );
 
 /** Pashto (پښتو)
@@ -665,6 +680,9 @@ $messages['sk'] = array(
 Tým prejdete preč z tejto upravovacej stránky a mohli by ste stratiť svoje úpravy.',
 	'ajaxLogin2' => 'Ste si istý? Ak teraz opustíte túto stránku, môžete stratiť svoje neuložené úpravy.',
 	'ajaxlogin-create' => 'Vytvoriť účet',
+	'al-nosuchuser' => 'Používateľ s menom „$1“ neexistuje.
+V používateľských menách sa rozlišuje veľkosť písmen.
+Skontrolujte, či ste ho napísali správne.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

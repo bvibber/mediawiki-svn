@@ -606,6 +606,7 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'authors-desc' => 'Ližadab lehtpolele avtoriden nimikirjutez',
 	'authors_authors' => 'Tegijad',
 	'authors_anonymous' => 'Anonim',
 );

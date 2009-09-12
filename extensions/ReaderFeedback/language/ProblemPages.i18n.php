@@ -75,6 +75,17 @@ $messages['bg'] = array(
 	'problempages' => 'Проблемни страници',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'problempages' => 'Pajennoù dispriziet',
+	'problempages-leg' => 'Kavout ar pajennoù dispriziet',
+	'problempages-list' => 'A-is ez eus ur roll pajennoù urzhiet diouzh priziadenn al lennerien.',
+	'problempages-none' => "N'eus pajenn ebet war ar roll-mañ",
+	'problempages-graphs' => 'roadennoù priziañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

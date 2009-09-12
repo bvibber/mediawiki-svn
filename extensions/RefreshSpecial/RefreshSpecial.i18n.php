@@ -1180,6 +1180,13 @@ $messages['tr'] = array(
 	'refreshspecial-title' => 'Yenilen özel sayfalar',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'refreshspecial-title' => 'Udištada specialižed lehtpoled',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

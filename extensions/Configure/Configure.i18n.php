@@ -1499,6 +1499,7 @@ $messages['cu'] = array(
 
 /** Danish (Dansk)
  * @author BabelFrode
+ * @author Byrial
  */
 $messages['da'] = array(
 	'configure' => 'Konfigurér wikien',
@@ -1524,7 +1525,8 @@ $messages['da'] = array(
 	'configure-arrayinput-oneperline' => "''(én pr. række)''",
 	'configure-summary' => 'Denne specialside lader dig konfigurere wikien, se [http://www.mediawiki.org/wiki/Manual:Configuration_settings manualsiden] for flere informationer.',
 	'configure-btn-save' => 'Gem indstillinger',
-	'configure-db-error' => 'Databasen du valgte til at gemme konfigurationen ($) i eksisterer ikke. Venligst opret den og kør configure.sql eller ret navnet.',
+	'configure-db-error' => 'Databasen du valgte til at gemme konfigurationen ($1) i findes ikke.
+Du bedes oprette den og og køre configure.sql eller rette navnet.',
 	'configure-db-table-error' => 'Databasen du valgte har ikke de krævede tabeller. Kør configure.sql i den database.',
 	'configure-directory-not-writable' => 'Mappen som bruges til at gemme indstillingerne, <tt>$1</tt>, kan der ikke skrives til. Gør den skrivbar i PHP for at bruge den indstilling.',
 	'configure-edit-old' => "'''Advarsel''': du redigerer en <strong>ældre</strong> version af konfigurationen. (fra d. $1).",
@@ -1613,12 +1615,12 @@ $messages['da'] = array(
 	'configure-section-output' => 'Output',
 	'configure-select-wiki' => 'Valg af wiki',
 	'configure-select-wiki-desc' => 'Vælg den wiki du vil konfigurere.',
-	'configure-select-wiki-view-desc' => 'Vælg en wiki for at se versioner.',
+	'configure-select-wiki-view-desc' => 'Vælg den wiki du vil se konfigurationsversionerne for.',
 	'configure-select-wiki-view-all' => 'Alle wikier',
 	'configure-select-wiki-view-specific' => 'Bestemt wiki:',
 	'configure-select-wiki-submit' => 'Vælg',
 	'configure-setting-not-available' => 'Denne indstilling er ikke tilgængelig i denne version af MediaWiki',
-	'configure-transwiki-not-in-range' => 'Den ønskede wiki, $1, findes ikke blandt de tilladte værdier ($2).',
+	'configure-transwiki-not-in-range' => 'Den ønskede wiki, $1, er ikke {{PLURAL:$3|den tilladte værdi|blandt de tilladte værdier}}: $2.',
 	'configure-view' => 'Vis',
 	'configure-view-all-versions' => 'Komplet liste over versioner',
 	'configure-view-default' => 'Standardindstillinger',
@@ -1677,6 +1679,9 @@ $messages['da'] = array(
 	'configure-boolop-description-or' => 'Mindst én betingelse skal være sand',
 	'configure-boolop-description-xor' => 'Netop én betingelse skal være sand',
 	'configure-boolop-description-not' => 'Ingen betingelser skal være sande',
+	'configure-farmer-settings' => '[[Special:Configure|Konfigurér denne wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Konfigurér udvidelser til denne wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Oplist tilgængelige udvidelser til denne wiki]].',
 );
 
 /** German (Deutsch)
@@ -2096,6 +2101,7 @@ $messages['el'] = array(
 	'configure-edit-ext' => 'Επεκτάσεις',
 	'configure-ext-settings' => 'Ρυθμίσεις',
 	'configure-ext-use' => 'Χρήση',
+	'configure-arrayinput-oneperline' => "''(ένα ανά γραμμή)''",
 	'configure-btn-save' => 'Αποθήκευση ρυθμίσεων',
 	'configure-js-prompt-group' => 'Εισάγετε το όνομα της νέας ομάδας:',
 	'configure-js-remove' => 'Διαγραφή',

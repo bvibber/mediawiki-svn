@@ -942,6 +942,13 @@ $messages['ug-latn'] = array(
 	'randomincategory-submit' => 'Köchüsh',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'randomincategory-label' => 'Kategorii:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

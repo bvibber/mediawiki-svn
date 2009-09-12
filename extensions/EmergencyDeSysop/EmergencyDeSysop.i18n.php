@@ -674,6 +674,19 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'emergencydesysop' => "DeSysop d'emergensa",
+	'emergencydesysop-desc' => "A përmëtt a n'aministrador ëd sacrifiché ij sò privilegi për desysop n'àutr aministrador",
+	'emergencydesysop-title' => "Gava ij drit d'aministrador da cost utent-sì e da n'àutr aministrador",
+	'emergencydesysop-otheradmin' => 'Àutr aministrador ga gavé da la partìa',
+	'emergencydesysop-reason' => 'Rason për gavé',
+	'emergencydesysop-submit' => 'Spediss',
+	'emergencydesysop-incomplete' => 'Tùit ij camp ëd la forma a son nessessari, për piasì preuva torna.',
+	'emergencydesysop-notasysop' => "L'utent pontà a l'é pa ant la partìa dj'aministrador.",
+	'emergencydesysop-nogroups' => 'Gnun',
+	'emergencydesysop-done' => 'Assion completa, ti e [[$1]] i seve stàit desysop.',
+	'emergencydesysop-invalidtarget' => "L'utent pontà a esist pa.",
+	'emergencydesysop-blocked' => 'It peule pa vëdde sta pàgina-sì an ment it ses blocà',
+	'emergencydesysop-noright' => "It l'has pa basta privilegi për vëdde sta pàgina-sì",
+	'right-emergencydesysop' => "It peule desysop n'àutr utent, mutualment",
 );
 
 /** Pashto (پښتو)

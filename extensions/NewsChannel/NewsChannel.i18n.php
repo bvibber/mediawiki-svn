@@ -629,6 +629,7 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'newschannel' => 'Uzištusiden kanal',
 	'newschannel_format' => 'Uzištusiden format:',
 	'newschannel_limit' => 'Tantoižiden uzištusiden lugumär:',
 );

@@ -698,6 +698,14 @@ Dapat itong:',
 	'securepasswords-word' => 'hindi isang salita',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'securepasswords-valid' => 'Teiden peitsana om vär vai lühüdahk.
+Pidab säta se neniden käskusiden mödhe:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

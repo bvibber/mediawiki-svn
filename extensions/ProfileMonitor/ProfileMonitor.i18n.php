@@ -928,6 +928,15 @@ $messages['uk'] = array(
 	'profiling-ok' => 'Гаразд',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'profiling-ok' => 'OK',
+	'profiling-data-process' => 'Process',
+	'profiling-data-count' => 'Lugemine',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

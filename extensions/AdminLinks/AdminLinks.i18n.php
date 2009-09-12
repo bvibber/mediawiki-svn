@@ -196,6 +196,18 @@ $messages['ca'] = array(
 	'right-adminlinks' => "Veure l'enllaç a [[Special:AdminLinks|enllaços d'administrador]]",
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'adminlinks_general' => 'Cyffredinol',
+	'adminlinks_editsidebar' => "Golygu'r panel llywio",
+	'adminlinks_editmainpagename' => "Golygu enw'r hafan",
+	'adminlinks_users' => 'Defnyddwyr',
+	'adminlinks_createuser' => 'Creu cyfrif defnyddiwr',
+	'adminlinks_importexport' => 'Mewnforio ac allforio',
+);
+
 /** Danish (Dansk)
  * @author Masz
  */
@@ -966,6 +978,14 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'adminlinks_general' => 'సాధారణ',
 	'adminlinks_users' => 'వాడుకరులు',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Yildiz
+ */
+$messages['tt-cyrl'] = array(
+	'adminlinks_users' => 'Катнашучылар',
+	'adminlinks_createuser' => 'Катнашучы хисабын төзү',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

@@ -193,7 +193,7 @@ $messages['el'] = array(
 	'tooltip-pt-optin-try' => 'Δοκιμάστε νέα χαρακτηριστικά',
 	'optin-leave' => 'Εγκαταλείψτε την Beta',
 	'tooltip-pt-optin-leave' => 'Απενεργοποίηση νέων χαρακτηριστικών',
-	'optin-feedback' => 'Ανατροφοδότηση Beta',
+	'optin-feedback' => 'Ανάδραση περί της Beta',
 	'tooltip-pt-optin-feedback' => 'Παροχή ανάδρασης περί της εμπειρίας σας με τις νέες λειτουργίες',
 );
 
@@ -741,6 +741,13 @@ $messages['vec'] = array(
 	'tooltip-pt-optin-leave' => 'Destaca le funsionalità nove',
 	'optin-feedback' => 'Cossa ghe ne pénsito de Beta',
 	'tooltip-pt-optin-feedback' => "Dane la to inpression su l'utiliso de ste funsionalità nove",
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'optin-try' => 'Kodvi bata',
 );
 
 /** Vietnamese (Tiếng Việt)

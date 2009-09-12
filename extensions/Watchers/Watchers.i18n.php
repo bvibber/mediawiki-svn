@@ -906,6 +906,14 @@ $messages['vec'] = array(
 	'watchers_less_than_x' => "Manco de $1 {{PLURAL:$1|utente el|utenti i}} tien d'ocio sta pagina.",
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'watchers' => 'Kaclijad',
+	'watchers_link_title' => "Ken kacleb necidä lehtpol't?",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

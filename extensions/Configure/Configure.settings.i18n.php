@@ -6345,6 +6345,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'configure-setting-wgSitename' => 'Az oldal neve',
@@ -6386,14 +6387,14 @@ $messages['hu'] = array(
 	'configure-setting-wgFileCacheDirectory' => 'A fájl-gyorsítótár könyvtára',
 	'configure-setting-wgQueryCacheLimit' => "A 'querycache' táblában gyorsítótárazott sorok száma",
 	'configure-setting-wgUseFileCache' => 'Fájl-gyorsítótár használata',
-	'configure-setting-wgUseGzip' => 'GZIP-es törmörítés használata',
+	'configure-setting-wgUseGzip' => 'GZIP tömörítés használata',
 	'configure-setting-wgAllowDisplayTitle' => '<nowiki>{{DISPLAYTITLE}}</nowiki> használatának engedélyezése',
 	'configure-setting-wgAllowExternalImages' => 'Fájlok közvetlen hivatkozásának engedélyezése wikiszövegben',
 	'configure-setting-wgAllowExternalImagesFrom' => 'A $wgAllowExternalImages = false kivételei',
 	'configure-setting-wgExpensiveParserFunctionLimit' => 'Lapoknént maximálisan meghívható költséges elemzőfüggvények',
 	'configure-setting-wgCleanSignatures' => 'Sablonok beillesztése az aláírásokba',
 	'configure-setting-wgMaxPPExpandDepth' => 'Sablonok kibontásakor az előfeldolgozó veremmérete',
-	'configure-setting-wgMaxPPNodeCount' => 'Maximálisan feldolgozott csomók száma',
+	'configure-setting-wgMaxPPNodeCount' => 'Az előfeldolgozó által elemzendő csomópontok maximális száma',
 	'configure-setting-wgMaxTemplateDepth' => 'Maximális sablonmélység az előfeldolgozáskor',
 	'configure-setting-wgMaxTocLevel' => 'A tartalomjegyzék maximális behúzásának szintje',
 	'configure-setting-wgParserConf' => 'Az elemző beállítása',
@@ -6402,7 +6403,7 @@ $messages['hu'] = array(
 	'configure-setting-wgAmericanDates' => '„May 12” használata „12 May” helyett angolul',
 	'configure-setting-wgDisableLangConversion' => 'Nyelvvariánsok közötti átalakítás letiltása',
 	'configure-setting-wgDisableTitleConversion' => 'Nyelvvariánsok közötti átalakítások letiltása a lapcímeknél',
-	'configure-setting-wgForceUIMsgAsContentMsg' => 'Rendszerüzenetek, melyek tartalommal rendelkeznek',
+	'configure-setting-wgForceUIMsgAsContentMsg' => 'A felhasználói felület azon üzenetei, amelyek tartalmi üzenetként kezelendőek',
 	'configure-setting-wgInputEncoding' => 'A bemeneti szöveg kódolása',
 	'configure-setting-wgInterwikiMagic' => 'Nyelvközi hivatkozások megjelenítése egy speciális listán',
 	'configure-setting-wgLanguageCode' => 'Az oldal nyelvkódja',
@@ -6414,7 +6415,7 @@ $messages['hu'] = array(
 	'configure-setting-wgArticleRobotPolicies' => 'Laponkénti szabályok robotoknak',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Lapcím',
 	'configure-setting-wgArticleRobotPolicies-value' => 'Szabály a robotoknak',
-	'configure-setting-wgBreakFrames' => 'Keretes (frame-s) ablakok megszüntetése',
+	'configure-setting-wgBreakFrames' => 'Keretes (frame-es) ablakok megszüntetése',
 	'configure-setting-wgCapitalLinks' => 'A lapok címének kezdőbetűje nagybetű',
 	'configure-setting-wgDefaultLanguageVariant' => 'Az alapértelmezett nyelvvariáns',
 	'configure-setting-wgDefaultRobotPolicy' => 'Alapértelmezett szabály a robotoknak',
@@ -6445,7 +6446,7 @@ $messages['hu'] = array(
 	'configure-setting-wgFileBlacklist' => 'Tiltott fájlkiterjesztések',
 	'configure-setting-wgFileExtensions' => 'Támogatott fájlkiterjesztések',
 	'configure-setting-wgFileStore' => 'Törölt fájlok tárolásának helye',
-	'configure-setting-wgHashedUploadDirectory' => 'Hashelt könyvtárak használata a feltöltéseknél',
+	'configure-setting-wgHashedUploadDirectory' => 'Ellenőrző összeggel ellátott könyvtárak használata a feltöltéseknél',
 	'configure-setting-wgLocalFileRepo' => 'Helyi tárolóhely a fájloknak',
 	'configure-setting-wgRemoteUploads' => 'Fájl feltöltése-hivatkozás használata, ha a feltöltések le vannak tiltva',
 	'configure-setting-wgStrictFileExtensions' => 'A nem előnyben részesített fájlkiterjesztések letiltása',

@@ -486,6 +486,13 @@ $messages['pl'] = array(
 	'plotters-missing-script' => 'Nie zdefiniowano skryptu.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'plotters-desc' => "Fà che j'utent a dòvro JavaScript përsonaj ant ij tag jsplot",
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

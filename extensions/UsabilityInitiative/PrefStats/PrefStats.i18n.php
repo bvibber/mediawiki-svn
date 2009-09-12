@@ -1641,6 +1641,16 @@ Strucando su de una te vedi le so statìsteghe.',
 	'prefstats-factor-default' => 'torna a la scala predefinìa',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'prefstats-factor-day' => 'päiv',
+	'prefstats-factor-week' => "nedal'",
+	'prefstats-factor-twoweeks' => "kaks' nedalid",
+	'prefstats-factor-fourweeks' => "nell' nedalid",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

@@ -874,6 +874,8 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'filelist' => 'Failoiden nimikirjutez',
+	'filelist-show-list' => 'Ozutada nimikirjutez',
+	'filelist-show-gallery' => 'Ozutada gallerei',
 );
 
 /** Vietnamese (Tiếng Việt)

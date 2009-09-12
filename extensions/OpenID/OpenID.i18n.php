@@ -4702,9 +4702,14 @@ Ghe xe molti [http://openid.net/get/ Provider OpenID], e te podaressi verghe zà
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'openiderror' => 'Verifikacijan petuz',
 	'openidoptional' => 'Opcionaline',
+	'openidrequired' => 'Pidab',
 	'openidemail' => 'E-počtan adres',
 	'openidlanguage' => "Kel'",
+	'openidtimezone' => 'Aigzon',
+	'openidchoosepassword' => 'peitsana:',
+	'openid-urls-delete' => 'Heitta poiš',
 );
 
 /** Vietnamese (Tiếng Việt)

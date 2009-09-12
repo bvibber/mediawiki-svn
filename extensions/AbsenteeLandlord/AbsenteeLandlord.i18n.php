@@ -645,6 +645,14 @@ $messages['vec'] = array(
 	'absenteelandlord-desc' => 'Bloca automaticamente el database de la wiki se i aministradori i resta tuti inativi par un çerto periodo',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'absenteelandlord-reason' => 'Andmižbad blokiruidihe avtomatižikš administratoriden aktivižusetomuden tagut.',
+	'absenteelandlord-desc' => 'Brokiruib wikiprojektan andmižbaz avtomatižešti, ku niken administratorišpäi ei ozuta aktivižust pordon aigad',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

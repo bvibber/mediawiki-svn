@@ -1872,10 +1872,14 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'vote' => 'Änesta',
+	'vote-caption' => 'Teiden valičend:',
+	'vote-submit' => 'Änesta',
 	'vote-view-results' => "Nähta rezul'tatad",
 	'vote-results' => "Änestusen rezul'tatad",
 	'vote-results-choice' => 'Valičend',
 	'vote-results-count' => 'Lugumär',
+	'right-vote' => 'Änesta',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1985,6 +1985,8 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'specialuserstats' => 'Kävutamižen statistik',
+	'usagestatistics' => 'Kävutamižen statistik',
 	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticstype' => 'Tip',
 	'usagestatisticsstart' => 'Augotiždat',
@@ -1997,6 +1999,8 @@ $messages['vep'] = array(
 	'usagestatisticsintervalmonth' => 'Ku',
 	'usagestatisticsincremental' => 'Kazvai',
 	'usagestatisticsincremental-text' => 'kazvai',
+	'usagestatisticscumulative' => 'Ühthine',
+	'usagestatisticscumulative-text' => 'ühthine',
 	'usagestatisticscalselect' => 'Valita',
 );
 

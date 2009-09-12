@@ -1371,6 +1371,8 @@ $messages['vep'] = array(
 	'tasklistunspecuser' => 'Tundmatoi kävutai',
 	'tasklistincorrectuser' => 'Vär kävutajan nimi',
 	'tasklistemail' => 'Kalliž %s',
+	'tasklistmytasks' => 'Minun metod',
+	'tasklistchooseproj' => 'Valiče projekt:',
 	'tasklistprojdisp' => 'Ozutada',
 );
 

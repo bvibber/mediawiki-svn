@@ -453,6 +453,14 @@ $messages['vec'] = array(
 	'othersites' => 'Altri siti',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'othersites' => 'Toižed saitad',
+	'othersites-desc' => "Sirdab interwiki-kosketused, kudambad ei olgoi kel'kosketused, erigoittud blokha.",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

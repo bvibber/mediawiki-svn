@@ -1779,7 +1779,10 @@ $messages['tr'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'todo' => 'Radoiden nimikirjutez',
+	'todo-tab' => 'radod',
 	'todo-new-queue' => "uz'",
+	'todo-unrecognize-type' => 'Tundištamatoi tip',
 	'todo-list-change' => 'Vajehtada',
 	'todo-list-cancel' => 'Heitta pätand',
 	'todo-new-item' => "Uz' kirjutez",

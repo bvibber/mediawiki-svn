@@ -4204,6 +4204,7 @@ $messages['vep'] = array(
 	'sign-phone' => 'Telefonnomer:',
 	'sign-bday' => 'Igä:',
 	'sign-email' => 'E-počtan adres:',
+	'sign-submit' => 'Allekirjuta dokument',
 	'sign-viewfield-entryid' => 'Kirjutesen ID',
 	'sign-viewfield-timestamp' => 'Dat/Aig',
 	'sign-viewfield-realname' => 'Nimi',
@@ -4218,6 +4219,9 @@ $messages['vep'] = array(
 	'sign-viewfield-email' => 'E-počtan adres',
 	'sign-viewfield-age' => 'Igä',
 	'sign-viewfield-options' => 'Järgendused',
+	'sign-signatures' => 'Allekirjutesed',
+	'sign-viewsignatures' => 'nähta allekirjutesed',
+	'sign-closed' => 'sauptud',
 );
 
 /** Vietnamese (Tiếng Việt)

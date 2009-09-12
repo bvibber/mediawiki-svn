@@ -486,6 +486,13 @@ Anonyma användare får ett automatiskt genererat användarnamn, men det kan än
 	'right-webchat' => 'Får använda [[Special:WebChat|webbchatten]]',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'webchat' => 'Verkčat',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

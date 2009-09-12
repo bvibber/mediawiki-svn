@@ -126,11 +126,16 @@ Maš komentar na toś tom boku? Pśidaj jen sem abo <span class="plainlinks">[{{
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'commentbox-desc' => 'Προσθέτει ένα κουτί σχολίων σε συγκεκριμένες σελίδες',
 	'commentbox-savebutton' => 'Αποθήκευση σχολίου',
 	'commentbox-name' => 'Όνομα:',
 	'commentbox-log' => 'Νέα σχόλια',
 	'commentbox-first-comment-heading' => '== Σχόλια ==',
 	'commentbox-regex' => '/\\n==\\s*Σχόλια\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Σφάλμα κατά τη δημιουργία σχολίου',
+	'commentbox-error-page-nonexistent' => 'Αυτή η σελίδα δεν υπάρχει!',
+	'commentbox-error-namespace' => 'Σχόλια δεν επιτρέπονται σε αυτόν τον ονοματικό χώρο!',
+	'commentbox-error-empty-comment' => 'Κενά σχόλια δεν επιτρέπονται!',
 );
 
 /** Esperanto (Esperanto)

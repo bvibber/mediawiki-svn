@@ -149,9 +149,11 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'formatchanges-desc' => 'Αναμορφοποιεί τις [[Special:RecentChanges|πρόσφατες αλλαγές]]',
 	'formatchanges-anonymous' => 'Ανώνυμος',
 	'formatchanges-createdby' => '$1 - δημιουργήθηκε από τον $2 ($3)',
 	'formatchanges-editedby' => '$1 - επεξεργάστηκε από τον $2 ($3)',

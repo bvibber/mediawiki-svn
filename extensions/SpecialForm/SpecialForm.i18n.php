@@ -1421,7 +1421,9 @@ $messages['vep'] = array(
 	'form' => 'Form',
 	'formnoname' => 'Ei ole forman nimed',
 	'formbadname' => 'Hond forman nimi',
+	'formpattern' => '$1-form',
 	'formsave' => 'Panda muštho',
+	'formbadpagename' => 'Vär lehtpolen nimi',
 );
 
 /** Vietnamese (Tiếng Việt)

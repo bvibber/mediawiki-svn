@@ -463,6 +463,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'mostrevisors' => 'Säiten déi vun de meeschte Leit iwwerliest goufen',
+	'mostrevisors-desc' => 'Weist [[Special:MostRevisors|Säiten mat de meeschte Benotzer déi iwwerliest hunn]]',
 	'mostrevisors-limitlinks' => 'Bis zu $1 Säite weisen',
 	'mostrevisors-namespace' => 'Nummraum:',
 	'mostrevisors-none' => 'Näischt fonnt.',
@@ -470,6 +471,7 @@ $messages['lb'] = array(
 	'mostrevisors-submit' => 'Lass',
 	'mostrevisors-showredir' => 'Viruleedungssäite weisen',
 	'mostrevisors-hideredir' => 'Viruleedungssäite vestoppen',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|Benotzer|Benotzer}}',
 	'mostrevisors-viewcontributors' => 'Weis déi Haaptmataarbechter',
 );
 

@@ -1436,7 +1436,7 @@ $messages['grc'] = array(
 	'voctrain_Log_in' => 'Συνδεῖσθαι',
 	'voctrain_Definitions' => 'Ὁρισμοί',
 	'voctrain_hiding' => 'Κρύπτειν',
-	'voctrain_other' => 'Ἄλλον',
+	'voctrain_other' => 'ἄλλον',
 );
 
 /** Swiss German (Alemannisch)

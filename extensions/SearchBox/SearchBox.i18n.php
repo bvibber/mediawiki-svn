@@ -764,8 +764,10 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'searchbox-desc' => 'Laskeb avaita ecindformad',
 	'searchbox-search' => 'Ectä',
 	'searchbox-go' => 'Mända',
+	'searchbox-namespaces' => 'Nimiavaruded:',
 );
 
 /** Vietnamese (Tiếng Việt)

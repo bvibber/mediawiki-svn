@@ -497,6 +497,13 @@ $messages['vec'] = array(
 	'selectcategory-subtitle' => 'Struca el boton del mouse tegnendo macà MAIUSC par selessionar più voçi adiacenti o CTRL par selessionar più voçi non adiacenti.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'selectcategory-title' => 'Valiče kategorijad',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

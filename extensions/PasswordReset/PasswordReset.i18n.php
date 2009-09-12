@@ -1516,6 +1516,14 @@ $messages['ug-latn'] = array(
 	'passwordreset-username' => 'Ishletkuchi ismi:',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'passwordreset-invalidusername' => 'Vär kävutajan nimi',
+	'passwordreset-emptyusername' => "Pall'az kävutajan nimi",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

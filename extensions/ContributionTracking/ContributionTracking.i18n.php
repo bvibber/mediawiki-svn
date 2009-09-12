@@ -375,6 +375,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'contributiontracking' => 'Adakozás nyomonkövetése',
 	'contrib-tracking-error' => 'Hiba',
 	'contrib-tracking-error-text' => 'Érvénytelen űrlapküldés',
 	'contrib-tracking-submitting' => 'Küldés a fizetés-feldolgozóhoz…',
@@ -871,6 +872,7 @@ $messages['vep'] = array(
 	'contrib-tracking-error' => 'Petuz',
 	'contrib-tracking-error-text' => 'Forman vär alištuz',
 	'contrib-tracking-submitting' => 'Oigendamine maksuiden processorale...',
+	'contrib-tracking-continue' => 'Ku teid ei udesoigendanuded avtomatižešti, paindat kingiteshe, miše lahjoita rahoid PayPal-saital.',
 	'contrib-tracking-button' => 'Jatkta',
 );
 

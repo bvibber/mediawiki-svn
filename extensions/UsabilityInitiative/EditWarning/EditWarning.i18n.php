@@ -383,6 +383,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author ToePeu
  */
 $messages['ko'] = array(
@@ -390,6 +391,7 @@ $messages['ko'] = array(
 	'editwarning-desc' => '저장하지 않고 화면을 닫을 때 경고를 표시해 줍니다.',
 	'editwarning-warning' => '이 창을 떠나면 저장하지 않은 편집이 모두 사라집니다.
 이 경고를 환경 설정의 "{{int:prefs-editing}}"에서 비활성화 할 수 있습니다.',
+	'editwarning-preference' => '수정한 내용을 저장하지 않고 편집 양식을 닫거나 다른 페이지로 이동할 때 알림',
 );
 
 /** Ripoarisch (Ripoarisch)

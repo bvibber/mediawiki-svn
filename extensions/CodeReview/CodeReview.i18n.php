@@ -3285,6 +3285,7 @@ $messages['hu'] = array(
 	'code-release-legend' => 'Kiadási megjegyzések generálása',
 	'code-release-startrev' => 'Első változat:',
 	'code-release-endrev' => 'Utolsó változat:',
+	'codereview-subtitle' => '$1 részére',
 	'codereview-reply-link' => 'válasz',
 	'codereview-email-subj' => '[$1] [r$2]: Új hozzászólás',
 	'codereview-email-body' => '„$1” új hozzászólást fűzött az r$3 változathoz.
@@ -3295,6 +3296,13 @@ Hozzászólás:
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: rákövetkező változtatások',
+	'codereview-email-body2' => '„$1” szerkesztő utólagos változtatásokat végzett a r$2 revízión.
+
+Teljes URL: $3
+
+Commit összefoglaló:
+
+$4',
 	'codereview-email-subj3' => '[$1] [r$2]: az automatikus tesztelés regressziót talált',
 	'codereview-email-body3' => 'Az automatikus tesztelés felfedett egy regressziót, amit az r$1-ben történt változások okoztak.
 

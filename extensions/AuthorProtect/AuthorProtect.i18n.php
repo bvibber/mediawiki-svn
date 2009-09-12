@@ -1073,6 +1073,19 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'authorprotect' => 'Protegg la pàgina dai nen-autor',
+	'authorprotect-desc' => "A përmëtt a l'autor ëd na pàgina ëd protegg-la da àutr utent",
+	'authorprotect-notauthor' => "It ses pa l'autor dë sta pàgina-sì",
+	'authorprotect-confirm' => 'Cambia ël livel ëd protession',
+	'authorprotect-edit' => "Strenz le modìfiche a j'autor",
+	'authorprotect-move' => "Strenz jë spostament a j'autor",
+	'authorprotect-expiry' => 'Scadensa',
+	'authorprotect-reason' => 'Rason',
+	'authorprotect-intro' => 'Dòvra sta forma-sì për bloché sta pàgina-sì dai nen-autor',
+	'authorprotect-success' => 'Protession a pòst!',
+	'authorprotect-failure' => 'Protession pa a pòst',
+	'protect-level-author' => 'Protegg dai nen-autor',
+	'restriction-level-author' => "Protegiùa da l'autor",
+	'right-authorprotect' => 'Protegg le pàgine con autor',
 );
 
 /** Pashto (پښتو)

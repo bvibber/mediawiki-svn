@@ -1694,6 +1694,13 @@ $messages['uk'] = array(
 	'patrol-reverting' => 'Відкіт: $1',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'patrol-revert-reason' => 'Sü:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

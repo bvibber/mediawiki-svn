@@ -2625,6 +2625,9 @@ $messages['vep'] = array(
 	'webstore_php_warning' => 'PHP Varatuz: $1',
 	'webstore_metadata_not_found' => 'Fail ei ole löutud: $1',
 	'webstore_postfile_not_found' => 'Ei voi löuta failad oigetes.',
+	'webstore_invalid_response' => 'Vär vastuz serveralpäi:
+
+$1',
 	'webstore_no_response' => 'Server ei anda vastust.',
 	'webstore_backend_error' => 'Serveran-varaaitan petuz:
 

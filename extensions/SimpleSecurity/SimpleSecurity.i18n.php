@@ -828,6 +828,14 @@ $messages['tr'] = array(
 	'security' => 'Güvenlik günlüğü',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'security-type-category' => 'kategorii',
+	'security-type-namespace' => 'nimiavaruz',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

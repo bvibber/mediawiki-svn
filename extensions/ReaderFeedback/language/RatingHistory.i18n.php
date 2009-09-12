@@ -1759,12 +1759,10 @@ $messages['vep'] = array(
 	'ratinghistory-table-rating' => 'Arvoind',
 	'ratinghistory-table-votes' => 'Äned',
 	'ratinghistory-none' => 'Ei ulotu lugijoiden arvsanoid grafikan tehtes.',
-	'ratinghistory-legend' => "Alemba oma ozutadud '''päivesenkeskmäine arvsana''' <font color=\"blue\">''(sinine)''</font> da '''nügüdläine keskmäine arvsana''' <font color=\"green\">''(vihand)''</font>.  
+	'ratinghistory-legend' => "Alemba oma ozutadud '''arvsanoiden lugu päiväs''' <font color=\"red\">''(rusked)''</font>, '''päivesenkeskmäine arvsana''' <font color=\"blue\">''(sinine)''</font> da '''nügüdläine keskmäine arvsana''' <font color=\"green\">''(vihand)''</font>.  
 '''Nügüdläižeks keskmäižeks arvsanaks''' kuctas päivesen arvsanoiden keskmäine lugu, kudamban lugedas kaikuččen päivän märitud pordas aigad.
 
-Pordhišt: '''[1]''' — hond; '''[2]''' — madal; '''[3]''' — keskmäine; '''[4]''' — hüvä; '''[5]''' — lujas hüvä;
-
-'''Kodvindoiden lugu päiväs''' <font color=\"red\">''(rusked)''</font> om ozutadud masštabas ''1:\$1''.",
+Pordhišt: '''[1]''' — hond; '''[2]''' — madal; '''[3]''' — keskmäine; '''[4]''' — hüvä; '''[5]''' — lujas hüvä;",
 	'right-feedback' => 'Kävutagat arvostelendform lehtpoliden arvosteldes',
 );
 

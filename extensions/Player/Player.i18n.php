@@ -1340,6 +1340,7 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'player' => 'Plejer',
+	'player-desc' => "Mülütadud mul'timedijan vändim, kudamb kävutab kaclimen ühthižed ližad da [[Special:Player|specialine lehtpol']]",
 	'player-title' => 'Plejer',
 	'player-playertitle' => 'Plejer: $1',
 	'player-file' => 'Failan nimi',

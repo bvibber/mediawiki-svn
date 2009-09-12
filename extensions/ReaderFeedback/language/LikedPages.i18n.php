@@ -64,6 +64,17 @@ $messages['bg'] = array(
 	'likedpages-none' => 'Този списък не съдържа страници',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'likedpages' => 'Pajennoù priziet uhel',
+	'likedpages-leg' => 'Klask ar pajennoù priziet uhel',
+	'likedpages-list' => 'A-is emañ ur roll pajennoù urzhiet dre priziadenn al lennerien',
+	'likedpages-none' => "N'eus pajenn ebet er roll-mañ",
+	'likedpages-graphs' => 'Roadennoù priziañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

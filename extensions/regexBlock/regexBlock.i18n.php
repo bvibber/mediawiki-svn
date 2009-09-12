@@ -2618,6 +2618,15 @@ $messages['ug-latn'] = array(
 	'regexblock-view-go' => 'Köchüsh',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'regexblock-form-reason' => 'Sü:',
+	'regexblock-view-all' => 'Kaik',
+	'regexblock-view-stats' => 'statistik',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

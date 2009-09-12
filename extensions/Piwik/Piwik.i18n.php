@@ -101,6 +101,17 @@ $messages['bg'] = array(
 	'piwik-browsers' => 'Браузъри',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'piwik-desc' => "Ensoc'hañ a ra ar skript Piwik er pajennoù MediaWiki evit an heuliañ hag ouzhpennañ a ra un [[Special:Piwik|nebeud stadegoù]]",
+	'piwik-lastvisits' => 'Gweladennoù diwezhañ',
+	'piwik-countries' => 'Broioù',
+	'piwik-browsers' => 'Merdeerioù',
+	'right-viewpiwik' => 'Gwelet [[Special:Piwik|stadegoù Piwik]]',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  * @author Demicx
@@ -577,6 +588,13 @@ $messages['vec'] = array(
 	'piwik-lastvisits' => 'Ùltime vìsite',
 	'piwik-countries' => 'Paesi',
 	'piwik-browsers' => 'Browser',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'piwik-lastvisits' => 'Tantoižed vizitad',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -910,6 +910,7 @@ $messages['sv'] = array(
 );
 
 /** Swahili (Kiswahili)
+ * @author Lloffiwr
  * @author Malangali
  */
 $messages['sw'] = array(
@@ -921,6 +922,7 @@ $messages['sw'] = array(
 	'createpage_titleexists' => 'Tayari kuna ukurasa kwenye jina [[$1]]. Je, unataka kuhariri ukurasa uliomo?',
 	'createpage_tryagain' => 'Hapana. Ninataka kuanzisha ukurasa mpya mwenye jina tofauti.',
 	'createpage_editexisting' => 'Ndiyo. Ninataka kusaidia kuhariri ukurasa uliomo.',
+	'createpage-badtitle' => 'Haiwezekani kutumia "$1" kama jina la ukurasa',
 );
 
 /** Telugu (తెలుగు)

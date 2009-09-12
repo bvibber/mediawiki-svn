@@ -663,10 +663,11 @@ Odstraněné položky nebude moci prostřednictvím webové stránky vidět nikd
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jan Friberg
  */
 $messages['da'] = array(
-	'right-hiderevision' => 'Gense og gendan versioner skjult for administratorer',
+	'right-hiderevision' => 'Skjule versioner for administratorer',
 );
 
 /** German (Deutsch)
@@ -3771,6 +3772,7 @@ La divulgazion di ste informassion la pol conportar la rimozion permanente dei d
  */
 $messages['vep'] = array(
 	'oversight-view' => 'detalid',
+	'oversight-hidden' => 'Peittud redakcii',
 	'oversight-offender' => 'Abidoičii',
 );
 

@@ -513,6 +513,7 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'catboxattop-desc' => 'Ližadab kategorijan menü lehtesen oiktaha ülembaižhe tahoze',
 	'catboxattop-categories' => 'Kategorijad',
 );
 

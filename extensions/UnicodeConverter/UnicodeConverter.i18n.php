@@ -741,6 +741,8 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'unicodeconverter' => 'Konverter Junikodha',
+	'unicodeconverter-desc' => 'Modulän järgeline ozutez specialižen lehtpolen nägus. [[Special:UnicodeConverter|Anttud rivi UTF-8-kodiruindas]] kändase HTML-surrogataks, kudambad voib kävutada ISO 8859-1-lehtpolil.',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Augotižtekst:',
 	'unicodeconverter-newtext' => 'Konvertiruidud tekst',

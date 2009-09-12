@@ -418,6 +418,7 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'tidy-desc' => 'Ližadab järgeližile lehtpolile "tidy" da "untidy"-ližalehtpoled ($wgUseTidy-späi rippudes), kudambad anttas voind säta konkretižen kacmižen täht HTML tidy-n ühthižed järgendused.',
 	'tidy' => 'Tark',
 	'untidy' => 'Čočoi',
 );

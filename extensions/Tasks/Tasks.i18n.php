@@ -3396,6 +3396,7 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'tasks_tab' => 'Radod',
 	'tasks_form_comment' => 'Homaičend',
 	'tasks_noone' => 'niken',
 	'tasks_assign_me' => 'Otta tö ičeleze',
@@ -3411,9 +3412,11 @@ $messages['vep'] = array(
 	'tasks_reopen' => 'Avaita tö udes',
 	'tasks_assignedto' => 'Anttihe $1-kävutajale',
 	'tasks_here' => 'naku',
+	'tasks_help_page' => 'Radod',
 	'tasks_more_like_it' => 'völ',
 	'tasks_table_header_page' => "Lehtpol'",
 	'tasks_search_form_title' => 'Ectä',
+	'tasks_search_tasks' => 'Radod',
 	'tasks_previous' => 'Tagaze',
 	'tasks_next' => 'Edeleze',
 	'tasks_sort' => 'Sorturuida',

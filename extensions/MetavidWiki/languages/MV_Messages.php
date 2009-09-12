@@ -5038,6 +5038,7 @@ $messages['lb'] = array(
 	'mv_tool_search' => 'Sichen',
 	'mv_tool_search_title' => 'An dësem Stream sichen',
 	'mv_tool_navigate' => 'Navigéieren',
+	'mv_tool_navigate_title' => 'Am ganze Stream navigéieren',
 	'mv_tool_export' => 'Exportéieren',
 	'mv_tool_export_title' => 'Meta-date vum Stream exportéieren',
 	'mv_tool_embed' => 'Abannen',
@@ -5097,6 +5098,7 @@ $messages['lb'] = array(
 	'mv_speech_by' => 'geschwat vum',
 	'mv_category' => 'Kategorie',
 	'mv_remove_filter' => 'Filter ewechhuelen',
+	'mv_advaced_search' => 'Erweidert Medie-Sich',
 	'mv_view_wiki_page' => 'Wiki-Säit gesinn',
 	'mv_error_mvd_not_found' => 'Feeler mwd net fonnt',
 	'mv_media_search' => 'Medie sichen',
@@ -8386,6 +8388,13 @@ $messages['tr'] = array(
 	'mv_edit' => 'Değiştir',
 	'mv_history' => 'Geçmiş',
 	'mv_remove' => 'kaldır',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'mv_tool_export' => 'Eksportiruida',
 );
 
 /** Vietnamese (Tiếng Việt)

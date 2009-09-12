@@ -730,6 +730,26 @@ $messages['pl'] = array(
 	'nss-db-error' => 'Błąd odczytu z uwierzytelniania bazy danych',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'accountmanager' => 'Gestor dij cont',
+	'am-username' => 'nòm utent',
+	'am-email' => 'e-mail',
+	'am-active' => 'ativ',
+	'am-updated' => 'Ij tò cambi a son stàit salvà con sussess',
+	'nss-desc' => 'Un plugin për autentiché an vers un database libnss-mysql. A conten un [[Special:AccountManager|gestor ëd cont]]',
+	'nss-rights' => 'drit',
+	'nss-save-changes' => 'Salva ij cambi',
+	'nss-create-account-header' => 'Crea un neuv cont',
+	'nss-create-account' => 'Crea un cont',
+	'nss-no-mail' => "Manda pa n'e-mail",
+	'nss-welcome-mail' => "Un cont con stranòm $1 e ciav $2 a l'é stàit creà për ti.",
+	'nss-welcome-mail-subject' => 'Creassion ëd cont',
+	'nss-db-error' => "Eror an lesend dal database d'autenticassion",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir
@@ -938,6 +958,8 @@ $messages['vep'] = array(
 	'am-username' => 'kävutajan nimi',
 	'am-email' => 'e-počt',
 	'am-active' => 'aktivine',
+	'nss-rights' => 'oiktused',
+	'nss-save-changes' => 'Kirjutada toižetused muštho',
 );
 
 /** Vietnamese (Tiếng Việt)

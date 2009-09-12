@@ -808,6 +808,26 @@ $messages['pl'] = array(
 	'onlinestatus-toggle-online' => 'obecny',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'onlinestatus-desc' => 'Gionta un "mè gust" për mosté se l\'utent al moment a l\'é present o no an sla wiki',
+	'onlinestatus-js-anon' => 'Eror: it deuve esse intrà për dovré sta funsion-sì',
+	'onlinestatus-js-changed' => 'Tò stat a l\'é cambià a "$1"',
+	'onlinestatus-js-error' => 'Ampossìbil cambié stat, ël valor "$1" a l\'é pa bon',
+	'onlinestatus-subtitle-offline' => "St'utent-sì al moment a l'é fòra linia",
+	'onlinestatus-subtitle-online' => "St'utent-sì al moment a l'é fòra linia",
+	'onlinestatus-tab' => 'Stat',
+	'onlinestatus-toggles-desc' => 'Tò stat:',
+	'onlinestatus-toggles-explain' => "Sòn sì at përmëtt ëd mosté a autri utent s'it ses al moment an linia o no an vardand toa pàgina utent.",
+	'onlinestatus-toggles-show' => 'Mosta lë stat an linia an mia pàgina utent',
+	'onlinestatus-toggle-offline' => 'Fòra linia',
+	'onlinestatus-toggle-online' => 'Fòra linia',
+	'onlinestatus-pref-onlineonlogin' => 'Cambia mè stat a "an linia" quand i intro',
+	'onlinestatus-pref-offlineonlogout' => 'Cambia mè stat a "fòra linia" quand i seurto',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -1056,6 +1076,7 @@ $messages['vec'] = array(
 $messages['vep'] = array(
 	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'Teiden status:',
+	'onlinestatus-toggle-online' => 'Saital',
 );
 
 /** Vietnamese (Tiếng Việt)

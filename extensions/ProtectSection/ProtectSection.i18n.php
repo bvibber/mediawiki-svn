@@ -601,6 +601,13 @@ $messages['vec'] = array(
 	'protectsection_forbidden' => 'Proibìo',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'protectsection_forbidden' => "Kel'tud",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

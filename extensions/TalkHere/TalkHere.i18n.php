@@ -1026,6 +1026,13 @@ $messages['uk'] = array(
 	'talkhere-collapse' => 'Приховати модуль редагування',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'talkhere-collapse' => 'peitta redaktor',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

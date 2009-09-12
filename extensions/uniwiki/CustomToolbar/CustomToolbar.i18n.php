@@ -2563,6 +2563,7 @@ $wgCustomToolbarMessages['uk'] = array(
  * @author Игорь Бродский
  */
 $wgCustomToolbarMessages['vep'] = array(
+	'ct-desc' => 'Ližadab azegišt, kudambad sab levitada',
 	'ct_bold_sample' => 'Lihavoitud tekst',
 	'ct_bold_tip_ins' => 'Ližada lihavoitud tekst',
 	'ct_bold_tip_wrap' => 'Tehta nece tekst lihavoitud',
@@ -2599,6 +2600,7 @@ $wgCustomToolbarMessages['vep'] = array(
 	'ct_submit' => 'Mända!',
 	'ct_close' => 'Saubata ikun',
 	'ct_success' => 'Fail jügutoittihe jügedusita!',
+	'ct_popupblocked' => 'Jügudoitandan libui ikun jäi avaidamatoman. Olgat hüväd, kodvgat teden popup-blokirator.',
 	'ct_user_user' => 'Kävutai',
 	'ct_user_tip' => 'Ližata kosketuz kävutajan lehtpolele',
 	'ct_user_caption' => 'Kosketuz kävutajale',

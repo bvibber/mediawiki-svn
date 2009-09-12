@@ -705,6 +705,14 @@ $messages['vec'] = array(
 	'abcdownload' => 'Descarga:',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'abcdesc' => 'Ližadab <tt>&lt;abc&gt;</tt>-teg ABC-muzikad formatiruides',
+	'abcdownload' => 'Jügutoitta:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -310,6 +310,7 @@ Hlej tež [[Special:MostRevisors|'''strony z najwjace kontrolerami''']] a [[Spec
 $messages['hu'] = array(
 	'cooperationstatistics-tablearticle' => 'Lapszám',
 	'cooperationstatistics-tablevalue' => 'Szerkesztők száma',
+	'cooperationstatistics-legendmore' => 'vagy több szerkesztő.',
 );
 
 /** Interlingua (Interlingua)

@@ -1731,6 +1731,8 @@ $messages['tr'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'recordadmin-select' => 'Valiče',
+	'recordadmin-badtitle' => 'Vär pälkirjutez!',
 	'recordadmin-buttonsearch' => 'Ectä',
 	'recordadmin-buttoncreate' => 'Säta',
 	'recordadmin-buttonreset' => 'Udištada',

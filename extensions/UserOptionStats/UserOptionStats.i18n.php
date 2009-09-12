@@ -616,6 +616,14 @@ $messages['tt-cyrl'] = array(
 	'uos-unknown' => '*Килешү буенча',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'uos-unknown' => '*Augotižjärgendusen mödhe',
+	'uos-other' => '*Toine',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

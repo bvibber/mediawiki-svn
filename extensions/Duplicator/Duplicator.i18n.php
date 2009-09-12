@@ -355,6 +355,7 @@ $messages['el'] = array(
 	'duplicator-source' => 'Πηγή:',
 	'duplicator-dest' => 'Προορισμός:',
 	'duplicator-submit' => 'Διπλότυπο',
+	'duplicator-summary' => 'Αντιγράφηκε από το [[$1]]',
 	'right-duplicate' => 'Διπλότυπες σελίδες',
 );
 

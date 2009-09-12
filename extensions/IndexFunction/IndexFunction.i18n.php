@@ -372,9 +372,10 @@ Prema na frecha para mostrar todas as páxinas indexadas con ese título.',
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'index-search' => 'Zήτησις',
+	'index-search' => 'Zήτησις:',
 );
 
 /** Swiss German (Alemannisch)

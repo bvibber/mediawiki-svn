@@ -538,6 +538,7 @@ $messages['el'] = array(
 	'crosswikiunblock-reason' => 'Λόγος',
 	'crosswikiunblock-submit' => 'Άρση φραγής αυτού του χρήστη',
 	'crosswikiblock-noexpiry' => 'Μη έγκυρη λήξη: $1.',
+	'crosswikiblock-noreason' => 'Δεν δόθηκε κάποιος λόγος.',
 	'crosswikiblock-notoken' => 'Μη έγκυρο δείγμα επεξεργασίας',
 	'right-crosswikiblock' => 'Φραγή και απόφραξη χρηστών σε άλλα βίκι',
 );
@@ -1051,10 +1052,24 @@ Wróćo k:
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'crosswikiblock-desc' => 'Szerkesztők blokkolása más wikiken [[Special:Crosswikiblock|speciális lap]]',
+	'crosswikiblock' => 'Szerkesztő blokkolása más wikin',
+	'crosswikiblock-header' => 'Ezen a lapon tudsz szerkesztőt blokkolni más wikin.
+Légyszíves ellenőrizd, hogy megteheted-e ezt a másik wikin, és megfelel-e minden vonatkozó irányelvnek.',
+	'crosswikiblock-target' => 'IP-cím vagy szerkesztői név és cél wiki:',
 	'crosswikiblock-expiry' => 'Lejárat:',
 	'crosswikiblock-reason' => 'Indoklás:',
+	'crosswikiblock-submit' => 'Szerkesztő blokkolása',
+	'crosswikiblock-anononly' => 'Csak anonim felhasználók blokkolása',
+	'crosswikiblock-nocreate' => 'Új regisztráció megakadályozása',
+	'crosswikiblock-autoblock' => 'A szerkesztő utolsó IP-címének automatikus blokkolása, és minden további IP-címé amelyről szerkeszteni próbál',
+	'crosswikiblock-noemail' => 'E-mail küldés tiltása a szerkesztőnél',
 	'crosswikiunblock-reason' => 'Indoklás:',
+	'crosswikiblock-nousername' => 'Nincs szerkesztői név megadva',
+	'crosswikiblock-local' => 'A helyi blokkok nem támogatottak ezen a lapon. Használd a [[Special:BlockIP|{{int:blockip}}]] speciális lapot',
+	'crosswikiblock-notoken' => 'Érvénytelen szerkesztési token.',
 	'crosswikiblock-noblock' => 'Ez a szerkesztő nincs blokkolva.',
+	'right-crosswikiblock' => 'szerkesztők blokkolása és a blokkok feloldása más wikiken',
 );
 
 /** Interlingua (Interlingua)
