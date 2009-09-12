@@ -125,14 +125,15 @@ $.suggestions = {
 							$result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
-								.data( 'text', context.config.suggestions[i] );
+								.data( 'text', context.config.suggestions[i] )
+								.appendTo( $results );
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
 								$result.text( context.config.suggestions[i] );
+								$result.autoEllipse();
 							}
-							$results.append( $result );
 						}
 						// Update the size and position of the list
 						context.data.$container.css( {

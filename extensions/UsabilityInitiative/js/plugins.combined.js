@@ -76,7 +76,27 @@ $.fn.eachAsync = function(opts)
 
 })(jQuery);
 
-/*
+/**
+ * Plugin that automatically truncates the plain text contents of an element and adds an ellipsis 
+ */
+( function( $ ) {
+
+$.fn.autoEllipse = function() {
+	$(this).each( function() {
+		var text = $(this).text();
+		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
+		$(this).empty().append( $text );
+		if ( $text.outerWidth() > $(this).outerWidth() ) {
+			var i = text.length;
+			while ( $text.outerWidth() > $(this).outerWidth() && i > 0 ) {
+				$text.text( text.substr( 0, i ) + '...' );
+				i--;
+			}
+		}
+	} );
+};
+
+} )( jQuery );/*
 
 jQuery Browser Plugin
 	* Version 2.3
@@ -256,6 +276,26 @@ jQuery.cookie = function(name, value, options) {
 };
 
 /**
+ * Plugin that fills a <select> with namespaces
+ */
+
+(function ($) {
+$.fn.namespaceSelector = function( defaultNS ) {
+	if ( typeof defaultNS == 'undefined' )
+		defaultNS = 0;
+	return this.each( function() {
+		for ( var id in wgFormattedNamespaces ) {
+			var opt = $( '<option />' )
+				.attr( 'value', id )
+				.text( wgFormattedNamespaces[id] );
+			if ( id == defaultNS )
+				opt.attr( 'selected', 'selected' );
+			opt.appendTo( $(this) );
+		}
+	});
+};})(jQuery);
+
+/**
  * This plugin provides a generic way to add suggestions to a text box.
  * 
  * Usage:
@@ -382,14 +422,15 @@ $.suggestions = {
 							$result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
-								.data( 'text', context.config.suggestions[i] );
+								.data( 'text', context.config.suggestions[i] )
+								.appendTo( $results );
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
 								$result.text( context.config.suggestions[i] );
+								$result.autoEllipse();
 							}
-							$results.append( $result );
 						}
 						// Update the size and position of the list
 						context.data.$container.css( {
