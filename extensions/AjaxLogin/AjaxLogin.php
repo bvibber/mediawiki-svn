@@ -62,7 +62,7 @@ function AjaxLoginJS( OutputPage $out ) {
 	// Our custom CSS
 	$out->addExtensionStyle( $wgScriptPath . '/extensions/AjaxLogin/AjaxLogin.css' );
 	// JQuery and JQModal scripts
-	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jquery-1.3.2.min.js' );
+	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jquery-1.3.2.js' );
 	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jqModal.js' );
 	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/AjaxLogin.js' );
 
