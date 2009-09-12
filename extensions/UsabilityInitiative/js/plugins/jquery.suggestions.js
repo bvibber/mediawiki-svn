@@ -187,6 +187,10 @@ $.suggestions = {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
+				
+				// .val() doesn't call any event handlers, so
+				// let the world know what happened
+				context.data.$textbox.change();
 			}
 		}
 		$.suggestions.special( context );
@@ -316,7 +320,7 @@ $.fn.suggestions = function() {
 							if ( $result.get( 0 ) != $other.get( 0 ) ) {
 								return;
 							}
-							highlight( $result, true );
+							$.suggestions.highlight( context, $result, true );
 							context.data.$container.hide();
 							if ( typeof context.config.result.select == 'function' ) {
 								context.config.result.select.call( $result, context.data.$textbox );
