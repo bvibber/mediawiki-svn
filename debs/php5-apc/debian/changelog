@@ -1,3 +1,9 @@
+php5-apc (3.1.3p1-1wm1) hardy; urgency=medium
+  * Rework shm patch a bit
+  * Upstream 3.1.3p1
+
+ -- Domas Mituzas <domas@wikimedia.org>  Sat, 12 Sep 2009 12:55:00 +0200
+
 php5-apc (3.0.19-1wm2) hardy; urgency=medium
   * Disable pthread mutexes
   * Don't strip symbols
