@@ -37,6 +37,7 @@ color:WindowText;
 padding:0.25em 0.25em;
 line-height:1.25em;
 margin:0;
+width:100%;
 }
 .suggestions-result-current{
 background-color:#4C59A6;
