@@ -1030,7 +1030,7 @@ $messages['el'] = array(
 	'optin-title-optedin' => 'Εγκαταλείψτε την Beta',
 	'optin-title-justoptedin' => 'Καλωσήρθατε στην Beta',
 	'optin-title-justoptedout' => 'Σας ευχαριστούμε που δοκιμάσατε την Beta μας',
-	'optin-title-feedback' => 'Ανατροφοδότηση Beta',
+	'optin-title-feedback' => 'Ανάδραση περί της Beta',
 	'optin-needlogin' => 'Πρέπει να [$1 συνδεθείς] για να δοκιμάσεις την Beta',
 	'optin-intro' => 'Η Πρωτοβουλία Χρηστικότητας της Wikipedia έχει δουλέψει σκληρά για τη βελτίωση της χρηστικότητας της Wikipedia. 
 Θα θέλατε να δοκιμάσετε τη Beta;',
@@ -1042,14 +1042,14 @@ $messages['el'] = array(
 	'optin-leave-cancel' => 'Αν θα θέλατε να συνεχίσετε να χρησιμοποιείτε τη Beta, μπορείτε να επιστρέψετε στο $1.',
 	'optin-success-out' => 'Εγκαταλείψατε επιτυχώς τη Beta.
 Μπορείτε να τη δοκιμάσετε πάλι ανά πάσα στιγμή κάνοντας κλικ στο σύνδεσμο "{{int:optin-try}}" στο πάνω μέρος της οθόνης.',
-	'optin-success-feedback' => 'Σας ευχαριστούμε για την ανατροφοδότησή σας!',
+	'optin-success-feedback' => 'Σας ευχαριστούμε για την γνώμη σας!',
 	'optin-accept-short' => 'Ας το κάνουμε!',
 	'optin-accept-long' => 'Δοκιμάστε την Beta',
 	'optin-accept-long-anon' => 'Συνδεθείτε και δοκιμάστε το Beta',
 	'optin-deny-short' => 'Όχι, ευχαριστώ.',
 	'optin-deny-long' => 'Επιστροφή στην προηγούμενη σελίδα',
 	'optin-submit-out' => 'Εγκαταλείψτε την Beta',
-	'optin-submit-feedback' => 'Δώστε ανατροφοδότηση',
+	'optin-submit-feedback' => 'Δώστε ανάδραση',
 	'optin-survey-yes' => 'Ναι',
 	'optin-survey-no' => 'Όχι',
 	'optin-survey-intro' => 'Ευχαριστούμε για την δοκιμή της Beta.
@@ -4728,6 +4728,18 @@ Le icone nove e fate mejo le rende pi ciare le azioni che ogni strumento el fa. 
 Par savérghene piessè sul progeto o jutarne, visita el [http://usability.wikimedia.org sito del Progeto Usabilità]. Lì te catarè informassion su la nostra sovenzion, riserca, progetassion e svilupo e version nove. Par far domande o lassar un comento generale, ghe xe la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion sui prototipi]. Par ciacolar de argomenti specifici, ghe xe le pagine de discussion relative. Se te cati dei erori, lassa un comento in te la [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina di discussion de le version de Acai] o dòpara [https://bugzilla.wikimedia.org Bugzilla].
 
 Grassie e sperémo che ne riva presto qualche to messagio!',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'optin-accept-short' => 'Tehkam se!',
+	'optin-survey-yes' => 'Ka',
+	'optin-survey-no' => 'Ei',
+	'optin-survey-answer-whyoptout-other' => 'Toine sü:',
+	'optin-survey-answer-browser-other' => 'Toine kaclim:',
+	'optin-survey-answer-changes-other' => 'Toine:',
 );
 
 /** Vietnamese (Tiếng Việt)
