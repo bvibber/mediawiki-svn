@@ -106,10 +106,10 @@ class ApiLogin extends ApiBase {
 			case Login::THROTTLED :
 				global $wgPasswordAttemptThrottle;
 				$result['result'] = 'Throttled';
-				$result['wait'] = intval($wgPasswordAttemptThrottle['seconds']);
+				$result['wait'] = intval( $wgPasswordAttemptThrottle['seconds'] );
 				break;
 			default :
-				ApiBase::dieDebug(__METHOD__, "Unhandled case value: {$authRes}");
+				ApiBase::dieDebug( __METHOD__, "Unhandled case value: {$authRes}" );
 		}
 
 		$this->getResult()->addValue(null, 'login', $result);

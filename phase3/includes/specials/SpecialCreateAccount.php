@@ -8,6 +8,8 @@ class SpecialCreateAccount extends SpecialPage {
 	var $mUsername, $mPassword, $mRetype, $mReturnTo, $mPosted;
 	var $mCreateaccountMail, $mRemember, $mEmail, $mDomain, $mLanguage;
 	var $mReturnToQuery;
+	
+	protected $mLogin;
 
 	public $mDomains = array();
 	
@@ -94,17 +96,12 @@ class SpecialCreateAccount extends SpecialPage {
 			$this->userBlockedMessage();
 			return;
 		} elseif ( count( $permErrors = $this->getTitle()->getUserPermissionsErrors( 'createaccount', $wgUser, true ) )>0 ) {
-			var_dump('error');
 			$wgOut->showPermissionsErrorPage( $permErrors, 'createaccount' );
 			return;
 		}	
 		
 		if( $this->mPosted ) {
-			if ( $this->mCreateaccountMail ) {
-				return $this->addNewAccountMailPassword();
-			} else {
-				return $this->addNewAccount();
-			}
+			$this->addNewAccount( $this->mCreateaccountMail );
 		} else {
 			$this->showMainForm('');
 		}
@@ -160,223 +157,103 @@ class SpecialCreateAccount extends SpecialPage {
 	}
 
 	/**
-	 * Add a new account, and mail its password to the user
-	 */
-	protected function addNewAccountMailPassword() {
-		global $wgOut;
-
-		if( !$this->mEmail ) {
-			$this->showMainForm( wfMsg( 'noemail', htmlspecialchars( $this->mUsername ) ) );
-			return;
-		}
-
-		if( !$this->addNewaccountInternal() ) {
-			return;
-		}
-
-		# Wipe the initial password 
-		$this->mLogin->mUser->setPassword( null );
-		$this->mLogin->mUser->saveSettings();
-		
-		# And mail them a temporary one
-		$result = $this->mLogin->mailPassword( 'createaccount-title', 'createaccount-text' );
-
-		wfRunHooks( 'AddNewAccount', array( $this->mLogin->mUser, true ) );
-		$this->mLogin->mUser->addNewUserLogEntry();
-
-		$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		$wgOut->setArticleRelated( false );
-
-		if( $result != Login::SUCCESS ) {
-			if( $result == Login::MAIL_ERROR ){
-				$this->showMainForm( wfMsg( 'mailerror', $this->mLogin->mMailResult->getMessage() ) );
-			} else {
-				$this->showMainForm( wfMsg( 'mailerror' ) );
-			}
-		} else {
-			$wgOut->addWikiMsg( 'accmailtext', $this->mLogin->mUser->getName(), $this->mLogin->mUser->getEmail() );
-			$wgOut->returnToMain( false );
-		}
-	}
-
-	/**
 	 * Create a new user account from the provided data
 	 */
-	protected function addNewAccount() {
+	protected function addNewAccount( $byEmail=false ) {
 		global $wgUser, $wgEmailAuthentication;
-
+	
+		# Do a quick check that the user actually managed to type
+		# the password in the same both times
+		if ( 0 != strcmp( $this->mPassword, $this->mRetype ) ) {
+			return $this->showMainForm( wfMsg( 'badretype' ) );
+		}
+		
 		# Create the account and abort if there's a problem doing so
-		if( !$this->addNewAccountInternal() )
-			return;
-		$user = $this->mLogin->mUser;
+		$status = $this->mLogin->attemptCreation( $byEmail );
+		switch( $status ){
+			case Login::SUCCESS: 
+			case Login::MAIL_ERROR: 
+				break;
+				
+			case Login::CREATE_BADDOMAIN: 
+			case Login::CREATE_EXISTS: 
+			case Login::NO_NAME:
+			case Login::CREATE_NEEDEMAIL: 
+			case Login::CREATE_BADEMAIL: 
+			case Login::CREATE_BADNAME:
+			case Login::WRONG_PLUGIN_PASS:
+			case Login::ABORTED:
+				return $this->showMainForm( wfMsg( $this->mLogin->mCreateResult ) );
+			
+			case Login::CREATE_SORBS: 
+				return $this->showMainForm( wfMsg( 'sorbs_create_account_reason' ) . ' (' . wfGetIP() . ')' );
+				
+			case Login::CREATE_BLOCKED:
+				return $this->userBlockedMessage();
+				
+			case Login::CREATE_BADPASS:
+				global $wgMinimalPasswordLength;
+				return $this->showMainForm( wfMsgExt( $this->mLogin->mCreateResult, array( 'parsemag' ), $wgMinimalPasswordLength ) );
+				
+			case Login::THROTTLED: 
+				global $wgAccountCreationThrottle;
+				return $this->showMainForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgAccountCreationThrottle ) ); 
+			
+			default: 
+				throw new MWException( "Unhandled status code $status in " . __METHOD__ );
+		}
 
 		# If we showed up language selection links, and one was in use, be
 		# smart (and sensible) and save that language as the user's preference
 		global $wgLoginLanguageSelector;
 		if( $wgLoginLanguageSelector && $this->mLanguage )
-			$user->setOption( 'language', $this->mLanguage );
-
-		# Send out an email authentication message if needed
-		if( $wgEmailAuthentication && User::isValidEmailAddr( $user->getEmail() ) ) {
-			global $wgOut;
-			$error = $user->sendConfirmationMail();
-			if( WikiError::isError( $error ) ) {
-				$wgOut->addWikiMsg( 'confirmemail_sendfailed', $error->getMessage() );
+			$this->mLogin->mUser->setOption( 'language', $this->mLanguage );
+		$this->mLogin->mUser->saveSettings();
+	
+		if( $byEmail ) {
+			if( $result == Login::MAIL_ERROR ){
+				# FIXME: we are totally screwed if we end up here...
+				$this->showMainForm( wfMsg( 'mailerror', $this->mLogin->mMailResult->getMessage() ) );
 			} else {
-				$wgOut->addWikiMsg( 'confirmemail_oncreate' );
+				$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
+				$wgOut->addWikiMsg( 'accmailtext', $this->mLogin->mUser->getName(), $this->mLogin->mUser->getEmail() );
+				$wgOut->returnToMain( false );
 			}
-		}
-
-		# Save settings (including confirmation token)
-		$user->saveSettings();
-
-		# If not logged in, assume the new account as the current one and set
-		# session cookies then show a "welcome" message or a "need cookies"
-		# message as needed
-		if( $wgUser->isAnon() ) {
-			$wgUser = $user;
-			$wgUser->setCookies();
-			wfRunHooks( 'AddNewAccount', array( $wgUser ) );
-			$wgUser->addNewUserLogEntry();
-			if( $this->hasSessionCookie() ) {
-				return $this->successfulCreation();
-			} else {
-				return $this->cookieRedirectCheck();
-			}
+			
 		} else {
-			# Confirm that the account was created
-			global $wgOut;
-			$self = SpecialPage::getTitleFor( 'Userlogin' );
-			$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
-			$wgOut->setArticleRelated( false );
-			$wgOut->setRobotPolicy( 'noindex,nofollow' );
-			$wgOut->addHTML( wfMsgWikiHtml( 'accountcreatedtext', $user->getName() ) );
-			$wgOut->returnToMain( false, $self );
-			wfRunHooks( 'AddNewAccount', array( $user ) );
-			$user->addNewUserLogEntry();
-			return true;
-		}
-	}
 
-	/**
-	 * Deeper mechanics of initialising a new user and passing it
-	 * off to Login::initUser()
-	 * return Bool whether the user was successfully created
-	 */
-	protected function addNewAccountInternal() {
-		global $wgUser, $wgOut;
-		global $wgEnableSorbs, $wgProxyWhitelist;
-		global $wgMemc, $wgAccountCreationThrottle;
-		global $wgAuth, $wgMinimalPasswordLength;
-		global $wgEmailConfirmToEdit;
-
-		# If the user passes an invalid domain, something is fishy
-		if( !$wgAuth->validDomain( $this->mDomain ) ) {
-			$this->showMainForm( wfMsg( 'wrongpassword' ) );
-			return false;
-		}
-
-		# If we are not allowing users to login locally, we should be checking
-		# to see if the user is actually able to authenticate to the authenti-
-		# cation server before they create an account (otherwise, they can
-		# create a local account and login as any domain user). We only need
-		# to check this for domains that aren't local.
-		if(    !in_array( $this->mDomain, array( 'local', '' ) ) 
-			&& !$wgAuth->canCreateAccounts() 
-			&& ( !$wgAuth->userExists( $this->mUsername ) 
-				|| !$wgAuth->authenticate( $this->mUsername, $this->mPassword ) 
-			) ) 
-		{
-			$this->showMainForm( wfMsg( 'wrongpassword' ) );
-			return false;
-		}
-
-		$ip = wfGetIP();
-		if ( $wgEnableSorbs && !in_array( $ip, $wgProxyWhitelist ) &&
-		  $wgUser->inSorbsBlacklist( $ip ) )
-		{
-			$this->showMainForm( wfMsg( 'sorbs_create_account_reason' ) . ' (' . htmlspecialchars( $ip ) . ')' );
-			return false;
-		}
-
-		# Now create a dummy user ($user) and check if it is valid
-		$name = trim( $this->mUsername );
-		$user = User::newFromName( $name, 'creatable' );
-		if ( is_null( $user ) ) {
-			$this->showMainForm( wfMsg( 'noname' ) );
-			return false;
-		}
-
-		if ( 0 != $user->idForName() ) {
-			$this->showMainForm( wfMsg( 'userexists' ) );
-			return false;
-		}
-
-		if ( 0 != strcmp( $this->mPassword, $this->mRetype ) ) {
-			$this->showMainForm( wfMsg( 'badretype' ) );
-			return false;
-		}
-
-		# check for minimal password length
-		$valid = $user->isValidPassword( $this->mPassword );
-		if ( $valid !== true ) {
-			if ( !$this->mCreateaccountMail ) {
-				$this->showMainForm( wfMsgExt( $valid, array( 'parsemag' ), $wgMinimalPasswordLength ) );
-				return false;
+			# There might be a message stored from the confirmation mail
+			# send, which we can display.
+			if( $wgEmailAuthentication && $this->mLogin->mMailResult ) {
+				global $wgOut;
+				if( WikiError::isError( $this->mLogin->mMailResult ) ) {
+					$wgOut->addWikiMsg( 'confirmemail_sendfailed', $this->mLogin->mMailResult->getMessage() );
+				} else {
+					$wgOut->addWikiMsg( 'confirmemail_oncreate' );
+				}
+			}
+			
+			# If not logged in, assume the new account as the current 
+			# one and set session cookies then show a "welcome" message 
+			# or a "need cookies" message as needed
+			if( $wgUser->isAnon() ) {
+				$wgUser = $this->mLogin->mUser;
+				$wgUser->setCookies();
+				if( $this->hasSessionCookie() ) {
+					return $this->successfulCreation();
+				} else {
+					return $this->cookieRedirectCheck();
+				}
 			} else {
-				# do not force a password for account creation by email
-				# set invalid password, it will be replaced later by a random generated password
-				$this->mPassword = null;
+				# Show confirmation that the account was created
+				global $wgOut;
+				$self = SpecialPage::getTitleFor( 'Userlogin' );
+				$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
+				$wgOut->addHTML( wfMsgWikiHtml( 'accountcreatedtext', $this->mLogin->mUser->getName() ) );
+				$wgOut->returnToMain( false, $self );
+				return true;
 			}
 		}
-
-		# if you need a confirmed email address to edit, then obviously you
-		# need an email address.
-		if ( $wgEmailConfirmToEdit && empty( $this->mEmail ) ) {
-			$this->showMainForm( wfMsg( 'noemailtitle' ) );
-			return false;
-		}
-
-		if( !empty( $this->mEmail ) && !User::isValidEmailAddr( $this->mEmail ) ) {
-			$this->showMainForm( wfMsg( 'invalidemailaddress' ) );
-			return false;
-		}
-
-		# Set some additional data so the AbortNewAccount hook can be used for
-		# more than just username validation
-		$user->setEmail( $this->mEmail );
-		$user->setRealName( $this->mRealName );
-
-		$abortError = '';
-		if( !wfRunHooks( 'AbortNewAccount', array( $user, &$abortError ) ) ) {
-			# Hook point to add extra creation throttles and blocks
-			wfDebug( "LoginForm::addNewAccountInternal: a hook blocked creation\n" );
-			$this->showMainForm( $abortError );
-			return false;
-		}
-
-		if ( $wgAccountCreationThrottle && $wgUser->isPingLimitable() ) {
-			$key = wfMemcKey( 'acctcreate', 'ip', $ip );
-			$value = $wgMemc->get( $key );
-			if ( !$value ) {
-				$wgMemc->set( $key, 0, 86400 );
-			}
-			if ( $value >= $wgAccountCreationThrottle ) {
-				$this->showMainForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgAccountCreationThrottle ) ); 
-				return false;
-			}
-			$wgMemc->incr( $key );
-		}
-
-		if( !$wgAuth->addUser( $user, $this->mPassword, $this->mEmail, $this->mRealName ) ) {
-			$this->showMainForm( wfMsg( 'externaldberror' ) );
-			return false;
-		}
-
-		$this->mLogin->mUser = $user;
-		$this->mLogin->initUser( false );
-		return true;
 	}
 
 	/**
@@ -617,10 +494,11 @@ class SpecialCreateAccount extends SpecialPage {
 		if ( !$this->hasSessionCookie() ) {
 			return $this->mainLoginForm( wfMsgExt( 'nocookiesnew', array( 'parseinline' ) ) );
 		} else {
-			return SpecialUserLogin::successfulLogin( 
-				'welcomecreate', 
+			return SpecialUserlogin::successfulLogin( 
+				array( 'welcomecreate' ), 
 				$this->mReturnTo, 
-				$this->mReturnToQuery );
+				$this->mReturnToQuery
+			);
 		}
 	}
 	

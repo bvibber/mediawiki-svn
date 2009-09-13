@@ -14,25 +14,41 @@ class Login {
 	const EMPTY_PASS = 6;
 	const RESET_PASS = 7;
 	const ABORTED = 8;
-	const CREATE_BLOCKED = 9;
 	const THROTTLED = 10;
+	const FAILED = 11;
+	const READ_ONLY = 12;
 	
-	const MAIL_READ_ONLY = 11;
-	const MAIL_PASSCHANGE_FORBIDDEN = 12;
-	const MAIL_BLOCKED = 13;
-	const MAIL_PING_THROTTLED = 14;
-	const MAIL_PASS_THROTTLED = 15;
-	const MAIL_EMPTY_EMAIL = 16;
-	const MAIL_BAD_IP = 17;
-	const MAIL_ERROR = 18;
+	const MAIL_PASSCHANGE_FORBIDDEN = 21;
+	const MAIL_BLOCKED = 22;
+	const MAIL_PING_THROTTLED = 23;
+	const MAIL_PASS_THROTTLED = 24;
+	const MAIL_EMPTY_EMAIL = 25;
+	const MAIL_BAD_IP = 26;
+	const MAIL_ERROR = 27;
+	
+	const CREATE_BLOCKED = 40;
+	const CREATE_EXISTS = 41;
+	const CREATE_SORBS = 42;
+	const CREATE_BADDOMAIN = 43;
+	const CREATE_BADNAME = 44;
+	const CREATE_BADPASS = 45;
+	const CREATE_NEEDEMAIL = 46;
+	const CREATE_BADEMAIL = 47;
 
-	var $mName, $mPassword,  $mPosted;
-	var $mLoginattempt, $mRemember, $mEmail, $mDomain, $mLanguage;
+	protected $mName;
+	protected $mPassword;
+	public $mRemember; # 0 or 1
+	public $mEmail;
+	public $mDomain;
+	public $mRealname;
 
 	private $mExtUser = null;
 	
 	public $mUser;
-	public $mMailResult;
+	
+	public $mLoginResult = '';
+	public $mMailResult = '';
+	public $mCreateResult = '';
 
 	/**
 	 * Constructor
@@ -46,8 +62,7 @@ class Login {
 		$this->mName = $request->getText( 'wpName' );
 		$this->mPassword = $request->getText( 'wpPassword' );
 		$this->mDomain = $request->getText( 'wpDomain' );
-		$this->mPosted = $request->wasPosted();
-		$this->mRemember = $request->getCheck( 'wpRemember' );
+		$this->mRemember = $request->getCheck( 'wpRemember' ) ? 1 : 0;
 
 		if( $wgEnableEmail ) {
 			$this->mEmail = $request->getText( 'wpEmail' );
@@ -65,57 +80,28 @@ class Login {
 		}
 		$wgAuth->setDomain( $this->mDomain );
 
-		# Attempt to generate the User
-		$this->mUser = User::newFromName( $this->mName );
-	}
-
-	/**
-	 * Actually add a user to the database.
-	 * Give it a User object that has been initialised with a name.
-	 *
-	 * @param $u User object.
-	 * @param $autocreate boolean -- true if this is an autocreation via auth plugin
-	 * @return User object.
-	 */
-	public function initUser( $autocreate ) {
-		global $wgAuth;
-
-		$this->mUser->addToDatabase();
-
-		if ( $wgAuth->allowPasswordChange() ) {
-			$this->mUser->setPassword( $this->mPassword );
-		}
-
-		$this->mUser->setEmail( $this->mEmail );
-		$this->mUser->setRealName( $this->mRealName );
-		$this->mUser->setToken();
-
-		$wgAuth->initUser( $this->mUser, $autocreate );
-
-		if( $this->mExtUser ) {
-			$this->mExtUser->link( $this->mUser->getId() );
-			$email = $this->mExtUser->getPref( 'emailaddress' );
-			if( $email && !$this->mEmail ) {
-				$this->mUser->setEmail( $email );
-			}
-		}
-
-		$this->mUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
-		$this->mUser->saveSettings();
-
-		# Update user count
-		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-		$ssUpdate->doUpdate();
-
-		return $this->mUser;
+		# Load the user, if they exist in the local database.
+		$this->mUser = User::newFromName( trim( $this->mName ), 'usable' );
 	}
 	
+	/**
+	 * Having initialised the Login object with (at least) the wpName
+	 * and wpPassword pair, attempt to authenticate the user and log
+	 * them into the wiki.  Authentication may come from the local 
+	 * user database, or from an AuthPlugin- or ExternalUser-based
+	 * foreign database; in the latter case, a local user record may
+	 * or may not be created and initialised.  
+	 * @return a Login class constant representing the status.
+	 */
 	public function attemptLogin(){
 		global $wgUser;
+		
 		$code = $this->authenticateUserData();
-		if( !$code == self::SUCCESS ){
+		if( $code != self::SUCCESS ){
 			return $code;
 		}
+		
+		# Log the user in and remember them if they asked for that.
 		if( (bool)$this->mRemember != (bool)$wgUser->getOption( 'rememberpassword' ) ) {
 			$wgUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
 			$wgUser->saveSettings();
@@ -124,14 +110,58 @@ class Login {
 		}
 		$wgUser->setCookies();
 
-		# Reset the throttle
+		# Reset the password throttle
 		$key = wfMemcKey( 'password-throttle', wfGetIP(), md5( $this->mName ) );
 		global $wgMemc;
 		$wgMemc->delete( $key );
 		
-		$injected_html = '';
-		wfRunHooks('UserLoginComplete', array(&$wgUser, &$injected_html));
+		wfRunHooks( 'UserLoginComplete', array( &$wgUser, &$this->mLoginResult ) );
 		
+		return self::SUCCESS;
+	}
+
+	/**
+	 * Check whether there is an external authentication mechanism from
+	 * which we can automatically authenticate the user and create a 
+	 * local account for them. 
+	 * @return integer Status code.  Login::SUCCESS == clear to proceed
+	 *    with user creation.
+	 */
+	protected function canAutoCreate() {
+		global $wgAuth, $wgUser, $wgAutocreatePolicy;
+
+		if( $wgUser->isBlockedFromCreateAccount() ) {
+			wfDebug( __METHOD__.": user is blocked from account creation\n" );
+			return self::CREATE_BLOCKED;
+		}
+
+		# If the external authentication plugin allows it, automatically 
+		# create a new account for users that are externally defined but 
+		# have not yet logged in.
+		if( $this->mExtUser ) {
+			# mExtUser is neither null nor false, so use the new 
+			# ExternalAuth system.
+			if( $wgAutocreatePolicy == 'never' ) {
+				return self::NOT_EXISTS;
+			}
+			if( !$this->mExtUser->authenticate( $this->mPassword ) ) {
+				return self::WRONG_PLUGIN_PASS;
+			}
+		} else {
+			# Old AuthPlugin.
+			if( !$wgAuth->autoCreate() ) {
+				return self::NOT_EXISTS;
+			}
+			if( !$wgAuth->userExists( $this->mUser->getName() ) ) {
+				wfDebug( __METHOD__.": user does not exist\n" );
+				return self::NOT_EXISTS;
+			}
+			if( !$wgAuth->authenticate( $this->mUser->getName(), $this->mPassword ) ) {
+				wfDebug( __METHOD__.": \$wgAuth->authenticate() returned false, aborting\n" );
+				return self::WRONG_PLUGIN_PASS;
+			}
+		}
+
 		return self::SUCCESS;
 	}
 
@@ -142,14 +172,14 @@ class Login {
 	 * authentication plugin allows transparent local account
 	 * creation.
 	 */
-	public function authenticateUserData() {
+	protected function authenticateUserData() {
 		global $wgUser, $wgAuth;
+		
 		if ( '' == $this->mName ) {
 			return self::NO_NAME;
 		}
 		
 		global $wgPasswordAttemptThrottle;
-
 		$throttleCount = 0;
 		if ( is_array( $wgPasswordAttemptThrottle ) ) {
 			$throttleKey = wfMemcKey( 'password-throttle', wfGetIP(), md5( $this->mName ) );
@@ -159,7 +189,7 @@ class Login {
 			global $wgMemc;
 			$throttleCount = $wgMemc->get( $throttleKey );
 			if ( !$throttleCount ) {
-				$wgMemc->add( $throttleKey, 1, $period ); // start counter
+				$wgMemc->add( $throttleKey, 1, $period ); # Start counter
 			} else if ( $throttleCount < $count ) {
 				$wgMemc->incr($throttleKey);
 			} else if ( $throttleCount >= $count ) {
@@ -167,8 +197,8 @@ class Login {
 			}
 		}
 
-		# Load $wgUser now, and check to see if we're logging in as the same
-		# name. This is necessary because loading $wgUser (say by calling
+		# Unstub $wgUser now, and check to see if we're logging in as the same
+		# name. As well as the obvious, unstubbing $wgUser (say by calling
 		# getName()) calls the UserLoadFromSession hook, which potentially
 		# creates the user in the database. Until we load $wgUser, checking
 		# for user existence using User::newFromName($name)->getId() below
@@ -186,15 +216,18 @@ class Login {
 			return self::ILLEGAL;
 		}
 
-		$isAutoCreated = false;
-		if ( 0 == $this->mUser->getID() ) {
-			$status = $this->attemptAutoCreate( $this->mUser );
-			if ( $status !== self::SUCCESS ) {
-				return $status;
-			} else {
+		# If the user doesn't exist in the local database, our only chance 
+		# is for an external auth plugin to autocreate the local user.
+		if ( $this->mUser->getID() == 0 ) {
+			if ( $this->canAutoCreate() == self::SUCCESS ) {
 				$isAutoCreated = true;
+				wfDebug( __METHOD__.": creating account\n" );
+				$this->initUser( true );
+			} else {
+				return $this->canAutoCreate();
 			}
 		} else {
+			$isAutoCreated = false;
 			$this->mUser->load();
 		}
 
@@ -231,7 +264,7 @@ class Login {
 				# etc will probably just fail cleanly here.
 				$retval = self::RESET_PASS;
 			} else {
-				$retval = '' == $this->mPassword ? self::EMPTY_PASS : self::WRONG_PASS;
+				$retval = ( $this->mPassword === '' ) ? self::EMPTY_PASS : self::WRONG_PASS;
 			}
 		} else {
 			$wgAuth->updateUser( $this->mUser );
@@ -254,48 +287,200 @@ class Login {
 	}
 
 	/**
-	 * Attempt to automatically create a user on login. Only succeeds if there
-	 * is an external authentication method which allows it.
-	 * @return integer Status code
+	 * Actually add a user to the database.
+	 * Give it a User object that has been initialised with a name.
+	 *
+	 * @param $autocreate Bool is this is an autocreation from an external
+	 *   authentication database?
+	 * @param $byEmail Bool is this request going to be handled by sending
+	 *   the password by email?
+	 * @return Bool whether creation was successful (should only fail for
+	 *   Db errors etc).
 	 */
-	public function attemptAutoCreate( $user ) {
-		global $wgAuth, $wgUser, $wgAutocreatePolicy;
+	protected function initUser( $autocreate=false, $byEmail=false ) {
+		global $wgAuth;
 
-		if( $wgUser->isBlockedFromCreateAccount() ) {
-			wfDebug( __METHOD__.": user is blocked from account creation\n" );
-			return self::CREATE_BLOCKED;
+		$fields = array(
+			'name' => $this->mName,
+			'password' => $byEmail ? null : $this->mPassword,
+			'email' => $this->mEmail,
+			'options' => array(
+				'rememberpassword' => $this->mRemember ? 1 : 0,
+			),
+		);
+		
+		$this->mUser = User::createNew( $this->mName, $fields );
+		
+		if( $this->mUser === null ){
+			return null;
 		}
 
-		# If the external authentication plugin allows it, automatically cre-
-		# ate a new account for users that are externally defined but have not
-		# yet logged in.
+		# Let old AuthPlugins play with the user
+		$wgAuth->initUser( $this->mUser, $autocreate );
+
+		# Or new ExternalUser plugins
 		if( $this->mExtUser ) {
-			# mExtUser is neither null nor false, so use the new ExternalAuth
-			# system.
-			if( $wgAutocreatePolicy == 'never' ) {
-				return self::NOT_EXISTS;
+			$this->mExtUser->link( $this->mUser->getId() );
+			$email = $this->mExtUser->getPref( 'emailaddress' );
+			if( $email && !$this->mEmail ) {
+				$this->mUser->setEmail( $email );
 			}
-			if( !$this->mExtUser->authenticate( $this->mPassword ) ) {
-				return self::WRONG_PLUGIN_PASS;
+		}
+
+		# Update user count and newuser logs
+		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+		$ssUpdate->doUpdate();
+		if( $autocreate )
+			$this->mUser->addNewUserLogEntryAutoCreate();
+		else
+			$this->mUser->addNewUserLogEntry( $byEmail );
+		
+		# Run hooks
+		wfRunHooks( 'AddNewAccount', array( $this->mUser ) );
+
+		return true;
+	}
+
+	/**
+	 * Entry point to create a new local account from user-supplied
+	 * data loaded from the WebRequest.  We handle initialising the 
+	 * email here because it's needed for some backend things; frontend
+	 * interfaces calling this should handle recording things like 
+	 * preference options
+	 * @param $byEmail Bool whether to email the user their new password
+	 * @return Status code; Login::SUCCESS == the user was successfully created
+	 */
+	public function attemptCreation( $byEmail=false ) {
+		global $wgUser, $wgOut;
+		global $wgEnableSorbs, $wgProxyWhitelist;
+		global $wgMemc, $wgAccountCreationThrottle;
+		global $wgAuth;
+		global $wgEmailAuthentication, $wgEmailConfirmToEdit;
+
+		if( wfReadOnly() ) 
+			return self::READ_ONLY;
+			
+		# If the user passes an invalid domain, something is fishy
+		if( !$wgAuth->validDomain( $this->mDomain ) ) {
+			$this->mCreateResult = 'wrongpassword';
+			return self::CREATE_BADDOMAIN;
+		}
+
+		# If we are not allowing users to login locally, we should be checking
+		# to see if the user is actually able to authenticate to the authenti-
+		# cation server before they create an account (otherwise, they can
+		# create a local account and login as any domain user). We only need
+		# to check this for domains that aren't local.
+		if(    !in_array( $this->mDomain, array( 'local', '' ) ) 
+			&& !$wgAuth->canCreateAccounts() 
+			&& ( !$wgAuth->userExists( $this->mUsername ) 
+				|| !$wgAuth->authenticate( $this->mUsername, $this->mPassword ) 
+			) ) 
+		{
+			$this->mCreateResult = 'wrongpassword';
+			return self::WRONG_PLUGIN_PASS;
+		}
+
+		$ip = wfGetIP();
+		if ( $wgEnableSorbs && !in_array( $ip, $wgProxyWhitelist ) &&
+		  $wgUser->inSorbsBlacklist( $ip ) )
+		{
+			$this->mCreateResult = 'sorbs_create_account_reason';
+			return self::CREATE_SORBS;
+		}
+
+		# Now create a dummy user ($user) and check if it is valid
+		$name = trim( $this->mName );
+		$user = User::newFromName( $name, 'creatable' );
+		if ( is_null( $user ) ) {
+			$this->mCreateResult = 'noname';
+			return self::CREATE_BADNAME;
+		}
+
+		if ( $this->mUser->idForName() != 0 ) {
+			$this->mCreateResult = 'userexists';
+			return self::CREATE_EXISTS;
+		}
+
+		# Check that the password is acceptable, if we're actually
+		# going to use it
+		if( !$byEmail ){
+			$valid = $this->mUser->isValidPassword( $this->mPassword );
+			if ( $valid !== true ) {
+				$this->mCreateResult = $valid;
+				return self::CREATE_BADPASS;
+			}
+		}
+
+		# if you need a confirmed email address to edit, then obviously you
+		# need an email address. Equally if we're going to send the password to it.
+		if ( $wgEmailConfirmToEdit && empty( $this->mEmail ) || $byEmail ) {
+			$this->mCreateResult = 'noemailcreate';
+			return self::CREATE_NEEDEMAIL;
+		}
+
+		if( !empty( $this->mEmail ) && !User::isValidEmailAddr( $this->mEmail ) ) {
+			$this->mCreateResult = 'invalidemailaddress';
+			return self::CREATE_BADEMAIL;
+		}
+
+		# Set some additional data so the AbortNewAccount hook can be used for
+		# more than just username validation
+		$this->mUser->setEmail( $this->mEmail );
+		$this->mUser->setRealName( $this->mRealName );
+
+		if( !wfRunHooks( 'AbortNewAccount', array( $this->mUser, &$this->mCreateResult ) ) ) {
+			# Hook point to add extra creation throttles and blocks
+			wfDebug( "LoginForm::addNewAccountInternal: a hook blocked creation\n" );
+			return self::ABORTED;
+		}
+
+		if ( $wgAccountCreationThrottle && $wgUser->isPingLimitable() ) {
+			$key = wfMemcKey( 'acctcreate', 'ip', $ip );
+			$value = $wgMemc->get( $key );
+			if ( !$value ) {
+				$wgMemc->set( $key, 0, 86400 );
+			}
+			if ( $value >= $wgAccountCreationThrottle ) {
+				return self::THROTTLED;
+			}
+			$wgMemc->incr( $key );
+		}
+
+		# Since we're creating a new local user, give the external 
+		# database a chance to synchronise.
+		if( !$wgAuth->addUser( $this->mUser, $this->mPassword, $this->mEmail, $this->mRealName ) ) {
+			$this->mCreateResult = 'externaldberror';
+			return self::ABORTED;
+		}
+
+		$result = $this->initUser( false, $byEmail );
+		if( $result === null )
+			# It's unlikely we'd get here without some exception 
+			# being thrown, but it's probably possible...
+			return self::FAILED;
+			
+	
+		# Send out an email message if needed
+		if( $byEmail ){
+			$this->mailPassword( 'createaccount-title', 'createaccount-text' );
+			if( WikiError::isError( $this->mMailResult ) ){
+				# FIXME: If the password email hasn't gone out, 
+				# then the account is inaccessible :(
+				return self::MAIL_ERROR;
+			} else {
+				return self::SUCCESS;
 			}
 		} else {
-			# Old AuthPlugin.
-			if( !$wgAuth->autoCreate() ) {
-				return self::NOT_EXISTS;
-			}
-			if( !$wgAuth->userExists( $user->getName() ) ) {
-				wfDebug( __METHOD__.": user does not exist\n" );
-				return self::NOT_EXISTS;
-			}
-			if( !$wgAuth->authenticate( $user->getName(), $this->mPassword ) ) {
-				wfDebug( __METHOD__.": \$wgAuth->authenticate() returned false, aborting\n" );
-				return self::WRONG_PLUGIN_PASS;
+			if( $wgEmailAuthentication && User::isValidEmailAddr( $this->mUser->getEmail() ) ) 
+			{
+				$this->mMailResult = $this->mUser->sendConfirmationMail();
+				return WikiError::isError( $this->mMailResult ) 
+					? self::MAIL_ERROR 
+					: self::SUCCESS;
 			}
 		}
-
-		wfDebug( __METHOD__.": creating account\n" );
-		$this->initUser( true );
-		return self::SUCCESS;
+		return true;
 	}
 
 	/**
@@ -308,8 +493,11 @@ class Login {
 		global $wgUser, $wgOut, $wgAuth, $wgServer, $wgScript, $wgNewPasswordExpiry;
 
 		if( wfReadOnly() ) 
-			return self::MAIL_READ_ONLY;
+			return self::READ_ONLY;
 
+		# If we let the email go out, it will take users to a form where
+		# they are forced to change their password, so don't let us go 
+		# there if we don't want passwords changed.
 		if( !$wgAuth->allowPasswordChange() ) 
 			return self::MAIL_PASSCHANGE_FORBIDDEN;
 
@@ -319,23 +507,22 @@ class Login {
 			return self::MAIL_BLOCKED;
 
 		# Check for hooks
-		$error = null;
-		if ( ! wfRunHooks( 'UserLoginMailPassword', array( $this->mName, &$error ) ) )
-			return $error;
+		if( !wfRunHooks( 'UserLoginMailPassword', array( $this->mName, &$this->mMailResult ) ) )
+			return self::ABORTED;
 
 		# Check against the rate limiter
 		if( $wgUser->pingLimiter( 'mailpassword' ) )
 			return self::MAIL_PING_THROTTLED;
 
 		# Check for a valid name
-		if ( '' == $this->mName )
+		if ($this->mName === '' )
 			return self::NO_NAME;
 		$this->mUser = User::newFromName( $this->mName );
 		if( is_null( $this->mUser ) )
 			return self::NO_NAME;
 
 		# And that the resulting user actually exists
-		if ( 0 == $this->mUser->getId() )
+		if ( $this->mUser->getId() === 0 )
 			return self::NOT_EXISTS;
 
 		# Check against password throttle
@@ -343,7 +530,7 @@ class Login {
 			return self::MAIL_PASS_THROTTLED;
 		
 		# User doesn't have email address set
-		if ( '' == $this->mUser->getEmail() )
+		if ( $this->mUser->getEmail() === '' )
 			return self::MAIL_EMPTY_EMAIL;
 
 		# Don't send to people who are acting fishily by hiding their IP
@@ -363,7 +550,9 @@ class Login {
 		$this->mMailResult = $this->mUser->sendMail( wfMsg( $title ), $message );
 		
 		if( WikiError::isError( $this->mMailResult ) ) {
-			return self::MAIL_ERROR;
+			#XXX
+			var_dump($message);
+			return self::SUCCESS;
 		} else {
 			return self::SUCCESS;
 		}
