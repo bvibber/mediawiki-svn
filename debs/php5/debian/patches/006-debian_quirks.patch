@@ -1,0 +1,376 @@
+Index: php5-5.2.4/configure.in
+===================================================================
+--- php5-5.2.4.orig/configure.in	2007-09-10 20:45:26.000000000 +0200
++++ php5-5.2.4/configure.in	2007-09-11 00:23:54.000000000 +0200
+@@ -934,7 +934,7 @@
+ fi
+ 
+ PHP_ARG_WITH(pear, [whether to install PEAR],
+-[  --with-pear=DIR         Install PEAR in DIR [PREFIX/lib/php]
++[  --with-pear=DIR         Install PEAR in DIR [PREFIX/lib/php5]
+   --without-pear          Do not install PEAR], DEFAULT, yes)
+ 
+ if test "$PHP_PEAR" != "no"; then
+@@ -968,7 +968,7 @@
+   if test "$PHP_PEAR" = "DEFAULT" || test "$PHP_PEAR" = "yes"; then
+     case $PHP_LAYOUT in
+       GNU) PEAR_INSTALLDIR=$datadir/pear;;
+-      *)   PEAR_INSTALLDIR=$libdir/php;;
++      *)   PEAR_INSTALLDIR=$libdir/php5;;
+     esac
+   fi
+ 
+@@ -1023,12 +1023,12 @@
+ 
+ case $libdir in
+   '${exec_prefix}/lib')
+-    libdir=$libdir/php
++    libdir=$libdir/php5
+     ;;
+ esac
+ case $datadir in
+   '${prefix}/share')
+-    datadir=$datadir/php
++    datadir=$datadir/php5
+     ;;
+   *) ;;
+ esac
+@@ -1094,7 +1094,7 @@
+ EXPANDED_DATADIR=$datadir
+ EXPANDED_PHP_CONFIG_FILE_PATH=`eval echo "$PHP_CONFIG_FILE_PATH"`
+ EXPANDED_PHP_CONFIG_FILE_SCAN_DIR=`eval echo "$PHP_CONFIG_FILE_SCAN_DIR"`
+-INCLUDE_PATH=.:$EXPANDED_PEAR_INSTALLDIR
++INCLUDE_PATH=.:$EXPANDED_PEAR_INSTALLDIR:/usr/share/pear
+ 
+ exec_prefix=$old_exec_prefix
+ libdir=$old_libdir
+Index: php5-5.2.4/ext/ext_skel
+===================================================================
+--- php5-5.2.4.orig/ext/ext_skel	2004-05-16 14:10:35.000000000 +0200
++++ php5-5.2.4/ext/ext_skel	2007-09-11 00:23:54.000000000 +0200
+@@ -70,7 +70,7 @@
+ fi
+ 
+ if test -z "$skel_dir"; then
+-  skel_dir="skeleton"
++  skel_dir="/usr/lib/php5/skeleton"
+ fi
+ 
+ ## convert skel_dir to full path
+Index: php5-5.2.4/ext/session/session.c
+===================================================================
+--- php5-5.2.4.orig/ext/session/session.c	2007-08-03 03:16:40.000000000 +0200
++++ php5-5.2.4/ext/session/session.c	2007-09-11 00:23:54.000000000 +0200
+@@ -181,11 +181,11 @@
+ PHP_INI_BEGIN()
+ 	STD_PHP_INI_BOOLEAN("session.bug_compat_42",    "1",         PHP_INI_ALL, OnUpdateBool,   bug_compat,         php_ps_globals,    ps_globals)
+ 	STD_PHP_INI_BOOLEAN("session.bug_compat_warn",  "1",         PHP_INI_ALL, OnUpdateBool,   bug_compat_warn,    php_ps_globals,    ps_globals)
+-	STD_PHP_INI_ENTRY("session.save_path",          "",          PHP_INI_ALL, OnUpdateSaveDir,save_path,          php_ps_globals,    ps_globals)
++	STD_PHP_INI_ENTRY("session.save_path",          "/var/lib/php5",      PHP_INI_ALL, OnUpdateString, save_path,          php_ps_globals,    ps_globals)
+ 	STD_PHP_INI_ENTRY("session.name",               "PHPSESSID", PHP_INI_ALL, OnUpdateString, session_name,       php_ps_globals,    ps_globals)
+ 	PHP_INI_ENTRY("session.save_handler",           "files",     PHP_INI_ALL, OnUpdateSaveHandler)
+ 	STD_PHP_INI_BOOLEAN("session.auto_start",       "0",         PHP_INI_ALL, OnUpdateBool,   auto_start,         php_ps_globals,    ps_globals)
+-	STD_PHP_INI_ENTRY("session.gc_probability",     "1",         PHP_INI_ALL, OnUpdateLong,    gc_probability,     php_ps_globals,    ps_globals)
++	STD_PHP_INI_ENTRY("session.gc_probability",     "0",         PHP_INI_ALL, OnUpdateLong,    gc_probability,     php_ps_globals,    ps_globals)
+ 	STD_PHP_INI_ENTRY("session.gc_divisor",         "100",       PHP_INI_ALL, OnUpdateLong,    gc_divisor,        php_ps_globals,    ps_globals)
+ 	STD_PHP_INI_ENTRY("session.gc_maxlifetime",     "1440",      PHP_INI_ALL, OnUpdateLong,    gc_maxlifetime,     php_ps_globals,    ps_globals)
+ 	PHP_INI_ENTRY("session.serialize_handler",      "php",       PHP_INI_ALL, OnUpdateSerializer)
+Index: php5-5.2.4/php.ini-dist
+===================================================================
+--- php5-5.2.4.orig/php.ini-dist	2007-08-22 01:24:18.000000000 +0200
++++ php5-5.2.4/php.ini-dist	2007-09-11 00:23:54.000000000 +0200
+@@ -466,7 +466,7 @@
+ ;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ ; UNIX: "/path1:/path2"
+-;include_path = ".:/php/includes"
++;include_path = ".:/usr/share/php"
+ ;
+ ; Windows: "\path1;\path2"
+ ;include_path = ".;c:\php\includes"
+@@ -483,7 +483,7 @@
+ user_dir =
+ 
+ ; Directory in which the loadable extensions (modules) reside.
+-extension_dir = "./"
++; extension_dir = "./"
+ 
+ ; Whether or not to enable the dl() function.  The dl() function does NOT work
+ ; properly in multithreaded servers, such as IIS or Zeus, and is automatically
+@@ -596,58 +596,6 @@
+ ; extension_dir directive above.
+ 
+ 
+-; Windows Extensions
+-; Note that ODBC support is built in, so no dll is needed for it.
+-; Note that many DLL files are located in the extensions/ (PHP 4) ext/ (PHP 5)
+-; extension folders as well as the separate PECL DLL download (PHP 5).
+-; Be sure to appropriately set the extension_dir directive.
+-
+-;extension=php_bz2.dll
+-;extension=php_curl.dll
+-;extension=php_dba.dll
+-;extension=php_dbase.dll
+-;extension=php_exif.dll
+-;extension=php_fdf.dll
+-;extension=php_gd2.dll
+-;extension=php_gettext.dll
+-;extension=php_gmp.dll
+-;extension=php_ifx.dll
+-;extension=php_imap.dll
+-;extension=php_interbase.dll
+-;extension=php_ldap.dll
+-;extension=php_mbstring.dll
+-;extension=php_mcrypt.dll
+-;extension=php_mhash.dll
+-;extension=php_mime_magic.dll
+-;extension=php_ming.dll
+-;extension=php_msql.dll
+-;extension=php_mssql.dll
+-;extension=php_mysql.dll
+-;extension=php_mysqli.dll
+-;extension=php_oci8.dll
+-;extension=php_openssl.dll
+-;extension=php_pdo.dll
+-;extension=php_pdo_firebird.dll
+-;extension=php_pdo_mssql.dll
+-;extension=php_pdo_mysql.dll
+-;extension=php_pdo_oci.dll
+-;extension=php_pdo_oci8.dll
+-;extension=php_pdo_odbc.dll
+-;extension=php_pdo_pgsql.dll
+-;extension=php_pdo_sqlite.dll
+-;extension=php_pgsql.dll
+-;extension=php_pspell.dll
+-;extension=php_shmop.dll
+-;extension=php_snmp.dll
+-;extension=php_soap.dll
+-;extension=php_sockets.dll
+-;extension=php_sqlite.dll
+-;extension=php_sybase_ct.dll
+-;extension=php_tidy.dll
+-;extension=php_xmlrpc.dll
+-;extension=php_xsl.dll
+-;extension=php_zip.dll
+-
+ ;;;;;;;;;;;;;;;;;;;
+ ; Module Settings ;
+ ;;;;;;;;;;;;;;;;;;;
+@@ -988,7 +936,7 @@
+ ;
+ ; where MODE is the octal representation of the mode. Note that this
+ ; does not overwrite the process's umask.
+-;session.save_path = "/tmp"
++;session.save_path = /var/lib/php5
+ 
+ ; Whether to use cookies.
+ session.use_cookies = 1
+@@ -1026,7 +974,10 @@
+ ; e.g. 1/100 means there is a 1% chance that the GC process starts
+ ; on each request.
+ 
+-session.gc_probability = 1
++; This is disabled in the Debian packages, due to the strict permissions
++; on /var/lib/php5.  Instead of setting this here, see the cronjob at
++; /etc/cron.d/php5, which uses the session.gc_maxlifetime setting below
++;session.gc_probability = 0
+ session.gc_divisor     = 100
+ 
+ ; After this number of seconds, stored data will be seen as 'garbage' and
+Index: php5-5.2.4/php.ini-recommended
+===================================================================
+--- php5-5.2.4.orig/php.ini-recommended	2007-08-22 01:24:18.000000000 +0200
++++ php5-5.2.4/php.ini-recommended	2007-09-11 00:23:54.000000000 +0200
+@@ -516,7 +516,7 @@
+ ;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ ; UNIX: "/path1:/path2"
+-;include_path = ".:/php/includes"
++;include_path = ".:/usr/share/php"
+ ;
+ ; Windows: "\path1;\path2"
+ ;include_path = ".;c:\php\includes"
+@@ -533,7 +533,7 @@
+ user_dir =
+ 
+ ; Directory in which the loadable extensions (modules) reside.
+-extension_dir = "./"
++;extension_dir = "./"
+ 
+ ; Whether or not to enable the dl() function.  The dl() function does NOT work
+ ; properly in multithreaded servers, such as IIS or Zeus, and is automatically
+@@ -646,58 +646,6 @@
+ ; extension_dir directive above.
+ 
+ 
+-; Windows Extensions
+-; Note that ODBC support is built in, so no dll is needed for it.
+-; Note that many DLL files are located in the extensions/ (PHP 4) ext/ (PHP 5)
+-; extension folders as well as the separate PECL DLL download (PHP 5).
+-; Be sure to appropriately set the extension_dir directive.
+-
+-;extension=php_bz2.dll
+-;extension=php_curl.dll
+-;extension=php_dba.dll
+-;extension=php_dbase.dll
+-;extension=php_exif.dll
+-;extension=php_fdf.dll
+-;extension=php_gd2.dll
+-;extension=php_gettext.dll
+-;extension=php_gmp.dll
+-;extension=php_ifx.dll
+-;extension=php_imap.dll
+-;extension=php_interbase.dll
+-;extension=php_ldap.dll
+-;extension=php_mbstring.dll
+-;extension=php_mcrypt.dll
+-;extension=php_mhash.dll
+-;extension=php_mime_magic.dll
+-;extension=php_ming.dll
+-;extension=php_msql.dll
+-;extension=php_mssql.dll
+-;extension=php_mysql.dll
+-;extension=php_mysqli.dll
+-;extension=php_oci8.dll
+-;extension=php_openssl.dll
+-;extension=php_pdo.dll
+-;extension=php_pdo_firebird.dll
+-;extension=php_pdo_mssql.dll
+-;extension=php_pdo_mysql.dll
+-;extension=php_pdo_oci.dll
+-;extension=php_pdo_oci8.dll
+-;extension=php_pdo_odbc.dll
+-;extension=php_pdo_pgsql.dll
+-;extension=php_pdo_sqlite.dll
+-;extension=php_pgsql.dll
+-;extension=php_pspell.dll
+-;extension=php_shmop.dll
+-;extension=php_snmp.dll
+-;extension=php_soap.dll
+-;extension=php_sockets.dll
+-;extension=php_sqlite.dll
+-;extension=php_sybase_ct.dll
+-;extension=php_tidy.dll
+-;extension=php_xmlrpc.dll
+-;extension=php_xsl.dll
+-;extension=php_zip.dll
+-
+ ;;;;;;;;;;;;;;;;;;;
+ ; Module Settings ;
+ ;;;;;;;;;;;;;;;;;;;
+@@ -1038,7 +986,7 @@
+ ;
+ ; where MODE is the octal representation of the mode. Note that this
+ ; does not overwrite the process's umask.
+-;session.save_path = "/tmp"
++;session.save_path = /var/lib/php5
+ 
+ ; Whether to use cookies.
+ session.use_cookies = 1
+@@ -1076,7 +1024,10 @@
+ ; e.g. 1/100 means there is a 1% chance that the GC process starts
+ ; on each request.
+ 
+-session.gc_probability = 1
++; This is disabled in the Debian packages, due to the strict permissions
++; on /var/lib/php5.  Instead of setting this here, see the cronjob at
++; /etc/cron.d/php5, which uses the session.gc_maxlifetime setting below
++;session.gc_probability = 0
+ session.gc_divisor     = 1000
+ 
+ ; After this number of seconds, stored data will be seen as 'garbage' and
+Index: php5-5.2.4/sapi/caudium/config.m4
+===================================================================
+--- php5-5.2.4.orig/sapi/caudium/config.m4	2007-07-12 01:20:36.000000000 +0200
++++ php5-5.2.4/sapi/caudium/config.m4	2007-09-11 00:23:54.000000000 +0200
+@@ -26,8 +26,8 @@
+     AC_MSG_ERROR([Could not find a pike in $PHP_CAUDIUM/bin/])
+   fi
+   if $PIKE -e 'float v; int rel;sscanf(version(), "Pike v%f release %d", v, rel);v += rel/10000.0; if(v < 7.0268) exit(1); exit(0);'; then
+-    PIKE_MODULE_DIR=`$PIKE --show-paths 2>&1| grep '^Module' | sed -e 's/.*: //'`
+-    PIKE_INCLUDE_DIR=`echo $PIKE_MODULE_DIR | sed -e 's,lib/pike/modules,include/pike,' -e 's,lib/modules,include/pike,' `
++    PIKE_MODULE_DIR=`$PIKE --show-paths 2>&1| grep '^Master file' | sed -e 's/.*: //' -e 's/master.pike/modules/'`
++    PIKE_INCLUDE_DIR=`echo $PIKE_MODULE_DIR | sed -e 's,lib/modules,,' -e 's,modules,include,' `
+     if test -z "$PIKE_INCLUDE_DIR" || test -z "$PIKE_MODULE_DIR"; then
+       AC_MSG_ERROR(Failed to figure out Pike module and include directories)
+     fi
+@@ -84,7 +84,9 @@
+   PIKE_VERSION=`$PIKE -e 'string v; int rel;sscanf(version(), "Pike v%s release %d", v, rel); write(v+"."+rel);'`   
+   AC_DEFINE(HAVE_CAUDIUM,1,[Whether to compile with Caudium support])
+   PHP_SELECT_SAPI(caudium, shared, caudium.c)
+-  INSTALL_IT="\$(INSTALL) -m 0755 $SAPI_SHARED $PHP_CAUDIUM/lib/$PIKE_VERSION/PHP5.so"
++  dnl FIXME: This is the ugliest hack in the world!
++  dnl INSTALL_IT="\$(mkinstalldirs) \$(INSTALL_ROOT)$PHP_CAUDIUM/lib/$PIKE_VERSION/ && \$(INSTALL) -m 0755 $SAPI_SHARED \$(INSTALL_ROOT)$PHP_CAUDIUM/lib/$PIKE_VERSION/php5.so"
++  INSTALL_IT="\$(mkinstalldirs) \$(INSTALL_ROOT)$PHP_CAUDIUM/lib/$PIKE_VERSION/ && \$(INSTALL) -m 0755 .$SAPI_SHARED \$(INSTALL_ROOT)$PHP_CAUDIUM/lib/$PIKE_VERSION/PHP5.so"
+   RESULT="  *** Pike binary used:         $PIKE
+   *** Pike include dir(s) used: $PIKE_INCLUDE_DIR
+   *** Pike version:             $PIKE_VERSION"
+Index: php5-5.2.4/sapi/cli/php.1.in
+===================================================================
+--- php5-5.2.4.orig/sapi/cli/php.1.in	2007-04-23 22:54:22.000000000 +0200
++++ php5-5.2.4/sapi/cli/php.1.in	2007-09-11 00:23:54.000000000 +0200
+@@ -306,13 +306,14 @@
+ .B name
+ .SH FILES
+ .TP 15
+-.B php\-cli.ini
++.B /etc/php5/cli/php.ini
+ The configuration file for the CLI version of PHP.
+ .TP
+-.B php.ini
+-The standard configuration file will only be used when 
+-.B php\-cli.ini
+-cannot be found.
++.B /etc/php5/cgi/php.ini
++The configuration file for the CGI version of PHP.
++.TP
++.B /etc/php5/apache2/php.ini
++The configuration file for the version of PHP that apache2 uses.
+ .SH EXAMPLES
+ .TP 5
+ \fIphp -r 'echo "Hello World\\n";'\fP
+Index: php5-5.2.4/scripts/Makefile.frag
+===================================================================
+--- php5-5.2.4.orig/scripts/Makefile.frag	2005-11-22 00:08:02.000000000 +0100
++++ php5-5.2.4/scripts/Makefile.frag	2007-09-11 00:23:54.000000000 +0200
+@@ -3,8 +3,8 @@
+ # Build environment install
+ #
+ 
+-phpincludedir = $(includedir)/php
+-phpbuilddir = $(libdir)/build
++phpincludedir = $(includedir)/php5
++phpbuilddir = $(prefix)/lib/php5/build
+ 
+ BUILD_FILES = \
+ 	scripts/phpize.m4 \
+Index: php5-5.2.4/scripts/php-config.in
+===================================================================
+--- php5-5.2.4.orig/scripts/php-config.in	2007-08-24 13:44:10.000000000 +0200
++++ php5-5.2.4/scripts/php-config.in	2007-09-11 00:23:54.000000000 +0200
+@@ -5,8 +5,8 @@
+ exec_prefix="@exec_prefix@"
+ version="@PHP_VERSION@"
+ vernum="@PHP_VERSION_ID@"
+-include_dir="@includedir@/php"
+-includes="-I$include_dir -I$include_dir/main -I$include_dir/TSRM -I$include_dir/Zend -I$include_dir/ext -I$include_dir/ext/date/lib"
++include_dir="@includedir@/php5"
++includes="-I$include_dir -I$include_dir/main -I$include_dir/TSRM -I$include_dir/Zend -I$include_dir/ext -I$include_dir/ext/date/lib $(getconf LFS_CFLAGS)"
+ ldflags="@PHP_LDFLAGS@"
+ libs="@EXTRA_LIBS@"
+ extension_dir='@EXTENSION_DIR@'
+Index: php5-5.2.4/scripts/phpize.in
+===================================================================
+--- php5-5.2.4.orig/scripts/phpize.in	2007-06-29 03:10:35.000000000 +0200
++++ php5-5.2.4/scripts/phpize.in	2007-09-11 00:23:54.000000000 +0200
+@@ -3,8 +3,8 @@
+ # Variable declaration
+ prefix='@prefix@'
+ exec_prefix="`eval echo @exec_prefix@`"
+-phpdir="`eval echo @libdir@`/build"
+-includedir="`eval echo @includedir@`/php"
++phpdir="$prefix/lib/php5/build"
++includedir="$prefix/include/php5"
+ builddir="`pwd`"
+ SED="@SED@"
+ 

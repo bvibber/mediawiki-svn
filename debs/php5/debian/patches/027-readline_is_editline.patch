@@ -1,0 +1,61 @@
+Index: php5-5.2.4/ext/readline/config.m4
+===================================================================
+--- php5-5.2.4.orig/ext/readline/config.m4	2005-11-29 00:04:01.000000000 +0100
++++ php5-5.2.4/ext/readline/config.m4	2007-12-21 12:21:51.623149790 +0100
+@@ -12,7 +12,7 @@
+ 
+ if test "$PHP_READLINE" && test "$PHP_READLINE" != "no"; then
+   for i in $PHP_READLINE /usr/local /usr; do
+-    test -f $i/include/readline/readline.h && READLINE_DIR=$i && break
++    test -f $i/include/editline/readline.h && READLINE_DIR=$i && break
+   done
+ 
+   if test -z "$READLINE_DIR"; then
+@@ -64,7 +64,7 @@
+ elif test "$PHP_LIBEDIT" != "no"; then
+ 
+   for i in $PHP_LIBEDIT /usr/local /usr; do
+-    test -f $i/include/readline/readline.h && LIBEDIT_DIR=$i && break
++    test -f $i/include/editline/readline.h && LIBEDIT_DIR=$i && break
+   done
+ 
+   if test -z "$LIBEDIT_DIR"; then
+Index: php5-5.2.4/ext/readline/readline.c
+===================================================================
+--- php5-5.2.4.orig/ext/readline/readline.c	2007-02-12 02:23:17.000000000 +0100
++++ php5-5.2.4/ext/readline/readline.c	2007-12-21 12:23:25.336380666 +0100
+@@ -33,7 +33,7 @@
+ #define rl_completion_matches completion_matches
+ #endif
+ 
+-#include <readline/readline.h>
++#include <editline/history.h>
+ #ifndef HAVE_LIBEDIT
+ #include <readline/history.h>
+ #endif
+Index: php5-5.2.4/sapi/cli/php_cli.c
+===================================================================
+--- php5-5.2.4.orig/sapi/cli/php_cli.c	2007-08-09 01:51:24.000000000 +0200
++++ php5-5.2.4/sapi/cli/php_cli.c	2007-12-21 12:21:51.627149842 +0100
+@@ -76,7 +76,7 @@
+ #endif
+ 
+ #if (HAVE_LIBREADLINE || HAVE_LIBEDIT) && !defined(COMPILE_DL_READLINE)
+-#include <readline/readline.h>
++#include <editline/readline.h>
+ #if !HAVE_LIBEDIT
+ #include <readline/history.h>
+ #endif
+Index: php5-5.2.4/sapi/cli/php_cli_readline.c
+===================================================================
+--- php5-5.2.4.orig/sapi/cli/php_cli_readline.c	2007-06-04 11:47:54.000000000 +0200
++++ php5-5.2.4/sapi/cli/php_cli_readline.c	2007-12-21 12:21:51.627149842 +0100
+@@ -49,7 +49,7 @@
+ #include <unixlib/local.h>
+ #endif
+ 
+-#include <readline/readline.h>
++#include <editline/readline.h>
+ #if !HAVE_LIBEDIT
+ #include <readline/history.h>
+ #endif

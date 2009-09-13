@@ -1,0 +1,18 @@
+php5 (5.2.3-2) unstable; urgency=low
+
+  The suhosin patch is now enabled by default!
+
+  For more information, see
+  <http://www.hardened-php.net/suhosin/index.html>.
+
+  Special thanks to Blars Blarson for providing a sparc machine for testing
+  that the patch seems to work okay on that architecture.  If you experience
+  otherwise let us know!
+
+  Suggestions are welcome for default configuration options, examples,
+  documentation, etc.
+
+  In any event please report successes and/or failures to us at
+  pkg-php-maint@lists.alioth.debian.org. 
+
+ -- sean finney <seanius@debian.org>  Thu, 12 Jul 2007 23:38:43 +0200

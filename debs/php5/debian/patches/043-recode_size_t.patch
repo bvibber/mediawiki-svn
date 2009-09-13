@@ -1,0 +1,13 @@
+Index: php5-5.2.5/ext/recode/recode.c
+===================================================================
+--- php5-5.2.5.orig/ext/recode/recode.c	2007-06-22 02:02:15.000000000 +0200
++++ php5-5.2.5/ext/recode/recode.c	2008-02-21 00:46:54.000000000 +0100
+@@ -136,7 +136,7 @@
+ 	int req_len, str_len;
+ 	char *req, *str;
+ 
+-	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ss", &req, &req_len, &str, &str_len) == FAILURE) {
++	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ss", &req, &req_len, &str, &str_len) == FAILURE || str_len < 0) {
+ 		return;
+ 	}
+ 

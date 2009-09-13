@@ -1,0 +1,106 @@
+Index: php5-5.2.4/ext/date/lib/parse_date.c
+===================================================================
+--- php5-5.2.4.orig/ext/date/lib/parse_date.c	2008-02-27 12:58:25.768431881 -0500
++++ php5-5.2.4/ext/date/lib/parse_date.c	2008-02-27 12:58:58.973467615 -0500
+@@ -668,7 +668,7 @@
+ 	long  value = 0;
+ 	const timelib_tz_lookup_table *tp;
+ 
+-	while (**ptr != '\0' && **ptr != ')') {
++	while (**ptr != '\0' && **ptr != ')' && **ptr != ' ') {
+ 		++*ptr;
+ 	}
+ 	end = *ptr;
+Index: php5-5.2.4/ext/date/lib/parse_date.re
+===================================================================
+--- php5-5.2.4.orig/ext/date/lib/parse_date.re	2008-02-27 12:58:25.800458866 -0500
++++ php5-5.2.4/ext/date/lib/parse_date.re	2008-02-27 12:58:58.981470555 -0500
+@@ -667,7 +667,7 @@
+ 	long  value = 0;
+ 	const timelib_tz_lookup_table *tp;
+ 
+-	while (**ptr != '\0' && **ptr != ')') {
++	while (**ptr != '\0' && **ptr != ')' && **ptr != ' ') {
+ 		++*ptr;
+ 	}
+ 	end = *ptr;
+Index: php5-5.2.4/ext/date/lib/timelib.h
+===================================================================
+--- php5-5.2.4.orig/ext/date/lib/timelib.h	2008-02-27 12:58:25.868430735 -0500
++++ php5-5.2.4/ext/date/lib/timelib.h	2008-02-27 12:58:58.905465712 -0500
+@@ -22,6 +22,9 @@
+ #define __TIMELIB_H__
+ 
+ #include "timelib_structs.h"
++#if HAVE_LIMITS_H
++#include <limits.h>
++#endif
+ 
+ #define TIMELIB_NONE             0x00
+ #define TIMELIB_OVERRIDE_TIME    0x01
+Index: php5-5.2.4/ext/date/tests/bug41523.phpt
+===================================================================
+--- php5-5.2.4.orig/ext/date/tests/bug41523.phpt	2008-02-27 12:58:25.936460995 -0500
++++ php5-5.2.4/ext/date/tests/bug41523.phpt	2008-02-27 12:58:58.925463597 -0500
+@@ -1,5 +1,7 @@
+ --TEST--
+-Bug #41523 (strtotime('0000-00-00 00:00:00') is parsed as 1999-11-30)
++Bug #41523 (strtotime('0000-00-00 00:00:00') is parsed as 1999-11-30) (32 bit)
++--SKIPIF--
++<?php echo PHP_INT_SIZE == 8 ? "skip 32-bit only" : "OK"; ?>
+ --FILE--
+ <?php
+ date_default_timezone_set("UTC");
+Index: php5-5.2.4/ext/date/tests/mktime-3.phpt
+===================================================================
+--- php5-5.2.4.orig/ext/date/tests/mktime-3.phpt	2008-02-27 12:58:25.996432789 -0500
++++ php5-5.2.4/ext/date/tests/mktime-3.phpt	2008-02-27 12:58:58.937465946 -0500
+@@ -1,5 +1,7 @@
+ --TEST--
+-mktime() [3]
++mktime() [3] (32-bit)
++--SKIPIF--
++<?php echo PHP_INT_SIZE == 8 ? "skip 32-bit only" : "OK" ?>
+ --INI--
+ error_reporting=2047
+ --FILE--
+Index: php5-5.2.4/ext/date/tests/strtotime-mysql.phpt
+===================================================================
+--- php5-5.2.4.orig/ext/date/tests/strtotime-mysql.phpt	2008-02-27 12:58:26.060432838 -0500
++++ php5-5.2.4/ext/date/tests/strtotime-mysql.phpt	2008-02-27 12:58:58.949459635 -0500
+@@ -1,5 +1,7 @@
+ --TEST--
+-strtotime() and mysql timestamps
++strtotime() and mysql timestamps (32 bit)
++--SKIPIF--
++<?php echo PHP_INT_SIZE == 8 ? "skip 32-bit only" : "OK"; ?>
+ --FILE--
+ <?php
+ date_default_timezone_set('UTC');
+Index: php5-5.2.4/ext/date/tests/strtotime3.phpt
+===================================================================
+--- php5-5.2.4.orig/ext/date/tests/strtotime3.phpt	2008-02-27 12:58:26.148431648 -0500
++++ php5-5.2.4/ext/date/tests/strtotime3.phpt	2008-02-27 12:58:58.961433836 -0500
+@@ -1,5 +1,7 @@
+ --TEST--
+-strtotime() function
++strtotime() function (32 bit)
++--SKIPIF--
++<?php echo PHP_INT_SIZE == 8 ? "skip 32-bit only" : "OK"; ?>
+ --FILE--
+ <?php
+ date_default_timezone_set('Europe/Lisbon');
+Index: php5-5.2.4/ext/wddx/tests/001.phpt
+===================================================================
+--- php5-5.2.4.orig/ext/wddx/tests/001.phpt	2008-02-27 12:58:26.240432312 -0500
++++ php5-5.2.4/ext/wddx/tests/001.phpt	2008-02-27 12:58:58.913434707 -0500
+@@ -1,7 +1,8 @@
+ --TEST--
+-wddx deserialization test
++wddx deserialization test (32-bit)
+ --SKIPIF--
+ <?php if (!extension_loaded("wddx")) print "skip"; ?>
++<?php echo PHP_INT_SIZE == 8 ? "skip 32-bit only" : "OK" ?>
+ --INI--
+ precision=14
+ --FILE--
