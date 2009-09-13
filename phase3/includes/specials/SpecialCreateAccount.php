@@ -160,7 +160,7 @@ class SpecialCreateAccount extends SpecialPage {
 	 * Create a new user account from the provided data
 	 */
 	protected function addNewAccount( $byEmail=false ) {
-		global $wgUser, $wgEmailAuthentication;
+		global $wgUser, $wgEmailAuthentication, $wgLang;
 	
 		# Do a quick check that the user actually managed to type
 		# the password in the same both times
@@ -193,11 +193,11 @@ class SpecialCreateAccount extends SpecialPage {
 				
 			case Login::CREATE_BADPASS:
 				global $wgMinimalPasswordLength;
-				return $this->showMainForm( wfMsgExt( $this->mLogin->mCreateResult, array( 'parsemag' ), $wgMinimalPasswordLength ) );
+				return $this->showMainForm( wfMsgExt( $this->mLogin->mCreateResult, array( 'parsemag' ), $wgLang->formatNum( $wgMinimalPasswordLength ) ) );
 				
 			case Login::THROTTLED: 
 				global $wgAccountCreationThrottle;
-				return $this->showMainForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgAccountCreationThrottle ) ); 
+				return $this->showMainForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgLang->formatNum( $wgAccountCreationThrottle ) ) ); 
 			
 			default: 
 				throw new MWException( "Unhandled status code $status in " . __METHOD__ );
