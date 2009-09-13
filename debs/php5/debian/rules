@@ -32,7 +32,7 @@ PHP5_DEBIAN_REVISION  = $(shell echo $(PHP5_SOURCE_VERSION) | sed "s/.*-//")
 
 
 PROG_SENDMAIL = /usr/sbin/sendmail
-CFLAGS = -O2 -Wall -fsigned-char -fno-strict-aliasing 
+CFLAGS = -O3 -Wall -fsigned-char -fno-strict-aliasing  -ggdb3
 # LFS support
 ifneq (yes,$(PHP5_COMPAT))
   CFLAGS += $(shell getconf LFS_CFLAGS)
@@ -41,16 +41,6 @@ endif
 # Enable IEEE-conformant floating point math on alphas (not the default)
 ifeq (alpha-linux,$(PHP5_HOST_GNU_TYPE))
   CFLAGS += -mieee
-endif
-
-ifeq ($(PHP5_HOST_GNU_TYPE), $(findstring $(PHP5_HOST_GNU_TYPE), ia64-linux powerpc64-linux))
-  CFLAGS += -g
-else
-  CFLAGS += -gstabs
-endif
-
-ifneq (nostrip, $(findstring nostrip, $(DEB_BUILD_OPTIONS)))
-	install_strip = -s
 endif
 
 # Old magic.mime location:
@@ -103,7 +93,8 @@ COMMON_CONFIG=--build=$(PHP5_BUILD_GNU_TYPE)-gnu \
 		--enable-zip \
 		--with-mime-magic=$(MAGIC_MIME) \
 		--with-exec-dir=/usr/lib/php5/libexec \
-		--with-system-tzdata
+		--with-system-tzdata \
+		--with-cdb
 
 BUILTIN_EXTENSION_CHECK=$$e=get_loaded_extensions(); natcasesort($$e); \
 			$$s="The following extensions are built in:"; \
@@ -352,7 +343,7 @@ install: build
 		mkdir -p debian/php5-$$package$${ext}; \
 		chrpath debian/libapache2-mod-php5/$${ext}/$$dsoname.so; \
 		chrpath -d debian/libapache2-mod-php5/$${ext}/$$dsoname.so; \
-		install ${install_strip} -m 644 -o root -g root \
+		install -m 644 -o root -g root \
 			debian/libapache2-mod-php5/$${ext}/$$dsoname.so \
 			debian/php5-$$package$${ext}/$$dsoname.so; \
 		rm debian/libapache2-mod-php5/$${ext}/$$dsoname.so; \
@@ -476,7 +467,6 @@ binary-arch: build install
 	done
 	dh_installcron -pphp5-common --name=php5
 	dh_installchangelogs -pphp5-common NEWS
-	dh_strip -s
 	dh_link -s
 	dh_compress -s -Xphp.ini
 	dh_fixperms -s -X /var/lib/php5
