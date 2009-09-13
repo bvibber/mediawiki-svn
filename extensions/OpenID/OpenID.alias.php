@@ -54,7 +54,6 @@ $aliases['ja'] = array(
 	'OpenIDLogin' => array( 'OpenIDログイン', 'ＯｐｅｎＩＤログイン' ),
 	'OpenIDConvert' => array( 'OpenID変換', 'ＯｐｅｎＩＤ変換' ),
 	'OpenIDServer' => array( 'OpenIDサーバー', 'ＯｐｅｎＩＤサーバー' ),
-	'OpenIDXRDS' => array( 'ＯｐｅｎＩＤＸＲＤＳ' ),
 );
 
 /** Ripoarisch (Ripoarisch) */
