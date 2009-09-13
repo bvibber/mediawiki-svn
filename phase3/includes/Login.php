@@ -550,9 +550,7 @@ class Login {
 		$this->mMailResult = $this->mUser->sendMail( wfMsg( $title ), $message );
 		
 		if( WikiError::isError( $this->mMailResult ) ) {
-			#XXX
-			var_dump($message);
-			return self::SUCCESS;
+			return self::MAIL_ERROR;
 		} else {
 			return self::SUCCESS;
 		}
