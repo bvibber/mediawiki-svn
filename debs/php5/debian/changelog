@@ -1,3 +1,10 @@
+php5 (5.2.4-2ubuntu5.7wm1) hardy; urgency=low
+  * Added CDB
+  * -O3
+  * -ggdb3 with no stripping \o/
+
+ -- Domas Mituzas <domas@wikimedia.org>  Sun, 13 Sep 2009 16:03:45 +0300
+
 php5 (5.2.4-2ubuntu5.7) hardy-security; urgency=low
 
   * SECURITY UPDATE: denial of service via malformed JPEG image with
