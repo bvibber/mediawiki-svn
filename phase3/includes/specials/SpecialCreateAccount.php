@@ -249,7 +249,7 @@ class SpecialCreateAccount extends SpecialPage {
 				global $wgOut;
 				$self = SpecialPage::getTitleFor( 'Userlogin' );
 				$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
-				$wgOut->addHTML( wfMsgWikiHtml( 'accountcreatedtext', $this->mLogin->mUser->getName() ) );
+				$wgOut->addWikiMsg( 'accountcreatedtext', $this->mLogin->mUser->getName() );
 				$wgOut->returnToMain( false, $self );
 				return true;
 			}

@@ -96,7 +96,7 @@ class Login {
 	public function attemptLogin(){
 		
 		$code = $this->authenticateUserData();
-		if( $code != self::SUCCESS ){
+		if( $code !== self::SUCCESS ){
 			return $code;
 		}
 		
@@ -482,7 +482,7 @@ class Login {
 					: self::SUCCESS;
 			}
 		}
-		return true;
+		return self::SUCCESS;
 	}
 
 	/**
