@@ -18,6 +18,10 @@ $magicWords['ksh'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__ÖVERSCHRIFTENITNUMMERIERE__', '__KEINEÜERSCHRIFTENNUMMERIERUNG__', '__NONUMBEREDHEADINGS__' ),
 );
 
+$magicWords['ml'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__ക്രമസംഖ്യാരഹിതതലക്കെട്ടുകൾ__', '__NONUMBEREDHEADINGS__' ),
+);
+
 $magicWords['nl'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__GEENGENUMMERDEKOPPEN__', '__NONUMBEREDHEADINGS__' ),
 );

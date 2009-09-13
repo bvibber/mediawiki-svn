@@ -46,6 +46,10 @@ $magicWords['ksh'] = array(
 	'languagename'   => array( '0', 'ShproocheName', 'languagename' ),
 );
 
+$magicWords['ml'] = array(
+	'languagename'   => array( '0', 'ഭാഷാനാമം', 'languagename' ),
+);
+
 $magicWords['nl'] = array(
 	'languagename'   => array( '0', 'taalnaam', 'languagename' ),
 );

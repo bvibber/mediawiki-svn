@@ -6,12 +6,20 @@ $magicWords['en'] = array(
 	'interlanguage' => array( 0, 'interlanguage' ),
 );
 
+$magicWords['af'] = array(
+	'interlanguage'   => array( '0', 'tussentaal', 'interlanguage' ),
+);
+
 $magicWords['ar'] = array(
 	'interlanguage'   => array( '0', 'بين_اللغات', 'interlanguage' ),
 );
 
 $magicWords['br'] = array(
 	'interlanguage'   => array( '0', 'etreyezh', 'interlanguage' ),
+);
+
+$magicWords['ml'] = array(
+	'interlanguage'   => array( '0', 'അന്തർഭാഷ', 'interlanguage' ),
 );
 
 $magicWords['nl'] = array(

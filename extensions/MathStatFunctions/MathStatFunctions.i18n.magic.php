@@ -48,6 +48,17 @@ $magicWords['nl'] = array(
 	'mean'     => array( '0', 'gemiddelde', 'mean' ),
 );
 
+$magicWords['pt'] = array(
+	'tan'      => array( '0', 'tg', 'tan' ),
+	'atan'     => array( '0', 'atg', 'arctg', 'atan', 'arctan' ),
+	'tanh'     => array( '0', 'tgh', 'tanh' ),
+	'atanh'    => array( '0', 'atgh', 'arctgh', 'atanh', 'arctanh' ),
+	'sin'      => array( '0', 'sen', 'sin' ),
+	'asin'     => array( '0', 'asen', 'arcsen', 'asin', 'arcsin' ),
+	'sinh'     => array( '0', 'senh', 'sinh' ),
+	'asinh'    => array( '0', 'asenh', 'arcsenh', 'asinh', 'arcsinh' ),
+);
+
 $magicWords['ru'] = array(
 	'const'    => array( '0', 'конст', 'const' ),
 	'median'   => array( '0', 'медиана', 'median' ),

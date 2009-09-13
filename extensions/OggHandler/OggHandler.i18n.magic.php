@@ -15,6 +15,13 @@ $magicWords['en'] = array(
 	'ogg_endtime'   => array( 0, 'end=$1'),
 );
 
+$magicWords['af'] = array(
+	'ogg_noplayer'    => array( '0', 'geenspeler', 'noplayer' ),
+	'ogg_noicon'      => array( '0', 'geenikoon', 'noicon' ),
+	'ogg_starttime'   => array( '0', 'begin=$1', 'start=$1' ),
+	'ogg_endtime'     => array( '0', 'einde=$1', 'end=$1' ),
+);
+
 $magicWords['ar'] = array(
 	'ogg_noplayer'    => array( '0', 'لابرنامج', 'noplayer' ),
 	'ogg_noicon'      => array( '0', 'لاأيقونة', 'noicon' ),

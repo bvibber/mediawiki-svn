@@ -22,6 +22,10 @@ $magicWords['bs'] = array(
 	'icon'   => array( '0', 'ikona', 'icon' ),
 );
 
+$magicWords['et'] = array(
+	'icon'   => array( '0', 'ikoon', 'icon' ),
+);
+
 $magicWords['ja'] = array(
 	'icon'   => array( '0', 'アイコン', 'icon' ),
 );
