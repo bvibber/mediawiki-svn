@@ -76,6 +76,13 @@ $messages['dsb'] = array(
 	'pipeescape-desc' => 'Parserowa funkcija <code>#!</code>, joli coš znamješko | schowaś (znamješko | ma se jano pśedstajiś, bźez wósebneje funkcije)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'pipeescape-desc' => 'Λεξιαναλυτική συνάρτηση <code>#!</code> για όταν θέλετε ένας χαρακτήρας pipe να είναι απλά ένας χαρακτήρας pipe',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

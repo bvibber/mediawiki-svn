@@ -136,9 +136,11 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'spl3-desc' => 'Δημιουργεί αυτόματα μία λίστα υποσελίδων μίας σελίδας χρησιμοποιώντας την ετικέτα <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Άγνωστη αξία για την επιλογή $1.',
 	'spl3_nosubpages' => 'Η $1 δεν έχει υποσελίδες για καταγραφή.',
 );

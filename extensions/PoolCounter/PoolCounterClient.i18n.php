@@ -73,6 +73,17 @@ $messages['dsb'] = array(
 	'poolcounter-remote-error' => 'Zmólka serwera pool counter: $1',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'poolcounter-desc' => 'Πελάτης για τη MediaWiki του daemon του καταμετρητή ομαδοποίησης poolcounter.py',
+	'poolcounter-connection-error' => 'Σφάλμα κατά την σύνδεση με τον καταμετρητή ομαδοποίησης: $1',
+	'poolcounter-read-error' => 'Σφάλμα κατά την ανάγνωση του εξυπηρετητή του καταμετρητή ομαδοποίησης',
+	'poolcounter-write-error' => 'Σφάλμα κατά την εγγραφή στον εξυπηρετητή του καταμετρητή ομαδοποίησης',
+	'poolcounter-remote-error' => 'Σφάλμα του εξυπηρετητή του καταμετρητή ομαδοποίησης: $1',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

@@ -141,10 +141,12 @@ Anonymne wužywarje dostanu awtomatiski napórane pśimě, ale dajo se změniś.
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'webchat' => 'Δικτυακή συζήτηση',
+	'webchat-desc' => 'Προσθέτει μία [[Special:WebChat|ειδική σελίδα]] για τσατ σε πραγματικό χρόνο με άλλους χρήστες',
 	'right-webchat' => 'Επιτρέπεται να χρησιμοποιεί τη [[Special:WebChat|δικτυακή συζήτηση]]',
 );
 
@@ -256,6 +258,15 @@ $messages['hsb'] = array(
 	'webchat-header' => 'Tuta specialna strona ći zmožnja we woprawdźitym času z druhimi wužiwarjemi wikija hromadźe dźěłać. Zo by zwjazał, klikń prosće na tłóčatko "Zwjazać".
 Jeli sy přizjewjeny, budźe so twoje přimjeno awtomatisce pokazować. Anonymni wužiwarjo dóstanu awtomatisce płodźene přimjeno, ale da so změnić.',
 	'right-webchat' => 'Wužiwanje [[Special:WebChat|webchata]] dowoleny',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'webchat' => 'Web chat',
+	'webchat-desc' => '[[Special:WebChat|Speciális lap]] más wikiszerkesztőkkel történő valósidejű beszélgetésre',
+	'right-webchat' => '[[Special:WebChat|Web chat]] használata engedélyezve',
 );
 
 /** Interlingua (Interlingua)

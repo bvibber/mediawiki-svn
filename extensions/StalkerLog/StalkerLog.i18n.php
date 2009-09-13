@@ -65,6 +65,17 @@ $messages['bg'] = array(
 	'stalkerlog-log-text' => 'Тази страница съдържа дневник на потребителските влизания и излизания.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'stalkerlog-desc' => 'Ouzhpennañ a ra ur [[Special:Log/stalkerlog|marilh]] eus taolioù lugañ/dilugañ an implijerien',
+	'stalkerlog-log-login' => 'Luget.',
+	'stalkerlog-log-logout' => 'Diluget.',
+	'stalkerlog-log-type' => 'Marilh anaoudadurioù an implijer',
+	'stalkerlog-log-text' => 'Setu aze ur marilh eus taolioù lugañ/dilugañ an implijer',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -111,9 +122,11 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'stalkerlog-desc' => 'Προσθέτει [[Special:Log/stalkerlog|ένα ημερολόγιο]] συνδέσεων και αποσυνδέσεων χρήστη',
 	'stalkerlog-log-login' => 'συνδέθηκε.',
 	'stalkerlog-log-logout' => 'αποσυνδέθηκε.',
 	'stalkerlog-log-type' => 'Αρχείο πιστοποίησης χρηστών',

@@ -307,6 +307,7 @@ $messages['el'] = array(
 	'contributors-toolbox' => 'Κύριοι συνεισφέροντες',
 	'contributors-target' => 'Τίτλος:',
 	'contributors-submit' => 'Εμφάνιση',
+	'contributors-subtitle' => 'Κύριες συνεισφορές στο $1',
 	'contributors-others-long' => '{{PLURAL:$1|Υπάρχει ένας άλλος συνεισφέροντας|Υπάρχουν $1 άλλοι συνεισφέροντες}} σε αυτή τη σελίδα.',
 	'contributors-others' => 'και {{PLURAL:$1|ένας άλλος|$1 άλλοι}}',
 	'contributors-badtitle' => 'Άκυρος τίτλος.',

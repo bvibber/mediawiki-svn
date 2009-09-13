@@ -559,6 +559,16 @@ $messages['ru'] = array(
 	'categoryintersection-results' => 'Поиск дал {{PLURAL:$1|$1 результат|$1 результата|$1 результатов}}.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'categoryintersection' => 'Категориялар быһа охсуһуулара',
+	'categoryintersection-doit' => 'Бу категориялар сирэйдэрин барытын көрдөр',
+	'categoryintersection-maxcategories' => 'Быһа охсуһар категориялар муҥутуур ахсааннара — $1.',
+	'categoryintersection-results' => 'Көрдөөһүн $1 түмүгү биэрдэ.',
+);
+
 /** Tachelhit (Tašlḥiyt)
  * @author Zanatos
  */

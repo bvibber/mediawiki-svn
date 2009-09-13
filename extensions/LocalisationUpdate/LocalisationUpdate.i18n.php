@@ -86,6 +86,13 @@ $messages['dsb'] = array(
 	'localisationupdate-desc' => 'Źaržy lokalizěrowane powěźeńki tak aktualne ako móžno',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'localisationupdate-desc' => 'Διατηρεί τις μεταφράσεις μηνυμάτων όσο πιο ενημερωμένες γίνεται',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

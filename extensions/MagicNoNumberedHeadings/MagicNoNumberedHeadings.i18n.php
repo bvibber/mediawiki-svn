@@ -48,6 +48,13 @@ $messages['dsb'] = array(
 	'magicnonumberedheadings-desc' => 'Pśidawa magiske słowo "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'magicnonumberedheadings-desc' => 'Προσθέτει την μαγική λέξη "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

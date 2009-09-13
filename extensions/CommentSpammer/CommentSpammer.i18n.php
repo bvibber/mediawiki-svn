@@ -75,6 +75,20 @@ $messages['bg'] = array(
 	'commentspammer-log-msg' => 'редакция от [[Special:Contributions/$1|$1]] в [[:$2]].',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'commentspammer-save-blocked' => "Renablet eo ho chomlec'h IP evel hini unan a gas strob, se zo kaoz n'eo ket bet enrollet ar bajenn.
+Evit renkañ an afer [[Special:UserLogin|en em lugit pe krouit ur gont]].",
+	'commentspammer-desc' => 'Disteuler a ra ar kemmoù an implijerien zo disfiz warno da vezañ kaserien strob war ul listenn zu a zDNS',
+	'commentspammer-log-msg' => 'degasadenn a-berzh [[Special:Contributions/$1|$1]] da [[:$2]].',
+	'commentspammer-log-msg-info' => "$1 {{PLURAL:$1|deiz}} zo eo bet kaset ar strob diwezhañ, $2 eo al live diwall, ha $3 eo c'hod tagañ.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Gwelet ar munudoù], pe [[Special:Blockip/$4|ar stankadenn]].",
+	'cspammerlogpagetext' => "Marilh ar c'hemmoù degemeret pe distaolet diouzh ma teuent a-berzh ur c'haser strob anavezet.",
+	'cspammer-log-page' => 'Marilh ar gaserienn strob',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -144,6 +158,13 @@ $messages['dsb'] = array(
 	'commentspammer-log-msg-info' => 'Slědne spamowanje pśed $1 {{PLURAL:$1|dnjom|dnjoma|dnjami|dnjami}}, wobgrozeński stopjeń jo $2 a napadowy kod jo $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Drobnostki se woglědaś] abo [[Special:Blockip/$4|blokěrowaś]].',
 	'cspammerlogpagetext' => 'Lisćina změnow, kótarež su se dowólili abo wótpokazali, za tym lěc žrědło jo znaty spamowaŕ komentarow było.',
 	'cspammer-log-page' => 'Protokol wó spamowarjach komentarow',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'cspammer-log-page' => 'Ημερολόγιο δημιουργών σπαμ',
 );
 
 /** Esperanto (Esperanto)

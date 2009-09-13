@@ -1429,6 +1429,7 @@ $messages['vec'] = array(
 	'authorprotect-failure' => 'Protession mìa riussìa',
 	'protect-level-author' => 'Protèzi dai non-autori',
 	'restriction-level-author' => "Proteto da l'autor",
+	'right-authorprotect' => 'Protegere le pagine con autori',
 );
 
 /** Vietnamese (Tiếng Việt)

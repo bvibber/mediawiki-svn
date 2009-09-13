@@ -95,10 +95,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'random-users-avatars-title' => 'Γνωρίστε την κοινότητα',
+	'random-users-avatars-desc' => 'Προσθέτει την ετικέτα <tt>&lt;randomuserswithavatars&gt;</tt> για την προβολή άβαταρ τυχαία επιλεγμένων χρηστών',
 );
 
 /** Esperanto (Esperanto)

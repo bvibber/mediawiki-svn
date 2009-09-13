@@ -296,6 +296,17 @@ $messages['hsb'] = array(
 	'unicodeconverter-newtext' => 'Konwertowany tekst:',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'unicodeconverter' => 'Unicode konvertáló',
+	'unicodeconverter-desc' => 'Egy speciális lap modul egyszerű példája. [[Special:UnicodeConverter|UTF-8-ban megadott szöveget]] HTML entitásokká konvertálja, amelyek megfelelőek egy ISO 8859-1-es weboldalnak',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Eredeti szöveg:',
+	'unicodeconverter-newtext' => 'Konvertált szöveg:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

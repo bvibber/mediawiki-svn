@@ -57,6 +57,13 @@ $messages['dsb'] = array(
 	'nsfilerepo-desc' => 'Pśidawa nagratym datajam funkcije na zakłaźe mjenjowych rumow',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'nsfilerepo-desc' => 'Παρέχει χαρακτηριστικά στα επιφορτισμένα αρχεία κατά ονοματικό χώρο',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

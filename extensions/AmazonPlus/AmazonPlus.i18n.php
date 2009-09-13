@@ -996,6 +996,27 @@ $messages['pl'] = array(
 	'amazonplus-less' => 'mniej',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'amazonplus-desc' => "N'estension motobin personalisàbil për visualisé anformassion d'Amazon",
+	'amazonplus-nores' => 'Eror: pa gnun arzultà trovà!',
+	'amazonplus-noidres' => 'Eror: as peul pa trovesse un ID prodot!',
+	'amazonplus-fgcerr' => 'Eror: As peul pa pijesse dat da Amazon!',
+	'amazonplus-slserr' => 'Eror: as peul pa fé ël "parse" dij dat d\'Amazon!',
+	'amazonplus-used' => 'dovrà',
+	'amazonplus-german' => 'Tedesch',
+	'amazonplus-french' => 'Fransèis',
+	'amazonplus-japanese' => 'Giaponèis',
+	'amazonplus-amazon' => 'pressi amazon',
+	'amazonplus-new' => 'neuv',
+	'amazonplus-none' => "Pa gnun tòch dë st'artìcol-sì a son an véndita.",
+	'amazonplus-cp-none' => 'Gnun',
+	'amazonplus-more' => 'pì',
+	'amazonplus-less' => 'men',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

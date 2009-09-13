@@ -356,6 +356,7 @@ $messages['el'] = array(
 	'duplicator-dest' => 'Προορισμός:',
 	'duplicator-submit' => 'Διπλότυπο',
 	'duplicator-summary' => 'Αντιγράφηκε από το [[$1]]',
+	'duplicator-dest-invalid' => 'Παρακαλώ παρέχετε έναν έγκυρο τίτλο προορισμού.',
 	'right-duplicate' => 'Διπλότυπες σελίδες',
 );
 

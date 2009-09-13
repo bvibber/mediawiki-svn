@@ -98,6 +98,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'wikiarticlefeeds-desc' => 'Δημιουργεί ροές παραγόμενες από σελίδες MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'Αυτή είναι μια συνδυασμένη ροή ενημερώσεων που περιέχει αντικείμενα από διάφορες πηγές.',
 );
 
 /** Spanish (Español)

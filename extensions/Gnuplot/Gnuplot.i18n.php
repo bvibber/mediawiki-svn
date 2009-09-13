@@ -86,6 +86,13 @@ $messages['dsb'] = array(
 	'gnuplot-desc' => 'Pśidawa toflicku <code><nowiki><gnuplot></nowiki></code>, aby se Gnuplot wužywał',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'gnuplot-desc' => 'Προσθέτει την ετικέτα <code><nowiki><gnuplot></nowiki></code> για χρήση Gnuplot',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

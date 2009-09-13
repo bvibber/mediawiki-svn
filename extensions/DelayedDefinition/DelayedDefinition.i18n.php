@@ -88,6 +88,13 @@ $messages['dsb'] = array(
 	'delaydef-error-redef' => 'Zmólka: Wopytane nowodefiněrowanje za $1.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'delaydef-desc' => 'Προσθέτει τα &lt;define&gt; και &lt;display&gt; για την επανατοποθέτηση του κώδικα',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

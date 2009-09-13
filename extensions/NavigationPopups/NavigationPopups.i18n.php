@@ -73,6 +73,13 @@ $messages['dsb'] = array(
 	'navigationpopups-desc' => 'Zacytujo Lupinowe wuskokujuce wokna nawigaciskich skriptow do MediaWiki',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'navigationpopups-desc' => 'Φορτώνει στη MediaWiki τα σκριπτ παραθύρων πλοήγησης του Lupin',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

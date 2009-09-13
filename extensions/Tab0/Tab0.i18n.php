@@ -89,6 +89,13 @@ $messages['dsb'] = array(
 	'tab0-desc' => 'Pśidawa rejtark "0", kótaryž wótkazujo na wobźěłański bok prědnego wótrězka boka',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'tab0-desc' => 'Προσθέτει την καρτέλα "0" η οποία συνδέεται με τη σελίδα επεξεργασίας του πρώτου τμήματος της σελίδας',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

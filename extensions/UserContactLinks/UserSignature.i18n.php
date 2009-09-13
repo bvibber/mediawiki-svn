@@ -151,6 +151,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'usercontactlink-baduser' => 'λανθασμένο όνομα χρήστη',
+	'usercontactlink-desc' => 'Επιτρέπει στον χρήστη να προσθέτει με απλό τρόπο και συνέπεια άλλα ονόματα χρήστη χρησιμοποιώντας το συντακτικό ^^^user^^^',
 );
 
 /** Esperanto (Esperanto)

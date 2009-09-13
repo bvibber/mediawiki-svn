@@ -99,6 +99,13 @@ $messages['dsb'] = array(
 	'i18ntags-desc' => 'Pśistup na funkcije i18n za formatěrowanje licbow, gramatiku a plural w kuždej k dispoziciji stojecej rěcy',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'i18ntags-desc' => 'Να επιτραπεί η πρόσβαση στις συναρτήσεις i18n για τη μορφοποίηση αριθμών, τη γραμματική και τον πληθυντικό σε κάθε διαθέσιμη γλώσσα',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

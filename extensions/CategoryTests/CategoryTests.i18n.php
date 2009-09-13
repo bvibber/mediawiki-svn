@@ -281,3 +281,10 @@ $messages['te'] = array(
 	'categorytests-desc' => 'వర్గముల పరీక్షకు ఫంక్షన్సు',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'categorytests-desc' => 'Funkcijad kategorijad testiruides',
+);
+

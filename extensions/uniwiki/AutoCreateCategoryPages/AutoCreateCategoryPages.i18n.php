@@ -137,10 +137,12 @@ Nalistujo wšykne boki w kategoriji "$1" a wšykne pódkategorije kategorije "$1
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'autocreatecategorypages-desc' => 'Δημιουργία ζητούμενων σελίδων κατηγοριών αυτόματα στην αποθήκευση',
+	'autocreatecategorypages-createdby' => 'Δημιουργήθηκε αυτόματα από την επέκταση AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Αυτόματος δημιουργός κατηγοριών',
 );
 

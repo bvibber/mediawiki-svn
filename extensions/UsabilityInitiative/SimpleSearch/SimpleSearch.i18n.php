@@ -151,6 +151,7 @@ $messages['el'] = array(
 	'simplesearch' => 'Απλή αναζήτηση',
 	'simplesearch-desc' => 'Προσθέτει έξτρα λειτουργικότητα στην απλοποιημένη αναζήτηση του Vector',
 	'simplesearch-search' => 'Αναζήτηση',
+	'simplesearch-containing' => 'περιέχει...',
 );
 
 /** Esperanto (Esperanto)
@@ -618,6 +619,7 @@ $messages['sv'] = array(
 $messages['sw'] = array(
 	'simplesearch' => 'Tafuti sahili',
 	'simplesearch-search' => 'Kutafuta',
+	'simplesearch-containing' => 'ya maneno...',
 );
 
 /** Telugu (తెలుగు)

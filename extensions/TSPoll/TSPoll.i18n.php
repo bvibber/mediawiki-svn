@@ -155,6 +155,15 @@ $messages['hsb'] = array(
 	'tspoll-id-error' => 'Žadyn ID podaty!',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'tspoll-desc' => 'Foglalja magában a [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript]-et HTML tagként',
+	'tspoll-fetch-error' => 'Hiba az URL lekérdezése közben!',
+	'tspoll-id-error' => 'Nincs ID megadva!',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

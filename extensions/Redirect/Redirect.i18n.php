@@ -64,6 +64,13 @@ $messages['dsb'] = array(
 	'redirect-desc' => 'Zmóžnja lažku konfiguraciju dalejpósrědnjenjow pśi [[MediaWiki:Redirect-addnewaccount|załoženju konta]] a  [[MediaWiki:Redirect-userlogoutcomplete|wótzjawjenju]]',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'redirect-desc' => 'Επιτρέπει την εύκολη διαμόρφωση ανακατευθύνσεων κατά τη [[MediaWiki:Redirect-addnewaccount|δημιουργία λογαριασμού]] και την [[MediaWiki:Redirect-userlogoutcomplete|αποσύνδεση]]',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

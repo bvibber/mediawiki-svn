@@ -76,6 +76,15 @@ $messages['dsb'] = array(
 Wužyj: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'stockcharts-desc' => 'Προσθέτει μία ετικέτα <nowiki><stockchart ticker="AAPL"/></nowiki> για έναν διαδραστικό οικονομολογικό πίνακα τίτλων',
+	'stockcharts-missingticker' => 'Για την προσθήκη πίνακα τίτλων, πρέπει τουλάχιστον να ορίσετε ένα ticker.
+Χρήση: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

@@ -511,6 +511,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'specialuserstats' => 'Στατιστικά χρήσης',
 	'usagestatistics' => 'Στατιστικά χρήσης',
+	'usagestatistics-desc' => 'Προβολή στατιστικών χρήσης για το μεμονωμένο χρήστη αλλά και για το σύνολο του βίκι',
 	'usagestatisticsfor' => '<h2>Στατιστικά χρήσης για τον [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Στατιστικά χρήσης για όλους τους χρήστες</h2>',
 	'usagestatisticsinterval' => 'Διάστημα',

@@ -47,6 +47,13 @@ $messages['dsb'] = array(
 	'mwreleases-desc' => 'Pśidawa [[Mediawiki:Mwreleases-list|lisćinu]] pódpěranych wersijow, kótarež stoje pśez API k dispoziciji',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'mwreleases-desc' => 'Προσθέτει μία [[Mediawiki:Mwreleases-list|λίστα]] υποστηριζόμενων εκδόσεων, προσβάσιμων μέσω API',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

@@ -100,9 +100,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'rightfunctions-desc' => 'Λεξιαναλυτικές συναρτήσεις βάσει αδειών',
+	'rightfunctions-casc' => '(απο διαδοχικές πηγές)',
 	'rightfunctions-local' => '(από τοπική σελίδα)',
 	'rightfunctions-ns' => '(από την προστασία περιοχής)',
 );

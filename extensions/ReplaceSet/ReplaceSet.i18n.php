@@ -79,6 +79,14 @@ $messages['dsb'] = array(
 	'replaceset-error-regexbadmodifier' => "Modifikator regularnych wurazow '$1' njejo płaśiwy.",
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'replaceset-error-regexnoend' => 'Το πρότυπο τακτικής έκφρασης "$1" υπολείπεται του ληκτικού χαρακτήρα \'$2\'',
+	'replaceset-error-regexbadmodifier' => "Ο τροποποιητής τακτικής έκφρασης '$1' δεν είναι έγκυρος.",
+);
+
 /** French (Français)
  * @author PieRRoMaN
  * @author Verdy p

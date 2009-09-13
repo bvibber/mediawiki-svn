@@ -72,6 +72,13 @@ $messages['dsb'] = array(
 	'semanticgallery-desc' => 'Pśidawa galerijowy wudawański format za wotpšašanja SMW',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'semanticgallery-desc' => 'Προσθέτει ένα φορμά εξόδου της συλλογής στις inline αναζητήσεις της SMW',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

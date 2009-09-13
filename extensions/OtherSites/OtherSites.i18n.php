@@ -102,10 +102,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'othersites' => 'Άλλοι ιστότοποι',
+	'othersites-desc' => 'Μετακινεί τους συνδέσμους ιντερβίκι, πλην συνδέσμων γλώσσας, στις δικές τους συνιστώσες διεπαφής',
 );
 
 /** Esperanto (Esperanto)

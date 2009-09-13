@@ -85,6 +85,13 @@ $messages['dsb'] = array(
 	'javascript-desc' => 'Pśidawa dataju uniwiki.js ku kuždemu bokoju, kótaraž wopśimujo JavaScriptowy kod, kótaryž jo zgromadny za rozšyrjenja Uniwiki',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'javascript-desc' => 'Προσθέτει το uniwiki.js σε κάθε σελίδα που περιέχει κώσικα JavaScript κοινό με τις επεκτάσεις Uniwiki',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

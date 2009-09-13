@@ -184,9 +184,11 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author K sal 15
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'userimages-desc' => 'Παράγει συλλογές εικόνων επιφορτωμένων από χρήστες με το <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Οι εικόνες φορτώθηκαν από τον $1',
 	'userimages-noname' => 'Άκυρο ή μη δοσμένο όνομα χρήστη',
 	'userimages-noimages' => 'Ο/Η $1 δεν έχει ανεβάσει εικόνες.',

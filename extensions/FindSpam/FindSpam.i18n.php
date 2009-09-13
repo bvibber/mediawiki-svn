@@ -1022,6 +1022,8 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'findspam' => 'Spaman ecind',
+	'findspam-desc' => 'Ližadab [[Special:FindSpam|specialižen lehtpolen]], kudamban turbiš voib löuta tantošt spamad',
 	'findspam-ip' => 'IP-adres:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Ei voi löuta tondad',

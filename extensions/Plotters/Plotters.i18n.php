@@ -491,6 +491,24 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'plotters-desc' => "Fà che j'utent a dòvro JavaScript përsonaj ant ij tag jsplot",
+	'plotters' => 'Plotter',
+	'plotters-title' => 'Plotter',
+	'plotters-pagetext' => "Sota a-i é na lista ëd plotter speciaj che j'utent a peulo dovré ant ij sò tag jsplot, com definì da [[MediaWiki:Plotters-definition]].
+Sta antrodussion-sì a dà un assess bel fé a le pàgine dij messagi ëd sistema che a definisso la descrission e ël còdes ëd minca plotter.",
+	'plotters-uses' => 'Dovragi',
+	'plotters-missing-script' => 'Pa gnun script definì.',
+	'plotters-missing-arguments' => 'Pa gnun argoment spessifià.',
+	'plotters-excessively-long-scriptname' => "Ël nòm ëd lë script a l'é tròp longh.
+Për piasì definiss në script, ël sò nòm a deuv esse 255 caràter al pì.",
+	'plotters-excessively-long-preprocessorname' => "Ël nòm dël preprossessor a l'é tròp longh.
+Për piasì definiss un preprossessor, ël sò nòm a deuv esse al pì 255 caràter.",
+	'plotters-excessively-long-name' => "Ël nòm dël plot a l'é tròp longh.
+Për piasì definiss un nòm dël plot che a sia al pì 255 caràter.",
+	'plotters-excessively-long-tableclass' => "la tableclass a l'é tròp longa.
+Për piasì definiss na tableclass che a sia 255 caràter al pì.",
+	'plotters-no-data' => 'Pa gnun dat dàit.',
+	'plotters-invalid-renderer' => "A l'é stàit selessionà un renderer pa bon.",
+	'plotters-errors' => '{{PLURAL:$1|Eror|Eror}} dij plotter:',
 );
 
 /** Portuguese (Português)

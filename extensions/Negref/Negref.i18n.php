@@ -51,6 +51,13 @@ $messages['dsb'] = array(
 	'negref-desc' => 'Bitujo toflicku, aby se zwěsćiło městno toflickow <nowiki><ref/></nowiki> w zapódanego teksta, aby se pórěźili někotare pady wužywanja pśedłogow',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'negref-desc' => 'Παρέχει μία ετικέτα για τη διαπραγμάτευση της τοποθεσίας οποιασδήποτε ετικέτας <nowiki><ref/></nowiki> που είναι παρούσα μέσα στο κείμενο εισόδου με σκοπό τη διόρθωση συγκεκριμένων περιπτώσεων χρήσης προτύπων',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

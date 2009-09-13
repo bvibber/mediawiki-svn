@@ -36,11 +36,25 @@ $messages['dsb'] = array(
 	'conditionalshowsection-desc' => 'Toflicku <cshow> pśidaś, aby se wótrězk wikiteksta pokazał/schował',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'conditionalshowsection-desc' => 'Προσθέτει την ετικέτα <cshow> για να προβάλλει/αποκρύψει υπό όρους τμήμα του βικικειμένου',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'conditionalshowsection-desc' => 'Ajout de la balise <cshow> pour afficher ou masquer conditionnellement une section de wikitexte',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'conditionalshowsection-desc' => 'Engade a etiqueta <cshow> para mostrar ou agochar condicionalmente unha sección de texto wiki',
 );
 
 /** Swiss German (Alemannisch)
@@ -104,5 +118,12 @@ $messages['nl'] = array(
  */
 $messages['pms'] = array(
 	'conditionalshowsection-desc' => 'Gionté ël tag <cshow> per mosté/stërmé condissionalment na session ëd test wiki',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'conditionalshowsection-desc' => 'Pridáva značku <cshow> na podmienečné zobrazenie/skrytie sekcie wikitextu',
 );
 

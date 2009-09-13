@@ -1694,6 +1694,7 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'readerfeedback-desc' => "Lehtpolen vahvištoitand laskeb lugijoile avaita heiden mel'pidegid kategorižen arvostelendan formas",
 	'readerfeedback' => 'Mitä meletat nece lehtpolen polhe?',
 	'readerfeedback-text' => "''Olgat hüväd, arvostelgat nece lehtpol'. Teiden arvastelendad oma lujas kal'hed meile, ned abutadas paremboita sait.''",
 	'readerfeedback-reliability' => 'Todesižuz',
@@ -1713,7 +1714,9 @@ $messages['vep'] = array(
 	'readerfeedback-voted' => "'''Näguse, tö olet jo arvostelnuded necen lehtpolen.''' ([$3 Om-ik homaičendoid vai küzundoid?]).",
 	'readerfeedback-submitting' => 'Oigendamine...',
 	'readerfeedback-finished' => 'Kitäm!',
+	'readerfeedback-tagfilter' => 'Teg:',
 	'tooltip-ca-ratinghist' => 'Necen lehtpolen lugijoiden arvsanad',
+	'specialpages-group-feedback' => "Lugijan mel'pideg",
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1076,6 +1076,8 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'inspectcache' => 'Inspektiruida keš',
+	'inspectcache-desc' => 'Järgeline kohenduzazeg ühthižen kešan südäimišton nähtes',
 	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Ühthine keš',
 	'inspectcache-parser' => 'Parseran keš',

@@ -142,6 +142,13 @@ $messages['dsb'] = array(
 	'right-forcepreviewexempt' => 'Bźez wužywanja pśeglěda składowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'forcepreview' => 'Αποθήκευση σελίδας (χρήση προεπισκόπησης πρώτα)',
+);
+
 /** Esperanto (Esperanto)
  * @author Smeira
  * @author Yekrats

@@ -335,6 +335,10 @@ $messages['lb'] = array(
 	'multiboilerplate-desc' => "Erlaabt et eng Säit oder eng Schabloun aus enger Këscht uewen am Formulaire fir d'Ännere vun enger Säit erauszesichen",
 	'multiboilerplate-legend' => 'Säit eraussichen déi soll agebaut ginn',
 	'multiboilerplate-submit' => 'Lueden',
+	'boilerplates' => 'Disponibel Textschablounen',
+	'multiboilerplate-special-pagetext' => 'Dës Schabloune kënne beim Uleeë vun der Säit matgeluede ginn. (<span class=plainlinks>[{{fullurl:Dës Säit gëtt et net|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Textschabloune sinn an de LocalSettings definéiert.',
+	'multiboilerplate-special-define-in-interface' => 'Textschabloune sinn a [[MediaWiki:Multiboilerplate]] definéiert.',
 );
 
 /** Malayalam (മലയാളം)

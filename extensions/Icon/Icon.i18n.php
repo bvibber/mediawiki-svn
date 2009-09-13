@@ -645,6 +645,8 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'icon-badimage' => 'Hond kuva',
+	'icon-badwidth' => 'Hond leveduz',
+	'icon-desc' => 'Laskeb kävutada kuvad ikonoin da kosketisin',
 );
 
 /** Vietnamese (Tiếng Việt)

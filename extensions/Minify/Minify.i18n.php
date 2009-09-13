@@ -65,6 +65,13 @@ $messages['dsb'] = array(
 	'minify-desc' => 'Pómjeńšujo wudaśe CSS a JavaScript z action=raw',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'minify-desc' => 'Συρρικνώνει την έξοδο CSS και JavaScript από action=raw',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

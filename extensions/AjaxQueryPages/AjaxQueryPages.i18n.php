@@ -549,6 +549,13 @@ $messages['vec'] = array(
 	'ajax-qp-desc' => 'Zonta dei script AJAX a le pagine de query come [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'ajax-qp-desc' => 'Ližadab vähäižen AJAXad QueryPages-he, ozutesikš, [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

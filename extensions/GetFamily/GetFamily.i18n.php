@@ -94,6 +94,13 @@ $messages['dsb'] = array(
 	'right-getfamily' => 'Swójźbnu dataju za pywikipediabot napóraś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'getfamily' => 'Απόκτηση της οικογένειας pywikipediabot',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

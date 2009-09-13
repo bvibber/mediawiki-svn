@@ -110,6 +110,18 @@ $messages['bg'] = array(
 	'dplforum-toomany' => 'DPL Форум: Твърде много категории!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'dplforum-desc' => 'Astenn forom diazezet war DPL',
+	'dplforum-by' => 'gant $1',
+	'dplforum-edited' => '- Kemmet da ziwezhañ',
+	'dplforum-never' => 'Morse',
+	'dplforum-toofew' => 'Forom DPL : Re nebeut a rummadoù !',
+	'dplforum-toomany' => 'Forom DPL : Re a rummadoù !',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

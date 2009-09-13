@@ -368,6 +368,27 @@ $messages['hsb'] = array(
 	'framedvideo-desc' => 'Zmóžnja zasadźowanje widejow z wšelakich websydłow z pomocu taflički <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'framedvideo_errors' => 'Több hiba történt!',
+	'framedvideo_error' => 'Hiba történt!',
+	'framedvideo_error_unknown_type' => 'Ismeretlen videó-szolgáltatás azonosító („$1”): ellenőrizd a „type” paramétert.',
+	'framedvideo_error_no_id_given' => 'Hiányzó „id” paraméter.',
+	'framedvideo_error_height_required' => 'A(z) „$1” videótípusnál kötelező a „height” paraméter.',
+	'framedvideo_error_height_required_not_only_width' => 'A(z) „$1” videótípusnál kötelező a „height” paraméter is, nem csak a „width” paraméter.',
+	'framedvideo_error_width_too_big' => 'A „width” paraméter megadott értéke túl nagy.',
+	'framedvideo_error_height_too_big' => 'A „height” paraméter megadott értéke túl nagy.',
+	'framedvideo_error_no_integer' => 'A(z) „$1” megadott értéke nem pozitív szám.',
+	'framedvideo_error_limit' => 'A legmagasabb megadható érték $1.',
+	'framedvideo_error_full_size_not_allowed' => 'A „size” paraméternél nem használható a „full” érték $1 videó-szolgáltató azonosító esetén.',
+	'framedvideo_helppage' => 'Help:Videó',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|További segítség a szintaxisról]].',
+	'framedvideo_error_height_and_width_required' => 'A(z) „$1” videótípusnál kötelező a „height” és „width2”, vagy a „width” paraméter.',
+	'framedvideo-desc' => 'Lehetővé teszi videók beágyazását számos weboldalról a <tt><nowiki><video></nowiki></tt> tag segítségével',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -595,6 +616,27 @@ $messages['pl'] = array(
 	'framedvideo_error_see_help' => 'Aby dowiedzieć się więcej o formatowaniu, zobacz [[{{MediaWiki:Framedvideo_helppage}}|stronę pomocy]].',
 	'framedvideo_error_height_and_width_required' => 'Wideo z serwisu o identyfikatorze „$1” wymaga podania parametru „height” i „width2” lub „width”.',
 	'framedvideo-desc' => 'Pozwala na osadzanie wideo z innych serwisów',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'framedvideo_errors' => 'A son capitaje eror multipl!',
+	'framedvideo_error' => "A l'é capitaje n'eror!",
+	'framedvideo_error_unknown_type' => 'Id dël sërvissi video ("$1") pa conossù: contròla ël paràmetr "type".',
+	'framedvideo_error_no_id_given' => 'Paràmetr "id" mancant.',
+	'framedvideo_error_height_required' => 'La sòrt ëd video "$1" a veul ël paràmetr "height".',
+	'framedvideo_error_height_required_not_only_width' => 'La sòrt ëd video "$1" a veul ël paràmetr "height", pa mach ël paràmetr "width".',
+	'framedvideo_error_width_too_big' => 'Ël valor dàit dël paràmetr "width" a l\'é tròp gròss.',
+	'framedvideo_error_height_too_big' => 'Ël valor dàit dël paràmetr "height" a l\'é tròp gròss.',
+	'framedvideo_error_no_integer' => 'Ël valor dàit ëd "$1" a l\'é pa un nùmer positiv.',
+	'framedvideo_error_limit' => "Ël valor pì àut përmëttù a l'é $1.",
+	'framedvideo_error_full_size_not_allowed' => 'Ël valor "full" për ël paràmetr "size" a l\'é pa përmëttù për l\'id dël servissi video "$1".',
+	'framedvideo_helppage' => 'Help: Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Ëd pì an sla sintassi]].',
+	'framedvideo_error_height_and_width_required' => 'La sòrt ëd video "$1" a veul ij paràmetr "height" e "width2" o "width".',
+	'framedvideo-desc' => 'A përmëtt video embedded da vàire sit web an dovrand ël tag <tt><nowiki><video></nowiki></tt>.',
 );
 
 /** Portuguese (Português)

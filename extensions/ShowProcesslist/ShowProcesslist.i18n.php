@@ -212,6 +212,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'showprocesslist' => 'Εμφάνιση λίστας προόδου',
+	'showprocesslist-desc' => 'Προβολή της εξόδου [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'Ταυτότητα',
 	'showprocesslist-user' => 'Χρήστης',
 	'showprocesslist-host' => 'Φιλοξενία',
@@ -952,6 +953,8 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'showprocesslist' => 'Ozutada processiden nimikirjutez',
+	'showprocesslist-desc' => 'Ozutab «[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]»-käskön lähtmižen MySQL-as',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Kävutai',
 	'showprocesslist-host' => 'Host',

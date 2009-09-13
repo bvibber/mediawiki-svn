@@ -604,6 +604,15 @@ $messages['ru'] = array(
 	'block_title_error' => 'Извините, страница с подобным названием не может быть сохранена.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'block_title_error_page_title' => 'Бобуллубут аат',
+	'block_title_error-desc' => 'Саҥа ыстатыйалары эбэтэр уларытыыны бигэргэтиини бобууну хааччыйар',
+	'block_title_error' => 'Бука диэн баалаама, маннык ааттаах сирэй оҥоһуллар кыаҕа суох.',
+);
+
 /** Sicilian (Sicilianu)
  * @author Santu
  * @author Tonyfroio

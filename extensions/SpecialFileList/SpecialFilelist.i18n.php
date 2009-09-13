@@ -232,6 +232,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'filelist' => 'Λίστα αρχείων',
+	'filelist-desc' => '[[Special:Filelist|Ειδική σελίδα]] για τη δημιουργία καταλόγων επιφορτωμένων αρχείων',
 	'filelist-show-list' => 'Εμφάνιση λίστας',
 	'filelist-show-gallery' => 'Εμφάνιση συλλογής',
 	'filelist-image-desc' => 'ανεβ',
@@ -874,8 +875,10 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'filelist' => 'Failoiden nimikirjutez',
+	'filelist-desc' => "[[Special:Filelist|Specialine lehtpol']], kudamb ozutab jügedoittud failoiden nimikirjutesen",
 	'filelist-show-list' => 'Ozutada nimikirjutez',
 	'filelist-show-gallery' => 'Ozutada gallerei',
+	'filelist-image-desc' => 'väheten',
 );
 
 /** Vietnamese (Tiếng Việt)

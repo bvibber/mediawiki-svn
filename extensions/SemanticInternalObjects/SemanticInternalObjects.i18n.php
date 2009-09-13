@@ -55,6 +55,13 @@ $messages['dsb'] = array(
 	'semanticinternalobjects-desc' => 'Nastajenje internych objektow w Semantic MediaWiki',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'semanticinternalobjects-desc' => 'Ρυθμίσεις εσωτερικών αντικειμένων στη Σημασιολογική MediaWiki',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

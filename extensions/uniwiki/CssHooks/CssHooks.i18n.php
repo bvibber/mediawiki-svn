@@ -94,6 +94,13 @@ $messages['dsb'] = array(
 	'csshooks-desc' => 'Pśidawa CSS k HTML-wudaśeju bokow za lěpše wugótowanje',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'csshooks-desc' => 'Προσθέτει CSS στην απόδοση HTML των σελίδων για καλύτερο style',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
