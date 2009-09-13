@@ -60,6 +60,13 @@ class SpecialUserLogin extends SpecialPage {
 			return;
 		}
 		
+		# Because we're transitioning from logged-out, who might not
+		# have a session, to logged-in, who always do, we need to make
+		# sure that we *always* have a session...
+		if( session_id() == '' ) {
+			wfSetupSession();
+		}
+		
 		$this->loadQuery();
 		$this->mLogin = new Login();
 

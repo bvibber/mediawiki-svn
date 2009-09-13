@@ -94,7 +94,6 @@ class Login {
 	 * @return a Login class constant representing the status.
 	 */
 	public function attemptLogin(){
-		global $wgUser;
 		
 		$code = $this->authenticateUserData();
 		if( $code != self::SUCCESS ){
@@ -102,12 +101,15 @@ class Login {
 		}
 		
 		# Log the user in and remember them if they asked for that.
+		global $wgUser;
+		$wgUser = $this->mUser;
 		if( (bool)$this->mRemember != (bool)$wgUser->getOption( 'rememberpassword' ) ) {
 			$wgUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
 			$wgUser->saveSettings();
 		} else {
 			$wgUser->invalidateCache();
 		}
+		
 		$wgUser->setCookies();
 
 		# Reset the password throttle
