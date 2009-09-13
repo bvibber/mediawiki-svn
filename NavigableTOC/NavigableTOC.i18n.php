@@ -89,10 +89,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'navigabletoc' => 'Περιηγήσιμος πίνακας περιεχομένων',
+	'navigabletoc-desc' => 'Προσθέτει έναν πίνακα περιεχομένων στη φόρμα επεξεργασίας η οποία ξετυλίγει το κουτί κειμένου όταν γίνεται κλικ πάνω στο τμήμα',
 );
 
 /** Esperanto (Esperanto)
@@ -326,6 +328,13 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'navigabletoc' => 'Оглавление с навигацией',
 	'navigabletoc-desc' => 'Добавляет на форму правки оглавление, прокручивающее текст в поле редактирования при выборе названия раздела',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'navigabletoc' => 'Иһинээҕитин навигациялаах тиһигэ',
 );
 
 /** Slovak (Slovenčina)

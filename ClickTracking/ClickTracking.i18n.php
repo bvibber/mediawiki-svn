@@ -157,10 +157,12 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'clicktracking' => 'Usability Initiative kattintásszámláló',
 	'clicktracking-desc' => 'Kattintásszámláló, az olyan események rögzítésére, melyekhez nem szükséges a lap frissítése',
+	'clicktracking-title' => 'A szerkesztők kattintásainak összesítése',
 );
 
 /** Interlingua (Interlingua)

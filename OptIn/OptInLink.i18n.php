@@ -333,6 +333,7 @@ $messages['hu'] = array(
 	'optin-leave' => 'A bétateszt befejezése',
 	'tooltip-pt-optin-leave' => 'Új lehetőségek kikapcsolása',
 	'optin-feedback' => 'Visszajelzés a bétáról',
+	'tooltip-pt-optin-feedback' => 'Adj visszajelzést az új funkciókkal kapcsolatos tapasztalataidról',
 );
 
 /** Interlingua (Interlingua)
