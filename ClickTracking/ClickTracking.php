@@ -23,6 +23,7 @@ $wgClickTrackEnabled = true;
 
 // click throttle, should be seen as "1 out of every $wgClickTrackThrottle users will have it enabled"
 // setting this to 1 means all users will have it enabled
+// setting to a negative number will disable it for all users
 $wgClickTrackThrottle = 1;
 
 // set the time window for what we consider 'recent' contributions, in days
@@ -48,7 +49,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ClickTrackingHooks'] = $dir . 'ClickTracking.hooks.php';
 $wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
 $wgAutoloadClasses['SpecialClickTracking'] = $dir . 'SpecialClickTracking.php';
-
+$wgAutoloadClasses['ApiSpecialClickTracking'] = $dir .'ApiSpecialClickTracking.php';
 
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::schema';
@@ -57,11 +58,11 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'ClickTrackingHooks::addJS';
 
 // Set up the new API module
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
+$wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';
 
 //Special page setup
 $wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
-
-
+$wgSpecialPageGroups['ClickTracking'] = 'admin';
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';

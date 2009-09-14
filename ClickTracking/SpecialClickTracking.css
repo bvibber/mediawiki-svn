@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+.table_headers{
+	font-weight: bold;
+	border: bottom;
+}
+
+.table_data_row{
+	text-align: center;
+}
+
+.table_data_row .event_name{
+	text-align: left;
+	font-weight: bold;
+}
+
+#clicktrack_data_table {
+	float: left;
+}
+
+#chart_img {
+	float: left;
+	margin-left: 90px;
+}
+
+#change_graph_cell {
+	text-align: right;
+}
