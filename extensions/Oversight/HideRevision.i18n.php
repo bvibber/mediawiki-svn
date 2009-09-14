@@ -65,7 +65,7 @@ Revert this change first.',
 Releasing this information can result in permanent loss of Oversight privileges.',
 	'oversight-legend'     => 'Search revision hiding log',
 	'oversight-oversighter' => 'Oversighter:',
-	'oversight-offender'   => 'Offender:',
+	'oversight-offender'   => 'Revision author:',
 );
 
 /** Message documentation (Message documentation)
