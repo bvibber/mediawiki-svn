@@ -715,6 +715,7 @@ $messages['grc'] = array(
 	'recordadmin-buttoncreate' => 'Ποιεῖν',
 	'recordadmin-buttonreset' => 'Ἀνατιθέναι',
 	'recordadmin-buttonsave' => 'Γράφειν',
+	'recordadmin-editlink' => 'επεξεργασία',
 	'recordadmin-actions' => 'Δράσεις',
 );
 

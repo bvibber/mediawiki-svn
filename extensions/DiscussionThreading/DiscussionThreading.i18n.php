@@ -304,6 +304,17 @@ $messages['hsb'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Nowu nitku startować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'discussionthreading-desc' => 'Témakezelés a vitalapokhoz',
+	'discussionthreading-replysection' => 'válasz',
+	'discussionthreading-replysectionhint' => 'Válasz erre az üzenetre',
+	'discussionthreading-threadnewsection' => 'új',
+	'discussionthreading-threadnewsectionhint' => 'Új téma indítása',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -297,11 +297,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'unicodeconverter' => 'Unicode konvertáló',
-	'unicodeconverter-desc' => 'Egy speciális lap modul egyszerű példája. [[Special:UnicodeConverter|UTF-8-ban megadott szöveget]] HTML entitásokká konvertálja, amelyek megfelelőek egy ISO 8859-1-es weboldalnak',
+	'unicodeconverter' => 'Unicode-konvertáló',
+	'unicodeconverter-desc' => 'Egy speciális lap-modul egyszerű példája. Az [[Special:UnicodeConverter|UTF-8-ban megadott szöveget]] HTML entitásokká konvertálja, amelyek megfelelnek egy ISO 8859-1-es weboldalnak',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Eredeti szöveg:',
 	'unicodeconverter-newtext' => 'Konvertált szöveg:',

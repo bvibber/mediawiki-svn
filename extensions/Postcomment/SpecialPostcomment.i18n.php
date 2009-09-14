@@ -413,11 +413,17 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'postcomment_notloggedin' => 'Nem vagy bejelentkezve',
 	'postcomment_youareloggedinas' => 'Bejelentkeztél, mint $1',
+	'postcomment_leavemessagefor' => 'Üzenet $1 részére',
+	'postcomment_post' => 'Küldés',
+	'postcomment_on' => 'Dátum:',
+	'postcomment_said' => 'írta',
 	'postcomment_invalidrequest' => 'Érvénytelen kérés.',
+	'postcomment_replyto' => 'Válasz $1 szerkesztőnek',
 );
 
 /** Interlingua (Interlingua)

@@ -261,12 +261,13 @@ Jeli sy přizjewjeny, budźe so twoje přimjeno awtomatisce pokazować. Anonymni
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'webchat' => 'Web chat',
 	'webchat-desc' => '[[Special:WebChat|Speciális lap]] más wikiszerkesztőkkel történő valósidejű beszélgetésre',
-	'right-webchat' => '[[Special:WebChat|Web chat]] használata engedélyezve',
+	'right-webchat' => '[[Special:WebChat|web chat]] használata',
 );
 
 /** Interlingua (Interlingua)
@@ -495,6 +496,13 @@ För att ansluta, tryck helt enkelt på Anslut-knappen.
 Om du är inloggad kommer ditt användarnamn vara förifyllt.
 Anonyma användare får ett automatiskt genererat användarnamn, men det kan ändras.',
 	'right-webchat' => 'Får använda [[Special:WebChat|webbchatten]]',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'webchat' => 'వెబ్ ఛాట్',
 );
 
 /** Veps (Vepsan kel')

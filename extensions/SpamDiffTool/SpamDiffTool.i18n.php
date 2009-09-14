@@ -628,10 +628,16 @@ Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduj
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'spamdifftool_cantedit' => 'Sajnáljuk, de nincs jogosultságod szerkeszteni a spam-feketelistát.',
+	'spamdifftool_notext' => "Nincs hozzáadandó szöveg a spam feketelistához.
+Kattints <a href='$1'>ide</a> a folytatáshoz.",
 	'spamdifftool_no_urls_detected' => "Nem találtam URL-t.
 Kattints <a href='$1'>ide</a> a visszatéréshez.",
+	'spamdifftool_option_none' => 'semmi',
+	'spamdifftool_submit_buttom' => 'Küldés',
 );
 
 /** Interlingua (Interlingua)
@@ -1049,6 +1055,13 @@ Kliknij <a href='$1'>tutaj</a>, żeby wrócić do poprzedniej strony.",
 	'spamdifftool_option_none' => 'nic',
 	'spamdifftool_block' => 'Blokuj:',
 	'spamdifftool_submit_buttom' => 'Wyślij',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'spamdifftool' => 'Gëstiss la blacklist dë spam',
 );
 
 /** Pashto (پښتو)

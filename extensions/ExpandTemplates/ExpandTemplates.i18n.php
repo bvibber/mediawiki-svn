@@ -612,7 +612,7 @@ $messages['frp'] = array(
 Rèalise asse-ben l’èxpension de les fonccions du parsor coment
 <tt><nowiki>{{</nowiki>#if:...<nowiki>}}</nowiki></tt> et de les variâbles prèdèfenies coment
 <tt><nowiki>{{</nowiki>CURRENTDAY<nowiki>}}</nowiki></tt> — en veré praticament tot cen qu’est encâdrâ per des dobles colâdes.
-Rèalise cen en apelent los étâjos que vont avouéc du parsor de MediaWiki lui-mémo.',
+Rèalise cen en apelent los étâjos succèssifs que vont avouéc du parsor de MediaWiki lui-mémo.',
 	'expand_templates_title' => 'Titro de la pâge, se lo code utilise {{PAGENAME}}, etc. :',
 	'expand_templates_input' => 'Vouiquitèxto sôrsa :',
 	'expand_templates_output' => 'Rèsultat',

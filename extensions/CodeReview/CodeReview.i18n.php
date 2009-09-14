@@ -3221,7 +3221,7 @@ $messages['hu'] = array(
 	'code-status' => 'állapotok',
 	'code-tags' => 'címkék',
 	'code-tests' => 'Tesztesetek',
-	'code-authors-text' => 'Ezen a lapon a tárhelyhez tartozó szerzők láthatóak a legutóbbi commitok alapján rendezve. A helyi wiki fiókok zárójelezve szerepelnek.',
+	'code-authors-text' => 'Ezen a lapon a tárhelyhez tartozó szerzők láthatóak a legutóbbi commitok alapján rendezve. A helyi, wikis fiókok zárójelben szerepelnek.',
 	'code-author-haslink' => 'Ez a szerző megegyezi a wiki $1 nevű szerkesztőjével',
 	'code-author-orphan' => 'Ez a szerkesztő nem rendelkezik felhasználói fiókkal ezen a wikin',
 	'code-author-dolink' => 'Szerző összekapcsolása a wiki egyik szerkesztőjével:',
@@ -3242,7 +3242,7 @@ $messages['hu'] = array(
 	'code-field-tests' => 'Tesztek',
 	'code-field-path' => 'Elérési út',
 	'code-field-text' => 'Megjegyzés',
-	'code-field-select' => 'Kiválasztás',
+	'code-field-select' => 'Kiválaszt',
 	'code-rev-author' => 'Szerző:',
 	'code-rev-date' => 'Dátum:',
 	'code-rev-message' => 'Megjegyzés:',
@@ -3296,7 +3296,7 @@ Hozzászólás:
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: rákövetkező változtatások',
-	'codereview-email-body2' => '„$1” szerkesztő utólagos változtatásokat végzett a r$2 revízión.
+	'codereview-email-body2' => '„$1” szerkesztő utólagos változtatásokat végzett az r$2 verzión.
 
 Teljes URL: $3
 

@@ -369,12 +369,13 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'framedvideo_errors' => 'Több hiba történt!',
 	'framedvideo_error' => 'Hiba történt!',
-	'framedvideo_error_unknown_type' => 'Ismeretlen videó-szolgáltatás azonosító („$1”): ellenőrizd a „type” paramétert.',
+	'framedvideo_error_unknown_type' => 'Ismeretlen videószolgáltatás-azonosító („$1”): ellenőrizd a „type” paramétert.',
 	'framedvideo_error_no_id_given' => 'Hiányzó „id” paraméter.',
 	'framedvideo_error_height_required' => 'A(z) „$1” videótípusnál kötelező a „height” paraméter.',
 	'framedvideo_error_height_required_not_only_width' => 'A(z) „$1” videótípusnál kötelező a „height” paraméter is, nem csak a „width” paraméter.',
@@ -382,7 +383,7 @@ $messages['hu'] = array(
 	'framedvideo_error_height_too_big' => 'A „height” paraméter megadott értéke túl nagy.',
 	'framedvideo_error_no_integer' => 'A(z) „$1” megadott értéke nem pozitív szám.',
 	'framedvideo_error_limit' => 'A legmagasabb megadható érték $1.',
-	'framedvideo_error_full_size_not_allowed' => 'A „size” paraméternél nem használható a „full” érték $1 videó-szolgáltató azonosító esetén.',
+	'framedvideo_error_full_size_not_allowed' => 'A „size” paraméternél nem használható a „full” érték $1 videószolgáltató-azonosító esetén.',
 	'framedvideo_helppage' => 'Help:Videó',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|További segítség a szintaxisról]].',
 	'framedvideo_error_height_and_width_required' => 'A(z) „$1” videótípusnál kötelező a „height” és „width2”, vagy a „width” paraméter.',

@@ -1018,7 +1018,7 @@ Volyéd enstalar <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Cli
 	'ogg-no-xiphqt' => 'Aparament vos avéd pas lo composent XiphQT por QuickTime.
 QuickTime pôt pas liére los fichiérs Ogg sen cél composent.
 Volyéd <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">tèlèchargiér XiphQT</a> ou ben chouèsir un ôtro liésor.',
-	'ogg-player-videoElement' => 'Assistance du navigator natif',
+	'ogg-player-videoElement' => 'Assistance du navigator nativa',
 	'ogg-player-oggPlugin' => 'Modulo d’èxtension du navigator',
 	'ogg-player-thumbnail' => 'Ren que l’émâge fixa',
 	'ogg-player-soundthumb' => 'Gins de liésor',

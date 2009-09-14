@@ -1049,10 +1049,11 @@ Wróćo k:
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'crosswikiblock-desc' => 'Szerkesztők blokkolása más wikiken [[Special:Crosswikiblock|speciális lap]]',
+	'crosswikiblock-desc' => '[[Special:Crosswikiblock|Speciális lap]], mely segítségével szerkesztőket lehet blokkolni más wikiken',
 	'crosswikiblock' => 'Szerkesztő blokkolása más wikin',
 	'crosswikiblock-header' => 'Ezen a lapon tudsz szerkesztőt blokkolni más wikin.
 Légyszíves ellenőrizd, hogy megteheted-e ezt a másik wikin, és megfelel-e minden vonatkozó irányelvnek.',
@@ -1067,6 +1068,7 @@ Légyszíves ellenőrizd, hogy megteheted-e ezt a másik wikin, és megfelel-e m
 	'crosswikiunblock-reason' => 'Indoklás:',
 	'crosswikiblock-nousername' => 'Nincs szerkesztői név megadva',
 	'crosswikiblock-local' => 'A helyi blokkok nem támogatottak ezen a lapon. Használd a [[Special:BlockIP|{{int:blockip}}]] speciális lapot',
+	'crosswikiblock-noexpiry' => 'Érvénytelen lejárat: $1.',
 	'crosswikiblock-notoken' => 'Érvénytelen szerkesztési token.',
 	'crosswikiblock-noblock' => 'Ez a szerkesztő nincs blokkolva.',
 	'right-crosswikiblock' => 'szerkesztők blokkolása és a blokkok feloldása más wikiken',

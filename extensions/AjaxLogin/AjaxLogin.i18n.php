@@ -96,6 +96,9 @@ Ovo će Vas preusmjeriti sa ove stranice za uređivanje i ukloniti Vaše trenutn
 	'ajaxLogin2' => 'Da li ste sigurni?
 Možete izgubiti promjene koje ste napravili na ovoj stranicu ako sada napustite ovu stranicu.',
 	'ajaxlogin-create' => 'Napravite račun',
+	'al-nosuchuser' => 'Ne postoji korisnik pod imenom "$1".
+Korisnička imena razlikuju velika i mala slova.
+Provjerite Vaš unos.',
 );
 
 /** Catalan (Català)
@@ -106,6 +109,20 @@ $messages['ca'] = array(
 	'ajaxLogin2' => "N'esteu segurs?
 Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 	'ajaxlogin-create' => 'Crea un compte',
+);
+
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Haval
+ */
+$messages['ckb-arab'] = array(
+	'ajaxlogin-desc' => 'سندوقێکی داینامیک رێ به‌به‌کارهێنه‌ران ده‌دات که‌ بچنه‌ ژوره‌وه‌ وه‌ وشه‌ی تێپه‌ربونیان به‌بیر بهێنرێته‌وه‌',
+	'ajaxLogin1' => 'بۆ ئه‌نجامدانی چونه‌ ژوره‌وه‌،ده‌بێت وشه‌یه‌کی نهینی نوێ بنوسیت.
+This will take you away from this edit page and you may lose your current edit.',
+	'ajaxLogin2' => 'ئایا دڵنیایت؟
+هه‌موو رێخستنه‌کانی ئه‌مپه‌ره‌یه‌ له‌ده‌ست ده‌ده‌ی به‌ جێهێشتنی ئه‌م په‌ڕه‌یه‌.',
+	'ajaxlogin-create' => 'هه‌ژمارێکی نوێ دروست بکه‌',
+	'al-nosuchuser' => 'هیچ ئه‌ندامێک به‌ ناوی  "$1" نیه‌.
+تکایه‌ سپێڵی نوسینه‌که‌ بپشکنه‌.',
 );
 
 /** Danish (Dansk)

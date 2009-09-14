@@ -171,7 +171,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'ajax-qp-desc' => 'Apond de script AJAX a les pâges de requétes coment [[Special:Shortpages|{{int:shortpages}}]].',
+	'ajax-qp-desc' => 'Apond de scripte AJAX a les pâges de requétes coment [[Special:Shortpages|{{int:shortpages}}]].',
 );
 
 /** Western Frisian (Frysk)

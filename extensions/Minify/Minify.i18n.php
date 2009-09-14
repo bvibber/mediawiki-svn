@@ -130,10 +130,11 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'minify-desc' => 'Tömöríti a CSS és JavaScript kódot az <code>action=raw</code> kimenetről',
+	'minify-desc' => 'Tömöríti a CSS és JavaScript kódot az <code>action=raw</code> kimenet esetén',
 );
 
 /** Interlingua (Interlingua)

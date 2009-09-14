@@ -11232,6 +11232,21 @@ $messages['pt'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'Porta para o perfilador UDP',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'configure-setting-wgTranslateNumerals' => 'Transliterar números',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Título da página',
+	'configure-setting-wgExtraLanguageNames-key' => 'Código de língua',
+	'configure-setting-wgExtraLanguageNames-value' => 'Nome',
+	'configure-setting-wgSpecialPageGroups-key' => 'Grupo',
+	'configure-setting-wgAutopromote-value' => 'Condições',
+	'configure-setting-wgEnableEmail' => 'Ativar funcionalidades de e-mail',
+	'configure-setting-wgUseSquid' => 'Ativar Squid',
+	'configure-setting-wgAvailableRights' => 'Lista de direitos disponíveis',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

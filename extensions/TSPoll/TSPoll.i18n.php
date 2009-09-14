@@ -156,12 +156,13 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'tspoll-desc' => 'Foglalja magában a [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript]-et HTML tagként',
+	'tspoll-desc' => 'A [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] beillesztése HTML-tagként',
 	'tspoll-fetch-error' => 'Hiba az URL lekérdezése közben!',
-	'tspoll-id-error' => 'Nincs ID megadva!',
+	'tspoll-id-error' => 'Nincs megadva az azonosító!',
 );
 
 /** Interlingua (Interlingua)

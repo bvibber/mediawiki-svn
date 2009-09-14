@@ -6796,6 +6796,15 @@ Saltar para vista de stream: $2',
 	'right-mv_delete_mvd' => 'Apagar metadados MetaVid',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'mv_duration_label' => 'Duração',
+	'mv_save_changes' => 'Salvar alterações',
+	'mv_category' => 'categoria',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

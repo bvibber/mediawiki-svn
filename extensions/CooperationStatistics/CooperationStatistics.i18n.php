@@ -305,11 +305,18 @@ Hlej tež [[Special:MostRevisors|'''strony z najwjace kontrolerami''']] a [[Spec
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'cooperationstatistics' => 'Együttműködési statisztika',
+	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|A főnévtér együttműködési statisztikájának]] megjelenítése.',
 	'cooperationstatistics-tablearticle' => 'Lapszám',
 	'cooperationstatistics-tablevalue' => 'Szerkesztők száma',
+	'cooperationstatistics-articles' => '{{PLURAL:$1|egy|$1}} lap',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|lapnak|lapnak}} {{PLURAL:$1|egy|$1}} szerkesztője van',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|lapnak|lapnak}} {{PLURAL:$1|egy|$1}} szerkesztője van',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|lapnak|lapnak}} $1 vagy több szerkesztője van',
 	'cooperationstatistics-legendmore' => 'vagy több szerkesztő.',
 );
 

@@ -253,16 +253,17 @@ Maš komentar na tutej stronje? Přidaj jón tu abo <span class="plainlinks">[{{
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'commentbox-desc' => 'Hozzászólás beviteli mezőt ad egyes lapokhoz',
 	'commentbox-intro' => '== Hozzászólás írása… ==
 
-Hozzáfűznivalód van ezen az oldalon? Írd le itt, vagy <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkeszd a lapot közvetlenül.]</span>.',
+Hozzáfűznivalód van ehhez az oldalhoz? Írd le itt, vagy <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkeszd a lapot közvetlenül.]</span>.',
 	'commentbox-savebutton' => 'Hozzászólás mentése',
 	'commentbox-name' => 'Név:',
-	'commentbox-name-explanation' => '<small>(Tipp: ha [[Special:UserLogin|bejelentkezel]], nem kell beírnod a nevedet kézzel)</small>',
+	'commentbox-name-explanation' => '<small>(Tipp: ha [[Special:UserLogin|bejelentkezel]], nem kell kézzel beírnod a nevedet)</small>',
 	'commentbox-log' => 'Új hozzászólások',
 	'commentbox-first-comment-heading' => '== Hozzászólások ==',
 	'commentbox-regex' => '/\\n==\\s*Hozzászólások\\s*==\\s*\\n/i',

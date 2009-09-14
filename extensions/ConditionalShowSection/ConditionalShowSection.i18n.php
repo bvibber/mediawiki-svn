@@ -29,6 +29,13 @@ $messages['br'] = array(
 	'conditionalshowsection-desc' => "Oc'h ouzhpennañ ar valizenn the <cshow> da ziskouez/kuzhat ur rann wikitestenn",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'conditionalshowsection-desc' => 'Dodaje oznaku <cshow> za uslovno prikazivanje/sakrivanje sekcija wikiteksta',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -118,6 +125,13 @@ $messages['nl'] = array(
  */
 $messages['pms'] = array(
 	'conditionalshowsection-desc' => 'Gionté ël tag <cshow> per mosté/stërmé condissionalment na session ëd test wiki',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'conditionalshowsection-desc' => 'Добавляет тег <cshow> для условного показа или сокрытия раздела викитекста.',
 );
 
 /** Slovak (Slovenčina)

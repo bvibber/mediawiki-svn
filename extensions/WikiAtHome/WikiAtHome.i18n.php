@@ -613,6 +613,13 @@ Możesz pomóc w przekodowywaniu wideo, odwiedzając stronę [[Special:WikiAtHom
 	'wah-loading' => 'ładowanie interfejsu Wiki@Home <blink>...</blink>',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'wah-desc' => "A abìlita dij job ëd distribussion ëd video transcoding a client ch'a dòvro Firefogg",
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Heldergeovane

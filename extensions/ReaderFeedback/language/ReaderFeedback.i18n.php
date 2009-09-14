@@ -1370,6 +1370,16 @@ $messages['pt'] = array(
 	'tooltip-ca-ratinghist' => 'Opinião dos leitores sobre esta página',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'readerfeedback' => 'O que você acha desta página?',
+	'readerfeedback-level-4' => 'Excelente',
+	'readerfeedback-submit' => 'Enviar',
+	'readerfeedback-finished' => 'Obrigado!',
+);
+
 /** Romanian (Română)
  * @author Emily
  * @author Firilacroco

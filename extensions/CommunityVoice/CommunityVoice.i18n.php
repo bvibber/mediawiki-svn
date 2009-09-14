@@ -358,8 +358,8 @@ $messages['hu'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Hiba a küldés közben!',
 	'communityvoice-ratings-scale-status-thanks' => 'Köszönjük, hogy szavaztál!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|egy|$2}} szavazat alapján)',
-	'communityvoice-ratings-error-no-category' => 'A kategória-attribútum hiányzik az értékelés tagben.',
-	'communityvoice-ratings-error-no-title' => 'A cím attribútum hiányzik az értékelés tagben.',
+	'communityvoice-ratings-error-no-category' => 'Az értékelés tagből hiányzik a kategória-attribútum.',
+	'communityvoice-ratings-error-no-title' => 'Az értékelés tagből hiányzik a cím attribútum.',
 );
 
 /** Interlingua (Interlingua)

@@ -542,7 +542,7 @@ $messages['frp'] = array(
 	'importusers-log-summary-all' => 'Tôs',
 	'importusers-login-name' => 'Nom d’utilisator',
 	'importusers-password' => 'mot de pâssa',
-	'importusers-email' => 'adrèce de mèl',
+	'importusers-email' => 'adrèce èlèctronica',
 	'importusers-realname' => 'veré nom',
 );
 

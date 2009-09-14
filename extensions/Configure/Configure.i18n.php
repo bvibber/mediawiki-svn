@@ -7204,9 +7204,31 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Crazymadlover
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Extensões',
+	'configure-ext-settings' => 'Configurações',
+	'configure-ext-use-extension' => 'Usar esta extensão',
+	'configure-ext-use' => 'Usar',
+	'configure-btn-save' => 'Salvar configurações',
+	'configure-js-group-exists' => 'Erro: o grupo já existe.',
+	'configure-js-biglist-show' => '[mostrar detalhes]',
+	'configure-js-biglist-hide' => '[esconder detalhes]',
+	'configure-no-diff' => 'Não há alterações entre as versões selecionadas.',
 	'configure-section-timezone' => 'Fuso horário',
+	'configure-section-category' => 'Categorias',
+	'configure-section-antivirus' => 'Antivírus',
+	'configure-section-specialpages' => 'Páginas especiais',
+	'configure-section-recentchanges' => 'Mudanças recentes',
+	'configure-section-users' => 'Usuários',
+	'configure-section-extension' => 'Extensões',
+	'configure-select-wiki-submit' => 'Selecionar',
+	'configure-view' => 'Ver',
+	'configure-view-all-versions' => 'Lista completa de versões',
+	'configure-view-default' => 'Configurações padrão',
+	'extensions' => 'Configurar as extensões',
 );
 
 /** Tarifit (Tarifit)

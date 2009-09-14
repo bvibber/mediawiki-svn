@@ -179,6 +179,16 @@ $messages['hsb'] = array(
 	'right-getfamily' => 'Swójbnu dataju za pywikipediabot wutworić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'getfamily-desc' => 'Családfájlt generál a pywikipediabothoz',
+	'getfamily' => 'Pywikipediabot család beszerzése',
+	'getfamily-interwikierror' => 'Hiba: rossz wikiközi beállítások, lépj kapcsolatba a helyi rendszergazdával.',
+	'right-getfamily' => 'családfájl készítése a pywikipediabothoz',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

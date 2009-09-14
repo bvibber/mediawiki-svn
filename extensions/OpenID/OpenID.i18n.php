@@ -1478,7 +1478,7 @@ Vous ne pourrez plus vous connecter avec cet OpenID.",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'openidemail' => 'Adrèce de mèl',
+	'openidemail' => 'Adrèce èlèctronica',
 	'openidlanguage' => 'Lengoua',
 	'openidtimezone' => 'Zona horèra',
 	'openidchoosepassword' => 'Mot de pâssa :',
