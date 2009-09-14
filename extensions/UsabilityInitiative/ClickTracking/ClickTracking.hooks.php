@@ -23,11 +23,6 @@ class ClickTrackingHooks {
 		);
 
 		$wgExtNewTables[] = array(
-			'user_daily_contribs',
-			dirname( __FILE__ ) . '/UserDailyContribs.sql'
-		);
-
-		$wgExtNewTables[] = array(
 			'click_tracking_events',
 			dirname( __FILE__ ) . '/ClickTrackingEvents.sql'
 		);
@@ -112,20 +107,6 @@ class ClickTrackingHooks {
 		return $edits;
 	}
 
-	/**
-	 * Stores a new contribution
-	 * @return true
-	 */
-	public static function storeNewContrib(){
-		global $wgUser;
-		$today = gmdate( 'Ymd', time() );
-		$dbw = wfGetDB( DB_MASTER );
-		$sql = 
-		"INSERT INTO user_daily_contribs (user_id,day,contribs) VALUES ({$wgUser->getId()},$today,1) ON DUPLICATE KEY UPDATE contribs=contribs+1;";
-		$dbw->query($sql, __METHOD__);
-		
-		return true;
-	}
 
 	/**
 	 * Get event ID from name
