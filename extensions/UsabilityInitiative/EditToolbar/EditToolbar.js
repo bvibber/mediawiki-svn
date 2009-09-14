@@ -890,7 +890,7 @@ js2AddOnloadHook( function() {
 				},
 				cancel: function() {
 					var request = $j(this).data( 'request' );
-					if ( request.abort )
+					if ( request )
 						request.abort();
 				}
 			});
