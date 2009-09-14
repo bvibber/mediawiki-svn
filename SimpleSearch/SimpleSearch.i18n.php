@@ -92,6 +92,7 @@ $messages['bs'] = array(
 	'simplesearch' => 'Jednostavna pretraga',
 	'simplesearch-desc' => 'Dodaje dodatnu funkcionalnost u Vector jednostavnu pretragu',
 	'simplesearch-search' => 'Traži',
+	'simplesearch-containing' => 'sadrži...',
 );
 
 /** Catalan (Català)
