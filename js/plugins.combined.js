@@ -1228,6 +1228,22 @@ fn: {
 						$(this).closest( '.ui-dialog-content' ).each(
 							$.wikiEditor.modules.dialogs.fn.resize );
 					});
+				
+				// Add tabindexes to dialog form elements
+				// Find the highest tabindex in use
+				var maxTI = 0;
+				$j( '[tabindex]' ).each( function() {
+					var ti = parseInt( $j(this).attr( 'tabindex' ) );
+					if ( ti > maxTI )
+						maxTI = ti;
+				});
+				
+				var tabIndex = maxTI + 1;
+				$j( '.ui-dialog input, .ui-dialog button' )
+					.not( '[tabindex]' )
+					.each( function() {
+						$j(this).attr( 'tabindex', tabIndex++ );
+					});
 			}
 		}
 	},
