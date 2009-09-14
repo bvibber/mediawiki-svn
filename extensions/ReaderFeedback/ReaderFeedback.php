@@ -58,6 +58,14 @@ $wgFeedbackTags = array(
 $wgFeedbackAge = 7 * 24 * 3600;
 # How long before stats page is updated?
 $wgFeedbackStatsAge = 2 * 3600; // 2 hours
+# Limit people from spamming the system
+# (uses count => seconds tuples)
+$wgRateLimits['feedback'] = array(
+	'newbie' => array( 5, 60 ), // for each recent (autoconfirmed) account; overrides 'user'
+	'user'   => null, // for each logged-in user
+	'ip'     => array( 5, 60 ), // for each anon and recent account
+	'subnet' => null, // ... with final octet removed
+);
 
 # URL location for readerfeedback.css and readerfeedback.js
 # Use a literal $wgScriptPath as a placeholder for the runtime value of $wgScriptPath

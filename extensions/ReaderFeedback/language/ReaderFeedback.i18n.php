@@ -34,6 +34,7 @@ $messages['en'] = array(
 	'readerfeedback-main'          => 'Only content pages can be rated.',
 	'readerfeedback-success'       => '\'\'\'Thank you for reviewing this page!\'\'\' ([$3 Comments or questions?]).',
 	'readerfeedback-voted'         => '\'\'\'It appears that you already rated this page\'\'\' ([$3 Comments or questions?]).',
+	'readerfeedback-error'         => '\'\'\'An error has occurred while rating this page\'\'\' ([$3 Comments or questions?]).',
 	'readerfeedback-submitting'    => 'Submitting …',
 	'readerfeedback-finished'      => 'Thank you!',
 	'readerfeedback-tagfilter'     => 'Tag:',
