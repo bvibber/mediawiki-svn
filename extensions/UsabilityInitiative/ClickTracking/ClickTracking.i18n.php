@@ -14,7 +14,19 @@ $messages = array();
 $messages['en'] = array(
 	'clicktracking' => 'Usability Initiative click tracking',
 	'clicktracking-desc' => 'Click tracking, intended for tracking events that do not cause a page refresh',
-	'clicktracking-title' => 'Aggregated user clicks'
+	'clicktracking-title' => 'Aggregated user clicks',
+	'event-name' => 'Event Name',
+	'expert-header' => '"Expert" clicks',
+	'intermediate-header' => '"Intermediate" clicks',
+	'beginner-header' => '"Beginner" clicks',
+	'total-header' => 'Total clicks',
+	'start-date' => 'Start Date (YYYYMMDD)', 
+	'end-date' => 'End Date (YYYYMMDD)',
+	'increment-by' =>'Number of days each data point represents', 
+	'change-graph' =>'Change Graph',
+	'beginner' => 'Beginner',
+	'intermediate' => 'Intermediate',
+	'expert' => 'Expert',
 );
 
 /** Message documentation (Message documentation)
@@ -22,6 +34,15 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'clicktracking-desc' => '{{desc}}',
+	'expert-header' => '"Expert" is a user-definable category, these will show the number of clicks that fall into that category',
+	'intermediate-header' => '"Intermediate" is a user-definable category, these will show the number of clicks that fall into that category',
+	'beginner-header' => '"Beginner" is a user-definable category, these will show the number of clicks that fall into that category',
+	'total-header' => 'total',
+	'start-date' => 'YYYYMMDD refers to the date format (4-digit year, 2-digit month, 2-digit day)', 
+	'end-date' => 'YYYYMMDD  refers to the date format (4-digit year, 2-digit month, 2-digit day)',
+	'beginner' => 'label for a user at beginner skill level',
+	'intermediate' => 'label for a user at intermediate skill level',
+	'expert' => 'label for a user at expert skill level',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
