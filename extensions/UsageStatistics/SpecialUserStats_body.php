@@ -1,31 +1,11 @@
 <?php
-class SpecialUserStats extends SpecialPage
-{
-	function SpecialUserStats() {
-		SpecialPage::SpecialPage( "SpecialUserStats" );
 
-		# the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
-		# so, to make this work with multiple versions of MediaWiki, let's load the messages nicely
-		if ( function_exists( 'wfLoadExtensionMessages' ) )
-			wfLoadExtensionMessages( 'UserStats' );
-		else
-			self::loadMessages();
+class SpecialUserStats extends SpecialPage {
 
-		return true;
-	}
+	function __construct() {
+		parent::__construct( 'SpecialUserStats' );
 
-	function loadMessages() {
-		static $messagesLoaded = false;
-		global $wgMessageCache;
-		if ( !$messagesLoaded ) {
-			$messagesLoaded = true;
-
-			require( dirname( __FILE__ ) . '/SpecialUserStats.i18n.php' );
-			foreach ( $messages as $lang => $langMessages ) {
-				$wgMessageCache->addMessages( $langMessages, $lang );
-			}
-		}
-		return true;
+		wfLoadExtensionMessages( 'UserStats' );
 	}
 
 	function execute( $par ) {
@@ -35,33 +15,34 @@ class SpecialUserStats extends SpecialPage
 		$wgOut->setPagetitle( wfMsg( 'usagestatistics' ) );
 
 		$user = $wgUser->getName();
-		$wgOut->addWikiText( wfMsg( 'usagestatisticsfor', $user ) );
+		$wgOut->addWikiMsg( 'usagestatisticsfor', $user );
 
 		$interval = $wgRequest->getVal( 'interval', '' );
+		$namespace = $wgRequest->getVal('namespace', '' );
+		$noredirects = $wgRequest->getCheck( 'noredirects' );
 		$type = $wgRequest->getVal( 'type', '' );
 		$start = $wgRequest->getVal( 'start', '' );
 		$end = $wgRequest->getVal( 'end', '' );
 
 		self::AddCalendarJavascript();
 
-		if ( $start == "" || $end == "" ) {
-			if ( $start == "" ) {
+		if ( $start == '' || $end == '' ) {
+			if ( $start == '' ) {
 				// FIXME: ideally this would use a class for markup.
 				$wgOut->addWikiText( '* <font color=red>' . wfMsg( 'usagestatisticsnostart' ) . '</font>' );
 			}
-			if ( $end == "" ) {
+			if ( $end == '' ) {
 				// FIXME: ideally this would use a class for markup.
 				$wgOut->addWikiText( '* <font color=red>' . wfMsg( 'usagestatisticsnoend' ) . '</font>' );
 			}
-			self::DisplayForm( $start, $end );
+			$this->displayForm( $start, $end, $namespace, $noredirects );
 		} else {
 			$db = wfGetDB( DB_SLAVE );
-			self::GetUserUsage( $db, $user, $start, $end, $interval, $type );
+			$this->getUserUsage( $db, $user, $start, $end, $interval, $namespace, $noredirects, $type );
 		}
 	}
 
-	function generate_google_chart( $dates, $edits, $pages )
-	{
+	function generate_google_chart( $dates, $edits, $pages ) {
 		$x_labels = 3;
 		$max_url = 2080; // this is a typical minimum limitation of many browsers
 
@@ -128,19 +109,28 @@ class SpecialUserStats extends SpecialPage
 		return $new_ary;
 	}
 
-	function GetUserUsage( $db, $user, $start, $end, $interval, $type ) {
-		global $wgOut, $wgUser, $wgUserStatsGlobalRight, $wgUserStatsGoogleCharts;
+	function getUserUsage( $db, $user, $start, $end, $interval, $namespace, $noredirects, $type ) {
+		global $wgOut, $wgUser, $wgUserStatsGlobalRight, $wgUserStatsGoogleCharts, $wgContLang;
 
-		list( $start_m, $start_d, $start_y ) = split( '/', $start );
+		list( $start_m, $start_d, $start_y ) = explode( '/', $start );
 		$start_t = mktime( 0, 0, 0, $start_m, $start_d, $start_y );
-		list( $end_m, $end_d, $end_y ) = split( '/', $end );
+		list( $end_m, $end_d, $end_y ) = explode( '/', $end );
 		$end_t = mktime( 0, 0, 0, $end_m, $end_d, $end_y );
 
 		if ( $start_t >= $end_t ) {
-			$wgOut->addHTML( wfMsg( 'usagestatisticsbadstartend' ) );
+			$wgOut->addWikiMsg( 'usagestatisticsbadstartend' );
 			return;
 		}
-
+		if ( $namespace != 'all' ) {
+			$nstext = $wgContLang->getNSText( $namespace );
+			$displayns = $nstext;
+			if ( $displayns == '' )
+					$displayns = wfMsg( 'blanknamespace' );
+			$wgOut->addWikiMsg( 'usagestatistics-namespace', $nstext, $displayns );
+		}
+		if ( $noredirects ) {
+			$wgOut->addWikiMsg( 'usagestatistics-noredirects' );
+		}
 		$dates = array();
 		$csv = 'Username,';
 		$cur_t = $start_t;
@@ -149,14 +139,21 @@ class SpecialUserStats extends SpecialPage
 			$dates[$a_date] = array();
 			$cur_t += $interval;
 		}
-
 		# Let's process the edits that are recorded in the database
 		$u = array();
-		$sql = "SELECT rev_user_text,rev_timestamp,page_id FROM " .
-			$db->tableName( 'page' ) . "," . $db->tableName( 'revision' ) .
-			" WHERE rev_page=page_id";
-
-		$res = $db->query( $sql, __METHOD__ );
+		$conds = array( 'rev_page=page_id' );
+		if ( $namespace == 'all' ) {
+			$conds['page_namespace'] = $namespace;
+		}
+		if ( $noredirects ) {
+			$conds['page_is_redirect'] = 0;
+		}
+		$res = $db->select(
+			array( 'page', 'revision' ),
+			array( 'rev_user_text', 'rev_timestamp', 'page_id' ),
+			$conds,
+			__METHOD__
+		);
 
 		for ( $j = 0; $j < $db->numRows( $res ); $j++ ) {
 			$row = $db->fetchRow( $res );
@@ -224,14 +221,11 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 		}
 		$gnuplot .= "e\n$gnuplot_pdata\ne</gnuplot>";
 
-		if ( $wgUserStatsGoogleCharts )
-		{
+		if ( $wgUserStatsGoogleCharts ) {
 			$wgOut->addHTML( '<img src="' .
 					self::generate_google_chart( $ary_dates, $ary_edits, $ary_pages ) .
 					'"/>' );
-		}
-		else
-		{
+		} else {
 			// print "@@@@@@@\n$gnuplot\n@@@@@@@\n";
 			$wgOut->addWikiText( "<center>$gnuplot</center>" );
 		}
@@ -240,7 +234,7 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 			return;
 
 		# plot overall usage statistics
-		$wgOut->addWikiText( wfMsg( 'usagestatisticsforallusers' ) );
+		$wgOut->addWikiMsg( 'usagestatisticsforallusers' );
 		$gnuplot = "<gnuplot>
 set xdata time
 set xtics rotate by 90
@@ -348,71 +342,88 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 
 		$wgOut->addHTML( '<div class="NavFrame" style="padding:0px;border-style:none;">' );
 		$wgOut->addHTML( '<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">' );
-		$wgOut->addWikiText( wfMsg ( 'usagestatistics-editindividual', $nature ) );
+		$wgOut->addWikiMsg ( 'usagestatistics-editindividual', $nature );
 		$wgOut->addHTML( '</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">' );
-		$wgOut->AddHtml( "<pre>$csv$csv_edits</pre></div></div><br />" );
+		$wgOut->addHTML( "<pre>$csv$csv_edits</pre></div></div><br />" );
 
 		$wgOut->addHTML( '<div class="NavFrame" style="padding:0px;border-style:none;">' );
 		$wgOut->addHTML( '<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">' );
-		$wgOut->addWikiText( wfMsg ( 'usagestatistics-editpages', $nature ) );
+		$wgOut->addWikiMsg ( 'usagestatistics-editpages', $nature );
 		$wgOut->addHTML( '</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">' );
-		$wgOut->AddHtml( "<pre>$csv$csv_pages</pre></div></div>" );
+		$wgOut->addHTML( "<pre>$csv$csv_pages</pre></div></div>" );
 
 		return;
 	}
 
-	function DisplayForm( $start, $end ) {
+	function displayForm( $start, $end, $namespace, $noredirects ) {
 		global $wgOut;
 
 		$wgOut->addHTML( "
-<script type='text/javascript'>document.write(getCalendarStyles());</SCRIPT>
-<form id=\"userstats\" method=\"post\">
-<table border='0'>
-<tr>
-  <td align='right'>" . wfMsg( 'usagestatisticsinterval' ) . ":</td>
-  <td align='left'>
-    <select name='interval'>
-      <option value='86400'>" . wfMsg( 'usagestatisticsintervalday' ) . "
-      <option value='604800'>" . wfMsg( 'usagestatisticsintervalweek' ) . "
-      <option value='2629744' selected>" . wfMsg( 'usagestatisticsintervalmonth' ) . "
-    </select>
-  </td>
-</tr>
-<tr>
-  <td align='right'>" . wfMsg( 'usagestatisticstype' ) . ":</td>
-  <td align='left'>
-    <select name='type'>
-      <option value='incremental'>" . wfMsg( 'usagestatisticsincremental' ) . "
-      <option value='cumulative' selected>" . wfMsg( 'usagestatisticscumulative' ) . "
-    </select>
-  </td>
-</tr>
-<tr>
-  <td align='right'>" . wfMsg( 'usagestatisticsstart' ) . ":</td>
-  <td align='left'>
+<script type='text/javascript'>document.write(getCalendarStyles());</script>
+<form id=\"userstats\" method=\"post\">");
+
+		$wgOut->addHTML(
+				Xml::openElement( 'table', array( 'border' => '0' ) ) .
+					Xml::openElement( 'tr' ) . 
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . Xml::label( wfMsg( 'usagestatisticsnamespace' ), 'namespace' ) . 
+						Xml::closeElement( 'td' ) . 			
+						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . 
+						Xml::namespaceSelector( $namespace, 'all' ) .			
+						Xml::closeElement( 'td' ) . 			
+					Xml::closeElement( 'tr' ) . 
+					Xml::openElement( 'tr' ) . 
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsinterval' ) . 
+						Xml::closeElement( 'td' ) . 			
+						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . 
+							Xml::openElement( 'select', array( 'name' => 'interval' ) ) . 
+							Xml::openElement( 'option', array( 'value' => '86400' ) ) . wfMsg( 'usagestatisticsintervalday' ) . 
+							Xml::openElement( 'option', array( 'value' => '604800' ) ) . wfMsg( 'usagestatisticsintervalweek' ) . 
+							Xml::openElement( 'option', array( 'value' => '2629744', 'selected' => 'selected' )) . wfMsg( 'usagestatisticsintervalmonth' ) . 
+						Xml::closeElement( 'select' ) . 			
+						Xml::closeElement( 'td' ) . 			
+					Xml::closeElement( 'tr' ) . 
+					Xml::openElement( 'tr' ) . 
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticstype' ) . Xml::closeElement( 'td' ) . 
+						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . 
+							Xml::openElement( 'select', array( 'name' => 'type' ) ) . 
+								Xml::openElement( 'option', array( 'value' => 'incremental' ) ) . wfMsg( 'usagestatisticsincremental' ) . 
+								Xml::openElement( 'option', array( 'value' => 'cumulative', 'selected' => 'selected' ) ) . wfMsg( 'usagestatisticscumulative' ) . 
+							Xml::closeElement( 'select' ) . 			
+						Xml::closeElement( 'td' ) . 			
+					Xml::closeElement( 'tr' ) .
+						Xml::openElement( 'tr' ) . 
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . Xml::label( wfMsg( 'usagestatisticsexcluderedirects' ), '' ) . Xml::closeElement( 'td' ) . 
+						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . 
+						Xml::check( 'noredirects', $noredirects ) . 			
+						Xml::closeElement( 'td' ) . 			
+					Xml::closeElement( 'tr' ) .
+					Xml::openElement( 'tr' ) . 
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsstart' ) . Xml::closeElement( 'td' ) . 
+"
+  <td class='mw-input'>
     <input type='text' size='20'  name='start' value='$start'/>
     <script type='text/javascript'>
       var cal1 = new CalendarPopup('testdiv1');
       cal1.showNavigationDropdowns();
-    </SCRIPT>
-    <A HREF='#' onClick=\"cal1.select(document.forms[0].start,'anchor1','MM/dd/yyyy'); return false;\" NAME='anchor1' ID='anchor1'>" . wfMsg( 'usagestatisticscalselect' ) . "</A>
-  </td>
-</tr>
-<tr>
-  <td align='right'>" . wfMsg( 'usagestatisticsend' ) . ":</td>
-  <td align='left'>
+    </script>
+    <a href='#' onClick=\"cal1.select(document.forms[0].start,'anchor1','MM/dd/yyyy'); return false;\" name='anchor1' id='anchor1'>" . wfMsg( 'usagestatisticscalselect' ) .
+					Xml::closeElement( 'a' ) . 	Xml::closeElement( 'td' ) . Xml::closeElement( 'tr' ) . 
+					Xml::openElement( 'tr' ) . 
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsend' ) . Xml::closeElement( 'td' ) . 
+"
+  <td class='mw-input'>
     <input type='text' size='20'  name='end' value='$end'/>
     <script type='text/javascript'>
       var cal2 = new CalendarPopup('testdiv1');
       cal2.showNavigationDropdowns();
-    </SCRIPT>
-    <A HREF='#' onClick=\"cal2.select(document.forms[0].end,'anchor2','MM/dd/yyyy'); return false;\" NAME='anchor2' ID='anchor2'>" . wfMsg( 'usagestatisticscalselect' ) . "</A>
-  </td>
-</tr>
-</table>
-<input type='submit' name=\"wpSend\" value=\"" . wfMsg( 'usagestatisticssubmit' ) . "\" />
-</form>
-<DIV ID=\"testdiv1\" STYLE=\"position:absolute;visibility:hidden;background-color:white;layer-background-color:white;\"></DIV>
+    </script>
+    <a href='#' onClick=\"cal2.select(document.forms[0].end,'anchor2','MM/dd/yyyy'); return false;\" name='anchor2' id='anchor2'>" . wfMsg( 'usagestatisticscalselect' ) .
+					Xml::closeElement( 'a' ) . Xml::closeElement( 'td' ) . Xml::closeElement( 'tr' ) . 		
+				Xml::closeElement( 'table' ) . 			"
+<input type='submit' name=\"wpSend\" value=\"" . wfMsg( 'usagestatisticssubmit' ) . "\" /> ".
+			Xml::closeElement( 'form' ) ."
+
+<div id=\"testdiv1\" style=\"position:absolute;visibility:hidden;background-color:white;layer-background-color:white;\"></div>
         " );
 	}
 

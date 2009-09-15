@@ -13,10 +13,14 @@ $messages['en'] = array(
 	'usagestatistics-desc'            => 'Show individual user and overall wiki usage statistics',
 	'usagestatisticsfor'              => '<h2>Usage statistics for [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers'      => '<h2>Usage statistics for all users</h2>',
-	'usagestatisticsinterval'         => 'Interval',
-	'usagestatisticstype'             => 'Type',
-	'usagestatisticsstart'            => 'Start date',
-	'usagestatisticsend'              => 'End date',
+	'usagestatisticsinterval'         => 'Interval:',
+	'usagestatisticsnamespace'		  => 'Namespace:',
+	'usagestatisticsexcluderedirects' => 'Exclude redirects',
+	'usagestatistics-namespace'       => 'These are statistics on the [[Special:Allpages/$1|$2]] namespace.',
+	'usagestatistics-noredirects'     => '[[Special:ListRedirects|Redirects]] are not taken into account.',
+	'usagestatisticstype'             => 'Type:',
+	'usagestatisticsstart'            => 'Start date:',
+	'usagestatisticsend'              => 'End date:',
 	'usagestatisticssubmit'           => 'Generate statistics',
 	'usagestatisticsnostart'          => 'Please specify a start date',
 	'usagestatisticsnoend'            => 'Please specify an end date',
@@ -386,7 +390,7 @@ $messages['ca'] = array(
 	'right-viewsystemstats' => "Veure [[Special:UserStats|estadístiques d'ús de la wiki]]",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (Arabic script) (کوردی (عەرەبی))
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
@@ -1385,7 +1389,7 @@ $messages['nl'] = array(
 	'right-viewsystemstats' => '[[Special:UserStats|Wikigebruiksstatistieken]] bekijken',
 );
 
-/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+/** Norwegian Nynorsk (Norsk (nynorsk))
  * @author Eirik
  * @author Frokor
  * @author Jon Harald Søby
@@ -1416,7 +1420,7 @@ $messages['nn'] = array(
 	'usagestatistics-editpages' => 'Sidestatistikk for $1',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål) (Norsk (bokmål))
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
@@ -2045,7 +2049,7 @@ $messages['vo'] = array(
 	'usagestatistics-editpages' => 'Padastatits tefü geban: $1',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (中文(简体))
  * @author Gaoxuewei
  */
 $messages['zh-hans'] = array(
@@ -2074,7 +2078,7 @@ $messages['zh-hans'] = array(
 	'usagestatistics-editpages' => '用户$1统计分析',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (中文(繁體))
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
