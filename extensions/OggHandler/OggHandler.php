@@ -7,6 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $oggDir = dirname(__FILE__);
 $wgAutoloadClasses['OggHandler'] = "$oggDir/OggHandler_body.php";
+
 $wgMediaHandlers['application/ogg'] = 'OggHandler';
 if ( !in_array( 'ogg', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'ogg';
@@ -17,7 +18,7 @@ if ( !in_array( 'ogv', $wgFileExtensions ) ) {
 if ( !in_array( 'oga', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'oga';
 }
-ini_set( 'include_path', 
+ini_set( 'include_path',
 	"$oggDir/PEAR/File_Ogg" .
 	PATH_SEPARATOR .
 	ini_get( 'include_path' ) );
@@ -29,6 +30,10 @@ $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
 $wgExtensionMessagesFiles['OggHandlerMagic'] = "$oggDir/OggHandler.i18n.magic.php";
 $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
 $wgHooks['LanguageGetMagic'][] = 'OggHandler::registerMagicWords';
+
+//setup a hook for iframe=true (will strip the interface and only output an iframe)
+$wgHooks['ArticleFromTitle'][] = 'OggHandler::iframeOutputHook';
+
 $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'OggHandler',
@@ -44,12 +49,15 @@ $wgExtensionCredits['media'][] = array(
 $wgOggVideoTypes = array( 'Theora' );
 $wgOggAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
 
-//if wgPlayerStats collection is enabled or not 
+//if wgPlayerStats collection is enabled or not
 $wgPlayerStatsCollection=false;
 
-//if $wgEnableJS2system = true  and the below variable is set to true 
-// then we can output the <video> tag and its re-written by mv_embed  
+//if $wgEnableJS2system = true  and the below variable is set to true
+// then we can output the <video> tag and its re-written by mv_embed
 $wgJs2VideoTagOut = true;
+
+//if we should enable iframe embedding of form ?title=File:name&iframe=true
+$wgEnableIframeEmbed = true;
 
 // Location of the FFmpeg binary
 $wgFFmpegLocation = '/usr/bin/ffmpeg';

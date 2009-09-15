@@ -196,8 +196,17 @@ class OggHandler extends MediaHandler {
 		//set up the default targetUrl:
 		$targetFileUrl = $file->getURL();
 
+
+		//add temporal request parameter if $wgEnableTemporalOggUrls is on:
+		if($wgEnableTemporalOggUrls && isset( $params['start'] ) ){
+			$targetFileUrl .= '?t=' . seconds2npt( $this->parseTimeString( $params['start'], $length ) );
+			if(isset( $params['end'] ) && $params['end'] )
+				$targetFileUrl.='/'. seconds2npt( $this->parseTimeString( $params['end'], $length) );
+		}
+
 		//check if $wgEnabledDerivatives is "set" and we have a target derivative set:
-		if (isset( $wgEnabledDerivatives ) && is_array( $wgEnabledDerivatives ) &&  count($wgEnabledDerivatives) != 0){
+		//(presently set by the wikiAtHome extension)
+		if (isset( $wgEnabledDerivatives ) && is_array( $wgEnabledDerivatives ) &&  count( $wgEnabledDerivatives ) != 0){
 			//get the encode key:
 			$encodeKey = WikiAtHome::getTargetDerivative( $width, $file );
 			if( $encodeKey == 'notransform'){
@@ -206,26 +215,19 @@ class OggHandler extends MediaHandler {
 				//get our job pointer
 				$wjm = WahJobManager::newFromFile( $file , $encodeKey );
 
-				$derivativePath = $file->getThumbPath( $wjm->getEncodeKey() );
 				$derivativeUrl = $file->getThumbUrl( $wjm->getEncodeKey() . '.ogg');
+				$derivativePath = $file->getThumbPath( $wjm->getEncodeKey() );
 
 				//check that we have the requested theora derivative
 				if( is_file ( "{$derivativePath}.ogg" )){
 					$targetFileUrl = $derivativeUrl;
 				}else{
-					//output our current progress
-					return new MediaQueueTransformOutput($file, $width, $height, $wjm->getDonePerc() );
+					//output in queue text (send the dstUrl if available )
+					return new MediaQueueTransformOutput($file, $dstUrl, $width, $height, $wjm->getDonePerc() );
 				}
 			}
 		}
 
-
-		//add temporal request parameter if $wgEnableTemporalOggUrls is on:
-		if($wgEnableTemporalOggUrls && isset( $params['start'] ) ){
-			$targetFileUrl .= '?t=' . seconds2npt( $params['start'] );
-			if(isset( $params['end'] ) && $params['end'] )
-				$targetFileUrl.='/'. seconds2npt( $params['end'] );
-		}
 
 		if ( !$noPlayer ) {
 			// Hack for miscellaneous callers
@@ -269,10 +271,14 @@ class OggHandler extends MediaHandler {
 			$thumbtime = $this->parseTimeString( $params['thumbtime'], $length );
 		}
 		if ( $thumbtime === false ) {
-			# Seek to midpoint by default, it tends to be more interesting than the start
-			$thumbtime = $length / 2;
+			//if start time param isset use that for the thumb:
+			if( isset( $params['start'] ) ){
+				$thumbtime = $this->parseTimeString( $params['start'], $length );
+			}else{
+				# Seek to midpoint by default, it tends to be more interesting than the start
+				$thumbtime = $length / 2;
+			}
 		}
-
 		wfMkdirParents( dirname( $dstPath ) );
 
 		wfDebug( "Creating video thumbnail at $dstPath\n" );
@@ -298,7 +304,7 @@ class OggHandler extends MediaHandler {
 			wfEscapeShellArg( $dstPath ) . ' 2>&1';
 			$retval = 0;
 			$returnText = wfShellExec( $cmd, $retval );
-                }
+        }
 
 		if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
 			#No mapping, time zero. A last ditch attempt.
@@ -326,6 +332,8 @@ class OggHandler extends MediaHandler {
 				return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
 			}
 		}
+
+
 		return new OggVideoDisplay( $file, $targetFileUrl, $dstUrl, $width, $height, $length, $dstPath );
 	}
 
@@ -550,6 +558,23 @@ EOT
 			$instance->setHeaders( $outputPage );
 		}
 	}
+	//checks if we have an iframe requested (outputs a iframe version of the player for remote embedding)
+	static function iframeOutputHook( &$title, &$article, $doOutput = true ) {
+		global $wgTitle, $wgRequest, $wgOut, $wgEnableIframeEmbed;
+		if( !$wgEnableIframeEmbed )
+			return true; //continue normal if iframes are "off" (maybe throw a warning in the future)
+
+		//make sure we are in the right namespace and iframe=true was called:
+		if(	$wgTitle->getNamespace() == NS_FILE  &&
+			$wgRequest->getVal('iframe') == 'true' &&
+			$wgEnableIframeEmbed &&
+			$doOutput ){
+				output_iframe_page( $title );
+				exit();
+				return false;
+		}
+		return true;
+	}
 }
 
 class OggTransformOutput extends MediaTransformOutput {
@@ -758,6 +783,63 @@ class OggAudioDisplay extends OggTransformOutput {
 	}
 }
 /*utility functions*/
+
+/*
+ * outputs a minimal iframe for remote embedding (with mv_embed loaded via the script-loader if enabled)
+ */
+function output_iframe_page( $title ) {
+	global $wgEnableIframeEmbed, $wgEnableTemporalOggUrls, $wgOut, $wgUser,
+		$wgEnableScriptLoader;
+
+	if(!$wgEnableIframeEmbed){
+		throw new MWException( __METHOD__ .' is not enabled' );
+		return false;
+	}
+
+	//safe grab the input vars is set:
+	//check for start end if temporal urls are enabled:
+	if( $wgEnableTemporalOggUrls ){
+		$videoParam[ 'start' ] 	= ( isset( $_GET['starttime'] ) ) ? $_GET['starttime']: '';
+		$videoParam[ 'end' ]	= ( isset( $_GET['endtime'] ) ) ? $_GET['endtime']: '';
+	}
+
+	$videoParam['width'] 	=  ( isset( $_GET['width'] )  ) ? intval( $_GET['width'] ) 	: '400';
+	$videoParam['height'] 	=  ( isset( $_GET['height'] ) ) ? intval( $_GET['height'] ) : '300';
+
+	//build the html output:
+	$file = wfFindFile( $title );
+	$thumb = $file->transform( $videoParam );
+	$out = new OutputPage();
+	$file->getHandler()->setHeaders( $out );
+	$out->addCoreScripts2Top();
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title> iframe embed </title>
+	<style type="text/css">
+		body {
+			margin-left: 0px;
+			margin-top: 0px;
+			margin-right: 0px;
+			margin-bottom: 0px;
+		}
+	</style>
+		<?php
+			//similar to $out->headElement (but without css)
+			echo $wgUser->getSkin()->getHeadScripts( $out );
+			echo $out->getHeadLinks();
+			echo $out->getHeadItems();
+		?>
+	</head>
+	<body>
+		<?php echo $thumb->toHtml(); ?>
+	</body>
+	</html>
+<?php
+}
 /*
  * takes seconds duration and return hh:mm:ss time
  */
