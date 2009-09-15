@@ -23,10 +23,6 @@ if( !defined('MEDIAWIKI') ) {
 	exit( 1 );
 }
 
-# Number of recent reviews to be a decent sample size
-if( !defined('READER_FEEDBACK_SIZE') )
-	define('READER_FEEDBACK_SIZE',15);
-
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Reader Feedback',
@@ -56,6 +52,9 @@ $wgFeedbackTags = array(
 );
 # How many seconds back should the average rating for a page be based on?
 $wgFeedbackAge = 7 * 24 * 3600;
+# What number of page votes (for the average above) is considered significant?
+# (number of recent reviews to be a decent sample size)
+$wgFeedbackSizeThreshhold = 15;
 # How long before stats page is updated?
 $wgFeedbackStatsAge = 2 * 3600; // 2 hours
 # Limit people from spamming the system

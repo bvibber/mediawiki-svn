@@ -43,6 +43,11 @@ class ReaderFeedback {
 		return self::$feedbackTagWeight[$tag];
 	}
 	
+	public static function getFeedbackSize() {
+		global $wgFeedbackSizeThreshhold;
+		return (int)$wgFeedbackSizeThreshhold;
+	}
+	
 	################# Utility functions #################
 
 	/**

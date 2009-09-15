@@ -122,7 +122,7 @@ class ProblemPagesPager extends AlphabeticPager {
 		$x = 2;
 		$conds[] = "rfp_ave_val < $x";
 		// Reasonable sample
-		$conds[] = 'rfp_count >= '.READER_FEEDBACK_SIZE;
+		$conds[] = 'rfp_count >= '.ReaderFeedback::getFeedbackSize();
 		return array(
 			'tables' => array('reader_feedback_pages','page'),
 			'fields' => 'page_namespace,page_title,page_len,rfp_ave_val',
