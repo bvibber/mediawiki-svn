@@ -716,14 +716,14 @@ js2AddOnloadHook( function() {
 				</tr><tr>\
 					<td><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label></td>\
 					<td><input type="text" id="edittoolbar-link-int-text" /></td>\
-				</table></fieldset></form></div>\
+				</table></fieldset><input type="submit" style="display: none;" /></form></div>\
 				<div id="edittoolbar-link-dialog-tab-ext"><form><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label></td>\
 					<td><input type="text" id="edittoolbar-link-ext-target" /></td>\
 				</tr><tr>\
 					<td><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label></td>\
 					<td><input type="text" id="edittoolbar-link-ext-text" /></td>\
-				</table></fieldset></form></div>\
+				</table></fieldset><input type="submit" style="display: none;" /></form></div>\
 			</div>',
 		init: function() {
 			// Updates the UI to show if the page title being inputed by the user exists or not
@@ -787,6 +787,15 @@ js2AddOnloadHook( function() {
 			// Set labels of tabs based on rel values
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+			});
+			// Assign the proper action to the hidden submit buttons
+			// triggered when the user presses Enter
+			$j(this).find( 'form' ).submit( function( e ) {
+				e.preventDefault();
+				$j(this)
+					.closest( '.ui-dialog' )
+					.find( 'button:first' )
+					.click();
 			});
 			// Build tabs
 			$j( '#edittoolbar-link-tabs' ).tabs();
@@ -1022,10 +1031,19 @@ js2AddOnloadHook( function() {
 				<td class="label"><label for="edittoolbar-table-dimensions-rows"\
 					rel="edittoolbar-tool-table-dimensions-rows"></label></td>\
 				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="2" /></td>\
-			</tr></table></fieldset></form>',
+			</tr></table></fieldset><input type="submit" style="display: none;" /></form>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+			});
+			// Assign the proper action to the hidden submit buttons
+			// triggered when the user presses Enter
+			$j(this).find( 'form' ).submit( function( e ) {
+				e.preventDefault();
+				$j(this)
+					.closest( '.ui-dialog' )
+					.find( 'button:first' )
+					.click();
 			});
 			$j( '#edittoolbar-table-dimensions-rows' ).val( 2 );
 			$j( '#edittoolbar-table-dimensions-columns' ).val( 2 );
@@ -1093,10 +1111,19 @@ js2AddOnloadHook( function() {
 			</tr><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-all" /></td>\
 				<td><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></td>\
-			</tr></table></fieldset></form>',
+			</tr></table></fieldset><input type="submit" style="display: none;" /></form>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+			});
+			// Assign the proper action to the hidden submit buttons
+			// triggered when the user presses Enter
+			$j(this).find( 'form' ).submit( function( e ) {
+				e.preventDefault();
+				$j(this)
+					.closest( '.ui-dialog' )
+					.find( 'button:first' )
+					.click();
 			});
 		},
 		dialog: {
