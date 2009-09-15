@@ -240,20 +240,6 @@ class ReaderFeedback {
 		$html .= '</tr></table>';
 		return $html;
 	}
-
-	/**
-	 * Get JS script params for onloading
-	 */
-	public static function getJSTagParams() {
-		self::load();
-		# Param to pass to JS function to know if tags are at quality level
-		$tagsJS = array();
-		foreach( self::$dimensions as $tag => $x ) {
-			$tagsJS[$tag] = self::$minQL[$tag];
-		}
-		$params = array( 'tags' => (object)$tagsJS );
-		return Xml::encodeJsVar( (object)$params );
-	}
 	
 	/**
 	 * Get JS script params for onloading
@@ -267,4 +253,3 @@ class ReaderFeedback {
 	}
 
 }
-
