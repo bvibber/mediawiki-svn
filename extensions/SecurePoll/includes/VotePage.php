@@ -242,6 +242,8 @@ class SecurePoll_VotePage extends SecurePoll_Page {
 			Xml::openElement( 'form', array( 'action' => $url, 'method' => 'post' ) ) .
 			Xml::hidden( 'token', SecurePoll_RemoteMWAuth::encodeToken( $wgUser->getToken() ) ) .
 			Xml::hidden( 'id', $wgUser->getId() ) .
+			Xml::hidden( 'site', $GLOBALS['site'] ) .
+			Xml::hidden( 'lang', $GLOBALS['lang'] ) .
 			Xml::submitButton( wfMsg( 'securepoll-jump' ) ) .
 			'</form>'
 		);
