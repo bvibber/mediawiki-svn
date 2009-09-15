@@ -1115,6 +1115,7 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author SMP
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'edittoolbar' => "Editant la barra d'eines",
@@ -1177,11 +1178,9 @@ $messages['ca'] = array(
 	'edittoolbar-tool-table-title' => 'Insereix taula',
 	'edittoolbar-tool-table-dimensions-rows' => 'Files',
 	'edittoolbar-tool-table-dimensions-columns' => 'Columnes',
-	'edittoolbar-tool-table-dimensions-headerrows' => "Files d'encapçalament",
-	'edittoolbar-tool-table-dimensions-headercolumns' => "Columnes d'encapçalament",
 	'edittoolbar-tool-table-insert' => 'Insereix',
 	'edittoolbar-tool-table-cancel' => 'Canceŀla',
-	'edittoolbar-tool-replace' => 'Reemplaça',
+	'edittoolbar-tool-replace' => 'Cerca i reemplaça',
 	'edittoolbar-tool-replace-title' => 'Cerca i reemplaça',
 	'edittoolbar-tool-replace-search' => 'Cerca:',
 	'edittoolbar-tool-replace-replace' => 'Reemplaça per:',
@@ -1189,7 +1188,7 @@ $messages['ca'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tracta la cadena de cerca com una expressió regular',
 	'edittoolbar-tool-replace-all' => 'Reemplaça totes les coincidències',
 	'edittoolbar-tool-replace-button' => 'Reemplaça',
-	'edittoolbar-tool-replace-close' => 'Tanca',
+	'edittoolbar-tool-replace-close' => 'Anul·la',
 	'edittoolbar-tool-replace-nomatch' => 'La vostra cerca no ha trobat cap coincidència.',
 	'edittoolbar-section-characters' => 'Caràcters especials',
 	'edittoolbar-characters-page-latin' => 'Llatí',
@@ -2193,6 +2192,7 @@ $messages['eo'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Malvalida titolo',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kontrolante ekziston de paĝo...',
 	'edittoolbar-tool-link-int-invalid' => 'La titolo kiun vi enmetis estas malvalida.',
+	'edittoolbar-tool-link-ext-invalid' => 'La URL-o kiun vi enigis estas malvalida.',
 	'edittoolbar-tool-file' => 'Enmetata dosiero',
 	'edittoolbar-tool-file-example' => 'Ekzemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referenco',
@@ -2236,7 +2236,7 @@ $messages['eo'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Inkluzivi titolan vicon',
 	'edittoolbar-tool-table-insert' => 'Enmeti',
 	'edittoolbar-tool-table-cancel' => 'Nuligi',
-	'edittoolbar-tool-replace' => 'Anstataŭigi',
+	'edittoolbar-tool-replace' => 'Serĉi kaj anstataŭigi',
 	'edittoolbar-tool-replace-title' => 'Serĉi kaj anstataŭigi',
 	'edittoolbar-tool-replace-search' => 'Serĉi:',
 	'edittoolbar-tool-replace-replace' => 'Anstataŭigi kun:',
@@ -2244,7 +2244,7 @@ $messages['eo'] = array(
 	'edittoolbar-tool-replace-regex' => 'Trakti signoĉenon kiel regularan esprimon',
 	'edittoolbar-tool-replace-all' => 'Anstataŭigi ĉiujn aperojn',
 	'edittoolbar-tool-replace-button' => 'Anstataŭigi',
-	'edittoolbar-tool-replace-close' => 'Fermi',
+	'edittoolbar-tool-replace-close' => 'Nuligi',
 	'edittoolbar-tool-replace-nomatch' => 'Via serĉo trafis nenion.',
 	'edittoolbar-section-characters' => 'Specialaj signoj',
 	'edittoolbar-characters-page-latin' => 'Latina',
@@ -9177,6 +9177,12 @@ $messages['vep'] = array(
 	'edittoolbar-tool-link-cancel' => 'Heitta',
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Vär nimi',
 	'edittoolbar-tool-file' => 'Mülütadud fail',
+	'edittoolbar-group-list' => 'Nimikirjutez',
+	'edittoolbar-tool-ulist-example' => 'Markiruidud nimikirjutez',
+	'edittoolbar-tool-olist' => 'Nomeroitud nimikirjutez',
+	'edittoolbar-group-size' => 'Suruz',
+	'edittoolbar-tool-big' => "Sur'",
+	'edittoolbar-tool-big-example' => 'Järed tekst',
 	'edittoolbar-tool-small' => "Pen'",
 	'edittoolbar-tool-small-example' => "Pen' tekst",
 	'edittoolbar-group-insert' => 'Ližata',
@@ -9184,6 +9190,7 @@ $messages['vep'] = array(
 	'edittoolbar-tool-newline' => "Uz' rivi",
 	'edittoolbar-tool-table-title' => 'Ližada tablut',
 	'edittoolbar-tool-table-dimensions' => 'Suruz',
+	'edittoolbar-tool-table-dimensions-rows' => 'Rivid',
 	'edittoolbar-tool-table-insert' => 'Ližata',
 	'edittoolbar-tool-table-cancel' => 'Heitta',
 	'edittoolbar-tool-replace-close' => 'Heitta',
@@ -9198,6 +9205,8 @@ $messages['vep'] = array(
 	'edittoolbar-characters-page-telugu' => 'Telugu',
 	'edittoolbar-section-help' => 'Abu',
 	'edittoolbar-help-page-link' => 'Kosketused',
+	'edittoolbar-help-page-list' => 'Nimikirjutesed',
+	'edittoolbar-help-page-file' => 'Failad',
 	'edittoolbar-help-content-bold-description' => 'Lihavoitud',
 	'edittoolbar-help-content-bold-syntax' => "'''Lihavoitud tekst'''",
 	'edittoolbar-help-content-ilink-description' => 'Südäikosketuz',
@@ -9207,6 +9216,10 @@ $messages['vep'] = array(
 	'edittoolbar-help-content-heading3-syntax' => '=== Pälkirjutesen tekst ===',
 	'edittoolbar-help-content-heading4-syntax' => '==== Pälkirjutesen tekst ====',
 	'edittoolbar-help-content-heading5-syntax' => '===== Pälkirjutesen tekst =====',
+	'edittoolbar-help-content-ulist-description' => 'Markiruidud nimikirjutez',
+	'edittoolbar-help-content-olist-description' => 'Nomeroitud nimikirjutez',
+	'edittoolbar-help-content-file-description' => 'Mülütadud fail',
+	'edittoolbar-help-content-signature-description' => 'Allekirjutez',
 );
 
 /** Vietnamese (Tiếng Việt)

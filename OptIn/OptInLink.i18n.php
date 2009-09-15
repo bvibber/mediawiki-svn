@@ -445,7 +445,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'optin-try' => 'Probéiert Beta aus',
-	'tooltip-pt-optin-try' => 'Probéiert  déi nei Fonctionalitéiten aus',
+	'tooltip-pt-optin-try' => 'Probéiert déi nei Fonctionalitéiten aus',
 	'optin-leave' => 'Beta verloossen',
 	'tooltip-pt-optin-leave' => 'Schalt déi nei Fonctionalitéiten aus',
 	'optin-feedback' => 'Gitt eis Är Meenung',
@@ -749,6 +749,8 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'optin-try' => 'Kodvi bata',
+	'tooltip-pt-optin-try' => 'Kodvgat uded voindad',
+	'optin-leave' => 'Lähtta Betaspäi',
 );
 
 /** Vietnamese (Tiếng Việt)

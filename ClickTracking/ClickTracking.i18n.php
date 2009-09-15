@@ -47,12 +47,25 @@ $messages['qqq'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'clicktracking' => 'Сачэньне за націскамі кампутарнай мышшу ў межах ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня',
 	'clicktracking-desc' => 'Сачэньне за націскамі кампутарнай мышшу, прызначанае для сачэньня за здарэньнямі, якія не вядуць да абнаўленьня старонкі',
 	'clicktracking-title' => 'Групаваныя націскі кнопак мышы ўдзельнікам',
+	'event-name' => 'Назва падзеі',
+	'expert-header' => 'Націскі мышшу для «Экспэрта»',
+	'intermediate-header' => 'Націскі мышшу для «Сярэдняга»',
+	'beginner-header' => 'Націскі мышшу для «Пачынаючага»',
+	'total-header' => 'Усяго націскаў мышшу',
+	'start-date' => 'Дата пачатку (ГГГГММДзДз)',
+	'end-date' => 'Дата сканчэньня (ГГГГММДзДз)',
+	'increment-by' => 'Колькасьць дзён, якія адлюстроўваюцца ў кожным пункце зьвестак',
+	'change-graph' => 'Зьмяніць графік',
+	'beginner' => 'Пачынаючы',
+	'intermediate' => 'Сярэдні',
+	'expert' => 'Экспэрт',
 );
 
 /** Breton (Brezhoneg)
@@ -71,6 +84,18 @@ $messages['bs'] = array(
 	'clicktracking' => 'Praćenje klikova u Inicijativi upotrebljivosti',
 	'clicktracking-desc' => 'Praćenje klikova, napravljeno za praćenje događaja koji ne proizvode osvježavanje stanice',
 	'clicktracking-title' => 'Sveukupni klikovi korisnika',
+	'event-name' => 'Naziv događaja',
+	'expert-header' => "''Stručnjački'' klikovi",
+	'intermediate-header' => "''Napredni'' klikovi",
+	'beginner-header' => "''Početnički'' klikovi",
+	'total-header' => 'Ukupno klikova',
+	'start-date' => 'Početni datum (YYYYMMDD)',
+	'end-date' => 'Završni datum (YYYYMMDD)',
+	'increment-by' => 'Broj dana koje svaka tačka podataka predstavlja',
+	'change-graph' => 'Promijeni grafikon',
+	'beginner' => 'Početnik',
+	'intermediate' => 'Napredni',
+	'expert' => 'Stručnjak',
 );
 
 /** Czech (Česky)
@@ -98,6 +123,18 @@ $messages['dsb'] = array(
 	'clicktracking' => 'Kliknjeńske pśeslědowanje iniciatiwy wužywajobnosći',
 	'clicktracking-desc' => 'Kliknjeńske pśeslědowanje, myslone za slědowanje tšojenjow, kótarež njezawinuju aktualizaciju boka',
 	'clicktracking-title' => 'Nakopjone wužywarske kliknjenja',
+	'event-name' => 'Mě tšojenja',
+	'expert-header' => 'Kliknjenja "ekspertow"',
+	'intermediate-header' => 'Kliknjenja "pókšacanych"',
+	'beginner-header' => 'Kliknjenja "zachopjeńkarjow"',
+	'total-header' => 'Kliknjenja dogromady',
+	'start-date' => 'Zachopny datum (YYYYMMDD)',
+	'end-date' => 'Kóńcny datum (YYYYMMDD)',
+	'increment-by' => 'Licba dnjow, kótaruž kuždy datowy dypk reprezentěrujo',
+	'change-graph' => 'Grafisku liniju změniś',
+	'beginner' => 'Zachopjeńkaŕ',
+	'intermediate' => 'Pókšacony',
+	'expert' => 'Ekspert',
 );
 
 /** Greek (Ελληνικά)
@@ -108,6 +145,12 @@ $messages['el'] = array(
 	'clicktracking' => 'Πατήστε παρακολούθηση της Πρωτοβουλίας Χρηστικότητας',
 	'clicktracking-desc' => 'Πατήστε παρακολούθηση, προορίζεται για την παρακολούθηση εκδηλώσεων που δεν προκαλούν ανανέωση σελίδας',
 	'clicktracking-title' => 'Συναθροισμένα κλικ χρήστη',
+	'expert-header' => 'Κλικ "ειδικοί"',
+	'intermediate-header' => 'Κλικ "μέτριοι"',
+	'beginner-header' => 'Κλικ "αρχάριοι"',
+	'beginner' => 'Αρχάριος',
+	'intermediate' => 'Μέτριος',
+	'expert' => 'Ειδικός',
 );
 
 /** Esperanto (Esperanto)
@@ -115,13 +158,19 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'clicktracking-desc' => 'Sekvado de klakoj, por sekvi klakeventojn kiu ne kaŭzas paĝan refreŝigon',
+	'start-date' => 'Komenca Dato (JJJJMMTT)',
+	'end-date' => 'Fina Dato (JJJJMMTT)',
 );
 
 /** Spanish (Español)
  * @author Antur
+ * @author Crazymadlover
  */
 $messages['es'] = array(
 	'clicktracking-title' => 'Clicks de usuario agregados',
+	'beginner' => 'Principiante',
+	'intermediate' => 'Intemedio',
+	'expert' => 'Experto',
 );
 
 /** Finnish (Suomi)
@@ -139,6 +188,18 @@ $messages['fr'] = array(
 	'clicktracking' => "Suivi de clics de l'initiative d'utilisabilité",
 	'clicktracking-desc' => 'Suivi de clics, visant à traquer les événements qui ne causent pas un rechargement de page',
 	'clicktracking-title' => "Agrégation des clics d'utilisateurs",
+	'event-name' => "Nom de l'événement",
+	'expert-header' => 'Clics « experts »',
+	'intermediate-header' => 'Clics « intermédiaires »',
+	'beginner-header' => 'Clics « débutants »',
+	'total-header' => 'Total des clics',
+	'start-date' => 'Date de début (AAAAMMJJ)',
+	'end-date' => 'Date de fin (AAAAMMJJ)',
+	'increment-by' => 'Nombre de jours que représente chaque point de donnée',
+	'change-graph' => 'Graphe de change',
+	'beginner' => 'Débutant',
+	'intermediate' => 'Intermédiaire',
+	'expert' => 'Expert',
 );
 
 /** Galician (Galego)
@@ -148,6 +209,18 @@ $messages['gl'] = array(
 	'clicktracking' => 'Seguimento dos clics da Iniciativa de usabilidade',
 	'clicktracking-desc' => 'Seguimento dos clics, co obxectivo de seguir os acontecementos que non causan unha actualización da páxina',
 	'clicktracking-title' => 'Clics de usuario engadidos',
+	'event-name' => 'Nome do evento',
+	'expert-header' => 'Clics "expertos"',
+	'intermediate-header' => 'Clics "intermedios"',
+	'beginner-header' => 'Clics "principiantes"',
+	'total-header' => 'Total de clics',
+	'start-date' => 'Data de inicio (AAAAMMDD)',
+	'end-date' => 'Data de fin (AAAAMMDD)',
+	'increment-by' => 'Número de días que representa cada punto de datos',
+	'change-graph' => 'Gráfica de cambio',
+	'beginner' => 'Principiante',
+	'intermediate' => 'Intermedio',
+	'expert' => 'Experto',
 );
 
 /** Swiss German (Alemannisch)
@@ -157,6 +230,18 @@ $messages['gsw'] = array(
 	'clicktracking' => 'D Klickverfolgig vu dr Benutzerfrejndligkeits-Initiative',
 	'clicktracking-desc' => 'Klickverfolgig, fir Aktione, wu kei Syteaktualisierig verursache',
 	'clicktracking-title' => 'Zämmegfassti Benutzerklicks',
+	'event-name' => 'Ereignis',
+	'expert-header' => '„Experte“-Klicks',
+	'intermediate-header' => 'Klicks vu „Mittlere“',
+	'beginner-header' => '„Aafänger“-Klicks',
+	'total-header' => 'Klicks insgsamt',
+	'start-date' => 'Startdatum (JJJJMMTT)',
+	'end-date' => 'Änddatum (JJJJMMTT)',
+	'increment-by' => 'Aazahl vu Täg, wu ne jede Punkt derfir stoht',
+	'change-graph' => 'Abbildig ändere',
+	'beginner' => 'Aafänger',
+	'intermediate' => 'Mittlere',
+	'expert' => 'Expert',
 );
 
 /** Croatian (Hrvatski)
@@ -174,6 +259,18 @@ $messages['hsb'] = array(
 	'clicktracking' => 'Kliknjenske přesćěhanje iniciatiwy wužiwajomnosće',
 	'clicktracking-desc' => 'Kliknjenske přesćěhanje, myslene za přesćěhowanje podawkow, kotrež aktualizaciju strony njezawinuja',
 	'clicktracking-title' => 'Nahromadźene wužiwarske kliknjenja',
+	'event-name' => 'Mjenp podawka',
+	'expert-header' => 'Kliknjenja "ekspertow"',
+	'intermediate-header' => 'Kliknjenja "pokročenych"',
+	'beginner-header' => 'Kliknjenja "započatkarjow"',
+	'total-header' => 'Kliknjenja dohromady',
+	'start-date' => 'Spočatny datum (YYYYMMDD)',
+	'end-date' => 'Kónčny datum (YYYYMMDD)',
+	'increment-by' => 'Ličba dnjow, kotruž kóždy datowy dypk reprezentuje',
+	'change-graph' => 'Grafisku liniju změnić',
+	'beginner' => 'Započatkar',
+	'intermediate' => 'Pokročeny',
+	'expert' => 'Ekspert',
 );
 
 /** Hungarian (Magyar)
@@ -213,6 +310,18 @@ $messages['ja'] = array(
 	'clicktracking' => 'Usability Initiative クリック追跡',
 	'clicktracking-desc' => 'クリック追跡：ページの再描画を引き起こさないイベントを追跡記録する機能',
 	'clicktracking-title' => '利用者によるクリックの総計',
+	'event-name' => 'イベント名',
+	'expert-header' => '「上級者」のクリック数',
+	'intermediate-header' => '「中級者」のクリック数',
+	'beginner-header' => '「初級者」のクリック数',
+	'total-header' => 'クリック回数合計',
+	'start-date' => '開始日 (YYYYMMDD)',
+	'end-date' => '終了日 (YYYYMMDD)',
+	'increment-by' => '各データ点が表す日数',
+	'change-graph' => 'グラフ変更',
+	'beginner' => '初級者',
+	'intermediate' => '中級者',
+	'expert' => '上級者',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -229,8 +338,20 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'clicktracking' => 'Benotzerfrëndlechkeetsinitiative Suivi vun de Klicken',
-	'clicktracking-desc' => "Suivi vun de Clicken, fir déi Aktiounen z'erfaassen déi net zu engem neie Llueden vun der Säit féieren",
+	'clicktracking-desc' => "Suivi vun de Klicken, fir déi Aktiounen z'erfaassen déi net zu engem neie Luede vun der Säit féieren",
 	'clicktracking-title' => 'Vun de Benotzer gemaachte Klicken',
+	'event-name' => 'Numm vum Evenement',
+	'expert-header' => '"Expert"-Klicken',
+	'intermediate-header' => '"Duerschnëtt"-Klicken',
+	'beginner-header' => '"Ufänker"-Klicken',
+	'total-header' => 'Total vun de Klicken',
+	'start-date' => 'Ufanksdatum (YYYYMMDD)',
+	'end-date' => 'Schlussdatum (YYYYMMDD)',
+	'increment-by' => 'Zuel vun Deeg déi vun all Datepunkt duergestallt ginn',
+	'change-graph' => 'Ännerungs-Grafik',
+	'beginner' => 'Ufänger',
+	'intermediate' => 'Dertëschent',
+	'expert' => 'Expert',
 );
 
 /** Macedonian (Македонски)
@@ -256,6 +377,18 @@ $messages['nl'] = array(
 	'clicktracking' => 'Klikvolgen voor het Bruikbaarheidsinitiatief',
 	'clicktracking-desc' => 'Klikvolgen voor het volgens van handelingen die niet het oproepen van een nieuwe pagina tot gevolg hebben',
 	'clicktracking-title' => 'Samengevoegde gebruikerskliks',
+	'event-name' => 'Gebeurtenis',
+	'expert-header' => '"Expert"-kliks',
+	'intermediate-header' => '"Gemiddeld"-kliks',
+	'beginner-header' => '"Beginner"-kliks',
+	'total-header' => 'Kliktotaal',
+	'start-date' => 'Startdatum (JJJJMMDD)',
+	'end-date' => 'Einddatum (JJJJMMDD)',
+	'increment-by' => 'Aantal dagen dat ieder punt representeert',
+	'change-graph' => 'Grafiek wijzigen',
+	'beginner' => 'Beginner',
+	'intermediate' => 'Gemiddeld',
+	'expert' => 'Expert',
 );
 
 /** Occitan (Occitan)
@@ -282,6 +415,18 @@ $messages['pms'] = array(
 	'clicktracking' => "Trassadura dij click ëd l'Usability Initiative",
 	'clicktracking-desc' => "Trassadura dij click, për trassé dj'event cha a causo pa ël refresh ëd na pàgina",
 	'clicktracking-title' => "Click agregà dl'utent",
+	'event-name' => "Nòm ëd l'event",
+	'expert-header' => 'Click d\'"Espert"',
+	'intermediate-header' => 'Click dj\'"antërmedi"',
+	'beginner-header' => 'Click ëd "prinsipiant"',
+	'total-header' => 'Click totaj',
+	'start-date' => 'Data ëd partensa (AAAAMMDD)',
+	'end-date' => 'Data ëd fin (AAAAMMDD)',
+	'increment-by' => 'Nùmer ëd di che minca pont a arpresenta',
+	'change-graph' => 'Cambia ël graf',
+	'beginner' => 'Prinsipiant',
+	'intermediate' => 'Antërmedi',
+	'expert' => 'Espert',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -300,6 +445,18 @@ $messages['ru'] = array(
 	'clicktracking' => 'Отслеживание нажатий в рамках Инициативы юзабилити',
 	'clicktracking-desc' => 'Отслеживание нажатий. Предназначается для отслеживания событий, не приводящих к обновлению страницы',
 	'clicktracking-title' => 'Собранные щелчки участников',
+	'event-name' => 'Название события',
+	'expert-header' => 'Нажатия «экспертов»',
+	'intermediate-header' => 'Нажатия «средних участников»',
+	'beginner-header' => 'Нажатия «новичков»',
+	'total-header' => 'Всего нажатий',
+	'start-date' => 'Дата начала (ГГГГММДД)',
+	'end-date' => 'Дата окончания (ГГГГММДД)',
+	'increment-by' => 'Количество дней, которое представляет каждая точка данных',
+	'change-graph' => 'Измененить график',
+	'beginner' => 'Новичок',
+	'intermediate' => 'Средний участник',
+	'expert' => 'Эксперт',
 );
 
 /** Yakut (Саха тыла)
@@ -343,6 +500,14 @@ $messages['vec'] = array(
 	'clicktracking' => "Traciamento click de l'Inissiativa par l'Usabilità",
 	'clicktracking-desc' => 'Traciamento dei click, par traciare i eventi che no provoca mia un refresh de la pagina.',
 	'clicktracking-title' => 'Agregassion dei clic dei utenti',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'beginner' => 'Augotai',
+	'expert' => 'Ekspert',
 );
 
 /** Vietnamese (Tiếng Việt)
