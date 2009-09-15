@@ -425,8 +425,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'fundraiserportal' => 'Adománygyűjtési portál',
 	'fundraiserportal-plain-button' => 'Támogasd a Wikipédiát!',
 	'fundraiserportal-ruby-button' => 'Adakozz most!',
 	'fundraiserportal-rubytext-button' => 'Adakozz most!',

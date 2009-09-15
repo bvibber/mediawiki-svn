@@ -3219,11 +3219,12 @@ Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odde
 	'deletequeue-case-needs-review' => 'Hee dä Fall moß [[$1|nohjeloort wääde]].',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'deletequeue-list-search' => 'Hwila',
+	'deletequeue-list-search' => 'Whila',
 	'deletequeue-list-anyqueue' => '(vydh)',
 	'deletequeue-case-page' => 'Folen:',
 );

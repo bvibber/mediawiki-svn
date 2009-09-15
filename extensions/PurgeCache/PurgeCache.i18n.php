@@ -135,6 +135,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'purgecache' => 'Εκκαθάριση λανθάνουσας μνήμης',
+	'purgecache-desc' => '[[Special:PurgeCache|Ειδική σελίδα]] που χρησιμοποιείται για την εκκαθάριση του πίνακα OBJECTCACHE',
 	'purgecache-warning' => 'Αυτό θα εκκαθαρίσει τη λανθάνουσα μνήμη των πινάκων.',
 	'purgecache-purged' => 'Η λανθάνουσα μνήμη έχει εκκαθαριστεί.',
 	'purgecache-button' => 'Εκκαθάριση',

@@ -266,7 +266,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'usabilityinitiative' => "Initiativ fir d'Benotzerfrëndlechkeet",
-	'usabilityinitiative-desc' => "Fonctinnalitéiten déi vun der Wikipedia Benotzerfrëndlechkeets-Initiative entwécklet goufe fir d'Benotzerfrëndleckeetvu MediWiki ze verbesseren",
+	'usabilityinitiative-desc' => "Fonctinnalitéiten déi vun der Wikipedia Benotzerfrëndlechkeets-Initiative entwéckelt goufe fir d'Benotzerfrëndleckeet vu MediaWiki ze verbesseren",
 );
 
 /** Lithuanian (Lietuvių)
@@ -421,6 +421,14 @@ $messages['tr'] = array(
 $messages['vec'] = array(
 	'usabilityinitiative' => "Inissiativa par l'Usabilità",
 	'usabilityinitiative-desc' => "Carateristiche svilupà da l'Inissiativa par l'Usabilità de Wikipedia par mejorar l'usabilità de MediaWiki",
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'usabilityinitiative' => 'Kävutamižen Iniciativ',
+	'usabilityinitiative-desc' => 'MediaWikin likutimen voindad, kudambad sätihe Wikipedia Usability Initiative, miše paremboita MediaWikin rad.',
 );
 
 /** Vietnamese (Tiếng Việt)

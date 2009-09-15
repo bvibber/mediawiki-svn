@@ -631,12 +631,16 @@ Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'spamdifftool' => 'Spam-feketelista kezelése',
 	'spamdifftool_cantedit' => 'Sajnáljuk, de nincs jogosultságod szerkeszteni a spam-feketelistát.',
 	'spamdifftool_notext' => "Nincs hozzáadandó szöveg a spam feketelistához.
 Kattints <a href='$1'>ide</a> a folytatáshoz.",
+	'spamdifftool_summary' => 'Hozzáadás a spam-feketelistához',
 	'spamdifftool_no_urls_detected' => "Nem találtam URL-t.
 Kattints <a href='$1'>ide</a> a visszatéréshez.",
+	'spamdifftool_spam_link_text' => 'hozzáadás a spamekhez',
 	'spamdifftool_option_none' => 'semmi',
+	'spamdifftool_block' => 'Blokkolás:',
 	'spamdifftool_submit_buttom' => 'Küldés',
 );
 
@@ -1062,6 +1066,27 @@ Kliknij <a href='$1'>tutaj</a>, żeby wrócić do poprzedniej strony.",
  */
 $messages['pms'] = array(
 	'spamdifftool' => 'Gëstiss la blacklist dë spam',
+	'spamdifftool-desc' => 'A dà na manera base ëd gionté neuve intrade a la blacklist dë spam da pàgine diferente',
+	'spamdifftool_cantedit' => "Spasent - it l'has pa ël përmess ëd modifiché la blacklist dë spam.",
+	'spamdifftool_notext' => "A-i é pa ëd test da gionté a la blacklist dë spam.
+Sgnaca <a href='$1'>here</a> për continué.",
+	'spamdifftool_confirm' => "Conferma ch'it veule gionté ste intrade-sì a la blacklist dë spam.
+(Sgnaca <a href='$1' target='new'>sì</a> për arporté un problema.)",
+	'spamdifftool_summary' => 'Gionté a la blacklist dë spam.',
+	'spamdifftool_urls_detected' => "Le URL sota a son ëstàite trovà ant le modìfiche.
+Cola i veule gionté a la blacklist dë spam?
+Ste opsion-sì a son ordinà da la pì restritiva a la meno restritiva, bloché l'inter domini a blocherà tùit ij colegament a minca còsa rivanta da col domini.
+
+Sicurte ëd pa bloché inter domini che a òspito cont utent, com blogspot.com, geocities.com, etc.",
+	'spamdifftool_no_urls_detected' => "Pa gnun-e URL a son ëstàite trovà.
+Sgaca <a href='$1'>sì</a>  për artorné.",
+	'spamdifftool_spam_link_text' => 'gionta a spam',
+	'spamdifftool_option_domain' => 'tut da sto domini-sì',
+	'spamdifftool_option_subdomain' => 'tut da sto sotdomini-sì',
+	'spamdifftool_option_directory' => 'sto sotdomini e directory-sì',
+	'spamdifftool_option_none' => 'gnente',
+	'spamdifftool_block' => 'Blòca:',
+	'spamdifftool_submit_buttom' => 'Spediss',
 );
 
 /** Pashto (پښتو)

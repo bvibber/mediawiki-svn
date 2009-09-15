@@ -207,6 +207,13 @@ $messages['hsb'] = array(
 	'rightfunctions-ns' => '(ze škita mjenoweho ruma)',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'rightfunctions-local' => '(helyi lapról)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

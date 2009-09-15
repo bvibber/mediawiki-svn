@@ -241,6 +241,13 @@ $messages['hsb'] = array(
 	'stalkerlog-log-text' => 'To je protokol přizjewjenjow a wotzjewjenjow wužiwarja.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'stalkerlog-log-text' => 'A szerkesztők be- és kijelentkezéseinek naplója.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

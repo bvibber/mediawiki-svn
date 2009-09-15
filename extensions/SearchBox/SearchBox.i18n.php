@@ -191,9 +191,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'searchbox-desc' => 'Να επιτρέπεται η συμπερίληψη φορμών αναζήτησης',
 	'searchbox-search' => 'Αναζήτηση',
 	'searchbox-go' => 'Πήγαινε',
 	'searchbox-namespaces' => 'Περιοχές ονομάτων:',

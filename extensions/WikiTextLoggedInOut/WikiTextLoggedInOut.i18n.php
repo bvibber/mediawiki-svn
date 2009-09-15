@@ -391,6 +391,13 @@ $messages['vec'] = array(
 	'wikitextloggedinout-desc' => "Dó hook del parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> par far védar testi difarenti a seconda del stato de login de l'utente",
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'wikitextloggedinout-desc' => "Kaks' parseran petläd (<tt>&lt;loggedin&gt;</tt> da <tt>&lt;loggedout&gt;</tt>), miše ozutada erazvuittušt tekstad; se rippui sišpäi, om-ik kävutai tulnu sistemha",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -1396,8 +1396,8 @@ $messages['ru'] = array(
 	'prefstats-factor-twoweeks' => 'две недели',
 	'prefstats-factor-fourweeks' => 'четыре недели',
 	'prefstats-factor-default' => 'назад к масштабу по умолчанию',
-	'prefstats-legend-out' => 'Отключиться',
-	'prefstats-legend-in' => 'Включиться',
+	'prefstats-legend-out' => 'Подключились',
+	'prefstats-legend-in' => 'Подключились',
 );
 
 /** Yakut (Саха тыла)
@@ -1645,10 +1645,13 @@ Strucando su de una te vedi le so statìsteghe.',
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'prefstats-factor-hour' => 'čas',
+	'prefstats-factor-sixhours' => "kuz' časud",
 	'prefstats-factor-day' => 'päiv',
 	'prefstats-factor-week' => "nedal'",
 	'prefstats-factor-twoweeks' => "kaks' nedalid",
 	'prefstats-factor-fourweeks' => "nell' nedalid",
+	'prefstats-factor-default' => 'tagaze masštabannoks augotižjärgendusen mödhe',
 );
 
 /** Vietnamese (Tiếng Việt)

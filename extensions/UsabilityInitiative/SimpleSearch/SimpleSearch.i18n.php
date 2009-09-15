@@ -162,6 +162,7 @@ $messages['eo'] = array(
 	'simplesearch' => 'Simpla serĉo',
 	'simplesearch-desc' => 'Aldonas pluan funkciadon al la simpligita serĉo de Vector.',
 	'simplesearch-search' => 'Serĉi',
+	'simplesearch-containing' => 'enhavas...',
 );
 
 /** Spanish (Español)
@@ -675,7 +676,9 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'simplesearch' => 'Järgeline ecind',
+	'simplesearch-desc' => 'Ližadab enambad funkcionaližust Vektoran järgeližhe ecindha',
 	'simplesearch-search' => 'Ectä',
+	'simplesearch-containing' => 'mülütajad...',
 );
 
 /** Vietnamese (Tiếng Việt)

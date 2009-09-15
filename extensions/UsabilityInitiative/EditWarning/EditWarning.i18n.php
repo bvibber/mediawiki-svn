@@ -636,6 +636,13 @@ Te poli disabilitar sto aviso in te la sezion "{{int:prefs-editing}} de le to pr
 	'editwarning-preference' => 'Dime se sto lassando na pagina de modifica sensa aver salvà',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'editwarning' => 'Redaktiruida varutuz',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

@@ -260,6 +260,13 @@ $messages['hsb'] = array(
 	'multiboilerplate-special-define-in-interface' => 'Tekstowe elementy so w [[MediaWiki:Multiboilerplate]] definuja.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'multiboilerplate-submit' => 'Betöltés',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

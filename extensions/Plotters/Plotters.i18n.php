@@ -312,6 +312,13 @@ Tutón přehlad dodawa lochki přistup na strony systemowych zdźělenkow, kotre
 	'plotters-errors' => '{{PLURAL:$1|Ploterowy zmylk|Ploterowej zmylkaj|Ploterowe zmylki|Ploterowe zmylki}}:',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'plotters-no-data' => 'Nem volt adat megadva.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

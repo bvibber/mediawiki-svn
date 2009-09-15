@@ -322,6 +322,14 @@ $messages['hsb'] = array(
 	'uos-title' => 'Distribucija hódnotow wužiwarskeje opcije $1',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'uos-unknown' => '*Alapértelmezett',
+	'uos-other' => '*Egyéb',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

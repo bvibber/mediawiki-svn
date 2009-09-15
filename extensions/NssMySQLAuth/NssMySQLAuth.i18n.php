@@ -464,6 +464,14 @@ $messages['hsb'] = array(
 	'nss-db-error' => 'Zmylk při čitanju z awtentifikaciskeje datoweje banki',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'nss-rights' => 'jogosultságok',
+	'nss-no-mail' => 'Ne küldjön e-mailt',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

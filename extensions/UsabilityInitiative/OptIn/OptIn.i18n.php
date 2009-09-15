@@ -1813,6 +1813,20 @@ $messages['he'] = array(
 	'optin-survey-answer-changes-other' => 'אחר:',
 );
 
+/** Hindi (हिन्दी)
+ * @author आलोक
+ */
+$messages['hi'] = array(
+	'optin-accept-short' => 'चलो करते हैं!',
+	'optin-deny-short' => 'नहीं, शुक्रिया',
+	'optin-survey-yes' => 'हाँ',
+	'optin-survey-no' => 'नहीं',
+	'optin-survey-question-browser' => 'आप कौन से विचरक का इस्तेमाल करते हैं?',
+	'optin-survey-answer-browser-other' => 'अन्य विचरक।',
+	'optin-survey-question-os' => 'आपक कौन सी प्रचालन प्रणाली का इस्तेमाल करते हैं?',
+	'optin-survey-answer-os-other' => 'अन्य प्रचालन प्रणाली:',
+);
+
 /** Croatian (Hrvatski)
  * @author Suradnik13
  */
@@ -2739,7 +2753,7 @@ $messages['lb'] = array(
 	'optin-intro' => "D'Benotzerfrëndlechkeets-Initiative vu Wikipedia huet vill geschafft fir d'Benotzerfrëndlechkeet vu Wikipedia ze verbesseren.
 Wëllt Dir Beta ausprobéieren?",
 	'optin-feedback-intro' => 'Merci datt Dir Beta ausprobéiert hutt.
-Mir wëlle wëssen wat Dir vun dem neien Interface halt, dofir wiere mir frou wann Dir bei der fräiwëlleger Ëmfro hei ënnedrënner matmaache géift.',
+Mir wëlle wësse wat Dir vun dem neien Interface halt, dofir wiere mir frou wann Dir bei der fräiwëlleger Ëmfro hei ënnedrënner matmaache géift.',
 	'optin-feedback-back' => "Wann Dir d'Ëmfro net ausfëlle wëllt, da kënnt dir op $1 zréckgoen.",
 	'optin-success-in' => 'Dir probéiert elo Beta aus.
 Dir kënnt dës zu jidder Zäit nees ausschalten andeem datt Dir op de Link  "{{int:optin-leave}}"  uewen um Ecran klickt.',
@@ -2759,7 +2773,7 @@ Dir kënnt dës zu jidder Zäit nees aschalten andeem datt Dir op de Link "{{int
 	'optin-survey-intro' => 'Merci datt Dir Beta ausprobéiert.
 Mir wiere frou fir ze wëssen wat Dir vun deem neien Interface denkt, dofir wiere mir frou wann Dir déi fräiwëlleg Ëmfro hei ënnendrënner géift ausfëllen ier Dir op "[[#leave|{{int:optin-submit-out}}]]" klickt.',
 	'optin-survey-question-likedislike' => 'Wat hutt dir bäi Beta gutt finnt? Wat huet Iech u Beta net gefall?',
-	'optin-survey-question-whyoptout' => 'Firwat Verloost Dir dës Beta? (wielt w.e.g. alles aus wat zoutrëfft)',
+	'optin-survey-question-whyoptout' => 'Firwat verloost Dir dës Beta? (wielt w.e.g. alles aus wat zoutrëfft)',
 	'optin-survey-answer-whyoptout-hard' => 'Et war ze komplizéiert fir ze benotzen.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Et huet net richteg fonctionnéiert.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Et huet net esou fonctionnéiert wéi virgesinn.',
@@ -4734,6 +4748,9 @@ Grassie e sperémo che ne riva presto qualche to messagio!',
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'optin-title-optedout' => 'Kodvi Betad',
+	'optin-title-optedin' => 'Lähtta Betaspäi',
+	'optin-title-justoptedin' => 'Tulgat tervhin Betaha!',
 	'optin-accept-short' => 'Tehkam se!',
 	'optin-survey-yes' => 'Ka',
 	'optin-survey-no' => 'Ei',

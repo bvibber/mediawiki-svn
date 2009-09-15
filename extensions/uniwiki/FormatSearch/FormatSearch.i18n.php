@@ -403,6 +403,13 @@ $messages['uk'] = array(
 	'formatsearch-desc' => 'Упорядковує сторінку видачі результатів пошуку',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'formatsearch-desc' => "Puhtastab ecmižen rezul'tatoiden lehtpol't",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

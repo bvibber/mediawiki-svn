@@ -167,6 +167,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'msfunc_desc' => 'Μία συλλογή μαθηματικών και στατιστικών συναρτήσεων',
 	'msfunc_div_zero' => 'Διαίρεση διά του μηδενός',
 );
 

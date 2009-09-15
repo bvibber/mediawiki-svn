@@ -4564,6 +4564,21 @@ $messages['ru'] = array(
 	'viewapc-usercache-cleared' => "'''''Кеш приложений очищен.'''''",
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'viewapc' => 'APC туһунан',
+	'viewapc-desc' => 'MediaWiki-га [[Special:ViewAPC|APC кээһин көрүү уонна кинини салайыы]]',
+	'right-apc' => '[[Special:ViewAPC|ViewAPC]] туох баар кыахтарын толору туһаныы',
+	'viewapc-apc-not-available' => 'Кээс туһунан туох да суруллубатах.
+Арааһа үлэлээбэт быһыылаах.',
+	'viewapc-clear-confirm' => 'Кээһи ыраастаары гынаҕын дуо?',
+	'viewapc-clear-user-cache' => 'Кээһи ыраастааһын',
+	'viewapc-clear-code-cache' => 'Opcode кээһин ыраастааһын',
+	'viewapc-mode-stats' => 'Статистикатын көрүү',
+);
+
 /** Sicilian (Sicilianu)
  * @author Melos
  */

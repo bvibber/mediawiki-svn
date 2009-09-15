@@ -938,11 +938,12 @@ Mer kann jetz dat [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} Ungerschr
 	'createsigndoc-error-alreadycreated' => 'De Ongerschreffte-Mapp för de Sigg „$1“ es ald aanjelaat.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'createsigndoc-introtext' => 'Kommendyans:',
+	'createsigndoc-introtext' => 'Comendyans:',
 );
 
 /** Latin (Latina)

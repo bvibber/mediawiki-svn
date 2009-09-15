@@ -164,9 +164,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'pageby-desc' => 'Δείχνει τους συνεισφέροντες σε γραμμή σε μία βικισελίδα χρησιμοποιώντας την ετικέτα <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Η σελίδα δημιουργήθηκε από τον $1, $2',
 	'pageby-last' => 'Τελευταία <a href="$3">επεξεργασία</a> από $1, $2',
 	'pageby-contributors' => 'Συνεισφέροντες:',

@@ -157,10 +157,14 @@ Konto nowego wužywarja, $2, jo se załožyło $4 na $3 .',
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'newusernotifsubj' => 'Νέα ειδοποίηση χρήστη για τον $1',
+	'newusernotifbody' => 'Γεια $1,
+
+Ένας νέος λογαριασμός, $2, δημιουργήθηκε στο $3 στις $4.',
 );
 
 /** Esperanto (Esperanto)

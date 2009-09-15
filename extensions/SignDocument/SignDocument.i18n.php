@@ -243,6 +243,13 @@ $messages['hsb'] = array(
 	'right-createsigndocument' => 'Dokumenty wutworić, kotrež hodźa so podpisać',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'signaturelogpage' => 'Aláírások naplója',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

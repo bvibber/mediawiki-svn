@@ -200,12 +200,17 @@ $messages['ca'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'adminlinks' => "Cysylltau'r gweinyddwyr",
+	'adminlinks_documentation' => 'gwybodaeth am $1',
 	'adminlinks_general' => 'Cyffredinol',
 	'adminlinks_editsidebar' => "Golygu'r panel llywio",
+	'adminlinks_editcss' => "Golygu'r ffeil CSS",
 	'adminlinks_editmainpagename' => "Golygu enw'r hafan",
 	'adminlinks_users' => 'Defnyddwyr',
 	'adminlinks_createuser' => 'Creu cyfrif defnyddiwr',
+	'adminlinks_browsesearch' => 'Pori a chwilio',
 	'adminlinks_importexport' => 'Mewnforio ac allforio',
+	'right-adminlinks' => "Gallu gweld y cyswllt at [[Special:AdminLinks|Cysylltau'r gweinyddwyr]]",
 );
 
 /** Danish (Dansk)

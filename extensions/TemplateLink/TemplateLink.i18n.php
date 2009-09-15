@@ -247,6 +247,14 @@ $messages['ht'] = array(
 	'templatelink_newtitle' => '$1 (mete paj sa anndan yon lòt paj)',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'templatelink' => 'Sablonhivatkozás',
+	'templatelink_empty' => 'Meg kell adnod egy paramétert.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

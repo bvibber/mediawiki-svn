@@ -112,6 +112,13 @@ $messages['hsb'] = array(
 	'semanticinternalobjects-desc' => 'Nastajenje internych objektow w Semantic MediaWiki',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'semanticinternalobjects-desc' => 'Belső objektumok beállítása a szemantikus MediaWikiben',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -450,6 +450,13 @@ $messages['uk'] = array(
 	'woopra-desc' => 'Дозволяє [http://www.woopra.com/ Woopra Live Tracking Software] працювати з вашою MediaWiki-інсталяцією',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'woopra-desc' => 'Laskeb [http://www.woopra.com/ Woopra Live Tracking Software]-le rata teiden MediaWikin installäcijan täht',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

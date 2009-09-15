@@ -2546,6 +2546,14 @@ $messages['ru'] = array(
 	'math_WrongFontEncodingWithHint' => 'Символ «$1» не может использоваться в кодировке шрифта «$2» (попробуйте использовать команду «$3{...}»)',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'math_noblahtex' => 'blahtex-ы сатаан ыытар кыах суох, манна баар буолуон сөп: $1',
+	'math-desc' => '&lt;math&gt; тиэги MathML таһаарыы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

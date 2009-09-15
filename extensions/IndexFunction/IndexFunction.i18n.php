@@ -666,6 +666,13 @@ Voer de eerste paar letters in en druk op de verzendknop om te zoeken naar pagin
 Klik op de pijl om alle onder die paginaam geïndexeerde pagina's weer te geven.",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Simny
+ */
+$messages['no'] = array(
+	'index-search' => 'Søk:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

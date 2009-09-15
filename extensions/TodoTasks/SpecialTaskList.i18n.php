@@ -589,6 +589,15 @@ Zo by swoju dospołnu lisćinu nadawkow widźał, dźi k %s.
 Twój přećelny zdźělenski system %s.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'tasklist' => 'Feladatlista',
+	'tasklistunknownproject' => 'Ismeretlen projekt',
+	'tasklistprojdisp' => 'Megjelenítés',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

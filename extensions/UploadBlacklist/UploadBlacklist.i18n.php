@@ -298,6 +298,13 @@ $messages['vec'] = array(
 	'uploadblacklist-desc' => 'Zonta na funsionalità de lista nera par i caricamenti',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'uploadblacklist-desc' => 'Ližadab jügutoitandan mustan nimikirjutesen kävutamižen voindan',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

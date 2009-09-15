@@ -400,6 +400,14 @@ $messages['hsb'] = array(
 	'wah-loading' => 'Začitanje powjercha Wik@Home <blink> ... </blink>',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'wah-long-general' => '(médiafájl, hossza: $2, bitsűrűsége: $3)',
+	'wah-transcode-fail' => 'A fájl átkódolása meghiúsult.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -618,6 +626,21 @@ Możesz pomóc w przekodowywaniu wideo, odwiedzając stronę [[Special:WikiAtHom
  */
 $messages['pms'] = array(
 	'wah-desc' => "A abìlita dij job ëd distribussion ëd video transcoding a client ch'a dòvro Firefogg",
+	'wah-user-desc' => 'Wiki@Home a përmëtt a member ëd la comunità ëd doné dla potensa CPU për giuté con arzorse dle operassion intensive',
+	'wah-short-audio' => '$1 file ëd son, $2',
+	'wah-short-video' => '$1 file ëd video, $2',
+	'wah-short-general' => '$1 file multimoien, $2',
+	'wah-long-audio' => '($1 file ëd son, lunghëssa $2, $3)',
+	'wah-long-video' => '($1 file ëd video, lunghëssa $2, $4x$5 pixel, $3)',
+	'wah-long-multiplexed' => '(file audio/video multiplexà, $1, lunghëssa $2, $4×$5 pixel, $3 an tut)',
+	'wah-long-general' => '(file multimoien, lunghëssa $2, $3)',
+	'wah-long-error' => '(ffmpeg a peul pa lese sto file-sì: $1)',
+	'wah-transcode-working' => "Sto video-sì a l'é stàit tratà, për piasì preuva pì tard",
+	'wah-transcode-helpout' => "Ë clip a l'é fàit al $1 për sent.
+It peule giuté a trascodifiché sto video-sì an visitand [[Special:WikiAtHome|Wiki@Home]]",
+	'wah-transcode-fail' => "Sto file-sì a l'é pa podusse trascodifiché.",
+	'wah-javascript-off' => 'It deuve avèj JavaScript abilità për partessipé an Wiki@Home',
+	'wah-loading' => "carié l'antërfassa ëd Wiki@Home <blink>...</blink>",
 );
 
 /** Brazilian Portuguese (Português do Brasil)

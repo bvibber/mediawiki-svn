@@ -2093,6 +2093,7 @@ Pšosym napóraj jen abo změń jen, aby wužywał rozšyrjenje.',
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'configure' => 'Διαμόρφωση του βίκι',
 	'configure-desc-group' => 'Ομάδα',
 	'configure-desc-key' => 'Κλειδί',
 	'configure-desc-ns' => 'Περιοχή ονομάτων',
@@ -2100,9 +2101,12 @@ $messages['el'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Επεκτάσεις',
 	'configure-ext-settings' => 'Ρυθμίσεις',
+	'configure-ext-use-extension' => 'Χρήση αυτής της επέκτασης',
 	'configure-ext-use' => 'Χρήση',
+	'configure-form-reason' => 'Αιτία για την αλλαγή:',
 	'configure-arrayinput-oneperline' => "''(ένα ανά γραμμή)''",
 	'configure-btn-save' => 'Αποθήκευση ρυθμίσεων',
+	'configure-js-group-exists' => 'Σφάλμα: αυτή η ομάδα υπάρχει ήδη.',
 	'configure-js-prompt-group' => 'Εισάγετε το όνομα της νέας ομάδας:',
 	'configure-js-remove' => 'Διαγραφή',
 	'configure-js-biglist-show' => '[προβολή λεπτομερειών]',
@@ -2112,6 +2116,7 @@ $messages['el'] = array(
 	'configure-js-search-prompt' => 'Αίτημα:',
 	'configure-old' => 'Παλιές εκδόσεις',
 	'configure-old-changes' => 'αλλαγές',
+	'configure-old-summary' => '$1 από $2 $4 $3',
 	'configure-section-features' => 'Χαρακτηριστικά',
 	'configure-section-pages' => 'Σελίδες',
 	'configure-section-paths' => 'Διαδρομές',
@@ -2127,9 +2132,14 @@ $messages['el'] = array(
 	'configure-section-category' => 'Κατηγορίες',
 	'configure-section-cache' => 'Λανθάνουσα μνήμη',
 	'configure-section-pcache' => 'Λανθάνουσα λεξιαναλυτή',
+	'configure-section-messagecache' => 'Λανθάνουσα μηνυμάτων',
 	'configure-section-access' => 'Πρόσβαση',
 	'configure-section-groups' => 'Ομάδες',
+	'configure-section-rates' => 'Όρια ρυθμού',
+	'configure-section-proxy' => 'Υποχρεωτικοί διακομιστές',
+	'configure-section-cookie' => 'Cookies',
 	'configure-section-upload' => 'Επιφόρτωση',
+	'configure-section-sharedupload' => 'Καταμερισμένη επιφόρτωση',
 	'configure-section-mime' => 'Τύποι MIME',
 	'configure-section-images' => 'Αρχεία',
 	'configure-section-antivirus' => 'Αντι-ιικό',
@@ -2160,6 +2170,7 @@ $messages['el'] = array(
 	'configure-throttle-action-rollback' => 'Επαναφορά',
 	'configure-throttle-action-emailuser' => 'Αποστολή μέιλ',
 	'configure-throttle-group-anon' => 'Όλοι οι ανώνυμοι χρήστες',
+	'configure-throttle-count' => 'Επιτρεπόμενες ενέργειες:',
 	'configure-throttle-summary' => '$1 ενέργειες σε $2 δευτερόλεπτα.',
 	'configure-throttle-group' => 'Τύπος',
 	'configure-throttle-limit' => 'Όριο',
@@ -5217,13 +5228,14 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-farmer-extensions-list' => 'De [[Special:Extensions|Projramm-Zohsäz för dat Wiki hee opleßte]]',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'configure-section-pages' => 'Folennow',
-	'configure-section-upload' => 'Ughkarga',
-	'configure-section-search' => 'Hwilas',
+	'configure-section-pages' => 'Folednow',
+	'configure-section-upload' => 'Ughcarga',
+	'configure-section-search' => 'Whilas',
 	'configure-throttle-action-edit' => 'Chanjya',
 );
 

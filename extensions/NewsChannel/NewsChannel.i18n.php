@@ -161,10 +161,12 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'newschannel' => 'Κανάλι νέων',
+	'newschannel-desc' => 'Υλοποεί ένα κανάλι νέων ως μία δυναμική [[Special:NewsChannel|ειδική σελίδα]]',
 	'newschannel_format' => 'Μορφή:',
 	'newschannel_limit' => 'Όριο:',
 	'newschannel_include_category' => 'Πρόσθετη κατηγορία:',
@@ -300,6 +302,14 @@ $messages['hsb'] = array(
 	'newschannel_include_category' => 'Přidatna kategorija:',
 	'newschannel_exclude_category' => 'Kategoriju wuzamknyć:',
 	'newschannel_submit_button' => 'Kanal wutworić',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'newschannel_format' => 'Formátum:',
+	'newschannel_submit_button' => 'Hírcsatorna készítése',
 );
 
 /** Interlingua (Interlingua)

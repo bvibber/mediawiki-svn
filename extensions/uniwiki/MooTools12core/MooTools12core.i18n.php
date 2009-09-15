@@ -379,6 +379,13 @@ $messages['tr'] = array(
 	'mootools12core-desc' => 'Her sayfaya [http://mootools.net mootools-1.2-core-yc.js], kompakt bir JavaScript çerçevesi, ekler',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'mootools12core-desc' => 'Ližadab kaikuččele lehtpolele kompaktižen JavaScript-karkasan [http://mootools.net mootools-1.2-core-yc.js]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

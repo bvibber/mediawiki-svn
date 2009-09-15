@@ -1617,11 +1617,12 @@ Bes jet jedoldesch.',
 	'youtubeauthsub_jserror_nodesc' => 'Don dä Viddejo winneßtens med enem Satz udder zwei beschrieve, söns weet dat nix, hee.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'youtubeauthsub_category' => 'Klass',
+	'youtubeauthsub_category' => 'Class',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -200,11 +200,13 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'randomincategory' => 'Τυχαία σελίδα στην κατηγορία',
 	'randomincategory-toolbox' => 'Τυχαία σελίδα',
+	'randomincategory-nocategory' => 'Η κατηγορία $1 δεν υπάρχει ή είναι άδεια',
 	'randomincategory-label' => 'Κατηγορία:',
 	'randomincategory-submit' => 'Πήγαινε',
 );

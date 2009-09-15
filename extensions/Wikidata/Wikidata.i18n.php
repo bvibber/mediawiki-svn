@@ -3417,9 +3417,11 @@ Mesedez ikus [[{{MediaWiki:Ow editing policy url}}|gure aldatzeko arauak]].',
 	'ow_transaction_rollback_button' => 'Desegin',
 	'ow_transaction_rollback_header' => 'Desegin',
 	'ow_transaction_no_action' => 'Ezer ez egin',
+	'ow_transaction_previous_version' => 'Aurreko bertsioa',
 	'ow_transaction_restore' => 'Leheneratu',
 	'ow_transaction_remove' => 'Kendu',
 	'ow_transaction_is_latest' => 'Azkena da',
+	'ow_transaction_object' => 'Objektua',
 	'ow_transaction_summary' => 'Laburpena',
 	'ow_conceptmapping_no_action_specified' => '"$1" ekintza ez da onartzen.',
 	'ow_dm_OK' => 'Ondo',
@@ -5182,6 +5184,7 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 /** Hungarian (Magyar)
  * @author Bdamokos
  * @author Dani
+ * @author Glanthor Reviol
  * @author Gondnok
  */
 $messages['hu'] = array(
@@ -5244,6 +5247,7 @@ $messages['hu'] = array(
 	'ow_copy_help' => 'Egy nap, lehet hogy segítünk neked.',
 	'ow_please_proved_dmid' => 'Úgy tűnik, hiányzik egy „?dmid=<ID>” (dmid= Defined Meaning ID, definiált jelentés azonosító) abból, amit megadtál.<br />
 Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
+	'ow_upload' => 'Feltöltés',
 );
 
 /** Interlingua (Interlingua)

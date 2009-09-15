@@ -332,6 +332,14 @@ $messages['hsb'] = array(
 	'interwikilist-prefix' => 'Prefiks interwiki:',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'interwikilist-target' => 'Cél URL',
+	'interwikilist-filter' => 'Szűrők listája',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

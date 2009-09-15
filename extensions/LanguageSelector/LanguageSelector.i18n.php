@@ -213,10 +213,12 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'languageselector' => 'Γλώσσα',
+	'languageselector-desc' => 'Επιλογέας γλώσσας σε κάθε σελίδα, το ίδιο και για τους επισκέπτες',
 	'languageselector-setlang' => 'ρύθμιση',
 );
 

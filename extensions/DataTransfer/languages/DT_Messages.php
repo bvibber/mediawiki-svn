@@ -1002,11 +1002,12 @@ $messages['ksh'] = array(
 	'right-datatransferimport' => 'Daate empoteere',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'dt_viewxml_categories' => 'Klasyansow',
+	'dt_viewxml_categories' => 'Classys',
 	'dt_xml_page' => 'Folen',
 );
 

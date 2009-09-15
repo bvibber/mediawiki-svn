@@ -361,6 +361,13 @@ $messages['tl'] = array(
 	'javascript-desc' => 'Nagdaragdag ng uniwiki.js sa bawat pahinang naglalaman ng kodigong JavaScript na pinagsasaluhan sa pagitan ng mga karugtong na pang-Uniwiki',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'javascript-desc' => 'Ližadab uniwiki.js kaikuččile lehtpolile, kus om Uniwiki-ližoiden turbiš jagatud JavaScriptan kod',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

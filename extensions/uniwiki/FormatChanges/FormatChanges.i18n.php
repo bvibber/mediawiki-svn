@@ -262,6 +262,13 @@ $messages['hsb'] = array(
 	'formatchanges-editedby' => '$1 - wobdźěłany wot $2 ($3)',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'formatchanges-anonymous' => 'Névtelen',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

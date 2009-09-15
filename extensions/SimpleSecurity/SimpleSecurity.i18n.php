@@ -409,6 +409,17 @@ $messages['hsb'] = array(
 	'security-restricttogroup' => 'Přistup na wobsah je za čłonow wot "$1" wobmjezowany',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'security' => 'Biztonsági napló',
+	'security-logpage' => 'Biztonsági napló',
+	'security-info-toggle' => 'biztonsági megkötések',
+	'security-type-category' => 'kategória',
+	'security-type-namespace' => 'névtér',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -466,8 +477,8 @@ $messages['it'] = array(
 	'badaccess-read' => "'''Attenzione:''' la pagina \"\$1\" è richiamata qui, ma non si dispone di permessi sufficienti per accedervi.",
 	'security-info' => 'Sono presenti $1 in questa pagina',
 	'security-info-toggle' => 'restrizioni di sicurezza',
-	'security-inforestrict' => '$1 è limitata a $2',
-	'security-desc-LS' => '(si applica perché questa pagina è in "$2 $1")',
+	'security-inforestrict' => "L'azione $1 è limitata a $2",
+	'security-desc-LS' => '(si applica perché questa pagina è in $1 "$2")',
 	'security-desc-PR' => '(impostato dalla scheda "proteggi")',
 	'security-infosysops' => 'Non sono applicate restrizioni perché sei un membro del gruppo "sysop"',
 	'security-manygroups' => 'gruppi $1 e $2',

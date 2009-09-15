@@ -394,6 +394,8 @@ Voeg deze hier toe of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|actio
  */
 $messages['no'] = array(
 	'commentbox-name' => 'Navn:',
+	'commentbox-log' => 'Nye kommentarer',
+	'commentbox-first-comment-heading' => '== Kommentarer ==',
 	'commentbox-error-page-nonexistent' => 'Denne siden finnes ikke!',
 );
 

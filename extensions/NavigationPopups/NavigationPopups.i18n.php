@@ -158,6 +158,13 @@ $messages['hsb'] = array(
 	'navigationpopups-desc' => 'Začita Lupinowe wuskakowace wokna nawigaciskich skriptow do MediaWiki',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'navigationpopups-desc' => 'Betölti Lupin navigációs szkript előugró-ablakait a MediaWikiben',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

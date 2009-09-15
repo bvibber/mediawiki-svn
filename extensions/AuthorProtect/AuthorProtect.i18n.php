@@ -245,6 +245,14 @@ $messages['cs'] = array(
 	'restriction-level-author' => 'Jen pro autory',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'authorprotect-expiry' => 'Cyfnod',
+	'authorprotect-reason' => 'Rheswm',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender

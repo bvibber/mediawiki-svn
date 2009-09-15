@@ -238,6 +238,13 @@ $messages['hsb'] = array(
 	'selectcategory-subtitle' => 'Umschalt-Myš, zo bychu so wjacore susodne zapiski wubrali, Strg-myš, zo bychu so njesusodne zapiski wubrali.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'selectcategory-title' => 'Kategóriák kiválasztása',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

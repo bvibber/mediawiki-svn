@@ -102,6 +102,8 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'ratedpages' => 'Boki pógódnośone wót cytarja',
+	'ratedpages-leg' => 'Boki namakaś, kótarež daju se pó licbje pógodnośenjow rozrědowaś',
 	'ratedpages-list' => 'Slědujo lisćina bokow, sortěrowanych pó jich pógódnośenju wót cytarjow.',
 	'ratedpages-none' => 'Toś ta lisćina njewopśimujo boki',
 	'ratedpages-graphs' => 'Daty pógódnośenja',
@@ -211,6 +213,8 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'ratedpages' => 'Strony pohódnoćene wot čitarja',
+	'ratedpages-leg' => 'Strony namakać, kotrež dadźa so po ličbje pohódnoćenjow rozrjadować',
 	'ratedpages-list' => 'Slěduje lisćina stronow sortěrowanych po póhodnoćenju wot čitarjow',
 	'ratedpages-none' => 'W tutej lisćinje strony njejsu.',
 	'ratedpages-graphs' => 'Daty pohódnoćenja',
@@ -259,6 +263,8 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'ratedpages' => '読者評価ページ',
+	'ratedpages-leg' => '相当数の評価がなされたページを探す',
 	'ratedpages-list' => '以下ではページを読者による評価の順に整列して一覧します。',
 	'ratedpages-none' => '表示すべきページはありません',
 	'ratedpages-graphs' => '評価データ',
@@ -295,6 +301,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'ratedpages' => 'Säiten déi vu Lieser bewäert goufen',
 	'ratedpages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewäertung vun de Lieser zortéiert sinn.',
 	'ratedpages-none' => 'Et gëtt keng Säiten op dëser Lëscht',
 	'ratedpages-graphs' => 'Bewertungsdaten',
@@ -320,6 +327,8 @@ $messages['myv'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'ratedpages' => "Door lezers gewaardeerde pagina's",
+	'ratedpages-leg' => "Pagina's weergeven die een relevant aantal keren gewaardeerd zijn",
 	'ratedpages-list' => "Hier staan pagina's gesorteerd naar de waardering die lezers hebben gegeven.",
 	'ratedpages-none' => "Er zijn geen pagina's weer te geven",
 	'ratedpages-graphs' => 'waarderingsgegevens',
@@ -366,6 +375,8 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'ratedpages' => 'Pàgine votà dai letor',
+	'ratedpages-leg' => 'Treuva le pàgine votà con un discret nùmer ëd vot',
 	'ratedpages-list' => 'Sota a-i é na lista ëd pàgine ordinà për la soa valutassion dij letor.',
 	'ratedpages-none' => 'A-i é pa ëd pàgine an sta lista-sì',
 	'ratedpages-graphs' => 'dat ëd valutassion',

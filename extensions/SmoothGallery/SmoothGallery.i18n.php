@@ -382,6 +382,15 @@ $messages['hsb'] = array(
 	'smoothgallery-javascript-disabled' => 'Javascript je trjeba, zo by so tuta galerija prawje zwobrazniła.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'smoothgallery-unexpected-error' => 'Nem várt hiba történt.
+Légyszíves készíts hibajelentést.',
+	'smoothgallery-javascript-disabled' => 'A galéria helyes megjelenítéséhez JavaScript szükséges.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

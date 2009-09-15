@@ -439,6 +439,14 @@ By rady eksistowacu stronu wobdźěłał?',
 	'createpage-badtitle' => '"$1" njeda so jako titul strony wužiwać.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'createpage' => 'Lap létrehozása',
+	'createpage_submitbutton' => 'Elküldés',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -171,6 +171,13 @@ $messages['hsb'] = array(
 	'random-users-avatars-desc' => 'Přidawa tafličku <tt>&lt;randomuserswithavatars&gt;</tt> za zwobraznjenje awatarow připadnje wuzwolenych wužiwarjow',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'random-users-avatars-title' => 'Találkozz a közösséggel',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

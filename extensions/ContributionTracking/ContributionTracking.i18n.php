@@ -375,6 +375,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'contributiontracking-desc' => 'Adományok követése a Wikimédia adománygyűjtő kampányában',
 	'contributiontracking' => 'Adakozás nyomonkövetése',
 	'contrib-tracking-error' => 'Hiba',
 	'contrib-tracking-error-text' => 'Az elküldött űrlap érvénytelen',

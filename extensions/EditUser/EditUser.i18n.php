@@ -696,11 +696,12 @@ $messages['ku-latn'] = array(
 	'edituser-dosearch' => 'Lêbigere',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'edituser-dosearch' => 'Hwila',
+	'edituser-dosearch' => 'Whila',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

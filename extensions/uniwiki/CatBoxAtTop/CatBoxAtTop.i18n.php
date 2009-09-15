@@ -242,6 +242,14 @@ $messages['hsb'] = array(
 	'catboxattop-categories' => 'Kategorije',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'catboxattop-desc' => 'Kategóriadoboz hozzáadása a lapok jobb felső sarkába',
+	'catboxattop-categories' => 'Kategóriák',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

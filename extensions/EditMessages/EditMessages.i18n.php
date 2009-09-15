@@ -786,12 +786,13 @@ $messages['ku-latn'] = array(
 	'editmsg-search' => 'Lêbigere',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'editmsg-search' => 'Hwilas',
-	'editmsg-new-search' => 'Hwilans nowyth',
+	'editmsg-search' => 'Whilas',
+	'editmsg-new-search' => 'Whilans nowyth',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1034,6 +1035,13 @@ $messages['pl'] = array(
 	'editmsg-no-patch' => 'Nie można uruchomić polecenia „patch”',
 	'editmsg-patch-failed' => 'Wprowadzanie poprawki zakończyło się błędem $1',
 	'editmsg-patch-success' => 'Poprawka została wprowadzona.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'editmessages-desc' => "[[Special:EditMessages|Modìfica web-based]] d'un gran nùmer ëd file Messages*.php",
 );
 
 /** Pashto (پښتو)

@@ -313,6 +313,7 @@ $messages['el'] = array(
 	'countedits-username' => 'Όνομα χρήστη:',
 	'countedits-ok' => 'Εντάξει',
 	'countedits-resultheader' => 'Αποτελέσματα για $1',
+	'countedits-mostactive' => 'Οι πιο ενεργοί συνεισφέροντες',
 );
 
 /** Esperanto (Esperanto)

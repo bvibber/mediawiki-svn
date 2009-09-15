@@ -372,6 +372,13 @@ $messages['tl'] = array(
 	'csshooks-desc' => 'Nagdaragdag ng CSS sa inilalabas na produktong HTML ng mga pahina para sa mas mainam na pag-iistilo.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'csshooks-desc' => 'Ližadab CSS-t lehtpoliden HTML-näghu, miše paremboita stilid',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

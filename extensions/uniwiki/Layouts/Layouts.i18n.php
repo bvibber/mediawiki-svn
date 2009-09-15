@@ -389,8 +389,12 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'layouts_title' => 'Lap létrehozása',
+	'layouts_continue' => 'Folytatás',
+	'layouts_unknown' => 'Ismeretlen',
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 

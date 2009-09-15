@@ -178,11 +178,18 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'lua_desc' => 'Επεκτείνει τον λεξιαναλυτή με υποστήριξη ενσωματωμένων πλοκάδων του κώδικα [http://www.lua.org/ Lua]',
 	'lua_error' => 'Σφάλμα στη γραμμή $1',
+	'lua_extension_notfound' => 'Η επέκταση Lua δεν διαμορφώθηκε',
+	'lua_interp_notfound' => 'Ο διερμηνέας Lua δεν βρέθηκε',
 	'lua_error_internal' => 'Εσωτερικό σφάλμα',
+	'lua_overflow_recursion' => 'Φτάσατε στο όριο αναδρομής',
+	'lua_overflow_loc' => 'Φτάσατε στο μέγιστο όριο γραμμών κώδικα',
+	'lua_overflow_time' => 'Φτάσατε στο μέγιστο όριο εκτέλεσης',
 );
 
 /** Esperanto (Esperanto)

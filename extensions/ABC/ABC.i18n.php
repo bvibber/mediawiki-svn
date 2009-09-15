@@ -368,11 +368,12 @@ $messages['ksh'] = array(
 	'abcdownload' => 'Eronger lahde:',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'abcdownload' => 'Iskarga:',
+	'abcdownload' => 'Iscarga:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

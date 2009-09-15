@@ -147,6 +147,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'categoryintersection' => 'Διατομή κατηγοριών',
+	'categoryintersection-doit' => 'Λίστα σελίδων σε όλες αυτές τις κατηγορίες',
 );
 
 /** Esperanto (Esperanto)

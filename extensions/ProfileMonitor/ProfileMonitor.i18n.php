@@ -406,6 +406,13 @@ $messages['hsb'] = array(
 	'profiling-no-data' => 'Žane wotpowědne daty namakane.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

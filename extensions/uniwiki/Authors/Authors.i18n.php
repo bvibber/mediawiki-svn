@@ -138,9 +138,11 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'authors-desc' => 'Προσαρτεί μία λίστα συνεισφερόντων στις σελίδες',
 	'authors_authors' => 'Συγγραφείς',
 	'authors_anonymous' => 'Ανώνυμοι',
 );

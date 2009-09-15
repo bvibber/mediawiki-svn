@@ -254,6 +254,13 @@ $messages['hsb'] = array(
 	'right-userrights-shared' => 'Zhromadne wužiwarske prawa zrjadować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'gblrights-logpage' => 'Globális jogosultságok naplója',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

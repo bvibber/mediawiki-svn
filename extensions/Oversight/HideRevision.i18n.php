@@ -401,7 +401,7 @@ $messages['be-tarask'] = array(
 Распаўсюджаньне гэтай інфармацыі можа прывесьці да пазбаўленьня правоў рэвізора.',
 	'oversight-legend' => 'Пошук вэрсыяў у журнале хаваньняў',
 	'oversight-oversighter' => 'Рэвізор:',
-	'oversight-offender' => 'Парушальнік:',
+	'oversight-offender' => 'Аўтар вэрсіі:',
 );
 
 /** Bulgarian (Български)
@@ -548,7 +548,7 @@ Vratite najprije ovu promjenu.',
 Otkrivanje ovih informacija može rezultirati stalnim gubitkom privilegija nazdornika.',
 	'oversight-legend' => 'Pretraži zapis sakrivanja revizija',
 	'oversight-oversighter' => 'Nadzornik:',
-	'oversight-offender' => 'Napasnik:',
+	'oversight-offender' => 'Autor revizije:',
 );
 
 /** Catalan (Català)
@@ -784,6 +784,7 @@ Anulěruj do togo toś tu změnu.',
  * @author Badseed
  * @author Consta
  * @author Dead3y3
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -829,7 +830,7 @@ $messages['el'] = array(
 Η απελευθέρωση αυτών των πληροφοριών μπορεί να έχει ως αποτέλεσμα την μόνιμη απώλεια των προνομίων Επιτήρησης.',
 	'oversight-legend' => 'Αναζήτηση αρχείου καταγραφής απόκρυψης αναθεωρήσεων',
 	'oversight-oversighter' => 'Επιτηρητής:',
-	'oversight-offender' => 'Υπαίτιος:',
+	'oversight-offender' => 'Δημιουργός αναθεώρησης:',
 );
 
 /** Esperanto (Esperanto)
@@ -933,7 +934,7 @@ Revierte antes el cambio.',
 Hacer pública esta información puede provocar la pérdida definitiva de los privilegios de supervisión.',
 	'oversight-legend' => 'Registro de búsqueda de revisiones ocultas',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Contraventor:',
+	'oversight-offender' => 'Autor de revisión:',
 );
 
 /** Estonian (Eesti)
@@ -1149,7 +1150,7 @@ Annulez d’abord cette modification en rétablissant la version précédente.',
 	'oversight-header' => 'Ci-dessous figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges de {{MediaWiki:Oversight}}.',
 	'oversight-legend' => 'Journal des recherches des versions cachées',
 	'oversight-oversighter' => 'Oversighter :',
-	'oversight-offender' => 'Diffamateur :',
+	'oversight-offender' => 'Auteur de la révision :',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1267,7 +1268,7 @@ Desfaga esta modificación primeiro.',
 Á liberación desta información pode resultar na perda permanente dos privilexios de Supervisión.',
 	'oversight-legend' => 'Rexistro de procura de revisións agochadas',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Delincuente:',
+	'oversight-offender' => 'Autor da revisión:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1527,6 +1528,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 /** Hungarian (Magyar)
  * @author Dani
  * @author Dorgan
+ * @author Glanthor Reviol
  * @author KossuthRad
  */
 $messages['hu'] = array(
@@ -1538,7 +1540,7 @@ $messages['hu'] = array(
 	'right-oversight' => 'korábban elrejtett változatok megtekintése',
 	'right-hiderevision' => 'változatok elrejtése az adminisztrátorok elől',
 	'hiderevision-prompt' => 'Eltávolítandó változat:',
-	'hiderevision-continue' => 'Folytatódik',
+	'hiderevision-continue' => 'Folytatás',
 	'hiderevision-text' => "Ez az eszköz '''csak''' az alábbi esetekben használható:
 * nem ide illő személyi információk
 *: ''otthoni címek, telefonszámok és társadalombiztosítási számok stb.''
@@ -1573,7 +1575,7 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elvesztését is jelentheti.',
 	'oversight-legend' => 'Keresés a változatelrejtési naplóban',
 	'oversight-oversighter' => 'Adatvédelmi biztos:',
-	'oversight-offender' => 'IP-cím vagy felhasználói név:',
+	'oversight-offender' => 'Változat szerzője:',
 );
 
 /** Interlingua (Interlingua)
@@ -1676,7 +1678,7 @@ administrator basis data jika Anda membuat kesalahan.",
 Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
 	'oversight-legend' => 'Cari log penyembunyian revisi',
 	'oversight-oversighter' => 'Penyembunyi suntingan:',
-	'oversight-offender' => 'Pelaku revisi:',
+	'oversight-offender' => 'Revisi penulis:',
 );
 
 /** Ido (Ido)
@@ -1746,7 +1748,7 @@ in caso di errori.",
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
 	'oversight-legend' => 'Cerca i log delle revisioni nascoste',
 	'oversight-oversighter' => 'Autore della rimozione:',
-	'oversight-offender' => "Autore dell'azione rimossa:",
+	'oversight-offender' => 'Autore della versione:',
 );
 
 /** Japanese (日本語)
@@ -2144,7 +2146,7 @@ Wä di Enfomazione wigger jitt, weed dat Rääsch se aanzeloore,
 un wat domet zosamme hängk, flöck quitt.',
 	'oversight-legend' => 'Sök em Logboch fum Versione Versteche',
 	'oversight-oversighter' => 'Sigge-Versione-Verstecher:',
-	'oversight-offender' => 'Metmaacher:',
+	'oversight-offender' => 'Dä Väsjohn ier Schriever:',
 );
 
 /** Cornish (Kernewek)
@@ -2841,7 +2843,7 @@ $messages['pms'] = array(
 	'oversight-header' => "Ambelessì sota a-i é na lista dle revision stërmà ch'a l'é nen vàire. Publiché st'anformassion-sì a peul ëmné a perde ël drit ëd dovré ël sistema ëd coression dle gafade.",
 	'oversight-legend' => 'Serca ël registr dle revision stërmà',
 	'oversight-oversighter' => 'Autor dla rimossion:',
-	'oversight-offender' => "Autor dl'ofèisa:",
+	'oversight-offender' => 'Autor ëd la revision:',
 );
 
 /** Pashto (پښتو)
@@ -3043,7 +3045,7 @@ $messages['ru'] = array(
 Распространение данной информации может повлечь лишение прав ревизора.',
 	'oversight-legend' => 'Поиск по журналу сокрытия правок',
 	'oversight-oversighter' => 'Ревизор:',
-	'oversight-offender' => 'Нарушитель:',
+	'oversight-offender' => 'Автор версии страницы:',
 );
 
 /** Yakut (Саха тыла)
@@ -3773,7 +3775,7 @@ La divulgazion di ste informassion la pol conportar la rimozion permanente dei d
 $messages['vep'] = array(
 	'oversight-view' => 'detalid',
 	'oversight-hidden' => 'Peittud redakcii',
-	'oversight-offender' => 'Abidoičii',
+	'oversight-offender' => 'Versijan avtor:',
 );
 
 /** Vietnamese (Tiếng Việt)
