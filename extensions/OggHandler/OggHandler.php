@@ -26,7 +26,6 @@ ini_set( 'include_path',
 $wgOggScriptVersion = '10';
 
 $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
-$wgExtensionMessagesFiles['OggHandlerMagic'] = "$oggDir/OggHandler.i18n.magic.php";
 $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
 $wgHooks['LanguageGetMagic'][] = 'OggHandler::registerMagicWords';
 $wgExtensionCredits['media'][] = array(
@@ -40,26 +39,11 @@ $wgExtensionCredits['media'][] = array(
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
-//set the supported ogg codecs:
-$wgOggVideoTypes = array( 'Theora' );
-$wgOggAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
-
 //if wgPlayerStats collection is enabled or not 
 $wgPlayerStatsCollection=false;
 
-//if $wgEnableJS2system = true  and the below variable is set to true 
-// then we can output the <video> tag and its re-written by mv_embed  
-$wgJs2VideoTagOut = true;
-
 // Location of the FFmpeg binary
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
-
-/**
- * enable oggz_chop support
- * if enabled the mv_embed player will use temporal urls
- * for helping with seeking with some plugin types
- */
-$wgEnableTemporalOggUrls = false;
 
 // Filename or URL path to the Cortado Java player applet.
 //
