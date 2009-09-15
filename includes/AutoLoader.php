@@ -626,7 +626,10 @@ $wgJSAutoloadLocalClasses = array(
 //Include the js2 autoLoadClasses
 //@@todo move jsAutoloadLocalClasses.php to post Setup so we have default values and can check the $wgEnableJS2system var
 $wgMwEmbedDirectory = "js2/mwEmbed/";
+
+/***** REMOVED FOR WMF DEPLOYMENT
 require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
+****/
 
 class AutoLoader {
 	/**
