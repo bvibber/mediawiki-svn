@@ -4,6 +4,7 @@ class ReaderFeedbackXML {
 	/**
 	 * Get tag dropdown select
 	 * @param int $selected, selected level
+	 * @returns string
 	 */
 	public static function getTagMenu( $selected = '' ) {
 		wfLoadExtensionMessages( 'ReaderFeedback' );
@@ -19,6 +20,7 @@ class ReaderFeedbackXML {
 	/**
 	 * Get rating tier dropdown select
 	 * @param int $selected, selected tier
+	 * @returns string
 	 */	
 	 public static function getRatingTierMenu( $selected = '' ) {
 		wfLoadExtensionMessages( 'ReaderFeedback' );
