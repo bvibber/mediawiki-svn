@@ -38,6 +38,10 @@ $messages['en'] = array(
 	'readerfeedback-submitting'    => 'Submitting …',
 	'readerfeedback-finished'      => 'Thank you!',
 	'readerfeedback-tagfilter'     => 'Tag:',
+	'readerfeedback-tierfilter'    => 'Rating:',
+	'readerfeedback-tier-high'     => 'High',
+	'readerfeedback-tier-medium'   => 'Moderate',
+	'readerfeedback-tier-poor'     => 'Poor',
 	'tooltip-ca-ratinghist'        => 'Reader ratings of this page',
 	'specialpages-group-feedback'  => 'Viewer opinion',
 );

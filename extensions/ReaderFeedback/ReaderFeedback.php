@@ -94,14 +94,10 @@ $wgAutoloadClasses['ReaderFeedbackXML'] = $dir.'ReaderFeedbackXML.php';
 $wgAutoloadClasses['RatingHistory'] = $dir . 'specialpages/RatingHistory_body.php';
 $wgExtensionMessagesFiles['RatingHistory'] = $langDir . 'RatingHistory.i18n.php';
 
-# To list ill-recieved pages
-$wgAutoloadClasses['ProblemPages'] = $dir . 'specialpages/ProblemPages_body.php';
-$wgExtensionMessagesFiles['ProblemPages'] = $langDir . 'ProblemPages.i18n.php';
-$wgSpecialPageGroups['ProblemPages'] = 'feedback';
-# To list well-recieved pages
-$wgAutoloadClasses['LikedPages'] = $dir . 'specialpages/LikedPages_body.php';
-$wgExtensionMessagesFiles['LikedPages'] = $langDir . 'LikedPages.i18n.php';
-$wgSpecialPageGroups['LikedPages'] = 'feedback';
+# Page list by ratings
+$wgAutoloadClasses['RatedPages'] = $dir . 'specialpages/RatedPages_body.php';
+$wgExtensionMessagesFiles['RatedPages'] = $langDir . 'RatedPages.i18n.php';
+$wgSpecialPageGroups['RatedPages'] = 'feedback';
 
 ######### Hook attachments #########
 
@@ -132,8 +128,7 @@ function efLoadReaderFeedbackSpecialPages( &$list ) {
 	if( !empty($wgFeedbackNamespaces) ) {
 		$list['ReaderFeedback'] = $wgSpecialPages['ReaderFeedback'] = 'ReaderFeedbackPage';
 		$list['RatingHistory'] = $wgSpecialPages['RatingHistory'] = 'RatingHistory';
-		$list['ProblemPages'] = $wgSpecialPages['ProblemPages'] = 'ProblemPages';
-		$list['LikedPages'] = $wgSpecialPages['LikedPages'] = 'LikedPages';
+		$list['RatedPages'] = $wgSpecialPages['RatedPages'] = 'RatedPages';
 	}
 	return true;
 }
