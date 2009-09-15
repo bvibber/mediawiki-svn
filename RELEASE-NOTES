@@ -470,6 +470,8 @@ this. Was used when mwEmbed was going to be an extension.
   empty portlets are now present but hidden, adding an element to a portlet unhides it
 * (bug 19531) addPortletLink() now wraps inserted labels in a <span> element to be
   compatible with the CSS for the Vector skin
+* User::getBlockedStatus() works for all kinds of user objects and doesn't 
+  assume the user object is equal to the current-user object ($wgUser)
 
 == API changes in 1.16 ==
 
