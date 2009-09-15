@@ -111,7 +111,6 @@ $messages = array(
 'aboutsite'            => 'Tokante {{SITENAME}}',
 'aboutpage'            => 'Project:Info',
 'copyright'            => 'E kontenido ta disponibel bou di $1.',
-'copyrightpagename'    => '{{SITENAME}} derecho di outor',
 'copyrightpage'        => '{{ns:project}}:Derechinan di outor',
 'currentevents'        => 'Eventonan aktual',
 'currentevents-url'    => 'Project:Eventonan aktual',
@@ -358,13 +357,11 @@ Por fabor skohe un otro título.',
 '1movedto2_redir' => '[[$1]] mové pa [[$2]] riba redirect',
 
 # Namespace 8 related
-'allmessages'         => 'Mensahenan di sistema',
-'allmessagesname'     => 'Nòmber',
-'allmessagesdefault'  => 'Teksto predeterminá',
-'allmessagescurrent'  => 'Teksto aktual',
-'allmessagestext'     => 'Esaki ta un lista di mensahe di sistema disponibel den e dominio di MediaWiki.',
-'allmessagesfilter'   => 'Filter pa nòmber di mensahe:',
-'allmessagesmodified' => 'Mustra solamente esnan modifiká',
+'allmessages'        => 'Mensahenan di sistema',
+'allmessagesname'    => 'Nòmber',
+'allmessagesdefault' => 'Teksto predeterminá',
+'allmessagescurrent' => 'Teksto aktual',
+'allmessagestext'    => 'Esaki ta un lista di mensahe di sistema disponibel den e dominio di MediaWiki.',
 
 # Attribution
 'anonymous' => 'Uzadó(nan) anonimo di {{SITENAME}}',

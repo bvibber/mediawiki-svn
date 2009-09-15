@@ -49,12 +49,16 @@ class LogEventsList {
 
 	/**
 	 * Set page title and show header for this log type
-	 * @param $type String
+	 * @param $type Array
 	 */
 	public function showHeader( $type ) {
-		if( LogPage::isLogType( $type ) ) {
-			$this->out->setPageTitle( LogPage::logName( $type ) );
-			$this->out->addHTML( LogPage::logHeader( $type ) );
+		// If only one log type is used, then show a special message...
+		$headerType = (count($type) == 1) ? $type[0] : '';
+		if( LogPage::isLogType( $headerType ) ) {
+			$this->out->setPageTitle( LogPage::logName( $headerType ) );
+			$this->out->addHTML( LogPage::logHeader( $headerType ) );
+		} else {
+			$this->out->addHTML( wfMsgExt('alllogstext',array('parseinline')) );
 		}
 	}
 
@@ -73,27 +77,52 @@ class LogEventsList {
 		$month = '', $filter = null, $tagFilter='' )
 	{
 		global $wgScript, $wgMiserMode;
-		$action = htmlspecialchars( $wgScript );
+		
+		$action = $wgScript;
 		$title = SpecialPage::getTitleFor( 'Log' );
-		$special = htmlspecialchars( $title->getPrefixedDBkey() );
+		$special = $title->getPrefixedDBkey();
+		
 		// For B/C, we take strings, but make sure they are converted...
 		$types = ($types === '') ? array() : (array)$types;
 
 		$tagSelector = ChangeTags::buildTagFilterSelector( $tagFilter );
+		
+		$html = '';
+		$html .= Xml::hidden( 'title', $special );
+		
+		// Basic selectors
+		$html .= $this->getTypeMenu( $types ) . "\n";
+		$html .= $this->getUserInput( $user ) . "\n";
+		$html .= $this->getTitleInput( $page ) . "\n";
 
-		$this->out->addHTML( "<form action=\"$action\" method=\"get\"><fieldset>" .
-			Xml::element( 'legend', array(), wfMsg( 'log' ) ) .
-			Xml::hidden( 'title', $special ) . "\n" .
-			$this->getTypeMenu( $types ) . "\n" .
-			$this->getUserInput( $user ) . "\n" .
-			$this->getTitleInput( $page ) . "\n" .
-			( !$wgMiserMode ? ($this->getTitlePattern( $pattern )."\n") : "" ) .
-			"<p>" . Xml::dateMenu( $year, $month ) . "\n" .
-			( $tagSelector ? Xml::tags( 'p', null, implode( '&nbsp;', $tagSelector ) ) :'' ). "\n" .
-			( $filter ? "</p><p>".$this->getFilterLinks( $filter )."\n" : "" ) . "\n" .
-			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "</p>\n" .
-			"</fieldset></form>"
-		);
+		// Title pattern, if allowed
+		if (!$wgMiserMode) {
+			$html .= $this->getTitlePattern( $pattern ) . "\n";
+		}
+		
+		// date menu
+		$html .= Xml::tags( 'p', null, Xml::dateMenu( $year, $month ) );
+		
+		// Tag filter
+		if ($tagSelector) {
+			$html .= Xml::tags( 'p', null, implode( '&nbsp;', $tagSelector ) );
+		}
+		
+		// Filter links
+		if ($filter) {
+			$html .= Xml::tags( 'p', null, $this->getFilterLinks( $filter ) );
+		}
+		
+		// Submit button
+		$html .= Xml::submitButton( wfMsg( 'allpagessubmit' ) );
+		
+		// Fieldset
+		$html = Xml::fieldset( wfMsg( 'log' ), $html );
+		
+		// Form wrapping
+		$html = Xml::tags( 'form', array( 'action' => $action, 'method' => 'get' ), $html );
+
+		$this->out->addHTML( $html );
 	}
 	
 	/**
@@ -112,9 +141,9 @@ class LogEventsList {
 			// Then it would have to be copied. Not certain what is more expensive.
 			$query = $this->getDefaultQuery();
 			$queryKey = "hide_{$type}_log";
-			$query[$queryKey] = $hideVal;
 
 			$hideVal = 1 - intval($val);
+			$query[$queryKey] = $hideVal;
 
 			$link = $this->skin->link(
 				$wgTitle,
@@ -341,7 +370,6 @@ class LogEventsList {
 		// If an edit was hidden from a page give a review link to the history
 		} else if( self::typeAction($row,array('delete','suppress'),'revision','deleterevision') ) {
 			if( count($paramArray) >= 2 ) {
-				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 				// Different revision types use different URL params...
 				$key = $paramArray[0];
 				// $paramArray[1] is a CSV of the IDs
@@ -349,21 +377,37 @@ class LogEventsList {
 				$query = $paramArray[1];
 				$revert = array();
 				// Diff link for single rev deletions
-				if( ( $key === 'oldid' || $key == 'revision' ) && count($Ids) == 1 ) {
-					$revert[] = $this->skin->link(
-						$title,
-						$this->message['diff'], 
-						array(),
-						array(
-							'diff' => intval( $Ids[0] ),
-							'unhide' => 1
-						),
-						array( 'known', 'noclasses' )
-					);
+				if( count($Ids) == 1 ) {
+					// Live revision diffs...
+					if( in_array($key, array('oldid','revision')) ) {
+						$revert[] = $this->skin->link(
+							$title,
+							$this->message['diff'], 
+							array(),
+							array(
+								'diff' => intval( $Ids[0] ),
+								'unhide' => 1
+							),
+							array( 'known', 'noclasses' )
+						);
+					// Deleted revision diffs...
+					} else if( in_array($key, array('artimestamp','archive')) ) {
+						$revert[] = $this->skin->link(
+							SpecialPage::getTitleFor( 'Undelete' ),
+							$this->message['diff'], 
+							array(),
+							array(
+								'target'    => $title->getPrefixedDBKey(),
+								'diff'      => 'prev',
+								'timestamp' => $Ids[0]
+							),
+							array( 'known', 'noclasses' )
+						);
+					}
 				}
 				// View/modify link...
 				$revert[] = $this->skin->link(
-					$revdel,
+					SpecialPage::getTitleFor( 'Revisiondelete' ),
 					$this->message['revdel-restore'],
 					array(),
 					array(
@@ -374,7 +418,7 @@ class LogEventsList {
 					array( 'known', 'noclasses' )
 				);
 				// Pipe links
-				$revert = '(' . implode(' | ',$revert) . ')';
+				$revert = wfMsg( 'parentheses', $wgLang->pipeList( $revert ) );
 			}
 		// Hidden log items, give review link
 		} else if( self::typeAction($row,array('delete','suppress'),'event','deleterevision') ) {
@@ -513,28 +557,31 @@ class LogEventsList {
 
 	/**
 	 * Quick function to show a short log extract
-	 * @param $out OutputPage
+	 * @param $out OutputPage or String-by-reference
 	 * @param $types String or Array
 	 * @param $page String
 	 * @param $user String
 	 * @param $lim Integer
 	 * @param $conds Array
 	 */
-	public static function showLogExtract( $out, $types=array(), $page='', $user='', $lim=0, $conds=array() ) {
-		global $wgUser;
+	public static function showLogExtract( &$out, $types=array(), $page='', $user='', $lim=0, $conds=array() ) {
+		global $wgUser, $wgOut;
 		# Insert list of top 50 or so items
-		$loglist = new LogEventsList( $wgUser->getSkin(), $out, 0 );
+		$loglist = new LogEventsList( $wgUser->getSkin(), $wgOut, 0 );
 		$pager = new LogPager( $loglist, $types, $user, $page, '', $conds );
 		if( $lim > 0 ) $pager->mLimit = $lim;
 		$logBody = $pager->getBody();
 		if( $logBody ) {
-			$out->addHTML(
-				$loglist->beginLogEventsList() .
-				$logBody .
-				$loglist->endLogEventsList()
-			);
+			$s = $loglist->beginLogEventsList() .
+				 $logBody .
+				 $loglist->endLogEventsList();
 		} else {
-			$out->addWikiMsg( 'logempty' );
+			$s = wfMsgExt( 'logempty', array('parse') );
+		}
+		if( $out instanceof OutputPage ){
+			$out->addHTML( $s );
+		} else {
+			$out = $s;
 		}
 		return $pager->getNumRows();
 	}
@@ -680,8 +727,11 @@ class LogPager extends ReverseChronologicalPager {
 			global $wgUser;
 			$this->mConds['log_user'] = $userid;
 			// Paranoia: avoid brute force searches (bug 17342)
-			if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+			if( !$wgUser->isAllowed( 'deleterevision' ) ) {
 				$this->mConds[] = $this->mDb->bitAnd('log_deleted', LogPage::DELETED_USER) . ' = 0';
+			} else if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+				$this->mConds[] = $this->mDb->bitAnd('log_deleted', LogPage::SUPPRESSED_USER) .
+					' != ' . LogPage::SUPPRESSED_USER;
 			}
 			$this->user = $usertitle->getText();
 		}
@@ -724,8 +774,11 @@ class LogPager extends ReverseChronologicalPager {
 			$this->mConds['log_title'] = $title->getDBkey();
 		}
 		// Paranoia: avoid brute force searches (bug 17342)
-		if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+		if( !$wgUser->isAllowed( 'deleterevision' ) ) {
 			$this->mConds[] = $this->mDb->bitAnd('log_deleted', LogPage::DELETED_ACTION) . ' = 0';
+		} else if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+			$this->mConds[] = $this->mDb->bitAnd('log_deleted', LogPage::SUPPRESSED_ACTION) .
+				' != ' . LogPage::SUPPRESSED_ACTION;
 		}
 	}
 

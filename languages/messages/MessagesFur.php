@@ -503,7 +503,7 @@ Par plasê inclût la to direzion IP atuâl ($3) o il numar dal bloc (ID #$5) in
 'newarticletext'                   => "Tu âs seguît un leam a une pagjine che no esist ancjemò. Par creâ une pagjine, scomence a scrivi tal spazi ca sot (cjale il [[{{MediaWiki:Helppage}}|jutori]] par altris informazions). Se tu sês ca par erôr, frache semplicementri il boton '''Indaûr''' dal to sgarfadôr.",
 'anontalkpagetext'                 => "----''Cheste e je la pagjine di discussion di un utent anonim, che nol à ancjemò creât une identitât, o che no la vûl doprâ. Par identificâlu/e a doprin alore la so direzion IP. Lis direzions IP a podin però jessi condividudis di plui utents. Se tu sês un utent anonim e tu crodis che ti vedin fat coments che no si riferissin a ti, par plasê [[Special:UserLogin|cree une gnove identitâ o jentre]] cun chê che tu âs za cussì tu evitarâs in futûr di jessi confondût un altris utents anonims.''",
 'noarticletext'                    => 'Par cumò nol è nuie in cheste pagjine.
-Tu puedis [[Special:Search/{{PAGENAME}}|cirî chest titul]] in altris pagjinis o <span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} cirî i regjistris leâts],
+Tu puedis [[Special:Search/{{PAGENAME}}|cirî chest titul]] in altris pagjinis o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} cirî i regjistris leâts],
 o ben [{{fullurl:{{FULLPAGENAME}}|action=edit}} cambiâ cheste pagjine]</span>.',
 'userpage-userdoesnotexist'        => 'La identitât "$1" no je di un utent regjistrât. Controle che tu vuelis pardabon creâ o modificâ cheste pagjine.',
 'clearyourcache'                   => "'''Ocjo: dopo vê salvât, tu podaressis scugnî netâ la cache dal to sgarfadôr par viodi i cambiaments.''' Par '''Mozilla / Firefox / Safari''': frache ''Torne a cjamâ'' tignint jù ancje il tast des maiusculis, o se no frache ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' su Mac); par '''Konqueror''': frache ''Reload'' o il tast ''F5''; par '''Opera''' al pues jessi necessari disvuedâ dal dut la cache doprant il menù ''Tools → Preferencis''; par '''Internet Explorer:''' ten fracât il tast ''Ctrl'' cuant che tu cjalcjis su ''Aggiorna'' o frache ''Ctrl-F5''.",
@@ -629,7 +629,6 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 'searchall'                      => 'ducj',
 'showingresults'                 => "Ca sot {{PLURAL:$1|al è fin a '''1''' risultât|a son fin a '''$1''' risultâts}} scomençant dal numar '''$2'''.",
 'showingresultsnum'              => "Ca sot {{PLURAL:$3|al è '''1''' risultât|a son '''$3''' risultâts}} scomençant dal numar '''$2'''.",
-'showingresultstotal'            => "Ca sot {{PLURAL:$4|al ven mostrât il risultât '''$1''' su '''$3'''|a vegnin mostrâts i risultâts '''$1 - $2''' su '''$3'''}}",
 'nonefound'                      => "'''Note''': la ricercje e ven fate normalmentri dome in cualchi spazi dai nons. Prove a scrivi ''all:'' prime dal test di cjatâ par cirî in ducj i nons dai spazis (includint lis pagjinis di discussion, i modei e v.i.) o se no dopre il non dal spazi desiderât come prefìs.",
 'search-nonefound'               => 'Nissun risultât par cheste ricercje.',
 'powersearch'                    => 'Cîr',
@@ -806,8 +805,9 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'destfilename'       => 'Non dal file di destinazion:',
 'watchthisupload'    => 'Ten di voli',
 
-'license'   => 'Licence pal ûs:',
-'nolicense' => 'Nissune licence sielte',
+'license'        => 'Licence pal ûs:',
+'license-header' => 'Licence pal ûs:',
+'nolicense'      => 'Nissune licence sielte',
 
 # Special:ListFiles
 'listfiles'             => 'Liste des figuris',
@@ -1098,7 +1098,7 @@ Tu puedis cambiâ il nivel di protezion di cheste pagjine, ma chest nol varà ef
 'protect-expiring'            => 'e scjât: $1 (UTC)',
 'protect-cascade'             => 'Protezion ricorsive (estendude a dutis lis pagjinis includudis in cheste).',
 'protect-cantedit'            => 'No tu puedis cambiâ i nivei di protezion par cheste pagjine, parcè che no tu âs i permès par modificâle.',
-'protect-expiry-options'      => '2 oris:2 hours,1 zornade:1 day,3 zornadis:3 days,1 setemane:1 week,2 setemanis:2 weeks,1 mês:1 month,3 mês:3 months,6 mês:6 months,1 an:1 year,infinît:infinite',
+'protect-expiry-options'      => '1 ore:1 hour,1 zornade:1 day,1 setemane:1 week,2 setemanis:2 weeks,1 mês:1 month,3 mês:3 months,6 mês:6 months,1 an:1 year,infinît:infinite',
 'restriction-type'            => 'Permès:',
 'restriction-level'           => 'Nivel di restrizion:',
 'pagesize'                    => '(bytes)',
@@ -1225,12 +1225,11 @@ Sielç par plasê un altri non.',
 'exportcuronly' => 'Inclût dome la revision corinte, no dut il storic',
 
 # Namespace 8 related
-'allmessages'         => 'Ducj i messaçs di sistem',
-'allmessagesname'     => 'Non',
-'allmessagesdefault'  => 'Test predeterminât',
-'allmessagescurrent'  => 'Test curint',
-'allmessagestext'     => 'Cheste e je une liste dai messaçs di sisteme disponibii tal non dal spazi MediaWiki:',
-'allmessagesmodified' => 'Mostre dome modificâts',
+'allmessages'        => 'Ducj i messaçs di sistem',
+'allmessagesname'    => 'Non',
+'allmessagesdefault' => 'Test predeterminât',
+'allmessagescurrent' => 'Test curint',
+'allmessagestext'    => 'Cheste e je une liste dai messaçs di sisteme disponibii tal non dal spazi MediaWiki:',
 
 # Thumbnails
 'thumbnail-more'  => 'Slargje',

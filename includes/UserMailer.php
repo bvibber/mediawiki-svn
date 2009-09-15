@@ -264,9 +264,9 @@ class UserMailer {
  *
  */
 class EmailNotification {
-	private $to, $subject, $body, $replyto, $from;
-	private $user, $title, $timestamp, $summary, $minorEdit, $oldid, $composed_common, $editor;
-	private $mailTargets = array();
+	protected $to, $subject, $body, $replyto, $from;
+	protected $user, $title, $timestamp, $summary, $minorEdit, $oldid, $composed_common, $editor;
+	protected $mailTargets = array();
 
 	/**
 	 * Send emails corresponding to the user $editor editing the page $title.
@@ -281,7 +281,7 @@ class EmailNotification {
 	 * @param $minorEdit
 	 * @param $oldid (default: false)
 	 */
-	function notifyOnPageChange($editor, $title, $timestamp, $summary, $minorEdit, $oldid = false) {
+	function notifyOnPageChange($editor, $title, $timestamp, $summary, $minorEdit, $oldid = false, $deleted = false ) {
 		global $wgEnotifUseJobQ, $wgEnotifWatchlist, $wgShowUpdatedMarker;
 
 		if ($title->getNamespace() < 0)
@@ -328,16 +328,18 @@ class EmailNotification {
 				"summary" => $summary,
 				"minorEdit" => $minorEdit,
 				"oldid" => $oldid,
-				"watchers" => $watchers);
+				"watchers" => $watchers,
+				"deleted" => $deleted
+			);
 			$job = new EnotifNotifyJob( $title, $params );
 			$job->insert();
 		} else {
-			$this->actuallyNotifyOnPageChange( $editor, $title, $timestamp, $summary, $minorEdit, $oldid, $watchers );
+			$this->actuallyNotifyOnPageChange( $editor, $title, $timestamp, $summary, $minorEdit, $oldid, $watchers, $deleted );
 		}
 
 	}
 
-	/*
+	/**
 	 * Immediate version of notifyOnPageChange().
 	 *
 	 * Send emails corresponding to the user $editor editing the page $title.
@@ -350,8 +352,9 @@ class EmailNotification {
 	 * @param $minorEdit bool
 	 * @param $oldid int Revision ID
 	 * @param $watchers array of user IDs
+	 * @param $deleted boolean If page was deleted
 	 */
-	function actuallyNotifyOnPageChange($editor, $title, $timestamp, $summary, $minorEdit, $oldid, $watchers) {
+	function actuallyNotifyOnPageChange( $editor, $title, $timestamp, $summary, $minorEdit, $oldid, $watchers, $deleted ) {
 		# we use $wgPasswordSender as sender's address
 		global $wgEnotifWatchlist;
 		global $wgEnotifMinorEdits, $wgEnotifUserTalk;
@@ -373,6 +376,7 @@ class EmailNotification {
 		$this->minorEdit = $minorEdit;
 		$this->oldid = $oldid;
 		$this->editor = $editor;
+		$this->deleted = $deleted;
 		$this->composed_common = false;
 
 		$userTalkId = false;
@@ -450,6 +454,10 @@ class EmailNotification {
 			$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_lastvisited', $difflink );
 			$keys['$OLDID']   = $this->oldid;
 			$keys['$CHANGEDORCREATED'] = wfMsgForContent( 'changed' );
+		} else if( $this->deleted ) {
+			$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_deletedpagetext' );
+			$keys['$OLDID']   = '';
+			$keys['$CHANGEDORCREATED'] = wfMsgForContent( 'deleted' );
 		} else {
 			$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_newpagetext' );
 			# clear $OLDID placeholder in the message template
@@ -468,7 +476,8 @@ class EmailNotification {
 		$body = strtr( $body, $keys );
 		$pagetitle = $this->title->getPrefixedText();
 		$keys['$PAGETITLE']          = $pagetitle;
-		$keys['$PAGETITLE_URL']      = $this->title->getFullUrl();
+		$keys['$REVINFO'] = $this->deleted ? '' : 
+			wfMsgForContent( 'enotif_rev_info', $this->title->getFullUrl() );
 
 		$keys['$PAGEMINOREDIT']      = $medit;
 		$keys['$PAGESUMMARY']        = $summary;
@@ -573,8 +582,13 @@ class EmailNotification {
 		# $PAGEEDITDATE is the time and date of the page change
 		# expressed in terms of individual local time of the notification
 		# recipient, i.e. watching user
-		$body = str_replace('$PAGEEDITDATE',
-			$wgContLang->timeanddate( $this->timestamp, true, false, $timecorrection ),
+		$body = str_replace(
+			array(	'$PAGEEDITDATEANDTIME',
+				'$PAGEEDITDATE',
+				'$PAGEEDITTIME' ),
+			array(	$wgContLang->timeanddate( $this->timestamp, true, false, $timecorrection ),
+				$wgContLang->date( $this->timestamp, true, false, $timecorrection ),
+				$wgContLang->time( $this->timestamp, true, false, $timecorrection ) ),
 			$body);
 
 		return UserMailer::send($to, $this->from, $this->subject, $body, $this->replyto);

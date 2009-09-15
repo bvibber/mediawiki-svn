@@ -59,10 +59,10 @@ if ( empty( $wgFileStore['deleted']['directory'] ) ) {
 }
 
 /**
- * Unconditional protection for NS_MEDIAWIKI since otherwise it's too easy for a 
- * sysadmin to set $wgNamespaceProtection incorrectly and leave the wiki insecure. 
+ * Unconditional protection for NS_MEDIAWIKI since otherwise it's too easy for a
+ * sysadmin to set $wgNamespaceProtection incorrectly and leave the wiki insecure.
  *
- * Note that this is the definition of editinterface and it can be granted to 
+ * Note that this is the definition of editinterface and it can be granted to
  * all users if desired.
  */
 $wgNamespaceProtection[NS_MEDIAWIKI] = 'editinterface';
@@ -149,7 +149,8 @@ require_once( "$IP/includes/ImageFunctions.php" );
 require_once( "$IP/includes/StubObject.php" );
 wfProfileOut( $fname.'-includes' );
 wfProfileIn( $fname.'-misc1' );
-
+# Raise the memory limit if it's too low
+wfMemoryLimit();
 
 $wgIP = false; # Load on demand
 # Can't stub this one, it sets up $_GET and $_REQUEST in its constructor
@@ -269,7 +270,6 @@ $wgRequest->interpolateTitle();
 
 $wgUser = new StubUser;
 $wgLang = new StubUserLang;
-$wgVariant = new StubUserVariant;
 $wgOut = new StubObject( 'wgOut', 'OutputPage' );
 $wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
 
@@ -311,18 +311,29 @@ $wgArticle = null;
 wfProfileOut( $fname.'-misc2' );
 wfProfileIn( $fname.'-extensions' );
 
+/*
+ * load the $wgExtensionMessagesFiles for the script loader
+ * this can't be done in a normal extension type way
+ * since the script-loader is an entry point
+ */
+$wgExtensionMessagesFiles['mwEmbed'] = "{$IP}/js2/mwEmbed/php/languages/mwEmbed.i18n.php";
+
 # Extension setup functions for extensions other than skins
 # Entries should be added to this variable during the inclusion
 # of the extension file. This allows the extension to perform
 # any necessary initialisation in the fully initialised environment
 foreach ( $wgExtensionFunctions as $func ) {
 	# Allow closures in PHP 5.3+
-	if ( is_object( $func ) && $func instanceof Closure )
+	if ( is_object( $func ) && $func instanceof Closure ) {
 		$profName = $fname.'-extensions-closure';
-	elseif( is_array( $func ) )
-		$profName = $fname.'-extensions-'.implode( '::', $func );
-	else
+	} elseif( is_array( $func ) ) {
+		if ( is_object( $func[0] ) )
+			$profName = $fname.'-extensions-'.get_class( $func[0] ).'::'.$func[1];
+		else
+			$profName = $fname.'-extensions-'.implode( '::', $func );
+	} else {
 		$profName = $fname.'-extensions-'.strval( $func );
+	}
 
 	wfProfileIn( $profName );
 	call_user_func( $func );

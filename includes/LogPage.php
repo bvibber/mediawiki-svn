@@ -34,6 +34,9 @@ class LogPage {
 	const DELETED_COMMENT = 2;
 	const DELETED_USER = 4;
     const DELETED_RESTRICTED = 8;
+	// Convenience fields
+	const SUPPRESSED_USER = 12;
+	const SUPPRESSED_ACTION = 9;
 	/* @access private */
 	var $type, $action, $comment, $params, $target, $doer;
 	/* @acess public */
@@ -66,6 +69,7 @@ class LogPage {
 			'log_action' => $this->action,
 			'log_timestamp' => $dbw->timestamp( $now ),
 			'log_user' => $this->doer->getId(),
+			'log_user_text' => $this->doer->getName(),
 			'log_namespace' => $this->target->getNamespace(),
 			'log_title' => $this->target->getDBkey(),
 			'log_comment' => $this->comment,
@@ -132,6 +136,7 @@ class LogPage {
 
 	/**
 	 * @static
+	 * @param string $type logtype
 	 */
 	public static function logName( $type ) {
 		global $wgLogNames, $wgMessageCache;
@@ -213,11 +218,12 @@ class LogPage {
 							self::formatBlockFlags( $params[2], is_null( $skin ) ) : '';
 					// Page protections
 					} else if ( $type == 'protect' && count($params) == 3 ) {
-						$details .= " {$params[1]}"; // restrictions and expiries
 						if( $params[2] ) {
 							if ( $skin ) {
+								$details .= htmlspecialchars( " {$params[1]}" ); // restrictions and expiries
 								$details .= ' ['.wfMsg('protect-summary-cascade').']';
 							} else {
+								$details .= " {$params[1]}";
 								$details .= ' ['.wfMsgForContent('protect-summary-cascade').']';
 							}
 						}

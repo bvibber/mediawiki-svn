@@ -10,11 +10,9 @@ if (webkit_match) {
 	var is_safari_win = is_safari && clientPC.indexOf('windows') != -1;
 	var webkit_version = parseInt(webkit_match[1]);
 }
-var is_khtml = navigator.vendor == 'KDE' ||
-	( document.childNodes && !document.all && !navigator.taintEnabled );
 // For accesskeys; note that FF3+ is included here!
 var is_ff2 = /firefox\/[2-9]|minefield\/3/.test( clientPC );
-var is_ff2_ = /firefox\/2/.test( clientPC );
+var ff2_bugs = /firefox\/2/.test( clientPC );
 // These aren't used here, but some custom scripts rely on them
 var is_ff2_win = is_ff2 && clientPC.indexOf('windows') != -1;
 var is_ff2_x11 = is_ff2 && clientPC.indexOf('x11') != -1;
@@ -22,7 +20,10 @@ if (clientPC.indexOf('opera') != -1) {
 	var is_opera = true;
 	var is_opera_preseven = window.opera && !document.childNodes;
 	var is_opera_seven = window.opera && document.childNodes;
-	var is_opera_95 = /opera\/(9.[5-9]|[1-9][0-9])/.test( clientPC );
+	var is_opera_95 = /opera\/(9\.[5-9]|[1-9][0-9])/.test( clientPC );
+	var opera6_bugs = is_opera_preseven;
+	var opera7_bugs = is_opera_seven && !is_opera_95;
+	var opera95_bugs = /opera\/(9\.5)/.test( clientPC );
 }
 
 // Global external objects used by this script.
@@ -35,6 +36,7 @@ if (!window.onloadFuncts) {
 	var onloadFuncts = [];
 }
 
+// code that is dependent on js2 functions should use js2AddOnloadHook
 function addOnloadHook(hookFunct) {
 	// Allows add-on scripts to add onload functions
 	if(!doneOnloadHook) {
@@ -43,6 +45,7 @@ function addOnloadHook(hookFunct) {
 		hookFunct();  // bug in MSIE script loading
 	}
 }
+
 
 function hookEvent(hookName, hookFunct) {
 	addHandler(window, hookName, hookFunct);
@@ -55,7 +58,7 @@ function importScript(page) {
 		'&action=raw&ctype=text/javascript';
 	return importScriptURI(uri);
 }
- 
+
 var loadedScripts = {}; // included-scripts tracker
 function importScriptURI(url) {
 	if (loadedScripts[url]) {
@@ -68,15 +71,21 @@ function importScriptURI(url) {
 	document.getElementsByTagName('head')[0].appendChild(s);
 	return s;
 }
- 
+
 function importStylesheet(page) {
 	return importStylesheetURI(wgScript + '?action=raw&ctype=text/css&title=' + encodeURIComponent(page.replace(/ /g,'_')));
 }
- 
-function importStylesheetURI(url) {
-	return document.createStyleSheet ? document.createStyleSheet(url) : appendCSS('@import "' + url + '";');
+
+function importStylesheetURI(url,media) {
+	var l = document.createElement('link');
+	l.type = 'text/css';
+	l.rel = 'stylesheet';
+	l.href = url;
+	if(media) l.media = media
+	document.getElementsByTagName('head')[0].appendChild(l);
+	return l;
 }
- 
+
 function appendCSS(text) {
 	var s = document.createElement('style');
 	s.type = 'text/css';
@@ -89,18 +98,19 @@ function appendCSS(text) {
 
 // special stylesheet links
 if (typeof stylepath != 'undefined' && typeof skin != 'undefined') {
-	if (is_opera_preseven) {
+	// FIXME: This tries to load the stylesheets even for skins where they
+	// don't exist, i.e., everything but Monobook.
+	if (opera6_bugs) {
 		importStylesheetURI(stylepath+'/'+skin+'/Opera6Fixes.css');
-	} else if (is_opera_seven && !is_opera_95) {
+	} else if (opera7_bugs) {
 		importStylesheetURI(stylepath+'/'+skin+'/Opera7Fixes.css');
-	} else if (is_opera_95) {
+	} else if (opera95_bugs) {
 		importStylesheetURI(stylepath+'/'+skin+'/Opera9Fixes.css');
-	} else if (is_khtml) {
-		importStylesheetURI(stylepath+'/'+skin+'/KHTMLFixes.css');
-	} else if (is_ff2_) {
+	} else if (ff2_bugs) {
 		importStylesheetURI(stylepath+'/'+skin+'/FF2Fixes.css');
 	}
 }
+
 
 if (wgBreakFrames) {
 	// Un-trap us from framesets
@@ -114,7 +124,9 @@ function showTocToggle() {
 		// Uses DOM calls to avoid document.write + XHTML issues
 
 		var linkHolder = document.getElementById('toctitle');
-		if (!linkHolder) {
+		var existingLink = document.getElementById('togglelink');
+		if (!linkHolder || existingLink) {
+			// Don't add the toggle link twice
 			return;
 		}
 
@@ -275,13 +287,19 @@ function updateTooltipAccessKeys( nodeList ) {
  * @return Node -- the DOM node of the new item (an LI element) or null
  */
 function addPortletLink(portlet, href, text, id, tooltip, accesskey, nextnode) {
-	var node = document.getElementById(portlet);
-	if ( !node ) return null;
-	node = node.getElementsByTagName( "ul" )[0];
+	var root = document.getElementById(portlet);
+	if ( !root ) return null;
+	var node = root.getElementsByTagName( "ul" )[0];
 	if ( !node ) return null;
 
+	// unhide portlet if it was hidden before
+	root.className = root.className.replace( /(^| )emptyPortlet( |$)/, "$2" );
+
+	var span = document.createElement( "span" );
+	span.appendChild( document.createTextNode( text ) );
+
 	var link = document.createElement( "a" );
-	link.appendChild( document.createTextNode( text ) );
+	link.appendChild( span );
 	link.href = href;
 
 	var item = document.createElement( "li" );
@@ -449,11 +467,26 @@ function checkboxClickHandler(e) {
 }
 
 function toggle_element_activation(ida,idb) {
-	if (!document.getElementById) {
+	if ( !document.getElementById ) {
 		return;
 	}
-	document.getElementById(ida).disabled=true;
-	document.getElementById(idb).disabled=false;
+	// Show the appropriate upload size limit message
+	if( idb == 'wpUploadFileURL' ) {
+		var e = document.getElementById( 'mw-upload-maxfilesize' );
+		if( e ) e.style.display = "none";
+
+		var e = document.getElementById( 'mw-upload-maxfilesize-url' );
+		if( e ) e.style.display = "block";
+	}
+	if( idb == 'wpUploadFile' ) {
+		var e = document.getElementById( 'mw-upload-maxfilesize-url' );
+		if( e ) e.style.display =  "none";
+
+		var e = document.getElementById( 'mw-upload-maxfilesize' );
+		if( e ) e.style.display =  "block";
+	}
+	document.getElementById( ida ).disabled = true;
+	document.getElementById( idb ).disabled = false;
 }
 
 function toggle_element_check(ida,idb) {
@@ -660,7 +693,7 @@ function ts_resortTable(lnk) {
 		if((" "+row.className+" ").indexOf(" unsortable ") < 0) {
 			var keyText = ts_getInnerText(row.cells[column]);
 			var oldIndex = (reverse ? -j : j);
-			var preprocessed = preprocessor( keyText );
+			var preprocessed = preprocessor( keyText.replace(/^[\s\xa0]+/, "").replace(/[\s\xa0]+$/, "") );
 
 			newRows[newRows.length] = new Array(row, preprocessed, oldIndex);
 		} else staticRows[staticRows.length] = new Array(row, false, j-rowStart);
@@ -719,13 +752,13 @@ function ts_initTransformTable() {
 		// Separators
 		ascii = wgSeparatorTransformTable[0].split("\t");
 		localised = wgSeparatorTransformTable[1].split("\t");
-		for ( var i = 0; i < ascii.length; i++ ) { 
+		for ( var i = 0; i < ascii.length; i++ ) {
 			ts_number_transform_table[localised[i]] = ascii[i];
 		}
 		// Digits
 		ascii = wgDigitTransformTable[0].split("\t");
 		localised = wgDigitTransformTable[1].split("\t");
-		for ( var i = 0; i < ascii.length; i++ ) { 
+		for ( var i = 0; i < ascii.length; i++ ) {
 			ts_number_transform_table[localised[i]] = ascii[i];
 		}
 
@@ -734,7 +767,7 @@ function ts_initTransformTable() {
 		maxDigitLength = 1;
 		for ( var digit in ts_number_transform_table ) {
 			// Escape regex metacharacters
-			digits.push( 
+			digits.push(
 				digit.replace( /[\\\\$\*\+\?\.\(\)\|\{\}\[\]\-]/,
 					function( s ) { return '\\' + s; } )
 			);
@@ -764,7 +797,7 @@ function ts_toLowerCase( s ) {
 	return s.toLowerCase();
 }
 
-function ts_dateToSortKey(date) {	
+function ts_dateToSortKey(date) {
 	// y2k notes: two digit years less than 50 are treated as 20XX, greater than 50 are treated as 19XX
 	if (date.length == 11) {
 		switch (date.substr(3,3).toLowerCase()) {
@@ -791,10 +824,10 @@ function ts_dateToSortKey(date) {
 		}
 	} else if (date.length == 8) {
 		yr = date.substr(6,2);
-		if (parseInt(yr) < 50) { 
-			yr = '20'+yr; 
-		} else { 
-			yr = '19'+yr; 
+		if (parseInt(yr) < 50) {
+			yr = '20'+yr;
+		} else {
+			yr = '19'+yr;
 		}
 		if (ts_europeandate == true) {
 			return yr+date.substr(3,2)+date.substr(0,2);
@@ -811,7 +844,7 @@ function ts_parseFloat( s ) {
 	}
 	if (ts_number_transform_table != false) {
 		var newNum = '', c;
-		
+
 		for ( var p = 0; p < s.length; p++ ) {
 			c = s.charAt( p );
 			if (c in ts_number_transform_table) {
@@ -860,8 +893,8 @@ function ts_alternate(table) {
 /*
  * End of table sorting code
  */
- 
- 
+
+
 /**
  * Add a cute little box at the top of the screen to inform the user of
  * something, replacing any preexisting message.
@@ -905,7 +938,7 @@ function jsMsg( message, className ) {
 	if( className ) {
 		messageDiv.setAttribute( 'class', 'mw-js-message-'+className );
 	}
-	
+
 	if (typeof message === 'object') {
 		while (messageDiv.hasChildNodes()) // Remove old content
 			messageDiv.removeChild(messageDiv.firstChild);

@@ -68,8 +68,8 @@ class ChangesList {
 	 */
 	private function preCacheMessages() {
 		if( !isset( $this->message ) ) {
-			foreach( explode(' ', 'cur diff hist minoreditletter newpageletter last '.
-				'blocklink history boteditletter semicolon-separator' ) as $msg ) {
+			foreach ( explode( ' ', 'cur diff hist last blocklink history ' .
+			'semicolon-separator pipe-separator' ) as $msg ) {
 				$this->message[$msg] = wfMsgExt( $msg, array( 'escapenoentities' ) );
 			}
 		}
@@ -86,13 +86,82 @@ class ChangesList {
 	 * @return string
 	 */
 	protected function recentChangesFlags( $new, $minor, $patrolled, $nothing = '&nbsp;', $bot = false ) {
-		$f = $new ?
-			'<span class="newpage">' . $this->message['newpageletter'] . '</span>' : $nothing;
-		$f .= $minor ?
-			'<span class="minor">' . $this->message['minoreditletter'] . '</span>' : $nothing;
-		$f .= $bot ? '<span class="bot">' . $this->message['boteditletter'] . '</span>' : $nothing;
-		$f .= $patrolled ? '<span class="unpatrolled">!</span>' : $nothing;
+		$f = $new ? self::flag( 'newpage' ) : $nothing;
+		$f .= $minor ? self::flag( 'minor' ) : $nothing;
+		$f .= $bot ? self::flag( 'bot' ) : $nothing;
+		$f .= $patrolled ? self::flag( 'unpatrolled' ) : $nothing;
 		return $f;
+	}
+
+	/**
+	 * Provide the <abbr> element appropriate to a given abbreviated flag,
+	 * namely the flag indicating a new page, a minor edit, a bot edit, or an
+	 * unpatrolled edit.  By default in English it will contain "N", "m", "b",
+	 * "!" respectively, plus it will have an appropriate title and class.
+	 *
+	 * @param $key string 'newpage', 'unpatrolled', 'minor', or 'bot'
+	 * @return string Raw HTML
+	 */
+	public static function flag( $key ) {
+		static $messages = null;
+		if ( is_null( $messages ) ) {
+			foreach ( explode( ' ', 'minoreditletter boteditletter newpageletter ' .
+			'unpatrolledletter recentchanges-label-minor recentchanges-label-bot ' .
+			'recentchanges-label-newpage recentchanges-label-unpatrolled' ) as $msg ) {
+				$messages[$msg] = wfMsgExt( $msg, 'escapenoentities' );
+			}
+		}
+		# Inconsistent naming, bleh
+		if ( $key == 'newpage' || $key == 'unpatrolled' ) {
+			$key2 = $key;
+		} else {
+			$key2 = $key . 'edit';
+		}
+		return "<abbr class=\"$key\" title=\""
+			. $messages["recentchanges-label-$key"] . "\">"
+			. $messages["${key2}letter"]
+			. '</abbr>';
+	}
+
+	/**
+	 * Some explanatory wrapper text for the given flag, to be used in a legend
+	 * explaining what the flags mean.  For instance, "N - new page".  See
+	 * also flag().
+	 *
+	 * @param $key string 'newpage', 'unpatrolled', 'minor', or 'bot'
+	 * @return string Raw HTML
+	 */
+	private static function flagLine( $key ) {
+		return wfMsgExt( "recentchanges-legend-$key", array( 'escapenoentities',
+			'replaceafter' ), self::flag( $key ) );
+	}
+
+	/**
+	 * A handy legend to tell users what the little "m", "b", and so on mean.
+	 *
+	 * @return string Raw HTML
+	 */
+	public static function flagLegend() {
+		global $wgGroupPermissions, $wgLang;
+
+		$flags = array( self::flagLine( 'newpage' ),
+			self::flagLine( 'minor' ) );
+
+		# Don't show info on bot edits unless there's a bot group of some kind
+		foreach ( $wgGroupPermissions as $rights ) {
+			if ( isset( $rights['bot'] ) && $rights['bot'] ) {
+				$flags[] = self::flagLine( 'bot' );
+				break;
+			}
+		}
+
+		if ( self::usePatrol() ) {
+			$flags[] = self::flagLine( 'unpatrolled' );
+		}
+
+		return '<div class="mw-rc-label-legend">' .
+			wfMsgExt( 'recentchanges-label-legend', 'parseinline',
+			$wgLang->commaList( $flags ) ) . '</div>';
 	}
 
 	/**
@@ -398,7 +467,7 @@ class ChangesList {
 	}
 	
 	/** Inserts a rollback link */
-	protected function insertRollback( &$s, &$rc ) {
+	public function insertRollback( &$s, &$rc ) {
 		global $wgUser;
 		if( !$rc->mAttribs['rc_new'] && $rc->mAttribs['rc_this_oldid'] && $rc->mAttribs['rc_cur_id'] ) {
 			$page = $rc->getTitle();
@@ -418,7 +487,7 @@ class ChangesList {
 		}
 	}
 
-	protected function insertTags( &$s, &$rc, &$classes ) {
+	public function insertTags( &$s, &$rc, &$classes ) {
 		if ( empty($rc->mAttribs['ts_tags']) )
 			return;
 			
@@ -427,7 +496,7 @@ class ChangesList {
 		$s .= ' ' . $tagSummary;
 	}
 
-	protected function insertExtra( &$s, &$rc, &$classes ) {
+	public function insertExtra( &$s, &$rc, &$classes ) {
 		## Empty, used for subclassers to add anything special.
 	}
 }
@@ -531,15 +600,13 @@ class EnhancedChangesList extends ChangesList {
 	*  @ return string
 	*/
 	public function beginRecentChangesList() {
-		global $wgStylePath, $wgJsMimeType, $wgStyleVersion;
+		global $wgStylePath, $wgStyleVersion;
 		$this->rc_cache = array();
 		$this->rcMoveIndex = 0;
 		$this->rcCacheIndex = 0;
 		$this->lastdate = '';
 		$this->rclistOpen = false;
-		$script = Xml::tags( 'script', array(
-			'type' => $wgJsMimeType,
-			'src' => $wgStylePath . "/common/enhancedchanges.js?$wgStyleVersion" ), '' );
+		$script = Html::linkedScript( $wgStylePath . "/common/enhancedchanges.js?$wgStyleVersion" );
 		return $script;
 	}
 	/**
@@ -709,7 +776,7 @@ class EnhancedChangesList extends ChangesList {
 
 		wfProfileIn( __METHOD__ );
 
-		$r = '<table cellpadding="0" cellspacing="0" border="0" style="background: none"><tr>';
+		$r = '<table class="mw-enhanced-rc"><tr>';
 
 		# Collate list of users
 		$userlinks = array();
@@ -779,13 +846,13 @@ class EnhancedChangesList extends ChangesList {
 
 		$tl = "<span id='mw-rc-openarrow-$jsid' class='mw-changeslist-expanded' style='visibility:hidden'><a href='#' $toggleLink title='$expandTitle'>" . $this->sideArrow() . "</a></span>";
 		$tl .= "<span id='mw-rc-closearrow-$jsid' class='mw-changeslist-hidden' style='display:none'><a href='#' $toggleLink title='$closeTitle'>" . $this->downArrow() . "</a></span>";
-		$r .= '<td valign="top" style="white-space: nowrap"><tt>'.$tl.'&nbsp;';
+		$r .= '<td class="mw-enhanced-rc">'.$tl.'&nbsp;';
 
 		# Main line
 		$r .= $this->recentChangesFlags( $isnew, false, $unpatrolled, '&nbsp;', $bot );
 
 		# Timestamp
-		$r .= '&nbsp;'.$block[0]->timestamp.'&nbsp;</tt></td><td>';
+		$r .= '&nbsp;'.$block[0]->timestamp.'&nbsp;</td><td>';
 
 		# Article link
 		if( $namehidden ) {
@@ -832,12 +899,12 @@ class EnhancedChangesList extends ChangesList {
 		if( $allLogs ) {
 			// don't show history link for logs
 		} else if( $namehidden || !$block[0]->getTitle()->exists() ) {
-			$r .= $this->message['semicolon-separator'] . $this->message['hist'] . ')';
+			$r .= $this->message['pipe-separator'] . $this->message['hist'] . ')';
 		} else {
 			$params = $queryParams;
 			$params['action'] = 'history';
 
-			$r .= $this->message['semicolon-separator'] .
+			$r .= $this->message['pipe-separator'] .
 				$this->skin->link(
 					$block[0]->getTitle(),
 					$this->message['hist'],
@@ -877,7 +944,7 @@ class EnhancedChangesList extends ChangesList {
 
 		# Sub-entries
 		$r .= '<div id="mw-rc-subentries-'.$jsid.'" class="mw-changeslist-hidden">';
-		$r .= '<table cellpadding="0" cellspacing="0"  border="0" style="background: none">';
+		$r .= '<table class="mw-enhanced-rc">';
 		foreach( $block as $rcObj ) {
 			# Extract fields from DB into the function scope (rc_xxxx variables)
 			// FIXME: Would be good to replace this extract() call with something
@@ -887,10 +954,10 @@ class EnhancedChangesList extends ChangesList {
 			extract( $rcObj->mAttribs );
 
 			#$r .= '<tr><td valign="top">'.$this->spacerArrow();
-			$r .= '<tr><td valign="top">';
-			$r .= '<tt>'.$this->spacerIndent() . $this->spacerIndent();
+			$r .= '<tr><td style="vertical-align:top;font-family:monospace">';
+			$r .= $this->spacerIndent() . $this->spacerIndent();
 			$r .= $this->recentChangesFlags( $rc_new, $rc_minor, $rcObj->unpatrolled, '&nbsp;', $rc_bot );
-			$r .= '&nbsp;</tt></td><td valign="top">';
+			$r .= '&nbsp;</td><td style="vertical-align:top"><span style="font-family:monospace">';
 
 			$params = $queryParams;
 
@@ -900,32 +967,31 @@ class EnhancedChangesList extends ChangesList {
 
 			# Log timestamp
 			if( $rc_type == RC_LOG ) {
-				$link = '<tt>'.$rcObj->timestamp.'</tt> ';
+				$link = $rcObj->timestamp;
 			# Revision link
 			} else if( !ChangesList::userCan($rcObj,Revision::DELETED_TEXT) ) {
-				$link = '<span class="history-deleted"><tt>'.$rcObj->timestamp.'</tt></span> ';
+				$link = '<span class="history-deleted">'.$rcObj->timestamp.'</span> ';
 			} else {
 				if ( $rcObj->unpatrolled && $rc_type == RC_NEW) {
 					$params['rcid'] = $rcObj->mAttribs['rc_id'];
 				}
 
-				$link = '<tt>' .
-					$this->skin->link(
+				$link = $this->skin->link(
 						$rcObj->getTitle(),
 						$rcObj->timestamp,
 						array(),
 						$params,
 						array( 'known', 'noclasses' )
-					) . '</tt>';
+					);
 				if( $this->isDeleted($rcObj,Revision::DELETED_TEXT) )
 					$link = '<span class="history-deleted">'.$link.'</span> ';
 			}
-			$r .= $link;
+			$r .= $link . '</span>';
 
 			if ( !$rc_type == RC_LOG || $rc_type == RC_NEW ) {
 				$r .= ' (';
 				$r .= $rcObj->curlink;
-				$r .= $this->message['semicolon-separator'];
+				$r .= $this->message['pipe-separator'];
 				$r .= $rcObj->lastlink;
 				$r .= ')';
 			}
@@ -1025,15 +1091,15 @@ class EnhancedChangesList extends ChangesList {
 		extract( $rcObj->mAttribs );
 		$query['curid'] = $rc_cur_id;
 
-		$r = '<table cellspacing="0" cellpadding="0" border="0" style="background: none"><tr>';
-		$r .= '<td valign="top" style="white-space: nowrap"><tt>' . $this->spacerArrow() . '&nbsp;';
+		$r = '<table class="mw-enhanced-rc"><tr>';
+		$r .= '<td class="mw-enhanced-rc">' . $this->spacerArrow() . '&nbsp;';
 		# Flag and Timestamp
 		if( $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$r .= '&nbsp;&nbsp;&nbsp;&nbsp;'; // 4 flags -> 4 spaces
 		} else {
 			$r .= $this->recentChangesFlags( $rc_type == RC_NEW, $rc_minor, $rcObj->unpatrolled, '&nbsp;', $rc_bot );
 		}
-		$r .= '&nbsp;'.$rcObj->timestamp.'&nbsp;</tt></td><td>';
+		$r .= '&nbsp;'.$rcObj->timestamp.'&nbsp;</td><td>';
 		# Article or log link
 		if( $rc_log_type ) {
 			$logtitle = Title::newFromText( "Log/$rc_log_type", NS_SPECIAL );
@@ -1050,7 +1116,7 @@ class EnhancedChangesList extends ChangesList {
 		}
 		# Diff and hist links
 		if ( $rc_type != RC_LOG ) {
-			$r .= ' ('. $rcObj->difflink . $this->message['semicolon-separator'];
+			$r .= ' ('. $rcObj->difflink . $this->message['pipe-separator'];
 			$query['action'] = 'history';
 			$r .= $this->skin->link(
 				$rcObj->getTitle(),

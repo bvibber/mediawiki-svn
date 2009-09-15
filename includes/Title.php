@@ -1009,8 +1009,7 @@ class Title {
 
 	/**
 	 * Can $wgUser perform $action on this page?
-	 * This skips potentially expensive cascading permission checks
-	 * as well as avoids expensive error formatting
+	 * This skips potentially expensive cascading permission checks.
 	 *
 	 * Suitable for use for nonessential UI controls in common cases, but
 	 * _not_ for functional access control.
@@ -1176,8 +1175,15 @@ class Title {
 			if( !$user->isAllowed( 'move' ) ) {
 				// User can't move anything
 				global $wgGroupPermissions;
-				if( $user->isAnon() && ( $wgGroupPermissions['user']['move']
-				|| $wgGroupPermissions['autoconfirmed']['move'] ) ) {
+				$userCanMove = false;
+				if ( isset( $wgGroupPermissions['user']['move'] ) ) {
+					$userCanMove = $wgGroupPermissions['user']['move'];
+				}
+				$autoconfirmedCanMove = false;
+				if ( isset( $wgGroupPermissions['autoconfirmed']['move'] ) ) {
+					$autoconfirmedCanMove = $wgGroupPermissions['autoconfirmed']['move'];
+				}
+				if ( $user->isAnon() && ( $userCanMove || $autoconfirmedCanMove ) ) {
 					// custom message if logged-in users without any special rights can move
 					$errors[] = array ( 'movenologintext' );
 				} else {
@@ -1202,14 +1208,8 @@ class Title {
 			}
 		} elseif( !$user->isAllowed( $action ) ) {
 			$return = null;
-			
-			// We avoid expensive display logic for quickUserCan's and such
-			$groups = false; 
-			if (!$short) {
-				$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
-					User::getGroupsWithPermission( $action ) );
-			} 
-			
+			$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
+				User::getGroupsWithPermission( $action ) );
 			if( $groups ) {
 				$return = array( 'badaccess-groups',
 					array( implode( ', ', $groups ), count( $groups ) ) );
@@ -1280,8 +1280,16 @@ class Title {
 
 		# Protect css/js subpages of user pages
 		# XXX: this might be better using restrictions
-		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssJsSubpage() from working
-		if( $this->isCssJsSubpage() && !$user->isAllowed('editusercssjs')
+		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssSubpage() 
+		#      and $this->userCanEditJsSubpage() from working
+		# XXX: right 'editusercssjs' is deprecated, for backward compatibility only
+		if( $this->isCssSubpage() && ( !$user->isAllowed('editusercssjs') || !$user->isAllowed('editusercss') )
+			&& $action != 'patrol'
+			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) )
+		{
+			$errors[] = array('customcssjsprotected');
+		} else if( $this->isJsSubpage() && ( !$user->isAllowed('editusercssjs') || !$user->isAllowed('edituserjs') )
+			&& $action != 'patrol'
 			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) )
 		{
 			$errors[] = array('customcssjsprotected');
@@ -1390,6 +1398,11 @@ class Title {
 		if ( $this->getNamespace() < 0 ) {
 			return false;
 		}
+		
+		// Can't protect pages that exist.
+		if ($this->exists()) {
+			return false;
+		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'protected_titles', '*',
@@ -1426,7 +1439,8 @@ class Title {
 
 		$expiry_description = '';
 		if ( $encodedExpiry != 'infinity' ) {
-			$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry ) , $wgContLang->date( $expiry ) , $wgContLang->time( $expiry ) ).')';
+			$expiry_description = ' (' . wfMsgForContent( 'protect-expiring',$wgContLang->timeanddate( $expiry ),
+				$wgContLang->date( $expiry ) , $wgContLang->time( $expiry ) ).')';
 		}
 		else {
 			$expiry_description .= ' (' . wfMsgForContent( 'protect-expiry-indefinite' ).')';
@@ -1435,23 +1449,30 @@ class Title {
 		# Update protection table
 		if ($create_perm != '' ) {
 			$dbw->replace( 'protected_titles', array(array('pt_namespace', 'pt_title')),
-				array( 'pt_namespace' => $namespace, 'pt_title' => $title
-					, 'pt_create_perm' => $create_perm
-					, 'pt_timestamp' => Block::encodeExpiry(wfTimestampNow(), $dbw)
-					, 'pt_expiry' => $encodedExpiry
-					, 'pt_user' => $wgUser->getId(), 'pt_reason' => $reason ), __METHOD__  );
+				array(
+					'pt_namespace' => $namespace,
+					'pt_title' => $title,
+					'pt_create_perm' => $create_perm,
+					'pt_timestamp' => Block::encodeExpiry(wfTimestampNow(), $dbw),
+					'pt_expiry' => $encodedExpiry,
+					'pt_user' => $wgUser->getId(),
+					'pt_reason' => $reason,
+				), __METHOD__
+			);
 		} else {
 			$dbw->delete( 'protected_titles', array( 'pt_namespace' => $namespace,
 				'pt_title' => $title ), __METHOD__ );
 		}
 		# Update the protection log
-		$log = new LogPage( 'protect' );
+		if( $dbw->affectedRows() ) {
+			$log = new LogPage( 'protect' );
 
-		if( $create_perm ) {
-			$params = array("[create=$create_perm] $expiry_description",'');
-			$log->addEntry( ( isset( $this->mRestrictions['create'] ) && $this->mRestrictions['create'] ) ? 'modify' : 'protect', $this, trim( $reason ), $params );
-		} else {
-			$log->addEntry( 'unprotect', $this, $reason );
+			if( $create_perm ) {
+				$params = array("[create=$create_perm] $expiry_description",'');
+				$log->addEntry( ( isset( $this->mRestrictions['create'] ) && $this->mRestrictions['create'] ) ? 'modify' : 'protect', $this, trim( $reason ), $params );
+			} else {
+				$log->addEntry( 'unprotect', $this, $reason );
+			}
 		}
 
 		return true;
@@ -1485,7 +1506,33 @@ class Title {
 	 */
 	public function userCanRead() {
 		global $wgUser, $wgGroupPermissions;
+		
+		static $useShortcut = null;
 
+		# Initialize the $useShortcut boolean, to determine if we can skip quite a bit of code below
+		if( is_null( $useShortcut ) ) {
+			global $wgRevokePermissions;
+			$useShortcut = true;
+			if( empty( $wgGroupPermissions['*']['read'] ) ) {
+				# Not a public wiki, so no shortcut
+				$useShortcut = false;
+			} elseif( !empty( $wgRevokePermissions ) ) {
+				/*
+				 * Iterate through each group with permissions being revoked (key not included since we don't care
+				 * what the group name is), then check if the read permission is being revoked. If it is, then
+				 * we don't use the shortcut below since the user might not be able to read, even though anon
+				 * reading is allowed.
+				 */
+				foreach( $wgRevokePermissions as $perms ) {
+					if( !empty( $perms['read'] ) ) {
+						# We might be removing the read right from the user, so no shortcut
+						$useShortcut = false;
+						break;
+					}
+				}
+			}
+		}
+		
 		$result = null;
 		wfRunHooks( 'userCan', array( &$this, &$wgUser, 'read', &$result ) );
 		if ( $result !== null ) {
@@ -1493,7 +1540,7 @@ class Title {
 		}
 
 		# Shortcut for public wikis, allows skipping quite a bit of code
-		if ( !empty( $wgGroupPermissions['*']['read'] ) )
+		if ( $useShortcut )
 			return true;
 
 		if( $wgUser->isAllowed( 'read' ) ) {
@@ -1678,15 +1725,28 @@ class Title {
 		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.js$/", $this->mTextform ) );
 	}
 	/**
-	 * Protect css/js subpages of user pages: can $wgUser edit
+	 * Protect css subpages of user pages: can $wgUser edit
 	 * this page?
 	 *
 	 * @return \type{\bool} TRUE or FALSE
 	 * @todo XXX: this might be better using restrictions
 	 */
-	public function userCanEditCssJsSubpage() {
+	public function userCanEditCssSubpage() {
 		global $wgUser;
-		return ( $wgUser->isAllowed('editusercssjs') || preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
+		return ( ( $wgUser->isAllowed('editusercssjs') && $wgUser->isAllowed('editusercss') ) 
+			|| preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
+	}
+	/**
+	 * Protect js subpages of user pages: can $wgUser edit
+	 * this page?
+	 *
+	 * @return \type{\bool} TRUE or FALSE
+	 * @todo XXX: this might be better using restrictions
+	 */
+	public function userCanEditJsSubpage() {
+		global $wgUser;
+		return ( ( $wgUser->isAllowed('editusercssjs') && $wgUser->isAllowed('edituserjs') )
+		       	|| preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
 	}
 
 	/**
@@ -1802,7 +1862,18 @@ class Title {
 	 * Loads a string into mRestrictions array
 	 * @param $res \type{Resource} restrictions as an SQL result.
 	 */
-	private function loadRestrictionsFromRow( $res, $oldFashionedRestrictions = NULL ) {
+	private function loadRestrictionsFromResultWrapper( $res, $oldFashionedRestrictions = NULL ) {
+		$rows = array();
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		while( $row = $dbr->fetchObject( $res ) ) {
+			$rows[] = $row;
+		}
+		
+		$this->loadRestrictionsFromRows( $rows, $oldFashionedRestrictions );
+	}
+	
+	public function loadRestrictionsFromRows( $rows, $oldFashionedRestrictions = NULL ) {
 		global $wgRestrictionTypes;
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -1837,12 +1908,12 @@ class Title {
 
 		}
 
-		if( $dbr->numRows( $res ) ) {
+		if( count($rows) ) {
 			# Current system - load second to make them override.
 			$now = wfTimestampNow();
 			$purgeExpired = false;
 
-			foreach( $res as $row ) {
+			foreach( $rows as $row ) {
 				# Cycle through all the restrictions.
 
 				// Don't take care of restrictions types that aren't in $wgRestrictionTypes
@@ -1884,7 +1955,7 @@ class Title {
 				$res = $dbr->select( 'page_restrictions', '*',
 					array ( 'pr_page' => $this->getArticleId() ), __METHOD__ );
 
-				$this->loadRestrictionsFromRow( $res, $oldFashionedRestrictions );
+				$this->loadRestrictionsFromResultWrapper( $res, $oldFashionedRestrictions );
 			} else {
 				$title_protection = $this->getTitleProtection();
 
@@ -2087,7 +2158,7 @@ class Title {
 		$linkCache->clearBadLink( $this->getPrefixedDBkey() );
 
 		if ( $newid === false ) { $this->mArticleID = -1; }
-		else { $this->mArticleID = $newid; }
+		else { $this->mArticleID = intval( $newid ); }
 		$this->mRestrictionsLoaded = false;
 		$this->mRestrictions = array();
 	}
@@ -2170,8 +2241,11 @@ class Title {
 		$dbkey = preg_replace( '/\xE2\x80[\x8E\x8F\xAA-\xAE]/S', '', $dbkey );
 
 		# Clean up whitespace
+		# Note: use of the /u option on preg_replace here will cause
+		# input with invalid UTF-8 sequences to be nullified out in PHP 5.2.x,
+		# conveniently disabling them.
 		#
-		$dbkey = preg_replace( '/[ _]+/', '_', $dbkey );
+		$dbkey = preg_replace( '/[ _\xA0\x{1680}\x{180E}\x{2000}-\x{200B}\x{2028}\x{2029}\x{202F}\x{205F}\x{3000}]+/u', '_', $dbkey );
 		$dbkey = trim( $dbkey, '_' );
 
 		if ( '' == $dbkey ) {
@@ -2789,6 +2863,10 @@ class Title {
 
 		$dbw = wfGetDB( DB_MASTER );
 
+		$rcts = $dbw->timestamp( $nt->getEarliestRevTime() );
+		$newns = $nt->getNamespace();
+		$newdbk = $nt->getDBkey();
+
 		# Delete the old redirect. We don't save it to history since
 		# by definition if we've got here it's rather uninteresting.
 		# We have to remove it so that the next step doesn't trigger
@@ -2807,6 +2885,11 @@ class Title {
 			$dbw->delete( 'langlinks', array( 'll_from' => $newid ), __METHOD__ );
 			$dbw->delete( 'redirect', array( 'rd_from' => $newid ), __METHOD__ );
 		}
+		// If the redirect was recently created, it may have an entry in recentchanges still	
+		$dbw->delete( 'recentchanges', 
+			array( 'rc_timestamp' => $rcts, 'rc_namespace' => $newns, 'rc_title' => $newdbk, 'rc_new' => 1 ), 
+			__METHOD__
+		);
 
 		# Save a null revision in the page's history notifying of the move
 		$nullRevision = Revision::newNullRevision( $dbw, $oldid, $comment, true );
@@ -2897,6 +2980,9 @@ class Title {
 
 		# Save a null revision in the page's history notifying of the move
 		$nullRevision = Revision::newNullRevision( $dbw, $oldid, $comment, true );
+		if ( !is_object( $nullRevision ) ) {
+			throw new MWException( 'No valid null revision produced in ' . __METHOD__ );
+		}
 		$nullRevId = $nullRevision->insertOn( $dbw );
 		
 		$article = new Article( $this );
@@ -2991,7 +3077,11 @@ class Title {
 				break;
 			}
 
-			if( $oldSubpage->getArticleId() == $this->getArticleId() )
+			// We don't know whether this function was called before
+			// or after moving the root page, so check both
+			// $this and $nt
+			if( $oldSubpage->getArticleId() == $this->getArticleId() ||
+					$oldSubpage->getArticleID() == $nt->getArticleId() )
 				// When moving a page to a subpage of itself,
 				// don't move it twice
 				continue;
@@ -3626,5 +3716,22 @@ class Title {
 			$this->mBacklinkCache = new BacklinkCache( $this );
 		}
 		return $this->mBacklinkCache;
+	}
+
+	/**
+	 * Whether the magic words __INDEX__ and __NOINDEX__ function for
+	 * this page.
+	 * @return Bool
+	 */
+	public function canUseNoindex(){
+		global $wgArticleRobotPolicies, $wgContentNamespaces,
+		       $wgExemptFromUserRobotsControl;
+
+		$bannedNamespaces = is_null( $wgExemptFromUserRobotsControl )
+			? $wgContentNamespaces
+			: $wgExemptFromUserRobotsControl;
+
+		return !in_array( $this->mNamespace, $bannedNamespaces );
+
 	}
 }

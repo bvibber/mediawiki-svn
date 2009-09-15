@@ -503,7 +503,6 @@ $messages = array(
 'searchall'                 => 'ທັງໜົດ',
 'showingresults'            => "ສະແດງທາງລຸ່ມ ຮອດ {{PLURAL:$1|'''1''' ຜົນ|'''$1''' ຜົນ}} ເລີ່ມຈາກ  #'''$2'''.",
 'showingresultsnum'         => "ສະແດງທາງລຸ່ມ  {{PLURAL:$3|'''1''' ຜົນ|'''$3''' ຜົນ}} ເລີ່ມຈາກ #'''$2'''.",
-'showingresultstotal'       => "ສະແດງທາງລຸ່ມ {{PLURAL:$4|ຜົນ '''$1''' of '''$3'''|ຜົນ '''$1 - $2''' of '''$3'''}}",
 'nonefound'                 => "'''ໜາຍເຫດ''': ຈະຄົ້ນຫາແຕ່ໃນ ບາງຂອບເຂດຊື່ ຖ້າບໍ່ມີການຕັ້ງຄ່າ.
 ທົດລອງ ໃຊ້ຄຳນຳໝ້າ ''all:'' ໃນຂໍ້ຄວາມຊອກຫາ ຂອງ ທ່ານ ເພື່ອ ຄົ້ນຫາ ທຸກໆເນື້ອໃນ (ລວມທັງໝ້າສົນທະນາ, ແມ່ແບບ ແລະອື່ນໆ), ຫຼື ໃຊ້ ຂອບເຂດຊື່ໃດໝຶ່ງເປັນ ຄຳນຳໝ້າເລີຍ.",
 'powersearch'               => 'ຊອກຫາ',
@@ -856,11 +855,10 @@ $messages = array(
 'delete_and_move_reason'  => 'ລຶບແລ້ວ ເພື່ອ ຍ້າຍໜ້າອື່ນ ມານີ້',
 
 # Namespace 8 related
-'allmessages'         => 'ຂໍ້ຄວາມ ຂອງ ລະບົບ',
-'allmessagesname'     => 'ຊື່',
-'allmessagesdefault'  => 'ຂໍ້ຄວາມເດີມ',
-'allmessagescurrent'  => 'ຂໍ້ຄວາມປະຈຸບັນ',
-'allmessagesmodified' => 'ສະແດງແຕ່ອັນທີ່ຖືກດັດແປງ',
+'allmessages'        => 'ຂໍ້ຄວາມ ຂອງ ລະບົບ',
+'allmessagesname'    => 'ຊື່',
+'allmessagesdefault' => 'ຂໍ້ຄວາມເດີມ',
+'allmessagescurrent' => 'ຂໍ້ຄວາມປະຈຸບັນ',
 
 # Thumbnails
 'thumbnail-more' => 'ໃຫ້ໃຫຍ່ຂຶ້ນ',

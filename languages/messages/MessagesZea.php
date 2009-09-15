@@ -9,6 +9,7 @@
  *
  * @author Adnergje
  * @author NJ
+ * @author Purodha
  * @author Rob Church <robchur@gmail.com>
  * @author Steinbach
  * @author Troefkaart
@@ -247,7 +248,6 @@ $messages = array(
 'aboutsite'            => 'Over {{SITENAME}}',
 'aboutpage'            => 'Project:Info',
 'copyright'            => 'Den inoud is beschikbaer onder de $1.',
-'copyrightpagename'    => '{{SITENAME}} auteursrechen',
 'copyrightpage'        => '{{ns:project}}:Auteursrechen',
 'currentevents'        => "In 't nieuws",
 'currentevents-url'    => "Project:In 't nieuws",
@@ -560,7 +560,8 @@ Je kan [[Special:Search/{{PAGENAME}}|ni deêze term zoeken]] in aore pagina\'s o
 |-
 | Konqueror || F5
 |}',
-'usercssjsyoucanpreview'     => "'''Tip:''' Gebruuk de knoppe 'Naekieken' om je nieuwe CSS/JS te tessen voe da je opsli.",
+'usercssyoucanpreview'       => "'''Tip:''' Gebruuk de knoppe 'Naekieken' om je nieuwe CSS te tessen voe da je opsli.",
+'userjsyoucanpreview'        => "'''Tip:''' Gebruuk de knoppe 'Naekieken' om je nieuwe JS te tessen voe da je opsli.",
 'usercsspreview'             => "'''Dit is alleên een voeôvertonieng van je persoônlijke CSS, dezen is nog nie opeslogen!'''",
 'userjspreview'              => "'''Let op: je test noe je persoônlijke JavaScript. De pagina is nie opeslogen!'''",
 'userinvalidcssjstitle'      => "'''Waerschuwieng:''' der is hin skin \"\$1\". Let op: jen eihen .css- en .js-pagina's behunnen mie een kleine letter, buvobbeld {{ns:user}}:Naem/monobook.css in plekke van {{ns:user}}:Naem/Monobook.css.",
@@ -679,10 +680,10 @@ Misschien is een verwiederd of hernoemd.
 'rev-deleted-user'            => '(gebruker verwiederd)',
 'rev-deleted-event'           => '(logboekrehel verwiederd)',
 'rev-deleted-text-permission' => "Deêze bewerkieng van de pagina is verwiederd uut de publieke archieven.
-Der kunn'n details anwezig zien in 't [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}}verwiederiengslogboek].",
+Der kunn'n details anwezig zien in 't [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}}verwiederiengslogboek].",
 'rev-deleted-text-view'       => "Deêze bewerkieng van de pagina is verwiederd uut de publieke archieven.
 As opzichter van {{SITENAME}} kan je dezen ziene;
-der kunn'n details anwezig zien in 't [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwiederiengslogboek].",
+der kunn'n details anwezig zien in 't [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} verwiederiengslogboek].",
 'rev-delundel'                => 'weerheven/verberhen',
 'revisiondelete'              => 'Versies verwiederen/trugplekken',
 'revdelete-nooldid-title'     => 'Hin doelversie',
@@ -783,7 +784,6 @@ Zurg da je bie deêze wiezigieng de heschiedenisdeurloôpendeid van de pagina be
 'searchall'             => 'aolle',
 'showingresults'        => "Ieronder {{PLURAL:$1|sti '''1''' resultaot|staen '''$1''' resultaoten}} vanof #'''$2'''.",
 'showingresultsnum'     => "Ieronder {{PLURAL:$3|sti '''1''' resultaot|staen '''$3''' resultaoten}} vanof #'''$2'''.",
-'showingresultstotal'   => "Ieronder worn de resultaoten '''$1 tot $2''' van '''$3''' weereheven",
 'nonefound'             => "'''Opmerkieng''': mislukte zoekopdrachten worn vaok veroôrzaekt deur zoekn ni vee voekomm'nde woôrn as \"van\" en \"de\", die an nie in de indexen worn openoom'n, of deur meêr dan eên zoekterm op te heven. Allin pagina's die an aolle zoektermen bevatt'n worn openoom'n in de resultaoten.",
 'powersearch'           => 'Uutebreid zoeken',
 'powersearch-legend'    => 'Uutebreid zoeken',
@@ -805,7 +805,7 @@ De hehevens over {{SITENAME}} zien meuhlijk nie bie'ewerkt.",
 'mypreferences'             => 'Mien vòkeuren',
 'prefs-edits'               => 'Antal bewerkiengen:',
 'prefsnologin'              => 'Nie anemeld',
-'prefsnologintext'          => 'Je mò <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} anemeld]</span> zien om je vòkeuren te kunn\'n instell\'n.',
+'prefsnologintext'          => 'Je mò <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} anemeld]</span> zien om je vòkeuren te kunn\'n instell\'n.',
 'changepassword'            => 'Wachtwoôrd wiezigen',
 'prefs-skin'                => 'Vurmhevieng',
 'skin-preview'              => 'Voevertoônienge',
@@ -1108,8 +1108,6 @@ Kiest 'n aore naem.",
 'allmessagescurrent'        => 'Tekst van noe',
 'allmessagestext'           => "Dit is 'n liest van aolle systeemteksten die-an in de MediaWiki-naemruumte stae.",
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' kan nie gebruukt ore om'at '''\$wgUseDatabaseMessages''' uutgeschaekeld staet.",
-'allmessagesfilter'         => 'Zoek nae systeemteksten mee...',
-'allmessagesmodified'       => 'Laet alleêne de veranderde teksten zieë',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'     => 'Mien gebrukersbladzie',

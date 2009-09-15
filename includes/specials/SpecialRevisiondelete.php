@@ -107,10 +107,25 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		$this->outputHeader();
 		$this->submitClicked = $wgRequest->wasPosted() && $wgRequest->getBool( 'wpSubmit' );
 		# Handle our many different possible input types.
-		# Use CSV, since the cgi handling will break on arrays.
-		$this->ids = explode( ',', $wgRequest->getVal('ids') );
+		$ids = $wgRequest->getVal( 'ids' );
+		if ( !is_null( $ids ) ) {
+			# Allow CSV, for backwards compatibility, or a single ID for show/hide links
+			$this->ids = explode( ',', $ids );
+		} else {
+			# Array input
+			$this->ids = array_keys( $wgRequest->getArray('ids',array()) );
+		}
+		// $this->ids = array_map( 'intval', $this->ids );
 		$this->ids = array_unique( array_filter( $this->ids ) );
-		$this->targetObj = Title::newFromText( $wgRequest->getText( 'target' ) );
+
+		if ( $wgRequest->getVal( 'action' ) == 'revisiondelete' ) {
+			# For show/hide form submission from history page
+			$this->targetObj = $GLOBALS['wgTitle'];
+			$this->typeName = 'revision';
+		} else {
+			$this->typeName = $wgRequest->getVal( 'type' );
+			$this->targetObj = Title::newFromText( $wgRequest->getText( 'target' ) );
+		}
 
 		# For reviewing deleted files...
 		$this->archiveName = $wgRequest->getVal( 'file' );
@@ -120,7 +135,6 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 			return;
 		}
 
-		$this->typeName = $wgRequest->getVal( 'type' );
 		if ( isset( self::$deprecatedTypeMap[$this->typeName] ) ) {
 			$this->typeName = self::$deprecatedTypeMap[$this->typeName];
 		}
@@ -139,6 +153,8 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 			$rev = Revision::newFromId( $this->ids[0] );
 			$this->targetObj = $rev ? $rev->getTitle() : $this->targetObj;
 		}
+		
+		$this->otherReason = $wgRequest->getVal( 'wpReason' );
 		# We need a target page!
 		if( is_null($this->targetObj) ) {
 			$wgOut->addWikiMsg( 'undelete-header' );
@@ -181,7 +197,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 	 * Show some useful links in the subtitle
 	 */
 	protected function showConvenienceLinks() {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		# Give a link to the logs/hist for this page
 		if( $this->targetObj ) {
 			$links = array();
@@ -192,25 +208,27 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 				array(),
 				array( 'page' => $this->targetObj->getPrefixedText() )
 			);
-			# Give a link to the page history
-			$links[] = $this->skin->linkKnown(
-				$this->targetObj,
-				wfMsgHtml( 'pagehist' ),
-				array(),
-				array( 'action' => 'history' )
-			);
-			# Link to deleted edits
-			if( $wgUser->isAllowed('undelete') ) {
-				$undelete = SpecialPage::getTitleFor( 'Undelete' );
+			if ( $this->targetObj->getNamespace() != NS_SPECIAL ) {
+				# Give a link to the page history
 				$links[] = $this->skin->linkKnown(
-					$undelete,
-					wfMsgHtml( 'deletedhist' ),
+					$this->targetObj,
+					wfMsgHtml( 'pagehist' ),
 					array(),
-					array( 'target' => $this->targetObj->getPrefixedDBkey() )
+					array( 'action' => 'history' )
 				);
+				# Link to deleted edits
+				if( $wgUser->isAllowed('undelete') ) {
+					$undelete = SpecialPage::getTitleFor( 'Undelete' );
+					$links[] = $this->skin->linkKnown(
+						$undelete,
+						wfMsgHtml( 'deletedhist' ),
+						array(),
+						array( 'target' => $this->targetObj->getPrefixedDBkey() )
+					);
+				}
 			}
 			# Logs themselves don't have histories or archived revisions
-			$wgOut->setSubtitle( '<p>'.implode($links,' / ').'</p>' );
+			$wgOut->setSubtitle( '<p>' . $wgLang->pipeList( $links ) . '</p>' );
 		}
 	}
 
@@ -342,23 +360,55 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		// Normal sysops can always see what they did, but can't always change it
 		if( !$UserAllowed ) return;
 
-		$wgOut->addHTML(
-			Xml::openElement( 'form', array( 'method' => 'post',
+		$out =  Xml::openElement( 'form', array( 'method' => 'post',
 				'action' => $this->getTitle()->getLocalUrl( array( 'action' => 'submit' ) ), 
 				'id' => 'mw-revdel-form-revisions' ) ) .
-			Xml::openElement( 'fieldset' ) .
-			Xml::element( 'legend', null,  wfMsg( 'revdelete-legend' ) ) .
+			Xml::fieldset( wfMsg( 'revdelete-legend' ) ) .
 			$this->buildCheckBoxes( $bitfields ) .
-			'<p>' . Xml::inputLabel( wfMsg( 'revdelete-log' ), 'wpReason', 'wpReason', 60 ) . '</p>' . 
-			'<p>' . Xml::submitButton( wfMsg( 'revdelete-submit' ), 
-				array( 'name' => 'wpSubmit' ) ) . '</p>' .
+			Xml::openElement( 'table' ) .
+			"<tr>\n" .
+				'<td class="mw-label">' .
+					Xml::label( wfMsg( 'revdelete-log' ), 'wpRevDeleteReasonList' ) .
+				'</td>' .
+				'<td class="mw-input">' .
+					Xml::listDropDown( 'wpRevDeleteReasonList',
+						wfMsgForContent( 'revdelete-reason-dropdown' ),
+						wfMsgForContent( 'revdelete-reasonotherlist' ), '', 'wpReasonDropDown', 1
+					) .
+				'</td>' .
+			"</tr><tr>\n" .
+				'<td class="mw-label">' .
+					Xml::label( wfMsg( 'revdelete-otherreason' ), 'wpReason' ) .
+				'</td>' .
+				'<td class="mw-input">' .
+					Xml::input( 'wpReason', 60, $this->otherReason, array( 'id' => 'wpReason' ) ) .
+				'</td>' .
+			"</tr><tr>\n" .
+				'<td></td>' .
+				'<td class="mw-submit">' .
+					Xml::submitButton( wfMsg( 'revdelete-submit' ), array( 'name' => 'wpSubmit' ) ) .
+				'</td>' .
+			"</tr>\n" .
+			Xml::closeElement( 'table' ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			Xml::hidden( 'target', $this->targetObj->getPrefixedText() ) .
 			Xml::hidden( 'type', $this->typeName ) .
 			Xml::hidden( 'ids', implode( ',', $this->ids ) ) .
-			Xml::closeElement( 'fieldset' ) .
-			Xml::closeElement( 'form' ) . "\n"
-		);
+			Xml::closeElement( 'fieldset' ) . "\n";
+
+		if( $wgUser->isAllowed( 'editinterface' ) ) {
+			$title = Title::makeTitle( NS_MEDIAWIKI, 'revdelete-reason-dropdown' );
+			$link = $wgUser->getSkin()->link(
+				$title,
+				wfMsgHtml( 'revdelete-edit-reasonlist' ),
+				array(),
+				array( 'action' => 'edit' )
+			);
+			$out .= Xml::tags( 'p', array( 'class' => 'mw-revdel-editreasons' ), $link ) . "\n";
+		}
+		$out .= Xml::closeElement( 'form' ) . "\n";
+
+		$wgOut->addHTML( $out );
 	}
 
 	/**
@@ -378,15 +428,17 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 	* @return String: HTML
 	*/
 	protected function buildCheckBoxes( $bitfields ) {
-		$html = '';
+		$html = '<table>';
 		// FIXME: all items checked for just one rev are checked, even if not set for the others
 		foreach( $this->checks as $item ) {
 			list( $message, $name, $field ) = $item;
-			$line = Xml::tags( 'div', null, Xml::checkLabel( wfMsg($message), $name, $name,
-				$bitfields & $field ) );
-			if( $field == Revision::DELETED_RESTRICTED ) $line = "<b>$line</b>";
-			$html .= $line;
+			$innerHTML = Xml::checkLabel( wfMsg($message), $name, $name, $bitfields & $field );
+			if( $field == Revision::DELETED_RESTRICTED )
+				$innerHTML = "<b>$innerHTML</b>";
+			$line = Xml::tags( 'td', array( 'class' => 'mw-input' ), $innerHTML );
+			$html .= '<tr>' . $line . "</tr>\n";
 		}
+		$html .= '</table>';
 		return $html;
 	}
 
@@ -402,7 +454,14 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 			return false;
 		}
 		$bitfield = $this->extractBitfield( $request );
-		$comment = $request->getText( 'wpReason' );
+		$listReason = $request->getText( 'wpRevDeleteReasonList', 'other' ); // from dropdown
+		$comment = $listReason;
+		if( $comment != 'other' && $this->otherReason != '' ) {
+			// Entry from drop down menu + additional comment
+			$comment .= wfMsgForContent( 'colon-separator' ) . $this->otherReason;
+		} elseif( $comment == 'other' ) {
+			$comment = $this->otherReason;
+		}
 		# Can the user set this field?
 		if( $bitfield & Revision::DELETED_RESTRICTED && !$wgUser->isAllowed('suppressrevision') ) {
 			$wgOut->permissionRequired( 'suppressrevision' );
@@ -1309,8 +1368,7 @@ class RevDel_FileItem extends RevDel_Item {
 	}
 
 	public function getBits() {
-		/** FIXME: use accessor */
-		return $this->file->deleted;
+		return $this->file->getVisibility();
 	}
 
 	public function setBits( $bits ) {
@@ -1365,9 +1423,9 @@ class RevDel_FileItem extends RevDel_Item {
 		if ( $this->isDeleted() ) {
 			# Hidden files...
 			if ( !$this->canView() ) {
-				return $date;
+				$link = $date;
 			} else {
-				return $this->special->skin->link( 
+				$link = $this->special->skin->link( 
 					$this->special->getTitle(), 
 					$date, array(), 
 					array(
@@ -1376,6 +1434,7 @@ class RevDel_FileItem extends RevDel_Item {
 					)
 				);
 			}
+			return '<span class="history-deleted">' . $link . '</span>';
 		} else {
 			# Regular files...
 			$url = $this->file->getUrl();
@@ -1495,7 +1554,8 @@ class RevDel_ArchivedFileItem extends RevDel_FileItem {
 				'target' => $this->list->title->getPrefixedText(),
 				'file' => $key,
 				'token' => $wgUser->editToken( $key )
-			) );
+			)
+		);
 	}
 }
 
@@ -1598,8 +1658,8 @@ class RevDel_LogItem extends RevDel_Item {
 				$action = '<span class="history-deleted">' . $action . '</span>';
 		}
 		// User links
-		$userLink = $this->special->skin->userLink( 
-			$this->row->log_user, User::WhoIs( $this->row->log_user ) );
+		$userLink = $this->special->skin->userLink( $this->row->log_user,
+			User::WhoIs( $this->row->log_user ) );
 		if( LogEventsList::isDeleted($this->row,LogPage::DELETED_USER) ) {
 			$userLink = '<span class="history-deleted">' . $userLink . '</span>';
 		}

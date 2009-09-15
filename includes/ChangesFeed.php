@@ -113,14 +113,16 @@ class ChangesFeed {
 		foreach( $sorted as $obj ) {
 			$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 			$talkpage = $title->getTalkPage();
+			// Skip items with deleted content (avoids partially complete/inconsistent output)
+			if( $obj->rc_deleted ) continue;
 			$item = new FeedItem(
 				$title->getPrefixedText(),
 				FeedUtils::formatDiff( $obj ),
-				$title->getFullURL( 'diff=' . $obj->rc_this_oldid . '&oldid=prev' ),
+				$obj->rc_this_oldid ? $title->getFullURL( 'diff=' . $obj->rc_this_oldid . '&oldid=prev' ) : $title->getFullURL(),
 				$obj->rc_timestamp,
 				($obj->rc_deleted & Revision::DELETED_USER) ? wfMsgHtml('rev-deleted-user') : $obj->rc_user_text,
 				$talkpage->getFullURL()
-				);
+			);
 			$feed->outItem( $item );
 		}
 		$feed->outFooter();

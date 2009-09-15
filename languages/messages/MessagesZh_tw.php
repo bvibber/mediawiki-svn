@@ -18,6 +18,8 @@
 
 $specialPageAliases = array(
 	'Disambiguations'           => array( '消歧義頁' ),
+	'Recentchanges'             => array( '近期變動' ),
+	'Ancientpages'              => array( '最舊頁面' ),
 	'Blockme'                   => array( '封禁我' ),
 	'Blockip'                   => array( '查封用戶' ),
 	'Lockdb'                    => array( '鎖定數據庫' ),
@@ -34,20 +36,17 @@ $specialPageAliases = array(
 $fallback = 'zh-hant';
 
 $namespaceNames = array(
-	NS_MEDIA            => '媒體',
-	NS_SPECIAL          => '特殊',
-	NS_TALK             => '討論',
 	NS_USER             => '使用者',
 	NS_USER_TALK        => '使用者討論',
-	NS_PROJECT_TALK     => '$1討論',
-	NS_FILE             => '圖片',
-	NS_FILE_TALK        => '圖片討論',
-	NS_TEMPLATE         => '模板',
-	NS_TEMPLATE_TALK    => '模板討論',
 	NS_HELP             => '使用說明',
 	NS_HELP_TALK        => '使用說明討論',
-	NS_CATEGORY         => '分類',
-	NS_CATEGORY_TALK    => '分類討論',
+);
+
+$namespaceAliases = array(
+	'Image' => NS_FILE,
+	'Image_talk' => NS_FILE_TALK,
+	"圖片" => NS_FILE,
+	"圖片討論" => NS_FILE_TALK,
 );
 
 $datePreferences = array(
@@ -226,7 +225,7 @@ $messages = array(
 'confirmedittext'            => '在編輯此頁之前您必須確認您的電子郵件地址。請透過[[Special:Preferences|參數設定]]設定並驗証您的電子郵件地址。',
 'accmailtext'                => "'$1'的密碼已經寄到$2。",
 'newarticletext'             => '您進入了一個尚未建立的頁面。
-要建立該頁面，請在下面的編輯框中輸入內容(詳情參見[[Help:說明|說明]])。
+要建立該頁面，請在下面的編輯框中輸入內容(詳情參見[[{{MediaWiki:Helppage}}|說明]])。
 如果您是不小心來到此頁面，直接點擊您瀏覽器中的"返回"按鈕返回。',
 'anontalkpagetext'           => "---- ''這是一個還未建立帳號的匿名使用者的對話頁。我們因此只能用IP地址來與他／她聯絡。該IP地址可能由幾名使用者共享。如果您是一名匿名使用者並認為本頁上的評語與您無關，請[[Special:UserLogin|建立新帳號或登入]]以避免在未來於其他匿名使用者混淆。''",
 'noarticletext'              => '此頁目前沒有內容，您可以在其它頁[[Special:Search/{{PAGENAME}}|搜尋此頁標題]]或[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} 編輯此頁]。',
@@ -282,9 +281,9 @@ $messages = array(
 'rev-deleted-user'            => '(使用者名已移除)',
 'rev-deleted-event'           => '(項目已移除)',
 'rev-deleted-text-permission' => '該頁面修訂已經被從公共文件中移除。
-在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
 'rev-deleted-text-view'       => '該頁面修訂已經被從公共文件中移除。作為此網站的管理員，您可以檢視它；
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
 'revisiondelete'              => '刪除/復原刪除修訂',
 'revdelete-nooldid-title'     => '沒有目標修訂',
 'revdelete-nooldid-text'      => '您沒有指定此操作的目標修訂。',
@@ -480,7 +479,6 @@ $messages = array(
 
 # Special:Log
 'specialloguserlabel' => '使用者:',
-'all-logs-page'       => '所有日誌',
 'alllogstext'         => '綜合顯示上傳、刪除、保護、封鎖以及站務日誌。',
 
 # Special:Categories
@@ -518,7 +516,7 @@ $messages = array(
 'enotif_anon_editor'           => '匿名使用者$1',
 'enotif_body'                  => '親愛的 $WATCHINGUSERNAME,
 
-$PAGEEDITOR 已經在 $PAGEEDITDATE $CHANGEDORCREATED{{SITENAME}}的 $PAGETITLE 頁面，請到 $PAGETITLE_URL 檢視當前版本。
+$PAGEEDITOR 已經在 $PAGEEDITDATEANDTIME $CHANGEDORCREATED{{SITENAME}}的 $PAGETITLE 頁面，請到 $PAGETITLE_URL 檢視當前版本。
 
 $NEWPAGE
 
@@ -536,7 +534,7 @@ $NEWPAGE
 
 --
 要改變您的監視列表設定，請參閱
-{{fullurl:{{ns:special}}:Watchlist/edit}}
+{{fullurl:{{#special:Watchlist}}/edit}}
 
 回饋和進一步的說明:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -575,7 +573,7 @@ $NEWPAGE
 'protect-cascadeon'           => '以下的{{PLURAL:$1|一個|多個}}頁面包含著本頁面的同時，啟動了連鎖保護，因此本頁面目前也被保護，未能編輯。您可以設定本頁面的保護級別，但這並不會對連鎖保護有所影響。',
 'protect-default'             => '(預設)',
 'protect-level-autoconfirmed' => '禁止未註冊使用者',
-'protect-expiry-options'      => '2小時:2 hours,1天:1 day,3天:3 days,1周:1 week,2周:2 weeks,1個月:1 month,3個月:3 months,6個月:6 months,1年:1 year,永久:infinite',
+'protect-expiry-options'      => '2小時:2 hours,1天:1 day,1周:1 week,2周:2 weeks,1個月:1 month,3個月:3 months,6個月:6 months,1年:1 year,永久:infinite',
 'maximum-size'                => '最大大小',
 
 # Undelete

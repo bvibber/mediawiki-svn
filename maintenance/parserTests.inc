@@ -25,10 +25,10 @@
  */
 
 /** */
-$options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record' );
+$options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record'. 'run-disabled' );
 $optionsWithArgs = array( 'regex', 'seed', 'setversion' );
 
-require_once( 'commandLine.inc' );
+require_once( dirname(__FILE__) . '/commandLine.inc' );
 require_once( "$IP/maintenance/parserTestsParserHook.php" );
 require_once( "$IP/maintenance/parserTestsStaticParserHook.php" );
 require_once( "$IP/maintenance/parserTestsParserTime.php" );
@@ -116,6 +116,8 @@ class ParserTest {
 			$this->recorder = new DbTestRecorder( $this );
 		} elseif( isset( $options['compare'] ) ) {
 			$this->recorder = new DbTestPreviewer( $this );
+		} elseif( isset( $options['upload'] ) ) {
+			$this->recorder = new RemoteTestRecorder( $this );
 		} else {
 			$this->recorder = new TestRecorder( $this );
 		}
@@ -124,6 +126,8 @@ class ParserTest {
 		if ( isset( $options['seed'] ) ) {
 			$this->fuzzSeed = intval( $options['seed'] ) - 1;
 		}
+
+		$this->runDisabled = isset( $options['run-disabled'] );
 
 		$this->hooks = array();
 		$this->functionHooks = array();
@@ -281,7 +285,7 @@ class ParserTest {
 	private function runFile( $filename ) {
 		$infile = fopen( $filename, 'rt' );
 		if( !$infile ) {
-			wfDie( "Couldn't open $filename\n" );
+			wfDie( "Couldn't open file '$filename'\n" );
 		} else {
 			global $IP;
 			$relative = wfRelativePath( $filename, $IP );
@@ -356,9 +360,15 @@ class ParserTest {
 					if (!isset( $data['config'] ) )
 						$data['config'] = '';
 					
-					if (preg_match('/\\bdisabled\\b/i', $data['options'])
-						|| !preg_match("/{$this->regex}/i", $data['test'])) {
+					if ( (preg_match('/\\bdisabled\\b/i', $data['options'])
+						|| !preg_match("/{$this->regex}/i", $data['test'])) && !$this->runDisabled ) {
 						# disabled test
+						$data = array();
+						$section = null;
+						continue;
+					}
+					if ( preg_match('/\\bmath\\b/i', $data['options']) && !$this->savedGlobals['wgUseTeX'] ) {
+						# don't run math tests if $wgUseTeX is set to false in LocalSettings
 						$data = array();
 						$section = null;
 						continue;
@@ -424,47 +434,52 @@ class ParserTest {
 			$this->showTesting( $desc );
 		}
 
+		$opts = $this->parseOptions( $opts );
 		$this->setupGlobals($opts, $config);
 
 		$user = new User();
 		$options = ParserOptions::newFromUser( $user );
 
-		if (preg_match('/\\bmath\\b/i', $opts)) {
+		if ( isset( $opts['math'] ) ) {
 			# XXX this should probably be done by the ParserOptions
 			$options->setUseTex(true);
 		}
 
 		$m = array();
-		if (preg_match('/title=\[\[(.*)\]\]/', $opts, $m)) {
-			$titleText = $m[1];
+		if (isset( $opts['title'] ) ) {
+			$titleText = $opts['title'];
 		}
 		else {
 			$titleText = 'Parser test';
 		}
 
-		$noxml = (bool)preg_match( '~\\b noxml \\b~x', $opts );
+		$noxml = isset( $opts['noxml'] );
+		$local = isset( $opts['local'] );
 		$parser = $this->getParser();
-		$title =& Title::makeTitle( NS_MAIN, $titleText );
+		$title = Title::newFromText( $titleText );
 
 		$matches = array();
-		if (preg_match('/\\bpst\\b/i', $opts)) {
+		if( isset( $opts['pst'] ) ) {
 			$out = $parser->preSaveTransform( $input, $title, $user, $options );
-		} elseif (preg_match('/\\bmsg\\b/i', $opts)) {
+		} elseif( isset( $opts['msg'] ) ) {
 			$out = $parser->transformMsg( $input, $options );
-		} elseif( preg_match( '/\\bsection=([\w-]+)\b/i', $opts, $matches ) ) {
-			$section = $matches[1];
+		} elseif( isset( $opts['section'] ) ) {
+			$section = $opts['section'];
 			$out = $parser->getSection( $input, $section );
-		} elseif( preg_match( '/\\breplace=([\w-]+),"(.*?)"/i', $opts, $matches ) ) {
-			$section = $matches[1];
-			$replace = $matches[2];
+		} elseif( isset( $opts['replace'] ) ) {
+			$section = $opts['replace'][0];
+			$replace = $opts['replace'][1];
 			$out = $parser->replaceSection( $input, $section, $replace );
+		} elseif( isset( $opts['comment'] ) ) {
+			$linker = $user->getSkin();
+			$out = $linker->formatComment( $input, $title, $local );
 		} else {
 			$output = $parser->parse( $input, $title, $options, true, true, 1337 );
 			$out = $output->getText();
 
-			if (preg_match('/\\bill\\b/i', $opts)) {
+			if (isset( $opts['ill'] ) ) {
 				$out = $this->tidy( implode( ' ', $output->getLanguageLinks() ) );
-			} else if (preg_match('/\\bcat\\b/i', $opts)) {
+			} elseif( isset( $opts['cat'] ) ) {
 				global $wgOut;
 				$wgOut->addCategoryLinks($output->getCategories());
 				$cats = $wgOut->getCategoryLinks();
@@ -490,17 +505,83 @@ class ParserTest {
 
 	/**
 	 * Use a regex to find out the value of an option
-	 * @param $regex A regex, the first group will be the value returned
-	 * @param $opts Options line to look in
-	 * @param $defaults Default value returned if the regex does not match
+	 * @param $key name of option val to retrieve
+	 * @param $opts Options array to look in
+	 * @param $defaults Default value returned if not found
 	 */
-	private static function getOptionValue( $regex, $opts, $default ) {
-		$m = array();
-		if( preg_match( $regex, $opts, $m ) ) {
-			return $m[1];
+	private static function getOptionValue( $key, $opts, $default ) {
+		$key = strtolower( $key );
+		if( isset( $opts[$key] ) ) {
+			return $opts[$key];
 		} else {
 			return $default;
 		}
+	}
+	
+	private function parseOptions( $instring ) {
+		$opts = array();
+		$lines = explode( "\n", $instring );
+		// foo
+		// foo=bar
+		// foo="bar baz"
+		// foo=[[bar baz]]
+		// foo=bar,"baz quux"
+		$regex = '/\b
+			([\w-]+)						# Key
+			\b
+			(?:\s*
+				=						# First sub-value
+				\s*
+				(
+					"
+						[^"]*			# Quoted val
+					"
+				|
+					\[\[
+						[^]]*			# Link target
+					\]\]
+				|
+					[\w-]+				# Plain word
+				)
+				(?:\s*
+					,					# Sub-vals 1..N
+					\s*
+					(
+						"[^"]*"			# Quoted val
+					|
+						\[\[[^]]*\]\]	# Link target
+					|
+						[\w-]+			# Plain word
+					)
+				)*
+			)?
+			/x';
+
+		if( preg_match_all( $regex, $instring, $matches, PREG_SET_ORDER ) ) {
+			foreach( $matches as $bits ) {
+				$match = array_shift( $bits );
+				$key = strtolower( array_shift( $bits ) );
+				if( count( $bits ) == 0 ) {
+					$opts[$key] = true;
+				} elseif( count( $bits ) == 1 ) {
+					$opts[$key] = $this->cleanupOption( array_shift( $bits ) );
+				} else {
+					// Array!
+					$opts[$key] = array_map( array( $this, 'cleanupOption' ), $bits );
+				}
+			}
+		}
+		return $opts;
+	}
+	
+	private function cleanupOption( $opt ) {
+		if( substr( $opt, 0, 1 ) == '"' ) {
+			return substr( $opt, 1, -1 );
+		}
+		if( substr( $opt, 0, 2 ) == '[[' ) {
+			return substr( $opt, 2, -2 );
+		}
+		return $opt;
 	}
 
 	/**
@@ -514,13 +595,13 @@ class ParserTest {
 
 		# Find out values for some special options.
 		$lang =
-			self::getOptionValue( '/language=([a-z]+(?:_[a-z]+)?)/', $opts, 'en' );
+			self::getOptionValue( 'language', $opts, 'en' );
 		$variant =
-			self::getOptionValue( '/variant=([a-z]+(?:-[a-z]+)?)/', $opts, false );
+			self::getOptionValue( 'variant', $opts, false );
 		$maxtoclevel =
-			self::getOptionValue( '/wgMaxTocLevel=(\d+)/', $opts, 999 );
+			self::getOptionValue( 'wgMaxTocLevel', $opts, 999 );
 		$linkHolderBatchSize = 
-			self::getOptionValue( '/wgLinkHolderBatchSize=(\d+)/', $opts, 1000 );
+			self::getOptionValue( 'wgLinkHolderBatchSize', $opts, 1000 );
 
 		$settings = array(
 			'wgServer' => 'http://localhost',
@@ -539,14 +620,14 @@ class ParserTest {
 			'wgEnableUploads' => true,
 			'wgStyleSheetPath' => '/skins',
 			'wgSitename' => 'MediaWiki',
-			'wgServerName' => 'Britney Spears',
+			'wgServerName' => 'Britney-Spears',
 			'wgLanguageCode' => $lang,
 			'wgContLanguageCode' => $lang,
 			'wgDBprefix' => 'parsertest_',
-			'wgRawHtml' => preg_match('/\\brawhtml\\b/i', $opts),
+			'wgRawHtml' => isset( $opts['rawhtml'] ),
 			'wgLang' => null,
 			'wgContLang' => null,
-			'wgNamespacesWithSubpages' => array( 0 => preg_match('/\\bsubpage\\b/i', $opts)),
+			'wgNamespacesWithSubpages' => array( 0 => isset( $opts['subpage'] ) ),
 			'wgMaxTocLevel' => $maxtoclevel,
 			'wgCapitalLinks' => true,
 			'wgNoFollowLinks' => true,
@@ -572,6 +653,8 @@ class ParserTest {
 			'wgEnforceHtmlIds' => true,
 			'wgExternalLinkTarget' => false,
 			'wgAlwaysUseTidy' => false,
+			'wgHtml5' => true,
+			'wgWellFormedXml' => true,
 			);
 
 		if ($config) {
@@ -593,8 +676,11 @@ class ParserTest {
 		$GLOBALS['wgLang'] = $langObj;
 		$GLOBALS['wgContLang'] = $langObj;
 		$GLOBALS['wgMemc'] = new FakeMemCachedClient;
+		$GLOBALS['wgOut'] = new OutputPage;
 
 		//$GLOBALS['wgMessageCache'] = new MessageCache( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
+
+		MagicWord::clearCache();
 
 		global $wgUser;
 		$wgUser = new User();
@@ -611,7 +697,7 @@ class ParserTest {
 			'categorylinks', 'templatelinks', 'externallinks', 'langlinks',
 			'site_stats', 'hitcounter',	'ipblocks', 'image', 'oldimage',
 			'recentchanges', 'watchlist', 'math', 'interwiki',
-			'querycache', 'objectcache', 'job', 'redirect', 'querycachetwo',
+			'querycache', 'objectcache', 'job', 'l10n_cache', 'redirect', 'querycachetwo',
 			'archive', 'user_groups', 'page_props', 'category'
 		);
 
@@ -745,6 +831,9 @@ class ParserTest {
 
 		# Update certain things in site_stats
 		$db->insert( 'site_stats', array( 'ss_row_id' => 1, 'ss_images' => 1, 'ss_good_articles' => 1 ) );
+
+		# Reinitialise the LocalisationCache to match the database state
+		Language::getLocalisationCache()->unloadAll();
 	}
 
 	/**
@@ -816,7 +905,6 @@ class ParserTest {
 	 */
 	private function teardownGlobals() {
 		RepoGroup::destroySingleton();
-		FileCache::destroySingleton();
 		LinkCache::singleton()->clear();
 		foreach( $this->savedGlobals as $var => $val ) {
 			$GLOBALS[$var] = $val;
@@ -1443,5 +1531,93 @@ class DbTestRecorder extends DbTestPreviewer  {
 				'ti_success' => $result ? 1 : 0,
 			),
 			__METHOD__ );
+	}
+}
+
+class RemoteTestRecorder extends TestRecorder {
+	function start() {
+		parent::start();
+		$this->results = array();
+		$this->ping( 'running' );
+	}
+	
+	function record( $test, $result ) {
+		parent::record( $test, $result );
+		$this->results[$test] = (bool)$result;
+	}
+	
+	function end() {
+		$this->ping( 'complete', $this->results );
+		parent::end();
+	}
+	
+	/**
+	 * Inform a CodeReview instance that we've started or completed a test run...
+	 * @param $remote array: info on remote target
+	 * @param $status string: "running" - tell it we've started
+	 *                        "complete" - provide test results array
+	 *                        "abort" - something went horribly awry
+	 * @param $data array of test name => true/false
+	 */
+	function ping( $status, $results=false ) {
+		global $wgParserTestRemote, $IP;
+		
+		$remote = $wgParserTestRemote;
+		$revId = SpecialVersion::getSvnRevision( $IP );
+		$jsonResults = json_encode( $results );
+		
+		if( !$remote ) {
+			print "Can't do remote upload without configuring \$wgParserTestRemote!\n";
+			exit( 1 );
+		}
+		
+		// Generate a hash MAC to validate our credentials
+		$message = array(
+			$remote['repo'],
+			$remote['suite'],
+			$revId,
+			$status,
+		);
+		if( $status == "complete" ) {
+			$message[] = $jsonResults;
+		}
+		$hmac = hash_hmac( "sha1", implode( "|", $message ), $remote['secret'] );
+		
+		$postData = array(
+			'action' => 'codetestupload',
+			'format' => 'json',
+			'repo'   => $remote['repo'],
+			'suite'  => $remote['suite'],
+			'rev'    => $revId,
+			'status' => $status,
+			'hmac'   => $hmac,
+		);
+		if( $status == "complete" ) {
+			$postData['results'] = $jsonResults;
+		}
+		$response = $this->post( $remote['api-url'], $postData );
+		
+		if( $response === false ) {
+			print "CodeReview info upload failed to reach server.\n";
+			exit( 1 );
+		}
+		$responseData = json_decode( $response, true );
+		if( !is_array( $responseData ) ) {
+			print "CodeReview API response not recognized...\n";
+			wfDebug( "Unrecognized CodeReview API response: $response\n" );
+			exit( 1 );
+		}
+		if( isset( $responseData['error'] ) ) {
+			$code = $responseData['error']['code'];
+			$info = $responseData['error']['info'];
+			print "CodeReview info upload failed: $code $info\n";
+			exit( 1 );
+		}
+	}
+	
+	function post( $url, $data ) {
+		// @fixme: for whatever reason, I get a 417 fail when using CURL's multipart form submit.
+		// If we do form URL encoding ourselves, though, it should work.
+		return Http::post( $url, array( 'postdata' => wfArrayToCGI( $data ) ) );
 	}
 }

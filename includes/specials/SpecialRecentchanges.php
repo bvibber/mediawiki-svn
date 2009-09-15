@@ -55,7 +55,7 @@ class SpecialRecentChanges extends SpecialPage {
 			$this->parseParameters( $parameters, $opts );
 		}
 
-		$opts->validateIntBounds( 'limit', 0, 5000 );
+		$opts->validateIntBounds( 'limit', 0, 500 );
 		return $opts;
 	}
 
@@ -414,7 +414,7 @@ class SpecialRecentChanges extends SpecialPage {
 
 		$defaults = $opts->getAllValues();
 		$nondefaults = $opts->getChangedValues();
-		$opts->consumeValues( array( 'namespace', 'invert' ) );
+		$opts->consumeValues( array( 'namespace', 'invert', 'tagfilter' ) );
 
 		$panel = array();
 		$panel[] = $this->optionsPanel( $defaults, $nondefaults );
@@ -456,6 +456,8 @@ class SpecialRecentChanges extends SpecialPage {
 		$wgOut->addHTML(
 			Xml::fieldset( wfMsg( 'recentchanges-legend' ), $panelString, array( 'class' => 'rcoptions' ) )
 		);
+
+		$wgOut->addHTML( ChangesList::flagLegend() );
 
 		$this->setBottomText( $wgOut, $opts );
 	}

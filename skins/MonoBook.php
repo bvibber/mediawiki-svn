@@ -41,6 +41,30 @@ class SkinMonoBook extends SkinTemplate {
 		$out->addStyle( 'monobook/IE70Fixes.css', 'screen', 'IE 7' );
 
 		$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );
+
+
+		// @todo We can move this to the parent once we update all the skins
+		if( isset( $this->pagecss ) &&  $this->pagecss )
+			$out->addInlineStyle( $this->pagecss );
+
+		if( isset( $this->usercss ) &&  $this->usercss )
+			$out->addInlineStyle( $this->usercss );
+
+	}
+
+	function setupSkinUserJs( OutputPage $out ) {
+		parent::setupSkinUserJs( $out );
+		$out->addScriptFile( 'wikibits.js' );
+
+		// @todo We can move to parent once we update all the skins (to avoid including things twice)
+		if( isset( $this->jsvarurl ) && $this->jsvarurl )
+			$out->addScriptFile( $this->jsvarurl );
+
+		if( isset( $this->userjs ) && $this->userjs )
+			$out->addScriptFile( $this->userjs );
+
+		if( isset( $this->userjsprev ) && $this->userjsprev )
+			$out->addInlineScript( $this->userjsprev );
 	}
 }
 
@@ -59,56 +83,30 @@ class MonoBookTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	function execute() {
-		global $wgRequest;
+		global $wgRequest, $wgOut, $wgStyleVersion, $wgJsMimeType, $wgStylePath;
 		$this->skin = $skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
 
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php
-	foreach($this->data['xhtmlnamespaces'] as $tag => $ns) {
-		?>xmlns:<?php echo "{$tag}=\"{$ns}\" ";
-	} ?>xml:lang="<?php $this->text('lang') ?>" lang="<?php $this->text('lang') ?>" dir="<?php $this->text('dir') ?>">
-	<head>
-		<meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
-		<?php $this->html('headlinks') ?>
-		<title><?php $this->text('pagetitle') ?></title>
-		<?php $this->html('csslinks') ?>
+		# FIXME: What is this?  Should it apply to all skins?
+		$path = htmlspecialchars( $wgStylePath );
+		$wgOut->addScript( <<<HTML
+<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
+	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+HTML
+		);
 
-		<!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
-		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		echo $wgOut->headElement( $this->skin );
 
-		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
-
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
-		<!-- Head Scripts -->
-<?php $this->html('headscripts') ?>
-<?php	if($this->data['jsvarurl']) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl') ?>"><!-- site js --></script>
-<?php	} ?>
-<?php	if($this->data['pagecss']) { ?>
-		<style type="text/css"><?php $this->html('pagecss') ?></style>
-<?php	}
-		if($this->data['usercss']) { ?>
-		<style type="text/css"><?php $this->html('usercss') ?></style>
-<?php	}
-		if($this->data['userjs']) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs' ) ?>"></script>
-<?php	}
-		if($this->data['userjsprev']) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
-<?php	}
-		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
-	</head>
-<body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
+?><body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir'); $this->text('capitalizeallnouns') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
 	<div id="globalWrapper">
 		<div id="column-content">
 	<div id="content">
-		<a name="top" id="top"></a>
+		<a id="top"></a>
 		<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
 		<h1 id="firstHeading" class="firstHeading"><?php $this->html('title') ?></h1>
 		<div id="bodyContent">
@@ -249,17 +247,23 @@ class MonoBookTemplate extends QuickTemplate {
 	<div id="p-search" class="portlet">
 		<h5 <?php $this->html('userlangattributes') ?>><label for="searchInput"><?php $this->msg('search') ?></label></h5>
 		<div id="searchBody" class="pBody">
-			<form action="<?php $this->text('wgScript') ?>" id="searchform"><div>
+			<form action="<?php $this->text('wgScript') ?>" id="searchform">
 				<input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
-				<input id="searchInput" name="search" type="text"<?php echo $this->skin->tooltipAndAccesskey('search');
-					if( isset( $this->data['search'] ) ) {
-						?> value="<?php $this->text('search') ?>"<?php } ?> />
+				<?php
+		echo Html::input( 'search',
+			isset( $this->data['search'] ) ? $this->data['search'] : '', 'search',
+			array(
+				'id' => 'searchInput',
+				'title' => $this->skin->titleAttrib( 'search' ),
+				'accesskey' => $this->skin->accesskey( 'search' )
+			) ); ?>
+
 				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg('searcharticle') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-go' ); ?> /><?php if ($wgUseTwoButtonsSearchForm) { ?>&nbsp;
 				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> /><?php } else { ?>
 
 				<div><a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a></div><?php } ?>
 
-			</div></form>
+			</form>
 		</div>
 	</div>
 <?php
@@ -284,7 +288,7 @@ class MonoBookTemplate extends QuickTemplate {
 				?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked-toolbox') ?></a></li>
 <?php 		}
 		}
-		if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
+		if( isset( $this->data['nav_urls']['trackbacklink'] ) && $this->data['nav_urls']['trackbacklink'] ) { ?>
 			<li id="t-trackbacklink"><a href="<?php
 				echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href'])
 				?>"<?php echo $this->skin->tooltipAndAccesskey('t-trackbacklink') ?>><?php $this->msg('trackbacklink') ?></a></li>
