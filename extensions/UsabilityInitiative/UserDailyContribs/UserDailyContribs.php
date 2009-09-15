@@ -1,6 +1,6 @@
 <?php
 /**
- * Usability Initiative User Daily Contribtions (for Click Tracking) extension
+ * Usability Initiative User Daily Contributions (for Click Tracking) extension
  *
  * @file
  * @ingroup Extensions
@@ -24,10 +24,9 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'User Daily Contributions',
 	'author' => 'Nimish Gautam',
 	'version' => '0.1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
+	'descriptionmsg' => 'userdailycontribs-desc',
 );
-
-
 
 // Includes parent extension
 require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
@@ -35,6 +34,9 @@ require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 // Adds Autoload Classes
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['UserDailyContribsHooks'] = $dir . 'UserDailyContribs.hooks.php';
+
+// Adds Internationalized Messages
+$wgExtensionMessagesFiles['UserDailyContribs'] = $dir . 'UserDailyContribs.i18n.php';
 
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'UserDailyContribsHooks::schema';
