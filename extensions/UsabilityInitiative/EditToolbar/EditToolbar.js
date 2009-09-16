@@ -759,7 +759,6 @@ js2AddOnloadHook( function() {
 				<div id="edittoolbar-link-dialog-tab-int"><form><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label></td>\
 					<td>\
-						<select id="edittoolbar-link-int-target-ns" />\
 						<input type="text" id="edittoolbar-link-int-target" />\
 						<div id="edittoolbar-link-int-target-status" style="display: inline;"></div>\
 					</td>\
@@ -788,24 +787,13 @@ js2AddOnloadHook( function() {
 					request.abort();
 				}
 				
-				var targetNSID = $j( '#edittoolbar-link-int-target-ns' ).val();
-				if ( targetNSID < 0 ) {
-					// Can't check existence for Special: or Media: titles
-					updateWidget( 'exists' );
-					return;
-				}
-				
-				var targetNS = $j( '#edittoolbar-link-int-target-ns option:selected' ).text();
-				if ( targetNS != '' )
-					targetNS += ':';
-				var targetTitle = $j( '#edittoolbar-link-int-target' ).val();
-				var target = targetNS + targetTitle;
+				var target = $j( '#edittoolbar-link-int-target' ).val();
 				var cache = $j( '#edittoolbar-link-int-target-status' ).data( 'existencecache' );
 				if ( cache[target] ) {
 					updateWidget( cache[target] );
 					return;
 				}
-				if ( targetTitle == '' ) {
+				if ( target == '' ) {
 					// Hide the widget when the textbox is empty
 					$j( '#edittoolbar-link-int-target-status' ).children().hide();
 					return;
@@ -851,8 +839,6 @@ js2AddOnloadHook( function() {
 			});
 			// Build tabs
 			$j( '#edittoolbar-link-tabs' ).tabs();
-			// Set up the namespace selector
-			$j( '#edittoolbar-link-int-target-ns' ).namespaceSelector();
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
 			// has changed the link text field - this is a convience thing since most link texts are going to be the
 			// the same as the page title
@@ -861,19 +847,11 @@ js2AddOnloadHook( function() {
 				if ( $j( '#edittoolbar-link-int-text' ).data( 'untouched' ) )
 					// Defer this until $j(this).val() has been updated
 					setTimeout( function() {
-						var ns = $j( '#edittoolbar-link-int-target-ns option:selected' ).text();
-						if ( ns != '' )
-							ns += ':';
-						$j( '#edittoolbar-link-int-text' ).val( ns + $j( '#edittoolbar-link-int-target' ).val() );
+						$j( '#edittoolbar-link-int-text' ).val( $j( '#edittoolbar-link-int-target' ).val() );
 					}, 0 );
 			});
 			$j( '#edittoolbar-link-int-text' ).bind( 'change keypress paste cut', function() {
 				$j(this).data( 'untouched', false );
-			});
-			// Make sure changes to the namespace selector also trigger value copying and AJAX stuff
-			// This is ugly
-			$j( '#edittoolbar-link-int-target-ns' ).change( function() {
-				$j( '#edittoolbar-link-int-target' ).keydown().keypress().keyup();
 			});
 			// Set the initial value of the external link field to start out as a real URL
 			$j( '#edittoolbar-link-ext-target' ).val( 'http://' );
@@ -935,44 +913,26 @@ js2AddOnloadHook( function() {
 			$j( '#edittoolbar-link-int-target' ).data( 'suggcache', {} ).suggestions( {
 				fetch: function( query ) {
 					var that = this;
-					var ns = $j( '#edittoolbar-link-int-target-ns' ).val();
 					var title = $j(this).val();
-					if ( ns < 0 ) {
-						// Can't search for Special: or Media: titles
-						$j(this).suggestions( 'suggestions', [] );
-						return;
-					}
 					
 					var cache = $j(this).data( 'suggcache' );
-					if ( typeof cache[ns] != 'undefined' &&
-							typeof cache[ns][title] != 'undefined' ) {
-						$j(this).suggestions( 'suggestions', cache[ns][title] );
+					if ( typeof cache[title] != 'undefined' ) {
+						$j(this).suggestions( 'suggestions', cache[title] );
 						return;
 					}
 					
 					var request = $j.ajax( {
 						url: wgScriptPath + '/api.php',
 						data: {
-							'action': 'query',
-							'list': 'allpages',
-							'apnamespace': ns,
-							'apprefix': title,
-							'aplimit': '10',
+							'action': 'opensearch',
+							'search': title,
+							'namespace': 0,
+							'suggest': '',
 							'format': 'json'
 						},
 						dataType: 'json',
 						success: function( data ) {
-							var titles = [];
-							for ( var i = 0; i < data.query.allpages.length; i++ ) {
-								titles[i] = data.query.allpages[i].title;
-								if ( ns != 0 )
-									titles[i] = titles[i].substr(
-										titles[i].indexOf( ':' ) + 1 );
-							}
-							if ( typeof cache[ns] == 'undefined' )
-								cache[ns] = {};
-							cache[ns][title] = titles;
-							$j(that).suggestions( 'suggestions', titles );
+							$j(that).suggestions( 'suggestions', data[1] );
 						}
 					});
 					$j(this).data( 'request', request );
@@ -1008,11 +968,7 @@ js2AddOnloadHook( function() {
 								alert( gM( 'edittoolbar-tool-link-int-invalid' ) );
 								return;
 							}
-							var targetNS = $j( '#edittoolbar-link-int-target-ns option:selected' ).text();
-							if ( targetNS != '' )
-								targetNS += ':';
-							var targetTitle = $j( '#edittoolbar-link-int-target' ).val();
-							var target = targetNS + targetTitle;
+							var target = $j( '#edittoolbar-link-int-target' ).val();
 							var text = $j( '#edittoolbar-link-int-text' ).val();
 							whitespace = $j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace' );
 							if ( target == text )
