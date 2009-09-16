@@ -324,7 +324,8 @@ js2AddOnloadHook( function() {
 							options: {
 								pre: "{| class=\"wikitable\" border=\"1\"\n|",
 								periMsg: 'edittoolbar-tool-table-example-old',
-								post: "\n|}"
+								post: "\n|}",
+								ownline: true
 							}
 						}
 					},
