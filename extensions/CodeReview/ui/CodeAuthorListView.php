@@ -10,11 +10,11 @@ class CodeAuthorListView extends CodeView {
 	function execute() {
 		global $wgOut;
 		$authors = $this->mRepo->getAuthorList();
-		$name = $this->mRepo->getName();
+		$repo = $this->mRepo->getName();
 		$text = wfMsg( 'code-authors-text' ) . "\n";
 		foreach ( $authors as $committer ) {
 			if ( $committer ) {
-				$text .= "* [[Special:Code/$name/author/$committer|$committer]]";
+				$text .= "* [[Special:Code/$repo/author/$committer|$committer]]";
 				$user = $this->mRepo->authorWikiUser($committer);
 				if( $user ) {
 					$title = htmlspecialchars( $user->getUserPage()->getPrefixedText() );
