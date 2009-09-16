@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'edittoolbar' => 'Editing toolbar',
 	'edittoolbar-desc' => 'Edit page toolbar with enhanced usability',
 	'edittoolbar-preference' => 'Enable enhanced editing toolbar',
-	'edittoolbar-cgd-preference' => 'Enable content generation dialogs in enhanced editing toolbar',
+	'edittoolbar-cgd-preference' => 'Enable help for adding advanced wiki text',
 	'edittoolbar-loading' => 'Loading...',
 	/* Main Section */
 	'edittoolbar-tool-bold' => 'Bold',
