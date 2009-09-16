@@ -1397,6 +1397,15 @@ Proiektuari buruz gehiago jakiteko edo parte hartzeko, joan zaitez [http://usabi
 Milesker eta zure berri izateko irrikan gaude!',
 );
 
+/** Persian (فارسی)
+ * @author Mardetanha
+ */
+$messages['fa'] = array(
+	'optin-survey-yes' => 'بله',
+	'optin-survey-no' => 'نه',
+	'optin-survey-answer-whyoptout-other' => 'دلایل دیگر:',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

@@ -537,8 +537,11 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'optin-try' => 'Ensajar la Bèta',
+	'tooltip-pt-optin-try' => 'Ensajatz las foncionalitats novèlas',
 	'optin-leave' => 'Quitar la Bèta',
+	'tooltip-pt-optin-leave' => 'Desactivar las foncionalitats novèlas',
 	'optin-feedback' => 'Balhatz vòstre vejaire',
+	'tooltip-pt-optin-feedback' => "Balhatz vòstras impressions sus l'utilizacion de las foncionalitats novèlas",
 );
 
 /** Deitsch (Deitsch)

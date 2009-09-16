@@ -38,11 +38,23 @@ $messages['qqq'] = array(
 	'intermediate-header' => '"Intermediate" is a user-definable category, these will show the number of clicks that fall into that category',
 	'beginner-header' => '"Beginner" is a user-definable category, these will show the number of clicks that fall into that category',
 	'total-header' => 'total',
-	'start-date' => 'YYYYMMDD refers to the date format (4-digit year, 2-digit month, 2-digit day)', 
-	'end-date' => 'YYYYMMDD  refers to the date format (4-digit year, 2-digit month, 2-digit day)',
+	'start-date' => 'YYYYMMDD refers to the date format (4-digit year, 2-digit month, 2-digit day)
+
+{{Identical|Start date}}',
+	'end-date' => 'YYYYMMDD  refers to the date format (4-digit year, 2-digit month, 2-digit day)
+
+{{Identical|End date}}',
 	'beginner' => 'label for a user at beginner skill level',
 	'intermediate' => 'label for a user at intermediate skill level',
 	'expert' => 'label for a user at expert skill level',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'start-date' => 'Begindatum (JJJJMMDD)',
+	'end-date' => 'Einddatum (JJJJMMDD)',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -105,6 +117,7 @@ $messages['cs'] = array(
 	'clicktracking' => 'Sledování kliknutí pro Iniciativu použitelnosti',
 	'clicktracking-desc' => 'Sledování kliknutí pro sledování událostí, které nezpůsobují znovunačtení stránky',
 	'clicktracking-title' => 'Souhrn klikání uživatelů',
+	'event-name' => 'Název události',
 );
 
 /** German (Deutsch)
@@ -171,6 +184,18 @@ $messages['es'] = array(
 	'beginner' => 'Principiante',
 	'intermediate' => 'Intemedio',
 	'expert' => 'Experto',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'start-date' => 'Hasiera Data (UUUUHHEE)',
+	'end-date' => 'Amaiera Data (UUUUHHEE)',
+	'change-graph' => 'Grafikoa aldatu',
+	'beginner' => 'Hasiberria',
+	'intermediate' => 'Maila ertainekoa',
+	'expert' => 'Aditua',
 );
 
 /** Finnish (Suomi)
@@ -397,6 +422,19 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'clicktracking' => "Seguit de clics de l'iniciativa d'utilizabilitat",
 	'clicktracking-desc' => 'Seguit de clics, visant a tracar los eveniments que causan pas un recargament de pagina',
+	'clicktracking-title' => "Agregacion dels clics d'utilizaires",
+	'event-name' => "Nom de l'eveniment",
+	'expert-header' => 'Clics « expèrts »',
+	'intermediate-header' => 'Clics « intermediaris »',
+	'beginner-header' => 'Clics « debutants »',
+	'total-header' => 'Total dels clics',
+	'start-date' => 'Data de començament (AAAAMMJJ)',
+	'end-date' => 'Data de fin (AAAAMMJJ)',
+	'increment-by' => 'Nombre de jorns que representa cada punt de donada',
+	'change-graph' => 'Graf de cambi',
+	'beginner' => 'Debutant',
+	'intermediate' => 'Intermediari',
+	'expert' => 'Expèrt',
 );
 
 /** Polish (Polski)
@@ -406,6 +444,17 @@ $messages['pl'] = array(
 	'clicktracking' => 'Śledzenie kliknięć dla inicjatywy użyteczności',
 	'clicktracking-desc' => 'Śledzenie kliknięć, przeznaczone do poszukiwania zdarzeń, które nie powodują odświeżenia strony',
 	'clicktracking-title' => 'Suma kliknięć użytkowników',
+	'event-name' => 'Nazwa zdarzenia',
+	'expert-header' => 'Kliknięcia „specjalistów”',
+	'intermediate-header' => 'Kliknięcia „zaawansowanych”',
+	'beginner-header' => 'Kliknięcia „nowicjuszy”',
+	'total-header' => 'Wszystkich kliknięć',
+	'start-date' => 'Data rozpoczęcia (RRRRMMDD)',
+	'end-date' => 'Data zakończenia (RRRRMMDD)',
+	'change-graph' => 'Wykres zmian',
+	'beginner' => 'Nowicjusz',
+	'intermediate' => 'Zaawansowany',
+	'expert' => 'Specjalista',
 );
 
 /** Piedmontese (Piemontèis)
@@ -465,6 +514,13 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'clicktracking-desc' => 'Баттааһыны кэтээһин. Сирэйи саҥардыбат түбэлтэлэри кэтииргэ туттуллар',
 	'clicktracking-title' => 'Кыттааччылар баттааһыннарын хомуура',
+	'event-name' => 'Түбэлтэ аата',
+	'expert-header' => '"Экспертар" баттааһыннара (клик)',
+	'intermediate-header' => '"Орто кыттааччылар" баттааһыннара (клик)',
+	'beginner-header' => '"Саҕалааччылар" баттааһыннара (клик)',
+	'total-header' => 'Баттааһын барытын ахсаана',
+	'start-date' => 'Саҕаламмыт күнэ-ыйа (ССССЫЫКК)',
+	'end-date' => 'Бүппүт күнэ-дьыла (ССССЫЫКК)',
 );
 
 /** Slovak (Slovenčina)
@@ -474,6 +530,18 @@ $messages['sk'] = array(
 	'clicktracking' => 'Sledovanie kliknutí pre Iniciatívu použiteľnosti',
 	'clicktracking-desc' => 'Sledovanie kliknutí, na sledovanie udalostí, ktoré nespôsobujú opätovné načítanie stránky',
 	'clicktracking-title' => 'Agregované kliknutia používateľa',
+	'event-name' => 'Názov udalosti',
+	'expert-header' => 'Kliknutia „expertov“',
+	'intermediate-header' => 'Kliknutia „pokročilých“',
+	'beginner-header' => 'Kliknutia „začiatočníkov“',
+	'total-header' => 'Kliknutí celkom',
+	'start-date' => 'Dátum začiatku (YYYYMMDD)',
+	'end-date' => 'Dátum konca (YYYYMMDD)',
+	'increment-by' => 'Počet dní, ktorý predstavuje každý z bodov v dátach',
+	'change-graph' => 'Zmeniť graf',
+	'beginner' => 'Začiatočník',
+	'intermediate' => 'Pokročilý',
+	'expert' => 'Expert',
 );
 
 /** Slovenian (Slovenščina)

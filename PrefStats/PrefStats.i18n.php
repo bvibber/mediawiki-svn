@@ -272,6 +272,16 @@ $messages['cu'] = array(
 	'prefstats-factor-day' => 'дьнь',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'prefstats-factor-hour' => 'awr',
+	'prefstats-factor-sixhours' => 'chwech awr',
+	'prefstats-factor-day' => 'diwrnod',
+	'prefstats-factor-week' => 'wythnos',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */
@@ -507,6 +517,18 @@ Klikatu batean bere estatistikak ikusteko.',
 	'prefstats-factor-default' => 'itzuli berezko eskalara',
 	'prefstats-legend-out' => 'Irten zara',
 	'prefstats-legend-in' => 'Bat egin duzu',
+);
+
+/** Persian (فارسی)
+ * @author Mardetanha
+ */
+$messages['fa'] = array(
+	'prefstats-factor-hour' => 'ساعت',
+	'prefstats-factor-sixhours' => 'شش ساعت',
+	'prefstats-factor-day' => 'روز',
+	'prefstats-factor-week' => 'هفته',
+	'prefstats-factor-twoweeks' => 'دو هفته',
+	'prefstats-factor-fourweeks' => 'چهار هفته',
 );
 
 /** Finnish (Suomi)

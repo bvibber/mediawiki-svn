@@ -196,6 +196,14 @@ $messages['eu'] = array(
 	'simplesearch-search' => 'Bilatu',
 );
 
+/** Persian (فارسی)
+ * @author Mardetanha
+ */
+$messages['fa'] = array(
+	'simplesearch' => 'جستجوی ساده',
+	'simplesearch-search' => 'جستجو',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -458,6 +466,7 @@ $messages['oc'] = array(
 	'simplesearch' => 'Recèrca simpla',
 	'simplesearch-desc' => "Apond de foncionalitats a la recèrca simplificada de l'abilhatge Vector",
 	'simplesearch-search' => 'Recercar',
+	'simplesearch-containing' => 'que conten...',
 );
 
 /** Polish (Polski)

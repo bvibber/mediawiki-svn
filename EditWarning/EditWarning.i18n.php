@@ -119,6 +119,14 @@ Toto varování si můžete vypnout na záložce „{{int:prefs-editing}}“ v u
 	'editwarning-preference' => 'Upozornit, když budu opouštět editaci bez uložení změn',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'editwarning' => 'Hysbysiad golygu',
+	'editwarning-preference' => "Tynnwch fy sylw pan wyf ar fin gadael tudalen olygu heb roi'r newidiadau ar gadw",
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */
