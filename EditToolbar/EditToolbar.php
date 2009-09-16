@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
-$wgEditToolbarStyleVersion = 32;
+$wgEditToolbarStyleVersion = 33;
 
 // Set this to true to simply override the stock toolbar for everyone
 $wgEditToolbarGlobalEnable = false;
@@ -28,6 +28,15 @@ $wgEditToolbarGlobalEnable = false;
 // which enables and disables this toolbar (if $wgEditToolbarGlobalEnable, this
 // will not do anything)
 $wgEditToolbarUserEnable = true;
+
+// Set this to true to enable content generation dialogs for everyone who gets
+// the toolbar
+$wgEditToolbarCGDGlobalEnable = false;
+
+// Set this to true to add a preference to the editing section of preferences
+// which enabled and disables content generation dialogs
+// If $wgEditToolbatCGDGlobalEnable is true, this will be ignored
+$wgEditToolbarCGDUserEnable = true;
 
 // Set if we should include a client-side testing script
 $wgEditToolbarRunTests = false;

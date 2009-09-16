@@ -18,6 +18,14 @@
 
 /* Configuration */
 
+// Set this to true to simply force NavigableTOC on everyone
+$wgNavigableTOCGlobalEnable = false;
+
+// Set this to true to add a preference to the editing section of preferences
+// which enables and disables NavigableTOC (if $wgNavigableTOCGlobalEnable, this
+// will not do anything)
+$wgNavigableTOCUserEnable = true;
+
 // Bump the version number every time you change any of the .css/.js files
 $wgNavigableTOCStyleVersion = 3;
 
@@ -46,3 +54,4 @@ $wgExtensionMessagesFiles['NavigableTOC'] =
 
 // Registers Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'NavigableTOCHooks::addTOC';
+$wgHooks['GetPreferences'][] = 'NavigableTOCHooks::addPreferences';
