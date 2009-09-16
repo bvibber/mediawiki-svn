@@ -15,14 +15,36 @@ class NavigableTOCHooks {
 	 * Adds the TOC to the edit form
 	 */
 	 public static function addTOC( &$toolbar ) {
-		global $wgNavigableTOCStyleVersion, $wgParser, $wgUser;
-		global $wgEnableParserCache;
+		global $wgNavigableTOCStyleVersion, $wgUser;
+		global $wgNavigableTOCGlobalEnable, $wgNavigableTOCUserEnable;
 		
-		// Adds script to document
-		UsabilityInitiativeHooks::initialize();
-		UsabilityInitiativeHooks::addScript(
-			'NavigableTOC/NavigableTOC.js', $wgNavigableTOCStyleVersion
-		);
+		if ( $wgNavigableTOCGlobalEnable || ( $wgNavigableTOCUserEnable && $wgUser->getOption( 'usenavigabletoc' ) ) ) {		
+			// Adds script to document
+			UsabilityInitiativeHooks::initialize();
+			UsabilityInitiativeHooks::addScript(
+				'NavigableTOC/NavigableTOC.js', $wgNavigableTOCStyleVersion
+			);
+		}
+		return true;
+	}
+	
+	/**
+	 * GetPreferences hook
+	 * Add NTOC-related items to the preferences
+	 */
+	public static function addPreferences( $user, &$defaultPreferences ) {
+		global $wgNavigableTOCGlobalEnable, $wgNavigableTOCUserEnable;
+
+		if ( !$wgNavigableTOCGlobalEnable && $wgNavigableTOCUserEnable ) {
+			wfLoadExtensionMessages( 'NavigableTOC' );
+			// Adds preference for opting in
+			$defaultPreferences['usenavigabletoc'] =
+			array(
+				'type' => 'toggle',
+				'label-message' => 'navigabletoc-preference',
+				'section' => 'editing/advancedediting',
+			);
+		}
 		return true;
 	}
 }

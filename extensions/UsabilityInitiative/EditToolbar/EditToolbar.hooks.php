@@ -15,7 +15,9 @@ class EditToolbarHooks {
 	 * Intercept the display of the toolbar, replacing the content of $toolbar
 	 */
 	public static function addToolbar( &$toolbar ) {
-		global $wgUser, $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
+		global $wgUser, $wgEditToolbarGlobalEnable;
+		global $wgEditToolbarUserEnable, $wgEditToolbarCGDGlobalEnable;
+		global $wgEditToolbarCGDUserEnable;
 		
 		// Only proceed if some specific conditions are met
 		if ( $wgEditToolbarGlobalEnable || ( $wgEditToolbarUserEnable && $wgUser->getOption( 'usebetatoolbar' ) ) ) {
@@ -25,6 +27,9 @@ class EditToolbarHooks {
 			UsabilityInitiativeHooks::addScript(
 				'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
 			);
+			UsabilityInitiativeHooks::addVariables( array(
+				'wgEditToolbarCGD' => $wgEditToolbarCGDGlobalEnable || ( $wgEditToolbarCGDUserEnable && $wgUser->getOption( 'usebetatoolbar-cgd' ) )
+			) );
 			// Internationalization
 			wfLoadExtensionMessages( 'EditToolbar' );
 			UsabilityInitiativeHooks::addMessages(
@@ -35,6 +40,10 @@ class EditToolbarHooks {
 					'edittoolbar-tool-bold-example',
 					'edittoolbar-tool-italic',
 					'edittoolbar-tool-italic-example',
+					'edittoolbar-tool-ilink',
+					'edittoolbar-tool-ilink-example',
+					'edittoolbar-tool-xlink',
+					'edittoolbar-tool-xlink-example',
 					'edittoolbar-tool-link',
 					'edittoolbar-tool-link-title',
 					'edittoolbar-tool-link-int',
@@ -86,6 +95,7 @@ class EditToolbarHooks {
 					'edittoolbar-tool-gallery-example',
 					'edittoolbar-tool-newline',
 					'edittoolbar-tool-table',
+					'edittoolbar-tool-table-example-old',
 					'edittoolbar-tool-table-example',
 					'edittoolbar-tool-table-example-header',
 					'edittoolbar-tool-table-title',
@@ -198,21 +208,24 @@ class EditToolbarHooks {
 	 */
 	public static function addPreferences( $user, &$defaultPreferences ) {
 		global $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
+		global $wgEditToolbarCGDGlobalEnable, $wgEditToolbarCGDUserEnable;
 
-		// Checks if...
-		if (
-			// Toolbar is NOT globablly enabled
-			!$wgEditToolbarGlobalEnable &&
-			// And Toolbar is per-user enablable
-			$wgEditToolbarUserEnable
-		) {
-			// Internationalization
+		if ( !$wgEditToolbarGlobalEnable && $wgEditToolbarUserEnable ) {
 			wfLoadExtensionMessages( 'EditToolbar' );
 			// Adds preference for opting in
 			$defaultPreferences['usebetatoolbar'] =
 			array(
 				'type' => 'toggle',
 				'label-message' => 'edittoolbar-preference',
+				'section' => 'editing/advancedediting',
+			);
+		}
+		
+		if ( !$wgEditToolbarGlobalEnable && $wgEditToolbarUserEnable ) {
+			wfLoadExtensionMessages( 'EditToolbar' );
+			$defaultPreferences['usebetatoolbar-cgd'] = array(
+				'type' => 'toggle',
+				'label-message' => 'edittoolbar-cgd-preference',
 				'section' => 'editing/advancedediting',
 			);
 		}

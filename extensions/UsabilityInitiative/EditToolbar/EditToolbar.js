@@ -1,6 +1,10 @@
 /* JavaScript for EditToolbar extension */
 
 js2AddOnloadHook( function() {
+	// Only show content generation dialogs if enabled
+	if ( typeof wgEditToolbarCGD != 'undefined' && wgEditToolbarCGD )
+		$j( '#wpTextbox1' ).addClass( 'withCGD' );
+	
 	if ( $j.wikiEditor != undefined && $j.wikiEditor.isSupported() || !$j.wikiEditor.isSupportKnown() ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
@@ -47,10 +51,39 @@ js2AddOnloadHook( function() {
 			},
 			'insert': {
 				tools: {
-					'link': {
+					'xlink': {
+						labelMsg: 'edittoolbar-tool-xlink',
+						type: 'button',
+						icon: 'insert-xlink.png',
+						filters: [ '#wpTextbox1:not(.withCGD)' ],
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "[",
+								periMsg: 'edittoolbar-tool-xlink-example',
+								post: "]"
+							}
+						}
+					},
+					'ilink': {
+						labelMsg: 'edittoolbar-tool-ilink',
+						type: 'button',
+						icon: 'insert-ilink.png',
+						filters: [ '#wpTextbox1:not(.withCGD)' ],
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "[[",
+								periMsg: 'edittoolbar-tool-ilink-example',
+								post: "]]"
+							}
+						}
+					},
+					'linkCGD': {
 						labelMsg: 'edittoolbar-tool-link',
 						type: 'button',
 						icon: 'insert-link.png',
+						filters: [ '#wpTextbox1.withCGD' ],
 						action: {
 							type: 'dialog',
 							module: 'insert-link'
@@ -271,13 +304,28 @@ js2AddOnloadHook( function() {
 							}
 						}
 					},
+					'tableCGD': {
+						labelMsg: 'edittoolbar-tool-table',
+						type: 'button',
+						icon: 'insert-table.png',
+						filters: [ '#wpTextbox1.withCGD' ],
+						action: {
+							type: 'dialog',
+							module: 'insert-table'
+						}
+					},
 					'table': {
 						labelMsg: 'edittoolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
+						filters: [ '#wpTextbox1:not(.withCGD)' ],
 						action: {
-							type: 'dialog',
-							module: 'insert-table'
+							type: 'encapsulate',
+							options: {
+								pre: "{| class=\"wikitable\" border=\"1\"\n|",
+								periMsg: 'edittoolbar-tool-table-example-old',
+								post: "\n|}"
+							}
 						}
 					},
 					'newline': {
@@ -299,6 +347,7 @@ js2AddOnloadHook( function() {
 						labelMsg: 'edittoolbar-tool-replace',
 						type: 'button',
 						icon: 'search-replace.png',
+						filters: [ '#wpTextbox1.withCGD' ],
 						action: {
 							type: 'dialog',
 							module: 'search-and-replace'

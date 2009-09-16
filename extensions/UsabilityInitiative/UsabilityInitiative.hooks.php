@@ -63,17 +63,17 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 9 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 4 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 2 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 5 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 6 ),
 				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2x' ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 21 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 22 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 21 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 22 ),
 			),
 		),
 	);
@@ -125,30 +125,6 @@ class UsabilityInitiativeHooks {
 		
 		if ( !self::$doOutput )
 			return true;
-		// Transforms variables into javascript global variables
-		foreach ( self::$variables as $key => $value ) {
-			$escapedVariableValue = Xml::escapeJsString( $value );
-			$escapedVariableKey = Xml::escapeJsString( $key );
-			self::$variables[$key] =
-				"var {$escapedVariableKey} = '{$escapedVariableValue}';";
-		}
-		
-		//literal variables, ie ones we do not want escaped as strings
-		foreach( self::$literalVariables as $key => $value){
-			$escapedVariableValue = Xml::escapeJsString( $value );
-			$escapedVariableKey = Xml::escapeJsString( $key );
-			self::$variables[$key] =
-				"var {$escapedVariableKey} = {$escapedVariableValue};";
-		}
-		if ( count( self::$variables ) > 0 ) {
-			$out->addScript(
-				Xml::tags(
-					'script',
-					array( 'type' => $wgJsMimeType ),
-					implode( self::$variables )
-				)
-			);
-		}
 		
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
@@ -199,6 +175,14 @@ class UsabilityInitiativeHooks {
 		}
 		return true;
 	}
+	
+	/**
+	 * MakeGlobalVariablesScript hook
+	 */
+	public static function addJSVars( &$vars ) {
+		$vars = array_merge( $vars, self::$variables );
+		return true;
+	}
 
 	/**
 	 * Adds a reference to a javascript file to the head of the document
@@ -234,13 +218,4 @@ class UsabilityInitiativeHooks {
 	public static function addVariables( $variables ) {
 		self::$variables = array_merge( self::$variables, $variables );
 	}
-	
-	/**
-	 * Adds variables that will be turned into global variables in JS, but not escaped as strings
-	 * @param $variables array of "name" => "value"
-	 */
-	public static function addLiteralVariables( $variables ) {
-		self::$literalVariables = array_merge( self::$literalVariables, $variables );
-	}
-	
 }

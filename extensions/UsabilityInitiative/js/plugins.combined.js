@@ -1086,13 +1086,76 @@ $.fn.wikiEditor = function() {
 // gets called again we can pick up where we left off
 var context = $(this).data( 'wikiEditor-context' );
 
-/* API */
 
-// The first time this is called, we expect context to be undefined, meaning
-// the editing UI has not yet been, and still needs to be, built. However, each
-// additional call after that is expected to be an API call, which contains a
-// string as the first argument which corresponds to a supported API call
-if ( typeof context !== 'undefined' ) {
+if ( typeof context == 'undefined' ) {
+	/* Construction */
+	var instance = $.wikiEditor.instances.length;
+	context = { '$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance };
+	$.wikiEditor.instances[instance] = $(this);
+	
+	// Encapsulate the textarea with some containers for layout
+	$(this)
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ).attr( 'id', 'wikiEditor-ui' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ).attr( 'id', 'wikiEditor-ui-bottom' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ).attr( 'id', 'wikiEditor-ui-text' ) );
+	
+	// Get a reference to the outer container
+	context.$ui = $(this).parent().parent().parent();
+	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
+	// Attach a container in the top
+	context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
+	
+	// Create a set of standard methods for internal and external use
+	context.api = {
+		/**
+		 * Accepts either a string of the name of a module to add without any
+		 * additional configuration parameters, or an object with members keyed with
+		 * module names and valued with configuration objects
+		 */
+		addModule: function( context, data ) {
+			// A safe way of calling an API function on a module
+			function callModuleApi( module, call, data ) {
+				if (
+					module in $.wikiEditor.modules &&
+					'fn' in $.wikiEditor.modules[module] &&
+					call in $.wikiEditor.modules[module].fn
+				) {
+					$.wikiEditor.modules[module].fn[call]( context, data );
+				}
+			}
+			if ( typeof data == 'string' ) {
+				callModuleApi( data, 'create', {} );
+			} else if ( typeof data == 'object' ) {
+				for ( module in data ) {
+					if ( typeof module == 'string' ) {
+						callModuleApi( module, 'create', data[module] );
+					}
+				}
+			}
+		}
+	};
+	// Allow modules to extend the API
+	for ( module in $.wikiEditor.modules ) {
+		if ( 'api' in $.wikiEditor.modules[module] ) {
+			for ( call in $.wikiEditor.modules[module].api ) {
+				// Modules may not overwrite existing API functions - first come,
+				// first serve
+				if ( !( call in context.api ) ) {
+					context.api[call] = $.wikiEditor.modules[module].api[call];
+				}
+			}
+		}
+	}
+	//Each browser seems to do this differently, so let's keep our editor
+	//consistent by always starting at the begining
+	context.$textarea.scrollToCaretPosition( 0 );
+}
+
+// If there was a configuration passed, it's assumed to be for the addModule
+// API call
+if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
+	context.api.addModule( context, arguments[0] );
+} else {
 	// Since javascript gives arguments as an object, we need to convert them
 	// so they can be used more easily
 	arguments = $.makeArray( arguments );
@@ -1102,80 +1165,9 @@ if ( typeof context !== 'undefined' ) {
 		if ( call in context.api ) {
 			context.api[call]( context, arguments[0] == undefined ? {} : arguments[0] );
 		}
-		// Store the context for next time and return
-		return $(this).data( 'context', context );
-	}
-	// Nothing to do, just return
-	return $(this);
-}
-
-/* Construction */
-
-var instance = $.wikiEditor.instances.length;
-context = { '$textarea': $(this), 'modules': {}, 'data': {}, 'instance': instance };
-$.wikiEditor.instances[instance] = $(this);
-
-// Encapsulate the textarea with some containers for layout
-$(this)
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ).attr( 'id', 'wikiEditor-ui' ) )
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ).attr( 'id', 'wikiEditor-ui-bottom' ) )
-	.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ).attr( 'id', 'wikiEditor-ui-text' ) );
-
-// Get a reference to the outer container
-context.$ui = $(this).parent().parent().parent();
-context.$ui.after( $( '<div style="clear:both;"></div>' ) );
-// Attach a container in the top
-context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
-
-// Create a set of standard methods for internal and external use
-context.api = {
-	/**
-	 * Accepts either a string of the name of a module to add without any
-	 * additional configuration parameters, or an object with members keyed with
-	 * module names and valued with configuration objects
-	 */
-	addModule: function( context, data ) {
-		// A safe way of calling an API function on a module
-		function callModuleApi( module, call, data ) {
-			if (
-				module in $.wikiEditor.modules &&
-				'fn' in $.wikiEditor.modules[module] &&
-				call in $.wikiEditor.modules[module].fn
-			) {
-				$.wikiEditor.modules[module].fn[call]( context, data );
-			}
-		}
-		if ( typeof data == 'string' ) {
-			callModuleApi( data, 'create', {} );
-		} else if ( typeof data == 'object' ) {
-			for ( module in data ) {
-				if ( typeof module == 'string' ) {
-					callModuleApi( module, 'create', data[module] );
-				}
-			}
-		}
-	}
-};
-// Allow modules to extend the API
-for ( module in $.wikiEditor.modules ) {
-	if ( 'api' in $.wikiEditor.modules[module] ) {
-		for ( call in $.wikiEditor.modules[module].api ) {
-			// Modules may not overwrite existing API functions - first come,
-			// first serve
-			if ( !( call in context.api ) ) {
-				context.api[call] = $.wikiEditor.modules[module].api[call];
-			}
-		}
 	}
 }
-// If there was a configuration passed, it's assumed to be for the addModule
-// API call, so we can just send it on it's way right now
-if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
-	context.api.addModule( context, arguments[0] );
-}
-//Each browser seems to do this differently, so let's keep our editor
-//consistent by always starting at the begining
-context.$textarea.scrollToCaretPosition( 0 );
+
 // Store the context for next time, and support chaining
 return $(this).data( 'wikiEditor-context', context );
 
@@ -1926,7 +1918,7 @@ fn: {
 		context.$textarea
 			.bind( 'keyup encapsulateSelection',
 				function( event ) {
-					var context = $(this).data( 'context' );
+					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
 						bulk: 0,
 						loop: function() {
@@ -1938,7 +1930,7 @@ fn: {
 			)
 			.bind( 'mouseup scrollToPosition focus',
 				function( event ) {
-					var context = $(this).data( 'context' );
+					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
 						bulk: 0,
 						loop: function() {
@@ -1948,6 +1940,7 @@ fn: {
 				}
 			)
 			.blur( function() {
+				var context = $(this).data( 'wikiEditor-context' );
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
 	},
