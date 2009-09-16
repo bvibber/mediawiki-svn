@@ -6,7 +6,7 @@ trap 'kill %-; exit' SIGTERM
     type=$1
 }
 
-cd `readlink -f /home/wikipedia/common/php/maintenance`
+cd `readlink -f /usr/local/apache/common/wmf-deployment/maintenance`
 while [ 1 ];do
 	db=
 	while [ -z $db ];do
