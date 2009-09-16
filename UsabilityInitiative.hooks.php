@@ -47,10 +47,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/js2/js2.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/js2.combined.js', 'version' => 5 ),
+				array( 'src' => 'js/js2.combined.js', 'version' => 6 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/js2.combined.min.js', 'version' => 5 ),
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 6 ),
 			),
 		),
 		// Core functionality of extension
@@ -67,7 +67,9 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 2 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 6 ),
-				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2x' ),
+				// FIXME: jQuery UI doesn't belong here, should move to no_js2
+				// once we figure out how to do jQuery UI properly in JS2 
+				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
 				array( 'src' => 'js/plugins.combined.js', 'version' => 22 ),
