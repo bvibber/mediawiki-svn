@@ -184,7 +184,7 @@ $aliases['no'] = array(
 
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'Book' => array( 'Libre' ),
+	'Book' => array( 'Colleccion' ),
 );
 
 /** Polish (Polski) */
@@ -205,11 +205,6 @@ $aliases['pt-br'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Book' => array( 'समुच्यय' ),
-);
-
-/** Slovak (Slovenčina) */
-$aliases['sk'] = array(
-	'Book' => array( 'Knihy', 'Kolekcia' ),
 );
 
 /** Albanian (Shqip) */

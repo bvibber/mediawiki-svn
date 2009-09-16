@@ -1,7 +1,7 @@
 /*
  * Collection Extension for MediaWiki
  *
- * Copyright (C) PediaPress GmbH
+ * Copyright (C) 2008, PediaPress GmbH
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,11 +21,9 @@
 
 (function() {
 
-var jQuery = collection_jQuery;
-
 /******************************************************************************/
 
-var requiredVersion = '1.4';
+var requiredVersion = '1.2';
 
 /******************************************************************************/
 
@@ -57,9 +55,7 @@ function getMWServeStatus() {
 		'rsargs[]': [collection_id, writer]
 	}, function(result) {
 		if (result.state == 'progress' ) {
-			if ( result.status.progress )  {
-				jQuery('#renderingProgress').html('' + result.status.progress);
-			}
+			jQuery('#renderingProgress').html('' + result.status.progress);
 			if (result.status.status) {
 				var status = result.status.status;
 				if (result.status.article) {
@@ -83,12 +79,7 @@ function clear_collection() {
 		sajax_request_type = "POST";
 		sajax_do_call('wfAjaxCollectionClear',
 			[],
-			function(xhr) {
-				refresh_list(xhr);
-				sajax_do_call('wfAjaxCollectionGetBookCreatorBoxContent', ['showbook', null], function(xhr2) {
-					jQuery('#coll-book_creator_box').html(xhr2.responseText);
-				});
-			});
+			refresh_list);
 	}
 	return false;
 }
@@ -119,12 +110,7 @@ function remove_item(index) {
 	sajax_request_type = "POST";
 	sajax_do_call('wfAjaxCollectionRemoveItem',
 		[index],
-		function(xhr) {
-			refresh_list(xhr);
-			sajax_do_call('wfAjaxCollectionGetBookCreatorBoxContent', ['showbook', null], function(xhr2) {
-				jQuery('#coll-book_creator_box').html(xhr2.responseText);
-			});
-		});
+		refresh_list);
 	return false;
 }
 

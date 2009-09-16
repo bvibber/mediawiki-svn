@@ -12,12 +12,15 @@ if( !defined( 'MEDIAWIKI' ) ) die( -1 );
  */
 class CollectionPageTemplate extends QuickTemplate {
 	function execute() {		
-		$mediapath = $GLOBALS['wgScriptPath'] . '/extensions/Collection/images/';
+		$mediapath = $GLOBALS['wgScriptPath'] . '/extensions/Collection/collection/';
 ?>
 
 <div style="width: 47%; float: left; margin-right: 5%">
+<?php $this->msgWiki('coll-intro_text') ?>
 
-<form action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book')) ?>" method="post" id="mw-collection-title-form">
+<h2><span class="mw-headline"><?php $this->msg('coll-your_book') ?></span></h2>
+
+<form action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'set_titles/')) ?>" method="post" id="mw-collection-title-form">
 	<table id="mw-collection-title-table" style="width: 80%; background-color: transparent;" align="center">
 		<tbody>
 			<tr>
@@ -30,7 +33,6 @@ class CollectionPageTemplate extends QuickTemplate {
 			</tr>
 		</tbody>
 	</table>
-	<input type="hidden" name="bookcmd" value="set_titles" />
 	<noscript>
 		<input type="submit" value="<?php $this->msg('coll-update') ?>" />
 	</noscript>
@@ -61,8 +63,7 @@ $this->msgWiki('coll-book_text');
 		?>
 		<div>
 			<div style="float:right">
-				<form action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book')) ?>" method="post">
-					<input type="hidden" name="bookcmd" value="post_zip" />
+				<form action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'post_zip/')) ?>" method="post">
 					<input type="hidden" name="partner" value="pediapress" />
 					<input type="submit" value="<?php echo wfMsgHtml('coll-order_from_pp', htmlspecialchars($partnerData['name'])) ?>" class="order" <?php if (count($this->data['collection']['items']) == 0) { ?> disabled="disabled"<?php } ?> />
 				</form>
@@ -109,7 +110,7 @@ echo $GLOBALS['wgParser']->parse('{{:' . $t . '}}',
 			$this->msgWiki('coll-download_text');
 			$buttonLabel = wfMsgHtml('coll-download');
 		} ?>
-		<form id="downloadForm" action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book')) ?>" method="post">
+		<form id="downloadForm" action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'render/')) ?>" method="post">
 			<table style="width:100%; background-color: transparent;"><tr><td><tbody><tr><td>
 			<?php if (count($this->data['formats']) == 1) { ?>
 				<input type="hidden" name="writer" value="<?php echo htmlspecialchars($writer) ?>" />
@@ -122,7 +123,6 @@ echo $GLOBALS['wgParser']->parse('{{:' . $t . '}}',
 				</select>
 			<?php } ?>
 			</td><td style="text-align:right; vertical-align:bottom;">
-			<input type="hidden" name="bookcmd" value="render" />
 			<input id="downloadButton" type="submit" value="<?php echo $buttonLabel ?>"<?php if (count($this->data['collection']['items']) == 0) { ?> disabled="disabled"<?php } ?> />
 			</td></tr></tbody></table>
 		</form>
@@ -146,7 +146,7 @@ echo $GLOBALS['wgParser']->parse('{{:' . $t . '}}',
 					$bookname = wfMsgForContent('coll-collections');
 					$communityCollNS = $GLOBALS['wgCommunityCollectionNamespace'];
 		?>
-			<form id="saveForm" action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book')) ?>" method="post">
+			<form id="saveForm" action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'save_collection/')) ?>" method="post">
 				<table style="width:100%; background-color: transparent;"><tbody>
 				<?php if ($canSaveUserPage) { ?>
 				<tr><td>
@@ -178,7 +178,6 @@ echo $GLOBALS['wgParser']->parse('{{:' . $t . '}}',
 				<input id="saveButton" type="submit" value="<?php $this->msg('coll-save_collection') ?>"<?php if (count($this->data['collection']['items']) == 0) { ?> disabled="disabled"<?php } ?> />
 				</tr></tbody></table>
 				<input name="token" type="hidden" value="<?php echo htmlspecialchars($GLOBALS['wgUser']->editToken()) ?>" />
-				<input name="bookcmd" type="hidden" value="save_collection" />
 			</form>
 
 		<?php } else {
@@ -203,15 +202,15 @@ echo $GLOBALS['wgParser']->parse('{{:' . $t . '}}',
  */
 class CollectionListTemplate extends QuickTemplate {
 	function execute() {		
-		$mediapath = $GLOBALS['wgScriptPath'] . '/extensions/Collection/images/';
+		$mediapath = $GLOBALS['wgScriptPath'] . '/extensions/Collection/collection/';
 ?>
 
 <div style="text-align: center; padding: 2px; margin-top: 20px; margin-bottom: 2px; border: 1px solid #aaa; background-color: #f9f9f9;">
 <div>
 <a class="makeVisible" style="margin-right: 3em;<?php if (!isset($this->data['is_ajax'])) { echo ' display:none;'; } ?>" onclick="return coll_create_chapter()" href="javascript:void(0);"><?php $this->msg('coll-create_chapter') ?></a>
 <?php if (count($this->data['collection']['items']) > 0) { ?>
-<a style="margin-right: 3em" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'sort_items'))) ?>"><?php $this->msg('coll-sort_alphabetically') ?></a>
-<a onclick="return coll_clear_collection()" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'clear_collection'))) ?>"><?php $this->msg('coll-clear_collection') ?></a>
+<a style="margin-right: 3em" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'sort_items/')) ?>"><?php $this->msg('coll-sort_alphabetically') ?></a>
+<a onclick="return coll_clear_collection()" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'clear_collection/')) ?>"><?php $this->msg('coll-clear_collection') ?></a>
 <?php } ?>
 </div>
 </div>
@@ -234,17 +233,17 @@ if (count($this->data['collection']['items']) == 0) { ?>
 foreach($this->data['collection']['items'] as $index => $item) {
 	if ($item['type'] == 'article') { ?>
 	<li id="item-<?php echo intval( $index ) ?>" class="article">
-		<a onclick="return coll_remove_item(<?php echo intval( $index ) ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'remove_item', 'index' => $index))) ?>" title="<?php $this->msg('coll-remove') ?>"><img src="<?php echo htmlspecialchars($mediapath . "remove.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-remove') ?>" /></a><a>
+		<a onclick="return coll_remove_item(<?php echo intval( $index ) ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'remove_item/', 'index=' . $index)) ?>" title="<?php $this->msg('coll-remove') ?>"><img src="<?php echo htmlspecialchars($mediapath . "remove.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-remove') ?>" /></a><a>
 		<noscript>
 		<?php if ($index == 0) { ?>
 			<img src="<?php echo htmlspecialchars($mediapath . "trans.png") ?>" width="10" height="10" alt="" />
 		<?php } else { ?>
-			<a onclick="return coll_move_item(<?php echo intval( $index ) . ', -1' ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array( 'bookcmd' => 'move_item', 'delta' => '-1', 'index' => $index))) ?>" title="<?php $this->msg('coll-move_up') ?>"><img src="<?php echo htmlspecialchars($mediapath . "up.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-move_up') ?>" /></a>
+			<a onclick="return coll_move_item(<?php echo intval( $index ) . ', -1' ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'move_item/', 'delta=-1&index=' . $index)) ?>" title="<?php $this->msg('coll-move_up') ?>"><img src="<?php echo htmlspecialchars($mediapath . "up.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-move_up') ?>" /></a>
 		<?php }
 		if ($index == count($this->data['collection']['items']) - 1) { ?>
 			<img src="<?php echo htmlspecialchars($mediapath . "trans.png") ?>" width="10" height="10" alt="" />
 		<?php } else { ?>
-			<a onclick="return coll_move_item(<?php echo intval( $index ) . ', 1' ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'move_item', 'delta' => '1', 'index' => $index))) ?>" title="<?php $this->msg('coll-move_down') ?>"><img src="<?php echo htmlspecialchars($mediapath . "down.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-move_down') ?>" /></a>
+			<a onclick="return coll_move_item(<?php echo intval( $index ) . ', 1' ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'move_item/', 'delta=1&index=' . $index)) ?>" title="<?php $this->msg('coll-move_down') ?>"><img src="<?php echo htmlspecialchars($mediapath . "down.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-move_down') ?>" /></a>
 		<?php } ?>
 		</noscript>
 		<?php if ($item['currentVersion'] == 0) {
@@ -264,17 +263,17 @@ foreach($this->data['collection']['items'] as $index => $item) {
 	</li>
 	<?php } elseif ($item['type'] == 'chapter') { ?>
 	<li id="item-<?php echo intval( $index ) ?>" class="chapter" style="margin-top:0.3em;">
-		<a onclick="return coll_remove_item(<?php echo intval( $index ) ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'remove_item', 'index=' => $index))) ?>" title="<?php $this->msg('coll-remove') ?>"><img src="<?php echo htmlspecialchars($mediapath . "remove.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-remove') ?>" /></a>
+		<a onclick="return coll_remove_item(<?php echo intval( $index ) ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'remove_item/', 'index=' . $index)) ?>" title="<?php $this->msg('coll-remove') ?>"><img src="<?php echo htmlspecialchars($mediapath . "remove.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-remove') ?>" /></a>
 		<noscript>
 		<?php if ($index == 0) { ?>
 			<img src="<?php echo htmlspecialchars($mediapath . "trans.png") ?>" width="10" height="10" alt="" />
 		<?php } else { ?>
-			<a onclick="return coll_move_item(<?php echo intval( $index ) . ', -1' ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'move_item', 'delta' => '-1', 'index' => $index))) ?>" title="<?php $this->msg('coll-move_up') ?>"><img src="<?php echo htmlspecialchars($mediapath . "up.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-move_up') ?>" /></a>
+			<a onclick="return coll_move_item(<?php echo intval( $index ) . ', -1' ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'move_item/', 'delta=-1&index=' . $index)) ?>" title="<?php $this->msg('coll-move_up') ?>"><img src="<?php echo htmlspecialchars($mediapath . "up.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-move_up') ?>" /></a>
 		<?php }
 		if ($index == count($this->data['collection']['items']) - 1) { ?>
 			<img src="<?php echo htmlspecialchars($mediapath . "trans.png") ?>" width="10" height="10" alt="" />
 		<?php } else { ?>
-			<a onclick="return coll_move_item(<?php echo intval( $index ) . ', 1' ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'move_item', 'delta' => '1', 'index' => $index))) ?>" title="<?php $this->msg('coll-move_down') ?>"><img src="<?php echo htmlspecialchars($mediapath . "down.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-move_down') ?>" /></a>
+			<a onclick="return coll_move_item(<?php echo intval( $index ) . ', 1' ?>)" href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'move_item/', 'delta=1&index=' . $index)) ?>" title="<?php $this->msg('coll-move_down') ?>"><img src="<?php echo htmlspecialchars($mediapath . "down.png") ?>" width="10" height="10" alt="<?php $this->msg('coll-move_down') ?>" /></a>
 		<?php } ?>
 		</noscript>
 		<img src="<?php echo htmlspecialchars($mediapath . "trans.png") ?>" width="10" height="10" alt="" />
@@ -301,11 +300,10 @@ class CollectionLoadOverwriteTemplate extends QuickTemplate {
 
 <?php $this->msgWiki('coll-load_overwrite_text'); ?>
 
-<form action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book')) ?>" method="post">
+<form action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'load_collection/')) ?>" method="post">
 	<input name="overwrite" type="submit" value="<?php $this->msg('coll-overwrite') ?>" />
 	<input name="append" type="submit" value="<?php $this->msg('coll-append') ?>" />
 	<input name="cancel" type="submit" value="<?php $this->msg('coll-cancel') ?>" />
-	<input name="bookcmd" type="hidden" value="load_collection" />
 	<input name="colltitle" type="hidden" value="<?php echo htmlspecialchars($this->data['title']->getPrefixedText()) ?>" /> 
 </form>
 
@@ -325,14 +323,13 @@ class CollectionSaveOverwriteTemplate extends QuickTemplate {
 
 <p><?php echo $GLOBALS['wgParser']->parse(wfMsgNoTrans('coll-overwrite_text', $this->data['title']->getPrefixedText()), $GLOBALS['wgTitle'], $GLOBALS['wgOut']->parserOptions(), true)->getText() ?></p>
 
-<form action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book')) ?>" method="post">
+<form action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrlSubpage('Book', 'save_collection/')) ?>" method="post">
 	<input name="overwrite" type="submit" value="<?php $this->msg('coll-yes') ?>" />
 	<input name="abort" type="submit" value="<?php $this->msg('coll-no') ?>" />
 	<input name="pcollname" type="hidden" value="<?php echo htmlspecialchars($this->data['pcollname']) ?>" />
 	<input name="ccollname" type="hidden" value="<?php echo htmlspecialchars($this->data['ccollname']) ?>" />
 	<input name="colltype" type="hidden" value="<?php echo htmlspecialchars($this->data['colltype']) ?>" />
 	<input name="token" type="hidden" value="<?php echo htmlspecialchars($GLOBALS['wgUser']->editToken()) ?>" />
-	<input name="bookcmd" type="hidden" value="save_collection" />
 </form>
 
 <?php
@@ -373,7 +370,7 @@ echo $GLOBALS['wgParser']->parse(
 )->getText();
 
 if ($this->data['is_cached']) {
-	$forceRenderURL = SkinTemplate::makeSpecialUrl('Book', 'bookcmd=forcerender&' . $this->data['query']);
+	$forceRenderURL = SkinTemplate::makeSpecialUrlSubpage('Book', 'forcerender/', $this->data['query']);
 	echo wfMsg('coll-is_cached', htmlspecialchars($forceRenderURL));
 }
 echo $GLOBALS['wgParser']->parse(
@@ -408,119 +405,4 @@ if ($this->data['return_to']) {
 	}
 }
 
-?>
-
-<?php
-/*
- * Template for suggest feature
- * 
- * It needs the two methods getProposalList() and getMemberList()
- * to run with Ajax
- */
-class CollectionSuggestTemplate extends QuickTemplate {
-	function execute () {
-?>
-<script src="<?php echo $GLOBALS['wgScriptPath'] . "/extensions/Collection/js/jquery.js?" . $GLOBALS['wgCollectionStyleVersion'] ?>" type="<?php echo $GLOBALS['wgJsMimeType']; ?>"></script>
-<script type="<?php echo $GLOBALS['wgJsMimeType']; ?>">
-/*<![CDATA[*/
-var collection_jQuery = jQuery.noConflict();
-/*]]>*/
-</script>
-<script src="<?php echo $GLOBALS['wgScriptPath'] . "/extensions/Collection/js/suggest.js?" . $GLOBALS['wgCollectionStyleVersion'] ?>" type="<?php echo $GLOBALS['wgJsMimeType']; ?>"></script>
-<div>
-	<?php $this->msg( 'coll-suggest_intro_text' ) ?>
-	<div id="collectionSuggestStatus" style="text-align: center; margin: 5px auto 10px auto; padding: 0 4px; border: 1px solid #ed9; background-color: #fea; visibility: hidden;">&nbsp;</div>
-	<table style="width: 100%; border-spacing: 10px;"><tbody><tr>
-		<td style="padding: 10px; vertical-align: top;">
-			<form method="post" action="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'suggest'))) ?>">
-				<strong style="font-size: 1.2em;"><?php $this->msg('coll-suggested_articles') ?></strong>
-				(<a href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'suggest', 'resetbans' => '1'))) ?>" title="<?php $this->msg('coll-suggest_reset_bans_tooltip') ?>"><?php $this->msg('coll-suggest_reset_bans') ?></a>)
-				<?php if (count($this->data['proposals']) > 0) { ?>
-				<noscript>
-				<div style="float: right;">
-					<input type="submit" value="<?php $this->msg('coll-suggest_add_selected') ?>" name="addselected" />
-				</div>
-				</noscript>
-				<?php } ?>
-				<ul id="collectionSuggestions" style="list-style: none; margin-left: 0;">
-				<?php echo $this->getProposalList() ?>
-				</ul>
-			</form>
-		</td>
-		<td style="width: 45%; vertical-align: top;">
-			<div style="padding: 10px; border: 1px solid #aaa; background-color: #f9f9f9;">
-				<strong style="font-size: 1.2em;"><?php $this->msg('coll-suggest_your_book') ?></strong>
-				(<a href="<?php echo htmlspecialchars(SkinTemplate::makeSpecialUrl('Book')) ?>" title="<?php $this->msg('coll-show_collection_tooltip') ?>"><?php $this->msg('coll-suggest_show') ?></a>)
-				<ul id="collectionMembers" style="list-style: none; margin-left: 0;">
-				<?php echo $this->getMemberList(); ?>
-				</ul>
-			</div>
-		</td>
-	</tr></tbody></table>
-</div>
-<?php
-	}
-
-	// needed for Ajax functions
-	function getProposalList () {
-		global $wgServer;	
-		global $wgScript;
-
-		$mediapath = $GLOBALS['wgScriptPath'] . '/extensions/Collection/images/';
-		$baseUrl = $wgServer . $wgScript ."/";
-
-		$prop = $this->data['proposals'];
-		$out = '';
-		
-		$num = count($prop);
-		if ($num == 0) {
-			return "<li>" . wfMsgHtml( 'coll-suggest_empty' ) . "</li>";
-		}
-
-		$artName= $prop[0]['name'];
-		$title = Title::newFromText( $artName );
-		$url = $title->getLocalUrl();
-		$out .= '<li style="margin-bottom: 10px; padding: 4px 4px; background-color: #ddddff; font-size: 1.4em; font-weight: bold;">';
-		$out .= '<noscript><input type="checkbox" value="' . htmlspecialchars($artName) . '" name="articleList[]" /></noscript>';
-		$out .= '<a onclick="collectionSuggestCall(\'AddArticle\', [\'' . $artName . '\']); return false;" href="' . htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'suggest', 'add' => $artName))) . '" title="' . wfMsgHtml('coll-add_this_page') . '"><img src="' . htmlspecialchars($mediapath . 'silk-accept.png') . '" width="16" height="16" alt=""></a> ';
-		$out .= '<a onclick="collectionSuggestCall(\'BanArticle\', [\'' . $artName . '\']); return false;" href="' . htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'suggest', 'ban' => $artName))) . '" title="' . wfMsgHtml('coll-suggest_ban_tooltip') . '"><img src="' . htmlspecialchars($mediapath . 'silk-cancel.png') . '" width="16" height="16" alt=""></a> ';
-		$out .= '<a href="' . $url . '" title="' . $artName . '">' . $artName . '</a>';
-		//$out .= ' ' . $prop[0]['val'];
-		$out .= '</li>';
-
-		for ($i = 1; $i < $num; $i++) {
-			$artName= $prop[$i]['name'];
-			$url = $baseUrl . $artName;
-			$url = str_replace(" ", "_", $url);
-			$out .= '<li style="padding-left: 4px;">';
-			$out .= '<noscript><input type="checkbox" value="' . htmlspecialchars($artName) . '" name="articleList[]" /></noscript>';
-			$out .= '<a onclick="collectionSuggestCall(\'AddArticle\', [\'' . $artName . '\']); return false;" href="' . htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array('bookcmd' => 'suggest', 'add' => $artName))) . '" title="' . wfMsgHtml('coll-add_this_page') . '"><img src="' . htmlspecialchars($mediapath . 'silk-accept.png') . '" width="16" height="16" alt=""></a> ';
-			$out .= '<a href="' . $url . '" title="' . $artName . '">' . $artName . '</a>';
-			//$out .= ' ' . $prop[$i]['val'];
-			$out .= '</li>';
-		}
-
-		return $out;
-	}
-
-	// needed for Ajax functions
-	function getMemberList() {
-		$mediapath = $GLOBALS['wgScriptPath'] . '/extensions/Collection/images/';
-		$coll = $this->data['collection'];
-		$out = '';
-
-		$num = count($coll['items']);
-		if ($num == 0) $out .= "<li>" . wfMsgHtml( 'coll-suggest_empty' ) . "</li>";
-
-		for ($i = 0; $i < $num; $i++) {
-			$artName = $coll['items'][$i]['title'];
-			if ($coll['items'][$i]['type'] == 'article') {
-			  $out .= '<li><a href="' . htmlspecialchars(SkinTemplate::makeSpecialUrl('Book', array( 'bookcmd' => 'suggest', 'remove' => $artName))) . '" onclick="collectionSuggestCall(\'RemoveArticle\', [\'' . $artName . '\']); return false;" title="' . wfMsgHtml('coll-remove_this_page') . '"><img src="'.htmlspecialchars($mediapath . 'remove.png').'" width="10" height="10" alt=""></a> ';
-				$out .= '<a href="' . $coll['items'][$i]['url'] . '" title="' . $artName . '">' . $artName . '</a></li>';
-	    		}
-		}
-
-		return $out;
-	}
-}
 ?>

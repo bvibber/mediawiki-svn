@@ -3,7 +3,7 @@
 /*
  * Collection Extension for MediaWiki
  *
- * Copyright (C) PediaPress GmbH
+ * Copyright (C) 2008, PediaPress GmbH
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,14 +33,14 @@ EOT;
 $dir = dirname(__FILE__) . '/';
 
 # Extension version
-$wgCollectionVersion = "1.4";
+$wgCollectionVersion = "1.2";
 
 # ==============================================================================
 
 # Configuration:
 
 /** Bump the version number every time you change any of the JavaScript files */
-$wgCollectionStyleVersion = 5;
+$wgCollectionStyleVersion = 2;
 
 /** URL of mw-serve render server */
 $wgCollectionMWServeURL = 'http://tools.pediapress.com/mw-serve/';
@@ -88,22 +88,14 @@ $wgCollectionLicenseName = null;
 $wgCollectionLicenseURL = null;
 
 /** List of available download formats,
-		as mapping of mwlib writer to format name */
+    as mapping of mwlib writer to format name */
 $wgCollectionFormats = array(
 	'rl' => 'PDF',
 );
 
-$wgCollectionPortletFormats = array( 'rl' );
-
 $wgCollectionPortletForLoggedInUsersOnly = false;
 
-$wgCollectionNavPopups = true;
-
-$wgCollectionMaxSuggestions = 10;
-
-$wgCollectionSuggestCheapWeightThreshhold = 50;
-
-$wgCollectionSuggestThreshhold = 100;
+$wgCollectionNavPopups = false;
 
 # ==============================================================================
 
@@ -121,22 +113,21 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgAutoloadClasses['SpecialCollection'] = $dir . 'Collection.body.php';
 $wgAutoloadClasses['CollectionSession'] = $dir . 'Collection.session.php';
 $wgAutoloadClasses['CollectionHooks'] = $dir . 'Collection.hooks.php';
-$wgAutoloadClasses['CollectionSuggest'] = $dir . 'Collection.suggest.php';
 $wgAutoloadClasses['CollectionPageTemplate'] = $dir . 'Collection.templates.php';
 $wgAutoloadClasses['CollectionListTemplate'] = $dir . 'Collection.templates.php';
 $wgAutoloadClasses['CollectionLoadOverwriteTemplate'] = $dir . 'Collection.templates.php';
 $wgAutoloadClasses['CollectionSaveOverwriteTemplate'] = $dir . 'Collection.templates.php';
 $wgAutoloadClasses['CollectionRenderingTemplate'] = $dir . 'Collection.templates.php';
 $wgAutoloadClasses['CollectionFinishedTemplate'] = $dir . 'Collection.templates.php';
-$wgAutoloadClasses['CollectionSuggestTemplate'] = $dir . 'Collection.templates.php';
 $wgExtensionMessagesFiles['CollectionCore'] = $dir . 'CollectionCore.i18n.php'; // Only contains essential messages outside the special page
 $wgExtensionMessagesFiles['Collection'] = $dir . 'Collection.i18n.php'; // Contains all messages used on special page
 $wgExtensionAliasesFiles['Collection'] = $dir . 'Collection.alias.php';
 $wgSpecialPages['Book'] = 'SpecialCollection';
 $wgSpecialPageGroups['Book'] = 'pagetools';
 
+$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'CollectionHooks::createNavURLs';
+$wgHooks['SkinTemplateToolboxEnd'][] = 'CollectionHooks::insertToolboxLink';
 $wgHooks['SkinBuildSidebar'][] = 'CollectionHooks::buildSidebar';
-$wgHooks['SiteNoticeAfter'][] = 'CollectionHooks::siteNoticeAfter';
 $wgHooks['OutputPageCheckLastModified'][] = 'CollectionHooks::checkLastModified';
 
 $wgAvailableRights[] = 'collectionsaveasuserpage';
@@ -206,11 +197,11 @@ function wfAjaxCollectionAddCategory( $title='' ) {
 
 $wgAjaxExportList[] = 'wfAjaxCollectionAddCategory';
 
-function wfAjaxCollectionGetBookCreatorBoxContent( $ajaxHint='', $oldid=null ) {
-	return CollectionHooks::getBookCreatorBoxContent( $ajaxHint, $oldid );
+function wfAjaxCollectionGetPortlet( $ajaxHint='' ) {
+	return CollectionHooks::getPortlet( $ajaxHint );
 }
 
-$wgAjaxExportList[] = 'wfAjaxCollectionGetBookCreatorBoxContent';
+$wgAjaxExportList[] = 'wfAjaxCollectionGetPortlet';
 
 function wfAjaxCollectionGetItemList() {
 	wfLoadExtensionMessages( 'CollectionCore' );
@@ -272,66 +263,7 @@ $wgAjaxExportList[] = 'wfAjaxCollectionSetSorting';
 
 function wfAjaxCollectionClear() {
 	CollectionSession::clearCollection();
-	CollectionSuggest::clear();
 	return wfAjaxCollectionGetItemList();
 }
 
 $wgAjaxExportList[] = 'wfAjaxCollectionClear';
-
-function wfCollectionSuggestAction( $action, $article ) {
-	wfLoadExtensionMessages( 'CollectionCore' );
-	wfLoadExtensionMessages( 'Collection' );
-
-	$json = new Services_JSON();
-	$result = CollectionSuggest::refresh( $action, $article );
-	$undoLink = Xml::element( 'a',
-		array(
-			'href' => SkinTemplate::makeSpecialUrl(
-				'Book',
-				array('bookcmd' => 'suggest', 'undo' => $action, 'arttitle' => $article )
-			),
-			'onclick' => "collectionSuggestCall('UndoArticle', ['$action', '$article']); return false;",
-			'title' => wfMsg( 'coll-suggest_undo_tooltip' ),
-		),
-		wfMsg( 'coll-suggest_undo' )
-	);
-	$result['last_action'] = wfMsg(
-		"coll-suggest_article_$action",
-		htmlspecialchars( $article ),
-		$undoLink
-	);
-	$r = new AjaxResponse( $json->encode( $result ) );
-	$r->setContentType( 'application/json' );
-	return $r;
-}
-
-function wfAjaxCollectionSuggestBanArticle( $article ) {
-	return wfCollectionSuggestAction( 'ban', $article );
-}
-
-$wgAjaxExportList[] = 'wfAjaxCollectionSuggestBanArticle';
-
-function wfAjaxCollectionSuggestAddArticle( $article ) {
-	return wfCollectionSuggestAction( 'add', $article );
-}
-
-$wgAjaxExportList[] = 'wfAjaxCollectionSuggestAddArticle';
-
-function wfAjaxCollectionSuggestRemoveArticle( $article ) {
-	return wfCollectionSuggestAction( 'remove', $article );
-}
-
-$wgAjaxExportList[] = 'wfAjaxCollectionSuggestRemoveArticle';
-
-function wfAjaxCollectionSuggestUndoArticle( $lastAction, $article ) {
-	wfLoadExtensionMessages( 'CollectionCore' );
-	wfLoadExtensionMessages( 'Collection' );
-
-	$json = new Services_JSON();
-	$result = CollectionSuggest::undo( $lastAction, $article );
-	$r = new AjaxResponse( $json->encode( $result ) );
-	$r->setContentType( 'application/json' );
-	return $r;
-}
-
-$wgAjaxExportList[] = 'wfAjaxCollectionSuggestUndoArticle';
