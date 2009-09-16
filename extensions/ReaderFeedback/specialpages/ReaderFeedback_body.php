@@ -6,6 +6,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class ReaderFeedbackPage extends UnlistedSpecialPage
 {
+	const REVIEW_ERROR = 0;
+	const REVIEW_OK = 1;
+	const REVIEW_DUP = 2;
+
 	// Initialize to handle incomplete AJAX input
 	var $page = null;
 	var $oldid = 0;
@@ -14,7 +18,7 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 	var $commentary = '';
 	
     public function __construct() {
-        UnlistedSpecialPage::UnlistedSpecialPage( 'ReaderFeedback', 'feedback' );
+        parent::__construct( 'ReaderFeedback', 'feedback' );
 		wfLoadExtensionMessages( 'ReaderFeedback' );
     }
 
@@ -23,16 +27,13 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		$confirm = $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
 		if( $wgUser->isAllowed( 'feedback' ) ) {
 			if( $wgUser->isBlocked( !$confirm ) ) {
-				$wgOut->blockedPage();
-				return;
+				return $wgOut->blockedPage();
 			}
 		} else {
-			$wgOut->permissionRequired( 'feedback' );
-			return;
+			return $wgOut->permissionRequired( 'feedback' );
 		}
 		if( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
+			return $wgOut->readOnlyPage();
 		}
 		$this->setHeaders();
 		# Our target page
@@ -73,11 +74,11 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		if( $confirm && !$wgRequest->getVal( 'commentary' ) ) {
 			$ok = $this->submit();
 		} else {
-			$ok = false;
+			$ok = self::REVIEW_ERROR;
 		}
 		# Go to graphs!
 		global $wgMiserMode;
-		if( $ok && !$wgMiserMode ) {
+		if( $ok == self::REVIEW_OK && !$wgMiserMode ) {
 			$ratingTitle = SpecialPage::getTitleFor( 'RatingHistory' );
 			$wgOut->redirect( $ratingTitle->getLocalUrl('target='.$this->page->getPrefixedUrl() ) );
 		# Already voted or graph is set to be skipped...
@@ -169,15 +170,23 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
-		$ok = ( $bot || $form->submit() ); // don't submit for mindless drones
-		$dbw->commit();
-		if( $ok ) {
-			return '<suc#>'.wfMsgExt( 'readerfeedback-success', array('parseinline'), 
-				$form->page->getPrefixedText(), $graphLink, $talk->getFullUrl( 'action=edit&section=new' ) ) .
-				'<h4>'.wfMsgHtml('ratinghistory-table')."</h4>\n$tallyTable";
+		if( $bot ) {
+			$ok = self::REVIEW_ERROR; // don't submit for mindless drones
 		} else {
-			return '<err#>'.wfMsgExt( 'readerfeedback-voted', array('parseinline'), 
-				$form->page->getPrefixedText(), $graphLink, $talk->getFullUrl( 'action=edit&section=new' ) );
+			$ok = $form->submit();
+		}
+		$dbw->commit();
+		switch( $ok ) {
+			case self::REVIEW_OK:
+				return '<suc#>'.wfMsgExt( 'readerfeedback-success', array('parseinline'), 
+					$form->page->getPrefixedText(), $graphLink, $talk->getFullUrl( 'action=edit&section=new' ) ) .
+					'<h4>'.wfMsgHtml('ratinghistory-table')."</h4>\n$tallyTable";
+			case self::REVIEW_DUP:
+				return '<err#>'.wfMsgExt( 'readerfeedback-voted', array('parseinline'), 
+					$form->page->getPrefixedText(), $graphLink, $talk->getFullUrl( 'action=edit&section=new' ) );
+			default:
+				return '<err#>'.wfMsgExt( 'readerfeedback-error', array('parseinline'), 
+					$form->page->getPrefixedText(), $graphLink, $talk->getFullUrl( 'action=edit&section=new' ) );
 		}
 	}
 	
@@ -256,21 +265,25 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		$now = wfTimestampNow();
 		$date = str_pad( substr( $now, 0, 8 ), 14, '0' );
 		if( count($this->dims) == 0 )
-			return false;
+			return self::REVIEW_ERROR;
 		$ratings = $this->flattenRatings( $this->dims );
 		# Make sure revision is valid!
 		$rev = Revision::newFromId( $this->oldid );
 		if( !$rev || !$rev->getTitle()->equals( $this->page ) ) {
-			return false; // opps!
+			return self::REVIEW_ERROR; // opps!
 		}
 		$ip = wfGetIP();
 		if( !$wgUser->getId() && !$ip ) {
-			return false; // we need to keep track somehow
+			return self::REVIEW_ERROR; // we need to keep track somehow
 		}
 		$article = new Article( $this->page );
+		# Check if the user is spamming reviews...
+		if( $wgUser->pingLimiter( 'feedback' ) || $wgUser->pingLimiter() ) {
+			return self::REVIEW_ERROR;
+		}
 		# Check if user already voted before...
 		if( self::userAlreadyVoted( $this->page, $this->oldid ) ) {
-			return false;
+			return self::REVIEW_DUP;
 		}
 		# Update review records to limit double voting!
 		$insertRow = array( 
@@ -328,6 +341,6 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		if( $wgUser->getId() ) {
 			$this->page->invalidateCache();
 		}
-		return true;
+		return self::REVIEW_OK;
 	}
 }

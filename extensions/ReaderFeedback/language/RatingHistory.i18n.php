@@ -479,14 +479,17 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'ratinghistory-period' => 'Denbora-tartea:',
 	'ratinghistory-month' => 'azken hilabetea',
 	'ratinghistory-3months' => 'azken 3 hilabeteak',
 	'ratinghistory-year' => 'azken urtea',
 	'ratinghistory-3years' => 'azken 3 urteak',
 	'readerfeedback-svg' => 'SVG bezala bistaratu',
+	'ratinghistory-table-votes' => 'Bozkak',
 );
 
 /** Persian (فارسی)
@@ -1759,12 +1762,12 @@ $messages['vep'] = array(
 	'ratinghistory-table-rating' => 'Arvoind',
 	'ratinghistory-table-votes' => 'Äned',
 	'ratinghistory-none' => 'Ei ulotu lugijoiden arvsanoid grafikan tehtes.',
-	'ratinghistory-legend' => "Alemba oma ozutadud '''päivesenkeskmäine arvsana''' <font color=\"blue\">''(sinine)''</font> da '''nügüdläine keskmäine arvsana''' <font color=\"green\">''(vihand)''</font>.  
+	'ratinghistory-ratings' => "'''Legend:''' '''(1)''' - Hond; '''(2)''' - Madal; '''(3)''' - Keskmäine; '''(4)''' - Korged; '''(5)''' - Lujas hüvä;",
+	'ratinghistory-legend' => "Alemba oma ozutadud '''arvsanoiden lugu päiväs''' <font color=\"red\">''(rusked)''</font>, '''päivesenkeskmäine arvsana''' <font color=\"blue\">''(sinine)''</font> da '''nügüdläine keskmäine arvsana''' <font color=\"green\">''(vihand)''</font>.  
 '''Nügüdläižeks keskmäižeks arvsanaks''' kuctas päivesen arvsanoiden keskmäine lugu, kudamban lugedas kaikuččen päivän märitud pordas aigad.
 
-Pordhišt: '''[1]''' — hond; '''[2]''' — madal; '''[3]''' — keskmäine; '''[4]''' — hüvä; '''[5]''' — lujas hüvä;
-
-'''Kodvindoiden lugu päiväs''' <font color=\"red\">''(rusked)''</font> om ozutadud masštabas ''1:\$1''.",
+Pordhišt: '''[1]''' — hond; '''[2]''' — madal; '''[3]''' — keskmäine; '''[4]''' — hüvä; '''[5]''' — lujas hüvä;",
+	'ratinghistory-graph-scale' => "'''Arvostelendoiden lugu päiväs''' <font color=\"red\">''(red)''</font> ozutadas ''1:\$1''-masštabas.",
 	'right-feedback' => 'Kävutagat arvostelendform lehtpoliden arvosteldes',
 );
 

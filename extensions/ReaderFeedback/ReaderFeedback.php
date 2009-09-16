@@ -23,10 +23,6 @@ if( !defined('MEDIAWIKI') ) {
 	exit( 1 );
 }
 
-# Number of recent reviews to be a decent sample size
-if( !defined('READER_FEEDBACK_SIZE') )
-	define('READER_FEEDBACK_SIZE',15);
-
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Reader Feedback',
@@ -56,8 +52,19 @@ $wgFeedbackTags = array(
 );
 # How many seconds back should the average rating for a page be based on?
 $wgFeedbackAge = 7 * 24 * 3600;
+# What number of page votes (for the average above) is considered significant?
+# (number of recent reviews to be a decent sample size)
+$wgFeedbackSizeThreshhold = 15;
 # How long before stats page is updated?
 $wgFeedbackStatsAge = 2 * 3600; // 2 hours
+# Limit people from spamming the system
+# (uses count => seconds tuples)
+$wgRateLimits['feedback'] = array(
+	'newbie' => array( 5, 60 ), // for each recent (autoconfirmed) account; overrides 'user'
+	'user'   => null, // for each logged-in user
+	'ip'     => array( 5, 60 ), // for each anon and recent account
+	'subnet' => null, // ... with final octet removed
+);
 
 # URL location for readerfeedback.css and readerfeedback.js
 # Use a literal $wgScriptPath as a placeholder for the runtime value of $wgScriptPath
@@ -77,9 +84,9 @@ $wgPHPlotDir = $dir . 'phplot-5.0.5';
 
 $wgAutoloadClasses['ReaderFeedback'] = $dir.'ReaderFeedback.class.php';
 $wgAutoloadClasses['ReaderFeedbackHooks'] = $dir.'ReaderFeedback.hooks.php';
-$wgExtensionMessagesFiles['ReaderFeedback'] = $langDir . 'ReaderFeedback.i18n.php';
 
 # Load reader feedback UI
+$wgExtensionMessagesFiles['ReaderFeedback'] = $langDir . 'ReaderFeedback.i18n.php';
 $wgAutoloadClasses['ReaderFeedbackPage'] = $dir . 'specialpages/ReaderFeedback_body.php';
 $wgAutoloadClasses['ReaderFeedbackXML'] = $dir.'ReaderFeedbackXML.php';
 
@@ -87,14 +94,10 @@ $wgAutoloadClasses['ReaderFeedbackXML'] = $dir.'ReaderFeedbackXML.php';
 $wgAutoloadClasses['RatingHistory'] = $dir . 'specialpages/RatingHistory_body.php';
 $wgExtensionMessagesFiles['RatingHistory'] = $langDir . 'RatingHistory.i18n.php';
 
-# To list ill-recieved pages
-$wgAutoloadClasses['ProblemPages'] = $dir . 'specialpages/ProblemPages_body.php';
-$wgExtensionMessagesFiles['ProblemPages'] = $langDir . 'ProblemPages.i18n.php';
-$wgSpecialPageGroups['ProblemPages'] = 'feedback';
-# To list well-recieved pages
-$wgAutoloadClasses['LikedPages'] = $dir . 'specialpages/LikedPages_body.php';
-$wgExtensionMessagesFiles['LikedPages'] = $langDir . 'LikedPages.i18n.php';
-$wgSpecialPageGroups['LikedPages'] = 'feedback';
+# Page list by ratings
+$wgAutoloadClasses['RatedPages'] = $dir . 'specialpages/RatedPages_body.php';
+$wgExtensionMessagesFiles['RatedPages'] = $langDir . 'RatedPages.i18n.php';
+$wgSpecialPageGroups['RatedPages'] = 'feedback';
 
 ######### Hook attachments #########
 
@@ -125,8 +128,7 @@ function efLoadReaderFeedbackSpecialPages( &$list ) {
 	if( !empty($wgFeedbackNamespaces) ) {
 		$list['ReaderFeedback'] = $wgSpecialPages['ReaderFeedback'] = 'ReaderFeedbackPage';
 		$list['RatingHistory'] = $wgSpecialPages['RatingHistory'] = 'RatingHistory';
-		$list['ProblemPages'] = $wgSpecialPages['ProblemPages'] = 'ProblemPages';
-		$list['LikedPages'] = $wgSpecialPages['LikedPages'] = 'LikedPages';
+		$list['RatedPages'] = $wgSpecialPages['RatedPages'] = 'RatedPages';
 	}
 	return true;
 }

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/reader_feedback (
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/reader_feedback_history (
   -- Foreign key to page.page_id
   rfh_page_id integer unsigned NOT NULL,
-  rfh_tag char(20) NOT NULL default '',
+  rfh_tag varchar(20) NOT NULL default '',
   rfh_total integer unsigned NOT NULL default 0,
   rfh_count integer unsigned NOT NULL default 0,
   -- MW date of the day this average corresponds to
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/reader_feedback_history (
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/reader_feedback_pages (
   -- Foreign key to page.page_id
   rfp_page_id integer unsigned NOT NULL,
-  rfp_tag char(20) NOT NULL default '',
+  rfp_tag varchar(20) NOT NULL default '',
   -- Value in last few days (14)
   rfp_ave_val real NOT NULL default 0,
   -- And said total (used as threshold)
