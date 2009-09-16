@@ -34,7 +34,7 @@ class ReaderFeedback {
 	}
 	
 	/**
-	 * Get the the weight of a feedback tag
+	 * Get the weight of a feedback tag
 	 * @param string $tag
 	 * @returns array
 	 */
@@ -42,7 +42,11 @@ class ReaderFeedback {
 		self::load();
 		return self::$feedbackTagWeight[$tag];
 	}
-	
+
+	/**
+	 * Get the number of reviews that is considered a good sample
+	 * @returns int
+	 */	
 	public static function getFeedbackSize() {
 		global $wgFeedbackSizeThreshhold;
 		return (int)$wgFeedbackSizeThreshhold;
