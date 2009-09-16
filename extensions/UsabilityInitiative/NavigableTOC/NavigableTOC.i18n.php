@@ -65,6 +65,14 @@ $messages['cs'] = array(
 	'navigabletoc-desc' => 'Přidává na editační stránku obsah, pomocí kterého se lze pohybovat v editovaném textu',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'navigabletoc' => 'Taflen gynnwys mordwyol',
+	'navigabletoc-desc' => "Yn ychwanegu taflen gynnwys wrth olygu, sy'n rholio'r blwch golygu wrth glicio ar bennawd yn y daflen",
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */
@@ -87,6 +95,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'navigabletoc' => 'Nawigěrujobny zapis wopśimjeśa',
 	'navigabletoc-desc' => 'Pśidawa zapis wopśimjeśa wobźěłowańskemu formularoju, kótaryž kula tekstowe pólo, gaž se na wótrězk kliknjo',
+	'navigabletoc-preference' => 'Nawigěrujobny zapis wopśimjeśa zmóžniś',
 );
 
 /** Greek (Ελληνικά)
@@ -132,10 +141,12 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'navigabletoc' => 'Sommaire navigable',
 	'navigabletoc-desc' => 'Ajoute le sommaire au formulaire de modification qui défile le texte quand une section est cliquée',
+	'navigabletoc-preference' => 'Activer la table des matières navigable',
 );
 
 /** Galician (Galego)
@@ -144,6 +155,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'navigabletoc' => 'Táboa de contidos navegable',
 	'navigabletoc-desc' => 'Engade unha táboa de contidos para editar o formulario que contrae o cadro de texto cando se preme nunha sección',
+	'navigabletoc-preference' => 'Activar a táboa de contidos navegable',
 );
 
 /** Swiss German (Alemannisch)
@@ -168,6 +180,7 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'navigabletoc' => 'Nawigěrujomny zapis wobsaha',
 	'navigabletoc-desc' => 'Přidawa zapis wobsaha wobdźěłowanskemu formularej, kotaryž tekstowe polo kula, hdyž so na wotrězk kliknje.',
+	'navigabletoc-preference' => 'Nawigěrujomny zapis wobsaha zmóžnić',
 );
 
 /** Hungarian (Magyar)
@@ -258,6 +271,7 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'navigabletoc' => 'Navigeerbare inhoudsopgave',
 	'navigabletoc-desc' => 'Voegt een inhoudsopgave toe aan het bewerkingsformulier waarmee het tekstvak verschoven kan worden als er op een kopje wordt geklikt',
+	'navigabletoc-preference' => 'Navigeerbare inhoudsopgave inschakelen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

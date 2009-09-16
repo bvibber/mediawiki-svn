@@ -139,6 +139,13 @@ $messages['hsb'] = array(
 Wužij: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'stockcharts-desc' => '<nowiki><stockchart ticker="AAPL"/></nowiki> tag interaktív pénzügyi árfolyamdiagramok megjelenítéséhez',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

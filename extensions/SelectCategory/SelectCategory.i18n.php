@@ -243,6 +243,8 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'selectcategory-title' => 'Kategóriák kiválasztása',
+	'selectcategory-desc' => 'Lehetővé teszi a felhasználóknak, hogy válasszanak a meglevő kategóriákból lap szerkesztésekor',
+	'selectcategory-subtitle' => 'Shift+egérkattintás több egymás után következő bejegyzés kijelöléséhez, Ctrl+kattintás nem egymás utáni bejegyzések kijelöléséhez.',
 );
 
 /** Interlingua (Interlingua)

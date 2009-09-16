@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'conditionalshowsection-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'conditionalshowsection-desc' => 'Дадае тэг <cshow> для ўмоўнага паказу/хаваньня часткі вікі-тэксту',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -118,6 +125,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'conditionalshowsection-desc' => 'Voegt de tag <code><nowiki><cshow></nowiki></code> toe om conditioneel een paragraaf wikitekst weer te geven of te verbergen',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'conditionalshowsection-desc' => 'Apondon de la balisa <cshow> per afichar o amagar condicionalament una seccion de wikitèxte',
 );
 
 /** Piedmontese (Piemontèis)

@@ -174,6 +174,17 @@ $messages['cs'] = array(
 	'ajax-se-usernotfound' => 'CHYBA: uživatel nebly nalezen',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'ajax-se-title' => "Wrthi'n golygu:",
+	'ajax-se-idling' => '($1 eiliad yn ôl)',
+	'ajax-se-pagedoesnotexist' => "nid yw'r dudalen ar gael",
+	'ajax-se-userinvalid' => 'Gwall: defnyddiwr annilys',
+	'ajax-se-usernotfound' => "Gwall: ni chafwyd hyd i'r defnyddwyr",
+);
+
 /** Danish (Dansk)
  * @author Jan Friberg
  */

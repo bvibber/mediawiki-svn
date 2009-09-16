@@ -884,6 +884,15 @@ $messages['pt-br'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Alterar o meu estado para offline quando me desautenticar',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'onlinestatus-subtitle-offline' => 'Kay ruraqqa manam llikapi kachkanchu',
+	'onlinestatus-subtitle-online' => 'Kay ruraqqa llikapim kachkan',
+	'onlinestatus-toggles-show' => "Llikapi kachkayta ruraqpa p'anqaypi rikuchiy",
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila

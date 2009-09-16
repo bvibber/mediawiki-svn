@@ -240,6 +240,18 @@ $messages['hsb'] = array(
 	'right-userrights-global' => 'Globalne wužiwarske prawa zrjadować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'globaluserrights' => 'Globális szerkesztői jogosultságok kezelése',
+	'gur-desc' => '[[Special:GlobalUserRights|A globális felhasználói jogosultságok]] egyszerű adminisztrációja',
+	'gur-rightslog-name' => 'Globális jogosultságok naplója',
+	'gur-rightslog-header' => 'Ez a globális jogosultságok változásainak naplója.',
+	'gur-rightslog-entry' => 'megváltoztatta $1 felhasználó globális jogosultságait (régi: $2; új: $3)',
+	'right-userrights-global' => 'Globális szerkesztői jogosultságok kezelése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

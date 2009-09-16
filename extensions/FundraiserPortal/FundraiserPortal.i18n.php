@@ -429,6 +429,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'fundraiserportal' => 'Adománygyűjtési portál',
+	'fundraiserportal-desc' => '„Kérlek adakozz” portál hozzáadása az oldalsáv tetejére.',
 	'fundraiserportal-plain-button' => 'Támogasd a Wikipédiát!',
 	'fundraiserportal-ruby-button' => 'Adakozz most!',
 	'fundraiserportal-rubytext-button' => 'Adakozz most!',

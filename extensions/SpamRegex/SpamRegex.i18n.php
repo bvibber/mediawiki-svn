@@ -715,6 +715,13 @@ $messages['hsb'] = array(
 	'right-spamregex' => 'Spamowe wurazy přez [[Special:SpamRegex]] blokować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'spamregex-summary-log' => '(Összefoglaló)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

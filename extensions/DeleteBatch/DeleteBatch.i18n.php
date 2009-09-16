@@ -447,6 +447,7 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
  */
 $messages['grc'] = array(
 	'deletebatch-or' => '<b>ἢ</b>',
+	'deletebatch-delete' => 'Σβεννύναι',
 	'deletebatch-select-yourself' => 'Σύ',
 );
 

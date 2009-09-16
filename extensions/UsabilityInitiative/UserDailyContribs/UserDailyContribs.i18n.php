@@ -16,10 +16,19 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author Raimond Spekking
  */
 $messages['qqq'] = array(
-	'userdailycontribs-desc' => '{{desc}}',
+	'userdailycontribs-desc' => '{{desc}}
+"user" is a plural here.',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'userdailycontribs-desc' => 'Штодзённы ўнёсак удзельнікаў для пашырэньня сачэньня за націскамі мышшу',
 );
 
 /** Bosnian (Bosanski)
@@ -50,11 +59,25 @@ $messages['gl'] = array(
 	'userdailycontribs-desc' => 'Contribucións diarias por usuario para a extensión de seguimento de clics',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'userdailycontribs-desc' => 'Tägligi Byytreg fir d Klickverfolgigs-Erwyterig verwände',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'userdailycontribs-desc' => 'Wšědny wužiwarske přinoški za rozšěrjenje Clicktracking',
+	'userdailycontribs-desc' => 'Wšědne wužiwarske přinoški za rozšěrjenje Clicktracking',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'userdailycontribs-desc' => 'Felhasználók napi közreműködéseinek megjelenítése a kattintásszámlálóban',
 );
 
 /** Japanese (日本語)
@@ -62,6 +85,13 @@ $messages['hsb'] = array(
  */
 $messages['ja'] = array(
 	'userdailycontribs-desc' => 'クリック追跡拡張機能のための利用者の一日あたりの投稿',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'userdailycontribs-desc' => 'De dääschlesch Beidrääsch vun de Metmacher, för de <i lang="en">Wikipedia Usability Initiative</i> ier Kleckverfolljung.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -78,6 +108,13 @@ $messages['nl'] = array(
 	'userdailycontribs-desc' => 'Dagelijkse gebruikersbijdragen voor de uitbreiding om gebruikerskliks mee te volgen',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'userdailycontribs-desc' => "Contribucions jornalièras per utilizaire per l'extension de seguit dels clics",
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
@@ -90,6 +127,13 @@ $messages['pms'] = array(
  */
 $messages['ru'] = array(
 	'userdailycontribs-desc' => 'Ежедневный вклад участников для расширения отслеживания нажатий',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'userdailycontribs-desc' => 'Denné príspevky používateľa rozšírenia na sledovanie kliknutí',
 );
 
 /** Veps (Vepsan kel')

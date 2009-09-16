@@ -1517,6 +1517,13 @@ $messages['hsb'] = array(
 	'tasks-pref-showtaskcomments' => 'Komentarowu stronu nadawkow zapřijeć',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'tasks_table_header_page' => 'Lap',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

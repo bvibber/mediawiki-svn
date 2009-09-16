@@ -282,12 +282,15 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'purgecache' => 'Gyorsítótár kiürítése',
+	'purgecache-desc' => '[[Special:PurgeCache|Speciális lap]] az OBJECTCACHE tábla kiürítésére',
 	'purgecache-warning' => 'Segítségével kiürítheted a gyorsítótáblákat.',
 	'purgecache-purged' => 'A gyorsítótár ki lett ürítve.',
 	'purgecache-button' => 'Frissít',
+	'right-purgecache' => 'OBJECTCACHE tábla kiürítése',
 );
 
 /** Interlingua (Interlingua)

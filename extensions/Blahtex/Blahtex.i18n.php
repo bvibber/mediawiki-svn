@@ -239,6 +239,24 @@ $messages['avk'] = array(
 	'math_InvalidColour' => '"$1" kseva tir meenafa',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'math_noblahtex' => 'Немагчыма выканаць праграму blahtex, якая павінна знаходзіцца на $1',
+	'math-desc' => 'MathML-вывад для тэгаў &lt;math&gt;',
+	'math_AmbiguousInfix' => 'Неадназначнае разьмяшчэньне «$1».
+Паспрабуйце выкарыстоўваць дадатковыя дужкі «{ … }» для пазбаўленьня неадназначнасьці.',
+	'math_CannotChangeDirectory' => 'Немагчыма зьмяніць працоўную дырэкторыю',
+	'math_CannotCreateTexFile' => 'Немагчыма стварыць tex-файл',
+	'math_CannotRunDvipng' => 'Немагчыма выканаць праграму dvipng',
+	'math_CannotRunLatex' => 'Немагчыма выканаць праграму latex',
+	'math_CannotWritePngDirectory' => 'Немагчыма запісаць ў дырэкторыю вываду PNG',
+	'math_CannotWriteTexFile' => 'Немагчыма запісаць у tex-файл',
+	'math_CasesRowTooBig' => 'Могуць быць толькі два запісы ў кожным радку блёку «cases»',
+);
+
 /** Bulgarian (Български)
  * @author Borislav
  * @author DCLXVI

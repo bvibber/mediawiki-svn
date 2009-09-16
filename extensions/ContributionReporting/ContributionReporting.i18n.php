@@ -1038,6 +1038,7 @@ $messages['eu'] = array(
 	'contribstats-value-under' => '$1 azpitik',
 	'contribstats-value-over' => '$1 baino gehiago',
 	'contribstats-week' => 'Astea',
+	'contribstats-clicks' => 'Klikak',
 	'contribstats-template' => 'Txantiloia',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-contributions' => 'Ekarpenak',

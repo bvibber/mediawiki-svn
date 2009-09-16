@@ -166,6 +166,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'delaydef-error-no-name' => 'Hiba: a név paraméter nincs megadva.',
+	'delaydef-error-redef' => 'Hiba: $1 megkísérelt újradefiniálása.',
 );
 
 /** Interlingua (Interlingua)

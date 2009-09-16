@@ -201,6 +201,7 @@ $messages['ca'] = array(
  */
 $messages['cy'] = array(
 	'adminlinks' => "Cysylltau'r gweinyddwyr",
+	'adminlinks-desc' => "Yn ychwanegu [[Special:AdminLinks|tudalen arbennig]] ar gyfer gweinyddwyr sy'n dangos cysylltiadau defnyddiol iddynt",
 	'adminlinks_documentation' => 'gwybodaeth am $1',
 	'adminlinks_general' => 'Cyffredinol',
 	'adminlinks_editsidebar' => "Golygu'r panel llywio",

@@ -771,6 +771,23 @@ $messages['hsb'] = array(
 	'right-import_users' => 'Wužiwarjow z masami importować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'importusers' => 'Szerkesztők importálása',
+	'importusers-desc' => '[[Special:ImportUsers|Szerkesztői azonosítók importálása]] tömegesen CSV fájlból; kódolás: UTF-8',
+	'importusers-uploadfile' => 'Fájl feltöltése',
+	'importusers-form-replace-present' => 'Jelenlegi szerkesztői fiókok lecserélése',
+	'importusers-form-button' => 'Importálás',
+	'importusers-log' => 'Importált szerkesztői azonosítók naplója',
+	'importusers-log-summary' => 'Összefoglaló',
+	'importusers-log-summary-all' => 'Összes',
+	'importusers-log-summary-added' => 'Hozzáadva',
+	'importusers-password' => 'jelszó',
+	'importusers-email' => 'e-mail',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

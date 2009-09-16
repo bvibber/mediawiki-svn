@@ -66,6 +66,15 @@ $messages['bcl'] = array(
 	'block_title_error' => 'Despensa, dai tinotogotan na itagama an titulo kaining artikulo.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'block_title_error_page_title' => 'Забароненая назва',
+	'block_title_error-desc' => 'Забясьпечвае базавую магчымасьць забароны захаваньня альбо стварэньня старонак з ўказанымі назвамі',
+	'block_title_error' => 'Прабачце, старонка з такой назвай ня можа быць захаваная.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Петър Петров

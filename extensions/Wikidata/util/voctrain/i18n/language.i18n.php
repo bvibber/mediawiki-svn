@@ -32,9 +32,10 @@ $fallback = array(
 	'gl'  => 'en',
 	'grc' => 'en',
 	'gsw' => 'en',
-	'hak'  => 'en',
+	'hak' => 'en',
 	'he'  => 'en',
 	'hsb' => 'en',
+	'hu'  => 'en',
 	'ia'  => 'en',
 	'id'  => 'en',
 	'it'  => 'en',
@@ -45,10 +46,10 @@ $fallback = array(
 	'ksh' => 'en',
 	'lb'  => 'en',
 	'lfn' => 'en',
-	'lt' => 'en',
+	'lt'  => 'en',
 	'mhr' => 'en',
-	'mk' => 'en',
-	'mt' => 'en',
+	'mk'  => 'en',
+	'mt'  => 'en',
 	'myv' => 'en',
 	'nah' => 'en',
 	'nap' => 'en',
@@ -1670,6 +1671,14 @@ $messages['hsb'] = array(
 	'voctrain_hide_words_in_question_language' => 'Słowa w rěči prašenjow schować',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Hódnoty přez komy wotdźělić, jeli so wjacore rěče wužiwali',
 	'voctrain_other' => 'druha ličba',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'voctrain_Login' => 'Bejelentkezés',
+	'voctrain_Log_in' => 'Bejelentkezés',
 );
 
 /** Interlingua (Interlingua)

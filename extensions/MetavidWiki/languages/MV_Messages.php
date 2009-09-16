@@ -3791,6 +3791,7 @@ Prošu zdźěl to [[{{MediaWiki:Grouppage-sysop}}|sydłowemu administratorej]].'
  * @author Bdamokos
  * @author Dani
  * @author Dorgan
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -3809,7 +3810,7 @@ $messages['hu'] = array(
 	'mv_label_stream_name' => 'Adatfolyam neve',
 	'mv_label_stream_desc' => 'Adatfolyam leírása',
 	'edit_stream_missing' => 'Hiányzó adatfolyam-név',
-	'mv_remove_reason' => 'Törlés oka',
+	'mv_remove_reason' => 'A törlés oka:',
 	'mv_label_stream_type' => 'Adatfolyam típusa',
 	'mv_metavid_file' => 'Létező fájl a szerveren',
 	'mv_upload_file' => 'Fájl feltöltése',

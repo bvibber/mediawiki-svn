@@ -577,6 +577,9 @@ Aquò vos farà quitar aquesta pagina e poiriatz perdre vòstra modificacion.',
 	'ajaxLogin2' => 'Sètz segur(a) ?
 Poiriatz perdre vòstras modificacions se quitatz aquesta pagina ara.',
 	'ajaxlogin-create' => 'Crear un compte',
+	'al-nosuchuser' => "Existís pas d'utilizaire nomenat « $1 ».
+Los noms d'utilizaire son sensibles a la cassa.
+Verificatz l'ortografia.",
 );
 
 /** Polish (Polski)

@@ -249,8 +249,15 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'authorprotect-desc' => "Yn galluogi awdur tudalen i'w diogelu rhag defnyddwyr eraill",
+	'authorprotect-notauthor' => 'Nid chi yw awdur y dudalen hon',
+	'authorprotect-confirm' => 'Newid lefelau diogelu',
+	'authorprotect-edit' => "Cyfyngu'r gallu i olygu i'r awduron",
 	'authorprotect-expiry' => 'Cyfnod',
 	'authorprotect-reason' => 'Rheswm',
+	'authorprotect-success' => 'Llwyddodd y diogelu!',
+	'authorprotect-failure' => 'Ni lwyddodd y diogelu',
+	'right-authorprotect' => "Gallu awdur i ddiogelu tudalennau o'i waith ei hun",
 );
 
 /** German (Deutsch)

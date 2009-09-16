@@ -659,7 +659,7 @@ Odstraněné položky nebude moci prostřednictvím webové stránky vidět nikd
 	'oversight-header' => 'Níže je seznam revizí, které byly nedávno trvale skryty z veřejné historie. Šíření těchto informací může mít za důsledek trvalou ztrátu práv dozorce (oversight).',
 	'oversight-legend' => 'Hledat v záznamu skrývání revizí',
 	'oversight-oversighter' => 'Dozorce:',
-	'oversight-offender' => 'Provinilec:',
+	'oversight-offender' => 'Autor revize:',
 );
 
 /** Danish (Dansk)
@@ -2724,7 +2724,7 @@ $messages['oc'] = array(
 	'oversight-header' => "Çaijós, figura la lista de las revisions amagadas de biais permanent al public. La divulgacion d'aquesta entresenha pòt aver coma consequéncia la descasença dels privilègis d’Oversight.",
 	'oversight-legend' => 'Jornal de las recèrcas de las versions amagadas',
 	'oversight-oversighter' => 'Supervisor :',
-	'oversight-offender' => 'Difamator :',
+	'oversight-offender' => 'Autor de la revision :',
 );
 
 /** Pangasinan (Pangasinan) */
@@ -3092,7 +3092,7 @@ $messages['sah'] = array(
 Бу сибидиэнньэлэри тарҕатыы ырытааччы быраабын быһыыга тиэрдиэн сөп.',
 	'oversight-legend' => 'Уларытыыны кистиир сурунаалга көрдөөһүн',
 	'oversight-oversighter' => 'Ревизор:',
-	'oversight-offender' => 'Кэһээччи:',
+	'oversight-offender' => 'Барыл ааптара:',
 );
 
 /** Sicilian (Sicilianu)
@@ -3205,7 +3205,7 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-header' => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok permanentnú stratu práv Dozrcu (oversight).',
 	'oversight-legend' => 'Hľadať v zázname skrývania revízií',
 	'oversight-oversighter' => 'Dozorca:',
-	'oversight-offender' => 'Previnilec:',
+	'oversight-offender' => 'Autor revízie:',
 );
 
 /** Samoan (Gagana Samoa)

@@ -1237,6 +1237,15 @@ $messages['hsb'] = array(
 	'right-regexblock' => 'Wužiwarjam wobdźěłowanje na wšěch wikijach na wikijowej farmje zadźěwać',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'regexblock-form-expiry' => 'Lejárat:',
+	'regexblock-view-all' => 'Mind',
+	'regexblock-view-go' => 'Menj',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -2186,6 +2195,20 @@ Por favor, crie um nome de utilizador alternativo ou [[$1|contate-nos]] sobre o 
 	'regexblock-view-empty' => 'Esta lista de nomes e endereços bloqueados está vazia.',
 	'regexblock-view-time' => 'em $1',
 	'right-regexblock' => 'Bloquear a edição a utilizadores em todos os wikis da farm de wikis',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'regexblock-reason-regex' => "Kay ruraqpa sutinqa llamk'apuymanta hark'asqam, yaqa kaqlla sutiyuq ruraq wandaluchaptinmi, millaykunata ruraptinmi. Ama hina kaspa, huk ruraqpa sutiykita kamariy icha [[$1|qillqarimuwayku]] kay sasachakuymanta rimanakunanchikpaq",
+	'regexblock-form-submit' => "Kay ruraqta hark'ay",
+	'regexblock-match-stats-record' => '$1 sutiyuqqa \'$2\' sutiyuqta hark\'an \'$3\' p\'unchawpi \'$4\' pachapi, \'$5\' tiyaymanta hallch\'aspa
+<!--
+structure:
+"hark\'an" = "blocked"
+"$1 sutiyuqqa" = "the one who has the name $1" and so on
+-->',
 );
 
 /** Tarifit (Tarifit)

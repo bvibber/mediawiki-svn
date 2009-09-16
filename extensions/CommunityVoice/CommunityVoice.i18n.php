@@ -38,6 +38,21 @@ $messages['qqq'] = array(
 * $2: number of votes',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'communityvoice' => 'Gemeenskapsstem',
+	'communityvoice-desc' => 'Hulpmiddele vir deelname deur die gemeenskap',
+	'communityvoice-ratings' => 'Waardering',
+	'communityvoice-ratings-scale-status-sending' => 'Stuur...',
+	'communityvoice-ratings-scale-status-error' => 'Fout met stuur!',
+	'communityvoice-ratings-scale-status-thanks' => 'Dankie dat u u mening met ons gedeel het!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|stem|stemme}} uitgebring)',
+	'communityvoice-ratings-error-no-category' => 'Kategorie ontbreek in die etiket.',
+	'communityvoice-ratings-error-no-title' => 'Titel ontbreek in die etiket.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

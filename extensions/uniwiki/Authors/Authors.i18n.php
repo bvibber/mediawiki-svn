@@ -265,6 +265,8 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'authors-desc' => 'Hozzáfűzi a közreműködők listáját a lapokhoz',
+	'authors_authors' => 'Szerzők',
 	'authors_anonymous' => 'Névtelen',
 );
 

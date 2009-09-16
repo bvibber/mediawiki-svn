@@ -55,6 +55,8 @@ $messages['bcc'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'ratedpages' => 'Старонак, адзначаныя чытачамі',
+	'ratedpages-leg' => 'Знайсьці старонкі са значнай колькасьцю адзнакаў',
 	'ratedpages-list' => 'Ніжэй пададзены сьпіс старонак адсартаваных па іх адзнацы чытачамі.',
 	'ratedpages-none' => 'У гэтым сьпісе няма старонак',
 	'ratedpages-graphs' => 'зьвесткі пра адзнаку',
@@ -73,6 +75,8 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'ratedpages' => 'Stranice ocijenjene od čitalaca',
+	'ratedpages-leg' => 'Nađi stranice koje su ocijenjene sa većim brojem ocjena',
 	'ratedpages-list' => 'Ispod je spisak stranica poredanih po rejtingu poslanom od strane čitaoca.',
 	'ratedpages-none' => 'Nema stranica na ovom spisku',
 	'ratedpages-graphs' => 'podaci rejtinga',
@@ -160,6 +164,8 @@ $messages['fi'] = array(
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
+	'ratedpages' => 'Pages évaluées par les lecteurs',
+	'ratedpages-leg' => "Trouver les pages évaluées avec un nombre d'évaluations assez grand",
 	'ratedpages-list' => 'Voici une liste des pages triées suivant leur évaluation par les lecteurs.',
 	'ratedpages-none' => 'Il n’y a aucune page dans cette liste',
 	'ratedpages-graphs' => "données d'évaluation",
@@ -178,6 +184,8 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'ratedpages' => 'Páxinas valoradas polos lectores',
+	'ratedpages-leg' => 'Atopar as páxinas valoradas cun número considerable de votos',
 	'ratedpages-list' => 'Embaixo hai unha lista das páxinas ordenadas pola valoración da reacción dos seus lectores.',
 	'ratedpages-none' => 'Non hai páxinas nesta lista',
 	'ratedpages-graphs' => 'datos das valoracións',
@@ -194,6 +202,8 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'ratedpages' => 'Syte, wu dur Läser bewärtet wore sin',
+	'ratedpages-leg' => 'Syte finde mit ere greßere Aazahl vu Bewärtige',
 	'ratedpages-list' => 'Do het s Lischt vu Syte, wu no dr Bewärtig dur Läser sortiert sin.',
 	'ratedpages-none' => 'In däre Lischt het s keini Syte',
 	'ratedpages-graphs' => 'Bewärtigsdate',
@@ -222,9 +232,12 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Samat
  */
 $messages['hu'] = array(
+	'ratedpages' => 'Olvasók által értékelt lapok',
+	'ratedpages-leg' => 'Figyelemreméltó számú értékeléssel rendelkező lapok keresése',
 	'ratedpages-list' => 'Alább a lapok olvasói értékelés szerint sorba tett listája látható.',
 	'ratedpages-none' => 'Nem található egyetlen lap sem a listában.',
 	'ratedpages-graphs' => 'értékelési adatok',
@@ -302,6 +315,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'ratedpages' => 'Säiten déi vu Lieser bewäert goufen',
+	'ratedpages-leg' => 'Säite fannen mat enger akzeptabeler Zuel vu Bewäertungen',
 	'ratedpages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewäertung vun de Lieser zortéiert sinn.',
 	'ratedpages-none' => 'Et gëtt keng Säiten op dëser Lëscht',
 	'ratedpages-graphs' => 'Bewertungsdaten',
@@ -424,6 +438,8 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'ratedpages' => 'Страницы, оцененные читателями',
+	'ratedpages-leg' => 'Найти страницы, со значительным числом оценок',
 	'ratedpages-list' => 'Ниже представлен список страниц, упорядоченный по их оценке читателями.',
 	'ratedpages-none' => 'Нет страниц в списке.',
 	'ratedpages-graphs' => 'данные об оценке',
@@ -433,6 +449,8 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'ratedpages' => 'Stránky hodnotené čitateľmi',
+	'ratedpages-leg' => 'Nájsť s väčším množstvom ohodnotení',
 	'ratedpages-list' => 'Toto je zoznam stránok zoradený podľa hodnotenia čitateľov.',
 	'ratedpages-none' => 'V tomto zozname sa nenachádzajú žiadne stránky',
 	'ratedpages-graphs' => 'údaje o hodnotení',

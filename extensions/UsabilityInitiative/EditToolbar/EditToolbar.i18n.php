@@ -1908,6 +1908,7 @@ $messages['dsb'] = array(
 	'edittoolbar' => 'Wobźěłowańska rědowa kšoma',
 	'edittoolbar-desc' => 'Rědowa kšoma za wobźěłowanje bokow z pólěpšoneju wužywajobnosću',
 	'edittoolbar-preference' => 'Pólěpšonu wobźěłowańsku rědowu kšomu aktiwěrowaś',
+	'edittoolbar-cgd-preference' => 'Pomoc za pśidawanje rozšyrjonego wikiteksta zmóžniś',
 	'edittoolbar-loading' => 'Zacytujo se...',
 	'edittoolbar-tool-bold' => 'Tucny',
 	'edittoolbar-tool-bold-example' => 'Tucny tekst',
@@ -1967,6 +1968,18 @@ $messages['dsb'] = array(
 {{ns:file}}:Pśikład.jpg|Pópisanje2',
 	'edittoolbar-tool-newline' => 'Nowa smužka',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! głowa 1
+! głowa 2
+! głowa 3
+|-
+| smužka 1, cela 1
+| smužka 1, cela 2
+| smužka 1, cela 3
+|-
+| smužka 2, cela 1
+| smužka 2, cela 2
+| smužka 2, cela 3',
 	'edittoolbar-tool-table-example' => 'Smužka $1, cela $2',
 	'edittoolbar-tool-table-example-header' => 'Smužka $1, cela $2 (głowa)',
 	'edittoolbar-tool-table-title' => 'Tabelu zasunuś',
@@ -3040,6 +3053,7 @@ $messages['fr'] = array(
 	'edittoolbar' => 'Barre d’outils de modification',
 	'edittoolbar-desc' => "Barre d'outils de modification avec l'utilisabilité améliorée",
 	'edittoolbar-preference' => "Activer la barre d'outils améliorée",
+	'edittoolbar-cgd-preference' => "Activer l'aide pour ajouter du texte wiki avancé",
 	'edittoolbar-loading' => 'Chargement ...',
 	'edittoolbar-tool-bold' => 'Gras',
 	'edittoolbar-tool-bold-example' => 'Texte en gras',
@@ -3099,6 +3113,18 @@ $messages['fr'] = array(
 {{ns:file}}:Exemple.jpg|Description 2',
 	'edittoolbar-tool-newline' => 'Saut de ligne',
 	'edittoolbar-tool-table' => 'Tableau',
+	'edittoolbar-tool-table-example-old' => '-
+! en-tête 1
+! en-tête 2
+! en-tête 3
+|-
+| ligne 1, case 1
+| ligne 1, case 2
+| ligne 1, case 3
+|-
+| ligne 2, case 1
+| ligne 2, case 2
+| ligne 2, case 3',
 	'edittoolbar-tool-table-example' => 'Ligne $1, cellule $2',
 	'edittoolbar-tool-table-example-header' => 'Ligne $1, cellule $2 (en-tête)',
 	'edittoolbar-tool-table-title' => 'Insérer un tableau',
@@ -4076,6 +4102,7 @@ $messages['hsb'] = array(
 	'edittoolbar' => 'Gratowa lajsta za wobdźěłowanje',
 	'edittoolbar-desc' => 'Gratowa lajsta za wobdźěłowanje stronow z polěpšenej wužiwajomnosću',
 	'edittoolbar-preference' => 'Polěpšenu gratowu lajstu za wobdźěłowanje aktiwizować',
+	'edittoolbar-cgd-preference' => 'Pomoc za přidawanje rozšěrjeneho wikiteksta zmóžnić',
 	'edittoolbar-loading' => 'Čita so...',
 	'edittoolbar-tool-bold' => 'Tučny',
 	'edittoolbar-tool-bold-example' => 'Tučny tekst',
@@ -4135,6 +4162,18 @@ $messages['hsb'] = array(
 {{ns:file}}:Example.jpg|Popis2',
 	'edittoolbar-tool-newline' => 'Nowa linka',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! hłowa 1
+! hłowa 2
+! hłowa 3
+|-
+| rjadka 1, cela 1
+| rjadka 1, cela 2
+| rjadka 1, cela 3
+|-
+| rjadka 2, cela 1
+| rjadka 2, cela 2
+| rjadka 2, cela 3',
 	'edittoolbar-tool-table-example' => 'Rjadka $1, cela $2',
 	'edittoolbar-tool-table-example-header' => 'Rjadka $1, cela $2 (hłowa)',
 	'edittoolbar-tool-table-title' => 'Tabelu zasunyć',
@@ -5720,6 +5759,18 @@ $messages['lb'] = array(
 {{ns:file}}:Example.jpg|Beschreiwung2',
 	'edittoolbar-tool-newline' => 'Nei Linn',
 	'edittoolbar-tool-table' => 'Tabell',
+	'edittoolbar-tool-table-example-old' => '-
+! Iwwerschrëft 1
+! Iwwerschrëft 2
+! Iwwerschrëft 3
+|-
+| Rei 1, Zell 1
+| Rei 1, Zell 2
+| Rei 1, Zell 3
+|-
+| Rei 2, Zell 1
+| Rei 2, Zell 2
+| Rei 2, Zell 3',
 	'edittoolbar-tool-table-example' => 'Rei $1, Zell $2',
 	'edittoolbar-tool-table-example-header' => 'Rei $1, Zell $2 (Iwwerschrëft)',
 	'edittoolbar-tool-table-title' => 'Tabell drasetzen',
@@ -6745,6 +6796,7 @@ $messages['nl'] = array(
 	'edittoolbar' => 'Bewerkingswerkbalk',
 	'edittoolbar-desc' => 'Bewerkingsbalk die eenvoudiger te gebruiken is',
 	'edittoolbar-preference' => 'Uitgebreide bewerkingsbalk inschakelen',
+	'edittoolbar-cgd-preference' => 'Hulp voor het toevoegen van gevorderde wikitekst inschakelen',
 	'edittoolbar-loading' => 'Bezig met laden...',
 	'edittoolbar-tool-bold' => 'Vet',
 	'edittoolbar-tool-bold-example' => 'Vetgedrukte tekst',
@@ -6804,6 +6856,18 @@ $messages['nl'] = array(
 {{ns:file}}:Voorbeeld2|Bijschrift2',
 	'edittoolbar-tool-newline' => 'Nieuwe regel',
 	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-example-old' => '-
+! kop 1
+! kop 2
+! kop 3
+|-
+| rij 1, cel 1
+| rij 1, cel 2
+| rij 1, cel 3
+|-
+| rij 2, cel 1
+| rij 2, cel 2
+| rij 2, cel 3',
 	'edittoolbar-tool-table-example' => 'Rij $1, cel $2',
 	'edittoolbar-tool-table-example-header' => 'Rij $1, cel $2 (kop)',
 	'edittoolbar-tool-table-title' => 'Tabel invoegen',
@@ -8020,6 +8084,18 @@ $messages['ru'] = array(
 {{ns:file}}:Example.jpg|Описание2',
 	'edittoolbar-tool-newline' => 'Новая строка',
 	'edittoolbar-tool-table' => 'Таблица',
+	'edittoolbar-tool-table-example-old' => '-
+! заголовок 1
+! заголовок 2
+! заголовок 3
+|-
+| строка 1, ячейка 1
+| строка 1, ячейка 2
+| строка 1, ячейка 3
+|-
+| строка 2, ячейка 1
+| строка 2, ячейка 2
+| строка 2, ячейка 3',
 	'edittoolbar-tool-table-example' => 'Строка $1, ячейка $2',
 	'edittoolbar-tool-table-example-header' => 'Строка $1, ячейка $2 (заголовок)',
 	'edittoolbar-tool-table-title' => 'Вставить таблицу',
@@ -8183,6 +8259,18 @@ $messages['sah'] = array(
 {{ns:file}}:Example.jpg|Сурук2',
 	'edittoolbar-tool-newline' => 'Кыһыл устуруока',
 	'edittoolbar-tool-table' => 'Таабыл',
+	'edittoolbar-tool-table-example-old' => '-
+! баһа 1
+! баһа 2
+! баһа 3
+|-
+| строка 1, ячейка 1
+| строка 1, ячейка 2
+| строка 1, ячейка 3
+|-
+| строка 2, ячейка 1
+| строка 2, ячейка 2
+| строка 2, ячейка 3',
 	'edittoolbar-tool-table-example' => 'Устуруока $1, ячейка $2',
 	'edittoolbar-tool-table-example-header' => 'Устуруока $1, ячейка $2 (баһа)',
 	'edittoolbar-tool-table-title' => 'Табылыыссаны угуу',
@@ -8192,14 +8280,17 @@ $messages['sah'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Бас устуруоканы эбии',
 	'edittoolbar-tool-table-insert' => 'Киллэрэргэ',
 	'edittoolbar-tool-table-cancel' => 'Бигэргэтимэ',
-	'edittoolbar-tool-replace' => 'Уларыт',
+	'edittoolbar-tool-replace' => 'Көрдөөһүн уонна уларытыы',
 	'edittoolbar-tool-replace-title' => 'Бул уонна уларыт',
 	'edittoolbar-tool-replace-search' => 'Көрдөөһүн:',
 	'edittoolbar-tool-replace-replace' => 'Манан уларыт:',
 	'edittoolbar-tool-replace-case' => 'Регистрын учуоттуурга',
+	'edittoolbar-tool-replace-regex' => 'Көрдөөһүн устуруокатын регулярнай выражение курдук көрөргө',
+	'edittoolbar-tool-replace-all' => 'Барытын уларыт',
 	'edittoolbar-tool-replace-button' => 'Уларыт',
 	'edittoolbar-tool-replace-close' => 'Таҕыс',
 	'edittoolbar-tool-replace-nomatch' => 'Эн көрдөбүлгүнэн туох да көстүбэтэ.',
+	'edittoolbar-tool-replace-success' => 'Бачча уларытыы оҥоһулунна: $1.',
 	'edittoolbar-section-characters' => 'Анал бэлиэлэр',
 	'edittoolbar-characters-page-latin' => 'Латыынныы',
 	'edittoolbar-characters-page-latinextended' => 'Латыынныы кэтирэтиллибиттэр',

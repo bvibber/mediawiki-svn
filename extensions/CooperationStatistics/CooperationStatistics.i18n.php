@@ -311,6 +311,10 @@ Hlej tež [[Special:MostRevisors|'''strony z najwjace kontrolerami''']] a [[Spec
 $messages['hu'] = array(
 	'cooperationstatistics' => 'Együttműködési statisztika',
 	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|A főnévtér együttműködési statisztikájának]] megjelenítése.',
+	'cooperationstatistics-text' => "Együttműködési statisztika megjelenítése a fő névtérre.
+([[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] - [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] közreműködő esetén.)
+<br />
+Lásd még a [[Special:MostRevisors|'''legtöbb közreműködővel''']] és [[Special:MostRevisions|legtöbb változattal]] rendelkező lapokat.",
 	'cooperationstatistics-tablearticle' => 'Lapszám',
 	'cooperationstatistics-tablevalue' => 'Szerkesztők száma',
 	'cooperationstatistics-articles' => '{{PLURAL:$1|egy|$1}} lap',

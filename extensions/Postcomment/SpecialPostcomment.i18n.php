@@ -781,6 +781,17 @@ $messages['pt-br'] = array(
 	'postcomment_nopostingtoadd' => 'Nenhum comentário a adicionar.',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'postcomment_said' => 'nin
+<!-- structure:
+nin: "..." nispa.
+= \'said: "...".\'
+-->',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila

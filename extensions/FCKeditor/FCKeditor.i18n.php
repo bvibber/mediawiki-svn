@@ -530,6 +530,19 @@ $messages['hsb'] = array(
 	'tog-riched_toggle_remember_state' => 'Poslednje přepinanske staće sej spomjatkować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'fckeditor-desc' => '„Amit látsz, azt kapod” (WYSIWYG) szerkesztő',
+	'textrichditor' => 'Vizuális szerkesztő',
+	'prefs-fckeditor' => 'Vizuális szerkesztő',
+	'tog-riched_disable' => 'Vizuális szerkesztő letiltása',
+	'rich_editor_new_window' => 'Vizuális szerkesztő megnyitása új ablakban',
+	'tog-riched_use_popup' => 'Vizuális szerkesztő megnyitása felugró ablakban',
+	'tog-riched_toggle_remember_state' => 'Emlékezzen az utolsó állapotra',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

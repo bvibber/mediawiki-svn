@@ -609,6 +609,20 @@ Zo by softwaru za jednotliwu funkciju zrjadował, klikń na jeje mjeno.',
 	'invitations-invite-success' => 'Sy $1 wuspěšnje přeprosył, zo by tutu funkciju wužiwał!',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'invite-logpage' => 'Meghívások naplója',
+	'invite-logentry' => 'meghívta $1 szerkesztőt a <i>$2</i> funkció használatára.',
+	'invitations-uninvitedlist-description' => 'Nincs hozzáférésed ezekhez ezen egyéb csak meghívásos programfunkciókhoz.',
+	'invitations-inviteform-title' => 'Szerkesztő meghívása $1 használatára',
+	'invitations-inviteform-username' => 'Meghívandó szerkesztő',
+	'invitations-inviteform-submit' => 'Meghívás',
+	'invitations-error-baduser' => 'Úgy tűnik, hogy az általad megadott szerkesztő  nem létezik.',
+	'invitations-error-alreadyinvited' => 'Az általad megadott szerkesztőnek már van hozzáférése ehhez a funkcióhoz!',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -1057,6 +1071,13 @@ $messages['pt-br'] = array(
 	'invitations-error-baduser' => 'O utilizador que especificou parece não existir.',
 	'invitations-error-alreadyinvited' => 'O utilizador que especificou já tem acesso a esta funcionalidade!',
 	'invitations-invite-success' => 'Convidou $1 para usar esta funcionalidade com sucesso!',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'invite-logentry' => "qayakun $1 sutiyuqta <i>$2</i> nisqata llamk'achinanpaq.",
 );
 
 /** Romanian (Română)

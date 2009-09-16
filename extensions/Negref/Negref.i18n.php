@@ -108,6 +108,13 @@ $messages['hsb'] = array(
 	'negref-desc' => 'Skići tafličku, zo by so městno tafličkow <nowiki><ref/></nowiki> znutřka zapodateho teksta zwěsćiło, zo bychu so někotre pady wužiwanja předłohow porjedźili',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'negref-desc' => 'Tag bármely <nowiki><ref/></nowiki> tag helyének egyeztetésére a bevitt szövegben néhány sablonhasználati eset javítására',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

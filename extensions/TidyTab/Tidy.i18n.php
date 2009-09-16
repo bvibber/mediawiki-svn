@@ -194,6 +194,14 @@ $messages['hsb'] = array(
 	'untidy' => 'Njeporjadny',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'tidy' => 'Tidy',
+	'untidy' => 'Untidy',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

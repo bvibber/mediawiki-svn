@@ -160,11 +160,15 @@ $messages['bcl'] = array(
  */
 $messages['be-tarask'] = array(
 	'bookinfo-header' => 'Інфармацыя пра кнігу',
+	'bookinfo-desc' => 'Пашырае [[Special:Booksources|спэцыяльную старонку пошуку кніг]] інфармацыяй з ўэб-сэрвісу',
 	'bookinfo-result-title' => 'Назва:',
 	'bookinfo-result-author' => 'Аўтар:',
 	'bookinfo-result-publisher' => 'Выдавецтва:',
 	'bookinfo-result-year' => 'Год:',
 	'bookinfo-error-invalidisbn' => 'Уведзены няслушны ISBN.',
+	'bookinfo-error-nosuchitem' => 'Запіс не існуе альбо ня можа быць знойдзены.',
+	'bookinfo-error-nodriver' => 'Немагчыма ініцыялізаваць адпаведны драйвэр інфармацыі пра кнігі.',
+	'bookinfo-error-noresponse' => 'Няма адказу альбо перавышаны час чаканьня адказу.',
 	'bookinfo-purchase' => 'Набыць гэту кнігу ў $1',
 	'bookinfo-provider' => 'Крыніца інфармацыі: $1',
 );

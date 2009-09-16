@@ -270,6 +270,13 @@ $messages['pt-br'] = array(
 	'gotocategory-desc' => "Verifica termos de pesquisa no espaço nominal Categoria: para a funcionalidade Ir 'saltar para página'",
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'gotocategory-desc' => '"Katiguriya:" suti k\'itipaq maskay qillqananchakunata llanchin "p\'anqaman riy" llamk\'anapaq',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

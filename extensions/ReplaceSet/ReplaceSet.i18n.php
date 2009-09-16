@@ -132,6 +132,8 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'replaceset-desc' => '<nowiki>{{#replaceset}}</nowiki> elemzőfüggvény szöveg szakaszainak formázott adatokra történő cseréjére',
+	'replaceset-error-regexnoend' => "A „$1” regex mintának hiányzik a záró határolójele ('$2')",
 	'replaceset-error-regexbadmodifier' => "A(z) '$1' reguláris kifejezés módosító nem érvényes.",
 );
 

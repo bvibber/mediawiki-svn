@@ -454,7 +454,12 @@ Zapodaj najprjedy někotre znamješka a klikń na tłóčatko {{int:index-submit
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'indexfunc-desc' => 'Elemzőfüggvény átirányítások és egyértelműsítő lapok automatikus készítésére',
+	'indexfunc-badtitle' => 'Érvénytelen cím: „$1”',
+	'indexfunc-index-exists' => 'A(z) „$1” lap már létezik',
 	'index-search' => 'Keresés:',
+	'index-submit' => 'Elküldés',
+	'index-hide-detail' => 'Lapok listájának elrejtése',
 );
 
 /** Interlingua (Interlingua)

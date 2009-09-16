@@ -845,9 +845,11 @@ $4',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'todo-new-queue' => 'új',
+	'todo-list-cancel' => 'Mégse',
 );
 
 /** Interlingua (Interlingua)

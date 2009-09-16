@@ -2081,6 +2081,7 @@ $messages['grc'] = array(
 	'deletequeue-list-anyqueue' => '(οἱαδήποτε)',
 	'deletequeue-list-header-page' => 'Δέλτος',
 	'deletequeue-list-header-queue' => 'Οὐρά',
+	'deletequeue-case-reason' => 'Αἰτία:',
 );
 
 /** Swiss German (Alemannisch)
@@ -2486,14 +2487,29 @@ Móžeš [{{fullurl:{{FULLPAGENAME}}|action=delvote}} swoje schwalenje abo znap�
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'deletequeue-desc' => '[[Special:DeleteQueue|Várakozási soron alapuló rendszer a törlések kezelésére]]',
+	'deletequeue-action-queued' => 'Törlés',
 	'deletequeue-delnom-otherreason' => 'Más indok',
+	'deletequeue-delnom-extra' => 'További információ:',
+	'deletequeue-queue-speedy' => 'Azonnali törlés',
+	'deletequeue-queue-prod' => 'Javasolt törlés',
+	'deletequeue-review-action' => 'Elvégzendő művelet:',
+	'deletequeue-review-delete' => 'A lap törlése.',
 	'deletequeue-review-reason' => 'Megjegyzések:',
+	'deletequeue-review-newreason' => 'Új indok:',
+	'deletequeue-review-newextra' => 'További információ:',
+	'deletequeue-vote-tab' => 'Szavazás a törlésen',
+	'deletequeue-vote-action' => 'Javaslat:',
 	'deletequeue-vote-reason' => 'Megjegyzések:',
 	'deletequeue-vote-submit' => 'Elküldés',
 	'deletequeue-list-search' => 'Keresés',
 	'deletequeue-list-anyqueue' => '(bármelyik)',
 	'deletequeue-list-votes' => 'Szavazatok listázása',
 	'deletequeue-list-header-page' => 'Lap',
+	'deletequeue-list-header-expiry' => 'Lejárat',
+	'deletequeue-list-header-discusspage' => 'Vitalap',
+	'deletequeue-list-header-reason' => 'A törlés oka:',
+	'deletequeue-case-expiry' => 'Lejárat:',
 );
 
 /** Interlingua (Interlingua)

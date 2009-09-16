@@ -355,6 +355,13 @@ $messages['hsb'] = array(
 	'mostrevisors-viewcontributors' => 'Hłownych wobdźěłarjow sej wobhladać',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'mostrevisors-submit' => 'Menj',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

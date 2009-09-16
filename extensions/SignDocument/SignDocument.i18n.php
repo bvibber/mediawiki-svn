@@ -456,6 +456,13 @@ $messages['pt-br'] = array(
 	'right-createsigndocument' => 'Criar documentos que possam ser assinados',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'signaturelogentry' => "$1 nisqa qillqarimata silq'un",
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

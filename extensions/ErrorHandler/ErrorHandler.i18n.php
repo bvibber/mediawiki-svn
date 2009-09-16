@@ -547,6 +547,22 @@ $messages['hsb'] = array(
 	'errorhandler-trace-line-internal' => '[interna funkcija]: $1',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'errorhandler-desc' => 'Hibakezelő a MediaWikihez',
+	'errorhandler-errors' => 'Hibák:',
+	'errorhandler-error-fatal' => 'Végzetes hiba',
+	'errorhandler-error-warning' => 'Figyelmeztetés',
+	'errorhandler-error-notice' => 'Megjegyzés',
+	'errorhandler-error-user-error' => 'Felhasználói hiba',
+	'errorhandler-error-user-warning' => 'Felhasználói figyelmeztetés',
+	'errorhandler-error-user-notice' => 'Felhasználói megjegyzés',
+	'errorhandler-error-strict' => 'Szigorú szabványok',
+	'errorhandler-trace-line' => '$1 ($2. sor): $3',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

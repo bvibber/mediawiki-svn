@@ -278,6 +278,18 @@ Sy spytał: '''$1'''",
 	'rt-nomatches' => 'Wotpowědne naležnosće RT njebuchu namakane',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'rt-inactive' => 'Az RT kiterjesztés nem aktív',
+	'rt-badlimit' => "Érvénytelen „LIMIT (l)” argumentum: számnak kell lennie.
+A következőt próbáltad: '''$1'''",
+	'rt-badowner' => "Érvénytelen „owner (o)” argumentum: érvényes felhasználói névnek kell lennie.
+A következőt próbáltad: '''$1'''",
+	'rt-nomatches' => 'Nem található egyező RT jegy',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

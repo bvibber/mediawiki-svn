@@ -276,12 +276,15 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'protectsection_desc' => 'Lehetővé teszi a megfelelő engedéllyel rendelkező szerkesztők számára, hogy levédjék a lap egyes részeit a <tt>&lt;protect&gt;</tt> tag segítségével',
 	'protectsection_add_remove' => 'Egy védett fejezetet próbáltál meg hozzáadni vagy eltávolítani.',
 	'protectsection_modify' => 'Védett szöveget próbáltál meg módosítani.',
+	'protectsection_add_above' => 'Védett szakasz elé próbáltál meg szöveget beilleszteni',
 	'protectsection_forbidden' => 'Megtagadva',
+	'right-protectsection' => 'Lap szakaszainak védelme',
 );
 
 /** Interlingua (Interlingua)

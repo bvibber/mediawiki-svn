@@ -310,6 +310,19 @@ $messages['hsb'] = array(
 	'securepasswords-word' => 'něšto druhe być hač słowo',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'securepasswords-valid' => 'A jelszavad érvénytelen, vagy túl rövid.
+Követelmények:',
+	'securepasswords-minlength' => 'legalább {{PLURAL:$1|egy|$1}} karakter hosszú',
+	'securepasswords-lowercase' => 'legalább egy kisbetűt tartalmaz',
+	'securepasswords-uppercase' => 'legalább egy nagybetűt tartalmaz',
+	'securepasswords-digit' => 'legalább egy számot tartalmaz',
+	'securepasswords-special' => 'legalább egy speciális karaktert tartalmaz (speciális karakterek: $1)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

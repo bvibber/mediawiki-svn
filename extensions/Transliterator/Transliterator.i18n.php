@@ -189,6 +189,15 @@ $messages['hsb'] = array(
 	'transliterator-error-rulesize' => 'Prawidło <code>$1</code> ma wjace hač $3 {{PLURAL:$3|znamješko|znamješce|znamješka|znamješkow}} nalěwo w [[MediaWiki:$2]]',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'transliterator-desc' => 'Konfigurálható elemzőfüggvény átíráshoz',
+	'transliterator-error-ambiguous' => 'Kétértelmű szabály (<code>$1</code>) itt: [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Több mint {{PLURAL:$1|egy|$1}} szabály itt: [[MediaWiki:$2]]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

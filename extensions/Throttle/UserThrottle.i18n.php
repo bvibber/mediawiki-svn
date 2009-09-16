@@ -221,6 +221,14 @@ $messages['hsb'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Haćenje wutworjenja wužiwarskich kontow',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'acct_creation_global_hard_throttle_hit' => 'Felhasználói fiókok készítése automatikusan szüneteltetve pár másodpercig, hogy csökkentsük a tömeges regisztrációs támadásokat.
+Kérlek várj egy percet, majd nyomd meg az „újratöltés” gombot a böngésződben az újbóli elküldéshez.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -1514,9 +1514,13 @@ Tuta strona je jenož na wobmjezowanych wužiwarjow nałožujomna.",
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'whitelisttablemodifyall' => 'Mind',
 	'whitelisttablemodifynone' => 'Nincs',
+	'whitelisttableremove' => 'Eltávolítás',
+	'whitelistnever' => 'soha',
 );
 
 /** Interlingua (Interlingua)

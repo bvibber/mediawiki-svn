@@ -821,9 +821,22 @@ Prošu čakaj, doniž eksistowaca akcija njeje so skónčena.',
 
 /** Hungarian (Magyar)
  * @author Bdamokos
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'taggedimages' => 'Felcímkézett képek',
+	'imagetagging-addimagetag' => 'Kép felcímkézése',
+	'imagetagging-article' => 'Lap:',
+	'imagetagging-articletotag' => 'Felcímkézendő lap',
 	'imagetagging-imghistory' => 'Történet',
+	'imagetagging-images' => 'képek',
+	'imagetagging-removetag' => 'címke eltávolítása',
+	'imagetagging-done-button' => 'Címkézés kész',
+	'imagetagging-tag-button' => 'Felcímkéz',
+	'imagetagging-tagcancel-button' => 'Mégse',
+	'imagetagging-addingtag' => 'Címke hozzáadása…',
+	'imagetagging-removingtag' => 'Címke eltávolítása…',
+	'tag-logpagename' => 'Címkézési napló',
 );
 
 /** Interlingua (Interlingua)

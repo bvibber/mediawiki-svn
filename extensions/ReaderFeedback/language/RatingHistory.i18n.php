@@ -479,14 +479,17 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'ratinghistory-period' => 'Denbora-tartea:',
 	'ratinghistory-month' => 'azken hilabetea',
 	'ratinghistory-3months' => 'azken 3 hilabeteak',
 	'ratinghistory-year' => 'azken urtea',
 	'ratinghistory-3years' => 'azken 3 urteak',
 	'readerfeedback-svg' => 'SVG bezala bistaratu',
+	'ratinghistory-table-votes' => 'Bozkak',
 );
 
 /** Persian (فارسی)

@@ -862,6 +862,13 @@ $messages['hsb'] = array(
 	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'recordadmin-buttonsave' => 'Mentés',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

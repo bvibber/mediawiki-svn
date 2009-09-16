@@ -1323,6 +1323,41 @@ $messages['hsb'] = array(
 	'right-readold' => 'Wobsah starych wersijow a rozdźělow wersijow sej wobhladać',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'grouppermissions' => 'Csoportjogosultságok kezelése',
+	'sortpermissions' => 'Jogosultságok rendezése',
+	'grouppermissions-desc2' => 'Kiterjesztett jogosultsági rendszer',
+	'grouppermissions-search' => 'Csoport:',
+	'grouppermissions-dologin' => 'Bejelentkezés',
+	'grouppermissions-dosearch' => 'Menj',
+	'grouppermissions-searchlabel' => 'Csoport keresése',
+	'grouppermissions-deletelabel' => 'Csoport törlése',
+	'grouppermissions-add' => 'Csoport hozzáadása',
+	'grouppermissions-delete' => 'Csoport törlése',
+	'grouppermissions-true' => 'Igen',
+	'grouppermissions-false' => 'Nem',
+	'grouppermissions-never' => 'Soha',
+	'grouppermissions-sort-read' => 'Olvasás',
+	'grouppermissions-sort-edit' => 'Szerkesztés',
+	'grouppermissions-log-add' => '„$2” csoport hozzáadva',
+	'grouppermissions-log-delete' => '„$2” csoport törölve',
+	'grouppermissions-sp-sort' => 'Jogosultságok rendezése',
+	'grouppermissions-sp-save' => 'Mentés',
+	'grouppermissions-sp-addtype' => 'Rendezési kulcs hozzáadása',
+	'grouppermissions-sp-addperm' => 'Jogosultság hozzáadása',
+	'grouppermissions-sp-remove' => 'eltávolítás',
+	'grouppermissions-sp-deltype' => 'Rendezési kulcs törlése',
+	'right-raw' => 'Nyers lapok megtekintése',
+	'right-info' => 'lapinformációk megtekintése',
+	'right-search' => 'Keresés a wikiben',
+	'right-recentchanges' => 'Friss változtatások megtekintése',
+	'right-edittalk' => 'vitalapok szerkesztése',
+	'right-edit-new' => 'lapok szerkesztése (amelyek nem vitalapok)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

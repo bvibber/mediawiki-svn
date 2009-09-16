@@ -3392,6 +3392,13 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] assinou [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'sign-uniquequery-1signed2' => "[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] sutiyuqqa [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] nisqa qillqarimata silq'un.",
+);
+
 /** Rhaeto-Romance (Rumantsch) */
 $messages['rm'] = array(
 	'sign-viewfield-realname' => 'Num',
