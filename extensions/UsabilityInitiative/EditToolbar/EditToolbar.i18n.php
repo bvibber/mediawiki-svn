@@ -15,12 +15,17 @@ $messages['en'] = array(
 	'edittoolbar' => 'Editing toolbar',
 	'edittoolbar-desc' => 'Edit page toolbar with enhanced usability',
 	'edittoolbar-preference' => 'Enable enhanced editing toolbar',
+	'edittoolbar-cgd-preference' => 'Enable content generation dialogs in enhanced editing toolbar',
 	'edittoolbar-loading' => 'Loading...',
 	/* Main Section */
 	'edittoolbar-tool-bold' => 'Bold',
 	'edittoolbar-tool-bold-example' => 'Bold text',
 	'edittoolbar-tool-italic' => 'Italic',
 	'edittoolbar-tool-italic-example' => 'Italic text',
+	'edittoolbar-tool-ilink' => 'Internal link',
+	'edittoolbar-tool-ilink-example' => 'Link title',
+	'edittoolbar-tool-xlink' => 'External link (remember http:// prefix)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com link title',
 	'edittoolbar-tool-link' => 'Link',
 	'edittoolbar-tool-link-title' => 'Insert link',
 	'edittoolbar-tool-link-int' => 'To a wiki page',
@@ -72,6 +77,18 @@ $messages['en'] = array(
 {{ns:file}}:Example.jpg|Caption2",
 	'edittoolbar-tool-newline' => 'New line',
 	'edittoolbar-tool-table' => 'Table',
+	'edittoolbar-tool-table-example-old' => "-
+! header 1
+! header 2
+! header 3
+|-
+| row 1, cell 1
+| row 1, cell 2
+| row 1, cell 3
+|-
+| row 2, cell 1
+| row 2, cell 2
+| row 2, cell 3",
 	'edittoolbar-tool-table-example' => 'Row $1, cell $2',
 	'edittoolbar-tool-table-example-header' => 'Row $1, cell $2 (header)',
 	'edittoolbar-tool-table-title' => 'Insert table',

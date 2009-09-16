@@ -45,3 +45,4 @@ $wgExtensionMessagesFiles['UsabilityInitiative'] =
 
 // Registers Hooks
 $wgHooks['BeforePageDisplay'][] = 'UsabilityInitiativeHooks::addResources';
+$wgHooks['MakeGlobalVariablesScript'][] = 'UsabilityInitiativeHooks::addJSVars';

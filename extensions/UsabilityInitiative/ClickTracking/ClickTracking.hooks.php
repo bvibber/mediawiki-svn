@@ -62,7 +62,7 @@ class ClickTrackingHooks {
 				'wgTrackingToken' => ClickTrackingHooks::get_session_id()
 			)
 		);
-		UsabilityInitiativeHooks::addLiteralVariables(
+		UsabilityInitiativeHooks::addVariables(
 			array( 
 				'wgClickTrackingIsThrottled' => ClickTrackingHooks::isUserThrottled()
 			)

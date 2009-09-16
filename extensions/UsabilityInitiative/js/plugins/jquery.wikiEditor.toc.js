@@ -45,7 +45,7 @@ fn: {
 		context.$textarea
 			.bind( 'keyup encapsulateSelection',
 				function( event ) {
-					var context = $(this).data( 'context' );
+					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
 						bulk: 0,
 						loop: function() {
@@ -55,9 +55,9 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition',
+			.bind( 'mouseup scrollToPosition focus',
 				function( event ) {
-					var context = $(this).data( 'context' );
+					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
 						bulk: 0,
 						loop: function() {
@@ -65,7 +65,15 @@ fn: {
 						}
 					} );
 				}
-			);
+			)
+			.blur( function() {
+				var context = $(this).data( 'wikiEditor-context' );
+				$.wikiEditor.modules.toc.fn.unhighlight( context );
+			});
+	},
+ 
+	unhighlight: function( context ) {
+		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
 	},
 	/**
 	 * Highlight the section the cursor is currently within
@@ -73,7 +81,7 @@ fn: {
 	 * @param {Object} context
 	 */
 	update: function( context ) {
-		context.modules.$toc.find( 'a' ).removeClass( 'currentSelection' );
+		$.wikiEditor.modules.toc.fn.unhighlight( context );
 		var position = context.$textarea.getCaretPosition();
 		var section = 0;
 		if ( context.data.outline.length > 0 ) {
