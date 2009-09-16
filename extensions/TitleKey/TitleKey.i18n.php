@@ -64,6 +64,13 @@ $messages['be-tarask'] = array(
 	'titlekey-desc' => 'Праграмная забесьпячэньне для падказак па першых літарах назвы ў пошуку',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'titlekey-desc' => 'Stignad da ginnig enklaskoù dre rakgerioù titloù',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -111,6 +118,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'titlekey-desc' => 'Mecanismo para sugerir búsquedas por prefijo de título',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'titlekey-desc' => 'Pealkirja eesliiteotsinguvihjete taustprotsess',
 );
 
 /** Basque (Euskara)
@@ -278,6 +292,13 @@ $messages['lt'] = array(
 	'titlekey-desc' => 'Pavadinimo prefikso paieška pasiūlymo sugrąžinimui',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'titlekey-desc' => 'Сугерирање при пребарувањето на префикс на наслови',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -334,6 +355,13 @@ $messages['pl'] = array(
 	'titlekey-desc' => 'Obsługa podpowiedzi w wyszukiwarce na podstawie wpisanego początku tytułu',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'titlekey-desc' => '"Backend" dij sugeriment dl\'arserca dij prefiss dij tìtoj',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -376,11 +404,18 @@ $messages['sk'] = array(
 	'titlekey-desc' => 'Backend pre návrh prefixového vyhľadávania názvu stránky',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'titlekey-desc' => 'Позадинска машина за претрагу префикса наслова.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'titlekey-desc' => 'Pozadinska mašina za pretragu prefiksa naslova.',
 );
 
 /** Seeltersk (Seeltersk)
@@ -429,7 +464,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'titlekey-desc' => 'Motor de sugerimento de riçerca par prefissi de titolo',
+	'titlekey-desc' => 'Motor de sugerimento de riserca par prefissi de titolo',
 );
 
 /** Vietnamese (Tiếng Việt)

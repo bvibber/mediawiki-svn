@@ -22,6 +22,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'stablepages' => '{{Flagged Revs}}',
@@ -31,6 +32,20 @@ $messages['qqq'] = array(
 {{Identical|There are no pages in this list}}',
 	'stablepages-config' => '{{Flagged Revs}}
 {{Identical|Configuration}}',
+	'stablepages-prec-none' => '{{Flagged Revs}}',
+	'stablepages-prec-quality' => '{{Flagged Revs}}',
+	'stablepages-prec-pristine' => '{{Flagged Revs}}',
+	'stablepages-precedence' => '{{Flagged Revs}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'stablepages' => 'Stabiele bladsye',
+	'stablepages-stable' => 'stabiele weergawe',
+	'stablepages-config' => 'Voorkeure',
 );
 
 /** Aragonese (Aragonés)
@@ -112,11 +127,34 @@ $messages['bg'] = array(
 	'stablepages-config' => 'Конфигурация',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'stablepages' => 'Pajennoù stabil',
+	'stablepages-stable' => 'stumm stabil',
+	'stablepages-text' => "A-is ez eus ur roll pajennoù kefluniet gant an dorn evit na vefe diskouezet d'al lennerien nemet ar stumm stabil da bajenn danvez enni, dre ziouer.",
+	'stablepages-none' => "N'eus pajenn ebet er roll-mañ",
+	'stablepages-config' => 'Kefluniañ',
+	'stablepages-prec-none' => 'Tamm dibab gwellañ ebet',
+	'stablepages-prec-quality' => "Dibaboù gwellañ evit ar c'halite",
+	'stablepages-prec-pristine' => "Dibab gwellañ gwerc'h",
+	'stablepages-precedence' => 'Dibab gwellañ :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
 	'stablepages' => 'Stabilne stranice',
+	'stablepages-stable' => 'stabilna verzija',
+	'stablepages-text' => 'Ispod je spisak stranica koje su ručno postavljene da prikazuju stabilnu verziju kao pretpostavljenu stranicu sadržaja za čitaoce.',
+	'stablepages-none' => 'Nema stranica na ovom spisku',
+	'stablepages-config' => 'Podešavanje',
+	'stablepages-prec-none' => 'bez prednosti',
+	'stablepages-prec-quality' => 'poredak po kvalitetu',
+	'stablepages-prec-pristine' => 'prvobitni poredak',
+	'stablepages-precedence' => 'Prednost:',
 );
 
 /** Catalan (Català)
@@ -138,10 +176,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'stablepages' => 'Liste individuell konfigurierter Seiten',
+	'stablepages' => 'Konfigurierte Seiten',
 	'stablepages-stable' => 'gesichtete Version',
 	'stablepages-text' => 'Es folgt eine Liste der Seiten, die individuell konfiguriert wurden, damit diese die markierte Version als Standardinhalt für Leser anzeigen.',
 	'stablepages-none' => 'Diese Liste ist leer.',
@@ -232,10 +271,13 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'stablepages' => 'Vakaat sivut',
 	'stablepages-stable' => 'vakaa versio',
+	'stablepages-none' => 'Tällä listalla ei ole sivuja.',
 );
 
 /** French (Français)
@@ -344,9 +386,18 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
-	'stablepages-config' => 'Konfiguracija',
+	'stablepages' => 'Važeće stranice',
+	'stablepages-stable' => 'važeća inačica',
+	'stablepages-text' => 'Ispod je popis stranica koje su ručno podešene kako bi prikazivale važeću inačicu kao zadani sadržaj stranice za čitače sadržaja.',
+	'stablepages-none' => 'Nema stranica u ovom popisu',
+	'stablepages-config' => 'Postavka',
+	'stablepages-prec-none' => 'bez prvenstva',
+	'stablepages-prec-quality' => 'prvenstvo kvalitete',
+	'stablepages-prec-pristine' => 'zastarjelo prvenstvo',
+	'stablepages-precedence' => 'Prvenstvo:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -392,14 +443,19 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'stablepages' => 'Halaman stabil',
 	'stablepages-stable' => 'versi stabil',
-	'stablepages-text' => 'Di bawah ini adalah daftar halaman-halaman yang diset secara manual untuk menampilkan versi stabil sebagai tampilan baku isi bagi para pembaca.',
+	'stablepages-text' => 'Di bawah ini adalah daftar halaman yang dikonfigurasi secara manual untuk menampilkan versi stabil sebagai isi halaman baku bagi para pembaca.',
 	'stablepages-none' => 'Tidak ada halaman di dalam daftar ini',
 	'stablepages-config' => 'Konfigurasi',
+	'stablepages-prec-none' => 'tidak ada preseden',
+	'stablepages-prec-quality' => 'preseden berkualitas',
+	'stablepages-prec-pristine' => 'preseden murni',
+	'stablepages-precedence' => 'Preseden:',
 );
 
 /** Italian (Italiano)
@@ -456,14 +512,13 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'stablepages' => 'Stable pages',
+	'stablepages' => 'Beshtändeje Sigge met einzel Enshtellunge',
 	'stablepages-stable' => 'beshtändeje Version',
 	'stablepages-text' => 'Hee dronger kütt en Leß met Sigge, woh vun Hand enjshtallt es, dat de {{int:stablepages-stable}} ier Enhallt shtandatmäßesch för der Lesser aanjezeisch weedt.',
 	'stablepages-none' => 'En dä Leß sin kein Sigge dren',
 	'stablepages-config' => 'Enstellunge',
 	'stablepages-prec-none' => 'keine Vürrang',
-	'stablepages-prec-quality' => '
-de {{int:revreview-lev-quality}} hät der Vürrang',
+	'stablepages-prec-quality' => 'de {{int:revreview-lev-quality}} hät der Vürrang',
 	'stablepages-prec-pristine' => 'de {{int:revreview-lev-pristine}} hät der Vörrang',
 	'stablepages-precedence' => 'Reijefollsch vum Vörrang:',
 );
@@ -477,9 +532,14 @@ $messages['lb'] = array(
 	'stablepages-text' => 'Hei ass eng Lëscht vu Säiten déi individuell konfiguréiert goufen, datt déi stabil Versioun als Standard Säiteninhalt ugewise gëtt.',
 	'stablepages-none' => 'Dës Lëscht ass eidel',
 	'stablepages-config' => 'Konfiguratioun',
+	'stablepages-prec-none' => 'Keng Prioritéit',
+	'stablepages-prec-quality' => "Proritéit fir d'Qualitéit",
+	'stablepages-prec-pristine' => 'Keng Prioritéit',
+	'stablepages-precedence' => 'Prioritéit:',
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -488,6 +548,10 @@ $messages['mk'] = array(
 	'stablepages-text' => 'Листа на страници рачно конфигурирани да ја прикажуваат содржината на стабилната верзија по основно за корисниците кои ја прегледуваат.',
 	'stablepages-none' => 'Нема страници во оваа листа',
 	'stablepages-config' => 'Конфигурација',
+	'stablepages-prec-none' => 'без предност',
+	'stablepages-prec-quality' => 'предност на квалитет',
+	'stablepages-prec-pristine' => 'предност на беспрекорност',
+	'stablepages-precedence' => 'Предност:',
 );
 
 /** Malayalam (മലയാളം)
@@ -601,6 +665,21 @@ $messages['pl'] = array(
 	'stablepages-precedence' => 'Pierwszeństwo w wyświetlaniu',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'stablepages' => 'Pàgine stabij',
+	'stablepages-stable' => 'Vërsion stàbil',
+	'stablepages-text' => 'Sota a-i é na lista ëd pàgine configurà manualment për mosté la vërsion stàbil com contnù ëd default ëd la pàgina për ij visitador.',
+	'stablepages-none' => 'A-i é pa gnun-e pàgine an sta lista-sì',
+	'stablepages-config' => 'Configurassion',
+	'stablepages-prec-none' => 'pa gnun-e precedense',
+	'stablepages-prec-quality' => 'precedensa ëd qualità',
+	'stablepages-prec-pristine' => 'precedensa pa contaminà',
+	'stablepages-precedence' => 'Precedensa:',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Waldir
@@ -661,6 +740,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Claymore
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -668,7 +748,7 @@ $messages['ru'] = array(
 	'stablepages-stable' => 'стабильная версия',
 	'stablepages-text' => 'Ниже показан список страниц, вручную настроенных на показ стабильной версии по умолчанию для читателей.',
 	'stablepages-none' => 'В данном списке отсутствуют страницы',
-	'stablepages-config' => 'Настройка',
+	'stablepages-config' => 'настройка',
 	'stablepages-prec-none' => 'без приоритета',
 	'stablepages-prec-quality' => 'приоритет качества',
 	'stablepages-prec-pristine' => 'приоритет изначальности',
@@ -690,7 +770,7 @@ $messages['sk'] = array(
 	'stablepages-precedence' => 'Precedencia:',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -699,6 +779,17 @@ $messages['sr-ec'] = array(
 	'stablepages-text' => 'Испод се налази списак страна ручно подешених за приказ стабилне верзије као подразумеване стране за читаче садржаја.',
 	'stablepages-none' => 'Не постоје стране у списку.',
 	'stablepages-config' => 'Подешавање',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'stablepages' => 'Stabilne strane',
+	'stablepages-stable' => 'Stabilna verzija',
+	'stablepages-text' => 'Ispod se nalazi spisak strana ručno podešenih za prikaz stabilne verzije kao podrazumevane strane za čitače sadržaja.',
+	'stablepages-none' => 'Ne postoje strane u spisku.',
+	'stablepages-config' => 'Podešavanje',
 );
 
 /** Swedish (Svenska)
@@ -766,6 +857,10 @@ $messages['uk'] = array(
 	'stablepages-text' => 'Нижче поданий список сторінок, які вручну налаштовані на показ стабільної версії за замовчуванням для читачів.',
 	'stablepages-none' => 'У цьому списку нема сторінок',
 	'stablepages-config' => 'Налаштування',
+	'stablepages-prec-none' => 'без пріоритету',
+	'stablepages-prec-quality' => 'пріоритет якості',
+	'stablepages-prec-pristine' => 'пріоритет первинності',
+	'stablepages-precedence' => 'Пріоритет:',
 );
 
 /** Vèneto (Vèneto)

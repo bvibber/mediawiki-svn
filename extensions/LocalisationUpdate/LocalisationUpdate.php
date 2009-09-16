@@ -43,4 +43,4 @@ $wgAutoloadClasses['LUDependency'] = $dir . 'LocalisationUpdate.class.php';
 $wgAutoloadClasses['QuickArrayReader'] = $dir . 'QuickArrayReader.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LocalisationUpdate::schemaUpdates';
-
+$wgHooks['ParserTestTables'][] = 'LocalisationUpdate::parserTestTables';

@@ -4,18 +4,18 @@ $wgUseNormalUser = true;
 require_once('commandLine.inc');
 
 if ( isset( $options['r'] ) ) {
+	$lb = wfGetLB();
 	print 'time     ';
-	foreach( $wgDBservers as $i => $server ) {
-		$hostname = gethostbyaddr( $wgDBservers[$i]['host'] );
-		$hostname = str_replace( '.pmtpa.wmnet', '', $hostname );
+	for( $i = 0; $i < $lb->getServerCount(); $i++ ) {
+		$hostname = $lb->getServerName( $i );
 		printf("%-12s ", $hostname );
 	}
 	print("\n");
 	
 	while( 1 ) {
-		$lags = $wgLoadBalancer->getLagTimes();
+		$lags = $lb->getLagTimes();
 		unset( $lags[0] );
-		print( date( 'H:i:s' ) . ' ' );
+		print( gmdate( 'H:i:s' ) . ' ' );
 		foreach( $lags as $i => $lag ) {
 			printf("%-12s " , $lag === false ? 'false' : $lag );
 		}

@@ -182,8 +182,8 @@ $aliases['ia'] = array(
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Configure' => array( 'Konfigurasi' ),
-	'Extensions' => array( 'Ekstensi' ),
-	'ViewConfig' => array( 'Lihat konfigurasi', 'Lihatkonfigurasi' ),
+	'Extensions' => array( 'Pengaya', 'Ekstensi' ),
+	'ViewConfig' => array( 'Lihat konfigurasi', 'LihatKonfigurasi' ),
 );
 
 /** Italian (Italiano) */
@@ -301,6 +301,13 @@ $aliases['sa'] = array(
 	'Configure' => array( 'संरूपण' ),
 	'Extensions' => array( 'विस्तार' ),
 	'ViewConfig' => array( 'संकूटसङ्केतपश्यति' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Configure' => array( 'Konfigurovať' ),
+	'Extensions' => array( 'Rozšírenia' ),
+	'ViewConfig' => array( 'ZobraziťKonfiguráciu' ),
 );
 
 /** Albanian (Shqip) */

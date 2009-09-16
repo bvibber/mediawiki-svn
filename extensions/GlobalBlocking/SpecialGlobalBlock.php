@@ -161,7 +161,11 @@ class SpecialGlobalBlock extends SpecialPage {
 
 		$form .= Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMsg( 'globalblocking-block-legend' ) );
-		$form .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript, 'name' => 'uluser' ) );
+		$form .= Xml::openElement( 'form',
+									array( 'method' => 'post',
+											'action' => $wgScript,
+											'name' => 'uluser',
+											'id' => 'mw-globalblock-form' ) );
 		$form .= Xml::hidden( 'title',  SpecialPage::getTitleFor('GlobalBlock')->getPrefixedText() );
 
 		$fields = array ();
@@ -173,16 +177,7 @@ class SpecialGlobalBlock extends SpecialPage {
 				$this->mAddress,
 				array('id' => 'mw-globalblock-address' )
 			);
-		
-		// Why to block them
-		$fields['globalblocking-block-reason'] =
-			Xml::input(
-				'wpReason',
-					45,
-					$this->mReason,
-					array( 'id' => 'mw-globalblock-reason' )
-				);
-
+			
 		// How long to block them for
 		if ( ( $dropdown = wfMsgNoTrans( 'globalblocking-expiry-options' ) ) != '-') {
 			# Drop-down list
@@ -216,6 +211,15 @@ class SpecialGlobalBlock extends SpecialPage {
 					array( 'id' => 'mw-globalblock-expiry-other' )
 				);
 		}
+		
+		// Why to block them
+		$fields['globalblocking-block-reason'] =
+			Xml::input(
+				'wpReason',
+					45,
+					$this->mReason,
+					array( 'id' => 'mw-globalblock-reason' )
+				);
 
 		// Block all users, or just anonymous ones
 		$fields['globalblocking-block-options'] =

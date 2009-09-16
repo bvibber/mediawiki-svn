@@ -175,7 +175,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		$hasSelf = in_array( $this->mWiki, $wikis );
 
 		extract( $this->formatConf );
-		$datim = $wgLang->timeAndDate( $ts );
+		$datime = $wgLang->timeAndDate( $ts );
 		$date = $wgLang->date( $ts );
 		$time = $wgLang->time( $ts );
 
@@ -183,13 +183,17 @@ class SpecialViewConfig extends ConfigurationPage {
 		$userLink = '';
 		if (!$arr['user_wiki'] && !$arr['user_name'] ) {
 			$userLink = ''; # Nothing...
+			$username = '';
 		} elseif ( $arr['user_wiki'] == wfWikiId() ) {
-			$userLink = $skin->link( Title::makeTitle( NS_USER, $arr['user_name'] ), $arr['user_name'] );
+			$userLink = $skin->link( Title::makeTitle( NS_USER, $arr['user_name'] ), htmlspecialchars( $arr['user_name'] ) );
+			$username = $arr['user_name'];
 		} elseif ( $wiki = WikiMap::getWiki( $arr['user_wiki'] ) ) {
-			$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$arr['user_name'] ), $arr['user_name'].'@'.$arr['user_wiki'] );
+			$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$arr['user_name'] ), htmlspecialchars( $arr['user_name'].'@'.$arr['user_wiki'] ) );
+			$username = '';
 		} else {
 			## Last-ditch
-			$userLink = $arr['user_name'].'@'.$arr['user_wiki'];
+			$userLink = htmlspecialchars( $arr['user_name'].'@'.$arr['user_wiki'] );
+			$username = '';
 		}
 
 		$actions = array();
@@ -265,7 +269,10 @@ class SpecialViewConfig extends ConfigurationPage {
 		$comment = $arr['reason'] ? $skin->commentBlock( $arr['reason'] ) : '';
 
 		$action = $wgLang->commaList( $actions );
-		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $buttons, $datim, $userLink, $action, $comment, $date, $time ) ) )."\n";
+
+		// That's a damn hack because some parmaters must replaced before and some after...
+		$msg = wfMsgExt( 'configure-viewconfig-line', array( 'parseinline' ), array( '$1', $datime, '$2', '$3', '$4', $date, $time, $username ) );
+		return Xml::tags( 'li', null, wfMsgReplaceArgs( $msg, array( $buttons, $userLink, $action, $comment ) ) )."\n";
 	}
 
 	/**

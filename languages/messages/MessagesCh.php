@@ -211,7 +211,6 @@ $messages = array(
 'aboutsite'            => 'Pot {{SITENAME}}',
 'aboutpage'            => 'Project:Pot',
 'copyright'            => 'Guåha i sinahguan gi halom $1.',
-'copyrightpagename'    => "{{SITENAME}} direchun i mantituge'",
 'copyrightpage'        => "{{ns:project}}:Direchun i mantituge'",
 'currentevents'        => 'Estorian modetnu siha',
 'currentevents-url'    => 'Project:Estorian modetnu siha',
@@ -562,10 +561,10 @@ Chagi fan [[Special:Search|manaligao gi wiki]] para i mannuebu na påhina siha n
 'rev-deleted-user'            => "(mana'suha nå'an muna'sesetbi)",
 'rev-deleted-event'           => "(mana'suha aksion log)",
 'rev-deleted-text-permission' => "Mana'suha este na tinilaika ginen i manpubliku na atkibu siha.
-Fana'an guåha attikulo gi [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log muna'susuha].",
+Fana'an guåha attikulo gi [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log muna'susuha].",
 'rev-deleted-text-view'       => "Mana'suha este na tinilaika ginen i mampubliku na atkibu siha.
 Komu administradot {{SITENAME}} siña un atan ha';
-fana'an guåha attikulo gi [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log muna'susuha].",
+fana'an guåha attikulo gi [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log muna'susuha].",
 'rev-delundel'                => "na'annok/nå'na'",
 'revisiondelete'              => "Na'suha/para håfa muna'suha i tinilaika",
 'revdelete-selected'          => "'''{{PLURAL:$2|Tinilaika ma'ayek|Tinilaika manma'ayek}} gi [[:$1]]:'''",
@@ -666,7 +665,6 @@ Siña un [[:\$1|fa'tinas i påhina]].",
 'searchall'                 => 'todu',
 'showingresults'            => "A'annok gi sampapa' asta {{PLURAL:$1|'''1''' na humuyongña|'''$1''' na humuyongña siha}} tumutuhon yan i #'''$2'''.",
 'showingresultsnum'         => "A'annok gi sampapa' {{PLURAL:$3|'''1''' na humuyongña|'''$3''' na humuyongña siha}} tumutuhon yan i #'''$2'''.",
-'showingresultstotal'       => "A'annok gi sampapa' {{PLURAL:$3|i humuyongña '''$1''' ginen '''$3'''|i humuyongña '''$1 - $2''' siha ginen '''$3'''}}",
 'nonefound'                 => "'''Apunta''': Solo ha' manmanaligao palu na sågan nå'an. Chagi fan muna'klå'an mo'na i inaligao-mu yan ''all:'' para un aligao todu i guinaha (kontodu påhinan kombesasion, plantiyas, etc), pat usa i sagan nå'an ni malago'-mu kumu klå'an mo'na.",
 'powersearch'               => 'Finu na inaligao',
 'powersearch-legend'        => 'Finu na inaligao',

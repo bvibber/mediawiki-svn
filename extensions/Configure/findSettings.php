@@ -60,30 +60,47 @@ if ( isset( $options['ext'] ) ) {
 	$ignoreList = array(
 		# Core
 		'wgTitle', 'wgArticle', 'wgContLang', 'wgLang', 'wgOut', 'wgParser', 'wgMessageCache',
+		'wgVersion',
 		# Extensions
 		'wgAbuseFilterStyleVersion',
 		'wgAdminLinksIP',
+		'wgExtCategoryTests',
 		'wgCategoryTreeUseCategoryTable', 'wgCategoryTreeVersion',
+		'wgCategoryWatch',
 		'wgCheckUserStyleVersion',
 		'wgCaptcha', 'wgConfirmEditIP',
 		'wgCitationCache', 'wgCitationCounter', 'wgCitationRunning',
 		'wgCodeReviewStyleVersion',
+		'wgCollectionVersion', 'wgCollectionStyleVersion',
 		'wgCSS',
 		'wgDeleteQueueStyleVersion',
+		'wgDraftsStyleVersion',
+		'edgIP', 'edgValues',
 		'wgErrorHandlerErrors', 'wgErrorHandlerOutputDone',
 		'wgFlaggedRevStyleVersion',
+		'wgGoogleAdSenseCssLocation',
 		'wgOggScriptVersion',
 		'wgPFHookStub',
+		'sdgIP', 'sdgScriptPath', 'sdgNamespaceIndex',
+		'sfgIP', 'sfgScriptPath', 'sfgNamespaceIndex',
+		'smwgIP', 'smwgScriptPath', 'smwgNamespaceIndex', 'smwgRAPPath', 'smwgSMWBetaCompatible',
+		'srfgIP', 'srfgScriptPath',
 		'wgUserBoardScripts', 'wgUserProfileDirectory', 'wgUserProfileScripts', 'wgUserRelationshipScripts',
 		'wgTimelineSettings',
 		'wgTitleBlacklist',
+		'wgAutoCreateCategoryPagesObject',
+		'wgSpecialRefactorVersion',
+		'wgUniwikiFormatChangesObject',
+		'wgGenericEditPageClass', 'wgSwitchMode',
+		'wgWatchersAddCache',
+		'wgWikiArticleFeedsParser', 'wgWikiFeedPresent',
 	);
 	foreach ( $exts as $ext ) {
 		if( !$ext->isInstalled() ) continue; // must exist
 		$file = file_get_contents( $ext->getFile() );
 		$name = $ext->getName();
 		$m = array();
-		preg_match_all( '/\$([ew]g[A-Za-z0-9]+)\s*\=/', $file, $m );
+		preg_match_all( '/\$((wg|eg|edg|sdg|sfg|smwg|srfg|abc|ce[^n]|ub|whoiswatching|wminc)[A-Za-z0-9_]+)\s*\=/', $file, $m );
 		$definedSettings = array_unique( $m[1] );
 		$allSettings = array_keys( $ext->getSettings() );
 

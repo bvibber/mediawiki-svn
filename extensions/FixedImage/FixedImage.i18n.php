@@ -81,6 +81,13 @@ $messages['bn'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> ট্যাগ চিত্র হিসেবে যোগ করো',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'fixedimage-desc' => 'Ouzhpennañ a ra ar valizenn <tt><nowiki><fundraising></nowiki></tt> evel ur skeudenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -100,6 +107,13 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'fixedimage-desc' => 'Přidává značku <tt>&lt;fundraising&gt;</tt> jako obrázek',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'fixedimage-desc' => "Yn ychwanegu'r tag <tt><nowiki><fundraising></nowiki></tt> ar ffurf llun",
 );
 
 /** German (Deutsch)
@@ -186,6 +200,13 @@ $messages['hi'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> टैग, एक चित्र के रुप में दर्शाता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'fixedimage-desc' => 'Nagadugang <tt><nowiki><fundraising></nowiki></tt> tag bilang imahe',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -270,6 +291,13 @@ $messages['li'] = array(
 	'fixedimage-desc' => 'Veug tag <tt><nowiki><fundraising></nowiki></tt> es aafbeilding',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'fixedimage-desc' => 'Додава ознака <tt><nowiki><fundraising></nowiki></tt> како слика',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -324,6 +352,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'fixedimage-desc' => 'Dodaje znacznik zbiórki funduszy <tt><nowiki><fundraising></nowiki></tt> jako obrazek',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'fixedimage-desc' => 'A gionta ël tag <tt><nowiki><fundraising></nowiki></tt> com na figura',
 );
 
 /** Pashto (پښتو)
@@ -382,11 +417,18 @@ $messages['sq'] = array(
 	'fixedimage-desc' => 'Vendos shenjë <tt><nowiki><fundraising></nowiki></tt> në figurë',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'fixedimage-desc' => 'Додаје ознаку <tt><nowiki><fundraising></nowiki></tt> као слику.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'fixedimage-desc' => 'Dodaje oznaku <tt><nowiki><fundraising></nowiki></tt> kao sliku.',
 );
 
 /** Sundanese (Basa Sunda)
@@ -454,10 +496,11 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'fixedimage-desc' => '加入 <tt><nowiki><fundraising></nowiki></tt> 标签作为一幅图像',
+	'fixedimage-desc' => '加入<tt><nowiki><fundraising></nowiki></tt>标签作为一幅图像',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

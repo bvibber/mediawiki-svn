@@ -28,6 +28,15 @@ $messages['qqq'] = array(
 {{Identical|Configuration}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'unstablepages-stable' => 'stabiele weergawe',
+	'unstablepages-config' => 'Voorkeure',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -63,6 +72,17 @@ $messages['be-tarask'] = array(
 	'unstablepages-config' => 'Канфігурацыя',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'unstablepages' => 'Pajennoù distabil',
+	'unstablepages-stable' => 'stumm stabil',
+	'unstablepages-text' => "A-is ez eus ur roll pajennoù kefluniet gant an dorn evit ma vefe diskwelet ar stumm brouilhed dre ziouer d'al lennerien.",
+	'unstablepages-none' => "N'eus pajenn ebet er roll-mañ",
+	'unstablepages-config' => 'Kefluniañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -72,6 +92,16 @@ $messages['bs'] = array(
 	'unstablepages-text' => 'Ispod je spisak stranica koje su ručno podešene da prikazuju nacrt verzije kao pretpostavljenu stranicu sadržaja za korisnike.',
 	'unstablepages-none' => 'Nema stranica na ovom spisku',
 	'unstablepages-config' => 'Konfiguracija',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'unstablepages' => 'Pàgines no estables',
+	'unstablepages-stable' => 'Versió estable',
+	'unstablepages-none' => 'No hi ha pàgines en aquesta llista',
+	'unstablepages-config' => 'Configuració',
 );
 
 /** Czech (Česky)
@@ -241,11 +271,12 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
-	'unstablepages' => 'Nestabilne stranice',
-	'unstablepages-stable' => 'stabilna inačica',
-	'unstablepages-text' => 'Ovo je popis stranica kojima je ručno postavljen nacrt kao glavni sadržaj stranice za gledatelje.',
+	'unstablepages' => 'Nevažeće stranice',
+	'unstablepages-stable' => 'važeća inačica',
+	'unstablepages-text' => 'Ovo je popis stranica kojima je ručno postavljena inačica u radu kao glavni sadržaj stranice za gledatelje.',
 	'unstablepages-none' => 'Nema stranica na ovom popisu',
 	'unstablepages-config' => 'Konfiguracija',
 );
@@ -446,6 +477,17 @@ $messages['pl'] = array(
 	'unstablepages-config' => 'Konfiguracja',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'unstablepages' => 'Pàgine anstàbij',
+	'unstablepages-stable' => 'vërsion stàbila',
+	'unstablepages-text' => 'Sota a-i é na lista ëd pàgine configurà manualment për mosté la vërsion sbòss com ël contnù ëd default ëd la pàgina për ij visitador.',
+	'unstablepages-none' => 'A-i é pa gnun-e pàgine an sta lista-sì',
+	'unstablepages-config' => 'Configurassion',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -528,12 +570,20 @@ $messages['sq'] = array(
 	'unstablepages-config' => 'Konfigurim',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'unstablepages-stable' => 'стабилна верзија',
 	'unstablepages-config' => 'Конфигурација',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'unstablepages-stable' => 'stabilna verzija',
+	'unstablepages-config' => 'Konfiguracija',
 );
 
 /** Swedish (Svenska)
@@ -548,9 +598,12 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
+	'unstablepages' => 'నిలకడ లేని పేజీలు',
+	'unstablepages-stable' => 'నిలకడైన కూర్పు',
 	'unstablepages-none' => 'ఈ జాబితాలో పేజీలేమీ లేవు',
 	'unstablepages-config' => 'స్వరూపణం',
 );

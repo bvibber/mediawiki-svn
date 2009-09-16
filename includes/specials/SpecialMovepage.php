@@ -17,7 +17,9 @@ function wfSpecialMovepage( $par = null ) {
 	}
 
 	$target = isset( $par ) ? $par : $wgRequest->getVal( 'target' );
-	$oldTitleText = $wgRequest->getText( 'wpOldTitle', $target );
+
+	// Yes, the use of getVal() and getText() is wanted, see bug 20365
+	$oldTitleText = $wgRequest->getVal( 'wpOldTitle', $target );
 	$newTitleText = $wgRequest->getText( 'wpNewTitle' );
 
 	$oldTitle = Title::newFromText( $oldTitleText );
@@ -87,7 +89,7 @@ class MovePageForm {
 	 *    OutputPage::wrapWikiMsg(). 
 	 */
 	function showForm( $err ) {
-		global $wgOut, $wgUser, $wgFixDoubleRedirects;
+		global $wgOut, $wgUser, $wgContLang, $wgFixDoubleRedirects;
 
 		$skin = $wgUser->getSkin();
 
@@ -200,7 +202,7 @@ class MovePageForm {
 					Xml::label( wfMsg( 'newtitle' ), 'wpNewTitle' ) .
 				"</td>
 				<td class='mw-input'>" .
-					Xml::input( 'wpNewTitle', 40, $newTitle->getPrefixedText(), array( 'type' => 'text', 'id' => 'wpNewTitle' ) ) .
+					Xml::input( 'wpNewTitle', 40, $wgContLang->recodeForEdit( $newTitle->getPrefixedText() ), array( 'type' => 'text', 'id' => 'wpNewTitle' ) ) .
 					Xml::hidden( 'wpOldTitle', $this->oldTitle->getPrefixedText() ) .
 				"</td>
 			</tr>
@@ -258,19 +260,23 @@ class MovePageForm {
 				<tr>
 					<td></td>
 					<td class=\"mw-input\">" .
-				Xml::checkLabel( wfMsgExt(
+				Xml::check(
+					'wpMovesubpages',
+					# Don't check the box if we only have talk subpages to
+					# move and we aren't moving the talk page.
+					$this->moveSubpages && ($this->oldTitle->hasSubpages() || $this->moveTalk),
+					array( 'id' => 'wpMovesubpages' )
+				) . '&nbsp;' .
+				Xml::tags( 'label', array( 'for' => 'wpMovesubpages' ),
+					wfMsgExt(
 						( $this->oldTitle->hasSubpages()
 							? 'move-subpages'
 							: 'move-talk-subpages' ),
-						array( 'parsemag' ),
+						array( 'parseinline' ),
 						$wgLang->formatNum( $wgMaximumMovedPages ),
 						# $2 to allow use of PLURAL in message.
 						$wgMaximumMovedPages
-					),
-					'wpMovesubpages', 'wpMovesubpages',
-					# Don't check the box if we only have talk subpages to
-					# move and we aren't moving the talk page.
-					$this->moveSubpages && ($this->oldTitle->hasSubpages() || $this->moveTalk)
+					)
 				) .
 					"</td>
 				</tr>"
@@ -351,6 +357,9 @@ class MovePageForm {
 			$createRedirect = true;
 		}
 
+		# Do the actual move.  First remember the old ID for later reference,
+		# so that we don't get the ID of the redirect.
+		$oldId = $ot->getArticleId();
 		$error = $ot->moveTo( $nt, true, $this->reason, $createRedirect );
 		if ( $error !== true ) {
 			# FIXME: show all the errors in a list, not just the first one
@@ -444,7 +453,7 @@ class MovePageForm {
 		$skin = $wgUser->getSkin();
 		$count = 1;
 		foreach( $extraPages as $oldSubpage ) {
-			if( $oldSubpage->getArticleId() == $ot->getArticleId() ) {
+			if( $oldSubpage->getArticleId() == $oldId ) {
 				# Already did this one.
 				continue;
 			}
@@ -487,6 +496,11 @@ class MovePageForm {
 					);
 					$newLink = $skin->linkKnown( $newSubpage );
 					$extraOutput []= wfMsgHtml( 'movepage-page-moved', $oldLink, $newLink );
+					++$count;
+					if( $count >= $wgMaximumMovedPages ) {
+						$extraOutput []= wfMsgExt( 'movepage-max-pages', array( 'parsemag', 'escape' ), $wgLang->formatNum( $wgMaximumMovedPages ) );
+						break;
+					}
 				} else {
 					$oldLink = $skin->linkKnown( $oldSubpage );
 					$newLink = $skin->link( $newSubpage );
@@ -494,11 +508,6 @@ class MovePageForm {
 				}
 			}
 
-			++$count;
-			if( $count >= $wgMaximumMovedPages ) {
-				$extraOutput []= wfMsgExt( 'movepage-max-pages', array( 'parsemag', 'escape' ), $wgLang->formatNum( $wgMaximumMovedPages ) );
-				break;
-			}
 		}
 
 		if( $extraOutput !== array() ) {

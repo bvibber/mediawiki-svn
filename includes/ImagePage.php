@@ -492,7 +492,7 @@ EOT
 				$nofile = 'filepage-nofile';
 			}
 			$wgOut->setRobotPolicy( 'noindex,nofollow' );
-			$wgOut->wrapWikiMsg( '<div id="mw-imagepage-nofile" class="plainlinks">$1</div>', $nofile );
+			$wgOut->wrapWikiMsg( "<div id='mw-imagepage-nofile' class='plainlinks'>\n$1\n</div>", $nofile );
 		}
 	}
 
@@ -551,7 +551,7 @@ EOT
 		$wgOut->addHTML( "<br /><ul>\n" );
 
 		# "Upload a new version of this file" link
-		if( UploadForm::userCanReUpload($wgUser,$this->img->name) ) {
+		if( UploadBase::userCanReUpload($wgUser,$this->img->name) ) {
 			$ulink = $sk->makeExternalLink( $this->getUploadUrl(), wfMsg( 'uploadnewversion-linktext' ) );
 			$wgOut->addHTML( "<li id=\"mw-imagepage-reupload-link\"><div class=\"plainlinks\">{$ulink}</div></li>\n" );
 		}
@@ -868,7 +868,6 @@ class ImageHistoryList {
 				if( $iscur || !$file->userCan(File::DELETED_RESTRICTED) ) {
 					$del = wfMsgHtml( 'rev-delundel' );
 				} else {
-					// If the file was hidden, link to sha-1
 					list( $ts, $name ) = explode( '!', $img, 2 );
 					$del = $this->skin->link( $revdel, wfMsgHtml( 'rev-delundel' ),
 						array(),
@@ -883,7 +882,7 @@ class ImageHistoryList {
 					if( $file->isDeleted(File::DELETED_RESTRICTED) )
 						$del = "<strong>$del</strong>";
 				}
-				$row .= "<tt style='white-space: nowrap;'><small>$del</small></tt>";
+				$row .= "<span class='mw-revdelundel-link'>$del</span>";
 			}
 			$row .= '</td>';
 		}

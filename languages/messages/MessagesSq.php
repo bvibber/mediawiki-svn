@@ -384,7 +384,6 @@ $messages = array(
 'aboutsite'            => 'Rreth {{SITENAME}}',
 'aboutpage'            => 'Project:Rreth',
 'copyright'            => 'Përmbajtja është në disponim nëpërmjet licencës $1.',
-'copyrightpagename'    => '{{SITENAME}} Të drejta autori',
 'copyrightpage'        => '{{ns:project}}:Të drejta autori',
 'currentevents'        => 'Ngjarjet e tanishme',
 'currentevents-url'    => 'Project:Ngjarjet e tanishme',
@@ -702,7 +701,8 @@ Në qoftë se jeni përdorues anonim dhe mendoni se komente kot janë drejtuar n
 'noarticletext'                    => 'Tani për tani nuk ka tekst në këtë faqe, mund ta [[Special:Search/{{PAGENAME}}|kërkoni]] këtë titull në faqe të tjera ose mund ta [{{fullurl:{{FULLPAGENAME}}|action=edit}} filloni] atë.',
 'userpage-userdoesnotexist'        => 'Llogaria e përdoruesit "$1" nuk është hapur. Ju lutem mendohuni mirë nëse dëshironi të krijoni/redaktoni këtë faqe.',
 'clearyourcache'                   => "'''Shënim:''' Pasi të ruani parapëlqimet ose pasi të kryeni ndryshimet, duhet të pastroni ''cache''-në e shfletuesit tuaj për të parë ndryshimet: për '''Mozilla/Safari/Konqueror''' shtypni ''Ctrl+Shift+Reload'' (ose ''ctrl+shift+r''), për '''IE''' ''Ctrl+f5'', '''Opera''': ''F5''.",
-'usercssjsyoucanpreview'           => "'''Këshillë:''' Përdorni butonin 'Trego parapamjen' për të provuar ndryshimet tuaja të faqeve css/js përpara se të kryeni ndryshimet.",
+'usercssyoucanpreview'             => "'''Këshillë:''' Përdorni butonin 'Trego parapamjen' për të provuar ndryshimet tuaja të faqeve css/js përpara se të kryeni ndryshimet.",
+'userjsyoucanpreview'              => "'''Këshillë:''' Përdorni butonin 'Trego parapamjen' për të provuar ndryshimet tuaja të faqeve css/js përpara se të kryeni ndryshimet.",
 'usercsspreview'                   => "'''Vini re! Kjo është vetëm një parapamje e faqes suaj CSS. Akoma nuk është ruajtur!'''",
 'userjspreview'                    => "'''Vini re se kjo është vetëm një provë ose parapamje e faqes tuaj JavaScript, ajo nuk është ruajtur akoma!'''",
 'userinvalidcssjstitle'            => "'''Kujdes:''' Nuk ka pamje të quajtur \"\$1\". Vini re se faqet .css dhe .js përdorin titull me gërma të vogla, p.sh. {{ns:user}}:Foo/monobook.css, jo {{ns:user}}:Foo/Monobook.css.",
@@ -832,9 +832,9 @@ Arsyeja e dhënë nga $3 është ''$2''.",
 'rev-deleted-user'            => '(përdoruesi u largua)',
 'rev-deleted-event'           => '(veprimi në regjistër është hequr)',
 'rev-deleted-text-permission' => 'Ky version i faqes është shlyer nga arkivi publik i faqes.
-Shiko tek [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} regjistri i grisjeve], ndoshta gjendet atje më shumë informacion rreth kësaj faqeje.',
+Shiko tek [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} regjistri i grisjeve], ndoshta gjendet atje më shumë informacion rreth kësaj faqeje.',
 'rev-deleted-text-view'       => 'Ky version i faqes është shlyer nga arkivi publik i faqes. Ju si Administrator mund ta shikoni akoma këtë. 
-Shiko tek [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} regjistri i grisjeve], ndoshta gjenden atje më shumë informacione rreth kësaj.',
+Shiko tek [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} regjistri i grisjeve], ndoshta gjenden atje më shumë informacione rreth kësaj.',
 'rev-delundel'                => 'trego/fshih',
 'revisiondelete'              => 'Shlyj/Reparo versionet',
 'revdelete-nooldid-title'     => 'Version i dëshiruar i pavfleshëm',
@@ -871,6 +871,7 @@ Shiko tek [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} regjistri i gri
 'revdelete-unhid'             => 'u tregua $1',
 'revdelete-log-message'       => '$1 për $2 {{PLURAL:$2|version|versione}}',
 'logdelete-log-message'       => '$1 për $2 {{PLURAL:$2|ngjarje|ngjarje}}',
+'revdelete-edit-reasonlist'   => 'Arsye grisjeje për redaktimet',
 
 # Suppression log
 'suppressionlog'     => 'Regjistri i ndalimeve',
@@ -989,7 +990,6 @@ Ju mund [[:\$1|të e krijoni këtë faqe]].",
 'searchall'                        => 'të gjitha',
 'showingresults'                   => "Më poshtë tregohen {{PLURAL:$1|'''1''' përfundim|'''$1''' përfundime}} duke filluar nga #'''$2'''.",
 'showingresultsnum'                => "Më poshtë tregohen {{PLURAL:$3|'''1''' përfundim|'''$3''' përfundime}} duke filluar nga #'''$2'''.",
-'showingresultstotal'              => "Duke treguar më poshtë {{PLURAL:$4|rezultatin '''$1''' nga '''$3'''|rezultatet '''$1 - $2''' nga '''$3'''}}",
 'nonefound'                        => '<strong>Shënim</strong>: Kërkimet pa rezultate ndodhin kur kërkoni për fjalë që rastisen shpesh si "ke" dhe "nga", të cilat nuk janë të futura në regjistër, ose duke dhënë më shumë se një fjalë (vetëm faqet që i kanë të gjitha ato fjalë do të tregohen si rezultate).',
 'powersearch'                      => 'Kërko',
 'powersearch-legend'               => 'Kërkim i përparuar',
@@ -1012,7 +1012,7 @@ Ju mund [[:\$1|të e krijoni këtë faqe]].",
 'mypreferences'             => 'Parapëlqimet',
 'prefs-edits'               => 'Numri i redaktimeve:',
 'prefsnologin'              => 'Nuk keni hyrë brenda',
-'prefsnologintext'          => 'Duhet të jeni <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} të kyçur]</span> për të caktuar parapëlqimet e përdoruesit.',
+'prefsnologintext'          => 'Duhet të jeni <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} të kyçur]</span> për të caktuar parapëlqimet e përdoruesit.',
 'changepassword'            => 'Ndërroni fjalëkalimin',
 'prefs-skin'                => 'Pamja',
 'skin-preview'              => 'Parapamje',
@@ -1150,6 +1150,8 @@ Ju mund [[:\$1|të e krijoni këtë faqe]].",
 'right-editprotected'    => 'Redakto faqet e mbrojtura (pa ndryshuar mbrojtjen)',
 'right-editinterface'    => 'Ndrysho parapamjen e përdoruesit',
 'right-editusercssjs'    => 'Redakto skedat CSS dhe JS të përdoruesve tjerë',
+'right-editusercss'      => 'Redakto skedat CSS të përdoruesve tjerë',
+'right-edituserjs'       => 'Redakto skedat JS të përdoruesve tjerë',
 'right-noratelimit'      => 'Mos u prek nga kufizimet e vlerësimit',
 'right-import'           => 'Importo faqe nga wiki tjera',
 'right-unwatchedpages'   => 'Shiko listën e faqeve të pa vëzhguara',
@@ -1338,6 +1340,7 @@ Ju lutem kontrolloni nëse faqja është në rrjet, prisni pak dhe provojeni pë
 Këshillohet që ta provoni kur të jetë më pak e zënë.',
 
 'license'            => 'Licencimi:',
+'license-header'     => 'Licencimi:',
 'nolicense'          => 'Asnjë nuk është zgjedhur',
 'license-nopreview'  => '(Nuk ka parapamje)',
 'upload_source_url'  => ' (URL e vlefshme, publikisht e përdorshme)',
@@ -1691,7 +1694,7 @@ Në qoftë se dëshironi të hiqni një faqe nga lista mbikqyrëse më vonë, sh
 'enotif_anon_editor'           => 'përdorues anonim $1',
 'enotif_body'                  => 'I/E dashur $WATCHINGUSERNAME,
 
-faqja $PAGETITLE tek {{SITENAME}} është $CHANGEDORCREATED më $PAGEEDITDATE nga $PAGEEDITOR, shikoni $PAGETITLE_URL për versionin e tanishëm.
+faqja $PAGETITLE tek {{SITENAME}} është $CHANGEDORCREATED më $PAGEEDITDATEANDTIME nga $PAGEEDITOR, shikoni $PAGETITLE_URL për versionin e tanishëm.
 
 $NEWPAGE
 
@@ -2068,13 +2071,11 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'export-templates'  => 'Përfshinë stampa',
 
 # Namespace 8 related
-'allmessages'         => 'Mesazhet e sistemit',
-'allmessagesname'     => 'Emri',
-'allmessagesdefault'  => 'Teksti i parazgjedhur',
-'allmessagescurrent'  => 'Teksti i tanishëshm',
-'allmessagestext'     => 'Kjo është një listë e të gjitha faqeve në hapësirën MediaWiki:',
-'allmessagesfilter'   => 'Veço me shprehje të rregullta:',
-'allmessagesmodified' => 'Trego vetëm të ndryshuarat',
+'allmessages'        => 'Mesazhet e sistemit',
+'allmessagesname'    => 'Emri',
+'allmessagesdefault' => 'Teksti i parazgjedhur',
+'allmessagescurrent' => 'Teksti i tanishëshm',
+'allmessagestext'    => 'Kjo është një listë e të gjitha faqeve në hapësirën MediaWiki:',
 
 # Thumbnails
 'thumbnail-more'  => 'Zmadho',

@@ -49,8 +49,8 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'inputbox-desc' => 'Laat die insluiting van vooraf gedefinieerde HTML-vorms moontlik',
 	'inputbox-error-no-type' => 'U het nie die tipe invoerveld gespesifiseer nie.',
-	'inputbox-error-bad-type' => 'Tipe invoerveld "$1" nie herken nie.
-Gebruik "create", "comment", "search" of "search2".',
+	'inputbox-error-bad-type' => 'Tipe invoerveld is "$1" nie herken nie.
+Gebruik "create", "comment", "search", "search2" of "fulltext".',
 	'tryexact' => 'Soek presiese ooreenkoms',
 	'searchfulltext' => 'Deursoek volledige teks',
 	'createarticle' => 'Skep bladsy',
@@ -223,9 +223,9 @@ $messages['br'] = array(
 	'inputbox-desc' => 'Aotren a ra degas furmskridoù HTML raktermenet.',
 	'inputbox-error-no-type' => "N'eo ket bet spisaet ganeoc'h ar seurt boest enmont da vezañ krouet",
 	'inputbox-error-bad-type' => 'N\'eo ket anavaezet ar seurt boest enmont "$1".
-Spisait "create", "comment", "search" pe "search2".',
+Spisait "create", "comment", "search" pe "search2" pe "fulltext".',
 	'tryexact' => 'Klask ma klotfe rik',
-	'searchfulltext' => 'Klask an destenn a-bezh',
+	'searchfulltext' => 'Klask en destenn a-bezh',
 	'createarticle' => 'Krouiñ ar pennad',
 );
 
@@ -297,7 +297,7 @@ Uveďte jednu z možností: „create“, „comment“, „search“, „search
 	'createarticle' => 'Vytvořit článek',
 );
 
-/** Chuvash (Чăвашла) */
+/** Chuvash (Чӑвашла) */
 $messages['cv'] = array(
 	'createarticle' => 'Çĕнĕ статья çыр',
 );
@@ -421,8 +421,10 @@ Por favor, especifica «create», «comment», «search» «search2» o "fulltex
 /** Estonian (Eesti)
  * @author Avjoska
  * @author Jaan513
+ * @author Pikne
  */
 $messages['et'] = array(
+	'inputbox-desc' => 'Lubab kaasata eelmääratletud HTML-vormid.',
 	'tryexact' => 'Proovi täpset vastet',
 	'searchfulltext' => 'Otsi täisteksti',
 	'createarticle' => 'Alusta lehekülge',
@@ -675,13 +677,15 @@ $messages['ht'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author KossuthRad
  * @author Tgr
  */
 $messages['hu'] = array(
 	'inputbox-desc' => 'Lehetővé teszi előre megadott HTML-űrlapok beillesztését',
 	'inputbox-error-no-type' => 'Nem adtad meg, hogy milyen típusú beviteli mezőt akarsz készíteni.',
-	'inputbox-error-bad-type' => '„$1” típusú beviteli mező nem ismert. „create”, „comment”, „search” vagy „search2” egyikét add meg.',
+	'inputbox-error-bad-type' => '„$1” típusú beviteli mező nem ismert.
+A „create”, „comment”, „search”, „search2” vagy „fulltext” egyikét add meg.',
 	'tryexact' => 'Ugrás a szócikkre',
 	'searchfulltext' => 'Keresés a teljes szövegben',
 	'createarticle' => 'Szócikk létrehozása',
@@ -779,12 +783,13 @@ $messages['jut'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'inputbox-desc' => 'Ngidinaké nganggo formulir HTML sing wis ditemtokaké',
 	'inputbox-error-no-type' => 'Panjenengan durung nemtokaké tipe kothak input sing arep digawé.',
-	'inputbox-error-bad-type' => 'Tipe kothak input "$1" ora ditepungi.
-Tulung nganggoa "create", "comment", "search" utawa "search2".',
+	'inputbox-error-bad-type' => 'Tipe kothak input "$1" ora dikenal.
+Supaya migunakaké "create", "comment", "search", "search2", utawa "fulltext".',
 	'tryexact' => 'Cobanen pancocogan èksak',
 	'searchfulltext' => 'Golèk ing tèks jangkep',
 	'createarticle' => 'Damel artikel',
@@ -895,6 +900,8 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'inputbox-desc' => "Erlaabt d'Afüge vu viirdefinéierten HTML-Formulairen",
 	'inputbox-error-no-type' => 'Dir hutt den Typ vu Këscht fir eppes anzeginn net uginn.',
+	'inputbox-error-bad-type' => 'Këscht fir anzeginn vum Typ "$1" net erkannt.
+Gitt w.e.g. "create", "comment", "search", "search2" oder "fulltext" un.',
 	'tryexact' => 'Versicht et matt der preziser Sich:',
 	'searchfulltext' => 'Am ganzen Text sichen',
 	'createarticle' => 'Säit uleeën',
@@ -972,6 +979,7 @@ $messages['lzh'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  * @author Misos
  */
@@ -982,7 +990,7 @@ $messages['mk'] = array(
 Наведете еден од следниве "create", "comment", "search", "search2" или "fulltext".',
 	'tryexact' => 'Обиди се точно',
 	'searchfulltext' => 'Барај низ целиот текст',
-	'createarticle' => 'Создади страница',
+	'createarticle' => 'Создај страница',
 );
 
 /** Malayalam (മലയാളം)
@@ -1033,6 +1041,13 @@ $messages['mt'] = array(
 	'tryexact' => 'Fittex korrispondenza eżatta',
 	'searchfulltext' => 'Fittex fit-test',
 	'createarticle' => 'Oħloq paġna',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'createarticle' => 'Шкамс лопа',
 );
 
 /** Mazanderani (مَزِروني)
@@ -1175,10 +1190,13 @@ Należy wybrać „create”, „comment”, „search”, „search2” or „f
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'inputbox-desc' => "A përmëtt l'anseriment ëd forme HTML predefinìe",
 	'inputbox-error-no-type' => "A l'ha nen dit che sòrt ëd quàder ëd caria dat ch'a debia fesse.",
-	'inputbox-error-bad-type' => 'La sòrt ëd quàder "$1" a l\'é nen conossùa. Për piasì, ch\'a sërna antra "create", "comment", "search" ò pura "search2".',
+	'inputbox-error-bad-type' => 'La sòrt ëd quàder "$1" a l\'é nen conossùa. 
+Për piasì, ch\'a sërna antra "create", "comment", "search", "search2" o "fulltext".',
 	'tryexact' => 'Sërca che a sia pròpe parej',
 	'searchfulltext' => 'Sërca an tut ël test',
 	'createarticle' => "Crea n'artìcol",
@@ -1364,7 +1382,7 @@ $messages['sq'] = array(
 	'createarticle' => 'Krijo artikull',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Михајло Анђелковић
  */
@@ -1378,8 +1396,14 @@ $messages['sr-ec'] = array(
 	'createarticle' => 'Направи чланак',
 );
 
-/** latinica (latinica) */
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
+	'inputbox-desc' => 'Omogući uključivanje prethodno definisanih HTML formi.',
+	'inputbox-error-no-type' => 'Nisi odredio tip unosne kutije da bi je napravio.',
+	'inputbox-error-bad-type' => 'Tip "$1" kutijice za unos podataka je nepoznat.
+Molimo vas da ga promenite na "create", "comment", "search", "search2" ili "fulltext".',
 	'tryexact' => 'Pokušaj tačno',
 	'searchfulltext' => 'Pretraži ceo tekst',
 	'createarticle' => 'Napravi članak',
@@ -1438,11 +1462,14 @@ $messages['szl'] = array(
 
 /** Telugu (తెలుగు)
  * @author Chaduvari
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'inputbox-desc' => 'ముందే నిర్వచించబడిన HTML ఫారములను చేర్చనివ్వు',
 	'inputbox-error-no-type' => 'ఏ రకమైన ఇన్&zwnj;పుట్ పెట్టెని తయారుచేయాలో మీరు చెప్పలేదు.',
+	'inputbox-error-bad-type' => 'ప్రవేశికము పెట్టె యొక్క బాపతు "$1"ను గుర్తించలేదు .
+దయచేసి "create", "comment", "search", "search2" లేదా "fulltext" లను పేర్కొనండి.',
 	'tryexact' => 'ఖచ్చితమైన పోలిక కొరకు ప్రయత్నించు',
 	'searchfulltext' => 'పూర్తి పాఠ్యంలో వెతుకు',
 	'createarticle' => 'వ్యాసాన్ని సృష్టించు',

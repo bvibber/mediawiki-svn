@@ -34,8 +34,8 @@
  * If you forget, or give an unsupported value, the extension spits out
  * some help text and a list of all supported languages.
  *
- * The extension has been tested with GeSHi 1.0.8 and MediaWiki 1.14a
- * as of 2008-09-28.
+ * The extension has been tested with GeSHi 1.0.8.3 and MediaWiki 1.15.1
+ * as of 2009-08-05
  */
 
 if( !defined( 'MEDIAWIKI' ) )
@@ -55,18 +55,14 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SyntaxHighlight_GeSHi'] = $dir . 'SyntaxHighlight_GeSHi.i18n.php';
 $wgAutoloadClasses['SyntaxHighlight_GeSHi'] = $dir . 'SyntaxHighlight_GeSHi.class.php';
 $wgHooks['ShowRawCssJs'][] = 'SyntaxHighlight_GeSHi::viewHook';
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efSyntaxHighlight_GeSHiSetup';
-} else {
-	$wgExtensionFunctions[] = 'efSyntaxHighlight_GeSHiSetup';
-}
+$wgHooks['SpecialVersionExtensionTypes'][] = 'SyntaxHighlight_GeSHi::hSpecialVersion_GeSHi';
+$wgHooks['ParserFirstCallInit'][] = 'efSyntaxHighlight_GeSHiSetup';
 
 /**
  * Register parser hook
  */
-function efSyntaxHighlight_GeSHiSetup() {
-	global $wgParser;
-	$wgParser->setHook( 'source', array( 'SyntaxHighlight_GeSHi', 'parserHook' ) );
-	$wgParser->setHook( 'syntaxhighlight', array( 'SyntaxHighlight_GeSHi', 'parserHook' ) );
+function efSyntaxHighlight_GeSHiSetup( &$parser ) {
+	$parser->setHook( 'source', array( 'SyntaxHighlight_GeSHi', 'parserHook' ) );
+	$parser->setHook( 'syntaxhighlight', array( 'SyntaxHighlight_GeSHi', 'parserHook' ) );
 	return true;
 }

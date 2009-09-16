@@ -19,13 +19,6 @@ $messages['qqq'] = array(
 	'wikihiero-desc' => 'Extension description displayed on [[Special:Version]]',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Jonny84
- */
-$messages['sli'] = array(
-	'wikihiero-desc' => 'Fügt doas <tt>&lt;hiero&gt;</tt>-Tag zur Formatierung vo Hieroglyphen hinzu',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -160,6 +153,13 @@ $messages['es'] = array(
 	'wikihiero-desc' => 'Añade elemento <tt>&lt;hiero&gt;</tt> para mostrar un jeroglífico',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'wikihiero-desc' => 'Lisab hieroglüüfide kuvamiseks <tt>&lt;hiero&gt;</tt>-märgendi.',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -196,6 +196,13 @@ $messages['frp'] = array(
 	'wikihiero-desc' => 'Apond la balisa <tt>&lt;hiero&gt;</tt> por fâre vêre los hièroglifos.',
 );
 
+/** Western Frisian (Frysk)
+ * @author SK-luuut
+ */
+$messages['fy'] = array(
+	'wikihiero-desc' => 'Foegt mark <tt>&lt;hiero&gt;</tt> ta foar hiëroglyfwerjefte.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -222,6 +229,13 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'wikihiero-desc' => 'हाइरोग्लिफ दर्शाने के लिये <tt>&lt;hiero&gt;</tt> टैग देता हैं',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'wikihiero-desc' => 'Nagadugang <tt>&lt;hiero&gt;</tt> tag to para makit-an ang hayroglifs',
 );
 
 /** Croatian (Hrvatski)
@@ -289,6 +303,13 @@ $messages['jv'] = array(
 	'wikihiero-desc' => 'Nambahaké tag <tt>&lt;hiero&gt;</tt> kanggo nuduhaké hieroglif',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'wikihiero-desc' => 'ჰმატებს თეგ <tt>&lt;hiero&gt;</tt> იეროგიფების საჩვენებლად',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -332,6 +353,13 @@ $messages['lt'] = array(
 	'wikihiero-desc' => 'Prideda <tt>&lt;hiero&gt;</tt> gaires rodyti hieroglifus',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'wikihiero-desc' => 'Додава ознака <tt>&lt;hiero&gt;</tt> за прикажување на хиероглифи',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */
@@ -351,6 +379,13 @@ $messages['ms'] = array(
  */
 $messages['nds'] = array(
 	'wikihiero-desc' => 'Föögt dat <tt>&lt;hiero&gt;</tt>-Tag för dat Formateren vun Hieroglyphen to',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikihiero-desc' => "'t Voeg de tekse <tt>&lt;hiero&gt;</tt> toe veur de weergave van hiërogliefen",
 );
 
 /** Dutch (Nederlands)
@@ -388,6 +423,13 @@ $messages['pl'] = array(
 	'wikihiero-desc' => 'Dodaje znacznik <tt>&lt;hiero&gt;</tt> umożliwiający wyświetlanie hieroglifów',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'wikihiero-desc' => 'A gionta ël tag <tt>&lt;hiero&gt;</tt> për visualisé dij geroglif',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -400,6 +442,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'wikihiero-desc' => 'Adiciona a marca <tt>&lt;hiero&gt;</tt> para exibir hieróglifos',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikihiero-desc' => '<tt>&lt;hiero&gt;</tt> unanchachata yapan hirulliphikuta rikuchinapaq',
 );
 
 /** Romanian (Română)
@@ -444,6 +493,13 @@ $messages['sk'] = array(
 	'wikihiero-desc' => 'Pridáva značku <tt>&lt;hiero&gt;</tt> na zobrazovanie hieroglyfov',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'wikihiero-desc' => 'Fügt doas <tt>&lt;hiero&gt;</tt>-Tag zur Formatierung vo Hieroglyphen hinzu',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */
@@ -451,11 +507,18 @@ $messages['sq'] = array(
 	'wikihiero-desc' => 'Vendosë kodin <tt>&lt;hiero&gt;</tt> për të shfaqur hieroglifë',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'wikihiero-desc' => 'Додаје <tt>&lt;hiero&gt;</tt> ознаку за приказ хијероглифа.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'wikihiero-desc' => 'Dodaje <tt>&lt;hiero&gt;</tt> oznaku za prikaz hijeroglifa.',
 );
 
 /** Seeltersk (Seeltersk)

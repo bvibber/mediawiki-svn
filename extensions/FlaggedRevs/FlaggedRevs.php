@@ -54,10 +54,6 @@ if( !defined('FR_QUALITY') )
 if( !defined('FR_PRISTINE') )
 	define('FR_PRISTINE',2);
 
-# Number of recent reviews to be a decent sample size
-if( !defined('READER_FEEDBACK_SIZE') )
-	define('READER_FEEDBACK_SIZE',15);
-
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Flagged Revisions',
@@ -114,23 +110,6 @@ $wgReviewChangesAfterEdit = true;
 $wgFlaggedRevsAutoReview = 1;
 # Auto-review new pages with the minimal level?
 $wgFlaggedRevsAutoReviewNew = true;
-
-# We may have templates that do not have stable version. Given situational
-# inclusion of templates (such as parser functions that select template
-# X or Y depending), there may also be no revision ID for each template
-# pointed to by the metadata of how the article was when it was reviewed.
-# An example would be an article that selects a template based on time.
-# The template to be selected will change, and the metadata only points
-# to the reviewed revision ID of the old template. In such cases, we can s
-# select the current (unreviewed) revision.
-$wgUseCurrentTemplates = true;
-
-# We may have file pages that do not have stable version. Given situational
-# inclusion of templates/files (such as a random featured image template), 
-# there may also be no sha-1/time for each file pointed to by the metadata 
-# of how the article was when it was reviewed. In such cases, we can select 
-# the current (unreviewed) revision.
-$wgUseCurrentImages = true;
 
 # When setting up new dimensions or levels, you will need to add some
 # MediaWiki messages for the UI to show properly; any sysop can do this.
@@ -203,6 +182,10 @@ $wgGroupPermissions['autoconfirmed']['autopatrol'] = true;
 # Implicit autoreview group
 $wgGroupPermissions['autoreview']['autoreview'] = true;
 
+# Bots are granted autoreview via hooks, mark in rights 
+# array so that it shows up in sp:ListGroupRights...
+$wgGroupPermissions['bot']['autoreview'] = true;
+
 # Define when users get automatically promoted to Editors. Set as false to disable.
 # 'spacing' and 'benchmarks' require edits to be spread out. Users must have X (benchmark)
 # edits Y (spacing) days apart.
@@ -218,12 +201,30 @@ $wgFlaggedRevsAutopromote = array(
 	'totalCheckedEdits'   => 200, # ...Edits before the stable version of pages
 	'uniqueContentPages'  => 12, # $wgContentNamespaces unique pages edited
 	'editComments'        => 50, # how many edit comments used?
-	'email'	              => false, # user must be emailconfirmed?
 	'userpageBytes'       => 0, # userpage is needed? with what min size?
 	'uniqueIPAddress'     => false, # If $wgPutIPinRC is true, users sharing IPs won't be promoted
 	'neverBlocked'        => true, # Can users that were blocked be promoted?
 	'maxRevertedEdits'    => 5, # Max edits the user could have had rolled back?
 );
+
+# Define when users get to have their own edits auto-reviewed
+# This can be used for newer, semi-trusted users to improve workflow.
+$wgFlaggedRevsAutoconfirm = false;
+/* (example usage)
+$wgFlaggedRevsAutoconfirm = array(
+	'days'	              => 30, # days since registration
+	'edits'	              => 50, # total edit count
+	'spacing'	          => 3, # spacing of edit intervals
+	'benchmarks'          => 7, # how many edit intervals are needed?
+	// Either totalContentEdits reqs OR totalCheckedEdits requirements needed
+	'totalContentEdits'   => 150, # $wgContentNamespaces edits OR...
+	'totalCheckedEdits'   => 50, # ...Edits before the stable version of pages
+	'uniqueContentPages'  => 8, # $wgContentNamespaces unique pages edited
+	'editComments'        => 20, # how many edit comments used?
+	'email'	              => false, # user must be emailconfirmed?
+	'neverBlocked'        => true, # Can users that were blocked be promoted?
+);
+*/
 
 # Special:Userrights settings
 ## Basic rights for Sysops
@@ -246,27 +247,24 @@ $wgFlaggedRevsVisible = array();
 # If $wgFlaggedRevsVisible is populated, it is applied to talk pages too
 $wgFlaggedRevsTalkVisible = true;
 
-# Users that can use the feedback form.
-$wgGroupPermissions['*']['feedback'] = true;
-
-# Allow readers to rate pages in these namespaces
-$wgFeedbackNamespaces = array();
-#$wgFeedbackNamespaces = array( NS_MAIN );
-# Reader feedback tags, positive and negative. [a-zA-Z] tag names only.
-# Each tag has five levels, which 3 being average. The tag names are
-# mapped to their weight. This is used to determine the "worst"/"best" pages.
-$wgFlaggedRevsFeedbackTags = array(
-	'reliability'  => 3,
-	'completeness' => 2,
-	'npov'         => 2,
-	'presentation' => 1
-);
-# How many seconds back should the average rating for a page be based on?
-$wgFlaggedRevsFeedbackAge = 7 * 24 * 3600;
-# How long before stats page is updated?
 $wgFlaggedRevsStatsAge = 2 * 3600; // 2 hours
 
-$wgFilterLogTypes['review'] = true;
+# We may have templates that do not have stable version. Given situational
+# inclusion of templates (such as parser functions that select template
+# X or Y depending), there may also be no revision ID for each template
+# pointed to by the metadata of how the article was when it was reviewed.
+# An example would be an article that selects a template based on time.
+# The template to be selected will change, and the metadata only points
+# to the reviewed revision ID of the old template. In such cases, we can s
+# select the current (unreviewed) revision.
+$wgUseCurrentTemplates = true;
+
+# We may have file pages that do not have stable version. Given situational
+# inclusion of templates/files (such as a random featured image template), 
+# there may also be no sha-1/time for each file pointed to by the metadata 
+# of how the article was when it was reviewed. In such cases, we can select 
+# the current (unreviewed) revision.
+$wgUseCurrentImages = true;
 
 # End of configuration variables.
 #########
@@ -275,14 +273,13 @@ $wgFilterLogTypes['review'] = true;
 $wgAvailableRights[] = 'review';
 $wgAvailableRights[] = 'validate'; # Let some users set higher settings
 $wgAvailableRights[] = 'autoreview';
-# FIXME: patrolmarks is not used
 $wgAvailableRights[] = 'patrolmarks';
 $wgAvailableRights[] = 'unreviewedpages';
 $wgAvailableRights[] = 'movestable';
 $wgAvailableRights[] = 'stablesettings';
 
 # Bump this number every time you change flaggedrevs.css/flaggedrevs.js
-$wgFlaggedRevStyleVersion = 59;
+$wgFlaggedRevStyleVersion = 60;
 
 $wgExtensionFunctions[] = 'efLoadFlaggedRevs';
 
@@ -312,8 +309,6 @@ $wgAutoloadClasses['FlaggedRevision'] = $dir . 'FlaggedRevision.php';
 
 # Load review UI
 $wgAutoloadClasses['RevisionReview'] = $dir . 'specialpages/RevisionReview_body.php';
-# Load reader feedback UI
-$wgAutoloadClasses['ReaderFeedback'] = $dir . 'specialpages/ReaderFeedback_body.php';
 
 # Load stableversions UI
 $wgAutoloadClasses['StableVersions'] = $dir . 'specialpages/StableVersions_body.php';
@@ -321,9 +316,6 @@ $wgExtensionMessagesFiles['StableVersions'] = $langDir . 'StableVersions.i18n.ph
 # Stable version config
 $wgAutoloadClasses['Stabilization'] = $dir . 'specialpages/Stabilization_body.php';
 $wgExtensionMessagesFiles['Stabilization'] = $langDir . 'Stabilization.i18n.php';
-# Page rating history
-$wgAutoloadClasses['RatingHistory'] = $dir . 'specialpages/RatingHistory_body.php';
-$wgExtensionMessagesFiles['RatingHistory'] = $langDir . 'RatingHistory.i18n.php';
 # Load unreviewed pages list
 $wgAutoloadClasses['UnreviewedPages'] = $dir . 'specialpages/UnreviewedPages_body.php';
 $wgExtensionMessagesFiles['UnreviewedPages'] = $langDir . 'UnreviewedPages.i18n.php';
@@ -332,6 +324,10 @@ $wgSpecialPageGroups['UnreviewedPages'] = 'quality';
 $wgAutoloadClasses['OldReviewedPages'] = $dir . 'specialpages/OldReviewedPages_body.php';
 $wgExtensionMessagesFiles['OldReviewedPages'] = $langDir . 'OldReviewedPages.i18n.php';
 $wgSpecialPageGroups['OldReviewedPages'] = 'quality';
+# Load "suspicious changes" pages list
+$wgAutoloadClasses['ProblemChanges'] = $dir . 'specialpages/ProblemChanges_body.php';
+$wgExtensionMessagesFiles['ProblemChanges'] = $langDir . 'ProblemChanges.i18n.php';
+$wgSpecialPageGroups['ProblemChanges'] = 'quality';
 # Load reviewed pages list
 $wgAutoloadClasses['ReviewedPages'] = $dir . 'specialpages/ReviewedPages_body.php';
 $wgExtensionMessagesFiles['ReviewedPages'] = $langDir . 'ReviewedPages.i18n.php';
@@ -348,35 +344,37 @@ $wgSpecialPageGroups['UnstablePages'] = 'quality';
 $wgAutoloadClasses['QualityOversight'] = $dir . 'specialpages/QualityOversight_body.php';
 $wgExtensionMessagesFiles['QualityOversight'] = $langDir . 'QualityOversight.i18n.php';
 $wgSpecialPageGroups['QualityOversight'] = 'quality';
-# To list ill-recieved pages
-$wgAutoloadClasses['ProblemPages'] = $dir . 'specialpages/ProblemPages_body.php';
-$wgExtensionMessagesFiles['ProblemPages'] = $langDir . 'ProblemPages.i18n.php';
-$wgSpecialPageGroups['ProblemPages'] = 'quality';
-# To list well-recieved pages
-$wgAutoloadClasses['LikedPages'] = $dir . 'specialpages/LikedPages_body.php';
-$wgExtensionMessagesFiles['LikedPages'] = $langDir . 'LikedPages.i18n.php';
-$wgSpecialPageGroups['LikedPages'] = 'quality';
 # Statistics
 $wgAutoloadClasses['ValidationStatistics'] = $dir . 'specialpages/ValidationStatistics_body.php';
 $wgExtensionMessagesFiles['ValidationStatistics'] = $langDir . 'ValidationStatistics.i18n.php';
 $wgSpecialPageGroups['ValidationStatistics'] = 'quality';
 # API Modules
 $wgAutoloadClasses['FlaggedRevsApiHooks'] = $dir.'api/FlaggedRevsApi.hooks.php';
+# OldReviewedPages for API
 $wgAutoloadClasses['ApiQueryOldreviewedpages'] = $dir . 'api/ApiQueryOldreviewedpages.php';
 $wgAPIListModules['oldreviewedpages'] = 'ApiQueryOldreviewedpages';
+# UnreviewedPages for API
+$wgAutoloadClasses['ApiQueryUnreviewedpages'] = $dir . 'api/ApiQueryUnreviewedpages.php';
+$wgAPIListModules['unreviewedpages'] = 'ApiQueryUnreviewedpages';
+# ReviewedPages for API
+$wgAutoloadClasses['ApiQueryReviewedpages'] = $dir . 'api/ApiQueryReviewedpages.php';
+$wgAPIListModules['reviewedpages'] = 'ApiQueryReviewedpages';
+# Flag meta-data for pages
 $wgAutoloadClasses['ApiQueryFlagged'] = $dir . 'api/ApiQueryFlagged.php';
 $wgAPIPropModules['flagged'] = 'ApiQueryFlagged';
+
 $wgAutoloadClasses['ApiReview'] = $dir.'api/ApiReview.php';
 $wgAPIModules['review'] = 'ApiReview';
 
 ######### Hook attachments #########
 # Autopromote Editors
-$wgHooks['ArticleSaveComplete'][] = 'FlaggedRevsHooks::autoPromoteUser';
+$wgHooks['ArticleSaveComplete'][] = 'FlaggedRevsHooks::maybeMakeEditor';
 # Adds table link references to include ones from the stable version
 $wgHooks['LinksUpdate'][] = 'FlaggedRevsHooks::extraLinksUpdate';
 # Clear dead config rows
 $wgHooks['ArticleDeleteComplete'][] = 'FlaggedRevsHooks::onArticleDelete';
 $wgHooks['ArticleRevisionVisiblitySet'][] = 'FlaggedRevsHooks::onRevisionDelete';
+$wgHooks['TitleMoveComplete'][] = 'FlaggedRevsHooks::onTitleMoveComplete';
 # Check on undelete/merge for changes to stable version
 $wgHooks['ArticleMergeComplete'][] = 'FlaggedRevsHooks::updateFromMerge';
 $wgHooks['ArticleRevisionUndeleted'][] = 'FlaggedRevsHooks::updateFromRestore';
@@ -391,19 +389,14 @@ $wgHooks['OutputPageParserOutput'][] = 'FlaggedRevsHooks::outputInjectTimestamps
 # Auto-reviewing
 $wgHooks['RecentChange_save'][] = 'FlaggedRevsHooks::autoMarkPatrolled';
 $wgHooks['NewRevisionFromEditComplete'][] = 'FlaggedRevsHooks::maybeMakeEditReviewed';
-# Disallow moves of stable pages
-$wgHooks['userCan'][] = 'FlaggedRevsHooks::userCanMove';
-# Determine what pages can be patrolled
-$wgHooks['userCan'][] = 'FlaggedRevsHooks::userCanPatrol';
+# Determine what pages can be moved and patrolled
+$wgHooks['userCan'][] = 'FlaggedRevsHooks::onUserCan';
 # Log parameter
 $wgHooks['LogLine'][] = 'FlaggedRevsHooks::reviewLogLine';
 # Disable auto-promotion for demoted users
 $wgHooks['UserRights'][] = 'FlaggedRevsHooks::recordDemote';
 # Local user account preference
 $wgHooks['GetPreferences'][] = 'FlaggedRevsHooks::onGetPreferences';
-# Rating link
-$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'FlaggedRevsHooks::addRatingLink';
-$wgHooks['SkinTemplateToolboxEnd'][] = 'FlaggedRevsHooks::ratingToolboxLink';
 # Show unreviewed pages links
 $wgHooks['CategoryPageView'][] = 'FlaggedRevsHooks::onCategoryPageView';
 # Backlog notice
@@ -414,9 +407,9 @@ $wgHooks['ArticleViewHeader'][] = 'FlaggedRevsHooks::onArticleViewHeader';
 $wgHooks['ImagePageFindFile'][] = 'FlaggedRevsHooks::imagePageFindFile';
 # Override redirect behavior...
 $wgHooks['InitializeArticleMaybeRedirect'][] = 'FlaggedRevsHooks::overrideRedirect';
-# Sets tabs and permalink
+# Set tabs and permalink
 $wgHooks['SkinTemplateTabs'][] = 'FlaggedRevsHooks::setActionTabs';
-# Sets navigation
+# Set navigation
 $wgHooks['SkinTemplateNavigation'][] = 'FlaggedRevsHooks::setNavigation';
 # Add tags to edit view
 $wgHooks['EditPage::showEditForm:initial'][] = 'FlaggedRevsHooks::addToEditView';
@@ -430,7 +423,7 @@ $wgHooks['ImagePageFileHistoryLine'][] = 'FlaggedRevsHooks::addToFileHistLine';
 # Mark items in RC
 $wgHooks['SpecialRecentChangesQuery'][] = 'FlaggedRevsHooks::addToRCQuery';
 $wgHooks['SpecialWatchlistQuery'][] = 'FlaggedRevsHooks::addToWatchlistQuery';
-$wgHooks['ChangesListInsertArticleLink'][] = 'FlaggedRevsHooks::addTochangeListLine';
+$wgHooks['ChangesListInsertArticleLink'][] = 'FlaggedRevsHooks::addToChangeListLine';
 # Mark items in user contribs
 $wgHooks['ContribsPager::getQueryInfo'][] = 'FlaggedRevsHooks::addToContribsQuery';
 $wgHooks['ContributionsLineEnding'][] = 'FlaggedRevsHooks::addToContribsLine';
@@ -500,30 +493,28 @@ function efLoadFlaggedRevs() {
  * Also sets $wgSpecialPages just to be consistent.
  */
 function efLoadFlaggedRevsSpecialPages( &$list ) {
-	global $wgSpecialPages, $wgFlaggedRevsNamespaces, $wgFeedbackNamespaces;
+	global $wgSpecialPages, $wgFlaggedRevsNamespaces, $wgFlaggedRevsOverride;
 	if( !empty($wgFlaggedRevsNamespaces) ) {
 		$list['RevisionReview'] = $wgSpecialPages['RevisionReview'] = 'RevisionReview';
 		$list['StableVersions'] = $wgSpecialPages['StableVersions'] = 'StableVersions';
 		$list['Stabilization'] = $wgSpecialPages['Stabilization'] = 'Stabilization';
 		$list['UnreviewedPages'] = $wgSpecialPages['UnreviewedPages'] = 'UnreviewedPages';
 		$list['OldReviewedPages'] = $wgSpecialPages['OldReviewedPages'] = 'OldReviewedPages';
+		$list['ProblemChanges'] = $wgSpecialPages['ProblemChanges'] = 'ProblemChanges';
 		$list['ReviewedPages'] = $wgSpecialPages['ReviewedPages'] = 'ReviewedPages';
-		$list['StablePages'] = $wgSpecialPages['StablePages'] = 'StablePages';
-		$list['UnstablePages'] = $wgSpecialPages['UnstablePages'] = 'UnstablePages';
 		$list['QualityOversight'] = $wgSpecialPages['QualityOversight'] = 'QualityOversight';
 		$list['ValidationStatistics'] = $wgSpecialPages['ValidationStatistics'] = 'ValidationStatistics';
-	}
-	if( !empty($wgFeedbackNamespaces) ) {
-		$list['ReaderFeedback'] = $wgSpecialPages['ReaderFeedback'] = 'ReaderFeedback';
-		$list['RatingHistory'] = $wgSpecialPages['RatingHistory'] = 'RatingHistory';
-		$list['ProblemPages'] = $wgSpecialPages['ProblemPages'] = 'ProblemPages';
-		$list['LikedPages'] = $wgSpecialPages['LikedPages'] = 'LikedPages';
+		if( !$wgFlaggedRevsOverride )
+			$list['StablePages'] = $wgSpecialPages['StablePages'] = 'StablePages';
+		else
+			$list['UnstablePages'] = $wgSpecialPages['UnstablePages'] = 'UnstablePages';
 	}
 	return true;
 }
 
 # Add review log
 $wgLogTypes[] = 'review';
+$wgFilterLogTypes['review'] = true;
 $wgLogNames['review'] = 'review-logpage';
 $wgLogHeaders['review'] = 'review-logpagetext';
 # Various actions are used for log filtering ...
@@ -544,12 +535,13 @@ $wgLogActions['stable/config'] = 'stable-logentry';
 $wgLogActions['stable/reset'] = 'stable-logentry2';
 
 # AJAX functions
-$wgAjaxExportList[] = 'ReaderFeedback::AjaxReview';
 $wgAjaxExportList[] = 'RevisionReview::AjaxReview';
 
 // Defaults for prefs
 $wgDefaultUserOptions['flaggedrevssimpleui'] = (int)$wgSimpleFlaggedRevsUI;
 $wgDefaultUserOptions['flaggedrevsstable'] = false;
+$wgDefaultUserOptions['flaggedrevseditdiffs'] = true;
+$wgDefaultUserOptions['flaggedrevsviewdiffs'] = false;
 
 # Cache update
 $wgSpecialPageCacheUpdates[] = 'efFlaggedRevsUnreviewedPagesUpdate';
@@ -578,11 +570,8 @@ function efFlaggedRevsSchemaUpdates() {
 		$wgExtNewTables[] = array( 'flaggedrevs_promote', "$base/archives/patch-flaggedrevs_promote.sql" );
 		$wgExtNewTables[] = array( 'flaggedpages', "$base/archives/patch-flaggedpages.sql" );
 		$wgExtNewFields[] = array( 'flaggedrevs', 'fr_img_name', "$base/archives/patch-fr_img_name.sql" );
-		$wgExtNewTables[] = array( 'reader_feedback', "$base/archives/patch-reader_feedback.sql" );
 		$wgExtNewTables[] = array( 'flaggedrevs_tracking', "$base/archives/patch-flaggedrevs_tracking.sql" );
 		$wgExtNewFields[] = array( 'flaggedpages', 'fp_pending_since', "$base/archives/patch-fp_pending_since.sql" );
-		$wgExtNewFields[] = array( 'reader_feedback', 'rfb_timestamp', "$base/archives/patch-rfb_timestamp.sql" );
-		$wgExtNewFields[] = array( 'reader_feedback', 'rfb_ratings', "$base/archives/patch-rfb_ratings.sql" );
 		$wgExtNewFields[] = array( 'flaggedpage_config', 'fpc_level', "$base/archives/patch-fpc_level.sql" );
 		$wgExtNewTables[] = array( 'flaggedpage_pending', "$base/archives/patch-flaggedpage_pending.sql" );
 	} elseif( $wgDBtype == 'postgres' ) {
@@ -592,7 +581,6 @@ function efFlaggedRevsSchemaUpdates() {
 		$wgExtNewTables[] = array( 'flaggedrevs_promote', "$base/postgres/patch-flaggedrevs_promote.sql" );
 		$wgExtNewTables[] = array( 'flaggedpages', "$base/postgres/patch-flaggedpages.sql" );
 		$wgExtNewIndexes[] = array('flaggedrevs', 'key_timestamp', "$base/postgres/patch-fr_img_name.sql" );
-		$wgExtNewTables[] = array( 'reader_feedback', "$base/postgres/patch-reader_feedback.sql" );
 		$wgExtNewTables[] = array( 'flaggedrevs_tracking', "$base/postgres/patch-flaggedrevs_tracking.sql" );
 		$wgExtNewIndexes[] = array('flaggedpages', 'fp_pending_since', "$base/postgres/patch-fp_pending_since.sql" );
 		$wgExtPGNewFields[] = array('flaggedpage_config', 'fpc_level', "TEXT NULL" );

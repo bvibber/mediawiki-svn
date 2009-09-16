@@ -286,7 +286,7 @@ class CheckUser extends SpecialPage
 		if( $lastEdit ) {
 			$lastEditDate = $wgLang->date( wfTimestamp(TS_MW,$lastEdit), true );
 			$lastEditTime = $wgLang->time( wfTimestamp(TS_MW,$lastEdit), true );
-			return wfMsgHtml( 'checkuser-nomatch-edits', $lastEditDate, $lastEditTime );
+			return wfMsgExt( 'checkuser-nomatch-edits', 'parse', $lastEditDate, $lastEditTime );
 		}
 		return wfMsgExt('checkuser-nomatch','parse');
 	}
@@ -1180,7 +1180,7 @@ class CheckUser extends SpecialPage
 				$user = User::newFromName( $target );
 				if ( $user && $user->getID() ) {
 					$searchConds = array( 
-						'cul_type' => 'userips',
+						'cul_type' => array('userips','useredits'),
 						'cul_target_id' => $user->getID(),
 					);
 				} else if ( $target ) {
@@ -1321,7 +1321,7 @@ class CheckUserLogPager extends ReverseChronologicalPager {
 
 		$user = $skin->userLink( $row->cul_user, $row->user_name );
 
-		if ( $row->cul_type == 'userips' ) {
+		if ( $row->cul_type == 'userips' || $row->cul_type == 'useredits' ) {
 			$target = $skin->userLink( $row->cul_target_id, $row->cul_target_text ) . 
 				$skin->userToolLinks( $row->cul_target_id, $row->cul_target_text );
 		} else {

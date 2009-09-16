@@ -1,9 +1,26 @@
 <?php
 
+/**
+ * An extension that adds an upload blacklist functionality
+ *
+ * @addtogroup Extensions
+ *
+ */
+
 if( !defined( 'MEDIAWIKI' ) )
 	die();
 if( !function_exists( 'sha1_file' ) )
 	die( "UploadBlacklist extension requires PHP 4.3.0 or higher." );
+
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'UploadBlacklist',
+	'description'    => 'Upload blacklist',
+	'descriptionmsg' => 'uploadblacklist-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:UploadBlacklist',
+);
+
+$wgExtensionMessagesFiles['UploadBlacklist'] = dirname( __FILE__ ) . '/UploadBlacklist.i18n.php';
 
 $ubUploadBlacklist = array();
 $wgHooks['UploadVerification'][] = 'ubVerifyHash';
@@ -20,18 +37,18 @@ $wgHooks['UploadVerification'][] = 'ubVerifyHash';
  */
 function ubVerifyHash( $saveName, $tempName, &$error ) {
 	$error = '';
-	
+
 	wfSuppressWarnings();
 	$hash = sha1_file( $tempName );
 	wfRestoreWarnings();
-	
+
 	if( $hash === false ) {
 		$error = "Failed to calculate file hash; may be missing or damaged.";
 		$error .= " Filename: " . htmlspecialchars( $tempName );
 		ubLog( 'ERROR', $hash, $saveName, $tempName );
 		return false;
 	}
-	
+
 	global $ubUploadBlacklist;
 	if( in_array( $hash, $ubUploadBlacklist ) ) {
 		$error = "File appears to be corrupt.";
@@ -60,5 +77,3 @@ function ubLog( $action, $hash, $saveName, $tempName ) {
 	$ts = wfTimestamp( TS_DB );
 	wfDebugLog( 'UploadBlacklist', "$ts $action [$hash] name:$saveName file:$tempName user:$user ip:$ip" );
 }
-
-?>

@@ -345,7 +345,6 @@ $messages = array(
 'aboutsite'            => 'Tungkol sa {{SITENAME}}',
 'aboutpage'            => 'Project:Patungkol',
 'copyright'            => 'Maaaring gamitin ang nilalaman sa ilalim ng $1.',
-'copyrightpagename'    => 'Karapatang-ari sa {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Mga karapatang-ari',
 'currentevents'        => 'Mga kasalukuyang kaganapan',
 'currentevents-url'    => 'Project:Mga kasalukuyang pangyayari',
@@ -701,12 +700,13 @@ Maaaring pagsaluhan ng ilang mga tagagamit ang ganyang adres ng IP.
 Kung isa kang hindi nagpapakilalang tagagamit at nakadaramang may mga walang saysay na puna/kumentong patungkol sa iyo, [[Special:UserLogin/signup|pakilikha ng isang kuwenta]] o [[Special:UserLogin|lumagda]] para maiwasan ang kalituhan o mapagkamalan ka bilang ibang hindi nakikilalang mga tagagamit sa hinaharap.",
 'noarticletext'                    => 'Kasalukuyang walang teksto sa loob ng pahinang ito.
 Maaari mong [[Special:Search/{{PAGENAME}}|hanapin ang pamagat ng pahinang ito]] sa loob iba pang mga pahina, 
-<span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} maghanap sa kaugnay na mga talaan],
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} maghanap sa kaugnay na mga talaan],
 o [{{fullurl:{{FULLPAGENAME}}|action=edit}} baguhin ang pahinang ito]</span>.',
 'userpage-userdoesnotexist'        => 'Hindi nakatala ang kuwenta ng tagagamit na "$1".
 Pakisuri kung ibig mong likhain/baguhin ang pahinang ito.',
 'clearyourcache'                   => "'''Tandaan:''' Pagkatapos magtala, dapat linisin mo ang ''cache'' ng iyong ''browser'' upang makita ang mga pagbabago: '''Mozilla:''' pindutin ang ''reload'' (o ''ctrl-r''), '''IE / Opera:''' ''ctrl-f5'', '''Safari:''' ''cmd-r'', '''Konqueror''' ''ctrl-r''.",
-'usercssjsyoucanpreview'           => "'''<i>Tip</i>:''' Bago itala, gamitin ang buton ng 'Paunang tingin' upang masubok ang bagong CSS/JS.",
+'usercssyoucanpreview'             => "'''<i>Tip</i>:''' Bago itala, gamitin ang buton ng 'Paunang tingin' upang masubok ang bagong CSS.",
+'userjsyoucanpreview'              => "'''<i>Tip</i>:''' Bago itala, gamitin ang buton ng 'Paunang tingin' upang masubok ang bagong JS.",
 'usercsspreview'                   => "'''Tandaan mong paunang tingin pa lamang ito ng iyong CSS na pantagagamit.'''
 '''Hindi pa ito nasasagip!'''",
 'userjspreview'                    => "'''Tandaang pagsubok/paunang tingin mo pa lang ito ng iyong JavaScript.'''
@@ -853,16 +853,16 @@ Subukang [[Special:Search|hanapin sa wiki]] para sa mga kaugnay na mga bagong pa
 'rev-deleted-user'            => '(tinanggal ang pangalan ng tagagamit)',
 'rev-deleted-event'           => '(tinanggal ang galaw sa talaan)',
 'rev-deleted-text-permission' => "'''Binura''' ang pagbabago ng pahinang ito.
-Maaaring may mga detalye sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
+Maaaring may mga detalye sa loob ng [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
 'rev-deleted-text-unhide'     => "'''Binura''' ang pagbabago ng pahinang ito.
-Maaaring may mga detalye sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].
+Maaaring may mga detalye sa loob ng [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} talaan ng pagbura].
 Bilang isang tagapangasiwa, maaari mo pa ring [$1 tingnan ang pagbabagong ito] kung nais mong magpatuloy.",
 'rev-deleted-text-view'       => "'''Binura''' ang pagbabago ng pahinang ito.
 Bilang isang tagapangasiwa, maaari mo itong makita;
-maaaring may mga detalye sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
-'rev-deleted-no-diff'         => "Hindi mo maaaring makita ang pagkakaibang ito dahil '''binura''' ang isa sa mga pagbabago.  Maaaring may mga detalye mula sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
+maaaring may mga detalye sa loob ng [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
+'rev-deleted-no-diff'         => "Hindi mo maaaring makita ang pagkakaibang ito dahil '''binura''' ang isa sa mga pagbabago.  Maaaring may mga detalye mula sa loob ng [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
 'rev-deleted-unhide-diff'     => "'''Binura''' ang isa sa mga pagbababago ng pagkakaibang ito.
-Maaaring may mga detalye sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].
+Maaaring may mga detalye sa loob ng [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} talaan ng pagbura].
 Bilang isang tagapangasiwa, maaari mo pa ring [$1 tingnan ang pagkakaiba] kung nais mong magpatuloy.",
 'rev-delundel'                => 'ipakita/itago',
 'revisiondelete'              => 'Burahin/ibalik ang mga pagbabago',
@@ -910,6 +910,7 @@ Pakitiyak kung ito ang nais mong gawin, na nauunawaan mo ang mga kahihinatnan, a
 'revdelete-unhid'             => 'pinalitaw $1',
 'revdelete-log-message'       => '$1 para sa $2 {{PLURAL:$2|pagbabago|mga pagbabago}}',
 'logdelete-log-message'       => '$1 para sa $2 {{PLURAL:$2|kaganapan|mga kaganapan}}',
+'revdelete-edit-reasonlist'   => 'Baguhin ang mga dahilan ng pagbura',
 
 # Suppression log
 'suppressionlog'     => 'Tala ng pagpipigil',
@@ -1060,7 +1061,6 @@ Maaari mong [[:\$1|likhain ang pahinang ito]].",
 'searchall'                        => 'lahat',
 'showingresults'                   => "Ipinapakita sa ibaba ang magpahanggang sa {{PLURAL:$1|'''1''' resultang|'''$1''' mga resultang}} nagsisimula sa #'''$2'''.",
 'showingresultsnum'                => "Ipinapakita sa ibaba ang {{PLURAL:$3|'''1''' resultang|'''$3''' mga resultang}} nagsisimula sa #'''$2'''.",
-'showingresultstotal'              => "Ipinapakita sa ibaba ang {{PLURAL:$4|resultang '''$1''' ng '''$3'''|mga resultang '''$1 - $2''' ng '''$3'''}}",
 'nonefound'                        => "'''Paunawa''': Ilang mga espasyo ng pangalan lamang ang hinahanap ayon sa likas na pagkakatakda.
 Subuking lagyan ng unlapi/paunang ''all:'' upang hanapin ang lahat ng mga nialalaman (kabilang ang mga pahina ng usapan, mga suleras, atbp), o gamitin ang ninanais na espasyo ng pangalan bilang unlapi.",
 'search-nonefound'                 => 'Walang mga resultang tumutugma sa katanungan/pagtatanong.',
@@ -1085,7 +1085,7 @@ Subuking lagyan ng unlapi/paunang ''all:'' upang hanapin ang lahat ng mga nialal
 'mypreferences'             => 'Aking mga kagustuhan',
 'prefs-edits'               => 'Bilang ng mga pagbabago:',
 'prefsnologin'              => 'Hindi nakalagda/nakatala',
-'prefsnologintext'          => 'Kailangan mong <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} lumagda/tumala]</span> para makapagtakda ng mga kagustuhang ng tagagamit.',
+'prefsnologintext'          => 'Kailangan mong <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} lumagda/tumala]</span> para makapagtakda ng mga kagustuhang ng tagagamit.',
 'changepassword'            => 'Baguhin ang hudyat',
 'prefs-skin'                => 'Pabalat',
 'skin-preview'              => 'Unang tingin',
@@ -1251,6 +1251,8 @@ Mapipili mo ring payagan ang ibang tagagamit na makapagugnayan sa iyo sa pamamag
 'right-editprotected'         => 'Baguhin ang mga pahinang nakasanggalang (walang baita-baitang na panananggalang)',
 'right-editinterface'         => 'Baguhin ang ugnayang-hangganan ng tagagamit',
 'right-editusercssjs'         => 'Baguhin ang mga talaksang CSS at JS ng ibang mga tagagamit',
+'right-editusercss'           => 'Baguhin ang mga talaksang CSS ng ibang mga tagagamit',
+'right-edituserjs'            => 'Baguhin ang mga talaksang JS ng ibang mga tagagamit',
 'right-rollback'              => 'Mabilisang pagulungin pabalik sa dati ang mga pagbabago ng huling tagagamit na nagbago ng isang partikular na pahina',
 'right-markbotedits'          => 'Itatak ang mga binalik na mga pagbabago bilang pagbabagong bot',
 'right-noratelimit'           => 'Hindi maaapektuhan ng antas ng mga hangganan',
@@ -1459,6 +1461,7 @@ Pakisuri kung buhay ang sayt, maghintay ng kaunti at subukin uli.
 Maaaring ibigin mong subukin uli sa isang hindi gaanong abalang panahon.',
 
 'license'            => 'Paglilisensya:',
+'license-header'     => 'Paglilisensya:',
 'nolicense'          => 'Walang napili',
 'license-nopreview'  => '(Walang makuhang paunang tingin)',
 'upload_source_url'  => ' (isang tanggap at napupuntahan ng publikong URL)',
@@ -1830,7 +1833,7 @@ Makikita doon ang lahat ng mga susunod na pagbabago sa pahinang ito pati na ang 
 'enotif_body'                  => 'Mahal na $WATCHINGUSERNAME,
 
 
-Ang pahinang $PAGETITLE ng {{SITENAME}} ay $CHANGEDORCREATED noong $PAGEEDITDATE ni $PAGEEDITOR, tingnan ang $PAGETITLE_URL para sa pangkasalukuyang bersyon.
+Ang pahinang $PAGETITLE ng {{SITENAME}} ay $CHANGEDORCREATED noong $PAGEEDITDATEANDTIME ni $PAGEEDITOR, tingnan ang $PAGETITLE_URL para sa pangkasalukuyang bersyon.
 
 $NEWPAGE
 
@@ -1847,7 +1850,7 @@ Maaari mo ring muling itakda ang mga watawat (mga \'\'flag\'\') na pangpaguulat 
 
 --
 Para baguhin ang mga pagtatakda ng iyong talaan ng mga binabantayan, dalawin ang
-{{fullurl:{{ns:special}}:Watchlist/edit}}
+{{fullurl:{{#special:Watchlist}}/edit}}
 
 Balik-tugon at karagdagang tulong:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2288,8 +2291,6 @@ Sa huling kaso, maaari mong gumamit ng ungay, hal. [[{{#Special:Export}}/{{Media
 'allmessagestext'           => 'Isa itong talaan ng mga mensahe ng sistema na makukuha mula sa espasyo ng pangalang MediaWiki.
 Pakidalaw ang [http://www.mediawiki.org/wiki/Localisation Lokalisasyong MediaWiki] at [http://translatewiki.net translatewiki.net] kung ibig mong magambag sa heneriko o pangkalahatang lokalisasyon ng MediaWiki.',
 'allmessagesnotsupportedDB' => "Hindi magagamit ang '''{{ns:special}}:AllMessages''' dahil hindi gumagana ang '''\$wgUseDatabaseMessages'''.",
-'allmessagesfilter'         => 'Pansala ng pangalan ng mensahe:',
-'allmessagesmodified'       => 'Ipakita lamang ang mga binago',
 
 # Thumbnails
 'thumbnail-more'           => 'Palakihin',

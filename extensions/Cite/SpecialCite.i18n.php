@@ -209,7 +209,7 @@ $messages['bpy'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'cite_article_desc' => 'Ouzhpennañ a ra ur bajenn zibar [[Special:Cite|arroud]] hag ul liamm er voest ostilhoù',
+	'cite_article_desc' => 'Ouzhpennañ a ra ur bajenn dibar [[Special:Cite|arroud]] hag ul liamm er voest ostilhoù',
 	'cite_article_link' => 'Menegiñ ar pennad-mañ',
 	'cite' => 'Menegiñ',
 	'cite_page' => 'Pajenn :',
@@ -375,9 +375,11 @@ $messages['es'] = array(
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author WikedKentaur
  */
 $messages['et'] = array(
+	'cite_article_desc' => 'Lisab [[Special:Cite|tsiteerimise]] erilehekülje ja lingi külgmenüü tööriistakasti.',
 	'cite_article_link' => 'Tsiteeri seda artiklit',
 	'cite' => 'Tsiteeri',
 	'cite_page' => 'Leht:',
@@ -478,9 +480,11 @@ $messages['fur'] = array(
 );
 
 /** Western Frisian (Frysk)
+ * @author SK-luuut
  * @author Snakesteuben
  */
 $messages['fy'] = array(
+	'cite_article_desc' => 'Foeget in [[Special:Cite|spesjale side]] om te sitearjen, lykas in ferwizing nei de helpmiddels, ta.',
 	'cite_article_link' => 'Sitearje dizze side',
 	'cite' => 'Sitearje',
 	'cite_page' => 'Side:',
@@ -724,9 +728,9 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'cite_article_desc' => '[[Special:Cite|引用情報のための特別ページ]]とツールボックスからのリンクを追加する',
 	'cite_article_link' => 'この項目を引用する',
-	'cite' => '{{SITENAME}}の項目を引用する',
+	'cite' => '引用',
 	'cite_page' => 'ページ:',
-	'cite_submit' => '引用する',
+	'cite_submit' => '引用',
 );
 
 /** Jutish (Jysk)
@@ -877,9 +881,11 @@ $messages['li'] = array(
 	'cite_submit' => 'Citere',
 );
 
-/** Lumbaart (Lumbaart) */
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
 $messages['lmo'] = array(
-	'cite_article_link' => 'Cita questa vus',
+	'cite_article_link' => 'Cita quela vus chì',
 	'cite' => 'Cita una vus',
 );
 
@@ -1144,9 +1150,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
-	'cite_article_link' => 'Cita sta vos-sì',
+	'cite_article_desc' => "A gionta na pàgina special [[Special:Cite|citassion]] e n'anliura dj'utiss",
+	'cite_article_link' => 'Sita sta pàgina-sì',
 	'cite' => 'Citassion',
 	'cite_page' => 'Pàgina da cité:',
 	'cite_submit' => 'Pronta la citassion',
@@ -1339,7 +1347,7 @@ $messages['sq'] = array(
 	'cite_submit' => 'Citoje',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  */
@@ -1349,6 +1357,17 @@ $messages['sr-ec'] = array(
 	'cite' => 'цитат',
 	'cite_page' => 'Страна:',
 	'cite_submit' => 'цитат',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'cite_article_desc' => 'Dodaje specijalnu stranu za [[Special:Cite|citiranje]] i vezu ka oruđima.',
+	'cite_article_link' => 'citiranje ove strane',
+	'cite' => 'citat',
+	'cite_page' => 'Strana:',
+	'cite_submit' => 'citat',
 );
 
 /** Seeltersk (Seeltersk)

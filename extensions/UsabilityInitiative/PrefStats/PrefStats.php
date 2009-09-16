@@ -48,6 +48,9 @@ $wgPrefStatsTimeFactors = array(
 	'prefstats-factor-default' => null,
 );
 
+// How many bars to strive for in default scaling
+$wgPrefStatsDefaultScaleBars = 15;
+
 // Whether to run possibly expensive COUNT(*) queries on the user_properties
 // table
 $wgPrefStatsExpensiveCounts = false;

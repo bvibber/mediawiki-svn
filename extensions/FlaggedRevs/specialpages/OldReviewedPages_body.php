@@ -20,6 +20,8 @@ class OldReviewedPages extends SpecialPage
 		$this->namespace = $wgRequest->getIntOrNull( 'namespace' );
 		$this->level = $wgRequest->getInt( 'level', -1 );
 		$this->category = trim( $wgRequest->getVal( 'category' ) );
+		$catTitle = Title::newFromText( $this->category );
+		$this->category = is_null($catTitle) ? '' : $catTitle->getText();
 		$this->size = $wgRequest->getIntOrNull( 'size' );
 		$this->watched = $wgRequest->getCheck( 'watched' );
 		$this->stable = $wgRequest->getCheck( 'stable' );
@@ -92,6 +94,7 @@ class OldReviewedPages extends SpecialPage
 			$wgOut->addHTML( $form );
 			# Add list output
 			$num = $pager->getNumRows();
+			$wgOut->addHTML( wfMsgExt('oldreviewedpages-list', array('parse'), $num ) );
 			if( $num ) {
 				$wgOut->addHTML( $pager->getNavigationBar() );
 				$wgOut->addHTML( $pager->getBody() );
@@ -196,7 +199,7 @@ class OldReviewedPages extends SpecialPage
 	public function formatRow( $row ) {
 		global $wgLang, $wgUser, $wgMemc;
 
-		$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+		$title = Title::newFromRow( $row );
 		$link = $this->skin->makeKnownLinkObj( $title );
 		$css = $stxt = $review = $quality = $underReview = '';
 		$stxt = ChangesList::showCharacterDifference( $row->rev_len, $row->page_len );
@@ -313,6 +316,12 @@ class OldReviewedPagesPager extends AlphabeticPager {
 
 	function formatRow( $row ) {
 		return $this->mForm->formatRow( $row );
+	}
+	
+	function getDefaultQuery() {
+		$query = parent::getDefaultQuery();
+		$query['category'] = $this->category;
+		return $query;
 	}
 	
 	function getDefaultDirections() {

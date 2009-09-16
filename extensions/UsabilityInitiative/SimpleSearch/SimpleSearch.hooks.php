@@ -15,8 +15,8 @@ class SimpleSearchHooks {
 	 * Initializes the component
 	 */
 	public static function initialize( $out ) {
-		global $wgEditWarningStyleVersion, $wgRequest;
-		
+		global $wgSimpleSearchStyleVersion;
+
 		UsabilityInitiativeHooks::initialize();
 		// Adds script to document
 		UsabilityInitiativeHooks::addScript(
@@ -26,9 +26,9 @@ class SimpleSearchHooks {
 		wfLoadExtensionMessages( 'SimpleSearch' );
 		// Adds messages to page
 		UsabilityInitiativeHooks::addMessages(
-			array( 'simplesearch-search' )
+			array( 'simplesearch-search', 'simplesearch-containing' )
 		);
-		
+
 		// Continue
 		return true;
 	}

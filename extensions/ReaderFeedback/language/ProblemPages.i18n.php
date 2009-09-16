@@ -86,6 +86,17 @@ $messages['bs'] = array(
 	'problempages-graphs' => 'podaci rejtinga',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'problempages' => 'Sider som er bedømt som dårlige',
+	'problempages-leg' => 'Find sider som er bedømt som dårlige',
+	'problempages-list' => 'Nedenfor er en liste med sider sorteret efter deres læserbedømmelse.',
+	'problempages-none' => 'Der er ingen sider i listen',
+	'problempages-graphs' => 'Bedømmelsesdata',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author UV
@@ -416,6 +427,17 @@ $messages['pl'] = array(
 	'problempages-graphs' => 'ocena danych',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'problempages' => 'Pàgine pòch valutà',
+	'problempages-leg' => 'Treuva le pàgine pòch valutà',
+	'problempages-list' => 'Sota a-i é na lista ëd pàgine ordinà për la soa valutassion dij letor.',
+	'problempages-none' => 'A-i é pa ëd pàgine an sta lista-sì',
+	'problempages-graphs' => 'dat ëd valutassion',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya
@@ -484,7 +506,7 @@ $messages['sk'] = array(
 	'problempages-graphs' => 'údaje o hodnotení',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Михајло Анђелковић
  */
@@ -495,7 +517,7 @@ $messages['sr-ec'] = array(
 	'problempages-none' => 'Нема страна у овом списку.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

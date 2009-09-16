@@ -15,19 +15,26 @@ $messages['en'] = array(
 	'simplesearch' => 'Simple search',
 	'simplesearch-desc' => "Adds extra functionality to the Vector's simplified search",
 	'simplesearch-search' => 'Search',
+	'simplesearch-containing' => 'containing...',
 );
 
 /** Message documentation (Message documentation)
  * @author Bennylin
+ * @author Mormegil
  */
 $messages['qqq'] = array(
-	'simplesearch-search' => '{{Identical/Search}}',
+	'simplesearch-search' => 'Greyed out default text in the simple search box in the Vector skin. (It disappears and lets the user enter the requested search terms when the search box receives focus.)
+
+{{Identical|Search}}',
+	'simplesearch-containing' => 'Label used in the special item of the search suggestions list which gives the user an option to perform a full text search for the term.',
 );
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
 $messages['af'] = array(
+	'simplesearch' => 'Eenvoudige soek',
+	'simplesearch-desc' => 'Voeg ekstra funksionaliteit by die vereenvoudigde soek in Vector',
 	'simplesearch-search' => 'Soek',
 );
 
@@ -86,11 +93,21 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'simplesearch' => 'Cerca simple',
-	'simplesearch-desc' => 'Afegeix funcionalitat extra a cerca simplificada de Vector',
+	'simplesearch-desc' => 'Afegeix funcionalitat extra a la cerca simplificada de Vector',
 	'simplesearch-search' => 'Cerca',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'simplesearch' => 'Zjednodušené hledání',
+	'simplesearch-desc' => 'Rozšiřuje funkcionalitu zjednodušeného hledání ve vzhledu Vektor',
+	'simplesearch-search' => 'Hledat',
 );
 
 /** Danish (Dansk)
@@ -140,11 +157,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Locos epraix
  * @author Omnipaedista
  */
 $messages['es'] = array(
 	'simplesearch' => 'Búsqueda simple',
+	'simplesearch-desc' => 'Agrega funcionalidades extra al vector de búsqueda simple',
 	'simplesearch-search' => 'Búsqueda',
 );
 
@@ -309,6 +328,14 @@ $messages['km'] = array(
 	'simplesearch-search' => 'ស្វែងរក​',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'simplesearch' => '간단한 검색',
+	'simplesearch-search' => '검색',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -412,6 +439,22 @@ $messages['pl'] = array(
 	'simplesearch-search' => 'Szukaj',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'simplesearch' => 'Arserca sempia',
+	'simplesearch-desc' => "A gionta funsionalità extra a l'arserca semplifià ëd Vector",
+	'simplesearch-search' => 'Arserca',
+);
+
+/** Pontic (Ποντιακά)
+ * @author Consta
+ */
+$messages['pnt'] = array(
+	'simplesearch-search' => 'Αράεμαν',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -422,10 +465,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Waldir
  */
 $messages['pt'] = array(
-	'simplesearch' => 'Pesquisa Simples',
+	'simplesearch' => 'Pesquisa simples',
 	'simplesearch-desc' => 'Adiciona funcionalidades extra à pesquisa simplificada do Vector.',
 	'simplesearch-search' => 'Pesquisa',
 );
@@ -510,7 +554,7 @@ $messages['sl'] = array(
 	'simplesearch-search' => 'Iskanje',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -518,7 +562,7 @@ $messages['sr-ec'] = array(
 	'simplesearch-search' => 'Претрага',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -533,6 +577,14 @@ $messages['sv'] = array(
 	'simplesearch' => 'Enkel sökning',
 	'simplesearch-desc' => 'Lägger till extra funktioner till Vectors förenklade sökning',
 	'simplesearch-search' => 'Sök',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'simplesearch' => 'Tafuti sahili',
+	'simplesearch-search' => 'Kutafuta',
 );
 
 /** Telugu (తెలుగు)
@@ -553,7 +605,7 @@ $messages['tr'] = array(
 	'simplesearch-search' => 'Ara',
 );
 
-/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
  */
 $messages['tt-cyrl'] = array(

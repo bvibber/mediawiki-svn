@@ -134,7 +134,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'CheckUser' => array( 'Pemeriksa' ),
+	'CheckUser' => array( 'Periksa pengguna', 'PeriksaPengguna', 'Pemeriksa' ),
 );
 
 /** Japanese (日本語) */
@@ -207,6 +207,11 @@ $aliases['ro'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'CheckUser' => array( 'योजकपरिक्षक' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CheckUser' => array( 'SkontrolovaťPoužívateľa' ),
 );
 
 /** Swahili (Kiswahili) */

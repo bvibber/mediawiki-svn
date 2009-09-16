@@ -28,7 +28,7 @@
 $wgOptInAlwaysShowPersonalLink = false;
 $wgOptInNeverShowPersonalLink = false;
 
-$wgOptInStyleVersion = 9;
+$wgOptInStyleVersion = 10;
 
 // Preferences to set when users opt in
 // array( prefname => value )
@@ -148,6 +148,8 @@ $wgAutoloadClasses['OptInHooks'] =
 	dirname( __FILE__ ) . '/OptIn.hooks.php';
 
 // Adds Internationalized Messages
+$wgExtensionMessagesFiles['OptInLink'] =
+	dirname( __FILE__ ) . '/OptInLink.i18n.php';
 $wgExtensionMessagesFiles['OptIn'] =
 	dirname( __FILE__ ) . '/OptIn.i18n.php';
 $wgExtensionAliasesFiles['OptIn'] =

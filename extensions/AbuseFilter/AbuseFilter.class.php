@@ -118,16 +118,21 @@ class AbuseFilter {
 	);
 
 	public static function addNavigationLinks( $out, $sk, $pageType ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 		$linkDefs = array(
 					'home' => 'Special:AbuseFilter',
 					'recentchanges' => 'Special:AbuseFilter/history',
 					'test' => 'Special:AbuseFilter/test',
 					'examine' => 'Special:AbuseFilter/examine',
 					'log' => 'Special:AbuseLog',
+				);
+		
+		if ($wgUser->isAllowed( 'abusefilter-modify' ) ) {
+			$linkDefs = array_merge( $linkDefs, array(
 					'tools' => 'Special:AbuseFilter/tools',
 					'import' => 'Special:AbuseFilter/import',
-				);
+				) );
+		}
 				
 		// Save some translator work
 		$msgOverrides = array(
@@ -423,8 +428,10 @@ class AbuseFilter {
 	public static function checkFilter( $row, $vars, $profile = false, $prefix = '' ) {
 		$filterID = $prefix.$row->af_id;
 		
-		if ($profile)
+		if ($profile) {
+			$startConds = self::$condCount;
 			$startTime = microtime(true);
+		}
 			
 		// Store the row somewhere convenient
 		self::$filters[$filterID] = $row;
@@ -442,10 +449,12 @@ class AbuseFilter {
 		
 		if ($profile) {
 			$endTime = microtime(true);
+			$endConds = self::$condCount;
 			
 			$timeTaken = $endTime - $startTime;
+			$condsUsed = $endConds - $startConds;
 			
-			self::recordProfilingResult( $row->af_id, $timeTaken );
+			self::recordProfilingResult( $row->af_id, $timeTaken, $condsUsed );
 		}
 		
 		return $result;
@@ -460,21 +469,25 @@ class AbuseFilter {
 		$wgMemc->delete( $totalKey );
 	}
 	
-	public static function recordProfilingResult( $filter, $time ) {
+	public static function recordProfilingResult( $filter, $time, $conds ) {
 		global $wgMemc;
 		
 		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
 		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
+		$totalCondKey = wfMemcKey( 'abusefilter', 'profile-conds', 'total' );
 		
 		$curCount = $wgMemc->get( $countKey );
 		$curTotal = $wgMemc->get( $totalKey );
+		$curTotalConds = $wgMemc->get( $totalCondKey );
 		
 		if ($curCount) {
+			$wgMemc->set( $totalCondKey, $curTotalConds + $conds, 3600 );
 			$wgMemc->set( $totalKey, $curTotal + $time, 3600 );		
 			$wgMemc->incr( $countKey );
 		} else {
 			$wgMemc->set( $countKey, 1, 3600 );
-			$wgMemc->set( $totalKey, $time, 3600 );			
+			$wgMemc->set( $totalKey, $time, 3600 );
+			$wgMemc->set( $totalCondKey, $conds, 3600 );
 		}
 	}
 	
@@ -483,15 +496,22 @@ class AbuseFilter {
 		
 		$countKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'count' );
 		$totalKey = wfMemcKey( 'abusefilter', 'profile', $filter, 'total' );
+		$totalCondKey = wfMemcKey( 'abusefilter', 'profile-conds', 'total' );
 		
 		$curCount = $wgMemc->get( $countKey );
 		$curTotal = $wgMemc->get( $totalKey );
+		$curTotalConds = $wgMemc->get( $totalCondKey );
 		
 		if (!$curCount)
-			return 0;
+			return array( 0, 0 );
 		
-		$profile = ($curTotal / $curCount) * 1000;
-		return round( $profile, 2); // Return in ms, rounded to 2dp
+		$timeProfile = ($curTotal / $curCount) * 1000; // 1000 ms in a sec
+		$timeProfile = round( $timeProfile, 2); // Return in ms, rounded to 2dp
+		
+		$condProfile = ($curTotalConds / $curCount);
+		$condProfile = round( $condProfile, 0 );
+		
+		return array( $timeProfile, $condProfile );
 	}
 	
 	/** Utility function to decode global-$index to $index. Returns false if not global */
@@ -1270,7 +1290,7 @@ class AbuseFilter {
 		
 		$readOnlyAttrib = array();
 		if (!$canEdit)
-			$readOnlyAttrib['disabled'] = 'disabled';
+			$readOnlyAttrib['readonly'] = 'readonly';
 			
 		global $wgUser;
 		$noTestAttrib = array();
@@ -1330,6 +1350,15 @@ class AbuseFilter {
 		// Add script
 		$editScript = file_get_contents(dirname(__FILE__)."/edit.js");
 		$editScript = "var wgFilterBoxName = ".Xml::encodeJSVar( $textName ).";\n$editScript";
+		
+		// Import localisation.
+		$importMessages = array( 'abusefilter-edit-syntaxok', 'abusefilter-edit-syntaxerr' );
+		$msgData = array();
+		foreach( $importMessages as $msg ) {
+			$msgData[$msg] = wfMsg( $msg );
+		}
+		$editScript .= "\nvar wgAbuseFilterMessages = ".json_encode($msgData).";\n";
+		
 		$wgOut->addInlineScript( $editScript );
 
 		return $rules;

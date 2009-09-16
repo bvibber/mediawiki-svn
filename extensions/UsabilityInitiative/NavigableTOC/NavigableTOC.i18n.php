@@ -14,6 +14,21 @@ $messages = array();
 $messages['en'] = array(
 	'navigabletoc' => 'Navigable table of contents',
 	'navigabletoc-desc' => 'Adds a table of contents to the edit form that scrolls the text box when a section is clicked',
+	'navigabletoc-preference' => 'Enable navigable table of contents',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'navigabletoc' => 'Navigeerbare inhoudsopgawe',
+);
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'navigabletoc' => 'فهرس محتويات قابل للإبحار',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -25,12 +40,29 @@ $messages['be-tarask'] = array(
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'navigabletoc' => 'Taolenn verdeeus',
+	'navigabletoc-desc' => "Ouzhpennañ a ra taolenn an titloù d'ar furmskrid kemmañ a zibun an destenn pa vez kliket war ur rann.",
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'navigabletoc' => 'Sadržaj sa navigacijom',
+	'navigabletoc-desc' => 'Dodaje sadržaj u obrazac za uređivanje koji pomjera kutiju tekst kada se klikne na sekciju',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'navigabletoc' => 'Navigovatelný obsah',
-	'navigabletoc-desc' => 'Přidává do formuláře úprav obsah, který se po kliknutí na sekci přesune',
+	'navigabletoc-desc' => 'Přidává na editační stránku obsah, pomocí kterého se lze pohybovat v editovaném textu',
 );
 
 /** Danish (Dansk)
@@ -211,10 +243,11 @@ $messages['mk'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'navigabletoc' => 'Navigasi kandungan',
-	'navigabletoc-desc' => "Menambahkan jadual kandungan dalam bahagian suntingan yang ''scroll'' ke bawah.",
+	'navigabletoc-desc' => 'Menambahkan isi kandungan ke borang sunting yang akan menatalkan kotak teks bila salah satu bahagian diklik.',
 );
 
 /** Dutch (Nederlands)
@@ -246,6 +279,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'navigabletoc' => 'Nawigacyjny spis treści',
 	'navigabletoc-desc' => 'Przewija tekst w formularzu edycji, jeśli zostanie kliknięty kliknięty tytuł sekcji w dodanym do formularza spisie treści',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'navigabletoc' => 'Tàula dij contnù navigàbil',
+	'navigabletoc-desc' => "A gionta na tàula dij contnù a la form ëd modìfica ch'a scor la casela quand che as clica na session",
 );
 
 /** Portuguese (Português)

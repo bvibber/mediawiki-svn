@@ -1,26 +1,29 @@
 /* wikiEditor toc module */
 
-.wikiEditor-ui .wikiEditor-ui-toc {
-	/* width is set dynamically */
-	position: absolute;
-	right: -1px;
-	top: 0;
-	padding: 0;
+.wikiEditor-ui-text {
+	border-right: solid silver 1px;
+}
+body.rtl .wikiEditor-ui-text {
+	border-right: none;
 	border-left: solid silver 1px;
+}
+.wikiEditor-ui-toc {
+	/* height and width are set dynamically */
+	float: right;
+	padding: 0;
 	overflow: auto;
 }
-body.rtl .wikiEditor-ui .wikiEditor-ui-toc {
+body.rtl .wikiEditor-ui-toc {
 	right: auto;
 	left: -1px;
 	border-left: none;
-	border-right: solid silver 1px;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul {
+.wikiEditor-ui-toc ul {
 	padding: 0;
 	margin: 0.5em 1em;
 	list-style: none;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul ul {
+.wikiEditor-ui-toc ul ul {
 	padding: 0;
 	margin: 0;
 	margin-left: 0.75em;
@@ -28,18 +31,18 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-toc {
 	margin-top: 0 !important;
 	list-style: none;
 }
-body.rtl .wikiEditor-ui .wikiEditor-ui-toc ul ul {
+body.rtl .wikiEditor-ui-toc ul ul {
 	margin-left: 0;
 	margin-right: 0.75em;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul li a {
+.wikiEditor-ui-toc ul li a {
 	display: block;
 	font-size: 0.9em;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul li a.currentSelection {
+.wikiEditor-ui-toc ul li a.currentSelection {
 	font-weight: bold;
 }
-.wikiEditor-ui .wikiEditor-ui-toc ul li a.section-0 {
+.wikiEditor-ui-toc ul li a.section-0 {
 	font-size: 1em;
 	border-bottom: solid 1px #DDDDDD;
 }

@@ -97,6 +97,7 @@ Add one below.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Darth Kule
  * @author Fryed-peach
  * @author Jon Harald Søby
@@ -121,6 +122,7 @@ $messages['qqq'] = array(
 	'centralnotice-start-time' => 'Used in Special:CentralNotice',
 	'centralnotice-available-templates' => 'Used in Special:NoticeTemplate',
 	'centralnotice-notice-is-locked' => 'Errore message displayed in Special:CentralNotice when trying to delete a locked notice',
+	'centralnotice-invalid-date-range' => '{{Identical|Date}}',
 	'centralnotice-no-notices-exist' => 'Used in Special:CentralNotice when there are no notices',
 	'centralnotice-message' => '{{Identical|Message}}',
 	'right-centralnotice-admin' => '{{doc-right}}',
@@ -170,6 +172,8 @@ $messages['af'] = array(
 	'centralnotice-start-hour' => 'Begintyd',
 	'centralnotice-change-lang' => 'Verander taal vir vertaling',
 	'centralnotice-weights' => 'Gewigte',
+	'centralnotice-invalid-date-range' => 'Ongeldige datumreeks.
+Word nie bygewerk nie',
 	'centralnotice-number-uses' => 'Aantal kere gebruik',
 	'centralnotice-edit-template' => 'Wysig sjabloon',
 	'centralnotice-message' => 'Boodskap',
@@ -550,6 +554,33 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'centralnotice-desc' => 'একটি কেন্দ্রীয় সাইটনোটিশ যোগ করো',
+	'centralnotice-notice-name' => 'নোটিশের নাম',
+	'centralnotice-end-date' => 'শেষের তারিখ',
+	'centralnotice-enabled' => 'সক্রিয়',
+	'centralnotice-modify' => 'জমা দাও',
+	'centralnotice-preview' => 'প্রাকদর্শন',
+	'centralnotice-add-new' => 'একটি নতুন কেন্দ্রীয় নোটিশ যোগ করো',
+	'centralnotice-remove' => 'অপসারণ',
+	'centralnotice-add' => 'যোগ',
+	'centralnotice-add-notice' => 'নোটিশ যোগ',
+	'centralnotice-add-template' => 'টেম্পলেট যোগ',
+	'centralnotice-show-notices' => 'নোটিশ দেখাও',
+	'centralnotice-list-templates' => 'টেম্পলেটের তালিকা',
+	'centralnotice-english' => 'ইংরেজি',
+	'centralnotice-template-name' => 'টেম্পলেটের নাম',
+	'centralnotice-notices' => 'নোটিশ',
+	'centralnotice-day' => 'দিন',
+	'centralnotice-year' => 'বছর',
+	'centralnotice-month' => 'মাস',
+	'centralnotice-hours' => 'ঘন্টা',
+	'centralnotice-min' => 'মিনিট',
+	'centralnotice-project-lang' => 'প্রকল্পের ভাষা',
+	'centralnotice-project-name' => 'প্রকল্পের নাম',
+	'centralnotice-start-date' => 'শুরুর তারিখ',
+	'centralnotice-start-time' => 'শুরুর সময় (UTC)',
+	'centralnotice-start-hour' => 'শুরুর সময়',
+	'centralnotice-edit-template' => 'টেম্পলেট সম্পাদনা',
+	'centralnotice-message' => 'বার্তা',
 );
 
 /** Breton (Brezhoneg)
@@ -652,23 +683,94 @@ Dodaj jednu ispod',
 /** Catalan (Català)
  * @author Aleator
  * @author Loupeter
+ * @author Paucabot
  * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'centralnotice-end-date' => 'Data final',
+	'centralnotice' => "Administrador d'avisos centrals",
+	'noticetemplate' => "Plantilla d'avís central",
+	'centralnotice-desc' => "Afegeix un lloc central d'avisos",
+	'centralnotice-summary' => "Aquesta extensió us permet editar el vostre lloc central d'avisos.
+També pot ser usat per afegir o eliminar avisos.",
+	'centralnotice-query' => 'Modifica avisos actuals',
+	'centralnotice-notice-name' => "Nom de l'avís",
+	'centralnotice-end-date' => 'Data de finalització',
+	'centralnotice-enabled' => 'Activat',
 	'centralnotice-modify' => 'Tramet',
+	'centralnotice-preview' => 'Previsualitza',
+	'centralnotice-add-new' => "Afegeix una nova central d'avisos",
 	'centralnotice-remove' => 'Elimina',
+	'centralnotice-translate-heading' => 'Traducció de $1',
+	'centralnotice-manage' => "Gestiona la central d'avisos",
+	'centralnotice-add' => 'Afegeix',
+	'centralnotice-add-notice' => 'Afegeix un avís',
+	'centralnotice-add-template' => 'Afegeix una plantilla',
+	'centralnotice-show-notices' => 'Mostra avisos',
+	'centralnotice-list-templates' => 'Llista les plantilles',
+	'centralnotice-translations' => 'Traduccions',
+	'centralnotice-translate-to' => 'Tradueix a',
+	'centralnotice-translate' => 'Tradueix',
 	'centralnotice-english' => 'Anglès',
+	'centralnotice-template-name' => 'Nom de la plantilla',
+	'centralnotice-templates' => 'Plantilles',
+	'centralnotice-weight' => 'Pes',
+	'centralnotice-locked' => 'Bloquejat',
+	'centralnotice-notices' => 'Avisos',
+	'centralnotice-notice-exists' => "L'avís ja existeix.
+No s'afegirà",
+	'centralnotice-template-exists' => "La plantilla ja existeix.
+No s'afegirà.",
+	'centralnotice-notice-doesnt-exist' => "L'avís no existeix.
+No s'ha eliminat res",
+	'centralnotice-template-still-bound' => "La plantilla encara s'usa en un avís.
+No s'ha pogut eliminar.",
+	'centralnotice-template-body' => 'Cos de la plantilla:',
 	'centralnotice-day' => 'Dia',
 	'centralnotice-year' => 'Any',
 	'centralnotice-month' => 'Mes',
 	'centralnotice-hours' => 'Hora',
 	'centralnotice-min' => 'Minut',
+	'centralnotice-project-lang' => 'Llengua del projecte',
+	'centralnotice-project-name' => 'Nom del projecte',
 	'centralnotice-start-date' => 'Data inicial',
+	'centralnotice-start-time' => "Hora d'inici (UTC)",
+	'centralnotice-assigned-templates' => 'Plantilles assignades',
+	'centralnotice-no-templates' => 'No hi ha plantilles.
+Afegiu-ne!',
+	'centralnotice-no-templates-assigned' => "No hi ha plantilles assignades a l'avís.
+Afegiu-ne!",
 	'centralnotice-available-templates' => 'Plantilles disponibles',
+	'centralnotice-template-already-exists' => "La plantilla ja s'està usant a la campanya.
+No s'afegirà",
+	'centralnotice-preview-template' => 'Previsualitza la plantilla',
+	'centralnotice-start-hour' => "Hora d'inici",
+	'centralnotice-change-lang' => 'Canvia la llengua de la traducció',
+	'centralnotice-weights' => 'Pesos',
+	'centralnotice-notice-is-locked' => "L'avís està bloquejat.
+No s'ha eliminat",
+	'centralnotice-overlap' => "L'avís se superposa en el temps amb un altre avís.
+No s'ha afegit",
 	'centralnotice-invalid-date-range' => 'Interval de dates invàlid.
 No actualitzat',
+	'centralnotice-null-string' => "No s'ha pogut afegir una cadena nul·la.",
+	'centralnotice-confirm-delete' => 'Estau segur que voleu eliminar aquest ítem?
+Aquesta acció serà irreversible.',
+	'centralnotice-no-notices-exist' => 'No hi ha cap avís.
+Afegiu-ne un a continuació.',
+	'centralnotice-no-templates-translate' => 'No hi ha cap plantilla per editar les traduccions per',
+	'centralnotice-number-uses' => 'Usos',
+	'centralnotice-edit-template' => 'Edita la plantilla',
+	'centralnotice-message' => 'Missatge',
+	'centralnotice-message-not-set' => 'Missatge no fixat',
+	'centralnotice-clone' => 'Duplica',
+	'centralnotice-clone-notice' => 'Crea una còpia de la plantilla',
+	'centralnotice-preview-all-template-translations' => 'Previsualitza totes les traduccions disponibles de plantilles',
+	'right-centralnotice-admin' => 'Gestionau els avisos centrals',
+	'right-centralnotice-translate' => 'Traduïu els avisos centrals',
+	'action-centralnotice-admin' => 'Gestionau els avisos centrals',
+	'action-centralnotice-translate' => 'Traduïu els avisos centrals',
+	'centralnotice-preferred' => 'Preferit',
 );
 
 /** Czech (Česky)
@@ -753,10 +855,27 @@ Níže můžete vytvořit nové.',
 	'centralnotice-preferred' => 'Preferováno',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'centralnotice-day' => 'Dydd',
+	'centralnotice-year' => 'Blwyddyn',
+	'centralnotice-month' => 'Mis',
+	'centralnotice-hours' => 'Awr',
+	'centralnotice-min' => 'Munud',
+	'centralnotice-project-lang' => 'Iaith y prosiect',
+	'centralnotice-project-name' => "Enw'r prosiect",
+	'centralnotice-start-date' => 'Dyddiad cychwyn',
+	'centralnotice-start-time' => 'Amser cychwyn (UTC)',
+);
+
 /** Danish (Dansk)
  * @author Byrial
+ * @author Masz
  */
 $messages['da'] = array(
+	'right-centralnotice-admin' => 'Administrere centrale meddelelser',
 	'action-centralnotice-admin' => 'administrere centrale beskeder',
 	'action-centralnotice-translate' => 'oversætte centrale beskeder',
 );
@@ -850,6 +969,14 @@ Füge eine hinzu.',
 	'action-centralnotice-admin' => 'Zentrale Seitennotiz verwalten',
 	'action-centralnotice-translate' => 'Zentrale Seitennotiz übersetzen',
 	'centralnotice-preferred' => 'Bevorzugt',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
+ */
+$messages['de-formal'] = array(
+	'centralnotice-confirm-delete' => 'Sind Sie sicher, dass Sie den Eintrag löschen möchten?
+Die Aktion kann nicht rückgängig gemacht werden.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -955,13 +1082,14 @@ $messages['ee'] = array(
  * @author Lou
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'centralnotice' => 'Διαχειριστής κεντρικών ειδοποιήσεων',
 	'noticetemplate' => 'Πρότυπο κεντρικής ανακοίνωσης',
 	'centralnotice-desc' => 'Προσθέτει μια κεντρική ανακοίνωση',
-	'centralnotice-summary' => 'Αυτή η φόρμουλα σου επιτρέπει να επεξεργαστείς τις τωρινές ρυθμίσεις των κεντρικών σημειώσεών σου.
-Μπορεί επίσης να χρησιμοποιηθεί για να προσθέσει ή να αφαιρέσει παλιές σημειώσεις.',
+	'centralnotice-summary' => 'Αυτή η επέκταση σας επιτρέπει να επεξεργαστείτε τις τώρα εγκατεστημένες κεντρικές ειδοποιήσεις σας.
+Μπορεί επίσης να χρησιμοποιηθεί για να προσθέσει ή να αφαιρέσει παλιές ειδοποιήσεις.',
 	'centralnotice-query' => 'Τροποποίηση τρεχουσών ειδοποιήσεων',
 	'centralnotice-notice-name' => 'Όνομα σημείωσης',
 	'centralnotice-end-date' => 'Ημερομηνία λήξης',
@@ -1135,6 +1263,7 @@ Afiŝu noticon suben',
 
 /** Spanish (Español)
  * @author Imre
+ * @author Locos epraix
  * @author Muro de Aguas
  * @author Remember the dot
  * @author Sanbec
@@ -1142,7 +1271,7 @@ Afiŝu noticon suben',
 $messages['es'] = array(
 	'centralnotice' => 'Administración del aviso central',
 	'noticetemplate' => 'Plantilla del aviso central',
-	'centralnotice-desc' => 'Añade un mensaje central común a todos los proyectos.',
+	'centralnotice-desc' => 'Añade un mensaje central',
 	'centralnotice-summary' => 'Este módulo te permite editar los parámetros actuales de los avisos centrales.
 También puede usarse para añadir o borrar avisos antiguos.',
 	'centralnotice-query' => 'Modificar avisos actuales',
@@ -1228,10 +1357,12 @@ Añade uno debajo',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'centralnotice' => 'Keskuse teate admin',
 	'noticetemplate' => 'Keskuse teate mall',
+	'centralnotice-desc' => 'Lisab keskse võrgukohateatesüsteemi',
 	'centralnotice-notice-name' => 'Teate nimi',
 	'centralnotice-end-date' => 'Tähtaeg',
 	'centralnotice-enabled' => 'Luba olemas',
@@ -1287,10 +1418,10 @@ Lisa mõni!',
 	'centralnotice-clone' => 'Kloon',
 	'centralnotice-clone-notice' => 'Loo mallist koopia',
 	'centralnotice-preview-all-template-translations' => 'Malli kõigi kättesaadavate tõlgete eelvaated',
-	'right-centralnotice-admin' => 'Halda keskuse teateid',
-	'right-centralnotice-translate' => 'Tõlgi keskuse teateid',
-	'action-centralnotice-admin' => 'halda keskuse teateid',
-	'action-centralnotice-translate' => 'tõlgi keskuse teateid',
+	'right-centralnotice-admin' => 'Keskuse teateid hallata',
+	'right-centralnotice-translate' => 'Tõlkida keskuse teateid',
+	'action-centralnotice-admin' => 'keskuse teateid hallata',
+	'action-centralnotice-translate' => 'keskuse teateid tõlkida',
 	'centralnotice-preferred' => 'Eelistatud',
 );
 
@@ -1531,6 +1662,7 @@ Lisää alapuolella sellainen',
  * @author Meithal
  * @author PieRRoMaN
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -1601,7 +1733,7 @@ Il n’a pas été ajouté.',
 Il n’a pas été mis à jour.',
 	'centralnotice-null-string' => 'Impossible d’ajouter un avis vide.
 Il n’a pas été ajouté.',
-	'centralnotice-confirm-delete' => 'Êtes-vous sûr de vouloir supprimer cet élément ?
+	'centralnotice-confirm-delete' => 'Êtes-vous sûr{{GENDER:||e|}} de vouloir supprimer cet élément ?
 Cette action ne pourra pas être récupérée.',
 	'centralnotice-no-notices-exist' => 'Aucun avis n’existe.
 Ajoutez-en ci-dessous.',
@@ -1745,6 +1877,7 @@ $messages['grc'] = array(
 	'centralnotice-weights' => 'Βάρη',
 	'centralnotice-number-uses' => 'Χρήσεις',
 	'centralnotice-message' => 'Μήνυμα',
+	'centralnotice-clone' => 'Κλών',
 	'centralnotice-preferred' => 'Προκρινομένη',
 );
 
@@ -2296,10 +2429,95 @@ Adde un infra',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author IvanLanin
+ * @author Rex
  */
 $messages['id'] = array(
-	'centralnotice-desc' => 'Menambahkan pengumuman situs terpusat',
+	'centralnotice' => 'Administrasi pengumuman sentral',
+	'noticetemplate' => 'Templat pengumuman sentral',
+	'centralnotice-desc' => 'Menambahkan suatu pengumuman sentral',
+	'centralnotice-summary' => 'Dengan modul ini, Anda dapat menyunting pengaturan pengumuman sentral saat ini.
+Modul ini juga dapat digunakan untuk menambahkan atau menghapus pengumuman lama.',
+	'centralnotice-query' => 'Ubah pengumuman saat ini',
+	'centralnotice-notice-name' => 'Judul pengumuman',
+	'centralnotice-end-date' => 'Tanggal akhir',
+	'centralnotice-enabled' => 'Diaktifkan',
+	'centralnotice-modify' => 'Kirim',
+	'centralnotice-preview' => 'Pratayang',
+	'centralnotice-add-new' => 'Buat pengumuman sentral baru',
+	'centralnotice-remove' => 'Hapus',
+	'centralnotice-translate-heading' => 'Terjemahan untuk $1',
+	'centralnotice-manage' => 'Pengaturan pengumuman sentral',
+	'centralnotice-add' => 'Tambahkan',
+	'centralnotice-add-notice' => 'Tambah pengumuman',
+	'centralnotice-add-template' => 'Tambah templat',
+	'centralnotice-show-notices' => 'Tampilkan pengumuman',
+	'centralnotice-list-templates' => 'Daftar templat',
+	'centralnotice-translations' => 'Terjemahan',
+	'centralnotice-translate-to' => 'Terjemahkan ke',
+	'centralnotice-translate' => 'Terjemahkan',
+	'centralnotice-english' => 'Bahasa Inggris',
+	'centralnotice-template-name' => 'Nama templat',
+	'centralnotice-templates' => 'Templat',
+	'centralnotice-weight' => 'Bobot',
+	'centralnotice-locked' => 'Terkunci',
+	'centralnotice-notices' => 'Pengumuman',
+	'centralnotice-notice-exists' => 'Pengumuman sudah ada.
+Batal menambahkan',
+	'centralnotice-template-exists' => 'Templat sudah ada.
+Batal menambahkan',
+	'centralnotice-notice-doesnt-exist' => 'Pengumuman tidak ditemukan.
+Batal menghapus',
+	'centralnotice-template-still-bound' => 'Templat masih digunakan dalam suatu pengumuman.
+Batal menghapus',
+	'centralnotice-template-body' => 'Isi templat:',
+	'centralnotice-day' => 'Hari',
+	'centralnotice-year' => 'Tahun',
+	'centralnotice-month' => 'Bulan',
+	'centralnotice-hours' => 'Jam',
+	'centralnotice-min' => 'Menit',
+	'centralnotice-project-lang' => 'Bahasa proyek',
+	'centralnotice-project-name' => 'Nama proyek',
+	'centralnotice-start-date' => 'Tanggal mulai',
+	'centralnotice-start-time' => 'Waktu mulai (UTC)',
+	'centralnotice-assigned-templates' => 'Tempat yang digunakan',
+	'centralnotice-no-templates' => 'Tidak ada templat yang ditemukan.
+Tambahkan!',
+	'centralnotice-no-templates-assigned' => 'Tidak ada templat yang digunakan dalam pengumuman.
+Tambahkan!',
+	'centralnotice-available-templates' => 'Templat yang tersedia',
+	'centralnotice-template-already-exists' => 'Templat sudah digunakan dalam kampanye.
+Batal menambahkan',
+	'centralnotice-preview-template' => 'Lihat pratayang templat',
+	'centralnotice-start-hour' => 'Waktu mulai',
+	'centralnotice-change-lang' => 'Ubah bahasa terjemahan',
+	'centralnotice-weights' => 'Bobot',
+	'centralnotice-notice-is-locked' => 'Pengumuman terkunci.
+Batal menghapus',
+	'centralnotice-overlap' => 'Pengumuman bertumpang tindih dengan waktu pengumuman lainnya.
+Batal menambahkan',
+	'centralnotice-invalid-date-range' => 'Jangka waktu tidak valid.
+Batal memperbarui',
+	'centralnotice-null-string' => 'Tidak dapat menambahkan string kosong.
+Batal menambahkan',
+	'centralnotice-confirm-delete' => 'Apakah Anda yakin untuk menghapus?
+Tindakan ini tidak dapat dibatalkan.',
+	'centralnotice-no-notices-exist' => 'Tidak ada pengumuman ditemukan.
+Tambahkan di bawah ini.',
+	'centralnotice-no-templates-translate' => 'Tidak ada templat yang dapat diterjemahkan',
+	'centralnotice-number-uses' => 'Menggunakan',
+	'centralnotice-edit-template' => 'Sunting templat',
+	'centralnotice-message' => 'Pesan',
+	'centralnotice-message-not-set' => 'Pengaturan pesan tidak dilakukan',
+	'centralnotice-clone' => 'Duplikat',
+	'centralnotice-clone-notice' => 'Buat duplikat templat ini',
+	'centralnotice-preview-all-template-translations' => 'Lihat pratayang semua terjemahan templat yang tersedia',
+	'right-centralnotice-admin' => 'Mengatur pengumuman sentral',
+	'right-centralnotice-translate' => 'Menerjemahkan pengumuman sentral',
+	'action-centralnotice-admin' => 'mengatur pengumuman sentral',
+	'action-centralnotice-translate' => 'menerjemahkan pengumuman sentral',
+	'centralnotice-preferred' => 'Preferensi',
 );
 
 /** Ido (Ido)
@@ -2585,13 +2803,25 @@ Tambahaké ing ngisor',
 
 /** Georgian (ქართული)
  * @author Malafaya
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'noticetemplate' => 'გლობალური შეტყობინების თარგი',
+	'centralnotice-query' => 'მოქმედი შეტყობინების შეცვლა',
+	'centralnotice-end-date' => 'დასრულების თარიღი',
+	'centralnotice-modify' => 'გაგზავნა',
+	'centralnotice-remove' => 'წაშლა',
+	'centralnotice-translate-heading' => 'თარგმანი $1-თვის',
 	'centralnotice-add' => 'დამატება',
+	'centralnotice-show-notices' => 'შეტყობინებების ჩვენება',
 	'centralnotice-english' => 'ინგლისური',
 	'centralnotice-template-name' => 'თარგების სახელი',
 	'centralnotice-templates' => 'თარგები',
+	'centralnotice-locked' => 'დაბლოკილი',
+	'centralnotice-day' => 'დღე',
+	'centralnotice-year' => 'წელი',
 	'centralnotice-month' => 'თვე',
+	'centralnotice-hours' => 'საათი',
 	'centralnotice-project-lang' => 'პროექტის ენა',
 	'centralnotice-edit-template' => 'თარგის რედაქტირება',
 );
@@ -2599,8 +2829,10 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
+	'centralnotice-end-date' => 'កាលបរិច្ឆេទបញ្ចប់',
 	'centralnotice-modify' => 'ដាក់ស្នើ',
 	'centralnotice-preview' => 'មើលជាមុន',
 	'centralnotice-remove' => 'ដកចេញ',
@@ -2613,6 +2845,7 @@ $messages['km'] = array(
 	'centralnotice-english' => 'ភាសាអង់គ្លេស',
 	'centralnotice-template-name' => 'ឈ្មោះទំព័រគំរូ',
 	'centralnotice-templates' => 'ទំព័រគំរូ',
+	'centralnotice-weight' => 'ទម្ងន់​',
 	'centralnotice-locked' => 'បានចាក់សោ',
 	'centralnotice-day' => 'ថ្ងៃ',
 	'centralnotice-year' => 'ឆ្នាំ',
@@ -2621,13 +2854,16 @@ $messages['km'] = array(
 	'centralnotice-min' => 'នាទី',
 	'centralnotice-project-lang' => 'ភាសាគម្រោង',
 	'centralnotice-project-name' => 'ឈ្មោះគម្រោង',
+	'centralnotice-start-time' => 'ម៉ោង​ចាប់ផ្តើម (UTC)',
 	'centralnotice-preview-template' => 'មើលទំព័រគំរូជាមុន',
+	'centralnotice-start-hour' => 'ពេលចាប់ផ្តើម',
 	'centralnotice-edit-template' => 'កែប្រែទំព័រគំរូ',
 	'centralnotice-message' => 'សារ',
 	'centralnotice-clone' => 'ក្លូន',
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
@@ -2635,8 +2871,7 @@ $messages['ko'] = array(
 	'centralnotice' => '중앙 공지 관리',
 	'noticetemplate' => '중앙 공지 틀',
 	'centralnotice-desc' => '중앙에서 공지하는 사이트노티스를 추가',
-	'centralnotice-summary' => '이 모듈은 사용자께서 지금 중앙 공지의 설정을 편집하실 수 있도록 합니다.
-또한 오래된 공지를 삭제하거나 새로운 공지를 추가하실 수 있습니다.',
+	'centralnotice-summary' => '전체 공지 기능을 추가합니다. 현재의 공지 편집 기능과 공지의 추가/삭제 기능을 제공합니다.',
 	'centralnotice-query' => '현재 공지 수정하기',
 	'centralnotice-notice-name' => '공지 이름',
 	'centralnotice-end-date' => '종료 날짜',
@@ -2650,27 +2885,24 @@ $messages['ko'] = array(
 	'centralnotice-add' => '추가',
 	'centralnotice-add-notice' => '알림을 추가하기',
 	'centralnotice-add-template' => '틀을 추가하기',
-	'centralnotice-show-notices' => '공지를 보세요',
-	'centralnotice-list-templates' => '틀 목록',
+	'centralnotice-show-notices' => '공지 표시하기',
+	'centralnotice-list-templates' => '템플릿 목록 표시하기',
 	'centralnotice-translations' => '번역',
 	'centralnotice-translate-to' => '번역할 언어',
 	'centralnotice-translate' => '번역하기',
 	'centralnotice-english' => '영어',
 	'centralnotice-template-name' => '틀 이름',
 	'centralnotice-templates' => '틀',
-	'centralnotice-weight' => '중요',
+	'centralnotice-weight' => '중요도',
 	'centralnotice-locked' => '잠김',
 	'centralnotice-notices' => '공지',
-	'centralnotice-notice-exists' => '공지가 이미 있습니다.
-추가하지 마세요.',
+	'centralnotice-notice-exists' => '이미 공지가 존재합니다. 공지를 추가할 수 없습니다.',
 	'centralnotice-template-exists' => '틀이 이미 존재합니다.
 추가하지 않았습니다.',
-	'centralnotice-notice-doesnt-exist' => '공지가 없습니다.
-삭제할 것이 없습니다.',
-	'centralnotice-template-still-bound' => '공지에 틀이 여전히 연결되어 있습니다.
-삭제하지 마세요.',
-	'centralnotice-template-body' => '틀 본문:',
-	'centralnotice-day' => '날',
+	'centralnotice-notice-doesnt-exist' => '공지가 없습니다. 삭제할 수 없습니다.',
+	'centralnotice-template-still-bound' => '템플릿이 공지에 사용되고 있습니다. 삭제할 수 없습니다.',
+	'centralnotice-template-body' => '템플릿 내용:',
+	'centralnotice-day' => '일',
 	'centralnotice-year' => '연도',
 	'centralnotice-month' => '월',
 	'centralnotice-hours' => '시',
@@ -2680,42 +2912,35 @@ $messages['ko'] = array(
 	'centralnotice-start-date' => '시작 날짜',
 	'centralnotice-start-time' => '시작 시간 (UTC)',
 	'centralnotice-assigned-templates' => '배당된 틀',
-	'centralnotice-no-templates' => '틀을 찾을 수 없습니다.
-덧붙여주세요!',
-	'centralnotice-no-templates-assigned' => '공지에 해당하는 틀이 없습니다.
-덧붙여주세요!',
-	'centralnotice-available-templates' => '이용가능한 틀',
-	'centralnotice-template-already-exists' => '이미 공지에 틀이 배당되어 있습니다.
-덧붙이지 마세요',
+	'centralnotice-no-templates' => '사용 가능한 템플릿이 없습니다. 템플릿을 추가해주세요!',
+	'centralnotice-no-templates-assigned' => '해당 공지에 사용가능한 템플릿이 없습니다. 템플릿을 추가해주세요!',
+	'centralnotice-available-templates' => '사용 가능한 템플릿 목록',
+	'centralnotice-template-already-exists' => '템플릿이 이미 설정되어 있습니다. 추가할 수 없습니다.',
 	'centralnotice-preview-template' => '틀 미리 보기',
 	'centralnotice-start-hour' => '시작 시간',
 	'centralnotice-change-lang' => '번역할 언어 변경',
-	'centralnotice-weights' => '중요',
+	'centralnotice-weights' => '중요도',
 	'centralnotice-notice-is-locked' => '공지가 잠겼습니다.
 제거하지 않았습니다.',
-	'centralnotice-overlap' => '공지가 다른 공지의 게시 기간과 겹칩니다.
-추가하지 마세요.',
-	'centralnotice-invalid-date-range' => '무효 날짜 범위
-업데이트 안됨',
-	'centralnotice-null-string' => '무효 문자열을 추가할 수 없습니다.
-추가하지 마세요.',
+	'centralnotice-overlap' => '다른 공지와 시간이 중복됩니다. 추가할 수 없습니다.',
+	'centralnotice-invalid-date-range' => '날짜 형식이 잘못되었습니다. 추가할 수 없습니다.',
+	'centralnotice-null-string' => '공지 내용이 비었습니다. 추가할 수 없습니다.',
 	'centralnotice-confirm-delete' => '정말 이 항목을 삭제하시겠습니까?
 한 번 삭제하면 복구할 수 없습니다.',
-	'centralnotice-no-notices-exist' => '공지가 존재하지 않습니다.
-아래에 하나를 추가하세요',
-	'centralnotice-no-templates-translate' => '번역할 틀이 없습니다.',
+	'centralnotice-no-notices-exist' => '공지가 존재하지 않습니다. 공지를 추가해주세요.',
+	'centralnotice-no-templates-translate' => '번역해야 할 템플릿이 없습니다.',
 	'centralnotice-number-uses' => '사용',
 	'centralnotice-edit-template' => '틀 편집하기',
 	'centralnotice-message' => '메시지',
 	'centralnotice-message-not-set' => '메시지가 정의되지 않았습니다.',
 	'centralnotice-clone' => '사본',
 	'centralnotice-clone-notice' => '이 틀의 사본을 만들기',
-	'centralnotice-preview-all-template-translations' => '틀의 모든 가능한 번역 미리보기',
+	'centralnotice-preview-all-template-translations' => '템플렛의 모든 번역 미리 보기',
 	'right-centralnotice-admin' => '중앙 공지 관리',
 	'right-centralnotice-translate' => '중앙 공지 번역',
 	'action-centralnotice-admin' => '중앙 공지를 관리하기',
 	'action-centralnotice-translate' => '중앙 공지를 번역할',
-	'centralnotice-preferred' => '우선',
+	'centralnotice-preferred' => '우선적으로',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -2920,10 +3145,11 @@ $messages['lfn'] = array(
 /** Limburgish (Limburgs)
  * @author Matthias
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
 	'centralnotice' => 'Beheer centrale sitenotice',
-	'noticetemplate' => 'Sjebloeaner centrale ziejsnotisie',
+	'noticetemplate' => 'Sjablone centrale citenotice',
 	'centralnotice-desc' => "Voegt 'n centrale sitemededeling toe",
 	'centralnotice-summary' => 'Mit dees moduul kinne centraal ingestelde sitenotices bewerk waere.
 De module kin ouch gebroek waere om sitenotices toe te voge of aaj te wisse.',
@@ -3007,6 +3233,31 @@ De kins dr hiejónger 'ne toevoge",
 	'centralnotice-preferred' => 'Veurkäör',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'centralnotice-day' => 'Diena',
+	'centralnotice-year' => 'Metai',
+	'centralnotice-month' => 'Mėnuo',
+	'centralnotice-hours' => 'Valanda',
+	'centralnotice-min' => 'Minutė',
+	'centralnotice-project-lang' => 'Projekto kalba',
+	'centralnotice-project-name' => 'Projekto pavadinimas',
+	'centralnotice-start-date' => 'Pradžios data',
+	'centralnotice-start-time' => 'Pradžios laikas (UTC)',
+	'centralnotice-no-templates' => 'Nerasta šablonų.
+Pridėkite!',
+	'centralnotice-available-templates' => 'Galimi šablonai',
+	'centralnotice-preview-template' => 'Peržiūrėti šabloną',
+	'centralnotice-start-hour' => 'Pradžios laikas',
+	'centralnotice-edit-template' => 'Redaguoti šabloną',
+	'centralnotice-message' => 'Pranešimas',
+	'centralnotice-message-not-set' => 'Pranešimas nenustatytas',
+	'centralnotice-clone' => 'Klonuoti',
+	'centralnotice-clone-notice' => 'Sukurti šablono kopiją',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -3014,6 +3265,8 @@ $messages['mg'] = array(
 	'centralnotice' => "Fandrindàn'ny toerana fampandrenesana",
 	'noticetemplate' => "Endrin'ny toerana fampandrenesana",
 	'centralnotice-desc' => "Manampy toerana fampandrenesana amin'ilay tranonkala",
+	'centralnotice-query' => 'Ovay ny fampandrenesana misy ankehitriny',
+	'centralnotice-notice-name' => "Anaran'ilay fampandrenesana",
 	'centralnotice-end-date' => 'Daty fijanonana',
 	'centralnotice-enabled' => 'Mande',
 	'centralnotice-modify' => 'Alefaso',
@@ -3070,10 +3323,35 @@ Tsy nifafàna ilay izy',
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
+	'centralnotice' => 'Администратор на централни известувања',
+	'noticetemplate' => 'Шаблон за централни известувања',
 	'centralnotice-desc' => 'Централизирано известување',
+	'centralnotice-summary' => 'Овој модул ви овозможува да ги уредувате вашите моментално поставени централни известувања.
+Може да се користи и за додавање или отстранување на стари известувања.',
+	'centralnotice-query' => 'Измени моментални известувања',
+	'centralnotice-notice-name' => 'Назив на известувањето',
+	'centralnotice-end-date' => 'Истекува',
+	'centralnotice-enabled' => 'Овозможено',
+	'centralnotice-modify' => 'Испрати',
+	'centralnotice-preview' => 'Преглед',
+	'centralnotice-add-new' => 'Додај ново централно известување',
+	'centralnotice-remove' => 'Тргни',
+	'centralnotice-translate-heading' => 'Превод на $1',
+	'centralnotice-manage' => 'Раководење со централното известување',
+	'centralnotice-add' => 'Додај',
+	'centralnotice-add-notice' => 'Додај известување',
+	'centralnotice-add-template' => 'Додај шаблон',
+	'centralnotice-show-notices' => 'Прикажи известувања',
+	'centralnotice-list-templates' => 'Наведи шаблони',
+	'centralnotice-translations' => 'Преводи',
+	'centralnotice-translate-to' => 'Преведи на',
+	'centralnotice-translate' => 'Преведи',
+	'centralnotice-english' => 'англиски',
+	'centralnotice-template-name' => 'Назив на шаблонот',
 	'centralnotice-templates' => 'Шаблони',
 	'centralnotice-weight' => 'Тежина',
 	'centralnotice-locked' => 'Заклучено',
@@ -3084,6 +3362,8 @@ $messages['mk'] = array(
 Не е додаден',
 	'centralnotice-notice-doesnt-exist' => 'Известувањето не постои.
 Нема ништо за бришење',
+	'centralnotice-template-still-bound' => 'Шаблонот сè уште е врзан за известување.
+Нема да биде отстранет.',
 	'centralnotice-template-body' => 'Тело на шаблонот:',
 	'centralnotice-day' => 'Ден',
 	'centralnotice-year' => 'Година',
@@ -3096,7 +3376,41 @@ $messages['mk'] = array(
 	'centralnotice-start-time' => 'Почетен датум (UTC)',
 	'centralnotice-assigned-templates' => 'Придружени шаблони',
 	'centralnotice-no-templates' => 'Нема шаблони.
-Додади некој!',
+Додај некој!',
+	'centralnotice-no-templates-assigned' => 'Нема шаблони назначени за известување.
+Додајте некои!',
+	'centralnotice-available-templates' => 'Шаблони на располагање',
+	'centralnotice-template-already-exists' => 'Шаблонот е веќе врзан за кампањата.
+Нема да биде додаден',
+	'centralnotice-preview-template' => 'Преглед на шаблонот',
+	'centralnotice-start-hour' => 'Започнува',
+	'centralnotice-change-lang' => 'Смени јазик на превод',
+	'centralnotice-weights' => 'Тегови',
+	'centralnotice-notice-is-locked' => 'Известувањето е заклучено.
+Нема да биде отстрането',
+	'centralnotice-overlap' => 'Известувањето временски се преклопува со друго известување.
+Нема да биде додадено',
+	'centralnotice-invalid-date-range' => 'Погрешен временски опсег.
+Не се обновува',
+	'centralnotice-null-string' => 'Не можете да додадете нулта низа.
+Нема да биде додадено',
+	'centralnotice-confirm-delete' => 'Дали сте сигурни дека сакате да ја избришење оваа ставка?
+Ова ќе биде неповратно.',
+	'centralnotice-no-notices-exist' => 'Нема никакви известувања.
+Додајте известување подолу.',
+	'centralnotice-no-templates-translate' => 'Нема шаблони за кои можете да уредите преведувања',
+	'centralnotice-number-uses' => 'Користи',
+	'centralnotice-edit-template' => 'Уреди шаблон',
+	'centralnotice-message' => 'Порака',
+	'centralnotice-message-not-set' => 'Порката не е поставена',
+	'centralnotice-clone' => 'Клонирај',
+	'centralnotice-clone-notice' => 'Создај копија на шаблонот',
+	'centralnotice-preview-all-template-translations' => 'Преглед на сите расположиви преводи на шаблонот',
+	'right-centralnotice-admin' => 'Раководење со централни известувања',
+	'right-centralnotice-translate' => 'Преведување на централни известувања',
+	'action-centralnotice-admin' => 'раководење со централни известувања',
+	'action-centralnotice-translate' => 'преведување на цетрални известувања',
+	'centralnotice-preferred' => 'Претпочитано',
 );
 
 /** Malayalam (മലയാളം)
@@ -3681,6 +3995,20 @@ $messages['os'] = array(
 	'centralnotice-project-name' => 'Проекты ном',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'centralnotice-translations' => 'Iwwersetzinge',
+	'centralnotice-translate-to' => 'Iwwersetze in',
+	'centralnotice-translate' => 'Iwwersetze',
+	'centralnotice-english' => 'Englisch',
+	'centralnotice-day' => 'Daag',
+	'centralnotice-year' => 'Yaahr',
+	'centralnotice-month' => 'Munet',
+	'centralnotice-hours' => 'Schtund',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
@@ -4067,6 +4395,7 @@ Kay qatiqpi hukta yapay',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  */
@@ -4097,13 +4426,15 @@ $messages['ro'] = array(
 	'centralnotice-month' => 'Lună',
 	'centralnotice-hours' => 'Oră',
 	'centralnotice-min' => 'Minut',
+	'centralnotice-project-lang' => 'Limba proiectului',
+	'centralnotice-project-name' => 'Numele proiectului',
 	'centralnotice-available-templates' => 'Formate disponibile',
 	'centralnotice-edit-template' => 'Modifică format',
 	'centralnotice-message' => 'Mesaj',
 	'centralnotice-clone-notice' => 'Creează o copie a formatului',
 	'right-centralnotice-translate' => 'Traduce anunţurile centrale',
-	'action-centralnotice-admin' => 'administrezi anunţurile centrale',
-	'action-centralnotice-translate' => 'traduci anunţurile centrale',
+	'action-centralnotice-admin' => 'administraţi anunţurile centrale',
+	'action-centralnotice-translate' => 'traduceţi anunţurile centrale',
 );
 
 /** Tarandíne (Tarandíne)
@@ -4464,7 +4795,7 @@ Túto operáciu nebude možné vrátiť.',
 	'centralnotice-preferred' => 'Uprednostňované',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Јованвб
  * @author Михајло Анђелковић
@@ -4535,6 +4866,77 @@ $messages['sr-ec'] = array(
 	'centralnotice-message' => 'Порука',
 	'centralnotice-message-not-set' => 'Порука није подешена',
 	'centralnotice-clone' => 'Клонирај',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'centralnotice-desc' => 'Dodaje centralnu napomenu na sajt.',
+	'centralnotice-query' => 'Izmeni trenutna obaveštenja',
+	'centralnotice-notice-name' => 'Ime obaveštenja',
+	'centralnotice-end-date' => 'Završni datum',
+	'centralnotice-enabled' => 'Omogućeno',
+	'centralnotice-modify' => 'Pošalji',
+	'centralnotice-preview' => 'Prikaži',
+	'centralnotice-add-new' => 'Dodaj novu centralnu napomenu',
+	'centralnotice-remove' => 'Ukloni',
+	'centralnotice-translate-heading' => 'Prevod za $1',
+	'centralnotice-manage' => 'Uredi centralnu napomenu',
+	'centralnotice-add' => 'Dodaj',
+	'centralnotice-add-notice' => 'Dodaj obaveštenje',
+	'centralnotice-add-template' => 'Dodaj šablon',
+	'centralnotice-show-notices' => 'Prikaži obaveštenja',
+	'centralnotice-list-templates' => 'Spisak šablona',
+	'centralnotice-translations' => 'Prevodi',
+	'centralnotice-translate-to' => 'Prevedi na',
+	'centralnotice-translate' => 'Prevedi',
+	'centralnotice-english' => 'Engleski',
+	'centralnotice-template-name' => 'Ime šablona',
+	'centralnotice-templates' => 'Šabloni',
+	'centralnotice-weight' => 'Težina',
+	'centralnotice-locked' => 'Zaključano',
+	'centralnotice-notices' => 'Obaveštenja',
+	'centralnotice-notice-exists' => 'Napomena već postoji.
+Neće biti dodata',
+	'centralnotice-template-exists' => 'Šablon već postoji.
+Neće biti dodat',
+	'centralnotice-notice-doesnt-exist' => 'Napomena ne postoji.
+Nema šta da se obriše',
+	'centralnotice-template-still-bound' => 'Šablon je još uvek pridružen napomeni.
+Neće biti obrisan.',
+	'centralnotice-template-body' => 'Telo šablona:',
+	'centralnotice-day' => 'Dan',
+	'centralnotice-year' => 'Godina',
+	'centralnotice-month' => 'Mesec',
+	'centralnotice-hours' => 'Sat',
+	'centralnotice-min' => 'Minut',
+	'centralnotice-project-lang' => 'Ime projekta',
+	'centralnotice-project-name' => 'Ime projekta',
+	'centralnotice-start-date' => 'Početni datum',
+	'centralnotice-start-time' => 'Početno vreme (UTC)',
+	'centralnotice-no-templates' => 'Šabloni nisu proađen.
+Dodaj neki!',
+	'centralnotice-available-templates' => 'Raspoloživi šabloni',
+	'centralnotice-preview-template' => 'Prikaži šablon',
+	'centralnotice-start-hour' => 'Početno vreme',
+	'centralnotice-change-lang' => 'Izmeni jezik transliteracije',
+	'centralnotice-weights' => 'Težine',
+	'centralnotice-notice-is-locked' => 'Napomena je zaključana.
+Nije bila obrisana',
+	'centralnotice-invalid-date-range' => 'Neispravan opseg podataka.
+Ažuriranje nije izvršeno',
+	'centralnotice-null-string' => 'Nije moguće dodavanje praznog stringa.
+Nije dodat',
+	'centralnotice-confirm-delete' => 'Da li ste sigurni da želite da obrišete ovu stavku?
+Ova akcija se ne može vratiti.',
+	'centralnotice-no-notices-exist' => 'Nema napomena.
+Dodajte jednu ispod.',
+	'centralnotice-number-uses' => 'Korišćenje',
+	'centralnotice-edit-template' => 'Izmeni šablon',
+	'centralnotice-message' => 'Poruka',
+	'centralnotice-message-not-set' => 'Poruka nije podešena',
+	'centralnotice-clone' => 'Kloniraj',
 );
 
 /** Seeltersk (Seeltersk)
@@ -4755,6 +5157,7 @@ $messages['te'] = array(
 	'centralnotice-start-date' => 'ప్రారంభ తేదీ',
 	'centralnotice-start-time' => 'ప్రారంభ సమయం (UTC)',
 	'centralnotice-change-lang' => 'అనువాదపు భాషని మార్చండి',
+	'centralnotice-weights' => 'భారాలు',
 	'centralnotice-number-uses' => 'వాడుకరులు',
 	'centralnotice-message' => 'సందేశం',
 	'right-centralnotice-translate' => 'కేంద్రీయ గమనికలని అనుదించండి',
@@ -5480,23 +5883,94 @@ $messages['yue'] = array(
  * @author Alex S.H. Lin
  * @author Chenzw
  * @author Gzdavidwong
+ * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'centralnotice' => '中央通告管理',
+	'noticetemplate' => '中央通告模板',
 	'centralnotice-desc' => '在页面的顶部增加統一的公告栏位',
+	'centralnotice-summary' => '这个模块允许你编辑你当前设置的中央通告。
+它也可以用于添加或删除旧的通告。',
+	'centralnotice-query' => '修改当前的通告',
+	'centralnotice-notice-name' => '通告名称',
+	'centralnotice-end-date' => '结束日期',
 	'centralnotice-enabled' => '已启用',
 	'centralnotice-modify' => '提交',
 	'centralnotice-preview' => '预览',
+	'centralnotice-add-new' => '添加一个新的中央通告',
 	'centralnotice-remove' => '移除',
+	'centralnotice-translate-heading' => '$1的翻译',
+	'centralnotice-manage' => '管理中央通告',
+	'centralnotice-add' => '添加',
+	'centralnotice-add-notice' => '添加一个通告',
+	'centralnotice-add-template' => '添加一个模板',
+	'centralnotice-show-notices' => '显示通告',
+	'centralnotice-list-templates' => '列出模板',
+	'centralnotice-translations' => '翻译',
+	'centralnotice-translate-to' => '翻译到',
 	'centralnotice-translate' => '翻译',
 	'centralnotice-english' => '英语',
 	'centralnotice-template-name' => '模板名称',
 	'centralnotice-templates' => '模板',
+	'centralnotice-weight' => '权重',
 	'centralnotice-locked' => '已锁定',
+	'centralnotice-notices' => '通告',
+	'centralnotice-notice-exists' => '通告已经存在。
+没有添加',
+	'centralnotice-template-exists' => '模板已经存在。
+没有添加',
+	'centralnotice-notice-doesnt-exist' => '通告不存在。
+没有东西移除',
+	'centralnotice-template-still-bound' => '模板不存在。
+没有东西移除。',
+	'centralnotice-template-body' => '模板体：',
+	'centralnotice-day' => '日',
+	'centralnotice-year' => '年',
+	'centralnotice-month' => '月',
+	'centralnotice-hours' => '时',
+	'centralnotice-min' => '分',
 	'centralnotice-project-lang' => '计划语言',
 	'centralnotice-project-name' => '计划名称',
+	'centralnotice-start-date' => '开始日期',
+	'centralnotice-start-time' => '开始时间（UTC）',
+	'centralnotice-assigned-templates' => '已分配的模板',
+	'centralnotice-no-templates' => '没有找到模板。
+添加一些！',
+	'centralnotice-no-templates-assigned' => '没有模板分配到通告。
+添加一些！',
+	'centralnotice-available-templates' => '可用模板',
+	'centralnotice-template-already-exists' => '模板已经绑定到营销。
+没有添加',
 	'centralnotice-preview-template' => '预览模板',
+	'centralnotice-start-hour' => '开始时间',
+	'centralnotice-change-lang' => '改变翻译语言',
+	'centralnotice-weights' => '权重',
+	'centralnotice-notice-is-locked' => '通告已经锁定。
+没有移除',
+	'centralnotice-overlap' => '通告在另一个通告的时间内重叠。
+没有添加',
+	'centralnotice-invalid-date-range' => '无效日期范围。
+没有更新',
+	'centralnotice-null-string' => '不能添加一个空字符串。
+没有添加',
+	'centralnotice-confirm-delete' => '你确定要删除这个项目？
+这个动作是不可恢复的。',
+	'centralnotice-no-notices-exist' => '不存在通告。
+在下面添加一个。',
+	'centralnotice-no-templates-translate' => '没有任何可以编辑翻译的模板',
+	'centralnotice-number-uses' => '使用',
 	'centralnotice-edit-template' => '编辑模板',
+	'centralnotice-message' => '消息',
+	'centralnotice-message-not-set' => '没有设置消息',
+	'centralnotice-clone' => '建立副本',
+	'centralnotice-clone-notice' => '创建一个模板的副本',
+	'centralnotice-preview-all-template-translations' => '预览模板的所有可用翻译',
+	'right-centralnotice-admin' => '管理中央通告',
+	'right-centralnotice-translate' => '翻译中央通告',
+	'action-centralnotice-admin' => '管理中央通告',
+	'action-centralnotice-translate' => '翻译中央通告',
+	'centralnotice-preferred' => '偏好的',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -5516,5 +5990,7 @@ $messages['zh-hant'] = array(
 	'centralnotice-project-name' => '計劃名稱',
 	'centralnotice-preview-template' => '預覽模板',
 	'centralnotice-edit-template' => '編輯模板',
+	'right-centralnotice-admin' => '管理中央通告',
+	'right-centralnotice-translate' => '翻譯中央通告',
 );
 

@@ -90,7 +90,7 @@ class CodeTestRun {
 		$insertData['ctrun_id'] = $dbw->insertId();
 		$run = new CodeTestRun( $suite, $insertData );
 		if( $status == 'complete' && $results ) {
-			$run->insertData( $results );
+			$run->insertResults( $results );
 		}
 		return $run;
 	}

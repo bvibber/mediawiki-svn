@@ -75,7 +75,7 @@ $aliases['de'] = array(
 
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'CategoryTree' => array( 'Kategorijow bom' ),
+	'CategoryTree' => array( 'Bom kategorijow' ),
 );
 
 /** Greek (Ελληνικά) */
@@ -157,7 +157,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'CategoryTree' => array( 'Pohon kategori' ),
+	'CategoryTree' => array( 'Pohon kategori', 'PohonKategori' ),
 );
 
 /** Ido (Ido) */
@@ -278,6 +278,16 @@ $aliases['ro'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'CategoryTree' => array( 'वर्गवृक्ष:' ),
+);
+
+/** Sinhala (සිංහල) */
+$aliases['si'] = array(
+	'CategoryTree' => array( 'ප්‍රවර්ගරුක' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CategoryTree' => array( 'StromKategórií' ),
 );
 
 /** Swedish (Svenska) */

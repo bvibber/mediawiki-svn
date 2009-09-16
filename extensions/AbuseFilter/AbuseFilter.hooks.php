@@ -16,6 +16,14 @@ class AbuseFilterHooks {
 		$articleCacheKey = $title->getNamespace().':'.$title->getText();
 		AFComputedVariable::$articleCache[$articleCacheKey] = $editor->mArticle;
 		
+		// Check for null edits.
+		$oldtext = $editor->mArticle->getContent();
+		
+		if ( strcmp( $oldtext, $text ) == 0 ) {
+			// Don't trigger for null edits.
+			return true;
+		}
+		
 		global $wgUser;
 		$vars->addHolder( AbuseFilter::generateUserVars( $wgUser ) );
 		$vars->addHolder( AbuseFilter::generateTitleVars( $editor->mTitle , 'ARTICLE' ) );
@@ -23,13 +31,7 @@ class AbuseFilterHooks {
 		$vars->setVar( 'SUMMARY', $summary );
 		$vars->setVar( 'minor_edit', $editor->minoredit );
 		
-		$vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-timestamp',
-			array(
-					'timestamp' => $editor->edittime,
-					'namespace' => $editor->mTitle->getNamespace(),
-					'title' => $editor->mTitle->getText(),
-				) );
-				
+		$vars->setVar( 'old_wikitext', $oldtext );
 		$vars->setVar( 'new_wikitext', $text );
 
 		$vars->addHolder( AbuseFilter::getEditVars( $editor->mTitle ) );
@@ -204,15 +206,16 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder;
 		
 		global $wgUser;
+		$title = Title::makeTitle($saveName, NS_FILE);
 		$vars->addHolder( AbuseFilterVariableHolder::merge(
 							AbuseFilter::generateUserVars( $wgUser ),
-							AbuseFilter::generateTitleVars( Title::newFromText($saveName), 'FILE' )
+							AbuseFilter::generateTitleVars( $title, 'FILE' )
 				) );
 				
 		$vars->setVar( 'ACTION', 'upload' );
 		$vars->setVar( 'file_sha1', sha1_file( $tempName ) ); // TODO share with save
 		
-		$filter_result = AbuseFilter::filterAction( $vars, Title::newFromText( $saveName ) );
+		$filter_result = AbuseFilter::filterAction( $vars, $title );
 		
 		if ( is_string($filter_result) ) {
 			$error = $filter_result;

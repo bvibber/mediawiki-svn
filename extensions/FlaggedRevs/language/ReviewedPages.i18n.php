@@ -10,7 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'reviewedpages' => 'Reviewed pages',
 	'reviewedpages-leg' => 'List pages by highest level',
-	'reviewedpages-list' => 'The following {{PLURAL:$1|page has|pages have}} been reviewed to the specified level',
+	'reviewedpages-list' => 'This page lists pages that been reviewed (at highest) to the specified level.',
 	'reviewedpages-none' => 'There are no pages in this list',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-sighted}}',
 	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
@@ -38,6 +38,13 @@ Parameter $1 is the number of reviewed pages for use with PLURAL.',
 	'reviewedpages-best' => '{{Flagged Revs}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'reviewedpages-lev-2' => 'Uitgelig',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -55,11 +62,12 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'reviewedpages' => 'صفحات مراجعة',
 	'reviewedpages-leg' => 'اعرض الصفحات حسب أعلى مستوى',
-	'reviewedpages-list' => '{{PLURAL:$1|الصفحة|الصفحات}} التالية تمت مراجعتها حتى المستوى المحدد',
+	'reviewedpages-list' => 'تمت مراجعة {{PLURAL:$1||الصفحة التالية|الصفحتان التاليتان|الصفحات التالية}} حتى المستوى المحدد',
 	'reviewedpages-none' => 'لا توجد صفحات في هذه القائمة',
 	'reviewedpages-lev-0' => 'منظورة',
 	'reviewedpages-lev-1' => 'جودة',
@@ -120,7 +128,7 @@ $messages['bcc'] = array(
 $messages['be-tarask'] = array(
 	'reviewedpages' => 'Правераныя старонкі',
 	'reviewedpages-leg' => 'Сьпіс старонак адсартаваны па ўзроўню адзнакі',
-	'reviewedpages-list' => '{{PLURAL:$1|Наступная старонка была правераная і мае|Наступныя старонкі былі правераны і маюць}} пазначаны ўзровень',
+	'reviewedpages-list' => 'На гэтай старонцы пададзены сьпіс старонак, якія рэцэнзаваліся на ўказаны ўзровень.',
 	'reviewedpages-none' => 'У гэтым сьпісе няма старонак',
 	'reviewedpages-all' => 'правераныя вэрсіі',
 	'reviewedpages-best' => 'найлепшая вэрсія',
@@ -156,10 +164,25 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'reviewedpages' => 'Pajennoù adwelet',
+	'reviewedpages-leg' => 'Rollañ ar pajennoù dre al live uhelañ',
+	'reviewedpages-list' => "Rollet eo war ar bajenn-mañ ar pajennoù bet adwelet (d'ar muiañ) d'al live spisaet.",
+	'reviewedpages-none' => "N'eus pajenn ebet er roll",
 	'reviewedpages-lev-1' => 'Perzhded',
 	'reviewedpages-lev-2' => 'Lakaet war wel',
 	'reviewedpages-all' => 'stummoù adwelet',
 	'reviewedpages-best' => 'adweladenn bennañ',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'reviewedpages' => 'Provjerene stranice',
+	'reviewedpages-leg' => 'Spisak stranica po najvišem nivou',
+	'reviewedpages-list' => 'Ova stranica prikazuje stranice koje su provjerene (najviše) do određenog nivoa.',
+	'reviewedpages-none' => 'Nema stranica na ovom spisku',
+	'reviewedpages-all' => 'pregledane verzije',
+	'reviewedpages-best' => 'najkvalitetnija revizija',
 );
 
 /** Catalan (Català)
@@ -205,7 +228,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'reviewedpages' => 'Pśeglědane boki',
 	'reviewedpages-leg' => 'Boki pó nejwušej rowninje nalicyś',
-	'reviewedpages-list' => '{{PLURAL:$1|Slědujucy bok jo se pśeglědał|Slědujucej boka stej se pśegłědałej|Slědujuce boki su se pśeglědali|Slědujuce boki su se pśeglědali}} za pódanu rowninu',
+	'reviewedpages-list' => 'Toś ten bok nalistujo boki, kótarež su se pśeglědali (w nejwušem paźe) na pódanej rowninje.',
 	'reviewedpages-none' => 'Toś ta lisćina njewopśimujo boki.',
 	'reviewedpages-lev-0' => 'Pśeglědany',
 	'reviewedpages-lev-1' => 'Kwalita',
@@ -223,9 +246,11 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'reviewedpages' => 'Επιθεωρημένες σελίδες',
 	'reviewedpages-leg' => 'Λίστα σελίδων κατά υψηλότερο επίπεδο',
+	'reviewedpages-list' => 'Αυτή η σελίδα απαριθμεί σελίδες που επιθεωρήθηκαν (το περισσότερο) στο καθορισμένο επίπεδο.',
 	'reviewedpages-none' => 'Δεν υπάρχουν σελίδες σε αυτήν τη λίστα',
 	'reviewedpages-lev-1' => 'Ποιότητα',
 	'reviewedpages-all' => 'αναθεωρημένες εκδόσεις',
+	'reviewedpages-best' => 'πρωταρχική αναθεώρηση',
 );
 
 /** Esperanto (Esperanto)
@@ -234,7 +259,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'reviewedpages' => 'Kontrolitaj paĝoj',
 	'reviewedpages-leg' => 'Montri paĝojn laŭ plej alta nivelo',
-	'reviewedpages-list' => 'La {{PLURAL:$1|jena paĝo estis kontrolita|jenaj paĝoj estis kontrolitaj}} al la specifa nivelo.',
+	'reviewedpages-list' => 'Ĉi tiu paĝo montras paĝojn kontrolitajn (maksimume) al la petita nivelo.',
 	'reviewedpages-none' => 'Neniuj paĝoj estas en ĉi tiu listo',
 	'reviewedpages-lev-0' => 'Reviziita',
 	'reviewedpages-lev-1' => 'Kvalito',
@@ -250,7 +275,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'reviewedpages' => 'Páginas revisadas',
 	'reviewedpages-leg' => 'Lista de páginas por nivel más alto',
-	'reviewedpages-list' => 'Las siguientes {{PLURAL:$1|página ha has|páginas han}} sido revisadas al nivel especificado',
+	'reviewedpages-list' => 'Esta página lista páginas que han sido revisadas (al más alto) al nivel especificado.',
 	'reviewedpages-none' => 'No hay páginas en esta lista',
 	'reviewedpages-lev-0' => 'Visto',
 	'reviewedpages-lev-1' => 'Calidad',
@@ -289,6 +314,7 @@ $messages['fi'] = array(
 	'reviewedpages-none' => 'Tällä listalla ei ole sivuja.',
 	'reviewedpages-lev-0' => 'Kertaalleen silmäilty',
 	'reviewedpages-lev-2' => 'Suositeltu',
+	'reviewedpages-all' => 'tarkistetut versiot',
 );
 
 /** French (Français)
@@ -296,11 +322,12 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'reviewedpages' => 'Pages passées en revue',
 	'reviewedpages-leg' => 'Liste des pages par plus haut niveau',
-	'reviewedpages-list' => '{{PLURAL:$1|La page suivante a été passé|Les pages suivantes ont été passées}} en revue au niveau spécifié',
+	'reviewedpages-list' => 'Cette page liste les pages ont été passées en revue (au plus) au niveau spécifié.',
 	'reviewedpages-none' => 'Cette liste est vide',
 	'reviewedpages-lev-0' => 'Visualisée',
 	'reviewedpages-lev-1' => 'De qualité',
@@ -331,7 +358,7 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'reviewedpages' => 'Páxinas revisadas',
 	'reviewedpages-leg' => 'Lista as páxinas polo nivel máis alto',
-	'reviewedpages-list' => '{{PLURAL:$1|A seguinte páxina foi revisada|As seguintes páxinas foron revisadas}} ao nivel especificado',
+	'reviewedpages-list' => 'Esta páxina lista as páxinas que foron revisadas (polo maior) ao nivel especificado.',
 	'reviewedpages-none' => 'Non hai páxinas nesta lista',
 	'reviewedpages-lev-0' => 'Revisado',
 	'reviewedpages-lev-1' => 'Calidade',
@@ -358,7 +385,7 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'reviewedpages' => 'Lischt vu dr Syte, wu vum Fäldhieter gsäh sin',
 	'reviewedpages-leg' => 'D Syte no em hegschte Level uflischte',
-	'reviewedpages-list' => 'Die Syte {{PLURAL:$1|isch gsichtet un het|sin gsichtet un hän}} dr Status, wu aagee isch, iberchu',
+	'reviewedpages-list' => 'Die Syte zeigt Syte, wu uf em hegschte Nivo prieft sin.',
 	'reviewedpages-none' => 'Die Lischt isch läär.',
 	'reviewedpages-lev-0' => 'Vum Fäldhieter gsäh',
 	'reviewedpages-lev-1' => 'Prieft',
@@ -402,17 +429,18 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'reviewedpages' => 'Ocijenjene stranice',
-	'reviewedpages-leg' => 'Prikaži popis stranica ocijenjenih ocjenom',
-	'reviewedpages-list' => 'Slijedeće stranice su ocijenjene ocjenom',
+	'reviewedpages-leg' => 'Prikaži stranice s najvišom ocjenom',
+	'reviewedpages-list' => '{{PLURAL:$1|Sljedeća stranica je ocjenjena|Sljedeće stranice su ocijenjene}} traženom ocjenom',
 	'reviewedpages-none' => 'Nema stranica u ovom popisu',
 	'reviewedpages-lev-0' => 'Pregledani članci',
 	'reviewedpages-lev-1' => 'Kvalitetni članci',
 	'reviewedpages-lev-2' => 'Izvrsni članci',
 	'reviewedpages-all' => 'ocjenjene verzije',
-	'reviewedpages-best' => 'posljednja najviše ocijenjena inačica',
+	'reviewedpages-best' => 'prvotna inačica',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -421,7 +449,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'reviewedpages' => 'Pruwowane strony',
 	'reviewedpages-leg' => 'Strony po najwyšej runinje nalistować',
-	'reviewedpages-list' => '{{PLURAL:$1|Slědowaca strona bu za podatu runinu přepruwowana|Slědowacej stronje buštej za podatu runinu přepruwowanej|Slědowace strony buchu za podatu runinu přepruwowane|Slědowace strony buchu za podatu runinu přepruwowane}}',
+	'reviewedpages-list' => 'Tuta strona nalistuje strony, kotrež buchu (w najwyšim padźe) na podatej runinje přepruwowane.',
 	'reviewedpages-none' => 'W tutej lisćinje strony njejsu',
 	'reviewedpages-lev-0' => 'Přehladany',
 	'reviewedpages-lev-1' => 'Kwalita',
@@ -463,16 +491,17 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'reviewedpages' => 'Halaman tertinjau',
 	'reviewedpages-leg' => 'Daftar halaman yang telah ditinjau menurut tingkat tertinggi',
-	'reviewedpages-list' => '{{PLURAL:$1|Halaman|Halaman-halaman}} berikut telah ditinjau hingga tingkat tertentu',
-	'reviewedpages-none' => 'Tak ada halaman pada daftar ini',
+	'reviewedpages-list' => 'Halaman berikut berisi daftar halaman yang telah ditinjau hingga tingkat tertentu',
+	'reviewedpages-none' => 'Tidak ada halaman di dalam daftar ini',
 	'reviewedpages-lev-0' => 'Terperiksa',
 	'reviewedpages-lev-1' => 'Layak',
-	'reviewedpages-lev-2' => 'Terpilih',
+	'reviewedpages-lev-2' => '{{int:revreview-lev-pristine}}',
 	'reviewedpages-all' => 'versi tertinjau',
 	'reviewedpages-best' => 'revisi berperingkat tertinggi terakhir',
 );
@@ -493,7 +522,7 @@ $messages['is'] = array(
 $messages['it'] = array(
 	'reviewedpages' => 'Pagine revisionate',
 	'reviewedpages-leg' => 'Elenca le pagine revisionate a un certo livello',
-	'reviewedpages-list' => 'Le seguenti pagine sono state revisionate al livello specificato',
+	'reviewedpages-list' => 'Di seguito sono elencate le pagine che sono state revisionate (al massimo) al livello specificato.',
 	'reviewedpages-none' => 'Non ci sono pagine in questo elenco',
 	'reviewedpages-lev-0' => 'Visionata',
 	'reviewedpages-lev-1' => 'Qualità',
@@ -510,7 +539,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'reviewedpages' => '査読済みページ',
 	'reviewedpages-leg' => 'もっとも高い評価を受けたページを一覧する',
-	'reviewedpages-list' => '以下は、査読結果が指定した水準にあるページです',
+	'reviewedpages-list' => 'このページは査読結果が(最高で)指定した水準にあるページを一覧しています。',
 	'reviewedpages-none' => '表示すべきページはありません',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-sighted}}',
 	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
@@ -596,7 +625,7 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'reviewedpages' => 'Nohjekik Versione',
 	'reviewedpages-leg' => 'Sigge opleßte noh de hühßte Makeerung',
-	'reviewedpages-list' => 'Hee di {{PLURAL:$1|Sigg es|Sigge sen|noll Sigge sen}} nohjekik, se {{PLURAL:$1|sullt dat|sullte dat|sullte et}} aanjejovve Nivo han',
+	'reviewedpages-list' => 'Hee di {{PLURAL:$1|Sigg es|Sigge sen|noll Sigge sen}} nohjekik, se {{PLURAL:$1|sullt dat|sullte dat|sullte et}} aanjejovve Nivo han.',
 	'reviewedpages-none' => 'En dä Leß sin kein Sigge.',
 	'reviewedpages-all' => 'nohjekik Versione',
 	'reviewedpages-best' => 'de neuste un aam hühßte enjeshtoof nohjekik Version',
@@ -608,7 +637,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'reviewedpages' => 'Lëscht vun den iwwerkuckte Säiten',
 	'reviewedpages-leg' => 'Lëscht vun de Säite mat dem héichste Niveau',
-	'reviewedpages-list' => 'Dës {{PLURAL:$1|Säit|Säite}} goufen nogekuckt an entspriechen dem héichste Niveau',
+	'reviewedpages-list' => 'Op dëser Säit sti Säiten déi nogekuckt goufen (amhéichsten) an entspriechen dem Niveau deen uginn ass.',
 	'reviewedpages-none' => 'Dës Lëscht ass eidel',
 	'reviewedpages-lev-0' => 'iwwerkuckt',
 	'reviewedpages-lev-1' => 'Qualitéit',
@@ -634,12 +663,13 @@ $messages['li'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'reviewedpages' => 'Оценувани страници',
 	'reviewedpages-leg' => 'Листа на страници на највисоко ниво',
-	'reviewedpages-list' => 'Следните страници биле оценувани до наведеното ниво',
+	'reviewedpages-list' => '{{PLURAL:$1|Следнава страница е прегледувана|Следниве страници се прегледувани}} до назначеното ниво',
 	'reviewedpages-none' => 'Нема страници во оваа листа',
 	'reviewedpages-lev-0' => 'Прегледани',
 	'reviewedpages-lev-1' => 'Квалитетни',
@@ -707,7 +737,7 @@ $messages['nah'] = array(
 $messages['nl'] = array(
 	'reviewedpages' => "Pagina's met eindredactie",
 	'reviewedpages-leg' => "Een lijst met pagina's met het hoogste niveau",
-	'reviewedpages-list' => "De volgende {{PLURAL:$1|pagina heeft|pagina's hebben}} eindredactie tot het aangegeven niveau",
+	'reviewedpages-list' => "De volgende pagina's hebben eindredactie tot ten hoogste het aangegeven niveau.",
 	'reviewedpages-none' => 'Geen resultaten',
 	'reviewedpages-lev-0' => 'Gecontroleerd',
 	'reviewedpages-lev-1' => 'Kwaliteit',
@@ -761,10 +791,10 @@ $messages['nso'] = array(
 $messages['oc'] = array(
 	'reviewedpages' => 'Pagina passadas en revista',
 	'reviewedpages-leg' => 'Lista de las paginas per nivèl pus naut',
-	'reviewedpages-list' => '{{PLURAL:$1|La pagina seguenta es estada passada|Las paginas seguentas son estadas passadas}} en revista al nivèl especificat',
+	'reviewedpages-list' => 'Aquesta pagina fa la lista de las paginas en revista (al mai) al nivèl especificat.',
 	'reviewedpages-none' => 'Aquesta lista es voida',
-	'reviewedpages-lev-0' => 'Vist',
-	'reviewedpages-lev-1' => 'Qualitat',
+	'reviewedpages-lev-0' => 'Visualizat',
+	'reviewedpages-lev-1' => 'De qualitat',
 	'reviewedpages-lev-2' => 'Mes en abans',
 	'reviewedpages-all' => 'versions passadas en revista',
 	'reviewedpages-best' => 'Revision principala',
@@ -777,13 +807,25 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'reviewedpages' => 'Przejrzane strony',
 	'reviewedpages-leg' => 'Lista stron posortowana wg jakości',
-	'reviewedpages-list' => '{{PLURAL:$1|Poniższa strona została oznaczona i ma|Poniższe strony zostały oznaczone i mają}} określony status',
+	'reviewedpages-list' => 'Poniższa strona zawiera {{PLURAL:$1|artykuł, który został oznaczony|listę artykułów, które zostały oznaczone (w większości)}} uzyskując określony status.',
 	'reviewedpages-none' => 'Brak stron na tej liście',
 	'reviewedpages-lev-0' => 'Przejrzane',
 	'reviewedpages-lev-1' => 'Zweryfikowane',
 	'reviewedpages-lev-2' => 'Doskonałe',
 	'reviewedpages-all' => 'wersje oznaczone',
 	'reviewedpages-best' => 'wersja najlepsza',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'reviewedpages' => 'Pàgine revisionà',
+	'reviewedpages-leg' => 'Lista le pàgine dal livel pì àut',
+	'reviewedpages-list' => 'Sta pàgina-sì a lista le pàgine che a son stàite revisionà (al pì) al livel spessifià.',
+	'reviewedpages-none' => 'A-i é pa ëd pàgine an sta lista-sì',
+	'reviewedpages-all' => 'vërsion revisionà',
+	'reviewedpages-best' => 'rla mèj revision',
 );
 
 /** Pashto (پښتو)
@@ -795,13 +837,14 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Giro720
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'reviewedpages' => 'Páginas analisadas',
 	'reviewedpages-leg' => 'Listar páginas por nível mais alto',
-	'reviewedpages-list' => '{{PLURAL:$1|A página a seguir foi|As páginas a seguir foram}} analisadas no nível especificado',
+	'reviewedpages-list' => 'Esta página lista as páginas que foram analisadas no nível especificado',
 	'reviewedpages-none' => 'Não há páginas nesta lista',
 	'reviewedpages-lev-0' => 'Objetiva',
 	'reviewedpages-lev-1' => 'Qualidade',
@@ -841,7 +884,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'reviewedpages' => 'Pàggene reviste',
 	'reviewedpages-leg' => 'Liste de le pàggene de levèlle cchiù ierte',
-	'reviewedpages-list' => "{{PLURAL:$1|'a pàgene ha|le pàggene onne}} state reviste sus a 'nu specifiche levèlle",
+	'reviewedpages-list' => "Sta pàgene elenghe le pàggene ca onne state reviste (le cchiù ierte) sus a 'nu specifiche levèlle.",
 	'reviewedpages-none' => "Non ge stonne pàggene jndr'à sta liste",
 	'reviewedpages-lev-0' => 'Viste',
 	'reviewedpages-lev-1' => 'Qualità',
@@ -857,7 +900,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'reviewedpages' => 'Проверенные страницы',
 	'reviewedpages-leg' => 'Список страниц, по уровню оценки',
-	'reviewedpages-list' => '{{PLURAL:$1|Следующая страница была проверена и оценена|Следующие страницы были проверены и оценены}} на указанный уровень',
+	'reviewedpages-list' => 'На этой странице перечислены страницы, которые были оценены на указанный уровень.',
 	'reviewedpages-none' => 'В данном списке отсутствуют страницы',
 	'reviewedpages-lev-0' => 'Досмотренная',
 	'reviewedpages-lev-1' => 'Выверенная',
@@ -887,7 +930,7 @@ $messages['sah'] = array(
 $messages['sk'] = array(
 	'reviewedpages' => 'Skontrolované stránky',
 	'reviewedpages-leg' => 'Zoznam stránok podľa najvyššej úrovne',
-	'reviewedpages-list' => '{{PLURAL:$1|Nasledujúca stránka bola skontrolovaná|Nasledujúce stránky boli skontrolované}} do určenej úrovne',
+	'reviewedpages-list' => 'Táto stránka obsahuje zoznam článkov, ktoré boli skontrolované (najviac) do určenej úrovne.',
 	'reviewedpages-none' => 'V tomto zozname sa nenachýdzajú žiadne stránky',
 	'reviewedpages-lev-0' => 'Videná',
 	'reviewedpages-lev-1' => 'Kvalita',
@@ -903,7 +946,7 @@ $messages['sq'] = array(
 	'reviewedpages-lev-1' => 'Kualiteti',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -920,12 +963,26 @@ $messages['sr-ec'] = array(
 	'reviewedpages-best' => 'најбоља верзија',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'reviewedpages' => 'Pregledane stranice',
+	'reviewedpages-leg' => 'Spisak strana, sortiran od najvišeg nivoa',
+	'reviewedpages-none' => 'Nema strana u ovom spisku.',
+	'reviewedpages-lev-0' => 'Pregledano',
+	'reviewedpages-lev-1' => 'Kvalitet',
+	'reviewedpages-lev-2' => 'Izabrani',
+	'reviewedpages-all' => 'pregledane verzije',
+	'reviewedpages-best' => 'najbolja verzija',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
 $messages['stq'] = array(
 	'reviewedpages' => 'Wröigede Sieden',
-	'reviewedpages-leg' => 'Lieste fon do wröigede Sieden',
+	'reviewedpages-leg' => 'Lieste fon do Sieden mäd dän hoochste Level',
 	'reviewedpages-list' => 'Do foulgjende Sieden wuuden wröiged un hääbe dän anroate Stoatus kriegen',
 	'reviewedpages-none' => 'Ju Lieste is loos.',
 	'reviewedpages-lev-0' => 'Sieuwed',
@@ -962,18 +1019,19 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Chaduvari
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'reviewedpages' => 'సమీక్షించిన పేజీలు',
-	'reviewedpages-leg' => 'ఏదో ఒక స్థాయి వరకు సమీక్షిత పేజీలను చూపించు',
-	'reviewedpages-list' => 'ఈ క్రింద పేర్కొన్న పేజీలు మీరడిగిన స్థాయివరకు సమీక్షించినవి',
+	'reviewedpages-leg' => 'అత్యధిక స్థాయి వరకు పేజీలను చూపించు, స్థాయిని బట్టి',
+	'reviewedpages-list' => 'ఈ క్రింద పేర్కొన్న {{PLURAL:$1|పేజీ|పేజీలు}} మీరడిగిన స్థాయివరకు సమీక్షించబడినవి',
 	'reviewedpages-none' => 'ఈ జాబితాలో పేజీలు లేవు.',
 	'reviewedpages-lev-0' => 'కనబడింది',
 	'reviewedpages-lev-1' => 'నాణ్యత',
 	'reviewedpages-lev-2' => 'విశేషం',
 	'reviewedpages-all' => 'సమీక్షిత కూర్పులు',
-	'reviewedpages-best' => 'అత్యున్నతంగా రేటు చేయబడిన చిట్టచివరి కూర్పు',
+	'reviewedpages-best' => 'మూల కూర్పు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -1013,7 +1071,7 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'reviewedpages' => 'Gözden geçirilmiş sayfalar',
 	'reviewedpages-leg' => 'Sayfaları en yüksek seviyeye göre listele',
-	'reviewedpages-list' => 'Sıradaki {{PLURAL:$1|sayfa|sayfalar}} belirlenen seviyede gözden geçirilmiştir',
+	'reviewedpages-list' => 'Bu sayfa belirlenen seviyede (en yüksek) gözden geçirilmiş sayfaları listeler.',
 	'reviewedpages-none' => 'Bu listede hiç sayfa yok',
 	'reviewedpages-lev-0' => 'Gözlenmiş',
 	'reviewedpages-lev-1' => 'Kalite',
@@ -1043,7 +1101,7 @@ $messages['uk'] = array(
 $messages['vec'] = array(
 	'reviewedpages' => 'Pagine riesaminà',
 	'reviewedpages-leg' => 'Elenco de le pagine dal livèl pi alto',
-	'reviewedpages-list' => 'Le pagine seguenti le xe stà riesaminà fin al livèl indicà',
+	'reviewedpages-list' => '{{PLURAL:$1|La pagina seguente la|Le pagine seguenti le}} xe stà riesaminà fin al livèl indicà',
 	'reviewedpages-none' => 'No ghe xe nissuna pagina su sta lista',
 	'reviewedpages-lev-0' => 'Rivardà',
 	'reviewedpages-lev-1' => 'De qualità',
@@ -1058,7 +1116,7 @@ $messages['vec'] = array(
 $messages['vep'] = array(
 	'reviewedpages' => 'Kodvdud lehtpoled',
 	'reviewedpages-leg' => 'Lehtpoled, kudambad oma sanuded ülembaižen arvsanan (nimikirjutez)',
-	'reviewedpages-list' => "{{PLURAL:$1|Nece lehtpol' oma|Nece lehtpol' om}} kodvdud da arvosteldud ozutadud pindaks",
+	'reviewedpages-list' => "{{PLURAL:$1|Nece lehtpol' om|Nened lehtpoled oma}} arvosteldud ozutadud pindhasai",
 	'reviewedpages-none' => 'Neciš nimikirjuteses ei ole lehtpolid',
 	'reviewedpages-lev-0' => 'Arvosteldud',
 	'reviewedpages-lev-1' => 'Lopuližikš kodvdud',

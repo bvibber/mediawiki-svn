@@ -68,6 +68,13 @@ $messages['bg'] = array(
 	'skinperpage-desc' => 'Добавя етикета <tt>&lt;skin&gt;</tt> за използване на различни облици на страниците',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'skinperpage-desc' => 'Ouzhpennañ a ra ar valizenn <tt>&lt;skin&gt;</tt> evit implijout gwiskadurioù disheñvel dre bajenn',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -185,6 +192,13 @@ $messages['hi'] = array(
 	'skinperpage-desc' => 'हर पन्नेपर अलग त्वचा इस्तेमाल करने के लिये उपयुक्त ऐसा <tt>&lt;skin&gt;</tt> टैग बढाता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'skinperpage-desc' => 'Nagadugang <tt>&lt;skin&gt;</tt> tag para magamit ang sari-sari nga panit kada pahina',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -241,6 +255,13 @@ $messages['jv'] = array(
 	'skinperpage-desc' => 'Tambahna tag <tt>&lt;skin&gt;</tt> kanggo nganggo kulit-kulit sing séjé-séjé per kaca',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'skinperpage-desc' => 'მატებს თეგ <tt>&lt;skin&gt;</tt> გვერდის გაფორმების მისათითებლად',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -266,7 +287,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'skinperpage-desc' => 'Setzt de <tt>&lt;skin&gt;</tt> Tag derbäi den et erlaabt verschidde Layouten (Skins) ze benotzen',
+	'skinperpage-desc' => 'Setzt de <tt>&lt;skin&gt;</tt> Tag derbäi den et erlaabt op enger Wiki eent aner Ausgesinn (Skin) ze benotzen',
 );
 
 /** Limburgish (Limburgs)
@@ -274,6 +295,13 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'skinperpage-desc' => 'Voegt de tag <tt>&lt;skin&gt;</tt> toe veur de instelling van vormgeving op paginaniveau',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'skinperpage-desc' => 'Додава ознака <tt>&lt;skin&gt;</tt> за користење на различни маски по страница',
 );
 
 /** Marathi (मराठी)
@@ -332,6 +360,13 @@ $messages['pl'] = array(
 	'skinperpage-desc' => 'Dodaje znacznik <tt>&lt;skin&gt;</tt> umożliwiający użycie wielu skórek na jednej stronie.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'skinperpage-desc' => 'Gionta ël tag <tt>&lt;skin&gt;</tt> për dovré "skin" diferent për pàgina',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -381,11 +416,18 @@ $messages['sq'] = array(
 	'skinperpage-desc' => 'Vendosë kodin <tt>&lt;skin&gt;</tt> për të përdorur pamje të ndryshme për çdo faqe',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'skinperpage-desc' => 'Додаје ознаку <tt>&lt;skin&gt;</tt> за коришћење различитих кожа на различитим странама.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'skinperpage-desc' => 'Dodaje oznaku <tt>&lt;skin&gt;</tt> za korišćenje različitih koža na različitim stranama.',
 );
 
 /** Seeltersk (Seeltersk)

@@ -42,11 +42,7 @@ $wgDLPMaxResultCount = 50;              // Maximum number of results to allow
 $wgDLPAllowUnlimitedResults = true;     // Allow unlimited results
 $wgDLPAllowUnlimitedCategories = false; // Allow unlimited categories
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfDynamicPageList';
-} else {
-	$wgExtensionFunctions[] = 'wfDynamicPageList';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfDynamicPageList';
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
@@ -60,10 +56,9 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['DynamicPageList'] = $dir . 'DynamicPageList.i18n.php';
 
-function wfDynamicPageList() {
-	global $wgParser;
+function wfDynamicPageList( &$parser ) {
 	wfLoadExtensionMessages( 'DynamicPageList' );
-	$wgParser->setHook( "DynamicPageList", "DynamicPageList" );
+	$parser->setHook( "DynamicPageList", "DynamicPageList" );
 	return true;
 }
 
@@ -446,7 +441,7 @@ function DynamicPageList( $input ) {
 		$title = Title::makeTitle( $row->page_namespace, $row->page_title);
 		$output .= $sStartItem;
 		if (true == $bAddFirstCategoryDate)
-			$output .= $wgLang->date($row->cl_timestamp) . wfMsg( 'colon-separator' );
+			$output .= $wgLang->date( wfTimestamp( TS_MW, $row->cl_timestamp ) ) . wfMsg( 'colon-separator' );
 
 		$query = array();
 		if (true == $bShowCurId)

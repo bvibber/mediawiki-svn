@@ -540,7 +540,7 @@ class CodeRevisionView extends CodeView {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
 
-		if ( $comment->id === null ) {
+		if ( $comment->id === 0 ) {
 			$linkId = 'cpreview';
 			$permaLink = "<b>Preview:</b> ";
 		} else {
@@ -609,7 +609,7 @@ class CodeRevisionView extends CodeView {
 				'name' => "wpReply{$parent}",
 				'id' => "wpReplyTo{$parent}",
 				'cols' => 40,
-				'rows' => 5 ) ) .
+				'rows' => 10 ) ) .
 			$text .
 			'</textarea>' .
 			'</div>' .

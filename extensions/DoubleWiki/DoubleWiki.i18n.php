@@ -103,6 +103,13 @@ $messages['cs'] = array(
 	'doublewiki-desc' => 'Zobrazí stránku a její překlad z jiné wiki ve dvou sloupcích na jedné straně',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'doublewiki-desc' => 'Yn dangos un tudalen, a thudalen ar yr un pwnc oddi ar wici mewn iaith arall, ochr yn ochr ar yr un ddalen.',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */
@@ -208,6 +215,13 @@ $messages['hi'] = array(
 	'doublewiki-desc' => 'एक लेख और उसका अन्य विकिपर उपलब्ध अनुवाद उसी पन्नेपर दो विभागोंमें दर्शाता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'doublewiki-desc' => 'Nagapakita sang paghina kag iya gin-islan hambalanon halin sa iban nga wiki sa duwa ka kolum sang parehas nga pahina',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -264,6 +278,13 @@ $messages['jv'] = array(
 	'doublewiki-desc' => 'Nuduhaké sawijining kaca lan pretalané saka wiki liya ing rong kolom ing kaca sing padha',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'doublewiki-desc' => 'აჩვენეთ სტატია და მისი თარგმანი სხვა ვიკიდან ორი ტაბულის სახით',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -298,6 +319,13 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'doublewiki-desc' => "Toent 'n pagina en de vertaling oet 'n andere wiki in twie kolomme op dezelfde pagina",
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'doublewiki-desc' => 'Прикажува страница и нејзин превод од друго вики во две колони на истата страница',
 );
 
 /** Malayalam (മലയാളം)
@@ -363,6 +391,13 @@ $messages['pl'] = array(
 	'doublewiki-desc' => 'Wyświetla w dwu kolumnach treść oraz pochodzące z wiki w innym języku tłumaczenie',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'doublewiki-desc' => "A presenta na pàgina e soa tradussion da n'àutra wiki an doe colone ëd la midema pàgina",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -426,11 +461,18 @@ $messages['sq'] = array(
 	'doublewiki-desc' => 'Paraqet një faqe dhe përkthimin nga një wiki tjetër në dy kolona në faqen e njejtë',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'doublewiki-desc' => 'Приказује страну и њен превод с другог викија у две колоне на истој страни.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'doublewiki-desc' => 'Prikazuje stranu i njen prevod s drugog vikija u dve kolone na istoj strani.',
 );
 
 /** Seeltersk (Seeltersk)

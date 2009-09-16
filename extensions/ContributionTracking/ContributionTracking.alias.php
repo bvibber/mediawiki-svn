@@ -48,6 +48,11 @@ $aliases['ia'] = array(
 	'ContributionTracking' => array( 'Traciamento de contributiones' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ContributionTracking' => array( 'Pelacakan kontribusi', 'PelacakanKontribusi' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ContributionTracking' => array( '寄付追跡' ),
@@ -86,6 +91,11 @@ $aliases['pl'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'ContributionTracking' => array( 'योगदानउन्नयति' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ContributionTracking' => array( 'SledovaniePríspevkov' ),
 );
 
 /** Tagalog (Tagalog) */

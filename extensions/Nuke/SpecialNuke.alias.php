@@ -89,7 +89,7 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Nuke' => array( '一括削除', 'まとめて削除' ),
+	'Nuke' => array( 'まとめて削除' ),
 );
 
 /** Korean (한국어) */
@@ -130,6 +130,11 @@ $aliases['pl'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Nuke' => array( 'न्यूक' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Nuke' => array( 'Zničenie' ),
 );
 
 /** Tagalog (Tagalog) */

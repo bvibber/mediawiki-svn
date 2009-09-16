@@ -85,6 +85,13 @@ $messages['bn'] = array(
 সময়সীমা নির্ধারণ ট্যাগ ব্যবহার করতে যুক্ত করুন: <tt>&lt;timeline&gt;</tt>',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'timeline-desc' => 'Ouzhpennañ a ra ar valizenn <tt>&lt;timeline&gt;</tt> da grouiñ frizennoù kronologel',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -139,6 +146,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'timeline-desc' => 'Añade elemento <tt>&lt;timeline&gt;</tt> para mostrar cronogramas',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'timeline-desc' => 'Lisab <tt>&lt;timeline&gt;</tt>-märgendi ajatelgede loomiseks.',
 );
 
 /** Basque (Euskara)
@@ -218,6 +232,13 @@ $messages['hi'] = array(
 	'timeline-desc' => 'टाईमलाईन तैयार करने के लिये <tt>&lt;timeline&gt;</tt> टैग देता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'timeline-desc' => 'Nagadugang <tt>&lt;timeline&gt;</tt> tag para mahimo ang mga timeline',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -281,6 +302,13 @@ $messages['jv'] = array(
 	'timeline-desc' => 'Nambahaké tag <tt>&lt;timeline&gt;</tt> kanggo nggawé garis wektu',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'timeline-desc' => 'ჩაამატეთ თეგი <tt>&lt;timeline&gt;</tt> დროის სკალის შესაქმნელად',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -290,9 +318,10 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author ToePeu
  */
 $messages['ko'] = array(
-	'timeline-desc' => '시간표를 만들기 위해 <tt>&lt;timeline&gt;</tt> 태그를 추가',
+	'timeline-desc' => '시간표를 만들기 위해 <tt>&lt;timeline&gt;</tt> 태그를 추가합니다.',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -322,6 +351,13 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'timeline-desc' => 'Sukuria laiko grafikus naudojant gairę <tt>&lt;timeline&gt;</tt>',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'timeline-desc' => 'Додава ознака <tt>&lt;timeline&gt;</tt> за да прави хронологии',
 );
 
 /** Malayalam (മലയാളം)
@@ -387,6 +423,13 @@ $messages['pl'] = array(
 	'timeline-desc' => 'Dodaje znacznik <tt>&lt;timeline&gt;</tt> umożliwiający tworzenie spisu na osi czasu',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'timeline-desc' => 'A gionta ël tag <tt>&lt;timeline&gt;</tt> për creé dle "timeline"',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -436,11 +479,18 @@ $messages['sk'] = array(
 	'timeline-desc' => 'Pridáva značku <tt>&lt;timeline&gt;</tt> pre tvorbu časových línií',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'timeline-desc' => 'Додаје <tt>&lt;timeline&gt;</tt> ознаку за стварање временских оса.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'timeline-desc' => 'Dodaje <tt>&lt;timeline&gt;</tt> oznaku za stvaranje vremenskih osa.',
 );
 
 /** Seeltersk (Seeltersk)

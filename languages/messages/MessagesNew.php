@@ -8,6 +8,7 @@
  * @file
  *
  * @author Eukesh
+ * @author आलोक
  */
 
 $namespaceNames = array(
@@ -80,6 +81,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'वाचलिस्टं चीधंगु सम्पादन सुचुकादिसँ',
 'tog-watchlisthideliu'        => 'वाचलिस्टं लग्ड इन छ्यलामितेगु सम्पादन सुचुकादिसँ',
 'tog-watchlisthideanons'      => 'वाचलिस्टं अज्ञात छ्यलामिया सम्पादन सुचुकादिसँ',
+'tog-nolangconversion'        => 'भेरियन्ट (variant) कन्भर्जन डिसेबल यानादिसँ',
 'tog-ccmeonemails'            => 'जिं मेपिं छ्यलामितेगु छ्वइगु इ-मेलतेगु कपि जित नं छ्वयादिसँ',
 'tog-diffonly'                => 'पाःगु (diffs) स्वया क्वेया पौया कण्टेण्ट क्यनादिमते',
 'tog-showhiddencats'          => 'सुचुकातगु पुचःत क्यनादिसँ',
@@ -203,7 +205,6 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}}या बारेय्',
 'aboutpage'            => 'Project:बारेय्',
 'copyright'            => 'कण्टेण्ट $1 कथं उपलब्ध दु।',
-'copyrightpagename'    => '{{SITENAME}} लेखाधिकार',
 'copyrightpage'        => '{{ns:project}}:लेखाधिकार',
 'currentevents'        => 'जुयाच्वँगु घटना',
 'currentevents-url'    => 'Project:जुयाच्वँगु घटना',
@@ -347,7 +348,7 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'show'          => 'क्यनादिसँ',
 
 # Upload
-'upload' => 'फाइल अपलोड',
+'upload' => 'संचिका चढ़ाएँ',
 
 # File description page
 'file-anchor-link' => 'फाइल',
@@ -407,7 +408,7 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'tooltip-feed-atom'               => 'थ्व पौया Atom फीड',
 'tooltip-t-contributions'         => 'थ्व छ्य्‌लामिया योगदानया धलः क्यनादिसँ',
 'tooltip-t-emailuser'             => 'थ्व छ्य्‌लामियात इ-मेल छ्वयादिसँ',
-'tooltip-t-upload'                => 'फाइल अपलोड',
+'tooltip-t-upload'                => 'संचिकाएँ चढ़ाएँ',
 'tooltip-t-specialpages'          => 'सकल विशेष पौस धलः',
 'tooltip-t-print'                 => 'थ्व पौस ध्वायेज्युगु संस्करण',
 'tooltip-t-permalink'             => 'थ्व पौस थ्व संस्करणया पर्मानेन्ट लिङ्क',

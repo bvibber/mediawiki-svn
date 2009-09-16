@@ -69,6 +69,15 @@ $messages['qqq'] = array(
 * $5 - filename',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'extensiondistributor' => 'Laai MediaWiki-uitbreiding af',
+	'extdist-submit-extension' => 'Gaan voort',
+	'extdist-submit-version' => 'Gaan voort',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -301,11 +310,32 @@ Ako imate nekih pitanja oko ovog sistema distribucije proširenja, molimo pogled
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'extensiondistributor' => 'Descarrega una extensió de Mediawiki',
+	'extdist-desc' => 'Extensió per distribuir arxius actualitzats de les extensions',
+	'extdist-not-configured' => 'Per favor, configurau $wgExtDistTarDir i $wgExtDistWorkingCopy',
+	'extdist-no-such-extension' => 'No existeix l\'extensió "$1"',
+	'extdist-no-such-version' => 'L\'extensió "$1" no existeix en la versió "$2"',
+	'extdist-choose-extension' => 'Seleccionau quina extensió voleu descarregar:',
 	'extdist-submit-extension' => 'Continua',
+	'extdist-current-version' => 'Versió de desenvolupament (trunk)',
+	'extdist-choose-version' => "<big>Estau descarregant l'extensió <b>$1</b>.</big>
+
+Seleccionau la vostra versió del Mediawiki.
+
+La majoria d'extensions funcionen a les diferents versions de Mediawiki, així que si la vostra versió de Mediawiki no és aquí o si necessitau les darreres funcionalitats de l'extensió, provau d'usar la versió actual.",
+	'extdist-no-versions' => "L'extensió seleccionada ($1) no està disponible en cap versió.",
 	'extdist-submit-version' => 'Continua',
+	'extdist-no-remote' => "No s'ha pogut contactar amb el client remot de Subversion.",
+	'extdist-remote-error' => 'Error del client remot de Subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Resposta invàlida del client remot de Subversion.',
+	'extdist-svn-error' => 'Subversion ha trobat un error: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'No s\'ha pogut processar l\'XML de "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => "L'ordre tar ha retornat un codi de sortida $1:",
+	'extdist-want-more' => 'Descarrega una altra extensió',
 );
 
 /** Czech (Česky)
@@ -416,9 +446,11 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Imre
  * @author MichaelFrey
  */
 $messages['de-formal'] = array(
+	'extdist-choose-extension' => 'Bitte wählen Sie eine Erweiterung zum Herunterladen aus:',
 	'extdist-choose-version' => '<big>Sie laden die <b>$1</b>-Erweiterung herunter.</big>
 
 Bitte wählen Sie ihre MediaWiki-Version.
@@ -551,6 +583,8 @@ Pliparto de kromprogramoj funkcias trans pluraj versioj de MediaWiki, do se via 
 	'extdist-submit-version' => 'Daŭri',
 	'extdist-no-remote' => 'Ne eblas kontakti eksteran klienton de subversion.',
 	'extdist-remote-error' => 'Eraro de la ekstera kliento de subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Nevalida respondo de ekstera kliento de Subversion.',
+	'extdist-svn-error' => 'Subversion renkontis eraron: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar donis elirkodon $1:',
 	'extdist-created' => "Statika kopio de versio <b>$2</b> de la <b>$1</b> kromprogramo por MediaWiki <b>$3</b> estis kreita. Via elŝuto komencos aŭtomate post 5 sekundoj.
 
@@ -623,6 +657,19 @@ Si tienes algunas preguntas acerca de éste sistema de distribución de extensio
 	'extdist-want-more' => 'Obtener otra extensión',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Ker
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'extdist-no-such-extension' => 'Laiendus "$1" puudub',
+	'extdist-no-such-version' => 'Versioonis "$2" puudub laiendus "$1".',
+	'extdist-choose-extension' => 'Vali laiendus, mida soovid alla laadida:',
+	'extdist-submit-extension' => 'Jätka',
+	'extdist-submit-version' => 'Jätka',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -670,14 +717,48 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'extensiondistributor' => 'Lataa MediaWikin laajennus',
 	'extdist-desc' => 'Laajennus laajennusten tilannevedosarkistojen jakelulle.',
+	'extdist-wc-missing' => 'Määritettyä työkopiohakemistoa ei ole olemassa.',
 	'extdist-no-such-extension' => 'Laajennusta ”$1” ei löydy',
+	'extdist-no-such-version' => 'Laajennus ”$1” ei sisälly versioon ”$2”.',
 	'extdist-choose-extension' => 'Valitse mitkä laajennukset haluat ladata:',
+	'extdist-wc-empty' => 'Määritetyssä työkopiohakemistossa ei ole jaeltavia laajennuksia.',
 	'extdist-submit-extension' => 'Jatka',
 	'extdist-current-version' => 'Kehitysversio (trunk)',
+	'extdist-choose-version' => '<big>Olet lataamassa laajennusta ”<b>$1</b>”.</big>
+
+Valitse MediaWikisi versio.
+
+Useimmat laajennukset toimivat useiden MediaWikin versioiden välillä. Jos MediaWikisi versiota ei ole täällä tai tarvit viimeisimpiä ominaisuuksia laajennuksesta, kokeile nykyistä versiota.',
+	'extdist-no-versions' => 'Valitusta laajennuksesta ($1) ei ole saatavilla yhtään versiota!',
 	'extdist-submit-version' => 'Jatka',
 	'extdist-no-remote' => 'Subversion-asiakasohjelmaan ei saatu yhteyttä.',
+	'extdist-remote-error' => 'Virhe ulkoisesta subversion-asiakasohjelmasta: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Kelpaamaton vastaus ulkoiselta subversion-asiakasohjelmalta.',
 	'extdist-svn-error' => 'Subversion kohtasi virheen: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'XML-dataa ei voitu käsitellä ”svn info” -komennosta: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar-ohjelman suoritus päättyi paluuarvoon $1:',
+	'extdist-created' => "Tilannevedos laajennuksen <b>$1</b> versiosta <b>$2</b> MediaWikin versiolle <b>$3</b> on luotu. Latauksesi pitäisi alkaa automaattisesti viiden sekunnin kuluttua.
+
+URL tälle tilannevedokselle on
+:$4
+Osoitetta voi käyttää välittömään lataukseen palvelimelle, mutta älä laita sitä kirjanmerkiksi, koska sen sisältö ei päivity ja se saatetaan poistaa.
+
+Tar-paketti pitäisi purkaa extensions-hakemistoon. Esimerkiksi unix-tyylisessä käyttöjärjestelmässä se tapahtuu seuraavalla komennolla:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Windowsissa voit käyttää [http://www.7-zip.org/ 7-zip]-ohjelmaa tiedostojen purkamiseen.
+
+Jos wikisi on etäpalvelimella, pura tiedostot väliaikaishakemistoon paikalliselle tietokoneelle ja tämän jälkeen lähetä '''kaikki''' puretut tiedostot extensions-hakemistoon etäpalvelimelle.
+
+Huomaa, että jotkin laajennukset vaativat tiedoston ''ExtensionFunctions.php'', jonka sijainti on <tt>extensions/ExtensionFunctions.php</tt>. Tiedosto sijaitsee varsinaisen laajennushakemiston ''ylähakemistossa''. Näille laajennuksille luotu tilannevedos sisältää tämän tiedoston tar-pommina, purettuna juuressa ./ExtensionFunctions.php. Älä jätä lähettämättä tätä tiedostoa etäpalvelimellesi.
+
+Kun olet purkanut tiedostot, sinun tulee rekisteröidä laajennus LocalSettings.php-tiedostoon. Laajennuksen ohjeissa pitäisi olla ohjeet siihen.
+
+Jos sinulla on kysymyksiä tähän jakelujärjestelmään liittyen, sivulla [[Extension talk:ExtensionDistributor]] voi keskustella aiheesta.",
+	'extdist-want-more' => 'Hae toinen laajennus',
 );
 
 /** French (Français)
@@ -911,7 +992,7 @@ $messages['hr'] = array(
 	'extdist-choose-extension' => 'Odaberite koju ekstenziju želite preuzeti:',
 	'extdist-wc-empty' => 'U konfiguriranom radnom direktoriju za kopiranje nema ekstenzija za distribuciju!',
 	'extdist-submit-extension' => 'Nastavi',
-	'extdist-current-version' => 'Tekuća inačica (stablo)',
+	'extdist-current-version' => 'Razvojna inačica (stablo)',
 	'extdist-choose-version' => '<big>Preuzimate ekstenziju <b>$1</b>.</big> 
 
 Izaberite vašu inačicu MedijaWikija.
@@ -1001,6 +1082,24 @@ Jeli maš prašenja wo systemje rozdźělowanja rozšěrjenjow, prošu dźi k [[
 	'extdist-want-more' => 'Dalše rozšěrjenje wobstarać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'extensiondistributor' => 'MediaWiki-kigészítők letöltése',
+	'extdist-desc' => 'Kiegészítő kiegészítőcsomagok terjesztéséhez',
+	'extdist-not-configured' => 'Kérlek állítsd be a $wgExtDistTarDir és a $wgExtDistWorkingCopy értékeit',
+	'extdist-no-such-extension' => 'Nincs „$1” nevű kiegészítő',
+	'extdist-choose-extension' => 'Válaszd ki, melyik kiterjesztést szeretnéd letölteni:',
+	'extdist-submit-extension' => 'Folytatás',
+	'extdist-current-version' => 'Fejlesztői verzió (trunk)',
+	'extdist-submit-version' => 'Folytatás',
+	'extdist-svn-error' => 'A Subversion hibával tért vissza: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Az „svn info” által visszaadott XML-t nem sikerült feldolgozni: <pre>$1</pre>',
+	'extdist-want-more' => 'Másik kiterjesztés letöltése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -1051,6 +1150,64 @@ Quando tu ha extrahite le files, tu debe registrar le extension in LocalSettings
 
 Si tu ha alcun questiones super iste systema de distribution de extensiones, per favor visita [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Obtener un altere extension',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'extensiondistributor' => 'Unduh pengaya MediaWiki',
+	'extdist-desc' => 'Ekstensi untuk mendistribusikan arsip snapshot ekstensi',
+	'extdist-not-configured' => 'Silakan mengkonfigurasi $wgExtDistTarDir dan $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Konfigurasi direktori Copy pekerjaan tidak ada!',
+	'extdist-no-such-extension' => 'Tidak ada ekstensi "$1"',
+	'extdist-no-such-version' => '
+
+Ekstensi "$1" tidak ada dalam versi "$2".',
+	'extdist-choose-extension' => '
+
+Pilih ekstensi yang ingin Anda unduh:',
+	'extdist-wc-empty' => 'Konfigurasi direktori salinan pekerjaan Anda tidak memiliki ekstensi yang harus didistibusikan!',
+	'extdist-submit-extension' => 'Lanjutkan',
+	'extdist-current-version' => 'Versi pengembangan (trunk)',
+	'extdist-choose-version' => '<big>Anda mengunduh  <b>$1</b> ekstensi.</big>
+
+Pilih versi MediaWiki anda.
+
+Kebanyakan ekstensi bekerja di beberapa versi program MediaWiki, jadi jika versi MediaWiki Anda tidak ada di sini, atau jika Anda membutuhkan fitur ekstensi terbaru, coba gunakan versi terbaru.',
+	'extdist-no-versions' => 'Ekstensi terpilih ($1) tidak tersedia di versi manapun!',
+	'extdist-submit-version' => 'Lanjutkan',
+	'extdist-no-remote' => 'Tidak dapat terhubung ke client subversio.',
+	'extdist-remote-error' => 'Kesalahan dari subversion client: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'respon tidak sah dari subversion client.',
+	'extdist-svn-error' => 'Subversion mengalami masalah: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Tidak dapat memproses XML dari "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar Mengembalikan kode keluar $1:',
+	'extdist-created' => "Sebuah versi snapshot <b>$2</b> dari <b>$1</b> ekstensi untuk MediaWiki <b>$3</b> telah dibuat. Download anda akan dimulai secara otomatis dalam 5 detik. 
+
+URL untuk snapshot ini adalah:  
+:$4  
+Ini dapat digunakan untuk men-download langsung ke server, tapi tolong jangan tandai itu, karena isinya tidak akan diupdate, dan dapat dihapus di kemudian hari. 
+
+Arsip tar harus diekstrak ke direktori ekstensi anda. Sebagai contoh, pada sebuah OS unix-like:  
+
+<pre>  
+tar -xzf $5 -C /var/www/mediawiki/extensions  
+</pre>  
+
+Pada Windows, Anda dapat menggunakan [http://www.7-zip.org/ 7-zip] untuk mengekstrak file.  
+
+Jika Wiki Anda di server jauh, ekstrak file ke direktori sementara pada komputer lokal Anda, dan kemudian meng-upload'' 'semua''' file  yang diekstrak ke direktori ekstensi pada server. 
+
+Perhatikan bahwa beberapa ekstensi yang membutuhkan file yang bernama ExtensionFunctions.php, terletak di <tt>extensions/ExtensionFunctions.php</tt>, yaitu di''induk''direktori khusus ekstensi ini . Snapshot untuk perluasan ini berisi file ini sebagai tarbomb, diekstrak ke ./ExtensionFunctions.php. Jangan lalai untuk meng-upload file ini ke server jauh. 
+
+Setelah Anda ekstrak file, Anda harus mendaftarkan ekstensi di LocalSettings.php. Dokumentasi exktensi harus mempunyai petunjuk tentang cara untuk melakukan ini. 
+
+Jika Anda memiliki pertanyaan tentang sistem distribusi ekstensi ini, silakan ke [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => '
+
+Dapatkan ekstensi lain',
 );
 
 /** Italian (Italiano)
@@ -1107,6 +1264,7 @@ Se hai qualche domanda riguardo al sistema di distribuzione di questa estensione
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Marine-Blue
  */
@@ -1114,11 +1272,11 @@ $messages['ja'] = array(
 	'extensiondistributor' => 'MediaWiki 拡張機能のダウンロード',
 	'extdist-desc' => '拡張機能のスナップショットのアーカイブを配布するための拡張機能',
 	'extdist-not-configured' => '$wgExtDistTarDirと$wgExtDistWorkingCopyの設定を行ってください',
-	'extdist-wc-missing' => '指定されたコピー用ディレクトリが存在しません!',
+	'extdist-wc-missing' => '指定されたコピー用ディレクトリが存在しません！',
 	'extdist-no-such-extension' => '"$1"という拡張機能は存在しません',
 	'extdist-no-such-version' => '拡張機能 "$1" に "$2" というバージョンは存在しません。',
 	'extdist-choose-extension' => 'ダウンロードしたい拡張機能を選択してください:',
-	'extdist-wc-empty' => '指定されたコピー先ディレクトリにダウンロードする拡張機能が存在しません!',
+	'extdist-wc-empty' => '指定されたコピー先ディレクトリにダウンロードする拡張機能が存在しません！',
 	'extdist-submit-extension' => '続行',
 	'extdist-current-version' => '開発バージョン (trunk)',
 	'extdist-choose-version' => '<big>拡張機能 <b>$1</b> をダウンロードしようとしています。</big>
@@ -1126,7 +1284,7 @@ $messages['ja'] = array(
 あなたが利用しているMediaWikiのバージョンを選択してください。
 
 多くの拡張機能は複数のバージョンで利用できますが、あなたの使用しているMediaWikiのバージョンが下記にない場合、最新版にアップデートする必要があります。',
-	'extdist-no-versions' => '選択された拡張機能($1)は全てのバージョンで利用できません!',
+	'extdist-no-versions' => '選択された拡張機能($1)は全てのバージョンで利用できません！',
 	'extdist-submit-version' => '選択',
 	'extdist-no-remote' => 'subversionクライアントと接続できませんでした。',
 	'extdist-remote-error' => 'subversionクライアントがエラーを返しました: <pre>$1</pre>',
@@ -1663,6 +1821,14 @@ $messages['os'] = array(
 	'extdist-want-more' => 'Æндæр æххæстгæнæн æрбавгæн',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'extdist-submit-extension' => 'Weiter',
+	'extdist-submit-version' => 'Weiter',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
@@ -1824,8 +1990,11 @@ Se tiver alguma questão sobre este sistema de distribuição de extensões, por
  */
 $messages['ro'] = array(
 	'extensiondistributor' => 'Descarcă extensia MediaWiki',
+	'extdist-no-such-extension' => 'Extensia "$1" inexistentă',
+	'extdist-no-such-version' => 'Extensia "$1" nu există în versiunea "$2".',
 	'extdist-submit-extension' => 'Continuă',
 	'extdist-submit-version' => 'Continuă',
+	'extdist-want-more' => 'Obţine altă extensie',
 );
 
 /** Tarandíne (Tarandíne)
@@ -2328,14 +2497,14 @@ $messages['zh-hans'] = array(
 	'extdist-choose-extension' => '选择您要去下载的扩展:',
 	'extdist-wc-empty' => '设置的工作复本目录无可发布之扩展！',
 	'extdist-submit-extension' => '继续',
-	'extdist-current-version' => '开发员版 (trunk)',
+	'extdist-current-version' => '开发员版 （trunk）',
 	'extdist-choose-version' => '
 <big>您现正下载 <b>$1</b> 扩展。</big>
 
 选择您要的 MediaWiki 版本。
 
 多数的扩展都可以在多个 MediaWiki 版本上运行，如果您的 MediaWiki 版本不存在，又或者您需要最新的扩展功能的话，可尝试用最新的版本。',
-	'extdist-no-versions' => '所选择扩展 ($1) 不适用于任何的版本！',
+	'extdist-no-versions' => '所选择扩展 （$1） 不适用于任何的版本！',
 	'extdist-submit-version' => '继续',
 	'extdist-no-remote' => '不能够联络远端 subversion 客户端。',
 	'extdist-remote-error' => '自远端 subversion 客户端的错误: <pre>$1</pre>',
@@ -2380,14 +2549,14 @@ $messages['zh-hant'] = array(
 	'extdist-choose-extension' => '選擇您要去下載的擴展:',
 	'extdist-wc-empty' => '設定的工作複本目錄無可發佈之擴展！',
 	'extdist-submit-extension' => '繼續',
-	'extdist-current-version' => '現時版本 (trunk)',
+	'extdist-current-version' => '現時版本 （trunk）',
 	'extdist-choose-version' => '
 <big>您現正下載 <b>$1</b> 擴展。</big>
 
 選擇您要的 MediaWiki 版本。
 
 多數的擴展都可以在多個 MediaWiki 版本上運行，如果您的 MediaWiki 版本不存在，又或者您需要最新的擴展功能的話，可嘗試用最新的版本。',
-	'extdist-no-versions' => '所選擇擴展 ($1) 不適用於任何的版本！',
+	'extdist-no-versions' => '所選擇擴展 （$1） 不適用於任何的版本！',
 	'extdist-submit-version' => '繼續',
 	'extdist-no-remote' => '不能夠聯絡遠端 subversion 客戶端。',
 	'extdist-remote-error' => '自遠端 subversion 客戶端的錯誤: <pre>$1</pre>',

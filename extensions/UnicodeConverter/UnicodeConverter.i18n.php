@@ -25,6 +25,15 @@ $messages['qqq'] = array(
 	'unicodeconverter-ok' => '{{Identical|OK}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Oorspronklike teks:',
+	'unicodeconverter-newtext' => 'Omgeskakelde teks:',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -48,6 +57,13 @@ $messages['ar'] = array(
 	'unicodeconverter-ok' => 'موافق',
 	'unicodeconverter-oldtext' => 'النص الأصلي:',
 	'unicodeconverter-newtext' => 'النص المحول:',
+);
+
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'unicodeconverter-ok' => 'ܛܒ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -149,9 +165,13 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'unicodeconverter' => 'Μετατροπέας Unicode',
 	'unicodeconverter-ok' => 'Εντάξει',
+	'unicodeconverter-oldtext' => 'Αρχικό κείμενο:',
+	'unicodeconverter-newtext' => 'Κείμενο που έχει μετατραπεί:',
 );
 
 /** Esperanto (Esperanto)
@@ -188,11 +208,14 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
+ * @author Crt
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'unicodeconverter' => 'Unicode-muunnin',
+	'unicodeconverter-desc' => '[[Special:UnicodeConverter|Muuntaa annetun UTF-8-merkkijonon]] HTML-entiteetiksi, jota voi käyttää ISO 8859-1 -verkkosivulla.',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Alkuperäinen teksti',
 	'unicodeconverter-newtext' => 'Muunnettu teksti',
@@ -210,6 +233,15 @@ $messages['fr'] = array(
 	'unicodeconverter-ok' => 'Convertir',
 	'unicodeconverter-oldtext' => 'Texte d’origine :',
 	'unicodeconverter-newtext' => 'Texte converti :',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'unicodeconverter-ok' => 'D’acôrd',
+	'unicodeconverter-oldtext' => 'Tèxto d’origina :',
 );
 
 /** Galician (Galego)
@@ -275,6 +307,28 @@ $messages['ia'] = array(
 	'unicodeconverter-newtext' => 'Texto convertite:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'unicodeconverter' => 'Pengubah Unicode',
+	'unicodeconverter-desc' => 'Contoh sederhana dari sebuah modul halaman istimewa. [[Special:UnicodeConverter|Dengan memasukkan sebuah string dalam format UTF-8]], modul ini akan mengubahnya menjadi entitas HTML yang layak ditampilkan di sebuah halaman web ISO 8859-1',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Teks asli:',
+	'unicodeconverter-newtext' => 'Teks ubahan:',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'unicodeconverter' => 'Convertitore Unicode',
+	'unicodeconverter-desc' => 'Un semplice esempio di un modulo di pagina speciale. [[Special:UnicodeConverter|Data una stringa in UTF-8]], la converte in entity HTML adatte per una pagina web ISO 8859-1',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Testo originale:',
+	'unicodeconverter-newtext' => 'Testo convertito:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -295,6 +349,18 @@ $messages['jv'] = array(
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Tèks asli:',
 	'unicodeconverter-newtext' => 'Tèks sing wis dikonversi:',
+);
+
+/** Georgian (ქართული)
+ * @author Alsandro
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'unicodeconverter' => 'უნიკოდის გარდამქმნელი',
+	'unicodeconverter-desc' => 'სპეციალური გვერდის მოდულის მარტივი ნიმუში.  [[Special:UnicodeConverter|UTF-8-ში მოცემული სტრინგით]], ის გარდაქმნის მას HTML პარამეტრებში, რომელიც მიზანშეწონილია ISO 8859-1 ვებგვერდისთვის',
+	'unicodeconverter-ok' => 'კარგი',
+	'unicodeconverter-oldtext' => 'პირველადი ტექსტი:',
+	'unicodeconverter-newtext' => 'გარდაქმნილი ტექსტი:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -333,6 +399,15 @@ $messages['ksh'] = array(
 	'unicodeconverter-newtext' => 'Ömjesaz Tex:',
 );
 
+/** Latin (Latina)
+ * @author Omnipaedista
+ */
+$messages['la'] = array(
+	'unicodeconverter-ok' => 'Licet',
+	'unicodeconverter-oldtext' => 'Textus originalis:',
+	'unicodeconverter-newtext' => 'Textus conversus:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -345,13 +420,15 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'unicodeconverter' => 'Unicode конвертор',
-	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter' => 'Уникод претворач',
+	'unicodeconverter-desc' => 'Прост пример за модул за специјална страница. [[Special:UnicodeConverter|Ако му се зададе низата UTF-8]], ја претвора во HTML ентитети погодни за интернет-страници по стандардот ISO 8859-1',
+	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинален текст:',
-	'unicodeconverter-newtext' => 'Конвертиран текст:',
+	'unicodeconverter-newtext' => 'Претворен текст:',
 );
 
 /** Marathi (मराठी)
@@ -440,6 +517,17 @@ $messages['pl'] = array(
 	'unicodeconverter-newtext' => 'Przekonwertowany tekst:',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'unicodeconverter' => 'Convertidor Unicode',
+	'unicodeconverter-desc' => "N'esempi sempi d'un mòdul ëd pàgina special. [[Special:UnicodeConverter|Dàita na stringa an UTF-8]], a lo convert an entità HTML adate për na pàgina web ISO 8859-1",
+	'unicodeconverter-ok' => 'Bin parèj',
+	'unicodeconverter-oldtext' => 'Test original:',
+	'unicodeconverter-newtext' => 'Test convertì:',
+);
+
 /** Western Punjabi (پنجابی)
  * @author Khalid Mahmood
  */
@@ -490,6 +578,17 @@ $messages['ro'] = array(
 	'unicodeconverter-newtext' => 'Text convertit:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'unicodeconverter' => 'Convertitore de Unicode',
+	'unicodeconverter-desc' => "'N'esempbie terra-terre de 'nu module de 'na pàgena speciale. [[Special:UnicodeConverter|Date 'na stringhe in UTF-8]], avène convertite jndr'à entità HTML ca se capiscene cu 'u stàndard ISO 8859-1 de le pàggene web",
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Teste origginale:',
+	'unicodeconverter-newtext' => 'Teste convertite:',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -513,7 +612,7 @@ $messages['sk'] = array(
 	'unicodeconverter-newtext' => 'Skonvertovaný text:',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -521,6 +620,16 @@ $messages['sr-ec'] = array(
 	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинални текст:',
 	'unicodeconverter-newtext' => 'Конвертован текст:',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'unicodeconverter' => 'Junikod konverter',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Originalni tekst:',
+	'unicodeconverter-newtext' => 'Konvertovan tekst:',
 );
 
 /** Seeltersk (Seeltersk)
@@ -643,9 +752,9 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'unicodeconverter' => 'Chuyển đổi Unicode',
-	'unicodeconverter-desc' => 'Ví dụ đơn giản về một gói trang đặc biệt. [[Special:UnicodeConverter|Cho trước một chuỗi ở dạng UTF-8]], nó được chuyển đổi thành các thực thể HTMK phù hợp với trang web theo ISO 8859-1',
+	'unicodeconverter-desc' => 'Ví dụ đơn giản về một gói trang đặc biệt. [[Special:UnicodeConverter|Cho trước một chuỗi ở dạng UTF-8]], nó được chuyển đổi thành các thực thể HTML phù hợp với trang web theo ISO 8859-1',
 	'unicodeconverter-ok' => 'OK',
-	'unicodeconverter-oldtext' => 'Nguyên văn:',
+	'unicodeconverter-oldtext' => 'Bản gốc:',
 	'unicodeconverter-newtext' => 'Văn bản chuyển đổi:',
 );
 
@@ -660,10 +769,11 @@ $messages['vo'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'unicodeconverter' => 'Unicode转换器',
-	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-ok' => '确定',
 	'unicodeconverter-oldtext' => '原文字：',
 	'unicodeconverter-newtext' => '转换后文字',
 );

@@ -239,6 +239,15 @@ $aliases['ia'] = array(
 	'GlobalUsers' => array( 'Usatores global' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'CentralAuth' => array( 'Otoritas pusat', 'OtoritasPusat' ),
+	'AutoLogin' => array( 'Masuk log otomatis', 'MasukLogOtomatis' ),
+	'MergeAccount' => array( 'Gabungkan akun', 'GabungkanAkun' ),
+	'GlobalGroupMembership' => array( 'Hak pengguna global', 'HakPenggunaGlobal' ),
+	'GlobalUsers' => array( 'Pengguna global', 'PenggunaGlobal' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'MergeAccount' => array( 'UnificaUtenze' ),
@@ -252,7 +261,7 @@ $aliases['ja'] = array(
 	'CentralAuth' => array( 'アカウント統一管理', '統一ログインの管理' ),
 	'AutoLogin' => array( '自動ログイン' ),
 	'MergeAccount' => array( 'アカウント統合' ),
-	'GlobalGroupMembership' => array( 'グローバル利用者権限', 'グローバルグループへの所属' ),
+	'GlobalGroupMembership' => array( 'グローバルグループへの所属' ),
 	'GlobalGroupPermissions' => array( 'グローバルグループ権限', 'グローバルグループパーミッション' ),
 	'EditWikiSets' => array( 'ウィキ群の編集' ),
 	'GlobalUsers' => array( 'グローバル利用者' ),
@@ -267,6 +276,7 @@ $aliases['km'] = array(
 /** Korean (한국어) */
 $aliases['ko'] = array(
 	'CentralAuth' => array( '통합계정관리' ),
+	'AutoLogin' => array( '자동로그인' ),
 	'MergeAccount' => array( '계정합치기', '사용자합치기' ),
 	'GlobalGroupMembership' => array( '공통권한조정' ),
 	'GlobalUsers' => array( '통합계정목록', '공통계정목록' ),
@@ -275,6 +285,8 @@ $aliases['ko'] = array(
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'AutoLogin' => array( 'AutomatteschEnlogge' ),
+	'GlobalGroupMembership' => array( 'JemeinsamMetmaacherJroppeRääschte' ),
+	'GlobalGroupPermissions' => array( 'JemeinsamJroppe' ),
 	'EditWikiSets' => array( 'WikiJroppe' ),
 	'GlobalUsers' => array( 'Jemeinsam_Metmaacher', 'JemeinsamMetmaacher', 'Jemeinsam_Medmaacher', 'JemeinsamMedmaacher' ),
 );
@@ -284,7 +296,7 @@ $aliases['lb'] = array(
 	'CentralAuth' => array( 'Verwaltung vun der Benotzerkonten-Zesummeféierung' ),
 	'AutoLogin' => array( 'Automatesch Umeldung' ),
 	'MergeAccount' => array( 'Benotzerkonten zesummeféieren' ),
-	'GlobalGroupMembership' => array( 'Global Benotzerrechter' ),
+	'GlobalGroupMembership' => array( 'Member vu Global Benotzerrechter' ),
 	'GlobalGroupPermissions' => array( 'Global Grupperechter' ),
 	'EditWikiSets' => array( 'Wiki-Seten änneren' ),
 	'GlobalUsers' => array( 'Global Benotzer' ),
@@ -349,7 +361,7 @@ $aliases['nl'] = array(
 	'CentralAuth' => array( 'CentraalAanmelden' ),
 	'AutoLogin' => array( 'AutomatischAanmelden', 'AutoAanmelden' ),
 	'MergeAccount' => array( 'GebruikerSamenvoegen' ),
-	'GlobalGroupMembership' => array( 'GlobaleGebruikersrechten' ),
+	'GlobalGroupMembership' => array( 'GlobaalGroepslidmaatschap' ),
 	'GlobalGroupPermissions' => array( 'GlobaleGroepsrechten' ),
 	'EditWikiSets' => array( 'WikigroepenBewerken' ),
 	'GlobalUsers' => array( 'GlobaleGebruikers' ),
@@ -386,6 +398,7 @@ $aliases['oc'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'CentralAuth' => array( 'Zarządzanie kontem uniwersalnym' ),
+	'AutoLogin' => array( 'Automatyczne logowanie' ),
 	'MergeAccount' => array( 'Łączenie kont', 'Konto uniwersalne' ),
 	'GlobalGroupMembership' => array( 'Globalne uprawnienia' ),
 	'GlobalGroupPermissions' => array( 'Globalne uprawnienia grup' ),
@@ -413,6 +426,24 @@ $aliases['sa'] = array(
 	'GlobalGroupPermissions' => array( 'वैश्विकगटसंमती' ),
 	'EditWikiSets' => array( 'सम्पादनविकिगट' ),
 	'GlobalUsers' => array( 'वैश्विकयोजक' ),
+);
+
+/** Sinhala (සිංහල) */
+$aliases['si'] = array(
+	'CentralAuth' => array( 'මධ්‍යඅවසර' ),
+	'AutoLogin' => array( 'ස්වයංක්‍රීයපිවිසුම' ),
+	'MergeAccount' => array( 'ගිණුමඑක්කරන්න' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CentralAuth' => array( 'CentrálneOverenie' ),
+	'AutoLogin' => array( 'AutomatickéPrihlasovanie' ),
+	'MergeAccount' => array( 'ZlúčenieÚčtov' ),
+	'GlobalGroupMembership' => array( 'GlobálnePrávaPoužívateľa' ),
+	'GlobalGroupPermissions' => array( 'GlobálneSkupinovéOprávnenia' ),
+	'EditWikiSets' => array( 'UpraviťWikiMnožiny' ),
+	'GlobalUsers' => array( 'GlobálniPoužívatelia' ),
 );
 
 /** Sundanese (Basa Sunda) */

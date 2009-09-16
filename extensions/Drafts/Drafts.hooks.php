@@ -9,6 +9,21 @@
 class DraftHooks {
 
 	/* Static Functions */
+public static function schema() {
+		global $wgExtNewTables, $wgExtModifiedFields;
+		
+		$wgExtNewTables[] = array(
+			'drafts',
+			dirname( __FILE__ ) . '/Drafts.sql'
+		);
+		$wgExtModifiedFields[] = array(
+			'drafts',
+			'draft_token',
+			dirname( __FILE__ ) . '/patch-draft_token.sql'
+		);
+		
+		return true;
+	}
 
 	/**
 	 * SpecialMovepageAfterMove hook
@@ -287,9 +302,6 @@ class DraftHooks {
 		global $wgScriptPath, $wgJsMimeType, $wgDraftsStyleVersion;
 		// FIXME: assumes standard dir structure
 		// Add javascript to support ajax draft saving
-		$out->addInlineScript(
-			"var wgDraftsStyleVersion = \"$wgDraftsStyleVersion\";\n"
-		);
 		$out->addScript(
 			Xml::element(
 				'script',

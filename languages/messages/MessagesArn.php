@@ -91,6 +91,16 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-delete'       => 'Ñamümün',
+'vector-namespace-main'      => 'Pakina',
+'vector-namespace-mediawiki' => 'Dungu',
+'vector-namespace-talk'      => 'Nütramkawe',
+'vector-namespace-user'      => 'Kellufe',
+'vector-view-create'         => 'Llitun',
+'vector-view-edit'           => 'Wirin',
+'vector-view-view'           => 'Chillkatun',
+
 'returnto'         => 'Amutun $1 püle.',
 'tagline'          => '{{SITENAME}} mew',
 'help'             => 'Kellu',
@@ -196,11 +206,13 @@ $messages = array(
 'history-feed-item-nocomment' => '$1 $2 mew',
 
 # Revision deletion
-'rev-delundel'    => 'pengelün/ellkan',
-'pagehist'        => 'pünon pakina',
-'deletedhist'     => 'Ñamümüngelu pünon',
-'revdelete-uname' => 'Üy kellufe',
-'revdelete-hid'   => 'Ellkan $1',
+'rev-delundel'               => 'pengelün/ellkan',
+'revdelete-show-file-submit' => 'May',
+'pagehist'                   => 'pünon pakina',
+'deletedhist'                => 'Ñamümüngelu pünon',
+'revdelete-uname'            => 'Üy kellufe',
+'revdelete-hid'              => 'Ellkan $1',
+'revdelete-edit-reasonlist'  => 'Wirin dungu ñamümgün mew',
 
 # History merging
 'mergehistory-reason' => 'Dungu:',
@@ -278,6 +290,8 @@ $messages = array(
 'action-undelete'      => 'Namümlay tüfachi pakina',
 
 # Recent changes
+'recentchanges-legend-newpage'      => '$1 - We Pakina',
+'recentchanges-legend-minor'        => '$1 pichi wirin',
 'rcshowhideminor'                   => '$1 pichi wirin',
 'rcshowhidemine'                    => '$1 tañi wirin',
 'hist'                              => 'Püno',
@@ -374,6 +388,7 @@ $messages = array(
 'enotif_newpagetext'           => 'Tüfachi ta we pakina',
 'enotif_impersonal_salutation' => '{{SITENAME}} kellufe',
 'created'                      => 'Llituy',
+'deleted'                      => 'ñamümün',
 
 # Delete
 'deletepage'            => 'Ñamümün tüfachi pakina',
@@ -397,6 +412,7 @@ $messages = array(
 
 # Undelete
 'viewdeletedpage'           => 'Pen pakina ñamümüngelu',
+'undeleteviewlink'          => 'Pen',
 'undelete-search-box'       => 'Kintun ñamümüngelu pakina',
 'undelete-search-submit'    => 'Kintun',
 'undelete-show-file-submit' => 'May',
@@ -503,9 +519,10 @@ $messages = array(
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'kom',
 'imagelistall'     => 'kom',
-'watchlistall2'    => 'Fill',
+'watchlistall2'    => 'kom',
 'namespacesall'    => 'kom',
 'monthsall'        => '(kom)',
+'limitall'         => 'Kom',
 
 # Trackbacks
 'trackbackremove' => '([$1 Ñamümün])',
@@ -541,5 +558,8 @@ $messages = array(
 
 # Special:Tags
 'tags-edit' => 'Wirin',
+
+# HTML forms
+'htmlform-selectorother-other' => 'Kakelu',
 
 );

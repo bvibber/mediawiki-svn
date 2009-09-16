@@ -41,6 +41,11 @@ class ApiFormatJson extends ApiFormatBase {
 	}
 
 	public function getMimeType() {
+		$params = $this->extractRequestParams();
+		//callback: 		
+		if( $params['callback']){
+			return 'text/javascript';
+		}
 		return 'application/json';
 	}
 
@@ -62,27 +67,21 @@ class ApiFormatJson extends ApiFormatBase {
 			$prefix = preg_replace("/[^][.\\'\\\"_A-Za-z0-9]/", "", $callback ) . "(";
 			$suffix = ")";
 		}
-
-		// Some versions of PHP have a broken json_encode, see PHP bug 
-		// 46944. Test encoding an affected character (U+20000) to 
-		// avoid this.
-		if (!function_exists('json_encode') || $this->getIsHtml() || strtolower(json_encode("\xf0\xa0\x80\x80")) != '"\ud840\udc00"') {
-			$json = new Services_JSON();
-			$this->printText($prefix . $json->encode($this->getResultData(), $this->getIsHtml()) . $suffix);
-		} else {
-			$this->printText($prefix . json_encode($this->getResultData()) . $suffix);
-		}
+		$this->printText( 
+			$prefix . 
+			FormatJson::encode( $this->getResultData(),	$this->getIsHtml() ) . 
+			$suffix );
 	}
 
 	public function getAllowedParams() {
 		return array (
-			'callback' => null
+			'callback'  => null,				
 		);
 	}
 
 	public function getParamDescription() {
 		return array (
-			'callback' => 'If specified, wraps the output into a given function call. For safety, all user-specific data will be restricted.',
+			'callback' => 'If specified, wraps the output into a given function call. For safety, all user-specific data will be restricted.',			
 		);
 	}
 

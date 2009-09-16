@@ -33,7 +33,7 @@ class MathRenderer {
 
 	function render() {
 		global $wgTmpDirectory, $wgInputEncoding;
-		global $wgTexvc;
+		global $wgTexvc, $wgMathCheckFiles;
 		$fname = 'MathRenderer::render';
 
 		if( $this->mode == MW_MATH_SOURCE ) {
@@ -45,20 +45,20 @@ class MathRenderer {
 		}
 
 		if( !$this->_recall() ) {
-			# Ensure that the temp and output directories are available before continuing...
-			/*
-			if( !file_exists( $wgTmpDirectory ) ) {
-				if( !wfMkdirParents( $wgTmpDirectory ) ) {
+			if( $wgMathCheckFiles ) {
+				# Ensure that the temp and output directories are available before continuing...
+				if( !file_exists( $wgTmpDirectory ) ) {
+					if( !wfMkdirParents( $wgTmpDirectory ) ) {
+						return $this->_error( 'math_bad_tmpdir' );
+					}
+				} elseif( !is_dir( $wgTmpDirectory ) || !is_writable( $wgTmpDirectory ) ) {
 					return $this->_error( 'math_bad_tmpdir' );
 				}
-			} elseif( !is_dir( $wgTmpDirectory ) || !is_writable( $wgTmpDirectory ) ) {
-				return $this->_error( 'math_bad_tmpdir' );
 			}
 
 			if( function_exists( 'is_executable' ) && !is_executable( $wgTexvc ) ) {
 				return $this->_error( 'math_notexvc' );
 			}
-			*/
 			$cmd = $wgTexvc . ' ' .
 					escapeshellarg( $wgTmpDirectory ).' '.
 					escapeshellarg( $wgTmpDirectory ).' '.
@@ -202,7 +202,7 @@ class MathRenderer {
 	}
 
 	function _recall() {
-		global $wgMathDirectory;
+		global $wgMathDirectory, $wgMathCheckFiles;
 		$fname = 'MathRenderer::_recall';
 
 		$this->md5 = md5( $this->tex );
@@ -223,9 +223,11 @@ class MathRenderer {
 			$this->mathml = $rpage->math_mathml;
 
 			$filename = $this->_getHashPath() . "/{$this->hash}.png";
-
-			// Temp performance hack
-			return true;
+			
+			if( !$wgMathCheckFiles ) {
+				// Short-circuit the file existence & migration checks
+				return true;
+			}
 			
 			if( file_exists( $filename ) ) {
 				if( filesize( $filename ) == 0 ) {
@@ -235,7 +237,7 @@ class MathRenderer {
 					return true;
 				}
 			}
-			
+
 			if( file_exists( $wgMathDirectory . "/{$this->hash}.png" ) ) {
 				$hashpath = $this->_getHashPath();
 

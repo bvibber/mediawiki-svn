@@ -13,7 +13,7 @@ class FlaggedRevsHooks {
 		}
 		$fa = FlaggedArticle::getGlobalInstance();
 		# Try to only add to relevant pages
-		if( !$fa || (!$fa->isReviewable(true) && !$fa->isRateable() ) ) {
+		if( !$fa || !$fa->isReviewable(true) ) {
 			return true;
 		}
 		global $wgScriptPath, $wgJsMimeType, $wgFlaggedRevsStylePath, $wgFlaggedRevStyleVersion;
@@ -22,7 +22,6 @@ class FlaggedRevsHooks {
 		
 		$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFlaggedRevsStylePath );
 		$rTags = FlaggedRevs::getJSTagParams();
-		$fTags = FlaggedRevs::getJSFeedbackParams();
 		$frev = $fa->getStableRev();
 		$stableId = $frev ? $frev->getRevId() : 0;
 
@@ -31,14 +30,10 @@ class FlaggedRevsHooks {
 
 		$wgOut->addExtensionStyle( $encCssFile );
 
-		$ajaxFeedback = Xml::encodeJsVar( (object) array( 
-			'sendingMsg' => wfMsgHtml('readerfeedback-submitting'), 
-			'sentMsg' => wfMsgHtml('readerfeedback-finished') 
-			)
-		);
 		$ajaxReview = Xml::encodeJsVar( (object) array( 
 			'sendingMsg' => wfMsgHtml('revreview-submitting'), 
-			'sentMsg' => wfMsgHtml('revreview-finished'),
+			'sentMsgOk' => wfMsgHtml('revreview-finished'),
+			'sentMsgBad' => wfMsgHtml('revreview-failed'),
 			'actioncomplete' => wfMsgHtml('actioncomplete'),
 			'actionfailed' => wfMsgHtml('actionfailed')
 			)
@@ -47,9 +42,7 @@ class FlaggedRevsHooks {
 		$head = <<<EOT
 <script type="$wgJsMimeType">
 var wgFlaggedRevsParams = $rTags;
-var wgFlaggedRevsParams2 = $fTags;
 var wgStableRevisionId = $stableId;
-var wgAjaxFeedback = $ajaxFeedback
 var wgAjaxReview = $ajaxReview
 </script>
 <script type="$wgJsMimeType" src="$encJsFile"></script>
@@ -68,7 +61,7 @@ EOT;
 			return true;
 		}
 		$spPages = array( 'UnreviewedPages', 'OldReviewedPages', 'Watchlist', 'Recentchanges', 
-			'Contributions', 'RatingHistory' );
+			'Contributions' );
 		foreach( $spPages as $n => $key ) {
 			if( $wgTitle->isSpecial( $key ) ) {
 				global $wgScriptPath, $wgFlaggedRevsStylePath, $wgFlaggedRevStyleVersion;
@@ -162,6 +155,32 @@ EOT;
 		FlaggedRevs::titleLinksUpdate( $title );
 		return true;
 	}
+	
+	/**
+	* Update pending revision table
+	* Autoreview pages moved into content NS
+	*/
+	public static function onTitleMoveComplete( &$otitle, &$ntitle, $user, $pageId ) {
+		global $wgFlaggedRevsAutoReviewNew;
+		$fa = FlaggedArticle::getTitleInstance( $ntitle );
+		// Re-validate NS/config (new title may not be reviewable)
+		if( $fa->isReviewable() ) {
+			// Moved from non-reviewable to reviewable NS?
+			if( $wgFlaggedRevsAutoReviewNew && $user->isAllowed('autoreview')
+				&& !FlaggedRevs::isPageReviewable( $otitle ) ) 
+			{
+				$article = new Article( $ntitle );
+				$rev = Revision::newFromTitle( $ntitle );
+				// Treat this kind of like a new page...
+				FlaggedRevs::autoReviewEdit( $article, $user, $rev->getText(), $rev );
+				return true; // pending list handled
+			} else if( $fa->getStableRev(FR_MASTER) ) {
+				return true; // nothing to do
+			}
+		}
+		self::clearDeadLinks( $pageId );
+		return true;
+	}
 
 	/**
 	* Inject stable links on LinksUpdate
@@ -170,14 +189,19 @@ EOT;
 		$dbw = wfGetDB( DB_MASTER );
 		$pageId = $linksUpdate->mTitle->getArticleId();
 		# Check if this page has a stable version...
-		$sv = isset($u->fr_stableRev) ? // Try the process cache...
-			$u->fr_stableRev : FlaggedRevision::newFromStable( $linksUpdate->mTitle, FR_MASTER );
+		if( isset($u->fr_stableRev) ) {
+			$sv = $u->fr_stableRev; // Try the process cache...
+		} else {
+			$fa = FlaggedArticle::getTitleInstance( $linksUpdate->mTitle );
+			if( $fa->isReviewable() ) { // re-validate NS/config
+				$sv = $fa->getStableRev( FR_MASTER );
+			} else {
+				$sv = null;
+			}
+		}
 		# Empty flagged revs data for this page if there is no stable version
 		if( !$sv ) {
-			$dbw->delete( 'flaggedpages', array('fp_page_id' => $pageId), __METHOD__ );
-			$dbw->delete( 'flaggedrevs_tracking', array('ftr_from' => $pageId), __METHOD__ );
-			$dbw->delete( 'flaggedpage_pending', array('fpp_page_id' => $pageId), __METHOD__ );
-			return true;
+			return self::clearDeadLinks( $pageId );
 		}
 		# Try the process cache...
 		$article = new Article( $linksUpdate->mTitle );
@@ -234,6 +258,14 @@ EOT;
 		if( count($insertions) ) {
 			$dbw->insert( 'flaggedrevs_tracking', $insertions, __METHOD__, 'IGNORE' );
 		}
+		return true;
+	}
+	
+	protected static function clearDeadLinks( $pageId ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete( 'flaggedpages', array('fp_page_id' => $pageId), __METHOD__ );
+		$dbw->delete( 'flaggedrevs_tracking', array('ftr_from' => $pageId), __METHOD__ );
+		$dbw->delete( 'flaggedpage_pending', array('fpp_page_id' => $pageId), __METHOD__ );
 		return true;
 	}
 	
@@ -374,7 +406,7 @@ EOT;
 	*/
 	public static function parserMakeStableFileLink( $parser, $nt, &$skip, &$time, &$query=false ) {
 		# Trigger for stable version parsing only
-		if( empty($parser->fr_isStable) || $nt->getNamespace() < 0 ) {
+		if( empty($parser->fr_isStable) ) {
 			return true;
 		}
 		$file = null;
@@ -609,54 +641,49 @@ EOT;
 	}
 
 	/**
-	* Don't let users vandalize pages by moving them
+	* Check page move and patrol permissions for FlaggedRevs
 	*/
-	public static function userCanMove( $title, $user, $action, &$result ) {
-		if( $action != 'move' || $result===false || !FlaggedRevs::isPageReviewable($title) ) {
-			return true;
-		}
-		$flaggedArticle = FlaggedArticle::getTitleInstance( $title );
-		if( !$flaggedArticle->showStableByDefault() ) {
-			return true;
-		}
-		if( $frev = $flaggedArticle->getStableRev() ) {
-			# Allow for only editors/reviewers to move this
-			if( !$user->isAllowed('review') && !$user->isAllowed('movestable') ) {
+	public static function onUserCan( $title, $user, $action, &$result ) {
+		if( $result === false )
+			return true; // nothing to do
+		# Don't let users vandalize pages by moving them...
+		if( $action === 'move' ) {
+			if( !FlaggedRevs::isPageReviewable($title) || !$title->exists() )
+				return true;
+			$flaggedArticle = FlaggedArticle::getTitleInstance( $title );
+			# If the current shows be default anyway, nothing to do...
+			if( !$flaggedArticle->showStableByDefault() ) {
+				return true;
+			}
+			$frev = $flaggedArticle->getStableRev();
+			if( $frev && !$user->isAllowed('review') && !$user->isAllowed('movestable') ) {
+				# Allow for only editors/reviewers to move this page
 				$result = false;
 				return false;
 			}
-		}
-		return true;
-	}
-	
-	/**
-	* Don't let users patrol pages not in $wgFlaggedRevsPatrolNamespaces
-	*/
-	public static function userCanPatrol( $title, $user, $action, &$result ) {
-		if( $result === false ) return true; // nothing to do
-		if( $action != 'patrol' && $action != 'autopatrol' ) {
-			return true;
-		}
-		# Pages in reviewable namespace can be patrolled IF reviewing
-		# is disabled for pages that don't show the stable by default.
-		# In such cases, we let people with 'review' rights patrol them.
-		if( FlaggedRevs::isPageReviewable($title) && !$user->isAllowed('review') ) {
-			$result = false;
-			return false;
-		}
-		$flaggedArticle = FlaggedArticle::getTitleInstance( $title );
-		# The page must be in a patrollable namespace ($wgFlaggedRevsPatrolNamespaces)...
-		if( !$flaggedArticle->isPatrollable() ) {
-			global $wgUseNPPatrol;
-			# ...unless the page is not in a reviewable namespace and
-			# new page patrol is enabled. In this scenario, any edits
-			# to pages outside of patrollable namespaces would already
-			# be auto-patrolled, except for the new page edits.
-			if( $wgUseNPPatrol && !$flaggedArticle->isReviewable() ) {
-				return true;
-			} else {
+		# Don't let users patrol pages not in $wgFlaggedRevsPatrolNamespaces
+		} else if( $action === 'patrol' || $action === 'autopatrol' ) {
+			# Pages in reviewable namespace can be patrolled IF reviewing
+			# is disabled for pages that don't show the stable by default.
+			# In such cases, we let people with 'review' rights patrol them.
+			if( FlaggedRevs::isPageReviewable($title) && !$user->isAllowed('review') ) {
 				$result = false;
 				return false;
+			}
+			$flaggedArticle = FlaggedArticle::getTitleInstance( $title );
+			# The page must be in a patrollable namespace ($wgFlaggedRevsPatrolNamespaces)...
+			if( !$flaggedArticle->isPatrollable() ) {
+				global $wgUseNPPatrol;
+				# ...unless the page is not in a reviewable namespace and
+				# new page patrol is enabled. In this scenario, any edits
+				# to pages outside of patrollable namespaces would already
+				# be auto-patrolled, except for the new page edits.
+				if( $wgUseNPPatrol && !$flaggedArticle->isReviewable() ) {
+					return true;
+				} else {
+					$result = false;
+					return false;
+				}
 			}
 		}
 		return true;
@@ -739,9 +766,10 @@ EOT;
 			# Get autoreview restriction settings...
 			$config = FlaggedRevs::getPageVisibilitySettings( $title, true );
 			# Convert Sysop -> protect
-			$right = ($config['autoreview'] === 'sysop') ? 'protect' : $config['autoreview'];
+			$right = ($config['autoreview'] === 'sysop') ?
+				'protect' : $config['autoreview'];
 			# Check if the user has the required right, if any
-			$isAllowed = !$right || $user->isAllowed($right);
+			$isAllowed = ($right == '' || $user->isAllowed($right));
 		}
 		# Auto-reviewing must be enabled and user must have the required permissions
 		if( !$isAllowed ) {
@@ -918,37 +946,132 @@ EOT;
 		return true;
 	}
 	
+	protected static function editSpacingCheck( $spacing, $points, $user ) {
+		# Convert days to seconds...
+		$spacing = $spacing * 24 * 3600;
+		# Check the oldest edit
+		$dbr = isset($dbr) ? $dbr : wfGetDB( DB_SLAVE );
+		$lower = $dbr->selectField( 'revision', 'rev_timestamp',
+			array( 'rev_user' => $user->getId() ),
+			__METHOD__,
+			array( 'ORDER BY' => 'rev_timestamp ASC', 'USE INDEX' => 'user_timestamp' )
+		);
+		# Recursively check for an edit $spacing seconds later, until we are done.
+		# The first edit counts, so we have one less scans to do...
+		$benchmarks = 0; // actual
+		$needed = $points - 1; // required
+		while( $lower && $benchmarks < $needed ) {
+			$next = wfTimestamp( TS_UNIX, $lower ) + $spacing;
+			$lower = $dbr->selectField( 'revision', 'rev_timestamp',
+				array( 'rev_user' => $user->getId(),
+					'rev_timestamp > ' . $dbr->addQuotes( $dbr->timestamp($next) ) ),
+					__METHOD__,
+				array( 'ORDER BY' => 'rev_timestamp ASC', 'USE INDEX' => 'user_timestamp' )
+			);
+			if( $lower !== false ) $benchmarks++;
+		}
+		return ($benchmarks >= $needed );
+	}
+	
 	/**
 	* Check for 'autoreview' permission. This lets people who opt-out as
-	* Editors still have their own edits automatically reviewed.
+	* Editors still have their own edits automatically reviewed. Bot
+	* accounts are also handled here to make sure that can autoreview.
 	*/
 	public static function checkAutoPromote( $user, &$promote ) {
-		global $wgFlaggedRevsAutopromote;
+		global $wgFlaggedRevsAutoconfirm, $wgMemc;
 		# Make sure bots always have autoreview
 		if( $user->isAllowed('bot') ) {
 			$promote[] = 'autoreview';
 			return true;
 		}
-		if( empty($wgFlaggedRevsAutopromote) || !$user->getId() || $user->isAllowed('autoreview') ) {
-			return true; // not needed or $wgFlaggedRevsAutopromote is off
-		}
-		# Check user email
-		if( $wgFlaggedRevsAutopromote['email'] && !$user->isEmailConfirmed() ) {
+		# Check if $wgFlaggedRevsAutoconfirm is actually enabled
+		# and that this is a logged-in user that doesn't already
+		# have the 'autoreview' permission
+		if( !$user->getId() || $user->isAllowed('autoreview') || empty($wgFlaggedRevsAutoconfirm) ) {
 			return true;
 		}
-		# Get requirments
-		$editsReq = max($wgFlaggedRevsAutopromote['edits'],3000);
-		$timeReq = max($wgFlaggedRevsAutopromote['days'],365);
-		# Check account age
+		# Check if results are cached to avoid DB queries.
+		# Checked basic, already available, promotion heuristics first...
+		$APSkipKey = wfMemcKey( 'flaggedrevs', 'autoreview-skip', $user->getId() );
+		$value = $wgMemc->get( $APSkipKey );
+		if( $value == 'true' ) return true;
+		# Check $wgFlaggedRevsAutoconfirm settings...
 		$now = time();
-		$usercreation = wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
-		$userage = $usercreation ? floor(($now - $usercreation) / 86400) : NULL;
-		if( !is_null($userage) && $userage < $timeReq ) {
+		$userCreation = wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
+		# User registration was not always tracked in DB...use null for such cases
+		$userage = $userCreation ? floor(($now - $userCreation) / 86400) : NULL;
+		$p = FlaggedRevs::getUserParams( $user->getId() );
+		# Check if user edited enough content pages
+		$totalCheckedEditsNeeded = false;
+		if( $wgFlaggedRevsAutoconfirm['totalContentEdits'] > $p['totalContentEdits'] ) {
+			if( !$wgFlaggedRevsAutoconfirm['totalCheckedEdits'] ) {
+				return true;
+			}
+			$totalCheckedEditsNeeded = true;
+		}
+		# Check if user edited enough unique pages
+		$pages = explode( ',', trim($p['uniqueContentPages']) ); // page IDs
+		if( $wgFlaggedRevsAutoconfirm['uniqueContentPages'] > count($pages) ) {
+			return true;
+		}
+		# Check edit comment use
+		if( $wgFlaggedRevsAutoconfirm['editComments'] > $p['editComments'] ) {
+			return true;
+		}
+		# Check account age
+		if( !is_null($userage) && $userage < $wgFlaggedRevsAutoconfirm['days'] ) {
 			return true;
 		}
 		# Check user edit count. Should be stored.
-		if( $user->getEditCount() < $editsReq ) {
+		if( $user->getEditCount() < $wgFlaggedRevsAutoconfirm['edits'] ) {
 			return true;
+		}
+		# Check user email
+		if( $wgFlaggedRevsAutoconfirm['email'] && !$user->isEmailConfirmed() ) {
+			return true;
+		}
+		# Don't grant to currently blocked users...
+		if( $user->isBlocked() ) {
+			return true;
+		}
+		# Check if user was ever blocked before
+		if( $wgFlaggedRevsAutoconfirm['neverBlocked'] ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$blocked = $dbr->selectField( 'logging', '1',
+				array( 'log_namespace' => NS_USER, 
+					'log_title' => $user->getUserPage()->getDBkey(),
+					'log_type' => 'block',
+					'log_action' => 'block' ),
+				__METHOD__,
+				array( 'USE INDEX' => 'page_time' ) );
+			if( $blocked ) {
+				# Make a key to store the results
+				$wgMemc->set( $APSkipKey, 'true', 3600*24*7 );
+				return true;
+			}
+		}
+		# Check for edit spacing. This lets us know that the account has
+		# been used over N different days, rather than all in one lump.
+		if( $wgFlaggedRevsAutoconfirm['spacing'] > 0 && $wgFlaggedRevsAutoconfirm['benchmarks'] > 1 ) {
+			$sTestKey = wfMemcKey( 'flaggedrevs', 'autoreview-spacing-ok', $user->getId() );
+			$value = $wgMemc->get( $sTestKey );
+			# Check if the user already passed this test via cache.
+			# If no cache key is available, then check the DB...
+			if( $value !== 'true' ) {
+				$pass = self::editSpacingCheck(
+					$wgFlaggedRevsAutoconfirm['spacing'],
+					$wgFlaggedRevsAutoconfirm['benchmarks'],
+					$user
+				);
+				# Make a key to store the results
+				if( !$pass ) {
+					$wgMemc->set( $APSkipKey, 'true', 3600*24*$spacing*($benchmarks - $needed - 1) );
+					return true;
+				} else {
+					$wgMemc->set( $sTestKey, 'true', 7 * 24 * 3600 );
+				}
+			}
 		}
 		# Add the right
 		$promote[] = 'autoreview';
@@ -957,35 +1080,24 @@ EOT;
 
 	/**
 	* Callback that autopromotes user according to the setting in
-	* $wgFlaggedRevsAutopromote. This is not as efficient as it should be
+	* $wgFlaggedRevsAutopromote. This also handles user stats tallies.
 	*/
-	public static function autoPromoteUser( $article, $user, $text, $summary, $m, $a, $b, &$f, $rev ) {
-		global $wgFlaggedRevsAutopromote, $wgMemc;
-		if( empty($wgFlaggedRevsAutopromote) || !$rev || !$user->getId() )
-			return true;
-		# Check implicitly sighted edits
-		# Grab current groups
-		$groups = $user->getGroups();
-		# Do not give this to current holders or bots
-		if( $user->isAllowed('bot') || in_array('editor',$groups) ) {
+	public static function maybeMakeEditor( $article, $user, $text, $summary, $m, $a, $b, &$f, $rev ) {
+		global $wgFlaggedRevsAutopromote, $wgFlaggedRevsAutoconfirm, $wgMemc;
+		# Ignore NULL edits or edits by anon users
+		if( !$rev || !$user->getId() ) return true;
+		# No sense in running counters if nothing uses them
+		if( empty($wgFlaggedRevsAutopromote) && empty($wgFlaggedRevsAutoconfirm) ) {
 			return true;
 		}
-		# Do not re-add status if it was previously removed!
 		$p = FlaggedRevs::getUserParams( $user->getId() );
-		if( isset($p['demoted']) && $p['demoted'] ) {
-			return true;
-		}
 		# Update any special counters for non-null revisions
 		$changed = false;
 		$pages = array();
-		$p['uniqueContentPages'] = isset($p['uniqueContentPages']) ? $p['uniqueContentPages'] : '';
-		$p['totalContentEdits'] = isset($p['totalContentEdits']) ? $p['totalContentEdits'] : 0;
-		$p['editComments'] = isset($p['editComments']) ? $p['editComments'] : 0;
-		$p['reviewedEdits'] = isset($p['reviewedEdits']) ? $p['reviewedEdits'] : 0;
-		$p['revertedEdits'] = isset($p['revertedEdits']) ? $p['revertedEdits'] : 0;
 		if( $article->getTitle()->isContentPage() ) {
 			$pages = explode( ',', trim($p['uniqueContentPages']) ); // page IDs
 			# Don't let this get bloated for no reason
+			# (assumes $wgFlaggedRevsAutopromote is stricter than $wgFlaggedRevsAutoconfirm)
 			if( count($pages) < $wgFlaggedRevsAutopromote['uniqueContentPages']
 				&& !in_array($article->getId(),$pages) )
 			{
@@ -1004,6 +1116,20 @@ EOT;
 		if( $changed ) {
 			FlaggedRevs::saveUserParams( $user->getId(), $p );
 		}
+		# Grab current groups
+		$groups = $user->getGroups();
+		# Do not give this to current holders or bots
+		if( $user->isAllowed('bot') || in_array('editor',$groups) ) {
+			return true;
+		}
+		# Do not re-add status if it was previously removed!
+		if( isset($p['demoted']) && $p['demoted'] ) {
+			return true;
+		}
+		# Check if results are cached to avoid DB queries
+		$APSkipKey = wfMemcKey( 'flaggedrevs', 'autopromote-skip', $user->getId() );
+		$value = $wgMemc->get( $APSkipKey );
+		if( $value == 'true' ) return true;
 		# Check if user edited enough content pages
 		$totalCheckedEditsNeeded = false;
 		if( $wgFlaggedRevsAutopromote['totalContentEdits'] > $p['totalContentEdits'] ) {
@@ -1024,10 +1150,6 @@ EOT;
 		if( $wgFlaggedRevsAutopromote['maxRevertedEdits'] < $p['revertedEdits'] ) {
 			return true;
 		}
-		# Check user email
-		if( $wgFlaggedRevsAutopromote['email'] && !$user->isEmailConfirmed() ) {
-			return true;
-		}
 		# Check account age
 		$now = time();
 		$usercreation = wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
@@ -1037,13 +1159,6 @@ EOT;
 		}
 		# Check user edit count. Should be stored.
 		if( $user->getEditCount() < $wgFlaggedRevsAutopromote['edits'] ) {
-			return true;
-		}
-		# Check if results are cached to avoid DB queries.
-		# Checked basic, already available, promotion heuristics first...
-		$key = wfMemcKey( 'flaggedrevs', 'autopromote-skip', $user->getID() );
-		$value = $wgMemc->get( $key );
-		if( $value == 'true' ) {
 			return true;
 		}
 		# Don't grant to currently blocked users...
@@ -1059,10 +1174,11 @@ EOT;
 					'log_type' => 'block',
 					'log_action' => 'block' ),
 				__METHOD__,
-				array( 'USE INDEX' => 'page_time' ) );
+				array( 'USE INDEX' => 'page_time' )
+			);
 			if( $blocked ) {
 				# Make a key to store the results
-				$wgMemc->set( $key, 'true', 3600*24*7 );
+				$wgMemc->set( $APSkipKey, 'true', 3600*24*7 );
 				return true;
 			}
 		}
@@ -1083,34 +1199,23 @@ EOT;
 		# Check for edit spacing. This lets us know that the account has
 		# been used over N different days, rather than all in one lump.
 		if( $wgFlaggedRevsAutopromote['spacing'] > 0 && $wgFlaggedRevsAutopromote['benchmarks'] > 1 ) {
-			# Convert days to seconds...
-			$spacing = $wgFlaggedRevsAutopromote['spacing'] * 24 * 3600;
-			# Check the oldest edit
-			$dbr = isset($dbr) ? $dbr : wfGetDB( DB_SLAVE );
-			$lower = $dbr->selectField( 'revision', 'rev_timestamp',
-				array( 'rev_user' => $user->getID() ),
-				__METHOD__,
-				array( 'ORDER BY' => 'rev_timestamp ASC',
-					'USE INDEX' => 'user_timestamp' ) );
-			# Recursively check for an edit $spacing seconds later, until we are done.
-			# The first edit counts, so we have one less scans to do...
-			$benchmarks = 0;
-			$needed = $wgFlaggedRevsAutopromote['benchmarks'] - 1;
-			while( $lower && $benchmarks < $needed ) {
-				$next = wfTimestamp( TS_UNIX, $lower ) + $spacing;
-				$lower = $dbr->selectField( 'revision', 'rev_timestamp',
-					array( 'rev_user' => $user->getID(),
-						'rev_timestamp > ' . $dbr->addQuotes( $dbr->timestamp($next) ) ),
-					__METHOD__,
-					array( 'ORDER BY' => 'rev_timestamp ASC',
-						'USE INDEX' => 'user_timestamp' ) );
-				if( $lower !== false )
-					$benchmarks++;
-			}
-			if( $benchmarks < $needed ) {
+			$sTestKey = wfMemcKey( 'flaggedrevs', 'autopromote-spacing-ok', $user->getId() );
+			$value = $wgMemc->get( $sTestKey );
+			# Check if the user already passed this test via cache.
+			# If no cache key is available, then check the DB...
+			if( $value !== 'true' ) {
+				$pass = self::editSpacingCheck(
+					$wgFlaggedRevsAutopromote['spacing'],
+					$wgFlaggedRevsAutopromote['benchmarks'],
+					$user
+				);
 				# Make a key to store the results
-				$wgMemc->set( $key, 'true', 3600*24*$spacing*($benchmarks - $needed - 1) );
-				return true;
+				if( !$pass ) {
+					$wgMemc->set( $APSkipKey, 'true', 3600*24*$spacing*($benchmarks - $needed - 1) );
+					return true;
+				} else {
+					$wgMemc->set( $sTestKey, 'true', 7 * 24 * 3600 );
+				}
 			}
 		}
 		# Check if this user is sharing IPs with another users
@@ -1171,7 +1276,7 @@ EOT;
 		if( $totalCheckedEditsNeeded && $wgFlaggedRevsAutopromote['totalCheckedEdits'] ) {
 			$dbr = isset($dbr) ? $dbr : wfGetDB( DB_SLAVE );
 			$res = $dbr->select( array('revision','flaggedpages'), '1',
-				array( 'rev_user' => $user->getID(), 'fp_page_id = rev_page', 'fp_stable >= rev_id' ),
+				array( 'rev_user' => $user->getId(), 'fp_page_id = rev_page', 'fp_stable >= rev_id' ),
 				__METHOD__,
 				array( 'USE INDEX' => array('revision' => 'user_timestamp'),
 					'LIMIT' => $wgFlaggedRevsAutopromote['totalCheckedEdits'] )
@@ -1208,13 +1313,7 @@ EOT;
 	
 	/** Add user preferences */
 	public static function onGetPreferences( $user, &$preferences ) {
-		$preferences['flaggedrevsstable'] =
-			array(
-				'type' => 'toggle',
-				'section' => 'flaggedrevs',
-				'label-message' => 'flaggedrevs-prefs-stable',
-			);
-			
+		// Box or bar UI
 		$preferences['flaggedrevssimpleui'] =
 			array(
 				'type' => 'radio',
@@ -1225,16 +1324,37 @@ EOT;
 					wfMsg( 'flaggedrevs-pref-UI-1' ) => 1,
 				),
 			);
-		
-		if ($user->isAllowed( 'review' ) ) {
+		// Default versions...
+		$preferences['flaggedrevsstable'] =
+			array(
+				'type' => 'toggle',
+				'section' => 'flaggedrevs',
+				'label-message' => 'flaggedrevs-prefs-stable',
+			);
+		// Review-related rights...
+		if( $user->isAllowed( 'review' ) ) {
+			// Watching reviewed pages
 			$preferences['flaggedrevswatch'] =
 				array(
 					'type' => 'toggle',
 					'section' => 'watchlist/advancedwatchlist',
 					'label-message' => 'flaggedrevs-prefs-watch',
 				);
+			// Diff-to-stable on edit
+			$preferences['flaggedrevseditdiffs'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'flaggedrevs',
+					'label-message' => 'flaggedrevs-prefs-editdiffs',
+				);
+			// Diff-to-stable on draft view
+			$preferences['flaggedrevsviewdiffs'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'flaggedrevs',
+					'label-message' => 'flaggedrevs-prefs-viewdiffs',
+				);
 		}
-		
 		return true;
 	}
 	
@@ -1298,31 +1418,6 @@ EOT;
 		$flaggedArticle->setPageContent( $outputDone, $pcache );
 		return true;
 	}
-
-	public static function addRatingLink( &$skintemplate, &$nav_urls, &$oldid, &$revid ) {
-		$fa = FlaggedArticle::getTitleInstance( $skintemplate->mTitle );
-		# Add rating tab
-		if( $fa->isRateable() ) {
-			wfLoadExtensionMessages( 'RatingHistory' );
-			$nav_urls['ratinghist'] = array( 
-				'text' => wfMsg( 'ratinghistory-link' ),
-				'href' => $skintemplate->makeSpecialUrl( 'RatingHistory', 
-					"target=" . wfUrlencode( "{$skintemplate->thispage}" ) )
-			);
-		}
-		return true;
-	}
-	
-	public static function ratingToolboxLink( &$skin ) {
-		if( isset( $skin->data['nav_urls']['ratinghist'] ) ) {
-			?><li id="t-rating"><?php
-				?><a href="<?php echo htmlspecialchars( $skin->data['nav_urls']['ratinghist']['href'] ) ?>"><?php
-					echo $skin->msg( 'ratinghistory-link' );
-				?></a><?php
-			?></li><?php
-		}
-		return true;
-	}
 	
 	public static function overrideRedirect( &$title, $request, &$ignoreRedirect, &$target, &$article ) {
 		# Get an instance on the title ($wgTitle)
@@ -1372,14 +1467,14 @@ EOT;
 		if( $wgOut->isArticleRelated() && ($fa = FlaggedArticle::getGlobalInstance()) ) {
 			$fa->addReviewNotes( $data );
 			$fa->addReviewForm( $data );
-			$fa->addFeedbackForm( $data );
 			$fa->addVisibilityLink( $data );
 		}
 		return true;
 	}
 	
 	public static function addToHistQuery( $pager, &$queryInfo ) {
-		$flaggedArticle = FlaggedArticle::getTitleInstance( $pager->mPageHistory->getTitle() );
+		$title = $pager->getArticle()->getTitle();
+		$flaggedArticle = FlaggedArticle::getTitleInstance( $title );
 		# Non-content pages cannot be validated. Stable version must exist.
 		if( $flaggedArticle->isReviewable() && $flaggedArticle->getStableRev() ) {
 			$queryInfo['tables'][] = 'flaggedrevs';
@@ -1483,10 +1578,12 @@ EOT;
 		return true;
 	}
 	
-	public static function addTochangeListLine( &$list, &$articlelink, &$s, &$rc, $unpatrolled, $watched ) {
+	public static function addToChangeListLine( &$list, &$articlelink, &$s, &$rc, $unpatrolled, $watched ) {
 		global $wgUser;
-		if( $rc->getTitle()->getNamespace() < 0 || !isset($rc->mAttribs['fpp_rev_id']) )
-			return true; // reviewed pages only
+		if( empty($rc->mAttribs['fpp_rev_id']) )
+			return true; // page is not listed in pending edit table
+		if( !FlaggedRevs::isPageReviewable($rc->getTitle()) )
+			return true; // confirm that page is in reviewable namespace
 		wfLoadExtensionMessages( 'FlaggedRevs' );
 		$rlink = $list->skin->makeKnownLinkObj( $rc->getTitle(), wfMsg('revreview-reviewlink'),
 			'oldid='.intval($rc->mAttribs['fpp_rev_id']).'&diff=cur' );
@@ -1559,10 +1656,14 @@ EOT;
 		$recentchanges = SpecialPage::getTitleFor( 'Recentchanges' );
 		if( $wgTitle->equals($watchlist) || $wgTitle->equals($recentchanges) ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			$watchedOutdated = $dbr->selectField( array('watchlist','page','flaggedpages'), '1',
-				array( 'wl_user' => $wgUser->getId(),
-					'wl_namespace = page_namespace', 'wl_title = page_title',
-					'fp_reviewed' => 0, 'fp_page_id = page_id'
+			$watchedOutdated = $dbr->selectField(
+				array('watchlist','page','flaggedpages'), '1',
+				array( 'wl_user' => $wgUser->getId(), // this user
+					'wl_namespace' => $wgFlaggedRevsNamespaces, // reviewable
+					'wl_namespace = page_namespace',
+					'wl_title = page_title',
+					'fp_page_id = page_id',
+					'fp_reviewed' => 0,  // edits pending
 				), __METHOD__
 			);
 			# Give a notice if pages on the wachlist are outdated
@@ -1584,7 +1685,7 @@ EOT;
 					$unreviewed = $dbr->estimateRowCount( 'flaggedpages', '*',
 						'fp_pending_since IS NOT NULL', __METHOD__ );
 				}
-				if( $pages > 0 && ($unreviewed/$pages) > .02 ) {
+				if( $unreviewed > .02*$pages ) {
 					wfLoadExtensionMessages( 'FlaggedRevs' );
 					$notice .= "<div id='mw-oldreviewed-notice' class='plainlinks fr-backlognotice'>" . 
 						wfMsgExt('flaggedrevs-backlog',array('parseinline')) . "</div>";
@@ -1614,9 +1715,6 @@ EOT;
 		$tables[] = 'flaggedtemplates';
 		$tables[] = 'flaggedimages';
 		$tables[] = 'flaggedrevs_promote';
-		$tables[] = 'reader_feedback';
-		$tables[] = 'reader_feedback_history';
-		$tables[] = 'reader_feedback_pages';
 		$tables[] = 'flaggedrevs_tracking';
 		return true;
 	}

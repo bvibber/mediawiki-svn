@@ -398,17 +398,10 @@ class Xml {
 	}
 
 	/**
-	 * Convenience function to build an HTML hidden form field.
-	 * @param $name String: name attribute for the field
-	 * @param $value String: value for the hidden field
-	 * @param $attribs Array: optional custom attributes
-	 * @return string HTML
+	 * @deprecated Synonymous to Html::hidden()
 	 */
-	public static function hidden( $name, $value, $attribs=array() ) {
-		return self::element( 'input', array(
-			'name' => $name,
-			'type' => 'hidden',
-			'value' => $value ) + $attribs );
+	public static function hidden( $name, $value, $attribs = array() ) {
+		return Html::hidden( $name, $value, $attribs );
 	}
 
 	/**
@@ -574,7 +567,9 @@ class Xml {
 			$s = 'null';
 		} elseif ( is_int( $value ) ) {
 			$s = $value;
-		} elseif ( is_array( $value ) ) {
+		} elseif ( is_array( $value ) && // Make sure it's not associative.
+					array_keys($value) === range(0,count($value)-1)
+				) {
 			$s = '[';
 			foreach ( $value as $elt ) {
 				if ( $s != '[' ) {
@@ -583,7 +578,8 @@ class Xml {
 				$s .= self::encodeJsVar( $elt );
 			}
 			$s .= ']';
-		} elseif ( is_object( $value ) ) {
+		} elseif ( is_object( $value ) || is_array( $value ) ) {
+			// Objects and associative arrays
 			$s = '{';
 			foreach ( (array)$value as $name => $elt ) {
 				if ( $s != '{' ) {
@@ -749,6 +745,14 @@ class XmlSelect {
 
 	public function setAttribute( $name, $value ) {
 		$this->attributes[$name] = $value;
+	}
+
+	public function getAttribute( $name ) {
+		if ( isset($this->attributes[$name]) ) {
+			return $this->attributes[$name];
+		} else {
+			return null;
+		}
 	}
 
 	public function addOption( $name, $value = false ) {

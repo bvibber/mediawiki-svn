@@ -124,7 +124,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Gadgets' => array( 'Gadget' ),
+	'Gadgets' => array( 'Alat', 'Gadget' ),
 );
 
 /** Italian (Italiano) */
@@ -169,7 +169,7 @@ $aliases['nds-nl'] = array(
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Gadgets' => array( 'Uitbreidingen', 'Extensies' ),
+	'Gadgets' => array( 'Extensies' ),
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
@@ -210,6 +210,11 @@ $aliases['ro'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Gadgets' => array( 'सुविधा (गॅजेट)' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Gadgets' => array( 'Hračky' ),
 );
 
 /** Slovenian (Slovenščina) */

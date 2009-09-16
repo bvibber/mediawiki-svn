@@ -18,13 +18,6 @@ $messages['qqq'] = array(
 	'opensearchxml-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Piotron
- */
-$messages['sli'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Schnittstelle fier Textoausziege',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -52,6 +45,13 @@ $messages['ast'] = array(
  */
 $messages['be-tarask'] = array(
 	'opensearchxml-desc' => 'XML-інтэрфэйс [http://www.opensearch.org OpenSearch] для тэкставых вытрымак',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'opensearchxml-desc' => 'Etrefas XML evit [http://www.opensearch.org OpenSearch] pourchaset evit arroudennoù testenn',
 );
 
 /** Bosnian (Bosanski)
@@ -108,6 +108,13 @@ $messages['es'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] interface XML proveído para extractos de texto',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-liides tekstiväljavõteteks',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -157,6 +164,13 @@ $messages['he'] = array(
 	'opensearchxml-desc' => 'ממשק XML ל־[http://www.opensearch.org OpenSearch] המאפשר צפייה בקטעי טקסט',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML interface nagahatag para sa gin-ekstrak nga teksto',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -169,6 +183,13 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'opensearchxml-desc' => 'Interfejs XML [http://www.opensearch.org OpenSearch] za tekstowe wućahi',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-támogatás',
 );
 
 /** Interlingua (Interlingua)
@@ -234,6 +255,13 @@ $messages['li'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-interface die tekstextracte levertj',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML интерфејсот овозможува извадоци од текст',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */
@@ -283,6 +311,13 @@ $messages['pl'] = array(
 	'opensearchxml-desc' => 'Interfejs XML [http://www.opensearch.org OpenSearch] dla wycinków tekstu',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'opensearchxml-desc' => "A dà n'antërfacia XML d'[http://www.opensearch.org OpenSearch] për l'estrassion ëd test",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -325,11 +360,25 @@ $messages['sk'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML rozhranie umožňuje úryvky textu',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Schnittstelle fier Textoausziege',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML интерфејс, који пружа извлачење делова текста',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'opensearchxml-desc' => '[<a href="http://www.opensearch.org">http://www.opensearch.org</a> OpenSearch] XML interfejs, koji pruža izvlačenje delova teksta',
 );
 
 /** Seeltersk (Seeltersk)
@@ -396,10 +445,11 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'opensearchxml-desc' => '提供文字撷取的[http://www.opensearch.org OpenSearch] XML界面',
+	'opensearchxml-desc' => '提供文本获取的[http://www.opensearch.org OpenSearch]XML界面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -26,16 +26,16 @@ form#editform {
 	width: 100%;
 	line-height: 1em;
 	background-color: #f3f3f3;
+	border: solid silver 1px;
+}
+body.rtl .wikiEditor-ui {
+	float: right;
 }
 .wikiEditor-ui .wikiEditor-ui-bottom {
-	border: solid silver 1px;
-	border-top-width: 0;
+	width: 100%;
 }
 .wikiEditor-ui .wikiEditor-ui-top {
 	position: relative;
-	border: solid silver 1px;
-	border-bottom-width: 0;
-}
-.ui-dialog-content fieldset table td {
-	padding: 0.25em;
+	width: 100%;
+	border-bottom: solid silver 1px;
 }

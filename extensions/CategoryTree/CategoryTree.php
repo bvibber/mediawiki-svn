@@ -129,6 +129,11 @@ $wgExtensionCredits['parserhook'][] = array(
  * Register the special page
  */
 $dir = dirname(__FILE__) . '/';
+
+if ( $wgUseAjax && $wgCategoryTreeAllowTag ) {
+	$wgExtensionMessagesFiles['CategoryTreeMagic'] = $dir . 'CategoryTree.i18n.magic.php';
+}
+
 $wgExtensionMessagesFiles['CategoryTree'] = $dir . 'CategoryTree.i18n.php';
 $wgAutoloadClasses['CategoryTreePage'] = $dir . 'CategoryTreePage.php';
 $wgAutoloadClasses['CategoryTree'] = $dir . 'CategoryTreeFunctions.php';
@@ -137,7 +142,6 @@ $wgSpecialPages['CategoryTree'] = 'CategoryTreePage';
 $wgSpecialPageGroups['CategoryTree'] = 'pages';
 #$wgHooks['SkinTemplateTabs'][] = 'efCategoryTreeInstallTabs';
 $wgHooks['ArticleFromTitle'][] = 'efCategoryTreeArticleFromTitle';
-$wgHooks['LanguageGetMagic'][] = 'efCategoryTreeGetMagic';
 
 /**
  * register Ajax function
@@ -150,7 +154,7 @@ $wgAjaxExportList[] = 'efCategoryTreeAjaxWrapper';
 function efCategoryTree() {
 	global $wgUseAjax, $wgHooks, $wgOut;
 	global $wgCategoryTreeDefaultOptions, $wgCategoryTreeDefaultMode, $wgCategoryTreeOmitNamespace;
-	global $wgCategoryTreeCategoryPageOptions, $wgCategoryTreeCategoryPageMode;
+	global $wgCategoryTreeCategoryPageOptions, $wgCategoryTreeCategoryPageMode, $wgCategoryTreeAllowTag;
 	global $wgCategoryTreeSidebarRoot, $wgCategoryTreeForceHeaders, $wgCategoryTreeHijackPageCategories;
 
 	# Abort if AJAX is not enabled
@@ -170,10 +174,8 @@ function efCategoryTree() {
 		$wgHooks['SkinJoinCategoryLinks'][] = 'efCategoryTreeSkinJoinCategoryLinks';
 	}
 
-	if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	if( $wgCategoryTreeAllowTag ) {
 		$wgHooks['ParserFirstCallInit'][] = 'efCategoryTreeSetHooks';
-	} else {
-		efCategoryTreeSetHooks();
 	}
 
 	if ( !isset( $wgCategoryTreeDefaultOptions['mode'] ) || is_null( $wgCategoryTreeDefaultOptions['mode'] ) ) {
@@ -196,26 +198,9 @@ function efCategoryTree() {
 	}
 }
 
-function efCategoryTreeSetHooks() {
-	global $wgParser, $wgCategoryTreeAllowTag;
-	if ( $wgCategoryTreeAllowTag ) {
-		$wgParser->setHook( 'categorytree' , 'efCategoryTreeParserHook' );
-		$wgParser->setFunctionHook( 'categorytree' , 'efCategoryTreeParserFunction' );
-	}
-	return true;
-}
-
-/**
-* Hook magic word
-*/
-function efCategoryTreeGetMagic( &$magicWords, $langCode ) {
-	global $wgUseAjax, $wgCategoryTreeAllowTag;
-
-	if ( $wgUseAjax && $wgCategoryTreeAllowTag ) {
-		//XXX: should we allow a local alias?
-		$magicWords['categorytree'] = array( 0, 'categorytree' );
-	}
-
+function efCategoryTreeSetHooks( &$parser ) {
+	$parser->setHook( 'categorytree' , 'efCategoryTreeParserHook' );
+	$parser->setFunctionHook( 'categorytree' , 'efCategoryTreeParserFunction' );
 	return true;
 }
 

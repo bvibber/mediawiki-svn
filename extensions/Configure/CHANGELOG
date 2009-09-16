@@ -1,6 +1,45 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.14.13 - 24 August 2009
+  The ScriptLoader will now be used to serve the Configure.js file
+
+0.14.12 - 17 August 2009
+  (bug 19058) Added configure-old-summary-datetime message for better date and
+  time localisation in configure-old-summary message
+
+0.14.11 - 16 August 2009
+  * (bug 19057) Added user name parameter to configure-viewconfig-line message
+  * (bug 19058) Added user name parameter to configure-old-summary message
+  * Updated AuthorProtect, Babel, CategoryOnUpload, Collection, ConfirmAccount,
+    EditOwn, EditUser, ExternalData, FlaggedRevs, LocalisationUpdate,
+    OggHandler, RT, SemanticForms, SemanticMediaWiki, TorBlock, Translate,
+    Uniwiki - Generic Edit Page, WebChat and WikiAtHome extensions.
+
+0.14.10 - 15 August 2009
+  Added support for ReplaceSet, RT, UploadBlacklist, UsageStatistics,
+  UserContactLinks, UserImages, UserOptionStats, UserRightsNotification, Vote,
+  Watchers, WatchSubpages, WebChat, WhatIsMyIP, WhoIsWatching, WhosOnline,
+  WikiAtHome, WikimediaIncubator, WikimediaMessages, WikiTextLoggedInOut,
+  Woopra, YouTubeAuthSub and WikiArticleFeeds extensions
+
+0.14.9 - 12 July 2009
+  Changed Uniwiki extensions names to have "Uniwiki" rather than "UW".
+
+0.14.8 - 29 June 2009
+  * Added $wgNamespacesToBeSearchedHelp, $wgRevokePermissions,
+    $wgDevelopmentWarnings, $wgCacheDirectory, $wgLocalisationCacheConf,
+    $wgDjvuTxt, $wgRedirectOnLogin, $wgHiddenPrefs, $wgSessionHandler,
+    $wgSearchEverythingOnlyLoggedIn.
+  * Removed $wgNamespacesToBeSearchedProject, $wgEnableSerializedMessages,
+    $wgLocalMessageCache, $wgCheckSerialized.
+
+0.14.7 - 26 June 2009
+  Updated Semantic Forms extension.
+
+0.14.6 - 18 June 2009
+  Added support for PageCSS, PageNotice, PhpHighlight and PurgeCache extensions.
+
 0.14.5 - 16 June 2009
   SemanticDrilldown, SemanticForms and SemanticResultFormats extensions now
   require Semantic MediaWiki extension to be enabled.
@@ -22,6 +61,7 @@ Localisation updates are done on betawiki and aren't listed here.
 0.14.0 - 2 June 2009
   Now use SiteConfiguration::loadFullData() to load full configuration data.
   THIS VERSION NOW REQUIRES MediaWiki 1.16 TO WORK.
+
 
 0.13.20 - 30 May 2009
   Changed Configure special pages's order in Special:AdminLinks.

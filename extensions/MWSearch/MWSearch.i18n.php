@@ -82,6 +82,13 @@ $messages['bn'] = array(
 	'mwsearch-desc' => 'MWSearch প্লাগইন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'mwsearch-desc' => "Adveziant MWSearch evit ar c'hlaskoù e MediaWiki",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -101,6 +108,13 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'mwsearch-desc' => 'Zásuvný modul MWSearch',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'mwsearch-desc' => 'Ategyn MWSearch',
 );
 
 /** German (Deutsch)
@@ -136,6 +150,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'mwsearch-desc' => 'Complemento MWSearch',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'mwsearch-desc' => 'MWSearch-lisa',
 );
 
 /** Basque (Euskara)
@@ -193,6 +214,13 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'mwsearch-desc' => 'एमडब्ल्यूखोज प्लगीन',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'mwsearch-desc' => 'MWPangita plugin',
 );
 
 /** Croatian (Hrvatski)
@@ -286,6 +314,27 @@ $messages['li'] = array(
 	'mwsearch-desc' => 'MWZeuk ingaef',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'mwsearch-desc' => 'MWSearch įskiepis',
+);
+
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'mwsearch-desc' => 'MWSearch spraudnis',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mwsearch-desc' => 'MWSearch приклучок',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -357,6 +406,13 @@ $messages['pl'] = array(
 	'mwsearch-desc' => 'Wtyczka MWSearch',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -399,11 +455,18 @@ $messages['sk'] = array(
 	'mwsearch-desc' => 'Zásuvný modul MWSearch',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'mwsearch-desc' => 'MWSearch додатак',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'mwsearch-desc' => 'MWSearch dodatak',
 );
 
 /** Seeltersk (Seeltersk)

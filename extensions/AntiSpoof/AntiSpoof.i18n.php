@@ -244,6 +244,8 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'antispoof-desc' => "Stankañ a ra, dre ur skript kemmesk, krouidigezh kontoù dezho anvioù implijer heñvel pe a c'hall sevel amjestregezh diwarno",
+	'antispoof-conflict-top' => 'Heñvel betek re eo an anv "$1" da hini {{PLURAL:$2|ar gont zo anezhi|d\'an $2 anv kont da-heul}}:',
+	'antispoof-conflict-bottom' => 'Dibabit un anv all mar plij.',
 	'antispoof-name-illegal' => 'N\'eo ket aotreet ober gant an anv "$1" kuit da gemmeskañ gant un anv all pe da implijout an anv : $2. Grit gant un anv all mar plij.',
 	'antispoof-badtype' => 'Seurt roadennoù fall',
 	'antispoof-empty' => 'Neudennad goullo',
@@ -253,6 +255,8 @@ $messages['br'] = array(
 	'antispoof-noletters' => 'Lizherenn ebet e-barzh',
 	'antispoof-mixedscripts' => 'Meur a skript digenglotus zo e-barzh',
 	'antispoof-tooshort' => 'Anv kanonek re verr',
+	'antispoof-ignore' => "Chom hep gwiriañ hag-eñ n'eus ket un implijer all gantañ un anv damheñvel",
+	'right-override-antispoof' => 'Chom hep gwiriañ ha touellerezh zo',
 );
 
 /** Bosnian (Bosanski)
@@ -473,6 +477,22 @@ $messages['es'] = array(
 	'right-override-antispoof' => 'Anula las comprobaciones de suplantación',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'antispoof-desc' => 'Blokeerib erinevaid kirjasüsteeme kasutavate, eksitavate ja sarnaste kasutajanimedega kontode loomise.',
+	'antispoof-conflict-top' => 'Nimi "$1" on liiga sarnane {{PLURAL:$2|olemasoleva|järgneva $2}} kontoga:',
+	'antispoof-conflict-bottom' => 'Palun vali teine nimi.',
+	'antispoof-name-illegal' => 'Nimi "$1" ei ole lubatud, et vältida eksitavaid või pilavaid kasutajanimesid. Põhjus: $2<br />
+Palun vali teine nimi.',
+	'antispoof-blacklisted' => 'Sisaldab mustas nimekirjas olevat märki',
+	'antispoof-noletters' => 'Ei sisalda ühtegi tähte',
+	'antispoof-mixedscripts' => 'Sisaldab ühildumatuid kirjasüsteeme',
+	'antispoof-ignore' => 'Eira sarnasuskontrolle',
+	'right-override-antispoof' => 'Mööduda kasutajanimede sarnasuse testist',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -574,14 +594,15 @@ $messages['frc'] = array(
  */
 $messages['frp'] = array(
 	'antispoof-desc' => 'Bloque, avouéc un script mècllo, la crèacion des comptos per des noms d’utilisator semblâblos ou povent prétar a confusion.',
+	'antispoof-conflict-bottom' => 'Volyéd chouèsir un ôtro nom.',
 	'antispoof-name-illegal' => 'Lo nom d’utilisator « $1 » est pas ôtorisâ por empachiér de confondre ou d’utilisar lo nom « $2 ». Volyéd chouèsir/cièrdre un ôtro nom.',
-	'antispoof-badtype' => 'Môvés tipo de balyês',
+	'antispoof-badtype' => 'Crouyo tipo de balyês',
 	'antispoof-empty' => 'Chêna voueda',
 	'antispoof-blacklisted' => 'Contint un caractèro dèfendu.',
 	'antispoof-combining' => 'Comence avouéc una mârca combinâ.',
-	'antispoof-unassigned' => 'Contint un caractèro pas assignê ou pas més utilisâ.',
+	'antispoof-unassigned' => 'Contint un caractèro pas assignê ou ben dèpassâ.',
 	'antispoof-noletters' => 'Contint gins de lètra.',
-	'antispoof-mixedscripts' => 'Contint plusiors scripts que vont pas avouéc.',
+	'antispoof-mixedscripts' => 'Contint un mouél de scripts que vont pas avouéc.',
 	'antispoof-tooshort' => 'Nom canonico trop côrt',
 );
 
@@ -856,6 +877,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author JtFuruhata
+ * @author Mizusumashi
  * @author Muttley
  */
 $messages['ja'] = array(
@@ -869,7 +891,7 @@ $messages['ja'] = array(
 	'antispoof-combining' => '結合記号で開始しています',
 	'antispoof-unassigned' => '廃止予定または未割り当ての文字が含まれています',
 	'antispoof-noletters' => '文字を含んでいません',
-	'antispoof-mixedscripts' => '互換性のない文字体系の混在があります',
+	'antispoof-mixedscripts' => '一緒に使うことできない複数の文字体系が混在しています',
 	'antispoof-tooshort' => '正規化した名前が短すぎます',
 	'antispoof-ignore' => 'なりすましチェックを無効にします。',
 	'right-override-antispoof' => 'なりすましチェックを無視する',
@@ -1340,8 +1362,12 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'antispoof-desc' => 'A blòca la creassion ëd cont con nòm utent mës-cià a script, confundent e via parèj',
+	'antispoof-conflict-top' => 'Ël nòm "$1" a smija tròp {{PLURAL:$2|al cont esistent|a sti $2 cont-sì}}:',
+	'antispoof-conflict-bottom' => "Për piasì sern n'àutr nòm.",
 	'antispoof-name-illegal' => 'Lë stranòm "$1" as peul nen dovresse për evité confusion e/ò che cheidun as fassa passé për: $2. Për piasì, ch\'as në sërna n\'àotr.',
 	'antispoof-badtype' => 'Sòrt ëd dat nen bon-a',
 	'antispoof-empty' => 'Espression veujda',
@@ -1351,6 +1377,8 @@ $messages['pms'] = array(
 	'antispoof-noletters' => "A l'ha pa gnun caràter",
 	'antispoof-mixedscripts' => "Combinassion ëd sistema dë scritura ch'as peulo pa butesse ansema",
 	'antispoof-tooshort' => 'Butà an forma canònica lë stranòm a resta esagerà curt',
+	'antispoof-ignore' => 'Sàuta ij controj dë spoofing',
+	'right-override-antispoof' => 'Ignora ij controj dë spoofing',
 );
 
 /** Pashto (پښتو)
@@ -1525,14 +1553,15 @@ $messages['sk'] = array(
 	'right-override-antispoof' => 'Prekonať kontroly klamania',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Јованвб
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'antispoof-desc' => 'Онемогућава стварање налога с мешаним писмима, збуњујућим и сличним сарадничким именима.',
-	'antispoof-conflict-top' => 'Име је превише слично са {{PLURAL:$2|постојећим налогом|постојећа $2 налога|постојеих $2 налога}}:',
+	'antispoof-conflict-top' => 'Име „$1“ је превише слично са {{PLURAL:$2|именом постојећег налога|именима следећих $2 налога}}:',
 	'antispoof-conflict-bottom' => 'Молимо изаберите друго име.',
 	'antispoof-name-illegal' => 'Име "$1" није дозвољено како би се спречиле забуне или лажирања корисничких имена: $2. Молимо изаберите неко друго име.',
 	'antispoof-badtype' => 'Лош тип податка.',
@@ -1547,9 +1576,24 @@ $messages['sr-ec'] = array(
 	'right-override-antispoof' => 'Препиши провере на бесмислице.',
 );
 
-/** latinica (latinica) */
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
 $messages['sr-el'] = array(
+	'antispoof-desc' => 'Onemogućava stvaranje naloga s mešanim pismima, zbunjujućim i sličnim saradničkim imenima.',
+	'antispoof-conflict-top' => 'Ime „$1“ je previše slično sa {{PLURAL:$2|imenom postojećeg naloga|imenima sledećih $2 naloga}}:',
+	'antispoof-conflict-bottom' => 'Molimo izaberite drugo ime.',
 	'antispoof-name-illegal' => 'Ime "$1" nije dozvoljeno kako bi se sprečile zabune ili lažiranja korisničkih imena: $2. Molimo izaberite neko drugo ime.',
+	'antispoof-badtype' => 'Loš tip podatka.',
+	'antispoof-empty' => 'Prazan string.',
+	'antispoof-blacklisted' => 'Sadrži onemogućene karaktere.',
+	'antispoof-combining' => 'Počinje s kombinovanom oznakom.',
+	'antispoof-unassigned' => 'Sadrži nedodeljene ili potisnute karaktere.',
+	'antispoof-noletters' => 'Ne sadrži ni jedno slovo',
+	'antispoof-mixedscripts' => 'Sadrži neusklađena mešana pisma.',
+	'antispoof-tooshort' => 'Kanoničko ime previše kratko.',
+	'antispoof-ignore' => 'Zanemari provere na besmislice.',
+	'right-override-antispoof' => 'Prepiši provere na besmislice.',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1825,20 +1869,21 @@ $messages['zea'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
-	'antispoof-desc' => '封锁以含有程式码或是容易混淆、与已存在用户相似的名称建立用户',
-	'antispoof-conflict-top' => '名称“$1”与以下$2个账户太相似：',
+	'antispoof-desc' => '禁止创建用户名使用混合文字、容易混淆或与已存在用户名过于相似的帐户',
+	'antispoof-conflict-top' => '用户名“$1”与{{PLURAL:$2|现有帐户|下列$2个账户}}过于相似：',
 	'antispoof-conflict-bottom' => '请选择其他名称。',
-	'antispoof-name-illegal' => '用户名"$1"易与用户名"$2"混淆，已被禁止使用。请使用其他用户名。',
-	'antispoof-badtype' => '错误的数据类型',
+	'antispoof-name-illegal' => '为了防止混淆或欺诈性使用用户名“$2”，用户名“$1”已被禁止使用。请使用其他用户名。',
+	'antispoof-badtype' => '错误数据类型',
 	'antispoof-empty' => '空白字串',
-	'antispoof-blacklisted' => '包含在黑名单上的字元',
+	'antispoof-blacklisted' => '包含黑名单上的字符',
 	'antispoof-combining' => '以结合标记开始',
-	'antispoof-unassigned' => '包含未指定或不再使用的字元',
-	'antispoof-noletters' => '不包含任何字元',
-	'antispoof-mixedscripts' => '包含不相容混合的脚本',
-	'antispoof-tooshort' => '合符标准的名称太短',
+	'antispoof-unassigned' => '包含未指定或不再使用的字符',
+	'antispoof-noletters' => '未包含任何字符',
+	'antispoof-mixedscripts' => '包含不兼容的混合文字',
+	'antispoof-tooshort' => '符合标准的用户名过短',
 	'antispoof-ignore' => '略过欺诈检查',
 	'right-override-antispoof' => '无视欺诈检查',
 );

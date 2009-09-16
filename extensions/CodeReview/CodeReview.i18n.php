@@ -29,7 +29,7 @@ $messages['en'] = array(
 	'code-status' => 'states',
 	'code-tags' => 'tags',
 	'code-tests' => 'Test cases',
-	'code-authors-text' => 'Below is a list of repo authors in order of recent commits.',
+	'code-authors-text' => 'Below is a list of repo authors in order of recent commits. Local wiki accounts are shown in parentheses.',
 	'code-author-haslink' => 'This author is linked to the wiki user $1',
 	'code-author-orphan' => 'This author has no link with a wiki account',
 	'code-author-dolink' => 'Link this author to a wiki user:',
@@ -118,6 +118,15 @@ Commit summary:
 
 $4',
 
+	'codereview-email-subj3' => '[$1] [r$2]: Automatic testing detected regression',
+	'codereview-email-body3' => 'Automatic testing has revealed a regression due to the changes in r$1.
+
+Full URL: $2
+
+Commit summary:
+
+$3',
+
 	'repoadmin' => 'Repository Administration',
 	'repoadmin-new-legend' => 'Create a new repository',
 	'repoadmin-new-label' => 'Repository name:',
@@ -154,6 +163,7 @@ $4',
  */
 $messages['qqq'] = array(
 	'code-comments' => '{{Identical|Comments}}',
+	'code-change-added' => '{{Identical|Added}}',
 	'code-desc' => '{{desc}}',
 	'code-field-id' => '{{Identical|Revision}}',
 	'code-field-author' => '{{Identical|Author}}',
@@ -162,10 +172,12 @@ $messages['qqq'] = array(
 	'code-field-timestamp' => '{{Identical|Date}}',
 	'code-field-comments' => '{{Identical|Notes}}',
 	'code-field-path' => '{{Identical|Path}}',
+	'code-field-select' => '{{Identical|Select}}',
 	'code-rev-author' => '{{Identical|Author}}',
 	'code-rev-date' => '{{Identical|Date}}',
 	'code-rev-message' => '{{Identical|Comment}}',
 	'code-rev-rev' => '{{Identical|Revision}}',
+	'code-rev-modified-a' => '{{Identical|Added}}',
 	'code-rev-status' => '{{Identical|Status}}',
 	'code-rev-comment-preview' => '{{Identical|Preview}}',
 	'code-status-new' => '{{Identical|New}}',
@@ -184,6 +196,11 @@ $1 = Repository name',
 * <code>$2</code> – Number of the revision that has been followed upon.
 * <code>$3</code> – URL to the new revision.
 * <code>$4</code> – Commit message of the new revision.',
+	'codereview-email-subj3' => '* <code>$1</code> – Repository name
+* <code>$2</code> – Number of the revision',
+	'codereview-email-body3' => '* <code>$1</code> – Number of the revision where a regression has been introduced
+* <code>$2</code> – URL to the revision
+* <code>$3</code> – Commit message for the revision',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',
@@ -200,17 +217,24 @@ $1 = Repository name',
  */
 $messages['af'] = array(
 	'code-comments' => 'Opmerkings',
+	'code-change-added' => 'bygevoeg:',
+	'code-old-status' => 'Ou status',
+	'code-new-status' => 'Nuwe status',
 	'code-authors' => 'outeurs',
 	'code-author-name' => "Sleutel 'n gebruikersnaam in:",
+	'code-field-id' => 'Weergawe',
 	'code-field-author' => 'Outeur',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
+	'code-field-comments' => 'Notas',
 	'code-field-path' => 'Pad',
 	'code-field-text' => 'Opmerking',
+	'code-field-select' => 'Kies',
 	'code-rev-author' => 'Outeur:',
 	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Opmerking:',
 	'code-rev-repo' => 'Repository:',
+	'code-rev-rev' => 'Weergawe:',
 	'code-rev-modified-a' => 'bygevoeg',
 	'code-rev-modified-r' => 'vervang',
 	'code-rev-modified-d' => 'verwyder',
@@ -219,8 +243,12 @@ $messages['af'] = array(
 	'code-rev-status-set' => 'Wysigingsstatus',
 	'code-rev-comment-by' => 'Opmerking van $1',
 	'code-rev-comment-preview' => 'Voorskou',
+	'code-status-new' => 'nuut',
 	'code-status-resolved' => 'opgelos',
+	'code-status-ok' => 'ok',
 	'code-pathsearch-path' => 'Pad:',
+	'codereview-batch-submit' => 'Dien in',
+	'codereview-subtitle' => 'Vir $1',
 	'codereview-reply-link' => 'antwoord',
 	'repoadmin-new-button' => 'Skep',
 	'repoadmin-edit-button' => 'OK',
@@ -312,14 +340,18 @@ $messages['ar'] = array(
 	'code-change-tags' => "غير '''الوسوم''' لن$1",
 	'code-change-removed' => 'أزال:',
 	'code-change-added' => 'أضاف:',
+	'code-old-status' => 'الحالة القديمة',
+	'code-new-status' => 'الحالة الجديدة',
 	'code-prop-changes' => 'سجل الحالة والوسم',
 	'code-desc' => '[[Special:Code|أداة مراجعة الكود]] مع [[Special:RepoAdmin|دعم ساب فيرجن]]',
 	'code-no-repo' => 'لا مستودع تم ضبطه!',
 	'code-load-diff' => 'جاري تحميل الفرق...',
 	'code-notes' => 'التعليقات الحديثة',
+	'code-statuschanges' => 'تغييرات الحالة',
 	'code-authors' => 'مؤلفون',
-	'code-status' => 'الحالة',
+	'code-status' => 'الحالات',
 	'code-tags' => 'وسوم',
+	'code-tests' => 'حالات الاختبار',
 	'code-authors-text' => 'بالأسفل قائمة بمؤلفي المستودع حسب تاريخ عمليات الكوميت.',
 	'code-author-haslink' => 'هذا المؤلف موصول بمستخدم الويكي $1',
 	'code-author-orphan' => 'هذا المؤلف ليس له وصلة لحساب ويكي',
@@ -338,6 +370,7 @@ $messages['ar'] = array(
 	'code-field-status' => 'حالة',
 	'code-field-timestamp' => 'تاريخ',
 	'code-field-comments' => 'ملاحظات',
+	'code-field-tests' => 'الاختبارات',
 	'code-field-path' => 'مسار',
 	'code-field-text' => 'ملاحظة',
 	'code-field-select' => 'اختر',
@@ -597,7 +630,7 @@ $messages['be-tarask'] = array(
 	'code-status' => 'станы',
 	'code-tags' => 'тэгі',
 	'code-tests' => 'Тэсты',
-	'code-authors-text' => 'Ніжэй пададзены сьпіс аўтараў коду ў сховішчы ў парадку апошніх зьменаў.',
+	'code-authors-text' => 'Ніжэй пададзены сьпіс аўтараў коду ў сховішчы ў парадку апошніх зьменаў. Рахункі лякальнай вікі паказаныя ў дужках.',
 	'code-author-haslink' => 'Гэты аўтар асацыяваны з удзельнікам $1',
 	'code-author-orphan' => 'Гэты аўтар ня мае спасылкі на рахунак удзельніка вікі',
 	'code-author-dolink' => 'Стварыць спасылку на рахунак удзельніка вікі для гэтага аўтара:',
@@ -679,6 +712,14 @@ $4',
 Кароткае апісаньне зьменаў:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Аўтаматычнае тэставаньне выявіла рэгрэсію',
+	'codereview-email-body3' => 'Аўтаматычнае тэставаньне выявіла рэгрэсію ў сувязі са зьменамі ў r$1.
+
+Поўны URL-адрас: $2
+
+Апісаньне зьменаў:
+
+$3',
 	'repoadmin' => 'Кіраваньне сховішчам коду',
 	'repoadmin-new-legend' => 'Стварыць новае сховішча',
 	'repoadmin-new-label' => 'Назва сховішча:',
@@ -762,6 +803,26 @@ $4',
 	'specialpages-group-developer' => 'Инструменти за разработчици',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'code-change-removed' => 'অপসারিত',
+	'code-field-author' => 'লেখক:',
+	'code-field-timestamp' => 'তারিখ',
+	'code-field-comments' => 'টীকা',
+	'code-field-select' => 'নির্বাচন',
+	'code-rev-author' => 'লেখক:',
+	'code-rev-date' => 'তারিখ:',
+	'code-rev-message' => 'মন্তব্য:',
+	'code-rev-modified-r' => 'প্রতিস্থাপিত',
+	'code-rev-comment-preview' => 'প্রাকদর্শন',
+	'code-status-new' => 'নতুন',
+	'code-status-ok' => 'ঠিক আছে',
+	'repoadmin-new-button' => 'তৈরি',
+	'repoadmin-edit-button' => 'ঠিক আছে',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -786,7 +847,7 @@ $messages['bs'] = array(
 	'code-status' => 'statusi',
 	'code-tags' => 'oznake',
 	'code-tests' => 'Probni slučajevi',
-	'code-authors-text' => 'Ispod je spisak autora repozitorijuma poredanih po nedavnim doprinosima.',
+	'code-authors-text' => 'Ispod je spisak autora repozitorijuma poredanih po nedavnim doprinosima. Lokalni wiki računi su prikazani pod navodnicima.',
 	'code-author-haslink' => 'Ovaj autor je povezan wiki korisničkim računom $1',
 	'code-author-orphan' => 'Ovaj autor nije povezan sa wiki računom',
 	'code-author-dolink' => 'Poveži ovog autora sa wiki korisnikom:',
@@ -868,6 +929,14 @@ Puni URL: $3
 Napravljeni sažetak:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Automatska proba je otkrila regresiju',
+	'codereview-email-body3' => 'Automatska proba je otkrila regresiju zbog izmjena u r$1.
+
+Puni URL: $2
+
+Sažetak prenosa:
+
+$3',
 	'repoadmin' => 'Administracija repozitorijuma',
 	'repoadmin-new-legend' => 'Napravi novi repozitorijum',
 	'repoadmin-new-label' => 'Naziv repozitorija:',
@@ -890,29 +959,84 @@ $4',
 
 /** Catalan (Català)
  * @author Loupeter
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'code-comments' => 'Comentaris',
+	'code-change-removed' => 'Eliminat:',
 	'code-change-added' => 'afegit:',
+	'code-old-status' => 'Estat antic',
+	'code-new-status' => 'Estat nou',
+	'code-load-diff' => 'Carregant dif...',
 	'code-notes' => 'comentaris recents',
+	'code-statuschanges' => "Canvis d'estat",
 	'code-authors' => 'autors',
+	'code-status' => 'Estats',
+	'code-tags' => 'Etiquetes',
+	'code-author-haslink' => "Aquest autor està vinculat a l'usuari wiki $1",
+	'code-author-orphan' => "Aquest autor no té enllaç a un compte d'usuari wiki",
+	'code-author-dolink' => 'Vincula aquest autor a un usuari wiki:',
+	'code-author-alterlink' => "Canviau l'usuari wiki vinculat a aquest autor:",
+	'code-author-orunlink' => 'O desvinculau aquest usuari wiki:',
 	'code-author-name' => "Indiqueu un nom d'usuari:",
+	'code-author-success' => "L'autor $1 ha estat vinculat amb l'usuari wiki $2",
+	'code-author-link' => 'vincula?',
+	'code-author-unlink' => "Elimina l'enllaç?",
+	'code-author-unlinksuccess' => "L'autor $1 ha estat desvinculat",
 	'code-field-id' => 'Revisió',
 	'code-field-author' => 'Autor',
+	'code-field-user' => 'Comentarista',
+	'code-field-status' => 'Estat',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notes',
+	'code-field-tests' => 'Proves',
+	'code-field-path' => 'Ruta',
+	'code-field-text' => 'Nota',
+	'code-field-select' => 'Seleccionau',
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Data:',
 	'code-rev-message' => 'Comentari:',
 	'code-rev-rev' => 'Revisió:',
+	'code-rev-paths' => 'Rutes modificades:',
 	'code-rev-modified-a' => 'afegit',
+	'code-rev-modified-r' => 'Reemplaçat',
 	'code-rev-modified-d' => 'esborrat',
+	'code-rev-modified-m' => 'modificat',
+	'code-rev-imagediff' => 'Canvis de la imatge',
+	'code-rev-status' => 'Estat:',
+	'code-rev-status-set' => "Canvia l'estat",
+	'code-rev-tags' => 'Etiquetes:',
+	'code-rev-tag-add' => 'Afegeix etiquetes:',
+	'code-rev-tag-remove' => 'Elimina etiquetes:',
+	'code-rev-comment-by' => 'Comentari de $1',
+	'code-rev-comment-submit' => 'Envia el comentari',
+	'code-rev-comment-preview' => 'Previsualitza',
+	'code-rev-diff' => 'dif',
+	'code-rev-diff-link' => 'dif',
 	'code-status-new' => 'nou',
+	'code-status-reverted' => 'Revertit',
+	'code-status-resolved' => 'Resolt',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'Verificat',
+	'code-pathsearch-path' => 'Ruta:',
 	'code-rev-submit' => 'Desar canvis',
+	'codereview-batch-submit' => 'Envia',
+	'codereview-reply-link' => 'Contesta',
+	'codereview-email-subj' => '[$1] [r$2]: Nou comentari afegit',
+	'codereview-email-body' => 'L\'usuari "$1" ha fet un comentari a r$3
+
+URL complet: $2
+
+Comentari:
+
+$4',
 	'repoadmin-new-button' => 'Crear',
+	'repoadmin-edit-bug' => 'Ruta de Bugzilla:',
 	'repoadmin-edit-button' => 'OK',
+	'right-codereview-use' => 'Ús de Special:Code',
+	'right-codereview-remove-tag' => 'Elimina etiquetes de les revisions',
+	'right-codereview-post-comment' => 'Afegeix comentaris a les revisions',
 	'specialpages-group-developer' => 'Eines de desenvolupador',
 );
 
@@ -941,7 +1065,8 @@ $messages['cs'] = array(
 	'code-authors' => 'autoři',
 	'code-status' => 'stavy',
 	'code-tags' => 'značky',
-	'code-authors-text' => 'Toto je seznam autorů v úložišti seřazený podle posledních commitů.',
+	'code-tests' => 'Testování',
+	'code-authors-text' => 'Toto je seznam autorů v úložišti seřazený podle posledních commitů. V závorkách jsou uživatelská jména na této wiki.',
 	'code-author-haslink' => 'Tento autor je spojen s wiki uživatelem $1',
 	'code-author-orphan' => 'Tento autor není svázaný s žádným wikiuživatelem',
 	'code-author-dolink' => 'Svázat tohoto autora s wikiuživatelem:',
@@ -959,6 +1084,7 @@ $messages['cs'] = array(
 	'code-field-status' => 'Stav',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Poznámky',
+	'code-field-tests' => 'Testy',
 	'code-field-path' => 'Cesta',
 	'code-field-text' => 'Poznámka',
 	'code-field-select' => 'Vybrat',
@@ -1022,6 +1148,14 @@ $4',
 Komentář ke změně:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Automatické testování detekovalo regresi',
+	'codereview-email-body3' => 'Automatické testování odhalilo regresi způsobenou změnami v r$1.
+
+Úplné URL: $2
+
+Komentář ke commitu:
+
+$3',
 	'repoadmin' => 'Správa úložišť',
 	'repoadmin-new-legend' => 'Vytvořit nové úložiště',
 	'repoadmin-new-label' => 'Název úložiště:',
@@ -1068,7 +1202,7 @@ $messages['de'] = array(
 	'code-status' => 'Status',
 	'code-tags' => 'Tags',
 	'code-tests' => 'Testfälle',
-	'code-authors-text' => 'Dies ist die Liste der Autoren in der Reihefolge der Einspielungen.',
+	'code-authors-text' => 'Unten folgt eine Liste der Repositoriumsautoren, sortiert nach den neuesten Übertragungen. Lokale Wikikonten werden in runden Klammern angezeigt.',
 	'code-author-haslink' => 'Dieser Autor ist mit dem Wiki-Benutzer $1 verlinkt',
 	'code-author-orphan' => 'Dieser Autor hat keinen Link zu einem Wiki-Benutzerkonto',
 	'code-author-dolink' => 'Diesen Autor zu einem Wiki-Benutzerkonto verlinken:',
@@ -1150,6 +1284,14 @@ Volle URL: $3
 Übertragungszusammenfassung:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Die automatische Prüfung entdeckte einen Rückgang',
+	'codereview-email-body3' => 'Die automatische Prüfung entdeckte einen Rückgang aufgrund der Änderungen in r$1.
+
+Vollständige URL: $2
+
+Übertragungszusammenfassung:
+
+$3',
 	'repoadmin' => 'Repositoriums-Administration',
 	'repoadmin-new-legend' => 'Neues Repositorium erstellen',
 	'repoadmin-new-label' => 'Name des Repositoriums:',
@@ -1194,7 +1336,7 @@ $messages['dsb'] = array(
 	'code-status' => 'statusy',
 	'code-tags' => 'toflicki',
 	'code-tests' => 'Testowe pady',
-	'code-authors-text' => 'to jo lisćina awtorow repozitoriuma w rěźe aktualnych nagraśow.',
+	'code-authors-text' => 'To jo lisćina awtorow repozitoriuma w rěźe aktualnych nagraśow. Konta lokalnego wikija pokazuju se w spinkach.',
 	'code-author-haslink' => 'Awtor jo z wikijowym wužywarjom $1 zwězany',
 	'code-author-orphan' => 'Toś ten awtor njama wótkaz k wikijowemu kontoju',
 	'code-author-dolink' => 'Toś togo awtora z wikijowym wužywarjom zwězaś:',
@@ -1276,6 +1418,14 @@ Dopołny URL: $3
 Zespominanje pśenjasenja:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Awtomatiski test jo regresiju nadejšeł.',
+	'codereview-email-body3' => 'Awtomatiski test jo regresiju změnow w r$1 dla nadejšeł.
+
+Dopołny URL: $2
+
+Zapominanje:
+
+$3',
 	'repoadmin' => 'Administracija repozitoriuma',
 	'repoadmin-new-legend' => 'Nowy repozitorium napóraś',
 	'repoadmin-new-label' => 'Mě repozitoriuma:',
@@ -1319,15 +1469,19 @@ $messages['el'] = array(
 	'code-change-tags' => "έγινε αλλαγή των '''ετικετών''' για την r$1",
 	'code-change-removed' => 'αφαιρέθηκε:',
 	'code-change-added' => 'προστέθηκε:',
+	'code-old-status' => 'Παλιά κατάσταση',
+	'code-new-status' => 'Νέα κατάσταση',
 	'code-prop-changes' => 'Αρχείο καταγραφής κατάστασης και προσθήκης ετικετών',
 	'code-desc' => '[[Special:Code|Εργαλείο ανασκόπησης κώδικα]] με [[Special:RepoAdmin|υποστήριξη Subversion]]',
 	'code-no-repo' => 'Κανένα αποθηκευτήριο δεν έχει διαμορφωθεί!',
 	'code-load-diff' => 'Φόρτωση διαφ...',
 	'code-notes' => 'πρόσφατα σχόλια',
+	'code-statuschanges' => 'αλλαγές κατάστασης',
 	'code-authors' => 'συγγραφείς',
-	'code-status' => 'κατάσταση',
+	'code-status' => 'καταστάσεις',
 	'code-tags' => 'ετικέτες',
-	'code-authors-text' => 'Παρακάτω είναι ένας κατάλογος των συγγραφέων αποθηκευτηρίου σε σειρά προσφάτων προσθηκών.',
+	'code-tests' => 'Περιπτώσεις δοκιμής',
+	'code-authors-text' => 'Παρακάτω είναι ένας κατάλογος των συγγραφέων αποθηκευτηρίου κατά σειρά προσφάτων προσθηκών. Οι τοπικοί λογαριασμοί βίκι εμφανίζονται σε παρενθέσεις.',
 	'code-author-haslink' => 'Αυτός ο συγγραφέας είναι συνδεδεμένος με τον χρήστη wiki $1',
 	'code-author-orphan' => 'Αυτός ο συγγραφέας δεν έχει σύνδεσμο με ένα λογαριασμό wiki',
 	'code-author-dolink' => 'Σύνδεση αυτού του χρήστη με έναν χρήστη wiki:',
@@ -1345,6 +1499,7 @@ $messages['el'] = array(
 	'code-field-status' => 'Κατάσταση',
 	'code-field-timestamp' => 'Ημερομηνία',
 	'code-field-comments' => 'Σημειώσεις',
+	'code-field-tests' => 'Δοκιμές',
 	'code-field-path' => 'Διαδρομή',
 	'code-field-text' => 'Σημείωμα',
 	'code-field-select' => 'Επιλογή',
@@ -1408,6 +1563,14 @@ $4',
 Υποβολή περίληψης:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Η αυτόματη δοκιμή εντόπισε παλινδρόμηση',
+	'codereview-email-body3' => 'Η αυτόματη δοκιμή αποκάλυψε μια οπισθοδρόμηση εξαιτίας των αλλαγών στο r$1.
+
+Πλήρες URL: $2
+
+Υποβολή σύνοψης:
+
+$3',
 	'repoadmin' => 'Διαχείριση του αποθηκευτηρίου',
 	'repoadmin-new-legend' => 'Δημιουργία νέου αποθηκευτηρίου',
 	'repoadmin-new-label' => 'Όνομα αποθηκευτηρίου:',
@@ -1440,15 +1603,19 @@ $messages['eo'] = array(
 	'code-change-tags' => "ŝanĝis la '''etikedojn''' por r$1",
 	'code-change-removed' => 'forigis:',
 	'code-change-added' => 'aldonis:',
+	'code-old-status' => 'Malnova statuso',
+	'code-new-status' => 'Nova statuso',
 	'code-prop-changes' => 'Protokolo pri statuso kaj etikedoj',
 	'code-desc' => '[[Special:Code|Koda kontrolilo]] kun [[Special:RepoAdmin|subteno por Subversion]]',
 	'code-no-repo' => 'Neniu kodujoj estas konfigurataj',
 	'code-load-diff' => 'Ŝarĝante diferencon...',
 	'code-notes' => 'lastaj komentoj',
+	'code-statuschanges' => 'statusaj ŝanĝoj',
 	'code-authors' => 'aŭtoroj',
-	'code-status' => 'statuso',
+	'code-status' => 'statoj',
 	'code-tags' => 'etikedoj',
-	'code-authors-text' => 'Jen listo de dosierujaj aŭtoroj ordigitaj laŭ lastaj faritaĵoj.',
+	'code-tests' => 'Testaj kazoj',
+	'code-authors-text' => 'Jen listo de dosierujaj aŭtoroj ordigitaj laŭ lastaj faritaĵoj. Loka vikikontoj estas montrataj en parentezoj.',
 	'code-author-haslink' => 'Ĉi tiu aŭtoro estas ligita al la vikiuzanto $1',
 	'code-author-orphan' => 'La aŭtoro ne havas ligilon kun vikia konto',
 	'code-author-dolink' => 'Ligi ĉi tiun autoron al vikiuzanto:',
@@ -1466,6 +1633,7 @@ $messages['eo'] = array(
 	'code-field-status' => 'Statuso',
 	'code-field-timestamp' => 'Dato',
 	'code-field-comments' => 'Notoj',
+	'code-field-tests' => 'Testoj',
 	'code-field-path' => 'Vojo',
 	'code-field-text' => 'Noto',
 	'code-field-select' => 'Elekti',
@@ -1547,6 +1715,7 @@ $4',
  * @author Dferg
  * @author Imre
  * @author McDutchie
+ * @author Omnipaedista
  * @author Remember the dot
  * @author Sanbec
  */
@@ -1558,15 +1727,18 @@ $messages['es'] = array(
 	'code-change-tags' => "cambiadas las '''etiquetas''' de r$1",
 	'code-change-removed' => 'quitados:',
 	'code-change-added' => 'agregado:',
+	'code-old-status' => 'Antiguo status',
+	'code-new-status' => 'Nuevo status',
 	'code-prop-changes' => 'Registro de estatus y etiquetado',
 	'code-desc' => "[[Special:Code|Herramienta de revisión de código]] con [[Special:RepoAdmin|apoyo de ''Subversion'']]",
 	'code-no-repo' => '¡No está configurado el repositorio!',
 	'code-load-diff' => 'Cargando diferencias...',
 	'code-notes' => 'comentarios recientes',
+	'code-statuschanges' => 'cambios de status',
 	'code-authors' => 'autores',
-	'code-status' => 'status',
+	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-authors-text' => 'Abajo hay una lista de los autores de repositorios por orden de tareas recientes.',
+	'code-authors-text' => 'Abajo hay una lista de los autores de repositorios por orden de tareas recientes. Cuentas de wiki locales se muestran entre paréntesis.',
 	'code-author-haslink' => 'Este autor está enlazado con el usuario $1',
 	'code-author-orphan' => 'Este autor no está enlazado con ningún usuario de la wiki',
 	'code-author-dolink' => 'Enlazar este autor con un usuario:',
@@ -1584,6 +1756,7 @@ $messages['es'] = array(
 	'code-field-status' => 'Estatus',
 	'code-field-timestamp' => 'Fecha',
 	'code-field-comments' => 'Apuntes',
+	'code-field-tests' => 'Pruebas',
 	'code-field-path' => 'Ruta',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Seleccionar',
@@ -1657,6 +1830,37 @@ $4',
 	'right-codereview-set-status' => 'Cambiar el estado de las revisiones',
 	'right-codereview-link-user' => 'Enlazar autores con usuarios',
 	'specialpages-group-developer' => 'Herramientas para desarrolladores',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'code-comments' => 'Kommentaarid',
+	'code-change-removed' => 'eemaldatud:',
+	'code-change-added' => 'lisatud:',
+	'code-old-status' => 'Vana olek',
+	'code-new-status' => 'Uus olek',
+	'code-authors' => 'autorid',
+	'code-author-name' => 'Sisesta kasutajatunnus:',
+	'code-field-author' => 'Autor',
+	'code-field-status' => 'Staatus',
+	'code-field-timestamp' => 'Kuupäev',
+	'code-field-comments' => 'Märkused',
+	'code-field-tests' => 'Testid',
+	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Kuupäev:',
+	'code-rev-message' => 'Kommentaar:',
+	'code-rev-modified-a' => 'lisatud',
+	'code-rev-modified-r' => 'asendatud',
+	'code-rev-modified-d' => 'kustutatud',
+	'code-rev-imagediff' => 'Pildi muudatused',
+	'code-rev-status' => 'Olek:',
+	'code-rev-status-set' => 'Muuda olekut',
+	'code-rev-comment-preview' => 'Eelvaade',
+	'code-status-new' => 'uus',
+	'code-rev-submit' => 'Salvesta muudatused',
+	'repoadmin-new-button' => 'Loo',
 );
 
 /** Basque (Euskara)
@@ -2010,7 +2214,7 @@ $messages['fr'] = array(
 	'code-status' => 'états',
 	'code-tags' => 'balises',
 	'code-tests' => 'Cas de test',
-	'code-authors-text' => 'Ci-dessous se trouve une liste des auteurs de dépôts dans l’ordre des publications récentes.',
+	'code-authors-text' => 'Ci-dessous se trouve une liste des auteurs de dépôts dans l’ordre des publications récentes. Les comptes du wiki local sont affichés entre parenthèses.',
 	'code-author-haslink' => 'Cet auteur est lié au compte $1 de ce wiki',
 	'code-author-orphan' => 'Cet auteur n’a pas de lien avec un compte wiki',
 	'code-author-dolink' => 'Associer cet auteur à un utilisateur wiki local :',
@@ -2092,6 +2296,14 @@ URL complète : $3
 Résumé des modifications :
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2] : le test automatique a détecté une régression',
+	'codereview-email-body3' => 'Le test automatique a révélé une régression à cause des changements intervenus dans la version r$1.
+
+URL complète : $2
+
+Résumé lors de la soumission :
+
+$3',
 	'repoadmin' => 'Administration des dépôts',
 	'repoadmin-new-legend' => 'Créer un nouveau dépôt',
 	'repoadmin-new-label' => 'Nom du dépôt :',
@@ -2152,7 +2364,7 @@ $messages['gl'] = array(
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
 	'code-tests' => 'Casos de proba',
-	'code-authors-text' => 'Embaixo hai unha lista dos autores das respostas por orde de tarefas recentes.',
+	'code-authors-text' => 'A continuación hai unha lista dos autores das respostas por orde de tarefas recentes. As contas de wiki local móstranse entre parénteses.',
 	'code-author-haslink' => 'O autor é ligado co usuario do wiki chamado $1',
 	'code-author-orphan' => 'Este autor non ten ningunha ligazón con algunha conta do wiki',
 	'code-author-dolink' => 'Ligar este autor cun usuario do wiki:',
@@ -2234,6 +2446,14 @@ Enderezo URL completo: $3
 Resumo:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: a proba automática detectou unha regresión',
+	'codereview-email-body3' => 'A proba automática detectou unha regresión debido a variacións na versión r$1.
+
+Enderezo URL completo: $2
+
+Resumo do envío:
+
+$3',
 	'repoadmin' => 'Administración do repositorio',
 	'repoadmin-new-legend' => 'Crear un novo repositorio',
 	'repoadmin-new-label' => 'Nome do repositorio:',
@@ -2260,6 +2480,7 @@ $4',
  */
 $messages['grc'] = array(
 	'code' => 'Ἐπιθεωρεῖν τὸν Κώδικα',
+	'code-rev-title' => 'r$1 - Ἐπιθεώρησις κώδικος',
 	'code-comments' => 'Σχόλια',
 	'code-change-status' => "μεταβεβλημένον τὸ '''καθεστὼς''' τῆς ἀναθεωρήσεως r$1",
 	'code-change-tags' => "μεταβλητέα εἰσὶ τὰ '''πρότυπα''' διὰ τὴν ἀναθεώρησιν r$1",
@@ -2271,9 +2492,9 @@ $messages['grc'] = array(
 	'code-load-diff' => 'Φορτίζειν διαφ...',
 	'code-notes' => 'τὰ πρόσφατα σχόλια',
 	'code-authors' => 'δημιουργοί',
-	'code-status' => 'κατάστασις',
+	'code-status' => 'καταστάσεις',
 	'code-tags' => 'προσαρτήματα',
-	'code-authors-text' => 'Κάτωθι ἐστὶ καταλογή τις δημιουργῶν τῆς ἀποθήκης κατατάξει τῶν πλείω προσφάτων καταθέσεων.',
+	'code-authors-text' => 'Κάτωθι ἐστὶ καταλογή τις δημιουργῶν τῆς ἀποθήκης κατατάξει τῶν πλείω προσφάτων καταθέσεων. Τοπικοὶ βικι-λογισμοὶ δείκνυνται ἐν παρενθέσεσιν.',
 	'code-author-haslink' => 'Ὅδε ὁ δημιουργὸς συνδεδεμένος ἐστὶ μετὰ τοῦ βικι-χρωμένου $1',
 	'code-author-orphan' => 'Ὅδε ὁ χρώμενος οὐκ ἔχει σύνδεσμον μετὰ βικι-λογισμοῦ τινός',
 	'code-author-dolink' => 'Συνδεῖσθαι τόνδε τὸν δημιουργὸν μετὰ βικι-χρωμένου τινός:',
@@ -2291,6 +2512,7 @@ $messages['grc'] = array(
 	'code-field-status' => 'Κατάστασις',
 	'code-field-timestamp' => 'Ἡμερομηνία',
 	'code-field-comments' => 'Σημειώματα',
+	'code-field-tests' => 'Δοκιμαί',
 	'code-field-path' => 'Ἀτραπός',
 	'code-field-text' => 'Σημείωμα',
 	'code-field-select' => 'Ἐπιλέγειν',
@@ -2379,7 +2601,8 @@ $messages['gsw'] = array(
 	'code-authors' => 'Autore',
 	'code-status' => 'Status',
 	'code-tags' => 'Tag',
-	'code-authors-text' => 'Des isch d Lischt vu dr autore in dr Reihefolg vu dr Yyspiilige.',
+	'code-tests' => 'Teschtfäll',
+	'code-authors-text' => 'Des isch d Lischt vu dr Autore in dr Reihefolg vu dr Yyspiilige. Benutzer vu däm Wiki wäre in Chlammere ufgfiert.',
 	'code-author-haslink' => 'Dää Autor isch zum Wiki-Benutzer $1 vergleicht',
 	'code-author-orphan' => 'Dää Autor het kei Gleich zue me Wiki-Benutzerkonto',
 	'code-author-dolink' => 'Dää Autor zue me Wiki-Benutzerkonto vergleiche:',
@@ -2397,6 +2620,7 @@ $messages['gsw'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Notize',
+	'code-field-tests' => 'Tescht',
 	'code-field-path' => 'Pfad',
 	'code-field-text' => 'Notiz',
 	'code-field-select' => 'Uswehle',
@@ -2460,6 +2684,14 @@ Volli URL: $3
 Ibertragzämmefassig:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: E automatischi Priefig het e Fähler gfunde, wu schon emol ufträtten isch',
+	'codereview-email-body3' => 'E automatischi Priefig het e Fähler ufdeckt, wu dr Änderigen in r$1 wider ufträtten isch
+
+Vollständigi URL: $2
+
+Zämmefassig vu dr Bearbeitig:
+
+$3',
 	'repoadmin' => 'Adminischtration vum Repositorium',
 	'repoadmin-new-legend' => 'Nej Repositorium aalege',
 	'repoadmin-new-label' => 'Name vum Repositorium:',
@@ -2512,7 +2744,7 @@ $messages['he'] = array(
 	'code-status' => 'מצבים',
 	'code-tags' => 'תגיות',
 	'code-tests' => 'מקרים לבדיקה',
-	'code-authors-text' => 'להלן רשימת הכותבים במאגר לפי סדר השינויים האחרונים בקוד.',
+	'code-authors-text' => 'להלן רשימת הכותבים במאגר לפי סדר השינויים האחרונים בקוד. חשבונות באתר הוויקי המקומי מופיעים בסוגריים.',
 	'code-author-haslink' => 'כותב זה מקושר למשתמש הוויקי $1',
 	'code-author-orphan' => 'כותב זה אינו מקושר למשתמש בוויקי',
 	'code-author-dolink' => 'קישור כותב זה למשתמש ויקי:',
@@ -2641,9 +2873,10 @@ $messages['hr'] = array(
 	'code-load-diff' => 'Učitavam razliku...',
 	'code-notes' => 'nedavni komentari',
 	'code-authors' => 'autori',
-	'code-status' => 'status',
+	'code-status' => 'statusi',
 	'code-tags' => 'oznake',
-	'code-authors-text' => 'Ispod je popis autora iz repozitorija u redu po nedavnim predajama.',
+	'code-tests' => 'Testni slučajevi',
+	'code-authors-text' => 'Ispod je popis autora iz repozitorija posloženih po nedavnim predajama. Lokalni wiki računi prikazani su u zagradama.',
 	'code-author-haslink' => 'Ovaj autor je povezan s wiki suradnikom $1',
 	'code-author-orphan' => 'Ovaj autor nema poveznicu s wiki računom',
 	'code-author-dolink' => 'Poveži ovog autora na wiki suradnika:',
@@ -2758,7 +2991,7 @@ $messages['hsb'] = array(
 	'code-status' => 'statusy',
 	'code-tags' => 'taflički',
 	'code-tests' => 'Testowe pady',
-	'code-authors-text' => 'To je lisćina awtorojo repozitorija po porjedźe aktualnych nahraćow.',
+	'code-authors-text' => 'To je lisćina awtorojo repozitorija po porjedźe aktualnych nahraćow. Lokalny wiki so w spinkach pokazuje.',
 	'code-author-haslink' => 'Tutón awtor ma wotkaz na wikijoweho wužiwarja $1',
 	'code-author-orphan' => 'Tutón awtor nima wotkaz k wikijowemu kontu',
 	'code-author-dolink' => 'Tutoho awtora z wikijowym wužiwarjom zwjazać:',
@@ -2840,6 +3073,14 @@ Dopołny URL: $3
 Zjeće přenjesenja:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Awtomatiski test je regresiju wotkrył',
+	'codereview-email-body3' => 'Awtomatiski test je změnow w r$1 dla regresiju wotkrył.
+
+Dospołny URL: $2
+
+Zjeće:
+
+$3',
 	'repoadmin' => 'Administracija repozitorija',
 	'repoadmin-new-legend' => 'Nowy repozitorij wutworić',
 	'repoadmin-new-label' => 'Mjeno repozitorija:',
@@ -2862,21 +3103,30 @@ $4',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'code' => 'Kódellenőrzés',
+	'code-rev-title' => 'r$1 - Kódellenőrzés',
 	'code-comments' => 'Hozzászólások',
-	'code-change-status' => "megváltoztatta a változat '''állapotát'''",
-	'code-change-tags' => "megváltoztatta a változat '''címkéit'''",
+	'code-references' => 'Kapcsolódó későbbi változatok',
+	'code-change-status' => "megváltoztatta az r$1 változat '''állapotát'''",
+	'code-change-tags' => "megváltoztatta az r$1 változat '''címkéit'''",
 	'code-change-removed' => 'eltávolítva:',
 	'code-change-added' => 'hozzáadva:',
+	'code-old-status' => 'Régi állapot',
+	'code-new-status' => 'Új állapot',
 	'code-prop-changes' => 'Állapot & címkézési napló',
 	'code-desc' => '[[Special:Code|Kódellenőrző eszköz]] [[Special:RepoAdmin|Subversion-támogatással]]',
 	'code-no-repo' => 'Nincs kódtárhely beállítva!',
-	'code-notes' => 'hozzászólások áttekintése',
+	'code-load-diff' => 'Változtatások betöltése...',
+	'code-notes' => 'legutóbbi hozzászólások',
+	'code-statuschanges' => 'állapotváltoztatások',
 	'code-authors' => 'szerzők',
+	'code-status' => 'állapotok',
 	'code-tags' => 'címkék',
-	'code-authors-text' => 'Ezen a lapon a tárhelyhez tartozó szerzők láthatóak a legutóbbi elküldések alapján rendezve.',
+	'code-tests' => 'Tesztesetek',
+	'code-authors-text' => 'Ezen a lapon a tárhelyhez tartozó szerzők láthatóak a legutóbbi commitok alapján rendezve. A helyi wiki fiókok zárójelezve szerepelnek.',
 	'code-author-haslink' => 'Ez a szerző megegyezi a wiki $1 nevű szerkesztőjével',
 	'code-author-orphan' => 'Ez a szerkesztő nem rendelkezik felhasználói fiókkal ezen a wikin',
 	'code-author-dolink' => 'Szerző összekapcsolása a wiki egyik szerkesztőjével:',
@@ -2884,6 +3134,9 @@ $messages['hu'] = array(
 	'code-author-orunlink' => 'A szerkesztő leválasztása a szerzőről:',
 	'code-author-name' => 'Adj meg egy felhasználói nevet:',
 	'code-author-success' => '$1 össze lett kapcsolva a wiki $2 nevű szerkesztőjével',
+	'code-author-link' => 'hozzátársítod?',
+	'code-author-unlink' => 'megszünteted a társítást?',
+	'code-author-unlinksuccess' => '$1 hozzátársítása megszüntetve',
 	'code-field-id' => 'Változat',
 	'code-field-author' => 'Szerző',
 	'code-field-user' => 'Hozzászóló',
@@ -2891,8 +3144,10 @@ $messages['hu'] = array(
 	'code-field-status' => 'Állapot',
 	'code-field-timestamp' => 'Időpont',
 	'code-field-comments' => 'Hozzászólások',
+	'code-field-tests' => 'Tesztek',
 	'code-field-path' => 'Elérési út',
 	'code-field-text' => 'Megjegyzés',
+	'code-field-select' => 'Kiválasztás',
 	'code-rev-author' => 'Szerző:',
 	'code-rev-date' => 'Dátum:',
 	'code-rev-message' => 'Megjegyzés:',
@@ -2920,11 +3175,19 @@ $messages['hu'] = array(
 	'code-status-reverted' => 'visszaállítva',
 	'code-status-resolved' => 'javítva',
 	'code-status-ok' => 'rendben',
+	'code-status-verified' => 'ellenőrizve',
 	'code-status-deferred' => 'halasztva',
 	'code-pathsearch-legend' => 'Változatok keresése elérési út alapján',
 	'code-pathsearch-path' => 'Elérési út:',
 	'code-rev-submit' => 'Változások elmentése',
 	'code-rev-submit-next' => 'Mentés & ugrás a következőre',
+	'code-batch-status' => 'Állapot módosítása:',
+	'codereview-batch-title' => 'Az összes kiválasztott változat módosítása',
+	'codereview-batch-submit' => 'Elküldés',
+	'code-releasenotes' => 'kiadási megjegyzések',
+	'code-release-legend' => 'Kiadási megjegyzések generálása',
+	'code-release-startrev' => 'Első változat:',
+	'code-release-endrev' => 'Utolsó változat:',
 	'codereview-reply-link' => 'válasz',
 	'codereview-email-subj' => '[$1] [r$2]: Új hozzászólás',
 	'codereview-email-body' => '„$1” új hozzászólást fűzött az r$3 változathoz.
@@ -2934,6 +3197,8 @@ Teljes cím: $2
 Hozzászólás:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: rákövetkező változtatások',
+	'codereview-email-subj3' => '[$1] [r$2]: az automatikus tesztelés regressziót talált',
 	'repoadmin' => 'Tárhelyadminisztráció',
 	'repoadmin-new-legend' => 'Új tárhely készítése',
 	'repoadmin-new-label' => 'Tárhely neve:',
@@ -2945,6 +3210,7 @@ $4',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'A(z) „[[Special:Code/$1|$1]]” kódtárhely sikeresen módosítva.',
 	'right-repoadmin' => 'kódtárhelyek beállítása',
+	'right-codereview-use' => 'a Special:Code használata',
 	'right-codereview-add-tag' => 'új címkék hozzáadása az egyes változatokhoz',
 	'right-codereview-remove-tag' => 'címkék eltávolítása változatokról',
 	'right-codereview-post-comment' => 'hozzászólás az egyes változatokhoz',
@@ -2976,7 +3242,7 @@ $messages['ia'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'statos',
 	'code-tags' => 'etiquettas',
-	'code-authors-text' => 'Infra es un lista de autores del deposito in ordine de publicationes recente.',
+	'code-authors-text' => 'Infra es un lista de autores del deposito in ordine de publicationes recente. Le contos del wiki local es monstrate inter parentheses.',
 	'code-author-haslink' => 'Iste autor es ligate al usator $1 de iste wiki',
 	'code-author-orphan' => 'Iste autor ha nulle ligamine con un conto wiki',
 	'code-author-dolink' => 'Ligar iste autor con un usator del wiki:',
@@ -3079,30 +3345,137 @@ $4',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
+	'code' => 'Kode Tinjauan',
+	'code-rev-title' => 'r$1 - Kode Tinjauan',
 	'code-comments' => 'Komentar',
-	'code-status' => 'status',
+	'code-references' => 'Menindaklanjuti revisi',
+	'code-change-status' => "Ubah '''status''' dari r$1",
+	'code-change-tags' => "Ubah '''penanda''' dari r$1",
+	'code-change-removed' => 'hapus:',
+	'code-change-added' => 'tambahkan:',
+	'code-old-status' => 'Setatus lama',
+	'code-new-status' => 'Setatus baru',
+	'code-prop-changes' => 'Log Status & penandaan',
+	'code-desc' => '[[Special:Code|Alat kode peninjauan]] dengan [[Special:RepoAdmin|dukungan Subversi]]',
+	'code-no-repo' => 'Tidak ada konfiguras tempat penyimpanan!',
+	'code-load-diff' => 'Memuat perbedaan...',
+	'code-notes' => 'komentar terbaru',
+	'code-statuschanges' => 'perubahan status',
+	'code-authors' => 'penulis',
+	'code-status' => 'keadaan',
+	'code-tags' => 'Penanda',
+	'code-tests' => 'Uji kasus',
+	'code-authors-text' => 'Di bawah ini adalah daftar penulis repo agar dikomit terbaru. Akun wiki lokal akan ditampilkan dalam tanda kurung.',
+	'code-author-haslink' => 'Penulis ini terhubung ke pengguna wiki $1',
+	'code-author-orphan' => 'Penulis ini tidak terhubung dengan akun wiki',
+	'code-author-dolink' => 'Kaitkan penulis ke Wiki pengguna:',
+	'code-author-alterlink' => 'Ubah hubungan wiki pengguna ke penulis ini:',
+	'code-author-orunlink' => 'Atau buang kaitan wiki pengguna ini:',
+	'code-author-name' => 'Masukkan nama pengguna:',
+	'code-author-success' => 'Penulis $1 telah dihubungkan ke wiki pengguna $2',
+	'code-author-link' => 'pranala?',
+	'code-author-unlink' => 'hapus pranala?',
+	'code-author-unlinksuccess' => 'Hubungan penulis $1 telah di putus',
 	'code-field-id' => 'Revisi',
 	'code-field-author' => 'Pembuat',
+	'code-field-user' => 'Komentar',
+	'code-field-message' => 'Ringkasan komit',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Tanggal',
 	'code-field-comments' => 'Catatan',
+	'code-field-tests' => 'Ujicoba',
 	'code-field-path' => 'Jalan',
+	'code-field-text' => 'Catatan',
+	'code-field-select' => 'Pilih',
 	'code-rev-author' => 'Pembuat:',
 	'code-rev-date' => 'Tanggal:',
 	'code-rev-message' => 'Komentar:',
+	'code-rev-repo' => 'tempat penyimpanan:',
 	'code-rev-rev' => 'Revisi:',
+	'code-rev-rev-viewvc' => 'pada ViewVC',
+	'code-rev-paths' => 'Ubah jejak:',
+	'code-rev-modified-a' => 'ditambahkan',
+	'code-rev-modified-r' => 'gantikan',
+	'code-rev-modified-d' => 'dihapus',
+	'code-rev-modified-m' => 'diubah',
+	'code-rev-imagediff' => 'mengubah gambar',
 	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'ubah setatus',
+	'code-rev-tags' => 'Penanda:',
+	'code-rev-tag-add' => 'Tambah penanda:',
+	'code-rev-tag-remove' => 'Hilangkan penanda:',
+	'code-rev-comment-by' => 'Komentar oleh $1',
+	'code-rev-comment-submit' => 'Kirim komentar',
 	'code-rev-comment-preview' => 'Pratayang',
+	'code-rev-diff' => 'Beda',
+	'code-rev-diff-link' => 'beda',
+	'code-rev-purge-link' => 'pembersihan',
 	'code-status-new' => 'baru',
+	'code-status-fixme' => 'perbaiki',
 	'code-status-reverted' => 'telah dikembalikan',
+	'code-status-resolved' => 'selesai',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'diverifikasi',
+	'code-status-deferred' => 'ditangguhkan',
+	'code-pathsearch-legend' => 'Cari revisi di jejak penyimpanan ini:',
 	'code-pathsearch-path' => 'Jalan:',
+	'code-rev-submit' => 'Simpan perubahan',
+	'code-rev-submit-next' => 'Simpan & belum selesai selanjutnya',
+	'code-batch-status' => 'Ubah status:',
+	'code-batch-tags' => 'Ubah tag:',
+	'codereview-batch-title' => 'Ubah semua revisi terpilih',
 	'codereview-batch-submit' => 'Kirim',
+	'code-releasenotes' => 'Catatan pelepasan',
+	'code-release-legend' => 'Buat catatan rilis',
+	'code-release-startrev' => 'Memulai rev:',
+	'code-release-endrev' => 'Akhir rev:',
 	'codereview-subtitle' => 'Untuk $1',
+	'codereview-reply-link' => 'balas',
+	'codereview-email-subj' => '[$1] [r$2]: Komenter baru ditambahkan',
+	'codereview-email-body' => 'Pengguna "$1" berkomentar pada r$3.
+
+URL lengkap: $2
+
+Komentar:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]:Menindaklanjuti perubahan',
+	'codereview-email-body2' => 'Pengguna "$1" menindak lanjuti perubahan ke r$2.
+
+URL lengkap: $3
+
+Ringkasan:
+
+$4',
+	'codereview-email-subj3' => '[$1] [r$2]: Ujicoba langsung terdeteksi pemulihan',
+	'codereview-email-body3' => 'Pengujian otomatis telah mengungkapkan regresi akibat perubahan dalam r$1.
+
+URL lengkap: $2 
+
+Ringkasan: 
+
+$3',
+	'repoadmin' => 'Penyimpanan Admin',
+	'repoadmin-new-legend' => 'Buat penyimpanan baru',
+	'repoadmin-new-label' => 'Nama tempat penyimpanan:',
 	'repoadmin-new-button' => 'Buat',
+	'repoadmin-edit-legend' => 'Perubahan pada penyimpanan "$1"',
+	'repoadmin-edit-path' => 'Jejak tempat penyimpanan:',
+	'repoadmin-edit-bug' => 'Jejak Bugzilla:',
+	'repoadmin-edit-view' => 'Jejak ViewV:',
 	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'Penyimpanan "[[Special:Code/$1|$1]]"  selesai diubah.',
+	'right-repoadmin' => 'Pengelolaan kode penyimpanan',
+	'right-codereview-use' => 'Penggunaan Khusus:Kode',
+	'right-codereview-add-tag' => 'Tambahkan tag baru pada revisi',
+	'right-codereview-remove-tag' => 'Buang tag dari revisi',
+	'right-codereview-post-comment' => 'Tambah komentar pada revisi',
+	'right-codereview-set-status' => 'Ubah status revisi',
+	'right-codereview-link-user' => 'Pranala penulis ke wiki pengguna',
+	'specialpages-group-developer' => 'Alat Pengembang',
 );
 
 /** Ido (Ido)
@@ -3123,6 +3496,7 @@ $messages['io'] = array(
  * @author BrokenArrow
  * @author Darth Kule
  * @author Melos
+ * @author Nemo bis
  * @author Santu
  * @author Stefano-c
  */
@@ -3134,15 +3508,18 @@ $messages['it'] = array(
 	'code-change-tags' => "ha modificato i '''tag''' di r$1",
 	'code-change-removed' => 'eliminazioni:',
 	'code-change-added' => 'aggiunte:',
+	'code-old-status' => 'Vecchio stato',
+	'code-new-status' => 'Nuovo stato',
 	'code-prop-changes' => 'Registro dello stato e dei tag',
 	'code-desc' => '[[Special:Code|Strumento per la revisione del codice]] con [[Special:RepoAdmin|supporto per Subversion]]',
 	'code-no-repo' => 'Nessun repository configurato.',
 	'code-load-diff' => 'Caricamento diff in corso…',
 	'code-notes' => 'commenti più recenti',
+	'code-statuschanges' => 'cambiamenti di stato',
 	'code-authors' => 'autori',
 	'code-status' => 'stato',
 	'code-tags' => 'tag',
-	'code-authors-text' => 'Di seguito viene presentata una lista di autori relativi al repository, in ordine cronologico per i commit recenti.',
+	'code-authors-text' => 'Di seguito viene presentata una lista di autori relativi al repository, in ordine cronologico per i commit recenti. Gli account wiki locali sono mostrati fra parentesi.',
 	'code-author-haslink' => "Questo autore è collegato all'utente wiki $1",
 	'code-author-orphan' => 'Questo autore non è collegato a un utente wiki',
 	'code-author-dolink' => 'Collegare questo autore a un utente wiki:',
@@ -3186,6 +3563,7 @@ $messages['it'] = array(
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
 	'code-status-new' => 'nuovo',
+	'code-status-reverted' => 'annullato',
 	'code-status-resolved' => 'risolto',
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'verificato',
@@ -3194,7 +3572,7 @@ $messages['it'] = array(
 	'code-rev-submit' => 'Salva le modifiche',
 	'code-rev-submit-next' => 'Salva e vai alla prossima situazione irrisolta',
 	'code-batch-status' => 'Modifica stato:',
-	'code-batch-tags' => 'Modifica tag:',
+	'code-batch-tags' => 'Modifica etichetta:',
 	'codereview-batch-title' => 'Modifica tutte le revisioni selezionate',
 	'codereview-batch-submit' => 'Invia',
 	'code-releasenotes' => 'note di versione',
@@ -3223,8 +3601,8 @@ $4',
 	'repoadmin-edit-sucess' => 'La modifica del repository "[[Special:Code/$1|$1]]" è stata completata correttamente.',
 	'right-repoadmin' => 'Gestione dei repository del codice',
 	'right-codereview-use' => 'Utilizzo di Special:Code',
-	'right-codereview-add-tag' => 'Aggiunge nuovi tag alle revisioni',
-	'right-codereview-remove-tag' => 'Rimuove i tag dalle revisioni',
+	'right-codereview-add-tag' => 'Aggiunge nuove etichette alle modifiche',
+	'right-codereview-remove-tag' => 'Rimuove le etichette dalle modifiche',
 	'right-codereview-post-comment' => 'Aggiunge commenti alle revisioni',
 	'right-codereview-set-status' => 'Modifica lo stato delle revisioni',
 	'right-codereview-link-user' => 'Collega gli autori agli utenti del sito wiki',
@@ -3259,7 +3637,7 @@ $messages['ja'] = array(
 	'code-status' => '状態',
 	'code-tags' => 'タグ',
 	'code-tests' => 'テストケース',
-	'code-authors-text' => '以下は最新コミット順のリポジトリ作成者一覧です。',
+	'code-authors-text' => '以下は最新コミット順のリポジトリ作成者一覧です。ローカルのウィキにおけるアカウントを括弧内に示します。',
 	'code-author-haslink' => 'この著者はウィキの利用者 $1 と対応付けられています。',
 	'code-author-orphan' => 'この著者にはウィキのアカウントとの対応付けがありません。',
 	'code-author-dolink' => 'この著者とウィキの利用者を対応付ける:',
@@ -3341,6 +3719,14 @@ $4',
 コミットの要約:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: 自動的なテストによってリグレッションが検出されました',
+	'codereview-email-body3' => '自動的なテストによって、r$1 における変更のためにリグレッションが起きたことが明らかになりました。
+
+Full URL: $2
+
+コミットの要約:
+
+$3',
 	'repoadmin' => 'リポジトリ管理',
 	'repoadmin-new-legend' => '新規リポジトリを作成',
 	'repoadmin-new-label' => 'リポジトリ名:',
@@ -3471,13 +3857,20 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'code-comments' => 'យោបល់',
 	'code-change-removed' => 'លុបចេញ​៖',
 	'code-change-added' => 'បន្ថែម​៖',
+	'code-old-status' => 'ស្ថានភាពចាស់',
+	'code-new-status' => 'ស្ថានភាពថ្មី',
+	'code-statuschanges' => 'បំលាស់ប្ដូរ​ស្ថានភាព',
 	'code-authors' => 'អ្នកនិពន្ធ',
 	'code-tags' => 'ប្លាក',
+	'code-author-haslink' => '​អ្នកនិពន្ធ​នេះត្រូវ​បាន​តភ្ជាប់​ទៅ​នឹង​អ្នក​ប្រើប្រាស់​​វិគី​​ ​$1',
+	'code-author-orphan' => '​អ្នកនិពន្ធ​នេះមិន​មាន​តំណភ្ជាប់​ជាមួយ​គណនី​វិគី​ទេ​',
+	'code-author-dolink' => 'តភ្ជាប់​អ្នកនិពន្ធ​នេះ​ទៅនឹង​អ្នក​ប្រើប្រាស់​វិគី​៖',
 	'code-author-name' => 'បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់៖',
 	'code-author-link' => 'តំណភ្ជាប់?',
 	'code-author-unlink' => 'មិន​ដាក់​តំណភ្ជាប់​?',
@@ -3501,21 +3894,37 @@ $messages['km'] = array(
 	'code-rev-status-set' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព',
 	'code-rev-tags' => 'ប្លាក៖',
 	'code-rev-tag-add' => 'បន្ថែមប្លាក៖',
+	'code-rev-tag-remove' => 'ដកស្លាក​ចេញ៖',
 	'code-rev-comment-preview' => 'មើលជាមុន',
+	'code-rev-diff' => 'ភាពខុសគ្នា',
+	'code-rev-diff-link' => 'ភាពខុសគ្នា',
 	'code-status-new' => 'ថ្មី',
+	'code-status-resolved' => 'ត្រូវ​បាន​ដោះស្រាយ​រួច​',
 	'code-status-ok' => 'យល់ព្រម',
+	'code-status-verified' => 'ត្រូវ​បាន​បញ្ជាក់​ត្រឹម​ត្រូវ​',
+	'code-pathsearch-path' => 'ផ្លូវ៖',
 	'code-rev-submit' => 'រក្សាទុក​បំលាស់ប្ដូរ',
+	'code-batch-status' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​៖',
+	'code-batch-tags' => 'ផ្លាស់ប្ដូរស្លាក​៖​',
+	'codereview-batch-submit' => 'ដាក់ស្នើ',
+	'code-releasenotes' => 'កំណត់​ចំណាំ​​ការ​ចេញ​ផ្សាយ​',
 	'codereview-reply-link' => 'ឆ្លើយតប',
 	'repoadmin' => 'ការគ្រប់គ្រង​ឃ្លាំង',
 	'repoadmin-new-legend' => 'បង្កើត​ឃ្លាំង​ថ្មី',
 	'repoadmin-new-label' => 'ឈ្មោះ​ឃ្លាំង​៖',
 	'repoadmin-new-button' => 'បង្កើត',
+	'repoadmin-edit-path' => 'ផ្លូវ​ឃ្លាំង​៖',
+	'repoadmin-edit-bug' => 'ផ្លូវ​ Bugzilla ៖',
+	'repoadmin-edit-view' => 'ផ្លូវ​ ViewVC ៖',
 	'repoadmin-edit-button' => 'យល់ព្រម',
+	'right-repoadmin' => 'គ្រប់​គ្រង​ឃ្លាំង​កូដ​',
+	'right-codereview-use' => 'ការប្រើប្រាស់​នៃ​ពិសេស​៖កូដ​',
 	'specialpages-group-developer' => 'ឧបករណ៍​អ្នកអភិវឌ្ឍ',
 );
 
 /** Korean (한국어)
  * @author Ilovesabbath
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
@@ -3528,19 +3937,23 @@ $messages['ko'] = array(
 	'code-change-tags' => "제 $1판의 '''태그'''를 변경",
 	'code-change-removed' => '제거:',
 	'code-change-added' => '추가:',
+	'code-old-status' => '변경 전 상태',
+	'code-new-status' => '변경 후 상태',
 	'code-prop-changes' => '상태 및 태그 변경 기록',
 	'code-desc' => '[[Special:RepoAdmin|서브버전을 지원]]하는 [[Special:Code|코드 검토 도구]]',
 	'code-no-repo' => '저장소가 설정되지 않았습니다!',
 	'code-load-diff' => '차이를 불러오는 중…',
 	'code-notes' => '최근 의견',
+	'code-statuschanges' => '상태 변경',
 	'code-authors' => '만든이',
 	'code-status' => '상태',
 	'code-tags' => '태그',
+	'code-tests' => '테스트 케이스',
 	'code-authors-text' => '다음은 최근에 코드를 적용한 저장소의 저자 목록입니다.',
 	'code-author-haslink' => '이 만든이는 위키 사용자 $1로 연결되어 있습니다.',
-	'code-author-orphan' => '이 저자는 위키 계정과 연결되어 있지 않습니다',
+	'code-author-orphan' => '해당 기여자가 위키 계정과 연결되어 있지 않습니다.',
 	'code-author-dolink' => '이 저자를 위키 사용자로 연결하세요:',
-	'code-author-alterlink' => '이 저자와 연결된 위키 사용자를 바꾸세요:',
+	'code-author-alterlink' => '해당 기여자에 연결된 위키 계정을 변경:',
 	'code-author-orunlink' => '이 위키 사용자로의 링크를 제거하세요:',
 	'code-author-name' => '사용자 이름을 입력하십시오:',
 	'code-author-success' => '제작자 $1은(는) 위키 사용자 $2(으)로 연결되었습니다.',
@@ -3554,6 +3967,7 @@ $messages['ko'] = array(
 	'code-field-status' => '상태',
 	'code-field-timestamp' => '날짜',
 	'code-field-comments' => '노트',
+	'code-field-tests' => '테스트',
 	'code-field-path' => '경로',
 	'code-field-text' => '노트',
 	'code-field-select' => '선택',
@@ -3568,7 +3982,7 @@ $messages['ko'] = array(
 	'code-rev-modified-r' => '대체됨',
 	'code-rev-modified-d' => '삭제됨',
 	'code-rev-modified-m' => '수정됨',
-	'code-rev-imagediff' => '이미지가 바뀝니다',
+	'code-rev-imagediff' => '그림 변경',
 	'code-rev-status' => '상태:',
 	'code-rev-status-set' => '상태 변경',
 	'code-rev-tags' => '태그:',
@@ -3628,7 +4042,7 @@ $4',
 	'repoadmin-edit-button' => '확인',
 	'repoadmin-edit-sucess' => '저장소 "[[Special:Code/$1|$1]]"이 성공적으로 변경되었습니다.',
 	'right-repoadmin' => '코드 저장소 관리',
-	'right-codereview-use' => '특별 사용:코드',
+	'right-codereview-use' => 'Special:Code 사용',
 	'right-codereview-add-tag' => '특정 버전에 새로운 태그를 달기',
 	'right-codereview-remove-tag' => '특정 버전의 태그를 제거',
 	'right-codereview-post-comment' => '바뀐 코드에 대한 의견을 추가',
@@ -3661,7 +4075,7 @@ $messages['ksh'] = array(
 	'code-status' => 'Shtattuße',
 	'code-tags' => 'Makeerunge',
 	'code-tests' => 'Prööf-Fäll',
-	'code-authors-text' => 'Hee kütt en Leß met dä Schriever aan dämm Repositorijum, en dä Reijefolch, wie se jespeichert hann.',
+	'code-authors-text' => 'Hee kütt en Leß met dä Schriever aan dämm Repositorijum, en dä Reijefolch, wie se zoläz jät jespeichert hann. Metmaacher hee aam Wiki sen en Klammere met dobei.',
 	'code-author-haslink' => 'Dä Schriiver es em Wiki mem Metmaacher $1 verlengk',
 	'code-author-orphan' => 'Dä Schriiver es nit met enem Metmaacher em Wiki verlengk',
 	'code-author-dolink' => 'Donn dä Schriiver hee met enem Metmaacher em Wiki verlengke:',
@@ -3743,6 +4157,15 @@ Loor op de URL: $3
 Singe Kommentaa dozo:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: En automattesche Prööfung hät ene Fähler (widder)jefonge.',
+	'codereview-email-body3' => 'Et automattesche Prööfe hät ene Fähler opjedeck,
+dä met dä Version $1 (widder) opjetrodde es.
+
+Der kumplätte URL es: $2
+
+Beim Afshpeishere wood aanjejovve:
+
+$3',
 	'repoadmin' => 'Repositorijums-Verwalldung',
 	'repoadmin-new-legend' => 'E neu Repositorijum aanlääje',
 	'repoadmin-new-label' => 'Däm Repositorijum singe Name:',
@@ -3858,6 +4281,8 @@ Ganz URL: $2
 Bemierkung:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Ännerungen doropshinn',
+	'codereview-email-subj3' => '[$1] [r$2]: Den automateschen Test huet eng Regressioun fonnt',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-bug' => 'Bugzilla Pad:',
 	'repoadmin-edit-view' => 'Pad op ViewVC:',
@@ -4014,6 +4439,7 @@ $messages['lt'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -4021,7 +4447,7 @@ $messages['mk'] = array(
 	'code-change-removed' => 'избришано:',
 	'code-change-added' => 'додадено:',
 	'code-authors' => 'автори',
-	'code-tags' => 'приврзоци',
+	'code-tags' => 'ознаки',
 	'code-field-id' => 'Ревизија',
 	'code-field-author' => 'Автор',
 	'code-field-status' => 'Статус',
@@ -4039,9 +4465,9 @@ $messages['mk'] = array(
 	'code-rev-modified-m' => 'изменето',
 	'code-rev-status' => 'Статус:',
 	'code-rev-status-set' => 'Промени статус',
-	'code-rev-tags' => 'Приврзоци:',
-	'code-rev-tag-add' => 'Додади приврзоци:',
-	'code-rev-tag-remove' => 'Бриши приврзоци:',
+	'code-rev-tags' => 'Ознаки:',
+	'code-rev-tag-add' => 'Додај ознаки:',
+	'code-rev-tag-remove' => 'Избриши ги ознаките:',
 	'code-rev-comment-by' => 'Забелешка од $1',
 	'code-rev-comment-submit' => 'Потврди забелешка',
 	'code-rev-comment-preview' => 'Преглед',
@@ -4053,6 +4479,13 @@ $messages['mk'] = array(
 	'code-status-reverted' => 'вратено',
 	'code-status-resolved' => 'разрешено',
 	'code-status-ok' => 'ok',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'code-status-reverted' => 'буцаагдав',
 );
 
 /** Malay (Bahasa Melayu)
@@ -4340,7 +4773,8 @@ $messages['nl'] = array(
 	'code-status' => 'statussen',
 	'code-tags' => 'labels',
 	'code-tests' => 'Testcases',
-	'code-authors-text' => 'Hieronder staat een lijst met auteurs uit de repository, degene met de meest recente commit bovenaan.',
+	'code-authors-text' => 'Hieronder staat een lijst met auteurs uit de repository, degene met de meest recente commit bovenaan.
+Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-author-haslink' => 'Deze auteur is gekoppeld aan de wikigebruiker $1',
 	'code-author-orphan' => 'Deze auteur is niet gekoppeld aan een wikigebruiker',
 	'code-author-dolink' => 'Deze auteur met een wikigebruiker koppelen:',
@@ -4422,6 +4856,14 @@ Volledige URL: $3
 Toelichting bij commit:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Regressie ontdekt tijdens automatisch testen',
+	'codereview-email-body3' => 'Tijdens het automatisch testen is gebleken dat er een regressie is ontstaan door de wijzigingen in r$1
+
+Volledige URL: $2
+
+Commitsamenvatting:
+
+$3',
 	'repoadmin' => 'Repositorybeheer',
 	'repoadmin-new-legend' => 'Nieuwe repository instellen',
 	'repoadmin-new-label' => 'Repositorynaam:',
@@ -4711,7 +5153,7 @@ $messages['oc'] = array(
 	'code-status' => 'estats',
 	'code-tags' => 'balisas',
 	'code-tests' => 'Cases de tèst',
-	'code-authors-text' => 'Çaijós se tròba una lista dels autors dels depauses per òrdre de publicacions recentas.',
+	'code-authors-text' => 'Çaijós se tròba una lista dels autors de depauses per òrdre de publicacions recentas. Los comptes del wiki local son afichats entre parentèsis.',
 	'code-author-haslink' => "Aqueste autor es ligat al compte $1 d'aqueste wiki",
 	'code-author-orphan' => 'Aqueste autor a pas de ligam amb un compte wiki',
 	'code-author-dolink' => 'Associar aqueste autor a un compte wiki local :',
@@ -4793,6 +5235,14 @@ URL completa : $3
 Resumit de las modificacions :
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2] : lo tèst automatic a detectat una regression',
+	'codereview-email-body3' => 'Lo tèst automatic a revelat una regression a causa dels cambiaments intervenguts dins la version r$1.
+
+URL completa : $2
+
+Resumit al moment de la somission :
+
+$3',
 	'repoadmin' => 'Administracion dels depausses',
 	'repoadmin-new-legend' => 'Crear un depaus novèl',
 	'repoadmin-new-label' => 'Nom del depaus :',
@@ -4869,7 +5319,7 @@ $messages['pl'] = array(
 	'code-status' => 'statusy',
 	'code-tags' => 'znaczniki',
 	'code-tests' => 'Argumenty testu',
-	'code-authors-text' => 'Poniżej znajduje się lista autorów repozytorium w kolejności ostatnio dodanej poprawki do kodu źródłowego.',
+	'code-authors-text' => 'Poniżej znajduje się lista autorów repozytorium w kolejności ostatnio dodanej poprawki. Lokalne konta wiki zostały wyświetlone w nawiasach.',
 	'code-author-haslink' => 'Ten autor jest podlinkowany do konta użytkownika na wiki jako $1',
 	'code-author-orphan' => 'Ten autor nie jest podlinkowany do żadnego konta użytkownika na wiki',
 	'code-author-dolink' => 'Podlinkuj tego autora do konta użytkownika na wiki:',
@@ -4951,6 +5401,14 @@ Pełny adres URL: $3
 Skrócony opis:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Automatyczne testowanie wykrytej regresji',
+	'codereview-email-body3' => 'Automatyczne testowanie regresji wykazało współzależności ze zmianami w wersji $1.
+
+Pełny adres URL: $2
+
+Opis zmian w wersji:
+
+$3',
 	'repoadmin' => 'Administrowanie repozytorium',
 	'repoadmin-new-legend' => 'Utwórz nowe repozytorium',
 	'repoadmin-new-label' => 'Nazwa repozytorium',
@@ -4997,6 +5455,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Crazymadlover
  * @author Malafaya
  * @author Waldir
  */
@@ -5015,9 +5474,9 @@ $messages['pt'] = array(
 	'code-load-diff' => 'A carregar diferenças…',
 	'code-notes' => 'comentários recentes',
 	'code-authors' => 'autores',
-	'code-status' => 'estado',
+	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-authors-text' => 'Abaixo encontra-se uma lista de autores do repositório por ordem das efectivações recentes.',
+	'code-authors-text' => 'Abaixo encontra-se uma lista de autores do repositório por ordem das efectivações recentes. Contas do wiki locais são mostrados entre parênteses.',
 	'code-author-haslink' => 'Este autor está associado ao utilizador de wiki $1',
 	'code-author-orphan' => 'Este autor não está associado a nenhuma conta wiki',
 	'code-author-dolink' => 'Associar este autor a um utilizador de wiki:',
@@ -5129,15 +5588,19 @@ $messages['pt-br'] = array(
 	'code-change-tags' => "alterou as '''etiquetas''' da revisão r$1",
 	'code-change-removed' => 'removido:',
 	'code-change-added' => 'adicionado:',
+	'code-old-status' => 'Estado anterior',
+	'code-new-status' => 'Novo estado',
 	'code-prop-changes' => "''Status'' e registro de etiquetagem",
 	'code-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte à subversão]]',
 	'code-no-repo' => 'Nenhum repositório configurado!',
 	'code-load-diff' => 'Carregando diferenças…',
 	'code-notes' => 'comentários recentes',
+	'code-statuschanges' => 'mudanças de estado',
 	'code-authors' => 'autores',
-	'code-status' => 'estado',
+	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-authors-text' => 'Abaixo está uma lista de autores de repositório ordenados pelas tarefas mais recentes',
+	'code-tests' => 'Casos de teste',
+	'code-authors-text' => 'Abaixo está uma lista de autores do repositório ordenados pelos envios mais recentes. Contas do wiki local são exibidas entre parênteses.',
 	'code-author-haslink' => 'Este autor está ligado ao usuário wiki $1',
 	'code-author-orphan' => 'Este autor não tem ligação com uma conta wiki',
 	'code-author-dolink' => 'Ligar este autor a um usuário wiki:',
@@ -5155,6 +5618,7 @@ $messages['pt-br'] = array(
 	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
+	'code-field-tests' => 'Testes',
 	'code-field-path' => 'Caminho',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Selecionar',
@@ -5218,6 +5682,14 @@ URL Completa: $3
 Sumário do envio:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Teste automático detectou regressão',
+	'codereview-email-body3' => 'Teste automático revelou uma regressão devido a mudanças na r$1.
+
+URL completa: $2
+
+Sumário do envio:
+
+$3',
 	'repoadmin' => 'Administração de Repositório',
 	'repoadmin-new-legend' => 'Criar um novo repositório',
 	'repoadmin-new-label' => 'Nome do repositório:',
@@ -5244,10 +5716,14 @@ $4',
  */
 $messages['ro'] = array(
 	'code-comments' => 'Comentarii',
+	'code-old-status' => 'Statut vechi',
+	'code-new-status' => 'Statut nou',
 	'code-authors' => 'autori',
+	'code-tests' => 'Cazuri de test',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentator',
 	'code-field-timestamp' => 'Dată',
+	'code-field-tests' => 'Teste',
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Dată:',
 	'code-rev-message' => 'Comentariu:',
@@ -5350,7 +5826,7 @@ $messages['ru'] = array(
 	'code-status' => 'состояния',
 	'code-tags' => 'метки',
 	'code-tests' => 'Тестовые запросы',
-	'code-authors-text' => 'Ниже находится список авторов в порядке свежести вносимых ими изменений (более новые — сверху).',
+	'code-authors-text' => 'Ниже находится список авторов хранилища в порядке свежести вносимых ими изменений. Учётные записи локальной вики показаны в скобках.',
 	'code-author-haslink' => 'Этот автор ассоциирован с участником $1',
 	'code-author-orphan' => 'Для этого автора не установлена связь с учётной записью вики-проекта',
 	'code-author-dolink' => 'Установить для этого автора связь с участником:',
@@ -5394,7 +5870,7 @@ $messages['ru'] = array(
 	'code-rev-comment-preview' => 'Предпросмотр',
 	'code-rev-diff' => 'Изменение',
 	'code-rev-diff-link' => 'изм.',
-	'code-rev-purge-link' => 'очистить кэш',
+	'code-rev-purge-link' => 'очистить кеш',
 	'code-status-new' => 'новое',
 	'code-status-fixme' => 'проверить',
 	'code-status-reverted' => 'откачено',
@@ -5432,6 +5908,14 @@ $4',
 Описание изменения:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Автоматическая проверка обнаружила регрессию',
+	'codereview-email-body3' => 'Автоматическая проверка выявила регрессию в связи с изменениями в r$1.
+
+Полный URL: $2
+
+Описание изменений:
+
+$3',
 	'repoadmin' => 'Управление хранилищем программного кода',
 	'repoadmin-new-legend' => 'Создать новое хранилище',
 	'repoadmin-new-label' => 'Название хранилища:',
@@ -5476,7 +5960,7 @@ $messages['sah'] = array(
 	'code-status' => 'туруктара (статустара)',
 	'code-tags' => 'бэлиэлэр',
 	'code-tests' => 'Тургутар ыйытыктар',
-	'code-authors-text' => 'Аллараа ааптардар тиһиктэрэ киллэрбит уларытыыларын кэминэн наарданан (саҥалар — үөһэ) бэриллэр.',
+	'code-authors-text' => 'Аллараа ааптардар тиһиктэрэ киллэрбит уларытыыларын кэминэн наарданан бэриллэр. Олохтоох биикигэ бэлиэтэммит ааттара ускуобкаҕа бэриллэр.',
 	'code-author-haslink' => 'Бу ааптар $1 кыттааччыга сигэнэр',
 	'code-author-orphan' => 'Бу ааптар биики-бырайыак ханнык да кыттааччытыгар сигэммэт',
 	'code-author-dolink' => 'Бу ааптары ханнык эмит кыттаачыга сигииргэ:',
@@ -5706,7 +6190,8 @@ $messages['sk'] = array(
 	'code-authors' => 'autori',
 	'code-status' => 'stavy',
 	'code-tags' => 'značky',
-	'code-authors-text' => 'Toto je zoznam autorov v úložisku v poradí podľa posledných commitov.',
+	'code-tests' => 'Testovacie prípady',
+	'code-authors-text' => 'Toto je zoznam autorov v úložisku v poradí podľa posledných commitov. V zátvorkách sú zobrazené lokálne účty wiki.',
 	'code-author-haslink' => 'Tento autor je zviazaný s používateľom wiki $1',
 	'code-author-orphan' => 'Tento autor nie je zviazaný s používateľom wiki',
 	'code-author-dolink' => 'Zviazať tohto autora s používateľom wiki:',
@@ -5724,6 +6209,7 @@ $messages['sk'] = array(
 	'code-field-status' => 'Stav',
 	'code-field-timestamp' => 'Dátum',
 	'code-field-comments' => 'Poznámky',
+	'code-field-tests' => 'Testy',
 	'code-field-path' => 'Cesta',
 	'code-field-text' => 'Poznámka',
 	'code-field-select' => 'Vybrať',
@@ -5787,6 +6273,14 @@ Plný URL: $3
 Zhrnutie commitu:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Automatický test zistil regresiu',
+	'codereview-email-body3' => 'Automatický test odhalil regresiu kvôli zmenám vykonaným v r$1.
+
+Plný URL: $2
+
+Zhrnutie commitu:
+
+$3',
 	'repoadmin' => 'Správa úložiska',
 	'repoadmin-new-legend' => 'Vytvoriť nové úložisko',
 	'repoadmin-new-label' => 'Názov úložiska',
@@ -5807,7 +6301,7 @@ $4',
 	'specialpages-group-developer' => 'Nástroje vývojárov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Јованвб
  * @author Михајло Анђелковић
  */
@@ -5889,6 +6383,89 @@ $messages['sr-ec'] = array(
 	'right-codereview-post-comment' => 'Додајте коментаре ревизијама',
 	'right-codereview-set-status' => 'Промени статус ревизије',
 	'specialpages-group-developer' => 'Девлоперски алати',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'code-comments' => 'Komentari',
+	'code-change-status' => "promenio '''status''' za $1",
+	'code-change-tags' => "promenio '''tagove''' za $1",
+	'code-change-removed' => 'uklonjeno:',
+	'code-change-added' => 'dodato:',
+	'code-prop-changes' => 'Istorija statusa i tagovanja',
+	'code-load-diff' => 'Učitavanje difa…',
+	'code-notes' => 'skorašnji komentari',
+	'code-authors' => 'autori',
+	'code-status' => 'status',
+	'code-tags' => 'tagovi',
+	'code-author-haslink' => 'Ovaj autor je povezan sa Viki-korisnikom $1',
+	'code-author-orphan' => 'Ovaj autor nije povezan na neki Viki-nalog',
+	'code-author-dolink' => 'Povežite ovog autora sa Viki-korisnikom:',
+	'code-author-alterlink' => 'Promenite Viki korisnika povezanog sa ovim autorom:',
+	'code-author-name' => 'Unesite korisničko ime:',
+	'code-author-success' => 'Autor $1 je bio povezan sa Viki-korisnikom $2',
+	'code-author-link' => 'linkovati?',
+	'code-author-unlink' => 'delinkovati?',
+	'code-author-unlinksuccess' => 'Autor $1 je bio delinkovan',
+	'code-field-id' => 'Revizija',
+	'code-field-author' => 'Autor',
+	'code-field-user' => 'Komentator',
+	'code-field-message' => 'Pošalji opis',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Datum',
+	'code-field-comments' => 'Napomene',
+	'code-field-path' => 'Putanja',
+	'code-field-text' => 'Napomena',
+	'code-field-select' => 'Izaberi',
+	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Datum:',
+	'code-rev-message' => 'Komentar:',
+	'code-rev-rev' => 'Revizija:',
+	'code-rev-paths' => 'Izmenjene putanje:',
+	'code-rev-modified-a' => 'dodato',
+	'code-rev-modified-r' => 'zamenjeno',
+	'code-rev-modified-d' => 'obrisano',
+	'code-rev-modified-m' => 'izmenjeno',
+	'code-rev-imagediff' => 'Izmene slika',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Izmeni status',
+	'code-rev-tags' => 'Tagovi:',
+	'code-rev-tag-add' => 'Dodaj tagove:',
+	'code-rev-tag-remove' => 'Izbriši tagove:',
+	'code-rev-comment-by' => 'Komantarisao $1',
+	'code-rev-comment-submit' => 'Pošalji komentar',
+	'code-rev-comment-preview' => 'Prikaži',
+	'code-rev-diff' => 'Razl',
+	'code-rev-diff-link' => 'razl',
+	'code-rev-purge-link' => 'osveži',
+	'code-status-new' => 'nov',
+	'code-status-fixme' => 'popravi me',
+	'code-status-reverted' => 'vraćeno',
+	'code-status-resolved' => 'rešeno',
+	'code-status-ok' => 'ok',
+	'code-status-verified' => 'provereno',
+	'code-pathsearch-path' => 'Putanja:',
+	'code-rev-submit' => 'Zapamti izmene',
+	'code-batch-status' => 'Izmeni status:',
+	'code-batch-tags' => 'Izmeni tagove:',
+	'codereview-batch-title' => 'Izmeni sve izabrane revizije',
+	'codereview-batch-submit' => 'Pošalji',
+	'code-release-startrev' => 'Početna revizija:',
+	'code-release-endrev' => 'Poslednja revizija:',
+	'codereview-subtitle' => 'Za $1',
+	'codereview-reply-link' => 'odgovori',
+	'codereview-email-subj' => '[$1] [r$2]: Novi komentar dodat',
+	'repoadmin-new-button' => 'Napravi',
+	'repoadmin-edit-bug' => 'Putanja do Bagzile:',
+	'repoadmin-edit-button' => 'OK',
+	'right-codereview-use' => 'Korišćenje Special:Code',
+	'right-codereview-add-tag' => 'Dodajte tagove revizijama',
+	'right-codereview-remove-tag' => 'Brišite tagove sa revizija',
+	'right-codereview-post-comment' => 'Dodajte komentare revizijama',
+	'right-codereview-set-status' => 'Promeni status revizije',
+	'specialpages-group-developer' => 'Devloperski alati',
 );
 
 /** Seeltersk (Seeltersk)
@@ -5987,8 +6564,10 @@ $4',
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Fluff
  * @author Gabbe.g
  * @author Najami
+ * @author Rotsee
  */
 $messages['sv'] = array(
 	'code' => 'Kodgranskning',
@@ -5999,15 +6578,19 @@ $messages['sv'] = array(
 	'code-change-tags' => "ändrade '''taggen''' för version $1",
 	'code-change-removed' => 'tog bort:',
 	'code-change-added' => 'la till:',
+	'code-old-status' => 'Gammal status',
+	'code-new-status' => 'Ny status',
 	'code-prop-changes' => 'Logg för status & taggning',
 	'code-desc' => '[[Special:Code|Kodgranskningsverktyg]] med [[Special:RepoAdmin|stöd för Subversion]]',
 	'code-no-repo' => 'Ingen databas konfigurerad!',
 	'code-load-diff' => 'Ladda skillnad...',
 	'code-notes' => 'senaste kommentarer',
+	'code-statuschanges' => 'Statusändringar',
 	'code-authors' => 'författare',
 	'code-status' => 'status',
 	'code-tags' => 'taggar',
-	'code-authors-text' => 'Nedan är en lista av repo-författare ordnade efter senaste commits.',
+	'code-tests' => 'Testfall',
+	'code-authors-text' => 'Nedan är en lista av repo-författare ordnade efter senaste bidrag. Lokala wikikonton visas inom parentes.',
 	'code-author-haslink' => 'Denna författare är länkad till wiki-användaren $1',
 	'code-author-orphan' => 'Författaren är inte länkad med något wiki-konto',
 	'code-author-dolink' => 'Länka denna författare till en wiki-användare :',
@@ -6025,6 +6608,7 @@ $messages['sv'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Noter',
+	'code-field-tests' => 'Test',
 	'code-field-path' => 'Sökväg',
 	'code-field-text' => 'Not',
 	'code-field-select' => 'Välj',
@@ -6088,6 +6672,14 @@ Full URL:  $3
 Sammanfattning:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Regression upptäcktes vid automatisk testning',
+	'codereview-email-body3' => 'Vid automatisk testning upptäcktes regression på grund av förändringar i r$1.
+
+Fullständig webbadress: $2
+
+Bidragssammanfattning:
+
+$3',
 	'repoadmin' => 'Databasadministration',
 	'repoadmin-new-legend' => 'Skapa en ny databas',
 	'repoadmin-new-label' => 'Databasnamn:',
@@ -6108,19 +6700,30 @@ $4',
 	'specialpages-group-developer' => 'Utvecklarverktyg',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'code-rev-message' => 'Maelezo:',
+);
+
 /** Telugu (తెలుగు)
  * @author C.Chandra Kanth Rao
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'code-comments' => 'వ్యాఖ్యలు',
 	'code-change-removed' => 'తొలిగించబడినది',
+	'code-old-status' => 'పాత స్థితి',
+	'code-new-status' => 'కొత్త స్థితి',
 	'code-notes' => 'ఇటీవలి వ్యాఖ్యలు',
+	'code-statuschanges' => 'స్థితి మార్పులు',
 	'code-authors' => 'రచయితలు',
-	'code-status' => 'స్థితి',
+	'code-status' => 'స్థితులు',
 	'code-field-author' => 'రచయిత',
 	'code-field-user' => 'వ్యాఖ్యాత',
-	'code-field-message' => 'వ్యాఖ్య',
+	'code-field-message' => 'కమిట్ వ్యాఖ్య',
 	'code-field-status' => 'స్థితి',
 	'code-field-timestamp' => 'తేదీ',
 	'code-field-comments' => 'గమనికలు',
@@ -6139,6 +6742,7 @@ $messages['te'] = array(
 	'code-status-reverted' => 'వెనక్కి తీసుకోబడినది',
 	'code-status-ok' => 'సరి',
 	'code-rev-submit' => 'మార్పులను భద్రపరచు',
+	'repoadmin-new-button' => 'సృష్టించు',
 	'repoadmin-edit-button' => 'సరే',
 	'specialpages-group-developer' => 'వికాసకుల పనిముట్లు',
 );
@@ -6410,15 +7014,19 @@ $messages['tr'] = array(
 	'code-change-tags' => "r$1 için '''etiketleri''' değiştirdi",
 	'code-change-removed' => 'kaldırıldı:',
 	'code-change-added' => 'eklendi:',
+	'code-old-status' => 'Eski durum',
+	'code-new-status' => 'Yeni durum',
 	'code-prop-changes' => 'Durum & etiket günlüğü',
 	'code-desc' => '[[Special:Code|Kod gözden geçirme aracı]], [[Special:RepoAdmin|Altsürüm desteği]] ile',
 	'code-no-repo' => 'Hiç depo yapılandırılmadı!',
 	'code-load-diff' => 'Farkları yüklüyor…',
 	'code-notes' => 'son yorumlar',
+	'code-statuschanges' => 'durum değişiklikleri',
 	'code-authors' => 'yazarlar',
 	'code-status' => 'durum',
 	'code-tags' => 'etiketler',
-	'code-authors-text' => 'Aşağıdaki, yakın zamandaki teslimlerine göre sıralanmış depo yazarları listesidir.',
+	'code-tests' => 'Test durumları',
+	'code-authors-text' => 'Aşağıdaki, yakın zamandaki teslimlerine göre sıralanmış depo yazarları listesidir. Yerel viki hesapları parantez içinde gösterilmiştir.',
 	'code-author-haslink' => 'Bu yazar $1 viki kullanıcısına bağlıdır',
 	'code-author-orphan' => 'Bu yazarın bir viki hesabıyla bağı yoktur',
 	'code-author-dolink' => 'Bu yazarı bir viki kullanıcısına bağla:',
@@ -6436,6 +7044,7 @@ $messages['tr'] = array(
 	'code-field-status' => 'Durum',
 	'code-field-timestamp' => 'Tarih',
 	'code-field-comments' => 'Notlar',
+	'code-field-tests' => 'Testler',
 	'code-field-path' => 'Yol',
 	'code-field-text' => 'Not',
 	'code-field-select' => 'Seç',
@@ -6499,6 +7108,14 @@ Tam URL: $3
 Teslim özeti:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Otomatik test gerileme saptadı',
+	'codereview-email-body3' => 'Otomatik test r$1 revizyonundaki değişikliklerden dolayı bir gerileme ortaya çıkardı.
+
+Tam URL: $2
+
+Teslimat özeti:
+
+$3',
 	'repoadmin' => 'Depo Yönetimi',
 	'repoadmin-new-legend' => 'Yeni bir depo oluştur',
 	'repoadmin-new-label' => 'Depo adı:',
@@ -6648,15 +7265,19 @@ $messages['vec'] = array(
 	'code-change-tags' => "ga canbià i '''tag''' de r$1",
 	'code-change-removed' => 'cavà:',
 	'code-change-added' => 'zontà:',
+	'code-old-status' => 'Vecio stato',
+	'code-new-status' => 'Novo stato',
 	'code-prop-changes' => 'Registro del stato e del tagging',
 	'code-desc' => '[[Special:Code|Strumento de revision del codice]] con [[Special:RepoAdmin|suporto par le sotoversioni]]',
 	'code-no-repo' => 'Nissun deposito configurà!',
 	'code-load-diff' => 'Cargo le difarense…',
 	'code-notes' => 'note reçenti',
+	'code-statuschanges' => 'canbiamenti de stato',
 	'code-authors' => 'autori',
-	'code-status' => 'stato',
+	'code-status' => 'stati',
 	'code-tags' => 'tag',
-	'code-authors-text' => 'Qua soto ghe xe na lista dei autori del deposito ordenà par i salvatagi pi reçenti.',
+	'code-tests' => 'Casi de test',
+	'code-authors-text' => 'Qua soto ghe xe na lista dei autori del deposito ordenà par i salvatagi pi recenti. I account wiki locali i xe mostrà tra parentesi.',
 	'code-author-haslink' => "Sto autor el xe ligà a l'utente wiki $1",
 	'code-author-orphan' => "Sto autor no'l xe ligà a nissun utente wiki",
 	'code-author-dolink' => 'Ligar sto autor a un utente wiki:',
@@ -6674,6 +7295,7 @@ $messages['vec'] = array(
 	'code-field-status' => 'Stato',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Note',
+	'code-field-tests' => 'Test',
 	'code-field-path' => 'Percorso',
 	'code-field-text' => 'Note',
 	'code-field-select' => 'Selessiona',
@@ -6737,6 +7359,14 @@ URL par intiero: $3
 Ojeto de la modifica:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: el test automatico el gà catà na regression',
+	'codereview-email-body3' => 'El test automatico el gà catà na regression dovùa ai canbiamenti de la version r$1.
+
+URL conpleto: $2
+
+Ogeto de la modifica:
+
+$3',
 	'repoadmin' => "'Ministrassion dei depositi",
 	'repoadmin-new-legend' => 'Crea un deposito novo',
 	'repoadmin-new-label' => 'Nome del deposito:',
@@ -6993,14 +7623,18 @@ $messages['yue'] = array(
 	'code-change-tags' => "改咗 r$1 嘅'''標籤'''",
 	'code-change-removed' => '拎走咗：',
 	'code-change-added' => '加咗：',
+	'code-old-status' => '舊狀態',
+	'code-new-status' => '新狀態',
 	'code-prop-changes' => '狀態同標籤紀錄',
 	'code-desc' => '帶有[[Special:RepoAdmin|Subversion支援]]嘅[[Special:Code|代碼複查工具]]',
 	'code-no-repo' => '無檔案庫設定！',
 	'code-load-diff' => '載入差異中…',
 	'code-notes' => '之前嘅註解',
+	'code-statuschanges' => '狀態變動',
 	'code-authors' => '作者',
 	'code-status' => '狀態',
 	'code-tags' => '標籤',
+	'code-tests' => '測試個案',
 	'code-authors-text' => '下面係檔案庫作者對於最近遞交嘅表。',
 	'code-author-haslink' => '呢位作者係連結到wiki用戶$1',
 	'code-author-orphan' => '呢位作者無連結到一個wiki戶口',
@@ -7082,6 +7716,14 @@ $4',
 遞交摘要：
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]：自動測試偵測到表達式問題',
+	'codereview-email-body3' => '自動測試發現到響 r$1 嘅改動之中出咗表達式問題。
+
+完整URL：$2
+
+遞交摘要：
+
+$3',
 	'repoadmin' => '檔案室庫管理',
 	'repoadmin-new-legend' => '開一個新檔案庫',
 	'repoadmin-new-label' => '檔案庫名：',
@@ -7105,23 +7747,30 @@ $4',
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Gaoxuewei
+ * @author PhiLiP
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'code' => '查看代码',
+	'code-rev-title' => 'r$1 - 代码复核',
 	'code-comments' => '评论',
-	'code-change-status' => "改变了这一修订版本的'''状态'''",
-	'code-change-tags' => "改变了这一修订版本的'''标签'''",
+	'code-references' => '后续修订',
+	'code-change-status' => "改变了r$1的'''状态'''",
+	'code-change-tags' => "改变了r$1的'''标签'''",
 	'code-change-removed' => '移除：',
 	'code-change-added' => '增加：',
+	'code-old-status' => '旧状态',
+	'code-new-status' => '新状态',
 	'code-prop-changes' => '状态与标签记录',
 	'code-desc' => '使用[[Special:RepoAdmin|Subversion支持]]的[[Special:Code|代码检查工具]]',
 	'code-no-repo' => '储存库未被设置！',
 	'code-load-diff' => '加载差异中...',
-	'code-notes' => '检查注释',
+	'code-notes' => '新近发言',
+	'code-statuschanges' => '更改状态',
 	'code-authors' => '作者',
 	'code-status' => '状态',
 	'code-tags' => '标签',
+	'code-tests' => '测试情况',
 	'code-author-haslink' => '作者与维基用户 $1 相关联',
 	'code-author-orphan' => '作者没有与维基帐户相关联',
 	'code-author-dolink' => '将作者与维基用户相关联：',
@@ -7139,8 +7788,10 @@ $messages['zh-hans'] = array(
 	'code-field-status' => '状态',
 	'code-field-timestamp' => '日期',
 	'code-field-comments' => '注释',
+	'code-field-tests' => '测试',
 	'code-field-path' => '路径',
 	'code-field-text' => '注释',
+	'code-field-select' => '选定',
 	'code-rev-author' => '作者：',
 	'code-rev-date' => '日期：',
 	'code-rev-message' => '评论：',
@@ -7167,12 +7818,16 @@ $messages['zh-hans'] = array(
 	'code-status-fixme' => '修正',
 	'code-status-reverted' => '回复',
 	'code-status-resolved' => '解决',
-	'code-status-ok' => 'ok',
+	'code-status-ok' => '确定',
 	'code-status-deferred' => '推迟',
 	'code-pathsearch-path' => '路径：',
 	'code-rev-submit' => '保存修改',
 	'code-rev-submit-next' => '保存，并处理下一条',
+	'code-batch-status' => '更改状态：',
+	'code-batch-tags' => '更改标签：',
 	'codereview-batch-submit' => '提交',
+	'code-release-startrev' => '开始修订：',
+	'code-release-endrev' => '结束修订：',
 	'codereview-reply-link' => '回复',
 	'codereview-email-subj' => '[$1] [r$2]: 新的评论已添加',
 	'codereview-email-body' => '用户 "$1" 在 r$3 上添加了一条评论。
@@ -7182,6 +7837,22 @@ $messages['zh-hans'] = array(
 评论:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]：后续更改',
+	'codereview-email-body2' => '用户“$1”对r$2作出了后续更改。
+
+URL链接：$3
+
+提交摘要：
+
+$4',
+	'codereview-email-subj3' => '[$1] [r$2]：自动测试发现已知错误',
+	'codereview-email-body3' => '自动测试发现r$1导致了已知的错误。
+
+URL链接：$2
+
+提交摘要：
+
+$3',
 	'repoadmin' => '储存库管理',
 	'repoadmin-new-legend' => '建立新的储存库',
 	'repoadmin-new-label' => '储存库名称：',
@@ -7190,9 +7861,10 @@ $4',
 	'repoadmin-edit-path' => '储存库路径：',
 	'repoadmin-edit-bug' => 'Bugzilla路径：',
 	'repoadmin-edit-view' => 'ViewVC路径：',
-	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-button' => '确定',
 	'repoadmin-edit-sucess' => '储存库"[[Special:Code/$1|$1]]"已被成功修改。',
 	'right-repoadmin' => '管理代码储存库',
+	'right-codereview-use' => '使用Special:Code',
 	'right-codereview-add-tag' => '添加新标签到修订',
 	'right-codereview-remove-tag' => '自修订移除标签',
 	'right-codereview-post-comment' => '添加评论到修订',
@@ -7202,6 +7874,7 @@ $4',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author FireJackey
  * @author Skjackey tse
  */
 $messages['zh-hant'] = array(

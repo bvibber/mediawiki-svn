@@ -72,6 +72,17 @@ $messages['bg'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Създаването на сметки беше автоматично спряно за малко заради необичайно големия брой опити за влизане. Изчакайте няколко минути и опитайте отново.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'acct_creation_global_soft_throttle_hit' => "Diweredekaet eo bet ent emgefre ar c'hrouiñ kontoù e-pad ur frapadig abalamour d'un niver iskis a lugadennoù a-vras.
+Gortozit un nebeud munutennoù ha klaskit en-dro.",
+	'acct_creation_global_hard_throttle_hit' => 'Diweredekaet eo bet ar c\'hrouiñ kontoù e-pad un nebeud eilennoù ent emgefre a-benn talaén ouzh an tagadennoù stlenn a sav kontoù nevez a-vloc\'h.
+Gortozit un tamm ha klikit war "adkargañ" en ho merdeer evit gellout goulenn en-dro.',
+	'acct_creation_global_soft_throttle_hit-desc' => "Bevenniñ a ra ar c'hrouiñ kontoù implijer",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -214,6 +225,17 @@ Per favor attende un momento e preme 'recargar' in tu navigator pro resubmitter 
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limita le frequentia de creation de usatores',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Pembuatan akun telah dinon-aktifkan untuk beberapa saat karena terdapat usaha untuk log masuk dalam jumlah yang sangat besar.
+Coba lagi setelah beberapa menit.',
+	'acct_creation_global_hard_throttle_hit' => "Pembuatan akun telah dinon-aktifkan untuk beberapa detik untuk mengurangi serangan banjir pendaftaran.
+Coba lagi setelah beberapa saat dan klik 'reload' di penjelajah Anda untuk mengirim ulang.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Memblokir sesaat pembuatan akun',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -315,6 +337,17 @@ Poczekaj chwilę i wciśnij „odśwież” w przeglądarce by ponowić operacj�
 	'acct_creation_global_soft_throttle_hit-desc' => 'Ogranicza częstotliwość rejestracji nowych użytkowników',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'acct_creation_global_soft_throttle_hit' => "La creassion ëd cont a l'é stàita automaticament sospèisa për cheich moment a motiv ëd n'insolit gròss nùmer ëd tentativ ëd login.
+Për piasì speta cheich minute e preuva torna.",
+	'acct_creation_global_hard_throttle_hit' => "la creassion ëd cont a l'é stàita automaticament sospèisa për cheich second për bassé l'atach d'inondassion ëd registrassion.
+Për piasì speta un moment e fà 'reload' an tò browser për torna prové.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Throttle user creation',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir
@@ -358,7 +391,7 @@ $messages['sk'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Obmedzí rýchlosť vytvárania používateľských účtov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -367,6 +400,17 @@ $messages['sr-ec'] = array(
 	'acct_creation_global_hard_throttle_hit' => 'Прављење налога је аутоматски суспендовано на неколико секунди, да би умањило број напада бројним регистрацијама.
 Молимо Вас да мало сачекате и притиснете дугме за освежавање у вашем браузеру, да бисте опет послали податке.',
 	'acct_creation_global_soft_throttle_hit-desc' => 'Ограничава учесталост корисничких регистрација',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Pravljenje naloga je bilo automatski suspendovano na par momenata zbog neobično velikog broja skorašnjih pokušaja logovanja.
+Molimo Vas da odčekate nekoliko minuta i pokušate opet.',
+	'acct_creation_global_hard_throttle_hit' => 'Pravljenje naloga je automatski suspendovano na nekoliko sekundi, da bi umanjilo broj napada brojnim registracijama.
+Molimo Vas da malo sačekate i pritisnete dugme za osvežavanje u vašem brauzeru, da biste opet poslali podatke.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Ograničava učestalost korisničkih registracija',
 );
 
 /** Seeltersk (Seeltersk)

@@ -18,13 +18,6 @@ $messages['qqq'] = array(
 	'poem-desc' => 'Extension description displayed on [[Special:Version]]',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Piotron
- */
-$messages['sli'] = array(
-	'poem-desc' => 'Fiegt is <tt>&lt;poem&gt;</tt>-Tag zur Furmatierung voo Gedichta hinzu',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -95,6 +88,13 @@ $messages['bn'] = array(
 	'poem-desc' => 'কবিতার ফরমেটিং এর জন্য <tt>&lt;poem&gt;</tt> ট্যাগ যোগ করুন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'poem-desc' => 'Ouzhpennañ a ra ar valizenn <tt>&lt;poem&gt;</tt> da furmadiñ testennoù barzhonegoù.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -149,6 +149,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'poem-desc' => 'Añade la etiqueta <tt>&lt;poem&gt;</tt> para dar el formato propio de un poema.',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'poem-desc' => 'Lisab <tt>&lt;poem&gt;</tt>-märgendi luuletuse vormindamiseks.',
 );
 
 /** Basque (Euskara)
@@ -210,6 +217,13 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'poem-desc' => 'कविता लिखने के लिये आवश्यक <tt>&lt;poem&gt;</tt> टॅग देता हैं',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'poem-desc' => 'Gadugang <tt>&lt;poem&gt;</tt> tag para sa pagformat sang tula',
 );
 
 /** Croatian (Hrvatski)
@@ -328,10 +342,11 @@ $messages['lv'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'poem-desc' => 'Додава <tt>&lt;poem&gt;</tt> приврзок за форматирање на стихови',
+	'poem-desc' => 'Додава <tt>&lt;poem&gt;</tt> ознака за форматирање на стихови',
 );
 
 /** Malayalam (മലയാളം)
@@ -397,6 +412,13 @@ $messages['pl'] = array(
 	'poem-desc' => 'Dodaje znacznik <tt>&lt;poem&gt;</tt> służący do formatowania wierszy',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'poem-desc' => 'A gionta ël tag <tt>&lt;poem&gt;</tt> për formatassion ëd poema',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -446,11 +468,25 @@ $messages['sah'] = array(
 	'poem-desc' => 'Хоһооннору суруйарга <tt>&lt;poem&gt;</tt> тиэги эбэр',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'poem-desc' => 'Iunci lu tag <tt>&lt;poem&gt;</tt> pi la furmattazioni di li testa puetici',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'poem-desc' => 'Pridáva značku <tt>&lt;poem&gt;</tt> pre formátovanie básní',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'poem-desc' => 'Fiegt is <tt>&lt;poem&gt;</tt>-Tag zur Furmatierung voo Gedichta hinzu',
 );
 
 /** Albanian (Shqip)
@@ -460,12 +496,19 @@ $messages['sq'] = array(
 	'poem-desc' => 'Vendosë kodin <tt>&lt;poem&gt;</tt> për formatim të poezive',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Nikola Smolenski
  */
 $messages['sr-ec'] = array(
 	'poem-desc' => 'Додаје <tt>&lt;poem&gt;</tt> ознаку за форматирање песама.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'poem-desc' => 'Dodaje <tt>&lt;poem&gt;</tt> oznaku za formatiranje pesama.',
 );
 
 /** Seeltersk (Seeltersk)

@@ -14,7 +14,8 @@ class ChangeTags {
 		$displayTags = array();
 		foreach( $tags as $tag ) {
 			$displayTags[] = Xml::tags( 'span',
-								array( 'class' => "mw-tag-marker mw-tag-marker-$tag" ),
+								array( 'class' => "mw-tag-marker ".
+											Sanitizer::escapeClass("mw-tag-marker-$tag") ),
 								self::tagDescription( $tag ) );
 			$classes[] = Sanitizer::escapeClass( "mw-tag-$tag" );
 		}
@@ -124,8 +125,9 @@ class ChangeTags {
 			// Add an INNER JOIN on change_tag
 
 			// FORCE INDEX -- change_tags will almost ALWAYS be the correct query plan.
-			## Wikimedia hack: index renamed see CR 49068
-			$options['USE INDEX'] = array( 'change_tag' => 'ct_tag' );
+			global $wgOldChangeTagsIndex;
+			$index = $wgOldChangeTagsIndex ? 'ct_tag' : 'change_tag_tag_id';
+			$options['USE INDEX'] = array( 'change_tag' => $index );
 			unset( $options['FORCE INDEX'] );
 			$tables[] = 'change_tag';
 			$join_conds['change_tag'] = array( 'INNER JOIN', "ct_$join_cond=$join_cond" );

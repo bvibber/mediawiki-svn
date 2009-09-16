@@ -62,6 +62,7 @@ $messages['af'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Ongeldige argument vir ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Fout in uitdrukking: onbekende fout ($1)',
 	'pfunc_expr_not_a_number' => "In $1: resultaat is nie 'n getal nie",
+	'pfunc_string_too_long' => 'Fout: String oorskry $1 karakter limiet',
 );
 
 /** Aragonese (Aragonés)
@@ -275,7 +276,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'pfunc_desc' => "Barrekaat a ra ar parser gant arc'hwelioù poellek.",
+	'pfunc_desc' => "Gwellaat a ra ar parser gant arc'hwelioù poellek",
 	'pfunc_time_error' => 'Fazi : pad direizh',
 	'pfunc_time_too_long' => 'Fazi : betek re eo bet galvet #time',
 	'pfunc_rel2abs_invalid_depth' => "Fazi : Donder direizh evit an hent : \"\$1\" (klasket ez eus bet mont d'ul live a-us d'ar c'havlec'h-mamm)",
@@ -293,6 +294,7 @@ $messages['br'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Talvoudenn direizh evit ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Kemennad faziek : Fazi dianav ($1)',
 	'pfunc_expr_not_a_number' => "E $1: An disoc'h n'eo ket un niver",
+	'pfunc_string_too_long' => "Fazi : Dreist d'ar vevenn uhelañ a $1 arouezenn eo an neudennad",
 );
 
 /** Bosnian (Bosanski)
@@ -398,6 +400,7 @@ $messages['da'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Ugyldigt argument for ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Udtryksfejl: Ukendt fejl ($1)',
 	'pfunc_expr_not_a_number' => 'I $1: Resultatet er ikke et tal',
+	'pfunc_string_too_long' => 'Feil: Strengen overskrider grænsen på $1 tegn',
 );
 
 /** German (Deutsch)
@@ -508,9 +511,11 @@ $messages['eo'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Nevalida argumento por ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Esprima eraro: Nekonata eraro ($1)',
 	'pfunc_expr_not_a_number' => 'En $1: rezulto ne estas nombro',
+	'pfunc_string_too_long' => 'Eraro: Ĉeno preterpasas signo-limon $1',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Muro de Aguas
  * @author Remember the dot
  * @author Sanbec
@@ -534,13 +539,25 @@ $messages['es'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Argumento incorrecto para ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Error con la expresión: Error desconocido ($1)',
 	'pfunc_expr_not_a_number' => 'En $1: el resultado no es un número',
+	'pfunc_string_too_long' => 'Error: la cadena excede el límite de $1 caracteres',
 );
 
-/** Basque (Euskara) */
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'pfunc_desc' => 'Laiendab parserit loogiliste funktsioonidega.',
+	'pfunc_expr_division_by_zero' => 'Nulliga jagamine',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
 $messages['eu'] = array(
 	'pfunc_time_error' => 'Errorea: baliogabeko ordua',
 	'pfunc_time_too_long' => 'Errorea: #time dei gehiegi',
 	'pfunc_rel2abs_invalid_depth' => 'Errorea: Baliogabeko sakonera fitxategi bidean: "$1" (root puntutik gora sartzen saiatu da)',
+	'pfunc_expr_division_by_zero' => 'Zeroz zatitu',
 );
 
 /** Persian (فارسی)
@@ -569,6 +586,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Agony
+ * @author Cimon Avaro
  * @author Nike
  */
 $messages['fi'] = array(
@@ -590,6 +608,7 @@ $messages['fi'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Virheellinen arvo funktiolle ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Virhe lausekkeessa: tuntematon virhe ($1)',
 	'pfunc_expr_not_a_number' => 'Lausekkeessa $1: tulos ei ole luku',
+	'pfunc_string_too_long' => 'Virhe: Merkkijono ylittää $1 merkin ylärajan',
 );
 
 /** French (Français)
@@ -751,6 +770,7 @@ $messages['hi'] = array(
  * @author Dalibor Bosits
  * @author Dnik
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'pfunc_desc' => 'Mogućnost proširivanja parsera logičkim funkcijama',
@@ -771,6 +791,7 @@ $messages['hr'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Nevaljani argument za ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Greška u predlošku: Nepoznata greška ($1)',
 	'pfunc_expr_not_a_number' => 'U $1: rezultat nije broj',
+	'pfunc_string_too_long' => 'Greška: Niz prelazi ograničenje od $1 znakova',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -820,6 +841,7 @@ $messages['hu'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Az ln érvénytelen paramétert kapott: <= 0',
 	'pfunc_expr_unknown_error' => 'Hiba a kifejezésben: ismeretlen hiba ($1)',
 	'pfunc_expr_not_a_number' => '$1: az eredmény nem szám',
+	'pfunc_string_too_long' => 'Hiba: a sztring túllépte a(z) $1 karakteres határt',
 );
 
 /** Interlingua (Interlingua)
@@ -906,6 +928,7 @@ $messages['it'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Argomento non valido per ln: <= 0',
 	'pfunc_expr_unknown_error' => "Errore nell'espressione: errore sconosciuto ($1)",
 	'pfunc_expr_not_a_number' => 'In $1: il risultato non è un numero',
+	'pfunc_string_too_long' => 'Errore: la stringa supera il limite di $1 {{PLURAL:$1|carattere|caratteri}}',
 );
 
 /** Japanese (日本語)
@@ -917,7 +940,7 @@ $messages['ja'] = array(
 	'pfunc_desc' => 'パーサーに論理関数を追加して拡張する',
 	'pfunc_time_error' => 'エラー: 時刻が不正です',
 	'pfunc_time_too_long' => 'エラー: #time 呼び出しが多すぎます',
-	'pfunc_rel2abs_invalid_depth' => 'エラー: パス "$1" の階層が不正です（ルート階層からのアクセスをお試しください）',
+	'pfunc_rel2abs_invalid_depth' => 'エラー: パス "$1" の階層が不正です(ルート階層からのアクセスをお試しください)',
 	'pfunc_expr_stack_exhausted' => '構文エラー: スタックが空です',
 	'pfunc_expr_unexpected_number' => '構文エラー: 予期せぬ数字です',
 	'pfunc_expr_preg_match_failure' => '構文エラー: 予期せぬ形で preg_match に失敗しました',
@@ -930,7 +953,7 @@ $messages['ja'] = array(
 	'pfunc_expr_division_by_zero' => '0で除算しました',
 	'pfunc_expr_invalid_argument' => '$1の引数が無効です: < -1 または > 1',
 	'pfunc_expr_invalid_argument_ln' => 'ln の引数が無効です: <= 0',
-	'pfunc_expr_unknown_error' => '構文エラー: 予期せぬエラー（$1）',
+	'pfunc_expr_unknown_error' => '構文エラー: 予期せぬエラー($1)',
 	'pfunc_expr_not_a_number' => '$1: 結果が数字ではありません',
 	'pfunc_string_too_long' => 'エラー: 文字列が文字数制限 $1 を超えました',
 );
@@ -1028,16 +1051,18 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author ToePeu
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'pfunc_desc' => '논리적 기능과 함께 분석의 질을 높임',
+	'pfunc_desc' => '파서에 논리 함수를 추가',
 	'pfunc_time_error' => '오류: 시간이 잘못되었습니다.',
 	'pfunc_time_too_long' => '오류: #time을 너무 많이 썼습니다.',
-	'pfunc_expr_unexpected_number' => '표현 오류: 예측하지 못한 숫자',
-	'pfunc_expr_unrecognised_word' => '표현 오류: 인식되지 않는 단어 "$1"',
+	'pfunc_expr_unexpected_number' => '표현식 오류: 예상치 못한 값',
+	'pfunc_expr_preg_match_failure' => '표현식 오류: 예상치 못한 preg_match 오류',
+	'pfunc_expr_unrecognised_word' => '표현식 오류: 알 수 없는 단어 ‘$1’',
 	'pfunc_expr_unexpected_operator' => '표현 오류: 잘못된 $1 연산자',
 	'pfunc_expr_missing_operand' => '표현 오류: $1의 피연산자가 없습니다.',
 	'pfunc_expr_unexpected_closing_bracket' => '표현 오류: 예상치 못한 괄호 닫기',
@@ -1091,6 +1116,7 @@ $messages['lb'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Ongëltege Wert fir ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Expression-Feeler: Onbekannte Feeler ($1)',
 	'pfunc_expr_not_a_number' => "An $1: D'Resultat ass keng Zuel",
+	'pfunc_string_too_long' => "Feeler: D'Zeecheketten ass méi laang wéi d'Limit vu(n) $1 Zeechen",
 );
 
 /** Limburgish (Limburgs)
@@ -1126,6 +1152,7 @@ $messages['lt'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -1147,6 +1174,7 @@ $messages['mk'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Невалиден аргумент за ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Грешка во изразот: Непозната грешка ($1)',
 	'pfunc_expr_not_a_number' => 'Во $1: резултатот не е број',
+	'pfunc_string_too_long' => 'Грешка: Низата го надминува ограничувањето на $1 знаци',
 );
 
 /** Malayalam (മലയാളം)
@@ -1217,6 +1245,8 @@ $messages['ms'] = array(
  */
 $messages['myv'] = array(
 	'pfunc_time_error' => 'Ильведевксэсь: амаштовикс шкась',
+	'pfunc_expr_stack_exhausted' => 'Ёвтавкссонть ильведевкс: стекесь тыц пешксе',
+	'pfunc_expr_division_by_zero' => 'Нольсэ йавома',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -1451,6 +1481,32 @@ $messages['pt-br'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Argumento inválido para ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Erro de expressão: Erro desconhecido ($1)',
 	'pfunc_expr_not_a_number' => 'Em $1: resultado não é um número',
+	'pfunc_string_too_long' => 'Erro: cadeia de caracteres excede o limite de $1 caracteres',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'pfunc_desc' => 'Parser nisqata sullwa ruranakunawan allinchay',
+	'pfunc_time_error' => 'Pantasqa: Pachaqa manam allinchu',
+	'pfunc_time_too_long' => 'Pantasqa: nisyu "#time" (pacha)',
+	'pfunc_rel2abs_invalid_depth' => 'Pantasqa: ñanpa ukhu kayninqa manam allinchu: "$1" (saphi khipu hawanpi kaq khiputam aypayta munaspa)',
+	'pfunc_expr_stack_exhausted' => 'Rikuchikuypi pantasqa: Nisyu tawqa',
+	'pfunc_expr_unexpected_number' => 'Rikuchikuypi pantasqa: Mana suyakusqa yupay',
+	'pfunc_expr_preg_match_failure' => 'Rikuchikuypi pantasqa: Mana suyakusqa preg_match alqa',
+	'pfunc_expr_unrecognised_word' => 'Rikuchikuypi pantasqa: Mana riqsisqa rima "$1"',
+	'pfunc_expr_unexpected_operator' => 'Rikuchikuypi pantasqa: Mana suyakusqa ruraq "$1"',
+	'pfunc_expr_missing_operand' => 'Rikuchikuypi pantasqa: Manam kanchu $1-paq ruraq',
+	'pfunc_expr_unexpected_closing_bracket' => "Rikuchikuypi pantasqa: Nisyu wichq'aq qinchaq",
+	'pfunc_expr_unrecognised_punctuation' => 'Rikuchikuypi pantasqa: Mana riqsisqa qillqa unancha "$1"',
+	'pfunc_expr_unclosed_bracket' => "Rikuchikuypi pantasqa: Manam kanchu wichq'aq qinchaq",
+	'pfunc_expr_division_by_zero' => "Ch'usaqwan rakisqa",
+	'pfunc_expr_invalid_argument' => '$1-paq mana allin ninakuy: : < -1 icha > 1',
+	'pfunc_expr_invalid_argument_ln' => 'ln-paq mana allin ninakuy: <= 0',
+	'pfunc_expr_unknown_error' => 'Rikuchikuypi pantasqa: Mana riqsisqa pantasqa ($1)',
+	'pfunc_expr_not_a_number' => '$1-pi: lluqsiyninqa manam yupaychu',
+	'pfunc_string_too_long' => 'Pantasqa: Qillqa tiwlliqa $1 sanampa saywatam llallin',
 );
 
 /** Romanian (Română)
@@ -1460,6 +1516,7 @@ $messages['ro'] = array(
 	'pfunc_time_error' => 'Eroare: timp incorect',
 	'pfunc_time_too_long' => 'Eroare: prea multe apeluri #time',
 	'pfunc_rel2abs_invalid_depth' => 'Eroare: adâncime incorectă în cale: "$1" (încercat accesarea unui nod deasupra nodului rădăcină)',
+	'pfunc_expr_stack_exhausted' => 'Eroare de expresie: Stivă epuizată',
 	'pfunc_expr_unexpected_number' => 'Eroare de expresie: număr neaşteptat',
 	'pfunc_expr_preg_match_failure' => 'Eroare de expresie: eşuare preg_match neaşteptată',
 	'pfunc_expr_unrecognised_word' => 'Eroare de expresie: "$1" este cuvânt necunoscut',
@@ -1473,14 +1530,32 @@ $messages['ro'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Argument incorect pentru ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Eroare de expresie: eroare necunoscută ($1)',
 	'pfunc_expr_not_a_number' => 'În $1: rezultatul nu este un număr',
+	'pfunc_string_too_long' => 'Eroare: Şirul depăşeşte limita de caractere de $1',
 );
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'pfunc_desc' => "L'analizzatore avanzate cu le funziune loggeche",
 	'pfunc_time_error' => 'Errore: Orarie invalide',
+	'pfunc_time_too_long' => 'Errore: stonne troppe #time chiamate',
+	'pfunc_rel2abs_invalid_depth' => "Errore: Profondità invalide jndr'à 'u percorse: \"\$1\" (s'à pruvate a pigghià 'nu node sus a 'u node radice)",
+	'pfunc_expr_stack_exhausted' => 'Espressione in errore: Stack anghiute',
+	'pfunc_expr_unexpected_number' => 'Espressione in errore: Numere inaspettate',
+	'pfunc_expr_preg_match_failure' => 'Espressione in errore: preg_match inaspettate e fallite',
+	'pfunc_expr_unrecognised_word' => 'Espressione in errore: Parola scanusciute "$1"',
+	'pfunc_expr_unexpected_operator' => 'Espressione in errore: Operatore $1 inaspettate',
+	'pfunc_expr_missing_operand' => 'Espressione in errore: Operande zumbate pe $1',
+	'pfunc_expr_unexpected_closing_bracket' => "Espressione in errore: Non g'onne state achiuse le parendesi",
+	'pfunc_expr_unrecognised_punctuation' => 'Espressione in errore: Carattere de punde "$1" scanusciute',
+	'pfunc_expr_unclosed_bracket' => 'Espressione in errore: Parendesi non achiuse',
 	'pfunc_expr_division_by_zero' => 'Divisione pe zero',
+	'pfunc_expr_invalid_argument' => 'Argomende invalide pe $1: < -1 o > 1',
+	'pfunc_expr_invalid_argument_ln' => 'Argomende invalide pe ln: <= 0',
+	'pfunc_expr_unknown_error' => 'Espressione in errore: Errore scanusciute ($1)',
+	'pfunc_expr_not_a_number' => "In $1: 'u resultate non g'è 'nu numere",
+	'pfunc_string_too_long' => "Errore: 'A stringhe supranesce 'u limite de $1 carattere",
 );
 
 /** Russian (Русский)
@@ -1534,6 +1609,7 @@ $messages['sah'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Melos
  * @author Santu
  */
 $messages['scn'] = array(
@@ -1555,6 +1631,7 @@ $messages['scn'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Argumentu non vàlidu pi ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Sbàgghiu nti la sprissioni: sbàgghiu scanusciutu ($1)',
 	'pfunc_expr_not_a_number' => 'Nti $1: lu risurtatu nun è nu nùmmiru',
+	'pfunc_string_too_long' => 'Erruri: la stringa supira lu limiti di $1 carattiri',
 );
 
 /** Sinhala (සිංහල)
@@ -1605,7 +1682,7 @@ $messages['sk'] = array(
 	'pfunc_string_too_long' => 'Chyba: Reťazec prekračuje limit $1 znakov',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -1626,6 +1703,29 @@ $messages['sr-ec'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Лош аргумент: ln <= 0',
 	'pfunc_expr_unknown_error' => 'Грешка у изразу: Непозната грешка ($1)',
 	'pfunc_expr_not_a_number' => 'Резултат у $1 није број.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'pfunc_desc' => 'obogati parser logičkim funkcijama',
+	'pfunc_time_error' => 'Greška: loše vreme',
+	'pfunc_time_too_long' => 'Greška: previše #time poziva',
+	'pfunc_expr_stack_exhausted' => 'Greška u izrazu: stek napunjen',
+	'pfunc_expr_unexpected_number' => 'Greška u izrazu: neočekivani broj',
+	'pfunc_expr_preg_match_failure' => 'Greška u izrazu: Neočekivana preg_match greška',
+	'pfunc_expr_unrecognised_word' => 'Greška u izrazu: nepoznata reč "$1"',
+	'pfunc_expr_unexpected_operator' => 'Greška u izrazu: nepoznati operator "$1"',
+	'pfunc_expr_missing_operand' => 'Greška u izrazu: nedostaje operand za $1',
+	'pfunc_expr_unexpected_closing_bracket' => 'Greška u izrazu: Neočekivano zatvaranje srednje zagrade.',
+	'pfunc_expr_unrecognised_punctuation' => 'Greška u izrazu: Nepoznati interpunkcijski karakter "$1".',
+	'pfunc_expr_unclosed_bracket' => 'Greška u izrazu: Nezatvorena srednja zagrada.',
+	'pfunc_expr_division_by_zero' => 'Deljenje sa nulom.',
+	'pfunc_expr_invalid_argument' => 'Loš argument: $1 je < -1 ili > 1',
+	'pfunc_expr_invalid_argument_ln' => 'Loš argument: ln <= 0',
+	'pfunc_expr_unknown_error' => 'Greška u izrazu: Nepoznata greška ($1)',
+	'pfunc_expr_not_a_number' => 'Rezultat u $1 nije broj.',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1650,6 +1750,7 @@ $messages['stq'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Uungultich Argument foar ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Expression-Failer: Uunbekoanden Failer ($1)',
 	'pfunc_expr_not_a_number' => 'Expression-Failer: In $1: Resultoat is neen Taal',
+	'pfunc_string_too_long' => 'Failer: Teekenkätte is laanger as dät Teekenlimit fon $1',
 );
 
 /** Sundanese (Basa Sunda)
@@ -1659,6 +1760,7 @@ $messages['stq'] = array(
 $messages['su'] = array(
 	'pfunc_desc' => 'Ngembangkeun parser kalawan fungsi logis',
 	'pfunc_time_error' => 'Éror: titimangsa teu valid',
+	'pfunc_expr_division_by_zero' => 'Pambagi ku nol',
 );
 
 /** Swedish (Svenska)
@@ -1914,6 +2016,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Philip
  * @author Shinjiman
  */
@@ -1936,6 +2039,7 @@ $messages['zh-hans'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'ln的无效参数：<= 0',
 	'pfunc_expr_unknown_error' => '表达式错误：未知错误（$1）',
 	'pfunc_expr_not_a_number' => '在$1中：结果不是数字',
+	'pfunc_string_too_long' => '错误：字符串超过$1字符限制',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

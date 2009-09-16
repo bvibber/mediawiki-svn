@@ -219,6 +219,7 @@ $messages['bs'] = array(
  * @author Paucabot
  */
 $messages['ca'] = array(
+	'scanset-desc' => "Mostra imatges de la pàgines escanejades dels conjunt de CDs i DVDs d'Andreas Grosz",
 	'scanset_unrecognised_index_format' => 'Error: Format de fitxer desconegut',
 	'scanset_opendir_error' => 'Error: No es pot obrir el directori $1',
 	'scanset_no_files' => 'Error: No hi ha fitxers al directori especificat',
@@ -346,6 +347,25 @@ $messages['es'] = array(
 	'scanset_prev' => '&lt; Anterior',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'scanset_opendir_error' => 'Tõrge: Kausta $1 ei saa avada',
+	'scanset_no_files' => 'Tõrge: Määratletud kaustas ei ole faile.',
+	'scanset_next' => 'Järgmine &gt;',
+	'scanset_prev' => '&lt; Eelmine',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'scanset_next' => 'Hurrengoa &gt;',
+	'scanset_prev' => '&lt; Aurrekoa',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -447,7 +467,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'scanset_next' => 'Ἑπομέναι &gt;',
+	'scanset_next' => 'Ἑπoμένη &gt;',
 	'scanset_prev' => '&lt; Προηγουμένη',
 );
 
@@ -642,7 +662,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'scanset-desc' => 'スキャンページ画像を、Andreas Grosz のCD/DVD索引形式で表示する',
-	'scanset_no_name' => 'Error: スキャンセット名を指定する必要があります　（例：&lt;scanset name="EB1911" /&gt;）',
+	'scanset_no_name' => 'Error: スキャンセット名を指定する必要があります　(例：&lt;scanset name="EB1911" /&gt;)',
 	'scanset_invalid_name' => 'Error: スキャンセットが見つからないか不正です',
 	'scanset_unrecognised_index_format' => 'Error: 対応していない索引形式です',
 	'scanset_opendir_error' => 'Error: ディレクトリ $1 を開くことができません',
@@ -681,6 +701,15 @@ $messages['jv'] = array(
 	'scanset_prev' => '&lt; Sadurungé',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'scanset-desc' => 'სკანირებული გამოსახულებების ხილვა ანდრეას გროსის (Andreas Grosz) CD/DVD კოლექციდან',
+	'scanset_no_name' => 'შეცდომა: თქვენ უნდა წარმოადგინოთ ფოტოსურათების კოლექციის ზუსტი სახელი, მაგ. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'შეცდომა:სურათების კომპლექსში შეცდომაა, ან ამგვარი კომპლექსი არ არსებობს',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Thearith
@@ -693,20 +722,21 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Ilovesabbath
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'scanset-desc' => '안드레아스 그로즈의 CD/DVD 세트에서 스캔하신 이미지를 보고 계십니다',
+	'scanset-desc' => 'Andreas Grosz CD/DVD set을 이용해 이미지 자켓을 표시',
 	'scanset_no_name' => '에러: 스캔셋 이름을 정해야 합니다. (예:&lt;scanset name="EB1911" /&gt;.)',
-	'scanset_invalid_name' => '오류: 효과가 없거나 사라진 스캔 세트임.',
-	'scanset_unrecognised_index_format' => '오류: 알 수 없는 목록 형식임',
-	'scanset_opendir_error' => '오류: 자료실 $1을 열 수 없음',
-	'scanset_no_files' => '오류: 특정한 자료실에서 존재하는 파일이 없음.',
-	'scanset_no_volumes' => '오류: 확인할 수 있는 자료량이 없음',
-	'scanset_missing_index_file' => '오류: 파일 목록 $1을 찾을 수 없음',
-	'scanset_index_file_error' => '오류: $1 라인에 있는 목록 파일 형식에서 오류 발생',
-	'scanset_invalid_volume' => '오류: 양이 너무 적습니다',
+	'scanset_invalid_name' => '오류: 스캔 세트가 잘못되었거나 없습니다.',
+	'scanset_unrecognised_index_format' => '오류: 알 수 없는 색인 형식',
+	'scanset_opendir_error' => '오류: $1 디렉토리를 열 수 없음',
+	'scanset_no_files' => '오류: 해당 디렉토리에 파일이 없습니다.',
+	'scanset_no_volumes' => '오류: 볼륨 디렉토리가 없음',
+	'scanset_missing_index_file' => '오류: 색인 파일 $1을(를) 찾을 수 없음',
+	'scanset_index_file_error' => '오류: $1번째 줄에 알 수 없는 색인 파일 형식',
+	'scanset_invalid_volume' => '오류: 잘못된 볼륨',
 	'scanset_next' => '다음 &gt;',
 	'scanset_prev' => '&lt; 이전',
 );
@@ -1090,7 +1120,7 @@ $messages['sk'] = array(
 	'scanset_prev' => '&lt; Späť',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  */
@@ -1107,6 +1137,24 @@ $messages['sr-ec'] = array(
 	'scanset_invalid_volume' => 'Грешка: Лош скуп.',
 	'scanset_next' => 'След. &gt;',
 	'scanset_prev' => '&lt; Прет.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'scanset-desc' => 'Vidi skeniranu stranu slike is CD/DVD skupa Andreasa Groša (Andreas Grosz).',
+	'scanset_no_name' => 'Greška: Moraš odrediti ime skupu skenova, npr. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Greška: Loš ili nedostajući skup skenova.',
+	'scanset_unrecognised_index_format' => 'Greška: Nepoznati oblik indeksa.',
+	'scanset_opendir_error' => 'Greška: Ne mogu otvoriti direktorijum $1.',
+	'scanset_no_files' => 'Greška: Nema fajlova u datom direktorijumu.',
+	'scanset_no_volumes' => 'Greška: Nijedan skup direktorijuma nije nađen.',
+	'scanset_missing_index_file' => 'Greška: Fajl s indeksima $1 nije nađen.',
+	'scanset_index_file_error' => 'Greška: Greška u obliku fajla s indeksima u liniji $1.',
+	'scanset_invalid_volume' => 'Greška: Loš skup.',
+	'scanset_next' => 'Sled. &gt;',
+	'scanset_prev' => '&lt; Pret.',
 );
 
 /** Seeltersk (Seeltersk)

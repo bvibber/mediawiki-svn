@@ -1301,14 +1301,6 @@ class AbuseFilterParser {
 
 		if( $args[0]->type == AFPData::DList && count( $args ) == 1 ) {
 			return new AFPData( AFPData::DInt, count( $args[0]->data ) );
-		} elseif( count( $args ) > 1 && $args[1]->type == AFPData::DList ) {
-			$needle = $args[0];
-			$haystack = $args[1]->toList();
-			$count = 0;
-			foreach( $haystack as $item )
-				if( AFPData::equals( $needle, $item ))
-					$count++;
-			return new AFPData( AFPData::DInt, $count );
 		}
 
 		$offset = -1;
@@ -1381,6 +1373,7 @@ class AbuseFilterParser {
 						array( 'ccnorm', 1, count($args) ) );
 		$s = $args[0]->toString();
 		
+		$s = html_entity_decode($s, ENT_QUOTES, 'UTF-8');
 		$s = $this->ccnorm( $s );
 		
 		return new AFPData( AFPData::DString, $s );
@@ -1506,9 +1499,9 @@ class AbuseFilterParser {
 		if ( isset($args[2]) ) {
 			$length = $args[2]->toInt();
 			
-			$result = substr( $s, $offset, $length );
+			$result = mb_substr( $s, $offset, $length );
 		} else {
-			$result = substr( $s, $offset );
+			$result = mb_substr( $s, $offset );
 		}
 		
 		return new AFPData( AFPData::DString, $result );
@@ -1526,9 +1519,9 @@ class AbuseFilterParser {
 		if ( isset($args[2]) ) {
 			$offset = $args[2]->toInt();
 			
-			$result = strpos( $haystack, $needle, $offset );
+			$result = mb_strpos( $haystack, $needle, $offset );
 		} else {
-			$result = strpos( $haystack, $needle );
+			$result = mb_strpos( $haystack, $needle );
 		}
 		
 		if ($result === false)

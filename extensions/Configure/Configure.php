@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.14.5',
+	'version' => '0.14.13',
 );
 
 # Configuration part
@@ -169,6 +169,13 @@ $wgConfigureUpdateCacheEpoch = false;
  */
 $wgConfigureStyleVersion = '21';
 
+/**
+ * Whether to add JS variables to the output
+ * THIS IS *NOT* A CONFIGURATION OPTION AND MUST *NOT* BE CHANGED IN
+ * LocalSetting.php
+ */
+$wgConfigureAddJsVariables = false;
+
 # Adding new rights...
 $wgAvailableRights[] = 'configure';
 $wgAvailableRights[] = 'configure-all';
@@ -275,3 +282,7 @@ $wgExtensionFunctions[] = 'efConfigureSetupAPI';
 
 # Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';
+
+# JS stuff
+$wgJSAutoloadClasses['Configure'] = 'extensions/Configure/Configure.js';
+$wgHooks['MakeGlobalVariablesScript'][] = 'efConfigureMakeGlobalVariablesScript';

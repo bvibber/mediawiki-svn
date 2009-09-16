@@ -38,6 +38,11 @@ $aliases['ia'] = array(
 	'CommunityVoice' => array( 'Voce del communitate' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'CommunityVoice' => array( 'Suara komunitas', 'SuaraKomunitas' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CommunityVoice' => array( 'コミュニティー・ボイス', 'コミュニティの声' ),
@@ -46,6 +51,16 @@ $aliases['ja'] = array(
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CommunityVoice' => array( 'Metmaacherstemme' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'CommunityVoice' => array( 'Stëmm vun der Gemeinschaft' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'CommunityVoice' => array( 'സമൂഹശബ്ദം' ),
 );
 
 /** Maltese (Malti) */
@@ -61,6 +76,11 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CommunityVoice' => array( 'Gemeenschapsstem' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CommunityVoice' => array( 'HlasKomunity' ),
 );
 
 /** Tagalog (Tagalog) */

@@ -38,9 +38,6 @@ You can try it out again at anytime by clicking the "{{int:optin-try}}" link on 
 	'optin-deny-long' => 'Return to previous page',
 	'optin-submit-out' => 'Leave Beta',
 	'optin-submit-feedback' => 'Give feedback',
-	'optin-try' => 'Try Beta',
-	'optin-leave' => 'Leave Beta',
-	'optin-feedback' => 'Beta feedback',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => "Thank you for trying the Beta.
@@ -73,6 +70,8 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-browser-cb' => 'Google Chrome Beta',
 	'optin-survey-answer-browser-c1' => 'Google Chrome 1',
 	'optin-survey-answer-browser-c2' => 'Google Chrome 2',
+	'optin-survey-answer-browser-c3' => 'Google Chrome 3',
+	'optin-survey-answer-browser-c4' => 'Google Chrome 4',
 	'optin-survey-answer-browser-s3' => 'Safari 3',
 	'optin-survey-answer-browser-s4' => 'Safari 4',
 	'optin-survey-answer-browser-o9' => 'Opera 9',
@@ -131,8 +130,6 @@ $messages['qqq'] = array(
 	'optin-deny-long' => 'Bottom half of caption for No button on opt-in form for logged-in users',
 	'optin-submit-out' => 'Caption for submit button on opt-out/survey form',
 	'optin-submit-feedback' => 'Caption of the submit button on the Usability Initiative Beta feedback form.',
-	'optin-try' => 'Caption for the link left of the user tools with which people can opt in',
-	'optin-leave' => 'Caption for the link left of the user tools with which people can opt out',
 	'optin-survey-yes' => '{{Identical|Yes}}',
 	'optin-survey-no' => '{{Identical|No}}',
 	'optin-survey-intro' => 'Do not translate #leave',
@@ -155,13 +152,11 @@ $messages['af'] = array(
 	'optin-needlogin' => 'U moet [$1 aanteken] voordat u Beta kan gebruik.',
 	'optin-success-feedback' => 'Baie dankie vir u terugvoer!',
 	'optin-accept-short' => 'Inskakeling',
+	'optin-accept-long-anon' => 'Teken in en probeer Beta',
 	'optin-deny-short' => 'Nee dankie',
 	'optin-deny-long' => 'Terug na die vorige bladsy',
 	'optin-submit-out' => 'Verlaat Beta',
 	'optin-submit-feedback' => 'Gee terugvoer',
-	'optin-try' => 'Probeer Beta',
-	'optin-leave' => 'Verlaat Beta',
-	'optin-feedback' => 'Beta terugvoer',
 	'optin-survey-yes' => 'Ja',
 	'optin-survey-no' => 'Nee',
 	'optin-survey-answer-whyoptout-other' => 'Ander rede:',
@@ -204,9 +199,6 @@ $messages['ar'] = array(
 	'optin-deny-long' => 'ارجع إلى الصفحة السابقة',
 	'optin-submit-out' => 'غادر البيتا',
 	'optin-submit-feedback' => 'أعطِ ملاحظاتك',
-	'optin-try' => 'جرّب البيتا',
-	'optin-leave' => 'غادر البيتا',
-	'optin-feedback' => 'ملاحظات البيتا',
 	'optin-survey-yes' => 'نعم',
 	'optin-survey-no' => 'لا',
 	'optin-survey-intro' => 'شكرًا لتجريب البيتا.
@@ -228,7 +220,7 @@ $messages['ar'] = array(
 	'optin-survey-question-usedtoolbar-ifno' => 'إذا كانت الإجابة بلا، فلم لم تستخدمه؟ أستسخدمه في المستقبل؟ من فضلك وضّح الإجابة.',
 	'optin-survey-question-different' => 'ماذا كان بإمكاننا فعله لكي تستمر في استخدام البيتا؟',
 	'optin-survey-question-feedback' => 'من فضلك أطلعنا على أي ملاحظات أو مخاوف أو آراء أخرى عن المشروع - كل ملاحظة مفيدة!:',
-	'optin-survey-question-browser' => 'ما هو المتصفح الذي تستخدمه؟',
+	'optin-survey-question-browser' => 'ما المتصفح الذي تستخدمه؟',
 	'optin-survey-answer-browser-other' => 'متصفح آخر:',
 	'optin-survey-question-os' => 'ما نظام التشغيل الذي تستخدمه؟',
 	'optin-survey-answer-os-other' => 'نظام تشغيل آخر:',
@@ -275,9 +267,6 @@ $messages['arc'] = array(
 	'optin-deny-long' => 'ܦܢܝ ܠܦܐܬܐ ܩܕܝܡܬܐ',
 	'optin-submit-out' => 'ܫܒܘܩ ܒܝܛܐ',
 	'optin-submit-feedback' => 'ܗܒ ܡܚܫܚܬ̈ܐ ܘܡܥܝܪ̈ܢܘܬܐ',
-	'optin-try' => 'ܢܣܝ ܒܝܛܐ',
-	'optin-leave' => 'ܫܒܘܩ ܒܝܛܐ',
-	'optin-feedback' => 'ܡܚܫܚܬ̈ܐ ܘܡܥܝܪ̈ܢܘܬܐ ܥܠ ܒܝܛܐ',
 	'optin-survey-yes' => 'ܐܝܢ',
 	'optin-survey-no' => 'ܠܐ',
 	'optin-survey-answer-whyoptout-other' => 'ܥܠܬܐ ܐܚܪܬܐ:',
@@ -301,9 +290,10 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'optin' => 'Удзел у Ініцыятыве па паляпшэньню зручнасьці і прастаты выкарыстаньня',
+	'optin' => 'Удзел у ініцыятыве па паляпшэньні зручнасьці і прастаты выкарыстаньня',
 	'optin-desc' => 'Дазваляе ўдзельнікам паспрабаваць Beta, апошняе паляпшэньне, зробленае ў рамках ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня',
 	'optin-title-optedout' => 'Паспрабаваць Beta',
 	'optin-title-optedin' => 'Пакінуць Beta',
@@ -311,7 +301,7 @@ $messages['be-tarask'] = array(
 	'optin-title-justoptedout' => 'Дзякуй за спробу выкарыстаньня Beta',
 	'optin-title-feedback' => 'Зваротная сувязь',
 	'optin-needlogin' => 'Вам неабходна [$1 увайсьці ў сыстэму] каб далучыцца да Beta',
-	'optin-intro' => 'У рамках ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня Вікіпэдыі была праведзеная буйная праца па паляпшэньню зручнасьці і прастаты выкарыстаньня Вікіпэдыі. Вы жадаеце паспрабаваць Beta?',
+	'optin-intro' => 'У рамках ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня Вікіпэдыі была праведзеная буйная праца па паляпшэньні зручнасьці і прастаты выкарыстаньня Вікіпэдыі. Вы жадаеце паспрабаваць Beta?',
 	'optin-feedback-intro' => 'Дзякуй за выкарыстаньне Beta.
 Нам цікава ведаць, што Вы мяркуеце пра наш новы інтэрфэйс, таму мы былі б удзячныя, калі Вы запоўнілі неабавязковае апытаньне ўнізе.',
 	'optin-feedback-back' => 'Калі Вы не жадаеце запаўняць апытаньне, Вы можаце вярнуцца да $1.',
@@ -328,9 +318,6 @@ $messages['be-tarask'] = array(
 	'optin-deny-long' => 'вярнуцца да папярэдняй старонкі',
 	'optin-submit-out' => 'Пакінуць Beta',
 	'optin-submit-feedback' => 'Даслаць',
-	'optin-try' => 'Паспрабаваць Beta',
-	'optin-leave' => 'Пакінуць Beta',
-	'optin-feedback' => 'Зваротная сувязь',
 	'optin-survey-yes' => 'Так',
 	'optin-survey-no' => 'Не',
 	'optin-survey-intro' => 'Дзякуй за выпрабаваньне Beta.
@@ -387,12 +374,15 @@ $messages['be-tarask'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'optin-desc' => 'ব্যবহারকারীদের বেটা ব্যবহারের সুযোগ দিন, ইউজাবিলিটি ইনিসিয়াটিভ হল সাম্প্রতিকতম ব্যবহারযোগ্যতা বৃদ্ধি।',
 	'optin-title-optedout' => 'বেটা চেষ্টা করুন',
 	'optin-title-optedin' => 'বেটা ছেড়ে যান',
 	'optin-title-justoptedin' => 'বেটায় স্বাগতম',
 	'optin-title-justoptedout' => 'বেটা চেষ্টা করার জন্য আপনাকে ধন্যবাদ',
 	'optin-title-feedback' => 'বেটা ফিডব্যাক',
 	'optin-needlogin' => 'বেটা চেষ্টা করার জন্য আপনাকে [$1 লগইন] করতে হবে।',
+	'optin-intro' => 'উইকিপিডিয়ার ব্যবহারযোগ্যতার উন্নয়ন করার জন্য উইকিপিডিয়া ইউজাবিলিটি ইনিসিয়েটিভ কঠর পরিশ্রম করে যাচ্ছে।
+আপনি বেটা ব্যবহার করতে চান?',
 	'optin-success-feedback' => 'আপনার ফিডব্যাকের জন্য ধন্যবাদ!',
 	'optin-accept-short' => 'চলুন শুরু করি!',
 	'optin-accept-long' => 'বেটা চেষ্টা করুন',
@@ -401,11 +391,10 @@ $messages['bn'] = array(
 	'optin-deny-long' => 'পূর্বের পাতায় ফিরে যাও',
 	'optin-submit-out' => 'বেটা ছেড়ে যাও',
 	'optin-submit-feedback' => 'ফিডব্যাক দিন',
-	'optin-try' => 'বেটা চেষ্টা করুন',
-	'optin-leave' => 'বেটা ছেড়ে যাও',
-	'optin-feedback' => 'বেটা ফিডব্যাক',
 	'optin-survey-yes' => 'হ্যা',
 	'optin-survey-no' => 'না',
+	'optin-survey-question-likedislike' => 'বেটায় আপনার কি পছন্দ হয়েছে? বেটায় আপনার কি পছন্দ হয় নাই?',
+	'optin-survey-question-whyoptout' => 'আপনি বেটা কেন ছেড়ে যাচ্ছেন? (অনুগ্রহ করে যেগুলো প্রযোজ্য প্রয়োগ করুন)',
 	'optin-survey-answer-whyoptout-hard' => 'এতে কাজ করা কঠিন।',
 	'optin-survey-answer-whyoptout-didntwork' => 'এটি ঠিক মত কাজ করে না।',
 	'optin-survey-answer-whyoptout-notpredictable' => 'এটি আন্দাজ মত কাজ করে না।',
@@ -413,10 +402,21 @@ $messages['bn'] = array(
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'নতুন ট্যাব এবং বিন্যাস আমার পছন্দ হয়নি।',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'নতুন টুলবার আমার পছন্দ হয়নি।',
 	'optin-survey-answer-whyoptout-other' => 'অন্য কারণ:',
+	'optin-survey-question-explain' => 'উপরে দেওয়া আপনার উত্তর অনুগ্রহ করে বিস্তারিত এবং বুঝিয়ে বলুন:',
+	'optin-survey-question-techfail' => 'বেটা ব্যবহারের সময় আপনি কি কোন কারগরি দূর্বলতা লক্ষ্য করেছেন?',
+	'optin-survey-question-techfail-ifyes' => 'হ্যা হলে, অনুগ্রহ করে বিস্তারিত লিখুন:',
+	'optin-survey-question-usedtoolbar' => 'আপনি কি পাতা সম্পাদনার জন্য নতুন সম্প্রসারণযোগ্য টুলবার ব্যবহার করেছেন?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'হ্যা হলে, এটা সম্পর্কে কি পছন্দ হয়েছে? এটা সম্পর্কে কি পছন্দ হয় নাই?',
+	'optin-survey-question-usedtoolbar-ifno' => 'না হলে, কেন ব্যবহার করেন নি? ভবিষ্যতে ব্যবহার করবেন? অনুগ্রহ করে বিস্তারিত লিখুন।',
+	'optin-survey-question-different' => 'বেটা ব্যবহার করতে আমরা আরও অন্য কি করতে পারি?',
 	'optin-survey-question-browser' => 'আপনি কোন ব্রাউজার ব্যবহার করেন?',
 	'optin-survey-answer-browser-other' => 'অন্য ব্রাউজার:',
+	'optin-survey-question-os' => 'আপনি কোন অপারেটিং সিস্টেম ব্যবহার করেন?',
 	'optin-survey-answer-os-other' => 'অন্য অপারেটিং সিস্টেম:',
 	'optin-survey-question-res' => 'আপনার পর্দার রেজ্যুলেশন কত?',
+	'optin-survey-answer-changes-edittools' => 'সম্পাদনা টুল বৃদ্ধি এবং সমৃদ্ধ করা।',
+	'optin-survey-answer-changes-upload' => 'কন্টেন্ট এবং মিডিয়া আপলোড ব্যবস্থার উন্নয়ন।',
+	'optin-survey-answer-changes-lookfeel' => 'সাইটের "লুক এন্ড ফিল" হালনাগাদ করুন।',
 	'optin-survey-answer-changes-other' => 'অন্য:',
 );
 
@@ -424,30 +424,27 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'optin-title-optedout' => 'Esaeañ Beta',
+	'optin-title-optedout' => 'Amprouiñ Beta',
 	'optin-title-optedin' => 'Dilezel Beta',
 	'optin-title-justoptedin' => 'Degemer mat war Beta',
-	'optin-title-justoptedout' => "Trugarez deoc'h evit esaeañ ar Beta",
+	'optin-title-justoptedout' => "Trugarez deoc'h da amprouiñ ar Beta",
 	'optin-title-feedback' => 'Roit ho soñj war ar Beta',
 	'optin-needlogin' => "Ret eo deoc'h bezañ [$1 luget] evit ober gant Beta.",
-	'optin-feedback-intro' => "Trugarez deoc'h da esaeañ Beta.
-Ni a garfe gouzout petra a soñjit diwar-benn an etredas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
-	'optin-success-in' => "Emaoc'h oc'h esaeañ Beta.
+	'optin-feedback-intro' => "Trugarez deoc'h da amprouiñ Beta.
+Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
+	'optin-success-in' => "Emaoc'h oc'h amprouiñ Beta.
 Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
-	'optin-accept-long' => 'Esaeañ Beta',
+	'optin-accept-long' => 'Amprouiñ Beta',
 	'optin-accept-long-anon' => 'Emlugit ha grit un taol-esae gant Beta',
 	'optin-deny-short' => 'Ket, trugarez',
 	'optin-deny-long' => "Distreiñ d'ar bajenn gent",
 	'optin-submit-out' => 'Dilezel Beta',
 	'optin-submit-feedback' => 'Roit ho soñj',
-	'optin-try' => 'Esaeañ Beta',
-	'optin-leave' => 'Dilezel Beta',
-	'optin-feedback' => 'Roit ho soñj',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Ket',
-	'optin-survey-intro' => 'Trugarez da esaeañ ar Beta.
+	'optin-survey-intro' => 'Trugarez da amprouiñ ar Beta.
 Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma respontfec\'h d\'ar goulennoù dindan a-raok klikañ war "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => "Petra zo plijet deoc'h er Beta ? Petra n'eus displijet deoc'h ?",
 	'optin-survey-question-whyoptout' => "Perak e fell deoc'h dilezel ar Beta ? (dibabit kement tra a glot gant ho soñj)",
@@ -456,7 +453,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-whyoptout-notpredictable' => "Ne'z ae ket en-dro en un doare poellek.",
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Ne blije ket din an tres anezhañ.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne blije ket din ar varrenn ostilhoù nevez.',
-	'optin-survey-answer-whyoptout-other' => 'Abeg all',
+	'optin-survey-answer-whyoptout-other' => 'Abeg all :',
 	'optin-survey-question-browser' => 'Peseurt merdeer a rit gantañ ?',
 	'optin-survey-answer-browser-other' => 'Merdeer all :',
 	'optin-survey-question-os' => 'Peseurt reizhiad korvoiñ a rit gantañ ?',
@@ -493,9 +490,6 @@ Možete se bilo kada ponovno prijaviti putem klika na link "{{int:optin-try}}" u
 	'optin-deny-long' => 'nazad na prethodnu stranicu',
 	'optin-submit-out' => 'Napusti Beta',
 	'optin-submit-feedback' => 'Pošalji povratnu informaciju',
-	'optin-try' => 'Isprobajte Beta',
-	'optin-leave' => 'Napusti Beta',
-	'optin-feedback' => 'Pošaljite povratne informacije',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Ne',
 	'optin-survey-intro' => 'Hvala Vam za isprobavanje Beta.
@@ -509,7 +503,7 @@ Možete se bilo kada ponovno prijaviti putem klika na link "{{int:optin-try}}" u
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Nije mi se svidjelo kako izgleda.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ne sviđaju mi se novi jezičci i dizajn.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne sviđa mi se nova alatna traka.',
-	'optin-survey-answer-whyoptout-other' => 'Ostali preglednici:',
+	'optin-survey-answer-whyoptout-other' => 'Ostali razlozi:',
 	'optin-survey-question-explain' => 'Molimo objasnite Vaš odgovor odozgo:',
 	'optin-survey-question-techfail' => 'Da li ste primijetili neke tehničke pogreške dok ste koristili Beta?',
 	'optin-survey-question-techfail-ifyes' => 'Ako da, molimo objasnite:',
@@ -535,19 +529,22 @@ Možete se bilo kada ponovno prijaviti putem klika na link "{{int:optin-try}}" u
 	'optin-improvements' => '== Šta je poboljšano? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Poboljšana navigacija
-Jasna naznaka stanja "čitanja" i "uređivanja" kada ste na stranici članka ili stranici za razgovor. Kutija za pretaživanje je uklonjena iz navigacione trake sa lijeve strane u gornji desni ugao zbog lakšeg pristupa i bržeg traženja.
+Novi sistem navigacije čini jednostavnije da se vidi gdje ste i šta radite, kao i gdje idete i kako do tamo stići. Sa kutijom za pretaživanje u gornjem desnom uglu, osobina pretrage je lahka i brza za upotrebu.
 <div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=]]
 ;Poboljšanja trake za uređivanje
-Traka za uređivanje koja se može sakriti može sakriti ikone alata koji se ne upotrebljavaju često. Potvrđeni korisnici mogu proširiti alatnu traku i pristupiti posebnim ikonama.
-Pomoćne informacije (prečice) su ugrađene u alatnu traku.
-Ikone alatne trake su nanovo dizajnirane koristeći ikone Tango i Gnome.
-<div style="clear:both;"></div>',
+Nove i poboljšane ikone prikazuju akcije koje svaki alat izvrši dosta pregledijim. Proširive sekcije smanjuju traku dok čuvaju ne mnogo korištene alate sakrivene, ali dostupne u jednom kliku. Sekcija pomoći omogućuje brzi pristup referencama za zajedničku upotrebu wiki jezika.
+<div style="clear:both;"></div>
+== Kako se uključiti ==
+Da biste naučili više o projektu, posjetite [http://usability.wikimedia.org wiki Inicijative upotrebljivosti]. Tamo ćete naći informacije o našem istraživanju, dizajnu, razvoju i izdanjima. Da biste pitali ili ostavili opći fidbek, molimo koristite našu [http://usability.wikimedia.org/wiki/Talk:Prototype probnu stranicu za razgovor]. Da biste komentirali određenu temu, molimo koristite povezanu stranicu za razgovor. Ako nađete grešku, molimo ostavite komentar na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai stranici za razgovor izdanja] ili putem [https://bugzilla.wikimedia.org Bugzille].
+
+Hvala i nadamo se da ćete nam se javiti!',
 );
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'optin' => 'Iniciativa de millora de la Usabilitat',
@@ -563,11 +560,11 @@ Voleu provar Beta?",
 	'optin-feedback-intro' => "Gràcies per provar Beta.
 Volem saber que n'opinau de la nova interfície, per això us agrairíem que responguéssiu l'enquesta voluntària que teniu a continuació.",
 	'optin-feedback-back' => "Si no voleu respondre l'enquesta, podeu tornar a $1.",
-	'optin-success-in' => 'Ara estau provant Beta.
-Podeu sortir en qualsevol moment clicant sobre l\'enllaç "{{int:optin-leave}}" que teniu al cantó superior dret.',
+	'optin-success-in' => "Ara estau provant Beta.
+Podeu sortir en qualsevol moment clicant sobre l'enllaç «{{int:optin-leave}}» que teniu al cantó superior dret.",
 	'optin-leave-cancel' => 'Si voleu continuar usant Beta, podeu tornar a $1.',
-	'optin-success-out' => 'Heu sortit de Beta.
-Podeu provar-la una altra vegada en qualsevol moment clicant sobre l\'enllaç "{{int:optin-try}}" que teniu al cantó superior dret de la pantalla.',
+	'optin-success-out' => "Heu sortit de Beta.
+Podeu provar-la una altra vegada en qualsevol moment clicant sobre l'enllaç «{{int:optin-try}}» que teniu al cantó superior dret de la pantalla.",
 	'optin-success-feedback' => 'Gràcies per la vostra opinió!',
 	'optin-accept-short' => 'Fem-ho!',
 	'optin-accept-long' => 'Provau Beta',
@@ -576,13 +573,10 @@ Podeu provar-la una altra vegada en qualsevol moment clicant sobre l\'enllaç "{
 	'optin-deny-long' => 'Torna a la pàgina anterior',
 	'optin-submit-out' => 'Surt de Beta',
 	'optin-submit-feedback' => 'Donau la vostra opinió',
-	'optin-try' => 'Provau Beta',
-	'optin-leave' => 'Sortiu de Beta',
-	'optin-feedback' => 'Doneu la vostra opinió',
 	'optin-survey-yes' => 'Sí',
 	'optin-survey-no' => 'No',
-	'optin-survey-intro' => 'Gràcies per provar Beta.
-Volem saber què n\'opinau de la nova interfície, així que us agrairíem que responguéssiu l\'enquesta voluntària que teniu a continuació abans de clicar "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-intro' => "Gràcies per provar Beta.
+Volem saber què n'opinau de la nova interfície, així que us agrairíem que responguéssiu l'enquesta voluntària que teniu a continuació abans de clicar «[[#leave|{{int:optin-submit-out}}]]».",
 	'optin-survey-question-likedislike' => 'Què us ha agradat de Beta? Què no us ha agradat de Beta?',
 	'optin-survey-question-whyoptout' => 'Perquè deixau Beta? (Seleccionau totes les opcions escaients)',
 	'optin-survey-answer-whyoptout-hard' => "Ha estat massa difícil d'usar.",
@@ -684,9 +678,6 @@ Kdykoli ji budete moci znovu vyzkoušet kliknutím na odkaz „{{int:optin-try}}
 	'optin-deny-long' => 'Vrátit se na předchozí stránku',
 	'optin-submit-out' => 'Opustit Betu',
 	'optin-submit-feedback' => 'Odeslat názor',
-	'optin-try' => 'Vyzkoušet Betu',
-	'optin-leave' => 'Opustit Betu',
-	'optin-feedback' => 'Připomínky k Betě',
 	'optin-survey-yes' => 'Ano',
 	'optin-survey-no' => 'Ne',
 	'optin-survey-intro' => 'Děkujeme, že zkoušíte Betu.
@@ -769,9 +760,6 @@ Du kan til hver en tid prøve det igen ved at klikke på "{{int:optin-try}}"-hen
 	'optin-deny-long' => 'Gå tilbage til den forrige side',
 	'optin-submit-out' => 'Forlad Beta',
 	'optin-submit-feedback' => 'Giv en tilbagemelding',
-	'optin-try' => 'Prøv Beta',
-	'optin-leave' => 'Forlad Beta',
-	'optin-feedback' => 'Tilbagemelding om Beta',
 	'optin-survey-yes' => 'Ja',
 	'optin-survey-no' => 'Nej',
 	'optin-survey-intro' => 'Tak for at du har prøvet Beta.
@@ -860,9 +848,6 @@ Du kannst es jederzeit wieder ausprobieren, indem du den Link „{{int:optin-try
 	'optin-deny-long' => 'Zurück zur letzten Seite',
 	'optin-submit-out' => 'Beta verlassen',
 	'optin-submit-feedback' => 'Feedback geben',
-	'optin-try' => 'Beta ausprobieren',
-	'optin-leave' => 'Beta verlassen',
-	'optin-feedback' => 'Feedback geben',
 	'optin-survey-yes' => 'Ja',
 	'optin-survey-no' => 'Nein',
 	'optin-survey-intro' => 'Danke, dass du Beta ausprobierst.
@@ -980,9 +965,6 @@ Móžoš ju hyšći raz kuždy cas pśez kliknjenje na wótkaz "{{int:optin-try}
 	'optin-deny-long' => 'Slědk k slědnemu bokoju',
 	'optin-submit-out' => 'Betu spušćiś',
 	'optin-submit-feedback' => 'Powěsć daś',
-	'optin-try' => 'Betu wopytaś',
-	'optin-leave' => 'Betu spušćiś',
-	'optin-feedback' => 'Powěsći wó Beśe',
 	'optin-survey-yes' => 'Jo',
 	'optin-survey-no' => 'Ně',
 	'optin-survey-intro' => 'Źěkujomy se za wopytanje Bety.
@@ -992,7 +974,7 @@ My by rady wěźeli, co mysliš wó našem nowem wužywarskem pówjerchu, togodl
 	'optin-survey-answer-whyoptout-hard' => 'Wužywanje jo było pśekomplicěrowane.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Njejo pórědnje funkcioněrowało.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Njefunkcioněrujo na pśedwiźony nałog.',
-	'optin-survey-answer-whyoptout-didntlike-look' => 'Naglěd se mě njespádoba.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Naglěd se mě njespódoba.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Nowe rejtarki a layout se mi njespódobaju.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nowa rědowa kšoma se mi njespódoba.',
 	'optin-survey-answer-whyoptout-other' => 'Druga pśicyna:',
@@ -1048,7 +1030,7 @@ $messages['el'] = array(
 	'optin-title-optedin' => 'Εγκαταλείψτε την Beta',
 	'optin-title-justoptedin' => 'Καλωσήρθατε στην Beta',
 	'optin-title-justoptedout' => 'Σας ευχαριστούμε που δοκιμάσατε την Beta μας',
-	'optin-title-feedback' => 'Ανατροφοδότηση beta',
+	'optin-title-feedback' => 'Ανατροφοδότηση Beta',
 	'optin-needlogin' => 'Πρέπει να [$1 συνδεθείς] για να δοκιμάσεις την Beta',
 	'optin-intro' => 'Η Πρωτοβουλία Χρηστικότητας της Wikipedia έχει δουλέψει σκληρά για τη βελτίωση της χρηστικότητας της Wikipedia. 
 Θα θέλατε να δοκιμάσετε τη Beta;',
@@ -1068,9 +1050,6 @@ $messages['el'] = array(
 	'optin-deny-long' => 'Επιστροφή στην προηγούμενη σελίδα',
 	'optin-submit-out' => 'Εγκαταλείψτε την Beta',
 	'optin-submit-feedback' => 'Δώστε ανατροφοδότηση',
-	'optin-try' => 'Δοκιμάστε την Beta',
-	'optin-leave' => 'Εγκαταλείψτε την Beta',
-	'optin-feedback' => 'Ανατροφοδότηση beta',
 	'optin-survey-yes' => 'Ναι',
 	'optin-survey-no' => 'Όχι',
 	'optin-survey-intro' => 'Ευχαριστούμε για την δοκιμή της Beta.
@@ -1170,9 +1149,6 @@ Vi povas reprovi ĝin iam ajn klakante la ligilon "{{int:optin-try}}" suprer dek
 	'optin-deny-long' => 'Reiri al antaŭa paĝo',
 	'optin-submit-out' => 'Forlasi Beta-version',
 	'optin-submit-feedback' => 'Komenti',
-	'optin-try' => 'Provi Beta-version',
-	'optin-leave' => 'Forlasi Beta-version',
-	'optin-feedback' => 'Opinioj pri Beta-versio',
 	'optin-survey-yes' => 'Jes',
 	'optin-survey-no' => 'Ne',
 	'optin-survey-intro' => 'Dankon pro via provado de la Beta-versio.
@@ -1227,6 +1203,8 @@ Dankegon, kaj ni antaŭĝojas viajn komentojn!',
 );
 
 /** Spanish (Español)
+ * @author Antur
+ * @author Barcex
  * @author Crazymadlover
  * @author Imre
  * @author Locos epraix
@@ -1234,26 +1212,31 @@ Dankegon, kaj ni antaŭĝojas viajn komentojn!',
  */
 $messages['es'] = array(
 	'optin' => 'Formar parte de la Iniciativa de usabilidad',
-	'optin-desc' => 'Permite a los usuarios probar Beta, los últimos mejoramientos de usabilidad de la iniciativa de Usabilidad.',
+	'optin-desc' => 'Permite a los usuarios probar Beta, las últimas mejoras de usabilidad de la Iniciativa de Usabilidad.',
 	'optin-title-optedout' => 'Probar Beta',
 	'optin-title-optedin' => 'Abandonar Beta',
 	'optin-title-justoptedin' => 'Bienvenido a Beta',
 	'optin-title-justoptedout' => 'Gracias por probar Beta',
+	'optin-title-feedback' => 'Retroalimentación beta',
 	'optin-needlogin' => 'Necesitas [$1 iniciar sesión] para probar Beta',
 	'optin-intro' => 'La Iniciativa de usabilidad de Wikipedia ha estado trabajando duro para mejorar la usabilidad de Wikipedia.
-Te gustaría probar Beta?',
+¿Te gustaría probar nuestra versión Beta?',
+	'optin-feedback-intro' => 'Gracias por probar Beta.
+Deseamos saber qué piensa de nuestra interfaz, por lo que le agradeceremos completar la encuesta opcional que se muestra a continuación.',
+	'optin-feedback-back' => 'Si no desea llenar la encuesta, puede volver a $1.',
 	'optin-success-in' => 'Estás probando ahora Beta.
 Puedes volver a dejar de formar parte en cualquier momento haciendo click en el vínculo "{{int:optin-leave}}" en la parte superior derecha de la pantalla.',
 	'optin-leave-cancel' => 'Si te gustaría continuar usando Beta, puedes regresar a $1',
 	'optin-success-out' => 'Has abandonado exitosamente Beta.
 Puedes probarlo nuevamente en cualquier momento haciendo click en el vínculo "{{int:optin-try}}" en la parte superior derecha de la pantalla.',
-	'optin-accept-short' => 'Hagámoslo!',
+	'optin-success-feedback' => '¡Gracias por sus comentarios!',
+	'optin-accept-short' => '¡Hagámoslo!',
 	'optin-accept-long' => 'Probar Beta',
-	'optin-deny-short' => 'No gracias',
+	'optin-accept-long-anon' => 'Regístrese y pruebe Beta',
+	'optin-deny-short' => 'No, gracias',
 	'optin-deny-long' => 'regresar a la página anterior',
 	'optin-submit-out' => 'Abandonar Beta',
-	'optin-try' => 'Probar Beta',
-	'optin-leave' => 'Abandonar Beta',
+	'optin-submit-feedback' => 'Haga sus observaciones',
 	'optin-survey-yes' => 'Sí',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => 'Gracias por probar Beta.
@@ -1272,13 +1255,22 @@ Nos gustaría conocer que opinas acerca de la nueva interfaz, apreciaríamos si 
 	'optin-survey-question-techfail-ifyes' => 'Si es sí, por favor desarrolla o explica:',
 	'optin-survey-question-usedtoolbar' => 'Usaste la nueva barra de herramientas expandible para editar una página?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Si es sí, qué te gustó de él? qué te disgustó de él?',
+	'optin-survey-question-usedtoolbar-ifno' => 'En caso negativo, ¿por qué?...  ¿Lo haría en el futuro? Por favor, explíquelo.',
 	'optin-survey-question-different' => 'Qué podríamos haber hecho diferente para que te mantuvieses usando nuestra Beta?',
 	'optin-survey-question-feedback' => 'Por favor déjanos saber acercar de algunos otros comentarios, inquietudes u opiniones que tengas para nosotros - toda retroalimentación es útil!:',
-	'optin-survey-question-browser' => 'Cuál navegador usas?',
+	'optin-survey-question-browser' => '¿Qué navegador utiliza?',
 	'optin-survey-answer-browser-other' => 'Otro navegador:',
-	'optin-survey-question-os' => 'Cuál sistema operativo usas?',
+	'optin-survey-question-os' => '¿Qué sistema operativo utiliza?',
 	'optin-survey-answer-os-other' => 'Otro sistema operativo:',
-	'optin-survey-question-res' => 'Cuál es la resolución de tu pantalla?',
+	'optin-survey-question-res' => '¿Cuál es la resolución de su pantalla?',
+	'optin-survey-question-changes' => '¿Qué cambios desearía ver en Beta en el futuro? (por favor seleccione todo lo que coincida)',
+	'optin-survey-answer-changes-nav' => 'Hace la navegación general del sitio mas fácil de usar.',
+	'optin-survey-answer-changes-edittools' => 'Aumenta y mejora las herramientas de edición.',
+	'optin-survey-answer-changes-upload' => 'Mejorar contenido y cargas de medios.',
+	'optin-survey-answer-changes-richtext' => 'Herramientas de edición similares a los editores de texto enriquecido.',
+	'optin-survey-answer-changes-lookfeel' => 'Actualiza la interfaz del sitio.',
+	'optin-survey-answer-changes-predictability' => 'Mejorar predictibilidad de desempeño',
+	'optin-survey-answer-changes-custom' => 'Permite una gran personalización del usuario.',
 	'optin-survey-answer-changes-other' => 'Otro:',
 	'optin-improvements' => '== Qué ha sido mejorado? ==
 [[File:UsabilityNavigation.png|left|link=]]
@@ -1287,10 +1279,14 @@ El nuevo sistema de navegación hace más fácil ver en donde estás y qué est�
 <div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=]]
-;Mejoramientos de la barra de herramientas de edición
-Nuevos-y-mejorados iconos hacen más claro qué acción realiza cada herramienta. Secciones expansibles reducen el amontonamiento mientras mantienen herramientas usadas infrecuentemente solo a un clic de distancia.
+;Mejoras de la barra de herramientas de edición
+Nuevos-y-mejores íconos clarifican la acción de cada herramienta. Secciones expandibles reducen la saturación y mantienen herramientas poco usadas a solo un clic de distancia.
 La sección de ayuda provee acceso rápido a una referencia para usos comunes del lenguaje wiki.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+== Cómo involucrarse ==
+Para aprender más acerca del proyecto o involucrarse, por favor visita la [http://usability.wikimedia.org Iniciativa de usabilidad de wiki].  Allí encontrarás información acerca de nuestra subvención, investigación, diseño + desarrollo, y versiones.  Para preguntar o dejar retroalimentación general, por favor utiliza nuestra [http://usability.wikimedia.org/wiki/Talk:Prototype página de discusión prototipo].  Para plantear temas particulares, por favor usa las páginas de discusión específicas.  Si encuentras errores, por favor deja tus comentarios en la [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discusión versión Acai] o usando [https://bugzilla.wikimedia.org Bugzilla].
+
+Gracias, y esperamos saber pronto de tí!',
 );
 
 /** Estonian (Eesti)
@@ -1316,9 +1312,6 @@ $messages['et'] = array(
 	'optin-deny-long' => 'Naase eelmisele lehele',
 	'optin-submit-out' => 'Lahku Beta-versioonist',
 	'optin-submit-feedback' => 'Anna tagasisidet',
-	'optin-try' => 'Proovi beetat',
-	'optin-leave' => 'Lahku beetast',
-	'optin-feedback' => 'Beeta tagasiside',
 	'optin-survey-yes' => 'Jah',
 	'optin-survey-no' => 'Ei',
 	'optin-survey-question-likedislike' => 'Mis meeldis beetas? Mis ei meeldinud beetas?',
@@ -1340,8 +1333,11 @@ $messages['et'] = array(
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'optin' => 'Erabilgarritasun Iniziatibarekin bat egin',
+	'optin-desc' => 'Erabiltzaileen Beta frogatzea baimentzen die, Erabilgarritasun Iniziatibaren azkeneko erabilgarritasun hobekuntzekin.',
 	'optin-title-optedout' => 'Beta probatu',
 	'optin-title-optedin' => 'Beta utzi',
 	'optin-title-justoptedin' => 'Ongi etorri Betara',
@@ -1350,6 +1346,8 @@ $messages['eu'] = array(
 	'optin-needlogin' => '[$1 saioa hasi] behar duzu Beta probatzeko.',
 	'optin-intro' => 'Wikipediaren Erabilgarritasun Iniziatiba lanean aritu da Wikipediaren erabilgarritasuna hobetzeko.
 Nahiko al zenuke gure Beta probatu?',
+	'optin-feedback-intro' => 'Eskerrik asko Beta erabili izanagatik.
+Jakin nahi dugu ea zer deritzozun interfaze berriaren inguruan, beraz asko gustatuko litzaiguke behean duzun hautazko inkesta beteko bazenu.',
 	'optin-feedback-back' => 'Ez baduzu gure inkesta bete nahi, $1-(e)ra itzul zenezake.',
 	'optin-success-out' => 'Betarik arrakastatsuko atera zara.
 Nahi duzunean proba dezakezu berriro "{{int:optin-try}}" loturan klik eginda pantailaren goian eskuinaldean.',
@@ -1361,9 +1359,6 @@ Nahi duzunean proba dezakezu berriro "{{int:optin-try}}" loturan klik eginda pan
 	'optin-deny-long' => 'Itzuli aurreko orrialdera',
 	'optin-submit-out' => 'Beta utzi',
 	'optin-submit-feedback' => 'Eman feedbacka',
-	'optin-try' => 'Beta probatu',
-	'optin-leave' => 'Beta utzi',
-	'optin-feedback' => 'Beta feedbacka',
 	'optin-survey-yes' => 'Bai',
 	'optin-survey-no' => 'Ez',
 	'optin-survey-question-likedislike' => 'Zer gustatu zaizu Betatik? Zer ez zaizu gustatu?',
@@ -1436,9 +1431,6 @@ Voit milloin tahansa kokeilla sitä uudelleen ”{{int:optin-try}}” -painikkee
 	'optin-deny-long' => 'Palaa edelliselle sivulle',
 	'optin-submit-out' => 'Poistu Betasta',
 	'optin-submit-feedback' => 'Anna palautetta',
-	'optin-try' => 'Kokeile Betaa',
-	'optin-leave' => 'Poistu Betasta',
-	'optin-feedback' => 'Anna palautetta',
 	'optin-survey-yes' => 'Kyllä',
 	'optin-survey-no' => 'Ei',
 	'optin-survey-intro' => 'Kiitos Betan kokeilusta.
@@ -1505,32 +1497,29 @@ $messages['fr'] = array(
 	'optin-needlogin' => 'Vous devez vous [$1 connecter] pour essayer la bêta Açai',
 	'optin-intro' => 'L’initiative d’utilisabilité de Wikipédia a travaillé dur pour améliorer l’utilisabilité des projets Wikimédia.
 Voulez-vous essayer la bêta Açai ?',
-	'optin-feedback-intro' => 'Merci d’essayer la Bêta.
+	'optin-feedback-intro' => 'Merci d’essayer la bêta.
 Nous aimerions savoir ce que vous pensez de notre nouvelle interface, nous apprécierions que vous remplissiez le questionnaire ci-dessous.',
 	'optin-feedback-back' => 'Si vous ne voulez pas remplir le questionnaire, vous pouvez revenir à $1.',
-	'optin-success-in' => 'Vous êtes en train de tester la Bêta.
+	'optin-success-in' => 'Vous êtes en train de tester la bêta.
 Vous pouvez interrompre la session à tout moment en cliquant sur le lien « {{int:optin-leave}} » en haut de l’écran.',
 	'optin-leave-cancel' => 'Si vous voulez continuer à utiliser la bêta Acai, vous pouvez revenir à $1',
-	'optin-success-out' => 'Vous avez quitté la Bêta.
+	'optin-success-out' => 'Vous avez quitté la bêta Açai.
 Vous pouvez de nouveau participer à tout moment en cliquant sur le lien « {{int:optin-try}} » en haut à droite de l’écran.',
 	'optin-success-feedback' => 'Merci pour votre avis !',
 	'optin-accept-short' => 'Allons-y !',
 	'optin-accept-long' => 'Essayer la bêta Açai',
-	'optin-accept-long-anon' => 'Connectez-vous et essayez la Bêta',
+	'optin-accept-long-anon' => 'Connectez-vous et essayez la bêta',
 	'optin-deny-short' => 'Non merci',
 	'optin-deny-long' => 'Revenir à la page précédente',
 	'optin-submit-out' => 'Quitter la bêta Açai',
 	'optin-submit-feedback' => 'Donnez votre avis',
-	'optin-try' => 'Essayer la bêta Açai',
-	'optin-leave' => 'Quitter la bêta Açai',
-	'optin-feedback' => 'Donnez votre avis',
 	'optin-survey-yes' => 'Oui',
 	'optin-survey-no' => 'Non',
 	'optin-survey-intro' => 'Merci pour votre essai de la bêta Açai.
 
 Nous aimerions savoir ce que vous pensez de notre nouvelle interface, nous apprécierions que vous remplissiez le sondage optionnel avant de cliquer sur « [[#leave|{{int:optin-submit-out}}]] ».',
-	'optin-survey-question-likedislike' => 'Qu’avez-vous aimé dans la bêta Acai ? Qu’est-ce que vous n’avez pas aimé dans la bêta Acai ?',
-	'optin-survey-question-whyoptout' => 'Pourquoi quittez-vous la Bêta ? (sélectionnez tout ce qui convient)',
+	'optin-survey-question-likedislike' => 'Qu’avez-vous aimé dans la bêta Açai ? Qu’est-ce que vous n’avez pas aimé dans la bêta Açai ?',
+	'optin-survey-question-whyoptout' => 'Pourquoi quittez-vous la bêta Açai ? (sélectionnez tout ce qui convient)',
 	'optin-survey-answer-whyoptout-hard' => 'Il était trop difficile de l’utiliser.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Ça ne fonctionne pas correctement.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Cela ne s’est pas passé comme prévu.',
@@ -1544,14 +1533,14 @@ Nous aimerions savoir ce que vous pensez de notre nouvelle interface, nous appr�
 	'optin-survey-question-usedtoolbar' => 'Avez-vous utilisé la nouvelle barre d’outils déroulable pour modifier une page ?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Si oui, qu’avez vous aimé et que n’avez-vous pas aimé à son propos ?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Si non, pourquoi ? L’utiliserez-vous dans le futur ? Expliquez.',
-	'optin-survey-question-different' => 'Qu’est-ce qui aurait dû être différent pour que vous continuiez à utiliser notre Bêta ?',
+	'optin-survey-question-different' => 'Qu’est-ce qui aurait dû être différent pour que vous continuiez à utiliser la bêta Açai ?',
 	'optin-survey-question-feedback' => 'Donnez-nous votre réaction :',
 	'optin-survey-question-browser' => 'Quel navigateur utilisez-vous ?',
 	'optin-survey-answer-browser-other' => 'Autre navigateur :',
 	'optin-survey-question-os' => 'Quel système d’exploitation utilisez-vous ?',
 	'optin-survey-answer-os-other' => 'Autre système d’exploitation :',
 	'optin-survey-question-res' => 'Quelle est la résolution de votre écran ?',
-	'optin-survey-question-changes' => 'Qu’aimeriez-vous voir dans la Bêta dans le futur (sélectionnez tout ce qui convient) ?',
+	'optin-survey-question-changes' => 'Qu’aimeriez-vous voir dans la bêta dans le futur (sélectionnez tout ce qui convient) ?',
 	'optin-survey-answer-changes-nav' => 'Faire que la navigation générale du site soit plus simple à utiliser.',
 	'optin-survey-answer-changes-edittools' => 'Améliorer et augmenter les outils d’édition.',
 	'optin-survey-answer-changes-upload' => 'Améliorer l’importation de contenu et de média.',
@@ -1611,7 +1600,7 @@ $messages['gl'] = array(
 	'optin-intro' => 'A Iniciativa de usabilidade da Wikipedia traballou duro para mellorar a usabilidade da Wikipedia.
 Quere probar Beta?',
 	'optin-feedback-intro' => 'Grazas por probar Beta.
-Queremos saber que pensas da nosa nova interface, polo que lle agradeceriamos que enchese a enquisa opcional que aparece a continuación.',
+Queremos saber que pensa da nosa nova interface, polo que lle agradeceriamos que enchese a enquisa opcional que aparece a continuación.',
 	'optin-feedback-back' => 'Se non quere encher a enquisa, pode voltar a "$1".',
 	'optin-success-in' => 'Xa está probando Beta.
 Pode saír en calquera momento facendo clic na ligazón "{{int:optin-leave}}" que aparecerá na parte superior da pantalla.',
@@ -1623,16 +1612,13 @@ Pode participar nas probas en calquera momento facendo clic na ligazón "{{int:o
 	'optin-accept-long' => 'Probar Beta',
 	'optin-accept-long-anon' => 'Acceda ao sistema e probe Beta',
 	'optin-deny-short' => 'Non, grazas',
-	'optin-deny-long' => 'voltar á páxina anterior',
+	'optin-deny-long' => 'Voltar á páxina anterior',
 	'optin-submit-out' => 'Deixar Beta',
 	'optin-submit-feedback' => 'Enviar a opinión',
-	'optin-try' => 'Probar Beta',
-	'optin-leave' => 'Deixar Beta',
-	'optin-feedback' => 'Dea a súa opinión',
 	'optin-survey-yes' => 'Si',
 	'optin-survey-no' => 'Non',
 	'optin-survey-intro' => 'Grazas por probar Beta.
-Gustaríanos saber o que pensa sobre a nosa nova interface, de forma que lle agradeceriamos que enchese a enquisa opcional de embaixo antes de premer en "[[#leave|{{int:optin-submit-out}}]]".',
+Queremos saber que pensa da nosa nova interface, polo que lle agradeceriamos que enchese a enquisa opcional que aparece a continuación antes de premer en "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'Que é o que lle gusta de Beta? E que non?',
 	'optin-survey-question-whyoptout' => 'Por que está a saír desta beta? (por favor, seleccione o que sexa conveniente)',
 	'optin-survey-answer-whyoptout-hard' => 'Foi moi difícil de usar.',
@@ -1674,7 +1660,11 @@ O novo sistema de navegación fai máis doado ver onde se está e que se está f
 ;Melloras na barra de ferramentas de edición
 As novas e melloradas iconas fan máis clara a identificación da acción que realiza cada unha. As seccións expansibles reducen a desorde á vez que manteñen as ferramentas menos usadas a só un clic de distancia.
 A sección de axuda proporciona un acceso rápido a unha referencia cos usos comúns do formato wiki.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+== Como involucrarse ==
+Para coñecer máis sobre o proxecto ou involucrarse nel existe o [http://usability.wikimedia.org wiki da Iniciativa de usabilidade], onde se atopa a información sobre as nosas subvencións, investigacións, deseño e desenvolvemento e lanzamentos. Para facer preguntas ou valoracións xerais existe a nosa [http://usability.wikimedia.org/wiki/Talk:Prototype páxina de conversa do prototipo], así como outras páxinas de conversa asociadas a asuntos particulares. En caso de se atopar algún erro hai á disposición a [http://usability.wikimedia.org/wiki/Talk:Releases/Acai páxina de discusión da versión Acai] ou mesmo [https://bugzilla.wikimedia.org Bugzilla].
+
+Grazas, e agardamos calquera opinión que nos axude a mellorar!',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1717,9 +1707,6 @@ Du chasch s wider uusprobiere dur e Klick uf „{{int:optin-try}}“ obe uf dr B
 	'optin-deny-long' => 'zruck zue dr letschte Syte',
 	'optin-submit-out' => 'Beta verloo',
 	'optin-submit-feedback' => 'Ruckmäldig gee',
-	'optin-try' => 'Beta uusprobiere',
-	'optin-leave' => 'Beta verloo',
-	'optin-feedback' => 'Ruckmäldig gee',
 	'optin-survey-yes' => 'Jo',
 	'optin-survey-no' => 'Nei',
 	'optin-survey-intro' => 'Dankschen, ass Du Beta uusprobiert hesch.
@@ -1810,8 +1797,8 @@ $messages['he'] = array(
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'לא אהבתי את הפריסה והלשוניות החדשים.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'לא אהבתי את סרגל הכלים החדש.',
 	'optin-survey-answer-whyoptout-other' => 'סיבה אחרת:',
-	'optin-survey-question-techfail-ifyes' => 'באם כן, פרטו או הסבירו:',
-	'optin-survey-question-usedtoolbar' => 'האם השתמשתם בסרגל הכלים החדש המתרחב לעריכת דפים?',
+	'optin-survey-question-techfail-ifyes' => 'אם כן, אנא פרטו או הסבירו:',
+	'optin-survey-question-usedtoolbar' => 'האם השתמשתם בסרגל הכלים החדש המתרחב החדש כדי לערוך דף?',
 	'optin-survey-question-feedback' => 'אנא העבירו לנו משוב:',
 	'optin-survey-question-browser' => 'באיזה דפדפן אתם משתמשים?',
 	'optin-survey-answer-browser-other' => 'דפדפן אחר:',
@@ -1851,9 +1838,6 @@ Možete je u svakom trenutku ponovno isprobati klikom na poveznicu "{{int:optin-
 	'optin-deny-long' => 'Povratak na prethodnu stranicu',
 	'optin-submit-out' => 'Izađite iz Beta',
 	'optin-submit-feedback' => 'Ostavite komentare',
-	'optin-try' => 'Isprobajte Beta',
-	'optin-leave' => 'Izađite iz Beta',
-	'optin-feedback' => 'Beta komentari',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Ne',
 	'optin-survey-intro' => 'Hvala što ste isprobali Beta.
@@ -1933,9 +1917,6 @@ Bychmy rady wědźeli, što mysliš wo našim nowym wužiwarskim powjerchu, bych
 	'optin-deny-long' => 'wróćo k předchadnej stronje',
 	'optin-submit-out' => 'Betu wopušćić',
 	'optin-submit-feedback' => 'Powěsć dać',
-	'optin-try' => 'Betu wupruwować',
-	'optin-leave' => 'Betu wopušćić',
-	'optin-feedback' => 'Powěsć dać',
 	'optin-survey-yes' => 'Haj',
 	'optin-survey-no' => 'Ně',
 	'optin-survey-intro' => 'Dźakujemy so za wupruwowanje Bety.
@@ -1991,6 +1972,7 @@ Dźakujemy so a bychmy so wjeselili wot tebje słyšeć!',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Hunyadym
  */
 $messages['hu'] = array(
@@ -2013,11 +1995,15 @@ Szeretnénk tudni, hogy mit gondolsz az új felületről, így örülnénk neki,
 	'optin-deny-long' => 'Visszatérés az előző lapra',
 	'optin-submit-out' => 'A bétateszt befejezése',
 	'optin-submit-feedback' => 'Visszajelzés küldése',
-	'optin-try' => 'Bétateszt',
-	'optin-leave' => 'A bétateszt befejezése',
-	'optin-feedback' => 'Visszajelzés a bétáról',
 	'optin-survey-yes' => 'Igen',
 	'optin-survey-no' => 'Nem',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Nem tetszik ahogy kinéz.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Nem tetszenek az új fülek és az elrendezés.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nem tetszik az új szerkesztő-eszköztár.',
+	'optin-survey-answer-whyoptout-other' => 'Más indok:',
+	'optin-survey-answer-browser-other' => 'Más böngésző:',
+	'optin-survey-answer-changes-upload' => 'Tartalom és médiafájlok feltöltésének fejlesztése.',
+	'optin-survey-answer-changes-other' => 'Más:',
 	'optin-improvements' => '== Mit fejlesztettünk? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Fejlettebb navigáció
@@ -2065,9 +2051,6 @@ Tu pote reactivar lo a omne tempore con le ligamine "{{int:optin-try}}" in alto 
 	'optin-deny-long' => 'retornar al previe pagina',
 	'optin-submit-out' => 'Quitar Beta',
 	'optin-submit-feedback' => 'Dar opinion',
-	'optin-try' => 'Probar Beta',
-	'optin-leave' => 'Quitar Beta',
-	'optin-feedback' => 'Da nos tu opinion',
 	'optin-survey-yes' => 'Si',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => 'Gratias pro essayar Beta.
@@ -2122,20 +2105,25 @@ Gratias e nos spera audir de te!',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
 	'optin' => 'Bergabung dengan Proyek Inisiatif Kebergunaan',
-	'optin-desc' => 'Memungkinkan pengguna untuk bergabung dengan peningkatan kebergunaan dalam Proyek Inisiatif Kebergunaan',
+	'optin-desc' => 'Memungkinkan pengguna untuk bergabung dengan peningkatan kebergunaan dalam Proyek Inisiatif Kebergunaan versi Beta.',
 	'optin-title-optedout' => 'Coba Beta',
 	'optin-title-optedin' => 'Tinggalkan Beta',
 	'optin-title-justoptedin' => 'Selamat datang di Beta',
 	'optin-title-justoptedout' => 'Terima kasih telah mencoba Beta',
 	'optin-title-feedback' => 'Umpan balik Beta',
-	'optin-needlogin' => 'Anda harus [$1 masuk log] untuk dapat bergabung dengan peningkatan kebergunaan dari Proyek Inisiatif Kebergunaan.',
-	'optin-intro' => 'Proyek Inisiatif Kebergunaan Wikipedia telah mengembangkan sebuah skin baru dan batang alat penyuntingan baru yang ditujukan untuk meningkatkan kebergunaan Wikipedia. Peningkatan ini belum diaktifkan untuk semua pengguna, tapi Anda dapat bergabung dengan Proyek ini dengan mengklik "{{int:optin-submit-in}}" di bawah ini.',
+	'optin-needlogin' => 'Anda harus [$1 masuk log] untuk mencoba Beta.',
+	'optin-intro' => 'Proyek Inisiatif Kebergunaan Wikipedia berusaha untuk mengembangkan kegunaan dari Wikipedia. Apakah Anda ingin mencoba Beta?',
+	'optin-feedback-intro' => 'Terima kasih telah mencoba Beta.
+Kami ingin tahu apa pendapat Anda tentang antarmuka baru kami, sehingga kami sangat menghargai jika Anda mengisi survei opsional di bawah ini .',
+	'optin-feedback-back' => 'Jika Anda tidak ingin mengisi survei, Anda dapat kembali ke $1.',
 	'optin-success-in' => 'Anda saat ini sedang mencoba Beta.
 Anda dapat keluar kapan saja dengan menekan pranala "{{int:optin-submit-out}}" di bagian atas halaman.',
+	'optin-leave-cancel' => 'Jika Anda ingin terus menggunakan Beta, Anda dapat kembali ke $1.',
 	'optin-success-out' => 'Anda telah berhasil meninggalkan Beta.
 Anda dapat bergabung kembali kapan saja dengan menekan pranala "{{int:optin-submit-in}}" di bagian atas halaman.',
 	'optin-success-feedback' => 'Terima kasih atas umpan balik Anda!',
@@ -2146,26 +2134,56 @@ Anda dapat bergabung kembali kapan saja dengan menekan pranala "{{int:optin-subm
 	'optin-deny-long' => 'Kembali ke halaman sebelum',
 	'optin-submit-out' => 'Tinggalkan Beta',
 	'optin-submit-feedback' => 'Berikan umpan balik',
-	'optin-try' => 'Coba Beta',
-	'optin-leave' => 'Tinggalkan Beta',
-	'optin-feedback' => 'Umpan balik Beta',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Tidak',
-	'optin-survey-intro' => 'Terima kasih untuk menguji coba peningkatan kebergunaan dari Proyek Inisiatif Kebergunaan.
-Anda dapat keluar dengan mengklik "{{int:optin-submit-out}}" pada bagian bawah halaman ini.
-
-Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, karenanya kami akan sangat menghargai jika Anda mengisi survei opsional berikut sebelum mengklik "{{int:optin-submit-out}}".',
+	'optin-survey-intro' => 'Terima kasih telah mencoba Beta.
+Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, karenanya kami akan sangat menghargai jika Anda mengisi survei di bawah ini sebelum mengklik "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'Apa yang Anda sukai tentang Beta? Apa yang Anda tidak sukai tentang Beta?',
 	'optin-survey-question-whyoptout' => 'Mengapa Anda ingin meninggalkan Beta? (Pilihlah semua yang Anda anggap benar.)',
 	'optin-survey-answer-whyoptout-hard' => 'Terlalu sulit untuk digunakan.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Tidak berfungsi dengan baik.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Tidak dapat diprediksi.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Saya tidak suka dengan penampilannya.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Saya tidak suka dengan tab baru dan tampilannya.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Aku tidak suka dengan kotak peralatan baru.',
 	'optin-survey-answer-whyoptout-other' => 'Alasan lain:',
+	'optin-survey-question-explain' => 'Harap menjelaskan atau menguraikan jawaban Anda di atas:',
+	'optin-survey-question-techfail' => 'Pernahkah anda mengalami kesalahan teknis ketika menggunakan Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Jika iya, silahkan uraikan atau jabarkan:',
+	'optin-survey-question-usedtoolbar' => 'Apakah anda menggunakan kotak peralatan baru yang dapat diperluas untuk menyunting halaman?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Jika iya, apa yang kamu sukai? Apa yang Anda tidak sukai?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Jika tidak, mengapa tidak? Apakah akan anda lakukan kemudian? Tolong jelaskan.',
+	'optin-survey-question-different' => 'Apa yang bisa kita lakukan dengan cara yang berbeda untuk menjaga Anda menggunakan Beta?',
 	'optin-survey-question-feedback' => 'Beritahukan kami tanggapan Anda:',
 	'optin-survey-question-browser' => 'Penjelajah web apa yang Anda gunakan?',
 	'optin-survey-answer-browser-other' => 'Penjelajah web lainnya:',
 	'optin-survey-question-os' => 'Sistem operasi apa yang Anda gunakan?',
 	'optin-survey-answer-os-other' => 'Sistem operasi lain:',
 	'optin-survey-question-res' => 'Berapa besar resolusi layar Anda?',
+	'optin-survey-question-changes' => 'Perubahan apa yang ingin Anda lihat dalam Beta di masa mendatang (silakan pilih yang sesuai)?',
+	'optin-survey-answer-changes-nav' => 'Membuat navigasi keseluruhan situs lebih mudah digunakan.',
+	'optin-survey-answer-changes-edittools' => 'Menambah dan memperbanyak alat penyuntingan.',
+	'optin-survey-answer-changes-upload' => 'Meningkatkan pemuatan konten dan media.',
+	'optin-survey-answer-changes-richtext' => 'Mengembangkan perangkat penyuntingan mirip dengan penyuntingan teks biasa.',
+	'optin-survey-answer-changes-lookfeel' => 'Memperbarui "tampilan dan nuansa" dari situs.',
+	'optin-survey-answer-changes-predictability' => 'Meningkatkan prediktabilitas dari kinerja.',
+	'optin-survey-answer-changes-custom' => 'Memperbolehkan Pengguna yang lebih tinggi untuk kustomisasi',
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
+	'optin-improvements' => '== Apa yang telah dikembangkan? ==
+[[File:UsabilityNavigation.png|left|link=]]
+;Perluasan navigasi
+Sistem navigasi yang baru membuat lebih mudah untuk melihat di mana Anda dan apa yang Anda lakukan, semudah anda dapat pergi dan bagaimana menuju ke sana. Dengan kotak pencarian yang terletak di pojok kanan atas, fitur pencarian mudah ditemukan dan cepat digunakan.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;Perbaikan alat penyuntingan
+Baru-dan-perbaikan ikon membuatnya lebih jelas tindakan apa yang dilakukan masing-masing alat. Bagian yang dapat diperluas mengurangi kekacauan sehingga alat yang jarang digunakan hanya dengan sekali klik.
+Bagian yang membantu memberikan akses cepat ke referensi untuk penggunaan umum markup-wiki .
+<div style="clear:both;"></div>
+== Bagaimana terlibat ==
+Untuk mempelajari lebih lanjut tentang proyek atau terlibat, silakan kunjungi [http://usability.wikimedia.org Usability Initiative\'s wiki]. Di sana Anda akan menemukan informasi tentang hibah, penelitian, desain + pengembangan, dan rilis. Untuk mengajukan pertanyaan atau meninggalkan umpan balik umum, silakan gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype prototipe halaman pembicaraan]. Untuk mengatasi mata pelajaran tertentu, silakan gunakan halaman diskusi yang terkait. Jika anda menemukan bug, silakan tinggalkan komentar Anda pada [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai rilis halaman pembicaraan] atau dengan menggunakan [https://bugzilla.wikimedia.org Bugzilla].
+
+Terima kasih dan kami berharap pendapat Anda!',
 );
 
 /** Ido (Ido)
@@ -2210,9 +2228,6 @@ Puoi uscirne in qualsiasi momento facendo clic sul link "{{int:optin-leave}}" ne
 	'optin-deny-long' => 'Torna alla pagina precedente',
 	'optin-submit-out' => 'Lascia Beta',
 	'optin-submit-feedback' => 'Lascia un feedback',
-	'optin-try' => 'Prova Beta',
-	'optin-leave' => 'Lascia Beta',
-	'optin-feedback' => 'Feedback della Beta',
 	'optin-survey-yes' => 'Sì',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => 'Ti ringraziamo per aver provato il Beta.
@@ -2294,14 +2309,11 @@ $messages['ja'] = array(
 	'optin-deny-long' => '前のページに戻る',
 	'optin-submit-out' => 'ベータ版をやめる',
 	'optin-submit-feedback' => 'フィードバックを送信',
-	'optin-try' => 'ベータ版を試す',
-	'optin-leave' => 'ベータ版をやめる',
-	'optin-feedback' => 'フィードバックしてください',
 	'optin-survey-yes' => 'はい',
 	'optin-survey-no' => 'いいえ',
 	'optin-survey-intro' => 'ベータ版をお試しいただきありがとうございます。よろしければこの新しいインタフェースについてご意見をお聞かせください。 [[#leave|{{int:optin-submit-out}}]]をクリックする前に以下の任意調査にご協力いただければ幸いです。',
 	'optin-survey-question-likedislike' => 'ベータ版のどのような点が気に入りましたか。どのような点が気に入りませんでしたか。',
-	'optin-survey-question-whyoptout' => 'なぜベータ版の試用をおやめになるのですか（あてはまるものをすべてお選びください）。',
+	'optin-survey-question-whyoptout' => 'なぜベータ版の試用をおやめになるのですか(あてはまるものをすべてお選びください)。',
 	'optin-survey-answer-whyoptout-hard' => '使いこなせませんでした。',
 	'optin-survey-answer-whyoptout-didntwork' => '正常に機能しませんでした。',
 	'optin-survey-answer-whyoptout-notpredictable' => '動作が不安定、予測不能でした。',
@@ -2323,7 +2335,7 @@ $messages['ja'] = array(
 	'optin-survey-question-os' => '利用しているOSはどれですか？',
 	'optin-survey-answer-os-other' => 'その他のオペレーティングシステム:',
 	'optin-survey-question-res' => '画面の解像度はいくつですか？',
-	'optin-survey-question-changes' => '今後、ベータ版にどのような点の改善を望みますか？（当てはまるものをすべて選択してください）',
+	'optin-survey-question-changes' => '今後、ベータ版にどのような点の改善を望みますか？(当てはまるものをすべて選択してください)',
 	'optin-survey-answer-changes-nav' => 'サイト全体の操作方法をより使いやすくしてほしい。',
 	'optin-survey-answer-changes-edittools' => '編集ツールを増やし、機能強化してほしい。',
 	'optin-survey-answer-changes-upload' => 'コンテンツやメディアアップロードを改善してほしい。',
@@ -2379,9 +2391,6 @@ $messages['ka'] = array(
 	'optin-deny-long' => 'წინა გვერდზე დაბრუნება',
 	'optin-submit-out' => 'ბეტადან გასვლა',
 	'optin-submit-feedback' => 'გამოგვეხმაურეთ',
-	'optin-try' => 'მოსინჯეთ ბეტა',
-	'optin-leave' => 'ბეტადან გასვლა',
-	'optin-feedback' => 'გამოხმაურება',
 	'optin-survey-yes' => 'ჰო',
 	'optin-survey-no' => 'არა',
 	'optin-survey-intro' => 'გმადლობთ ბეტას გამოცდისთვის.
@@ -2458,9 +2467,6 @@ $messages['km'] = array(
 	'optin-deny-long' => 'ត្រលប់ទៅកាន់ទំព័រមុន',
 	'optin-submit-out' => 'ចាកចេញពីស៊េរីបេតា',
 	'optin-submit-feedback' => 'ដាក់ស្នើមតិយោបល់',
-	'optin-try' => 'សាកប្រើស៊េរីបេតា',
-	'optin-leave' => 'ចាកចេញពីស៊េរីបេតា',
-	'optin-feedback' => 'មតិយោបល់អំពីស៊េរីបេតា',
 	'optin-survey-yes' => 'បាទ/ចាស៎',
 	'optin-survey-no' => 'ទេ',
 	'optin-survey-intro' => 'សូមថ្លែងអំណរគុណលោកអ្នកដែលបានសាកល្បងប្រើស៊េរីបេតា។ យើងខ្ញុំចង់ដឹងអំពីយោបល់លោកអ្នកស្ដីអំពីអន្តរមុខថ្មីនេះ។ ហេតុនេះយើងខ្ញុំសង្ឃឹមថាលោកអ្នកនឹងជួយឆ្លើយសំនួរអង្កេតខាងក្រោមនេះ មុននឹងចាកចេញទៅដោយចុចលើ"[[#leave|{{int:optin-submit-out}}]]"។',
@@ -2549,9 +2555,6 @@ $messages['ko'] = array(
 	'optin-deny-long' => '이전 문서로 되돌아갑니다.',
 	'optin-submit-out' => '베타 버전 사용 종료',
 	'optin-submit-feedback' => '피드백 남기기',
-	'optin-try' => '베타 버전 체험하기',
-	'optin-leave' => '베타 버전 체험 종료하기',
-	'optin-feedback' => '피드백 남기기',
 	'optin-survey-yes' => '예',
 	'optin-survey-no' => '아니오',
 	'optin-survey-intro' => '베타 버전을 사용해 주셔서 감사합니다.
@@ -2605,6 +2608,7 @@ $messages['ko'] = array(
 );
 
 /** Ripoarisch (Ripoarisch)
+ * @author Melancholie
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2630,15 +2634,12 @@ Do kanns doh emmer wider eruß kumme, endämm dat De op „{{int:optin-leave}}�
 Do kanns emmer wider zerök kumme, endämm dat De op „{{int:optin-try}}“ klecks.',
 	'optin-success-feedback' => 'Häzlijje Dangk för Ding Rökmäldung.',
 	'optin-accept-short' => 'Lom_mer dat donn!',
-	'optin-accept-long' => '<i lang="en">Beta</i> ußprobeere',
+	'optin-accept-long' => 'Beta ußprobeere',
 	'optin-accept-long-anon' => 'Enlogge un de Beta ußprobeere',
 	'optin-deny-short' => 'Nää, dat wulle mer nit',
 	'optin-deny-long' => 'retuur op de vörijje Sigg',
 	'optin-submit-out' => '<i lang="en">Beta</i> verlohße',
 	'optin-submit-feedback' => 'Rökmäldunge jävve',
-	'optin-try' => '<i lang="en">Beta</i> ußprobeere',
-	'optin-leave' => '<i lang="en">Beta</i> verlohße',
-	'optin-feedback' => 'Rökmäldunge jävve',
 	'optin-survey-yes' => 'Joh',
 	'optin-survey-no' => 'Nää',
 	'optin-survey-intro' => 'Mer bedangke uns doför, dat De <i lang="en">Beta</i> ußprobeere deihß.
@@ -2751,9 +2752,6 @@ Dir kënnt dës zu jidder Zäit nees aschalten andeem datt Dir op de Link "{{int
 	'optin-deny-long' => 'Zréck op déi Säit virdrun',
 	'optin-submit-out' => 'Beta verloossen',
 	'optin-submit-feedback' => 'Gitt eis Är Meenung',
-	'optin-try' => 'Probéiert Beta aus',
-	'optin-leave' => 'Beta verloossen',
-	'optin-feedback' => 'Gitt eis Är Meenung',
 	'optin-survey-yes' => 'Jo',
 	'optin-survey-no' => 'Neen',
 	'optin-survey-intro' => 'Merci datt Dir Beta ausprobéiert.
@@ -2830,8 +2828,6 @@ Galite išmėginti Beta vėl, bet kuriuo metu paspaudę "{{int:optin-try}}" vir�
 	'optin-deny-short' => 'Ne, ačiū',
 	'optin-deny-long' => 'Grįžti į ankstesnį puslapį',
 	'optin-submit-out' => 'Palikti Beta',
-	'optin-try' => 'Pabandyti Beta',
-	'optin-leave' => 'Palikti Beta',
 	'optin-survey-yes' => 'Taip',
 	'optin-survey-no' => 'Ne',
 	'optin-survey-intro' => 'Dėkojame, kad bandote Beta.
@@ -2868,8 +2864,6 @@ $messages['lv'] = array(
 	'optin-title-feedback' => 'Atsauksmes par Beta',
 	'optin-accept-long' => 'Izmēģināt Beta',
 	'optin-submit-out' => 'Pamest Beta',
-	'optin-try' => 'Izmēģināt Beta',
-	'optin-leave' => 'Pamest Beta',
 	'optin-feedback' => 'Atsauksmes par Beta',
 );
 
@@ -2903,9 +2897,6 @@ $messages['mk'] = array(
 	'optin-deny-long' => 'Врати ме на претходната страница',
 	'optin-submit-out' => 'Напушти ја Бета',
 	'optin-submit-feedback' => 'Искажи мислење',
-	'optin-try' => 'Пробај ја Бета',
-	'optin-leave' => 'Напушти ја Бета',
-	'optin-feedback' => 'Мислења за Бета',
 	'optin-survey-yes' => 'Да',
 	'optin-survey-no' => 'Не',
 	'optin-survey-intro' => 'Ви благодариме што ја пробавте Бета.
@@ -2987,13 +2978,15 @@ $messages['mn'] = array(
  * @author Kurniasan
  */
 $messages['ms'] = array(
+	'optin' => 'Opt-in Inisiatif Kebolehgunaan',
+	'optin-desc' => 'Membenarkan para pengguna mencuba Beta, peningkatan kebolehgunaan Inisiatif Kebolehgunaan terbaru.',
 	'optin-title-optedout' => 'Cuba Beta',
-	'optin-title-optedin' => 'Singkiran Versi Beta',
+	'optin-title-optedin' => 'Tinggalkan Beta',
 	'optin-title-justoptedin' => 'Selamat datang ke Beta',
 	'optin-title-justoptedout' => 'Terima kasih kerana menggunakan versi Beta kami',
 	'optin-title-feedback' => 'Maklum balas Beta',
 	'optin-needlogin' => 'Anda perlu [$1 log masuk] untuk mencuba versi Beta.',
-	'optin-intro' => 'Program Inisiatif Penggunaan Wikipedia telah berusaha untuk membaiki sistem penggunaan Wikipedia. Adakah anda ingin mencuba versi Beta kami?',
+	'optin-intro' => 'Program Inisiatif Kebolehgunaan Wikipedia telah berusaha keras untuk memperbaiki kebolehgunaan Wikipedia. Sudikah anda mencuba versi Beta kami?',
 	'optin-feedback-intro' => 'Terima kasih kerana sudi menggunakan Beta.
 Kami ingin mengetahui pendapat anda tentang versi ini. Oleh itu, amat kami hargai sekiranya anda sudi mengisi soal selidik di bawah.',
 	'optin-feedback-back' => 'Sekiranya anda tidak ingin mengisi soal selidik di bawah, kembali ke $1.',
@@ -3004,10 +2997,12 @@ Sekiranya anda tidak ingin menggunakan versi ini, sila tekan "{{int:optin-leave}
 Sekiranya anda ingin mencuba versi Beta, sila tekan "{{int:optin-try}}" pada bahagian kiri atas skrin anda.',
 	'optin-success-feedback' => 'Terima kasih atas pendapat anda!',
 	'optin-accept-short' => 'Lakukan sekarang!',
-	'optin-deny-short' => 'Tidak',
-	'optin-try' => 'Cuba Beta',
-	'optin-leave' => 'Tinggalkan Beta',
-	'optin-feedback' => 'Maklumbalas Beta',
+	'optin-accept-long' => 'Cuba Beta',
+	'optin-accept-long-anon' => 'Daftar masuk dan cuba Beta',
+	'optin-deny-short' => 'Tidak, terima kasih',
+	'optin-deny-long' => 'Kembali ke laman sebelumnya',
+	'optin-submit-out' => 'Tinggalkan Beta',
+	'optin-submit-feedback' => 'Berikan maklum balas',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Tidak',
 	'optin-survey-intro' => 'Terima kasih kerana mencuba Beta.
@@ -3035,6 +3030,29 @@ Kami ingin ketahui pandangan anda tentang antara muka baru kami, jadi kami mengh
 	'optin-survey-answer-os-other' => 'Lain-lain:',
 	'optin-survey-question-res' => 'Apakah resolusi skrin anda?',
 	'optin-survey-question-changes' => 'Perubahan apakah yang anda ingin lihat pada Beta di masa akan datang (sila pilih semua yang sesuai)?',
+	'optin-survey-answer-changes-nav' => 'Menjadikan pandu arah keseluruhan tapak lebih mudah digunakan.',
+	'optin-survey-answer-changes-edittools' => 'Menambah dan meningkatkan alatan penyuntingan.',
+	'optin-survey-answer-changes-upload' => 'Memperbaiki muat naik kandungan dan media.',
+	'optin-survey-answer-changes-richtext' => 'Membangun peralatan suntingan serupa dengan penyunting teks kaya.',
+	'optin-survey-answer-changes-lookfeel' => 'Menjadikan "rupa dan suasana" tapak ini lebih terkini.',
+	'optin-survey-answer-changes-predictability' => 'Memperbaiki kebolehjankaan prestasi.',
+	'optin-survey-answer-changes-custom' => 'Benarkan pengubahsuaian penguna yang lebih besar.',
+	'optin-survey-answer-changes-other' => 'Lain-lain:',
+	'optin-improvements' => '== Apa yang telah dipertingkatkan? ==
+[[File:UsabilityNavigation.png|left|link=]]
+;Pandu arah yang dipertingkatkan
+Sistem pandu arah yang baru memudahkan anda untuk melihat di mana anda berada dan apa yang anda lakukan, dan juga di mana anda boleh pergi dan bagaimana mahu ke sana. Dengan kotak carian diletakkan di bahagian atas sebelah kanan, tampilan pencarian adalah lebih mudah ditemui dan dan lebih cepat untuk digunakan.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;Penambahbaikan kotak alat tulis
+Arca-arca yang baru dan diperbaiki menjadikan tindakan yang akan dilakukan bagi setiap alat lebih jelas. Bahagian-bahagian yang boleh dikembangkan mengurangkan sepah sementara mengekalkan peralatan yang jarang digunakan cuma dalam jarak seklik sahaja.
+Bahagian bantuan membekalkan capaian pantas kepada rujukan bagi penanda wiki yang sering digunakan.
+<div style="clear:both;"></div>
+== Cara untuk menyertai ==
+Bagi mengetahui lebih lanjut akan projek ini ataupun ingin turut serta, sila lawati [http://usability.wikimedia.org Wiki Inisiatif Kepenggunaan].  Di sana anda akan temukan maklumat mengenai geran kami, kajian, rekaan + pembangunan, dan keluaran-keluaran. Bagi pertanyaan soalan dan maklum balas umum, sila gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype laman perbincangan prototaip] kami.  Bagi mengemukakan sesuatu subjek, sila gunakan laman-laman perbincangan yang berkaitan.  Sekiranya anda menemui sebarang pepijat, sila tinggalkan komen anda di [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Laman perbincangan keluaran Acai] ataupun melalui [https://bugzilla.wikimedia.org Bugzilla].
+
+Terima kasih, kami berharap untuk mendengar daripada anda!',
 );
 
 /** Maltese (Malti)
@@ -3066,9 +3084,6 @@ Huwa possibbli li terġa' tipprova mill-ġdid f'kwalunkwe mument li tixtieq bill
 	'optin-deny-long' => 'Irritorna lejn il-paġna preċedenti',
 	'optin-submit-out' => 'Ħalli l-Beta',
 	'optin-submit-feedback' => 'Ħalli l-fehmiet tiegħek',
-	'optin-try' => 'Ipprova l-Beta',
-	'optin-leave' => 'Ħalli l-Beta',
-	'optin-feedback' => 'Rispons tal-Beta',
 	'optin-survey-yes' => 'Iva',
 	'optin-survey-no' => 'Le',
 	'optin-survey-intro' => "Nirringrazzjawk talli għamilt użu mill-Beta.
@@ -3161,9 +3176,6 @@ Je kunnen disse functionaliteit altied weer anzetten deur op de knoppe {{int:opt
 	'optin-deny-long' => 'Weerumme naor de veurige pagina',
 	'optin-submit-out' => 'Beta uutzetten',
 	'optin-submit-feedback' => 'Versturen',
-	'optin-try' => 'Beta uutpreberen',
-	'optin-leave' => 'Beta uutzetten',
-	'optin-feedback' => "Is 't wat?",
 	'optin-survey-yes' => 'Ja',
 	'optin-survey-no' => 'Nee',
 	'optin-survey-intro' => 'Bedank veur \'t uutpreberen van Beta.
@@ -3253,9 +3265,6 @@ U kunt deze functionaliteit op elk gewenst moment weer inschakelen door op de kn
 	'optin-deny-long' => 'Terug naar de vorige pagina',
 	'optin-submit-out' => 'Beta uitschakelen',
 	'optin-submit-feedback' => 'Terugkoppeling geven',
-	'optin-try' => 'Beta inschakelen',
-	'optin-leave' => 'Beta uitschakelen',
-	'optin-feedback' => 'Terugkoppeling geven',
 	'optin-survey-yes' => 'Ja',
 	'optin-survey-no' => 'Nee',
 	'optin-survey-intro' => 'Dank u wel voor het uitproberen van Beta.
@@ -3371,15 +3380,12 @@ Du kan velge å gå tilbake når som helst ved å klikke på "{{int:optin-leave}
 Du kan forsøke det igjen ved å klikke på "{{int:optin-try}}"-lenken på toppen av skjermen.',
 	'optin-success-feedback' => 'Takk for din tilbakemelding!',
 	'optin-accept-short' => 'La oss gjøre det!',
-	'optin-accept-long' => 'Forsøk Beta',
-	'optin-accept-long-anon' => 'Logg inn og forsøk Beta',
+	'optin-accept-long' => 'Prøv Beta',
+	'optin-accept-long-anon' => 'Logg inn og prøv Beta',
 	'optin-deny-short' => 'Neitakk',
 	'optin-deny-long' => 'Gå tilbake til forrige side',
 	'optin-submit-out' => 'Forlat Beta',
 	'optin-submit-feedback' => 'Gi tilbakemelding',
-	'optin-try' => 'Forsøk Beta',
-	'optin-leave' => 'Forlat Beta',
-	'optin-feedback' => 'Beta tilbakemelding',
 	'optin-survey-yes' => 'Ja',
 	'optin-survey-no' => 'Nei',
 	'optin-survey-intro' => 'Takk for at du prøver Betaen.
@@ -3463,9 +3469,6 @@ Podètz participar tornamai a tot moment en clicant sul ligam « {{int:optin-try
 	'optin-deny-long' => 'Tornar a la pagina precedenta',
 	'optin-submit-out' => 'Quitar la Bèta',
 	'optin-submit-feedback' => 'Balhatz vòstre vejaire',
-	'optin-try' => 'Ensajar la Bèta',
-	'optin-leave' => 'Quitar la Bèta',
-	'optin-feedback' => 'Balhatz vòstre vejaire',
 	'optin-survey-yes' => 'Òc',
 	'optin-survey-no' => 'Non',
 	'optin-survey-intro' => "Mercés per ensajar la Bèta.
@@ -3498,7 +3501,7 @@ Nos agradariá de saber çò que pensatz de nòstra interfàcia novèla, nos agr
 	'optin-survey-answer-changes-edittools' => "Melhora e augmenta los espleches d'edicion.",
 	'optin-survey-answer-changes-upload' => "Melhora l'impòrt de contengut e de mèdia.",
 	'optin-survey-answer-changes-richtext' => "Desvolopa d'espleches de modificacions similars als editors en tèxte enriquit.",
-	'optin-survey-answer-changes-lookfeel' => "Cambia l'aparéncia del site.",
+	'optin-survey-answer-changes-lookfeel' => "Càmbia l'aparéncia del site.",
 	'optin-survey-answer-changes-predictability' => 'Melhora la previzibilitat de las performàncias.',
 	'optin-survey-answer-changes-custom' => "Permet una màger personalizacion de l'interfàcia.",
 	'optin-survey-answer-changes-other' => 'Autre :',
@@ -3529,7 +3532,6 @@ $messages['pdc'] = array(
 	'optin-deny-short' => 'Nee, ken Interest',
 	'optin-deny-long' => 'Zerick zum letscht Blatt',
 	'optin-submit-out' => 'Beta verlosse',
-	'optin-leave' => 'Beta verlosse',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Nee',
 	'optin-survey-answer-whyoptout-other' => 'Annre Grind:',
@@ -3568,9 +3570,6 @@ W każdej chwili możesz ją przywrócić poprzez kliknięcie linku „{{int:opt
 	'optin-deny-long' => 'Powrót do poprzedniej strony',
 	'optin-submit-out' => 'Koniec testowania',
 	'optin-submit-feedback' => 'Prześlij opinię',
-	'optin-try' => 'Wypróbuj wersję testową',
-	'optin-leave' => 'Koniec testowania',
-	'optin-feedback' => 'Opinia o wersji testowej',
 	'optin-survey-yes' => 'Tak',
 	'optin-survey-no' => 'Nie',
 	'optin-survey-intro' => 'Dziękujemy za wypróbowanie wersji testowej.
@@ -3655,6 +3654,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Capmo
+ * @author Giro720
  * @author Malafaya
  * @author Waldir
  */
@@ -3667,8 +3667,8 @@ $messages['pt'] = array(
 	'optin-title-justoptedout' => 'Obrigado por experimentar o Beta',
 	'optin-title-feedback' => 'Enviar comentários',
 	'optin-needlogin' => 'Você precisa [$1 autenticar-se] para experimentar o Beta.',
-	'optin-intro' => 'A Wikipedia Usability Initiative tem vindo a trabalhar arduamente para melhorar a usabilidade da Wikipédia.
-Gostaria de experimentar o Beta?',
+	'optin-intro' => 'A Iniciativa de Usabilidade da Wikipédia tem trabalhado arduamente para melhorar a usabilidade da Wikipédia.
+Gostaria de experimentar a versão Beta?',
 	'optin-feedback-intro' => 'Obrigado por experimentar Beta.
 Gostaríamos de saber o que você acha da nossa nova interface, por isso agradecíamos que preenchesse o inquérito opcional abaixo.',
 	'optin-feedback-back' => 'Se você não quiser preencher o inquérito, pode regressar a $1.',
@@ -3685,9 +3685,6 @@ Você pode experimentá-lo novamente a qualquer momento, clicando no link "{{int
 	'optin-deny-long' => 'Regressar à página anterior',
 	'optin-submit-out' => 'Sair do Beta',
 	'optin-submit-feedback' => 'Enviar comentários',
-	'optin-try' => 'Experimente o Beta',
-	'optin-leave' => 'Sair do Beta',
-	'optin-feedback' => 'Enviar comentários',
 	'optin-survey-yes' => 'Sim',
 	'optin-survey-no' => 'Não',
 	'optin-survey-intro' => 'Obrigado por experimentar o Beta.
@@ -3721,10 +3718,11 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-answer-changes-richtext' => 'Desenvolver ferramentas de edição semelhantes a editores avançados de texto.',
 	'optin-survey-answer-changes-lookfeel' => 'Renovar o aspecto geral do site.',
 	'optin-survey-answer-changes-predictability' => 'Melhorar a consistência dos resultados.',
+	'optin-survey-answer-changes-custom' => 'Permite maior personalização pelo utilizador.',
 	'optin-survey-answer-changes-other' => 'Outros:',
 	'optin-improvements' => '== O que foi melhorado? ==
 [[File:UsabilityNavigation.png|left|link=]]
-;Melhorada a navegação
+;Navegação melhorada 
 O novo sistema de navegação torna mais fácil ver onde você está e o que você está a fazer, bem como onde pode ir e como chegar lá. Com a caixa de pesquisa localizada no canto superior direito, a funcionalidade de pesquisa é mais fácil de encontrar e mais rápida de usar.
 <div style="clear:both;"></div>
 
@@ -3732,7 +3730,11 @@ O novo sistema de navegação torna mais fácil ver onde você está e o que voc
 ;Melhoramentos na barra de ferramentas de edição
 Novos e melhorados ícones tornam mais claro que acção que cada ferramenta realiza. Secções ampliáveis reduzem o empilhamento de botões, continuando a manter ferramentas menos utilizadas a apenas um clique de distância.
 A secção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+== Como participar ==
+Para aprender mais ou participar do projecto, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá você encontrará informações sobre nossa concessão, pesquisa,  desenho + desenvolvimento, e lançamentos. Para esclarecer dúvidas ou sugestões, por favor utilize nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão]. Para assuntos específicos, utilize uma das páginas de discussão associada. Caso encontro bugs, por favor deixe seu comentário na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão Acai] ou através do [https://bugzilla.wikimedia.org Bugzilla].
+
+Obrigado e estamos ansiosos para ouvir de você!',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -3765,9 +3767,6 @@ Você pode experimentá-lo novamente a qualquer momento, clicando na ligação "
 	'optin-deny-long' => 'Voltar à página anterior',
 	'optin-submit-out' => 'Sair do Beta',
 	'optin-submit-feedback' => 'Enviar comentários',
-	'optin-try' => 'Experimente o Beta',
-	'optin-leave' => 'Sair do Beta',
-	'optin-feedback' => 'Enviar comentários',
 	'optin-survey-yes' => 'Sim',
 	'optin-survey-no' => 'Não',
 	'optin-survey-intro' => 'Obrigado por experimentar o Beta.
@@ -3838,9 +3837,6 @@ $messages['qu'] = array(
 	'optin-deny-long' => "ñawpa p'anqaman kutimuy",
 	'optin-submit-out' => 'Beta nisqamanta lluqsiy',
 	'optin-submit-feedback' => 'Beta nisqamanta rimanakuy',
-	'optin-try' => 'Beta nisqata llanchiy',
-	'optin-leave' => 'Beta nisqamanta lluqsiy',
-	'optin-feedback' => 'Beta nisqata rimanakuy',
 	'optin-survey-yes' => 'Arí',
 	'optin-survey-no' => 'Ama kachunchu',
 );
@@ -3863,9 +3859,6 @@ $messages['ro'] = array(
 	'optin-deny-long' => 'Reveniţi la pagina anterioară',
 	'optin-submit-out' => 'Părăsiţi Beta',
 	'optin-submit-feedback' => 'Trimiteţi-vă părerea',
-	'optin-try' => 'Încercaţi Beta',
-	'optin-leave' => 'Părăsiţi Beta',
-	'optin-feedback' => 'Părere despre Beta',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Nu',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Nu s-a comportat predictibil.',
@@ -3887,9 +3880,6 @@ $messages['roa-tara'] = array(
 	'optin-title-feedback' => 'Segnale a Beta',
 	'optin-needlogin' => 'Tu è abbesogne de [$1 trasè] pe pruvà Beta.',
 	'optin-submit-feedback' => "Danne 'na segnalazione",
-	'optin-try' => 'Pruève Beta',
-	'optin-leave' => 'Lasse Beta',
-	'optin-feedback' => 'Segnale a Beta',
 	'optin-survey-yes' => 'Sìne',
 	'optin-survey-no' => 'None',
 	'optin-survey-answer-whyoptout-other' => 'Otre mutive:',
@@ -3897,6 +3887,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author AlexSm
  * @author Ferrer
  * @author Kaganer
  * @author Lockal
@@ -3904,37 +3895,34 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'optin' => 'Участие в Инициативе юзабилити',
-	'optin-desc' => 'Позволяет участникам опробовать Бета-версию интерфейса («Beta») — последнее улучшение, сделанное в рамках Инициативы юзабилити.',
-	'optin-title-optedout' => 'Опробование Бета-версии интерфейса',
+	'optin-desc' => 'Позволяет участникам опробовать бета-версию интерфейса («Beta») — последнее улучшение, сделанное в рамках Инициативы юзабилити.',
+	'optin-title-optedout' => 'Опробование бета-версии интерфейса',
 	'optin-title-optedin' => 'Покинуть Beta',
 	'optin-title-justoptedin' => 'Добро пожаловать в Beta',
-	'optin-title-justoptedout' => 'Благодарим вас за участие в опробовании Бета-версии интерфейса',
+	'optin-title-justoptedout' => 'Благодарим вас за участие в опробовании бета-версии интерфейса',
 	'optin-title-feedback' => 'Отправить отзыв',
-	'optin-needlogin' => 'Вам необходимо [$1 представиться], чтобы опробовать Бета-версию.',
+	'optin-needlogin' => 'Вам необходимо [$1 представиться], чтобы опробовать бета-версию.',
 	'optin-intro' => 'В рамках Инициативы юзабилити была проведена работа по улучшению удобства использования Википедии.
 Вы хотите опробовать Beta?',
-	'optin-feedback-intro' => 'Благодарим вас за согласие опробовать Бета-версию интерфейса.
+	'optin-feedback-intro' => 'Благодарим вас за согласие опробовать бета-версию интерфейса.
 Нам хотелось бы знать, что вы думаете о нашем новом интерфейсе, поэтому мы были бы признательны, если бы вы приняли участие в приведённом ниже опросе.',
 	'optin-feedback-back' => 'Если вы не хотите участвовать в опросе, вы можете вернуться к $1.',
-	'optin-success-in' => 'Теперь вы принимаете участие в опробовании Бета-версии интерфейса.
+	'optin-success-in' => 'Теперь вы принимаете участие в опробовании бета-версии интерфейса.
 Вы можете отключиться от программы в любое время, нажав  на ссылку «{{int:optin-leave}}» в верхней части экрана.',
-	'optin-leave-cancel' => 'Если вы хотите завершить использовать Beta, вы можете вернуться к $1.',
-	'optin-success-out' => 'Вы успешно вышли из режима опробования Бета-версии интерфейса.
+	'optin-leave-cancel' => 'Если вы хотите продолжить использовать бета-версию, вы можете вернуться к $1.',
+	'optin-success-out' => 'Вы успешно вышли из режима опробования бета-версии интерфейса.
 Вы можете ещё раз попробовать эту версию, нажав ссылку «{{int:optin-try}}» в правом верхнем углу экрана.',
 	'optin-success-feedback' => 'Спасибо за отзыв!',
 	'optin-accept-short' => 'Поехали!',
-	'optin-accept-long' => 'Опробовать Бета-версию',
-	'optin-accept-long-anon' => 'Авторизоваться и попробовать Бета-версию интерфейса',
+	'optin-accept-long' => 'Опробовать бета-версию',
+	'optin-accept-long-anon' => 'Авторизоваться и опробовать бета-версию интерфейса',
 	'optin-deny-short' => 'Нет, спасибо',
 	'optin-deny-long' => 'Вернуться на предыдущую страницу',
-	'optin-submit-out' => 'Покинуть Бета-версию',
+	'optin-submit-out' => 'Покинуть бета-версию',
 	'optin-submit-feedback' => 'Отправить отзыв',
-	'optin-try' => 'Опробовать Бета-версию',
-	'optin-leave' => 'Покинуть Бета-версию',
-	'optin-feedback' => 'Отправить отзыв',
 	'optin-survey-yes' => 'Да',
 	'optin-survey-no' => 'Нет',
-	'optin-survey-intro' => 'Благодарим вас за участие в опробовании Бета-версии интерфейса.
+	'optin-survey-intro' => 'Благодарим вас за участие в опробовании бета-версии интерфейса.
 Нам бы хотелось знать, что вы думаете о новом интерфейсе, поэтому, перед тем, как вы нажмёте «[[#leave|{{int:optin-submit-out}}]]», мы были бы вам признательны за участие в приведённом ниже опросе.',
 	'optin-survey-question-likedislike' => 'Что вам нравится в Beta? Что вам не нравится в Beta?',
 	'optin-survey-question-whyoptout' => 'Почему вы покидаете Beta? (пожалуйста, выберите все подходящие значения)',
@@ -3976,7 +3964,7 @@ $messages['ru'] = array(
 	'optin-survey-answer-os-linux' => 'Linux',
 	'optin-survey-answer-os-other' => 'Другая операционная система:',
 	'optin-survey-question-res' => 'Каково разрешение вашего монитора?',
-	'optin-survey-question-changes' => 'Какие изменения вы хотели бы увидеть в будущих Бета-версиях (выберите все подходящие пункты)?',
+	'optin-survey-question-changes' => 'Какие изменения вы хотели бы увидеть в будущих бета-версиях (выберите все подходящие пункты)?',
 	'optin-survey-answer-changes-nav' => 'Сделать навигацию по всему сайту более простой в использовании.',
 	'optin-survey-answer-changes-edittools' => 'Расширить и усовершенствовать инструменты редактирования.',
 	'optin-survey-answer-changes-upload' => 'Усовершенствовать загрузку содержания и медиа.',
@@ -4028,9 +4016,6 @@ $messages['sah'] = array(
 	'optin-deny-long' => 'Бу иннинээҕи сирэйгэ төннөргө',
 	'optin-submit-out' => 'Beta-ттан тахсарга',
 	'optin-submit-feedback' => 'Сыанабылы ыытыы',
-	'optin-try' => 'Beta-ны тургутуу',
-	'optin-leave' => 'Beta-ттан тахсыы',
-	'optin-feedback' => 'Сыанабылы ыытарга',
 	'optin-survey-yes' => 'Сөп',
 	'optin-survey-no' => 'Суох',
 	'optin-survey-intro' => 'Beta-ны боруобалаабыккар махтал.
@@ -4122,9 +4107,6 @@ Kedykoľvek ho môžete znova vyskúšať kliknutím na „{{int:optin-try}}“ 
 	'optin-deny-long' => 'späť na predošlú stránku',
 	'optin-submit-out' => 'Opustiť Beta',
 	'optin-submit-feedback' => 'Vaše komentáre',
-	'optin-try' => 'Skúsiť Beta',
-	'optin-leave' => 'Opustiť Beta',
-	'optin-feedback' => 'Vaše komentáre',
 	'optin-survey-yes' => 'Áno',
 	'optin-survey-no' => 'Nie',
 	'optin-survey-intro' => 'Ďakujeme, že ste skúsili Beta.
@@ -4208,9 +4190,6 @@ Lahko jo poskusite znova kadarkoli s klikom na povezavo »{{int:optin-try}}« na
 	'optin-deny-long' => 'Vrni se na prejšnjo stran',
 	'optin-submit-out' => 'Zapusti Beta različico',
 	'optin-submit-feedback' => 'Pošlji povratne informacije',
-	'optin-try' => 'Poskusite Beta različico',
-	'optin-leave' => 'Zapusti Beta različico',
-	'optin-feedback' => 'Povratne informacije Beta rezličice',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Ne',
 	'optin-survey-intro' => 'Zahvaljujemo se vam za preizkušanje Beta različice.
@@ -4294,9 +4273,6 @@ $messages['sr-ec'] = array(
 	'optin-deny-long' => 'Повратак на претходну страну',
 	'optin-submit-out' => 'Напусти бета-верзију',
 	'optin-submit-feedback' => 'Пошаљи коментар',
-	'optin-try' => 'Пробајте бета-верзију',
-	'optin-leave' => 'Напустите бета-верзију',
-	'optin-feedback' => 'Повратна информација о бета-верзији',
 	'optin-survey-yes' => 'Да',
 	'optin-survey-no' => 'Не',
 	'optin-survey-intro' => 'Хвала Вам за испробавање бета-верзије.
@@ -4334,7 +4310,7 @@ $messages['sr-ec'] = array(
 	'optin-survey-answer-changes-other' => 'Друго:',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -4388,9 +4364,6 @@ Du kan prova betaversionen igen när som helst genom att klicka på "{{int:optin
 	'optin-deny-long' => 'Återgå till föregående sida',
 	'optin-submit-out' => 'Lämna betatest',
 	'optin-submit-feedback' => 'Ge feedback',
-	'optin-try' => 'Prova betaversion',
-	'optin-leave' => 'Lämna betatest',
-	'optin-feedback' => 'Feedback för betaversionen',
 	'optin-survey-yes' => 'Ja',
 	'optin-survey-no' => 'Nej',
 	'optin-survey-intro' => "Tack för att du provar betaversionen. Vi vill veta vad du tycker om vårt nya gränssnitt, så vi skulle uppskatta om du svarar på enkäten nedan innan du klickar på \"[[#leave|{{int:optin-submit-out}}]]\".
@@ -4476,9 +4449,6 @@ $messages['te'] = array(
 	'optin-deny-long' => 'మునుపటి పేజీకి వెళ్ళండి.',
 	'optin-submit-out' => 'బీటాను విడిచి వెళ్ళు',
 	'optin-submit-feedback' => 'అభిప్రాయాన్ని తెలుపండి',
-	'optin-try' => 'బీటాను ప్రయత్నించండి',
-	'optin-leave' => 'బీటాను విడిచి వెళ్ళు',
-	'optin-feedback' => 'బీటాపై అభిప్రాయాలు',
 	'optin-survey-yes' => 'అవును',
 	'optin-survey-no' => 'కాదు',
 	'optin-survey-intro' => 'బీటాను ప్రయత్నిస్తున్నందుకు ధన్యవాదాలు.
@@ -4564,9 +4534,6 @@ Ekranın sağ üst kısmındaki "{{int:optin-try}}" bağlantısına tıklayarak 
 	'optin-deny-long' => 'Önceki sayfaya dön',
 	'optin-submit-out' => "Beta'dan Çık",
 	'optin-submit-feedback' => 'Geribildirim verin',
-	'optin-try' => "Acai Beta'yı Dene",
-	'optin-leave' => "Acai Beta'dan çıkın",
-	'optin-feedback' => 'Geribildirim verin',
 	'optin-survey-yes' => 'Evet',
 	'optin-survey-no' => 'Hayır',
 	'optin-survey-intro' => 'Beta\'yı denediğiniz için teşekkürler.
@@ -4600,6 +4567,7 @@ Yeni arayüzümüz konusunda ne düşündüğünüzü bilmek isteriz, o yüzden 
 	'optin-survey-answer-changes-richtext' => 'Zengin-metin editörlerine benzer değiştirme araçlarını geliştirin.',
 	'optin-survey-answer-changes-lookfeel' => 'Sitenin "görünüm ve hissini" güncelleyin.',
 	'optin-survey-answer-changes-predictability' => 'Öngörülebilirlik performansını geliştirin.',
+	'optin-survey-answer-changes-custom' => 'Daha fazla kullanıcı özelleştirmesine izin ver.',
 	'optin-survey-answer-changes-other' => 'Diğer:',
 	'optin-improvements' => '== Neler geliştirildi? ==
 [[File:UsabilityNavigation.png|left|link=]]
@@ -4611,10 +4579,15 @@ Yeni dolaşım sistemi, nerede olduğunuzu ve ne yaptığınızı görmenizi, ay
 ;Değiştirme araç çubuğu geliştirmeleri
 Yeni-ve-geliştirilmiş simgeler her aracın ne eylemi yaptığını daha netleştirir. Genişletilebilir bölümler dağınıklığı azaltırken az kullanılan araçları sadece bir tık ötesinde saklar.
 Yardım bölümü, viki-biçimlendirmesinin genel kullanımı için bir referansa kolay erişim sağlar.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+
+== Nasıl dahil olunur ==
+Proje hakkında daha fazla bilgi edinmek ya da dahil olmak için lütfen [http://usability.wikimedia.org Kullanılabilirlik Girşimi\'nin vikisini] ziyaret edin. Orada, araştırmamız, tasarım + geliştirmemiz, ve yayınlarımız hakkında bilgi bulabilirsiniz. Soru sormak veya genel geridönüt bırakmak için, lütfen [http://usability.wikimedia.org/wiki/Talk:Prototype prototip tartışma sayfamızı] kullanın. Belirli konulardan bahsetmek için, lütfen ilgili tartışma sayfalarını kullanın. Eğer hata bulursanız, lütfen yorumlarınızı [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai sürüm tartışma sayfasına] bırakın ya da [https://bugzilla.wikimedia.org Bugzilla]\'yı kullanın.
+
+Teşekkürler, sizden haber bekliyoruz!',
 );
 
-/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
  */
 $messages['tt-cyrl'] = array(
@@ -4658,9 +4631,6 @@ $messages['uk'] = array(
 	'optin-deny-long' => 'Повернутися на попередню сторінку',
 	'optin-submit-out' => 'Покинути Бета-версію',
 	'optin-submit-feedback' => 'Відправити відгук',
-	'optin-try' => 'Випробувати Бета-версію',
-	'optin-leave' => 'Покинути Бета-версію',
-	'optin-feedback' => 'Відправити відгук',
 	'optin-survey-yes' => 'Так',
 	'optin-survey-no' => 'Ні',
 	'optin-survey-intro' => 'Дякуємо вас за участь у випробуванні Бета-версії інтерфейсу.
@@ -4717,9 +4687,6 @@ Te podi entrar da novo quando te vol strucando su "{{int:optin-try}}" in alto a 
 	'optin-deny-long' => 'Torna a la pagina de prima',
 	'optin-submit-out' => 'Và fora da la Beta',
 	'optin-submit-feedback' => 'Dine cossa te ghe ne pensi',
-	'optin-try' => 'Próa la Beta',
-	'optin-leave' => 'Và fora da Beta',
-	'optin-feedback' => 'Cossa ghe ne pénsito de Beta',
 	'optin-survey-yes' => 'Sì',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => 'Grassie de ver proà la Beta.
@@ -4792,9 +4759,6 @@ Bạn có thể dùng lại nó bất cứ lúc nào bằng cách nhấn vào li
 	'optin-deny-long' => 'Quay trở lại trang trước',
 	'optin-submit-out' => 'Rời khỏi Beta',
 	'optin-submit-feedback' => 'Phản hồi',
-	'optin-try' => 'Thử bản Beta',
-	'optin-leave' => 'Rời Beta',
-	'optin-feedback' => 'Phản hồi Beta',
 	'optin-survey-yes' => 'Có',
 	'optin-survey-no' => 'Không',
 	'optin-survey-intro' => 'Cảm ơn bạn đã dùng thử Beta.
@@ -4851,9 +4815,37 @@ Cảm ơn và mong hồi âm từ bạn!',
  * @author Malafaya
  */
 $messages['vo'] = array(
-	'optin-try' => 'Sperimäntolös el Beta',
 	'optin-survey-yes' => 'Si',
 	'optin-survey-no' => 'No',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'optin' => 'זיך אײַנמעלדן צו דער ניצלעכקייט איניציאטיוו',
+	'optin-desc' => "דערלויבן באניצער אויספרובירן בעטאַ, דער ניצלעכקייט איניציאטיוו'ס לעצטע ניצלעכקייט פֿארבעסערונגען.",
+	'optin-title-optedout' => 'פרובירן בעטא',
+	'optin-title-optedin' => 'פֿארלאזן בעטא',
+	'optin-title-justoptedin' => 'ברוך־הבא צו בעטא',
+	'optin-title-justoptedout' => 'ייש"כ פאר פרובירן אונזער בעטא',
+	'optin-title-feedback' => 'בעטא פֿידבעק',
+	'optin-needlogin' => 'איר דארפֿט [$1 אריינלאגירן] צו פרובירן בעטא.',
+	'optin-intro' => 'די וויקיפעדיע ניצלעכקייט איניציאטיוו האט געארבעט שווער צו פארבעסערן די ניצלעכקייט פון וויקיפעדיע.
+אפשר ווילט איר פרובירן אונזער בעטא?',
+	'optin-accept-long' => 'פרובירן בעטא',
+	'optin-accept-long-anon' => 'ארײַנלאגירן און אויספרובירן בעטא',
+	'optin-deny-short' => 'ניין א דאנק',
+	'optin-deny-long' => 'צוריק צום פריערדיקן בלאט',
+	'optin-submit-out' => 'פֿארלאזן בעטא',
+	'optin-survey-yes' => 'יא',
+	'optin-survey-no' => 'ניין',
+	'optin-survey-question-browser' => 'וועלכער בלעטערער ניצט איר?',
+	'optin-survey-answer-browser-other' => 'אנדער בלעטערער:',
+	'optin-survey-question-os' => 'וועלכע אפערירן סיסטעם ניצט איר?',
+	'optin-survey-answer-os-other' => 'אנדער אפערירן סיסטעם:',
+	'optin-survey-question-res' => 'וואס איז די רעזאלוציע פון אייער עקראן?',
+	'optin-survey-answer-changes-other' => 'אנדער:',
 );
 
 /** Yue (粵語)
@@ -4886,9 +4878,6 @@ $messages['yue'] = array(
 	'optin-deny-long' => '返去上一版',
 	'optin-submit-out' => '離開測試版',
 	'optin-submit-feedback' => '畀意見',
-	'optin-try' => '試吓測試版',
-	'optin-leave' => '離開測試版',
-	'optin-feedback' => '測試版反饋',
 	'optin-survey-yes' => '係',
 	'optin-survey-no' => '唔係',
 	'optin-survey-intro' => '多謝你去試用可用性小組嘅可用性加強。
@@ -4978,9 +4967,6 @@ $messages['zh-hans'] = array(
 	'optin-deny-long' => '回到上一页',
 	'optin-submit-out' => '离开测试版',
 	'optin-submit-feedback' => '反馈意见',
-	'optin-try' => '试用测试版',
-	'optin-leave' => '离开测试版',
-	'optin-feedback' => '测试版反馈',
 	'optin-survey-yes' => '是',
 	'optin-survey-no' => '否',
 	'optin-survey-intro' => '感谢您试用测试版。您可以随时点击上面的“{{int:optin-leave}}”退出。
@@ -5061,9 +5047,6 @@ $messages['zh-hant'] = array(
 	'optin-deny-long' => '回到上一頁',
 	'optin-submit-out' => '離開測試版',
 	'optin-submit-feedback' => '給意見',
-	'optin-try' => '試試測試版',
-	'optin-leave' => '離開測試版',
-	'optin-feedback' => '測試版反饋',
 	'optin-survey-yes' => '是',
 	'optin-survey-no' => '否',
 	'optin-survey-intro' => '多謝您去試用可用性小組的可用性增強。

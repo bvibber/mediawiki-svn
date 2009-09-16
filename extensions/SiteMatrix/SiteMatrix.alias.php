@@ -119,7 +119,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'SiteMatrix' => array( 'Matriks situs' ),
+	'SiteMatrix' => array( 'Matriks situs', 'MatriksSitus' ),
 );
 
 /** Japanese (日本語) */
@@ -174,6 +174,11 @@ $aliases['no'] = array(
 	'SiteMatrix' => array( 'Wikimedia-wikier' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'SiteMatrix' => array( 'Matritz dels sites', 'Wikis de Wikimedia' ),
+);
+
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'SiteMatrix' => array( 'Lista projektów' ),
@@ -187,6 +192,11 @@ $aliases['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
 	'SiteMatrix' => array( 'Lista de wikis da Wikimedia' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'SiteMatrix' => array( 'MaticaLokalít' ),
 );
 
 /** Swedish (Svenska) */

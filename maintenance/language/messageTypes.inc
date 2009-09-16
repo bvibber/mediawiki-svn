@@ -25,6 +25,7 @@ $wgIgnoredMessages = array(
 	'accesskey-ca-viewsource',
 	'accesskey-ca-history',
 	'accesskey-ca-protect',
+	'accesskey-ca-unprotect',
 	'accesskey-ca-delete',
 	'accesskey-ca-undelete',
 	'accesskey-ca-move',
@@ -35,6 +36,7 @@ $wgIgnoredMessages = array(
 	'accesskey-search-fulltext',
 	'accesskey-p-logo',
 	'accesskey-n-mainpage',
+	'accesskey-n-mainpage-description',
 	'accesskey-n-portal',
 	'accesskey-n-currentevents',
 	'accesskey-n-recentchanges',
@@ -154,6 +156,8 @@ $wgIgnoredMessages = array(
 	'upload-summary',
 	'newuserlogentry',
 	'wantedtemplates-summary',
+	'activeusers-summary',
+	'editpage-tos-summary',
 );
 
 /** Optional messages, which may be translated only if changed in the target language. */
@@ -335,13 +339,17 @@ $wgOptionalMessages = array(
 	'parentheses',
 	'autocomment-prefix',
 	'listgrouprights-right-display',
+	'listgrouprights-right-revoked',
 	'timezone-utc',
 	'whatlinkshere-backlink',
 	'recentchangeslinked-backlink',
+	'unpatrolledletter',
 	'diff-with-additional',
 	'pagetitle-view-mainpage',
 	'trackback',
 	'trackbackexcerpt',
+	'prefs-registration-date-time',
+	'prefs-memberingroups-type',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

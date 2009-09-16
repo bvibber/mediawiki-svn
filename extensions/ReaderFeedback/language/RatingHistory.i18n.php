@@ -28,30 +28,40 @@ $messages['en'] = array(
 	'ratinghistory-table-rating' => 'Rating',
 	'ratinghistory-table-votes'  => 'Votes',
 	'ratinghistory-none'    => 'There is not enough reader feedback data available for graphs at this time.',
-	'ratinghistory-legend'  => 'The \'\'\'daily average rating\'\'\' <font color="blue">\'\'(blue)\'\'</font> and 
-	\'\'\'running average rating\'\'\' <font color="green">\'\'(green)\'\'</font> are graphed below, by date. The 
-	\'\'\'running average rating\'\'\' is simply the average of all the daily ratings \'\'within\'\' this time frame for each day.
+	'ratinghistory-ratings' => '\'\'\'Legend:\'\'\' \'\'\'(1)\'\'\' - Poor; \'\'\'(2)\'\'\' - Low; \'\'\'(3)\'\'\' - Fair; \'\'\'(4)\'\'\' - High; \'\'\'(5)\'\'\' - Excellent;',
+	'ratinghistory-legend'  => 'The \'\'\'daily number of reviews\'\'\' <font color="red">\'\'(red)\'\'</font>, \'\'\'daily average rating\'\'\' <font color="blue">\'\'(blue)\'\'</font>,
+	and \'\'\'running average rating\'\'\' <font color="green">\'\'(green)\'\'</font> are graphed below, by date.
+	The \'\'\'running average rating\'\'\' is simply the average of all the daily ratings \'\'within\'\' this time frame for each day.
+	The ratings are as follows:
 	
-Scale: \'\'\'[1]\'\'\' - Poor; \'\'\'[2]\'\'\' - Low; \'\'\'[3]\'\'\' - Fair; \'\'\'[4]\'\'\' - High; \'\'\'[5]\'\'\' - Excellent;
-
-	The \'\'\'number of reviews per day\'\'\' <font color="red">\'\'(red)\'\'</font> is shown on the graphs below, on a \'\'1:$1\'\' scale.',
+	\'\'\'(1)\'\'\' - Poor; \'\'\'(2)\'\'\' - Low; \'\'\'(3)\'\'\' - Fair; \'\'\'(4)\'\'\' - High; \'\'\'(5)\'\'\' - Excellent;',
+	'ratinghistory-graph-scale' => '\'\'\'Reviews per day\'\'\' <font color="red">\'\'(red)\'\'</font> shown on a \'\'1:$1\'\' scale.',
 	'right-feedback' => 'Use the feedback form to rate a page',
 );
 
 /** Message documentation (Message documentation)
  * @author Aotake
  * @author Boivie
+ * @author Byrial
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'ratinghistory-ave' => 'Average',
-	'ratinghistory-legend' => "<pre>
-'''[1]''' - {{int:readerfeedback-level-0}}
-'''[2]''' - {{int:readerfeedback-level-1}}
-'''[3]''' - {{int:readerfeedback-level-2}}
-'''[4]''' - {{int:readerfeedback-level-3}}
-'''[5]''' - {{int:readerfeedback-level-4}}
-</pre>",
+	'ratinghistory-graph' => '$2 is a rating category (e.g. {{int:readerfeedback-reliability}}, {{int:readerfeedback-completeness}}, {{int:readerfeedback-npov}}, {{int:readerfeedback-presentation}}, or {{int:readerfeedback-overall}}).
+
+
+$3 is the page name for the rated page.',
+	'ratinghistory-ratings' => "'''(1)''' - {{int:readerfeedback-level-0}}
+'''(2)''' - {{int:readerfeedback-level-1}}
+'''(3)''' - {{int:readerfeedback-level-2}}
+'''(4)''' - {{int:readerfeedback-level-3}}
+'''(5)''' - {{int:readerfeedback-level-4}}",
+	'ratinghistory-legend' => "'''(1)''' - {{int:readerfeedback-level-0}}
+'''(2)''' - {{int:readerfeedback-level-1}}
+'''(3)''' - {{int:readerfeedback-level-2}}
+'''(4)''' - {{int:readerfeedback-level-3}}
+'''(5)''' - {{int:readerfeedback-level-4}}",
 	'right-feedback' => '{{doc-right|feedback}}',
 );
 
@@ -164,12 +174,14 @@ $messages['be-tarask'] = array(
 	'ratinghistory-table-rating' => 'Адзнака',
 	'ratinghistory-table-votes' => 'Галасы',
 	'ratinghistory-none' => 'У гэты час недастаткова адзнак чытачоў для стварэньня графіка.',
-	'ratinghistory-legend' => "Ніжэй пададзеныя '''сярэднесутачная''' <font color=\"blue\">''(блакітны)''</font> і  
-'''цяперашняя сярэдняя''' <font color=\"green\">''(зялёны)''</font> адзнакі. '''Цяперашняя сярэдняя адзнака''' — сярэдняе значэньне ўсіх штодзённых адзнак ''за'' пэрыяд часу кожнага дня.
+	'ratinghistory-ratings' => "'''Легенда:''' '''(1)''' — благая; '''(2)''' — нізкая; '''(3)''' — сярэдняя; '''(4)''' — высокая; '''(5)''' — выдатная;",
+	'ratinghistory-legend' => "Ніжэй пададзеныя '''колькасьць праверак за дзень''' <font color=\"red\">''(чырвоны)''</font>, '''сярэднесутачная''' <font color=\"blue\">''(блакітны)''</font> і  
+'''цяперашняя сярэдняя''' <font color=\"green\">''(зялёны)''</font> адзнакі па датах.
+'''Цяперашняя сярэдняя адзнака''' — сярэдняе значэньне ўсіх штодзённых адзнак ''за'' пэрыяд часу кожнага дня.
+Выкарыстоўваюцца наступныя адзнакі:
 
-Шкала: '''[1]''' - Благая; '''[2]''' - Нізкая; '''[3]''' - Сярэдняя; '''[4]''' - Высокая; '''[5]''' - Выдатная;
-
-'''Колькасьць праверак за дзень''' <font color=\"red\">''(чырвоны)''</font> паказана на графіку ніжэй, у маштабе ''1:\$1''.",
+'''(1)''' — благая; '''(2)''' — нізкая; '''(3)''' — сярэдняя; '''(4)''' — высокая; '''(5)''' — выдатная;",
+	'ratinghistory-graph-scale' => "'''Колькасьць праверак за дзень''' <font color=\"red\">''(чырвоны)''</font> паказана ў маштабе ''1:\$1''.",
 	'right-feedback' => 'Выкарыстоўвайце форму зваротнай сувязі для адзнакі старонкі',
 );
 
@@ -182,6 +194,17 @@ $messages['bg'] = array(
 	'ratinghistory-month' => 'последния месец',
 	'ratinghistory-year' => 'последната година',
 	'ratinghistory-3years' => 'последните 3 години',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'ratinghistory-period' => 'সময়:',
+	'ratinghistory-month' => 'গত মাস',
+	'ratinghistory-3months' => 'গত ৩ মাস',
+	'ratinghistory-3years' => 'গত ৩ বছর',
+	'ratinghistory-ave' => 'গড়: $1',
 );
 
 /** Bosnian (Bosanski)
@@ -208,14 +231,15 @@ $messages['bs'] = array(
 	'ratinghistory-table-rating' => 'Rejting',
 	'ratinghistory-table-votes' => 'Glasovi',
 	'ratinghistory-none' => 'Trenutno nema dovoljno podataka povratne veze čitaoca za prikaz grafikonom.',
-	'ratinghistory-legend' => "'''Dnevni prosječni rejting''' <font color=\"blue\">''(plavo)''</font> i  
-'''tekući prosječni rejting''' <font color=\"green\">''(zeleno)''</font> je prikazan na grafikonu ispod, po datumu. 
-
+	'ratinghistory-ratings' => "'''Objašnjenje:''' '''(1)''' - Slabo; '''(2)''' - Nisko; '''(3)''' - Dobro; '''(4)''' - Visoko; '''(5)''' - Odlično;",
+	'ratinghistory-legend' => "'''Broj pregleda po danu''' <font color=\"red\">''(crveno)''</font>, '''dnevni prosječni rejting''' <font color=\"blue\">''(plavo)''</font> i  
+'''tekući prosječni rejting''' <font color=\"green\">''(zeleno)''</font> je prikazan na grafikonu ispod, po datumu.
 '''Tekući prosječni rejting''' je jednostavni prosjek svih dnevnih rejtinga ''unutar'' ovog vremenskog perioda za svaki dan.
 
-Skala: '''[1]''' - Slab; '''[2]''' - Loš; '''[3]''' - Solidan; '''[4]''' - Visok; '''[5]''' - odličan;
+Rejtinzi su slijedeći:
 
-'''Broj pregleda po danu''' <font color=\"red\">''(crveno)''</font> je prikazan na grafikonu ispod, u projekciji ''1:\$1''.",
+'''[1]''' - Slab; '''[2]''' - Loš; '''[3]''' - Solidan; '''[4]''' - Visok; '''[5]''' - odličan;",
+	'ratinghistory-graph-scale' => "'''Provjere po danu''' <font color=\"red\">''(crveno)''</font> prikazano u razmjeri ''1:\$1''.",
 	'right-feedback' => 'Korištenje obrasca povratne veze za ocjenjivanje stranice',
 );
 
@@ -231,6 +255,41 @@ $messages['ca'] = array(
 	'ratinghistory-3years' => 'últims 3 anys',
 	'ratinghistory-ave' => 'Mit: $1',
 	'ratinghistory-table-votes' => 'Vots',
+);
+
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'ratinghistory' => 'Sidebedømmelseshistorik',
+	'ratinghistory-leg' => 'Bedømmelseshistorikdata for [[:$1|$1]]',
+	'ratinghistory-tab' => 'bedømmelse',
+	'ratinghistory-link' => 'Sidebedømmelse',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Tak fordi at du brugte tid til at bedømme denne side!</font>''",
+	'ratinghistory-period' => 'Periode:',
+	'ratinghistory-month' => 'Seneste måned',
+	'ratinghistory-3months' => 'seneste 3 måneder',
+	'ratinghistory-year' => 'seneste år',
+	'ratinghistory-3years' => 'seneste 3 år',
+	'ratinghistory-ave' => 'Snit: $1',
+	'ratinghistory-chart' => 'Læserbedømmelser over tid',
+	'ratinghistory-purge' => 'opdatér cache',
+	'ratinghistory-table' => 'Oversigt over læserbedømmelser',
+	'ratinghistory-users' => 'Brugere som har bedømt siden',
+	'ratinghistory-graph' => '$2 af "$3" ($1 {{PLURAL:$1|bedømmelse|bedømmelser}})',
+	'readerfeedback-svg' => 'Vis som SVG',
+	'ratinghistory-table-rating' => 'Bedømmelse',
+	'ratinghistory-table-votes' => 'Stemmer',
+	'ratinghistory-none' => 'Der er endnu ikke nok læserbedømmelser til at vise grafer.',
+	'ratinghistory-ratings' => "'''Forklaring:''' '''(1)''' - Meget dårlig; '''(2)''' - Dårlig; '''(3)''' - Middel; '''(4)''' - God; '''(5)''' - Meget god;",
+	'ratinghistory-legend' => "Det '''daglige antal bedømmelser''' <font color=\"red\">''(rød)''</font>, den '''daglige gennemsnitsbedømmelse''' <font color=\"blue\">''(blå)''</font>
+og '''løbende gennemsnitsbedømmelse''' <font color=\"green\">''(grøn)''</font> vises i grafen nedenfor efter dato.
+Den '''løbende gennemsnitsbedømmelse''' er simpelthen gennemsnittet af alle de daglige bedømmelser ''inden for'' tidsperioden for hver dag.
+Bedømmelserne er:
+
+'''[1]''' - Meget dårlig; '''[2]''' - Dårlig; '''[3]''' - Middel; '''[4]''' - God; '''[5]''' - Meget god;",
+	'ratinghistory-graph-scale' => "'''Bedømmelser per dag''' <font color=\"red\">''(rød)''</font> vist i forholdet ''1:\$1''.",
+	'right-feedback' => 'Brug tilbagemeldingsformularen til at bedømme en side',
 );
 
 /** German (Deutsch)
@@ -261,11 +320,14 @@ $messages['de'] = array(
 	'ratinghistory-table-rating' => 'Bewertung',
 	'ratinghistory-table-votes' => 'Stimmen',
 	'ratinghistory-none' => 'Es gibt noch nicht genug Seitenbewertungen durch Leser, um eine Grafik zu erstellen.',
-	'ratinghistory-legend' => "Der '''Bewertungs-Tagesdurchschnitt''' <font color=\"blue\">''(blau)''</font> und der '''Durchschnitt über den ausgewählten Zeitraum''' <font color=\"green\">''(grün)''</font> werden nachfolgend nach Datum sortiert angezeigt. Der '''Durchschnitt im ausgewählten Zeitraum''' ist der Durchschnitt aller Tagesbewertungen ''innerhalb'' dieser Zeitspanne.
+	'ratinghistory-ratings' => "'''Legende:''' '''(1)''' - {{int:readerfeedback-level-0}}; '''(2)''' - {{int:readerfeedback-level-1}}; '''(3)''' - {{int:readerfeedback-level-2}}; '''(4)''' - {{int:readerfeedback-level-3}}; '''(5)''' - {{int:readerfeedback-level-4}}",
+	'ratinghistory-legend' => "Die '''tägliche Zahl an Sichtungen''' <font color=\"red\">''(rot)''</font>, '''Bewertungs-Tagesdurchschnitt''' <font color=\"blue\">''(blau)''</font>
+und der '''Durchschnitt über den ausgewählten Zeitraum''' <font color=\"green\">''(grün)''</font> werden nachfolgend nach Datum sortiert angezeigt.
+Der '''Durchschnitt im ausgewählten Zeitraum''' ist der Durchschnitt aller Tagesbewertungen ''innerhalb'' dieser Zeitspanne.
 
-Legende: '''[1]''' - Mangelhaft; '''[2]''' - Ausreichend; '''[3]''' - Befriedigend; '''[4]''' - Gut; '''[5]''' - Sehr gut;
-
-In der folgenden Grafik wird die '''Anzahl Bewertungen pro Tag''' <font color=\"red\">''(rot)''</font> auf einer 1:\$1-Skala gezeigt.",
+Die Bewertung erfolgt nach:
+'''(1)''' - {{int:readerfeedback-level-0}}; '''(2)''' - {{int:readerfeedback-level-1}}; '''(3)''' - {{int:readerfeedback-level-2}}; '''(4)''' - {{int:readerfeedback-level-3}}; '''(5)''' - {{int:readerfeedback-level-4}};",
+	'ratinghistory-graph-scale' => "Die '''tägliche Zahl an Sichtungen''' <font color=\"red\">''(rot)''</font> werden im Maßstab ''1:\$1'' angezeigt.",
 	'right-feedback' => 'Bewerten einer Seite',
 );
 
@@ -301,12 +363,14 @@ $messages['dsb'] = array(
 	'ratinghistory-table-rating' => 'Pógódnośenje',
 	'ratinghistory-table-votes' => 'Głose',
 	'ratinghistory-none' => 'Tuchylu njejo dosć pógódnośenjow wót cytarjow, aby napórało grafiku.',
-	'ratinghistory-legend' => "'''Dnjowne pśerězne gódnośenje''' <font color=\"blue\">''(módry)''</font> a  
-'''pśerězne gódnośenje za wubrany cas''' <font color=\"green\">''(zeleny)''</font> zwobraznjujotej se dołojce pó datumje. '''Pśerězne gódnośenje za wubrany cas''' jo jadnorje pśerězk wšych dnjownych pógódnośenjow ''w'' toś tom casowem wótrězku kuždego dnja.
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Špatny; '''(2)''' - Niski; '''(3)''' - Spokojecy; '''(4)''' - Wusoki; '''(5)''' - Ekscelentny;",
+	'ratinghistory-legend' => "'''Dnjowna licba pśeglědanjow''' <font color=\"red\">''(cerwjeny)''</font>, '''dnjowne pśerězne gódnośenje''' <font color=\"blue\">''(módry)''</font> a  
+'''pśerězne gódnośenje za wubrany cas''' <font color=\"green\">''(zeleny)''</font> zwobraznjuju se dołojce pó datumje. '''Pśerězne gódnośenje za wubrany cas''' jo jadnorje pśerězk wšych dnjownych pógódnośenjow ''w'' toś tom casowem wótrězku kuždego dnja.
 
-Skala: '''[1]''' - Špatny; '''[2]''' - Niski; '''[3]''' - Spokojecy; '''[4]''' - Wusoki; '''[5]''' - Wuběrny;
+Gódnośenja su ako slědujuce:
 
-'''Licba pógódnośenjow na źeń''' <font color=\"red\">''(cerwjeny)''</font> pokazujo se dołojce na grafice, w měritku ''1:\$1''.",
+'''(1)''' - Špatny; '''(2)''' - Niski; '''(3)''' - Spokojecy; '''(4)''' - Wusoki; '''(5)''' - Ekscelentny;",
+	'ratinghistory-graph-scale' => "'''Pśeglědanja na źeń''' <font color=\"red\">''(cerwjeny)''</font> pokazujo se w měritku ''1:\$1''.",
 	'right-feedback' => 'Wužyj pógódnośeński formular, aby pógódnośił bok',
 );
 
@@ -369,6 +433,7 @@ La '''nombro de kontrolo po tago''' <font color=\"red\">''(ruĝa)''</font> estas
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Crazymadlover
  */
 $messages['es'] = array(
@@ -392,12 +457,13 @@ $messages['es'] = array(
 	'ratinghistory-table-rating' => 'Rating',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'No hay suficientes datos de retroalimentación de lector disponible para gráficos en este momento.',
-	'ratinghistory-legend' => "La '''valoración promedio diaria''' <font color=\"blue\">''(azul)''</font> y
+	'ratinghistory-ratings' => "'''Nota:''' '''(1)''' - Pobre; '''(2)''' - Bajo; '''(3)''' - Aceptable; '''(4)''' - Alto; '''(5)''' - Excelente;",
+	'ratinghistory-legend' => "El '''número de revisiones diarias''' <font color=\"red\">''(rojo)''</font>, '''valoración promedio diaria''' <font color=\"blue\">''(azul)''</font> y
 '''valoración promedio de ejecución''' <font color=\"green\">''(verde)''</font> están graficados abajo, por fecha. 
 La  '''valoración promedio de ejecución''' es simplemente el promedio de todas las valoraciones diarias ''dentro'' de este marco temporal por cada día.
+Las valoraciones son como siguen:
 
-Escala: '''[1]''' - Pobre; '''[2]''' - Bajo; '''[3]''' - Regular; '''[4]''' - Alto; '''[5]''' - Excelente;
-El '''número de revisiones por día''' <font color=\"red\">''(rojo)''</font> es mostrado en los gráficos de abajo, en una escala ''1:\$1''.",
+'''(1)''' - Pobre; '''(2)''' - Bajo; '''(3)''' - Regular; '''(4)''' - Alto; '''(5)''' - Excelente;",
 	'right-feedback' => 'Usar el formulario de retroalimentación para valorar una página',
 );
 
@@ -459,6 +525,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'ratinghistory' => 'Sivun arvosteluhistoria',
+	'ratinghistory-leg' => 'Sivun [[:$1|$1]] arviointihistoria',
 	'ratinghistory-tab' => 'arvostelu',
 	'ratinghistory-link' => 'Sivun arvostelu',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Kiitos, että tarkistit tämän sivun!</font>''",
@@ -476,6 +543,14 @@ $messages['fi'] = array(
 	'ratinghistory-table-rating' => 'Arvostelu',
 	'ratinghistory-table-votes' => 'Äänet',
 	'ratinghistory-none' => 'Ei ole tarpeeksi lukijapalautetta, jotta taulukko voitaisiin esittää.',
+	'ratinghistory-ratings' => "'''Kuvaaja:''' '''(1)''' – {{int:readerfeedback-level-0}}; '''(2)''' – {{int:readerfeedback-level-1}}; '''(3)''' – {{int:readerfeedback-level-2}}; '''(4)''' – {{int:readerfeedback-level-3}}; '''(5)''' – {{int:readerfeedback-level-4}}",
+	'ratinghistory-legend' => "'''Päivittäinen arviointimäärä''' <font color=\"red\">''(punainen)''</font>, '''päivittäinen keskiarvo''' <font color=\"blue\">''(sininen)''</font>
+ja '''valitun ajanjakson keskiarvo''' <font color=\"green\">''(vihreä)''</font> on listattu alla päivämäärän mukaan lajiteltuna.
+'''Valitun ajanjakson arviointien keskiarvo''' on yksinkertaisesti kaikkien päivittäisten arvioiden keskiarvo tämän aikavälin ''sisällä'' joka päivältä.
+Arvioinnit ovat seuraavia:
+
+'''(1)''' – {{int:readerfeedback-level-0}}; '''(2)''' – {{int:readerfeedback-level-1}}; '''(3)''' – {{int:readerfeedback-level-2}}; '''(4)''' – {{int:readerfeedback-level-3}}; '''(5)''' – {{int:readerfeedback-level-4}}",
+	'ratinghistory-graph-scale' => "'''Arvioita päivittäin''' <font color=\"red\">''(punainen)''</font> näkyy ''1:\$1''-mittakaavassa.",
 	'right-feedback' => 'Käyttää palautelomaketta sivujen arvosteluun',
 );
 
@@ -508,13 +583,13 @@ $messages['fr'] = array(
 	'ratinghistory-table-rating' => 'Évaluation',
 	'ratinghistory-table-votes' => 'Votes',
 	'ratinghistory-none' => "Il n’y a pas suffisamment d'avis exprimés par des lecteurs pour établir des graphiques pour l'instant.",
-	'ratinghistory-legend' => "L''''évaluation moyenne quotidienne''' <font color=\"blue\">''(bleu)''</font> et
-l''''évaluation moyenne en cours''' <font color=\"green\">''(vert)''</font> sont représentées graphiquement ci-dessous, par date.
+	'ratinghistory-ratings' => "'''Légende :''' '''(1)''' - Mauvais ; '''(2)''' - Médiocre ; '''(3)''' - Moyen ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
+	'ratinghistory-legend' => "Le '''nombre d'évaluations par jour''' <font color=\"red\">''(rouge)''</font>, l''''évaluation moyenne par jour''' <font color=\"blue\">''(bleu)''</font> et l''''évaluation moyenne en cours''' <font color=\"green\">''(vert)''</font> sont représentées graphiquement ci-dessous, par date.
 L''''évaluation moyenne en cours''' est simplement la moyenne de toutes les évaluations quotidiennes ''dans'' la période du jour choisie.
+Les notations sont les suivantes :
 
-Échelle : '''[1]''' - Mauvais ; '''[2]''' - Médiocre ; '''[3]''' - Moyen ; '''[4]''' - Bon ; '''[5]''' - Excellent.
-
-Le '''nombre de relectures par jour''' <font color=\"red\">''(rouge)''</font> est affiché sur le graphe ci-dessous, avec une échelle ''1:\$1''.",
+'''(1)''' - Mauvais ; '''(2)''' - Médiocre ; '''(3)''' - Moyen ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
+	'ratinghistory-graph-scale' => "'''Évaluations par jour''' <font color=\"red\">''(rouge)''</font> affichées à l'échelle ''1:\$1''.",
 	'right-feedback' => "Utiliser le formulaire de retour d'informations pour évaluer une page",
 );
 
@@ -584,13 +659,13 @@ $messages['gl'] = array(
 	'ratinghistory-table-rating' => 'Valoración',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Arestora non hai suficientes datos das reaccións dos lectores dispoñibles para as gráficas.',
-	'ratinghistory-legend' => "A '''valoración do promedio diario''' <font color=\"blue\">''(azul)''</font> e
-a '''valoración do promedio en curso''' <font color=\"green\">''(verde)''</font> están, por data, na gráfica de embaixo. A  
-'''valoración do promedio en curso''' é simplemente a valoración de todas as valoracións diarias ''dentro'' do período de tempo de cada día.
+	'ratinghistory-ratings' => "'''Lenda:''' '''(1)''' - Pobre; '''(2)''' - Baixa; '''(3)''' - Boa; '''(4)''' - Alta; '''(5)''' - Excelente;",
+	'ratinghistory-legend' => "O '''número de revisións ao día''' <font color=\"red\">''(vermello)''</font>, a '''valoración do promedio diario''' <font color=\"blue\">''(azul)''</font> e a '''valoración do promedio en curso''' <font color=\"green\">''(verde)''</font> están, por data, na gráfica de embaixo.
+A '''valoración do promedio en curso''' é simplemente a valoración de todas as valoracións diarias ''dentro'' do período de tempo de cada día.
+As valoracións son como segue:
 
-Escala: '''[1]''' - Pobre; '''[2]''' - Baixo; '''[3]''' - Ben; '''[4]''' - Alto; '''[5]''' - Excelente;
-
-O '''número de revisións ao día''' <font color=\"red\">''(vermello)''</font> móstrase embaixo, cunha escala de ''1:\$1''.",
+'''(1)''' - Pobre; '''(2)''' - Baixa; '''(3)''' - Boa; '''(4)''' - Alta; '''(5)''' - Excelente;",
+	'ratinghistory-graph-scale' => "As '''revisións por día''' <font color=\"red\">''(vermello)''</font> móstranse cunha escala de ''1:\$1''.",
 	'right-feedback' => 'Usar o formulario de reacción para valorar unha páxina',
 );
 
@@ -637,17 +712,21 @@ $messages['gsw'] = array(
 	'ratinghistory-table-rating' => 'Bewärtig',
 	'ratinghistory-table-votes' => 'Stimme',
 	'ratinghistory-none' => 'S git nonig gnue Sytebewärtige dur Läser zum e Grafik aazlege.',
-	'ratinghistory-legend' => "Dr '''Durchschnitt vu Bewärtige am Tag''' <font color=\"blue\">''(blau)''</font> un dr '''Durchschnitt iber dr usgwehlt Zytruum''' <font color=\"green\">''(grün)''</font> wäre do aazeigt no Datum sortiert.
+	'ratinghistory-ratings' => "'''Legänd:''' '''(1)''' - Mangelhaft; '''(2)''' - Längt uus; '''(3)''' - Mittel; '''(4)''' - Guet; '''(5)''' - Exzellänt;",
+	'ratinghistory-legend' => "D '''täglig aazahl vu Bewärtige''' <font color=\"red\">''(rot)''</font>, dr '''Durchschnitt vu Bewärtige am Tag''' <font color=\"blue\">''(blau)''</font>,
+un dr '''Durchschnitt iber dr usgwehlt Zytruum''' <font color=\"green\">''(grün)''</font> wäre do aazeigt no Datum sortiert.
+Dr '''Durchschnitt iber dr usgwehlt Zytruum''' isch eifach dr Durchschnitt vu Bewärtige vu allene täglige Bewärtige ''in'' däm Zytruum fir jede Tag.
+Des sin d Bewärtige:
 
-'''[1]''' - isch Mangelhaft; '''[2]''' - Längt uus; '''[3]''' - Goht; '''[4]''' - isch Guet; '''[5]''' - isch Seli guet;
-
-In däre Grafik wird d '''Aazahl vu Bewärtige am Tag''' <font color=\"red\">''(rot)''</font> uf ere ''1:\$1''-Skala zeigt.",
+'''[1]''' - isch Mangelhaft; '''[2]''' - Längt uus; '''[3]''' - Goht; '''[4]''' - isch Guet; '''[5]''' - isch Seli guet;",
+	'ratinghistory-graph-scale' => "'''Priefige am Tag''' <font color=\"red\">''(red)''</font> uf ere ''1:\$1'' Skala.",
 	'right-feedback' => 'E Syte bewärte',
 );
 
 /** Hebrew (עברית)
  * @author DoviJ
  * @author Rotemliss
+ * @author YaronSh
  * @author דניאל ב.
  */
 $messages['he'] = array(
@@ -671,12 +750,14 @@ $messages['he'] = array(
 	'ratinghistory-table-rating' => 'דירוג',
 	'ratinghistory-table-votes' => 'הצבעות',
 	'ratinghistory-none' => 'אין כרגע מספיק מידע זמין של משוב קוראים ליצירת תרשימים',
+	'ratinghistory-ratings' => "'''מקרא:''' '''(1)''' - גרוע; '''(2)''' - נמוך; '''(3)''' - בינוני; '''(4)''' - גבוה; '''(5)''' - מצוין;",
 	'ratinghistory-legend' => "'''הדירוג הממוצע היומי''' <font color=\"blue\">'''(בכחול)'''</font> ו'''הדירוג הממוצע בתווך''' <font color=\"green\">'''(בירוק)'''</font> מוצגים בטבלאות למטה, לפי תאריך.
 '''הדירוג הממוצע בתווך''' הוא פשוט הממוצע לכל הדירוגים ''בתוך'' התווך הזה לכל יום.
 
 דירוג: '''[1]''' - גרוע; '''[2]''' - נמוך; '''[3]''' - בינוני; '''[4]''' - גבוה; '''[5]''' - מצוין;
 
 '''מספר הביקורות ליום''' <font color=\"red\">'''(באדום)'''</font> מוצגים בטבלאות למטה, ביחס של ''1:\$1''.",
+	'ratinghistory-graph-scale' => "'''סקירות ליום''' <font color=\"red\">''(אדום)''</font> מופיעות ביחס של ''1:\$1''.",
 	'right-feedback' => 'השתמשו בטופס המשוב כדי לדרג דף',
 );
 
@@ -704,13 +785,14 @@ $messages['hsb'] = array(
 	'ratinghistory-table-rating' => 'Pohodnoćenje',
 	'ratinghistory-table-votes' => 'Hłosy',
 	'ratinghistory-none' => 'Za grafiki hišće dosć pohódnoćenjow wot čitarjow k dispoziciji njesteji',
-	'ratinghistory-legend' => "'''Dnjowe přerězne hódnoćenje''' <font color=\"blue\">''(módry)''</font> a '''běžne přerězne hódnoćenje''' <font color=\"green\">''(zeleny)''</font> stej deleka po datumje grafisce zwobraznjenej.
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Špatny; '''(2)''' - Niski; '''(3)''' - Spokojacy; '''(4)''' - Wysoki; '''(5)''' - Ekscelentny;",
+	'ratinghistory-legend' => "'''Dnjowa ličba pruwowanjow''' <font color=\"red\">''(čerwjeny)''</font>, '''dnjowe přerězne hódnoćenje''' <font color=\"blue\">''(módry)''</font> a '''běžne přerězne hódnoćenje''' <font color=\"green\">''(zeleny)''</font> su deleka po datumje grafisce zwobraznjene.
+'''Běžne přerězne hódnoćenje''' je prosće přerězk wšěch dnjowych hódnoćenjow ''znutřka'' tutoho časoweho wotrězka za kóždy dźeń.
+Hódnoćenja su kaž tele:
 
-'''Běžne přerězne hódnoćenje''' je prosće přerězk wšěch dnjowych pohódnoćenjow ''znutřka'' tutoho časoweho wotrězka za kóždy dźeń.
 
-Skala: '''[1]''' - Špatny; '''[2]''' - Niski; '''[3]''' - Spokojacy; '''[4]''' - Wysoki; '''[5]''' - Wuběrny;
-
-'''Ličba pohódnoćenja wob dźeń''' <font color=\"red\">''(čerwjeny)''</font> pokazuje so na slědowacej grafice, w měritku ''1:\$1''.",
+'''(1)''' - Špatny; '''(2)''' - Niski; '''(3)''' - Spokojacy; '''(4)''' - Wysoki; '''(5)''' - Ekscelentny;",
+	'ratinghistory-graph-scale' => "'''Pruwowanja na dźeń''' <font color=\"red\">''(čerwjeny)''</font> pokazowane w měritku ''1:\$1''.",
 	'right-feedback' => 'Wužij wotmołwny formular, zo by stronu pohódnoćił',
 );
 
@@ -736,6 +818,7 @@ $messages['hu'] = array(
 	'ratinghistory-3years' => '3 év',
 	'ratinghistory-ave' => 'Átlag: $1',
 	'ratinghistory-chart' => 'Olvasói visszajelzések időrendben',
+	'ratinghistory-purge' => 'gyorsítótár kiürítése',
 	'ratinghistory-table' => 'Olvasói értékelések áttekintése',
 	'ratinghistory-users' => 'Szerkesztők, akik értékelték a lapot',
 	'ratinghistory-graph' => '$2 a „$3” oldalon ($1 {{PLURAL:$1|értékelés|értékelés}})',
@@ -743,11 +826,13 @@ $messages['hu'] = array(
 	'ratinghistory-table-rating' => 'Értékelés',
 	'ratinghistory-table-votes' => 'Szavazatok',
 	'ratinghistory-none' => 'Jelenleg még nem áll rendelkezésre elég visszajelzés a grafikonok elkészítéséhez.',
-	'ratinghistory-legend' => "Alább a '''napi átlagos értékelés''' <font color=\"blue\">''(kék színnel)''</font> és a '''megadott időtartam alatti átlagos értékelés''' <font color=\"green\">''(zöld színnel)''</font> grafikonja látható, dátum szerint. A '''megadott időtartam alatti átlagos értékelés''' egyszerűen az összes napi értékelés átlaga a megadott időtartam '''alatt'''.
+	'ratinghistory-ratings' => "'''Magyarázat:''' '''[1]''' – rossz; '''[2]''' – gyenge; '''[3]''' – közepes; '''[4]''' – jó; '''[5]''' – kitűnő;",
+	'ratinghistory-legend' => "Alább a '''napi értékelések száma ''' <font color=\"red\">''(vörös)''</font>, a '''napi átlagos értékelés''' <font color=\"blue\">''(kék)''</font> és a '''megadott időtartam alatti átlagos értékelés''' <font color=\"green\">''(zöld)''</font> grafikonja látható, dátum szerint. A '''megadott időtartam alatti átlagos értékelés''' egyszerűen az összes napi értékelés átlaga a megadott időtartam '''alatt'''.
 
-Értékek: '''[1]''' – rossz; '''[2]''' – gyenge; '''[3]''' – közepes; '''[4]''' – jó; '''[5]''' – kitűnő;
+Az értékek a következők lehetnek:
 
-A '''naponkénti értékelések száma''' <font color=\"red\">''(piros színnel)''</font> látható a grafikonokon, ''1:\$1'' arányon.",
+'''[1]''' – rossz; '''[2]''' – gyenge; '''[3]''' – közepes; '''[4]''' – jó; '''[5]''' – kitűnő;",
+	'ratinghistory-graph-scale' => "'''Visszajelzés / nap ''' <font color=\"red\">''(vörös színnel)''</font> ''1:\$1'' skálán megjelenítve.",
 	'right-feedback' => 'oldalak értékelése a visszajelzés-űrlap segítségével',
 );
 
@@ -775,13 +860,14 @@ $messages['ia'] = array(
 	'ratinghistory-table-rating' => 'Evalutation',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Non es disponibile sufficiente datos de evalutationes de lectores pro poter facer graphicos al momento.',
-	'ratinghistory-legend' => "Le '''evalutation medie de cata die''' <font color=\"blue\">''(blau)''</font> e  
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Mal; '''(2)''' - Mediocre; '''(3)''' - Acceptabile; '''(4)''' - Bon; '''(5)''' - Excellente;",
+	'ratinghistory-legend' => "Le '''numero de recensiones per die''' <font color=\"red\">''(rubie)''</font>, '''evalutation medie per die''' <font color=\"blue\">''(blau)''</font> e
 '''evalutation medie currente''' <font color=\"green\">''(verde)''</font> es representate infra, per data. Le  
-'''evalutation medie currente''' es simplemente le media de tote le evalutationes de cata die ''intra'' iste periodo de tempore pro cata die.
+'''evalutation medie currente''' es simplemente le media de tote le evalutationes per die ''intra'' iste periodo de tempore pro cata die.
+Le evalutationes es como seque:
 
-Scala: '''[1]''' - Mal; '''[2]''' - Basse; '''[3]''' - Medie; '''[4]''' - Alte; '''[5]''' - Excellente;
-
-Le '''numero de evalutationes per die''' <font color=\"red\">''(rubie)''</font> es monstrate in le graphicos infra, in scala ''1:\$1''.",
+'''(1)''' - Mal; '''(2)''' - Mediocre; '''(3)''' - Acceptabile; '''(4)''' - Bon; '''(5)''' - Excellente;",
+	'ratinghistory-graph-scale' => "Le '''numero de recensiones per die''' <font color=\"red\">''(rubie)''</font> es monstrate in scala ''1:\$1''.",
 	'right-feedback' => 'Usa le formulario de reaction pro evalutar un pagina',
 );
 
@@ -810,11 +896,14 @@ $messages['id'] = array(
 	'ratinghistory-table-rating' => 'Peringkat',
 	'ratinghistory-table-votes' => 'Suara',
 	'ratinghistory-none' => 'Belum ada cukup umpan balik pembaca tersedia untuk membuat grafik pada saat ini.',
-	'ratinghistory-legend' => "'''Rata-rata peringkat harian''' <font color=\"blue\">''(biru)''</font> dan '''rata-rata peringkat interval''' <font color=\"green\">''(hijau)''</font> ditampilkan dalam grafik di bawah ini, menurut tanggal.
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Buruk; '''(2)''' - Rendah; '''(3)''' - Cukup; '''(4)''' - Tinggi; '''(5)''' - Baik sekali;",
+	'ratinghistory-legend' => "'''Jumlah tinjauan harian''' <font color=\"red\">''(merah)''</font>, '''Rata-rata peringkat harian''' <font color=\"blue\">''(biru)''</font> dan '''rata-rata peringkat interval''' <font color=\"green\">''(hijau)''</font> ditampilkan dalam grafik di bawah ini, menurut tanggal.
 
-Skala: '''[1]''' - Buruk; '''[2]''' - Rendah; '''[3]''' - Cukup; '''[4]''' - Tinggi; '''[5]''' - Baik sekali;
+'''Rata-rata peringkat interval''' adalah rata-rata semua peringkat harian ''di antara'' jangka waktu tertentu setiap harinya.
 
-'''Jumlah tinjauan per hari''' <font color=\"red\">''(merah)''</font> ditampilkan pada grafik berikut dengan skala ''1:\$1''.",
+Peringkatnya adalah sebagai berikut: 
+'''[1]''' - Buruk; '''[2]''' - Rendah; '''[3]''' - Cukup; '''[4]''' - Tinggi; '''[5]''' - Baik sekali;",
+	'ratinghistory-graph-scale' => "'''Tinjauan per hari''' <font color=\"red\">''(merah)''</font> ditunjukkan dengan skala ''1:\$1''.",
 	'right-feedback' => 'Gunakan formulir umpan balik untuk memberikan peringkat halaman',
 );
 
@@ -876,11 +965,12 @@ $messages['ja'] = array(
 	'ratinghistory-table-rating' => '評価',
 	'ratinghistory-table-votes' => '票数',
 	'ratinghistory-none' => '現時点ではグラフを表示するのに十分な読者評価データがありません。',
-	'ratinghistory-legend' => "日ごとの'''日間平均評価''' <font color=\"blue\">''(青)''</font> と'''移動平均評価''' <font color=\"green\">''(緑)''</font> を以下のグラフに表示します。'''移動平均評価'''とは単にこの期間中のすべての日間評価の平均のことです。
+	'ratinghistory-ratings' => "'''凡例:''' '''(1)''' - ひどい; '''(2)''' - 低い; '''(3)''' - 可; '''(4)''' - 高い; '''(5)''' - すばらしい;",
+	'ratinghistory-legend' => "日ごとの'''日間総評価数''' <font color=\"red\">''(赤)''</font>、'''日間平均評価''' <font color=\"blue\">''(青)''</font> 、'''連続平均評価''' <font color=\"green\">''(緑)''</font> を以下のグラフに表示します。'''連続平均評価'''は、各日のこの時間帯の評価の平均です。
+評価の尺度は以下の通りです。
 
-目盛り: '''[1]''' - {{int:readerfeedback-level-0}}、'''[2]''' - {{int:readerfeedback-level-1}}、'''[3]''' - {{int:readerfeedback-level-2}}、'''[4]''' - {{int:readerfeedback-level-3}}、'''[5]''' - {{int:readerfeedback-level-4}}
-
-'''日ごとの評価回数''' <font color=\"red\">''(赤)''</font> を以下のグラフに\$1分の1の縮尺で表示します。",
+'''[1]''' - {{int:readerfeedback-level-0}}、'''[2]''' - {{int:readerfeedback-level-1}}、'''[3]''' - {{int:readerfeedback-level-2}}、'''[4]''' - {{int:readerfeedback-level-3}}、'''[5]''' - {{int:readerfeedback-level-4}}",
+	'ratinghistory-graph-scale' => "'''日あたりの評価数''' <font color=\"red\">''(赤)''</font> を ''1:\$1'' の縮尺で表示しています。",
 	'right-feedback' => 'ページを評価するためのフォームを使用する',
 );
 
@@ -945,12 +1035,12 @@ $messages['ksh'] = array(
 	'ratinghistory-table-rating' => 'Enschäzung',
 	'ratinghistory-table-votes' => 'Shtemme',
 	'ratinghistory-none' => 'Schad, mer han nit jenooch Enschäzunge vun de Metmaacher krääje, öm fö di Zick heh e Belldsche maache ze künne.',
-	'ratinghistory-legend' => "Dä '''dääschlesche Dorschnett vun de Enschäzunge''' <font color=\"blue\">''(en blou)''</font> un dä 
-'''loufende Dorschnett vun de Enschäzunge''' <font color=\"green\">''(en jröhn)''</font> sin unge opjemohlt, pro Dattum. Dä '''loufende Dorschnett''' es eijfach dä Dorschnett fun all dä dääschlesche Enschäzunge ''ennerhallef'' fun däm Zick_Afschnet för jeede Daach.
+	'ratinghistory-ratings' => "'''Lejend:''' fun de Enschäzunge: '''(1)''' = {{int:readerfeedback-level-0}}, '''(2)''' = {{int:readerfeedback-level-1}}, '''(3)''' = {{int:readerfeedback-level-2}}, '''(4)''' = {{int:readerfeedback-level-3}}, '''(5)''' = {{int:readerfeedback-level-4}}.",
+	'ratinghistory-legend' => "Dä '''dääschlesche Dorschnett vun de Enschäzunge''' <font color=\"red\">''(en ruhd)''</font> un dä 
+'''loufende Dorschnett vun de Enschäzunge''' <font color=\"blue\">''(en blou)''</font> sin unge opjemohlt, pro Dattum. Dä '''loufende Dorschnett''' es eijfach dä Dorschnett fun all dä dääschlesche Enschäzunge ''ennerhallef'' fun däm Zick_Afschnet för jeede Daach.
 
-Lejend fun de Enschäzunge: '''[1]''' = {{int:readerfeedback-level-0}}, '''[2]''' = {{int:readerfeedback-level-1}}, '''[3]''' = {{int:readerfeedback-level-2}}, '''[4]''' = {{int:readerfeedback-level-3}}, '''[5]''' = {{int:readerfeedback-level-4}}.
-
-Di '''Aanzahl, wi öff en Version nohjekik wood för jeede Daach''' <font color=\"red\">''(en rud)''</font> weed en dä Beldsche unge em Moohßshtaabs-Verhälltneß ''1:\$1'' jezeisch.",
+Lejend fun de Enschäzunge: '''(1)''' = {{int:readerfeedback-level-0}}, '''(2)''' = {{int:readerfeedback-level-1}}, '''(3)''' = {{int:readerfeedback-level-2}}, '''(4)''' = {{int:readerfeedback-level-3}}, '''(5)''' = {{int:readerfeedback-level-4}}.",
+	'ratinghistory-graph-scale' => "'''Enschätzunge der Daach''', <font color=\"red\">''(rud)''</font> aanjezeisch em Maaßschtaab ''1 zoh \$1''.",
 	'right-feedback' => 'Enschäzunge afjevve un Note för Sigge verdeile',
 );
 
@@ -979,13 +1069,15 @@ $messages['lb'] = array(
 	'ratinghistory-table-rating' => 'Bewäertung',
 	'ratinghistory-table-votes' => 'Stëmmen',
 	'ratinghistory-none' => 'Et gëtt zu dësem Zäitpunkt net genuch Bewäertunge vu Lieser fir eng Grafik opzestellen.',
-	'ratinghistory-legend' => "Den '''Duerchschnëtt vun der deeglecher Bewäertung''' <font color=\"blue\">''(blo)''</font> an de '''momentanen Duerchschnëtt vun der Bewäertung''' <font color=\"green\">''(gréng)''</font> sinn ënnendrënner grafesch pro Dag duergestallt.
-
+	'ratinghistory-ratings' => "'''Skala:''' '''[1]''' - Aarmséileg; '''[2]''' - Niddreg; '''[3]''' - An der Rei; '''[4]''' - Héich; '''[5]''' - Exzellent;",
+	'ratinghistory-legend' => "D''''Deeglech Zuel vun de Bewäertungen''' <font color=\"red\">''(rout)''</font>, '''Duerchschnëtt vun der deeglecher Bewäertung''' <font color=\"blue\">''(blo)''</font> 
+an de '''momentanen Duerchschnëtt vun der Bewäertung''' <font color=\"green\">''(gréng)''</font> sinn ënnendrënner grafesch pro Dag duergestallt.
 De '''momentanen Duerchschnëtt vun der Bewäertung''' ass einfach den Duerchschnëtt vun allen deegleche Bewäertunge ''bannent'' dësem Zäitraum fir all Dag.
 
-Skala: '''[1]''' - Aarmséileg; '''[2]''' - Niddreg; '''[3]''' - An der Rei; '''[4]''' - Héich; '''[5]''' - Exzellent;
+D'Bewäertung gouf esu gemaach:
 
-D''''Zuel vun de Bewäertunge pro Dag''' <font color=\"red\">''(rout)''</font> gëtt an der Grafik ënnendrënner op enger ''1:\$1'' Skala gewisen.",
+'''[1]''' - Aarmséileg; '''[2]''' - Niddreg; '''[3]''' - An der Rei; '''[4]''' - Héich; '''[5]''' - Exzellent;",
+	'ratinghistory-graph-scale' => "D''''Zuel vun de Bewäertunge pro Dag''' <font color=\"red\">''(rout)''</font> gëtt an der Grafik ënnendrënner op enger ''1:\$1'' Skala gewisen.",
 	'right-feedback' => 'De Feedback-Formulaire benotze fir eng Säit ze bewerten',
 );
 
@@ -1082,13 +1174,13 @@ $messages['nl'] = array(
 	'ratinghistory-table-rating' => 'Waardering',
 	'ratinghistory-table-votes' => 'Stemmen',
 	'ratinghistory-none' => 'Er is onvoldoende terugkoppeling van lezers aanwezig om een grafiek te maken.',
-	'ratinghistory-legend' => "De '''dagelijkse gemiddelde waardering''' <font color=\"blue\">''(blauw)''</font> en
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Slecht; '''(2)''' - Laag; '''(3)''' - Redelijk; '''(4)''' - Hoog; '''(5)''' - Uitstekend;",
+	'ratinghistory-legend' => "Het '''aantal dagelijkse beoordelingen''' <font color=\"red\">''(rood)''</font>, de '''dagelijkse gemiddelde waardering''' <font color=\"blue\">''(blauw)''</font> en
 de '''gemiddelde waardering van de aangegeven periode''' <font color=\"green\">''(groen)''</font> staan hieronder in een grafiek op datum.
 De '''gemiddelde waardering van de aangegeven periode''' is het gemiddelde van alle dagelijkse gemiddelde waarderingen ''binnnen'' dit tijdvak voor iedere dag.
 
-Schaal: '''[1]''' - Slecht; '''[2]''' - Laag; '''[3]''' - Redelijk; '''[4]''' - Hoog; '''[5]''' - Uitstekend;
-
-Het '''aantal waarderingen per dag''' <font color=\"red\">''(rood)''</font> wordt hieronder weergegeven in de grafieken op een schaal van ''1:\$1''.",
+'''(1)''' - Slecht; '''(2)''' - Laag; '''(3)''' - Redelijk; '''(4)''' - Hoog; '''(5)''' - Uitstekend;",
+	'ratinghistory-graph-scale' => "'''Beoordelingen per dag''' <font color=\"red\">''(rood)''</font> worden weergegeven op de schaal ''1:\$1''.",
 	'right-feedback' => 'Het waarderingsformulier gebruiken om een pagina te waarderen',
 );
 
@@ -1182,11 +1274,13 @@ $messages['oc'] = array(
 	'ratinghistory-table-rating' => 'Notacion',
 	'ratinghistory-table-votes' => 'Vòts',
 	'ratinghistory-none' => 'En aqueste moment, i a pas pro de lectors de donadas de notacion pels grafics.',
-	'ratinghistory-legend' => "Las quotacions jornalièras <font color=\"blue\">''(blau)''</font> e la '''mejana de quotacion en cors''' <font color=\"green\">''(verd)''</font> de la notacion son dessenhats çaijós, per data. La '''mejana de quotacion en cors''' es simplament la mejana de las qotacions de cada ''dins'' lo periòde de temps causit.
+	'ratinghistory-ratings' => "'''Legenda :''' '''(1)''' - Marrit ; '''(2)''' - Mediòcre ; '''(3)''' - Mejan ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
+	'ratinghistory-legend' => "Lo '''nombre d'evaluacions per jorn''' <font color=\"red\">''(roge)''</font>, l''''evaluacion mejana per jorn''' <font color=\"blue\">''(blau)''</font> e l''''evaluacion mejana en cors''' <font color=\"green\">''(verd)''</font> son representadas graficament çaijós, per data.
+L''''evaluacion mejana en cors''' es simplament la mejana de totas las evaluacions quotidianas ''dins'' lo periòde del jorn causit.
+Las notacions son las seguentas :
 
-'''[1]''' - Marrit ; '''[2]''' - Mediòcre ; '''[3]''' - Mejan ; '''[4]''' - Bon ; '''[5]''' - Excellent ;
-
-Lo '''nombre de verificacion per jorn''' <font color=\"red\">''(roge)''</font> es afichat sul grafic çaijós, amb una escala ''1:\$1''.",
+'''(1)''' - Marrit ; '''(2)''' - Mediòcre ; '''(3)''' - Mejan ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
+	'ratinghistory-graph-scale' => "'''Evaluacions per jorn''' <font color=\"red\">''(roge)''</font> afichadas a l'escala ''1:\$1''.",
 	'right-feedback' => 'Utilizar lo formulari de somission per notar una pagina',
 );
 
@@ -1218,11 +1312,13 @@ $messages['pl'] = array(
 	'ratinghistory-table-rating' => 'Ocena',
 	'ratinghistory-table-votes' => 'Głosy',
 	'ratinghistory-none' => 'W tej chwil brak liczby ocen czytelników wystarczającej, by móc stworzyć wykresy.',
-	'ratinghistory-legend' => "Średnia dzienna ocena <font color=\"blue\">''(na niebiesko)''</font> i średnia w wybranym przedziale czasowym <font color=\"green\">''(na zielono)''</font> są przedstawione na wykresie poniżej, w kolejności chronologicznej. Średnia w wybranym przedziale czasowym to średnia dziennych ocen w tym przedziale czasowym.
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - źle; '''(2)''' - słabo; '''(3)''' - średnio; '''(4)''' - dobrze; '''(5)''' - wspaniale;",
+	'ratinghistory-legend' => "'''Liczba ocen w ciągu doby''' <font color=\"red\">''(czerwony)''</font>, '''dobowa średnia''' <font color=\"blue\">''(niebieski)''</font> i '''średnia ocena bieżąca''' <font color=\"green\">''(zielony)''</font> zostały przedstawione względem daty na poniższym wykresie.
+'''Średnia ocena bieżąca''' to średnia dobowych ocen w tym czasie za każdy dzień.
+Skala ocen: 
 
-Skala: '''[1]''' – Niedostatecznie; '''[2]''' – Słabo; '''[3]''' – Zadowalająco; '''[4]''' – Dobrze; '''[5]''' – Bardzo dobrze;
-
-'''Liczba ocen na dzień''' <font color=\"red\">''(na czerwono)''</font> jest pokazana poniżej wykresu w skali ''1:\$1''.",
+'''[1]''' – niedostatecznie, '''[2]''' – słabo, '''[3]''' – zadowalająco, '''[4]''' – dobrze, '''[5]''' – bardzo dobrze.",
+	'ratinghistory-graph-scale' => "'''Liczba przeglądów na dzień''' <font color=\"red\">''(czerwona)''</font> pokazana w skali ''1:\$1''.",
 	'right-feedback' => 'Użyj formularza, aby ocenić stronę',
 );
 
@@ -1240,6 +1336,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Crazymadlover
  * @author Malafaya
  * @author Waldir
  */
@@ -1264,11 +1361,11 @@ $messages['pt'] = array(
 	'ratinghistory-table-rating' => 'Avaliação',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Ainda não há dados suficientes de avaliações dos leitores para mostrar gráficos.',
-	'ratinghistory-legend' => "A '''avaliação média diária''' <font color=\"blue\">''(azul)''</font> e a '''avaliação média acumulada''' <font color=\"green\">''(verde)''</font> estão apresentadas graficamente abaixo, por data. A '''avaliação média acumulada''' é apenas a média de todas as avaliações diárias ''dentro'' desta janela temporal para cada dia.
+	'ratinghistory-legend' => "O '''número diário de revisões''' <font color=\"red\">''(vermelho)''</font>, '''avaliação média diária''' <font color=\"blue\">''(azul)''</font> e a '''avaliação média acumulada''' <font color=\"green\">''(verde)''</font> estão apresentadas graficamente abaixo, por data. 
+A '''avaliação média acumulada''' é apenas a média de todas as avaliações diárias ''dentro'' desta janela temporal para cada dia.
+As avaliações são como segue:
 
-Escala: '''[1]''' - Péssima; '''[2]''' - Baixa; '''[3]''' - Razoável; '''[4]''' - Alta; '''[5]''' - Excelente;
-
-O '''número de of análises por dia''' <font color=\"red\">''(vermelho)''</font> é mostrado nos gráficos abaixo, numa escala ''1:\$1''.",
+'''(1)''' - Péssima; '''(2)''' - Baixa; '''(3)''' - Razoável; '''(4)''' - Alta; '''(5)''' - Excelente;",
 	'right-feedback' => 'Use o formulário de feedback para avaliar uma página',
 );
 
@@ -1296,11 +1393,14 @@ $messages['pt-br'] = array(
 	'ratinghistory-table-rating' => 'Avaliação',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Ainda não há dados suficientes de avaliações dos leitores para mostrar gráficos.',
-	'ratinghistory-legend' => "A '''avaliação média diária''' <font color=\"blue\">''(azul)''</font> e a '''avaliação média acumulada''' <font color=\"green\">''(verde)''</font> estão apresentadas graficamente abaixo, por data. A '''avaliação média acumulada''' é apenas a média de todas as avaliações diárias ''dentro'' desta janela temporal para cada dia.
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Péssima; '''(2)''' - Baixa; '''(3)''' - Média; '''(4)''' - Alta; '''(5)''' - Excelente;",
+	'ratinghistory-legend' => "O '''número diário de avaliações''' <font color=\"red\">''(vermelho)''</font>, '''avaliação média diária''' <font color=\"blue\">''(azul)''</font>,
+e '''avaliação média acumulada''' <font color=\"green\">''(verde)''</font> são apresentadas no gráfico abaixo, por data.
+A '''avaliação média acumulada''' é apenas a média de todas as avaliações diárias ''dentro'' deste intervalo de tempo para cada dia.
+As avaliações são as seguintes:
 
-Escala: '''[1]''' - Péssima; '''[2]''' - Baixa; '''[3]''' - Razoável; '''[4]''' - Alta; '''[5]''' - Excelente;
-
-O '''número de análises por dia''' <font color=\"red\">''(vermelho)''</font> é mostrado nos gráficos abaixo, numa escala ''1:\$1''.",
+'''(1)''' - Péssima; '''(2)''' - Baixa; '''(3)''' - Média; '''(4)''' - Alta; '''(5)''' - Excelente;",
+	'ratinghistory-graph-scale' => "'''Avaliações por dia''' <font color=\"red\">''(vermelho)''</font> exibidas em escala ''1:\$1''.",
 	'right-feedback' => 'Use o formulário de feedback para avaliar uma página',
 );
 
@@ -1353,13 +1453,13 @@ $messages['roa-tara'] = array(
 	'ratinghistory-table-rating' => 'Pundegge',
 	'ratinghistory-table-votes' => 'Vote',
 	'ratinghistory-none' => "Non ge stonne abbastanza lettore ca onne lassete 'u feedback pe ccrejà 'nu grafeche jndr'à stu timbe.",
-	'ratinghistory-legend' => "'U '''pundegge medie sciurnaliere''' <font color=\"blue\">''(blue)''</font> e
-'u '''pundegge medie corrende''' <font color=\"green\">''(green)''</font> sonde disegnete aqquà sotte, pe date.
-'U '''pundegge medie corrende''' jè semblicemende 'a medie de tutte le pundegge sciuraliere ''fine a'' osce.
+	'ratinghistory-ratings' => "Scale: '''[1]''' - Povere; '''[2]''' - Vasce; '''[3]''' - Medie; '''[4]''' - Ierte; '''[5]''' - 'A uerre proprie;",
+	'ratinghistory-legend' => "'U '''numere sciurnaliere de revisite''', <font color=\"red\">''(russe)''</font>, 'u '''pundégge medie sciurnaliere''' <font color=\"blue\">''(blu)''</font> e
+'u '''pundégge medie corrende''' <font color=\"green\">''(verde)''</font> sonde disegnete aqquà sotte, pe date.
+'U '''pundégge medie corrende''' jè semblicemende 'a medie de tutte le pundegge sciuraliere ''fine a'' osce.
 
-Schele: '''[1]''' - Povere; '''[2]''' - Vasce; '''[3]''' - Medie; '''[4]''' - Ierte; '''[5]''' - 'A uerre proprie;
-
-'Le '''numere de revisitaziune pe sciurne''' <font color=\"red\">''(red)''</font> sonde visualizzete sus a 'u grafeche aqquà sotte, sus a 'na ''1:\$1'' schele.",
+Scale: '''[1]''' - Povere; '''[2]''' - Vasce; '''[3]''' - Medie; '''[4]''' - Ierte; '''[5]''' - 'A uerre proprie;",
+	'ratinghistory-graph-scale' => "Le '''rivisite pe sciurne''' <font color=\"red\">''(russe)''</font> sonde visualizzate sus a 'na ''1:\$1'' scale.",
 	'right-feedback' => "Ause 'u form p'u feedback pe dà 'nu pundegge a 'na pàgene",
 );
 
@@ -1390,12 +1490,14 @@ $messages['ru'] = array(
 	'ratinghistory-table-rating' => 'Оценка',
 	'ratinghistory-table-votes' => 'Голоса',
 	'ratinghistory-none' => 'В настоящее время набралось недостаточное количество читательских оценок для построения графика.',
-	'ratinghistory-legend' => "Ниже показаны '''среднесуточная оценка''' <font color=\"blue\">''(синий)''</font> и
-'''текущая средняя оценка''' <font color=\"green\">''(зелёный)''</font>.  '''Текущая средняя оценка''' — это среднее всех суточных оценок для данного промежутка времени каждого дня.
+	'ratinghistory-ratings' => "'''Легенда:''' '''(1)''' — плохая; '''(2)''' — низкая; '''(3)''' — средняя; '''(4)''' — хорошая; '''(5)''' — отличная;",
+	'ratinghistory-legend' => "Ниже показаны: '''число оценок в день''' <font color=\"red\">''(красный)''</font> '''среднесуточная оценка''' <font color=\"blue\">''(синий)''</font> и
+'''текущая средняя оценка''' <font color=\"green\">''(зелёный)''</font>.
+'''Текущая средняя оценка''' — это среднее всех суточных оценок для данного промежутка времени для каждого дня.
+Шкала оценок:
 
-Шкала: '''[1]''' — плохая; '''[2]''' — низкая; '''[3]''' — средняя; '''[4]''' — хорошая; '''[5]''' — отличная;
-
-'''Число проверок за день''' <font color=\"red\">''(красный)''</font> показано ниже в масштабе ''1:\$1''.",
+'''[1]''' — плохая; '''[2]''' — низкая; '''[3]''' — средняя; '''[4]''' — хорошая; '''[5]''' — отличная.",
+	'ratinghistory-graph-scale' => "'''Число проверок за день''' <font color=\"red\">''(красный)''</font> показано ниже в масштабе ''1:\$1''.",
 	'right-feedback' => 'использование формы отзывов для оценки страниц',
 );
 
@@ -1423,11 +1525,11 @@ $messages['sk'] = array(
 	'ratinghistory-table-rating' => 'Hodnotenie',
 	'ratinghistory-table-votes' => 'Hlasy',
 	'ratinghistory-none' => 'Momentálne nie je dostupný dostatok údajov o spätnej väzbe používateľov nato, aby bolo možné vytvoriť grafy.',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Slabá; '''(2)''' - Nízka; '''(3)''' - Dobrá; '''(4)''' - Vysoká; '''(5)''' - Vynikajúca;",
 	'ratinghistory-legend' => "Dolu je podľa dátumu zobrazené '''denné priemerné hodnotenie''' <font color=\"blue\">''(modrou)''</font> a '''priemer vybraného intervalu''' <font color=\"green\">''(zelenou)''</font>. '''Priemer vybraného intervalu''' je jednoducho priemer denných hodnotení ''v rámci'' tohto časového intervalu za každý deň. Hodnoty hodnotenia sa interpretujú nasledovne:
 
-Mierka: '''[1]''' - Slabé; '''[2]''' - Nízke; '''[3]''' - Dobré; '''[4]''' - Vysoké; '''[5]''' - Výborné;
-
-Na grafe dolu je zobrazený '''počet kontrol za deň''' <font color=\"red\">''(červenou)''</font> v mierke ''1:\$1''.",
+'''[1]''' - Slabé; '''[2]''' - Nízke; '''[3]''' - Dobré; '''[4]''' - Vysoké; '''[5]''' - Výborné;",
+	'ratinghistory-graph-scale' => "'''Počet kontrol za deň''' <font color=\"red\">''(červenou)''</font> je zobrazený  v mierke ''1:\$1''.",
 	'right-feedback' => 'Stránku ohodnotíte pomocou formulára spätnej väzby',
 );
 
@@ -1445,7 +1547,7 @@ $messages['sq'] = array(
 	'ratinghistory-table-votes' => 'Votat',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Михајло Анђелковић
  */
@@ -1465,7 +1567,7 @@ $messages['sr-ec'] = array(
 	'ratinghistory-none' => 'Још увек нема довољно мишљења читалаца да би се формирали графикони.',
 );
 
-/** latinica (latinica)
+/** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -280,11 +280,13 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
- * @author Wegge
+ * @author Byrial
  */
 $messages['da'] = array(
+	'imagemap_desc' => 'Muliggør klikkbare billeder med brug af <tt><nowiki><imagemap></nowiki></tt>-tagget.',
 	'imagemap_no_image' => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: Billedet er ugyldigt eller findes ikke',
+	'imagemap_bad_image' => 'Fejl: billedet er sortlistet på denne side',
 	'imagemap_no_link' => '&lt;imagemap&gt;: Fandt ikke en brugbar henvisning i slutningen af linje $1',
 	'imagemap_invalid_title' => '&lt;imagemap&gt;: Ugyldig titel i henvisning på linje $1',
 	'imagemap_missing_coord' => '&lt;imagemap&gt;: Utilstrækkeligt antal koordinater til omridset i linje $1',
@@ -294,6 +296,7 @@ $messages['da'] = array(
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: Ugyldig specifikation af desc, skal være en af: <tt>$1</tt>',
 	'imagemap_description' => 'Om dette billede',
 	'imagemap_desc_types' => 'top-højre, bund-højre, bund-venstre, top-venstre, ingen',
+	'imagemap_poly_odd' => 'Fejl: fandt polygon med et ulige antal koordinater på linje $1',
 );
 
 /** German (Deutsch)
@@ -398,10 +401,11 @@ $messages['es'] = array(
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
-	'imagemap_desc' => 'Lubab luua kasutaja-poolt klikitavaid pildi alasid, kasutades märgist <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_desc' => 'Lubab kliendipoolse klõpsatava pildi ala, mis kasutab <tt><nowiki><imagemap></nowiki></tt>-märgendit',
 	'imagemap_no_image' => 'Viga: esimesel real peab määrama pildi',
 	'imagemap_invalid_image' => 'Viga: pilt on vigane või teda ei eksisteeri',
 	'imagemap_no_link' => 'Viga: ei leidnud sobivat linki, rea number $1 lõpust',
@@ -640,6 +644,7 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author KossuthRad
+ * @author Tgr
  */
 $messages['hu'] = array(
 	'imagemap_desc' => 'Lehetővé teszi kliensoldali imagemap-ek létrehozását a <tt><nowiki><imagemap></nowiki></tt> tag segítségével',
@@ -647,11 +652,11 @@ $messages['hu'] = array(
 	'imagemap_invalid_image' => 'Error: érvénytelen vagy nem létező kép',
 	'imagemap_bad_image' => 'Hiba: a kép feketelistán van ezen az oldalon',
 	'imagemap_no_link' => 'Error: nincs érvényes link a(z) $1. sor végén',
-	'imagemap_invalid_title' => 'Error: érvénytelen cím a linkben a $1 vonalban',
+	'imagemap_invalid_title' => 'Hiba: érvénytelen cím a linkben, a(z) $1. sorban',
 	'imagemap_missing_coord' => 'Error: nincs elég koordináta az alakításhoz a $1 sorban',
 	'imagemap_unrecognised_shape' => 'Error: ismeretlen alakzat a(z) $1. sorban, mindegyiknek ezek valamelyikével kell kezdődnie: default, rect, circle vagy poly',
 	'imagemap_no_areas' => 'Error: Legalább egy terület előírást hozzá kell adni',
-	'imagemap_invalid_coord' => 'Error: érvénytelen koordináta a $1 vonalban, számnak kell lennie',
+	'imagemap_invalid_coord' => 'Hiba: érvénytelen koordináta a(z) $1. sorban, számnak kell lennie',
 	'imagemap_invalid_desc' => 'Error: hibás desc leírás, ezek egyike kell: <tt>$1</tt>',
 	'imagemap_description' => 'Kép leírása',
 	'imagemap_poly_odd' => 'Hiba: az $1. sorban páratlan számú koordináta található',
@@ -831,13 +836,18 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
+	'imagemap_no_image' => 'កំហុស៖ ត្រូវបញ្ជាក់​រូបភាពមួយនៅក្នុង​បន្ទាត់ទីមួយ​',
+	'imagemap_invalid_image' => 'កំហុស៖ រូបភាព​មិនត្រឹមត្រូវ ឬមិនមាន​',
+	'imagemap_bad_image' => 'កំហុស៖ រូបភាពត្រូវបានហាមឃាត់ក្នុងបញ្ជី​ខ្មៅ​ លើ​ទំព័រនេះ​',
 	'imagemap_invalid_title' => 'កំហុស:ចំណងជើងមិនត្រឹមត្រូវក្នុងតំណភ្ជាប់នៅបន្ទាត់ទី$1',
 	'imagemap_description' => 'អំពីរូបភាពនេះ',
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
@@ -845,9 +855,9 @@ $messages['ko'] = array(
 	'imagemap_no_image' => '오류: 첫 줄에 그림이 제시되어야 합니다.',
 	'imagemap_invalid_image' => '오류: 그림이 잘못되었거나 존재하지 않습니다.',
 	'imagemap_bad_image' => '오류: 이 그림은 이 문서에서 사용이 금지되어 있습니다.',
-	'imagemap_no_link' => '오류: 의미있는 링크를 $1 줄의 끝에서 찾을 수 없습니다.',
-	'imagemap_invalid_title' => '오류: $1 줄에 있는 제목이 제대로 인식되지 않습니다.',
-	'imagemap_no_areas' => '오류: 최소한 한 영역에 대한 구체적인 설명은 꼭 있어야 합니다.',
+	'imagemap_no_link' => '오류: $1번째 줄에서 유효한 링크를 찾을 수 없습니다',
+	'imagemap_invalid_title' => '오류: $1번째 줄의 링크 제목이 잘못되었습니다',
+	'imagemap_no_areas' => '오류: 설정된 영역이 없습니다',
 	'imagemap_invalid_coord' => '오류: $1번째 줄에서 좌표가 잘못되었습니다. 좌표는 반드시 숫자여야 합니다.',
 	'imagemap_description' => '이 그림에 대한 정보',
 );
@@ -947,6 +957,25 @@ $messages['lv'] = array(
 	'imagemap_description' => 'Par šo attēlu',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'imagemap_desc' => 'Дава картографски слики кои можат да се кликаат од клиентот користејќи ја ознаката <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image' => 'Грешка: мора да се назначи слика во првиот ред',
+	'imagemap_invalid_image' => 'Грешка: сликата е неважечка или не постои',
+	'imagemap_bad_image' => 'Грешка: сликата е на црна листа на оваа страница',
+	'imagemap_no_link' => 'Грешка: не беше пронајдена важечка врска на крајот на редот $1',
+	'imagemap_invalid_title' => 'Грешка: погрешен наслов во врската на ред $1',
+	'imagemap_missing_coord' => 'Грешка: нема доволно координати за обликот на ред $1',
+	'imagemap_unrecognised_shape' => 'Грешка: непризнат ред $1, секој ред мора да почне со едно од: default, rect, circle или poly',
+	'imagemap_no_areas' => 'Грешка: мора да се зададе напатствие за барем едно подрачје',
+	'imagemap_invalid_coord' => 'Грешка: погрешни координати на ред $1, мора да биде со бројки',
+	'imagemap_invalid_desc' => 'Грешка: неважечко напатствие за опис, мора да биде едно од: <tt>$1</tt>',
+	'imagemap_description' => 'За оваа слика',
+	'imagemap_poly_odd' => 'Грешка: пронајдено е poly со непарен број на координати на ред $1',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -999,6 +1028,13 @@ $messages['ms'] = array(
 	'imagemap_description' => 'Perihal imej ini',
 	'imagemap_desc_types' => 'puncak-kanan, bawah-kanan, bawah-kiri, puncak-kiri, tiada',
 	'imagemap_poly_odd' => 'Ralat: terdapat poligon dengan bilangan koordinat yang ganjil dalam baris $1',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'imagemap_description' => 'Те артовкстонть',
 );
 
 /** Low German (Plattdüütsch)
@@ -1132,10 +1168,13 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'imagemap_desc' => 'A përmëtt "image map" client-side clicàbij an dovrand ël tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => "Error: ant la prima riga a venta ch'a-i sia la specìfica ëd na figura",
 	'imagemap_invalid_image' => "Error: la figura ò ch'a l'ha chèich-còs ch'a va nen, ò ch'a-i é nen d'autut",
+	'imagemap_bad_image' => "Eror: la figura a l'é ant la blacklist ëd costa pàgina",
 	'imagemap_no_link' => 'Error: pa gnun-a anliura bon-a a la fin dla riga $1',
 	'imagemap_invalid_title' => "Error: tìtol nen bon ant l'anliura dla riga $1",
 	'imagemap_missing_coord' => 'Error: pa basta ëd coordinà për fé na forma a la riga $1',
@@ -1144,6 +1183,7 @@ $messages['pms'] = array(
 	'imagemap_invalid_coord' => "Error: coordinà nen bon-a a la riga $1, a l'ha da esse un nùmer",
 	'imagemap_invalid_desc' => "Error: specìfica dla descrission nen bon-a, a l'ha da esse un-a ëd coste-sì: <tt>$1</tt>",
 	'imagemap_description' => 'Rësgoard a sta figura-sì',
+	'imagemap_poly_odd' => 'Eror: trovà un polìgon con un nùmer dìspar ëd coordinà an sla linia $1',
 );
 
 /** Pashto (پښتو)
@@ -1326,7 +1366,7 @@ $messages['sk'] = array(
 	'imagemap_poly_odd' => 'Chyba: nájdený mnohouholník s nepárnym počtom súradníc na riadku $1',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -1345,6 +1385,25 @@ $messages['sr-ec'] = array(
 	'imagemap_invalid_desc' => 'Грешка: Лоше desc одређење, мора бити једно од: <tt>$1</tt>.',
 	'imagemap_description' => 'О овој слици',
 	'imagemap_poly_odd' => 'Грешка: нађен је полигон са непарним бројем координата у линији $1',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'imagemap_desc' => 'Omogućava klijentskoj strani klikabilnu mapu korišćnjenjm oznake <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_no_image' => 'Greška: Neophodno je odrediti sliku u prvoj liniji.',
+	'imagemap_invalid_image' => 'Greška: Slika je loša ili nepostojeća.',
+	'imagemap_bad_image' => 'Greška: slika se nalazi na crnom spisku za ovu stranu',
+	'imagemap_no_link' => 'Greška: Nije pronađena nijedna valjana veza na kraju linije $1.',
+	'imagemap_invalid_title' => 'Greška: Loš naslov u vezi u liniji $1.',
+	'imagemap_missing_coord' => 'Greška: Nema dovoljno koordinata za krivu u liniji $1.',
+	'imagemap_unrecognised_shape' => 'Greška: Neprepoznata kriva u liniji $1, svaka linija mora početi jednom od: default, rect, circle ili poly.',
+	'imagemap_no_areas' => 'Greška: Mora se dati bar jedno prostorno određenje.',
+	'imagemap_invalid_coord' => 'Greška: Loše koordinate u liniji $1; moraju biti broj.',
+	'imagemap_invalid_desc' => 'Greška: Loše desc određenje, mora biti jedno od: <tt>$1</tt>.',
+	'imagemap_description' => 'O ovoj slici',
+	'imagemap_poly_odd' => 'Greška: nađen je poligon sa neparnim brojem koordinata u liniji $1',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1560,18 +1619,19 @@ $messages['vo'] = array(
  */
 $messages['yue'] = array(
 	'imagemap_desc' => '容許客戶端可以用<tt><nowiki><imagemap></nowiki></tt>標籤整可撳圖像地圖',
-	'imagemap_no_image' => '&lt;imagemap&gt;: 一定要響第一行指定一幅圖像',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: 圖像唔正確或者唔存在',
-	'imagemap_no_link' => '&lt;imagemap&gt;: 響第$1行結尾度搵唔到一個正式嘅連結',
-	'imagemap_invalid_title' => '&lt;imagemap&gt;: 響第$1行度嘅標題連結唔正確',
-	'imagemap_missing_coord' => '&lt;imagemap&gt;: 響第$1行度未有足夠嘅座標組成一個形狀',
-	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: 響第$1行度有未能認出嘅形狀，每一行一定要用以下其中一樣開始: default, rect, circle 或者係 poly',
-	'imagemap_no_areas' => '&lt;imagemap&gt;: 最少要畀出一個指定嘅空間',
-	'imagemap_invalid_coord' => '&lt;imagemap&gt;: 響第$1行度有唔正確嘅座標，佢一定係一個數字',
-	'imagemap_invalid_desc' => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
+	'imagemap_no_image' => '錯誤: 一定要響第一行指定一幅圖像',
+	'imagemap_invalid_image' => '錯誤: 圖像唔正確或者唔存在',
+	'imagemap_bad_image' => '錯誤: 圖像響呢一版已經列入咗黑名單度',
+	'imagemap_no_link' => '錯誤: 響第$1行結尾度搵唔到一個正式嘅連結',
+	'imagemap_invalid_title' => '錯誤: 響第$1行度嘅標題連結唔正確',
+	'imagemap_missing_coord' => '錯誤: 響第$1行度未有足夠嘅座標組成一個形狀',
+	'imagemap_unrecognised_shape' => '錯誤: 響第$1行度有未能認出嘅形狀，每一行一定要用以下其中一樣開始: default, rect, circle 或者係 poly',
+	'imagemap_no_areas' => '錯誤: 最少要畀出一個指定嘅空間',
+	'imagemap_invalid_coord' => '錯誤: 響第$1行度有唔正確嘅座標，佢一定係一個數字',
+	'imagemap_invalid_desc' => '錯誤: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
 	'imagemap_description' => '關於呢幅圖像',
 	'imagemap_desc_types' => '右上, 右下, 左下, 左上, 無',
-	'imagemap_poly_odd' => '錯: 響第$1行搵到單數嘅多邊坐標',
+	'imagemap_poly_odd' => '錯誤: 響第$1行搵到單數嘅多邊坐標',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -1579,15 +1639,16 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'imagemap_desc' => '容许客户端可以使用<tt><nowiki><imagemap></nowiki></tt>标签整可点击图像地图',
-	'imagemap_no_image' => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: 图像不正确或者不存在',
-	'imagemap_no_link' => '&lt;imagemap&gt;: 在第$1行结尾中找不到一个正式的链接',
-	'imagemap_invalid_title' => '&lt;imagemap&gt;: 在第$1行中的标题链接不正确',
-	'imagemap_missing_coord' => '&lt;imagemap&gt;: 在第$1行中未有足够的座标组成一个形状',
-	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: 在第$1行中有未能认出的形状，每一行必须使用以下其中一组字开始: default, rect, circle 或者是 poly',
-	'imagemap_no_areas' => '&lt;imagemap&gt;: 最少要给出一个指定的空间',
-	'imagemap_invalid_coord' => '&lt;imagemap&gt;: 在第$1行中有不正确的座标，它必须是一个数字',
-	'imagemap_invalid_desc' => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
+	'imagemap_no_image' => '错误: 必须要在第一行指定一幅图像',
+	'imagemap_invalid_image' => '错误: 图像不正确或者不存在',
+	'imagemap_bad_image' => '错误: 图像已被本页列入黑名单内',
+	'imagemap_no_link' => '错误: 在第$1行结尾中找不到一个正式的链接',
+	'imagemap_invalid_title' => '错误: 在第$1行中的标题链接不正确',
+	'imagemap_missing_coord' => '错误: 在第$1行中未有足够的座标组成一个形状',
+	'imagemap_unrecognised_shape' => '错误: 在第$1行中有未能认出的形状，每一行必须使用以下其中一组字开始: default, rect, circle 或者是 poly',
+	'imagemap_no_areas' => '错误: 最少要给出一个指定的空间',
+	'imagemap_invalid_coord' => '错误: 在第$1行中有不正确的座标，它必须是一个数字',
+	'imagemap_invalid_desc' => '错误: 不正确的 desc 参数，必须是以下的其中之一: $1',
 	'imagemap_description' => '关于这幅图像',
 	'imagemap_desc_types' => '右上, 右下, 左下, 左上, 无',
 	'imagemap_poly_odd' => '错误: 在第$1行找到单数的多边坐标',
@@ -1599,16 +1660,16 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'imagemap_desc' => '容許客戶端可以使用<tt><nowiki><imagemap></nowiki></tt>標籤整可點擊圖像地圖',
-	'imagemap_no_image' => '&lt;imagemap&gt;: 必須要在第一行指定一幅圖像',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: 圖像不正確或者不存在',
-	'imagemap_bad_image' => '錯誤: 影像已被本頁列入黑名單內',
-	'imagemap_no_link' => '&lt;imagemap&gt;: 在第$1行結尾中找不到一個正式的連結',
-	'imagemap_invalid_title' => '&lt;imagemap&gt;: 在第$1行中的標題連結不正確',
-	'imagemap_missing_coord' => '&lt;imagemap&gt;: 在第$1行中未有足夠的座標組成一個形狀',
-	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: 在第$1行中有未能認出的形狀，每一行必須使用以下其中一組字開始: default, rect, circle 或者是 poly',
-	'imagemap_no_areas' => '&lt;imagemap&gt;: 最少要給出一個指定的空間',
-	'imagemap_invalid_coord' => '&lt;imagemap&gt;: 在第$1行中有不正確的座標，它必須是一個數字',
-	'imagemap_invalid_desc' => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
+	'imagemap_no_image' => '錯誤: 必須要在第一行指定一幅圖像',
+	'imagemap_invalid_image' => '錯誤: 圖像不正確或者不存在',
+	'imagemap_bad_image' => '錯誤: 圖像已被本頁列入黑名單內',
+	'imagemap_no_link' => '錯誤: 在第$1行結尾中找不到一個正式的連結',
+	'imagemap_invalid_title' => '錯誤: 在第$1行中的標題連結不正確',
+	'imagemap_missing_coord' => '錯誤: 在第$1行中未有足夠的座標組成一個形狀',
+	'imagemap_unrecognised_shape' => '錯誤: 在第$1行中有未能認出的形狀，每一行必須使用以下其中一組字開始: default, rect, circle 或者是 poly',
+	'imagemap_no_areas' => '錯誤: 最少要給出一個指定的空間',
+	'imagemap_invalid_coord' => '錯誤: 在第$1行中有不正確的座標，它必須是一個數字',
+	'imagemap_invalid_desc' => '錯誤: 不正確的 desc 參數，必須是以下的其中之一: $1',
 	'imagemap_description' => '關於這幅圖像',
 	'imagemap_desc_types' => '右上, 右下, 左下, 左上, 無',
 	'imagemap_poly_odd' => '錯誤: 在第$1行找到單數的多邊坐標',

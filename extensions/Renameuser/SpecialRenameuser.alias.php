@@ -55,6 +55,11 @@ $aliases['dv'] = array(
 	'Renameuser' => array( 'މެމްބަރުގެ ނަން ބަދަލު ކުރައްވާ' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'Renameuser' => array( 'ΜετονομασίαΧρήστη' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'Renameuser' => array( 'Cambiar_el_nombre_de_usuario', 'Renombrar_usuario', 'Cambiar_nombre_usuario' ),
@@ -119,7 +124,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Renameuser' => array( 'Ganti nama pengguna' ),
+	'Renameuser' => array( 'Ganti nama pengguna', 'GantiNamaPengguna' ),
 );
 
 /** Italian (Italiano) */
@@ -129,7 +134,7 @@ $aliases['it'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Renameuser' => array( '利用者名の変更' ),
+	'Renameuser' => array( '利用者名変更', '利用者名の変更' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
@@ -217,6 +222,11 @@ $aliases['pt-br'] = array(
 /** Romanian (Română) */
 $aliases['ro'] = array(
 	'Renameuser' => array( 'Redenumire utilizator' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Renameuser' => array( 'PremenovaťPoužívateľa' ),
 );
 
 /** Albanian (Shqip) */

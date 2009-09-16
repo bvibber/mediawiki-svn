@@ -73,11 +73,14 @@ class RatingHistory extends UnlistedSpecialPage
 		global $wgOut;
 		# Show latest month of results
 		$html = ReaderFeedback::getVoteAggregates( $this->page, $this->period, array(),
-			$this->doPurge ? 'skipCache' : 'useCache'
+			($this->doPurge ? 'skipCache' : 'useCache')
 		);
-		if( $html ) {
-			$wgOut->addHTML( '<h2>'.wfMsgHtml('ratinghistory-table')."</h2>\n".
-				"<div class='rfb-reader_feedback_ratings'>$html</div>" );
+		if( $html != '' ) {
+			$wgOut->addHTML(
+				'<h2>' . wfMsgHtml('ratinghistory-table') . "</h2>\n" .
+				wfMsgExt( 'ratinghistory-ratings', 'parse' ) . "\n" .
+				"<div class='rfb-reader_feedback_ratings'>$html</div>"
+			);
 		}
 	}
 	
@@ -141,7 +144,8 @@ class RatingHistory extends UnlistedSpecialPage
 						Xml::openElement( 'div', array('class' => 'rfb-reader_feedback_graph') ) .
 						Xml::element( 'embed', array('src' => $url, 'type' => 'image/svg+xml',
 							'class' => 'rfb-reader_feedback_plot', 'width' => '1000', 'height' => '410') ) .
-						Xml::closeElement( 'div' ) . "\n";
+						Xml::closeElement( 'div' ) . "\n" .
+						wfMsgExt('ratinghistory-graph-scale', 'parse', $this->dScale ) . "\n";
 				}
 				break;
 			case 'png':
@@ -157,7 +161,8 @@ class RatingHistory extends UnlistedSpecialPage
 						Xml::openElement( 'div', array('class' => 'rfb-reader_feedback_graph') ) .
 						Xml::openElement( 'img', array('src' => $url,'alt' => $tag) ) . 
 						Xml::closeElement( 'img' ) .
-						Xml::closeElement( 'div' ) . "\n";
+						Xml::closeElement( 'div' ) . "\n" .
+						wfMsgExt('ratinghistory-graph-scale', 'parse', $this->dScale ) . "\n";
 				}
 				break;
 			default: // use html table
@@ -181,7 +186,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$wgOut->addHTML( '<h2>' . wfMsgHtml('ratinghistory-chart') . "$purgeLink</h2>\n" );
 		if( $data ) {
 			// Add legend as needed
-			$wgOut->addWikiText( wfMsg('ratinghistory-legend',$this->dScale) );
+			$wgOut->addWikiText( wfMsg('ratinghistory-legend') );
 			// Add recent voter list
 			$userTable = $this->getUserList();
 			if( $userTable ) {
@@ -254,7 +259,7 @@ class RatingHistory extends UnlistedSpecialPage
 			// GD is not installed
 			return false;
 		}
-		global $wgPHPlotDir;
+		global $wgPHPlotDir, $wgMemc;
 		require_once( "$wgPHPlotDir/phplot.php" ); // load classes
 		// Define the object
 		$plot = new PHPlot( 1000, 400 );
@@ -312,6 +317,11 @@ class RatingHistory extends UnlistedSpecialPage
 		if( count($data) < 2 ) {
 			return false;
 		}
+		// Re-scale voter count to fit to graph
+		$this->dScale = ceil($maxC/5);
+		// Cache the scale value to memory
+		$key = wfMemcKey( 'feedback', 'scale', $this->page->getArticleId(), $this->period );
+		$wgMemc->set( $key, $this->dScale, 7*24*3600 );
 		// Fit to [0,4]
 		foreach( $data as $x => $dataRow ) {
 			$data[$x][3] = $dataRow[3]/$this->dScale;
@@ -320,7 +330,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$plot->SetPointShapes( array('dot','dot','dot') );
 		$plot->setPointSizes( array(1,1,4) );
 		$plot->SetDataColors( array('blue','green','red') );
-		$plot->SetLineStyles( array('solid','solid','none') );
+		$plot->SetLineStyles( array('solid','solid','solid') );
 		$plot->SetBackgroundColor('#F8F8F8');
 		// Turn off X axis ticks and labels because they get in the way:
 		$plot->SetXTickLabelPos('none');
@@ -342,7 +352,7 @@ class RatingHistory extends UnlistedSpecialPage
 	* @returns bool, success
 	*/
 	public function makeSvgGraph( $tag, $filePath ) {
-		global $wgSvgGraphDir, $wgContLang;
+		global $wgSvgGraphDir, $wgContLang, $wgMemc;
 		require_once( "$wgSvgGraphDir/svgGraph.php" ); // load classes
 		require_once( "$wgSvgGraphDir/svgGraph2.php" ); // load classes
 		// Define the object
@@ -426,6 +436,11 @@ class RatingHistory extends UnlistedSpecialPage
 		// Round values for display
 		$sd = round( $sd, 3 );
 		$u = round( $u, 3 );
+		// Re-scale voter count to fit to graph
+		$this->dScale = ceil($maxC/5);
+		// Cache the scale value to memory
+		$key = wfMemcKey( 'feedback', 'scale', $this->page->getArticleId(), $this->period );
+		$wgMemc->set( $key, $this->dScale, 7*24*3600 );
 		// Fit to [0,4]
 		foreach( $dcount as $x => $c ) {
 			$dcount[$x] = $c/$this->dScale;
@@ -475,7 +490,7 @@ class RatingHistory extends UnlistedSpecialPage
 		// Rasterize due to IE suckage
 		$status = $svgHandler->rasterize( $svgPath, $filePath, 1000, 410 );
 		if( $status !== true ) {
-			throw new MWException( 'Could not write SVG file!' );
+			throw new MWException( 'Could not rasterize SVG file!' );
 			return false;
 		}
 		return true;
@@ -658,13 +673,20 @@ class RatingHistory extends UnlistedSpecialPage
 	}
 	
 	/**
-	* Check if a graph file is expired.
+	* Check if a graph file is expired. Set $this->dScale.
 	* @param string $tag
 	* @param string $path, filepath to existing file
 	* @returns string
 	*/
 	protected function fileExpired( $tag, $path ) {
+		global $wgMemc;
 		if( $this->doPurge || !file_exists($path) ) {
+			return true;
+		}
+		$key = wfMemcKey( 'feedback', 'scale', $this->page->getArticleId(), $this->period );
+		// Get scale cache value...
+		$this->dScale = $wgMemc->get( $key );
+		if( $this->dScale == false ) {
 			return true;
 		}
 		$dbr = wfGetDB( DB_SLAVE );

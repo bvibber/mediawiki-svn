@@ -62,6 +62,13 @@ $messages['be-tarask'] = array(
 	'lst-desc' => 'Дадае функцыі <tt>#lst</tt> і <tt>#lstx</tt> і тэг <tt>&lt;section&gt;</tt>, дазваляе пераносіць вызначаныя ўчасткі тэксту на іншыя старонкі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'lst-desc' => "Ouzhpennañ a ra an arc'hwelioù <tt>#lst</tt> and <tt>#lstx</tt> hag ar valizenn <tt>&lt;section&gt;</tt> a dalvez da dreuzklozañ lodennoù skrid merket",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -181,6 +188,13 @@ $messages['hi'] = array(
 	'lst-desc' => '<tt>#lst</tt> और <tt>#lstx</tt> कार्य तथा <tt>&lt;section&gt;</tt> टॅग बढायें, पाठमेंसे चिन्हांकीत विभाग एकत्रित करें।',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'lst-desc' => 'Nagadugang <tt>#lst</tt> kag <tt>#lstx</tt> panksiyon kag <tt>&lt;section&gt;</tt> tag, nagapasugot sang na-markahan nga mga seksiyon sang teksto nga himuon transkluded',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -265,6 +279,13 @@ $messages['li'] = array(
 	'lst-desc' => 'Voegt de functies <tt>#lst</tt> en <tt>#lstx</tt> en de tag <tt>&lt;section&gt;</tt> toe  voor het markere van tekstdele die getranscludeerd motte worde',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'lst-desc' => 'Ги додава фукциите <tt>#lst</tt> и <tt>#lstx</tt> и ознака <tt>&lt;section&gt;</tt>, што овозможува трансклудирање на обележаните делови од текстот',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -328,6 +349,13 @@ $messages['pl'] = array(
 	'lst-desc' => 'Dodaje funkcje <tt>#lst</tt> i <tt>#lstx</tt> oraz znacznik <tt>&lt;section&gt;</tt> umożliwiające umieszczenie oznaczonej sekcji tekstu w treści innej strony',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'lst-desc' => 'A gionta le fonsion <tt>#lst</tt> e ël tag <tt>&lt;section&gt;</tt>, a abìlita le session ëd test marcà a esse anserìe',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -377,11 +405,18 @@ $messages['sk'] = array(
 	'lst-desc' => 'Pridáva funkcie <tt>#lst</tt> and <tt>#lstx</tt> a značku <tt>&lt;section&gt;</tt>, umožňuje transklúziu označených častí textu',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'lst-desc' => 'Додаје <tt>#lst</tt> и <tt>#lstx</tt> функције и <tt>&lt;section&gt;</tt> таг, омогућује да означени одељци текста буду укључени',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'lst-desc' => 'Dodaje <tt>#lst</tt> i <tt>#lstx</tt> funkcije i <tt>&lt;section&gt;</tt> tag, omogućuje da označeni odeljci teksta budu uključeni',
 );
 
 /** Seeltersk (Seeltersk)
@@ -396,6 +431,13 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'lst-desc' => 'Lägger till funktionerna <tt>#lst</tt> och <tt>#lstx</tt> för att inkludera avsnitt av en text, samt taggen <tt>&lt;section&gt;</tt> för att markera de avsnitt som kan inkluderas',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'lst-desc' => '<tt>#lst</tt> మరియు  <tt>#lstx</tt> కార్యములను మరి <tt>&lt;section&gt;</tt> ట్యాగు ను కలిపి, గుర్తింపబడిన సెక్షన్లను ఏకీకృతం చేయడానికి అవకాశమును ఇస్తుంది.',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -437,7 +479,7 @@ $messages['vec'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'lst-desc' => 'Thêm hàm <tt>#lst</tt> và <tt>#lstx</tt> và thẻ <tt>&lt;section&gt;</tt> để cho phép những đoạn văn bản được đánh dấu sẽ được nhúng.',
+	'lst-desc' => 'Thêm các hàm <tt>#lst</tt> và <tt>#lstx</tt> cùng thẻ <tt>&lt;section&gt;</tt> để cho phép nhúng những đoạn văn bản được đánh dấu.',
 );
 
 /** Yue (粵語)

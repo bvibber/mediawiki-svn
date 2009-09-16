@@ -134,7 +134,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'sitenotice_close' => 'kuzhat',
-	'sitenotice-desc' => 'Aotren a ra an implijerien da serriñ ar sitenotice',
+	'sitenotice-desc' => "Aotren a ra an implijerien da serriñ kemennadenn al lec'hienn greiz",
 );
 
 /** Bosnian (Bosanski)
@@ -188,6 +188,14 @@ $messages['cy'] = array(
 	'sitenotice-desc' => "Yn galluogi defnyddwyr i gau'r hysbysiad",
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'sitenotice_close' => 'Skjul',
+	'sitenotice-desc' => 'Muliggør at brugere kan skjule topbeskeden',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -232,10 +240,12 @@ $messages['es'] = array(
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author WikedKentaur
  */
 $messages['et'] = array(
 	'sitenotice_close' => 'Peida sõnum',
+	'sitenotice-desc' => 'Lubab kasutajal võrgukohateate sulgeda.',
 );
 
 /** Basque (Euskara)
@@ -296,10 +306,12 @@ $messages['fur'] = array(
 );
 
 /** Western Frisian (Frysk)
+ * @author SK-luuut
  * @author Snakesteuben
  */
 $messages['fy'] = array(
 	'sitenotice_close' => 'net mear sjen litte',
+	'sitenotice-desc' => 'Stiet meidogger ta sideberjochten te sluten',
 );
 
 /** Irish (Gaeilge)
@@ -444,6 +456,14 @@ $messages['jv'] = array(
 	'sitenotice-desc' => 'Marengaké para panganggo nutup wara-wara situs',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'sitenotice_close' => 'დამალვა',
+	'sitenotice-desc' => 'აძლევს მომხმარებლებს ნებართვას დამალონ საიტის შეტყობინება',
+);
+
 /** Kara-Kalpak (Qaraqalpaqsha)
  * @author Atabek
  */
@@ -528,11 +548,12 @@ $messages['lzh'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'sitenotice_close' => 'сокриј',
-	'sitenotice-desc' => 'Овозможува корисниците да ја затворат сајт пораката',
+	'sitenotice-desc' => 'Им овозможува корисниците да го затворат известувањето на главната страница',
 );
 
 /** Malayalam (മലയാളം)
@@ -621,9 +642,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'sitenotice_close' => 'stërma',
+	'sitenotice-desc' => "A përmëtt a j'utent ëd saré ël sitenotice",
 );
 
 /** Pashto (پښتو)
@@ -726,12 +749,20 @@ $messages['sq'] = array(
 	'sitenotice_close' => 'fshihe',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'sitenotice_close' => 'откажи',
 	'sitenotice-desc' => 'омогући корисницима да искључе обавештење на сајту',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'sitenotice_close' => 'otkaži',
+	'sitenotice-desc' => 'omogući korisnicima da isključe obaveštenje na sajtu',
 );
 
 /** Seeltersk (Seeltersk)

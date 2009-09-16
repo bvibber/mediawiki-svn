@@ -41,15 +41,6 @@ class ApiQueryOldreviewedpages extends ApiQueryGeneratorBase {
 	}
 
 	private function run( $resultPageSet = null ) {
-		// Permission check
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'unreviewedpages' ) )
-			$this->dieUsage(
-				"You need the unreviewedpages right to request the list of"
-				." old reviewed pages.",
-				'permissiondenied'
-			);
-
 		$params = $this->extractRequestParams();
 
 		// Construct SQL Query
@@ -107,10 +98,7 @@ class ApiQueryOldreviewedpages extends ApiQueryGeneratorBase {
 			}
 
 			if ( is_null( $resultPageSet ) ) {
-				$title = Title::makeTitle(
-					$row->page_namespace,
-					$row->page_title
-				);
+				$title = Title::newFromRow( $row );
 				$data[] = array(
 					'pageid' => intval( $row->page_id ),
 					'ns' => intval( $title->getNamespace() ),

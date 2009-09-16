@@ -10,6 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'oldreviewedpages' => 'Outdated reviewed pages',
 	'oldreviewedpages-legend' => 'List reviewed pages with revisions pending review',
+	'oldreviewedpages-list' => 'This page lists {{PLURAL:$1|a reviewed page|reviewed pages}} having pending edits.',
 	'oldreviewedpages-none' => 'There are currently no pages meeting these criteria',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hour|hours}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|day|days}})',
@@ -27,6 +28,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Darth Kule
  * @author Jon Harald Søby
+ * @author Purodha
  * @author Raymond
  * @author SPQRobin
  */
@@ -35,23 +37,50 @@ $messages['qqq'] = array(
 Title of [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages].',
 	'oldreviewedpages-legend' => '{{Flagged Revs-small}}
 Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] as title/legend of the fieldset.',
-	'oldreviewedpages-none' => '{{Flagged Revs}}',
-	'oldreviewedpages-hours' => '{{Flagged Revs}}',
-	'oldreviewedpages-days' => '{{Flagged Revs}}',
-	'oldreviewedpages-recent' => '{{Flagged Revs}}',
+	'oldreviewedpages-list' => '{{Flagged Revs}}
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages].
+
+Parameter $1 is the number of pages going to be listed, to be used with PLURAL.',
+	'oldreviewedpages-none' => '{{Flagged Revs}}
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages].',
+	'oldreviewedpages-hours' => '{{Flagged Revs}}
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] to denote the age of the last unreviewed change to a listed page.',
+	'oldreviewedpages-days' => '{{Flagged Revs}}
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] to denote the age of the last unreviewed change to a listed page.',
+	'oldreviewedpages-recent' => '{{Flagged Revs}}
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] to denote the age of the last unreviewed change to a listed page.',
 	'oldreviewed-category' => '{{Flagged Revs}}
-{{Identical|Category}}',
-	'oldreviewed-diff' => '{{Flagged Revs}}',
+{{Identical|Category}}
+
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] as a label for an input field in the form.',
+	'oldreviewed-watched' => '{{Flagged Revs}}
+
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] as a label for an input field in the form.',
+	'oldreviewed-stable' => '{{Flagged Revs}}
+
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] as a label for an input field in the form.
+Checkmarking the box next to this label will select pages having individual, per page, settings for the version to show to the average user.',
+	'oldreviewed-diff' => '{{Flagged Revs}}
+
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] as a link anchor going to the sighting page for a listed page.',
+	'oldreviewed-size' => '{{Flagged Revs}}
+
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] as a label for an input field in the form.',
 	'oldreviewedpages-unwatched' => '{{Flagged Revs-small}}
 Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] when nobody is watching the page.',
 	'oldreviewedpages-watched' => '{{Flagged Revs-small}}
 Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] when active users are watching the page.',
+	'oldreviewedpages-viewing' => '{{Flagged Revs-small}}
+Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] when someone has recently requested the sighting page for a listed page.',
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Arnobarnard
  * @author Naudefj
  */
 $messages['af'] = array(
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|uur|ure}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dag|dae}})',
 	'oldreviewedpages-recent' => '(minder as een uur)',
 	'oldreviewed-category' => 'Kategorie:',
 );
@@ -82,15 +111,16 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  * @author Ouda
  */
 $messages['ar'] = array(
 	'oldreviewedpages' => 'صفحات مراجعة قديمة',
 	'oldreviewedpages-legend' => 'عرض الصفحات المراجعة ذات المراجعات غير المراجعة',
-	'oldreviewedpages-list' => 'هذه الصفحة تعرض الصفحات المراجعة التي بها تعديلات قيد الانتظار.',
+	'oldreviewedpages-list' => 'هذه الصفحة تعرض {{PLURAL:$1||صفحة مراجعة فيها|صفحتين مراجعتين فيهما|صفحات مراجعة فيها}} تعديلات قيد الانتظار.',
 	'oldreviewedpages-none' => 'لا توجد حاليا صفحات تطابق هذه المواصفات',
-	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ساعة|ساعة}})',
-	'oldreviewedpages-days' => '($1 {{PLURAL:$1|يوم|يوم}})',
+	'oldreviewedpages-hours' => '({{PLURAL:$1||ساعة واحد|ساعتان|$1 ساعات|$1 ساعة}})',
+	'oldreviewedpages-days' => '({{PLURAL:$1||يوم واحد|يومان|$1 أيام|$1 يومًا|$1 يوم}})',
 	'oldreviewedpages-recent' => '(أقل من 1 ساعة)',
 	'oldreviewed-category' => 'تصنيف:',
 	'oldreviewed-watched' => 'على قائمة مراقبتي',
@@ -98,7 +128,7 @@ $messages['ar'] = array(
 	'oldreviewed-diff' => 'راجع',
 	'oldreviewed-size' => 'أقصى تغيير (بايت):',
 	'oldreviewedpages-unwatched' => '(غير مراقبة)',
-	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|مستخدم نشط|مستخدم نشط}} يراقب)',
+	'oldreviewedpages-watched' => '({{PLURAL:$1|لا مستخدمون نشطون يراقبون|مستخدم واحد نشط يراقب|مستخدمان نشطان يراقبان|$1 مستخدمون نشطون يراقبون|$1 مستخدمًا نشيطًا يراقبون|$1 مستخدم نشط يراقبون}})',
 	'oldreviewedpages-viewing' => '(تحت المراجعة)',
 );
 
@@ -177,7 +207,7 @@ $messages['bcc'] = array(
 $messages['be-tarask'] = array(
 	'oldreviewedpages' => 'Састарэлыя правераныя старонкі',
 	'oldreviewedpages-legend' => 'Сьпіс правераных старонак з неправеранымі вэрсіямі',
-	'oldreviewedpages-list' => 'На гэтай старонцы пададзены сьпіс правераных старонак, якія рэдагаваліся пасьля праверкі.',
+	'oldreviewedpages-list' => 'На гэтай старонцы {{PLURAL:$1|пададзеная правераная старонка, якая рэдагавалася|пададзены сьпіс правераных старонак, якія рэдагаваліся}} пасьля праверкі.',
 	'oldreviewedpages-none' => 'Зараз няма старонак, якія адпавядаюць гэтым крытэрам',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|гадзіна|гадзіны|гадзінаў}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|дзень|дні|дзён}})',
@@ -204,13 +234,46 @@ $messages['bg'] = array(
 	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|наблюдаващ потребител|наблюдаващи потребители}})',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'oldreviewedpages' => 'Pajennoù adlennet re bell zo',
+	'oldreviewedpages-legend' => 'Rollañ ar pajennoù adlennet gant stummoù da adwelet',
+	'oldreviewedpages-list' => 'War ar bajenn-mañ e kaver {{PLURAL:$1|ur bajenn adlennet|pajennoù adlennet}} zo bet degaset kemmoù enno abaoe.',
+	'oldreviewedpages-none' => "N'eus pajenn ebet diouzh an dezverkoù-mañ evit poent",
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|eur|eur}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|deiz|deiz}})',
+	'oldreviewedpages-recent' => "(1 eurvezh zo pe nebeutoc'h)",
+	'oldreviewed-category' => 'Rummad :',
+	'oldreviewed-watched' => 'War ma roll evezhiañ',
+	'oldreviewed-stable' => 'Stabilaet',
+	'oldreviewed-diff' => 'adlenn',
+	'oldreviewed-size' => 'Kemm brasañ (en oktedoù)',
+	'oldreviewedpages-unwatched' => '(anheuliet)',
+	'oldreviewedpages-watched' => '(pajenn heuliet gant $2 {{PLURAL:$1|implijer|implijer}} oberiant)',
+	'oldreviewedpages-viewing' => '(o vezañ adwelet)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
+	'oldreviewedpages' => 'Zastarijele pregledane stranice',
+	'oldreviewedpages-legend' => 'Spisak pregledanih stranica sa revizijama koje čekaju na provjeru',
+	'oldreviewedpages-list' => 'Ova stranica prikazuje {{PLURAL:$1|pregledanu stranicu koja ima|pregledane stranice koje imaju}} izmjene na čekanju.',
+	'oldreviewedpages-none' => 'Trenutno nema stranica koje zadovoljavaju ove kriterije',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|sat|sata|sati}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dan|dana}})',
 	'oldreviewedpages-recent' => '(manje od 1 sata)',
+	'oldreviewed-category' => 'Kategorija:',
+	'oldreviewed-watched' => 'Na moj spisku praćenja',
+	'oldreviewed-stable' => 'Stabilizirano',
+	'oldreviewed-diff' => 'pregled',
+	'oldreviewed-size' => 'Najveća izmjena (bajta):',
+	'oldreviewedpages-unwatched' => '(nepregledano)',
+	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|aktivni korisnik|aktivna korisnika|aktivnih korisnika}} pregleda)',
+	'oldreviewedpages-viewing' => '(u provjeri)',
 );
 
 /** Catalan (Català)
@@ -256,7 +319,7 @@ $messages['cu'] = array(
 $messages['de'] = array(
 	'oldreviewedpages' => 'Alte, gesichtete Seiten',
 	'oldreviewedpages-legend' => 'Liste gesichteter Seiten mit ungesichteten Versionen',
-	'oldreviewedpages-list' => 'Diese Spezialseite zeigt gesichtete Seiten, die noch ungesichtete Bearbeitungen haben.',
+	'oldreviewedpages-list' => 'Diese Spezialseite zeigt {{PLURAL:$1|eine gesichtete Seite|gesichtete Seiten}}, die noch ungesichtete Bearbeitungen {{PLURAL:$1|hat|haben}}.',
 	'oldreviewedpages-none' => 'Gegenwärtig gibt es keine Seiten, auf die diese Kriterien zutreffen.',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|Stunde|Stunden}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|Tag|Tage}})',
@@ -277,7 +340,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'oldreviewedpages' => 'Zestarjone pśeglědane boki',
 	'oldreviewedpages-legend' => 'Lisćina pśeglědanych bokow z njepśeglědanymi wersijami',
-	'oldreviewedpages-list' => 'Toś ten bok nalistujo pśeglědane boki, kótarež maju hyšći njepśeglědane změny.',
+	'oldreviewedpages-list' => 'Toś ten bok nalistujo {{PLURAL:$1|pśeglědany bok, kótaryž ma|pśeglědanej boka, kótarejž matej|pśeglědane boki, kótarež maju|pśeglědane boki, kótarež maju}} hyšći njepśeglědane změny.',
 	'oldreviewedpages-none' => 'Tuchylu njejsu boki, kótarež wótpówěduju toś tym kriterijam',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|góźina|góźinje|góźiny|góźinow}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|źeń|dnja|dny|dnjow}})',
@@ -298,12 +361,18 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'oldreviewedpages' => 'Μη ενημερωμένες επιθεωρημένες σελίδες',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ώρα|ώρες}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|ημέρα|ημέρες}})',
 	'oldreviewedpages-recent' => '(λιγότερο από 1 ώρα)',
 	'oldreviewed-category' => 'Κατηγορία:',
+	'oldreviewed-watched' => 'Στη λίστα παρακολούθησής μου',
 	'oldreviewed-stable' => 'Σταθεροποιημένος',
 	'oldreviewed-diff' => 'επιθεώρηση',
+	'oldreviewed-size' => 'Μέγιστη αλλαγή (μπάιτς):',
+	'oldreviewedpages-unwatched' => '(δεν παρακολουθείται)',
+	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|χρήστης|χρήστες}} παρακολουθούν)',
+	'oldreviewedpages-viewing' => '(υπό επιθεώρηση)',
 );
 
 /** Esperanto (Esperanto)
@@ -312,7 +381,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'oldreviewedpages' => 'Malfreŝe kontrolitaj paĝoj',
 	'oldreviewedpages-legend' => 'Listigi reviziitajn paĝojn kun nereviziitaj versioj',
-	'oldreviewedpages-list' => 'Ĉi tiu paĝo montras reviziitajn paĝojn kiuj havas ne reviziitajn redaktojn.',
+	'oldreviewedpages-list' => 'Ĉi tiu paĝo montras {{PLURAL:$1|reviziitan paĝon|reviziitajn paĝojn}} kiuj havas nereviziitajn redaktojn.',
 	'oldreviewedpages-none' => 'Nune neniuj paĝoj laŭ tiu kriterio.',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|horo|horoj}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|tago|tagoj}})',
@@ -334,7 +403,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'oldreviewedpages' => 'Páginas revisadas desactualizadas',
 	'oldreviewedpages-legend' => 'Lista de páginas revisadas con revisiones pendientes de verificación',
-	'oldreviewedpages-list' => 'Esta lista enumera páginas revisadas que tienen ediciones pendientes',
+	'oldreviewedpages-list' => 'Esta página lista {{PLURAL:$1|yna páguna revisada|páginas revisadas}} que tienen ediciones pendientes',
 	'oldreviewedpages-none' => 'No hay actualmente páginas que cumplan estos criterios',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hora|horas}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|día|días}})',
@@ -347,6 +416,14 @@ $messages['es'] = array(
 	'oldreviewedpages-unwatched' => '(no vigilado)',
 	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|usuario|usuarios}} activos vigilando)',
 	'oldreviewedpages-viewing' => '(bajo revisión)',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'oldreviewedpages-recent' => '(ordu bat baino gutxiago)',
+	'oldreviewed-category' => 'Kategoria:',
 );
 
 /** Persian (فارسی)
@@ -369,6 +446,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Huji
  * @author Jaakonam
  * @author Mobe
@@ -383,6 +461,7 @@ $messages['fi'] = array(
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|päivä|päivää}})',
 	'oldreviewedpages-recent' => '(alle 1 tunti)',
 	'oldreviewed-category' => 'Luokka:',
+	'oldreviewed-watched' => 'Tarkkailulistallani',
 	'oldreviewedpages-unwatched' => '(tarkkailematon)',
 	'oldreviewedpages-watched' => '($2 aktiivisen {{PLURAL:$1|käyttäjän}} tarkkailema)',
 );
@@ -398,7 +477,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'oldreviewedpages' => 'Pages dont les révisions sont périmées',
 	'oldreviewedpages-legend' => 'Lister les pages revues avec des versions à réviser',
-	'oldreviewedpages-list' => 'Cette page liste des pages déjà revues qui comportent de nouvelles modifications.',
+	'oldreviewedpages-list' => 'Cette page liste {{PLURAL:$1|une page déjà revue qui comporte|des pages déjà revues qui comportent}} de nouvelles modifications.',
 	'oldreviewedpages-none' => 'Il n’existe actuellement aucune page respectant ces critères',
 	'oldreviewedpages-hours' => '($1 heure{{PLURAL:$1||s}})',
 	'oldreviewedpages-days' => '($1 jour{{PLURAL:$1||s}})',
@@ -448,7 +527,7 @@ $messages['ga'] = array(
 $messages['gl'] = array(
 	'oldreviewedpages' => 'Páxinas revisadas fóra de data',
 	'oldreviewedpages-legend' => 'Listar as páxinas revisadas con revisións sen revisar',
-	'oldreviewedpages-list' => 'Esta páxina lista as páxinas revisadas que teñen edicións pendentes.',
+	'oldreviewedpages-list' => 'Esta páxina lista {{PLURAL:$1|a páxina revisada|as páxinas revisadas}} que {{PLURAL:$1|ten|teñen}} edicións pendentes.',
 	'oldreviewedpages-none' => 'Actualmente non hai páxinas que coincidan con ese criterio',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hora|horas}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|día|días}})',
@@ -481,7 +560,7 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'oldreviewedpages' => 'Alti vum Fäldhieter aagluegti Versione',
 	'oldreviewedpages-legend' => 'Lischt vu Syte, wu vum Fäldhieter gsäh sin mit Versione, wu nit gsäh sin',
-	'oldreviewedpages-list' => 'Die Spezialsyte zeigt vum Fäldhieter aagluegti Syte, wu nonig aagluegti Bearbeitige hän.',
+	'oldreviewedpages-list' => 'Die Spezialsyte zeigt {{PLURAL:$1|e vum Fäldhieter aagluegti Syte, wu nonig aagluegti Bearbeitige het|vum Fäldhieter aagluegti Syte, wu nonig aagluegti Bearbeitige hän}}.',
 	'oldreviewedpages-none' => 'Im Momänt git s no kei Syte mit däne Kriterie.',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|Stunde|Stunde}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|Tag|Täg}})',
@@ -503,6 +582,7 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'oldreviewedpages' => 'דפים בדוקים ישנים',
 	'oldreviewedpages-legend' => 'רשימת דפים בדוקים עם גרסאות שלא נבדקו',
+	'oldreviewedpages-list' => 'דף זה מציג {{PLURAL:$1|דף שנבדק, שיש לו|דפים שנבדקו, שיש להם}} עריכות הממתינות לבדיקה.',
 	'oldreviewedpages-none' => 'אין כרגע דפים שעונים על קריטריונים אלה',
 	'oldreviewedpages-hours' => '({{PLURAL:$1|שעה|$1 שעות|שעתיים}})',
 	'oldreviewedpages-days' => '({{PLURAL:$1|יום|$1 ימים|יומיים}})',
@@ -534,13 +614,34 @@ $messages['hi'] = array(
 	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|सदस्यने|सदस्योंने}} ध्यान रखा हैं)',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'oldreviewedpages' => 'Zastarjele ocjenjene stranice',
+	'oldreviewedpages-legend' => 'Popis ocjenjenih stranica s izmjenama koje čekaju ocjenu',
+	'oldreviewedpages-list' => 'Ova stranica navodi {{PLURAL:$1|ocjenjenu stranicu koja čeka|ocjenjene stranice koje čekaju}} uređivanja.',
+	'oldreviewedpages-none' => 'Trenutačno nema stranica koje zadovoljavaju ove kriterije',
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|sat|sata|sati}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dan|dana}})',
+	'oldreviewedpages-recent' => '(manje od 1 sat)',
+	'oldreviewed-category' => 'Kategorija:',
+	'oldreviewed-watched' => 'Na moj popis praćenja',
+	'oldreviewed-stable' => 'Stabilizirano',
+	'oldreviewed-diff' => 'ocijeni',
+	'oldreviewed-size' => 'Najveća promjena (bajtovi):',
+	'oldreviewedpages-unwatched' => '(nepraćeno)',
+	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|aktivni suradnik prati|aktivnih suradnika prate}})',
+	'oldreviewedpages-viewing' => '(u ocjenjivanju)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'oldreviewedpages' => 'Zestarjene skontrolowane strony',
 	'oldreviewedpages-legend' => 'Lisćina skontrolowanych stronow z njeskontrolowanymi wersijemi',
-	'oldreviewedpages-list' => 'Tuta strona nalistuje skontrolowane strony, kotrež hišće njeskontrolowane změny maja.',
+	'oldreviewedpages-list' => 'Tuta strona nalistuje {{PLURAL:$1|přepruwowanu stronu, kotraž|přepruwowanej stronje, kotrejž|přepruwowane strony, kotrež|přepruwowane strony, kotrež}} hišće njeskontrolowane změny {{PLURAL:$1|ma|matej|maja|maja}}.',
 	'oldreviewedpages-none' => 'Tuchwilu žane strony njejsu, kotrež tutym kriterijam wotpowěduja',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hodźina|hodźinje|hodźiny|hodźin}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dźeń|dnjej|dny|dnjow}})',
@@ -557,21 +658,24 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Gondnok
  */
 $messages['hu'] = array(
 	'oldreviewedpages' => 'Elavult ellenőrzött lapok',
 	'oldreviewedpages-legend' => 'Ellenőrizetlen változatokkal rendelkező lapok listája',
+	'oldreviewedpages-list' => 'Ezen a lapon azon ellenőrzött lapok listája látható, melyek ellenőrizetlen szerkesztésekkel rendelkeznek.',
 	'oldreviewedpages-none' => 'Jelenleg nincs a feltételeknek megfelelő lap.',
 	'oldreviewedpages-hours' => '({{PLURAL:$1|Egy|$1}} órája)',
 	'oldreviewedpages-days' => '({{PLURAL:$1|Egy|$1}} napja)',
 	'oldreviewedpages-recent' => '(kevesebb, mint egy órája)',
 	'oldreviewed-category' => 'Kategória:',
 	'oldreviewed-watched' => 'A figyelőlistámon',
+	'oldreviewed-stable' => 'Jelölt lapváltozat',
 	'oldreviewed-diff' => 'ellenőriz',
 	'oldreviewed-size' => 'Változás legfeljebb (bájtban):',
 	'oldreviewedpages-unwatched' => '(nem figyelt)',
-	'oldreviewedpages-watched' => '({{PLURAL:$1|egy|$2}} szerkesztő figyeli)',
+	'oldreviewedpages-watched' => '({{PLURAL:$1|egy|$2}} aktív szerkesztő figyeli)',
 	'oldreviewedpages-viewing' => '(ellenőrzés alatt)',
 );
 
@@ -582,7 +686,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'oldreviewedpages' => 'Paginas revidite obsolete',
 	'oldreviewedpages-legend' => 'Listar le paginas revidite con versiones attendente revision',
-	'oldreviewedpages-list' => 'Iste pagina lista le paginas revidite que ha modificationes pendente.',
+	'oldreviewedpages-list' => 'Iste pagina lista {{PLURAL:$1|un pagina|le paginas}} revidite que ha modificationes attendente.',
 	'oldreviewedpages-none' => 'Al momento non existe paginas que satisface iste criterios',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hora|horas}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|die|dies}})',
@@ -598,20 +702,25 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'oldreviewedpages' => 'Halaman tertinjau telah usang',
 	'oldreviewedpages-legend' => 'Daftar halaman tertinjau yang memiliki revisi yang belum ditinjau',
-	'oldreviewedpages-list' => 'Di bawah ini adalah daftar halaman tertinjau yang memiliki suntingan yang ditangguhkan.',
+	'oldreviewedpages-list' => 'Di bawah ini adalah daftar {{PLURAL:$1||}}halaman tertinjau yang memiliki suntingan yang ditangguhkan.',
 	'oldreviewedpages-none' => 'Tidak ada halaman yang sesuai dengan kriteria ini',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|jam|jam}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|hari|hari}})',
 	'oldreviewedpages-recent' => '(kurang dari 1 jam)',
 	'oldreviewed-category' => 'Kategori:',
+	'oldreviewed-watched' => 'Ada di daftar pantauan saya',
+	'oldreviewed-stable' => 'Distabilkan',
 	'oldreviewed-diff' => 'meninjau',
+	'oldreviewed-size' => 'Perubahan maks. (byte):',
 	'oldreviewedpages-unwatched' => '(tidak dipantau)',
-	'oldreviewedpages-watched' => '(dipantau $2 {{PLURAL:$1|pengguna|pengguna}})',
+	'oldreviewedpages-watched' => '(dipantau $2 {{PLURAL:$1|pengguna|pengguna}} aktif)',
+	'oldreviewedpages-viewing' => '(sedang ditinjau)',
 );
 
 /** Italian (Italiano)
@@ -622,13 +731,14 @@ $messages['id'] = array(
 $messages['it'] = array(
 	'oldreviewedpages' => 'Pagine non revisionate di recente',
 	'oldreviewedpages-legend' => 'Elenco delle pagine revisionate ma con versioni non revisionate',
-	'oldreviewedpages-list' => 'Di seguito sono elencate la pagine revisionate ma che hanno delle modifiche ancora da revisionare.',
+	'oldreviewedpages-list' => 'Di seguito {{PLURAL:$1|è elencata una pagina revisionata ma che ha|sono elencate pagine revisionate ma che hanno}} delle modifiche ancora da revisionare.',
 	'oldreviewedpages-none' => 'Al momento non ci sono pagine che soddisfino i criteri di ricerca.',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ora|ore}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|giorno|giorni}})',
 	'oldreviewedpages-recent' => "(meno di un'ora)",
 	'oldreviewed-category' => 'Categoria:',
 	'oldreviewed-watched' => 'Sulla mia watchlist',
+	'oldreviewed-stable' => 'Stabile',
 	'oldreviewed-diff' => 'revisiona',
 	'oldreviewed-size' => 'Cambiamento massimo (byte):',
 	'oldreviewedpages-unwatched' => '(non osservata)',
@@ -645,10 +755,10 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'oldreviewedpages' => '古くなった査読済みページ',
 	'oldreviewedpages-legend' => '査読待ちの版のある査読済みページを一覧',
-	'oldreviewedpages-list' => 'このページは以前の査読以降に査読待ちの編集がなされたページを一覧します。',
+	'oldreviewedpages-list' => 'このページは以前の査読以降に査読待ちの編集がなされた{{PLURAL:$1|ページ}}を一覧します。',
 	'oldreviewedpages-none' => '現在、この基準に合うページはありません',
-	'oldreviewedpages-hours' => '($1時間)',
-	'oldreviewedpages-days' => '($1日)',
+	'oldreviewedpages-hours' => '($1{{PLURAL:$1|時間}})',
+	'oldreviewedpages-days' => '($1{{PLURAL:$1|日}})',
 	'oldreviewedpages-recent' => '(1時間未満)',
 	'oldreviewed-category' => 'カテゴリ:',
 	'oldreviewed-watched' => '自分のウォッチリストに含まれるもの',
@@ -656,7 +766,7 @@ $messages['ja'] = array(
 	'oldreviewed-diff' => '査読',
 	'oldreviewed-size' => '変更量の上限 (バイト):',
 	'oldreviewedpages-unwatched' => '(未ウォッチ)',
-	'oldreviewedpages-watched' => '($2人の活動中の利用者がウォッチ)',
+	'oldreviewedpages-watched' => '($2人の活動中の{{PLURAL:$1|利用者}}がウォッチ)',
 	'oldreviewedpages-viewing' => '(査読中)',
 );
 
@@ -677,6 +787,13 @@ $messages['km'] = array(
 	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} សកម្ម​កំពុង​តាមដាន)',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'oldreviewed-category' => 'ವರ್ಗ:',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -694,16 +811,16 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'oldreviewedpages' => 'Verbei nohjekik Sigge',
+	'oldreviewedpages' => 'Vörmols ens nohjekik jewääse Sigge',
 	'oldreviewedpages-legend' => 'Leß met de nohjekik Sigge met neue Versione, di op et Nohkike waade',
+	'oldreviewedpages-list' => 'Heh di Sigg zeijsch {{PLURAL:$1|en {{lcfirst:{{int:revreview-accuracy-1}}}} Sigg|{{lcfirst:{{int:revreview-accuracy-1}}}}e Sigge|kei {{lcfirst:{{int:revreview-accuracy-1}}}} Sigg}} met Änderunge, di noch nit nohjekik woode sen.',
 	'oldreviewedpages-none' => 'För der Momang paße jrad kei Sigge op die Ußwahl',
-	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|Stund|Stunde}})',
+	'oldreviewedpages-hours' => '({{PLURAL:$1|en Stund|$1 Stunde|kein Stund}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|Daach|Dähsch}})',
 	'oldreviewedpages-recent' => '(winnijer wie en Stund)',
 	'oldreviewed-category' => 'Saachjrupp:',
 	'oldreviewed-watched' => 'En minge Oppassleß',
-	'oldreviewed-stable' => '
-Stabilized',
+	'oldreviewed-stable' => 'Sigge met eije Enstellunge',
 	'oldreviewed-diff' => 'nohkike',
 	'oldreviewed-size' => 'Jüüßte Änderung vum Ömfang en <i lang="en">Bytes</i>:',
 	'oldreviewedpages-unwatched' => '(op keine Oppassleß)',
@@ -715,14 +832,17 @@ Stabilized',
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dydh|dydhyow}})',
-	'oldreviewed-category' => 'Klasyans:',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dydh|dydh}})',
+	'oldreviewed-category' => 'Klass:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
+	'oldreviewedpages' => 'Vereelste nogekuckte Säiten',
+	'oldreviewedpages-legend' => 'Lëscht vun den nogekuckte Säite mat net nogekuckte Versiounen',
+	'oldreviewedpages-list' => 'Op dëser Säit {{PLURAL:$1|steet eng nogekuckte Säit|stinn nogekuckte Säite}} mat Ännerungen am Suspens.',
 	'oldreviewedpages-none' => 'Et gëtt elo keng Säiten déi dene Critèren entspriechen',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|Stonn|Stonnen}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|Dag|Deeg}})',
@@ -826,7 +946,7 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'oldreviewedpages' => "Pagina's met eindredactie die bijgewerkt zijn",
 	'oldreviewedpages-legend' => "Lijst met pagina's met eindredactie en versies zonder eindredactie",
-	'oldreviewedpages-list' => "Hier worden pagina's met eindredactie weergegeven waarvoor nog te controleren versies zijn.",
+	'oldreviewedpages-list' => "Op deze pagina {{PLURAL:$1|wordt de pagina|worden de pagina's}} met eindredactie weergegeven waarvoor nog te controleren versies zijn.",
 	'oldreviewedpages-none' => "Er zijn geen pagina's die aan de criteria voldoen",
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|uur|uur}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dag|dagen}})',
@@ -891,7 +1011,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'oldreviewedpages' => 'Paginas revistas fòra data',
 	'oldreviewedpages-legend' => 'Listas de paginas revistas amb de versions pas visadas.',
-	'oldreviewedpages-list' => "Aquesta pagina lista las paginas revistas qu'an d'edicions en cors.",
+	'oldreviewedpages-list' => 'Aquesta pagina lista {{PLURAL:$1|una pagina ja revista que compòrta|de paginas ja revistas que compòrtan}} de modificacions novèlas.',
 	'oldreviewedpages-none' => 'Existís actualament pas cap de pagina respectant aquestes critèris',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ora|oras}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|jorn|jorns}})',
@@ -906,6 +1026,16 @@ $messages['oc'] = array(
 	'oldreviewedpages-viewing' => '(en revision)',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|Schtund|Schtund}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|Daag|Daag}})',
+	'oldreviewedpages-recent' => '(wennicher ass 1 Schtund)',
+	'oldreviewed-watched' => 'Uff mei Watsch-Lischt',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author McMonster
@@ -914,14 +1044,15 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'oldreviewedpages' => 'Zdezaktualizowane przejrzane strony',
 	'oldreviewedpages-legend' => 'Lista przejrzanych stron z wersjami oczekującymi na przejrzenie',
-	'oldreviewedpages-list' => 'Poniżej znajduje się lista przejrzanych stron, które oczekują na sprawdzenie nowych edycji.',
+	'oldreviewedpages-list' => 'Poniżej znajduje się {{PLURAL:$1|przejrzana strona, która oczekuje na sprawdzenie nowej edycji|lista przejrzanych stron, które oczekują na sprawdzenie nowych edycji}}.',
 	'oldreviewedpages-none' => 'Obecnie nie ma stron spełniających podane kryteria',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|godzina|godziny|godzin}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dzień|dni}})',
 	'oldreviewedpages-recent' => '(mniej niż 1 godzina)',
 	'oldreviewed-category' => 'Kategoria',
 	'oldreviewed-watched' => 'Z mojej listy obserwowanych',
-	'oldreviewed-diff' => 'różn.',
+	'oldreviewed-stable' => 'Oznaczona',
+	'oldreviewed-diff' => 'przejrzyj',
 	'oldreviewed-size' => 'Maksymalna liczba dodanych lub usuniętych bajtów',
 	'oldreviewedpages-unwatched' => '(nieobserwowana)',
 	'oldreviewedpages-watched' => '(obserwowana przez $2 {{PLURAL:$1|aktywnego użytkownika|aktywnych użytkowników}})',
@@ -937,13 +1068,14 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Capmo
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'oldreviewedpages' => 'Versões antigas de páginas analisadas',
 	'oldreviewedpages-legend' => 'Lista páginas analisadas que possuem edições que não foram verificadas',
-	'oldreviewedpages-list' => 'Esta página lista as páginas analisadas que possuem edições pendentes.',
+	'oldreviewedpages-list' => 'Esta página lista {{PLURAL:$1|uma página analisada que possui|as páginas analisadas que possuem}} edições pendentes.',
 	'oldreviewedpages-none' => 'Actualmente não existem páginas que satisfaçam estes critérios',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hora|horas}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dia|dias}})',
@@ -964,7 +1096,7 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'oldreviewedpages' => 'Versões antigas de páginas analisadas',
 	'oldreviewedpages-legend' => 'Lista páginas analisadas que possuem edições que não foram verificadas',
-	'oldreviewedpages-list' => 'Esta página lista as páginas analisadas que possuem edições pendentes.',
+	'oldreviewedpages-list' => 'Esta página lista {{PLURAL:$1|uma página analisada que possui|as páginas analisadas que possuem}} edições pendentes.',
 	'oldreviewedpages-none' => 'Atualmente não existem páginas que satisfaçam estes critérios',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hora|horas}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dia|dias}})',
@@ -980,13 +1112,14 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  */
 $messages['ro'] = array(
 	'oldreviewedpages' => 'Pagini revizuite expirate',
 	'oldreviewedpages-legend' => 'Lista de pagini revizuite, cu revizuiri în aşteptarea revizuirii',
-	'oldreviewedpages-list' => 'Această pagină afişează paginile revizuite care au modificări în așteptare.',
+	'oldreviewedpages-list' => 'Această pagină afişează {{PLURAL:$1|o pagină revizuită care are|paginile revizuite care au}} modificări în aşteptare.',
 	'oldreviewedpages-none' => 'Momentan nu există pagini care satisfac aceste criterii',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|oră|ore}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|zi|zile}})',
@@ -995,6 +1128,9 @@ $messages['ro'] = array(
 	'oldreviewed-watched' => 'În lista mea de urmărire',
 	'oldreviewed-stable' => 'Stabilit',
 	'oldreviewed-diff' => 'revizuire',
+	'oldreviewedpages-unwatched' => '(neurmărite)',
+	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|utilizator activ care urmăreşte|utilizatori activi care urmăresc}})',
+	'oldreviewedpages-viewing' => '(în curs de revizuire)',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1003,7 +1139,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'oldreviewedpages' => 'Pàggene riviste non aggiornete',
 	'oldreviewedpages-legend' => 'Liste de le pàggene riviste cu revisiune non reviste',
-	'oldreviewedpages-list' => 'Sta pàgene elenghe le pàggene reviste ca tènene cangiaminde pendende.',
+	'oldreviewedpages-list' => "Sta pàgene elenghe {{PLURAL:$1|'na pàgene reviste ca tène|le pàggene reviste ca tènene}} cangiaminde pendende.",
 	'oldreviewedpages-none' => 'Non ge stonne pàggene ca ingontrene chiste criterie',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ore|ore}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|sciurne|sciurne}})',
@@ -1019,13 +1155,14 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Putnik
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'oldreviewedpages' => 'Устаревшие проверенные страницы',
 	'oldreviewedpages-legend' => 'Список проверенных страниц с непроверенными версиями',
-	'oldreviewedpages-list' => 'На этой странице перечислены проверенные страницы, которые в дальнейшем правились',
+	'oldreviewedpages-list' => 'На этой странице {{PLURAL:$1|перечислена проверенная страница, которая в дальнейшем правилась|перечислены проверенные страницы, которые в дальнейшем правились}}',
 	'oldreviewedpages-none' => 'В настоящее время нет страниц, удовлетворяющих этим условиям',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|час|часа|часов}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|день|дня|дней}})',
@@ -1046,7 +1183,7 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'oldreviewedpages' => 'Zastaralé skontrolované stránky',
 	'oldreviewedpages-legend' => 'Zoznam skontrolovaných stránok s neskontrolovanými revíziami',
-	'oldreviewedpages-list' => 'Táto stránka obsahuje zoznam skontrolovaných stránok, ktorých následné úpravy zatiaľ neboli skontrolované.',
+	'oldreviewedpages-list' => 'Táto stránka obsahuje {{PLURAL:$1|skontrolovanú stránku, ktorej|zoznam skontrolovaných stránok, ktorých}} následné úpravy zatiaľ neboli skontrolované.',
 	'oldreviewedpages-none' => 'Momentálne žiadne stránky nezodpovedajú týmto kritériám',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hodina|hodiny|hodín}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|deň|dni|dní}})',
@@ -1061,7 +1198,7 @@ $messages['sk'] = array(
 	'oldreviewedpages-viewing' => '(kontroluje sa)',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -1075,15 +1212,29 @@ $messages['sr-ec'] = array(
 	'oldreviewedpages-unwatched' => '(ненадгледано)',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'oldreviewedpages' => 'Zastarele pregledane strane',
+	'oldreviewedpages-legend' => 'Spisak pregledanih strana sa nepregledanim verzijama.',
+	'oldreviewedpages-none' => 'Trenutno nema strana koje zadovoljavaju ove kriterije,',
+	'oldreviewedpages-recent' => '(manje od jednog časa)',
+	'oldreviewed-category' => 'Kategorija:',
+	'oldreviewed-diff' => 'pregled',
+	'oldreviewedpages-unwatched' => '(nenadgledano)',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
  * @author Najami
+ * @author Rotsee
  */
 $messages['sv'] = array(
 	'oldreviewedpages' => 'Föråldrade granskade sidor',
 	'oldreviewedpages-legend' => 'Visa granskade sidor med ogranskade sidversioner',
-	'oldreviewedpages-list' => 'Den här sidan visar granskade sidor som har väntande redigeringar.',
+	'oldreviewedpages-list' => 'Den här sidan visar {{PLURAL:$1|en granskad sida|granskade sidor}} med väntande redigeringar.',
 	'oldreviewedpages-none' => 'Det finns just nu inga sidor som matchar dessa kriterier',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|timme|timmar}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dag|dagar}})',
@@ -1099,6 +1250,7 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  * @author వైజాసత్య
  */
@@ -1108,8 +1260,13 @@ $messages['te'] = array(
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|రోజు|రోజులు}})',
 	'oldreviewedpages-recent' => '(1 గంట లోపల)',
 	'oldreviewed-category' => 'వర్గం:',
+	'oldreviewed-watched' => 'నా వీక్షణ జాబితా మీద',
+	'oldreviewed-stable' => 'నిలకడబరిచినది',
+	'oldreviewed-diff' => 'రివ్యూ',
+	'oldreviewed-size' => 'గరిష్ఠ మార్పు (బైట్లు):',
 	'oldreviewedpages-unwatched' => '(వీక్షణలో లేనివి)',
-	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|వాడుకరి|గురు వాడుకరులు}} వీక్షిస్తున్నారు)',
+	'oldreviewedpages-watched' => '($2 చేతన  {{PLURAL:$1|వాడుకరి|గురు వాడుకరులు}} వీక్షిస్తున్నారు)',
+	'oldreviewedpages-viewing' => '(రివ్యూలో వుంది )',
 );
 
 /** Tetum (Tetun)
@@ -1148,7 +1305,7 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'oldreviewedpages' => 'Eski gözden geçirilmiş sayfalar',
 	'oldreviewedpages-legend' => 'Gözden geçirilme bekleyen revizyonu olan gözden geçirilmiş sayfaları listele',
-	'oldreviewedpages-list' => 'Bu sayfa, bekleyen değişikliğe sahip gözden geçirilmiş sayfaları listeler.',
+	'oldreviewedpages-list' => 'Bu sayfa, bekleyen değişikliğe sahip gözden geçirilmiş {{PLURAL:$1|bir sayfayı|sayfaları}} listeler.',
 	'oldreviewedpages-none' => 'Şimdilik bu kriterlere uyan sayfa yoktur',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|saat|saat}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|gün|gün}})',
@@ -1189,7 +1346,7 @@ $messages['uk'] = array(
 $messages['vec'] = array(
 	'oldreviewedpages' => 'Pagine riesaminà tenpo adrìo',
 	'oldreviewedpages-legend' => 'Elenca le pagine riesaminà con versioni non riesaminà',
-	'oldreviewedpages-list' => 'Sta pagine la elenca le pagine riesaminà che gà modifiche in atesa.',
+	'oldreviewedpages-list' => 'Sta pagina la elenca {{PLURAL:$1|una pagina riesaminà|le pagine riesaminà}} che gà modifiche in atesa.',
 	'oldreviewedpages-none' => 'No ghe xe atualmente nissuna pagina che sodisfa sti criteri',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ora|ore}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|giòrno|giòrni}})',
@@ -1210,7 +1367,7 @@ $messages['vec'] = array(
 $messages['vep'] = array(
 	'oldreviewedpages' => 'Vanhtunuded kodvdud lehtpoled',
 	'oldreviewedpages-legend' => 'Kodvdud lehtpoled kodvmatomiden versijoidenke - nimikirjutez',
-	'oldreviewedpages-list' => "Necil lehtpolel om niiden kodvdud lehtpoliden nimikirjutez, kudambid toižetadihe jäl'glopul.",
+	'oldreviewedpages-list' => "Necil lehtpolel {{PLURAL:$1|om se kodvdud lehtpol', kudamb|om niiden kodvdud lehtpoliden nimikirjutez, kudambid}} toižetadihe jäl'glopul.",
 	'oldreviewedpages-none' => "Nügüd' ei ole lehtpolid, kudambad sättudas neniden arvoimižidenke.",
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|čas|časud}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|päiv|päiväd}})',
@@ -1232,7 +1389,7 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'oldreviewedpages' => 'Các trang đã duyệt lỗi thời',
 	'oldreviewedpages-legend' => 'Liệt kê các trang đã duyệt có các phiên bản chưa duyệt',
-	'oldreviewedpages-list' => 'Trang này liệt kê những trang đã duyệt nhưng có các sửa đổi chờ duyệt.',
+	'oldreviewedpages-list' => 'Trang này liệt kê {{PLURAL:$1|một|những}} trang đã duyệt nhưng có các sửa đổi chờ duyệt.',
 	'oldreviewedpages-none' => 'Hiện không có trang này thỏa mãn tiêu chí này',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|giờ|giờ}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|ngày|ngày}})',
@@ -1282,14 +1439,14 @@ $messages['zh-hans'] = array(
 	'oldreviewedpages-legend' => '列示有未复审修订之复审过的页面',
 	'oldreviewedpages-list' => '这个页面列示出有正等候编辑之评论页面。',
 	'oldreviewedpages-none' => '这里现时没有页面系合乎这些条件',
-	'oldreviewedpages-hours' => '($1小时)',
-	'oldreviewedpages-days' => '($1日)',
-	'oldreviewedpages-recent' => '(少于1小时)',
+	'oldreviewedpages-hours' => '（$1小时）',
+	'oldreviewedpages-days' => '（$1日）',
+	'oldreviewedpages-recent' => '（少于1小时）',
 	'oldreviewed-category' => '分类:',
 	'oldreviewed-diff' => '复审',
 	'oldreviewed-size' => '最大变更（字节）：',
-	'oldreviewedpages-unwatched' => '(未看)',
-	'oldreviewedpages-watched' => '($2{{PLURAL:$1|位用户|位用户}}正在看)',
+	'oldreviewedpages-unwatched' => '（未看）',
+	'oldreviewedpages-watched' => '（$2{{PLURAL:$1|位用户|位用户}}正在看）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1302,13 +1459,13 @@ $messages['zh-hant'] = array(
 	'oldreviewedpages-legend' => '列示有未複審修訂之複審過的頁面',
 	'oldreviewedpages-list' => '這個頁面列示出有正等候編輯之評論頁面。',
 	'oldreviewedpages-none' => '這裏現時沒有頁面係合乎這些條件',
-	'oldreviewedpages-hours' => '($1小時)',
-	'oldreviewedpages-days' => '($1日)',
-	'oldreviewedpages-recent' => '(少於1小時)',
+	'oldreviewedpages-hours' => '（$1小時）',
+	'oldreviewedpages-days' => '（$1日）',
+	'oldreviewedpages-recent' => '（少於1小時）',
 	'oldreviewed-category' => '分類:',
 	'oldreviewed-diff' => '複審',
 	'oldreviewed-size' => '最大變動（位元組）：',
-	'oldreviewedpages-unwatched' => '(未看)',
-	'oldreviewedpages-watched' => '($2{{PLURAL:$1|位用戶|位用戶}}正在看)',
+	'oldreviewedpages-unwatched' => '（未看）',
+	'oldreviewedpages-watched' => '（$2{{PLURAL:$1|位用戶|位用戶}}正在看）',
 );
 

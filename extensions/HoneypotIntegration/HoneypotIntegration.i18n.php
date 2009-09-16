@@ -65,6 +65,22 @@ $messages['bs'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Broj nedavnih događaja koja je IP adresa pokrenula, u skladu s projektom Honey Pot',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'honeypot-desc' => 'Proporciona als llocs Mediawiki integració amb el [http://projecthoneypot.org/ Projecte Honey Pot]',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'honeypot-desc' => 'Poskytuje integraci [http://projecthoneypot.org/ projektu Honey Pot] pro MediaWiki wiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Počet nedávných událostí způsobených touto IP adresou podle projektu Honey Pot',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */
@@ -79,6 +95,14 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'honeypot-desc' => 'Zmóžnja integraciju do [http://projecthoneypot.org/ projekta Honey Pot] za sedła MediaWiki',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Licba aktualnych tšojenjow, kótarež IP-adresa jo zapušćiła, pó projekśe Honey Pot',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'honeypot-desc' => 'Παρέχει ενοποίηση με το [http://projecthoneypot.org/ Εγχείρημα Honey Pot] για ιστοτόπους MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Αριθμός προσφάτων γεγονότων που προξένησε αυτή η διεὐθυνση IP, σύμφωνα με το εγχείρημα Honey Pot',
 );
 
 /** Spanish (Español)
@@ -123,6 +147,14 @@ $messages['he'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'מספר האירועים האחרונים שבוצעו מכתובת ה־IP, לפי מיזם Honey Pot',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'honeypot-desc' => 'Omogućuje intergraciju s [http://projecthoneypot.org/ projektom Honey Pot] za MediaWiki stranice',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Broj nedavnih događaja koje je IP adresa pokrenula, u skladu s projektom Honey Pot',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -141,9 +173,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'honeypot-desc' => 'Menyediakan integrasi dengan [http://projecthoneypot.org/ Proyek Honey Pot] untuk situs-situs MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Nomor dari kejadian terakhir alamat IP telah terpicu, menurut proyek Honey Pot',
 );
 
 /** Italian (Italiano)
@@ -159,7 +193,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'honeypot-desc' => '[http://projecthoneypot.org/ Project Honey Pot] と MediaWiki サイトとの統合を提供する',
-	'abusefilter-edit-builder-vars-honeypot-list-count' => 'そのIPアドレスが引き起こした最近の出来事の数（Project Honey Pot 調べ）',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'そのIPアドレスが引き起こした最近の出来事の数(Project Honey Pot 調べ)',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -175,6 +209,14 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Zuel vun den aktuellen Evenementer déi duerch d'IP-Adress ausgeléist goufen, esou wéi et aus dem Projet ''Honey Pot'' ervirgeet",
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'honeypot-desc' => 'Овозможува интеграција со [http://projecthoneypot.org/ Project Honey Pot] за проекти и страници на МедијаВики',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Број на скорешни настани поттикнати од IP адресата, според Project Honey Pot',
 );
 
 /** Dutch (Nederlands)
@@ -217,6 +259,14 @@ $messages['pl'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Liczba ostatnich zdarzeń wywołanych adresem IP, zgodnie z Projektem Honey Pot',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'honeypot-desc' => "A dà l'antegrassion con ël [http://projecthoneypot.org/ Proget Honey Pot] për ij sit MediaWiki",
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Nùmer d'event ressent che l'adrëssa IP a l'ha ativà, d'acòrdi con ël Proget Honey Pot",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -249,6 +299,14 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Количество последних событий, вызвавших попадание IP-адреса в соответствие с проектом Honey Pot',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'honeypot-desc' => 'MediaWiki-саайтары [http://projecthoneypot.org/ Honey Pot бырайыагы] кытта холбуу үлэлииллэрин хааччыйар',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Honey Pot бырайыак иһинэн киирбит IP-аадырыстары хааччыйбыт түбэлтэлэр ахсааннара',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -257,12 +315,28 @@ $messages['sk'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Počet udalostí v poslednej dobe, ktoré IP adresa spustila podľa projektu Honey Pot',
 );
 
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'honeypot-desc' => 'Tillhandahåller integration med [http://projecthoneypot.org/ Project Honey Pot] för webbplatser som använder MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Antal nyligen inträffade händelser som IP-adressen har utlöst, enligt Project Honey Pot',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
 $messages['tl'] = array(
 	'honeypot-desc' => "Nagbibigay ng pagsasama sa [http://projecthoneypot.org/ Proyektong Palayok ng Pulot-pukyutan (''Project Honey Pot'')] para sa lahat ng mga sityo ng MediaWiki",
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Bilang ng kamakailang mga kaganapang pinagalaw ng adres ng IP, ayon sa \"Proyektong Palayok ng Pulot-pukyutan\" (''Project Honey Pot'')",
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'honeypot-desc' => 'MedyaViki siteleri için [http://projecthoneypot.org/ Honey Pot Projesi] ile entegrasyonunu sağlar',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Project Honey Pot'a göre, IP adresinin tetiklediği son olayların sayısı",
 );
 
 /** Vietnamese (Tiếng Việt)

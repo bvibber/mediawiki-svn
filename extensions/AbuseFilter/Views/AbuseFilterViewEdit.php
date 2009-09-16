@@ -73,6 +73,26 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 				return;
 			}
+			
+			// If we've activated the 'tag' option, check the arguments for validity.
+			if ( !empty($actions['tag']) ) {
+				$bad = false;
+				foreach( $actions['tag']['parameters'] as $tag ) {
+					$t = Title::makeTitleSafe( NS_MEDIAWIKI, 'tag-'.$tag );
+					if (!$t) {
+						$bad = true;
+					}
+					
+					if ($bad) {
+						$wgOut->addHTML( $this->buildFilterEditor(
+										wfMsgExt( 'abusefilter-edit-bad-tags', 'parse' ),
+										$this->mFilter,
+										$history_id
+									) );
+						return;
+					}
+				}
+			}
 
 			$newRow = get_object_vars($newRow); // Convert from object to array
 
@@ -219,7 +239,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $filter, $history_id ) );
 
 		// Hide hidden filters.
-		if (isset($row->af_hidden) && $row->af_hidden && !$this->canEdit()) {
+		if ( ( (isset($row->af_hidden) && $row->af_hidden) ||
+				AbuseFilter::filterHidden( $filter ) )
+			&& !$this->canViewPrivate() ) {
 			return wfMsg( 'abusefilter-edit-denied' );
 		}
 
@@ -230,10 +252,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		
 		// Read-only attribute
 		$readOnlyAttrib = array();
+		$cbReadOnlyAttrib = array(); // For checkboxes
 		
 		if (!$this->canEdit()) {
 			$readOnlyAttrib['readonly'] = 'readonly';
-			$readOnlyAttrib['disabled'] = 'disabled';
+			$cbReadOnlyAttrib['disabled'] = 'disabled';
 		}
 
 		$fields = array();
@@ -270,13 +293,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			if ($total > 0) {
 				$matches_percent = sprintf( '%.2f', 100 * $matches_count / $total );
-				$profile = AbuseFilter::getFilterProfile( $filter );
+				list($timeProfile, $condProfile) = AbuseFilter::getFilterProfile( $filter );
+				
 				$fields['abusefilter-edit-status-label'] =
 					wfMsgExt( 'abusefilter-edit-status', array( 'parsemag', 'escape' ),
-						$wgLang->formatNum($total),
-						$wgLang->formatNum($matches_count),
-						$wgLang->formatNum($matches_percent),
-						$wgLang->formatNum($profile)
+						array( 
+							$wgLang->formatNum($total),
+							$wgLang->formatNum($matches_count),
+							$wgLang->formatNum($matches_percent),
+							$wgLang->formatNum($timeProfile),
+							$wgLang->formatNum($condProfile)
+						)
 					);
 			}
 		}
@@ -320,7 +347,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$postVar, 
 				$postVar, 
 				isset( $row->$dbField ) ? $row->$dbField : false,
-				$readOnlyAttrib
+				$cbReadOnlyAttrib
 			);
 			$checkbox = Xml::tags( 'p', null, $checkbox );
 			$flags .= $checkbox;
@@ -429,10 +456,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 		
 		$readOnlyAttrib = array();
+		$cbReadOnlyAttrib = array(); // For checkboxes
 		
 		if (!$this->canEdit()) {
 			$readOnlyAttrib['readonly'] = 'readonly';
-			$readOnlyAttrib['disabled'] = 'disabled';
+			$cbReadOnlyAttrib['disabled'] = 'disabled';
 		}
 		
 		switch( $action ) {
@@ -442,7 +470,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'wpFilterActionThrottle', 
 					"mw-abusefilter-action-checkbox-$action", 
 					$set, 
-					array(  'class' => 'mw-abusefilter-action-checkbox' ) + $readOnlyAttrib );
+					array(  'class' => 'mw-abusefilter-action-checkbox' ) + $cbReadOnlyAttrib );
 				$throttleFields = array();
 
 				if ($set) {
@@ -495,7 +523,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'wpFilterActionWarn', 
 					"mw-abusefilter-action-checkbox-$action", 
 					$set, 
-					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $readOnlyAttrib );
+					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $cbReadOnlyAttrib );
 				$output .= Xml::tags( 'p', null, $checkbox );
 				$warnMsg = empty($set) ? 'abusefilter-warning' : $parameters[0];
 
@@ -506,7 +534,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'wpFilterWarnMessageOther', 
 						45, 
 						$warnMsg ? $warnMsg : 'abusefilter-warning-', 
-						array( 'id' => 'mw-abusefilter-warn-message-other' ) + $readOnlyAttrib
+						array( 'id' => 'mw-abusefilter-warn-message-other' ) + $cbReadOnlyAttrib
 					);
 
 				$previewButton = Xml::element( 
@@ -515,7 +543,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'type' => 'button', 
 						'id' => 'mw-abusefilter-warn-preview-button', 
 						'value' => wfMsg( 'abusefilter-edit-warn-preview' ) 
-					) + $readOnlyAttrib
+					)
 				);
 				$editButton = Xml::element( 
 					'input', 
@@ -523,7 +551,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'type' => 'button', 
 						'id' => 'mw-abusefilter-warn-edit-button', 
 						'value' => wfMsg( 'abusefilter-edit-warn-edit' ) 
-					) + $readOnlyAttrib
+					)
 				);
 				$previewHolder = Xml::element( 
 					'div', 
@@ -551,7 +579,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'wpFilterActionTag', 
 					"mw-abusefilter-action-checkbox-$action", 
 					$set, 
-					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $readOnlyAttrib 
+					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $cbReadOnlyAttrib 
 				);
 				$output .= Xml::tags( 'p', null, $checkbox );
 
@@ -573,7 +601,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$form_field, 
 					"mw-abusefilter-action-checkbox-$action", 
 					$status, 
-					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $readOnlyAttrib
+					array( 'class' => 'mw-abusefilter-action-checkbox' ) + $cbReadOnlyAttrib
 				);
 				$thisAction = Xml::tags( 'p', null, $thisAction );
 				return $thisAction;

@@ -114,6 +114,16 @@ $messages['bn'] = array(
 	'simpleantispam-desc' => 'ফরমগুলো যাচাই করার জন্য একটি স্প্যাম/বট যোগ করুন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'simpleantispam' => "Gweredekaet eo bet ar wikefre eneb-strob gant ar c'hemmoù hoc'h eus degaset",
+	'simpleantispam-label' => "Taol gwiriañ eneb-strob.
+'''Arabat''' merkañ tra pe dra amañ !",
+	'simpleantispam-desc' => "Ouzhpennañ a ra taol gwiriañ ur bot strober d'ar furmskridoù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -210,6 +220,16 @@ $messages['es'] = array(
 	'simpleantispam-label' => 'Comprobación anti-spam
 ¡NO rellenes esto!',
 	'simpleantispam-desc' => 'Añade un control simple de spam y bots a los formularios',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'simpleantispam' => 'Sinu muudatus päästis valla rämpspostivastase seadeldise.',
+	'simpleantispam-label' => "Rämpspostikontroll.
+'''ÄRA''' täida seda välja!",
+	'simpleantispam-desc' => 'Lisab lihtsa rämpsposti- ja robotikontrolli vormiväljade jaoks.',
 );
 
 /** Basque (Euskara)
@@ -316,11 +336,13 @@ Tu '''ničo''' njezapisać!",
 /** Hungarian (Magyar)
  * @author Bdamokos
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'simpleantispam' => 'A szerkesztésed egy spamellenes mechanizmust aktivált.',
 	'simpleantispam-label' => "Spam elleni ellenőrzés.
 '''NE''' töltsd ezt ki!",
+	'simpleantispam-desc' => 'Egyszerű spam és bot elleni ellenőrzés hozzáadása űrlapokhoz',
 );
 
 /** Interlingua (Interlingua)
@@ -375,14 +397,15 @@ $messages['jv'] = array(
 );
 
 /** Korean (한국어)
+ * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'simpleantispam' => '당신의 편집은 반(反)스팸 메커니즘이 작동하게 했습니다.',
+	'simpleantispam' => '현재 편집이 스팸 방지 장치에 탐지되었습니다',
 	'simpleantispam-label' => "스팸 방지 검사입니다.
 이것을 입력하지 '''마세요'''!",
-	'simpleantispam-desc' => '형태를 확인할 간단한 스팸/봇을 덧붙여 주세요',
+	'simpleantispam-desc' => '스팸/봇 확인 장치를 추가',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -414,11 +437,32 @@ Vol dit veld '''NEET''' in!",
 	'simpleantispam-desc' => 'Veug ein einvaawdife spem/botcontrole aan formulere',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Homo
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'simpleantispam' => 'Jūsų redagavimas paleido anti-spam mechanizmą',
+	'simpleantispam-label' => "Anti-spam patikra.
+'''NE'''pildykite!",
+	'simpleantispam-desc' => 'Prideda paprastą reklaminių šiukšlių botą formoms tikrinti',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */
 $messages['lv'] = array(
 	'simpleantispam' => 'Tevis veiktās izmaiņas ir iedarbināja pretspama mehānismu',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'simpleantispam' => 'Вашето уредување го предизвика анти-спам механизмот',
+	'simpleantispam-label' => "Антиспам проверка.
+'''НЕ''' го пополнувајте ова!",
+	'simpleantispam-desc' => 'Додава едноставна проверка за спам/ботови на обрасците',
 );
 
 /** Marathi (मराठी)
@@ -499,6 +543,16 @@ $messages['pl'] = array(
 	'simpleantispam-desc' => 'Dodaje do formularzy proste zabezpieczenie przed spamem i automatami',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'simpleantispam' => "Toa modìfica a l'ha ativà ël mecànism anti-spam",
+	'simpleantispam-label' => "Control anti-spam.
+Vemp '''PA''' sòn-sì!",
+	'simpleantispam-desc' => 'A gionta un sempi control spam/bot a le forme',
+);
+
 /** Portuguese (Português)
  * @author 555
  */
@@ -549,13 +603,22 @@ $messages['sk'] = array(
 	'simpleantispam-desc' => 'Pridáva k formulárom jednoduchú ochranu prosti botom/spamu.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'simpleantispam' => 'Твоја измена је покренула антиспам механизам.',
 	'simpleantispam-label' => "Провера спама. '''НЕ''' попуњавај ово унутра!",
 	'simpleantispam-desc' => 'Додаје једноставну спам/бот проверу у форме.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'simpleantispam' => 'Tvoja izmena je pokrenula antispam mehanizam.',
+	'simpleantispam-label' => "Provera spama. '''NE''' popunjavaj ovo unutra!",
+	'simpleantispam-desc' => 'Dodaje jednostavnu spam/bot proveru u forme.',
 );
 
 /** Seeltersk (Seeltersk)
@@ -645,13 +708,14 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'simpleantispam' => '您的编辑已经触发了防垃圾装置',
+	'simpleantispam' => '您的编辑已经触发了反垃圾装置',
 	'simpleantispam-label' => "反垃圾检查。
 '''不要'''加入这个！",
-	'simpleantispam-desc' => '加一个简单的垃圾／机械人检查表格',
+	'simpleantispam-desc' => '加一个简单的垃圾／机器人检查表格',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

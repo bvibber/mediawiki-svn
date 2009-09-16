@@ -48,6 +48,8 @@ class EditPage {
 	var $mMetaData = '';
 	var $isConflict = false;
 	var $isCssJsSubpage = false;
+	var $isCssSubpage = false;
+	var $isJsSubpage = false;
 	var $deletedSinceEdit = false;
 	var $formtype;
 	var $firsttime;
@@ -103,12 +105,14 @@ class EditPage {
 		$this->editFormTextBeforeContent =
 		$this->editFormTextAfterWarn =
 		$this->editFormTextAfterTools =
-		$this->editFormTextBottom = "";
+		$this->editFormTextBottom =
+		$this->mPreloadText = "";
 	}
 	
 	function getArticle() {
 		return $this->mArticle;
 	}
+
 
 	/**
 	 * Fetch initial editing page content.
@@ -200,6 +204,11 @@ class EditPage {
 		wfProfileOut( __METHOD__ );
 		return $text;
 	}
+	
+	/** Use this method before edit() to preload some text into the edit box */
+	public function setPreloadedText( $text ) {
+		$this->mPreloadText = $text;
+	}
 
 	/**
 	 * Get the contents of a page from its title and remove includeonly tags
@@ -208,7 +217,9 @@ class EditPage {
 	 * @return string The contents of the page.
 	 */
 	protected function getPreloadedText( $preload ) {
-		if ( $preload === '' ) {
+		if ( !empty($this->mPreloadText) ) {
+			return $this->mPreloadText;
+		} elseif ( $preload === '' ) {
 			return '';
 		} else {
 			$preloadTitle = Title::newFromText( $preload );
@@ -352,9 +363,9 @@ class EditPage {
 	 * the newly-edited page.
 	 */
 	function edit() {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgEnableJS2system;
 		// Allow extensions to modify/prevent this form or submission
-		if ( !wfRunHooks( 'AlternateEdit', array( &$this ) ) ) {
+		if ( !wfRunHooks( 'AlternateEdit', array( $this ) ) ) {
 			return;
 		}
 
@@ -374,12 +385,16 @@ class EditPage {
 		}
 
 		if ( wfReadOnly() && $this->save ) {
-				// Force preview
-				$this->save = false;
-				$this->preview = true;
+			// Force preview
+			$this->save = false;
+			$this->preview = true;
 		}
 
 		$wgOut->addScriptFile( 'edit.js' );
+
+		if( $wgEnableJS2system )
+		    $wgOut->addScriptClass( 'editPage' );
+
 		$permErrors = $this->getEditPermissionErrors();
 		if ( $permErrors ) {
 			wfDebug( __METHOD__.": User can't edit\n" );
@@ -414,6 +429,8 @@ class EditPage {
 		$this->isConflict = false;
 		// css / js subpages of user pages get a special treatment
 		$this->isCssJsSubpage      = $this->mTitle->isCssJsSubpage();
+		$this->isCssSubpage        = $this->mTitle->isCssSubpage();
+		$this->isJsSubpage         = $this->mTitle->isJsSubpage();
 		$this->isValidCssJsSubpage = $this->mTitle->isValidCssJsSubpage();
 
 		# Show applicable editing introductions
@@ -649,12 +666,16 @@ class EditPage {
 			}
 		}
 
+		// FIXME: unused variable?
 		$this->oldid = $request->getInt( 'oldid' );
 
 		$this->live = $request->getCheck( 'live' );
 		$this->editintro = $request->getText( 'editintro' );
 
 		wfProfileOut( $fname );
+
+		// Allow extensions to modify form data
+		wfRunHooks( 'EditPage::importFormData', array( $this, $request ) );
 	}
 
 	/**
@@ -746,7 +767,7 @@ class EditPage {
 		wfProfileIn( $fname );
 		wfProfileIn( "$fname-checks" );
 
-		if ( !wfRunHooks( 'EditPage::attemptSave', array( &$this ) ) )
+		if ( !wfRunHooks( 'EditPage::attemptSave', array( $this ) ) )
 		{
 			wfDebug( "Hook 'EditPage::attemptSave' aborted article saving\n" );
 			return self::AS_HOOK_ERROR;
@@ -869,6 +890,10 @@ class EditPage {
 				# Error messages etc. could be handled within the hook...
 				wfProfileOut( $fname );
 				return self::AS_HOOK_ERROR;
+			} elseif ( $this->hookError != '' ) {
+				# ...or the hook could be expecting us to produce an error
+				wfProfileOut( $fname );
+				return self::AS_HOOK_ERROR_EXPECTED;
 			}
 			
 			# Handle the user preference to force summaries here. Check if it's not a redirect.
@@ -957,6 +982,10 @@ class EditPage {
 			# Error messages etc. could be handled within the hook...
 			wfProfileOut( $fname );
 			return self::AS_HOOK_ERROR;
+		} elseif ( $this->hookError != '' ) {
+			# ...or the hook could be expecting us to produce an error
+			wfProfileOut( $fname );
+			return self::AS_HOOK_ERROR_EXPECTED;
 		}
 
 		# Handle the user preference to force summaries here, but not for null edits
@@ -1058,7 +1087,7 @@ class EditPage {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Check given input text against $wgSpamRegex, and return the text of the first match.
 	 * @return mixed -- matching string or false
@@ -1146,8 +1175,6 @@ class EditPage {
 
 		$sk = $wgUser->getSkin();
 
-		wfRunHooks( 'EditPage::showEditForm:initial', array( &$this ) ) ;
-
 		#need to parse the preview early so that we know which templates are used,
 		#otherwise users with "show preview after edit box" will get a blank list
 		#we parse this near the beginning so that setHeaders can do the title
@@ -1156,6 +1183,8 @@ class EditPage {
 		if ( $this->formtype == 'preview' ) {
 			$previewOutput = $this->getPreviewText();
 		}
+		
+		wfRunHooks( 'EditPage::showEditForm:initial', array( &$this ) ) ;
 
 		$this->setHeaders();
 
@@ -1224,12 +1253,14 @@ class EditPage {
 		} else {
 			if ( $this->isCssJsSubpage ) {
 				# Check the skin exists
-				if ( $this->isValidCssJsSubpage ) {
-					if ( $this->formtype !== 'preview' ) {
-						$wgOut->addWikiMsg( 'usercssjsyoucanpreview' );
-					}
-				} else {
+				if ( !$this->isValidCssJsSubpage ) {
 					$wgOut->addWikiMsg( 'userinvalidcssjstitle', $wgTitle->getSkinFromCssJsSubpage() );
+				}
+				if ( $this->formtype !== 'preview' ) {
+					if ( $this->isCssSubpage )
+						$wgOut->addWikiMsg( 'usercssyoucanpreview' );
+					if ( $this->isJsSubpage )
+						$wgOut->addWikiMsg( 'userjsyoucanpreview' );
 				}
 			}
 		}
@@ -1290,7 +1321,7 @@ class EditPage {
 		$cancel = $sk->link(
 			$wgTitle,
 			wfMsgExt( 'cancel', array( 'parseinline' ) ),
-			array(),
+			array( 'id' => 'mw-editform-cancel' ),
 			array(),
 			array( 'known', 'noclasses' )
 		);
@@ -1319,6 +1350,7 @@ class EditPage {
 			$toolbar = '';
 		}
 
+
 		// activate checkboxes if user wants them to be always active
 		if ( !$this->preview && !$this->diff ) {
 			# Sort out the "watch" checkbox
@@ -1332,7 +1364,7 @@ class EditPage {
 				# Already watched
 				$this->watchthis = true;
 			}
-			
+
 			# May be overriden by request parameters
 			if( $wgRequest->getBool( 'watchthis' ) ) {
 				$this->watchthis = true;
@@ -1385,11 +1417,13 @@ class EditPage {
 										'maxlength' => '200',
 										'tabindex' => '1'
 									) );
+			} else {
+				$summaryhiddens .= Xml::hidden( 'wpIgnoreBlankSummary', true ); # bug 18699
 			}
 			$editsummary = "<div class='editOptions'>\n";
 			global $wgParser;
 			$formattedSummary = wfMsgForContent( 'newsectionsummary', $wgParser->stripSectionName( $this->summary ) );
-			$subjectpreview = $summarytext && $this->preview ?
+			$subjectpreview = $summarytext && ( $this->preview || $this->diff ) ?
 				"<div class=\"mw-summary-preview\">". wfMsgExt('subject-preview', 'parseinline') . $sk->commentBlock( $formattedSummary, $this->mTitle, true )."</div>\n" : '';
 			$summarypreview = '';
 		} else {
@@ -1416,7 +1450,7 @@ class EditPage {
 							. $editsummary . '<br/>';
 
 			$summarypreview = '';
-			if ( $summarytext && $this->preview ) {
+			if ( $summarytext && ( $this->preview || $this->diff ) ) {
 				$summarypreview =
 					Xml::tags( 'div',
 						array( 'class' => 'mw-summary-preview' ),
@@ -1555,6 +1589,12 @@ END
 END
 );
 
+		if (!$this->preview) {
+			$wgOut->addHTML( Xml::tags( 'div',
+										array( 'class' => 'catlinks catlinks-allhidden',
+												'id' => 'catlinks' ), ' ' ) );
+		}
+
 		if ( $this->isConflict && wfRunHooks( 'EditPageBeforeConflictDiff', array( &$this, &$wgOut ) ) ) {
 			$wgOut->wrapWikiMsg( '==$1==', "yourdiff" );
 
@@ -1680,14 +1720,7 @@ END
 	function doLivePreviewScript() {
 		global $wgOut, $wgTitle;
 		$wgOut->addScriptFile( 'preview.js' );
-		$liveAction = $wgTitle->getLocalUrl( array(
-			'action' => $this->action,
-			'wpPreview' => 'true',
-			'live' => 'true'
-		) );
-		return "return !lpDoPreview(" .
-			"editform.wpTextbox1.value," .
-			'"' . $liveAction . '"' . ")";
+		return "";
 	}
 
 	protected function showTosSummary() {
@@ -1699,15 +1732,15 @@ END
 		// This will display between the save button and the edit tools,
 		// so should remain short!
 		wfRunHooks( 'EditPageTosSummary', array( $this->mTitle, &$msg ) );
-		$text = wfMsgForContent( $msg );
-		if( $text != '-' ) {
+		$text = wfMsg( $msg );
+		if( !wfEmptyMsg( $msg, $text ) && $text !== '-' ) {
 			global $wgOut;
 			$wgOut->addHTML( '<div class="mw-tos-summary">' );
-			$wgOut->addWikiMsgArray( $msg, array(), array( 'content' ) );
+			$wgOut->addWikiMsgArray( $msg, array() );
 			$wgOut->addHTML( '</div>' );
 		}
 	}
-	
+
 	protected function showEditTools() {
 		global $wgOut;
 		$wgOut->addHTML( '<div class="mw-editTools">' );
@@ -2030,7 +2063,7 @@ END
 	 * @return string
 	 */
 	static function getEditToolbar() {
-		global $wgStylePath, $wgContLang, $wgLang, $wgJsMimeType;
+		global $wgStylePath, $wgContLang, $wgLang;
 
 		/**
 		 * toolarray an array of arrays which each include the filename of
@@ -2145,9 +2178,9 @@ END
 			)
 		);
 		$toolbar = "<div id='toolbar'>\n";
-		$toolbar.="<script type='$wgJsMimeType'>\n/*<![CDATA[*/\n";
 
-		foreach($toolarray as $tool) {
+		$script = '';
+		foreach ( $toolarray as $tool ) {
 			$params = array(
 				$image = $wgStylePath.'/common/images/'.$tool['image'],
 				// Note that we use the tip both for the ALT tag and the TITLE tag of the image.
@@ -2163,14 +2196,14 @@ END
 
 			$paramList = implode( ',',
 				array_map( array( 'Xml', 'encodeJsVar' ), $params ) );
-			$toolbar.="addButton($paramList);\n";
+			$script .= "addButton($paramList);\n";
 		}
+		$toolbar .= Html::inlineScript( "\n$script\n" );
 
-		$toolbar.="/*]]>*/\n</script>";
-		$toolbar.="\n</div>";
-		
+		$toolbar .= "\n</div>";
+
 		wfRunHooks( 'EditPageBeforeEditToolbar', array( &$toolbar ) );
-		
+
 		return $toolbar;
 	}
 
@@ -2245,6 +2278,8 @@ END
 
 		++$tabindex; // use the same for preview and live preview
 		if ( $wgLivePreview && $wgUser->getOption( 'uselivepreview' ) ) {
+			$this->doLivePreviewScript(); // Add to output
+			
 			$temp = array(
 				'id'        => 'wpPreview',
 				'name'      => 'wpPreview',
@@ -2265,8 +2300,8 @@ END
 				'value'     => wfMsg('showlivepreview'),
 				'accesskey' => wfMsg('accesskey-preview'),
 				'title'     => '',
-				'onclick'   => $this->doLivePreviewScript(),
 			);
+			
 			$buttons['live'] = Xml::element('input', $temp, '');
 		} else {
 			$temp = array(
@@ -2295,36 +2330,6 @@ END
 
 		wfRunHooks( 'EditPageBeforeEditButtons', array( &$this, &$buttons, &$tabindex ) );
 		return $buttons;
-	}
-
-	/**
-	 * Output preview text only. This can be sucked into the edit page
-	 * via JavaScript, and saves the server time rendering the skin as
-	 * well as theoretically being more robust on the client (doesn't
-	 * disturb the edit box's undo history, won't eat your text on
-	 * failure, etc).
-	 *
-	 * @todo This doesn't include category or interlanguage links.
-	 *       Would need to enhance it a bit, <s>maybe wrap them in XML
-	 *       or something...</s> that might also require more skin
-	 *       initialization, so check whether that's a problem.
-	 */
-	function livePreview() {
-		global $wgOut;
-		$wgOut->disable();
-		header( 'Content-type: text/xml; charset=utf-8' );
-		header( 'Cache-control: no-cache' );
-
-		$previewText = $this->getPreviewText();
-		#$categories = $skin->getCategoryLinks();
-
-		$s =
-		'<?xml version="1.0" encoding="UTF-8" ?>' . "\n" .
-		Xml::tags( 'livepreview', null,
-			Xml::element( 'preview', null, $previewText )
-			#.	Xml::element( 'category', null, $categories )
-		);
-		echo $s;
 	}
 
 

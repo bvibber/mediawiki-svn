@@ -620,7 +620,8 @@ Abë dodac lopk do starnë, ùżëjë ùniższegò lënka wedle nôslédnëch m�
 * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Lopk.ogg]]</nowiki></tt>''' òtemknie prosti lënk do lopka bez wëskrzënianiô sómegò lopka",
 'uploadlog'         => 'Lësta wladënków',
 'uploadlogpage'     => 'Dołączoné',
-'uploadlogpagetext' => 'Hewò je lësta slédno wladowónëch lopków.\\nWszëtczé gòdzënë tikają conë ùniwersalnégò czasë.',
+'uploadlogpagetext' => 'Hewò je lësta slédno wladowónëch lopków.
+Wszëtczé gòdzënë tikają conë ùniwersalnégò czasë.',
 'filename'          => 'Miono lopka',
 'filedesc'          => 'Òpisënk',
 'fileuploadsummary' => 'Pòdrechòwanié:',
@@ -894,8 +895,6 @@ Biéj do [[Special:IPBlockList|lëstë zascëgónëch adresów IP]] abë òbacz�
 'allmessagestext'           => 'To je zestôwk systemòwëch ògłosów przistãpnëch w rumie mion MediaWiki.
 Proszã zazdrzë na [http://www.mediawiki.org/wiki/Localisation Lokalizacëjô MediaWiki] ë [http://translatewiki.net translatewiki.net] jeżlë chcesz dolmaczëc softwôrã MediaWiki.',
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' nie mòże bëc brëkòwónô, temù że '''\$wgUseDatabaseMessages''' je wëłączony.",
-'allmessagesfilter'         => 'Filter mion ògłosów:',
-'allmessagesmodified'       => 'Pòkażë blós zjinaczone',
 
 # Thumbnails
 'thumbnail-more' => 'Zwiszi',

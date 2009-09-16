@@ -156,10 +156,10 @@ class SpecialPrefStats extends SpecialPage {
 	}
 
 	function reallyGetPrefStats( $pref, $inc = null ) {
-		global $wgPrefStatsTimeUnit;
+		global $wgPrefStatsTimeUnit, $wgPrefStatsDefaultScaleBars;
 		$max = ceil( $this->getMaxDuration( $pref ) /
 			$wgPrefStatsTimeUnit );
-		$inc = max( 1, ( is_null( $inc ) ? ceil( $max / 10 ) : $inc ) );
+		$inc = max( 1, ( is_null( $inc ) ? ceil( $max / $wgPrefStatsDefaultScaleBars ) : $inc ) );
 		$retval = array();
 		for ( $i = 0; $i <= $max; $i += $inc ) {
 			$end = min( $max, $i + $inc );

@@ -16,12 +16,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'localisationupdate-desc' => 'This is a short description of the extension.
-It is shown on [[SPECIAL:Version]].
-Do not translate tag names, or link targets.',
+	'localisationupdate-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)
@@ -45,6 +44,13 @@ $messages['be-tarask'] = array(
 	'localisationupdate-desc' => 'Сынхранізуе перакладзеныя сыстэмныя паведамленьні як мага даўжэй',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'localisationupdate-desc' => "Derc'hel da hizivaat ar c'hemennoù troet ken fonnus ha ma'z eus tu",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -57,6 +63,13 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'localisationupdate-desc' => 'Manté els missatges localitzats tan actualitzats com sigui possible',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'localisationupdate-desc' => "Yn diweddaru'r cyfieithiadau o negeseuon mor aml â phosib",
 );
 
 /** German (Deutsch)
@@ -78,6 +91,13 @@ $messages['dsb'] = array(
  */
 $messages['es'] = array(
 	'localisationupdate-desc' => 'Mantener los mensajes localizados tan actualizados como sean posibles',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'localisationupdate-desc' => 'Itzulitako mezuak ahalik eta eguneratuen mantentzen ditu',
 );
 
 /** Finnish (Suomi)
@@ -113,6 +133,13 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'localisationupdate-desc' => 'שמירת ההודעות המתורגמות מעודכנות ככל הניתן',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'localisationupdate-desc' => 'Gatugo sang mga mensahe nga lokal para mapahibalo sang madali',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -155,6 +182,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'localisationupdate-desc' => 'メッセージの翻訳を可能な限り最新に保つようにする',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'localisationupdate-desc' => 'រក្សា​សារ​ដែលបាន​ប្រែសម្រួល​ទាំងឡាយ អោយនៅ​ទាន់សម័យ​តាមដែលអាចធ្វើទៅបាន​',
 );
 
 /** Ripoarisch (Ripoarisch)

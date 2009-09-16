@@ -124,7 +124,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'ExpandTemplates' => array( 'Kembangkan templat' ),
+	'ExpandTemplates' => array( 'Kembangkan templat', 'KembangkanTemplat' ),
 );
 
 /** Italian (Italiano) */
@@ -199,6 +199,11 @@ $aliases['no'] = array(
 	'ExpandTemplates' => array( 'Utvid maler' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ExpandTemplates' => array( 'EspandimentDelsModèls' ),
+);
+
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ExpandTemplates' => array( 'Rozwijanie szablonów' ),
@@ -212,6 +217,11 @@ $aliases['ps'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'ExpandTemplates' => array( 'बिंबधरविस्तारकरोसि' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ExpandTemplates' => array( 'RozbalenieŠablón' ),
 );
 
 /** Swedish (Svenska) */

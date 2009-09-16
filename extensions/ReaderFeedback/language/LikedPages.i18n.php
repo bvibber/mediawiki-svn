@@ -75,6 +75,17 @@ $messages['bs'] = array(
 	'likedpages-graphs' => 'podaci rejtinga',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'likedpages' => 'Sider som er bedømt som gode',
+	'likedpages-leg' => 'Find sider som er bedømt som gode',
+	'likedpages-list' => 'Nedenfor er en liste med sider sorteret efter deres læserbedømmelse.',
+	'likedpages-none' => 'Der er ingen sider i listen',
+	'likedpages-graphs' => 'Bedømmelsesdata',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */
@@ -101,6 +112,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'likedpages' => 'Υψηλά βαθμολογημένες σελίδες',
 	'likedpages-graphs' => 'δεδομένα βαθμολόγησης',
 );
 
@@ -378,6 +390,17 @@ $messages['pl'] = array(
 	'likedpages-list' => 'Poniżej znajduje się lista stron posortowanych według ocen wystawionych przez czytelników.',
 	'likedpages-none' => 'Na tej liście nie ma żadnych stron',
 	'likedpages-graphs' => 'ocena danych',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'likedpages' => 'Pàgine motobin vardà',
+	'likedpages-leg' => 'Treuva le pàgine pì vardà',
+	'likedpages-list' => 'Sota a-i é na lista ëd pàgine ordinà për ël sò feedback dij letor.',
+	'likedpages-none' => 'A-i é pa ëd pàgine an sta lista-sì',
+	'likedpages-graphs' => 'dat ëd le valutassion',
 );
 
 /** Portuguese (Português)

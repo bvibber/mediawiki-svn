@@ -247,7 +247,6 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}}র বারে',
 'aboutpage'            => 'Project:বারে',
 'copyright'            => '$1-র মাতুঙে এহানর মেথেলহানি পানা একরের।',
-'copyrightpagename'    => '{{SITENAME}} স্বত্তাধিকারহান',
 'copyrightpage'        => '{{ns:project}}:স্বত্তাধিকারহানি',
 'currentevents'        => 'হাদি এহানর ঘটনা',
 'currentevents-url'    => 'Project:হাদি এহানর ঘটনাহানি',
@@ -789,11 +788,10 @@ $messages = array(
 'export' => 'পাতাহান দিয়াপেঠা',
 
 # Namespace 8 related
-'allmessages'         => 'সিস্টেমর পৌহানি',
-'allmessagesname'     => 'নাং',
-'allmessagescurrent'  => 'হাদি এহানর ৱাহি',
-'allmessagestext'     => 'তলে মিডিয়াউইকি: নাঙরজাগাত পানা একরের সিস্টেম পৌহানির তালিকাহান দেনা ইল।',
-'allmessagesmodified' => 'পতাসি অতা হুদ্দা দেহাদে',
+'allmessages'        => 'সিস্টেমর পৌহানি',
+'allmessagesname'    => 'নাং',
+'allmessagescurrent' => 'হাদি এহানর ৱাহি',
+'allmessagestext'    => 'তলে মিডিয়াউইকি: নাঙরজাগাত পানা একরের সিস্টেম পৌহানির তালিকাহান দেনা ইল।',
 
 # Thumbnails
 'thumbnail-more'  => 'ডাঙরকর',

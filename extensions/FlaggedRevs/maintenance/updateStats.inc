@@ -63,7 +63,7 @@ function update_flaggedrevs_stats() {
 		array( 'USE INDEX' => array('flaggedpages' => 'fp_pending_since') )
 	);
 	// Get the mean edit review time
-	$size = 15000; // Sample size
+	$size = 10000; // Sample size
 	$seconds = $aveRT = $medianRT = 0;
 	# Only go so far back...otherwise we will get garbage values due to 
 	# the fact that FlaggedRevs wasn't enabled until after a while.
@@ -242,7 +242,7 @@ function update_flaggedrevs_stats() {
 		__METHOD__
 	);
 	$dbw->commit();
-	// Stats are not up to date!
+	// Stats are now up to date!
 	$key = wfMemcKey( 'flaggedrevs', 'statsUpdated' );
 	$dbCache->set( $key, '1', $wgFlaggedRevsStatsAge );
 	$dbCache->delete( $keySQL );

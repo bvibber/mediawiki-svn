@@ -93,6 +93,11 @@ $aliases['ia'] = array(
 	'Drafts' => array( 'Versiones provisori' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Drafts' => array( 'Draf' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'Drafts' => array( 'Bozze' ),
@@ -121,6 +126,11 @@ $aliases['lb'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'Drafts' => array( 'РаботнаВерзија' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'Drafts' => array( 'കരട്' ),
 );
 
 /** Marathi (मराठी) */
@@ -153,6 +163,11 @@ $aliases['oc'] = array(
 	'Drafts' => array( 'Borrolhons' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'Drafts' => array( 'Brudnopisy' ),
+);
+
 /** Portuguese (Português) */
 $aliases['pt'] = array(
 	'Drafts' => array( 'Rascunhos' ),
@@ -166,6 +181,11 @@ $aliases['pt-br'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Drafts' => array( 'प्रारूप' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Drafts' => array( 'Rozpísané' ),
 );
 
 /** Tagalog (Tagalog) */

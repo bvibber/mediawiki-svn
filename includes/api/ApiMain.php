@@ -76,6 +76,7 @@ class ApiMain extends ApiBase {
 		'unblock' => 'ApiUnblock',
 		'move' => 'ApiMove',
 		'edit' => 'ApiEditPage',
+		'upload' => 'ApiUpload',
 		'emailuser' => 'ApiEmailUser',
 		'watch' => 'ApiWatch',
 		'patrol' => 'ApiPatrol',
@@ -122,7 +123,8 @@ class ApiMain extends ApiBase {
 
 
 	private $mPrinter, $mModules, $mModuleNames, $mFormats, $mFormatNames;
-	private $mResult, $mAction, $mShowVersions, $mEnableWrite, $mRequest, $mInternalMode, $mSquidMaxage;
+	private $mResult, $mAction, $mShowVersions, $mEnableWrite, $mRequest;
+	private $mInternalMode, $mSquidMaxage, $mModule;
 
 	/**
 	* Constructs an instance of ApiMain that utilizes the module and format specified by $request.
@@ -188,6 +190,13 @@ class ApiMain extends ApiBase {
 	 */
 	public function getResult() {
 		return $this->mResult;
+	}
+	
+	/**
+	 * Get the API module object. Only works after executeAction()
+	 */
+	public function getModule() {
+		return $this->mModule;
 	}
 
 	/**
@@ -312,9 +321,7 @@ class ApiMain extends ApiBase {
 				//
 				// User entered incorrect parameters - print usage screen
 				//
-				$errMessage = array (
-				'code' => $e->getCodeString(),
-				'info' => $e->getMessage());
+				$errMessage = $e->getMessageArray();
 
 				// Only print the help message when this is for the developer, not runtime
 				if ($this->mPrinter->getWantsHelp() || $this->mAction == 'help')
@@ -369,6 +376,7 @@ class ApiMain extends ApiBase {
 
 		// Instantiate the module requested by the user
 		$module = new $this->mModules[$this->mAction] ($this, $this->mAction);
+		$this->mModule = $module;
 
 		if( $module->shouldCheckMaxlag() && isset( $params['maxlag'] ) ) {
 			// Check for maxlag
@@ -378,7 +386,6 @@ class ApiMain extends ApiBase {
 			if ( $lag > $maxLag ) {
 				header( 'Retry-After: ' . max( intval( $maxLag ), 5 ) );
 				header( 'X-Database-Lag: ' . intval( $lag ) );
-				// XXX: should we return a 503 HTTP error code like wfMaxlagError() does?
 				if( $wgShowHostnames ) {
 					$this->dieUsage( "Waiting for $host: $lag seconds lagged", 'maxlag' );
 				} else {
@@ -397,7 +404,7 @@ class ApiMain extends ApiBase {
 			if (!$wgUser->isAllowed('writeapi'))
 				$this->dieUsageMsg(array('writerequired'));
 			if (wfReadOnly())
-				$this->dieUsageMsg(array('readonlytext'));
+				$this->dieReadOnly();
 		}
 
 		if (!$this->mInternalMode) {
@@ -548,6 +555,23 @@ class ApiMain extends ApiBase {
 	 * Override the parent to generate help messages for all available modules.
 	 */
 	public function makeHelpMsg() {
+		global $wgMemc, $wgAPICacheHelp;
+		$this->mPrinter->setHelp();
+		// Get help text from cache if present
+		$key = wfMemcKey( 'apihelp', $this->getModuleName(),
+			SpecialVersion::getVersion( 'nodb' ) );
+		if ( $wgAPICacheHelp ) {
+			$cached = $wgMemc->get( $key );
+			if ( $cached )
+				return $cached;
+		}
+		$retval = $this->reallyMakeHelpMsg();
+		if ( $wgAPICacheHelp )
+			$wgMemc->set( $key, $retval, 60*60 );
+		return $retval;
+	}
+	
+	public function reallyMakeHelpMsg() {
 
 		$this->mPrinter->setHelp();
 
@@ -704,13 +728,24 @@ class ApiMain extends ApiBase {
 class UsageException extends Exception {
 
 	private $mCodestr;
+	private $mExtraData;
 
-	public function __construct($message, $codestr, $code = 0) {
+	public function __construct($message, $codestr, $code = 0, $extradata = null) {
 		parent :: __construct($message, $code);
 		$this->mCodestr = $codestr;
+		$this->mExtraData = $extradata;
 	}
 	public function getCodeString() {
 		return $this->mCodestr;
+	}
+	public function getMessageArray() {
+		$result = array (
+				'code' => $this->mCodestr,
+				'info' => $this->getMessage()
+		);
+		if ( is_array( $this->mExtraData ) )
+			$result = array_merge( $result, $this->mExtraData );
+		return $result;
 	}
 	public function __toString() {
 		return "{$this->getCodeString()}: {$this->getMessage()}";

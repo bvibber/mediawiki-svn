@@ -17,18 +17,29 @@ abstract class AbuseFilterView {
 
 	function canEdit() {
 		global $wgUser;
-		static $canEdit = 'unset';
+		static $canEdit = null;
 
-		if ($canEdit == 'unset') {
+		if ( is_null( $canEdit ) ) {
 			$canEdit = $wgUser->isAllowed( 'abusefilter-modify' );
 		}
 
 		return $canEdit;
 	}
+
+	function canViewPrivate() {
+		global $wgUser;
+		static $canView = null;
+
+		if ( is_null( $canView ) ) {
+			$canView = $this->canEdit() || $wgUser->isAllowed( 'abusefilter-view-private' );
+		}
+
+		return $canView;
+	}
 }
 
 class AbuseFilterChangesList extends OldChangesList {
-	protected function insertExtra( &$s, &$rc, &$classes ) {
+	public function insertExtra( &$s, &$rc, &$classes ) {
 		$sk = $this->skin;
 		$examineParams = empty($rc->examineParams) ? array() : $rc->examineParams;
 
@@ -48,5 +59,5 @@ class AbuseFilterChangesList extends OldChangesList {
 	}
 	
 	// Kill rollback links.
-	protected function insertRollback( &$s, &$rc ) {}
+	public function insertRollback( &$s, &$rc ) {}
 }

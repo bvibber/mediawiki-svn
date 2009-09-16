@@ -12,26 +12,33 @@ class UsabilityInitiativeHooks {
 	
 	private static $doOutput = false;
 	private static $messages = array();
+	private static $variables = array();
+	private static $literalVariables = array();
 	private static $styles = array();
 	private static $styleFiles = array(
 		'base_sets' => array(
 			'raw' => array(
-				array( 'src' => 'css/wikiEditor.css', 'version' => 5 ),
-				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 6 ),
-				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 4 ),
+				array( 'src' => 'css/suggestions.css', 'version' => 5 ),
+				array( 'src' => 'css/wikiEditor.css', 'version' => 4 ),
+				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 5 ),
+				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 1 ),
+				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 5 ),
+				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 6 ),
+				array( 'src' => 'css/combined.css', 'version' => 7 ),
+				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 6 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 7 ),
+				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2' ),
 			),
 		)
 	);
 	private static $scripts = array();
 	private static $scriptFiles = array(
 		'tests' => array(
-			array( 'src' => 'js/tests/wikiEditor.toolbar.js' )
+			array( 'src' => 'js/tests/wikiEditor.toolbar.js', 'version' => 0 )
 		),
 		// Code to include when js2 is not present
 		'no_js2' => array(
@@ -40,10 +47,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/js2/js2.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/js2.combined.js', 'version' => 3 ),
+				array( 'src' => 'js/js2.combined.js', 'version' => 5 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/js2.combined.min.js', 'version' => 3 ),
+				array( 'src' => 'js/js2.combined.min.js', 'version' => 5 ),
 			),
 		),
 		// Core functionality of extension
@@ -52,16 +59,20 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => '3x' ), // Live hack
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 0 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 9 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 5 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 6 ),
+				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2x' ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => '4x' ), // Live hack
+				array( 'src' => 'js/plugins.combined.js', 'version' => 22 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => '4x' ), // Live hack
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 22 ),
 			),
 		),
 	);
@@ -138,17 +149,16 @@ class UsabilityInitiativeHooks {
 			self::$messages[$i] =
 				"'{$escapedMessageKey}':'{$escapedMessageValue}'";
 		}
-		// Converts array of object members to a comma delimited list
-		$messagesList = implode( ',', self::$messages );
 		// Add javascript to document
-		$out->addScript(
-			Xml::tags(
-				'script',
-				array( 'type' => $wgJsMimeType ),
-				"loadGM({{$messagesList}});"
-			)
-		);
-		
+		if ( count( self::$messages ) > 0 ) {
+			$out->addScript(
+				Xml::tags(
+					'script',
+					array( 'type' => $wgJsMimeType ),
+					'loadGM({' . implode( ',', self::$messages ) . '});'
+				)
+			);
+		}
 		// Loops over each style
 		foreach ( self::$styles as $style ) {
 			// Add css for various styles
@@ -162,6 +172,14 @@ class UsabilityInitiativeHooks {
 				)
 			);
 		}
+		return true;
+	}
+	
+	/**
+	 * MakeGlobalVariablesScript hook
+	 */
+	public static function addJSVars( &$vars ) {
+		$vars = array_merge( $vars, self::$variables );
 		return true;
 	}
 
@@ -190,5 +208,13 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addMessages( $messages ) {
 		self::$messages = array_merge( self::$messages, $messages );
+	}
+	
+	/**
+	 * Adds variables that will be turned into global variables in JS
+	 * @param $variables array of "name" => "value"
+	 */
+	public static function addVariables( $variables ) {
+		self::$variables = array_merge( self::$variables, $variables );
 	}
 }

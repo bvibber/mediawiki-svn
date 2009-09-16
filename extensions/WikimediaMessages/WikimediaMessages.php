@@ -12,6 +12,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WikimediaMessages',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikimediaMessages',
 	'author'         => array( 'Tim Starling', 'Siebrand Mazeland' ),
 	'description'    => 'Wikimedia specific messages',
 	'descriptionmsg' => 'wikimediamessages-desc',
@@ -25,7 +26,6 @@ include_once ( $dir .'WikimediaGrammarForms.php' );
 
 function wfSetupWikimediaMessages() {
 	global $wgRightsUrl, $wgHooks;
-	wfLoadExtensionMessages('WikimediaMessages');
 	if( $wgRightsUrl == 'http://creativecommons.org/licenses/by-sa/3.0/' ) {
 		// Override with Wikimedia's site-specific copyright message defaults
 		// with the CC/GFDL semi-dual license fun!

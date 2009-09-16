@@ -85,6 +85,13 @@ $aliases['ia'] = array(
 	'ContributionTotal' => array( 'Total de contributiones' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ContributionHistory' => array( 'Riwayat kontribusi', 'RiwayatKontribusi' ),
+	'ContributionStatistics' => array( 'Statistik kontribusi', 'StatistikKontribusi' ),
+	'ContributionTotal' => array( 'Total kontribusi', 'TotalKontribusi' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ContributionHistory' => array( '寄付履歴' ),
@@ -154,6 +161,13 @@ $aliases['no'] = array(
 	'ContributionTotal' => array( 'Totale bidrag' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ContributionHistory' => array( 'IstoricDeLasContribucions', 'Istoric de las contribucions' ),
+	'ContributionStatistics' => array( 'EstatisticasDeLasContribucions', 'Estatisticas de las contribucions' ),
+	'ContributionTotal' => array( 'ContribucionsTotalas', 'Contribucions totalas' ),
+);
+
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ContributionHistory' => array( 'Historia darowizn' ),
@@ -180,6 +194,13 @@ $aliases['sa'] = array(
 	'ContributionHistory' => array( 'योगदानैतिहास' ),
 	'ContributionStatistics' => array( 'योगदानसांख्यिकी' ),
 	'ContributionTotal' => array( 'सकलयोगदान' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ContributionHistory' => array( 'HistóriaPríspevkov' ),
+	'ContributionStatistics' => array( 'ŠtatistikyPríspevkov' ),
+	'ContributionTotal' => array( 'SumaPríspevkov' ),
 );
 
 /** Albanian (Shqip) */

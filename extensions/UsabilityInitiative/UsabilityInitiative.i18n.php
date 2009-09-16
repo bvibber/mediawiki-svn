@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'usabilityinitiative-desc' => 'Features developed by the Wikipedia Usability Initiative to enhance the usability of MediaWiki',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'usabilityinitiative' => 'Bruikbaarheid-inisiatief',
+	'usabilityinitiative-desc' => 'Funksionaliteit wat deur Wikipedia se Bruikbaarheid-inisiatief ontwikkel is om MediaWiki meer bruikbaarheid te maak',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -27,10 +35,19 @@ $messages['ar'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'usabilityinitiative' => 'Ініцыятыва па паляпшэньню зручнасьці і прастаты выкарыстаньня',
-	'usabilityinitiative-desc' => 'Дапаўненьні распрацаваныя ў межах ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня MediaWiki',
+	'usabilityinitiative' => 'Ініцыятыва па паляпшэньні зручнасьці і прастаты выкарыстаньня',
+	'usabilityinitiative-desc' => 'Дапаўненьні распрацаваныя ў межах ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня MediaWiki',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'usabilityinitiative' => 'Intrudu Implijadusted',
+	'usabilityinitiative-desc' => "Arc'hwelioù diorroet gant Intrudu Implijadusted Wikipedia evit gwellaat implijadusted MediaWiki",
 );
 
 /** Bosnian (Bosanski)
@@ -47,6 +64,14 @@ $messages['bs'] = array(
 $messages['ca'] = array(
 	'usabilityinitiative' => "''Usability Initiative''",
 	'usabilityinitiative-desc' => "Funcions desenvolupades per la ''Wikipedia Usability Initiative'' per millorar la usabilitat del Mediawiki",
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'usabilityinitiative' => 'Iniciativa použitelnosti',
+	'usabilityinitiative-desc' => 'Vylepšení použitelnosti MediaWiki vyvinutá v rámci Iniciativy použitelnosti Wikipedie',
 );
 
 /** Danish (Dansk)
@@ -259,6 +284,14 @@ $messages['mk'] = array(
 	'usabilityinitiative-desc' => 'Алатки и можности изработени од Иницијативата за употребливост на Википедија со цел да се подобри употребливоста на МедијаВики',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'usabilityinitiative' => 'Inisiatif Kebolehgunaan',
+	'usabilityinitiative-desc' => 'Tamplian-tampilan yang dibangunkan oleh Inisiatif Kebolehgunaan Wikipedia demi meningkatkan kebolehgunaan MediaWiki',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -297,6 +330,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'usabilityinitiative' => 'Inicjatywa Użyteczności',
 	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'usabilityinitiative' => 'Inissiativa ëd dovrabilità',
+	'usabilityinitiative-desc' => 'Caraterìstiche dësvilupà da la Wikipedia Usability Initiative për mijoré la dovrabilità ëd MediaWiki',
 );
 
 /** Portuguese (Português)

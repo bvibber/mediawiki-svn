@@ -192,13 +192,6 @@ class FlaggedArticle extends Article {
 		}
 		return false;
 	}
-	
-	 /**
-	 * Is this article rateable?
-	 */
-	public function isRateable() {
-		return FlaggedRevs::isPageRateable( $this->parent->getTitle() );
-	}
 
 	 /**
 	 * Output review notice
@@ -268,10 +261,9 @@ class FlaggedArticle extends Article {
 		# Load required messages
 		wfLoadExtensionMessages( 'FlaggedRevs' );
 		$simpleTag = $old = $stable = false;
-		$tag = $prot = $pending = '';
+		$tag = $prot = '';
 		# Check the newest stable version.
-		$srev = $this->getStableRev();
-		$frev = $srev;
+		$frev = $srev = $this->getStableRev();
 		$stableId = $frev ? $frev->getRevId() : 0;
 		# Also, check for any explicitly requested old stable version...
 		$reqId = $wgRequest->getVal('stableid');
@@ -279,6 +271,7 @@ class FlaggedArticle extends Article {
 			$reqId = FlaggedRevs::getPrimeFlaggedRevId( $this->parent );
 		}
 		if( $stableId && $reqId ) {
+			# Treat requesting the stable version by ID as &stable=1
 			if( $reqId != $stableId ) {
 				$frev = FlaggedRevision::newFromTitle( $this->parent->getTitle(), $reqId, FR_TEXT );
 				$old = true; // old reviewed version requested by ID
@@ -331,173 +324,23 @@ class FlaggedArticle extends Article {
 		$flags = $frev->getTags();
 		# Get quality level
 		$quality = FlaggedRevs::isQuality( $flags );
-		$pristine =  FlaggedRevs::isPristine( $flags );
+		$pristine = FlaggedRevs::isPristine( $flags );
 		// Looking at some specific old stable revision ("&stableid=x")
 		// set to override given the relevant conditions. If the user is
 		// requesting the stable revision ("&stableid=x"), defer to override
 		// behavior below, since it is the same as ("&stable=1").
 		if( $old ) {
-			$revsSince = FlaggedRevs::getRevCountSince( $this->parent, $srev->getRevId() );
-			$text = $frev->getRevText();
-	   		$parserOut = FlaggedRevs::parseStableText( $this->parent, $text, $frev->getRevId() );
-			# Construct some tagging for non-printable outputs. Note that the pending
-			# notice has all this info already, so don't do this if we added that already.
-			if( !$wgOut->isPrintable() ) {
-				$class = $quality ? 'fr-icon-quality' : 'fr-icon-stable';
-				$tooltip = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
-				$tooltip = wfMsgHtml($tooltip);
-				// Simple icon-based UI
-				if( FlaggedRevs::useSimpleUI() ) {
-					$msg = $quality ? 'revreview-quick-quality-old' : 'revreview-quick-basic-old';
-					$html = "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>" .
-						wfMsgExt( $msg, array('parseinline'), $frev->getRevId(), $time );
-					$tag .= FlaggedRevsXML::prettyRatingBox( $frev, $html, $revsSince,
-								true, false, $old );
-				// Standard UI
-				} else {
-					$msg = $quality ? 'revreview-quality-old' : 'revreview-basic-old';
-					$tag .= "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>" .
-						wfMsgExt( $msg, array('parseinline'), $frev->getRevId(), $time );
-					# Hide clutter
-					if( !empty($flags) ) {
-						$tag .= " " . FlaggedRevsXML::ratingToggle();
-						$tag .= "<span id='mw-revisionratings' style='display:block;'><br/>" .
-							wfMsgHtml('revreview-oldrating') .
-							FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
-					}
-				}
-			}
-			# Output HTML
-			$this->getReviewNotes( $frev );
-	   		$wgOut->addParserOutput( $parserOut );
-			$wgOut->setRevisionId( $frev->getRevId() );
-			# Index the stable version only
-			$wgOut->setRobotPolicy( 'noindex,nofollow' );
-			# Tell MW that parser output is done
-			$outputDone = true;
+			$this->showOldReviewedVersion( $srev, $frev, $tag, $prot );
+			$outputDone = true; # Tell MW that parser output is done
 			$pcache = false;
 		// Looking at some specific old revision (&oldid=x) or if FlaggedRevs is not
 		// set to override given the relevant conditions (like &action=protect).
 		} elseif( !$stable && !$this->pageOverride() ) {
-			$revsSince = FlaggedRevs::getRevCountSince( $this->parent, $srev->getRevId() );
-			$synced = false;
-			# We only care about syncing if not viewing an old stable version
-			if( $srev->getRevId() == $frev->getRevId() ) {
-				$synced = FlaggedRevs::stableVersionIsSynced( $frev, $this->parent );
-				if( $synced ) {
-					$this->getReviewNotes( $frev ); // Still the same
-				}
-			}
-			# Give notice to newer users if an unreviewed edit was completed...
-			if( !$synced && $wgRequest->getVal('shownotice') && !$wgUser->isAllowed('review') ) {
-				$tooltip = wfMsgHtml('revreview-draft-title');
-				$pending = "{$prot}<span class='fr-icon-current' title=\"{$tooltip}\"></span>" .
-					wfMsgExt('revreview-edited',array('parseinline'),$frev->getRevId(),$revsSince);
-				$pending = "<div id='mw-reviewnotice' class='flaggedrevs_preview plainlinks'>$pending</div>";
-				# Notice should always use subtitle
-				$this->reviewNotice = $pending;
-			}
-			# If they are synced, do special styling
-			$simpleTag = !$synced;
-			# Construct some tagging for non-printable outputs. Note that the pending
-			# notice has all this info already, so don't do this if we added that already.
-			if( !$wgOut->isPrintable() && !$pending && !($this->lowProfileUI() && $synced) ) {
-				$class = 'fr-icon-current'; // default
-				$tooltip = 'revreview-draft-title';
-				// Simple icon-based UI
-				if( FlaggedRevs::useSimpleUI() ) {
-					if( $synced ) {
-						$msg = $quality ? 'revreview-quick-quality-same' : 'revreview-quick-basic-same';
-						$class = $quality ? 'fr-icon-quality' : 'fr-icon-stable';
-						$tooltip = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
-						$msgHTML = wfMsgExt( $msg, array('parseinline'), $frev->getRevId(), $revsSince );
-					} else {
-						$msg = $quality ? 'revreview-quick-see-quality' : 'revreview-quick-see-basic';
-						$msgHTML = wfMsgExt( $msg, array('parseinline'), $frev->getRevId(), $revsSince );
-					}
-					$tooltip = wfMsgHtml($tooltip);
-					$msgHTML = "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>$msgHTML";
-					$tag .= FlaggedRevsXML::prettyRatingBox( $frev, $msgHTML, $revsSince,
-								$synced, $synced, $old );
-				// Standard UI
-				} else {
-					if( $synced ) {
-						$msg = $quality ? 'revreview-quality-same' : 'revreview-basic-same';
-						$class = $quality ? 'fr-icon-quality' : 'fr-icon-stable';
-						$tooltip = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
-						$msgHTML = wfMsgExt( $msg, array('parseinline'), $frev->getRevId(),
-										$time, $revsSince );
-					} else {
-						$msg = $quality ? 'revreview-newest-quality' : 'revreview-newest-basic';
-						$msg .= ($revsSince == 0) ? '-i' : '';
-						$msgHTML = wfMsgExt( $msg, array('parseinline'), $frev->getRevId(),
-										$time, $revsSince );
-					}
-					$tooltip = wfMsgHtml($tooltip);
-					$tag .= "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>" . $msgHTML;
-					# Hide clutter
-					if( !empty($flags) ) {
-						$tag .= " " . FlaggedRevsXML::ratingToggle();
-						$tag .= "<span id='mw-revisionratings' style='display:block;'><br/>" .
-							wfMsgHtml('revreview-oldrating') . FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
-					}
-				}
-			}
-			# Index the stable version only if it is the default
-			if( $this->showStableByDefault() ) {
-				$wgOut->setRobotPolicy( 'noindex,nofollow' );
-			}
+			$this->showRegularVersion( $srev, $tag, $prot );
 		// The relevant conditions are met to override the page with the stable version.
 		} else {
-	   		# We will be looking at the reviewed revision...
-	   		$revsSince = FlaggedRevs::getRevCountSince( $this->parent, $frev->getRevId() );
-			# Get parsed stable version
-			$parserOut = FlaggedRevs::getPageCache( $this->parent );
-			if( $parserOut == false ) {
-				$text = $frev->getRevText();
-	   			$parserOut = FlaggedRevs::parseStableText( $this->parent, $text, $frev->getRevId() );
-	   			# Update the stable version cache
-				FlaggedRevs::updatePageCache( $this->parent, $parserOut );
-	   		}
-			$synced = FlaggedRevs::stableVersionIsSynced( $frev, $this->parent, $parserOut, null );
-			# Construct some tagging
-			if( !$wgOut->isPrintable() && !($this->lowProfileUI() && $synced) ) {
-				$class = $quality ? 'fr-icon-quality' : 'fr-icon-stable';
-				$tooltip = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
-				$tooltip = wfMsgHtml($tooltip);
-				// Simple icon-based UI
-				if( FlaggedRevs::useSimpleUI() ) {
-					$msg = $quality ? 'revreview-quick-quality' : 'revreview-quick-basic';
-					# uses messages 'revreview-quick-quality-same', 'revreview-quick-basic-same'
-					$msg = $synced ? "{$msg}-same" : $msg;
-					$html = "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>" .
-						wfMsgExt( $msg, array('parseinline'), $frev->getRevId(), $revsSince );
-					$tag = FlaggedRevsXML::prettyRatingBox( $frev, $html, $revsSince, true, $synced );
-				// Standard UI
-				} else {
-					$msg = $quality ? 'revreview-quality' : 'revreview-basic';
-					if( $synced ) {
-						# uses messages 'revreview-quality-same', 'revreview-basic-same'
-						$msg .= '-same';
-					} elseif( $revsSince == 0 ) {
-						# uses messages 'revreview-quality-i', 'revreview-basic-i'
-						$msg .= '-i';
-					}
-					$tag = "{$prot}<span class='{$class} plainlinks' title=\"{$tooltip}\"></span>" .
-						wfMsgExt( $msg, array('parseinline'), $frev->getRevId(), $time, $revsSince );
-					if( !empty($flags) ) {
-						$tag .= " " . FlaggedRevsXML::ratingToggle();
-						$tag .= "<span id='mw-revisionratings' style='display:block;'><br/>" .
-							FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
-					}
-				}
-			}
-			# Output HTML
-			$this->getReviewNotes( $frev );
-	   		$wgOut->addParserOutput( $parserOut );
-			$wgOut->setRevisionId( $frev->getRevId() );
-			# Tell MW that parser output is done
-			$outputDone = true;
+	   		$this->showStableVersion( $srev, $tag, $prot );
+			$outputDone = true; # Tell MW that parser output is done
 			$pcache = false;
 		}
 		# Some checks for which tag CSS to use
@@ -515,6 +358,265 @@ class FlaggedArticle extends Article {
 		$this->displayTag();
 
 		return true;
+	}
+	
+	/**
+	* @param $srev stable version
+	* @param $tag review box/bar info
+	* @param $prot protection notice
+	* Tag output function must be called by caller
+	* Parser cache control deferred to caller
+	*/
+	protected function showRegularVersion( $srev, &$tag, $prot ) {
+		global $wgUser, $wgOut, $wgLang, $wgRequest;
+		$flags = $srev->getTags();
+		$time = $wgLang->date( $srev->getTimestamp(), true );
+		# Get quality level
+		$quality = FlaggedRevs::isQuality( $flags );
+		$pristine = FlaggedRevs::isPristine( $flags );
+		$revsSince = FlaggedRevs::getRevCountSince( $this->parent, $srev->getRevId() );
+		# Get stable version sync status
+		$synced = FlaggedRevs::stableVersionIsSynced( $srev, $this->parent );
+		if( $synced ) {
+			$this->getReviewNotes( $srev ); // Still the same
+		} else {
+			$this->maybeShowTopDiff( $srev, $quality ); // user may want diff (via prefs)
+		}
+		$pending = '';
+		# Give notice to newer users if an unreviewed edit was completed...
+		if( !$synced && $wgRequest->getVal('shownotice') && !$wgUser->isAllowed('review') ) {
+			$tooltip = wfMsgHtml('revreview-draft-title');
+			$pending = "{$prot}<span class='fr-icon-current' title=\"{$tooltip}\"></span>" .
+				wfMsgExt('revreview-edited',array('parseinline'),$srev->getRevId(),$revsSince);
+			$pending = "<div id='mw-reviewnotice' class='flaggedrevs_preview plainlinks'>$pending</div>";
+			# Notice should always use subtitle
+			$this->reviewNotice = $pending;
+		}
+		# If they are synced, do special styling
+		$simpleTag = !$synced;
+		# Construct some tagging for non-printable outputs. Note that the pending
+		# notice has all this info already, so don't do this if we added that already.
+		if( !$wgOut->isPrintable() && !$pending && !($this->lowProfileUI() && $synced) ) {
+			$class = 'fr-icon-current'; // default
+			$tooltip = 'revreview-draft-title';
+			// Simple icon-based UI
+			if( FlaggedRevs::useSimpleUI() ) {
+				if( $synced ) {
+					$msg = $quality ? 'revreview-quick-quality-same' : 'revreview-quick-basic-same';
+					$class = $quality ? 'fr-icon-quality' : 'fr-icon-stable';
+					$tooltip = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
+					$msgHTML = wfMsgExt( $msg, array('parseinline'), $srev->getRevId(), $revsSince );
+				} else {
+					$msg = $quality ? 'revreview-quick-see-quality' : 'revreview-quick-see-basic';
+					$msgHTML = wfMsgExt( $msg, array('parseinline'), $srev->getRevId(), $revsSince );
+				}
+				$tooltip = wfMsgHtml($tooltip);
+				$msgHTML = "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>$msgHTML";
+				$tag .= FlaggedRevsXML::prettyRatingBox( $srev, $msgHTML, $revsSince,
+							$synced, $synced, false );
+			// Standard UI
+			} else {
+				if( $synced ) {
+					$msg = $quality ? 'revreview-quality-same' : 'revreview-basic-same';
+					$class = $quality ? 'fr-icon-quality' : 'fr-icon-stable';
+					$tooltip = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
+					$msgHTML = wfMsgExt( $msg, array('parseinline'), $srev->getRevId(),
+									$time, $revsSince );
+				} else {
+					$msg = $quality ? 'revreview-newest-quality' : 'revreview-newest-basic';
+					$msg .= ($revsSince == 0) ? '-i' : '';
+					$msgHTML = wfMsgExt( $msg, array('parseinline'), $srev->getRevId(),
+									$time, $revsSince );
+				}
+				$tooltip = wfMsgHtml($tooltip);
+				$tag .= "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>" . $msgHTML;
+				# Hide clutter
+				if( !empty($flags) ) {
+					$tag .= " " . FlaggedRevsXML::ratingToggle();
+					$tag .= "<span id='mw-revisionratings' style='display:block;'><br/>" .
+						wfMsgHtml('revreview-oldrating') . FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
+				}
+			}
+		}
+		# Index the stable version only if it is the default
+		if( $this->showStableByDefault() ) {
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		}
+	}
+	
+	/**
+	* @param $srev stable version
+	* @param $frev selected flagged revision
+	* @param $tag review box/bar info
+	* @param $prot protection notice
+	* Tag output function must be called by caller
+	* Parser cache control deferred to caller
+	*/
+	protected function showOldReviewedVersion( $srev, $frev, &$tag, $prot ) {
+		global $wgOut, $wgLang;
+		$flags = $frev->getTags();
+		$time = $wgLang->date( $frev->getTimestamp(), true );
+		# Set display revision ID
+		$wgOut->setRevisionId( $frev->getRevId() );
+		# Get quality level
+		$quality = FlaggedRevs::isQuality( $flags );
+		$pristine = FlaggedRevs::isPristine( $flags );
+		$revsSince = FlaggedRevs::getRevCountSince( $this->parent, $srev->getRevId() );
+		$text = $frev->getRevText();
+	   	$parserOut = FlaggedRevs::parseStableText( $this->parent, $text, $frev->getRevId() );
+		# Construct some tagging for non-printable outputs. Note that the pending
+		# notice has all this info already, so don't do this if we added that already.
+		if( !$wgOut->isPrintable() ) {
+			$class = $quality ? 'fr-icon-quality' : 'fr-icon-stable';
+			$tooltip = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
+			$tooltip = wfMsgHtml($tooltip);
+			// Simple icon-based UI
+			if( FlaggedRevs::useSimpleUI() ) {
+				$msg = $quality ? 'revreview-quick-quality-old' : 'revreview-quick-basic-old';
+				$html = "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>" .
+					wfMsgExt( $msg, array('parseinline'), $frev->getRevId(), $time );
+				$tag = FlaggedRevsXML::prettyRatingBox( $frev, $html, $revsSince,
+							true, false, true );
+			// Standard UI
+			} else {
+				$msg = $quality ? 'revreview-quality-old' : 'revreview-basic-old';
+				$tag = "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>" .
+					wfMsgExt( $msg, array('parseinline'), $frev->getRevId(), $time );
+				# Hide clutter
+				if( !empty($flags) ) {
+					$tag .= " " . FlaggedRevsXML::ratingToggle();
+					$tag .= "<span id='mw-revisionratings' style='display:block;'><br/>" .
+						wfMsgHtml('revreview-oldrating') .
+						FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
+				}
+			}
+		}
+		# Output HTML
+		$this->getReviewNotes( $frev );
+	   	$wgOut->addParserOutput( $parserOut );
+		# Index the stable version only
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+	}
+
+	/**
+	* @param $srev stable version
+	* @param $tag review box/bar info
+	* @param $prot protection notice
+	* Tag output function must be called by caller
+	* Parser cache control deferred to caller
+	*/
+	protected function showStableVersion( $srev, &$tag, $prot ) {
+		global $wgOut, $wgLang;
+		$flags = $srev->getTags();
+		$time = $wgLang->date( $srev->getTimestamp(), true );
+		# Set display revision ID
+		$wgOut->setRevisionId( $srev->getRevId() );
+		# Get quality level
+		$quality = FlaggedRevs::isQuality( $flags );
+		$pristine = FlaggedRevs::isPristine( $flags );
+		# We will be looking at the reviewed revision...
+	   	$revsSince = FlaggedRevs::getRevCountSince( $this->parent, $srev->getRevId() );
+		# Get parsed stable version
+		$parserOut = FlaggedRevs::getPageCache( $this->parent );
+		if( $parserOut == false ) {
+			$text = $srev->getRevText();
+	   		$parserOut = FlaggedRevs::parseStableText( $this->parent, $text, $srev->getRevId() );
+	   		# Update the stable version cache
+			FlaggedRevs::updatePageCache( $this->parent, $parserOut );
+	   	}
+		$synced = FlaggedRevs::stableVersionIsSynced( $srev, $this->parent, $parserOut, null );
+		# Construct some tagging
+		if( !$wgOut->isPrintable() && !($this->lowProfileUI() && $synced) ) {
+			$class = $quality ? 'fr-icon-quality' : 'fr-icon-stable';
+			$tooltip = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
+			$tooltip = wfMsgHtml($tooltip);
+			// Simple icon-based UI
+			if( FlaggedRevs::useSimpleUI() ) {
+				$msg = $quality ? 'revreview-quick-quality' : 'revreview-quick-basic';
+				# uses messages 'revreview-quick-quality-same', 'revreview-quick-basic-same'
+				$msg = $synced ? "{$msg}-same" : $msg;
+				$html = "{$prot}<span class='{$class}' title=\"{$tooltip}\"></span>" .
+					wfMsgExt( $msg, array('parseinline'), $srev->getRevId(), $revsSince );
+				$tag = FlaggedRevsXML::prettyRatingBox( $srev, $html, $revsSince, true, $synced );
+			// Standard UI
+			} else {
+				$msg = $quality ? 'revreview-quality' : 'revreview-basic';
+				if( $synced ) {
+					# uses messages 'revreview-quality-same', 'revreview-basic-same'
+					$msg .= '-same';
+				} elseif( $revsSince == 0 ) {
+					# uses messages 'revreview-quality-i', 'revreview-basic-i'
+					$msg .= '-i';
+				}
+				$tag = "{$prot}<span class='{$class} plainlinks' title=\"{$tooltip}\"></span>" .
+					wfMsgExt( $msg, array('parseinline'), $srev->getRevId(), $time, $revsSince );
+				if( !empty($flags) ) {
+					$tag .= " " . FlaggedRevsXML::ratingToggle();
+					$tag .= "<span id='mw-revisionratings' style='display:block;'><br/>" .
+						FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
+				}
+			}
+		}
+		# Output HTML
+		$this->getReviewNotes( $srev );
+	   	$wgOut->addParserOutput( $parserOut );
+	}
+
+	/**
+	* @param FlaggedRevision $srev, stable version
+	* @param bool $quality, revision is quality
+	* @returns bool, diff added to output
+	*/	
+	protected function maybeShowTopDiff( $srev, $quality ) {
+		global $wgUser, $wgOut, $wgMemc;
+		if( !$wgUser->getBoolOption('flaggedrevsviewdiffs') )
+			return false; // nothing to do here
+		if( !$wgUser->isAllowed('review') )
+			return false; // does not apply to this user
+		# Diff should only show for the draft
+		$oldid = $this->parent->getOldIDFromRequest();
+		if( $oldid && $oldid != $this->parent->getLatest() ) {
+			return false; // not viewing the draft
+		}
+		# Conditions are met to show diff...
+		wfLoadExtensionMessages( 'FlaggedRevs' ); // load required messages
+		$leftNote = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
+		$rClass = FlaggedRevsXML::getQualityColor( false );
+		$lClass = FlaggedRevsXML::getQualityColor( (int)$quality );
+		$rightNote = "<span class='$rClass'>[".wfMsgHtml('revreview-draft-title')."]</span>";
+		$leftNote = "<span class='$lClass'>[".wfMsgHtml($leftNote)."]</span>";
+		# Fetch the stable and draft revision text
+		$oText = $srev->getRevText();
+		if( $oText === false )
+			return false; // deleted revision or something?
+		$nText = $this->parent->getContent();
+		if( $nText === false )
+			return false; // deleted revision or something?
+		# Build diff at the top of the page
+		if( strcmp($oText,$nText) !== 0 ) {
+			$diffEngine = new DifferenceEngine();
+			$diffEngine->showDiffStyle();
+			$wgOut->addHTML(
+				"<div>" .
+				"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
+				"<col class='diff-marker' />" .
+				"<col class='diff-content' />" .
+				"<col class='diff-marker' />" .
+				"<col class='diff-content' />" .
+				"<tr>" .
+					"<td colspan='2' width='50%' align='center' class='diff-otitle'><b>" .
+						$leftNote . "</b></td>" .
+						"<td colspan='2' width='50%' align='center' class='diff-ntitle'><b>" .
+						$rightNote . "</b></td>" .
+				"</tr>" .
+				$diffEngine->generateDiffBody( $oText, $nText ) .
+				"</table>" .
+				"</div>\n"
+			);
+			$this->isDiffFromStable = true;
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -560,7 +662,7 @@ class FlaggedArticle extends Article {
 		}
 
 		$title = $this->parent->getTitle();
-		$displayFile = wfFindFile( $title, $time );
+		$displayFile = wfFindFile( $title, array( 'time' => $time ) );
 		# If none found, try current
 		if( !$displayFile ) {
 			wfDebug( __METHOD__.": {$title->getPrefixedDBkey()}: $time not found, using current\n" );
@@ -655,51 +757,53 @@ class FlaggedArticle extends Article {
 				$wgOut->addHTML( $tag . $warning );
 			}
 
-			if( $frev->getRevId() == $revId )
-				return true; // nothing to show here
-			# Show diff to stable, to make things less confusing.
-			if( !$wgUser->isAllowed('review') && !$this->showStableByDefaultUser() ) {
-				return true;
-			}
-			# Don't show for old revisions, diff, preview, or undo.
-			if( $editPage->oldid || $editPage->section === "new"
-				|| in_array($editPage->formtype,array('diff','preview')) )
-			{
-				return true; // nothing to show here
-			}
-			
-			# Conditions are met to show diff...
-			wfLoadExtensionMessages( 'FlaggedRevs' ); // load required messages
-			$leftNote = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
-			$rClass = FlaggedRevsXML::getQualityColor( false );
-			$lClass = FlaggedRevsXML::getQualityColor( (int)$quality );
-			$rightNote = "<span class='$rClass'>[".wfMsgHtml('revreview-draft-title')."]</span>";
-			$leftNote = "<span class='$lClass'>[".wfMsgHtml($leftNote)."]</span>";
-			$text = $frev->getRevText();
-			# Are we editing a section?
-			$section = ($editPage->section == "") ? false : intval($editPage->section);
-			if( $section !== false ) {
-				$text = $this->parent->getSection( $text, $section );
-			}
-			if( $text !== false && strcmp($text,$editPage->textbox1) !== 0 ) {
-				$diffEngine = new DifferenceEngine();
-				$diffEngine->showDiffStyle();
-				$wgOut->addHTML(
-					"<div>" .
-					"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
-					"<col class='diff-marker' />" .
-					"<col class='diff-content' />" .
-					"<col class='diff-marker' />" .
-					"<col class='diff-content' />" .
-					"<tr>" .
-						"<td colspan='2' width='50%' align='center' class='diff-otitle'><b>" .
-							$leftNote . "</b></td>" .
-						"<td colspan='2' width='50%' align='center' class='diff-ntitle'><b>" .
-							$rightNote . "</b></td>" .
-					"</tr>" .
-					$diffEngine->generateDiffBody( $text, $editPage->textbox1 ) .
-					"</table>" .
-					"</div>\n" );
+			# Show diff to stable, to make things less confusing...
+			# This can be disabled via user preferences
+			if( $frev->getRevId() != $revId // changes were made
+				&& ($wgUser->isAllowed('review') || $this->showStableByDefaultUser()) // non-draft default, unless Editor
+				&& $wgUser->getBoolOption('flaggedrevseditdiffs') // not disable via prefs
+			) {
+				# Don't show for old revisions, diff, preview, or undo.
+				if( $editPage->oldid || $editPage->section === "new"
+					|| in_array($editPage->formtype,array('diff','preview')) )
+				{
+					return true; // nothing to show here
+				}
+				
+				# Conditions are met to show diff...
+				wfLoadExtensionMessages( 'FlaggedRevs' ); // load required messages
+				$leftNote = $quality ? 'revreview-quality-title' : 'revreview-stable-title';
+				$rClass = FlaggedRevsXML::getQualityColor( false );
+				$lClass = FlaggedRevsXML::getQualityColor( (int)$quality );
+				$rightNote = "<span class='$rClass'>[".wfMsgHtml('revreview-draft-title')."]</span>";
+				$leftNote = "<span class='$lClass'>[".wfMsgHtml($leftNote)."]</span>";
+				$text = $frev->getRevText();
+				# Are we editing a section?
+				$section = ($editPage->section == "") ? false : intval($editPage->section);
+				if( $section !== false ) {
+					$text = $this->parent->getSection( $text, $section );
+				}
+				if( $text !== false && strcmp($text,$editPage->textbox1) !== 0 ) {
+					$diffEngine = new DifferenceEngine();
+					$diffEngine->showDiffStyle();
+					$wgOut->addHTML(
+						"<div>" .
+						"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
+						"<col class='diff-marker' />" .
+						"<col class='diff-content' />" .
+						"<col class='diff-marker' />" .
+						"<col class='diff-content' />" .
+						"<tr>" .
+							"<td colspan='2' width='50%' align='center' class='diff-otitle'><b>" .
+								$leftNote . "</b></td>" .
+							"<td colspan='2' width='50%' align='center' class='diff-ntitle'><b>" .
+								$rightNote . "</b></td>" .
+						"</tr>" .
+						$diffEngine->generateDiffBody( $text, $editPage->textbox1 ) .
+						"</table>" .
+						"</div>\n"
+					);
+				}
 			}
 		}
 		return true;
@@ -770,39 +874,13 @@ class FlaggedArticle extends Article {
 		}
 		# Check action and if page is protected
 		$action = $wgRequest->getVal( 'action', 'view' );
-		if( !self::isViewAction($action) ) {
+		# Must be view/diff action...and title must not be ambiguous
+		if( !self::isViewAction($action) || !$wgRequest->getVal('title') ) {
 			return true;
 		}
-		$this->addQuickReview( $data, $wgRequest->getVal('diff'), false );
-		return true;
-	}
-
-
-	 /**
-	 * Add feedback form to pages when necessary
-	 */
-	public function addFeedbackForm( &$data ) {
-		global $wgRequest, $wgUser, $wgOut;
-		if( !$this->parent->exists() || !$this->isRateable() || !$wgOut->getRevisionId() ) {
-			return true;
-		}
-		# Check action and if page is protected
-		$action = $wgRequest->getVal( 'action', 'view' );
-		if( !self::isViewAction($action) ) {
-			return true;
-		}
-		if( $wgUser->isAllowed( 'feedback' ) ) {
-			# Only allow votes on the latest revision!
-			$id = $wgOut->getRevisionId();
-			if( $id != $this->parent->getLatest() ) {
-				return true;
-			}
-			# If the user already voted, then don't show the form.
-			# Always show for IPs however, due to squid caching...
-			if( !$wgUser->getId() || !ReaderFeedback::userAlreadyVoted( $this->parent->getTitle(), $id ) ) {
-				$this->addQuickFeedback( $data );
-			}
-		}
+		# Place the form at the top or bottom as most convenient
+		$onTop = $wgRequest->getVal('diff') || $this->isDiffFromStable;
+		$this->addQuickReview( $data, $onTop, false );
 		return true;
 	}
 
@@ -840,37 +918,28 @@ class FlaggedArticle extends Article {
 	}
 
 	/**
-	 * Modifies an array of action links, as used by SkinTemplateNavigation and
+	 * Modify an array of action links, as used by SkinTemplateNavigation and
 	 * SkinTemplateTabs, to inlude flagged revs UI elements
 	 */
 	public function setActionTabs( $skin, &$actions ) {
 		global $wgRequest, $wgUser, $wgFlaggedRevTabs;
 	
-		// Gets the title of the subject page
 		$title = $this->parent->getTitle()->getSubjectPage();
-		// Checks if page is not a reviewable page
-		if ( !FlaggedRevs::isPageReviewable( $title ) || !$title->exists() ) {
-			// Exits, since only reviewable pages need these tabs
-			return true;
+		if ( !FlaggedRevs::isPageReviewable( $title ) ) {
+			return true; // Only reviewable pages need these tabs
 		}
-		// Checks if...
+		// Check if we should show a stabilization tab
 		if (
-			// This page is a talk page
 			!$skin->mTitle->isTalkPage() &&
-			// User is allowed to stablize pages
-			$wgUser->isAllowed( 'stablesettings' ) &&
-			// Actions is an array
 			is_array( $actions ) &&
-			// A protect tab does not exist
 			!isset( $actions['protect'] ) &&
-			// An unprtect tab does not exist
-			!isset( $actions['unprotect'] )
+			!isset( $actions['unprotect'] ) &&
+			$wgUser->isAllowed( 'stablesettings' ) &&
+			$title->exists()
 		) {
-			// Loads messages for stabilization UI
 			wfLoadExtensionMessages( 'Stabilization' );
-			// Gets the title of the Stabilization special page
 			$stableTitle = SpecialPage::getTitleFor( 'Stabilization' );
-			// Adds default tab to actions
+			// Add a tab
 			$actions['default'] = array(
 				'class' => false,
 				'text' => wfMsg( 'stabilization-tab' ),
@@ -879,77 +948,53 @@ class FlaggedArticle extends Article {
 				)
 			);
 		}
-		// Exit
 		return true;
 	}
 	
 	/**
-	 * Modifies an array of view links, as used by SkinTemplateNavigation and
+	 * Modify an array of view links, as used by SkinTemplateNavigation and
 	 * SkinTemplateTabs, to inlude flagged revs UI elements
 	 */
 	public function setViewTabs( $skin, &$views ) {
 		global $wgRequest, $wgUser, $wgFlaggedRevTabs;
 		
-		// Gets the title of the subject page
 		$title = $this->parent->getTitle()->getSubjectPage();
-		// Gets the value of the action parameter, defaulting to view
 		$action = $wgRequest->getVal( 'action', 'view' );
-		// Gets the article instance of the page
 		$fa = FlaggedArticle::getTitleInstance( $title );
-		// Checks if article is not reviewable or the UI should be hidden
 		if ( !$fa->isReviewable() || $this->limitedUI() ) {
-			// Exits
+			// Exit, since this isn't a reviewable page or the UI is hidden
 			return true;
 		}
-		// Gets the stable revision
 	   	$srev = $this->getStableRev( $action == 'rollback' ? FR_MASTER : 0 );
-	   	// Checks if no stable revision exists
 	   	if( is_null( $srev ) ) {
-			// Exits
+			// Exit, since no stable revision exists
 			return true;
 		}
-		// Loads messages for flagged revisions UI
 		wfLoadExtensionMessages( 'FlaggedRevs' );
-		// Creates article object from title
-		$article = new Article( $title );
-		// Gets the status of whether the article is the stable revision
-		$synced = FlaggedRevs::stableVersionIsSynced( $srev, $article );
-		// Checks if this page is not a talk page and not the stable version
+		$synced = FlaggedRevs::stableVersionIsSynced( $srev, $this->parent );
 	   	if ( !$skin->mTitle->isTalkPage() && !$synced ) {
-	   		// Checks if there's an edit tab
 	   		if ( isset( $views['edit'] ) ) {
-	   			// Checks if we should show the stable version by default
 				if ( $this->showStableByDefault() ) {
-					// Changes the label of the edit button
 					$views['edit']['text'] = wfMsg('revreview-edit');
 				}
-				// Checks if revision overriding is OK
 				if ( $this->pageOverride() ) {
-					// Changes the href of the edit tab
 					$views['edit']['href'] = $title->getLocalUrl( 'action=edit' );
 				}
 	   		}
-	   		// Checks if there's a viewsource tab
 	   		if ( isset( $views['viewsource'] ) ) {
-	   			// Checks if we should show the stable version by default
 				if ( $this->showStableByDefault() ) {
-					// Changes the label of the viewsource button
 					$views['viewsource']['text'] = wfMsg('revreview-source');
 				}
-				// Checks if revision overriding is OK
 				if ( $this->pageOverride() ) {
-					// Changes the href of the viewsource tab
 					$views['viewsource']['href'] = $title->getLocalUrl( 'action=edit' );
 				}
 			}
 	   	}
-		// Checks if flagged revisions tabs should not be shown or the page is
-		// already the most current revision
-	 	if( !$wgFlaggedRevTabs || $synced ) {
-	 		// Exits
+	 	if ( !$wgFlaggedRevTabs || $synced ) {
+	 		// Exit, since either the flagged revisions tabs should not be shown
+	 		// or the page is already the most current revision
 	   		return true;
 	 	}
-	 	// Create set of tabs to be created
 	 	$tabs = array(
 	 		'stable' => array(
 				'text' => wfMsg( 'revreview-stable' ),
@@ -962,44 +1007,35 @@ class FlaggedArticle extends Article {
 	 			'class' => ''
 	 		),
 	 	);
-		// Checks if revision overriding is OK and we are at the stable version
 		if ( $this->pageOverride() || $wgRequest->getVal( 'stableid' ) ) {
+			// We are looking a the stable version
 			$tabs['stable']['class'] = 'selected';
-		}
-		// Checks if...
-		elseif (
-			// This is a view or edit page
+		} elseif (
 			( self::isViewAction( $action ) || $action == 'edit' ) &&
-			// This is not a talk page
 			!$skin->mTitle->isTalkPage()
 		) {
 			// We are looking at the current revision or in edit mode
 			$tabs['current']['class'] = 'selected';
 		}
-		// Loops over each action tab
 		$first = true;
 		$newViews = array();
 		foreach ( $views as $tabAction => $data ) {
-			// Checks if this is the first tab
 			if ( $first ) {
 				if( $synced ) {
-					// Appends old tab to new tabs, thus keeping the first one
+					// Use existing first tabs when synced
 					$newViews[$tabAction] = $data;
 				} else {
-					// Appends new tabs, thus replacing the first one
+					// Use split current and stable tabs when not synced
 					$newViews['stable'] = $tabs['stable'];
 					$newViews['current'] = $tabs['current'];
 				}
-				// Marks first as false
 				$first = false;
 			} else {
-				// Appends old tab to new tabs
 				$newViews[$tabAction] = $data;
 			}
 	   	}
 	   	// Replaces old tabs with new tabs
 	   	$views = $newViews;
-	   	// Exits
 		return true;
 	}
 	
@@ -1198,13 +1234,14 @@ class FlaggedArticle extends Article {
 
 	/**
 	* Add a link to patrol non-reviewable pages.
-	* Also add a diff to stable for other pages if possible.
+	* Also add a diff-to-stable for other pages if possible.
 	*/
 	public function addDiffLink( $diff, $oldRev, $newRev ) {
 		global $wgUser, $wgOut;
 		// Is there a stable version?
 		if( $oldRev && $this->isReviewable() ) {
 			$frev = $this->getStableRev();
+			# Is this a diff of the draft rev against the stable rev?
 			if( $frev && $frev->getRevId() == $oldRev->getID() && $newRev->isCurrent() ) {
 				$this->isDiffFromStable = true;
 			}
@@ -1280,7 +1317,8 @@ class FlaggedArticle extends Article {
 		}
 		$out->addHTML( "\n" . Xml::hidden( 'baseRevId', $revId ) );
 		$out->addHTML( "\n" . Xml::hidden( 'undidRev', 
-			empty($editPage->undidRev) ? 0 : $editPage->undidRev ) );
+			empty($editPage->undidRev) ? 0 : $editPage->undidRev )
+		);
 		return true;
 	}
 
@@ -1531,13 +1569,17 @@ class FlaggedArticle extends Article {
 		$form .= Xml::openElement( 'span', array('style' => 'white-space: nowrap;') );
 		# Hide comment if needed
 		if( !$disabled ) {
+			if( count(FlaggedRevs::getDimensions()) > 1 )
+				$form .= "<br/>"; // Don't put too much on one line
 			$form .= "<span id='mw-commentbox' style='clear:both'>" . 
 				Xml::inputLabel( wfMsg('revreview-log'), 'wpReason', 'wpReason', 40, '', 
 					array('class' => 'fr-comment-box') ) . "&nbsp;&nbsp;&nbsp;</span>";
 		}
-		$form .= Xml::submitButton( wfMsg('revreview-submit'), array('id' => 'submitreview',
-			'accesskey' => wfMsg('revreview-ak-review'), 
-			'title' => wfMsg('revreview-tt-review').' ['.wfMsg('revreview-ak-review').']') + $toggle
+		$form .= Xml::submitButton( wfMsg('revreview-submit'),
+			array(
+				'id' => 'submitreview', 'accesskey' => wfMsg('revreview-ak-review'),
+				'title' => wfMsg('revreview-tt-review').' ['.wfMsg('revreview-ak-review').']'
+			) + $toggle
 		);
 		$form .= Xml::closeElement( 'span' );
 
@@ -1572,73 +1614,6 @@ class FlaggedArticle extends Article {
 		$form .= Xml::closeElement( 'fieldset' );
 		$form .= Xml::closeElement( 'form' );
 
-		if( $top ) {
-			$wgOut->prependHTML( $form );
-		} else {
-			$data .= $form;
-		}
-		return true;
-	}
-
-	 /**
-	 * Adds a brief feedback form to a page.
-	 * @param OutputPage $out
-	 * @param Title $title
-	 * @param bool $top, should this form always go on top?
-	 */
-	public function addQuickFeedback( &$data, $top = false ) {
-		global $wgOut, $wgUser, $wgRequest, $wgFlaggedRevsFeedbackTags;
-		# Are there any reader input tags?
-		if( empty($wgFlaggedRevsFeedbackTags) ) {
-			return false;
-		}
-		# Revision being displayed
-		$id = $wgOut->getRevisionId();
-		# Load required messages
-		wfLoadExtensionMessages( 'FlaggedRevs' );
-		$reviewTitle = SpecialPage::getTitleFor( 'ReaderFeedback' );
-		$action = $reviewTitle->getLocalUrl( 'action=submit' );
-		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action,
-			'id' => 'mw-feedbackform' ) );
-		$form .= Xml::openElement( 'fieldset', array('class' => 'flaggedrevs_reviewform noprint') );
-		$form .= "<legend><strong>" . wfMsgHtml( 'readerfeedback' ) . "</strong></legend>\n";
-		# Avoid clutter
-		if( !$wgUser->isAllowed('review') ) {
-			$form .= wfMsgExt( 'readerfeedback-text', array('parse') );
-		}
-		$form .= Xml::openElement( 'span', array('id' => 'mw-feedbackselects') );
-		# Loop through all different flag types
-		foreach( FlaggedRevs::getFeedbackTags() as $quality => $levels ) {
-			$label = array();
-			$selected = ( isset($flags[$quality]) && $flags[$quality] > 0 ) ? $flags[$quality] : -1;
-			$form .= "<b>" . Xml::label( wfMsgHtml("readerfeedback-$quality"), "wp$quality" ) . ":</b>";
-			$attribs = array( 'name' => "wp$quality", 'id' => "wp$quality",
-				'onchange' => "updateFeedbackForm()" );
-			$form .= '&nbsp;' . Xml::openElement( 'select', $attribs );
-			$levels = array_reverse($levels,true);
-			foreach( $levels as $i => $name ) {
-				$optionClass = array( 'class' => "fr-rating-option-$i" );
-				$form .= Xml::option( wfMsg("readerfeedback-level-$i"), $i, ($i == $selected), $optionClass ) ."\n";
-			}
-			$form .= Xml::option( wfMsg("readerfeedback-level-none"), -1, (-1 == $selected) ) ."\n";
-			$form .= Xml::closeElement( 'select' )."\n";
-		}
-		$form .= Xml::closeElement( 'span' );
-		$form .= Xml::submitButton( wfMsg('readerfeedback-submit'),
-			array('id' => 'submitfeedback','accesskey' => wfMsg('revreview-ak-review'),
-			'title' => wfMsg('revreview-tt-review').' ['.wfMsg('revreview-ak-review').']' )
-		);
-		# Hidden params
-		$form .= Xml::hidden( 'title', $reviewTitle->getPrefixedText() ) . "\n";
-		$form .= Xml::hidden( 'target', $this->parent->getTitle()->getPrefixedDBKey() ) . "\n";
-		$form .= Xml::hidden( 'oldid', $id ) . "\n";
-		$form .= Xml::hidden( 'validatedParams', ReaderFeedback::validationKey( $id, $wgUser->getId() ) );
-		$form .= Xml::hidden( 'action', 'submit') . "\n";
-		$form .= Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n";
-		# Honeypot input
-		$form .= Xml::input( 'commentary', 12, '', array('style' => 'display:none;') ) . "\n";
-		$form .= Xml::closeElement( 'fieldset' );
-		$form .= Xml::closeElement( 'form' );
 		if( $top ) {
 			$wgOut->prependHTML( $form );
 		} else {

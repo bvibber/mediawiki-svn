@@ -18,6 +18,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'stableversions' => '{{Flagged Revs}}',
@@ -32,17 +33,19 @@ Parameter $1 is a page title,
 Parameter $2 is the count of revisions following, to be used with PLURAL.',
 	'stableversions-review' => '{{Flagged Revs}}
 This message is used in the list of stable versions of a page (Special:Stableversions) to specify who has reviewed each version.
-Parameter $1 is the date and time of the review,
-parameter $2 is the username of the reviewing user, followed by a series of links.
-parameter $3 is the date of the review,
-parameter $4 is the time of the review,
-parameter $5 is the raw user name to be used with GENDER.',
+* $1 is the date and time of the review
+* $2 is the username of the reviewing user, followed by a series of links
+* $3 is the date of the review (optional)
+* $4 is the time of the review (optional)
+* $5 is the raw user name to be used with GENDER (optional)',
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Arnobarnard
  * @author Naudefj
  */
 $messages['af'] = array(
+	'stableversions' => 'Bekyk stabiele weergawes',
 	'stableversions-page' => 'Bladsynaam:',
 );
 
@@ -60,13 +63,14 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'stableversions' => 'عرض النسخ المستقرة',
 	'stableversions-leg1' => 'عرض المراجعات المراجعة لصفحة',
 	'stableversions-page' => 'اسم الصفحة:',
 	'stableversions-none' => '"[[:$1]]" لا يوجد بها مراجعات مراجعة.',
-	'stableversions-list' => 'هذه قائمة {{PLURAL:$2|بالمراجعة الوحيدة|بمراجعات}} صفحة [[:$1]] التي {{PLURAL:$2|تمت|تمت}} مراجعتها:',
+	'stableversions-list' => 'هذه قائمة {{PLURAL:$2||بمراجعة|بمراجعتي|بمراجعات}} الصفحة [[:$1]] {{PLURAL:$2||التي تمت مراجعتها|اللتين تمت مراجعتهما|التي تمت مراجعتها}}:',
 	'stableversions-review' => 'تمت مراجعتها في <i>$1</i> بواسطة $2',
 );
 
@@ -150,7 +154,10 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'stableversions' => 'Gwelet ar stummoù stabil',
+	'stableversions-leg1' => 'Adweladennoù diwezhañ ur bajenn',
 	'stableversions-page' => 'Anv ar bajenn :',
+	'stableversions-none' => '"[[:$1]]" n\'eus stumm adwelet ebet dioutañ',
+	'stableversions-list' => 'War ar roll da-heul emañ {{PLURAL:$2|an adweladenn nemeti|eus an adweladennoù}} eus [[:$1]] hag {{PLURAL:$2|a zo bet|a zo bet}} adwelet :',
 	'stableversions-review' => "Adwelet d'an <i>$1</i> gant $2",
 );
 
@@ -159,7 +166,11 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'stableversions' => 'Pogledaj stabilne verzije',
+	'stableversions-leg1' => 'Spisak pregledanih revizija stranice',
 	'stableversions-page' => 'Naslov stranice:',
+	'stableversions-none' => '"[[:$1]]" nema pregledanih revizija.',
+	'stableversions-list' => 'Ovo je spisak {{PLURAL:$2|jedne verzije|verzije|verzija}} od [[:$1]] {{PLURAL:$2|koja je pregledana|koje su pregledane}}:',
+	'stableversions-review' => 'Pregledano dana <i>$1</i> od strane $2',
 );
 
 /** Catalan (Català)
@@ -295,7 +306,7 @@ $messages['fi'] = array(
 	'stableversions-leg1' => 'Näytä sivun tarkastetut versiot',
 	'stableversions-page' => 'Sivun nimi',
 	'stableversions-none' => 'Sivusta ”[[:$1]]” ei ole tarkastettuja versioita.',
-	'stableversions-list' => 'Seuraavassa luettelossa on kaikki sivun [[:$1]] tarkastetut versiot:',
+	'stableversions-list' => 'Seuraavassa on listattu {{PLURAL:$2|ainoa versio, joka|versiot, jotka}} on tarkastettu kohteesta [[:$1]]:',
 	'stableversions-review' => '$2 arvioi sivun <i>$1</i>',
 );
 
@@ -400,13 +411,14 @@ $messages['hi'] = array(
  * @author Dalibor Bosits
  * @author Dnik
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
-	'stableversions' => 'Vidi stabilne inačice',
-	'stableversions-leg1' => 'Prikaži pregledane inačice stranice',
+	'stableversions' => 'Pregled važeće inačice',
+	'stableversions-leg1' => 'Popis ocijenjenih inačica stranice',
 	'stableversions-page' => 'Ime stranice:',
-	'stableversions-none' => 'Članak "[[:$1]]" nema pregledanih inačica.',
-	'stableversions-list' => 'Slijedi popis inačica članka "[[:$1]]" koje su ocijenjene:',
+	'stableversions-none' => 'Članak "[[:$1]]" nema ocijenjenih inačica.',
+	'stableversions-list' => 'Slijedi popis {{PLURAL:$2|jedne inačice|inačica}} od [[:$1]] {{PLURAL:$2|koja je ocijenjena|koje su ocijenjene}}:',
 	'stableversions-review' => 'Ocijenjeno <i>$1</i> od suradnika $2',
 );
 
@@ -475,7 +487,7 @@ $messages['it'] = array(
 	'stableversions-leg1' => 'Elenco delle versioni revisionate per una pagina',
 	'stableversions-page' => 'Nome della pagina:',
 	'stableversions-none' => '"[[:$1]]" non ha versioni revisionate.',
-	'stableversions-list' => 'Di seguito è riportato un elenco delle versioni di [[:$1]] che sono state revisionate:',
+	'stableversions-list' => "Di seguito è riportato un elenco {{PLURAL:$2|dell'unica versione|delle versioni}} di [[:$1]] che {{PLURAL:$2|è stata revisionata|sono state revisionate}}:",
 	'stableversions-review' => 'Revisionata il <i>$1</i> da $2',
 );
 
@@ -553,7 +565,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'stableversions' => ' stable, Nohjekik un makeete Versione aanloore',
+	'stableversions' => 'Beshtändeje Versione aanloore',
 	'stableversions-leg1' => 'De Leß met de nohjekik Versione för en Sigg.',
 	'stableversions-page' => 'Sigge-Tittel:',
 	'stableversions-none' => 'De Sigg „[[:$1]]“ hät kei nohjekik Versione.',
@@ -608,6 +620,7 @@ $messages['mhr'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -615,7 +628,7 @@ $messages['mk'] = array(
 	'stableversions-leg1' => 'Листа на прегледани ревизии за страница',
 	'stableversions-page' => 'Наслов на страница:',
 	'stableversions-none' => '"[[:$1]]" нема прегледани ревизии.',
-	'stableversions-list' => 'Следи листа на ревизии од of [[:$1]] кои биле прегледани:',
+	'stableversions-list' => 'Ова е листа на {{PLURAL:$2|единствената ревизија|ревизиите}} на [[:$1]] {{PLURAL:$2|која е прегледана|кои се прегледани}}:',
 	'stableversions-review' => 'Прегледано на <i>$1</i> од страна на $2',
 );
 
@@ -734,6 +747,13 @@ $messages['oc'] = array(
 	'stableversions-review' => "Revisada lo ''$1'' per $2",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'stableversions-page' => 'Blatt-Naame:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
@@ -750,14 +770,15 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
-	'stableversions' => 'Version stàbij',
+	'stableversions' => 'Varda le version stàbij',
 	'stableversions-leg1' => 'Fé na lista dle version aprovà ëd na pàgina',
 	'stableversions-page' => 'Nòm dla pàgina',
 	'stableversions-none' => "[[:$1]] a l'ha pa gnun-a version revisionà.",
-	'stableversions-list' => "Costa-sì a l'é na lista ëd version ëd [[:$1]] ch'a son ëstaite revisionà:",
-	'stableversions-review' => 'Revisionà dël <i>$1</i>',
+	'stableversions-list' => "Costa-sì a l'é na lista ëd version ëd {{PLURAL:$2|na revision|le revision}} ëd [[:$1]] ch'a {{PLURAL:$2|l'é stàita|son ëstàite}}  revisionà:",
+	'stableversions-review' => 'Revisionà dël <i>$1</i> da $2',
 );
 
 /** Pashto (پښتو)
@@ -852,7 +873,7 @@ $messages['sk'] = array(
 	'stableversions-review' => 'Skontroloval <i>$1</i> $2',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -866,15 +887,27 @@ $messages['sr-ec'] = array(
 	'stableversions-review' => 'Прегледано на <i>$1</i> од стране сарадника $2.',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'stableversions' => 'Pogledaj stabilne verzije',
+	'stableversions-leg1' => 'Spisak pregledanih verzija za stranu.',
+	'stableversions-page' => 'Ime stranice:',
+	'stableversions-none' => '"[[:$1]]" nema pregledanih verzija.',
+	'stableversions-list' => 'Sledi spisak {{PLURAL:$2|jedine revizije|revizija}} iz [[:$1]], {{PLURAL:$2|koja je pregledana|koje su pregledane}}:',
+	'stableversions-review' => 'Pregledano na <i>$1</i> od strane saradnika $2.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
 $messages['stq'] = array(
-	'stableversions' => 'Stoabile Versione',
+	'stableversions' => 'Stoabile Versione bekiekje',
 	'stableversions-leg1' => 'Lieste fon do wröigede Versione foar n Artikkel',
 	'stableversions-page' => 'Artikkelnoome:',
 	'stableversions-none' => '„[[:$1]]“ häd neen wröigede Versione.',
-	'stableversions-list' => 'Dit is ju Lieste fon do wröigede Versione fon „[[:$1]]“:',
+	'stableversions-list' => 'Dit is ju Lieste fon {{PLURAL:$2|ju eenpelde Version|do Versione}} fon [[:$1]], {{PLURAL:$2|ju der wröiged wuude|do der wröiged wuuden}}:',
 	'stableversions-review' => 'wröiged ap n <i>$1</i> truch $2',
 );
 
@@ -908,6 +941,7 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
@@ -915,7 +949,7 @@ $messages['te'] = array(
 	'stableversions-leg1' => 'పేజీ యొక్క సమీక్షిత కూర్పులను చూపించు',
 	'stableversions-page' => 'పేజీ పేరు:',
 	'stableversions-none' => '"[[:$1]]"కి సమీక్షిత కూర్పులేమీ లేవు.',
-	'stableversions-list' => 'క్రింద ఇచ్చినవి "[[:$1]]" యొక్క సమీక్షించని కూర్పుల జాబితా:',
+	'stableversions-list' => 'క్రింద ఇచ్చిన {{PLURAL:$2|కూర్పు|కూర్పులు}}  "[[:$1]]" యొక్క సమీక్షించబడిన {{PLURAL:$2|కూర్పు|కూర్పుల జాబితా}}:',
 	'stableversions-review' => '<i>$1</i> నాడు $2 సమీక్షించారు',
 );
 
@@ -990,7 +1024,7 @@ $messages['vec'] = array(
 	'stableversions-leg1' => 'Elenca le version riesaminà de na pagina',
 	'stableversions-page' => 'Nome de la pagina:',
 	'stableversions-none' => '"[[:$1]]" no la gà version riesaminà.',
-	'stableversions-list' => 'Sta qua la xe na lista de le version de [[:$1]] che le xe stà riesaminà:',
+	'stableversions-list' => "Qua soto ghe xe {{PLURAL:$2|l'unica version|la lista de le version}} de [[:$1]] che {{PLURAL:$2|la|le}} xe stà riesaminà:",
 	'stableversions-review' => 'Riesaminà el <i>$1</i> da $2',
 );
 

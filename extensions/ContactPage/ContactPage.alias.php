@@ -123,7 +123,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Contact' => array( 'Kontak' ),
+	'Contact' => array( 'Hubungi', 'Kontak' ),
 );
 
 /** Japanese (日本語) */
@@ -231,6 +231,11 @@ $aliases['ro'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Contact' => array( 'सम्पर्क' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Contact' => array( 'Kontakt' ),
 );
 
 /** Albanian (Shqip) */

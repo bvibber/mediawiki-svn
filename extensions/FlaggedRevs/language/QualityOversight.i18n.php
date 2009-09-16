@@ -75,6 +75,15 @@ $messages['bg'] = array(
 	'qualityoversight' => 'Качествен надзор',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'qualityoversight' => "Evezhiañ ouzh ar c'halite",
+	'qualityoversight-list' => 'Rollañ a ra ar bajenn-mañ asantadurioù ha dispriziadurioù diwezhañ ar stummoù.',
+	'qualityoversight-legend' => 'Klask marilhoù an adweladennoù diwezhañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -111,6 +120,15 @@ $messages['dsb'] = array(
 	'qualityoversight' => 'Kontrola kwality',
 	'qualityoversight-list' => 'Toś ten bok nalistujo aktualne pśizwólenja a póroki za wersije',
 	'qualityoversight-legend' => 'W aktualnych protokolach kontrolow pytaś',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'qualityoversight' => 'Επόπτης ποιότητας',
+	'qualityoversight-list' => 'Αυτή η σελίδα συγκαταλέγει τις πιο πρόσφατες εγκρίσεις και αποδοκιμασίες αναθεωρήσεων.',
+	'qualityoversight-legend' => 'Αναζήτηση στα αρχεία προσφάτων επιθεωρήσεων',
 );
 
 /** Esperanto (Esperanto)
@@ -172,7 +190,9 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'qualityoversight' => 'παρόραμα ποιοτικῆς δέλτου',
+	'qualityoversight' => 'Ἐπιστάτης ποιότητος',
+	'qualityoversight-list' => 'Ἥδε ἡ δέλτος καταλέγει τὰς πλέον προσφάτους ἐπιδοκιμασίας καὶ ὑποτιμήσεις τῶν ἀναθεωρήσεων.',
+	'qualityoversight-legend' => 'Ζητεῖν προσφάτους καταλόγους ἐπιθεωρήσεων',
 );
 
 /** Swiss German (Alemannisch)
@@ -199,6 +219,15 @@ $messages['he'] = array(
 $messages['hi'] = array(
 	'qualityoversight' => 'गुणवत्ता ओवरसाईट',
 	'qualityoversight-list' => 'यह पन्ना नवीनतम गुणवत्तापूर्ण अवतरणोंके प्रमाणिकरण की सूची दर्शाता हैं तथा गुणवत्तापूर्ण अवतरणोंका डिप्रिसिएशन दर्शाता हैं।',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'qualityoversight' => 'Nadzor kvalitete',
+	'qualityoversight-list' => 'Ova stranica navodi najnovija odobrenja i snižavanja ocjena inačica.',
+	'qualityoversight-legend' => 'Pretraži evidencije nedavnih ocjena',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -257,6 +286,13 @@ $messages['ja'] = array(
 	'qualityoversight-legend' => '最近の査読記録を検索',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'qualityoversight-legend' => 'ស្វែងរក​បញ្ជី​ត្រួតពិនិត្យ​ថ្មីៗ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -271,6 +307,15 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'qualityoversight' => 'Qualitéits Iwwersiicht',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'qualityoversight' => 'Надгледување на квалитет',
+	'qualityoversight-list' => 'На оваа страница се наведени најновите одобренија и застарувања на ревизиите.',
+	'qualityoversight-legend' => 'Пребарување на дневници на скорешни прегледувања',
 );
 
 /** Marathi (मराठी)
@@ -337,6 +382,15 @@ $messages['pl'] = array(
 	'qualityoversight-legend' => 'Szukaj w rejestrze oznaczania wersji',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'qualityoversight' => 'Supervision ëd la qualità',
+	'qualityoversight-list' => 'Sta pàgina-sì a lista le aprovassion e mancà aprovassion pì ressente dle revision',
+	'qualityoversight-legend' => 'A serca ij registr ëd le revision ressente',
+);
+
 /** Portuguese (Português)
  * @author 555
  */
@@ -390,13 +444,22 @@ $messages['sk'] = array(
 	'qualityoversight-legend' => 'Hľadať v posledných záznamoch kontrol',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица)
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'qualityoversight' => 'Надгледање квалитета',
 	'qualityoversight-list' => 'На овој страни се налази списак скоро одобрених и потиснутих верзија.',
 	'qualityoversight-legend' => 'Претрага лога скорих прегледа.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'qualityoversight' => 'Nadgledanje kvaliteta',
+	'qualityoversight-list' => 'Na ovoj strani se nalazi spisak skoro odobrenih i potisnutih verzija.',
+	'qualityoversight-legend' => 'Pretraga loga skorih pregleda.',
 );
 
 /** Swedish (Svenska)

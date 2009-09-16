@@ -17,7 +17,6 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct( $name, $right ) {
-		wfLoadExtensionMessages( 'Configure' );
 		$this->mConfSettings = ConfigurationSettings::singleton( $this->getSettingMask() );
 		# Reload data WITHOUT CACHE
 		global $wgConf;
@@ -379,27 +378,38 @@ abstract class ConfigurationPage extends SpecialPage {
 		foreach ( $versions as $data ) {
 			$ts = $data['timestamp'];
 			$count++;
-			$link = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );
+			$datetime = wfMsgExt( 'configure-old-summary-datetime', array( 'parsemag', 'escape' ),
+				$wgLang->timeAndDate( $ts ),
+				$wgLang->date( $ts ),
+				$wgLang->time( $ts )
+			);
+			$link = $skin->linkKnown( $title, $datetime, array(), array( 'version' => $ts ) );
 			$diffLink = '';
 			if ( $prev )
-				$diffLink =  '(' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'ViewConfig' ), wfMsg( 'configure-old-changes' ), "version=$ts&diff=$prev" ) . ')';
+				$diffLink =  '(' . $skin->linkKnown( SpecialPage::getTitleFor( 'ViewConfig' ),
+					wfMsgHtml( 'configure-old-changes' ), array(), array( 'version' => $ts, 'diff' => $prev ) ) . ')';
 
 			## Make user link...
 			$userLink = '';
 			if( !$data['userwiki'] || !$data['username'] ) {
 				$userLink = '';
+				$username = '';
 			} else if ( $data['userwiki'] == wfWikiId() ) {
-				$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), $data['username'] );
-			} elseif ( class_exists( 'WikiMap' ) && ($wiki = WikiMap::getWiki( $data['userwiki'] ) ) ) {
-				$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), $data['username'].'@'.$data['userwiki'] );
+				$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), htmlspecialchars( $data['username'] ) );
+				$username = $data['username'];
+			} elseif ( $wiki = WikiMap::getWiki( $data['userwiki'] ) ) {
+				$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), htmlspecialchars( $data['username'].'@'.$data['userwiki'] ) );
+				$username = '';
 			} else {
 				## Last-ditch
-				$userLink = $data['username'].'@'.$data['userwiki'];
+				$userLink = htmlspecialchars( $data['username'].'@'.$data['userwiki'] );
+				$username = '';
 			}
 
 			$comment = $data['reason'] ? $skin->commentBlock( $data['reason'] ) : '';
 
-			$text = wfMsgExt( 'configure-old-summary', array( 'replaceafter', 'parseinline' ), array( $link, $userLink, $diffLink, $comment ) );
+			$text = wfMsgExt( 'configure-old-summary', array( 'parseinline' ), array( '$1', '$2', '$3', '$4', $username ) );
+			$text = wfMsgReplaceArgs( $text, array( $link, $userLink, $diffLink, $comment ) );
 
 			$prev = $ts;
 
@@ -875,7 +885,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function buildSearchForm() {
 		$form = wfMsgExt( 'configure-js-search-prompt', 'parseinline' ) . wfMsgExt( 'word-separator', array( 'escapenoentities' ) ) .
 			Xml::element( 'input', array( 'id' => 'configure-search-input', 'size' => 45 ) );
-		$form = Xml::tags( 'p', null, $form ) . "\n" . Xml::openElement( 'ul', array('id' => 'configure-search-results') ) . '</ul>';
+		$form = Xml::tags( 'p', null, $form ) . "\n" . Xml::openElement( 'ul', array( 'id' => 'configure-search-results' ) ) . '</ul>';
 		$form = Xml::fieldset( wfMsg( 'configure-js-search-legend' ), $form, array( 'style' => 'display: none;', 'id' => 'configure-search-form' ) );
 		return $form;
 	}
@@ -884,45 +894,12 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Inject JavaScripts and Stylesheets in page output
 	 */
 	protected function injectScriptsAndStyles() {
-		global $wgOut, $wgScriptPath, $wgUseAjax, $wgJsMimeType, $wgConfigureStyleVersion;
+		global $wgOut, $wgScriptPath, $wgJsMimeType, $wgConfigureStyleVersion, $wgConfigureAddJsVariables;
+
+		$wgConfigureAddJsVariables = true; // tell efConfigureMakeGlobalVariablesScript() to add JS variables
 
 		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}" );
-
-		$add = Xml::encodeJsVar( wfMsg( 'configure-js-add' ) );
-		$remove = Xml::encodeJsVar( wfMsg( 'configure-js-remove' ) );
-		$removeRow = Xml::encodeJsVar( wfMsg( 'configure-js-remove-row' ) );
-		$promptGroup = Xml::encodeJsVar( wfMsg( 'configure-js-prompt-group' ) );
-		$groupExists = Xml::encodeJsVar( wfMsg( 'configure-js-group-exists' ) );
-		$getimgurl = Xml::encodeJsVar( wfMsg( 'configure-js-get-image-url' ) );
-		$imageerror = Xml::encodeJsVar( wfMsg( 'configure-js-image-error' ) );
-		$biglist_shown = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-shown' ) );
-		$biglist_hidden = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hidden' ) );
-		$biglist_show = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-show' ) );
-		$biglist_hide = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hide' ) );
-		$summary_none = Xml::encodeJsVar( wfMsg( 'configure-js-summary-none' ) );
-		$throttle_summary = Xml::encodeJsVar( wfMsg( 'configure-throttle-summary' ) );
-
-		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
-		$script = array(
-			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
-			"var wgConfigureAdd = {$add};",
-			"var wgConfigureRemove = {$remove};",
-			"var wgConfigureRemoveRow = {$removeRow};",
-			"var wgConfigurePromptGroup = {$promptGroup};",
-			"var wgConfigureGroupExists = {$groupExists};",
-			"var wgConfigureUseAjax = {$ajax};",
-			"var wgConfigureGetImageUrl = {$getimgurl};",
-			"var wgConfigureImageError = {$imageerror};",
-			"var wgConfigureBiglistShown = {$biglist_shown};",
-			"var wgConfigureBiglistHidden = {$biglist_hidden};",
-			"var wgConfigureBiglistShow = {$biglist_show};",
-			"var wgConfigureBiglistHide = {$biglist_hide};",
-			"var wgConfigureSummaryNone = {$summary_none};",
-			"var wgConfigureThrottleSummary = {$throttle_summary};",
-		 	"/*]]>*/</script>",
-			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
-		);
-		$wgOut->addScript( implode( "\n\t\t", $script ) . "\n" );
+		$wgOut->addScriptClass( 'Configure' );
 	}
 
 	/**
@@ -1498,8 +1475,6 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return xhtml
 	 */
 	protected function buildSettings( $settings, $param = array() ) {
-		wfLoadExtensionMessages( 'ConfigureSettings' );
-
 		global $wgConf;
 		$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
 
