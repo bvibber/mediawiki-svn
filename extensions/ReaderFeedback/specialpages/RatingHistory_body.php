@@ -491,16 +491,15 @@ class RatingHistory extends UnlistedSpecialPage
 		$svgHandler = new SvgHandler();
 		wfSuppressWarnings(); // FS notices possible
 		if( !file_put_contents( $svgPath, $plot->svg ) ) {
-			throw new MWException( 'Could not write SVG file!' );
 			wfRestoreWarnings();
-			return false;
+			throw new MWException( 'Could not write SVG file!' );
 		}
 		wfRestoreWarnings();
 		// Rasterize due to IE suckage
 		$status = $svgHandler->rasterize( $svgPath, $filePath, 1000, 410 );
 		if( $status !== true ) {
 			wfDebug( 'Could not rasterize SVG file from '.$filePath.'!' );
-			return false;
+			//return false;
 		}
 		return true;
 	}
