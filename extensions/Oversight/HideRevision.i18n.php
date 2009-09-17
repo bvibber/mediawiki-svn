@@ -879,7 +879,7 @@ Malfaru ĉi tiun ŝanĝon antaŭe.',
 Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-rajtoj.',
 	'oversight-legend' => 'Serĉi protokolon pri revizia kaŝado',
 	'oversight-oversighter' => 'Zorganto:',
-	'oversight-offender' => 'Ofendanto:',
+	'oversight-offender' => 'Aŭtoro de revizio:',
 );
 
 /** Spanish (Español)
@@ -991,6 +991,7 @@ Ezabatutakoak ezin izango inork ikusi, baina akats bat eginez gero ezabaketak go
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Ladsgroup
  */
 $messages['fa'] = array(
 	'hiderevision' => 'پنهان کردن همیشگی نسخه‌ها',
@@ -999,7 +1000,7 @@ $messages['fa'] = array(
 	'group-oversight-member' => 'ناظر',
 	'grouppage-oversight' => '{{ns:project}}:ناظر',
 	'right-oversight' => 'مشاهدهٔ نسخه‌ای که قبلاً پنهان شده',
-	'right-hiderevision' => 'بازبینی و احیای نسخه‌هایی که از مدیران پنهان شده‌است',
+	'right-hiderevision' => 'پنهان کردن نسخه از مدیران',
 	'hiderevision-prompt' => 'شماره نسخه‌ای که حذف می‌شود:',
 	'hiderevision-continue' => 'ادامه',
 	'hiderevision-text' => "این قابلیت '''فقط''' در موارد زیر باید استفاده شود:
@@ -1036,7 +1037,7 @@ $messages['fa'] = array(
 منتشر کردن این اطلاعات می‌تواند به از دست دادن همیشگی اختیارات شما بینجامد.',
 	'oversight-legend' => 'جستجو در سیاهه پنهان‌سازی نسخه‌ها',
 	'oversight-oversighter' => 'ناظر:',
-	'oversight-offender' => 'متخلف:',
+	'oversight-offender' => 'نویسنده نسخه',
 );
 
 /** Finnish (Suomi)
@@ -1087,7 +1088,7 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'oversight-header' => 'Alla on lista pysyvästi piilotetuista versioista, jotka eivät näy julkisesti. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
 	'oversight-legend' => 'Etsi häivytyslokista',
 	'oversight-oversighter' => 'Häivyttäjä:',
-	'oversight-offender' => 'Käyttäjä:',
+	'oversight-offender' => 'Version tekijä:',
 );
 
 /** Faroese (Føroyskt)

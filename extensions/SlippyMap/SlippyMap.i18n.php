@@ -566,6 +566,23 @@ $messages['hsb'] = array(
 	'slippymap_clicktoactivate' => 'Kliknyć, zo by so karta aktiwizowała',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'slippymap_desc' => '<tt>&lt;slippymap&gt;</tt> tag statikus és dinamikus térképek beágyazására. Több térképszolgáltatót támogat, beleértve az [http://openstreetmap.org OpenStreetMap]-et és a NASA Worldwind-et',
+	'slippymap_error' => '$1 hiba: $2',
+	'slippymap_errors' => '$1 hiba:',
+	'slippymap_error_missing_attribute_lat' => 'Hiányzó <tt>lat</tt> attribútum (a földrajzi szélességhez).',
+	'slippymap_error_missing_attribute_lon' => 'Hiányzó <tt>lon</tt> attribútum (a földrajzi hosszúsághoz).',
+	'slippymap_error_missing_attribute_zoom' => 'Hiányzó <tt>zoom</tt> attribútum (a nagyítási szinthez).',
+	'slippymap_error_unknown_attribute' => 'A(z) <tt>$1</tt> attribútum ismeretlen.',
+	'slippymap_code' => 'Ennek a térképnézetnek a wikikódja:',
+	'slippymap_button_code' => 'Wikikód megjelenítése',
+	'slippymap_resetview' => 'Nézet alaphelyzetbe állítása',
+	'slippymap_clicktoactivate' => 'Kattints a térkép aktiválásához',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

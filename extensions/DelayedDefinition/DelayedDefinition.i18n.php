@@ -165,6 +165,8 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'delaydef-desc' => '&lt;define&gt; és &lt;display&gt; tagek szöveg nem a beírás helyén történő megjelenítéséhez',
+	'delaydef-error-missing-def' => 'Hiba: a szükséges definíció (&lt;display name="$1"&gt;) nem található.',
 	'delaydef-error-no-name' => 'Hiba: a név paraméter nincs megadva.',
 	'delaydef-error-redef' => 'Hiba: $1 megkísérelt újradefiniálása.',
 );

@@ -419,6 +419,18 @@ $messages['hsb'] = array(
 	'showprocesslist-info' => 'Informacija',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'showprocesslist' => 'Folyamatlista megjelenítése',
+	'showprocesslist-id' => 'Azonosító',
+	'showprocesslist-user' => 'Felhasználó',
+	'showprocesslist-host' => 'Hoszt',
+	'showprocesslist-db' => 'Adatbázis',
+	'showprocesslist-command' => 'Parancs',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

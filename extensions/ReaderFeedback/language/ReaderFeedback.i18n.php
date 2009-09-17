@@ -269,9 +269,14 @@ $messages['br'] = array(
 	'readerfeedback-main' => "N'haller priziañ nemet ar pajennoù zo danvez enno",
 	'readerfeedback-success' => "'''Ho trugarekaat evit bezañ adlennet ar bajenn-mañ !''' ([$3 goulennoù pe ur soñj bennak ?]).",
 	'readerfeedback-voted' => "'''Evit doare eo bet priziet ar bajenn-mañ ganeoc'h c'hoazh''' ([$3 Goulennoù pe ur soñj bennak?])",
+	'readerfeedback-error' => "'''Ur fazi zo bet en ur briziañ ar bajenn-mañ''' ([$3 notenn pe goulenn ?]).",
 	'readerfeedback-submitting' => 'O kas...',
 	'readerfeedback-finished' => 'Trugarez !',
 	'readerfeedback-tagfilter' => 'Balizenn :',
+	'readerfeedback-tierfilter' => 'Priziadenn :',
+	'readerfeedback-tier-high' => 'Uhel',
+	'readerfeedback-tier-medium' => 'Etre',
+	'readerfeedback-tier-poor' => 'Dister',
 	'tooltip-ca-ratinghist' => 'Priziadenn ar bajenn-mañ gant al lennerien',
 	'specialpages-group-feedback' => 'Soñj al lenner',
 );
@@ -959,6 +964,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
@@ -980,9 +986,14 @@ $messages['id'] = array(
 	'readerfeedback-main' => 'Hanya halaman isi yang dapat diberi nilai.',
 	'readerfeedback-success' => "'''Terima kasih telah meninjau halaman ini!''' ([$3 Komentar atau pertanyaan?])",
 	'readerfeedback-voted' => "'''Tampaknya Anda sudah memberikan peringkat untuk halaman ini'''. ([$3 Komentar atau pertanyaan?])",
+	'readerfeedback-error' => "'''Terdapat kesalahan selagi mereting halaman ini'''  ([$3 komentar atau pertanyaan?]).",
 	'readerfeedback-submitting' => 'Mengirimkan...',
 	'readerfeedback-finished' => 'Terima kasih!',
 	'readerfeedback-tagfilter' => 'Tag:',
+	'readerfeedback-tierfilter' => 'Reting:',
+	'readerfeedback-tier-high' => 'Besar',
+	'readerfeedback-tier-medium' => 'Menengah',
+	'readerfeedback-tier-poor' => 'Jelek',
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca atas halaman ini:',
 	'specialpages-group-feedback' => 'Opini pembaca',
 );
@@ -1120,9 +1131,14 @@ $messages['ksh'] = array(
 	'readerfeedback-main' => 'Do kanns bloß esu en Sigge benote, woh em Wiki singe Enhalld drop shteiht.',
 	'readerfeedback-success' => "'''Mer bedanke uns för et Nohkike för hee di Sigg!''' — ([$3 Noch Bemerkunge udder Froore?])",
 	'readerfeedback-voted' => "'''Et süüht esu uß, als hätts De för hee di Sigg ald Note enjedraare.''' — ([$3 Noch Bemerkunge udder Froore?])",
+	'readerfeedback-error' => "'''Ene Fähler es opjetrodde bem Enschäze vun heh dä Sigg''' ([$3 Hadd_Er Aanmerkunge udder Froore?])",
 	'readerfeedback-submitting' => 'Am Övverdraare&nbsp;…',
 	'readerfeedback-finished' => 'Ene schöne Dangk och!',
 	'readerfeedback-tagfilter' => 'Makeerung:',
+	'readerfeedback-tierfilter' => 'Ennschäzung:',
+	'readerfeedback-tier-high' => 'Supper',
+	'readerfeedback-tier-medium' => 'Meddelmääßesch',
+	'readerfeedback-tier-poor' => 'Mau',
 	'tooltip-ca-ratinghist' => 'Wi de Lesser hee di Sigg ennschäze un wat se ier för Note jävve',
 	'specialpages-group-feedback' => 'Enschäzunge vum Lesser',
 );
@@ -1811,6 +1827,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'readerfeedback-desc' => 'Kiểm định trang cho phép người đọc đưa ra phản hồi ở dạng xếp hạng phân mục',
 	'readerfeedback' => 'Bạn nghĩ sao về trang này?',
 	'readerfeedback-text' => "''Xin hãy để dành một chút thời gian để đánh giá trang này ở dưới. Chúng ta coi trọng ý kiến của bạn và dùng nó để cải tiến website này.''",
 	'readerfeedback-reliability' => 'Đáng tin cậy',
@@ -1828,10 +1845,16 @@ $messages['vi'] = array(
 	'readerfeedback-main' => 'Chỉ đánh giá được những trang nội dung.',
 	'readerfeedback-success' => "'''Cám ơn bạn vì đã duyệt trang này!''' ([$3 Ghi chú hoặc câu hỏi?]).",
 	'readerfeedback-voted' => "'''Dường như bạn đã xếp hạng trang này rồi''' ([$3 Ghi chú hoặc câu hỏi?]).",
+	'readerfeedback-error' => "'''Xảy ra lỗi khi đang xếp hạng trang này''' ([$3 bình luận hoặc câu hỏi?]).",
 	'readerfeedback-submitting' => 'Đang gửi…',
 	'readerfeedback-finished' => 'Cám ơn!',
 	'readerfeedback-tagfilter' => 'Thẻ:',
+	'readerfeedback-tierfilter' => 'Xếp hạng:',
+	'readerfeedback-tier-high' => 'Cao',
+	'readerfeedback-tier-medium' => 'Trung bình',
+	'readerfeedback-tier-poor' => 'Kém',
 	'tooltip-ca-ratinghist' => 'Các đánh giá của độc giả về trang này',
+	'specialpages-group-feedback' => 'Ý kiến của người xem',
 );
 
 /** Volapük (Volapük)

@@ -1803,6 +1803,7 @@ $1',
 
 /** Hungarian (Magyar)
  * @author Dorgan
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'sign-realname' => 'Név:',
@@ -1811,6 +1812,7 @@ $messages['hu'] = array(
 	'sign-phone' => 'Telefonszám:',
 	'sign-bday' => 'Életkor:',
 	'sign-email' => 'E-mail cím:',
+	'sig-private' => '<i>Privát</i>',
 );
 
 /** Armenian (Հայերեն)

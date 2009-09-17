@@ -5241,6 +5241,7 @@ $messages['hu'] = array(
 	'ow_TranslatedTextAttributeValues' => 'Fordítandó szöveg',
 	'ow_LinkAttribute' => 'Tulajdonság',
 	'ow_LinkAttributeValues' => 'Hivatkozások',
+	'ow_User' => 'Felhasználó',
 	'ow_Property' => 'Tulajdonság',
 	'ow_Value' => 'Érték',
 	'ow_meaningsoftitle' => '„$1” jelentései',
@@ -5251,6 +5252,9 @@ $messages['hu'] = array(
 	'ow_please_proved_dmid' => 'Úgy tűnik, hiányzik egy „?dmid=<ID>” (dmid= Defined Meaning ID, definiált jelentés azonosító) abból, amit megadtál.<br />
 Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
 	'ow_upload' => 'Feltöltés',
+	'ow_create' => 'Létrehozás',
+	'ow_suggest_previous' => 'Előző',
+	'ow_suggest_next' => 'Következő',
 );
 
 /** Interlingua (Interlingua)
@@ -10174,6 +10178,7 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
+ * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(

@@ -1042,6 +1042,9 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'editmessages-desc' => "[[Special:EditMessages|Modìfica web-based]] d'un gran nùmer ëd file Messages*.php",
+	'editmessages' => 'Modìfica messagi',
+	'editmsg-target' => 'Messagi pontà:',
+	'editmsg-search' => 'Serca',
 );
 
 /** Pashto (پښتو)

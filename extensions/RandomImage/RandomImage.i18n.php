@@ -22,7 +22,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'randomimage-desc' => "Voeg die etiket <tt>&lt;randomimage /&gt;</tt> by vir die kies van 'n willekeurig medialêer",
+	'randomimage-desc' => "Voeg die etiket <tt>&lt;randomimage /&gt;</tt> by vir die kies van 'n lukrake medialêer",
 );
 
 /** Arabic (العربية)

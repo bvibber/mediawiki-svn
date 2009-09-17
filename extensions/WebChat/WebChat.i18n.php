@@ -267,6 +267,10 @@ Jeli sy přizjewjeny, budźe so twoje přimjeno awtomatisce pokazować. Anonymni
 $messages['hu'] = array(
 	'webchat' => 'Web chat',
 	'webchat-desc' => '[[Special:WebChat|Speciális lap]] más wikiszerkesztőkkel történő valósidejű beszélgetésre',
+	'webchat-header' => 'Ezen a speciális lapon együttműködhetsz valós időben a wiki más felhasználóival.
+A csatlakozáshoz egyszerűen kattints a „Csatlakozás” gombra.
+Ha be vagy jelentkezve, a nickneved előre ki lesz töltve.
+A névtelen felhasználók automatikusan generált nicknevet kapnak, de ez megváltoztatható.',
 	'right-webchat' => '[[Special:WebChat|web chat]] használata',
 );
 

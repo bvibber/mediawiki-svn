@@ -198,6 +198,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'tidy-desc' => 'Tidy vagy untidy fül hozzáadása normál lapokhoz (a $wgUseTidy változótól függően), amellyel felülbírálható a globális HTML tidy beállítás egy nézethez',
 	'tidy' => 'Tidy',
 	'untidy' => 'Untidy',
 );

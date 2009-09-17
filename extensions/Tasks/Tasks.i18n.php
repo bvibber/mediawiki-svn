@@ -1521,7 +1521,36 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'tasks' => 'Feladatok',
+	'tasks_desc' => 'Kiterjesztés feladatok kezelésére',
+	'tasks_tab' => 'Feladatok',
+	'tasks_title' => '„$1” feladatai',
+	'tasks_form_new' => 'Új feladat létrehozása',
+	'tasks_form_comment' => 'Megjegyzés',
+	'tasks_existing_header' => 'Meglevő feladatok',
+	'tasks_assign_me' => 'Saját magam hozzárendelése',
+	'tasks_close' => 'Feladat lezárása',
+	'tasks_delete' => 'Törlés',
+	'tasks_no_task_delete_title' => 'Nem engedélyezett',
+	'tasks_reopen' => 'Feladat újranyitása',
+	'tasks_created_by' => 'Létrehozta $1',
+	'tasks_closedby' => '$1 lezárta',
+	'tasks_sidebar_title' => 'Feladatok megnyitása',
+	'tasks_here' => 'itt',
+	'tasks_help_page' => 'Feladatok',
+	'tasks_more_like_it' => 'több',
+	'tasks_event_on_creation' => 'ellenőrzés',
+	'tasks_event_on_creation_anon' => 'ellenőrzés',
 	'tasks_table_header_page' => 'Lap',
+	'tasks_search_form_title' => 'Keresés',
+	'tasks_search_tasks' => 'Feladatok',
+	'tasks_search_status' => 'Állapot',
+	'tasks_previous' => 'Előző',
+	'tasks_next' => 'Következő',
+	'tasks_sort' => 'Rendezés',
+	'tasks_ascending' => 'Legrégebbit előre',
+	'tasks_status_open' => 'Megnyitás',
+	'tasks_logpage' => 'Feladatok naplója',
 );
 
 /** Interlingua (Interlingua)

@@ -144,6 +144,8 @@ Wužij: &lt;stockchart ticker="AAPL"/&gt;',
  */
 $messages['hu'] = array(
 	'stockcharts-desc' => '<nowiki><stockchart ticker="AAPL"/></nowiki> tag interaktív pénzügyi árfolyamdiagramok megjelenítéséhez',
+	'stockcharts-missingticker' => 'Árfolyamdiagram beágyazásához meg kell adnod legalább egy tickert.
+Használata: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Interlingua (Interlingua)

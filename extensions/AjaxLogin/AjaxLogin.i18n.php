@@ -144,6 +144,9 @@ Dies geschieht auf einer anderen Seite, so dass du deine aktuellen Änderungen a
 	'ajaxLogin2' => 'Bist du sicher?
 Möglicherweise gehen deine aktuellen Änderungen verloren, wenn du diese Seite verlässt.',
 	'ajaxlogin-create' => 'Erstelle ein Benutzerkonto',
+	'al-nosuchuser' => 'Es gibt keinen Benutzer mit dem Namen „$1“.
+Benutzernamen können sich in der Groß- und Kleinschreibung unterscheiden.
+Bitte Schreibweise überprüfen.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -155,6 +158,9 @@ Dies geschieht auf einer anderen Seite, so dass Sie Ihre aktuellen Änderungen a
 	'ajaxLogin2' => 'Sind Sie sicher?
 Möglicherweise gehen Ihre aktuellen Änderungen verloren, wenn Sie diese Seite verlassen.',
 	'ajaxlogin-create' => 'Erstellen Sie ein Benutzerkonto',
+	'al-nosuchuser' => 'Es gibt keinen Benutzer mit dem Namen „$1“.
+Benutzernamen können sich in der Groß- und Kleinschreibung unterscheiden.
+Bitte prüfen Sie die Schreibweise.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

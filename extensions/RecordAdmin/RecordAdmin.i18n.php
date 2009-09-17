@@ -866,7 +866,24 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'recordadmin-select' => 'Kijelölés',
+	'recordadmin-submit' => 'Elküldés',
+	'recordadmin-createsuccess' => '$1 létrehozva',
+	'recordadmin-badtitle' => 'Rossz cím!',
+	'recordadmin-invert' => 'Kijelölés megfordítása',
+	'recordadmin-buttonsearch' => 'Keresés',
+	'recordadmin-buttoncreate' => 'Létrehozás',
+	'recordadmin-buttonreset' => 'Alaphelyzet',
+	'recordadmin-searchresult' => 'Keresési eredmények',
 	'recordadmin-buttonsave' => 'Mentés',
+	'recordadmin-newcreated' => 'Új $1 létrehozva nyilvános űrlap alapján',
+	'recordadmin-summary-typecreated' => 'Új $1 létrehozva',
+	'recordadmin-editlink' => 'szerkesztés',
+	'recordadmin-created' => 'Létrehozva',
+	'recordadmin-modified' => 'Módosítva',
+	'recordadmin-actions' => 'Műveletek',
+	'recordadmin-needscontent' => 'Tartalom hozzáadása…',
+	'recordadmin-editwithform' => 'Szerkesztés űrlappal',
 );
 
 /** Interlingua (Interlingua)

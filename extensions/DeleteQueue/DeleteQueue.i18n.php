@@ -2509,6 +2509,7 @@ $messages['hu'] = array(
 	'deletequeue-list-header-expiry' => 'Lejárat',
 	'deletequeue-list-header-discusspage' => 'Vitalap',
 	'deletequeue-list-header-reason' => 'A törlés oka:',
+	'deletequeue-case-page' => 'Lap:',
 	'deletequeue-case-expiry' => 'Lejárat:',
 );
 

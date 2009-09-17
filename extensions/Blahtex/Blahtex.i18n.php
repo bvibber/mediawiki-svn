@@ -255,6 +255,32 @@ $messages['be-tarask'] = array(
 	'math_CannotWritePngDirectory' => 'Немагчыма запісаць ў дырэкторыю вываду PNG',
 	'math_CannotWriteTexFile' => 'Немагчыма запісаць у tex-файл',
 	'math_CasesRowTooBig' => 'Могуць быць толькі два запісы ў кожным радку блёку «cases»',
+	'math_DoubleSubscript' => 'Выяўленыя два падрадковых элемэнту далучаных да аднолькавай асновы.
+Дазволены толькі адзін.',
+	'math_DoubleSuperscript' => 'Выяўленыя два надрадковых элемэнты далучаных да аднолькавай асновы. 
+Дазволены толькі адзін.',
+	'math_IllegalCharacter' => 'Няслушны сымбаль ва ўваходных зьвестках',
+	'math_IllegalCommandInMathMode' => 'Каманда «$1» забароненая ў рэжыме math',
+	'math_IllegalCommandInMathModeWithHint' => 'Каманда «$1» забароненая ў рэжыме math.
+Верагодна, замест яе трэба выкарыстоўваць «$2»?',
+	'math_IllegalCommandInTextMode' => 'Каманда «$1» забароненая ў тэкставым рэжыме',
+	'math_IllegalCommandInTextModeWithHint' => 'Каманда «$1» забароненая ў тэкставым рэжыме.
+Верагодна, замест яе трэба выкарыстоўваць «$2»?',
+	'math_IllegalDelimiter' => 'Няслушны разьдзяляльнік пасьля «$1»',
+	'math_IllegalFinalBackslash' => 'Няслушны сымбаль «\\» у канцы выходных зьвестак',
+	'math_IllegalNestedFontEncodings' => 'Каманды кадыровак шрыфтоў ня могуць быць укладзенымі',
+	'math_IllegalRedefinition' => 'Каманда «$1» ужо была вызначана; Вы ня можаце яе перавызначыць',
+	'math_InvalidColour' => 'Няслушны колер «$1»',
+	'math_InvalidUtf8Input' => 'Уваходны радок утрымлівае няслушны UTF-8',
+	'math_LatexFontNotSpecified' => 'Ня вызначаны шрыфт LaTeX для «$1»',
+	'math_LatexPackageUnavailable' => 'Немагчыма стварыць выяву PNG, таму што пакет LaTeX «$1» недаступны',
+	'math_MismatchedBeginAndEnd' => 'Каманды «$1» і «$2» не супадаюць',
+	'math_MisplacedLimits' => 'Каманда «$1» можа выкарыстоўвацца толькі пасьля апэратара math.
+Верагодна, трэба выкарыстоўваць «\\mathop».',
+	'math_MissingCommandAfterNewcommand' => 'Адсутнічае альбо няслушная назва новай каманды пасьля «\\newcommand».
+Павінна быць вызначана толькі адна каманда;
+яна павінна пачынацца з сымбалю «\\» і ўтрымліваць толькі літары.',
+	'math_MissingDelimiter' => 'Адсутнічае разьдзяляльнік пасьля «$1»',
 );
 
 /** Bulgarian (Български)

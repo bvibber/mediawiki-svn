@@ -1517,9 +1517,17 @@ Tuta strona je jenož na wobmjezowanych wužiwarjow nałožujomna.",
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'whitelist-desc' => 'Korlátozott felhasználók hozzáférési jogosultságainak szerkesztése',
+	'mywhitelistpages' => 'Lapjaim',
+	'whitelisttablemodify' => 'Módosítás',
 	'whitelisttablemodifyall' => 'Mind',
 	'whitelisttablemodifynone' => 'Nincs',
+	'whitelisttablepage' => 'Wiki lap',
+	'whitelisttablemodby' => 'Utoljára módosította:',
+	'whitelisttablemodon' => 'Utolsó módosítás dátuma:',
+	'whitelisttableedit' => 'Szerkesztés',
 	'whitelisttableremove' => 'Eltávolítás',
+	'whitelistnewtabledate' => 'Lejárat dátuma:',
 	'whitelistnever' => 'soha',
 );
 

@@ -1270,6 +1270,7 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'dt_xml_page' => 'Фарс',
+	'dt_xml_template' => 'Шаблон',
 	'dt_xml_title' => 'Сæргонд',
 );
 

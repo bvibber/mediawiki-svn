@@ -469,10 +469,10 @@ $messages['de'] = array(
 	'usagestatistics-desc' => 'Zeigt individuelle Benutzer- und allgemeine Wiki-Nutzungsstatistiken an',
 	'usagestatisticsfor' => '<h2>Nutzungs-Statistik für [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Nutzungs-Statistik für alle Benutzer</h2>',
-	'usagestatisticsinterval' => 'Zeitraum',
+	'usagestatisticsinterval' => 'Zeitraum:',
 	'usagestatisticstype' => 'Berechnungsart',
-	'usagestatisticsstart' => 'Start-Datum',
-	'usagestatisticsend' => 'End-Datum',
+	'usagestatisticsstart' => 'Start-Datum:',
+	'usagestatisticsend' => 'End-Datum:',
 	'usagestatisticssubmit' => 'Statistik generieren',
 	'usagestatisticsnostart' => 'Start-Datum eingeben',
 	'usagestatisticsnoend' => 'End-Datum eingeben',
@@ -1033,6 +1033,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'specialuserstats' => 'Statistik penggunaan',
@@ -1040,10 +1041,14 @@ $messages['id'] = array(
 	'usagestatistics-desc' => 'Perlihatkan statistik pengguna individual dan keseluruhan wiki',
 	'usagestatisticsfor' => '<h2>Statistik untuk [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statistik untuk seluruh pengguna</h2>',
-	'usagestatisticsinterval' => 'Interval',
+	'usagestatisticsinterval' => 'Interval:',
+	'usagestatisticsnamespace' => 'Ruangnama:',
+	'usagestatisticsexcluderedirects' => 'Kecuali pengalihan',
+	'usagestatistics-namespace' => 'Terdapat stistik pada ruangnama [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Pengalihan]] tidak diperhitungkan.',
 	'usagestatisticstype' => 'Tipe',
-	'usagestatisticsstart' => 'Tanggal mulai',
-	'usagestatisticsend' => 'Tanggal selesai',
+	'usagestatisticsstart' => 'Tanggal mulai:',
+	'usagestatisticsend' => 'Tanggal selesai:',
 	'usagestatisticssubmit' => 'Tunjukkan statistik',
 	'usagestatisticsnostart' => 'Masukkan tanggal mulai',
 	'usagestatisticsnoend' => 'Masukkan tanggal selesai',
@@ -1225,11 +1230,15 @@ $messages['ksh'] = array(
 	'usagestatistics-desc' => 'Zeich Statistike övver Metmaacher un et janze Wiki.',
 	'usagestatisticsfor' => '<h2>Statistike fum Metmaacher [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statistike fun alle Metmaacher</h2>',
-	'usagestatisticsinterval' => 'Zick
-<small>(fun/beß)</small>',
+	'usagestatisticsinterval' => 'De Zick
+<small>(fun/beß)</small>:',
+	'usagestatisticsnamespace' => 'Appachtemang:',
+	'usagestatisticsexcluderedirects' => 'Ußer Ömleidungssigge',
+	'usagestatistics-namespace' => 'Shtatißtike övver et Appachtemang [[Special:Allpages/$1|$2]]',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Ömleidungssigge]] sin nit metjezallt.',
 	'usagestatisticstype' => 'Aat ze rääschne',
-	'usagestatisticsstart' => 'Aanfangs-Dattum',
-	'usagestatisticsend' => 'Dattum fun Engk',
+	'usagestatisticsstart' => 'Et Aanfangs-Dattum:',
+	'usagestatisticsend' => 'Et Dattum fun Engk:',
 	'usagestatisticssubmit' => 'Statistike ußrääschne',
 	'usagestatisticsnostart' => '* <span style="color:red">Dattum fum Aanfangs aanjevve</span>',
 	'usagestatisticsnoend' => '* <span style="color:red">Dattum fum Engk aanjevve</span>',

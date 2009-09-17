@@ -758,6 +758,24 @@ $messages['hsb'] = array(
 To njeda so druhi raz činić.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'createsigndocument' => 'Dokumentumok aláírásának engedélyezése',
+	'createsigndoc-pagename' => 'Lap:',
+	'createsigndoc-allowedgroup' => 'Engedélyezett csoport:',
+	'createsigndoc-email' => 'E-mail cím:',
+	'createsigndoc-address' => 'Otthoni cím:',
+	'createsigndoc-extaddress' => 'Város, megye, ország:',
+	'createsigndoc-phone' => 'Telefonszám:',
+	'createsigndoc-bday' => 'Születési dátum:',
+	'createsigndoc-minage' => 'Minimális kor:',
+	'createsigndoc-hidden' => 'Rejtett',
+	'createsigndoc-create' => 'Létrehozás',
+	'createsigndoc-error-generic' => 'Hiba: $1',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

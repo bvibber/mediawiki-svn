@@ -93,6 +93,13 @@ $messages['es'] = array(
 	'uploadblacklist-desc' => 'Añade una lista negra de subida de archivos',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'uploadblacklist-desc' => 'Lisab üleslaadimise musta nimekirja kasutamise võimaluse.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

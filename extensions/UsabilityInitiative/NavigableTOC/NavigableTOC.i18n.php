@@ -38,6 +38,7 @@ $messages['ar'] = array(
 $messages['be-tarask'] = array(
 	'navigabletoc' => 'Табліца зьместу з навігацыяй',
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
+	'navigabletoc-preference' => 'Дазволіць навігацыйныя табліцы зьместу',
 );
 
 /** Breton (Brezhoneg)
@@ -164,6 +165,7 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'navigabletoc' => 'Navigierbari Tabälle vum Inhalt',
 	'navigabletoc-desc' => 'Fiegt e Inhalts-Tabälle zue in s Bearbeitigsformat, wu ne Tekschtchaschte gscrollt wird, wänn e abschitt aaklickt wird.',
+	'navigabletoc-preference' => 'Navigierbari Inhaltstabälle megli mache',
 );
 
 /** Hebrew (עברית)
@@ -217,10 +219,12 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Whym
  */
 $messages['ja'] = array(
-	'navigabletoc' => 'ナビゲーション可能な目次',
+	'navigabletoc' => '編集用目次',
 	'navigabletoc-desc' => 'クリックした際にテキストボックスをスクロールさせる目次を編集フォームに加える',
+	'navigabletoc-preference' => '編集用目次を有効化する',
 );
 
 /** Georgian (ქართული)
@@ -237,6 +241,7 @@ $messages['ka'] = array(
 $messages['ksh'] = array(
 	'navigabletoc' => 'Ennhaltsverzeichnes beim Ändere',
 	'navigabletoc-desc' => 'Määt e Ennhaltsverzeichnes op de Sigge zom Ändere, wat dat Feld zom Ändere metnemmp, wann mer op enem Afschnett sing Övverschreff kleck.',
+	'navigabletoc-preference' => 'Schalld e Enhaltsverzeischnes aan, woh mer dren eröm wandere kann',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -343,6 +348,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'navigabletoc' => 'Оглавление с навигацией',
 	'navigabletoc-desc' => 'Добавляет на форму правки оглавление, прокручивающее текст в поле редактирования при выборе названия раздела',
+	'navigabletoc-preference' => 'Включить навигацию в оглавлении',
 );
 
 /** Yakut (Саха тыла)

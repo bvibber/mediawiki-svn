@@ -494,6 +494,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Ladsgroup
  * @author Mardetanha
  * @author Momeni
  */
@@ -511,8 +512,10 @@ $messages['fa'] = array(
 	'ratinghistory-chart' => 'ارزش‌دهی خوانندگان در طول زمان',
 	'ratinghistory-table' => 'بررسی اجمالی ارزش‌دهی خوانندگان',
 	'ratinghistory-users' => 'کاربرانی که درجه‌بندی کرده‌اند',
-	'ratinghistory-graph' => 'داده‌های ارزیابی از $1 {{PLURAL:$1|خواننده|خواننده}}',
+	'ratinghistory-graph' => '$3 از $2($1 {{PLURAL:$1|خواننده|خواننده}})',
+	'readerfeedback-svg' => 'نمایش به شکل SVG',
 	'ratinghistory-table-rating' => 'ارزش‌دهی',
+	'ratinghistory-table-votes' => 'آرا',
 	'ratinghistory-none' => 'در حال حاضر بازخورد کافی از خوانندگان برای نمایش نمودار وجود ندارد.',
 	'ratinghistory-legend' => "نمره متوسط روزانه <font color=\"blue\">''(آبی)''</font> و نمره متوسط برای بازهٔ زمانی انتخاب شده <font color=\"green\">''(سبز)''</font> در نمودار زیر، بر حسب تاریخ نشان داده شده‌اند. مقدار نمره‌ها به صورت زیر تعبیر می‌شود:
 
@@ -1796,6 +1799,7 @@ $messages['vi'] = array(
 	'ratinghistory-table-rating' => 'Đánh giá',
 	'ratinghistory-table-votes' => 'Số phiếu',
 	'ratinghistory-none' => 'Hiện chưa có đủ dữ liệu đánh giá của độc giả để vẽ biểu thị.',
+	'ratinghistory-ratings' => "'''Giải thích:''' '''(1)''' - Kém; '''(2)''' - Thấp; '''(3)''' - Trung bình; '''(4)''' - Cao; '''(5)''' - Tuyệt vời;",
 	'ratinghistory-legend' => "Những biểu thị ở dưới trình bày '''đánh giá trung bình hàng ngày''' <font color=\"blue\">''(lam)''</font> và '''đánh giá trung bình đương thời''' <font color=\"green\">''(lục)''</font>, theo thời gian. '''Đánh giá trung bình đương thời''' chỉ là trung bình các đánh giá hàng ngày ''tại giai đoạn này'' vào mỗi ngày.
 
 Giải thích các giá trị: '''[1]''' – Tệ; '''[2]''' – Dở; '''[3]''' – Khá; '''[4]''' – Hay; '''[5]''' – Tuyệt

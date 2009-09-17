@@ -195,7 +195,9 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'transliterator-desc' => 'Konfigurálható elemzőfüggvény átíráshoz',
 	'transliterator-error-ambiguous' => 'Kétértelmű szabály (<code>$1</code>) itt: [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Érvénytelen szintaxis a(z) [[MediaWiki:$2]] lapon: <code>$1</code>',
 	'transliterator-error-rulecount' => 'Több mint {{PLURAL:$1|egy|$1}} szabály itt: [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'A(z) <code>$1</code> szabályban több, mint {{PLURAL:$3|egy|$3}} karakter van a bal oldalon, itt: [[MediaWiki:$2]]',
 );
 
 /** Interlingua (Interlingua)

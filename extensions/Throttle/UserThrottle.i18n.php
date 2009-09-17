@@ -225,8 +225,11 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'A felhasználói fiókok létrehozása automatikusan szüneteltetve pár percig, a szokatlanul nagy számú hibás bejelentkezési kísérlet miatt.
+Légyszíves várj pár percet, majd próbáld újra.',
 	'acct_creation_global_hard_throttle_hit' => 'Felhasználói fiókok készítése automatikusan szüneteltetve pár másodpercig, hogy csökkentsük a tömeges regisztrációs támadásokat.
 Kérlek várj egy percet, majd nyomd meg az „újratöltés” gombot a böngésződben az újbóli elküldéshez.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Felhasználói fiókok készítésének szabályozása',
 );
 
 /** Interlingua (Interlingua)

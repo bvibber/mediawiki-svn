@@ -1398,9 +1398,18 @@ Milesker eta zure berri izateko irrikan gaude!',
 );
 
 /** Persian (فارسی)
+ * @author Ladsgroup
  * @author Mardetanha
  */
 $messages['fa'] = array(
+	'optin-title-optedout' => 'استفاده از بتا',
+	'optin-title-optedin' => 'خروج از بتا',
+	'optin-title-justoptedin' => 'به نسخه بتا خوش‌آمدید',
+	'optin-title-justoptedout' => 'ممنونیم از اینکه نسخه بتا را امتحان کردید',
+	'optin-needlogin' => 'شما برای استفاده از نسخه بتا باید [$1 وارد شوید].',
+	'optin-deny-short' => 'نه ممنون!',
+	'optin-deny-long' => 'بازگشت به صفحه قبلی',
+	'optin-submit-out' => 'خروج از بتا',
 	'optin-survey-yes' => 'بله',
 	'optin-survey-no' => 'نه',
 	'optin-survey-answer-whyoptout-other' => 'دلایل دیگر:',

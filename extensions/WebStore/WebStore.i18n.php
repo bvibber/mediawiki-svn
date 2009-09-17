@@ -1177,6 +1177,25 @@ $1',
 	'webstore_no_handler' => 'Žadyn rjadowak, zo by so tutón MIME-typ přetworił',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'inplace_scaler_not_enough_params' => 'Nincs elegendő paraméter.',
+	'webstore_access' => 'Ez a szolgáltatás korlátozott kliens IP-címek alapján.',
+	'webstore_path_invalid' => 'A fájlnév érvénytelen volt.',
+	'webstore_temp_close' => 'Hiba a(z) „$1” ideiglenes fájl bezárása közben.',
+	'webstore_no_file' => 'Nem lett fájl feltöltve.',
+	'webstore_404' => 'A fájl nem található.',
+	'webstore_php_warning' => 'PHP figyelmeztetés: $1',
+	'webstore_metadata_not_found' => 'A fájl nem található: $1',
+	'webstore_invalid_response' => 'Érvénytelen válasz a szervertől:
+
+$1',
+	'webstore_no_response' => 'Nincs válasz a szervertől',
+	'webstore_php_error' => 'PHP hibák történtek:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

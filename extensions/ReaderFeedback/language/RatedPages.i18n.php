@@ -66,6 +66,8 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'ratedpages' => 'Pajennoù burutellet gant al lennerien',
+	'ratedpages-leg' => "Kavout ar pajennoù burutellet gant un niver bras a-walc'h a briziadennoù",
 	'ratedpages-list' => 'A-is ez eus ur roll pajennoù urzhiet diouzh priziadenn al lennerien.',
 	'ratedpages-none' => "N'eus pajenn ebet war ar roll-mañ",
 	'ratedpages-graphs' => 'roadennoù priziañ',
@@ -304,6 +306,8 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'ratedpages' => 'Sigge met Enschäzunge fum Lässer',
+	'ratedpages-leg' => 'Fengk Sigge met en öhnlijje Aanzahl affjejovve Enschäzunge',
 	'ratedpages-list' => 'Hee küt en Leß met Sigge. Se es donoh zotteet, wi joot de Lesser se enjeshtoof han.',
 	'ratedpages-none' => 'En dä Leß sin kei Sigge dren.',
 	'ratedpages-graphs' => 'Date vum Enshtoofe',

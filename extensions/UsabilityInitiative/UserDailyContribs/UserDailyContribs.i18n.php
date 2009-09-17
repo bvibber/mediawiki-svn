@@ -31,6 +31,13 @@ $messages['be-tarask'] = array(
 	'userdailycontribs-desc' => 'Штодзённы ўнёсак удзельнікаў для пашырэньня сачэньня за націскамі мышшу',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'userdailycontribs-desc' => "Degasadennoù pemdeziek dre implijer evit an astenn heuliañ ar c'hlikoù",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -43,6 +50,13 @@ $messages['bs'] = array(
  */
 $messages['dsb'] = array(
 	'userdailycontribs-desc' => 'Wšědne wužywarske pśinoski za rozšyrjenje Clicktracking',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'userdailycontribs-desc' => 'Ĉiutagaj kontribuoj de uzantoj por la klak-sekvada modulo.',
 );
 
 /** French (Français)
@@ -141,5 +155,12 @@ $messages['sk'] = array(
  */
 $messages['vep'] = array(
 	'userdailycontribs-desc' => 'Jogapäiväline kävutajiden tond painmižid kaceltes',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'userdailycontribs-desc' => 'Đóng góp hàng ngày của thành viên dành cho bộ mở rộng theo dõi nhấn chuột',
 );
 

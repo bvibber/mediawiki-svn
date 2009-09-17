@@ -254,6 +254,7 @@ $messages['hu'] = array(
 	'templatelink' => 'Sablonhivatkozás',
 	'templatelink_desc' => 'Ez a kiterjesztés új lapként tud megjeleníteni egy sablont',
 	'templatelink_empty' => 'Meg kell adnod egy paramétert.',
+	'templatelink_newtitle' => '$1 (beillesztve)',
 );
 
 /** Interlingua (Interlingua)

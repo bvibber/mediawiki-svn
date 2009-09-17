@@ -176,6 +176,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'random-users-avatars-title' => 'Találkozz a közösséggel',
+	'random-users-avatars-desc' => '<tt>&lt;randomuserswithavatars&gt;</tt> tag véletlenszerűen választott felhasználók avatarjainak megjelenítésére',
 );
 
 /** Interlingua (Interlingua)

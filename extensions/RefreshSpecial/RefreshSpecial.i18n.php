@@ -578,6 +578,23 @@ Warnowanje: wobnowjenje móže na wulkich wikijach chětro dołho trać.',
 	'right-refreshspecial' => 'Specialne strony wobnowić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'refreshspecial' => 'Speciális lapok frissítése',
+	'refreshspecial-desc' => 'Lehetővé teszi a [[Special:RefreshSpecial|speciális lapok kézi frissítését]]',
+	'refreshspecial-title' => 'Speciális lapok frissítése',
+	'refreshspecial-button' => 'Kiválasztottak frissítése',
+	'refreshspecial-refreshing' => 'speciális lapok frissítése',
+	'refreshspecial-choice' => 'speciális lapok frissítése',
+	'refreshspecial-js-disabled' => '(<i>Nem tudod kijelölni az összes lapot, ha a JavaScript le van tiltva</i>)',
+	'refreshspecial-select-all-pages' => 'Összes lap kijelölése',
+	'refreshspecial-db-error' => 'Sikertelen: adatbázishiba',
+	'refreshspecial-reconnected' => 'Újracsatlakozva.',
+	'right-refreshspecial' => 'Speciális lapok frissítése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -2607,6 +2607,13 @@ $messages['oc'] = array(
 	'specialpages-group-contribution' => 'Contribucions / Levada de fonses',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'contribstats-template' => 'Шаблон',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
@@ -2728,6 +2735,7 @@ $messages['pt'] = array(
 	'contribstats-value-under' => 'Menos de $1',
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Mais de $1',
+	'contribstats-donations' => 'Donativos',
 	'fundraiserstatistics' => 'Estatísticas da angariação de fundos',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dia $1 de $2',
