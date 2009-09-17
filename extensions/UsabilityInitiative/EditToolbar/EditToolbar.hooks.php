@@ -221,7 +221,7 @@ class EditToolbarHooks {
 			);
 		}
 		
-		if ( !$wgEditToolbarCGDGlobalEnable && $wgEditToolbarCGDGlobalEnable ) {
+		if ( !$wgEditToolbarCGDGlobalEnable && $wgEditToolbarCGDUserEnable ) {
 			wfLoadExtensionMessages( 'EditToolbar' );
 			$defaultPreferences['usebetatoolbar-cgd'] = array(
 				'type' => 'toggle',
