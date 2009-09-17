@@ -301,6 +301,18 @@ $messages['gsw'] = array(
 	'tooltip-pt-optin-feedback' => 'Gib Ruckmäldige iber Dyni Erfahrige mit dr neje Funktione',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'optin-try' => 'הרשמה לגרסת בטא',
+	'tooltip-pt-optin-try' => 'ניסוי תכונות חדשות',
+	'optin-leave' => 'עזיבת גרסת הבטא',
+	'tooltip-pt-optin-leave' => 'כיבוי התכונות החדשות',
+	'optin-feedback' => 'משוב על גרסת הבטא',
+	'tooltip-pt-optin-feedback' => 'כתבו משוב על נסיונכם עם התכונות החדשות',
+);
+
 /** Croatian (Hrvatski)
  * @author Suradnik13
  */
