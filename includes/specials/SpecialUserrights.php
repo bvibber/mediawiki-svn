@@ -272,7 +272,7 @@ class UserrightsPage extends SpecialPage {
 	 * Side effects: error output for invalid access
 	 * @return mixed User, UserRightsProxy, or WikiErrorMsg
 	 */
-	public static function fetchUser( $username ) {
+	public function fetchUser( $username ) {
 		global $wgUser, $wgUserrightsInterwikiDelimiter;
 
 		$parts = explode( $wgUserrightsInterwikiDelimiter, $username );
