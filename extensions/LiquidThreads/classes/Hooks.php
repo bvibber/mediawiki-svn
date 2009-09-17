@@ -3,7 +3,7 @@
 class LqtHooks {
 	static function onPageMove( $movepage, $ot, $nt ) {
 		// Shortcut for non-LQT pages.
-		if ( !self::isLqtPage( $ot ) )
+		if ( !LqtDispatch::isLqtPage( $ot ) )
 			return true;
 		
 		// Move the threads on that page to the new page.
@@ -168,6 +168,22 @@ class LqtHooks {
 				'section' => 'watchlist/advancedwatchlist',
 			);
 		
+		// Display depth and count
+		$preferences['lqtdisplaydepth'] =
+			array(
+				'type' => 'int',
+				'label-message' => 'lqt-preference-display-depth',
+				'section' => 'lqt',
+			);
+			
+		// Display depth and count
+		$preferences['lqtdisplaycount'] =
+			array(
+				'type' => 'int',
+				'label-message' => 'lqt-preference-display-count',
+				'section' => 'lqt',
+			);
+		
 		return true;
 	}
 	
@@ -292,7 +308,7 @@ class LqtHooks {
 		global $wgExtNewTables, $wgExtNewFields, $wgExtPGNewFields,
 				$wgExtPGAlteredFields, $wgExtNewIndexes, $wgDBtype;
 
-		$dir = dirname( __FILE__ );
+		$dir = realpath( dirname( __FILE__ ) . '/..' );
 		
 		// DB updates
 		$wgExtNewTables[] = array( 'thread', "$dir/lqt.sql" );
@@ -300,16 +316,16 @@ class LqtHooks {
 		$wgExtNewTables[] = array( 'thread_history', "$dir/schema-changes/thread_history_table.sql" );
 		
 		
-		$wgExtNewFields[] = array( "thread", "thread_article_namespace", "$dir/split-thread_article.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_article_title", "$dir/split-thread_article.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_ancestor", "$dir/normalise-ancestry.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_parent", "$dir/normalise-ancestry.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_modified", "$dir/split-timestamps.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_created", "$dir/split-timestamps.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_editedness", "$dir/store-editedness.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_subject", "$dir/store_subject-author.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_author_id", "$dir/store_subject-author.sql" );
-		$wgExtNewFields[] = array( "thread", "thread_author_name", "$dir/store_subject-author.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_article_namespace", "$dir/schema-changes/split-thread_article.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_article_title", "$dir/schema-changes/split-thread_article.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_ancestor", "$dir/schema-changes/normalise-ancestry.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_parent", "$dir/schema-changes/normalise-ancestry.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_modified", "$dir/schema-changes/split-timestamps.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_created", "$dir/schema-changes/split-timestamps.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_editedness", "$dir/schema-changes/store-editedness.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_subject", "$dir/schema-changes/store_subject-author.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_author_id", "$dir/schema-changes/store_subject-author.sql" );
+		$wgExtNewFields[] = array( "thread", "thread_author_name", "$dir/schema-changes/store_subject-author.sql" );
 		
 		$wgExtNewIndexes[] = array( 'thread', 'thread_summary_page', '(thread_summary_page)' );
 		
