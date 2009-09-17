@@ -81,7 +81,7 @@ class RatedPages extends SpecialPage
 		}
 		$ratinghist = SpecialPage::getTitleFor( 'RatingHistory' );
 		$graph = $this->skin->makeKnownLinkObj( $ratinghist, wfMsg('ratedpages-graphs'), 
-			'target='.$title->getPrefixedUrl() );
+			'target='.$title->getPrefixedUrl().'&period=93' );
 		return "<li>$link $stxt ($hist) ($graph)</li>";
 	}
 }
