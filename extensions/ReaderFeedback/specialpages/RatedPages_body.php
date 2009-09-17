@@ -55,7 +55,7 @@ class RatedPages extends SpecialPage
 	protected function showPageList() {
 		global $wgOut;
 		$tags = ReaderFeedback::getFeedbackTags();
-		$pager = new LikedPagesPager( $this, array(), $this->namespace, $this->tag, $this->tier );
+		$pager = new RatedPagesPager( $this, array(), $this->namespace, $this->tag, $this->tier );
 		if( isset($tags[$this->tag]) && $pager->getNumRows() ) {
 			$wgOut->addHTML( wfMsgExt('ratedpages-list', array('parse') ) );
 			$wgOut->addHTML( $pager->getNavigationBar() );
@@ -80,7 +80,7 @@ class RatedPages extends SpecialPage
 					$wgLang->formatNum( $size ) ) . '</small>';
 		}
 		$ratinghist = SpecialPage::getTitleFor( 'RatingHistory' );
-		$graph = $this->skin->makeKnownLinkObj( $ratinghist, wfMsg('likedpages-graphs'), 
+		$graph = $this->skin->makeKnownLinkObj( $ratinghist, wfMsg('ratedpages-graphs'), 
 			'target='.$title->getPrefixedUrl() );
 		return "<li>$link $stxt ($hist) ($graph)</li>";
 	}
@@ -89,7 +89,7 @@ class RatedPages extends SpecialPage
 /**
  * Query to list out well recieved pages
  */
-class LikedPagesPager extends AlphabeticPager {
+class RatedPagesPager extends AlphabeticPager {
 	public $mForm, $mConds, $namespace, $tag;
 
 	function __construct( $form, $conds = array(), $namespace=0, $tag, $tier ) {
