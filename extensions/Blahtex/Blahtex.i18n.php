@@ -25,10 +25,10 @@ Only one is allowed.',
 Only one is allowed.',
 	'math_IllegalCharacter'                 => 'Illegal character in input',
 	'math_IllegalCommandInMathMode'         => 'The command "$1" is illegal in math mode',
-	'math_IllegalCommandInMathModeWithHint' => 'The command "$1" is illegal in math mode
+	'math_IllegalCommandInMathModeWithHint' => 'The command "$1" is illegal in math mode.
 Perhaps you intended to use "$2" instead?',
 	'math_IllegalCommandInTextMode'         => 'The command "$1" is illegal in text mode',
-	'math_IllegalCommandInTextModeWithHint' => 'The command "$1" is illegal in text mode
+	'math_IllegalCommandInTextModeWithHint' => 'The command "$1" is illegal in text mode.
 Perhaps you intended to use "$2" instead?',
 	'math_IllegalDelimiter'                 => 'Illegal delimiter following "$1"',
 	'math_IllegalFinalBackslash'            => 'Illegal backslash "\\" at end of input',
@@ -51,7 +51,7 @@ it must begin with a backslash "\\" and contain only alphabetic characters.',
 	'math_MissingOrIllegalParameterCount'   => 'Missing or illegal parameter count in definition of "$1".
 Must be a single digit between 1 and 9 inclusive.',
 	'math_MissingOrIllegalParameterIndex'   => 'Missing or illegal parameter index in definition of "$1"',
-	'math_NonAsciiInMathMode'               => 'Non-ASCII characters may only be used in text mode
+	'math_NonAsciiInMathMode'               => 'Non-ASCII characters may only be used in text mode.
 Try enclosing the problem characters in "\\text{...}".',
 	'math_NotEnoughArguments'               => 'Not enough arguments were supplied for "$1"',
 	'math_PngIncompatibleCharacter'         => 'Unable to correctly generate PNG containing the character $1',
