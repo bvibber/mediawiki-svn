@@ -474,19 +474,28 @@ class RatingHistory extends UnlistedSpecialPage
 		# Create the graph
 		@$plot->init();
 		$plot->drawGraph();
-		$plot->polyLine('dave');
-		$plot->polyLine('rave');
+		if( !$plot->polyLine('dave') ) {
+			throw new MWException( 'Could not generate "dave" line!' );
+		}
+		if( !$plot->polyLine('rave') ) {
+			throw new MWException( 'Could not generate "rave" line!' );
+		}
+		if( !$plot->polyLine('dcount') ) {
+			throw new MWException( 'Could not generate "dcount" line!' );
+		}
 		#$plot->line('dcount');
-		$plot->polyLine('dcount');
 		// Render!
 		$plot->generateSVG( "xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'" );
 		// Write to file for cache
 		$svgPath = $this->getFilePath( $tag, 'svg' );
 		$svgHandler = new SvgHandler();
-		if( @!file_put_contents( $svgPath, $plot->svg ) ) {
+		wfSuppressWarnings(); // FS notices possible
+		if( !file_put_contents( $svgPath, $plot->svg ) ) {
 			throw new MWException( 'Could not write SVG file!' );
+			wfRestoreWarnings();
 			return false;
 		}
+		wfRestoreWarnings();
 		// Rasterize due to IE suckage
 		$status = $svgHandler->rasterize( $svgPath, $filePath, 1000, 410 );
 		if( $status !== true ) {
