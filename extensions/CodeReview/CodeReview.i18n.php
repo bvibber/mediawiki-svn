@@ -95,6 +95,7 @@ $messages['en'] = array(
 	'code-release-legend'   => 'Generate release notes',
 	'code-release-startrev' => 'Start rev:',
 	'code-release-endrev'   => 'Last rev:',
+	'code-release-badrange' => 'Range is too large!',
 
 	'codereview-subtitle' => 'For $1',
 
