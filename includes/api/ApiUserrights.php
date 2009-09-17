@@ -45,7 +45,8 @@ class ApiUserrights extends ApiBase {
 		if(is_null($params['token']))
 			$this->dieUsageMsg(array('missingparam', 'token'));
 		
-		$user = UserrightsPage::fetchUser($params['user']);
+		$form = new UserrightsPage;
+		$user = $form->fetchUser($params['user']);
 		if($user instanceof WikiErrorMsg)
 			$this->dieUsageMsg(array_merge(
 				(array)$user->getMessageKey(),
