@@ -451,11 +451,13 @@ class SpecialUserLogin extends SpecialPage {
 
 			case Login::NO_NAME:
 			case Login::ILLEGAL:
-				$this->mainLoginForm( wfMsg( 'noname' ) );
-				break;
 			case Login::WRONG_PLUGIN_PASS:
-				$this->mainLoginForm( wfMsg( 'wrongpassword' ) );
+			case Login::WRONG_PASS:
+			case Login::EMPTY_PASS:
+			case Login::THROTTLED:
+				$this->mainLoginForm( wfMsg( $this->mLogin->mLoginResult ) );
 				break;
+				
 			case Login::NOT_EXISTS:
 				if( $wgUser->isAllowed( 'createaccount' ) ){
 					$this->mainLoginForm( wfMsgWikiHtml( 'nosuchuser', htmlspecialchars( $this->mName ) ) );
@@ -463,12 +465,7 @@ class SpecialUserLogin extends SpecialPage {
 					$this->mainLoginForm( wfMsg( 'nosuchusershort', htmlspecialchars( $this->mName ) ) );
 				}
 				break;
-			case Login::WRONG_PASS:
-				$this->mainLoginForm( wfMsg( 'wrongpassword' ) );
-				break;
-			case Login::EMPTY_PASS:
-				$this->mainLoginForm( wfMsg( 'wrongpasswordempty' ) );
-				break;
+				
 			case Login::RESET_PASS:
 				# 'Shell out' to Special:ResetPass to get the user to 
 	 			# set a new permanent password from a temporary one.
@@ -477,14 +474,18 @@ class SpecialUserLogin extends SpecialPage {
 				$reset->mHeaderMsgType = 'success';
 				$reset->execute( null );
 				break;
+				
 			case Login::CREATE_BLOCKED:
 				$this->userBlockedMessage();
 				break;
-			case Login::THROTTLED:
-				$this->mainLoginForm( wfMsg( 'login-throttled' ) );
+				
+			case Login::ABORTED: 
+				$msg = $this->mLogin->mLoginResult ? $this->mLogin->mLoginResult : $this->mLogin->mCreateResult;
+				$this->mainLoginForm( wfMsg( $msg ) );
 				break;
+				
 			default:
-				throw new MWException( "Unhandled case value" );
+				throw new MWException( "Unhandled case value: $result" );
 		}
 	}
 

@@ -183,10 +183,10 @@ class SpecialCreateAccount extends SpecialPage {
 			case Login::CREATE_BADNAME:
 			case Login::WRONG_PLUGIN_PASS:
 			case Login::ABORTED:
-				return $this->showMainForm( wfMsg( $this->mLogin->mCreateResult ) );
+				return $this->showMainForm( wfMsgExt( $this->mLogin->mCreateResult, array('parseinline') ) );
 			
 			case Login::CREATE_SORBS: 
-				return $this->showMainForm( wfMsg( 'sorbs_create_account_reason' ) . ' (' . wfGetIP() . ')' );
+				return $this->showMainForm( wfMsgExt( 'sorbs_create_account_reason' ) . ' (' . wfGetIP() . ')', array('parseinline') );
 				
 			case Login::CREATE_BLOCKED:
 				return $this->userBlockedMessage();

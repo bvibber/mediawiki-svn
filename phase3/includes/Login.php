@@ -147,6 +147,7 @@ class Login {
 				return self::NOT_EXISTS;
 			}
 			if( !$this->mExtUser->authenticate( $this->mPassword ) ) {
+				$this->mLoginResult = 'wrongpassword';
 				return self::WRONG_PLUGIN_PASS;
 			}
 		} else {
@@ -160,6 +161,7 @@ class Login {
 			}
 			if( !$wgAuth->authenticate( $this->mUser->getName(), $this->mPassword ) ) {
 				wfDebug( __METHOD__.": \$wgAuth->authenticate() returned false, aborting\n" );
+				$this->mLoginResult = 'wrongpassword';
 				return self::WRONG_PLUGIN_PASS;
 			}
 		}
@@ -178,6 +180,7 @@ class Login {
 		global $wgUser, $wgAuth;
 		
 		if ( '' == $this->mName ) {
+			$this->mLoginResult = 'noname';
 			return self::NO_NAME;
 		}
 		
@@ -195,6 +198,7 @@ class Login {
 			} else if ( $throttleCount < $count ) {
 				$wgMemc->incr($throttleKey);
 			} else if ( $throttleCount >= $count ) {
+				$this->mLoginResult = 'login-throttled';
 				return self::THROTTLED;
 			}
 		}
@@ -211,6 +215,16 @@ class Login {
 		}
 
 		$this->mExtUser = ExternalUser::newFromName( $this->mName );
+		
+		# If the given username produces a valid ExternalUser, which is 
+		# linked to an existing local user, use that, regardless of 
+		# whether the username matches up.
+		if( $this->mExtUser ){
+			$user = $this->mExtUser->getLocalUser();
+			if( $user instanceof User ){
+				$this->mUser = $user;
+			}
+		}
 
 		# TODO: Allow some magic here for invalid external names, e.g., let the
 		# user choose a different wiki name.
@@ -219,12 +233,15 @@ class Login {
 		}
 
 		# If the user doesn't exist in the local database, our only chance 
-		# is for an external auth plugin to autocreate the local user.
+		# is for an external auth plugin to autocreate the local user first.
 		if ( $this->mUser->getID() == 0 ) {
 			if ( $this->canAutoCreate() == self::SUCCESS ) {
 				$isAutoCreated = true;
 				wfDebug( __METHOD__.": creating account\n" );
-				$this->initUser( true );
+				$result = $this->initUser( true );
+				if( $result !== self::SUCCESS ){
+					return $result;
+				};
 			} else {
 				return $this->canAutoCreate();
 			}
@@ -234,9 +251,8 @@ class Login {
 		}
 
 		# Give general extensions, such as a captcha, a chance to abort logins
-		$abort = self::ABORTED;
-		if( !wfRunHooks( 'AbortLogin', array( $this->mUser, $this->mPassword, &$abort ) ) ) {
-			return $abort;
+		if( !wfRunHooks( 'AbortLogin', array( $this->mUser, $this->mPassword, &$this->mLoginResult ) ) ) {
+			return self::ABORTED;
 		}
 
 		if( !$this->mUser->checkPassword( $this->mPassword ) ) {
@@ -266,7 +282,13 @@ class Login {
 				# etc will probably just fail cleanly here.
 				$retval = self::RESET_PASS;
 			} else {
-				$retval = ( $this->mPassword === '' ) ? self::EMPTY_PASS : self::WRONG_PASS;
+				if( $this->mPassword === '' ){
+					$retval = self::EMPTY_PASS;
+					$this->mLoginResult = 'wrongpasswordempty';
+				} else {
+					$retval = self::WRONG_PASS;
+					$this->mLoginResult = 'wrongpassword';
+				}
 			}
 		} else {
 			$wgAuth->updateUser( $this->mUser );
@@ -296,15 +318,20 @@ class Login {
 	 *   authentication database?
 	 * @param $byEmail Bool is this request going to be handled by sending
 	 *   the password by email?
-	 * @return Bool whether creation was successful (should only fail for
-	 *   Db errors etc).
+	 * @return Class constant status code.
 	 */
 	protected function initUser( $autocreate=false, $byEmail=false ) {
 		global $wgAuth;
+	
+		if( !wfRunHooks( 'AbortNewAccount', array( $this->mUser, &$this->mCreateResult, $autocreate, $byEmail ) ) ) {
+			# Hook point to add extra creation throttles and blocks
+			wfDebug( "LoginForm::addNewAccountInternal: a hook blocked creation\n" );
+			return self::ABORTED;
+		}
 
 		$fields = array(
 			'name' => $this->mName,
-			'password' => $byEmail ? null : $this->mPassword,
+			'password' => $byEmail ? null : User::crypt( $this->mPassword ),
 			'email' => $this->mEmail,
 			'options' => array(
 				'rememberpassword' => $this->mRemember ? 1 : 0,
@@ -314,7 +341,7 @@ class Login {
 		$this->mUser = User::createNew( $this->mName, $fields );
 		
 		if( $this->mUser === null ){
-			return null;
+			return self::FAILED;
 		}
 
 		# Let old AuthPlugins play with the user
@@ -338,9 +365,10 @@ class Login {
 			$this->mUser->addNewUserLogEntry( $byEmail );
 		
 		# Run hooks
-		wfRunHooks( 'AddNewAccount', array( $this->mUser ) );
+		wfRunHooks( 'AddNewAccount', array( $this->mUser, $autocreate, $byEmail ) );
 
-		return true;
+		$this->mUser->saveSettings();
+		return self::SUCCESS;
 	}
 
 	/**
@@ -431,12 +459,6 @@ class Login {
 		$this->mUser->setEmail( $this->mEmail );
 		$this->mUser->setRealName( $this->mRealName );
 
-		if( !wfRunHooks( 'AbortNewAccount', array( $this->mUser, &$this->mCreateResult ) ) ) {
-			# Hook point to add extra creation throttles and blocks
-			wfDebug( "LoginForm::addNewAccountInternal: a hook blocked creation\n" );
-			return self::ABORTED;
-		}
-
 		if ( $wgAccountCreationThrottle && $wgUser->isPingLimitable() ) {
 			$key = wfMemcKey( 'acctcreate', 'ip', $ip );
 			$value = $wgMemc->get( $key );
@@ -457,11 +479,8 @@ class Login {
 		}
 
 		$result = $this->initUser( false, $byEmail );
-		if( $result === null )
-			# It's unlikely we'd get here without some exception 
-			# being thrown, but it's probably possible...
-			return self::FAILED;
-			
+		if( $result !== self::SUCCESS )
+			return $result;			
 	
 		# Send out an email message if needed
 		if( $byEmail ){
