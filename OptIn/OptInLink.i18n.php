@@ -247,6 +247,16 @@ $messages['eu'] = array(
 	'optin-feedback' => 'Beta feedbacka',
 );
 
+/** Persian (فارسی)
+ * @author Ladsgroup
+ */
+$messages['fa'] = array(
+	'optin-try' => 'استفاده از بتا',
+	'tooltip-pt-optin-try' => 'خروج از امکانات جدید',
+	'optin-leave' => 'خروج از بتا',
+	'tooltip-pt-optin-leave' => 'خاموش کردن امکانات جدید',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
@@ -490,6 +500,18 @@ $messages['mk'] = array(
 	'optin-feedback' => 'Мислења за Бета',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'optin-try' => 'ബീറ്റ പരീക്ഷിക്കുക',
+	'tooltip-pt-optin-try' => 'പുതിയ സവിശേഷതകള്‍ പരിശോധിക്കുക',
+	'optin-leave' => 'ബീറ്റ വിടുക',
+	'tooltip-pt-optin-leave' => 'പുതിയ സവിശേഷതകള്‍ വേണ്ട',
+	'optin-feedback' => 'ബീറ്റയുടെ ഉപയോഗാനുഭവമറിയിക്കുക',
+	'tooltip-pt-optin-feedback' => 'പുതിയ സവിശേഷതകളുമായുള്ള താങ്കളുടെ അനുഭവം പങ്കു വെയ്ക്കുക',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  * @author Kurniasan
@@ -687,11 +709,14 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'optin-try' => 'Пробајте бета-верзију',
+	'tooltip-pt-optin-try' => 'Пробајте нове могућности',
 	'optin-leave' => 'Напустите бета-верзију',
+	'tooltip-pt-optin-leave' => 'Угасите нове могућности',
 	'optin-feedback' => 'Повратна информација о бета-верзији',
 );
 

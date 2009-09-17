@@ -488,13 +488,25 @@ Configure $wgPrefStatsTrackPrefs para establecerlas.',
  * @author Pikne
  */
 $messages['et'] = array(
+	'prefstats' => 'Eelistuste arvandmed',
 	'prefstats-desc' => 'Kogub arvandmeid kindlate eelistuste kasutatavuse kohta.',
+	'prefstats-list-intro' => 'Parajasti jälgitakse järgmisi eelistusi. Klõpsa ühel, et näha selle arvandmeid.',
+	'prefstats-noprefs' => 'Ühtegi eelistust ei jälgita parajasti.
+Eelistuse jälgimiseks redigeeri muutujat $wgPrefStatsTrackPrefs.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|kasutaja|kasutajat}} on alates eelistuse jälgimahakust selle eelistuse kasutusele võtnud
+** $2 {{PLURAL:$2|kasutaja kasutab|kasutajat kasutavad}} seda endiselt
+** $3 {{PLURAL:$3|kasutaja|kasutajat}} on sellest loobunud',
 	'prefstats-xaxis' => 'Kestus (tundides)',
+	'prefstats-factors' => 'Astmiku jaotis: $1',
 	'prefstats-factor-hour' => 'tund',
+	'prefstats-factor-sixhours' => 'kuus tundi',
 	'prefstats-factor-day' => 'päev',
 	'prefstats-factor-week' => 'nädal',
 	'prefstats-factor-twoweeks' => 'kaks nädalat',
 	'prefstats-factor-fourweeks' => 'neli nädalat',
+	'prefstats-factor-default' => 'vaikeastmik',
+	'prefstats-legend-out' => 'Loobunud',
+	'prefstats-legend-in' => 'Kasutanud',
 );
 
 /** Basque (Euskara)
@@ -1513,6 +1525,19 @@ Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
 	'prefstats-factor-default' => 'nazaj na privzeto lestvico',
 	'prefstats-legend-out' => 'Onemogočeno',
 	'prefstats-legend-in' => 'Omogočeno',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'prefstats-xaxis' => 'Трајање (сати)',
+	'prefstats-factor-hour' => 'сат',
+	'prefstats-factor-sixhours' => 'шест сати',
+	'prefstats-factor-day' => 'дан',
+	'prefstats-factor-week' => 'недеља',
+	'prefstats-factor-twoweeks' => 'две недеље',
+	'prefstats-factor-fourweeks' => '4 недеље',
 );
 
 /** Swedish (Svenska)

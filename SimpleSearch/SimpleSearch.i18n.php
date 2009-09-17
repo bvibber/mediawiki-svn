@@ -508,12 +508,14 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'simplesearch' => 'Pesquisa simples',
 	'simplesearch-desc' => 'Adiciona funcionalidades extra à pesquisa simplificada do Vector.',
 	'simplesearch-search' => 'Pesquisa',
+	'simplesearch-containing' => 'contendo...',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -569,6 +571,7 @@ $messages['sah'] = array(
 	'simplesearch' => 'Судургу көрдөөһүн',
 	'simplesearch-desc' => 'Vector диэн судургу көрдөөччүгэ эбии кыахтары биэрэр',
 	'simplesearch-search' => 'Көрдөөһүн',
+	'simplesearch-containing' => 'иһинээҕи...',
 );
 
 /** Sicilian (Sicilianu)
@@ -600,11 +603,13 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'simplesearch' => 'Једноставна претрага',
 	'simplesearch-search' => 'Претрага',
+	'simplesearch-containing' => 'садржи...',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -697,6 +702,7 @@ $messages['vi'] = array(
 	'simplesearch' => 'Tìm kiếm đơn giản',
 	'simplesearch-desc' => 'Thêm chức năng phụ cho bộ tìm kiếm đơn giản của Bề ngoài Vector',
 	'simplesearch-search' => 'Tìm kiếm',
+	'simplesearch-containing' => 'có chứa...',
 );
 
 /** Yue (粵語)

@@ -537,6 +537,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar' => 'Панэль інструмэнтаў для рэдагаваньня',
 	'edittoolbar-desc' => 'Панэль інструмэнтаў для рэдагаваньня з палепшанай зручнасьцю',
 	'edittoolbar-preference' => 'Уключыць палепшаную панэль інструмэнтаў для рэдагаваньня',
+	'edittoolbar-cgd-preference' => 'Дазволіць дапамогу для даданьня складанага вікі-тэксту',
 	'edittoolbar-loading' => 'Загрузка...',
 	'edittoolbar-tool-bold' => 'Тлусты',
 	'edittoolbar-tool-bold-example' => 'Тлусты тэкст',
@@ -596,6 +597,18 @@ $messages['be-tarask'] = array(
 {{ns:file}}:Example.jpg|Подпіс2',
 	'edittoolbar-tool-newline' => 'Новы радок',
 	'edittoolbar-tool-table' => 'Табліца',
+	'edittoolbar-tool-table-example-old' => '-
+! загаловак 1
+! загаловак 2
+! загаловак 3
+|-
+| радок 1, ячэйка 1
+| радок 1, ячэйка 2
+| радок 1, ячэйка 3
+|-
+| радок 2, ячэйка 1
+| радок 2, ячэйка 2
+| радок 2, ячэйка 3',
 	'edittoolbar-tool-table-example' => 'Радок $1, ячэйка $2',
 	'edittoolbar-tool-table-example-header' => 'Радок $1, ячэйка $2 (назва)',
 	'edittoolbar-tool-table-title' => 'Уставіць табліцу',
@@ -1561,6 +1574,26 @@ $messages['cs'] = array(
 	'edittoolbar-help-content-indent-result' => 'Základní text<dl><dd>Odsazený text<dl><dd>Odsazený text</dd></dl></dd></dl>',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'edittoolbar-loading' => "Wrthi'n llwytho...",
+	'edittoolbar-tool-bold' => 'Praff',
+	'edittoolbar-tool-bold-example' => 'Testun praff',
+	'edittoolbar-tool-italic' => 'Italig',
+	'edittoolbar-tool-italic-example' => 'Testun italig',
+	'edittoolbar-tool-link' => 'Cyswllt',
+	'edittoolbar-tool-link-int-target' => 'Teitl y dudalen:',
+	'edittoolbar-tool-link-int-text' => 'Testun y cyswllt:',
+	'edittoolbar-tool-link-ext-target' => 'URL y cyswllt:',
+	'edittoolbar-tool-link-cancel' => 'Diddymu',
+	'edittoolbar-tool-table-cancel' => 'Diddymu',
+	'edittoolbar-tool-replace-close' => 'Diddymu',
+	'edittoolbar-help-content-bold-syntax' => "'''Testun praff'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Testun praff</strong>',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  * @author Leolaursen
@@ -2248,6 +2281,7 @@ $messages['eo'] = array(
 	'edittoolbar' => 'Redakta ilobreto',
 	'edittoolbar-desc' => 'Redakta ilobreto kun plibonigita uzebleco',
 	'edittoolbar-preference' => 'Ŝalti plibonigitan redaktan ilobreton',
+	'edittoolbar-cgd-preference' => 'Ŝalti helpon por aldoni progresan vikitekston',
 	'edittoolbar-loading' => 'Ŝarĝante...',
 	'edittoolbar-tool-bold' => 'Grasa',
 	'edittoolbar-tool-bold-example' => 'Grasa teksto',
@@ -2326,6 +2360,7 @@ $messages['eo'] = array(
 	'edittoolbar-tool-replace-button' => 'Anstataŭigi',
 	'edittoolbar-tool-replace-close' => 'Nuligi',
 	'edittoolbar-tool-replace-nomatch' => 'Via serĉo trafis nenion.',
+	'edittoolbar-tool-replace-success' => '$1 anstataŭigoj fariĝis.',
 	'edittoolbar-section-characters' => 'Specialaj signoj',
 	'edittoolbar-characters-page-latin' => 'Latina',
 	'edittoolbar-characters-page-latinextended' => 'Latina etendita',
@@ -2876,6 +2911,53 @@ $messages['eu'] = array(
 	'edittoolbar-help-content-indent-syntax' => 'Testu normala<br />:Koskadun testua<br />::Koskadun testua',
 );
 
+/** Persian (فارسی)
+ * @author Ladsgroup
+ */
+$messages['fa'] = array(
+	'edittoolbar-tool-italic' => 'ایتالیک',
+	'edittoolbar-tool-italic-example' => 'متن ایتالیک',
+	'edittoolbar-tool-ilink' => 'پیوند داخلی',
+	'edittoolbar-tool-ilink-example' => 'عنوان پیوند',
+	'edittoolbar-tool-xlink' => 'پیوند به بیرون (پیشوند http:// فراموش نشود)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com عنوان پیوند',
+	'edittoolbar-tool-link' => 'پیوند',
+	'edittoolbar-tool-link-title' => 'افزودن پیوند',
+	'edittoolbar-tool-link-int' => 'به یک صفحه ویکی',
+	'edittoolbar-tool-link-int-target' => 'عنوان صفحه:',
+	'edittoolbar-tool-link-int-text' => 'متن عنوان:',
+	'edittoolbar-tool-link-ext' => 'به یک صفحه وب خارج از ویکی',
+	'edittoolbar-tool-link-ext-target' => 'آدرس اینترنتی پیوند:',
+	'edittoolbar-tool-link-ext-text' => 'متن پیوند:',
+	'edittoolbar-tool-link-insert' => 'افزودن پیوند',
+	'edittoolbar-tool-link-cancel' => 'لغو',
+	'edittoolbar-tool-link-int-target-status-exists' => 'صفحه وجود دارد',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'صفحه وجود ندارد',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'عنوان نادرست',
+	'edittoolbar-tool-file-example' => 'مثال.jpg',
+	'edittoolbar-tool-reference' => 'منبع',
+	'edittoolbar-tool-signature' => 'امضا و زمان',
+	'edittoolbar-section-advanced' => 'پیشرفته',
+	'edittoolbar-tool-heading-example' => 'عنوان سطح',
+	'edittoolbar-group-list' => 'فهرست',
+	'edittoolbar-group-size' => 'اندازه',
+	'edittoolbar-tool-big' => 'بزرگ',
+	'edittoolbar-tool-big-example' => 'متن بزرگ',
+	'edittoolbar-tool-small' => 'کوچک',
+	'edittoolbar-tool-small-example' => 'متن کوچک',
+	'edittoolbar-tool-newline' => 'خط جدید',
+	'edittoolbar-tool-table' => 'جدول',
+	'edittoolbar-tool-table-cancel' => 'لغو',
+	'edittoolbar-characters-page-greek' => 'یونانی',
+	'edittoolbar-characters-page-cyrillic' => 'سیریلیک',
+	'edittoolbar-characters-page-arabic' => 'عربی',
+	'edittoolbar-characters-page-hebrew' => 'عبری',
+	'edittoolbar-characters-page-telugu' => 'تالوگو',
+	'edittoolbar-section-help' => 'راهنما',
+	'edittoolbar-help-content-italic-description' => 'ایتالیک',
+	'edittoolbar-help-content-signature-description' => 'امضا',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
@@ -3303,7 +3385,7 @@ $messages['gl'] = array(
 	'edittoolbar' => 'Barra de ferramentas de edición',
 	'edittoolbar-desc' => 'Editar a páxina da barra de ferramentas cunha mellor usabilidade',
 	'edittoolbar-preference' => 'Activar a barra de ferramentas de edición mellorada',
-	'edittoolbar-cgd-preference' => 'Activar os diálogos de xeración de contidos na barra de ferramentas de edición mellorada',
+	'edittoolbar-cgd-preference' => 'Activar a axuda para engadir texto wiki avanzado',
 	'edittoolbar-loading' => 'Cargando...',
 	'edittoolbar-tool-bold' => 'Negra',
 	'edittoolbar-tool-bold-example' => 'Texto en negra',
@@ -3576,6 +3658,7 @@ $messages['gsw'] = array(
 	'edittoolbar' => 'Wärchzygchäschtli bearbeite',
 	'edittoolbar-desc' => 'Wärchzygchäschtli mit ere verbesserete Benutzerfrejndligkeit bearbeite',
 	'edittoolbar-preference' => 'Verbesseret Bearbeitigs-Wärchzygchäschtli meglig mache',
+	'edittoolbar-cgd-preference' => 'Hilf fir fortgschrittene Wikitext megli mache',
 	'edittoolbar-loading' => 'Am Lade ...',
 	'edittoolbar-tool-bold' => 'Fätt',
 	'edittoolbar-tool-bold-example' => 'Tekscht fätt',
@@ -3635,6 +3718,18 @@ $messages['gsw'] = array(
 {{ns:file}}:Byschpil.jpg|Bschriftig2',
 	'edittoolbar-tool-newline' => 'Neji Zeile',
 	'edittoolbar-tool-table' => 'Tabälle',
+	'edittoolbar-tool-table-example-old' => '-
+! Chopf 1
+! Chopf 2
+! Chopf 3
+|-
+| Zyylete 1, Zälle 1
+| Zyylete 1, Zälle 2
+| Zyylete 1, Zälle 3
+|-
+| Zyylete 2, Zälle 1
+| Zyylete 2, Zälle 2
+| Zyylete 2, Zälle 3',
 	'edittoolbar-tool-table-example' => 'Zyle $1, Zälle $2',
 	'edittoolbar-tool-table-example-header' => 'Zyle $1, Zälle $2 (Chopf)',
 	'edittoolbar-tool-table-title' => 'Tabälle yyfiege',
@@ -4918,12 +5013,14 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fievarsty
  * @author Fryed-peach
+ * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'edittoolbar' => '編集ツールバー',
 	'edittoolbar-desc' => '使いやすさの向上したページ編集ツールバー',
 	'edittoolbar-preference' => '改良型編集ツールバーを有効にする',
+	'edittoolbar-cgd-preference' => '高度なウィキテキストの追加に関するヘルプを有効化する',
 	'edittoolbar-loading' => '読み込み中…',
 	'edittoolbar-tool-bold' => '太字',
 	'edittoolbar-tool-bold-example' => '太字テキスト',
@@ -4983,6 +5080,18 @@ $messages['ja'] = array(
 {{ns:file}}:Example.jpg|キャプション2',
 	'edittoolbar-tool-newline' => '改行',
 	'edittoolbar-tool-table' => '表',
+	'edittoolbar-tool-table-example-old' => '-
+! 見出し 1
+! 見出し 2
+! 見出し 3
+|-
+| 行 1, セル 1
+| 行 1, セル 2
+| 行 1, セル 3
+|-
+| 行 2, セル 1
+| 行 2, セル 2
+| 行 2, セル 3',
 	'edittoolbar-tool-table-example' => '行 $1、 セル $2',
 	'edittoolbar-tool-table-example-header' => '行 $1、 セル $2 (見出し)',
 	'edittoolbar-tool-table-title' => '表を挿入',
@@ -5479,6 +5588,7 @@ $messages['ksh'] = array(
 	'edittoolbar' => 'Werkzüsh för et Ändere',
 	'edittoolbar-desc' => 'Verbesserte Werkzüsh för et Ändere',
 	'edittoolbar-preference' => 'Donn et ußföerlesh Werkzüsh för et Ändere aanzeije (bruch Java_Skripp)',
+	'edittoolbar-cgd-preference' => 'Donn Hülp aanzeije för fottjeschredde Wikitäx ennzefööje',
 	'edittoolbar-loading' => 'Am Laade{{int:ellipsis}}',
 	'edittoolbar-tool-bold' => 'Fätte Schreff',
 	'edittoolbar-tool-bold-example' => 'Fätte Schreff',
@@ -5538,6 +5648,18 @@ $messages['ksh'] = array(
 {{ns:file}}:Beishpell.jpg|zweijte Beld-Täx',
 	'edittoolbar-tool-newline' => 'Neu Reih',
 	'edittoolbar-tool-table' => 'Tabäll',
+	'edittoolbar-tool-table-example-old' => '-
+! 1. Shpalldekopp
+! 2. Shpalldekopp
+! 3. Shpalldekopp
+|-
+| 1. Reij, 1. Shpalldt
+| 1. Reij, 2. Shpalldt
+| 1. Reij, 3. Shpalldt
+|-
+| 2. Reij, 1. Shpalldt
+| 2. Reij, 2. Shpalldt
+| 2. Reij, 3. Shpalldt',
 	'edittoolbar-tool-table-example' => 'De $2. Kolommne en de $1. Reij',
 	'edittoolbar-tool-table-example-header' => 'De $2. Kolommne en de $1. Reij (Kopp)',
 	'edittoolbar-tool-table-title' => 'Tabäll ennfööje',
@@ -6006,6 +6128,7 @@ $messages['lt'] = array(
 /** Latvian (Latviešu)
  * @author Marozols
  * @author Papuass
+ * @author Yyy
  */
 $messages['lv'] = array(
 	'edittoolbar' => 'Rediģēšanas rīku josla',
@@ -6064,7 +6187,7 @@ $messages['lv'] = array(
 {{ns:file}}:Example.jpg|Apraksts2',
 	'edittoolbar-tool-newline' => 'Jauna rinda',
 	'edittoolbar-tool-table' => 'Tabula',
-	'edittoolbar-tool-replace' => 'Aizstāt',
+	'edittoolbar-tool-replace' => 'Meklēt un aizstāt',
 	'edittoolbar-tool-replace-title' => 'Meklēt un aizstāt',
 	'edittoolbar-tool-replace-search' => 'Meklēt:',
 	'edittoolbar-tool-replace-replace' => 'Aizstāt ar:',
@@ -6493,11 +6616,17 @@ $messages['ms'] = array(
 $messages['mt'] = array(
 	'edittoolbar' => 'Kaxxa tal-għodda għall-immodifikar',
 	'edittoolbar-desc' => "Immodifika l-kaxxa tal-għodda b'akbar użabilità",
+	'edittoolbar-preference' => 'Awtorizza l-użu tal-kaxxa tal-għodda estiża',
+	'edittoolbar-cgd-preference' => "Awtorizza l-għajnuna għaż-żieda ta' test wiki avvanzat",
 	'edittoolbar-loading' => 'Tiela...',
 	'edittoolbar-tool-bold' => 'Tipa ħoxna',
 	'edittoolbar-tool-bold-example' => 'Tipa ħoxna',
 	'edittoolbar-tool-italic' => 'Tipa korsiva',
 	'edittoolbar-tool-italic-example' => 'Tipa korsiva',
+	'edittoolbar-tool-ilink' => 'Ħolqa interna',
+	'edittoolbar-tool-ilink-example' => 'Titlu tal-ħolqa',
+	'edittoolbar-tool-xlink' => 'Ħolqa esterna (ftakar il-prefiss http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com titlu tal-ħolqa',
 	'edittoolbar-tool-link' => 'Ħolqa',
 	'edittoolbar-tool-link-title' => 'Daħħal ħolqa',
 	'edittoolbar-tool-link-int' => 'Lejn paġna wiki',
@@ -6513,6 +6642,7 @@ $messages['mt'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titlu invalidu',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kontroll tal-eżistenza tal-paġna...',
 	'edittoolbar-tool-link-int-invalid' => 'It-titlu li speċifikjat huwa invalidu.',
+	'edittoolbar-tool-link-ext-invalid' => 'Il-URL li speċifikajt hi invalida.',
 	'edittoolbar-tool-file' => 'Fajl inkorporat',
 	'edittoolbar-tool-file-example' => 'Eżempju.jpg',
 	'edittoolbar-tool-reference' => 'Nota',
@@ -6547,21 +6677,38 @@ $messages['mt'] = array(
 {{ns:file}}:Eżempju.jpg|Deskrizzjoni2',
 	'edittoolbar-tool-newline' => 'Linja ġdida',
 	'edittoolbar-tool-table' => 'Tabella',
+	'edittoolbar-tool-table-example-old' => '-
+! ras 1
+! ras 2
+! ras 3
+|-
+| filliera 1, ċellola 1
+| filliera 1, ċellola 2
+| filliera 1, ċellola 3
+|-
+| filliera 2, ċellola 1
+| filliera 2, ċellola 2
+| filliera 2, ċellola 3',
+	'edittoolbar-tool-table-example' => 'Filliera $1, ċellola $2',
+	'edittoolbar-tool-table-example-header' => 'Filliera $1, ċellola $2 (ras)',
 	'edittoolbar-tool-table-title' => 'Daħħal tabella',
 	'edittoolbar-tool-table-dimensions' => 'Dimensjonijiet',
 	'edittoolbar-tool-table-dimensions-rows' => 'Fillieri',
 	'edittoolbar-tool-table-dimensions-columns' => 'Kolonni',
+	'edittoolbar-tool-table-dimensions-header' => "Inkludi l-filliera ta' fuq",
 	'edittoolbar-tool-table-insert' => 'Daħħal',
 	'edittoolbar-tool-table-cancel' => 'Annulla',
-	'edittoolbar-tool-replace' => 'Biddel',
+	'edittoolbar-tool-replace' => 'Fittex u biddel',
 	'edittoolbar-tool-replace-title' => 'Fittex u biddel',
 	'edittoolbar-tool-replace-search' => 'Fittex għal:',
 	'edittoolbar-tool-replace-replace' => "Biddel ma':",
+	'edittoolbar-tool-replace-case' => 'Ittra kapitali/żgħira',
 	'edittoolbar-tool-replace-regex' => 'Tratta t-test tat-tfittxija bħala espressjoni regulari',
 	'edittoolbar-tool-replace-all' => 'Biddel kull okkorrenza',
 	'edittoolbar-tool-replace-button' => 'Biddel',
-	'edittoolbar-tool-replace-close' => 'Agħlaq',
+	'edittoolbar-tool-replace-close' => 'Annulla',
 	'edittoolbar-tool-replace-nomatch' => 'It-tfittxija ma tat l-ebda riżultat.',
+	'edittoolbar-tool-replace-success' => 'saru $1 tibdila.',
 	'edittoolbar-section-characters' => 'Karattri speċjali',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Latin estiż',
@@ -7563,6 +7710,7 @@ $messages['pt'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Título inválido',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Verificando existência da página...',
 	'edittoolbar-tool-link-int-invalid' => 'O título que você especificou é inválido.',
+	'edittoolbar-tool-link-ext-invalid' => 'A URL que especificou é inválida.',
 	'edittoolbar-tool-file' => 'Ficheiro embutido',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referência',
@@ -7606,7 +7754,7 @@ $messages['pt'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Inclui linha de cabeçalho',
 	'edittoolbar-tool-table-insert' => 'Inserir',
 	'edittoolbar-tool-table-cancel' => 'Cancelar',
-	'edittoolbar-tool-replace' => 'Substituir',
+	'edittoolbar-tool-replace' => 'Pesquisar e substituir',
 	'edittoolbar-tool-replace-title' => 'Localizar e substituir',
 	'edittoolbar-tool-replace-search' => 'Procurar por:',
 	'edittoolbar-tool-replace-replace' => 'Substituir por:',
@@ -7614,7 +7762,7 @@ $messages['pt'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tratar string de busca como uma expressão regular',
 	'edittoolbar-tool-replace-all' => 'Substituir todas as ocorrências',
 	'edittoolbar-tool-replace-button' => 'Substituir',
-	'edittoolbar-tool-replace-close' => 'Fechar',
+	'edittoolbar-tool-replace-close' => 'Cancelar',
 	'edittoolbar-tool-replace-nomatch' => 'Sua busca não encontrou nenhum resultado.',
 	'edittoolbar-section-characters' => 'Carateres especiais',
 	'edittoolbar-characters-page-latin' => 'Latim',
@@ -8025,6 +8173,7 @@ $messages['ru'] = array(
 	'edittoolbar' => 'Панель редактирования',
 	'edittoolbar-desc' => 'Панель редактирования с улучшенным юзабилити',
 	'edittoolbar-preference' => 'Включить улучшенную панель редактирования',
+	'edittoolbar-cgd-preference' => 'Включите справку по добавлению более сложного вики-текста',
 	'edittoolbar-loading' => 'Загрузка…',
 	'edittoolbar-tool-bold' => 'Полужирный',
 	'edittoolbar-tool-bold-example' => 'Полужирное начертание',
@@ -8724,6 +8873,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -8736,6 +8886,19 @@ $messages['sr-ec'] = array(
 	'edittoolbar-tool-ilink-example' => 'Наслов везе',
 	'edittoolbar-tool-xlink' => 'Спољашња веза (не заборавите http:// префикс)',
 	'edittoolbar-tool-xlink-example' => 'http://www.example.com наслов везе',
+	'edittoolbar-tool-link' => 'Веза',
+	'edittoolbar-tool-link-title' => 'Убаци везу',
+	'edittoolbar-tool-link-int-target' => 'Наслов стране:',
+	'edittoolbar-tool-link-int-text' => 'Текст везе:',
+	'edittoolbar-tool-link-ext-target' => 'Путања везе (УРЛ):',
+	'edittoolbar-tool-link-ext-text' => 'Текст везе:',
+	'edittoolbar-tool-link-cancel' => 'Прекини',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Страница постоји',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'Страница не постоји',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Погрешан наслов',
+	'edittoolbar-tool-link-int-target-status-loading' => 'Провера постојања странице...',
+	'edittoolbar-tool-link-int-invalid' => 'Наслов који сте изабрали није валидан',
+	'edittoolbar-tool-link-ext-invalid' => 'Веза коју сте изабрали није валидна',
 	'edittoolbar-tool-file-example' => 'Primer.jpg',
 	'edittoolbar-tool-reference' => 'Референца',
 	'edittoolbar-tool-reference-example' => 'Унесите текст фусноте овде',
@@ -8749,6 +8912,47 @@ $messages['sr-ec'] = array(
 	'edittoolbar-tool-heading-example' => 'Текст одељка',
 	'edittoolbar-group-list' => 'Списак',
 	'edittoolbar-group-size' => 'Величина',
+	'edittoolbar-tool-big' => 'Велик',
+	'edittoolbar-tool-big-example' => 'Велик текст',
+	'edittoolbar-tool-small' => 'Мали',
+	'edittoolbar-tool-small-example' => 'Мали текст',
+	'edittoolbar-group-insert' => 'Убаци',
+	'edittoolbar-tool-gallery' => 'Галерија слика',
+	'edittoolbar-tool-newline' => 'Нова линија',
+	'edittoolbar-tool-table' => 'Табела',
+	'edittoolbar-tool-table-example-old' => '-
+! наслов 1
+! наслов 2
+! наслов 3
+|-
+| ред 1, ћелија 1
+| ред 1, ћелија 2
+| ред 1, ћелија 3
+|-
+| ред 2, ћелија 1
+| ред 2, ћелија 2
+| ред 2, ћелија 3',
+	'edittoolbar-tool-table-example' => 'Ред $1, ћелија $2',
+	'edittoolbar-tool-table-example-header' => 'Ред $1, ћелија $2 (наслов)',
+	'edittoolbar-tool-table-title' => 'Убаци табелу',
+	'edittoolbar-tool-replace-button' => 'Замени',
+	'edittoolbar-tool-replace-close' => 'одустани',
+	'edittoolbar-characters-page-latin' => 'латиница',
+	'edittoolbar-characters-page-latinextended' => 'проширена латиница',
+	'edittoolbar-characters-page-ipa' => 'ИПА',
+	'edittoolbar-characters-page-symbols' => 'Симболи',
+	'edittoolbar-characters-page-greek' => 'грчки',
+	'edittoolbar-characters-page-cyrillic' => 'ћирилица',
+	'edittoolbar-characters-page-arabic' => 'арапски',
+	'edittoolbar-characters-page-telugu' => 'телугу',
+	'edittoolbar-section-help' => 'Помоћ',
+	'edittoolbar-help-heading-description' => 'Опис',
+	'edittoolbar-help-heading-syntax' => 'Шта куцате',
+	'edittoolbar-help-heading-result' => 'Шта добијете',
+	'edittoolbar-help-page-format' => 'Форматирање',
+	'edittoolbar-help-page-link' => 'Везе',
+	'edittoolbar-help-page-heading' => 'Наслови',
+	'edittoolbar-help-page-list' => 'Спискови',
 	'edittoolbar-help-content-heading1-description' => 'одељак првог нивоа',
 	'edittoolbar-help-content-heading1-syntax' => '= Наслов одељка =',
 	'edittoolbar-help-content-heading1-result' => '<h1>Наслов одељка</h1>',
@@ -9601,6 +9805,7 @@ $messages['vi'] = array(
 	'edittoolbar' => 'Thanh công cụ sửa đổi',
 	'edittoolbar-desc' => 'Thanh công cụ ở trang sửa đổi được cải tiến để dễ sử dụng hơn',
 	'edittoolbar-preference' => 'Sử dụng thanh công cụ sửa đổi nâng cao',
+	'edittoolbar-cgd-preference' => 'Mở trợ giúp về cách thêm mã wiki nâng cao',
 	'edittoolbar-loading' => 'Đang tải…',
 	'edittoolbar-tool-bold' => 'Đậm',
 	'edittoolbar-tool-bold-example' => 'Chữ đậm',
@@ -9625,6 +9830,7 @@ $messages['vi'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Tựa sai',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kiểm tra trang đã tồn tại chưa...',
 	'edittoolbar-tool-link-int-invalid' => 'Tựa trang chỉ định không hợp lệ.',
+	'edittoolbar-tool-link-ext-invalid' => 'URL không đúng.',
 	'edittoolbar-tool-file' => 'Chèn tập tin',
 	'edittoolbar-tool-file-example' => 'Ví dụ.jpg',
 	'edittoolbar-tool-reference' => 'Chú thích tham khảo',
@@ -9659,6 +9865,18 @@ $messages['vi'] = array(
 {{ns:file}}:Ví dụ.jpg|Chú thích 2',
 	'edittoolbar-tool-newline' => 'Dòng mới',
 	'edittoolbar-tool-table' => 'Bảng',
+	'edittoolbar-tool-table-example-old' => '-
+! tiêu đề 1
+! tiêu đề 2
+! tiêu đề 3
+|-
+| hàng 1, cột 1
+| hàng 1, cột 2
+| hàng 1, cột 3
+|-
+| hàng 2, cột 1
+| hàng 2, cột 2
+| hàng 2, cột 3',
 	'edittoolbar-tool-table-example' => 'Hàng $1, ô $2',
 	'edittoolbar-tool-table-example-header' => 'Hàng $1, cột $2 (tiêu đề)',
 	'edittoolbar-tool-table-title' => 'Chèn bảng',
@@ -9668,7 +9886,7 @@ $messages['vi'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Có hàng tiêu đề',
 	'edittoolbar-tool-table-insert' => 'Chèn',
 	'edittoolbar-tool-table-cancel' => 'Hủy bỏ',
-	'edittoolbar-tool-replace' => 'Thay thế',
+	'edittoolbar-tool-replace' => 'Tìm và thay thế',
 	'edittoolbar-tool-replace-title' => 'Tìm và thay thế',
 	'edittoolbar-tool-replace-search' => 'Tìm kiếm:',
 	'edittoolbar-tool-replace-replace' => 'Thay thế bằng:',
@@ -9676,8 +9894,9 @@ $messages['vi'] = array(
 	'edittoolbar-tool-replace-regex' => 'Xem chuỗi tìm kiếm là biểu thức chính quy',
 	'edittoolbar-tool-replace-all' => 'Thay thế mọi từ tìm thấy',
 	'edittoolbar-tool-replace-button' => 'Thay thế',
-	'edittoolbar-tool-replace-close' => 'Đóng',
+	'edittoolbar-tool-replace-close' => 'Hủy bỏ',
 	'edittoolbar-tool-replace-nomatch' => 'Không tìm thấy',
+	'edittoolbar-tool-replace-success' => 'Đã thực hiện $1 thay thế.',
 	'edittoolbar-section-characters' => 'Ký tự đặc biệt',
 	'edittoolbar-characters-page-latin' => 'La tinh',
 	'edittoolbar-characters-page-latinextended' => 'La tinh mở rộng',

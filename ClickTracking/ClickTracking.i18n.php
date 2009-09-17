@@ -171,6 +171,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'clicktracking-desc' => 'Sekvado de klakoj, por sekvi klakeventojn kiu ne kaŭzas paĝan refreŝigon',
+	'event-name' => 'Eventa nomo',
 	'start-date' => 'Komenca Dato (JJJJMMTT)',
 	'end-date' => 'Fina Dato (JJJJMMTT)',
 );
@@ -356,6 +357,18 @@ $messages['ksh'] = array(
 	'clicktracking' => 'Dä <i lang="en">Wikipedia Usability Initiative</i> ier Kleckverfolljung',
 	'clicktracking-desc' => 'Klecks un Akßuhne Verfollje, di kein neu Sigg afroofe donn.',
 	'clicktracking-title' => 'Jesammte Klecks',
+	'event-name' => 'Da Name vun dämm, wat passeet es',
+	'expert-header' => 'Klecks vun „{{int:Expert}}“',
+	'intermediate-header' => 'Klecks vun „{{int:Intermediate}}“',
+	'beginner-header' => 'Klecks vun „{{int:Beginner}}e“',
+	'total-header' => 'Jesampzahl aan Kleks',
+	'start-date' => 'Et Dattum vum Aanfang (en dä Forrem: JJJJMMDD)',
+	'end-date' => 'Et Dattum vum Engk (en dä Forrem: JJJJMMDD)',
+	'increment-by' => 'De Aanzahl Dääsch, woh jede Pungk em Diajramm daashtälle sull',
+	'change-graph' => 'Dat Diajramm ändere',
+	'beginner' => 'Aanfänger udder Neuling',
+	'intermediate' => 'Meddel',
+	'expert' => 'Mer kännt sesch uß',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -487,6 +500,7 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author HalanTul
  * @author Kv75
  * @author Александр Сигачёв
  */
@@ -502,7 +516,7 @@ $messages['ru'] = array(
 	'start-date' => 'Дата начала (ГГГГММДД)',
 	'end-date' => 'Дата окончания (ГГГГММДД)',
 	'increment-by' => 'Количество дней, которое представляет каждая точка данных',
-	'change-graph' => 'Измененить график',
+	'change-graph' => 'Изменить график',
 	'beginner' => 'Новичок',
 	'intermediate' => 'Средний участник',
 	'expert' => 'Эксперт',
@@ -521,6 +535,10 @@ $messages['sah'] = array(
 	'total-header' => 'Баттааһын барытын ахсаана',
 	'start-date' => 'Саҕаламмыт күнэ-ыйа (ССССЫЫКК)',
 	'end-date' => 'Бүппүт күнэ-дьыла (ССССЫЫКК)',
+	'change-graph' => 'Графигы уларытыы',
+	'beginner' => 'Саҥа кыттааччы',
+	'intermediate' => 'Бороохтуйбут кыттааччы',
+	'expert' => 'Эксперт',
 );
 
 /** Slovak (Slovenčina)
@@ -585,6 +603,18 @@ $messages['vi'] = array(
 	'clicktracking' => 'Theo dõi nhấn chuột Sáng kiến Khả dụng',
 	'clicktracking-desc' => 'Theo dõi hành vi nhấn chuột, dùng để theo dõi các hoạt động không làm tươi trang',
 	'clicktracking-title' => 'Tổng số nhấn chuột của thành viên',
+	'event-name' => 'Tên sự kiện',
+	'expert-header' => 'Cú nhấn "chuyên gia"',
+	'intermediate-header' => 'Cú nhấn "trung bình"',
+	'beginner-header' => 'Cú nhấn "người mới"',
+	'total-header' => 'Tổng số lần nhấn',
+	'start-date' => 'Ngày bắt đầu (YYYYMMDD)',
+	'end-date' => 'Ngày kết thúc (YYYYMMDD)',
+	'increment-by' => 'Số ngày mà mỗi điểm dữ liệu thể hiện',
+	'change-graph' => 'Đồ thị thay đổi',
+	'beginner' => 'Người mới',
+	'intermediate' => 'Trung bình',
+	'expert' => 'Chuyên gia',
 );
 
 /** Yue (粵語)
