@@ -499,7 +499,7 @@ class RatingHistory extends UnlistedSpecialPage
 		// Rasterize due to IE suckage
 		$status = $svgHandler->rasterize( $svgPath, $filePath, 1000, 410 );
 		if( $status !== true ) {
-			throw new MWException( 'Could not rasterize SVG file!' );
+			wfDebug( 'Could not rasterize SVG file from '.$filePath.'!' );
 			return false;
 		}
 		return true;
