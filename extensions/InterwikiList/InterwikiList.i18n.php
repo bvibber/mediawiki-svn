@@ -336,8 +336,12 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'interwikilist' => 'Wikiközi hivatkozások listája',
+	'interwikilist-desc' => '[[Special:Interwikilist|Speciális lap]] az elérhető wikiközi hivatkozások megtekintésére',
+	'interwikilist-linkname' => 'Wikiközi hivatkozás',
 	'interwikilist-target' => 'Cél URL',
 	'interwikilist-filter' => 'Szűrők listája',
+	'interwikilist-prefix' => 'Wikiközi hivatkozás előtagja:',
 );
 
 /** Interlingua (Interlingua)

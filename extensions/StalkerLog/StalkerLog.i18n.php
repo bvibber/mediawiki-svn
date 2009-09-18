@@ -245,6 +245,10 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'stalkerlog-desc' => '[[Special:Log/stalkerlog|Napló]] a felhasználók ki és bejelentkezéseinek nyomon követésére',
+	'stalkerlog-log-login' => 'bejelentkezett.',
+	'stalkerlog-log-logout' => 'kijelentkezett.',
+	'stalkerlog-log-type' => 'Felhasználói hitelesítések naplója',
 	'stalkerlog-log-text' => 'A szerkesztők be- és kijelentkezéseinek naplója.',
 );
 

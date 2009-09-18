@@ -707,6 +707,13 @@ Picatz los primièrs caractèrs e quichatz sul boton de somission per cercar los
 	'index-details-explain' => "Las entradas amb de sagetas son d'entradas d'indèx, clicatz sus la sageta per veire totas las paginas indexadas jos aqueste títol.",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'indexfunc-badtitle' => 'Tìtol pa bon: "$1"',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila

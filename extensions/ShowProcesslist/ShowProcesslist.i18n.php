@@ -424,11 +424,15 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'showprocesslist' => 'Folyamatlista megjelenítése',
+	'showprocesslist-desc' => 'Megjeleníti a [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]] kimenetét',
 	'showprocesslist-id' => 'Azonosító',
 	'showprocesslist-user' => 'Felhasználó',
 	'showprocesslist-host' => 'Hoszt',
 	'showprocesslist-db' => 'Adatbázis',
 	'showprocesslist-command' => 'Parancs',
+	'showprocesslist-time' => 'Idő',
+	'showprocesslist-state' => 'Állapot',
+	'showprocesslist-info' => 'Információ',
 );
 
 /** Interlingua (Interlingua)

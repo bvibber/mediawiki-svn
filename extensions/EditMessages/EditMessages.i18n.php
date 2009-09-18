@@ -1045,6 +1045,18 @@ $messages['pms'] = array(
 	'editmessages' => 'Modìfica messagi',
 	'editmsg-target' => 'Messagi pontà:',
 	'editmsg-search' => 'Serca',
+	'editmsg-show-list' => 'Mosté ij valor për ël messgi ëd nòm "$1"',
+	'editmsg-get-patch' => 'Génera na patch',
+	'editmsg-new-search' => 'Neuva arserca',
+	'editmsg-warning-parse1' => '* Regex dël nòm messagi pa trovà: $1',
+	'editmsg-warning-parse2' => "Caràter ëd sitassion spetà d'apress la frecia: $1",
+	'editmsg-warning-parse3' => 'String fin dël valor pa trovà: $1',
+	'editmsg-warning-file' => 'A son ëstàit trovà eror ëd letura fila për {{PLURAL:$2|lsta lenga-sì|ste lenghe-sì}}:  $1',
+	'editmsg-warning-mismatch' => "Ël test original a l'avìa pa ël valor spetà për {{PLURAL:$2|sta lenga-sì|ste lenghe-sì}}: $1",
+	'editmsg-apply-patch' => 'Àplica la patch',
+	'editmsg-no-patch' => 'As peul pa eseguì ël comant "patch"',
+	'editmsg-patch-failed' => 'Patch falìa con stat ëd surtìa $1',
+	'editmsg-patch-success' => 'Patch aplicà con sussess.',
 );
 
 /** Pashto (پښتو)

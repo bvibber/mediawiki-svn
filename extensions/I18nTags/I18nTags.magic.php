@@ -34,6 +34,10 @@ $magicWords['fr'] = array(
 	'languagename'   => array( '0', 'nomlangue', 'languagename' ),
 );
 
+$magicWords['frp'] = array(
+	'languagename'   => array( '0', 'nom de lengoua', 'nomlangue', 'languagename' ),
+);
+
 $magicWords['it'] = array(
 	'languagename'   => array( '0', 'nomelingua', 'languagename' ),
 );

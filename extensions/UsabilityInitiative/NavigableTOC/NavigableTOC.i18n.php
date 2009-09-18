@@ -292,6 +292,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'navigabletoc' => 'Somari navigable',
 	'navigabletoc-desc' => 'Apond lo somari al formulari de modificacion que desfila lo tèxte quand una seccion es clicada',
+	'navigabletoc-preference' => "Activar l'ensenhador navigable",
 );
 
 /** Polish (Polski)
@@ -348,7 +349,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'navigabletoc' => 'Оглавление с навигацией',
 	'navigabletoc-desc' => 'Добавляет на форму правки оглавление, прокручивающее текст в поле редактирования при выборе названия раздела',
-	'navigabletoc-preference' => 'Включить навигацию в оглавлении',
+	'navigabletoc-preference' => 'Включить оглавление с возможностью навигации',
 );
 
 /** Yakut (Саха тыла)
@@ -364,6 +365,7 @@ $messages['sah'] = array(
 $messages['sk'] = array(
 	'navigabletoc' => 'Navigovateľný Obsah',
 	'navigabletoc-desc' => 'Pridáva do formulára úprav Obsah, ktorý sa posunie na správne miesto po kliknutí na sekciu',
+	'navigabletoc-preference' => 'Povoliť obsah s odkazmi na časti',
 );
 
 /** Slovenian (Slovenščina)

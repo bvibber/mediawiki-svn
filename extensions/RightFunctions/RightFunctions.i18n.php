@@ -211,7 +211,10 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'rightfunctions-desc' => 'Jogosultság-alapú elemzőfüggvények',
+	'rightfunctions-casc' => '(kaszkádolt forrásokból)',
 	'rightfunctions-local' => '(helyi lapról)',
+	'rightfunctions-ns' => '(névtérvédelemből)',
 );
 
 /** Interlingua (Interlingua)

@@ -830,6 +830,7 @@ $messages['hu'] = array(
 	'imagetagging-articletotag' => 'Felcímkézendő lap',
 	'imagetagging-imghistory' => 'Történet',
 	'imagetagging-images' => 'képek',
+	'imagetagging-inthisimage' => 'Ezen a képen: $1',
 	'imagetagging-removetag' => 'címke eltávolítása',
 	'imagetagging-done-button' => 'Címkézés kész',
 	'imagetagging-tag-button' => 'Felcímkéz',

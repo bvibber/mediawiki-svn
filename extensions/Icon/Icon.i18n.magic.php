@@ -30,6 +30,10 @@ $magicWords['ja'] = array(
 	'icon'   => array( '0', 'アイコン', 'icon' ),
 );
 
+$magicWords['ml'] = array(
+	'icon'   => array( '0', 'ഐകോൺ', 'icon' ),
+);
+
 $magicWords['nl'] = array(
 	'icon'   => array( '0', 'icoon', 'icon' ),
 );

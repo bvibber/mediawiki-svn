@@ -128,6 +128,10 @@ $messages['ar'] = array(
 	'readerfeedback-submitting' => 'جاري التنفيذ...',
 	'readerfeedback-finished' => 'شكرا لك!',
 	'readerfeedback-tagfilter' => 'وسم:',
+	'readerfeedback-tierfilter' => 'التقييم:',
+	'readerfeedback-tier-high' => 'مرتفع',
+	'readerfeedback-tier-medium' => 'متوسط',
+	'readerfeedback-tier-poor' => 'فقير',
 	'tooltip-ca-ratinghist' => 'تقييمات القراء لهذه الصفحة',
 	'specialpages-group-feedback' => 'رأي المشاهد',
 );
@@ -538,6 +542,10 @@ $messages['eo'] = array(
 	'readerfeedback-submitting' => 'Sendante...',
 	'readerfeedback-finished' => 'Dankon!',
 	'readerfeedback-tagfilter' => 'Etikedo:',
+	'readerfeedback-tierfilter' => 'Taksado:',
+	'readerfeedback-tier-high' => 'Bonkvalita',
+	'readerfeedback-tier-medium' => 'Mezkvalita',
+	'readerfeedback-tier-poor' => 'Malbonkvalita',
 	'tooltip-ca-ratinghist' => 'Taksoj de legintoj de ĉi tiu paĝo',
 );
 
@@ -569,9 +577,14 @@ $messages['es'] = array(
 	'readerfeedback-main' => 'Solamente páginas de contenido pueden ser valoradas.',
 	'readerfeedback-success' => "'''Gracias por revisar esta página!''' ([$3 Comentarios o preguntas?]).",
 	'readerfeedback-voted' => "'''Parece que ya valoraste esta página''' ([$3 comentarios o preguntas?]).",
+	'readerfeedback-error' => "'''Un error ha ocurrido cuando se valorizaba esta página''' ([$3 comentarios o preguntas?]).",
 	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => '¡Gracias!',
 	'readerfeedback-tagfilter' => 'Etiqueta:',
+	'readerfeedback-tierfilter' => 'ValorizaciónÑ',
+	'readerfeedback-tier-high' => 'Alta',
+	'readerfeedback-tier-medium' => 'Moderada',
+	'readerfeedback-tier-poor' => 'Pobre',
 	'tooltip-ca-ratinghist' => 'Valoraciones de los lectores de esta página',
 	'specialpages-group-feedback' => 'Opinión del espectador',
 );
@@ -1380,6 +1393,10 @@ $messages['oc'] = array(
 	'readerfeedback-submitting' => 'Somission…',
 	'readerfeedback-finished' => 'Mercés !',
 	'readerfeedback-tagfilter' => 'Balisa :',
+	'readerfeedback-tierfilter' => 'Evaluacion :',
+	'readerfeedback-tier-high' => 'Bona',
+	'readerfeedback-tier-medium' => 'Mejana',
+	'readerfeedback-tier-poor' => 'Marrida',
 	'tooltip-ca-ratinghist' => "Apreciacions dels lectors d'aquesta pagina",
 	'specialpages-group-feedback' => 'Opinion del lector',
 );
@@ -1419,6 +1436,10 @@ $messages['pl'] = array(
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',
 	'readerfeedback-tagfilter' => 'Znacznik',
+	'readerfeedback-tierfilter' => 'Ocena:',
+	'readerfeedback-tier-high' => 'wysoka',
+	'readerfeedback-tier-medium' => 'umiarkowana',
+	'readerfeedback-tier-poor' => 'słaba',
 	'tooltip-ca-ratinghist' => 'Oceny czytelników tej strony',
 	'specialpages-group-feedback' => 'Opinia czytelnika',
 );
@@ -1560,6 +1581,30 @@ $messages['ru'] = array(
 	'readerfeedback-tier-poor' => 'Низкая',
 	'tooltip-ca-ratinghist' => 'Читательская оценка этой страницы',
 	'specialpages-group-feedback' => 'Мнение читателей',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'readerfeedback-desc' => 'Сирэйи тургуутуу ааҕааччылар категорияннан сыана быһалларын хааччыйар',
+	'readerfeedback' => 'Бу сирэй туһунан туох диэтиҥ?',
+	'readerfeedback-text' => "''Бука диэн бу сирэйи сыаналаа эрэ. Эн эппитиҥ наһаа наадалаах, саайты тупсарарга көмөлөһүө.''",
+	'readerfeedback-level-none' => '(талыллыбатах)',
+	'readerfeedback-level-0' => 'Мөлтөх',
+	'readerfeedback-level-1' => 'Намыһах',
+	'readerfeedback-level-2' => 'Орто',
+	'readerfeedback-level-3' => 'Бэрт',
+	'readerfeedback-level-4' => 'Уһулуччу',
+	'readerfeedback-submit' => 'Ыыт',
+	'readerfeedback-submitting' => 'Ыытыы...',
+	'readerfeedback-finished' => 'Махтал!',
+	'readerfeedback-tagfilter' => 'Тиэк:',
+	'readerfeedback-tierfilter' => 'Сыанабыл:',
+	'readerfeedback-tier-high' => 'Үрдүк',
+	'readerfeedback-tier-medium' => 'Орто',
+	'readerfeedback-tier-poor' => 'Мөлтөх',
+	'tooltip-ca-ratinghist' => 'Ааҕааччы бу сирэйи сыанабыла',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

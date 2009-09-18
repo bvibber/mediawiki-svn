@@ -794,8 +794,11 @@ $messages['hu'] = array(
 	'dt_xml_id' => 'Azonosító',
 	'dt_xml_freetext' => 'Szabad szöveg',
 	'importxml' => 'XML importálás',
+	'dt_import_selectfile' => 'Kérlek válaszd ki az importálandó $1 fájlt:',
+	'dt_import_encodingtype' => 'Kódolás típusa',
 	'dt_import_editsummary' => '$1 importálás',
 	'dt_import_importing' => 'Importálás…',
+	'dt_import_success' => '{{PLURAL:$1|egy|$1}} lap fog készülni a(z) $2 fájlból.',
 	'importcsv' => 'CSV importálása',
 	'right-datatransferimport' => 'Adatok importálása',
 );

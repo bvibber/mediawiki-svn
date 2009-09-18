@@ -326,8 +326,13 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'useroptionstats' => 'Felhasználói beállítások statisztikája',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Speciális lap]] a MediaWiki felhasználói beállításai használatának áttekintésére',
+	'uos-warn' => 'A PHPlot nincs telepítve!',
+	'uos-choose' => 'Válassz egyet a következő felhasználói beállításokból: $1',
 	'uos-unknown' => '*Alapértelmezett',
 	'uos-other' => '*Egyéb',
+	'uos-title' => 'A(z) $1 felhasználói beállítás értékeinek eloszlása',
 );
 
 /** Interlingua (Interlingua)

@@ -641,15 +641,20 @@ ID, kotryž dyrbiš podać, su ličby a pismiki mjez "$2" a "$3".',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'imstatus_syntax' => 'Szintaxis',
 	'imstatus_default' => 'Alapértelmezett',
 	'imstatus_example' => 'Példa',
 	'imstatus_possible_val' => 'Lehetséges értékek',
 	'imstatus_max' => 'max.',
 	'imstatus_min' => 'min.',
 	'imstatus_or' => 'vagy',
+	'imstatus_action' => 'művelet a gombra való kattintáskor',
 	'imstatus_your_name' => '$1-azonosító',
+	'imstatus_gtalk_code' => 'a google talk kódod',
 	'imstatus_gtalk_height' => 'a doboz magassága, képpontban.',
+	'imstatus_gtalk_width' => 'a doboz szélessége, pixelekben.',
 	'imstatus_icq_id' => 'az ICQ-azonosítód',
+	'imstatus_live_code' => 'a Live Messenger weboldal azonosítód',
 	'imstatus_xfire_size' => 'a gomb mérete, a legnagyobbtól ($1) a legkisebbig ($2).',
 );
 

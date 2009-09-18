@@ -281,6 +281,34 @@ $messages['be-tarask'] = array(
 Павінна быць вызначана толькі адна каманда;
 яна павінна пачынацца з сымбалю «\\» і ўтрымліваць толькі літары.',
 	'math_MissingDelimiter' => 'Адсутнічае разьдзяляльнік пасьля «$1»',
+	'math_MissingOpenBraceAfter' => 'Адсутнічае адкрываючая дужка «{» пасьля «$1»',
+	'math_MissingOpenBraceAtEnd' => 'Адсутнічае адкрываючая дужка «{» у канцы ўваходных зьвестак',
+	'math_MissingOpenBraceBefore' => 'Адсутнічае адкрываючая дужка «{» перад «$1»',
+	'math_MissingOrIllegalParameterCount' => 'Адсутнічае альбо няслушная колькасьць парамэтраў у вызначэньні «$1».
+Павінна быць лічба ад 1 да 9.',
+	'math_MissingOrIllegalParameterIndex' => 'Адсутнічае альбо няслушны індэкс парамэтру ў вызначэньні «$1»',
+	'math_NonAsciiInMathMode' => 'Не-ASCII сымбалі могуць выкарыстоўвацца толькі ў тэкставым рэжыме.
+Паспрабуйце ўключыць такія сымбалі ў в «\\text{…}».',
+	'math_NotEnoughArguments' => 'Недастаткова аргумэнтаў для «$1»',
+	'math_PngIncompatibleCharacter' => 'Немагчыма правільна стварыць PNG-выяву, якая ўтрымлівае сымбаль $1',
+	'math_ReservedCommand' => 'Каманда «$1» зарэзэрваваная для ўнутранага выкарыстаньня ў праграме blahtex',
+	'math_SubstackRowTooBig' => 'У кожным радку блёку «substack» можа быць толькі адзін запіс',
+	'math_TooManyMathmlNodes' => 'Занадта шмат вузлоў у дрэве MathML',
+	'math_TooManyTokens' => 'Занадта вялікія ўваходныя зьвесткі',
+	'math_UnavailableSymbolFontCombination' => 'Сымбаль «$1» адсутнічае у шрыфце «$2»',
+	'math_UnexpectedNextCell' => 'Каманда «&» можа выкарыстоўвацца толькі ўнутры блёку «\\begin … \\end»',
+	'math_UnexpectedNextRow' => 'Каманда «\\\\» можа выкарыстоўвацца толькі ўнутры блёку «\\begin … \\end»',
+	'math_UnmatchedBegin' => 'Выкарыстаньне «\\begin» без адпаведнага «\\end»',
+	'math_UnmatchedCloseBrace' => 'Выкарыстаньне закрываючай дужкі «}» без адпаведнай адкрываючай «{»',
+	'math_UnmatchedEnd' => 'Выкарыстаньне «\\end» без адпаведнага «\\begin»',
+	'math_UnmatchedLeft' => 'Выкарыстаньне «\\left» без адпаведнага «\\right»',
+	'math_UnmatchedOpenBrace' => 'Выкарыстаньне адкрываючай дужкі «{» без адпаведнай зарываючай «}»',
+	'math_UnmatchedOpenBracket' => 'Выкарыстаньне адкрываючай квадратнай дужкі «[» без адпаведнай закрываючай «]»',
+	'math_UnmatchedRight' => 'Выкарыстаньне «\\right» без адпаведнага «\\left»',
+	'math_UnrecognisedCommand' => 'Няслушная каманда «$1»',
+	'math_WrongFontEncoding' => 'Сымбаль «$1» ня можа выкарыстоўвацца ў кадыроўцы шрыфту «$2»',
+	'math_WrongFontEncodingWithHint' => 'Сымбаль «$1» ня можа выкарыстоўвацца ў кадыроўцы шрыфту «$2».
+Паспрабуйце выкарыстоўваць каманду «$3{…}».',
 );
 
 /** Bulgarian (Български)

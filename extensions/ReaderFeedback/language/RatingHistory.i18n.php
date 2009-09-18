@@ -98,6 +98,7 @@ $messages['ar'] = array(
 المقياس: '''[1]''' - فقير؛ '''[2]''' - منخفض؛ '''[3]''' - معقول؛ '''[4]''' - مرتفع؛ '''[5]''' - ممتاز؛
 
 '''عدد المراجعات لكل يوم''' <font color=\"red\">''(أحمر)''</font> معروض على الرسومات بالأسفل، بمقياس ''1:\$1''.",
+	'ratinghistory-graph-scale' => "'''المراجعات لكل يوم''' <font color=\"red\">''(أحمر)''</font> معروض على مقياس ''1:\$1''.",
 	'right-feedback' => 'استخدام استمارة الآراء لتقييم صفحة',
 );
 
@@ -464,6 +465,7 @@ La  '''valoración promedio de ejecución''' es simplemente el promedio de todas
 Las valoraciones son como siguen:
 
 '''(1)''' - Pobre; '''(2)''' - Bajo; '''(3)''' - Regular; '''(4)''' - Alto; '''(5)''' - Excelente;",
+	'ratinghistory-graph-scale' => "'''Revisiones por día''' <font color=\"red\">''(rojo)''</font> mostradas en una escala de ''1:\$1''.",
 	'right-feedback' => 'Usar el formulario de retroalimentación para valorar una página',
 );
 

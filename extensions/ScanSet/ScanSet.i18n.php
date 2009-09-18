@@ -1371,15 +1371,15 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'scanset-desc' => 'Xem hình của các trang được quét từ bộ CD/DVD của Andreas Grosz',
-	'scanset_no_name' => 'Error: Bạn hãy chỉ rõ một tên tập để quét, ví dụ &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Error: Bộ trang quét không hợp lệ hay không tồn tại.',
+	'scanset_no_name' => 'Lỗi: Bạn hãy chỉ rõ một tên tập để quét, ví dụ &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Lỗi: Bộ trang quét không hợp lệ hay không tồn tại.',
 	'scanset_unrecognised_index_format' => 'Lỗi: Không biết định dạng chỉ số này',
-	'scanset_opendir_error' => 'Error: Lỗi, không thể mở thư mục $1',
-	'scanset_no_files' => 'Error: Không có tập tin nào trong thư mục chỉ định.',
-	'scanset_no_volumes' => 'Error: Không tìm thấy gói thư mục',
-	'scanset_missing_index_file' => 'Error: Không tìm thấy tập tin chỉ số $1',
+	'scanset_opendir_error' => 'Lỗi: Không thể mở thư mục $1',
+	'scanset_no_files' => 'Lỗi: Không có tập tin nào trong thư mục chỉ định.',
+	'scanset_no_volumes' => 'Lỗi: Không tìm thấy gói thư mục',
+	'scanset_missing_index_file' => 'Lỗi: Không tìm thấy tập tin chỉ số $1',
 	'scanset_index_file_error' => 'Error: Lỗi trong định dạng tập tin chỉ số tại dòng $1',
-	'scanset_invalid_volume' => 'Error: Quyển không hợp lệ',
+	'scanset_invalid_volume' => 'Lỗi: Quyển không hợp lệ',
 	'scanset_next' => 'Sau →',
 	'scanset_prev' => '← Trước',
 );

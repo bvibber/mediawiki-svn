@@ -46,6 +46,17 @@ $messages['af'] = array(
 	'commentbox-regex' => '/\\n==\\s*Opmerkings\\s*==\\s*\\n/i',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'commentbox-savebutton' => 'حفظ التعليق',
+	'commentbox-name' => 'الاسم:',
+	'commentbox-log' => 'تعليقات جديدة',
+	'commentbox-first-comment-heading' => '== تعليقات ==',
+	'commentbox-error-empty-comment' => 'التعليقات الفارغة غير مسموح بها!',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -387,6 +398,26 @@ Voeg deze hier toe of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|actio
 	'commentbox-error-page-nonexistent' => 'Deze pagina bestaat niet!',
 	'commentbox-error-namespace' => 'Opmerkingen zijn niet toegestaan in deze naamruimte!',
 	'commentbox-error-empty-comment' => 'Lege opmerkingen zijn niet toegestaan!',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'commentbox-desc' => 'Legg til ein kommentarboks til sume sider',
+	'commentbox-intro' => '== Legg til ein kommentar... ==
+
+Har du ein kommentar til denne sida? Legg han til her eller <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} endra sida direkte]</span>.',
+	'commentbox-savebutton' => 'Lagra kommentar',
+	'commentbox-name' => 'Namn:',
+	'commentbox-name-explanation' => '<small>(Tips: Du slepp du å fylla ut namnet ditt manuelt her om du [[Special:UserLogin|loggar inn]])</small>',
+	'commentbox-log' => 'Nye kommentarar',
+	'commentbox-first-comment-heading' => '== Kommentarar ==',
+	'commentbox-regex' => '/\\n==\\s*Kommentarar\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Det oppstod ein feil medan kommentaren vart oppretta',
+	'commentbox-error-page-nonexistent' => 'Denne sida finst ikkje.',
+	'commentbox-error-namespace' => 'Kommentarar er ikkje tillatne i dette namnerommet.',
+	'commentbox-error-empty-comment' => 'Tomme kommentarar er ikkje tillatne.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

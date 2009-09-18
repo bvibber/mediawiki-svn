@@ -203,7 +203,7 @@ $messages['ar'] = array(
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
 	'oversight-legend' => 'بحث في سجل إخفاء المراجعات',
 	'oversight-oversighter' => 'ناظر:',
-	'oversight-offender' => 'مسيء:',
+	'oversight-offender' => 'مؤلف المراجعة:',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -959,6 +959,8 @@ $messages['et'] = array(
 Kõigepealt eemalda see.',
 	'oversight-log-hiderev' => 'eemaldas muudatuste leheküljelt $1',
 	'oversight-view' => 'üksikasjad',
+	'oversight-hidden' => 'Peidetud redaktsioon',
+	'oversight-offender' => 'Redaktsiooni tegija:',
 );
 
 /** Basque (Euskara) */
@@ -1625,7 +1627,7 @@ Reverte primo iste modification.',
 Le divulgation de iste informationes pote resultar in le perdita permanente del privilegios supervisorial.',
 	'oversight-legend' => 'Cercar in registro de celamento de versiones',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Transgressor:',
+	'oversight-offender' => 'Autor del version:',
 );
 
 /** Indonesian (Bahasa Indonesia)

@@ -308,7 +308,12 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'newschannel' => 'Hírcsatorna',
+	'newschannel-desc' => 'Hírcsatorna megvalósítás dinamikus [[Special:NewsChannel|speciális lapként]]',
 	'newschannel_format' => 'Formátum:',
+	'newschannel_limit' => 'Korlát:',
+	'newschannel_include_category' => 'További kategória:',
+	'newschannel_exclude_category' => 'Kategória kihagyása:',
 	'newschannel_submit_button' => 'Hírcsatorna készítése',
 );
 

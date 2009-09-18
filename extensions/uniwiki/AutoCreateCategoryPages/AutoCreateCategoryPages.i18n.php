@@ -253,9 +253,11 @@ Nalistuje wšě strony w kategoriji "$1" a tež wšě podkategorije kategorije "
 
 /** Hungarian (Magyar)
  * @author Bdamokos
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'autocreatecategorypages-desc' => 'Hiányzó kategóriaoldalak automatikus létrehozása a mentés után.',
+	'autocreatecategorypages-editor' => 'Automatikus kategória-készítő',
 );
 
 /** Interlingua (Interlingua)

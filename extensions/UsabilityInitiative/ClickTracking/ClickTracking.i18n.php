@@ -57,6 +57,16 @@ $messages['af'] = array(
 	'end-date' => 'Einddatum (JJJJMMDD)',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'event-name' => 'اسم الحدث',
+	'beginner' => 'مبتدئ',
+	'intermediate' => 'متوسط',
+	'expert' => 'خبير',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -118,6 +128,17 @@ $messages['cs'] = array(
 	'clicktracking-desc' => 'Sledování kliknutí pro sledování událostí, které nezpůsobují znovunačtení stránky',
 	'clicktracking-title' => 'Souhrn klikání uživatelů',
 	'event-name' => 'Název události',
+	'expert-header' => 'Kliknutí „expertů“',
+	'intermediate-header' => 'Kliknutí „pokročilých“',
+	'beginner-header' => 'Kliknutí „začátečníků“',
+	'total-header' => 'Celkem kliknutí',
+	'start-date' => 'Datum začátku (RRRRMMDD)',
+	'end-date' => 'Datum konce (RRRRMMDD)',
+	'increment-by' => 'Počet dní reprezentovaných každým bodem',
+	'change-graph' => 'Změnit graf',
+	'beginner' => 'Začátečník',
+	'intermediate' => 'Pokročilý',
+	'expert' => 'Expert',
 );
 
 /** German (Deutsch)
@@ -172,8 +193,14 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'clicktracking-desc' => 'Sekvado de klakoj, por sekvi klakeventojn kiu ne kaŭzas paĝan refreŝigon',
 	'event-name' => 'Eventa nomo',
+	'expert-header' => 'Klakoj de "Spertuloj"',
+	'intermediate-header' => 'Klakoj de "progresantoj"',
+	'beginner-header' => 'Klakoj de "novuloj"',
 	'start-date' => 'Komenca Dato (JJJJMMTT)',
 	'end-date' => 'Fina Dato (JJJJMMTT)',
+	'beginner' => 'Novulo',
+	'intermediate' => 'Progresanto',
+	'expert' => 'Spertulo',
 );
 
 /** Spanish (Español)
@@ -182,6 +209,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'clicktracking-title' => 'Clicks de usuario agregados',
+	'start-date' => 'Fecha de inicio (AAMMDD)',
+	'end-date' => 'Fecha de fin (AAMMDD)',
 	'beginner' => 'Principiante',
 	'intermediate' => 'Intemedio',
 	'expert' => 'Experto',
@@ -491,6 +520,16 @@ $messages['pms'] = array(
 	'expert' => 'Espert',
 );
 
+/** Portuguese (Português)
+ * @author Giro720
+ */
+$messages['pt'] = array(
+	'change-graph' => 'Mudar gráfico',
+	'beginner' => 'Iniciante',
+	'intermediate' => 'Intermediário',
+	'expert' => 'Experiente',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */
@@ -586,6 +625,11 @@ $messages['vec'] = array(
 	'clicktracking' => "Traciamento click de l'Inissiativa par l'Usabilità",
 	'clicktracking-desc' => 'Traciamento dei click, par traciare i eventi che no provoca mia un refresh de la pagina.',
 	'clicktracking-title' => 'Agregassion dei clic dei utenti',
+	'start-date' => 'Data de inissio (AAAAMMGG)',
+	'end-date' => 'Data de fine(AAAAMMGG)',
+	'beginner' => 'Prinsipiante',
+	'intermediate' => 'Intermedio',
+	'expert' => 'Esperto',
 );
 
 /** Veps (Vepsan kel')

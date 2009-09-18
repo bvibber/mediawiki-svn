@@ -266,6 +266,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'formatchanges-desc' => 'Újraformázza a [[Special:RecentChanges|friss változtatásokat]]',
 	'formatchanges-anonymous' => 'Névtelen',
 );
 

@@ -784,8 +784,11 @@ $messages['hu'] = array(
 	'importusers-log-summary' => 'Összefoglaló',
 	'importusers-log-summary-all' => 'Összes',
 	'importusers-log-summary-added' => 'Hozzáadva',
+	'importusers-log-summary-updated' => 'Frissítve',
+	'importusers-login-name' => 'Felhasználói név',
 	'importusers-password' => 'jelszó',
 	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'valódi név',
 );
 
 /** Interlingua (Interlingua)

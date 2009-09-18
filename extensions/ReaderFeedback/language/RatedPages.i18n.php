@@ -135,6 +135,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'ratedpages' => 'Páginas valorizadas por lector',
 	'ratedpages-list' => 'Lo de abajo es una lista de páginas ordenadas por su valoración de retroalimentación de lector.',
 	'ratedpages-none' => 'No hay páginas en esta lista',
 	'ratedpages-graphs' => 'Datos de rating',
@@ -375,6 +376,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'ratedpages' => 'Paginas evaluadas pels lectors',
+	'ratedpages-leg' => "Trobar las paginas evaluadas amb un nombre d'evaluacions pro grand",
 	'ratedpages-list' => 'Vaquí, çaijós, una tièra de paginas triadas en foncion de la notacion de lors lectors.',
 	'ratedpages-none' => 'I a pas cap de pagina dins aquesta tièra',
 	'ratedpages-graphs' => 'donadas de notacion',

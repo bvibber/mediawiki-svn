@@ -848,8 +848,13 @@ $4',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'todo' => 'Tennivalók listája',
+	'todo-tab' => 'tennivalók',
 	'todo-new-queue' => 'új',
+	'todo-list-change' => 'Változtatás',
 	'todo-list-cancel' => 'Mégse',
+	'todo-form-details' => 'Részletek:',
+	'todo-form-submit' => 'Lekérdezés elküldése',
 );
 
 /** Interlingua (Interlingua)

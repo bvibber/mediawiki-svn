@@ -314,6 +314,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'securepasswords-desc' => 'Biztonságosabb jelszó-hasheket készít, és jelszó megadásakor ellenőrzi annak erősségét',
 	'securepasswords-valid' => 'A jelszavad érvénytelen, vagy túl rövid.
 Követelmények:',
 	'securepasswords-minlength' => 'legalább {{PLURAL:$1|egy|$1}} karakter hosszú',
@@ -321,6 +322,8 @@ Követelmények:',
 	'securepasswords-uppercase' => 'legalább egy nagybetűt tartalmaz',
 	'securepasswords-digit' => 'legalább egy számot tartalmaz',
 	'securepasswords-special' => 'legalább egy speciális karaktert tartalmaz (speciális karakterek: $1)',
+	'securepasswords-username' => 'különböznie kell a felhasználói nevedtől',
+	'securepasswords-word' => 'nem lehet egy szó',
 );
 
 /** Interlingua (Interlingua)
