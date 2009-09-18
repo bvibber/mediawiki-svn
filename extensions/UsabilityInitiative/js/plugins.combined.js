@@ -685,7 +685,7 @@ $.fn.suggestions = function() {
 					context.data.keypressedCount++;
 					$.suggestions.keypress( e, context, context.data.keypressed );
 				} )
-				.keyup( function() {
+				.keyup( function( e ) {
 					// Some browsers won't throw keypress() for arrow keys. If we got a keydown and a keyup without a
 					// keypress in between, solve it
 					if ( context.data.keypressedCount == 0 ) {
