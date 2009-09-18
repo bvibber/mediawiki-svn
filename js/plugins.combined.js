@@ -763,11 +763,6 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 		// Do nothing
 	} else if ( document.selection && document.selection.createRange ) {
 		// IE/Opera
-		if ( document.documentElement && document.documentElement.scrollTop ) {
-			var winScroll = document.documentElement.scrollTop;
-		} else if ( document.body ) {
-			var winScroll = document.body.scrollTop;
-		}
 		$(this).focus();
 		var range = document.selection.createRange();
 		if ( ownline && range.moveStart ) {
@@ -795,14 +790,8 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			range.moveEnd( 'character', - post.length );
 		}
 		range.select();
-		if ( document.documentElement && document.documentElement.scrollTop ) {
-			document.documentElement.scrollTop = winScroll
-		} else if ( document.body ) {
-			document.body.scrollTop = winScroll;
-		}
 	} else if ( e.selectionStart || e.selectionStart == '0' ) {
 		// Mozilla
-		var textScroll = e.scrollTop;
 		$(this).focus();
 		var startPos = e.selectionStart;
 		var endPos = e.selectionEnd;
@@ -823,8 +812,9 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			e.selectionStart = startPos + pre.length + selText.length + post.length;
 			e.selectionEnd = e.selectionStart;
 		}
-		e.scrollTop = textScroll;
 	}
+	// Scroll the textarea to the inserted text
+	$(this).scrollToCaretPosition( $(this).getCaretPosition() );
 	$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
 },
 /**
