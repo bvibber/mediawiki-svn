@@ -62,7 +62,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 9 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 10 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 3 ),
