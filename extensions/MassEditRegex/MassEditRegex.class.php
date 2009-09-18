@@ -19,47 +19,6 @@ define('MER_MAX_PREVIEW_DIFFS', 10);
 
 /** Main class that define a new special page*/
 class MassEditRegex extends SpecialPage {
-
-	function MassEditRegex() {
-		SpecialPage::SpecialPage('MassEditRegex', 'bot');
-	}
-
-	function execute( $par ) {
-		global $wgAllowSysopQueries, $wgUser, $wgRequest, $wgOut;
-		wfLoadExtensionMessages('MassEditRegex');
-
-		if (!$wgUser->isBot()) {
-			$wgOut->permissionRequired('bot');
-			return;
-		}
-
-		if ($wgRequest->wasPosted()) {
-			$f = new MassEditRegexForm(
-				$wgRequest->getText('wpPageList'),
-				$wgRequest->getText('wpMatch'),
-				$wgRequest->getText('wpReplace'),
-				$wgRequest->getText('wpSummary')
-			);
-			if ($wgRequest->getVal('wpPreviewBtn') !== NULL) {
-				$f->showPreview();
-			} else if ($wgRequest->getVal('wpExecuteBtn') !== NULL) {
-				$f->execute();
-			}
-		} else {
-			$f = new MassEditRegexForm();
-			$f->showForm();
-			$f->showHints();
-		}
-
-	}
-}
-
-/**
- * @access private
- * @addtogroup SpecialPage
- */
-
-class MassEditRegexForm {
 	private $aPageList;
 	private $aMatch;
 	private $aReplace;
@@ -67,66 +26,92 @@ class MassEditRegexForm {
 	private $strSummary;
 	private $sk;
 
-	function MassEditRegexForm(
-		$strPageList = 'Sandbox',
-		$strMatch = '/hello (.*)\n/',   // defaults
-		$strReplace = 'goodbye \1',
-		$strSummary = ''
-	) {
-		global $wgOut, $wgUser;
-		$this->aPageList = split("\n", trim($strPageList));
+	function __construct() {
+		parent::__construct( 'MassEditRegex', 'bot' );
+	}
+
+	function execute( $par ) {
+		global $wgUser, $wgRequest, $wgOut;
+
+		wfLoadExtensionMessages('MassEditRegex');
+
+		$this->setHeaders();
+
+		#if ( !$wgUser->isAllowed( 'bot' ) ) {
+		#	$wgOut->permissionRequired( 'bot' );
+		#	return;
+		#}
+
+		$this->outputHeader();
+
+		$strPageList = $wgRequest->getText( 'wpPageList', 'Sandbox' );
+		$strMatch = $wgRequest->getText( 'wpMatch', '/hello (.*)\n/' );
+		$strReplace = $wgRequest->getText( 'wpReplace', 'goodbye \1' );
+		$strSummary = $wgRequest->getText( 'wpSummary', '' );
+
+		$this->aPageList = explode("\n", trim($strPageList));
 		//print_r($this->aPages);
 		//if (count($this->aPages) == 0) $this->aPages[0] = $this->aPages;
-		$this->aMatch = split("\n", trim($strMatch));
+		$this->aMatch = explode("\n", trim($strMatch));
 		$this->strReplace = $strReplace;
-		$this->aReplace = split("\n", $strReplace);
+		$this->aReplace = explode("\n", $strReplace);
 		$this->strSummary = $strSummary;
-
-		$wgOut->setPagetitle(wfMsg('masseditregex'));
 
 		$this->sk = $wgUser->getSkin();
 
 		// Replace \n in the match with an actual newline (since a newline can't
 		// be typed in, it'll act as the splitter for the next regex)
-		foreach ($this->aReplace as &$str) {
+		foreach ( $this->aReplace as &$str ) {
 			// Convert \n into a newline, \\n into \n, \\\n into \<newline>, etc.
-			$str = preg_replace(array(
-				'/(^|[^\\\\])((\\\\)*)(\2)\\\\n/',
-				'/(^|[^\\\\])((\\\\)*)(\2)n/'
+			$str = preg_replace(
+				array(
+					'/(^|[^\\\\])((\\\\)*)(\2)\\\\n/',
+					'/(^|[^\\\\])((\\\\)*)(\2)n/'
 				), array(
-				"\\1\\2\n",
-				"\\1\\2n"
-			), $str);
+					"\\1\\2\n",
+					"\\1\\2n"
+				), $str);
 		}
+
+		if ( $wgRequest->wasPosted() ) {
+			if ($wgRequest->getCheck( 'wpPreviewBtn' ) ) {
+				$this->showPreview();
+			} else if ( $wgRequest->getCheck('wpExecuteBtn') ) {
+				$this->perform();
+			}
+		} else {
+			$this->showForm();
+			$this->showHints();
+		}
+
 	}
 
-	function showForm($err = '') {
-		global $wgOut, $wgUser, $wgLang;
-		global $wgLogQueries;
+	function showForm( $err = '' ) {
+		global $wgOut;
 
-		if ($err) {
+		if ( $err ) {
 			$wgOut->addHTML('<div class="wikierror">' . htmlspecialchars($err) . '</div>');
 		}
 
-		$wgOut->addWikiText(wfMsg('masseditregextext'));
+		$wgOut->addWikiMsg( 'masseditregextext' );
 
-		$txtPageList = wfMsg('pagelisttxt');
-		$txtMatch = wfMsg('matchtxt');
-		$txtReplace = wfMsg('replacetxt');
-		$txtPreviewBtn = wfMsg('showpreview');
-		$txtExecuteBtn = wfMsg('executebtn');
+		$txtPageList = wfMsg( 'masseditregex-pagelisttxt' );
+		$txtMatch = wfMsg( 'masseditregex-matchtxt' );
+		$txtReplace = wfMsg( 'masseditregex-replacetxt' );
+		$txtPreviewBtn = wfMsg( 'showpreview' );
+		$txtExecuteBtn = wfMsg( 'masseditregex-executebtn' );
 		
-		$txtEditSummary = wfMsg('summary');
-		$txtSummaryPreview = wfMsg('summary-preview');
+		$txtEditSummary = wfMsg( 'summary' );
+		$txtSummaryPreview = wfMsg( 'summary-preview' );
 		
-		$titleObj = Title::makeTitle(NS_SPECIAL, 'MassEditRegex');
+		$titleObj = SpecialPage::getTitle( 'MassEditRegex' );
 		$action = $titleObj->escapeLocalURL('action=submit');
 
-		$htmlPageList = htmlspecialchars(join("\n", $this->aPageList));
-		$htmlMatch = htmlspecialchars(join("\n", $this->aMatch));
-		$htmlReplace = htmlspecialchars($this->strReplace); // use original value
-		$htmlSummary = htmlspecialchars($this->strSummary);
-		$htmlSummaryPreview = $this->sk->commentBlock($this->strSummary, $titleObj);
+		$htmlPageList = htmlspecialchars( join( "\n", $this->aPageList ) );
+		$htmlMatch = htmlspecialchars( join( "\n", $this->aMatch ) );
+		$htmlReplace = htmlspecialchars( $this->strReplace ); // use original value
+		$htmlSummary = htmlspecialchars( $this->strSummary );
+		$htmlSummaryPreview = $this->sk->commentBlock( $this->strSummary, $titleObj );
 
 		$mainForm = <<<ENDFORM
 <form id="masseditregex" method="post" action="{$action}">
@@ -161,27 +146,25 @@ $htmlSummaryPreview
 </div>
 
 <p>
-	<input type="submit" name="wpPreviewBtn" value="{$txtPreviewBtn}">
-	<input type="submit" name="wpExecuteBtn" value="{$txtExecuteBtn}">
+	<input type="submit" name="wpPreviewBtn" value="{$txtPreviewBtn}" />
+	<input type="submit" name="wpExecuteBtn" value="{$txtExecuteBtn}" />
 </p>
 </form>
 ENDFORM;
-		$wgOut->addHTML($mainForm);
-		return;
+		$wgOut->addHTML( $mainForm );
 	}
 
-	function showHints()
-	{
+	function showHints() {
 		global $wgOut;
-		$hintIntro = wfMsg('hint-intro');
-		$hintMatch = wfMsg('hint-headmatch');
-		$hintReplace = wfMsg('hint-headreplace');
-		$hintEffect = wfMsg('hint-headeffect');
-		$hintToAppend = wfMsg('hint-toappend');
-		$hintRemove = wfMsg('hint-remove');
-		$hintRemoveCat = wfMsg('hint-removecat');
+		$hintIntro = wfMsg( 'masseditregex-hint-intro' );
+		$hintMatch = wfMsg( 'masseditregex-hint-headmatch' );
+		$hintReplace = wfMsg( 'masseditregex-hint-headreplace' );
+		$hintEffect = wfMsg( 'masseditregex-hint-headeffect' );
+		$hintToAppend = wfMsg( 'masseditregex-hint-toappend' );
+		$hintRemove = wfMsg( 'masseditregex-hint-remove' );
+		$hintRemoveCat = wfMsg( 'masseditregex-hint-removecat' );
 	
-		$htmlHints = <<<ENDHINTS
+		$hints = <<<ENDHINTS
 <p>{$hintIntro}</p>
 <table border="1" cellspacing="0" cellpadding="2" class="wikitable">
 <thead><tr>
@@ -200,43 +183,37 @@ ENDFORM;
 </tbody>
 </table>
 ENDHINTS;
-		$wgOut->addHTML($htmlHints);
-
+		$wgOut->addHTML( $hints );
+	}
+	
+	function showPreview() {
+		$this->perform( false );
 		return;
 	}
 	
-	function showPreview()
-	{
-		$this->execute(false);
-		return;
-	}
-	
-	function getPages()
-	{
-		if (sizeof($this->aPageList) == 0) return NULL;
-		$req = new FauxRequest(array(
+	function getPages() {
+		if ( !count( $this->aPageList ) ) return NULL;
+		$req = new FauxRequest( array(
 			'action' => 'query',
-			'titles' => join('|', $this->aPageList),
+			'titles' => join( '|', $this->aPageList ),
 			'prop' => 'info|revisions',
 			'intoken' => 'edit',
 			'rvprop' => 'content',
 			//'rvlimit' => 1  // most recent revision only
-		), false);
-		$processor = new ApiMain($req, true);
+		), false );
+		$processor = new ApiMain( $req, true );
 		$processor->execute();
 		$aPages = $processor->getResultData();
-		if (empty($aPages)) return NULL; // no pages match the titles given
+		if ( empty( $aPages ) ) return NULL; // no pages match the titles given
 		return $aPages['query']['pages'];
 	}
 
-	function execute($bPerformEdits = true)
-	{
-		global $wgOut, $wgUser;
-		global $wgRequest, $wgTitle;
+	function perform( $bPerformEdits = true ) {
+		global $wgOut, $wgUser, $wgTitle;
 
 		$aPages = $this->getPages();
-		if ($aPages === NULL) {
-			$this->showForm(wfMsg('err-nopages'));
+		if ( $aPages === NULL ) {
+			$this->showForm( wfMsg( 'err-nopages' ) );
 			return;
 		}
 		
@@ -245,38 +222,40 @@ ENDHINTS;
 		
 		$diff = new DifferenceEngine();
 		$diff->showDiffStyle(); // send CSS link to the browser for diff colours
-		
-		$strChanges = wfMsg('num-changes');
-
-		if ($bPerformEdits) $wgOut->addHTML('<ul>');
 
 		// Save the state until the MW Edit API does it for us
-		if ($bPerformEdits) {
+		if ( $bPerformEdits ) {
+			$wgOut->addHTML( '<ul>' );
 			$o_wgOut = clone $wgOut; // need to do a deep copy here
 			$wgOut->disable(); // not strictly necessary, but might speed things up
 			$o_wgTitle = $wgTitle;
 		}
-		
+
 		$iArticleCount = 0;
-		foreach ($aPages as $p) {
+		foreach ( $aPages as $p ) {
 			$iArticleCount++;
-			if (!isset($p['revisions'])) {
-				if ($bPerformEdits) {
-					$o_wgOut->addHTML('<li> ' . $p['title'] . ' does not exist</li>');
+			if ( !isset( $p['revisions'] ) ) {
+				if ( $bPerformEdits ) {
+					$o_wgOut->addHTML( '<li>' );
+					$o_wgOut->addWikiMsg( 'masseditregex-page-not-exists', $p['title'] );
+					$o_wgOut->addHTML( '</li>' );
 				} else {
-					$wgOut->addHTML('<p>' . $p['title'] . ' does not exist</p>');
+					$wgOut->addWikiMsg( 'masseditregex-page-not-exists', $p['title'] );
 				}
 				continue; // empty page
 			}
 			$curContent = $p['revisions'][0]['*'];
 			$iCount = 0;
-			$newContent = @preg_replace($this->aMatch, $this->aReplace, $curContent, -1, $iCount);
+			$newContent = @preg_replace( $this->aMatch, $this->aReplace, $curContent, -1, $iCount );
 
-			if ($bPerformEdits) {
+			if ( $bPerformEdits ) {
 				// Not in preview mode, make the edits
-				//print_r($p);
-				$o_wgOut->addHTML('<li> ' . $p['title'] . ': ' . $iCount . ' ' . $strChanges . '</li>');
-				$req = new FauxRequest(array(
+				// print_r( $p );
+				$o_wgOut->addHTML( '<li>' );
+				$o_wgOut->addWikiMsg( 'masseditregex-num-changes', $p['title'], $iCount );
+				$o_wgOut->addHTML( '</li>' );
+				
+				$req = new FauxRequest( array(
 					'action' => 'edit',
 					'bot' => true,
 					'token' => $p['edittoken'],
@@ -284,44 +263,43 @@ ENDHINTS;
 					'summary' => $this->strSummary,
 					'text' => $newContent,
 					'basetimestamp' => $p['starttimestamp']
-				), true);
-				$processor = new ApiMain($req, true);
+				), true );
+				$processor = new ApiMain( $req, true );
 				try {
 					$processor->execute();
-				} catch (UsageException $e) {
-					$o_wgOut->addHTML('<ul><li>Edit failed: ' . $e . '</li></ul>');
+				} catch ( UsageException $e ) {
+					$o_wgOut->addHTML('<li><ul><li>Edit failed: ' . $e . '</li></ul></li>');
 				}
 			} else {
 				// In preview mode, display the first few diffs
-				$diff->setText($curContent, $newContent);
-				$dtxt = $diff->getDiff('<b>' . $p['title'] . ' - ' . wfMsg('before') . '</b>',
-					'<b>' . wfMsg('after') . '</b>');
+				$diff->setText( $curContent, $newContent );
+				$dtxt = $diff->getDiff( '<b>' . $p['title'] . ' - ' . wfMsg('masseditregex-before') . '</b>',
+					'<b>' . wfMsg('masseditregex-after') . '</b>' );
 				$wgOut->addHTML($dtxt);
 
-				if ($iArticleCount >= MER_MAX_PREVIEW_DIFFS) {
-					$wgOut->addHTML('<p>' . wfMsg('max-preview-diffs', MER_MAX_PREVIEW_DIFFS) . '</p>');
+				if ( $iArticleCount >= MER_MAX_PREVIEW_DIFFS ) {
+					$wgOut->addWikiMsg( 'max-preview-diffs', MER_MAX_PREVIEW_DIFFS );
 					break;
 				}
 			}
 
 		}
 		// Restore the state after the Edit API has messed with it
-		if ($bPerformEdits) {
+		if ( $bPerformEdits ) {
 			$wgTitle = $o_wgTitle;
 			$wgOut = $o_wgOut;
 		}
 
-		if ($bPerformEdits) {
-			$wgOut->addHTML('</ul><p>' . wfMsg('num-articles-changed', $iArticleCount)
-				. '</p>' . $this->sk->makeKnownLinkObj(
-					SpecialPage::getSafeTitleFor('Contributions', $wgUser->getName()),
-					wfMsg('view-full-summary')
+		if ( $bPerformEdits ) {
+			$wgOut->addHTML( '</ul>' );
+			$wgOut->addWikiMsg( 'masseditregex-num-articles-changed', $iArticleCount );
+			$wgOut->addHTML( 
+				$this->sk->makeKnownLinkObj(
+					SpecialPage::getSafeTitleFor( 'Contributions', $wgUser->getName() ),
+					wfMsgHtml( 'masseditregex-view-full-summary' )
 				)
 			);
 		}
-
-		return;
 	}
-
 }
 
