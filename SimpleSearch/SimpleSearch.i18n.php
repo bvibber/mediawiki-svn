@@ -705,6 +705,13 @@ $messages['vi'] = array(
 	'simplesearch-containing' => 'có chứa...',
 );
 
+/** Mingrelian (მარგალური)
+ * @author Lika2672
+ */
+$messages['xmf'] = array(
+	'simplesearch-search' => 'გორუა',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

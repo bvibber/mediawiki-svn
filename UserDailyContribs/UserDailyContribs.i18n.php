@@ -129,6 +129,13 @@ $messages['oc'] = array(
 	'userdailycontribs-desc' => "Contribucions jornalièras per utilizaire per l'extension de seguit dels clics",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'userdailycontribs-desc' => 'Codzienny wkład użytkowników wyśledzony przez rozszerzenie monitorujące kliknięcia',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

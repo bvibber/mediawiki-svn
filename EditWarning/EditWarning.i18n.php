@@ -445,6 +445,13 @@ $messages['mk'] = array(
 	'editwarning-preference' => 'Предупреди ме кога сакам да напуштам страница за уредување без да ги имам зачувано промените',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തല്‍ താളുണ്ടെങ്കില്‍ എന്നെ അറിയിക്കുക',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Kurniasan
  */

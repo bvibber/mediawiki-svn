@@ -206,6 +206,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'edittoolbar-preference' => 'Option in [[Special:Preferences]]',
+	'edittoolbar-cgd-preference' => "Caption of a checkbox on [[Special:Preferences]] (''editing'' tab), enabling helper dialogs for various features of the advanced edit toolbar (e.g. inserting links or tables).",
 	'edittoolbar-loading' => '{{Identical|Loading}}',
 	'edittoolbar-tool-bold' => '{{Identical|Bold}}',
 	'edittoolbar-tool-bold-example' => '{{Identical|Bold text}}',
@@ -416,14 +417,14 @@ $messages['ar'] = array(
 	'edittoolbar-tool-table-dimensions-columns' => 'الأعمدة',
 	'edittoolbar-tool-table-insert' => 'إدراج',
 	'edittoolbar-tool-table-cancel' => 'إلغاء',
-	'edittoolbar-tool-replace' => 'استبدال',
+	'edittoolbar-tool-replace' => 'ابحث واستبدل',
 	'edittoolbar-tool-replace-title' => 'ابحث واستبدل',
 	'edittoolbar-tool-replace-search' => 'إبحث عن:',
 	'edittoolbar-tool-replace-replace' => 'استبدل ب:',
 	'edittoolbar-tool-replace-case' => 'مطابقة الحالة',
 	'edittoolbar-tool-replace-all' => 'استبدل كل المطابقات',
 	'edittoolbar-tool-replace-button' => 'استبدال',
-	'edittoolbar-tool-replace-close' => 'إغلاق',
+	'edittoolbar-tool-replace-close' => 'إلغاء',
 	'edittoolbar-tool-replace-nomatch' => 'بحثك لم يطابق أي شيء.',
 	'edittoolbar-section-characters' => 'محارف خاصة',
 	'edittoolbar-characters-page-latin' => 'اللاتينية',
@@ -1419,6 +1420,7 @@ $messages['cs'] = array(
 	'edittoolbar' => 'Editační panel nástrojů',
 	'edittoolbar-desc' => 'Editační panel nástrojů s vylepšenou použitelností',
 	'edittoolbar-preference' => 'Zapnout vylepšený panel nástrojů',
+	'edittoolbar-cgd-preference' => 'Zobrazovat pomocníky pro přidávání pokročilejší wikisyntaxe',
 	'edittoolbar-loading' => 'Načítá se…',
 	'edittoolbar-tool-bold' => 'Tučně',
 	'edittoolbar-tool-bold-example' => 'Tučný text',
@@ -1478,6 +1480,18 @@ $messages['cs'] = array(
 {{ns:file}}:Příklad.jpg|Titulek 2',
 	'edittoolbar-tool-newline' => 'Nový řádek',
 	'edittoolbar-tool-table' => 'Tabulka',
+	'edittoolbar-tool-table-example-old' => '-
+! hlavička 1
+! hlavička 2
+! hlavička 3
+|-
+| řádek 1, buňka 1
+| řádek 1, buňka 2
+| řádek 1, buňka 3
+|-
+| řádek 2, buňka 1
+| řádek 2, buňka 2
+| řádek 2, buňka 3',
 	'edittoolbar-tool-table-example' => 'Řádek $1, buňka $2',
 	'edittoolbar-tool-table-example-header' => 'Řádek $1, buňka $2 (záhlaví)',
 	'edittoolbar-tool-table-title' => 'Vložení tabulky',
@@ -2341,6 +2355,18 @@ $messages['eo'] = array(
 {{ns:file}}:Ekzemplo.jpg|Teksto2 pri dosiero',
 	'edittoolbar-tool-newline' => 'Nova linio',
 	'edittoolbar-tool-table' => 'Tabelo',
+	'edittoolbar-tool-table-example-old' => '-
+! titolo 1
+! titolo 2
+! titolo 3
+|-
+| vico 1, ĉelo 1
+| vico 1, ĉelo 2
+| vico 1, ĉelo 3
+|-
+| vico 2, ĉelo 1
+| vico 2, ĉelo 2
+| vico 2, ĉelo 3',
 	'edittoolbar-tool-table-example' => 'Vico $1, ĉelo $2',
 	'edittoolbar-tool-table-example-header' => 'Vico $1, ĉelo $2 (titolo)',
 	'edittoolbar-tool-table-title' => 'Enmeti tabelon',
@@ -2448,6 +2474,7 @@ $messages['es'] = array(
 	'edittoolbar' => 'Editando barra de herramientas',
 	'edittoolbar-desc' => 'Barra de herramientas de página de edición con usabilidad mejorada',
 	'edittoolbar-preference' => 'Habilitar barra de herramientas de edición mejorada',
+	'edittoolbar-cgd-preference' => 'Habilitar ayuda para agregar texto wiki avanzado',
 	'edittoolbar-loading' => 'Cargando...',
 	'edittoolbar-tool-bold' => 'Negrita',
 	'edittoolbar-tool-bold-example' => 'Texto en negrita',
@@ -2472,6 +2499,7 @@ $messages['es'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Título inválido',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Revisando existencia de la página...',
 	'edittoolbar-tool-link-int-invalid' => 'El título que ha especificado no es válido.',
+	'edittoolbar-tool-link-ext-invalid' => 'El URL que especificaste es inválido.',
 	'edittoolbar-tool-file' => 'Archivo empotrado',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Referencia',
@@ -2506,6 +2534,18 @@ $messages['es'] = array(
 {{ns:file}}:Ejemplo.jpg|Descripción2',
 	'edittoolbar-tool-newline' => 'Nueva línea',
 	'edittoolbar-tool-table' => 'Tabla',
+	'edittoolbar-tool-table-example-old' => '-
+! encabezado 1
+! encabezado 2
+! encabezado 3
+|-
+| fila 1, celda 1
+| fila 1, celda 2
+| fila 1, celda 3
+|-
+| fila 2, celda 1
+| fila 2, celda 2
+| fila 2, celda 3',
 	'edittoolbar-tool-table-example' => 'Fila $1, celda $2',
 	'edittoolbar-tool-table-example-header' => 'Fila $1, celda $2 (encabezado)',
 	'edittoolbar-tool-table-title' => 'Inserte tabla',
@@ -2633,6 +2673,7 @@ $messages['et'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Vigane pealkiri',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Lehekülje olemasolu kindlakstegemine...',
 	'edittoolbar-tool-link-int-invalid' => 'Määratud pealkiri on vigane.',
+	'edittoolbar-tool-link-ext-invalid' => 'Esitatud internetiaadress on vigane.',
 	'edittoolbar-tool-file' => 'Manusfail',
 	'edittoolbar-tool-file-example' => 'Näide.jpg',
 	'edittoolbar-tool-reference' => 'Viide',
@@ -2667,6 +2708,18 @@ $messages['et'] = array(
 {{ns:file}}:Näide.jpg|Pildiallkiri2',
 	'edittoolbar-tool-newline' => 'Uus rida',
 	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-example-old' => '-
+! päis 1
+! päis 2
+! päis 3
+|-
+| 1. rida, 1. lahter
+| 1. rida, 2. lahter
+| 1. rida, 3. lahter
+|-
+| 2. rida, 1. lahter
+| 2. rida, 2. lahter
+| 2. rida, 3. lahter',
 	'edittoolbar-tool-table-example' => '$1. rida, $2. lahter',
 	'edittoolbar-tool-table-example-header' => '$1. rida, $2. lahter (päis)',
 	'edittoolbar-tool-table-title' => 'Tabeli lisamine',
@@ -2675,14 +2728,14 @@ $messages['et'] = array(
 	'edittoolbar-tool-table-dimensions-columns' => 'Veerge',
 	'edittoolbar-tool-table-insert' => 'Lisa',
 	'edittoolbar-tool-table-cancel' => 'Loobu',
-	'edittoolbar-tool-replace' => 'Asenda',
+	'edittoolbar-tool-replace' => 'Otsi ja asenda',
 	'edittoolbar-tool-replace-title' => 'Otsimine ja asendus',
 	'edittoolbar-tool-replace-search' => 'Otsitav:',
 	'edittoolbar-tool-replace-replace' => 'Asendaja:',
 	'edittoolbar-tool-replace-case' => 'Erista suurtähti',
 	'edittoolbar-tool-replace-all' => 'Asenda kõik',
 	'edittoolbar-tool-replace-button' => 'Asenda',
-	'edittoolbar-tool-replace-close' => 'Sule',
+	'edittoolbar-tool-replace-close' => 'Loobu',
 	'edittoolbar-tool-replace-nomatch' => 'Ühtegi otsitavat ei leitud.',
 	'edittoolbar-section-characters' => 'Erimärgid',
 	'edittoolbar-characters-page-latin' => 'Ladina',
@@ -4599,7 +4652,7 @@ $messages['ia'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Includer linea de capite',
 	'edittoolbar-tool-table-insert' => 'Inserer',
 	'edittoolbar-tool-table-cancel' => 'Cancellar',
-	'edittoolbar-tool-replace' => 'Reimplaciar',
+	'edittoolbar-tool-replace' => 'Cercar e reimplaciar',
 	'edittoolbar-tool-replace-title' => 'Cercar e reimplaciar',
 	'edittoolbar-tool-replace-search' => 'Cercar:',
 	'edittoolbar-tool-replace-replace' => 'Reimplaciar per:',
@@ -4607,7 +4660,7 @@ $messages['ia'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tractar le catena de recerca como un expression regular',
 	'edittoolbar-tool-replace-all' => 'Reimplaciar tote le occurrentias',
 	'edittoolbar-tool-replace-button' => 'Reimplaciar',
-	'edittoolbar-tool-replace-close' => 'Clauder',
+	'edittoolbar-tool-replace-close' => 'Cancellar',
 	'edittoolbar-tool-replace-nomatch' => 'Tu recerca non ha producite resultatos.',
 	'edittoolbar-section-characters' => 'Characteres special',
 	'edittoolbar-characters-page-latin' => 'Latin',
@@ -5822,6 +5875,7 @@ $messages['lb'] = array(
 	'edittoolbar' => 'Toolbar änneren',
 	'edittoolbar-desc' => 'Toolbar vun de Säitenännerunge mat erweiderter Benotzerfrëndlechkeet',
 	'edittoolbar-preference' => 'Déi erweidert Ännerungs-Toolbar aktivéieren',
+	'edittoolbar-cgd-preference' => 'Hëllef fir erweiderte Wikitext derbäisetzen',
 	'edittoolbar-loading' => 'Lueden...',
 	'edittoolbar-tool-bold' => 'Fettgedréckt',
 	'edittoolbar-tool-bold-example' => 'Fettgedréckten Text',
@@ -7304,6 +7358,7 @@ $messages['oc'] = array(
 	'edittoolbar' => 'Modificacion de la barra d’espleches',
 	'edittoolbar-desc' => "Modificacion de la barra d'espleches amb l'utilizabilitat melhorada",
 	'edittoolbar-preference' => "Activar la barra d'espleches melhorada",
+	'edittoolbar-cgd-preference' => "Activar l'ajuda per apondre de tèxte wiki avançat",
 	'edittoolbar-loading' => 'Cargament ...',
 	'edittoolbar-tool-bold' => 'Gras',
 	'edittoolbar-tool-bold-example' => 'Tèxte en gras',
@@ -7363,6 +7418,18 @@ $messages['oc'] = array(
 {{ns:file}}:Exemple.jpg|Descripcion 2',
 	'edittoolbar-tool-newline' => 'Saut de linha',
 	'edittoolbar-tool-table' => 'Tablèu',
+	'edittoolbar-tool-table-example-old' => '-
+! entèsta 1
+! entèsta 2
+! entèsta 3
+|-
+| linha 1, casa 1
+| linha 1, casa 2
+| linha 1, casa 3
+|-
+| linha 2, casa 1
+| linha 2, casa 2
+| linha 2, casa 3',
 	'edittoolbar-tool-table-example' => 'Linha $1, cellula $2',
 	'edittoolbar-tool-table-example-header' => 'Linha $1, cellula $2 (entèsta)',
 	'edittoolbar-tool-table-title' => 'Inserir un tablèu',
@@ -7491,6 +7558,7 @@ $messages['pl'] = array(
 	'edittoolbar' => 'Pasek narzędzi edycyjnych',
 	'edittoolbar-desc' => 'Ułatwiający pracę pasek narzędzi edycyjnych',
 	'edittoolbar-preference' => 'Włącz rozszerzony pasek narzędzi edycyjnych',
+	'edittoolbar-cgd-preference' => 'Włącz pomoc dla dodawania zaawansowanego tekstu Wiki',
 	'edittoolbar-loading' => 'Ładowanie...',
 	'edittoolbar-tool-bold' => 'Wytłuszczenie',
 	'edittoolbar-tool-bold-example' => 'Tekst tłustą czcionką',
@@ -7550,6 +7618,18 @@ $messages['pl'] = array(
 {{ns:file}}:Example.jpg|Podpis2',
 	'edittoolbar-tool-newline' => 'Nowy wiersz',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! nagłówek 1
+! nagłówek 2
+! nagłówek 3
+| -
+| wiersz 1, komórka 1
+| wiersz 1, komórka 2
+| wiersz 1, komórka 3
+| -
+| wiersz 2, komórka 1
+| wiersz 2, komórka 2
+| wiersz 2, komórka 3',
 	'edittoolbar-tool-table-example' => 'Wiersz $1, komórka $2',
 	'edittoolbar-tool-table-example-header' => 'Wiersz $1, kolumna $2 (nagłówek)',
 	'edittoolbar-tool-table-title' => 'Wstaw tabelę',
@@ -8558,6 +8638,7 @@ $messages['sk'] = array(
 	'edittoolbar' => 'Panel nástrojov na úpravy',
 	'edittoolbar-desc' => 'Panel nástrojov na úpravy stránky s rozšírenou použiteľnosťou',
 	'edittoolbar-preference' => 'Zapnúť rozšírený panel nástrojov na úpravy',
+	'edittoolbar-cgd-preference' => 'Povoliť pomocníka k pridávaniu rozšíreného wiki textu',
 	'edittoolbar-loading' => 'Načítava sa...',
 	'edittoolbar-tool-bold' => 'Hrubý',
 	'edittoolbar-tool-bold-example' => 'Hrubý text',
@@ -8617,6 +8698,18 @@ $messages['sk'] = array(
 {{ns:file}}:Príklad.jpg|Popis2',
 	'edittoolbar-tool-newline' => 'Nový riadok',
 	'edittoolbar-tool-table' => 'Tabuľka',
+	'edittoolbar-tool-table-example-old' => '-
+! hlavička 1
+! hlavička 2
+! hlavička 3
+|-
+| riadok 1, bunka 1
+| riadok 1, bunka 2
+| riadok 1, bunka 3
+|-
+| riadok 2, bunka 1
+| riadok 2, bunka 2
+| riadok 2, bunka 3',
 	'edittoolbar-tool-table-example' => 'Riadok $1, bunka $2',
 	'edittoolbar-tool-table-example-header' => 'Riadok $1, bunka $2 (hlavička)',
 	'edittoolbar-tool-table-title' => 'Vložiť tabuľku',
