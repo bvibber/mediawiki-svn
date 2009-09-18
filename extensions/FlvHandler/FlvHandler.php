@@ -16,7 +16,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 							 
 // Extension credits that will show up on Special:Version    
-$wgExtensionCredits['parserhook'][] = array(
+$wgExtensionCredits['media'][] = array(
+	'path'         => __FILE__,
 	'name'         => 'FLV Image Handler',
 	'version'      => 'r3',
 	'author'       => 'Adam Nielsen', 
@@ -45,34 +46,20 @@ $wgFLVProbes = array(
 );
 
 // Pick one of the above as the converter to use
-if (empty($wgFLVConverter)) $wgFLVConverter = 'ffmpeg';
+$wgFLVConverter = 'ffmpeg';
 
 // If not in the executable PATH, specify
-if (empty($wgFLVConverterPath)) $wgFLVConverterPath = '';
+$wgFLVConverterPath = '';
+
+// Path of Flash video playing applet
+// Default value is $wgScriptPath . '/extensions/FlvHandler/flowplayer/flowplayer-3.0.3.swf'
+$wgFlashPlayer = null;
 
 // Minimum size for the flash player (width,height).  Used to make sure the
 // controls don't get all squashed up on really small .flv movies.
-if (empty($wgMinFLVSize)) $wgMinFLVSize = array(250, 250);
-
-
-//Avoid unstubbing $wgParser on setHook() too early on modern (1.12+) MW versions, as per r35980
-/*if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efFLVHandlerParserInit';
-} else { // Otherwise do things the old fashioned way
-	$wgExtensionFunctions[] = 'efFLVHandlerParserInit';
-}*/
+$wgMinFLVSize = array( 250, 250 );
 
 $wgHooks['ImageBeforeProduceHTML'][] = 'efFlvHandlerRender';
-/*
-function efFLVHandlerParserInit()
-{
-	global $wgMessageCache;
-
-	// Default (English) message for Image page itself, if one doesn't already exist.
-	$wgMessageCache->addMessages(array('flv-long-desc' => '(Flash video, $1 × $2 pixels, file size: $3)'));
-	
-	return true;
-}*/
 
 // Hook function called just before image code is displayed as HTML.  If the
 // image is an FLV file, embed a flash player, otherwise ignore it and let
@@ -136,5 +123,3 @@ EOF;
 	$res = str_replace("\n", ' ', $prefix . $s . $postfix);
 	return false;
 }
-
-?>
