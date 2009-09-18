@@ -56,10 +56,10 @@ fn: {
 				// Transform messages in keys
 				// Stupid JS won't let us do stuff like
 				// foo = { gM ('bar'): baz }
-				for ( msg in configuration.buttons ) {
-					configuration.buttons[gM( msg )] = configuration.buttons[msg];
-					delete configuration.buttons[msg];
-				}
+				configuration.newButtons = {};
+				for ( msg in configuration.buttons )
+					configuration.newButtons[gM( msg )] = configuration.buttons[msg];
+				configuration.buttons = configuration.newButtons;
 				// Create the dialog <div>
 				$( '<div /> ' )
 					.attr( 'id', module.id )
