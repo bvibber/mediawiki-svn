@@ -45,6 +45,13 @@ $messages['bs'] = array(
 	'userdailycontribs-desc' => 'Dnevni doprinosi korisnka za proširenje praćenja klikova',
 );
 
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'userdailycontribs-desc' => 'Benutzertagesbeiträge für die Klickverfolgungs-Erweiterung',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

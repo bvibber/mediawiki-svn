@@ -148,6 +148,15 @@ $messages['de'] = array(
 	'clicktracking' => 'Benutzerfreundlichkeitsinitiative Klickverfolgung',
 	'clicktracking-desc' => 'Klickverfolgung, gedacht für die Aufzeichnung von Aktionen, die nicht zu einer Seitenaktualisierung führen',
 	'clicktracking-title' => 'Erzeugte Benutzerklicks',
+	'event-name' => 'Ereignisname',
+	'expert-header' => 'Expertenklicks',
+	'beginner-header' => 'Anfängerklicks',
+	'total-header' => 'Gesamtklicks',
+	'start-date' => 'Start (JJJJMMTT)',
+	'end-date' => 'Ende (JJJJMMTT)',
+	'change-graph' => 'Grafik ändern',
+	'beginner' => 'Anfänger',
+	'expert' => 'Experte',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -172,6 +181,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Crazymadlover
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -182,6 +192,8 @@ $messages['el'] = array(
 	'expert-header' => 'Κλικ "ειδικοί"',
 	'intermediate-header' => 'Κλικ "μέτριοι"',
 	'beginner-header' => 'Κλικ "αρχάριοι"',
+	'start-date' => 'Ημερομηνία έναρξης (ΕΕΕΕΜΜΗΗ)',
+	'end-date' => 'Ημερομηνία λήξης (ΕΕΕΕΜΜΗΗ)',
 	'beginner' => 'Αρχάριος',
 	'intermediate' => 'Μέτριος',
 	'expert' => 'Ειδικός',
@@ -625,6 +637,11 @@ $messages['vec'] = array(
 	'clicktracking' => "Traciamento click de l'Inissiativa par l'Usabilità",
 	'clicktracking-desc' => 'Traciamento dei click, par traciare i eventi che no provoca mia un refresh de la pagina.',
 	'clicktracking-title' => 'Agregassion dei clic dei utenti',
+	'event-name' => "Nome de l'evento",
+	'expert-header' => 'Clic de "esperti"',
+	'intermediate-header' => 'Clic de "intermedi"',
+	'beginner-header' => 'Clic de "prinsipianti"',
+	'total-header' => 'Clic totali',
 	'start-date' => 'Data de inissio (AAAAMMGG)',
 	'end-date' => 'Data de fine(AAAAMMGG)',
 	'beginner' => 'Prinsipiante',

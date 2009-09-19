@@ -1407,6 +1407,7 @@ $messages['fa'] = array(
 	'optin-title-justoptedin' => 'به نسخه بتا خوش‌آمدید',
 	'optin-title-justoptedout' => 'ممنونیم از اینکه نسخه بتا را امتحان کردید',
 	'optin-needlogin' => 'شما برای استفاده از نسخه بتا باید [$1 وارد شوید].',
+	'optin-accept-long' => 'خروج از بتا',
 	'optin-deny-short' => 'نه ممنون!',
 	'optin-deny-long' => 'بازگشت به صفحه قبلی',
 	'optin-submit-out' => 'خروج از بتا',
