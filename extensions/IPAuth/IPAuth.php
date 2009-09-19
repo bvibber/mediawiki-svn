@@ -32,19 +32,21 @@
  for security issues will be released.
 */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "IPAuth.\n" );
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array( 
+$wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'IPAuth', 
-	'author' => 'Daniel Kinzler for Wikimedia Deutschland', 
+	'name' => 'IPAuth',
+	'author' => 'Daniel Kinzler for Wikimedia Deutschland',
 	'url' => 'http://mediawiki.org/wiki/Extension:IPAuth',
 	'description' => 'Automatic login from fixed IPs',
+	'descriptionmsg' => 'ipauth-desc',
 );
 
+$wgExtensionMessagesFiles['IPAuth'] = $root . 'Lockdown.i18n.php';
 $wgIPAuthUsers = array(  );
 # $wgIPAuthUsers = array( "127.0.0.1" => "LocalUser" );
 
@@ -63,10 +65,10 @@ function ipAuthUserLoadAfterLoadFromSession( $user ) {
 
 		$xuser = User::newFromName( $name );
 
-		if($xuser->getID() == 0) {
+		if ( $xuser->getID() == 0 ) {
 			wfDebug( "User $name assigned to IP $ip does not exist!\n" );
 		} else {
-			#HACK: force user data reload by assigning members directly
+			# HACK: force user data reload by assigning members directly
 			$user->mId = $xuser->mId;
 			$user->mName = $xuser->mName;
 			$user->loadFromId();

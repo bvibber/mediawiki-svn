@@ -32,19 +32,21 @@
  for security issues will be released.
 */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "Lockout.\n" );
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array( 
+$wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'Lockout', 
-	'author' => 'Daniel Kinzler for Wikimedia Deutschland', 
+	'name' => 'Lockout',
+	'author' => 'Daniel Kinzler for Wikimedia Deutschland',
 	'url' => 'http://mediawiki.org/wiki/Extension:Lockout',
 	'description' => 'Prevent blocked users from logging in.',
+	'descriptionmsg' => 'lockout-desc',
 );
 
+$wgExtensionMessagesFiles['Lockout'] = $root . 'Lockout.i18n.php';
 $wgHooks['UserLoadAfterLoadFromSession'][] = 'lockoutUserLoadAfterLoadFromSession';
 $wgHooks['AbortLogin'][] = 'lockoutAbortLogin';
 
@@ -61,7 +63,7 @@ function lockoutUserLoadAfterLoadFromSession( $user ) {
 
 function lockoutAbortLogin( $user, $pw, &$result ) {
         if ( $user->isBlocked() ) {
-                $result = LoginForm::CREATE_BLOCKED; //TODO: a better code, triggering a better message.
+                $result = LoginForm::CREATE_BLOCKED; // TODO: a better code, triggering a better message.
                 return false;
         }
 
