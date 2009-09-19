@@ -11,9 +11,11 @@ $messages = array();
  * @author Adam Nielsen
  */
 $messages['en'] = array(
-	'masseditregex' => 'Mass Edit using Regular Expressions',
+	'masseditregex' => 'Mass edit using regular expressions',
 	'masseditregex-desc' => 'Use regular expressions to [[Special:MassEditRegex|edit many pages in one operation]]',
-	'masseditregextext' => 'Enter one or more regular expressions (one per line) for matching, and one or more expressions to replace each match with.  The first match-expression, if successful, will be replaced with the first replace-expression, and so on.  See the PHP function preg_replace() for details.',
+	'masseditregextext' => 'Enter one or more regular expressions (one per line) for matching, and one or more expressions to replace each match with.
+The first match-expression, if successful, will be replaced with the first replace-expression, and so on.
+See the PHP function preg_replace() for details.',
 	'masseditregex-pagelisttxt' => 'Pages to edit:',
 	'masseditregex-matchtxt' => 'Search for:',
 	'masseditregex-replacetxt' => 'Replace with:',
@@ -34,5 +36,6 @@ $messages['en'] = array(
 	'masseditregex-hint-headeffect' => 'Effect',
 	'masseditregex-hint-toappend' => 'Append some text to the end of the article - great for adding pages to categories',
 	'masseditregex-hint-remove' => 'Remove some text from all the pages in the list',
-	'masseditregex-hint-removecat' => 'Remove all categories from an article (note the escaping of the square brackets in the wikicode.)  The replacement values should not be escaped.'
+	'masseditregex-hint-removecat' => 'Remove all categories from an article (note the escaping of the square brackets in the wikicode.)
+The replacement values should not be escaped.'
 );
