@@ -27,15 +27,15 @@ See the PHP function preg_replace() for details.',
 	'masseditregex-max-preview-diffs' => 'Preview has been limited to the first $1 {{PLURAL:$1|match|matches}}.',
 	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|change|changes}}',
 	'masseditregex-page-not-exists' => '$1 does not exist',
-	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|article|articles}} edited',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|page|pages}} edited',
 	'masseditregex-view-full-summary' => 'View full edit summary',
 
 	'masseditregex-hint-intro' => 'Here are some hints and examples for accomplishing common tasks:',
 	'masseditregex-hint-headmatch' => 'Match',
 	'masseditregex-hint-headreplace' => 'Replace',
 	'masseditregex-hint-headeffect' => 'Effect',
-	'masseditregex-hint-toappend' => 'Append some text to the end of the article - great for adding pages to categories',
+	'masseditregex-hint-toappend' => 'Append some text to the end of the page - great for adding pages to categories',
 	'masseditregex-hint-remove' => 'Remove some text from all the pages in the list',
-	'masseditregex-hint-removecat' => 'Remove all categories from an article (note the escaping of the square brackets in the wikicode.)
+	'masseditregex-hint-removecat' => 'Remove all categories from an page (note the escaping of the square brackets in the wikicode.)
 The replacement values should not be escaped.'
 );
