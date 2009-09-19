@@ -1648,7 +1648,9 @@ $messages['tr'] = array(
  */
 $messages['vep'] = array(
 	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-submit' => 'Saubata',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Sü:',
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Sauptai:',
 	'closewikis-list-header-timestamp' => 'Om sauptud',

@@ -514,6 +514,12 @@ $messages['te'] = array(
  */
 $messages['vep'] = array(
 	'webchat' => 'Verkčat',
+	'webchat-desc' => 'Ližadab [[Special:WebChat|specialižen lehtpolen]], kudambal sab lodaita toižiden kävutajidenke čatas.',
+	'webchat-header' => 'Nece specialine lehtpol\' laskeb teile lodaita toižiden wikin kävutajidennoks realižen aigan režimas.
+Miše tulda čatha, paigat "Connect"-kingitim.
+Ku tö olet sistemas, teiden nikneim mugažo ozutadas.
+Anonimižile kävutajile anttas avtomatižikš uz\' nikneim, no se sab toižetada.',
+	'right-webchat' => 'Kävuatada [[Special:WebChat|verkčat]]',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

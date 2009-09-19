@@ -339,7 +339,7 @@ $wgGoogleMapsMessages['arc'] = array(
 	'gm-search' => 'ܒܨܝ',
 	'gm-clear-search' => 'ܡܫܝ ܦܠܛ̈ܐ ܕܒܘܨܝܐ',
 	'gm-miles' => 'ܡܝܠ̈ܐ',
-	'gm-save-path' => 'ܢܛܘܪ',
+	'gm-save-path' => 'ܠܒܘܟ',
 	'gm-edit-path' => 'ܐܘܣܦ ܢܘܩܙ̈ܐ',
 	'gm-show-path' => 'ܚܘܝ ܢܘܩܙ̈ܐ',
 	'gm-color-path' => 'ܫܚܠܦ ܓܘܢܐ',
@@ -5621,6 +5621,7 @@ Próa l\'ultima version de <a href="http://www.microsoft.com/ie">Internet Explor
  * @author Игорь Бродский
  */
 $wgGoogleMapsMessages['vep'] = array(
+	'gm-balloon-title' => 'Pälkirjutez:',
 	'gm-no-results' => "Pakičem armahtust, ei ole rezul'tatoid",
 	'gm-map' => 'Kart',
 	'gm-width' => 'Leveduz',
@@ -5647,6 +5648,8 @@ $wgGoogleMapsMessages['vep'] = array(
 	'gm-color-fill' => 'vajehtada täutmižmuju',
 	'gm-add-fill' => 'täutta territorii mujul',
 	'gm-remove-fill' => 'čuta täutmižmuju',
+	'gm-fill-color' => 'Täutmižen muju',
+	'gm-line-color' => 'Pirdan muju',
 	'gm-line-width' => 'Leveduz',
 	'gm-make-map' => 'tehta kart',
 	'gm-hide-map' => 'peitta kart',

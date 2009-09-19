@@ -43,6 +43,13 @@ $messages['bs'] = array(
 	'conditionalshowsection-desc' => 'Dodaje oznaku <cshow> za uslovno prikazivanje/sakrivanje sekcija wikiteksta',
 );
 
+/** Catalan (Català)
+ * @author Ssola
+ */
+$messages['ca'] = array(
+	'conditionalshowsection-desc' => "Afegint l'etiqueta <cshow> per mostrar o amagar condicionadament una secció de Viquitext.",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -153,5 +160,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'conditionalshowsection-desc' => 'Pridáva značku <cshow> na podmienečné zobrazenie/skrytie sekcie wikitextu',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'conditionalshowsection-desc' => 'Ližadab <cshow>-virgan, miše ozutada/peitta wikitekstan palad',
 );
 

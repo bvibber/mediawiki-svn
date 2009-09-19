@@ -1447,6 +1447,13 @@ $messages['vec'] = array(
 	'right-authorprotect' => 'Protegere le pagine con autori',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'authorprotect-reason' => 'Sü',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

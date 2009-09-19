@@ -110,9 +110,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Solde
+ * @author Ssola
  */
 $messages['ca'] = array(
 	'usercontactlink-baduser' => "nom d'usuari incorrecte",
+	'usercontactlink-desc' => "Permet la capacitat d'afegir simplement i amb consistència altres noms d'usuari utilitzant la sintaxi ^^^user^^^",
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)

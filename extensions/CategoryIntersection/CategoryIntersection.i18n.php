@@ -689,6 +689,13 @@ $messages['uk'] = array(
 	'categoryintersection-results' => 'Пошук дав {{PLURAL:$1|$1 результат|$1 результати|$1 результатів}}.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'categoryintersection-doit' => 'Ozutada lehtpolid kaikiš neniš kategorijoiš',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

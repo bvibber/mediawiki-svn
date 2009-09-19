@@ -614,6 +614,14 @@ $messages['vec'] = array(
 	'contributionseditcount-desc' => 'Mostra un contegio dei contributi in te la [[Special:Contributions|pàxena dei contributi utente]]',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'contributionseditcount' => 'Nece kävutai om tehnu {{PLURAL:$1|ühten redakcijan|$1 redakcijad}}.',
+	'contributionseditcount-desc' => 'Ozutab tehtud toižetusiden lugun [[Special:Contributions|kävutajan tondan]] lehtpolel',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

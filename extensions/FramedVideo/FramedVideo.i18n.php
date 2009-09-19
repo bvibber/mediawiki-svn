@@ -806,6 +806,13 @@ $messages['tr'] = array(
 	'framedvideo_helppage' => 'Help:Video',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'framedvideo_helppage' => 'Help:Video',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

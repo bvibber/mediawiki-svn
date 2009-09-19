@@ -574,6 +574,13 @@ $messages['vec'] = array(
 	'nstab-comments' => 'Comento',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'nstab-comments' => 'Kommentarii',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

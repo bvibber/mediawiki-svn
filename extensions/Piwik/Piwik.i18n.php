@@ -595,6 +595,7 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'piwik-lastvisits' => 'Tantoižed vizitad',
+	'piwik-browsers' => 'Kaclimed',
 );
 
 /** Vietnamese (Tiếng Việt)

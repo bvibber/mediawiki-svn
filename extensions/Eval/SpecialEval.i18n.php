@@ -68,6 +68,18 @@ $messages['bg'] = array(
 	'eval_code' => 'Код',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'eval' => 'Priziañ',
+	'eval-desc' => "Ouzhpennañ a ra [[Special:Eval|un etrefas]] d'an arc'hwel <code>eval()</code>.",
+	'eval_submit' => 'Priziañ',
+	'eval_escape' => 'Herzel ar mont kuit',
+	'eval_out' => 'Ezvont',
+	'eval_code' => 'Kod',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

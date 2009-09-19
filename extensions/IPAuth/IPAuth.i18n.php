@@ -14,3 +14,11 @@ $messages = array();
 $messages['en'] = array(
 	'ipauth-desc' => 'Automatic login from fixed IP addresses',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'ipauth-desc' => 'Automatisch aanmelden van vaste IP-adressen',
+);
+

@@ -1218,6 +1218,18 @@ $messages['vec'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input mìa giusto!',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'chemicalsources' => 'Himižed purtked',
+	'chemFunctions_ListPage' => 'Himižed purtked',
+	'chemFunctions_CAS' => 'CAS-nomer',
+	'chemFunctions_ATCCode' => 'ATCKod',
+	'chemFunctions_Formula' => 'Formul',
+	'chemFunctions_Name' => 'IUPAC-nimi',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

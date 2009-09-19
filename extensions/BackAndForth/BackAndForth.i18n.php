@@ -899,6 +899,14 @@ $messages['vec'] = array(
 	'backforth-prev' => 'Preçedenti ($1)',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'backforth-next' => "Jäl'ghine ($1)",
+	'backforth-prev' => 'Edeline ($1)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

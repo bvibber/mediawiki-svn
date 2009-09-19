@@ -142,8 +142,10 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author SMP
  * @author Solde
+ * @author Ssola
  */
 $messages['ca'] = array(
+	'layouts-desc' => "Omplir les pàgines recentment creades amb estructures (''layouts'') modificables per a fomentar una estructura comú a les pàgines",
 	'layouts_title' => 'Crea una pàgina',
 	'layouts_chooselayout' => 'Escolliu un format per a $1:',
 	'layouts_nolayout' => 'Sense format',

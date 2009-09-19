@@ -197,6 +197,7 @@ $messages['en'] = array(
  * @author Darth Kule
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Lloffiwr
  * @author McDutchie
  * @author Minh Nguyen
  * @author Mormegil
@@ -212,12 +213,14 @@ $messages['qqq'] = array(
 	'edittoolbar-tool-bold-example' => '{{Identical|Bold text}}',
 	'edittoolbar-tool-italic' => '{{Identical|Italic}}',
 	'edittoolbar-tool-italic-example' => '{{Identical|Italic text}}',
+	'edittoolbar-tool-ilink' => '{{Identical|internal link}}',
 	'edittoolbar-tool-link' => '{{Identical|Link}}',
 	'edittoolbar-tool-link-cancel' => '{{Identical|Cancel}}',
 	'edittoolbar-tool-link-int-target-status-exists' => 'alt text and title text for the image shown when the title the user entered exists',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'alt text and title text for the image shown when the title the user entered does not exist',
 	'edittoolbar-tool-link-int-target-status-invalid' => 'alt text and title text for the image shown when the title the user entered is invalid',
 	'edittoolbar-tool-link-int-target-status-loading' => 'alt text and title text for the image shown while the title the user entered is being checked for existence',
+	'edittoolbar-tool-file' => '{{Identical|Embedded file}}',
 	'edittoolbar-tool-reference' => '{{Identical|Reference}}',
 	'edittoolbar-group-list' => '{{Identical|List}}',
 	'edittoolbar-group-size' => '{{Identical|Size}}',
@@ -278,8 +281,10 @@ $messages['af'] = array(
 	'edittoolbar-tool-bold' => 'Vet',
 	'edittoolbar-tool-bold-example' => 'Vetgedrukte teks',
 	'edittoolbar-tool-italic' => 'Kursief',
+	'edittoolbar-tool-ilink' => 'Interne skakel',
 	'edittoolbar-tool-link' => 'Skakel',
 	'edittoolbar-tool-link-cancel' => 'kanselleer',
+	'edittoolbar-tool-file' => 'Ingebedde lêer',
 	'edittoolbar-tool-file-example' => 'Voorbeeld.jpg',
 	'edittoolbar-section-advanced' => 'Gevorderde funksies',
 	'edittoolbar-tool-heading' => 'Opskrif',
@@ -1592,16 +1597,45 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'edittoolbar' => 'Bar offer golygu',
+	'edittoolbar-preference' => "Defnyddio'r bar offer golygu estynedig",
 	'edittoolbar-loading' => "Wrthi'n llwytho...",
 	'edittoolbar-tool-bold' => 'Praff',
 	'edittoolbar-tool-bold-example' => 'Testun praff',
 	'edittoolbar-tool-italic' => 'Italig',
 	'edittoolbar-tool-italic-example' => 'Testun italig',
+	'edittoolbar-tool-ilink' => 'Cyswllt mewnol',
+	'edittoolbar-tool-ilink-example' => 'Teitl y cyswllt',
+	'edittoolbar-tool-xlink' => 'Cyswllt allanol (cofiwch rhagddodi http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com teitl y cyswllt',
 	'edittoolbar-tool-link' => 'Cyswllt',
+	'edittoolbar-tool-link-title' => 'Mewnosod cyswllt',
+	'edittoolbar-tool-link-int' => 'At dudalen wici',
 	'edittoolbar-tool-link-int-target' => 'Teitl y dudalen:',
 	'edittoolbar-tool-link-int-text' => 'Testun y cyswllt:',
+	'edittoolbar-tool-link-ext' => 'At dudalen we allanol',
 	'edittoolbar-tool-link-ext-target' => 'URL y cyswllt:',
+	'edittoolbar-tool-link-ext-text' => 'Ysgrifen y cyswllt:',
+	'edittoolbar-tool-link-insert' => 'Mewnosod cyswllt',
 	'edittoolbar-tool-link-cancel' => 'Diddymu',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Y dudalen ar gael',
+	'edittoolbar-tool-link-int-target-status-notexists' => "Nid yw'r dudalen ar gael",
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Teitl annilys',
+	'edittoolbar-tool-link-int-target-status-loading' => "Wrthi'n gwirio a yw'r dudalen ar gael...",
+	'edittoolbar-tool-link-int-invalid' => 'Ysgrifennwyd teitl annilys.',
+	'edittoolbar-tool-link-ext-invalid' => "Nid yw'r URL a nodwyd yn ddilys.",
+	'edittoolbar-tool-reference' => 'Troednodyn',
+	'edittoolbar-tool-reference-example' => 'Ysgrifennwch droednodyn fan hyn',
+	'edittoolbar-tool-signature' => 'Llofnod a stamp amser',
+	'edittoolbar-section-advanced' => 'Uwch',
+	'edittoolbar-tool-heading' => 'Pennawd',
+	'edittoolbar-tool-heading-1' => 'Lefel 1',
+	'edittoolbar-tool-heading-2' => 'Lefel 2',
+	'edittoolbar-tool-heading-3' => 'Lefel 3',
+	'edittoolbar-tool-heading-4' => 'Lefel 4',
+	'edittoolbar-tool-heading-5' => 'Lefel 5',
+	'edittoolbar-tool-heading-example' => 'Ysgrifennwch y pennawd fan hyn',
+	'edittoolbar-group-list' => 'Rhestr',
 	'edittoolbar-tool-table-cancel' => 'Diddymu',
 	'edittoolbar-tool-replace-close' => 'Diddymu',
 	'edittoolbar-help-content-bold-syntax' => "'''Testun praff'''",
@@ -1784,6 +1818,7 @@ $messages['de'] = array(
 	'edittoolbar' => 'Bearbeiten-Werkzeugleiste',
 	'edittoolbar-desc' => 'Bearbeiten-Werkzeugleiste mit erweiterter Benutzerfreundlichkeit',
 	'edittoolbar-preference' => 'Erweiterte Bearbeiten-Werkzeugleiste aktivieren',
+	'edittoolbar-cgd-preference' => 'Hilfe für erweiterte Wikisyntax aktivieren',
 	'edittoolbar-loading' => 'Laden …',
 	'edittoolbar-tool-bold' => 'Fett',
 	'edittoolbar-tool-bold-example' => 'Fetter Text',
@@ -1843,6 +1878,18 @@ $messages['de'] = array(
 {{ns:file}}:Beispiel.jpg|Beschreibung2',
 	'edittoolbar-tool-newline' => 'Neue Zeile',
 	'edittoolbar-tool-table' => 'Tabelle',
+	'edittoolbar-tool-table-example-old' => '-
+! Überschrift 1
+! Überschrift 2
+! Überschrift 3
+|-
+| Zeile 1, Zelle 1
+| Zeile 1, Zelle 2
+| Zeile 1, Zelle 3
+|-
+| Zeile 2, Zelle 1
+| Zeile 2, Zelle 2
+| Zeile 2, Zelle 3',
 	'edittoolbar-tool-table-example' => 'Zeile $1, Zelle $2',
 	'edittoolbar-tool-table-example-header' => 'Zeile $1, Zelle $2 (Überschrift)',
 	'edittoolbar-tool-table-title' => 'Tabelle einfügen',
@@ -5809,6 +5856,13 @@ $messages['ksh'] = array(
 	'edittoolbar-help-content-indent-result' => 'Nommaale Täx<dl><dd>Enjerök<dl><dd>Un norrens enjerök</dd></dl></dd></dl>',
 );
 
+/** Cornish (Kernowek)
+ * @author Kernoweger
+ */
+$messages['kw'] = array(
+	'edittoolbar-help-page-discussion' => 'Dadhelva',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  */
@@ -9736,6 +9790,18 @@ $messages['vec'] = array(
 {{ns:file}}:Esenpio.jpg|Didascalia2',
 	'edittoolbar-tool-newline' => 'Riga nova',
 	'edittoolbar-tool-table' => 'Tabèla',
+	'edittoolbar-tool-table-example-old' => '-
+! intestassion 1
+! intestassion 2
+! intestassion 3
+|-
+| riga 1, casèla 1
+| riga 1, casèla 2
+| riga 1, casèla 3
+|-
+| riga 2, casèla 1
+| riga 2, casèla 2
+| riga 2, casèla 3',
 	'edittoolbar-tool-table-example' => 'Lìnia $1, colòna $2',
 	'edittoolbar-tool-table-example-header' => 'Lìnia $1, colòna $2 (intestassion)',
 	'edittoolbar-tool-table-title' => 'Inserissi na tabèla',

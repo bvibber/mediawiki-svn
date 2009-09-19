@@ -221,7 +221,7 @@ $messages['arc'] = array(
 	'grouppermissions-sort-edit' => 'ܫܚܠܦܬܐ',
 	'grouppermissions-sort-admin' => 'ܡܕܒܪܢܘܬܐ',
 	'grouppermissions-log-name' => 'ܣܓܠܐ ܕܦܣܣ̈ܐ ܕܟܢܘܫܝܐ',
-	'grouppermissions-sp-save' => 'ܢܛܘܪ',
+	'grouppermissions-sp-save' => 'ܠܒܘܟ',
 	'grouppermissions-sp-addperm' => 'ܐܘܣܦ ܦܣܣܐ',
 	'right-history' => 'ܚܙܝ ܦܐܬܐ ܕܬܫܥܝܬ̈ܐ',
 	'right-search' => 'ܒܨܝܐ ܒܘܝܩܝ',
@@ -2864,6 +2864,7 @@ $messages['ug-latn'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'removeunusedgroups' => 'Heitta poiš kävutamatomad gruppad',
 	'grouppermissions-search' => 'Grupp:',
 	'grouppermissions-dologin' => 'Kävutajan nimi',
 	'grouppermissions-dosearch' => 'Mända',
@@ -2883,6 +2884,7 @@ $messages['vep'] = array(
 	'grouppermissions-sort-misc' => 'Erazvuiččed',
 	'grouppermissions-log-add' => 'ližatihe «$2»-grupp',
 	'grouppermissions-sp-save' => 'Panda muštho',
+	'grouppermissions-sp-remove' => 'heitta',
 	'right-edittalk' => 'Redaktiruida lodulehtpoled',
 	'right-edit-new' => 'Redaktiruide lehtpoled (päiči lodulehtpolid)',
 );

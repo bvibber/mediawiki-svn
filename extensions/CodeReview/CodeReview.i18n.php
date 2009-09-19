@@ -7519,6 +7519,14 @@ $3',
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'code-comments' => 'Kommentarijad',
+	'code-change-removed' => 'heittud poiš:',
+	'code-change-added' => 'ližatud:',
+	'code-old-status' => 'Vanh status',
+	'code-new-status' => "Uz' status",
+	'code-authors' => 'avtorad',
+	'code-tags' => 'virgad',
+	'code-author-name' => 'Kirjutagat nimi:',
 	'code-field-author' => 'Avtor',
 	'code-field-user' => 'Kommentator',
 	'code-field-status' => 'Status',
@@ -7533,7 +7541,17 @@ $messages['vep'] = array(
 	'code-rev-repo' => 'Varaait:',
 	'code-rev-rev' => 'Versii:',
 	'code-rev-rev-viewvc' => 'ViewVC:s',
+	'code-rev-modified-a' => 'ližatud',
+	'code-rev-modified-d' => 'heittud',
+	'code-rev-status' => 'Status:',
+	'code-rev-tags' => 'Virgad:',
+	'code-status-ok' => 'ok',
+	'code-pathsearch-path' => 'Te:',
 	'code-batch-status' => 'Vajehtada status:',
+	'code-batch-tags' => 'Toižetada virgad:',
+	'codereview-reply-link' => 'antta vastust',
+	'repoadmin-new-button' => 'Säta',
+	'repoadmin-edit-button' => 'OK',
 );
 
 /** Vietnamese (Tiếng Việt)

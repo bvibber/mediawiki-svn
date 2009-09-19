@@ -815,6 +815,17 @@ $messages['vec'] = array(
 	'fundraiserportal-tourmaline-close' => 'Scondi da desso in avanti',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'fundraiserportal' => 'Lahjoičendan Portal',
+	'fundraiserportal-ruby-button' => "Lahjoiče nügüd'",
+	'fundraiserportal-rubytext-button' => "Lahjoiče nügüd'",
+	'fundraiserportal-sapphire-button' => "Lahjoiče nügüd'",
+	'fundraiserportal-tourmaline-button' => "Lahjoiče nügüd'",
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

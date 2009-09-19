@@ -27,6 +27,13 @@ $messages['bs'] = array(
 	'autoincrement-desc' => 'Kuka promjenjive koja dodaje promjenjivu sa automatskim povećanjem <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Catalan (Català)
+ * @author Ssola
+ */
+$messages['ca'] = array(
+	'autoincrement-desc' => 'Una variable de connexió que agrega la variable autoincrementativa <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

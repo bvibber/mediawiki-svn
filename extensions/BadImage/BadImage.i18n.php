@@ -2377,6 +2377,17 @@ $messages['uk'] = array(
 	'right-badimages' => 'Оновити список небажаних зображень',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'badimages-add-btn' => 'Ližata',
+	'badimages-name' => 'Nimi:',
+	'badimages-reason' => 'Sü:',
+	'badimages-remove' => '(heitta poiš)',
+	'badimages-remove-btn' => 'Heitta poiš',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

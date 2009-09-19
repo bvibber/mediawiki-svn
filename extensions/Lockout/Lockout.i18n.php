@@ -15,3 +15,10 @@ $messages['en'] = array(
 	'lockout-desc' => 'Prevent blocked users from logging in',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'lockout-desc' => 'Zorgt ervoor dat geblokkeerde gebruikers niet kunnen aanmelden',
+);
+

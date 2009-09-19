@@ -799,8 +799,12 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'dplforum-desc' => 'Forumanliža DPL-alusel',
+	'dplforum-by' => '$1-lpäi',
+	'dplforum-edited' => "- Jäl'gmäine redakcii",
 	'dplforum-never' => 'Nikonz',
 	'dplforum-toofew' => 'DPL-forum: Vähähk kategorijoid!',
+	'dplforum-toomany' => 'DPL-forum: Äjahk kategorijoid!',
 );
 
 /** Vietnamese (Tiếng Việt)

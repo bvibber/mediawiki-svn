@@ -5469,6 +5469,26 @@ $messages['uk'] = array(
 	'viewapc-fragmentation-info' => 'Фрагментація: $1 ($2 з $3 в $4 {{PLURAL:$4|фрагменті|фрагментах|фрагментах}})',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'viewapc-display-info' => 'Nimi',
+	'viewapc-display-type' => 'Tip',
+	'viewapc-display-creation_time' => 'Sätud',
+	'viewapc-display-deletion_time' => 'Heittud',
+	'viewapc-display-mem_size' => 'Suruz',
+	'viewapc-ls-header-name' => 'Nimi',
+	'viewapc-ls-header-size' => 'Suruz',
+	'viewapc-ls-header-created' => 'Sätud',
+	'viewapc-ls-header-deleted' => 'Heittud',
+	'viewapc-ls-sort-size' => 'Suruz',
+	'viewapc-ls-sort-name' => 'Nimi',
+	'viewapc-ls-sort-created' => 'Sätud',
+	'viewapc-ls-sort-deleted' => 'Heittud',
+	'viewapc-ls-limit-none' => 'Kaik',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

@@ -647,6 +647,7 @@ $messages['vep'] = array(
 	'newschannel' => 'Uzištusiden kanal',
 	'newschannel_format' => 'Uzištusiden format:',
 	'newschannel_limit' => 'Tantoižiden uzištusiden lugumär:',
+	'newschannel_include_category' => 'Ližakategorii:',
 );
 
 /** Vietnamese (Tiếng Việt)

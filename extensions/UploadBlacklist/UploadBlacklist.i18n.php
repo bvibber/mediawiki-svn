@@ -53,6 +53,13 @@ $messages['bs'] = array(
 	'uploadblacklist-desc' => 'Dodaje funkcionalnost postavljanja zabranjenih spiskova',
 );
 
+/** Catalan (Català)
+ * @author Ssola
+ */
+$messages['ca'] = array(
+	'uploadblacklist-desc' => "Afageix la funció d'una llista negra per la pujada d'arxius",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

@@ -408,6 +408,7 @@ $messages['da'] = array(
  * @author MF-Warburg
  * @author Melancholie
  * @author Merlissimo
+ * @author Metalhead64
  * @author MichaelFrey
  * @author Purodha
  * @author Raimond Spekking
@@ -434,9 +435,14 @@ $messages['de'] = array(
 [$3 Kommentare oder Fragen?]",
 	'readerfeedback-voted' => "'''Du hast scheinbar bereits eine Bewertung für diese Seite abgegeben.'''
 [$3 Kommentare oder Fragen?]",
+	'readerfeedback-error' => "'''Während der Bewertung dieser Seite ist ein Fehler aufgetreten''' ([$3 Kommentare oder Fragen?]).",
 	'readerfeedback-submitting' => 'Übertragung …',
 	'readerfeedback-finished' => 'Dankeschön!',
 	'readerfeedback-tagfilter' => 'Markierung:',
+	'readerfeedback-tierfilter' => 'Bewertung:',
+	'readerfeedback-tier-high' => 'Ausgezeichnet',
+	'readerfeedback-tier-medium' => 'Mittelmäßig',
+	'readerfeedback-tier-poor' => 'Schlecht',
 	'tooltip-ca-ratinghist' => 'Leserbewertungen dieser Seite',
 	'specialpages-group-feedback' => 'Meinung der Betrachter',
 );
@@ -513,6 +519,10 @@ $messages['el'] = array(
 	'readerfeedback-submitting' => 'Υποβολή ...',
 	'readerfeedback-finished' => 'Σας ευχαριστούμε!',
 	'readerfeedback-tagfilter' => 'Ετικέτα:',
+	'readerfeedback-tierfilter' => 'Βαθμολογία:',
+	'readerfeedback-tier-high' => 'Υψηλός',
+	'readerfeedback-tier-medium' => 'Μέτρια',
+	'readerfeedback-tier-poor' => 'Φτωχός',
 	'tooltip-ca-ratinghist' => 'Βαθμολογίες αναγνωστών για αυτή τη σελίδα',
 	'specialpages-group-feedback' => 'Γνώμη θεατή',
 );
@@ -1860,9 +1870,14 @@ $messages['vep'] = array(
 	'readerfeedback-main' => 'Sab arvostelda vaiše projektan pälehtpoled',
 	'readerfeedback-success' => "'''Kitän, miše olet arvostelnuded necidä lehtpol't!''' ([$3 Om-ik hoimaičendoid vai küzundoid?]).",
 	'readerfeedback-voted' => "'''Näguse, tö olet jo arvostelnuded necen lehtpolen.''' ([$3 Om-ik homaičendoid vai küzundoid?]).",
+	'readerfeedback-error' => "'''Petuz ozaižihe necen lehtpolen arvostelendan aigan''' ([$3 kommentarijad vai küzundad?]).",
 	'readerfeedback-submitting' => 'Oigendamine...',
 	'readerfeedback-finished' => 'Kitäm!',
 	'readerfeedback-tagfilter' => 'Teg:',
+	'readerfeedback-tierfilter' => 'Lugusana:',
+	'readerfeedback-tier-high' => 'Korged',
+	'readerfeedback-tier-medium' => 'Keskmäine',
+	'readerfeedback-tier-poor' => 'Hond',
 	'tooltip-ca-ratinghist' => 'Necen lehtpolen lugijoiden arvsanad',
 	'specialpages-group-feedback' => "Lugijan mel'pideg",
 );

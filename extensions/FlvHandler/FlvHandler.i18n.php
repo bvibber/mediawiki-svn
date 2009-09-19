@@ -22,6 +22,14 @@ $messages['qqq'] = array(
 	'flvhandler_desc' => '{{desc}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'flvhandler_desc' => 'Talvezout a ra da implijout ar restroù Video flash (.flv) da restroù standard (da sk. <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(Video flash, $1 × $2 piksel, ment ar restr : $3)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -43,7 +51,7 @@ $messages['dsb'] = array(
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'flvhandler_desc' => "Permet aux fichiers vidéo Flash (.flv) d'être utilisés comme des fichiers standards (par exemple <nowiki>[[Fichier:Movie.flv]]</nowiki>)",
+	'flvhandler_desc' => "Permet aux fichiers vidéo Flash (.flv) d'être utilisés comme des fichiers standards (par exemple <nowiki>[[File:Movie.flv]]</nowiki>)",
 	'flv-long-desc' => '(Vidéo flash, $1 × $2 pixels, taille du fichier : $3)',
 );
 
@@ -67,7 +75,7 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'flvhandler_desc' => 'Wužiwanje datajow Flash Video (.flv) w standardnych wobrazowych tafličkach dowolić (na př. <nowiki>[[Image:Movie.flv]]</nowiki>)',
+	'flvhandler_desc' => 'Wužiwanje datajow Flash Video (.flv) w standardnych wobrazowych tafličkach dowolić (na př. <nowiki>[[File:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Widejo flash, $1 × $2 pikselow, wulkosć dataje: $3)',
 );
 
@@ -99,6 +107,7 @@ $messages['nl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'flvhandler_desc' => 'A përmëtt ëd gionté file Video Flash (.flv) com file standard (visadì <nowiki>[[File:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Video flah, $1 x $2 pixel, dimension dël file: $3)',
 );
 

@@ -94,11 +94,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Metalhead64
  * @author Raimond Spekking
  * @author UV
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'ratedpages' => 'Von Lesern bewertete Seiten',
+	'ratedpages-leg' => 'Seiten mit vielen Bewertungen finden',
 	'ratedpages-list' => 'Es folgt eine Liste von Seiten, sortiert nach der Leserbewertung.',
 	'ratedpages-none' => 'Diese Liste enthält keine Seiten',
 	'ratedpages-graphs' => 'Bewertungsdaten',
@@ -520,6 +523,8 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'ratedpages' => 'Lugijoil arvosteldud lehtpoled',
+	'ratedpages-leg' => 'Ozutada lehtpoled, kudambil om enamb lugusanoid',
 	'ratedpages-list' => 'Lugijoil järgetud heiden arvsanoiden mödhe lehtpoled (nimikirjutez).',
 	'ratedpages-none' => 'Neciš nimikirjuteses ei ole lehtpolid',
 	'ratedpages-graphs' => 'andmused arvostelendas',

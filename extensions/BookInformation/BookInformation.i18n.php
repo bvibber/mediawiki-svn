@@ -1697,6 +1697,18 @@ $messages['vec'] = array(
 	'bookinfo-provider' => 'Dati tirà fora da: $1',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'bookinfo-header' => 'Informacii kirjas',
+	'bookinfo-result-title' => 'Nimi:',
+	'bookinfo-result-author' => 'Avtor:',
+	'bookinfo-result-publisher' => 'Pästai:',
+	'bookinfo-result-year' => "Pästandan voz':",
+	'bookinfo-error-invalidisbn' => 'Nece ISBN om vär.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

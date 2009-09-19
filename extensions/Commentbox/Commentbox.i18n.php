@@ -556,3 +556,11 @@ $messages['te'] = array(
 	'commentbox-first-comment-heading' => '== వ్యాఖ్యలు ==',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'commentbox-name' => 'Nimi:',
+	'commentbox-first-comment-heading' => '== Kommentarijad ==',
+);
+

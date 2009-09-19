@@ -711,7 +711,32 @@ Picatz los primièrs caractèrs e quichatz sul boton de somission per cercar los
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'indexfunc-desc' => 'Funsion dël parser për creé rediression automàtiche e pàgine ëd disambiguassion',
 	'indexfunc-badtitle' => 'Tìtol pa bon: "$1"',
+	'indexfunc-editwarning' => "Avis:
+Sto tìtol-sì a l'é ël tìtol ëd n'ìndes për {{PLURAL:$2|la pàgina ch'a ven|le pàgine ch'a ven-o}}:
+$1
+Sicurte che la pàgina ch'i të stai për creé a esista pa già sota un tìtol diferent.
+S'it cree sta pàgina-sì, gava sto tìtol-sì da l'<nowiki>{{#index:}}</nowiki> an {{PLURAL:$2|la pàgina|le pàgine}} sota.",
+	'indexfunc-index-exists' => 'La pàgina "$1" a esist gia',
+	'indexfunc-movewarn' => 'Avis:
+"$1" a l\'é ël tìtol ëd n\'ìndes për {{PLURAL:$2|la pàgina ch\'a ven|le pàgine ch\'a ven-o}}:
+$1
+Për piasì gava "$1" da l\'<nowiki>{{#index:}}</nowiki> an {{PLURAL:$3|la pàgina|le pàgine}} sota.',
+	'index' => 'Index search',
+	'index-legend' => "Serca l'ìndes",
+	'index-search' => 'Serca:',
+	'index-submit' => 'Spediss',
+	'index-disambig-start' => "'''$1''' a peul arferisse a vàire pàgine:",
+	'index-emptylist' => 'A-i é pa ëd pàgine associà a "$1"',
+	'index-expand-detail' => 'Mosta le pàgine indicisà sota sto tìtol-sì',
+	'index-hide-detail' => 'Stërma la lista ëd pàgine',
+	'index-no-results' => "L'arserca a pa tornà gnun arzultà",
+	'index-search-explain' => "Sta pàgina-sì a dòvra n'arserca ëd prefiss.
+
+Scriv pòchi caràter inissiaj e sgnaca ël boton \"spediss\" për serché ij tìtoj ëd pàgina e vos ëd l'ìndes che a ancamin-o con la stringa d'arserca",
+	'index-details-explain' => "Vos con frece a son vos ëd l'ìndes.
+Sgnaca la frecia për mosté tute le pàgine indicisà sota col tìtol-lì.",
 );
 
 /** Romanian (Română)
@@ -827,6 +852,13 @@ Klicka på pilen för att se hela innehållsförteckningen.',
 $messages['te'] = array(
 	'index-search' => 'వెతుకు:',
 	'index-submit' => 'దాఖలుచెయ్యి',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'index-search' => 'Ectä',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

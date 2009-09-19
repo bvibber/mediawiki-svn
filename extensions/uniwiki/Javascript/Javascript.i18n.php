@@ -64,6 +64,13 @@ $messages['bs'] = array(
 	'javascript-desc' => 'Dodaje uniwiki.js na svaku stranicu koja sadrži JavaScript kod koji se dijeli između Uniwiki proširenja',
 );
 
+/** Catalan (Català)
+ * @author Ssola
+ */
+$messages['ca'] = array(
+	'javascript-desc' => 'Afegeix uniwiki.js a cada pàgina que conté codi JavaScript compartit entre extensions Uniwiki',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

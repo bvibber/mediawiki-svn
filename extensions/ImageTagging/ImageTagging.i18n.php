@@ -1870,8 +1870,12 @@ $messages['vep'] = array(
 	'imagetagging-article' => "Lehtpol':",
 	'imagetagging-articletotag' => "Lehtpol' virgates",
 	'imagetagging-imghistory' => 'Istorii',
+	'imagetagging-images' => 'kuvad',
+	'imagetagging-removetag' => 'heitta virg',
 	'imagetagging-tag-button' => 'Virg',
 	'imagetagging-tagcancel-button' => 'Heitta pätand',
+	'imagetagging-addingtag' => 'Virgan ližadamine...',
+	'imagetagging-removingtag' => 'Virgan heitmine...',
 );
 
 /** Vietnamese (Tiếng Việt)

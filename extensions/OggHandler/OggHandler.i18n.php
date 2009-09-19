@@ -3081,6 +3081,7 @@ $messages['vep'] = array(
 	'ogg-stop' => 'Azotada',
 	'ogg-play-video' => 'Ozutada video',
 	'ogg-play-sound' => 'Väta kulundad',
+	'ogg-player-oggPlugin' => 'Kaclim-plagin',
 	'ogg-player-soundthumb' => 'Ei ole plejerad',
 	'ogg-player-selected' => '(valitud)',
 	'ogg-use-player' => 'Kävutada plejer:',

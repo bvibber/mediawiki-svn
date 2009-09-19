@@ -556,6 +556,13 @@ $messages['vec'] = array(
 	'breadcrumbs-desc' => 'Mostra el percorso dei utenti atraverso la wiki.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'breadcrumbs-desc' => 'Ozutab kävuatajiden matkad Wikidme.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

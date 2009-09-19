@@ -4702,13 +4702,18 @@ Ghe xe molti [http://openid.net/get/ Provider OpenID], e te podaressi verghe zà
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'openidxrds' => 'Yadis-fail',
 	'openiderror' => 'Verifikacijan petuz',
 	'openidoptional' => 'Opcionaline',
 	'openidrequired' => 'Pidab',
+	'openidnickname' => 'Nikneim',
 	'openidemail' => 'E-počtan adres',
 	'openidlanguage' => "Kel'",
 	'openidtimezone' => 'Aigzon',
 	'openidchoosepassword' => 'peitsana:',
+	'openidupdateuserinfo' => 'Udištada minun personaline informacii',
+	'openiddelete-button' => 'Vahvištoitta',
+	'openid-urls-action' => 'Tegend',
 	'openid-urls-delete' => 'Heitta poiš',
 );
 

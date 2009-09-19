@@ -511,6 +511,8 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'selectcategory-title' => 'Valiče kategorijad',
+	'selectcategory-desc' => 'Laskeb kävutajale valita olijoiš kategorijoišpäi lehtpolen redaktiruindan aigan',
+	'selectcategory-subtitle' => "Hiren plok + Shift - elementoiden jäl'gendusen valičend, hiren plok + Ctrl - elementoiden individualine valičend.",
 );
 
 /** Vietnamese (Tiếng Việt)

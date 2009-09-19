@@ -102,8 +102,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Solde
+ * @author Ssola
  */
 $messages['ca'] = array(
+	'categorystepper-desc' => "Mostra una taula de pas de categories que permet navegar endavant i endarrera alfabèticament a través d'una o més categories que hi ha en una pàgina.",
 	'categorystepper-end' => '(Fi de categoria)',
 	'categorystepper-start' => '(Inici de categoria)',
 );
@@ -645,6 +647,14 @@ $messages['vec'] = array(
 	'categorystepper-desc' => 'Mostra un quadro de le categorie permetendoghe ai utenti de navigar avanti e indrìo alfabeticamente atraverso le varie categorie de cui fa parte na pàxena',
 	'categorystepper-end' => '(Fine de la categoria)',
 	'categorystepper-start' => '(Scominsio de la categoria)',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'categorystepper-end' => '(Kategorijan lop)',
+	'categorystepper-start' => '(Kategorijan augotiž)',
 );
 
 /** Vietnamese (Tiếng Việt)

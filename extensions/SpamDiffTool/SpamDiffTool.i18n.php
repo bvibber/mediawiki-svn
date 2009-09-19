@@ -632,13 +632,18 @@ Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduj
  */
 $messages['hu'] = array(
 	'spamdifftool' => 'Spam-feketelista kezelése',
+	'spamdifftool-desc' => 'Egyszerű lehetőség új bejegyzések hozzáadására a spam feketelistához lapváltoztatásokból',
 	'spamdifftool_cantedit' => 'Sajnáljuk, de nincs jogosultságod szerkeszteni a spam-feketelistát.',
 	'spamdifftool_notext' => "Nincs hozzáadandó szöveg a spam feketelistához.
 Kattints <a href='$1'>ide</a> a folytatáshoz.",
+	'spamdifftool_confirm' => "Erősítsd meg, hogy hozzá szeretnéd adni ezeket a bejegyzéseket a spam feketelistához.
+(Kattints <a href='$1' target='new'>ide</a> probléma jelentéséhez.)",
 	'spamdifftool_summary' => 'Hozzáadás a spam-feketelistához',
 	'spamdifftool_no_urls_detected' => "Nem találtam URL-t.
 Kattints <a href='$1'>ide</a> a visszatéréshez.",
 	'spamdifftool_spam_link_text' => 'hozzáadás a spamekhez',
+	'spamdifftool_option_domain' => 'mind ebből a tartományból',
+	'spamdifftool_option_subdomain' => 'mind ebből az al-tartományból',
 	'spamdifftool_option_none' => 'semmi',
 	'spamdifftool_block' => 'Blokkolás:',
 	'spamdifftool_submit_buttom' => 'Küldés',
@@ -1481,6 +1486,7 @@ Struca <a href='$1'>qua</a> par tornar indrìo.",
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'spamdifftool_option_none' => 'ei ole midä',
 	'spamdifftool_block' => 'Blokiruind:',
 	'spamdifftool_submit_buttom' => 'Oigeta',
 );

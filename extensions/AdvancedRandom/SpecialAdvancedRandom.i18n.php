@@ -102,9 +102,12 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Solde
+ * @author Ssola
  */
 $messages['ca'] = array(
 	'advancedrandom' => 'Aleatori avançat',
+	'advancedrandom-desc' => "Obtenir una pàgina a l'atzar d'entre qualsevol de l'espai de noms que enllaci (pàgina o discussió) a una pàgina donada.
+Es pot utilitzar com a <tt><nowiki>[[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]]</nowiki></tt> per obtenir la pàgina de discussió d'un article de qualitat aleatoriament, o com a <tt><nowiki>[[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]</nowiki></tt> per obtenir a l'atzar un fitxer sota la Llicència de documentació lliure GNU (GFDL).",
 );
 
 /** Czech (Česky)

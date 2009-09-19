@@ -124,6 +124,8 @@ Toto varování si můžete vypnout na záložce „{{int:prefs-editing}}“ v u
  */
 $messages['cy'] = array(
 	'editwarning' => 'Hysbysiad golygu',
+	'editwarning-warning' => 'Os y gadewch y dudalen hon mae\'n bosib y collwch eich newidiadau iddi.
+Gallwch ddiddymu\'r rhybudd hwn yn yr adran "{{int:prefs-editing}}" yn eich dewisiadau.',
 	'editwarning-preference' => "Tynnwch fy sylw pan wyf ar fin gadael tudalen olygu heb roi'r newidiadau ar gadw",
 );
 

@@ -150,7 +150,7 @@ $messages['arc'] = array(
 	'recordadmin-invert' => 'ܐܗܦܟ ܠܓܘܒܝܐ',
 	'recordadmin-buttonsearch' => 'ܒܨܝ',
 	'recordadmin-buttoncreate' => 'ܒܪܝ',
-	'recordadmin-buttonsave' => 'ܢܛܘܪ',
+	'recordadmin-buttonsave' => 'ܠܒܘܟ',
 	'recordadmin-viewlink' => 'ܚܙܝ',
 	'recordadmin-editlink' => 'ܫܚܠܦ',
 );

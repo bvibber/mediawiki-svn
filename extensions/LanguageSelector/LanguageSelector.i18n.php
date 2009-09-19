@@ -935,9 +935,12 @@ $messages['vec'] = array(
 
 /** Veps (Vepsan kel')
  * @author Triple-ADHD-AS
+ * @author Игорь Бродский
  */
 $messages['vep'] = array(
 	'languageselector' => 'Kel’',
+	'languageselector-desc' => 'Kelen valičend kaikuččen lehtpolen täht, mugažo adivoile-ki.',
+	'languageselector-setlang' => 'panda',
 );
 
 /** Vietnamese (Tiếng Việt)

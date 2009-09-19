@@ -2062,6 +2062,14 @@ $messages['vec'] = array(
 	'changeauthor-desc' => "Permete de canbiar l'autor de na version",
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'changeauthor-pagenameform-go' => 'Tehta',
+	'changeauthor-comment' => 'Kommentarii:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

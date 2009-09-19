@@ -60,6 +60,14 @@ $messages['bs'] = array(
 Pravi verziju in-page, naročito korisna za Wikivijesti.',
 );
 
+/** Catalan (Català)
+ * @author Ssola
+ */
+$messages['ca'] = array(
+	'catfeed-desc' => 'Utilitza fragments dels canvis recents.
+Crea versions per les pàgines, especialment útil per Wikinews.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

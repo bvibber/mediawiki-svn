@@ -1087,6 +1087,13 @@ $messages['uk'] = array(
 	'call-save-failed' => 'Наступний текст НЕ був збережений на сторінку <big>[[$1]]</big>, оскільки ця сторінка вже існує.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'call' => 'Kucund',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

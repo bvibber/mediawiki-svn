@@ -586,6 +586,9 @@ $messages['tr'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'discussionthreading-desc' => 'Ližadab lodubarboid lodulehtpolile',
+	'discussionthreading-replysection' => 'vastuz',
+	'discussionthreading-replysectionhint' => 'Antta vastust neche tedotushe',
 	'discussionthreading-threadnewsection' => "uz'",
 	'discussionthreading-threadnewsectionhint' => "Augotada uz' barb",
 );

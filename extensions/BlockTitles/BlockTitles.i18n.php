@@ -763,6 +763,13 @@ $messages['vec'] = array(
 	'block_title_error' => 'Ne despiase, ma no xe permesso de salvar na pagina co sto titolo.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'block_title_error_page_title' => 'Blokiruidud nimi',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

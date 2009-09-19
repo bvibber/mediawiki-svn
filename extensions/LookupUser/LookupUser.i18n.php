@@ -990,6 +990,13 @@ $messages['pl'] = array(
 	'right-lookupuser' => 'Przeglądanie ustawień preferencji użytkowników',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'lookupuser' => 'Varda anformassion utent',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

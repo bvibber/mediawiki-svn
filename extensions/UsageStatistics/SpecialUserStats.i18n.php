@@ -539,6 +539,7 @@ $messages['el'] = array(
 	'usagestatisticsfor' => '<h2>Στατιστικά χρήσης για τον [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Στατιστικά χρήσης για όλους τους χρήστες</h2>',
 	'usagestatisticsinterval' => 'Διάστημα:',
+	'usagestatisticsnamespace' => 'Περιοχή ονομάτων:',
 	'usagestatisticstype' => 'Τύπος',
 	'usagestatisticsstart' => 'Ημερομηνία έναρξης:',
 	'usagestatisticsend' => 'Ημερομηνία λήξης:',
@@ -811,6 +812,7 @@ $messages['gl'] = array(
  * @author Crazymadlover
  */
 $messages['grc'] = array(
+	'usagestatisticsnamespace' => 'Ὀνοματεῖον:',
 	'usagestatisticstype' => 'Τύπος',
 	'usagestatisticsintervalday' => 'Ἡμέρα',
 	'usagestatisticsintervalmonth' => 'Μήν',
@@ -2066,13 +2068,21 @@ $messages['uk'] = array(
 $messages['vep'] = array(
 	'specialuserstats' => 'Kävutamižen statistik',
 	'usagestatistics' => 'Kävutamižen statistik',
-	'usagestatisticsinterval' => 'Interval',
+	'usagestatistics-desc' => 'Ozutada kut individualižen kävutajan, muga globalšt wikin kävutamižen statistikad',
+	'usagestatisticsfor' => '<h2>Kävutamižen statistik [[User:$1|$1]]-kävutajan täht</h2>',
+	'usagestatisticsforallusers' => '<h2>Kävutamižen statistik kaikiden kävutjiden täht</h2>',
+	'usagestatisticsinterval' => 'Interval:',
+	'usagestatisticsnamespace' => 'Nimiavaruz:',
+	'usagestatisticsexcluderedirects' => 'Heitta udesoigendused',
+	'usagestatistics-namespace' => 'Nened statistižed andmused oma [[Special:Allpages/$1|$2]]-nimiavarusespäi.',
+	'usagestatistics-noredirects' => "[[Special:ListRedirects|Udesoigendamižid]] ei ottas sil'mnägubale.",
 	'usagestatisticstype' => 'Tip',
-	'usagestatisticsstart' => 'Augotiždat',
-	'usagestatisticsend' => 'Lopdat',
+	'usagestatisticsstart' => 'Augotiždat:',
+	'usagestatisticsend' => 'Lopdat:',
 	'usagestatisticssubmit' => 'Generiruida statistikad',
 	'usagestatisticsnostart' => 'Olgat hüväd, kirjutagat augotiždat',
 	'usagestatisticsnoend' => 'Olgat hüväd, kirjutagat lopdat',
+	'usagestatisticsbadstartend' => '<b>Vär <i>augotiždat </i>vai <i>lopdat!</b>',
 	'usagestatisticsintervalday' => 'Päiv',
 	'usagestatisticsintervalweek' => 'Nedal’',
 	'usagestatisticsintervalmonth' => 'Ku',
@@ -2081,6 +2091,9 @@ $messages['vep'] = array(
 	'usagestatisticscumulative' => 'Ühthine',
 	'usagestatisticscumulative-text' => 'ühthine',
 	'usagestatisticscalselect' => 'Valita',
+	'usagestatistics-editindividual' => 'Individualižen kävutajan $1 statistik',
+	'usagestatistics-editpages' => 'Individualižen kävutajan lehtpoliden $1 statistik',
+	'right-viewsystemstats' => 'Ozutada [[Special:UserStats|wikin kävutamižen statistikad]]',
 );
 
 /** Vietnamese (Tiếng Việt)

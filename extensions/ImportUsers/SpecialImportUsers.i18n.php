@@ -1761,6 +1761,8 @@ $messages['ug-latn'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'importusers' => 'Importiruida kävutajid',
+	'importusers-form-button' => 'Importiruida',
 	'importusers-log-summary-all' => 'Kaiked',
 	'importusers-log-summary-added' => 'Ližatud',
 	'importusers-log-summary-updated' => 'Udištadud',

@@ -1347,9 +1347,13 @@ $messages['tt-cyrl'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'imstatus_syntax' => 'Sintaksis',
+	'imstatus_default' => 'Augotižjärgendusen mödhe',
+	'imstatus_example' => 'Ozutez',
 	'imstatus_max' => 'maks.',
 	'imstatus_min' => 'min.',
 	'imstatus_or' => 'vai',
+	'imstatus_icq_id' => 'teiden ICQ ID',
 );
 
 /** Vietnamese (Tiếng Việt)

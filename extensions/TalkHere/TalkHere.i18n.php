@@ -1030,6 +1030,8 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'talkhere-talkpage' => "lodulehtpol'",
+	'talkhere-addcomment' => 'ližata kommentarii',
 	'talkhere-collapse' => 'peitta redaktor',
 );
 

@@ -582,6 +582,13 @@ $messages['vec'] = array(
 	'categoryonupload-label' => 'Categoria:',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'categoryonupload-label' => 'Kategorii:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

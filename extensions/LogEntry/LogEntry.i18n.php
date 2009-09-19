@@ -502,6 +502,14 @@ $messages['tl'] = array(
 	'logentry-invalidtoken' => 'Hindi tanggap na pananda',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'logentry-invalidpage' => "Vär lehtpol'",
+	'logentry-invalidtoken' => 'Vär token',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

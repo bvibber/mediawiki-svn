@@ -641,6 +641,14 @@ $messages['te'] = array(
 	'mostrevisors-submit' => 'వెళ్ళు',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'mostrevisors-namespace' => 'Nimiavaruz:',
+	'mostrevisors-submit' => 'Tehta',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

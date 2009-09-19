@@ -1372,6 +1372,17 @@ $messages['tr'] = array(
 	'amazonplus-less' => 'daha az',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'amazonplus-used' => 'kävutadud',
+	'amazonplus-german' => 'Germanijalaine',
+	'amazonplus-french' => 'Francijalaine',
+	'amazonplus-japanese' => 'Japonalaine',
+	'amazonplus-new' => "uz'",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
