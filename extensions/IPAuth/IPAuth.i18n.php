@@ -12,6 +12,5 @@ $messages = array();
  * @author Daniel Kinzler
  */
 $messages['en'] = array(
-	'ipauth-desc' => 'Automatic login from fixed IPs',
+	'ipauth-desc' => 'Automatic login from fixed IP addresses',
 );
-
