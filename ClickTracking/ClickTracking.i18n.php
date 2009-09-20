@@ -249,6 +249,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author McDutchie
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
@@ -263,7 +264,7 @@ $messages['fr'] = array(
 	'start-date' => 'Date de début (AAAAMMJJ)',
 	'end-date' => 'Date de fin (AAAAMMJJ)',
 	'increment-by' => 'Nombre de jours que représente chaque point de donnée',
-	'change-graph' => 'Graphe de change',
+	'change-graph' => 'Changer le graphe',
 	'beginner' => 'Débutant',
 	'intermediate' => 'Intermédiaire',
 	'expert' => 'Expert',
@@ -357,6 +358,18 @@ $messages['ia'] = array(
 	'clicktracking' => 'Traciamento de clics del Initiativa de Usabilitate',
 	'clicktracking-desc' => 'Traciamento de clics, pro traciar eventos que non causa un recargamento de pagina',
 	'clicktracking-title' => 'Clics aggregate de usatores',
+	'event-name' => 'Nomine del evento',
+	'expert-header' => 'Clics "experte"',
+	'intermediate-header' => 'Clics "intermedie"',
+	'beginner-header' => 'Clics "comenciante"',
+	'total-header' => 'Total de clics',
+	'start-date' => 'Data de initio (AAAAMMDD)',
+	'end-date' => 'Data de fin (AAAAMMDD)',
+	'increment-by' => 'Numero de dies representate per cata puncto de datos',
+	'change-graph' => 'Cambiar graphico',
+	'beginner' => 'Comenciante',
+	'intermediate' => 'Intermedie',
+	'expert' => 'Experte',
 );
 
 /** Indonesian (Bahasa Indonesia)

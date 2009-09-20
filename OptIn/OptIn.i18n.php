@@ -730,6 +730,14 @@ Pokud se chcete o projektu dozvědět více nebo se zapojit, navštivte [http://
 Děkujeme a budeme se těšit na vaše názory!',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'optin-accept-long' => 'Rhoi cynnig ar Beta',
+	'optin-submit-out' => 'Gadael Beta',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */
@@ -2042,7 +2050,7 @@ Szeretnénk tudni, hogy mit gondolsz az új felületről, így örülnénk neki,
 	'optin-improvements' => '== Mit fejlesztettünk? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Fejlettebb navigáció
-Az új navigációs rendszer könnyebbé teszi, hogy lásd, hol vagy és mit csinálsz éppen, továbbá azt is, hogy hová mehetsz továb, és hogy hogyan juthatsz el oda. A keresőmező jobb felső sarokba való áthelyezésével könnyebbé válik a keresés.
+Az új navigációs rendszer könnyebbé teszi, hogy lásd, hol vagy és mit csinálsz éppen, továbbá azt is, hogy hová mehetsz tovább, és hogy hogyan juthatsz el oda. A keresőmező jobb felső sarokba való áthelyezésével könnyebbé válik a keresés.
 <div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=]]

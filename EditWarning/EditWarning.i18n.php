@@ -47,13 +47,14 @@ $messages['arc'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'editwarning' => 'Папярэджаньне рэдагаваньня',
 	'editwarning-desc' => 'Паказвае папярэджаньне, калі ўдзельнік спрабуе пакінуць форму рэдагаваньня без захаваньня',
 	'editwarning-warning' => 'Усе зробленыя Вамі зьмены могуць быць страчаныя, калі Вы пакінеце гэтую старонку.
 Вы можаце адключыць гэтае папярэджаньне у сэкцыі «{{int:prefs-editing}}» Вашых установак.',
-	'editwarning-preference' => 'Папярэджваць мяне, калі я буду пакідаць старонку рэдагаваньня з незахаванымі зьменамі',
+	'editwarning-preference' => 'Папярэджваць мяне, калі я буду пакідаць старонку рэдагаваньня зь незахаванымі зьменамі',
 );
 
 /** Bengali (বাংলা)
@@ -451,7 +452,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തല്‍ താളുണ്ടെങ്കില്‍ എന്നെ അറിയിക്കുക',
+	'editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തല്‍ താളിൽ നിന്നും പോകുമ്പോൾ എന്നെ അറിയിക്കുക',
 );
 
 /** Malay (Bahasa Melayu)
