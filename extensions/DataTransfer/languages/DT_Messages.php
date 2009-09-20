@@ -800,6 +800,7 @@ $messages['hu'] = array(
 	'dt_import_importing' => 'Importálás…',
 	'dt_import_success' => '{{PLURAL:$1|egy|$1}} lap fog készülni a(z) $2 fájlból.',
 	'importcsv' => 'CSV importálása',
+	'dt_importcsv_badheader' => 'Hiba: a(z) $1 oszlop fejlécének („$2”) vagy „$3”, „$4”, vagy pedig „sablonnév[mezőnév]” formátumúnak kell lennie',
 	'right-datatransferimport' => 'Adatok importálása',
 );
 

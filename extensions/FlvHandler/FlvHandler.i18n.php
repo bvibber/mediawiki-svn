@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'flvhandler_desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'flv-long-desc' => '(Флэш-відэа, $1 × $2 піксэляў, памер файла: $3)',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -77,6 +84,14 @@ $messages['gsw'] = array(
 $messages['hsb'] = array(
 	'flvhandler_desc' => 'Wužiwanje datajow Flash Video (.flv) w standardnych wobrazowych tafličkach dowolić (na př. <nowiki>[[File:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Widejo flash, $1 × $2 pikselow, wulkosć dataje: $3)',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'flvhandler_desc' => 'Lehetővé teszi flash videó fájlok (.flv) használatát, hasonlóképpen a többi fájlhoz (pl. <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(Flash videó, $1 × $2 képpont, fájlméret: $3)',
 );
 
 /** Japanese (日本語)

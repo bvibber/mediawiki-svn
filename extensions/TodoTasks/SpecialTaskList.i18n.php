@@ -1040,6 +1040,36 @@ By zobaczyć kompletną listę zadań, przejdź do strony %s.
 %s – automatyczny system informowania.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'tasklist' => 'Lista dij travaj',
+	'tasklist-parser-desc' => 'A gionta la funsion dël parser <nowiki>{{#todo:}}</nowiki> për assigné ëd travaj',
+	'tasklist-special-desc' => "A gionta na pàgina special për revisioné [[Special:TaskList|l'assegnassion ëd travaj]]",
+	'tasklistbyproject' => 'Lista ëd travaj për proget',
+	'tasklistunknownproject' => 'Proget pa conossù',
+	'tasklistunspecuser' => 'Utent pa spessifià',
+	'tasklistincorrectuser' => 'Nòm utent pa giust',
+	'tasklistemail' => 'Gentil %s',
+	'tasklistemailsubject' => '[%s] Cambi dla lista dij travaj',
+	'tasklistmytasks' => 'Ij mè travaj',
+	'tasklistbyprojectbad' => "Ël proget '''%s''' a l'é pa un proget bon.
+Për na lista ëd proget bon, varda [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Travaj assignà për '''%s'''",
+	'tasklistchooseproj' => 'Proget selessionà:',
+	'tasklistprojdisp' => 'Visualisa',
+	'tasklistbyname' => '== Lista da fé për %s ==',
+	'tasklistnoprojects' => "Eror: A smija ch'it l'abie ativà '''\$wgUseProjects''', ma it l'abie pa creà [[MediaWiki:TodoTasksValidProjects]]. varda [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Istrussion d'Instalassion] për savèjne ëd pì.",
+	'tasklistemailbody' => ",
+
+Cheidun a l'ha assignà un neuv travaj për ti an %s.
+
+Për vëdde la Lista completa dij tò Travaj va a %s.
+
+Ël to sistema amis ëd notificassion",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

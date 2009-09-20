@@ -995,6 +995,21 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'lookupuser' => 'Varda anformassion utent',
+	'lookupuser-desc' => "[[Special:LookupUser|Treuva anformassion]] an s'un utent con st'adrëssa e-mail e ID-sì",
+	'lookupuser-intro' => 'Anseriss un nòm utent për vëdde im "mè gust" ëd col utent.',
+	'lookupuser-nonexistent' => "Eror: l'utent a esist pa",
+	'lookupuser-authenticated' => 'Autenticà an dzora a $1',
+	'lookupuser-not-authenticated' => 'pa autenticà',
+	'lookupuser-id' => 'ID utent: <tt>#$1</tt>',
+	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'pa dàit',
+	'lookupuser-realname' => 'Nòm ver: $1',
+	'lookupuser-registration' => "Data d'argistrassion: $1",
+	'lookupuser-no-registration' => 'pa arcordà',
+	'lookupuser-touched' => "Registr ëd l'ùltim click ëd l'utent: $1",
+	'lookupuser-info-authenticated' => 'Autenticassion e-mail: $1',
+	'lookupuser-useroptions' => "Opsion ëd l'utent:",
+	'right-lookupuser' => 'Varda ij "mè gust" ëd l\'utent',
 );
 
 /** Pashto (پښتو)

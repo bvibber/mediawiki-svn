@@ -2034,6 +2034,32 @@ $messages['ksh'] = array(
 	'voctrain_other' => 'en ander Zahl',
 );
 
+/** Cornish (Kernowek)
+ * @author Kernoweger
+ */
+$messages['kw'] = array(
+	'voctrain_try_again_' => 'hwila arta?',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Na wonn peth gul gans '%action'.",
+	'voctrain_continue' => 'pesya',
+	'voctrain_hello_place' => 'dedh da %place',
+	'voctrain_bye' => 'agas gweles',
+	'voctrain_Number_of_questions' => 'Niver a govennadow',
+	'voctrain_Languages' => 'Yethow',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(re, cor rag an Kernowek, eng rag an Sowsnek).',
+	'voctrain_Questions' => 'Govennadow',
+	'voctrain_Word' => 'Ger',
+	'voctrain_Question' => 'Govenn',
+	'voctrain_The_word_to_translate' => 'An ger dhe vos treylyas',
+	'voctrain_logout' => 'digelmi',
+	'voctrain_User_name' => 'Hanow-usyer',
+	'voctrain_Password' => 'Ger-tremena',
+	'voctrain_Login' => 'Omgelmi',
+	'voctrain_Language' => 'Yeth',
+	'voctrain_Log_in' => 'Omgelmi',
+	'voctrain_Translation' => 'Treylyans',
+	'voctrain_other' => 'niver aral',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

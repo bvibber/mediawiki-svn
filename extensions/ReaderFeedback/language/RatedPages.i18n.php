@@ -253,6 +253,8 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'ratedpages' => 'Paginas evalutate per lectores',
+	'ratedpages-leg' => 'Cercar paginas con un numero de evalutationes assatis grande',
 	'ratedpages-list' => 'Infra es un lista de paginas ordinate per evaluation del lectores.',
 	'ratedpages-none' => 'Il non ha paginas in iste lista',
 	'ratedpages-graphs' => 'datos de evalutation',

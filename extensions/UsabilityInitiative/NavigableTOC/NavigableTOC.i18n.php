@@ -199,6 +199,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'navigabletoc' => 'Tabula de contento navigabile',
 	'navigabletoc-desc' => 'Adde un tabula de contento al formulario de modification que face rolar le quadro de texto quando on clicca super un section',
+	'navigabletoc-preference' => 'Activar le tabula de contento navigabile',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -340,6 +341,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'navigabletoc' => 'Taggele de le condenute navigabbile',
 	'navigabletoc-desc' => "Aggiunge 'na taggelle de condenute a 'a schermata de cangiamende ca face muvè 'a sckatole de teste  quanne 'na seziona è cazzate",
+	'navigabletoc-preference' => 'Abbilite le tabbele navigabbele de condenute',
 );
 
 /** Russian (Русский)

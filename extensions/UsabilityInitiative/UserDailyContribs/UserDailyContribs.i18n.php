@@ -101,6 +101,13 @@ $messages['hu'] = array(
 	'userdailycontribs-desc' => 'Felhasználók napi közreműködéseinek megjelenítése a kattintásszámlálóban',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'userdailycontribs-desc' => 'Contributiones quotidian de usatores pro le extension de traciamento de clics',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -148,6 +155,13 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'userdailycontribs-desc' => "Contribussion giornaliere dl'utent për l'estension dla trassadura dij click",
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'userdailycontribs-desc' => "Utinde ca ogne sciurne condrebbuiscene pe 'u cazzaminde de l'estenzione de tracciamende",
 );
 
 /** Russian (Русский)

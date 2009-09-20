@@ -904,6 +904,7 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'backforth-next' => "Jäl'ghine ($1)",
+	'backforth-desc' => 'Ližadab "Jäl\'ghine" da "Edeline" kosketusid, kudambad ozutadas jäl\'ghižehe da edeližhe lehtpolihe kirjamišton mödhe, lehtpolen üläpol\'he',
 	'backforth-prev' => 'Edeline ($1)',
 );
 

@@ -1114,8 +1114,8 @@ $messages['fo'] = array(
 $messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
-	'group-oversight' => 'Superviseurs',
-	'group-oversight-member' => 'Superviseur',
+	'group-oversight' => 'Oversighters',
+	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversighter',
 	'right-oversight' => 'Voir les versions cachées par oversight',
 	'right-hiderevision' => 'Masquer des révisions aux administrateurs',
@@ -2094,7 +2094,7 @@ $messages['ko'] = array(
 이 정보를 공개할 경우 오버사이트 권한이 영구히 박탈될 수 있습니다.',
 	'oversight-legend' => '특정 판 숨기기 기록 찾기',
 	'oversight-oversighter' => '오버사이트',
-	'oversight-offender' => '편집자:',
+	'oversight-offender' => '판 작성자:',
 );
 
 /** Ripoarisch (Ripoarisch)

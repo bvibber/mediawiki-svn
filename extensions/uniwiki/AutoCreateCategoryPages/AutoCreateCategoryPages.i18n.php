@@ -257,6 +257,7 @@ Nalistuje wšě strony w kategoriji "$1" a tež wšě podkategorije kategorije "
  */
 $messages['hu'] = array(
 	'autocreatecategorypages-desc' => 'Hiányzó kategóriaoldalak automatikus létrehozása a mentés után.',
+	'autocreatecategorypages-createdby' => 'Automatikusan készítette az AutoCreateCategoryPages kiterjesztés.',
 	'autocreatecategorypages-editor' => 'Automatikus kategória-készítő',
 );
 

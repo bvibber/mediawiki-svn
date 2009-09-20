@@ -304,6 +304,7 @@ $messages['ia'] = array(
 	'simplesearch' => 'Recerca simple',
 	'simplesearch-desc' => 'Adde functionalitate extra al recerca simplificate del Vector',
 	'simplesearch-search' => 'Cercar',
+	'simplesearch-containing' => 'continente...',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -551,6 +552,7 @@ $messages['roa-tara'] = array(
 	'simplesearch' => 'Ricerca semblice',
 	'simplesearch-desc' => "Aggiunge 'na funzione extra a 'u vettore d'a ricerche semblificate",
 	'simplesearch-search' => 'Cirche',
+	'simplesearch-containing' => 'tène...',
 );
 
 /** Russian (Русский)

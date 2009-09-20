@@ -1223,11 +1223,17 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'chemicalsources' => 'Himižed purtked',
+	'chemicalsource-desc' => 'Ližadab <nowiki><chemform></nowiki>-virgan himižiden formuliden täht',
 	'chemFunctions_ListPage' => 'Himižed purtked',
+	'chemFunctions_DataList' => 'Alemba oma anttud kosketused saitoile, kudambišpäi voib löuta informacijad ectüd substancijas.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula-ühtnend NIST-saital</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS Oksfordan universitetan saital (Sur\' Britanii) (ei ole ecindad)</a><br />',
 	'chemFunctions_CAS' => 'CAS-nomer',
 	'chemFunctions_ATCCode' => 'ATCKod',
+	'chemFunctions_ECNumber' => 'ECNumber',
 	'chemFunctions_Formula' => 'Formul',
 	'chemFunctions_Name' => 'IUPAC-nimi',
+	'chemFunctions_ChemFormInputError' => 'Chemform: anttud andmusiden petuz!',
 );
 
 /** Vietnamese (Tiếng Việt)

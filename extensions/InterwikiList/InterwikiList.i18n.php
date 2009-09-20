@@ -77,6 +77,18 @@ $messages['bg'] = array(
 	'interwikilist-target' => 'Целеви адрес',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'interwikilist' => 'Roll etrewiki',
+	'interwikilist-desc' => 'Ouzhpennañ a ra ur [[Special:Interwikilist|bajenn dibar]] evit gwelet an holl liammoù etrewiki zo',
+	'interwikilist-linkname' => 'Liamm etrewiki',
+	'interwikilist-target' => 'URL a sell outañ',
+	'interwikilist-filter' => 'Roll ar sil',
+	'interwikilist-prefix' => 'Rakger etrewiki :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

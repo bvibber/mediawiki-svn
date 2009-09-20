@@ -148,6 +148,13 @@ $messages['pms'] = array(
 	'conditionalshowsection-desc' => 'Gionté ël tag <cshow> per mosté/stërmé condissionalment na session ëd test wiki',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'conditionalshowsection-desc' => "Aggiunge 'u tag <cshow> pe fa vedè/scunnè condizionalmende 'na sezione de teste de Uicchi",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

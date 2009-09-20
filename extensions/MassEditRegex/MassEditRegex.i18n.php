@@ -47,26 +47,54 @@ $messages['qqq'] = array(
 	'masseditregex-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'masseditregex' => 'Wysig baie bladsye met behulp van gereelde uitdrukkings',
+	'masseditregex-pagelisttxt' => 'Bladsye om te wysig:',
+	'masseditregex-matchtxt' => 'Soek vir:',
+	'masseditregex-replacetxt' => 'Vervang met:',
+	'masseditregex-executebtn' => 'Uitvoer',
+	'masseditregex-err-nopages' => 'U moet ten minste een bladsy spesifiseer om te verander.',
+	'masseditregex-before' => 'Voor',
+	'masseditregex-after' => 'Na',
+	'masseditregex-max-preview-diffs' => 'Voorskou is beperk tot die eerste $1 {{PLURAL:$1|ooreenkoms|ooreenkomste}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|wysiging|wysigings}}',
+	'masseditregex-page-not-exists' => '$1 bestaan nie',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|bladsy|bladsye}} gewysig',
+	'masseditregex-view-full-summary' => 'Sien samevatting van wysigings',
+	'masseditregex-hint-intro' => "Hier is 'n paar wenke en voorbeelde vir die uitvoer van algemene take:",
+	'masseditregex-hint-headmatch' => 'Seleksie',
+	'masseditregex-hint-headreplace' => 'Vervang',
+	'masseditregex-hint-headeffect' => 'Effek',
+	'masseditregex-hint-remove' => 'Verwyder teks uit al die bladsye in die lys',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'masseditregex' => 'Масавае рэдагаваньне з выкарыстаньнем рэгулярных выразаў',
-	'masseditregex-desc' => 'Карыстацца рэгулярным выразам для [[Special:MassEditRegex|рэдагаваньня шматлікіх старонак за адно дзеяньне]]',
-	'masseditregextext' => 'Увядзіце адзін ці некалькі рэгулярных выразаў (адзін на радок) для пошуку супадзеньняў, і адзін ці некалькі выразаў для замены кожнага супадзеньня. Першы супаўшы выраз, калі ўсё правільнв, будзе заменены на першы выраз для замены і г.так далей. Глядзіце функцыю PHP preg_replace() для падрабязнасьцяў.',
+	'masseditregex-desc' => 'Выкарыстаньне рэгулярных выразаў для [[Special:MassEditRegex|рэдагаваньня некалькіх старонак за адно дзеяньне]]',
+	'masseditregextext' => 'Увядзіце адзін альбо некалькі рэгулярных выразаў (адзін на радок) для пошуку супадзеньняў, і адзін альбо некалькі выразаў для замены кожнага супадзеньня.
+Першы пасьпяховае супадзеньне з выразам будзе замененае на першы выраз для замены і гэтак далей. Глядзіце падрабязнасьці пра функцыю PHP preg_replace().',
 	'masseditregex-pagelisttxt' => 'Старонкі для рэдагаваньня:',
 	'masseditregex-matchtxt' => 'Пошук:',
 	'masseditregex-replacetxt' => 'Замяніць на:',
 	'masseditregex-executebtn' => 'Выканаць',
-	'masseditregex-err-nopages' => 'Вам неабходна пазначыць хаця б адну старонку для замены.',
+	'masseditregex-err-nopages' => 'Вам неабходна пазначыць хаця б адну старонку для рэдагаваньня.',
 	'masseditregex-before' => 'Перад',
 	'masseditregex-after' => 'Пасьля',
 	'masseditregex-max-preview-diffs' => 'Папярэдні прагляд абмежаваны $1 {{PLURAL:$1|першым супадзеньнем|першымі супадзеньнямі|першымі супадзеньнямі}}.',
-	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|замена|замены|замены}}',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|зьмена|зьмены|зьменаў}}',
 	'masseditregex-page-not-exists' => '$1 не існуе',
-	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|артыкул|артыкулы|артыкулы}} адрэдагаваны',
+	'masseditregex-num-articles-changed' => '{{PLURAL:$1|адрэдагаваная|адрэдагаваныя|адрэдагаваныя}} $1 {{PLURAL:$1|старонка|старонкі|старонак}}',
+	'masseditregex-view-full-summary' => 'Праглядзець поўнае апісаньне зьменаў',
 	'masseditregex-hint-headmatch' => 'Супадзеньне',
 	'masseditregex-hint-headreplace' => 'Замена',
+	'masseditregex-hint-remove' => 'Выдаліць некаторы тэкст з усіх старонак у сьпісе',
 );
 
 /** French (Français)
@@ -152,6 +180,20 @@ $messages['hsb'] = array(
 	'masseditregex-hint-remove' => 'Tekst ze wšěch stronow w lisćinje wotstronić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'masseditregex' => 'Tömeges szerkesztés reguláris kifejezések használatával',
+	'masseditregex-pagelisttxt' => 'Szerkesztendő lapok:',
+	'masseditregex-replacetxt' => 'Csere erre:',
+	'masseditregex-executebtn' => 'Végrehajtás',
+	'masseditregex-before' => 'Előtte',
+	'masseditregex-after' => 'Utána',
+	'masseditregex-hint-headreplace' => 'Csere',
+	'masseditregex-hint-headeffect' => 'Hatás',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -178,6 +220,45 @@ $messages['ja'] = array(
 	'masseditregex-hint-toappend' => '記事末尾に文章を追記する。ページにカテゴリーを加えるにの便利です',
 	'masseditregex-hint-remove' => '指定したすべてのページからある文章を除去する',
 	'masseditregex-hint-removecat' => '記事からすべてのカテゴリーを除去する (ウィキテキスト中の角括弧のエスケープに注意)。置換する値はエスケープしません。',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'masseditregex' => 'Donn Sigge em Pöngel ändere, un dat övver <code>ergular expressions</code>.',
+	'masseditregex-desc' => 'Deiht Sigge [[Special:MassEditRegex|em Pöngel en einem Rötsch ändere]], un dat övver <code>ergular expressions</code>.',
+	'masseditregex-pagelisttxt' => 'De Sigge zom Ändere:',
+	'masseditregex-matchtxt' => 'Söhk noh:',
+	'masseditregex-replacetxt' => 'Tuusch dat jäje:',
+	'masseditregex-executebtn' => 'Lohß Jonn!',
+	'masseditregex-err-nopages' => 'Winneschßdens ein Sigg för zem Ändere moß de ald aanjävve:',
+	'masseditregex-before' => 'Förher',
+	'masseditregex-after' => 'Hengerher',
+	'masseditregex-max-preview-diffs' => 'De Vör-Aanseesch es op  {{PLURAL:$1|dä eetste Träffer|de eetste $1 Träffer|nix}} bejränz.',
+	'masseditregex-num-changes' => '$1: {{PLURAL:$2|ein Änderung|$2 Änderunge|kein Änderung}}',
+	'masseditregex-page-not-exists' => '$1 jidd_et nit',
+	'masseditregex-num-articles-changed' => '{{PLURAL:$1|Ein Sigg|$1 Sigge|Kein Sigg wood}} jeändert',
+	'masseditregex-view-full-summary' => 'De kumplätte Zosammefassung udder Quäll aanloore',
+	'masseditregex-hint-intro' => 'Hee sen e paa Henwieß un Beispöll, wi mer üblesche Aufjaabe jedonn kritt:',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'masseditregex-pagelisttxt' => "Säite fir z'änneren:",
+	'masseditregex-matchtxt' => 'Sichen no:',
+	'masseditregex-replacetxt' => 'Eretzen duerch:',
+	'masseditregex-executebtn' => 'Ausféieren',
+	'masseditregex-err-nopages' => "Dir musst mindestens eng Säit ugi fir z'änneren.",
+	'masseditregex-before' => 'Virdrun',
+	'masseditregex-after' => 'Duerno',
+	'masseditregex-num-changes' => '$1 : $2 {{PLURAL:$2|Ännerung|Ännerungen}}',
+	'masseditregex-page-not-exists' => '$1 gëtt et net',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|Säit|Säite}} geännert',
+	'masseditregex-hint-headreplace' => 'Ersetzen',
+	'masseditregex-hint-toappend' => "Text un d'Ënn vun der Säit bäisetzen - gutt fir Säiten a Kategorien derbäizesetzen",
 );
 
 /** Dutch (Nederlands)

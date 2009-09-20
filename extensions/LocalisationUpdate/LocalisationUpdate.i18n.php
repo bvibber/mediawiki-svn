@@ -303,6 +303,13 @@ $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'localisationupdate-desc' => 'Pidab lokaliziruidud tedotused veresin, ku voib',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

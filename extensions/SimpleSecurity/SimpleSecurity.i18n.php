@@ -687,6 +687,28 @@ $messages['pl'] = array(
 	'security-restricttogroup' => 'Dostęp do zawartości ograniczony do członków „$1”',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'security' => 'Registr ëd sicurëssa',
+	'security-desc' => 'A estend la protession dla pàgina ëd MediaWiki për përmëtte dë strenze la visualisassion dël contnù dla pàgina',
+	'security-logpage' => 'Registr ëd sicurëssa',
+	'security-logpagetext' => "Sto sì a l'é un registr ëd l'assion blocà da l'[http://www.mediawiki.org/wiki/Extension:SimpleSecurity estension SimpleSecurity].",
+	'badaccess-read' => "'''Avis''': \"\$1\" a l'é riferìa sì, ma it l'has pa basta përmess për acedje.",
+	'security-info' => 'A-i son $1 an dzora a sta pàgina-sì',
+	'security-info-toggle' => 'restrission ëd sicurëssa',
+	'security-inforestrict' => "$1 a l'é strenzùa a $2",
+	'security-desc-LS' => '(a s\'àplica përchè sta pàgina-sì a l\'é "$2 $1")',
+	'security-desc-PR' => '(ampòsta dal tab "protegg")',
+	'security-infosysops' => 'Pa gnun-e restrission a son aplicà përchè it ses un mèmber ëd la partìa "sysop"',
+	'security-manygroups' => 'partìe $1 e $2',
+	'security-unchain' => 'Modìfica assion andividualment',
+	'security-type-category' => 'categorìa',
+	'security-type-namespace' => 'spassi nominal',
+	'security-restricttogroup' => 'Vëdde contnù riservà ai mèmber ëd "$1"',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya

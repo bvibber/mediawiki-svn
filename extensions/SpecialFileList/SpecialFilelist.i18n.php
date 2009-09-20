@@ -852,6 +852,13 @@ $messages['tr'] = array(
 	'filelist-image-desc' => 'açkl',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Rinatus
+ */
+$messages['tt-cyrl'] = array(
+	'filelist-show-list' => 'Исемлекне күрсәтергә',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

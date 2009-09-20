@@ -671,6 +671,9 @@ Quiste te manne fore da 'a pàgene ca ste cange e puè perder tutte 'u cangiamen
 	'ajaxLogin2' => 'Si secure??
 Tu puè perdere le cangiaminde tue de sta pàgene ce tu lasse sta pàgene mò.',
 	'ajaxlogin-create' => "Ccreje 'nu cunde utende",
+	'al-nosuchuser' => 'Non ge stè \'n\'utende ca se chiame "$1".
+Le nome utinde sonde sensibbele a le maiuscole e minuscole.
+Condrolle c\'è scritte.',
 );
 
 /** Russian (Русский)

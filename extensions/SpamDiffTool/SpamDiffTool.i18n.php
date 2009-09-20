@@ -639,11 +639,17 @@ Kattints <a href='$1'>ide</a> a folytatáshoz.",
 	'spamdifftool_confirm' => "Erősítsd meg, hogy hozzá szeretnéd adni ezeket a bejegyzéseket a spam feketelistához.
 (Kattints <a href='$1' target='new'>ide</a> probléma jelentéséhez.)",
 	'spamdifftool_summary' => 'Hozzáadás a spam-feketelistához',
+	'spamdifftool_urls_detected' => 'Az alább látható URL-ek találhatóak a szerkesztés(ek)ben.
+Melyikeket szeretnéd hozzáadni a spam feketelistához?
+A lehetőségek a nagyon korlátozótól a kevésbé korlátozóig vannak felsorolva, az egész tartomány blokkolása az onnan jövő összes hivatkozást blokkolni fogja, bárhová is mutat.
+
+Bizonyosodj meg róla, hogy nem blokkolsz egész felhasználói fiókokat hosztoló tartományokat, mint például blogspot.com, geocities.com, stb.',
 	'spamdifftool_no_urls_detected' => "Nem találtam URL-t.
 Kattints <a href='$1'>ide</a> a visszatéréshez.",
 	'spamdifftool_spam_link_text' => 'hozzáadás a spamekhez',
 	'spamdifftool_option_domain' => 'mind ebből a tartományból',
 	'spamdifftool_option_subdomain' => 'mind ebből az al-tartományból',
+	'spamdifftool_option_directory' => 'ez az al-tartomány és könyvtár',
 	'spamdifftool_option_none' => 'semmi',
 	'spamdifftool_block' => 'Blokkolás:',
 	'spamdifftool_submit_buttom' => 'Küldés',
