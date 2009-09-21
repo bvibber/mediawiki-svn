@@ -76,7 +76,7 @@ class CodeRevisionView extends CodeView {
 
 		$html = Xml::openElement( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ) );
 
-		if ( $wgUser->isAllowed( 'codereview-post-comment' ) ) {
+		if ( $this->canPostComments() ) {
 			$html .= $this->addActionButtons();
 		}
 
@@ -117,7 +117,7 @@ class CodeRevisionView extends CodeView {
 				"});</script>\n";
 		}
 
-		if ( $wgUser->isAllowed( 'codereview-post-comment' ) ) {
+		if ( $this->canPostComments() ) {
 			$html .= $this->addActionButtons();
 		}
 
@@ -176,6 +176,11 @@ class CodeRevisionView extends CodeView {
 			}
 		}
 		return false;
+	}
+	
+	protected function canPostComments() {
+		global $wgUser;
+		return $wgUser->isAllowed( 'codereview-post-comment' ) && !$wgUser->isBlocked();
 	}
 
 	protected function formatPathLine( $path, $action ) {
@@ -578,7 +583,7 @@ class CodeRevisionView extends CodeView {
 
 	protected function commentReplyLink( $id ) {
 		global $wgUser;
-		if ( !$wgUser->isAllowed( 'codereview-post-comment' ) ) return '';
+		if ( !$this->canPostComments() ) return '';
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		$self = SpecialPage::getTitleFor( 'Code', "$repo/$rev/reply/$id" );
@@ -597,7 +602,7 @@ class CodeRevisionView extends CodeView {
 		}
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
-		if ( !$wgUser->isAllowed( 'codereview-post-comment' ) ) {
+		if ( !$this->canPostComments() ) {
 			return '';
 		}
 		return '<div class="mw-codereview-post-comment">' .
