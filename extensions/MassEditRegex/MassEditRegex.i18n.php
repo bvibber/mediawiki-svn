@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'masseditregex-desc' => 'Use regular expressions to [[Special:MassEditRegex|edit many pages in one operation]]',
 	'masseditregextext' => 'Enter one or more regular expressions (one per line) for matching, and one or more expressions to replace each match with.
 The first match-expression, if successful, will be replaced with the first replace-expression, and so on.
-See the PHP function preg_replace() for details.',
+See [http://php.net/manual/en/function.preg-replace.php the PHP function preg_replace()] for details.',
 	'masseditregex-pagelisttxt' => 'Pages to edit:',
 	'masseditregex-matchtxt' => 'Search for:',
 	'masseditregex-replacetxt' => 'Replace with:',
