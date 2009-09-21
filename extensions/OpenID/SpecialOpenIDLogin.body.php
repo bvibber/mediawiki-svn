@@ -493,6 +493,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->returnToMain( false, $this->returnTo() );
 	}
 
+	# FIXME: this should probably use a Login method
 	function createUser( $openid, $sreg, $name ) {
 		global $wgAuth;
 
@@ -504,7 +505,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 
 		$user->addToDatabase();
-		$user->addNewUserLogEntry();
+		$user->addNewUserLogEntry( $user );
 
 		if ( !$user->getId() ) {
 			wfDebug( "OpenID: Error adding new user.\n" );
