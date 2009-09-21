@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
-$wgEditToolbarStyleVersion = 35;
+$wgEditToolbarStyleVersion = 36;
 
 // Set this to true to simply override the stock toolbar for everyone
 $wgEditToolbarGlobalEnable = false;
