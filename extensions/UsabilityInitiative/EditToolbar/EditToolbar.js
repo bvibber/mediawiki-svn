@@ -1204,7 +1204,7 @@ js2AddOnloadHook( function() {
 							$textarea.setSelection( start, end );
 							$textarea.encapsulateSelection( '', replaceStr, '', false, true );
 						}
-						if ( i > 1 )
+						if ( $j( '#edittoolbar-replace-all' ).is( ':checked' )  )
 							alert( gM( 'edittoolbar-tool-replace-success', i ) );
 						$textarea.scrollToCaretPosition( start );
 						$textarea.setSelection( start, start + replaceStr.length );
