@@ -36,7 +36,7 @@ See the PHP function preg_replace() for details.',
 	'masseditregex-hint-headeffect' => 'Effect',
 	'masseditregex-hint-toappend' => 'Append some text to the end of the page - great for adding pages to categories',
 	'masseditregex-hint-remove' => 'Remove some text from all the pages in the list',
-	'masseditregex-hint-removecat' => 'Remove all categories from an page (note the escaping of the square brackets in the wikicode.)
+	'masseditregex-hint-removecat' => 'Remove all categories from a page (note the escaping of the square brackets in the wikicode.)
 The replacement values should not be escaped.'
 );
 
