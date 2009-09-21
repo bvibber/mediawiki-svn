@@ -490,6 +490,7 @@ Configure $wgPrefStatsTrackPrefs para establecerlas.',
 $messages['et'] = array(
 	'prefstats' => 'Eelistuste arvandmed',
 	'prefstats-desc' => 'Kogub arvandmeid kindlate eelistuste kasutatavuse kohta.',
+	'prefstats-title' => 'Eelistuste arvandmed',
 	'prefstats-list-intro' => 'Parajasti jälgitakse järgmisi eelistusi. Klõpsa ühel, et näha selle arvandmeid.',
 	'prefstats-noprefs' => 'Ühtegi eelistust ei jälgita parajasti.
 Eelistuse jälgimiseks redigeeri muutujat $wgPrefStatsTrackPrefs.',
