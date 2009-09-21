@@ -1528,6 +1528,7 @@ $messages['hu'] = array(
 	'whitelisttableedit' => 'Szerkesztés',
 	'whitelisttableremove' => 'Eltávolítás',
 	'whitelistnewtabledate' => 'Lejárat dátuma:',
+	'whitelistnewtableprocess' => 'Folyamat',
 	'whitelistnever' => 'soha',
 );
 

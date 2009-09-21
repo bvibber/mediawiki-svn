@@ -146,8 +146,11 @@ $messages['az'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'authorprotect' => 'Абарона старонак ад не-аўтараў',
+	'authorprotect-desc' => 'Дазваляе аўтару старонкі абараняць яе ад іншых удзельнікаў',
 	'authorprotect-reason' => 'Прычына',
 );
 

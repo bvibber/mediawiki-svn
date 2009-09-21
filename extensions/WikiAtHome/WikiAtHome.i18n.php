@@ -404,8 +404,17 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'wah-short-audio' => '$1 hangfájl, $2',
+	'wah-short-video' => '$1 videofájl, $2',
+	'wah-short-general' => '$1 médiafájl, $2',
+	'wah-long-audio' => '($1 hangfájl, hossza: $2, bitsűrűsége: $3)',
+	'wah-long-video' => '($1 videófájl, hossza $2, $4×$5 képpont, bitsűrűsége: $3)',
 	'wah-long-general' => '(médiafájl, hossza: $2, bitsűrűsége: $3)',
+	'wah-long-error' => '(az ffmpeg nem tudja olvasni a következő fájlt: $1)',
+	'wah-transcode-working' => 'Ez a videó feldolgozás alatt van, kérlek próbáld később',
 	'wah-transcode-fail' => 'A fájl átkódolása meghiúsult.',
+	'wah-javascript-off' => 'A Wiki@Home-ban való részvételhez engedélyezned kell a JavaScriptet',
+	'wah-loading' => 'Wiki@Home interfész betöltése <blink>…</blink>',
 );
 
 /** Interlingua (Interlingua)

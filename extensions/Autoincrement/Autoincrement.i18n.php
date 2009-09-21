@@ -13,6 +13,13 @@ $messages['qqq'] = array(
 	'autoincrement-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'autoincrement-desc' => 'Працэдура-перахопнік, якая дадае зьменную, якая аўтаматычна інкрэмэнтуецца <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

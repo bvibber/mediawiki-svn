@@ -23,10 +23,12 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'flv-long-desc' => '(Флэш-відэа, $1 × $2 піксэляў, памер файла: $3)',
+	'flvhandler_desc' => 'Дазваляе, каб файлы ў фармаце Flash Video (.flv) дадаваліся як стандартныя файлы (напрыклад, <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(Flash Video, $1 × $2 піксэляў, памер файла: $3)',
 );
 
 /** Breton (Brezhoneg)
@@ -49,8 +51,16 @@ $messages['bs'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'flvhandler_desc' => 'Wužywanje datajow flash video (.flv) w standardnych wobrazowych toflickach dowóliś (na pś. <nowiki>[[Image:Movie.flv]]</nowiki>)',
+	'flvhandler_desc' => 'Pśidaśe datajow flash video (.flv) ako standardne dataje dowóliś (na pś. <nowiki>[[File:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Wideo flash, $1 × $2 pikselow, wjelikosć dataje: $3)',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'flvhandler_desc' => 'Permitir archivos de video Flash (.flv) a ser agregados como archivos estándares (e.g. <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(video Flash, $1 × $2 pixeles, file size: $3)',
 );
 
 /** French (Français)
@@ -82,7 +92,7 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'flvhandler_desc' => 'Wužiwanje datajow Flash Video (.flv) w standardnych wobrazowych tafličkach dowolić (na př. <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flvhandler_desc' => 'Přidać datajow Flash Video (.flv) jako standardne dataje dowolić (na př. <nowiki>[[File:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Widejo flash, $1 × $2 pikselow, wulkosć dataje: $3)',
 );
 

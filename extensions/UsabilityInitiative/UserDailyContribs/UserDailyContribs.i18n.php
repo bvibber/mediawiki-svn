@@ -178,6 +178,13 @@ $messages['sk'] = array(
 	'userdailycontribs-desc' => 'Denné príspevky používateľa rozšírenia na sledovanie kliknutí',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'userdailycontribs-desc' => 'Tıklama izleme eklentisi için günlük kullanıcı katkıları',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

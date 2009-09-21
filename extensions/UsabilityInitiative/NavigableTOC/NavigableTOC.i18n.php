@@ -47,6 +47,7 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'navigabletoc' => 'Taolenn verdeeus',
 	'navigabletoc-desc' => "Ouzhpennañ a ra taolenn an titloù d'ar furmskrid kemmañ a zibun an destenn pa vez kliket war ur rann.",
+	'navigabletoc-preference' => 'Gweredekaat an daolenn verdeus an danvezioù',
 );
 
 /** Bosnian (Bosanski)

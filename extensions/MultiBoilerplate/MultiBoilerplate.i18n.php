@@ -264,7 +264,13 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'multiboilerplate-desc' => 'Lehetővé teszi sablonszövegek beillesztését a szerkesztőablak feletti legördülő listából lapok szerkesztésénél',
+	'multiboilerplate-legend' => 'Sablonszöveg kiválasztása',
 	'multiboilerplate-submit' => 'Betöltés',
+	'boilerplates' => 'Elérhető sablonszövegek',
+	'multiboilerplate-special-pagetext' => 'Ezek a sablonok előre betölthetőek lap létrehozásakor. (<span class=plainlinks>[{{fullurl:ez a lap nem létezik|action=edit}} demó]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'A sablonszövegek a <tt>LocalSettings.php</tt>-ben vannak definiálva.',
+	'multiboilerplate-special-define-in-interface' => 'A sablonszövegek a [[MediaWiki:Multiboilerplate]] lapon vannak definiálva.',
 );
 
 /** Interlingua (Interlingua)

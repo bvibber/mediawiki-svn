@@ -359,7 +359,13 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'mostrevisors-limitlinks' => '$1 lap mutatása',
+	'mostrevisors-namespace' => 'Névtér:',
+	'mostrevisors-none' => 'Nem találhatók bejegyzések.',
 	'mostrevisors-submit' => 'Menj',
+	'mostrevisors-showredir' => 'Átirányítás lapok megjelenítése',
+	'mostrevisors-hideredir' => 'Átirányítás lapok elrejtése',
+	'mostrevisors-viewcontributors' => 'Fő közreműködők megtekintése',
 );
 
 /** Interlingua (Interlingua)

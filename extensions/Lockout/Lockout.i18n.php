@@ -22,11 +22,32 @@ $messages['qqq'] = array(
 	'lockout-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'lockout-desc' => 'Не дазваляе ўваход ў сыстэму заблякаваным удзельнікам',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
 	'lockout-desc' => "Mirout ouzh an implijerien stanket d'en em lugañ",
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'lockout-desc' => 'Blokěrowanym wužywarjam pśizjawjenje zawobaraś',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'lockout-desc' => 'Prevenir inicio de sesión de usuarios bloqueados',
 );
 
 /** French (Français)
@@ -41,6 +62,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'lockout-desc' => 'Impedir que os usuarios bloqueados poidan acceder ao sistema',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'lockout-desc' => 'Derfir sorge, ass gsperrti Benutzer sich nimi chenne aamälde',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -97,5 +125,12 @@ $messages['pms'] = array(
  */
 $messages['roa-tara'] = array(
 	'lockout-desc' => 'Prevene le utinde bloccate da collegarse',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'lockout-desc' => 'Не позволяет заблокированным участникам представляться системе',
 );
 

@@ -1070,6 +1070,7 @@ Légyszíves ellenőrizd, hogy megteheted-e ezt a másik wikin, és megfelel-e m
 	'crosswikiblock-local' => 'A helyi blokkok nem támogatottak ezen a lapon. Használd a [[Special:BlockIP|{{int:blockip}}]] speciális lapot',
 	'crosswikiblock-noexpiry' => 'Érvénytelen lejárat: $1.',
 	'crosswikiblock-notoken' => 'Érvénytelen szerkesztési token.',
+	'crosswikiblock-alreadyblocked' => '$3 már blokkolva van.',
 	'crosswikiblock-noblock' => 'Ez a szerkesztő nincs blokkolva.',
 	'right-crosswikiblock' => 'szerkesztők blokkolása és a blokkok feloldása más wikiken',
 );

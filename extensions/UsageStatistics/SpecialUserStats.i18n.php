@@ -1003,6 +1003,7 @@ $messages['hu'] = array(
 	'specialuserstats' => 'Használati statisztika',
 	'usagestatistics' => 'Használati statisztika',
 	'usagestatisticsinterval' => 'Intervallum:',
+	'usagestatisticsnamespace' => 'Névtér:',
 	'usagestatisticstype' => 'Típus',
 	'usagestatisticsstart' => 'Kezdődátum:',
 	'usagestatisticsend' => 'Végdátum:',

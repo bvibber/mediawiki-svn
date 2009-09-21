@@ -641,6 +641,18 @@ $messages['tr'] = array(
 	'clicktracking' => 'Kullanılabilirlik Girişimi tıklama izleme',
 	'clicktracking-desc' => 'Tıklama izleme, bir sayfa yenilemesine sebep olmadan olayları izleme amaçlı',
 	'clicktracking-title' => 'Toplu kullanıcı tıklamaları',
+	'event-name' => 'Olay adı',
+	'expert-header' => '"Deneyimli" tıklamaları',
+	'intermediate-header' => '"Orta düzeyde" tıklamaları',
+	'beginner-header' => '"Acemi" tıklamaları',
+	'total-header' => 'Toplam tıklama',
+	'start-date' => 'Başlangıç Tarihi (YYYYAAGG)',
+	'end-date' => 'Bitiş tarihi (YYYYAAGG)',
+	'increment-by' => 'Her veri noktasının temsil ettiği gün sayısı',
+	'change-graph' => 'Grafiği değiştir',
+	'beginner' => 'Acemi',
+	'intermediate' => 'Orta düzeyde',
+	'expert' => 'Deneyimli',
 );
 
 /** Vèneto (Vèneto)

@@ -468,8 +468,17 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'accountmanager' => 'Felhasználói fiók kezelő',
+	'am-username' => 'felhasználói név',
+	'am-email' => 'e-mail cím',
+	'am-active' => 'aktív',
+	'am-updated' => 'A változtatások sikeresen elmentve',
 	'nss-rights' => 'jogosultságok',
+	'nss-save-changes' => 'Változtatások mentése',
+	'nss-create-account-header' => 'Új felhasználói fiók létrehozása',
+	'nss-create-account' => 'Felhasználói fiók létrehozása',
 	'nss-no-mail' => 'Ne küldjön e-mailt',
+	'nss-welcome-mail-subject' => 'Felhasználói fiók készítés',
 );
 
 /** Interlingua (Interlingua)

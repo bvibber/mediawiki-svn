@@ -1241,9 +1241,20 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'regexblock' => 'Reguláris kifejezés alapú blokkolás',
+	'regexblock-already-blocked' => '$1 már blokkolva van.',
+	'regexblock-currently-blocked' => 'Jelenleg blokkolt címek:',
+	'regexblockstats' => 'Reguláris kifejezés alapú blokkok statisztikája',
+	'regexblock-form-reason' => 'Indoklás:',
 	'regexblock-form-expiry' => 'Lejárat:',
+	'regexblock-form-submit' => 'Blokkold ezt a felhasználót',
+	'regexblock-form-submit-regex' => 'Érvénytelen reguláris kifejezés.',
+	'regexblock-nodata-found' => 'Nem található adat',
 	'regexblock-view-all' => 'Mind',
 	'regexblock-view-go' => 'Menj',
+	'regexblock-view-reason' => 'indoklás: $1',
+	'regexblock-view-block-infinite' => 'végleges blokk',
+	'regexblock-view-stats' => 'statisztikák',
 );
 
 /** Interlingua (Interlingua)

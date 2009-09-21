@@ -363,6 +363,7 @@ $messages['af'] = array(
 	'edittoolbar-help-content-heading5-result' => '<h5>Opskrifteks</h5>',
 	'edittoolbar-help-content-ulist-description' => 'Ongenommerde lys',
 	'edittoolbar-help-content-olist-description' => 'Genommerde lys',
+	'edittoolbar-help-content-file-description' => 'Ingebedde lêer',
 	'edittoolbar-help-content-reference-description' => 'Verwysing',
 	'edittoolbar-help-content-signature-description' => 'Handtekening',
 );
@@ -1762,7 +1763,9 @@ $messages['cy'] = array(
 	'edittoolbar-help-content-olist-syntax' => '# Eitem ar y rhestr<br /># Eitem ar y rhestr',
 	'edittoolbar-help-content-olist-result' => '<ol><li>Eitem ar y rhestr</li><li>Eitem ar y rhestr</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Ffeil mewnosodol',
+	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Enghraifft.png|mân-lun|Disgrifiad]]',
 	'edittoolbar-help-content-reference-description' => 'Troednodyn',
+	'edittoolbar-help-content-reference-syntax' => 'Testun y dudalen.&lt;ref name="test"&gt;[http://www.enghraifft.org ysgrifen y cyswllt], ysgrifen ychwanegol.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => 'Testun y dudalen.',
 	'edittoolbar-help-content-rereference-description' => 'Ail-ddefnyddio troednodyn',
 	'edittoolbar-help-content-rereference-result' => "Testun y dudalen.<sup><a href='#'>[1]</a></sup>",
@@ -9637,6 +9640,7 @@ $messages['tr'] = array(
 	'edittoolbar' => 'Araç çubuğu düzenleme',
 	'edittoolbar-desc' => 'Gelişmiş kullanılabilirlik ile sayfa araç çubuğunu değiştir',
 	'edittoolbar-preference' => 'Gelişmiş düzenleme araç çubuğunu etkinleştir',
+	'edittoolbar-cgd-preference' => 'Gelişmiş viki metni eklemek için yardımı etkinleştir',
 	'edittoolbar-loading' => 'Yükleniyor...',
 	'edittoolbar-tool-bold' => 'Kalın',
 	'edittoolbar-tool-bold-example' => 'Kalın metin',
@@ -9696,6 +9700,18 @@ $messages['tr'] = array(
 {{ns:file}}:Örnek.jpg|Resimyazısı2',
 	'edittoolbar-tool-newline' => 'Yeni satır',
 	'edittoolbar-tool-table' => 'Tablo',
+	'edittoolbar-tool-table-example-old' => '-
+! başlık 1
+! başlık 2
+! başlık 3
+|-
+| satır 1, hücre 1
+| satır 1, hücre 2
+| satır 1, hücre 3
+|-
+| satır 2, hücre 1
+| satır 2, hücre 2
+| satır 2, hücre 3',
 	'edittoolbar-tool-table-example' => 'Satır $1, hücre $2',
 	'edittoolbar-tool-table-example-header' => 'Satır $1, hücre $2 (başlık)',
 	'edittoolbar-tool-table-title' => 'Tablo ekle',

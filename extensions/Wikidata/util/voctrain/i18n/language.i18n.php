@@ -1677,8 +1677,30 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'voctrain_Hello_World' => 'HELLÓ WIKI!',
+	'voctrain_Permission_Denied' => 'Hozzáférés megtagadva',
+	'voctrain_try_again_' => 'újrapróbáljuk?',
+	'voctrain_Action_unknown' => 'Ismeretlen művelet',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Nem tudom mit tegyek a következővel: „%action”.',
+	'voctrain_User_added' => 'Felhasználó hozzáadva',
+	'voctrain_continue' => 'folytatás',
+	'voctrain_bye' => 'viszlát',
+	'voctrain_Set_up_your_exercise' => 'Állítsd be a feladatodat',
+	'voctrain_Number_of_questions' => 'Kérdések száma',
+	'voctrain_Languages' => 'Nyelvek',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(például eng az angolhoz, deu a némethez)',
+	'voctrain_Questions' => 'Kérdések',
+	'voctrain_Answers' => 'Válaszok',
+	'voctrain_start_exercise' => 'gyakorlás elkezdése',
+	'voctrain_collection' => 'gyűjtemény',
+	'voctrain_ISO_639_3_format' => 'ISO-639-3 formátum',
+	'voctrain_Definition' => 'Definíció',
+	'voctrain_Word' => 'Szó',
+	'voctrain_submit_answer' => 'válasz elküldése',
+	'voctrain_User_name' => 'Felhasználói név',
 	'voctrain_Login' => 'Bejelentkezés',
 	'voctrain_Log_in' => 'Bejelentkezés',
+	'voctrain_other' => 'egyéb',
 );
 
 /** Interlingua (Interlingua)

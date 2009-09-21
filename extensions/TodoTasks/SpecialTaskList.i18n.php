@@ -594,8 +594,16 @@ Twój přećelny zdźělenski system %s.',
  */
 $messages['hu'] = array(
 	'tasklist' => 'Feladatlista',
+	'tasklist-parser-desc' => '<nowiki>{{#todo:}}</nowiki> elemzőfüggvény feladatok hozzárendeléséhez',
+	'tasklistbyproject' => 'Feladatok listája projektek szerint',
 	'tasklistunknownproject' => 'Ismeretlen projekt',
+	'tasklistunspecuser' => 'Felhasználó nincs meghatározva',
+	'tasklistincorrectuser' => 'Helytelen felhasználói név',
+	'tasklistemail' => 'Kedves %s',
+	'tasklistmytasks' => 'Feladataim',
+	'tasklistchooseproj' => 'Projekt kiválasztása:',
 	'tasklistprojdisp' => 'Megjelenítés',
+	'tasklistbyname' => '== %s feladatlistája ==',
 );
 
 /** Interlingua (Interlingua)

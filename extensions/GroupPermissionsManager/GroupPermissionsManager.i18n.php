@@ -1337,6 +1337,7 @@ $messages['hu'] = array(
 	'grouppermissions-deletelabel' => 'Csoport törlése',
 	'grouppermissions-add' => 'Csoport hozzáadása',
 	'grouppermissions-delete' => 'Csoport törlése',
+	'grouppermissions-comment' => 'Megjegyzés:',
 	'grouppermissions-true' => 'Igen',
 	'grouppermissions-false' => 'Nem',
 	'grouppermissions-never' => 'Soha',

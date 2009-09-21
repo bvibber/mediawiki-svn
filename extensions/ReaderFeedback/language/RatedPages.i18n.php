@@ -16,9 +16,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Mormegil
  * @author Pietrodn
  */
 $messages['qqq'] = array(
+	'ratedpages' => 'Title of [[Special:RatedPages]]',
 	'ratedpages-list' => '{{identical|flaggedrevs-pagelist}}',
 	'ratedpages-graphs' => '{{identical|flaggedrevs-graphs}}',
 );
@@ -82,6 +84,17 @@ $messages['bs'] = array(
 	'ratedpages-list' => 'Ispod je spisak stranica poredanih po rejtingu poslanom od strane čitaoca.',
 	'ratedpages-none' => 'Nema stranica na ovom spisku',
 	'ratedpages-graphs' => 'podaci rejtinga',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'ratedpages' => 'Stránky hodnocené čtenáři',
+	'ratedpages-leg' => 'Najde stránky s větším počtem ohodnocení',
+	'ratedpages-list' => 'Toto je seznam stránek seřazený podle čtenářského hodnocení.',
+	'ratedpages-none' => 'V tomto seznamu nejsou žádné stránky',
+	'ratedpages-graphs' => 'hodnocení',
 );
 
 /** Danish (Dansk)
@@ -457,6 +470,17 @@ $messages['ru'] = array(
 	'ratedpages-graphs' => 'данные об оценке',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'ratedpages' => 'Ааҕааччылар сыаналаабыт сирэйдэрэ',
+	'ratedpages-leg' => 'Элбэх сыаналааһыннаах сирэйдэри буларга',
+	'ratedpages-list' => 'Аллара сирэйдэр ааҕааччылар сыанабылларынан наардаммыт тиһиктэрэ көстөр.',
+	'ratedpages-none' => 'Тиһик кураанах.',
+	'ratedpages-graphs' => 'Сыанабыл дааннайдара',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -507,6 +531,8 @@ $messages['tl'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
+	'ratedpages' => 'Okuyucu dereceli sayfalar',
+	'ratedpages-leg' => 'Oldukça fazla sayıda derecelendirmeyle derecelendirilmiş sayfaları bul',
 	'ratedpages-list' => 'Aşağıdaki, kullanıcı dönütleri oranlarına göre sıralanmış sayfalar listesidir.',
 	'ratedpages-none' => 'Bu listede hiç sayfa yok',
 	'ratedpages-graphs' => 'veri derecelendiriliyor',

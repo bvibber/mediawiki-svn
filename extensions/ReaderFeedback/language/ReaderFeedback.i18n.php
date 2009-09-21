@@ -352,13 +352,14 @@ $messages['ca'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'readerfeedback-desc' => 'Hodnocení stránek umožňuje čtenářům reagovat formou bodování v kategoriích',
 	'readerfeedback' => 'Co si myslíte o této stránce?',
-	'readerfeedback-text' => "''Věnujte prosím chvilku na ohodnocení této stránky. Oceníme vaše připomínky a pomůžou nám vylepšit stránku.''",
+	'readerfeedback-text' => "''Věnujte prosím chvilku ohodnocení této stránky. Vaše názory jsou pro nás cenné a pomohou nám vylepšit tento web.''",
 	'readerfeedback-reliability' => 'Hodnověrnost',
 	'readerfeedback-completeness' => 'Úplnost',
 	'readerfeedback-npov' => 'Nezaujatost',
 	'readerfeedback-presentation' => 'Podání',
-	'readerfeedback-overall' => 'Celkově',
+	'readerfeedback-overall' => 'Souhrnné hodnocení',
 	'readerfeedback-level-none' => '(nevím)',
 	'readerfeedback-level-0' => 'slabé',
 	'readerfeedback-level-1' => 'nízké',
@@ -368,8 +369,15 @@ $messages['cs'] = array(
 	'readerfeedback-submit' => 'Odeslat',
 	'readerfeedback-main' => 'Hodnotit lze pouze stránky s obsahem.',
 	'readerfeedback-success' => "'''Děkujeme za posouzení této stránky!''' ([$3 Máte komentář nebo otázku?])",
-	'readerfeedback-voted' => "'''Zřejmě jste již tuto stránku hodnotili.'''  ([$3 Máte komentář nebo otázku?])",
+	'readerfeedback-voted' => "'''Zřejmě jste již tuto stránku {{GENDER:|hodnotil|hodnotila|hodnotili}}.'''  ([$3 Máte komentář nebo otázku?])",
+	'readerfeedback-error' => "'''Při hodnocení této stránky došlo k chybě.''' ([$3 Máte komentář nebo otázku?])",
 	'readerfeedback-submitting' => 'Odesílá se...',
+	'readerfeedback-finished' => 'Děkujeme!',
+	'readerfeedback-tagfilter' => 'Kritérium:',
+	'readerfeedback-tierfilter' => 'Hodnocení:',
+	'readerfeedback-tier-high' => 'Vysoké',
+	'readerfeedback-tier-medium' => 'Střední',
+	'readerfeedback-tier-poor' => 'Nízké',
 	'specialpages-group-feedback' => 'Názory čtenářů',
 );
 
@@ -1620,6 +1628,7 @@ $messages['sah'] = array(
 	'readerfeedback-tier-medium' => 'Орто',
 	'readerfeedback-tier-poor' => 'Мөлтөх',
 	'tooltip-ca-ratinghist' => 'Ааҕааччы бу сирэйи сыанабыла',
+	'specialpages-group-feedback' => 'Ааҕааччылар санаалара',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
@@ -1785,6 +1794,7 @@ $messages['tl'] = array(
  * @author Srhat
  */
 $messages['tr'] = array(
+	'readerfeedback-desc' => 'Sayfa doğrulaması, okuyucuların kategorisel derecelendirme formunda geridönüt vermesine izin verir',
 	'readerfeedback' => 'Bu sayfa hakkında ne düşünüyorsunuz?',
 	'readerfeedback-text' => "''Lütfen bu sayfayı oylamak için vaktinizi ayırın. Cevabınız değerlidir ve websitemizi geliştirmemize yardımcı olacaktır.''",
 	'readerfeedback-reliability' => 'Güvenilirlik',
@@ -1802,9 +1812,16 @@ $messages['tr'] = array(
 	'readerfeedback-main' => 'Sadece içerik sayfaları oylanabilir.',
 	'readerfeedback-success' => "'''Bu sayfayı gözden geçirdiğiniz için teşekkürler!''' ([$3 Yorum ya da sorular?]).",
 	'readerfeedback-voted' => "'''Bu sayfayı zaten oylamış görünüyorsunuz''' ([$3 Yorum ya da sorular?]).",
+	'readerfeedback-error' => "'''Bu sayfayı derecelendirirken bir hata oluştu''' ([$3 yorumlar ya da sorular?]).",
 	'readerfeedback-submitting' => 'Gönderiliyor...',
 	'readerfeedback-finished' => 'Teşekkürler!',
+	'readerfeedback-tagfilter' => 'Etiket:',
+	'readerfeedback-tierfilter' => 'Derecelendirme:',
+	'readerfeedback-tier-high' => 'Yüksek',
+	'readerfeedback-tier-medium' => 'Orta',
+	'readerfeedback-tier-poor' => 'Zayıf',
 	'tooltip-ca-ratinghist' => 'Bu sayfanın ziyaretçi derecelendirmesi',
+	'specialpages-group-feedback' => 'İzleyici görüşü',
 );
 
 /** Ukrainian (Українська)

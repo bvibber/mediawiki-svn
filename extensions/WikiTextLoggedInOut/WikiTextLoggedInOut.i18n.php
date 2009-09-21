@@ -191,7 +191,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'wikitextloggedinout-desc' => '利用者のログイン状態によって異なる文章を表示するための2つのパーサーフック <tt>&lt;loggedin&gt;</tt> と <tt>&lt;loggedout&gt;</tt> を追加します',
+	'wikitextloggedinout-desc' => '利用者のログイン状態によって異なる文章を表示するための2つのパーサーフック <tt>&lt;loggedin&gt;</tt> と <tt>&lt;loggedout&gt;</tt> を追加する',
 );
 
 /** Javanese (Basa Jawa)

@@ -954,9 +954,16 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'povwatch_no_session' => 'Hiba: nem lehet elküldeni az űrlap adatait a munkamenetadatok hiánya miatt.',
+	'povwatch_invalid_title' => 'A megadott cím érvénytelen',
+	'povwatch_unknown_subpage' => 'Ismeretlen allap.',
 	'povwatch_title' => 'Cím:',
+	'povwatch_unsubscribe' => 'Leiratkozás',
+	'povwatch_subscribe' => 'Feliratkozás',
+	'povwatch_added' => 'hozzáadva',
 	'right-povwatch_user' => 'lapok hozzáadása más szerkesztők figyelőlistájához',
 	'action-povwatch_admin' => 'a PovWatchhoz tartozó jogosultságok kezelése',
 	'action-povwatch_user' => 'lap hozzáadása egy másik szerkesztő figyelőlistájához',

@@ -23,10 +23,11 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'ipauth-desc' => 'Аўтаматычны ўваход з пастаянных IP-адрасоў',
+	'ipauth-desc' => 'Аўтаматычны ўваход у сыстэму з пастаянных IP-адрасоў',
 );
 
 /** Breton (Brezhoneg)
@@ -34,6 +35,20 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'ipauth-desc' => "Lugañ emgefre adalek ur chomlec'h IP stabil",
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'ipauth-desc' => 'Awtomatiske pśizjawjenje z kšutych IP-adresow',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'ipauth-desc' => 'Inicio de sesión automático para direcciones IP fijas',
 );
 
 /** French (Français)
@@ -48,6 +63,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'ipauth-desc' => 'Inicio de sesión automático a partir de enderezos IP fixos',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'ipauth-desc' => 'Automatisch vu feschte IP-Adrässe aamälde',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -104,5 +126,12 @@ $messages['pms'] = array(
  */
 $messages['roa-tara'] = array(
 	'ipauth-desc' => "Trase automaticamende da l'indirizze IP fissate",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'ipauth-desc' => 'Автоматический вход с постоянных IP адресов',
 );
 

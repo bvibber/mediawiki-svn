@@ -248,6 +248,8 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'signaturelogpage' => 'Aláírások naplója',
+	'right-sigadmin' => 'A dokumentum-aláírás adminisztrációja',
+	'right-createsigndocument' => 'aláírható dokumentumok létrehozása',
 );
 
 /** Interlingua (Interlingua)

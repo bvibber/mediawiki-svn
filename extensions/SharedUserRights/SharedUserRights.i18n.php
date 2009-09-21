@@ -258,7 +258,12 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'shareduserrights' => 'Globális felhasználói jogosultságok kezelése',
+	'gblrights-desc' => 'A [[Special:SharedUserRights|globális felhasználói jogosultságok]] egyszerű adminisztrációja',
 	'gblrights-logpage' => 'Globális jogosultságok naplója',
+	'gblrights-pagetext' => 'Ez a napló tartalmazza a wiki család globális jogosultságok táblájának összes változtatását',
+	'gblrights-rights-entry' => '$1 globális csoporttagsága módosítva (régi: $2, új: $3)',
+	'right-userrights-shared' => 'globális jogosultságok kezelése',
 );
 
 /** Interlingua (Interlingua)

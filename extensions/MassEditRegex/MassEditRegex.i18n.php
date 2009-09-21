@@ -42,9 +42,11 @@ The replacement values should not be escaped.'
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'masseditregex-desc' => '{{desc}}',
+	'masseditregextext' => 'Replace <code>/en/</code> in the middle in link <code>http://php.net/manual/en/function.preg-replace.php</code> with your language code between slashes, if that page exists. Otherwise leave it as is to link to the English documentation, or choose an appropriate fallback language code.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -79,7 +81,7 @@ $messages['be-tarask'] = array(
 	'masseditregex' => 'Масавае рэдагаваньне з выкарыстаньнем рэгулярных выразаў',
 	'masseditregex-desc' => 'Выкарыстаньне рэгулярных выразаў для [[Special:MassEditRegex|рэдагаваньня некалькіх старонак за адно дзеяньне]]',
 	'masseditregextext' => 'Увядзіце адзін альбо некалькі рэгулярных выразаў (адзін на радок) для пошуку супадзеньняў, і адзін альбо некалькі выразаў для замены кожнага супадзеньня.
-Першы пасьпяховае супадзеньне з выразам будзе замененае на першы выраз для замены і гэтак далей. Глядзіце падрабязнасьці пра функцыю PHP preg_replace().',
+Першы пасьпяховае супадзеньне з выразам будзе замененае на першы выраз для замены і гэтак далей. Глядзіце падрабязнасьці пра функцыю [http://php.net/manual/en/function.preg-replace.php PHP preg_replace()].',
 	'masseditregex-pagelisttxt' => 'Старонкі для рэдагаваньня:',
 	'masseditregex-matchtxt' => 'Пошук:',
 	'masseditregex-replacetxt' => 'Замяніць на:',
@@ -91,10 +93,33 @@ $messages['be-tarask'] = array(
 	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|зьмена|зьмены|зьменаў}}',
 	'masseditregex-page-not-exists' => '$1 не існуе',
 	'masseditregex-num-articles-changed' => '{{PLURAL:$1|адрэдагаваная|адрэдагаваныя|адрэдагаваныя}} $1 {{PLURAL:$1|старонка|старонкі|старонак}}',
-	'masseditregex-view-full-summary' => 'Праглядзець поўнае апісаньне зьменаў',
+	'masseditregex-view-full-summary' => 'Паказаць поўнае апісаньне зьменаў',
+	'masseditregex-hint-intro' => 'Тут пададзеныя некалькі падказак і прыкладаў для выкананьня агульных заданьняў:',
 	'masseditregex-hint-headmatch' => 'Супадзеньне',
 	'masseditregex-hint-headreplace' => 'Замена',
+	'masseditregex-hint-headeffect' => 'Вынік',
+	'masseditregex-hint-toappend' => 'Далучыць нейкі тэкст да канца старонкі —- выдатна пасуе для даданьня катэгорыяў у старонкі',
 	'masseditregex-hint-remove' => 'Выдаліць некаторы тэкст з усіх старонак у сьпісе',
+	'masseditregex-hint-removecat' => 'Выдаліць усе катэгорыі са старонкі (заўважце, што выдаляюцца толькі квадратныя дужкі з вікі-коду.)
+Значэньні да замяшчэньня не павінны быць уключаныя ў двукосьсі альбо апострафы.',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'masseditregex' => 'Edición en masa usando expresiones regulares',
+	'masseditregex-pagelisttxt' => 'Páginas a editar:',
+	'masseditregex-replacetxt' => 'Reemplazar con:',
+	'masseditregex-executebtn' => 'Ejecutar',
+	'masseditregex-err-nopages' => 'Debes especificar al menos una página a cambiar.',
+	'masseditregex-before' => 'Antes',
+	'masseditregex-after' => 'Después',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|cambio|cambios}}',
+	'masseditregex-page-not-exists' => '$1 no existe',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|página|páginas}} editadas',
+	'masseditregex-view-full-summary' => 'Ver resumen de edición completo',
+	'masseditregex-hint-headreplace' => 'Reemplazar',
 );
 
 /** French (Français)
@@ -105,7 +130,7 @@ $messages['be-tarask'] = array(
 $messages['fr'] = array(
 	'masseditregex' => "Modification en masse à l'aide des expressions rationnelles",
 	'masseditregex-desc' => 'Utiliser les expressions rationnelles pour [[Special:MassEditRegex|modifier de nombreuses pages en une opération]]',
-	'masseditregextext' => 'Entrer une ou plusieurs expressions rationnelles (une par ligne) à rechercher, et une ou plusieurs expressions par lesquelles remplacer les résultats. La première expression trouvée sera remplacée par la première expression de remplacement, et ainsi de suite. Voir la description de la fonction PHP preg_replace() pour plus de détails.',
+	'masseditregextext' => 'Entrer une ou plusieurs expressions rationnelles (une par ligne) à rechercher, et une ou plusieurs expressions par lesquelles remplacer les résultats. La première expression trouvée sera remplacée par la première expression de remplacement, et ainsi de suite. Voir la description de la [http://php.net/manual/en/function.preg-replace.php fonction PHP preg_replace()] pour plus de détails.',
 	'masseditregex-pagelisttxt' => 'Pages à modifier :',
 	'masseditregex-matchtxt' => 'Rechercher :',
 	'masseditregex-replacetxt' => 'Remplacer par :',
@@ -133,7 +158,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'masseditregex' => 'Edición en masa usando expresións regulares',
 	'masseditregex-desc' => 'Usa expresións regulares para [[Special:MassEditRegex|editar moitas páxinas nunha única operación]]',
-	'masseditregextext' => 'Insira unha ou máis expresións regulares (un por liña) para facer coincidir, e unha ou máis expresións para substituír cada coincidencia. Se a primeira expresión coincidente é correcta, substituirase pola primeira expresión substituta, e así sucesivamente. Olle a función PHP preg_replace() para obter máis información.',
+	'masseditregextext' => 'Insira unha ou máis expresións regulares (un por liña) para facer coincidir, e unha ou máis expresións para substituír cada coincidencia. Se a primeira expresión coincidente é correcta, substituirase pola primeira expresión substituta, e así sucesivamente. Olle a [http://php.net/manual/en/function.preg-replace.php función PHP preg_replace()] para obter máis información.',
 	'masseditregex-pagelisttxt' => 'Páxinas a editar:',
 	'masseditregex-matchtxt' => 'Procurar por:',
 	'masseditregex-replacetxt' => 'Substituír por:',
@@ -153,6 +178,37 @@ $messages['gl'] = array(
 	'masseditregex-hint-toappend' => 'Engade algo de texto ao final do artigo; útil para engadir páxinas a categorías',
 	'masseditregex-hint-remove' => 'Elimina algún texto de todas as páxinas da lista',
 	'masseditregex-hint-removecat' => 'Elimina todas as categorías dun artigo (teña en conta o escape dos corchetes no formato wiki). Os valores de substitución non deberían escapar.',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'masseditregex' => 'Greßeri Aazahl vu Syte glychzytig ändere iber reguläri Uusdruck.',
+	'masseditregex-desc' => 'Reguläri Uusdruck bruch go [[Special:MassEditRegex|vili Syte in eim Schritt bearbeite]]',
+	'masseditregextext' => 'Gib ein oder meh reguläri Uusdruck as Suechuusdruck yy (eine pro Zyylete) un ein oder meh Uusdruck as Ersatzuusdruck.
+Dr erscht Suechuusdruck wird, wänn er gfunde wore isch, dur dr erscht Ersatzuusdruck ersetzt usw.
+Lueg d [http://php.net/manual/en/function.preg-replace.php PHP-Funktion preg_replace()] fir Details.',
+	'masseditregex-pagelisttxt' => 'Syte, wu bearbeitet solle wäre:',
+	'masseditregex-matchtxt' => 'Suech no:',
+	'masseditregex-replacetxt' => 'Ersetze dur:',
+	'masseditregex-executebtn' => 'Uusfiere',
+	'masseditregex-err-nopages' => 'Du muesch zmindescht ei Syte aagee, wu gänderet soll wäre.',
+	'masseditregex-before' => 'Vorhär',
+	'masseditregex-after' => 'Nocher',
+	'masseditregex-max-preview-diffs' => 'D Vorschau isch uf {{PLURAL:$1|uf dr erscht Träffer|di erschte $1 Träffer}} yygschränkt wore',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|Aänderig|Anderige}}',
+	'masseditregex-page-not-exists' => '$1 git s nit',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|Syte|Syte}} bearbeitet',
+	'masseditregex-view-full-summary' => 'Di ganz Zämmefassig aaluege',
+	'masseditregex-hint-intro' => 'Do het s e paar Hiwys un Byschpil, wie mer gängigi Ufgabe cha uusfiere:',
+	'masseditregex-hint-headmatch' => 'Träffer',
+	'masseditregex-hint-headreplace' => 'Ersetze',
+	'masseditregex-hint-headeffect' => 'Effäkt',
+	'masseditregex-hint-toappend' => 'Täxt am Änd vu dr Syte yyfiege - ideal go Syte ere Kategorie zuefiege',
+	'masseditregex-hint-remove' => 'Text us allene Syte in dr Lischt uuseneh',
+	'masseditregex-hint-removecat' => 'Alli Kategorie us ere Syte uuseneh (gib Acht uf d Richtig vu dr eckige Chlammere im Wikicode).
+Bim Text, wu yygsetzt wird, isch d Richtig nit relevant.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -200,7 +256,7 @@ $messages['hu'] = array(
 $messages['ja'] = array(
 	'masseditregex' => '正規表現を使用した大量編集',
 	'masseditregex-desc' => '正規表現を使って[[Special:MassEditRegex|大量のページを一度の操作で編集する]]',
-	'masseditregextext' => '一致用に1つ以上の正規表現 (1行に1つ) と、置換用に1つ以上の正規表現を入力してください。1番目の一致用正規表現が一致に成功すると、1番目の置換用正規表現で置換されます。2番目以降も同様です。詳細は PHP 関数 preg_replace() を参照してください。',
+	'masseditregextext' => '一致用に1つ以上の正規表現（1行に1つ）と、置換用に1つ以上の正規表現を入力してください。1番目の一致用正規表現が一致に成功すると、1番目の置換用正規表現で置換されます。2番目以降も同様です。詳細は [http://php.net/manual/ja/function.preg-replace.php PHP 関数 preg_replace()] を参照してください。',
 	'masseditregex-pagelisttxt' => '編集するページ:',
 	'masseditregex-matchtxt' => '一致用:',
 	'masseditregex-replacetxt' => '置換用:',
@@ -223,11 +279,13 @@ $messages['ja'] = array(
 );
 
 /** Ripoarisch (Ripoarisch)
+ * @author Als-Holder
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'masseditregex' => 'Donn Sigge em Pöngel ändere, un dat övver <code>ergular expressions</code>.',
+	'masseditregex' => 'Donn Sigge em Pöngel ändere, un dat övver <code>regular expressions</code>.',
 	'masseditregex-desc' => 'Deiht Sigge [[Special:MassEditRegex|em Pöngel en einem Rötsch ändere]], un dat övver <code>ergular expressions</code>.',
+	'masseditregextext' => 'Jif ein <i lang="en">regular expression</i> pro Reih en, esu vill wi nüüdesch. Dohenger en desellve Reih schriif hen, woh jäähje dat jetuusch wääde sull, wat op di <i lang="en">regular expression</i> paß. De [http://de.php.net/manual/de/function.preg-replace.php Funxjuhn <code lang="en">preg_replace()</code> en dä Projammeer_Shprooch <i lang="en">PHP</i>] weed doför jebruch, un doh kam_mer och de Einzelheite janz jenou nohlässe.',
 	'masseditregex-pagelisttxt' => 'De Sigge zom Ändere:',
 	'masseditregex-matchtxt' => 'Söhk noh:',
 	'masseditregex-replacetxt' => 'Tuusch dat jäje:',
@@ -241,6 +299,12 @@ $messages['ksh'] = array(
 	'masseditregex-num-articles-changed' => '{{PLURAL:$1|Ein Sigg|$1 Sigge|Kein Sigg wood}} jeändert',
 	'masseditregex-view-full-summary' => 'De kumplätte Zosammefassung udder Quäll aanloore',
 	'masseditregex-hint-intro' => 'Hee sen e paa Henwieß un Beispöll, wi mer üblesche Aufjaabe jedonn kritt:',
+	'masseditregex-hint-headmatch' => 'Träffer',
+	'masseditregex-hint-headreplace' => 'Ußtuusche',
+	'masseditregex-hint-headeffect' => 'Wat eruß kütt',
+	'masseditregex-hint-toappend' => 'Donn e Täx-Shtöck aam Engk vun dä Sigg aanhange — wunderbaa för Sigge en Saachjroppe ze donn',
+	'masseditregex-hint-remove' => 'Donn e Shtöck vum Täx vun alle Sigge en dä Leß fott nämme',
+	'masseditregex-hint-removecat' => 'Donn alle Enndrääsch för Saachjropp us en Sigg eruß schmiiße — jev Aach op et Escaping vun de äkijje Klammere em Wiki_Kood. Wat beim Tuusche för dä ahle täx ennjesaz weed, darf mer ävver nit escape.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -269,7 +333,7 @@ $messages['nl'] = array(
 	'masseditregex-desc' => "Reguliere expressies gebruiken om [[Special:MassEditRegex|meerdere pagina's in één handeling te bewerken]]",
 	'masseditregextext' => 'Geef een of meer reguliere expressies op (één per regel) voor de selectie van tekst en een of meer reguliere expressies om de selectie door te vervangen.
 De selectie uit de eerste selectie-expressie wordt vervangen door de eerste vervang-expressie, en zo verder.
-Zie de PHP-functie preg_replace() voor details.',
+Zie de [http://php.net/manual/en/function.preg-replace.php PHP-functie preg_replace()] voor details.',
 	'masseditregex-pagelisttxt' => "Te bewerken pagina's:",
 	'masseditregex-matchtxt' => 'Zoeken naar:',
 	'masseditregex-replacetxt' => 'Vervangen door:',

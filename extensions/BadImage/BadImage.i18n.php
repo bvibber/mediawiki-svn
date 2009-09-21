@@ -230,19 +230,26 @@ $messages['bcl'] = array(
  */
 $messages['be-tarask'] = array(
 	'badimages' => 'Сьпіс забароненых выяваў',
+	'badimages-desc' => 'Пашырае магчымасьці сьпісу забароненых выяваў MediaWiki',
 	'badimages-add-btn' => 'Дадаць',
 	'badimages-added' => '$1 даданая ў сьпіс.',
+	'badimages-count' => "Усяго ў сьпісе '''$1''' {{PLURAL:$1|забароненая выява|забароненыя выявы|забароненых выяваў}}.",
 	'badimages-name' => 'Назва:',
 	'badimages-not-added' => 'Немагчыма дадаць выяву.',
 	'badimages-not-removed' => 'Немагчыма выдаліць выяву.',
 	'badimages-reason' => 'Прычына:',
 	'badimages-remove' => '(выдаліць)',
 	'badimages-remove-btn' => 'Выдаліць',
+	'badimages-remove-confirm' => 'Калі ласка, пацьвердзіце выдаленьне $1 са сьпісу:',
 	'badimages-removed' => '$1 выдаленая са сьпісу.',
+	'badimages-subheading' => 'Цяперашнія элемэнты',
+	'badimages-unprivileged' => '(Вы ня маеце адпаведных правоў для зьмены гэтага сьпісу)',
 	'badimages-log-name' => 'Сьпіс непажаданых выяваў',
+	'badimages-log-header' => 'Гэта журнал зьменаў [[{{MediaWiki:Badimages-page}}|сьпісу забароненых выяваў]].',
 	'badimages-log-add' => '[[$1]] даданая ў сьпіс забароненых выяваў',
 	'badimages-log-remove' => '[[$1]] выдаленая са сьпісу забароненых выяваў',
 	'badimages-page' => '{{ns:help}}:Сьпіс забароненых выяваў',
+	'right-badimages' => 'зьмена сьпісу забароненых выяваў',
 );
 
 /** Bulgarian (Български)

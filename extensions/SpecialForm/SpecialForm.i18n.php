@@ -618,9 +618,18 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'form-desc' => '[[Special:Form|Űrlap interfész]] új lapok létrehozásához',
+	'form' => 'Űrlap',
+	'formnoname' => 'Nincs űrlapnév',
+	'formbadname' => 'Hibás űrlapnév',
+	'formbadnametext' => 'Nincs ilyen nevű űrlap.',
 	'formsave' => 'Mentés',
+	'formarticleexists' => 'A lap már létezik',
+	'formbadpagename' => 'Hibás lapnév',
+	'formsaveerror' => 'Hiba az űrlap mentésekor',
 );
 
 /** Interlingua (Interlingua)

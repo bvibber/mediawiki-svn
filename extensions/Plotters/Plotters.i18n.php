@@ -316,6 +316,9 @@ Tutón přehlad dodawa lochki přistup na strony systemowych zdźělenkow, kotre
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'plotters-desc' => 'Megengedi egyéni JavaScript használatát a jsplot tagekben',
+	'plotters-missing-script' => 'Nem volt szkript megadva.',
+	'plotters-missing-arguments' => 'Nincsenek argumentumok megadva.',
 	'plotters-no-data' => 'Nem volt adat megadva.',
 );
 

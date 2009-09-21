@@ -258,6 +258,34 @@ $messages['ca'] = array(
 	'ratinghistory-table-votes' => 'Vots',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'ratinghistory' => 'Historie hodnocení stránky',
+	'ratinghistory-leg' => 'Časový průběh hodnocení stránky [[:$1|$1]]',
+	'ratinghistory-link' => 'Hodnocení stránky',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Děkujeme, že věnujete čas hodnocení této stránky!</font>''",
+	'ratinghistory-period' => 'Období:',
+	'ratinghistory-month' => 'poslední měsíc',
+	'ratinghistory-3months' => 'poslední 3 měsíce',
+	'ratinghistory-year' => 'poslední rok',
+	'ratinghistory-3years' => 'poslední 3 roky',
+	'ratinghistory-ave' => 'Průměr: $1',
+	'ratinghistory-chart' => 'Hodnocení čtenářů v průběhu času',
+	'ratinghistory-purge' => 'aktualizovat',
+	'ratinghistory-table' => 'Přehled hodnocení čtenáři',
+	'ratinghistory-users' => 'Uživatelé, kteří hodnotili',
+	'ratinghistory-graph' => '$2 stránky „$3“ ($1 {{PLURAL:$1|hodnocení|hodnocení}})',
+	'readerfeedback-svg' => 'Zobrazit jako SVG',
+	'ratinghistory-table-rating' => 'Hodnocení',
+	'ratinghistory-table-votes' => 'Hlasů',
+	'ratinghistory-none' => 'V současné chvíli není pro grafy k dispozici dostatek ohodnocení.',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' – Slabé; '''(2)''' – Nízké; '''(3)''' – Dobré; '''(4)''' – Vysoké; '''(5)''' – Vynikající",
+	'ratinghistory-graph-scale' => "'''Počet hodnocení/den''' <font color=\"red\">''(červeně)''</font> zobrazen v měřítku ''1:\$1''.",
+	'right-feedback' => 'Hodnocení stránek prostřednictvím formuláře',
+);
+
 /** Danish (Dansk)
  * @author Byrial
  */
@@ -1509,8 +1537,44 @@ $messages['ru'] = array(
 	'right-feedback' => 'использование формы отзывов для оценки страниц',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'ratinghistory' => 'Сирэй сыаналааһынын устуоруйата',
+	'ratinghistory-leg' => 'Сирэй сыаналааһынын туһунан дааннайдар [[:$1|$1]]',
+	'ratinghistory-tab' => 'сыаналааһын',
+	'ratinghistory-link' => 'Сирэйи сыаналааһын',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Бу сирэйи сыаналаабыккар махтал!</font>''",
+	'ratinghistory-period' => 'Кэм устата:',
+	'ratinghistory-month' => 'бүтэһик ый',
+	'ratinghistory-3months' => 'бүтэһик 3 ый',
+	'ratinghistory-year' => 'бүтэһик сыл',
+	'ratinghistory-3years' => 'бүтэһик 3 сыл',
+	'ratinghistory-ave' => 'Ортотунан: $1',
+	'ratinghistory-chart' => 'Ааҕааччылар сыаналара барыта, саҕаланыаҕыттан',
+	'ratinghistory-purge' => 'Кээһи ыраастаа',
+	'ratinghistory-table' => 'Ааҕааччылар сыаналарын сүнньүнэн көрүү',
+	'ratinghistory-users' => 'Сыана быспыт кыттааччылар',
+	'ratinghistory-graph' => '"$3" сыанабылтан $2 сыаната',
+	'readerfeedback-svg' => 'SVG курдук көрүү',
+	'ratinghistory-table-rating' => 'Сыанабыл',
+	'ratinghistory-table-votes' => 'Куоластааһын',
+	'ratinghistory-none' => 'График оҥорорго тиийэр куолас өссө да бэриллэ илик эбит.',
+	'ratinghistory-ratings' => "'''Легендата:''' '''(1)''' — куһаҕан; '''(2)''' — мөлтөх; '''(3)''' — орто; '''(4)''' — үчүгэй; '''(5)''' — бэртээхэй;",
+	'ratinghistory-legend' => "Аллара көрдөрүннүлэр: '''күҥҥэ хас сыанабыл биэриллэрэ''' <font color=\"red\">''(кыһыл)''</font> '''сууккаҕа орто сыана''' <font color=\"blue\">''(күөх)''</font> уонна
+'''билиҥҥи орто сыана''' <font color=\"green\">''(чээл күөх)''</font>.
+'''Билиҥҥи орто сыана''' — суукка бу быстах кэмигэр бары сууккалар орто сыаналарыттан ортотунан таһаарыллар сыана.
+Сыанабыл шкалаата:
+
+'''[1]''' — куһаҕан; '''[2]''' — мөлтөх; '''[3]''' — орто; '''[4]''' — үчүгэй; '''[5]''' — уһулуччу.",
+	'ratinghistory-graph-scale' => "'''Күҥҥэ хас бэрэбиэркэ буолара''' <font color=\"red\">''(кыһыл)''</font> аллара маннык масштаабтаах көһүннэ ''1:\$1''.",
+	'right-feedback' => 'Сирэйи сыаналыырга отзыв форматын туттуу',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Mormegil
  */
 $messages['sk'] = array(
 	'ratinghistory' => 'História hodnotenia stránky',
@@ -1699,13 +1763,14 @@ $messages['tr'] = array(
 	'ratinghistory-table-rating' => 'Derecelendirme',
 	'ratinghistory-table-votes' => 'Oylar',
 	'ratinghistory-none' => 'Grafikler için şuanda yeterince okuyucu dönüt verisi yok.',
-	'ratinghistory-legend' => "'''Günlük ortalama derecelendirme''' <font color=\"blue\">''(mavi)''</font> ve
-'''Çalışma ortalama derecelendirme''' <font color=\"green\">''(yeşil)''</font> aşağıda tarihe göre çizildi.
+	'ratinghistory-ratings' => "'''Ölçek:''' '''(1)''' - Zayıf; '''(2)''' - Düşük; '''(3)''' - Adil; '''(4)''' - Yüksek; '''(5)''' - Mükemmel;",
+	'ratinghistory-legend' => "'''Günlük ortalama gözden geçirme''' <font color=\"red\">''(kırmızı)''</font>, '''Günlük ortalama derecelendirme''' <font color=\"blue\">''(mavi)''</font>
+ve '''Çalışma ortalama derecelendirme''' <font color=\"green\">''(yeşil)''</font> aşağıda tarihe göre çizildi.
 '''Çalışma ortalama derecelendirme''', herbir gün için bu zaman dilimi ''içinde'' günlük derecelendirmelerinin ortalamasıdır.
+Derecelendirmeler aşağıdaki gibidir:
 
-Ölçek: '''[1]''' - Zayıf; '''[2]''' - Düşük; '''[3]''' - Adil; '''[4]''' - Yüksek; '''[5]''' - Mükemmel;
-
-'''Günlük gözden geçirme sayısı''' <font color=\"red\">''(kırmızı)''</font> aşağıdaki grafiklerde gösterilmektedir, ''1:\$1'' ölçeği ile.",
+'''(1)''' - Zayıf; '''(2)''' - Düşük; '''(3)''' - Adil; '''(4)''' - Yüksek; '''(5)''' - Mükemmel;",
+	'ratinghistory-graph-scale' => "'''Günlük gözden geçirmeler''' <font color=\"red\">''(kırmızı)''</font> ''1:\$1'' ölçeğinde gösterilmektedir.",
 	'right-feedback' => 'Bir sayfayı derecelendirmek için dönüt formunu kullanın',
 );
 

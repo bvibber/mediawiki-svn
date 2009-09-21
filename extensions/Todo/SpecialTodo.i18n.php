@@ -851,6 +851,7 @@ $messages['hu'] = array(
 	'todo' => 'Tennivalók listája',
 	'todo-tab' => 'tennivalók',
 	'todo-new-queue' => 'új',
+	'todo-list-for' => '$1 feladatlistája',
 	'todo-list-change' => 'Változtatás',
 	'todo-list-cancel' => 'Mégse',
 	'todo-form-details' => 'Részletek:',

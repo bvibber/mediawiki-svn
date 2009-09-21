@@ -416,14 +416,18 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'postcomment_desc' => 'Lehetővé teszi a felhasználóknak megjegyzések közvetlen írását vitalapokon.',
+	'postcomment_discussionprotected' => 'Ez a vitalap le van zárva, további hozzászólás nem lehetséges.',
 	'postcomment_notloggedin' => 'Nem vagy bejelentkezve',
 	'postcomment_youareloggedinas' => 'Bejelentkeztél, mint $1',
+	'postcomment_addcommentdiscussionpage' => 'Megjegyzés írása ezen a vitalapon',
 	'postcomment_leavemessagefor' => 'Üzenet $1 részére',
 	'postcomment_post' => 'Küldés',
 	'postcomment_on' => 'Dátum:',
 	'postcomment_said' => 'írta',
 	'postcomment_invalidrequest' => 'Érvénytelen kérés.',
 	'postcomment_replyto' => 'Válasz $1 szerkesztőnek',
+	'postcomment_nopostingtoadd' => 'Nincs hozzáadható megjegyzés.',
 );
 
 /** Interlingua (Interlingua)

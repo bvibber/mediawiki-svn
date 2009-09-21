@@ -411,6 +411,10 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'profiling-ok' => 'OK',
+	'profiling-data-process' => 'Folyamat',
+	'profiling-data-time' => 'Idő (összes)',
+	'profiling-data-average' => 'Idő (átlag)',
+	'profiling-no-data' => 'Nem található egyező adat.',
 );
 
 /** Interlingua (Interlingua)
