@@ -244,6 +244,7 @@ This message does not support PLURAL on $1.',
 	'edittoolbar-characters-page-cyrillic' => 'This is the name of a script, or a group of alphabets, used mainly in Eastern Europe and North and Central Asia.',
 	'edittoolbar-characters-page-arabic' => 'This is the name of a script, or alphabet, not a language.',
 	'edittoolbar-characters-page-hebrew' => 'This is the name of a script, or alphabet, not a language.',
+	'edittoolbar-section-help' => '{{Identical|Help}}',
 	'edittoolbar-help-heading-description' => '{{Identical|Description}}',
 	'edittoolbar-help-page-link' => '{{Identical|Links}}',
 	'edittoolbar-help-page-list' => '{{Identical|List}}',
@@ -1028,6 +1029,7 @@ $messages['bs'] = array(
 	'edittoolbar' => 'Uređivanje alatne trake',
 	'edittoolbar-desc' => 'Alatna traka stranice za uređivanje sa poboljšanom upotrebljivošću',
 	'edittoolbar-preference' => 'Omogući naprednu traku za uređivanje',
+	'edittoolbar-cgd-preference' => 'Omogući pomoć za dodavanje naprednog wiki teksta',
 	'edittoolbar-loading' => 'Punjenje...',
 	'edittoolbar-tool-bold' => 'Podebljano',
 	'edittoolbar-tool-bold-example' => 'Podebljan tekst',
@@ -1087,6 +1089,18 @@ $messages['bs'] = array(
 {{ns:file}}:Example.jpg|Opis2',
 	'edittoolbar-tool-newline' => 'Nova linija',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! naslov 1
+! naslov 2
+! naslov 3
+|-
+| red 1, ćelija 1
+| red 1, ćelija 2
+| red 1, ćelija 3
+|-
+| red 2, ćelija 1
+| red 2, ćelija 2
+| red 2, ćelija 3',
 	'edittoolbar-tool-table-example' => 'Red $1, ćelija $2',
 	'edittoolbar-tool-table-example-header' => 'Red $1, ćelija $2 (naslov)',
 	'edittoolbar-tool-table-title' => 'Ubaci tabelu',
@@ -4786,8 +4800,8 @@ $messages['ia'] = array(
 	'edittoolbar-loading' => 'Cargamento in curso…',
 	'edittoolbar-tool-bold' => 'Grasse',
 	'edittoolbar-tool-bold-example' => 'Texto grasse',
-	'edittoolbar-tool-italic' => 'Cursive',
-	'edittoolbar-tool-italic-example' => 'Texto cursive',
+	'edittoolbar-tool-italic' => 'Italic',
+	'edittoolbar-tool-italic-example' => 'Texto italic',
 	'edittoolbar-tool-ilink' => 'Ligamine interne',
 	'edittoolbar-tool-ilink-example' => 'Titulo del ligamine',
 	'edittoolbar-tool-xlink' => 'Ligamine externe (non oblida le prefixo http://)',
@@ -4826,7 +4840,7 @@ $messages['ia'] = array(
 	'edittoolbar-tool-ulist-example' => 'Elemento de lista a punctos',
 	'edittoolbar-tool-olist' => 'Lista numerate',
 	'edittoolbar-tool-olist-example' => 'Elemento de lista numerate',
-	'edittoolbar-group-size' => 'Dimension',
+	'edittoolbar-group-size' => 'Grandor',
 	'edittoolbar-tool-big' => 'Grande',
 	'edittoolbar-tool-big-example' => 'Texto grande',
 	'edittoolbar-tool-small' => 'Micre',
@@ -4886,24 +4900,24 @@ $messages['ia'] = array(
 	'edittoolbar-characters-page-telugu' => 'Telugu',
 	'edittoolbar-section-help' => 'Adjuta',
 	'edittoolbar-help-heading-description' => 'Description',
-	'edittoolbar-help-heading-syntax' => 'Lo que tu scribe',
-	'edittoolbar-help-heading-result' => 'Lo que tu obtene',
-	'edittoolbar-help-page-format' => 'Formatation',
+	'edittoolbar-help-heading-syntax' => 'Formato',
+	'edittoolbar-help-heading-result' => 'Resultato',
+	'edittoolbar-help-page-format' => 'Typographia',
 	'edittoolbar-help-page-link' => 'Ligamines',
 	'edittoolbar-help-page-heading' => 'Capites',
 	'edittoolbar-help-page-list' => 'Listas',
 	'edittoolbar-help-page-file' => 'Files',
 	'edittoolbar-help-page-reference' => 'Referentias',
 	'edittoolbar-help-page-discussion' => 'Discussion',
-	'edittoolbar-help-content-italic-description' => 'Cursive',
-	'edittoolbar-help-content-italic-syntax' => "''Texto cursive''",
-	'edittoolbar-help-content-italic-result' => '<em>Texto cursive</em>',
+	'edittoolbar-help-content-italic-description' => 'Italic',
+	'edittoolbar-help-content-italic-syntax' => "''Texto italic''",
+	'edittoolbar-help-content-italic-result' => '<em>Texto italic</em>',
 	'edittoolbar-help-content-bold-description' => 'Grasse',
 	'edittoolbar-help-content-bold-syntax' => "'''Texto grasse'''",
 	'edittoolbar-help-content-bold-result' => '<strong>Texto grasse</strong>',
-	'edittoolbar-help-content-bolditalic-description' => 'Grasse &amp; cursive',
-	'edittoolbar-help-content-bolditalic-syntax' => "'''''Texto grasse &amp; cursive'''''",
-	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Texto grasse &amp; cursive</em></strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Grasse &amp; italic',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Texto grasse &amp; italic'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Texto grasse &amp; italic</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'Ligamine interne',
 	'edittoolbar-help-content-ilink-syntax' => '[[Titulo del pagina|Texto del ligamine]]<br />[[Titulo del pagina]]',
 	'edittoolbar-help-content-ilink-result' => "<a href='#'>Texto del ligamine</a><br /><a href='#'>Titulo del pagina</a>",
@@ -9504,6 +9518,16 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'edittoolbar-group-size' => 'Ukubwa',
+	'edittoolbar-tool-big' => 'Kubwa',
+	'edittoolbar-tool-big-example' => 'Maandishi makubwa',
+	'edittoolbar-tool-small' => 'Ndogo',
+	'edittoolbar-tool-small-example' => 'Maandishi madogo',
+	'edittoolbar-tool-table-dimensions-rows' => 'Mistari',
+	'edittoolbar-tool-table-dimensions-columns' => 'Safu',
+	'edittoolbar-section-help' => 'Msaada',
+	'edittoolbar-help-heading-description' => 'Elezo',
+	'edittoolbar-help-page-link' => 'Viungo',
 	'edittoolbar-help-page-file' => 'Mafaili',
 );
 

@@ -56,6 +56,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'navigabletoc' => 'Sadržaj sa navigacijom',
 	'navigabletoc-desc' => 'Dodaje sadržaj u obrazac za uređivanje koji pomjera kutiju tekst kada se klikne na sekciju',
+	'navigabletoc-preference' => 'Omogući navigacijski sadržaj',
 );
 
 /** Czech (Česky)
