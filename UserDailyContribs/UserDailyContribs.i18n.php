@@ -87,6 +87,13 @@ $messages['gsw'] = array(
 	'userdailycontribs-desc' => 'Tägligi Byytreg fir d Klickverfolgigs-Erwyterig verwände',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'userdailycontribs-desc' => 'התרומה היומית של כל משתמש להרחבת מעקב הלחיצות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

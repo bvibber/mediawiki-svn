@@ -4104,6 +4104,7 @@ $messages['he'] = array(
 	'edittoolbar' => 'סרגל עריכה',
 	'edittoolbar-desc' => 'שיפור השימושיות של סרגל עריכת הדף',
 	'edittoolbar-preference' => 'הפעלת סרגל עריכה משופר',
+	'edittoolbar-cgd-preference' => 'הפעלת העזרה להוספת תחביר ויקי מתקדם',
 	'edittoolbar-loading' => 'בטעינה...',
 	'edittoolbar-tool-bold' => 'הדגשה',
 	'edittoolbar-tool-bold-example' => 'טקסט מודגש',
@@ -4163,6 +4164,18 @@ $messages['he'] = array(
 {{ns:file}}:דוגמה.jpg|כותרת 2',
 	'edittoolbar-tool-newline' => 'שורה חדשה',
 	'edittoolbar-tool-table' => 'טבלה',
+	'edittoolbar-tool-table-example-old' => "-
+! כותרת 1
+! כותרת 2
+! כותרת 3
+|-
+| שורה 1, תא 1
+| שורה 1, תא 2
+| שורה 1, תא 3
+|-
+| שורה 2, תא 1
+| שורה 2, תא 2
+| שורה 2, תא 3",
 	'edittoolbar-tool-table-example' => 'שורה $1, תא $2',
 	'edittoolbar-tool-table-example-header' => 'שורה $1, תא $2 (כותרת)',
 	'edittoolbar-tool-table-title' => 'הוספת טבלה',

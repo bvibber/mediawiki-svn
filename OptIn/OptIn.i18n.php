@@ -1802,42 +1802,81 @@ Dankschen vilmol, mir freien is uf Dyy Ruckmäldig!',
 $messages['he'] = array(
 	'optin' => 'הרשמה ליוזמת השימושיות',
 	'optin-desc' => 'אפשרות למשתמשים להירשם כדי לקבל את שיפורי השימושיות של יוזמת השימושיות',
+	'optin-title-optedout' => 'הרשמה לגרסת הבטא',
+	'optin-title-optedin' => 'עזיבת גרסת הבטא',
+	'optin-title-justoptedin' => 'ברוכים הבאים לגרסת הבטא',
+	'optin-title-justoptedout' => 'תודה לכם על שניסיתם את גרסת הבטא',
+	'optin-title-feedback' => 'משוב על גרסת הבטא',
 	'optin-needlogin' => 'עליכם [$1 להיכנס לחשבון] כדי להירשם לקבלת שיפורי השימושיות של יוזמת השימושיות.',
 	'optin-intro' => 'יוזמת השימושיות של ויקיפדיה פיתחה עיצוב חדש וסרגל עריכה חדש כדי לשפר את השימושיות של ויקיפדיה. שיפורים אלה טרם הופעלו לכל המשתמשים, אבל באפשרותכם להירשם אליהם באמצעות לחיצה על הכפתור "{{int:optin-submit-in}}" שלהלן.',
+	'optin-feedback-intro' => "תודה לכם על שניסיתם את גרסת הבטא.
+נשמח לדעת מה אתם חושבים על הממשק החדש שלנו, לכן נעריך זאת אם תמלאו את השאלון (האופציונלי) שלהלן.",
+	'optin-feedback-back' => 'אם אינכם רוצים למלא את השאלון, באפשרותכם לחזור ל$1.',
 	'optin-success-in' => 'נרשמתם בהצלחה לקבלת שיפורי השימושיות של יוזמת השימושיות.
 באפשרותכם לבטל את הרשמתכם בכל זמן באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" שלהלן.',
+	'optin-leave-cancel' => 'אם תרצו להמשיך להשתמש בגרסת הבטא, באפשרותכם לחזור ל$1.',
 	'optin-success-out' => 'ביטלתם בהצלחה את הרשמתכם לקבלת שיפורי השימושיות של יוזמת השימושיות.
 באפשרותכם להירשם שוב בכל זמן באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" שלהלן.',
 	'optin-success-feedback' => 'תודה על המשוב!',
+	'optin-accept-short' => 'בואו נעשה את זה!',
+	'optin-accept-long' => 'נסו את גרסת הבטא',
+	'optin-accept-long-anon' => 'היכנסו לחשבון ונסו את גרסת הבטא',
 	'optin-deny-short' => 'לא תודה',
 	'optin-deny-long' => 'חזרה לדף הקודם',
-	'optin-submit-out' => 'ביטול הרשמה',
+	'optin-submit-out' => 'עזיבת גרסת הבטא',
+	'optin-submit-feedback' => 'מתן משוב',
 	'optin-survey-yes' => 'כן',
 	'optin-survey-no' => 'לא',
 	'optin-survey-intro' => 'תודה לכם על שאתם מנסים את שיפורי השימושיות של יוזמת השימושיות.
 באפשרותכם לבטל את הרשמתכם באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" בתחתית הדף.
 
 נרצה לדעת מה אתם חושבים על הממשק החדש, לכן נעריך זאת אם תמלאו את הסקר האופציונלי שלהלן לפני לחיצה על הכפתור "{{int:optin-submit-out}}".',
+	'optin-survey-question-likedislike' => 'מה אהבתם בגרסת הבטא? מה לא אהבתם בגרסת הבטא?',
 	'optin-survey-question-whyoptout' => 'למה אתם מבטלים את הרשמתכם לממשק זה?',
-	'optin-survey-answer-whyoptout-hard' => 'היה קשה מדי לשימוש.',
+	'optin-survey-answer-whyoptout-hard' => 'הוא היה קשה מדי לשימוש.',
 	'optin-survey-answer-whyoptout-didntwork' => 'הוא לא פעל כפי שצריך.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'האתר פעל באופן בלתי צפוי.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'לא אהבתי את איך שהוא נראה.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'לא אהבתי את הפריסה והלשוניות החדשים.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'לא אהבתי את סרגל הכלים החדש.',
 	'optin-survey-answer-whyoptout-other' => 'סיבה אחרת:',
+	'optin-survey-question-explain' => 'אנא הסבירו או פרטו את תשובתכם לעיל:',
+	'optin-survey-question-techfail' => 'האם אירעו תקלות טכניות כלשהן בעת השימוש בגרסת הבטא?',
 	'optin-survey-question-techfail-ifyes' => 'אם כן, אנא פרטו או הסבירו:',
 	'optin-survey-question-usedtoolbar' => 'האם השתמשתם בסרגל הכלים החדש המתרחב החדש כדי לערוך דף?',
-	'optin-survey-question-feedback' => 'אנא העבירו לנו משוב:',
+	'optin-survey-question-usedtoolbar-ifyes' => 'אם כן, מה אהבתם לגביו? מה לא אהבתם לגביו?',
+	'optin-survey-question-usedtoolbar-ifno' => 'אם לא, למה לא? האם תשתמשו בו בעתיד? אנא הסבירו.',
+	'optin-survey-question-different' => 'מה יכולנו לעשות אחרת כדי שתמשיכו להשתמש בגרסת הבטא?',
+	'optin-survey-question-feedback' => 'אנא כתבו לנו את כל ההערות האחרות, התהיות או המחשבות שיש לכם בשבילנו - כל משוב הוא שימושי:',
 	'optin-survey-question-browser' => 'באיזה דפדפן אתם משתמשים?',
 	'optin-survey-answer-browser-other' => 'דפדפן אחר:',
 	'optin-survey-question-os' => 'באיזו מערכת הפעלה אתם משתמשים?',
 	'optin-survey-answer-os-other' => 'מערכת הפעלה אחרת:',
 	'optin-survey-question-res' => 'מהי רזולוציית המסך שלכם?',
+	'optin-survey-question-changes' => 'אילו שינויים תרצו לראות בגרסת הבטא בעתיד (אנא בחרו את כל האפשרויות המתאימות)?',
+	'optin-survey-answer-changes-nav' => 'הפיכת הניווט הכולל באתר לקל יותר לשימוש.',
+	'optin-survey-answer-changes-edittools' => 'הרחבת ושיפור כלי העריכה.',
 	'optin-survey-answer-changes-upload' => 'שיפור התוכן והעלאות המדיה.',
 	'optin-survey-answer-changes-richtext' => 'פיתוח כלי עריכה הדומים לעורכי טקסט עשיר.',
 	'optin-survey-answer-changes-lookfeel' => 'עדכון "המראה והתחושה" של האתר.',
+	'optin-survey-answer-changes-predictability' => 'שיפור אפשרויות החיזוי של הביצועים.',
+	'optin-survey-answer-changes-custom' => 'הוספת אפשרויות רבות יותר להתאמה אישית.',
 	'optin-survey-answer-changes-other' => 'אחר:',
+	'optin-improvements' => "== מה השתפר? ==
+[[File:UsabilityNavigation.png|left|link=]]
+;ניווט משופר
+מערכת הניווט החדשה מקלה עליכם לראות איפה אתם ומה אתם עושים, וגם לאן אתם יכולים להגיע ואיך לעשות זאת. כאשר תיבת החיפוש ממוקמת בפינה השמאלית העליונה, קל יותר למצוא את אפשרות החיפוש והשימוש בה מהיר יותר.
+<div style=\"clear:both;\"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;שיפורים בסרגל העריכה
+סמלים חדשים ומשופרים מבהירים את הפעולה שמבצע כל כלי עריכה. חלקים מתרחבים מקטינים את הבלגן אך מאפשרים לשמור את הכלים שמשתמשים בהם פחות במרחק לחיצה אחת בלבד.
+חלק העזרה מאפשר גישה מהירה לתיעוד רוב השימושים הנפוצים של תחביר ויקי.
+<div style=\"clear:both;\"></div>
+== איך להצטרף ==
+כדי ללמוד עוד על המיזם או כדי להצטרף אליו, אנא בקרו ב[http://usability.wikimedia.org אתר הוויקי של יוזמת השימושיות]. שם תוכלו למצוא את כל המידע על המענק, המחקר, העיצוב והפיתוח, ושחרורי הגרסאות שלנו. כדי לשאול שאלות או להשאיר משוב כללי, אנא השתמשו ב[http://usability.wikimedia.org/wiki/Talk:Prototype דף השיחה על אב הטיפוס] שלנו. כדי לדון בנושאים מסוימים, אנא השתמשו בדפי השיחה המתאימים. אם אתם מוצאים באגים, אנא השאירו את הערותיכם ב[http://usability.wikimedia.org/wiki/Talk:Releases/Acai דף השיחה של הגרסה Acai] או ב[https://bugzilla.wikimedia.org באגזילה].
+
+תודה, ואנחנו מקווים לשמוע מכם!",
 );
 
 /** Hindi (हिन्दी)
