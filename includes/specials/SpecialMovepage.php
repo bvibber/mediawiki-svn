@@ -522,6 +522,11 @@ class MovePageForm {
 			$wgUser->removeWatch( $ot );
 			$wgUser->removeWatch( $nt );
 		}
+		
+		# Re-clear the file redirect cache, which may have been polluted by parsing in messages above.
+		if( $ot->getNamespace() == NS_FILE ) {
+			RepoGroup::singleton()->getLocalRepo()->invalidateImageRedirect( $ot );
+		}
 	}
 
 	function showLogFragment( $title, &$out ) {
