@@ -1238,6 +1238,9 @@ js2AddOnloadHook( function() {
 							end = start + matches[i].length;
 							$textarea.setSelection( start, end );
 							$textarea.encapsulateSelection( '', replaceStr, '', false, true );
+							
+							// $textarea.val() has changed
+							text = fixOperaBrokenness( $textarea.val() );
 						}
 						if ( $j( '#edittoolbar-replace-all' ).is( ':checked' )  )
 							alert( gM( 'edittoolbar-tool-replace-success', i ) );
