@@ -21,6 +21,18 @@ $wgLocalisationUpdateSVNURL = "http://svn.wikimedia.org/svnroot/mediawiki/trunk"
 
 $wgLocalisationUpdateRetryAttempts = 5;
 
+/**
+ * If you want to share LocalisationUpdate info between multiple wikis,
+ * you can have them reference a central copy of the tables in a given
+ * database. Must be accessible via the main database connection.
+ *
+ * Note that if your wikis have different extensions enabled, you may
+ * wish to pass the --all option to LocalisationUpdate/update.php so it
+ * pulls updates for all extensions present in the source tree instead
+ * of just the ones you have enabled on the wiki you run it from.
+ */
+$wgLocalisationUpdateDatabase = false;
+
 // Info about me!
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
