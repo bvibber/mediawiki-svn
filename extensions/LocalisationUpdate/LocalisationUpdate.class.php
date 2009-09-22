@@ -20,7 +20,7 @@ class LocalisationUpdate {
 
 		// Get the message from the database
 		$conds  = array( 'lo_key' => $lckey, 'lo_language' => $langcode );
-		$result = $db->selectField( 'localisation', 'lo_value', $conds, __METHOD__ ); // Check if the database has any updated message
+		$result = $db->selectField( self::table( 'localisation' ), 'lo_value', $conds, __METHOD__ ); // Check if the database has any updated message
 		if ( $result === false ) { // If no results found, exit here
 			return true;
 		}
@@ -35,7 +35,7 @@ class LocalisationUpdate {
 		$dbr = wfGetDB ( DB_SLAVE );
 
 		// Get the messages from the database
-		$res = $dbr->select( 'localisation', 
+		$res = $dbr->select( self::table( 'localisation' ), 
 			array( 'lo_key', 'lo_value' ),
 			array( 'lo_language' => $langcode ), 
 			__METHOD__ ); 
@@ -279,7 +279,7 @@ class LocalisationUpdate {
 		// Add the messages we got with our previous update(s) to the local array (as we already got these as well)
 		$fields = array( 'lo_key', 'lo_value' );
 		$conds = array( 'lo_language' => $langcode );
-		$result = $db->select( 'localisation', $fields, $conds, __METHOD__ );
+		$result = $db->select( self::table( 'localisation' ), $fields, $conds, __METHOD__ );
 		foreach ( $result as $r ) {
 			$compare_messages[$r->lo_key] = $r->lo_value;
 		}
@@ -316,7 +316,7 @@ class LocalisationUpdate {
 		$db = wfGetDB( DB_MASTER );
 
 		$hashConds = array( 'lfh_file' => $file, 'lfh_hash' => $hash );
-		$result = $db->select( 'localisation_file_hash', '*', $hashConds, __METHOD__ );
+		$result = $db->select( self::table( 'localisation_file_hash' ), '*', $hashConds, __METHOD__ );
 		if ( $db->numRows( $result ) == 0 ) {
 			return true;
 		} else {
@@ -329,7 +329,7 @@ class LocalisationUpdate {
 		// Double query sucks but we wanna make sure we don't update
 		// the timestamp when the hash hasn't changed
 		if ( self::checkHash( $file, $hash ) )
-			$db->replace( 'localisation_file_hash', array( 'lfh_file' ), array(
+			$db->replace( self::table( 'localisation_file_hash' ), array( 'lfh_file' ), array(
 					'lfh_file' => $file,
 					'lfh_hash' => $hash,
 					'lfh_timestamp' => $db->timestamp( wfTimestamp() )
@@ -358,7 +358,7 @@ class LocalisationUpdate {
 					'lo_language' => $langcode,
 					'lo_key' => $key
 				);
-				$db->replace( 'localisation',
+				$db->replace( self::table( 'localisation' ),
 					array( 'PRIMARY' ), $values,
 					__METHOD__ );
 				
@@ -479,7 +479,7 @@ class LocalisationUpdate {
 			// Add the already known messages to the array so we will only find new changes
 			$fields = array( 'lo_key', 'lo_value' );
 			$conds = array( 'lo_language' => $language );
-			$result = $db->select( 'localisation', $fields, $conds, __METHOD__ );
+			$result = $db->select( self::table( 'localisation' ), $fields, $conds, __METHOD__ );
 			foreach ( $result as $r ) {
 				$compare_messages[$r->lo_key] = $r->lo_value;
 			}
@@ -544,6 +544,15 @@ class LocalisationUpdate {
 			return false;
 		}
 	}
+	
+	public static function table( $table ) {
+		global $wgLocalisationUpdateDatabase;
+		if( $wgLocalisationUpdateDatabase ) {
+			return "$wgLocalisationUpdateDatabase.$table";
+		} else {
+			return $table;
+		}
+	}
 }
 
 class LUDependency extends CacheDependency {
@@ -561,7 +570,9 @@ class LUDependency extends CacheDependency {
 	function getTimestamp() {
 		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->selectField( 
-			'localisation_file_hash', 'MAX(lfh_timestamp)', '',
+			LocalisationUpdate::table( 'localisation_file_hash' ),
+			'MAX(lfh_timestamp)',
+			'',
 			__METHOD__ );
 	}
 

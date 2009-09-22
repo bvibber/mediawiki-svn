@@ -86,6 +86,13 @@ $messages['dsb'] = array(
 	'localisationupdate-desc' => 'Źaržy lokalizěrowane powěźeńki tak aktualne ako móžno',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'localisationupdate-desc' => 'Διατηρεί τις μεταφράσεις μηνυμάτων όσο πιο ενημερωμένες γίνεται',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -294,6 +301,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'localisationupdate-desc' => 'Pidab lokaliziruidud tedotused veresin, ku voib',
 );
 
 /** Vietnamese (Tiếng Việt)
