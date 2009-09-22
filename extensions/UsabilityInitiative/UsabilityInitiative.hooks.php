@@ -60,6 +60,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.autoEllipse.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 0 ),
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 10 ),
