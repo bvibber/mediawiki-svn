@@ -104,6 +104,55 @@ $messages['be-tarask'] = array(
 Значэньні да замяшчэньня не павінны быць уключаныя ў двукосьсі альбо апострафы.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'masseditregex-desc' => 'Korištenje regularnih izraza za [[Special:MassEditRegex|uređivanje više stranica u jednoj operaciji]]',
+	'masseditregex-pagelisttxt' => 'Stranice za uređivanje:',
+	'masseditregex-matchtxt' => 'Traži:',
+	'masseditregex-replacetxt' => 'Zamijeni sa:',
+	'masseditregex-executebtn' => 'Izvrši',
+	'masseditregex-before' => 'Prije',
+	'masseditregex-after' => 'Poslije',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|izmjena|izmjene|izmjena}}',
+	'masseditregex-page-not-exists' => '$1 ne postoji',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} uređeno',
+	'masseditregex-view-full-summary' => 'Pogledaj puni sažetak izmjene',
+	'masseditregex-hint-headreplace' => 'Zamjena',
+	'masseditregex-hint-headeffect' => 'Efekat',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'masseditregex' => 'Masowe wobźěłanje z pomocu regularnych wurazow',
+	'masseditregex-desc' => 'Regularne wuraze wužywaś, aby se [[Special:MassEditRegex|wjele bokow w jadnej opberaciji wobźěłało]]',
+	'masseditregextext' => 'Zapódaj jaden regularny wuraz abo wěcej regularnych wurazow (jaden na smužku) za pytanje a jaden wuraz abo wěcej wurazow, kótarež maju kuždy wótpowědnik wuměniś.
+Prědny pytański wuraz buźo se, jolic namakany, pśez prědny wuměneński wuraz wuměniś atd.
+Glědaj [http://php.net/manual/de/function.preg-replace.php the PHP function preg_replace()] za drobnostki.',
+	'masseditregex-pagelisttxt' => 'Boki, kótarež maju se wobźěłaś:',
+	'masseditregex-matchtxt' => 'Pytaś za:',
+	'masseditregex-replacetxt' => 'Wuměniś pśez:',
+	'masseditregex-executebtn' => 'Wuwjasć',
+	'masseditregex-err-nopages' => 'Musyš nanejmjenjej jaden bok pódaś, kótaryž ma se změniś.',
+	'masseditregex-before' => 'Do togo',
+	'masseditregex-after' => 'Pótom',
+	'masseditregex-max-preview-diffs' => 'Pśeglěd jo na {{PLURAL:$1|prědny wótpowědnik|prědnej $1 wótpowědnika|prědne $1 wótpowědniki|prědnych $1 wótpowědnikow}} wobgranicowany.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|změna|změnje|změny|změnow}}',
+	'masseditregex-page-not-exists' => '$1 njeeksistěrujo',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|bok wobźěłany|boka wobźěłanej|boki wobźěłane|bokow wobźěłanych}}',
+	'masseditregex-view-full-summary' => 'Połne wobźěłowańske zespominanje se woglědaś',
+	'masseditregex-hint-intro' => 'How su někotare pokazki a pśikłady za pśewjeźenje powšyknych nadawkow:',
+	'masseditregex-hint-headmatch' => 'Wótpowědnik',
+	'masseditregex-hint-headreplace' => 'Wuměniś',
+	'masseditregex-hint-headeffect' => 'Efekt',
+	'masseditregex-hint-toappend' => 'Tekst ku kóńcoju boka pśipowjesyś - dobre za pśidawanje bokow kategorijam',
+	'masseditregex-hint-remove' => 'Tekst ze wšyknych w lisćinje wótpóraś',
+	'masseditregex-hint-removecat' => 'Wšykne kategorije z boka wótpóraś (źiwaj na maskěrowanje rožkatych spinkow we wikikoźe.) Wuměnjeńske gódnoty njeby se měli maskěrowaś.',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -217,6 +266,9 @@ Bim Text, wu yygsetzt wird, isch d Richtig nit relevant.',
 $messages['hsb'] = array(
 	'masseditregex' => 'Masowe wobdźěłanje z pomocu regularnych wurazow',
 	'masseditregex-desc' => 'Regularne wurazy za [[Special:MassEditRegex|wobdźěłowanje wjele stronow w jednej operaciji]] wužiwać',
+	'masseditregextext' => 'Zapodaj jedyn regularny wuraz abo wjace regularnych wurazow (jedyn na linku) za pytanje a jedyn wuraz abo wjace wurazow, přez kotryž ma so kóždy wuslědk narunać.
+Prěni pytanski wuraz budźe, jeli namakany, so přez prěni narunanski wuraz narunować atd.
+Hlej [http://php.net/manual/de/function.preg-replace.php the PHP function preg_replace()] za podrobnosće.',
 	'masseditregex-pagelisttxt' => 'Strony, kotrež maja so wobdźěłać:',
 	'masseditregex-matchtxt' => 'Pytać za:',
 	'masseditregex-replacetxt' => 'Narunać přez:',
@@ -229,11 +281,13 @@ $messages['hsb'] = array(
 	'masseditregex-page-not-exists' => '$1 njeeksistuje',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|nastawk wobdźěłany|nastawkaj wobdźěłanej|nastawki wobdźěłane|nastawkow wobdźěłanych}}',
 	'masseditregex-view-full-summary' => 'Dospołne wobdźěłowanske zjeće pokazać',
+	'masseditregex-hint-intro' => 'Tu su někotre pokiwy a přikłady za přewjedźenje powšitkownych nadawkow:',
 	'masseditregex-hint-headmatch' => 'Wotpowědnik',
 	'masseditregex-hint-headreplace' => 'Narunać',
 	'masseditregex-hint-headeffect' => 'Efekt',
 	'masseditregex-hint-toappend' => 'Tekst ke kóncej nastawka připowěsnyć - jara dobre za přidawanje stronow kategorijam',
 	'masseditregex-hint-remove' => 'Tekst ze wšěch stronow w lisćinje wotstronić',
+	'masseditregex-hint-removecat' => 'Wšě kategorije ze strony wotstronić (dźiwaj na maskěrowanje róžkatych spinkow we wikikodźe.) Narunanske hódnoty njeměli so maskěrować.',
 );
 
 /** Hungarian (Magyar)
@@ -311,6 +365,8 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'masseditregex' => 'Ännerung vun enger grousser Zuel vu Säite mat Hëllef vu regulären Ausdréck',
+	'masseditregex-desc' => "Regulär Ausdréck benotze fir [[Special:MassEditRegex|vill Säiten an enger Operatioun z'änneren]]",
 	'masseditregex-pagelisttxt' => "Säite fir z'änneren:",
 	'masseditregex-matchtxt' => 'Sichen no:',
 	'masseditregex-replacetxt' => 'Eretzen duerch:',
@@ -322,7 +378,9 @@ $messages['lb'] = array(
 	'masseditregex-page-not-exists' => '$1 gëtt et net',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|Säit|Säite}} geännert',
 	'masseditregex-hint-headreplace' => 'Ersetzen',
+	'masseditregex-hint-headeffect' => 'Resultat',
 	'masseditregex-hint-toappend' => "Text un d'Ënn vun der Säit bäisetzen - gutt fir Säiten a Kategorien derbäizesetzen",
+	'masseditregex-hint-remove' => 'Text vun alle Säiten op der Lëscht erofhuelen',
 );
 
 /** Dutch (Nederlands)
@@ -356,6 +414,37 @@ Ideaal voor het toevoegen van pagina's aan een categorie.",
 	'masseditregex-hint-removecat' => 'Alle categorieën verwijderen van een pagina.
 Let op het escapen van de blokhaken in de wikitekst.
 Voor de te vervangen tekst is escapen niet nodig.',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'masseditregex' => 'Множественное редактирование посредством регулярных выражений',
+	'masseditregex-desc' => 'Использование регулярных выражений для [[Special:MassEditRegex|правки множества страниц за одно действие]]',
+	'masseditregextext' => 'Введите одно или несколько регулярных выражений (по одному на строке) для поиска соответствий, а также одно или несколько выражений для замены соответствий.
+Соответствия для первого выражения, если такие найдутся, будут заменены на первое выражение для замены и т. д.
+Подробнее см. [http://php.net/manual/en/function.preg-replace.php описание PHP-функции preg_replace()].',
+	'masseditregex-pagelisttxt' => 'Страницы для редактирования:',
+	'masseditregex-matchtxt' => 'Искать:',
+	'masseditregex-replacetxt' => 'Заменить на:',
+	'masseditregex-executebtn' => 'Запустить',
+	'masseditregex-err-nopages' => 'Вы должны указать как минимум одну страницу для запуска редактирования.',
+	'masseditregex-before' => 'До',
+	'masseditregex-after' => 'После',
+	'masseditregex-max-preview-diffs' => 'Предпросмотр ограничен {{PLURAL:$1|первым $1 соответствием|первыми $1 соответствиями|первыми $1 соответствиями}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|изменение|изменения|изменений}}',
+	'masseditregex-page-not-exists' => '$1 не существует',
+	'masseditregex-num-articles-changed' => '{{PLURAL:$1|Отредактирована $1 страница|Отредактировано $1 страницы|Отредактировано $1 страниц}}',
+	'masseditregex-view-full-summary' => 'Просмотреть полное описание изменения',
+	'masseditregex-hint-intro' => 'Несколько советов и примеров по выполнению типовых задач:',
+	'masseditregex-hint-headmatch' => 'Соответствие',
+	'masseditregex-hint-headreplace' => 'Замена',
+	'masseditregex-hint-headeffect' => 'Результат',
+	'masseditregex-hint-toappend' => 'Добавление текста в конец страницы — замечательно подходит для добавления страницы в категории',
+	'masseditregex-hint-remove' => 'Удаление текста со всех страниц в списке',
+	'masseditregex-hint-removecat' => 'Удаление всех категорий со страницы (обратите внимание на экранирование квадратных скобок в вики-разметке).
+Значение для замены не должно экранироваться.',
 );
 
 /** Veps (Vepsan kel')

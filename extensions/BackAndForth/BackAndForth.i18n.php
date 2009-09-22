@@ -493,12 +493,13 @@ $messages['ksh'] = array(
 	'backforth-prev' => 'Förije ($1)',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
 	'backforth-next' => 'Nessa ($1)',
-	'backforth-prev' => 'Kyns ($1)',
+	'backforth-prev' => 'Kens ($1)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

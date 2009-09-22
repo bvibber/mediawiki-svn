@@ -769,12 +769,13 @@ $messages['ksh'] = array(
 	'scanset_prev' => '← Vörijje',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
 	'scanset_next' => 'Nessa &gt;',
-	'scanset_prev' => '&lt; Kyns',
+	'scanset_prev' => '&lt; Kens',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

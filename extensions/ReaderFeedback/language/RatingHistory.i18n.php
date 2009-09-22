@@ -282,6 +282,12 @@ $messages['cs'] = array(
 	'ratinghistory-table-votes' => 'Hlasů',
 	'ratinghistory-none' => 'V současné chvíli není pro grafy k dispozici dostatek ohodnocení.',
 	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' – Slabé; '''(2)''' – Nízké; '''(3)''' – Dobré; '''(4)''' – Vysoké; '''(5)''' – Vynikající",
+	'ratinghistory-legend' => "Následující graf zobrazuje '''počet hodnocení za den''' <font color=\"red\">''(červeně)''</font>, '''průměrné hodnocení daný den''' <font color=\"blue\">''(modře)''</font>
+a '''klouzavý průměr hodnocení''' <font color=\"green\">''(zeleně)''</font> podle data.
+'''Klouzavý průměr hodnocení''' je jednoduše průměr všech denních hodnocení v rámci příslušného období pro každý den.
+Hodnocení jsou:
+
+'''(1)''' – Slabé; '''(2)''' – Nízké; '''(3)''' – Dobré; '''(4)''' – Vysoké; '''(5)''' – Vynikající",
 	'ratinghistory-graph-scale' => "'''Počet hodnocení/den''' <font color=\"red\">''(červeně)''</font> zobrazen v měřítku ''1:\$1''.",
 	'right-feedback' => 'Hodnocení stránek prostřednictvím formuláře',
 );

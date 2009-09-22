@@ -1185,6 +1185,7 @@ $messages['sli'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
+ * @author Обрадовић Горан
  */
 $messages['sr-ec'] = array(
 	'lookupuser' => 'Погледај информације о кориснику',
@@ -1196,7 +1197,9 @@ $messages['sr-ec'] = array(
 	'lookupuser-no-email' => 'није приложено',
 	'lookupuser-realname' => 'Право име: $1',
 	'lookupuser-registration' => 'Датум регистрације: $1',
+	'lookupuser-no-registration' => 'није забележено',
 	'lookupuser-info-authenticated' => 'Потврда имејла: $1',
+	'lookupuser-useroptions' => 'Корисничке опције:',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

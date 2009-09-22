@@ -915,6 +915,7 @@ $messages['bs'] = array(
 	'code-release-legend' => 'Generisanje bilješki izdanja',
 	'code-release-startrev' => 'Početna rev:',
 	'code-release-endrev' => 'Zadnja rev:',
+	'code-release-badrange' => 'Raspon je prevelik!',
 	'codereview-subtitle' => 'Za $1',
 	'codereview-reply-link' => 'odgovor',
 	'codereview-email-subj' => '[$1] [r$2]: Dodan novi komentar',

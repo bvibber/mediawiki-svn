@@ -701,7 +701,7 @@ $messages['ku-latn'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'edituser-dosearch' => 'Whila',
+	'edituser-dosearch' => 'Hwila',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1087,9 +1087,18 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Обрадовић Горан
  */
 $messages['sr-ec'] = array(
+	'edituser-desc' => 'Омогућава привилегованим корисницима да мењају подешавања других корисника',
+	'edituser' => 'Измени корисника',
+	'edituser-logout' => 'Излогуј корисника',
+	'edituser-username' => 'Име',
 	'edituser-dosearch' => 'Претрага',
+	'edituser-nouser' => 'Жељени корисник не постоји',
+	'edituser-exempt' => 'Жељени корисник не може да буде измењен',
+	'right-edituser' => 'Измени подешавања других корисника',
+	'right-edituser-exempt' => 'Други не могу да мењају подешавања овог корисника',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

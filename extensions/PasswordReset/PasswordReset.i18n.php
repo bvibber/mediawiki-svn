@@ -1127,13 +1127,15 @@ $messages['pdt'] = array(
 );
 
 /** Polish (Polski)
+ * @author Beau
  * @author Derbeth
  * @author Leinad
+ * @author Saper
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'passwordreset' => 'Wyczyszczenie hasła',
-	'passwordreset-desc' => "[[Special:PasswordReset|Ponowne ustawienie hasła użytkownika]] – wymaga uprawnienia 'passwordreset'",
+	'passwordreset' => 'Wyczyść hasło',
+	'passwordreset-desc' => "[[Special:PasswordReset|Wyczyść hasło]] – ustawienie nowego hasła użytkownika wymaga uprawnienia 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nieprawidłowa nazwa użytkownika',
 	'passwordreset-emptyusername' => 'Pusta nazwa użytkownika',
 	'passwordreset-nopassmatch' => 'Hasła nie są identyczne',
@@ -1145,11 +1147,11 @@ $messages['pl'] = array(
 	'passwordreset-success' => 'Hasło zostało wyczyszczone dla użytkownika z ID: $1',
 	'passwordreset-disableuser' => 'Czy wyłączyć konto tego użytkownika?',
 	'passwordreset-disableuserexplain' => '(ustawienie błędnego skrótu hasła uniemożliwi użytkownikowi zalogowanie)',
-	'passwordreset-disablesuccess' => 'Konto użytkownika zostało zablokowane (ID użytkownika: $1)',
-	'passwordreset-accountdisabled' => 'Konto zostało zablokowane',
-	'disabledusers' => 'Zablokowani użytkownicy',
-	'disabledusers-summary' => 'Lista użytkowników, którzy zostali zablokowaniu poprzez użycie PasswordReset.',
-	'right-passwordreset' => 'Resetowanie hasła użytkownika ([[Special:PasswordReset|strona specjalna]])',
+	'passwordreset-disablesuccess' => 'Konto użytkownika zostało wyłączone (ID użytkownika: $1)',
+	'passwordreset-accountdisabled' => 'Konto zostało wyłączone',
+	'disabledusers' => 'Wyłączone konta użytkowników',
+	'disabledusers-summary' => 'Lista użytkowników, którzych konta zostały wyłączone przy pomocy funkcji wyczyszczenia hasła',
+	'right-passwordreset' => 'Wyczyszczenie hasła użytkownika ([[Special:PasswordReset|strona specjalna]])',
 );
 
 /** Piedmontese (Piemontèis)

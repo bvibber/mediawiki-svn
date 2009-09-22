@@ -268,6 +268,8 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'formatchanges-desc' => 'Újraformázza a [[Special:RecentChanges|friss változtatásokat]]',
 	'formatchanges-anonymous' => 'Névtelen',
+	'formatchanges-createdby' => '$1 – létrehozta $2 ($3)',
+	'formatchanges-editedby' => '$1 – szerkesztette $2 ($3)',
 );
 
 /** Interlingua (Interlingua)

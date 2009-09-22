@@ -616,6 +616,16 @@ Du kan slå av den här varningen under "{{int:prefs-editing}}" i dina inställn
 	'editwarning-preference' => 'Varna mig om jag lämnar en redigeringssida där jag gjort ändringar men inte sparat.',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'editwarning' => 'Ilani ya uhariri',
+	'editwarning-warning' => 'Ukitoka kwenye ukurasa huu labda utapoteza madabiliko uliyoyafanya.
+Unaweza kuondoa ilani hii ukienda kwenye sehemu ya "{{int:prefs-editing}}" kwenye mapendekezo yako.',
+	'editwarning-preference' => 'Unionyeshe ilani ninapotaka kutoka kwenye ukurasa ninouhariri, bila kuhifadhi mabadiliko',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */

@@ -360,11 +360,12 @@ $messages['ksh'] = array(
 	'seealso-desc' => 'Övverschreffte en de jeweilije Shprooch met däm zosäzlijje <code><nowiki><seealso></nowiki></code> Befäähl em Wiki.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'seealso' => 'Gwelewgh ynwedh',
+	'seealso' => 'Gweles ywedh',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

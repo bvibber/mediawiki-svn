@@ -1622,7 +1622,12 @@ Bes jet jedoldesch.',
  * @author Kw-Moon
  */
 $messages['kw'] = array(
+	'youtubeauthsub_title' => 'Titel',
+	'youtubeauthsub_password' => 'Ger-tremena YouTube',
+	'youtubeauthsub_username' => 'Hanow-usyer YouTube',
 	'youtubeauthsub_category' => 'Class',
+	'youtubeauthsub_uploadbutton' => 'Ughkarga',
+	'youtubeauthsub_summary' => 'Owth ughkarga video YouTube',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

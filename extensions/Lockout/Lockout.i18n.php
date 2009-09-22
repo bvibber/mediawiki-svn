@@ -36,6 +36,13 @@ $messages['br'] = array(
 	'lockout-desc' => "Mirout ouzh an implijerien stanket d'en em lugañ",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'lockout-desc' => 'Onemogućuje blokiranim korisnicima da se prijave',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

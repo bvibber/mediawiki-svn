@@ -151,7 +151,18 @@ $messages['az'] = array(
 $messages['be-tarask'] = array(
 	'authorprotect' => 'Абарона старонак ад не-аўтараў',
 	'authorprotect-desc' => 'Дазваляе аўтару старонкі абараняць яе ад іншых удзельнікаў',
+	'authorprotect-notauthor' => 'Вы не зьяўляецеся аўтарам гэтай старонкі',
+	'authorprotect-confirm' => 'Зьмяніць узроўні абароны',
+	'authorprotect-edit' => 'Дазволіць рэдагаваньне толькі аўтарам',
+	'authorprotect-move' => 'Дазволіць перанос толькі аўтарам',
+	'authorprotect-expiry' => 'Тэрмін',
 	'authorprotect-reason' => 'Прычына',
+	'authorprotect-intro' => 'Выкарыстоўвайце гэтую формы для абароны гэтай старонкі ад не-аўтараў',
+	'authorprotect-success' => 'Старонка абароненая!',
+	'authorprotect-failure' => 'Старонка не абароненая',
+	'protect-level-author' => 'Абарона ад не-аўтараў',
+	'restriction-level-author' => 'Аўтарская абарона',
+	'right-authorprotect' => 'абарона аўтарскіх старонак',
 );
 
 /** Bulgarian (Български)

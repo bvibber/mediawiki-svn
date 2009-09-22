@@ -43,7 +43,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'flvhandler_desc' => 'Omogućava Flash Video (.flv) datoteke da se koriste u standardnim oznakama slika (npr. <nowiki>[[Image:Movie.flv]]</nowiki>)',
+	'flvhandler_desc' => 'Omogućava Flash Video (.flv) datoteke da se koriste u standardnim oznakama slika (npr. <nowiki>[[File:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Flash video, $1 × $2 piksela, veličina datoteke: $3)',
 );
 
@@ -120,6 +120,14 @@ $messages['ksh'] = array(
 	'flv-long-desc' => '(<i lang="en">Flash</i>-Viddejo met $1 × $2 Pixele, dä Dattei iere Ömfang: $3)',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'flvhandler_desc' => 'Erlaabt et datt Flash-Vieoen (.flv) als Standardfichiere derbäigesat kënne ginn (z. Bsp.  <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(Flash Video, $1 × $2 Pixel, Gréisst vum Fichier: $3)',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -134,6 +142,14 @@ $messages['nl'] = array(
 $messages['pms'] = array(
 	'flvhandler_desc' => 'A përmëtt ëd gionté file Video Flash (.flv) com file standard (visadì <nowiki>[[File:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Video flah, $1 x $2 pixel, dimension dël file: $3)',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'flvhandler_desc' => 'Permette a le file de Video Flash (.flv) de essere aggiunde cumme file standàrd (e.g. <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => "(Video Flash, $1 × $2 pixel, dimenzione d'u file: $3)",
 );
 
 /** Russian (Русский)

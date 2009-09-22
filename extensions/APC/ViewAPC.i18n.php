@@ -480,8 +480,21 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'viewapc' => 'Інфармацыя пра APC',
+	'viewapc-desc' => '[[Special:ViewAPC|Прагляд і кіраваньне кэшам APC]] у MediaWiki',
+	'right-apc' => 'выкарыстаньне ўсіх магчымасьцяў [[Special:ViewAPC|ViewAPC]]',
+	'viewapc-apc-not-available' => 'Няма інфармацыі пра кэш.
+Верагодна APC не запушчаны.',
+	'viewapc-clear-confirm' => 'Вы жадаеце ачысьціць кэш?',
+	'viewapc-clear-user-cache' => 'Ачысьціць кэш ўдзельніка',
+	'viewapc-clear-code-cache' => 'Ачысьціць кэш opcode',
+	'viewapc-mode-stats' => 'Паказаць статыстыку сэрвэра',
+	'viewapc-mode-system-cache' => 'Запісы сыстэмнага кэша',
+	'viewapc-mode-system-cache-dir' => 'Запісы па дырэкторыям',
+	'viewapc-mode-user-cache' => 'Запісы кэша ўдзельніка',
 	'viewapc-display-value' => 'Значэньне',
 	'viewapc-display-filename' => 'Назва файла',
 	'viewapc-display-type' => 'Тып',

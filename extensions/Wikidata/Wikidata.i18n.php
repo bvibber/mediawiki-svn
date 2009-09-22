@@ -6840,11 +6840,24 @@ $messages['ku-latn'] = array(
 	'ow_Source' => 'Çavkanî',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
+	'langman_langname' => 'Hanow an yeth:',
+	'langman_iso639-3' => 'Koden ISO 639-3:',
+	'langman_iso639-2' => 'Koden ISO 639-2:',
+	'langman_wikimedia' => 'Koden Wikimedia:',
+	'langman_addlang' => 'Keworra an yeth',
+	'importlangnames_title' => 'Ymperthi hanow yethow',
+	'importlangnames_added' => 'Hanow yethow rag "$1" keworrys.',
 	'datasearch_language' => 'Yeth:',
+	'ow_exporttsv_languages' => 'Yethow:',
+	'ow_save' => 'Gwitha',
+	'ow_history' => 'Istori',
+	'ow_transaction_no_action' => 'Na gul veth',
+	'ow_dm_OK' => 'Sur',
 );
 
 /** Latin (Latina)

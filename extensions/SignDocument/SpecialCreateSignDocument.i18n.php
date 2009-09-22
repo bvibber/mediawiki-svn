@@ -961,7 +961,7 @@ Mer kann jetz dat [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} Ungerschr
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'createsigndoc-introtext' => 'Comendyans:',
+	'createsigndoc-introtext' => 'Komendyans:',
 );
 
 /** Latin (Latina)

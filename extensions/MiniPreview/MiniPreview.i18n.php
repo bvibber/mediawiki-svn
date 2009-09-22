@@ -702,6 +702,14 @@ $messages['sk'] = array(
 * Self',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Обрадовић Горан
+ */
+$messages['sr-ec'] = array(
+	'minipreview-no_more_files_here' => 'Нема више фајлова у овом смеру',
+	'minipreview-no_category_gallery' => 'Нема категорија или галерија',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Najami

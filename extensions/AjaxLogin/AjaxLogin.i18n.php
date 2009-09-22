@@ -819,6 +819,9 @@ Việc này sẽ làm cho bạn thoát khỏi trang sửa đổi này và các s
 	'ajaxLogin2' => 'Bạn có chắc chắn không?
 Bạn có thể mất các sửa đổi tại trang này nếu bạn thoát khỏi trang ngay bây giờ.',
 	'ajaxlogin-create' => 'Mở tài khoản',
+	'al-nosuchuser' => 'Không có thành viên nào có tên "$1".
+Tên thành viên có phân biệt chữ hoa chữ thường.
+Hãy xem lại có sai chính tả không.',
 );
 
 /** Chinese (中文)

@@ -623,6 +623,13 @@ $messages['sk'] = array(
   #</pre><!-- nechajte tento riadok ako je -->',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Обрадовић Горан
+ */
+$messages['sr-ec'] = array(
+	'editsubpages-desc' => 'Омогућава администраторима да одблокирају страницу и све подстранице те странице за анонимно уређивање помоћу [[MediaWiki:Unlockedpages]]',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Micke

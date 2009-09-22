@@ -5235,9 +5235,9 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'configure-section-pages' => 'Folednow',
-	'configure-section-upload' => 'Ughcarga',
-	'configure-section-search' => 'Whilas',
+	'configure-section-pages' => 'Folennow',
+	'configure-section-upload' => 'Ughkarga',
+	'configure-section-search' => 'Hwilas',
 	'configure-throttle-action-edit' => 'Chanjya',
 );
 
@@ -7791,6 +7791,7 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
+ * @author Обрадовић Горан
  */
 $messages['sr-ec'] = array(
 	'configure' => 'Конфигуришите вики',
@@ -7811,6 +7812,8 @@ $messages['sr-ec'] = array(
 	'configure-ext-settings-dep-error' => '$1: захтевана вредност: $2, тренутна вредност: $3',
 	'configure-ext-use-extension' => 'Користи ову екстензију',
 	'configure-ext-use' => 'Користи',
+	'configure-form-reason' => 'Разлог за промену:',
+	'configure-summary' => 'Ова посебна страница вам омогућава да конфигуришете овај вики. Погледајте [http://www.mediawiki.org/wiki/Manual:Configuration_settings Конфигурациона подешавања] за више података',
 	'configure-btn-save' => 'Сними подешавања',
 	'configure-edit-old' => "'''Упозорење:''' мењате <strong>стару</strong> верзију подешавања (од $1)",
 	'configure-error' => 'Подешавања не могу бити снимљена',
@@ -7834,7 +7837,7 @@ $messages['sr-ec'] = array(
 	'configure-no-old' => 'Нема старе верзије подешавања.',
 	'configure-no-setup' => 'Да бисте користили ову екстензију, морате директно да позовете <code>efConfigureSetup()</code> у Вашем LocalSettings.php.',
 	'configure-no-transwiki' => 'Није Вам дозвољено да мењате подешавања других Викија',
-	'configure-old' => 'Старе верзје',
+	'configure-old' => 'Старе верзије',
 	'configure-old-versions' => 'Списак старих верзија конфигурације:',
 	'configure-old-not-available' => 'Стара верзија подешвања која сте тражили, $1, није доступна',
 	'configure-old-changes' => 'промене',
@@ -7848,6 +7851,9 @@ $messages['sr-ec'] = array(
 	'configure-section-pages' => 'Стране',
 	'configure-section-paths' => 'Путање',
 	'configure-section-db' => 'Базе података',
+	'configure-section-mysql' => 'Специфично за MySQL',
+	'configure-section-postgres' => 'Специфично за PostgreSQL',
+	'configure-section-sqlite' => 'Специфично за SQLite',
 	'configure-section-email' => 'Е-пошта',
 	'configure-section-enotif' => 'Обавештења путем е-поште',
 	'configure-section-localization' => 'Локализација',

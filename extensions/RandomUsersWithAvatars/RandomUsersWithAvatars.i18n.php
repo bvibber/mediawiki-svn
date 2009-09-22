@@ -227,11 +227,12 @@ $messages['ksh'] = array(
 	'random-users-avatars-desc' => 'Määt et müjjelesch, met <tt>&lt;randomuserswithavatars&gt;</tt> de Avataare fun zofälesch ußsohte Metmaacher aanzezeije.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'random-users-avatars-title' => 'Dyerbynna an kebmynieth',
+	'random-users-avatars-title' => 'Dyerbynna an kemmynieth',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

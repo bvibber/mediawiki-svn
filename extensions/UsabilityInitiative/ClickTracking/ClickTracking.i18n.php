@@ -690,6 +690,7 @@ $messages['vec'] = array(
 	'total-header' => 'Clic totali',
 	'start-date' => 'Data de inissio (AAAAMMGG)',
 	'end-date' => 'Data de fine(AAAAMMGG)',
+	'change-graph' => 'Canbiar el gràfico',
 	'beginner' => 'Prinsipiante',
 	'intermediate' => 'Intermedio',
 	'expert' => 'Esperto',

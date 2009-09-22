@@ -456,6 +456,8 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'ratedpages' => 'Pàggene cotate da le lettore',
+	'ratedpages-leg' => "Iacchie le pàggene vutate cu 'nu numere dimenzionabbele de pundegge",
 	'ratedpages-list' => "Sotte ste 'na liste de pàggene arrenghete pe 'u pundegge de le lore lettore.",
 	'ratedpages-none' => "Non ge stonne pàggene jndr'à sta liste",
 	'ratedpages-graphs' => "dete d'u puntegge",

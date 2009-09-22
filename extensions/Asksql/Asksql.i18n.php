@@ -135,6 +135,24 @@ $messages['bcl'] = array(
 	'querysuccessful' => 'Matriumpo an paghapot',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'asksql' => 'SQL-запыт',
+	'asksql-desc' => 'Выкананьне SQL-запытаў з дапамогай [[Special:Asksql|спэцыяльнай старонкі]]',
+	'asksqltext' => "Выкарыстоўвайце форму унізе для стварэньня прамых запытаў да базы зьвестак.
+Выкарыстоўвайце апострафы для абазначэньня сымбальных пасьлядоўнасьцяў ('вось так').
+Гэта можа стварыць значную нагрузку на сэрвэр, таму выкарыстоўвайце гэтую функцыю ня часта.",
+	'sqlislogged' => 'Калі ласка, памятайце, што ўсе запыты запісваюцца ў журнал падзеяў.',
+	'sqlquery' => 'Увод запыту',
+	'querybtn' => 'Адправіць запыт',
+	'selectonly' => 'Дазволеныя толькі запыты на чытаньне.',
+	'querysuccessful' => 'Запыт выкананы',
+	'right-asksql' => 'выкананьне SQL-запытаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

@@ -37,6 +37,13 @@ $messages['br'] = array(
 	'ipauth-desc' => "Lugañ emgefre adalek ur chomlec'h IP stabil",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'ipauth-desc' => 'Automatska prijava sa stalnih IP adresa',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
