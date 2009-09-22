@@ -312,6 +312,27 @@ $messages['gsw'] = array(
 	'expert' => 'Expert',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'clicktracking' => 'מעקב לחיצות במיזם השימושיות',
+	'clicktracking-desc' => 'מעקב לחיצות עבור בדיקת אירועים שאינם גורמים לרענון דף',
+	'clicktracking-title' => 'לחיצות משתמשים מצטברות',
+	'event-name' => 'שם האירוע',
+	'expert-header' => 'לחיצות של "מומחים"',
+	'intermediate-header' => 'לחיצות של "בינוניים"',
+	'beginner-header' => 'לחיצות של "מתחילים"',
+	'total-header' => 'סך כל הלחיצות',
+	'start-date' => 'תאריך התחלה (YYYYMMDD)', 
+	'end-date' => 'תאריך סיום (YYYYMMDD)',
+	'increment-by' =>'מספר הימים שמייצגת כל נקודת מידע', 
+	'change-graph' =>'שינוי הגרף',
+	'beginner' => 'מתחיל',
+	'intermediate' => 'בינוני',
+	'expert' => 'מומחה',
+);
+
 /** Croatian (Hrvatski)
  * @author Suradnik13
  */

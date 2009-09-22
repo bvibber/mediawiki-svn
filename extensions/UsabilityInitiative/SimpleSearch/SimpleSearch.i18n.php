@@ -265,8 +265,9 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'simplesearch' => 'חיפוש פשוט',
-	'simplesearch-desc' => 'הוספת תכונות נוספות לחיפוש המפושט של וקטור',
+	'simplesearch-desc' => 'הוספת תכונות נוספות לחיפוש המפושט של העיצוב "וקטור"',
 	'simplesearch-search' => 'חיפוש',
+	'simplesearch-containing' => 'כולל...',
 );
 
 /** Croatian (Hrvatski)

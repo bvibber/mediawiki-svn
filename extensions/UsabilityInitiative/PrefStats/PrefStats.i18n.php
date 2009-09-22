@@ -718,6 +718,7 @@ $messages['he'] = array(
 ** {{PLURAL:$3|משתמש אחד ביטל|$3 משתמשים ביטלו}} אותה מאז
 * בסך הכול, תכונה זו מופעלת אצל {{PLURAL:$4|משתמש אחד|$4 משתמשים}}',
 	'prefstats-xaxis' => 'משך (בשעות)',
+	'prefstats-factors' => 'צפייה לפי: $1',
 	'prefstats-factor-hour' => 'שעה',
 	'prefstats-factor-sixhours' => 'שש שעות',
 	'prefstats-factor-day' => 'יום',
@@ -725,6 +726,8 @@ $messages['he'] = array(
 	'prefstats-factor-twoweeks' => 'שבועיים',
 	'prefstats-factor-fourweeks' => 'ארבעה שבועות',
 	'prefstats-factor-default' => 'חזרה למימדי ברירת המחדל',
+	'prefstats-legend-out' => 'ביטול ההעדפה',
+	'prefstats-legend-in' => 'הפעלת ההעדפה',
 );
 
 /** Croatian (Hrvatski)

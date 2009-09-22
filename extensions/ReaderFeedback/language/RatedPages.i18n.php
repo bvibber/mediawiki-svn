@@ -233,6 +233,8 @@ $messages['gsw'] = array(
  * @author Rotemliss
  */
 $messages['he'] = array(
+	'ratedpages' => 'דפים שדורגו על ידי הקוראים',
+	'ratedpages-leg' => 'מציאת דפים שדורגו מספר ניכר של פעמים',
 	'ratedpages-list' => 'להלן רשימת דפים, ממוינים לפי דירוג הקוראים.',
 	'ratedpages-none' => 'אין דפים ברשימה זו',
 	'ratedpages-graphs' => 'מידע הדירוג',

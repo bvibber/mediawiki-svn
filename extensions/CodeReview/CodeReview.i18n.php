@@ -2911,6 +2911,7 @@ $messages['he'] = array(
 	'code-release-legend' => 'יצירת הערות שחרור',
 	'code-release-startrev' => 'גרסת התחלה:',
 	'code-release-endrev' => 'גרסה אחרונה:',
+	'code-release-badrange' => 'הטווח גדול מדי!',
 	'codereview-subtitle' => 'עבור $1',
 	'codereview-reply-link' => 'תגובה',
 	'codereview-email-subj' => '[$1] [גרסה $2]: נוספה הערה חדשה',
@@ -2926,9 +2927,17 @@ $4',
 
 הכתובת המלאה: $3
 
-הודעת הגרסה:
+תקציר השינוי:
 
 $4',
+	'codereview-email-subj3' => '[$1] [גרסה $2]: הבדיקה האוטומטית גילתה באג חדש',
+	'codereview-email-body3' => 'הבדיקה האוטומטית גילתה באג חדש שנוצר עקב השינויים בגרסה $1.
+
+הכתובת המלאה: $2
+
+תקציר השינוי:
+
+$3',
 	'repoadmin' => 'ניהול מאגרים',
 	'repoadmin-new-legend' => 'יצירת מאגר חדש',
 	'repoadmin-new-label' => 'שם המאגר:',
