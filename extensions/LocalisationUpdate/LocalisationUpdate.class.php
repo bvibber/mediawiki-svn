@@ -270,7 +270,7 @@ class LocalisationUpdate {
 	 */
 	public static function checkHash( $file, $hash ) {
 		$hashes = self::readFile( 'hashes' );
-		return $hashes[$file] !== $hash;
+		return @$hashes[$file] !== $hash;
 	}
 	
 	public static function saveHash( $file, $hash ) {
@@ -473,7 +473,7 @@ class LocalisationUpdate {
 	public static function readFile( $lang ) {
 		if ( !isset( self::$filecache[$lang] ) ) {
 			$file = self::filename( $lang );
-			$contents = file_get_contents( $file );
+			$contents = @file_get_contents( $file );
 			if ( $contents === false ) {
 				self::myLog( "Failed to read file '$file'" );
 				$retval = array();
@@ -491,7 +491,7 @@ class LocalisationUpdate {
 	
 	public static function writeFile( $lang, $var ) {
 		$file = self::filename( $lang );
-		if ( !file_put_contents( $file, serialize( $var ) ) )
+		if ( !@file_put_contents( $file, serialize( $var ) ) )
 			throw new MWException( "Failed to write to file '$file'" );
 		self::$filecache[$lang] = $var;
 	}
