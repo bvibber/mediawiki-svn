@@ -470,7 +470,7 @@ class LocalisationUpdate {
 	}
 	
 	public static function readFile( $lang ) {
-		if ( is_null( self::$filecache[$lang] ) ) {
+		if ( !isset( self::$filecache[$lang] ) ) {
 			$file = self::filename( $lang );
 			$contents = file_get_contents( $file );
 			if ( $contents === false ) {
