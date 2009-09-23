@@ -475,9 +475,11 @@ class LocalisationUpdate {
 			$contents = file_get_contents( $file );
 			if ( $contents === false )
 				$retval = array();
-			$retval = unserialize( $contents );
-			if ( $retval === false )
-				throw new MWException( "Corrupted data in file '$file'" );
+			else {
+				$retval = unserialize( $contents );
+				if ( $retval === false )
+					throw new MWException( "Corrupted data in file '$file'" );
+			}
 			self::$filecache[$lang] = $retval;
 		}
 		return self::$filecache[$lang];
