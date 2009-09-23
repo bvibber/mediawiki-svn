@@ -780,6 +780,14 @@ $messages['vo'] = array(
 	'unicodeconverter-newtext' => 'Vödem fomätü Unicode:',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'unicodeconverter-ok' => 'אויספֿירן',
+	'unicodeconverter-oldtext' => 'ארגינעלער טעקסט:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong

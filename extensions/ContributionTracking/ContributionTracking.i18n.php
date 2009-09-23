@@ -899,6 +899,13 @@ $messages['vo'] = array(
 	'contrib-tracking-button' => 'Föfiö!',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'contrib-tracking-error' => 'גרײַז',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  */

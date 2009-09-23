@@ -528,6 +528,13 @@ $messages['pms'] = array(
 	'interwikilist-prefix' => 'Prefiss interwiki:',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'interwikilist-filter' => 'د چاڼګر لړليک',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -490,6 +490,14 @@ $messages['pms'] = array(
 	'absenteelandlord-desc' => "Blòca automaticament ël database dla wiki se j'aministrador a son tùit inativ për cheich temp",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'absenteelandlord-reason' => 'د پازوالانو د غيرفعاليت له کبله ډاټابېز په اتوماتيک ډول تړل شوی دی.',
+	'absenteelandlord-desc' => 'که چېرته ټول پازوالان د يو څه وخت له پاره غير فعاله وي نو په اتوماتيک ډول ډاټابېز تړل کېږي',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

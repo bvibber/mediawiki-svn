@@ -438,6 +438,13 @@ $messages['pms'] = array(
 	'formatchanges-editedby' => '$1 - modificà da $2 ($3)',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'formatchanges-anonymous' => 'ورکنومی',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

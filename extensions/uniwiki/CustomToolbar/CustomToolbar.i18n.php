@@ -2670,6 +2670,13 @@ $wgCustomToolbarMessages['vo'] = array(
 	'ct_user_sample' => 'Gebananem',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$wgCustomToolbarMessages['yi'] = array(
+	'ct_user_user' => 'באַניצער',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong

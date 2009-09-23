@@ -288,3 +288,10 @@ $messages['vep'] = array(
 	'categorytests-desc' => 'Funkcijad kategorijad testiruides',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'categorytests-desc' => 'Hàm để đo thử thể loại',
+);
+

@@ -196,6 +196,13 @@ $messages['pms'] = array(
 	'interlanguage-desc' => 'A cheuj anliure antërlenga da àutre wiki',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'interlanguage-desc' => 'له يوه بل ويکي نه د ژبو خپلمنځي تړنې را اخلي',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  */
@@ -236,5 +243,12 @@ $messages['sk'] = array(
  */
 $messages['te'] = array(
 	'interlanguage-desc' => 'అంతర భాషా లింకులను వేరొక వికీ నుంచి సంపాదిస్తుంది',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'interlanguage-desc' => 'Lấy liên kết giữa ngôn ngữ từ wiki khác',
 );
 

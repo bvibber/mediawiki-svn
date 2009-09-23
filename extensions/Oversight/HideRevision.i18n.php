@@ -2205,6 +2205,7 @@ Annulléiert dës Ännerung d'éischt.",
 Verbreedung vun dësen Informatiounen kann zum definitve Verloscht vun den ''Oversight''-Rechter féieren.",
 	'oversight-legend' => 'Lëscht vun de Recherche vu verstoppte Versiounen',
 	'oversight-oversighter' => 'Artikel-Kontroller:',
+	'oversight-offender' => 'Auteur vun der Versioun:',
 );
 
 /** Limburgish (Limburgs)
@@ -3829,7 +3830,7 @@ Không ai có thể dùng website để xem phiên bản sau khi nó được gi
 Nếu đưa ra thông tin này, bạn sẽ mất vĩnh viễn quyền giám sát.',
 	'oversight-legend' => 'Tìm kiếm trong nhật trình giấu phiên bản',
 	'oversight-oversighter' => 'Giám sát viên:',
-	'oversight-offender' => 'Người phạm lỗi:',
+	'oversight-offender' => 'Tác giả của phiên bản:',
 );
 
 /** Volapük (Volapük)

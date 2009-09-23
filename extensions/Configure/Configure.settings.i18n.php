@@ -14254,6 +14254,13 @@ $messages['vo'] = array(
 	'configure-setting-wgArticlePath' => 'Yegedaluveg',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'configure-setting-wgExtraLanguageNames-value' => 'נאָמען',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

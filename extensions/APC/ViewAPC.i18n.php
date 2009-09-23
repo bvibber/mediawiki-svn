@@ -495,6 +495,30 @@ $messages['be-tarask'] = array(
 	'viewapc-mode-system-cache' => 'Запісы сыстэмнага кэша',
 	'viewapc-mode-system-cache-dir' => 'Запісы па дырэкторыям',
 	'viewapc-mode-user-cache' => 'Запісы кэша ўдзельніка',
+	'viewapc-mode-version-check' => 'Праверыць вэрсію',
+	'viewapc-info-general' => 'Агульная інфармацыя',
+	'viewapc-apc-version' => 'Вэрсія APC',
+	'viewapc-php-version' => 'Вэрсія PHP',
+	'viewapc-shared-memory' => 'Агульная памяць',
+	'viewapc-shared-memory-details' => '$1 {{PLURAL:$1|сэгмэнт|$1 сэгмэнты|$1 сэгмэнтаў}} памерам па $2 кожны.<br />
+($3 памяць, $4 блякаваньне)',
+	'viewapc-start-time' => 'Час пачатку',
+	'viewapc-uptime' => 'Час працы',
+	'viewapc-upload-support' => 'Падтрымка загрузкі файлаў',
+	'viewapc-filecache-info' => 'Інфармацыя пра кэш файлаў',
+	'viewapc-usercache-info' => 'Інфармацыя пра кэш удзельніка',
+	'viewapc-cached-files' => 'Кэшаваныя файлы',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|файл|файлы|файлаў}} ($2)',
+	'viewapc-hits' => 'Трапляньняў',
+	'viewapc-misses' => 'Промахаў',
+	'viewapc-requests' => 'Інтэнсіўнасьць запытаў',
+	'viewapc-hitrate' => 'Інтэнсіўнасьць трапляньняў',
+	'viewapc-missrate' => 'Інтэнсіўнасьць промахаў',
+	'viewapc-insertrate' => 'Інтэнсіўнасьць уставак',
+	'viewapc-cachefull' => 'Поўны памер кэша',
+	'viewapc-rps' => '$1 запытаў у сэкунду',
+	'viewapc-info-runtime' => 'Інфармацыя пра працу',
+	'viewapc-info-memory' => 'Дыяграмы статусу сэрвэра',
 	'viewapc-display-value' => 'Значэньне',
 	'viewapc-display-filename' => 'Назва файла',
 	'viewapc-display-type' => 'Тып',
@@ -4123,26 +4147,36 @@ $messages['pnt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'viewapc-info-general' => 'ټولګړي مالومات',
+	'viewapc-apc-version' => 'د APC بڼه',
+	'viewapc-php-version' => 'د PHP بڼه',
+	'viewapc-start-time' => 'د پيل وخت',
 	'viewapc-memory-usage' => 'د حافظې کارېدنه',
 	'viewapc-memory-free' => 'تش: $1 ($2)',
 	'viewapc-memory-used' => 'ډک: $1 ($2)',
 	'viewapc-display-value' => 'ارزښت',
 	'viewapc-display-filename' => 'د دوتنې نوم',
 	'viewapc-display-info' => 'نوم',
+	'viewapc-display-ttl' => 'د پای وخت',
 	'viewapc-display-type' => 'ډول',
 	'viewapc-display-creation_time' => 'جوړ شو',
 	'viewapc-display-deletion_time' => 'ړنګ شو',
 	'viewapc-display-no-delete' => 'ړنګ نه شو',
+	'viewapc-display-mem_size' => 'کچه',
+	'viewapc-ls-options-legend' => 'خوښنې',
 	'viewapc-ls-submit' => 'ورځه!',
 	'viewapc-ls-header-name' => 'نوم',
 	'viewapc-ls-header-created' => 'جوړ شو',
 	'viewapc-ls-header-deleted' => 'ړنګ شو',
+	'viewapc-ls-delete' => '[همدا اوس ړنګول]',
 	'viewapc-ls-scope-deleted' => 'ړنګ شو',
 	'viewapc-ls-scope-both' => 'دواړه',
+	'viewapc-ls-sort-size' => 'کچه',
 	'viewapc-ls-sort-name' => 'نوم',
 	'viewapc-ls-sort-created' => 'جوړ شو',
 	'viewapc-ls-sort-deleted' => 'ړنګ شو',
 	'viewapc-ls-limit-none' => 'ټول',
+	'viewapc-version-info' => 'د بڼې مالومات',
 );
 
 /** Portuguese (Português)
@@ -5657,7 +5691,11 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'viewapc-display-info' => 'נאָמען',
+	'viewapc-ls-header-name' => 'נאָמען',
+	'viewapc-ls-sort-name' => 'נאָמען',
 	'viewapc-ls-limit-none' => 'אלע',
+	'viewapc-version-changelog' => 'ענדערונג־לאג',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

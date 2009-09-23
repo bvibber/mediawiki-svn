@@ -5778,6 +5778,7 @@ $wgGoogleMapsMessages['vo'] = array(
  */
 $wgGoogleMapsMessages['yi'] = array(
 	'gm-searching' => 'זוכנדיג…',
+	'gm-no-zoom-control' => 'קיין',
 	'gm-search' => 'זוכן',
 	'gm-save-path' => 'אויפֿהיטן',
 );

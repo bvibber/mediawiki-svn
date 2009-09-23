@@ -8073,6 +8073,7 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
 	'ow_nstab_definedmeaning' => 'definert tyding',
 	'ow_nstab_edit_copy' => 'endra kopi',
 	'right-addlanguage' => 'Leggja til og endra språkinnstillingar',
+	'ow_shown_datasets' => 'Synte datasett',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -8864,10 +8865,20 @@ $messages['pnt'] = array(
 $messages['ps'] = array(
 	'languages' => 'Wikidata: د ژبې سمبالګر',
 	'langman_title' => 'د ژبې سمبالګر',
+	'langman_langname' => 'د ژبې نوم:',
+	'langman_wikimedia' => 'د ويکيمېډيا کوډ:',
+	'langman_addlang' => 'ژبه ورګډول',
+	'importlangnames_added' => 'د "$1" لپاره د ژبو نومونه ورګډ شول',
+	'datasearch_language' => 'ژبه:',
+	'datasearch_meaning' => 'مانا',
+	'datasearch_search_text' => 'متن پلټل:',
+	'ow_exporttsv_languages' => 'ژبې:',
 	'ow_save' => 'خوندي کول',
 	'ow_history' => 'پېښليک',
 	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
+	'ow_transaction_user' => 'د کارن نوم:',
+	'ow_transaction_summary' => 'لنډيز',
 	'ow_conceptmapping_help' => '<p>شونې کړنې: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
 <li>&action=get&concept=<concept_id>  read a mapping back</li>
@@ -8878,6 +8889,7 @@ $messages['ps'] = array(
 	'ow_conceptmapping_no_action_specified' => 'بښنه غواړم، زه نه پوهېږم چې څنګه "$1".',
 	'ow_dm_not_present' => 'نه دی ورکړ شوی',
 	'ow_ApproximateMeanings' => 'نژدې ماناګانې',
+	'ow_Class' => 'ټولګی',
 	'ow_ClassAttributeLevel' => 'کچه',
 	'ow_ClassAttributeType' => 'ډول',
 	'ow_Collection' => 'غونډ',
@@ -8887,23 +8899,28 @@ $messages['ps'] = array(
 	'ow_GotoSource' => 'سرچينې ته ورځه',
 	'ow_Language' => 'ژبه',
 	'ow_OptionAttribute' => 'ځانتيا',
+	'ow_OptionAttributeOption' => 'خوښنه',
+	'ow_OptionAttributeOptions' => 'خوښنې',
 	'ow_Synonyms' => 'هممانيزونه',
 	'ow_SynonymsAndTranslations' => 'هممانيزونه او ژباړې',
 	'ow_Source' => 'سرچينه',
 	'ow_Text' => 'متن',
 	'ow_TextAttribute' => 'ځانتيا',
+	'ow_Time' => 'وخت',
 	'ow_TranslatedTextAttribute' => 'ځانتيا',
 	'ow_TranslatedText' => 'ژباړل شوی متن',
 	'ow_TranslatedTextAttributeValue' => 'متن',
 	'ow_TranslatedTextAttributeValues' => 'د ژباړلو وړ متن',
 	'ow_LinkAttribute' => 'ځانتيا',
 	'ow_LinkAttributeValues' => 'تړنې',
+	'ow_User' => 'کارن',
 	'ow_Property' => 'ځانتيا',
 	'ow_Value' => 'ارزښت',
 	'ow_meaningsoftitle' => 'د "$1" ماناګانې',
 	'ow_Permission_denied' => '<h2>د اجازې غوښتنه مو رد شوه</h2>',
 	'ow_copy_no_action_specified' => 'لطفاً يوه کړنه ځانګړې کړی',
 	'ow_copy_help' => 'يوه ورځ به موږ ستاسو سره مرسته وکړو.',
+	'ow_create' => 'جوړول',
 );
 
 /** Portuguese (Português)
@@ -12027,6 +12044,14 @@ $messages['vo'] = array(
 	'ow_Permission_denied' => '<h2>Däl no pegevon</h2>',
 	'ow_copy_help' => 'Yuf no nog gebidon.',
 	'ow_show' => 'Jonolöd',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ow_history' => 'היסטאריע',
+	'ow_User' => 'באַניצער',
 );
 
 /** Yue (粵語) */

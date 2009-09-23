@@ -1754,6 +1754,13 @@ $messages['vo'] = array(
 	'createsigndoc-error-pagenoexist' => 'Pöl: Pad: [[$1]] no dabinon.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'createsigndocument' => 'לאזן אונטערשרייבן דאקומענטן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Wmr89502270

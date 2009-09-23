@@ -824,6 +824,13 @@ Tên thành viên có phân biệt chữ hoa chữ thường.
 Hãy xem lại có sai chính tả không.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ajaxlogin-create' => 'שאַפֿן אַ קאנטע',
+);
+
 /** Chinese (中文)
  * @author 許瑜真 (Yuchen Hsu/KaurJmeb)
  */

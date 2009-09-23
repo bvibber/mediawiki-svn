@@ -516,6 +516,14 @@ $messages['es'] = array(
 	'imagetagging-taggedimages-displaying' => 'Mostrando $1 - $2 de $3 imágenes de "$4"',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'tag-logpagename' => 'Märgistamislogi',
+	'tag-logpagetext' => 'Sellel leheküljel on kõigi pildimärgiste lisamiste ja eemaldamiste logi.',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -1915,6 +1923,13 @@ Xin hãy chờ tác vụ hoàn thành.',
 	'imagetagging-taggedimages-displaying' => 'Hiển thị $1 - $2 trong tổng số $3 hình của "$4"',
 	'tag-logpagename' => 'Gắn thẻ cho nhật trình',
 	'tag-logpagetext' => 'Đây là nhật trình ghi lại tất cả tác vụ thêm và bỏ thẻ hình ảnh.',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'imagetagging-imghistory' => 'היסטאריע',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

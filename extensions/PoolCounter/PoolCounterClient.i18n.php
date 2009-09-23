@@ -138,6 +138,17 @@ $messages['hsb'] = array(
 	'poolcounter-remote-error' => 'Zmylk serwera skupinskeho ličaka: $1',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'poolcounter-desc' => 'MediaWiki kliens a poolcounter.py démonhoz',
+	'poolcounter-connection-error' => 'Hiba a pool counter szerverhez való kapcsolódáskor: $1',
+	'poolcounter-read-error' => 'Hiba a pool counter szerverről való olvasáskor',
+	'poolcounter-write-error' => 'Hiba a pool counter szerverre való íráskor',
+	'poolcounter-remote-error' => 'Pool counter szerver hiba: $1',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

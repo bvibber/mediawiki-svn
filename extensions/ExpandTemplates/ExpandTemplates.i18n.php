@@ -1921,6 +1921,7 @@ Dunon atosi medä vokon programadili tefik se el MediaWiki it.',
  */
 $messages['yi'] = array(
 	'expand_templates_output' => 'רעזולטאט',
+	'expand_templates_ok' => 'אויספֿירן',
 );
 
 /** Yue (粵語) */

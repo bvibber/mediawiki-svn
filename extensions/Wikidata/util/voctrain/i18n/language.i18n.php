@@ -3658,6 +3658,16 @@ $messages['vo'] = array(
 	'voctrain_other' => 'votik',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'voctrain_logout' => 'אַרויסלאגירן',
+	'voctrain_Login' => 'אַרײַנלאגירן',
+	'voctrain_Log_in' => 'אַרײַנלאגירן',
+	'voctrain_other' => 'אנדער',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author PhiLiP
  */

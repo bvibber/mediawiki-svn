@@ -304,6 +304,37 @@ $messages['hu'] = array(
 	'masseditregex-hint-headeffect' => 'Hatás',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'masseditregex' => 'Modification in massa con expressiones regular',
+	'masseditregex-desc' => 'Usar expressiones regular pro [[Special:MassEditRegex|modificar multe paginas in un operation]]',
+	'masseditregextext' => 'Entra un o plus expressiones regular (un per linea) a cercar, e un o plus expressiones pro reimplaciar cata resultato.
+Le prime expression a cercar, si trovate, essera reimplaciate per le prime expression de reimplaciamento, et cetera.
+Vide [http://php.net/manual/en/function.preg-replace.php le function PHP preg_replace()] pro detalios.',
+	'masseditregex-pagelisttxt' => 'Paginas a modificar:',
+	'masseditregex-matchtxt' => 'Cercar:',
+	'masseditregex-replacetxt' => 'Reimplaciar per:',
+	'masseditregex-executebtn' => 'Executar',
+	'masseditregex-err-nopages' => 'Tu debe specificar al minus un pagina a modificar.',
+	'masseditregex-before' => 'Ante',
+	'masseditregex-after' => 'Post',
+	'masseditregex-max-preview-diffs' => 'Le previsualisation ha essite limitate al prime {{PLURAL:$1|resultato|$1 resultatos}}.',
+	'masseditregex-num-changes' => '$1 : $2 {{PLURAL:$2|modification|modificationes}}',
+	'masseditregex-page-not-exists' => '$1 non existe',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|pagina|paginas}} modificate',
+	'masseditregex-view-full-summary' => 'Vider le summario de modification complete',
+	'masseditregex-hint-intro' => 'Ecce alcun avisos e exemplos pro realisar cargas commun:',
+	'masseditregex-hint-headmatch' => 'Correspondentia',
+	'masseditregex-hint-headreplace' => 'Reimplaciar',
+	'masseditregex-hint-headeffect' => 'Effecto',
+	'masseditregex-hint-toappend' => 'Adjunger alcun texto al fin del pagina - bon pro adder paginas a categorias',
+	'masseditregex-hint-remove' => 'Remover alcun texto de tote le paginas in le lista',
+	'masseditregex-hint-removecat' => 'Remover tote le categorias de un pagina (nota le escappamento del parentheses quadrate in le wikicodice).
+Le valores de reimplaciamento non debe esser escappate.',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

@@ -792,6 +792,13 @@ $messages['vo'] = array(
 	'searchbox-namespaces' => 'Nemaspads:',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'searchbox-search' => 'זוכן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong

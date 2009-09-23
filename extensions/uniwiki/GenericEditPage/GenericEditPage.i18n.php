@@ -1032,7 +1032,9 @@ Dodaj sekcje za pomocą narzędzi w pasku menu.',
  */
 $messages['ps'] = array(
 	'gep-categories' => 'وېشنيزې',
+	'gep-addcategory' => 'يوه وېشنيزه ورګډول',
 	'gep-addcategorybutton' => 'ورګډول',
+	'gep-sections' => 'برخې',
 	'gep-addsectionbutton' => 'ورګډول',
 );
 

@@ -706,6 +706,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'languageselector' => 'ژبه',
 	'languageselector-desc' => 'د ژب ټاکنې پټه دې په هر مخ وي، د کتونکو لپاره هم',
+	'languageselector-setlang' => 'ټاکل',
 );
 
 /** Portuguese (Português)

@@ -861,6 +861,13 @@ $messages['vep'] = array(
 	'index-search' => 'Ectä',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'index-search' => 'זוכן:',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

@@ -2550,6 +2550,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'tasks_delete' => 'ړنګول',
 	'tasks_here' => 'دلته',
 	'tasks_help_page' => 'دندې',
 	'tasks_table_header_page' => 'مخ',
@@ -2558,6 +2559,7 @@ $messages['ps'] = array(
 	'tasks_search_results' => 'د پلټنې پايلې',
 	'tasks_previous' => 'پخوانی',
 	'tasks_next' => 'راتلونکی',
+	'tasks_sort' => 'اوډل',
 	'tasks_status_open' => 'پرانيستل',
 );
 
@@ -3548,7 +3550,9 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'tasks_noone' => 'קיינער',
 	'tasks_delete' => 'אויסמעקן',
+	'tasks_search_form_title' => 'זוכן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

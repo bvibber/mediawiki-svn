@@ -386,6 +386,13 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Lehetővé teszi JavaScript alapú képgalériák létrehozását a feltöltött képekből.
+A SmoothGallery legtöbb beállítását támogatja',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>SmoothGallery hiba:</b>',
+	'smoothgallery-gallery-not-found' => 'A kért galéria nem létezik.',
 	'smoothgallery-unexpected-error' => 'Nem várt hiba történt.
 Légyszíves készíts hibajelentést.',
 	'smoothgallery-javascript-disabled' => 'A galéria helyes megjelenítéséhez JavaScript szükséges.',

@@ -183,7 +183,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'random-users-avatars-title' => 'Facer le cognoscentia del communitate',
+	'random-users-avatars-title' => 'Cognosce le communitate',
 	'random-users-avatars-desc' => 'Adde le etiquetta <tt>&lt;randomuserswithavatars&gt;</tt> pro monstrar le avatares de usatores seligite aleatorimente',
 );
 

@@ -39,6 +39,13 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
+/** Lazuri Nena (Lazuri Nena)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'adminlinks_users' => "K'oçepe",
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -676,13 +683,6 @@ $messages['li'] = array(
 	'right-adminlinks' => 'De verwiezing nao [[Special:AdminLinks|verwiezinge veur systeemwèrkers]] betrachte',
 );
 
-/** Lazuri Nena (Lazuri Nena)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'adminlinks_users' => "K'oçepe",
-);
-
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -850,6 +850,20 @@ $messages['pms'] = array(
 	'adminlinks_browsesearch' => 'Visualisassion e arserca',
 	'adminlinks_importexport' => 'Amportassion e esportassion',
 	'right-adminlinks' => "Varda ël colegament a [[Special:AdminLinks|colegament ëd j'Admin]]",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'adminlinks' => 'د پازوال تړنې',
+	'adminlinks_documentation' => '$1 لاسوند',
+	'adminlinks_general' => 'ټولګړی',
+	'adminlinks_editcss' => 'د CSS دوتنه سمول',
+	'adminlinks_editmainpagename' => 'د اصلي مخ نوم سمول',
+	'adminlinks_users' => 'کارنان',
+	'adminlinks_createuser' => 'يو کارن جوړول',
+	'right-adminlinks' => 'د [[Special:AdminLinks|پازوال تړنو]] ته ورسيخه شوې تړنه کتل',
 );
 
 /** Portuguese (Português)
@@ -1027,5 +1041,14 @@ $messages['vi'] = array(
 	'adminlinks_browsesearch' => 'Duyệt và tìm kiếm',
 	'adminlinks_importexport' => 'Nhập và xuất',
 	'right-adminlinks' => 'Xem [[Special:AdminLinks|các liên kết quản lý]]',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'adminlinks_users' => 'באַניצער',
+	'adminlinks_createuser' => 'שאַפֿן אַ באַניצער',
+	'adminlinks_browsesearch' => 'בלעטערן און זוכן',
 );
 

@@ -1279,6 +1279,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'edituser-username' => 'נאָמען',
 	'edituser-dosearch' => 'זוכן',
 );
 

@@ -1728,9 +1728,10 @@ $messages['vi'] = array(
 	'dt_xml_freetext' => 'Văn bản Tự do',
 	'importxml' => 'Nhập XML',
 	'dt_import_selectfile' => 'Xin hãy chọn tập tin $1 để nhập:',
+	'dt_import_encodingtype' => 'Bảng mã',
 	'dt_import_editsummary' => 'Nhập $1',
 	'dt_import_importing' => 'Đang nhập…',
-	'dt_import_success' => '$1 trang sẽ được nhập từ tập tin $2.',
+	'dt_import_success' => '{{PLURAL:$1|Trang|$1 trang}} sẽ được nhập từ tập tin $2.',
 	'importcsv' => 'Nhập CSV',
 	'dt_importcsv_badheader' => 'Lỗi: tên của cột $1, “$2”, phải là “$3” hay “$4”, hoặc phải theo hình dạng “tên_tiêu_bản[tên_trường]”',
 	'right-datatransferimport' => 'Nhập dữ liệu',
@@ -1754,6 +1755,13 @@ $messages['vo'] = array(
 	'dt_xml_title' => 'Tiäd',
 	'dt_xml_id' => 'Dientifanüm',
 	'dt_xml_freetext' => 'Vödem libik',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'dt_xml_name' => 'נאָמען',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -337,3 +337,10 @@ $messages['sk'] = array(
 	'transliterator-error-rulesize' => 'Pravidlo <code>$1</code> má viac než $3 {{PLURAL:$3|znak|znaky|znakov}} naľavo v [[MediaWiki:$2]]',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'transliterator-desc' => 'Cung cấp hàm cú pháp thiết kế được để chuyển tự',
+);
+

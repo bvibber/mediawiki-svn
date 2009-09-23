@@ -142,3 +142,10 @@ $messages['ru'] = array(
 	'ipauth-desc' => 'Автоматический вход с постоянных IP адресов',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'ipauth-desc' => 'Tự động đăng nhập từ địa chỉ IP cố định',
+);
+

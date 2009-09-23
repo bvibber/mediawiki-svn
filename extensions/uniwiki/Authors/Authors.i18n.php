@@ -459,6 +459,7 @@ $messages['pnb'] = array(
  */
 $messages['ps'] = array(
 	'authors_authors' => 'ليکوالان',
+	'authors_anonymous' => 'ورکنومی',
 );
 
 /** Portuguese (Português)

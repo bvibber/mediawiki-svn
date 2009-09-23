@@ -1476,6 +1476,13 @@ $messages['pl'] = array(
 	'specialpages-group-feedback' => 'Opinia czytelnika',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'readerfeedback-finished' => 'مننه!',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Lijealso
@@ -1877,6 +1884,7 @@ $messages['vec'] = array(
 	'readerfeedback-submit' => 'Manda',
 	'readerfeedback-submitting' => "So' drio mandarlo...",
 	'readerfeedback-finished' => 'Grassie!',
+	'specialpages-group-feedback' => 'Opinion del letor',
 );
 
 /** Veps (Vepsan kel')

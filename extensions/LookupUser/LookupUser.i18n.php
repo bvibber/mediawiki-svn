@@ -1020,6 +1020,7 @@ $messages['ps'] = array(
 	'lookupuser-email' => 'برېښليک: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => 'اصلي نوم: $1',
 	'lookupuser-registration' => 'د نومليکنې نېټه: $1',
+	'lookupuser-useroptions' => 'د کارن خوښنې:',
 );
 
 /** Portuguese (Português)

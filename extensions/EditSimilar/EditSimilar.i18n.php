@@ -95,6 +95,20 @@ $messages['bg'] = array(
 	'tog-edit-similar' => 'Включване на предположенията за сходни страници',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'editsimilar-desc' => 'Broudañ a ra an implijerien da labourat war pajennoù kar goude bezañ degaset kemmoù war ur bajenn bennak',
+	'editsimilar-thanks' => 'Trugarez da gemer perzh.
+Gwiriit {{PLURAL:$2|ar bajenn kar-mañ|ar pajennoù kar-mañ}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'Trugarez da gemer perzh.
+Moarvat e vo ezhomm eus ho skoazell war {{PLURAL:$2|ar bajenn-mañ|ar pajennoù-se}} : $1.',
+	'editsimilar-thankyou' => 'Trugarez da gemer perzh, $1 !',
+	'editsimilar-link-disable' => 'Arventennañ an dibaboù',
+	'tog-edit-similar' => 'Gweredekaat kinnigoù ar pajennoù kar',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

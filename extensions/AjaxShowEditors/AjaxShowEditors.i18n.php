@@ -1160,6 +1160,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'ajax-se-pagedoesnotexist' => 'בלאַט עקזיסטירט נישט',
+	'ajax-se-userinvalid' => 'גרייז: באַניצער אומגילטיק',
 );
 
 /** Yue (粵語)

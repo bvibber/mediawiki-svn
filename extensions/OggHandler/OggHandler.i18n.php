@@ -3112,7 +3112,7 @@ $messages['vi'] = array(
 	'ogg-play-sound' => 'Nghe âm thanh',
 	'ogg-no-player' => 'Rất tiếc, hình như máy tính của bạn cần thêm phần mềm. Xin <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/vi">tải xuống chương trình chơi nhạc</a>.',
 	'ogg-no-player-js' => 'Rất tiếc, hệ thống của bạn đã tắt JavaScript hoặc không có trình chơi được hỗ trợ.<br />
-Bạn có thể <a href="$1">tải đoạn clip</a><br />hoặc<br /><a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">tải trình chơi</a> để chơi đoạn clip ngay trong trình duyệt.',
+Bạn có thể <a href="$1">tải đoạn clip</a> hoặc <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download?uselang=vi">tải trình chơi</a> để chơi đoạn clip ngay trong trình duyệt.',
 	'ogg-no-xiphqt' => 'Hình như bạn không có bộ phận XiphQT cho QuickTime, nên QuickTime không thể chơi những tập tin Ogg được. Xin <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/vi">truyền xuống XiphQT</a> hay chọn một chương trình chơi nhạc khác.',
 	'ogg-player-videoElement' => 'Bộ chơi có sẵn trong trình duyệt',
 	'ogg-player-oggPlugin' => 'Phần bổ trợ trình duyệt',

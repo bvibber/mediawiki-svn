@@ -3006,6 +3006,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'grouppermissions-search' => 'גרופע:',
+	'grouppermissions-dologin' => 'אַרײַנלאגירן',
 	'grouppermissions-dosearch' => 'גיין',
 	'grouppermissions-searchlabel' => 'זוכן גרופע',
 	'right-search' => 'זוכן אין וויקי',

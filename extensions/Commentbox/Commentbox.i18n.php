@@ -564,3 +564,10 @@ $messages['vep'] = array(
 	'commentbox-first-comment-heading' => '== Kommentarijad ==',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'commentbox-name' => 'נאָמען',
+);
+

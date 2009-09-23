@@ -210,3 +210,10 @@ $messages['sk'] = array(
 	'semanticinternalobjects-desc' => 'Nastavenie vnútorných objektov v Semantic MediaWiki',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'semanticinternalobjects-desc' => 'Thiết kế các đối tượng nội bộ trong Semantic MediaWiki',
+);
+

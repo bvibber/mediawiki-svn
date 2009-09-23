@@ -1464,9 +1464,10 @@ $messages['nl'] = array(
 	'right-viewsystemstats' => '[[Special:UserStats|Wikigebruiksstatistieken]] bekijken',
 );
 
-/** Norwegian Nynorsk (Norsk (nynorsk))
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
  * @author Frokor
+ * @author Gunnernett
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
@@ -1475,10 +1476,10 @@ $messages['nn'] = array(
 	'usagestatistics-desc' => 'Vis statistikk for individuelle brukarar og for heile wikien',
 	'usagestatisticsfor' => '<h2>Statistikk over bruk for [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Bruksstatistikk for alle brukarar</h2>',
-	'usagestatisticsinterval' => 'Intervall',
+	'usagestatisticsinterval' => 'Intervall:',
 	'usagestatisticstype' => 'Type',
-	'usagestatisticsstart' => 'Startdato',
-	'usagestatisticsend' => 'Sluttdato',
+	'usagestatisticsstart' => 'Startdato:',
+	'usagestatisticsend' => 'Sluttdato:',
 	'usagestatisticssubmit' => 'Lag statistikk',
 	'usagestatisticsnostart' => 'Ver venleg og oppgje startdato',
 	'usagestatisticsnoend' => 'Ver venleg og oppgje sluttdato',
@@ -1621,8 +1622,8 @@ $messages['ps'] = array(
 	'specialuserstats' => 'د کارونې شمار',
 	'usagestatistics' => 'د کارونې شمار',
 	'usagestatisticstype' => 'ډول',
-	'usagestatisticsstart' => 'د پيل نېټه',
-	'usagestatisticsend' => 'د پای نېټه',
+	'usagestatisticsstart' => 'د پيل نېټه:',
+	'usagestatisticsend' => 'د پای نېټه:',
 	'usagestatisticsbadstartend' => '<b>بد <i>پيل</i> او/يا <i>پای </i> نېټه!</b>',
 	'usagestatisticsintervalday' => 'ورځ',
 	'usagestatisticsintervalweek' => 'اوونۍ',

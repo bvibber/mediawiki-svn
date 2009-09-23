@@ -826,6 +826,23 @@ $messages['vep'] = array(
 	'fundraiserportal-tourmaline-button' => "Lahjoiče nügüd'",
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'fundraiserportal' => 'Cổng Vận động gây quỹ',
+	'fundraiserportal-desc' => 'Thêm liên kết “xin hãy quyên góp” vào phần trên của thanh bên.',
+	'fundraiserportal-plain-button' => 'Hỗ trợ Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Quyên góp ngay',
+	'fundraiserportal-rubytext-button' => 'Quyên góp ngay',
+	'fundraiserportal-rubytext-message' => 'Mỗi khoản quyên góp giúp chúng tôi tiếp tục cung cấp Wikipedia tự do cho mọi người.',
+	'fundraiserportal-rubytext-close' => 'Ẩn phần này từ nay',
+	'fundraiserportal-sapphire-button' => 'Quyên góp ngay',
+	'fundraiserportal-tourmaline-button' => 'Quyên góp ngay',
+	'fundraiserportal-tourmaline-message' => 'Mỗi khoản quyên góp giúp chúng tôi tiếp tục cung cấp Wikipedia tự do cho mọi người.',
+	'fundraiserportal-tourmaline-close' => 'Ẩn phần này từ nay',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

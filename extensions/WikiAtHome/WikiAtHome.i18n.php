@@ -586,6 +586,13 @@ U kunt helpen dit bestand te transcoderen door naar [[Special:WikiAtHome|Wiki@Ho
 	'wah-loading' => 'Wiki@Home-interface aan het laden <blink>...</blink>',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'wah-javascript-off' => 'Du må ha JavaScript aktivert for kunna delta i Wiki@Home',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

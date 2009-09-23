@@ -1794,6 +1794,13 @@ $messages['vi'] = array(
 	'recordadmin-needscontent' => 'Thêm nội dung…',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'recordadmin-buttonsearch' => 'זוכן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author PhiLiP

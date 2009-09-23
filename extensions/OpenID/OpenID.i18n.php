@@ -3468,6 +3468,7 @@ $messages['ps'] = array(
 	'openidchoosepassword' => 'پټنوم:',
 	'openidnousername' => 'هېڅ يو کارن-نوم نه دی ځانګړی شوی.',
 	'openidbadusername' => 'يو ناسم کارن-نوم مو ځانګړی کړی.',
+	'openid-urls-delete' => 'ړنګول',
 );
 
 /** Portuguese (Português)

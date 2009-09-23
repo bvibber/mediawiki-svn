@@ -370,6 +370,10 @@ $messages['hu'] = array(
 	'clicktracking' => 'Usability Initiative kattintásszámláló',
 	'clicktracking-desc' => 'Kattintásszámláló, az olyan események rögzítésére, melyekhez nem szükséges a lap frissítése',
 	'clicktracking-title' => 'A szerkesztők kattintásainak összesítése',
+	'event-name' => 'Esemény neve',
+	'total-header' => 'Összes kattintás',
+	'start-date' => 'Kezdődátum (ÉÉÉÉHHNN)',
+	'end-date' => 'Végdátum (ÉÉÉÉHHNN)',
 );
 
 /** Interlingua (Interlingua)

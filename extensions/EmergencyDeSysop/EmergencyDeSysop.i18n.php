@@ -905,6 +905,13 @@ $messages['vi'] = array(
 	'emergencydesysop-nogroups' => 'Không có',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'emergencydesysop-nogroups' => 'קיין',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

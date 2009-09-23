@@ -2692,9 +2692,18 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'contributionhistory' => 'د ونډو پېښليک',
 	'contrib-hist-name' => 'نوم',
 	'contrib-hist-date' => 'وخت او نېټه',
+	'contrib-hist-anonymous' => 'ورکنومی',
+	'contribstats-day' => 'ورځ',
+	'contribstats-month' => 'مياشت',
+	'contribstats-week' => 'اونۍ',
+	'contribstats-donations' => 'بسپنې',
+	'contribstats-template' => 'کينډۍ',
 	'fundraiserstats-date' => 'نېټه',
+	'fundraiserstats-day' => 'د $2 ورځو نه $1 ورځ',
+	'fundraiserstats-contributions' => 'ونډې',
 );
 
 /** Portuguese (Português)
@@ -3485,7 +3494,7 @@ $messages['vi'] = array(
 	'contrib-hist-anonymous' => 'Vô danh',
 	'contributionstatistics' => 'Thống kê quyên góp',
 	'contribstats-desc' => 'Hiển thị thống kê về các khoản quyên góp cho Quỹ hỗ trợ Wikimedia',
-	'contribstats-daily-totals' => '{{PLURAL:$1|Tổng cộng hôm nay|Tổng cộng hàng ngày cho $1 ngày trước đây}}',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Tổng số hôm nay|Tổng số hàng ngày cho $1 ngày trước đây}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Tổng cộng tháng này|Tổng cộng hàng tháng cho $1 tháng trước đây}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Tổng cộng $1 tháng|Tổng cộng hàng tháng cho $1 tháng}}',
 	'contribstats-currency-range-totals' => 'Tổng cộng theo đơn vị tiền tệ (từ $1 đến $2)',
@@ -3506,6 +3515,14 @@ $messages['vi'] = array(
 	'contribstats-value-under' => 'Không tới $1',
 	'contribstats-value-from' => 'Từ $1–$2',
 	'contribstats-value-over' => 'Hơn $1',
+	'contributiontrackingstatistics' => 'Thống kê theo dõi quyên góp',
+	'contribstats-day-totals' => 'Tổng cộng hôm nay',
+	'contribstats-week' => 'Tuần',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Tổng số tuần này|Tổng số hàng tuần trong $1 tuần trước}}',
+	'contribstats-clicks' => 'Số lần nhấn chuột',
+	'contribstats-donations' => 'Số khoản quyên góp',
+	'contribstats-conversion' => 'Tỷ lệ chuyển đổi (%)',
+	'contribstats-template' => 'Bản mẫu',
 	'fundraiserstatistics' => 'Thống kê về vận động gây quỹ',
 	'fundraiserstats-date' => 'Ngày',
 	'fundraiserstats-day' => 'Ngày $1 trong $2',
@@ -3546,6 +3563,13 @@ $messages['vo'] = array(
 	'fundraiserstats-tab-contributions' => 'Num keblünotas',
 	'fundraiserstats-tab-averages' => 'Zäneds (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxums (USD)',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'contrib-hist-name' => 'נאָמען',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

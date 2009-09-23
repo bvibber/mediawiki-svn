@@ -452,6 +452,13 @@ $messages['nl'] = array(
 	'simplesearch-containing' => 'bevat...',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'simplesearch-containing' => 'inneheld ...',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  */
@@ -713,6 +720,13 @@ $messages['vi'] = array(
  */
 $messages['xmf'] = array(
 	'simplesearch-search' => 'გორუა',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'simplesearch-search' => 'זוכן',
 );
 
 /** Yue (粵語)

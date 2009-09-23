@@ -1239,6 +1239,26 @@ $messages['pl'] = array(
 	'right-closewikis' => 'Zamknij projekty wiki',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'closewikis-page' => 'ويکي تړل',
+	'closewikis-page-close' => 'ويکي تړل',
+	'closewikis-page-close-wiki' => 'ويکي:',
+	'closewikis-page-close-submit' => 'تړل',
+	'closewikis-page-close-success' => 'ويکي په برياليتوب سره وتړل شوه',
+	'closewikis-page-reopen' => 'ويکي بيا پرانيستل',
+	'closewikis-page-reopen-wiki' => 'ويکي:',
+	'closewikis-page-reopen-reason' => 'سبب:',
+	'closewikis-page-reopen-submit' => 'بيا پرانيستل',
+	'closewikis-page-reopen-success' => 'ويکي په برياليتوب سره بيا پرانيستل شوه',
+	'closewikis-page-err-closed' => 'ويکي له پخوا نه تړل شوې',
+	'closewikis-page-err-opened' => 'ويکي نه ده تړل شوې',
+	'closewikis-list-header-wiki' => 'ويکي',
+	'right-closewikis' => 'ويکي تړل',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Sir Lestaty de Lioncourt

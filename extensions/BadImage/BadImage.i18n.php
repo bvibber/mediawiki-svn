@@ -2454,6 +2454,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'badimages-name' => 'נאָמען:',
 	'badimages-reason' => 'אורזאַך:',
 );
 

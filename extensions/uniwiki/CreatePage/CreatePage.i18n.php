@@ -444,7 +444,11 @@ By rady eksistowacu stronu wobdźěłał?',
  */
 $messages['hu'] = array(
 	'createpage' => 'Lap létrehozása',
+	'createpage-desc' => '[[Special:CreatePage|Speciális lap]] új lapok létrehozásához',
 	'createpage_submitbutton' => 'Elküldés',
+	'createpage_instructions' => 'Add meg a létrehozandó lap címét:',
+	'createpage_entertitle' => 'Adj címet a lapnak.',
+	'createpage-badtitle' => '„$1” nem használható a lap címeként',
 );
 
 /** Interlingua (Interlingua)

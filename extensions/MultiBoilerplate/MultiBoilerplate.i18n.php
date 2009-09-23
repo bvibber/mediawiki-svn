@@ -280,6 +280,10 @@ $messages['ia'] = array(
 	'multiboilerplate-desc' => 'Permitte seliger un modello de texto ab un quadro disrolante situate super le formulario pro modificar paginas',
 	'multiboilerplate-legend' => 'Seliger modello',
 	'multiboilerplate-submit' => 'Cargar',
+	'boilerplates' => 'Modellos disponibile',
+	'multiboilerplate-special-pagetext' => 'Iste patronos pote esser precargate al creation de paginas. (<span class=plainlinks>[{{fullurl:Iste pagina non existe|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Le modellos es definite in LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Modellos es definite in [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Indonesian (Bahasa Indonesia)

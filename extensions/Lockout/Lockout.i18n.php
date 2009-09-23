@@ -92,6 +92,13 @@ $messages['hu'] = array(
 	'lockout-desc' => 'Megakadályozza a blokkolt felhasználók a bejelentkezését',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'lockout-desc' => 'Impedi le usatores blocate de aperir un session',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

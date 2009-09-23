@@ -4828,13 +4828,13 @@ $messages['ia'] = array(
 	'edittoolbar-tool-reference-example' => 'Inserer hic le texto del nota',
 	'edittoolbar-tool-signature' => 'Signatura con data e hora',
 	'edittoolbar-section-advanced' => 'Avantiate',
-	'edittoolbar-tool-heading' => 'Capite',
+	'edittoolbar-tool-heading' => 'Titulo',
 	'edittoolbar-tool-heading-1' => 'Nivello 1',
 	'edittoolbar-tool-heading-2' => 'Nivello 2',
 	'edittoolbar-tool-heading-3' => 'Nivello 3',
 	'edittoolbar-tool-heading-4' => 'Nivello 4',
 	'edittoolbar-tool-heading-5' => 'Nivello 5',
-	'edittoolbar-tool-heading-example' => 'Texto del capite',
+	'edittoolbar-tool-heading-example' => 'Texto del titulo',
 	'edittoolbar-group-list' => 'Lista',
 	'edittoolbar-tool-ulist' => 'Lista a punctos',
 	'edittoolbar-tool-ulist-example' => 'Elemento de lista a punctos',
@@ -4896,15 +4896,15 @@ $messages['ia'] = array(
 	'edittoolbar-characters-page-greek' => 'Grec',
 	'edittoolbar-characters-page-cyrillic' => 'Cyrillic',
 	'edittoolbar-characters-page-arabic' => 'Arabe',
-	'edittoolbar-characters-page-hebrew' => 'Hebreo',
+	'edittoolbar-characters-page-hebrew' => 'Hebree',
 	'edittoolbar-characters-page-telugu' => 'Telugu',
 	'edittoolbar-section-help' => 'Adjuta',
 	'edittoolbar-help-heading-description' => 'Description',
-	'edittoolbar-help-heading-syntax' => 'Formato',
+	'edittoolbar-help-heading-syntax' => 'Entrata',
 	'edittoolbar-help-heading-result' => 'Resultato',
 	'edittoolbar-help-page-format' => 'Typographia',
 	'edittoolbar-help-page-link' => 'Ligamines',
-	'edittoolbar-help-page-heading' => 'Capites',
+	'edittoolbar-help-page-heading' => 'Titulos',
 	'edittoolbar-help-page-list' => 'Listas',
 	'edittoolbar-help-page-file' => 'Files',
 	'edittoolbar-help-page-reference' => 'Referentias',
@@ -4924,21 +4924,21 @@ $messages['ia'] = array(
 	'edittoolbar-help-content-xlink-description' => 'Ligamine externe',
 	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org Texto del ligamine]<br />[http://www.example.org]<br />http://www.example.org',
 	'edittoolbar-help-content-xlink-result' => "<a href='#' class='external'>Texto del ligamine</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
-	'edittoolbar-help-content-heading1-description' => 'Capite de prime nivello',
-	'edittoolbar-help-content-heading1-syntax' => '= Texto del capite =',
-	'edittoolbar-help-content-heading1-result' => '<h1>Texto del capite</h1>',
-	'edittoolbar-help-content-heading2-description' => 'Capite del secunde nivello',
-	'edittoolbar-help-content-heading2-syntax' => '== Texto del capite ==',
-	'edittoolbar-help-content-heading2-result' => '<h2>Texto del capite</h2>',
-	'edittoolbar-help-content-heading3-description' => 'Capite del tertie nivello',
-	'edittoolbar-help-content-heading3-syntax' => '=== Texto del capite ===',
-	'edittoolbar-help-content-heading3-result' => '<h3>Texto del capite</h3>',
-	'edittoolbar-help-content-heading4-description' => 'Capite del quarte nivello',
-	'edittoolbar-help-content-heading4-syntax' => '==== Texto del capite ====',
-	'edittoolbar-help-content-heading4-result' => '<h4>Texto del capite</h4>',
-	'edittoolbar-help-content-heading5-description' => 'Capite del quinte nivello',
-	'edittoolbar-help-content-heading5-syntax' => '===== Texto del capite =====',
-	'edittoolbar-help-content-heading5-result' => '<h5>Texto del capite</h5>',
+	'edittoolbar-help-content-heading1-description' => 'Titulo de prime nivello',
+	'edittoolbar-help-content-heading1-syntax' => '= Texto del titulo =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Texto del titulo</h1>',
+	'edittoolbar-help-content-heading2-description' => 'Titulo del secunde nivello',
+	'edittoolbar-help-content-heading2-syntax' => '== Texto del titulo ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Texto del titulo</h2>',
+	'edittoolbar-help-content-heading3-description' => 'Titulo del tertie nivello',
+	'edittoolbar-help-content-heading3-syntax' => '=== Texto del titulo ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Texto del titulo</h3>',
+	'edittoolbar-help-content-heading4-description' => 'Titulo del quarte nivello',
+	'edittoolbar-help-content-heading4-syntax' => '==== Texto del titulo ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Texto del titulo</h4>',
+	'edittoolbar-help-content-heading5-description' => 'Titulo del quinte nivello',
+	'edittoolbar-help-content-heading5-syntax' => '===== Texto del titulo =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Texto del titulo</h5>',
 	'edittoolbar-help-content-ulist-description' => 'Lista a punctos',
 	'edittoolbar-help-content-ulist-syntax' => '* Elemento del lista<br />* Elemento del lista',
 	'edittoolbar-help-content-ulist-result' => '<ul><li>Elemento del lista</li><li>Elemento del lista</li></ul>',
@@ -7227,6 +7227,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -7338,7 +7339,7 @@ $messages['nl'] = array(
 	'edittoolbar-section-help' => 'Hulp',
 	'edittoolbar-help-heading-description' => 'Beschrijving',
 	'edittoolbar-help-heading-syntax' => 'Wat u typt',
-	'edittoolbar-help-heading-result' => 'Wat u krijgt te zien',
+	'edittoolbar-help-heading-result' => 'Wat u te zien krijgt',
 	'edittoolbar-help-page-format' => 'Opmaak',
 	'edittoolbar-help-page-link' => 'Verwijzingen',
 	'edittoolbar-help-page-heading' => 'Kopjes',
@@ -7402,6 +7403,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -7414,8 +7416,15 @@ $messages['nn'] = array(
 	'edittoolbar-tool-ilink-example' => 'Lenkjetittel',
 	'edittoolbar-tool-xlink' => 'Ekstern lenkja (hugs http:// -forstavinga)',
 	'edittoolbar-tool-xlink-example' => 'http://www.example.com lenkjetittel',
+	'edittoolbar-tool-link-int' => 'Til ei wikiside',
+	'edittoolbar-tool-link-int-target' => 'Sidetittel/artikkeltittel:',
+	'edittoolbar-tool-link-ext-target' => 'Lenkeadresse URL:',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Sida finst',
 	'edittoolbar-tool-file-example' => 'Døme.jpg',
 	'edittoolbar-tool-reference' => 'Referanse',
+	'edittoolbar-section-advanced' => 'Avansert',
+	'edittoolbar-group-size' => 'Storleik',
+	'edittoolbar-tool-subscript' => 'Senka skrift',
 	'edittoolbar-group-insert' => 'Set inn',
 	'edittoolbar-tool-gallery' => 'Biletgalleri',
 	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Døme.jpg|Bilettekst1
@@ -9518,6 +9527,13 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'edittoolbar-tool-link' => 'Kiungo',
+	'edittoolbar-tool-link-title' => 'Kuweka kiungo',
+	'edittoolbar-tool-link-int-target' => 'Jina la ukurasa:',
+	'edittoolbar-tool-link-int-text' => 'Maandishi ya kiungo:',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Ukurasa unapatikana',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'Ukurasa haupatikani',
+	'edittoolbar-group-list' => 'Orodha',
 	'edittoolbar-group-size' => 'Ukubwa',
 	'edittoolbar-tool-big' => 'Kubwa',
 	'edittoolbar-tool-big-example' => 'Maandishi makubwa',
@@ -9525,9 +9541,11 @@ $messages['sw'] = array(
 	'edittoolbar-tool-small-example' => 'Maandishi madogo',
 	'edittoolbar-tool-table-dimensions-rows' => 'Mistari',
 	'edittoolbar-tool-table-dimensions-columns' => 'Safu',
+	'edittoolbar-tool-replace-search' => 'Tafuta:',
 	'edittoolbar-section-help' => 'Msaada',
 	'edittoolbar-help-heading-description' => 'Elezo',
 	'edittoolbar-help-page-link' => 'Viungo',
+	'edittoolbar-help-page-list' => 'Orodha',
 	'edittoolbar-help-page-file' => 'Mafaili',
 );
 
@@ -10341,6 +10359,14 @@ $messages['vi'] = array(
 	'edittoolbar-help-content-indent-description' => 'Tăng lề',
 	'edittoolbar-help-content-indent-syntax' => 'Văn bản thường<br />:Văn bản được tăng lề<br />::Văn bản được tăng lề',
 	'edittoolbar-help-content-indent-result' => 'Văn bản thường<dl><dd>Văn bản được tăng lề<dl><dd>Văn bản được tăng lề</dd></dl></dd></dl>',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'edittoolbar-tool-replace-search' => 'זוכן פֿאַר:',
+	'edittoolbar-section-help' => 'הילף',
 );
 
 /** Yue (粵語)

@@ -176,3 +176,10 @@ $messages['vep'] = array(
 	'conditionalshowsection-desc' => 'Ližadab <cshow>-virgan, miše ozutada/peitta wikitekstan palad',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'conditionalshowsection-desc' => 'Thêm thẻ <cshow> để hiện/ẩn đoạn mã wiki tùy theo điều kiện',
+);
+

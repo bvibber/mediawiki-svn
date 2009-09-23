@@ -1212,6 +1212,7 @@ Stel $wgPrefStatsTrackPrefs in om voorkeuren bij te houden.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -1220,6 +1221,13 @@ $messages['nn'] = array(
 	'prefstats-title' => 'Statistikk over innstillingar',
 	'prefstats-list-intro' => 'For tida vert dei fylgjande innstillingane spora.
 Trykk på éi for å sjå statistikk for ho.',
+	'prefstats-xaxis' => 'Tid i timar',
+	'prefstats-factor-hour' => 'time',
+	'prefstats-factor-sixhours' => 'seks timar',
+	'prefstats-factor-day' => 'dag',
+	'prefstats-factor-week' => 'veke',
+	'prefstats-factor-twoweeks' => 'to veker',
+	'prefstats-factor-fourweeks' => 'fire veker',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1312,6 +1320,18 @@ Kliknij na jednej aby zobaczyć statystyki jej dotyczące.',
 	'prefstats-factor-default' => 'powrót do domyślnej skali',
 	'prefstats-legend-out' => 'Korzystali',
 	'prefstats-legend-in' => 'Korzystają',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'prefstats-factor-hour' => 'ساعت',
+	'prefstats-factor-sixhours' => 'شپږ ساعته',
+	'prefstats-factor-day' => 'ورځ',
+	'prefstats-factor-week' => 'اونۍ',
+	'prefstats-factor-twoweeks' => 'دوه اونۍ',
+	'prefstats-factor-fourweeks' => 'څلور اونۍ',
 );
 
 /** Portuguese (Português)

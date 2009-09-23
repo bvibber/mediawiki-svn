@@ -1201,6 +1201,13 @@ $messages['vi'] = array(
 	'errorhandler-trace-line-internal' => '[hàm nội bộ]: $1',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'errorhandler-errors' => 'גרײַזן:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */

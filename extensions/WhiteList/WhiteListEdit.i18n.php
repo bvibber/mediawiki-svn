@@ -3373,6 +3373,13 @@ $messages['vo'] = array(
 	'group-manager-member' => 'Guveran',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'whitelisttablemodifynone' => 'גארנישט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Liangent

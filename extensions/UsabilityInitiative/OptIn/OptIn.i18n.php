@@ -2163,7 +2163,7 @@ Nos volerea saper lo que tu pensa super nostre nove interfacie, e nos appreciare
 	'optin-survey-answer-changes-nav' => 'Rende le navigation general del sito plus facile a usar.',
 	'optin-survey-answer-changes-edittools' => 'Augmenta e meliora le instrumentos de modification.',
 	'optin-survey-answer-changes-upload' => 'Meliora le cargamento de contento e multimedia.',
-	'optin-survey-answer-changes-richtext' => 'Disveloppa instrumentos de modification similar al editores de texto inricchite.',
+	'optin-survey-answer-changes-richtext' => 'Disveloppar instrumentos de modification similar al editores de texto inricchite.',
 	'optin-survey-answer-changes-lookfeel' => 'Renova le apparentia general del sito.',
 	'optin-survey-answer-changes-predictability' => 'Meliorar le previsibilitate del prestationes.',
 	'optin-survey-answer-changes-custom' => 'Permitter un personalisation plus ample al usator.',
@@ -2794,6 +2794,13 @@ Neu un bäßer Mini-Beldsche maache kloorer, wat e Wärkzüsch deiht. Verjrüü�
 Mer freue uns, vun Üsch ze hüüre!',
 );
 
+/** Cornish (Kernowek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'optin-title-optedout' => 'Previ Beta',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  */
@@ -3421,6 +3428,10 @@ $messages['nn'] = array(
 	'optin-title-justoptedout' => 'Takk for at du prøver betautgåva',
 	'optin-title-feedback' => 'Tilbakemelding om betautgåva',
 	'optin-needlogin' => 'Du må [$1 logga inn] for å prøve betautgåva.',
+	'optin-success-feedback' => 'Takk for di tilbakemelding!',
+	'optin-accept-short' => 'Lat oss gjera det!',
+	'optin-deny-long' => 'Gå attende til førre sida',
+	'optin-submit-out' => 'Gå ut av Beta',
 	'optin-survey-no' => 'Nei',
 	'optin-survey-question-whyoptout' => 'Kvifor går du ut av Beta! (Ver venleg å vél alle aktuelle grunnar.)',
 	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskeleg å bruka.',
@@ -3728,6 +3739,11 @@ Dziękujemy i zapraszamy!',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'optin-title-optedout' => 'آزمېښتي بڼه کارول',
+	'optin-accept-short' => 'راځه چې وې آزمويو!',
+	'optin-deny-short' => 'نه مننه',
+	'optin-survey-yes' => 'هو',
+	'optin-survey-no' => 'نه',
 	'optin-survey-answer-whyoptout-other' => 'بل سبب:',
 	'optin-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
 	'optin-survey-answer-browser-other' => 'بل کتنمل:',

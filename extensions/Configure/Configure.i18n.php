@@ -9153,6 +9153,7 @@ Jafolös oni u votükolös oni ad gebön veitükumami at.',
  */
 $messages['yi'] = array(
 	'configure-js-remove' => 'אויסמעקן',
+	'configure-section-users' => 'באַניצער',
 	'configure-section-search' => 'זוכן',
 	'configure-section-copyright' => 'קאפירעכט',
 	'configure-view' => 'זען',

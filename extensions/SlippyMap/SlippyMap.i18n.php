@@ -1051,11 +1051,27 @@ $messages['tl'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'slippymap_desc' => 'Thêm thẻ <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> để nhúng bản đồ trơn OpenLayers. Các bản đồ do [http://openstreetmap.org openstreetmap.org] cung cấp.',
+	'slippymap_desc' => 'Thêm thẻ <tt><nowiki><slippymap></nowiki></tt> để nhúng bản đồ OpenLayers tĩnh và động. Hỗ trợ một số dịch vụ bản đồ, bao gồm [http://www.openstreetmap.org/ OpenStreetMap] và NASA World Wind.',
+	'slippymap_error' => 'Lỗi $1: $2',
+	'slippymap_errors' => '$1 lỗi:',
+	'slippymap_error_tag_content_given' => 'Thẻ <tt><nowiki>$1</nowiki></tt> chỉ nhận được các tham số thuộc tính (<nowiki><$1 […]/></nowiki>), chứ không phải nội dung (<nowiki><$1> … </$1></nowiki>)',
+	'slippymap_error_missing_arguments' => 'Bạn chưa cung cấp tham số cho thẻ <nowiki><$1></nowiki>. Hãy xem [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax hướng dẫn] để biết cách sử dụng nó.',
+	'slippymap_error_missing_attribute_lat' => 'Thiếu thuộc tính <tt>lat</tt> (tức là vĩ độ).',
+	'slippymap_error_missing_attribute_lon' => 'Thiếu thuộc tính <tt>lon</tt> (tức là kinh độ).',
+	'slippymap_error_missing_attribute_zoom' => 'Thiếu thuộc tính <tt>zoom</tt> (tức là độ phóng/thu).',
+	'slippymap_error_unknown_attribute' => 'Không hiểu thuộc tính <tt>$1</tt>.',
 	'slippymap_code' => 'Mã wiki để nhúng phần bản đồ này:',
 	'slippymap_button_code' => 'Xem mã wiki',
 	'slippymap_resetview' => 'Mặc định lại bản đồ',
 	'slippymap_clicktoactivate' => 'Nhấn để khởi động bản đồ',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'slippymap_error' => '$1 גרײַז: $2',
+	'slippymap_errors' => '$1 גרײַזן:',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

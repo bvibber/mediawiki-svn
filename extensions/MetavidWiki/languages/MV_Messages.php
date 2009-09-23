@@ -8754,6 +8754,13 @@ $messages['vo'] = array(
 	'mv_next_cat' => 'Klad fovik: $1',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'mv_history' => 'היסטאריע',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author PhiLiP

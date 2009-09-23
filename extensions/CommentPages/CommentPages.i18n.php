@@ -438,6 +438,14 @@ $messages['pms'] = array(
 	'nstab-comments' => 'Coment',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'commentpages-desc' => 'د اصلي نوم-تشيال لپاره د تبصرې مخونه',
+	'nstab-comments' => 'تبصرې',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -118,6 +118,13 @@ $messages['hu'] = array(
 	'magicnonumberedheadings-desc' => '„<nowiki>__NONUMBEREDHEADINGS__</nowiki>” varázsszó sorszámozatlan szakaszcímek kikényszerítésére',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'magicnonumberedheadings-desc' => 'Adde le parola magic "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
@@ -228,5 +235,12 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'magicnonumberedheadings-desc' => 'Lägger till det magiska ordet "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'magicnonumberedheadings-desc' => 'Thêm từ thần chú “<nowiki>__NONUMBEREDHEADINGS__</nowiki>”',
 );
 

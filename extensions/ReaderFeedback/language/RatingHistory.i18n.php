@@ -1879,11 +1879,10 @@ $messages['vi'] = array(
 	'ratinghistory-table-votes' => 'Số phiếu',
 	'ratinghistory-none' => 'Hiện chưa có đủ dữ liệu đánh giá của độc giả để vẽ biểu thị.',
 	'ratinghistory-ratings' => "'''Giải thích:''' '''(1)''' - Kém; '''(2)''' - Thấp; '''(3)''' - Trung bình; '''(4)''' - Cao; '''(5)''' - Tuyệt vời;",
-	'ratinghistory-legend' => "Những biểu thị ở dưới trình bày '''đánh giá trung bình hàng ngày''' <font color=\"blue\">''(lam)''</font> và '''đánh giá trung bình đương thời''' <font color=\"green\">''(lục)''</font>, theo thời gian. '''Đánh giá trung bình đương thời''' chỉ là trung bình các đánh giá hàng ngày ''tại giai đoạn này'' vào mỗi ngày.
+	'ratinghistory-legend' => "Những biểu thị ở dưới trình bày '''số lần đánh giá hàng ngày''' <font color=\"red\">(đỏ)</font>,  '''đánh giá trung bình hàng ngày''' <font color=\"blue\">''(lam)''</font>, và '''đánh giá trung bình đương thời''' <font color=\"green\">''(lục)''</font>, theo thời gian. '''Đánh giá trung bình đương thời''' chỉ là trung bình các đánh giá hàng ngày ''tại giai đoạn này'' vào mỗi ngày. Giải thích các giá trị:
 
-Giải thích các giá trị: '''[1]''' – Tệ; '''[2]''' – Dở; '''[3]''' – Khá; '''[4]''' – Hay; '''[5]''' – Tuyệt
-
-Những biểu thị cũng trình bày '''số lần đánh giá trong ngày''' <font color=\"red\">''(đỏ)''</font> với tỷ lệ ''1:\$1''.",
+'''[1]''' – Tệ; '''[2]''' – Dở; '''[3]''' – Khá; '''[4]''' – Hay; '''[5]''' – Tuyệt",
+	'ratinghistory-graph-scale' => "'''Số lần đánh giá trong ngày''' <font color=\"red\">''(đỏ)''</font> được trình bày với tỷ lệ ''1:\$1''.",
 	'right-feedback' => 'Đánh giá trang',
 );
 
