@@ -43,7 +43,7 @@ fn: {
 		$.wikiEditor.modules.toc.fn.build( context );
 		$.wikiEditor.modules.toc.fn.update( context );
 		context.$textarea
-			.bind( 'keyup encapsulateSelection',
+			.delayedBind( 1000, 'keyup encapsulateSelection',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -55,7 +55,7 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition focus',
+			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
