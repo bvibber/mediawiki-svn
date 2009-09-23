@@ -553,6 +553,17 @@ $messages['nl'] = array(
 	'tooltip-pt-optin-feedback' => 'Terugkoppeling geven over uw ervaringen met de nieuwe functionaliteit',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'optin-try' => 'Prøv Beta',
+	'tooltip-pt-optin-try' => 'Prøv ut nye funksjonar',
+	'optin-leave' => 'Gå ut av Beta',
+	'tooltip-pt-optin-leave' => 'Slå av nye funksjonar',
+	'optin-feedback' => 'Beta tilbakemelding',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor

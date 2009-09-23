@@ -254,6 +254,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'navigabletoc' => 'Inhaltsverzeechnes fir ze navigéieren',
 	'navigabletoc-desc' => 'Setzt en Inhaltsverzeechnes op den Ännerungsformulaire derbäi, deen den Text scrollt, wann en Abschnitt ugeklickt gëtt',
+	'navigabletoc-preference' => 'Navigabelbart Inhaltsverzeechness aschalten',
 );
 
 /** Macedonian (Македонски)
@@ -397,11 +398,13 @@ $messages['tr'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'navigabletoc' => 'Mục lục dễ duyệt tìm',
 	'navigabletoc-desc' => 'Thêm bảng mục lục vào khung sửa đổi để cuộn hộp văn bản khi nhấn vào một đề mục',
+	'navigabletoc-preference' => 'Sử dụng mục lục dễ duyệt tìm',
 );
 
 /** Yue (粵語)
