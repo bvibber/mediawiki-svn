@@ -491,8 +491,7 @@ class LocalisationUpdate {
 	public static function writeFile( $lang, $var ) {
 		$file = self::filename( $lang );
 		if ( !file_put_contents( $file, serialize( $var ) ) )
-			self::myLog( "Failed to write to file '$file'" );
-		else
-			self::$filecache[$lang] = $var;
+			throw new MWException( "Failed to write to file '$file'" );
+		self::$filecache[$lang] = $var;
 	}
 }
