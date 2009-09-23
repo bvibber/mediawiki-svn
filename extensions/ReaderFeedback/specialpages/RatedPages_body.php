@@ -81,7 +81,7 @@ class RatedPages extends SpecialPage
 		}
 		$ratinghist = SpecialPage::getTitleFor( 'RatingHistory' );
 		$graph = $this->skin->makeKnownLinkObj( $ratinghist, wfMsg('ratedpages-graphs'), 
-			'target='.$title->getPrefixedUrl() );
+			'target='.$title->getPrefixedUrl().'&period=93' );
 		return "<li>$link $stxt ($hist) ($graph)</li>";
 	}
 }
@@ -120,9 +120,9 @@ class RatedPagesPager extends AlphabeticPager {
 		$conds['page_namespace'] = $this->namespace;
 		// Has to be good/crappy enough
 		switch( $this->tier ) {
-			case 3: $conds[] = "rfp_ave_val > 3.5"; break;
+			case 3: $conds[] = "rfp_ave_val > 3"; break;
 			case 1: $conds[] = "rfp_ave_val < 2"; break;
-			default: $conds[] = "rfp_ave_val >= 2 AND rfp_ave_val <= 3.5"; break;
+			default: $conds[] = "rfp_ave_val >= 2 AND rfp_ave_val <= 3"; break;
 		}
 		// Reasonable samples only
 		$conds[] = 'rfp_count >= '.ReaderFeedback::getFeedbackSize();
