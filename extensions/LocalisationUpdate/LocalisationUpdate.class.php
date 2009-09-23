@@ -32,7 +32,7 @@ class LocalisationUpdate {
 	
 	// MW 1.16+
 	public static function onRecache( $lc, $langcode, &$cache ) {
-		$dbr = wfGetDB ( DB_SLAVE );
+		$dbr = wfGetDB ( DB_MASTER );
 
 		// Get the messages from the database
 		$res = $dbr->select( self::table( 'localisation' ), 
@@ -568,7 +568,7 @@ class LUDependency extends CacheDependency {
 	}
 
 	function getTimestamp() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_MASTER );
 		return $dbr->selectField( 
 			LocalisationUpdate::table( 'localisation_file_hash' ),
 			'MAX(lfh_timestamp)',
