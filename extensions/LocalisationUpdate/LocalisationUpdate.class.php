@@ -359,8 +359,8 @@ class LocalisationUpdate {
 					'lo_key' => $key
 				);
 				$db->replace( self::table( 'localisation' ),
-					array( 'PRIMARY' ), $values,
-					__METHOD__ );
+					array( array( 'lo_language', 'lo_key' ) ),
+					$values, __METHOD__ );
 				
 				// Output extra logmessages when needed
 				if ( $verbose ) {
