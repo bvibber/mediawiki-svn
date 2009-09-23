@@ -18,7 +18,6 @@ $.fn.extend( {
 	 * @param data Data to pass to the event handler (optional)
 	 * @param callback Function to call
 	 */
-	// TODO: Handle data param properly
 	delayedBind: function( timeout, event, data, callback ) {
 		var encEvent = encodeEvent( event );
 		return this.each( function() {
