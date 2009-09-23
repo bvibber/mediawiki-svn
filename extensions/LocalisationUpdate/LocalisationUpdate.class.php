@@ -8,6 +8,7 @@ class LocalisationUpdate {
 			self::readFile( $langcode ) );
 		$cache['deps'][] = new FileDependency(
 			self::filename( $langcode ) );
+		return true;
 	}
 
 	// Called from the cronjob to fetch new messages from SVN
