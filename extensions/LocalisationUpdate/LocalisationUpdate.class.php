@@ -473,12 +473,15 @@ class LocalisationUpdate {
 		if ( is_null( self::$filecache[$lang] ) ) {
 			$file = self::filename( $lang );
 			$contents = file_get_contents( $file );
-			if ( $contents === false )
+			if ( $contents === false ) {
+				self::myLog( "Failed to read file '$file'" );
 				$retval = array();
-			else {
+			} else {
 				$retval = unserialize( $contents );
-				if ( $retval === false )
-					throw new MWException( "Corrupted data in file '$file'" );
+				if ( $retval === false ) {
+					self::myLog( "Corrupted data in file '$file'" );
+					$retval = array();
+				}
 			}
 			self::$filecache[$lang] = $retval;
 		}
@@ -488,7 +491,8 @@ class LocalisationUpdate {
 	public static function writeFile( $lang, $var ) {
 		$file = self::filename( $lang );
 		if ( !file_put_contents( $file, serialize( $var ) ) )
-			throw new MWException( "Failed to write to file '$file'" );
-		self::$filecache[$lang] = null;
+			self::myLog( "Failed to write to file '$file'" );
+		else
+			self::$filecache[$lang] = $var;
 	}
 }
