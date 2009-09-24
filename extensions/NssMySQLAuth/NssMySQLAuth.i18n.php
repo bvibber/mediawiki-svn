@@ -478,6 +478,7 @@ $messages['hu'] = array(
 	'nss-create-account-header' => 'Új felhasználói fiók létrehozása',
 	'nss-create-account' => 'Felhasználói fiók létrehozása',
 	'nss-no-mail' => 'Ne küldjön e-mailt',
+	'nss-welcome-mail' => 'A felhasználói fiókod $1 névvel és $2 jelszóval létrehozva.',
 	'nss-welcome-mail-subject' => 'Felhasználói fiók készítés',
 );
 

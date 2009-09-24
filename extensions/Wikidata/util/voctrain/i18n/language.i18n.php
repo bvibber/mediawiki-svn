@@ -771,6 +771,7 @@ $messages['cs'] = array(
  * @author Purodha
  * @author Revolus
  * @author SabineCretella
+ * @author Umherirrender
  * @author Xqt
  */
 $messages['de'] = array(
@@ -778,7 +779,7 @@ $messages['de'] = array(
 	'voctrain_Permission_Denied' => 'Zugriff verweigert',
 	'voctrain_try_again_' => 'nochmal versuchen?',
 	'voctrain_Action_unknown' => 'Unbekannte Aktion',
-	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ich weiss nicht, was ich mit '%action' anfangen soll.",
+	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Ich weiss nicht, was ich mit „%action“ anfangen soll.',
 	'voctrain_User_added' => 'Anwender hinzugefügt',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Hallo, %username, willkommen beim Omega-Vokabeltrainer',
 	'voctrain_continue' => 'fortfahren',

@@ -448,6 +448,10 @@ $messages['hu'] = array(
 	'createpage_submitbutton' => 'Elküldés',
 	'createpage_instructions' => 'Add meg a létrehozandó lap címét:',
 	'createpage_entertitle' => 'Adj címet a lapnak.',
+	'createpage_titleexists' => '[[$1]] című lap már létezik.
+Szeretnéd szerkeszteni ezt a lapot?',
+	'createpage_tryagain' => 'Nem, szeretnék új lapot létrehozni eltérő címmel.',
+	'createpage_editexisting' => 'Igen, szeretném szerkeszteni a már létező lapot.',
 	'createpage-badtitle' => '„$1” nem használható a lap címeként',
 );
 

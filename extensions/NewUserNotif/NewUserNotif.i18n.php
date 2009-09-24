@@ -162,6 +162,7 @@ Konto nowego wužywarja, $2, jo se załožyło $4 na $3 .',
  */
 $messages['el'] = array(
 	'newusernotifsubj' => 'Νέα ειδοποίηση χρήστη για τον $1',
+	'newusernotif-desc' => 'Αποστέλλει ειδοποίηση μέσω e-mail όταν δημιουργούνται λογαριασμοί χρηστών',
 	'newusernotifbody' => 'Γεια $1,
 
 Ένας νέος λογαριασμός, $2, δημιουργήθηκε στο $3 στις $4.',

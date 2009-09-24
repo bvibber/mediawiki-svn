@@ -595,15 +595,29 @@ Twój přećelny zdźělenski system %s.',
 $messages['hu'] = array(
 	'tasklist' => 'Feladatlista',
 	'tasklist-parser-desc' => '<nowiki>{{#todo:}}</nowiki> elemzőfüggvény feladatok hozzárendeléséhez',
+	'tasklist-special-desc' => 'Speciális lap a [[Special:TaskList|feladatok kiosztásának]] nyomonkövetésére',
 	'tasklistbyproject' => 'Feladatok listája projektek szerint',
 	'tasklistunknownproject' => 'Ismeretlen projekt',
 	'tasklistunspecuser' => 'Felhasználó nincs meghatározva',
 	'tasklistincorrectuser' => 'Helytelen felhasználói név',
 	'tasklistemail' => 'Kedves %s',
+	'tasklistemailsubject' => '[%s] feladatlista változás',
 	'tasklistmytasks' => 'Feladataim',
+	'tasklistbyprojectbad' => "A(z) '''%s''' nem egy érvényes projekt.
+Az érvényes projektek listáját a [[MediaWiki:TodoTasksValidProjects]] lapon találod.",
+	'tasklistbyprojname' => "'''%s''' kiosztott feladatai",
 	'tasklistchooseproj' => 'Projekt kiválasztása:',
 	'tasklistprojdisp' => 'Megjelenítés',
 	'tasklistbyname' => '== %s feladatlistája ==',
+	'tasklistnoprojects' => "Hiba: úgy tűnik, hogy bekapcsoltad a '''\$wgUseProjects'''-et, de nem hoztad létre a [[MediaWiki:TodoTasksValidProjects]] lapot. Lásd a [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 telepítési utasításokat] további részletekért.",
+	'tasklistemailbody' => '!
+
+Valaki kiosztott neked egy új feladatot a(z) %s lapon.
+
+A teljes feladatlistádat lásd itt: %s.
+
+Üdvözlettel,
+a(z) %s értesítő rendszere',
 );
 
 /** Interlingua (Interlingua)

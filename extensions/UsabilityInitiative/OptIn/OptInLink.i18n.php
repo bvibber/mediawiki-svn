@@ -268,7 +268,9 @@ $messages['fi'] = array(
 	'optin-try' => 'Kokeile Betaa',
 	'tooltip-pt-optin-try' => 'Kokeile uusia ominaisuuksia',
 	'optin-leave' => 'Poistu Betasta',
+	'tooltip-pt-optin-leave' => 'Poista käytöstä uudet omaisuudet',
 	'optin-feedback' => 'Anna palautetta',
+	'tooltip-pt-optin-feedback' => 'Tarjoa palautetta kokemuksistasi uusien ominaisuuksien osalta',
 );
 
 /** French (Français)

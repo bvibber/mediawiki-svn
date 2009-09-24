@@ -50,6 +50,13 @@ $messages['dsb'] = array(
 	'lockout-desc' => 'Blokěrowanym wužywarjam pśizjawjenje zawobaraś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'lockout-desc' => 'Αποτροπή φραγμένων χρηστών από το να συνδεθούν',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

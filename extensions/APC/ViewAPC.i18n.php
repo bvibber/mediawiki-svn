@@ -129,6 +129,7 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Meno25
@@ -150,6 +151,7 @@ $messages['qqq'] = array(
 * $2 is size of fragmentation in Xbytes
 * $3 is amount of free memory in Xbytes
 * $4 is the number of fragments',
+	'viewapc-display-attribute' => '{{Identical|Attribute}}',
 	'viewapc-display-value' => '{{Identical|Value}}',
 	'viewapc-display-filename' => '{{Identical|Filename}}',
 	'viewapc-display-info' => '{{Identical|Name}}',
@@ -519,9 +521,40 @@ $messages['be-tarask'] = array(
 	'viewapc-rps' => '$1 запытаў у сэкунду',
 	'viewapc-info-runtime' => 'Інфармацыя пра працу',
 	'viewapc-info-memory' => 'Дыяграмы статусу сэрвэра',
+	'viewapc-memory-usage-detailed' => 'Выкарыстаньне памяці<br />
+ (сэктары абазначаюць фрагмэнты памяці)',
+	'viewapc-memory-usage' => 'Выкарыстаньне памяці',
+	'viewapc-cache-efficiency' => 'Трапляньні і промахі',
+	'viewapc-memory-free' => 'Вольна: $1 ($2)',
+	'viewapc-memory-used' => 'Выкарыстана: $1 ($2)',
+	'viewapc-memory-hits' => 'Трапляньняў: $1 ($2)',
+	'viewapc-memory-miss' => 'Промахаў: $1 ($2)',
+	'viewapc-memoryfragmentation' => 'Падрабязнасьці пра выкарыстаньне і фрагмэнтацыю памяці',
+	'viewapc-fragmentation-info' => 'Фрагмэнтацыя: $1 ($2 з $3 у $4 {{PLURAL:$4|фрагмэнце|фрагмэнтах|фрагмэнтах}})',
+	'viewapc-fragmentation-none' => 'Фрагмэнтацыя: няма фрагмэнтацыі',
+	'viewapc-display-attribute' => 'Атрыбут',
 	'viewapc-display-value' => 'Значэньне',
 	'viewapc-display-filename' => 'Назва файла',
+	'viewapc-display-device' => 'Прылада',
+	'viewapc-display-info' => 'Назва',
+	'viewapc-display-ttl' => 'Тэрмін дзеяньня',
+	'viewapc-display-inode' => 'Inode',
 	'viewapc-display-type' => 'Тып',
+	'viewapc-display-type-file' => 'Файл з кэша',
+	'viewapc-display-type-user' => 'Кэшаваныя зьвесткі дастасаваньняў',
+	'viewapc-display-num_hits' => 'Трапляньняў',
+	'viewapc-display-mtime' => 'Зьменены',
+	'viewapc-display-creation_time' => 'Створаны',
+	'viewapc-display-deletion_time' => 'Выдалены',
+	'viewapc-display-no-delete' => 'Не выдалены',
+	'viewapc-display-access_time' => 'Доступ',
+	'viewapc-display-ref_count' => 'Колькасьць спасылак',
+	'viewapc-display-mem_size' => 'Памер',
+	'viewapc-display-stored-value' => 'Захаванае значэньне',
+	'viewapc-display-too-big' => "''Зьмест занадта вялікі для паказу.''",
+	'viewapc-ls-options-legend' => 'Устаноўкі',
+	'viewapc-ls-options' => 'Фільтар: $1 Сартыроўка: $2$3$4 Пошук: $5 $6',
+	'viewapc-ls-submit' => 'Выканаць!',
 );
 
 /** Bulgarian (Български)
@@ -2043,6 +2076,7 @@ $messages['he'] = array(
 	'viewapc-display-device' => 'התקן',
 	'viewapc-display-info' => 'שם',
 	'viewapc-display-ttl' => 'זמן פקיעה',
+	'viewapc-display-inode' => 'מספר Inode',
 	'viewapc-display-type' => 'סוג',
 	'viewapc-display-type-file' => 'קובץ במטמון',
 	'viewapc-display-type-user' => 'נתוני יישום במטמון',

@@ -1305,7 +1305,7 @@ $messages['el'] = array(
 	'deletequeue-review-delete' => 'Διαγραφή αυτής της σελίδας.',
 	'deletequeue-review-reason' => 'Σχόλια:',
 	'deletequeue-review-newreason' => 'Νέος λόγος:',
-	'deletequeue-review-newextra' => 'Επιπλέον πηροφορίες:',
+	'deletequeue-review-newextra' => 'Επιπλέον πληροφορίες:',
 	'deletequeue-review-submit' => 'Αποθήκευση Επιθεώρησης',
 	'deletequeue-review-original' => 'Αιτιολογία υποψηφιότητας',
 	'deletequeue-reviewspeedy-tab' => 'Επιθεώρηση ταχείας διαγραφής',
@@ -2073,6 +2073,9 @@ $messages['grc'] = array(
 	'deletequeue-action-title' => 'Πρότασις διαγραφῆς τοῦ "$1"',
 	'deletequeue-delnom-otherreason' => 'Ἑτέρα αἰτία',
 	'deletequeue-review-reason' => 'Σχόλια:',
+	'deletequeue-review-newreason' => 'Νέα αἰτία:',
+	'deletequeue-review-newextra' => 'Ἐπὶ πλέον πύστις:',
+	'deletequeue-review-submit' => 'Μεταγράφειν Ἐπιθεώρησιν',
 	'deletequeue-vote-reason' => 'Σχόλια:',
 	'deletequeue-vote-submit' => 'Ὑποβάλλειν',
 	'deletequeue-list-queue' => 'Οὐρά:',
@@ -2081,7 +2084,10 @@ $messages['grc'] = array(
 	'deletequeue-list-anyqueue' => '(οἱαδήποτε)',
 	'deletequeue-list-header-page' => 'Δέλτος',
 	'deletequeue-list-header-queue' => 'Οὐρά',
+	'deletequeue-case-page' => 'Δέλτος:',
 	'deletequeue-case-reason' => 'Αἰτία:',
+	'deletequeue-case-expiry' => 'Λῆξις:',
+	'deletequeue-case-needs-review' => 'Ἥδε ἡ περίστασις ἀπαιτεῖ [[$1|ἐπιθεώρησιν]].',
 );
 
 /** Swiss German (Alemannisch)

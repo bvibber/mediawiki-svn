@@ -885,6 +885,7 @@ $messages['no'] = array(
 	'importfreeimages_filefromflickr' => '$1 av brukeren <b>[$2]</b> fra Flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Skriv inn et målnavn for filen:',
 	'importfreeimages_returntoform' => 'Elle rklikk <a href="$1">her</a> for å gå tilbake til søkeresultatene',
+	'importfreeimages_nophpflickr' => 'Du har ikke installert phpFlickr, sett $wgIFphpFlickr i LocalSettings.php',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

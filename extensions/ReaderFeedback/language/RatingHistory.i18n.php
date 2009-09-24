@@ -431,6 +431,7 @@ $messages['el'] = array(
 	'readerfeedback-svg' => 'Προβολή ως SVG',
 	'ratinghistory-table-rating' => 'Βαθμολογία',
 	'ratinghistory-table-votes' => 'Ψηφοφορίες',
+	'ratinghistory-ratings' => "'''Λεζάντα:''' '''(1)''' - Κακό; '''(2)''' - Χαμηλό; '''(3)''' - Μέτριο; '''(4)''' - Υψηλό; '''(5)''' - Άριστο·",
 );
 
 /** Esperanto (Esperanto)

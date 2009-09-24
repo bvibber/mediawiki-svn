@@ -205,12 +205,14 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'simplesearch' => 'Yksinkertainen haku',
 	'simplesearch-desc' => 'Lisää lisätoimintoja Vectorin yksinkertaistettuun hakuun.',
 	'simplesearch-search' => 'Etsi',
+	'simplesearch-containing' => 'sisältää...',
 );
 
 /** French (Français)
@@ -244,9 +246,11 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'simplesearch-search' => 'Ζητεῖν',
+	'simplesearch-containing' => 'περιέχον...',
 );
 
 /** Swiss German (Alemannisch)

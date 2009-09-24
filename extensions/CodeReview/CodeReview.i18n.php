@@ -1135,6 +1135,7 @@ $messages['cs'] = array(
 	'code-release-legend' => 'Vytvořit poznámky k vydání',
 	'code-release-startrev' => 'Počáteční revize:',
 	'code-release-endrev' => 'Poslední revize:',
+	'code-release-badrange' => 'Rozsah je příliš velký!',
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'odpovědět',
 	'codereview-email-subj' => '[$1] [r$2]: Přidán nový komentář',
@@ -1646,6 +1647,7 @@ $messages['el'] = array(
 	'code-release-legend' => 'Παραγωγή σημειώσεων έκδοσης',
 	'code-release-startrev' => 'Εναρκτήρια αναθ:',
 	'code-release-endrev' => 'Τελευταία αναθ:',
+	'code-release-badrange' => 'Το βεληνεκές είναι πολύ μεγάλο!',
 	'codereview-subtitle' => 'Για το $1',
 	'codereview-reply-link' => 'απάντηση',
 	'codereview-email-subj' => '[$1] [r$2]: Προστέθηκε νέο σχόλιο',
@@ -4418,6 +4420,13 @@ Bemierkung:
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Ännerungen doropshinn',
+	'codereview-email-body2' => 'De Benotzer "$1" huet Ännerungen zu der Versioun r$2 gemaach.
+
+Komplett URL: $3
+
+Resumé vun der Ännerung:
+
+$4',
 	'codereview-email-subj3' => '[$1] [r$2]: Den automateschen Test huet eng Regressioun fonnt',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-bug' => 'Bugzilla Pad:',

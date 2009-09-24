@@ -248,6 +248,9 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'signaturelogpage' => 'Aláírások naplója',
+	'signature-desc' => 'Lehetővé teszi dokumentumok [[Special:SignDocument|aláírását]]',
+	'signaturelogpagetext' => 'Ez az összes [[Special:SignDocument|dokumentumokhoz adott aláírás]] naplója.',
+	'signaturelogentry' => 'aláírta a(z) $1 dokumentumot',
 	'right-sigadmin' => 'A dokumentum-aláírás adminisztrációja',
 	'right-createsigndocument' => 'aláírható dokumentumok létrehozása',
 );

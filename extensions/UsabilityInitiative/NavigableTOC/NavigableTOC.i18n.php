@@ -189,11 +189,13 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
 	'navigabletoc' => 'Navigálható tartalomjegyzék',
 	'navigabletoc-desc' => 'Egy tartalomjegyzéket ad a szerkesztési űrlaphoz, amivel a szerkesztőablakban az egyes szakaszok elejére lehet ugrani',
+	'navigabletoc-preference' => 'Tartalomjegyzék megjelenítése szerkesztéskor',
 );
 
 /** Interlingua (Interlingua)

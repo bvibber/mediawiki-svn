@@ -1181,11 +1181,16 @@ $1',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'inplace_access_denied' => 'Ez a szolgáltatás korlátozott a kliensek IP címe alapján.',
 	'inplace_scaler_not_enough_params' => 'Nincs elegendő paraméter.',
 	'webstore_access' => 'Ez a szolgáltatás korlátozott kliens IP-címek alapján.',
 	'webstore_path_invalid' => 'A fájlnév érvénytelen volt.',
+	'webstore_src_open' => 'A(z) „$1” forrásfájl nem nyitható meg.',
+	'webstore_src_close' => 'Hiba a(z) „$1” forrásfájl bezárásakor.',
+	'webstore_src_delete' => 'Hiba a(z) „$1” forrásfájl törlésekor.',
 	'webstore_temp_close' => 'Hiba a(z) „$1” ideiglenes fájl bezárása közben.',
 	'webstore_no_file' => 'Nem lett fájl feltöltve.',
+	'webstore_invalid_zone' => 'Érvénytelen zóna: „$1”.',
 	'webstore_404' => 'A fájl nem található.',
 	'webstore_php_warning' => 'PHP figyelmeztetés: $1',
 	'webstore_metadata_not_found' => 'A fájl nem található: $1',
@@ -1193,6 +1198,9 @@ $messages['hu'] = array(
 
 $1',
 	'webstore_no_response' => 'Nincs válasz a szervertől',
+	'webstore_backend_error' => 'Hiba a tárolószervertől:
+
+$1',
 	'webstore_php_error' => 'PHP hibák történtek:',
 );
 

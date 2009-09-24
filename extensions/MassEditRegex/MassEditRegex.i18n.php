@@ -153,6 +153,14 @@ Glědaj [http://php.net/manual/de/function.preg-replace.php the PHP function pre
 	'masseditregex-hint-removecat' => 'Wšykne kategorije z boka wótpóraś (źiwaj na maskěrowanje rožkatych spinkow we wikikoźe.) Wuměnjeńske gódnoty njeby se měli maskěrowaś.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'masseditregex' => 'Μαζική επεξεργασία με χρήση τακτικών εκφράσεων',
+	'masseditregex-executebtn' => 'Εκτέλεση',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

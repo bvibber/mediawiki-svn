@@ -346,6 +346,13 @@ $messages['gl'] = array(
 	'fundraiserportal-tourmaline-close' => 'Agochar isto de agora en diante',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'fundraiserportal' => 'Πύλη Χρηματικοῦ Ἐράνου',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

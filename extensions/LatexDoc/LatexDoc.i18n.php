@@ -191,6 +191,7 @@ $messages['el'] = array(
 $3',
 	'latexdoc_get_dvi' => 'Λήψη DVI',
 	'latexdoc_get_pdf' => 'Λήψη PDF',
+	'latexdoc-desc' => 'Ομαδική επεξεργασία εγγράφων LaTeX.',
 );
 
 /** Esperanto (Esperanto)
@@ -288,7 +289,7 @@ Sortie : $2
 $3',
 	'latexdoc_get_dvi' => 'Obtenir DVI',
 	'latexdoc_get_pdf' => 'Obtenir PDF',
-	'latexdoc-desc' => 'Document LaTeX.',
+	'latexdoc-desc' => 'Modification collaborative de documents LaTeX.',
 );
 
 /** Galician (Galego)

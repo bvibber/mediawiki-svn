@@ -1284,6 +1284,7 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_xml_output' => 'XML-uitvoer',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Opmerkingen verwijderen',
+	'expand_templates_remove_nowiki' => 'Tags <nowiki> in resultaat onderdrukken',
 	'expand_templates_generate_xml' => 'XML-parserboom bekijken',
 	'expand_templates_preview' => 'Voorvertoning',
 );

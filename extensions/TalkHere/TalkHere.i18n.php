@@ -467,9 +467,13 @@ Wothladowarjo tutoho websydła njemóža zamołwitosć za wobsah tajkich komenta
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'talkhere-foottext' => 'A fenti hozzászólásokat lehet hogy látogatók írták.
+
+Ennek az oldalnak az üzemeltetői nem vállalnak felelősséget az ilyen hozzászólások tartalmáért.',
 	'talkhere-talkpage' => 'vitalap',
 	'talkhere-notalk' => "''(még nincsenek megjegyzések)''",
 	'talkhere-addcomment' => 'megjegyzés hozzáadása',
+	'talkhere-beforeinput' => 'Alább hozzáfűzheted a megjegyzésed',
 	'talkhere-loading' => 'szerkesztő betöltése…',
 	'talkhere-collapse' => 'szerkesztő elrejtése',
 );

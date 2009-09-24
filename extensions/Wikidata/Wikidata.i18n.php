@@ -308,6 +308,7 @@ $messages['qqq'] = array(
 	'ow_dm_not_present' => 'Used on [http://www.omegawiki.org/index.php?title=Special:ConceptMapping Special:ConceptMapping]',
 	'ow_AddHint' => 'Hint that shows up when the mouse hovers the plus sign in table rows (such as Synonyms and Translations) while editing',
 	'ow_Annotation' => '{{Identical|Annotation}}',
+	'ow_ClassAttributeAttribute' => '{{Identical|Attribute}}',
 	'ow_ClassAttributeType' => '{{Identical|Type}}',
 	'ow_Collection' => '{{Identical|Collection}}',
 	'ow_Collection_colon' => '{{Identical|Collection}}',

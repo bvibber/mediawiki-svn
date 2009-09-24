@@ -85,6 +85,13 @@ $messages['gsw'] = array(
 	'conditionalshowsection-desc' => 'Fiegt s <cshow>-Tag yy go je no Bedingig e Abschnitt vum Wikitext zeige/verstecke',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'conditionalshowsection-desc' => 'הוספת התגית <cshow> כדי להציג/להסתיר, לפי תנאים, פרק בטקסט ויקי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

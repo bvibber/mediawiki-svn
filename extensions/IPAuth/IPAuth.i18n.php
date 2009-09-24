@@ -51,6 +51,13 @@ $messages['dsb'] = array(
 	'ipauth-desc' => 'Awtomatiske pśizjawjenje z kšutych IP-adresow',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'ipauth-desc' => 'Αυτόματη σύνδεση απο σταθερές διευθύνσεις URL',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

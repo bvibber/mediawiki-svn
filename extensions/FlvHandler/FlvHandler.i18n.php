@@ -55,6 +55,13 @@ $messages['dsb'] = array(
 	'flv-long-desc' => '(Wideo flash, $1 × $2 pikselow, wjelikosć dataje: $3)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'flv-long-desc' => '(Flash video, $1 × $2 πίξελ, μέγεθος αρχείου: $3)',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

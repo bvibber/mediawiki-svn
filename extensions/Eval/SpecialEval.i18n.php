@@ -253,12 +253,14 @@ $messages['gv'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'eval' => 'הערכה',
 	'eval-desc' => 'הוספת [[Special:Eval|ממשק]] לפונקציה <code>eval()</code>',
 	'eval_submit' => 'הערכה',
+	'eval_escape' => 'הפלט לאחר ביצוע הקידוד',
 	'eval_out' => 'פלט',
 	'eval_code' => 'קוד',
 );

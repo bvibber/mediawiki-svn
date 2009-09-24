@@ -205,6 +205,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'randomincategory' => 'Τυχαία σελίδα στην κατηγορία',
+	'randomincategory-desc' => '[[Special:Randomincategory|Ειδική σελίδα]] για την λήψη τυχαίας σελίδας στην κατηγορία',
 	'randomincategory-toolbox' => 'Τυχαία σελίδα',
 	'randomincategory-nocategory' => 'Η κατηγορία $1 δεν υπάρχει ή είναι άδεια',
 	'randomincategory-label' => 'Κατηγορία:',
