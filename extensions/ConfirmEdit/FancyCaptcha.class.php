@@ -197,7 +197,7 @@ class FancyCaptcha extends SimpleCaptcha {
 				return true;
 			}
 		}
-		wfHttpError( 500, 'Internal Error', 'Requested bogus captcha image' );
+		wfHttpError( 403, 'Permission denied', 'Requested bogus captcha image' );
 		return false;
 	}
 
