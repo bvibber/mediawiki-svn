@@ -617,22 +617,34 @@ function seconds2Description( $seconds, $short=false, $singular=false){
 	$dur = time_duration_2array( $seconds , array('days'=> '86400', 'hours'=> 3600,'minutes'   => 60,'seconds'   => 1));
 	$o='';
 	if( $dur['days']!=0){
-		$msg = ($singular)?'mv_days_singular':'mv_days';
-		$o.= wfMsg($msg, intval( $dur['days']) );
+		if( $singular ) {
+			$o.= wfMsg( 'mv_days_singular' );
+		} else {
+			$o.= wfMsg( 'mv_days', intval( $dur['days'] ) );
+		}
 	}
 	if( $dur['hours'] != 0  ){
-		$msg = ($singular)?'mv_hours_singular':'mv_hours';
-		$o.= wfMsg($msg, intval( $dur['hours']) );
+		if( $singular ) {
+			$o.= wfMsg( 'mv_hours_singular' );
+		} else {
+			$o.= wfMsg( 'mv_hours', intval( $dur['hours'] ) );
+		}
 	}
 	if( $dur['minutes'] != 0  ){
-		$msg = ($singular)?'mv_minutes_singular':'mv_minutes';
 		$o.=($o!='')?' ':'';
-		$o.= wfMsg($msg, intval( $dur['minutes']) );
+		if( $singular ) {
+			$o.= wfMsg( 'mv_minutes_singular' );
+		} else {
+			$o.= wfMsg( 'mv_minutes', intval( $dur['minutes'] ) );
+		}
 	}
 	if( ( $short == false || $o == '' ) && $dur['seconds'] ){
-		$msg = ($singular)?'mv_seconds_singular':'mv_seconds';
 		$o.=($o!='')?' ':'';
-		$o.= wfMsg($msg, intval( $dur['seconds']) );
+		if( $singular ) {
+			$o.= wfMsg( 'mv_seconds_singular' );
+		} else {
+			$o.= wfMsg( 'mv_seconds', intval( $dur['seconds'] ) );
+		}
 	}
 	return $o;
 }
