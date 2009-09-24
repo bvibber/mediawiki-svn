@@ -59,6 +59,13 @@ $messages['dsb'] = array(
 	'userdailycontribs-desc' => 'Wšědne wužywarske pśinoski za rozšyrjenje Clicktracking',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'userdailycontribs-desc' => 'Ημερήσιες συνεισφορές χρήστη για την επέκταση παρακολούθησης κλικ',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

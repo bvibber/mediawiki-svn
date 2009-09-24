@@ -562,7 +562,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar-desc' => 'Панэль інструмэнтаў для рэдагаваньня з палепшанай зручнасьцю',
 	'edittoolbar-preference' => 'Уключыць палепшаную панэль інструмэнтаў для рэдагаваньня',
 	'edittoolbar-cgd-preference' => 'Дазволіць дапамогу для даданьня складанага вікі-тэксту',
-	'edittoolbar-loading' => 'Загрузка...',
+	'edittoolbar-loading' => 'Загрузка…',
 	'edittoolbar-tool-bold' => 'Тлусты',
 	'edittoolbar-tool-bold-example' => 'Тлусты тэкст',
 	'edittoolbar-tool-italic' => 'Курсіў',
@@ -4637,6 +4637,7 @@ $messages['hu'] = array(
 	'edittoolbar' => 'Szerkesztő eszköztár',
 	'edittoolbar-desc' => 'Használhatóbb szerkesztő eszköztár',
 	'edittoolbar-preference' => 'Fejlettebb szerkesztő-eszköztár használata',
+	'edittoolbar-cgd-preference' => 'Segítség haladó wikiszöveg hozzáadásához',
 	'edittoolbar-loading' => 'Betöltés...',
 	'edittoolbar-tool-bold' => 'Félkövér',
 	'edittoolbar-tool-bold-example' => 'Félkövér szöveg',
@@ -4661,6 +4662,7 @@ $messages['hu'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Érvénytelen cím',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Ellenőrzöm, hogy létezik-e a lap…',
 	'edittoolbar-tool-link-int-invalid' => 'A megadott cím érvénytelen',
+	'edittoolbar-tool-link-ext-invalid' => 'A megadott URL nem érvényes.',
 	'edittoolbar-tool-file' => 'Fájl beszúrása',
 	'edittoolbar-tool-file-example' => 'Egyszerikép.jpg',
 	'edittoolbar-tool-reference' => 'Forráshivatkozás',
@@ -4695,15 +4697,28 @@ $messages['hu'] = array(
 {{ns:file}}:Példa.jpg|képaláírás2',
 	'edittoolbar-tool-newline' => 'Új sor',
 	'edittoolbar-tool-table' => 'Táblázat',
+	'edittoolbar-tool-table-example-old' => '-
+! 1. fejléc
+! 2. fejléc
+! 3. fejléc
+|-
+| 1. sor, 1. cella
+| 1. sor, 2. cella
+| 1. sor, 3. cella
+|-
+| 2. sor, 1. cella
+| 2. sor, 2. cella
+| 2. sor, 3. cella',
 	'edittoolbar-tool-table-example' => '$1. sor, $2. cella',
 	'edittoolbar-tool-table-example-header' => '$1. sor, $2. cella (fejléc)',
 	'edittoolbar-tool-table-title' => 'Tábla beszúrása',
 	'edittoolbar-tool-table-dimensions' => 'Méret',
 	'edittoolbar-tool-table-dimensions-rows' => 'Sorok száma',
 	'edittoolbar-tool-table-dimensions-columns' => 'Oszlopok száma',
+	'edittoolbar-tool-table-dimensions-header' => 'A fejlécet is beleértve',
 	'edittoolbar-tool-table-insert' => 'Beszúrás',
 	'edittoolbar-tool-table-cancel' => 'Mégse',
-	'edittoolbar-tool-replace' => 'Csere',
+	'edittoolbar-tool-replace' => 'Keresés és csere',
 	'edittoolbar-tool-replace-title' => 'Keresés és csere',
 	'edittoolbar-tool-replace-search' => 'Keresendő szöveg:',
 	'edittoolbar-tool-replace-replace' => 'Csere:',
@@ -4711,8 +4726,9 @@ $messages['hu'] = array(
 	'edittoolbar-tool-replace-regex' => 'A beírt szöveg egy reguláris kifejezés',
 	'edittoolbar-tool-replace-all' => 'Az összes előfordulás lecserélése',
 	'edittoolbar-tool-replace-button' => 'Csere',
-	'edittoolbar-tool-replace-close' => 'Bezárás',
+	'edittoolbar-tool-replace-close' => 'Mégse',
 	'edittoolbar-tool-replace-nomatch' => 'Nincs egyetlen találat sem.',
+	'edittoolbar-tool-replace-success' => '$1 csere történt.',
 	'edittoolbar-section-characters' => 'Különleges karakterek',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Bővített latin',
@@ -6296,6 +6312,7 @@ $messages['lb'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -6311,6 +6328,7 @@ $messages['lt'] = array(
 	'edittoolbar-tool-ilink-example' => 'Nuorodos pavadinimas',
 	'edittoolbar-tool-xlink' => 'Išorinė nuoroda (nepamirškite http:// priedėlio)',
 	'edittoolbar-tool-xlink-example' => 'http://www.example.com nuorodos pavadinimas',
+	'edittoolbar-tool-link-cancel' => 'Atšaukti',
 	'edittoolbar-tool-file' => 'Įdėti failą',
 	'edittoolbar-tool-file-example' => 'Pavyzdys.jpg',
 	'edittoolbar-tool-reference' => 'Išnaša',

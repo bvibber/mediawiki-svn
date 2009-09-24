@@ -3038,9 +3038,15 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Junaidpv
+ * @author Praveenp
  * @author Sadik Khalid
  */
 $messages['ml'] = array(
+	'optin-title-optedout' => 'ബീറ്റ പരീക്ഷിക്കൂ',
+	'optin-title-optedin' => 'ബീറ്റ ഉപേക്ഷിക്കൂ',
+	'optin-title-justoptedin' => 'ബീറ്റയിലേയ്ക്ക് സ്വാഗതം',
+	'optin-title-justoptedout' => 'ബീറ്റ പരീക്ഷിച്ചു നോക്കുന്നതിനു നന്ദി',
+	'optin-needlogin' => 'ബീറ്റ പരീക്ഷിക്കാൻ താങ്കൾ [$1 ലോഗിൻ] ചെയ്യേണ്ടതാണ്.',
 	'optin-deny-short' => 'വേണ്ട, നന്ദി',
 	'optin-survey-yes' => 'ഉണ്ട്',
 	'optin-survey-no' => 'ഇല്ല',
