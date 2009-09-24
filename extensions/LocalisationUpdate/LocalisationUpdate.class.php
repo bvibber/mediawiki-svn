@@ -480,12 +480,12 @@ class LocalisationUpdate {
 			$file = self::filename( $lang );
 			$contents = @file_get_contents( $file );
 			if ( $contents === false ) {
-				self::myLog( "Failed to read file '$file'" );
+				wfDebug( "Failed to read file '$file'\n" );
 				$retval = array();
 			} else {
 				$retval = unserialize( $contents );
 				if ( $retval === false ) {
-					self::myLog( "Corrupted data in file '$file'" );
+					wfDebug( "Corrupted data in file '$file'\n" );
 					$retval = array();
 				}
 			}
