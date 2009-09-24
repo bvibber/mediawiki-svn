@@ -114,8 +114,10 @@ function pr_make_edit_area(container,text){
 	//find the PageQuality template
 	//we do this separately from header detection,
 	//because the template might not be in the header 
-	var reg = /\{\{PageQuality\|(0|1|2|3|4|25%|50%|75%|100%)(\|(.*?|))\}\}/g;
+	var reg = /<pagequality level=\"(0|1|2|3|4)\" user=\"(.*?)\" \/>/g;
 	var m4 = reg.exec(pageHeader);
+	var old_reg = /\{\{PageQuality\|(0|1|2|3|4)(\|(.*?|))\}\}/g;
+	var old_m4 = old_reg.exec(pageHeader);
 	if( m4 ) {
 		switch( m4[1] ) {
 			case "0": self.proofreadpage_quality = 0; break;
@@ -123,21 +125,27 @@ function pr_make_edit_area(container,text){
 			case "2": self.proofreadpage_quality = 2; break;
 			case "3": self.proofreadpage_quality = 3; break;
 			case "4": self.proofreadpage_quality = 4; break;
-			//keep this for backward compatibility
-			case "100%": self.proofreadpage_quality = 4; break;
-			case "75%": self.proofreadpage_quality = 3; break;
-			case "50%": self.proofreadpage_quality = 1; break;
-			case "25%": self.proofreadpage_quality = 2; break;
 			default: self.proofreadpage_quality = 1;
 		}
-		self.proofreadpage_username = m4[3];
+		self.proofreadpage_username = m4[2];
 		pageHeader = pageHeader.replace(reg,'');
+	}
+	else if (old_m4 ) {
+		switch( old_m4[1] ) {
+			case "0": self.proofreadpage_quality = 0; break;
+			case "1": self.proofreadpage_quality = 1; break;
+			case "2": self.proofreadpage_quality = 2; break;
+			case "3": self.proofreadpage_quality = 3; break;
+			case "4": self.proofreadpage_quality = 4; break;
+			default: self.proofreadpage_quality = 1;
+		}
+		self.proofreadpage_username = old_m4[3];
+		pageHeader = pageHeader.replace(old_reg,'');
 	}
 	else {
 		 self.proofreadpage_quality = 1;
 		 self.proofreadpage_username = "";
 	}
-
 
 	//escape & character
 	pageBody = pageBody.split("&").join("&amp;")
@@ -148,28 +156,16 @@ function pr_make_edit_area(container,text){
 		+ '<div id="prp_header" style="display:none;">'
 		+ '<span style="color:gray;font-size:80%;line-height:100%;">'
 		+ escapeQuotesHTML(proofreadPageMessageHeader) + '</span>'
-		+ '<textarea name="headerTextbox" rows="2" cols="80">' + pageHeader + '</textarea><br/>'
+		+ '<textarea name="wpHeaderTextbox" rows="2" cols="80">' + pageHeader + '</textarea><br/>'
 		+ '<span style="color:gray;font-size:80%;line-height:100%;">'
 		+ escapeQuotesHTML(proofreadPageMessagePageBody) + '</span></div>'
 		+ '<textarea name="wpTextbox1" id="wpTextbox1" style="height:' + ( self.DisplayHeight - 6 ) + 'px;">' + pageBody + '</textarea>'
 		+ '<div id="prp_footer" style="display:none;">'
 		+ '<span style="color:gray;font-size:80%;line-height:100%;">'
 		+ escapeQuotesHTML(proofreadPageMessageFooter) + '</span><br/>'
-		+ '<textarea name="footerTextbox" rows="2" cols="80">'+pageFooter+'</textarea></div>';
+		+ '<textarea name="wpFooterTextbox" rows="2" cols="80">'+pageFooter+'</textarea></div>';
 
 
-	var saveButton = document.getElementById("wpSave"); 
-	var previewButton = document.getElementById("wpPreview"); 
-	var diffButton = document.getElementById("wpDiff")
-	if(saveButton){
-		saveButton.onclick = pr_fill_form;
-		previewButton.onclick = pr_fill_form;
-		diffButton.onclick = pr_fill_form;
-	} 
-	else {
-		//make the text area readonly
-		container.firstChild.nextSibling.setAttribute("readonly","readonly");
-	}
 }
 
 
@@ -566,7 +562,7 @@ function  pr_fill_table(horizontal_layout){
 
 		var t_row = document.createElement("tr");
 		t_row.setAttribute("valign","top");
-		cell_left.style.cssText = "width:50%; padding-right:0.5em;";
+		cell_left.style.cssText = "width:50%; padding-right:0.5em;vertical-align:top;";
 		cell_right.setAttribute("rowspan","3");
 		t_row.appendChild(cell_left);
 		t_row.appendChild(cell_right);
@@ -585,19 +581,19 @@ function  pr_fill_table(horizontal_layout){
 	self.pr_horiz = horizontal_layout;
 
 	//get the size of the window
-	var width, height;
-	if (parseInt(navigator.appVersion)>3) {
-		if (navigator.appName.indexOf("Microsoft")!=-1) {
-			height = document.body.clientHeight;
-			width = document.body.offsetWidth;
-		}
-		else{
-			height = window.innerHeight;
-			width = window.innerWidth;
-		}
-	}
-	else {
-		width = 800; height = 600;
+	var width = 0, height = 0;
+	if( typeof( window.innerWidth ) == 'number' ) {
+		//Non-IE
+		width = window.innerWidth;
+		height = window.innerHeight;
+	} else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+		//IE 6+ in 'standards compliant mode'
+		width = document.documentElement.clientWidth;
+		height = document.documentElement.clientHeight;
+	} else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+		//IE 4 compatible
+		width = document.body.clientWidth;
+		height = document.body.clientHeight;
 	}
 
 	//fill the image container	
@@ -764,30 +760,6 @@ function pr_setup() {
 
 
 
-function pr_fill_form() {
-	var form = document.getElementById("editform");
-	var header = form.elements["headerTextbox"];
-	var footer = form.elements["footerTextbox"];
-	//if( ( self.proofreadpage_quality == 0 ) && ( form.elements["wpTextbox1"].value != "" ) ) { 
-	//	self.proofreadpage_quality = 1;
-	//	form.elements["wpSummary"].value="/* " + proofreadPageMessageQuality1 + " */ ";
-	//}
-	if(header){
-		var h = header.value.replace(/(\s*(\r?\n|\r))+$/, ''); 
-		if(h) h = "<noinclude>{{PageQuality|"+self.proofreadpage_quality+"|"+self.proofreadpage_username+"}}"+h+"\n\n\n</noinclude>";
-		var f = footer.value;
-		if(f) f = "<noinclude>\n"+f+"</noinclude>";
-		var ph = header.parentNode; 
-		ph.removeChild(header);
-		var pf = footer.parentNode; 
-		pf.removeChild(footer);
-		form.elements["wpTextbox1"].value = h+form.elements["wpTextbox1"].value+f;
-		form.elements["wpTextbox1"].setAttribute('readonly',"readonly");
-	}
-}
-
-
-
 
 function pr_init() {
 
@@ -850,17 +822,6 @@ hookEvent("load", pr_initzoom );
 
 function pr_add_quality(form,value){
  
-	var tbv = form.elements["wpTextbox1"].value;
-	if( /*( ( value == 0 ) && ( tbv != "" ) ) ||*/ ( ( value >= 3 ) && ( tbv == "" ) ) ) {
-		switch( self.proofreadpage_quality ) {
-			case 4: document.editform.quality[4].checked = true; break;
-			case 3: document.editform.quality[3].checked = true; break;
-			case 1: document.editform.quality[2].checked = true; break; 
-			case 2: document.editform.quality[1].checked = true; break; 
-			case 0: document.editform.quality[0].checked = true; break; 
-		}
-		return;
-	}
 	self.proofreadpage_quality = value;
 	self.proofreadpage_username = wgUserName;
 	var text="";
@@ -872,23 +833,27 @@ function pr_add_quality(form,value){
 		case 4: text = proofreadPageMessageQuality4; break;
 	}
 	form.elements["wpSummary"].value="/* " + text + " */ ";
+	form.elements["wpProofreader"].value=self.proofreadpage_username;
 
 }
 
 
 function pr_add_quality_buttons(){
 
-	if( self.proofreadpage_no_quality_buttons ) return;
 	var ig  = document.getElementById("wpWatchthis");
+	if(!wgUserName) ig = document.getElementById("wpSummary");
 	if( !ig ) return;
 	var f = document.createElement("span");
 	f.innerHTML = 
-' <span class="quality0"> <input type="radio" name="quality" onclick="pr_add_quality(this.form,0)"> </span>'
-+'<span class="quality2"> <input type="radio" name="quality" onclick="pr_add_quality(this.form,2)"> </span>'
-+'<span class="quality1"> <input type="radio" name="quality" onclick="pr_add_quality(this.form,1)"> </span>'
-+'<span class="quality3"> <input type="radio" name="quality" onclick="pr_add_quality(this.form,3)"> </span>'
-+'<span class="quality4"> <input type="radio" name="quality" onclick="pr_add_quality(this.form,4)"> </span>';
+' <input type="hidden" name="wpProofreader" value="'+self.proofreadpage_username+'">'
++'<span class="quality0"> <input type="radio" name="quality" value=0 onclick="pr_add_quality(this.form,0)"> </span>'
++'<span class="quality2"> <input type="radio" name="quality" value=2 onclick="pr_add_quality(this.form,2)"> </span>'
++'<span class="quality1"> <input type="radio" name="quality" value=1 onclick="pr_add_quality(this.form,1)"> </span>'
++'<span class="quality3"> <input type="radio" name="quality" value=3 onclick="pr_add_quality(this.form,3)"> </span>'
++'<span class="quality4"> <input type="radio" name="quality" value=4 onclick="pr_add_quality(this.form,4)"> </span>';
 	f.innerHTML = f.innerHTML + '&nbsp;' + escapeQuotesHTML(proofreadPageMessageStatus);
+
+	if(!wgUserName) f.style.cssText = 'display:none';
 	ig.parentNode.insertBefore(f,ig.nextSibling.nextSibling.nextSibling);
 
 	if( ! ( ( self.proofreadpage_quality == 4 ) || ( ( self.proofreadpage_quality == 3 ) && ( self.proofreadpage_username != wgUserName ) ) ) ) {
