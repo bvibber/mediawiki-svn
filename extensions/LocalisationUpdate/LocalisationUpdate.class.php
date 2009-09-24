@@ -13,10 +13,15 @@ class LocalisationUpdate {
 
 	// Called from the cronjob to fetch new messages from SVN
 	public static function updateMessages( $options ) {
+		global $wgLocalisationUpdateDirectory;
+		
 		$verbose = !isset( $options['quiet'] );
 		$all = isset( $options['all'] );
 		$skipCore = isset( $options['skip-core'] );
 		$skipExtensions = isset( $options['skip-extensions'] );
+		if( isset( $options['outdir'] ) ) {
+			$wgLocalisationUpdateDirectory = $options['outdir'];
+		}
 		
 		// Update all MW core messages
 		if( !$skipCore ) {
@@ -35,7 +40,7 @@ class LocalisationUpdate {
 				// I ain't kidding... RecursiveIteratorIterator.
 				foreach( new RecursiveIteratorIterator( $dirs ) as $pathname => $item ) {
 					$filename = basename( $pathname );
-					if( preg_match( '/\.i18n\.php$/', $filename, $matches ) ) {
+					if( preg_match( '/^(.*)\.i18n\.php$/', $filename, $matches ) ) {
 						$group = $matches[1];
 						$extFiles[$group] = $pathname;
 					}
