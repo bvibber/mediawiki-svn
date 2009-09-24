@@ -171,11 +171,12 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
- * @author Rotemliss
+ * @author Rotem Liss
  */
 $messages['he'] = array(
 	'navigabletoc' => 'תוכן עניינים עם אפשרות ניווט',
 	'navigabletoc-desc' => 'הוספת תוכן עניינים לדף העריכה, המאפשר לגלול את תיבת הטקסט בעת לחיצה על פסקה',
+	'navigabletoc-preference' => 'הפעלת תוכן עניינים עם אפשרות ניווט',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
