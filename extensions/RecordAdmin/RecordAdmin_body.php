@@ -207,7 +207,6 @@ class SpecialRecordAdmin extends SpecialPage {
 			$braces = false;
 			foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
 			if ( $braces ) {
-
 				# Fill in current values
 				$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
 
@@ -350,6 +349,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			$t      = $r[0];
 			$u      = $t->getLocalURL();
 			$col    = $r['title'];
+			$ecol   = urlencode( $col );
 			$sel    = "<input type='checkbox' name='{$name}[]' value='$col' checked />";
 			$stripe = $stripe ? '' : ' class="stripe"';
 			$table .= "<tr$stripe>";
@@ -371,7 +371,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$row = array(
 					'select'   => "<td class='col-select'>$sel</td>\n",
 					'title'    => "<td class='col0 col-title'><a href='$u'>$col</a></td>",
-					'actions'  => "<td class='col1 col-actions'><a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$col" ) . "'>"
+					'actions'  => "<td class='col1 col-actions'><a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$ecol" ) . "'>"
 								  . wfMsg( 'recordadmin-editlink' ) . "</a></td>",
 					'created'  => "<td class='col2 col-created'>$tsc</td>\n",
 					'modified' => "<td class='col3 col-modified'>$tsm</td>\n",
@@ -478,6 +478,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					$html = preg_replace( "|(<option[^<>]*) selected|i", "$1", $html ); # remove the currently selected option
 					if ( $v ) {
 						foreach( split( "\n", $v ) as $v ) {
+							$v = htmlentities( preg_replace( "|([\[\]\|\\\(\)])|", "\\$1", $v ) );
 							$html = preg_match( "|<option[^>]+value\s*=|is", $html )
 								? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|is", "$1 selected$2", $html )
 								: preg_replace( "|(<option[^>]*)(?=>$v</option>)|is", "$1 selected", $html );
