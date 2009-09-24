@@ -239,6 +239,7 @@ $messages['he'] = array(
 	'ratedpages-list' => 'להלן רשימת דפים, ממוינים לפי דירוג הקוראים.',
 	'ratedpages-none' => 'אין דפים ברשימה זו',
 	'ratedpages-graphs' => 'מידע הדירוג',
+	'ratedpages-count' => '{{PLURAL:$1|דירוג אחד|$1 דירוגים}}',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
