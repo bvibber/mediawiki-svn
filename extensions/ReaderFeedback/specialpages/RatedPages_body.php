@@ -80,9 +80,10 @@ class RatedPages extends SpecialPage
 					$wgLang->formatNum( $size ) ) . '</small>';
 		}
 		$ratinghist = SpecialPage::getTitleFor( 'RatingHistory' );
-		$graph = $this->skin->makeKnownLinkObj( $ratinghist, wfMsg('ratedpages-graphs'), 
+		$graph = $this->skin->makeKnownLinkObj( $ratinghist, wfMsgHtml('ratedpages-graphs'), 
 			'target='.$title->getPrefixedUrl().'&period=93' );
-		return "<li>$link $stxt ($hist) ($graph)</li>";
+		$count = wfMsgExt('ratedpages-count',array('parsemag','escape'),$row->rfp_count);
+		return "<li>$link $stxt ($hist) ($graph) ($count)</li>";
 	}
 }
 
@@ -128,7 +129,7 @@ class RatedPagesPager extends AlphabeticPager {
 		$conds[] = 'rfp_count >= '.ReaderFeedback::getFeedbackSize();
 		return array(
 			'tables'  => array('reader_feedback_pages','page'),
-			'fields'  => 'page_namespace,page_title,page_len,rfp_ave_val',
+			'fields'  => 'page_namespace,page_title,page_len,rfp_ave_val,rfp_count',
 			'conds'   => $conds,
 			'options' => array( 'USE INDEX' => array('reader_feedback_pages' => 'rfp_tag_val_page') )
 		);

@@ -13,6 +13,7 @@ $messages['en'] = array(
 	'ratedpages-list'   => 'Below is a list of pages sorted by their reader feedback rating.',
 	'ratedpages-none'   => 'There are no pages in this list',
 	'ratedpages-graphs' => 'rating data',
+	'ratedpages-count'  => '$1 {{PLURAL:$1|review|reviews}}',
 );
 
 /** Message documentation (Message documentation)
