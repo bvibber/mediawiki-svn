@@ -243,7 +243,9 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'optin-try' => 'Beta probatu',
+	'tooltip-pt-optin-try' => 'Eginbide berriak probatu',
 	'optin-leave' => 'Beta utzi',
+	'tooltip-pt-optin-leave' => 'Eginbide berriak ezgaitu',
 	'optin-feedback' => 'Beta feedbacka',
 );
 

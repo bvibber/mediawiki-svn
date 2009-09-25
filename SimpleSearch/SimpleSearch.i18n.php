@@ -460,6 +460,7 @@ $messages['nl'] = array(
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'simplesearch-search' => 'Søk',
 	'simplesearch-containing' => 'inneheld ...',
 );
 

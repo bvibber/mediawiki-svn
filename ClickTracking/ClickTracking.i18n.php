@@ -150,12 +150,14 @@ $messages['de'] = array(
 	'clicktracking-title' => 'Erzeugte Benutzerklicks',
 	'event-name' => 'Ereignisname',
 	'expert-header' => 'Expertenklicks',
+	'intermediate-header' => 'Klicks von Mittleren',
 	'beginner-header' => 'Anfängerklicks',
 	'total-header' => 'Gesamtklicks',
 	'start-date' => 'Start (JJJJMMTT)',
 	'end-date' => 'Ende (JJJJMMTT)',
 	'change-graph' => 'Grafik ändern',
 	'beginner' => 'Anfänger',
+	'intermediate' => 'Mittlere',
 	'expert' => 'Experte',
 );
 
@@ -224,6 +226,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'clicktracking-title' => 'Clicks de usuario agregados',
+	'total-header' => 'Clicks totales',
 	'start-date' => 'Fecha de inicio (AAMMDD)',
 	'end-date' => 'Fecha de fin (AAMMDD)',
 	'beginner' => 'Principiante',
