@@ -63,20 +63,20 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 10 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 5 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 11 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 7 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 8 ),
 				// FIXME: jQuery UI doesn't belong here, should move to no_js2
 				// once we figure out how to do jQuery UI properly in JS2 
 				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 25 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 26 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 25 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 26 ),
 			),
 		),
 	);
