@@ -460,6 +460,9 @@ class SpecialRecordAdmin extends SpecialPage {
 			list( $html, $pos ) = $m[0];
 			$len = strlen( $html );
 
+			# Expand any double-brace expressions in the html form section
+			$html = preg_replace_callback( "|\{\{.+\}\}|s", array( $this, 'parsePart' ), $html );
+
 			# Modify the element according to its type
 			# - clears default value, then adds new value
 			$v = isset( $values[$k] ) ? $values[$k] : '';
@@ -473,8 +476,6 @@ class SpecialRecordAdmin extends SpecialPage {
 					if ( $v ) $html = preg_replace( "|(/?>)$|", " checked $1", $html );
 				break;
 				case 'list':
-					$html = preg_replace_callback("|\{\{.+\}\}|s", array($this, 'parsePart'), $html);  # parse any braces
-					#if ( empty( $this->record ) ) 
 					$html = preg_replace( "|(<option[^<>]*) selected|i", "$1", $html ); # remove the currently selected option
 					if ( $v ) {
 						foreach( split( "\n", $v ) as $v ) {
