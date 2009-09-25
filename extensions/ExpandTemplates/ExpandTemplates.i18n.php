@@ -714,7 +714,6 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
- * @author Meno25
  * @author Rotem Liss
  */
 $messages['he'] = array(
@@ -727,6 +726,7 @@ $messages['he'] = array(
 	'expand_templates_xml_output' => 'פלט XML',
 	'expand_templates_ok' => 'פריסת תבניות',
 	'expand_templates_remove_comments' => 'הסרת הערות',
+	'expand_templates_remove_nowiki' => 'הסרת תגיות <nowiki> בתוצאה',
 	'expand_templates_generate_xml' => 'הצגת עץ הפענוח של XML',
 	'expand_templates_preview' => 'תצוגה מקדימה',
 );
