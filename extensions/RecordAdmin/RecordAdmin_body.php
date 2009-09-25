@@ -452,6 +452,9 @@ class SpecialRecordAdmin extends SpecialPage {
 		# If values are wikitext, convert to hash
 		if ( !is_array( $values ) ) $values = $this->valuesFromText( $values );
 
+		# Expand any double-brace expressions in the form content (even in its html)
+		#$this->form = preg_replace_callback( "|\{\{.+?\}\}|s", array( $this, 'parsePart' ), $this->form );
+
 		# Add the values into the form's HTML depending on their type
 		foreach( $this->types as $k => $type ) {
 
@@ -459,9 +462,6 @@ class SpecialRecordAdmin extends SpecialPage {
 			preg_match( "|<([a-z]+)[^<]+?name=\"ra_$k\\[?\\]?\".*?>(.*?</\\1>)?|is", $this->form, $m, PREG_OFFSET_CAPTURE );
 			list( $html, $pos ) = $m[0];
 			$len = strlen( $html );
-
-			# Expand any double-brace expressions in the html form section
-			$html = preg_replace_callback( "|\{\{.+\}\}|s", array( $this, 'parsePart' ), $html );
 
 			# Modify the element according to its type
 			# - clears default value, then adds new value
@@ -476,6 +476,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					if ( $v ) $html = preg_replace( "|(/?>)$|", " checked $1", $html );
 				break;
 				case 'list':
+					$html = preg_replace_callback( "|\{\{.+?\}\}|s", array( $this, 'parsePart' ), $html );
 					$html = preg_replace( "|(<option[^<>]*) selected|i", "$1", $html ); # remove the currently selected option
 					if ( $v ) {
 						foreach( split( "\n", $v ) as $v ) {
@@ -499,11 +500,11 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Used to parse any braces in select lists when populating form
 	 */
-	function parsePart($part) {
+	function parsePart( $part ) {
 		global $wgUser, $wgParser;
 		$options = ParserOptions::newFromUser( $wgUser );
-		$html = $wgParser->parse($part[0], $this->title, $options, true, true )->getText();		
-		return preg_match("|(<option.+</option>)|is", $html, $m) ? $m[1] : '';
+		$html = $wgParser->parse( $part[0], $this->title, $options, true, true )->getText();
+		return preg_match( "|(<option.+</option>)|is", $html, $m ) ? $m[1] : '';
 	}
 
 	/**
