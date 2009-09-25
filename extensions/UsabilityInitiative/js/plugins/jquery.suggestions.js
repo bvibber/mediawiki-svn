@@ -119,6 +119,15 @@ $.suggestions = {
 					} else {
 						// Rebuild the suggestions list
 						context.data.$container.show();
+						// Update the size and position of the list
+						context.data.$container.css( {
+							'top': context.config.$region.offset().top + context.config.$region.outerHeight(),
+							'bottom': 'auto',
+							'width': context.config.$region.outerWidth(),
+							'height': 'auto',
+							'left': context.config.$region.offset().left,
+							'right': 'auto'
+						} );
 						var $results = context.data.$container.children( '.suggestions-results' );
 						$results.empty();
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
@@ -131,19 +140,9 @@ $.suggestions = {
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
-								$result.text( context.config.suggestions[i] );
-								$result.autoEllipse();
+								$result.text( context.config.suggestions[i] ).autoEllipse();
 							}
 						}
-						// Update the size and position of the list
-						context.data.$container.css( {
-							'top': context.config.$region.offset().top + context.config.$region.outerHeight(),
-							'bottom': 'auto',
-							'width': context.config.$region.outerWidth(),
-							'height': 'auto',
-							'left': context.config.$region.offset().left,
-							'right': 'auto'
-						} );
 					}
 				}
 				break;

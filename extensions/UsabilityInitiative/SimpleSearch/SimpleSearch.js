@@ -91,13 +91,16 @@ js2AddOnloadHook( function() {
 								.addClass( 'special-label' )
 								.text( gM( 'simplesearch-containing' ) )
 								.appendTo( $j(this) );
-							$query = $j( '<span />' )
+							$query = $j( '<div />' )
 								.addClass( 'special-query' )
 								.text( query )
 								.appendTo( $j(this) );
 							$query.autoEllipse();
 						} else {
-							$j(this).find( '.special-query' ).empty().text( query ).autoEllipse();
+							$j(this).find( '.special-query' )
+								.empty()
+								.text( query )
+								.autoEllipse();
 						}
 					} else {
 						$j(this).hide();
