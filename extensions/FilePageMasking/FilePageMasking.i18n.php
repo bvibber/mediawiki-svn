@@ -8,5 +8,5 @@
 $messages = array();
 
 $messages['en'] = array(
-	'file_masking_desc'              => 'Rewrites ".xxx" into "_xxx" in image description page links',
+	'file_masking_desc' => 'Rewrites ".xxx" into "_xxx" in file description page links',
 );
