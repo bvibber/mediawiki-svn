@@ -609,6 +609,9 @@ $messages['es'] = array(
 	'usagestatisticsfor' => '<h2>Estadísticas de uso para [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Estadísticas de uso para todos los usuarios</h2>',
 	'usagestatisticsinterval' => 'Intervalo:',
+	'usagestatisticsnamespace' => 'Espacio de nombre:',
+	'usagestatisticsexcluderedirects' => 'Excluir redirecionamientos',
+	'usagestatistics-namespace' => 'Estas son estadísticas en el espacio de nombre [[Special:Allpages/$1|$2]].',
 	'usagestatisticstype' => 'Tipo',
 	'usagestatisticsstart' => 'Fecha de inicio:',
 	'usagestatisticsend' => 'Fecha de fin:',
@@ -660,6 +663,7 @@ $messages['eu'] = array(
 	'usagestatisticssubmit' => 'Estatistikak sortu',
 	'usagestatisticsnostart' => 'Hasierako data zehaztu, mesedez',
 	'usagestatisticsnoend' => 'Amaierako data zehaztu, mesedez',
+	'usagestatisticsbadstartend' => '<b><i>Hasiera</i> eta/edo <i>bukaera</i> data okerra!</b>',
 	'usagestatisticsintervalday' => 'Eguna',
 	'usagestatisticsintervalweek' => 'Astea',
 	'usagestatisticsintervalmonth' => 'Hilabetea',
@@ -1477,6 +1481,8 @@ $messages['nn'] = array(
 	'usagestatisticsfor' => '<h2>Statistikk over bruk for [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Bruksstatistikk for alle brukarar</h2>',
 	'usagestatisticsinterval' => 'Intervall:',
+	'usagestatisticsnamespace' => 'Namnerom:',
+	'usagestatisticsexcluderedirects' => 'Ta ikkje med omdirigeringar',
 	'usagestatisticstype' => 'Type',
 	'usagestatisticsstart' => 'Startdato:',
 	'usagestatisticsend' => 'Sluttdato:',
@@ -1494,6 +1500,7 @@ $messages['nn'] = array(
 	'usagestatisticscalselect' => 'Velg',
 	'usagestatistics-editindividual' => 'Redigeringsstatistikk for $1',
 	'usagestatistics-editpages' => 'Sidestatistikk for $1',
+	'right-viewsystemstats' => 'Vis [[Special:UserStats|wikibrukarstatistikk]]',
 );
 
 /** Norwegian (bokmål) (Norsk (bokmål))

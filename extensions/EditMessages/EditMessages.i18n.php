@@ -345,11 +345,17 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'editmessages' => 'Mezuak aldatu',
 	'editmsg-search' => 'Bilatu',
+	'editmsg-get-patch' => 'Adabakia sortu',
 	'editmsg-new-search' => 'Bilaketa berria',
+	'editmsg-apply-patch' => 'Adabakia aplikatu',
+	'editmsg-no-patch' => 'Ezin izan da "patch" komandoa exekutatu',
+	'editmsg-patch-failed' => 'Adabakiak huts egin du irteerako egoera $1 izanik',
+	'editmsg-patch-success' => 'Adabakia ondo jarri da.',
 );
 
 /** Finnish (Suomi)

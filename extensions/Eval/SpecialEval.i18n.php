@@ -185,10 +185,13 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'eval' => 'Ebaluatu',
 	'eval_submit' => 'Ebaluatu',
+	'eval_escape' => 'Ihesbideko irteera',
+	'eval_out' => 'Irteera',
 	'eval_code' => 'Kodea',
 );
 

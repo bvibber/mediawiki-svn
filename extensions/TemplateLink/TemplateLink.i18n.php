@@ -546,6 +546,13 @@ $messages['tl'] = array(
 	'templatelink_newtitle' => '$1 (inilipat-sama)',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Yildiz
+ */
+$messages['tt-cyrl'] = array(
+	'templatelink' => 'Өлге сылтамасы',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

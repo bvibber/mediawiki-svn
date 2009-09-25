@@ -839,7 +839,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'crossnamespacelinks' => 'Ссылки между пространствами имён',
 	'crossnamespacelinks-desc' => 'Выводит [[Special:CrossNamespaceLinks|список ссылок между пространствами имён]], которых не должно быть в {{grammar:genitive|{{SITENAME}}}}',
-	'crossnamespacelinks-summary' => 'На этой странице приведён список ссылок со страниц в основном пространстве имён на страницы в других пространствах (за исключением пространств имён: {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}). Подобные ссылки не рекомендуется ставить.',
+	'crossnamespacelinks-summary' => 'На этой странице приведён список ссылок со страниц в основном пространстве имён на страницы в других пространствах (за исключением {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}), использовать такие ссылки не рекомендуется.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ссылка|ссылки|ссылок}} на $3',
 );
 

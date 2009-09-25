@@ -223,6 +223,7 @@ $messages['be-tarask'] = array(
 	'expand_templates_xml_output' => 'вынік у фармаце XML',
 	'expand_templates_ok' => 'Добра',
 	'expand_templates_remove_comments' => 'Выдаліць камэнтары',
+	'expand_templates_remove_nowiki' => 'Падаўляць тэгі <nowiki> у выніку',
 	'expand_templates_generate_xml' => 'Паказаць дрэва аналізу XML',
 	'expand_templates_preview' => 'Папярэдні прагляд',
 );
@@ -303,6 +304,7 @@ Ovo se uradi putem poziva relevantnog parserskog nivoa iz same MediaWiki.',
 	'expand_templates_xml_output' => 'XML izlaz',
 	'expand_templates_ok' => 'U redu',
 	'expand_templates_remove_comments' => 'Ukloni komentare',
+	'expand_templates_remove_nowiki' => 'Onemogući oznake <nowiki> u rezultatima',
 	'expand_templates_generate_xml' => 'Prikaži XML stablo parsera',
 	'expand_templates_preview' => 'Pregled',
 );
@@ -392,6 +394,7 @@ $messages['de'] = array(
 	'expand_templates_xml_output' => 'XML-Ausgabe',
 	'expand_templates_ok' => 'Ausführen',
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
+	'expand_templates_remove_nowiki' => '<nowiki>-Tags in der Ausgabe unterdrücken',
 	'expand_templates_generate_xml' => 'Zeige XML-Parser-Baum',
 	'expand_templates_preview' => 'Vorschau',
 );
@@ -409,6 +412,7 @@ $messages['dsb'] = array(
 	'expand_templates_xml_output' => 'Wudany XML',
 	'expand_templates_ok' => 'W pórěźe',
 	'expand_templates_remove_comments' => 'Komentary wótwónoźeś',
+	'expand_templates_remove_nowiki' => 'Toflicki <nowiki> we wuslědku pódtłocyś',
 	'expand_templates_generate_xml' => 'Parsowański bom XML pokazaś',
 	'expand_templates_preview' => 'Pśeglěd',
 );
@@ -467,6 +471,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Icvav
  * @author Muro de Aguas
  * @author Remember the dot
@@ -486,6 +491,7 @@ Lo hace llamando al nivel del analizador sintáctico correspondiente del propio 
 	'expand_templates_xml_output' => 'Salida XML',
 	'expand_templates_ok' => 'Aceptar',
 	'expand_templates_remove_comments' => 'Eliminar comentarios',
+	'expand_templates_remove_nowiki' => 'Suprimir <nowiki> etiquetas en resultado',
 	'expand_templates_generate_xml' => 'Mostrar el árbol XML.',
 	'expand_templates_preview' => 'Previsualización',
 );
@@ -581,6 +587,7 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author Jean-Frédéric
  * @author Sherbrooke
  * @author Verdy p
  * @author Zetud
@@ -599,6 +606,7 @@ Elle réalise ceci en appelant les étages successifs appropriés du parseur de 
 	'expand_templates_xml_output' => 'Résultat intermédiaire de l’analyse, au format XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Supprimer les commentaires',
+	'expand_templates_remove_nowiki' => 'Supprime les marqueurs <nowiki> dans le résultat',
 	'expand_templates_generate_xml' => "Afficher l’arbre d'analyse au format XML",
 	'expand_templates_preview' => 'Aperçu du rendu',
 );
@@ -658,6 +666,7 @@ Faino chamando a etapa de análise correspondente do propio MediaWiki.',
 	'expand_templates_xml_output' => 'saída XML',
 	'expand_templates_ok' => 'De acordo',
 	'expand_templates_remove_comments' => 'Eliminar os comentarios',
+	'expand_templates_remove_nowiki' => 'Suprimir as etiquetas <nowiki> no resultado',
 	'expand_templates_generate_xml' => 'Amosar as árbores de análise XML',
 	'expand_templates_preview' => 'Vista previa',
 );
@@ -686,6 +695,7 @@ $messages['gsw'] = array(
 	'expand_templates_xml_output' => 'XML-Usgab',
 	'expand_templates_ok' => 'Uusfiere',
 	'expand_templates_remove_comments' => 'Kommentar useneh',
+	'expand_templates_remove_nowiki' => '<nowiki>-Befähl im Ergebnis unterdrucke',
 	'expand_templates_generate_xml' => 'Zeig XML-Parser-Baum',
 	'expand_templates_preview' => 'Vorschou',
 );
@@ -714,6 +724,7 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Meno25
  * @author Rotem Liss
  */
 $messages['he'] = array(
@@ -795,6 +806,7 @@ $messages['hsb'] = array(
 	'expand_templates_xml_output' => 'Wudaće XML',
 	'expand_templates_ok' => 'Wuwjesć',
 	'expand_templates_remove_comments' => 'Komentary wotstronić',
+	'expand_templates_remove_nowiki' => 'Taflički <nowiki> we wuslědku potłóčić',
 	'expand_templates_generate_xml' => 'Analyzowy štom XML pokazać',
 	'expand_templates_preview' => 'Přehlad',
 );
@@ -918,8 +930,9 @@ $messages['ja'] = array(
 	'expand_templates_output' => '展開結果',
 	'expand_templates_xml_output' => 'XML出力',
 	'expand_templates_ok' => 'OK',
-	'expand_templates_remove_comments' => 'コメントを除去',
-	'expand_templates_generate_xml' => 'XML構文解釈ツリーを表示',
+	'expand_templates_remove_comments' => 'コメントを除去する',
+	'expand_templates_remove_nowiki' => '結果中の <nowiki> タグを表示しない',
+	'expand_templates_generate_xml' => 'XML 構文解析ツリーを表示する',
 	'expand_templates_preview' => 'プレビュー',
 );
 
@@ -1095,6 +1108,7 @@ Dëst geschitt duerch Oprufe vun de jeweiligen Parser-Phase vu MediaWiki selwer.
 	'expand_templates_xml_output' => 'Resultat als XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Bemierkunge läschen',
+	'expand_templates_remove_nowiki' => '<nowiki>-Taggen am Resultat suppriméieren',
 	'expand_templates_generate_xml' => "Weis d'Struktur vum XML",
 	'expand_templates_preview' => 'Kucken ouni ofzespäicheren',
 );
@@ -1394,6 +1408,7 @@ Wykonywane jest to poprzez wywołanie odpowiedniego przebiegu (etapu) parsera z 
 	'expand_templates_xml_output' => 'wynik w formacie XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Usuń komentarze',
+	'expand_templates_remove_nowiki' => 'Ukrywaj w wyniku znaczniki <nowiki>',
 	'expand_templates_generate_xml' => 'Pokaż drzewo analizatora składni w formacie XML',
 	'expand_templates_preview' => 'Podgląd',
 );
@@ -1521,6 +1536,7 @@ $messages['ru'] = array(
 	'expand_templates_xml_output' => 'XML вывод',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Удалить комментарии',
+	'expand_templates_remove_nowiki' => 'Подавлять теги <nowiki> в результате',
 	'expand_templates_generate_xml' => 'Показать дерево разбора XML',
 	'expand_templates_preview' => 'Предпросмотр',
 );

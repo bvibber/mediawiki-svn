@@ -268,6 +268,10 @@ $messages['eu'] = array(
 	'wah-short-audio' => '$1 soinu fitxategia, $2',
 	'wah-short-video' => '$1 bideo fitxategia, $2',
 	'wah-short-general' => '$1 media fitxategia, $2',
+	'wah-long-audio' => '($1 soinu fitxategia, luzeera $2, $3)',
+	'wah-long-video' => '($1 bideo fitxategia, luzeera $2, $4×$5 pixel, $3)',
+	'wah-long-general' => '(multimedia fitxategia, iraupena $2, $3)',
+	'wah-long-error' => '(ffmpeg-ek ezin du fitxategi hau irakurri: $1)',
 	'wah-transcode-working' => 'Bideo hau prozesatzen ari da, mesedez, saia zaitez beranduago',
 );
 
@@ -590,6 +594,8 @@ U kunt helpen dit bestand te transcoderen door naar [[Special:WikiAtHome|Wiki@Ho
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'wah-transcode-working' => 'Videoen vert arbeidd med, ver venleg og prøv igjen seinare',
+	'wah-transcode-fail' => 'Kunde ikkje konvertera denne fila.',
 	'wah-javascript-off' => 'Du må ha JavaScript aktivert for kunna delta i Wiki@Home',
 );
 

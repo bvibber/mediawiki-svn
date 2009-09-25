@@ -178,6 +178,8 @@ Los usuarios anónimos obtienen un usuario generado automáticamente, que puede 
  */
 $messages['eu'] = array(
 	'webchat' => 'Web bidezko txata',
+	'webchat-desc' => '[[Special:WebChat|Orrialde berezi]] bat eransten du beste wiki erabiltzaileekin denbora errealean hitz egiteko',
+	'right-webchat' => '[[Special:WebChat|Web bidezko txata]] erabiltzeko baimendua',
 );
 
 /** Finnish (Suomi)
@@ -239,6 +241,11 @@ Sunscht wird dr Chatname automatisch erzygt, aber är cha gänderet wäre.',
 $messages['he'] = array(
 	'webchat' => "צ'אט באתר",
 	'webchat-desc' => "הוספת [[Special:WebChat|דף מיוחד]] המשמש לקיום צ'אט בזמן אמת עם משתמשים אחרים באתר הוויקי",
+	'webchat-header' => 'דף מיוחד זה מאפשר לכם לשתף פעולה בזמן אמת עם משתמשים אחרים באתר הוויקי.
+כדי להתחבר, פשוט לחצו על הכפתור "התחברות".
+אם אתם מחוברים לחשבון, הכינוי שלכם בשיחה יופיע מראש.
+למשתמשים אנונימיים ניתן כינוי שנוצר באופן אוטומטי, אך ניתן לשנותו.',
+	'right-webchat' => "שימוש ב[[Special:WebChat|צ'אט באתר]]",
 );
 
 /** Croatian (Hrvatski)

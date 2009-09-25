@@ -126,6 +126,13 @@ $messages['gsw'] = array(
 	'pipeescape-desc' => 'Parserfunktion <code>#!</code> versteckt Parameter-Trenner',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'pipeescape-desc' => 'הוראת מפענח <code>#!</code> למקרה שבו רוצים שתו מפריד אנכי (|) יהיה פשוט תו מפריד אנכי',
+);
+
 /** Hiligaynon (Ilonggo)
  * @author Tagimata
  */

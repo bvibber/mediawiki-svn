@@ -442,6 +442,20 @@ $messages['he'] = array(
 	'call' => 'קריאה',
 	'call-desc' => 'יצירת קישור לתבנית (או לדף ויקי רגיל) עם העברת משתנים.
 ניתן לשימוש בשורת הפקודה של הדפדפן או כטקסט בוויקי.',
+	'call-text' => 'הרחבת הקריאה מקבלת דף ויקי ופרמטרים אופציונליים לדף זה כארגומנט.<br /><br />
+
+דוגמה 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+דוגמה 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+דוגמה 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+דוגמה 4 (כתובת URL בדפדפן): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+<b>הרחבת הקריאה</b> תקרא לדף שניתן לה ותעביר לו את הפרמטרים.<br />
+תוכלו לראות את התכנים של הדף הנקרא ואת הכותרת שלו, אבל ה"סוג" שלו יהיה כזה של דף מיוחד, כלומר, דף שאין אפשרות לערוך אותו.<br />
+תוכן הדף עשוי להשתנות כתלות בערכי הפרמטרים שהעברתם.<br /><br />
+
+<b>הרחבת הקריאה</b> היא שימושית לבניית יישומים אינטראקטיביים באמצעות מדיה־ויקי.<br />
+לדוגמה, ראו את <a href=\'http://semeb.com/dpldemo/Template:Catlist\'>הממשק הגרפי ל־DPL</a> ..<br />
+אם מתעוררות בעיות, באפשרותכם לנסות את <b>{{#special:call}}/DebuG</b>',
 	'call-save' => "פלט הקריאה יישמר לדף בשם '''$1'''.",
 	'call-save-success' => 'הטקסט הבא נשמר לדף <big>[[$1]]</big> .',
 	'call-save-failed' => 'הטקסט הבא <b>לא</b> נשמר לדף <big>[[$1]]</big> כיוון שהוא כבר קיים.',
@@ -542,7 +556,7 @@ $messages['id'] = array(
 	'call' => 'Panggilan',
 	'call-desc' => 'Buat sebuah pranala ke templat (atau halaman wiki biasa) dengan parameter. 
 Dapat digunakan pada baris perintah penjelajah web atau di antara teks wiki',
-	'call-text' => "Pengaya Panggilan membutuhkan sebuah halaman wiki dan parameter opsional untuk halaman tersebut untuk digunakan sebagai argumen.
+	'call-text' => "Pengaya \"Panggilan\" membutuhkan sebuah halaman wiki dan parameter manasuka untuk halaman tersebut untuk digunakan sebagai argumen.
 
 Contoh 1: &nbsp; <tt>[[{{#special:call}}/Templat Saya,parm1=value1]]</tt><br />
 Contoh 2: &nbsp; <tt>[[{{#special:call}}/Pembicaraan:Diskusi Saya,parm1=value1]]</tt><br />

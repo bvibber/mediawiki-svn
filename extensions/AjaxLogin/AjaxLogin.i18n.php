@@ -559,6 +559,9 @@ Dette vil ta deg vekk frå denne endringssida, og du kan missa den noverande end
 	'ajaxLogin2' => 'Er du viss?
 Du kan missa alle endringane du gjorde på denne sida om du går ut av ho no.',
 	'ajaxlogin-create' => 'Opprett ein konto',
+	'al-nosuchuser' => 'Det er ikkje nokon brukar med namnet "$1".
+Brukarnamnet kan innehalda store og små bokstavar.
+Sjekk stavinga di av brukarnamnet.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -262,11 +262,13 @@ Cuando marque o desmarque múltiples páginas, Mantener presionada la tecla shif
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'watchsubpages' => 'Ikusi azpiorriak',
 	'watchsubpages-addtitles' => 'Gehitu orriak',
 	'watchsubpages-addtitlestowatchlist' => 'Gehitu orriak jarraipen zerrendara',
+	'watchsubpages-desc' => 'Modu azkarrean [[Special:WatchSubpages|azpiorrialde guztiak erantsi]] jarraipen zerrendan',
 );
 
 /** Finnish (Suomi)

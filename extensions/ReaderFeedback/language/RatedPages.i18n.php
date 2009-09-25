@@ -63,6 +63,7 @@ $messages['be-tarask'] = array(
 	'ratedpages-list' => 'Ніжэй пададзены сьпіс старонак адсартаваных па іх адзнацы чытачамі.',
 	'ratedpages-none' => 'У гэтым сьпісе няма старонак',
 	'ratedpages-graphs' => 'зьвесткі пра адзнаку',
+	'ratedpages-count' => '$1 {{PLURAL:$1|адзнака|адзнакі|адзнакаў}}',
 );
 
 /** Breton (Brezhoneg)
@@ -85,6 +86,7 @@ $messages['bs'] = array(
 	'ratedpages-list' => 'Ispod je spisak stranica poredanih po rejtingu poslanom od strane čitaoca.',
 	'ratedpages-none' => 'Nema stranica na ovom spisku',
 	'ratedpages-graphs' => 'podaci rejtinga',
+	'ratedpages-count' => '$1 {{PLURAL:$1|provjera|provjere|provjera}}',
 );
 
 /** Czech (Česky)
@@ -357,6 +359,7 @@ $messages['lb'] = array(
 	'ratedpages-list' => 'Hei ass eng Lëscht vu Säiten déi no der Bewäertung vun de Lieser zortéiert sinn.',
 	'ratedpages-none' => 'Et gëtt keng Säiten op dëser Lëscht',
 	'ratedpages-graphs' => 'Bewertungsdaten',
+	'ratedpages-count' => '$1 {{PLURAL:$1|Bewertung|Bewertungen}}',
 );
 
 /** Malay (Bahasa Melayu)

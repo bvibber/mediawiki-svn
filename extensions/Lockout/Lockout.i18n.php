@@ -85,6 +85,13 @@ $messages['gsw'] = array(
 	'lockout-desc' => 'Derfir sorge, ass gsperrti Benutzer sich nimi chenne aamälde',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'lockout-desc' => 'מניעת משתמשים חסומים מכניסה לחשבון',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

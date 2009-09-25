@@ -817,7 +817,7 @@ $messages['id'] = array(
 	'createsigndoc-email' => 'Alamat surel:',
 	'createsigndoc-phone' => 'Nomor telepon:',
 	'createsigndoc-hidden' => 'Tersembunyi',
-	'createsigndoc-optional' => 'Opsional',
+	'createsigndoc-optional' => 'Manasuka',
 	'createsigndoc-create' => 'Buat',
 );
 

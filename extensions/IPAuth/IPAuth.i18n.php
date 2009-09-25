@@ -86,6 +86,13 @@ $messages['gsw'] = array(
 	'ipauth-desc' => 'Automatisch vu feschte IP-Adrässe aamälde',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'ipauth-desc' => 'כניסה אוטומטית לחשבון מכתובות IP קבועות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -911,6 +911,7 @@ $messages['eu'] = array(
 	'math_CannotRunDvipng' => 'dvipng ezin da exekutatu',
 	'math_CannotRunLatex' => 'latex ezin da exekutatu',
 	'math_CannotWriteTexFile' => 'Ezin da tex fitxategia idatzi',
+	'math_IllegalFinalBackslash' => 'Alderantzizko barra "\\" ilegala sarreraren amaieran',
 	'math_InvalidColour' => '"$1" kolorea ez da baliozkoa',
 	'math_MismatchedBeginAndEnd' => '"$1" eta "$2" komandoek ez datoz bat',
 	'math_TooManyTokens' => 'Sarrera luzeegia da',

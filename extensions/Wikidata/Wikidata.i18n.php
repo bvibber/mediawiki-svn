@@ -5523,7 +5523,7 @@ $messages['id'] = array(
 	'langman_iso639-3' => 'Kode ISO 639-3:',
 	'langman_iso639-2' => 'Kode ISO 639-2:',
 	'langman_wikimedia' => 'Kode Wikimedia:',
-	'langman_field_optional' => '(opsional)',
+	'langman_field_optional' => '(manasuka)',
 	'langman_addlang' => 'Tambahkan bahasa',
 	'importlangnames' => 'Wikidata: impor nama bahasa',
 	'importlangnames_title' => 'Impor nama bahasa',
@@ -7863,6 +7863,7 @@ Vergeet niet om dit te controleren!',
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'wikidata-desc' => 'Legg til ein wiki-liknande database for ulike typar innhald.',
 	'languages' => 'Wikidata: Språkhandsamar',
 	'langman-desc' => 'Legg til og endre språkinstillingar med [[Special:Languages]]',
 	'langman_title' => 'Språkhandsamar',

@@ -70,6 +70,14 @@ $messages['es'] = array(
 	'flv-long-desc' => '(video Flash, $1 × $2 pixeles, file size: $3)',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'flvhandler_desc' => 'Flash Bideoak (.flv) fitxategi estandarrak bezala erantsi ahal izatea baimendu (adibidez <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(Flash bideoa, $1 × $2 pixel, fitxategiaren tamaina: $3)',
+);
+
 /** French (Français)
  * @author IAlex
  * @author PieRRoMaN
@@ -93,6 +101,14 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'flvhandler_desc' => 'Erlaube, ass Flash Video-Dateie (.flv) as Standarddateie chenne zuegfiegt wäre (z. B. <nowiki>[[File:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Flashvideo, $1 × $2 Pixel, Dateigreßi: $3)',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'flvhandler_desc' => 'אפשרות להוספת סרטי פלאש (.flv) כקבצים רגילים (לדוגמה, <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(סרט פלאש, $1 × $2 פיקסלים, גודל הקובץ: $3)',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

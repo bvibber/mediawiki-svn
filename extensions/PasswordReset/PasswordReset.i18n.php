@@ -1147,10 +1147,10 @@ $messages['pl'] = array(
 	'passwordreset-success' => 'Hasło zostało wyczyszczone dla użytkownika z ID: $1',
 	'passwordreset-disableuser' => 'Czy wyłączyć konto tego użytkownika?',
 	'passwordreset-disableuserexplain' => '(ustawienie błędnego skrótu hasła uniemożliwi użytkownikowi zalogowanie)',
-	'passwordreset-disablesuccess' => 'Konto użytkownika zostało wyłączone (ID użytkownika: $1)',
+	'passwordreset-disablesuccess' => 'Konto użytkownika zostało wyłączone (ID użytkownika – $1)',
 	'passwordreset-accountdisabled' => 'Konto zostało wyłączone',
 	'disabledusers' => 'Wyłączone konta użytkowników',
-	'disabledusers-summary' => 'Lista użytkowników, którzych konta zostały wyłączone przy pomocy funkcji wyczyszczenia hasła',
+	'disabledusers-summary' => 'Lista użytkowników, których konta zostały wyłączone przy pomocy funkcji wyczyszczenia hasła.',
 	'right-passwordreset' => 'Wyczyszczenie hasła użytkownika ([[Special:PasswordReset|strona specjalna]])',
 );
 

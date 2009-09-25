@@ -149,6 +149,14 @@ $messages['gsw'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Spezialsyte]] zum e zuefelligi Stammsyte ufzruefe',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'randomrootpage' => 'דף שורש אקראי',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|דף מיוחד]] הבוחר דף שורש אקראי',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

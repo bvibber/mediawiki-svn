@@ -338,9 +338,14 @@ $messages['et'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'edituser-desc' => 'Pribilegiatutako erabiltzaileak beste erabiltzaileen hobespenak editatzea baimentzen du',
 	'edituser' => 'Erabiltzailea editatu',
 	'edituser-username' => 'Izena',
 	'edituser-dosearch' => 'Bilatu',
+	'edituser-nouser' => 'Zehaztutako erabiltzailea ez da existitzen',
+	'edituser-exempt' => 'Zehaztutako erabiltzailea ezin da editatu',
+	'right-edituser' => 'Beste erabiltzaileen hobespenak editatu',
+	'right-edituser-exempt' => 'Besteek ezin dute erabiltzaile honen hobespenak editatu',
 );
 
 /** Finnish (Suomi)

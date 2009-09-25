@@ -425,10 +425,12 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'imagemap_no_image' => 'Errorea: lehen lerroan irudia zehaztu behar da',
 	'imagemap_invalid_image' => 'Errorea: irudia baliogabea da edo ez da existitzen',
+	'imagemap_invalid_coord' => 'Errorea: baliogabeko koordenatua $1. lerroan, zenbaki bat izan behar du',
 	'imagemap_description' => 'Irudi honen inguruan',
 );
 

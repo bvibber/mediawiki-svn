@@ -134,6 +134,13 @@ $messages['gsw'] = array(
 	'preloader-desc' => 'Macht s megli pro Namensruum aapassbarei Vorlage zuezfiege bim Aalege vu neje Syte',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'preloader-desc' => 'אפשרות לתבנית טקסט עבור דפים חדשים, שניתנת להתאמה לפי מרחב שם',
+);
+
 /** Hiligaynon (Ilonggo)
  * @author Tagimata
  */
