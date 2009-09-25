@@ -144,7 +144,9 @@ fn: {
 							.data( 'textbox', context.$textarea )
 							.data( 'position', structure[i].position )
 							.click( function( event ) {
-								$(this).data( 'textbox' ).scrollToCaretPosition( $(this).data( 'position' ) );
+								$(this).data( 'textbox' )
+									.setSelection( $(this).data( 'position' ) )
+									.scrollToCaretPosition();
 								event.preventDefault();
 							} )
 							.text( structure[i].text )

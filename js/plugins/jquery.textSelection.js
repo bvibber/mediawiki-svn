@@ -103,7 +103,7 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 		}
 	}
 	// Scroll the textarea to the inserted text
-	$(this).scrollToCaretPosition( $(this).getCaretPosition() );
+	$(this).scrollToCaretPosition();
 	$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
 },
 /**
@@ -196,6 +196,8 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 	return getCaret( this.get( 0 ) );
 },
 setSelection: function( start, end ) {
+	if ( typeof end == 'undefined' )
+		end = start;
 	return this.each( function() {
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			this.selectionStart = start;
@@ -214,14 +216,17 @@ setSelection: function( start, end ) {
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
  * 
- * Scroll a textarea to a certain offset
+ * Scroll a textarea to the current cursor position. You can set the cursor
+ * position with setSelection()
  * @param pos Byte offset
  */
-scrollToCaretPosition: function( pos ) {
+scrollToCaretPosition: function() {
 	function getLineLength( e ) {
 		return Math.floor( e.scrollWidth / ( $.os.name == 'linux' ? 7 : 8 ) );
 	}
 	function getCaretScrollPosition( e ) {
+		// FIXME: This functions sucks and is off by a few lines most
+		// of the time. It should be replaced by something decent.
 		var text = e.value.replace( /\r/g, "" );
 		var caret = $( e ).getCaretPosition();
 		var lineLength = getLineLength( e );
@@ -266,33 +271,26 @@ scrollToCaretPosition: function( pos ) {
 		$(this).focus();
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
-			this.selectionStart = pos;
-			this.selectionEnd = pos;
 			$(this).scrollTop( getCaretScrollPosition( this ) );
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE / Opera
 			/*
-			 * IE automatically scrolls the section to the bottom of the page,
-			 * except if it's already in view and the cursor position hasn't
-			 * changed, in which case it does nothing. In that case we'll force
-			 * it to act by moving one character back and forth.
+			 * IE automatically scrolls the selected text to the
+			 * bottom of the textarea at setSelection() time, except
+			 * if it was already in view and the cursor position
+			 * wasn't changed, in which case it does nothing. To
+			 * cover that case, we'll force it to act by moving one
+			 * character back and forth.
 			 */
 			var range = document.selection.createRange();
-			var oldPos = $(this).getCaretPosition();
-			var goBack = false;
-			if ( oldPos == pos ) {
-				pos++;
-				goBack = true;
-			}
+			var pos = $(this).getCaretPosition();
 			range.moveToElementText( this );
 			range.collapse();
-			range.move( 'character', pos );
+			range.move( 'character', pos + 1);
 			range.select();
 			this.scrollTop += range.offsetTop;
-			if ( goBack ) {
-				range.move( 'character', -1 );
-				range.select();
-			}
+			range.move( 'character', -1 );
+			range.select();
 		}
 		$(this).trigger( 'scrollToPosition' );
 	} );
