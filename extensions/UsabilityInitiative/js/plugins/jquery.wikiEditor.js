@@ -127,7 +127,7 @@ if ( typeof context == 'undefined' ) {
 	}
 	//Each browser seems to do this differently, so let's keep our editor
 	//consistent by always starting at the begining
-	context.$textarea.scrollToCaretPosition( 0 );
+	context.$textarea.setSelection( 0 ).scrollToCaretPosition();
 }
 
 // If there was a configuration passed, it's assumed to be for the addModule
