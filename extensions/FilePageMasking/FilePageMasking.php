@@ -29,7 +29,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author' => 'Robert Rohde',
 	'version' => '1.0',
 	'description' => 'Converts file extensions ".xxx" to "_xxx" on description page links', // kept for b/c
-	'descriptionmsg' => 'file_masking_desc',
+	'descriptionmsg' => 'filepagemasking-desc',
 	'path' =>  __FILE__,
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FilePageMasking',
 );
