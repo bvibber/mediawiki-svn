@@ -5,7 +5,6 @@
  * @subpackage Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:Transliterator Documentation
- * @link http://en.wiktionary.org/wiki/User:Conrad.Irwin/Transliterator.php Original
  *
  * @author Conrad Irwin
  * @modifier Purodha Blissenbach
@@ -30,17 +29,17 @@
 
 /**
     Extension:Transliterator Copyright (C) 2009 Conrad.Irwin
- 
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
- 
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
- 
+
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
@@ -73,8 +72,8 @@ $wgHooks['TitleMoveComplete'][] = 'ExtTransliterator::purgeNewtitle';
 
 class ExtTransliterator {
 
-    const FIRST = "\x1F"; // A character that will be inserted in places where the ^ and $ should match
-    const LAST = "\x1E"; // A character that will be inserted in places where the ^ and $ should match
+    const FIRST = "\x1F"; // A character that will be appended when ^ should match at the start
+    const LAST = "\x1E"; // A character that will be appended when $ should match at the end
     const CACHE_PREFIX = "extTransliterator.2:"; // The prefix to use for cache items (the number should be incremented when the map format changes)
     var $mPages = null;  // An Array of "transliterator:$mapname" => The database row for that template.
     var $mMaps = array();// An Array of "$mapname" => The map parsed from that page.
@@ -91,7 +90,7 @@ class ExtTransliterator {
         $i = 1;
         while ( $i < count( $split ) ) {
             if ( isset( $utfCombiningClass[$split[$i]] ) ) {
-               $split[$i - 1] .= $split[$i]; 
+               $split[$i - 1] .= $split[$i];
                unset( $split[$i] );
 
             } else {
@@ -112,7 +111,7 @@ class ExtTransliterator {
     }
 
     /**
-     * Given a codepoints or letters array returns a list that contains 1 for every 
+     * Given a codepoints or letters array returns a list that contains 1 for every
      * alphabetic character and accent, and 0 otherwise. This allows for edge-of-word
      * detection.
      */
@@ -129,7 +128,7 @@ class ExtTransliterator {
     }
 
     /**
-     * Get all the existing maps in one query, useful given that the default 
+     * Get all the existing maps in one query, useful given that the default
      * behaviour of failing silently is designed to allow it to be used by
      * templates that don't know if a map exists, so may try far too often.
      */
@@ -166,17 +165,17 @@ class ExtTransliterator {
         $mappage = $prefix.$name;
 
         // Have we used it on thie page already?
-        if ( isset( $this->mMaps[$mappage] ) ) 
+        if ( isset( $this->mMaps[$mappage] ) )
             return $this->mMaps[$mappage];
 
         // Have we used it recently?
         $cached = $wgMemc->get( self::CACHE_PREFIX . $name );
-        if ( $cached ) 
+        if ( $cached )
             return $this->mMaps[$mappage] = ($cached == "false" ? false : $cached);
 
         // Does it exist at all?
         $existing = $this->getExistingMapNames( $prefix );
-        if (! isset( $existing[$mappage] ) ) 
+        if (! isset( $existing[$mappage] ) )
             $map = false;
 
         else
@@ -188,7 +187,7 @@ class ExtTransliterator {
 
     /**
      * Parse a map input syntax into a map.
-     * 
+     *
      * Input syntax is a set of lines.
      *  All " " are ignored.
      *  Lines starting with # are ignored, remaining lines are split by =>
@@ -233,13 +232,13 @@ class ExtTransliterator {
             // Or, could just signify that the message was blank
             if ( $first_line == "<$mappage>")
                 return false;
-            else if ( preg_replace( '/<(decompose|sensitive)>/', '', $first_line ) != '') 
+            else if ( preg_replace( '/<(decompose|sensitive)>/', '', $first_line ) != '')
                 return wfMsg( 'transliterator-error-syntax', $first_line, $mappage );
 
             if ( strpos( $first_line, "<decompose>" ) !== FALSE ) {
                 $map['__decompose__'] = true;
                 $decompose = true;
-            } 
+            }
             if ( strpos( $first_line, "<sensitive>" ) !== FALSE ) {
                 $map['__sensitive__'] = true;
             }
@@ -254,11 +253,11 @@ class ExtTransliterator {
 
             $pair = preg_split( '/\s*=>\s*/', $line );
 
-            if ( count( $pair ) != 2 ) 
+            if ( count( $pair ) != 2 )
                 return wfMsg( "transliterator-error-syntax", $line, $mappage );
 
             $from = $pair[0];
-            $to = html_entity_decode( $pair[1], ENT_QUOTES, 'UTF-8' );
+            $to = Sanitizer::decodeCharReferences( $pair[1], ENT_QUOTES, 'UTF-8' );
 
             // Convert the ^ and $ selectors into special characters for matching
             // Leave single ^ and $'s alone incase someone wants to use them
@@ -275,7 +274,7 @@ class ExtTransliterator {
             }
 
             // Now we've looked at our syntax we can remove html escaping to reveal the true form
-            $from = html_entity_decode( $from, ENT_QUOTES, 'UTF-8' );
+            $from = Sanitizer::decodeCharReferences( $from, ENT_QUOTES, 'UTF-8' );
             if ( $decompose ) { // Undo the NFCing of MediaWiki
                 $from = UtfNormal::toNFD( $from );
             }
@@ -284,9 +283,9 @@ class ExtTransliterator {
             if ( isset( $map[$from] ) ) {
 
                 // Or a rule of the same length, i.e. the same rule.
-                if ( is_string( $map[$from] ) && $to != $map[$from] ) 
+                if ( is_string( $map[$from] ) && $to != $map[$from] )
                     return wfMsg("transliterator-error-ambiguous", $line, $mappage);
-                
+
             } else if ( strlen( $from ) > 1 ){
 
                 // Bail if the left hand side is too long (has performance implications otherwise)
@@ -298,7 +297,7 @@ class ExtTransliterator {
                 for ( $i = 1; $i < $fromlen; $i++ ) {
                     $substr = substr( $from, 0, $i );
 
-                    if (! isset( $map[$substr] ) ) 
+                    if (! isset( $map[$substr] ) )
                         $map[$substr] = true;
                 }
             } // else we have the default rule
@@ -310,9 +309,9 @@ class ExtTransliterator {
     }
 
     /**
-     * Transliterate a word by iteratively finding the longest substring from 
+     * Transliterate a word by iteratively finding the longest substring from
      * the start of the untransliterated string that we have a rule for, and
-     * transliterating it. 
+     * transliterating it.
      */
     function transliterate( $word, $map )
     {
@@ -452,7 +451,7 @@ class ExtTransliterator {
             $format = '$1';
         }
 
-        if ( trim( $answer ) != '') { 
+        if ( trim( $answer ) != '') {
             return str_replace('$1', $answer, $format);
         }
 
@@ -468,12 +467,12 @@ class ExtTransliterator {
             $output = '<span class="transliterator error"> '.$map.' </span>';
 
         } else { // A Map
-            $trans = UtfNormal::toNFC( $this->transliterate( html_entity_decode( $word, ENT_QUOTES, 'UTF-8' ), $map ) );
+            $trans = UtfNormal::toNFC( $this->transliterate( Sanitizer::decodeCharReferences( $word ), $map ) );
             $output = str_replace( '$1', $trans, $format );
         }
 
         // Populate the dependency table so that we get re-rendered if the map changes.
-        if ( isset( $this->mPages[$mappage] ) ) 
+        if ( isset( $this->mPages[$mappage] ) )
             $title = Title::newFromRow( $this->mPages[$mappage] );
         else
             $title = Title::newFromText( $mappage, NS_MEDIAWIKI );
@@ -497,6 +496,7 @@ class ExtTransliterator {
     static function purgeNewTitle ( &$title, &$newtitle, $a=false, $b=false, $c=false ) {
         return self::purgeTitle( $newtitle );
     }
+
     /**
      * Called on ArticleUndelete (and by other purge hook handlers)
      */
