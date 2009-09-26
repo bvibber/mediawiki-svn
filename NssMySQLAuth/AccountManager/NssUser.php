@@ -13,7 +13,7 @@ class NssUser {
 		$this->exists = false;
 		
 		$this->group = '';
-		$this->properties = new NssProperties();	
+		$this->properties = new NssProperties( $name );	
 	}
 	
 	function load() {
@@ -105,7 +105,7 @@ class NssUser {
 		);
 		
 		$this->properties->commit();
-		$dbw->immediateCommit();
+
 	}
 	
 	public static function fetchNames() {
@@ -123,7 +123,8 @@ class NssUser {
 		global $wgAuth;
 		$dbr = $wgAuth->getDB( DB_READ );
 		
-		$res = $dbr->select( 'passwd', array( 'pwd_name', 'pwd_active' ), array(), __METHOD__ );
+		$res = $dbr->select( 'passwd', array( 'pwd_name', 'pwd_active' ), 
+				array(), __METHOD__, array( 'ORDER BY' => 'pwd_name' ) );
 		
 		$actives = array();
 		while ( $row = $res->fetchObject() ) {

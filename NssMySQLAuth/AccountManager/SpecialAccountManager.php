@@ -11,8 +11,10 @@ class SpecialAccountManager extends SpecialPage {
 	function processData() {
 		global $wgRequest, $wgAuth;
 		$action = $wgRequest->getVal( 'action' );
-		$username = $wgRequest->getVal( 'user' );		
-		
+		$username = $wgRequest->getVal( 'user' );
+		if ( !$username )		
+			$username = $wgRequest->getVal( 'am-username' );
+			
 		if ( !( $action == 'create' || $action == 'submit' ) || !$wgRequest->wasPosted()  )
 			return;
 		
@@ -24,6 +26,7 @@ class SpecialAccountManager extends SpecialPage {
 		
 		// Extract post data
 		$post = $wgRequest->getValues();
+		$options = array();
 		foreach( $post as $key => $value ) {
 			// Only am-* data is proper data
 			if( substr( $key, 0, 3 ) != 'am-' || strlen( $key ) <= 3 )
@@ -31,6 +34,7 @@ class SpecialAccountManager extends SpecialPage {
 			// Split off the am- prefix
 			$keyname = str_replace( '-', ' ', strtolower( substr( $key, 3 ) ) );
 			$user->set( $keyname, $value );
+			$options[$keyname] = $value;
 		}
 		
 		if ( $action == 'submit' ) {
@@ -38,8 +42,8 @@ class SpecialAccountManager extends SpecialPage {
 		} else {
 			global $wgPasswordSender;			
 			
-			$password = $wgAuth->createAccount( $username );
-			$user->insert();
+			$password = $wgAuth->createAccount( $username, $options );
+			$user->commit();
 			
 			$email = wfMsg( 'am-welcome-mail', $username, $password );
 			$mailSubject = wfMsg( 'am-welcome-mail-subject' );
