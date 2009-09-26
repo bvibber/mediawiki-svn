@@ -452,7 +452,7 @@ $1",
 Poi aviri sbagghiatu a digitari â URL, o cliccatu supra nu link sbagghiatu.
 Chistu putissi ndicari nu bug nô software usatu da {{SITENAME}}.",
 'nosuchspecialpage' => 'Sta pàggina spiciali nun è dispunìbbili',
-'nospecialpagetext' => "<big>'''Hai cercatu na pàggina spiciali nun vàlida.'''</big>
+'nospecialpagetext' => "<strong>Hai cercatu na pàggina spiciali nun vàlida.</strong>
 
 L'alencu dî pàggini spiciali vàlidi s'attrova 'n [[Special:SpecialPages|Alencu dî pàggini spiciali]].",
 
@@ -541,14 +541,14 @@ L'account hà statu criatu currettamenti. Nun ti scurdari di pirsunalizzari li [
 'login'                      => 'Trasi',
 'nav-login-createaccount'    => 'Riggìstrati o trasi',
 'loginprompt'                => "Tu hai a abbilitari li ''cookies'' pi tràsiri ntâ {{SITENAME}}.",
-'userlogin'                  => 'Riggìstrati o trasi',
+'userlogin'                  => 'Trasi',
 'logout'                     => 'Nesci',
 'userlogout'                 => 'Nesci',
 'notloggedin'                => "Nun v'aviti riggistratu",
-'nologin'                    => "Nun nn'aviti nu cuntu pi ccà? $1.",
+'nologin'                    => "Nun nn'aviti nu cuntu pi ccà? '''$1'''.",
 'nologinlink'                => 'Criati nu cuntu sùbbitu',
 'createaccount'              => 'Criati un cuntu novu',
-'gotaccount'                 => 'Hai già nu cuntu? $1.',
+'gotaccount'                 => "Hai già nu cuntu? '''$1'''.",
 'gotaccountlink'             => 'Trasi',
 'createaccountmail'          => 'via e-mail',
 'badretype'                  => "La ''password'' chi mittisti nun è bona.",
@@ -1025,7 +1025,7 @@ S'havi accirtari ca la cuntinuità storica di la pàggina nun veni altirata.",
 'prevn-title'                      => '{{PLURAL:$1|Risultatu pricidenti|$1 risultati pricedenti}}',
 'nextn-title'                      => '{{PLURAL:$1|Risultatu successivu|$1 risultata successivi}}',
 'shown-title'                      => 'Ammustra {{PLURAL:$1|nu risultatu|$1 risultati}} pi pàggina',
-'viewprevnext'                     => 'Talìa ($1) ($2) ($3).',
+'viewprevnext'                     => 'Talìa ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Opzioni di circata',
 'searchmenu-exists'                => "* Pàggina '''[[$1]]'''",
 'searchmenu-new'                   => "'''Crea la pàggina \"[[:\$1]]\" supra sta wiki!'''",
@@ -1424,14 +1424,15 @@ Pi nziriri nu file nta na pàggina, fai nu lijami accussì:
 'large-file'                  => 'Si raccumanna di nun supirari li diminzioni di $1 pi ognunu file; stu file è granni $2.',
 'largefileserver'             => 'Lu file sùpira li diminzioni cunzintiti dâ cunfigurazzioni dû server.',
 'emptyfile'                   => "Lu file appena carricatu pari èssiri vacanti. Chistu putissi èssiri duvutu a n'erruri ntô nomu dû file. Virificari ca si ntenni riarmenti carricari stu file.",
-'fileexists'                  => "Nu file cu stu nomu asisti già, pi favuri cuntrolla '''<tt>$1</tt>''' siddu nun sî sicuru di vulìrilu suvrascrìviri.",
-'filepageexists'              => "La pàggina di discrizzioni di stu file fu ggià criata nnû nnirizzu '''<tt>$1</tt>''', macari si ancora non c'è nu file cu stu nomu. La discrizzioni di l'uggettu ca fu misa ntô mentri dû caricamentu non si vidi supra a la pàggina di discussioni. Pi fàrila cumpàriri ntâ pàggina di discussioni, c'è la nicissitati di mudificàrila a manu",
-'fileexists-extension'        => "Nu file cu nu nomu simili a chistu esisti già; l'unica diffirenza è l'usu dê maiusculi nte l'estensioni:<br />
-Nomu dû file carricatu: '''<tt>$1</tt>'''<br />
-Nome dû file esistenti: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Nu file cu stu nomu asisti già, pi favuri cuntrolla '''<tt>[[:$1]]</tt>''' siddu nun sî sicuru di vulìrilu suvrascrìviri.
+[[$1|thumb]]",
+'filepageexists'              => "La pàggina di discrizzioni di stu file fu ggià criata nnû nnirizzu '''<tt>[[:$1]]</tt>''', macari si ancora non c'è nu file cu stu nomu. La discrizzioni di l'uggettu ca fu misa ntô mentri dû caricamentu non si vidi supra a la pàggina di discussioni. Pi fàrila cumpàriri ntâ pàggina di discussioni, c'è la nicissitati di mudificàrila a manu",
+'fileexists-extension'        => "Nu file cu nu nomu simili a chistu esisti già; l'unica diffirenza è l'usu dê maiusculi nte l'estensioni: [[$2|thumb]]
+* Nomu dû file carricatu: '''<tt>[[:$1]]</tt>'''
+* Nome dû file esistenti: '''<tt>[[:$2]]</tt>'''
 Pi favuri scegghiti n'àutru nomu.",
-'fileexists-thumb'            => "<center>'''Mmagini esistenti'''</center>",
-'fileexists-thumbnail-yes'    => "Lu file carricato sembra èssiri lu risurtatu di n'antiprima ''(thumbnail)''. Virificari, pi cunfruntu, lu file '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Lu file carricato sembra èssiri lu risurtatu di n'antiprima ''(thumbnail)''. [[$1|thumb]]
+Virificari, pi cunfruntu, lu file '''<tt>[[:$1]]</tt>'''.
 Siduu si tratta dâ stissa mmagini, nte dimenzioni urigginali, nun è nicissariu carricara àutri antiprimi.",
 'file-thumbnail-no'           => "Lu nomu dô file accumenza cu '''<tt>$1</tt>'''. 
 Pari quinni èssiri lu risurtatu di n'antiprima ''(thumbnail)''.
@@ -1875,7 +1876,7 @@ Protucolli suppurtati: <tt>$1</tt>',
 'enotif_anon_editor'           => 'utenti anonimu $1',
 'enotif_body'                  => 'Gintili $WATCHINGUSERNAME, 
 
-la pàggina $PAGETITLE di {{SITENAME}} hà stata $CHANGEDORCREATED \'n data $PAGEEDITDATEANDTIME di $PAGEEDITOR; la virsioni attuali s\'attrova a lu ndirizzu $PAGETITLE_URL.
+la pàggina $PAGETITLE di {{SITENAME}} hà stata $CHANGEDORCREATED \'n data $PAGEEDITDATE di $PAGEEDITOR; la virsioni attuali s\'attrova a lu ndirizzu $PAGETITLE_URL.
 
 $NEWPAGE
 
@@ -1954,7 +1955,7 @@ Pi favuri utilizza lu tastu "\'n arreri" dû tò browser, ricàrrica la pàggina
 'protect-title'               => 'Prutezzioni di "$1"',
 'prot_1movedto2'              => '[[$1]] spustatu a [[$2]]',
 'protect-legend'              => 'Cunferma la prutezzioni',
-'protectcomment'              => 'Mutivu dâ prutezzioni',
+'protectcomment'              => 'Mutivu dâ prutizzioni',
 'protectexpiry'               => 'Scadenza',
 'protect_expiry_invalid'      => 'Scadenza nun vàlida.',
 'protect_expiry_old'          => 'Scadenza già trascursa.',
@@ -2161,7 +2162,6 @@ Pi maggiuri nfurmazzioni, talìa la [[Special:IPBlockList|lista di l'IP bluccati
 'contribslink'                    => 'cuntribbuti',
 'autoblocker'                     => 'Bluccatu automaticamenti pirchì lu ndirizzu IP è cundivisu cu l\'utenti "[[User:$1|$1]]". Lu bloccu di l\'utenti $1 fu mpostu pi lu siquenti mutivu: "\'\'\'$2\'\'\'".',
 'blocklogpage'                    => 'Blocchi',
-'blocklog-fulllog'                => 'Riggistru cumpretu dî blocchi',
 'blocklogentry'                   => 'hà bluccatu [[$1]]; scadenza $2 $3',
 'reblock-logentry'                => 'Canciau li mpustazzioni dû bloccu pi [[$1]] cu na scadenza di $2 $3',
 'blocklogtext'                    => "Chistu è l'alencu di l'azzioni di bloccu e sbloccu utenti. Li ndirizzi IP bluccati automaticamenti nun sunu alincati. Cunzurtari l'[[Special:IPBlockList|alencu IP bluccati]] pi l'alencu dî ndirizzi e noma utenti lu cui bloccu è opirativu.",
@@ -2399,6 +2399,7 @@ Visita [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] e [ht
 'tooltip-search-fulltext'         => 'Attrova pàggini pi chistu testu',
 'tooltip-p-logo'                  => 'Pàggina principali',
 'tooltip-n-mainpage'              => 'Vìsita la pàggina principali',
+'tooltip-n-mainpage-description'  => 'Talìa la pàggina principali',
 'tooltip-n-portal'                => 'Discrizzioni dû pruggettu, zoccu poi fari, unni attruvari li cosi',
 'tooltip-n-currentevents'         => "Nfurmazzioni supra l'avvinimenti d'attualitati",
 'tooltip-n-recentchanges'         => "Alencu di l'ùrtimi canciamenti dû situ.",

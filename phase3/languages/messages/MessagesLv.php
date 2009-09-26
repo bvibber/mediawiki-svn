@@ -415,10 +415,10 @@ Tavs lietotāja konts ir izveidots. Neaizmirsti, ka ir iespējams mainīt [[Spec
 'logout'                     => 'Iziet',
 'userlogout'                 => 'Iziet',
 'notloggedin'                => 'Neesi iegājis',
-'nologin'                    => 'Nav lietotājvārda? $1.',
+'nologin'                    => "Nav lietotājvārda? '''$1'''.",
 'nologinlink'                => 'Reģistrējies',
 'createaccount'              => 'Izveidot jaunu lietotāju',
-'gotaccount'                 => 'Tev jau ir lietotājvārds? $1!',
+'gotaccount'                 => "Tev jau ir lietotājvārds? '''$1'''!",
 'gotaccountlink'             => 'Dodies iekšā',
 'createaccountmail'          => 'pa e-pastu',
 'badretype'                  => 'Tevis ievadītās paroles nesakrīt.',
@@ -714,7 +714,7 @@ Mēģiniet [[Special:Search|meklēt]], lai atrastu saistītas lapas!',
 'notextmatches'                    => 'Neviena rezultāta, meklējot lapas tekstā',
 'prevn'                            => 'iepriekšējās {{PLURAL:$1|$1}}',
 'nextn'                            => 'nākamās {{PLURAL:$1|$1}}',
-'viewprevnext'                     => 'Skatīt ($1) ($2) ($3 vienā lapā).',
+'viewprevnext'                     => 'Skatīt ($1 {{int:pipe-separator}} $2) ($3 vienā lapā).',
 'searchmenu-exists'                => "'''Šajā projektā ir raksts ar nosaukumu \"[[:\$1]]\"'''",
 'searchmenu-new'                   => "'''Izveido rakstu \"[[:\$1]]\" šajā projektā!'''",
 'searchhelp-url'                   => 'Help:Saturs',
@@ -771,7 +771,7 @@ Pagaidām vari meklēt, izmantojot Google vai Yahoo.
 'prefs-watchlist-days-max'      => 'Ne vairāk kā 7 dienas',
 'prefs-watchlist-edits'         => 'Izmaiņu skaits, kuras rādīt izvērstajā uzraugāmo rakstu sarakstā:',
 'prefs-watchlist-edits-max'     => 'Ne vairāk kā 1000',
-'prefs-watchlist-token'         => 'Uzraugāmo lapu saraksta marķieris',
+'prefs-watchlist-token'         => 'Uzraugāmo lapu saraksta marķieris:',
 'prefs-misc'                    => 'Dažādi',
 'prefs-resetpass'               => 'Mainīt paroli',
 'prefs-email'                   => 'E-pasta uzstādījumi',
@@ -935,6 +935,13 @@ Ja tu izvēlies to norādīt, tas tiks izmantots, lai identificētu tavu darbu (
 'recentchanges'                     => 'Pēdējās izmaiņas',
 'recentchanges-legend'              => 'Pēdējo izmaiņu opcijas',
 'recentchangestext'                 => 'Šajā lapā ir šitajā viki izdarītās pēdējās izmaiņas.',
+'recentchanges-label-legend'        => 'Leģenda: $1.',
+'recentchanges-legend-newpage'      => '$1 - jauna lapa',
+'recentchanges-label-newpage'       => 'Šī izmaiņa radīja jaunu lapu',
+'recentchanges-legend-minor'        => '$1 - maznozīmīga izmaiņa',
+'recentchanges-label-minor'         => 'Šī ir maznozīmīga izmaiņa',
+'recentchanges-legend-bot'          => '$1 - bota izmaiņa',
+'recentchanges-label-bot'           => 'Šo izmaiņu veica bots',
 'rcnote'                            => 'Šobrīd ir {{PLURAL:$1|redzama pēdējā <strong>$1</strong> izmaiņa, kas izdarīta|redzamas pēdējās <strong>$1</strong> izmaiņas, kas izdarītas}} {{PLURAL:$2|pēdējā|pēdējās}} <strong>$2</strong> {{PLURAL:$2|dienā|dienās}} (līdz $4, $5).',
 'rcnotefrom'                        => "Šobrīd redzamas izmaiņas kopš '''$2''' (parādītas ne vairāk par '''$1''').",
 'rclistfrom'                        => 'Parādīt jaunas izmaiņas kopš $1',
@@ -1023,7 +1030,8 @@ Lūdzu, ņem vērā, ka tāpat kā citas wiki lapas arī tevis augšuplādētos 
 šī faila izmērs ir $2.',
 'largefileserver'        => 'Šis fails ir lielāks nekā serveris ņem pretī.',
 'emptyfile'              => 'Šķiet, ka tu esi augšuplādējis tukšu failu. Iespējams, faila nosaukumā esi pieļāvis kļūdu. Lūdzu, pārbaudi, vai tiešām tu vēlies augšuplādēt tieši šo failu.',
-'fileexists'             => "Fails ar šādu nosaukumu jau pastāv, lūdzu, pārbaudi '''<tt>$1</tt>''', ja neesi drošs, ka vēlies to mainīt.",
+'fileexists'             => "Fails ar šādu nosaukumu jau pastāv, lūdzu, pārbaudi '''<tt>[[:$1]]</tt>''', ja neesi drošs, ka vēlies to mainīt.
+[[$1|thumb]]",
 'file-thumbnail-no'      => "Faila vārds sākas ar '''<tt>$1</tt>'''.
 Izskatās, ka šis ir samazināts attēls ''(thumbnail)''.
 Ja tev ir šis pats attēls pilnā izmērā, augšuplādē to, ja nav, tad nomaini faila vārdu.",
@@ -1053,7 +1061,7 @@ Te var apskatīties dzēšanas reģistru, lai noskaidrotu kāpēc šo failu tore
 Lūdzu izvēlies aprakstošāku vārdu šim failam.",
 
 'license'        => 'Licence:',
-'license-header' => 'Licence:',
+'license-header' => 'Licence',
 
 # Special:ListFiles
 'listfiles-summary'     => 'Šajā lapā ir redzami visi augšuplādētie faili.
@@ -1327,7 +1335,7 @@ Ja vēlāk pārdomāsi un nevēlēsies vairs uzraudzīt šo lapu, klikšķini uz
 'enotif_body'        => '$WATCHINGUSERNAME,
 
 
-{{grammar:ģenitīvs|{{SITENAME}}}} lapu $PAGETITLE $CHANGEDORCREATED $PAGEEDITOR, $PAGEEDITDATEANDTIME, pašreizējā versja ir $PAGETITLE_URL.
+{{grammar:ģenitīvs|{{SITENAME}}}} lapu $PAGETITLE $CHANGEDORCREATED $PAGEEDITOR, $PAGEEDITDATE, pašreizējā versja ir $PAGETITLE_URL.
 
 $NEWPAGE
 
@@ -1716,6 +1724,7 @@ Pirmajā gadījumā var arī lietot šādu metodi, piem., [[{{#Special:Export}}/
 'tooltip-search-fulltext'         => 'Meklēt lapās šo tekstu',
 'tooltip-p-logo'                  => 'Sākumlapa',
 'tooltip-n-mainpage'              => 'Iet uz sākumlapu',
+'tooltip-n-mainpage-description'  => 'Šī projekta sākumlapa',
 'tooltip-n-portal'                => 'Par šo projektu, par to, ko tu vari šeit darīt un kur ko atrast',
 'tooltip-n-currentevents'         => 'Uzzini papildinformāciju par šobrīd aktuālajiem notikumiem',
 'tooltip-n-recentchanges'         => 'Izmaiņas, kas nesen izdarītas šajā wiki.',

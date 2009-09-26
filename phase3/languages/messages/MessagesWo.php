@@ -398,9 +398,9 @@ $1',
 Xéj-na dangaa juum ci bind URL bi, walla nga topp lëkkalekaay bu baaxul. 
 Lii man naa doon it ag njuumte ci tëriin bi ñuy jëfandikoo ci {{SITENAME}}.',
 'nosuchspecialpage' => 'Xëtu jagleel wu amul',
-'nospecialpagetext' => "<big>'''Da nga laaj aw xëtu jagleel wu wiki bi xamul.'''</big>
+'nospecialpagetext' => '<strong>Da nga laaj aw xëtu jagleel wu wiki bi xamul.</strong>
 
-Ab limu xëti jagleel yépp, ma nees na koo gis ci [[Special:SpecialPages|{{int:specialpages}}]].",
+Ab limu xëti jagleel yépp, ma nees na koo gis ci [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Njuumte',
@@ -480,14 +480,14 @@ Sag mbindu sotti na. Bul fatte soppi say tànneef ni nga ko bëggee ci {{SITENAM
 'login'                      => 'xammeeku',
 'nav-login-createaccount'    => 'Dugg / Bindu',
 'loginprompt'                => 'Faaw nga doxal cookie yi ngir man a dugg ci {{SITENAME}}.',
-'userlogin'                  => 'Dugg / Bindu',
+'userlogin'                  => 'Dugg',
 'logout'                     => 'Génnu',
 'userlogout'                 => 'Génnu',
 'notloggedin'                => 'Duggoo de',
-'nologin'                    => 'Sosagoo am sàq ? $1.',
+'nologin'                    => "Sosagoo am sàq ? '''$1'''.",
 'nologinlink'                => 'Sos ko leegi',
 'createaccount'              => 'Sos am sàq',
-'gotaccount'                 => 'Sos nga am sàq? $1.',
+'gotaccount'                 => "Sos nga am sàq? '''$1'''.",
 'gotaccountlink'             => 'Dugg',
 'createaccountmail'          => 'Jaare ko ci m-bataaxal',
 'badretype'                  => 'Baatujàll yi nga bind yemuñu.',
@@ -961,7 +961,7 @@ Soo jëfandikoo lëkkalekaayu joow yi day neenal boyot yi nga jotoon a fal.',
 'prevn-title'                      => '$1 {{PLURAL:$1|ngérte bi jiitu t|ngérte yi jiitu}}',
 'nextn-title'                      => '$1 {{PLURAL:$1|ngérte bi toftal|ngérte yi toftal}}',
 'shown-title'                      => 'Wone $1 {{PLURAL:$1|ngérte|ngérte}} ciw xët',
-'viewprevnext'                     => 'Xool ($1) ($2) ($3).',
+'viewprevnext'                     => 'Xool ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Tànneefi ceet',
 'searchmenu-exists'                => "'''wenn xët wu tudd « [[:$1]] » moo am ci bii wiki'''",
 'searchmenu-new'                   => "'''Sosal xët wii di « [[:$1|$1]] » ci bii wiki !'''",
@@ -1341,13 +1341,14 @@ Saytul [[Special:NewFiles| gaaraluwaayu dencukaay yu yees yi]] ngir gis bu gën 
 'large-file'                  => 'Li gën mooy dayoo dencukaay bi bañ a romb $1; bii dencukaay $2 la.',
 'largefileserver'             => 'Dayoo dencukaay bi romb na kem bu joxekaay bi attan.',
 'emptyfile'                   => 'dencukaay bi nga bëgg a yeb dafa mel ni amul dara. Xéj-na ag njuumte ci turu dencukaay bi moo ko waral. Seetal bu baax ndax dëgg-dëgg bëgg nga yeb bii dencukaay.',
-'fileexists'                  => "Am na dencukaay bu tudd nii ba noppi. Saytul '''<tt>$1</tt>''' su dee wóoru la ne bëgg nga koo soppi.",
-'filepageexists'              => "Xëtu faramfacce bu dencukaay bi sos nañ ko ba noppi ci bii màkkaan '''<tt>$1</tt>''', waaye amagul dencukaay bu ni tudd nii-nii. Faramfacceg xët wi nga dugal ci diirub yeb gi du feeñ ci xëtu waxtaanuwaay wi. Ngir faramfacce gi feeñ ci xëtu waxtaanuwaay wi faaw nga soppi ko ak sa loxo.",
-'fileexists-extension'        => "Am na dencukaay bu ni tudd ba noppi: <br />
-Turu dencukaay bi ngay yeb : '''<tt>$1</tt>'''<br />
-Turu dencukaay bi fi am : '''<tt>$2</tt>'''<br /> 
+'fileexists'                  => "Am na dencukaay bu tudd nii ba noppi.
+Saytul '''<tt>[[:$1]]</tt>''' su dee wóoru la ne bëgg nga koo soppi.
+[[$1|thumb]]",
+'filepageexists'              => "Xëtu faramfacce bu dencukaay bi sos nañ ko ba noppi ci bii màkkaan '''<tt>[[:$1]]</tt>''', waaye amagul dencukaay bu ni tudd nii-nii. Faramfacceg xët wi nga dugal ci diirub yeb gi du feeñ ci xëtu waxtaanuwaay wi. Ngir faramfacce gi feeñ ci xëtu waxtaanuwaay wi faaw nga soppi ko ak sa loxo.",
+'fileexists-extension'        => "Am na dencukaay bu ni tudd ba noppi: [[$2|thumb]]
+* Turu dencukaay bi ngay yeb : '''<tt>[[:$1]]</tt>'''
+* Turu dencukaay bi fi am : '''<tt>[[:$2]]</tt>''' 
 Tànnal weneen tur.",
-'fileexists-thumb'            => "<center>'''dencukaay bi am na fi'''</center>",
 'fileexists-forbidden'        => 'Am na ŋara wu ni tudd ba noppi te mano koo war; Dellul ginnaaw ngir yeb ŋara wi ak weneen tur 
 [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Am na ŋara wu ni tudd ba noppi ci dencuwaayu ŋara bi ñuy bokk; Dellul ginnaaw ngir yeb ŋara wi ak weneen tur. [[File:$1|thumb|center|$1]]',
@@ -1983,7 +1984,6 @@ Xoolal [[Special:IPBlockList|limu IP yees téye]] ngir gis ñees téye ñépp.',
 'contribslink'                    => 'cëru',
 'autoblocker'                     => 'Dañ la téye ndax sa màkkanu IP « $1 » moo ko mujje jëfandikoo. Li waral téyeg $1 mooy ne : « $2 ».',
 'blocklogpage'                    => 'Jaar-jaaru téye yi',
-'blocklog-fulllog'                => 'Yéenekaay bu matale ci téye yi',
 'blocklogentry'                   => 'moo téye « [[$1]] » - ci diirub : $2 $3',
 'reblock-logentry'                => 'moo soppi anami téye gu [[$1]] ak diirub njeextal bu $2 $3',
 'blocklogtext'                    => 'Lii ab lim la ci téye ak téyedi yu jëfandikukat yi. Màkkaani IP yi ñu téye cig boppal limuñu leen fi. yëral [[Special:IPBlockList|limu jëfandikukat yiñ téye]] ngi gis ñi ñu téye nii-nii.',

@@ -273,7 +273,7 @@ $messages = array(
 
 # Main script and global functions
 'nosuchspecialpage' => "Pájina espesiál ne'e la iha",
-'nospecialpagetext' => "<big>'''Pájina espesiál ne'e la iha.'''</big>
+'nospecialpagetext' => "<strong>Pájina espesiál ne'e la iha.</strong>
 
 Lista ida pájina espesiál nian [[Special:SpecialPages|iha ne'e]].",
 
@@ -294,13 +294,13 @@ La haluha filak ó-nia [[Special:Preferences|preferénsia]].",
 'yourname'                => "Naran uza-n'in:",
 'login'                   => 'Log in',
 'nav-login-createaccount' => 'Log in / kriar konta ida',
-'userlogin'               => 'Log in / kriar konta ida',
+'userlogin'               => 'Log in',
 'logout'                  => 'Husik',
 'userlogout'              => 'Husik',
-'nologin'                 => 'La iha konta ida? $1.',
+'nologin'                 => "La iha konta ida? '''$1'''.",
 'nologinlink'             => 'Registrar',
 'createaccount'           => "Registrar uza-na'in",
-'gotaccount'              => 'Ó iha konta ona? $1.',
+'gotaccount'              => "Ó iha konta ona? '''$1'''.",
 'gotaccountlink'          => 'Log in',
 'userexists'              => "Uza-na'in ne'e ona iha wiki. Favór ida lori naran seluk.",
 'nosuchuser'              => 'Konta uza-na\'in (naran "$1") la iha.
@@ -376,7 +376,7 @@ Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
 'noexactmatch'       => "'''Pájina ''$1'' la iha.''' Ó bele [[:$1|kria pájina ne'e]].",
 'prevn'              => 'molok {{PLURAL:$1|$1}}',
 'nextn'              => 'oinmai {{PLURAL:$1|$1}}',
-'viewprevnext'       => 'Haree ($1) ($2) ($3)',
+'viewprevnext'       => 'Haree ($1 {{int:pipe-separator}} $2) ($3)',
 'search-result-size' => '$1 ({{PLURAL:$2|liafuan ida|liafuan $2}})',
 'searchall'          => 'hotu',
 'powersearch'        => 'Buka',

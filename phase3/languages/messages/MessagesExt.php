@@ -285,9 +285,9 @@ $messages = array(
 'nosuchactiontext'  => "Nu se puei realizal l'ación
 especificá ena URL",
 'nosuchspecialpage' => 'Nu desisti tal páhina especial',
-'nospecialpagetext' => "<big>'''Nu desisti esa páhina especial.'''</big>
+'nospecialpagetext' => '<strong>Nu desisti esa páhina especial.</strong>
 
-Pueis alcuentral una lista colas páhinas especialis desistentis en [[Special:SpecialPages]].",
+Pueis alcuentral una lista colas páhinas especialis desistentis en [[Special:SpecialPages]].',
 
 # General errors
 'error'                => 'Marru',
@@ -363,14 +363,14 @@ Ya está criá la tu cuenta. Alcuerdati de chambal las tus preferéncias al tent
 'login'                      => 'Entral',
 'nav-login-createaccount'    => 'Entral/Crial cuenta',
 'loginprompt'                => 'Ebis atival las cookies pa entral en {{SITENAME}}.',
-'userlogin'                  => 'Entral/Crial cuenta',
+'userlogin'                  => 'Entral',
 'logout'                     => 'Salil',
 'userlogout'                 => 'Salil',
 'notloggedin'                => "Nu t'alcuentras rustriu",
-'nologin'                    => 'Entovia nu tiinis una cuenta? $1.',
+'nologin'                    => "Entovia nu tiinis una cuenta? '''$1'''.",
 'nologinlink'                => 'Cria una',
 'createaccount'              => 'Crial cuenta',
-'gotaccount'                 => 'Ya tiinis una cuenta? $1.',
+'gotaccount'                 => "Ya tiinis una cuenta? '''$1'''.",
 'gotaccountlink'             => 'Entral',
 'createaccountmail'          => 'pol e-mail',
 'badretype'                  => 'Las consínias nu conciin.',
@@ -722,7 +722,7 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.",
 'notextmatches'             => 'Nu desistin conciéncias con el testu el artículu',
 'prevn'                     => '{{PLURAL:$1|$1 anterioris}}',
 'nextn'                     => '{{PLURAL:$1|$1 siguientis}}',
-'viewprevnext'              => 'Vel ($1) ($2) ($3).',
+'viewprevnext'              => 'Vel ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'            => 'Help:Continius',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 letra|$2 letras}})',
 'search-result-score'       => 'Emportáncia: $1%',
@@ -959,14 +959,16 @@ P'añiil la imahin nuna páhina, gasta el atihu el hormuláriu
 'large-file'                  => 'Es recomendabri que los archivus nu seyan mayoris de $1; esti archivu ocupa $2.',
 'largefileserver'             => 'Esti archivu es mas grandi que lo premitiu pol el sirviol.',
 'emptyfile'                   => "El archivu qu'as ententau empuntal paci estal vaciu; pol favol, compreba que realmenti se trata el archivu que querias empuntal.",
-'fileexists'                  => "Ya desisti un archivu con esi nombri. Pol favol, compreba que realmenti quieis chambal el archivu '''<tt>$1</tt>'''.",
-'filepageexists'              => "Ya desisti un artículu con esi nombri, pol favol, compreba '''<tt>$1</tt>''' si nu estás siguru e querel chambalu.",
-'fileexists-extension'        => "Ya desisti un archivu con un nombri paiciu:<br />
-Nombri el archivu empuntau: '''<tt>$1</tt>'''<br />
-Nombri el archivu ya desistenti: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Ya desisti un archivu con esi nombri.
+Pol favol, compreba que realmenti quieis chambal el archivu '''<tt>[[:$1]]</tt>'''.
+[[$1|thumb]]",
+'filepageexists'              => "Ya desisti un artículu con esi nombri, pol favol, compreba '''<tt>[[:$1]]</tt>''' si nu estás siguru e querel chambalu.",
+'fileexists-extension'        => "Ya desisti un archivu con un nombri paiciu: [[$2|thumb]]
+* Nombri el archivu empuntau: '''<tt>[[:$1]]</tt>'''
+* Nombri el archivu ya desistenti: '''<tt>[[:$2]]</tt>'''
 Pol favol, lihi un nombri deferenti.",
-'fileexists-thumb'            => "<center>'''Esta imáhin ya desisti'''</center>",
-'fileexists-thumbnail-yes'    => "El archivu paci sel una imahin chiquenina ''(cuairu)''. Pol favol, compreba qu'el archivu '''<tt>$1</tt>''' nu es la mesma imahin.<br />
+'fileexists-thumbnail-yes'    => "El archivu paci sel una imahin chiquenina ''(cuairu)''. [[$1|thumb]]
+Pol favol, compreba qu'el archivu '''<tt>[[:$1]]</tt>''' nu es la mesma imahin.
 Nel chascu en que huera la mesm imahin (inque seya en grandi) nu es mestel qu'empuntis el tu archivu.",
 'file-thumbnail-no'           => "El nombri el archivu esmiença pol '''<tt>$1</tt>'''. Paci sel una imahin pequeña ''(cuairu)''.
 Si tiinis la imahin cola resolución orihinal, empúntala, si nu, pol favol, chamba el nombri del archivu.",
@@ -1306,7 +1308,7 @@ Si quieis ehal de vehilal la páhina, pursa sobri \"Ehal de vehilal\".",
 'enotif_body'                  => 'Estimau $WATCHINGUSERNAME,
 
 
-S\'á $CHANGEDORCREATED el artículu $PAGETITLE (de {{SITENAME}}) el $PAGEEDITDATEANDTIME, siendu el su autol  $PAGEEDITOR. Consurta la $PAGETITLE_URL pa leyel la nueva velsión.
+S\'á $CHANGEDORCREATED el artículu $PAGETITLE (de {{SITENAME}}) el $PAGEEDITDATE, siendu el su autol  $PAGEEDITOR. Consurta la $PAGETITLE_URL pa leyel la nueva velsión.
 
 $NEWPAGE
 

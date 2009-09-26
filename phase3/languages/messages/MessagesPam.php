@@ -291,9 +291,9 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'nosuchaction'      => 'Alang makanyan a gawa',
 'nosuchactiontext'  => 'E ne kikilalanan ning wiki ing dapat/utus a babanggitan ning URL',
 'nosuchspecialpage' => 'Alang bulung a makabukud/espesial a anti kanian',
-'nospecialpagetext' => "<big>'''E ustu ing aduan mung bulung a makabukud.'''</big>
+'nospecialpagetext' => '<strong>E ustu ing aduan mung bulung a makabukud.</strong>
 
-Ating tala da reng bulung a makabukud king [[Special:SpecialPages|{{int:specialpages}}]].",
+Ating tala da reng bulung a makabukud king [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Mali',
@@ -375,14 +375,14 @@ Melalang ne ing kekang account. E mo kakalingwan alilan deng kekang piniling {{S
 'login'                      => 'Mag log in',
 'nav-login-createaccount'    => 'Mag-login / maglalang account',
 'loginprompt'                => 'Kailangan mo reng cookie a makasalangi (enabled) ba kang makapag log in king {{SITENAME}}.',
-'userlogin'                  => 'Mag-login / maglalang account',
+'userlogin'                  => 'Mag-login',
 'logout'                     => 'Mag-log out',
 'userlogout'                 => 'Mag logout',
 'notloggedin'                => 'E maka login',
-'nologin'                    => 'Ala kang login? $1.',
+'nologin'                    => "Ala kang login? '''$1'''.",
 'nologinlink'                => 'Maglalang kang account',
 'createaccount'              => 'Maglalang kang account',
-'gotaccount'                 => 'Atin na kang account? $1.',
+'gotaccount'                 => "Atin na kang account? '''$1'''.",
 'gotaccountlink'             => 'Mag log in',
 'createaccountmail'          => 'kapamilatan ning e-mail',
 'badretype'                  => 'Ding password a linub mu ela mibabage.',
@@ -767,7 +767,7 @@ Malyari meng [[:\$1|lalangan ing bulung a iti]].",
 'notextmatches'             => 'Alang tinud/pareu kareng bansag bulung (no page title matches)',
 'prevn'                     => 'minunang {{PLURAL:$1|$1}}',
 'nextn'                     => 'tutuking {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'Lon ($1) ($2) ($3)',
+'viewprevnext'              => 'Lon ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'            => 'Help:Kalamnan',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 a kataya|$2 kataya}})',
 'search-result-score'       => 'Kaugnayan (relevance): $1%',
@@ -1036,17 +1036,17 @@ Ba yang iyabe ing simpan king metung a bulung gamitan me ing suglung (link) king
 Ing simpan a ini $2 ya.',
 'largefileserver'             => 'Mas maragul ya ing simpan (file) a ini kesa ketang makapaintulut (configured) king server.',
 'emptyfile'                   => 'Balamu ala yang laman ing simpan (file) a linulan mu. Mapaliaring ing sangkan, pamagkamali (typo) ya king lagyung simpan (file name). Pakaisipan mu nung taganang buri meng ilulan ining simpan.',
-'fileexists'                  => "Atin nang simpan (file) a maki lagyung anti kaniti; pakilawe mu '''<tt>$1</tt>''' nung e ka siguradu nung buri meng alilan.",
-'filepageexists'              => "Melalang na ing bulung pamilarawan (description page) para king simpan (file) a ini king '''<tt>$1</tt>''', oneng king salukuyan, ala pang simpan a maki lagyung anti kaniti.
+'fileexists'                  => "Atin nang simpan (file) a maki lagyung anti kaniti; pakilawe mu '''<tt>[[:$1]]</tt>''' nung e ka siguradu nung buri meng alilan.
+[[$1|thumb]]",
+'filepageexists'              => "Melalang na ing bulung pamilarawan (description page) para king simpan (file) a ini king '''<tt>[[:$1]]</tt>''', oneng king salukuyan, ala pang simpan a maki lagyung anti kaniti.
 E ya tambing lunto king bulung pamilarawan ing sampulung (summary) a isulat mu.
 Ba yang lunto karin ing kekang sampulung, kailangan me pamung i-edit",
-'fileexists-extension'        => "Maki simpan (file) a makayawig lagyu kaniti:<br />
-Lagyu ning simpan a milululan: '''<tt>$1</tt>'''<br />
-Lagyu ning salukuyan a simpan: '''<tt>$2</tt>'''<br />
+'fileexists-extension'        => "Maki simpan (file) a makayawig lagyu kaniti: [[$2|thumb]]
+* Lagyu ning simpan a milululan: '''<tt>[[:$1]]</tt>'''
+* Lagyu ning salukuyan a simpan: '''<tt>[[:$2]]</tt>'''
 Mamili kang aliwang lagyu.",
-'fileexists-thumb'            => "<center>'''Salukuyan a simpan (file)'''</center>",
-'fileexists-thumbnail-yes'    => "Lupa yang larawan a pepalati ing simpan ''(thumbnail)''.
-Pakilawe me ing simpan '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Lupa yang larawan a pepalati ing simpan ''(thumbnail)''. [[$1|thumb]]
+Pakilawe me ing simpan '''<tt>[[:$1]]</tt>'''.
 Nung ya naman ketang minunang maki orihinal a dagul ing simpan a maka-check, e na kailangang maglulan karagdagan a thumbnail.",
 'file-thumbnail-no'           => "Magumpisa ya ing lagyungsimpan (filename) king '''<tt>$1</tt>'''.
 Lupa yang larawan a pepalati ''(thumbnail)''.
@@ -1394,7 +1394,7 @@ manibat anyang tawli kang linabas.',
 'enotif_body'                  => 'Kakaluguran kung $WATCHINGUSERNAME,
 
 
-Ining bulung a {{SITENAME}} a maki bansag a $PAGETITLE me$CHANGEDORCREATED ya aniang $PAGEEDITDATEANDTIME kapamilata\'nang $PAGEEDITOR. Lon me ing $PAGETITLE_URL para king salukuyan a bersion.
+Ining bulung a {{SITENAME}} a maki bansag a $PAGETITLE me$CHANGEDORCREATED ya aniang $PAGEEDITDATE kapamilata\'nang $PAGEEDITOR. Lon me ing $PAGETITLE_URL para king salukuyan a bersion.
 
 $NEWPAGE
 

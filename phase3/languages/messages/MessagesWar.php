@@ -288,9 +288,9 @@ $messages = array(
 Bangin la, nagsayop ka pagmakinilya han URL, o sinmunod hin sayop nga sumpay.
 Bangin liwat ini usa nga bug dida han software nga ginagamit han {{SITENAME}}.',
 'nosuchspecialpage' => 'Waray sugad nga ispisyal nga pakli',
-'nospecialpagetext' => "<big>'''Naghangyo ka hin diri-puyde nga ispisyal nga pakli.'''</big>
+'nospecialpagetext' => '<strong>Naghangyo ka hin diri-puyde nga ispisyal nga pakli.</strong>
 
-In lista o talaan hin puyde nga mga ispisyal nga pakli mabibilngan ha [[Special:SpecialPages|{{int:specialpages}}]].",
+In lista o talaan hin puyde nga mga ispisyal nga pakli mabibilngan ha [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'           => 'Sayop',
@@ -313,7 +313,7 @@ MySQL nagbalik hin sayop nga "$3: $4".',
 # Login and logout pages
 'login'                   => 'Sakob',
 'nav-login-createaccount' => 'Sakob / paghimo hin bag-o nga akawnt',
-'userlogin'               => 'Sakob/Pagrehistro',
+'userlogin'               => 'Sakob',
 'logout'                  => 'Gawas',
 'userlogout'              => 'Gawas',
 'loginerror'              => 'Sayop hin pagsakob',
@@ -329,7 +329,7 @@ MySQL nagbalik hin sayop nga "$3: $4".',
 # Search results
 'prevn'          => 'naha-una nga $1',
 'nextn'          => 'sunod nga {{PLURAL:$1|$1}}',
-'viewprevnext'   => 'Kitaa an ($1) ($2) ($3)',
+'viewprevnext'   => 'Kitaa an ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url' => 'Help:Sulod',
 'powersearch'    => 'Bilnga',
 

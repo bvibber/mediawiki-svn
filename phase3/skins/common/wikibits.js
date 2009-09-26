@@ -163,6 +163,7 @@ function changeText(el, newText) {
 }
 
 function toggleToc() {
+	var tocmain = document.getElementById('toc');
 	var toc = document.getElementById('toc').getElementsByTagName('ul')[0];
 	var toggleLink = document.getElementById('togglelink');
 
@@ -170,10 +171,12 @@ function toggleToc() {
 		changeText(toggleLink, tocHideText);
 		toc.style.display = 'block';
 		document.cookie = "hidetoc=0";
+		tocmain.className = 'toc';
 	} else {
 		changeText(toggleLink, tocShowText);
 		toc.style.display = 'none';
 		document.cookie = "hidetoc=1";
+		tocmain.className = 'toc tochidden';
 	}
 }
 
@@ -692,6 +695,9 @@ function ts_resortTable(lnk) {
 		var row = table.rows[j];
 		if((" "+row.className+" ").indexOf(" unsortable ") < 0) {
 			var keyText = ts_getInnerText(row.cells[column]);
+			if(keyText == undefined) {
+				keyText = ""; 
+			}
 			var oldIndex = (reverse ? -j : j);
 			var preprocessed = preprocessor( keyText.replace(/^[\s\xa0]+/, "").replace(/[\s\xa0]+$/, "") );
 
@@ -934,7 +940,6 @@ function jsMsg( message, className ) {
 	}
 
 	messageDiv.setAttribute( 'id', 'mw-js-message' );
-	messageDiv.style.display = 'block';
 	if( className ) {
 		messageDiv.setAttribute( 'class', 'mw-js-message-'+className );
 	}

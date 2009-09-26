@@ -1009,7 +1009,8 @@ class Title {
 
 	/**
 	 * Can $wgUser perform $action on this page?
-	 * This skips potentially expensive cascading permission checks.
+	 * This skips potentially expensive cascading permission checks
+	 * as well as avoids expensive error formatting
 	 *
 	 * Suitable for use for nonessential UI controls in common cases, but
 	 * _not_ for functional access control.
@@ -1208,8 +1209,14 @@ class Title {
 			}
 		} elseif( !$user->isAllowed( $action ) ) {
 			$return = null;
-			$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
-				User::getGroupsWithPermission( $action ) );
+			
+			// We avoid expensive display logic for quickUserCan's and such
+			$groups = false; 
+			if (!$short) {
+				$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
+					User::getGroupsWithPermission( $action ) );
+			} 
+			
 			if( $groups ) {
 				$return = array( 'badaccess-groups',
 					array( implode( ', ', $groups ), count( $groups ) ) );
@@ -1283,12 +1290,12 @@ class Title {
 		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssSubpage() 
 		#      and $this->userCanEditJsSubpage() from working
 		# XXX: right 'editusercssjs' is deprecated, for backward compatibility only
-		if( $this->isCssSubpage() && ( !$user->isAllowed('editusercssjs') || !$user->isAllowed('editusercss') )
+		if( $this->isCssSubpage() && !( $user->isAllowed('editusercssjs') || $user->isAllowed('editusercss') )
 			&& $action != 'patrol'
 			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) )
 		{
 			$errors[] = array('customcssjsprotected');
-		} else if( $this->isJsSubpage() && ( !$user->isAllowed('editusercssjs') || !$user->isAllowed('edituserjs') )
+		} else if( $this->isJsSubpage() && !( $user->isAllowed('editusercssjs') || $user->isAllowed('edituserjs') )
 			&& $action != 'patrol'
 			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) )
 		{
@@ -2132,7 +2139,7 @@ class Title {
 	/**
 	 * What is the page_latest field for this page?
 	 * @param $flags \type{\int} a bit field; may be GAID_FOR_UPDATE to select for update
-	 * @return \type{\int}
+	 * @return \type{\int} or false if the page doesn't exist
 	 */
 	public function getLatestRevID( $flags = 0 ) {
 		if( $this->mLatestID !== false )
@@ -2245,7 +2252,7 @@ class Title {
 		# input with invalid UTF-8 sequences to be nullified out in PHP 5.2.x,
 		# conveniently disabling them.
 		#
-		$dbkey = preg_replace( '/[ _\xA0\x{1680}\x{180E}\x{2000}-\x{200B}\x{2028}\x{2029}\x{202F}\x{205F}\x{3000}]+/u', '_', $dbkey );
+		$dbkey = preg_replace( '/[ _\xA0\x{1680}\x{180E}\x{2000}-\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}\x{3000}]+/u', '_', $dbkey );
 		$dbkey = trim( $dbkey, '_' );
 
 		if ( '' == $dbkey ) {

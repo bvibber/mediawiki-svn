@@ -260,7 +260,7 @@ $messages = array(
 Vus avais endatà fauss la URL, u avais suandà in link incorrect.
 I po dentant er esser in errur en la software da {{SITENAME}}.",
 'nosuchspecialpage' => "I n'exista betg ina tala pagina speziala",
-'nospecialpagetext' => "<big>'''Vus avais tschertgà ina pagina speziala che n'exista betg.'''</big>
+'nospecialpagetext' => "<strong>Vus avais tschertgà ina pagina speziala che n'exista betg.</strong>
 
 Ina glista da las paginas spezialas existentas chattais vus sut [[Special:SpecialPages|{{int:specialpages}}]].",
 
@@ -301,14 +301,14 @@ Tes conto è vegni creà. Betg emblida da midar tias preferenzas da {{SITENAME}}
 'login'                      => 'Log-in',
 'nav-login-createaccount'    => 'Log-in / crear in conto',
 'loginprompt'                => "Vus stuais avair '''activà cookies''' per pudair s'annunziar tar {{SITENAME}}.",
-'userlogin'                  => "s'annunziar / crear in nov conto d'utilisader",
+'userlogin'                  => "s'annunziar",
 'logout'                     => 'Log-out',
 'userlogout'                 => 'Log-out',
 'notloggedin'                => "Betg s'annunzià",
-'nologin'                    => 'Anc nagin conto? $1.',
+'nologin'                    => "Anc nagin conto? '''$1'''.",
 'nologinlink'                => "Crear in conto d'utilisader",
 'createaccount'              => "Crear in conto d'utilisader",
-'gotaccount'                 => "Gia in conto d'utilisader? $1.",
+'gotaccount'                 => "Gia in conto d'utilisader? '''$1'''.",
 'gotaccountlink'             => 'Log-in',
 'createaccountmail'          => 'per email',
 'loginerror'                 => 'Sbagl da log-in',
@@ -490,7 +490,7 @@ En il ''log da stidar'' che suonda pos ti guardar daco che la pagina è vegnida 
 'noexactmatch-nocreate'     => "'''I n'exista nagina pagina cun il titel \"\$1\".'''",
 'prevn'                     => 'davos {{PLURAL:$1|$1}}',
 'nextn'                     => 'proxims {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'Mussar ($1) ($2) ($3).',
+'viewprevnext'              => 'Mussar ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'            => 'Help:Cuntegn',
 'search-result-size'        => '$1 ({{PLURAL:$2|in pled|$2 pleds}})',
 'search-suggest'            => 'Has ti manegià: $1',

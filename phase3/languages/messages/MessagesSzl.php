@@ -302,9 +302,9 @@ $messages = array(
 'nosuchaction'      => 'Ńy mo takij uoperacyji',
 'nosuchactiontext'  => 'Uoprogramowańy ńy rozpoznowo uoperacyji takij kej podano w URL',
 'nosuchspecialpage' => 'Ńy mo takij špecyjalnyj zajty',
-'nospecialpagetext' => "<big>'''Uoprogramowańy ńy rozpoznowo takij špecyjalnyj zajty.'''</big>
+'nospecialpagetext' => '<strong>Uoprogramowańy ńy rozpoznowo takij špecyjalnyj zajty.</strong>
 
-Lista špecyjalnych zajtůw znejdźeš na [[Special:SpecialPages|{{int:specialpages}}]].",
+Lista špecyjalnych zajtůw znejdźeš na [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Feler',
@@ -388,14 +388,14 @@ Uotwarli my sam lo Ćebje kůnto.
 'login'                      => 'Zaloguj śe',
 'nav-login-createaccount'    => 'Logowańy / tworzyńy kůnta',
 'loginprompt'                => 'Muśiš mjeć zouůnčůne cookies coby můc śe sam zalůgować.',
-'userlogin'                  => 'Lůgowańy / Twořyńy kůnta',
+'userlogin'                  => 'Lůgowańy',
 'logout'                     => 'Wyloguj',
 'userlogout'                 => 'Wylogowańy',
 'notloggedin'                => 'Ńy ježeś zalůgowany',
-'nologin'                    => 'Ńy moš kůnta? $1.',
+'nologin'                    => "Ńy moš kůnta? '''$1'''.",
 'nologinlink'                => 'Twůř kůnto',
 'createaccount'              => 'Zouůž nowe kůnto',
-'gotaccount'                 => 'Moš juž kůnto? $1.',
+'gotaccount'                 => "Moš juž kůnto? '''$1'''.",
 'gotaccountlink'             => 'Zalůguj śe',
 'createaccountmail'          => 'e-brifym',
 'badretype'                  => 'Hasua kere žeś naškryflou ńy zgodzajům śe jydne s drugim.',
@@ -826,7 +826,7 @@ Možeš [[:\$1|tako utwořyć]], abo sprůbować pounygo šnupańo.",
 'notextmatches'                    => 'Ńy znejdźono we tekście zajtůw',
 'prevn'                            => 'popředńe {{PLURAL:$1|$1}}',
 'nextn'                            => 'nastympne {{PLURAL:$1|$1}}',
-'viewprevnext'                     => 'Uobezdřij ($1) ($2) ($3)',
+'viewprevnext'                     => 'Uobezdřij ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Uopcyje sznupańo',
 'searchmenu-exists'                => "'''Ńy ma zajty uo mjańy \"[[:\$1]]\" na tyj wiki'''",
 'searchmenu-new'                   => "'''Stwůrz zajta „[[:$1|$1]]” na tyj wiki!'''",
@@ -1168,14 +1168,15 @@ Přelyź na zajta [[Special:NewFiles|galeryje nowych plikůw]], coby uobejzdře�
 'large-file'                  => 'Zaleco śe coby rozmjar plika ńy bůu wjynkšy jak $1 bajtůw. Tyn plik mo rozmjar $2 bajtůw.',
 'largefileserver'             => 'Plik je wjynkšy ńiž maksymalny dozwolůny rozmjar.',
 'emptyfile'                   => 'Wćepywany plik cheba je pusty. Može to być bez tůž, co žeś wklepou zuo buchštaba w jygo mjańe. Sprowdź, čy mjano kere žeś wklepou je poprawne.',
-'fileexists'                  => "Plik uo takym mjańe juž je sam wćepany! Wćepańe nowyj grafiki ńyodwracalńe wyćepńe ta kero sam juž je wćepano ('''<tt>$1</tt>''')! Sprowdź čy žeś je pewny co chceš tyn plik sam wćepać.",
-'filepageexists'              => "Je juž sam zajta uopisu tygo plika utwořůno '''<tt>$1</tt>''', ino ńy ma terozki plika uo tym mjańy. Informacyje uo pliku, kere žeś wćepou, ńy bydům pokozane na zajće uopisu. Jakbyś chćou coby te informacyje zostouy pokozane, muśyš jeich sprowjać rynčńy.",
-'fileexists-extension'        => "Plik uo podobnym mjańe juž sam je:<br />
-Mjano wćepywanygo plika: '''<tt>$1</tt>'''<br />
-Mjano plika kery juž sam je: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Plik uo takym mjańe juž je sam wćepany! Wćepańe nowyj grafiki ńyodwracalńe wyćepńe ta kero sam juž je wćepano ('''<tt>[[:$1]]</tt>''')! Sprowdź čy žeś je pewny co chceš tyn plik sam wćepać.
+[[$1|thumb]]",
+'filepageexists'              => "Je juž sam zajta uopisu tygo plika utwořůno '''<tt>[[:$1]]</tt>''', ino ńy ma terozki plika uo tym mjańy. Informacyje uo pliku, kere žeś wćepou, ńy bydům pokozane na zajće uopisu. Jakbyś chćou coby te informacyje zostouy pokozane, muśyš jeich sprowjać rynčńy.",
+'fileexists-extension'        => "Plik uo podobnym mjańe juž sam je: [[$2|thumb]]
+* Mjano wćepywanygo plika: '''<tt>[[:$1]]</tt>'''
+* Mjano plika kery juž sam je: '''<tt>[[:$2]]</tt>'''
 Wybjer proša inkše mjano.",
-'fileexists-thumb'            => "<center>'''Istniejůnco grafika'''</center>",
-'fileexists-thumbnail-yes'    => "Zdowo śe co tyn plik je půmńijšůnům wersyjom grafiki ''(mińjaturkom)''. Uobejřij plik: '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Zdowo śe co tyn plik je půmńijšůnům wersyjom grafiki ''(mińjaturkom)''. [[$1|thumb]]
+Uobejřij plik: '''<tt>[[:$1]]</tt>'''.
 Jak to je ta sama grafika, ino wjelgo, ńy muśiš juž jei sam zaś wćepywać.",
 'file-thumbnail-no'           => "Mjano plika začyno śe uod '''<tt>$1</tt>'''. Zdowo śe, co to je půmńijšůna grafika ''(mińaturka)''.
 Jak moš ta grafika we peunym rozmjaře - wćepej ja sam.
@@ -1570,7 +1571,7 @@ Na tyi liśće bydźeš mjou rejer přišuych sprowjyń tyi zajty i jeji zajty g
 'enotif_anon_editor'           => 'užytkowńik anůnimowy $1',
 'enotif_body'                  => 'Drogi/o $WATCHINGUSERNAME,
 
-zajta $PAGETITLE we {{GRAMMAR:MS.lp|{{SITENAME}}}} zostoua $CHANGEDORCREATED $PAGEEDITDATEANDTIME bez užytkowńika $PAGEEDITOR. Uobejřij na zajće $PAGETITLE_URL aktualno wersja.
+zajta $PAGETITLE we {{GRAMMAR:MS.lp|{{SITENAME}}}} zostoua $CHANGEDORCREATED $PAGEEDITDATE bez užytkowńika $PAGEEDITOR. Uobejřij na zajće $PAGETITLE_URL aktualno wersja.
 
 $NEWPAGE
 
@@ -1874,7 +1875,6 @@ Přyńdź do [[Special:IPBlockList|listy zawartych adresůw IP]] coby přejřeć
 'autoblocker'                     => 'Zawarto Ci sprowjyńo autůmatyčńy, bez tůž co užywaš tygo samygo adresu IP, co užytkowńik „[[User:$1|$1]]”.
 Powůd zawarća $1 to: „$2”',
 'blocklogpage'                    => 'Gyszichta zawjyrańo',
-'blocklog-fulllog'                => 'Połny rejer zawarć',
 'blocklogentry'                   => 'zawarto [[$1]], bydźe uodymkńynty: $2 $3',
 'reblock-logentry'                => 'půmjyńił sztalowańa zawarća uod sprowjyń lů [[$1]], czas zawarćo: $2 $3',
 'blocklogtext'                    => "Půńižej znojdowo śe lista zawarć zouožůnych i zdjyntych s poščygůlnych adresůw IP.

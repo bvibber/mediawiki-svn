@@ -175,7 +175,7 @@ $messages = array(
 'cancel'        => 'Ἀκυροῦν',
 'moredotdotdot' => 'πλέον...',
 'mypage'        => 'Δέλτος μου',
-'mytalk'        => 'Διάλεκτός μου',
+'mytalk'        => 'Ἡ διάλεξίς μου',
 'anontalk'      => 'Διάλεξις περὶ τοῦδε τοῦ IP',
 'navigation'    => 'Πλοήγησις',
 'and'           => '&#32;καὶ',
@@ -354,9 +354,9 @@ $1',
 Ἐνδεχομένως εἰσῆξας ἐσφαλμένως τὴν διεύθυνσιν URL ἢ ἠκολούθησας ἀκύρῳ συνδέσμῳ τινί. 
 Ἐνδεχομένως πταίει σφάλμα τι τοῦ λογισμικοῦ μέρους τοῦ ἱστοτόπου {{SITENAME}}.',
 'nosuchspecialpage' => 'Οὐδεμία τοιούτη δέλτος',
-'nospecialpagetext' => "<big>'''Ἡ αἰτηθεῖσα εἰδικὴ δέλτος ἄκυρός ἐστιν.'''</big>
+'nospecialpagetext' => '<strong>Ἡ αἰτηθεῖσα εἰδικὴ δέλτος ἄκυρός ἐστιν.</strong>
 
-Διαλογή τις ἐγκύρων εἰδικῶν δέλτων εὕρηται εἰς [[Special:SpecialPages|{{int:specialpages}}]].",
+Διαλογή τις ἐγκύρων εἰδικῶν δέλτων εὕρηται εἰς [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Σφάλμα',
@@ -444,20 +444,21 @@ $2',
 'login'                      => 'Συνδεῖσθαι',
 'nav-login-createaccount'    => 'Συνδεῖσθαι/λογισμὸν ποιεῖν',
 'loginprompt'                => 'Δεῖ ἐνεργὰ τὰ HTTP-πύσματα εἶναι πρὸ τοῦ συνδεῖσθαι τῷ {{SITENAME}}.',
-'userlogin'                  => 'Συνδεῖσθαι/λογισμὸν ποιεῖν',
+'userlogin'                  => 'Συνδεῖσθαι',
 'logout'                     => 'Ἐξέρχεσθαι',
 'userlogout'                 => 'Ἐξέρχεσθαι',
 'notloggedin'                => 'Οὐ συνδεδεμένος',
-'nologin'                    => 'Ἆρα λογισμὸν οὐκ ἔχεις; $1.',
+'nologin'                    => "Ἆρα λογισμὸν οὐκ ἔχεις; '''$1'''.",
 'nologinlink'                => 'Λογισμὸν ποιεῖν',
 'createaccount'              => 'Λογισμὸν ποιεῖν',
-'gotaccount'                 => 'Ἆρα λογισμὸν ἤδη τινὰ ἔχεις; $1.',
+'gotaccount'                 => "Ἆρα λογισμὸν ἤδη τινὰ ἔχεις; '''$1'''.",
 'gotaccountlink'             => 'Συνδεῖσθαι',
 'createaccountmail'          => 'ἠλεκτρονικῇ ἐπιστολῇ',
 'badretype'                  => 'Τὰ εἰσηγμένα ὑπἐσοῦ συνθήματα οὐχ ἁρμόττουσιν.',
 'userexists'                 => 'Τὸ εἰσηγμένον ὄνομα ἤδη κεχρησμένον ἐστίν.
 Ἐπίλεξον ὄνομα διάφορόν τι.',
 'loginerror'                 => 'Ἡμάρτηκας περὶ τοῦ συνδεδεκαῖναι',
+'createaccounterror'         => 'Ἀδύνατος ἡ ποίησις λογισμοῦ: $1',
 'nocookieslogin'             => 'Ὁ {{SITENAME}} χρῆται πύσματα ἐν τῇ συνδέσει τῶν χρωμένων.
 Μὴ ἐνεργὰ τὰ πύσματα διέταξας.
 Ἐνεργὰ ποιήσας αὐτὰ πείρασον πάλιν.',
@@ -761,6 +762,7 @@ $1",
 'revdelete-otherreason'       => 'Ἑτέρα/πρὀσθετος αἰτια:',
 'revdelete-reasonotherlist'   => 'Ἑτέρα αἰτία',
 'revdelete-edit-reasonlist'   => 'Μεταγράφειν αἰτίας διαγραφῆς',
+'revdelete-offender'          => 'Δημιουργὸς ἀναθεώρησεως:',
 
 # Suppression log
 'suppressionlog' => 'Κατάλογος διαγραφῶν',
@@ -874,7 +876,7 @@ $1",
 'prevn-title'                      => '$1 {{PLURAL:$1|προηγούμενον ἀποτέλεσμα|προηγούμενα ἀποτελέσματα}}',
 'nextn-title'                      => '$1 {{PLURAL:$1|ἑπόμενον ἀποτέλεσμα|ἑπόμενα ἀποτελέσματα}}',
 'shown-title'                      => 'Δεικνύναι $1 {{PLURAL:$1|ἀποτέλεσμα|ἀποτελέσματα}} ἀνὰ δέλτον',
-'viewprevnext'                     => 'Ἐπισκοπεῖν ($1) ($2) ($3)',
+'viewprevnext'                     => 'Ἐπισκοπεῖν ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Ἐπιλογαὶ ζητήσεως',
 'searchmenu-exists'                => "'''Ὑπάρχει δέλτος τις ὀνόματι \"[[:\$1]]\" ἐν τῷδε τῷ βίκι'''",
 'searchmenu-new'                   => "'''Ποιεῖν τὴν δέλτον \"[[:\$1]]\" ἐν τῷδε τῷ βίκι'''",
@@ -948,7 +950,7 @@ $1",
 'prefs-watchlist-days-max'      => '(τὸ μέγιστον 7 ἡμέραι)',
 'prefs-watchlist-edits'         => 'Μέγιστος ἀριθμὸς ἐμφανιστέων μεταβολῶν ἐν τῇ ἐπεκτεταμένῃ διαλογῇ:',
 'prefs-watchlist-edits-max'     => '(μέγιστος ἀριθμός: 1000)',
-'prefs-watchlist-token'         => 'Δεῖγμα ἐφοροδιαλογῆς',
+'prefs-watchlist-token'         => 'Δεῖγμα ἐφοροδιαλογῆς:',
 'prefs-misc'                    => 'Διάφορα',
 'prefs-resetpass'               => 'Ἀλλάττειν σύνθημα',
 'prefs-email'                   => 'Ἐπιλογαὶ ἠλ-ταχυδρομείου',
@@ -1261,12 +1263,12 @@ $1",
 'large-file'             => 'Τὸ προτεινόμενον μέγεθος τῶν ἀρχείων οὔκ ἐστι μεγαλύτερον τοῦ $1·
 τοῦδε τοῦ ἀρχείου ἐστὶ $2.',
 'largefileserver'        => 'Τόδε τὸ ἀρχεῖον ἐστὶ μεῖζον τοῦ ἐπιτρεπτοῦ ὁρίου βάσει τῆς διαμορφώσεως τῆς ἐξυπηρετητικῆς μηχανῆς.',
-'fileexists'             => "Ἀρχεῖόν τι ἔχον τόδε τὸ ὄνομα ἤδη ὑπαρκτὸν ἐστίν· ἔλεγξον τὸ '''<tt>$1</tt>''' ἂν μὴ ᾖ βέβαιος περὶ το ἀλλάττειν αὐτό.",
-'fileexists-extension'   => "Ἀρχεῖόν τι παρομοίως ὠνομασμένον ὑπάρχει:<br />
-Ὄνομα τοῦ πρὸς ἐπιφόρτισιν ἀρχείου: '''<tt>$1</tt>'''<br />
-Ὄνομα ὑπάρχοντος ἀρχείου: '''<tt>$2</tt>'''<br />
+'fileexists'             => "Ἀρχεῖόν τι ἔχον τόδε τὸ ὄνομα ἤδη ὑπαρκτὸν ἐστίν· ἔλεγξον τὸ '''<tt>[[:$1]]</tt>''' ἂν μὴ ᾖ βέβαιος περὶ το ἀλλάττειν αὐτό.
+[[$1|thumb]]",
+'fileexists-extension'   => "Ἀρχεῖόν τι παρομοίως ὠνομασμένον ὑπάρχει: [[$2|thumb]]
+* Ὄνομα τοῦ πρὸς ἐπιφόρτισιν ἀρχείου: '''<tt>[[:$1]]</tt>'''
+* Ὄνομα ὑπάρχοντος ἀρχείου: '''<tt>[[:$2]]</tt>'''
 Ἐπίλεξον διάφορον ὄνομά τι.",
-'fileexists-thumb'       => "<center>'''Ὑπάρχον ἀρχεῖον'''</center>",
 'file-exists-duplicate'  => 'Τὸ ἀρχεῖον ἐστὶ διπλότυπον τοῦ/τῶν ἑξῆς {{PLURAL:$1|ἀρχείου|ἀρχείων}}:',
 'successfulupload'       => 'Ἐπιφόρτισις ἐπιτυχής',
 'uploadwarning'          => 'Προμήνυσις ἐπιφορτίσεως',
@@ -1291,6 +1293,11 @@ $1",
 'upload-too-many-redirects' => 'Ὁ URL περιεῖχεν πέρα τοῦ δέοντος πολλὰς ἀνακατευθύνσεις',
 'upload-unknown-size'       => 'Ἄγνωτον μέγεθος',
 'upload-http-error'         => 'Συνέβη σφάλμα τι τῆς HTTP: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Οὐκ ἐπετράπη ἡ πρόσβασις',
+'img-auth-nofile'       => 'Τὸ ἀρχεῖον "$1" οὐχ ὑπάρχει.',
+'img-auth-streaming'    => 'Συνεχὴς ἀνάγνωσις "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'  => 'URL ἀπρόσβατος',
@@ -1557,7 +1564,7 @@ $1",
 
 # Special:ActiveUsers
 'activeusers'          => 'Κατάλογος ἐνεργῶν χρωμένων',
-'activeusers-count'    => '$1 {{PLURAL:$1|πρόσφατος μεταγραφή|πρόσφατοι μεταγραφαί}}',
+'activeusers-count'    => '$1 {{PLURAL:$1|μεταγραφή|μεταγραφαὶ}} κατὰ {{PLURAL:$3|τὴν πρόσφατον ἡμέραν|τὰς προσφάτους $3 ἡμέρας}}',
 'activeusers-from'     => 'Δεικνύειν χρωμένους ἐκκινήσει ἐκ:',
 'activeusers-noresult' => 'Οὐδεὶς χρώμενος εὑρέθη.',
 
@@ -1647,7 +1654,6 @@ $1",
 'enotif_impersonal_salutation' => 'Χρώμενος τῷ {{SITENAME}}',
 'changed'                      => 'ἠλλαγμένη',
 'created'                      => 'ποιηθέν',
-'deleted'                      => 'διαγεγραμμένη',
 'enotif_subject'               => 'Ἡ τοῦ {{SITENAME}} δέλτος $PAGETITLE ἐποιἠθη $CHANGEDORCREATED ὑπὸ τὸν $PAGEEDITOR',
 'enotif_lastvisited'           => 'Ἴδε $1 διὰ ἁπάσας τὰς ἀλλαγὰς ἐκ τῆς ὑστάτης ἐπισκέψεώς σου.',
 'enotif_lastdiff'              => 'Ἴδε $1 διὰ τὸ ὁρᾶν τήνδε τὴν ἀλλαγήν.',
@@ -1655,7 +1661,7 @@ $1",
 'enotif_body'                  => 'Φίλτατε  $WATCHINGUSERNAME,
 
 
-Ἡ τοῦ {{SITENAME}} δέλτος $PAGETITLE $CHANGEDORCREATED ἐστὶ τῇ $PAGEEDITDATEANDTIME ὑπὸ τοῦ $PAGEEDITOR, $PAGETITLE_URL.
+Ἡ τοῦ {{SITENAME}} δέλτος $PAGETITLE $CHANGEDORCREATED ἐστὶ τῇ $PAGEEDITDATE ὑπὸ τοῦ $PAGEEDITOR, $PAGETITLE_URL.
 
 $NEWPAGE
 
@@ -1686,7 +1692,7 @@ $NEWPAGE
 'delete-confirm'         => 'Διαγράφειν "$1"',
 'delete-legend'          => 'Διαγράφειν',
 'historywarning'         => 'Προσοχή: Ἡ δέλτος ἥντινα βούλεσαι διαγράψειν ἔχει ἱστορίαν:',
-'confirmdeletetext'      => 'Πρόκεισαι διαγράψειν ὁριστικῶς ἐκ τῆς βάσεως δεδομένων δέλτον τίνα (ἢ εἰκόνα τινα) μετὰ τῆς ἐῆς ἱστορίας. Παρακαλοῦμεν ὑμᾶς ἵνα ἐπιβεβαιώσητε τὴν θέλησιν ὑμῶν περὶ τοῦ αὐτὸ πράττειν καὶ περὶ τῆς ἀντιλήψεως τῶν συνεπειῶν, και περὶ τοῦ πράττειν ὑμῶν συμφώνως τῶν [[{{MediaWiki:Policy-url}}|κανόνων]].',
+'confirmdeletetext'      => 'Βούλεσαι διαγράψειν ὁριστικῶς ἐκ τῆς βάσεως δεδομένων δέλτον τίνα (ἢ εἰκόνα τινα) μετὰ τῆς ἐῆς ἱστορίας. Παρακαλοῦμεν ὑμᾶς ἵνα ἐπιβεβαιώσητε τὴν θέλησιν ὑμῶν περὶ τοῦ αὐτὸ πράττειν καὶ περὶ τῆς ἀντιλήψεως τῶν συνεπειῶν, και περὶ τοῦ πράττειν ὑμῶν συμφώνως τῶν [[{{MediaWiki:Policy-url}}|κανόνων]].',
 'actioncomplete'         => 'Τέλειον τὸ ποιούμενον',
 'actionfailed'           => 'Δράσις ἀνεπιτυχής',
 'deletedtext'            => 'Τὸ "<nowiki>$1</nowiki>" διεγράφη.
@@ -1917,7 +1923,6 @@ $1',
 'change-blocklink'                => 'ἀλλαγὴ φραγῆς',
 'contribslink'                    => 'ἔρανοι',
 'blocklogpage'                    => 'Αἱ ἀποκλῄσεις',
-'blocklog-fulllog'                => 'Κατάλογος πλήρης τῶν φραγῶν',
 'blocklogentry'                   => 'Κεκλῃμένος [[$1]] μέχρι οὗ $2 $3',
 'reblock-logentry'                => 'ἤλλαξεν τὰς ῥυθμίσεις φραγῆς διὰ τὸν/τὴν [[$1]] μετὰ χρόνου λήξεως $2 $3',
 'unblocklogentry'                 => '$1 ἀποπεφραγμέν-ος/η',
@@ -2801,8 +2806,14 @@ $1',
 'htmlform-selectorother-other' => 'Ἄλλον',
 
 # Add categories per AJAX
+'ajax-add-category'            => 'Προστιθέναι κατηγορίαν',
+'ajax-add-category-submit'     => 'Προστιθέναι',
+'ajax-confirm-title'           => 'Καταβεβαιοῦν δρᾶσιν',
+'ajax-confirm-save'            => 'Γράφειν',
+'ajax-add-category-summary'    => 'Προστιθέναι κατηγορίαν "$1"',
 'ajax-remove-category-summary' => 'Ἀφαιρεῖν κατηγορίαν "$1"',
 'ajax-confirm-actionsummary'   => 'Πρακτέα:',
 'ajax-error-title'             => 'Σφάλμα',
+'ajax-error-dismiss'           => 'εἶεν',
 
 );

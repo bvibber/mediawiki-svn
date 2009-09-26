@@ -413,9 +413,9 @@ $messages = array(
 Maaaring nagkamali ka sa pagmamakinilya ng URL, o sumunod sa isang maling kawing.
 Maaari rin itong magpahiwatig ng isang depektong nasa loob ng {{SITENAME}}.',
 'nosuchspecialpage' => 'Walang ganyang natatanging pahina',
-'nospecialpagetext' => "<big>'''Humiling ka ng isang maling natatanging pahina.'''</big>
+'nospecialpagetext' => '<strong>Humiling ka ng isang maling natatanging pahina.</strong>
 
-Matatagpuan ang isang tala ng mga tamang natatanging pahina sa [[Special:SpecialPages|{{int:specialpages}}]].",
+Matatagpuan ang isang tala ng mga tamang natatanging pahina sa [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Kamalian',
@@ -512,14 +512,14 @@ Huwag kalimutang baguhin ang [[Special:Preferences|mga kagustuhan mo sa {{SITENA
 'login'                      => 'Lumagda',
 'nav-login-createaccount'    => 'Lumagda / lumikha ng kuwenta',
 'loginprompt'                => "Dapat na pinapahintulutan mo ang mga \"otap\" (''cookie'') upang makalagda sa {{SITENAME}}.",
-'userlogin'                  => 'Lumagda / lumikha ng kuwenta',
+'userlogin'                  => 'Lumagda',
 'logout'                     => 'Umalis sa pagkakalagda',
 'userlogout'                 => 'Umalis sa pagkakalagda',
 'notloggedin'                => 'Hindi nakalagda',
-'nologin'                    => 'Wala ka pang patnugutan? $1.',
+'nologin'                    => "Wala ka pang patnugutan? '''$1'''.",
 'nologinlink'                => 'Lumikha ng kuwenta',
 'createaccount'              => 'Lumikha ng kuwenta',
-'gotaccount'                 => 'May kuwenta/patnugutan ka na ba? $1.',
+'gotaccount'                 => "May kuwenta/patnugutan ka na ba? '''$1'''.",
 'gotaccountlink'             => 'Lumagda',
 'createaccountmail'          => 'sa pamamagitan ng e-liham',
 'badretype'                  => 'Hindi magkatugma ang ipinasok mong mga hudyat.',
@@ -1029,7 +1029,7 @@ Maaari mong [[:\$1|likhain ang pahinang ito]].",
 'prevn-title'                      => 'Nakaraang $1 {{PLURAL:$1|resulta|mga resulta}}',
 'nextn-title'                      => 'Susunod na $1 {{PLURAL:$1|resulta|mga resulta}}',
 'shown-title'                      => 'Ipakita ang $1 {{PLURAL:$1|resulta|mga resulta}} na para sa bawat isang pahina',
-'viewprevnext'                     => 'Tingnan ($1) ($2) ($3)',
+'viewprevnext'                     => 'Tingnan ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Mga pagpipilian para sa paghahanap',
 'searchmenu-exists'                => "'''Mayroong pahinang may pangalang \"[[:\$1]]\" dito sa wiking ito'''",
 'searchmenu-new'                   => "'''Likhain ang pahinang \"[[:\$1]]\" sa wiking ito!'''",
@@ -1400,16 +1400,17 @@ Ang pinapahintulutang {{PLURAL:\$3|uri ng talaksan ay ang|mga uri ng talaksan ay
 ang talaksang ito ay $2.',
 'largefileserver'             => 'Mas malaki ang talaksan kaysa nakatakdang papahintulutan ng serbidor.',
 'emptyfile'                   => 'Mukhang walang laman ang talaksan (file) na ikinarga mo. Maaaring dahil ito sa maling pagkapasok ng pangalan ng talaksan.  Paki tingin kung gusto mo talagang ikarga ang talaksan na ito.',
-'fileexists'                  => "Mayroon ng talaksan na ganitong pangalan, paki tingin ang '''<tt>$1</tt>''' kung tiyak ka na babaguhin ito.",
-'filepageexists'              => "Ang pahina ng paglalarawan para sa talaksan na ito ay nalikha na sa '''<tt>$1</tt>''', ngunit walang talaksan na may ganitong pangalan.
+'fileexists'                  => "Mayroon ng talaksan na ganitong pangalan, paki tingin ang '''<tt>[[:$1]]</tt>''' kung tiyak ka na babaguhin ito.
+[[$1|thumb]]",
+'filepageexists'              => "Ang pahina ng paglalarawan para sa talaksan na ito ay nalikha na sa '''<tt>[[:$1]]</tt>''', ngunit walang talaksan na may ganitong pangalan.
 Lilitaw ang buod na ipapasok mo sa pahina ng paglalarawan.
 Para lumitaw ang buod mo doon, kailangan mong baguhin ito ng manwal.",
-'fileexists-extension'        => "Mayroon talaksan na ganitong pangalan:<br />
-Pangalan ng ikakargang talaksan: '''<tt>$1</tt>'''<br />
-Pangalan ng mayroon nang talaksan: '''<tt>$2</tt>'''<br />
+'fileexists-extension'        => "Mayroon talaksan na ganitong pangalan: [[$2|thumb]]
+* Pangalan ng ikakargang talaksan: '''<tt>[[:$1]]</tt>'''
+* Pangalan ng mayroon nang talaksan: '''<tt>[[:$2]]</tt>'''
 Pumili ng ibang pangalan.",
-'fileexists-thumb'            => "<center>'''Umiiral na talaksan'''</center>",
-'fileexists-thumbnail-yes'    => "Mukhang pinaliit ''(thumbnail)'' na larawan ang talaksan. Paki tingin ang talaksan '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Mukhang pinaliit ''(thumbnail)'' na larawan ang talaksan. [[$1|thumb]]
+Paki tingin ang talaksan '''<tt>[[:$1]]</tt>'''.
 Kung ang tinignan na talaksan ay ang kaparehong larawan ng orihinal na laki, hindi na kailangang magkarga ng panibagong ''thumbnail''.",
 'file-thumbnail-no'           => "Nagsisimula ang pangalan ng talaksan sa '''<tt>$1</tt>'''.  Tila ito'y isang larawan na may pinaliit na sukat''(thumbnail)''.
 Kung mayroon ang larawang ito ng pinakamataas na resolution, ikarga ito, kung hindi paki palitan ang pangalan ng talaksan.",
@@ -1833,7 +1834,7 @@ Makikita doon ang lahat ng mga susunod na pagbabago sa pahinang ito pati na ang 
 'enotif_body'                  => 'Mahal na $WATCHINGUSERNAME,
 
 
-Ang pahinang $PAGETITLE ng {{SITENAME}} ay $CHANGEDORCREATED noong $PAGEEDITDATEANDTIME ni $PAGEEDITOR, tingnan ang $PAGETITLE_URL para sa pangkasalukuyang bersyon.
+Ang pahinang $PAGETITLE ng {{SITENAME}} ay $CHANGEDORCREATED noong $PAGEEDITDATE ni $PAGEEDITOR, tingnan ang $PAGETITLE_URL para sa pangkasalukuyang bersyon.
 
 $NEWPAGE
 
@@ -2134,7 +2135,6 @@ Tingnan ang [[Special:IPBlockList|talaan ng mga hinadlangang IP]] upang makita a
 'contribslink'                    => 'ambag',
 'autoblocker'                     => 'Awtomatikong naharang dahil pareho kayo ng IP address ni "$1". Dahilan "$2".',
 'blocklogpage'                    => 'Tala ng pagharang',
-'blocklog-fulllog'                => 'Talaan ng lubos/ganap na pagharang o paghadlang',
 'blocklogentry'                   => 'hinarang/hinadlangan si [[$1]] na may oras/panahon ng pagtatapos na $2 $3',
 'reblock-logentry'                => 'binago ang itinakdang pagharang/paghadlang kay [[$1]] na may oras/panahon ng pagtatapos na $2 $3',
 'blocklogtext'                    => 'Tala ito ng paghaharang at pagpapawawalang bisa ng pagharang/paghadlang.

@@ -125,7 +125,8 @@ class SpecialContributions extends SpecialPage {
 			$text = wfMsgNoTrans( $message, $target );
 			if( !wfEmptyMsg( $message, $text ) && $text != '-' ) {
 				$wgOut->wrapWikiMsg(
-					"<div class='mw-contributions-footer'>\n$1\n</div>", $message );
+					"<div class='mw-contributions-footer'>\n$1\n</div>",
+					array( $message, $target ) );
 			}
 		}
 	}
@@ -147,7 +148,7 @@ class SpecialContributions extends SpecialPage {
 	* @return String: appropriately-escaped HTML to be output literally
 	*/
 	protected function contributionsSub( $nt, $id ) {
-		global $wgSysopUserBans, $wgLang, $wgUser;
+		global $wgSysopUserBans, $wgLang, $wgUser, $wgOut;
 
 		$sk = $wgUser->getSkin();
 
@@ -156,13 +157,14 @@ class SpecialContributions extends SpecialPage {
 		} else {
 			$user = $sk->link( $nt, htmlspecialchars( $nt->getText() ) );
 		}
+		$userObj = User::newFromName( $nt->getText(), /* check for username validity not needed */ false );
 		$talk = $nt->getTalkPage();
 		if( $talk ) {
 			# Talk page link
 			$tools[] = $sk->link( $talk, wfMsgHtml( 'sp-contributions-talk' ) );
 			if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && IP::isIPAddress( $nt->getText() ) ) ) {
 				if( $wgUser->isAllowed( 'block' ) ) { # Block / Change block / Unblock links
-					if ( User::newFromId( $id )->isBlocked() ) {
+					if ( $userObj->isBlocked() ) {
 						$tools[] = $sk->linkKnown( # Change block link
 							SpecialPage::getTitleFor( 'Blockip', $nt->getDBkey() ),
 							wfMsgHtml( 'change-blocklink' )
@@ -223,9 +225,24 @@ class SpecialContributions extends SpecialPage {
 			wfRunHooks( 'ContributionsToolLinks', array( $id, $nt, &$tools ) );
 	
 			$links = $wgLang->pipeList( $tools );
-			$this->showBlock( $nt, $id );
+
+			// Show a note if the user is blocked and display the last block log entry.
+			if ( $userObj->isBlocked() ) {
+				LogEventsList::showLogExtract(
+					$wgOut,
+					'block',
+					$nt->getPrefixedText(),
+					'',
+					array(
+						'lim' => 1,
+						'showIfEmpty' => false,
+						'msgKey' => array( 'sp-contributions-blocked-notice' ),
+						'offset' => '' # don't use $wgRequest parameter offset
+					)
+				);
+			}
 		}
-	
+
 		// Old message 'contribsub' had one parameter, but that doesn't work for
 		// languages that want to put the "for" bit right after $user but before
 		// $links.  If 'contribsub' is around, use it for reverse compatibility,
@@ -237,40 +254,6 @@ class SpecialContributions extends SpecialPage {
 		}
 	}
 
-	/**
-	 * Show a note if the user is blocked and display the last block log entry.
-	 * @param Title $title Title object for the target
-	 * @param $userId ID of the user
-	 */
-	protected function showBlock( $title, $userId ) {
-		global  $wgUser, $wgOut;
-		if ( !User::newFromID( $userId )->isBlocked() )
-			return; # User is not blocked, nothing to do here
-		$loglist = new LogEventsList( $wgUser->getSkin(), $wgOut );
-		$pager = new LogPager( $loglist, 'block', false, $title->getPrefixedText() );
-		// Check if there is something in the block log.
-		// If this is not the case, either the user is not blocked,
-		// or the account has been hidden via hideuser.
-		if( $pager->getNumRows() > 0 ) {
-			$pager->mLimit = 1; # Show only latest log entry.
-			$wgOut->addHTML( '<div class="mw-warning-with-logexcerpt">' );
-			$wgOut->addWikiMsg( 'sp-contributions-blocked-notice' );
-			$wgOut->addHTML(
-				$loglist->beginLogEventsList() .
-				$pager->getBody() .
-				$loglist->endLogEventsList()
-			);
-			if( $pager->getNumRows() > $pager->mLimit ) {
-				$wgOut->addHTML( $wgUser->getSkin()->link(
-					SpecialPage::getTitleFor( 'Log', 'block' ),
-					wfMsgHtml( 'log-fulllog' ),
-					array(),
-					array( 'page' => $title->getPrefixedText() )
-				) );
-			}
-			$wgOut->addHTML( '</div>' );
-		}
-	}
 	/**
 	 * Generates the namespace selector form with hidden attributes.
 	 * @param $this->opts Array: the options to be included.
@@ -447,9 +430,13 @@ class ContribsPager extends ReverseChronologicalPager {
 
 	function __construct( $target, $namespace = false, $year = false, $month = false, $tagFilter = false ) {
 		parent::__construct();
-		foreach( explode( ' ', 'uctop diff newarticle rollbacklink diff hist rev-delundel' ) as $msg ) {
-			$this->messages[$msg] = wfMsgExt( $msg, array( 'escape') );
+
+		$msgs = array( 'uctop', 'diff', 'newarticle', 'rollbacklink', 'diff', 'hist', 'rev-delundel', 'pipe-separator' );
+
+		foreach( $msgs as $msg ) {
+			$this->messages[$msg] = wfMsgExt( $msg, 'escapenoentities' );
 		}
+
 		$this->target = $target;
 		$this->namespace = $namespace;
 		$this->tagFilter = $tagFilter;
@@ -490,14 +477,16 @@ class ContribsPager extends ReverseChronologicalPager {
 			'options' => array( 'USE INDEX' => array('revision' => $index) ),
 			'join_conds' => $join_cond
 		);
-		
-		ChangeTags::modifyDisplayQuery( $queryInfo['tables'],
-										$queryInfo['fields'],
-										$queryInfo['conds'],
-										$queryInfo['join_conds'],
-										$queryInfo['options'],
-										$this->tagFilter );
-		
+
+		ChangeTags::modifyDisplayQuery(
+			$queryInfo['tables'],
+			$queryInfo['fields'],
+			$queryInfo['conds'],
+			$queryInfo['join_conds'],
+			$queryInfo['options'],
+			$this->tagFilter
+		);
+
 		wfRunHooks( 'ContribsPager::getQueryInfo', array( &$this, &$queryInfo ) );
 		return $queryInfo;
 	}
@@ -572,12 +561,13 @@ class ContribsPager extends ReverseChronologicalPager {
 		if( $row->rev_id == $row->page_latest ) {
 			$topmarktext .= '<span class="mw-uctop">' . $this->messages['uctop'] . '</span>';
 			if( !$row->page_is_new ) {
-				$difftext .= '(' . $sk->linkKnown(
+				$difflink = $sk->linkKnown(
 					$page,
 					$this->messages['diff'],
 					array(),
 					array( 'diff' => 0 )
-				) . ')';
+				);
+				$difftext .= wfMsg( 'parentheses', $difflink );
 				# Add rollback link
 				if( $page->quickUserCan( 'rollback') && $page->quickUserCan( 'edit' ) ) {
 					$topmarktext .= ' '.$sk->generateRollback( $rev );
@@ -588,7 +578,7 @@ class ContribsPager extends ReverseChronologicalPager {
 		}
 		# Is there a visible previous revision?
 		if( !$rev->isDeleted(Revision::DELETED_TEXT) ) {
-			$difftext = '(' . $sk->linkKnown(
+			$difftext = $this->messages['pipe-separator'] . $sk->linkKnown(
 				$page,
 				$this->messages['diff'],
 				array(),
@@ -598,14 +588,14 @@ class ContribsPager extends ReverseChronologicalPager {
 				)
 			) . ')';
 		} else {
-			$difftext = '(' . $this->messages['diff'] . ')';
+			$difftext = $this->messages['pipe-separator'] . $this->messages['diff'] . ')';
 		}
 		$histlink = '('.$sk->linkKnown(
 			$page,
 			$this->messages['hist'],
 			array(),
 			array( 'action' => 'history' )
-		) . ')';
+		);
 
 		$comment = $wgContLang->getDirMark() . $sk->revComment( $rev, false, true );
 		$date = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->rev_timestamp ), true );
@@ -622,7 +612,7 @@ class ContribsPager extends ReverseChronologicalPager {
 
 		if( $this->target == 'newbies' ) {
 			$userlink = ' . . ' . $sk->userLink( $row->rev_user, $row->rev_user_text );
-			$userlink .= ' (' . $sk->userTalkLink( $row->rev_user, $row->rev_user_text ) . ') ';
+			$userlink .= ' ' . wfMsgExt( 'parentheses', 'escapenoentities', $sk->userTalkLink( $row->rev_user, $row->rev_user_text ) ) . ' ';
 		} else {
 			$userlink = '';
 		}
@@ -643,7 +633,7 @@ class ContribsPager extends ReverseChronologicalPager {
 			// If revision was hidden from sysops
 			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
 				$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
-					'(' . $this->messages['rev-delundel'] . ')' ) . ' ';
+					wfMsg( 'parentheses', $this->messages['rev-delundel'] ) ) . ' ';
 			// Otherwise, show the link...
 			} else {
 				$query = array(
@@ -658,6 +648,11 @@ class ContribsPager extends ReverseChronologicalPager {
 		}
 
 		$ret = "{$del}{$d} {$histlink} {$difftext} {$nflag}{$mflag} {$link}{$userlink} {$comment} {$topmarktext}";
+		
+		# Denote if username is redacted for this edit
+		if( $rev->getVisibility() & Revision::DELETED_USER ) {
+			$ret .= " <strong>" . wfMsgHtml('rev-deleted-user') . "</strong>";
+		}
 
 		# Tags, if any.
 		list($tagSummary, $newClasses) = ChangeTags::formatSummaryRow( $row->ts_tags, 'contributions' );

@@ -94,6 +94,7 @@ class LogEventsList {
 		$html .= $this->getTypeMenu( $types ) . "\n";
 		$html .= $this->getUserInput( $user ) . "\n";
 		$html .= $this->getTitleInput( $page ) . "\n";
+		$html .= $this->getExtraInputs( $types ) . "\n";
 
 		// Title pattern, if allowed
 		if (!$wgMiserMode) {
@@ -237,6 +238,15 @@ class LogEventsList {
 		return '<span style="white-space: nowrap">' .
 			Xml::checkLabel( wfMsg( 'log-title-wildcard' ), 'pattern', 'pattern', $pattern ) .
 			'</span>';
+	}
+	
+	private function getExtraInputs( $types ) {
+		global $wgRequest;
+		if( count($types) == 1 && $types[0] == 'suppress' ) {
+			return Xml::inputLabel( wfMsg('revdelete-offender'), 'offender',
+				'mw-log-offender', 20, $wgRequest->getVal('offender') );
+		}
+		return '';
 	}
 
 	public function beginLogEventsList() {
@@ -556,28 +566,95 @@ class LogEventsList {
 	}
 
 	/**
-	 * Quick function to show a short log extract
+	 * Show log extract. Either with text and a box (set $msgKey) or without (don't set $msgKey)
 	 * @param $out OutputPage or String-by-reference
 	 * @param $types String or Array
-	 * @param $page String
-	 * @param $user String
-	 * @param $lim Integer
-	 * @param $conds Array
+	 * @param $page String The page title to show log entries for
+	 * @param $user String The user who made the log entries
+	 * @param $param Associative Array with the following additional options:
+	 * 	lim Integer Limit of items to show, default is 50
+	 * 	conds Array Extra conditions for the query (e.g. "log_action != 'revision'")
+	 *	showIfEmpty boolean Set to false if you don't want any output in case the loglist is empty
+	 * 		if set to true (default), "No matching items in log" is displayed if loglist is empty
+	 * 	msgKey Array If you want a nice box with a message, set this
+	 *              to the key of the message. First element is the message
+	 *              key, additional optional elements are parameters for the
+	 *              key that are processed with wgMsgExt and option 'parse'
+	 * 	offset Set to overwrite offset parameter in $wgRequest
+	 * 		set to '' to unset offset
+	 * @return Integer Number of total log items (not limited by $lim)
 	 */
-	public static function showLogExtract( &$out, $types=array(), $page='', $user='', $lim=0, $conds=array() ) {
+	public static function showLogExtract( &$out, $types=array(), $page='', $user='', 
+			$param = array() ) {
+
+		$defaultParameters = array(
+			'lim' => 0,
+			'conds' => array(),
+			'showIfEmpty' => true,
+			'msgKey' => array('')
+		);
+	
+		# The + operator appends elements of remaining keys from the right
+		# handed array to the left handed, whereas duplicated keys are NOT overwritten.
+		$param += $defaultParameters;
+
 		global $wgUser, $wgOut;
-		# Insert list of top 50 or so items
+		# Convert $param array to individual variables
+		$lim = $param['lim'];
+		$conds = $param['conds'];
+		$showIfEmpty = $param['showIfEmpty'];
+		$msgKey = $param['msgKey'];
+		if ( !is_array($msgKey) )
+			$msgKey = array( $msgKey );
+		# Insert list of top 50 (or top $lim) items
 		$loglist = new LogEventsList( $wgUser->getSkin(), $wgOut, 0 );
 		$pager = new LogPager( $loglist, $types, $user, $page, '', $conds );
+		if ( isset( $param['offset'] ) ) # Tell pager to ignore $wgRequest offset
+			$pager->setOffset( $param['offset'] );
 		if( $lim > 0 ) $pager->mLimit = $lim;
 		$logBody = $pager->getBody();
+		$s = '';
 		if( $logBody ) {
-			$s = $loglist->beginLogEventsList() .
+			if ( $msgKey[0] ) {
+				$s = '<div class="mw-warning-with-logexcerpt">';
+
+				if ( count( $msgKey ) == 1 ) {
+					$s .= wfMsgExt( $msgKey[0], array('parse') );
+				} else { // Process additional arguments
+					$args = $msgKey;
+					array_shift( $args );
+					$s .= wfMsgExt( $msgKey[0], array('parse'), $args );
+				}
+			}
+			$s .= $loglist->beginLogEventsList() .
 				 $logBody .
 				 $loglist->endLogEventsList();
 		} else {
-			$s = wfMsgExt( 'logempty', array('parse') );
+			if ( $showIfEmpty )
+				$s = wfMsgExt( 'logempty', array('parse') );
 		}
+		if( $pager->getNumRows() > $pager->mLimit ) { # Show "Full log" link
+			$urlParam = array();
+			if ( $page != '')
+				$urlParam['page'] = $page;
+			if ( $user != '')
+				$urlParam['user'] = $user;
+			if ( !is_array( $types ) ) # Make it an array, if it isn't
+				$types = array( $types );
+			# If there is exactly one log type, we can link to Special:Log?type=foo
+			if ( count( $types ) == 1 )
+				$urlParam['type'] = $types[0];
+			$s .= $wgUser->getSkin()->link(
+				SpecialPage::getTitleFor( 'Log' ),
+				wfMsgHtml( 'log-fulllog' ),
+				array(),
+				$urlParam
+			);
+
+		}
+		if ( $logBody && $msgKey[0] )
+			$s .= '</div>';
+
 		if( $out instanceof OutputPage ){
 			$out->addHTML( $s );
 		} else {
@@ -623,13 +700,13 @@ class LogPager extends ReverseChronologicalPager {
 	/**
 	 * constructor
 	 * @param $list LogEventsList
-	 * @param $types String or Array
-	 * @param $user String
-	 * @param $title String
-	 * @param $pattern String
-	 * @param $conds Array
-	 * @param $year Integer
-	 * @param $month Integer
+	 * @param $types String or Array log types to show
+	 * @param $user String The user who made the log entries
+	 * @param $title String The page title the log entries are for
+	 * @param $pattern String Do a prefix search rather than an exact title match
+	 * @param $conds Array Extra conditions for the query
+	 * @param $year Integer The year to start from
+	 * @param $month Integer The month to start from
 	 */
 	public function __construct( $list, $types = array(), $user = '', $title = '', $pattern = '',
 		$conds = array(), $year = false, $month = false, $tagFilter = '' ) 

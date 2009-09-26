@@ -594,9 +594,9 @@ $1',
 Je možné, že ste napísali URL chybne alebo ste klikli na chybný odkaz.
 Príčinou tiež môže byť chyba v softvéri, ktorý používa {{SITENAME}}.',
 'nosuchspecialpage' => 'Takáto špeciálna stránka neexistuje',
-'nospecialpagetext' => "<big>'''Vyžiadali ste si neplatnú špeciálnu stránku.'''</big>
+'nospecialpagetext' => '<strong>Vyžiadali ste si neplatnú špeciálnu stránku.</strong>
 
-Zoznam platných špeciálnych stránok nájdete na [[Special:SpecialPages|{{int:specialpages}}]].",
+Zoznam platných špeciálnych stránok nájdete na [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Chyba',
@@ -690,14 +690,14 @@ Nezabudnite si nastaviť svoje [[Special:Preferences|používateľské nastaveni
 'login'                      => 'Prihlásiť',
 'nav-login-createaccount'    => 'Vytvorenie konta / prihlásenie',
 'loginprompt'                => 'Na prihlásenie do {{GRAMMAR:genitív|{{SITENAME}}}} musíte mať zapnuté koláčiky (cookies).',
-'userlogin'                  => 'Vytvorenie konta / prihlásenie',
+'userlogin'                  => 'Prihlásenie',
 'logout'                     => 'Odhlásiť',
 'userlogout'                 => 'Odhlásiť',
 'notloggedin'                => 'Neprihlásený/á',
-'nologin'                    => 'Nemáte ešte účet? $1.',
+'nologin'                    => "Nemáte ešte účet? '''$1'''.",
 'nologinlink'                => 'Vytvoriť nový účet',
 'createaccount'              => 'Vytvoriť nový účet',
-'gotaccount'                 => 'Máte už vytvorený účet? $1.',
+'gotaccount'                 => "Máte už vytvorený účet? '''$1'''.",
 'gotaccountlink'             => 'Prihlásiť',
 'createaccountmail'          => 'e-mailom',
 'badretype'                  => 'Zadané heslá nie sú rovnaké.',
@@ -752,7 +752,8 @@ Z tohto dôvodu nemôžu návštevníci z tejto IP adresy momentálne vytvoriť 
 ($4) s názvom „$2“, s heslom „$3“. Mali by ste sa prihlásiť a svoje heslo teraz zmeniť.
 
 Ak bol účet vytvorený omylom, túto správu môžete ignorovať.',
-'login-throttled'            => 'Nedávno ste uskutočnili príliš mnoho neúspešných pokusov zadať heslo tohto účtu. Prosím, počkajte predtým, než to skúsite znova.',
+'login-throttled'            => 'Nedávno ste uskutočnili príliš mnoho neúspešných pokusov o prihlásenie.
+Prosím, počkajte predtým, než to skúsite znova.',
 'loginlanguagelabel'         => 'Jazyk: $1',
 
 # Password reset dialog
@@ -868,7 +869,11 @@ Ak ste anonymný používateľ a máte pocit, že vám boli adresované irelevan
 Môžete [[Special:Search/{{PAGENAME}}|vyhľadávať názov tejto stránky]] v obsahu iných stránok,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} vyhľadávať v súvisiacich záznamoch],
 alebo [{{fullurl:{{FULLPAGENAME}}|action=edit}} upravovať túto stránku].',
+'noarticletext-nopermission'       => 'Táto stránka momentálne neobsahuje žiadny text.
+Môžete [[Special:Search/{{PAGENAME}}|hľadať názov tejto stránky]] v texte iných stránok
+alebo <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} si pozrieť súvisiace záznamy]</span>.',
 'userpage-userdoesnotexist'        => 'Používateľský účet „$1“ nie je registrovaný. Prosím, zaškrtnite ak chcete vytvoriť/upravovať túto stránku.',
+'userpage-userdoesnotexist-view'   => 'Používateľský účet „$1“ nie je registrovaný.',
 'clearyourcache'                   => "'''Poznámka: Aby sa zmeny prejavili, po uložení musíte vymazať vyrovnávaciu pamäť vášho prehliadača.'''
 '''Mozilla / Firefox / Safari:''' držte stlačený ''Shift'' a kliknite na ''Reload'' alebo stlačte buď ''Ctrl-F5'' alebo ''Ctrl-R'' (''Comand-R'' na Macintosh); '''Konqueror:''': kliknite na tlačidlo ''Reload'' alebo stlačte ''F5''; '''Opera''' vymazať vyrovnávaciu pamäť prehliadača v ponuke ''Tools→Preferences''; '''Internet Explorer:''' držte ''Ctrl'' a kliknite na ''Refresh'' alebo stlačte ''Ctrl-F5'';",
 'usercssyoucanpreview'             => "'''Tip:''' Váš nový CSS pred uložením otestujete stlačením tlačidla „Zobraziť náhľad“.",
@@ -1107,6 +1112,7 @@ Pozrite sa prosím do záznamov.',
 'revdelete-otherreason'       => 'Ďalšie dôvody:',
 'revdelete-reasonotherlist'   => 'Iný dôvod',
 'revdelete-edit-reasonlist'   => 'Upraviť dôvody zmazania',
+'revdelete-offender'          => 'Autor revízie:',
 
 # Suppression log
 'suppressionlog'     => 'Záznam potlačení',
@@ -1223,7 +1229,7 @@ Uistite sa, že táto zmena zachová historickú kontinuitu zmien stránky.',
 'prevn-title'                      => '{{PLURAL:$1|Predošlý $1 výsledok|Predošlé $1 výsledky|Predošlých $1 výsledkov}}',
 'nextn-title'                      => '{{PLURAL:$1|Ďalší $1 výsledok|Ďalšie $1 výsledky|Ďalších $1 výsledkov}}',
 'shown-title'                      => 'Zobraziť $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}} na stránku',
-'viewprevnext'                     => 'Zobraziť ($1) ($2) ($3).',
+'viewprevnext'                     => 'Zobraziť ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Možnosti hľadania',
 'searchmenu-exists'                => "*Stránka '''[[$1]]'''",
 'searchmenu-new'                   => "'''Vytvoriť stránku „[[:$1|$1]]“ na tejto wiki'''",
@@ -1297,7 +1303,7 @@ Uistite sa, že táto zmena zachová historickú kontinuitu zmien stránky.',
 'prefs-watchlist-days-max'      => '(maximálne 7 dní)',
 'prefs-watchlist-edits'         => 'Počet úprav, ktorý sa zobrazí v rozšírenom zozname sledovaných:',
 'prefs-watchlist-edits-max'     => '(maximum: 1000)',
-'prefs-watchlist-token'         => 'Token zoznamu sledovaných',
+'prefs-watchlist-token'         => 'Token zoznamu sledovaných?',
 'prefs-misc'                    => 'Rôzne',
 'prefs-resetpass'               => 'Zmeniť heslo',
 'prefs-email'                   => 'Možnosti emailu',
@@ -1629,14 +1635,15 @@ Vizuálny prehľad nájdete v [[Special:NewFiles|galérii novo nahraných súbor
 'large-file'                  => 'Odporúča sa aby veľkosť súborov neprekračovala $1; tento súbor má $2.',
 'largefileserver'             => 'Tento súbor je väčší ako je možné nahrať na server (z dôvodu obmedzenia veľkosti súboru v konfigurácii servera).',
 'emptyfile'                   => 'Zdá sa, že súbor, ktorý ste nahrali je prázdny. Mohlo sa stať, že ste urobili v názve súboru preklep. Prosím, skontrolujte, či skutočne chcete nahrať tento súbor.',
-'fileexists'                  => "Súbor s týmto názvom už existuje, prosím skontrolujte '''<tt>$1</tt>''' ak nie ste si istý, či ho chcete zmeniť.",
-'filepageexists'              => "Popisná stránka tohto súboru už bola vytvorená na '''<tt>$1</tt>''', ale žiadny súbor s týmto názvom momentálne neexistuje. Zhrnutie, ktoré zadáte sa neobjaví na popisnej stránke. Aby sa zhrnutie objavilo na popisnej stránke, budete ho musieť ručne upraviť.",
-'fileexists-extension'        => "Súbor s podobným názvom už existuje:<br />
-Názov súboru, ktoý nahrávate: '''<tt>$1</tt>'''<br />
-Názov existujúceho súboru: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Súbor s týmto názvom už existuje, prosím skontrolujte '''<tt>[[:$1]]</tt>''' ak nie ste si istý, či ho chcete zmeniť.
+[[$1|thumb]]",
+'filepageexists'              => "Popisná stránka tohto súboru už bola vytvorená na '''<tt>[[:$1]]</tt>''', ale žiadny súbor s týmto názvom momentálne neexistuje. Zhrnutie, ktoré zadáte sa neobjaví na popisnej stránke. Aby sa zhrnutie objavilo na popisnej stránke, budete ho musieť ručne upraviť.",
+'fileexists-extension'        => "Súbor s podobným názvom už existuje: [[$2|thumb]]
+* Názov súboru, ktoý nahrávate: '''<tt>[[:$1]]</tt>'''
+* Názov existujúceho súboru: '''<tt>[[:$2]]</tt>'''
 Jediný rozdiel je vo veľkosti písmen prípony. Prosím, skontrolujte totožnosť týchto súborov.",
-'fileexists-thumb'            => "<center>'''Existujúci obrázok'''</center>",
-'fileexists-thumbnail-yes'    => "Zdá sa, že súbor je obrázkom redukovanej veľkosti ''(náhľadom)''. Prosím, skontolujte súbor '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Zdá sa, že súbor je obrázkom redukovanej veľkosti ''(náhľadom)''. [[$1|thumb]]
+Prosím, skontolujte súbor '''<tt>[[:$1]]</tt>'''.
 Ak je kontrolovaný súbor rovnaký obrázok v pôvodnej veľkosti, nie je potrebné nahrávať ďalší náhľad.",
 'file-thumbnail-no'           => "Názov súboru začína '''<tt>$1</tt>'''.
 Zdá sa, že je to obrázok redukovanej veľkosti ''(náhľad)''.
@@ -1695,6 +1702,24 @@ Ak problém pretrváva, kontaktujte [[Special:ListUsers/sysop|správcu systému]
 'upload-too-many-redirects' => 'URL obsahoval príliš mnoho presmerovaní',
 'upload-unknown-size'       => 'Neznáma veľkosť',
 'upload-http-error'         => 'Vyskytla sa chyba HTTP: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Prístup zamietnutý',
+'img-auth-nopathinfo'   => 'Chýba PATH_INFO.
+Váš server nie je nastavený tak, aby poskytoval tieto informácie.
+Môže byť založený na CGI a nedokáže podporovať img_auth.
+Pozri http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-notindir'     => 'Požadovaná cesta nie je v nastavenom adresári na nahrávanie.',
+'img-auth-badtitle'     => 'Nepodarilo sa zostaviť platný názov z „$1“.',
+'img-auth-nologinnWL'   => 'Nie ste prihlásený a „$1“ nie je na bielej listine.',
+'img-auth-nofile'       => 'Súbor „$1“ neexistuje.',
+'img-auth-isdir'        => 'Pokúšate sa o prístup k adresáru „$1“.
+Je povolený iba prístup k súborom.',
+'img-auth-streaming'    => 'Streamovanie „$1“.',
+'img-auth-public'       => 'Funkciou img_auth.php je výstup súborov zo súkromnej wiki.
+Nastavená wiki je verejná.
+Aby bolo zabezpečenie optimálne, img_auth.php je vypnutý.',
+'img-auth-noread'       => 'Používateľ nemá prístup na čítanie „$1“.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Nedostupný URL',
@@ -1785,6 +1810,7 @@ Môžete si pozrieť [[Special:WhatLinksHere/$2|úplný zoznam]].',
 ** Porušenie autorských práv
 ** Duplicitný súbor',
 'filedelete-edit-reasonlist'  => 'Upraviť dôvody zmazania',
+'filedelete-maintenance'      => 'Mazanie a obnovovanie súborov je počas údržby dočasne vypnuté.',
 
 # MIME search
 'mimesearch'         => 'MIME vyhľadávanie',
@@ -2084,16 +2110,13 @@ Ak budete chcieť neskôr stránku odstrániť zo sledovaných stránok, kliknit
 'enotif_impersonal_salutation' => 'používateľ {{GRAMMAR:genitív|{{SITENAME}}}}',
 'changed'                      => 'zmene',
 'created'                      => 'vytvorení',
-'deleted'                      => 'zmazaniu',
-'enotif_deletedpagetext'       => 'Táto stránka už nie je dostupná.',
 'enotif_subject'               => '{{SITENAME}} - stránka $PAGETITLE bola $CHANGEDORCREATED $PAGEEDITOR',
 'enotif_lastvisited'           => 'Všetky zmeny od vašej poslednej návštevy uvidíte na $1.',
 'enotif_lastdiff'              => 'Zmenu uvidíte v $1.',
 'enotif_anon_editor'           => 'anonymný používateľ $1',
-'enotif_rev_info'              => 'Aktuálnu revíziu nájdete na $1.',
 'enotif_body'                  => 'Drahý $WATCHINGUSERNAME,
 
-na {{GRAMMAR:lokál|{{SITENAME}}}} došlo $PAGEEDITDATEANDTIME k $CHANGEDORCREATED stránky $PAGETITLE používateľom $PAGEEDITOR. $REVINFO
+na {{GRAMMAR:lokál|{{SITENAME}}}} došlo $PAGEEDITDATE k $CHANGEDORCREATED stránky $PAGETITLE používateľom $PAGEEDITOR, pozrite si aktuálnu verziu $PAGETITLE_URL .
 
 $NEWPAGE
 
@@ -2289,17 +2312,18 @@ $1',
 'month'               => 'Mesiac:',
 'year'                => 'Rok:',
 
-'sp-contributions-newbies'       => 'Zobraziť len príspevky nových účtov',
-'sp-contributions-newbies-sub'   => 'Príspevky nováčikov',
-'sp-contributions-newbies-title' => 'Príspevky nových používateľov',
-'sp-contributions-blocklog'      => 'záznam blokovaní',
-'sp-contributions-deleted'       => 'zmazané príspevky používateľa',
-'sp-contributions-logs'          => 'záznamy',
-'sp-contributions-talk'          => 'diskusia',
-'sp-contributions-userrights'    => 'spravovanie používateľských práv',
-'sp-contributions-search'        => 'Hľadať príspevky',
-'sp-contributions-username'      => 'IP adresa alebo meno používateľa:',
-'sp-contributions-submit'        => 'Hľadať',
+'sp-contributions-newbies'        => 'Zobraziť len príspevky nových účtov',
+'sp-contributions-newbies-sub'    => 'Príspevky nováčikov',
+'sp-contributions-newbies-title'  => 'Príspevky nových používateľov',
+'sp-contributions-blocklog'       => 'záznam blokovaní',
+'sp-contributions-deleted'        => 'zmazané príspevky používateľa',
+'sp-contributions-logs'           => 'záznamy',
+'sp-contributions-talk'           => 'diskusia',
+'sp-contributions-userrights'     => 'spravovanie používateľských práv',
+'sp-contributions-blocked-notice' => 'Tento používateľ je momentálne zablokovaný. Dolu je uvedená posledná položka zo záznamu blokovaní:',
+'sp-contributions-search'         => 'Hľadať príspevky',
+'sp-contributions-username'       => 'IP adresa alebo meno používateľa:',
+'sp-contributions-submit'         => 'Hľadať',
 
 # What links here
 'whatlinkshere'            => 'Odkazy na túto stránku',
@@ -2391,7 +2415,8 @@ z/od momentálne zablokovanej IP adresy/používateľa.',
 'contribslink'                    => 'príspevky',
 'autoblocker'                     => 'Ste zablokovaný, pretože zdieľate IP adresu s „$1“. Dôvod „$2“.',
 'blocklogpage'                    => 'Záznam_blokovaní',
-'blocklog-fulllog'                => 'Úplný záznam blokovaní',
+'blocklog-showlog'                => 'Tento používateľ bol v minulosti zablokovaný. Záznam blokovaní uvádza nasledovný dôvod:',
+'blocklog-showsuppresslog'        => 'Tento používateľ bol v minulosti zablokovaný a skrytý. Záznam potlačení uvádza nasledovný dôvod:',
 'blocklogentry'                   => 'zablokoval/a "[[$1]]" s časom ukončenia $2 $3',
 'reblock-logentry'                => 'zmenené voľby zablokovania používateľa [[$1]] s časom vypršania $2, $3',
 'blocklogtext'                    => 'Toto je zoznam blokovaní a odblokovaní používateľov. Automaticky
@@ -3378,5 +3403,20 @@ Zadajte názov súboru bez predpony „{{ns:file}}:“.',
 'htmlform-submit'              => 'Odoslať',
 'htmlform-reset'               => 'Vrátiť zmeny',
 'htmlform-selectorother-other' => 'Iné',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Pridať kategóriu',
+'ajax-add-category-submit'     => 'Pridať',
+'ajax-confirm-title'           => 'Potvrdiť operáciu',
+'ajax-confirm-prompt'          => 'Dolu môžete napísať zhrnutie úprav.
+Svoje úpravy uložíte kliknutím na „Uložiť“.',
+'ajax-confirm-save'            => 'Uložiť',
+'ajax-add-category-summary'    => 'Pridať kategóriu „$1“',
+'ajax-remove-category-summary' => 'Odstrániť kategóriu „$1“',
+'ajax-confirm-actionsummary'   => 'Vykonať operáciu:',
+'ajax-error-title'             => 'Chyba',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => 'Nebolo možné odstrániť túto kategóriu.
+To sa zvyčajne stane, keď bola kategória pridaná na stránku v pomocou šablóny.',
 
 );

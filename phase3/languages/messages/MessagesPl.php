@@ -351,6 +351,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|W tej kategorii znajduje się tylko jeden plik.|W tej kategorii {{PLURAL:$1|jest 1 plik|są $1 pliki|jest $1 plików}} z ogólnej liczby $2 plików.}}',
 'category-file-count-limited'    => 'W tej kategorii {{PLURAL:$1|jest 1 plik|są $1 pliki|jest $1 plików}}.',
 'listingcontinuesabbrev'         => 'cd.',
+'index-category'                 => 'Strony indeksowane',
+'noindex-category'               => 'Strony nieindeksowane',
 
 'mainpagetext'      => "<big>'''Instalacja MediaWiki powiodła się.'''</big>",
 'mainpagedocfooter' => 'Zobacz [http://meta.wikimedia.org/wiki/Help:Contents przewodnik użytkownika] w celu uzyskania informacji o działaniu oprogramowania wiki.
@@ -544,9 +546,9 @@ $1',
 'nosuchactiontext'  => 'Działanie określone w adresie URL jest nieprawidłowe.
 Możliwe przyczyny to literówka w adresie, nieprawidłowy link lub błąd w oprogramowaniu {{GRAMMAR:D.lp|{{SITENAME}}}}.',
 'nosuchspecialpage' => 'Brak takiej strony specjalnej',
-'nospecialpagetext' => "<big>'''Brak żądanej strony specjalnej.'''</big>
+'nospecialpagetext' => '<strong>Brak żądanej strony specjalnej.</strong>
 
-Listę dostępnych stron specjalnych znajdziesz [[Special:SpecialPages|tutaj]].",
+Listę dostępnych stron specjalnych znajdziesz [[Special:SpecialPages|tutaj]].',
 
 # General errors
 'error'                => 'Błąd',
@@ -640,20 +642,21 @@ Nie zapomnij dostosować [[Special:Preferences|preferencji dla {{GRAMMAR:D.lp|{{
 'login'                      => 'Zaloguj się',
 'nav-login-createaccount'    => 'Logowanie i rejestracja',
 'loginprompt'                => 'Musisz mieć włączoną w przeglądarce obsługę ciasteczek, by móc się zalogować do {{GRAMMAR:D.lp|{{SITENAME}}}}.',
-'userlogin'                  => 'Logowanie i rejestracja',
+'userlogin'                  => 'Logowanie',
 'logout'                     => 'Wyloguj',
 'userlogout'                 => 'Wyloguj',
 'notloggedin'                => 'Nie jesteś zalogowany',
-'nologin'                    => 'Nie masz konta? $1.',
+'nologin'                    => "Nie masz konta? '''$1'''.",
 'nologinlink'                => 'Zarejestruj się',
 'createaccount'              => 'Załóż nowe konto',
-'gotaccount'                 => 'Masz już konto? $1.',
+'gotaccount'                 => "Masz już konto? '''$1'''.",
 'gotaccountlink'             => 'Zaloguj się',
 'createaccountmail'          => '– wyślij w tym celu wiadomość e‐mail',
 'badretype'                  => 'Wprowadzone hasła różnią się między sobą.',
 'userexists'                 => 'Wybrana przez Ciebie nazwa użytkownika jest już zajęta.
 Wybierz inną nazwę użytkownika.',
 'loginerror'                 => 'Błąd zalogowania',
+'createaccounterror'         => 'Nie można utworzyć konta $1',
 'nocookiesnew'               => 'Konto użytkownika zostało utworzone, ale nie jesteś zalogowany.
 Projekt {{SITENAME}} używa ciasteczek do przechowywania informacji o zalogowaniu się.
 Masz obecnie w przeglądarce wyłączoną obsługę ciasteczek. 
@@ -684,6 +687,7 @@ Tymczasowe hasło wygaśnie za {{PLURAL:$5|1 dzień|$5 dni}}.
 
 Jeśli to nie Ty prosiłeś o przesłanie hasła lub przypomniałeś sobie hasło i nie chcesz go zmieniać, wystarczy, że zignorujesz tę wiadomość i dalej będziesz się posługiwać swoim dotychczasowym hasłem.',
 'noemail'                    => 'Brak zdefiniowanego adresu e‐mail dla użytkownika „$1”.',
+'noemailcreate'              => 'Musisz podać prawidłowy adres e‐mail',
 'passwordsent'               => 'Nowe hasło zostało wysłane na adres e‐mail użytkownika „$1”.
 Po otrzymaniu go zaloguj się ponownie.',
 'blocked-mailpassword'       => 'Twój adres IP został zablokowany i nie możesz używać funkcji odzyskiwania hasła z powodu możliwości jej nadużywania.',
@@ -708,7 +712,8 @@ Wpisz poprawny adres e‐mail lub wyczyść pole.',
 Zaloguj się teraz i je zmień.
 
 Możesz zignorować tę wiadomość, jeśli konto zostało utworzone przez pomyłkę.',
-'login-throttled'            => 'Wykonałeś zbyt wiele prób zalogowania się na to konto. Odczekaj chwilę przez spróbowaniem ponownie.',
+'login-throttled'            => 'Zbyt wiele razy próbowałeś zalogować się na to konto.
+Odczekaj chwilę zanim ponowisz próbę.',
 'loginlanguagelabel'         => 'Język: $1',
 
 # Password reset dialog
@@ -831,6 +836,7 @@ Możesz [[Special:Search/{{PAGENAME}}|poszukać „{{PAGENAME}}” na innych str
 Możesz [[Special:Search/{{PAGENAME}}|wyszukać ten tytuł]] w treści innych stron
 lub <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} przeszukać powiązane logi].</span>',
 'userpage-userdoesnotexist'        => 'Użytkownik „$1” nie jest zarejestrowany. Upewnij się, czy na pewno zamierzałeś utworzyć lub zmodyfikować właśnie tę stronę.',
+'userpage-userdoesnotexist-view'   => 'Konto użytkownika „$1” nie jest zarejestrowane.',
 'clearyourcache'                   => "'''Uwaga:''' Zmiany po zapisaniu nowych ustawień mogą nie być widoczne. Należy wyczyścić zawartość pamięci podręcznej przeglądarki internetowej.
 *'''Mozilla, Firefox lub Safari –''' przytrzymaj wciśnięty ''Shift'' i kliknij na ''Odśwież'' lub wciśnij ''Ctrl‐F5'' lub ''Ctrl‐R'' (''Cmd‐Shift‐R'' na Macintoshu)
 *'''Konqueror –''' kliknij przycisk ''Odśwież'' lub wciśnij ''F5''
@@ -1066,6 +1072,7 @@ Proszę sprawdzić rejestr operacji.',
 'revdelete-otherreason'       => 'Inny lub dodatkowy powód:',
 'revdelete-reasonotherlist'   => 'Inny powód',
 'revdelete-edit-reasonlist'   => 'Edycja listy powodów usunięcia pliku',
+'revdelete-offender'          => 'Autor wersji',
 
 # Suppression log
 'suppressionlog'     => 'Rejestr utajniania',
@@ -1186,7 +1193,7 @@ Możesz [[:$1|utworzyć tę stronę]].",
 'prevn-title'                      => '{{PLURAL:$1|Poprzedni|Poprzednie}} $1 {{PLURAL:$1|wynik|wyniki|wyników}}',
 'nextn-title'                      => '{{PLURAL:$1|Następny|Następne}} $1 {{PLURAL:$1|wynik|wyniki|wyników}}',
 'shown-title'                      => 'Pokaż po $1 {{PLURAL:$1|wyniku|wyniki|wyników}} na stronę',
-'viewprevnext'                     => 'Zobacz ($1) ($2) ($3)',
+'viewprevnext'                     => 'Zobacz ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Opcje wyszukiwania',
 'searchmenu-exists'                => "* Strona '''[[$1]]'''",
 'searchmenu-new'                   => "'''Utwórz stronę „[[:$1|$1]]” na tej wiki.'''",
@@ -1424,6 +1431,7 @@ Jeśli zdecydujesz się je podać, zostaną użyte, by udokumentować Twoje auto
 'right-bigdelete'             => 'Usuwanie stron z długą historią edycji',
 'right-deleterevision'        => 'Usuwanie i odtwarzanie określonej wersji strony',
 'right-deletedhistory'        => 'Podgląd usuniętych wersji, bez przypisanego im tekstu',
+'right-deletedcontent'        => 'Podgląd usuniętego tekstu i zmian pomiędzy usuniętymi wersjami',
 'right-browsearchive'         => 'Przeszukiwanie usuniętych stron',
 'right-undelete'              => 'Odtwarzanie usuniętych stron',
 'right-suppressrevision'      => 'Podgląd i odtwarzanie wersji ukrytych przed Administratorami',
@@ -1456,6 +1464,7 @@ Jeśli zdecydujesz się je podać, zostaną użyte, by udokumentować Twoje auto
 'right-reset-passwords'       => 'Zerowanie haseł innych użytkowników',
 'right-override-export-depth' => 'Eksport stron wraz z linkowanymi do głębokości 5 linków',
 'right-versiondetail'         => 'Podgląd szczegółowych informacji o wersji oprogramowania',
+'right-root'                  => 'Możliwość wykonywania wszelkich czynności w wiki',
 
 # User rights log
 'rightslog'      => 'Uprawnienia',
@@ -1596,17 +1605,19 @@ Plik ma rozmiar {{PLURAL:$2|1 bajt|$2 bajty|$2 bajtów}}.',
 'largefileserver'             => 'Plik jest większy niż maksymalny dozwolony rozmiar.',
 'emptyfile'                   => 'Przesłany plik wydaje się być pusty. Może być to spowodowane literówką w nazwie pliku.
 Sprawdź, czy nazwa jest prawidłowa.',
-'fileexists'                  => "Plik o takiej nazwie już istnieje. Sprawdź '''<tt>$1</tt>''', jeśli nie jesteś pewien czy chcesz go zastąpić.",
-'filepageexists'              => "Istnieje już strona opisu tego pliku utworzona '''<tt>$1</tt>''', ale brak obecnie pliku o tej nazwie.
+'fileexists'                  => "Plik o takiej nazwie już istnieje.
+Sprawdź '''<tt>[[:$1]]</tt>''', jeśli nie jesteś pewien czy chcesz go zastąpić.
+[[$1|thumb]]",
+'filepageexists'              => "Istnieje już strona opisu tego pliku utworzona '''<tt>[[:$1]]</tt>''', ale brak obecnie pliku o tej nazwie.
 Informacje o pliku, które wprowadziłeś, nie pojawią się na stronie opisu.
-Jeśli chcesz, by informacje te zostały pokazane, musisz je ręcznie przeredagować",
-'fileexists-extension'        => "Plik o podobnej nazwie już istnieje:<br />
-Nazwa przesyłanego pliku: '''<tt>$1</tt>'''<br />
-Nazwa istniejącego pliku: '''<tt>$2</tt>'''<br />
+Jeśli chcesz, by informacje te zostały pokazane, musisz je ręcznie przeredagować
+[[$1|thumb]]",
+'fileexists-extension'        => "Plik o podobnej nazwie już istnieje: [[$2|thumb]]
+* Nazwa przesyłanego pliku: '''<tt>[[:$1]]</tt>'''
+* Nazwa istniejącego pliku: '''<tt>[[:$2]]</tt>'''
 Wybierz inną nazwę.",
-'fileexists-thumb'            => "<center>'''Istniejący plik'''</center>",
-'fileexists-thumbnail-yes'    => "Plik wydaje się być pomniejszoną grafiką ''(miniaturką)''.
-Sprawdź plik '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Plik wydaje się być pomniejszoną grafiką ''(miniaturką)''. [[$1|thumb]]
+Sprawdź plik '''<tt>[[:$1]]</tt>'''.
 Jeśli wybrany plik jest tą samą grafiką co ta w oryginalnym rozmiarze, nie musisz przesyłać dodatkowej miniaturki.",
 'file-thumbnail-no'           => "Nazwa pliku zaczyna się od '''<tt>$1</tt>'''.
 Wydaje się, że jest to pomniejszona grafika ''(miniaturka)''.
@@ -1668,6 +1679,23 @@ Jeśli problem będzie się powtarzał, skontaktuj się z [[Special:ListUsers/sy
 'upload-too-many-redirects' => 'URL zawiera zbyt wiele przekierowań',
 'upload-unknown-size'       => 'Nieznany rozmiar',
 'upload-http-error'         => 'Wystąpił błąd protokołu HTTP – $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Odmowa dostępu',
+'img-auth-nopathinfo'   => 'Brak PATH_INFO.
+Serwer nie został skonfigurowany, tak aby przekazywał tę informację.
+Możliwe, że jest oparty na CGI i nie może obsługiwać img_auth.
+Zobacz http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-notindir'     => 'Żądana ścieżka nie jest w obrębie katalogu skonfigurowanego do przesyłania plików.',
+'img-auth-badtitle'     => 'Nie można wygenerować prawidłowego tytuł z „$1”.',
+'img-auth-nologinnWL'   => 'Nie jesteś zalogowany, a „$1” nie jest na białej liście.',
+'img-auth-nofile'       => 'Brak pliku „$1”.',
+'img-auth-isdir'        => 'Próbujesz uzyskać dostęp do katalogu „$1”.
+Dozwolony jest wyłącznie dostęp do plików.',
+'img-auth-streaming'    => 'Strumieniowanie „$1”.',
+'img-auth-public'       => 'Funkcja img_auth.php służy do pobierania plików z prywatnej wiki.
+Ponieważ ta wiki została skonfigurowana jako publiczna dla zapewnienia optymalnego bezpieczeństwa img_auth.php została wyłączona.',
+'img-auth-noread'       => 'Użytkownik nie ma dostępu do odczytu „$1”.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Adres URL jest nieosiągalny',
@@ -1762,6 +1790,7 @@ Poniżej znajdują się informacje ze [$2 strony opisu] tego pliku.',
 ** Naruszenie praw autorskich
 ** Kopia już istniejącego pliku',
 'filedelete-edit-reasonlist'  => 'Edycja listy powodów usunięcia pliku',
+'filedelete-maintenance'      => 'Usuwanie i odtwarzanie plików zostało tymczasowo wyłączone z powodu konserwacji.',
 
 # MIME search
 'mimesearch'         => 'Wyszukiwanie MIME',
@@ -1963,7 +1992,7 @@ Obsługiwane protokoły: <tt>$1</tt>',
 
 # Special:ActiveUsers
 'activeusers'          => 'Lista aktywnych użytkowników',
-'activeusers-count'    => 'ostatnio {{GENDER:$2|wykonał|wykonała|wykonał}} $1 {{PLURAL:$1|edycję|edycje|edycji}}',
+'activeusers-count'    => 'w ciągu {{PLURAL:$3|ostatniego dnia|ostatnich $3 dni}} {{GENDER:$2|wykonał|wykonała|wykonał}} $1 {{PLURAL:$1|edycję|edycje|edycji}}',
 'activeusers-from'     => 'Pokaż użytkowników zaczynając od',
 'activeusers-noresult' => 'Nie odnaleziono żadnego użytkownika.',
 
@@ -2060,16 +2089,13 @@ Każda zmiana treści tej strony lub związanej z nią strony dyskusji zostanie 
 'enotif_impersonal_salutation' => 'użytkownik {{GRAMMAR:D.lp|{{SITENAME}}}}',
 'changed'                      => 'zmieniona',
 'created'                      => 'utworzona',
-'deleted'                      => 'usunięta',
-'enotif_deletedpagetext'       => 'Ta strona nie jest już dostępna.',
 'enotif_subject'               => 'Strona $PAGETITLE w {{GRAMMAR:MS.lp|{{SITENAME}}}} została $CHANGEDORCREATED przez użytkownika $PAGEEDITOR',
 'enotif_lastvisited'           => 'Zobacz na stronie $1 wszystkie zmiany od Twojej ostatniej wizyty.',
 'enotif_lastdiff'              => 'Zobacz na stronie $1 tę zmianę.',
 'enotif_anon_editor'           => 'użytkownik anonimowy $1',
-'enotif_rev_info'              => 'Zobacz aktualną wersją na stronie $1.',
 'enotif_body'                  => 'Szanowny $WATCHINGUSERNAME,
 
-strona $PAGETITLE w {{GRAMMAR:MS.lp|{{SITENAME}}}} została $CHANGEDORCREATED $PAGEEDITDATEANDTIME przez użytkownika $PAGEEDITOR. $REVINFO
+strona $PAGETITLE w {{GRAMMAR:MS.lp|{{SITENAME}}}} została $CHANGEDORCREATED $PAGEEDITDATE przez użytkownika $PAGEEDITOR. Zobacz na stronie $PAGETITLE_URL aktualną wersję.
 
 $NEWPAGE
 
@@ -2380,7 +2406,8 @@ Przejdź do [[Special:IPBlockList|listy zablokowanych adresów IP]], by przejrze
 'autoblocker'                     => 'Zablokowano Cię automatycznie, ponieważ używasz tego samego adresu IP, co użytkownik „[[User:$1|$1]]”.
 Przyczyna blokady $1 to: „$2”',
 'blocklogpage'                    => 'Historia blokad',
-'blocklog-fulllog'                => 'Pełny rejestr blokad',
+'blocklog-showlog'                => 'Ten użytkownik był już wcześniej blokowany. Poniżej znajduje się rejestr blokad:',
+'blocklog-showsuppresslog'        => 'Ten użytkownik był już wcześniej blokowany, a blokady ukrywane. Poniżej znajduje się rejestr ukrywania:',
 'blocklogentry'                   => 'zablokował [[$1]], czas blokady: $2 $3',
 'reblock-logentry'                => 'zmienił ustawienia blokady dla [[$1]], czas blokady: $2 $3',
 'blocklogtext'                    => 'Poniżej znajduje się lista blokad założonych i zdjętych z poszczególnych adresów IP.
@@ -2707,11 +2734,13 @@ Pozwala na wpisanie powodu w opisie zmian.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonimowy użytkownik|Anonimowi użytkownicy}} {{GRAMMAR:D.lp|{{SITENAME}}}}',
-'siteuser'         => 'Użytkownik {{GRAMMAR:D.lp|{{SITENAME}}}} – $1',
+'siteuser'         => 'użytkownik {{GRAMMAR:D.lp|{{SITENAME}}}} – $1',
+'anonuser'         => 'niezalogowany użytkownik {{GRAMMAR:D.lp|{{SITENAME}}}} – $1',
 'lastmodifiedatby' => 'Ostatnia edycja tej strony: $2, $1 (autor zmian: $3)',
 'othercontribs'    => 'Inni autorzy: $1.',
 'others'           => 'inni',
-'siteusers'        => '{{PLURAL:$2|Użytkownik|Użytkownicy}} {{GRAMMAR:D.lp|{{SITENAME}}}}: $1',
+'siteusers'        => '{{PLURAL:$2|użytkownik|użytkownicy}} {{GRAMMAR:D.lp|{{SITENAME}}}}{{PLURAL:$2||:}} $1',
+'anonusers'        => '{{PLURAL:$2|niezalogowany użytkownik|niezalogowani użytkownicy}} {{GRAMMAR:D.lp|{{SITENAME}}}}{{PLURAL:$2||:}} $1',
 'creditspage'      => 'Autorzy',
 'nocredits'        => 'Brak informacji o autorach tej strony.',
 

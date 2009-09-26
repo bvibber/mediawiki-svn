@@ -132,7 +132,7 @@ $specialPageAliases = array(
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Sublinear ligamines:',
-'tog-highlightbroken'         => 'Formatar ligamines rupte <a href="" class="new">assi</a> (alternativemente: assi<a href="" class="internal">?</a>).',
+'tog-highlightbroken'         => 'Formatar ligamines rupte <a href="" class="new">assi</a> (alternativa: assi<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Justificar paragraphos',
 'tog-hideminor'               => 'Celar modificationes recente minor',
 'tog-hidepatrolled'           => 'Celar le modificationes patruliate in le modificationes recente',
@@ -258,6 +258,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|Iste categoria contine solmente le sequente file.|Le sequente {{PLURAL:$1|file es|$1 files es}} in iste categoria, ex $2 in total.}}',
 'category-file-count-limited'    => 'Le sequente {{PLURAL:$1|file es|$1 files es}} in le categoria actual.',
 'listingcontinuesabbrev'         => 'cont.',
+'index-category'                 => 'Paginas indexate',
+'noindex-category'               => 'Paginas non indexate',
 
 'mainpagetext'      => "<big>'''MediaWiki ha essite installate con successo.'''</big>",
 'mainpagedocfooter' => 'Consulta le [http://meta.wikimedia.org/wiki/Help:Contents Guida del usator] pro informationes super le uso del software wiki.
@@ -451,9 +453,9 @@ $1',
 Es possibile que tu ha mal entrate le URL o sequite un ligamine incorrecte.
 Isto poterea equalmente indicar un defecto in le software usate per {{SITENAME}}.',
 'nosuchspecialpage' => 'Pagina special invalide',
-'nospecialpagetext' => "<big>'''Tu ha requestate un pagina special que es non es valide.'''</big>
+'nospecialpagetext' => '<strong>Tu ha requestate un pagina special que es non es valide.</strong>
 
-Un lista de paginas special valide se trova a [[Special:SpecialPages|{{int:specialpages}}]].",
+Un lista de paginas special valide se trova a [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Error',
@@ -550,20 +552,21 @@ Non oblida personalisar tu [[Special:Preferences|preferentias in {{SITENAME}}]].
 'login'                      => 'Aperir session',
 'nav-login-createaccount'    => 'Aperir session / crear conto',
 'loginprompt'                => 'Tu debe haber activate le cookies pro poter identificar te a {{SITENAME}}.',
-'userlogin'                  => 'Aperir session / crear conto',
+'userlogin'                  => 'Aperir session',
 'logout'                     => 'Clauder session',
 'userlogout'                 => 'Clauder session',
 'notloggedin'                => 'Tu non ha aperite un session',
-'nologin'                    => 'Tu non ha un conto? $1.',
+'nologin'                    => "Tu non ha un conto? '''$1'''.",
 'nologinlink'                => 'Crear un conto',
 'createaccount'              => 'Crear nove conto',
-'gotaccount'                 => 'Tu jam ha un conto? $1.',
+'gotaccount'                 => "Tu jam ha un conto? '''$1'''.",
 'gotaccountlink'             => 'Aperir un session',
 'createaccountmail'          => 'per e-mail',
 'badretype'                  => 'Le duo contrasignos que tu scribeva non es identic.',
 'userexists'                 => 'Le nomine de usator que tu entrava es ja in uso.
 Selige un altere nomine.',
 'loginerror'                 => 'Error in le apertura del session',
+'createaccounterror'         => 'Non poteva crear le conto: $1',
 'nocookiesnew'               => "Le conto de usator ha essite create, sed tu non ha aperite un session.
 {{SITENAME}} usa ''cookies'' pro mantener le sessiones del usatores.
 Tu ha disactivate le functionalitate del ''cookies''.
@@ -596,6 +599,7 @@ Si un altere persona ha facite iste requesta, o si tu te ha rememorate tu contra
 e tu non vole plus cambiar lo, tu pote ignorar iste message e
 continuar a usar tu contrasigno original.',
 'noemail'                    => 'Il non ha un adresse de e-mail registrate pro le usator "$1".',
+'noemailcreate'              => 'Es necessari fornir un adresse de e-mail valide',
 'passwordsent'               => 'Un nove contrasigno esseva inviate al adresse de e-mail
 registrate pro "$1".
 Per favor initia un session post reciper lo.',
@@ -621,8 +625,8 @@ Entra un adresse ben formatate, o vacua ille campo.',
 Tu deberea aperir un session e cambiar tu contrasigno ora.
 
 Tu pote ignorar iste message si iste conto ha essite create in error.',
-'login-throttled'            => 'Pro le momento, tu ha tentate troppo de contrasignos pro iste conto.
-Per favor attende ante de probar lo de novo.',
+'login-throttled'            => 'Tu ha facite troppo de tentativas de identification.
+Per favor attende ante de probar lo novemente.',
 'loginlanguagelabel'         => 'Lingua: $1',
 
 # Password reset dialog
@@ -746,6 +750,7 @@ o [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar iste pagina].',
 Tu pote [[Special:Search/{{PAGENAME}}|cercar le titulo de iste pagina]] in altere paginas,
 o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} cercar in le registros pertinente].',
 'userpage-userdoesnotexist'        => 'Le conto de usator "$1" non es registrate. Per favor verifica que tu vole crear/modificar iste pagina.',
+'userpage-userdoesnotexist-view'   => 'Le conto de usator "$1" non es registrate.',
 'clearyourcache'                   => "'''Nota - Post confirmar, il pote esser necessari refrescar le ''cache'' de tu navigator pro vider le cambiamentos.''' '''Mozilla / Firefox / Safari:''' tenente ''Shift'' clicca ''Reload,'' o preme ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' in un Macintosh); '''Konqueror: '''clicca ''Reload'' o preme ''F5;'' '''Opera:''' vacua le ''cache'' in ''Tools → Preferences;'' '''Internet Explorer:''' tenente ''Ctrl'' clicca ''Refresh,'' o preme ''Ctrl-F5.''",
 'usercssyoucanpreview'             => "'''Consilio:''' Usa le button 'Monstrar previsualisation' pro testar tu nove CSS ante de publicar lo.",
 'userjsyoucanpreview'              => "'''Consilio:''' Usa le button 'Monstrar previsualisation' pro testar tu nove JS ante de publicar lo.",
@@ -991,6 +996,7 @@ Per favor verifica le registros.',
 'revdelete-otherreason'       => 'Altere/additional motivo:',
 'revdelete-reasonotherlist'   => 'Altere motivo',
 'revdelete-edit-reasonlist'   => 'Modificar motivos pro deletion',
+'revdelete-offender'          => 'Autor del version:',
 
 # Suppression log
 'suppressionlog'     => 'Registro de suppressiones',
@@ -1111,7 +1117,7 @@ Tu pote [[:\$1|crear iste pagina]].",
 'prevn-title'                      => '$1 {{PLURAL:$1|resultato|resultatos}} precedente',
 'nextn-title'                      => '$1 {{PLURAL:$1|resultato|resultatos}} sequente',
 'shown-title'                      => 'Monstrar $1 {{PLURAL:$1|resultato|resultatos}} per pagina',
-'viewprevnext'                     => 'Vider ($1) ($2) ($3).',
+'viewprevnext'                     => 'Vider ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Optiones de recerca',
 'searchmenu-exists'                => "'''Existe un pagina nominate \"[[\$1]]\" in iste wiki'''",
 'searchmenu-new'                   => "'''Crea le pagina \"[[:\$1]]\" in iste wiki!'''",
@@ -1188,7 +1194,7 @@ Nota que lor indices del contento de {{SITENAME}} pote esser obsolete.',
 'prefs-watchlist-days-max'      => '(non plus de 7 dies)',
 'prefs-watchlist-edits'         => 'Numero maximal de modificationes a monstrar in le observatorio expandite:',
 'prefs-watchlist-edits-max'     => '(numero maxime: 1000)',
-'prefs-watchlist-token'         => 'Indicio de observatorio',
+'prefs-watchlist-token'         => 'Indicio pro le observatorio:',
 'prefs-misc'                    => 'Misc',
 'prefs-resetpass'               => 'Cambiar contrasigno',
 'prefs-email'                   => 'Optiones de e-mail',
@@ -1350,6 +1356,7 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'right-bigdelete'             => 'Deler paginas con historias longe',
 'right-deleterevision'        => 'Deler e restaurar versiones specific de paginas',
 'right-deletedhistory'        => 'Vider entratas de historia delite, sin lor texto associate',
+'right-deletedcontent'        => 'Vider texto delite e differentias inter versiones delite',
 'right-browsearchive'         => 'Cercar in paginas delite',
 'right-undelete'              => 'Restaurar un pagina',
 'right-suppressrevision'      => 'Revider e restaurar versiones celate ab administratores',
@@ -1382,6 +1389,7 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'right-reset-passwords'       => 'Redefinir le contrasigno de altere usatores',
 'right-override-export-depth' => 'Exportar paginas includente paginas ligate usque a un profunditate de 5',
 'right-versiondetail'         => 'Monstrar le informationes complete super le versiones del software',
+'right-root'                  => 'Executar omne actiones in le wiki',
 
 # User rights log
 'rightslog'      => 'Registro de derectos de usator',
@@ -1525,17 +1533,19 @@ iste file occupa $2.',
 'emptyfile'                   => 'Le file que tu cargava pare esser vacue.
 Isto pote esser debite a un error in le nomine del file.
 Per favor verifica que tu realmente vole cargar iste file.',
-'fileexists'                  => "Un file con iste nomine existe ja. Per favor verifica '''<tt>$1</tt>''' si tu non es secur de voler cambiar lo.",
-'filepageexists'              => "Le pagina de description correspondente a iste file ha jam essite create a '''<tt>$1</tt>''', sed un file con iste nomine non existe al momento.
+'fileexists'                  => "Un file con iste nomine existe ja.
+Per favor verifica '''<tt>[[:$1]]</tt>''' si tu non es secur de voler cambiar lo.
+[[$1|thumb]]",
+'filepageexists'              => "Le pagina de description correspondente a iste file ha ja essite create a '''<tt>[[:$1]]</tt>''', ma nulle file con iste nomine existe al momento.
 Le summario que tu entra non apparera in le pagina de description.
-Si tu vole que illo appare, tu debe inserer lo manualmente.",
-'fileexists-extension'        => "Un file con un nomine similar existe ja:<br />
-Nomine del file que tu carga: '''<tt>$1</tt>'''<br />
-Nomine del file existente: '''<tt>$2</tt>'''<br />
+Si tu vole que illo appare, tu debe inserer lo manualmente.
+[[$1|thumb]]",
+'fileexists-extension'        => "Un file con un nomine similar existe ja: [[$2|thumb]]
+* Nomine del file que tu carga: '''<tt>[[:$1]]</tt>'''
+* Nomine del file existente: '''<tt>[[:$2]]</tt>'''
 Per favor selige un altere nomine.",
-'fileexists-thumb'            => "<center>'''File existente'''</center>",
-'fileexists-thumbnail-yes'    => "Iste file pare esser un imagine a grandor reducite ''(miniatura)''.
-Per favor verifica le file '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Iste file pare esser un imagine a grandor reducite ''(miniatura)''. [[$1|thumb]]
+Per favor verifica le file '''<tt>[[:$1]]</tt>'''.
 Si le file verificate es le mesme imagine a grandor original, non es necessari cargar un miniatura additional.",
 'file-thumbnail-no'           => "Le nomine del file comencia con '''<tt>$1</tt>'''.
 Illo pare esser un imagine a grandor reducite ''(miniatura)''.
@@ -1597,6 +1607,24 @@ Si le problema persiste, contacta un [[Special:ListUsers/sysop|administrator]].'
 'upload-too-many-redirects' => 'Le URL contineva troppo de redirectiones',
 'upload-unknown-size'       => 'Dimension incognite',
 'upload-http-error'         => 'Un error HTTP occurreva: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Accesso refusate',
+'img-auth-nopathinfo'   => 'PATH_INFO mancante.
+Le servitor non ha essite configurate pro passar iste information.
+Illo pote esser basate super CGI e non pote supportar img_auth.
+Vide http://www.mediawiki.org/wiki/Manual:Image_Authorization .',
+'img-auth-notindir'     => 'Le cammino requestate non es in le directorio de cargas configurate.',
+'img-auth-badtitle'     => 'Impossibile construer un titulo valide ex "$1".',
+'img-auth-nologinnWL'   => 'Tu non ha aperite un session e "$1" non es in le lista blanc.',
+'img-auth-nofile'       => 'File "$1" non existe.',
+'img-auth-isdir'        => 'Tu tenta acceder a un directorio "$1".
+Solmente le accesso a files es permittite.',
+'img-auth-streaming'    => 'Fluxo de "$1" comenciate.',
+'img-auth-public'       => 'Le function de img_auth.php es de reproducer files ex un wiki private.
+Iste wiki es configurate como un wiki public.
+Pro securitate optimal, img_auth.php es disactivate.',
+'img-auth-noread'       => 'Le usator non ha accesso pro leger "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Non poteva acceder al URL',
@@ -1692,6 +1720,7 @@ Le description de su [$2 pagina de description] ibi es monstrate in basso.',
 ** Violation de copyright
 ** File duplicate',
 'filedelete-edit-reasonlist'  => 'Modificar motivos pro deletion',
+'filedelete-maintenance'      => 'Deletion e restauration de files temporarimente disactivate durante mantenentia.',
 
 # MIME search
 'mimesearch'         => 'Recerca de typo MIME',
@@ -1895,7 +1924,7 @@ Protocollos supportate: <tt>$1</tt>',
 
 # Special:ActiveUsers
 'activeusers'          => 'Lista de usatores active',
-'activeusers-count'    => '$1 {{PLURAL:$1|modification|modificationes}} recente',
+'activeusers-count'    => '$1 {{PLURAL:$1|modification|modificationes}} in le ultime {{PLURAL:$3|die|$3 dies}}',
 'activeusers-from'     => 'Presentar usatores a partir de:',
 'activeusers-noresult' => 'Nulle usator trovate.',
 
@@ -1997,17 +2026,14 @@ render lo plus facile de deteger.",
 'enotif_impersonal_salutation' => 'Usator de {{SITENAME}}',
 'changed'                      => 'modificate',
 'created'                      => 'create',
-'deleted'                      => 'delite',
-'enotif_deletedpagetext'       => 'Iste pagina non es plus disponibile.',
 'enotif_subject'               => 'Le pagina $PAGETITLE de {{SITENAME}} ha essite $CHANGEDORCREATED per $PAGEEDITOR',
 'enotif_lastvisited'           => 'Vide $1 pro tote le modificationes depost tu ultime visita.',
 'enotif_lastdiff'              => 'Vide $1 pro revider iste modification.',
 'enotif_anon_editor'           => 'usator anonyme $1',
-'enotif_rev_info'              => 'Vide $1 pro le version actual.',
 'enotif_body'                  => 'Car $WATCHINGUSERNAME,
 
 
-Le pagina de {{SITENAME}} titulate $PAGETITLE ha essite $CHANGEDORCREATED le $PAGEEDITDATEANDTIME per $PAGEEDITOR. $REVINFO
+Le pagina de {{SITENAME}} titulate $PAGETITLE ha essite $CHANGEDORCREATED le $PAGEEDITDATE per $PAGEEDITOR. Vide $PAGETITLE_URL pro le version actual.
 
 $NEWPAGE
 
@@ -2327,7 +2353,8 @@ a un adresse IP blocate previemente.',
 'autoblocker'                     => 'Autoblocate proque tu adresse IP ha recentemente essite usate per "[[User:$1|$1]]".
 Le ration date pro le blocada de $1 es: "$2"',
 'blocklogpage'                    => 'Registro de blocadas',
-'blocklog-fulllog'                => 'Registro complete de blocadas',
+'blocklog-showlog'                => 'Iste usator ha essite blocate previemente. Le registro de blocadas es providite ci infra pro referentia:',
+'blocklog-showsuppresslog'        => 'Iste usator ha essite blocate e celate previemente. Le registro de suppressiones es providite ci infra pro referentia:',
 'blocklogentry'                   => 'blocava [[$1]] con un tempore de expiration de $2 $3',
 'reblock-logentry'                => 'cambiava configurationes de blocada pro [[$1]] con un tempore de expiration de $2 $3',
 'blocklogtext'                    => 'Isto es un registro de blocadas e disblocadas de usatores.
@@ -2660,10 +2687,12 @@ Es possibile adder un motivo in le summario.',
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Usator|Usatores}} anonyme de {{SITENAME}}',
 'siteuser'         => 'Usator $1 de {{SITENAME}}',
+'anonuser'         => 'le usator anonyme $1 de {{SITENAME}}',
 'lastmodifiedatby' => 'Le modification le plus recente de iste pagina esseva facite le $1 a $2 per $3.',
 'othercontribs'    => 'A base de contributiones per $1.',
 'others'           => 'alteres',
-'siteusers'        => '{{PLURAL:$2|Usator|Usatores}} $1 de {{SITENAME}}',
+'siteusers'        => 'le {{PLURAL:$2|usator|usatores}} $1 de {{SITENAME}}',
+'anonusers'        => 'le {{PLURAL:$2|usator|usatores}} anonyme $1 de {{SITENAME}}',
 'creditspage'      => 'Autores del pagina',
 'nocredits'        => 'Nulle information es disponibile super le autores de iste pagina.',
 

@@ -261,10 +261,10 @@ $magicWords = array(
 	'newsectionlink'        => array( '1', '__新しいセクションリンク__', '__新セクションリンク__', '__NEWSECTIONLINK__' ),
 	'nonewsectionlink'      => array( '1', '__新しいセクションリンク非表示__', '＿＿新しいセクションリンク非表示＿＿', '__新セクションリンク非表示__', '＿＿新セクションリンク非表示＿＿', '__NONEWSECTIONLINK__' ),
 	'currentversion'        => array( '1', 'ウィキバージョン', 'MediaWikiバージョン', 'メディアウィキバージョン', 'CURRENTVERSION' ),
-	'urlencode'             => array( '0', 'URLエンコード:', 'URLENCODE:' ),
+	'urlencode'             => array( '0', 'URLエンコード:', 'ＵＲＬエンコード:', 'URLENCODE:' ),
 	'currenttimestamp'      => array( '1', '協定タイムスタンプ', 'CURRENTTIMESTAMP' ),
 	'localtimestamp'        => array( '1', '現地タイムスタンプ', 'ローカルタイムスタンプ', 'LOCALTIMESTAMP' ),
-	'language'              => array( '0', '#言語:', '#LANGUAGE:' ),
+	'language'              => array( '0', '#言語:', '＃言語:', '#LANGUAGE:' ),
 	'contentlanguage'       => array( '1', '内容言語', '記事言語', 'プロジェクト言語', 'CONTENTLANGUAGE', 'CONTENTLANG' ),
 	'pagesinnamespace'      => array( '1', '名前空間内ページ数', 'PAGESINNAMESPACE:', 'PAGESINNS:' ),
 	'numberofadmins'        => array( '1', '管理者数', 'NUMBEROFADMINS' ),
@@ -412,6 +412,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|このカテゴリへは次の1ファイルしか属していません。|以下にこのカテゴリへ属しているファイル $2 個中 $1 個を表示しています。}}',
 'category-file-count-limited'    => 'このカテゴリへは以下の{{PLURAL:$1|ファイル $1 個}}が属しています。',
 'listingcontinuesabbrev'         => 'の続き',
+'index-category'                 => '検索エンジンにインデックス化されるページ',
+'noindex-category'               => '検索エンジンにインデックス化されないページ',
 
 'mainpagetext'      => "<big>'''MediaWikiが正常にインストールされました。'''</big>",
 'mainpagedocfooter' => '使い方・設定に関しては[http://meta.wikimedia.org/wiki/%E3%83%98%E3%83%AB%E3%83%97:%E7%9B%AE%E6%AC%A1 ユーザーズガイド]を参照してください。
@@ -602,9 +604,9 @@ $1',
 'nosuchaction'      => 'そのような操作はありません',
 'nosuchactiontext'  => 'このURLで指定された操作は無効です。あなたがURLを間違って打ったか、無効なリンクを辿った可能性があります。また、{{SITENAME}} が利用するソフトウェアのバグである可能性もあります。',
 'nosuchspecialpage' => 'そのような特別ページはありません',
-'nospecialpagetext' => "<big>'''要求された特別ページは存在しません。'''</big>
+'nospecialpagetext' => '<strong>要求された特別ページは存在しません。</strong>
 
-有効な特別ページの一覧は[[Special:SpecialPages|{{int:specialpages}}]]にあります。",
+有効な特別ページの一覧は[[Special:SpecialPages|{{int:specialpages}}]]にあります。',
 
 # General errors
 'error'                => 'エラー',
@@ -626,11 +628,11 @@ $1',
 'readonlytext'         => 'データベースは現在、新しいページの追加や編集を受け付けない「ロック状態」になっています。これはおそらく定期的なメンテナンスのためで、メンテナンス終了後は正常な状態に復帰します。
 
 データベースをロックした管理者による説明は以下の通りです: $1',
-'missing-article'      => '「$1」 $2 というページのテキストをデータベース上に見つけることができませんでした。
+'missing-article'      => '「$1」$2 というページのテキストをデータベース上に見つけることができませんでした。
 
-削除された版のページへの古い差分表示や固定リンクをたどった時にこのようなことになります。
+ページの削除された版への古い差分表示や固定リンクをたどった時にこのようなことになります。
 
-それ以外の操作でこのメッセージが表示された場合、ソフトウェアのバグの可能性があります。[[Special:ListUsers/sysop|管理者]]までそのURLを添えてお知らせください。',
+それ以外の操作でこのメッセージが表示された場合、ソフトウェアのバグである可能性があります。[[Special:ListUsers/sysop|管理者]]までその URL を添えてお知らせください。',
 'missingarticle-rev'   => '(版番号: $1)',
 'missingarticle-diff'  => '(差分: $1, $2)',
 'readonly_lag'         => 'データベースはスレーブ・サーバーがマスター・サーバーに同期するまで自動的にロックされています',
@@ -697,15 +699,16 @@ $2',
 'logout'                     => 'ログアウト',
 'userlogout'                 => 'ログアウト',
 'notloggedin'                => 'ログインしていません',
-'nologin'                    => 'アカウントをお持ちではありませんか？$1。',
+'nologin'                    => "アカウントをお持ちではありませんか？'''$1'''。",
 'nologinlink'                => 'アカウントを作成',
 'createaccount'              => 'アカウント作成',
-'gotaccount'                 => 'すでにアカウントをお持ちですか？$1。',
+'gotaccount'                 => "すでにアカウントをお持ちですか？'''$1'''。",
 'gotaccountlink'             => 'ログイン',
 'createaccountmail'          => 'メールで送信',
 'badretype'                  => '両方のパスワードが一致しません。',
 'userexists'                 => '入力された利用者名はすでに使われています。ほかの名前をお選びください。',
 'loginerror'                 => 'ログイン失敗',
+'createaccounterror'         => 'アカウントを作成できませんでした： $1',
 'nocookiesnew'               => '利用者のアカウントは作成されましたが、ログインしていません。{{SITENAME}}ではログインにクッキーを使います。あなたはクッキーを無効な設定にしているようです。クッキーを有効にしてから作成した利用者名とパスワードでログインしてください。',
 'nocookieslogin'             => '{{SITENAME}}ではログインにクッキーを使います。あなたはクッキーを無効にしているようです。クッキーを有効にして、もう一度試してください。',
 'noname'                     => '利用者名を正しく指定していません。',
@@ -724,6 +727,7 @@ $2',
 
 パスワード再発行の申請に覚えがない、またはログイン用パスワードを思い出されパスワード変更の必要がないならば、このメッセージは無視してください。引き続き以前のパスワードを使用し続けることができます。',
 'noemail'                    => '利用者「$1」のメールアドレスは登録されていません。',
+'noemailcreate'              => '有効な電子メールアドレスを入力する必要があります。',
 'passwordsent'               => '新しいパスワードを$1さんの登録済みメールアドレスに送信しました。メールを受け取ったら、再度ログインしてください。',
 'blocked-mailpassword'       => 'あなたの使用しているIPアドレスからの編集はブロックされています。悪用防止のため、パスワードの再発行は無効化されています。',
 'eauthentsent'               => '指定されたメールアドレスにアドレス確認のためのメールを送信しました。このアカウントが本当にあなたのものであるか確認するため、あなたがメールの内容に従わない限り、その他のメールはこのアカウント宛には送信されません。',
@@ -741,7 +745,7 @@ $2',
 'createaccount-text'         => 'この電子メールアドレスを連絡先として、{{SITENAME}} ($4) に「$2」という名前のアカウントが作成されました。パスワードは「$3」です。今すぐログインし、パスワードを変更してください。
 
 何かの手違いでアカウントが作成されたと思う場合、このメッセージは無視してください。',
-'login-throttled'            => 'パスワード入力の失敗が制限回数を超えました。しばらく時間をおいてから再度お試しください。',
+'login-throttled'            => 'ログインの失敗が制限回数を超えました。しばらく時間をおいてから再度お試しください。',
 'loginlanguagelabel'         => '言語: $1',
 
 # Password reset dialog
@@ -786,7 +790,7 @@ $2',
 'summary'                          => '編集内容の要約:',
 'subject'                          => '題名・見出し:',
 'minoredit'                        => 'これは細部の編集です',
-'watchthis'                        => 'このページを監視する',
+'watchthis'                        => 'このページをウォッチする',
 'savearticle'                      => 'ページを保存',
 'preview'                          => 'プレビュー',
 'showpreview'                      => 'プレビューを表示',
@@ -846,6 +850,7 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'noarticletext'                    => '現在このページには内容がありません。他のページに含まれる[[Special:Search/{{PAGENAME}}|このページ名を検索する]]か、もしくは<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 関連記録を検索する]か、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを作成]</span>することができます。',
 'noarticletext-nopermission'       => '現在このページには内容がありません。他のページに含まれる[[Special:Search/{{PAGENAME}}|このページ名を検索する]]か、もしくは<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 関連記録を検索する]</span>ことができます。',
 'userpage-userdoesnotexist'        => '「$1」という名前のアカウントは登録されていません。このページを編集することが適切かどうか確認してください。',
+'userpage-userdoesnotexist-view'   => '利用者アカウント「$1」は登録されていません。',
 'clearyourcache'                   => "'''注意:''' 保存した後、ブラウザのキャッシュをクリアする必要があります。
 * '''Mozilla / Firefox / Safari:''' [Shift] を押しながら [再読み込み] をクリック、または [Ctrl]-[F5] か [Ctrl]-[R] (Macintoshでは [Cmd]-[Shift]-[R])
 * '''IE:''' [Ctrl] を押しながら [更新] をクリック、または [Ctrl]-[F5]
@@ -1044,6 +1049,7 @@ $1",
 'revdelete-otherreason'       => '他の、または追加の理由:',
 'revdelete-reasonotherlist'   => '他の理由',
 'revdelete-edit-reasonlist'   => '削除理由を編集',
+'revdelete-offender'          => '特定版投稿者:',
 
 # Suppression log
 'suppressionlog'     => '秘匿記録',
@@ -1161,7 +1167,7 @@ $1",
 'prevn-title'                      => '前の$1{{PLURAL:$1|件}}',
 'nextn-title'                      => '次の$1{{PLURAL:$1|件}}',
 'shown-title'                      => 'ページあたり$1{{PLURAL:$1|件}}の結果を表示',
-'viewprevnext'                     => '($1) ($2) ($3) を表示',
+'viewprevnext'                     => '($1 {{int:pipe-separator}} $2) ($3) を表示',
 'searchmenu-legend'                => '検索オプション',
 'searchmenu-exists'                => "'''このウィキには「[[:$1]]」という名前のページがあります'''",
 'searchmenu-new'                   => "'''このウィキでページ「[[:$1|$1]]」を新規作成する'''",
@@ -1235,7 +1241,7 @@ $1",
 'prefs-watchlist-days-max'      => '(最大7日間)',
 'prefs-watchlist-edits'         => '拡張したウォッチリストに表示する件数:',
 'prefs-watchlist-edits-max'     => '(最大数: 1000)',
-'prefs-watchlist-token'         => 'ウォッチリスト・トークン',
+'prefs-watchlist-token'         => 'ウォッチリスト・トークン:',
 'prefs-misc'                    => 'その他',
 'prefs-resetpass'               => 'パスワードの変更',
 'prefs-email'                   => 'メールの設定',
@@ -1393,6 +1399,7 @@ $1",
 'right-bigdelete'             => '履歴の大きなページの削除',
 'right-deleterevision'        => 'ページの特定版の削除・復帰',
 'right-deletedhistory'        => '削除された版の、本文を除く、履歴の閲覧',
+'right-deletedcontent'        => '削除された文章と削除された版同士の差分の閲覧',
 'right-browsearchive'         => '削除されたページの検索',
 'right-undelete'              => 'ページの復帰',
 'right-suppressrevision'      => '管理者から秘匿された版の閲覧・復帰',
@@ -1416,7 +1423,7 @@ $1",
 'right-patrol'                => '他人の編集をパトロール済みとして印づけ',
 'right-autopatrol'            => '自分の編集をパトロール済みとして自動的に印する',
 'right-patrolmarks'           => '最近の更新のパトロールマークの閲覧',
-'right-unwatchedpages'        => '監視されていないページ一覧の閲覧',
+'right-unwatchedpages'        => 'ウォッチされていないページ一覧の閲覧',
 'right-trackback'             => 'トラックバックの投稿',
 'right-mergehistory'          => 'ページの履歴の統合',
 'right-userrights'            => '全利用者権限の編集',
@@ -1425,6 +1432,7 @@ $1",
 'right-reset-passwords'       => '他の利用者のパスワードを再設定する',
 'right-override-export-depth' => 'リンク先ページを5階層まで含めて書き出す',
 'right-versiondetail'         => 'ソフトウェアの詳細なバージョン情報を表示する',
+'right-root'                  => 'このウィキ上のすべての操作の実行',
 
 # User rights log
 'rightslog'      => '利用者権限変更記録',
@@ -1560,14 +1568,16 @@ $1",
 'large-file'                  => 'ファイルサイズは $1 バイト以下に抑えることが推奨されています。このファイルは $2 バイトです。',
 'largefileserver'             => 'ファイルが大きすぎます。サーバー設定で許されている最大値を超過しました。',
 'emptyfile'                   => 'アップロードしたファイルは内容が空のようです。ファイル名の指定が間違っていませんか。本当にこのファイルをアップロードしたいのか、確認してください。',
-'fileexists'                  => "この名前のファイルは既に存在しています。置き換えたいか確信がもてない場合は '''<tt>$1</tt>''' を確認してください。",
-'filepageexists'              => "このファイルのための説明ページは既に '''<tt>$1</tt>''' に作成されていますが、この名前のファイル自体が存在していません。アップロード・フォームに入力したファイルの概要は説明ページに反映されません。新しい概要へ更新するためには、説明ページを手動で編集する必要があります。",
-'fileexists-extension'        => "類似した名前のファイルが既に存在しています:<br />
-アップロード中のファイル: '''<tt>$1</tt>'''<br />
-既存のファイル: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "この名前のファイルは既に存在しています。
+置き換えたいか確信がもてない場合は '''<tt>[[:$1]]</tt>''' を確認してください。
+[[$1|thumb]]",
+'filepageexists'              => "このファイルのための説明ページは既に '''<tt>[[:$1]]</tt>''' に作成されていますが、この名前のファイル自体が存在していません。アップロード・フォームに入力したファイルの概要は説明ページに反映されません。新しい概要へ更新するためには、説明ページを手動で編集する必要があります。[[$1|thumb]]",
+'fileexists-extension'        => "類似した名前のファイルが既に存在しています: [[$2|thumb]]
+* アップロード中のファイルの名前: '''<tt>[[:$1]]</tt>'''
+* 既存ファイルの名前: '''<tt>[[:$2]]</tt>'''
 違う名前を選択してください。",
-'fileexists-thumb'            => "<center>'''既存のファイル'''</center>",
-'fileexists-thumbnail-yes'    => "このファイルは元の画像から縮小されたもの (サムネイル) のようです。ファイル '''<tt>$1</tt>''' を確認してください。<br />
+'fileexists-thumbnail-yes'    => "このファイルは元の画像から縮小されたもの (サムネイル) のようです。[[$1|thumb]]
+ファイル '''<tt>[[:$1]]</tt>''' を確認してください。
 確認したファイルが同じ画像のもとのサイズの版である場合、サムネイルを個別にアップロードする必要はありません。",
 'file-thumbnail-no'           => "ファイル名が '''<tt>$1</tt>''' から始まっており、元の画像から縮小されたもの (サムネイル) のようです。より高精細な画像をお持ちの場合は、フルサイズ版をアップロードしてください。そうでない場合はファイル名を変更してください。",
 'fileexists-forbidden'        => 'この名前のファイルは既に存在しており、上書きできません。アップロードを継続したい場合は、前のページに戻り、別のファイル名を使用してください。[[File:$1|thumb|center|$1]]',
@@ -1588,7 +1598,7 @@ $1",
 'sourcefilename'              => 'ファイル名:',
 'destfilename'                => '掲載するファイル名:',
 'upload-maxfilesize'          => '最大ファイルサイズ: $1',
-'watchthisupload'             => 'このファイルを監視',
+'watchthisupload'             => 'このファイルをウォッチ',
 'filewasdeleted'              => 'この名前のファイルは一度アップロードされその後削除されています。再度アップロードする前に$1を確認してください。',
 'upload-wasdeleted'           => "'''警告: 過去に削除されたファイルをアップロードしようとしています。'''
 
@@ -1618,6 +1628,18 @@ PICT # その他
 'upload-too-many-redirects' => 'その URL に含まれるリダイレクトが多すぎます',
 'upload-unknown-size'       => 'サイズ不明',
 'upload-http-error'         => 'HTTP エラー発生: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'アクセス拒否',
+'img-auth-nopathinfo'   => 'PATH_INFO が見つかりません。あなたのサーバーはこの情報を渡すように構成されていません。CGI ベースであるために img_auth に対応できない可能性もあります。http://www.mediawiki.org/wiki/Manual:Image_Authorization を参照ください。',
+'img-auth-notindir'     => '要求されたパスは設定済みのアップロード用ディレクトリーの中にありません。',
+'img-auth-badtitle'     => '「$1」からは有効なページ名を構築できません。',
+'img-auth-nologinnWL'   => 'あなたはログインしておらず、さらに「$1」はホワイトリストに入っていません。',
+'img-auth-nofile'       => 'ファイル「$1」は存在しません。',
+'img-auth-isdir'        => 'あなたはディレクトリー「$1」にアクセスしようとしています。ファイルへのアクセスのみが許可されています。',
+'img-auth-streaming'    => '「$1」を転送中',
+'img-auth-public'       => 'img_auth.php の機能は非公開ウィキからファイルを出力することです。このウィキは公開ウィキとして構成されています。最適なセキュリティーのため、img_auth.php は無効化されています。',
+'img-auth-noread'       => '利用者は「$1」を読む権限を持っていません。',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URLに到達できませんでした',
@@ -1649,7 +1671,7 @@ PICT # その他
 'filehist'                  => 'ファイルの履歴',
 'filehist-help'             => '過去の版のファイルを表示するには、表示したい版の日付/時刻をクリックしてください。',
 'filehist-deleteall'        => 'すべて削除',
-'filehist-deleteone'        => '削除する',
+'filehist-deleteone'        => '削除',
 'filehist-revert'           => '差し戻す',
 'filehist-current'          => '現在の版',
 'filehist-datetime'         => '日付/時刻',
@@ -1693,7 +1715,7 @@ PICT # その他
 'filedelete-intro'            => "'''[[Media:$1|$1]]'''をすべての履歴とともに削除しようとしています。",
 'filedelete-intro-old'        => "'''[[Media:$1|$1]]'''の[$4 $2$3の版]を削除しようとしています。",
 'filedelete-comment'          => '削除理由:',
-'filedelete-submit'           => '削除する',
+'filedelete-submit'           => '削除',
 'filedelete-success'          => "'''$1''' は削除されました。",
 'filedelete-success-old'      => "'''[[Media:$1|$1]]''' の $2 $3 版は削除されています。",
 'filedelete-nofile'           => "'''$1''' は存在しません。",
@@ -1704,6 +1726,7 @@ PICT # その他
 ** 著作権侵害
 ** ファイルの重複',
 'filedelete-edit-reasonlist'  => '削除理由を編集する',
+'filedelete-maintenance'      => 'メンテナンス中のため、ファイルの削除と復帰は一時的に無効化されています。',
 
 # MIME search
 'mimesearch'         => 'MIMEタイプ検索',
@@ -1897,7 +1920,7 @@ PICT # その他
 
 # Special:ActiveUsers
 'activeusers'          => '活動中の利用者一覧',
-'activeusers-count'    => '$1件の最近の{{PLURAL:$1|編集}}',
+'activeusers-count'    => '過去{{PLURAL:$3|$3日}}に$1件の{{PLURAL:$1|編集}}',
 'activeusers-from'     => '最初に表示する利用者:',
 'activeusers-noresult' => '利用者が見つかりませんでした。',
 
@@ -1963,10 +1986,10 @@ PICT # その他
 'addedwatchtext'       => "ページ 「[[:$1]]」をあなたの[[Special:Watchlist|ウォッチリスト]]に追加しました。このページと付属のノートページに変更があった際には、ウォッチリストに表示されます。また、ウォッチリストに登録されているページは[[Special:RecentChanges|最近の更新の一覧]]に'''太字'''で表示され、見つけやすくなります。",
 'removedwatch'         => 'ウォッチリストから削除しました',
 'removedwatchtext'     => 'ページ「[[:$1]]」を[[Special:Watchlist|ウォッチリスト]]から削除しました。',
-'watch'                => '監視',
-'watchthispage'        => 'このページを監視する',
-'unwatch'              => '監視停止',
-'unwatchthispage'      => '監視停止',
+'watch'                => 'ウォッチ',
+'watchthispage'        => 'このページをウォッチする',
+'unwatch'              => 'ウォッチしない',
+'unwatchthispage'      => 'ウォッチをやめる',
 'notanarticle'         => '記事ではありません',
 'notvisiblerev'        => 'この版は削除されました',
 'watchnochange'        => 'ウォッチリストに登録しているページに指定期間内に編集されたものはありません。',
@@ -1991,22 +2014,18 @@ PICT # その他
 'enotif_impersonal_salutation' => '{{SITENAME}} 利用者',
 'changed'                      => '変更',
 'created'                      => '作成',
-'deleted'                      => '削除済み',
-'enotif_deletedpagetext'       => 'このページは利用できません。',
 'enotif_subject'               => '{{SITENAME}} のページ「$PAGETITLE」が $PAGEEDITOR によって$CHANGEDORCREATEDされました',
 'enotif_lastvisited'           => 'あなたが最後に閲覧してからなされたすべての変更を $1 で確認できます。',
 'enotif_lastdiff'              => 'この変更内容を表示するには $1 を見てください。',
 'enotif_anon_editor'           => '匿名利用者 $1',
-'enotif_rev_info'              => '最新版は$1をご覧ください。',
 'enotif_body'                  => '$WATCHINGUSERNAME さん
 
-{{SITENAME}}のページ「$PAGETITLE」が $PAGEEDITDATEANDTIME に
-$PAGEEDITOR によって$CHANGEDORCREATEDされました。
-$REVINFO
+{{SITENAME}}のページ「$PAGETITLE」が $PAGEEDITDATE に
+$PAGEEDITOR によって$CHANGEDORCREATEDされました。現在の版を見るには次のURLにアクセスしてください: $PAGETITLE_URL
 
 $NEWPAGE
 
-編集内容の要約: $PAGESUMMARY($PAGEMINOREDIT)
+編集内容の要約: $PAGESUMMARY ($PAGEMINOREDIT)
 
 投稿者に連絡する:
 メール: $PAGEEDITOR_EMAIL
@@ -2247,7 +2266,7 @@ $1',
 'ipbotheroption'                  => 'その他',
 'ipbotherreason'                  => 'その他の理由・追加の理由:',
 'ipbhidename'                     => '利用者名を編集履歴や各種一覧から秘匿する',
-'ipbwatchuser'                    => 'この利用者の利用者ページと利用者‐会話ページを監視する',
+'ipbwatchuser'                    => 'この利用者の利用者ページと会話ページをウォッチする',
 'ipballowusertalk'                => 'この利用者に対してブロック中の自身の会話ページ編集を許可',
 'ipb-change-block'                => '上記の設定で利用者を再びブロック',
 'badipaddress'                    => '無効なIPアドレス',
@@ -2288,7 +2307,8 @@ $1',
 'contribslink'                    => '投稿記録',
 'autoblocker'                     => '投稿ブロックされている利用者「[[User:$1|$1]]」と同じIPアドレスのため、自動的にブロックされています。$1のブロックの理由は「$2」です。',
 'blocklogpage'                    => '投稿ブロック記録',
-'blocklog-fulllog'                => '投稿ブロック記録すべてを見る',
+'blocklog-showlog'                => 'この利用者は以前にブロックされたことがあります。参考のため、ブロックの記録を以下に示します:',
+'blocklog-showsuppresslog'        => 'この利用者は以前にブロックされ隠蔽されたことがあります。参考のため、秘匿記録を以下に示します:',
 'blocklogentry'                   => '[[$1]] を$2ブロックしました $3',
 'reblock-logentry'                => '[[$1]] のブロックの期限を $2 に設定変更しました $3',
 'blocklogtext'                    => 'このページは投稿ブロックと解除の操作記録です。自動的に投稿ブロックされたIPアドレスは記録されていません。現時点で有効な投稿ブロックは[[Special:IPBlockList|ブロック中の利用者一覧]]をご覧ください。',
@@ -2382,8 +2402,8 @@ $1 は、すでにブロックされています。設定を変更しますか�
 'movepage-page-moved'          => '$1 は $2 へ移動されました。',
 'movepage-page-unmoved'        => '$1 を $2 へ移動できませんでした。',
 'movepage-max-pages'           => '自動的に移動できる{{PLURAL:$1|ページ}}は $1件までで、それ以上は移動されません。',
-'1movedto2'                    => 'ページ [[$1]] を [[$2]] へ移動',
-'1movedto2_redir'              => 'ページ [[$1]] をこのページあてのリダイレクト [[$2]] へ移動',
+'1movedto2'                    => '「[[$1]]」を「[[$2]]」へ移動',
+'1movedto2_redir'              => '「[[$1]]」をこのページあてのリダイレクト「[[$2]]」へ移動',
 'move-redirect-suppressed'     => 'リダイレクト非作成',
 'movelogpage'                  => '移動記録',
 'movelogpagetext'              => '以下はページ移動の記録です。',
@@ -2600,10 +2620,12 @@ $1 は、すでにブロックされています。設定を変更しますか�
 # Attribution
 'anonymous'        => '{{SITENAME}} の匿名{{PLURAL:$1|利用者}}',
 'siteuser'         => '{{SITENAME}} の利用者 $1',
+'anonuser'         => '{{SITENAME}} の匿名利用者 $1',
 'lastmodifiedatby' => 'このページの最終更新は $1 $2 に $3 によって行われました。',
 'othercontribs'    => 'また、最終更新以前に $1 が編集しました。',
 'others'           => 'その他の利用者',
 'siteusers'        => '{{SITENAME}} の{{PLURAL:$2|利用者}}$1',
+'anonusers'        => '{{SITENAME}} の匿名{{PLURAL:$2|利用者}} $1',
 'creditspage'      => 'ページの著作者',
 'nocredits'        => 'このページには有効なクレジット情報がありません。',
 

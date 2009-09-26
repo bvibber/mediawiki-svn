@@ -174,7 +174,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'login'                      => 'Aperter session',
 'nav-login-createaccount'    => 'Crear un conto o intrar',
 'loginprompt'                => 'Cookies deve esser permisset por intrar in {{SITENAME}}.',
-'userlogin'                  => 'Crear un conto o intrar',
+'userlogin'                  => 'Intrar',
 'logout'                     => 'Surtir',
 'userlogout'                 => 'Surtir',
 'notloggedin'                => 'Vu ne ha intrat',
@@ -215,7 +215,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'lineno' => 'Linea $1:',
 
 # Search results
-'viewprevnext'   => 'Vider ($1) ($2) ($3)',
+'viewprevnext'   => 'Vider ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url' => 'Help:Auxilie',
 
 # Quickbar

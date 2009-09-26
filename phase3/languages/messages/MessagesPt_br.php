@@ -20,6 +20,7 @@
  * @author Leonardo.stabile
  * @author LeonardoG
  * @author Lijealso
+ * @author Luckas Blade
  * @author Rodrigo Calanca Nishino
  * @author Urhixidur
  * @author Waldir
@@ -591,9 +592,9 @@ $1',
 Você deve ter se enganado ao digitar a URL, ou seguiu uma ligação incorreta.
 Isto também pode indicar um erro no(a) {{SITENAME}}.',
 'nosuchspecialpage' => 'Esta página especial não existe',
-'nospecialpagetext' => "<big>'''Você requisitou uma página especial inválida.'''</big>
+'nospecialpagetext' => '<strong>Você requisitou uma página especial inválida.</strong>
 
-Uma lista de páginas especiais válidas poderá ser encontrada em [[Special:SpecialPages|{{int:specialpages}}]].",
+Uma lista de páginas especiais válidas poderá ser encontrada em [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Erro',
@@ -684,14 +685,14 @@ Não se esqueça de personalizar as suas [[Special:Preferences|preferências na 
 'login'                      => 'Autenticar-se',
 'nav-login-createaccount'    => 'Criar uma conta ou entrar',
 'loginprompt'                => 'É necessário estar com os <i>cookies</i> ativados para poder autenticar-se na {{SITENAME}}.',
-'userlogin'                  => 'Criar uma conta ou entrar',
+'userlogin'                  => 'Entrar',
 'logout'                     => 'Sair',
 'userlogout'                 => 'Sair',
 'notloggedin'                => 'Não autenticado',
-'nologin'                    => 'Não possui uma conta? $1.',
+'nologin'                    => "Não possui uma conta? '''$1'''.",
 'nologinlink'                => 'Criar uma conta',
 'createaccount'              => 'Criar nova conta',
-'gotaccount'                 => 'Já possui uma conta? $1.',
+'gotaccount'                 => "Já possui uma conta? '''$1'''.",
 'gotaccountlink'             => 'Autenticar-se',
 'createaccountmail'          => 'por e-mail',
 'badretype'                  => 'As senhas que você digitou não são iguais.',
@@ -743,7 +744,7 @@ Como resultado, visitantes que usam este endereço IP não podem criar mais nenh
 'createaccount-text'         => 'Alguém criou uma conta de nome $2 para o seu endereço de email no wiki {{SITENAME}} ($4), tendo como senha #$3". Você deve se autenticar e alterar sua senha.
 
 Você pode ignorar esta mensagem caso a conta tenha sido criada por engano.',
-'login-throttled'            => 'Você fez muitas tentativas recentes de se autenticar com esta conta.
+'login-throttled'            => 'Você fez tentativas demais de se autenticar com esta conta recentemente.
 Por favor aguarde antes de tentar novamente.',
 'loginlanguagelabel'         => 'Idioma: $1',
 
@@ -850,7 +851,7 @@ Por favor, introduza um e valide-o através das suas [[Special:Preferences|prefe
 A palavra-chave para este nova conta pode ser alterada na página para ''[[Special:ChangePassword|alterar palavra-chave]]'' após a autenticação.",
 'newarticle'                       => '(Nova)',
 'newarticletext'                   => "Você seguiu um link para uma página que não existe.
-Para criá-la, começe escrevendo na caixa abaixo
+Para criá-la, comece escrevendo na caixa abaixo
 (veja [[{{MediaWiki:Helppage}}|a página de ajuda]] para mais informações).
 Se você chegou aqui por engano, apenas clique no botão '''voltar''' do seu navegador.",
 'anontalkpagetext'                 => "---- ''Esta é a página de discussão para um usuário anônimo que ainda não criou uma conta ou que não a usa, de forma que temos de utilizar o endereço de IP para identificá-lo(a). Tal endereço de IP pode ser compartilhado por vários usuários. Se você é um usuário anônimo e acha que comentários irrelevantes foram direcionados a você, por gentileza, [[Special:UserLogin/signup|crie uma conta]] ou [[Special:UserLogin|autentique-se]], a fim de evitar futuras confusões com outros usuários anônimos.''",
@@ -858,6 +859,7 @@ Se você chegou aqui por engano, apenas clique no botão '''voltar''' do seu nav
 Você pode [[Special:Search/{{PAGENAME}}|pesquisar pelo título desta página]] em outras páginas <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} buscar nos registros relacionados],
 ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} criar esta página]</span>.',
 'userpage-userdoesnotexist'        => 'A conta "$1" não se encontra registrada. Por gentileza, verifique se deseja mesmo criar/editar esta página.',
+'userpage-userdoesnotexist-view'   => 'Conta de usuário "$1" não está registrada.',
 'clearyourcache'                   => "'''Nota - Depois de salvar, você terá de limpar a ''cache'' do seu navegador para ver as alterações.'''
 '''Mozilla / Firefox / Safari:''' pressione ''Shift'' enquanto clica em ''Recarregar'', ou pressione ''Ctrl-F5'' ou ''Ctrl-R'' (''Command-R'' para Macintosh);
 '''Konqueror:''' clique no botão ''Recarregar'' ou pressione ''F5'';
@@ -1087,6 +1089,12 @@ Você não tem acesso a ele.',
 'revdelete-concurrent-change' => 'Erro ao modificar o item datado de $2, $1: o seu estado parece ter sido alterado por outra pessoa enquanto você tentava modificá-lo.
 Por favor, verifique os registos.',
 'revdelete-only-restricted'   => 'Não pode suprimir itens de serem visualizados por administradores sem também selecionar uma das outras opções de supressão.',
+'revdelete-reason-dropdown'   => '*Motivos comuns para eliminação
+** Violação de direitos autorais
+** Informação pessoal inapropriada
+** Informação potencialmente difamatória',
+'revdelete-otherreason'       => 'Outro motivo/motivo adicional:',
+'revdelete-reasonotherlist'   => 'Outro motivo',
 'revdelete-edit-reasonlist'   => 'Editar motivos de eliminação',
 
 # Suppression log
@@ -1205,7 +1213,7 @@ Certifique-se de que tal alteração manterá a continuidade das ações.',
 'prevn-title'                      => '$1 {{PLURAL:$1|resultado anterior|resultados anteriores}}',
 'nextn-title'                      => '{{PLURAL:$1|próximo|próximos}} $1 {{PLURAL:$1|resultado|resultados}}',
 'shown-title'                      => 'Mostrar $1 {{PLURAL:$1|resultado|resultados}} por página',
-'viewprevnext'                     => 'Ver ($1) ($2) ($3).',
+'viewprevnext'                     => 'Ver ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Opções de pesquisa',
 'searchmenu-exists'                => "*'''Há uma página chamada \"[[\$1]]\" nesta wiki'''",
 'searchmenu-new'                   => "'''Criar a página \"[[:\$1|\$1]]\" nesta wiki!'''",
@@ -1280,7 +1288,7 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desat
 'prefs-watchlist-days-max'      => '(no máximo 7 dias)',
 'prefs-watchlist-edits'         => 'Número de edições mostradas na lista de páginas vigiadas expandida:',
 'prefs-watchlist-edits-max'     => '(número máximo: 1000)',
-'prefs-watchlist-token'         => 'Senha para a lista de páginas vigiadas',
+'prefs-watchlist-token'         => 'Senha para a lista de páginas vigiadas:',
 'prefs-misc'                    => 'Diversos',
 'prefs-resetpass'               => 'Alterar senha',
 'prefs-email'                   => 'Opções de email',
@@ -1611,14 +1619,16 @@ Para incluir a imagem numa página, utilize uma ligação em um dos seguintes fo
 'large-file'                  => 'É recomendável que os arquivos não sejam maiores que $1; este possui $2.',
 'largefileserver'             => 'O tamanho deste arquivo é superior ao qual o servidor encontra-se configurado para permitir.',
 'emptyfile'                   => 'O arquivo que está tentando carregar parece encontrar-se vazio. Isto poderá ser devido a um erro na escrita do nome do arquivo. Por favor verifique se realmente deseja carregar este arquivo.',
-'fileexists'                  => "Já existe um arquivo com este nome. Por favor, verifique '''<tt>$1</tt>''' caso não tenha a certeza se deseja alterar o arquivo atual.",
-'filepageexists'              => "A página de descrição deste arquivo já foi criada em '''<tt>$1</tt>''', mas atualmente não existe nenhum arquivo com este nome. O sumário que introduziu não aparecerá na página de descrição. Para o fazer aparecer, terá que o editar manualmente",
-'fileexists-extension'        => "Já existe um arquivo de nome similar:<br />
-Nome do arquivo que está sendo enviado: '''<tt>$1</tt>'''<br />
-Nome do arquivo existente: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Já existe um arquivo com este nome.
+Por favor, verifique '''<tt>[[:$1]]</tt>''' caso não tenha a certeza se deseja alterar o arquivo atual.
+[[$1|thumb]]",
+'filepageexists'              => "A página de descrição deste arquivo já foi criada em '''<tt>[[:$1]]</tt>''', mas atualmente não existe nenhum arquivo com este nome. O sumário que introduziu não aparecerá na página de descrição. Para o fazer aparecer, terá que o editar manualmente",
+'fileexists-extension'        => "Já existe um arquivo de nome similar: [[$2|thumb]]
+* Nome do arquivo que está sendo enviado: '''<tt>[[:$1]]</tt>'''
+* Nome do arquivo existente: '''<tt>[[:$2]]</tt>'''
 Por gentileza, escolha um nome diferente.",
-'fileexists-thumb'            => "<center>'''arquivo existente'''</center>",
-'fileexists-thumbnail-yes'    => "O arquivo aparenta ser uma imagem de tamanho reduzido (''miniatura'', ou ''thumbnail''). Por gentileza, verifique o arquivo '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "O arquivo aparenta ser uma imagem de tamanho reduzido (''miniatura'', ou ''thumbnail''). [[$1|thumb]]
+Por gentileza, verifique o arquivo '''<tt>[[:$1]]</tt>'''.
 Se o arquivo enviado é o mesmo do de tamanho original, não é necessário enviar uma versão de miniatura adicional.",
 'file-thumbnail-no'           => "O nome do arquivo começa com '''<tt>$1</tt>'''. Isso faz parecer se tratar de uma imagem de tamanho reduzido (''miniatura'', ou ''thumbnail'').
 Se você tem esta imagem em sua resolução completa, envie a no lugar desta. Caso contrário, por gentileza, altere o nome de arquivo.",
@@ -1673,6 +1683,14 @@ PICT # misc.
 'upload-too-many-redirects' => 'A URL contém redirecionamentos demais',
 'upload-unknown-size'       => 'Tamanho desconhecido',
 'upload-http-error'         => 'Ocorreu um erro HTTP: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Acesso negado',
+'img-auth-nologinnWL'   => 'Você não está logado e "$1" não está na lista branca.',
+'img-auth-nofile'       => 'Arquivo "$1" não existe.',
+'img-auth-isdir'        => 'Você está tentando acessar o diretório "$1".
+Somente acesso ao arquivo é permitido.',
+'img-auth-noread'       => 'Usuário não tem acesso para ler "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Não foi possível acessar a URL',
@@ -1765,6 +1783,7 @@ A descrição na sua [$2 página de descrição de arquivo] é exibida abaixo.',
 ** Violação de direitos de autor
 ** Arquivo duplicado',
 'filedelete-edit-reasonlist'  => 'Editar motivos de eliminação',
+'filedelete-maintenance'      => 'Eliminação e restauro de arquivos estão temporariamente desativados durante manutenção.',
 
 # MIME search
 'mimesearch'         => 'Pesquisa MIME',
@@ -2060,17 +2079,14 @@ Modificações futuras em tal página e páginas de discussão a ela associadas 
 'enotif_impersonal_salutation' => 'Usuário do projeto "{{SITENAME}}"',
 'changed'                      => 'alterada',
 'created'                      => 'criada',
-'deleted'                      => 'eliminado',
-'enotif_deletedpagetext'       => 'Esta página já não está disponível.',
 'enotif_subject'               => '{{SITENAME}}: A página $PAGETITLE foi $CHANGEDORCREATED por $PAGEEDITOR',
 'enotif_lastvisited'           => 'Consulte $1 para todas as alterações efetuadas desde a sua última visita.',
 'enotif_lastdiff'              => 'Acesse $1 para ver esta alteração.',
 'enotif_anon_editor'           => 'usuário anônimo $1',
-'enotif_rev_info'              => 'Veja $1 para a revisão atual.',
 'enotif_body'                  => 'Caro $WATCHINGUSERNAME,
 
 
-A página $PAGETITLE na {{SITENAME}} foi $CHANGEDORCREATED a $PAGEEDITDATEANDTIME por $PAGEEDITOR. $REVINFO
+A página $PAGETITLE na {{SITENAME}} foi $CHANGEDORCREATED a $PAGEEDITDATE por $PAGEEDITOR; consulte $PAGETITLE_URL para a versão atual.
 
 $NEWPAGE
 
@@ -2270,17 +2286,18 @@ $1',
 'month'               => 'Mês (inclusive anteriores):',
 'year'                => 'Ano (inclusive anteriores):',
 
-'sp-contributions-newbies'       => 'Pesquisar apenas nas contribuições de contas recentes',
-'sp-contributions-newbies-sub'   => 'Para contas novas',
-'sp-contributions-newbies-title' => 'Contribuições de usuários de contas novas',
-'sp-contributions-blocklog'      => 'Registro de bloqueios',
-'sp-contributions-deleted'       => 'contribuições de usuário eliminadas',
-'sp-contributions-logs'          => 'registros',
-'sp-contributions-talk'          => 'disc',
-'sp-contributions-userrights'    => 'gerenciamento de privilégios de utilizadores',
-'sp-contributions-search'        => 'Pesquisar contribuições',
-'sp-contributions-username'      => 'Endereço de IP ou usuário:',
-'sp-contributions-submit'        => 'Pesquisar',
+'sp-contributions-newbies'        => 'Pesquisar apenas nas contribuições de contas recentes',
+'sp-contributions-newbies-sub'    => 'Para contas novas',
+'sp-contributions-newbies-title'  => 'Contribuições de usuários de contas novas',
+'sp-contributions-blocklog'       => 'Registro de bloqueios',
+'sp-contributions-deleted'        => 'contribuições de usuário eliminadas',
+'sp-contributions-logs'           => 'registros',
+'sp-contributions-talk'           => 'disc',
+'sp-contributions-userrights'     => 'gerenciamento de privilégios de utilizadores',
+'sp-contributions-blocked-notice' => 'Este usuário atualmente está bloqueado. O registro de bloqueio mais recente é fornecido abaixo para referência:',
+'sp-contributions-search'         => 'Pesquisar contribuições',
+'sp-contributions-username'       => 'Endereço de IP ou usuário:',
+'sp-contributions-submit'         => 'Pesquisar',
 
 # What links here
 'whatlinkshere'            => 'Páginas afluentes',
@@ -2370,7 +2387,6 @@ Consulte a [[Special:IPBlockList|lista de IPs bloqueados]] para rever os bloquei
 'contribslink'                    => 'contribs',
 'autoblocker'                     => 'Você foi automaticamente bloqueado, pois partilha um endereço de IP com "[[User:$1|$1]]". O motivo apresentado foi: "$2".',
 'blocklogpage'                    => 'Registro de bloqueio',
-'blocklog-fulllog'                => 'Registro completo de bloqueios',
 'blocklogentry'                   => '"[[$1]]" foi bloqueado com um tempo de expiração de $2 $3',
 'reblock-logentry'                => 'modificou parâmetros de bloqueio para [[$1]] com um tempo de expiração de $2 $3',
 'blocklogtext'                    => 'Este é um registro de ações de bloqueio e desbloqueio.
@@ -2466,7 +2482,7 @@ Por favor, escolha outro nome.',
 'movepage-page-unmoved'        => 'A página $1 não pôde ser movida para $2.',
 'movepage-max-pages'           => 'O limite de $1 {{PLURAL:$1|página movida|páginas movidas}} foi atingido; não será possível mover mais páginas de forma automática.',
 '1movedto2'                    => '[[$1]] foi movido para [[$2]]',
-'1movedto2_redir'              => '[[$1]] foi movido para [[$2]] sobre um redirecionamento',
+'1movedto2_redir'              => 'moveu [[$1]] para [[$2]] sobre redirecionamento',
 'move-redirect-suppressed'     => 'redirecionamento suprimido',
 'movelogpage'                  => 'Registro de movimento',
 'movelogpagetext'              => 'Abaixo encontra-se uma lista de páginas movidas.',
@@ -3319,5 +3335,20 @@ Entre com o nome de arquivo sem fornecer o prefixo "{{ns:file}}:".',
 'htmlform-submit'              => 'Enviar',
 'htmlform-reset'               => 'Desfazer alterações',
 'htmlform-selectorother-other' => 'Outros',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Adicionar categoria',
+'ajax-add-category-submit'     => 'Adicionar',
+'ajax-confirm-title'           => 'Confirmar ação',
+'ajax-confirm-prompt'          => 'Você pode fornecer um sumário de edição abaixo.
+Clique "Salvar" para salvar sua edição.',
+'ajax-confirm-save'            => 'Salvar',
+'ajax-add-category-summary'    => 'Adicionar categoria "$1"',
+'ajax-remove-category-summary' => 'Remover categoria "$1"',
+'ajax-confirm-actionsummary'   => 'Ação a tomar:',
+'ajax-error-title'             => 'Erro',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => 'Não foi possível remover esta categoria.
+Isto geralmente ocorre quando a categoria foi adicionada através de uma predefinição.',
 
 );

@@ -1,5 +1,5 @@
 /*the sequence remote search driver
-	 extends the base remote search driver with sequence specific stuff.		 could seperate this out into seperate lib.
+	 extends the base remote search driver with sequence specific stuff
 */
 
 var seqRemoteSearchDriver = function(iObj){
@@ -17,7 +17,9 @@ seqRemoteSearchDriver.prototype = {
 			'local_wiki_api_url': this_seq.getLocalApiUrl(),
 			'instance_name'		: this_seq.instance_name + '.mySearch',
 			'default_query'		: this.pSeq.plObj.title
-		}
+		}		
+		if(typeof this_seq.amw_conf != 'undefined')
+			$j.extend(iObj,  this_seq.amw_conf);
 		//inherit the remoteSearchDriver properties:n
 		var tmpRSD = new remoteSearchDriver( iObj );
 		for(var i in tmpRSD){
@@ -95,7 +97,7 @@ seqRemoteSearchDriver.prototype = {
 			if(tClip)
 				var target_order = tClip.order;
 		}
-		//@@todo show watting of sorts.
+		//@@todo show wating of sorts.
 
 		//get target order:
 		var cat = rObj;

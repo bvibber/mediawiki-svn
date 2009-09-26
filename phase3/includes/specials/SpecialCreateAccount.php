@@ -72,7 +72,7 @@ class SpecialCreateAccount extends SpecialPage {
 	public function __construct(){
 		parent::__construct( 'CreateAccount', 'createaccount' );
 		$this->mLogin = new Login();
-		$this->mFormFields['RealName']['help'] = wfMsg( 'prefs-help-realname' );
+		$this->mFormFields['RealName']['label-help'] = 'prefs-help-realname';
 	}
 	
 	public function execute( $par ){
@@ -160,12 +160,12 @@ class SpecialCreateAccount extends SpecialPage {
 	 * Create a new user account from the provided data
 	 */
 	protected function addNewAccount( $byEmail=false ) {
-		global $wgUser, $wgEmailAuthentication, $wgLang;
+		global $wgUser, $wgEmailAuthentication;
 	
 		# Do a quick check that the user actually managed to type
 		# the password in the same both times
 		if ( 0 != strcmp( $this->mPassword, $this->mRetype ) ) {
-			return $this->showMainForm( wfMsg( 'badretype' ) );
+			return $this->showMainForm( wfMsgExt( 'badretype', 'parseinline' ) );
 		}
 		
 		# Create the account and abort if there's a problem doing so
@@ -183,21 +183,21 @@ class SpecialCreateAccount extends SpecialPage {
 			case Login::CREATE_BADNAME:
 			case Login::WRONG_PLUGIN_PASS:
 			case Login::ABORTED:
-				return $this->showMainForm( wfMsgExt( $this->mLogin->mCreateResult, array('parseinline') ) );
+				return $this->showMainForm( wfMsgExt( $this->mLogin->mCreateResult, 'parseinline' ) );
 			
 			case Login::CREATE_SORBS: 
-				return $this->showMainForm( wfMsgExt( 'sorbs_create_account_reason' ) . ' (' . wfGetIP() . ')', array('parseinline') );
+				return $this->showMainForm( wfMsgExt( 'sorbs_create_account_reason', 'parseinline' ) . ' (' . wfGetIP() . ')' );
 				
 			case Login::CREATE_BLOCKED:
 				return $this->userBlockedMessage();
 				
 			case Login::CREATE_BADPASS:
 				global $wgMinimalPasswordLength;
-				return $this->showMainForm( wfMsgExt( $this->mLogin->mCreateResult, array( 'parsemag' ), $wgLang->formatNum( $wgMinimalPasswordLength ) ) );
+				return $this->showMainForm( wfMsgExt( $this->mLogin->mCreateResult, array( 'parsemag' ), $wgMinimalPasswordLength ) );
 				
 			case Login::THROTTLED: 
 				global $wgAccountCreationThrottle;
-				return $this->showMainForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgLang->formatNum( $wgAccountCreationThrottle ) ) ); 
+				return $this->showMainForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgAccountCreationThrottle ) ); 
 			
 			default: 
 				throw new MWException( "Unhandled status code $status in " . __METHOD__ );
@@ -213,7 +213,7 @@ class SpecialCreateAccount extends SpecialPage {
 		if( $byEmail ) {
 			if( $result == Login::MAIL_ERROR ){
 				# FIXME: we are totally screwed if we end up here...
-				$this->showMainForm( wfMsg( 'mailerror', $this->mLogin->mMailResult->getMessage() ) );
+				$this->showMainForm( wfMsgExt( 'mailerror', 'parseinline', $this->mLogin->mMailResult->getMessage() ) );
 			} else {
 				$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
 				$wgOut->addWikiMsg( 'accmailtext', $this->mLogin->mUser->getName(), $this->mLogin->mUser->getEmail() );
@@ -249,7 +249,7 @@ class SpecialCreateAccount extends SpecialPage {
 				global $wgOut;
 				$self = SpecialPage::getTitleFor( 'Userlogin' );
 				$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
-				$wgOut->addWikiMsg( 'accountcreatedtext', $this->mLogin->mUser->getName() );
+				$wgOut->addHTML( wfMsgWikiHtml( 'accountcreatedtext', $this->mLogin->mUser->getName() ) );
 				$wgOut->returnToMain( false, $self );
 				return true;
 			}
@@ -296,7 +296,7 @@ class SpecialCreateAccount extends SpecialPage {
 		$block_reason = $wgUser->mBlock->mReason;
 
 		if ( strval( $block_reason ) === '' ) {
-			$block_reason = wfMsg( 'blockednoreason' );
+			$block_reason = wfMsgExt( 'blockednoreason', 'parseinline' );
 		}
 		$wgOut->addWikiMsg( 'cantcreateaccount-text', $ip, $block_reason, $blocker );
 		$wgOut->returnToMain( false );
@@ -316,7 +316,7 @@ class SpecialCreateAccount extends SpecialPage {
 		# Parse the error message if we got one
 		if( $msg ){
 			if( $msgtype == 'error' ){
-				$msg = wfMsg( 'loginerror' ) . ' ' . $msg;
+				$msg = wfMsgExt( 'createaccounterror', array( 'parseinline', 'replaceafter' ), $msg );
 			}
 			$msg = Html::rawElement(
 				'div',
@@ -357,21 +357,7 @@ class SpecialCreateAccount extends SpecialPage {
 				array( 'id' => 'languagelinks' ),
 				SpecialUserLogin::makeLanguageSelector( $this->getTitle(), $this->mReturnTo ) )
 			: '';
-		
-		# Add a  'send password by email' button if available
-		$buttons = '';
-		if( $wgEnableEmail && $wgUser->isLoggedIn() ){
-			$buttons = Html::element(
-				'input',
-				array( 
-					'type'  => 'submit',
-					'name'  => 'wpCreateaccountMail',
-					'value' => wfMsg( 'createaccountmail' ),
-					'id'    => 'wpCreateaccountMail',
-				) 
-			);
-		}
-		
+				
 		# Give authentication and captcha plugins a chance to 
 		# modify the form, by hook or by using $wgAuth
 		$wgAuth->modifyUITemplate( $this, 'new' );
@@ -391,10 +377,10 @@ class SpecialCreateAccount extends SpecialPage {
 			unset( $this->mFormFields['Email'] );
 		} else {
 			if( $wgEmailConfirmToEdit ){
-				$this->mFormFields['Email']['help'] = wfMsg( 'prefs-help-email-required' );
+				$this->mFormFields['Email']['help-message'] = 'prefs-help-email-required';
 				$this->mFormFields['Email']['required'] = '';
 			} else {
-				$this->mFormFields['Email']['help'] = wfMsg( 'prefs-help-email' );
+				$this->mFormFields['Email']['help-message'] = 'prefs-help-email';
 			}
 		}
 		
@@ -413,48 +399,57 @@ class SpecialCreateAccount extends SpecialPage {
 			$this->mFormFields['Remember']['checked'] = '1';
 		}
 		
-		$form = new HTMLForm( $this->mFormFields, '' );
+		$form = new HTMLForm( $this->mFormFields );
+		
 		$form->setTitle( $this->getTitle() );
 		$form->setSubmitText( wfMsg( 'createaccount' ) );
 		$form->setSubmitId( 'wpCreateaccount' );
 		$form->suppressReset();
-		$form->loadData();
+		$form->setWrapperLegend( wfMsg( 'createaccount' ) );
 		
-		$formContents = '' 
+		$form->addHiddenField( 'returnto', $this->mReturnTo );
+		$form->addHiddenField( 'returntoquery', $this->mReturnToQuery );
+		
+		$form->addHeaderText( ''
 			. Html::rawElement( 'p', array( 'id' => 'userloginlink' ),
 				$link )
 			. $this->mFormHeader
 			. $langSelector
-			. $form->getBody() 
-			. $form->getButtons()
-			. $buttons
-			. Xml::hidden( 'returnto', $this->mReturnTo )
-			. Xml::hidden( 'returntoquery', $this->mReturnToQuery )
-		;
+		);
+		$form->addPreText( ''
+			. $msg
+			. Html::rawElement( 
+				'div', 
+				array( 'id' => 'signupstart' ), 
+				wfMsgExt( 'loginstart', array( 'parseinline' ) )
+			)
+		);
+		$form->addPostText(
+			Html::rawElement( 
+				'div', 
+				array( 'id' => 'signupend' ), 
+				wfMsgExt( 'loginend', array( 'parseinline' ) )
+			)
+		);
+		
+		# Add a  'send password by email' button if available
+		if( $wgEnableEmail && $wgUser->isLoggedIn() ){
+			$form->addButton(
+				'wpCreateaccountMail',
+				wfMsg( 'createaccountmail' ),
+				'wpCreateaccountMail'
+			);
+		}
+		
+		$form->loadData();
 
 		$wgOut->setPageTitle( wfMsg( 'createaccount' ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->disallowUserJs();  # Stop malicious userscripts sniffing passwords
 
-		$wgOut->addHTML( 
-			Html::rawElement( 
-				'div', 
-				array( 'id' => 'loginstart' ), 
-				wfMsgExt( 'loginstart', array( 'parseinline' ) )
-			) . 
-			$msg . 
-			Html::rawElement(
-				'div',
-				array( 'id' => 'userloginForm' ),
-				$form->wrapForm( $formContents )
-			) . 
-			Html::rawElement( 
-				'div', 
-				array( 'id' => 'loginend' ), 
-				wfMsgExt( 'loginend', array( 'parseinline' ) )
-			)
-		);
+		
+		$form->displayForm( false );
 		
 	}
 
@@ -500,6 +495,16 @@ class SpecialCreateAccount extends SpecialPage {
 				$this->mReturnToQuery
 			);
 		}
+	}
+	
+	/**
+	 * Add text to the header.  Only write to $mFormHeader directly  
+	 * if you're determined to overwrite anything that other 
+	 * extensions might have added.
+	 * @param $text String HTML
+	 */
+	public function addFormHeader( $text ){
+		$this->mFormHeader .= $text;
 	}
 	
 	/**

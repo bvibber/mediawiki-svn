@@ -149,7 +149,7 @@ class SpecialUserLogin extends SpecialPage {
 		# Parse the error message if we got one
 		if( $msg ){
 			if( $msgtype == 'error' ){
-				$msg = wfMsg( 'loginerror' ) . ' ' . $msg;
+				$msg = wfMsgExt( 'loginerror', 'parseinline' ) . ' ' . $msg;
 			}
 			$msg = Html::rawElement(
 				'div',
@@ -192,20 +192,6 @@ class SpecialUserLogin extends SpecialPage {
 				array( 'id' => 'languagelinks' ),
 				self::makeLanguageSelector( $this->getTitle(), $this->mReturnTo ) )
 			: '';
-		
-		# Add a  'mail reset' button if available
-		$buttons = '';
-		if( $wgEnableEmail && $wgAuth->allowPasswordChange() ){
-			$buttons = Html::element(
-				'input',
-				array( 
-					'type'  => 'submit',
-					'name'  => 'wpMailmypassword',
-					'value' => wfMsg( 'mailmypassword' ),
-					'id'    => 'wpMailmypassword',
-				) 
-			);
-		}
 
 		# Give authentication and captcha plugins a chance to 
 		# modify the form, by hook or by using $wgAuth
@@ -236,45 +222,53 @@ class SpecialUserLogin extends SpecialPage {
 		$form->setSubmitText( wfMsg( 'login' ) );
 		$form->setSubmitId( 'wpLoginAttempt' );
 		$form->suppressReset();
-		$form->loadData();
+		$form->setWrapperLegend( wfMsg( 'userlogin' ) );
 		
-		$formContents = '' 
+		$form->addHiddenField( 'returnto', $this->mReturnTo );
+		$form->addHiddenField( 'returntoquery', $this->mReturnToQuery );
+		
+		$form->addHeaderText( ''
 			. Html::rawElement( 'p', array( 'id' => 'userloginlink' ),
 				$link )
 			. Html::rawElement( 'div', array( 'id' => 'userloginprompt' ),
 				wfMsgExt( 'loginprompt', array( 'parseinline' ) ) )
 			. $this->mFormHeader
 			. $langSelector
-			. $form->getBody() 
-			. $form->getButtons()
-			. $buttons
-			. Xml::hidden( 'returnto', $this->mReturnTo )
-			. Xml::hidden( 'returntoquery', $this->mReturnToQuery )
-		;
-
-		$wgOut->setPageTitle( wfMsg( 'login' ) );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		$wgOut->setArticleRelated( false );
-		$wgOut->disallowUserJs();  # Stop malicious userscripts sniffing passwords
-
-		$wgOut->addHTML( 
-			Html::rawElement( 
+		);
+		$form->addPreText( ''
+			. $msg
+			. Html::rawElement( 
 				'div', 
 				array( 'id' => 'loginstart' ), 
 				wfMsgExt( 'loginstart', array( 'parseinline' ) )
-			) . 
-			$msg . 
-			Html::rawElement(
-				'div',
-				array( 'id' => 'userloginForm' ),
-				$form->wrapForm( $formContents )
-			) . 
+			)
+		);
+		$form->addPostText(
 			Html::rawElement( 
 				'div', 
 				array( 'id' => 'loginend' ), 
 				wfMsgExt( 'loginend', array( 'parseinline' ) )
 			)
 		);
+		
+		# Add a  'mail reset' button if available
+		$buttons = '';
+		if( $wgEnableEmail && $wgAuth->allowPasswordChange() ){
+			$form->addButton(
+				'wpMailmypassword',
+				wfMsg( 'mailmypassword' ),
+				'wpMailmypassword'
+			);
+		}
+		
+		$form->loadData();
+
+		$wgOut->setPageTitle( wfMsg( 'login' ) );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setArticleRelated( false );
+		$wgOut->disallowUserJs();  # Stop malicious userscripts sniffing passwords
+
+		$form->displayForm( '' );
 	}	
 
 	/**
@@ -455,14 +449,14 @@ class SpecialUserLogin extends SpecialPage {
 			case Login::WRONG_PASS:
 			case Login::EMPTY_PASS:
 			case Login::THROTTLED:
-				$this->mainLoginForm( wfMsg( $this->mLogin->mLoginResult ) );
+				$this->mainLoginForm( wfMsgExt( $this->mLogin->mLoginResult, 'parseinline' ) );
 				break;
 				
 			case Login::NOT_EXISTS:
 				if( $wgUser->isAllowed( 'createaccount' ) ){
-					$this->mainLoginForm( wfMsgWikiHtml( 'nosuchuser', htmlspecialchars( $this->mName ) ) );
+					$this->mainLoginForm( wfMsgExt( 'nosuchuser', 'parseinline', htmlspecialchars( $this->mUsername ) ) );
 				} else {
-					$this->mainLoginForm( wfMsg( 'nosuchusershort', htmlspecialchars( $this->mName ) ) );
+					$this->mainLoginForm( wfMsgExt( 'nosuchusershort', 'parseinline', htmlspecialchars( $this->mUsername ) ) );
 				}
 				break;
 				
@@ -481,7 +475,7 @@ class SpecialUserLogin extends SpecialPage {
 				
 			case Login::ABORTED: 
 				$msg = $this->mLogin->mLoginResult ? $this->mLogin->mLoginResult : $this->mLogin->mCreateResult;
-				$this->mainLoginForm( wfMsg( $msg ) );
+				$this->mainLoginForm( wfMsgExt( $msg, 'parseinline' ) );
 				break;
 				
 			default:
@@ -502,10 +496,10 @@ class SpecialUserLogin extends SpecialPage {
 				$wgOut->readOnlyPage();
 				return;
 			case Login::MAIL_PASSCHANGE_FORBIDDEN:
-				$this->mainLoginForm( wfMsg( 'resetpass_forbidden' ) );
+				$this->mainLoginForm( wfMsgExt( 'resetpass_forbidden', 'parseinline' ) );
 				return;
 			case Login::MAIL_BLOCKED: 
-				$this->mainLoginForm( wfMsg( 'blocked-mailpassword' ) );
+				$this->mainLoginForm( wfMsgExt( 'blocked-mailpassword', 'parseinline' ) );
 				return;
 			case Login::MAIL_PING_THROTTLED: 
 				$wgOut->rateLimited();
@@ -521,24 +515,34 @@ class SpecialUserLogin extends SpecialPage {
 				) );
 				return;
 			case Login::NO_NAME: 
-				$this->mainLoginForm( wfMsg( 'noname' ) );
+				$this->mainLoginForm( wfMsgExt( 'noname', 'parseinline' ) );
 				return;
 			case Login::NOT_EXISTS: 
 				$this->mainLoginForm( wfMsgWikiHtml( 'nosuchuser', htmlspecialchars( $this->mLogin->mUser->getName() ) ) );
 				return;
 			case Login::MAIL_EMPTY_EMAIL: 
-				$this->mainLoginForm( wfMsg( 'noemail', $this->mLogin->mUser->getName() ) );
+				$this->mainLoginForm( wfMsgExt( 'noemail', 'parseinline', $this->mLogin->mUser->getName() ) );
 				return;
 			case Login::MAIL_BAD_IP: 
-				$this->mainLoginForm( wfMsg( 'badipaddress' ) );
+				$this->mainLoginForm( wfMsgExt( 'badipaddress', 'parseinline' ) );
 				return;
 			case Login::MAIL_ERROR: 
-				$this->mainLoginForm( wfMsg( 'mailerror', $this->mLogin->mMailResult->getMessage() ) );
+				$this->mainLoginForm( wfMsgExt( 'mailerror', 'parseinline', $this->mLogin->mMailResult->getMessage() ) );
 				return;
 			case Login::SUCCESS:
-				$this->mainLoginForm( wfMsg( 'passwordsent', $this->mLogin->mUser->getName() ), 'success' );
+				$this->mainLoginForm( wfMsgExt( 'passwordsent', 'parseinline', $this->mLogin->mUser->getName() ), 'success' );
 				return;
 		}
+	}
+	
+	/**
+	 * Add text to the header.  Only write to $mFormHeader directly  
+	 * if you're determined to overwrite anything that other 
+	 * extensions might have added.
+	 * @param $text String HTML
+	 */
+	public function addFormHeader( $text ){
+		$this->mFormHeader .= $text;
 	}
 
 	/**

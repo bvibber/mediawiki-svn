@@ -418,11 +418,11 @@ class EditPage {
 				}
 			}
 		}
-		
-		// If they used redlink=1 and the page exists, redirect to the main article
-		if ( $wgRequest->getBool( 'redlink' ) && $this->mTitle->exists() ) {
-			$wgOut->redirect( $this->mTitle->getFullURL() );
-		}
+
+		# Evaluate if the edit interface should be shown or
+		# if the page should be shown, in case redlink=true
+		if ( $wgRequest->getBool( 'redlink' ) )
+			$this->showPageOnRedlink();
 
 		wfProfileIn( __METHOD__."-business-end" );
 
@@ -487,7 +487,45 @@ class EditPage {
 		wfProfileOut( __METHOD__."-business-end" );
 		wfProfileOut( __METHOD__ );
 	}
-	
+
+	/*
+	 * Evaluate if the edit interface should be shown or the page, in case redlink=true. 
+	 * If the page exists, it is always shown. If it doesn't, it depends on the settings 
+	 * of $wgShowPageOnRedlink (see DefaultSettings for documentation).
+	 */
+	protected function showPageOnRedlink() {
+		global $wgShowPageOnRedlink, $wgUser, $wgRequest, $wgOut;
+		$redirectToPage = false;
+		# If the page exists (it has been created after the link has been emerged),
+		# redirect to the page instead of editing the current page
+		if ( $this->mTitle->exists() )
+			$wgOut->redirect( $this->mTitle->getFullURL() );
+		# Check site configuration ($wgShowPageOnRedlink)
+		if ( is_array( $wgShowPageOnRedlink ) ) {
+			$ns = $this->mTitle->getNamespace();
+			$groups = $wgUser->getEffectiveGroups();
+			# Gets overwritten if user is member of a group that has been specified:
+			$redirectToPage = true;
+			foreach ( $groups as $i => $group ) {
+				# Test if there is a rule for a specific usergroup and a specific namespace
+				if ( isset( $wgShowPageOnRedlink[$group][$ns] ) && $wgShowPageOnRedlink[$group][$ns] == false ) {
+					$redirectToPage = false;
+				}
+				# Test if there is a rule for a specific usergroup in all namespaces
+				elseif ( isset( $wgShowPageOnRedlink[$group] ) && !is_array( $wgShowPageOnRedlink[$group] ) 
+					   && $wgShowPageOnRedlink[$group] == false ) {
+					$redirectToPage = false;
+				}
+			}
+		}
+		else {
+			$redirectToPage = $wgShowPageOnRedlink;
+		}
+		if ( $redirectToPage ) {
+			$wgOut->redirect( $this->mTitle->getFullURL() );
+		}
+	}
+
 	protected function getEditPermissionErrors() {
 		global $wgUser;
 		$permErrors = $this->mTitle->getUserPermissionsErrors( 'edit', $wgUser );
@@ -730,7 +768,12 @@ class EditPage {
 		}
 		# Give a notice if the user is editing a deleted/moved page...
 		if ( !$this->mTitle->exists() ) {
-			$this->showLogs( $wgOut );
+			LogEventsList::showLogExtract( $wgOut, array( 'delete', 'move' ), $this->mTitle->getPrefixedText(), 
+				'', array( 'lim' => 10, 
+					   'conds' => array( "log_action != 'revision'" ), 
+					   'showIfEmpty' => false, 
+					   'msgKey' => array( 'recreate-moveddeleted-warn') ) 
+			);
 		}
 	}
 
@@ -1191,6 +1234,8 @@ class EditPage {
 		# Enabled article-related sidebar, toplinks, etc.
 		$wgOut->setArticleRelated( true );
 
+		$cancelParams = array();
+
 		if ( $this->isConflict ) {
 			$wgOut->wrapWikiMsg( "<div class='mw-explainconflict'>\n$1</div>", 'explainconflict' );
 
@@ -1241,6 +1286,7 @@ class EditPage {
 
 				if ( !$this->mArticle->mRevision->isCurrent() ) {
 					$this->mArticle->setOldSubtitle( $this->mArticle->mRevision->getId() );
+					$cancelParams['oldid'] = $this->mArticle->mRevision->getId();
 					$wgOut->addWikiMsg( 'editingold' );
 				}
 			}
@@ -1277,10 +1323,8 @@ class EditPage {
 				$noticeMsg = 'protectedpagewarning';
 				$classes[] = 'mw-textarea-protected';
 			}
-			$wgOut->addHTML( "<div class='mw-warning-with-logexcerpt'>\n" );
-			$wgOut->addWikiMsg( $noticeMsg );
-			LogEventsList::showLogExtract( $wgOut, 'protect', $this->mTitle->getPrefixedText(), '', 1 );
-			$wgOut->addHTML( "</div>\n" );
+			LogEventsList::showLogExtract( $wgOut, 'protect', $this->mTitle->getPrefixedText(), '', 
+				array( 'lim' => 1, 'msgKey' => array( $noticeMsg ) ) );
 		}
 		if ( $this->mTitle->isCascadeProtected() ) {
 			# Is this page under cascading protection from some source pages?
@@ -1322,7 +1366,7 @@ class EditPage {
 			$wgTitle,
 			wfMsgExt( 'cancel', array( 'parseinline' ) ),
 			array( 'id' => 'mw-editform-cancel' ),
-			array(),
+			$cancelParams,
 			array( 'known', 'noclasses' )
 		);
 		$separator = wfMsgExt( 'pipe-separator' , 'escapenoentities' );
@@ -1588,12 +1632,6 @@ END
 </div>
 END
 );
-
-		if (!$this->preview) {
-			$wgOut->addHTML( Xml::tags( 'div',
-										array( 'class' => 'catlinks catlinks-allhidden',
-												'id' => 'catlinks' ), ' ' ) );
-		}
 
 		if ( $this->isConflict && wfRunHooks( 'EditPageBeforeConflictDiff', array( &$this, &$wgOut ) ) ) {
 			$wgOut->wrapWikiMsg( '==$1==', "yourdiff" );
@@ -2332,6 +2370,36 @@ END
 		return $buttons;
 	}
 
+	/**
+	 * Output preview text only. This can be sucked into the edit page
+	 * via JavaScript, and saves the server time rendering the skin as
+	 * well as theoretically being more robust on the client (doesn't
+	 * disturb the edit box's undo history, won't eat your text on
+	 * failure, etc).
+	 *
+	 * @todo This doesn't include category or interlanguage links.
+	 *       Would need to enhance it a bit, <s>maybe wrap them in XML
+	 *       or something...</s> that might also require more skin
+	 *       initialization, so check whether that's a problem.
+	 */
+	function livePreview() {
+		global $wgOut;
+		$wgOut->disable();
+		header( 'Content-type: text/xml; charset=utf-8' );
+		header( 'Cache-control: no-cache' );
+
+		$previewText = $this->getPreviewText();
+		#$categories = $skin->getCategoryLinks();
+
+		$s =
+		'<?xml version="1.0" encoding="UTF-8" ?>' . "\n" .
+		Xml::tags( 'livepreview', null,
+			Xml::element( 'preview', null, $previewText )
+			#.	Xml::element( 'category', null, $categories )
+		);
+		echo $s;
+	}
+
 
 	/**
 	 * Get a diff between the current contents of the edit box and the
@@ -2479,42 +2547,6 @@ END
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( 'nocreatetitle' ) );
 		$wgOut->addWikiMsg( 'nocreatetext' );
-	}
-
-	/**
-	 * If there are rows in the deletion/move log for this page, show them,
-	 * along with a nice little note for the user
-	 *
-	 * @param OutputPage $out
-	 */
-	protected function showLogs( $out ) {
-		global $wgUser;
-		$loglist = new LogEventsList( $wgUser->getSkin(), $out );
-		$pager = new LogPager( $loglist, array('move', 'delete'), false,
-			$this->mTitle->getPrefixedText(), '', array( "log_action != 'revision'" ) );
-
-		$count = $pager->getNumRows();
-		if ( $count > 0 ) {
-			$pager->mLimit = 10;
-			$out->addHTML( '<div class="mw-warning-with-logexcerpt">' );
-			$out->addWikiMsg( 'recreate-moveddeleted-warn' );
-			$out->addHTML(
-				$loglist->beginLogEventsList() .
-				$pager->getBody() .
-				$loglist->endLogEventsList()
-			);
-			if($count > 10){
-				$out->addHTML( $wgUser->getSkin()->link(
-					SpecialPage::getTitleFor( 'Log' ),
-					wfMsgHtml( 'log-fulllog' ),
-					array(),
-					array( 'page' => $this->mTitle->getPrefixedText() ) ) );
-			}
-			$out->addHTML( '</div>' );
-			return true;
-		}
-		
-		return false;
 	}
 
 	/**

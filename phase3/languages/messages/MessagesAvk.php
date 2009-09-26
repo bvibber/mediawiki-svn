@@ -441,10 +441,10 @@ Me vulkul da rupeson va "Lodamaceem" bu va intaf {{SITENAME}} rotuilkal.',
 'logout'                     => 'Dimgluyá',
 'userlogout'                 => 'Dimgluyara',
 'notloggedin'                => 'Dogluyariskaf',
-'nologin'                    => 'Kas va pata me digil ? $1.',
+'nologin'                    => "Kas va pata me digil ? '''$1'''.",
 'nologinlink'                => 'Pataredura',
 'createaccount'              => 'Warzon pataredú',
-'gotaccount'                 => 'Kas va pata ixam digil ? $1.',
+'gotaccount'                 => "Kas va pata ixam digil ? '''$1'''.",
 'gotaccountlink'             => 'Dogluyara',
 'createaccountmail'          => 'kan e-mail',
 'badretype'                  => 'Toloy suteyen remravlem tid menuxaf.',
@@ -1061,14 +1061,16 @@ Ta kobura va iyeltak, koe tazukasiki va gluyasiki favel
 'large-file'                  => 'Lokiewafa da lum ke man iyeltak tir lepinaf dam $1; bat iyeltak tir $2.',
 'largefileserver'             => 'Bat iyeltak tir pwertarsaf gu gotune ke zanisiko.',
 'emptyfile'                   => 'Kalvajan iyeltak nuvelar vlardaf. Lanon golde sutejen iyeltakyolt. Vay ageltal ede va bat iyeltak en djukalvajal !',
-'fileexists'                  => "Iyeltak dem man bat yolt ixam krulder. Vay, ageltal va '''<tt>$1</tt>'''. Til lanaf da va bat iyeltak djubetal ?",
-'filepageexists'              => "Pimtarabu ke bat iyeltak ixam al zo redur ko '''<tt>$1</tt>''', vexe mek iyeltak dem man yolt ixam tir. Vildeks rinon suten moe pimtarabu me awitir. Ede djumel da in batlize co-awir, nubedon co-gobetal.",
-'fileexists-extension'        => "Iyeltak dem nuxaf yolt tir :<br />
-Yolt ke kalvajayan iyeltak : '''<tt>$1</tt>'''<br />
-Yolt ke tis iyeltak : '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Iyeltak dem man bat yolt ixam krulder.
+Vay, ageltal va '''<tt>[[:$1]]</tt>'''.
+Til lanaf da va bat iyeltak djubetal ? [[$1|thumb]]",
+'filepageexists'              => "Pimtarabu ke bat iyeltak ixam al zo redur ko '''<tt>[[:$1]]</tt>''', vexe mek iyeltak dem man yolt ixam tir. Vildeks rinon suten moe pimtarabu me awitir. Ede djumel da in batlize co-awir, nubedon co-gobetal.",
+'fileexists-extension'        => "Iyeltak dem nuxaf yolt tir : [[$2|thumb]]
+* Yolt ke kalvajayan iyeltak : '''<tt>[[:$1]]</tt>'''
+* Yolt ke tis iyeltak : '''<tt>[[:$2]]</tt>'''
 Va amidaf yolt vay kiblal !",
-'fileexists-thumb'            => "<center>'''Kruldes iyeltak'''</center>",
-'fileexists-thumbnail-yes'    => "Iyeltak nuvelar da tir lumamafa ewava ''(aluk)''. Vay va '''<tt>$1</tt>''' iyeltak stujel.<br />
+'fileexists-thumbnail-yes'    => "Iyeltak nuvelar da tir lumamafa ewava ''(aluk)''. [[$1|thumb]]
+Vay va '''<tt>[[:$1]]</tt>''' iyeltak stujel.
 Ede stujen iyeltak tir mila lumanhafa ewava, va aptaf aluk me kalvajal !",
 'fileexists-forbidden'        => 'Milyoltaf iyeltak ixam krulder nume me zo robetar.
 Ede va man iyeltak soe co-djukalvajal, vay dimpil ise va warzaf yolt favel.
@@ -1425,7 +1427,7 @@ Ta sulara va batu bu div rinafi suzdasiki, koe grablexo va « Mea suzdá » vule
 'enotif_body'                  => 'Dear $WATCHINGUSERNAME,
 
 
-The {{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED on $PAGEEDITDATEANDTIME by $PAGEEDITOR, see $PAGETITLE_URL for the current version.
+The {{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED on $PAGEEDITDATE by $PAGEEDITOR, see $PAGETITLE_URL for the current version.
 
 $NEWPAGE
 

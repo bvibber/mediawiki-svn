@@ -329,9 +329,9 @@ $messages = array(
 Seique escribieras mal la URL o siguieras un enllaz incorreutu.
 Tamién podría ser un bug nel software usáu por {{SITENAME}}.",
 'nosuchspecialpage' => 'Nun esiste esa páxina especial',
-'nospecialpagetext' => "<big>'''Pidisti una páxina especial non válida.'''</big>
+'nospecialpagetext' => '<strong>Pidisti una páxina especial non válida.</strong>
 
-Pues consultar la llista de les páxines especiales válides en [[Special:SpecialPages|{{int:specialpages}}]].",
+Pues consultar la llista de les páxines especiales válides en [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Error',
@@ -420,14 +420,14 @@ Nun t'escaezas d'escoyer les tos [[Special:Preferences|preferencies de {{SITENAM
 'login'                      => 'Entrar',
 'nav-login-createaccount'    => 'Entrar / Crear cuenta',
 'loginprompt'                => "Has tener les ''cookies'' activaes pa entrar en {{SITENAME}}.",
-'userlogin'                  => 'Entrar / Crear cuenta',
+'userlogin'                  => 'Entrar',
 'logout'                     => 'Salir',
 'userlogout'                 => 'Salir',
 'notloggedin'                => 'Non identificáu',
-'nologin'                    => '¿Nun tienes una cuenta? $1.',
+'nologin'                    => "¿Nun tienes una cuenta? '''$1'''.",
 'nologinlink'                => '¡Fai una!',
 'createaccount'              => 'Crear una nueva cuenta',
-'gotaccount'                 => '¿Ya tienes una cuenta? $1.',
+'gotaccount'                 => "¿Ya tienes una cuenta? '''$1'''.",
 'gotaccountlink'             => '¡Identifícate!',
 'createaccountmail'          => 'per e-mail',
 'badretype'                  => "Les claves qu'escribisti nun concuayen.",
@@ -894,7 +894,7 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'notextmatches'                    => 'Nun hai coincidencies nel testu de la páxina',
 'prevn'                            => 'previos {{PLURAL:$1|$1}}',
 'nextn'                            => 'siguientes {{PLURAL:$1|$1}}',
-'viewprevnext'                     => 'Ver ($1) ($2) ($3)',
+'viewprevnext'                     => 'Ver ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Opciones de busca',
 'searchmenu-exists'                => "'''Hai una páxina nomada \"[[\$1]]\" nesta wiki'''",
 'searchmenu-new'                   => "'''¡Crear la páxina \"[[:\$1]]\" nesta wiki!'''",
@@ -1255,14 +1255,15 @@ Mira la [[Special:NewFiles|galería d'archivos nuevos]] pa una güeyada más vis
 'large-file'                  => 'Encamiéntase a que los archivos nun pasen de $1; esti archivu tien $2.',
 'largefileserver'             => 'Esti archivu ye mayor de lo que permite la configuración del sirvidor.',
 'emptyfile'                   => "L'archivu que xubisti paez tar vaciu. Esto podría ser pola mor d'un enquivocu nel nome l'archivu. Por favor, camienta si daveres quies xubir esti archivu.",
-'fileexists'                  => "Yá esiste un archivu con esti nome, por favor comprueba '''<tt>$1</tt>''' si nun tas seguru de quere camudalu.",
-'filepageexists'              => "La páxina de descripción d'esti archivu yá foi creada en '''<tt>$1</tt>''', pero nestos momentos nun esiste nengún archivu con esti nome. El resume que pongas nun va apaecer na páxina de descripción. Pa facer que'l to resume apaeza vas tener que lu editar manualmente.",
-'fileexists-extension'        => "Yá esiste un archivu con un nome asemeyáu:<br />
-Nome del archivu que se quier xubir: '''<tt>$1</tt>'''<br />
-Nome del archivu esistente: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Yá esiste un archivu con esti nome, por favor comprueba '''<tt>[[:$1]]</tt>''' si nun tas seguru de quere camudalu.
+[[$1|thumb]]",
+'filepageexists'              => "La páxina de descripción d'esti archivu yá foi creada en '''<tt>[[:$1]]</tt>''', pero nestos momentos nun esiste nengún archivu con esti nome. El resume que pongas nun va apaecer na páxina de descripción. Pa facer que'l to resume apaeza vas tener que lu editar manualmente.",
+'fileexists-extension'        => "Yá esiste un archivu con un nome asemeyáu: [[$2|thumb]]
+* Nome del archivu que se quier xubir: '''<tt>[[:$1]]</tt>'''
+* Nome del archivu esistente: '''<tt>[[:$2]]</tt>'''
 Por favor escueyi un nome diferente.",
-'fileexists-thumb'            => "<center>'''Archivu esistente'''</center>",
-'fileexists-thumbnail-yes'    => "L'archivu paez ser una imaxe de tamañu menguáu ''(miniatura)''. Por favor comprueba l'archivu '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "L'archivu paez ser una imaxe de tamañu menguáu ''(miniatura)''. [[$1|thumb]]
+Por favor comprueba l'archivu '''<tt>[[:$1]]</tt>'''.
 Si l'archivu comprobáu tien el mesmu tamañu que la imaxe orixinal, nun ye necesario xubir una miniatura extra.",
 'file-thumbnail-no'           => "L'archivu entama con '''<tt>$1</tt>'''.
 Paez ser una imaxe de tamañu menguáu ''(miniatura)''.
@@ -1670,7 +1671,7 @@ Si más tarde quies quitala de la llista de vixilancia calca en "Dexar de vixila
 'enotif_body'                  => 'Estimáu $WATCHINGUSERNAME,
 
 
-La páxina de {{SITENAME}} $PAGETITLE foi $CHANGEDORCREATED el $PAGEEDITDATEANDTIME por $PAGEEDITOR, vete $PAGETITLE_URL pa ver la versión actual.
+La páxina de {{SITENAME}} $PAGETITLE foi $CHANGEDORCREATED el $PAGEEDITDATE por $PAGEEDITOR, vete $PAGETITLE_URL pa ver la versión actual.
 
 $NEWPAGE
 
@@ -1967,7 +1968,6 @@ Esto debería facese sólo pa prevenir vandalismu como indiquen les [[{{MediaWik
 'contribslink'                    => 'contribuciones',
 'autoblocker'                     => 'Bloquiáu automáticamente porque la to direición IP foi usada recién por "[[User:$1|$1]]". El motivu del bloquéu de $1 ye: "$2"',
 'blocklogpage'                    => 'Rexistru de bloqueos',
-'blocklog-fulllog'                => 'Rexistru de bloqueos completu',
 'blocklogentry'                   => 'bloquió [[$1]] con una caducidá de $2 $3',
 'reblock-logentry'                => 'camudó los parámetros de bloquéu de [[$1]] con una caducidá de $2 $3',
 'blocklogtext'                    => "Esti ye un rexistru de los bloqueos y desbloqueos d'usuarios.

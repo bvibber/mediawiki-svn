@@ -357,9 +357,9 @@ $messages = array(
 'nstab-category'  => 'Categorie',
 
 # Main script and global functions
-'nospecialpagetext' => "<big>'''Tu âs cirût une pagjine speciâl no valide.'''</big>
+'nospecialpagetext' => '<strong>Tu âs cirût une pagjine speciâl no valide.</strong>
 
-Une liste des pagjinis speciâls validis a si pues cjatâ su [[Special:SpecialPages|{{int:specialpages}}]].",
+Une liste des pagjinis speciâls validis a si pues cjatâ su [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'              => 'Erôr',
@@ -390,14 +390,14 @@ La tô identitât e je stade creade. No stâ dismenteâti di gambiâ lis prefere
 'login'                   => 'Jentre',
 'nav-login-createaccount' => 'Regjistriti o jentre',
 'loginprompt'             => 'Tu âs di vê abilitâts i cookies par jentrâ in {{SITENAME}}.',
-'userlogin'               => 'Regjistriti o jentre',
+'userlogin'               => 'Jentre',
 'logout'                  => 'Jes',
 'userlogout'              => 'Jes',
 'notloggedin'             => 'No tu sês jentrât',
-'nologin'                 => 'No âstu ancjemò une identitât par jentrâ? $1.',
+'nologin'                 => "No âstu ancjemò une identitât par jentrâ? '''$1'''.",
 'nologinlink'             => 'Creile cumò',
 'createaccount'           => 'Cree une gnove identitât',
-'gotaccount'              => 'Âstu za une identitât? $1.',
+'gotaccount'              => "Âstu za une identitât? '''$1'''.",
 'gotaccountlink'          => 'Jentre',
 'createaccountmail'       => 'par pueste eletroniche',
 'badretype'               => 'Lis peraulis clâfs inseridis no son compagnis.',
@@ -602,7 +602,7 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 'notextmatches'                  => 'Nissune corispondence tal test des pagjinis',
 'prevn'                          => 'precedents {{PLURAL:$1|$1}}',
 'nextn'                          => 'prossims {{PLURAL:$1|$1}}',
-'viewprevnext'                   => 'Cjale ($1) ($2) ($3).',
+'viewprevnext'                   => 'Cjale ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'              => 'Opzions de ricercje',
 'searchmenu-exists'              => "'''E je une pagjine di non \"[[:\$1]]\" su cheste wiki'''",
 'searchmenu-new'                 => "'''Cree la pagjine \"[[:\$1]]\" su cheste wiki!'''",

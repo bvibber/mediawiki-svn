@@ -179,7 +179,7 @@ $messages = array(
 'logout'                  => 'Tripan',
 'userlogout'              => 'Tripan',
 'notloggedin'             => 'Petu konlaymi.',
-'nologin'                 => 'Nielaymi kiñe lludüwe? $1.',
+'nologin'                 => "Nielaymi kiñe lludüwe? '''$1'''.",
 'nologinlink'             => 'Dewmafinge',
 'gotaccountlink'          => 'Konün',
 'loginlanguagelabel'      => 'Dungun: $1',
@@ -226,7 +226,7 @@ $messages = array(
 'diff-del'     => "'''Ñamümün'''",
 
 # Search results
-'viewprevnext'                   => 'Pen ($1) ($2) ($3).',
+'viewprevnext'                   => 'Pen ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-exists'              => "'''Ngey kiñe pakina pingey «[[$1]]» tüfachi wiki mew'''",
 'searchmenu-new'                 => "'''¡Llitun pakina «[[:$1]]» tüfachi wiki mew!'''",
 'searchhelp-url'                 => 'Help:Kellu',
@@ -388,7 +388,6 @@ $messages = array(
 'enotif_newpagetext'           => 'Tüfachi ta we pakina',
 'enotif_impersonal_salutation' => '{{SITENAME}} kellufe',
 'created'                      => 'Llituy',
-'deleted'                      => 'ñamümün',
 
 # Delete
 'deletepage'            => 'Ñamümün tüfachi pakina',

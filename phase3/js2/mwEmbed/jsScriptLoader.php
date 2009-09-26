@@ -22,8 +22,11 @@ class jsScriptLoader {
 	var $jsvarurl = false; // whether we should include generated JS (special class '-')
 	var $doProcReqFlag = true;
 
+	//@@todo fix: will break down if someone does }) in their msg text
+	const loadGMregEx = '/loadGM\s*\(\s*{(.*)}\s*\)\s*/siU';
+
 	function doScriptLoader() {
-		global 	$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgEnableScriptLoaderJsFile, $IP,
+		global 	$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $IP,
 				$wgEnableScriptMinify, $wgUseFileCache;
 
 		// Process the request
@@ -165,7 +168,7 @@ class jsScriptLoader {
 	 */
 	function procRequestVars() {
 		global $wgContLanguageCode, $wgEnableScriptMinify, $wgJSAutoloadClasses,
-		$wgJSAutoloadLocalClasses, $wgStyleVersion, $wgEnableScriptLoaderJsFile;
+		$wgJSAutoloadLocalClasses, $wgStyleVersion;
 
 		// Set debug flag
 		if ( ( isset( $_GET['debug'] ) && $_GET['debug'] == 'true' ) || ( isset( $wgEnableScriptDebug ) && $wgEnableScriptDebug == true ) ) {
@@ -191,11 +194,28 @@ class jsScriptLoader {
 			// Clean the class list and populate jsFileList
 			foreach ( $reqClassList as $reqClass ) {
 				if ( trim( $reqClass ) != '' ) {
-					// Check for special case '-' class for user-generated JS
 					if ( substr( $reqClass, 0, 3 ) == 'WT:' ) {
-						$this->jsFileList[$reqClass] = true;
-						$this->rKey .= $reqClass;
-						$this->jsvarurl = true;
+						$doAddWT = false;
+						// Check for special case '-' class for user-generated JS
+						if( substr( $reqClass, 3, 1) == '-'){
+							$doAddWT = true;
+						}else{
+							if( strtolower( substr( $reqClass, -3) ) == '.js'){
+								//make sure its a valid wikipage before doing processing
+								$t = Title::newFromDBkey( substr( $reqClass, 3) );
+								if( $t->exists()
+									&& ( $t->getNamespace() == NS_MEDIAWIKI
+									|| $t->getNamespace() == NS_USER ) ){
+
+										$doAddWT = true;
+								}
+							}
+						}
+						if( $doAddWT ){
+							$this->jsFileList[$reqClass] = true;
+							$this->rKey .= $reqClass;
+							$this->jsvarurl = true;
+						}
 						continue;
 					}
 
@@ -212,28 +232,6 @@ class jsScriptLoader {
 			}
 		}
 
-		// Check for requested files, if enabled
-		if ( $wgEnableScriptLoaderJsFile ) {
-			if ( isset( $_GET['files'] ) ) {
-				$reqFileList = explode( ',', isset( $_GET['files'] ) );
-				// Clean the file list and populate jsFileList
-				foreach ( $reqFileList as $reqFile ) {
-					// No jumping dirs
-					$reqFile = str_replace( '../', '', $reqFile );
-					// Only allow alphanumeric underscores periods and ending with .js
-					$reqFile = ereg_replace( "[^A-Za-z0-9_\-\/\.]", '', $reqFile );
-					if ( substr( $reqFile, - 3 ) == '.js' ) {
-						// Don't add it twice:
-						if ( !in_array( $reqFile, $jsFileList ) ) {
-		 					$this->jsFileList[] = $IP . $reqFile;
-		 					$this->rKey .= $reqFile;
-		 				}
-					} else {
-						$this->error_msg .= 'Not valid requsted JavaScript file' . "\n";
-					}
-				}
-			}
-		}
 
 		// Add the language code to the rKey:
 		$this->rKey .= '_' . $wgContLanguageCode;
@@ -256,18 +254,18 @@ class jsScriptLoader {
 			return false;
 		}
 	}
-	function doProcessJsFile( $file_name ) {
+	function doProcessJsFile( $file_path ) {
 		global $IP, $wgEnableScriptLocalization, $IP;
 
 		// Load the file
-		$str = @file_get_contents( "{$IP}/{$file_name}" );
+		$str = @file_get_contents( "{$IP}/{$file_path}" );
 
 		if ( $str === false ) {
 			// @@todo check PHP error level. Don't want to expose paths if errors are hidden.
-			$this->error_msg .= 'Requested File: ' . htmlspecialchars( $file_name ) . ' could not be read' . "\n";
+			$this->error_msg .= 'Requested File: ' . htmlspecialchars( $file_path ) . ' could not be read' . "\n";
 			return '';
 		}
-		$this->cur_file = $file_name;
+		$this->cur_file = $file_path;
 
 		// Strip out js_log debug lines. Not much luck with this regExp yet:
 		// if( !$this->debug )
@@ -276,19 +274,28 @@ class jsScriptLoader {
 		// Do language swap
 		if ( $wgEnableScriptLocalization )
 			$str = preg_replace_callback(
-				// @@todo fix: will break down if someone does }) in their msg text
-				'/loadGM\s*\(\s*{(.*)}\s*\)\s*/siU',
-				array( $this, 'languageMsgReplace' ),
-				$str
-			);
-
+					self::loadGMregEx,
+					array( $this, 'languageMsgReplace' ),
+					$str
+				);
 		return $str;
 	}
-
-	function languageMsgReplace( $jvar ) {
+	static public function getLocalizedMsgsFromClass( $class ){
+		global $IP;
+		$path = self::getJsPathFromClass( $class );
+		// Load the file
+		$str = @file_get_contents( "{$IP}/{$path}" );
+		//extract the msg:
+		preg_match(self::loadGMregEx, $str, $matches);
+		if( isset( $matches[1] )){
+			return self::languageMsgReplace( $matches, false );
+		}
+		//if could not parse return empty string:
+		return '';
+	}
+	static public function languageMsgReplace( $jvar ) {
 		if ( !isset( $jvar[1] ) )
-			return;
-
+			return '';
 		$jmsg = FormatJson::decode( '{' . $jvar[1] . '}', true );
 
 		// Do the language lookup
@@ -296,14 +303,18 @@ class jsScriptLoader {
 			foreach ( $jmsg as $msgKey => $default_en_value ) {
 				$jmsg[$msgKey] = wfMsgNoTrans( $msgKey );
 			}
-			// Return the updated loadGM JSON with fixed new lines
+			// Return the updated loadGM JSON with updated msgs:
 			return 'loadGM( ' . FormatJson::encode( $jmsg ) . ')';
 		} else {
-			$this->error_msg .= "Could not parse JSON language msg in File:\n" .
-								htmlspecialchars ( $this->cur_file ) . "\n";
+			// Could not parse JSON return error: (maybe a alert?)
+			//we just make a note in the code, visitors will get the fallback language,
+			//developers will read the js source when its not behaving as expected.
+			return "/*
+* Could not parse JSON language messages in this file,
+* Please check that loadGM call contains valid JSON (not javascript)
+*/\n\n" . $jvar[0]; //include the original fallback loadGM
+
 		}
-		// Could not parse JSON (throw error?)
-		return $jvar[0];
 	}
 }
 

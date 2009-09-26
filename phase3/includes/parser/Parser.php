@@ -1726,7 +1726,7 @@ class Parser
 
 				if ( $ns == NS_CATEGORY ) {
 					wfProfileIn( __METHOD__."-category" );
-					$s = preg_replace( "/(\s*\n)+\s*$/D", '', $s ); # bug 87
+					$s = rtrim($s . "\n"); # bug 87
 
 					if ( $wasblank ) {
 						$sortkey = $this->getDefaultSort();
@@ -1742,7 +1742,7 @@ class Parser
 					 * Strip the whitespace Category links produce, see bug 87
 					 * @todo We might want to use trim($tmp, "\n") here.
 					 */
-					$s .= trim( $prefix . $trail, "\n" ) == '' ? '' : $prefix . $trail;
+					$s .= trim($prefix . $trail, "\n") == '' ? '': $prefix . $trail;
 
 					wfProfileOut( __METHOD__."-category" );
 					continue;
@@ -3332,25 +3332,39 @@ class Parser
 		}
 		if ( isset( $this->mDoubleUnderscores['hiddencat'] ) && $this->mTitle->getNamespace() == NS_CATEGORY ) {
 			$this->mOutput->setProperty( 'hiddencat', 'y' );
-
-			$containerCategory = Title::makeTitleSafe( NS_CATEGORY, wfMsgForContent( 'hidden-category-category' ) );
-			if ( $containerCategory ) {
-				$this->mOutput->addCategory( $containerCategory->getDBkey(), $this->getDefaultSort() );
-			} else {
-				wfDebug( __METHOD__.": [[MediaWiki:hidden-category-category]] is not a valid title!\n" );
-			}
+			$this->addTrackingCategory( 'hidden-category-category' );
 		}
 		# (bug 8068) Allow control over whether robots index a page.
 		#
 		# FIXME (bug 14899): __INDEX__ always overrides __NOINDEX__ here!  This
 		# is not desirable, the last one on the page should win.
-		if( isset( $this->mDoubleUnderscores['noindex'] ) ) {
+		if( isset( $this->mDoubleUnderscores['noindex'] ) && $this->mTitle->canUseNoindex() ) {
 			$this->mOutput->setIndexPolicy( 'noindex' );
-		} elseif( isset( $this->mDoubleUnderscores['index'] ) ) {
+			$this->addTrackingCategory( 'noindex-category' );
+		}
+		if( isset( $this->mDoubleUnderscores['index'] ) && $this->mTitle->canUseNoindex() ){
 			$this->mOutput->setIndexPolicy( 'index' );
+			$this->addTrackingCategory( 'index-category' );
 		}
 		wfProfileOut( __METHOD__ );
 		return $text;
+	} 	
+	
+	/**
+	 * Add a tracking category, getting the title from a system message,
+	 * or print a debug message if the title is invalid.
+	 * @param $msg String message key
+	 * @return Bool whether the addition was successful
+	 */
+	protected function addTrackingCategory( $msg ){
+		$containerCategory = Title::makeTitleSafe( NS_CATEGORY, wfMsgForContent( $msg ) );
+		if ( $containerCategory ) {
+			$this->mOutput->addCategory( $containerCategory->getDBkey(), $this->getDefaultSort() );
+			return true;
+		} else {
+			wfDebug( __METHOD__.": [[MediaWiki:$msg]] is not a valid title!\n" );
+			return false;
+		}
 	}
 
 	/**

@@ -340,14 +340,14 @@ Isem n wemseqdac inek yettwaxleq. Ur tettuḍ ara ad tbeddleḍ Isemyifiyen n {{
 'login'                      => 'Kcem',
 'nav-login-createaccount'    => 'Kcem / Xleq isem n wemseqdac',
 'loginprompt'                => 'Yessefk ad teǧǧiḍ ikukiyen (cookies) iwakken ad tkecmeḍ ar {{SITENAME}}.',
-'userlogin'                  => 'Kcem / Xleq isem n wemseqdac',
+'userlogin'                  => 'Kcem',
 'logout'                     => 'Ffeɣ',
 'userlogout'                 => 'Ffeɣ',
 'notloggedin'                => 'Ur tekcimeḍ ara',
-'nologin'                    => 'Ur tesɛiḍ ara isem n wemseqdac? $1.',
+'nologin'                    => "Ur tesɛiḍ ara isem n wemseqdac? '''$1'''.",
 'nologinlink'                => 'Xleq isem n wemseqdac',
 'createaccount'              => 'Xleq isem n wemseqdac',
-'gotaccount'                 => 'Tesɛiḍ yagi isem n wemseqdac? $1.',
+'gotaccount'                 => "Tesɛiḍ yagi isem n wemseqdac? '''$1'''.",
 'gotaccountlink'             => 'Kcem',
 'createaccountmail'          => 's e-mail',
 'badretype'                  => 'Awal n tbaḍnit amezwaru d wis sin mačči d kif-kif.',
@@ -617,7 +617,7 @@ Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a 
 'notextmatches'         => 'ulac ayen yecban azwel n usebter',
 'prevn'                 => '{{PLURAL:$1|$1}} ssabeq',
 'nextn'                 => '{{PLURAL:$1|$1}} ameḍfir',
-'viewprevnext'          => 'Ẓer ($1) ($2) ($3).',
+'viewprevnext'          => 'Ẓer ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'        => 'Help:Agbur',
 'showingresults'        => "Tamuli n {{PLURAL:$1|'''Yiwen''' wegmud|'''$1''' n yigmad}} seg  #'''$2'''.",
 'showingresultsnum'     => "Tamuli n {{PLURAL:$3|'''Yiwen''' wegmud|'''$3''' n yigmad}} seg  #'''$2'''.",
@@ -772,13 +772,14 @@ Akken ad tessekcmeḍ tugna deg usebter, seqdec azay am wagi
 'large-file'                  => 'Ilaq tiddi n ufayluwen ur tettili kter n $1; tiddi n ufaylu-agi $2.',
 'largefileserver'             => 'Afaylu meqqer aṭṭas, server ur t-yeqbil ara.',
 'emptyfile'                   => 'Afaylu i tazneḍ d ilem. Waqila tɣelṭeḍ deg isem-is. G leɛnayek ssenqed-it.',
-'fileexists'                  => "Afaylu s yisem-agi yewǧed yagi, ssenqed '''<tt>$1</tt>''' ma telliḍ mačči meḍmun akken a t-tbeddleḍ.",
-'fileexists-extension'        => "Afaylu s yisem-agi yewǧed:<br />
-Isem n ufaylu i tazneḍ: '''<tt>\$1</tt>'''<br />
-Isem n ufaylu i yewǧed: '''<tt>\$2</tt>'''<br />
+'fileexists'                  => "Afaylu s yisem-agi yewǧed yagi, ssenqed '''<tt>[[:$1]]</tt>''' ma telliḍ mačči meḍmun akken a t-tbeddleḍ.
+[[$1|thumb]]",
+'fileexists-extension'        => "Afaylu s yisem-agi yewǧed: [[\$2|thumb]]
+* Isem n ufaylu i tazneḍ: '''<tt>[[:\$1]]</tt>'''
+* Isem n ufaylu i yewǧed: '''<tt>[[:\$2]]</tt>'''
 Amgirred i yella kan deg isekkilen imecṭuḥen/imeqqranen deg taseggiwit (am \".jpg\"/\".jPg\"). G leɛnayek ssenqed-it.",
-'fileexists-thumb'            => "<center>'''Tugna i tewǧed'''</center>",
-'fileexists-thumbnail-yes'    => "Iban-d belli tugna-nni d tugna tamecṭuht n tugna nniḍen ''(thumbnail)''. G leɛnayek ssenqed tugna-agi '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Iban-d belli tugna-nni d tugna tamecṭuht n tugna nniḍen ''(thumbnail)''. [[$1|thumb]]
+G leɛnayek ssenqed tugna-agi '''<tt>[[:$1]]</tt>'''.
 Ma llant kif-kif ur tt-taznepd ara.",
 'file-thumbnail-no'           => "Isem n tugna yebda s '''<tt>$1</tt>'''. Waqila tugna-nni d tugna tamecṭuht n tugna nniḍen ''(thumbnail)''.
 Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.",
@@ -1036,7 +1037,7 @@ Ma tebɣiḍ ad tekkseḍ asebter seg wumuɣ n uɛessi inek, wekki ɣef \"Fakk a
 'enotif_lastdiff'              => 'Ẓer $1 akken ad tmuqleḍ abeddel.',
 'enotif_body'                  => 'Ay $WATCHINGUSERNAME,
 
-Asebter n {{SITENAME}} $PAGETITLE $CHANGEDORCREATED deg wass $PAGEEDITDATEANDTIME sɣur $PAGEEDITOR, ẓer $PAGETITLE_URL i tasiwelt n tura.
+Asebter n {{SITENAME}} $PAGETITLE $CHANGEDORCREATED deg wass $PAGEEDITDATE sɣur $PAGEEDITOR, ẓer $PAGETITLE_URL i tasiwelt n tura.
 
 $NEWPAGE
 

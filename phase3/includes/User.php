@@ -467,7 +467,7 @@ class User {
 		$s = $dbr->selectRow( 'user', array( 'user_id' ), array( 'user_name' => $nt->getText() ), __METHOD__ );
 
 		if ( $s === false ) {
-			$result = 0;
+			$result = null;
 		} else {
 			$result = $s->user_id;
 		}
@@ -1066,7 +1066,7 @@ class User {
 	 *                    done against master.
 	 */
 	function getBlockedStatus( $bFromSlave = true ) {
-		global $wgEnableSorbs, $wgProxyWhitelist;
+		global $wgEnableSorbs, $wgProxyWhitelist, $wgUser;
 
 		if ( -1 != $this->mBlockedby ) {
 			wfDebug( "User::getBlockedStatus: already loaded.\n" );
@@ -1086,9 +1086,25 @@ class User {
 		$this->mBlockedby = 0;
 		$this->mHideName = 0;
 		$this->mAllowUsertalk = 0;
-		$ip = wfGetIP();
 
-		if ($this->isAllowed( 'ipblock-exempt' ) ) {
+		# Check if we are looking at an IP or a logged-in user
+		if ( $this->isIP( $this->getName() ) ) {
+			$ip = $this->getName(); 
+		}
+		else {
+			# Check if we are looking at the current user
+			# If we don't, and the user is logged in, we don't know about
+			# his IP / autoblock status, so ignore autoblock of current user's IP
+			if ( $this->getID() != $wgUser->getID() ) {
+				$ip = '';
+			}
+			else {
+				# Get IP of current user
+				$ip = wfGetIP();
+			}
+		}
+
+		if ( $this->isAllowed( 'ipblock-exempt' ) ) {
 			# Exempt from all types of IP-block
 			$ip = '';
 		}
@@ -1102,7 +1118,7 @@ class User {
 			$this->mBlockreason = $this->mBlock->mReason;
 			$this->mHideName = $this->mBlock->mHideName;
 			$this->mAllowUsertalk = $this->mBlock->mAllowUsertalk;
-			if ( $this->isLoggedIn() ) {
+			if ( $this->isLoggedIn() && $wgUser->getID() == $this->getID() ) {
 				$this->spreadBlock();
 			}
 		} else {
@@ -1663,6 +1679,9 @@ class User {
 	 * for reload on the next hit.
 	 */
 	function invalidateCache() {
+		if( wfReadOnly() ) {
+			return;
+		}
 		$this->load();
 		if( $this->mId ) {
 			$this->mTouched = self::newTouchedTimestamp();
@@ -2132,7 +2151,8 @@ class User {
 		}
 		# Use strict parameter to avoid matching numeric 0 accidentally inserted
 		# by misconfiguration: 0 == 'foo'
-		return in_array( $action, $this->getRights(), true );
+		return in_array( $action, $this->getRights(), true )
+			|| in_array( 'root', $this->getRights(), true );
 	}
 
 	/**
@@ -3472,23 +3492,32 @@ class User {
 
 	/**
 	 * Add a newuser log entry for this user
+	 * @param $creator User who
 	 * @param $byEmail Boolean: account made by email?
 	 */
-	public function addNewUserLogEntry( $byEmail = false ) {
+	public function addNewUserLogEntry( $creator, $byEmail = false ) {
 		global $wgUser, $wgContLang, $wgNewUserLog;
 		if( empty($wgNewUserLog) ) {
 			return true; // disabled
 		}
 		$talk = $wgContLang->getFormattedNsText( NS_TALK );
-		if( $this->getName() == $wgUser->getName() ) {
+		if( $creator != $wgUser ) {
 			$action = 'create';
 			$message = '';
 		} else {
 			$action = 'create2';
-			$message = $byEmail ? wfMsgForContent( 'newuserlog-byemail' ) : '';
+			$message = $byEmail 
+				? wfMsgForContent( 'newuserlog-byemail' ) 
+				: '';
 		}
 		$log = new LogPage( 'newusers' );
-		$log->addEntry( $action, $this->getUserPage(), $message, array( $this->getId() ) );
+		$log->addEntry( 
+			$action, 
+			$this->getUserPage(), 
+			$message, 
+			array( $this->getId() ), 
+			$creator 
+		);
 		return true;
 	}
 

@@ -319,9 +319,9 @@ $messages = array(
 Ye micht hae mistyped the URL, or follaed a wrang link
 This micht forby be caused by a bug in the saftware uised by {{SITENAME}}.",
 'nosuchspecialpage' => 'Nae sic byordinar page',
-'nospecialpagetext' => "<big>'''Ye hae requestit an invalid byordinar page.'''</big>
+'nospecialpagetext' => '<strong>Ye hae requestit an invalid byordinar page.</strong>
 
-A leet o valid byordinar pages can be funnd at [[Special:SpecialPages|{{int:specialpages}}]].",
+A leet o valid byordinar pages can be funnd at [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Error',
@@ -396,14 +396,14 @@ Mynd an chynge yer [[Special:Preferences|{{SITENAME}} preferences]].',
 'login'                      => 'Log in',
 'nav-login-createaccount'    => 'Log in / mak an accoont',
 'loginprompt'                => 'Ye maun hae cookies enabled tae log in tae {{SITENAME}}.',
-'userlogin'                  => 'Mak an accoont or log in',
+'userlogin'                  => 'Log in',
 'logout'                     => 'Log oot',
 'userlogout'                 => 'Log oot',
 'notloggedin'                => 'No loggit in',
-'nologin'                    => 'Dinna hae an accoont? $1.',
+'nologin'                    => "Dinna hae an accoont? '''$1'''.",
 'nologinlink'                => 'Mak an accoont',
 'createaccount'              => 'Mak new accoont',
-'gotaccount'                 => 'Got an accoont afore? $1.',
+'gotaccount'                 => "Got an accoont afore? '''$1'''.",
 'gotaccountlink'             => 'Log in',
 'createaccountmail'          => 'bi email',
 'badretype'                  => 'The passwords ye entered disna match.',
@@ -696,7 +696,7 @@ there micht be parteeculars in the [{{fullurl:{{#Special:Log}}/suppress|page={{F
 'notextmatches'            => 'Nae page text matches',
 'prevn'                    => 'foregaun {{PLURAL:$1|$1}}',
 'nextn'                    => 'neist {{PLURAL:$1|$1}}',
-'viewprevnext'             => 'View ($1) ($2) ($3)',
+'viewprevnext'             => 'View ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'           => 'Help:Contents',
 'search-result-size'       => '$1 ({{PLURAL:$2|1 word|$2 words}})',
 'search-section'           => '(section $1)',
@@ -822,7 +822,8 @@ Tae pit the eimage intae a page, uise an airtin i the form
 'illegalfilename'             => 'The filename "$1" haes characters that isna alloud in page teitles. Please rename the file an gie uplaidin it anither shot.',
 'badfilename'                 => 'Eimage name haes been chynged tae "$1".',
 'largefileserver'             => 'This file is bigger nor the server is confeigurt tae allou.',
-'fileexists'                  => "A file wi this name exists aareadies, please check '''<tt>$1</tt>''' gin ye'r no siccar that ye want tae chynge it.",
+'fileexists'                  => "A file wi this name exists aareadies, please check '''<tt>[[:$1]]</tt>''' gin ye'r no siccar that ye want tae chynge it.
+[[$1|thumb]]",
 'fileexists-forbidden'        => 'A file wi this name aareadies exists; please gang back an uplaid this file unner a new name. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'A file wi this name aareadies exists in the shared file depose; please gang back an uplaid this file unner a new name. [[File:$1|thumb|center|$1]]',
 'uploadwarning'               => 'Uplaid warnin',

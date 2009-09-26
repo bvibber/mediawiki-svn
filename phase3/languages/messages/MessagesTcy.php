@@ -291,9 +291,9 @@ $messages = array(
 'nosuchaction'      => 'ಈ ರೀತಿದ ಓವು ಕ್ರಿಯೆಲಾ(ಆಕ್ಶನ್) ಇಜ್ಜಿ',
 'nosuchactiontext'  => 'ಈ URLದ ಒಟ್ಟಿಗೆ ಉಪ್ಪುನ ಕ್ರಿಯೆನ್ ವಿಕಿ ಗುರ್ತ ಪತ್ತುಜಿ',
 'nosuchspecialpage' => 'ಈ ಪುದರ್’ದ ಒವುಲಾ ವಿಷೇಶ ಪುಟ ಇಜ್ಜಿ',
-'nospecialpagetext' => "<big>'''ಈರ್ ಅಸ್ಥಿತ್ವಡ್ ಇಜ್ಜಂದಿನ ವಿಷೇಶ ಪುಟೊನು ಕೇನ್ದರ್.'''</big>
+'nospecialpagetext' => '<strong>ಈರ್ ಅಸ್ಥಿತ್ವಡ್ ಇಜ್ಜಂದಿನ ವಿಷೇಶ ಪುಟೊನು ಕೇನ್ದರ್.</strong>
 
-ಅಸ್ಥಿತ್ವಡ್ ಉಪ್ಪುನಂಚಿನ ವಿಷೇಶ ಪುಟೊಲ್ದ ಪಟ್ಟಿ [[Special:SpecialPages|{{int:specialpages}}]] ಡ್ ಉಂಡು.",
+ಅಸ್ಥಿತ್ವಡ್ ಉಪ್ಪುನಂಚಿನ ವಿಷೇಶ ಪುಟೊಲ್ದ ಪಟ್ಟಿ [[Special:SpecialPages|{{int:specialpages}}]] ಡ್ ಉಂಡು.',
 
 # General errors
 'error'                => 'ದೋಷ',
@@ -325,7 +325,7 @@ $messages = array(
 'remembermypassword'      => 'ಈ ಕಂಪ್ಯೂಟರ್’ಡ್ ಎನ್ನ ಪ್ರವೇಶ ಪದೊನು ನೆನಪು ದೀಲ',
 'login'                   => 'ಲಾಗ್ ಇನ್',
 'nav-login-createaccount' => 'ಲಾಗ್-ಇನ್ / ಅಕೌಂಟ್ ಸೃಷ್ಟಿ ಮಲ್ಪುಲೆ',
-'userlogin'               => 'ಲಾಗ್-ಇನ್ / ಅಕೌಂಟ್ ಸೃಷ್ಟಿ ಮಲ್ಪುಲೆ',
+'userlogin'               => 'ಲಾಗ್-ಇನ್',
 'logout'                  => 'ಲಾಗ್ ಔಟ್',
 'userlogout'              => 'ಲಾಗ್ ಔಟ್',
 'mailmypassword'          => 'ಪೊಸ ಪಾಸ್-ವರ್ಡ್’ನ್ ಇ-ಮೇಲ್ ಮಲ್ಪುಲೆ',
@@ -430,7 +430,7 @@ $messages = array(
 'notextmatches'             => 'ವಾ ಪುಟೊತ ಪಠ್ಯೊಡುಲಾ ಹೋಲಿಕೆ ಇಜ್ಜಿ',
 'prevn'                     => 'ದುಂಬುದ {{PLURAL:$1|$1}}',
 'nextn'                     => 'ಬೊಕ್ಕದ {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'ತೂಲೆ ($1) ($2) ($3)',
+'viewprevnext'              => 'ತೂಲೆ ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'            => 'Help:ಪರಿವಿಡಿ',
 'search-result-size'        => '$1 ({{PLURAL:$2|೧ ಪದ|$2 ಪದೊಲು}})',
 'search-redirect'           => '(ಪುನರ್ನಿರ್ದೇಶನ $1)',

@@ -443,10 +443,10 @@ Dien Benutserkonto wuude iengjucht. Ferjeet nit, dien Ienstaalengen antoupaasjen
 'logout'                     => 'Oumäldje',
 'userlogout'                 => 'Oumäldje',
 'notloggedin'                => 'Nit anmälded',
-'nologin'                    => 'Du hääst neen Benutserkonto? $1.',
+'nologin'                    => "Du hääst neen Benutserkonto? '''$1'''.",
 'nologinlink'                => 'Hier laist du n Konto an.',
 'createaccount'              => 'Benutserkonto anlääse',
-'gotaccount'                 => 'Du hääst al n Konto? $1.',
+'gotaccount'                 => "Du hääst al n Konto? '''$1'''.",
 'gotaccountlink'             => 'Hier gungt dät ätter dän Login',
 'createaccountmail'          => 'Uur Email',
 'badretype'                  => 'Do bee Paaswoude stimme nit uureen.',
@@ -934,7 +934,7 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 'prevn-title'                      => '{{PLURAL:$1|Foarich Resultoat|Foarige $1 Resultoate}}',
 'nextn-title'                      => '{{PLURAL:$1|Foulgjend Resultoat|Foulgjende $1 Resultoate}}',
 'shown-title'                      => 'Wies $1 {{PLURAL:$1|Resultoat|Resultoate}} pro Siede',
-'viewprevnext'                     => 'Wies ($1) ($2) ($3)',
+'viewprevnext'                     => 'Wies ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Säikoptione',
 'searchmenu-exists'                => "'''Dät rakt n Siede mäd Noome \"[[:\$1]]\" ap dissen Wiki'''",
 'searchmenu-new'                   => "'''Moak ju Siede „[[:$1]]“ in dissen Wiki.'''",
@@ -1173,7 +1173,7 @@ Mäd uur Benutsere koast du uk uur do Benutserdiskussionssieden Kontakt apnieme,
 # User rights log
 'rightslog'      => 'Gjuchte-Logbouk',
 'rightslogtext'  => 'Dit is dät Logbouk fon do Annerengen fon do Benutsergjuchte.',
-'rightslogentry' => 'annerde ju Gruppentouheeregaid foar „[[$1]]“ fon „$2“ ap „$3“.',
+'rightslogentry' => 'annerde ju Gruppentouheeregaid foar „$1“ fon „$2“ ap „$3“.',
 'rightsnone'     => '(-)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -1309,16 +1309,19 @@ Ferlööwed {{PLURAL:$3|is|sunt}} $2.",
 'large-file'                  => 'Jädden neen Bielde uur $1 hoochleede; disse Doatäi is $2 groot.',
 'largefileserver'             => 'Disse Doatäi is tou groot, deer die Server so konfigurierd is, dät Doatäien bloot bit tou ne bestimde Grööte apzeptierd wäide.',
 'emptyfile'                   => 'Ju hoochleedene Doatäi is loos. Die Gruund kon n Typfailer in dän Doatäinoome weese. Kontrollierje jädden, of du ju Doatäi wuddelk hoochleede wolt.',
-'fileexists'                  => "Ne Doatäi mäd dissen Noome bestoant al. Wan du ap 'Doatäi spiekerje' klikst, wäd ju Doatäi uurschrieuwen. Unner '''<tt>$1</tt>''' koast du die bewisje, of du dät wuddelk wolt.",
-'filepageexists'              => "Ju Beschrieuwengssiede foar disse Doatäi wuude al moaked as '''<tt>$1</tt>''', man der bestoant neen Doatäi mäd dissen Noome.
+'fileexists'                  => "Ne Doatäi mäd dissen Noome bestoant al.
+Wan du ap 'Doatäi spiekerje' klikst, wäd ju Doatäi uurschrieuwen.
+Unner '''<tt>[[:$1]]</tt>''' koast du die bewisje, of du dät wuddelk wolt.
+[[$1|thumb]]",
+'filepageexists'              => "Ju Beschrieuwengssiede foar disse Doatäi wuude al moaked as '''<tt>[[:$1]]</tt>''', man der bestoant neen Doatäi mäd dissen Noome.
 Ju ienroate Beschrieuwenge wäd nit ap ju Beschrieuwengssiede uurnuumen.
 Ju Beschrieuwengssiede moast du ätter dät Hoochleeden fon ju Doatäi noch mäd de Hounde beoarbaidje.",
-'fileexists-extension'        => "Een Doatei mäd n äänelken Noome existiert al:<br />
-Noome fon ju hoochtouleedende Doatäi: '''<tt>$1</tt>'''<br />
-Noome fon ju anweesende Doatäi: '''<tt>$2</tt>'''<br />
+'fileexists-extension'        => "Een Doatei mäd n äänelken Noome existiert al: [[$2|thumb]]
+* Noome fon ju hoochtouleedende Doatäi: '''<tt>[[:$1]]</tt>'''
+* Noome fon ju anweesende Doatäi: '''<tt>[[:$2]]</tt>'''
 Bloot ju Doatäieendenge unnerschat sik in Groot-/Littikschrieuwenge. Pröif, of do Doatäie ätter dän Inhoold identisk sunt.",
-'fileexists-thumb'            => "<center>'''Bestoundende Doatäi'''</center>",
-'fileexists-thumbnail-yes'    => "Bie ju Doatäi schient et sik uum ne Bielde fon ferlitjerde Grööte ''(thumbnail)'' tou honneljen. Pröif ju Doatäi '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Bie ju Doatäi schient et sik uum ne Bielde fon ferlitjerde Grööte ''(thumbnail)'' tou honneljen. [[$1|thumb]]
+Pröif ju Doatäi '''<tt>[[:$1]]</tt>'''.
 Wan et sik uum ju Bielde in Originoalgrööte honnelt, dan houget neen apaate Foarschaubielde hoochleeden tou wäiden.",
 'file-thumbnail-no'           => "Die Doatäinoome begint mäd '''<tt>$1</tt>'''. Dit tjut ap ne Bielde fon ferlitjerde Grööte ''(thumbnail)'' wai.
 Pröif, of du ju Bielde in fulle Aplöösenge foarlääsen hääst un leed ju unner dän Originoalnoome hooch. Uurs annerje dän Doatäinoome.",
@@ -1731,7 +1734,7 @@ Wan du die Artikkel wier fon ju Foulgelieste ou hoalje moatest, klik ap ju Siede
 'enotif_anon_editor'           => 'Anonyme Benutser $1',
 'enotif_body'                  => 'Ljoowe $WATCHINGUSERNAME,
 
-ju {{SITENAME}} Siede $PAGETITLE wuude fon $PAGEEDITOR an dän $PAGEEDITDATE uum $PAGEEDITTIME Uure $CHANGEDORCREATED. $REVINFO
+ju {{SITENAME}} Siede $PAGETITLE wuude fon $PAGEEDITOR an dän $PAGEEDITDATE uum $PAGEEDITTIME Uure $CHANGEDORCREATED
 
 Aktuälle Version: $PAGETITLE_URL
 
@@ -2023,7 +2026,6 @@ Reek dän Gruund foar ju Speere oun.',
 'contribslink'                    => 'Biedraage',
 'autoblocker'                     => 'Du wierst blokkierd, deer du eene IP-Adrässe mäd "[[User:$1|$1]]" benutsjen dääst. Foar ju Blokkierenge fon dän Benutser waas as Gruund anroat: "$2".',
 'blocklogpage'                    => 'Benutserblokkoaden-Logbouk',
-'blocklog-fulllog'                => 'Fulboodich Benutserspeer-Logbouk',
 'blocklogentry'                   => '[[$1]] blokkierd foar n Tiedruum fon: $2 $3',
 'reblock-logentry'                => 'annerde ju Speere foar „[[$1]]“ foar dän Tiedruum: $2 $3',
 'blocklogtext'                    => 'Dit is n Logbouk fon Speerengen un Äntspeerengen fon Benutsere. Ju Sunnersiede fiert aal aktuäl speerde Benutsere ap, iensluutend automatisk blokkierde IP-Adrässe.',
@@ -2222,7 +2224,7 @@ Aal Transwiki-Import-Aktione wäide in dät [[Special:Log/import|Import-Logbouk]
 'importlogpagetext'                => 'Administrativen Import fon Sieden mäd Versionsgeschichte fon uur Wikis.',
 'import-logentry-upload'           => 'häd „[[$1]]“ fon ne Doatäi importierd',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|Version|Versione}}',
-'import-logentry-interwiki'        => 'häd „[[$1]]“ importierd (Transwiki)',
+'import-logentry-interwiki'        => 'häd „$1“ importierd (Transwiki)',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|Version|Versione}} fon $2',
 
 # Tooltip help for the actions

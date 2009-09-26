@@ -19,7 +19,7 @@ class SkinVector extends SkinTemplate {
 
 	/* Functions */
 	var $skinname = 'vector', $stylename = 'vector',
-		$template = 'VectorTemplate';
+		$template = 'VectorTemplate', $useHeadElement = true;
 
 	/**
 	 * Initializes output page and sets up skin-specific parameters
@@ -59,7 +59,7 @@ class SkinVector extends SkinTemplate {
 	 * @private
 	 */
 	function buildNavigationUrls() {
-		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle;
+		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle, $wgStylePath;
 		global $wgDisableLangConversion;
 
 		wfProfileIn( __METHOD__ );
@@ -285,21 +285,23 @@ class SkinVector extends SkinTemplate {
 			if( $this->loggedin ) {
 				// Checks if the user is watching this page
 				if( !$this->mTitle->userIsWatching() ) {
-					// Adds watch action link
-					$links['actions']['watch'] = array(
+					// Adds watch view link
+					$links['views']['watch'] = array(
 						'class' =>
 							( $action == 'watch' or $action == 'unwatch' ) ?
 								'selected' : false,
 						'text' => wfMsg( 'watch' ),
+						'img' => "{$wgStylePath}/vector/images/watch_off.gif",
 						'href' => $this->mTitle->getLocalUrl( 'action=watch' )
 					);
 				} else {
-					// Adds unwatch action link
-					$links['actions']['unwatch'] = array(
+					// Adds unwatch view link
+					$links['views']['unwatch'] = array(
 						'class' =>
 							($action == 'unwatch' or $action == 'watch') ?
 								'selected' : false,
 						'text' => wfMsg( 'unwatch' ),
+						'img' => "{$wgStylePath}/vector/images/watch_on.gif",
 						'href' => $this->mTitle->getLocalUrl( 'action=unwatch' )
 					);
 				}
@@ -459,7 +461,7 @@ class VectorTemplate extends QuickTemplate {
 				array_reverse( $this->data['personal_urls'] );
 		}
 		// Output HTML Page
-		echo $wgOut->headElement( $this->skin );
+		$this->html( 'headelement' );
 ?>
 	<body<?php if ( $this->data['body_ondblclick'] ): ?> ondblclick="<?php $this->text( 'body_ondblclick' ) ?>"<?php endif; ?> <?php if ( $this->data['body_onload'] ): ?> onload="<?php $this->text( 'body_onload' ) ?>"<?php endif; ?> class="mediawiki <?php $this->text( 'dir' ) ?> <?php $this->text( 'pageclass' ) ?> <?php $this->text( 'skinnameclass' ) ?>" dir="<?php $this->text( 'dir' ) ?>">
 		<div id="page-base" class="noprint"></div>
@@ -722,7 +724,7 @@ class VectorTemplate extends QuickTemplate {
 	<h5><?php $this->msg('views') ?></h5>
 	<ul <?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['view_urls'] as $key => $link ): ?>
-			<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><span><?php echo htmlspecialchars( $link['text'] ) ?></span></a></li>
+			<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo (array_key_exists('img',$link) ?  '<img src="'.$link['img'].'" alt="'.$link['text'].'" />' : '<span>'.htmlspecialchars( $link['text'] ).'</span>') ?></a></li>
 		<?php endforeach; ?>
 	</ul>
 </div>

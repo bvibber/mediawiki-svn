@@ -315,10 +315,10 @@ URL نى خاتا كىرگۈزۈپ قالدىڭىز ياكى خاتا ئۇلان
 
  {{SITENAME}} بېكەت يۇمشاق دېتالىنىڭ خاتالىقى بولۇشى مۇمكىن.',
 'nosuchspecialpage' => 'بۇنىڭغا ئوخشاش ئالاھىدە بەت يوق',
-'nospecialpagetext' => "<big>'''سىز ئىلتىماس قىلغان ئالاھىدە بەت ئىناۋەتسىز.'''</big>
+'nospecialpagetext' => '<strong>سىز ئىلتىماس قىلغان ئالاھىدە بەت ئىناۋەتسىز.</strong>
 
 
-[[Special:SpecialPages|{{int:specialpages}}]] دە بارلىق ئىناۋەتلىك بەتلەر تىزىملىكى بار.",
+[[Special:SpecialPages|{{int:specialpages}}]] دە بارلىق ئىناۋەتلىك بەتلەر تىزىملىكى بار.',
 
 # General errors
 'error'                => 'خاتالىق',
@@ -437,14 +437,14 @@ $2',
 'login'                   => 'تىزىمغا كىر',
 'nav-login-createaccount' => 'كىر / ھېسابات قۇر',
 'loginprompt'             => 'سىز cookies نى قوزغاتقاندىلا ئاندىن   {{SITENAME}} غا كىرەلەيسىز.',
-'userlogin'               => 'تىزىمغا كىر/ھېسابات قۇر',
+'userlogin'               => 'تىزىمغا كىر',
 'logout'                  => 'تىزىمدىن چىق',
 'userlogout'              => 'تىزىمدىن چىق',
 'notloggedin'             => 'تىزىمغا كىرمىگەن',
-'nologin'                 => 'ھېساباتىڭىز يوقمۇ؟ $1.',
+'nologin'                 => "ھېساباتىڭىز يوقمۇ؟ '''$1'''.",
 'nologinlink'             => 'ھېساباتتىن بىرنى قۇر',
 'createaccount'           => 'ھېسابات قۇر',
-'gotaccount'              => 'ھېساباتىم بار؟ $1.',
+'gotaccount'              => "ھېساباتىم بار؟ '''$1'''.",
 'gotaccountlink'          => 'تىزىمغا كىر',
 'createaccountmail'       => 'ئېلخەتتە',
 'badretype'               => 'سىز كىرگۈزگەن ئىم ماس كەلمىدى.',
@@ -600,7 +600,7 @@ $2',
 'notextmatches'             => 'ماس كېلىدىغان بەت مەزمۇنى يوق',
 'prevn'                     => 'ئالدى {{PLURAL:$1|$1}}',
 'nextn'                     => 'كەينى {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'كۆرسەت ($1) ($2) ($3)',
+'viewprevnext'              => 'كۆرسەت ($1 {{int:pipe-separator}} $2) ($3)',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 سۆز|$2 سۆز}})',
 'search-redirect'           => '($1 قايتا نىشانلا)',
 'search-section'            => '(ئابزاس $1)',

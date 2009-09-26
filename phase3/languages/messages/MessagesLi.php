@@ -434,7 +434,7 @@ $messages = array(
 Mäögelik höbs te 'n typefout gemaak in de URL, of 'n verkierde verwiezing gevolg.
 't Kan ouch wieze op 'n fout in de software van {{SITENAME}}.",
 'nosuchspecialpage' => "D'r besjteit gein speciaal pazjena mit deze naam",
-'nospecialpagetext' => "<big>'''Doe höbs 'n neet bestaonde speciaal pazjena aongevraog.'''</big>
+'nospecialpagetext' => "<strong>Doe höbs 'n neet bestaonde speciaal pazjena aongevraog.</strong>
 
 'n Lies mit besjtaonde speciaal pazjena's sjteit op [[Special:SpecialPages|speciaal pazjena’s]].",
 
@@ -526,10 +526,10 @@ De gegaeve ree is ''$2''.",
 'logout'                     => 'Aafmèlde',
 'userlogout'                 => 'Aafmèlde',
 'notloggedin'                => 'Neet aangemeld',
-'nologin'                    => 'Höbs te nog geine gebroekersnaam? $1.',
+'nologin'                    => "Höbs te nog geine gebroekersnaam? '''$1'''.",
 'nologinlink'                => "Maak 'ne gebroekersnaam aan",
 'createaccount'              => 'Nuuj gebroekersprofiel aanmake.',
-'gotaccount'                 => "Höbs te al 'ne gebroekersnaam? $1.",
+'gotaccount'                 => "Höbs te al 'ne gebroekersnaam? '''$1'''.",
 'gotaccountlink'             => 'Inlogge',
 'createaccountmail'          => 'via de e-mail',
 'badretype'                  => 'De ingeveurde wachwäörd versjille vanein.',
@@ -992,7 +992,7 @@ Wees zeker det deze wieziging de gesjiedenisdoorloupendheid van de pagina zal be
 'prevn-title'                      => 'Vörge {{PLURAL:$1|resultaat|$1 resultate}}',
 'nextn-title'                      => 'Volgende {{PLURAL:$1|resultaat|$1 resultate}}',
 'shown-title'                      => '$1 {{PLURAL:$1|resultaat|resultate}} per pagina weergaeve',
-'viewprevnext'                     => '($1) ($2) ($3) bekieke.',
+'viewprevnext'                     => '($1 {{int:pipe-separator}} $2) ($3) bekieke.',
 'searchmenu-legend'                => 'Zeukopties',
 'searchmenu-exists'                => "* Pagina '''[[$1]]'''",
 'searchmenu-new'                   => "'''De pagina \"[[:\$1]]\" aanmake op deze wiki'''",
@@ -1363,14 +1363,15 @@ Aangeweze {{PLURAL:\$3|bestandjstype|bestandjstypes}}zeen \$2.",
 'large-file'                  => 'Aanbeveling: maak bestenj neet groter dan $1, dit bestand is $2.',
 'largefileserver'             => "'t Bestandj is groter dan de instelling van de server toestuit.",
 'emptyfile'                   => "'t Besjtand wats re höbs geupload is laeg. Dit kump waorsjienliek door 'n typfout in de besjtandsnaom. Kiek estebleef ofs te dit besjtand wirkelik wils uploade.",
-'fileexists'                  => "D'r is al e besjtand mit dees naam, bekiek '''<tt>$1</tt>''' of se dat besjtand mesjien wils vervange.",
-'filepageexists'              => "De besjrievingspazjena veur dit bestandj besjteit al op '''<tt>$1</tt>''', meh d'r besjteit gein bestandj mit deze naam. De samevatting dies te höbs opgegaeve zal neet op de besjrievingspazjena versjiene. Bewirk de pazjena handjmaotig óm dien besjrieving dao te tuine.",
-'fileexists-extension'        => "'n bestand met dezelfde naam bestuit al:<br />
-Naam van 't geüploade bestand: '''<tt>$1</tt>'''<br />
-Naam van 't bestaonde bestand: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "D'r is al e besjtand mit dees naam, bekiek '''<tt>[[:$1]]</tt>''' of se dat besjtand mesjien wils vervange.
+[[$1|thumb]]",
+'filepageexists'              => "De besjrievingspazjena veur dit bestandj besjteit al op '''<tt>[[:$1]]</tt>''', meh d'r besjteit gein bestandj mit deze naam. De samevatting dies te höbs opgegaeve zal neet op de besjrievingspazjena versjiene. Bewirk de pazjena handjmaotig óm dien besjrieving dao te tuine.",
+'fileexists-extension'        => "'n bestand met dezelfde naam bestuit al: [[$2|thumb]]
+* Naam van 't geüploade bestand: '''<tt>[[:$1]]</tt>'''
+* Naam van 't bestaonde bestand: '''<tt>[[:$2]]</tt>'''
 Lèver 'ne angere naam te keze.",
-'fileexists-thumb'            => "<center>'''Bestaonde afbeilding'''</center>",
-'fileexists-thumbnail-yes'    => "'t Liek 'n afbeilding van 'n verkleinde grootte te zeen ''(thumbnail)''. Lèver 't bestand '''<tt>$1</tt>''' te controlere.<br />
+'fileexists-thumbnail-yes'    => "'t Liek 'n afbeilding van 'n verkleinde grootte te zeen ''(thumbnail)''. [[$1|thumb]]
+Lèver 't bestand '''<tt>[[:$1]]</tt>''' te controlere.
 Es 't gecontroleerde bestand dezelfde afbeilding van oorspronkelike grootte is, is 't neet noodzakelik 'ne extra thumbnail te uploade.",
 'file-thumbnail-no'           => "De bestandsnaam begint met '''<tt>$1</tt>'''. 
 't Liek 'n verkleinde afbeelding te zeen ''(thumbnail)''. 
@@ -1788,7 +1789,7 @@ Ouch versjiene gevolgde pazjena\'s in \'t <b>vèt</b> in de [[Special:RecentChan
 'enotif_anon_editor'           => 'anonieme gebroeker $1',
 'enotif_body'                  => 'Bèste $WATCHINGUSERNAME,
 
-De {{SITENAME}}-pazjena "$PAGETITLE" is $CHANGEDORCREATED op $PAGEEDITDATEANDTIME door $PAGEEDITOR, zuug $PAGETITLE_URL veur de hujige versie.
+De {{SITENAME}}-pazjena "$PAGETITLE" is $CHANGEDORCREATED op $PAGEEDITDATE door $PAGEEDITOR, zuug $PAGETITLE_URL veur de hujige versie.
 
 $NEWPAGE
 
@@ -2077,7 +2078,6 @@ Zuug de [[Special:IPBlockList|lies van geblokkeerde IP-adresse]].',
 'contribslink'                    => 'biedrages',
 'autoblocker'                     => 'Ómdets te \'n IP-adres deils mit "$1" (geblokkeerd mit raeje "$2") bis te automatisch geblokkeerd.',
 'blocklogpage'                    => 'Blokkeerlogbook',
-'blocklog-fulllog'                => 'Volledige blokkeerlogbook',
 'blocklogentry'                   => '"[[$1]]" is geblokkeerd veur d\'n tied van $2 $3',
 'reblock-logentry'                => 'haet de instellinge veur de blokkaasj veur [[$1]] gewiezig. Deze verlöp noe op $2 om $3',
 'blocklogtext'                    => "Dit is 'n log van blokkades van gebroekers. Automatisch geblokkeerde IP-adresse sjtoon hie neet bie. Zuug de [[Special:IPBlockList|Lies van geblokkeerde IP-adresse]] veur de lies van op dit mement wèrkende blokkades.",

@@ -233,7 +233,7 @@ $messages = array(
 'yourpassword'       => 'Чажыт сөс',
 'remembermypassword' => 'Мени сактып алыр',
 'login'              => 'Кирер',
-'userlogin'          => 'Кирер / кирерини чогаадып кылыр',
+'userlogin'          => 'Кирер',
 'logout'             => 'Үнер',
 'userlogout'         => 'Үнер',
 'notloggedin'        => 'Кирери евес',
@@ -332,7 +332,7 @@ $messages = array(
 'searchresults'  => 'Түңнелдер',
 'prevn'          => 'бүрүнгү {{PLURAL:$1|$1}}',
 'nextn'          => 'соонда {{PLURAL:$1|$1}}',
-'viewprevnext'   => '($1) ($2) ($3) көөр',
+'viewprevnext'   => '($1 {{int:pipe-separator}} $2) ($3) көөр',
 'searchhelp-url' => 'Help:Допчузу',
 'powersearch'    => 'Дилээр',
 

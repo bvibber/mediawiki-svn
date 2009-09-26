@@ -291,9 +291,9 @@ $messages = array(
 'nosuchaction'      => '冇有个只命令',
 'nosuchactiontext'  => 'Wiki识别伓到个只URL命令',
 'nosuchspecialpage' => '冇有个只特殊页',
-'nospecialpagetext' => "<big>'''倷要求𠮶特殊页冇有用。'''</big>
+'nospecialpagetext' => '<strong>倷要求𠮶特殊页冇有用。</strong>
 
-[[Special:SpecialPages]]上寻得到用得上𠮶特殊页。",
+[[Special:SpecialPages]]上寻得到用得上𠮶特殊页。',
 
 # General errors
 'error'                => '错误',
@@ -366,14 +366,14 @@ $2',
 'login'                      => '登入',
 'nav-login-createaccount'    => '登入/新开只帐户',
 'loginprompt'                => '要开到cookies才登入得正{{SITENAME}}。',
-'userlogin'                  => '登入/新开只帐户',
+'userlogin'                  => '登入',
 'logout'                     => '退出',
 'userlogout'                 => '退出',
 'notloggedin'                => '冇登入',
-'nologin'                    => '倷冇得帐户啊？ $1。',
+'nologin'                    => "倷冇得帐户啊？ '''$1'''。",
 'nologinlink'                => '新开只帐户',
 'createaccount'              => '新开只帐户',
-'gotaccount'                 => '有喽帐户？ $1.',
+'gotaccount'                 => "有喽帐户？ '''$1'''.",
 'gotaccountlink'             => '登入',
 'createaccountmail'          => '通过email',
 'badretype'                  => '倷输𠮶密码伓合。',
@@ -853,10 +853,14 @@ $2',
 'large-file'                  => '建议档案𠮶大小伓要超吥$1；本档案大小系$2。',
 'largefileserver'             => '个只档案要大过服务器配置容允𠮶大小。',
 'emptyfile'                   => '倷上传𠮶档案伓存在。个可能系因为档案名按错嘞。请检查倷系否真𠮶要上传个只档案。',
-'fileexists'                  => "个只档案名已存在。如果倷确定伓正倷系否要改佢，请检查'''<tt>$1</tt>'''。",
-'fileexists-extension'        => "有嘞只飞像𠮶档名:<br /> 上载文档𠮶档名: '''<tt>$1</tt>'''<br /> 目前档𠮶档名: '''<tt>$2</tt>'''<br /> 请拣只伓同𠮶名字。",
-'fileexists-thumb'            => "<center>'''早就有喽𠮶文件'''</center>",
-'fileexists-thumbnail-yes'    => "个只档案好像系一只图像𠮶缩小版''（缩图）''。请检查清楚个只档案'''<tt>$1</tt>'''。<br /> 如果检查后𠮶档同原先图像𠮶大小系一样𠮶话，就嫑再上传多一只缩图。",
+'fileexists'                  => "个只档案名已存在。如果倷确定伓正倷系否要改佢，请检查'''<tt>[[:$1]]</tt>'''。 [[$1|thumb]]",
+'fileexists-extension'        => "有嘞只飞像𠮶档名: [[$2|thumb]]
+* 上载文档𠮶档名: '''<tt>[[:$1]]</tt>'''
+* 目前档𠮶档名: '''<tt>[[:$2]]</tt>'''
+请拣只伓同𠮶名字。",
+'fileexists-thumbnail-yes'    => "个只档案好像系一只图像𠮶缩小版''（缩图）''。 [[$1|thumb]]
+请检查清楚个只档案'''<tt>[[:$1]]</tt>'''。
+如果检查后𠮶档同原先图像𠮶大小系一样𠮶话，就嫑再上传多一只缩图。",
 'file-thumbnail-no'           => "个只档案名系以'''<tt>$1</tt>'''开头。佢好像一只图像𠮶缩小版''（缩图）''。如果倷有个只图像𠮶完整版，伓然请再改过只档名。",
 'fileexists-forbidden'        => '个只档案名已存在；请回头并换过只新𠮶名称来上传个只档案。[[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '到共用档案库里度有嘞同名𠮶档案；请回头并换过只新𠮶名称来上传个只档案。[[File:$1|thumb|center|$1]]',
@@ -1156,7 +1160,7 @@ $2',
 'enotif_anon_editor'           => '匿名用户$1',
 'enotif_body'                  => '$WATCHINGUSERNAME先生/小姐倷好，
 
-$CHANGEDORCREATED{{SITENAME}}𠮶 $PAGETITLE 页面已经由$PAGEEDITOR到 $PAGEEDITDATEANDTIME，请到 $PAGETITLE_URL眵吖目前𠮶版本。
+$CHANGEDORCREATED{{SITENAME}}𠮶 $PAGETITLE 页面已经由$PAGEEDITOR到 $PAGEEDITDATE，请到 $PAGETITLE_URL眵吖目前𠮶版本。
 
 $NEWPAGE
 编辑摘要: $PAGESUMMARY $PAGEMINOREDIT
@@ -1389,7 +1393,7 @@ $NEWPAGE
 'blocklogpage'                => '封锁日志',
 'blocklogentry'               => '[[$1]]拖封到$3 ，结束时间到$2',
 'blocklogtext'                => '个系用户封锁同解封操作𠮶日志。拖自动封锁𠮶IP冇列出。请参看[[Special:IPBlockList|拖封IP地址列表]]。',
-'unblocklogentry'             => '[[$1]] 拖解封嘞',
+'unblocklogentry'             => '$1 拖解封嘞',
 'block-log-flags-anononly'    => '单限制匿名用户',
 'block-log-flags-nocreate'    => '禁止个只IP/用户新开帐户',
 'block-log-flags-noautoblock' => '禁用自动封禁',

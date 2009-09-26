@@ -364,9 +364,9 @@ $messages = array(
 'nosuchaction'      => 'Mayong siring na aksyon',
 'nosuchactiontext'  => 'An gibo na pinílì nin URL dai bisto kan wiki',
 'nosuchspecialpage' => 'Mayong siring na espesyal na páhina',
-'nospecialpagetext' => "<big>'''Dai pwede an pahinang espesyal na pinilî mo.'''</big>
+'nospecialpagetext' => '<strong>Dai pwede an pahinang espesyal na pinilî mo.</strong>
 
-Pwede mong mahiling an lista nin mga marhay na pahina sa [[Special:SpecialPages|{{int:specialpages}}]].",
+Pwede mong mahiling an lista nin mga marhay na pahina sa [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Salâ',
@@ -444,14 +444,14 @@ Nagibo na an ''account'' mo. Giromdomon tabi na ribayán an saimong mga kabôtan
 'login'                      => 'Maglaog',
 'nav-login-createaccount'    => 'Maglaog / maggibo nin account',
 'loginprompt'                => 'Kaipuhan may cookies ka para makalaog sa {{SITENAME}}.',
-'userlogin'                  => 'Maglaog / maggibo nin account',
+'userlogin'                  => 'Maglaog',
 'logout'                     => 'Magluwas',
 'userlogout'                 => 'Magluwás',
 'notloggedin'                => 'Mayò sa laog',
-'nologin'                    => 'Igwa ka nin entrada? $1.',
+'nologin'                    => "Igwa ka nin entrada? '''$1'''.",
 'nologinlink'                => 'Maggibo nin account',
 'createaccount'              => 'Maggibo nin account',
-'gotaccount'                 => 'Igwa ka na nin account? $1.',
+'gotaccount'                 => "Igwa ka na nin account? '''$1'''.",
 'gotaccountlink'             => 'Maglaog',
 'createaccountmail'          => 'sa e-koreo',
 'badretype'                  => 'Dai parehas an pigtaták mong mga sekretong panlaog.',
@@ -774,7 +774,7 @@ An ibang mga administrador sa ining wiki pwede pang maghiling kan mga nakatagong
 'notextmatches'             => 'Mayong ángay na teksto nin páhina',
 'prevn'                     => 'dating {{PLURAL:$1|$1}}',
 'nextn'                     => 'sunod na {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'Hilingón ($1) ($2) ($3)',
+'viewprevnext'              => 'Hilingón ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'            => 'Help:Mga laog',
 'search-suggest'            => 'An boot mo: $1',
 'search-interwiki-more'     => '(dakol pa)',
@@ -959,13 +959,14 @@ Kun boot mong ikaag an ladawan sa páhina, gamiton tabî an takod arog kan
 'large-file'                  => "Pigrerekomendár na dapat an mga ''file'' bakong mas dakula sa $1; $2 an sokol kaining ''file''.",
 'largefileserver'             => "Mas dakula an ''file'' sa pigtotogotan na sokol kan ''server''.",
 'emptyfile'                   => "Garo mayong laog an ''file'' na kinarga mo. Pwede ser na salâ ining tipo nin ''filename''. Isegurado tabî kun talagang boot mong ikarga ining ''file''.",
-'fileexists'                  => "Igwa nang ''file'' na may parehong pangaran sa ini, sosogon tabî an '''<tt>$1</tt>''' kun dai ka seguradong ribayan ini.",
-'fileexists-extension'        => "May ''file'' na may parehong pangaran:<br />
-Pangaran kan pigkakargang ''file'': '''<tt>$1</tt>'''<br />
-Pangaran kan yaon nang ''file'': '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Igwa nang ''file'' na may parehong pangaran sa ini, sosogon tabî an '''<tt>[[:$1]]</tt>''' kun dai ka seguradong ribayan ini.
+[[$1|thumb]]",
+'fileexists-extension'        => "May ''file'' na may parehong pangaran: [[$2|thumb]]
+* Pangaran kan pigkakargang ''file'': '''<tt>[[:$1]]</tt>'''
+* Pangaran kan yaon nang ''file'': '''<tt>[[:$2]]</tt>'''
 Magpili tabî nin ibang pangaran.",
-'fileexists-thumb'            => "<center>'''Presenteng ladawan'''</center>",
-'fileexists-thumbnail-yes'    => "An ''file'' garo ladawan kan pinasadit ''(thumbnail)''. Sosogon tabî an ''file'' '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "An ''file'' garo ladawan kan pinasadit ''(thumbnail)''. [[$1|thumb]]
+Sosogon tabî an ''file'' '''<tt>[[:$1]]</tt>'''.
 Kun an sinosog na ''file'' iyo an parehong ladawan na nasa dating sokol, dai na kaipuhan magkarga nin iba pang retratito.",
 'file-thumbnail-no'           => "An ''filename'' nagpopoon sa '''<tt>$1</tt>'''. Garo ladawan na pinasadit ini ''(thumbnail)''.
 Kun igwa ka nin ladawan na may resolusyón na maximo ikarga tabî ini, kun dai, bâgohon tabî an pangaran nin ''file''.",
@@ -1285,7 +1286,7 @@ Kun boot mong halîon an páhina sa pigbabantayan mo sa maabot na panahon, pindo
 'enotif_body'                  => 'Namómòtan na $WATCHINGUSERNAME,
 
 
-An páhinang {{SITENAME}} na $PAGETITLE binâgo $CHANGEDORCREATED sa $PAGEEDITDATEANDTIME ni $PAGEEDITOR, hilingón an $PAGETITLE_URL para sa presenteng bersyón.
+An páhinang {{SITENAME}} na $PAGETITLE binâgo $CHANGEDORCREATED sa $PAGEEDITDATE ni $PAGEEDITOR, hilingón an $PAGETITLE_URL para sa presenteng bersyón.
 
 $NEWPAGE
 

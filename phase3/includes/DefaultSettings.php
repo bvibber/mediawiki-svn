@@ -191,6 +191,9 @@ $wgFileStore['deleted']['directory'] = false;///< Defaults to $wgUploadDirectory
 $wgFileStore['deleted']['url'] = null;       ///< Private
 $wgFileStore['deleted']['hash'] = 3;         ///< 3-level subdirectory split
 
+$wgImgAuthDetails   = false; ///< defaults to false - only set to true if you use img_auth and want the user to see details on why access failed
+$wgImgAuthPublicTest = true; ///< defaults to true - if public read is turned on, no need for img_auth, config error unless other access is used
+
 /**@{
  * File repository structures
  *
@@ -645,6 +648,8 @@ $wgCheckDBSchema = true;
  * main database.
  * For backwards compatibility the shared prefix is set to the same as the local
  * prefix, and the user table is listed in the default list of shared tables.
+ * The user_properties table is also added so that users will continue to have their
+ * preferences shared (preferences were stored in the user table prior to 1.16)
  *
  * $wgSharedTables may be customized with a list of tables to share in the shared
  * datbase. However it is advised to limit what tables you do share as many of
@@ -653,7 +658,7 @@ $wgCheckDBSchema = true;
  */
 $wgSharedDB     = null;
 $wgSharedPrefix = false; # Defaults to $wgDBprefix
-$wgSharedTables = array( 'user' );
+$wgSharedTables = array( 'user', 'user_properties' );
 
 /**
  * Database load balancer
@@ -981,6 +986,16 @@ $wgDisableTitleConversion = false;
 
 /** Default variant code, if false, the default will be the language code */
 $wgDefaultLanguageVariant = false;
+
+/** Disabled variants array of language variant conversion.
+ *  example:
+ *  $wgDisabledVariants[] = 'zh-mo';
+ *  $wgDisabledVariants[] = 'zh-my';
+ *
+ *  or:
+ *  $wgDisabledVariants = array('zh-mo', 'zh-my');
+ */
+$wgDisabledVariants = array();
 
 /**
  * Show a bar of language selection links in the user login and user
@@ -1338,6 +1353,7 @@ $wgGroupPermissions['sysop']['createaccount']    = true;
 $wgGroupPermissions['sysop']['delete']           = true;
 $wgGroupPermissions['sysop']['bigdelete']        = true; // can be separately configured for pages with > $wgDeleteRevisionsLimit revs
 $wgGroupPermissions['sysop']['deletedhistory']   = true; // can view deleted history entries, but not see or restore the text
+$wgGroupPermissions['sysop']['deletedcontent']   = true; // can view deleted content
 $wgGroupPermissions['sysop']['undelete']         = true;
 $wgGroupPermissions['sysop']['editinterface']    = true;
 $wgGroupPermissions['sysop']['editusercss']      = true;
@@ -1588,7 +1604,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '239';
+$wgStyleVersion = '240';
 
 
 # Server-side caching:
@@ -1860,6 +1876,19 @@ $wgSpecialPageCacheUpdates = array(
 $wgUseTeX = false;
 /** Location of the texvc binary */
 $wgTexvc = './math/texvc';
+
+/**
+ * Normally when generating math images, we double-check that the
+ * directories we want to write to exist, and that files that have
+ * been generated still exist when we need to bring them up again.
+ *
+ * This lets us give useful error messages in case of permission
+ * problems, and automatically rebuild images that have been lost.
+ *
+ * On a big site with heavy NFS traffic this can be slow and flaky,
+ * so sometimes we want to short-circuit it by setting this to false.
+ */
+$wgMathCheckFiles = true;
 
 #
 # Profiling / debugging
@@ -2758,13 +2787,7 @@ $wgScriptModifiedCheck = true;
 $wgEnableJS2system = false;
 
 /*
- * boolean; if relative file paths can be used (in addition to the autoload 
- * js classes listed in: $wgJSAutoloadClasses)
- */
-$wgEnableScriptLoaderJsFile = false;
-
-/*
- * boolean; if we should minify the output. (note if you send ?debug=true in 
+ * boolean; if we should minify the output. (note if you send ?debug=true in
  * the page request it will automatically not group and not minify)
  */
 $wgEnableScriptMinify = true;
@@ -3865,6 +3888,12 @@ $wgAPIRequestLog = false;
 $wgAPICacheHelp = true;
 
 /**
+ * Set the timeout for the API help text cache. Ignored if $wgAPICacheHelp
+ * is false.
+ */
+$wgAPICacheHelpTimeout = 60*60;
+
+/**
  * Parser test suite files to be run by parserTests.php when no specific
  * filename is passed to it.
  *
@@ -4219,3 +4248,34 @@ $wgMemoryLimit = "50M";
  * Note that this requires JS2 and the script loader.
  */
 $wgUseAJAXCategories = false;
+
+/**
+ * Only enable AJAXCategories on configured namespaces. Default is all.
+ *
+ * Example:
+ *   $wgAJAXCategoriesNamespaces = array( NS_MAIN, NS_PROJECT );
+ */
+$wgAJAXCategoriesNamespaces = array();
+
+/**
+ * To disable file delete/restore temporarily
+ */
+$wgUploadMaintenance = false;
+
+/**
+ * Use old names for change_tags indices.
+ */
+$wgOldChangeTagsIndex = false;
+
+/**
+ * View page instead of edit interface when visiting a red link
+ * There are three ways to define this variable:
+ *  1. Set $wgShowPageOnRedlink to true (false is default)
+ *  2. Set $wgShowPageOnRedlink['usergroup'] to false. If a user is member of at least one usergroup for which the variable 
+ *     has been set to false, the edit interface will be shown. Otherwise the page is shown.
+ *  3. Set $wgShowPageOnRedlink['usergroup'][NS_XY] to false. Same as 2., but you can specify the namespace. The namespace
+ *     is a numerical value (namespace index), you can use constants such as NS_MAIN or NS_USER_TALK.
+ * If you use an array (2. or 3.), the default will be true (for 1. it's false). In 2. and 3. there is no way to overwrite 
+ * a value 'false' once it has already been set (this is due to the undefined order of usergroups).
+ */
+$wgShowPageOnRedlink = false;

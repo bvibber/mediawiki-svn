@@ -373,14 +373,14 @@ Tamstas paskīra bova sokorta. Neožmėrškėt pakeistė sava {{SITENAME}} nusta
 'login'                      => 'Prisėjongtė',
 'nav-login-createaccount'    => 'Prėsėjongtė / sokortė paskīra',
 'loginprompt'                => 'Ijonkėt pakavukus, jēgo nuorėt prisėjongtė pri {{SITENAME}}.',
-'userlogin'                  => 'Prėsėjongtė / sokortė paskīra',
+'userlogin'                  => 'Prėsėjongtė',
 'logout'                     => 'Atsėjongtė',
 'userlogout'                 => 'Atsėjongtė',
 'notloggedin'                => 'Neprisėjongis',
-'nologin'                    => 'Netorėt prisėjongėma varda? $1.',
+'nologin'                    => "Netorėt prisėjongėma varda? '''$1'''.",
 'nologinlink'                => 'Sokorkėt paskīra',
 'createaccount'              => 'Sokortė paskīra',
-'gotaccount'                 => 'Jau torėt paskīra? $1.',
+'gotaccount'                 => "Jau torėt paskīra? '''$1'''.",
 'gotaccountlink'             => 'Prisėjonkėt',
 'badretype'                  => 'Ivestė slaptažuodē nesotamp.',
 'userexists'                 => 'Irašīts nauduotuojė vards jau īr nauduojams.
@@ -684,7 +684,7 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'notextmatches'                    => 'Juokiū poslapė teksta atitikmenū',
 'prevn'                            => 'onkstesnius {{PLURAL:$1|$1}}',
 'nextn'                            => 'paskesnius {{PLURAL:$1|$1}}',
-'viewprevnext'                     => 'Veizėtė ($1) ($2) ($3).',
+'viewprevnext'                     => 'Veizėtė ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Paėiškuos nustatīmā',
 'searchmenu-exists'                => "'''Poslapis pavadėnts „[[$1]]“ šėtuo wiki'''",
 'searchmenu-new'                   => "'''Sokortė poslapi „[[:$1]]“ šėtuo wiki!'''",
@@ -926,12 +926,12 @@ Nuoriedamė panauduotė ikelta faila poslapī, nauduokėt tuokės nūoruodas:
 'badfilename'                => 'Faila pavadinėms pakeists i „$1“.',
 'filetype-missing'           => 'Fails netor galūnės (kāp pavīzdīs „.jpg“).',
 'emptyfile'                  => 'Panašu, ka fails, katra ikieliet īr toščias. Tas gal būtė diel klaiduos faila pavadėnėmė. Pasėtėkrinkėt a tėkrā nuorėt ikeltė šėta faila.',
-'fileexists'                 => "Fails so tuokiu vardu jau īr, prašuom paveizėtė '''<tt>$1</tt>''', jēgo nesat ožtėkrėnts, a nuorit ana parrašītė.",
-'fileexists-extension'       => "Fails so pavėdiu pavadinėmu jau īr:<br />
-Ikeliama faila pavadinėms: '''<tt>$1</tt>'''<br />
-Jau esontė faila pavadinėms: '''<tt>$2</tt>'''<br />
+'fileexists'                 => "Fails so tuokiu vardu jau īr, prašuom paveizėtė '''<tt>[[:$1]]</tt>''', jēgo nesat ožtėkrėnts, a nuorit ana parrašītė.
+[[$1|thumb]]",
+'fileexists-extension'       => "Fails so pavėdiu pavadinėmu jau īr: [[$2|thumb]]
+* Ikeliama faila pavadinėms: '''<tt>[[:$1]]</tt>'''
+* Jau esontė faila pavadinėms: '''<tt>[[:$2]]</tt>'''
 Prašuom ėšsėrėnktė kėta varda.",
-'fileexists-thumb'           => "<center>'''Esontis fails'''</center>",
 'file-exists-duplicate'      => 'Tas fails īr {{PLURAL:$1|šėta faila|šėtū failu}} doblėkats:',
 'successfulupload'           => 'Ikelt siekmėngā',
 'uploadwarning'              => 'Diemesė',

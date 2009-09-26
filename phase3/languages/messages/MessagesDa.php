@@ -572,10 +572,10 @@ Din konto er blevet oprettet. Glem ikke at personliggøre dine {{SITENAME}}-inds
 'logout'                     => 'Log af',
 'userlogout'                 => 'Log af',
 'notloggedin'                => 'Ikke logget på',
-'nologin'                    => 'Du har ingen brugerkonto? $1.',
+'nologin'                    => "Du har ingen brugerkonto? '''$1'''.",
 'nologinlink'                => 'Opret ny brugerkonto',
 'createaccount'              => 'Opret en ny konto',
-'gotaccount'                 => 'Du har allerede en brugerkonto? $1.',
+'gotaccount'                 => "Du har allerede en brugerkonto? '''$1'''.",
 'gotaccountlink'             => 'Log på',
 'createaccountmail'          => 'via e-mail',
 'badretype'                  => 'De indtastede adgangskoder er ikke ens.',
@@ -629,8 +629,8 @@ Derfor kan besøgende ikke oprette flere kontoer fra denne IP-adresse i øjeblik
 Du opfordres til at logge ind og ændre adgangskoden med det samme.
 
 Du kan ignorere denne besked hvis kontoen blev oprettet ved en fejl.',
-'login-throttled'            => 'Du har forsøgt at logge ind med forkert adgangskode til denne konto for mange gange.
-Vent, før du prøver igen.',
+'login-throttled'            => 'Du har forsøgt at logge på for mange gange.
+Vent venligst før du prøver igen.',
 'loginlanguagelabel'         => 'Sprog: $1',
 
 # Password reset dialog
@@ -748,6 +748,7 @@ eller [{{fullurl:{{FULLPAGENAME}}|action=edit}} oprette siden]</span>.',
 Du kan [[Special:Search/{{PAGENAME}}|søge efter denne sides titel]] på andre sider,
 eller <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} se de relaterede loglister]</span>.',
 'userpage-userdoesnotexist'        => 'Brugerkontoen "$1" findes ikke. Overvej om du ønsker at oprette eller redigere denne side.',
+'userpage-userdoesnotexist-view'   => 'Brugerkontoen "$1" er ikke oprettet.',
 'clearyourcache'                   => "'''Bemærk: Efter at have gemt er du nødt til at tømme din browsers cache for at kunne se ændringerne.'''
 '''Mozilla / Firefox / Safari''': Hold ''shifttasten'' nede og klik på ''reload'', eller tryk enten ''Ctrl-F5'' eller ''Ctrl-Shift-r'' (Mac: ''cmd-shift-r'');
 '''Konqueror''': Klik på ''reload'' eller tryk på ''F5'';
@@ -1093,7 +1094,7 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'prevn-title'                      => 'Forrige $1 {{PLURAL:$1|resultat|resultater}}',
 'nextn-title'                      => 'Næste $1 {{PLURAL:$1|resultat|resultater}}',
 'shown-title'                      => 'Vis $1 {{PLURAL:$1|resultat|resultater}} per side',
-'viewprevnext'                     => 'Vis ($1) ($2) ($3).',
+'viewprevnext'                     => 'Vis ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Søgemuligheder',
 'searchmenu-exists'                => "'''Der er en side med navnet \"[[:\$1]]\" på denne wiki'''",
 'searchmenu-new'                   => "'''Opret siden \"[[:\$1]]\" i denne wiki'''",
@@ -1366,7 +1367,7 @@ Du kan også vælge at lade andre brugere kontakte dig gennem din bruger- eller 
 # User rights log
 'rightslog'      => 'Rettighedslog',
 'rightslogtext'  => 'Dette er en log over ændringer i brugeres rettigheder.',
-'rightslogentry' => 'ændrede grupperettigheder for „[[$1]]“ fra „$2“ til „$3“.',
+'rightslogentry' => 'ændrede grupperettigheder for „$1“ fra „$2“ til „$3“.',
 'rightsnone'     => '(-)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -1498,14 +1499,15 @@ Brug en henvisning af en de følgende typer for at bruge en fil på en side:
 'large-file'                  => 'Filstørrelsen skal så vidt muligt ikke overstige $1. Denne fil er $2 stor.',
 'largefileserver'             => 'Filen er større end den på serveren indstillede maksimale størrelse.',
 'emptyfile'                   => 'Filen du lagde op lader til at være tom. Det kan skyldes en slåfejl i filnavnet. Kontroller om du virkelig ønsker at lægge denne fil op.',
-'fileexists'                  => 'En fil med det navn findes allerede, tjek venligst $1 om du er sikker på du vil ændre den.',
-'filepageexists'              => "Siden med beskrivelse af denne fil er allerede oprettet på '''<tt>$1</tt>''', men der eksisterer ikke en fil med dette navn. Den beskrivelse du kan angive nedenfor vil derfor ikke blive brugt. For at få din beskrivelse vist, skal du selv redigere beskrivelsessiden.",
-'fileexists-extension'        => "En fil med lignende navn findes allerede:<br />
-Navnet på den valgte fil: '''<tt>$1</tt>'''<br />
-Navnet på den eksisterende fil: '''<tt>$2</tt>'''<br />
-Kun filendelsen adskiller sig med store og små bogstaver. Kontroller venligst om filerne har samme indhold.",
-'fileexists-thumb'            => "<center>'''Eksisterende billede'''</center>",
-'fileexists-thumbnail-yes'    => "Det ser ud som om filen indeholder et billede i reduceret størrelse ''(thumbnail)''. Kontroller filen '''<tt>$1</tt>'''.<br />
+'fileexists'                  => 'En fil med det navn findes allerede, tjek venligst [[:$1]] om du er sikker på du vil ændre den.
+[[$1|thumb]]',
+'filepageexists'              => "Siden med beskrivelse af denne fil er allerede oprettet på '''<tt>[[:$1]]</tt>''', men der eksisterer ikke en fil med dette navn. Den beskrivelse du kan angive nedenfor vil derfor ikke blive brugt. For at få din beskrivelse vist, skal du selv redigere beskrivelsessiden.",
+'fileexists-extension'        => "En fil med lignende navn findes allerede: [[$2|thumb]]
+* Navnet på den valgte fil: '''<tt>[[:$1]]</tt>'''
+* Navnet på den eksisterende fil: '''<tt>[[:$2]]</tt>'''
+Kun filendelsen adskiller sig med store og små bogstaver.",
+'fileexists-thumbnail-yes'    => "Det ser ud som om filen indeholder et billede i reduceret størrelse ''(thumbnail)''. [[$1|thumb]]
+Kontroller filen '''<tt>[[:$1]]</tt>'''.
 Hvis det er billedet i original størrelse, er det ikke nødvendigt at uploade et separat forhåndsvisningsbillede.",
 'file-thumbnail-no'           => "Filnavnet begynder med '''<tt>$1</tt>'''.
 Det tyder på et billede i reduceret format ''(thumbnail)''.
@@ -1549,6 +1551,24 @@ Sletningsloggen for denne fil er gengivet herunder.",
 'upload-too-many-redirects' => "URL'en indeholdt for mange omdirigeringer",
 'upload-unknown-size'       => 'Ukendt størrelse',
 'upload-http-error'         => 'Der opstod en HTTP-fejl: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Adgang nægtet',
+'img-auth-nopathinfo'   => 'PATH_INFO mangler.
+Din server er ikke sat op til at give denne information.
+Den bruger måske CGI og understøtter ikke img_auth.
+Se http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-notindir'     => 'Den ønskede sti er ikke i det opsatte oplægningskatalog.',
+'img-auth-badtitle'     => 'Kan ikke lave en gyldig titel ud fra "$1".',
+'img-auth-nologinnWL'   => 'Du er ikke logget ind, og "$1" er ikke på hvidlisten.',
+'img-auth-nofile'       => 'Filen "$1" findes ikke.',
+'img-auth-isdir'        => 'Du forsøger at få adgang til kataloget "$1".
+Kun adgang til filer tillades.',
+'img-auth-streaming'    => 'Sender "$1".',
+'img-auth-public'       => "img_auth.php's funktion er at sende filer fra en privat wiki.
+Denne wiki er konfigureret som en offentlig wiki.
+For optimal sikkerhed er img_auth.php deaktiveret.",
+'img-auth-noread'       => 'Brugeren har ikke rettigheder til at læse "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL er utilgængelig',
@@ -1640,6 +1660,7 @@ Indholdet på dens [$2 filbeskrivelsesside] er vist herunder.',
 ** Dubletfil
 ** Filen er ubrugt',
 'filedelete-edit-reasonlist'  => 'Rediger sletningsårsager',
+'filedelete-maintenance'      => 'Sletning og gendannelse af filer er midlertidigt forhindret på grund af vedligeholdelse.',
 
 # MIME search
 'mimesearch'         => 'Søge efter MIME-type',
@@ -1934,16 +1955,13 @@ Den e-mail-adresse du har angivet i [[Special:Preferences|dine indstillinger]] v
 'enotif_impersonal_salutation' => '{{SITENAME}} bruger',
 'changed'                      => 'ændret',
 'created'                      => 'oprettet',
-'deleted'                      => 'slettet',
-'enotif_deletedpagetext'       => 'Denne side er ikke længere tilgængelig.',
 'enotif_subject'               => '{{SITENAME}}-siden $PAGETITLE er blevet ændret af $PAGEEDITOR',
 'enotif_lastvisited'           => 'Se $1 for alle ændringer siden dit sidste besøg.',
 'enotif_lastdiff'              => 'Se $1 for at vise denne ændring.',
 'enotif_anon_editor'           => 'anonym bruger $1',
-'enotif_rev_info'              => 'Se $1 for den nyeste version.',
 'enotif_body'                  => 'Kære $WATCHINGUSERNAME
 
-{{SITENAME}}-siden $PAGETITLE er blevet $CHANGEDORCREATED $PAGEEDITDATEANDTIME af $PAGEEDITOR. $REVINFO
+{{SITENAME}}-siden $PAGETITLE er blevet $CHANGEDORCREATED $PAGEEDITDATE af $PAGEEDITOR. Se $PAGETITLE_URL for den nyeste version.
 
 $NEWPAGE
 
@@ -2242,7 +2260,6 @@ Se [[Special:IPBlockList|IP-blokeringslisten]] for alle blokeringer.',
 'contribslink'                    => 'bidrag',
 'autoblocker'                     => 'Automatisk blokeret fordi du deler IP-adresse med "$1". Begrundelse "$2".',
 'blocklogpage'                    => 'Blokeringslog',
-'blocklog-fulllog'                => 'Komplet blokeringslog',
 'blocklogentry'                   => 'blokerede [[$1]] med en varighed på $2 $3',
 'reblock-logentry'                => 'ændrede blokeringsindstillinger for [[$1]] med en varighed $2 $3',
 'blocklogtext'                    => 'Dette er en liste med blokerede brugere og ophævede blokeringer af brugere. Automatisk blokerede IP-adresser er ikke anført her. Se [[Special:IPBlockList|blokeringslisten]] for den nuværende liste med blokerede brugere.',
@@ -2445,7 +2462,7 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 'importlogpagetext'                => 'Administrativ import af sider med versionshistorik fra andre Wikis.',
 'import-logentry-upload'           => '[[$1]] blev importeret',
 'import-logentry-upload-detail'    => '{{PLURAL:$1|1 version|$1 versioner}}',
-'import-logentry-interwiki'        => '[[$1]] blev importeret (Transwiki)',
+'import-logentry-interwiki'        => '$1 blev importeret (Transwiki)',
 'import-logentry-interwiki-detail' => '{{PLURAL:$1|1 version|$1 versioner}} af $2 importeret',
 
 # Tooltip help for the actions
@@ -3183,5 +3200,7 @@ Klik på "Gem" for at gemme redigeringen.',
 'ajax-confirm-actionsummary'   => 'Handling:',
 'ajax-error-title'             => 'Fejl',
 'ajax-error-dismiss'           => 'O.k.',
+'ajax-remove-category-error'   => 'Det var ikke muligt af fjerne kategorien.
+Det skyldes oftest at kategorien er blevet tilføjet til siden i en skabelon.',
 
 );

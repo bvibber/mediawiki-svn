@@ -21,10 +21,10 @@ if( !defined( 'MEDIAWIKI' ) )
 class SkinMonoBook extends SkinTemplate {
 	/** Using monobook. */
 	var $skinname = 'monobook', $stylename = 'monobook',
-		$template = 'MonoBookTemplate';
+		$template = 'MonoBookTemplate', $useHeadElement = true;
 
 	function setupSkinUserCss( OutputPage $out ) {
-		global $wgHandheldStyle;
+		global $wgHandheldStyle, $wgStyleVersion, $wgJsMimeType, $wgStylePath;
 
 		parent::setupSkinUserCss( $out );
 
@@ -42,29 +42,13 @@ class SkinMonoBook extends SkinTemplate {
 
 		$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );
 
-
-		// @todo We can move this to the parent once we update all the skins
-		if( isset( $this->pagecss ) &&  $this->pagecss )
-			$out->addInlineStyle( $this->pagecss );
-
-		if( isset( $this->usercss ) &&  $this->usercss )
-			$out->addInlineStyle( $this->usercss );
-
-	}
-
-	function setupSkinUserJs( OutputPage $out ) {
-		parent::setupSkinUserJs( $out );
-		$out->addScriptFile( 'wikibits.js' );
-
-		// @todo We can move to parent once we update all the skins (to avoid including things twice)
-		if( isset( $this->jsvarurl ) && $this->jsvarurl )
-			$out->addScriptFile( $this->jsvarurl );
-
-		if( isset( $this->userjs ) && $this->userjs )
-			$out->addScriptFile( $this->userjs );
-
-		if( isset( $this->userjsprev ) && $this->userjsprev )
-			$out->addInlineScript( $this->userjsprev );
+		# FIXME: What is this?  Should it apply to all skins?
+		$path = htmlspecialchars( $wgStylePath );
+		$out->addScript( <<<HTML
+<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
+	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+HTML
+		);
 	}
 }
 
@@ -83,23 +67,15 @@ class MonoBookTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	function execute() {
-		global $wgRequest, $wgOut, $wgStyleVersion, $wgJsMimeType, $wgStylePath;
+		global $wgRequest;
+
 		$this->skin = $skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
 
-		# FIXME: What is this?  Should it apply to all skins?
-		$path = htmlspecialchars( $wgStylePath );
-		$wgOut->addScript( <<<HTML
-<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
-	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-HTML
-		);
-
-		echo $wgOut->headElement( $this->skin );
-
+		$this->html( 'headelement' );
 ?><body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir'); $this->text('capitalizeallnouns') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">

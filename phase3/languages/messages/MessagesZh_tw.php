@@ -146,10 +146,7 @@ $messages = array(
 'nstab-help'      => '說明頁面',
 
 # Main script and global functions
-'nosuchactiontext'  => '這個wiki無法識別URL請求的命令',
-'nospecialpagetext' => "<big>'''您請求的特殊頁面無效。'''</big>
-
-[[Special:SpecialPages]]載有所有有效特殊頁面的列表。",
+'nosuchactiontext' => '這個wiki無法識別URL請求的命令',
 
 # General errors
 'readonlytext'         => '資料庫目前禁止輸入新內容及更改，
@@ -169,11 +166,11 @@ $messages = array(
 'welcomecreation'            => '<h2>歡迎，$1!</h2><p>您的帳號已經建立，不要忘記設置{{SITENAME}}個人參數。</p>',
 'yourname'                   => '您的使用者名:',
 'nav-login-createaccount'    => '登入／建立新帳號',
-'userlogin'                  => '登入／建立新帳號',
-'nologin'                    => '您還沒有帳號嗎？$1。',
+'userlogin'                  => '登入',
+'nologin'                    => "您還沒有帳號嗎？'''$1'''。",
 'nologinlink'                => '建立新帳號',
 'createaccount'              => '建立新帳號',
-'gotaccount'                 => '已經擁有帳號？$1。',
+'gotaccount'                 => "已經擁有帳號？'''$1'''。",
 'badretype'                  => '你所輸入的密碼並不相同。',
 'userexists'                 => '您所輸入的使用者名稱已經存在，請另選一個。',
 'nocookiesnew'               => '已成功建立新帳戶！偵測到您已關閉 Cookies，請開啟它並登入。',
@@ -403,8 +400,8 @@ $messages = array(
 'ignorewarning'               => '忽略警告並儲存檔案。',
 'illegalfilename'             => '檔案名"$1"包含有頁面標題所禁止的字符。請改名後重新上傳。',
 'badfilename'                 => '檔案名已被改為"$1"。',
-'fileexists-thumb'            => "<center>'''已經存在的圖片'''</center>",
-'fileexists-thumbnail-yes'    => "這個檔案好像是一幅圖片的縮圖版本''(縮圖)''。請檢查清楚該檔案'''<tt>$1</tt>'''。<br />
+'fileexists-thumbnail-yes'    => "這個檔案好像是一幅圖片的縮圖版本''(縮圖)''。 [[$1|thumb]]
+請檢查清楚該檔案'''<tt>[[:$1]]</tt>'''。
 如果檢查後的檔案是同原本圖片的大小是一樣的話，就不用再上載多一幅縮圖。",
 'file-thumbnail-no'           => "該檔名是以'''<tt>$1</tt>'''開始。它好像一幅圖片的縮圖版本''(縮圖)''。
 如果你有該圖片的完整大小，如不是請再修改檔名。",
@@ -516,7 +513,7 @@ $messages = array(
 'enotif_anon_editor'           => '匿名使用者$1',
 'enotif_body'                  => '親愛的 $WATCHINGUSERNAME,
 
-$PAGEEDITOR 已經在 $PAGEEDITDATEANDTIME $CHANGEDORCREATED{{SITENAME}}的 $PAGETITLE 頁面，請到 $PAGETITLE_URL 檢視當前版本。
+$PAGEEDITOR 已經在 $PAGEEDITDATE $CHANGEDORCREATED{{SITENAME}}的 $PAGETITLE 頁面，請到 $PAGETITLE_URL 檢視當前版本。
 
 $NEWPAGE
 
@@ -740,17 +737,12 @@ $NEWPAGE
 'tooltip-rollback'                => '『{{int:rollbacklink}}』可以一按恢復上一位貢獻者對這個頁面的編輯',
 'tooltip-undo'                    => '『{{int:editundo}}』可以在編輯模式上開啟編輯表格以便復原。它容許在摘要中加入原因。',
 
-# Stylesheets
-'monobook.css' => '/* 此處的 CSS 將影響使用 Monobook 面板的使用者 */',
-
-# Scripts
-'common.js'   => '/* 此處的JavaScript將載入於所有使用者每一個頁面。 */',
-'monobook.js' => '/* 已經不再使用；請用[[MediaWiki:common.js]] */',
-
 # Attribution
 'anonymous' => '{{SITENAME}}的匿名{{PLURAL:$1|使用者|使用者}}',
 'siteuser'  => '{{SITENAME}}使用者$1',
+'anonuser'  => '{{SITENAME}}匿名使用者$1',
 'siteusers' => '{{SITENAME}}{{PLURAL:$2|使用者|使用者}}$1',
+'anonusers' => '{{SITENAME}}匿名{{PLURAL:$2|使用者|使用者}}$1',
 
 # Spam protection
 'spamprotectiontext' => '垃圾過濾器禁止保存您剛才提交的頁面，這可能是由於您所加入的外部網站鏈接所產生的問題。',

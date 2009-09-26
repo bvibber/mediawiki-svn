@@ -735,6 +735,8 @@ XHTML id names.
 'category-file-count'            => '{{PLURAL:$2|This category contains only the following file.|The following {{PLURAL:$1|file is|$1 files are}} in this category, out of $2 total.}}',
 'category-file-count-limited'    => 'The following {{PLURAL:$1|file is|$1 files are}} in the current category.',
 'listingcontinuesabbrev'         => 'cont.',
+'index-category'                 => 'Indexed pages',
+'noindex-category'               => 'Noindexed pages',
 
 'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD', # only translate this message to other languages if you have to change it
 'mainpagetext'      => "<big>'''MediaWiki has been successfully installed.'''</big>",
@@ -943,9 +945,9 @@ See [[Special:Version|version page]].',
 You might have mistyped the URL, or followed an incorrect link.
 This might also indicate a bug in the software used by {{SITENAME}}.',
 'nosuchspecialpage' => 'No such special page',
-'nospecialpagetext' => "<big>'''You have requested an invalid special page.'''</big>
+'nospecialpagetext' => '<strong>You have requested an invalid special page.</strong>
 
-A list of valid special pages can be found at [[Special:SpecialPages|{{int:specialpages}}]].",
+A list of valid special pages can be found at [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Error',
@@ -1046,16 +1048,17 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'logout'                     => 'Log out',
 'userlogout'                 => 'Log out',
 'notloggedin'                => 'Not logged in',
-'nologin'                    => "Don't have an account? $1.",
+'nologin'                    => "Don't have an account? '''$1'''.",
 'nologinlink'                => 'Create an account',
 'createaccount'              => 'Create account',
-'gotaccount'                 => 'Already have an account? $1.',
+'gotaccount'                 => "Already have an account? '''$1'''.",
 'gotaccountlink'             => 'Log in',
 'createaccountmail'          => 'by e-mail',
 'badretype'                  => 'The passwords you entered do not match.',
 'userexists'                 => 'Username entered already in use.
 Please choose a different name.',
 'loginerror'                 => 'Login error',
+'createaccounterror'         => 'Could not create account: $1',
 'nocookiesnew'               => 'The user account was created, but you are not logged in.
 {{SITENAME}} uses cookies to log in users.
 You have cookies disabled.
@@ -1090,7 +1093,7 @@ If someone else made this request, or if you have remembered your password,
 and you no longer wish to change it, you may ignore this message and
 continue using your old password.',
 'noemail'                    => 'There is no e-mail address recorded for user "$1".',
-'noemailcreate'              => 'You need to provide a valid email address',
+'noemailcreate'              => 'You need to provide a valid e-mail address',
 'passwordsent'               => 'A new password has been sent to the e-mail address registered for "$1".
 Please log in again after you receive it.',
 'blocked-mailpassword'       => 'Your IP address is blocked from editing, and so is not allowed to use the password recovery function to prevent abuse.',
@@ -1118,8 +1121,8 @@ Please enter a well-formatted address or empty that field.',
 You should log in and change your password now.
 
 You may ignore this message, if this account was created in error.',
-'login-throttled'            => "You have made too many recent attempts on this account's password.
-Please wait before trying again.",
+'login-throttled'            => 'You have made too many recent login attempts.
+Please wait before trying again.',
 'loginlanguagelabel'         => 'Language: $1',
 'loginlanguagelinks'         => '* Deutsch|de
 * English|en
@@ -1254,6 +1257,7 @@ or <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLP
 'noarticletextanon'                => '{{int:noarticletext}}', # do not translate or duplicate this message to other languages
 'userpage-userdoesnotexist'        => 'User account "$1" is not registered.
 Please check if you want to create/edit this page.',
+'userpage-userdoesnotexist-view'   => 'User account "$1" is not registered.',
 'clearyourcache'                   => "'''Note - After saving, you may have to bypass your browser's cache to see the changes.'''
 '''Mozilla / Firefox / Safari:''' hold ''Shift'' while clicking ''Reload'', or press either ''Ctrl-F5'' or ''Ctrl-R'' (''Command-R'' on a Macintosh);
 '''Konqueror: '''click ''Reload'' or press ''F5'';
@@ -1455,13 +1459,14 @@ Other administrators on {{SITENAME}} will still be able to access the hidden con
 
 Please confirm that you intend to do this, that you understand the consequences, and that you are doing this in accordance with [[{{MediaWiki:Policy-url}}|the policy]].",
 'revdelete-suppress-text'     => "Suppression should '''only''' be used for the following cases:
+* Potentially libelous information
 * Inappropriate personal information
 *: ''home addresses and telephone numbers, social security numbers, etc.''",
 'revdelete-legend'            => 'Set visibility restrictions',
 'revdelete-hide-text'         => 'Hide revision text',
 'revdelete-hide-name'         => 'Hide action and target',
 'revdelete-hide-comment'      => 'Hide edit comment',
-'revdelete-hide-user'         => "Hide editor's username/IP",
+'revdelete-hide-user'         => "Hide editor's username/IP address",
 'revdelete-hide-restricted'   => 'Suppress data from administrators as well as others',
 'revdelete-suppress'          => 'Suppress data from administrators as well as others',
 'revdelete-hide-image'        => 'Hide file content',
@@ -1501,10 +1506,12 @@ Please check the logs.',
 'revdelete-only-restricted'   => 'You cannot suppress items from view by administrators without also selecting one of the other suppression options.',
 'revdelete-reason-dropdown'   => '*Common delete reasons
 ** Copyright violation
-** Inappropriate personal information',
+** Inappropriate personal information
+** Potentially libelous information',
 'revdelete-otherreason'       => 'Other/additional reason:',
 'revdelete-reasonotherlist'   => 'Other reason',
 'revdelete-edit-reasonlist'   => 'Edit delete reasons',
+'revdelete-offender'          => 'Revision author:',
 
 # Suppression log
 'suppressionlog'     => 'Suppression log',
@@ -1626,7 +1633,7 @@ You can [[:\$1|create this page]].",
 'prevn-title'                      => 'Previous $1 {{PLURAL:$1|result|results}}',
 'nextn-title'                      => 'Next $1 {{PLURAL:$1|result|results}}',
 'shown-title'                      => 'Show $1 {{PLURAL:$1|result|results}} per page',
-'viewprevnext'                     => 'View ($1) ($2) ($3)',
+'viewprevnext'                     => 'View ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Search options',
 'searchmenu-exists'                => "'''There is a page named \"[[:\$1]]\" on this wiki'''",
 'searchmenu-new'                   => "'''Create the page \"[[:\$1]]\" on this wiki!'''",
@@ -1722,7 +1729,7 @@ Note that their indexes of {{SITENAME}} content may be out of date.',
 'prefs-watchlist-days-max'      => 'Maximum 7 days',
 'prefs-watchlist-edits'         => 'Maximum number of changes to show in expanded watchlist:',
 'prefs-watchlist-edits-max'     => 'Maximum number: 1000',
-'prefs-watchlist-token'         => 'Watchlist token',
+'prefs-watchlist-token'         => 'Watchlist token:',
 'prefs-misc'                    => 'Misc',
 'prefs-resetpass'               => 'Change password',
 'prefs-email'                   => 'E-mail options',
@@ -1891,6 +1898,7 @@ You can also choose to let others contact you through your user or talk page wit
 'right-bigdelete'             => 'Delete pages with large histories',
 'right-deleterevision'        => 'Delete and undelete specific revisions of pages',
 'right-deletedhistory'        => 'View deleted history entries, without their associated text',
+'right-deletedcontent'        => 'View deleted text and changes between deleted revisions',
 'right-browsearchive'         => 'Search deleted pages',
 'right-undelete'              => 'Undelete a page',
 'right-suppressrevision'      => 'Review and restore revisions hidden from administrators',
@@ -1923,6 +1931,7 @@ You can also choose to let others contact you through your user or talk page wit
 'right-reset-passwords'       => "Reset other users' passwords",
 'right-override-export-depth' => 'Export pages including linked pages up to a depth of 5',
 'right-versiondetail'         => 'Show the extended software version information',
+'right-root'                  => 'Perform all actions on the wiki',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -2074,25 +2083,29 @@ this file is $2.',
 'emptyfile'                   => 'The file you uploaded seems to be empty.
 This might be due to a typo in the file name.
 Please check whether you really want to upload this file.',
-'fileexists'                  => "A file with this name exists already, please check '''<tt>$1</tt>''' if you are not sure if you want to change it.",
-'filepageexists'              => "The description page for this file has already been created at '''<tt>$1</tt>''', but no file with this name currently exists.
+'fileexists'                  => "A file with this name exists already, please check '''<tt>[[:$1]]</tt>''' if you are not sure if you want to change it.
+[[$1|thumb]]",
+'filepageexists'              => "The description page for this file has already been created at '''<tt>[[:$1]]</tt>''', but no file with this name currently exists.
 The summary you enter will not appear on the description page.
-To make your summary appear there, you will need to manually edit it",
-'fileexists-extension'        => "A file with a similar name exists:<br />
-Name of the uploading file: '''<tt>$1</tt>'''<br />
-Name of the existing file: '''<tt>$2</tt>'''<br />
+To make your summary appear there, you will need to manually edit it.
+[[$1|thumb]]",
+'fileexists-extension'        => "A file with a similar name exists: [[$2|thumb]]
+* Name of the uploading file: '''<tt>[[:$1]]</tt>'''
+* Name of the existing file: '''<tt>[[:$2]]</tt>''' 
 Please choose a different name.",
-'fileexists-thumb'            => "<center>'''Existing file'''</center>",
 'fileexists-thumbnail-yes'    => "The file seems to be an image of reduced size ''(thumbnail)''.
-Please check the file '''<tt>$1</tt>'''.<br />
+[[$1|thumb]]
+Please check the file '''<tt>[[:$1]]</tt>'''.
 If the checked file is the same image of original size it is not necessary to upload an extra thumbnail.",
 'file-thumbnail-no'           => "The filename begins with '''<tt>$1</tt>'''.
 It seems to be an image of reduced size ''(thumbnail)''.
 If you have this image in full resolution upload this one, otherwise change the file name please.",
 'fileexists-forbidden'        => 'A file with this name already exists, and cannot be overwritten.
-If you still want to upload your file, please go back and use a new name. [[File:$1|thumb|center|$1]]',
+If you still want to upload your file, please go back and use a new name.
+[[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'A file with this name exists already in the shared file repository.
-If you still want to upload your file, please go back and use a new name. [[File:$1|thumb|center|$1]]',
+If you still want to upload your file, please go back and use a new name.
+[[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'This file is a duplicate of the following {{PLURAL:$1|file|files}}:',
 'file-deleted-duplicate'      => "A file identical to this file ([[$1]]) has previously been deleted.
 You should check that file's deletion history before proceeding to re-upload it.",
@@ -2148,6 +2161,24 @@ If the problem persists, contact an [[Special:ListUsers/sysop|administrator]].',
 'upload-too-many-redirects' => 'The URL contained too many redirects',
 'upload-unknown-size'       => 'Unknown size',
 'upload-http-error'         => 'An HTTP error occured: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Access denied',
+'img-auth-nopathinfo'   => 'Missing PATH_INFO.
+Your server is not set up to pass this information.
+It may be CGI-based and cannot support img_auth.
+See http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-notindir'     => 'Requested path is not in the configured upload directory.',
+'img-auth-badtitle'     => 'Unable to construct a valid title from "$1".',
+'img-auth-nologinnWL'   => 'You are not logged in and "$1" is not in the whitelist.',
+'img-auth-nofile'       => 'File "$1" does not exist.',
+'img-auth-isdir'        => 'You are trying to access a directory "$1".
+Only file access is allowed.',
+'img-auth-streaming'    => 'Streaming "$1".',
+'img-auth-public'       => 'The function of img_auth.php is to output files from a private wiki.
+This wiki is configured as a public wiki.
+For optimal security, img_auth.php is disabled.',
+'img-auth-noread'       => 'User does not have access to read "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Could not reach URL',
@@ -2247,6 +2278,7 @@ The description on its [$2 file description page] there is shown below.',
 ** Copyright violation
 ** Duplicated file',
 'filedelete-edit-reasonlist'  => 'Edit delete reasons',
+'filedelete-maintenance'      => 'Deletion and restoration of files temporarily disabled during maintenance.',
 
 # MIME search
 'mimesearch'         => 'MIME search',
@@ -2494,7 +2526,7 @@ Supported protocols: <tt>$1</tt>',
 # Special:ActiveUsers
 'activeusers'          => 'Active users list',
 'activeusers-summary'  => '', # do not translate or duplicate this message to other languages
-'activeusers-count'    => '$1 recent {{PLURAL:$1|edit|edits}}',
+'activeusers-count'    => '$1 {{PLURAL:$1|edit|edits}} in the last {{PLURAL:$3|day|$3 days}}',
 'activeusers-from'     => 'Display users starting at:',
 'activeusers-noresult' => 'No users found.',
 
@@ -2594,17 +2626,14 @@ Future changes to this page and its associated talk page will be listed there, a
 'enotif_impersonal_salutation' => '{{SITENAME}} user',
 'changed'                      => 'changed',
 'created'                      => 'created',
-'deleted'                      => 'deleted',
-'enotif_deletedpagetext'       => 'This page is no longer available.',
 'enotif_subject'               => '{{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED by $PAGEEDITOR',
 'enotif_lastvisited'           => 'See $1 for all changes since your last visit.',
 'enotif_lastdiff'              => 'See $1 to view this change.',
 'enotif_anon_editor'           => 'anonymous user $1',
-'enotif_rev_info'              => 'See $1 for the current revision.',
 'enotif_body'                  => 'Dear $WATCHINGUSERNAME,
 
 
-The {{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED on $PAGEEDITDATEANDTIME by $PAGEEDITOR. $REVINFO
+The {{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED on $PAGEEDITDATE by $PAGEEDITOR, see $PAGETITLE_URL for the current revision.
 
 $NEWPAGE
 
@@ -2825,7 +2854,8 @@ $1',
 'sp-contributions-logs'           => 'logs',
 'sp-contributions-talk'           => 'talk',
 'sp-contributions-userrights'     => 'user rights management',
-'sp-contributions-blocked-notice' => 'This user is currently blocked. The latest block log entry is provided below for reference:',
+'sp-contributions-blocked-notice' => 'This user is currently blocked.
+The latest block log entry is provided below for reference:',
 'sp-contributions-search'         => 'Search for contributions',
 'sp-contributions-username'       => 'IP Address or username:',
 'sp-contributions-submit'         => 'Search',
@@ -2926,7 +2956,10 @@ See [[Special:IPBlockList|IP block list]] to review blocks.',
 'autoblocker'                     => 'Autoblocked because your IP address has been recently used by "[[User:$1|$1]]".
 The reason given for $1\'s block is: "$2"',
 'blocklogpage'                    => 'Block log',
-'blocklog-fulllog'                => 'Full block log',
+'blocklog-showlog'                => 'This user has been blocked previously.
+The block log is provided below for reference:',
+'blocklog-showsuppresslog'        => 'This user has been blocked and hidden previously.
+The suppress log is provided below for reference:',
 'blocklogentry'                   => 'blocked [[$1]] with an expiry time of $2 $3',
 'reblock-logentry'                => 'changed block settings for [[$1]] with an expiry time of $2 $3',
 'blocklogtext'                    => 'This is a log of user blocking and unblocking actions.
@@ -3329,10 +3362,12 @@ It allows adding a reason in the summary.',
 # Attribution
 'anonymous'        => 'Anonymous {{PLURAL:$1|user|users}} of {{SITENAME}}',
 'siteuser'         => '{{SITENAME}} user $1',
+'anonuser'         => '{{SITENAME}} anonymous user $1',
 'lastmodifiedatby' => 'This page was last modified $2, $1 by $3.',
 'othercontribs'    => 'Based on work by $1.',
 'others'           => 'others',
 'siteusers'        => '{{SITENAME}} {{PLURAL:$2|user|users}} $1',
+'anonusers'        => '{{SITENAME}} anonymous {{PLURAL:$2|user|users}} $1',
 'creditspage'      => 'Page credits',
 'nocredits'        => 'There is no credits info available for this page.',
 

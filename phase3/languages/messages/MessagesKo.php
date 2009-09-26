@@ -582,9 +582,9 @@ $1',
 당신은 URL을 잘못 입력하였거나, 잘못된 링크를 따라갔을 수 있습니다.
 이것은 {{SITENAME}}의 버그일 수도 있습니다.',
 'nosuchspecialpage' => '해당하는 특수기능이 없습니다.',
-'nospecialpagetext' => "<big>'''요청한 특수 문서가 존재하지 않습니다.'''</big>
+'nospecialpagetext' => '<strong>요청한 특수 문서가 존재하지 않습니다.</strong>
 
-특수 문서의 목록은 [[Special:SpecialPages|여기]]에서 볼 수 있습니다.",
+특수 문서의 목록은 [[Special:SpecialPages|여기]]에서 볼 수 있습니다.',
 
 # General errors
 'error'                => '오류',
@@ -673,14 +673,14 @@ $2',
 'login'                      => '로그인',
 'nav-login-createaccount'    => '로그인 / 계정 만들기',
 'loginprompt'                => '{{SITENAME}}에 로그인하려면 쿠키를 사용할 수 있어야 합니다.',
-'userlogin'                  => '로그인 / 계정 만들기',
+'userlogin'                  => '로그인',
 'logout'                     => '로그아웃',
 'userlogout'                 => '로그아웃',
 'notloggedin'                => '로그인하고 있지 않음',
-'nologin'                    => '계정이 없나요? $1.',
+'nologin'                    => "계정이 없나요? '''$1'''.",
 'nologinlink'                => '계정을 만들 수 있습니다',
 'createaccount'              => '계정 만들기',
-'gotaccount'                 => '계정이 이미 있다면, $1.',
+'gotaccount'                 => "계정이 이미 있다면, '''$1'''.",
 'gotaccountlink'             => '로그인하세요',
 'createaccountmail'          => '이메일로 보내기',
 'badretype'                  => '암호가 서로 다릅니다.',
@@ -729,7 +729,7 @@ $2',
 'createaccount-text'         => '{{SITENAME}}($4)에서 계정 이름 ‘$2’, 비밀번호 ‘$3’으로 계정을 만들었습니다. 로그인을 한 다음 암호를 바꾸어 주세요.
 
 계정을 잘못 만들었다면 이 메시지는 무시해도 됩니다.',
-'login-throttled'            => '로그인 하려는 계정의 비밀번호를 연속으로 잘못 입력하였습니다.
+'login-throttled'            => '로그인에 연속으로 실패하였습니다.
 잠시 후에 다시 시도해주세요.',
 'loginlanguagelabel'         => '언어: $1',
 
@@ -834,7 +834,11 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 여기는 계정을 만들지 않았거나 사용하고 있지 않은 비등록 사용자를 위한 토론 문서입니다. 비등록 사용자를 구별하기 위해서는 숫자로 된 IP 주소를 사용해야만 합니다. IP 주소는 여러 사용자가 공유할 수 있습니다. 자신과 관계없는 의견이 자신에게 남겨져 있어 불쾌하다고 생각하는 비등록 사용자는 [[Special:UserLogin/signup|계정을 만들고]] [[Special:UserLogin|로그인 하여]] 나중에 다른 비등록 사용자에게 줄 혼란을 줄일 수 있습니다.',
 'noarticletext'                    => '이런 문서는 없습니다.
 이 제목으로 [[Special:Search/{{PAGENAME}}|검색]]하거나, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 문서에 관련된 기록을 열람]하거나 문서를 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 편집]</span>할 수 있습니다.',
+'noarticletext-nopermission'       => '이 문서는 내용이 없습니다.
+[[Special:Search/{{PAGENAME}}|이 문서의 제목을 검색]]하거나
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 관련 로그 찾아보기] 할 수 있습니다.</span>.',
 'userpage-userdoesnotexist'        => '‘$1’ 계정은 등록되어 있지 않습니다. 이 문서를 만들거나 편집하려면 계정이 존재 하는지 확인해주세요.',
+'userpage-userdoesnotexist-view'   => '"$1" 사용자 계정은 등록되지 않았습니다.',
 'clearyourcache'                   => "'''참고 - 설정을 저장한 후에 바뀐 점을 확인하기 위해서는 브라우저의 캐시를 갱신해야 합니다.'''
 
 '''모질라 / 파이어폭스 / 사파리''': Shift 키를 누르면서 새로 고침을 클릭하거나, Ctrl-F5 또는 Ctrl-R 을 입력 (매킨토시에서는 Command-R); '''컨커러''': 새로고침을 클릭하거나 F5를 입력; '''오페라''': 도구→설정에서 캐시를 비움; '''인터넷 익스플로러''': Ctrl 키를 누르면서 새로 고침을 클릭하거나, Ctrl-F5를 입력.",
@@ -889,7 +893,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'titleprotectedwarning'            => "'''경고: 이 문서는 잠겨 있어, 문서를 생성하려면 [[Special:ListGroupRights|특정 권한]]이 필요합니다.'''",
 'templatesused'                    => '이 문서에서 사용한 틀:',
 'templatesusedpreview'             => '이 미리 보기에서 사용하고 있는 틀:',
-'templatesusedsection'             => '이 부분에서 사용하고 있는 틀:',
+'templatesusedsection'             => '이 절에서 사용하고 있는 틀:',
 'template-protected'               => '(보호됨)',
 'template-semiprotected'           => '(준보호됨)',
 'hiddencategories'                 => '이 문서는 다음 숨은 분류 $1 개에 속해 있습니다:',
@@ -1064,6 +1068,7 @@ $1",
 'revdelete-otherreason'       => '다른 이유/부가적인 이유',
 'revdelete-reasonotherlist'   => '다른 이유',
 'revdelete-edit-reasonlist'   => '삭제 이유 편집',
+'revdelete-offender'          => '판 작성자:',
 
 # Suppression log
 'suppressionlog'     => '숨기기 기록',
@@ -1183,7 +1188,7 @@ $1",
 'prevn-title'                      => '이전 결과 $1개',
 'nextn-title'                      => '다음 결과 $1개',
 'shown-title'                      => '매 쪽마다 결과 $1 개씩 보이기',
-'viewprevnext'                     => '보기: ($1) ($2) ($3).',
+'viewprevnext'                     => '보기: ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => '검색 설정',
 'searchmenu-exists'                => "'''이 위키에 \"[[\$1]]\"의 이름을 가진 문서가 있습니다.'''",
 'searchmenu-new'                   => "'''이 위키에 \"[[:\$1]]\" 문서를 만드십시오!'''",
@@ -1257,7 +1262,7 @@ $1",
 'prefs-watchlist-days-max'      => '(최대 7일)',
 'prefs-watchlist-edits'         => '주시문서 목록에서 볼 편집 수:',
 'prefs-watchlist-edits-max'     => '(최대 1000개)',
-'prefs-watchlist-token'         => '주시문서 토큰',
+'prefs-watchlist-token'         => '주시문서 토큰:',
 'prefs-misc'                    => '기타',
 'prefs-resetpass'               => '비밀번호 바꾸기',
 'prefs-email'                   => '이메일 설정',
@@ -1403,7 +1408,7 @@ $1",
 'right-movefile'              => '파일을 옮기기',
 'right-suppressredirect'      => '문서 이동할 때 옛날 이름으로 된 넘겨주기를 남기지 않기',
 'right-upload'                => '파일 올리기',
-'right-reupload'              => '이미 존재하는 파일 덮어쓰기',
+'right-reupload'              => '이미 존재하는 파일을 다시 업로드',
 'right-reupload-own'          => '자신이 이미 올린 파일 덮어쓰기',
 'right-reupload-shared'       => '공용의 파일을 무시하고 로컬에서 파일 올리기',
 'right-upload_by_url'         => 'URL 주소에서 파일 올리기',
@@ -1449,6 +1454,7 @@ $1",
 'right-reset-passwords'       => '다른 사용자의 비밀번호를 변경',
 'right-override-export-depth' => '5단계로 링크된 문서를 포함하여 문서를 내보내기',
 'right-versiondetail'         => '소프트웨어 버전에 대한 자세한 정보를 보기',
+'right-root'                  => '이 위키에서 모든 권한을 행사',
 
 # User rights log
 'rightslog'      => '사용자 권한 기록',
@@ -1500,7 +1506,7 @@ $1",
 'recentchanges-feed-description'    => '위키의 최근 바뀜',
 'recentchanges-label-legend'        => '범례: $1.',
 'recentchanges-legend-newpage'      => '$1 - 새 문서',
-'recentchanges-label-newpage'       => '새 문서가 작성되었습니다',
+'recentchanges-label-newpage'       => '새로운 문서',
 'recentchanges-legend-minor'        => '$1 - 사소한 편집',
 'recentchanges-label-minor'         => '사소한 편집',
 'recentchanges-legend-bot'          => '$1 - 봇 편집',
@@ -1588,17 +1594,19 @@ $1",
 'emptyfile'                   => '올리려는 파일이 빈 파일입니다.
 파일 이름을 잘못 입력했을 수도 있습니다.
 올리려는 파일을 다시 한 번 확인해 주시기 바랍니다.',
-'fileexists'                  => "같은 이름의 파일이 이미 있습니다. 파일을 바꾸고 싶지 않다면 '''<tt>$1</tt>''' 파일을 확인해 주세요.",
-'filepageexists'              => "이 파일의 설명 문서가 '''<tt>$1</tt>'''에 존재하지만, 이 이름을 가진 파일이 존재하지 않습니다.
+'fileexists'                  => "같은 이름의 파일이 이미 있습니다.
+파일을 바꾸고 싶지 않다면 '''<tt>[[:$1]]</tt>''' 파일을 확인해 주세요.
+[[$1|thumb]]",
+'filepageexists'              => "이 파일의 설명 문서가 '''<tt>[[:$1]]</tt>'''에 존재하지만, 이 이름을 가진 파일이 존재하지 않습니다.
 당신이 입력한 설명은 설명 문서에 반영되지 않을 것입니다.
-당신의 설명을 반영시키려면, 직접 편집하셔야 합니다.",
-'fileexists-extension'        => "비슷한 이름의 파일이 존재합니다:<br />
-올리려는 파일 이름: '''<tt>$1</tt>'''<br />
-존재하는 파일 이름: '''<tt>$2</tt>'''<br />
+당신의 설명을 반영시키려면, 직접 편집하셔야 합니다.
+[[$1|thumb]]",
+'fileexists-extension'        => "비슷한 이름의 파일이 존재합니다: [[$2|thumb]]
+* 올리려는 파일 이름: '''<tt>[[:$1]]</tt>'''
+* 존재하는 파일 이름: '''<tt>[[:$2]]</tt>'''
 다른 이름으로 시도해 주세요.",
-'fileexists-thumb'            => "<center>'''존재하는 파일'''</center>",
-'fileexists-thumbnail-yes'    => "이 파일은 원본 그림이 아닌, 다른 그림의 크기를 줄인 섬네일 파일인 것 같습니다.
-'''<tt>$1</tt>''' 파일을 확인해주세요.<br />
+'fileexists-thumbnail-yes'    => "이 파일은 원본 그림이 아닌, 다른 그림의 크기를 줄인 섬네일 파일인 것 같습니다. [[$1|thumb]]
+'''<tt>[[:$1]]</tt>''' 파일을 확인해주세요.
 해당 파일이 현재 올리려는 파일과 같다면, 더 작은 크기의 그림을 올릴 필요는 없습니다.",
 'file-thumbnail-no'           => "파일 이름이 '''<tt>$1</tt>'''으로 시작합니다.
 이 파일은 원본 그림이 아닌, 다른 그림의 크기를 줄인 섬네일 파일인 것 같습니다.
@@ -1656,6 +1664,17 @@ PICT # 기타
 'upload-too-many-redirects' => 'URL이 너무 많은 넘겨주기에 연결되어 있습니다.',
 'upload-unknown-size'       => '크기를 알 수 없음',
 'upload-http-error'         => 'HTTP 오류 발생: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => '접근 거부됨',
+'img-auth-nopathinfo'   => 'PATH_INFO 가 빠졌습니다.
+서버에 이 정보가 설정되어 있지 않습니다.
+CGI 기반이거나 img_auth 를 지원하지 않을 수 있습니다.
+http://www.mediawiki.org/wiki/Manual:Image_Authorization 를 참고하세요.',
+'img-auth-badtitle'     => '"$1"에서 바른 제목을 만들 수 없습니다.',
+'img-auth-nofile'       => '"$1" 파일이 없습니다.',
+'img-auth-isdir'        => '"$1" 디렉토리에 접근을 시도했습니다.
+파일에만 접근할 수 있습니다.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL 접근 불가',
@@ -2046,16 +2065,13 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'enotif_impersonal_salutation' => '{{SITENAME}} 사용자',
 'changed'                      => '바꾸',
 'created'                      => '만들',
-'deleted'                      => '삭제됨',
-'enotif_deletedpagetext'       => '이 문서는 더 이상 사용할 수 없습니다.',
 'enotif_subject'               => '{{SITENAME}}에서 $PAGEEDITOR 사용자가 $PAGETITLE 문서를 $CHANGEDORCREATED었습니다.',
 'enotif_lastvisited'           => '마지막으로 방문한 뒤 생긴 모든 변경 사항을 보려면 $1을(를) 보십시오.',
 'enotif_lastdiff'              => '이 바뀐 내용을 보려면 $1을 보십시오.',
 'enotif_anon_editor'           => '익명 사용자 $1',
-'enotif_rev_info'              => '현재의 문서는 $1 에서 볼 수 있습니다.',
 'enotif_body'                  => '$WATCHINGUSERNAME님,
 
-{{SITENAME}}의 $PAGETITLE 문서를 $PAGEEDITDATEANDTIME에 $PAGEEDITOR님이 $CHANGEDORCREATED었습니다. $REVINFO
+{{SITENAME}}의 $PAGETITLE 문서를 $PAGEEDITDATE에 $PAGEEDITOR님이 $CHANGEDORCREATED었습니다. 현재의 문서는 $PAGETITLE_URL 에서 볼 수 있습니다.
 
 $NEWPAGE
 
@@ -2212,7 +2228,7 @@ $NEWPAGE
 'undeletereset'                => '초기화',
 'undeleteinvert'               => '선택 반전',
 'undeletecomment'              => '설명:',
-'undeletedarticle'             => '"[[$1]]" 복구됨',
+'undeletedarticle'             => '"[[$1]]" 문서를 복구하였습니다.',
 'undeletedrevisions'           => '판 $1개를 복구했습니다',
 'undeletedrevisions-files'     => '판 $1개와 파일 $2개를 복구했습니다.',
 'undeletedfiles'               => '파일 $1개를 복구했습니다',
@@ -2253,17 +2269,18 @@ $1',
 'month'               => '월:',
 'year'                => '연도:',
 
-'sp-contributions-newbies'       => '새 사용자의 기여만 보기',
-'sp-contributions-newbies-sub'   => '새 사용자들의 기여',
-'sp-contributions-newbies-title' => '새 사용자의 기여',
-'sp-contributions-blocklog'      => '차단 기록',
-'sp-contributions-deleted'       => '삭제된 기여 목록',
-'sp-contributions-logs'          => '기록',
-'sp-contributions-talk'          => '토론',
-'sp-contributions-userrights'    => '사용자 권한 관리',
-'sp-contributions-search'        => '기여 검색',
-'sp-contributions-username'      => 'IP 주소 혹은 계정 이름:',
-'sp-contributions-submit'        => '찾기',
+'sp-contributions-newbies'        => '새 사용자의 기여만 보기',
+'sp-contributions-newbies-sub'    => '새 사용자들의 기여',
+'sp-contributions-newbies-title'  => '새 사용자의 기여',
+'sp-contributions-blocklog'       => '차단 기록',
+'sp-contributions-deleted'        => '삭제된 기여 목록',
+'sp-contributions-logs'           => '기록',
+'sp-contributions-talk'           => '토론',
+'sp-contributions-userrights'     => '사용자 권한 관리',
+'sp-contributions-blocked-notice' => '이 사용자는 현재 차단되어 있습니다. 해당 사용자의 차단 기록은 다음과 같습니다.',
+'sp-contributions-search'         => '기여 검색',
+'sp-contributions-username'       => 'IP 주소 혹은 계정 이름:',
+'sp-contributions-submit'         => '찾기',
 
 # What links here
 'whatlinkshere'            => '여기를 가리키는 문서',
@@ -2354,7 +2371,8 @@ $1',
 'autoblocker'                     => '당신의 IP 주소는 최근에 "[[User:$1|$1]]" 사용자가 사용하였기 때문에 자동으로 차단되었습니다.
 $1 사용자가 차단된 이유는 다음과 같습니다: "$2"',
 'blocklogpage'                    => '차단 기록',
-'blocklog-fulllog'                => '전체 차단 기록',
+'blocklog-showlog'                => '이 사용자는 과거에 차단된 기록이 있습니다. 해당 사용자의 차단 기록은 다음과 같습니다.',
+'blocklog-showsuppresslog'        => '이 사용자는 과거에 차단된 적이 있으며, 그 기록이 숨겨져 있습니다. 해당 사용자의 차단 기록은 다음과 같습니다.',
 'blocklogentry'                   => '[[$1]] 사용자를 $2 차단함 $3',
 'reblock-logentry'                => '[[$1]] 사용자의 차단 기간을 $2(으)로 변경 $3',
 'blocklogtext'                    => '이 목록은 사용자 차단/차단 해제 기록입니다. 자동으로 차단된 IP 주소는 여기에 나오지 않습니다. [[Special:IPBlockList|여기]]에서 현재 차단된 사용자 목록을 볼 수 있습니다.',
@@ -3311,8 +3329,12 @@ $1',
 'htmlform-selectorother-other' => '기타',
 
 # Add categories per AJAX
-'ajax-add-category'        => '분류 추가',
-'ajax-add-category-submit' => '추가',
-'ajax-error-dismiss'       => '확인',
+'ajax-add-category'          => '분류 추가',
+'ajax-add-category-submit'   => '추가',
+'ajax-confirm-save'          => '저장',
+'ajax-error-title'           => '오류',
+'ajax-error-dismiss'         => '확인',
+'ajax-remove-category-error' => '이 분류를 지울 수 없습니다.
+분류가 틀로 추가되었을 수 있습니다.',
 
 );

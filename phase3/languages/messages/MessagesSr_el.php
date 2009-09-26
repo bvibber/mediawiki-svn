@@ -518,9 +518,9 @@ $messages = array(
 'nosuchactiontext'  => 'Akciju navedenu u URL-u viki softver
 nije prepoznao.',
 'nosuchspecialpage' => 'Nema takve posebne stranice',
-'nospecialpagetext' => "<big>'''Tražili ste nepostojeću posebnu stranicu.'''</big>
+'nospecialpagetext' => '<strong>Tražili ste nepostojeću posebnu stranicu.</strong>
 
-Spisak svih posebnih stranica se može naći na [[Special:SpecialPages|{{int:specialpages}}]].",
+Spisak svih posebnih stranica se može naći na [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Greška',
@@ -612,14 +612,14 @@ Ne zaboravite da prilagodite sebi svoja {{SITENAME}} podešavanja.',
 'login'                      => 'Prijavi se',
 'nav-login-createaccount'    => 'Prijavi se / registruj se',
 'loginprompt'                => "Morate da imate omogućene kolačiće (''cookies'') da biste se prijavili na {{SITENAME}}.",
-'userlogin'                  => 'Registruj se / Prijavi se',
+'userlogin'                  => 'Prijavi se',
 'logout'                     => 'Odjavi se',
 'userlogout'                 => 'Odjavi se',
 'notloggedin'                => 'Niste prijavljeni',
-'nologin'                    => 'Nemate nalog? $1.',
+'nologin'                    => "Nemate nalog? '''$1'''.",
 'nologinlink'                => 'Napravite nalog',
 'createaccount'              => 'Napravi nalog',
-'gotaccount'                 => 'Već imate nalog? $1.',
+'gotaccount'                 => "Već imate nalog? '''$1'''.",
 'gotaccountlink'             => 'Prijavi se',
 'createaccountmail'          => 'e-poštom',
 'badretype'                  => 'Lozinke koje ste uneli se ne poklapaju.',
@@ -1087,7 +1087,7 @@ Ostali administratori na ovoj Vikipediji će i dalje imati mogućnost da vide sk
 'prevn-title'                      => '{{PLURAL:$1|Prethodni $1 rezultat|Prethodnih $1 rezultata}}',
 'nextn-title'                      => '{{PLURAL:$1|Sledeći $1 rezultat|Sledećih $1 rezultata}}',
 'shown-title'                      => 'Prikaži $1 {{PLURAL:$1|rezultat|rezultata}} po strani',
-'viewprevnext'                     => 'Pogledaj ($1) ($2) ($3).',
+'viewprevnext'                     => 'Pogledaj ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Opcije pretrage',
 'searchmenu-exists'                => "'''Već postoji članak pod imenom \"[[:\$1]]\" na ovom Vikiju'''",
 'searchmenu-new'                   => "'''Napravi članak \"[[:\$1]]\" na ovom Vikiju!'''",
@@ -1458,14 +1458,16 @@ Poželjni {{PLURAL:\$3|tip fajla je|tipovi fajlova su}} \$2.",
 'large-file'                  => 'Preporučljivo je da fajlovi ne budu veći od $1; ovaj fajl je $2.',
 'largefileserver'             => 'Ovaj fajl je veći nego što je podešeno da server dozvoli.',
 'emptyfile'                   => 'Fajl koji ste poslali deluje da je prazan. Ovo je moguće zbog greške u imenu fajla. Molimo proverite da li stvarno želite da pošaljete ovaj fajl.',
-'fileexists'                  => "Fajl sa ovim imenom već postoji. Molimo proverite '''<tt>$1</tt>''' ako niste sigurni da li želite da ga promenite.",
-'filepageexists'              => "Strana za opis ovog fajla je već napravljena u vreme '''<tt>$1</tt>''', ali ne postoji fajl s tim imenom. Opis koji uneseš se neće pojaviti na strani za opis. Da bi se video, moraćeš da izmeniš stranu ručno.",
-'fileexists-extension'        => "Fajl sa sličnim imenom već postoji:<br />
-Ime fajla koji šaljete: '''<tt>$1</tt>'''<br />
-Ime postojećeg fajla: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Fajl sa ovim imenom već postoji.
+Molimo proverite '''<tt>[[:$1]]</tt>''' ako niste sigurni da li želite da ga promenite.
+[[$1|thumb]]",
+'filepageexists'              => "Strana za opis ovog fajla je već napravljena u vreme '''<tt>[[:$1]]</tt>''', ali ne postoji fajl s tim imenom. Opis koji uneseš se neće pojaviti na strani za opis. Da bi se video, moraćeš da izmeniš stranu ručno.",
+'fileexists-extension'        => "Fajl sa sličnim imenom već postoji: [[$2|thumb]]
+* Ime fajla koji šaljete: '''<tt>[[:$1]]</tt>'''
+* Ime postojećeg fajla: '''<tt>[[:$2]]</tt>'''
 Molimo izaberite drugo ime.",
-'fileexists-thumb'            => "<center>'''Postojeći fajl'''</center>",
-'fileexists-thumbnail-yes'    => "Ovaj fajl je najverovatnije umanjena verzija slike. Molimo vas proverite fajl '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Ovaj fajl je najverovatnije umanjena verzija slike. [[$1|thumb]]
+Molimo vas proverite fajl '''<tt>[[:$1]]</tt>'''.
 Ukoliko je dati fajl ista slika ili originalna slika, nije potrebno da šaljete dodatno umanjenu verziju iste.",
 'file-thumbnail-no'           => "Fajl počinje sa '''<tt>$1</tt>'''. 
 Pretpostavlja se da je ovo umanjena verzija slike.
@@ -1875,7 +1877,7 @@ Ako kasnije želite da uklonite stranicu sa vašeg spiska nadgledanja, kliknite 
 'enotif_anon_editor'           => 'anonimni korisnik $1',
 'enotif_body'                  => 'Dragi $WATCHINGUSERNAME,
 
-{{SITENAME}} stranicaa $PAGETITLE je bila $CHANGEDORCREATED ($PAGEEDITDATEANDTIME) od strane $PAGEEDITOR,
+{{SITENAME}} stranicaa $PAGETITLE je bila $CHANGEDORCREATED ($PAGEEDITDATE) od strane $PAGEEDITOR,
 pogledajte $PAGETITLE_URL za trenutnu verziju.
 
 $NEWPAGE
@@ -2186,7 +2188,6 @@ ranije blokiranoj IP adresi ili korisničkom imenu.',
 'contribslink'                    => 'prilozi',
 'autoblocker'                     => 'Automatski ste blokirani jer je vašu IP adresu skoro koristio "[[User:$1|$1]]". Razlog za blokiranje korisnika $1 je: "\'\'\'$2\'\'\'".',
 'blocklogpage'                    => 'istorija blokiranja',
-'blocklog-fulllog'                => 'Puna istorija blokiranja',
 'blocklogentry'                   => 'je blokirao "[[$1]]" sa vremenom isticanja blokade od $2',
 'reblock-logentry'                => 'promenjena podešavanja bloka za [[$1]] sa vremenom isteka $2 ($3)',
 'blocklogtext'                    => 'Ovo je istorija blokiranja i odblokiranja korisnika. Automatski

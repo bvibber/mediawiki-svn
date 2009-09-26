@@ -47,7 +47,7 @@ class UserrightsPage extends SpecialPage {
 	public function execute( $par ) {
 		// If the visitor doesn't have permissions to assign or remove
 		// any groups, it's a bit silly to give them the user search prompt.
-		global $wgUser, $wgRequest;
+		global $wgUser, $wgRequest, $wgOut;
 
 		if( $par ) {
 			$this->mTarget = $par;
@@ -272,7 +272,7 @@ class UserrightsPage extends SpecialPage {
 	 * Side effects: error output for invalid access
 	 * @return mixed User, UserRightsProxy, or WikiErrorMsg
 	 */
-	public static function fetchUser( $username ) {
+	public function fetchUser( $username ) {
 		global $wgUser, $wgUserrightsInterwikiDelimiter;
 
 		$parts = explode( $wgUserrightsInterwikiDelimiter, $username );

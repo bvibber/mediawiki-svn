@@ -419,9 +419,9 @@ $messages = array(
 'nosuchaction'      => 'Pa gen bagay konsa',
 'nosuchactiontext'  => 'Wiki-a pa rekonèt Aksyon ki espesifye pa URL la',
 'nosuchspecialpage' => 'Pa gen paj especial konsa',
-'nospecialpagetext' => "<big>'''Paj espesial ou demande-a envalid.'''</big>
+'nospecialpagetext' => '<strong>Paj espesial ou demande-a envalid.</strong>
 
-Ou ka jwenn yon lis paj espesial ki valid yo la [[Special:SpecialPages|{{int:specialpages}}]].",
+Ou ka jwenn yon lis paj espesial ki valid yo la [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Erè',
@@ -513,10 +513,10 @@ Kont ou an kreye. Pa bliye pèsonalize l nan  [[Special:Preferences|preferans ou
 'logout'                     => 'Dekonekte ou',
 'userlogout'                 => 'Dekoneksyon',
 'notloggedin'                => 'Ou pa konekte',
-'nologin'                    => 'Ou pa genyen yon kont ? $1.',
+'nologin'                    => "Ou pa genyen yon kont ? '''$1'''.",
 'nologinlink'                => 'Kreye yon kont',
 'createaccount'              => 'Kreye yon kont',
-'gotaccount'                 => 'Ou ja genyen yon kont ? $1.',
+'gotaccount'                 => "Ou ja genyen yon kont ? '''$1'''.",
 'gotaccountlink'             => 'Idantifye ou',
 'createaccountmail'          => 'pa imèl',
 'badretype'                  => 'Mopas ou bay yo pa parèy ditou.',
@@ -802,7 +802,7 @@ Sistèm an ap montre, anba paj sa, jounal tout vèsyon paj an ki efase pou sèvi
 'notextmatches'             => 'Pa genyen pyès tèks nan paj yo ki ap koresponn ak rechèch ou fè a',
 'prevn'                     => '{{PLURAL:$1|$1}} anvan yo',
 'nextn'                     => '{{PLURAL:$1|$1}} swivan yo',
-'viewprevnext'              => 'Wè ($1) ($2) ($3).',
+'viewprevnext'              => 'Wè ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'            => 'Help:Èd',
 'search-result-size'        => '$1 ({{PLURAL:$2| mo|$2 mo yo}})',
 'search-redirect'           => '(redireksyon depi $1)',

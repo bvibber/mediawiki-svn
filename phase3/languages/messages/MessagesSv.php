@@ -527,7 +527,7 @@ $messages = array(
 'redirectedfrom'    => '(Omdirigerad från $1)',
 'redirectpagesub'   => 'Omdirigeringssida',
 'lastmodifiedat'    => 'Sidan ändrades senast den $1 kl. $2.',
-'viewcount'         => 'Denna sidan har visats {{PLURAL:$1|en gång|$1 gånger}}.',
+'viewcount'         => 'Den här sidan har visats {{PLURAL:$1|en gång|$1 gånger}}.',
 'protectedpage'     => 'Skrivskyddad sida',
 'jumpto'            => 'Hoppa till:',
 'jumptonavigation'  => 'navigering',
@@ -610,9 +610,9 @@ $1',
 Du kan ha stavat URL:en fel, eller följt en felaktig länk.
 Det kan också bero på en bug i {{SITENAME}}.',
 'nosuchspecialpage' => 'Någon sådan specialsida finns inte',
-'nospecialpagetext' => "<big>'''Du har begärt en specialsida som inte finns.'''</big>
+'nospecialpagetext' => '<strong>Du har begärt en specialsida som inte finns.</strong>
 
-I [[Special:SpecialPages|listan över specialsidor]] kan du se vilka specialsidor som finns.",
+I [[Special:SpecialPages|listan över specialsidor]] kan du se vilka specialsidor som finns.',
 
 # General errors
 'error'                => 'Fel',
@@ -700,14 +700,14 @@ Glöm inte att justera dina [[Special:Preferences|{{SITENAME}}-inställningar]].
 'login'                      => 'Logga in',
 'nav-login-createaccount'    => 'Logga in / skapa konto',
 'loginprompt'                => 'Du måste tillåta cookies för att logga in på {{SITENAME}}.',
-'userlogin'                  => 'Logga in / skapa konto',
+'userlogin'                  => 'Logga in',
 'logout'                     => 'Logga ut',
 'userlogout'                 => 'Logga ut',
 'notloggedin'                => 'Inte inloggad',
-'nologin'                    => 'Har du inget användarkonto? $1.',
+'nologin'                    => "Har du inget användarkonto? '''$1'''.",
 'nologinlink'                => 'Skapa ett användarkonto',
 'createaccount'              => 'Skapa ett konto',
-'gotaccount'                 => 'Har du redan ett användarkonto? $1.',
+'gotaccount'                 => "Har du redan ett användarkonto? '''$1'''.",
 'gotaccountlink'             => 'Logga in',
 'createaccountmail'          => 'med e-post',
 'badretype'                  => 'De lösenord du uppgett överenstämmer inte med varandra.',
@@ -1222,7 +1222,7 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 'prevn-title'                      => 'Föregående $1 {{PLURAL:$1|resultat|resultat}}',
 'nextn-title'                      => 'Nästa $1 {{PLURAL:$1|resultat|resultat}}',
 'shown-title'                      => 'Visa $1 {{PLURAL:$1|resultat|resultat}} per sida',
-'viewprevnext'                     => 'Visa ($1) ($2) ($3)',
+'viewprevnext'                     => 'Visa ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Sökalternativ',
 'searchmenu-exists'                => "'''Det finns en sida med namnet \"[[:\$1]]\" på denna wiki'''",
 'searchmenu-new'                   => "'''Skapa sidan \"[[:\$1]]\" på denna wiki!'''",
@@ -1632,14 +1632,16 @@ Se [[Special:NewFiles|galleriet över nya filer]] för en mer visuell översikt.
 denna fil är $2.',
 'largefileserver'             => 'Denna fil är större än vad servern ställts in att tillåta.',
 'emptyfile'                   => 'Filen du laddade upp verkar vara tom; felet kan bero på ett stavfel i filnamnet. Kontrollera om du verkligen vill ladda upp denna fil.',
-'fileexists'                  => "Det finns redan en fil med detta namn. Titta på '''<tt>$1</tt>''', såvida du inte är säker på att du vill ändra den.",
-'filepageexists'              => "Beskrivningssidan för denna fil har redan skapats på '''<tt>$1</tt>''', men just nu finns ingen fil med detta namn. Den sammanfattning du skriver här kommer inte visas på beskrivningssidan. För att din sammanfattning ska visas där, så måste du redigera beskrivningssidan manuellt.",
-'fileexists-extension'        => "En fil med ett liknande namn finns redan:<br />
-Namn på den fil du försöker ladda upp: '''<tt>$1</tt>'''<br />
-Namn på filen som redan finns: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Det finns redan en fil med detta namn.
+Titta på '''<tt>[[:$1]]</tt>''', såvida du inte är säker på att du vill ändra den.
+[[$1|thumb]]",
+'filepageexists'              => "Beskrivningssidan för denna fil har redan skapats på '''<tt>[[:$1]]</tt>''', men just nu finns ingen fil med detta namn. Den sammanfattning du skriver här kommer inte visas på beskrivningssidan. För att din sammanfattning ska visas där, så måste du redigera beskrivningssidan manuellt.",
+'fileexists-extension'        => "En fil med ett liknande namn finns redan: [[$2|thumb]]
+* Namn på den fil du försöker ladda upp: '''<tt>[[:$1]]</tt>'''
+* Namn på filen som redan finns: '''<tt>[[:$2]]</tt>'''
 Den enda skillnaden är versaliseringen av filnamnsändelsen. Var vänlig kontrollera om filerna är identiska.",
-'fileexists-thumb'            => "<center>'''Den existerande filen'''</center>",
-'fileexists-thumbnail-yes'    => "Filen verkar vara en bild med förminskad storlek ''(miniatyrbild)''. Var vänlig kontrollera filen '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Filen verkar vara en bild med förminskad storlek ''(miniatyrbild)''. [[$1|thumb]]
+Var vänlig kontrollera filen '''<tt>[[:$1]]</tt>'''.
 Om det är samma fil i originalstorlek så är det inte nödvändigt att ladda upp en extra miniatyrbild.",
 'file-thumbnail-no'           => "Filnamnet börjar med '''<tt>$1</tt>'''.
 Det verkar vara en bild med förminskad storlek ''(miniatyrbild)''.
@@ -2086,14 +2088,13 @@ Framtida ändringar av den här sidan och dess diskussionssida kommer att listas
 'enotif_impersonal_salutation' => '{{SITENAME}}användare',
 'changed'                      => 'ändrad',
 'created'                      => 'skapad',
-'deleted'                      => 'raderad',
 'enotif_subject'               => '{{SITENAME}}-sidan $PAGETITLE har blivit $CHANGEDORCREATED av $PAGEEDITOR',
 'enotif_lastvisited'           => 'På $1 återfinner du alla ändringar sedan ditt senaste besök.',
 'enotif_lastdiff'              => 'Se denna ändring på $1',
 'enotif_anon_editor'           => 'anonym användare $1',
 'enotif_body'                  => '$WATCHINGUSERNAME,
 
-{{SITENAME}}-sidan $PAGETITLE har blivit $CHANGEDORCREATED $PAGEEDITDATEANDTIME av $PAGEEDITOR; den nuvarande versionen hittar du på $PAGETITLE_URL.
+{{SITENAME}}-sidan $PAGETITLE har blivit $CHANGEDORCREATED $PAGEEDITDATE av $PAGEEDITOR; se $PAGETITLE_URL för den nuvarande versionen.
 
 $NEWPAGE
 
@@ -2106,13 +2107,13 @@ wiki: $PAGEEDITOR_WIKI
 Såvida du inte besöker sidan, kommer du inte att få flera meddelanden om ändringar av sidan.
 Du kan också ta bort flaggan för meddelanden om ändringar på alla sidor i din bevakningslista.
 
-Hälsningar från {{SITENAME}}s meddelandesystem
+             Hälsningar från {{SITENAME}}s meddelandesystem
 
 --
 För att ändra inställningarna i din bevakningslista, besök
 {{fullurl:{{#special:Watchlist}}/edit}}
 
-Feedback och hjälp:
+Feedback och ytterligare hjälp:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete
@@ -2392,7 +2393,6 @@ Ange orsak nedan (exempelvis genom att nämna sidor som blivit vandaliserade).',
 'autoblocker'                     => 'Automatisk blockerad eftersom din IP-adress nyligen använts av "[[User:$1|$1]]".
 Motiveringen som angavs för blockeringen av $1 var: "$2".',
 'blocklogpage'                    => 'Blockeringslogg',
-'blocklog-fulllog'                => 'Fullständig blockeringslogg',
 'blocklogentry'                   => 'blockerade [[$1]] med blockeringstid på $2 $3',
 'reblock-logentry'                => 'ändrade blockeringsinställningar för [[$1]] med en varaktighet på $2 $3',
 'blocklogtext'                    => 'Detta är en logg över blockeringar och avblockeringar.

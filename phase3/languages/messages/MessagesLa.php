@@ -446,9 +446,9 @@ Vide [[Special:Version|paginam versionis]].',
 'nosuchaction'      => 'Actio non est',
 'nosuchactiontext'  => 'Actio in URL designata non agnoscitur a hoc vici.',
 'nosuchspecialpage' => 'Pagina specialis non est',
-'nospecialpagetext' => "<big>'''Paginam specialem invalidam petivisti.'''</big>
+'nospecialpagetext' => '<strong>Paginam specialem invalidam petivisti.</strong>
 
-Pro indice paginarum specialum validarum, vide [[Special:SpecialPages|{{int:specialpages}}]].",
+Pro indice paginarum specialum validarum, vide [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Erratum',
@@ -509,14 +509,14 @@ Noli oblivisci [[Special:Preferences|praeferentias tuas]] apud {{grammar:accusat
 'login'                      => 'Conventum aperire',
 'nav-login-createaccount'    => 'Conventum aperire / conventum creare',
 'loginprompt'                => 'Cookies potestatem facere debes ut conventum aperire.',
-'userlogin'                  => 'Conventum aperire / conventum creare',
+'userlogin'                  => 'Conventum aperire',
 'logout'                     => 'Conventum concludere',
 'userlogout'                 => 'Conventum concludere',
 'notloggedin'                => 'Conventum non est apertum',
-'nologin'                    => 'Num rationem non habes? $1.',
+'nologin'                    => "Num rationem non habes? '''$1'''.",
 'nologinlink'                => 'Eam crea',
 'createaccount'              => 'Rationem novam creare',
-'gotaccount'                 => 'Habesne iam rationem? $1.',
+'gotaccount'                 => "Habesne iam rationem? '''$1'''.",
 'gotaccountlink'             => 'Conventum aperi',
 'createaccountmail'          => 'ab inscriptione electronica',
 'badretype'                  => 'Tesserae quas scripsisti inter se non congruunt.',
@@ -883,7 +883,7 @@ Titulus: '''({{int:cur}})''' = dissimilis ab emendatione novissima,
 'prevn-title'                    => '{{PLURAL:$1|Eventus prior|Eventus priores}} $1',
 'nextn-title'                    => '{{PLURAL:$1|Eventus proximus|Eventus proximi}} $1',
 'shown-title'                    => 'Monstrare $1 {{PLURAL:$1|eventum|eventus}} per paginam',
-'viewprevnext'                   => 'Videre ($1) ($2) ($3).',
+'viewprevnext'                   => 'Videre ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'              => 'Optiones',
 'searchmenu-exists'              => "'''Iam est pagina \"[[:\$1]]\"'''",
 'searchmenu-new'                 => "'''Creare paginam \"[[:\$1]]\"'''",
@@ -1214,7 +1214,6 @@ Vide etiam [[Special:NewFiles|pinacothecam fasciculorum recentissimorum imposito
 'badfilename'         => 'Nomen fasciculi ad "$1" mutatum est.',
 'filetype-missing'    => 'Fasciculus extensionem non habet (sicut e.&nbsp;g. ".jpg").',
 'large-file'          => 'Suasum est ut fasciculi $1 magnitudine non excedant; magnitudo huius fasciculi est $2.',
-'fileexists-thumb'    => "<center>'''Imago quae iam est'''</center>",
 'successfulupload'    => 'Impositum est perfectum',
 'uploadwarning'       => 'Monitus imponendi',
 'savefile'            => 'Servare fasciculum',
@@ -1482,7 +1481,7 @@ Vide etiam [[Special:WantedCategories|categorias desideratas]].',
 
 # Special:ActiveUsers
 'activeusers'          => 'Index usorum activorum',
-'activeusers-count'    => '{{PLURAL:$1|una recensio recens|$1 recensiones recentes}}',
+'activeusers-count'    => '{{PLURAL:$1|una recensio recens|$1 recensiones recentes}} {{PLURAL:$3|die proximo|in diebus $3 proximis}}',
 'activeusers-noresult' => 'Nullus usor inventus.',
 
 # Special:Log/newusers
@@ -1573,7 +1572,7 @@ Si paginam ex indice paginarum custoditarum removere vis, imprime \"decustodire\
 'enotif_body'                  => '
 Salve $WATCHINGUSERNAME,
 
-Pagina {{grammar:genitive|{{SITENAME}}}} $PAGETITLE ab $PAGEEDITOR die $PAGEEDITDATEANDTIME $CHANGEDORCREATED est, vide emendationem currentem apud $PAGETITLE_URL
+Pagina {{grammar:genitive|{{SITENAME}}}} $PAGETITLE ab $PAGEEDITOR die $PAGEEDITDATE $CHANGEDORCREATED est, vide emendationem currentem apud $PAGETITLE_URL
 
 $NEWPAGE
 
@@ -1819,7 +1818,6 @@ Si pagina nova cum ipso nomine post deletionem creata est, emendationes restitut
 'contribslink'                 => 'conlationes',
 'autoblocker'                  => 'Obstructus es automatice quia "[[User:$1|$1]]" nuper tuum locum IP adhibuit. Ratio data ob obstructionem usoris $1 est: "$2"',
 'blocklogpage'                 => 'Index obstructionum',
-'blocklog-fulllog'             => 'Index plenissimus obstructionum',
 'blocklogentry'                => 'obstruxit [[$1]], exire $2 $3',
 'reblock-logentry'             => 'modificavit obstructionem usoris [[$1]], exire $2 $3',
 'blocklogtext'                 => 'Hic est index actorum obstructionis deobstructionisque. Loci IP qui automatice obstructi sunt non enumerantur. Vide [[Special:IPBlockList|indicem usorum locorumque IP obstructorum]] pro indice toto.',

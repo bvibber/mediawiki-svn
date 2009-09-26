@@ -309,14 +309,14 @@ Ny jean jarrood dty [[Special:Preferences|{{SITENAME}} hosheeaghtyn]] y arraghey
 'login'                      => 'Log stiagh',
 'nav-login-createaccount'    => 'Log stiagh / croo coontys',
 'loginprompt'                => 'Shegin dhyt cur pooar da minniagyn dy loggal stiagh ayns {{SITENAME}}.',
-'userlogin'                  => 'Log stiagh / croo coontys',
+'userlogin'                  => 'Log stiagh',
 'logout'                     => 'Log magh',
 'userlogout'                 => 'Log magh',
 'notloggedin'                => 'Cha nel ou loggit stiagh',
-'nologin'                    => 'Nagh vel log stiagh ayd? $1.',
+'nologin'                    => "Nagh vel log stiagh ayd? '''$1'''.",
 'nologinlink'                => 'Croo coontys',
 'createaccount'              => 'Croo coontys',
-'gotaccount'                 => 'Vel coontys ayd hannah? $1.',
+'gotaccount'                 => "Vel coontys ayd hannah? '''$1'''.",
 'gotaccountlink'             => 'Log stiagh',
 'createaccountmail'          => 'er post-L',
 'loginerror'                 => 'Marranys log stiagh',
@@ -509,7 +509,7 @@ Foddee oo [[:\$1|croo yn duillag shoh]].",
 'notitlematches'            => 'Cha nel shen ennym ghuillag erbee',
 'prevn'                     => '{{PLURAL:$1|$1}} roish shoh',
 'nextn'                     => 'nah {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'Jeeagh er ($1) ($2) ($3)',
+'viewprevnext'              => 'Jeeagh er ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'            => 'Help:Cummal',
 'searchprofile-project'     => 'Duillagyn Coonee as Shalee',
 'search-result-size'        => "$1 ({{PLURAL:$2|1 fockle|$2 'ockle|$2ockle|$2 focklyn}})",
@@ -664,7 +664,6 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'filesource'        => 'Bun:',
 'uploadedfiles'     => 'Coadanyn ta laadit neese',
 'badfilename'       => 'T\'ennym y choadan aa-enmyssit myr "$1".',
-'fileexists-thumb'  => "<center>'''Coadan roie'''</center>",
 'savefile'          => 'Sauail y coadan',
 'uploadedimage'     => '"[[$1]]" laadit neese',
 'uploadvirus'       => "Ta veerys 'sy coadan! Mynphoyntyn: $1",
@@ -886,7 +885,7 @@ Bee caghlaaghyn jeant er y duillag shoh as e ghuillag resoonaght ry-akin ayns y 
 'enotif_body'                  => 'Y charrey,
 
 
-Va\'n duilag $PAGETITLE er {{SITENAME}} $CHANGEDORCREATED er $PAGEEDITDATEANDTIME liorish $PAGEEDITOR, jeeagh er $PAGETITLE_URL dys y lhieggan roie dy akin.
+Va\'n duilag $PAGETITLE er {{SITENAME}} $CHANGEDORCREATED er $PAGEEDITDATE liorish $PAGEEDITOR, jeeagh er $PAGETITLE_URL dys y lhieggan roie dy akin.
 
 $NEWPAGE
 

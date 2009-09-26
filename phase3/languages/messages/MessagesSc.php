@@ -314,7 +314,7 @@ $messages = array(
 Est possibile chi sa URL siat istada cracada male, o si siat sighidu unu cullegamentu non vàlidu. 
 Custu iat a poder esser unu bug de {{SITENAME}}.",
 'nosuchspecialpage' => 'Custa pàgina ispetziale no esistit',
-'nospecialpagetext' => "<big>'''As pediu una pàgina ispetziale non balida.'''</big>
+'nospecialpagetext' => "<strong>As pediu una pàgina ispetziale non balida.</strong>
 
 Una lista de pàginas ispetziales bàlidas d'agatas in [[Special:SpecialPages|{{int:specialpages}}]].",
 
@@ -365,10 +365,10 @@ Ora puoi continuare ad usare {{SITENAME}} come utente anonimo (ma il tuo indiriz
 'remembermypassword'      => 'Amenta sa password in custu computer',
 'login'                   => 'Intra',
 'nav-login-createaccount' => 'Intra / crea account',
-'userlogin'               => 'Intra / crea account',
+'userlogin'               => 'Intra',
 'logout'                  => 'Serra sessione',
 'userlogout'              => 'Essida',
-'nologin'                 => 'Non tenes unu account? $1.',
+'nologin'                 => "Non tenes unu account? '''$1'''.",
 'nologinlink'             => 'Crea unu account',
 'createaccount'           => 'Crea account',
 'gotaccountlink'          => 'Intra',
@@ -565,7 +565,7 @@ Podes [[:\$1|creare custa pàgina]].",
 'notextmatches'                  => "Peruna currispondèntzia in su testu de s'artìculu",
 'prevn'                          => '{{PLURAL:$1|cabudianu|cabudianos $1}}',
 'nextn'                          => '{{PLURAL:$1|imbeniente|imbenientes $1}}',
-'viewprevnext'                   => 'Càstia ($1) ($2) ($3).',
+'viewprevnext'                   => 'Càstia ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'                 => 'Help:Agiudu',
 'searchprofile-articles-tooltip' => 'Chirca in $1',
 'searchprofile-project-tooltip'  => 'Chirca in $1',
@@ -754,7 +754,6 @@ Càstia sa [[Special:NewFiles|galleria de files nous]] pro una presentada prus b
 'filedesc'          => 'Ogetu',
 'uploadedfiles'     => 'Files carrigadus',
 'badfilename'       => 'Il nome del file immagine è stato convertito in "$1".',
-'fileexists-thumb'  => "<center>'''File pre-esistente'''</center>",
 'successfulupload'  => 'Carrigamentu acabau',
 'uploadwarning'     => 'Avvisu de carrigamentu',
 'savefile'          => 'Sarva file',

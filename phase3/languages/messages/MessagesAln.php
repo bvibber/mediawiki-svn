@@ -379,9 +379,9 @@ Shih [[Special:Version|faqen e verzionit]].',
 Ndoshta keni shkrue gabim URL'ën, ose keni përcjellë vegëz të gabueme.
 Kjo gjithashtu mundet me tregue gabim në softwarein e {{SITENAME}}.",
 'nosuchspecialpage' => 'Nuk ekziston kjo faqe speciale',
-'nospecialpagetext' => "<big>'''Keni kërkue nji faqe speciale jovalide.'''</big>
+'nospecialpagetext' => '<strong>Keni kërkue nji faqe speciale jovalide.</strong>
 
-Lista e faqeve speciale valide gjindet te [[Special:SpecialPages|{{int:specialpages}}]].",
+Lista e faqeve speciale valide gjindet te [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Gabim',
@@ -477,14 +477,14 @@ Mos harroni me i ndryshue [[Special:Preferences|parapëlqimet për {{SITENAME}}]
 'login'                      => 'Kyçu',
 'nav-login-createaccount'    => 'Kyçu / çel llogari',
 'loginprompt'                => 'Shfletuesi duhet me pranue keksa (cookies) për me mujtë me u kyçë në {{SITENAME}}.',
-'userlogin'                  => 'Kyçu / çel llogari',
+'userlogin'                  => 'Kyçu',
 'logout'                     => 'Çkyçu',
 'userlogout'                 => 'Çkyçu',
 'notloggedin'                => 'Nuk je i kyçun',
-'nologin'                    => 'Nuk ke llogari? $1.',
+'nologin'                    => "Nuk ke llogari? '''$1'''.",
 'nologinlink'                => 'Krijo llogari',
 'createaccount'              => 'Krijo llogari',
-'gotaccount'                 => 'Ke llogari? $1.',
+'gotaccount'                 => "Ke llogari? '''$1'''.",
 'gotaccountlink'             => 'Kyçu',
 'createaccountmail'          => 'me email',
 'badretype'                  => 'Fjalëkalimet nuk janë të njêjta.',
@@ -808,7 +808,7 @@ Mundeni [[:\$1|me krijue këtë faqe]].",
 'prevn-title'                      => '$1 {{PLURAL:$1|rezultat|rezultate}} të mâhershme',
 'nextn-title'                      => '$1 {{PLURAL:$1|rezultat|rezultate}} të ardhshme',
 'shown-title'                      => 'Trego $1 {{PLURAL:$1|rezultat|rezultate}} për faqe',
-'viewprevnext'                     => 'Shih ($1) ($2) ($3).',
+'viewprevnext'                     => 'Shih ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Opcionet e kërkimit',
 'searchmenu-exists'                => "'''Në këtë wiki âsht nji faqe me titullin \"[[:\$1]]\"'''",
 'searchmenu-new'                   => "'''Krijo faqen \"[[:\$1]]\" në këtë wiki!'''",

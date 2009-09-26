@@ -9,6 +9,7 @@
  *
  * @author Amikeco
  * @author ArnoLagrange
+ * @author Jens Liebenau
  * @author Malafaya
  * @author Melancholie
  * @author Michawiki
@@ -294,6 +295,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|Ĉi tiu kategorio nur enhavas la jenan dosieron.|La {{PLURAL:$1|jena doesiero|jenaj $1 dosieroj}} estas en ĉi tiun kategorion, el $2 entute.}}',
 'category-file-count-limited'    => 'La {{PLURAL:$1|jena dosiero|jenaj $1 dosieroj}} estas en la nuna kategorio.',
 'listingcontinuesabbrev'         => 'daŭrigo',
+'index-category'                 => 'Indeksitaj paĝoj',
+'noindex-category'               => 'Neindeksitaj paĝoj',
 
 'mainpagetext'      => "<big>'''MediaViki softvaro sukcese instaliĝis.'''</big>",
 'mainpagedocfooter' => "Konsultu la [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] por informo pri uzado de vikia programaro.
@@ -488,7 +491,9 @@ $1',
 Eble vi mistajpis la URL-on, aŭ sekvis nevalidan ligilon.
 Eble ankaŭ ĉi tiel indikus problemon de la programaro de {{SITENAME}}.",
 'nosuchspecialpage' => 'Ne ekzistas tia speciala paĝo',
-'nospecialpagetext' => 'Vi petis [[Special:SpecialPages|specialan paĝon]] kiun ne agnoskas la programaro de {{SITENAME}}.',
+'nospecialpagetext' => '<strong>Vi petis malvalidan specialan paĝon.</strong>
+
+Listo de validaj specialaj paĝoj estas trovebla ĉe [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Eraro',
@@ -585,20 +590,21 @@ Ne forgesu fari viajn [[Special:Preferences|{{SITENAME}}-preferojn]].',
 'login'                      => 'Ensaluti',
 'nav-login-createaccount'    => 'Ensaluti / Krei novan konton',
 'loginprompt'                => 'Via foliumilo nepre permesu kuketojn por ensaluti en la {{SITENAME}}.',
-'userlogin'                  => 'Ensaluti / Krei novan konton',
+'userlogin'                  => 'Ensaluti',
 'logout'                     => 'Elsaluti',
 'userlogout'                 => 'Elsaluti',
 'notloggedin'                => 'Ne ensalutinta',
-'nologin'                    => 'Ĉu vi ne havas konton? $1.',
+'nologin'                    => "Ĉu vi ne havas konton? '''$1'''.",
 'nologinlink'                => 'Krei konton',
 'createaccount'              => 'Krei novan konton',
-'gotaccount'                 => 'Ĉu vi jam havas konton? $1.',
+'gotaccount'                 => "Ĉu vi jam havas konton? '''$1'''.",
 'gotaccountlink'             => 'Ensaluti',
 'createaccountmail'          => 'retpoŝte',
 'badretype'                  => 'La pasvortojn kiujn vi tajpis ne egalas.',
 'userexists'                 => 'Salutnomo enigita jam estas uzata.
 Bonvolu elekti alian nomon.',
 'loginerror'                 => 'Ensaluta eraro',
+'createaccounterror'         => 'Ne eblis krei konton: $1',
 'nocookiesnew'               => 'La uzantokonto estis kreita sed vi ne estas ensalutinta. *** E-igo lcfirst {{SITENAME}} uzas kuketojn por akcepti uzantojn. Kuketoj esta malaktivigitaj ĉe vi. Bonvolu aktivigi ilin kaj ensalutu per viaj novaj salutnomo kaj pasvorto.',
 'nocookieslogin'             => '{{SITENAME}} uzas kuketojn por akcepti uzantojn. Kuketoj esta malaktivigitaj ĉe vi. Bonvolu aktivigi ilin kaj provu denove.',
 'noname'                     => 'Vi ne tajpis validan salutnomon.',
@@ -624,6 +630,7 @@ Se iu alia faris ĉi tiun peton, aŭ se vi estas rememorita vian pasvorton,
 kaj ne plu volas ŝanĝi ĝin, vi povas ignori ĉi tiun mesaĝon kaj 
 kontinui uzante vian malnovan pasvorton.',
 'noemail'                    => 'Retpoŝtadreso ne estas registrita por uzanto "$1".',
+'noemailcreate'              => 'Vi devas provizi validan retadreson',
 'passwordsent'               => 'Oni sendis novan pasvorton al la retpoŝtadreso
 registrita por "$1".
 Bonvolu saluti denove ricevinte ĝin.',
@@ -646,7 +653,8 @@ Enigi bone formatita adreso aŭ malplenigi tiun kampon.',
 'createaccount-text'         => 'Iu kreis konton por via retadreso en {{SITENAME}} ($4) nomata "$2", kun pasvorto "$3". Vi ensalutu kaj ŝanĝu vian pasvorton nun.
 
 Vi povas ignori ĉi mesaĝon, se ĉi konto estis kreita erare.',
-'login-throttled'            => 'Vi tro ofte provis eniri la pasvorton de ĉi tiu konto. Bonvolu ĝisatendi kaj retrovi.',
+'login-throttled'            => 'Vi tro ofte provis eniri la pasvorton por ĉi tiu konto. 
+Bonvolu ĝisatendi antaŭ retrovi.',
 'loginlanguagelabel'         => 'Lingvo: $1',
 
 # Password reset dialog
@@ -751,10 +759,10 @@ Bonvolu inkluzivi tiujn detalojn en iuj ajn demandoj kiun vi farus.',
 La pasvorto por ĉi tiu nova konto povas esti ŝanĝita en la paĝo ''[[Special:ChangePassword|ŝanĝi pasvorton]]'' dum ensalutado.",
 'newarticle'                       => '(Nova)',
 'newarticletext'                   => 'Vi sekvis ligilon al paĝo jam ne ekzistanta. Se vi volas krei ĝin, ektajpu sube (vidu la [[{{MediaWiki:Helppage}}|helpopaĝo]] por klarigoj.) Se vi malintence alvenis ĉi tien, simple alklaku la retrobutonon de via retumilo.',
-'anontalkpagetext'                 => "---- ''Jen diskutopaĝo por iu anonima kontribuanto kiu ne jam kreis konton aŭ ne uzas ĝin. 
-Ni tial devas uzi la cifran IP-adreso por identigi lin. 
-La sama IP-adreso povas estis samtempte uzata de pluraj uzantoj.
-Se vi estas anonimulo kaj preferus eviti tiajn mistrafajn komentojn kaj konfuziĝon kun aliaj anonimuloj de via retejo, bonvolu [[Special:UserLogin|krei konton]] aŭ [[Special:UserLogin|ensaluti]] por eviti estontan konfuzon kun alia anonimaj uzantoj.''",
+'anontalkpagetext'                 => "---- ''Jen diskutopaĝo por anonima kontribuanto kiu ne jam kreis konton aŭ ne uzas ĝin. 
+Ni tial devas uzi la cifran IP-adreso por identigi lin/ŝin. 
+Ĉi tia IP-adreso povas esti uzata de pluraj uzantoj.
+Se vi estas anonimulo kaj preferus eviti tiajn mistrafajn komentojn kaj konfuziĝon kun aliaj anonimuloj de via retejo, bonvolu [[Special:UserLogin|krei konton]] aŭ [[Special:UserLogin|ensaluti]] por eviti estontan konfuzon kun aliaj anonimaj uzantoj.''",
 'noarticletext'                    => 'Mankas teksto en ĉi tiu paĝo.
 Vi povas [[Special:Search/{{PAGENAME}}|serĉi ĉi tiun paĝtitolon]] en aliaj paĝoj,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} serĉi la rilatajn protokolojn],
@@ -763,6 +771,7 @@ aŭ [{{fullurl:{{FULLPAGENAME}}|action=edit}} redakti ĉi tiun paĝon]</span>.',
 Vi povas [[Special:Search/{{PAGENAME}}|serĉi ĉi tiun paĝan titolon]] en aliaj paĝoj,
 aŭ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} serĉi la rilatajn protokolojn]</span>.',
 'userpage-userdoesnotexist'        => 'Uzula konto "$1" ne estas registrita. Bonvolu konfirmi se vi volas krei/redakti ĉi tiu paĝo.',
+'userpage-userdoesnotexist-view'   => 'Uzanto-konto "$1" ne estas registrita.',
 'clearyourcache'                   => "'''Notu:''' Post konservado vi forviŝu la kaŝmemoron de via foliumilo por vidi la ŝanĝojn : '''Mozilo:''' alklaku ''Reŝarĝi'' (aŭ ''Stir-Shift-R''), '''IE / Opera:''' ''Stir-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Stir-R''.",
 'usercssyoucanpreview'             => "'''Konsileto:''' Uzu la \"Antaŭrigardan\" butonon por provi vian novan css/js antaŭ konservi.",
 'userjsyoucanpreview'              => "'''Konsileto:''' Uzu la \"Antaŭrigardan\" butonon por provi vian novan css/js antaŭ konservi.",
@@ -997,6 +1006,7 @@ Bonvolu kontroli la protokolojn.',
 'revdelete-otherreason'       => 'Alia/aldona kialo:',
 'revdelete-reasonotherlist'   => 'Alia kialo',
 'revdelete-edit-reasonlist'   => 'Redakti kialojn por forigo',
+'revdelete-offender'          => 'Aŭtoro de revizio:',
 
 # Suppression log
 'suppressionlog'     => 'Protokolo pri subigado',
@@ -1114,7 +1124,7 @@ Certigu ke ĉi tiu ŝanĝo tenos kontinuecon de la historia paĝo.',
 'prevn-title'                      => '{{PLURAL:$1|Antaŭa $1 rezulto|Antaŭaj $1 rezultoj}}',
 'nextn-title'                      => '{{PLURAL:$1|Posta $1 rezulto|Postaj $1 rezultoj}}',
 'shown-title'                      => 'Montri {{PLURAL:$1|$1 rezulton|$1 rezultojn}} en paĝo',
-'viewprevnext'                     => 'Montri ($1) ($2) ($3).',
+'viewprevnext'                     => 'Montri ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Serĉaj opcioj',
 'searchmenu-exists'                => "* Paĝo '''[[$1]]'''",
 'searchmenu-new'                   => "'''Krei la paĝon \"[[:\$1]]\" en ĉi tiu vikio!'''",
@@ -1147,7 +1157,7 @@ Certigu ke ĉi tiu ŝanĝo tenos kontinuecon de la historia paĝo.',
 'searchall'                        => 'ĉiuj',
 'showingresults'                   => "Montras {{PLURAL:$1|'''1''' trovitan|'''$1''' trovitajn}} ekde la #'''$2'''-a.",
 'showingresultsnum'                => "Montras {{PLURAL:$3|'''1''' trovitan|'''$3''' trovitajn}} ekde la #'''$2'''-a.",
-'showingresultsheader'             => "{{PLURAL:$5|Rezulto '''$1''' el '''$3'''|Rezultoj '''$1 - $2''' el '''$3'''}} por '''$4'''",
+'showingresultsheader'             => "{{PLURAL:$5|Rezulto '''$1''' el '''$3'''|Rezultoj '''$1 – $2''' el '''$3'''}} por '''$4'''",
 'nonefound'                        => "'''Notu''':  Nur kelkaj nomspacoj estas serĉitaj defaulte.
 Provu prefiksi vian mendon kun ''all:'' por serĉi ĉiun enhavon (inkluzivante diskuto-paĝojn, ŝablonojn, ktp), aŭ uzi la deziritan nomspacon kiel prefikson.",
 'search-nonefound'                 => 'La serĉomendo rezultis kun neniuj trafoj.',
@@ -1190,7 +1200,7 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'prefs-watchlist-days-max'      => '(maksimume 7 tagoj)',
 'prefs-watchlist-edits'         => 'Maksimuma nombro de ŝanĝoj montrendaj en ekspandita atentaro:',
 'prefs-watchlist-edits-max'     => '(maksimuma nombro: 1000)',
-'prefs-watchlist-token'         => 'Atentara ĵetono',
+'prefs-watchlist-token'         => 'Atentara ĵetono:',
 'prefs-misc'                    => 'Miksitaĵoj',
 'prefs-resetpass'               => 'Ŝanĝi pasvorton',
 'prefs-email'                   => 'Retpoŝtaj opcioj',
@@ -1352,6 +1362,7 @@ Vi povas ankaŭ elekti permesigi aliaj uzantoj kontakti vin per via uzanto-paĝo
 'right-bigdelete'             => 'Forigi paĝojn kun grandaj historioj',
 'right-deleterevision'        => 'Forigi kaj malforigi specifajn versiojn de paĝoj',
 'right-deletedhistory'        => 'Rigardi listanojn de forigitaj historioj, sen ties asociaj tekstoj',
+'right-deletedcontent'        => 'Rigardi forigitan tekston kaj ŝanĝojn inter forigitaj revizioj.',
 'right-browsearchive'         => 'Serĉi forigitajn paĝojn',
 'right-undelete'              => 'Restarigi paĝon',
 'right-suppressrevision'      => 'Kontroli kaj restarigi versiojn kaŝitajn de administrantoj',
@@ -1384,6 +1395,7 @@ Vi povas ankaŭ elekti permesigi aliaj uzantoj kontakti vin per via uzanto-paĝo
 'right-reset-passwords'       => 'Reŝanĝi pasvortojn de aliaj uzantoj',
 'right-override-export-depth' => 'Eksporti paĝojn inkluzivante ligitajn paĝojn ĝis profundeco de 5',
 'right-versiondetail'         => 'Montri la informon pri la etendita programara versio',
+'right-root'                  => 'Fari ĉiujn agojn en la vikio',
 
 # User rights log
 'rightslog'      => 'Protokolo de uzanto-rajtoj',
@@ -1523,15 +1535,19 @@ Por inkluzivi la dosieron en paĝon, skribu ligilon laŭ la formoj
 tiu ĉi tiu dosiero pezas $2 bitokojn.',
 'largefileserver'             => 'Ĉi tiu dosiero estas pli granda ol permesas la servilaj preferoj.',
 'emptyfile'                   => 'La dosiero kiun vi alŝutis ŝajnas malplena. Tio povas esti kaŭzita sde tajperaro en la titolo. Bonvolu kontroli ĉu vi vere volas alŝuti tiun dosieron.',
-'fileexists'                  => "Dosiero kun tia ĉi nomo jam ekzistas. Bonvolu kontroli '''<tt>$1</tt>''' krom se vi certas ke vi konscie volas ŝanĝi ĝuste tiun.",
-'filepageexists'              => "La priskriba paĝo por ĉi tiu dosiero jam estis kreita ĉe '''<tt>$1</tt>''', sed neniu dosiero kun ĉi tiu nomo nune ekzistas. La resumo kiun vi entajpos ne aperos en la priskribo-paĝo. Por aperigi vian resumon, vi devos permane redakti ĝin.",
-'fileexists-extension'        => "Dosiero kun simila nomo ekzistas:<br />
-Nomo de la alŝuta dosiero: '''<tt>$1</tt>'''<br />
-Nomo de la ekzistanta dosiero: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Dosiero kun tia ĉi nomo jam ekzistas.
+Bonvolu kontroli '''<tt>[[:$1]]</tt>''' krom se vi certas ke vi konscie volas ŝanĝi ĝuste tiun.
+[[$1|thumb]]",
+'filepageexists'              => "La priskriba paĝo por ĉi tiu dosiero jam estis kreita ĉe '''<tt>[[:$1]]</tt>''', sed neniu dosiero kun ĉi tiu nomo nune ekzistas.
+ La resumo kiun vi entajpos ne aperos en la priskribo-paĝo.
+ Por aperigi vian resumon, vi devos permane redakti ĝin.
+[[$1|dosiereto]]",
+'fileexists-extension'        => "Dosiero kun simila nomo ekzistas: [[$2|thumb]]
+* Nomo de la alŝuta dosiero: '''<tt>[[:$1]]</tt>'''
+* Nomo de la ekzistanta dosiero: '''<tt>[[:$2]]</tt>'''
 Bonvolu elekti malsaman nomon.",
-'fileexists-thumb'            => "<center>'''Ekzistanta bildo'''</center>",
-'fileexists-thumbnail-yes'    => "Ĉi tiu dosiero ŝajnas kiel bildo de malkreskigita grandeco ''(bildeto)''. 
-Bonvolu kontroli la dosieron '''<tt>$1</tt>'''.<br /> 
+'fileexists-thumbnail-yes'    => "Ĉi tiu dosiero ŝajnas kiel bildo de malkreskigita grandeco ''(bildeto)''. [[$1|thumb]]
+Bonvolu kontroli la dosieron '''<tt>[[:$1]]</tt>'''. 
 Se la kontrolita dosiero estas la sama bildo kiel la originala grandeco, ĝi ne nepras alŝuti plian bideton.",
 'file-thumbnail-no'           => "La dosiernomo komencas kun '''<tt>$1</tt>'''. 
 Ĝi ŝajnas kiel bildo de malgrandigita grandeco ''(thumbnail)''.
@@ -1575,6 +1591,24 @@ Se la problemo kontinuas, kontaku [[Special:ListUsers/sysop|sisteman administran
 'upload-too-many-redirects' => 'La URL-o enhavis tro multajn alidirektilojn',
 'upload-unknown-size'       => 'Nekonata grandeco',
 'upload-http-error'         => 'HTTP-eraro okazis: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Atingo malpermisita',
+'img-auth-nopathinfo'   => 'Mankas PATH_INFO. (Informo pri dosiervojo.)
+Via servilo ne estas konfigurita por sendi ĉi tiun informon.
+Eble ĝi estas CGI-bazita kaj ne subtenas img_auth.
+Vidu http://www.mediawiki.org/wiki/Manual:Image_Authorization. (angle)',
+'img-auth-notindir'     => 'Petita vojo ne estas en la konfigurita alŝuta dosierujo.',
+'img-auth-badtitle'     => 'Ne eblas konstrui validan titolon de "$1".',
+'img-auth-nologinnWL'   => 'Vi ne estas ensalutita kaj "$1" ne estas en la blankalisto.',
+'img-auth-nofile'       => 'Dosiero "$1" ne ekzistas.',
+'img-auth-isdir'        => 'Vi provas atingi dosierujon "$1".
+Nur dosiera atingo estas permesita.',
+'img-auth-streaming'    => 'Elsendfluante "$1".',
+'img-auth-public'       => 'La funkcio de img_auth.php estas eligi dosierojn de privata vikio.
+Ĉi tiu vikio estas konfigurita kiel publika vikio.
+Por optimuma sekureco, img_auth.php estas malŝalta.',
+'img-auth-noread'       => 'Uzanto ne havas atingon por legi "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL-o ne estis atingebla',
@@ -1667,6 +1701,7 @@ Jen la priskribo en ties [$2 dosier-priskriba paĝo].',
 ** Malobservo de kopirajto
 ** Duplikata dosiero',
 'filedelete-edit-reasonlist'  => 'Redakti kialojn por forigo',
+'filedelete-maintenance'      => 'Forigado kaj restarigado de dosieroj provizore malŝaltis dum funkciteno.',
 
 # MIME search
 'mimesearch'         => 'MIME-serĉilo',
@@ -1871,7 +1906,7 @@ Vidu ankaŭ [[Special:WantedCategories|Dezirataj kategorioj]].',
 
 # Special:ActiveUsers
 'activeusers'          => 'Listo de aktivaj uzantoj',
-'activeusers-count'    => '$1 {{PLURAL:$1|lasta redakto|lastaj redaktoj}}',
+'activeusers-count'    => '$1 {{PLURAL:$1|lasta redakto|lastaj redaktoj}} dum la {{PLURAL:$3|lasta tago|lastaj $3 tagoj}}',
 'activeusers-from'     => 'Montri uzantojn ekde:',
 'activeusers-noresult' => 'Neniuj uzantoj trovitaj.',
 
@@ -1938,7 +1973,7 @@ La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel
 'addedwatch'           => 'Aldoniĝis al atentaro',
 'addedwatchtext'       => "La paĝo \"[[:\$1]]\" estis aldonita al via [[Special:Watchlist|atentaro]]. Estontaj ŝanĝoj de tiu ĉi paĝo aperos en '''grasa tiparo''' en la [[Special:RecentChanges|listo de Lastaj Ŝanĝoj]], kaj estos listigitaj en via atentaro. Se vi poste volos forigi la paĝon el via atentaro, alklaku \"Malatentu paĝon\" en la ilobreto.",
 'removedwatch'         => 'Forigis el atentaro',
-'removedwatchtext'     => 'La paĝo "[[:$1]]" estas forigita el via atentaro.',
+'removedwatchtext'     => 'La paĝo "[[:$1]]" estas forigita el via [[Special:Watchlist|atentaro]].',
 'watch'                => 'Atenti',
 'watchthispage'        => 'Priatenti paĝon',
 'unwatch'              => 'Malatenti',
@@ -1967,16 +2002,13 @@ La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel
 'enotif_impersonal_salutation' => 'Uzanto de {{SITENAME}}',
 'changed'                      => 'ŝanĝita',
 'created'                      => 'kreita',
-'deleted'                      => 'forigita',
-'enotif_deletedpagetext'       => 'Ĉi tiu paĝo estas ne plu havebla.',
 'enotif_subject'               => 'la paĝo $PAGETITLE de {{SITENAME}} estis $CHANGEDORCREATED de $PAGEEDITOR',
 'enotif_lastvisited'           => 'Vidi $1 por ĉiuj ŝanĝoj de post via lasta vizito.',
 'enotif_lastdiff'              => 'Vidi $1 por rigardi ĉi tiun ŝanĝon.',
 'enotif_anon_editor'           => 'anonima uzanto $1',
-'enotif_rev_info'              => 'Vidu $1 por la nuna versio.',
 'enotif_body'                  => 'Kara $WATCHINGUSERNAME,
 
-La paĝo $PAGETITLE de {{SITENAME}} estis $CHANGEDORCREATED je $PAGEEDITDATEANDTIME de $PAGEEDITOR, $REVINFO
+La paĝo $PAGETITLE de {{SITENAME}} estis $CHANGEDORCREATED je $PAGEEDITDATE de $PAGEEDITOR, vidu $PAGETITLE_URL por la nuna versio.
 
 $NEWPAGE
 
@@ -2276,7 +2308,8 @@ forbarita IP-adreso/nomo la povon enskribi en la vikio.',
 'contribslink'                    => 'kontribuoj',
 'autoblocker'                     => 'Provizore forbarita aŭtomate pro tio, ke vi uzas la saman IP-adreson kiel "$1", kiu estis forbarita pro : "$2".',
 'blocklogpage'                    => 'Protokolo pri forbaroj',
-'blocklog-fulllog'                => 'Protokolo de plenaj forbaroj',
+'blocklog-showlog'                => 'Ĉi tiu uzanto estis forbarita antaŭe. Jen la forbara protokolo por via informo:',
+'blocklog-showsuppresslog'        => 'Ĉi tiu uzanto estis forbarita kaj kaŝita antaŭe. Jen la protokolo pri subpremado por via informo:',
 'blocklogentry'                   => 'forbaris [[$1]] por daŭro de $2 $3',
 'reblock-logentry'                => 'ŝanĝis forbarajn opciojn [[$1]] kun findato de $2 $3',
 'blocklogtext'                    => 'Ĉi tio estas protokolo pri forbaraj kaj malforbaraj agoj. Aŭtomate forbaritaj IP adresoj ne estas listigitaj. Vidu la [[Special:IPBlockList|IP forbarliston]] por ĉi-momente fobaritaj uzantoj kaj IP-adresoj.',
@@ -2585,10 +2618,12 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonima uzanto|Anonimaj uzantoj}} de {{SITENAME}}',
 'siteuser'         => '{{SITENAME}} uzanto $1',
+'anonuser'         => '{{SITENAME}}-anonimulo $1',
 'lastmodifiedatby' => 'Ĉi paĝo estis laste ŝanĝita je $2, $1 de $3.',
 'othercontribs'    => 'Bazita sur la laboro de $1.',
 'others'           => 'aliaj',
 'siteusers'        => '{{PLURAL:$2|uzanto|uzantoj}} de {{SITENAME}} $1',
+'anonusers'        => '{{SITENAME}}-{{PLURAL:$2|anonimulo|anonimuloj}} $1',
 'creditspage'      => 'Atribuoj de paĝo',
 'nocredits'        => 'Ne estas informo pri atribuoj por ĉi paĝo.',
 

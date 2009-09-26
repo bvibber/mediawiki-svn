@@ -15,6 +15,7 @@
  * @author Galwaygirl
  * @author GerardM
  * @author Hamaryns
+ * @author Jens Liebenau
  * @author McDutchie
  * @author Mwpnl
  * @author Niels
@@ -430,6 +431,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|Deze categorie bevat het volgende bestand.|Deze categorie bevat {{PLURAL:$1|het volgende bestand|de volgende $1 bestanden}}, van in totaal $2.}}',
 'category-file-count-limited'    => 'Deze categorie bevat {{PLURAL:$1|het volgende bestand|de volgende $1 bestanden}}.',
 'listingcontinuesabbrev'         => 'meer',
+'index-category'                 => "Te indexeren pagina's",
+'noindex-category'               => "Niet te indexeren pagina's",
 
 'mainpagetext'      => "<big>'''De installatie van MediaWiki is geslaagd.'''</big>",
 'mainpagedocfooter' => 'Raadpleeg de [http://meta.wikimedia.org/wiki/NL_Help:Inhoudsopgave handleiding] voor informatie over het gebruik van de wikisoftware.
@@ -625,9 +628,9 @@ Meer informatie is beschikbaar op de pagina [[Special:Version|softwareversie]].'
 Mogelijk heeft u een typefout gemaakt in de URL, of een onjuiste verwijzing gevolgd.
 Het kan ook wijzen op een fout in de software van {{SITENAME}}.',
 'nosuchspecialpage' => 'Deze speciale pagina bestaat niet',
-'nospecialpagetext' => "<big>'''U hebt een onbestaande speciale pagina opgevraagd.'''</big>
+'nospecialpagetext' => '<strong>U hebt een onbestaande speciale pagina opgevraagd.</strong>
 
-Een lijst met bestaande speciale pagina’s staat op [[Special:SpecialPages|speciale pagina’s]].",
+Een lijst met bestaande speciale pagina’s staat op [[Special:SpecialPages|speciale pagina’s]].',
 
 # General errors
 'error'                => 'Fout',
@@ -726,20 +729,21 @@ Vergeet niet uw [[Special:Preferences|voorkeuren voor {{SITENAME}}]] aan te pass
 'login'                      => 'Aanmelden',
 'nav-login-createaccount'    => 'Aanmelden / registreren',
 'loginprompt'                => 'U moet cookies ingeschakeld hebben om u te kunnen aanmelden bij {{SITENAME}}.',
-'userlogin'                  => 'Aanmelden / registreren',
+'userlogin'                  => 'Aanmelden',
 'logout'                     => 'Afmelden',
 'userlogout'                 => 'Afmelden',
 'notloggedin'                => 'Niet aangemeld',
-'nologin'                    => 'Nog geen gebruikersnaam? $1.',
+'nologin'                    => "Nog geen gebruikersnaam? '''$1'''.",
 'nologinlink'                => 'Registreren',
 'createaccount'              => 'Registreren',
-'gotaccount'                 => 'Hebt u al een gebruikersnaam? $1.',
+'gotaccount'                 => "Hebt u al een gebruikersnaam? '''$1'''.",
 'gotaccountlink'             => 'Aanmelden',
 'createaccountmail'          => 'per e-mail',
 'badretype'                  => 'De ingevoerde wachtwoorden verschillen van elkaar.',
 'userexists'                 => 'De gekozen gebruikersnaam is al in gebruik.
 Kies een andere naam.',
 'loginerror'                 => 'Aanmeldfout',
+'createaccounterror'         => 'Het was niet mogelijk de gebruiker aan te maken: $1',
 'nocookiesnew'               => 'De gebruiker is geregistreerd, maar niet aangemeld.
 {{SITENAME}} gebruikt cookies voor het aanmelden van gebruikers.
 Schakel die in en meld daarna aan met uw nieuwe gebruikersnaam en wachtwoord.',
@@ -774,6 +778,7 @@ Als iemand anders dan u dit verzoek heeft gedaan of als u zich inmiddels het
 wachtwoord herinnert en het niet langer wilt wijzigen, negeer dit bericht
 dan en blijf uw bestaande wachtwoord gebruiken.',
 'noemail'                    => 'Er is geen e-mailadres bekend voor gebruiker "$1".',
+'noemailcreate'              => 'U moet een geldig e-mailadres opgeven',
 'passwordsent'               => 'Het wachtwoord is verzonden naar het e-mailadres voor "$1".
 Meld u aan nadat u het hebt ontvangen.',
 'blocked-mailpassword'       => 'Uw IP-adres is geblokkeerd voor het maken van wijzigingen.
@@ -927,6 +932,7 @@ U kunt [[Special:Search/{{PAGENAME}}|naar deze term zoeken]] in andere pagina\'s
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} de logboeken doorzoeken]</span>.',
 'userpage-userdoesnotexist'        => 'U bewerkt een gebruikerspagina van een gebruiker die niet bestaat (gebruiker "$1").
 Controleer of u deze pagina wel wilt aanmaken/bewerken.',
+'userpage-userdoesnotexist-view'   => 'De gebruiker "$1" is niet geregistreerd.',
 'clearyourcache'                   => "'''Let op! Nadat u de wijzigingen hebt opgeslagen is het wellicht nodig uw browsercache te legen.'''
 
 '''Mozilla / Firefox / Safari:''' houd ''Shift'' ingedrukt terwijl u op ''Huidige pagina vernieuwen'' klikt, of typ ''Ctrl-F5'' of ''Ctrl-R'' (''Command-R'' op eenMacintosh); '''Konqueror: '''klik ''Reload'' of typ ''F5;'' '''Opera:''' leeg uw cache in ''Extra → Voorkeuren;'' '''Internet Explorer:''' houd ''Ctrl'' ingedrukt terwijl u op ''Vernieuwen'' klikt of type ''Ctrl-F5.''",
@@ -1117,16 +1123,17 @@ Als beheerder kunt u [$1 de verschillen bekijken] als u wilt.",
 'logdelete-selected'          => "'''{{PLURAL:$1|Geselecteerde logboekhandeling|Geselecteerde logboekhandelingen}}:'''",
 'revdelete-text'              => "'''Verwijderde bewerkingen zijn zichtbaar in de geschiedenis en logboeken, maar delen van de inhoud zijn niet langer publiek toegankelijk.'''
 
-Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de verwijdering ongedaan maken met behulp van dit scherm, tenzij er aanvullende beperkingen gelden die zijn ingesteld door de systeembeheerder.
+Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de verwijdering ongedaan maken met behulp van dit formulier, tenzij er aanvullende beperkingen gelden die zijn ingesteld door de systeembeheerder.
+
 Bevestig dat u dit wilde doen, dat u de consequenties begrijpt en dat u dit doet in overeenstemming met het geldende [[{{MediaWiki:Policy-url}}|beleid]].",
 'revdelete-suppress-text'     => "Versies verbergen dient '''alleen''' gebruikt te worden in de volgende gevallen:
 * Ongepaste persoonlijke informatie
 *: ''woonadres, telefoonnummers, Burger Service Nummers, enzovoort.''",
 'revdelete-legend'            => 'Zichtbaarheidsbeperkingen instellen',
-'revdelete-hide-text'         => 'De bewerkte tekst verbergen',
+'revdelete-hide-text'         => 'Bewerkte tekst verbergen',
 'revdelete-hide-name'         => 'Actie en doel verbergen',
-'revdelete-hide-comment'      => 'De bewerkingssamenvatting verbergen',
-'revdelete-hide-user'         => 'Gebruikersnaam/IP van de gebruiker verbergen',
+'revdelete-hide-comment'      => 'Bewerkingssamenvatting verbergen',
+'revdelete-hide-user'         => 'Gebruikersnaam/IP-adres van de gebruiker verbergen',
 'revdelete-hide-restricted'   => 'Deze beperkingen ook op beheerders toepassen',
 'revdelete-suppress'          => 'Gegevens voor zowel beheerders als anderen onderdrukken',
 'revdelete-hide-image'        => 'Bestandsinhoud verbergen',
@@ -1142,8 +1149,8 @@ $1",
 'logdelete-failure'           => "'''De zichtbaarheid van de logboekregel kon niet ingesteld worden:'''
 $1",
 'revdel-restore'              => 'Zichtbaarheid wijzigen',
-'pagehist'                    => 'Paginageschiedenis',
-'deletedhist'                 => 'Verwijderde geschiedenis',
+'pagehist'                    => 'paginageschiedenis',
+'deletedhist'                 => 'verwijderde geschiedenis',
 'revdelete-content'           => 'inhoud',
 'revdelete-summary'           => 'samenvatting bewerken',
 'revdelete-uname'             => 'gebruikersnaam',
@@ -1170,6 +1177,7 @@ Controleer de logboeken.',
 'revdelete-otherreason'       => 'Andere reden:',
 'revdelete-reasonotherlist'   => 'Andere reden',
 'revdelete-edit-reasonlist'   => 'Redenen voor verwijderen bewerken',
+'revdelete-offender'          => 'Auteur versie:',
 
 # Suppression log
 'suppressionlog'     => 'Verbergingslogboek',
@@ -1290,7 +1298,7 @@ Probeer een andere zoekopdracht.',
 'prevn-title'                      => 'Vorige {{PLURAL:$1|resultaat|$1 resultaten}}',
 'nextn-title'                      => 'Volgende {{PLURAL:$1|resultaat|$1 resultaten}}',
 'shown-title'                      => '$1 {{PLURAL:$1|resultaat|resultaten}} per pagina weergeven',
-'viewprevnext'                     => '($1) ($2) ($3) bekijken.',
+'viewprevnext'                     => '($1 {{int:pipe-separator}} $2) ($3) bekijken.',
 'searchmenu-legend'                => 'Zoekopties',
 'searchmenu-exists'                => "* Pagina '''[[$1]]'''",
 'searchmenu-new'                   => "'''De pagina \"[[:\$1]]\" aanmaken op deze wiki'''",
@@ -1368,7 +1376,7 @@ De gegevens over {{SITENAME}} zijn mogelijk niet bijgewerkt.',
 'prefs-watchlist-days-max'      => '(maximaal 7 dagen)',
 'prefs-watchlist-edits'         => 'Maximaal aantal bewerkingen in de uitgebreide volglijst:',
 'prefs-watchlist-edits-max'     => '(maximale aantal: 1000)',
-'prefs-watchlist-token'         => 'Volglijstsleutel',
+'prefs-watchlist-token'         => 'Volglijstsleutel:',
 'prefs-misc'                    => 'Diversen',
 'prefs-resetpass'               => 'Wachtwoord wijzigen',
 'prefs-email'                   => 'E-mail',
@@ -1532,6 +1540,7 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'right-bigdelete'             => "Pagina's met een grote geschiedenis verwijderen",
 'right-deleterevision'        => "Versies van pagina's verbergen",
 'right-deletedhistory'        => 'Verwijderde versies bekijken, zonder te kunnen zien wat verwijderd is',
+'right-deletedcontent'        => 'Verwijderde tekst en wijzigingen tussen verwijderde versies bekijken',
 'right-browsearchive'         => "Verwijderde pagina's bekijken",
 'right-undelete'              => "Verwijderde pagina's terugplaatsen",
 'right-suppressrevision'      => 'Verborgen versies bekijken en terugplaatsen',
@@ -1564,6 +1573,7 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'right-reset-passwords'       => 'Wachtwoorden van andere gebruikers opnieuw instellen',
 'right-override-export-depth' => "Pagina's exporteren inclusief pagina's waarnaar verwezen wordt tot een diepte van vijf",
 'right-versiondetail'         => 'Uitgebreide versieinformatie van de software weergeven',
+'right-root'                  => 'Alle handelingen op de wiki uitvoeren',
 
 # User rights log
 'rightslog'      => 'Gebruikersrechtenlogboek',
@@ -1712,17 +1722,17 @@ Toegelaten {{PLURAL:\$3|bestandstype is|bestandstypes zijn}} \$2.",
 Dit zou kunnen komen door een typefout in de bestandsnaam.
 Ga na of u dit bestand werkelijk bedoelde te uploaden.',
 'fileexists'                  => "Er bestaat al een bestand met deze naam.
-Controleer '''<tt>$1</tt>''' als u niet zeker weet of u het huidige bestand wilt overschrijven.",
-'filepageexists'              => "De beschrijvingspagina voor dit bestand bestaat al op '''<tt>$1</tt>''', maar er bestaat geen bestand met deze naam.
+Controleer '''<tt>[[:$1]]</tt>''' als u niet zeker weet of u het huidige bestand wilt overschrijven.
+[[$1|thumb]]",
+'filepageexists'              => "De beschrijvingspagina voor dit bestand bestaat al op '''<tt>[[:$1]]</tt>''', maar er bestaat geen bestand met deze naam.
 De samenvatting die u hebt opgegeven zal niet op de beschrijvingspagina verschijnen.
-Bewerk de pagina handmatig om uw beschrijving daar weer te geven.",
-'fileexists-extension'        => "Een bestand met dezelfde naam bestaat al:<br />
-Naam van het geüploade bestand: '''<tt>$1</tt>'''<br />
-Naam van het bestaande bestand: '''<tt>$2</tt>'''<br />
+Bewerk de pagina handmatig om uw beschrijving daar weer te geven. [[$1|miniatuur]]",
+'fileexists-extension'        => "Een bestand met dezelfde naam bestaat al: [[$2|thumb]]
+* Naam van het geüploade bestand: '''<tt>[[:$1]]</tt>'''
+* Naam van het bestaande bestand: '''<tt>[[:$2]]</tt>'''
 Kies een andere naam.",
-'fileexists-thumb'            => "<center>'''Bestaande afbeelding'''</center>",
-'fileexists-thumbnail-yes'    => "Het bestand lijkt een verkleinde versie te zijn ''(miniatuurafbeelding)''.
-Controleer het bestand '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Het bestand lijkt een verkleinde versie te zijn ''(miniatuurafbeelding)''. [[$1|thumb]]
+Controleer het bestand '''<tt>[[:$1]]</tt>'''.
 Als het gecontroleerde bestand dezelfde afbeelding van oorspronkelijke grootte is, is het niet noodzakelijk een extra miniatuurafbeelding te uploaden.",
 'file-thumbnail-no'           => "De bestandsnaam begint met '''<tt>$1</tt>'''.
 Het lijkt een verkleinde afbeelding te zijn ''(miniatuurafbeelding)''.
@@ -1788,6 +1798,24 @@ Als het probleem aanhoudt, neem dan contact op met een [[Special:ListUsers/sysop
 'upload-too-many-redirects' => 'De URL bevatte te veel doorverwijzingen',
 'upload-unknown-size'       => 'Onbekende grootte',
 'upload-http-error'         => 'Er is een HTTP-fout opgetreden: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Toegang geweigerd',
+'img-auth-nopathinfo'   => 'PATH_INFO mist.
+Uw server is niet ingesteld om deze informatie door te geven.
+Misschien gebruikt deze CGI, en dan wordt img_auth niet ondersteund.
+Zie http://www.mediawiki.org/wiki/Manual:Image_Authorization voor meer informatie.',
+'img-auth-notindir'     => 'Het opgevraagde pad is niet de ingestelde uploadmap.',
+'img-auth-badtitle'     => 'Het was niet mogelijk een geldige paginanaam te maken van "$1".',
+'img-auth-nologinnWL'   => 'U bent niet aangemeld en "$1" staat niet op de witte lijst.',
+'img-auth-nofile'       => 'Bestand "$1" bestaat niet.',
+'img-auth-isdir'        => 'U probeert de map "$1" te benaderen.
+Alleen toegang tot bestanden is toegestaan.',
+'img-auth-streaming'    => 'Bezig met het streamen van "$1".',
+'img-auth-public'       => 'Het doel van img_auth.php is de uitvoer van bestanden van een besloten wiki.
+Deze wiki is ingesteld als publieke wiki.
+Om beveiligingsreden is img_auth.php uitgeschakeld.',
+'img-auth-noread'       => 'De gebruiker heeft geen leestoegang tot "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Kon de URL niet bereiken',
@@ -1883,6 +1911,7 @@ De [$2 pagina met de bestandsbeschrijving] wordt hieronder weergegeven.',
 ** Auteursrechtenschending
 ** Duplicaatbestand',
 'filedelete-edit-reasonlist'  => 'Redenen voor verwijderen bewerken',
+'filedelete-maintenance'      => 'Het verwijderen en terugplaatsen is tijdelijk niet mogelijk wegens onderhoudswerkzaamheden.',
 
 # MIME search
 'mimesearch'         => 'Zoeken op MIME-type',
@@ -2090,7 +2119,7 @@ Ondersteunde protocollen: <tt>$1</tt>',
 
 # Special:ActiveUsers
 'activeusers'          => 'Aanwezige gebruikers',
-'activeusers-count'    => '$1 recente {{PLURAL:$1|bewerking|bewerkingen}}',
+'activeusers-count'    => '$1 recente {{PLURAL:$1|bewerking|bewerkingen}} in de {{PLURAL:$3|afgelopen dag|laatste $3 dagen}}',
 'activeusers-from'     => 'Gebruikers worden weergegeven vanaf:',
 'activeusers-noresult' => 'Geen actieve gebruikers gevonden.',
 
@@ -2188,16 +2217,13 @@ Toekomstige bewerkingen van deze pagina en de bijbehorende overlegpagina worden 
 'enotif_impersonal_salutation' => 'gebruiker van {{SITENAME}}',
 'changed'                      => 'gewijzigd',
 'created'                      => 'aangemaakt',
-'deleted'                      => 'verwijderd',
-'enotif_deletedpagetext'       => 'Deze pagina is niet langer beschikbaar.',
 'enotif_subject'               => 'Pagina $PAGETITLE op {{SITENAME}} is $CHANGEDORCREATED door $PAGEEDITOR',
 'enotif_lastvisited'           => 'Zie $1 voor alle wijzigingen sinds uw laatste bezoek.',
 'enotif_lastdiff'              => 'Zie $1 om deze wijziging te zien.',
 'enotif_anon_editor'           => 'anonieme gebruiker $1',
-'enotif_rev_info'              => 'Zie $1 voor de huidige versie.',
 'enotif_body'                  => 'Beste $WATCHINGUSERNAME,
 
-De pagina $PAGETITLE op {{SITENAME}} is $CHANGEDORCREATED op $PAGEEDITDATEANDTIME door $PAGEEDITOR. $REVINFO
+De pagina $PAGETITLE op {{SITENAME}} is $CHANGEDORCREATED op $PAGEEDITDATE door $PAGEEDITOR, zie $PAGETITLE_URL voor de huidige versie.
 
 $NEWPAGE
 
@@ -2238,7 +2264,7 @@ Zie het $2 voor een overzicht van recente verwijderingen.',
 'suppressedarticle'      => 'heeft "[[$1]]" verborgen',
 'dellogpage'             => 'Verwijderingslogboek',
 'dellogpagetext'         => "Hieronder is een lijst van recent verwijderde pagina's en bestanden weergegeven.",
-'deletionlog'            => 'Verwijderingslogboek',
+'deletionlog'            => 'verwijderingslogboek',
 'reverted'               => 'Eerdere versie hersteld',
 'deletecomment'          => 'Reden voor verwijderen:',
 'deleteotherreason'      => 'Andere/eventuele reden:',
@@ -2508,7 +2534,10 @@ Zie de [[Special:IPBlockList|Lijst van geblokkeerde IP-adressen]] voor recente b
 'contribslink'                    => 'bijdragen',
 'autoblocker'                     => "Automatisch geblokkeerd omdat het IP-adres overeenkomt met dat van [[User:\$1|\$1]], die geblokkeerd is om de volgende reden: \"'''\$2'''\"",
 'blocklogpage'                    => 'Blokkeerlogboek',
-'blocklog-fulllog'                => 'Volledige blokkeerlogboek',
+'blocklog-showlog'                => 'Deze gebruiker is voorheen geblokkeerd geweest.
+Het blokkeerlogboek wordt hieronder ter referentie weergegeven:',
+'blocklog-showsuppresslog'        => 'Deze gebruiker is voorheen geblokkeerd geweest en er zijn (delen van) bewerkingen van deze gebruiker verborgen.
+Het verberkingslogboek wordt hieronder ter referentie weergegeven:',
 'blocklogentry'                   => 'blokkeerde "[[$1]]" voor de duur van $2 $3',
 'reblock-logentry'                => 'heeft de instellingen voor de blokkade voor [[$1]] gewijzigd. Deze vervalt nu op $2 om $3',
 'blocklogtext'                    => 'Hier ziet u een lijst van de recente blokkeringen en deblokkeringen.
@@ -2843,10 +2872,12 @@ U kunt in de bewerkingssamenvatting een reden opgeven.',
 # Attribution
 'anonymous'        => 'Anonieme {{PLURAL:$1|gebruiker|gebruikers}} van {{SITENAME}}',
 'siteuser'         => '{{SITENAME}}-gebruiker $1',
+'anonuser'         => 'Anonieme {{SITENAME}}-gebruiker $1',
 'lastmodifiedatby' => 'Deze pagina is het laatst bewerkt op $1 om $2 door $3.',
 'othercontribs'    => 'Gebaseerd op werk van $1.',
 'others'           => 'anderen',
 'siteusers'        => '{{SITENAME}}-{{PLURAL:$2|gebruiker|gebruikers}} $1',
+'anonusers'        => 'Anonieme {{SITENAME}}-{{PLURAL:$2|gebruiker|gebruikers}} $1',
 'creditspage'      => 'Auteurspagina',
 'nocredits'        => 'Er is geen auteursinformatie beschikbaar voor deze pagina.',
 

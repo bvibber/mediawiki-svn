@@ -228,14 +228,14 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'remembermypassword'         => 'Allicuordate d"a password',
 'yourdomainname'             => "Spiecà 'o dumminio",
 'login'                      => 'Tràse',
-'userlogin'                  => "Tràse o cria n'acciesso nuovo",
+'userlogin'                  => 'Tràse',
 'logout'                     => 'Jèsce',
 'userlogout'                 => 'Jèsce',
 'notloggedin'                => 'Acciesso nun affettuato',
-'nologin'                    => "Nun haje ancora n'acciesso? $1.",
+'nologin'                    => "Nun haje ancora n'acciesso? '''$1'''.",
 'nologinlink'                => 'Crialo mmo',
 'createaccount'              => 'Cria nu cunto nuovo',
-'gotaccount'                 => 'Tiene già nu cunto? $1.',
+'gotaccount'                 => "Tiene già nu cunto? '''$1'''.",
 'gotaccountlink'             => 'Tràse',
 'loginerror'                 => "Probblema 'e accièsso",
 'loginsuccesstitle'          => 'Acciesso affettuato',
@@ -318,9 +318,8 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'recentchangeslinked-toolbox' => 'Cagnamiénte cullegate',
 
 # Upload
-'upload'           => 'Careca file',
-'fileexists-thumb' => "<center>'''Immagine esistente'''</center>",
-'uploadedimage'    => 'ha carecato "[[$1]]"',
+'upload'        => 'Careca file',
+'uploadedimage' => 'ha carecato "[[$1]]"',
 
 # Special:ListFiles
 'listfiles_name' => 'Nomme',

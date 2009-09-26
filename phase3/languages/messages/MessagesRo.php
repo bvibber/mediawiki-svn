@@ -407,6 +407,8 @@ pe titlul secţiunii (JavaScript)',
 'category-file-count'            => '{{PLURAL:$2|Această categorie conţine doar următorul fişier.|{{PLURAL:$1|Următorul fişier|Următoarele $1 fişiere}} se află în această categorie, dintr-un total de $2.}}',
 'category-file-count-limited'    => '{{PLURAL:$1|Următorul fişier|Următoarele $1 fişiere}} se află în categoria curentă.',
 'listingcontinuesabbrev'         => 'cont.',
+'index-category'                 => 'Pagini indexate',
+'noindex-category'               => 'Pagini neindexate',
 
 'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
 'mainpagetext'      => "<big>'''Programul Wiki a fost instalat cu succes.'''</big>",
@@ -607,7 +609,7 @@ Aceasta s-ar putea să indice şi un bug în programul folosit de {{SITENAME}}.'
 'error'                => 'Eroare',
 'databaseerror'        => 'Eroare la baza de date',
 'dberrortext'          => 'A apărut o eroare în sintaxa interogării.
-Aceasta se poate datora probleme în program.
+Aceasta poate indica o problemă în program.
 Ultima interogare încercată a fost:
 <blockquote><tt>$1</tt></blockquote>
 din cadrul funcţiei "<tt>$2</tt>".
@@ -690,19 +692,20 @@ Contul dumneavoatră a fost creat. Nu uitaţi să vă personalizaţi [[Special:P
 'login'                      => 'Autentificare',
 'nav-login-createaccount'    => 'Creare cont / Autentificare',
 'loginprompt'                => 'Trebuie să ai modulele cookie activate pentru a te autentifica la {{SITENAME}}.',
-'userlogin'                  => 'Creare cont / Autentificare',
+'userlogin'                  => 'Autentificare',
 'logout'                     => 'Închide sesiunea',
 'userlogout'                 => 'Închide sesiunea',
 'notloggedin'                => 'Nu sunteţi autentificat',
-'nologin'                    => 'Nu aveţi cont încă? $1.',
+'nologin'                    => "Nu aveţi cont încă? '''$1'''.",
 'nologinlink'                => 'Creaţi-vă un cont de utilizator acum',
 'createaccount'              => 'Creare cont',
-'gotaccount'                 => 'Aveţi deja un cont de utilizator? $1.',
+'gotaccount'                 => "Aveţi deja un cont de utilizator? '''$1'''.",
 'gotaccountlink'             => 'Autentificaţi-vă',
 'createaccountmail'          => 'după e-mail',
 'badretype'                  => 'Parolele pe care le-ai introdus diferă.',
 'userexists'                 => 'Numele de utilizator pe care l-aţi introdus există deja. Încercaţi cu un alt nume.',
 'loginerror'                 => 'Eroare de autentificare',
+'createaccounterror'         => 'Nu pot crea contul: $1',
 'nocookiesnew'               => 'Contul a fost creat, dar dvs. nu sunteţi autentificat(ă). {{SITENAME}} foloseşte cookie-uri pentru a reţine utilizatorii autentificaţi. Browser-ul dvs. are modulele cookie dezactivate (disabled). Vă rugăm să le activaţi şi să vă reautentificaţi folosind noul nume de utilizator şi noua parolă.',
 'nocookieslogin'             => '{{SITENAME}} foloseşte module cookie pentru a autentifica utilizatorii. Browser-ul dvs. are cookie-urile dezactivate. Vă rugăm să le activaţi şi să incercaţi din nou.',
 'noname'                     => 'Numele de utilizator pe care l-ai specificat este invalid.',
@@ -728,6 +731,7 @@ Dacă această cerere a fost efectuată de altcineva sau dacă v-aţi amintit
 parola şi nu doriţi să o schimbaţi, ignoraţi acest mesaj şi continuaţi 
 să folosiţi vechea parolă.',
 'noemail'                    => 'Nu este nici o adresă de e-mail înregistrată pentru utilizatorul „$1”.',
+'noemailcreate'              => 'Trebuie oferită o adresă e e-mail validă.',
 'passwordsent'               => 'O nouă parolă a fost trimisă la adresa de e-mail a utilizatorului "$1". Te rugăm să te autentifici pe {{SITENAME}} după ce o primeşti.',
 'blocked-mailpassword'       => 'Această adresă IP este blocată la editare, şi deci nu este permisă utilizarea funcţiei de recuperare a parolei pentru a preveni abuzul.',
 'eauthentsent'               => 'Un email de confirmare a fost trimis adresei nominalizate. Înainte de a fi trimis orice alt email acestui cont, trebuie să urmaţi intrucţiunile din email, pentru a confirma că acest cont este într-adevăr al dvs.',
@@ -747,7 +751,8 @@ Prin urmare, vizitatorii care folosesc acelaşi IP nu mai pot crea alte conturi 
 Este de dorit să vă autentificaţi şi să schimbaţi parola cât mai repede.
 
 Ignoraţi acest mesaj, dacă acea creare a fost o greşeală.',
-'login-throttled'            => 'Ai încercat de prea multe ori să introduci parola. Te rog aşteaptă înainte de a încerca din nou.',
+'login-throttled'            => 'Aţi avut prea multe încercări de a vă autentifica.
+Vă rugăm să aşteptaţi până să mai încercaţi.',
 'loginlanguagelabel'         => 'Limba: $1',
 
 # Password reset dialog
@@ -857,7 +862,11 @@ Dacă sunteţi un astfel de utilizator şi credeţi că vă sunt adresate mesaje
 'noarticletext'                    => 'În acest moment nu este niciun text în această pagină.
 Puteţi [[Special:Search/{{PAGENAME}}|căuta acest titlu]] în alte pagini,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} căuta înregistrări în jurnale], sau [{{fullurl:{{FULLPAGENAME}}|action=edit}} crea această pagină]</span>.',
+'noarticletext-nopermission'       => 'Nu este niciun text în această pagină.
+Puteţi [[Special:Search/{{PAGENAME}}|căuta titlul paginii]] în alte pagini,
+sau <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} să căutaţi în jurnale]</span>.',
 'userpage-userdoesnotexist'        => 'Contul de utilizator "$1" nu este înregistrat. Verificaţi dacă doriţi să creaţi/modificaţi această pagină.',
+'userpage-userdoesnotexist-view'   => 'Contul de utilizator "$1" nu este înregistrat.',
 'clearyourcache'                   => "'''Notă:''' După salvare, trebuie să treceţi peste cache-ul browser-ului pentru a vedea modificările. '''Mozilla/Safari/Konqueror:''' ţineţi apăsat ''Shift'' în timp ce apăsaţi ''Reload'' (sau apăsaţi ''Ctrl-Shift-R''), '''IE:''' apăsaţi ''Ctrl-F5'', '''Opera:''' apăsaţi ''F5''.",
 'usercssyoucanpreview'             => "'''Sfat:''' Foloseşte butonul 'Arată previzualizare' pentru a testa noul tău css/js înainte de a salva.",
 'userjsyoucanpreview'              => "'''Sfat:''' Foloseşte butonul 'Arată previzualizare' pentru a testa noul tău css/js înainte de a salva.",
@@ -1086,6 +1095,7 @@ Nu ai acces asupra lui.',
 'revdelete-otherreason'       => 'Motiv diferit/adiţional',
 'revdelete-reasonotherlist'   => 'Alt motiv',
 'revdelete-edit-reasonlist'   => 'Modifică motivele ştergerii',
+'revdelete-offender'          => 'Autorul reviziei:',
 
 # Suppression log
 'suppressionlog'     => 'Înlătură jurnalul',
@@ -1206,7 +1216,7 @@ Folosirea linkurilor de navigare va reseta această coloană.',
 'prevn-title'                      => '{{PLURAL:$1|anteriorul|anterioarele}} $1 {{PLURAL:$1|rezultat|rezultate}}',
 'nextn-title'                      => '{{PLURAL:$1|următorul|următoarele}} $1 {{PLURAL:$1|rezultat|rezultate}}',
 'shown-title'                      => 'Arată $1 {{PLURAL:$1|rezultat|rezultate}} pe pagină',
-'viewprevnext'                     => 'Vezi ($1) ($2) ($3).',
+'viewprevnext'                     => 'Vezi ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Opţiuni căutare',
 'searchmenu-exists'                => "* Pagina '''[[$1]]'''",
 'searchmenu-new'                   => "'''Creează pagina \"[[:\$1]]\" pe acest wiki!'''",
@@ -1281,7 +1291,7 @@ Folosirea linkurilor de navigare va reseta această coloană.',
 'prefs-watchlist-days-max'      => '(maxim 7 zile)',
 'prefs-watchlist-edits'         => 'Numărul de editări care apar în lista extinsă a paginilor urmărite:',
 'prefs-watchlist-edits-max'     => '(număr maxim: 1000)',
-'prefs-watchlist-token'         => 'Jeton pentru lista de urmărire',
+'prefs-watchlist-token'         => 'Jeton pentru lista de urmărire:',
 'prefs-misc'                    => 'Parametri diverşi',
 'prefs-resetpass'               => 'Modifică parola',
 'prefs-email'                   => 'Opţiuni e-mail',
@@ -1442,6 +1452,7 @@ Dimensiunea trebuie să fie mai mică de $1 {{PLURAL:$1|caracter|caractere}}.',
 'right-bigdelete'             => 'Şterge pagini cu istoric lung',
 'right-deleterevision'        => 'Şterge şi recuperează versiuni specifice ale paginilor',
 'right-deletedhistory'        => 'Vezi intrările şterse din istoric, fără textul asociat',
+'right-deletedcontent'        => 'Vizializaţi textul şters şi modificările dintre versiunile şterse',
 'right-browsearchive'         => 'Caută pagini şterse',
 'right-undelete'              => 'Recuperează pagini',
 'right-suppressrevision'      => 'Examinează şi restaurează reviziile ascunse faţă de administratori',
@@ -1474,6 +1485,7 @@ Dimensiunea trebuie să fie mai mică de $1 {{PLURAL:$1|caracter|caractere}}.',
 'right-reset-passwords'       => 'Resetarea parolelor altor utilizatori',
 'right-override-export-depth' => 'Exportă inclusiv paginile legate până la o adâncime de 5',
 'right-versiondetail'         => 'Arată informaţii extise despre versiunea programului',
+'right-root'                  => 'Realizaţi toate acţiunile pe wiki',
 
 # User rights log
 'rightslog'      => 'Jurnal permisiuni de utilizator',
@@ -1614,17 +1626,18 @@ Vezi [[Special:NewFiles|galeria fişierelor noi]] pentru o mai bună vizualizare
 'large-file'                  => 'Este recomandat ca fişierele să nu fie mai mari de $1; acest fişier are $2.',
 'largefileserver'             => 'Fişierul este mai mare decât este configurat serverul să permită.',
 'emptyfile'                   => 'Fişierul pe care l-aţi încărcat pare a fi gol. Aceasta poate fi datorită unei greşeli în numele fişierului. Verificaţi dacă într-adevăr doriţi să încărcaţi acest fişier.',
-'fileexists'                  => "Un fişier cu acelaşi nume există deja, vă rugăm verificaţi '''<tt>$1</tt>''' dacă nu sunteţi sigur dacă doriţi să îl modificaţi.",
-'filepageexists'              => "Pagina cu descrierea fişierului a fost deja creată la '''<tt>$1</tt>''', dar niciun fişier cu acest nume nu există în acest moment.
+'fileexists'                  => "Un fişier cu acelaşi nume există deja, vă rugăm verificaţi '''<tt>[[:$1]]</tt>''' dacă nu sunteţi sigur dacă doriţi să îl modificaţi.
+[[$1|thumb]]",
+'filepageexists'              => "Pagina cu descrierea fişierului a fost deja creată la '''<tt>[[:$1]]</tt>''', dar niciun fişier cu acest nume nu există în acest moment.
 Sumarul pe care l-ai introdus nu va apărea în pagina cu descriere.
-Pentru ca sumarul tău să apară, va trebui să îl adaugi manual",
-'fileexists-extension'        => "Un fişier cu un nume similar există:<br />
-Numele fişierului de încărcat: '''<tt>$1</tt>'''<br />
-Numele fişierului existent: '''<tt>$2</tt>'''<br />
+Pentru ca sumarul tău să apară, va trebui să îl adaugi manual.
+[[$1|miniatură]]",
+'fileexists-extension'        => "Un fişier cu un nume similar există: [[$2|thumb]]
+* Numele fişierului de încărcat: '''<tt>[[:$1]]</tt>'''
+* Numele fişierului existent: '''<tt>[[:$2]]</tt>'''
 Te rog alege alt nume.",
-'fileexists-thumb'            => "<center>'''Imagine existentă'''</center>",
-'fileexists-thumbnail-yes'    => "Fişierul pare a fi o imagine cu o rezoluţie scăzută ''(thumbnail)''.
-Verifică fişierul'''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Fişierul pare a fi o imagine cu o rezoluţie scăzută ''(thumbnail)''. [[$1|thumb]]
+Verifică fişierul'''<tt>[[:$1]]</tt>'''.
 Dacă fişierul verificat este identic cu imaginea originală nu este necesară încărcarea altui thumbnail.",
 'file-thumbnail-no'           => "Numele fişierului începe cu '''<tt>$1</tt>'''.
 Se pare că este o imagine cu dimensiune redusă''(thumbnail)''.
@@ -1670,6 +1683,14 @@ Dacă problema persistă, contactaţi un [[Special:ListUsers/sysop|administrator
 'upload-too-many-redirects' => 'URL-ul conţinea prea multe redirecţionări',
 'upload-unknown-size'       => 'Mărime necunoscută',
 'upload-http-error'         => 'A avut loc o eroare HTTP: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Acces interzis',
+'img-auth-nopathinfo'   => 'PATH_INFO lipseşte.
+Serverul dumneavoastră nu a fost setat pentru a trece aceste informaţii.
+S-ar putea să fie bazat pe CGI şi să nu suporte img_auth.
+Vedeţi http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-nofile'       => 'Fişierul "$1" nu există.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Nu pot găsi adresa URL',
@@ -2076,14 +2097,13 @@ Dacă doriţi să eliminaţi această pagină din lista dv. de pagini urmărite 
 'enotif_impersonal_salutation' => '{{SITENAME}} utilizator',
 'changed'                      => 'modificat',
 'created'                      => 'creat',
-'enotif_deletedpagetext'       => 'Această pagină nu mai este disponibilă.',
 'enotif_subject'               => 'Pagina $PAGETITLE de la {{SITENAME}} a fost $CHANGEDORCREATED de $PAGEEDITOR',
 'enotif_lastvisited'           => 'Vedeţi $1 pentru toate modificările de la ultima dvs. vizită.',
 'enotif_lastdiff'              => 'Apasă $1 pentru a vedea această schimbare.',
 'enotif_anon_editor'           => 'utilizator anonim $1',
 'enotif_body'                  => 'Domnule/Doamnă $WATCHINGUSERNAME,
 
-pagina $PAGETITLE de la {{SITENAME}} a fost $CHANGEDORCREATED în $PAGEEDITDATEANDTIME de $PAGEEDITOR. $REVINFO
+pagina $PAGETITLE de la {{SITENAME}} a fost $CHANGEDORCREATED în $PAGEEDITDATE de $PAGEEDITOR, vedeţi la $PAGETITLE_URL versiunea curentă.
 
 $NEWPAGE
 
@@ -2379,7 +2399,6 @@ Vezi [[Special:IPBlockList|lista de adrese IP şi conturi blocate]] pentru a rev
 'contribslink'                    => 'contribuţii',
 'autoblocker'                     => 'Autoblocat fiindcă folosiţi aceeaşi [[adresă IP]] ca şi „$1”. Motivul este „$2”.',
 'blocklogpage'                    => 'Jurnal blocări',
-'blocklog-fulllog'                => 'Întregul jurnal al blocărilor',
 'blocklogentry'                   => 'a blocat "[[$1]]" pe o perioadă de $2 $3',
 'reblock-logentry'                => 'a fost schimbată blocarea pentru [[$1]] cu data expirării la $2 $3',
 'blocklogtext'                    => 'Acest jurnal cuprinde acţiunile de blocare şi deblocare. Adresele IP blocate automat nu sunt afişate. Vizitaţi [[Special:IPBlockList|lista de adrese blocate]] pentru o listă explicită a adreselor blocate în acest moment.',
@@ -3342,5 +3361,13 @@ Introdu numele fişierului fără prefixul "{{ns:file}}:".',
 'htmlform-submit'              => 'Trimite',
 'htmlform-reset'               => 'Anulează modificările',
 'htmlform-selectorother-other' => 'Altul',
+
+# Add categories per AJAX
+'ajax-add-category-summary'    => 'Adaugă categoria "$1"',
+'ajax-remove-category-summary' => 'Elimină categoria "$1"',
+'ajax-error-title'             => 'Eroare',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => 'Eliminarea categoriei nu a fost posibilă.
+Acest lucru are loc de obicei atunci când categoria a fost adăugată în pagină printr-un format.',
 
 );

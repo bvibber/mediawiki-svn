@@ -502,14 +502,14 @@ Kal olik pejafon. No glömolöd ad votükön buükamis olik in {{SITENAME}}.',
 'login'                      => 'Nunädolös obi',
 'nav-login-createaccount'    => 'Nunädön oki / jafön kali',
 'loginprompt'                => 'Mutol mögükön „kekilis“ ad kanön nunädön oli in {{SITENAME}}.',
-'userlogin'                  => 'Nunädön oki / jafön kali',
+'userlogin'                  => 'Nunädön oki',
 'logout'                     => 'Senunädön oki',
 'userlogout'                 => 'Senunädön oki',
 'notloggedin'                => 'No enunädol oli',
-'nologin'                    => 'No labol-li kali? $1.',
+'nologin'                    => "No labol-li kali? '''$1'''.",
 'nologinlink'                => 'Jafolös bali',
 'createaccount'              => 'Jafön kali',
-'gotaccount'                 => 'Ya labol-li kali? $1.',
+'gotaccount'                 => "Ya labol-li kali? '''$1'''.",
 'gotaccountlink'             => 'Nunädolös obi',
 'createaccountmail'          => 'me pot leäktronik',
 'badretype'                  => 'Letavöds fa ol pepenöls no leigons.',
@@ -964,7 +964,7 @@ Kontrololös, va votükam at okipon fovöfi padajenotema.',
 'prevn-title'                      => '{{PLURAL:$1|Sukasek|Sukaseks}} büik $1',
 'nextn-title'                      => '{{PLURAL:$1|Sukasek|Sukaseks}} fovik $1',
 'shown-title'                      => 'Jonön {{PLURAL:$1|sukaseki|sukasekis}} $1 a pad',
-'viewprevnext'                     => 'Logön padis ($1) ($2) ($3).',
+'viewprevnext'                     => 'Logön padis ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Sukaparamets',
 'searchmenu-exists'                => "'''Dabinon pad labü nem: \"[[:\$1]]\" su vük at'''",
 'searchmenu-new'                   => "'''Jafolös padi: \"[[:\$1]]\" su vük at!'''",
@@ -1326,14 +1326,15 @@ Ad pladön ragivi ini pad semik, gebolös yümi fomätü:
 'large-file'                  => 'Pakomandos, das ragivs no binons gretikums ka mö $1; ragiv at binon mö $2.',
 'largefileserver'             => 'Ragiv at binon tu gretik: dünanünöm no kanon dälon oni.',
 'emptyfile'                   => 'Ragiv fa ol pelöpüköl binon jiniko vägik. Kod atosa äbinon ba pöl pö ragivanem. Vilol-li jenöfo löpükön ragivi at?',
-'fileexists'                  => "Ragiv labü nem at ya dabinon, logolös, begö! '''<tt>$1</tt>''' üf no sevol fümiko, va vilol votükön oni.",
-'filepageexists'              => "Bepenamapad ragiva at ya pejafon ('''<tt>$1</tt>'''), ab ragiv nonik labü nem at abinon anu. Naböfodönuam olik no opubon su bepenamapad. Ad pübön oni us, onedol redakön oni ol it.",
-'fileexists-extension'        => "Ragiv labü nem sümik ya dabinon:<br />
-Nem ragiva palöpüköl: '''<tt>$1</tt>'''<br />
-Nem ragiva dabinöl: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Ragiv labü nem at ya dabinon, logolös, begö! '''<tt>[[:$1]]</tt>''' üf no sevol fümiko, va vilol votükön oni.
+[[$1|thumb]]",
+'filepageexists'              => "Bepenamapad ragiva at ya pejafon ('''<tt>[[:$1]]</tt>'''), ab ragiv nonik labü nem at abinon anu. Naböfodönuam olik no opubon su bepenamapad. Ad pübön oni us, onedol redakön oni ol it.",
+'fileexists-extension'        => "Ragiv labü nem sümik ya dabinon: [[$2|thumb]]
+* Nem ragiva palöpüköl: '''<tt>[[:$1]]</tt>'''
+* Nem ragiva dabinöl: '''<tt>[[:$2]]</tt>'''
 Välolös, begö! nemi difik.",
-'fileexists-thumb'            => "<center>'''Magod dabinöl'''</center>",
-'fileexists-thumbnail-yes'    => "Ragiv at binon jiniko magoda gretota smalik ''(magodil)''. Logolös, begö! ragivi ya dabinöli: '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Ragiv at binon jiniko magoda gretota smalik ''(magodil)''. [[$1|thumb]]
+Logolös, begö! ragivi ya dabinöli: '''<tt>[[:$1]]</tt>'''.
 If ragiv ya dabinöli binon magod ot gretota rigik, no zesüdos ad löpükön magodili pluik.",
 'file-thumbnail-no'           => "Ragivanem primon me '''<tt>$1</tt>'''. Binon jiniko magod gretota smalik ''(magodil)''.
 Üf labol magodi at gretota rigik, löpükölos oni, pläo votükolös ragivanemi.",
@@ -1740,7 +1741,7 @@ If vilol poso moükön padi de galädalised olik, välolös lä on knopi: „neg
 'enotif_body'                  => 'O $WATCHINGUSERNAME löfik!
 
 
-Pad: $PAGETITLE in {{SITENAME}} $CHANGEDORCREATED tü $PAGEEDITDATEANDTIME fa geban: $PAGEEDITOR; otuvol fomami anuik in $PAGETITLE_URL.
+Pad: $PAGETITLE in {{SITENAME}} $CHANGEDORCREATED tü $PAGEEDITDATE fa geban: $PAGEEDITOR; otuvol fomami anuik in $PAGETITLE_URL.
 
 $NEWPAGE
 
@@ -2033,7 +2034,6 @@ $1',
 'contribslink'                    => 'keblünots',
 'autoblocker'                     => 'Peblokon bi ladet-IP olik pegebon brefabüo fa geban: „[[User:$1|$1]]“. Kod blokama ela $1 binon: „$2“',
 'blocklogpage'                    => 'Jenotalised blokamas',
-'blocklog-fulllog'                => 'Jenotalised lölöfik blokamas',
 'blocklogentry'                   => '"[[$1]]" peblokon dü: $2 $3',
 'reblock-logentry'                => 'blokamaparamets gebana: [[$1]] pevotükons, pro dul: $2 (kod: $3)',
 'blocklogtext'                    => 'Is binon lised gebanablokamas e gebanasäblokamas. Ladets-IP itjäfidiko pebloköls no pajonons. Logolös blokamis e xilis anu lonöfölis in [[Special:IPBlockList|lised IP-blokamas]].',

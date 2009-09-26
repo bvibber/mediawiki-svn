@@ -140,7 +140,7 @@ $messages = array(
 'yourname'                => 'Ном дутилизатору:',
 'login'                   => 'Приласнаере',
 'nav-login-createaccount' => 'Приласнаере / Нажбе',
-'userlogin'               => 'Приласнаере / креаре нутилизатору',
+'userlogin'               => 'Приласнаере',
 'userlogout'              => 'отластаере',
 
 # Edit page toolbar
@@ -193,7 +193,7 @@ $messages = array(
 
 # Search results
 'noexactmatch'   => "'''Нпажу вец лном \"\$1\" н-ќсистст.''' Путе [[:\$1|креаре це пажу]].",
-'viewprevnext'   => 'Ву ($1) ($2) ($3)',
+'viewprevnext'   => 'Ву ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url' => 'Help:Ајутор',
 'powersearch'    => 'каутај авансата',
 

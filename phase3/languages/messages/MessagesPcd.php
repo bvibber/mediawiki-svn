@@ -298,14 +298,14 @@ $messages = array(
 'login'                   => 'Intrer',
 'nav-login-createaccount' => 'Intrer / créer vote conpte',
 'loginprompt'             => 'I feut avoèr dés coukies pou pouvoèr intrer din {{SITENAME}}.',
-'userlogin'               => 'Intrer / créer vote conpte',
+'userlogin'               => 'Intrer',
 'logout'                  => 'Sortir',
 'userlogout'              => 'Sortir',
 'notloggedin'             => 'Poin connékté',
-'nologin'                 => "os n'avez mie un conpte? $1.",
+'nologin'                 => "os n'avez mie un conpte? '''$1'''.",
 'nologinlink'             => 'Créer un conpte',
 'createaccount'           => 'Créer un conpte',
-'gotaccount'              => "Jou qu'os avez piécha un conpte? $1.",
+'gotaccount'              => "Jou qu'os avez piécha un conpte? '''$1'''.",
 'gotaccountlink'          => 'Intrer',
 'createaccountmail'       => 'par imèle',
 'badretype'               => "Chés mots d'passe intrés, is sont poin bon.",
@@ -406,7 +406,7 @@ Os pouvez [[:\$1|créer chol pache]].",
 'prevn'                     => 'dvant {{PLURAL:$1|$1}}',
 'nextn'                     => 'apreu {{PLURAL:$1|$1}}',
 'prevn-title'               => 'Dvant $1 {{PLURAL:$1|résultat|résultats}}',
-'viewprevnext'              => 'Vir ($1) ($2) ($3)',
+'viewprevnext'              => 'Vir ($1 {{int:pipe-separator}} $2) ($3)',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 mot|$2 mots}})',
 'search-redirect'           => '(érdirection $1)',
 'search-section'            => '(sekchon $1)',
@@ -473,10 +473,11 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'rc-enhanced-hide'               => 'Mucher chés détails',
 
 # Recent changes linked
-'recentchangeslinked'       => 'Darins canjemints érliés',
-'recentchangeslinked-title' => 'Cangemints à pérpos éd "$1"',
-'recentchangeslinked-page'  => 'Nom del pache:',
-'recentchangeslinked-to'    => "Vir putot chés canjemints d'chés paches aveuc un loïen su l'pache-lo",
+'recentchangeslinked'         => 'Darins canjemints érliés',
+'recentchangeslinked-title'   => 'Cangemints à pérpos éd "$1"',
+'recentchangeslinked-summary' => "Ch'est eune lisse d'chés darins canjemints su chés paches qu'ont un loïen aveuc l'pache-lo. Chés paches din vote [[Special:Watchlist|''lisse à suire'']] il sont in '''cros'''.",
+'recentchangeslinked-page'    => 'Nom del pache:',
+'recentchangeslinked-to'      => "Vir putot chés canjemints d'chés paches aveuc un loïen su l'pache-lo",
 
 # Upload
 'upload'        => 'Quértcher chés fichiés',
@@ -567,6 +568,7 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 
 # Delete
 'deletepage'            => "Défacer l'pache",
+'confirmdeletetext'     => "Vos alez défacer eune pache ou un fichié aveuc toutes chés antieusses vérchons.<br /> Confreumer éq ch'est cho éq vos voulez foaire, éq vos conprindez chés consécanches et pi éq ch'est bin s'lon el [[{{MediaWiki:Policy-url}}|politique éd MédiaWiki]].",
 'actioncomplete'        => 'Plònne acchon',
 'deletedtext'           => "« <nowiki>$1</nowiki> » o té défacé.
 Vir $2 pou eune lisse d'chés darinnes défachons.",
@@ -670,6 +672,7 @@ Vlo chés réglages del pache '''$1''' à ch'momint-chi:",
 'pagemovedsub'    => 'Déplachemint réussi',
 'movepage-moved'  => '<big>\'\'\'"$1" o té déplaché su "$2"\'\'\'</big>',
 'articleexists'   => "Il y o eune pache aveuc ch'nom-lo dja, ou bin ch'tite couési n'est poin valabe. <br /> I feut in prinde un eute",
+'talkexists'      => "'''L'pache ale o té déplachée   mais l'pache d'pérlache n'put poin éte déplachée ker il y o pécho eune pache d'pérlache aveuc ch'nouvieu nom. <br /> I feut foaire un touillache al main.'''",
 'movedto'         => 'Déplaché dsus',
 'movetalk'        => "Canjer ch'nom del pache d'pérlache apparièe",
 '1movedto2'       => 'déplacher [[$1]] dsus [[$2]]',
@@ -740,6 +743,7 @@ Os pouvez vir l'source",
 'tooltip-compareselectedversions' => 'Vir chés diférinches intre chés deus couésies vérchons del pache-lo',
 'tooltip-watch'                   => 'Ajouter chol pache-lo à vo lisse à suire',
 'tooltip-rollback'                => '« Racacher » cancéle aveuc un clic el (ou chés) modificachon(s) del pache-lo pèr sin darin contérbucheu.',
+'tooltip-undo'                    => "« Undo » ( ''démangler'' ) értire ch'canjemint-lo pi ouvre l' fénéte d'édichon din ch'mode ''prévir''. <br /> In put mette un motif din ch'résumé.",
 
 # Browsing diffs
 'previousdiff' => '← Pu vieille édition',
@@ -751,6 +755,11 @@ Os pouvez vir l'source",
 'svg-long-desc'        => '(Fichié SVG, résoluchon éd $1 × $2 picsels, diminchon: $3)',
 'show-big-image'       => 'Plinne résoluchon',
 'show-big-image-thumb' => '<small>Diminchon del intérvue-lo : $1 × $2 picséls</small>',
+
+# Bad image list
+'bad_image_list' => "Ch'format ch'est:
+
+In érbéye seulemint chés lisses éd limérachon (aveuc * al copéte). <br /> Ech preumié loïen d'eune line i doét éte échti d'eune méchante image. <br /> Chés eutes loïens su el méme line s'ront érbéyés conme des éssékcions, pèr eximpe des paches où l'image put aparoète.",
 
 # Metadata
 'metadata'          => 'Metadata',

@@ -263,9 +263,9 @@ Sie kinnan {{SITENAME}} iatzat anonym weitanutzn, oda si unta am selben oda am a
 'logout'                     => 'Obmeidn',
 'userlogout'                 => 'Obmeidn',
 'notloggedin'                => 'Net ogmeldt',
-'nologin'                    => 'Du hast koa Benutzakonto? $1.',
+'nologin'                    => "Du hast koa Benutzakonto? '''$1'''.",
 'createaccount'              => 'Benutzerkonto oleng',
-'gotaccount'                 => 'Du hast hast scho a Benutzerkonto? $1.',
+'gotaccount'                 => "Du hast hast scho a Benutzerkonto? '''$1'''.",
 'gotaccountlink'             => 'Omeidn',
 'userexists'                 => "Der Benutzernam is schon vergem. Bittschee nehman S' an andern.",
 'loginerror'                 => 'Fehla bei da Oomeidung',
@@ -420,7 +420,7 @@ Wãnn'st di mid dem Thema auskennst, kãnnst [[:$1|de Seitn söiwa schreim]].",
 'notitlematches'            => 'Koane Üwareinstimmungen mid de Seitntitl',
 'prevn'                     => "d'voahearing {{PLURAL:$1|$1}}",
 'nextn'                     => 'de nextn {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'Zoag ($1) ($2) ($3)',
+'viewprevnext'              => 'Zoag ($1 {{int:pipe-separator}} $2) ($3)',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 Woat|$2 Wöata}})',
 'search-redirect'           => '(Weidaleitung vu „$1“)',
 'search-suggest'            => 'Hädst „$1“ gmoant?',
@@ -676,7 +676,7 @@ Wennst de Seitn wieder vo deina Beobachtungslistn wegdoa mechtn, klickst auf da 
 'changed'            => "g'ändat",
 'enotif_lastvisited' => 'Alle Änderungen auf oan Blick: $1',
 'enotif_body'        => 'Liaba/e $WATCHINGUSERNAME,
-de {{SITENAME}} Seitn "$PAGETITLE" is vo $PAGEEDITOR am $PAGEEDITDATEANDTIME $CHANGEDORCREATED worn.
+de {{SITENAME}} Seitn "$PAGETITLE" is vo $PAGEEDITOR am $PAGEEDITDATE $CHANGEDORCREATED worn.
 Zusammenfassung vom Bearbeiter: $PAGESUMMARY $PAGEMINOREDIT
 Es wern solang koae weitern Benachrichtigungsmails gsendt, bis Sie de Seitn wieder besuacht ham. Auf Eanana Beobachtungsseitn kinnans S\' alle Benachrichtigungsmarker zsamm zrucksetzen.
              Eana {{SITENAME}} Benachrichtigungssystem
@@ -787,7 +787,7 @@ Da aktuelle Text vo da glöschtn Seitn is nur fia Administratoren zum seng.',
 'autoblocker'              => "Automatische Sperre, weil s' a gmeinsame IP-Adressn mit „$1“ hernehma. Grund: „$2“.",
 'blocklogpage'             => 'Benutzasperrlogbiache',
 'blocklogentry'            => "håd „[[$1]]“ fia'n foigndn Zeidraum gspead: $2; $3",
-'unblocklogentry'          => "håd d'Spear vu „[[$1]]“ aufghom",
+'unblocklogentry'          => "håd d'Spear vu „$1“ aufghom",
 'block-log-flags-anononly' => 'netta Anonyme',
 'block-log-flags-nocreate' => "S'Eastöin vu Benutzakontn is gspead",
 

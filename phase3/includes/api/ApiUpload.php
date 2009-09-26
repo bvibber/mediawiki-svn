@@ -129,7 +129,7 @@ class ApiUpload extends ApiBase {
 			if ( isset( $this->mParams['file'] ) ) {
 				$this->mUpload = new UploadFromFile();
 				$this->mUpload->initialize(
-					$request->getFileName( 'file' ),
+					$this->mParams['filename'],
 					$request->getFileTempName( 'file' ),
 					$request->getFileSize( 'file' )
 				);
@@ -262,12 +262,9 @@ class ApiUpload extends ApiBase {
 				if( isset( $warnings['exists'] ) ) {
 					$warning = $warnings['exists'];
 					unset( $warnings['exists'] );
-					$warnings[$warning[0]] = $warning[1]->getName(); 
+					$warnings[$warning['warning']] = $warning['file']->getName(); 
 				}
-				
-				if( isset( $warnings['filewasdeleted'] ) )
-					$warnings['filewasdeleted'] = $warnings['filewasdeleted']->getName();
-					
+									
 				$result['result'] = 'Warning';
 				$result['warnings'] = $warnings;
 

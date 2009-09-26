@@ -736,9 +736,9 @@ $1',
 ربما تكون قد كتبت المسار بطريقة غير صحيحة، أو اتبعت وصلة غير صحيحة.
 هذا ربما يشير أيضا إلى علة في {{SITENAME}}.',
 'nosuchspecialpage' => 'لا توجد صفحة خاصة بهذا الاسم',
-'nospecialpagetext' => "<big>'''لقد طلبت صفحة خاصة غير صحيحة.'''</big>
+'nospecialpagetext' => '<strong>لقد طلبت صفحة خاصة غير صحيحة.</strong>
 
-قائمة بالصفحات الخاصة الصحيحة يمكن إيجادها في [[Special:SpecialPages|{{int:specialpages}}]].",
+قائمة بالصفحات الخاصة الصحيحة يمكن إيجادها في [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'خطأ',
@@ -833,16 +833,16 @@ $2',
 'yourdomainname'             => 'نطاقك:',
 'externaldberror'            => 'هناك إما خطأ في دخول قاعدة البيانات الخارجية أو أنه غير مسموح لك بتحديث حسابك الخارجي.',
 'login'                      => 'دخول',
-'nav-login-createaccount'    => 'دخول / إنشاء حساب',
+'nav-login-createaccount'    => 'لُج / أنشئ حسابًا',
 'loginprompt'                => 'يجب أن تكون الكوكيز لديك مفعلة لتسجل الدخول إلى {{SITENAME}}.',
-'userlogin'                  => 'سجل الدخول / أنشىء حساب',
-'logout'                     => 'خروج',
-'userlogout'                 => 'خروج',
+'userlogin'                  => 'سجل الدخول',
+'logout'                     => 'اخرج',
+'userlogout'                 => 'اخرج',
 'notloggedin'                => 'غير مسجل الدخول',
-'nologin'                    => 'لا تمتلك حسابا؟ $1.',
+'nologin'                    => "لا تمتلك حسابا؟ '''$1'''.",
 'nologinlink'                => 'قم بإنشاء حساب',
 'createaccount'              => 'أنشئ حسابا',
-'gotaccount'                 => 'تمتلك حسابا بالفعل؟ $1.',
+'gotaccount'                 => "تمتلك حسابا بالفعل؟ '''$1'''.",
 'gotaccountlink'             => 'دخول',
 'createaccountmail'          => 'بواسطة البريد الإلكتروني',
 'badretype'                  => 'كلمات السر التي أدخلتها لا تتطابق.',
@@ -1197,7 +1197,7 @@ $2',
 'rev-deleted-unhide-diff'     => "واحدة من مراجعتي هذا الفرق تم '''حذفها'''.
 ربما تكون هناك تفاصيل في [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} سجل الحذف].
 كإداري مازال بإمكانك [$1 رؤية هذا الفرق] إذا أردت المتابعة.",
-'rev-delundel'                => 'عرض/إخفاء',
+'rev-delundel'                => 'اعرض/أخفِ',
 'revisiondelete'              => 'حذف/استرجاع المراجعات',
 'revdelete-nooldid-title'     => 'مراجعة هدف غير صحيحة',
 'revdelete-nooldid-text'      => 'أنت إما أنك لم تحدد مراجعة (مراجعات) معينة كهدف لأداء هذا الفعل، المراجعة المحددة غير موجودة، أو أنك تحاول إخفاء المراجعة الحالية.',
@@ -1381,7 +1381,7 @@ $1",
 'prevn-title'                      => '$1 {{PLURAL:$1|نتيجة|نتيجة}} سابقة',
 'nextn-title'                      => '$1 {{PLURAL:$1|نتيجة|نتيجة}} تالية',
 'shown-title'                      => 'عرض $1 {{PLURAL:$1|نتيجة|نتيجة}} لكل صفحة',
-'viewprevnext'                     => 'عرض ($1) ($2) ($3).',
+'viewprevnext'                     => 'عرض ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'خيارات البحث',
 'searchmenu-exists'                => "*الصفحة '''[[$1]]'''",
 'searchmenu-new'                   => "'''أنشئ الصفحة \"[[:\$1]]\" في هذا الويكي!'''",
@@ -1397,7 +1397,7 @@ $1",
 'searchprofile-images-tooltip'     => 'ابحث عن الصور',
 'searchprofile-everything-tooltip' => 'ابحث في كل المحتوى (شاملا صفحات النقاش)',
 'searchprofile-advanced-tooltip'   => 'ابحث في النطاقات المخصصة',
-'search-result-size'               => '$1 ({{PLURAL:$2|1 كلمة|$2 كلمة}})',
+'search-result-size'               => '$1 ({{PLURAL:$2|لا كلمات|كلمة واحدة|كلمتان|$2 كلمات|$2 كلمة}})',
 'search-result-score'              => 'الارتباط: $1%',
 'search-redirect'                  => '(تحويلة $1)',
 'search-section'                   => '(قسم $1)',
@@ -1710,7 +1710,7 @@ $1",
 'recentchanges-legend-bot'          => '$1 - تعديل بوت',
 'recentchanges-label-bot'           => 'أجرى هذا التعديل بوت',
 'recentchanges-legend-unpatrolled'  => '$1 - تعديل غير مُراجع',
-'recentchanges-label-unpatrolled'   => 'لم يُراجع هذا التعديل إلى الآت',
+'recentchanges-label-unpatrolled'   => 'لم يُراجع هذا التعديل إلى الآن',
 'rcnote'                            => "بالأسفل {{PLURAL:$1|'''1''' تغيير|آخر '''$1''' تغيير}} في آخر {{PLURAL:$2|يوم|'''$2''' يوم}}، بدءا من $5، $4.",
 'rcnotefrom'                        => "بالأسفل التغييرات منذ '''$2''' (إلى '''$1''' معروضة).",
 'rclistfrom'                        => 'أظهر التغييرات بدءا من $1',
@@ -1723,7 +1723,7 @@ $1",
 'rclinks'                           => 'أظهر آخر $1 تعديل في آخر $2 يوم<br />$3',
 'diff'                              => 'فرق',
 'hist'                              => 'تاريخ',
-'hide'                              => 'إخفاء',
+'hide'                              => 'أخفِ',
 'show'                              => 'عرض',
 'minoreditletter'                   => 'ط',
 'newpageletter'                     => 'ج‌',
@@ -1796,17 +1796,17 @@ $1",
 'emptyfile'                   => 'يبدو أن الملف الذي رفعته فارغ.
 قد يكون سبب ذلك خطأ في كتابة الاسم.
 من فضلك تأكد من أنك تريد فعلا رفع هذا الملف.',
-'fileexists'                  => "هناك ملف موجود يحمل نفس هذا الاسم الرجاء التأكد من هذا الملف باتباع الوصلة التالية '''<tt>$1</tt>''' قبل القيام بتغييره.",
-'filepageexists'              => "صفحة الوصف لهذا الملف تم إنشاؤها بالفعل في '''<tt>$1</tt>'''، لكن لا يوجد ملف بهذا الاسم حاليا.
+'fileexists'                  => "هناك ملف موجود يحمل نفس هذا الاسم الرجاء التأكد من هذا الملف باتباع الوصلة التالية '''<tt>[[:$1]]</tt>''' قبل القيام بتغييره.
+[[$1|thumb]]",
+'filepageexists'              => "صفحة الوصف لهذا الملف تم إنشاؤها بالفعل في '''<tt>[[:$1]]</tt>'''، لكن لا يوجد ملف بهذا الاسم حاليا.
 الملخص الذي تدخله لن يظهر على صفحة الوصف.
 لجعل ملخصك يظهر هناك، ستحتاج إلى تعديله يدويا",
-'fileexists-extension'        => "يوجد ملف باسم مشابه:<br />
-اسم الملف المراد رفعه: '''<tt>$1</tt>'''<br />
-اسم الملف الموجود: '''<tt>$2</tt>'''<br />
+'fileexists-extension'        => "يوجد ملف باسم مشابه: [[$2|thumb]]
+* اسم الملف المراد رفعه: '''<tt>[[:$1]]</tt>'''
+* اسم الملف الموجود: '''<tt>[[:$2]]</tt>'''
 من فضلك اختر اسما مختلفا.",
-'fileexists-thumb'            => "<center>'''الملف الموجود'''</center>",
-'fileexists-thumbnail-yes'    => "يبدو أن الملف مصغرا لحجم أعلى ''(تصغير)''. 
-من فضلك افحص الملف '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "يبدو أن الملف مصغرا لحجم أعلى ''(تصغير)''. [[$1|thumb]]
+من فضلك افحص الملف '''<tt>[[:$1]]</tt>'''.
 إن كان هو نفس الملف بالحجم الأصلي فلا داعي لرفع تصغير إضافي.",
 'file-thumbnail-no'           => "يبدأ الملف ب '''<tt>$1</tt>'''. 
 يبدو أن الملف مصغرا لحجم أعلى ''(تصغير)''.
@@ -2088,7 +2088,7 @@ PICT # متنوع
 'newpages'                => 'صفحات جديدة',
 'newpages-username'       => 'اسم المستخدم:',
 'ancientpages'            => 'أقدم الصفحات',
-'move'                    => 'نقل',
+'move'                    => 'انقل',
 'movethispage'            => 'انقل هذه الصفحة',
 'unusedimagestext'        => 'من فضلك لاحظ أن المواقع الأخرى ربما تصل إلى ملف بالمسار المباشر، ولذا ربما يكون معروضا هنا بالرغم من كونه مستخدما.',
 'unusedcategoriestext'    => 'التصنيفات التالية موجودة على الرغم من أنها لا تحتوي على أية صفحات أو تصنيفات أخرى.',
@@ -2237,9 +2237,9 @@ PICT # متنوع
 التغييرات القادمة على هذه الصفحة وصفحة النقاش الخاصة بها سيتم وضعها هناك، وسيتم إظهار اسم الصفحة بخط '''عريض''' في صفحة [[Special:RecentChanges|أحدث التغييرات]] لتسهيل تحديدها واكتشافها.",
 'removedwatch'         => 'تمت الإزالة من قائمة المراقبة',
 'removedwatchtext'     => 'الصفحة "[[:$1]]" تمت إزالتها من [[Special:Watchlist|قائمة مراقبتك]].',
-'watch'                => 'مراقبة',
+'watch'                => 'راقب',
 'watchthispage'        => 'راقب هذه الصفحة',
-'unwatch'              => 'إيقاف المراقبة',
+'unwatch'              => 'أوقف المراقبة',
 'unwatchthispage'      => 'توقف عن المراقبة',
 'notanarticle'         => 'ليست صفحة محتوى',
 'notvisiblerev'        => 'المراجعة تم حذفها',
@@ -2256,7 +2256,7 @@ PICT # متنوع
 'watchlist-options'    => 'خيارات قائمة المراقبة',
 
 # Displayed when you click the "watch" button and it is in the process of watching
-'watching'   => 'مراقبة...',
+'watching'   => 'يراقب...',
 'unwatching' => 'إزالة المراقبة...',
 
 'enotif_mailer'                => 'نظام {{SITENAME}} البريدي للإخطارات',
@@ -2265,13 +2265,10 @@ PICT # متنوع
 'enotif_impersonal_salutation' => 'مستخدم {{SITENAME}}',
 'changed'                      => 'غُيّرت',
 'created'                      => 'أنشئت',
-'deleted'                      => 'حُذفت',
-'enotif_deletedpagetext'       => 'لم تعد هذه الصفحة متوفرة.',
 'enotif_subject'               => 'صفحة {{SITENAME}} $PAGETITLE تم $CHANGEDORCREATED بواسطة $PAGEEDITOR',
 'enotif_lastvisited'           => 'انظر $1 لكل التغييرات منذ زيارتك الأخيرة.',
 'enotif_lastdiff'              => 'انظر $1 لرؤية هذا التغيير.',
 'enotif_anon_editor'           => 'مستخدم مجهول $1',
-'enotif_rev_info'              => 'راجع $1 للمراجعة الحالية.',
 'enotif_body'                  => 'عزيزي $WATCHINGUSERNAME،
 
 $CHANGEDORCREATED صفحة $PAGETITLE في {{SITENAME}} من قبل $PAGEEDITOR، لرؤية النسخة الحالية من الصفحة راجع: $PAGETITLE_URL.
@@ -2471,7 +2468,7 @@ $1',
 
 # Namespace form on various pages
 'namespace'      => 'النطاق:',
-'invert'         => 'عكس الاختيار',
+'invert'         => 'اعكس الاختيار',
 'blanknamespace' => '(رئيسي)',
 
 # Contributions
@@ -2587,7 +2584,6 @@ $1',
 'autoblocker'                     => 'تم منعك تلقائيا لأن الأيبي الخاص بك تم استخدامه مؤخرا بواسطة "[[User:$1|$1]]". 
 السبب المعطى لمنع $1 هو: "$2"',
 'blocklogpage'                    => 'سجل المنع',
-'blocklog-fulllog'                => 'سجل المنع الكامل',
 'blocklogentry'                   => 'منع "[[$1]]" لفترة زمنية مدتها $2 $3',
 'reblock-logentry'                => 'غير إعدادات المنع ل[[$1]] بتاريخ انتهاء $2 $3',
 'blocklogtext'                    => 'هذا سجل بعمليات المنع ورفع المنع.
@@ -2849,6 +2845,7 @@ $1 ممنوع بالفعل. هل تريد تغيير الإعدادات؟',
 'tooltip-search-fulltext'         => 'ابحث في الصفحات عن هذا النص',
 'tooltip-p-logo'                  => 'الصفحة الرئيسية',
 'tooltip-n-mainpage'              => 'زر الصفحة الرئيسية',
+'tooltip-n-mainpage-description'  => 'زر الصفحة الرئيسية',
 'tooltip-n-portal'                => 'حول المشروع، ماذا يمكن أن تفعل، أين يمكن أن تجد ما تحتاجه',
 'tooltip-n-currentevents'         => 'مطالعة سريعة لأهم الأحداث الجارية',
 'tooltip-n-recentchanges'         => 'قائمة أحدث التغييرات في الويكي.',
@@ -2917,16 +2914,16 @@ $1 ممنوع بالفعل. هل تريد تغيير الإعدادات؟',
 # Attribution
 'anonymous'        => '{{PLURAL:$1|مستخدم مجهول|مستخدمون مجهولون}} ل{{SITENAME}}',
 'siteuser'         => 'مستخدم {{SITENAME}} $1',
-'lastmodifiedatby' => 'آخر تعديل لهذه الصفحة كان في $2، $1 بواسطة $3.',
-'othercontribs'    => 'بناء على العمل بواسطة $1.',
+'lastmodifiedatby' => 'أجرى آخر تعديل لهذه الصفحة $3 في $2، $1.',
+'othercontribs'    => 'بناء على عمل $1.',
 'others'           => 'أخرى',
-'siteusers'        => '{{PLURAL:$2|مستخدم|مستخدمو}} {{SITENAME}} $1',
-'creditspage'      => 'حقوق الصفحة',
-'nocredits'        => 'لا توجد معلومات حقوق متوفرة لهذه الصفحة.',
+'siteusers'        => '{{PLURAL:$2||مستخدم|مستخدمي}} {{SITENAME}} $1',
+'creditspage'      => 'إشادات الصفحة',
+'nocredits'        => 'لا توجد معلومات إشادة متوفرة لهذه الصفحة.',
 
 # Spam protection
-'spamprotectiontitle' => 'مُرشّح الحماية من السبام',
-'spamprotectiontext'  => 'الصفحة التي أردت حفظها تم منعها بواسطة مُرشّح السبام.
+'spamprotectiontitle' => 'مُرشّح الحماية من السخام',
+'spamprotectiontext'  => 'منع مُرشّح السبام الصفحة التي أردت حفظها.
 هذا على الأرجح بسبب وصلة إلى موقع خارجي في القائمة السوداء.',
 'spamprotectionmatch' => 'النص التالي هو ما نشط مانع السبام الخاص بنا: $1',
 'spambot_username'    => 'تنظيف سبام ميدياويكي',

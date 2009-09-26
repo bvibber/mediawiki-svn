@@ -342,9 +342,9 @@ $messages = array(
 'nosuchaction'      => 'এনে কাৰ্য্য নাই',
 'nosuchactiontext'  => 'এই URL-ৰ নির্দেশিত কাৰ্য্য {{SITENAME}} -অত উপলব্ধ নহয়',
 'nosuchspecialpage' => 'এনেকুৱা কোনো বিশেষ পৃষ্ঠা নাই',
-'nospecialpagetext' => "<big>'''আপুনি অস্তিত্বত নথকা বিশেষ পৃষ্ঠা এটা বিচাৰিছে '''</big>
+'nospecialpagetext' => '<strong>আপুনি অস্তিত্বত নথকা বিশেষ পৃষ্ঠা এটা বিচাৰিছে </strong>
 
-   বিশেষ পৃষ্ঠাহমুহৰ তালিকা ইয়াত পাব [[Special:SpecialPages|{{int:specialpages}}]].",
+   বিশেষ পৃষ্ঠাহমুহৰ তালিকা ইয়াত পাব [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'ভুল',
@@ -401,14 +401,14 @@ $messages = array(
 'login'                      => 'প্রৱেশ',
 'nav-login-createaccount'    => 'প্রৱেশ/সদস্যভুক্তি',
 'loginprompt'                => '{{SITENAME}}ত প্রৱেশ কৰিবলৈ আপুনি কুকী সক্রীয় কৰিব লাগিব',
-'userlogin'                  => 'প্রৱেশ/সদস্যভুক্তি',
+'userlogin'                  => 'প্রৱেশ',
 'logout'                     => 'প্রস্থান',
 'userlogout'                 => 'প্রস্থান',
 'notloggedin'                => 'প্রৱেশ কৰা নাই',
-'nologin'                    => 'আপুনি সদস্য নহয়? $1।',
+'nologin'                    => "আপুনি সদস্য নহয়? '''$1'''।",
 'nologinlink'                => 'নতুন সদস্যভুক্তি কৰক',
 'createaccount'              => 'সভ্যভুক্ত হবলৈ',
-'gotaccount'                 => 'আপুনি সদস্য হয়নে? $1',
+'gotaccount'                 => "আপুনি সদস্য হয়নে? '''$1'''",
 'gotaccountlink'             => 'প্রবেশ',
 'createaccountmail'          => 'ই-মেইলেৰে',
 'badretype'                  => 'আপুনি দিয়া গুপ্ত শব্দ দুটা মিলা নাই।',
@@ -644,7 +644,7 @@ $messages = array(
 'notextmatches'         => 'এটাও লিখনীৰ পাঠ্য মিলা নাই',
 'prevn'                 => 'পুর্ববর্তি {{PLURAL:$1|$1}}',
 'nextn'                 => 'পৰৱর্তি {{PLURAL:$1|$1}}',
-'viewprevnext'          => 'চাওক ($1) ($2) ($3)',
+'viewprevnext'          => 'চাওক ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'        => 'Help:সুচী',
 'search-interwiki-more' => '(আৰু)',
 'showingresults'        => "তলত #'''$2'''ৰ পৰা {{PLURAL:$1|'''1''' ফলাফল|'''$1''' ফলাফল}} দেখুওৱা হৈছে।",

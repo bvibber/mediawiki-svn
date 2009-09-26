@@ -2,8 +2,6 @@
 
 /* This defines autoloading handler for whole MediaWiki framework */
 
-ini_set('unserialize_callback_func', '__autoload' );
-
 # Locations of core classes
 # Extension classes are specified with $wgAutoloadClasses
 # This array is a global instead of a static member of AutoLoader to work around a bug in APC
@@ -626,11 +624,6 @@ $wgJSAutoloadLocalClasses = array(
 	'ajaxCategories' => 'js2/ajaxcategories.js',
 );
 
-//Include the js2 autoLoadClasses
-//@@todo move jsAutoloadLocalClasses.php to post Setup so we have default values and can check the $wgEnableJS2system var
-$wgMwEmbedDirectory = "js2/mwEmbed/";
-require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
-
 class AutoLoader {
 	/**
 	 * autoload - take a class name and attempt to load it
@@ -695,4 +688,6 @@ if ( function_exists( 'spl_autoload_register' ) ) {
 	function __autoload( $class ) {
 		AutoLoader::autoload( $class );
 	}
+
+	ini_set( 'unserialize_callback_func', '__autoload' );
 }

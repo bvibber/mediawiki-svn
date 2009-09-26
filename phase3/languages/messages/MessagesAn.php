@@ -398,9 +398,9 @@ $messages = array(
 Talment s'aya entibocau en escribir a URL, u aya seguiu un binclo incorreuto. 
 Tamién podría endicar un bug en o software emplegato por {{SITENAME}}.",
 'nosuchspecialpage' => 'No esiste ixa pachina espezial',
-'nospecialpagetext' => "<big>'''A pachina espezial que ha demandato no esiste.'''</big>
+'nospecialpagetext' => '<strong>A pachina espezial que ha demandato no esiste.</strong>
 
-Puede trobar una lista de pachinas espezials en [[Special:SpecialPages|{{int:specialpages}}]].",
+Puede trobar una lista de pachinas espezials en [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Error',
@@ -483,14 +483,14 @@ No xublide presonalizar [[Special:Preferences|as suyas preferenzias en {{SITENAM
 'login'                      => 'Enzetar sesión',
 'nav-login-createaccount'    => 'Enzetar una sesión / creyar cuenta',
 'loginprompt'                => "Ta rechistrar-se en {{SITENAME}} ha d'autibar as cookies en o nabegador.",
-'userlogin'                  => 'Enzetar una sesión / creyar cuenta',
+'userlogin'                  => 'Enzetar una sesión',
 'logout'                     => "Salir d'a sesión",
 'userlogout'                 => 'Salir',
 'notloggedin'                => 'No ha dentrato en o sistema',
-'nologin'                    => 'No tiene garra cuenta? $1.',
+'nologin'                    => "No tiene garra cuenta? '''$1'''.",
 'nologinlink'                => 'Creyar una nueba cuenta',
 'createaccount'              => 'Creyar una nueba cuenta',
-'gotaccount'                 => 'Tiene ya una cuenta? $1.',
+'gotaccount'                 => "Tiene ya una cuenta? '''$1'''.",
 'gotaccountlink'             => 'Identificar-se y enzetar sesión',
 'createaccountmail'          => 'por correu electronico',
 'badretype'                  => 'As palabras de paso que ha escrito no son iguals.',
@@ -943,7 +943,7 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'notextmatches'                    => "No bi ha garra consonanzia en os testos d'as pachinas",
 'prevn'                            => 'anteriors {{PLURAL:$1|$1}}',
 'nextn'                            => 'siguiens {{PLURAL:$1|$1}}',
-'viewprevnext'                     => 'Beyer ($1) ($2) ($3)',
+'viewprevnext'                     => 'Beyer ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Opzions de busca',
 'searchmenu-exists'                => "'''Bi ha una pachina clamada \"[[\$1]]\" en ista wiki'''",
 'searchmenu-new'                   => "'''Creyar a pachina \"[[:\$1]]\" en ista wiki!'''",
@@ -1303,14 +1303,16 @@ Ta encluyir un archibo u imachen en una pachina, emplegue un binclo d'una d'ista
 'large-file'                  => 'Se consella que os archibos no sigan mayors de $1; iste archibo ocupa $2.',
 'largefileserver'             => "A grandaria d'iste archibo ye mayor d'a que a confegurazión d'iste serbidor premite.",
 'emptyfile'                   => "Parixe que l'archibo que se miraba de cargar ye buedo; por fabor, comprebe que ixe ye reyalment l'archibo que quereba cargar.",
-'fileexists'                  => "Ya bi ha un archibo con ixe nombre. Por fabor, Por favor mire-se l'archibo esistent '''<tt>$1</tt>''' si no ye seguro de querer sustituyir-lo.",
-'filepageexists'              => "A pachina de descripzión ta iste archibo ya ye creyata en '''<tt>$1</tt>''', pero no esiste garra archibo con iste nombre. O resumen que escriba no amaneixerá en a pachina de descripzión. Si quiere que o suyo resumen amaneixca aquí, abrá d'editar-lo manualment",
-'fileexists-extension'        => "Ya bi ha un archibo con un nombre parexiu:<br />
-Nombre de l'archibo que ye cargando: '''<tt>$1</tt>'''<br />
-Nombre de l'archibo ya esistent: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Ya bi ha un archibo con ixe nombre.
+Por fabor, Por favor mire-se l'archibo esistent '''<tt>[[:$1]]</tt>''' si no ye seguro de querer sustituyir-lo.
+[[$1|thumb]]",
+'filepageexists'              => "A pachina de descripzión ta iste archibo ya ye creyata en '''<tt>[[:$1]]</tt>''', pero no esiste garra archibo con iste nombre. O resumen que escriba no amaneixerá en a pachina de descripzión. Si quiere que o suyo resumen amaneixca aquí, abrá d'editar-lo manualment",
+'fileexists-extension'        => "Ya bi ha un archibo con un nombre parexiu: [[$2|thumb]]
+* Nombre de l'archibo que ye cargando: '''<tt>[[:$1]]</tt>'''
+* Nombre de l'archibo ya esistent: '''<tt>[[:$2]]</tt>'''
 Por fabor, trigue un nombre diferent.",
-'fileexists-thumb'            => "<center>'''Archibo esistent'''</center>",
-'fileexists-thumbnail-yes'    => "Parixe que l'archibo ye una imachen prou chicota ''(miniatura)''. Comprebe por fabor l'archibo '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Parixe que l'archibo ye una imachen prou chicota ''(miniatura)''. [[$1|thumb]]
+Comprebe por fabor l'archibo '''<tt>[[:$1]]</tt>'''.
 Si l'archibo comprebato ye a mesma imachen en tamaño orichinal no cal cargar una nueba miniatura.",
 'file-thumbnail-no'           => "O nombre de l'archibo prenzipia con '''<tt>$1</tt>'''. 
 Pareix que estase una imachen achiquida ''(thumbnail)''.
@@ -1728,7 +1730,8 @@ L\'adreza de correu-e que endicó en as suyas [[Special:Preferences|preferenzias
 'enotif_body'                  => 'Quiesto/a $WATCHINGUSERNAME,
 
 A pachina «$PAGETITLE» de {{SITENAME}}
-ha estato $CHANGEDORCREATED por l\'usuario $PAGEEDITOR o $PAGEEDITDATEANDTIME. $REVINFO
+ha estato $CHANGEDORCREATED por l\'usuario $PAGEEDITOR o $PAGEEDITDATE.
+Puede trobar a bersión autual en $PAGETITLE_URL
 
 $NEWPAGE
 
@@ -2018,7 +2021,6 @@ as pachinas que s'han bandalizato).",
 'contribslink'                    => 'contrebuzions',
 'autoblocker'                     => 'Ye bloqueyato automaticament porque a suya adreza IP l\'ha feito serbir rezientement "[[User:$1|$1]]". A razón data ta bloqueyar á "[[User:$1|$1]]" estió "$2".',
 'blocklogpage'                    => 'Rechistro de bloqueyos',
-'blocklog-fulllog'                => 'Rechistro de bloqueyos completo',
 'blocklogentry'                   => "S'ha bloqueyato á [[$1]] con una durada de $2 $3",
 'reblock-logentry'                => 'cambiato o bloqueyo de [[$1]] con zircunduzión o $3 á las $2',
 'blocklogtext'                    => "Isto ye un rechistro de bloqueyos y esbloqueyos d'usuarios. As adrezas bloqueyatas automaticament no amaneixen aquí. Mire-se a [[Special:IPBlockList|lista d'adrezas IP bloqueyatas]] ta beyer a lista autual de biedas y bloqueyos.",

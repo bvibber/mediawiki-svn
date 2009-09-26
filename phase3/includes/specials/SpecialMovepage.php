@@ -17,8 +17,10 @@ function wfSpecialMovepage( $par = null ) {
 	}
 
 	$target = isset( $par ) ? $par : $wgRequest->getVal( 'target' );
+
+	// Yes, the use of getVal() and getText() is wanted, see bug 20365
 	$oldTitleText = $wgRequest->getVal( 'wpOldTitle', $target );
-	$newTitleText = $wgRequest->getVal( 'wpNewTitle' );
+	$newTitleText = $wgRequest->getText( 'wpNewTitle' );
 
 	$oldTitle = Title::newFromText( $oldTitleText );
 	$newTitle = Title::newFromText( $newTitleText );
@@ -87,7 +89,7 @@ class MovePageForm {
 	 *    OutputPage::wrapWikiMsg(). 
 	 */
 	function showForm( $err ) {
-		global $wgOut, $wgUser, $wgFixDoubleRedirects;
+		global $wgOut, $wgUser, $wgContLang, $wgFixDoubleRedirects;
 
 		$skin = $wgUser->getSkin();
 
@@ -178,7 +180,7 @@ class MovePageForm {
 			}
 			$wgOut->addHTML( "<div class='mw-warning-with-logexcerpt'>\n" );
 			$wgOut->addWikiMsg( $noticeMsg );
-			LogEventsList::showLogExtract( $wgOut, 'protect', $this->oldTitle->getPrefixedText(), '', 1 );
+			LogEventsList::showLogExtract( $wgOut, 'protect', $this->oldTitle->getPrefixedText(), '', array( 'lim' => 1 ) );
 			$wgOut->addHTML( "</div>\n" );
 		}
 
@@ -200,7 +202,7 @@ class MovePageForm {
 					Xml::label( wfMsg( 'newtitle' ), 'wpNewTitle' ) .
 				"</td>
 				<td class='mw-input'>" .
-					Xml::input( 'wpNewTitle', 40, $newTitle->getPrefixedText(), array( 'type' => 'text', 'id' => 'wpNewTitle' ) ) .
+					Xml::input( 'wpNewTitle', 40, $wgContLang->recodeForEdit( $newTitle->getPrefixedText() ), array( 'type' => 'text', 'id' => 'wpNewTitle' ) ) .
 					Xml::hidden( 'wpOldTitle', $this->oldTitle->getPrefixedText() ) .
 				"</td>
 			</tr>
@@ -355,9 +357,7 @@ class MovePageForm {
 			$createRedirect = true;
 		}
 
-		# Do the actual move.  First remember the old ID for later reference,
-		# so that we don't get the ID of the redirect.
-		$oldId = $ot->getArticleId();
+		# Do the actual move.
 		$error = $ot->moveTo( $nt, true, $this->reason, $createRedirect );
 		if ( $error !== true ) {
 			# FIXME: show all the errors in a list, not just the first one
@@ -451,7 +451,7 @@ class MovePageForm {
 		$skin = $wgUser->getSkin();
 		$count = 1;
 		foreach( $extraPages as $oldSubpage ) {
-			if( $oldSubpage->getArticleId() == $oldId ) {
+			if( $ot->equals( $oldSubpage ) ) {
 				# Already did this one.
 				continue;
 			}

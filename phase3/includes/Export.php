@@ -207,11 +207,8 @@ class WikiExporter {
 			$opts = array( 'ORDER BY' => 'page_id ASC' );
 			$opts['USE INDEX'] = array();
 			$join = array();
-			# Full history dumps...
-			if( $this->history & WikiExporter::FULL ) {
-				$join['revision'] = array('INNER JOIN','page_id=rev_page');
 			# Latest revision dumps...
-			} elseif( $this->history & WikiExporter::CURRENT ) {
+			if( $this->history & WikiExporter::CURRENT ) {
 				if( $this->list_authors && $cond != '' )  { // List authors, if so desired
 					list($page,$revision) = $this->db->tableNamesN('page','revision');
 					$this->do_list_authors( $page, $revision, $cond );
@@ -247,6 +244,9 @@ class WikiExporter {
 				if( !empty( $this->history['limit'] ) ) {
 					$opts['LIMIT'] = intval( $this->history['limit'] );
 				}
+			# Full history dumps...
+			} elseif( $this->history & WikiExporter::FULL ) {
+				$join['revision'] = array('INNER JOIN','page_id=rev_page');
 			# Uknown history specification parameter?
 			} else {
 				wfProfileOut( __METHOD__ );
@@ -348,7 +348,7 @@ class XmlDumpWriter {
 	 * @return string
 	 */
 	function schemaVersion() {
-		return "0.3"; // FIXME: upgrade to 0.4 when updated XSD is ready, for the revision deletion bits
+		return "0.4";
 	}
 
 	/**
@@ -442,7 +442,7 @@ class XmlDumpWriter {
 		$out .= '    ' . Xml::elementClean( 'title', array(), $title->getPrefixedText() ) . "\n";
 		$out .= '    ' . Xml::element( 'id', array(), strval( $row->page_id ) ) . "\n";
 		if( $row->page_is_redirect ) {
-			$out .= '    ' . Xml::element( 'redirect', array() ). "\n";
+			$out .= '    ' . Xml::element( 'redirect', array() ) . "\n";
 		}
 		if( '' != $row->page_restrictions ) {
 			$out .= '    ' . Xml::element( 'restrictions', array(),

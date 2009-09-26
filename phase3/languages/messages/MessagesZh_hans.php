@@ -322,6 +322,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|此分类只有下列一个文件。|此分类包含下列$1个文件，共有$2个文件。}}',
 'category-file-count-limited'    => '此分类包含下列$1个文件。',
 'listingcontinuesabbrev'         => '续',
+'index-category'                 => '已做索引的页面',
+'noindex-category'               => '未做索引的页面',
 
 'mainpagetext'      => "<big>'''已成功安装 MediaWiki。'''</big>",
 'mainpagedocfooter' => '请访问 [http://meta.wikimedia.org/wiki/Help:Contents 用户手册] 以获得使用此 wiki 软件的信息！
@@ -512,9 +514,9 @@ $1',
 'nosuchaction'      => '这个命令不存在',
 'nosuchactiontext'  => 'URL指定的命令无效。你可能错误输入了URL地址，或者点击了错误的链接。这一错误亦有可能是由{{SITENAME}}所使用软件自身的错误导致的。',
 'nosuchspecialpage' => '此特殊页面不存在',
-'nospecialpagetext' => "<big>'''您请求的特殊页面无效。'''</big>
+'nospecialpagetext' => '<strong>您请求的特殊页面无效。</strong>
 
-[[Special:SpecialPages|{{int:specialpages}}]]中列出了所有有效的特殊页面。",
+[[Special:SpecialPages|{{int:specialpages}}]]中列出了所有有效的特殊页面。',
 
 # General errors
 'error'                => '错误',
@@ -598,19 +600,20 @@ $2',
 'login'                      => '登录',
 'nav-login-createaccount'    => '登录／创建账户',
 'loginprompt'                => '您必须启用Cookies才能登录{{SITENAME}}。',
-'userlogin'                  => '登录／创建账户',
+'userlogin'                  => '登录',
 'logout'                     => '退出',
 'userlogout'                 => '退出',
 'notloggedin'                => '未登录',
-'nologin'                    => '您还没有账户吗？$1。',
+'nologin'                    => "您还没有账户吗？'''$1'''。",
 'nologinlink'                => '创建新账户',
 'createaccount'              => '创建新账户',
-'gotaccount'                 => '已经拥有账户？$1。',
+'gotaccount'                 => "已经拥有账户？'''$1'''。",
 'gotaccountlink'             => '登录',
 'createaccountmail'          => '通过电子邮件',
 'badretype'                  => '您所输入的密码并不相同。',
 'userexists'                 => '您所输入的用户名已有人使用。请另选一个名。',
 'loginerror'                 => '登录错误',
+'createaccounterror'         => '无法建立账户：$1',
 'nocookiesnew'               => '已成功创建新账户！侦测到您已关闭Cookies，请开启它并登录。',
 'nocookieslogin'             => '本站利用Cookies进行用户登录，侦测到您已关闭Cookies，请开启它并重新登录。',
 'noname'                     => '你没有输入有效的用户名。',
@@ -633,6 +636,7 @@ $2',
 如果是其他人发出了该请求，或者您已经记起了您的密码并不准备改变它，
 您可以忽略此消息并继续使用您的旧密码。',
 'noemail'                    => '用户"$1"没有登记电子邮件地址。',
+'noemailcreate'              => '您需要提供一个有效的电子邮件地址',
 'passwordsent'               => '用户"$1"的新密码已经寄往所登记的电子邮件地址。
 请在收到后再登录。',
 'blocked-mailpassword'       => '您的IP地址处于查封状态而不允许编辑，为了安全起见，密码恢复功能已被禁用。',
@@ -651,7 +655,8 @@ $2',
 'createaccount-text'         => '有人在{{SITENAME}}中利用您的邮箱创建了一个名为 "$2" 的新帐户（$4），密码是 "$3" 。您应该立即登录并更改密码。
 
 如果该账户创建错误的话，您可以忽略此信息。',
-'login-throttled'            => '您已经尝试多次在这个账户的密码上。请稍等多一会再试。',
+'login-throttled'            => '您已经尝试多次的登录动作。
+请稍等多一会再试。',
 'loginlanguagelabel'         => '语言：$1',
 
 # Password reset dialog
@@ -752,10 +757,14 @@ $2',
 要创建该页面，请在下面的编辑框中输入内容（详情参见[[{{MediaWiki:Helppage}}|帮助]]）。
 如果您是不小心来到此页面，直接点击您浏览器中的"返回"按钮返回。',
 'anontalkpagetext'                 => "---- ''这是一个还未建立账户的匿名用户的讨论页, 因此我们只能用IP地址来与他或她联络。该IP地址可能由几名用户共享。如果您是一名匿名用户并认为此页上的评语与您无关，请[[Special:UserLogin/signup|创建新账户]]或[[Special:UserLogin|登录]]以避免在未来与其他匿名用户混淆。''",
-'noarticletext'                    => '此页目前没有内容，您可以在其它页[[Special:Search/{{PAGENAME}}|搜索此页标题]]或[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} 编辑此页]。',
+'noarticletext'                    => '此页目前没有内容。
+您可以在其他页[[Special:Search/{{PAGENAME}}|搜索此页标题]]，
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 搜索相关日志]，
+或[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} 编辑此页]。',
 'noarticletext-nopermission'       => '此页目前没有内容，您可以在其它页[[Special:Search/{{PAGENAME}}|搜索此页标题]]，
 或<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 搜索有关日志]</span>。',
 'userpage-userdoesnotexist'        => '用户账户“$1”未曾创建。请在创建／编辑这个页面前先检查一下。',
+'userpage-userdoesnotexist-view'   => '用户账户“$1”未曾创建。',
 'clearyourcache'                   => "'''注意 - 在保存以后，您必须清除浏览器的缓存才能看到所作出的改变。'''
 '''Mozilla / Firefox / Safari'''：按住''Shift''再点击''刷新''，或按下''Ctrl-F5''或''Ctrl-R''（在Macintosh上按下''Command-R''）；
 '''Konqueror'''：只需点击''刷新''或按下''F5''；
@@ -944,12 +953,12 @@ $2',
 'revdelete-hide-text'         => '隐藏修订文本',
 'revdelete-hide-name'         => '隐藏动作和目标',
 'revdelete-hide-comment'      => '隐藏编辑说明',
-'revdelete-hide-user'         => '隐藏编辑者的用户名/IP',
+'revdelete-hide-user'         => '隐藏编辑者的用户名/IP地址',
 'revdelete-hide-restricted'   => '同时阻止管理员与其他用户查看数据',
 'revdelete-suppress'          => '同时阻止管理员与其他用户查看数据',
 'revdelete-hide-image'        => '隐藏文件内容',
 'revdelete-unsuppress'        => '在已恢复的修订中移除限制',
-'revdelete-log'               => '日志注释：',
+'revdelete-log'               => '删除原因：',
 'revdelete-submit'            => '应用于选中的修订',
 'revdelete-logentry'          => '[[$1]]的修订可见性已更改',
 'logdelete-logentry'          => '[[$1]]的事件可见性已更改',
@@ -984,6 +993,7 @@ $1",
 'revdelete-otherreason'       => '其它／附加的理由：',
 'revdelete-reasonotherlist'   => '其它理由',
 'revdelete-edit-reasonlist'   => '编辑删除埋由',
+'revdelete-offender'          => '修订著者：',
 
 # Suppression log
 'suppressionlog'     => '阻止日志',
@@ -1102,7 +1112,7 @@ $1",
 'prevn-title'                      => '前$1项结果',
 'nextn-title'                      => '后$1项结果',
 'shown-title'                      => '每页显示$1项结果',
-'viewprevnext'                     => '查看（$1）（$2）（$3）',
+'viewprevnext'                     => '查看（$1 {{int:pipe-separator}} $2）（$3）',
 'searchmenu-legend'                => '搜索选项',
 'searchmenu-exists'                => "'''在该wiki上已有页面名叫“[[:$1]]”'''",
 'searchmenu-new'                   => "'''在该wiki上新建页面“[[:$1]]”！'''",
@@ -1176,7 +1186,7 @@ $1",
 'prefs-watchlist-days-max'      => '最多7天',
 'prefs-watchlist-edits'         => '在增强的监视列表中显示最多更改次数：',
 'prefs-watchlist-edits-max'     => '最多数量：1000',
-'prefs-watchlist-token'         => '监视列表权标',
+'prefs-watchlist-token'         => '监视列表权标：',
 'prefs-misc'                    => '杂项',
 'prefs-resetpass'               => '更改密码',
 'prefs-email'                   => '邮箱选项',
@@ -1335,6 +1345,7 @@ $1",
 'right-bigdelete'             => '删除大量历史之页面',
 'right-deleterevision'        => '删除及同反删除页面中的指定修订',
 'right-deletedhistory'        => '查看已删除之项目，不含有关的字',
+'right-deletedcontent'        => '查看已删除修订中之已删除的字以及更改',
 'right-browsearchive'         => '搜索已删除之页面',
 'right-undelete'              => '反删除页面',
 'right-suppressrevision'      => '查看和恢复由管理员隐藏的修订',
@@ -1367,6 +1378,7 @@ $1",
 'right-reset-passwords'       => '重设其他用户的密码',
 'right-override-export-depth' => '导出含有五层深度链接页面之页面',
 'right-versiondetail'         => '显示延伸软件版本的资料',
+'right-root'                  => '在wiki中进行所有的动作',
 
 # User rights log
 'rightslog'      => '用户权限日志',
@@ -1509,14 +1521,14 @@ $1",
 'large-file'                  => '建议文件大小不能超过 $1；本文件大小为 $2。',
 'largefileserver'             => '这个文件的大小比服务器配置允许的大小还要大。',
 'emptyfile'                   => '您所上传的文件不存在。这可能是由于文件名键入错误。请检查您是否真的要上传此文件。',
-'fileexists'                  => '已存在相同名称的文件，如果您无法确定您是否要改变它，请检查<strong><tt>$1</tt></strong>。',
-'filepageexists'              => '这个文件的描述页已经在<strong><tt>$1</tt></strong>创建，但是这个名称的文件尚未存在。您输入了的摘要是不会显示在该描述页中。要令该摘要在该处中出现，您便要手动地去编辑它。',
-'fileexists-extension'        => '一个相似名称的文件已经存在:<br />
-上传文件的文件名：<strong><tt>$1</tt></strong><br />
-现有文件的文件名：<strong><tt>$2</tt></strong><br />
-请选择一个不同的名字。',
-'fileexists-thumb'            => "<center>'''已经存在的文件'''</center>",
-'fileexists-thumbnail-yes'    => "此文件可能是另一幅图像的缩小版本''（缩略图）''。请仔细检查该文件'''<tt>$1</tt>'''。<br />
+'fileexists'                  => '已存在相同名称的文件，如果您无法确定您是否要改变它，请检查<strong><tt>[[:$1]]</tt></strong>。 [[$1|thumb]]',
+'filepageexists'              => '这个文件的描述页已经在<strong><tt>[[:$1]]</tt></strong>创建，但是这个名称的文件尚未存在。您输入了的摘要是不会显示在该描述页中。要令该摘要在该处中出现，您便要手动地去编辑它。',
+'fileexists-extension'        => "一个相似名称的文件已经存在: [[$2|thumb]]
+* 上传文件的文件名：'''<tt>[[:$1]]</tt>'''
+* 现有文件的文件名：'''<tt>[[:$2]]</tt>'''
+请选择一个不同的名字。",
+'fileexists-thumbnail-yes'    => "此文件可能是另一幅图像的缩小版本''（缩略图）''。 [[$1|thumb]]
+请仔细检查该文件'''<tt>[[:$1]]</tt>'''。
 如果被检查文件与原始大小的图像是同一幅图像，您无需上传多余的缩略图。",
 'file-thumbnail-no'           => "文件名以'''<tt>$1</tt>'''开头。它可能是另一幅图像的缩小版本''（缩略图）''。
 如果你有该图像完整分辨率的版本，请上传该完整版本。否则请修改文件名。",
@@ -1556,6 +1568,24 @@ $1",
 'upload-too-many-redirects' => '在网址中有太多重新定向',
 'upload-unknown-size'       => '未知的大小',
 'upload-http-error'         => '已发生一个HTTP错误：$1',
+
+# img_auth script messages
+'img-auth-accessdenied' => '拒绝访问',
+'img-auth-nopathinfo'   => 'PATH_INFO遗失。
+您的服务器还没有设置这个资料。
+它可能是以CGI为本，不支持img_auth。
+参阅http://www.mediawiki.org/wiki/Manual:Image_Authorization。',
+'img-auth-notindir'     => '所请求的路径不在已经设置的上载目录。',
+'img-auth-badtitle'     => '不能够由"$1"建立一个有效标题。',
+'img-auth-nologinnWL'   => '您而家并未登入，"$1"不在白名单上。',
+'img-auth-nofile'       => '文件"$1"不存在。',
+'img-auth-isdir'        => '您尝试过访问一个目录"$1"。
+只是可以访问文件。',
+'img-auth-streaming'    => '串流中"$1"。',
+'img-auth-public'       => 'img_auth.php的功能是由一个公共wiki中输出文件。
+这个wiki是已经设置做一个公共wiki。
+基于保安最佳化，img_auth.php已经停用。',
+'img-auth-noread'       => '用户无访问权去读"$1"。',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => '无法访问 URL',
@@ -1649,6 +1679,7 @@ $1",
 ** 侵犯版权
 ** 重复文件',
 'filedelete-edit-reasonlist'  => '编辑删除埋由',
+'filedelete-maintenance'      => '当在维护时已经暂时停用文件删除和恢复。',
 
 # MIME search
 'mimesearch'         => 'MIME 搜索',
@@ -1850,7 +1881,7 @@ Template:消除歧義',
 
 # Special:ActiveUsers
 'activeusers'          => '活跃用户列表',
-'activeusers-count'    => '$1次最近编辑',
+'activeusers-count'    => '最近$3天内的$1次编辑',
 'activeusers-from'     => '显示用户开始于：',
 'activeusers-noresult' => '找不到用户。',
 
@@ -1951,16 +1982,13 @@ Template:消除歧義',
 'enotif_impersonal_salutation' => '{{SITENAME}}用户',
 'changed'                      => '修改了',
 'created'                      => '建立了',
-'deleted'                      => '删除了',
-'enotif_deletedpagetext'       => '这个页面已经不再存在。',
 'enotif_subject'               => '{{SITENAME}}有页面 $PAGETITLE 被 $PAGEEDITOR $CHANGEDORCREATED',
 'enotif_lastvisited'           => '查看您上次访问后的所有更改请访问$1。',
 'enotif_lastdiff'              => '检视更改请访问$1。',
 'enotif_anon_editor'           => '匿名用户$1',
-'enotif_rev_info'              => '请到$1查看当前修订版本。',
 'enotif_body'                  => '亲爱的 $WATCHINGUSERNAME，
 
-$PAGEEDITOR已经在$PAGEEDITDATEANDTIME$CHANGEDORCREATED{{SITENAME}}的$PAGETITLE页面。$REVINFO
+$PAGEEDITOR已经在$PAGEEDITDATE$CHANGEDORCREATED{{SITENAME}}的$PAGETITLE页面，请到$PAGETITLE_URL查看当前修订版本。
 
 $NEWPAGE
 
@@ -2256,7 +2284,8 @@ $1',
 'autoblocker'                     => '因为您与“[[User:$1|$1]]”共享一个IP地址而被自动查封。
 $1被封禁的理由是“$2”',
 'blocklogpage'                    => '封禁日志',
-'blocklog-fulllog'                => '完整查封日志',
+'blocklog-showlog'                => '这位用户曾经被封锁过。在下列提供封锁日志以便参考：',
+'blocklog-showsuppresslog'        => '这位用户曾经被封锁和隐藏过。在下列提供废止日志以便参考：',
 'blocklogentry'                   => '已封禁[[$1]]，到期时间为$2 $3',
 'reblock-logentry'                => '更改[[$1]]的封禁設定時間 $2 $3',
 'blocklogtext'                    => '这是关于用户查封和解封操作的日志。
@@ -2582,10 +2611,12 @@ $1已经被封锁。您是否想更改这个设置？',
 # Attribution
 'anonymous'        => '{{SITENAME}}的匿名{{PLURAL:$1|用户|用户}}',
 'siteuser'         => '{{SITENAME}}用户$1',
+'anonuser'         => '{{SITENAME}}匿名用户$1',
 'lastmodifiedatby' => '此页由$3于$1 $2的最后更改。',
 'othercontribs'    => '在$1的工作基础上。',
 'others'           => '其他',
 'siteusers'        => '{{SITENAME}}{{PLURAL:$2|用户|用户}}$1',
+'anonusers'        => '{{SITENAME}}匿名{{PLURAL:$2|用户|用户}}$1',
 'creditspage'      => '页面致谢',
 'nocredits'        => '该页没有致谢名单信息。',
 

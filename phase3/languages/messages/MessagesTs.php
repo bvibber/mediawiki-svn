@@ -166,9 +166,9 @@ See [[Special:Version|version page]].',
 'nosuchaction'      => 'Kuhava xiendlo xo tano',
 'nosuchactiontext'  => 'Xikombelo xa URL a xitwisisiwi hi wiki',
 'nosuchspecialpage' => 'Ku hava Tluka rero rohlawuleka',
-'nospecialpagetext' => "<big>'''U kombele tluka ro hlawuleka ro ka ri nga ri kona.'''</big>
+'nospecialpagetext' => '<strong>U kombele tluka ro hlawuleka ro ka ri nga ri kona.</strong>
 
-Vona nxaxamelo wa ma tluka yo hlawuleka e [[Special:SpecialPages|{{int:specialpages}}]].",
+Vona nxaxamelo wa ma tluka yo hlawuleka e [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Xihoxo',
@@ -228,7 +228,7 @@ Query: $2',
 'yourpassword'            => 'Vito-mpfungulo:',
 'login'                   => 'Pfula u nghena',
 'nav-login-createaccount' => 'Pfula unghena / Tumbuluxa akhawunti',
-'userlogin'               => 'Pfula unghena / Tumbuluxa akhawunti',
+'userlogin'               => 'Pfula unghena',
 'logout'                  => 'Pfala u famba',
 'userlogout'              => 'Pfala u famba',
 'nologinlink'             => 'Tumbuluxa akhawunti',

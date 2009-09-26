@@ -73,7 +73,7 @@ abstract class UploadBase {
 	 * Create a form of UploadBase depending on wpSourceType and initializes it
 	 */
 	public static function createFromRequest( &$request, $type = null ) {
-		$type = $type ? $type : $request->getVal( 'wpSourceType' );
+		$type = $type ? $type : $request->getVal( 'wpSourceType', 'File' );
 
 		if( !$type )
 			return null;
@@ -318,15 +318,6 @@ abstract class UploadBase {
 		if( $exists !== false )
 			$warnings['exists'] = $exists;
 
-		// Check whether this may be a thumbnail
-		if( $exists !== false && $exists[0] != 'thumb'
-				&& self::isThumbName( $filename ) ){
-			// Make the title
-			$nt = $this->getTitle();
-			$warnings['file-thumbnail-no'] = substr( $filename, 0,
-				strpos( $nt->getText() , '-' ) +1 );
-		}
-
 		// Check dupes against existing files
 		$hash = File::sha1Base36( $this->mTempPath );
 		$dupes = RepoGroup::singleton()->findBySha1( $hash );
@@ -343,19 +334,6 @@ abstract class UploadBase {
 		$archivedImage = new ArchivedFile( null, 0, "{$hash}.{$this->mFinalExtension}" );
 		if ( $archivedImage->getID() > 0 )
 			$warnings['duplicate-archive'] = $archivedImage->getName();
-
-		$filenamePrefixBlacklist = self::getFilenamePrefixBlacklist();
-		foreach( $filenamePrefixBlacklist as $prefix ) {
-			if ( substr( $partname, 0, strlen( $prefix ) ) == $prefix ) {
-				$warnings['filename-bad-prefix'] = $prefix;
-				break;
-			}
-		}
-
-		# If the file existed before and was deleted, warn the user of this
-		# Don't bother doing so if the file exists now, however
-		if( $localFile->wasDeleted() && !$localFile->exists() )
-			$warnings['filewasdeleted'] = $localFile->getTitle();
 
 		return $warnings;
 	}
@@ -470,13 +448,13 @@ abstract class UploadBase {
 	 * can accumulate in the temp directory.
 	 *
 	 * @param string $saveName - the destination filename
-	 * @param string $tempName - the source temporary file to save
+	 * @param string $tempSrc - the source temporary file to save
 	 * @return string - full path the stashed file, or false on failure
 	 * @access private
 	 */
-	protected function saveTempUploadedFile( $saveName, $tempName ) {
+	protected function saveTempUploadedFile( $saveName, $tempSrc ) {
 		$repo = RepoGroup::singleton()->getLocalRepo();
-		$status = $repo->storeTemp( $saveName, $tempName );
+		$status = $repo->storeTemp( $saveName, $tempSrc );
 		return $status;
 	}
 
@@ -700,7 +678,7 @@ abstract class UploadBase {
 		* when served with a generic content-type.
 		*/
 		$tags = array(
-			'<a',
+			'<a href',
 			'<body',
 			'<head',
 			'<html',   #also in safari
@@ -915,14 +893,18 @@ abstract class UploadBase {
 		global $wgUser;
 		// First check whether the local file can be overwritten
 		$file = $this->getLocalFile();
-		if( $file->exists() )
+		if( $file->exists() ) {
 			if( !self::userCanReUpload( $wgUser, $file ) )
 				return 'fileexists-forbidden';
+			else
+				return true;
+		}
 
-		// Check shared conflicts
-		$file = wfFindFile( $file->getName() );
-		if ( $file && ( !$wgUser->isAllowed( 'reupload' ) ||
-				!$wgUser->isAllowed( 'reupload-shared' ) ) )
+		/* Check shared conflicts: if the local file does not exist, but 
+		 * wfFindFile finds a file, it exists in a shared repository. 
+		 */ 
+		$file = wfFindFile( $this->getTitle() );
+		if ( $file && !$wgUser->isAllowed( 'reupload-shared' ) )
 			return 'fileexists-shared-forbidden';
 
 		return true;
@@ -961,40 +943,55 @@ abstract class UploadBase {
 	 */
 	public static function getExistsWarning( $file ) {
 		if( $file->exists() )
-			return array( 'exists', $file );
+			return array( 'warning' => 'exists', 'file' => $file );
 
 		if( $file->getTitle()->getArticleID() )
-			return array( 'page-exists', $file );
-
+			return array( 'warning' => 'page-exists', 'file' => $file );
+		
+		if ( $file->wasDeleted() && !$file->exists() )
+			return array( 'warning' => 'was-deleted', 'file' => $file );		
+			
 		if( strpos( $file->getName(), '.' ) == false ) {
 			$partname = $file->getName();
-			$rawExtension = '';
+			$extension = '';
 		} else {
 			$n = strrpos( $file->getName(), '.' );
-			$rawExtension = substr( $file->getName(), $n + 1 );
+			$extension = substr( $file->getName(), $n + 1 );
 			$partname = substr( $file->getName(), 0, $n );
 		}
+		$normalizedExtension = File::normalizeExtension( $extension );
 
-		if ( $rawExtension != $file->getExtension() ) {
+		if ( $normalizedExtension != $extension ) {
 			// We're not using the normalized form of the extension.
 			// Normal form is lowercase, using most common of alternate
 			// extensions (eg 'jpg' rather than 'JPEG').
 			//
 			// Check for another file using the normalized form...
-			$nt_lc = Title::makeTitle( NS_FILE, $partname . '.' . $file->getExtension() );
+			$nt_lc = Title::makeTitle( NS_FILE, "{$partname}.{$normalizedExtension}" );
 			$file_lc = wfLocalFile( $nt_lc );
 
 			if( $file_lc->exists() )
-				return array( 'exists-normalized', $file_lc );
+				return array( 'warning' => 'exists-normalized', 'file' => $file, 'normalizedFile' => $file_lc );
 		}
 
 		if ( self::isThumbName( $file->getName() ) ) {
 			# Check for filenames like 50px- or 180px-, these are mostly thumbnails
-			$nt_thb = Title::newFromText( substr( $partname , strpos( $partname , '-' ) +1 ) . '.' . $rawExtension );
+			$nt_thb = Title::newFromText( substr( $partname , strpos( $partname , '-' ) +1 ) . '.' . $extension, NS_FILE );
 			$file_thb = wfLocalFile( $nt_thb );
 			if( $file_thb->exists() )
-				return array( 'thumb', $file_thb );
+				return array( 'warning' => 'thumb', 'file' => $file, 'thumbFile' => $file_thb );
+			else
+				// File does not exist, but we just don't like the name
+				return array( 'warning' => 'thumb-name', 'file' => $file, 'thumbFile' => $file_thb );
 		}
+		
+
+		foreach( self::getFilenamePrefixBlacklist() as $prefix ) {
+			if ( substr( $partname, 0, strlen( $prefix ) ) == $prefix )
+				return array( 'warning' => 'bad-prefix', 'file' => $file, 'prefix' => $prefix );
+		}
+		
+
 
 		return false;
 	}

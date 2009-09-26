@@ -267,6 +267,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|呢類淨係有下面嘅檔案。|呢類有下面嘅$1個檔案，總共有$2個檔案。}}',
 'category-file-count-limited'    => '呢個類別入邊有$1個檔案。',
 'listingcontinuesabbrev'         => '續',
+'index-category'                 => '做咗索引嘅版',
+'noindex-category'               => '未做索引嘅版',
 
 'mainpagetext'      => "<big>'''MediaWiki已經裝好。'''</big>",
 'mainpagedocfooter' => '參閱[http://meta.wikimedia.org/wiki/Help:Contents 用戶指引]（英），裏面有資料講點用wiki軟件。
@@ -460,9 +462,9 @@ $1',
 你可能打錯咗個 URL ，或者撳錯咗唔啱嘅連結。
 呢個可能係{{SITENAME}}所用嘅軟件入面嘅臭蟲所引致嘅。',
 'nosuchspecialpage' => '冇呢頁特別頁',
-'nospecialpagetext' => "<big>'''無你所要求嘅特別頁。'''</big>
+'nospecialpagetext' => '<strong>無你所要求嘅特別頁。</strong>
 
-喺[[Special:SpecialPages|{{int:specialpages}}]]有全部用得嘅特別頁。",
+喺[[Special:SpecialPages|{{int:specialpages}}]]有全部用得嘅特別頁。',
 
 # General errors
 'error'                => '錯誤',
@@ -550,19 +552,20 @@ $1',
 'login'                      => '登入',
 'nav-login-createaccount'    => '登入／開新戶口',
 'loginprompt'                => '你一定要開咗 cookies 先登入到{{SITENAME}}。',
-'userlogin'                  => '登入／開新戶口',
+'userlogin'                  => '登入',
 'logout'                     => '登出',
 'userlogout'                 => '登出',
 'notloggedin'                => '未登入',
-'nologin'                    => '重未有戶口？ $1。',
+'nologin'                    => "重未有戶口？ '''$1'''。",
 'nologinlink'                => '開個新戶口',
 'createaccount'              => '開戶口',
-'gotaccount'                 => '已經有戶口？ $1 。',
+'gotaccount'                 => "已經有戶口？ '''$1''' 。",
 'gotaccountlink'             => '登入',
 'createaccountmail'          => '用電郵',
 'badretype'                  => '你入嘅密碼唔一致。',
 'userexists'                 => '你入嘅用戶名已經有人用咗，唔該揀過個名啦。',
 'loginerror'                 => '登入錯誤',
+'createaccounterror'         => '開唔到戶口：$1',
 'nocookiesnew'               => '已經開咗戶口，但你未登入。 {{SITENAME}} 要用 cookies 嚟登入。你已經熄咗佢。請你開咗再試。',
 'nocookieslogin'             => '{{SITENAME}} 登入要開 cookies。熄咗佢。請你開咗再試。',
 'noname'                     => '你未指定一個有效嘅用戶名。',
@@ -589,6 +592,7 @@ $1',
 又或者你記得返你嘅密碼而又唔想再轉，
 你可以唔使理呢個信息，繼續用舊密碼。',
 'noemail'                    => '呢度冇用戶 "$1" 嘅電郵地址。',
+'noemailcreate'              => '你需要提供一個有效嘅電郵地址',
 'passwordsent'               => '新嘅密碼已經寄咗畀呢位用戶 "$1" 嘅電郵地址。收到之後請重新登入。',
 'blocked-mailpassword'       => '你嘅IP地址被鎖住，唔可以用密碼復原功能以防止濫用。',
 'eauthentsent'               => '確認電郵已經傳送到指定嘅電郵地址。喺其它嘅郵件傳送到呢個戶口之前，你需要按電郵嘅指示，嚟確認呢個戶口真係屬於你嘅。',
@@ -607,7 +611,7 @@ $1',
 'createaccount-text'         => '有人響{{SITENAME}}度用咗你個電郵開咗個名叫 "$2" 嘅新戶口 ($4)，密碼係 "$3" 。你應該而家登入，改埋個密碼。
 
 如果個戶口係開錯咗嘅話，你可以唔埋呢篇信。',
-'login-throttled'            => '你已經試咗太多次響呢個戶口嘅密碼度。請等多一陣再試過。',
+'login-throttled'            => '你已經試咗太多次登入動作。請等多一陣再試過。',
 'loginlanguagelabel'         => '語言：$1',
 
 # Password reset dialog
@@ -716,6 +720,7 @@ $1',
 'noarticletext-nopermission'       => '喺呢一頁而家並冇任何嘅文字，你可以喺其它嘅頁面中[[Special:Search/{{PAGENAME}}|搵呢一頁嘅標題]]，
 或者<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 搵有關嘅日誌]</span>。',
 'userpage-userdoesnotexist'        => '用戶戶口"$1"重未開。請響䦒／編輯呢版之前先檢查一下。',
+'userpage-userdoesnotexist-view'   => '用戶戶口"$1"重未開。',
 'clearyourcache'                   => "'''注意 - 喺儲存之後，你可能要先略過你嘅瀏覽器快取去睇到更改。'''
 '''Mozilla / Firefox / Safari:''' 㩒住''Shift''掣再撳''重新載入''，又或者㩒''Ctrl-F5''或者''Ctrl-R''（喺Macintosh㩒''Command-R''掣）；
 '''Konqueror:''' 就咁以撳個''重載''掣，又或者㩒''F5''；
@@ -908,7 +913,7 @@ $1',
 'revdelete-hide-text'         => '隱藏修訂嘅文字',
 'revdelete-hide-name'         => '隱藏動作同目標',
 'revdelete-hide-comment'      => '隱藏編輯註解',
-'revdelete-hide-user'         => '隱藏編輯者嘅用戶名／IP',
+'revdelete-hide-user'         => '隱藏編輯者嘅用戶名／IP地址',
 'revdelete-hide-restricted'   => '同時壓制由操作員以及其他用戶的資料',
 'revdelete-suppress'          => '同時壓制由操作員以及其他用戶的資料',
 'revdelete-hide-image'        => '隱藏資料內容',
@@ -948,6 +953,7 @@ $1",
 'revdelete-otherreason'       => '其它／附加的原因：',
 'revdelete-reasonotherlist'   => '其它原因',
 'revdelete-edit-reasonlist'   => '編輯刪除原因',
+'revdelete-offender'          => '修訂著者：',
 
 # Suppression log
 'suppressionlog'     => '廢止日誌',
@@ -1065,7 +1071,7 @@ $1",
 'prevn-title'                      => '前$1項結果',
 'nextn-title'                      => '後$1項結果',
 'shown-title'                      => '每版顯示$1項結果',
-'viewprevnext'                     => '去睇 ($1) ($2) ($3)',
+'viewprevnext'                     => '去睇 ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => '搵嘢選項',
 'searchmenu-exists'                => "'''響呢個wiki度有一版叫做\"[[:\$1]]\"'''",
 'searchmenu-new'                   => "'''響呢個wiki度開呢版\"[[:\$1]]\"！'''",
@@ -1139,7 +1145,7 @@ $1",
 'prefs-watchlist-days-max'      => '最多 7 日',
 'prefs-watchlist-edits'         => '喺加強版監視清單度嘅最多顯示更改數：',
 'prefs-watchlist-edits-max'     => '最多數量: 1000',
-'prefs-watchlist-token'         => '監視清單幣',
+'prefs-watchlist-token'         => '監視清單幣：',
 'prefs-misc'                    => '雜項',
 'prefs-resetpass'               => '改密碼',
 'prefs-email'                   => '電郵選項',
@@ -1300,6 +1306,7 @@ $1",
 'right-bigdelete'             => '刪大量歷史嘅版',
 'right-deleterevision'        => '刪同反刪版嘅指定修訂',
 'right-deletedhistory'        => '睇刪咗嘅項目，唔包同埋嘅字',
+'right-deletedcontent'        => '睇刪咗嘅修訂度嘅已刪嘅字同更改',
 'right-browsearchive'         => '搵刪咗嘅版',
 'right-undelete'              => '反刪版',
 'right-suppressrevision'      => '睇同恢復由操作員隱藏嘅修訂',
@@ -1332,6 +1339,7 @@ $1",
 'right-reset-passwords'       => '重設其他用戶嘅密碼',
 'right-override-export-depth' => '倒出包含有五層深連版嘅頁面',
 'right-versiondetail'         => '顯示伸展軟件版本嘅資料',
+'right-root'                  => '響個wiki度進行全部嘅動作',
 
 # User rights log
 'rightslog'      => '用戶權限日誌',
@@ -1471,18 +1479,14 @@ $1",
 'large-file'                  => '建議檔案嘅大細唔好大過$1 bytes，呢個檔案有$2 bytes',
 'largefileserver'             => '呢個檔案超過咗伺服器設定允許嘅大細。',
 'emptyfile'                   => '你上載嘅檔案似乎係空嘅。噉樣可能係因為你打錯咗個檔名。請檢查吓你係唔係真係要上載呢個檔案。',
-'fileexists'                  => "呢個檔名已經存在，如果你唔肯定係唔係要更改'''<tt>$1</tt>'''，請先檢查佢。",
-'filepageexists'              => "呢個檔嘅描述頁已經響'''<tt>$1</tt>'''開咗，但係呢個名嘅檔案重未存在。你輸入咗嘅摘要係唔會顯示響個描述頁度。要令到個摘要響嗰度出現，你就要手動噉去編輯佢。'''",
-'fileexists-extension'        => "一個相似檔名嘅檔案已經存在:
-
-上載檔案嘅檔名: '''<tt>$1</tt>'''
-
-現有檔案嘅檔名: '''<tt>$2</tt>'''
-
+'fileexists'                  => "呢個檔名已經存在，如果你唔肯定係唔係要更改'''<tt>[[:$1]]</tt>'''，請先檢查佢。 [[$1|thumb]]",
+'filepageexists'              => "呢個檔嘅描述頁已經響'''<tt>[[:$1]]</tt>'''開咗，但係呢個名嘅檔案重未存在。你輸入咗嘅摘要係唔會顯示響個描述頁度。要令到個摘要響嗰度出現，你就要手動噉去編輯佢。'''",
+'fileexists-extension'        => "一個相似檔名嘅檔案已經存在: [[$2|thumb]]
+* 上載檔案嘅檔名: '''<tt>[[:$1]]</tt>'''
+* 現有檔案嘅檔名: '''<tt>[[:$2]]</tt>'''
 請揀一個唔同嘅名。",
-'fileexists-thumb'            => "<center>'''已經存在嘅檔案'''</center>",
-'fileexists-thumbnail-yes'    => "呢個檔案好似係一幅圖像縮細咗嘅版本''（縮圖）''。請檢查清楚個檔案'''<tt>$1</tt>'''。
-
+'fileexists-thumbnail-yes'    => "呢個檔案好似係一幅圖像縮細咗嘅版本''（縮圖）''。 [[$1|thumb]]
+請檢查清楚個檔案'''<tt>[[:$1]]</tt>'''。
 如果檢查咗嘅檔案係同原本幅圖個大細係一樣嘅話，就唔使再上載多一幅縮圖。",
 'file-thumbnail-no'           => "個檔名係以'''<tt>$1</tt>'''開始。佢好似係一幅圖像嘅縮細版本''（縮圖）''。
 如果你有呢幅圖像嘅完整大細，唔係嘅話請再改過個檔名。",
@@ -1522,6 +1526,24 @@ $1",
 'upload-too-many-redirects' => '個URL有太多跳轉',
 'upload-unknown-size'       => '未知嘅大細',
 'upload-http-error'         => '一個HTTP錯誤發生咗: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => '拒絕通行',
+'img-auth-nopathinfo'   => 'PATH_INFO唔見咗。
+你嘅伺服器重未設定呢個資料。
+佢可能係CGI為本，唔支援img_auth。
+睇吓 http://www.mediawiki.org/wiki/Manual:Image_Authorization。',
+'img-auth-notindir'     => '所請求嘅路徑唔響個已經設定咗嘅上載目錄。',
+'img-auth-badtitle'     => '唔能夠由"$1"整一個有效標題。',
+'img-auth-nologinnWL'   => '你而家無登入，"$1"唔響個白名單度。',
+'img-auth-nofile'       => '檔案"$1"唔存在。',
+'img-auth-isdir'        => '你試過通行一個目錄"$1"。
+只係可以通行檔案。',
+'img-auth-streaming'    => '串流緊"$1"。',
+'img-auth-public'       => 'img_auth.php 嘅功能係由一個公共 wiki 度輸出檔案。
+呢個 wiki 係設定咗做一個公共 wiki。
+基於保安最佳化，img_auth.php已經停用咗。',
+'img-auth-noread'       => '用戶無通行去讀"$1"。',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => '唔可以到嗰個URL',
@@ -1615,6 +1637,7 @@ $1",
 ** 侵犯版權
 ** 重覆檔案',
 'filedelete-edit-reasonlist'  => '編輯刪除原因',
+'filedelete-maintenance'      => '響維護嗰陣已經暫時停用檔案刪除同恢復。',
 
 # MIME search
 'mimesearch'         => 'MIME 搜尋',
@@ -1811,7 +1834,7 @@ Template:搞清楚',
 
 # Special:ActiveUsers
 'activeusers'          => '活躍用戶名單',
-'activeusers-count'    => '$1次最近編輯',
+'activeusers-count'    => '響$3日之內嘅$1次編輯',
 'activeusers-from'     => '顯示用戶開始於:',
 'activeusers-noresult' => '搵唔到用戶。',
 
@@ -1908,16 +1931,13 @@ Template:搞清楚',
 'enotif_impersonal_salutation' => '{{SITENAME}}用戶',
 'changed'                      => '修改過',
 'created'                      => '建立過',
-'deleted'                      => '刪除過',
-'enotif_deletedpagetext'       => '呢一版而家已經唔響度。',
 'enotif_subject'               => '{{SITENAME}}嘅頁面$PAGETITLE已由$PAGEEDITOR$CHANGEDORCREATED',
 'enotif_lastvisited'           => '你上次視察以嚟嘅修改請睇$1。',
 'enotif_lastdiff'              => '睇$1去睇吓呢一次更改。',
 'enotif_anon_editor'           => '匿名用戶$1',
-'enotif_rev_info'              => '現時修訂請睇$1。',
 'enotif_body'                  => '$WATCHINGUSERNAME先生／小姐你好，
 
-{{SITENAME}}嘅頁面$PAGETITLE已經由$PAGEEDITOR喺$PAGEEDITDATEANDTIME$CHANGEDORCREATED。$REVINFO
+{{SITENAME}}嘅頁面$PAGETITLE已經由$PAGEEDITOR喺$PAGEEDITDATE$CHANGEDORCREATED，現時修訂請睇$PAGETITLE_URL。
 
 $NEWPAGE
 
@@ -2209,7 +2229,8 @@ $1',
 'contribslink'                    => '貢獻',
 'autoblocker'                     => '已經自動封鎖，因為你嘅IP地址冇幾耐之前"[[User:$1|$1]]"使用過。$1\\嘅封鎖原因係: 「$2」',
 'blocklogpage'                    => '封鎖日誌',
-'blocklog-fulllog'                => '成個封鎖日誌',
+'blocklog-showlog'                => '呢位用戶已經響之前被封鎖過。響下面提供咗封鎖紀錄以便參考：',
+'blocklog-showsuppresslog'        => '呢位用戶已經響之前被封鎖同隱藏過。響下面提供咗廢止紀錄以便參考：',
 'blocklogentry'                   => '已封鎖[[$1]]，到期時間為$2 $3',
 'reblock-logentry'                => '已改[[$1]]嘅封鎖設定，到期時間為$2 $3',
 'blocklogtext'                    => '呢個係封鎖同埋解封動作嘅日誌。自動封鎖IP地址嘅動作冇列出嚟。去[[Special:IPBlockList|IP封鎖名單]]睇現時生效嘅封鎖名單',
@@ -2526,10 +2547,12 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 # Attribution
 'anonymous'        => '{{SITENAME}}嘅匿名{{PLURAL:$1|用戶|用戶}}',
 'siteuser'         => '{{SITENAME}}嘅用戶$1',
+'anonuser'         => '{{SITENAME}}嘅匿名用戶$1',
 'lastmodifiedatby' => '呢一頁最後響 $1 $2 畀 $3 修改。',
 'othercontribs'    => '以$1嘅作品為基礎。',
 'others'           => '其他',
 'siteusers'        => '{{SITENAME}}嘅{{PLURAL:$2|用戶|用戶}}$1',
+'anonusers'        => '{{SITENAME}}嘅匿名{{PLURAL:$2|用戶|用戶}} $1',
 'creditspage'      => '頁面信譽',
 'nocredits'        => '呢一頁並無任何嘅信譽資料可以提供。',
 

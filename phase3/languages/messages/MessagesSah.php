@@ -446,14 +446,14 @@ $2',
 'login'                      => 'Киир',
 'nav-login-createaccount'    => 'Киир / бэлиэтэн',
 'loginprompt'                => '{{SITENAME}} саайтыгар киирэргэ «cookies» туттары көҥүллээ.',
-'userlogin'                  => 'Киир / бэлиэтэн',
+'userlogin'                  => 'Киир',
 'logout'                     => 'Таҕыс',
 'userlogout'                 => 'Таҕыс',
 'notloggedin'                => 'Ааккын эппэтиҥ',
-'nologin'                    => 'Бэлиэтэнэ иликкин дуо? $1.',
+'nologin'                    => "Бэлиэтэнэ иликкин дуо? '''$1'''.",
 'nologinlink'                => 'Бэлиэтэнии',
 'createaccount'              => 'Бэлиэтэнии',
-'gotaccount'                 => 'Бэлиэтэммитиҥ дуо? $1.',
+'gotaccount'                 => "Бэлиэтэммитиҥ дуо? '''$1'''.",
 'gotaccountlink'             => 'Аатыҥ',
 'createaccountmail'          => 'e-mail-ынан',
 'badretype'                  => 'Киирии тылларыҥ сөп түбэспэтилэр.',
@@ -510,7 +510,7 @@ $2',
 'createaccount-text'         => 'Ким эрэ {{SITENAME}} бырайыакка ($4) саҥа $2 ааты бэлиэтээбит. "$2" киирии тыла "$3". Билигин киирэн киирии тылгын уларытыаххын наада.
 
 Саҥа аат сыыһа оҥоһуллубут буоллаҕына тугу да гыныа суоххун сөп.',
-'login-throttled'            => 'Киирии тылы наһаа элбэхтик киллэрэ сатаатыҥ.
+'login-throttled'            => 'Наһаа элбэхтик бэйэҥ ааккын билиһиннэрэ сатаатыҥ.
 Бука диэн кыратык тохтуу түһэн баран өссө боруобалаа.',
 'loginlanguagelabel'         => 'Омугун тыла: $1',
 
@@ -625,7 +625,11 @@ IP-аадырыһа эрэ көстөр.
 Бу аат атын ыстатыйалга туттулларын [[Special:Search/{{PAGENAME}}|булуоххун сөп]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} сурунаалларга көрдүөххүн сөп],
 эбэтэр [{{fullurl:{{FULLPAGENAME}}|action=edit}} маннык ааттаах саҥа ыстатыйаны суруйуоххун] сөп</span>.',
+'noarticletext-nopermission'       => 'Билигин бу сирэй кураанах.
+Бу [[Special:Search/{{PAGENAME}}|тылы атын сирэйдэргэ көрдөөн көрүөххүн]] сөп,
+эбэтэр <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} сурунаалларга манна сыһыаннаах суруктары булуоххун сөп].',
 'userpage-userdoesnotexist'        => '"$1" аат бэлиэтэммэтэх. Бу сирэйи оҥорор/уларытар баҕалааххын дуо?',
+'userpage-userdoesnotexist-view'   => '"$1" кыттааччы аата бэлиэтэниллибэтэх.',
 'clearyourcache'                   => "'''Болҕой - Уларыппыт сирэйгин сөпкө көрөргө интэриниэт бырагыраамматын кээһин ыраастаа.''' '''Mozilla / Firefox / Safari:''' ''Shift'' кнопканы тутан туран ''Reload'' баттаа, эбэтэр ''Ctrl-F5'', ''Ctrl-R'' дуу (Macintosh-ка ''Command-R'') баттаа; '''Konqueror: ''' ''Reload'' ''F5'' эбэтэр баттаа;
 '''Opera:''' кээһин ыраастыырга манна ''Tools → Preferences'' киир; '''Internet Explorer:''' ''Ctrl'' тутан туран ''Refresh'' баттаа, эбэтэр ''Ctrl-F5'' баттаа.",
 'usercssyoucanpreview'             => "'''Көмө:''' Саҥа css- эбэтэр js-билэни тургутуоххун баҕардаххына эрдэ көрөр тимэҕи баттаа.",
@@ -865,6 +869,7 @@ $1",
 'revdelete-otherreason'       => 'Атын/эбии төрүөт:',
 'revdelete-reasonotherlist'   => 'Атын төрүөт',
 'revdelete-edit-reasonlist'   => 'Сотуу төрүөтүн уларыт',
+'revdelete-offender'          => 'Барыл ааптара:',
 
 # Suppression log
 'suppressionlog'     => 'Кистээһин сурунаала',
@@ -982,7 +987,7 @@ $1",
 'prevn-title'                      => 'Бу иннинээҕи $1 {{PLURAL:$1|сурук|суруктар}}',
 'nextn-title'                      => 'Бу кэннинээҕи $1 {{PLURAL:$1|сурук|суруктар}}',
 'shown-title'                      => 'Сирэйгэ $1 {{PLURAL:$1|суругу|суруктары}} көрдөр',
-'viewprevnext'                     => 'Көр ($1) ($2) ($3).',
+'viewprevnext'                     => 'Көр ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Көрдөөһүн туруоруулара',
 'searchmenu-exists'                => "'''Бу биикигэ бу сирэй маннык ааттаах \"[[\$1]]\"'''",
 'searchmenu-new'                   => "'''Бу биикигэ \"[[:\$1]]\" сирэйи айарга!'''",
@@ -1389,16 +1394,18 @@ $1 {{PLURAL:$1|бэлиэттэн|бэлиэттэн (буукубаттан)}} 
 'large-file'                  => 'Манна $1 байт аннынан ыйааһыннаах ойуулары туттар ордук (эн суруйбут билэҥ $2 байтаах).',
 'largefileserver'             => 'Билэ ыйааһына көҥүллэммиттэн ордук.',
 'emptyfile'                   => 'Суруйбут билэҥ арааһа кураанах быһылаах. Баҕар билэ аатын сыыһа суруйбутуҥ буолаарай. Өссө төгүл көр.',
-'fileexists'                  => "Инник ааттаах билэ бэлиэр баар эбит, ону уларытыаххын саарбахтыыр буоллаххына - маны көр '''<tt>$1</tt>'''.",
-'filepageexists'              => "Бу билэни быһаарар сирэй номнуо оҥоһуллубут '''<tt>$1</tt>''', ол гынан баран маннык ааттаах сирэй суох.
+'fileexists'                  => "Инник ааттаах билэ бэлиэр баар эбит, ону уларытыаххын саарбахтыыр буоллаххына - маны көр '''<tt>[[:$1]]</tt>'''.
+[[$1|thumb]]",
+'filepageexists'              => "Бу билэни быһаарар сирэй номнуо оҥоһуллубут '''<tt>[[:$1]]</tt>''', ол гынан баран маннык ааттаах сирэй суох.
 Киллэрбит быһаарыыҥ быһаарыы сирэйигэр тахсыа суоҕа.
 Саҥа быһаарыыны эбэр буоллаххына илиигинэн уларытыаххын наада.",
-'fileexists-extension'        => "Майгынныыр ааттаах билэ баар:<br />
-Эн суруйбут билэҥ аата: '''<tt>$1</tt>'''<br />
-Уруккуттан баар билэ аата: '''<tt>$2</tt>'''<br />
+'fileexists-extension'        => "Майгынныыр ааттаах билэ баар: [[$2|thumb]]
+* Эн суруйбут билэҥ аата: '''<tt>[[:$1]]</tt>'''
+* Уруккуттан баар билэ аата: '''<tt>[[:$2]]</tt>'''
 Атын аатта таларыҥ буоллар.",
-'fileexists-thumb'            => "<center>'''Баар ойуу'''</center>",
-'fileexists-thumbnail-yes'    => "Ойуу арааһа кыччатыллыбыт ойуу (миниатюра) быһыылаах. Көр '''<tt>$1</tt>'''.<br /> Бу ойуу урукку ойуу кыччатыллыбыта буоллаҕына суруйар наадата суох.",
+'fileexists-thumbnail-yes'    => "Ойуу арааһа кыччатыллыбыт ойуу (миниатюра) быһыылаах. [[$1|thumb]]
+Көр '''<tt>[[:$1]]</tt>'''.
+Бу ойуу урукку ойуу кыччатыллыбыта буоллаҕына суруйар наадата суох.",
 'file-thumbnail-no'           => "Билэ аата мантан саҕаланар '''<tt>$1</tt>'''. 
 Арааһа ойуу кыра куоппуйата быһыылаах ''(миниатюра)''. 
 Бу ойуу толору барыйаана баар буоллаҕына ону манна суруй, эбэтэр аатын уларыт.",
@@ -1456,6 +1463,24 @@ PICT # misc.
 'upload-too-many-redirects' => 'URL наһаа элбэх утаарыылаах',
 'upload-unknown-size'       => 'Биллибэт кээмэй',
 'upload-http-error'         => 'HTTP алҕаһа таҕыста: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Киирии бобуллубут',
+'img-auth-nopathinfo'   => 'PATH_INFO суох.
+Эн сиэбэрин маннык сибидиэнньэни ыытар курдук туруоруута суох.
+Баҕар кини CGI олоҕурара буолуо ол иһин img_auth өйөөбөтө буолуо.
+Көр http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-notindir'     => 'Көрдөөбүт суолуҥ эрдэттэн туруоруллубут хачайдыыр паапкаҕа сыһыана суох.',
+'img-auth-badtitle'     => 'Мантан «$1» сөптөөх ааты оҥорор кыах суох.',
+'img-auth-nologinnWL'   => 'Эн тиһиликкэ киирбэтэххин, уонна «$1» үрүҥ (көҥүллэммит) тиһиккэ киирбэт эбит.',
+'img-auth-nofile'       => '«$1» билэ суох.',
+'img-auth-isdir'        => 'Бу паапакаҕа «$1» киирэ сатыыгын.
+Билэлэргэ эрэ киирэр көҥүллэммит.',
+'img-auth-streaming'    => 'Ботуогунан биэрии «$1».',
+'img-auth-public'       => 'img_auth.php аналынан билэлэри сабыылаах биикиттэн таһаарыы буолар.
+Бу биики аһаҕас.
+Онон img_auth.php араарыллыбыт.',
+'img-auth-noread'       => 'Кыттааччы «$1» ааҕарга көҥүлэ суох.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Бу URL-га кыайан тахсыбата',
@@ -1548,6 +1573,7 @@ PICT # misc.
 ** Бас билии быраабын кэһии
 ** Хос суруллубут билэ',
 'filedelete-edit-reasonlist'  => 'Сотуу төрүөтүн уларыт',
+'filedelete-maintenance'      => 'Көрүү-истии үлэтин кэмигэр билэлэри сотуу уонна төннөрүү быстах кэмҥэ тохтотулунна.',
 
 # MIME search
 'mimesearch'         => 'MIME көрдөөһүн',
@@ -1845,16 +1871,13 @@ PICT # misc.
 'enotif_impersonal_salutation' => '{{SITENAME}} кыттааччыта',
 'changed'                      => 'уларыппыт (уларытыллыбыт)',
 'created'                      => 'айыллыбыт',
-'deleted'                      => 'сотулунна',
-'enotif_deletedpagetext'       => 'Бу сирэй билигин көстөр кыаҕа суох.',
 'enotif_subject'               => '«{{SITENAME}}» $PAGETITLE кыттааччыга сыһыаннаах сирэйи $PAGEEDITOR кыттааччы $CHANGEDORCREATED',
 'enotif_lastvisited'           => 'Бутэһик киирииҥ кэнниттэн оҥоһуллубут уларыйыылары барытын көрөргө манна киир: $1.',
 'enotif_lastdiff'              => 'Уларытыыны манна көрүҥ: $1.',
 'enotif_anon_editor'           => 'ааттамматах кыттааччы $1',
-'enotif_rev_info'              => 'Билиҥҥи барылы көрөргө маны көр: $1.',
 'enotif_body'                  => 'Күндү $WATCHINGUSERNAME,
 
-«{{SITENAME}}» $PAGETITLE кыттаачыга сыһыаннаах сирэйи $PAGEEDITDATEANDTIME $PAGEEDITOR кыттааччы $CHANGEDORCREATED. $REVINFO
+«{{SITENAME}}» $PAGETITLE кыттаачыга сыһыаннаах сирэйи $PAGEEDITDATE $PAGEEDITOR кыттааччы $CHANGEDORCREATED. Сирэй билиҥҥи туругун манна көр: $PAGETITLE_URL.
 
 $NEWPAGE
 
@@ -2056,17 +2079,18 @@ $1',
 'month'               => 'Ый иһигэр:',
 'year'                => 'Сыл иһигэр:',
 
-'sp-contributions-newbies'       => 'Саҥа эрэ ааттан оҥоһуллубут уларытыылары көрдөр',
-'sp-contributions-newbies-sub'   => 'Саҥа ааттартан',
-'sp-contributions-newbies-title' => 'Саҥа бэйэлэрин билиһиннэрбит дьон уларытыылара',
-'sp-contributions-blocklog'      => 'Бобуу сурунаала',
-'sp-contributions-deleted'       => 'кыттааччы сотуллубут көннөрүүлэрэ',
-'sp-contributions-logs'          => 'сурунааллар',
-'sp-contributions-talk'          => 'ырытыы',
-'sp-contributions-userrights'    => 'кыттааччылар бырааптарын салайыы',
-'sp-contributions-search'        => 'Кыттааччы оҥорбут уларытыыларын көрдөөһүн',
-'sp-contributions-username'      => 'IP аадырыһа эбэтэр аата:',
-'sp-contributions-submit'        => 'Көрдөө',
+'sp-contributions-newbies'        => 'Саҥа эрэ ааттан оҥоһуллубут уларытыылары көрдөр',
+'sp-contributions-newbies-sub'    => 'Саҥа ааттартан',
+'sp-contributions-newbies-title'  => 'Саҥа бэйэлэрин билиһиннэрбит дьон уларытыылара',
+'sp-contributions-blocklog'       => 'Бобуу сурунаала',
+'sp-contributions-deleted'        => 'кыттааччы сотуллубут көннөрүүлэрэ',
+'sp-contributions-logs'           => 'сурунааллар',
+'sp-contributions-talk'           => 'ырытыы',
+'sp-contributions-userrights'     => 'кыттааччылар бырааптарын салайыы',
+'sp-contributions-blocked-notice' => 'Бу кыттааччы бырайыаакка кыттара билигин бобуллубут. Хааччах сурунаалыгар ол туһунан бүтэһик сурук:',
+'sp-contributions-search'         => 'Кыттааччы оҥорбут уларытыыларын көрдөөһүн',
+'sp-contributions-username'       => 'IP аадырыһа эбэтэр аата:',
+'sp-contributions-submit'         => 'Көрдөө',
 
 # What links here
 'whatlinkshere'            => 'Манна сигэнэллэр',
@@ -2159,7 +2183,8 @@ $1',
 'contribslink'                    => 'вклад',
 'autoblocker'                     => 'Эн IP-ҥ "[[User:$1|$1]]" кыттааччыны кытта биир буолан, эн эмиэ хааччахтаныыга түбэстиҥ. Кини хааччахтаммыт төрүөтэ: "$2"',
 'blocklogpage'                    => 'Хааччахтааһын/бобуу сурунаала',
-'blocklog-fulllog'                => 'Хааччахтааһын сурунаалыгар барытыгар сыһыаннаах',
+'blocklog-showlog'                => 'Бу кыттааччы бэлиэр хааччахтаммыт. Хааччах сурунаала аллара көстөр:',
+'blocklog-showsuppresslog'        => 'Бу кыттааччы бэлиэр хааччахтаммыт уонна аата кистэммит. Аат кистээһин сурунаала аллара көстөр:',
 'blocklogentry'                   => '[[$1]] хааччахтаата, болдьоҕо: $2 $3',
 'reblock-logentry'                => 'манна [[$1]] аналлаах хааччахтааһын туруоруулара уларыйда, болдьоҕо $2 $3',
 'blocklogtext'                    => 'Кыттааччылары хааччахтааһын уонна ол хааччахтааһыннарын суох гыныы сурунаала.
@@ -3111,5 +3136,20 @@ $1',
 'htmlform-submit'              => 'Ыыт',
 'htmlform-reset'               => 'Уларытыыны төннөр',
 'htmlform-selectorother-other' => 'Атын',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Категория эбии',
+'ajax-add-category-submit'     => 'Эп',
+'ajax-confirm-title'           => 'Дьайыыны бигэргэт',
+'ajax-confirm-prompt'          => 'Аллара уларытыыҥ туһунан суруйуоххун сөп.
+"Бигэргэт" диэни баттаан уларытыыгын бигэргэт.',
+'ajax-confirm-save'            => 'Бигэргэт',
+'ajax-add-category-summary'    => '«$1» категория эбилиннэ',
+'ajax-remove-category-summary' => '«$1» категория сотулунна',
+'ajax-confirm-actionsummary'   => 'Оҥоһуллар дьайыылар:',
+'ajax-error-title'             => 'Алҕас',
+'ajax-error-dismiss'           => 'Сөп',
+'ajax-remove-category-error'   => 'Бу категорияны сотор табыллыбата.
+Үксүгэр категория халыып нөҥүө эбиллибит түгэнигэр итинник буолар.',
 
 );

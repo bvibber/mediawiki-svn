@@ -151,9 +151,9 @@ $messages = array(
 
 # Main script and global functions
 'nosuchspecialpage' => 'E página spesial no ta eksistí',
-'nospecialpagetext' => "<big>'''Bo a pidi un página spesial inválido.'''</big>
+'nospecialpagetext' => '<strong>Bo a pidi un página spesial inválido.</strong>
 
-Bo por haña un lista di tur [[Special:SpecialPages|{{int:specialpages}}]].",
+Bo por haña un lista di tur [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'         => 'Eror',
@@ -172,7 +172,7 @@ No lubidá di kambia bo [[Special:Preferences|{{SITENAME}} preferensianan]].',
 'yourpassword'               => 'Kontraseña',
 'yourpasswordagain'          => 'Hinka kontraseña atrobe',
 'remembermypassword'         => 'Kordá mi',
-'userlogin'                  => 'Traha un kuenta nobo òf outentiká',
+'userlogin'                  => 'Outentiká',
 'userlogout'                 => 'Terminá sesion',
 'badretype'                  => 'E kontraseñanan hinká no ta kuadra.',
 'wrongpassword'              => 'Kontraseña no ta korekto. Por fabor purba atrobe.',

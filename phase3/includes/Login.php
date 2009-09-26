@@ -94,22 +94,20 @@ class Login {
 	 * @return a Login class constant representing the status.
 	 */
 	public function attemptLogin(){
+		global $wgUser;
 		
 		$code = $this->authenticateUserData();
-		if( $code !== self::SUCCESS ){
+		if( $code != self::SUCCESS ){
 			return $code;
 		}
 		
 		# Log the user in and remember them if they asked for that.
-		global $wgUser;
-		$wgUser = $this->mUser;
 		if( (bool)$this->mRemember != (bool)$wgUser->getOption( 'rememberpassword' ) ) {
 			$wgUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
 			$wgUser->saveSettings();
 		} else {
 			$wgUser->invalidateCache();
 		}
-		
 		$wgUser->setCookies();
 
 		# Reset the password throttle
@@ -147,7 +145,6 @@ class Login {
 				return self::NOT_EXISTS;
 			}
 			if( !$this->mExtUser->authenticate( $this->mPassword ) ) {
-				$this->mLoginResult = 'wrongpassword';
 				return self::WRONG_PLUGIN_PASS;
 			}
 		} else {
@@ -161,7 +158,6 @@ class Login {
 			}
 			if( !$wgAuth->authenticate( $this->mUser->getName(), $this->mPassword ) ) {
 				wfDebug( __METHOD__.": \$wgAuth->authenticate() returned false, aborting\n" );
-				$this->mLoginResult = 'wrongpassword';
 				return self::WRONG_PLUGIN_PASS;
 			}
 		}
@@ -236,12 +232,20 @@ class Login {
 		# is for an external auth plugin to autocreate the local user first.
 		if ( $this->mUser->getID() == 0 ) {
 			if ( $this->canAutoCreate() == self::SUCCESS ) {
+				
 				$isAutoCreated = true;
 				wfDebug( __METHOD__.": creating account\n" );
+				
+				if( !wfRunHooks( 'AbortNewAccountAuto', array( $this->mUser, &$this->mCreateResult ) ) ) {
+					wfDebug( __METHOD__ . ": a hook blocked creation\n" );
+					return self::ABORTED;
+				}
+				
 				$result = $this->initUser( true );
 				if( $result !== self::SUCCESS ){
 					return $result;
-				};
+				}
+				
 			} else {
 				return $this->canAutoCreate();
 			}
@@ -318,19 +322,14 @@ class Login {
 	 *   authentication database?
 	 * @param $byEmail Bool is this request going to be handled by sending
 	 *   the password by email?
-	 * @return Class constant status code.
+	 * @return Bool whether creation was successful (should only fail for
+	 *   Db errors etc).
 	 */
 	protected function initUser( $autocreate=false, $byEmail=false ) {
-		global $wgAuth;
-	
-		if( !wfRunHooks( 'AbortNewAccount', array( $this->mUser, &$this->mCreateResult, $autocreate, $byEmail ) ) ) {
-			# Hook point to add extra creation throttles and blocks
-			wfDebug( "LoginForm::addNewAccountInternal: a hook blocked creation\n" );
-			return self::ABORTED;
-		}
+		global $wgAuth, $wgUser;
 
 		$fields = array(
-			'name' => $this->mName,
+			'name' => User::getCanonicalName( $this->mName ),
 			'password' => $byEmail ? null : User::crypt( $this->mPassword ),
 			'email' => $this->mEmail,
 			'options' => array(
@@ -341,7 +340,7 @@ class Login {
 		$this->mUser = User::createNew( $this->mName, $fields );
 		
 		if( $this->mUser === null ){
-			return self::FAILED;
+			return null;
 		}
 
 		# Let old AuthPlugins play with the user
@@ -361,14 +360,16 @@ class Login {
 		$ssUpdate->doUpdate();
 		if( $autocreate )
 			$this->mUser->addNewUserLogEntryAutoCreate();
+		elseif( $wgUser->isAnon() )
+			# Avoid spamming IP addresses all over the newuser log
+			$this->mUser->addNewUserLogEntry( $this->mUser, $byEmail );
 		else
-			$this->mUser->addNewUserLogEntry( $byEmail );
+			$this->mUser->addNewUserLogEntry( $wgUser, $byEmail );
 		
 		# Run hooks
-		wfRunHooks( 'AddNewAccount', array( $this->mUser, $autocreate, $byEmail ) );
+		wfRunHooks( 'AddNewAccount', array( $this->mUser ) );
 
-		$this->mUser->saveSettings();
-		return self::SUCCESS;
+		return true;
 	}
 
 	/**
@@ -459,6 +460,12 @@ class Login {
 		$this->mUser->setEmail( $this->mEmail );
 		$this->mUser->setRealName( $this->mRealName );
 
+		if( !wfRunHooks( 'AbortNewAccount', array( $this->mUser, &$this->mCreateResult ) ) ) {
+			# Hook point to add extra creation throttles and blocks
+			wfDebug( __METHOD__ . ": a hook blocked creation\n" );
+			return self::ABORTED;
+		}
+
 		if ( $wgAccountCreationThrottle && $wgUser->isPingLimitable() ) {
 			$key = wfMemcKey( 'acctcreate', 'ip', $ip );
 			$value = $wgMemc->get( $key );
@@ -479,8 +486,11 @@ class Login {
 		}
 
 		$result = $this->initUser( false, $byEmail );
-		if( $result !== self::SUCCESS )
-			return $result;			
+		if( $result === null )
+			# It's unlikely we'd get here without some exception 
+			# being thrown, but it's probably possible...
+			return self::FAILED;
+			
 	
 		# Send out an email message if needed
 		if( $byEmail ){
@@ -501,7 +511,7 @@ class Login {
 					: self::SUCCESS;
 			}
 		}
-		return self::SUCCESS;
+		return true;
 	}
 
 	/**

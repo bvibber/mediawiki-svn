@@ -458,6 +458,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|Diese Kategorie enthält folgende Datei:|{{PLURAL:$1|Folgende Datei ist eine von insgesamt $2 Dateien in dieser Kategorie:|Es werden $1 von insgesamt $2 Dateien in dieser Kategorie angezeigt:}}}}',
 'category-file-count-limited'    => 'Folgende {{PLURAL:$1|Datei ist|$1 Dateien sind}} in dieser Kategorie enthalten:',
 'listingcontinuesabbrev'         => '(Fortsetzung)',
+'index-category'                 => 'Indizierte Seiten',
+'noindex-category'               => 'Nichtindizierte Seiten',
 
 'mainpagetext'      => "<big>'''MediaWiki wurde erfolgreich installiert.'''</big>",
 'mainpagedocfooter' => 'Hilfe zur Benutzung und Konfiguration der Wiki-Software findest du im [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbuch].
@@ -654,9 +656,9 @@ Siehe die [[Special:Version|Versionsseite]]',
 Es kann ein Schreibfehler in der URL vorliegen oder es wurde ein fehlerhafter Link angeklickt.
 Es kann sich auch um einen Programmierfehler in der Software, die auf {{SITENAME}} benutzt wird, handeln.',
 'nosuchspecialpage' => 'Spezialseite nicht vorhanden',
-'nospecialpagetext' => "<big>'''Die aufgerufene Spezialseite ist nicht vorhanden.'''</big>
+'nospecialpagetext' => '<strong>Die aufgerufene Spezialseite ist nicht vorhanden.</strong>
 
-Alle verfügbaren Spezialseiten sind in der [[Special:SpecialPages|Liste der Spezialseiten]] zu finden.",
+Alle verfügbaren Spezialseiten sind in der [[Special:SpecialPages|Liste der Spezialseiten]] zu finden.',
 
 # General errors
 'error'                => 'Fehler',
@@ -746,19 +748,20 @@ Vergiss nicht, deine [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupass
 'login'                      => 'Anmelden',
 'nav-login-createaccount'    => 'Anmelden',
 'loginprompt'                => 'Zur Anmeldung müssen Cookies aktiviert sein.',
-'userlogin'                  => 'Anmelden / Benutzerkonto erstellen',
+'userlogin'                  => 'Anmelden',
 'logout'                     => 'Abmelden',
 'userlogout'                 => 'Abmelden',
 'notloggedin'                => 'Nicht angemeldet',
-'nologin'                    => 'Du hast kein Benutzerkonto? $1.',
+'nologin'                    => "Du hast kein Benutzerkonto? '''$1'''.",
 'nologinlink'                => 'Neues Benutzerkonto anlegen',
 'createaccount'              => 'Benutzerkonto anlegen',
-'gotaccount'                 => 'Du hast bereits ein Benutzerkonto? $1.',
+'gotaccount'                 => "Du hast bereits ein Benutzerkonto? '''$1'''.",
 'gotaccountlink'             => 'Anmelden',
 'createaccountmail'          => 'per E-Mail',
 'badretype'                  => 'Die beiden Passwörter stimmen nicht überein.',
 'userexists'                 => 'Dieser Benutzername ist schon vergeben. Bitte wähle einen anderen.',
 'loginerror'                 => 'Fehler bei der Anmeldung',
+'createaccounterror'         => 'Benutzerkonto konnte nicht erstellt werden: $1',
 'nocookiesnew'               => 'Der Benutzerzugang wurde erstellt, aber du bist nicht angemeldet. {{SITENAME}} benötigt für diese Funktion Cookies, bitte aktiviere diese und melde dich dann mit deinem neuen Benutzernamen und dem zugehörigen Passwort an.',
 'nocookieslogin'             => '{{SITENAME}} benutzt Cookies zur Anmeldung der Benutzer. Du hast Cookies deaktiviert, bitte aktiviere diese und versuche es erneut.',
 'noname'                     => 'Du musst einen gültigen Benutzernamen angeben.',
@@ -783,6 +786,7 @@ Das neue Passwort ist {{PLURAL:$5|1 Tag|$5 Tage}} gültig.
 
 Bitte ignoriere diese E-Mail, falls du sie nicht selbst angefordert hast. Das alte Passwort bleibt weiterhin gültig.',
 'noemail'                    => 'Benutzer „$1“ hat keine E-Mail-Adresse angegeben.',
+'noemailcreate'              => 'Du musst eine gültige E-Mail-Adresse angeben',
 'passwordsent'               => 'Ein neues, temporäres Passwort wurde an die E-Mail-Adresse von Benutzer „$1“ gesandt.
 Bitte melde dich damit an, sobald du es erhalten hast. Das alte Passwort bleibt weiterhin gültig.',
 'blocked-mailpassword'       => 'Die von dir verwendete IP-Adresse ist für das Ändern von Seiten gesperrt. Um einen Missbrauch zu verhindern, wurde die Möglichkeit zur Anforderung eines neuen Passwortes ebenfalls gesperrt.',
@@ -805,7 +809,8 @@ Besucher, die diese IP-Adresse verwenden, können momentan keine Benutzerkonten 
 'createaccount-text'         => 'Es wurde für dich ein Benutzerkonto „$2“ auf {{SITENAME}} ($4) erstellt. Das automatisch generierte Passwort für „$2“ ist „$3“. Du solltest dich nun anmelden und das Passwort ändern.
 
 Falls das Benutzerkonto irrtümlich angelegt wurde, kannst du diese Nachricht ignorieren.',
-'login-throttled'            => 'Du hast zu oft vergeblich versucht, dich unter diesem Benutzernamen anzumelden. Bitte warte, bevor du es erneut probierst.',
+'login-throttled'            => 'Du hast zu oft versucht, dich anzumelden.
+Bitte warte, bevor du es erneut probierst.',
 'loginlanguagelabel'         => 'Sprache: $1',
 
 # Password reset dialog
@@ -919,6 +924,7 @@ Du kannst diesen Titel auf den anderen Seiten [[Special:Search/{{PAGENAME}}|such
 Du kannst diesen Titel auf den anderen Seiten [[Special:Search/{{PAGENAME}}|suchen]]
 oder <span class="plainlinks">in den zugehörigen [{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} Logbüchern suchen].',
 'userpage-userdoesnotexist'        => 'Das Benutzerkonto „$1“ ist nicht vorhanden. Bitte prüfe, ob du diese Seite wirklich erstellen/bearbeiten willst.',
+'userpage-userdoesnotexist-view'   => 'Benutzerkonto „$1“ existiert nicht.',
 'clearyourcache'                   => "'''Hinweis - Leere nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und auf ''Aktualisieren'' klicken oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' bei Macintosh) drücken; '''Konqueror: '''Auf ''Aktualisieren'' klicken oder ''F5'' drücken; '''Opera:''' Cache unter ''Extras → Einstellungen'' leeren; '''Internet Explorer:''' ''Strg-F5'' drücken oder ''Strg'' gedrückt halten und dabei ''Aktualisieren'' anklicken.",
 'usercssyoucanpreview'             => "'''Tipp:''' Benutze den Vorschau-Button, um dein neues CSS vor dem Speichern zu testen.",
 'userjsyoucanpreview'              => "'''Tipp:''' Benutze den Vorschau-Button, um dein neues JS vor dem Speichern zu testen.",
@@ -1146,6 +1152,7 @@ Bitte prüfe die Logbücher.',
 'revdelete-otherreason'       => 'Andere/zusätzliche Begründung:',
 'revdelete-reasonotherlist'   => 'Andere Begründung',
 'revdelete-edit-reasonlist'   => 'Löschgründe bearbeiten',
+'revdelete-offender'          => 'Autor der Version:',
 
 # Suppression log
 'suppressionlog'     => 'Oversight-Logbuch',
@@ -1264,7 +1271,7 @@ Wenn du dich mit dem Thema auskennst, kannst du selbst [[:$1|die Seite verfassen
 'prevn-title'                      => '{{PLURAL:$1|Vorheriges Ergebnis|Vorherige $1 Ergebnisse}}',
 'nextn-title'                      => '{{PLURAL:$1|Folgendes Ergebnis|Folgende $1 Ergebnisse}}',
 'shown-title'                      => 'Zeige $1 {{PLURAL:$1|Ergebnis|Ergebnisse}} pro Seite',
-'viewprevnext'                     => 'Zeige ($1) ($2) ($3)',
+'viewprevnext'                     => 'Zeige ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Suchoptionen',
 'searchmenu-exists'                => "'''Es gibt eine Seite, die den Namen „[[:$1]]“ hat'''",
 'searchmenu-new'                   => "'''Erstelle die Seite „[[:$1|$1]]“ in diesem Wiki.'''",
@@ -1338,7 +1345,7 @@ Wenn du dich mit dem Thema auskennst, kannst du selbst [[:$1|die Seite verfassen
 'prefs-watchlist-days-max'      => 'Maximal 7 Tage',
 'prefs-watchlist-edits'         => 'Maximale Zahl der Einträge:',
 'prefs-watchlist-edits-max'     => 'Maximale Anzahl: 1000',
-'prefs-watchlist-token'         => 'Beobachtungslisten-Token',
+'prefs-watchlist-token'         => 'Beobachtungslisten-Token:',
 'prefs-misc'                    => 'Verschiedenes',
 'prefs-resetpass'               => 'Passwort ändern',
 'prefs-email'                   => 'E-Mail-Optionen',
@@ -1500,6 +1507,7 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'right-bigdelete'             => 'Seiten löschen mit großer Versionsgeschichte',
 'right-deleterevision'        => 'Löschen und Wiederherstellen einzelner Versionen',
 'right-deletedhistory'        => 'Ansehen gelöschter Versionen in der Versionsgeschichte (ohne zugehörigen Text)',
+'right-deletedcontent'        => 'Gelöschte Texte und Versionsunterschiede zwischen gelöschten Versionen ansehen',
 'right-browsearchive'         => 'Suche nach gelöschten Seiten',
 'right-undelete'              => 'Seiten wiederherstellen',
 'right-suppressrevision'      => 'Ansehen und wiederherstellen von Versionen, die auch vor Administratoren verborgen sind',
@@ -1532,11 +1540,12 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'right-reset-passwords'       => 'Das Passwort eines anderen Benutzers zurücksetzen',
 'right-override-export-depth' => 'Exportiere Seiten einschließlich verlinkter Seiten bis zu einer Tiefe von 5',
 'right-versiondetail'         => 'Detailinformation über die Software und ihre Versionsdaten einsehen',
+'right-root'                  => 'Alle Aktionen auf dem Wiki ausführen',
 
 # User rights log
 'rightslog'      => 'Rechte-Logbuch',
 'rightslogtext'  => 'Dies ist das Logbuch der Änderungen der Benutzerrechte.',
-'rightslogentry' => 'änderte die Benutzerrechte für „[[$1]]“ von „$2“ auf „$3“',
+'rightslogentry' => 'änderte die Benutzerrechte für „$1“ von „$2“ auf „$3“',
 'rightsnone'     => '(–)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -1679,14 +1688,19 @@ Bitte beachte, dass, genau wie bei normalen Seiteninhalten, andere Benutzer dein
 'large-file'                  => 'Die Dateigröße sollte nach Möglichkeit $1 nicht überschreiten. Diese Datei ist $2 groß.',
 'largefileserver'             => 'Die Datei ist größer als die vom Server eingestellte Maximalgröße.',
 'emptyfile'                   => 'Die hochgeladene Datei ist leer. Der Grund kann ein Tippfehler im Dateinamen sein. Bitte kontrolliere, ob du die Datei wirklich hochladen willst.',
-'fileexists'                  => "Eine Datei mit diesem Namen existiert bereits. Wenn du auf „Datei speichern“ klickst, wird die Datei überschrieben. Bitte prüfe '''<tt>$1</tt>''', wenn du dir nicht sicher bist.",
-'filepageexists'              => "Eine Beschreibungsseite wurde bereits als '''<tt>$1</tt>''' erstellt, es ist aber keine Datei mit diesem Namen vorhanden. Die eingegebene Beschreibung wird nicht auf die Beschreibungsseite übernommen. Die Beschreibungsseite musst du nach dem Hochladen der Datei noch manuell bearbeiten.",
-'fileexists-extension'        => "Eine Datei mit ähnlichem Namen existiert bereits:<br />
-Name der hochzuladenden Datei: '''<tt>$1</tt>'''<br />
-Name der vorhandenen Datei: '''<tt>$2</tt>'''<br />
-Nur die Dateiendung unterscheidet sich in Groß-/Kleinschreibung. Bitte prüfe, ob die Dateien inhaltlich identisch sind.",
-'fileexists-thumb'            => "<center>'''Vorhandene Datei'''</center>",
-'fileexists-thumbnail-yes'    => "Bei der Datei scheint es sich um ein Bild verringerter Größe ''(thumbnail)'' zu handeln. Bitte prüfe die Datei '''<tt>$1</tt>'''.<br />
+'fileexists'                  => "Eine Datei mit diesem Namen existiert bereits.
+Bitte prüfe '''<tt>[[:$1]]</tt>''', wenn du dir nicht sicher bist, ob du sie ändern willst.
+[[$1|thumb]]",
+'filepageexists'              => "Eine Beschreibungsseite wurde bereits als '''<tt>[[:$1]]</tt>''' erstellt, es ist aber keine Datei mit diesem Namen vorhanden.
+Die eingegebene Beschreibung wird nicht auf die Beschreibungsseite übernommen.
+Die Beschreibungsseite musst du nach dem Hochladen der Datei noch manuell bearbeiten.
+[[$1|thumb]]",
+'fileexists-extension'        => "Eine Datei mit ähnlichem Namen existiert bereits: [[$2|thumb]]
+* Name der hochzuladenden Datei: '''<tt>[[:$1]]</tt>'''
+* Name der vorhandenen Datei: '''<tt>[[:$2]]</tt>'''
+Bitte wähle einen anderen Namen.",
+'fileexists-thumbnail-yes'    => "Bei der Datei scheint es sich um ein Bild verringerter Größe ''(thumbnail)'' zu handeln. [[$1|thumb]]
+Bitte prüfe die Datei '''<tt>[[:$1]]</tt>'''.
 Wenn es sich um das Bild in Originalgröße handelt, so braucht kein separates Vorschaubild hochgeladen zu werden.",
 'file-thumbnail-no'           => "Der Dateiname beginnt mit '''<tt>$1</tt>'''. Dies deutet auf ein Bild verringerter Größe ''(thumbnail)'' hin.
 Bitte prüfe, ob du das Bild in voller Auflösung vorliegen hast und lade dieses unter dem Originalnamen hoch.",
@@ -1745,6 +1759,24 @@ Wenn das Problem weiter besteht, informiere einen [[Special:ListUsers/sysop|Syst
 'upload-too-many-redirects' => 'Die URL beinhaltete zu viele Weiterleitungen',
 'upload-unknown-size'       => 'Unbekannte Größe',
 'upload-http-error'         => 'Ein HTTP-Fehler ist aufgetreten: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Zugriff verweigert',
+'img-auth-nopathinfo'   => 'PATH_INFO fehlt.
+Dein Server ist nicht dafür eingerichtet, diese Information weiterzugeben.
+Es könnte CGI-basiert sein und unterstützt img_auth nicht.
+Siehe http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-notindir'     => 'Der gewünschte Pfad ist nicht im konfigurierten Uploadverzeichnis.',
+'img-auth-badtitle'     => 'Aus „$1“ kann kein gültiger Titel erstellt werden.',
+'img-auth-nologinnWL'   => 'Du bist nicht angemeldet und „$1“ ist nicht in der weißen Liste.',
+'img-auth-nofile'       => 'Datei „$1“ existiert nicht.',
+'img-auth-isdir'        => 'Du versuchst, auf ein Verzeichnis „$1“ zuzugreifen.
+Nur Dateizugriff ist erlaubt.',
+'img-auth-streaming'    => 'Lade „$1“.',
+'img-auth-public'       => 'img_auth.php gibt Dateien von einem privaten Wiki aus.
+Dieses Wiki wurde als ein öffentliches Wiki konfiguriert.
+Aus Sicherheitsgründen ist img_auth.php deaktiviert.',
+'img-auth-noread'       => 'Benutzer hat keine Berechtigung, „$1“ zu lesen.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL ist nicht erreichbar',
@@ -1834,6 +1866,7 @@ Eine [[Special:WhatLinksHere/$2|vollständige Liste]] ist verfügbar.',
 ** Urheberrechtsverletzung
 ** Duplikat',
 'filedelete-edit-reasonlist'  => 'Löschgründe bearbeiten',
+'filedelete-maintenance'      => 'Das Löschen und Wiederherstellen von Dateien ist aufgrund von Wartungsarbeiten vorübergehend deaktiviert.',
 
 # MIME search
 'mimesearch'         => 'Suche nach MIME-Typ',
@@ -2032,7 +2065,7 @@ Siehe auch die Liste der [[Special:WantedCategories|gewünschten Kategorien]].',
 
 # Special:ActiveUsers
 'activeusers'          => 'Liste aktiver Benutzer',
-'activeusers-count'    => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} in der letzten Zeit',
+'activeusers-count'    => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} in den {{PLURAL:$3|letzten 24 Stunden|vergangenen $3 Tagen}}',
 'activeusers-from'     => 'Zeige Benutzer ab:',
 'activeusers-noresult' => 'Keine Benutzer gefunden.',
 
@@ -2133,16 +2166,13 @@ Wenn du die Seite wieder von deiner Beobachtungsliste entfernen möchtest, klick
 'enotif_impersonal_salutation' => '{{SITENAME}}-Benutzer',
 'changed'                      => 'geändert',
 'created'                      => 'erstellt',
-'deleted'                      => 'gelöscht',
-'enotif_deletedpagetext'       => 'Diese Seite ist nicht mehr verfügbar.',
 'enotif_subject'               => '[{{SITENAME}}] Die Seite "$PAGETITLE" wurde von $PAGEEDITOR $CHANGEDORCREATED',
 'enotif_lastvisited'           => 'Alle Änderungen auf einen Blick: $1',
 'enotif_lastdiff'              => 'Siehe $1 nach dieser Änderung.',
 'enotif_anon_editor'           => 'Anonymer Benutzer $1',
-'enotif_rev_info'              => 'Die aktuelle Version ist auf $1 zu finden.',
 'enotif_body'                  => 'Hallo $WATCHINGUSERNAME,
 
-die {{SITENAME}}-Seite „$PAGETITLE“ wurde von $PAGEEDITOR am $PAGEEDITDATE um $PAGEEDITTIME Uhr $CHANGEDORCREATED. $REVINFO
+die {{SITENAME}}-Seite „$PAGETITLE“ wurde von $PAGEEDITOR am $PAGEEDITDATE um $PAGEEDITTIME Uhr $CHANGEDORCREATED.
 
 Aktuelle Version: $PAGETITLE_URL
 
@@ -2253,8 +2283,8 @@ Siehe die [[Special:ProtectedPages|Liste der geschützten Seiten]] für alle akt
 ** Seite mit hoher Besucherzahl',
 'protect-edit-reasonlist'     => 'Schutzgründe bearbeiten',
 'protect-expiry-options'      => '1 Stunde:1 hour,1 Tag:1 day,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,6 Monate:6 months,1 Jahr:1 year,Unbeschränkt:infinite',
-'restriction-type'            => 'Schutzstatus',
-'restriction-level'           => 'Schutzhöhe',
+'restriction-type'            => 'Schutzstatus:',
+'restriction-level'           => 'Schutzhöhe:',
 'minimum-size'                => 'Mindestgröße',
 'maximum-size'                => 'Maximalgröße:',
 'pagesize'                    => '(Bytes)',
@@ -2438,13 +2468,14 @@ Zur Aufhebung der Sperre siehe die [[Special:IPBlockList|Liste aller aktiven Spe
 'contribslink'                    => 'Beiträge',
 'autoblocker'                     => 'Automatische Sperre, da du eine gemeinsame IP-Adresse mit [[User:$1|Benutzer:$1]] benutzt. Grund der Benutzersperre: „$2“.',
 'blocklogpage'                    => 'Benutzersperr-Logbuch',
-'blocklog-fulllog'                => 'Vollständiges Benutzersperr-Logbuch',
+'blocklog-showlog'                => 'Dieser Benutzer wurde schon früher gesperrt. Es folgt der Eintrag aus dem Benutzersperr-Logbuch:',
+'blocklog-showsuppresslog'        => 'Dieser Benutzer wurde schon früher gesperrt und versteckt. Es folgt der Eintrag aus dem Oversight-Logbuch:',
 'blocklogentry'                   => 'sperrte „[[$1]]“ für den Zeitraum: $2 $3',
 'reblock-logentry'                => 'änderte die Sperre für „[[$1]]“ für den Zeitraum: $2 $3',
 'blocklogtext'                    => 'Dies ist das Logbuch über Sperrungen und Entsperrungen von Benutzern und IP-Adressen.
 Automatisch gesperrte IP-Adressen werden nicht erfasst.
 Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernamen]] für alle aktiven Sperren.',
-'unblocklogentry'                 => 'hat die Sperre von „[[$1]]“ aufgehoben',
+'unblocklogentry'                 => 'entsperrte „$1“',
 'block-log-flags-anononly'        => 'nur Anonyme',
 'block-log-flags-nocreate'        => 'Erstellung von Benutzerkonten gesperrt',
 'block-log-flags-noautoblock'     => 'Autoblock deaktiviert',
@@ -2655,7 +2686,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'importlogpagetext'                => 'Administrativer Import von Seiten mit Versionsgeschichte von anderen Wikis.',
 'import-logentry-upload'           => 'hat „[[$1]]“ von einer Datei importiert',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|Version|Versionen}}',
-'import-logentry-interwiki'        => 'hat „[[$1]]“ importiert (Transwiki)',
+'import-logentry-interwiki'        => 'hat „$1“ importiert (Transwiki)',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|Version|Versionen}} von $2',
 
 # Tooltip help for the actions
@@ -2766,10 +2797,12 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonymer Benutzer|Anonyme Benutzer}} auf {{SITENAME}}',
 'siteuser'         => '{{SITENAME}}-Benutzer $1',
+'anonuser'         => 'Anonymer {{SITENAME}}-Benutzer $1',
 'lastmodifiedatby' => 'Diese Seite wurde zuletzt am $1 um $2 Uhr von $3 geändert.',
 'othercontribs'    => 'Basierend auf der Arbeit von $1.',
 'others'           => 'anderen',
 'siteusers'        => '{{SITENAME}}-{{PLURAL:$2|Benutzer|Benutzer}} $1',
+'anonusers'        => '{{PLURAL:$2|Anonymer|Anonyme}} {{SITENAME}}-{{PLURAL:$2|Benutzer|Benutzer}} $1',
 'creditspage'      => 'Seiteninformationen',
 'nocredits'        => 'Für diese Seite sind keine Informationen vorhanden.',
 

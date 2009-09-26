@@ -22,6 +22,7 @@
  * @author Smeira
  * @author Solde
  * @author Spacebirdy
+ * @author Ssola
  * @author Toniher
  * @author Vriullop
  * @author לערי ריינהארט
@@ -590,14 +591,14 @@ No oblideu de canviar les vostres [[Special:Preferences|preferències de {{SITEN
 'login'                      => 'Inici de sessió',
 'nav-login-createaccount'    => 'Inicia una sessió / crea un compte',
 'loginprompt'                => 'Heu de tenir les galetes habilitades per a poder iniciar una sessió a {{SITENAME}}.',
-'userlogin'                  => 'Inicia una sessió / crea un compte',
+'userlogin'                  => 'Inicia una sessió',
 'logout'                     => 'Finalitza la sessió',
 'userlogout'                 => 'Finalitza la sessió',
 'notloggedin'                => 'No us heu identificat',
-'nologin'                    => 'No teniu un compte? $1.',
+'nologin'                    => "No teniu un compte? '''$1'''.",
 'nologinlink'                => 'Crea un compte',
 'createaccount'              => 'Crea un compte',
-'gotaccount'                 => 'Ja teniu un compte? $1.',
+'gotaccount'                 => "Ja teniu un compte? '''$1'''.",
 'gotaccountlink'             => 'Inicia una sessió',
 'createaccountmail'          => 'per correu electrònic',
 'badretype'                  => 'Les contrasenyes que heu introduït no coincideixen.',
@@ -646,7 +647,7 @@ Introduïu una adreça amb un format adequat o bé buideu el camp.",
 ($4) amb la vostra adreça de correu electrònic. La contrasenya per a l'usuari «$2» és «$3». Hauríeu d'accedir al compte i canviar-vos aquesta contrasenya quan abans millor.
 
 Si no hi teniu cap relació i aquest compte ha estat creat per error, simplement ignoreu el missatge.",
-'login-throttled'            => "Heu realitzat massa intents amb la contrasenya d'aquest compte.
+'login-throttled'            => "Heu realitzat massa intents d'accés a la sessió.
 Si us plau, esperi abans de tornar-ho a intentar.",
 'loginlanguagelabel'         => 'Llengua: $1',
 
@@ -1091,7 +1092,7 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'prevn-title'                      => '$1 {{PLURAL:$1|resultat|resultats}} anteriors',
 'nextn-title'                      => '$1 {{PLURAL:$1|resultat|resultats}} següents',
 'shown-title'                      => 'Mostra $1 {{PLURAL:$1|resultat|resultats}} per pàgina',
-'viewprevnext'                     => 'Vés a ($1) ($2) ($3).',
+'viewprevnext'                     => 'Vés a ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Opcions de cerca',
 'searchmenu-exists'                => "'''Hi ha una pàgina anomenada «[[$1]]» en aquest wiki'''",
 'searchmenu-new'                   => "'''Creeu la pàgina «[[:$1]]» en aquest wiki!'''",
@@ -1496,14 +1497,15 @@ Vegeu la [[Special:NewFiles|galeria de nous fitxers]] per a una presentació mé
 'large-file'                  => 'Els fitxers importants no haurien de ser més grans de $1; aquest fitxer ocupa $2.',
 'largefileserver'             => 'Aquest fitxer és més gran del que el servidor permet.',
 'emptyfile'                   => 'El fitxer que heu carregat sembla estar buit. Açò por ser degut a un mal caràcter en el nom del fitxer. Si us plau, reviseu si realment voleu carregar aquest arxiu.',
-'fileexists'                  => "Ja hi existeix un fitxer amb aquest nom, si us plau, verifiqueu '''<tt>$1</tt>''' si no esteu segurs de voler substituir-lo.",
-'filepageexists'              => "La pàgina de descripció d'aquest fitxer ja ha estat creada ('''<tt>$1</tt>'''), però de moment no hi ha cap arxiu amb aquest nom. La descripció que heu posat no apareixerà a la pàgina de descripció. Si voleu que hi aparegui haureu d'editar-la manualment.",
-'fileexists-extension'        => "Ja existeix un fitxer amb un nom semblant:<br />
-Nom del fitxer que es puja: '''<tt>$1</tt>'''<br />
-Nom del fitxer existent: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Ja hi existeix un fitxer amb aquest nom, si us plau, verifiqueu '''<tt>[[:$1]]</tt>''' si no esteu segurs de voler substituir-lo.
+[[$1|thumb]]",
+'filepageexists'              => "La pàgina de descripció d'aquest fitxer ja ha estat creada ('''<tt>[[:$1]]</tt>'''), però de moment no hi ha cap arxiu amb aquest nom. La descripció que heu posat no apareixerà a la pàgina de descripció. Si voleu que hi aparegui haureu d'editar-la manualment.",
+'fileexists-extension'        => "Ja existeix un fitxer amb un nom semblant: [[$2|thumb]]
+* Nom del fitxer que es puja: '''<tt>[[:$1]]</tt>'''
+* Nom del fitxer existent: '''<tt>[[:$2]]</tt>'''
 Si us plau, trieu un nom diferent.",
-'fileexists-thumb'            => "<center>'''Fitxer existent'''</center>",
-'fileexists-thumbnail-yes'    => "Aquest fitxer sembla ser una imatge en mida reduïda (<em>miniatura</em>). Comproveu si us plau el fitxer '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Aquest fitxer sembla ser una imatge en mida reduïda (<em>miniatura</em>). [[$1|thumb]]
+Comproveu si us plau el fitxer '''<tt>[[:$1]]</tt>'''.
 Si el fitxer és la mateixa imatge a mida original, no cal carregar cap miniatura més.",
 'file-thumbnail-no'           => "El nom del fitxer comença per '''<tt>$1</tt>'''.
 Sembla ser una imatge de mida reduïda ''(miniatura)''.
@@ -1545,6 +1547,16 @@ A continuació teniu el registre d'eliminació per a que pugueu comprovar els mo
 'upload-too-many-redirects' => 'La URL conté massa redireccions',
 'upload-unknown-size'       => 'Mida desconeguda',
 'upload-http-error'         => 'Ha ocorregut un error HTTP: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Accés denegat',
+'img-auth-nopathinfo'   => 'Falta PATH_INFO.
+El vostre servidor no està configurat per a tractar aquesta informació.
+Pot estar basat en CGI i no soportar img_auth.
+Vegeu http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-notindir'     => "No s'ha trobat la ruta sol·licitada al directori de càrrega configurat.",
+'img-auth-badtitle'     => 'No s\'ha pogut construir un títol vàlid a partir de "$1".',
+'img-auth-nofile'       => 'No existeix el fitxer "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => "No s'ha pogut accedir a l'URL",
@@ -1938,16 +1950,13 @@ Si voleu deixar de vigilar la pàgina, cliqueu sobre l'enllaç de «Desatén» d
 'enotif_impersonal_salutation' => 'usuari de la {{SITENAME}}',
 'changed'                      => 'modificada',
 'created'                      => 'creada',
-'deleted'                      => 'esborrada',
-'enotif_deletedpagetext'       => 'Aquesta pàgina ja no està disponible.',
 'enotif_subject'               => 'La pàgina $PAGETITLE a {{SITENAME}} ha estat $CHANGEDORCREATED per $PAGEEDITOR',
 'enotif_lastvisited'           => "Vegeu $1 per a tots els canvis que s'han fet d'ença de la vostra darrera visita.",
 'enotif_lastdiff'              => 'Consulteu $1 per a visualitzar aquest canvi.',
 'enotif_anon_editor'           => 'usuari anònim $1',
-'enotif_rev_info'              => 'Vegeu $1 per a la versió actual.',
 'enotif_body'                  => 'Benvolgut $WATCHINGUSERNAME,
 
-La pàgina $PAGETITLE del projecte {{SITENAME}} ha estat $CHANGEDORCREATED el dia $PAGEEDITDATEANDTIME per $PAGEEDITOR. $REVINFO
+La pàgina $PAGETITLE del projecte {{SITENAME}} ha estat $CHANGEDORCREATED el dia $PAGEEDITDATE per $PAGEEDITOR, vegeu $PAGETITLE_URL per la versió actual.
 
 $NEWPAGE
 
@@ -2252,7 +2261,6 @@ l'accés a l'escriptura a una adreça IP o un usuari prèviament bloquejat.",
 'contribslink'                    => 'contribucions',
 'autoblocker'                     => 'Heu estat blocat perquè compartiu adreça IP amb «$1». Motiu: «$2»',
 'blocklogpage'                    => 'Registre de bloquejos',
-'blocklog-fulllog'                => 'Registre complet de bloquejos',
 'blocklogentry'                   => "ha blocat l'{{GENDER:$1|usuari|usuària}} [[$1]] per un període de $2; $3",
 'reblock-logentry'                => 'canviades les opcions del blocatge a [[$1]] amb caducitat a $2, $3',
 'blocklogtext'                    => "Això és una relació de accions de bloqueig i desbloqueig. Les adreces IP bloquejades automàticament no apareixen. Vegeu la [[Special:IPBlockList|llista d'usuaris actualment bloquejats]].",
@@ -2565,7 +2573,7 @@ Permet afegir un motiu al resum.',
 'othercontribs'    => 'Basat en les contribucions de $1.',
 'others'           => 'altres',
 'siteusers'        => 'Usuari{{PLURAL:$2||s}} $1 de {{SITENAME}}',
-'creditspage'      => 'Títols de la pàgina',
+'creditspage'      => 'Crèdits de la pàgina',
 'nocredits'        => 'No hi ha títols disponibles per aquesta pàgina.',
 
 # Spam protection

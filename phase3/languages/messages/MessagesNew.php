@@ -254,9 +254,9 @@ $messages = array(
 'nosuchaction'      => 'थन्यागु ज्या मदु',
 'nosuchactiontext'  => 'URLनं या धाःगु ज्या विकिं मस्यु',
 'nosuchspecialpage' => 'थन्यागु विशेष पौ मदु',
-'nospecialpagetext' => "<big>'''छिं मदुगु विशेष पौया माग तयादिल।'''</big>
+'nospecialpagetext' => '<strong>छिं मदुगु विशेष पौया माग तयादिल।</strong>
 
-अस्थित्वय् दुगु विशेष पौया धलः [[विशेष:विशेषपौ|{{int:specialpages}}]]य् दु।",
+अस्थित्वय् दुगु विशेष पौया धलः [[विशेष:विशेषपौ|{{int:specialpages}}]]य् दु।',
 
 # General errors
 'databaseerror'   => 'डेटाबेस इरर',
@@ -285,7 +285,7 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'yourdomainname'          => 'छिगु दोमेन:',
 'login'                   => 'दुहां वनेगु',
 'nav-login-createaccount' => 'दुहां वनेगु / खाता चायेकिगु',
-'userlogin'               => 'दुहां वनेगु / खाता चायेकिगु',
+'userlogin'               => 'दुहां वनेगु',
 'logout'                  => 'पिने झासँ',
 'userlogout'              => 'पिने झासँ',
 'nologinlink'             => 'खाता न्ह्यथनादिसँ',

@@ -225,9 +225,13 @@ abstract class Maintenance {
 	 * @param $die boolean If true, go ahead and die out.
 	 */
 	protected function error( $err, $die = false ) {
-		$f = fopen( 'php://stderr', 'w' ); 
-		fwrite( $f, $err . "\n" );
-		fclose( $f );
+		if ( php_sapi_name() == 'cli' ) {
+			fwrite( STDERR, $err . "\n" );
+		} else {
+			$f = fopen( 'php://stderr', 'w' ); 
+			fwrite( $f, $err . "\n" );
+			fclose( $f );
+		}
 		if( $die ) die();
 	}
 
@@ -333,7 +337,8 @@ abstract class Maintenance {
 		}
 
 		# Set the memory limit
-		ini_set( 'memory_limit', -1 );
+		# Note we need to set it again later in cache LocalSettings changed it
+		ini_set( 'memory_limit', $this->memoryLimit() );
 
 		# Set max execution time to 0 (no limit). PHP.net says that
 		# "When running PHP from the command line the default setting is 0."
@@ -361,6 +366,15 @@ abstract class Maintenance {
 		$this->loadParamsAndArgs();
 		$this->maybeHelp();
 		$this->validateParamsAndArgs();
+	}
+	
+	/**
+	 * Normally we disable the memory_limit when running admin scripts.
+	 * Some scripts may wish to actually set a limit, however, to avoid
+	 * blowing up unexpectedly.
+	 */
+	public function memoryLimit() {
+		return -1;
 	}
 
 	/**
@@ -581,6 +595,7 @@ abstract class Maintenance {
 
 		$wgShowSQLErrors = true;
 		@set_time_limit( 0 );
+		ini_set( 'memory_limit', $this->memoryLimit() );
 
 		$wgProfiling = false; // only for Profiler.php mode; avoids OOM errors
 	}

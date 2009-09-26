@@ -17,6 +17,7 @@
  * @author Better
  * @author BicScope
  * @author Boivie
+ * @author Candalua
  * @author Cerealito
  * @author Clerc
  * @author Crazymadlover
@@ -31,6 +32,7 @@
  * @author Icvav
  * @author Imre
  * @author Jatrobat
+ * @author Jens Liebenau
  * @author Jurock
  * @author Lin linao
  * @author Locos epraix
@@ -348,6 +350,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|Esta categoría contiene solamente el siguiente fichero.|{{PLURAL:$1|El siguiente fichero pertencer|Los siguientes $1 ficheros pertenecen}} a esta categoría, de un total de $2.}}',
 'category-file-count-limited'    => '{{PLURAL:$1|El siguiente fichero pertenece|Los siguientes $1 ficheros pertenecen}} a esta categoría.',
 'listingcontinuesabbrev'         => 'cont.',
+'index-category'                 => 'Páginas indexadas',
+'noindex-category'               => 'Páginas no indexadas',
 
 'mainpagetext'      => "<big>'''MediaWiki ha sido instalado con éxito.'''</big>",
 'mainpagedocfooter' => 'Consulta la [http://meta.wikimedia.org/wiki/Help:Contents Guía de usuario] para obtener información sobre el uso del software wiki.
@@ -541,9 +545,9 @@ $1',
 'nosuchactiontext'  => 'La acción especificada en la dirección es inválida. 	
 Es posible que hayas escrito mal la URL o que hayas seguido un enlace incorrecto. Esto también podría indicar un error en el software utilizado en {{SITENAME}}.',
 'nosuchspecialpage' => 'No existe esa página especial',
-'nospecialpagetext' => "<big>'''Ha solicitado una página especial inexistente.'''</big>
+'nospecialpagetext' => '<strong>Ha solicitado una página especial inexistente.</strong>
 
-Puedes ver una lista de las páginas especiales en [[Special:SpecialPages|{{int:specialpages}}]].",
+Puedes ver una lista de las páginas especiales en [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Error',
@@ -635,23 +639,24 @@ No olvides personalizar [[Special:Preferences|tus preferencias]].',
 'remembermypassword'         => 'Quiero que me recuerden entre sesiones.',
 'yourdomainname'             => 'Su dominio',
 'externaldberror'            => 'Hubo un error de autenticación externa de la base de datos o bien no está autorizado a actualizar su cuenta externa.',
-'login'                      => 'Registrarse/Entrar',
+'login'                      => 'Entrar',
 'nav-login-createaccount'    => 'Registrarse/Entrar',
 'loginprompt'                => "Necesita habilitar las ''cookies'' en su navegador para registrarse en {{SITENAME}}.",
-'userlogin'                  => 'Registrarse/Entrar',
+'userlogin'                  => 'Entrar',
 'logout'                     => 'Salir',
 'userlogout'                 => 'Salir',
 'notloggedin'                => 'No ha entrado',
-'nologin'                    => '¿No tiene una cuenta? $1.',
+'nologin'                    => "¿No tiene una cuenta? '''$1'''.",
 'nologinlink'                => 'Crear una cuenta',
 'createaccount'              => 'Cree una nueva cuenta',
-'gotaccount'                 => '¿Ya tiene una cuenta? $1.',
+'gotaccount'                 => "¿Ya tiene una cuenta? '''$1'''.",
 'gotaccountlink'             => 'Autenticarse',
 'createaccountmail'          => 'por correo electrónico',
 'badretype'                  => 'Las contraseñas no coinciden.',
 'userexists'                 => 'El nombre indicado ya está en uso.
 Por favor, indique un nombre diferente.',
 'loginerror'                 => 'Error de inicio de sesión',
+'createaccounterror'         => 'No se pudo crear cuenta: $1',
 'nocookiesnew'               => 'La cuenta de usuario ha sido creada, pero ahora mismo no está identificado. {{SITENAME}} usa <em>cookies</em> para identificar a los usuarios registrados, pero parecen deshabilitadas. Por favor, habilítelas e identifíquese con su nombre de usuario y contraseña.',
 'nocookieslogin'             => '{{SITENAME}} utiliza <em>cookies</em> para la autenticación de usuarios. Tiene las <em>cookies</em> deshabilitadas en el navegador. Por favor, actívelas e inténtelo de nuevo.',
 'noname'                     => 'No ha especificado un nombre de usuario válido.',
@@ -674,6 +679,7 @@ Ahora deberías iniciar sesión y cambiar tu contraseña. Tu contraseña tempora
 
 Si fue otro quien solicitó este mensaje o has recordado tu contraseña y ya no deseas cambiarla, puedes ignorar este mensaje y seguir usando tu contraseña original.',
 'noemail'                    => 'No hay una dirección de correo electrónico registrada para "$1".',
+'noemailcreate'              => 'Necesitas proveer una dirección de correo electrónico válida',
 'passwordsent'               => 'Se ha enviado una nueva contraseña al correo electrónico de «$1».
 Por favor, identifícate de nuevo tras recibirla.',
 'blocked-mailpassword'       => 'Tu dirección IP está bloqueada, y no se te permite el uso de la función de recuperación de contraseñas para prevenir abusos.',
@@ -698,7 +704,7 @@ Por favor, entre una dirección bien formada, o vacíe ese campo.',
 La contraseña asignada automáticamente es "$3". Por favor entra ahora y cambia tu contraseña.
 
 Puedes ignorar este mensaje si esta cuenta fue creado erróneamente.',
-'login-throttled'            => 'Has intentado demasiadas veces dar la clave de esta cuenta. Por favor espera antes de intentarlo nuevamente.',
+'login-throttled'            => 'Has intentado demasiadas veces iniciar sesión. Por favor espera antes de intentarlo nuevamente.',
 'loginlanguagelabel'         => 'Idioma: $1',
 
 # Password reset dialog
@@ -806,7 +812,11 @@ La contraseña para esta nueva cuenta puede ser cambiada en la página ''[[Speci
 'newarticletext'                   => 'Ha seguido un enlace a una página que aún no existe. Si lo que quiere es crear esta página, escriba a continuación. Para más información consulte la [[{{MediaWiki:Helppage}}|página de ayuda]]. Si llegó aquí por error, vuelva a la página anterior.',
 'anontalkpagetext'                 => "---- ''Esta es la página de discusión de un usuario anónimo que aún no ha creado una cuenta, o no la usa. Por lo tanto, tenemos que usar su dirección IP para identificarlo. Una dirección IP puede ser compartida por varios usuarios. Si eres un usuario anónimo y crees que se han dirigido a ti con comentarios improcedentes, por favor [[Special:UserLogin/signup|crea una cuenta]] o si ya la tienes [[Special:UserLogin|identifícate]] para evitar confusiones futuras con otros usuarios anónimos.''",
 'noarticletext'                    => 'En este momento no hay texto en esta página. Puedes [[Special:Search/{{PAGENAME}}|buscar el título de esta página]] en otras páginas, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} buscar en los registros] o [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta página]</span>.',
+'noarticletext-nopermission'       => 'No hay actualmente texto en esta página.
+Puedes [[Special:Search/{{PAGENAME}}|buscar este título de página]] en otras páginas,
+o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} buscar en los registros relacionados]</span>.',
 'userpage-userdoesnotexist'        => 'La cuenta de usuario "$1" no está registrada. Por favor comprueba si quieres crear o editar esta página.',
+'userpage-userdoesnotexist-view'   => 'Cuenta de usuario "$1" no está registrada.',
 'clearyourcache'                   => "'''Nota:''' Tras guardar el archivo, debe refrescar la caché de su navegador para ver los cambios:
 
 *'''Mozilla / Firefox / Safari:''' pulsa ''Mayúsculas.'' mientras haces click en el botón ''Recargar,'' o pulsa si no ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' en un Macintosh)
@@ -1036,6 +1046,7 @@ No tienes acceso a él.',
 'revdelete-otherreason'       => 'Otra/adicional razón:',
 'revdelete-reasonotherlist'   => 'Otra razón',
 'revdelete-edit-reasonlist'   => 'Editar razones de borrado',
+'revdelete-offender'          => 'Autor de revisión:',
 
 # Suppression log
 'suppressionlog'     => 'Registro de supresiones',
@@ -1156,7 +1167,7 @@ Nota que usar los enlaces de navegación borrará las selecciones de esta column
 'prevn-title'                      => '$1 {{PLURAL:$1|resultado|resultados}} previos',
 'nextn-title'                      => 'Próximos $1 {{PLURAL:$1|resultado|resultados}}',
 'shown-title'                      => 'Mostrar $1 {{PLURAL:$1|resultado|resultados}} por página',
-'viewprevnext'                     => 'Ver ($1) ($2) ($3).',
+'viewprevnext'                     => 'Ver ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Opciones de búsqueda',
 'searchmenu-exists'                => "'''Hay una página llamada «[[$1]]» en esta wiki'''",
 'searchmenu-new'                   => "'''¡Crear la página «[[:$1]]» en esta wiki!'''",
@@ -1189,7 +1200,7 @@ Nota que usar los enlaces de navegación borrará las selecciones de esta column
 'searchall'                        => 'todos',
 'showingresults'                   => "Abajo se {{PLURAL:$1|muestra '''1''' resultado|muestran hasta '''$1''' resultados}} empezando por el nº '''$2'''.",
 'showingresultsnum'                => "Abajo se {{PLURAL:$3|muestra '''1''' resultado|muestran los '''$3''' resultados}} empezando por el nº '''$2'''.",
-'showingresultsheader'             => "{{PLURAL:$5|Resultado '''$1''' de '''$3'''|Resultados '''$1 - $2''' de '''$3'''}} para '''$4'''",
+'showingresultsheader'             => "{{PLURAL:$5|Resultado '''$1''' de '''$3'''|Resultados '''$1-$2''' de '''$3'''}} para '''$4'''",
 'nonefound'                        => "'''Nota''': Por defecto sólo se busca en algunos espacios de nombre.
 Prueba a usar el prefijo ''all:'' para buscar en todo el contenido (incluyendo páginas de discusión, plantillas, etc.) o usa el espacio de nombre que quieras como prefijo. También puedes usar el formulario de búsqueda avanzada que aparece abajo.
 
@@ -1233,7 +1244,7 @@ Las búsquedas fallidas suelen producirse al buscar palabras comunes como «la»
 'prefs-watchlist-days-max'      => '(máximo 7 días)',
 'prefs-watchlist-edits'         => 'Número de ediciones a mostrar en la lista extendida:',
 'prefs-watchlist-edits-max'     => '(máximo: 1000)',
-'prefs-watchlist-token'         => 'Ficha de lista de seguimiento',
+'prefs-watchlist-token'         => 'Ficha de lista de seguimiento:',
 'prefs-misc'                    => 'Miscelánea',
 'prefs-resetpass'               => 'Cambiar contraseña',
 'prefs-email'                   => 'Opciones de correo electrónico',
@@ -1394,6 +1405,7 @@ También puede permitir a otros usuarios que contacten con usted a través de su
 'right-bigdelete'             => 'Borrar páginas con historiales grandes',
 'right-deleterevision'        => 'Borrar y restaurar revisiones específicas de páginas',
 'right-deletedhistory'        => 'Ver el historial de páginas borradas, sin el texto asociado',
+'right-deletedcontent'        => 'Ver texto borrado y cambios entre revisiones borradas',
 'right-browsearchive'         => 'Buscar páginas borradas',
 'right-undelete'              => 'Restaurar una página',
 'right-suppressrevision'      => 'Revisar y restaurar revisiones escondidas por administradores',
@@ -1426,6 +1438,7 @@ También puede permitir a otros usuarios que contacten con usted a través de su
 'right-reset-passwords'       => 'Reajustar la contraseña de otros usuarios',
 'right-override-export-depth' => 'Exporta páginas incluyendo aquellas enlazadas hasta una profundidad de 5',
 'right-versiondetail'         => 'Mostrar información ampliada de la versión del software',
+'right-root'                  => 'Ejecutar todas las acciones  en el wiki',
 
 # User rights log
 'rightslog'      => 'Cambios de perfil de usuario',
@@ -1566,15 +1579,18 @@ Mira la [[Special:NewFiles|galería de archivos nuevos]] para una descripción v
 'large-file'                  => 'Se recomienda que los archivos no sean mayores de $1; este archivo ocupa $2.',
 'largefileserver'             => 'El tamaño de este archivo es mayor del que este servidor admite por configuración.',
 'emptyfile'                   => 'El archivo que has intentado subir parece estar vacío; por favor, verifica que realmente se trate del archivo que intentabas subir.',
-'fileexists'                  => "Ya existe un archivo con este nombre. Por favor compruebe el existente '''<tt>$1</tt>''' si no está seguro de querer reemplazarlo.",
-'filepageexists'              => "La página de descripción de este archivo ya ha sido creada en '''<tt>$1</tt>''', pero no existe actualmente ningún fichero con este nombre.
-El resumen que ha ingresado no aparecerá en la página de descripción. Para que el sumario aparezca, deberá editarlo manualmente.",
-'fileexists-extension'        => "Existe un archivo con un nombre similar:<br />
-Nombre del archivo que se está subiendo: '''<tt>$1</tt>'''<br />
-Nombre del archivo ya existente: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Ya existe un archivo con este nombre.
+Por favor compruebe el existente '''<tt>[[:$1]]</tt>''' si no está seguro de querer reemplazarlo.
+[[$1|thumb]]",
+'filepageexists'              => "La página de descripción de este archivo ya ha sido creada en '''<tt>[[:$1]]</tt>''', pero no existe actualmente ningún fichero con este nombre.
+El resumen que ha ingresado no aparecerá en la página de descripción. Para que el sumario aparezca, deberá editarlo manualmente.
+[[$1|thumb]]",
+'fileexists-extension'        => "Existe un archivo con un nombre similar: [[$2|thumb]]
+* Nombre del archivo que se está subiendo: '''<tt>[[:$1]]</tt>'''
+* Nombre del archivo ya existente: '''<tt>[[:$2]]</tt>'''
 Por favor, elige un nombre diferente.",
-'fileexists-thumb'            => "<center>'''Imagen existente'''</center>",
-'fileexists-thumbnail-yes'    => "El archivo parece ser una imagen de tamaño reducido ''(thumbnail)''. Por favor comprueba el archivo '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "El archivo parece ser una imagen de tamaño reducido ''(thumbnail)''. [[$1|thumb]]
+Por favor comprueba el archivo '''<tt>[[:$1]]</tt>'''.
 Si el archivo comprobado es la misma imagen a tamaño original no es necesario subir un thumbnail más.",
 'file-thumbnail-no'           => "El nombre del archivo comienza con '''<tt>$1</tt>'''.
 Parece ser una imagen de tamaño reducido ''(thumbnail)''.
@@ -1617,6 +1633,16 @@ Por favor, elige un nombre más descriptivo.",
 'upload-too-many-redirects' => 'La URL contenía demasiadas redirecciones',
 'upload-unknown-size'       => 'Tamaño desconocido',
 'upload-http-error'         => 'Ha ocurrido un error HTTP: $1',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Acceso denegado',
+'img-auth-notindir'     => 'Ruta solicitad no esá en el directorio de cargas configurado',
+'img-auth-badtitle'     => 'Incapaz de construir un título válido de "$1".',
+'img-auth-nologinnWL'   => 'No has iniciado sesión y "$1" no está en la lista blanca.',
+'img-auth-nofile'       => 'Archivo "$1" no existe.',
+'img-auth-isdir'        => 'Estás tratando de acceder a un directorio "$1".
+Solamente acceso a archivos está permitido.',
+'img-auth-noread'       => 'Usuario no tiene acceso para leer "$1".',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'No se pudo alcanzar la URL',
@@ -1711,6 +1737,7 @@ La descripción en su [$2 página de descripción del archivo] está mostrada de
 ** Violación de copyright
 ** Archivo duplicado',
 'filedelete-edit-reasonlist'  => 'Editar razones de borrado',
+'filedelete-maintenance'      => 'Borrado y restauración de archivos temporalmente deshabilitados durante el mantenimiento.',
 
 # MIME search
 'mimesearch'         => 'Búsqueda MIME',
@@ -1911,7 +1938,7 @@ Protocolos soportados: <tt>$1</tt>',
 
 # Special:ActiveUsers
 'activeusers'          => 'Lista de usuarios activos',
-'activeusers-count'    => '$1 {{PLURAL:$1|edición|ediciones}} recientes',
+'activeusers-count'    => '$1 {{PLURAL:$1|edición|ediciones}} en los últimos {{PLURAL:$3|día|$3 días}}',
 'activeusers-from'     => 'Mostrando a los usuarios empezando por:',
 'activeusers-noresult' => 'No se encontraron usuarios.',
 
@@ -2009,17 +2036,14 @@ Cuando quieras eliminar la página de tu lista de seguimiento, presiona «Dejar 
 'enotif_impersonal_salutation' => 'usuario de {{SITENAME}}',
 'changed'                      => 'modificada',
 'created'                      => 'creada',
-'deleted'                      => 'borrado',
-'enotif_deletedpagetext'       => 'Esta página no está disponible más',
 'enotif_subject'               => 'La página $PAGETITLE de {{SITENAME}} ha sido $CHANGEDORCREATED por $PAGEEDITOR',
 'enotif_lastvisited'           => 'Vaya a $1 para ver todos los cambios desde su última visita.',
 'enotif_lastdiff'              => 'Vaya a $1 para ver este cambio.',
 'enotif_anon_editor'           => 'usuario anónimo $1',
-'enotif_rev_info'              => 'Mira $1 para la revisión actual.',
 'enotif_body'                  => 'Estimado/a $WATCHINGUSERNAME,
 
-La página de {{SITENAME}} $PAGETITLE ha sido $CHANGEDORCREATED el $PAGEEDITDATEANDTIME por el usuario $PAGEEDITOR.
-$REVINFO
+La página de {{SITENAME}} $PAGETITLE ha sido $CHANGEDORCREATED el $PAGEEDITDATE por el usuario $PAGEEDITOR.
+La versión actual se encuentra en $PAGETITLE_URL
 
 $NEWPAGE
 
@@ -2221,17 +2245,18 @@ $1',
 'month'               => 'Desde el mes (y anterior):',
 'year'                => 'Desde el año (y anterior):',
 
-'sp-contributions-newbies'       => 'Mostrar solo las contribuciones de usuarios nuevos',
-'sp-contributions-newbies-sub'   => 'Para cuentas nuevas',
-'sp-contributions-newbies-title' => 'Contribuciones de usuarios nuevos',
-'sp-contributions-blocklog'      => 'registro de bloqueos',
-'sp-contributions-deleted'       => 'contribuciones de usuario borradas',
-'sp-contributions-logs'          => 'registros',
-'sp-contributions-talk'          => 'discusión',
-'sp-contributions-userrights'    => 'administración de derechos de usuarios',
-'sp-contributions-search'        => 'Buscar contribuciones',
-'sp-contributions-username'      => 'Dirección IP o nombre de usuario:',
-'sp-contributions-submit'        => 'Buscar',
+'sp-contributions-newbies'        => 'Mostrar solo las contribuciones de usuarios nuevos',
+'sp-contributions-newbies-sub'    => 'Para cuentas nuevas',
+'sp-contributions-newbies-title'  => 'Contribuciones de usuarios nuevos',
+'sp-contributions-blocklog'       => 'registro de bloqueos',
+'sp-contributions-deleted'        => 'contribuciones de usuario borradas',
+'sp-contributions-logs'           => 'registros',
+'sp-contributions-talk'           => 'discusión',
+'sp-contributions-userrights'     => 'administración de derechos de usuarios',
+'sp-contributions-blocked-notice' => 'Este usuario está actualmente bloqueado. La última entrada del registro de bloqueos es provista debajo para mayor referencia:',
+'sp-contributions-search'         => 'Buscar contribuciones',
+'sp-contributions-username'       => 'Dirección IP o nombre de usuario:',
+'sp-contributions-submit'         => 'Buscar',
 
 # What links here
 'whatlinkshere'            => 'Lo que enlaza aquí',
@@ -2322,7 +2347,8 @@ Véase la [[Special:IPBlockList|lista de bloqueos]] para revisarlo.',
 'contribslink'                    => 'contribuciones',
 'autoblocker'                     => 'Ha sido bloqueado automáticamente porque su dirección IP ha sido usada recientemente por «[[User:$1|$1]]». La razón esgrimida para bloquear a «[[User:$1|$1]]» fue «$2».',
 'blocklogpage'                    => 'Bloqueos de usuarios',
-'blocklog-fulllog'                => 'Ver el registro de bloqueos completo',
+'blocklog-showlog'                => 'Este usuario ha sido bloqueado previamente. Debajo se provee el registro de bloqueos para mayor referencia:',
+'blocklog-showsuppresslog'        => 'Este usuario ha sido bloqueado y ocultado. Se provee el registro de supresiones para más detalle:',
 'blocklogentry'                   => 'bloqueó a [[$1]] $3 durante un plazo de $2',
 'reblock-logentry'                => 'cambió el bloqueo para  [[$1]] con una caducidad de $2 $3',
 'blocklogtext'                    => 'Esto es un registro de bloqueos y desbloqueos de usuarios.
@@ -2629,10 +2655,12 @@ Permite añadir una razón al resumen de edición.',
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Usuario anónimo|Usuarios anónimos}} de {{SITENAME}}',
 'siteuser'         => '{{GENDER:$1|Usuario|Usuaria}} $1 de {{SITENAME}}',
+'anonuser'         => '{{SITENAME}} usuario anónimo $1',
 'lastmodifiedatby' => 'Esta página fue modificada por última vez en $2, $1 por $3.',
 'othercontribs'    => 'Basado en el trabajo de $1.',
 'others'           => 'otros',
 'siteusers'        => '{{PLURAL:$2|Usuario|Usuarios}} $1 de {{SITENAME}}',
+'anonusers'        => '{{SITENAME}} {{PLURAL:$2|usuario|usuarios}} anónimos $1',
 'creditspage'      => 'Créditos de la página',
 'nocredits'        => 'Hay información de créditos para esta página.',
 
@@ -2680,7 +2708,7 @@ Esto podría estar causado por un enlace a un sitio externo incluido en la lista
 'math_image_error'      => 'La conversión a PNG ha fallado; comprueba que latex, dvips, gs, y convert estén instalados correctamente',
 'math_bad_tmpdir'       => 'No se puede escribir o crear el directorio temporal de <em>math</em>',
 'math_bad_output'       => 'No se puede escribir o crear el directorio de salida de <em>math</em>',
-'math_notexvc'          => 'Falta el ejecutalbe de <strong>texvc</strong>. Por favor, lea <em>math/README</em> para configurarlo.',
+'math_notexvc'          => 'Falta el ejecutable de <strong>texvc</strong>. Por favor, lea <em>math/README</em> para configurarlo.',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Marcar como revisado',
@@ -3275,12 +3303,18 @@ Ingrese el nombre del archivo sin el prefijo "{{ns:file}}:".',
 'htmlform-selectorother-other' => 'Otro',
 
 # Add categories per AJAX
-'ajax-add-category'          => 'Agregar categoría',
-'ajax-add-category-submit'   => 'Agregar',
-'ajax-confirm-title'         => 'Confirmar acción',
-'ajax-confirm-save'          => 'Grabar',
-'ajax-confirm-actionsummary' => 'Acción a tomar:',
-'ajax-error-title'           => 'Error',
-'ajax-error-dismiss'         => 'OK',
+'ajax-add-category'            => 'Agregar categoría',
+'ajax-add-category-submit'     => 'Agregar',
+'ajax-confirm-title'           => 'Confirmar acción',
+'ajax-confirm-prompt'          => 'Puedes proveer un resumen de edición abajo.
+Haz click en "Grabar" para grabar tu edición.',
+'ajax-confirm-save'            => 'Grabar',
+'ajax-add-category-summary'    => 'Agregar categoría "$1"',
+'ajax-remove-category-summary' => 'Remover categoría "$1"',
+'ajax-confirm-actionsummary'   => 'Acción a tomar:',
+'ajax-error-title'             => 'Error',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => 'No fue posible remover esta categoría.
+Esto usualmente ocurre cuando la categoría ha sido agregada a la página por una plantilla.',
 
 );

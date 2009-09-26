@@ -193,6 +193,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|門有檔壹。|門有檔$1，有$2檔也。}}',
 'category-file-count-limited'    => '門有檔$1。',
 'listingcontinuesabbrev'         => '續',
+'index-category'                 => '已索之頁',
+'noindex-category'               => '未索之頁',
 
 'mainpagetext'      => "<big>'''共筆臺已立'''</big>",
 'mainpagedocfooter' => "欲識維基，見[http://meta.wikimedia.org/wiki/Help:Contents User's Guide]
@@ -384,9 +386,9 @@ $1',
 'nosuchaction'      => '無可為',
 'nosuchactiontext'  => '無此址',
 'nosuchspecialpage' => '無此特查',
-'nospecialpagetext' => "'''<big>無此特查。</big>'''
+'nospecialpagetext' => '<strong>無此特查。</strong>
 
-見[[Special:SpecialPages|{{int:specialpages}}]]。",
+見[[Special:SpecialPages|{{int:specialpages}}]]。',
 
 # General errors
 'error'                => '有誤',
@@ -460,19 +462,20 @@ $2',
 'login'                      => '登簿',
 'nav-login-createaccount'    => '登簿、增簿',
 'loginprompt'                => '登簿{{SITENAME}}須cookies，請准之。',
-'userlogin'                  => '登簿、增簿',
+'userlogin'                  => '登簿',
 'logout'                     => '去簿',
 'userlogout'                 => '去簿',
 'notloggedin'                => '尚未登簿',
-'nologin'                    => '無簿乎？往$1。',
+'nologin'                    => "無簿乎？往'''$1'''。",
 'nologinlink'                => '增簿',
 'createaccount'              => '增簿',
-'gotaccount'                 => '有簿矣哉？往$1。',
+'gotaccount'                 => "有簿矣哉？往'''$1'''。",
 'gotaccountlink'             => '登簿',
 'createaccountmail'          => '同郵',
 'badretype'                  => '符節不合也。',
 'userexists'                 => '簿名存矣，惠更之',
 'loginerror'                 => '登簿誤然',
+'createaccounterror'         => '無增簿：$1',
 'nocookiesnew'               => '{{SITENAME}}簿增而未登，惠准cookies後再登之。',
 'nocookieslogin'             => '登簿{{SITENAME}}須cookies，惠准之後登。',
 'noname'                     => '缺簿名，或不格也。',
@@ -491,6 +494,7 @@ $2',
 
 子若罔須或省更之，如舊即可。',
 'noemail'                    => '"$1"無存郵也。',
+'noemailcreate'              => '爾需乙郵也',
 'passwordsent'               => '新節已遣$1"，惠鑒復登之。',
 'blocked-mailpassword'       => '爾之IP已錮，密復無用之，以之濫也。',
 'eauthentsent'               => '核文遣矣。惠循核之，簿方活也。',
@@ -509,7 +513,8 @@ $2',
 'createaccount-text'         => '有人於{{SITENAME}}用爾之電郵增名為 "$2" 之簿 （$4），符節為 "$3" 。汝應登，再改符節也。
 
 如簿誤增，爾可略之。',
-'login-throttled'            => '爾多試於此簿之符中。請候再試之。',
+'login-throttled'            => '爾多試於此簿登中。
+請候再試之。',
 'loginlanguagelabel'         => '語：$1',
 
 # Password reset dialog
@@ -597,7 +602,8 @@ $2',
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 尋誌]，
 或[{{fullurl:{{FULLPAGENAME}}|action=edit}} 纂頁]</span>。',
 'noarticletext-nopermission'       => '查無此文。[[Special:Search/{{PAGENAME}}|尋題]]，或<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 尋誌]</span>。',
-'userpage-userdoesnotexist'        => '"$1"之簿未增也。請建纂本頁前查之。',
+'userpage-userdoesnotexist'        => '「$1」之簿未增也。請建纂本頁前查之。',
+'userpage-userdoesnotexist-view'   => '「$1」之簿未增也。',
 'clearyourcache'                   => "'''註：'''重取頁面，文方新焉。
 '''Mozilla / Firefox / Safari:'''押''Shift''並點''重新載入''，或合鍵''Ctrl-F5''或''Ctrl-R''（Macintosh為''Command-R''）。
 '''Konqueror:'''點''Reload''，或押''F5''。
@@ -754,7 +760,7 @@ $2',
 'revdelete-legend'            => '見，規之以',
 'revdelete-hide-text'         => '藏審文',
 'revdelete-hide-comment'      => '藏贊',
-'revdelete-hide-user'         => '簿、IP以藏',
+'revdelete-hide-user'         => '簿、IP址以藏',
 'revdelete-hide-restricted'   => '廢有秩與簿之事',
 'revdelete-suppress'          => '廢有秩與簿之事',
 'revdelete-hide-image'        => '藏檔',
@@ -794,6 +800,7 @@ $1",
 'revdelete-otherreason'       => '它附因：',
 'revdelete-reasonotherlist'   => '它因',
 'revdelete-edit-reasonlist'   => '纂刪因',
+'revdelete-offender'          => '審著：',
 
 # Suppression log
 'suppressionlog'     => '誌廢',
@@ -910,7 +917,7 @@ $1",
 'notextmatches'                    => '無文合',
 'prevn'                            => '前{{PLURAL:$1|$1}}',
 'nextn'                            => '次{{PLURAL:$1|$1}}',
-'viewprevnext'                     => '見（$1）（$2）（$3）',
+'viewprevnext'                     => '見（$1 {{int:pipe-separator}} $2）（$3）',
 'searchmenu-legend'                => '尋選',
 'searchmenu-exists'                => "'''在此wiki中有頁為\"[[:\$1]]\"'''",
 'searchmenu-new'                   => "'''在此wiki上建頁\"[[:\$1]]\"！'''",
@@ -979,7 +986,7 @@ $1",
 'prefs-watchlist-days-max'      => '最大有七',
 'prefs-watchlist-edits'         => '哨站有易',
 'prefs-watchlist-edits-max'     => '最多之量：一千',
-'prefs-watchlist-token'         => '哨幣',
+'prefs-watchlist-token'         => '哨幣：',
 'prefs-misc'                    => '雜',
 'prefs-resetpass'               => '更符節',
 'prefs-email'                   => '傳書',
@@ -1140,6 +1147,7 @@ $1",
 'right-bigdelete'             => '刪大史之頁',
 'right-deleterevision'        => '刪與反刪頁之審',
 'right-deletedhistory'        => '看刪之項，無關之字',
+'right-deletedcontent'        => '看刪之項，審關之字',
 'right-browsearchive'         => '尋刪之頁',
 'right-undelete'              => '反刪頁',
 'right-suppressrevision'      => '看與復由有秩藏之審',
@@ -1172,6 +1180,7 @@ $1",
 'right-reset-passwords'       => '設他簿之符節',
 'right-override-export-depth' => '出有五層深之頁',
 'right-versiondetail'         => '示延用之版',
+'right-root'                  => '於wiki上行全動',
 
 # User rights log
 'rightslog'  => '職權志',
@@ -1305,9 +1314,8 @@ $1",
 'filetype-missing'           => '檔名無後綴也（如「.jpg」）。',
 'large-file'                 => '檔長$2仟位元組，不逾$1為佳。',
 'emptyfile'                  => '無以獻，疑謬名也，惠核之。',
-'fileexists'                 => "'''<tt>$1</tt>'''存矣，欲蓋之則再也。",
-'filepageexists'             => "此檔之述於'''<tt>$1</tt>'''存矣，檔未存也。爾入述無存也。要現之，爾需纂之。",
-'fileexists-thumb'           => "<center>'''現存之檔'''</center>",
+'fileexists'                 => "'''<tt>[[:$1]]</tt>'''存矣，欲蓋之則再也。 [[$1|thumb]]",
+'filepageexists'             => "此檔之述於'''<tt>[[:$1]]</tt>'''存矣，檔未存也。爾入述無存也。要現之，爾需纂之。",
 'file-exists-duplicate'      => '此檔乃重檔{{PLURAL:$1|一|數}}：',
 'file-deleted-duplicate'     => '此檔（[[$1]]）前刪。爾需查刪錄再貢之。',
 'successfulupload'           => '檔案安矣',
@@ -1328,6 +1336,24 @@ $1",
 'upload-too-many-redirects' => '網址含多轉',
 'upload-unknown-size'       => '未知之積',
 'upload-http-error'         => '發一HTTP之錯：$1',
+
+# img_auth script messages
+'img-auth-accessdenied' => '無通',
+'img-auth-nopathinfo'   => 'PATH_INFO失之。
+爾之伺服器無此資料也。
+以CGI之本耳，無img_auth矣。
+閱http://www.mediawiki.org/wiki/Manual:Image_Authorization。',
+'img-auth-notindir'     => '求之徑無存貢錄中。',
+'img-auth-badtitle'     => '於「$1」無建效題也。',
+'img-auth-nologinnWL'   => '爾未登簿，「$1」無在白名中。',
+'img-auth-nofile'       => '檔「$1」無存也。',
+'img-auth-isdir'        => '爾試問錄「$1」。
+只問檔也。',
+'img-auth-streaming'    => '流「$1」中。',
+'img-auth-public'       => 'img_auth.php之功能乃由共wiki出貢。
+此wiki為公共wiki是也。
+保強，img_auth.php已停矣。',
+'img-auth-noread'       => '簿無權讀「$1」也。',
 
 'license'           => '權：',
 'license-header'    => '權',
@@ -1410,6 +1436,7 @@ $1",
 ** 侵版權
 ** 重檔',
 'filedelete-edit-reasonlist'  => '纂刪因',
+'filedelete-maintenance'      => '護當禁刪復檔也。',
 
 # MIME search
 'mimesearch'         => '篩檔',
@@ -1597,7 +1624,7 @@ $1",
 
 # Special:ActiveUsers
 'activeusers'          => '躍簿',
-'activeusers-count'    => '$1次近易',
+'activeusers-count'    => '$3天內之$1易',
 'activeusers-from'     => '示簿始於：',
 'activeusers-noresult' => '無簿矣。',
 
@@ -1692,16 +1719,13 @@ $1",
 'enotif_impersonal_salutation' => '貴客',
 'changed'                      => '易',
 'created'                      => '撰',
-'deleted'                      => '刪',
-'enotif_deletedpagetext'       => '此頁無存矣。',
 'enotif_subject'               => '{{SITENAME}}簿{$PAGEEDITOR}{$CHANGEDORCREATED}{$PAGETITLE}',
 'enotif_lastvisited'           => '自子出簿，有易見$1。',
 'enotif_lastdiff'              => '欲閱此易，見$1。',
 'enotif_anon_editor'           => '過客$1',
-'enotif_rev_info'              => '閱審之見$1。',
 'enotif_body'                  => '$WATCHINGUSERNAME鈞鑑
 
-$PAGEEDITDATEANDTIME{{SITENAME}}簿$PAGEEDITOR$CHANGEDORCREATED$PAGETITLE。$REVINFO
+$PAGEEDITDATE{{SITENAME}}簿$PAGEEDITOR$CHANGEDORCREATED$PAGETITLE，閱審之見$PAGETITLE_URL。
 
 $NEWPAGE
 
@@ -1976,7 +2000,8 @@ $1',
 'contribslink'                    => '勛',
 'autoblocker'                     => '近日$1"$2"；同子IP址，故禁焉。',
 'blocklogpage'                    => '誌禁',
-'blocklog-fulllog'                => '整誌禁',
+'blocklog-showlog'                => '此簿曾被禁。誌禁示下：',
+'blocklog-showsuppresslog'        => '此簿曾被禁隱。誌廢示下：',
 'blocklogentry'                   => '禁[[$1]]屆$2$3',
 'reblock-logentry'                => '改[[$1]]之禁，屆$2$3',
 'blocklogtext'                    => '此誌禁赦；自禁不示。見[[Special:IPBlockList|此]]列今禁者。',
@@ -2258,10 +2283,12 @@ $1已被禁矣。爾是否改此置？',
 # Attribution
 'anonymous'        => '{{SITENAME}}無{{PLURAL:$1|簿|簿}}者',
 'siteuser'         => '{{SITENAME}}有簿者$1',
+'anonuser'         => '{{SITENAME}}有匿簿者$1',
 'lastmodifiedatby' => '$1$2，$3新易此頁。',
 'othercontribs'    => '$1主撰',
 'others'           => '他',
 'siteusers'        => '{{SITENAME}}有{{PLURAL:$2|簿|簿}}者$1',
+'anonusers'        => '{{SITENAME}}有匿{{PLURAL:$2|簿|簿}}者$1',
 'creditspage'      => '頁贊',
 'nocredits'        => '本頁未有贊信也。',
 

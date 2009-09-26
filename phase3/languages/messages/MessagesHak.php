@@ -329,14 +329,14 @@ Ngì khó-yî ki-siu̍k yî ngia̍k-miàng fông-sṳt sṳ́-yung {{SITENAME}},
 'login'                      => 'Tên-ngi̍p',
 'nav-login-createaccount'    => 'Tên-ngi̍p / Kien-li̍p sîn chong-ho',
 'loginprompt'                => 'Yeu tên-ngi̍p to {{SITENAME}}, ngì pit-sî khí-yung cookie kûng-nèn',
-'userlogin'                  => 'Tên-ngi̍p / Kien-li̍p sîn chong-ho',
+'userlogin'                  => 'Tên-ngi̍p',
 'logout'                     => 'Tên-chhut',
 'userlogout'                 => 'Tên-chhut',
 'notloggedin'                => 'Hàn-mò tên-ngi̍p',
-'nologin'                    => 'Ngì hàn-mò chong-ho mâ? $1.',
+'nologin'                    => "Ngì hàn-mò chong-ho mâ? '''$1'''.",
 'nologinlink'                => 'Kien-li̍p sîn chong-ho',
 'createaccount'              => 'Kien-li̍p sîn-ke chong-ho',
-'gotaccount'                 => 'Yí-kîn yúng-yû chong-ho? $1.',
+'gotaccount'                 => "Yí-kîn yúng-yû chong-ho? '''$1'''.",
 'gotaccountlink'             => 'Tên-ngi̍p',
 'createaccountmail'          => 'thûng-ko e-mail',
 'badretype'                  => 'Ngì só sû-ngi̍p ke pi-me̍t pin mò siông-thùng.',
@@ -778,14 +778,14 @@ Tshòng-tón pit-sî chhai $1-ke sṳ-ngièn yî-ha.',
 'large-file'                  => 'Kien-ngi tóng-on thai-séu put-nèn chhêu-ko $1; pún tóng-on thai-séu he $2.',
 'largefileserver'             => 'Liá-ke tóng-on ke thai-séu fu̍k-chhiùng-hi fûn-phi yún-chún ke thai-séu hàn-yeu thai.',
 'emptyfile'                   => 'Ngì só song-chhòn ke tóng-on put chhùn-chhai. Liá khó-nèn he chhut-yì tóng-on miàng chho-ngu. Chhiáng kiám-chhà ngì he-feu chṳ̂n yeu song-chhòn chhṳ́ tóng-on.',
-'fileexists'                  => "Yí-kîn chhùn-chhai siông-thùng miàng-chhṳ̂n ke tóng-on, kó-yèn ngì mò-fap khok-thin ngì he-feu yeu kói-pien kì, chhiáng kiám-chhà '''<tt>$1</tt>'''.",
-'fileexists-extension'        => "Yit-ke siông-sṳ tóng-miàng ke tóng-on yí-kîn chhùn-chhai:<br />
-Song-chhòn tóng-on ke tóng-miàng: '''<tt>$1</tt>'''<br />
-hien-chhai yû tóng-on ke tóng-miàng: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "Yí-kîn chhùn-chhai siông-thùng miàng-chhṳ̂n ke tóng-on, kó-yèn ngì mò-fap khok-thin ngì he-feu yeu kói-pien kì, chhiáng kiám-chhà '''<tt>[[:$1]]</tt>'''.
+[[$1|thumb]]",
+'fileexists-extension'        => "Yit-ke siông-sṳ tóng-miàng ke tóng-on yí-kîn chhùn-chhai: [[$2|thumb]]
+* Song-chhòn tóng-on ke tóng-miàng: '''<tt>[[:$1]]</tt>'''
+* Hien-chhai yû tóng-on ke tóng-miàng: '''<tt>[[:$2]]</tt>'''
 Chhiáng sién-chet yit-ke put-thùng ke miàng-sṳ.",
-'fileexists-thumb'            => "<center>'''Yí-kîn chhùn-chhai ke thù-hìn'''</center>",
-'fileexists-thumbnail-yes'    => "Liá-ke tóng-on chhin-chhiong he yit-pu thù-hìn ke suk-thù pán-pún ''（suk-thù）''.
-Chhiáng kiám-chhà chhîn-chhú ke tóng-on '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "Liá-ke tóng-on chhin-chhiong he yit-pu thù-hìn ke suk-thù pán-pún ''（suk-thù）''. [[$1|thumb]]
+Chhiáng kiám-chhà chhîn-chhú ke tóng-on '''<tt>[[:$1]]</tt>'''.
 Kó-yèn kiám-chhà heu ke tóng-on he khiung-thùng ngièn-pún thù-hiong ke thai-séu he yit-yong, chhiu put-yung song-chhòn tô yit-puk suk-thù.",
 'file-thumbnail-no'           => "Ke tóng-on he yî '''<tt>$1</tt>''' khôi-sṳ́. 
 Hó-chhiong yit-puk thù-hìn ke suk-thù pán-pún ''（thù-hìn）''.
@@ -1044,7 +1044,7 @@ Kó-yèn ngì yû liá-ke thù-hìn ke vàn-cháng thai-séu.",
 'enotif_lastvisited'           => 'Kiám-sṳ ngì song-chhṳ fóng-mun heu ke só-yû kiên-kói chhián chhâm-siòng $1.',
 'enotif_lastdiff'              => 'Kiám-chhà kiên-kói chhiáng chhâm-siòng $1.',
 'enotif_anon_editor'           => 'ngia̍k-miàng yung-fu $1',
-'enotif_body'                  => 'Chhîn-oi ke $WATCHINGUSERNAME, $PAGEEDITOR yí-kîn chhai $PAGEEDITDATEANDTIME $CHANGEDORCREATED{{SITENAME}} ke $PAGETITLE vùn-chông, chhiáng-to $PAGETITLE_URL kiám-sṳ siên-chhièn pán-pún.  $NEWPAGE phiên-si̍p chak-yeu: $PAGESUMMARY $PAGEMINOREDIT lièn-kiê chhṳ́ phiên-si̍p-chá: email: $PAGEEDITOR_EMAIL pún-chham: $PAGEEDITOR_WIKI chhai ngì fóng-mun chhṳ́-chông chṳ̂-chhièn, chiông-lòi ke kiên-kói vù-nèn hiong ngì thûng-tî. Ngì khó-yî chhûng-sat ngì só-yû kam-sṳ vùn-chông ke thûng-tî phêu-ki. {{SITENAME}} thûng-tî ne-thúng -- yeu kói-pien ngì-ke kam-sṳ lie̍t-péu sat-thin, chhiáng chhâm-siòng {{fullurl:{{#special:Watchlist}}/edit}} chin-yit-phu ke pông-chhu: {{fullurl:{{MediaWiki:Helppage}}}}',
+'enotif_body'                  => 'Chhîn-oi ke $WATCHINGUSERNAME, $PAGEEDITOR yí-kîn chhai $PAGEEDITDATE $CHANGEDORCREATED{{SITENAME}} ke $PAGETITLE vùn-chông, chhiáng-to $PAGETITLE_URL kiám-sṳ siên-chhièn pán-pún.  $NEWPAGE phiên-si̍p chak-yeu: $PAGESUMMARY $PAGEMINOREDIT lièn-kiê chhṳ́ phiên-si̍p-chá: email: $PAGEEDITOR_EMAIL pún-chham: $PAGEEDITOR_WIKI chhai ngì fóng-mun chhṳ́-chông chṳ̂-chhièn, chiông-lòi ke kiên-kói vù-nèn hiong ngì thûng-tî. Ngì khó-yî chhûng-sat ngì só-yû kam-sṳ vùn-chông ke thûng-tî phêu-ki. {{SITENAME}} thûng-tî ne-thúng -- yeu kói-pien ngì-ke kam-sṳ lie̍t-péu sat-thin, chhiáng chhâm-siòng {{fullurl:{{#special:Watchlist}}/edit}} chin-yit-phu ke pông-chhu: {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete
 'deletepage'        => 'Chhù-thet hong-mien',
@@ -1234,7 +1234,7 @@ Chhiáng chhâm-kháu [[Special:Log/delete|chhù-hi ngit-ki]] lòi chhà-chhut c
 'blocklogpage'                => 'Fûng-só ki-liu̍k',
 'blocklogentry'               => '"[[$1]]" yí-kîn pûn chhà-fûng $3, chûng-chṳ́ sṳ̀-kiên he $2',
 'blocklogtext'                => 'Liá-he kôan-yî yung-fu fûng-kim lâu kié-chhù fûng-kim chhâu-chok ke ki-liu̍k. Pûn chhṳ-thung fûng-kim ke IP thi-tiám mò-yû lie̍t-chhut. Chhiáng chhâm-kháu [[Special:IPBlockList|Pûn chhà-fûng ke IP thi-tiám lâu yung-fu lie̍t-péu]].',
-'unblocklogentry'             => '"[[$1]]" yí-kîn pûn kié-fûng',
+'unblocklogentry'             => '"$1" yí-kîn pûn kié-fûng',
 'block-log-flags-anononly'    => 'Han-chṳ ngia̍k-miàng ke yung-fu',
 'block-log-flags-nocreate'    => 'Kim-chṳ́ chhṳ́ IP/Yung-fu kien-li̍p sîn chong-fu',
 'block-log-flags-noautoblock' => 'Thìn-chṳ́ yung chhṳ-thung fûng-kim',

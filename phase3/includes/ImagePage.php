@@ -84,6 +84,8 @@ class ImagePage extends Article {
 
 		if( $this->mTitle->getNamespace() != NS_FILE || ( isset( $diff ) && $diffOnly ) )
 			return Article::view();
+			
+		$this->showRedirectedFromHeader();
 
 		if( $wgShowEXIF && $this->displayImg->exists() ) {
 			// FIXME: bad interface, see note on MediaHandler::formatMetadata().
@@ -720,6 +722,13 @@ EOT
 	 * Delete the file, or an earlier version of it
 	 */
 	public function delete() {
+		global $wgUploadMaintenance;
+		if( $wgUploadMaintenance && $this->mTitle && $this->mTitle->getNamespace() == NS_FILE ) {
+			global $wgOut;
+			$wgOut->wrapWikiMsg( "<div class='error'>\n$1</div>\n", array( 'filedelete-maintenance' ) );
+			return;
+		}
+
 		$this->loadFile();
 		if( !$this->img->exists() || !$this->img->isLocal() || $this->img->getRedirected() ) {
 			// Standard article deletion
@@ -789,7 +798,7 @@ class ImageHistoryList {
 		$this->img = $imagePage->getDisplayedFile();
 		$this->title = $imagePage->getTitle();
 		$this->imagePage = $imagePage;
-		$this->showThumb = $wgShowArchiveThumbnails;
+		$this->showThumb = $wgShowArchiveThumbnails && $this->img->canRender();
 	}
 
 	public function getImagePage() {

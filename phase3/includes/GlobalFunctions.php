@@ -308,7 +308,7 @@ function wfUrlencode( $s ) {
  */
 function wfDebug( $text, $logonly = false ) {
 	global $wgOut, $wgDebugLogFile, $wgDebugComments, $wgProfileOnly, $wgDebugRawPage;
-	global $wgDebugLogPrefix;
+	global $wgDebugLogPrefix, $wgShowDebug;
 	static $recursion = 0;
 
 	static $cache = array(); // Cache of unoutputted messages
@@ -318,7 +318,7 @@ function wfDebug( $text, $logonly = false ) {
 		return;
 	}
 
-	if ( $wgDebugComments && !$logonly ) {
+	if ( ( $wgDebugComments || $wgShowDebug ) && !$logonly ) {
 		$cache[] = $text;
 
 		if ( !isset( $wgOut ) ) {
@@ -656,7 +656,7 @@ function wfMsgNoDBForContent( $key ) {
  * @param $args
  * @param $useDB Boolean
  * @param $transform Boolean: Whether or not to transform the message.
- * @param $forContent Boolean
+ * @param $forContent Mixed: Language code, or false for user lang, true for content lang.
  * @return String: the requested message.
  */
 function wfMsgReal( $key, $args, $useDB = true, $forContent = false, $transform = true ) {
@@ -2326,10 +2326,10 @@ function wfShellExec( $cmd, &$retval=null ) {
 				$cmd = escapeshellarg( $script ) . " $time $mem $filesize " . escapeshellarg( $cmd );
 			}
 		}
-	} elseif ( php_uname( 's' ) == 'Windows NT' ) {
+	} elseif ( php_uname( 's' ) == 'Windows NT' && substr( php_uname( 'v' ), 6, 4 ) <= 6001 ) {
 		# This is a hack to work around PHP's flawed invocation of cmd.exe
 		# http://news.php.net/php.internals/21796
-		$cmd = '"' . $cmd . '"'; // FIXME: breaking Vista sp2/PHP 5.2.9(2)
+		$cmd = '"' . $cmd . '"';
 	}
 	wfDebug( "wfShellExec: $cmd\n" );
 

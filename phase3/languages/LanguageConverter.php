@@ -46,7 +46,7 @@ class LanguageConverter {
 	 * @param array $manualLevel limit for supported variants
 	 * @public
 	 */
-	function __construct($langobj, $maincode,
+	function __construct( $langobj, $maincode,
 								$variants=array(),
 								$variantfallbacks=array(),
 								$markup=array(),
@@ -54,7 +54,13 @@ class LanguageConverter {
 								$manualLevel = array() ) {
 		$this->mLangObj = $langobj;
 		$this->mMainLanguageCode = $maincode;
-		$this->mVariants = $variants;
+
+		global $wgDisabledVariants;
+		$this->mVariants = array();
+		foreach( $variants as $variant ) {
+			if( !in_array( $variant, $wgDisabledVariants ) )
+				$this->mVariants[] = $variant;
+		}
 		$this->mVariantFallbacks = $variantfallbacks;
 		global $wgLanguageNames;
 		$this->mVariantNames = $wgLanguageNames;
@@ -532,6 +538,8 @@ class LanguageConverter {
 			if( $this->mDoContentConvert )
 				// Bug 19620: should convert a string immediately after a new rule added.
 				$text .= $this->autoConvert( $marked[0], $plang );
+			else
+				$text .= $marked[0];
 
 			if ( array_key_exists( 1, $marked ) ) {
 				$crule = new ConverterRule($marked[1], $this);
@@ -546,7 +554,6 @@ class LanguageConverter {
 
 		// Remove the last delimiter (wasn't real)
 		$text = substr( $text, 0, -strlen( $this->mMarkup['end'] ) );
-
 		return $text;
 	}
 
@@ -566,7 +573,7 @@ class LanguageConverter {
 	function findVariantLink( &$link, &$nt, $ignoreOtherCond = false ) {
 		# If the article has already existed, there is no need to
 		# check it again, otherwise it may cause a fault.
-		if ( $nt->exists() )
+		if ( is_object( $nt ) && $nt->exists() )
 			return;
 
 		global $wgDisableLangConversion, $wgDisableTitleConversion, $wgRequest, $wgUser;
