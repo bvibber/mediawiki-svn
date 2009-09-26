@@ -757,7 +757,7 @@ js2AddOnloadHook( function() {
 					<li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li>\
 					<li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li>\
 				</ul>\
-				<div id="edittoolbar-link-dialog-tab-int"><form><fieldset><table><tr>\
+				<div id="edittoolbar-link-dialog-tab-int"><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label></td>\
 					<td>\
 						<input type="text" id="edittoolbar-link-int-target" />\
@@ -766,14 +766,14 @@ js2AddOnloadHook( function() {
 				</tr><tr>\
 					<td><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label></td>\
 					<td><input type="text" id="edittoolbar-link-int-text" /></td>\
-				</table></fieldset><input type="submit" style="display: none;" /></form></div>\
-				<div id="edittoolbar-link-dialog-tab-ext"><form><fieldset><table><tr>\
+				</table></fieldset></div>\
+				<div id="edittoolbar-link-dialog-tab-ext"><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label></td>\
 					<td><input type="text" id="edittoolbar-link-ext-target" /></td>\
 				</tr><tr>\
 					<td><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label></td>\
 					<td><input type="text" id="edittoolbar-link-ext-text" /></td>\
-				</table></fieldset><input type="submit" style="display: none;" /></form></div>\
+				</table></fieldset></div>\
 			</div>',
 		init: function() {
 			// Updates the UI to show if the page title being inputed by the user exists or not
@@ -837,15 +837,6 @@ js2AddOnloadHook( function() {
 			// Set labels of tabs based on rel values
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
-			});
-			// Assign the proper action to the hidden submit buttons
-			// triggered when the user presses Enter
-			$j(this).find( 'form' ).submit( function( e ) {
-				e.preventDefault();
-				$j(this)
-					.closest( '.ui-dialog' )
-					.find( 'button:first' )
-					.click();
 			});
 			// Build tabs
 			$j( '#edittoolbar-link-tabs' ).tabs();
@@ -1023,8 +1014,8 @@ js2AddOnloadHook( function() {
 			open: function() {
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
-					$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
-					$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
+				$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
+				$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
 					var intText, intTarget, extText, extTarget;
 					var matches;
@@ -1063,6 +1054,19 @@ js2AddOnloadHook( function() {
 					$j( '#edittoolbar-link-int-text' ).val() == $j( '#edittoolbar-link-int-target' ).val()
 				);
 				$j( '#edittoolbar-link-int-target' ).suggestions();
+				
+				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
+					$j(this).data( 'dialogkeypressset', true );
+					// Execute the action associated with the first button
+					// when the user presses Enter
+					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							$j(this)
+								.find( 'button:first' )
+								.click();
+						}
+					});
+				}
 			}
 		}
 	},
@@ -1070,7 +1074,7 @@ js2AddOnloadHook( function() {
 		titleMsg: 'edittoolbar-tool-table-title',
 		id: 'edittoolbar-table-dialog',
 		html: '\
-			<form><fieldset><legend rel="edittoolbar-tool-table-dimensions"></legend><table><tr>\
+			<fieldset><legend rel="edittoolbar-tool-table-dimensions"></legend><table><tr>\
 				<td><input type="checkbox" id="edittoolbar-table-dimensions-header" value="1" /></td>\
 				<td class="label"><label for="edittoolbar-table-dimensions-header"\
 					rel="edittoolbar-tool-table-dimensions-header"></label></td>\
@@ -1081,19 +1085,19 @@ js2AddOnloadHook( function() {
 				<td class="label"><label for="edittoolbar-table-dimensions-rows"\
 					rel="edittoolbar-tool-table-dimensions-rows"></label></td>\
 				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="2" /></td>\
-			</tr></table></fieldset><input type="submit" style="display: none;" /></form>',
+			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
-			// Assign the proper action to the hidden submit buttons
-			// triggered when the user presses Enter
-			$j(this).find( 'form' ).submit( function( e ) {
-				e.preventDefault();
-				$j(this)
-					.closest( '.ui-dialog' )
-					.find( 'button:first' )
-					.click();
+			// Execute the action associated with the first button
+			// when the user presses Enter
+			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+				if ( ( e.keyCode || e.which ) == 13 ) {
+					$j(this)
+						.find( 'button:first' )
+						.click();
+				}
 			});
 			$j( '#edittoolbar-table-dimensions-rows' ).val( 2 );
 			$j( '#edittoolbar-table-dimensions-columns' ).val( 2 );
@@ -1139,6 +1143,20 @@ js2AddOnloadHook( function() {
 				'edittoolbar-tool-table-cancel': function() {
 					$j(this).dialog( 'close' );
 				}
+			},
+			open: function() {
+				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
+					$j(this).data( 'dialogkeypressset', true );
+					// Execute the action associated with the first button
+					// when the user presses Enter
+					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							$j(this)
+								.find( 'button:first' )
+								.click();
+						}
+					});
+				}
 			}
 		}
 	},
@@ -1146,7 +1164,7 @@ js2AddOnloadHook( function() {
 		titleMsg: 'edittoolbar-tool-replace-title',
 		id: 'edittoolbar-replace-dialog',
 		html: '\
-			<form><fieldset><table><tr>\
+			<fieldset><table><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
 				<td><input type="text" id="edittoolbar-replace-search" /></td>\
 			</tr><tr>\
@@ -1161,19 +1179,19 @@ js2AddOnloadHook( function() {
 			</tr><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-all" /></td>\
 				<td><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></td>\
-			</tr></table></fieldset><input type="submit" style="display: none;" /></form>',
+			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
-			// Assign the proper action to the hidden submit buttons
-			// triggered when the user presses Enter
-			$j(this).find( 'form' ).submit( function( e ) {
-				e.preventDefault();
-				$j(this)
-					.closest( '.ui-dialog' )
-					.find( 'button:first' )
-					.click();
+			// Execute the action associated with the first button
+			// when the user presses Enter
+			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+				if ( ( e.keyCode || e.which ) == 13 ) {
+					$j(this)
+						.find( 'button:first' )
+						.click();
+				}
 			});
 		},
 		dialog: {
@@ -1251,6 +1269,20 @@ js2AddOnloadHook( function() {
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
 					$j(this).data( 'context' ).$textarea.focus();
+				}
+			},
+			open: function() {
+				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
+					$j(this).data( 'dialogkeypressset', true );
+					// Execute the action associated with the first button
+					// when the user presses Enter
+					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							$j(this)
+								.find( 'button:first' )
+								.click();
+						}
+					});
 				}
 			}
 		}
