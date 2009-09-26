@@ -1,0 +1,5 @@
+libapache2-mod-dumpcore (0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Domas Mituzas <domas@wikimedia.org>  Sat, 26 Sep 2009 21:33:21 +0300

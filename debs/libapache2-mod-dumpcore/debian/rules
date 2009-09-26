@@ -1,0 +1,40 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+version=2.0.5
+major=2
+build: 
+	dh_testdir
+	apxs2 -c mod_dumpcore.c
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep  
+	dh_installdirs
+
+	echo $(DESTDIR)
+	install .libs/mod_dumpcore.so $(CURDIR)/debian/libapache2-mod-dumpcore/usr/lib/apache2/modules/
+	install dumpcore.conf $(CURDIR)/debian/libapache2-mod-dumpcore/etc/apache2/conf.d/
+
+clean: 
+
+# Build architecture-independent files here.
+binary-indep: install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
+	dh_link
+	dh_strip
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build binary-indep binary-arch binary install configure

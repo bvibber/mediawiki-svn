@@ -1,0 +1,25 @@
+This package was debianized by:
+
+    Domas Mituzas <domas@wikimedia.org> on Sat, 26 Sep 2009 21:33:21 +0300
+
+It was downloaded from:
+
+    <http://mituzas.lt/2009/09/26/getting-apache-core-dumps-in-linux/>
+
+Upstream Author(s):
+
+     Domas Mituzas
+
+Copyright:
+
+    Copyright (C) 2009 Domas Mituzas
+
+License:
+
+    Public domain
+
+The Debian packaging is:
+
+    Copyright (C) 2009, Domas Mituzas
+
+and is in public domain

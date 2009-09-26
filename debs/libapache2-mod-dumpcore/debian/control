@@ -1,0 +1,14 @@
+Source: libapache2-mod-dumpcore
+Priority: extra
+Maintainer: Domas Mituzas <domas@wikimedia.org>
+Build-Depends: debhelper (>= 6), apache2-prefork-dev
+Standards-Version: 3.8.0
+Section: libs
+Homepage: http://mituzas.lt/2009/09/26/getting-apache-core-dumps-in-linux/
+
+Package: libapache2-mod-dumpcore
+Section: libs
+Architecture: any
+Depends: apache2-mpm-prefork
+Description: Additional module and configuration to dump core
+ etc etc etc
