@@ -395,6 +395,13 @@ $messages['io'] = array(
 	'optin-try' => 'Probez Beta',
 );
 
+/** Icelandic (Íslenska)
+ * @author Spacebirdy
+ */
+$messages['is'] = array(
+	'optin-try' => 'Prófa beta-útgáfu',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos

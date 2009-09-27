@@ -701,6 +701,7 @@ $messages['vec'] = array(
 	'total-header' => 'Clic totali',
 	'start-date' => 'Data de inissio (AAAAMMGG)',
 	'end-date' => 'Data de fine(AAAAMMGG)',
+	'increment-by' => 'Nùmaro de zorni che ogni ponto el rapresenta',
 	'change-graph' => 'Canbiar el gràfico',
 	'beginner' => 'Prinsipiante',
 	'intermediate' => 'Intermedio',

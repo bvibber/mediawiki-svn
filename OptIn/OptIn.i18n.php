@@ -194,7 +194,7 @@ $messages['ar'] = array(
 	'optin-success-feedback' => 'شكرًا لك على ملاحظاتك!',
 	'optin-accept-short' => 'لنجربها!',
 	'optin-accept-long' => 'جرّب البيتا',
-	'optin-accept-long-anon' => 'انشىء حسابا و قم بتجريب بيتا',
+	'optin-accept-long-anon' => 'أنشئ حسابًا وجرّب البيتا',
 	'optin-deny-short' => 'لا، شكرًا',
 	'optin-deny-long' => 'ارجع إلى الصفحة السابقة',
 	'optin-submit-out' => 'غادر البيتا',
@@ -2056,6 +2056,7 @@ Dźakujemy so a bychmy so wjeselili wot tebje słyšeć!',
  * @author Hunyadym
  */
 $messages['hu'] = array(
+	'optin-desc' => 'Lehetővé teszi a szerkesztőknek a béta verzió kipróbálását, a használhatóság fejlesztése kezdeményezés legfrissebb fejlesztéseivel',
 	'optin-title-optedout' => 'A béta kipróbálása',
 	'optin-title-optedin' => 'Kilépés a bétából',
 	'optin-title-justoptedin' => 'Üdvözlünk a bétában',
@@ -2273,6 +2274,15 @@ $messages['io'] = array(
 	'optin-try' => 'Probez Beta',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
+);
+
+/** Icelandic (Íslenska)
+ * @author Spacebirdy
+ */
+$messages['is'] = array(
+	'optin-title-optedout' => 'Prófa beta-útgáfu',
+	'optin-accept-long' => 'Prófa beta-útgáfu',
+	'optin-deny-short' => 'Nei takk',
 );
 
 /** Italian (Italiano)
@@ -3467,6 +3477,8 @@ $messages['nn'] = array(
 	'optin-title-justoptedout' => 'Takk for at du prøver betautgåva',
 	'optin-title-feedback' => 'Tilbakemelding om betautgåva',
 	'optin-needlogin' => 'Du må [$1 logga inn] for å prøve betautgåva.',
+	'optin-feedback-intro' => 'Takk for at du prøver Beta.
+Vi vil gjerne vite kva du meiner om det nye grensesnittet vårt, og ynskjer at du deltek i ut den valfrie undersøkinga under.',
 	'optin-success-feedback' => 'Takk for di tilbakemelding!',
 	'optin-accept-short' => 'Lat oss gjera det!',
 	'optin-accept-long-anon' => 'Logg inn og prøv Beta',
