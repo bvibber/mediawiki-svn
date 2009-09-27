@@ -63,8 +63,9 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				if ( ! in_array($template[0], $wgAllowedTemplates ) )
 					continue;
 				// Pull together templates, clicks, donations, conversion rate
-				$conversion_rate = ( $template[2] == 0 ) ? 0 : ( $template[1] / $template[2] ); 
+				$conversion_rate = ( $template[2] == 0 ) ? 0 : ( $template[2] / $template[1] ) * 100; 
 				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
+
 				$htmlOut .= Xml::tags( 'tr', null,
 						Xml::element( 'td', array( 'align' => 'left'), $template[0] ) .
 						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
@@ -134,7 +135,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				if ( ! in_array($template[0], $wgAllowedTemplates ) )
 					continue;
 				// Pull together templates, clicks, donations, conversion rate
-				$conversion_rate = ( $template[2] == 0 ) ? 0 : $template[1] / $template[2]; 
+				$conversion_rate = ( $template[2] == 0 ) ? 0 : $template[2] / $template[1] * 100; 
 				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
 				
 				$htmlOut .= Xml::tags( 'tr', null,
