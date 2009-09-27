@@ -84,7 +84,8 @@ $.fn.eachAsync = function(opts)
 $.fn.autoEllipse = function( options ) {
 	$(this).each( function() {
 		options = $.extend( {
-			'position': 'center'
+			'position': 'center',
+			'tooltip': false
 		}, options );
 		var text = $(this).text();
 		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
@@ -123,6 +124,8 @@ $.fn.autoEllipse = function( options ) {
 					}
 					break;
 			}
+			if ( options.tooltip )
+				$text.attr( 'title', text );
 		}
 	} );
 };
@@ -2185,6 +2188,7 @@ fn: {
 		if ( $( 'input[name=wpSection]' ).val() == '' )
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		context.modules.$toc.html( buildList( structure ) );
+		context.modules.$toc.find( 'ul a' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}
