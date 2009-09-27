@@ -298,6 +298,17 @@ ENDHINTS;
 		return NULL;
 	}
 
+	//static
+	public function regexCallback( $aMatches ) {
+		$strFind = array();
+		$strReplace = array();
+		foreach ($aMatches as $i => $strMatch) {
+			$aFind[] = '$' . $i;
+			$aReplace[] = $strMatch;
+		}
+		return str_replace($aFind, $aReplace, $this->strNextReplace);
+	}
+
 	function perform( $bPerformEdits = true ) {
 		global $wgOut, $wgUser, $wgTitle;
 
@@ -317,43 +328,52 @@ ENDHINTS;
 
 		// Save the state until the MW Edit API does it for us
 		if ( $bPerformEdits ) {
-			$wgOut->addHTML( '<ul>' );
 			$o_wgOut = clone $wgOut; // need to do a deep copy here
 			$wgOut->disable(); // not strictly necessary, but might speed things up
 			$o_wgTitle = $wgTitle;
+		} else {
+			// No difference here, but having the same variable name simplifies code
+			$o_wgOut = $wgOut;
 		}
+
+		$o_wgOut->addHTML( '<ul>' );
 		
-		if (count($aErrors)) {
-			if ( $bPerformEdits ) {
-				$o_wgOut->addHTML( '<li>' . join( '</li><li> ', $aErrors) . '</li>' );
-			} else {
-				$wgOut->addHTML( '<ul><li>' . join( '</li><li> ', $aErrors) . '</li></ul>' );
-			}
-		}
+		if (count($aErrors))
+			$o_wgOut->addHTML( '<li>' . join( '</li><li> ', $aErrors) . '</li>' );
+
+		$htmlDiff = '';
 
 		$iArticleCount = 0;
 		foreach ( $aPages as $p ) {
 			$iArticleCount++;
 			if ( !isset( $p['revisions'] ) ) {
-				if ( $bPerformEdits ) {
-					$o_wgOut->addHTML( '<li>' );
-					$o_wgOut->addWikiMsg( 'masseditregex-page-not-exists', $p['title'] );
-					$o_wgOut->addHTML( '</li>' );
-				} else {
-					$wgOut->addWikiMsg( 'masseditregex-page-not-exists', $p['title'] );
-				}
+				$o_wgOut->addHTML( '<li>'
+					. wfMsg( 'masseditregex-page-not-exists', $p['title'] )
+					. '</li>' );
 				continue; // empty page
 			}
 			$curContent = $p['revisions'][0]['*'];
 			$iCount = 0;
-			$newContent = @preg_replace( $this->aMatch, $this->aReplace, $curContent, -1, $iCount );
-
+			//$newContent = @preg_replace( $this->aMatch, $this->aReplace, $curContent, -1, $iCount );
+			$newContent = $curContent;
+			foreach ($this->aMatch as $i => $strMatch) {
+				$this->strNextReplace = $this->aReplace[$i];
+				$result = @preg_replace_callback( $strMatch,
+					array($this, 'regexCallback'), $newContent, -1, $iCount );
+				if ($result !== null) $newContent = $result;
+				else {
+					$strErrorMsg = '<li>' . wfMsg( 'masseditregex-badregex' ) . ' <b>'
+						. htmlspecialchars($strMatch) . '</b></li>';
+					$o_wgOut->addHTML( $strErrorMsg );
+					unset($this->aMatch[$i]);
+				}
+			}
+				
 			if ( $bPerformEdits ) {
 				// Not in preview mode, make the edits
 				// print_r( $p );
-				$o_wgOut->addHTML( '<li>' );
-				$o_wgOut->addWikiMsg( 'masseditregex-num-changes', $p['title'], $iCount );
-				$o_wgOut->addHTML( '</li>' );
+				$o_wgOut->addHTML( '<li>' . wfMsg( 'masseditregex-num-changes',
+					$p['title'], $iCount ) . '</li>' );
 				
 				$req = new FauxRequest( array(
 					'action' => 'edit',
@@ -368,14 +388,16 @@ ENDHINTS;
 				try {
 					$processor->execute();
 				} catch ( UsageException $e ) {
-					$o_wgOut->addHTML('<li><ul><li>Edit failed: ' . $e . '</li></ul></li>');
+					$o_wgOut->addHTML('<li><ul><li>' . wfMsg( 'masseditregex-editfailed')
+						. $e . '</li></ul></li>'
+					);
 				}
 			} else {
 				// In preview mode, display the first few diffs
 				$diff->setText( $curContent, $newContent );
-				$dtxt = $diff->getDiff( '<b>' . $p['title'] . ' - ' . wfMsg('masseditregex-before') . '</b>',
+				$htmlDiff .= $diff->getDiff( '<b>' . $p['title'] . ' - '
+					. wfMsg('masseditregex-before') . '</b>',
 					'<b>' . wfMsg('masseditregex-after') . '</b>' );
-				$wgOut->addHTML($dtxt);
 
 				if ( $iArticleCount >= MER_MAX_PREVIEW_DIFFS ) {
 					$wgOut->addWikiMsg( 'masseditregex-max-preview-diffs', MER_MAX_PREVIEW_DIFFS );
@@ -384,14 +406,14 @@ ENDHINTS;
 			}
 
 		}
-		// Restore the state after the Edit API has messed with it
+		
+		$o_wgOut->addHTML( '</ul>' );
+		
 		if ( $bPerformEdits ) {
+			// Restore the state after the Edit API has messed with it
 			$wgTitle = $o_wgTitle;
 			$wgOut = $o_wgOut;
-		}
-
-		if ( $bPerformEdits ) {
-			$wgOut->addHTML( '</ul>' );
+		
 			$wgOut->addWikiMsg( 'masseditregex-num-articles-changed', $iArticleCount );
 			$wgOut->addHTML( 
 				$this->sk->makeKnownLinkObj(
@@ -399,6 +421,9 @@ ENDHINTS;
 					wfMsgHtml( 'masseditregex-view-full-summary' )
 				)
 			);
+		} else {
+			// Only previewing, show the diffs now (after any errors)
+			$wgOut->addHTML($htmlDiff);
 		}
 	}
 }

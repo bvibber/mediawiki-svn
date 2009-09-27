@@ -46,6 +46,8 @@ The replacement values should not be escaped.',
 	'masseditregex-listtype-backlinks' => 'Backlinks (edit pages that link to these ones)',
 	'masseditregex-namespace-intro' => 'All these pages are in this namespace:',
 	'masseditregex-exprnomatch' => 'The expression "$1" matched no pages.',
+	'masseditregex-badregex' => 'Invalid regex:',
+	'masseditregex-editfailed' => 'Edit failed:',
 );
 
 /** Message documentation (Message documentation)
