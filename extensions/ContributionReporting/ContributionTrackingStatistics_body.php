@@ -9,8 +9,6 @@
 // Special page ContributionTrackingStatistics
 class SpecialContributionTrackingStatistics extends SpecialPage {
 
-	/* Members */
-	
 	/* Functions */
 
 	public function __construct() {
@@ -22,9 +20,6 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	}
 	
 	public function execute( $sub ) {
-		global $wgRequest, $wgOut, $wgUser;
-		global $egContributionTrackingStatisticsViewDays;
-		
 		// Begin output
 		$this->setHeaders();
 		
@@ -37,13 +32,14 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	
 	/* Display Functions */
 	
+	// Html out for the days total
 	public function showDayTotals() {
-		global $wgOut, $wgLang;
+		global $wgOut;
 		global $wgAllowedTemplates;
 
 		$totals = $this->getDayTotals();
 
-		$msg = wfMsgExt( 'contribstats-day-totals' , array ( 'parsemag' ), $wgLang->formatNum( count ( $months ) ) ); 
+		$msg = wfMsg( 'contribstats-day-totals' );
 		$htmlOut = Xml::element( 'h3', null, $msg );
 
 		// Day
@@ -65,11 +61,12 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			if ( ! in_array($template[0], $wgAllowedTemplates ) )
 				continue;
 			// Pull together templates, clicks, donations, conversion rate
+			$conversion_rate = ( $template[2] == 0 ) ? 0 : ( $template[1] / $template[2] ); 
 			$htmlOut .= Xml::tags( 'tr', null,
 					Xml::element( 'td', array( 'align' => 'left'), $template[0] ) .
 					Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
 					Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
-					Xml::element( 'td', array( 'align' => 'right'), $template[1] / $template[2] ) 
+					Xml::element( 'td', array( 'align' => 'right'), $conversion_rate ) 
 			);
 
 		}
@@ -78,44 +75,39 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 		// Output HTML
 		$wgOut->addHTML( $htmlOut );
-		
 		}
 
+	// Html out for the weekly totals
 	public function showWeeklyTotals() {
 		global $wgOut,$wgLang;
 		global $wgContributionTrackingStatisticsViewWeeks;
 
-		$msg = wfMsgExt( 'contribstats-weekly-totals' , array ( 'parsemag' ), $wgLang->formatNum( $wgContributionTrackingStatisticsViewWeeks ) );
+		$msg = wfMsgExt( 'contribstats-weekly-totals' , array ( 'parsemag' ),
+			 $wgLang->formatNum( $wgContributionTrackingStatisticsViewWeeks ) );
 		$htmlOut = Xml::element( 'h3', null, $msg );
 		$wgOut->addHTML( $htmlOut );
 
-		// clunky
-		$wgOut->addHTML($ts);
-		$ts = date('Y-m-d');
-		$range = $this->weekRange( $ts ) ;
+		$range = $this->weekRange( wfTimestampNow( TS_UNIX ) ) ;
 		$ts = strtotime( $range[0] );
 		while ( $wgContributionTrackingStatisticsViewWeeks > 0 ) {
-			$this->showWeekTotal( date('Y-m-d', $ts ) ) ;
-			$ts = strtotime('last sunday', $ts  );
+			$this->showWeekTotal( date('Ymd000000', $ts ) ) ;
+			$ts -= 60 * 60 * 24 * 7;
 			$wgContributionTrackingStatisticsViewWeeks--;
 		}
 	}
 
+	// Html out for a single week
 	public function showWeekTotal( $week ) {
-		global $wgOut,$wgLang;
+		global $wgOut;
 		
 		global $wgAllowedTemplates;
 
 		$totals = $this->getWeekTotals( $week );
 		
-		$msg = wfMsgExt( 'contribstats-weekly-totals' , array ( 'parsemag' ), $wgLang->formatNum( count ( $months ) ) ); 
-		$htmlOut = Xml::element( 'h3', null, $msg );
-		
 		// Weeks
 		$htmlOut = '';
 
-		$msg = $week;
-		$htmlOut .= Xml::element( 'h2', null, $msg ); 		
+		$htmlOut .= Xml::element( 'h2', null, date( 'o-m-j', wfTimeStamp( TS_UNIX, $week ) ) ); 		
 		$htmlOut .= Xml::openElement( 'table',
 				array(
 					'border' => 0,
@@ -134,13 +126,13 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			if ( ! in_array($template[0], $wgAllowedTemplates ) )
 				continue;
 			// Pull together templates, clicks, donations, conversion rate
-			$conversion = ( $template[2] == 0 ) ? 0 : $template[1] / $template[2]; 
+			$conversion_rate = ( $template[2] == 0 ) ? 0 : $template[1] / $template[2]; 
 			
 			$htmlOut .= Xml::tags( 'tr', null,
 					Xml::element( 'td', array( 'align' => 'left'), $template[0] ) .
 					Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
 					Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
-					Xml::element( 'td', array( 'align' => 'right'), $conversion ) 
+					Xml::element( 'td', array( 'align' => 'right'), $conversion_rate ) 
 			);
 		}
 
@@ -153,60 +145,42 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	
 	/* Query Functions */
 
+	// Database lookup for a single day
 	public function getDayTotals() {
-		$dbr = efContributionReportingTrackingConnection();
+		$dbr = efContributionTrackingConnection();
 		
-		$conds[] = "ts >=" . $dbr->addQuotes( date( 'Y-m-d' ) );
-		$conds[] = "ts <=" . $dbr->addQuotes( date( 'Y-m-d H:i:s' ) ); 
+		$conds[] = "ts >=" . $dbr->addQuotes( date( 'Ymd' ) );
+		$conds[] = "ts <=" . $dbr->addQuotes( date( 'YmdHis' ) ); 
 
 		$res = $dbr->select( 'contribution_tracking',
 			array(
 				'utm_source',
-				'count(*) as total',
+				'sum(isnull(contribution_id)) as miss',
+				'sum(not isnull(contribution_id)) as hit',
 			),
 			$conds,
 			__METHOD__,
 			array(
-				'ORDER BY' => 'total DESC',
+				'ORDER BY' => 'hit DESC',
 				'GROUP BY' => 'utm_source'
 			)
 		);
-
-		array_push( $conds, 'contribution_id is not NULL' );
-
-		$res_null = $dbr->select( 'contribution_tracking',
-			array(
-				'utm_source',
-				'count(*) as total',
-			),
-			$conds,
-			__METHOD__,
-			array(
-				'ORDER BY' => 'total DESC',
-				'GROUP BY' => 'utm_source'
-			)
-		); 
-
+		
 		while ( $row = $dbr->fetchRow( $res ) ) {
 			$result[] = array(
 					$row[0],
 					$row[1],
+					$row[2],
 			);
-		}
-
-		$i = 0; // hack!
-		while ( $row = $dbr->fetchRow( $res_null ) ) {
-			array_push( $result[$i],$row[1] );
-			$i++; 
-			
 		}
 
 		return $result;
 	}
 	
 	
+	// Database lookup for week totals
 	public function getWeekTotals( $week ) {
-		$dbr = efContributionReportingTrackingConnection();
+		$dbr = efContributionTrackingConnection();
 
 		$range = $this->weekRange( $week );
 
@@ -216,52 +190,35 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		$res = $dbr->select( 'contribution_tracking',
 			array(
 				'utm_source',
-				'count(*) as total',
+				'sum(isnull(contribution_id)) as miss',
+				'sum(not isnull(contribution_id)) as hit',
 			),
 			$conds,
 			__METHOD__,
 			array(
-				'ORDER BY' => 'total DESC',
+				'ORDER BY' => 'hit desc',
 				'GROUP BY' => 'utm_source'
 			)
 		);
-		
-		array_push( $conds, 'contribution_id is not NULL' );
-
-		$res_null = $dbr->select( 'contribution_tracking',
-			array(
-				'utm_source',
-				'count(*) as total',
-			),
-			$conds,
-			__METHOD__,
-			array(
-				'ORDER BY' => 'total DESC',
-				'GROUP BY' => 'utm_source'
-			)
-		); 
 		
 		while ( $row = $dbr->fetchRow( $res ) ) {
 			$result[] = array(
 					$row[0],
 					$row[1],
+					$row[2],
 			);
-		}
-
-		$i = 0; // clunky!
-		while ( $row = $dbr->fetchRow( $res_null ) ) {
-			array_push( $result[$i],$row[1] );
-			$i++; 
-			
 		}
 
 		return $result;
 	}
 
-	public function weekRange( $date ) {
-		$ts = strtotime($date);
-		$start = (date('w', $ts) == 0) ? $ts : strtotime('last sunday', $ts);
-		return array(date('Y-m-d', $start),
-                 date('Y-m-d', strtotime('next saturday', $start)));
+        // Given a day figure out what its week bounds are
+	public function weekRange( $day ) {
+		$day = wfTimestamp( TS_UNIX, $day );
+		$start = ( date( 'w', $day ) == 0) ? $day : strtotime('last sunday', $day ); // Use current Sunday
+		return array( 
+			date( 'Ymd000000', $start ),
+                	date( 'Ymd235959', strtotime( 'next sunday', $start) )
+		);
 	}
 }
