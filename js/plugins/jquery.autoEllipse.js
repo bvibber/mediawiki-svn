@@ -6,7 +6,8 @@
 $.fn.autoEllipse = function( options ) {
 	$(this).each( function() {
 		options = $.extend( {
-			'position': 'center'
+			'position': 'center',
+			'tooltip': false
 		}, options );
 		var text = $(this).text();
 		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
@@ -45,6 +46,8 @@ $.fn.autoEllipse = function( options ) {
 					}
 					break;
 			}
+			if ( options.tooltip )
+				$text.attr( 'title', text );
 		}
 	} );
 };
