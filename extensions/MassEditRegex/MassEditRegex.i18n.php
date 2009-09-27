@@ -48,6 +48,7 @@ The replacement values should not be escaped.',
 	'masseditregex-exprnomatch' => 'The expression "$1" matched no pages.',
 	'masseditregex-badregex' => 'Invalid regex:',
 	'masseditregex-editfailed' => 'Edit failed:',
+	'masseditregex-tooltip-execute' => 'Apply these changes to each page',
 );
 
 /** Message documentation (Message documentation)

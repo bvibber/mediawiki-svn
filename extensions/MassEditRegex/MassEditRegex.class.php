@@ -81,9 +81,9 @@ class MassEditRegex extends SpecialPage {
 		}
 
 		if ( $wgRequest->wasPosted() ) {
-			if ($wgRequest->getCheck( 'wpPreviewBtn' ) ) {
+			if ($wgRequest->getCheck( 'wpPreview' ) ) {
 				$this->showPreview();
-			} else if ( $wgRequest->getCheck('wpExecuteBtn') ) {
+			} else if ( $wgRequest->getCheck('wpSave') ) {
 				$this->perform();
 			}
 		} else {
@@ -101,122 +101,183 @@ class MassEditRegex extends SpecialPage {
 		}
 
 		$wgOut->addWikiMsg( 'masseditregextext' );
-
-		$txtPageList = wfMsg( 'masseditregex-pagelisttxt' );
-		$txtMatch = wfMsg( 'masseditregex-matchtxt' );
-		$txtReplace = wfMsg( 'masseditregex-replacetxt' );
-		$txtPreviewBtn = wfMsg( 'showpreview' );
-		$keyPreviewBtn = wfMsg( 'accesskey-preview' );
-		$txtExecuteBtn = wfMsg( 'masseditregex-executebtn' );
-		
-		$txtEditSummary = wfMsg( 'summary' );
-		$txtSummaryPreview = wfMsg( 'summary-preview' );
-		
 		$titleObj = SpecialPage::getTitle( 'MassEditRegex' );
-		$action = $titleObj->escapeLocalURL('action=submit');
 
-		$htmlPageList = htmlspecialchars( join( "\n", $this->aPageList ) );
-		$htmlMatch = htmlspecialchars( join( "\n", $this->aMatch ) );
-		$htmlReplace = htmlspecialchars( $this->strReplace ); // use original value
-		$htmlSummary = htmlspecialchars( $this->strSummary );
-		$htmlSummaryPreview = $this->sk->commentBlock( $this->strSummary, $titleObj );
-
-		$txtListOf = wfMsg( 'masseditregex-listtype-intro' );
-		$txtType = array();
-		$selected = array();
-		foreach (array('pagenames', 'pagename-prefixes', 'categories', 'backlinks') as $t) {
-			$txtType[$t] = wfMsg( 'masseditregex-listtype-' . $t );
-			$selected[$t] = '';
-		}
-
-		$selected[$this->strPageListType] = 'checked="true"';
-		
-		$txtNamespace = wfMsg( 'masseditregex-namespace-intro' );
-		$htmlNamespaceList = Xml::namespaceSelector( $this->iNamespace, null );
+		$wgOut->addHTML(
+			Xml::openElement('form', array(
+				'id' => 'masseditregex',
+				'method' => 'post',
+				'action' => $titleObj->escapeLocalURL('action=submit')
+			)) .
+			Xml::element('p',
+				null, wfMsg( 'masseditregex-pagelisttxt' )
+			) .
+			Xml::textarea(
+				'wpPageList',
+				join( "\n", $this->aPageList )
+			) .
+			Xml::namespaceSelector(
+				$this->iNamespace, null, 'namespace', wfMsg( 'masseditregex-namespace-intro' )
+			) .
+			Xml::element('br') .
+			Xml::element('span',
+				null, wfMsg( 'masseditregex-listtype-intro' )
+			) .
+			Xml::openElement('ul', array(
+				'style' => 'list-style: none' // don't want any bullets for radio btns
+			))
+		);
 		
 		// Generate HTML for the radio buttons (one for each list type)
-		$htmlChoices = '';
-		foreach ($txtType as $strChoice => $strText) {
-			$htmlChoices .= <<<ENDCHOICE
-<li><input type="radio" name="wpPageListType" id="masseditregex-radio-{$strChoice}"
-value="{$strChoice}" {$selected[$strChoice]} />
-<label for="masseditregex-radio-{$strChoice}">{$strText}</label></li>
-ENDCHOICE;
+		foreach (array('pagenames', 'pagename-prefixes', 'categories', 'backlinks')
+			as $strValue)
+		{
+			// Have to use openElement because putting an Xml::xxx return value
+			// inside an Xml::element causes the HTML code to be escaped and appear
+			// on the page.
+			$wgOut->addHTML(
+				Xml::openElement('li') .
+				Xml::radioLabel(
+					wfMsg( 'masseditregex-listtype-' . $strValue ),
+					'wpPageListType',
+					$strValue,
+					'masseditregex-radio-' . $strValue,
+					$strValue == $this->strPageListType
+				) .
+				Xml::closeElement('li')
+			);
 		}
+		$wgOut->addHTML(
+			Xml::closeElement('ul') .
+			
+			// Display the textareas for the regex and replacement to go into
+			
+			// Can't use Xml::buildTable because we need to put code into the table
+			Xml::openElement('table', array(
+				'style' => 'width: 100%'
+			)) .
+				Xml::openElement('tr') .
+					Xml::openElement('td') .
+						Xml::element('p', null, wfMsg( 'masseditregex-matchtxt' )) .
+						Xml::textarea(
+							'wpMatch',
+							join( "\n", $this->aMatch )
+						) .
+					Xml::closeElement('td') .
+					Xml::openElement('td') .
+						Xml::element('p', null, wfMsg( 'masseditregex-replacetxt' )) .
+						Xml::textarea(
+							'wpReplace',
+							$this->strReplace  // use original value
+						) .
+					Xml::closeElement('td') .
+					Xml::closeElement('tr') .
+			Xml::closeElement('table') .
+			
+			Xml::openElement( 'div', array( 'class' => 'editOptions' ) ) .
 
-		$mainForm = <<<ENDFORM
-<form id="masseditregex" method="post" action="{$action}">
-<p>{$txtPageList}</p>
-<!-- Newlines are important here - one after <textarea> but none
-     before </textarea>, otherwise leading blank lines get cut
-     off, or trailing newlines get added!  Tested FF3 -->
-<textarea name="wpPageList" cols="80" rows="4" tabindex="1" style="width:100%;">
-{$htmlPageList}</textarea>
-{$txtNamespace} {$htmlNamespaceList}
-<br/>
-{$txtListOf} <ul style="list-style: none;">{$htmlChoices}</ul>
-<table border="0" cellspacing="0" cellpadding="0" style="width: 100%;">
-<tr><td>
-<p>{$txtMatch}</p>
-<textarea name="wpMatch" cols="80" rows="4" tabindex="1" style="width:95%;">
-{$htmlMatch}</textarea>
-</td><td>
-<p>{$txtReplace}</p>
-<textarea name="wpReplace" cols="80" rows="4" tabindex="1" style="width:100%;">
-{$htmlReplace}</textarea>
-</td></tr>
-</table>
-<p></p>
-<div class="editOptions">
-<span id="wpSummaryLabel"><label for="wpSummary">{$txtEditSummary}</label></span>
-<input type="text" value="$htmlSummary" name="wpSummary" id="wpSummary"
-maxlength="200" size="60" /><br />
+			// Display the edit summary and preview
+			
+			Xml::tags( 'span',
+				array(
+					'class' => 'mw-summary',
+					'id' => 'wpSummaryLabel'
+				),
+				Xml::tags( 'label', array(
+					'for' => 'wpSummary'
+				), wfMsg( 'summary' ) )
+			) . ' ' .
+			
+			Xml::input( 'wpSummary',
+				60,
+				$this->strSummary,
+				array(
+					'id' => 'wpSummary',
+					'maxlength' => '200',
+					'tabindex' => '1'
+				)
+			) .
+			
+			Xml::tags( 'div',
+				array( 'class' => 'mw-summary-preview' ),
+				wfMsgExt( 'summary-preview', 'parseinline' ) .
+					$this->sk->commentBlock( $this->strSummary )
+			) .
+			Xml::closeElement( 'div' ) . // class=editOptions
 
-<div class="mw-summary-preview">
-$txtSummaryPreview
-$htmlSummaryPreview
-</div>
-</div>
+			// Display the preview + execute buttons
 
-<p>
-	<input type="submit" name="wpPreviewBtn" value="{$txtPreviewBtn}" accesskey="{$keyPreviewBtn}" />
-	<input type="submit" name="wpExecuteBtn" value="{$txtExecuteBtn}" />
-</p>
-</form>
-ENDFORM;
-		$wgOut->addHTML( $mainForm );
+			Xml::element('input', array(
+				'id'        => 'wpSave',
+				'name'      => 'wpSave',
+				'type'      => 'submit',
+				'value'     => wfMsg( 'masseditregex-executebtn' ),
+				'accesskey' => wfMsg( 'accesskey-save' ),
+				'title'     => wfMsg( 'masseditregex-tooltip-execute' ).' ['.wfMsg( 'accesskey-save' ).']',
+			)) .
+
+			Xml::element('input', array(
+				'id'        => 'wpPreview',
+				'name'      => 'wpPreview',
+				'type'      => 'submit',
+				'value'     => wfMsg('showpreview'),
+				'accesskey' => wfMsg('accesskey-preview'),
+				'title'     => wfMsg( 'tooltip-preview' ).' ['.wfMsg( 'accesskey-preview' ).']',
+			))
+
+		);
+		
+		$wgOut->addHTML( Xml::closeElement('form') );
 	}
 
 	function showHints() {
 		global $wgOut;
-		$hintIntro = wfMsg( 'masseditregex-hint-intro' );
-		$hintMatch = wfMsg( 'masseditregex-hint-headmatch' );
-		$hintReplace = wfMsg( 'masseditregex-hint-headreplace' );
-		$hintEffect = wfMsg( 'masseditregex-hint-headeffect' );
-		$hintToAppend = wfMsg( 'masseditregex-hint-toappend' );
-		$hintRemove = wfMsg( 'masseditregex-hint-remove' );
-		$hintRemoveCat = wfMsg( 'masseditregex-hint-removecat' );
-	
-		$hints = <<<ENDHINTS
-<p>{$hintIntro}</p>
-<table border="1" cellspacing="0" cellpadding="2" class="wikitable">
-<thead><tr>
-	<th style="width: 12em;">{$hintMatch}</th>
-	<th style="width: 12em;">{$hintReplace}</th>
-	<th>{$hintEffect}</th>
-</tr></thead>
-<tbody>
-	<tr>
-		<td>/$/<br/>/$/</td><td>abc<br/>\\n[[Category:New]]</td><td>{$hintToAppend}</td>
-	</tr><tr>
-		<td>{{OldTemplate}}</td><td></td><td>{$hintRemove}</td>
-	</tr><tr>
-		<td>\\[\\[Category:[^]]+\]\]</td><td></td><td>{$hintRemoveCat}</td>
-	</tr>
-</tbody>
-</table>
-ENDHINTS;
-		$wgOut->addHTML( $hints );
+
+		$wgOut->addHTML(
+			Xml::element( 'p', null, wfMsg( 'masseditregex-hint-intro' ) )
+		);
+		$wgOut->addHTML(Xml::buildTable(
+
+			// Table rows (the hints)
+			array(
+				array(
+					'/$/',
+					'abc',
+					wfMsg( 'masseditregex-hint-toappend' )
+				),
+				array(
+					'/$/',
+					'\\n[[Category:New]]',
+					// Since we can't pass "rowspan=2" to the hint text above, we'll
+					// have to display it again
+					wfMsg( 'masseditregex-hint-toappend' )
+				),
+				array(
+					'{{OldTemplate}}',
+					'',
+					wfMsg( 'masseditregex-hint-remove' )
+				),
+				array(
+					'\\[\\[Category:[^]]+\]\]',
+					'',
+					wfMsg( 'masseditregex-hint-removecat' )
+				)
+			),
+
+			// Table attributes
+			array(
+				'class' => 'wikitable'
+			),
+
+			// Table headings
+			array(
+				wfMsg( 'masseditregex-hint-headmatch' ), // really needs width 12em
+				wfMsg( 'masseditregex-hint-headreplace' ), // really needs width 12em
+				wfMsg( 'masseditregex-hint-headeffect' )
+			)
+
+		)); // Xml::buildTable
+		
 	}
 	
 	function showPreview() {
@@ -231,7 +292,7 @@ ENDHINTS;
 		$processor = new ApiMain( $req, true );
 		$processor->execute();
 		$aPages = $processor->getResultData();
-		if ( empty( $aPages ) ) return NULL; // no pages match the titles given
+		if ( empty( $aPages ) ) return null; // no pages match the titles given
 		return $aPages['query']['pages'];
 	}
 
@@ -253,7 +314,7 @@ ENDHINTS;
 
 	function getPages(&$aErrors, $iMaxPerCriterion) {
 		global $wgContLang; // for mapping namespace numbers to localised name
-		if ( !count( $this->aPageList ) ) return NULL;
+		if ( !count( $this->aPageList ) ) return null;
 
 		// Default vars for all page list types
 		$aRequestVars = array(
@@ -295,10 +356,9 @@ ENDHINTS;
 				$aRequestVars['gbllimit'] = $iMaxPerCriterion;
 				return $this->runMultiRequest($aRequestVars, 'gbltitle', $this->aPageList, $aErrors);
 		}
-		return NULL;
+		return null;
 	}
 
-	//static
 	public function regexCallback( $aMatches ) {
 		$strFind = array();
 		$strReplace = array();
@@ -310,12 +370,12 @@ ENDHINTS;
 	}
 
 	function perform( $bPerformEdits = true ) {
-		global $wgOut, $wgUser, $wgTitle;
+		global $wgOut, $wgUser, $wgTitle, $wgLang;
 
 		$iMaxPerCriterion = $bPerformEdits ? MER_MAX_EXECUTE_PAGES : MER_MAX_PREVIEW_DIFFS;
 		$aErrors = array();
 		$aPages = $this->getPages($aErrors, $iMaxPerCriterion);
-		if ( $aPages === NULL ) {
+		if ( $aPages === null ) {
 			$this->showForm( wfMsg( 'masseditregex-err-nopages' ) );
 			return;
 		}
@@ -354,7 +414,6 @@ ENDHINTS;
 			}
 			$curContent = $p['revisions'][0]['*'];
 			$iCount = 0;
-			//$newContent = @preg_replace( $this->aMatch, $this->aReplace, $curContent, -1, $iCount );
 			$newContent = $curContent;
 			foreach ($this->aMatch as $i => $strMatch) {
 				$this->strNextReplace = $this->aReplace[$i];
@@ -400,7 +459,11 @@ ENDHINTS;
 					'<b>' . wfMsg('masseditregex-after') . '</b>' );
 
 				if ( $iArticleCount >= MER_MAX_PREVIEW_DIFFS ) {
-					$wgOut->addWikiMsg( 'masseditregex-max-preview-diffs', MER_MAX_PREVIEW_DIFFS );
+					$htmlDiff .= Xml::element('p', null,
+						wfMsg( 'masseditregex-max-preview-diffs',
+							$wgLang->formatNum(MER_MAX_PREVIEW_DIFFS)
+						)
+					);
 					break;
 				}
 			}
