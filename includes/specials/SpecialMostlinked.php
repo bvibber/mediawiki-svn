@@ -26,7 +26,12 @@ class MostlinkedPage extends QueryPage {
 	 * Note: Getting page_namespace only works if $this->isCached() is false
 	 */
 	function getSQL() {
+		global $wgMiserMode;
+
 		$dbr = wfGetDB( DB_SLAVE );
+
+		if ($wgMiserMode) { $cutoff = 100; } else { $cutoff = 1; }
+
 		list( $pagelinks, $page ) = $dbr->tableNamesN( 'pagelinks', 'page' );
 		return
 			"SELECT 'Mostlinked' AS type,
@@ -37,7 +42,7 @@ class MostlinkedPage extends QueryPage {
 			FROM $pagelinks
 			LEFT JOIN $page ON pl_namespace=page_namespace AND pl_title=page_title
 			GROUP BY pl_namespace, pl_title, page_namespace
-			HAVING COUNT(*) > 1";
+			HAVING COUNT(*) > $cutoff";
 	}
 
 	/**
