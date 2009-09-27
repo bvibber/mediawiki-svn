@@ -107,6 +107,20 @@ $messages['hu'] = array(
 	'ipauth-desc' => 'Automatikus bejelentkezés fix IP címekről',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'ipauth-desc' => 'Apertura de session automatic ab un adresse IP fixe',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'ipauth-desc' => 'Log masuk otomatis dari alamat IP tertentu',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

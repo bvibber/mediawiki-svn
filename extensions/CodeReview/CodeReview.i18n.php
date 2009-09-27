@@ -3567,6 +3567,7 @@ $messages['id'] = array(
 	'code-release-legend' => 'Buat catatan rilis',
 	'code-release-startrev' => 'Memulai rev:',
 	'code-release-endrev' => 'Akhir rev:',
+	'code-release-badrange' => 'Interval terlalu besar!',
 	'codereview-subtitle' => 'Untuk $1',
 	'codereview-reply-link' => 'balas',
 	'codereview-email-subj' => '[$1] [r$2]: Komenter baru ditambahkan',

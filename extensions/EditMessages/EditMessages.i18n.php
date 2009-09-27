@@ -650,6 +650,7 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
@@ -659,12 +660,17 @@ $messages['id'] = array(
 	'editmsg-target' => 'Pesan sasaran :',
 	'editmsg-search' => 'Cari',
 	'editmsg-show-list' => 'Menampilkan nilai untuk nama pesan "$1"',
+	'editmsg-get-patch' => 'Buat tambalan',
 	'editmsg-new-search' => 'Pencarian baru',
 	'editmsg-warning-parse1' => '* Nama pesan regex tidak cocok: $1',
 	'editmsg-warning-parse2' => '* Karakter kutipan diharapkan setelah arrow: $1',
 	'editmsg-warning-parse3' => '* Nilai akhir string tidak ditemukan: $1',
 	'editmsg-warning-file' => '* Kesalahan membaca berkas yang muncul untuk {{PLURAL:$2|bahasa|bahasa}} berikut: $1',
 	'editmsg-warning-mismatch' => '* Teks aslinya tidak memiliki nilai yang diharapkan untuk {{PLURAL:$2|bahasa|bahasa}} berikut: $1',
+	'editmsg-apply-patch' => 'Pasang tambalan',
+	'editmsg-no-patch' => 'Tidak dapat menjalankan perintah "tambal"',
+	'editmsg-patch-failed' => 'Tambalan gagal dengan status keluar $1',
+	'editmsg-patch-success' => 'Ditambal dengan sukses',
 );
 
 /** Italian (Italiano)

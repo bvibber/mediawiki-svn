@@ -21,9 +21,11 @@ You can disable this warning in the "{{int:prefs-editing}}" section of your pref
 
 /** Message documentation (Message documentation)
  * @author McDutchie
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'editwarning' => "This is the name of an extension that warns people when they try to leave an edit form without saving. So it means something like \"warning about (your) edit\", '''not''' \"edit the warning\".",
+	'editwarning-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

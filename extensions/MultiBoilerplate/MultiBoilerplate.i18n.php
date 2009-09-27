@@ -293,6 +293,10 @@ $messages['id'] = array(
 	'multiboilerplate-desc' => 'Mengijikan untuk memilih sebuah pesan pembuka dari kotak yang terletak di atas formulir penyuntingan pada saat menyunting halaman',
 	'multiboilerplate-legend' => 'Pilih pesan pembuka',
 	'multiboilerplate-submit' => 'Muatkan',
+	'boilerplates' => "''Boilerplate'' yang tersedia",
+	'multiboilerplate-special-pagetext' => 'Templat-templat ini dapat di pramuatkan pada saat pembuatan suatu halaman. (<span class=plainlinks>[{{fullurl:Halaman ini tidak eksis|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => "''Boilerplate'' didefinisikan di LocalSettings.",
+	'multiboilerplate-special-define-in-interface' => "''Boilerplate'' didefinisikan di [[MediaWiki:Multiboilerplate]].",
 );
 
 /** Icelandic (Íslenska)

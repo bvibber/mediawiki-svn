@@ -1569,7 +1569,7 @@ $messages['sah'] = array(
 	'ratinghistory-purge' => 'Кээһи ыраастаа',
 	'ratinghistory-table' => 'Ааҕааччылар сыаналарын сүнньүнэн көрүү',
 	'ratinghistory-users' => 'Сыана быспыт кыттааччылар',
-	'ratinghistory-graph' => '"$3" сыанабылтан $2 сыаната',
+	'ratinghistory-graph' => '"$3" сыанабылтан $2 сыаната ($1)',
 	'readerfeedback-svg' => 'SVG курдук көрүү',
 	'ratinghistory-table-rating' => 'Сыанабыл',
 	'ratinghistory-table-votes' => 'Куоластааһын',
@@ -1588,6 +1588,7 @@ $messages['sah'] = array(
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Mormegil
+ * @author Rudko
  */
 $messages['sk'] = array(
 	'ratinghistory' => 'História hodnotenia stránky',
@@ -1615,7 +1616,7 @@ $messages['sk'] = array(
 
 '''[1]''' - Slabé; '''[2]''' - Nízke; '''[3]''' - Dobré; '''[4]''' - Vysoké; '''[5]''' - Výborné;",
 	'ratinghistory-graph-scale' => "'''Počet kontrol za deň''' <font color=\"red\">''(červenou)''</font> je zobrazený  v mierke ''1:\$1''.",
-	'right-feedback' => 'Stránku ohodnotíte pomocou formulára spätnej väzby',
+	'right-feedback' => 'Hodnotenie stránok prostredníctvom formulára',
 );
 
 /** Albanian (Shqip)
@@ -1819,6 +1820,39 @@ $messages['uk'] = array(
 
 '''Кількість перевірок за добу''' <font color=\"red\">''(червоний)''</font> показана нижче, у масштабі ''1:\$1''.",
 	'right-feedback' => "використання форми зворотного зв'язку для оцінювання сторінки",
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'ratinghistory' => 'Stòrico de le valutassion de le pagine',
+	'ratinghistory-leg' => 'Dati del stòrico de le valutassion par [[:$1|$1]]',
+	'ratinghistory-tab' => 'valutassion',
+	'ratinghistory-link' => 'Valutassion de la pagina',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Grassie de ver speso calche momento a valutar sta pagina!</font>''",
+	'ratinghistory-period' => 'Periodo de tenpo:',
+	'ratinghistory-month' => 'ultimo mese',
+	'ratinghistory-3months' => 'ultimi 3 mesi',
+	'ratinghistory-year' => 'ultimo ano',
+	'ratinghistory-3years' => 'ultimi 3 ani',
+	'ratinghistory-ave' => 'Media: $1',
+	'ratinghistory-chart' => 'Valutassion dei letori col passar del tenpo',
+	'ratinghistory-purge' => 'neta la cache',
+	'ratinghistory-table' => 'Panoràmega de le valutassion dei letori',
+	'ratinghistory-users' => 'Utenti che ga dato na valutassion',
+	'ratinghistory-graph' => '$2 de "$3" ($1 {{PLURAL:$1|revision|revision}})',
+	'readerfeedback-svg' => 'Varda come SVG',
+	'ratinghistory-table-rating' => 'Valutassion',
+	'ratinghistory-table-votes' => 'Voti',
+	'ratinghistory-none' => 'Par desso i dati de riscontro dai letori no i xe in bisogno par poder mostrar dei grafici.',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Tristo assè; '''(2)''' - Tristo; '''(3)''' - Cussì-cussì; '''(4)''' - Bon; '''(5)''' - Bon assè;",
+	'ratinghistory-legend' => "Qua soto vien mostrà, par data, el '''nùmaro de valutassion al zorno''' <font color=\"red\">''(rosso)''</font>, la '''valutassion media par zorno''' <font color=\"blue\">''(blu)''</font>, e la '''valutassion media cumulà''' <font color=\"green\">''(verde)''</font>.
+La '''valutassion media cumulà''' la xe senplisemente la media de tuti i giudissi ''drento'' de sta finestra de tenpo zorno par zorno.
+Le valutassion le xe ste qua:
+
+'''(1)''' - Tristo assè; '''(2)''' - Tristo; '''(3)''' - Cussì-cussì; '''(4)''' - Bon; '''(5)''' - Bon assè;",
+	'ratinghistory-graph-scale' => "'''Revision par zorno'''  <font color=\"red\">''(rosso)''</font> mostrà in scala ''1:\$1''.",
 );
 
 /** Veps (Vepsan kel')

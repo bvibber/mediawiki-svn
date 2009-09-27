@@ -113,6 +113,13 @@ $messages['ia'] = array(
 	'lockout-desc' => 'Impedi le usatores blocate de aperir un session',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'lockout-desc' => 'Menghalangi pengguna yang diblokir untuk log masuk',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

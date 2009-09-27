@@ -127,6 +127,14 @@ $messages['hu'] = array(
 	'flv-long-desc' => '(Flash videó, $1 × $2 képpont, fájlméret: $3)',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'flvhandler_desc' => 'Mengijinkan berkas Video Flash (.flv) untuk ditambahkan sebagai berkas standar (mis. <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(video Flash, $1 × $2 piksel, ukuran berkas: $3)',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

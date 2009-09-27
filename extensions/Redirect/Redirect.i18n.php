@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'redirect-userlogoutcomplete' => '', # do not translate or duplicate this message to other languages
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'redirect-desc' => '{{desc}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

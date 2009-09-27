@@ -75,6 +75,7 @@ $messages['br'] = array(
 	'ratedpages-list' => 'A-is ez eus ur roll pajennoù urzhiet diouzh priziadenn al lennerien.',
 	'ratedpages-none' => "N'eus pajenn ebet war ar roll-mañ",
 	'ratedpages-graphs' => 'roadennoù priziañ',
+	'ratedpages-count' => '$1 {{PLURAL:$1|adweladenn}}',
 );
 
 /** Bosnian (Bosanski)
@@ -286,6 +287,7 @@ $messages['ia'] = array(
 	'ratedpages-list' => 'Infra es un lista de paginas ordinate per evaluation del lectores.',
 	'ratedpages-none' => 'Il non ha paginas in iste lista',
 	'ratedpages-graphs' => 'datos de evalutation',
+	'ratedpages-count' => '$1 {{PLURAL:$1|recension|recensiones}}',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -293,9 +295,12 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
+	'ratedpages' => 'Halaman dengan peringkat yang diberikan pembacanya',
+	'ratedpages-leg' => 'Cari halaman yang diberi peringkat dengan jumlah yang cukup',
 	'ratedpages-list' => 'Berikut adalah daftar halaman yang diurutkan menurut peringkat yang diberikan pembacanya.',
 	'ratedpages-none' => 'Tidak adalah halaman dalam daftar ini',
 	'ratedpages-graphs' => 'data pemeringkatan',
+	'ratedpages-count' => '$1 {{PLURAL:$1||}}tinjauan',
 );
 
 /** Italian (Italiano)
@@ -418,6 +423,7 @@ $messages['oc'] = array(
 	'ratedpages-list' => 'Vaquí, çaijós, una tièra de paginas triadas en foncion de la notacion de lors lectors.',
 	'ratedpages-none' => 'I a pas cap de pagina dins aquesta tièra',
 	'ratedpages-graphs' => 'donadas de notacion',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revisions}}',
 );
 
 /** Polish (Polski)
@@ -438,6 +444,7 @@ $messages['pms'] = array(
 	'ratedpages-list' => 'Sota a-i é na lista ëd pàgine ordinà për la soa valutassion dij letor.',
 	'ratedpages-none' => 'A-i é pa ëd pàgine an sta lista-sì',
 	'ratedpages-graphs' => 'dat ëd valutassion',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revision}}',
 );
 
 /** Portuguese (Português)
@@ -501,6 +508,7 @@ $messages['sah'] = array(
 	'ratedpages-list' => 'Аллара сирэйдэр ааҕааччылар сыанабылларынан наардаммыт тиһиктэрэ көстөр.',
 	'ratedpages-none' => 'Тиһик кураанах.',
 	'ratedpages-graphs' => 'Сыанабыл дааннайдара',
+	'ratedpages-count' => '$1 сыанабыл',
 );
 
 /** Slovak (Slovenčina)
@@ -558,6 +566,7 @@ $messages['tr'] = array(
 	'ratedpages-list' => 'Aşağıdaki, kullanıcı dönütleri oranlarına göre sıralanmış sayfalar listesidir.',
 	'ratedpages-none' => 'Bu listede hiç sayfa yok',
 	'ratedpages-graphs' => 'veri derecelendiriliyor',
+	'ratedpages-count' => '$1 {{PLURAL:$1|inceleme|inceleme}}',
 );
 
 /** Ukrainian (Українська)

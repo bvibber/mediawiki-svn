@@ -455,6 +455,34 @@ Let op het escapen van de blokhaken in de wikitekst.
 Voor de te vervangen tekst is escapen niet nodig.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'masseditregex' => "Modificacion en massa amb l'ajuda de las expressions racionalas",
+	'masseditregex-desc' => 'Utilizar las expressions racionalas per [[Special:MassEditRegex|modificar de paginas nombrosas en una operacion]]',
+	'masseditregextext' => 'Entrar una o mantuna expression racionala (una per linha) de recercar, e una o mantuna expression per las qualas remplaçar los resultats. La primièra expression trobada serà remplaçada per la primièra expression de remplaçament, e atal encara. Veire la descripcion de la [http://php.net/manual/en/function.preg-replace.php foncion PHP preg_replace()] per mai de detalhs.',
+	'masseditregex-pagelisttxt' => 'Paginas de modificar :',
+	'masseditregex-matchtxt' => 'Recercar :',
+	'masseditregex-replacetxt' => 'Remplaçar per :',
+	'masseditregex-executebtn' => 'Executar',
+	'masseditregex-err-nopages' => 'Vos cal especificar al mens una pagina de modificar.',
+	'masseditregex-before' => 'Abans',
+	'masseditregex-after' => 'Aprèp',
+	'masseditregex-max-preview-diffs' => 'La previsualizacion es estada limitada {{PLURAL:$1|al primièr resultat|als $1 primièrs resultats}}.',
+	'masseditregex-num-changes' => '$1 : $2 {{PLURAL:$2|modificacion|modificacions}}',
+	'masseditregex-page-not-exists' => '$1 existís pas',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|article modificat|articles modificats}}',
+	'masseditregex-view-full-summary' => 'Veire lo resumit complet de las modificacions',
+	'masseditregex-hint-intro' => 'Vaquí qualques indicacions e exemples per realizar los prètzfaches usuals :',
+	'masseditregex-hint-headmatch' => 'Correspondéncia',
+	'masseditregex-hint-headreplace' => 'Remplaçar',
+	'masseditregex-hint-headeffect' => 'Efièch',
+	'masseditregex-hint-toappend' => "Inserís de tèxte a la fin de l'article - practic per apondre las paginas a de categorias",
+	'masseditregex-hint-remove' => 'Levar de tèxte de totas las paginas de la lista',
+	'masseditregex-hint-removecat' => "Suprimís totas las categorias de l'article (notatz que los croquets dins lo wikicòde son escapats.) Las valors de remplaçament devon pas èsser escapadas.",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

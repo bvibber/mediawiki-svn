@@ -270,8 +270,10 @@ Please contact the server operator or administrator.",
  * @author Meno25
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'wikidata-desc' => '{{desc}}',
 	'languages' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
 	'langman-desc' => '{{desc}}',
 	'langman_title' => 'Title in Language manager special page ([http://www.omegawiki.org/Special:Languages http://www.omegawiki.org/Special:Languages])',

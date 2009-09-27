@@ -482,6 +482,9 @@ Per favor remove "$1" del <nowiki>{{#index:}}</nowiki> in le {{PLURAL:$3|pagina|
 	'index-submit' => 'Submitter',
 	'index-disambig-start' => "'''$1''' pote referer a plure paginas:",
 	'index-emptylist' => 'Il non ha paginas associate con "$1"',
+	'index-expand-detail' => 'Monstrar paginas indexate sub iste titulo',
+	'index-hide-detail' => 'Celar le lista de paginas',
+	'index-no-results' => 'Le recerca retornava nulle resultato',
 );
 
 /** Indonesian (Bahasa Indonesia)

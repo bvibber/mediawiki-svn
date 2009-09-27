@@ -37,6 +37,13 @@ $messages['en'] = array(
 	'tog-riched_toggle_remember_state' => 'Remember last toggle state',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'fckeditor-desc' => '{{desc}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

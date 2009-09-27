@@ -216,6 +216,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'honeypot-desc' => 'Integratioun mam [http://projecthoneypot.org/ Projet Honey Pot] fir MediaWiki Siten',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Zuel vun den aktuellen Evenementer déi duerch d'IP-Adress ausgeléist goufen, esou wéi et aus dem Projet ''Honey Pot'' ervirgeet",
 );
 

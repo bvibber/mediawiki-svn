@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'tspoll-id-error' => 'No ID is given!',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'tspoll-desc' => '{{desc}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

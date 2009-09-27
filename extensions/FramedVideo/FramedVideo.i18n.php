@@ -35,6 +35,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'framedvideo_position' => 'Consider using "left" for right to left languages. Should left untranslated for other languages.',
@@ -48,6 +49,7 @@ $messages['qqq'] = array(
 	'framedvideo_helppage' => '{{doc-important|Leave "Help:" untranslated.}}
 Link to the help page for the extension Framed Video.',
 	'framedvideo_error_height_and_width_required' => '{{doc-important|Do not translate "height", "width2", or "width".}}',
+	'framedvideo-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

@@ -577,7 +577,7 @@ $messages['et'] = array(
 	'povwatch_unsubscribed' => 'Oled nüüd PovWatchi tellimuse tühistanud.',
 	'povwatch_invalid_title' => 'Antud pealkiri oli vigane',
 	'povwatch_pushed' => '[[$1]] on edukalt $2 kasutaja {{PLURAL:$2|jälgimisloendisse|jälgimisloenditesse}} lisatud.',
-	'povwatch_intro' => 'PovWatch on laiendus, mis võimaldab tülikad leheküljed liitunud ülemate jälgimisloenditesse lisada.
+	'povwatch_intro' => 'PovWatch on laiendus, mis võimaldab tülikad leheküljed liitunud administraatorite jälgimisloenditesse lisada.
 
 Viimati jälgimisloenditesse lisatu logi on leheküljel [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|Liitunute nimekiri]] on saadaval.',

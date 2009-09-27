@@ -122,6 +122,13 @@ $messages['ia'] = array(
 	'userdailycontribs-desc' => 'Contributiones quotidian de usatores pro le extension de traciamento de clics',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'userdailycontribs-desc' => 'Kontribusi harian pengguna untuk pengaya pelacak klik',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -183,6 +190,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'userdailycontribs-desc' => 'Ежедневный вклад участников для расширения отслеживания нажатий',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'userdailycontribs-desc' => 'Баттааһыны кэтиири кэҥэтэр кыттааччылар суруйууларын күнүнэн наардааһын',
 );
 
 /** Slovak (Slovenčina)

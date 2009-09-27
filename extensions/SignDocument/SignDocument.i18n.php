@@ -75,6 +75,18 @@ $messages['bg'] = array(
 	'signaturelogentry' => 'подписа документа $1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'signaturelogpage' => 'Marilh ar sinadurioù',
+	'signature-desc' => 'Talvezout a ra [[Special:SignDocument|da sinañ]] teulioù',
+	'signaturelogpagetext' => "Setu marilh [[Special:SignDocument|an holl sinadurioù ouzhpennet d'an teulioù]].",
+	'signaturelogentry' => 'en deus sinet an teul $1',
+	'right-sigadmin' => 'Merañ ar sinañ teulioù',
+	'right-createsigndocument' => "Krouiñ teulioù a c'haller sinañ",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

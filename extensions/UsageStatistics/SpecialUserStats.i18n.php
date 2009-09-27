@@ -1590,6 +1590,7 @@ $messages['pdc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Equadus
  * @author Leinad
  * @author McMonster
  * @author Sp5uhe
@@ -1602,6 +1603,7 @@ $messages['pl'] = array(
 	'usagestatisticsfor' => '<h2>Statystyki użytkownika [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statystyki wykorzystania dla wszystkich użytkowników</h2>',
 	'usagestatisticsinterval' => 'odstęp',
+	'usagestatisticsnamespace' => 'Przestrzeń nazw:',
 	'usagestatisticstype' => 'Typ',
 	'usagestatisticsstart' => 'Data początkowa',
 	'usagestatisticsend' => 'Data końcowa',

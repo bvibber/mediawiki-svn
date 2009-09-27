@@ -43,8 +43,10 @@ Configure $wgPrefStatsTrackPrefs to track preferences.',
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'prefstats-desc' => '{{desc}}',
 	'prefstats-factors' => '$1 is a list of values with a link each, and separated by {{msg-mw|pipe-separator}}.',
 	'prefstats-factor-hour' => 'One hour. Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
 	'prefstats-factor-day' => 'One day. Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',

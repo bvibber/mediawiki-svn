@@ -368,6 +368,7 @@ Namelose Medmaacher krijje ene automatisch erfonge Name vörjeschlaare, ävver a
  */
 $messages['lb'] = array(
 	'webchat' => 'Web-Chat',
+	'webchat-desc' => 'Setzt eng [[Special:WebChat|Spezialsäit]] derbäi déi gebraucht gëtt fir live mat anere Wikibenotzer ze chatten',
 	'right-webchat' => 'Däerf de [[Special:WebChat|Web Chat]] benotzen',
 );
 

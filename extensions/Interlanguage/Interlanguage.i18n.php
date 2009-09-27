@@ -126,6 +126,13 @@ $messages['hu'] = array(
 	'interlanguage-desc' => 'Nyelvközi hivatkozások átvétele más wikiből',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'interlanguage-desc' => 'Collige ligamines interlingual ex un altere wiki',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

@@ -283,6 +283,7 @@ Ober a ra kement-mañ dre c'hervel ar bazenn a zegouezh digant parser MediaWiki 
 	'expand_templates_xml_output' => 'Ezvont XML',
 	'expand_templates_ok' => 'Mat eo',
 	'expand_templates_remove_comments' => 'Lemel an notennoù kuit',
+	'expand_templates_remove_nowiki' => "Diverkañ a ra ar balizennoù <nowiki> en disoc'h",
 	'expand_templates_generate_xml' => 'Gwelet ar gwezennadur XML',
 	'expand_templates_preview' => 'Rakwelet',
 );
@@ -873,6 +874,7 @@ $messages['id'] = array(
 	'expand_templates_xml_output' => 'Hasil XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Buang komentar',
+	'expand_templates_remove_nowiki' => 'Tidak menampilkan tag <nowiki> pada hasilnya',
 	'expand_templates_generate_xml' => 'Tampilkan pohon parser XML',
 	'expand_templates_preview' => 'Pratayang',
 );
@@ -1362,6 +1364,7 @@ $messages['oc'] = array(
 	'expand_templates_xml_output' => 'Sortida XML',
 	'expand_templates_ok' => "D'acòrdi",
 	'expand_templates_remove_comments' => 'Suprimir los comentaris.',
+	'expand_templates_remove_nowiki' => 'Suprimís los marcadors <nowiki> dins lo resultat',
 	'expand_templates_generate_xml' => "Veire l'arborescéncia XML",
 	'expand_templates_preview' => 'Previsualizacion',
 );
@@ -1431,6 +1434,7 @@ Sòn a lo fa ën ciamand l'anterprete dal programa MediaWiki.",
 	'expand_templates_xml_output' => 'Output an XML',
 	'expand_templates_ok' => 'Bin parèj',
 	'expand_templates_remove_comments' => 'Gava via ij coment',
+	'expand_templates_remove_nowiki' => "Gava ij tag <nowiki> ant l'arzultà",
 	'expand_templates_generate_xml' => "Mosta l'erbo ëd parse XML",
 	'expand_templates_preview' => 'Preuva',
 );

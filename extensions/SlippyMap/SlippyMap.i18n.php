@@ -641,6 +641,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Mage Whopper
  */
 $messages['ja'] = array(
 	'slippymap_desc' => '静的または動的な地図を埋め込めるようにする <tt>&lt;slippymap&gt;</tt> タグを追加する。[http://openstreetmap.org OpenStreetMap] や NASA World Wind を含む、複数の地図サービスに対応する',
@@ -648,15 +649,15 @@ $messages['ja'] = array(
 	'slippymap_errors' => '$1 のエラー:',
 	'slippymap_error_tag_content_given' => '<tt>&lt;$1&gt;</tt> タグは引数として属性を受け付けるのみで (<$1 [...]/>)、テキストは受け付けません (&lt;$1&gt; ... &lt;/$1&gt;)',
 	'slippymap_error_missing_arguments' => '&lt;$1&gt; タグに属性が1つも与えられていません。このタグの[http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax 使い方]を参照してください。',
-	'slippymap_error_missing_attribute_lat' => '<tt>lat</tt> 属性(緯度)がありません。',
-	'slippymap_error_missing_attribute_lon' => '<tt>lon</tt> 属性(経度)がありません。',
-	'slippymap_error_missing_attribute_zoom' => '<tt>zoom</tt> 属性(拡大度)がありません。',
-	'slippymap_error_invalid_attribute_lat_value_nan' => '値「<tt>$1</tt>」は <tt>lat</tt> 属性(緯度)として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_lon_value_nan' => '値「<tt>$1</tt>」は <tt>lon</tt> 属性(経度)として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_zoom_value_nan' => '値「<tt>$1</tt>」は <tt>zoom</tt> 属性として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_width_value_nan' => '値「<tt>$1</tt>」は <tt>width</tt> 属性として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_height_value_nan' => '値「<tt>$1</tt>」は <tt>height</tt> 属性として妥当な値ではありません。妥当な数値を指定してください。',
-	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => '値「<tt>$1</tt>」は <tt>mode</tt> 属性として有効な値ではありません。有効なモードは $2 です。',
+	'slippymap_error_missing_attribute_lat' => '<tt>lat</tt> 緯度の属性がありません。',
+	'slippymap_error_missing_attribute_lon' => '<tt>lon</tt> 経度の属性がありません。',
+	'slippymap_error_missing_attribute_zoom' => '<tt>zoom</tt> 拡大度の属性がありません。',
+	'slippymap_error_invalid_attribute_lat_value_nan' => '値「<tt>$1</tt>」は緯度 (<tt>lat</tt>) に妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_lon_value_nan' => '値「<tt>$1</tt>」は経度 (<tt>lon</tt>) に妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => '値「<tt>$1</tt>」はズームレベル (<tt>zoom</tt>) として妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_width_value_nan' => '値「<tt>$1</tt>」は幅 (<tt>width</tt>) に妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_height_value_nan' => '値「<tt>$1</tt>」は高さ (<tt>height</tt>) に妥当な値ではありません。妥当な数値を指定してください。',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => '値「<tt>$1</tt>」はモード (<tt>mode</tt>) には無効な値です。有効なモードは $2 です。',
 	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => '値「<tt>$1</tt>」は <tt>layer</tt> 属性として有効な値ではありません。有効なレイヤーは $2 です。',
 	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => '値「<tt>$1</tt>」は <tt>marker</tt> 属性として有効な値ではありません。有効なマーカーは $2 です。',
 	'slippymap_error_unknown_attribute' => '属性 <tt>$1</tt> は不明です。',
@@ -1059,6 +1060,13 @@ $messages['vi'] = array(
 	'slippymap_error_missing_attribute_lat' => 'Thiếu thuộc tính <tt>lat</tt> (tức là vĩ độ).',
 	'slippymap_error_missing_attribute_lon' => 'Thiếu thuộc tính <tt>lon</tt> (tức là kinh độ).',
 	'slippymap_error_missing_attribute_zoom' => 'Thiếu thuộc tính <tt>zoom</tt> (tức là độ phóng/thu).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>lat</tt> (vĩ độ). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>lon</tt> (kinh độ). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>zoom</tt> (độ thu/phóng). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>width</tt> (bề ngang). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>height</tt> (độ cao). Giá trị phải là số hợp lệ.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>mode</tt> (chế độ). Các giá trị hợp lệ là $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'Giá trị <tt>$1</tt> không hợp lệ trong thuộc tính <tt>layer</tt> (lớp). Các lớp hợp lệ là $2.',
 	'slippymap_error_unknown_attribute' => 'Không hiểu thuộc tính <tt>$1</tt>.',
 	'slippymap_code' => 'Mã wiki để nhúng phần bản đồ này:',
 	'slippymap_button_code' => 'Xem mã wiki',
