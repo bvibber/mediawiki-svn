@@ -1421,6 +1421,7 @@ $messages['he'] = array(
 	'contribstats-donations' => 'תרומות',
 	'contribstats-conversion' => 'יחס ההמרה (%)',
 	'contribstats-template' => 'תבנית',
+	'contribstats-nodata' => 'לא ניתן מידע',
 	'fundraiserstatistics' => 'סטטיסטיקות ההתרמה',
 	'fundraiserstats-date' => 'תאריך',
 	'fundraiserstats-day' => 'יום $1 מתוך $2',
