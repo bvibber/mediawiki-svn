@@ -88,6 +88,15 @@ class FlaggedRevs {
 		global $wgUser, $wgSimpleFlaggedRevsUI;
 		return $wgUser->getOption( 'flaggedrevssimpleui', intval($wgSimpleFlaggedRevsUI) );
 	}
+
+	/**
+	 * Should pages have stable/draft tabs when not synced?
+	 * @returns bool
+	 */
+	public static function showVersionTabs() {
+		global $wgFlaggedRevTabs;
+		return (bool)$wgFlaggedRevTabs;
+	}
 	
 	/**
 	 * Should this user see stable versions by default?
@@ -96,6 +105,15 @@ class FlaggedRevs {
 	public static function showStableByDefault() {
 		global $wgFlaggedRevsOverride;
 		return (bool)$wgFlaggedRevsOverride;
+	}
+
+	/**
+	 * Does the review form only show for pages were the stable version is the default?
+	 * @returns bool
+	 */
+	public static function forDefaultVersionOnly() {
+		global $wgFlaggedRevsReviewForDefault;
+		return (bool)$wgFlaggedRevsReviewForDefault;
 	}
 	
 	/**
@@ -408,10 +426,13 @@ class FlaggedRevs {
 	
 	/**
 	* Get standard parser options
+	* @param User $user (optional)
+	* @returns ParserOptions
 	*/
-	public static function makeParserOptions() {
+	public static function makeParserOptions( $user = null ) {
 		global $wgUser;
-		$options = ParserOptions::newFromUser($wgUser);
+		$user = $user ? $user : $wgUser; // assume current
+		$options = ParserOptions::newFromUser( $user );
 		# Show inclusion/loop reports
 		$options->enableLimitReport();
 		# Fix bad HTML
@@ -648,7 +669,7 @@ class FlaggedRevs {
 				$text = $rev ? $rev->getText() : false;
 				$id = $rev ? $rev->getId() : null;
 				$title = $article->getTitle();
-				$options = self::makeParserOptions();
+				$options = self::makeParserOptions($anon);
 				$currentOutput = $wgParser->parse( $text, $title, $options, /*$lineStart*/true, /*$clearState*/true, $id );
 				# Might as well save the cache while we're at it
 				if( $wgEnableParserCache )
@@ -1111,9 +1132,11 @@ class FlaggedRevs {
    	/**
 	* Get params for a user
 	* @param int $uid
+	* @param string $DBName, optional wiki name
+	* @returns Array $params
 	*/
-	public static function getUserParams( $uid ) {
-		$dbw = wfGetDB( DB_MASTER );
+	public static function getUserParams( $uid, $DBName = false ) {
+		$dbw = wfGetDB( DB_MASTER, array(), $DBName );
 		$row = $dbw->selectRow( 'flaggedrevs_promote',
 			'frp_user_params',
 			array( 'frp_user_id' => $uid ),
@@ -1142,13 +1165,15 @@ class FlaggedRevs {
 	* Save params for a user
 	* @param int $uid
 	* @param Array $params
+	* @param string $DBName, optional wiki name
+	* @returns bool success
 	*/
-	public static function saveUserParams( $uid, $params ) {
+	public static function saveUserParams( $uid, $params, $DBName = false ) {
 		$flatParams = '';
 		foreach( $params as $key => $value ) {
 			$flatParams .= "{$key}={$value}\n";
 		}
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER, array(), $DBName );
 		$row = $dbw->replace( 'flaggedrevs_promote', 
 			array( 'frp_user_id' ),
 			array( 'frp_user_id' => $uid, 'frp_user_params' => trim($flatParams) ),
