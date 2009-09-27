@@ -34,7 +34,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	
 	// Html out for the days total
 	public function showDayTotals() {
-		global $wgOut;
+		global $wgOut,$wgLang;
 		global $wgAllowedTemplates;
 
 		$totals = $this->getDayTotals();
@@ -51,27 +51,34 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				)
 		);
 
-		// Table headers
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-template' ) ) ;
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-clicks' ) );
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
+		if ( isset ( $totals ) ) {
+			// Table headers
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-template' ) ) ;
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-clicks' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-amount' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
 
-		foreach( $totals as $template ) {
-			if ( ! in_array($template[0], $wgAllowedTemplates ) )
-				continue;
-			// Pull together templates, clicks, donations, conversion rate
-			$conversion_rate = ( $template[2] == 0 ) ? 0 : ( $template[1] / $template[2] ); 
-			$htmlOut .= Xml::tags( 'tr', null,
-					Xml::element( 'td', array( 'align' => 'left'), $template[0] ) .
-					Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
-					Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
-					Xml::element( 'td', array( 'align' => 'right'), $conversion_rate ) 
-			);
+			foreach( $totals as $template ) {
+				if ( ! in_array($template[0], $wgAllowedTemplates ) )
+					continue;
+				// Pull together templates, clicks, donations, conversion rate
+				$conversion_rate = ( $template[2] == 0 ) ? 0 : ( $template[1] / $template[2] ); 
+				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
+				$htmlOut .= Xml::tags( 'tr', null,
+						Xml::element( 'td', array( 'align' => 'left'), $template[0] ) .
+						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
+						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
+						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
+						Xml::element( 'td', array( 'align' => 'right'), $wgLang->formatNum( number_format( $conversion_rate, 2 ) ) ) 
+				);
 
+			}
+
+			$htmlOut .= Xml::closeElement( 'table' );
+		} else {
+			$htmlOut .= wfMsg( 'contribstats-nodata' );
 		}
-
-		$htmlOut .= Xml::closeElement( 'table' );
 
 		// Output HTML
 		$wgOut->addHTML( $htmlOut );
@@ -98,46 +105,52 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 	// Html out for a single week
 	public function showWeekTotal( $week ) {
-		global $wgOut;
-		
+		global $wgOut,$wgLang;
 		global $wgAllowedTemplates;
 
 		$totals = $this->getWeekTotals( $week );
 		
 		// Weeks
-		$htmlOut = '';
+		if ( isset ( $totals ) ) {
+			$htmlOut = '';
 
-		$htmlOut .= Xml::element( 'h2', null, date( 'o-m-j', wfTimeStamp( TS_UNIX, $week ) ) ); 		
-		$htmlOut .= Xml::openElement( 'table',
-				array(
-					'border' => 0,
-					'cellpadding' => 5, 
-					'width' => '100%'
-				)
-		);
-
-		// Table headers
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-template' ) ) ;
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-clicks' ) );
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
-
-		foreach( $totals as $template ) {
-			if ( ! in_array($template[0], $wgAllowedTemplates ) )
-				continue;
-			// Pull together templates, clicks, donations, conversion rate
-			$conversion_rate = ( $template[2] == 0 ) ? 0 : $template[1] / $template[2]; 
-			
-			$htmlOut .= Xml::tags( 'tr', null,
-					Xml::element( 'td', array( 'align' => 'left'), $template[0] ) .
-					Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
-					Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
-					Xml::element( 'td', array( 'align' => 'right'), $conversion_rate ) 
+			$htmlOut .= Xml::element( 'h2', null, date( 'o-m-d', wfTimeStamp( TS_UNIX, $week ) ) ); 		
+			$htmlOut .= Xml::openElement( 'table',
+					array(
+						'border' => 0,
+						'cellpadding' => 5, 
+						'width' => '100%'
+					)
 			);
+
+			// Table headers
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-template' ) ) ;
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-clicks' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-donations' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-amount' ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-conversion' ) );
+
+			foreach( $totals as $template ) {
+				if ( ! in_array($template[0], $wgAllowedTemplates ) )
+					continue;
+				// Pull together templates, clicks, donations, conversion rate
+				$conversion_rate = ( $template[2] == 0 ) ? 0 : $template[1] / $template[2]; 
+				$amount = ( $template[3] == 0 ) ? 0 : $template[3];
+				
+				$htmlOut .= Xml::tags( 'tr', null,
+						Xml::element( 'td', array( 'align' => 'left'), $template[0] ) .
+						Xml::element( 'td', array( 'align' => 'right'), $template[1] ) .
+						Xml::element( 'td', array( 'align' => 'right'), $template[2] ) .
+						Xml::element( 'td', array( 'align' => 'right'), $amount ) .
+						Xml::element( 'td', array( 'align' => 'right'), $wgLang->formatNum( number_format( $conversion_rate, 2 ) ) ) 
+				);
+			}
+
+			$htmlOut .= Xml::closeElement( 'table' );
+		} else {
+			$htmlOut .= wfMsg( 'contribstats-nodata' );
 		}
-
-		$htmlOut .= Xml::closeElement( 'table' );
-
+			
 		// Output HTML
 		$wgOut->addHTML( $htmlOut );
 		
@@ -149,20 +162,30 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	public function getDayTotals() {
 		$dbr = efContributionTrackingConnection();
 		
-		$conds[] = "ts >=" . $dbr->addQuotes( date( 'Ymd' ) );
+		$conds[] = "ts >=" . $dbr->addQuotes( date( 'Ymd000000' ) );
 		$conds[] = "ts <=" . $dbr->addQuotes( date( 'YmdHis' ) ); 
 
-		$res = $dbr->select( 'contribution_tracking',
+		$res = $dbr->select( 
+			array( 'contribution_tracking',
+			       'civicrm.public_reporting',
+			),
 			array(
 				'utm_source',
-				'sum(isnull(contribution_id)) as miss',
-				'sum(not isnull(contribution_id)) as hit',
+				'sum(isnull(contribution_tracking.contribution_id)) as miss',
+				'sum(not isnull(contribution_tracking.contribution_id)) as hit',
+				'sum(converted_amount) as converted_amount',
 			),
 			$conds,
 			__METHOD__,
 			array(
 				'ORDER BY' => 'hit DESC',
 				'GROUP BY' => 'utm_source'
+			),
+			array( 'civicrm.public_reporting' =>
+				array(
+					'LEFT JOIN',
+				 	'contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id',
+				) 
 			)
 		);
 		
@@ -171,8 +194,10 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 					$row[0],
 					$row[1],
 					$row[2],
+					$row[3],
 			);
 		}
+
 
 		return $result;
 	}
@@ -187,18 +212,29 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		$conds[] = "ts >=" . $dbr->addQuotes( $range[0] );
 		$conds[] = "ts <=" . $dbr->addQuotes( $range[1] );
 		  
-		$res = $dbr->select( 'contribution_tracking',
+		$res = $dbr->select( 
+			array( 'contribution_tracking',
+			       'civicrm.public_reporting',
+			),
 			array(
 				'utm_source',
-				'sum(isnull(contribution_id)) as miss',
-				'sum(not isnull(contribution_id)) as hit',
+				'sum(isnull(contribution_tracking.contribution_id)) as miss',
+				'sum(not isnull(contribution_tracking.contribution_id)) as hit',
+				'sum(converted_amount) as converted_amount',
 			),
 			$conds,
 			__METHOD__,
 			array(
 				'ORDER BY' => 'hit desc',
 				'GROUP BY' => 'utm_source'
+			),
+			array( 'civicrm.public_reporting' =>
+				array(
+					'LEFT JOIN',
+				 	'contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id',
+				) 
 			)
+
 		);
 		
 		while ( $row = $dbr->fetchRow( $res ) ) {
@@ -206,6 +242,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 					$row[0],
 					$row[1],
 					$row[2],
+					$row[3],
 			);
 		}
 
