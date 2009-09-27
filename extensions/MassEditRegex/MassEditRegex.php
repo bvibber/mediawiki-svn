@@ -17,7 +17,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Mass Edit via Regular Expressions',
-	'version' => 'r2',
+	'version' => 'r3',
 	'author' => 'Adam Nielsen',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MassEditRegex',
 	'description' => 'Use regular expressions to [[Special:MassEditRegex|edit many pages in one operation]]',

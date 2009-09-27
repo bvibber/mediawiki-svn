@@ -17,9 +17,15 @@ if ( ! defined( 'MEDIAWIKI' ) )
 // Maximum number of pages/diffs to display when previewing the changes
 define('MER_MAX_PREVIEW_DIFFS', 10);
 
+// Maximum number of pages to edit *for each name in page list*.  No more than
+// 500 (5000 for bots) is allowed according to MW API docs.
+define('MER_MAX_EXECUTE_PAGES', 1000);
+
 /** Main class that define a new special page*/
 class MassEditRegex extends SpecialPage {
 	private $aPageList;
+	private $strPageListType;
+	private $iNamespace;
 	private $aMatch;
 	private $aReplace;
 	private $strReplace; // keep to avoid having to re-escape again
@@ -45,17 +51,18 @@ class MassEditRegex extends SpecialPage {
 		$this->outputHeader();
 
 		$strPageList = $wgRequest->getText( 'wpPageList', 'Sandbox' );
-		$strMatch = $wgRequest->getText( 'wpMatch', '/hello (.*)\n/' );
-		$strReplace = $wgRequest->getText( 'wpReplace', 'goodbye \1' );
-		$strSummary = $wgRequest->getText( 'wpSummary', '' );
-
 		$this->aPageList = explode("\n", trim($strPageList));
-		//print_r($this->aPages);
-		//if (count($this->aPages) == 0) $this->aPages[0] = $this->aPages;
+		$this->strPageListType = $wgRequest->getText( 'wpPageListType', 'pagenames' );
+		
+		$this->iNamespace = $wgRequest->getInt( 'namespace', NS_MAIN );
+		
+		$strMatch = $wgRequest->getText( 'wpMatch', '/hello (.*)\n/' );
 		$this->aMatch = explode("\n", trim($strMatch));
-		$this->strReplace = $strReplace;
-		$this->aReplace = explode("\n", $strReplace);
-		$this->strSummary = $strSummary;
+
+		$this->strReplace = $wgRequest->getText( 'wpReplace', 'goodbye \1' );
+		$this->aReplace = explode("\n", $this->strReplace);
+
+		$this->strSummary = $wgRequest->getText( 'wpSummary', '' );
 
 		$this->sk = $wgUser->getSkin();
 
@@ -99,6 +106,7 @@ class MassEditRegex extends SpecialPage {
 		$txtMatch = wfMsg( 'masseditregex-matchtxt' );
 		$txtReplace = wfMsg( 'masseditregex-replacetxt' );
 		$txtPreviewBtn = wfMsg( 'showpreview' );
+		$keyPreviewBtn = wfMsg( 'accesskey-preview' );
 		$txtExecuteBtn = wfMsg( 'masseditregex-executebtn' );
 		
 		$txtEditSummary = wfMsg( 'summary' );
@@ -113,6 +121,29 @@ class MassEditRegex extends SpecialPage {
 		$htmlSummary = htmlspecialchars( $this->strSummary );
 		$htmlSummaryPreview = $this->sk->commentBlock( $this->strSummary, $titleObj );
 
+		$txtListOf = wfMsg( 'masseditregex-listtype-intro' );
+		$txtType = array();
+		$selected = array();
+		foreach (array('pagenames', 'pagename-prefixes', 'categories', 'backlinks') as $t) {
+			$txtType[$t] = wfMsg( 'masseditregex-listtype-' . $t );
+			$selected[$t] = '';
+		}
+
+		$selected[$this->strPageListType] = 'checked="true"';
+		
+		$txtNamespace = wfMsg( 'masseditregex-namespace-intro' );
+		$htmlNamespaceList = Xml::namespaceSelector( $this->iNamespace, null );
+		
+		// Generate HTML for the radio buttons (one for each list type)
+		$htmlChoices = '';
+		foreach ($txtType as $strChoice => $strText) {
+			$htmlChoices .= <<<ENDCHOICE
+<li><input type="radio" name="wpPageListType" id="masseditregex-radio-{$strChoice}"
+value="{$strChoice}" {$selected[$strChoice]} />
+<label for="masseditregex-radio-{$strChoice}">{$strText}</label></li>
+ENDCHOICE;
+		}
+
 		$mainForm = <<<ENDFORM
 <form id="masseditregex" method="post" action="{$action}">
 <p>{$txtPageList}</p>
@@ -121,7 +152,9 @@ class MassEditRegex extends SpecialPage {
      off, or trailing newlines get added!  Tested FF3 -->
 <textarea name="wpPageList" cols="80" rows="4" tabindex="1" style="width:100%;">
 {$htmlPageList}</textarea>
-
+{$txtNamespace} {$htmlNamespaceList}
+<br/>
+{$txtListOf} <ul style="list-style: none;">{$htmlChoices}</ul>
 <table border="0" cellspacing="0" cellpadding="0" style="width: 100%;">
 <tr><td>
 <p>{$txtMatch}</p>
@@ -146,7 +179,7 @@ $htmlSummaryPreview
 </div>
 
 <p>
-	<input type="submit" name="wpPreviewBtn" value="{$txtPreviewBtn}" />
+	<input type="submit" name="wpPreviewBtn" value="{$txtPreviewBtn}" accesskey="{$keyPreviewBtn}" />
 	<input type="submit" name="wpExecuteBtn" value="{$txtExecuteBtn}" />
 </p>
 </form>
@@ -190,17 +223,11 @@ ENDHINTS;
 		$this->perform( false );
 		return;
 	}
-	
-	function getPages() {
-		if ( !count( $this->aPageList ) ) return NULL;
-		$req = new FauxRequest( array(
-			'action' => 'query',
-			'titles' => join( '|', $this->aPageList ),
-			'prop' => 'info|revisions',
-			'intoken' => 'edit',
-			'rvprop' => 'content',
-			//'rvlimit' => 1  // most recent revision only
-		), false );
+
+	// Run a single request and return the page data
+	function runRequest($aRequestVars)
+	{
+		$req = new FauxRequest( $aRequestVars, false );
 		$processor = new ApiMain( $req, true );
 		$processor->execute();
 		$aPages = $processor->getResultData();
@@ -208,12 +235,77 @@ ENDHINTS;
 		return $aPages['query']['pages'];
 	}
 
+	// Run a bunch of requests (changing the $strValue parameter to each value
+	// of $aValues in turn) and return the combined page data.
+	function runMultiRequest($aRequestVars, $strVariable, $aValues, &$aErrors)
+	{
+		$aPageData = array();
+		foreach ($aValues as $strValue) {
+			$aRequestVars[$strVariable] = $strValue;
+			$aMoreData = $this->runRequest($aRequestVars);
+			if ($aMoreData)
+				$aPageData = array_merge($aPageData, $aMoreData);
+			else
+				$aErrors[] = htmlspecialchars( wfMsg( 'masseditregex-exprnomatch', $strValue ) );
+		}
+		return $aPageData;
+	}
+
+	function getPages(&$aErrors, $iMaxPerCriterion) {
+		global $wgContLang; // for mapping namespace numbers to localised name
+		if ( !count( $this->aPageList ) ) return NULL;
+
+		// Default vars for all page list types
+		$aRequestVars = array(
+			'action' => 'query',
+			'prop' => 'info|revisions',
+			'intoken' => 'edit',
+			'rvprop' => 'content',
+			//'rvlimit' => 1  // most recent revision only
+		);
+		switch ($this->strPageListType) {
+			case 'pagenames': // Can do this in one hit
+				$strNamespace = $wgContLang->getNsText($this->iNamespace) . ':';
+				$aRequestVars['titles'] = $strNamespace . join( '|' . $strNamespace, $this->aPageList );
+				return $this->runRequest($aRequestVars);
+			case 'pagename-prefixes':
+				$aRequestVars['generator'] = 'allpages';
+				$aRequestVars['gapnamespace'] = $this->iNamespace;
+				$aRequestVars['gaplimit'] = $iMaxPerCriterion;
+				return $this->runMultiRequest($aRequestVars, 'gapprefix', $this->aPageList, $aErrors);
+				//$aRequestVars['gapprefix'] = $this->aPageList[0];
+			case 'categories':
+				$aRequestVars['generator'] = 'categorymembers';
+				$aRequestVars['gcmlimit'] = $iMaxPerCriterion;
+				// This generator must have "Category:" on the start of each category
+				// name, so append it to all the pages we've been given if it's missing
+				$strNamespace = $wgContLang->getNsText( NS_CATEGORY ) . ':';
+				$iLen = strlen($strNamespace);
+				foreach ($this->aPageList as &$p) {
+					if (substr($p, 0, $iLen) != $strNamespace)
+						$p = $strNamespace . $p;
+				}
+				$retVar = $this->runMultiRequest($aRequestVars, 'gcmtitle', $this->aPageList, $aErrors);
+				// Remove all the 'Category:' prefixes again for consistency
+				foreach ($this->aPageList as &$p) $p = substr($p, $iLen);
+				return $retVar;
+			case 'backlinks':
+				$aRequestVars['generator'] = 'backlinks';
+				$aRequestVars['gblnamespace'] = $this->iNamespace;
+				$aRequestVars['gbllimit'] = $iMaxPerCriterion;
+				return $this->runMultiRequest($aRequestVars, 'gbltitle', $this->aPageList, $aErrors);
+		}
+		return NULL;
+	}
+
 	function perform( $bPerformEdits = true ) {
 		global $wgOut, $wgUser, $wgTitle;
 
-		$aPages = $this->getPages();
+		$iMaxPerCriterion = $bPerformEdits ? MER_MAX_EXECUTE_PAGES : MER_MAX_PREVIEW_DIFFS;
+		$aErrors = array();
+		$aPages = $this->getPages($aErrors, $iMaxPerCriterion);
 		if ( $aPages === NULL ) {
-			$this->showForm( wfMsg( 'err-nopages' ) );
+			$this->showForm( wfMsg( 'masseditregex-err-nopages' ) );
 			return;
 		}
 		
@@ -229,6 +321,14 @@ ENDHINTS;
 			$o_wgOut = clone $wgOut; // need to do a deep copy here
 			$wgOut->disable(); // not strictly necessary, but might speed things up
 			$o_wgTitle = $wgTitle;
+		}
+		
+		if (count($aErrors)) {
+			if ( $bPerformEdits ) {
+				$o_wgOut->addHTML( '<li>' . join( '</li><li> ', $aErrors) . '</li>' );
+			} else {
+				$wgOut->addHTML( '<ul><li>' . join( '</li><li> ', $aErrors) . '</li></ul>' );
+			}
 		}
 
 		$iArticleCount = 0;
@@ -278,7 +378,7 @@ ENDHINTS;
 				$wgOut->addHTML($dtxt);
 
 				if ( $iArticleCount >= MER_MAX_PREVIEW_DIFFS ) {
-					$wgOut->addWikiMsg( 'max-preview-diffs', MER_MAX_PREVIEW_DIFFS );
+					$wgOut->addWikiMsg( 'masseditregex-max-preview-diffs', MER_MAX_PREVIEW_DIFFS );
 					break;
 				}
 			}

@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'masseditregextext' => 'Enter one or more regular expressions (one per line) for matching, and one or more expressions to replace each match with.
 The first match-expression, if successful, will be replaced with the first replace-expression, and so on.
 See [http://php.net/manual/en/function.preg-replace.php the PHP function preg_replace()] for details.',
-	'masseditregex-pagelisttxt' => 'Pages to edit:',
+	'masseditregex-pagelisttxt' => 'Pages to edit: (do not use a Namespace: prefix)',
 	'masseditregex-matchtxt' => 'Search for:',
 	'masseditregex-replacetxt' => 'Replace with:',
 	'masseditregex-executebtn' => 'Execute',
@@ -37,7 +37,15 @@ See [http://php.net/manual/en/function.preg-replace.php the PHP function preg_re
 	'masseditregex-hint-toappend' => 'Append some text to the end of the page - great for adding pages to categories',
 	'masseditregex-hint-remove' => 'Remove some text from all the pages in the list',
 	'masseditregex-hint-removecat' => 'Remove all categories from a page (note the escaping of the square brackets in the wikicode.)
-The replacement values should not be escaped.'
+The replacement values should not be escaped.',
+
+	'masseditregex-listtype-intro' => 'This is a list of:',
+	'masseditregex-listtype-pagenames' => 'Article names (edit these pages)',
+	'masseditregex-listtype-pagename-prefixes' => 'Article name prefixes (edit pages having names beginning with this text)',
+	'masseditregex-listtype-categories' => 'Category names (edit each page within these categories; namespace selection is ignored)',
+	'masseditregex-listtype-backlinks' => 'Backlinks (edit pages that link to these ones)',
+	'masseditregex-namespace-intro' => 'All these pages are in this namespace:',
+	'masseditregex-exprnomatch' => 'The expression "$1" matched no pages.',
 );
 
 /** Message documentation (Message documentation)
