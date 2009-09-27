@@ -1001,6 +1001,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-delete' => 'Scangille',
 	'deletebatch-select-yourself' => 'tu',
 );
 

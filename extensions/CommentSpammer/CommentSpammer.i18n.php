@@ -190,6 +190,8 @@ $messages['es'] = array(
 [[Special:UserLogin|Inicie sesión o cree una cuenta]] para evitar esto.',
 	'commentspammer-desc' => 'Rechaza ediciones de comentadores spammer sospechosos en una lista negra DNS',
 	'commentspammer-log-msg' => 'edición de [[Special:Contributions/$1|$1]] en [[:$2]].',
+	'commentspammer-log-msg-info' => 'Último spam enviado hace $1 {{PLURAL:$1|día|días}}, nivel de riesgo es $2, y código de ofensa es $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Ver detalles], o [[Special:Blockip/$4|bloquear]].',
 	'cspammerlogpagetext' => 'Registro de ediciones que han sido permitidas o denegadas basados en si la fuente fue un conocido comentador spammer.',
 	'cspammer-log-page' => 'Registro de comentadores spammer',
 );

@@ -64,6 +64,13 @@ $messages['el'] = array(
 	'conditionalshowsection-desc' => 'Προσθέτει την ετικέτα <cshow> για να προβάλλει/αποκρύψει υπό όρους τμήμα του βικικειμένου',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'conditionalshowsection-desc' => 'Agregando la etiqueta <cshow> para mostrar/ocultar condicionalmente una sección de wikitexto',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

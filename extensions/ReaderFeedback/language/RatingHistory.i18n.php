@@ -426,6 +426,7 @@ $messages['el'] = array(
 	'ratinghistory-3years' => 'τελευταία 3 έτη',
 	'ratinghistory-ave' => 'Μ.Ο.: $1',
 	'ratinghistory-purge' => 'εκκαθάριση λανθάνουσας μνήμης',
+	'ratinghistory-table' => 'Περίληψη των βαθμολογιών των αναγνωστών',
 	'ratinghistory-users' => 'Οι χρήστες που έδωσαν βαθμολογίες',
 	'ratinghistory-graph' => '$2 από "$3" ($1 {{PLURAL:$1|επιθεώρηση|επιθεωρήσεις}})',
 	'readerfeedback-svg' => 'Προβολή ως SVG',

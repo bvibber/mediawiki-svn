@@ -1324,6 +1324,37 @@ Kliknij na jednej aby zobaczyć statystyki jej dotyczące.',
 	'prefstats-legend-in' => 'Korzystają',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'prefstats' => 'Statìstiche dle preferense',
+	'prefstats-desc' => "Trassa statìstiche ch'a dan vàire utent a l'han serte preferense abilità",
+	'prefstats-title' => 'Statìstiche dle preferense',
+	'prefstats-list-intro' => 'Al moment, le preferense sota a son trassà.
+Sgnaca su un-a për vëdde le statìstiche an dzora a chila.',
+	'prefstats-noprefs' => 'Pa gnun-e preferense trassà al moment.
+Configura $wgPrefStatsTrackPrefs për trassé l epreferense.',
+	'prefstats-counters' => "* $1 {{PLURAL:$1|utent a l'ha|utent a l'han}} abilità sta preferensa-sì
+** $2 {{PLURAL:$2|utent al l'ha|utent al l'han}} ancó abilità
+** $3 {{PLURAL:$3|utent a l'ha|utent a l'han}} disabilitala",
+	'prefstats-counters-expensive' => "* $1 {{PLURAL:$1|utent a l'ha|utent a l'han}} abilità sta preferensa-sì
+** $2 {{PLURAL:$2|utent al l'ha|utent al l'han}} ancó abilità
+** $3 {{PLURAL:$3|utent a l'ha|utent a l'han}} disabilitala
+* An total, $4 {{PLURAL:$4|utent a l'ha|utent a l'han}} sta preferensa-sì ampostà",
+	'prefstats-xaxis' => 'Durà (ore)',
+	'prefstats-factors' => 'Varda për: $1',
+	'prefstats-factor-hour' => 'ora',
+	'prefstats-factor-sixhours' => 'ses ore',
+	'prefstats-factor-day' => 'di',
+	'prefstats-factor-week' => 'sman-e',
+	'prefstats-factor-twoweeks' => 'doe sman-e',
+	'prefstats-factor-fourweeks' => 'quatr sman-e',
+	'prefstats-factor-default' => 'Torna a la scala ëd default',
+	'prefstats-legend-out' => 'Sërnù fòra',
+	'prefstats-legend-in' => 'Sërnù drinta',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

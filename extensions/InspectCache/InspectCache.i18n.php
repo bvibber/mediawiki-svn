@@ -259,6 +259,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'inspectcache' => 'Inspeccionar cache',
+	'inspectcache-desc' => 'Una simple herramienta correctora de defectos para inspeccionar los contenidos de los cache compartidos',
 	'inspectcache-ok' => 'Aceptar',
 	'inspectcache-general' => 'Cache general',
 	'inspectcache-parser' => 'Cache del parser',

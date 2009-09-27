@@ -189,9 +189,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Dead3y3
+ * @author Omnipaedista
  */
 $messages['el'] = array(
-	'communityvoice' => 'Community Voice',
+	'communityvoice' => 'Φωνή της Κοινότητας',
 	'communityvoice-desc' => 'Εργαλεία συμμετοχής κοινότητας',
 	'communityvoice-ratings' => 'Αξιολογήσεις',
 	'communityvoice-ratings-scale-status-sending' => 'Στέλνεται...',

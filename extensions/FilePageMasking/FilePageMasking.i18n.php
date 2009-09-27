@@ -32,11 +32,26 @@ $messages['dsb'] = array(
 	'filepagemasking-desc' => 'Pśepisujo ".xxx" do "_xxx" we wótkazach bokow datajowego wopisanja',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'filepagemasking-desc' => 'Αντικαθιστά το ".xxx" με το "_xxx" στους συνδέσμους της σελίδας περιγραφής του αρχείου',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'filepagemasking-desc' => 'Reescribe ".xxx" en "_xxx" en enlaces de página de descripción de archivo',
+);
+
 /** French (Français)
  * @author Jean-Frédéric
+ * @author Quentinv57
  */
 $messages['fr'] = array(
-	'filepagemasking-desc' => 'Remplace ".xxx" par "_xxx"dans les liens de la page de description du fichier',
+	'filepagemasking-desc' => 'Remplace ".xxx" par "_xxx" dans les liens de la page de description du fichier',
 );
 
 /** Galician (Galego)
@@ -122,6 +137,13 @@ $messages['pms'] = array(
  */
 $messages['ro'] = array(
 	'filepagemasking-desc' => 'Rescrie ".xxx" în "_xxx" în legăturile către pagina de descriere a fişierului',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'filepagemasking-desc' => 'Rescrive ".xxx" jndr\'à "_xxx" jndr\'à pàgene de descrizione de le file collegate',
 );
 
 /** Russian (Русский)

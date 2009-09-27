@@ -411,6 +411,14 @@ $messages['oc'] = array(
 	'categoryonupload-label' => 'Categoria :',
 );
 
+/** Picard (Picard)
+ * @author Geoleplubo
+ */
+$messages['pcd'] = array(
+	'categoryonupload-desc' => "Afique eune boéte pou détricher eune catégorie pindint ch'quértchémint d'un fichié.",
+	'categoryonupload-label' => 'Catégorie :',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich

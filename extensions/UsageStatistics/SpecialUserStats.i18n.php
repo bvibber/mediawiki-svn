@@ -612,6 +612,7 @@ $messages['es'] = array(
 	'usagestatisticsnamespace' => 'Espacio de nombre:',
 	'usagestatisticsexcluderedirects' => 'Excluir redirecionamientos',
 	'usagestatistics-namespace' => 'Estas son estadísticas en el espacio de nombre [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Redireccionamientos]] no son tomados en cuenta.',
 	'usagestatisticstype' => 'Tipo',
 	'usagestatisticsstart' => 'Fecha de inicio:',
 	'usagestatisticsend' => 'Fecha de fin:',

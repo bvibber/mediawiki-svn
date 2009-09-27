@@ -451,6 +451,7 @@ $messages['el'] = array(
 	'imagetagging-removingtag' => 'Αφαιρείται η ετικέτα...',
 	'imagetagging-addtagsuccess' => 'Η ετικέτα προστέθηκε.',
 	'imagetagging-removetagsuccess' => 'Η ετικέτα αφαιρέθηκε.',
+	'imagetagging-imagetag-seemoreimages' => 'Προβολή περισσότερων εικόνων του "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Εικόνες του "$1"',
 	'tag-logpagename' => 'Αρχείο ετικετών',
 );

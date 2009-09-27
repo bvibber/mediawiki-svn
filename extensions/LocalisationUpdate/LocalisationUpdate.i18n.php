@@ -65,6 +65,13 @@ $messages['ca'] = array(
 	'localisationupdate-desc' => 'Manté els missatges localitzats tan actualitzats com sigui possible',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'localisationupdate-desc' => 'Udržuje lokalizovaná hlášení co možná nejaktuálnější',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

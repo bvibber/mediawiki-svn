@@ -144,6 +144,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'ratedpages' => 'Σελίδες αξιολογημένες από τους αναγνώστες',
 	'ratedpages-graphs' => 'δεδομένα βαθμολόγησης',
+	'ratedpages-count' => '$1 {{PLURAL:$1|επιθεώρηση|επιθεωρήσεις}}',
 );
 
 /** Esperanto (Esperanto)
@@ -485,6 +486,7 @@ $messages['roa-tara'] = array(
 	'ratedpages-list' => "Sotte ste 'na liste de pàggene arrenghete pe 'u pundegge de le lore lettore.",
 	'ratedpages-none' => "Non ge stonne pàggene jndr'à sta liste",
 	'ratedpages-graphs' => "dete d'u puntegge",
+	'ratedpages-count' => '$1 {{PLURAL:$1|revisite|revisite}}',
 );
 
 /** Russian (Русский)

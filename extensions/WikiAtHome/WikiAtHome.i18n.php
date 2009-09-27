@@ -408,14 +408,19 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'wah-desc' => 'Lehetővé teszi a videó-átkódolási feladatok elosztott feldolgozását a Firefoggot használó klienseken',
+	'wah-user-desc' => 'A Wiki@Home segítségével a közösség tagjai felajánlhatják a felesleges CPU idejüket az erőforrásigényes műveletekhez',
 	'wah-short-audio' => '$1 hangfájl, $2',
 	'wah-short-video' => '$1 videofájl, $2',
 	'wah-short-general' => '$1 médiafájl, $2',
 	'wah-long-audio' => '($1 hangfájl, hossza: $2, bitsűrűsége: $3)',
 	'wah-long-video' => '($1 videófájl, hossza $2, $4×$5 képpont, bitsűrűsége: $3)',
+	'wah-long-multiplexed' => '(multiplexelt audió/videó fájl, $1, hossza: $2, $4×$5 képpont, $3 bitsűrűség)',
 	'wah-long-general' => '(médiafájl, hossza: $2, bitsűrűsége: $3)',
 	'wah-long-error' => '(az ffmpeg nem tudja olvasni a következő fájlt: $1)',
 	'wah-transcode-working' => 'Ez a videó feldolgozás alatt van, kérlek próbáld később',
+	'wah-transcode-helpout' => 'A klip $1 százaléka kész.
+Segíthetsz ennek a videónak az átkódolásában a [[Special:WikiAtHome|Wiki@Home]] lap felkeresésével.',
 	'wah-transcode-fail' => 'A fájl átkódolása meghiúsult.',
 	'wah-javascript-off' => 'A Wiki@Home-ban való részvételhez engedélyezned kell a JavaScriptet',
 	'wah-loading' => 'Wiki@Home interfész betöltése <blink>…</blink>',

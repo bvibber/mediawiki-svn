@@ -30,6 +30,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
  * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Mormegil
  */
 $messages['qqq'] = array(
 	'expandtemplates-desc' => 'Short description of the ExpandTemplates extension, shown on [[Special:Version]]. Do not translate or change links.',
@@ -37,6 +38,7 @@ $messages['qqq'] = array(
 	'expand_templates_input' => '{{Identical|Input text}}',
 	'expand_templates_output' => '{{Identical|Result}}',
 	'expand_templates_ok' => '{{Identical|OK}}',
+	'expand_templates_remove_nowiki' => 'Option on [[Special:Expandtemplates]]',
 	'expand_templates_preview' => '{{Identical|Preview}}',
 );
 
@@ -355,6 +357,7 @@ $messages['cs'] = array(
 	'expand_templates_xml_output' => 'Výstup XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Odstranit komentáře',
+	'expand_templates_remove_nowiki' => 'Potlačit ve výsledku značky <nowiki>',
 	'expand_templates_generate_xml' => 'Zobrazit syntaktický strom v XML',
 	'expand_templates_preview' => 'Náhled',
 );
@@ -814,6 +817,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author KossuthRad
  */
 $messages['hu'] = array(
@@ -827,6 +831,7 @@ Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a vá
 	'expand_templates_xml_output' => 'XML kimenet',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Megjegyzések eltávolítása',
+	'expand_templates_remove_nowiki' => '<nowiki> tagek mellőzése az eredményben',
 	'expand_templates_generate_xml' => 'XML elemzési fa mutatása',
 	'expand_templates_preview' => 'Előnézet',
 );

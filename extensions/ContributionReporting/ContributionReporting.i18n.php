@@ -608,6 +608,7 @@ $messages['cs'] = array(
 	'contribstats-donations' => 'Příspěvky',
 	'contribstats-conversion' => 'Konverzní poměr (%)',
 	'contribstats-template' => 'Šablona',
+	'contribstats-nodata' => 'Údaje nejsou k dispozici',
 	'fundraiserstatistics' => 'Statistika příspěvkové kampaně',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => '$2, $1. den',
@@ -730,6 +731,7 @@ $messages['de'] = array(
 	'contribstats-donations' => 'Spenden',
 	'contribstats-conversion' => 'Umrechnungskurs (%)',
 	'contribstats-template' => 'Vorlage',
+	'contribstats-nodata' => 'Keine Daten vorhanden',
 	'fundraiserstatistics' => 'Spendenstatistiken',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Tag $1 von $2',
@@ -789,6 +791,7 @@ $messages['dsb'] = array(
 	'contribstats-donations' => 'Dary',
 	'contribstats-conversion' => 'Konwersijna rata (%)',
 	'contribstats-template' => 'Pśedłoga',
+	'contribstats-nodata' => 'Žedne daty pódane',
 	'fundraiserstatistics' => 'Pósćiwańska statistika',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Źeń $1 z $2',
@@ -852,6 +855,7 @@ $messages['el'] = array(
 	'contribstats-donations' => 'Δωρεές',
 	'contribstats-conversion' => 'Ρυθμός μετατροπής (%)',
 	'contribstats-template' => 'Πρότυπο',
+	'contribstats-nodata' => 'Δεν παρασχέθηκαν δεδομένα',
 	'fundraiserstatistics' => 'Στατιστικά εράνου',
 	'fundraiserstats-date' => 'Ημερομηνία',
 	'fundraiserstats-day' => 'Ημέρα $1 από $2',
@@ -1167,6 +1171,7 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author Korrigan
+ * @author Quentinv57
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -1211,6 +1216,7 @@ $messages['fr'] = array(
 	'contribstats-donations' => 'Donations',
 	'contribstats-conversion' => 'Taux de conversion (%)',
 	'contribstats-template' => 'Modèle',
+	'contribstats-nodata' => 'Aucune donnée fournie',
 	'fundraiserstatistics' => 'Statistiques de la levée de fonds',
 	'fundraiserstats-date' => 'Date',
 	'fundraiserstats-day' => '$1<sup>{{PLURAL:$1|er|e}}</sup> jour $1 de $2',
@@ -1280,6 +1286,7 @@ $messages['gl'] = array(
 	'contribstats-donations' => 'Doazóns',
 	'contribstats-conversion' => 'Taxa de conversión (%)',
 	'contribstats-template' => 'Modelo',
+	'contribstats-nodata' => 'Non se proporcionou ningún dato',
 	'fundraiserstatistics' => 'Estatísticas da recadación',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Día $1 de $2',
@@ -1360,6 +1367,7 @@ $messages['gsw'] = array(
 	'contribstats-donations' => 'Spände',
 	'contribstats-conversion' => 'Konversionsrat (%)',
 	'contribstats-template' => 'Vorlag',
+	'contribstats-nodata' => 'Kei Date vorhande',
 	'fundraiserstatistics' => 'Spändestatischtik',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 vo $2',
@@ -1543,6 +1551,7 @@ $messages['hsb'] = array(
 	'contribstats-donations' => 'Dary',
 	'contribstats-conversion' => 'Konwersijna rata (%)',
 	'contribstats-template' => 'Předłoha',
+	'contribstats-nodata' => 'Žane daty podate',
 	'fundraiserstatistics' => 'Darjenska statistika',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dźeń $1 z $2',
@@ -1711,6 +1720,7 @@ $messages['id'] = array(
 	'contribstats-donations' => 'Sumbangan',
 	'contribstats-conversion' => 'Tingkat konversi (%)',
 	'contribstats-template' => 'Templat',
+	'contribstats-nodata' => 'Tidak tersedia data',
 	'fundraiserstatistics' => 'Statistika penggalang dana',
 	'fundraiserstats-date' => 'Tanggal',
 	'fundraiserstats-day' => 'Hari $1 dari $2',
@@ -1847,6 +1857,7 @@ $messages['ja'] = array(
 	'contribstats-donations' => '寄付数',
 	'contribstats-conversion' => 'コンバージョン率 (%)',
 	'contribstats-template' => 'テンプレート',
+	'contribstats-nodata' => 'データが提供されていません',
 	'fundraiserstatistics' => '資金調達統計',
 	'fundraiserstats-date' => '日付',
 	'fundraiserstats-day' => '$2 の$1日目',
@@ -2057,6 +2068,7 @@ $messages['ksh'] = array(
 	'contribstats-donations' => 'Jabe',
 	'contribstats-conversion' => 'Aandeil, dä jet jebraat hät, en Prozent',
 	'contribstats-template' => 'Schabloon',
+	'contribstats-nodata' => 'Kein Daate annjejovve',
 	'fundraiserstatistics' => 'Statistik övver de Spende',
 	'fundraiserstats-date' => 'Dattum',
 	'fundraiserstats-day' => 'Dä $1. Daach{{PLURAL:$2||, fun $2 Dääch|}}',
@@ -2116,6 +2128,7 @@ $messages['lb'] = array(
 	'contribstats-donations' => 'Donen',
 	'contribstats-conversion' => 'Ëmrechnungs-Cours (%)',
 	'contribstats-template' => 'Schabloun',
+	'contribstats-nodata' => 'Keng Donnéeën uginn',
 	'fundraiserstatistics' => 'Statistike vun den Donen',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 vu(n) $2',
@@ -2434,6 +2447,7 @@ $messages['nl'] = array(
 	'contribstats-donations' => 'Donaties',
 	'contribstats-conversion' => 'Conversiepercentage',
 	'contribstats-template' => 'Sjabloon',
+	'contribstats-nodata' => 'Er zijn geen gegevens opgegeven',
 	'fundraiserstatistics' => 'Fondswervingstatistieken',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 van $2',
@@ -2865,6 +2879,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Ferrer
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -2909,6 +2924,7 @@ $messages['ru'] = array(
 	'contribstats-donations' => 'Пожертвования',
 	'contribstats-conversion' => 'Показатель конверсии (%)',
 	'contribstats-template' => 'Шаблон',
+	'contribstats-nodata' => 'Данные не указаны',
 	'fundraiserstatistics' => 'Статистика сбора средств',
 	'fundraiserstats-date' => 'Дата',
 	'fundraiserstats-day' => '$1 день $2',

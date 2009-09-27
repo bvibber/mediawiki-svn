@@ -467,6 +467,7 @@ Wothladowarjo tutoho websydła njemóža zamołwitosć za wobsah tajkich komenta
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'talkhere-desc' => 'Vitalapot helyez a lapok aljára',
 	'talkhere-foottext' => 'A fenti hozzászólásokat lehet hogy látogatók írták.
 
 Ennek az oldalnak az üzemeltetői nem vállalnak felelősséget az ilyen hozzászólások tartalmáért.',

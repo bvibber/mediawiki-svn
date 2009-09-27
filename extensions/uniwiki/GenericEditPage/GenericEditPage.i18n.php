@@ -1027,6 +1027,31 @@ Dodaj sekcje za pomocą narzędzi w pasku menu.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'gep-desc' => "Suplementa la pàgina ëd modìfica për esse pì amichévol për l'utent",
+	'gep-emailsubject' => '[$1] Sugeriment categorìa: $2',
+	'gep-emailbody' => 'L\'utent "$1" a l\'ha sugerì la categorìa "$2" për ël sit "$3".',
+	'gep-emailfailure' => 'Spiasent, tò sugeriment a peul pa esse prossessà.',
+	'gep-emailsuccess' => 'Mersì për sugerì la categorìa: $1.',
+	'gep-categories' => 'Categorìe',
+	'gep-addcategory' => 'Gionta na categorìa',
+	'gep-addcategorybutton' => 'Gionta',
+	'gep-suggestcategory' => 'Sugeriss na categorìa',
+	'gep-suggestcategorybutton' => 'Spediss',
+	'gep-sections' => 'Session',
+	'gep-sectionnotdisabled' => 'Sta session-sì a peul pa esse disabilità',
+	'gep-addsection' => 'Gionta na session',
+	'gep-addsectionbutton' => 'Gionta',
+	'gep-classicmode' => 'Manera clàssica',
+	'gep-genericmode' => 'Manera genérica',
+	'gep-nosectioninstructions' => "A-i é pa ëd session an sta pàgina-sì.
+Gionta cheidun ch'a dòvro l'utiss ant la bara dël menù.",
+	'gep-nocategories' => 'Për piasì selession-a almanch na categorìa pima ëd salvé',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

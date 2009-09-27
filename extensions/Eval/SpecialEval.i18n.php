@@ -171,6 +171,7 @@ $messages['es'] = array(
 	'eval' => 'Evaluar',
 	'eval-desc' => 'Agrega [[Special:Eval|una interface]] a la función <code>eval()</code>',
 	'eval_submit' => 'Evaluar',
+	'eval_escape' => 'Salida de escape',
 	'eval_out' => 'Salida',
 	'eval_code' => 'Código',
 );

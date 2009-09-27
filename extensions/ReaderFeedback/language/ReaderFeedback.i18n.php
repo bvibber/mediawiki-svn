@@ -524,6 +524,7 @@ $messages['el'] = array(
 	'readerfeedback-level-3' => 'Υψηλός',
 	'readerfeedback-level-4' => 'Τέλεια',
 	'readerfeedback-submit' => 'Υποβολή',
+	'readerfeedback-main' => 'Μόνο σελίδες περιεχομένου μπορούν να βαθμολογηθούν.',
 	'readerfeedback-submitting' => 'Υποβολή ...',
 	'readerfeedback-finished' => 'Σας ευχαριστούμε!',
 	'readerfeedback-tagfilter' => 'Ετικέτα:',
@@ -1147,6 +1148,7 @@ $messages['ko'] = array(
 	'readerfeedback-success' => "'''이 문서를 평가해 주셔서 감사합니다!''' ([$3 질문이나 의견이 있으신가요?])",
 	'readerfeedback-submitting' => '제출하는 중...',
 	'readerfeedback-finished' => '감사합니다!',
+	'readerfeedback-tagfilter' => '태그:',
 	'tooltip-ca-ratinghist' => '이 문서에 대한 평가',
 );
 
@@ -1571,9 +1573,14 @@ $messages['roa-tara'] = array(
 	'readerfeedback-main' => 'Sulamende le pàggene cu le condenute ponne essere valutete.',
 	'readerfeedback-success' => "'''Grazie pe avè reviste sta pàgene!''' ([$3 Commende o dumanne?]).",
 	'readerfeedback-voted' => "'''Pare proprie ca tu è già vutete pe sta pàgene''' ([$3 Commende o dumanne?]).",
+	'readerfeedback-error' => "'''<nowiki>'</nowiki>N errore sà verificate quanne ste votave sta pàgene''' ([$3 commende o domande?]).",
 	'readerfeedback-submitting' => 'In conferme...',
 	'readerfeedback-finished' => "Grazie 'mbà",
 	'readerfeedback-tagfilter' => 'Tag:',
+	'readerfeedback-tierfilter' => 'Valutazione:',
+	'readerfeedback-tier-high' => 'Ierte',
+	'readerfeedback-tier-medium' => 'Medie',
+	'readerfeedback-tier-poor' => 'Povere',
 	'tooltip-ca-ratinghist' => 'Pundegge de le letture de sta pàgene',
 	'specialpages-group-feedback' => "Visitatore de l'opiniune",
 );
@@ -1893,6 +1900,11 @@ $messages['vec'] = array(
 	'readerfeedback-submit' => 'Manda',
 	'readerfeedback-submitting' => "So' drio mandarlo...",
 	'readerfeedback-finished' => 'Grassie!',
+	'readerfeedback-tagfilter' => 'Eticheta:',
+	'readerfeedback-tierfilter' => 'Valutassion:',
+	'readerfeedback-tier-high' => 'Bona',
+	'readerfeedback-tier-medium' => 'Cussì-cussì',
+	'readerfeedback-tier-poor' => 'Trista',
 	'tooltip-ca-ratinghist' => 'Valutassion dei letori par sta pagina',
 	'specialpages-group-feedback' => 'Opinion del letor',
 );

@@ -93,7 +93,7 @@ $messages['be-tarask'] = array(
 	'masseditregex-desc' => 'Выкарыстаньне рэгулярных выразаў для [[Special:MassEditRegex|рэдагаваньня некалькіх старонак за адно дзеяньне]]',
 	'masseditregextext' => 'Увядзіце адзін альбо некалькі рэгулярных выразаў (адзін на радок) для пошуку супадзеньняў, і адзін альбо некалькі выразаў для замены кожнага супадзеньня.
 Першы пасьпяховае супадзеньне з выразам будзе замененае на першы выраз для замены і гэтак далей. Глядзіце падрабязнасьці пра функцыю [http://php.net/manual/en/function.preg-replace.php PHP preg_replace()].',
-	'masseditregex-pagelisttxt' => 'Старонкі для рэдагаваньня:',
+	'masseditregex-pagelisttxt' => 'Старонкі для рэдагаваньня (не выкарыстоўвайце прэфікс прастора назваў:):',
 	'masseditregex-matchtxt' => 'Пошук:',
 	'masseditregex-replacetxt' => 'Замяніць на:',
 	'masseditregex-executebtn' => 'Выканаць',
@@ -143,7 +143,7 @@ $messages['dsb'] = array(
 	'masseditregextext' => 'Zapódaj jaden regularny wuraz abo wěcej regularnych wurazow (jaden na smužku) za pytanje a jaden wuraz abo wěcej wurazow, kótarež maju kuždy wótpowědnik wuměniś.
 Prědny pytański wuraz buźo se, jolic namakany, pśez prědny wuměneński wuraz wuměniś atd.
 Glědaj [http://php.net/manual/de/function.preg-replace.php the PHP function preg_replace()] za drobnostki.',
-	'masseditregex-pagelisttxt' => 'Boki, kótarež maju se wobźěłaś:',
+	'masseditregex-pagelisttxt' => 'Boki, kótarež maju se wobźěłaś (njewužyj prefiks mjenjowego ruma):',
 	'masseditregex-matchtxt' => 'Pytaś za:',
 	'masseditregex-replacetxt' => 'Wuměniś pśez:',
 	'masseditregex-executebtn' => 'Wuwjasć',
@@ -162,6 +162,15 @@ Glědaj [http://php.net/manual/de/function.preg-replace.php the PHP function pre
 	'masseditregex-hint-toappend' => 'Tekst ku kóńcoju boka pśipowjesyś - dobre za pśidawanje bokow kategorijam',
 	'masseditregex-hint-remove' => 'Tekst ze wšyknych w lisćinje wótpóraś',
 	'masseditregex-hint-removecat' => 'Wšykne kategorije z boka wótpóraś (źiwaj na maskěrowanje rožkatych spinkow we wikikoźe.) Wuměnjeńske gódnoty njeby se měli maskěrowaś.',
+	'masseditregex-listtype-intro' => 'To jo lisćina wót:',
+	'masseditregex-listtype-pagenames' => 'Mjenja bokow (toś te boki wobźěłaś)',
+	'masseditregex-listtype-pagename-prefixes' => 'Prefikse mjenjow bokow (boki wobźěłaś, kótarychž mjenja zachopiju se toś tym tekstom)',
+	'masseditregex-listtype-categories' => 'Kategorijowe mjenja (kuždy bok w toś tych kategorijach wobźěłaś; wubrany mjenjowy rum se ignorěrujo)',
+	'masseditregex-listtype-backlinks' => 'Slědkwótkaze (boki wobźěłaś, kótarež na tos te wótkazuju)',
+	'masseditregex-namespace-intro' => 'Wšykne toś te boki su w toś tom mjenjowem rumje:',
+	'masseditregex-exprnomatch' => 'Wuraz "$1" njegóźi se na žedne boki.',
+	'masseditregex-badregex' => 'Njepłaśiwy regularny wuraz:',
+	'masseditregex-editfailed' => 'Wobźěłanje jo se njeraźiło:',
 );
 
 /** Greek (Ελληνικά)
@@ -177,7 +186,7 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'masseditregex' => 'Edición en masa usando expresiones regulares',
-	'masseditregex-pagelisttxt' => 'Páginas a editar:',
+	'masseditregex-pagelisttxt' => 'Páginas a editar (no usar un espacio de nombre: prefijo):',
 	'masseditregex-replacetxt' => 'Reemplazar con:',
 	'masseditregex-executebtn' => 'Ejecutar',
 	'masseditregex-err-nopages' => 'Debes especificar al menos una página a cambiar.',
@@ -194,12 +203,13 @@ $messages['es'] = array(
  * @author IAlex
  * @author Peter17
  * @author PieRRoMaN
+ * @author Quentinv57
  */
 $messages['fr'] = array(
 	'masseditregex' => "Modification en masse à l'aide des expressions rationnelles",
 	'masseditregex-desc' => 'Utiliser les expressions rationnelles pour [[Special:MassEditRegex|modifier de nombreuses pages en une opération]]',
 	'masseditregextext' => 'Entrer une ou plusieurs expressions rationnelles (une par ligne) à rechercher, et une ou plusieurs expressions par lesquelles remplacer les résultats. La première expression trouvée sera remplacée par la première expression de remplacement, et ainsi de suite. Voir la description de la [http://php.net/manual/en/function.preg-replace.php fonction PHP preg_replace()] pour plus de détails.',
-	'masseditregex-pagelisttxt' => 'Pages à modifier :',
+	'masseditregex-pagelisttxt' => "Pages à modifier (sans le préfixe de l'espace de noms) :",
 	'masseditregex-matchtxt' => 'Rechercher :',
 	'masseditregex-replacetxt' => 'Remplacer par :',
 	'masseditregex-executebtn' => 'Exécuter',
@@ -218,6 +228,16 @@ $messages['fr'] = array(
 	'masseditregex-hint-toappend' => "Insère du texte à la fin de l'article - pratique pour ajouter les pages à des catégories",
 	'masseditregex-hint-remove' => 'Retirer du texte de toutes les pages de la liste',
 	'masseditregex-hint-removecat' => "Supprime toutes les catégories de l'article (notez que les crochets dans le wikicode sont échappés.) Les valeurs de remplacement ne doivent pas être échappées.",
+	'masseditregex-listtype-intro' => 'Voici une liste de :',
+	'masseditregex-listtype-pagenames' => 'Nom des pages (éditer ces pages)',
+	'masseditregex-listtype-pagename-prefixes' => 'Préfixe des noms de pages (éditer les pages dont les noms commencent par ce texte)',
+	'masseditregex-listtype-categories' => "Nom des catégories (éditer chaque page présente dans ces catégories ; la sélection de l'espace de noms est ignorée)",
+	'masseditregex-listtype-backlinks' => 'Pages liées (éditer les pages qui contiennent un lien vers celles-ci)',
+	'masseditregex-namespace-intro' => 'Toutes ces pages sont dans cet espace de noms:',
+	'masseditregex-exprnomatch' => 'L\'expression "$1" n\'a été trouvée dans aucune page.',
+	'masseditregex-badregex' => 'Regex invalide:',
+	'masseditregex-editfailed' => "Erreur lors de l'édition:",
+	'masseditregex-tooltip-execute' => 'Appliquer ces changements à chaque page',
 );
 
 /** Galician (Galego)
@@ -227,7 +247,7 @@ $messages['gl'] = array(
 	'masseditregex' => 'Edición en masa usando expresións regulares',
 	'masseditregex-desc' => 'Usa expresións regulares para [[Special:MassEditRegex|editar moitas páxinas nunha única operación]]',
 	'masseditregextext' => 'Insira unha ou máis expresións regulares (un por liña) para facer coincidir, e unha ou máis expresións para substituír cada coincidencia. Se a primeira expresión coincidente é correcta, substituirase pola primeira expresión substituta, e así sucesivamente. Olle a [http://php.net/manual/en/function.preg-replace.php función PHP preg_replace()] para obter máis información.',
-	'masseditregex-pagelisttxt' => 'Páxinas a editar:',
+	'masseditregex-pagelisttxt' => 'Páxinas a editar (non use espazo de nomes: prefixo):',
 	'masseditregex-matchtxt' => 'Procurar por:',
 	'masseditregex-replacetxt' => 'Substituír por:',
 	'masseditregex-executebtn' => 'Executar',
@@ -246,6 +266,15 @@ $messages['gl'] = array(
 	'masseditregex-hint-toappend' => 'Engade algo de texto ao final do artigo; útil para engadir páxinas a categorías',
 	'masseditregex-hint-remove' => 'Elimina algún texto de todas as páxinas da lista',
 	'masseditregex-hint-removecat' => 'Elimina todas as categorías dun artigo (teña en conta o escape dos corchetes no formato wiki). Os valores de substitución non deberían escapar.',
+	'masseditregex-listtype-intro' => 'Esta é unha lista de:',
+	'masseditregex-listtype-pagenames' => 'Nomes de páxina (editar estas páxinas)',
+	'masseditregex-listtype-pagename-prefixes' => 'Prefixos de nome de páxina (editar as páxinas con nomes que comecen con este texto)',
+	'masseditregex-listtype-categories' => 'Nomes de categoría (editar cada páxina dentro destas categorías; ignórase a selección de espazo de nomes)',
+	'masseditregex-listtype-backlinks' => 'Ligazóns de retorno (editar as páxinas que ligan con elas)',
+	'masseditregex-namespace-intro' => 'Todas estas páxinas están neste espazo de nomes:',
+	'masseditregex-exprnomatch' => 'A expresión "$1" non coincide con ningunha páxina.',
+	'masseditregex-badregex' => 'Expresión regular non válida:',
+	'masseditregex-editfailed' => 'Fallou a edición:',
 );
 
 /** Swiss German (Alemannisch)
@@ -257,7 +286,7 @@ $messages['gsw'] = array(
 	'masseditregextext' => 'Gib ein oder meh reguläri Uusdruck as Suechuusdruck yy (eine pro Zyylete) un ein oder meh Uusdruck as Ersatzuusdruck.
 Dr erscht Suechuusdruck wird, wänn er gfunde wore isch, dur dr erscht Ersatzuusdruck ersetzt usw.
 Lueg d [http://php.net/manual/en/function.preg-replace.php PHP-Funktion preg_replace()] fir Details.',
-	'masseditregex-pagelisttxt' => 'Syte, wu bearbeitet solle wäre:',
+	'masseditregex-pagelisttxt' => 'Syte, wu bearbeitet solle wäre (verwänd kei Namensruum: Präfix):',
 	'masseditregex-matchtxt' => 'Suech no:',
 	'masseditregex-replacetxt' => 'Ersetze dur:',
 	'masseditregex-executebtn' => 'Uusfiere',
@@ -277,6 +306,16 @@ Lueg d [http://php.net/manual/en/function.preg-replace.php PHP-Funktion preg_rep
 	'masseditregex-hint-remove' => 'Text us allene Syte in dr Lischt uuseneh',
 	'masseditregex-hint-removecat' => 'Alli Kategorie us ere Syte uuseneh (gib Acht uf d Richtig vu dr eckige Chlammere im Wikicode).
 Bim Text, wu yygsetzt wird, isch d Richtig nit relevant.',
+	'masseditregex-listtype-intro' => 'Des isch e Lischt vu:',
+	'masseditregex-listtype-pagenames' => 'Sytenäme (die Syte bearbeite)',
+	'masseditregex-listtype-pagename-prefixes' => 'Sytenämepräfix (Syte bearbeite, wu mit däm Text aafange)',
+	'masseditregex-listtype-categories' => 'Kategoriinäme (e jedi Syte in däre Kategorii bearbeite; Namensruum-Uuswahl wird ignoriert)',
+	'masseditregex-listtype-backlinks' => 'Retur-Links (Syte bearbeite, wu uf die verwyse)',
+	'masseditregex-namespace-intro' => 'Alli die Syte sin in däm Namensruum:',
+	'masseditregex-exprnomatch' => 'Fir dr Uusdruck „$1“ git s kei Träffer uf Syte.',
+	'masseditregex-badregex' => 'Nit giltige reguläre Uusdruck:',
+	'masseditregex-editfailed' => 'Bearbeitige sin fähl gschlaa:',
+	'masseditregex-tooltip-execute' => 'Die Änderige in jedere Syte vorneh',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -288,7 +327,7 @@ $messages['hsb'] = array(
 	'masseditregextext' => 'Zapodaj jedyn regularny wuraz abo wjace regularnych wurazow (jedyn na linku) za pytanje a jedyn wuraz abo wjace wurazow, přez kotryž ma so kóždy wuslědk narunać.
 Prěni pytanski wuraz budźe, jeli namakany, so přez prěni narunanski wuraz narunować atd.
 Hlej [http://php.net/manual/de/function.preg-replace.php the PHP function preg_replace()] za podrobnosće.',
-	'masseditregex-pagelisttxt' => 'Strony, kotrež maja so wobdźěłać:',
+	'masseditregex-pagelisttxt' => 'Strony, kotrež maja so wobdźěłać (njewužij prefiks mjenoweho ruma):',
 	'masseditregex-matchtxt' => 'Pytać za:',
 	'masseditregex-replacetxt' => 'Narunać přez:',
 	'masseditregex-executebtn' => 'Wuwjesć',
@@ -307,6 +346,15 @@ Hlej [http://php.net/manual/de/function.preg-replace.php the PHP function preg_r
 	'masseditregex-hint-toappend' => 'Tekst ke kóncej nastawka připowěsnyć - jara dobre za přidawanje stronow kategorijam',
 	'masseditregex-hint-remove' => 'Tekst ze wšěch stronow w lisćinje wotstronić',
 	'masseditregex-hint-removecat' => 'Wšě kategorije ze strony wotstronić (dźiwaj na maskěrowanje róžkatych spinkow we wikikodźe.) Narunanske hódnoty njeměli so maskěrować.',
+	'masseditregex-listtype-intro' => 'To je lisćina wot:',
+	'masseditregex-listtype-pagenames' => 'Mjena stronow (tute strony wobdźěłać)',
+	'masseditregex-listtype-pagename-prefixes' => 'Prefiksy mjenow stronow (strony wobdźěłać, kotrychž mjena so z tutym tekstom započinaja)',
+	'masseditregex-listtype-categories' => 'Kategorijowe mjena (kóždu stronu znutřka tutych kategorijow wobdźěłać; wubrany mjenowy rum so ignoruje)',
+	'masseditregex-listtype-backlinks' => 'Wróćowotkazy (strony wobdźěłać, kotrež na tute wotkazuja)',
+	'masseditregex-namespace-intro' => 'Wšě tute strony su w tutym mjenowym rumje:',
+	'masseditregex-exprnomatch' => 'Wuraz "$1" njehodźi so na žane strony.',
+	'masseditregex-badregex' => 'Njepłaćiwy regularny wuraz:',
+	'masseditregex-editfailed' => 'Wobdźěłanje je so njeporadźiło:',
 );
 
 /** Hungarian (Magyar)
@@ -314,7 +362,7 @@ Hlej [http://php.net/manual/de/function.preg-replace.php the PHP function preg_r
  */
 $messages['hu'] = array(
 	'masseditregex' => 'Tömeges szerkesztés reguláris kifejezések használatával',
-	'masseditregex-pagelisttxt' => 'Szerkesztendő lapok:',
+	'masseditregex-pagelisttxt' => 'Szerkesztendő lapok (ne használd a névtér: előtagot):',
 	'masseditregex-replacetxt' => 'Csere erre:',
 	'masseditregex-executebtn' => 'Végrehajtás',
 	'masseditregex-before' => 'Előtte',
@@ -361,7 +409,7 @@ $messages['ja'] = array(
 	'masseditregex' => '正規表現を使用した大量編集',
 	'masseditregex-desc' => '正規表現を使って[[Special:MassEditRegex|大量のページを一度の操作で編集する]]',
 	'masseditregextext' => '一致用に1つ以上の正規表現（1行に1つ）と、置換用に1つ以上の正規表現を入力してください。1番目の一致用正規表現が一致に成功すると、1番目の置換用正規表現で置換されます。2番目以降も同様です。詳細は [http://php.net/manual/ja/function.preg-replace.php PHP 関数 preg_replace()] を参照してください。',
-	'masseditregex-pagelisttxt' => '編集するページ:',
+	'masseditregex-pagelisttxt' => '編集するページ (名前空間接頭辞は使わず):',
 	'masseditregex-matchtxt' => '一致用:',
 	'masseditregex-replacetxt' => '置換用:',
 	'masseditregex-executebtn' => '実行',
@@ -380,6 +428,15 @@ $messages['ja'] = array(
 	'masseditregex-hint-toappend' => '記事末尾に文章を追記する。ページにカテゴリーを加えるにの便利です',
 	'masseditregex-hint-remove' => '指定したすべてのページからある文章を除去する',
 	'masseditregex-hint-removecat' => '記事からすべてのカテゴリーを除去する (ウィキテキスト中の角括弧のエスケープに注意)。置換する値はエスケープしません。',
+	'masseditregex-listtype-intro' => 'これは次のリストです:',
+	'masseditregex-listtype-pagenames' => 'ページ名 (これらのページを編集する)',
+	'masseditregex-listtype-pagename-prefixes' => 'ページ名の先頭部 (この文字列から始まる名前をもつページを編集する)',
+	'masseditregex-listtype-categories' => 'カテゴリー名 (これらのカテゴリーにあるページすべてを編集する。名前空間の選択は無視されます)',
+	'masseditregex-listtype-backlinks' => 'リンク元 (これらにリンクしているページを編集する)',
+	'masseditregex-namespace-intro' => 'これらのページはすべて、この名前空間に属しています:',
+	'masseditregex-exprnomatch' => '正規表現「$1」に一致したページはありません。',
+	'masseditregex-badregex' => '無効な正規表現:',
+	'masseditregex-editfailed' => '編集失敗:',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -390,7 +447,7 @@ $messages['ksh'] = array(
 	'masseditregex' => 'Donn Sigge em Pöngel ändere, un dat övver <code>regular expressions</code>.',
 	'masseditregex-desc' => 'Deiht Sigge [[Special:MassEditRegex|em Pöngel en einem Rötsch ändere]], un dat övver <code>ergular expressions</code>.',
 	'masseditregextext' => 'Jif ein <i lang="en">regular expression</i> pro Reih en, esu vill wi nüüdesch. Dohenger en desellve Reih schriif hen, woh jäähje dat jetuusch wääde sull, wat op di <i lang="en">regular expression</i> paß. De [http://de.php.net/manual/de/function.preg-replace.php Funxjuhn <code lang="en">preg_replace()</code> en dä Projammeer_Shprooch <i lang="en">PHP</i>] weed doför jebruch, un doh kam_mer och de Einzelheite janz jenou nohlässe.',
-	'masseditregex-pagelisttxt' => 'De Sigge zom Ändere:',
+	'masseditregex-pagelisttxt' => 'De Sigge zom Ändere, der_oohne en Appachtemang dovör:',
 	'masseditregex-matchtxt' => 'Söhk noh:',
 	'masseditregex-replacetxt' => 'Tuusch dat jäje:',
 	'masseditregex-executebtn' => 'Lohß Jonn!',
@@ -409,6 +466,15 @@ $messages['ksh'] = array(
 	'masseditregex-hint-toappend' => 'Donn e Täx-Shtöck aam Engk vun dä Sigg aanhange — wunderbaa för Sigge en Saachjroppe ze donn',
 	'masseditregex-hint-remove' => 'Donn e Shtöck vum Täx vun alle Sigge en dä Leß fott nämme',
 	'masseditregex-hint-removecat' => 'Donn alle Enndrääsch för Saachjropp us en Sigg eruß schmiiße — jev Aach op et Escaping vun de äkijje Klammere em Wiki_Kood. Wat beim Tuusche för dä ahle täx ennjesaz weed, darf mer ävver nit escape.',
+	'masseditregex-listtype-intro' => 'Dat es en Leß vun:',
+	'masseditregex-listtype-pagenames' => 'Name vun Sigge för zem Ändere',
+	'masseditregex-listtype-pagename-prefixes' => 'Aanfäng vun Siggetittelle (Alsu donn di Sigge ändere, dänne ier Tittelle met däm Täx heh aanfange)',
+	'masseditregex-listtype-categories' => 'Saachjruppe-Name (Dunn all de Sigge en dä Saachjroppe ändere. Wat onger Appachtemang aanjejovve es, schpellt derbei kei Roll)',
+	'masseditregex-listtype-backlinks' => 'Lengks retuur (Alsu dunn Sigge ändere, di ene Lengk op heh di Sigg han)',
+	'masseditregex-namespace-intro' => 'All di Sigge sin en däm Appachtemang heh:',
+	'masseditregex-exprnomatch' => 'De <i lang="en">regular expression</i> „$1“ hät keine Träfer, op keine vun dä Sigge.',
+	'masseditregex-badregex' => 'Dat es en onjöltejje <i lang="en">regular expression</i>:',
+	'masseditregex-editfailed' => 'Sat Ändere is donevve jejange:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -417,7 +483,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'masseditregex' => 'Ännerung vun enger grousser Zuel vu Säite mat Hëllef vu regulären Ausdréck',
 	'masseditregex-desc' => "Regulär Ausdréck benotze fir [[Special:MassEditRegex|vill Säiten an enger Operatioun z'änneren]]",
-	'masseditregex-pagelisttxt' => "Säite fir z'änneren:",
+	'masseditregex-pagelisttxt' => "Säite fir z'änneren (benotzt den Nummraum-Prefix net):",
 	'masseditregex-matchtxt' => 'Sichen no:',
 	'masseditregex-replacetxt' => 'Eretzen duerch:',
 	'masseditregex-executebtn' => 'Ausféieren',
@@ -431,6 +497,7 @@ $messages['lb'] = array(
 	'masseditregex-hint-headeffect' => 'Resultat',
 	'masseditregex-hint-toappend' => "Text un d'Ënn vun der Säit bäisetzen - gutt fir Säiten a Kategorien derbäizesetzen",
 	'masseditregex-hint-remove' => 'Text vun alle Säiten op der Lëscht erofhuelen',
+	'masseditregex-listtype-intro' => 'Dëst ass eng Lëscht vun:',
 );
 
 /** Dutch (Nederlands)
@@ -442,7 +509,7 @@ $messages['nl'] = array(
 	'masseditregextext' => 'Geef een of meer reguliere expressies op (één per regel) voor de selectie van tekst en een of meer reguliere expressies om de selectie door te vervangen.
 De selectie uit de eerste selectie-expressie wordt vervangen door de eerste vervang-expressie, en zo verder.
 Zie de [http://php.net/manual/en/function.preg-replace.php PHP-functie preg_replace()] voor details.',
-	'masseditregex-pagelisttxt' => "Te bewerken pagina's:",
+	'masseditregex-pagelisttxt' => "Te bewerken pagina's (gebruik geen naamruimtevoorvoegsel):",
 	'masseditregex-matchtxt' => 'Zoeken naar:',
 	'masseditregex-replacetxt' => 'Vervangen door:',
 	'masseditregex-executebtn' => 'Uitvoeren',
@@ -464,6 +531,16 @@ Ideaal voor het toevoegen van pagina's aan een categorie.",
 	'masseditregex-hint-removecat' => 'Alle categorieën verwijderen van een pagina.
 Let op het escapen van de blokhaken in de wikitekst.
 Voor de te vervangen tekst is escapen niet nodig.',
+	'masseditregex-listtype-intro' => 'Dit is een lijst van:',
+	'masseditregex-listtype-pagenames' => "Paginanamen (deze pagina's bewerken)",
+	'masseditregex-listtype-pagename-prefixes' => "Paginanaamvoorvoegsels (pagina's bewerken die namen hebben die beginnen met deze tekst)",
+	'masseditregex-listtype-categories' => 'Categorienamen (bewerk iedere pagina binnen deze categorieën; naamruimteselectie wordt genegeerd)',
+	'masseditregex-listtype-backlinks' => "Terugverwijzingen (pagina's bewerken die verwijzen naar deze pagina's)",
+	'masseditregex-namespace-intro' => "Alle pagina's in deze naamruimte:",
+	'masseditregex-exprnomatch' => 'De expressie "$1" was op geen enkele pagina van toepassing.',
+	'masseditregex-badregex' => 'Ongeldige reguliere expressie:',
+	'masseditregex-editfailed' => 'Bewerking mislukt:',
+	'masseditregex-tooltip-execute' => 'Deze wijzigingen op iedere pagina toepassen',
 );
 
 /** Occitan (Occitan)
@@ -495,6 +572,7 @@ $messages['oc'] = array(
 );
 
 /** Russian (Русский)
+ * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -523,6 +601,7 @@ $messages['ru'] = array(
 	'masseditregex-hint-remove' => 'Удаление текста со всех страниц в списке',
 	'masseditregex-hint-removecat' => 'Удаление всех категорий со страницы (обратите внимание на экранирование квадратных скобок в вики-разметке).
 Значение для замены не должно экранироваться.',
+	'masseditregex-exprnomatch' => 'Выражению "$1" не соответствует ни одна страница.',
 );
 
 /** Veps (Vepsan kel')

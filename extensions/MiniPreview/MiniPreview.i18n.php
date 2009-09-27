@@ -116,6 +116,25 @@ $messages['bg'] = array(
 	'minipreview-no_category_gallery' => 'Няма категории или галерии!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'minipreview-desc' => 'Diskwel a ra, e-kichen ur skeudenn, rakweladennoùigoù eus mediaoù all en hevelep rummad pe diskwelet en hevelep pajennoù.',
+	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|restr}} zo er rummad-mañ en holl.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|restr}} zo er skeudennaoueg-mañ en holl.",
+	'minipreview-no_more_files_here' => "restr ebet ken el lec'hiadur-mañ.",
+	'minipreview-no_category_gallery' => 'Na rummad na skeudennaooueg ebet !',
+	'minipreview-ignore_categories' => 'Setu aze roll an anvioù rummadoù pe rakgerioù anvioù.
+Ne vo ket diskwelet ar rummadoù-se gant MiniPreview.
+Da skouer, ne vo ket diskwelet gant "* PD-" an holl rummadoù a grog gant "PD-", evel "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

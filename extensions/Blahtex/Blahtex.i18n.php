@@ -898,9 +898,14 @@ Sólo se permite uno.',
 	'math_MisplacedLimits' => 'El comando "$1" solo puede aparecer después de un operador matemático.
 Considera usar "\\mathop".',
 	'math_NotEnoughArguments' => 'Insuficientes argumentos fueron dados para "$1"',
+	'math_PngIncompatibleCharacter' => 'Incapaz de generar correctamente PNG conteniendo el caracter $1',
 	'math_TooManyMathmlNodes' => 'Hay demasiados nodos en el árbol MathML',
 	'math_TooManyTokens' => 'La entrada es demasiado larga',
+	'math_UnavailableSymbolFontCombination' => 'El símbolo "$1" no está disponible en la fuente "$2"',
 	'math_UnrecognisedCommand' => 'Comando irreconocible "$1"',
+	'math_WrongFontEncoding' => 'El símbolo "$1" puede no aparecer en la codificación de fuente "$2"',
+	'math_WrongFontEncodingWithHint' => 'El símbolo "$1" puede no aparecer en la codificación de fuente "$2".
+Intenta usando el comando "$3{...}".',
 );
 
 /** Basque (Euskara)

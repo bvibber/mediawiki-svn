@@ -1183,8 +1183,14 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'contributors' => 'Condrebbutore',
+	'contributors-toolbox' => 'Condrebbuture prengepàle',
 	'contributors-target' => 'Titele:',
 	'contributors-submit' => 'Fà vedè',
+	'contributors-subtitle' => 'Condrebbutore prengepàle de $1',
+	'contributors-others' => "e {{PLURAL:$1|'notre|$1 otre}}",
+	'contributors-badtitle' => 'Titele invalide.',
+	'contributors-nosuchpage' => "'A pàgene $1 non g'esiste.",
 );
 
 /** Russian (Русский)

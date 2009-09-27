@@ -4415,10 +4415,12 @@ $messages['io'] = array(
 
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
+ * @author Spacebirdy
  */
 $messages['is'] = array(
 	'configure-desc-ns' => 'Nafnrými',
 	'configure-section-namespaces' => 'Nafnrými',
+	'configure-throttle-action-emailuser' => 'Senda tölvupóst',
 );
 
 /** Italian (Italiano)

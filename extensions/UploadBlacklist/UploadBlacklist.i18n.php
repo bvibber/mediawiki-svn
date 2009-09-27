@@ -228,6 +228,13 @@ $messages['nl'] = array(
 	'uploadblacklist-desc' => 'Voegt een zwarte lijst toe voor uploads',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'uploadblacklist-desc' => 'Legg til ein funksjon for å svartelista visse opplastingar',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

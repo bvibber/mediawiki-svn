@@ -297,11 +297,13 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'simplesearch' => 'Egyszerű keresés',
 	'simplesearch-desc' => 'Extra funkciókat biztosít a Vector felület egyszerűsített kereséséhez',
 	'simplesearch-search' => 'Keresés',
+	'simplesearch-containing' => 'tartalmazza…',
 );
 
 /** Interlingua (Interlingua)

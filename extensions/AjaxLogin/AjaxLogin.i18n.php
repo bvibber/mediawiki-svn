@@ -211,6 +211,9 @@ Esto hará que salgas de esta página de edición y podrías perder tu edición 
 	'ajaxLogin2' => '¿Estas seguro?
 Podrías perder tus ediciones si abandonas esta página ahora.',
 	'ajaxlogin-create' => 'Crear una cuenta',
+	'al-nosuchuser' => 'No existe usuario con el nombre "$1".
+Los nombres de usuario son sensibles a las mayúsculas.
+Verifique su escritura.',
 );
 
 /** Estonian (Eesti)
