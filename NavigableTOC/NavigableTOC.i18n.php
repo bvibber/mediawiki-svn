@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'navigabletoc-preference' => 'Enable navigable table of contents',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'navigabletoc-desc' => '{{desc}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -212,7 +219,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'navigabletoc' => 'Daftar isi yang dapat dinavigasi',
-	'navigabletoc-desc' => 'Menambahkan sebuah daftar isi pada formulir penyuntingan yang jika diklik dapat langsung menuju bagian yang dimaksud',
+	'navigabletoc-desc' => 'Menambahkan sebuah daftar isi pada formulir penyuntingan yang jika diklik dapat langsung menuju ke bagian yang dimaksud',
+	'navigabletoc-preference' => 'Daftar isi yang dapat dinavigasi',
 );
 
 /** Italian (Italiano)
@@ -316,6 +324,7 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'navigabletoc' => 'Tàula dij contnù navigàbil',
 	'navigabletoc-desc' => "A gionta na tàula dij contnù a la form ëd modìfica ch'a scor la casela quand che as clica na session",
+	'navigabletoc-preference' => 'Abìlita a scanucié la tàula dij contnù',
 );
 
 /** Portuguese (Português)

@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'usabilityinitiative-desc' => 'Features developed by the Wikipedia Usability Initiative to enhance the usability of MediaWiki',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'usabilityinitiative-desc' => '{{desc}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -372,6 +379,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'usabilityinitiative' => 'Инициатива юзабилити',
 	'usabilityinitiative-desc' => 'Возможности движка MediaWiki, разработанные в рамках Инициативы юзабилити Википедии и направленные на улучшение его удобства и простоты использования',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'usabilityinitiative' => 'Табыгас Ситиһиитэ',
+	'usabilityinitiative-desc' => 'Табыгас Ситиһиитин иһинэн эбиллибит MediaWiki движогун саҥа кыахтара; үлэ судургу уонна табыгастаах буоларыгар аналлаахтар.',
 );
 
 /** Slovak (Slovenčina)

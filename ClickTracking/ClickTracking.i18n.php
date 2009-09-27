@@ -621,6 +621,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'clicktracking' => 'Баттааһыннары Табыгас Ситиһиитин иһинэн кэтээһин',
 	'clicktracking-desc' => 'Баттааһыны кэтээһин. Сирэйи саҥардыбат түбэлтэлэри кэтииргэ туттуллар',
 	'clicktracking-title' => 'Кыттааччылар баттааһыннарын хомуура',
 	'event-name' => 'Түбэлтэ аата',

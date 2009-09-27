@@ -204,8 +204,10 @@ $messages['en'] = array(
  * @author Purodha
  * @author SMP
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'edittoolbar-desc' => '{{desc}}',
 	'edittoolbar-preference' => 'Option in [[Special:Preferences]]',
 	'edittoolbar-cgd-preference' => "Caption of a checkbox on [[Special:Preferences]] (''editing'' tab), enabling helper dialogs for various features of the advanced edit toolbar (e.g. inserting links or tables).",
 	'edittoolbar-loading' => '{{Identical|Loading}}',
@@ -272,6 +274,7 @@ This message does not support PLURAL on $1.',
 	'edittoolbar-help-content-ulist-description' => '{{Identical|Bulleted list}}',
 	'edittoolbar-help-content-olist-description' => '{{Identical|Numbered list}}',
 	'edittoolbar-help-content-file-description' => '{{Identical|Embedded file}}',
+	'edittoolbar-help-content-file-syntax' => "{{doc-important|''thumb'' is a magic word. Leave it untranslated!}}",
 	'edittoolbar-help-content-file-result' => 'Do not translate anything except "Caption text" (twice) and "Enlarge" (to "{{int:thumbnail-more}}").',
 	'edittoolbar-help-content-reference-description' => '{{Identical|Reference}}',
 	'edittoolbar-help-content-reference-syntax' => 'I suggest leaving the <code>name="test"</code> string in English',
@@ -870,11 +873,16 @@ $messages['br'] = array(
 	'edittoolbar' => 'Barrenn ostilhoù kemmañ',
 	'edittoolbar-desc' => "Barrenn ostilhoù kemmañ aesoc'h da implijout",
 	'edittoolbar-preference' => 'Gweredekaat ar varrenn ostilhoù kemmañ gwellaet',
+	'edittoolbar-cgd-preference' => "Aotren ar skoazell evit ouzhpennañ tammoù skrid wiki kempleshoc'h",
 	'edittoolbar-loading' => 'O kargañ...',
 	'edittoolbar-tool-bold' => 'Tev',
 	'edittoolbar-tool-bold-example' => 'Testenn dev',
 	'edittoolbar-tool-italic' => 'Italek',
 	'edittoolbar-tool-italic-example' => 'Testenn italek',
+	'edittoolbar-tool-ilink' => 'Liamm diabarzh',
+	'edittoolbar-tool-ilink-example' => 'Anv al liamm',
+	'edittoolbar-tool-xlink' => 'Liamm diavaez (arabat disoñjal ar rakger http:// )',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com anv al liamm',
 	'edittoolbar-tool-link' => 'Liamm',
 	'edittoolbar-tool-link-title' => "Ensoc'hañ ul liamm",
 	'edittoolbar-tool-link-int' => 'war-du ur bajenn wiki',
@@ -925,6 +933,18 @@ $messages['br'] = array(
 {{ns:file}}:Skouer.jpg|Deskrivadur2',
 	'edittoolbar-tool-newline' => 'Linenn nevez',
 	'edittoolbar-tool-table' => 'Taolenn',
+	'edittoolbar-tool-table-example-old' => '-
+! talbenn 1
+! talbenn 2
+! talbenn 3
+|-
+| linenn 1, kellig 1
+| linenn 1, kellig 2
+| linenn 1, kellig 3
+|-
+| linenn 2, kellig 1
+| linenn 2, kellig 2
+| linenn 2, kellig 3',
 	'edittoolbar-tool-table-example' => 'Linenn $1, kellig $2',
 	'edittoolbar-tool-table-example-header' => 'Linenn $1, kellig $2 (talbenn)',
 	'edittoolbar-tool-table-title' => "Ensoc'hañ un daolenn",
@@ -4178,7 +4198,7 @@ $messages['he'] = array(
 {{ns:file}}:דוגמה.jpg|כותרת 2',
 	'edittoolbar-tool-newline' => 'שורה חדשה',
 	'edittoolbar-tool-table' => 'טבלה',
-	'edittoolbar-tool-table-example-old' => "-
+	'edittoolbar-tool-table-example-old' => '-
 ! כותרת 1
 ! כותרת 2
 ! כותרת 3
@@ -4189,7 +4209,7 @@ $messages['he'] = array(
 |-
 | שורה 2, תא 1
 | שורה 2, תא 2
-| שורה 2, תא 3",
+| שורה 2, תא 3',
 	'edittoolbar-tool-table-example' => 'שורה $1, תא $2',
 	'edittoolbar-tool-table-example-header' => 'שורה $1, תא $2 (כותרת)',
 	'edittoolbar-tool-table-title' => 'הוספת טבלה',
@@ -4634,7 +4654,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'edittoolbar' => 'Szerkesztő eszköztár',
+	'edittoolbar' => 'Szerkesztő-eszköztár',
 	'edittoolbar-desc' => 'Használhatóbb szerkesztő eszköztár',
 	'edittoolbar-preference' => 'Fejlettebb szerkesztő-eszköztár használata',
 	'edittoolbar-cgd-preference' => 'Segítség haladó wikiszöveg hozzáadásához',
@@ -4989,6 +5009,7 @@ $messages['id'] = array(
 	'edittoolbar' => 'Batang alat penyuntingan',
 	'edittoolbar-desc' => 'Batang alat penyuntingan dengan kebergunaan yang ditingkatkan',
 	'edittoolbar-preference' => 'Aktifkan batang alat penyuntingan yang telah ditingkatkan',
+	'edittoolbar-cgd-preference' => 'Mengaktifkan bantuan untuk menambahkan teks wiki',
 	'edittoolbar-loading' => 'Memuat...',
 	'edittoolbar-tool-bold' => 'Tebal',
 	'edittoolbar-tool-bold-example' => 'Teks tebal',
@@ -5048,6 +5069,18 @@ $messages['id'] = array(
 {{ns:file}}:Contoh.jpg|Judul2',
 	'edittoolbar-tool-newline' => 'Baris baru',
 	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-example-old' => '	-
+! judul bagian 1
+! judul bagian 2
+! judul bagian 3
+|-
+| baris 1, sel 1
+| baris 1, sel 2
+| baris 1, sel 3
+|-
+| baris 2, sel 1
+| baris 2, sel 2
+| baris 2, sel 3',
 	'edittoolbar-tool-table-example' => 'Baris $1, sel $2',
 	'edittoolbar-tool-table-example-header' => 'Baris $1, sel $2 (kepala bagian)',
 	'edittoolbar-tool-table-title' => 'Masukkan tabel',
@@ -6827,6 +6860,23 @@ $messages['ml'] = array(
 	'edittoolbar-help-content-bolditalic-description' => 'കട്ടികൂട്ടി ചരിച്ചുള്ളത്',
 	'edittoolbar-help-content-bolditalic-syntax' => "'''''കട്ടികൂട്ടി ചരിച്ചുള്ള എഴുത്ത്'''''",
 	'edittoolbar-help-content-bolditalic-result' => '<strong><em>കട്ടികൂട്ടി ചരിച്ചുള്ള എഴുത്ത്</em></strong>',
+	'edittoolbar-help-content-ilink-syntax' => '[[താളിന്റെ തലക്കെട്ട്|കണ്ണിയുടെ നാമം]]<br />[[താളിന്റെ തലക്കെട്ട്]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>കണ്ണിയുടെ നാമം</a><br /><a href='#'>താളിന്റെ തലക്കെട്ട്</a>",
+	'edittoolbar-help-content-xlink-description' => 'പുറത്തേയ്ക്കുള്ള കണ്ണി',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org കണ്ണിയുടെ പേര്]<br />[http://www.example.org]<br />http://www.example.org',
+	'edittoolbar-help-content-xlink-result' => "<a href='#' class='external'>കണ്ണിയുടെ പേര്</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
+	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|ലഘു|വിവരണ കുറിപ്പ്]]',
+	'edittoolbar-help-content-reference-description' => 'അവലംബം',
+	'edittoolbar-help-content-reference-syntax' => 'താളിലെ എഴുത്ത്.&lt;ref name="test"&gt;[http://www.example.org കണ്ണിയായുള്ള എഴുത്ത്], കൂടുതൽ എഴുത്ത്.&lt;/ref&gt;',
+	'edittoolbar-help-content-reference-result' => "താളിലെ എഴുത്ത്.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-rereference-description' => 'അതേ അവലംബത്തിന്റെ കൂടുതൽ ഉപയോഗം',
+	'edittoolbar-help-content-rereference-result' => "താളിലെ എഴുത്ത്.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-showreferences-description' => 'അവലംബങ്ങൾ പ്രദർശിപ്പിക്കുക',
+	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>കണ്ണിയായുള്ള എഴുത്ത്</a>, കൂടുതൽ എഴുത്ത്.</li></ol>",
+	'edittoolbar-help-content-signaturetimestamp-description' => 'സമയമുദ്രയോടുകൂടിയ ഒപ്പ്',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>ഉപയോക്തൃനാമം</a> (<a href='#' title='{{#special:mytalk}}'>സംവാദം</a>) 15:54, 10 ജൂൺ 2009 (UTC)",
+	'edittoolbar-help-content-signature-description' => 'ഒപ്പ്',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>ഉപയോക്തൃനാമം</a> (<a href='#' title='{{#special:mytalk}}'>സംവാദം</a>)",
 );
 
 /** Mongolian (Монгол)
@@ -8783,6 +8833,7 @@ $messages['sah'] = array(
 	'edittoolbar' => 'Көннөрүү хаптаһына (панель)',
 	'edittoolbar-desc' => 'Тупсарыллыбыт уларытыы хаптаһына',
 	'edittoolbar-preference' => 'Тупсарыллыбыт уларытыы хаптаһынын холбуурга',
+	'edittoolbar-cgd-preference' => 'Арыый уустук биики тиэкиһи туһанар туһунан көмө-суруктары көстөр гыныы',
 	'edittoolbar-loading' => 'Киллэрии...',
 	'edittoolbar-tool-bold' => 'Модьу',
 	'edittoolbar-tool-bold-example' => 'Модьу бичик',
@@ -8807,6 +8858,7 @@ $messages['sah'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Сатаммат бас',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Сирэй баарын тургутуу...',
 	'edittoolbar-tool-link-int-invalid' => 'Суруллубут аат туттуллара сатаммат.',
+	'edittoolbar-tool-link-ext-invalid' => 'Алҕастаах URL ыйыллыбыт.',
 	'edittoolbar-tool-file' => 'Иһинээҕи билэ',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Быһаарыы',
@@ -9692,6 +9744,10 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'edittoolbar-loading' => 'Inapakizwa...',
+	'edittoolbar-tool-bold' => 'Koze',
+	'edittoolbar-tool-bold-example' => 'Maandishi ya kooze',
+	'edittoolbar-tool-italic' => 'Italiki',
 	'edittoolbar-tool-link' => 'Kiungo',
 	'edittoolbar-tool-link-title' => 'Kuweka kiungo',
 	'edittoolbar-tool-link-int-target' => 'Jina la ukurasa:',
@@ -9712,6 +9768,10 @@ $messages['sw'] = array(
 	'edittoolbar-help-page-link' => 'Viungo',
 	'edittoolbar-help-page-list' => 'Orodha',
 	'edittoolbar-help-page-file' => 'Mafaili',
+	'edittoolbar-help-content-italic-description' => 'Italiki',
+	'edittoolbar-help-content-bold-description' => 'Koze',
+	'edittoolbar-help-content-bold-syntax' => "'''Maandishi ya kooze'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Maandishi ya kooze</strong>',
 );
 
 /** Telugu (తెలుగు)

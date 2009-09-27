@@ -21,8 +21,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Bennylin
  * @author Mormegil
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'simplesearch-desc' => '{{desc}}',
 	'simplesearch-search' => 'Greyed out default text in the simple search box in the Vector skin. (It disappears and lets the user enter the requested search terms when the search box receives focus.)
 
 {{Identical|Search}}',
