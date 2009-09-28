@@ -50,6 +50,8 @@ class ClickTrackingHooks {
 	 * Adds JavaScript
 	 */
 	public static function addJS(){
+		global $wgOut;
+		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
 		UsabilityInitiativeHooks::addVariables(
@@ -57,11 +59,9 @@ class ClickTrackingHooks {
 				'wgTrackingToken' => ClickTrackingHooks::get_session_id()
 			)
 		);
-		UsabilityInitiativeHooks::addVariables(
-			array( 
-				'wgClickTrackingIsThrottled' => ClickTrackingHooks::isUserThrottled()
-			)
-		);
+		//need a literal false, not "false" to be output, to work prperly
+		$userThrottle = ClickTrackingHooks::isUserThrottled();
+		$wgOut->addScript("<script> var wgClickTrackingIsThrottled = $userThrottle; </script>");
 		
 		return true;
 		
