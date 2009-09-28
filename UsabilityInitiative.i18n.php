@@ -49,6 +49,14 @@ $messages['be-tarask'] = array(
 	'usabilityinitiative-desc' => 'Дапаўненьні распрацаваныя ў межах ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня MediaWiki',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'usabilityinitiative' => 'ইউজাবিলিটি ইনিসিয়েটিভ',
+	'usabilityinitiative-desc' => 'মিডিয়াউইকি এর ব্যবহারযোগ্যতা বাড়াতে উইপিডিয়া ইউজাবিলিটি ইনিসিয়েটভ এ বৈশিষ্ট্যগুলোর উন্নয়ন করেছে',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

@@ -1429,6 +1429,7 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Strainu
  */
 $messages['ro'] = array(
 	'prefstats' => 'Statistici despre preferinţe',
@@ -1436,6 +1437,12 @@ $messages['ro'] = array(
 	'prefstats-title' => 'Statistici despre preferinţe',
 	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferinţe.
 Apăsaţi pe ele pentru a vizualiza statistici despre ele.',
+	'prefstats-factor-hour' => 'oră',
+	'prefstats-factor-sixhours' => 'şase ore',
+	'prefstats-factor-day' => 'zi',
+	'prefstats-factor-week' => 'săptămână',
+	'prefstats-factor-twoweeks' => 'două săptămâni',
+	'prefstats-factor-fourweeks' => 'patru săptămâni',
 );
 
 /** Tarandíne (Tarandíne)

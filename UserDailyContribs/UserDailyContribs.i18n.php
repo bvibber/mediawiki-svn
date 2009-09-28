@@ -31,6 +31,13 @@ $messages['be-tarask'] = array(
 	'userdailycontribs-desc' => 'Штодзённы ўнёсак удзельнікаў для пашырэньня сачэньня за націскамі мышшу',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'userdailycontribs-desc' => 'ক্লিক ট্র্যাকিং এক্সটেশনের জন্য ব্যবহারকারীগণের দৈনিক অবদানসমূহ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

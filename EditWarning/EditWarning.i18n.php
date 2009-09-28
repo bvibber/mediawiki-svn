@@ -65,6 +65,9 @@ $messages['be-tarask'] = array(
 $messages['bn'] = array(
 	'editwarning' => 'সম্পাদনা সতর্কীকরণ',
 	'editwarning-desc' => 'একটি সতর্কীকরণ বার্তা দিন যখন ব্যবহারকারী সংরক্ষণ না করে সম্পাদনা ফরম ত্যাগ করতে চান',
+	'editwarning-warning' => 'এই পাতাটি ত্যাগ করার কারণে আপনার কোনো পরিবর্তন হারিয়ে যেতে পারে।
+আপনি এই সতর্কীকরণ বার্তাটি আপনার পছন্দের "{{int:prefs-editing}}" অনুচ্ছেদ থেকে নিস্ক্রিয় করতে পারেন।',
+	'editwarning-preference' => 'অসংরক্ষিত পরিবর্তন সহ কোনো পাতা ত্যাগের সময় সাবধান করো',
 );
 
 /** Breton (Brezhoneg)
@@ -74,7 +77,7 @@ $messages['br'] = array(
 	'editwarning' => "Kemenn-diwall d'ar c'hemmoù",
 	'editwarning-desc' => "Diskouez ur c'hemenn-diwall ma klask un implijer kuitaat ar furmskrid hep enrollañ e gemmoù",
 	'editwarning-warning' => "Mar kuitait ar bajenn-mañ e c'hallit koll ar c'hemmoù degaset ganeoc'h.
-Gallout a rit diweredekaaat ar c'hemenn-diwall-mañ e rann \"{{int:prefs-editing}}\" ho penndibaboù.",
+Ma'z oc'h luget e c'hallit diweredekaat ar c'hemenn-diwall-mañ e rann \"{{int:prefs-editing}}\" ho penndibaboù.",
 	'editwarning-preference' => 'Kas keloù din pa guitaan ur bajenn degaset kemmoù enni hep enrollañ',
 );
 
@@ -97,8 +100,8 @@ Možete isključiti ovo upozorenje u "{{int:prefs-editing}}" dijelu vaših opcij
 $messages['ca'] = array(
 	'editwarning' => "Avís d'edició",
 	'editwarning-desc' => 'Mostra un avís quan un usuari intenti sortir del formulari sense desar.',
-	'editwarning-warning' => "Si sortiu d'aquesta pàgina, perdreu tots els canvis que heu fet.
-Podeu eliminar aquest avís a la secció «{{int:prefs-editing}}» de les vostres preferències.",
+	'editwarning-warning' => "Si sortiu d'aquesta pàgina perdreu tots els canvis que hàgiu fet.
+Si teniu un compte d'usuari, podeu eliminar aquest avís a la secció «{{int:prefs-editing}}» de les vostres preferències.",
 	'editwarning-preference' => "Avisa'm quan surti d'una pàgina d'edició amb canvis sense desar",
 );
 
@@ -171,8 +174,7 @@ Sie können die Anzeige dieser Warnung im „{{int:prefs-editing}}“-Bereich Ih
 $messages['dsb'] = array(
 	'editwarning' => 'Wobźěłowańske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazaś, gaž wužywaŕ wopytujo wobźěłowański formular bźeze składowanja spušćiś',
-	'editwarning-warning' => 'Gaž toś ten bok se spušća, mógu se změny zgubiś, kótarež sy pśewjadł.
-Móžoš toś to warnowanje we wótrězku {{int:prefs-editing}} swójich nastajenjow znjemóžniś.',
+	'editwarning-warning' => 'Gaž toś ten bok se spušća, mógu se změny zgubiś, kótarež sy pśewjadł. Jolic sy pśizjawjeny, móžoš toś to warnowanje we wótrězku {{int:prefs-editing}} swójich nastajenjow znjemóžniś.',
 	'editwarning-preference' => 'Warnowaś, gaž bok spušća se z njeskłaźonymi změnami',
 );
 
@@ -220,7 +222,7 @@ $messages['et'] = array(
 	'editwarning' => 'Muutmishoiatus',
 	'editwarning-desc' => 'Kuvab hoiatuse, kui kasutaja üritab redigeerimisvormi salvestamata sulgeda.',
 	'editwarning-warning' => 'Sellelt leheküljelt lahkumise tõttu võivad tehtud muudatused kaotsi minna.
-Selle hoiatuse saad keelata eelistuste alaosas "{{int:prefs-editing}}".',
+Kui oled sisse loginud, saad selle hoiatuse eelistuste alaosas "{{int:prefs-editing}}" keelata.',
 	'editwarning-preference' => 'Hoiata mind, kui lahkun redigeerimisleheküljelt muudatusi salvestamata',
 );
 
@@ -232,7 +234,7 @@ $messages['eu'] = array(
 	'editwarning' => 'Oharra aldatu',
 	'editwarning-desc' => 'Oharra erakusten du lankide batek editatzeko orritik irteten denean gorde gabe',
 	'editwarning-warning' => 'Orrialde honetatik irteten bazara, egindako aldaketak galdu egingo dira.
-Mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:prefs-editing}}" atalean.',
+Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:prefs-editing}}" atalean.',
 	'editwarning-preference' => 'Abisa nazazu gorde gabeko aldaketak eginez orrialde bat uzten dudanean',
 );
 
@@ -248,6 +250,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Guillom
  * @author Kropotkine 113
  * @author Verdy p
  */
@@ -255,7 +258,7 @@ $messages['fr'] = array(
 	'editwarning' => 'Avertissement de modification',
 	'editwarning-desc' => 'Afficher un avertissement lorsque l’utilisateur tente de quitter le formulaire sans enregistrer les modifications',
 	'editwarning-warning' => 'Quitter cette page vous fera perdre toutes les modifications que vous avez faites.
-Vous pouvez retirer cet avertissement dans la section {{int:prefs-editing}} de vos préférences.',
+Si vous êtes connecté avec votre compte, vous pouvez retirer cet avertissement dans la section « {{int:prefs-editing}} » de vos préférences.',
 	'editwarning-preference' => 'M’avertir quand je quitte une page de modification sans publier les changements',
 );
 
@@ -311,8 +314,7 @@ Možete onemogućiti ovo upozorenje u odjeljku "{{int:prefs-editing}}" Vaših po
 $messages['hsb'] = array(
 	'editwarning' => 'Wobdźěłowanske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazać, hdyž wužiwar pospytuje, wobdźěłowanski formular bjez składowanja wopušćić',
-	'editwarning-warning' => 'Hdyž so strona wopušća, móžeja so změny zhubić, kotrež sy přewjedł.
-Móžeš tute warnowanje we wotrězku {{int:prefs-editing}} swojich nastajenjow znjemóžnić.',
+	'editwarning-warning' => 'Hdyž so strona wopušća, móžeja so změny zhubić, kotrež sy přewjedł. Jeli sy přizjewjeny, móžeš tute warnowanje we wotrězku {{int:prefs-editing}} swojich nastajenjow znjemóžnić.',
 	'editwarning-preference' => 'Warnować, hdyž so wobdźěłowanska strona z njeskładowanymi změnami wopušća',
 );
 
@@ -426,7 +428,7 @@ $messages['lb'] = array(
 	'editwarning' => 'Warnung virun enger Ännerung',
 	'editwarning-desc' => 'Weist eng Warnung wann e Benotzer versicht den Ännerungsformulaire ze verloossen ouni ofzespàicheren',
 	'editwarning-warning' => 'Wann Dir dës Säit verloosst kann dat dozou féieren datt Dir all Ännerungen, déi Dir gemaach hutt, verléiert.
-Dir kënnt dës Warnung an der Sektioun "{{int:prefs-editing}}" vun Ären Astellungen ausschalten.',
+Wann Dir ageloggt sidd, kënnt Dir dës Warnung an der Sektioun "{{int:prefs-editing}}" vun Ären Astellungen ausschalten.',
 	'editwarning-preference' => "Mech warne wann ech d'Ännerung vun enger Säit verloosen, ouni Ännerunge gespäichert ze hunn",
 );
 
@@ -475,7 +477,7 @@ $messages['nl'] = array(
 	'editwarning' => 'Bewerkingswaarschuwing',
 	'editwarning-desc' => 'Geeft een waarschuwing weer als een gebruiker probeert een bewerkingsvenster te verlaten zonder wijzigingen op te slaan',
 	'editwarning-warning' => 'Als u deze pagina verlaat verliest u mogelijk wijzigingen die u hebt gemaakt.
-U kunt deze waarschuwing uitschakelen in het tabblad "{{int:prefs-editing}}" in uw voorkeuren.',
+Als u bent aangemeld, kunt u deze waarschuwing uitschakelen in het tabblad "{{int:prefs-editing}}" in uw voorkeuren.',
 	'editwarning-preference' => 'Waarschuw mij als ik een bewerkte pagina die nog niet is opgeslagen wil verlaten',
 );
 

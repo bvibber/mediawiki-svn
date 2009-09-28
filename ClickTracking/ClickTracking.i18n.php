@@ -97,6 +97,26 @@ $messages['be-tarask'] = array(
 	'expert' => 'Экспэрт',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'clicktracking' => 'ইউজাবিলিটি ইনিসিয়াটিভ ক্লিক ট্র্যাকিং',
+	'clicktracking-title' => 'সমষ্টিক ব্যবহার ক্লিক',
+	'event-name' => 'ইভেন্টের নাম',
+	'expert-header' => '"দক্ষ" ক্লিক',
+	'intermediate-header' => '"মাধ্যমিক" ক্লিক',
+	'beginner-header' => '"নবাগত" ক্লিক',
+	'total-header' => 'মোট ক্লিক',
+	'start-date' => 'শুরুর তারিখ (YYYYMMDD)',
+	'end-date' => 'শেষ তারিখ  (YYYYMMDD)',
+	'increment-by' => 'প্রতিটি ডাটা পয়েন্ট দিনের সংখ্যা বোঝায়',
+	'change-graph' => 'লেখচিত্র পরিবর্তন',
+	'beginner' => 'নবাগত',
+	'intermediate' => 'মাধ্যমিক',
+	'expert' => 'দক্ষ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -125,6 +145,15 @@ $messages['bs'] = array(
 	'beginner' => 'Početnik',
 	'intermediate' => 'Napredni',
 	'expert' => 'Stručnjak',
+);
+
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'total-header' => 'Clics totals',
+	'start-date' => "Data d'inici (AAAAMMDD)",
+	'end-date' => 'Data de finalització (AAAAMMDD)',
 );
 
 /** Czech (Česky)
@@ -245,6 +274,12 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'clicktracking-title' => 'Gehitutako lankideen klikak',
+	'event-name' => 'Ekintzaren izena',
+	'expert-header' => '"Aditu" klikak',
+	'intermediate-header' => '"Maila ertaineko" klikak',
+	'beginner-header' => '"Hasiberri" klikak',
+	'total-header' => 'Klikak guztira',
 	'start-date' => 'Hasiera Data (UUUUHHEE)',
 	'end-date' => 'Amaiera Data (UUUUHHEE)',
 	'change-graph' => 'Grafikoa aldatu',
