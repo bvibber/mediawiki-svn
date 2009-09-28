@@ -1109,6 +1109,10 @@ js2AddOnloadHook( function() {
 					var cols = parseInt( $j( '#edittoolbar-table-dimensions-columns' ).val() );
 					var header = Math.min( 1, $j( '#edittoolbar-table-dimensions-header:checked' ).size() );
 					var table = "{|\n";
+					if ( rows * cols > 1000 ) {
+						alert( gM( 'edittoolbar-tool-table-toomany', 1000 ) );
+						return;
+					}
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
 						for ( var c = 0; c < cols; c++ ) {
