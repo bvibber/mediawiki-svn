@@ -129,6 +129,18 @@ $messages['arz'] = array(
 	'amazonplus-less' => 'أقل',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'amazonplus-desc' => 'Пашырэньне для паказу інфармацыі Amazon, якое можна канфігураваць',
+	'amazonplus-nores' => 'Памылка: Вынікаў няма!',
+	'amazonplus-noidres' => 'Памылка: Немагчыма знайсьці ідэнтыфікатар прадукту!',
+	'amazonplus-fgcerr' => 'Памылка: Немагчыма атрымаць зьвесткі з Amazon!',
+	'amazonplus-slserr' => 'Памылка: Не магчыма прааналізаваць зьвесткі з Amazon!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

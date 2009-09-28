@@ -77,6 +77,16 @@ $messages['avk'] = array(
 $2 warzafa favesikpata su zo redur koe $3 ko $4.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'newusernotif-desc' => 'Vasendt E-Post-Benåchrichtigungen, wãun a neichs Benutzakonto ãnglegt wiad',
+	'newusernotifbody' => 'Seavas $1!
+
+Am $5 is um $6 auf $3 a neichs Benutzakonto ãnglegt woan: $2.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

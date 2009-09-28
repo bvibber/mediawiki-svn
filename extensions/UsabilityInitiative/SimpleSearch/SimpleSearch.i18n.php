@@ -193,9 +193,10 @@ $messages['et'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
-	'simplesearch' => 'Bilaketa sinplea',
+	'simplesearch' => 'Bilaketa arrunta',
 	'simplesearch-desc' => 'Funtzio gehiagarria gehitzen du Vector-en bilaketa erraztura',
 	'simplesearch-search' => 'Bilatu',
+	'simplesearch-containing' => 'edukian...',
 );
 
 /** Persian (فارسی)

@@ -212,6 +212,7 @@ $messages['af'] = array(
 	'viewapc-memory-usage' => 'Geheuegebruik',
 	'viewapc-memory-free' => 'Vry: $1 ($2)',
 	'viewapc-memory-used' => 'Gebruik: $1 ($2)',
+	'viewapc-display-attribute' => 'Eienskap',
 	'viewapc-display-value' => 'Waarde',
 	'viewapc-display-filename' => 'Lêernaam',
 	'viewapc-display-info' => 'Naam',
@@ -575,6 +576,19 @@ $messages['be-tarask'] = array(
 	'viewapc-ls-sort-created' => 'Створана',
 	'viewapc-ls-sort-deleted' => 'Выдалена',
 	'viewapc-ls-sort-timeout' => 'Тайм-аўт',
+	'viewapc-ls-limit-none' => 'Усе',
+	'viewapc-ls-more' => "''Ёсьць яшчэ $1 {{PLURAL:$1|запіс|запісы|запісаў}}''",
+	'viewapc-ls-nodata' => "''Няма адпаведных зьвестак''",
+	'viewapc-delete-ok' => 'Запіс кэша <nowiki>$1</nowiki> выдалены.',
+	'viewapc-delete-failed' => 'Немагчыма выдаліць запіс кэша <nowiki>$1</nowiki>.',
+	'viewapc-version-info' => 'Інфармацыя пра вэрсію',
+	'viewapc-version-changelog' => 'Журнал зьменаў',
+	'viewapc-version-failed' => 'Немагчыма атрымаць інфармацыю пра вэрсію.',
+	'viewapc-version-ok' => 'Вы выкарыстоўвайце апошнюю вэрсію APC ($1)',
+	'viewapc-version-old' => 'Вы выкарыстоўвайце састарэлую вэрсію APC ($1).
+Новая вэрсія $2 даступная на http://pecl.php.net/package/APC/$2',
+	'viewapc-filecache-cleared' => "'''''Файлавы кэш ачышчаны.'''''",
+	'viewapc-usercache-cleared' => "'''''Кэш дастасаваньня ачышчаны.'''''",
 );
 
 /** Bulgarian (Български)

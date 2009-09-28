@@ -277,6 +277,7 @@ $messages['hu'] = array(
 	'ratedpages-list' => 'Alább a lapok olvasói értékelés szerint sorba tett listája látható.',
 	'ratedpages-none' => 'Nem található egyetlen lap sem a listában.',
 	'ratedpages-graphs' => 'értékelési adatok',
+	'ratedpages-count' => '{{PLURAL:$1|egy|$1}} értékelés',
 );
 
 /** Interlingua (Interlingua)

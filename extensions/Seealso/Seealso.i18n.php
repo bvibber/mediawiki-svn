@@ -54,6 +54,13 @@ $messages['arz'] = array(
 	'seealso-desc' => "عناوين 'See also' مترجمة باستخدام الوسم <code><nowiki><seealso></nowiki></code>.",
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'seealso' => 'Schau aa',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -1357,6 +1357,9 @@ Nahiko al zenuke gure Beta probatu?',
 	'optin-feedback-intro' => 'Eskerrik asko Beta erabili izanagatik.
 Jakin nahi dugu ea zer deritzozun interfaze berriaren inguruan, beraz asko gustatuko litzaiguke behean duzun hautazko inkesta beteko bazenu.',
 	'optin-feedback-back' => 'Ez baduzu gure inkesta bete nahi, $1-(e)ra itzul zenezake.',
+	'optin-success-in' => 'Beta bertsioa probatzen ari zara.
+Nahi baduzu atzera joan zintezke "{{int:option-leave}}" sakatuz orriaren goialdean.',
+	'optin-leave-cancel' => 'Beta erabiltzen jarraitu nahi baduzu, $1-(e)ra itzul zaitezke.',
 	'optin-success-out' => 'Betarik arrakastatsuko atera zara.
 Nahi duzunean proba dezakezu berriro "{{int:optin-try}}" loturan klik eginda pantailaren goian eskuinaldean.',
 	'optin-success-feedback' => 'Milesker zure feedbackarengatik!',
@@ -1380,12 +1383,18 @@ Nahi duzunean proba dezakezu berriro "{{int:optin-try}}" loturan klik eginda pan
 	'optin-survey-answer-whyoptout-other' => 'Beste arrazoirik:',
 	'optin-survey-question-explain' => 'Mesedez azaldu zure erantzuna behean:',
 	'optin-survey-question-techfail' => 'Arazo teknikorik izan duzu Beta erabiltzean?',
+	'optin-survey-question-techfail-ifyes' => 'Hala bada, mesedez azaldu:',
+	'optin-survey-question-usedtoolbar' => 'Erabili al duzu tresna-barra tolesgarri berria orriak aldatzeko?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Hala bada, zer gustatu zaizu? Zer ez zaizu gustatu?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Hala ez bada, zergatik ez? Erabiliko duzu? Azal iezaiguzu.',
 	'optin-survey-question-different' => 'Zer egin genezakeen ezberdina zuk Beta erabiltzen jarraitzeko?',
 	'optin-survey-question-browser' => 'Zein nabigatzaile erabiltzen duzu?',
 	'optin-survey-answer-browser-other' => 'Beste nabigatzailerik:',
 	'optin-survey-question-os' => 'Zein sistema eragile erabiltzen duzu?',
 	'optin-survey-answer-os-other' => 'Beste sistema eragilerik:',
 	'optin-survey-question-res' => 'Zein da zure pantailaren bereizmena?',
+	'optin-survey-question-changes' => 'Zein aldaketa ikusi nahi zenituzke Betan aurrera begira (mesedez aukeratu nahi dituzunak)?',
+	'optin-survey-answer-changes-nav' => 'Gunean nabigatzea errazten du.',
 	'optin-survey-answer-changes-upload' => 'Edukiak eta artxiboen igoera hobetu.',
 	'optin-survey-answer-changes-other' => 'Bestelakoak:',
 	'optin-improvements' => '== Zer hobetu da? ==
@@ -2713,7 +2722,7 @@ $messages['ksh'] = array(
 	'optin-intro' => 'De <i lang="en">Usability Initiative</i> vun de Wikipedia hät kräftesch jet draan jeärbeit, öm de Wikipedia besser zom Bedeene ze maache för de Metmaacher.
 Wells De <i lang="en">Beta</i> ußprobeere?',
 	'optin-feedback-intro' => 'Merci för et Ußprobeere.
-Mer wolle jähn weße, wat De vun uns Beta häls,
+Mer wolle jähn weße, wat De vun uns <i lang="en">Beta</i> häls,
 un mer sin Der dangkbaa, wann De op di Froore heh
 e paa Antwoote jävve dääts. Et koß nix, un verflich zoh nix.',
 	'optin-feedback-back' => 'Wann De nix ußfölle wells, kanns De och noh $1 zerök jonn.',
@@ -2724,8 +2733,8 @@ Do kanns doh emmer wider eruß kumme, endämm dat De op „{{int:optin-leave}}�
 Do kanns emmer wider zerök kumme, endämm dat De op „{{int:optin-try}}“ klecks.',
 	'optin-success-feedback' => 'Häzlijje Dangk för Ding Rökmäldung.',
 	'optin-accept-short' => 'Lom_mer dat donn!',
-	'optin-accept-long' => 'Beta ußprobeere',
-	'optin-accept-long-anon' => 'Enlogge un de Beta ußprobeere',
+	'optin-accept-long' => '<i lang="en">Beta</i> ußprobeere',
+	'optin-accept-long-anon' => 'Enlogge un de <i lang="en">Beta</i> ußprobeere',
 	'optin-deny-short' => 'Nää, dat wulle mer nit',
 	'optin-deny-long' => 'retuur op de vörijje Sigg',
 	'optin-submit-out' => '<i lang="en">Beta</i> verlohße',

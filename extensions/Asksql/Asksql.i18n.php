@@ -1022,6 +1022,7 @@ si prega di usàrila cu giudizziu.",
 );
 
 /** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
  * @author Zanatos
  */
 $messages['shi'] = array(
@@ -1035,6 +1036,7 @@ zod ɣikkad izdar ayfk tql iggotn i serveur, ɣayan afk ikhassa ast bahra ortskh
 	'querybtn' => 'skr asqsi',
 	'selectonly' => 'ɣar isksitn n lqraya waḥdutn aytiyoqbaln',
 	'querysuccessful' => 'asqsi injḥ !',
+	'right-asksql' => 'Skr  SQL',
 );
 
 /** Slovak (Slovenčina)

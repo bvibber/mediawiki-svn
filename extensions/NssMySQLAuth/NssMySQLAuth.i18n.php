@@ -473,6 +473,7 @@ $messages['hu'] = array(
 	'am-email' => 'e-mail cím',
 	'am-active' => 'aktív',
 	'am-updated' => 'A változtatások sikeresen elmentve',
+	'nss-desc' => 'Bővítmény libnss-mysql adatbázissal való hitelesítéshez. Tartalmaz egy [[Special:AccountManager|felhasználói fiók kezelőt]]',
 	'nss-rights' => 'jogosultságok',
 	'nss-save-changes' => 'Változtatások mentése',
 	'nss-create-account-header' => 'Új felhasználói fiók létrehozása',
@@ -480,6 +481,7 @@ $messages['hu'] = array(
 	'nss-no-mail' => 'Ne küldjön e-mailt',
 	'nss-welcome-mail' => 'A felhasználói fiókod $1 névvel és $2 jelszóval létrehozva.',
 	'nss-welcome-mail-subject' => 'Felhasználói fiók készítés',
+	'nss-db-error' => 'Hiba a hitelesítési adatbázisból való olvasáskor',
 );
 
 /** Interlingua (Interlingua)

@@ -956,6 +956,24 @@ $messages['sah'] = array(
 	'right-adminlinks' => '[[Special:AdminLinks|Дьаһабылларга анаммыт сигэлэри]] көрүү',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'adminlinks' => 'Izdayn imsfttutn',
+	'adminlinks-desc' => 'Zaydn i [[Special:AdminLinks|tasna tamzlayt]] izdayn li ra yaws imɣarn',
+	'adminlinks_documentation' => '$1 assultm  (documentation)',
+	'adminlinks_general' => 'Ikka kullu',
+	'adminlinks_editsidebar' => 'Ara tannalt n tasga (colonne= tannalt)',
+	'adminlinks_editcss' => 'Ara asdaw CSS',
+	'adminlinks_editmainpagename' => 'Sbadl assaɣ n tasna tamuqqrant',
+	'adminlinks_users' => 'Imsxdamn',
+	'adminlinks_createuser' => 'Skr amsxdam',
+	'adminlinks_browsesearch' => 'Asglb du ucnubc',
+	'adminlinks_importexport' => 'Askcm d Attḥay',
+	'right-adminlinks' => 'Ẓr izdayn s [[Special:AdminLinks|Izdayn nu umsfttu]]',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

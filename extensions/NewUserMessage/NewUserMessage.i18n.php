@@ -66,6 +66,14 @@ $messages['ast'] = array(
 	'newuseredit-summary' => "Añadiendo [[{{int:newusermessage-template}}|mensaxe de bienvenida]] a la nueva páxina d'alderique d'usuariu",
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'newusermessage-desc' => 'Fügt auf de Benutza-Diskussionsseitn vu neich ãngmöidte Benutza a Nåchricht ei',
+	'newuseredit-summary' => 'Begrüßt an neichn Benutza auf seina Diskussionsseitn mid ana [[{{int:newusermessage-template}}|Begriaßungsbotschåft]]',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

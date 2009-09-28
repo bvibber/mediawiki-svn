@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'filepagemasking-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'filepagemasking-desc' => 'Замяняе «.xxx» на «_xxx» у спасылках на старонкі апісаньня файлаў',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

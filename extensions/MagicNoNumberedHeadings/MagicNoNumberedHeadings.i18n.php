@@ -13,6 +13,13 @@ $messages['qqq'] = array(
 	'magicnonumberedheadings-desc' => '{{desc}}',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'magicnonumberedheadings-desc' => "Fügt s'magische Woat „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“ dazua",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

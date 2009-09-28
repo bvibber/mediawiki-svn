@@ -593,6 +593,14 @@ $messages['sc'] = array(
 	'abcdownload' => 'Scàrriga:',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'abcdesc' => 'Gen <tt>&lt;abc&gt;</tt> bac atskrt azawan ABC',
+	'abcdownload' => 'Srbu',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -319,7 +319,12 @@ $messages['hu'] = array(
 	'plotters-desc' => 'Megengedi egyéni JavaScript használatát a jsplot tagekben',
 	'plotters-missing-script' => 'Nem volt szkript megadva.',
 	'plotters-missing-arguments' => 'Nincsenek argumentumok megadva.',
+	'plotters-excessively-long-scriptname' => 'A szkript neve túl hosszú.
+Adj meg egy szkriptet, amelynek a neve maximum 255 karakter hosszú lehet.',
+	'plotters-excessively-long-preprocessorname' => 'Az előfeldolgozó neve túl hosszú.
+Adj meg egy előfeldolgozót, amelynek a neve maximum 255 karakter hosszú lehet.',
 	'plotters-no-data' => 'Nem volt adat megadva.',
+	'plotters-invalid-renderer' => 'Érvénytelen megjelenítőmotor lett kiválasztva.',
 );
 
 /** Interlingua (Interlingua)

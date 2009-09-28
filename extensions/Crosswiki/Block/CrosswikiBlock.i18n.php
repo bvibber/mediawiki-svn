@@ -2397,6 +2397,13 @@ $messages['th'] = array(
 * [[$4]]",
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'crosswikiblock-nocreate' => 'Hasap açmagyny bökde',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
