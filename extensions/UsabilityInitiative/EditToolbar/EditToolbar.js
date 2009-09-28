@@ -1164,6 +1164,10 @@ js2AddOnloadHook( function() {
 		titleMsg: 'edittoolbar-tool-replace-title',
 		id: 'edittoolbar-replace-dialog',
 		html: '\
+			<div id="edittoolbar-replace-message">\
+				<div id="edittoolbar-replace-nomatch" rel="edittoolbar-tool-replace-nomatch"></div>\
+				<div id="edittoolbar-replace-success"></div>\
+			</div>\
 			<fieldset><table><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
 				<td><input type="text" id="edittoolbar-replace-search" /></td>\
@@ -1231,6 +1235,7 @@ js2AddOnloadHook( function() {
 						return s;
 					}
 
+					$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
 					var searchStr = $j( '#edittoolbar-replace-search' ).val();
 					var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
 					var flags = '';
@@ -1249,7 +1254,7 @@ js2AddOnloadHook( function() {
 					var text = fixOperaBrokenness( $textarea.val() );
 					var matches = text.match( regex );
 					if ( !matches ) {
-						alert( gM( 'edittoolbar-tool-replace-nomatch' ) );
+						$j( '#edittoolbar-replace-nomatch' ).show();
 					} else if ( replaceAll ) {
 						// Prepare to select the last match
 						var start = text.lastIndexOf( matches[matches.length - 1] );
@@ -1261,7 +1266,9 @@ js2AddOnloadHook( function() {
 							.setSelection( start + corr, end + corr )
 							.scrollToCaretPosition();
 						
-						alert( gM( 'edittoolbar-tool-replace-success', matches.length ) );
+						$j( '#edittoolbar-replace-success' )
+							.text( gM( 'edittoolbar-tool-replace-success', matches.length ) )
+							.show();
 						$j(this).data( 'offset', 0 );
 					} else {
 						var start = text.indexOf( matches[0],
@@ -1282,7 +1289,8 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
-				$j(this).data( 'offset', 0 );	
+				$j(this).data( 'offset', 0 );
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button
