@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'navigabletoc-preference' => 'Enable navigable table of contents',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'navigabletoc-desc' => '{{desc}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -38,6 +45,7 @@ $messages['ar'] = array(
 $messages['be-tarask'] = array(
 	'navigabletoc' => 'Табліца зьместу з навігацыяй',
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
+	'navigabletoc-preference' => 'Дазволіць навігацыйныя табліцы зьместу',
 );
 
 /** Breton (Brezhoneg)
@@ -46,6 +54,7 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'navigabletoc' => 'Taolenn verdeeus',
 	'navigabletoc-desc' => "Ouzhpennañ a ra taolenn an titloù d'ar furmskrid kemmañ a zibun an destenn pa vez kliket war ur rann.",
+	'navigabletoc-preference' => 'Gweredekaat an daolenn verdeus an danvezioù',
 );
 
 /** Bosnian (Bosanski)
@@ -54,6 +63,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'navigabletoc' => 'Sadržaj sa navigacijom',
 	'navigabletoc-desc' => 'Dodaje sadržaj u obrazac za uređivanje koji pomjera kutiju tekst kada se klikne na sekciju',
+	'navigabletoc-preference' => 'Omogući navigacijski sadržaj',
 );
 
 /** Czech (Česky)
@@ -63,6 +73,14 @@ $messages['bs'] = array(
 $messages['cs'] = array(
 	'navigabletoc' => 'Navigovatelný obsah',
 	'navigabletoc-desc' => 'Přidává na editační stránku obsah, pomocí kterého se lze pohybovat v editovaném textu',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'navigabletoc' => 'Taflen gynnwys mordwyol',
+	'navigabletoc-desc' => "Yn ychwanegu taflen gynnwys wrth olygu, sy'n rholio'r blwch golygu wrth glicio ar bennawd yn y daflen",
 );
 
 /** Danish (Dansk)
@@ -87,13 +105,16 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'navigabletoc' => 'Nawigěrujobny zapis wopśimjeśa',
 	'navigabletoc-desc' => 'Pśidawa zapis wopśimjeśa wobźěłowańskemu formularoju, kótaryž kula tekstowe pólo, gaž se na wótrězk kliknjo',
+	'navigabletoc-preference' => 'Nawigěrujobny zapis wopśimjeśa zmóžniś',
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'navigabletoc' => 'Περιηγήσιμος πίνακας περιεχομένων',
+	'navigabletoc-desc' => 'Προσθέτει έναν πίνακα περιεχομένων στη φόρμα επεξεργασίας η οποία ξετυλίγει το κουτί κειμένου όταν γίνεται κλικ πάνω στο τμήμα',
 );
 
 /** Esperanto (Esperanto)
@@ -109,6 +130,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'navigabletoc' => 'Tabla de contenidos navegable',
 	'navigabletoc-desc' => 'Añade una tabla de contenido al formulario de edición que desplaza el cuadro de texto cuando se hace clic en una sección',
+	'navigabletoc-preference' => 'Habilitar tabla de contenidos navegable',
 );
 
 /** Basque (Euskara)
@@ -130,10 +152,12 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'navigabletoc' => 'Sommaire navigable',
 	'navigabletoc-desc' => 'Ajoute le sommaire au formulaire de modification qui défile le texte quand une section est cliquée',
+	'navigabletoc-preference' => 'Activer la table des matières navigable',
 );
 
 /** Galician (Galego)
@@ -142,6 +166,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'navigabletoc' => 'Táboa de contidos navegable',
 	'navigabletoc-desc' => 'Engade unha táboa de contidos para editar o formulario que contrae o cadro de texto cando se preme nunha sección',
+	'navigabletoc-preference' => 'Activar a táboa de contidos navegable',
 );
 
 /** Swiss German (Alemannisch)
@@ -150,14 +175,16 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'navigabletoc' => 'Navigierbari Tabälle vum Inhalt',
 	'navigabletoc-desc' => 'Fiegt e Inhalts-Tabälle zue in s Bearbeitigsformat, wu ne Tekschtchaschte gscrollt wird, wänn e abschitt aaklickt wird.',
+	'navigabletoc-preference' => 'Navigierbari Inhaltstabälle megli mache',
 );
 
 /** Hebrew (עברית)
- * @author Rotemliss
+ * @author Rotem Liss
  */
 $messages['he'] = array(
 	'navigabletoc' => 'תוכן עניינים עם אפשרות ניווט',
 	'navigabletoc-desc' => 'הוספת תוכן עניינים לדף העריכה, המאפשר לגלול את תיבת הטקסט בעת לחיצה על פסקה',
+	'navigabletoc-preference' => 'הפעלת תוכן עניינים עם אפשרות ניווט',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -166,14 +193,17 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'navigabletoc' => 'Nawigěrujomny zapis wobsaha',
 	'navigabletoc-desc' => 'Přidawa zapis wobsaha wobdźěłowanskemu formularej, kotaryž tekstowe polo kula, hdyž so na wotrězk kliknje.',
+	'navigabletoc-preference' => 'Nawigěrujomny zapis wobsaha zmóžnić',
 );
 
 /** Hungarian (Magyar)
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
 	'navigabletoc' => 'Navigálható tartalomjegyzék',
 	'navigabletoc-desc' => 'Egy tartalomjegyzéket ad a szerkesztési űrlaphoz, amivel a szerkesztőablakban az egyes szakaszok elejére lehet ugrani',
+	'navigabletoc-preference' => 'Tartalomjegyzék megjelenítése szerkesztéskor',
 );
 
 /** Interlingua (Interlingua)
@@ -182,6 +212,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'navigabletoc' => 'Tabula de contento navigabile',
 	'navigabletoc-desc' => 'Adde un tabula de contento al formulario de modification que face rolar le quadro de texto quando on clicca super un section',
+	'navigabletoc-preference' => 'Activar le tabula de contento navigabile',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -189,7 +220,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'navigabletoc' => 'Daftar isi yang dapat dinavigasi',
-	'navigabletoc-desc' => 'Menambahkan sebuah daftar isi pada formulir penyuntingan yang jika diklik dapat langsung menuju bagian yang dimaksud',
+	'navigabletoc-desc' => 'Menambahkan sebuah daftar isi pada formulir penyuntingan yang jika diklik dapat langsung menuju ke bagian yang dimaksud',
+	'navigabletoc-preference' => 'Daftar isi yang dapat dinavigasi',
 );
 
 /** Italian (Italiano)
@@ -202,10 +234,12 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Whym
  */
 $messages['ja'] = array(
-	'navigabletoc' => 'ナビゲーション可能な目次',
+	'navigabletoc' => '編集用目次',
 	'navigabletoc-desc' => 'クリックした際にテキストボックスをスクロールさせる目次を編集フォームに加える',
+	'navigabletoc-preference' => '編集用目次を有効化する',
 );
 
 /** Georgian (ქართული)
@@ -222,6 +256,7 @@ $messages['ka'] = array(
 $messages['ksh'] = array(
 	'navigabletoc' => 'Ennhaltsverzeichnes beim Ändere',
 	'navigabletoc-desc' => 'Määt e Ennhaltsverzeichnes op de Sigge zom Ändere, wat dat Feld zom Ändere metnemmp, wann mer op enem Afschnett sing Övverschreff kleck.',
+	'navigabletoc-preference' => 'Schalld e Enhaltsverzeischnes aan, woh mer dren eröm wandere kann',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -231,6 +266,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'navigabletoc' => 'Inhaltsverzeechnes fir ze navigéieren',
 	'navigabletoc-desc' => 'Setzt en Inhaltsverzeechnes op den Ännerungsformulaire derbäi, deen den Text scrollt, wann en Abschnitt ugeklickt gëtt',
+	'navigabletoc-preference' => 'Navigabelbart Inhaltsverzeechness aschalten',
 );
 
 /** Macedonian (Македонски)
@@ -256,6 +292,7 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'navigabletoc' => 'Navigeerbare inhoudsopgave',
 	'navigabletoc-desc' => 'Voegt een inhoudsopgave toe aan het bewerkingsformulier waarmee het tekstvak verschoven kan worden als er op een kopje wordt geklikt',
+	'navigabletoc-preference' => 'Navigeerbare inhoudsopgave inschakelen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -271,6 +308,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'navigabletoc' => 'Somari navigable',
 	'navigabletoc-desc' => 'Apond lo somari al formulari de modificacion que desfila lo tèxte quand una seccion es clicada',
+	'navigabletoc-preference' => "Activar l'ensenhador navigable",
 );
 
 /** Polish (Polski)
@@ -287,6 +325,7 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'navigabletoc' => 'Tàula dij contnù navigàbil',
 	'navigabletoc-desc' => "A gionta na tàula dij contnù a la form ëd modìfica ch'a scor la casela quand che as clica na session",
+	'navigabletoc-preference' => 'Abìlita a scanucié la tàula dij contnù',
 );
 
 /** Portuguese (Português)
@@ -318,6 +357,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'navigabletoc' => 'Taggele de le condenute navigabbile',
 	'navigabletoc-desc' => "Aggiunge 'na taggelle de condenute a 'a schermata de cangiamende ca face muvè 'a sckatole de teste  quanne 'na seziona è cazzate",
+	'navigabletoc-preference' => 'Abbilite le tabbele navigabbele de condenute',
 );
 
 /** Russian (Русский)
@@ -327,6 +367,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'navigabletoc' => 'Оглавление с навигацией',
 	'navigabletoc-desc' => 'Добавляет на форму правки оглавление, прокручивающее текст в поле редактирования при выборе названия раздела',
+	'navigabletoc-preference' => 'Включить оглавление с возможностью навигации',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'navigabletoc' => 'Иһинээҕитин навигациялаах тиһигэ',
 );
 
 /** Slovak (Slovenčina)
@@ -335,6 +383,7 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'navigabletoc' => 'Navigovateľný Obsah',
 	'navigabletoc-desc' => 'Pridáva do formulára úprav Obsah, ktorý sa posunie na správne miesto po kliknutí na sekciu',
+	'navigabletoc-preference' => 'Povoliť obsah s odkazmi na časti',
 );
 
 /** Slovenian (Slovenščina)
@@ -362,11 +411,13 @@ $messages['tr'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'navigabletoc' => 'Mục lục dễ duyệt tìm',
 	'navigabletoc-desc' => 'Thêm bảng mục lục vào khung sửa đổi để cuộn hộp văn bản khi nhấn vào một đề mục',
+	'navigabletoc-preference' => 'Sử dụng mục lục dễ duyệt tìm',
 );
 
 /** Yue (粵語)

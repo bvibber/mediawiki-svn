@@ -21,8 +21,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Bennylin
  * @author Mormegil
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'simplesearch-desc' => '{{desc}}',
 	'simplesearch-search' => 'Greyed out default text in the simple search box in the Vector skin. (It disappears and lets the user enter the requested search terms when the search box receives focus.)
 
 {{Identical|Search}}',
@@ -36,6 +38,7 @@ $messages['af'] = array(
 	'simplesearch' => 'Eenvoudige soek',
 	'simplesearch-desc' => 'Voeg ekstra funksionaliteit by die vereenvoudigde soek in Vector',
 	'simplesearch-search' => 'Soek',
+	'simplesearch-containing' => 'bevat...',
 );
 
 /** Arabic (العربية)
@@ -63,6 +66,7 @@ $messages['be-tarask'] = array(
 	'simplesearch' => 'Просты пошук',
 	'simplesearch-desc' => 'Дадае дадатковыя магчымасьці да спрошчанага пошуку ў афармленьні «Вэктар»',
 	'simplesearch-search' => 'Пошук',
+	'simplesearch-containing' => 'утрымлівае...',
 );
 
 /** Bengali (বাংলা)
@@ -80,6 +84,7 @@ $messages['br'] = array(
 	'simplesearch' => 'Klask eeun',
 	'simplesearch-desc' => "Ouzhpennañ a ra arc'hwelioù all d'ar c'hlask eeunaet Vector",
 	'simplesearch-search' => 'Klask',
+	'simplesearch-containing' => 'ennañ...',
 );
 
 /** Bosnian (Bosanski)
@@ -89,6 +94,7 @@ $messages['bs'] = array(
 	'simplesearch' => 'Jednostavna pretraga',
 	'simplesearch-desc' => 'Dodaje dodatnu funkcionalnost u Vector jednostavnu pretragu',
 	'simplesearch-search' => 'Traži',
+	'simplesearch-containing' => 'sadrži...',
 );
 
 /** Catalan (Català)
@@ -108,6 +114,7 @@ $messages['cs'] = array(
 	'simplesearch' => 'Zjednodušené hledání',
 	'simplesearch-desc' => 'Rozšiřuje funkcionalitu zjednodušeného hledání ve vzhledu Vektor',
 	'simplesearch-search' => 'Hledat',
+	'simplesearch-containing' => 'obsahující…',
 );
 
 /** Danish (Dansk)
@@ -126,6 +133,7 @@ $messages['de'] = array(
 	'simplesearch' => 'Einfache Suche',
 	'simplesearch-desc' => 'Fügt Extra-Funktionalität zur vereinfachten Suche des Vektor-Skins hinzu',
 	'simplesearch-search' => 'Suche',
+	'simplesearch-containing' => 'enthält …',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -135,6 +143,7 @@ $messages['dsb'] = array(
 	'simplesearch' => 'Jadnore pytanje',
 	'simplesearch-desc' => 'Pśidawa zjadnorjonemu pytanjeju Vectora wósebnu funkcionalnosć.',
 	'simplesearch-search' => 'Pytaś',
+	'simplesearch-containing' => 'wopśimujo...',
 );
 
 /** Greek (Ελληνικά)
@@ -145,6 +154,7 @@ $messages['el'] = array(
 	'simplesearch' => 'Απλή αναζήτηση',
 	'simplesearch-desc' => 'Προσθέτει έξτρα λειτουργικότητα στην απλοποιημένη αναζήτηση του Vector',
 	'simplesearch-search' => 'Αναζήτηση',
+	'simplesearch-containing' => 'περιέχει...',
 );
 
 /** Esperanto (Esperanto)
@@ -154,10 +164,12 @@ $messages['eo'] = array(
 	'simplesearch' => 'Simpla serĉo',
 	'simplesearch-desc' => 'Aldonas pluan funkciadon al la simpligita serĉo de Vector.',
 	'simplesearch-search' => 'Serĉi',
+	'simplesearch-containing' => 'enhavas...',
 );
 
 /** Spanish (Español)
  * @author Antur
+ * @author Crazymadlover
  * @author Locos epraix
  * @author Omnipaedista
  */
@@ -165,6 +177,7 @@ $messages['es'] = array(
 	'simplesearch' => 'Búsqueda simple',
 	'simplesearch-desc' => 'Agrega funcionalidades extra al vector de búsqueda simple',
 	'simplesearch-search' => 'Búsqueda',
+	'simplesearch-containing' => 'conteniendo...',
 );
 
 /** Estonian (Eesti)
@@ -180,27 +193,40 @@ $messages['et'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
-	'simplesearch' => 'Bilaketa sinplea',
+	'simplesearch' => 'Bilaketa arrunta',
 	'simplesearch-desc' => 'Funtzio gehiagarria gehitzen du Vector-en bilaketa erraztura',
 	'simplesearch-search' => 'Bilatu',
+	'simplesearch-containing' => 'edukian...',
+);
+
+/** Persian (فارسی)
+ * @author Mardetanha
+ */
+$messages['fa'] = array(
+	'simplesearch' => 'جستجوی ساده',
+	'simplesearch-search' => 'جستجو',
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'simplesearch' => 'Yksinkertainen haku',
 	'simplesearch-desc' => 'Lisää lisätoimintoja Vectorin yksinkertaistettuun hakuun.',
 	'simplesearch-search' => 'Etsi',
+	'simplesearch-containing' => 'sisältää...',
 );
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'simplesearch' => 'Recherche simple',
 	'simplesearch-desc' => "Ajoute des fonctionnalités à la recherche simplifiée de l'habillage Vector",
 	'simplesearch-search' => 'Rechercher',
+	'simplesearch-containing' => 'contenant...',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -218,6 +244,16 @@ $messages['gl'] = array(
 	'simplesearch' => 'Busca sinxela',
 	'simplesearch-desc' => 'Engade a funcionalidade adicional á busca simplificada do Vector',
 	'simplesearch-search' => 'Procurar',
+	'simplesearch-containing' => 'que conteña...',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'simplesearch-search' => 'Ζητεῖν',
+	'simplesearch-containing' => 'περιέχον...',
 );
 
 /** Swiss German (Alemannisch)
@@ -227,6 +263,7 @@ $messages['gsw'] = array(
 	'simplesearch' => 'Eifachi Suechi',
 	'simplesearch-desc' => 'Fiegt e extra Funktionswys zue dr vereifachte Suechi vum Vekter derzue',
 	'simplesearch-search' => 'Suechi',
+	'simplesearch-containing' => 'din het s …',
 );
 
 /** Hebrew (עברית)
@@ -235,8 +272,9 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'simplesearch' => 'חיפוש פשוט',
-	'simplesearch-desc' => 'הוספת תכונות נוספות לחיפוש המפושט של וקטור',
+	'simplesearch-desc' => 'הוספת תכונות נוספות לחיפוש המפושט של העיצוב "וקטור"',
 	'simplesearch-search' => 'חיפוש',
+	'simplesearch-containing' => 'כולל...',
 );
 
 /** Croatian (Hrvatski)
@@ -255,15 +293,18 @@ $messages['hsb'] = array(
 	'simplesearch' => 'Jednore pytanje',
 	'simplesearch-desc' => 'Přidawa wosebitu funkcionalnosć k zjednorjenej pytanju Vectora.',
 	'simplesearch-search' => 'Pytać',
+	'simplesearch-containing' => 'wobsahuje...',
 );
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'simplesearch' => 'Egyszerű keresés',
 	'simplesearch-desc' => 'Extra funkciókat biztosít a Vector felület egyszerűsített kereséséhez',
 	'simplesearch-search' => 'Keresés',
+	'simplesearch-containing' => 'tartalmazza…',
 );
 
 /** Interlingua (Interlingua)
@@ -273,15 +314,18 @@ $messages['ia'] = array(
 	'simplesearch' => 'Recerca simple',
 	'simplesearch-desc' => 'Adde functionalitate extra al recerca simplificate del Vector',
 	'simplesearch-search' => 'Cercar',
+	'simplesearch-containing' => 'continente...',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'simplesearch' => 'Pencarian sederhana',
 	'simplesearch-desc' => 'Tambahkan fungsionalitas tambahan untuk pencarian sederhana Vector',
 	'simplesearch-search' => 'Cari',
+	'simplesearch-containing' => 'isian ...',
 );
 
 /** Italian (Italiano)
@@ -295,11 +339,13 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'simplesearch' => '基本検索',
 	'simplesearch-desc' => 'ベクターの簡略化された検索機能に追加機能を追加する',
 	'simplesearch-search' => '検索',
+	'simplesearch-containing' => 'この語句を全文検索',
 );
 
 /** Javanese (Basa Jawa)
@@ -343,6 +389,7 @@ $messages['ksh'] = array(
 	'simplesearch' => 'Eifach Söhke',
 	'simplesearch-desc' => 'Deiht extra Müjjeleschkeijte beim „{{int:simplesearch}}“ vun de Bedeen-Bovverfläsh „Vektor“ bei.',
 	'simplesearch-search' => 'Söhke',
+	'simplesearch-containing' => 'dren änthallde…',
 );
 
 /** Latin (Latina)
@@ -359,6 +406,7 @@ $messages['lb'] = array(
 	'simplesearch' => 'Einfach Sich',
 	'simplesearch-desc' => 'Setzt eng extra Fonctionalitéit bäi déi einfach Sich derbäi.',
 	'simplesearch-search' => 'Sich',
+	'simplesearch-containing' => 'mat ...',
 );
 
 /** Lithuanian (Lietuvių)
@@ -410,6 +458,15 @@ $messages['nl'] = array(
 	'simplesearch' => 'Eenvoudig zoeken',
 	'simplesearch-desc' => 'Voegt extra functionaliteit toe aan het vereenvoudigd zoeken in Vector',
 	'simplesearch-search' => 'Zoeken',
+	'simplesearch-containing' => 'bevat...',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'simplesearch-search' => 'Søk',
+	'simplesearch-containing' => 'inneheld ...',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -428,15 +485,18 @@ $messages['oc'] = array(
 	'simplesearch' => 'Recèrca simpla',
 	'simplesearch-desc' => "Apond de foncionalitats a la recèrca simplificada de l'abilhatge Vector",
 	'simplesearch-search' => 'Recercar',
+	'simplesearch-containing' => 'que conten...',
 );
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'simplesearch' => 'Proste wyszukiwanie',
 	'simplesearch-desc' => 'Dodaje dodatkową funkcjonalność prostego wyszukiwania w skórce Vector',
 	'simplesearch-search' => 'Szukaj',
+	'simplesearch-containing' => 'zawierające...',
 );
 
 /** Piedmontese (Piemontèis)
@@ -446,6 +506,7 @@ $messages['pms'] = array(
 	'simplesearch' => 'Arserca sempia',
 	'simplesearch-desc' => "A gionta funsionalità extra a l'arserca semplifià ëd Vector",
 	'simplesearch-search' => 'Arserca',
+	'simplesearch-containing' => 'contenent ...',
 );
 
 /** Pontic (Ποντιακά)
@@ -466,12 +527,14 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'simplesearch' => 'Pesquisa simples',
 	'simplesearch-desc' => 'Adiciona funcionalidades extra à pesquisa simplificada do Vector.',
 	'simplesearch-search' => 'Pesquisa',
+	'simplesearch-containing' => 'contendo...',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -507,15 +570,18 @@ $messages['roa-tara'] = array(
 	'simplesearch' => 'Ricerca semblice',
 	'simplesearch-desc' => "Aggiunge 'na funzione extra a 'u vettore d'a ricerche semblificate",
 	'simplesearch-search' => 'Cirche',
+	'simplesearch-containing' => 'tène...',
 );
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'simplesearch' => 'Простой поиск',
 	'simplesearch-desc' => 'Добавляет больше функциональности в простой поиск Vector',
 	'simplesearch-search' => 'Поиск',
+	'simplesearch-containing' => 'содержащие…',
 );
 
 /** Yakut (Саха тыла)
@@ -525,6 +591,7 @@ $messages['sah'] = array(
 	'simplesearch' => 'Судургу көрдөөһүн',
 	'simplesearch-desc' => 'Vector диэн судургу көрдөөччүгэ эбии кыахтары биэрэр',
 	'simplesearch-search' => 'Көрдөөһүн',
+	'simplesearch-containing' => 'иһинээҕи...',
 );
 
 /** Sicilian (Sicilianu)
@@ -543,6 +610,7 @@ $messages['sk'] = array(
 	'simplesearch' => 'Jednoduché vyhľadávanie',
 	'simplesearch-desc' => 'Pridáva ďalšiu funkcionalitu k zjednodušenému vyhľadávaniu témy vzhľadu Vector',
 	'simplesearch-search' => 'Hľadať',
+	'simplesearch-containing' => 'obsahuje...',
 );
 
 /** Slovenian (Slovenščina)
@@ -555,11 +623,13 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'simplesearch' => 'Једноставна претрага',
 	'simplesearch-search' => 'Претрага',
+	'simplesearch-containing' => 'садржи...',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -585,6 +655,7 @@ $messages['sv'] = array(
 $messages['sw'] = array(
 	'simplesearch' => 'Tafuti sahili',
 	'simplesearch-search' => 'Kutafuta',
+	'simplesearch-containing' => 'ya maneno...',
 );
 
 /** Telugu (తెలుగు)
@@ -603,6 +674,7 @@ $messages['tr'] = array(
 	'simplesearch' => 'Basit arama',
 	'simplesearch-desc' => "Vector'un basitleştirilmiş aramasına ilave işlevler ekler",
 	'simplesearch-search' => 'Ara',
+	'simplesearch-containing' => 'içeren...',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
@@ -630,6 +702,17 @@ $messages['vec'] = array(
 	'simplesearch' => 'Riserca sènplise',
 	'simplesearch-desc' => 'Zonta funsionalità agiuntive a la riserca senplificà de Vector',
 	'simplesearch-search' => 'Serca',
+	'simplesearch-containing' => 'che contien...',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'simplesearch' => 'Järgeline ecind',
+	'simplesearch-desc' => 'Ližadab enambad funkcionaližust Vektoran järgeližhe ecindha',
+	'simplesearch-search' => 'Ectä',
+	'simplesearch-containing' => 'mülütajad...',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -639,6 +722,21 @@ $messages['vi'] = array(
 	'simplesearch' => 'Tìm kiếm đơn giản',
 	'simplesearch-desc' => 'Thêm chức năng phụ cho bộ tìm kiếm đơn giản của Bề ngoài Vector',
 	'simplesearch-search' => 'Tìm kiếm',
+	'simplesearch-containing' => 'có chứa...',
+);
+
+/** Mingrelian (მარგალური)
+ * @author Lika2672
+ */
+$messages['xmf'] = array(
+	'simplesearch-search' => 'გორუა',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'simplesearch-search' => 'זוכן',
 );
 
 /** Yue (粵語)

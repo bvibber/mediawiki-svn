@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'edittoolbar' => 'Editing toolbar',
 	'edittoolbar-desc' => 'Edit page toolbar with enhanced usability',
 	'edittoolbar-preference' => 'Enable enhanced editing toolbar',
-	'edittoolbar-cgd-preference' => 'Enable content generation dialogs in enhanced editing toolbar',
+	'edittoolbar-cgd-preference' => 'Enable help for adding advanced wiki text',
 	'edittoolbar-loading' => 'Loading...',
 	/* Main Section */
 	'edittoolbar-tool-bold' => 'Bold',
@@ -41,6 +41,7 @@ $messages['en'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Invalid title',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Checking page existence...',
 	'edittoolbar-tool-link-int-invalid' => 'The title you specified is invalid.',
+	'edittoolbar-tool-link-ext-invalid' => 'The URL you specified is invalid.',
 	'edittoolbar-tool-file' => 'Embedded file',
 	'edittoolbar-tool-file-pre' => '$1{{ns:file}}:',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
@@ -98,7 +99,8 @@ $messages['en'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Include header row',
 	'edittoolbar-tool-table-insert' => 'Insert',
 	'edittoolbar-tool-table-cancel' => 'Cancel',
-	'edittoolbar-tool-replace' => 'Replace',
+	'edittoolbar-tool-table-toomany' => 'Inserting a table with more than $1 cells is not possible with this dialog.',
+	'edittoolbar-tool-replace' => 'Search and replace',
 	'edittoolbar-tool-replace-title' => 'Search and replace',
 	'edittoolbar-tool-replace-search' => 'Search for:',
 	'edittoolbar-tool-replace-replace' => 'Replace with:',
@@ -106,8 +108,9 @@ $messages['en'] = array(
 	'edittoolbar-tool-replace-regex' => 'Treat search string as a regular expression',
 	'edittoolbar-tool-replace-all' => 'Replace all occurences',
 	'edittoolbar-tool-replace-button' => 'Replace',
-	'edittoolbar-tool-replace-close' => 'Close',
+	'edittoolbar-tool-replace-close' => 'Cancel',
 	'edittoolbar-tool-replace-nomatch' => 'Your search did not match anything.',
+	'edittoolbar-tool-replace-success' => '$1 replacement(s) made.',
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',
 	'edittoolbar-characters-page-latin' => 'Latin',
@@ -169,7 +172,7 @@ $messages['en'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>List item</li><li>List item</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Embedded file',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Caption text]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Caption text</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Caption text</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Reference',
 	'edittoolbar-help-content-reference-syntax' => 'Page text.&lt;ref name="test"&gt;[http://www.example.org Link text], additional text.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Page text.<sup><a href='#'>[1]</a></sup>",
@@ -192,44 +195,63 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Bennylin
+ * @author Darth Kule
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Lloffiwr
  * @author McDutchie
  * @author Minh Nguyen
  * @author Mormegil
  * @author Purodha
  * @author SMP
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'edittoolbar-desc' => '{{desc}}',
 	'edittoolbar-preference' => 'Option in [[Special:Preferences]]',
+	'edittoolbar-cgd-preference' => "Caption of a checkbox on [[Special:Preferences]] (''editing'' tab), enabling helper dialogs for various features of the advanced edit toolbar (e.g. inserting links or tables).",
 	'edittoolbar-loading' => '{{Identical|Loading}}',
 	'edittoolbar-tool-bold' => '{{Identical|Bold}}',
 	'edittoolbar-tool-bold-example' => '{{Identical|Bold text}}',
 	'edittoolbar-tool-italic' => '{{Identical|Italic}}',
 	'edittoolbar-tool-italic-example' => '{{Identical|Italic text}}',
+	'edittoolbar-tool-ilink' => '{{Identical|Internal link}}',
+	'edittoolbar-tool-xlink' => '{{Identical|External link (remember http:// prefix)}}',
 	'edittoolbar-tool-link' => '{{Identical|Link}}',
 	'edittoolbar-tool-link-cancel' => '{{Identical|Cancel}}',
 	'edittoolbar-tool-link-int-target-status-exists' => 'alt text and title text for the image shown when the title the user entered exists',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'alt text and title text for the image shown when the title the user entered does not exist',
 	'edittoolbar-tool-link-int-target-status-invalid' => 'alt text and title text for the image shown when the title the user entered is invalid',
 	'edittoolbar-tool-link-int-target-status-loading' => 'alt text and title text for the image shown while the title the user entered is being checked for existence',
+	'edittoolbar-tool-file' => '{{Identical|Embedded file}}',
 	'edittoolbar-tool-reference' => '{{Identical|Reference}}',
+	'edittoolbar-section-advanced' => '{{Identical|Advanced}}',
 	'edittoolbar-group-list' => '{{Identical|List}}',
+	'edittoolbar-tool-ulist' => '{{Identical|Bulleted list}}',
+	'edittoolbar-tool-olist' => '{{Identical|Numbered list}}',
 	'edittoolbar-group-size' => '{{Identical|Size}}',
+	'edittoolbar-group-insert' => '{{Identical|Insert}}',
+	'edittoolbar-tool-table-insert' => '{{Identical|Insert}}',
 	'edittoolbar-tool-table-cancel' => '{{Identical|Cancel}}',
-	'edittoolbar-tool-replace' => '{{Identical|Replace}}',
+	'edittoolbar-tool-table-toomany' => '[[file:Bulbgraph.png|left|22px]]
+This message does not support PLURAL on $1.',
+	'edittoolbar-tool-replace' => '{{Identical|Search and replace}}',
+	'edittoolbar-tool-replace-title' => '{{Identical|Search and replace}}',
 	'edittoolbar-tool-replace-search' => '{{Identical|Search}}',
 	'edittoolbar-tool-replace-case' => 'This could as well be translated as "case sensitive search" -
 "case" refers to character case, that is upper case, or lower case.',
 	'edittoolbar-tool-replace-button' => '{{Identical|Replace}}',
-	'edittoolbar-tool-replace-close' => '{{Identical|Close}}',
+	'edittoolbar-tool-replace-close' => '{{Identical|Cancel}}',
+	'edittoolbar-tool-replace-success' => '[[file:Bulbgraph.png|left|22px]]
+This message does not support PLURAL on $1.',
 	'edittoolbar-characters-page-latin' => 'This is the name of a script, or alphabet, not a language',
 	'edittoolbar-characters-page-ipa' => 'IPA means a script: "international phonetic alphabet" here, and not "international phonetic association", the organization behind it.',
 	'edittoolbar-characters-page-greek' => 'This is the name of a script, or alphabet, not a language.',
 	'edittoolbar-characters-page-cyrillic' => 'This is the name of a script, or a group of alphabets, used mainly in Eastern Europe and North and Central Asia.',
 	'edittoolbar-characters-page-arabic' => 'This is the name of a script, or alphabet, not a language.',
 	'edittoolbar-characters-page-hebrew' => 'This is the name of a script, or alphabet, not a language.',
+	'edittoolbar-section-help' => '{{Identical|Help}}',
 	'edittoolbar-help-heading-description' => '{{Identical|Description}}',
 	'edittoolbar-help-page-link' => '{{Identical|Links}}',
 	'edittoolbar-help-page-list' => '{{Identical|List}}',
@@ -242,6 +264,8 @@ $messages['qqq'] = array(
 	'edittoolbar-help-content-bold-description' => '{{Identical|Bold}}',
 	'edittoolbar-help-content-bold-syntax' => '{{Identical|Bold text}}',
 	'edittoolbar-help-content-bold-result' => '{{Identical|Bold text}}',
+	'edittoolbar-help-content-ilink-description' => '{{Identical|Internal link}}',
+	'edittoolbar-help-content-xlink-syntax' => "www.example.org is not a real website. If you go to this page on the web it says that it cannot be registered as a real domain. If you translate the word example and try to go to that web address then you might get a message that it doesn't exist. But somebody may have created a web page for that address, such as www.Beispiel.org, using the German word for example. So it is worth checking where the translated link takes you when translating this.",
 	'edittoolbar-help-content-heading1-syntax' => '{{Identical|Heading text}}',
 	'edittoolbar-help-content-heading1-result' => '{{Identical|Heading text}}',
 	'edittoolbar-help-content-heading2-syntax' => '{{Identical|Heading text}}',
@@ -252,6 +276,10 @@ $messages['qqq'] = array(
 	'edittoolbar-help-content-heading4-result' => '{{Identical|Heading text}}',
 	'edittoolbar-help-content-heading5-syntax' => '{{Identical|Heading text}}',
 	'edittoolbar-help-content-heading5-result' => '{{Identical|Heading text}}',
+	'edittoolbar-help-content-ulist-description' => '{{Identical|Bulleted list}}',
+	'edittoolbar-help-content-olist-description' => '{{Identical|Numbered list}}',
+	'edittoolbar-help-content-file-description' => '{{Identical|Embedded file}}',
+	'edittoolbar-help-content-file-syntax' => "{{doc-important|''thumb'' is a magic word. Leave it untranslated!}}",
 	'edittoolbar-help-content-file-result' => 'Do not translate anything except "Caption text" (twice) and "Enlarge" (to "{{int:thumbnail-more}}").',
 	'edittoolbar-help-content-reference-description' => '{{Identical|Reference}}',
 	'edittoolbar-help-content-reference-syntax' => 'I suggest leaving the <code>name="test"</code> string in English',
@@ -271,9 +299,13 @@ $messages['af'] = array(
 	'edittoolbar-tool-bold' => 'Vet',
 	'edittoolbar-tool-bold-example' => 'Vetgedrukte teks',
 	'edittoolbar-tool-italic' => 'Kursief',
+	'edittoolbar-tool-ilink' => 'Interne skakel',
+	'edittoolbar-tool-xlink' => 'Eksterne skakel (onthou http:// vooraan)',
 	'edittoolbar-tool-link' => 'Skakel',
 	'edittoolbar-tool-link-cancel' => 'kanselleer',
+	'edittoolbar-tool-file' => 'Ingebedde lêer',
 	'edittoolbar-tool-file-example' => 'Voorbeeld.jpg',
+	'edittoolbar-section-advanced' => 'Gevorderde funksies',
 	'edittoolbar-tool-heading' => 'Opskrif',
 	'edittoolbar-tool-heading-1' => 'Vlak 1',
 	'edittoolbar-tool-heading-2' => 'Vlak 2',
@@ -282,14 +314,26 @@ $messages['af'] = array(
 	'edittoolbar-tool-heading-5' => 'Vlak 5',
 	'edittoolbar-tool-heading-example' => 'Opskrifteks',
 	'edittoolbar-group-list' => 'Lys',
+	'edittoolbar-tool-ulist' => 'Ongenommerde lys',
+	'edittoolbar-tool-olist' => 'Genommerde lys',
 	'edittoolbar-group-size' => 'Grootte',
 	'edittoolbar-tool-big' => 'Groot',
+	'edittoolbar-tool-big-example' => 'Groot gedrukte teks',
 	'edittoolbar-tool-small' => 'Klein',
+	'edittoolbar-tool-small-example' => 'Klein gedrukte teks',
+	'edittoolbar-group-insert' => 'Invoeg',
+	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-dimensions' => 'Dimensies',
+	'edittoolbar-tool-table-dimensions-rows' => 'Rye',
+	'edittoolbar-tool-table-dimensions-columns' => 'Kolomme',
+	'edittoolbar-tool-table-insert' => 'Invoeg',
 	'edittoolbar-tool-table-cancel' => 'Kanselleer',
-	'edittoolbar-tool-replace' => 'Vervang',
+	'edittoolbar-tool-replace' => 'Soek en vervang',
+	'edittoolbar-tool-replace-title' => 'Soek en vervang',
 	'edittoolbar-tool-replace-search' => 'Soek na:',
 	'edittoolbar-tool-replace-button' => 'Vervang',
-	'edittoolbar-tool-replace-close' => 'Sluit',
+	'edittoolbar-tool-replace-close' => 'Kanselleer',
+	'edittoolbar-tool-replace-success' => '$1 vervangings gemaak.',
 	'edittoolbar-section-characters' => 'Spesiale karakters',
 	'edittoolbar-characters-page-ipa' => 'IFA',
 	'edittoolbar-characters-page-symbols' => 'Simbole',
@@ -311,17 +355,27 @@ $messages['af'] = array(
 	'edittoolbar-help-content-bold-description' => 'Vet',
 	'edittoolbar-help-content-bold-syntax' => "'''Vetgedrukte teks'''",
 	'edittoolbar-help-content-bold-result' => '<strong>Vetgedrukte teks</strong>',
+	'edittoolbar-help-content-ilink-description' => 'Interne skakel',
+	'edittoolbar-help-content-heading1-description' => 'Vlak 1 opskrif',
 	'edittoolbar-help-content-heading1-syntax' => '= Opskrifteks =',
 	'edittoolbar-help-content-heading1-result' => '<h1>Opskrifteks</h1>',
+	'edittoolbar-help-content-heading2-description' => 'Vlak 2 opskrif',
 	'edittoolbar-help-content-heading2-syntax' => '== Opskrifteks ==',
 	'edittoolbar-help-content-heading2-result' => '<h2>Opskrifteks</h2>',
+	'edittoolbar-help-content-heading3-description' => 'Vlak 3 opskrif',
 	'edittoolbar-help-content-heading3-syntax' => '=== Opskrifteks ===',
 	'edittoolbar-help-content-heading3-result' => '<h3>Opskrifteks</h3>',
+	'edittoolbar-help-content-heading4-description' => 'Vlak 4 opskrif',
 	'edittoolbar-help-content-heading4-syntax' => '==== Opskrifteks ====',
 	'edittoolbar-help-content-heading4-result' => '<h4>Opskrifteks</h4>',
+	'edittoolbar-help-content-heading5-description' => 'Vlak 5 opskrif',
 	'edittoolbar-help-content-heading5-syntax' => '===== Opskrifteks =====',
 	'edittoolbar-help-content-heading5-result' => '<h5>Opskrifteks</h5>',
+	'edittoolbar-help-content-ulist-description' => 'Ongenommerde lys',
+	'edittoolbar-help-content-olist-description' => 'Genommerde lys',
+	'edittoolbar-help-content-file-description' => 'Ingebedde lêer',
 	'edittoolbar-help-content-reference-description' => 'Verwysing',
+	'edittoolbar-help-content-signature-description' => 'Handtekening',
 );
 
 /** Arabic (العربية)
@@ -338,6 +392,10 @@ $messages['ar'] = array(
 	'edittoolbar-tool-bold-example' => 'نص عريض',
 	'edittoolbar-tool-italic' => 'مائل',
 	'edittoolbar-tool-italic-example' => 'نص مائل',
+	'edittoolbar-tool-ilink' => 'وصلة داخلية',
+	'edittoolbar-tool-ilink-example' => 'عنوان الوصلة',
+	'edittoolbar-tool-xlink' => 'وصلة خارجية (تذكر البدء بhttp://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com عنوان الوصلة',
 	'edittoolbar-tool-link' => 'وصلة',
 	'edittoolbar-tool-link-title' => 'إدراج وصلة',
 	'edittoolbar-tool-link-int' => 'لصفحة ويكي',
@@ -389,18 +447,16 @@ $messages['ar'] = array(
 	'edittoolbar-tool-table-dimensions' => 'الأبعاد',
 	'edittoolbar-tool-table-dimensions-rows' => 'الصفوف',
 	'edittoolbar-tool-table-dimensions-columns' => 'الأعمدة',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'صفوف العناوين',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'عواميد العناوين',
 	'edittoolbar-tool-table-insert' => 'إدراج',
 	'edittoolbar-tool-table-cancel' => 'إلغاء',
-	'edittoolbar-tool-replace' => 'استبدال',
+	'edittoolbar-tool-replace' => 'ابحث واستبدل',
 	'edittoolbar-tool-replace-title' => 'ابحث واستبدل',
 	'edittoolbar-tool-replace-search' => 'إبحث عن:',
 	'edittoolbar-tool-replace-replace' => 'استبدل ب:',
 	'edittoolbar-tool-replace-case' => 'مطابقة الحالة',
 	'edittoolbar-tool-replace-all' => 'استبدل كل المطابقات',
 	'edittoolbar-tool-replace-button' => 'استبدال',
-	'edittoolbar-tool-replace-close' => 'إغلاق',
+	'edittoolbar-tool-replace-close' => 'إلغاء',
 	'edittoolbar-tool-replace-nomatch' => 'بحثك لم يطابق أي شيء.',
 	'edittoolbar-section-characters' => 'محارف خاصة',
 	'edittoolbar-characters-page-latin' => 'اللاتينية',
@@ -461,7 +517,7 @@ $messages['ar'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>عنصر قائمة</li><li>عنصر قائمة</li></ol>',
 	'edittoolbar-help-content-file-description' => 'ملف مضمّن',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|تصغير|نص الشرح]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='نص التعليق' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='تكبير' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>نص التعليق</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='نص التعليق' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='تكبير' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>نص التعليق</div></div>",
 	'edittoolbar-help-content-reference-description' => 'مرجع',
 	'edittoolbar-help-content-reference-syntax' => 'نص الصفحة.&lt;ref name="test"&gt;[http://www.example.org نص الوصلة]، نص إضافي.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "نص الصفحة.<sup><a href='#'>[1]</a></sup>",
@@ -486,6 +542,8 @@ $messages['arc'] = array(
 	'edittoolbar-tool-bold-example' => 'ܟܬܒܬܐ ܥܒܝܬܐ',
 	'edittoolbar-tool-italic' => 'ܦܠܝܡܬܐ',
 	'edittoolbar-tool-italic-example' => 'ܟܬܒܬܐ ܦܠܝܡܬܐ',
+	'edittoolbar-tool-ilink' => 'ܐܣܘܪܐ ܓܘܝܐ',
+	'edittoolbar-tool-xlink' => 'ܐܣܘܪܐ ܒܪܝܐ (ܕܟܘܪ http:// ܩܕܡܝܬܐ)',
 	'edittoolbar-tool-heading-1' => 'ܫܘܝܐ 1',
 	'edittoolbar-tool-heading-2' => 'ܫܘܝܐ 2',
 	'edittoolbar-tool-heading-3' => 'ܫܘܝܐ 3',
@@ -512,11 +570,16 @@ $messages['be-tarask'] = array(
 	'edittoolbar' => 'Панэль інструмэнтаў для рэдагаваньня',
 	'edittoolbar-desc' => 'Панэль інструмэнтаў для рэдагаваньня з палепшанай зручнасьцю',
 	'edittoolbar-preference' => 'Уключыць палепшаную панэль інструмэнтаў для рэдагаваньня',
-	'edittoolbar-loading' => 'Загрузка...',
+	'edittoolbar-cgd-preference' => 'Дазволіць дапамогу для даданьня складанага вікі-тэксту',
+	'edittoolbar-loading' => 'Загрузка…',
 	'edittoolbar-tool-bold' => 'Тлусты',
 	'edittoolbar-tool-bold-example' => 'Тлусты тэкст',
 	'edittoolbar-tool-italic' => 'Курсіў',
 	'edittoolbar-tool-italic-example' => 'Курсіўны тэкст',
+	'edittoolbar-tool-ilink' => 'Унутраная спасылка',
+	'edittoolbar-tool-ilink-example' => 'Назва спасылкі',
+	'edittoolbar-tool-xlink' => 'Вонкавая спасылка (не забывайцеся пачынаць з http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com назва спасылкі',
 	'edittoolbar-tool-link' => 'Спасылка',
 	'edittoolbar-tool-link-title' => 'Уставіць спасылку',
 	'edittoolbar-tool-link-int' => 'На вікі-старонку',
@@ -532,6 +595,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Няслушная назва',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Ідзе праверка існаваньня старонкі…',
 	'edittoolbar-tool-link-int-invalid' => 'Назва, якую Вы пазначылі, — няслушная.',
+	'edittoolbar-tool-link-ext-invalid' => 'Вы пазначылі няслушны URL-адрас.',
 	'edittoolbar-tool-file' => 'Укладзены файл',
 	'edittoolbar-tool-file-example' => 'Прыклад.jpg',
 	'edittoolbar-tool-reference' => 'Зноска',
@@ -566,6 +630,18 @@ $messages['be-tarask'] = array(
 {{ns:file}}:Example.jpg|Подпіс2',
 	'edittoolbar-tool-newline' => 'Новы радок',
 	'edittoolbar-tool-table' => 'Табліца',
+	'edittoolbar-tool-table-example-old' => '-
+! загаловак 1
+! загаловак 2
+! загаловак 3
+|-
+| радок 1, ячэйка 1
+| радок 1, ячэйка 2
+| радок 1, ячэйка 3
+|-
+| радок 2, ячэйка 1
+| радок 2, ячэйка 2
+| радок 2, ячэйка 3',
 	'edittoolbar-tool-table-example' => 'Радок $1, ячэйка $2',
 	'edittoolbar-tool-table-example-header' => 'Радок $1, ячэйка $2 (назва)',
 	'edittoolbar-tool-table-title' => 'Уставіць табліцу',
@@ -575,7 +651,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Дадаць радок загалоўку',
 	'edittoolbar-tool-table-insert' => 'Уставіць',
 	'edittoolbar-tool-table-cancel' => 'Адмяніць',
-	'edittoolbar-tool-replace' => 'Замяніць',
+	'edittoolbar-tool-replace' => 'Знайсьці і замяніць',
 	'edittoolbar-tool-replace-title' => 'Пошук і замена',
 	'edittoolbar-tool-replace-search' => 'Шукаць:',
 	'edittoolbar-tool-replace-replace' => 'Замяніць на:',
@@ -583,8 +659,9 @@ $messages['be-tarask'] = array(
 	'edittoolbar-tool-replace-regex' => 'Лічыць радок пошуку рэгулярным выразам',
 	'edittoolbar-tool-replace-all' => 'Замяніць усе супадзеньні',
 	'edittoolbar-tool-replace-button' => 'Замяніць',
-	'edittoolbar-tool-replace-close' => 'Закрыць',
+	'edittoolbar-tool-replace-close' => 'Адмяніць',
 	'edittoolbar-tool-replace-nomatch' => 'Па Вашаму запыту нічога ня знойдзена.',
+	'edittoolbar-tool-replace-success' => 'Колькасьць зробленых заменаў: $1.',
 	'edittoolbar-section-characters' => 'Спэцыяльныя сымбалі',
 	'edittoolbar-characters-page-latin' => 'Лацінскія',
 	'edittoolbar-characters-page-latinextended' => 'Лацінскі пашыраны',
@@ -644,7 +721,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Элемэнт сьпісу</li><li>Элемэнт сьпісу</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Укладзены файл',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|міні|Тэкст подпісу]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Тэкст подпісу' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Тэкст подпісу</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Тэкст подпісу' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Тэкст подпісу</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Зноска',
 	'edittoolbar-help-content-reference-syntax' => 'Тэкст старонкі.&lt;ref name="test"&gt;[http://www.example.org Тэкст спасылкі], дадатковы тэкст.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Тэкст старонкі.<sup><a href='#'>[1]</a></sup>",
@@ -673,6 +750,8 @@ $messages['bg'] = array(
 	'edittoolbar-tool-bold-example' => 'Текст в получер',
 	'edittoolbar-tool-italic' => 'Курсив',
 	'edittoolbar-tool-italic-example' => 'Текст в курсив',
+	'edittoolbar-tool-ilink' => 'Вътрешна препратка',
+	'edittoolbar-tool-xlink' => 'Външна препратка (не забравяйте http:// )',
 	'edittoolbar-tool-file-example' => 'Пример.jpg',
 	'edittoolbar-group-list' => 'Списък',
 	'edittoolbar-tool-table' => 'Таблица',
@@ -697,60 +776,93 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'edittoolbar' => 'সম্পাদনা টুলবার',
+	'edittoolbar-preference' => 'শক্তিশালী সম্পাদনা টুলবার সক্রিয় করো',
 	'edittoolbar-loading' => 'লোডিং…',
 	'edittoolbar-tool-bold' => 'গাঢ়',
 	'edittoolbar-tool-bold-example' => 'গাঢ় লেখা',
 	'edittoolbar-tool-italic' => 'ইটালিক',
 	'edittoolbar-tool-italic-example' => 'ইটালিক লেখা',
+	'edittoolbar-tool-ilink' => 'আভ্যন্তরীণ সংযোগ',
+	'edittoolbar-tool-ilink-example' => 'সংযোগের শিরোনাম',
+	'edittoolbar-tool-xlink' => 'বহিঃসংযোগ (মনে রাখবেন http:// উপসর্গ থাকবে)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com সংযোগের শিরোনাম',
 	'edittoolbar-tool-link' => 'লিংক',
-	'edittoolbar-tool-link-title' => 'লিংক যোগ করুন',
+	'edittoolbar-tool-link-title' => 'লিংক যোগ করো',
+	'edittoolbar-tool-link-int' => 'কোনো উইকি পাতায়',
 	'edittoolbar-tool-link-int-target' => 'পাতার শিরোনাম:',
 	'edittoolbar-tool-link-int-text' => 'লিংক লেখা:',
 	'edittoolbar-tool-link-ext' => 'বহিঃস্থ কোনো ওয়েব পেইজে',
 	'edittoolbar-tool-link-ext-target' => 'লিংক ইউআরএল:',
-	'edittoolbar-tool-link-insert' => 'লিংক যোগ করুন',
+	'edittoolbar-tool-link-ext-text' => 'সংযোগ লেখ:',
+	'edittoolbar-tool-link-insert' => 'লিংক যোগ করো',
 	'edittoolbar-tool-link-cancel' => 'বাতিল',
 	'edittoolbar-tool-link-int-target-status-exists' => 'পাতা রয়েছে',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'কোনো পাতা নাই',
 	'edittoolbar-tool-link-int-target-status-invalid' => 'ভুল শিরোনাম',
+	'edittoolbar-tool-link-int-target-status-loading' => 'পাতার উপস্থিতি যাচাই...',
+	'edittoolbar-tool-link-int-invalid' => 'আপনার শিরোনামটি ঠিক নয়।',
+	'edittoolbar-tool-link-ext-invalid' => 'আপনার URL টি ঠিক নয়।',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'তথ্যসূত্র',
-	'edittoolbar-tool-reference-example' => 'পাদটীকার লেখা এখানে যোগ করুন',
-	'edittoolbar-section-advanced' => 'উচ্চপর্যায়',
-	'edittoolbar-tool-heading' => 'স্তর',
-	'edittoolbar-tool-heading-1' => 'স্তর ১',
-	'edittoolbar-tool-heading-2' => 'স্তর ২',
-	'edittoolbar-tool-heading-3' => 'স্তর ৩',
-	'edittoolbar-tool-heading-4' => 'স্তর ৪',
-	'edittoolbar-tool-heading-5' => 'স্তর ৫',
+	'edittoolbar-tool-reference-example' => 'পাদটীকার লেখা এখানে যোগ করো',
+	'edittoolbar-tool-signature' => 'স্বাক্ষর এবং সময়',
+	'edittoolbar-section-advanced' => 'উচ্চপর্যায়ের টুল',
+	'edittoolbar-tool-heading' => 'শিরোনাম',
+	'edittoolbar-tool-heading-1' => 'শিরোনাম ১',
+	'edittoolbar-tool-heading-2' => 'শিরোনাম ২',
+	'edittoolbar-tool-heading-3' => 'শিরোনাম ৩',
+	'edittoolbar-tool-heading-4' => 'শিরোনাম ৪',
+	'edittoolbar-tool-heading-5' => 'শিরোনাম ৫',
+	'edittoolbar-tool-heading-example' => 'শিরোনাম লেখ',
 	'edittoolbar-group-list' => 'তালিকা',
 	'edittoolbar-tool-ulist' => 'বুলেটকৃত তালিকা',
-	'edittoolbar-tool-olist' => 'নাম্বারকৃত তালিকা',
+	'edittoolbar-tool-ulist-example' => 'বুলেটকৃত তালিকা আইটেম',
+	'edittoolbar-tool-olist' => 'সংখ্যায়িত তালিকা',
+	'edittoolbar-tool-olist-example' => 'সংখ্যায়িত তালিকা আইটেম',
 	'edittoolbar-group-size' => 'আকার',
 	'edittoolbar-tool-big' => 'বড়',
 	'edittoolbar-tool-big-example' => 'বড় লেখা',
 	'edittoolbar-tool-small' => 'ছোট',
 	'edittoolbar-tool-small-example' => 'ছোট লেখা',
 	'edittoolbar-group-baseline' => 'বেজলাইন',
+	'edittoolbar-group-insert' => 'যোগ করো',
 	'edittoolbar-tool-gallery' => 'ছবির গ্যালারী',
+	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Example.jpg|ক্যাপশন১
+{{ns:file}}:Example.jpg|ক্যাপশন২',
 	'edittoolbar-tool-newline' => 'নতুন লাইন',
 	'edittoolbar-tool-table' => 'ছক',
+	'edittoolbar-tool-table-example-old' => '-
+! শিরোনাম ১
+! শিরোনাম ২
+! শিরোনাম ৩
+|-
+| সারি ১, ঘর ১
+| সারি ১, ঘর ২
+| সারি ১, ঘর ৩
+|-
+| সারি ২, ঘর ১
+| সারি ২, ঘর ২
+| সারি ২, ঘর ৩',
 	'edittoolbar-tool-table-example' => 'সারি $1, ঘর $2',
 	'edittoolbar-tool-table-example-header' => 'সারি $1, ঘর $2 (শীর্ষপাদ)',
-	'edittoolbar-tool-table-title' => 'ছক যোগ করুন',
+	'edittoolbar-tool-table-title' => 'ছক যোগ করো',
 	'edittoolbar-tool-table-dimensions' => 'মাত্রা',
 	'edittoolbar-tool-table-dimensions-rows' => 'সারি',
 	'edittoolbar-tool-table-dimensions-columns' => 'কলাম',
-	'edittoolbar-tool-table-insert' => 'যোগ করুন',
+	'edittoolbar-tool-table-dimensions-header' => 'শিরোনাম সারি অন্তর্ভুক্ত করো',
+	'edittoolbar-tool-table-insert' => 'যোগ করো',
 	'edittoolbar-tool-table-cancel' => 'বাতিল',
-	'edittoolbar-tool-replace' => 'প্রতিস্থাপন',
+	'edittoolbar-tool-replace' => 'অনুসন্ধান এবং প্রতিস্থাপন',
 	'edittoolbar-tool-replace-title' => 'অনুসন্ধান ও প্রতিস্থাপন',
 	'edittoolbar-tool-replace-search' => 'অনুসন্ধান:',
 	'edittoolbar-tool-replace-replace' => 'যা দিয়ে প্রতিস্থাপিত হবে:',
 	'edittoolbar-tool-replace-case' => 'অক্ষরের ছাঁদ মেলানো',
+	'edittoolbar-tool-replace-regex' => 'অনুসন্ধান বাক্যকে রেগুলার এক্সপ্রেশন হিসেবে গন্য করো',
+	'edittoolbar-tool-replace-all' => 'সবগুলো প্রতিস্থাপন করো',
 	'edittoolbar-tool-replace-button' => 'প্রতিস্থাপন',
-	'edittoolbar-tool-replace-close' => 'বন্ধ',
+	'edittoolbar-tool-replace-close' => 'বাতিল',
 	'edittoolbar-tool-replace-nomatch' => 'আপনার অনুসন্ধান কোনো কিছুর সাথে মিলেনি।',
+	'edittoolbar-tool-replace-success' => '$1 টি প্রতিস্থাপন সম্পন্ন হয়েছে।',
 	'edittoolbar-section-characters' => 'বিশেষ বর্ণসমূহ',
 	'edittoolbar-characters-page-latin' => 'লাতিন',
 	'edittoolbar-characters-page-latinextended' => 'সম্প্রসারিত লাতিন',
@@ -767,7 +879,7 @@ $messages['bn'] = array(
 	'edittoolbar-help-heading-result' => 'আপনি যা দেখতে পাচ্ছেন',
 	'edittoolbar-help-page-format' => 'বিন্যাসন',
 	'edittoolbar-help-page-link' => 'সংযোগসমূহ',
-	'edittoolbar-help-page-heading' => 'স্তর',
+	'edittoolbar-help-page-heading' => 'শিরোনামসমূহ',
 	'edittoolbar-help-page-list' => 'তালিকাসমূহ',
 	'edittoolbar-help-page-file' => 'ফাইলসমূহ',
 	'edittoolbar-help-page-reference' => 'তথ্যসূত্র',
@@ -784,9 +896,39 @@ $messages['bn'] = array(
 	'edittoolbar-help-content-ilink-description' => 'আভ্যন্তরীণ সংযোগ',
 	'edittoolbar-help-content-xlink-description' => 'বহিঃসংযোগ',
 	'edittoolbar-help-content-heading1-description' => '১ম পর্যায়ের স্তর',
+	'edittoolbar-help-content-heading1-syntax' => '= শিরোনাম লেখ =',
+	'edittoolbar-help-content-heading1-result' => '<h1> শিরোনাম লেখ </h1>',
+	'edittoolbar-help-content-heading2-description' => '২য় পর্যায়ের শিরোনাম',
+	'edittoolbar-help-content-heading2-syntax' => '== শিরোনাম লেখ ==',
+	'edittoolbar-help-content-heading2-result' => '<h2> শিরোনাম লেখ </h2>',
+	'edittoolbar-help-content-heading3-description' => '৩য় পর্যায়ের শিরোনাম',
+	'edittoolbar-help-content-heading3-syntax' => '=== শিরোনাম লেখ ===',
+	'edittoolbar-help-content-heading3-result' => '<h3> শিরোনাম লেখ </h3>',
+	'edittoolbar-help-content-heading4-description' => '৪থ পর্যায়ের শিরোনাম',
+	'edittoolbar-help-content-heading4-syntax' => '==== শিরোনাম লেখ ====',
+	'edittoolbar-help-content-heading4-result' => '<h4> শিরোনাম লেখ </h4>',
+	'edittoolbar-help-content-heading5-description' => '৫ম পর্যায়ের শিরোনাম',
+	'edittoolbar-help-content-heading5-syntax' => '===== শিরোনাম লেখ =====',
+	'edittoolbar-help-content-heading5-result' => '<h5> শিরোনাম লেখ </h5>',
+	'edittoolbar-help-content-ulist-description' => 'বুলেটকৃত তালিকা',
+	'edittoolbar-help-content-ulist-syntax' => '* তালিকা আইটেম<br />* তালিকা আইটেম',
+	'edittoolbar-help-content-ulist-result' => '<ul><li>তালিকা আইটেম</li><li>তালিকা আইটেম</li></ul>',
+	'edittoolbar-help-content-olist-description' => 'সংখ্যায়িত তালিকা',
+	'edittoolbar-help-content-olist-syntax' => '# তালিকা আইটেম <br /># তালিকা আইটেম',
+	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|ক্যাপশন লেখ]]',
 	'edittoolbar-help-content-reference-description' => 'তথ্যসূত্র',
+	'edittoolbar-help-content-reference-result' => "পাতার লেখা।<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-rereference-description' => 'একই তথ্যসূত্রের একাধিক ব্যবহার',
+	'edittoolbar-help-content-rereference-result' => "পাতার লেখ।<sup><a href='#'>[1]</a></sup>",
 	'edittoolbar-help-content-showreferences-description' => 'তথ্যসূত্র প্রদর্শন করো',
+	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>সংযোগ লেখ</a>, বাড়তি লেখ।</li></ol>",
+	'edittoolbar-help-content-signaturetimestamp-description' => 'সময় সহ স্বাক্ষর',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>ব্যবহারকারী</a> (<a href='#' title='{{#special:mytalk}}'>আলাপ</a>) ১৫:৫৪, ১০ জুন ২০০৯ (UTC)",
 	'edittoolbar-help-content-signature-description' => 'স্বাক্ষর',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>ব্যবহারকারী</a> (<a href='#' title='{{#special:mytalk}}'>আলাপ</a>)",
+	'edittoolbar-help-content-indent-description' => 'প্রান্তিককরণ',
+	'edittoolbar-help-content-indent-syntax' => 'সাধারণ লেখ<br />:প্রান্তিককৃত লেখ<br />::প্রান্তিককৃত লেখ',
+	'edittoolbar-help-content-indent-result' => 'সাধারণ লেখ<dl><dd>প্রান্তিককৃত লেখ<dl><dd>প্রান্তিককৃত লেখ</dd></dl></dd></dl>',
 );
 
 /** Breton (Brezhoneg)
@@ -796,11 +938,16 @@ $messages['br'] = array(
 	'edittoolbar' => 'Barrenn ostilhoù kemmañ',
 	'edittoolbar-desc' => "Barrenn ostilhoù kemmañ aesoc'h da implijout",
 	'edittoolbar-preference' => 'Gweredekaat ar varrenn ostilhoù kemmañ gwellaet',
+	'edittoolbar-cgd-preference' => "Aotren ar skoazell evit ouzhpennañ tammoù skrid wiki kempleshoc'h",
 	'edittoolbar-loading' => 'O kargañ...',
 	'edittoolbar-tool-bold' => 'Tev',
 	'edittoolbar-tool-bold-example' => 'Testenn dev',
 	'edittoolbar-tool-italic' => 'Italek',
 	'edittoolbar-tool-italic-example' => 'Testenn italek',
+	'edittoolbar-tool-ilink' => 'Liamm diabarzh',
+	'edittoolbar-tool-ilink-example' => 'Anv al liamm',
+	'edittoolbar-tool-xlink' => 'Liamm diavaez (arabat disoñjal ar rakger http:// )',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com anv al liamm',
 	'edittoolbar-tool-link' => 'Liamm',
 	'edittoolbar-tool-link-title' => "Ensoc'hañ ul liamm",
 	'edittoolbar-tool-link-int' => 'war-du ur bajenn wiki',
@@ -816,6 +963,7 @@ $messages['br'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titl direizh',
 	'edittoolbar-tool-link-int-target-status-loading' => 'O wiriañ hag-eñ ez eus eus ar bajenn...',
 	'edittoolbar-tool-link-int-invalid' => "Kamm eo an titl hoc'h eus merket.",
+	'edittoolbar-tool-link-ext-invalid' => "Direizh eo an URL merket ganeoc'h.",
 	'edittoolbar-tool-file' => 'Restr enframmet',
 	'edittoolbar-tool-file-example' => 'Skouer.jpg',
 	'edittoolbar-tool-reference' => 'Daveenn',
@@ -850,6 +998,18 @@ $messages['br'] = array(
 {{ns:file}}:Skouer.jpg|Deskrivadur2',
 	'edittoolbar-tool-newline' => 'Linenn nevez',
 	'edittoolbar-tool-table' => 'Taolenn',
+	'edittoolbar-tool-table-example-old' => '-
+! talbenn 1
+! talbenn 2
+! talbenn 3
+|-
+| linenn 1, kellig 1
+| linenn 1, kellig 2
+| linenn 1, kellig 3
+|-
+| linenn 2, kellig 1
+| linenn 2, kellig 2
+| linenn 2, kellig 3',
 	'edittoolbar-tool-table-example' => 'Linenn $1, kellig $2',
 	'edittoolbar-tool-table-example-header' => 'Linenn $1, kellig $2 (talbenn)',
 	'edittoolbar-tool-table-title' => "Ensoc'hañ un daolenn",
@@ -859,7 +1019,7 @@ $messages['br'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Lakaat  al linenn dalbenn e-barzh',
 	'edittoolbar-tool-table-insert' => "Ensoc'hañ",
 	'edittoolbar-tool-table-cancel' => 'Nullañ',
-	'edittoolbar-tool-replace' => "Erlec'hiañ",
+	'edittoolbar-tool-replace' => "Klask hag erlec'hiañ",
 	'edittoolbar-tool-replace-title' => "Klask hag erlec'hiañ",
 	'edittoolbar-tool-replace-search' => 'Klask :',
 	'edittoolbar-tool-replace-replace' => "Erlec'hiañ gant :",
@@ -867,8 +1027,9 @@ $messages['br'] = array(
 	'edittoolbar-tool-replace-regex' => 'Sellet ouzh ar chadennad klask evel ouzh un droienn reoliek',
 	'edittoolbar-tool-replace-all' => "Erlec'hiañ an holl okurañsoù",
 	'edittoolbar-tool-replace-button' => "Erlec'hiañ",
-	'edittoolbar-tool-replace-close' => 'Serriñ',
+	'edittoolbar-tool-replace-close' => 'Nullañ',
 	'edittoolbar-tool-replace-nomatch' => "N'eus bet kavet netra o klotañ gant ar pezh a glaskit.",
+	'edittoolbar-tool-replace-success' => "$1 erlec'hiadenn graet",
 	'edittoolbar-section-characters' => 'Arouezennoù dibar',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Latin astennet',
@@ -928,7 +1089,7 @@ $messages['br'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Elfenn eus ar roll</li><li>Elfenn eus ar roll</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Restr enframmet',
 	'edittoolbar-help-content-file-syntax' => "[[{{ns:file}}:Example.png|thumb|Alc'hwez ar skeudenn]]",
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Testenn an alc'hwez' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Brasaat' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Testenn an alc'hwez</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Testenn an alc'hwez' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Brasaat' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Testenn an alc'hwez</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Daveenn',
 	'edittoolbar-help-content-reference-syntax' => 'Testenn ar bajenn.&lt;ref name="test"&gt;[http://www.example.org testenn al liamm], testenn ouzhpenn.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Testenn ar bajenn.<sup><a href='#'>[1]</a></sup>",
@@ -953,11 +1114,16 @@ $messages['bs'] = array(
 	'edittoolbar' => 'Uređivanje alatne trake',
 	'edittoolbar-desc' => 'Alatna traka stranice za uređivanje sa poboljšanom upotrebljivošću',
 	'edittoolbar-preference' => 'Omogući naprednu traku za uređivanje',
+	'edittoolbar-cgd-preference' => 'Omogući pomoć za dodavanje naprednog wiki teksta',
 	'edittoolbar-loading' => 'Punjenje...',
 	'edittoolbar-tool-bold' => 'Podebljano',
 	'edittoolbar-tool-bold-example' => 'Podebljan tekst',
 	'edittoolbar-tool-italic' => 'Ukošeno',
 	'edittoolbar-tool-italic-example' => 'Ukošeni tekst',
+	'edittoolbar-tool-ilink' => 'Unutrašnji link',
+	'edittoolbar-tool-ilink-example' => 'Naslov linka',
+	'edittoolbar-tool-xlink' => 'Vanjski link (zapamtite prefiks http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com naslov linka',
 	'edittoolbar-tool-link' => 'Link',
 	'edittoolbar-tool-link-title' => 'Ubaci link',
 	'edittoolbar-tool-link-int' => 'Na wiki stranicu',
@@ -973,6 +1139,7 @@ $messages['bs'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Nevaljan naslov',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Provjeravam postojanje stranice...',
 	'edittoolbar-tool-link-int-invalid' => 'Naslov koji ste unijeli je nevaljan.',
+	'edittoolbar-tool-link-ext-invalid' => 'URL koji ste naveli je nevaljan',
 	'edittoolbar-tool-file' => 'Uklopljena datoteka',
 	'edittoolbar-tool-file-example' => 'Primjer.jpg',
 	'edittoolbar-tool-reference' => 'Reference',
@@ -1007,6 +1174,18 @@ $messages['bs'] = array(
 {{ns:file}}:Example.jpg|Opis2',
 	'edittoolbar-tool-newline' => 'Nova linija',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! naslov 1
+! naslov 2
+! naslov 3
+|-
+| red 1, ćelija 1
+| red 1, ćelija 2
+| red 1, ćelija 3
+|-
+| red 2, ćelija 1
+| red 2, ćelija 2
+| red 2, ćelija 3',
 	'edittoolbar-tool-table-example' => 'Red $1, ćelija $2',
 	'edittoolbar-tool-table-example-header' => 'Red $1, ćelija $2 (naslov)',
 	'edittoolbar-tool-table-title' => 'Ubaci tabelu',
@@ -1016,7 +1195,7 @@ $messages['bs'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Uključi red zaglavlja',
 	'edittoolbar-tool-table-insert' => 'Ubaci',
 	'edittoolbar-tool-table-cancel' => 'Odustani',
-	'edittoolbar-tool-replace' => 'Zamijeni',
+	'edittoolbar-tool-replace' => 'Pronađi i zamijeni',
 	'edittoolbar-tool-replace-title' => 'Nađi i zamijeni',
 	'edittoolbar-tool-replace-search' => 'Pretraži:',
 	'edittoolbar-tool-replace-replace' => 'Zamijeni sa:',
@@ -1024,8 +1203,9 @@ $messages['bs'] = array(
 	'edittoolbar-tool-replace-regex' => 'Smatraj traženi pojam kao regularni izraz',
 	'edittoolbar-tool-replace-all' => 'Zamijeni sve pronađeno',
 	'edittoolbar-tool-replace-button' => 'Zamijeni',
-	'edittoolbar-tool-replace-close' => 'Zatvori',
+	'edittoolbar-tool-replace-close' => 'Odustani',
 	'edittoolbar-tool-replace-nomatch' => 'Vaša pretraga nije dala nijedan rezultat.',
+	'edittoolbar-tool-replace-success' => 'Načinjeno $1 izmjena.',
 	'edittoolbar-section-characters' => 'Posebni znakovi',
 	'edittoolbar-characters-page-latin' => 'Latinica',
 	'edittoolbar-characters-page-latinextended' => 'Prošireni latinski',
@@ -1085,7 +1265,7 @@ $messages['bs'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Stavka spiska</li><li>Stavka spiska</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Uklopljena datoteka',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Opis slike]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Opis slike' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Uvećajte' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Opis slike</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Opis slike' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Uvećajte' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Opis slike</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Reference',
 	'edittoolbar-help-content-reference-syntax' => 'Tekst stranice.&lt;ref name="test"&gt;[http://www.example.org Tekst linka], dodatni tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Tekst stranice.<sup><a href='#'>[1]</a></sup>",
@@ -1103,8 +1283,10 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Oç
  * @author Paucabot
  * @author SMP
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'edittoolbar' => "Editant la barra d'eines",
@@ -1115,6 +1297,10 @@ $messages['ca'] = array(
 	'edittoolbar-tool-bold-example' => 'Text en negreta',
 	'edittoolbar-tool-italic' => 'Cursiva',
 	'edittoolbar-tool-italic-example' => 'Text en cursiva',
+	'edittoolbar-tool-ilink' => 'Enllaç intern',
+	'edittoolbar-tool-ilink-example' => "Títol de l'enllaç",
+	'edittoolbar-tool-xlink' => 'Enllaç extern (recordeu el prefix http://)',
+	'edittoolbar-tool-xlink-example' => "http://www.example.org títol de l'enllaç",
 	'edittoolbar-tool-link' => 'Enllaç',
 	'edittoolbar-tool-link-title' => 'Insereix un enllaç',
 	'edittoolbar-tool-link-int' => 'A una pàgina del wiki',
@@ -1130,6 +1316,7 @@ $messages['ca'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Títol no vàlid',
 	'edittoolbar-tool-link-int-target-status-loading' => "Comprovació de l'existència de la pàgina ...",
 	'edittoolbar-tool-link-int-invalid' => 'El títol que heu especificat no és vàlid.',
+	'edittoolbar-tool-link-ext-invalid' => "L'URL que heu especificat és invàlid.",
 	'edittoolbar-tool-file' => 'Fitxer incrustat',
 	'edittoolbar-tool-file-example' => 'Exemple.png',
 	'edittoolbar-tool-reference' => 'Referència',
@@ -1164,14 +1351,15 @@ $messages['ca'] = array(
 {{ns:file}}:Example.jpg|Peu2',
 	'edittoolbar-tool-newline' => 'Nova línia',
 	'edittoolbar-tool-table' => 'Taula',
+	'edittoolbar-tool-table-example' => 'Fila $1, cel·la $2',
+	'edittoolbar-tool-table-example-header' => 'Fila $1, ceŀla $2 (encapçalament)',
 	'edittoolbar-tool-table-title' => 'Insereix taula',
+	'edittoolbar-tool-table-dimensions' => 'Dimensions',
 	'edittoolbar-tool-table-dimensions-rows' => 'Files',
 	'edittoolbar-tool-table-dimensions-columns' => 'Columnes',
-	'edittoolbar-tool-table-dimensions-headerrows' => "Files d'encapçalament",
-	'edittoolbar-tool-table-dimensions-headercolumns' => "Columnes d'encapçalament",
 	'edittoolbar-tool-table-insert' => 'Insereix',
 	'edittoolbar-tool-table-cancel' => 'Canceŀla',
-	'edittoolbar-tool-replace' => 'Reemplaça',
+	'edittoolbar-tool-replace' => 'Cerca i reemplaça',
 	'edittoolbar-tool-replace-title' => 'Cerca i reemplaça',
 	'edittoolbar-tool-replace-search' => 'Cerca:',
 	'edittoolbar-tool-replace-replace' => 'Reemplaça per:',
@@ -1179,7 +1367,7 @@ $messages['ca'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tracta la cadena de cerca com una expressió regular',
 	'edittoolbar-tool-replace-all' => 'Reemplaça totes les coincidències',
 	'edittoolbar-tool-replace-button' => 'Reemplaça',
-	'edittoolbar-tool-replace-close' => 'Tanca',
+	'edittoolbar-tool-replace-close' => 'Anul·la',
 	'edittoolbar-tool-replace-nomatch' => 'La vostra cerca no ha trobat cap coincidència.',
 	'edittoolbar-section-characters' => 'Caràcters especials',
 	'edittoolbar-characters-page-latin' => 'Llatí',
@@ -1239,7 +1427,7 @@ $messages['ca'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Element de la llista</li><li>Element de la llista</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Fitxer incrustat',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Exemple.png|thumb|Text descriptiu de la imatge]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Llegenda</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Llegenda</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referències',
 	'edittoolbar-help-content-reference-syntax' => 'Text de la pàgina.&lt;ref name="test"&gt;[http://www.exemple.cat Nom de l\'enllaç], text addicional.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Text de la pàgina.<sup><a href='#'>[1]</a></sup>",
@@ -1268,6 +1456,8 @@ $messages['ckb-arab'] = array(
 	'edittoolbar-tool-bold-example' => 'دەقی تۆخ',
 	'edittoolbar-tool-italic' => 'لار',
 	'edittoolbar-tool-italic-example' => 'دەقی لار',
+	'edittoolbar-tool-ilink' => 'بەستەری ناوەکی',
+	'edittoolbar-tool-ilink-example' => 'سەردێڕی بەستەر',
 	'edittoolbar-tool-reference' => 'سەرچاوە',
 	'edittoolbar-section-advanced' => 'پەرەسەندوو',
 	'edittoolbar-tool-heading' => 'سەردێڕ',
@@ -1354,11 +1544,16 @@ $messages['cs'] = array(
 	'edittoolbar' => 'Editační panel nástrojů',
 	'edittoolbar-desc' => 'Editační panel nástrojů s vylepšenou použitelností',
 	'edittoolbar-preference' => 'Zapnout vylepšený panel nástrojů',
+	'edittoolbar-cgd-preference' => 'Zobrazovat pomocníky pro přidávání pokročilejší wikisyntaxe',
 	'edittoolbar-loading' => 'Načítá se…',
 	'edittoolbar-tool-bold' => 'Tučně',
 	'edittoolbar-tool-bold-example' => 'Tučný text',
 	'edittoolbar-tool-italic' => 'Kurzíva',
 	'edittoolbar-tool-italic-example' => 'Text kurzívou',
+	'edittoolbar-tool-ilink' => 'Vnitřní odkaz',
+	'edittoolbar-tool-ilink-example' => 'Název odkazu',
+	'edittoolbar-tool-xlink' => 'Externí odkaz (nezapomeňte na předponu http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com Titulek odkazu',
 	'edittoolbar-tool-link' => 'Odkaz',
 	'edittoolbar-tool-link-title' => 'Vložit odkaz',
 	'edittoolbar-tool-link-int' => 'Na wiki stránku',
@@ -1374,6 +1569,7 @@ $messages['cs'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Neplatný název',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Zjišťování existence stránky…',
 	'edittoolbar-tool-link-int-invalid' => 'Vámi zadaný název je neplatný.',
+	'edittoolbar-tool-link-ext-invalid' => 'Uvedené URL je neplatné.',
 	'edittoolbar-tool-file' => 'Vložený soubor',
 	'edittoolbar-tool-file-example' => 'Příklad.jpg',
 	'edittoolbar-tool-reference' => 'Poznámky',
@@ -1408,6 +1604,18 @@ $messages['cs'] = array(
 {{ns:file}}:Příklad.jpg|Titulek 2',
 	'edittoolbar-tool-newline' => 'Nový řádek',
 	'edittoolbar-tool-table' => 'Tabulka',
+	'edittoolbar-tool-table-example-old' => '-
+! hlavička 1
+! hlavička 2
+! hlavička 3
+|-
+| řádek 1, buňka 1
+| řádek 1, buňka 2
+| řádek 1, buňka 3
+|-
+| řádek 2, buňka 1
+| řádek 2, buňka 2
+| řádek 2, buňka 3',
 	'edittoolbar-tool-table-example' => 'Řádek $1, buňka $2',
 	'edittoolbar-tool-table-example-header' => 'Řádek $1, buňka $2 (záhlaví)',
 	'edittoolbar-tool-table-title' => 'Vložení tabulky',
@@ -1417,7 +1625,7 @@ $messages['cs'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Přidat řádek s hlavičkou',
 	'edittoolbar-tool-table-insert' => 'Vložit',
 	'edittoolbar-tool-table-cancel' => 'Storno',
-	'edittoolbar-tool-replace' => 'Nahradit',
+	'edittoolbar-tool-replace' => 'Najít a nahradit',
 	'edittoolbar-tool-replace-title' => 'Najít a nahradit',
 	'edittoolbar-tool-replace-search' => 'Najít:',
 	'edittoolbar-tool-replace-replace' => 'Nahradit za:',
@@ -1425,8 +1633,9 @@ $messages['cs'] = array(
 	'edittoolbar-tool-replace-regex' => 'Hledat pomocí regulárního výrazu',
 	'edittoolbar-tool-replace-all' => 'Nahradit všechny výskyty',
 	'edittoolbar-tool-replace-button' => 'Nahradit',
-	'edittoolbar-tool-replace-close' => 'Zavřít',
+	'edittoolbar-tool-replace-close' => 'Storno',
 	'edittoolbar-tool-replace-nomatch' => 'Zadanému hledání nic neodpovídá.',
+	'edittoolbar-tool-replace-success' => 'Nahrazeno $1krát.',
 	'edittoolbar-section-characters' => 'Zvláštní znaky',
 	'edittoolbar-characters-page-latin' => 'Latinka',
 	'edittoolbar-characters-page-latinextended' => 'Rozšíření latinky',
@@ -1486,7 +1695,7 @@ $messages['cs'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Položka seznamu</li><li>Položka seznamu</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Vložení souboru',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Příklad.png|thumb|Text titulku]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Text titulku' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Zvětšit' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Text titulku</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Text titulku' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Zvětšit' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Text titulku</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Poznámka',
 	'edittoolbar-help-content-reference-syntax' => 'Text stránky.&lt;ref name="test"&gt;[http://www.example.org Text odkazu], další text.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Text stránky.<sup><a href='#'>[1]</a></sup>",
@@ -1503,6 +1712,175 @@ $messages['cs'] = array(
 	'edittoolbar-help-content-indent-result' => 'Základní text<dl><dd>Odsazený text<dl><dd>Odsazený text</dd></dl></dd></dl>',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'edittoolbar' => 'Bar offer golygu',
+	'edittoolbar-preference' => "Defnyddio'r bar offer golygu estynedig",
+	'edittoolbar-loading' => "Wrthi'n llwytho...",
+	'edittoolbar-tool-bold' => 'Praff',
+	'edittoolbar-tool-bold-example' => 'Testun praff',
+	'edittoolbar-tool-italic' => 'Italig',
+	'edittoolbar-tool-italic-example' => 'Testun italig',
+	'edittoolbar-tool-ilink' => 'Cyswllt mewnol',
+	'edittoolbar-tool-ilink-example' => 'Teitl y cyswllt',
+	'edittoolbar-tool-xlink' => 'Cyswllt allanol (cofiwch rhagddodi http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com teitl y cyswllt',
+	'edittoolbar-tool-link' => 'Cyswllt',
+	'edittoolbar-tool-link-title' => 'Mewnosod cyswllt',
+	'edittoolbar-tool-link-int' => 'At dudalen wici',
+	'edittoolbar-tool-link-int-target' => 'Teitl y dudalen:',
+	'edittoolbar-tool-link-int-text' => 'Testun y cyswllt:',
+	'edittoolbar-tool-link-ext' => 'At dudalen we allanol',
+	'edittoolbar-tool-link-ext-target' => 'URL y cyswllt:',
+	'edittoolbar-tool-link-ext-text' => 'Ysgrifen y cyswllt:',
+	'edittoolbar-tool-link-insert' => 'Mewnosod cyswllt',
+	'edittoolbar-tool-link-cancel' => 'Diddymu',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Y dudalen ar gael',
+	'edittoolbar-tool-link-int-target-status-notexists' => "Nid yw'r dudalen ar gael",
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Teitl annilys',
+	'edittoolbar-tool-link-int-target-status-loading' => "Wrthi'n gwirio a yw'r dudalen ar gael...",
+	'edittoolbar-tool-link-int-invalid' => 'Ysgrifennwyd teitl annilys.',
+	'edittoolbar-tool-link-ext-invalid' => "Nid yw'r URL a nodwyd yn ddilys.",
+	'edittoolbar-tool-file' => 'Ffeil mewnosodol',
+	'edittoolbar-tool-file-example' => 'Enghraifft.jpg',
+	'edittoolbar-tool-reference' => 'Troednodyn',
+	'edittoolbar-tool-reference-example' => 'Ysgrifennwch droednodyn fan hyn',
+	'edittoolbar-tool-signature' => 'Llofnod a stamp amser',
+	'edittoolbar-section-advanced' => 'Uwch',
+	'edittoolbar-tool-heading' => 'Pennawd',
+	'edittoolbar-tool-heading-1' => 'Lefel 1',
+	'edittoolbar-tool-heading-2' => 'Lefel 2',
+	'edittoolbar-tool-heading-3' => 'Lefel 3',
+	'edittoolbar-tool-heading-4' => 'Lefel 4',
+	'edittoolbar-tool-heading-5' => 'Lefel 5',
+	'edittoolbar-tool-heading-example' => 'Ysgrifennwch y pennawd fan hyn',
+	'edittoolbar-group-list' => 'Rhestr',
+	'edittoolbar-tool-ulist' => 'Rhestr gyda bwledi',
+	'edittoolbar-tool-ulist-example' => 'Eitem ar restr gyda bwledi',
+	'edittoolbar-tool-olist' => "Rhestr wedi'i rhifo",
+	'edittoolbar-tool-olist-example' => "Eitem ar restr wedi'i rhifo",
+	'edittoolbar-group-size' => 'Maint',
+	'edittoolbar-tool-big' => 'Mawr',
+	'edittoolbar-tool-big-example' => 'Llythrennau mawr',
+	'edittoolbar-tool-small' => 'Bach',
+	'edittoolbar-tool-small-example' => 'Ysgrifen bach',
+	'edittoolbar-group-baseline' => 'Gwaelodlin',
+	'edittoolbar-tool-superscript' => 'Uwchysgrif',
+	'edittoolbar-tool-superscript-example' => 'Ysgrifennwch uwchysgrif fan hyn',
+	'edittoolbar-tool-subscript' => 'Isysgrif',
+	'edittoolbar-tool-subscript-example' => 'Ysgrifennwch isysgrif fan hyn',
+	'edittoolbar-group-insert' => 'Mewnosod',
+	'edittoolbar-tool-gallery' => 'Galeri lluniau',
+	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Enghraifft.jpg|Disgrifiad1
+{{ns:file}}:Enghraifft.jpg|Disgrifiad2',
+	'edittoolbar-tool-newline' => 'Llinell newydd',
+	'edittoolbar-tool-table' => 'Tabl',
+	'edittoolbar-tool-table-example-old' => '-
+! pennawd 1
+! pennawd 2
+! pennawd 3
+|-
+| rhes 1, cell 1
+| rhes 1, cell 2
+| rhes 1, cell 3
+|-
+| rhes 2, cell 1
+| rhes 2, cell 2
+| rhes 2, cell 3',
+	'edittoolbar-tool-table-example' => 'Rhes $1, cell $2',
+	'edittoolbar-tool-table-example-header' => 'Rhes $1, cell $2 (pennawd)',
+	'edittoolbar-tool-table-title' => 'Mewnosod tabl',
+	'edittoolbar-tool-table-dimensions' => 'Hyd a lled',
+	'edittoolbar-tool-table-dimensions-rows' => 'Rhesi',
+	'edittoolbar-tool-table-dimensions-columns' => 'Colofnau',
+	'edittoolbar-tool-table-dimensions-header' => 'Cynhwysir rhes y penawdau',
+	'edittoolbar-tool-table-insert' => 'Mewnosod',
+	'edittoolbar-tool-table-cancel' => 'Diddymu',
+	'edittoolbar-tool-replace' => 'Canfod a disodli',
+	'edittoolbar-tool-replace-title' => 'Canfod a disodli',
+	'edittoolbar-tool-replace-search' => 'Chwilier am:',
+	'edittoolbar-tool-replace-replace' => 'Gosoder yn ei le:',
+	'edittoolbar-tool-replace-case' => 'Trin llythrennau mawr a bach fel llythrennau gwahanol',
+	'edittoolbar-tool-replace-all' => 'Disodler y cyfan',
+	'edittoolbar-tool-replace-button' => 'Disodler',
+	'edittoolbar-tool-replace-close' => 'Diddymu',
+	'edittoolbar-tool-replace-nomatch' => 'Ni chanfyddwyd yr hyn a chwiliwyd amdano.',
+	'edittoolbar-tool-replace-success' => 'Gwnaethpwyd $1 amnewidiad.',
+	'edittoolbar-section-characters' => 'Nodau arbennig',
+	'edittoolbar-characters-page-latin' => 'Lladin',
+	'edittoolbar-characters-page-latinextended' => 'Lladin estynedig',
+	'edittoolbar-characters-page-ipa' => 'Yr wyddor phonetig rhyngwladol (IPA)',
+	'edittoolbar-characters-page-symbols' => 'Symbolau',
+	'edittoolbar-characters-page-greek' => 'Groeg',
+	'edittoolbar-characters-page-cyrillic' => 'Cyrilig',
+	'edittoolbar-characters-page-arabic' => 'Arabeg',
+	'edittoolbar-characters-page-hebrew' => 'Hebraeg',
+	'edittoolbar-characters-page-telugu' => 'Telugu',
+	'edittoolbar-section-help' => 'Cymorth',
+	'edittoolbar-help-heading-description' => 'Disgrifiad',
+	'edittoolbar-help-heading-syntax' => 'Pan deipiwch hyn',
+	'edittoolbar-help-heading-result' => 'fe gewch',
+	'edittoolbar-help-page-format' => 'Fformatio',
+	'edittoolbar-help-page-link' => 'Cysylltau',
+	'edittoolbar-help-page-heading' => 'Penawdau',
+	'edittoolbar-help-page-list' => 'Rhestri',
+	'edittoolbar-help-page-file' => 'Ffeiliau',
+	'edittoolbar-help-page-reference' => 'Troednodion',
+	'edittoolbar-help-page-discussion' => 'Sgwrs',
+	'edittoolbar-help-content-italic-description' => 'Italig',
+	'edittoolbar-help-content-italic-syntax' => "''Ysgrifen italig''",
+	'edittoolbar-help-content-italic-result' => '<em>Ysgrifen italig</em>',
+	'edittoolbar-help-content-bold-description' => 'Praff',
+	'edittoolbar-help-content-bold-syntax' => "'''Testun praff'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Testun praff</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Praff &amp; italig',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Ysgrifen praff &amp; italig'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Ysgrifen praff &amp; italig</em></strong>',
+	'edittoolbar-help-content-ilink-description' => 'Cyswllt mewnol',
+	'edittoolbar-help-content-ilink-syntax' => '[[Page title|Label y cyswllt]]<br />[[Teitl y dudalen]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>Label y cyswllt</a><br /><a href='#'>Teitl y dudalen</a>",
+	'edittoolbar-help-content-xlink-description' => 'Cyswllt allanol',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.enghraifft.org Label y cyswllt]<br />[http://www.enghraifft.org]<br />http://www.enghraifft.org',
+	'edittoolbar-help-content-heading1-description' => 'pennawd ar lefel 1',
+	'edittoolbar-help-content-heading1-syntax' => '= Y pennawd =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Y pennawd</h1>',
+	'edittoolbar-help-content-heading2-description' => 'pennawd ar lefel 2',
+	'edittoolbar-help-content-heading2-syntax' => '== Y pennawd ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Y pennawd</h2>',
+	'edittoolbar-help-content-heading3-description' => 'pennawd ar lefel 3',
+	'edittoolbar-help-content-heading3-syntax' => '=== Y pennawd ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Y pennawd</h3>',
+	'edittoolbar-help-content-heading4-description' => 'pennawd ar lefel 4',
+	'edittoolbar-help-content-heading4-syntax' => '==== Y pennawd ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Y pennawd</h4>',
+	'edittoolbar-help-content-heading5-description' => 'pennawd ar lefel 5',
+	'edittoolbar-help-content-heading5-syntax' => '===== Y pennawd =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Y pennawd</h5>',
+	'edittoolbar-help-content-ulist-description' => 'Rhestr gyda bwledi',
+	'edittoolbar-help-content-ulist-syntax' => '* Eitem ar y rhestr<br />* Eitem ar y rhestr',
+	'edittoolbar-help-content-ulist-result' => '<ul><li>Eitem ar y rhestr</li><li>Eitem ar y rhestr</li></ul>',
+	'edittoolbar-help-content-olist-description' => "Rhestr wedi'i rhifo",
+	'edittoolbar-help-content-olist-syntax' => '# Eitem ar y rhestr<br /># Eitem ar y rhestr',
+	'edittoolbar-help-content-olist-result' => '<ol><li>Eitem ar y rhestr</li><li>Eitem ar y rhestr</li></ol>',
+	'edittoolbar-help-content-file-description' => 'Ffeil mewnosodol',
+	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Enghraifft.png|mân-lun|Disgrifiad]]',
+	'edittoolbar-help-content-reference-description' => 'Troednodyn',
+	'edittoolbar-help-content-reference-syntax' => 'Testun y dudalen.&lt;ref name="test"&gt;[http://www.enghraifft.org ysgrifen y cyswllt], ysgrifen ychwanegol.&lt;/ref&gt;',
+	'edittoolbar-help-content-reference-result' => 'Testun y dudalen.',
+	'edittoolbar-help-content-rereference-description' => 'Ail-ddefnyddio troednodyn',
+	'edittoolbar-help-content-rereference-result' => "Testun y dudalen.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-showreferences-description' => 'Dangos y troednodion',
+	'edittoolbar-help-content-signaturetimestamp-description' => 'Llofnod gyda stamp amser',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Enw defnyddiwr</a> (<a href='#' title='{{#special:mytalk}}'>sgwrs</a>) 15:54, 10 Mehefin 2009 (UTC)",
+	'edittoolbar-help-content-signature-description' => 'Llofnod',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Enw defnyddiwr</a> (<a href='#' title='{{#special:mytalk}}'>sgwrs</a>)",
+	'edittoolbar-help-content-indent-description' => 'Mewnoli',
+	'edittoolbar-help-content-indent-syntax' => "Ysgrifen rheolaidd<br />:Ysgrifen wedi'i mewnoli<br />::Ysgrifen wedi'i mewnoli",
+	'edittoolbar-help-content-indent-result' => "Ysgrifen rheolaidd<dl><dd>Ysgrifen wedi'i mewnoli<dl><dd>Ysgrifen wedi'i mewnoli</dd></dl></dd></dl>",
+);
+
 /** Danish (Dansk)
  * @author Byrial
  * @author Leolaursen
@@ -1516,6 +1894,10 @@ $messages['da'] = array(
 	'edittoolbar-tool-bold-example' => 'Fed tekst',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Kursiv tekst',
+	'edittoolbar-tool-ilink' => 'Intern henvisning',
+	'edittoolbar-tool-ilink-example' => 'Henvisningstekst',
+	'edittoolbar-tool-xlink' => 'Ekstern henvisning (husk http:// først)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com henvisningstekst',
 	'edittoolbar-tool-link' => 'Henvisning',
 	'edittoolbar-tool-link-title' => 'Indsæt henvisning',
 	'edittoolbar-tool-link-int' => 'Til en wikiartikel/-side',
@@ -1531,6 +1913,7 @@ $messages['da'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Ugyldig titel',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kontrollerer om siden findes ...',
 	'edittoolbar-tool-link-int-invalid' => 'Titlen du gav, er ugyldig.',
+	'edittoolbar-tool-link-ext-invalid' => "URL'en som du angav, er ugyldig.",
 	'edittoolbar-tool-file' => 'Indlejret fil',
 	'edittoolbar-tool-file-example' => 'Eksempel.jpg',
 	'edittoolbar-tool-reference' => 'Fodnote',
@@ -1571,11 +1954,9 @@ $messages['da'] = array(
 	'edittoolbar-tool-table-dimensions' => 'Dimensioner',
 	'edittoolbar-tool-table-dimensions-rows' => 'Rækker',
 	'edittoolbar-tool-table-dimensions-columns' => 'Kolonner',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Overskriftsrækker',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Overskriftskolonner',
 	'edittoolbar-tool-table-insert' => 'Indsæt',
 	'edittoolbar-tool-table-cancel' => 'Annullér',
-	'edittoolbar-tool-replace' => 'Erstat',
+	'edittoolbar-tool-replace' => 'Søg og erstat',
 	'edittoolbar-tool-replace-title' => 'Søg og erstat',
 	'edittoolbar-tool-replace-search' => 'Søg efter:',
 	'edittoolbar-tool-replace-replace' => 'Erstat med:',
@@ -1583,7 +1964,7 @@ $messages['da'] = array(
 	'edittoolbar-tool-replace-regex' => 'Behandl søgestrengen som et regulært udtryk',
 	'edittoolbar-tool-replace-all' => 'Erstat alle forekomster',
 	'edittoolbar-tool-replace-button' => 'Erstat',
-	'edittoolbar-tool-replace-close' => 'Luk',
+	'edittoolbar-tool-replace-close' => 'Annullér',
 	'edittoolbar-tool-replace-nomatch' => 'Din søgning gav ingen resultater',
 	'edittoolbar-section-characters' => 'Specialtegn',
 	'edittoolbar-characters-page-latin' => 'Latin',
@@ -1644,7 +2025,7 @@ $messages['da'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Listeelement</li><li>Listeelement</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Indlejret fil',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Billedtekst]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Billedtekst' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Forstør' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Billedtekst</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Billedtekst' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Forstør' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Billedtekst</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Fodnote',
 	'edittoolbar-help-content-reference-syntax' => 'Sidetekst.&lt;ref name="test"&gt;[http://www.example.org Henvisningstekst], yderligere tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Sidetekst.<sup><a href='#'>[1]</a></sup>",
@@ -1676,11 +2057,16 @@ $messages['de'] = array(
 	'edittoolbar' => 'Bearbeiten-Werkzeugleiste',
 	'edittoolbar-desc' => 'Bearbeiten-Werkzeugleiste mit erweiterter Benutzerfreundlichkeit',
 	'edittoolbar-preference' => 'Erweiterte Bearbeiten-Werkzeugleiste aktivieren',
+	'edittoolbar-cgd-preference' => 'Hilfe für erweiterte Wikisyntax aktivieren',
 	'edittoolbar-loading' => 'Laden …',
 	'edittoolbar-tool-bold' => 'Fett',
 	'edittoolbar-tool-bold-example' => 'Fetter Text',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Kursiver Text',
+	'edittoolbar-tool-ilink' => 'Interner Link',
+	'edittoolbar-tool-ilink-example' => 'Linktitel',
+	'edittoolbar-tool-xlink' => 'Externer Link (http:// beachten)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com Link-Text',
 	'edittoolbar-tool-link' => 'Link',
 	'edittoolbar-tool-link-title' => 'Link einfügen',
 	'edittoolbar-tool-link-int' => 'Zu einer Wiki-Seite',
@@ -1696,6 +2082,7 @@ $messages['de'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Ungültiger Titel',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Prüfe, ob Seite existiert …',
 	'edittoolbar-tool-link-int-invalid' => 'Der von dir angegebene Seitenname ist ungültig.',
+	'edittoolbar-tool-link-ext-invalid' => 'Die angegebene URL ist ungültig.',
 	'edittoolbar-tool-file' => 'Eingebettete Datei',
 	'edittoolbar-tool-file-example' => 'Beispiel.jpg',
 	'edittoolbar-tool-reference' => 'Quellennachweis',
@@ -1730,6 +2117,18 @@ $messages['de'] = array(
 {{ns:file}}:Beispiel.jpg|Beschreibung2',
 	'edittoolbar-tool-newline' => 'Neue Zeile',
 	'edittoolbar-tool-table' => 'Tabelle',
+	'edittoolbar-tool-table-example-old' => '-
+! Überschrift 1
+! Überschrift 2
+! Überschrift 3
+|-
+| Zeile 1, Zelle 1
+| Zeile 1, Zelle 2
+| Zeile 1, Zelle 3
+|-
+| Zeile 2, Zelle 1
+| Zeile 2, Zelle 2
+| Zeile 2, Zelle 3',
 	'edittoolbar-tool-table-example' => 'Zeile $1, Zelle $2',
 	'edittoolbar-tool-table-example-header' => 'Zeile $1, Zelle $2 (Überschrift)',
 	'edittoolbar-tool-table-title' => 'Tabelle einfügen',
@@ -1739,7 +2138,7 @@ $messages['de'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Kopfzeile einschließen',
 	'edittoolbar-tool-table-insert' => 'Einfügen',
 	'edittoolbar-tool-table-cancel' => 'Abbrechen',
-	'edittoolbar-tool-replace' => 'Ersetzen',
+	'edittoolbar-tool-replace' => 'Suchen und Ersetzen',
 	'edittoolbar-tool-replace-title' => 'Suchen und Ersetzen',
 	'edittoolbar-tool-replace-search' => 'Suche nach:',
 	'edittoolbar-tool-replace-replace' => 'Ersetze durch:',
@@ -1747,8 +2146,9 @@ $messages['de'] = array(
 	'edittoolbar-tool-replace-regex' => 'Suchzeichenkette als regulären Ausdruck behandeln',
 	'edittoolbar-tool-replace-all' => 'Ersetze alle Vorkommen',
 	'edittoolbar-tool-replace-button' => 'Ersetzen',
-	'edittoolbar-tool-replace-close' => 'Schließen',
+	'edittoolbar-tool-replace-close' => 'Abbrechen',
 	'edittoolbar-tool-replace-nomatch' => 'Deine Suche hat keine Ergebnisse erzielt.',
+	'edittoolbar-tool-replace-success' => '$1 Ersetzung(en) durchgeführt.',
 	'edittoolbar-section-characters' => 'Sonderzeichen',
 	'edittoolbar-characters-page-latin' => 'Lateinisch',
 	'edittoolbar-characters-page-latinextended' => 'Lateinisch, erweitert',
@@ -1808,7 +2208,7 @@ $messages['de'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Listeneintrag</li><li>Listeneintrag</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Eingebettete Datei',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Beispiel.png|thumb|Beschreibung]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Beschreibung' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Vergrößern' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Beschreibung</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Beschreibung' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Vergrößern' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Beschreibung</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Quellennachweis',
 	'edittoolbar-help-content-reference-syntax' => 'Seitentext.&lt;ref name="test"&gt;[http://www.beispiel.org Linktext], zusätzlicher Text.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Seitentext.<sup><a href='#'>[1]</a></sup>",
@@ -1841,11 +2241,16 @@ $messages['dsb'] = array(
 	'edittoolbar' => 'Wobźěłowańska rědowa kšoma',
 	'edittoolbar-desc' => 'Rědowa kšoma za wobźěłowanje bokow z pólěpšoneju wužywajobnosću',
 	'edittoolbar-preference' => 'Pólěpšonu wobźěłowańsku rědowu kšomu aktiwěrowaś',
+	'edittoolbar-cgd-preference' => 'Pomoc za pśidawanje rozšyrjonego wikiteksta zmóžniś',
 	'edittoolbar-loading' => 'Zacytujo se...',
 	'edittoolbar-tool-bold' => 'Tucny',
 	'edittoolbar-tool-bold-example' => 'Tucny tekst',
 	'edittoolbar-tool-italic' => 'Kursiwny',
 	'edittoolbar-tool-italic-example' => 'Kursiwny tekst',
+	'edittoolbar-tool-ilink' => 'Interny wótkaz',
+	'edittoolbar-tool-ilink-example' => 'Titel wótkaza',
+	'edittoolbar-tool-xlink' => 'Eksterny wótkaz (njezabydni prefiks http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.pśikład.de titel wótkaza',
 	'edittoolbar-tool-link' => 'Wótkaz',
 	'edittoolbar-tool-link-title' => 'Wótkaz zasunuś',
 	'edittoolbar-tool-link-int' => 'K wikijowemu nastawkoju/bokoju',
@@ -1861,6 +2266,7 @@ $messages['dsb'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Njepłaśiwy titel',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Eksistenca boka se pśekontrolěrujo...',
 	'edittoolbar-tool-link-int-invalid' => 'Titel, kótaryž sy pódał, jo njepłaśiwy.',
+	'edittoolbar-tool-link-ext-invalid' => 'URL, kótaryž sy pódał, jo njepłaśiwy.',
 	'edittoolbar-tool-file' => 'Zasajźona dataja',
 	'edittoolbar-tool-file-example' => 'Psikład.jpg',
 	'edittoolbar-tool-reference' => 'Referenca',
@@ -1895,6 +2301,18 @@ $messages['dsb'] = array(
 {{ns:file}}:Pśikład.jpg|Pópisanje2',
 	'edittoolbar-tool-newline' => 'Nowa smužka',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! głowa 1
+! głowa 2
+! głowa 3
+|-
+| smužka 1, cela 1
+| smužka 1, cela 2
+| smužka 1, cela 3
+|-
+| smužka 2, cela 1
+| smužka 2, cela 2
+| smužka 2, cela 3',
 	'edittoolbar-tool-table-example' => 'Smužka $1, cela $2',
 	'edittoolbar-tool-table-example-header' => 'Smužka $1, cela $2 (głowa)',
 	'edittoolbar-tool-table-title' => 'Tabelu zasunuś',
@@ -1904,7 +2322,8 @@ $messages['dsb'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Smužku głowy zapśěgnuś',
 	'edittoolbar-tool-table-insert' => 'Zasunuś',
 	'edittoolbar-tool-table-cancel' => 'Pśetergnuś',
-	'edittoolbar-tool-replace' => 'Wuměniś',
+	'edittoolbar-tool-table-toomany' => 'Zasajźenje tabele z wěcej ako $1 {{PLURAL:$1|celu|celoma|celami|celami}} njejo móžno z toś tym dialogom.',
+	'edittoolbar-tool-replace' => 'Pytaś a wuměniś',
 	'edittoolbar-tool-replace-title' => 'Pytaś a wuměniś',
 	'edittoolbar-tool-replace-search' => 'Pytaś za:',
 	'edittoolbar-tool-replace-replace' => 'Wuměniś pśez:',
@@ -1912,8 +2331,9 @@ $messages['dsb'] = array(
 	'edittoolbar-tool-replace-regex' => 'Z pytańskim teksto ako z regularnym wurazom wobchadaś',
 	'edittoolbar-tool-replace-all' => 'Wšykne wustupowanja wuměniś',
 	'edittoolbar-tool-replace-button' => 'Wuměniś',
-	'edittoolbar-tool-replace-close' => 'Zacyniś',
+	'edittoolbar-tool-replace-close' => 'Pśetergnuś',
 	'edittoolbar-tool-replace-nomatch' => 'Twójo pytanje njejo žedne wustupowanje namakało.',
+	'edittoolbar-tool-replace-success' => '$1 {{PLURAL:$1|wuměnjenje pśewjeźone|wuměnjeni pśewjeźonej|wuměnjenja pśewjeźone|wuměnjenjow pśewjeźonych}}.',
 	'edittoolbar-section-characters' => 'Specialne znamješka',
 	'edittoolbar-characters-page-latin' => 'Łatyńske',
 	'edittoolbar-characters-page-latinextended' => 'Łatyńske rozšyrjone',
@@ -1973,7 +2393,7 @@ $messages['dsb'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Lisćinowy zapisk</li><li>Lisćinowy zapisk</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Zasajźona dataja',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Pśikład.png|thumb|Wobrazowe pópisanje]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Wobrazowe pópisanje' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Powětšyś' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Wobrazowe pópisanje</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Wobrazowe pópisanje' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Powětšyś' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Wobrazowe pópisanje</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referenca',
 	'edittoolbar-help-content-reference-syntax' => 'Tekst boka.&lt;ref name="test"&gt;[http://www.example.org Tekst wótkaza], pśidatny tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Tekst boka.<sup><a href='#'>[1]</a></sup>",
@@ -1992,6 +2412,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -2004,6 +2425,10 @@ $messages['el'] = array(
 	'edittoolbar-tool-bold-example' => 'Έντονο κείμενο',
 	'edittoolbar-tool-italic' => 'Πλάγια',
 	'edittoolbar-tool-italic-example' => 'Κείμενο με πλάγιους χαρακτήρες',
+	'edittoolbar-tool-ilink' => 'Εσωτερικός σύνδεσμος',
+	'edittoolbar-tool-ilink-example' => 'Τίτλος συνδέσμου',
+	'edittoolbar-tool-xlink' => 'Εξωτερικός σύνδεσμος (μην ξεχάστε το πρόθεμα http:// )',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com τίτλος συνδέσμου',
 	'edittoolbar-tool-link' => 'Σύνδεσμος',
 	'edittoolbar-tool-link-title' => 'Εισαγωγή συνδέσμου',
 	'edittoolbar-tool-link-int' => 'Σε μία σελίδα wiki',
@@ -2019,6 +2444,7 @@ $messages['el'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Άκυρος τίτλος',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Έλεγχος ύπαρξης σελίδας...',
 	'edittoolbar-tool-link-int-invalid' => 'Ο τίτλος που καθορίσατε είναι μη έγκυρος.',
+	'edittoolbar-tool-link-ext-invalid' => 'Το URL που καθορίσατε είναι μη έγκυρο.',
 	'edittoolbar-tool-file' => 'Ενσωματωμένο αρχείο',
 	'edittoolbar-tool-file-example' => 'Paradeigma.jpg',
 	'edittoolbar-tool-reference' => 'Παραπομπή',
@@ -2062,7 +2488,7 @@ $messages['el'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Περίληψη σειράς επικεφαλίδας',
 	'edittoolbar-tool-table-insert' => 'Εισαγωγή',
 	'edittoolbar-tool-table-cancel' => 'Άκυρο',
-	'edittoolbar-tool-replace' => 'Αντικατάσταση',
+	'edittoolbar-tool-replace' => 'Αναζήτηση και αντικατάσταση',
 	'edittoolbar-tool-replace-title' => 'Αναζήτηση και αντικατάσταση',
 	'edittoolbar-tool-replace-search' => 'Αναζήτηση για:',
 	'edittoolbar-tool-replace-replace' => 'Αντικατάσταση από:',
@@ -2070,8 +2496,9 @@ $messages['el'] = array(
 	'edittoolbar-tool-replace-regex' => 'Αντιμετώπιση του "αναζήτηση ορμαθού" ως τακτικής έκφρασης',
 	'edittoolbar-tool-replace-all' => 'Αντικατάσταση όλων',
 	'edittoolbar-tool-replace-button' => 'Αντικατάσταση',
-	'edittoolbar-tool-replace-close' => 'Κλείσιμο',
+	'edittoolbar-tool-replace-close' => 'Ακύρωση',
 	'edittoolbar-tool-replace-nomatch' => 'Η αναζήτηση δεν ταίριαξε με κάτι.',
+	'edittoolbar-tool-replace-success' => 'Έγιναν $1 αντικαταστάσεις.',
 	'edittoolbar-section-characters' => 'Ειδικοί χαρακτήρες',
 	'edittoolbar-characters-page-latin' => 'Λατινικό',
 	'edittoolbar-characters-page-latinextended' => 'Προέκταση του λατινικού',
@@ -2131,7 +2558,7 @@ $messages['el'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Στοιχείο λίστας</li><li>Στοιχείο λίστας</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Ενσωματωμένο αρχείο',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Κείμενο περιγραφής]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Κείμενο τίτλων' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Κείμενο τίτλων</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Κείμενο τίτλων' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Κείμενο τίτλων</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Παραπομπή',
 	'edittoolbar-help-content-reference-syntax' => 'Κείμενο σελίδας.&lt;ref name="test"&gt;[http://www.example.org Κείμενο συνδέσμου], επιπλέον κείμενο.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Κείμενο σελίδας.<sup><a href='#'>[1]</a></sup>",
@@ -2155,11 +2582,16 @@ $messages['eo'] = array(
 	'edittoolbar' => 'Redakta ilobreto',
 	'edittoolbar-desc' => 'Redakta ilobreto kun plibonigita uzebleco',
 	'edittoolbar-preference' => 'Ŝalti plibonigitan redaktan ilobreton',
+	'edittoolbar-cgd-preference' => 'Ŝalti helpon por aldoni progresan vikitekston',
 	'edittoolbar-loading' => 'Ŝarĝante...',
 	'edittoolbar-tool-bold' => 'Grasa',
 	'edittoolbar-tool-bold-example' => 'Grasa teksto',
 	'edittoolbar-tool-italic' => 'Kursiva',
 	'edittoolbar-tool-italic-example' => 'Kursiva teksto',
+	'edittoolbar-tool-ilink' => 'Interna ligilo',
+	'edittoolbar-tool-ilink-example' => 'Ligila titolo',
+	'edittoolbar-tool-xlink' => 'Ekstera ligilo (Memoru prefikson http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.ekzemplo.com ligila titolo',
 	'edittoolbar-tool-link' => 'Ligilo',
 	'edittoolbar-tool-link-title' => 'Enmeti ligilon',
 	'edittoolbar-tool-link-int' => 'Iri vikian paĝon',
@@ -2175,6 +2607,7 @@ $messages['eo'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Malvalida titolo',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kontrolante ekziston de paĝo...',
 	'edittoolbar-tool-link-int-invalid' => 'La titolo kiun vi enmetis estas malvalida.',
+	'edittoolbar-tool-link-ext-invalid' => 'La URL-o kiun vi enigis estas malvalida.',
 	'edittoolbar-tool-file' => 'Enmetata dosiero',
 	'edittoolbar-tool-file-example' => 'Ekzemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referenco',
@@ -2209,6 +2642,18 @@ $messages['eo'] = array(
 {{ns:file}}:Ekzemplo.jpg|Teksto2 pri dosiero',
 	'edittoolbar-tool-newline' => 'Nova linio',
 	'edittoolbar-tool-table' => 'Tabelo',
+	'edittoolbar-tool-table-example-old' => '-
+! titolo 1
+! titolo 2
+! titolo 3
+|-
+| vico 1, ĉelo 1
+| vico 1, ĉelo 2
+| vico 1, ĉelo 3
+|-
+| vico 2, ĉelo 1
+| vico 2, ĉelo 2
+| vico 2, ĉelo 3',
 	'edittoolbar-tool-table-example' => 'Vico $1, ĉelo $2',
 	'edittoolbar-tool-table-example-header' => 'Vico $1, ĉelo $2 (titolo)',
 	'edittoolbar-tool-table-title' => 'Enmeti tabelon',
@@ -2218,7 +2663,7 @@ $messages['eo'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Inkluzivi titolan vicon',
 	'edittoolbar-tool-table-insert' => 'Enmeti',
 	'edittoolbar-tool-table-cancel' => 'Nuligi',
-	'edittoolbar-tool-replace' => 'Anstataŭigi',
+	'edittoolbar-tool-replace' => 'Serĉi kaj anstataŭigi',
 	'edittoolbar-tool-replace-title' => 'Serĉi kaj anstataŭigi',
 	'edittoolbar-tool-replace-search' => 'Serĉi:',
 	'edittoolbar-tool-replace-replace' => 'Anstataŭigi kun:',
@@ -2226,8 +2671,9 @@ $messages['eo'] = array(
 	'edittoolbar-tool-replace-regex' => 'Trakti signoĉenon kiel regularan esprimon',
 	'edittoolbar-tool-replace-all' => 'Anstataŭigi ĉiujn aperojn',
 	'edittoolbar-tool-replace-button' => 'Anstataŭigi',
-	'edittoolbar-tool-replace-close' => 'Fermi',
+	'edittoolbar-tool-replace-close' => 'Nuligi',
 	'edittoolbar-tool-replace-nomatch' => 'Via serĉo trafis nenion.',
+	'edittoolbar-tool-replace-success' => '$1 anstataŭigoj fariĝis.',
 	'edittoolbar-section-characters' => 'Specialaj signoj',
 	'edittoolbar-characters-page-latin' => 'Latina',
 	'edittoolbar-characters-page-latinextended' => 'Latina etendita',
@@ -2287,7 +2733,7 @@ $messages['eo'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Listero</li><li>Listero</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Enmetita dosiero',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Ekzemplo.png|thumb|Teksto pri dosiero]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Pligrandigi' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Teksto pri dosiero</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Pligrandigi' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Teksto pri dosiero</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referenco',
 	'edittoolbar-help-content-reference-syntax' => 'Paĝa teksto.&lt;ref name="test"&gt;[http://www.ekzemplo.org Ligila teksto], aldona teksto.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Paĝa teksto.<sup><a href='#'>[1]</a></sup>",
@@ -2315,11 +2761,16 @@ $messages['es'] = array(
 	'edittoolbar' => 'Editando barra de herramientas',
 	'edittoolbar-desc' => 'Barra de herramientas de página de edición con usabilidad mejorada',
 	'edittoolbar-preference' => 'Habilitar barra de herramientas de edición mejorada',
+	'edittoolbar-cgd-preference' => 'Habilitar ayuda para agregar texto wiki avanzado',
 	'edittoolbar-loading' => 'Cargando...',
 	'edittoolbar-tool-bold' => 'Negrita',
 	'edittoolbar-tool-bold-example' => 'Texto en negrita',
 	'edittoolbar-tool-italic' => 'Itálico',
 	'edittoolbar-tool-italic-example' => 'Texto itálico',
+	'edittoolbar-tool-ilink' => 'Vínculo interno',
+	'edittoolbar-tool-ilink-example' => 'Título del vínculo',
+	'edittoolbar-tool-xlink' => 'Vínculo externo (recordar prefijo http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com título del vínculo',
 	'edittoolbar-tool-link' => 'Enlace',
 	'edittoolbar-tool-link-title' => 'Insertar enlace',
 	'edittoolbar-tool-link-int' => 'A una página wiki',
@@ -2335,6 +2786,7 @@ $messages['es'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Título inválido',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Revisando existencia de la página...',
 	'edittoolbar-tool-link-int-invalid' => 'El título que ha especificado no es válido.',
+	'edittoolbar-tool-link-ext-invalid' => 'El URL que especificaste es inválido.',
 	'edittoolbar-tool-file' => 'Archivo empotrado',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Referencia',
@@ -2369,6 +2821,18 @@ $messages['es'] = array(
 {{ns:file}}:Ejemplo.jpg|Descripción2',
 	'edittoolbar-tool-newline' => 'Nueva línea',
 	'edittoolbar-tool-table' => 'Tabla',
+	'edittoolbar-tool-table-example-old' => '-
+! encabezado 1
+! encabezado 2
+! encabezado 3
+|-
+| fila 1, celda 1
+| fila 1, celda 2
+| fila 1, celda 3
+|-
+| fila 2, celda 1
+| fila 2, celda 2
+| fila 2, celda 3',
 	'edittoolbar-tool-table-example' => 'Fila $1, celda $2',
 	'edittoolbar-tool-table-example-header' => 'Fila $1, celda $2 (encabezado)',
 	'edittoolbar-tool-table-title' => 'Inserte tabla',
@@ -2378,7 +2842,7 @@ $messages['es'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Incluir encabezado de fila',
 	'edittoolbar-tool-table-insert' => 'Insertar',
 	'edittoolbar-tool-table-cancel' => 'Cancelar',
-	'edittoolbar-tool-replace' => 'Reemplazar',
+	'edittoolbar-tool-replace' => 'Buscar y reemplazar',
 	'edittoolbar-tool-replace-title' => 'Buscar y reemplazar',
 	'edittoolbar-tool-replace-search' => 'Buscar:',
 	'edittoolbar-tool-replace-replace' => 'Reemplazar por:',
@@ -2386,8 +2850,9 @@ $messages['es'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tratar la cadena de búsqueda como expresión regular.',
 	'edittoolbar-tool-replace-all' => 'Reemplazar todas las coincidencias',
 	'edittoolbar-tool-replace-button' => 'Reemplazar',
-	'edittoolbar-tool-replace-close' => 'Cerrar',
+	'edittoolbar-tool-replace-close' => 'Cancelar',
 	'edittoolbar-tool-replace-nomatch' => 'Su búsqueda no halló resultados.',
+	'edittoolbar-tool-replace-success' => '$1 reemplazos hechos',
 	'edittoolbar-section-characters' => 'Carácteres especiales',
 	'edittoolbar-characters-page-latin' => 'Latín',
 	'edittoolbar-characters-page-latinextended' => 'Latín extendido',
@@ -2447,7 +2912,7 @@ $messages['es'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Listar item</li><li>Listar item</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Archivo empotrado',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Texto leyenda]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Texto leyenda</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Texto leyenda</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referencia',
 	'edittoolbar-help-content-reference-syntax' => 'Texto de página.&lt;ref name="test"&gt;[http://www.example.org Texto de vínculo], texto adicional.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Texto de página.<sup><a href='#'>[1]</a></sup>",
@@ -2477,6 +2942,10 @@ $messages['et'] = array(
 	'edittoolbar-tool-bold-example' => 'Rasvane kiri',
 	'edittoolbar-tool-italic' => 'Kursiiv',
 	'edittoolbar-tool-italic-example' => 'Kaldkiri',
+	'edittoolbar-tool-ilink' => 'Siselink',
+	'edittoolbar-tool-ilink-example' => 'Lingi pealkiri',
+	'edittoolbar-tool-xlink' => 'Välislink (ära unusta eesliidet http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.näide.ee lingi pealkiri',
 	'edittoolbar-tool-link-title' => 'Lingi lisamine',
 	'edittoolbar-tool-link-int' => 'Vikileheküljele',
 	'edittoolbar-tool-link-int-target' => 'Lehekülje pealkiri:',
@@ -2491,6 +2960,7 @@ $messages['et'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Vigane pealkiri',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Lehekülje olemasolu kindlakstegemine...',
 	'edittoolbar-tool-link-int-invalid' => 'Määratud pealkiri on vigane.',
+	'edittoolbar-tool-link-ext-invalid' => 'Esitatud internetiaadress on vigane.',
 	'edittoolbar-tool-file' => 'Manusfail',
 	'edittoolbar-tool-file-example' => 'Näide.jpg',
 	'edittoolbar-tool-reference' => 'Viide',
@@ -2525,24 +2995,34 @@ $messages['et'] = array(
 {{ns:file}}:Näide.jpg|Pildiallkiri2',
 	'edittoolbar-tool-newline' => 'Uus rida',
 	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-example-old' => '-
+! päis 1
+! päis 2
+! päis 3
+|-
+| 1. rida, 1. lahter
+| 1. rida, 2. lahter
+| 1. rida, 3. lahter
+|-
+| 2. rida, 1. lahter
+| 2. rida, 2. lahter
+| 2. rida, 3. lahter',
 	'edittoolbar-tool-table-example' => '$1. rida, $2. lahter',
 	'edittoolbar-tool-table-example-header' => '$1. rida, $2. lahter (päis)',
 	'edittoolbar-tool-table-title' => 'Tabeli lisamine',
 	'edittoolbar-tool-table-dimensions' => 'Suurus',
 	'edittoolbar-tool-table-dimensions-rows' => 'Ridu',
 	'edittoolbar-tool-table-dimensions-columns' => 'Veerge',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Päiseridu',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Päiseveerge',
 	'edittoolbar-tool-table-insert' => 'Lisa',
 	'edittoolbar-tool-table-cancel' => 'Loobu',
-	'edittoolbar-tool-replace' => 'Asenda',
+	'edittoolbar-tool-replace' => 'Otsi ja asenda',
 	'edittoolbar-tool-replace-title' => 'Otsimine ja asendus',
 	'edittoolbar-tool-replace-search' => 'Otsitav:',
 	'edittoolbar-tool-replace-replace' => 'Asendaja:',
 	'edittoolbar-tool-replace-case' => 'Erista suurtähti',
 	'edittoolbar-tool-replace-all' => 'Asenda kõik',
 	'edittoolbar-tool-replace-button' => 'Asenda',
-	'edittoolbar-tool-replace-close' => 'Sule',
+	'edittoolbar-tool-replace-close' => 'Loobu',
 	'edittoolbar-tool-replace-nomatch' => 'Ühtegi otsitavat ei leitud.',
 	'edittoolbar-section-characters' => 'Erimärgid',
 	'edittoolbar-characters-page-latin' => 'Ladina',
@@ -2603,7 +3083,7 @@ $messages['et'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Loendi liige</li><li>Loendi liige</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Manusfail',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Näide.png|thumb|Pildiallkiri]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Pildiallkiri' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Suurenda' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Pildiallkiri</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Pildiallkiri' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Suurenda' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Pildiallkiri</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Viide',
 	'edittoolbar-help-content-reference-syntax' => 'Lehekülje tekst.&lt;ref name="test"&gt;[http://www.näide.ee Lingi tekst], täiendav tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Lehekülje tekst.<sup><a href='#'>[1]</a></sup>",
@@ -2627,12 +3107,16 @@ $messages['et'] = array(
  * @author Theklan
  */
 $messages['eu'] = array(
-	'edittoolbar' => 'Herraminta-barra aldatzen',
+	'edittoolbar' => 'Tresna-barra aldatzen',
 	'edittoolbar-loading' => 'Kargatzen...',
 	'edittoolbar-tool-bold' => 'Beltza',
 	'edittoolbar-tool-bold-example' => 'Testu beltza',
 	'edittoolbar-tool-italic' => 'Etzana',
 	'edittoolbar-tool-italic-example' => 'Testu etzana',
+	'edittoolbar-tool-ilink' => 'Barne lotura',
+	'edittoolbar-tool-ilink-example' => 'Loturaren izenburua',
+	'edittoolbar-tool-xlink' => 'Kanpo lotura (gogoratu http:// aurrizkia)',
+	'edittoolbar-tool-xlink-example' => 'http://www.adibidea.com lotura izenburua',
 	'edittoolbar-tool-link' => 'Lotura',
 	'edittoolbar-tool-link-title' => 'Sartu lotura',
 	'edittoolbar-tool-link-int' => 'Wiki orrialde batera',
@@ -2646,9 +3130,13 @@ $messages['eu'] = array(
 	'edittoolbar-tool-link-int-target-status-exists' => 'Orrialdea existitzen da',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'Orrialdea ez da existitzen',
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Balio gabeko izenburua',
+	'edittoolbar-tool-link-int-target-status-loading' => 'Orriaren existentzia egiaztatzen...',
+	'edittoolbar-tool-link-int-invalid' => 'Zehaztutako izenburua ez dago zuzen.',
+	'edittoolbar-tool-link-ext-invalid' => 'Zehaztutako URLa ez dago zuzen.',
 	'edittoolbar-tool-file' => 'Txertatutako fitxategia',
 	'edittoolbar-tool-file-example' => 'Adibidea.jpg',
 	'edittoolbar-tool-reference' => 'Erreferentzia',
+	'edittoolbar-tool-reference-example' => 'Txertatu testu oina hemen',
 	'edittoolbar-tool-signature' => 'SInadura data eta orduarekin',
 	'edittoolbar-section-advanced' => 'Aurreratua',
 	'edittoolbar-tool-heading' => 'Izenburua',
@@ -2659,8 +3147,10 @@ $messages['eu'] = array(
 	'edittoolbar-tool-heading-5' => '5. Maila',
 	'edittoolbar-tool-heading-example' => 'Izenburuaren testua',
 	'edittoolbar-group-list' => 'Zerrenda',
-	'edittoolbar-tool-ulist' => 'Buletdun zerrenda',
+	'edittoolbar-tool-ulist' => 'Puntudun zerrenda',
+	'edittoolbar-tool-ulist-example' => 'Puntudun zerrendako gai',
 	'edittoolbar-tool-olist' => 'Zenbakidun zerrenda',
+	'edittoolbar-tool-olist-example' => 'Zenbakidun zerrendako gai',
 	'edittoolbar-group-size' => 'Tamaina',
 	'edittoolbar-tool-big' => 'Handia',
 	'edittoolbar-tool-big-example' => 'Testu handia',
@@ -2673,29 +3163,54 @@ $messages['eu'] = array(
 	'edittoolbar-tool-subscript-example' => 'Azpiindizearen testua',
 	'edittoolbar-group-insert' => 'Txertatu',
 	'edittoolbar-tool-gallery' => 'Irudi galeria',
-	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Adibidea.jpg|Epigrafea1
-{{ns:file}}:Adibidea.jpg|Epigrafea2',
+	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Adibidea.jpg|Oina1
+{{ns:file}}:Adibidea.jpg|Oina2',
 	'edittoolbar-tool-newline' => 'Lerro berria',
 	'edittoolbar-tool-table' => 'Taula',
-	'edittoolbar-tool-replace' => 'Aldatu',
+	'edittoolbar-tool-table-example-old' => '-
+! goiburua 1
+! goiburua 2
+! goiburua 3
+|-
+| errenkada 1, gela 1
+| errenkada 1, gela 2
+| errenkada 1, gela 3
+|-
+| errenkada 2, gela 1
+| errenkada 2, gela 2
+| errenkada 2, gela 3',
+	'edittoolbar-tool-table-example' => 'Errenkada $1, gela $2',
+	'edittoolbar-tool-table-example-header' => 'Errenkada $1, gela $2 (goiburua)',
+	'edittoolbar-tool-table-title' => 'Taula txertatu',
+	'edittoolbar-tool-table-dimensions' => 'Tamaina',
+	'edittoolbar-tool-table-dimensions-rows' => 'Errenkadak',
+	'edittoolbar-tool-table-dimensions-columns' => 'Zutabeak',
+	'edittoolbar-tool-table-dimensions-header' => 'Goiburu errendaka txertatu',
+	'edittoolbar-tool-table-insert' => 'Txertatu',
+	'edittoolbar-tool-table-cancel' => 'Ezeztatu',
+	'edittoolbar-tool-replace' => 'Bilatu eta ordezkatu',
 	'edittoolbar-tool-replace-title' => 'Bilatu eta aldatu',
 	'edittoolbar-tool-replace-search' => 'Honakoa bilatu:',
 	'edittoolbar-tool-replace-replace' => 'Honegatik aldatu:',
 	'edittoolbar-tool-replace-all' => 'Aldatu agertzen den guztietan',
 	'edittoolbar-tool-replace-button' => 'Aldatu',
-	'edittoolbar-tool-replace-close' => 'Itxi',
+	'edittoolbar-tool-replace-close' => 'Ezeztatu',
+	'edittoolbar-tool-replace-nomatch' => 'Ez dago bilaketarekin bat egiten duten emaitzarik.',
+	'edittoolbar-tool-replace-success' => '$1 ordezkapen eginda.',
 	'edittoolbar-section-characters' => 'Karaktere bereziak',
 	'edittoolbar-characters-page-latin' => 'Latinoa',
 	'edittoolbar-characters-page-latinextended' => 'Latin hedatua',
-	'edittoolbar-characters-page-ipa' => 'IPA',
+	'edittoolbar-characters-page-ipa' => 'NAF',
 	'edittoolbar-characters-page-symbols' => 'Ikurrak',
 	'edittoolbar-characters-page-greek' => 'Grekoa',
 	'edittoolbar-characters-page-cyrillic' => 'Zirilikoa',
 	'edittoolbar-characters-page-arabic' => 'Arabiarra',
-	'edittoolbar-characters-page-hebrew' => 'Hebrearra',
+	'edittoolbar-characters-page-hebrew' => 'Hebraiera',
 	'edittoolbar-characters-page-telugu' => 'Telugu',
 	'edittoolbar-section-help' => 'Laguntza',
 	'edittoolbar-help-heading-description' => 'Deskribapena',
+	'edittoolbar-help-heading-syntax' => 'Idazten duzuna',
+	'edittoolbar-help-heading-result' => 'Lortzen duzuna',
 	'edittoolbar-help-page-format' => 'Formatua ematen',
 	'edittoolbar-help-page-link' => 'Loturak',
 	'edittoolbar-help-page-heading' => 'Goiburuak',
@@ -2713,7 +3228,11 @@ $messages['eu'] = array(
 	'edittoolbar-help-content-bolditalic-syntax' => "'''''Testu beltza eta etzana'''''",
 	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Testu beltza eta etzana</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'Barne lotura',
+	'edittoolbar-help-content-ilink-syntax' => '[[Orriaren titulua|Loturaren izena]]<br />[[Orriaren titulua]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>Loturaren izena</a><br /><a href='#'>Orriaren titulua</a>",
 	'edittoolbar-help-content-xlink-description' => 'Kanpo lotura',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.adibidea.org Loturaren izena]<br />[http://www.adibidea.org]<br />http://www.adibidea.org',
+	'edittoolbar-help-content-xlink-result' => "<a href='#' class='external'>Loturaren izena</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.adibidea.org</a>",
 	'edittoolbar-help-content-heading1-description' => '1. mailako goiburua',
 	'edittoolbar-help-content-heading1-syntax' => '= Izenburuaren testua =',
 	'edittoolbar-help-content-heading1-result' => '<h1>Izenburuaren testua</h1>',
@@ -2730,18 +3249,75 @@ $messages['eu'] = array(
 	'edittoolbar-help-content-heading5-syntax' => '===== Izenburuaren testua =====',
 	'edittoolbar-help-content-heading5-result' => '<h5>Izenburuaren testua</h5>',
 	'edittoolbar-help-content-ulist-description' => 'Buletdun zerrenda',
+	'edittoolbar-help-content-ulist-syntax' => '* Zerrendako gai<br />* Zerrendako gai',
+	'edittoolbar-help-content-ulist-result' => '<ul><li>Zerrendako gai</li><li>Zerrendako gai</li></ul>',
 	'edittoolbar-help-content-olist-description' => 'Zenbakidun zerrenda',
+	'edittoolbar-help-content-olist-syntax' => '# Zerrendako gai<br /># Zerrendako gai',
+	'edittoolbar-help-content-olist-result' => '<ol><li>Zerrendako gai</li><li>Zerrendako gai</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Txertatutako fitxategia',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Adibidea.png|thumb|Oinaren testua]]',
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Irudiaren testua' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Handitu' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Irudiaren testua</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Erreferentzia',
 	'edittoolbar-help-content-reference-syntax' => 'Orrialdearen testua.&lt;ref name="test"&gt;[http://www.adibidea.org Loturaren testua], testu gehigarria.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Orrialdearen testua.<sup><a href='#'>[1]</a></sup>",
 	'edittoolbar-help-content-rereference-description' => 'Erreferentzia beraren erabilera gehiago',
+	'edittoolbar-help-content-rereference-result' => "Orriaren testua.<sup><a href='#'>[1]</a></sup>",
 	'edittoolbar-help-content-showreferences-description' => 'Erreferentziak erakutsi',
+	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.adibidea.org' class='external text' href='#'>Loturaren testua</a>, testu gehigarria.</li></ol>",
 	'edittoolbar-help-content-signaturetimestamp-description' => 'Sindaura data eta orduarekin',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Lankide iznea</a> (<a href='#' title='{{#special:mytalk}}'>eztabaida</a>) 15:54, 10 Ekaina 2009 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'Sinadura',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Lankide izena</a> (<a href='#' title='{{#special:mytalk}}'>eztabaida</a>)",
 	'edittoolbar-help-content-indent-description' => 'Koska',
 	'edittoolbar-help-content-indent-syntax' => 'Testu normala<br />:Koskadun testua<br />::Koskadun testua',
+	'edittoolbar-help-content-indent-result' => 'Testu arrunta<dl><dd>Koskatutako testua<dl><dd>Koskatutako testua</dd></dl></dd></dl>',
+);
+
+/** Persian (فارسی)
+ * @author Ladsgroup
+ */
+$messages['fa'] = array(
+	'edittoolbar-tool-italic' => 'ایتالیک',
+	'edittoolbar-tool-italic-example' => 'متن ایتالیک',
+	'edittoolbar-tool-ilink' => 'پیوند داخلی',
+	'edittoolbar-tool-ilink-example' => 'عنوان پیوند',
+	'edittoolbar-tool-xlink' => 'پیوند به بیرون (پیشوند http:// فراموش نشود)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com عنوان پیوند',
+	'edittoolbar-tool-link' => 'پیوند',
+	'edittoolbar-tool-link-title' => 'افزودن پیوند',
+	'edittoolbar-tool-link-int' => 'به یک صفحه ویکی',
+	'edittoolbar-tool-link-int-target' => 'عنوان صفحه:',
+	'edittoolbar-tool-link-int-text' => 'متن عنوان:',
+	'edittoolbar-tool-link-ext' => 'به یک صفحه وب خارج از ویکی',
+	'edittoolbar-tool-link-ext-target' => 'آدرس اینترنتی پیوند:',
+	'edittoolbar-tool-link-ext-text' => 'متن پیوند:',
+	'edittoolbar-tool-link-insert' => 'افزودن پیوند',
+	'edittoolbar-tool-link-cancel' => 'لغو',
+	'edittoolbar-tool-link-int-target-status-exists' => 'صفحه وجود دارد',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'صفحه وجود ندارد',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'عنوان نادرست',
+	'edittoolbar-tool-file-example' => 'مثال.jpg',
+	'edittoolbar-tool-reference' => 'منبع',
+	'edittoolbar-tool-signature' => 'امضا و زمان',
+	'edittoolbar-section-advanced' => 'پیشرفته',
+	'edittoolbar-tool-heading-example' => 'عنوان سطح',
+	'edittoolbar-group-list' => 'فهرست',
+	'edittoolbar-group-size' => 'اندازه',
+	'edittoolbar-tool-big' => 'بزرگ',
+	'edittoolbar-tool-big-example' => 'متن بزرگ',
+	'edittoolbar-tool-small' => 'کوچک',
+	'edittoolbar-tool-small-example' => 'متن کوچک',
+	'edittoolbar-tool-newline' => 'خط جدید',
+	'edittoolbar-tool-table' => 'جدول',
+	'edittoolbar-tool-table-cancel' => 'لغو',
+	'edittoolbar-characters-page-greek' => 'یونانی',
+	'edittoolbar-characters-page-cyrillic' => 'سیریلیک',
+	'edittoolbar-characters-page-arabic' => 'عربی',
+	'edittoolbar-characters-page-hebrew' => 'عبری',
+	'edittoolbar-characters-page-telugu' => 'تالوگو',
+	'edittoolbar-section-help' => 'راهنما',
+	'edittoolbar-help-content-italic-description' => 'ایتالیک',
+	'edittoolbar-help-content-signature-description' => 'امضا',
 );
 
 /** Finnish (Suomi)
@@ -2759,6 +3335,10 @@ $messages['fi'] = array(
 	'edittoolbar-tool-bold-example' => 'Lihavoitu teksti',
 	'edittoolbar-tool-italic' => 'Kursiivi',
 	'edittoolbar-tool-italic-example' => 'Kursivoitu teksti',
+	'edittoolbar-tool-ilink' => 'Sisäinen linkki',
+	'edittoolbar-tool-ilink-example' => 'Linkin otsikko',
+	'edittoolbar-tool-xlink' => 'Ulkoinen linkki (muista http://-etuliite)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com linkin otsikko',
 	'edittoolbar-tool-link' => 'Linkki',
 	'edittoolbar-tool-link-title' => 'Lisää linkki',
 	'edittoolbar-tool-link-int' => 'Wikisivuun',
@@ -2815,7 +3395,7 @@ $messages['fi'] = array(
 	'edittoolbar-tool-table-dimensions-columns' => 'Sarakkeet',
 	'edittoolbar-tool-table-insert' => 'Lisää',
 	'edittoolbar-tool-table-cancel' => 'Peruuta',
-	'edittoolbar-tool-replace' => 'Korvaa',
+	'edittoolbar-tool-replace' => 'Etsi ja korvaa',
 	'edittoolbar-tool-replace-title' => 'Etsi ja korvaa',
 	'edittoolbar-tool-replace-search' => 'Etsi seuraavaa:',
 	'edittoolbar-tool-replace-replace' => 'Korvaa seuraavalla:',
@@ -2823,7 +3403,7 @@ $messages['fi'] = array(
 	'edittoolbar-tool-replace-regex' => 'Kohtele hakuarvoa säännöllisenä lausekkeena',
 	'edittoolbar-tool-replace-all' => 'Korvaa kaikki esiintymät',
 	'edittoolbar-tool-replace-button' => 'Korvaa',
-	'edittoolbar-tool-replace-close' => 'Sulje',
+	'edittoolbar-tool-replace-close' => 'Peruuta',
 	'edittoolbar-tool-replace-nomatch' => 'Hakusi ei tuottanut osumia.',
 	'edittoolbar-section-characters' => 'Erikoismerkit',
 	'edittoolbar-characters-page-latin' => 'Latinalainen kirjaimisto',
@@ -2884,7 +3464,7 @@ $messages['fi'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Luettelon kohta</li><li>Luettelon kohta</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Tallennettu tiedosto',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Esimerkki.png|thumb|Kuvateksti]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Kuvateksti' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Kuvateksti</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Kuvateksti' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Kuvateksti</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Lähde',
 	'edittoolbar-help-content-reference-syntax' => 'Sivun teksti.&lt;ref name="testi"&gt;[http://www.example.org Linkin teksti], lisäteksti.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Sivun teksti.<sup><a href='#'>[1]</a></sup>",
@@ -2909,6 +3489,7 @@ $messages['fi'] = array(
  * @author McDutchie
  * @author Mormegil
  * @author Omnipaedista
+ * @author Peter17
  * @author PieRRoMaN
  * @author Verdy p
  */
@@ -2916,11 +3497,16 @@ $messages['fr'] = array(
 	'edittoolbar' => 'Barre d’outils de modification',
 	'edittoolbar-desc' => "Barre d'outils de modification avec l'utilisabilité améliorée",
 	'edittoolbar-preference' => "Activer la barre d'outils améliorée",
+	'edittoolbar-cgd-preference' => "Activer l'aide pour ajouter du texte wiki avancé",
 	'edittoolbar-loading' => 'Chargement ...',
 	'edittoolbar-tool-bold' => 'Gras',
 	'edittoolbar-tool-bold-example' => 'Texte en gras',
 	'edittoolbar-tool-italic' => 'Italique',
 	'edittoolbar-tool-italic-example' => 'Texte en italique',
+	'edittoolbar-tool-ilink' => 'Lien interne',
+	'edittoolbar-tool-ilink-example' => 'Titre du lien',
+	'edittoolbar-tool-xlink' => 'Lien externe ( n’oubliez pas le préfixe http:// )',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com titre du lien',
 	'edittoolbar-tool-link' => 'Lien',
 	'edittoolbar-tool-link-title' => 'Insérer un lien',
 	'edittoolbar-tool-link-int' => 'Vers un article / une page wiki',
@@ -2936,6 +3522,7 @@ $messages['fr'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titre invalide',
 	'edittoolbar-tool-link-int-target-status-loading' => "Vérification de l'existence de la page...",
 	'edittoolbar-tool-link-int-invalid' => 'Le titre que vous avez spécifié est incorrect.',
+	'edittoolbar-tool-link-ext-invalid' => "L'URL que vous avez spécifiée est invalide.",
 	'edittoolbar-tool-file' => 'Fichier inséré',
 	'edittoolbar-tool-file-example' => 'Exemple.jpg',
 	'edittoolbar-tool-reference' => 'Référence',
@@ -2970,6 +3557,18 @@ $messages['fr'] = array(
 {{ns:file}}:Exemple.jpg|Description 2',
 	'edittoolbar-tool-newline' => 'Saut de ligne',
 	'edittoolbar-tool-table' => 'Tableau',
+	'edittoolbar-tool-table-example-old' => '-
+! en-tête 1
+! en-tête 2
+! en-tête 3
+|-
+| ligne 1, case 1
+| ligne 1, case 2
+| ligne 1, case 3
+|-
+| ligne 2, case 1
+| ligne 2, case 2
+| ligne 2, case 3',
 	'edittoolbar-tool-table-example' => 'Ligne $1, cellule $2',
 	'edittoolbar-tool-table-example-header' => 'Ligne $1, cellule $2 (en-tête)',
 	'edittoolbar-tool-table-title' => 'Insérer un tableau',
@@ -2979,7 +3578,8 @@ $messages['fr'] = array(
 	'edittoolbar-tool-table-dimensions-header' => "Inclure la ligne d'en-tête",
 	'edittoolbar-tool-table-insert' => 'Insérer',
 	'edittoolbar-tool-table-cancel' => 'Annuler',
-	'edittoolbar-tool-replace' => 'Remplacer',
+	'edittoolbar-tool-table-toomany' => "Il n'est pas possible d'insérer un tableau de plus de $1 cellules avec cet outil.",
+	'edittoolbar-tool-replace' => 'Rechercher et remplacer',
 	'edittoolbar-tool-replace-title' => 'Rechercher et remplacer',
 	'edittoolbar-tool-replace-search' => 'Rechercher :',
 	'edittoolbar-tool-replace-replace' => 'Remplacer avec :',
@@ -2987,8 +3587,9 @@ $messages['fr'] = array(
 	'edittoolbar-tool-replace-regex' => 'Traiter la chaîne de recherche comme une expression régulière',
 	'edittoolbar-tool-replace-all' => 'Remplacer toutes les occurrences',
 	'edittoolbar-tool-replace-button' => 'Remplacer',
-	'edittoolbar-tool-replace-close' => 'Fermer',
+	'edittoolbar-tool-replace-close' => 'Annuler',
 	'edittoolbar-tool-replace-nomatch' => 'Votre recherche n’a abouti à aucune correspondance.',
+	'edittoolbar-tool-replace-success' => '$1 remplacements faits.',
 	'edittoolbar-section-characters' => 'Caractères spéciaux',
 	'edittoolbar-characters-page-latin' => 'latin',
 	'edittoolbar-characters-page-latinextended' => 'latin étendu',
@@ -3048,7 +3649,7 @@ $messages['fr'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Élément de la liste</li><li>Élément de la liste</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Fichier inséré',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Exemple.png|thumb|Texte affiché]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Texte affiché' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Texte affiché</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Texte affiché' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Texte affiché</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Référence',
 	'edittoolbar-help-content-reference-syntax' => 'Texte de la page.&lt;ref name="test"&gt;[http://www.example.org texte du lien], texte additionnel.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Texte de la page <sup><a href='#'>[1]</a></sup>",
@@ -3075,6 +3676,10 @@ $messages['frp'] = array(
 	'edittoolbar-tool-bold-example' => 'Tèxto grâs',
 	'edittoolbar-tool-italic' => 'Étalico',
 	'edittoolbar-tool-italic-example' => 'Tèxto étalico',
+	'edittoolbar-tool-ilink' => 'Lim de dedens',
+	'edittoolbar-tool-ilink-example' => 'Titro du lim',
+	'edittoolbar-tool-xlink' => 'Lim de defôr (oubliâd pas lo prèfixo http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.ègzemplo.com titro du lim',
 	'edittoolbar-tool-link' => 'Lim',
 	'edittoolbar-tool-link-int-text' => 'Tèxto du lim :',
 	'edittoolbar-tool-link-ext-text' => 'Tèxto du lim :',
@@ -3143,11 +3748,16 @@ $messages['gl'] = array(
 	'edittoolbar' => 'Barra de ferramentas de edición',
 	'edittoolbar-desc' => 'Editar a páxina da barra de ferramentas cunha mellor usabilidade',
 	'edittoolbar-preference' => 'Activar a barra de ferramentas de edición mellorada',
+	'edittoolbar-cgd-preference' => 'Activar a axuda para engadir texto wiki avanzado',
 	'edittoolbar-loading' => 'Cargando...',
 	'edittoolbar-tool-bold' => 'Negra',
 	'edittoolbar-tool-bold-example' => 'Texto en negra',
 	'edittoolbar-tool-italic' => 'Cursiva',
 	'edittoolbar-tool-italic-example' => 'Texto en cursiva',
+	'edittoolbar-tool-ilink' => 'Ligazón interna',
+	'edittoolbar-tool-ilink-example' => 'Título de ligazón',
+	'edittoolbar-tool-xlink' => 'Ligazón externa (lembre o prefixo http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com título de ligazón',
 	'edittoolbar-tool-link' => 'Ligazón',
 	'edittoolbar-tool-link-title' => 'Inserir unha ligazón',
 	'edittoolbar-tool-link-int' => 'Cara a unha páxina wiki',
@@ -3163,6 +3773,7 @@ $messages['gl'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Título non válido',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Comprobando a existencia da páxina...',
 	'edittoolbar-tool-link-int-invalid' => 'O título que especificou non é válido.',
+	'edittoolbar-tool-link-ext-invalid' => 'O enderezo URL que especificou é incorrecto.',
 	'edittoolbar-tool-file' => 'Ficheiro embelecido',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referencia',
@@ -3197,6 +3808,18 @@ $messages['gl'] = array(
 {{ns:file}}:Example.jpg|Pé_de_foto_2',
 	'edittoolbar-tool-newline' => 'Nova liña',
 	'edittoolbar-tool-table' => 'Táboa',
+	'edittoolbar-tool-table-example-old' => '-
+! cabeceira 1
+! cabeceira 2
+! cabeceira 3
+|-
+| liña 1, cela 1
+| liña 1, cela 2
+| liña 1, cela 3
+|-
+| liña 2, cela 1
+| liña 2, cela 2
+| liña 2, cela 3',
 	'edittoolbar-tool-table-example' => 'Fila $1, cela $2',
 	'edittoolbar-tool-table-example-header' => 'Fila $1, cela $2 (cabeceira)',
 	'edittoolbar-tool-table-title' => 'Inserir unha táboa',
@@ -3206,7 +3829,7 @@ $messages['gl'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Incluír a liña de cabeceira',
 	'edittoolbar-tool-table-insert' => 'Inserir',
 	'edittoolbar-tool-table-cancel' => 'Cancelar',
-	'edittoolbar-tool-replace' => 'Substituír',
+	'edittoolbar-tool-replace' => 'Buscar e substituír',
 	'edittoolbar-tool-replace-title' => 'Buscar e substituír',
 	'edittoolbar-tool-replace-search' => 'Buscar:',
 	'edittoolbar-tool-replace-replace' => 'Substituír por:',
@@ -3214,8 +3837,9 @@ $messages['gl'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tratar a secuencia de busca como unha expresión regular',
 	'edittoolbar-tool-replace-all' => 'Substituír todas as coincidencias',
 	'edittoolbar-tool-replace-button' => 'Substituír',
-	'edittoolbar-tool-replace-close' => 'Pechar',
+	'edittoolbar-tool-replace-close' => 'Cancelar',
 	'edittoolbar-tool-replace-nomatch' => 'A súa busca non atopou nada.',
+	'edittoolbar-tool-replace-success' => 'Fixéronse $1 substitucións.',
 	'edittoolbar-section-characters' => 'Caracteres especiais',
 	'edittoolbar-characters-page-latin' => 'Latín',
 	'edittoolbar-characters-page-latinextended' => 'Latín estendido',
@@ -3275,7 +3899,7 @@ $messages['gl'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Elemento da lista</li><li>Elemento da lista</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Ficheiro embelecido',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Pé de foto.]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Pé de foto.</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Pé de foto' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Ampliar' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Pé de foto.</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referencia',
 	'edittoolbar-help-content-reference-syntax' => 'Texto da páxina&lt;ref name="test"&gt;[http://www.example.org Texto da ligazón], texto adicional.&lt;/ref&gt;.',
 	'edittoolbar-help-content-reference-result' => "Texto da páxina<sup><a href='#'>[1]</a></sup>.",
@@ -3303,6 +3927,11 @@ $messages['grc'] = array(
 	'edittoolbar-tool-bold-example' => 'Γράμματα παχέα',
 	'edittoolbar-tool-italic' => 'πλάγιον',
 	'edittoolbar-tool-italic-example' => 'Γράμματα πλάγια',
+	'edittoolbar-tool-ilink' => 'Ἐσωτερικὸς σύνδεσμος',
+	'edittoolbar-tool-ilink-example' => 'Συνδέσμου ὄνομα',
+	'edittoolbar-tool-xlink' => 'Ἐξώτερος σύνδεσμος (μέμνησο τοῦ προθέματος http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com ὄνομα συνδέσμου',
+	'edittoolbar-tool-link-cancel' => 'Ἀκυροῦν',
 	'edittoolbar-tool-file' => 'Ἐμβεβαπτισμένον ἀρχεῖον',
 	'edittoolbar-tool-reference' => 'Ἀναφορά',
 	'edittoolbar-tool-reference-example' => 'Εἰσάγειν κείμενον παραπομπῆς ὧδε',
@@ -3325,11 +3954,13 @@ $messages['grc'] = array(
 	'edittoolbar-tool-gallery' => 'Πινακοθήκη',
 	'edittoolbar-tool-newline' => 'Νέα γραμμή',
 	'edittoolbar-tool-table' => 'Πίναξ',
-	'edittoolbar-tool-replace' => 'Ὑποκαθιστάναι',
+	'edittoolbar-tool-table-cancel' => 'Ἀκυροῦν',
+	'edittoolbar-tool-replace' => 'Ζητεῖν καὶ ὑποκαθιστάναι',
 	'edittoolbar-tool-replace-title' => 'Ζητεῖν καὶ ὑποκαθιστάναι',
 	'edittoolbar-tool-replace-search' => 'Zήτησις περί:',
 	'edittoolbar-tool-replace-replace' => 'Ὑποκατάστασις ὑπό:',
 	'edittoolbar-tool-replace-button' => 'Ὑποκαθιστάναι',
+	'edittoolbar-tool-replace-close' => 'Ἀκυροῦν',
 	'edittoolbar-section-characters' => 'Εἰδικοὶ χαρακτῆρες',
 	'edittoolbar-characters-page-latin' => 'Λατινικόν',
 	'edittoolbar-characters-page-latinextended' => 'Λατινικὸν προεκτεταμένον',
@@ -3390,11 +4021,16 @@ $messages['gsw'] = array(
 	'edittoolbar' => 'Wärchzygchäschtli bearbeite',
 	'edittoolbar-desc' => 'Wärchzygchäschtli mit ere verbesserete Benutzerfrejndligkeit bearbeite',
 	'edittoolbar-preference' => 'Verbesseret Bearbeitigs-Wärchzygchäschtli meglig mache',
+	'edittoolbar-cgd-preference' => 'Hilf fir fortgschrittene Wikitext megli mache',
 	'edittoolbar-loading' => 'Am Lade ...',
 	'edittoolbar-tool-bold' => 'Fätt',
 	'edittoolbar-tool-bold-example' => 'Tekscht fätt',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Tekscht kursiv',
+	'edittoolbar-tool-ilink' => 'Intärn Gleich (Link)',
+	'edittoolbar-tool-ilink-example' => 'Gleichtitel',
+	'edittoolbar-tool-xlink' => 'Extärn Gleich (Link) (dänk an s Präfix http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.byschpil.com Gleichtitel',
 	'edittoolbar-tool-link' => 'Gleich',
 	'edittoolbar-tool-link-title' => 'Gleich yysetze',
 	'edittoolbar-tool-link-int' => 'Zuen eme Wikiartikel/ere Wikisyte',
@@ -3410,6 +4046,7 @@ $messages['gsw'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Nit giltige Titel',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Am Priefe, eb s Syte git ...',
 	'edittoolbar-tool-link-int-invalid' => 'Dr Titel, wu Du aagee hesch, isch nit giltig.',
+	'edittoolbar-tool-link-ext-invalid' => 'D URL, wu Duu aagee hesch, isch nit giltig.',
 	'edittoolbar-tool-file' => 'Yygfiegti Datei',
 	'edittoolbar-tool-file-example' => 'Byschpil.jpg',
 	'edittoolbar-tool-reference' => 'Quälle',
@@ -3444,6 +4081,18 @@ $messages['gsw'] = array(
 {{ns:file}}:Byschpil.jpg|Bschriftig2',
 	'edittoolbar-tool-newline' => 'Neji Zeile',
 	'edittoolbar-tool-table' => 'Tabälle',
+	'edittoolbar-tool-table-example-old' => '-
+! Chopf 1
+! Chopf 2
+! Chopf 3
+|-
+| Zyylete 1, Zälle 1
+| Zyylete 1, Zälle 2
+| Zyylete 1, Zälle 3
+|-
+| Zyylete 2, Zälle 1
+| Zyylete 2, Zälle 2
+| Zyylete 2, Zälle 3',
 	'edittoolbar-tool-table-example' => 'Zyle $1, Zälle $2',
 	'edittoolbar-tool-table-example-header' => 'Zyle $1, Zälle $2 (Chopf)',
 	'edittoolbar-tool-table-title' => 'Tabälle yyfiege',
@@ -3453,7 +4102,7 @@ $messages['gsw'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Iberschrift yyfiege',
 	'edittoolbar-tool-table-insert' => 'Yyfiege',
 	'edittoolbar-tool-table-cancel' => 'Abbräche',
-	'edittoolbar-tool-replace' => 'Ersetze',
+	'edittoolbar-tool-replace' => 'Suechen un ersetze',
 	'edittoolbar-tool-replace-title' => 'Sueche un ersetze',
 	'edittoolbar-tool-replace-search' => 'Sueche no:',
 	'edittoolbar-tool-replace-replace' => 'Ersetze dur:',
@@ -3461,8 +4110,9 @@ $messages['gsw'] = array(
 	'edittoolbar-tool-replace-regex' => 'D Zeichechette wu gsuecht soll wäre as reguläre Uusdruck versueche',
 	'edittoolbar-tool-replace-all' => 'Alli Stelle, wu s vorchunnt, ersetze',
 	'edittoolbar-tool-replace-button' => 'Ersetze',
-	'edittoolbar-tool-replace-close' => 'Zuemache',
+	'edittoolbar-tool-replace-close' => 'Abbräche',
 	'edittoolbar-tool-replace-nomatch' => 'Zue Dyyre Suech git s kei Träffer.',
+	'edittoolbar-tool-replace-success' => '$1 Ersetzige durgfiert.',
 	'edittoolbar-section-characters' => 'Sunderzeiche',
 	'edittoolbar-characters-page-latin' => 'Latynisch',
 	'edittoolbar-characters-page-latinextended' => 'Latin Extended',
@@ -3522,7 +4172,7 @@ $messages['gsw'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Lischtepunkt</li><li>Lischtepunkt</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Yygfiegti Datei',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Bildbschriftig]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bildbschriftig' class='image' href='/wiki/Datei:Wiki.png'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='Bschriftig'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Bildbschriftig</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bildbschriftig' class='image' href='/wiki/Datei:Wiki.png'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='Bschriftig'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Bildbschriftig</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Quälle',
 	'edittoolbar-help-content-reference-syntax' => 'Sytetekscht.&lt;ref name="test"&gt;[http://www.byschpil.org Gleichtekscht], zuesätzlige Tekscht.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Sytetekscht.<sup><a href='#'>[1]</a></sup>",
@@ -3580,11 +4230,16 @@ $messages['he'] = array(
 	'edittoolbar' => 'סרגל עריכה',
 	'edittoolbar-desc' => 'שיפור השימושיות של סרגל עריכת הדף',
 	'edittoolbar-preference' => 'הפעלת סרגל עריכה משופר',
+	'edittoolbar-cgd-preference' => 'הפעלת העזרה להוספת תחביר ויקי מתקדם',
 	'edittoolbar-loading' => 'בטעינה...',
 	'edittoolbar-tool-bold' => 'הדגשה',
 	'edittoolbar-tool-bold-example' => 'טקסט מודגש',
 	'edittoolbar-tool-italic' => 'הטיה',
 	'edittoolbar-tool-italic-example' => 'טקסט נטוי',
+	'edittoolbar-tool-ilink' => 'קישור פנימי',
+	'edittoolbar-tool-ilink-example' => 'כותרת הקישור',
+	'edittoolbar-tool-xlink' => 'קישור חיצוני (זכרו להוסיף את הקידומת http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com כותרת הקישור',
 	'edittoolbar-tool-link' => 'קישור',
 	'edittoolbar-tool-link-title' => 'הוספת קישור',
 	'edittoolbar-tool-link-int' => 'לדף ויקי',
@@ -3598,7 +4253,9 @@ $messages['he'] = array(
 	'edittoolbar-tool-link-int-target-status-exists' => 'הדף קיים',
 	'edittoolbar-tool-link-int-target-status-notexists' => 'הדף אינו קיים',
 	'edittoolbar-tool-link-int-target-status-invalid' => 'כותרת בלתי תקינה',
+	'edittoolbar-tool-link-int-target-status-loading' => 'בדיקה האם הדף קיים...',
 	'edittoolbar-tool-link-int-invalid' => 'הכותרת שצוינה אינה תקינה.',
+	'edittoolbar-tool-link-ext-invalid' => 'הכתובת שצוינה אינה תקינה.',
 	'edittoolbar-tool-file' => 'קובץ המוצג בדף',
 	'edittoolbar-tool-file-example' => 'דוגמה.jpg',
 	'edittoolbar-tool-reference' => 'הערת שוליים',
@@ -3633,6 +4290,18 @@ $messages['he'] = array(
 {{ns:file}}:דוגמה.jpg|כותרת 2',
 	'edittoolbar-tool-newline' => 'שורה חדשה',
 	'edittoolbar-tool-table' => 'טבלה',
+	'edittoolbar-tool-table-example-old' => '-
+! כותרת 1
+! כותרת 2
+! כותרת 3
+|-
+| שורה 1, תא 1
+| שורה 1, תא 2
+| שורה 1, תא 3
+|-
+| שורה 2, תא 1
+| שורה 2, תא 2
+| שורה 2, תא 3',
 	'edittoolbar-tool-table-example' => 'שורה $1, תא $2',
 	'edittoolbar-tool-table-example-header' => 'שורה $1, תא $2 (כותרת)',
 	'edittoolbar-tool-table-title' => 'הוספת טבלה',
@@ -3642,19 +4311,21 @@ $messages['he'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'כולל שורת הכותרת',
 	'edittoolbar-tool-table-insert' => 'הוספה',
 	'edittoolbar-tool-table-cancel' => 'ביטול',
-	'edittoolbar-tool-replace' => 'החלפה',
+	'edittoolbar-tool-replace' => 'חיפוש והחלפה',
 	'edittoolbar-tool-replace-title' => 'חיפוש והחלפה',
 	'edittoolbar-tool-replace-search' => 'חיפוש של:',
 	'edittoolbar-tool-replace-replace' => 'החלפה ב:',
 	'edittoolbar-tool-replace-case' => 'התאמת רישיות',
-	'edittoolbar-tool-replace-regex' => 'התייחסות אל מחרוזות חיפוש כאל ביטויים רגולאריים',
+	'edittoolbar-tool-replace-regex' => 'בדיקת מחרוזת החיפוש כביטוי רגולרי',
 	'edittoolbar-tool-replace-all' => 'החלפת כל המופעים',
 	'edittoolbar-tool-replace-button' => 'החלפה',
-	'edittoolbar-tool-replace-close' => 'סגירה',
+	'edittoolbar-tool-replace-close' => 'ביטול',
 	'edittoolbar-tool-replace-nomatch' => 'לא התקבלו התאמות לחיפושכם.',
+	'edittoolbar-tool-replace-success' => 'בוצעו $1 החלפות.',
 	'edittoolbar-section-characters' => 'תווים מיוחדים',
 	'edittoolbar-characters-page-latin' => 'לטיני',
 	'edittoolbar-characters-page-latinextended' => 'לטיני מורחב',
+	'edittoolbar-characters-page-ipa' => 'אלפבית פונטי בינלאומי (IPA)',
 	'edittoolbar-characters-page-symbols' => 'סימנים',
 	'edittoolbar-characters-page-greek' => 'יווני',
 	'edittoolbar-characters-page-cyrillic' => 'קירילי',
@@ -3710,7 +4381,7 @@ $messages['he'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>פריט רשימה</li><li>פריט רשימה</li></ol>',
 	'edittoolbar-help-content-file-description' => 'קובץ המוצג בדף',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:דוגמה.png|ממוזער|טקסט הכותרת]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='טקסט הכותרת' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>טקסט הכותרת</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='טקסט הכותרת' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>טקסט הכותרת</div></div>",
 	'edittoolbar-help-content-reference-description' => 'הערת שוליים',
 	'edittoolbar-help-content-reference-syntax' => 'טקסט הדף.&lt;ref name="test"&gt;[http://www.example.org טקסט הקישור], טקסט נוסף.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "טקסט הדף.<sup><a href='#'>[1]</a></sup>",
@@ -3748,6 +4419,10 @@ $messages['hr'] = array(
 	'edittoolbar-tool-bold-example' => 'Podebljani tekst',
 	'edittoolbar-tool-italic' => 'Kurziv',
 	'edittoolbar-tool-italic-example' => 'Kurzivni tekst',
+	'edittoolbar-tool-ilink' => 'Unutarnja poveznica',
+	'edittoolbar-tool-ilink-example' => 'Naziv poveznice',
+	'edittoolbar-tool-xlink' => 'Vanjska poveznica (nužan je prefiks http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.primjer.com naziv poveznice',
 	'edittoolbar-tool-link' => 'Poveznica',
 	'edittoolbar-tool-link-title' => 'Umetni poveznicu',
 	'edittoolbar-tool-link-int' => 'U wiki stranicu',
@@ -3803,8 +4478,6 @@ $messages['hr'] = array(
 	'edittoolbar-tool-table-dimensions' => 'Dimenzije',
 	'edittoolbar-tool-table-dimensions-rows' => 'Retci',
 	'edittoolbar-tool-table-dimensions-columns' => 'Stupci',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Zaglavlje redaka',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Zaglavlje stupaca',
 	'edittoolbar-tool-table-insert' => 'Umetni',
 	'edittoolbar-tool-table-cancel' => 'Odustani',
 	'edittoolbar-tool-replace' => 'Zamijeni',
@@ -3876,7 +4549,7 @@ $messages['hr'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>stavka popisa</li><li>stavka popisa</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Uložena datoteka',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Primjer.jpg|thumb|Tekst opisa]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Tekst opisa' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Povećaj' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Tekst opisa'</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Tekst opisa' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Povećaj' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Tekst opisa'</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Bilješke',
 	'edittoolbar-help-content-reference-syntax' => 'Tekst stranice.&lt;ref name="test"&gt;[http://www.primjer.org Tekst poveznice], dodatni tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Tekst stranice.<sup><a href='#'>[1]</a></sup>",
@@ -3900,11 +4573,16 @@ $messages['hsb'] = array(
 	'edittoolbar' => 'Gratowa lajsta za wobdźěłowanje',
 	'edittoolbar-desc' => 'Gratowa lajsta za wobdźěłowanje stronow z polěpšenej wužiwajomnosću',
 	'edittoolbar-preference' => 'Polěpšenu gratowu lajstu za wobdźěłowanje aktiwizować',
+	'edittoolbar-cgd-preference' => 'Pomoc za přidawanje rozšěrjeneho wikiteksta zmóžnić',
 	'edittoolbar-loading' => 'Čita so...',
 	'edittoolbar-tool-bold' => 'Tučny',
 	'edittoolbar-tool-bold-example' => 'Tučny tekst',
 	'edittoolbar-tool-italic' => 'Kursiwny',
 	'edittoolbar-tool-italic-example' => 'Kursiwny tekst',
+	'edittoolbar-tool-ilink' => 'Interny wotkaz',
+	'edittoolbar-tool-ilink-example' => 'Titul wotkaza',
+	'edittoolbar-tool-xlink' => 'Eksterny wotkaz (njezabudź na prefiks http://)',
+	'edittoolbar-tool-xlink-example' => 'titul wotkaza http://www.přikład.de',
 	'edittoolbar-tool-link' => 'Wotkaz',
 	'edittoolbar-tool-link-title' => 'Wotkaz zasunyć',
 	'edittoolbar-tool-link-int' => 'K wikinastawkej/stronje',
@@ -3920,6 +4598,7 @@ $messages['hsb'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Njepłaćiwy titul',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Eksistenca strony so přepruwuje...',
 	'edittoolbar-tool-link-int-invalid' => 'Titul, kotryž sy podał, je njepłaćiwy.',
+	'edittoolbar-tool-link-ext-invalid' => 'URL, kotryž sy podał, je njepłaćiwy.',
 	'edittoolbar-tool-file' => 'Zasadźena dataja',
 	'edittoolbar-tool-file-example' => 'Přikład.jpg',
 	'edittoolbar-tool-reference' => 'Referenca',
@@ -3954,6 +4633,18 @@ $messages['hsb'] = array(
 {{ns:file}}:Example.jpg|Popis2',
 	'edittoolbar-tool-newline' => 'Nowa linka',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! hłowa 1
+! hłowa 2
+! hłowa 3
+|-
+| rjadka 1, cela 1
+| rjadka 1, cela 2
+| rjadka 1, cela 3
+|-
+| rjadka 2, cela 1
+| rjadka 2, cela 2
+| rjadka 2, cela 3',
 	'edittoolbar-tool-table-example' => 'Rjadka $1, cela $2',
 	'edittoolbar-tool-table-example-header' => 'Rjadka $1, cela $2 (hłowa)',
 	'edittoolbar-tool-table-title' => 'Tabelu zasunyć',
@@ -3963,7 +4654,8 @@ $messages['hsb'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Rjadku hłowy zapřijeć',
 	'edittoolbar-tool-table-insert' => 'Zasunyć',
 	'edittoolbar-tool-table-cancel' => 'Přetorhnyć',
-	'edittoolbar-tool-replace' => 'Narunać',
+	'edittoolbar-tool-table-toomany' => 'Zasuwanje tabele z přez $1 {{PLURAL:$1|celu|celomaj|celemi|celemi}} z tutym dialogom móžno njeje.',
+	'edittoolbar-tool-replace' => 'Pytać a narunać',
 	'edittoolbar-tool-replace-title' => 'Pytać a narunać',
 	'edittoolbar-tool-replace-search' => 'Pytać za:',
 	'edittoolbar-tool-replace-replace' => 'Narunać přez:',
@@ -3971,8 +4663,9 @@ $messages['hsb'] = array(
 	'edittoolbar-tool-replace-regex' => 'Z pytanskim tekstom kaž z regularnym wurazom wobchadźeć',
 	'edittoolbar-tool-replace-all' => 'Wšě wustupjenja narunać',
 	'edittoolbar-tool-replace-button' => 'Narunać',
-	'edittoolbar-tool-replace-close' => 'Začinić',
+	'edittoolbar-tool-replace-close' => 'Přetorhnyć',
 	'edittoolbar-tool-replace-nomatch' => 'Twoje pytanje njeje wotpowědnik namakał.',
+	'edittoolbar-tool-replace-success' => '$1 {{PLURAL:$1|narunanje přewjedźene|narunani přewjedźenej|narunanja přewjedźene|narunanjow přewjedźenych}}.',
 	'edittoolbar-section-characters' => 'Specialne znamješka',
 	'edittoolbar-characters-page-latin' => 'Łaćonske',
 	'edittoolbar-characters-page-latinextended' => 'Łaćonske rozšěrjene',
@@ -4032,7 +4725,7 @@ $messages['hsb'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Lisćinowy zapisk</li><li>Lisćinowy zapisk</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Zasadźena dataja',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Tekst wobrazoweho popisa]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Tekst wobrazeho popisa' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Powjetšić' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Tekst wobrazoweho popisa</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Tekst wobrazeho popisa' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Powjetšić' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Tekst wobrazoweho popisa</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referenca',
 	'edittoolbar-help-content-reference-syntax' => 'Tekst strony.&lt;ref name="test"&gt;[http://www.example.org tekst wotkaza], přidatny tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Tekst strony.<sup><a href='#'>[1]</a></sup>",
@@ -4054,14 +4747,19 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'edittoolbar' => 'Szerkesztő eszköztár',
+	'edittoolbar' => 'Szerkesztő-eszköztár',
 	'edittoolbar-desc' => 'Használhatóbb szerkesztő eszköztár',
 	'edittoolbar-preference' => 'Fejlettebb szerkesztő-eszköztár használata',
+	'edittoolbar-cgd-preference' => 'Segítség haladó wikiszöveg hozzáadásához',
 	'edittoolbar-loading' => 'Betöltés...',
 	'edittoolbar-tool-bold' => 'Félkövér',
 	'edittoolbar-tool-bold-example' => 'Félkövér szöveg',
 	'edittoolbar-tool-italic' => 'Dőlt',
 	'edittoolbar-tool-italic-example' => 'Dőlt szöveg',
+	'edittoolbar-tool-ilink' => 'Belső hivatkozás',
+	'edittoolbar-tool-ilink-example' => 'Hivatkozás címe',
+	'edittoolbar-tool-xlink' => 'Külső hivatkozás (ne felejtkezz el a http:// előtagról)',
+	'edittoolbar-tool-xlink-example' => 'http://www.peldaoldal.hu hivatkozás címe',
 	'edittoolbar-tool-link' => 'Hivatkozás',
 	'edittoolbar-tool-link-title' => 'Hivatkozás beszúrása',
 	'edittoolbar-tool-link-int' => 'A wiki egy lapjára',
@@ -4077,6 +4775,7 @@ $messages['hu'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Érvénytelen cím',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Ellenőrzöm, hogy létezik-e a lap…',
 	'edittoolbar-tool-link-int-invalid' => 'A megadott cím érvénytelen',
+	'edittoolbar-tool-link-ext-invalid' => 'A megadott URL nem érvényes.',
 	'edittoolbar-tool-file' => 'Fájl beszúrása',
 	'edittoolbar-tool-file-example' => 'Egyszerikép.jpg',
 	'edittoolbar-tool-reference' => 'Forráshivatkozás',
@@ -4111,15 +4810,28 @@ $messages['hu'] = array(
 {{ns:file}}:Példa.jpg|képaláírás2',
 	'edittoolbar-tool-newline' => 'Új sor',
 	'edittoolbar-tool-table' => 'Táblázat',
+	'edittoolbar-tool-table-example-old' => '-
+! 1. fejléc
+! 2. fejléc
+! 3. fejléc
+|-
+| 1. sor, 1. cella
+| 1. sor, 2. cella
+| 1. sor, 3. cella
+|-
+| 2. sor, 1. cella
+| 2. sor, 2. cella
+| 2. sor, 3. cella',
 	'edittoolbar-tool-table-example' => '$1. sor, $2. cella',
 	'edittoolbar-tool-table-example-header' => '$1. sor, $2. cella (fejléc)',
 	'edittoolbar-tool-table-title' => 'Tábla beszúrása',
 	'edittoolbar-tool-table-dimensions' => 'Méret',
 	'edittoolbar-tool-table-dimensions-rows' => 'Sorok száma',
 	'edittoolbar-tool-table-dimensions-columns' => 'Oszlopok száma',
+	'edittoolbar-tool-table-dimensions-header' => 'A fejlécet is beleértve',
 	'edittoolbar-tool-table-insert' => 'Beszúrás',
 	'edittoolbar-tool-table-cancel' => 'Mégse',
-	'edittoolbar-tool-replace' => 'Csere',
+	'edittoolbar-tool-replace' => 'Keresés és csere',
 	'edittoolbar-tool-replace-title' => 'Keresés és csere',
 	'edittoolbar-tool-replace-search' => 'Keresendő szöveg:',
 	'edittoolbar-tool-replace-replace' => 'Csere:',
@@ -4127,8 +4839,9 @@ $messages['hu'] = array(
 	'edittoolbar-tool-replace-regex' => 'A beírt szöveg egy reguláris kifejezés',
 	'edittoolbar-tool-replace-all' => 'Az összes előfordulás lecserélése',
 	'edittoolbar-tool-replace-button' => 'Csere',
-	'edittoolbar-tool-replace-close' => 'Bezárás',
+	'edittoolbar-tool-replace-close' => 'Mégse',
 	'edittoolbar-tool-replace-nomatch' => 'Nincs egyetlen találat sem.',
+	'edittoolbar-tool-replace-success' => '$1 csere történt.',
 	'edittoolbar-section-characters' => 'Különleges karakterek',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Bővített latin',
@@ -4188,7 +4901,7 @@ $messages['hu'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Listaelem</li><li>Listaelem</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Beszúrt fájl',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|bélyegkép|Képaláírás]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='A kép nagyítása' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Képaláírás</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='A kép nagyítása' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Képaláírás</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Forráshivatkozás',
 	'edittoolbar-help-content-reference-syntax' => 'Lap szövege.<ref name="test">[http://www.példaoldal.hu Hivatkozás szövege], további szöveg.</ref>',
 	'edittoolbar-help-content-reference-result' => "Lap szövege.<sup><a href='#'>[1]</a></sup>",
@@ -4212,11 +4925,16 @@ $messages['ia'] = array(
 	'edittoolbar' => 'Instrumentario de modification',
 	'edittoolbar-desc' => 'Barra con instrumentos de modification con augmento de usabilitate',
 	'edittoolbar-preference' => 'Activar le instrumentario de modification meliorate',
+	'edittoolbar-cgd-preference' => 'Activar le adjuta pro adder texto wiki avantiate',
 	'edittoolbar-loading' => 'Cargamento in curso…',
 	'edittoolbar-tool-bold' => 'Grasse',
 	'edittoolbar-tool-bold-example' => 'Texto grasse',
-	'edittoolbar-tool-italic' => 'Cursive',
-	'edittoolbar-tool-italic-example' => 'Texto cursive',
+	'edittoolbar-tool-italic' => 'Italic',
+	'edittoolbar-tool-italic-example' => 'Texto italic',
+	'edittoolbar-tool-ilink' => 'Ligamine interne',
+	'edittoolbar-tool-ilink-example' => 'Titulo del ligamine',
+	'edittoolbar-tool-xlink' => 'Ligamine externe (non oblida le prefixo http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com titulo del ligamine',
 	'edittoolbar-tool-link' => 'Ligamine',
 	'edittoolbar-tool-link-title' => 'Inserer ligamine',
 	'edittoolbar-tool-link-int' => 'A un pagina wiki',
@@ -4232,25 +4950,26 @@ $messages['ia'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titulo invalide',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Verifica existentia del pagina...',
 	'edittoolbar-tool-link-int-invalid' => 'Le titulo que tu specificava es invalide.',
+	'edittoolbar-tool-link-ext-invalid' => 'Le URL que tu specificava es invalide.',
 	'edittoolbar-tool-file' => 'File incastrate',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referentia',
 	'edittoolbar-tool-reference-example' => 'Inserer hic le texto del nota',
 	'edittoolbar-tool-signature' => 'Signatura con data e hora',
 	'edittoolbar-section-advanced' => 'Avantiate',
-	'edittoolbar-tool-heading' => 'Capite',
+	'edittoolbar-tool-heading' => 'Titulo',
 	'edittoolbar-tool-heading-1' => 'Nivello 1',
 	'edittoolbar-tool-heading-2' => 'Nivello 2',
 	'edittoolbar-tool-heading-3' => 'Nivello 3',
 	'edittoolbar-tool-heading-4' => 'Nivello 4',
 	'edittoolbar-tool-heading-5' => 'Nivello 5',
-	'edittoolbar-tool-heading-example' => 'Texto del capite',
+	'edittoolbar-tool-heading-example' => 'Texto del titulo',
 	'edittoolbar-group-list' => 'Lista',
 	'edittoolbar-tool-ulist' => 'Lista a punctos',
 	'edittoolbar-tool-ulist-example' => 'Elemento de lista a punctos',
 	'edittoolbar-tool-olist' => 'Lista numerate',
 	'edittoolbar-tool-olist-example' => 'Elemento de lista numerate',
-	'edittoolbar-group-size' => 'Dimension',
+	'edittoolbar-group-size' => 'Grandor',
 	'edittoolbar-tool-big' => 'Grande',
 	'edittoolbar-tool-big-example' => 'Texto grande',
 	'edittoolbar-tool-small' => 'Micre',
@@ -4266,6 +4985,18 @@ $messages['ia'] = array(
 {{ns:file}}:Exemplo.jpg|Legenda2',
 	'edittoolbar-tool-newline' => 'Nove linea',
 	'edittoolbar-tool-table' => 'Tabella',
+	'edittoolbar-tool-table-example-old' => '-
+! capite 1
+! capite 2
+! capite 3
+|-
+| linea 1, cellula 1
+| linea 1, cellula 2
+| linea 1, cellula 3
+|-
+| linea 2, cellula 1
+| linea 2, cellula 2
+| linea 2, cellula 3',
 	'edittoolbar-tool-table-example' => 'Linea $1, cellula $2',
 	'edittoolbar-tool-table-example-header' => 'Linea $1, cellula $2 (capite)',
 	'edittoolbar-tool-table-title' => 'Inserer tabella',
@@ -4275,7 +5006,7 @@ $messages['ia'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Includer linea de capite',
 	'edittoolbar-tool-table-insert' => 'Inserer',
 	'edittoolbar-tool-table-cancel' => 'Cancellar',
-	'edittoolbar-tool-replace' => 'Reimplaciar',
+	'edittoolbar-tool-replace' => 'Cercar e reimplaciar',
 	'edittoolbar-tool-replace-title' => 'Cercar e reimplaciar',
 	'edittoolbar-tool-replace-search' => 'Cercar:',
 	'edittoolbar-tool-replace-replace' => 'Reimplaciar per:',
@@ -4283,8 +5014,9 @@ $messages['ia'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tractar le catena de recerca como un expression regular',
 	'edittoolbar-tool-replace-all' => 'Reimplaciar tote le occurrentias',
 	'edittoolbar-tool-replace-button' => 'Reimplaciar',
-	'edittoolbar-tool-replace-close' => 'Clauder',
+	'edittoolbar-tool-replace-close' => 'Cancellar',
 	'edittoolbar-tool-replace-nomatch' => 'Tu recerca non ha producite resultatos.',
+	'edittoolbar-tool-replace-success' => '$1 reimplaciamentos facite.',
 	'edittoolbar-section-characters' => 'Characteres special',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Latin extendite',
@@ -4293,49 +5025,49 @@ $messages['ia'] = array(
 	'edittoolbar-characters-page-greek' => 'Grec',
 	'edittoolbar-characters-page-cyrillic' => 'Cyrillic',
 	'edittoolbar-characters-page-arabic' => 'Arabe',
-	'edittoolbar-characters-page-hebrew' => 'Hebreo',
+	'edittoolbar-characters-page-hebrew' => 'Hebree',
 	'edittoolbar-characters-page-telugu' => 'Telugu',
 	'edittoolbar-section-help' => 'Adjuta',
 	'edittoolbar-help-heading-description' => 'Description',
-	'edittoolbar-help-heading-syntax' => 'Lo que tu scribe',
-	'edittoolbar-help-heading-result' => 'Lo que tu obtene',
-	'edittoolbar-help-page-format' => 'Formatation',
+	'edittoolbar-help-heading-syntax' => 'Entrata',
+	'edittoolbar-help-heading-result' => 'Resultato',
+	'edittoolbar-help-page-format' => 'Typographia',
 	'edittoolbar-help-page-link' => 'Ligamines',
-	'edittoolbar-help-page-heading' => 'Capites',
+	'edittoolbar-help-page-heading' => 'Titulos',
 	'edittoolbar-help-page-list' => 'Listas',
 	'edittoolbar-help-page-file' => 'Files',
 	'edittoolbar-help-page-reference' => 'Referentias',
 	'edittoolbar-help-page-discussion' => 'Discussion',
-	'edittoolbar-help-content-italic-description' => 'Cursive',
-	'edittoolbar-help-content-italic-syntax' => "''Texto cursive''",
-	'edittoolbar-help-content-italic-result' => '<em>Texto cursive</em>',
+	'edittoolbar-help-content-italic-description' => 'Italic',
+	'edittoolbar-help-content-italic-syntax' => "''Texto italic''",
+	'edittoolbar-help-content-italic-result' => '<em>Texto italic</em>',
 	'edittoolbar-help-content-bold-description' => 'Grasse',
 	'edittoolbar-help-content-bold-syntax' => "'''Texto grasse'''",
 	'edittoolbar-help-content-bold-result' => '<strong>Texto grasse</strong>',
-	'edittoolbar-help-content-bolditalic-description' => 'Grasse &amp; cursive',
-	'edittoolbar-help-content-bolditalic-syntax' => "'''''Texto grasse &amp; cursive'''''",
-	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Texto grasse &amp; cursive</em></strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Grasse &amp; italic',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Texto grasse &amp; italic'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Texto grasse &amp; italic</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'Ligamine interne',
 	'edittoolbar-help-content-ilink-syntax' => '[[Titulo del pagina|Texto del ligamine]]<br />[[Titulo del pagina]]',
 	'edittoolbar-help-content-ilink-result' => "<a href='#'>Texto del ligamine</a><br /><a href='#'>Titulo del pagina</a>",
 	'edittoolbar-help-content-xlink-description' => 'Ligamine externe',
 	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org Texto del ligamine]<br />[http://www.example.org]<br />http://www.example.org',
 	'edittoolbar-help-content-xlink-result' => "<a href='#' class='external'>Texto del ligamine</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
-	'edittoolbar-help-content-heading1-description' => 'Capite de prime nivello',
-	'edittoolbar-help-content-heading1-syntax' => '= Texto del capite =',
-	'edittoolbar-help-content-heading1-result' => '<h1>Texto del capite</h1>',
-	'edittoolbar-help-content-heading2-description' => 'Capite del secunde nivello',
-	'edittoolbar-help-content-heading2-syntax' => '== Texto del capite ==',
-	'edittoolbar-help-content-heading2-result' => '<h2>Texto del capite</h2>',
-	'edittoolbar-help-content-heading3-description' => 'Capite del tertie nivello',
-	'edittoolbar-help-content-heading3-syntax' => '=== Texto del capite ===',
-	'edittoolbar-help-content-heading3-result' => '<h3>Texto del capite</h3>',
-	'edittoolbar-help-content-heading4-description' => 'Capite del quarte nivello',
-	'edittoolbar-help-content-heading4-syntax' => '==== Texto del capite ====',
-	'edittoolbar-help-content-heading4-result' => '<h4>Texto del capite</h4>',
-	'edittoolbar-help-content-heading5-description' => 'Capite del quinte nivello',
-	'edittoolbar-help-content-heading5-syntax' => '===== Texto del capite =====',
-	'edittoolbar-help-content-heading5-result' => '<h5>Texto del capite</h5>',
+	'edittoolbar-help-content-heading1-description' => 'Titulo de prime nivello',
+	'edittoolbar-help-content-heading1-syntax' => '= Texto del titulo =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Texto del titulo</h1>',
+	'edittoolbar-help-content-heading2-description' => 'Titulo del secunde nivello',
+	'edittoolbar-help-content-heading2-syntax' => '== Texto del titulo ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Texto del titulo</h2>',
+	'edittoolbar-help-content-heading3-description' => 'Titulo del tertie nivello',
+	'edittoolbar-help-content-heading3-syntax' => '=== Texto del titulo ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Texto del titulo</h3>',
+	'edittoolbar-help-content-heading4-description' => 'Titulo del quarte nivello',
+	'edittoolbar-help-content-heading4-syntax' => '==== Texto del titulo ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Texto del titulo</h4>',
+	'edittoolbar-help-content-heading5-description' => 'Titulo del quinte nivello',
+	'edittoolbar-help-content-heading5-syntax' => '===== Texto del titulo =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Texto del titulo</h5>',
 	'edittoolbar-help-content-ulist-description' => 'Lista a punctos',
 	'edittoolbar-help-content-ulist-syntax' => '* Elemento del lista<br />* Elemento del lista',
 	'edittoolbar-help-content-ulist-result' => '<ul><li>Elemento del lista</li><li>Elemento del lista</li></ul>',
@@ -4344,7 +5076,7 @@ $messages['ia'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Elemento del lista</li><li>Elemento del lista</li></ol>',
 	'edittoolbar-help-content-file-description' => 'File incastrate',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Exemplo.png|thumb|Texto del legenda]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Texto del legenda' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Texto del legenda</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Texto del legenda' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Texto del legenda</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referentia',
 	'edittoolbar-help-content-reference-syntax' => 'Texto del pagina.&lt;ref name="test"&gt;[http://www.example.org Texto del ligamine], texto additional.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Texto del pagina.<sup><a href='#'>[1]</a></sup>",
@@ -4370,11 +5102,16 @@ $messages['id'] = array(
 	'edittoolbar' => 'Batang alat penyuntingan',
 	'edittoolbar-desc' => 'Batang alat penyuntingan dengan kebergunaan yang ditingkatkan',
 	'edittoolbar-preference' => 'Aktifkan batang alat penyuntingan yang telah ditingkatkan',
+	'edittoolbar-cgd-preference' => 'Mengaktifkan bantuan untuk menambahkan teks wiki',
 	'edittoolbar-loading' => 'Memuat...',
 	'edittoolbar-tool-bold' => 'Tebal',
 	'edittoolbar-tool-bold-example' => 'Teks tebal',
 	'edittoolbar-tool-italic' => 'Miring',
 	'edittoolbar-tool-italic-example' => 'Teks miring',
+	'edittoolbar-tool-ilink' => 'Pranala internal',
+	'edittoolbar-tool-ilink-example' => 'Judul pranala',
+	'edittoolbar-tool-xlink' => 'Pranala luar (ingat prefiks http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.contoh.com judul pranala',
 	'edittoolbar-tool-link' => 'Pranala',
 	'edittoolbar-tool-link-title' => 'Masukkan pranala',
 	'edittoolbar-tool-link-int' => 'Ke halaman wiki',
@@ -4390,6 +5127,7 @@ $messages['id'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Judul tidak sah',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Memeriksa keberadaan halaman...',
 	'edittoolbar-tool-link-int-invalid' => 'Judul yang Anda berikan tidak sah.',
+	'edittoolbar-tool-link-ext-invalid' => 'URL yang anda berikan tidak sah.',
 	'edittoolbar-tool-file' => 'Sisipkan berkas',
 	'edittoolbar-tool-file-example' => 'Contoh.jpg',
 	'edittoolbar-tool-reference' => 'Referensi',
@@ -4424,6 +5162,18 @@ $messages['id'] = array(
 {{ns:file}}:Contoh.jpg|Judul2',
 	'edittoolbar-tool-newline' => 'Baris baru',
 	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-example-old' => '	-
+! judul bagian 1
+! judul bagian 2
+! judul bagian 3
+|-
+| baris 1, sel 1
+| baris 1, sel 2
+| baris 1, sel 3
+|-
+| baris 2, sel 1
+| baris 2, sel 2
+| baris 2, sel 3',
 	'edittoolbar-tool-table-example' => 'Baris $1, sel $2',
 	'edittoolbar-tool-table-example-header' => 'Baris $1, sel $2 (kepala bagian)',
 	'edittoolbar-tool-table-title' => 'Masukkan tabel',
@@ -4433,7 +5183,7 @@ $messages['id'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Sertakan baris',
 	'edittoolbar-tool-table-insert' => 'Masukkan',
 	'edittoolbar-tool-table-cancel' => 'Batalkan',
-	'edittoolbar-tool-replace' => 'Gantikan',
+	'edittoolbar-tool-replace' => 'Cari dan gantikan',
 	'edittoolbar-tool-replace-title' => 'Cari dan ganti',
 	'edittoolbar-tool-replace-search' => 'Cari:',
 	'edittoolbar-tool-replace-replace' => 'Ganti dengan:',
@@ -4441,8 +5191,9 @@ $messages['id'] = array(
 	'edittoolbar-tool-replace-regex' => "Perlakukan string pencarian sebagai ''regular expression (regex)''",
 	'edittoolbar-tool-replace-all' => 'Ganti semua yang cocok',
 	'edittoolbar-tool-replace-button' => 'Gantikan',
-	'edittoolbar-tool-replace-close' => 'Tutup',
+	'edittoolbar-tool-replace-close' => 'Batalkan',
 	'edittoolbar-tool-replace-nomatch' => 'Pencarian Anda tidak membuahkan hasil.',
+	'edittoolbar-tool-replace-success' => '$1 terjadi penggantian.',
 	'edittoolbar-section-characters' => 'Karakter spesial',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Ekstensi Latin',
@@ -4502,7 +5253,7 @@ $messages['id'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Isi daftar</li><li>Isi daftar</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Menyisipkan berkas',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Contoh.png|thumb|Teks judul gambar]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Teks judul gambar' class='image' href='/wiki/Berkas:Wiki.png'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Perbesar' class='internal' href='/wiki/Berkas:Wiki.png'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Teks judul gambar</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Teks judul gambar' class='image' href='/wiki/Berkas:Wiki.png'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Perbesar' class='internal' href='/wiki/Berkas:Wiki.png'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Teks judul gambar</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referensi',
 	'edittoolbar-help-content-reference-syntax' => 'Teks halaman.&lt;ref name="test"&gt;[http://www.contoh.org Teks pranala], teks tambahan.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Teks halaman.<sup><a href='#'>[1]</a></sup>",
@@ -4522,16 +5273,21 @@ $messages['id'] = array(
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'edittoolbar' => 'Barra degli strumenti di modifica',
-	'edittoolbar-desc' => 'Modifica barra degli strumenti della pagina con una maggiore usabilità',
+	'edittoolbar-desc' => 'Barra degli strumenti di modifica della pagina con migliorata usabilità',
 	'edittoolbar-preference' => 'Abilita barra degli strumenti di modifica avanzata',
 	'edittoolbar-loading' => 'Caricamento in corso...',
 	'edittoolbar-tool-bold' => 'Grassetto',
 	'edittoolbar-tool-bold-example' => 'Testo in grassetto',
 	'edittoolbar-tool-italic' => 'Corsivo',
 	'edittoolbar-tool-italic-example' => 'Testo in corsivo',
+	'edittoolbar-tool-ilink' => 'Collegamento interno',
+	'edittoolbar-tool-ilink-example' => 'Titolo del collegamento',
+	'edittoolbar-tool-xlink' => 'Collegamento esterno (ricorda il prefisso http:// )',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com titolo del collegamento',
 	'edittoolbar-tool-link' => 'Link',
 	'edittoolbar-tool-link-title' => 'Inserisci link',
 	'edittoolbar-tool-link-int' => 'A una pagina wiki',
@@ -4588,7 +5344,7 @@ $messages['it'] = array(
 	'edittoolbar-tool-table-dimensions-columns' => 'Colonne',
 	'edittoolbar-tool-table-insert' => 'Inserisci',
 	'edittoolbar-tool-table-cancel' => 'Annulla',
-	'edittoolbar-tool-replace' => 'Sostituisci',
+	'edittoolbar-tool-replace' => 'Cerca e sostituisci',
 	'edittoolbar-tool-replace-title' => 'Cerca e sostituisci',
 	'edittoolbar-tool-replace-search' => 'Cerca per:',
 	'edittoolbar-tool-replace-replace' => 'Sostituisci con:',
@@ -4596,7 +5352,7 @@ $messages['it'] = array(
 	'edittoolbar-tool-replace-regex' => "Tratta la stringa di ricerca come un'espressione regolare",
 	'edittoolbar-tool-replace-all' => 'Sostituisci tutte le occorrenze',
 	'edittoolbar-tool-replace-button' => 'Sostituisci',
-	'edittoolbar-tool-replace-close' => 'Chiudi',
+	'edittoolbar-tool-replace-close' => 'Annulla',
 	'edittoolbar-tool-replace-nomatch' => 'La tua ricerca non ha prodotto risultati.',
 	'edittoolbar-section-characters' => 'Caratteri speciali',
 	'edittoolbar-characters-page-latin' => 'Latino',
@@ -4657,7 +5413,7 @@ $messages['it'] = array(
 	'edittoolbar-help-content-olist-result' => "<ol><li>Elemento dell'elenco</li><li>Elemento dell'elenco</li></ol>",
 	'edittoolbar-help-content-file-description' => 'File incorporato',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Esempio.png|thumb|Testo della didascalia]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Testo della didascalia</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Testo della didascalia</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Nota',
 	'edittoolbar-help-content-reference-syntax' => 'Testo della pagina.&lt;ref name="test"&gt;[http://www.example.org Testo del collegamento], testo aggiuntivo.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Testo della pagina.<sup><a href='#'>[1]</a></sup>",
@@ -4678,17 +5434,23 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fievarsty
  * @author Fryed-peach
+ * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'edittoolbar' => '編集ツールバー',
 	'edittoolbar-desc' => '使いやすさの向上したページ編集ツールバー',
 	'edittoolbar-preference' => '改良型編集ツールバーを有効にする',
+	'edittoolbar-cgd-preference' => '高度なウィキテキストの追加に関するヘルプを有効化する',
 	'edittoolbar-loading' => '読み込み中…',
 	'edittoolbar-tool-bold' => '太字',
 	'edittoolbar-tool-bold-example' => '太字テキスト',
 	'edittoolbar-tool-italic' => '斜体',
 	'edittoolbar-tool-italic-example' => '斜体テキスト',
+	'edittoolbar-tool-ilink' => '内部リンク',
+	'edittoolbar-tool-ilink-example' => 'リンクタイトル',
+	'edittoolbar-tool-xlink' => '外部リンク (接頭辞 http:// を忘れずに)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com リンクタイトル',
 	'edittoolbar-tool-link' => 'リンク',
 	'edittoolbar-tool-link-title' => 'リンクの挿入',
 	'edittoolbar-tool-link-int' => 'ウィキページへ',
@@ -4704,6 +5466,7 @@ $messages['ja'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'ページ名として無効です',
 	'edittoolbar-tool-link-int-target-status-loading' => 'ページの存在を確認中…',
 	'edittoolbar-tool-link-int-invalid' => '指定したページ名は無効です。',
+	'edittoolbar-tool-link-ext-invalid' => 'あなたが指定した URL は無効です。',
 	'edittoolbar-tool-file' => '埋め込みファイル',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => '注釈',
@@ -4738,6 +5501,18 @@ $messages['ja'] = array(
 {{ns:file}}:Example.jpg|キャプション2',
 	'edittoolbar-tool-newline' => '改行',
 	'edittoolbar-tool-table' => '表',
+	'edittoolbar-tool-table-example-old' => '-
+! 見出し 1
+! 見出し 2
+! 見出し 3
+|-
+| 行 1, セル 1
+| 行 1, セル 2
+| 行 1, セル 3
+|-
+| 行 2, セル 1
+| 行 2, セル 2
+| 行 2, セル 3',
 	'edittoolbar-tool-table-example' => '行 $1、 セル $2',
 	'edittoolbar-tool-table-example-header' => '行 $1、 セル $2 (見出し)',
 	'edittoolbar-tool-table-title' => '表を挿入',
@@ -4747,7 +5522,7 @@ $messages['ja'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'ヘッダ列を含める',
 	'edittoolbar-tool-table-insert' => '挿入',
 	'edittoolbar-tool-table-cancel' => '中止',
-	'edittoolbar-tool-replace' => '置換',
+	'edittoolbar-tool-replace' => '検索と置換',
 	'edittoolbar-tool-replace-title' => '検索と置換',
 	'edittoolbar-tool-replace-search' => '検索する文字列:',
 	'edittoolbar-tool-replace-replace' => '置換後の文字列:',
@@ -4755,8 +5530,9 @@ $messages['ja'] = array(
 	'edittoolbar-tool-replace-regex' => '正規表現で検索する',
 	'edittoolbar-tool-replace-all' => 'すべて置換する',
 	'edittoolbar-tool-replace-button' => '置換',
-	'edittoolbar-tool-replace-close' => '閉じる',
+	'edittoolbar-tool-replace-close' => '中止',
 	'edittoolbar-tool-replace-nomatch' => '検索文字列に一致するものはありませんでした。',
+	'edittoolbar-tool-replace-success' => '$1回の置換が行われました。',
 	'edittoolbar-section-characters' => '特殊文字',
 	'edittoolbar-characters-page-latin' => 'ラテン文字',
 	'edittoolbar-characters-page-latinextended' => '拡張ラテン文字',
@@ -4816,7 +5592,7 @@ $messages['ja'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>箇条書き項目</li><li>箇条書き項目</li></ol>',
 	'edittoolbar-help-content-file-description' => '埋め込みファイル',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|キャプション]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='キャプション' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>キャプション</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='キャプション' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>キャプション</div></div>",
 	'edittoolbar-help-content-reference-description' => '注釈',
 	'edittoolbar-help-content-reference-syntax' => 'ページ本文&lt;ref name="test"&gt;[http://www.example.org リンクタイトル]、追加テキスト&lt;/ref&gt;。',
 	'edittoolbar-help-content-reference-result' => "ページ本文<sup><a href='#'>[1]</a></sup>。",
@@ -4846,6 +5622,10 @@ $messages['ka'] = array(
 	'edittoolbar-tool-bold-example' => 'მუქი ტექსტი',
 	'edittoolbar-tool-italic' => 'კურსივი',
 	'edittoolbar-tool-italic-example' => 'კურსივის ტექსტი',
+	'edittoolbar-tool-ilink' => 'შიდა ბმული',
+	'edittoolbar-tool-ilink-example' => 'ბმულის სათაური',
+	'edittoolbar-tool-xlink' => 'გარე ბმული (გახსოვდეთ http:// პრეფიქსი)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com ბმულის სათაური',
 	'edittoolbar-tool-file' => 'ჩასმული ფაილი',
 	'edittoolbar-tool-file-example' => 'მაგალითი.jpg',
 	'edittoolbar-tool-reference' => 'მინიშნებები',
@@ -4937,7 +5717,7 @@ $messages['ka'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>სიის ელემენტი</li><li>სიის ელემენტი</li></ol>',
 	'edittoolbar-help-content-file-description' => 'ჩასმული ფაილი',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|წარწერის ტექსტი]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='წარწერის ტექსტი' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>წარწერის ტექსტი</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='წარწერის ტექსტი' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>წარწერის ტექსტი</div></div>",
 	'edittoolbar-help-content-reference-description' => 'მინიშნება',
 	'edittoolbar-help-content-reference-syntax' => 'გვერდის ტექსტი&lt;ref name="test"&gt;[http://www.example.org ბმულის ტექსტი], დამატებითი ტექსტი.&lt;/ref&gt;.',
 	'edittoolbar-help-content-reference-result' => "გვერდის ტექსტი<sup><a href='#'>[1]</a></sup>.",
@@ -4965,6 +5745,10 @@ $messages['km'] = array(
 	'edittoolbar-tool-bold-example' => 'អត្ថបទជាអក្សរដិត',
 	'edittoolbar-tool-italic' => 'អក្សរទ្រេត',
 	'edittoolbar-tool-italic-example' => 'អត្ថបទជាអក្សរទ្រេត',
+	'edittoolbar-tool-ilink' => 'តំណភ្ជាប់​ខាងក្នុង',
+	'edittoolbar-tool-ilink-example' => 'ចំណងជើង​តំណភ្ជាប់',
+	'edittoolbar-tool-xlink' => 'តំណភ្ជាប់​ខាងក្រៅ (កុំភ្លេច​ដាក់ http:// នៅពីមុខ)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com ចំណងជើង​តំណភ្ជាប់',
 	'edittoolbar-tool-file' => 'រូបភាពបង្កប់',
 	'edittoolbar-tool-file-example' => 'ឧទាហរណ៍.jpg',
 	'edittoolbar-tool-reference' => 'ឯកសារយោង',
@@ -5104,6 +5888,10 @@ $messages['ko'] = array(
 	'edittoolbar-tool-bold-example' => '굵은 글씨',
 	'edittoolbar-tool-italic' => '기울인 글씨',
 	'edittoolbar-tool-italic-example' => '기울인 글씨',
+	'edittoolbar-tool-ilink' => '내부 링크',
+	'edittoolbar-tool-ilink-example' => '문서 제목',
+	'edittoolbar-tool-xlink' => '외부 링크 ( http:// 를 붙여 주세요 )',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com 링크 이름',
 	'edittoolbar-tool-link-ext-target' => '링크 URL:',
 	'edittoolbar-tool-file' => '파일 넣기',
 	'edittoolbar-tool-file-example' => 'Exemple.jpg',
@@ -5139,6 +5927,19 @@ $messages['ko'] = array(
 {{ns:file}}:Example.jpg|설명2',
 	'edittoolbar-tool-newline' => '새 줄',
 	'edittoolbar-tool-table' => '표',
+	'edittoolbar-tool-table-example-old' => '-
+! 제목 1
+! 제목 2
+! 제목 3
+|-
+| 1행 1열
+| 1행 2열
+| 1행 3열
+|-
+| 2행 1열
+| 2행 2열
+| 2행 3열',
+	'edittoolbar-tool-table-cancel' => '취소',
 	'edittoolbar-section-characters' => '특수문자',
 	'edittoolbar-characters-page-latin' => '라틴 문자',
 	'edittoolbar-characters-page-ipa' => 'IPA 문자',
@@ -5197,7 +5998,7 @@ $messages['ko'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>목록 항목</li><li>목록 항목</li></ol>',
 	'edittoolbar-help-content-file-description' => '파일 넣기',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|그림 설명]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='실제 크기로' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>그림 설명</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='실제 크기로' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>그림 설명</div></div>",
 	'edittoolbar-help-content-reference-description' => '출처',
 	'edittoolbar-help-content-reference-syntax' => '문서 내용.&lt;ref name="test"&gt;[http://www.example.org 링크 제목], 기타 설명.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "문서 내용.<sup><a href='#'>[1]</a></sup>",
@@ -5221,11 +6022,16 @@ $messages['ksh'] = array(
 	'edittoolbar' => 'Werkzüsh för et Ändere',
 	'edittoolbar-desc' => 'Verbesserte Werkzüsh för et Ändere',
 	'edittoolbar-preference' => 'Donn et ußföerlesh Werkzüsh för et Ändere aanzeije (bruch Java_Skripp)',
+	'edittoolbar-cgd-preference' => 'Donn Hülp aanzeije för fottjeschredde Wikitäx ennzefööje',
 	'edittoolbar-loading' => 'Am Laade{{int:ellipsis}}',
 	'edittoolbar-tool-bold' => 'Fätte Schreff',
 	'edittoolbar-tool-bold-example' => 'Fätte Schreff',
 	'edittoolbar-tool-italic' => 'Scheive Schreff',
 	'edittoolbar-tool-italic-example' => 'Scheive Schreff',
+	'edittoolbar-tool-ilink' => 'Lenk en et Wiki',
+	'edittoolbar-tool-ilink-example' => 'Dä Tittel vun dä Sigk, woh dä Lengk drop jonn sull',
+	'edittoolbar-tool-xlink' => 'Lengk noh Ußerhallf vum Wiki',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com Täx för Aanzezeije, för däm Lengk singe Anker',
 	'edittoolbar-tool-link' => 'Lenk',
 	'edittoolbar-tool-link-title' => 'Donn ene Lengk dobei',
 	'edittoolbar-tool-link-int' => 'Op en Sigg em Wiki',
@@ -5241,6 +6047,7 @@ $messages['ksh'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Dat es ene onjöltijje Tittel för en Sigg',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Ben aam Prööfe, ov et di Sigg jitt{{int:ellipsis}}',
 	'edittoolbar-tool-link-int-invalid' => 'Dä aanjejovve Tittel för en Sigg en onjöltesch.',
+	'edittoolbar-tool-link-ext-invalid' => 'Do häs ene onjültijje <i lang="en">URL</i> aanjejovve',
 	'edittoolbar-tool-file' => 'Enjefösh Dattei',
 	'edittoolbar-tool-file-example' => 'Beld_Beishpöll.jpeg',
 	'edittoolbar-tool-reference' => 'Fohßnoht',
@@ -5275,6 +6082,18 @@ $messages['ksh'] = array(
 {{ns:file}}:Beishpell.jpg|zweijte Beld-Täx',
 	'edittoolbar-tool-newline' => 'Neu Reih',
 	'edittoolbar-tool-table' => 'Tabäll',
+	'edittoolbar-tool-table-example-old' => '-
+! 1. Shpalldekopp
+! 2. Shpalldekopp
+! 3. Shpalldekopp
+|-
+| 1. Reij, 1. Shpalldt
+| 1. Reij, 2. Shpalldt
+| 1. Reij, 3. Shpalldt
+|-
+| 2. Reij, 1. Shpalldt
+| 2. Reij, 2. Shpalldt
+| 2. Reij, 3. Shpalldt',
 	'edittoolbar-tool-table-example' => 'De $2. Kolommne en de $1. Reij',
 	'edittoolbar-tool-table-example-header' => 'De $2. Kolommne en de $1. Reij (Kopp)',
 	'edittoolbar-tool-table-title' => 'Tabäll ennfööje',
@@ -5292,8 +6111,9 @@ $messages['ksh'] = array(
 	'edittoolbar-tool-replace-regex' => '„{{int:Edittoolbar-tool-replace-search}}“ es en <i lang="en">regular expression</i>',
 	'edittoolbar-tool-replace-all' => 'Överall Ußtuusche',
 	'edittoolbar-tool-replace-button' => 'Lohß Jonn!',
-	'edittoolbar-tool-replace-close' => 'Zohmaache',
+	'edittoolbar-tool-replace-close' => 'Ophüüre!',
 	'edittoolbar-tool-replace-nomatch' => 'Doh ham_mer nix jefonge.',
+	'edittoolbar-tool-replace-success' => '$1 Mohl jet <!--{{PLURAL:$1|Eijmol|$1 Mohl jet|Nix}}--> jetuusch.',
 	'edittoolbar-section-characters' => 'Sönderzeijsche',
 	'edittoolbar-characters-page-latin' => 'Lateinesch',
 	'edittoolbar-characters-page-latinextended' => 'Lateinesch met Extras',
@@ -5353,7 +6173,7 @@ $messages['ksh'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Enndraach en de Leß</li><li>Enndraach en de Leß</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Enjeföösch Dattei',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Beld_Ungerschreff]]',
-	'edittoolbar-help-content-file-result' => '<div style="width:104px;" class="thumbinner"><a title="Schreff unger dä Beld" class="image" href="/wiki/File:Wiki.png"><img height="50" width="100" border="0" class="thumbimage" src="extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png" alt=""/></a><div class="thumbcaption"><div class="magnify"><a title="Enlarge" class="internal" href="/wiki/File:Wiki.png"><img height="11" width="15" alt="" src="skins/common/images/magnify-clip.png"/></a></div>Schreff unger dä Beld</div></div>',
+	'edittoolbar-help-content-file-result' => '<div style="width:104px;" class="thumbinner"><a title="Schreff unger dä Beld" class="image" href="/wiki/File:Wiki.png"><img height="50" width="100" border="0" class="thumbimage" src="extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png" alt=""/></a><div class="thumbcaption"><div class="magnify"><a title="Enlarge" class="internal" href="/wiki/File:Wiki.png"><img height="11" width="15" alt="" src="{{STYLEPATH}}/common/images/magnify-clip.png"/></a></div>Schreff unger dä Beld</div></div>',
 	'edittoolbar-help-content-reference-description' => 'Fohßnoht',
 	'edittoolbar-help-content-reference-syntax' => 'Tex en dä Sigg. &lt;ref name="versoht"&gt;[http://www.example.org Täx för dä Lengk], un noch jät mieh Täx.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => 'Tex en dä Sigg. <sup><a href="#">[1]</a></sup>',
@@ -5370,11 +6190,21 @@ $messages['ksh'] = array(
 	'edittoolbar-help-content-indent-result' => 'Nommaale Täx<dl><dd>Enjerök<dl><dd>Un norrens enjerök</dd></dl></dd></dl>',
 );
 
+/** Cornish (Kernowek)
+ * @author Kernoweger
+ */
+$messages['kw'] = array(
+	'edittoolbar-help-page-discussion' => 'Dadhelva',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  */
 $messages['la'] = array(
 	'edittoolbar-loading' => 'Depromens…',
+	'edittoolbar-tool-ilink-example' => 'Titulus nexus externi',
+	'edittoolbar-tool-xlink' => 'Nexus externus (memento praefixi http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.exemplum.com titulus nexus externi',
 	'edittoolbar-tool-file' => 'Fasciculus in pagina impositus',
 	'edittoolbar-tool-file-example' => 'Exemplum.jpg',
 	'edittoolbar-tool-reference' => 'Referentia bibliographica',
@@ -5433,11 +6263,16 @@ $messages['lb'] = array(
 	'edittoolbar' => 'Toolbar änneren',
 	'edittoolbar-desc' => 'Toolbar vun de Säitenännerunge mat erweiderter Benotzerfrëndlechkeet',
 	'edittoolbar-preference' => 'Déi erweidert Ännerungs-Toolbar aktivéieren',
+	'edittoolbar-cgd-preference' => 'Hëllef fir erweiderte Wikitext derbäisetzen',
 	'edittoolbar-loading' => 'Lueden...',
 	'edittoolbar-tool-bold' => 'Fettgedréckt',
 	'edittoolbar-tool-bold-example' => 'Fettgedréckten Text',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Kursiven Text',
+	'edittoolbar-tool-ilink' => 'Interne Link',
+	'edittoolbar-tool-ilink-example' => 'Titel vum Link',
+	'edittoolbar-tool-xlink' => 'Externe Link (denkt un de Prefix http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com Titel vum Link',
 	'edittoolbar-tool-link' => 'Link',
 	'edittoolbar-tool-link-title' => 'Link drasetzen',
 	'edittoolbar-tool-link-int' => 'Op e Wikiartikel/eng Wikisäit',
@@ -5453,6 +6288,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Net valabelen Titel',
 	'edittoolbar-tool-link-int-target-status-loading' => "Et gëtt nogekuckt ob et d'Säit gëtt...",
 	'edittoolbar-tool-link-int-invalid' => 'Den Titel deen Dir uginn hutt ass net valabel.',
+	'edittoolbar-tool-link-ext-invalid' => "D'URL déi Dir uginn hutt as net valabel.",
 	'edittoolbar-tool-file' => 'Agebonnene Fichier',
 	'edittoolbar-tool-file-example' => 'Beispill.jpg',
 	'edittoolbar-tool-reference' => 'Referenz',
@@ -5487,6 +6323,18 @@ $messages['lb'] = array(
 {{ns:file}}:Example.jpg|Beschreiwung2',
 	'edittoolbar-tool-newline' => 'Nei Linn',
 	'edittoolbar-tool-table' => 'Tabell',
+	'edittoolbar-tool-table-example-old' => '-
+! Iwwerschrëft 1
+! Iwwerschrëft 2
+! Iwwerschrëft 3
+|-
+| Rei 1, Zell 1
+| Rei 1, Zell 2
+| Rei 1, Zell 3
+|-
+| Rei 2, Zell 1
+| Rei 2, Zell 2
+| Rei 2, Zell 3',
 	'edittoolbar-tool-table-example' => 'Rei $1, Zell $2',
 	'edittoolbar-tool-table-example-header' => 'Rei $1, Zell $2 (Iwwerschrëft)',
 	'edittoolbar-tool-table-title' => 'Tabell drasetzen',
@@ -5496,7 +6344,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-table-dimensions-header' => "D'Rei vun der Iwwerschrëft matabezéien",
 	'edittoolbar-tool-table-insert' => 'Drasetzen',
 	'edittoolbar-tool-table-cancel' => 'Ofbriechen',
-	'edittoolbar-tool-replace' => 'Ersetzen',
+	'edittoolbar-tool-replace' => 'Sichen an ersetzen',
 	'edittoolbar-tool-replace-title' => 'Sichen an ersetzen',
 	'edittoolbar-tool-replace-search' => 'Sichen no:',
 	'edittoolbar-tool-replace-replace' => 'Ersetzen duerch:',
@@ -5504,8 +6352,9 @@ $messages['lb'] = array(
 	'edittoolbar-tool-replace-regex' => 'Dat no deem Dir sicht als regulären Ausdrock behandelen',
 	'edittoolbar-tool-replace-all' => 'Iwerall (wou et fonnt gouf) ersetzen',
 	'edittoolbar-tool-replace-button' => 'Ersetzen',
-	'edittoolbar-tool-replace-close' => 'Zoumaachen',
+	'edittoolbar-tool-replace-close' => 'Ofbriechen',
 	'edittoolbar-tool-replace-nomatch' => 'Är Sich hat kee Resultat.',
+	'edittoolbar-tool-replace-success' => '$1 mol ersat.',
 	'edittoolbar-section-characters' => 'Spezialzeechen',
 	'edittoolbar-characters-page-latin' => 'Laténgesch',
 	'edittoolbar-characters-page-latinextended' => 'Laténgesch, erweidert',
@@ -5573,7 +6422,7 @@ $messages['lb'] = array(
 </ol>',
 	'edittoolbar-help-content-file-description' => 'Agebonnene Fichier',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Ugewisenen Text]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Ugewisenen Texte' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Ugewisenen Text</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Ugewisenen Texte' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Ugewisenen Text</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referenz',
 	'edittoolbar-help-content-reference-syntax' => 'Text vun der Säit.&lt;ref name="test"&gt;[http://www.example.org Text vum Link], zousätzlechen Text.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Text vun der Säit <sup><a href='#'>[1]</a></sup>",
@@ -5602,6 +6451,7 @@ $messages['lb'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -5613,6 +6463,11 @@ $messages['lt'] = array(
 	'edittoolbar-tool-bold-example' => 'Paryškinti tekstą',
 	'edittoolbar-tool-italic' => 'Kursyvas',
 	'edittoolbar-tool-italic-example' => 'Tekstas kursyvu',
+	'edittoolbar-tool-ilink' => 'Vidinė nuoroda',
+	'edittoolbar-tool-ilink-example' => 'Nuorodos pavadinimas',
+	'edittoolbar-tool-xlink' => 'Išorinė nuoroda (nepamirškite http:// priedėlio)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com nuorodos pavadinimas',
+	'edittoolbar-tool-link-cancel' => 'Atšaukti',
 	'edittoolbar-tool-file' => 'Įdėti failą',
 	'edittoolbar-tool-file-example' => 'Pavyzdys.jpg',
 	'edittoolbar-tool-reference' => 'Išnaša',
@@ -5697,7 +6552,7 @@ $messages['lt'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Sąrašo elementas</li><li>Sąrašo elementas</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Įterpti failą',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Aprašymas]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Aprašymas</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Aprašymas</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Išnaša',
 	'edittoolbar-help-content-reference-syntax' => 'Puslapio tekstas.&lt;ref name="test"&gt;[http://www.example.org Nuorodos tekstas], papildomas tekstas.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Puslapio tekstas.<sup><a href='#'>[1]</a></sup>",
@@ -5717,6 +6572,7 @@ $messages['lt'] = array(
 /** Latvian (Latviešu)
  * @author Marozols
  * @author Papuass
+ * @author Yyy
  */
 $messages['lv'] = array(
 	'edittoolbar' => 'Rediģēšanas rīku josla',
@@ -5727,6 +6583,10 @@ $messages['lv'] = array(
 	'edittoolbar-tool-bold-example' => 'Pustrekns teksts',
 	'edittoolbar-tool-italic' => 'Kursīvā',
 	'edittoolbar-tool-italic-example' => 'Teksts kursīvā',
+	'edittoolbar-tool-ilink' => 'Iekšējā saite',
+	'edittoolbar-tool-ilink-example' => 'Saites teksts',
+	'edittoolbar-tool-xlink' => 'Ārējā saite (neaizmirsti adresi sākt ar "http://")',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com saites teksts',
 	'edittoolbar-tool-link' => 'Saite',
 	'edittoolbar-tool-link-title' => 'Ievietot saiti',
 	'edittoolbar-tool-link-int' => 'Iekšēja saite',
@@ -5771,7 +6631,7 @@ $messages['lv'] = array(
 {{ns:file}}:Example.jpg|Apraksts2',
 	'edittoolbar-tool-newline' => 'Jauna rinda',
 	'edittoolbar-tool-table' => 'Tabula',
-	'edittoolbar-tool-replace' => 'Aizstāt',
+	'edittoolbar-tool-replace' => 'Meklēt un aizstāt',
 	'edittoolbar-tool-replace-title' => 'Meklēt un aizstāt',
 	'edittoolbar-tool-replace-search' => 'Meklēt:',
 	'edittoolbar-tool-replace-replace' => 'Aizstāt ar:',
@@ -5840,7 +6700,7 @@ $messages['lv'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Saraksta elements</li><li>Saraksta elements</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Iekļauts fails',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Apraksts]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Apraksts' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Palielināt' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Apraksts</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Apraksts' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Palielināt' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Apraksts</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Atsauce',
 	'edittoolbar-help-content-reference-syntax' => 'Lapas teksts.&lt;ref name="test"&gt;[http://www.example.org Saites teksts], papildus teksts.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Lapas teksts.<sup><a href='#'>[1]</a></sup>",
@@ -5869,6 +6729,10 @@ $messages['mk'] = array(
 	'edittoolbar-tool-bold-example' => 'Задебелен текст',
 	'edittoolbar-tool-italic' => 'Косо',
 	'edittoolbar-tool-italic-example' => 'Закосен текст',
+	'edittoolbar-tool-ilink' => 'Внатрешна врска',
+	'edittoolbar-tool-ilink-example' => 'Наслов на врската',
+	'edittoolbar-tool-xlink' => 'Надворешна врска (бара префикс http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.пример.com наслов на врската',
 	'edittoolbar-tool-link' => 'Врска',
 	'edittoolbar-tool-link-title' => 'Вметни врска',
 	'edittoolbar-tool-link-int' => 'Кон вики-страница',
@@ -5923,8 +6787,6 @@ $messages['mk'] = array(
 	'edittoolbar-tool-table-dimensions' => 'Димензии',
 	'edittoolbar-tool-table-dimensions-rows' => 'Редови',
 	'edittoolbar-tool-table-dimensions-columns' => 'Колони',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Насловни редови',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Насловни колони',
 	'edittoolbar-tool-table-insert' => 'Вметни',
 	'edittoolbar-tool-table-cancel' => 'Откажи',
 	'edittoolbar-tool-replace' => 'Замени',
@@ -5996,7 +6858,7 @@ $messages['mk'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Ставка</li><li>Ставка</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Вметната податотека',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Пример.png|мини|Опис]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Опис' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Зголеми' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Опис</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Опис' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Зголеми' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Опис</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Навод',
 	'edittoolbar-help-content-reference-syntax' => 'Текст во страницата.&lt;ref name="test"&gt;[http://www.пример.org Текст на врската], дополнителен текст.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Текст во страницата.<sup><a href='#'>[1]</a></sup>",
@@ -6014,10 +6876,113 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Sadik Khalid
  */
 $messages['ml'] = array(
+	'edittoolbar' => 'തിരുത്തൽ ടൂൾബാർ',
+	'edittoolbar-desc' => 'തിരുത്താനുള്ള താളിൽ മെച്ചപ്പെട്ട ഉപയോഗത്തിനായുള്ള ടൂൾബാർ',
+	'edittoolbar-preference' => 'തിരുത്തുവാനുള്ള വിശദ പണിപ്പെട്ടി ഉപയോഗപ്പെടുത്തുക',
+	'edittoolbar-cgd-preference' => 'വിപുലമായ വിക്കി എഴുത്തുകൾ ചേർക്കാനുള്ള സഹായം നൽകുക',
+	'edittoolbar-loading' => 'ശേഖരിക്കുന്നു...',
+	'edittoolbar-tool-bold' => 'കടുപ്പിക്കുക',
+	'edittoolbar-tool-bold-example' => 'കട്ടികൂട്ടിയ എഴുത്ത്',
+	'edittoolbar-tool-italic' => 'ചരിച്ച്',
+	'edittoolbar-tool-italic-example' => 'ചരിച്ചുള്ള എഴുത്ത്',
+	'edittoolbar-tool-ilink' => 'ആന്തരിക കണ്ണി',
+	'edittoolbar-tool-ilink-example' => 'കണ്ണിയുടെ തലക്കെട്ട്',
+	'edittoolbar-tool-xlink' => 'പുറത്തേയ്ക്കുള്ള കണ്ണി (ആദ്യം http:// കൊടുക്കാൻ ഓർക്കുക)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com കണ്ണി തലക്കെട്ട്',
+	'edittoolbar-tool-link' => 'കണ്ണി',
+	'edittoolbar-tool-link-title' => 'കണ്ണി ഉൾപ്പെടുത്തുക',
+	'edittoolbar-tool-link-int' => 'ഒരു വിക്കി താളിലേയ്ക്ക്',
+	'edittoolbar-tool-link-int-target' => 'താളിന്റെ തലക്കെട്ട്',
+	'edittoolbar-tool-link-int-text' => 'കണ്ണിയാവേണ്ട എഴുത്ത്:',
+	'edittoolbar-tool-link-ext' => 'പുറത്തുള്ള വെബ് താളിലേയ്ക്ക്',
+	'edittoolbar-tool-link-ext-target' => 'കണ്ണിയുടെ യൂആർഎൽ',
+	'edittoolbar-tool-link-ext-text' => 'കണ്ണിയാകേണ്ട എഴുത്ത്:',
+	'edittoolbar-tool-link-insert' => 'കണ്ണി ഉൾപ്പെടുത്തുക',
+	'edittoolbar-tool-link-cancel' => 'റദ്ദാക്കുക',
+	'edittoolbar-tool-link-int-target-status-exists' => 'താൾ നിലനിൽക്കുന്നു',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'താൾ നിലനിൽക്കുന്നില്ല',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'അസാധുവായ തലക്കെട്ട്',
+	'edittoolbar-tool-link-int-target-status-loading' => 'താൾ നിലനിൽക്കുന്നുണ്ടോ എന്നു പരിശോധിക്കുന്നു...',
+	'edittoolbar-tool-link-int-invalid' => 'താങ്കൾ നൽകിയ തലക്കെട്ട് അസാധുവാണ്.',
+	'edittoolbar-tool-link-ext-invalid' => 'താങ്കൾ നൽകിയ യൂആർഎൽ അസാധുവാണ്.',
+	'edittoolbar-tool-reference' => 'അവലംബം',
+	'edittoolbar-tool-signature' => 'ഒപ്പും സമയമുദ്രയും',
+	'edittoolbar-section-advanced' => 'വിപുലീകരിക്കപ്പെട്ടവ',
+	'edittoolbar-tool-heading' => 'തലക്കെട്ട്',
+	'edittoolbar-tool-heading-1' => 'തലം 1',
+	'edittoolbar-tool-heading-2' => 'തലം 2',
+	'edittoolbar-tool-heading-3' => 'തലം 3',
+	'edittoolbar-tool-heading-4' => 'തലം 4',
+	'edittoolbar-tool-heading-5' => 'തലം 5',
+	'edittoolbar-tool-heading-example' => 'തലക്കെട്ടാകാനുള്ള എഴുത്ത്',
+	'edittoolbar-group-size' => 'വലിപ്പം',
+	'edittoolbar-tool-big' => 'വലുത്',
+	'edittoolbar-tool-big-example' => 'വലിയ എഴുത്ത്',
+	'edittoolbar-tool-small' => 'ചെറിയത്',
+	'edittoolbar-tool-small-example' => 'ചെറിയ എഴുത്ത്',
+	'edittoolbar-group-insert' => 'ഉൾപ്പെടുത്തുക',
+	'edittoolbar-tool-gallery' => 'ചിത്രസഞ്ചയം',
+	'edittoolbar-tool-newline' => 'പുതിയ വരി',
+	'edittoolbar-tool-table-cancel' => 'റദ്ദാക്കുക',
+	'edittoolbar-tool-replace' => 'കണ്ടെത്തുക മാറ്റുക',
+	'edittoolbar-tool-replace-title' => 'കണ്ടെത്തുക മാറ്റുക',
+	'edittoolbar-tool-replace-search' => 'ഇതു കണ്ടെത്തുക:',
+	'edittoolbar-tool-replace-replace' => 'ഇതുകൊണ്ടു മാറ്റുക',
+	'edittoolbar-tool-replace-case' => 'അക്ഷരമാലാ തരവും (case) ഒത്തുനോക്കുക',
+	'edittoolbar-tool-replace-all' => 'ഒത്തുപോകുന്നതെല്ലാം മാറ്റുക',
+	'edittoolbar-tool-replace-button' => 'പകരം മാറ്റുക',
+	'edittoolbar-tool-replace-close' => 'റദ്ദാക്കുക',
+	'edittoolbar-tool-replace-nomatch' => 'താങ്കളുടെ തിരച്ചിലുമായി ഒന്നും ഒത്തുപോകുന്നില്ല.',
+	'edittoolbar-tool-replace-success' => '$1 മാറ്റിവെയ്ക്കൽ(കൾ) നടത്തി.',
+	'edittoolbar-section-characters' => 'പ്രത്യേക ലിപികൾ',
+	'edittoolbar-characters-page-latin' => 'ലാറ്റിൻ',
+	'edittoolbar-characters-page-latinextended' => 'ലാറ്റിൻ വിപുലം',
+	'edittoolbar-characters-page-ipa' => 'ഐ.പി.എ.',
+	'edittoolbar-characters-page-symbols' => 'ചിഹ്നനങ്ങൾ',
+	'edittoolbar-characters-page-greek' => 'ഗ്രീക്ക്',
+	'edittoolbar-characters-page-cyrillic' => 'സിറിലിക്',
+	'edittoolbar-characters-page-arabic' => 'അറബിക്',
+	'edittoolbar-characters-page-hebrew' => 'ഹീബ്രു',
+	'edittoolbar-characters-page-telugu' => 'തെലുങ്ക്',
+	'edittoolbar-section-help' => 'സഹായം',
+	'edittoolbar-help-heading-description' => 'വിവരണം',
+	'edittoolbar-help-heading-syntax' => 'താങ്കൾ ടൈപ്പ് ചെയ്യുന്നത്',
+	'edittoolbar-help-heading-result' => 'താങ്കൾക്ക് ലഭിക്കുന്നത്',
+	'edittoolbar-help-page-link' => 'കണ്ണികൾ',
+	'edittoolbar-help-page-heading' => 'തലക്കെട്ടുകൾ',
+	'edittoolbar-help-page-file' => 'പ്രമാണങ്ങൾ',
+	'edittoolbar-help-page-reference' => 'അവലംബങ്ങൾ',
 	'edittoolbar-help-page-discussion' => 'സംവാദം',
+	'edittoolbar-help-content-italic-description' => 'ചരിച്ചുള്ളത്',
+	'edittoolbar-help-content-italic-syntax' => "''ചരിച്ചുള്ള എഴുത്ത്''",
+	'edittoolbar-help-content-italic-result' => '<em>ചരിച്ചുള്ള എഴുത്ത്</em>',
+	'edittoolbar-help-content-bold-description' => 'കട്ടികൂട്ടിയുള്ള',
+	'edittoolbar-help-content-bold-syntax' => "'''കട്ടികൂട്ടിയ എഴുത്ത്'''",
+	'edittoolbar-help-content-bold-result' => '<strong>കട്ടികൂട്ടിയ എഴുത്ത്</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'കട്ടികൂട്ടി ചരിച്ചുള്ളത്',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''കട്ടികൂട്ടി ചരിച്ചുള്ള എഴുത്ത്'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>കട്ടികൂട്ടി ചരിച്ചുള്ള എഴുത്ത്</em></strong>',
+	'edittoolbar-help-content-ilink-syntax' => '[[താളിന്റെ തലക്കെട്ട്|കണ്ണിയുടെ നാമം]]<br />[[താളിന്റെ തലക്കെട്ട്]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>കണ്ണിയുടെ നാമം</a><br /><a href='#'>താളിന്റെ തലക്കെട്ട്</a>",
+	'edittoolbar-help-content-xlink-description' => 'പുറത്തേയ്ക്കുള്ള കണ്ണി',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org കണ്ണിയുടെ പേര്]<br />[http://www.example.org]<br />http://www.example.org',
+	'edittoolbar-help-content-xlink-result' => "<a href='#' class='external'>കണ്ണിയുടെ പേര്</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
+	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|ലഘു|വിവരണ കുറിപ്പ്]]',
+	'edittoolbar-help-content-reference-description' => 'അവലംബം',
+	'edittoolbar-help-content-reference-syntax' => 'താളിലെ എഴുത്ത്.&lt;ref name="test"&gt;[http://www.example.org കണ്ണിയായുള്ള എഴുത്ത്], കൂടുതൽ എഴുത്ത്.&lt;/ref&gt;',
+	'edittoolbar-help-content-reference-result' => "താളിലെ എഴുത്ത്.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-rereference-description' => 'അതേ അവലംബത്തിന്റെ കൂടുതൽ ഉപയോഗം',
+	'edittoolbar-help-content-rereference-result' => "താളിലെ എഴുത്ത്.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-showreferences-description' => 'അവലംബങ്ങൾ പ്രദർശിപ്പിക്കുക',
+	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>കണ്ണിയായുള്ള എഴുത്ത്</a>, കൂടുതൽ എഴുത്ത്.</li></ol>",
+	'edittoolbar-help-content-signaturetimestamp-description' => 'സമയമുദ്രയോടുകൂടിയ ഒപ്പ്',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>ഉപയോക്തൃനാമം</a> (<a href='#' title='{{#special:mytalk}}'>സംവാദം</a>) 15:54, 10 ജൂൺ 2009 (UTC)",
+	'edittoolbar-help-content-signature-description' => 'ഒപ്പ്',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>ഉപയോക്തൃനാമം</a> (<a href='#' title='{{#special:mytalk}}'>സംവാദം</a>)",
 );
 
 /** Mongolian (Монгол)
@@ -6042,6 +7007,10 @@ $messages['ms'] = array(
 	'edittoolbar-tool-bold-example' => 'Teks tebal',
 	'edittoolbar-tool-italic' => 'Teks condong',
 	'edittoolbar-tool-italic-example' => 'Teks condong',
+	'edittoolbar-tool-ilink' => 'Pautan dalaman',
+	'edittoolbar-tool-ilink-example' => 'Tajuk pautan',
+	'edittoolbar-tool-xlink' => 'Pautan luar (ingat http:// singkatan)',
+	'edittoolbar-tool-xlink-example' => 'http://www.contoh.com tajuk pautan',
 	'edittoolbar-tool-link' => 'Pautan',
 	'edittoolbar-tool-link-title' => 'Letakkan pautan',
 	'edittoolbar-tool-link-int' => 'Ke laman wiki',
@@ -6171,7 +7140,7 @@ $messages['ms'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Perkara senarai</li><li>Perkara senarai</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Fail terbenam',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Contoh.png|thumb|Teks kapsyen]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Teks kapsyen' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Besarkan' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Teks kapsyen</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Teks kapsyen' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Besarkan' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Teks kapsyen</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Rujukan',
 	'edittoolbar-help-content-reference-syntax' => 'Teks laman.&lt;ref nama="cubaan"&gt;[http://www.contoh.org Teks pautan], teks tambahan.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Teks laman.<sup><a href='#'>[1]</a></sup>",
@@ -6194,11 +7163,17 @@ $messages['ms'] = array(
 $messages['mt'] = array(
 	'edittoolbar' => 'Kaxxa tal-għodda għall-immodifikar',
 	'edittoolbar-desc' => "Immodifika l-kaxxa tal-għodda b'akbar użabilità",
+	'edittoolbar-preference' => 'Awtorizza l-użu tal-kaxxa tal-għodda estiża',
+	'edittoolbar-cgd-preference' => "Awtorizza l-għajnuna għaż-żieda ta' test wiki avvanzat",
 	'edittoolbar-loading' => 'Tiela...',
 	'edittoolbar-tool-bold' => 'Tipa ħoxna',
 	'edittoolbar-tool-bold-example' => 'Tipa ħoxna',
 	'edittoolbar-tool-italic' => 'Tipa korsiva',
 	'edittoolbar-tool-italic-example' => 'Tipa korsiva',
+	'edittoolbar-tool-ilink' => 'Ħolqa interna',
+	'edittoolbar-tool-ilink-example' => 'Titlu tal-ħolqa',
+	'edittoolbar-tool-xlink' => 'Ħolqa esterna (ftakar il-prefiss http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com titlu tal-ħolqa',
 	'edittoolbar-tool-link' => 'Ħolqa',
 	'edittoolbar-tool-link-title' => 'Daħħal ħolqa',
 	'edittoolbar-tool-link-int' => 'Lejn paġna wiki',
@@ -6214,6 +7189,7 @@ $messages['mt'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titlu invalidu',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kontroll tal-eżistenza tal-paġna...',
 	'edittoolbar-tool-link-int-invalid' => 'It-titlu li speċifikjat huwa invalidu.',
+	'edittoolbar-tool-link-ext-invalid' => 'Il-URL li speċifikajt hi invalida.',
 	'edittoolbar-tool-file' => 'Fajl inkorporat',
 	'edittoolbar-tool-file-example' => 'Eżempju.jpg',
 	'edittoolbar-tool-reference' => 'Nota',
@@ -6248,21 +7224,38 @@ $messages['mt'] = array(
 {{ns:file}}:Eżempju.jpg|Deskrizzjoni2',
 	'edittoolbar-tool-newline' => 'Linja ġdida',
 	'edittoolbar-tool-table' => 'Tabella',
+	'edittoolbar-tool-table-example-old' => '-
+! ras 1
+! ras 2
+! ras 3
+|-
+| filliera 1, ċellola 1
+| filliera 1, ċellola 2
+| filliera 1, ċellola 3
+|-
+| filliera 2, ċellola 1
+| filliera 2, ċellola 2
+| filliera 2, ċellola 3',
+	'edittoolbar-tool-table-example' => 'Filliera $1, ċellola $2',
+	'edittoolbar-tool-table-example-header' => 'Filliera $1, ċellola $2 (ras)',
 	'edittoolbar-tool-table-title' => 'Daħħal tabella',
 	'edittoolbar-tool-table-dimensions' => 'Dimensjonijiet',
 	'edittoolbar-tool-table-dimensions-rows' => 'Fillieri',
 	'edittoolbar-tool-table-dimensions-columns' => 'Kolonni',
+	'edittoolbar-tool-table-dimensions-header' => "Inkludi l-filliera ta' fuq",
 	'edittoolbar-tool-table-insert' => 'Daħħal',
 	'edittoolbar-tool-table-cancel' => 'Annulla',
-	'edittoolbar-tool-replace' => 'Biddel',
+	'edittoolbar-tool-replace' => 'Fittex u biddel',
 	'edittoolbar-tool-replace-title' => 'Fittex u biddel',
 	'edittoolbar-tool-replace-search' => 'Fittex għal:',
 	'edittoolbar-tool-replace-replace' => "Biddel ma':",
+	'edittoolbar-tool-replace-case' => 'Ittra kapitali/żgħira',
 	'edittoolbar-tool-replace-regex' => 'Tratta t-test tat-tfittxija bħala espressjoni regulari',
 	'edittoolbar-tool-replace-all' => 'Biddel kull okkorrenza',
 	'edittoolbar-tool-replace-button' => 'Biddel',
-	'edittoolbar-tool-replace-close' => 'Agħlaq',
+	'edittoolbar-tool-replace-close' => 'Annulla',
 	'edittoolbar-tool-replace-nomatch' => 'It-tfittxija ma tat l-ebda riżultat.',
+	'edittoolbar-tool-replace-success' => 'saru $1 tibdila.',
 	'edittoolbar-section-characters' => 'Karattri speċjali',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Latin estiż',
@@ -6322,7 +7315,7 @@ $messages['mt'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Element tal-lista</li><li>Element tal-lista</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Fajl inkorporat',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Eżempju.png|thumb|Test tad-deskrizzjoni]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Test tad-deskrizzjoni' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Kabbar' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Test tad-deskrizzjoni</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Test tad-deskrizzjoni' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Kabbar' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Test tad-deskrizzjoni</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referenza',
 	'edittoolbar-help-content-reference-syntax' => 'Test tal-paġna.&lt;ref name="test"&gt;[http://www.example.org Test tal-ħolqa], test addizzjonali.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Test tal-paġna.<sup><a href='#'>[1]</a></sup>",
@@ -6374,6 +7367,10 @@ $messages['nds-nl'] = array(
 	'edittoolbar-tool-bold-example' => 'Vet-edrokken tekse',
 	'edittoolbar-tool-italic' => 'Schunedrok',
 	'edittoolbar-tool-italic-example' => 'Schunedrokken tekse',
+	'edittoolbar-tool-ilink' => 'Interne verwiezing',
+	'edittoolbar-tool-ilink-example' => 'Verwiezingsbeschrieving',
+	'edittoolbar-tool-xlink' => "Uutgaonde verwiezing (vergeet 't veurvoegsel http:// neet)",
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com beschrieving',
 	'edittoolbar-tool-link' => 'Verwiezing',
 	'edittoolbar-tool-link-title' => 'Verwiezing derbie doon',
 	'edittoolbar-tool-link-int' => 'Naor een wikipagina',
@@ -6469,7 +7466,7 @@ $messages['nds-nl'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Regel in een lieste mit nummers</li><li>Regel in een lieste mit nummers</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Bestaand derbie doon',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Veurbeeld.png|thumb|Bieschrifte]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bieschrifte' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Vergroten' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Bieschrifte</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bieschrifte' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Vergroten' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Bieschrifte</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Rifferentie',
 	'edittoolbar-help-content-reference-syntax' => 'Paginatekse.&lt;ref name="test"&gt;[http://www.example.org Beschrieving], eventuele tekse.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Paginatekse <sup><a href='#'>[1]</a></sup>",
@@ -6487,17 +7484,23 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'edittoolbar' => 'Bewerkingswerkbalk',
 	'edittoolbar-desc' => 'Bewerkingsbalk die eenvoudiger te gebruiken is',
 	'edittoolbar-preference' => 'Uitgebreide bewerkingsbalk inschakelen',
+	'edittoolbar-cgd-preference' => 'Hulp voor het toevoegen van gevorderde wikitekst inschakelen',
 	'edittoolbar-loading' => 'Bezig met laden...',
 	'edittoolbar-tool-bold' => 'Vet',
 	'edittoolbar-tool-bold-example' => 'Vetgedrukte tekst',
 	'edittoolbar-tool-italic' => 'Cursief',
 	'edittoolbar-tool-italic-example' => 'Cursief gedrukte tekst',
+	'edittoolbar-tool-ilink' => 'Interne verwijzing',
+	'edittoolbar-tool-ilink-example' => 'Verwijzingsbeschrijving',
+	'edittoolbar-tool-xlink' => 'Externe verwijzing (vergeet het voorvoegsel http:// niet)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com verwijzingsbeschrijving',
 	'edittoolbar-tool-link' => 'Verwijzing',
 	'edittoolbar-tool-link-title' => 'Verwijzing invoegen',
 	'edittoolbar-tool-link-int' => 'Naar een wikipagina',
@@ -6513,6 +7516,7 @@ $messages['nl'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Ongeldige paginanaam',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Bezig met controleren of de pagina al bestaat...',
 	'edittoolbar-tool-link-int-invalid' => 'De opgegeven pagina is ongeldig.',
+	'edittoolbar-tool-link-ext-invalid' => 'De opgegeven URL is ongeldig.',
 	'edittoolbar-tool-file' => 'Ingebed bestand',
 	'edittoolbar-tool-file-example' => 'Voorbeeld.jpg',
 	'edittoolbar-tool-reference' => 'Referentie',
@@ -6547,6 +7551,18 @@ $messages['nl'] = array(
 {{ns:file}}:Voorbeeld2|Bijschrift2',
 	'edittoolbar-tool-newline' => 'Nieuwe regel',
 	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-example-old' => '-
+! kop 1
+! kop 2
+! kop 3
+|-
+| rij 1, cel 1
+| rij 1, cel 2
+| rij 1, cel 3
+|-
+| rij 2, cel 1
+| rij 2, cel 2
+| rij 2, cel 3',
 	'edittoolbar-tool-table-example' => 'Rij $1, cel $2',
 	'edittoolbar-tool-table-example-header' => 'Rij $1, cel $2 (kop)',
 	'edittoolbar-tool-table-title' => 'Tabel invoegen',
@@ -6556,7 +7572,8 @@ $messages['nl'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Koprij toevoegen',
 	'edittoolbar-tool-table-insert' => 'Invoegen',
 	'edittoolbar-tool-table-cancel' => 'Annuleren',
-	'edittoolbar-tool-replace' => 'Vervangen',
+	'edittoolbar-tool-table-toomany' => 'Het invoegen van een tabel met meer dan $1 cellen is niet mogelijk via dit dialoogvenster.',
+	'edittoolbar-tool-replace' => 'Zoeken en vervangen',
 	'edittoolbar-tool-replace-title' => 'Zoeken en vervangen',
 	'edittoolbar-tool-replace-search' => 'Zoeken naar:',
 	'edittoolbar-tool-replace-replace' => 'Vervangen door:',
@@ -6564,8 +7581,9 @@ $messages['nl'] = array(
 	'edittoolbar-tool-replace-regex' => 'De zoekreeks als reguliere expressie behandelen',
 	'edittoolbar-tool-replace-all' => 'Alles vervangen',
 	'edittoolbar-tool-replace-button' => 'Vervangen',
-	'edittoolbar-tool-replace-close' => 'Sluiten',
+	'edittoolbar-tool-replace-close' => 'Annuleren',
 	'edittoolbar-tool-replace-nomatch' => 'Uw zoekopdracht heeft geen resultaten opgeleverd.',
+	'edittoolbar-tool-replace-success' => 'Er zijn $1 items vervangen.',
 	'edittoolbar-section-characters' => 'Speciale tekens',
 	'edittoolbar-characters-page-latin' => 'Latijns',
 	'edittoolbar-characters-page-latinextended' => 'Latijns uitgebreid',
@@ -6579,7 +7597,7 @@ $messages['nl'] = array(
 	'edittoolbar-section-help' => 'Hulp',
 	'edittoolbar-help-heading-description' => 'Beschrijving',
 	'edittoolbar-help-heading-syntax' => 'Wat u typt',
-	'edittoolbar-help-heading-result' => 'Wat u krijgt te zien',
+	'edittoolbar-help-heading-result' => 'Wat u te zien krijgt',
 	'edittoolbar-help-page-format' => 'Opmaak',
 	'edittoolbar-help-page-link' => 'Verwijzingen',
 	'edittoolbar-help-page-heading' => 'Kopjes',
@@ -6625,7 +7643,7 @@ $messages['nl'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Regel in genummerde lijst</li><li>Regel in genummerde lijst</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Ingebed bestand',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Voorbeeld.png|thumb|Bijschrift]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bijschrift' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Vergroten' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Bijschrift</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bijschrift' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Vergroten' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Bijschrift</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referentie',
 	'edittoolbar-help-content-reference-syntax' => 'Paginatekst.&lt;ref name="test"&gt;[http://www.example.org Verwijzingstekst], additionele tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Paginatekst <sup><a href='#'>[1]</a></sup>",
@@ -6643,6 +7661,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -6651,8 +7670,20 @@ $messages['nn'] = array(
 	'edittoolbar-tool-bold-example' => 'Feit tekst',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Kursiv tekst',
+	'edittoolbar-tool-ilink' => 'Intern lenkja',
+	'edittoolbar-tool-ilink-example' => 'Lenkjetittel',
+	'edittoolbar-tool-xlink' => 'Ekstern lenkja (hugs http:// -forstavinga)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com lenkjetittel',
+	'edittoolbar-tool-link' => 'Lenke',
+	'edittoolbar-tool-link-int' => 'Til ei wikiside',
+	'edittoolbar-tool-link-int-target' => 'Sidetittel/artikkeltittel:',
+	'edittoolbar-tool-link-ext-target' => 'Lenkeadresse URL:',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Sida finst',
 	'edittoolbar-tool-file-example' => 'Døme.jpg',
 	'edittoolbar-tool-reference' => 'Referanse',
+	'edittoolbar-section-advanced' => 'Avansert',
+	'edittoolbar-group-size' => 'Storleik',
+	'edittoolbar-tool-subscript' => 'Senka skrift',
 	'edittoolbar-group-insert' => 'Set inn',
 	'edittoolbar-tool-gallery' => 'Biletgalleri',
 	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Døme.jpg|Bilettekst1
@@ -6674,6 +7705,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Gunnernett
  * @author Laaknor
  * @author Nghtwlkr
  * @author Simny
@@ -6688,6 +7720,10 @@ $messages['no'] = array(
 	'edittoolbar-tool-bold-example' => 'Fet tekst',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Kursiv tekst',
+	'edittoolbar-tool-ilink' => 'Intern lenke',
+	'edittoolbar-tool-ilink-example' => 'Lenketittel',
+	'edittoolbar-tool-xlink' => 'Ekstern lenke (husk http:// først)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com lenketittel',
 	'edittoolbar-tool-link-int' => 'Til en wikiartikkel/-side',
 	'edittoolbar-tool-link-int-target' => 'Sidetittel/artikkeltittel:',
 	'edittoolbar-tool-link-ext' => 'Til en ekstern webside',
@@ -6732,7 +7768,7 @@ $messages['no'] = array(
 	'edittoolbar-tool-newline' => 'Linjeskift',
 	'edittoolbar-tool-table' => 'Tabell',
 	'edittoolbar-tool-table-cancel' => 'Avbryt',
-	'edittoolbar-tool-replace' => 'Erstatt',
+	'edittoolbar-tool-replace' => 'Søk og erstatt',
 	'edittoolbar-tool-replace-title' => 'Søk og erstatt',
 	'edittoolbar-tool-replace-search' => 'Søk etter:',
 	'edittoolbar-tool-replace-replace' => 'Erstatt med:',
@@ -6803,7 +7839,7 @@ $messages['no'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Listeelement</li><li>Listeelement</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Fil',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Bildetekst]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bildetekst' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Forstørr' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Bildetekst</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bildetekst' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Forstørr' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Bildetekst</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referanse',
 	'edittoolbar-help-content-reference-syntax' => 'Tekst.&lt;ref name="test"&gt;[http://www.example.org Lenketekst], ytterligere tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Tekst.<sup><a href='#'>[1]</a></sup>",
@@ -6827,11 +7863,16 @@ $messages['oc'] = array(
 	'edittoolbar' => 'Modificacion de la barra d’espleches',
 	'edittoolbar-desc' => "Modificacion de la barra d'espleches amb l'utilizabilitat melhorada",
 	'edittoolbar-preference' => "Activar la barra d'espleches melhorada",
+	'edittoolbar-cgd-preference' => "Activar l'ajuda per apondre de tèxte wiki avançat",
 	'edittoolbar-loading' => 'Cargament ...',
 	'edittoolbar-tool-bold' => 'Gras',
 	'edittoolbar-tool-bold-example' => 'Tèxte en gras',
 	'edittoolbar-tool-italic' => 'Italica',
 	'edittoolbar-tool-italic-example' => 'Tèxte en italica',
+	'edittoolbar-tool-ilink' => 'Ligam intèrne',
+	'edittoolbar-tool-ilink-example' => 'Títol del ligam',
+	'edittoolbar-tool-xlink' => 'Ligam extèrne ( doblidetz pas lo prefix http:// )',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com títol del ligam',
 	'edittoolbar-tool-link' => 'Ligam',
 	'edittoolbar-tool-link-title' => 'Inserir un ligam',
 	'edittoolbar-tool-link-int' => 'Cap a un article / una pagina wiki',
@@ -6847,6 +7888,7 @@ $messages['oc'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Títol invalid',
 	'edittoolbar-tool-link-int-target-status-loading' => "Verificacion de l'existéncia de la pagina...",
 	'edittoolbar-tool-link-int-invalid' => "Lo títol qu'avètz especificat es incorrècte.",
+	'edittoolbar-tool-link-ext-invalid' => "L'URL qu'avètz especificada es invalida.",
 	'edittoolbar-tool-file' => 'Fichièr inserit',
 	'edittoolbar-tool-file-example' => 'Exemple.jpg',
 	'edittoolbar-tool-reference' => 'Referéncia',
@@ -6881,6 +7923,18 @@ $messages['oc'] = array(
 {{ns:file}}:Exemple.jpg|Descripcion 2',
 	'edittoolbar-tool-newline' => 'Saut de linha',
 	'edittoolbar-tool-table' => 'Tablèu',
+	'edittoolbar-tool-table-example-old' => '-
+! entèsta 1
+! entèsta 2
+! entèsta 3
+|-
+| linha 1, casa 1
+| linha 1, casa 2
+| linha 1, casa 3
+|-
+| linha 2, casa 1
+| linha 2, casa 2
+| linha 2, casa 3',
 	'edittoolbar-tool-table-example' => 'Linha $1, cellula $2',
 	'edittoolbar-tool-table-example-header' => 'Linha $1, cellula $2 (entèsta)',
 	'edittoolbar-tool-table-title' => 'Inserir un tablèu',
@@ -6890,7 +7944,7 @@ $messages['oc'] = array(
 	'edittoolbar-tool-table-dimensions-header' => "Inclure la linha d'entèsta",
 	'edittoolbar-tool-table-insert' => 'Inserir',
 	'edittoolbar-tool-table-cancel' => 'Anullar',
-	'edittoolbar-tool-replace' => 'Remplaçar',
+	'edittoolbar-tool-replace' => 'Recercar & remplaçar',
 	'edittoolbar-tool-replace-title' => 'Recercar e remplaçar',
 	'edittoolbar-tool-replace-search' => 'Recercar :',
 	'edittoolbar-tool-replace-replace' => 'Remplaçar amb :',
@@ -6898,8 +7952,9 @@ $messages['oc'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tractar la cadena de recèrca coma una expression regulara',
 	'edittoolbar-tool-replace-all' => 'remplaçar totas las occurréncias',
 	'edittoolbar-tool-replace-button' => 'Remplaçar',
-	'edittoolbar-tool-replace-close' => 'Tampar',
+	'edittoolbar-tool-replace-close' => 'Anullar',
 	'edittoolbar-tool-replace-nomatch' => 'Vòstra recèrca a pas trobat cap de correspondéncia.',
+	'edittoolbar-tool-replace-success' => '$1 remplaçaments faches.',
 	'edittoolbar-section-characters' => 'Caractèrs especials',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Latin espandit',
@@ -6959,7 +8014,7 @@ $messages['oc'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Element de la lista</li><li>Element de la lista</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Fichièr inserit',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Tèxte afichat]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Tèxte afichat' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Tèxte afichat</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Tèxte afichat' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Tèxte afichat</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referéncia',
 	'edittoolbar-help-content-reference-syntax' => 'Tèxte de la pagina.&lt;ref name="test"&gt;[http://www.example.org tèxte del ligam], tèxte adicional.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Tèxte de la pagina <sup><a href='#'>[1]</a></sup>",
@@ -6982,6 +8037,8 @@ $messages['oc'] = array(
 $messages['pdc'] = array(
 	'edittoolbar' => 'Gscharr fer Enneringe',
 	'edittoolbar-tool-bold' => 'Fett',
+	'edittoolbar-tool-ilink' => 'Gleecher',
+	'edittoolbar-tool-xlink' => 'Gewebbgleecher (acht uff http://)',
 	'edittoolbar-group-list' => 'Lischt',
 	'edittoolbar-group-size' => 'Grees',
 	'edittoolbar-tool-big' => 'Gross',
@@ -7006,11 +8063,16 @@ $messages['pl'] = array(
 	'edittoolbar' => 'Pasek narzędzi edycyjnych',
 	'edittoolbar-desc' => 'Ułatwiający pracę pasek narzędzi edycyjnych',
 	'edittoolbar-preference' => 'Włącz rozszerzony pasek narzędzi edycyjnych',
+	'edittoolbar-cgd-preference' => 'Włącz pomoc dla dodawania zaawansowanego tekstu Wiki',
 	'edittoolbar-loading' => 'Ładowanie...',
 	'edittoolbar-tool-bold' => 'Wytłuszczenie',
 	'edittoolbar-tool-bold-example' => 'Tekst tłustą czcionką',
 	'edittoolbar-tool-italic' => 'Pochyły',
 	'edittoolbar-tool-italic-example' => 'Tekst pochyłą czcionką',
+	'edittoolbar-tool-ilink' => 'Link wewnętrzny',
+	'edittoolbar-tool-ilink-example' => 'Tytuł linku',
+	'edittoolbar-tool-xlink' => 'Link zewnętrzny (pamiętaj o przedrostku http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.przyklad.com opis linku',
 	'edittoolbar-tool-link' => 'Link',
 	'edittoolbar-tool-link-title' => 'Wstaw link',
 	'edittoolbar-tool-link-int' => 'Do strony wiki',
@@ -7026,6 +8088,7 @@ $messages['pl'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Nieprawidłowy tytuł',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Sprawdzanie czy strona istnieje…',
 	'edittoolbar-tool-link-int-invalid' => 'Wprowadzony tytuł jest nieprawidłowy.',
+	'edittoolbar-tool-link-ext-invalid' => 'Podano nieprawidłowy adres URL.',
 	'edittoolbar-tool-file' => 'Plik osadzony',
 	'edittoolbar-tool-file-example' => 'Przykład.jpg',
 	'edittoolbar-tool-reference' => 'Przypis',
@@ -7060,6 +8123,18 @@ $messages['pl'] = array(
 {{ns:file}}:Example.jpg|Podpis2',
 	'edittoolbar-tool-newline' => 'Nowy wiersz',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-example-old' => '-
+! nagłówek 1
+! nagłówek 2
+! nagłówek 3
+| -
+| wiersz 1, komórka 1
+| wiersz 1, komórka 2
+| wiersz 1, komórka 3
+| -
+| wiersz 2, komórka 1
+| wiersz 2, komórka 2
+| wiersz 2, komórka 3',
 	'edittoolbar-tool-table-example' => 'Wiersz $1, komórka $2',
 	'edittoolbar-tool-table-example-header' => 'Wiersz $1, kolumna $2 (nagłówek)',
 	'edittoolbar-tool-table-title' => 'Wstaw tabelę',
@@ -7069,7 +8144,7 @@ $messages['pl'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Dołącz wiersz nagłówka',
 	'edittoolbar-tool-table-insert' => 'Wstaw',
 	'edittoolbar-tool-table-cancel' => 'Anuluj',
-	'edittoolbar-tool-replace' => 'Zastąp',
+	'edittoolbar-tool-replace' => 'Wyszukaj i zastąp',
 	'edittoolbar-tool-replace-title' => 'Wyszukaj i zamień',
 	'edittoolbar-tool-replace-search' => 'Szukaj',
 	'edittoolbar-tool-replace-replace' => 'Zamień na',
@@ -7077,8 +8152,9 @@ $messages['pl'] = array(
 	'edittoolbar-tool-replace-regex' => 'Traktuj wyszukiwany ciąg jako wyrażenie regularne',
 	'edittoolbar-tool-replace-all' => 'Zastąp wszystkie',
 	'edittoolbar-tool-replace-button' => 'Zastąp',
-	'edittoolbar-tool-replace-close' => 'Zamknij',
+	'edittoolbar-tool-replace-close' => 'Anuluj',
 	'edittoolbar-tool-replace-nomatch' => 'Wyszukiwanego wzorca nie odnaleziono.',
+	'edittoolbar-tool-replace-success' => 'Wykonano $1 zamian.',
 	'edittoolbar-section-characters' => 'Znaki specjalne',
 	'edittoolbar-characters-page-latin' => 'Łacińskie',
 	'edittoolbar-characters-page-latinextended' => 'Łacińskie – rozszerzony',
@@ -7138,7 +8214,7 @@ $messages['pl'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Pozycja listy</li><li>Pozycja listy</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Plik osadzony',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Przykład.png|mały|Podpis pod plikiem]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Tekst podpisu</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Tekst podpisu</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Przypis',
 	'edittoolbar-help-content-reference-syntax' => 'Treść strony.&lt;ref name="test"&gt; [http://www.przyklad.org Opis linku], dodatkowy tekst. &lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Treść strony.<sup><a href='#'>[1]</a></sup>",
@@ -7200,6 +8276,10 @@ $messages['pt'] = array(
 	'edittoolbar-tool-bold-example' => 'Texto a negrito',
 	'edittoolbar-tool-italic' => 'Itálico',
 	'edittoolbar-tool-italic-example' => 'Texto em itálico',
+	'edittoolbar-tool-ilink' => 'Ligação interna',
+	'edittoolbar-tool-ilink-example' => 'Título da ligação',
+	'edittoolbar-tool-xlink' => 'Ligação externa (lembre-se do prefixo http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com ligação externa',
 	'edittoolbar-tool-link' => 'Ligação',
 	'edittoolbar-tool-link-title' => 'Insere uma ligação',
 	'edittoolbar-tool-link-int' => 'Para uma página wiki',
@@ -7215,6 +8295,7 @@ $messages['pt'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Título inválido',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Verificando existência da página...',
 	'edittoolbar-tool-link-int-invalid' => 'O título que você especificou é inválido.',
+	'edittoolbar-tool-link-ext-invalid' => 'A URL que especificou é inválida.',
 	'edittoolbar-tool-file' => 'Ficheiro embutido',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referência',
@@ -7258,7 +8339,7 @@ $messages['pt'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Inclui linha de cabeçalho',
 	'edittoolbar-tool-table-insert' => 'Inserir',
 	'edittoolbar-tool-table-cancel' => 'Cancelar',
-	'edittoolbar-tool-replace' => 'Substituir',
+	'edittoolbar-tool-replace' => 'Pesquisar e substituir',
 	'edittoolbar-tool-replace-title' => 'Localizar e substituir',
 	'edittoolbar-tool-replace-search' => 'Procurar por:',
 	'edittoolbar-tool-replace-replace' => 'Substituir por:',
@@ -7266,7 +8347,7 @@ $messages['pt'] = array(
 	'edittoolbar-tool-replace-regex' => 'Tratar string de busca como uma expressão regular',
 	'edittoolbar-tool-replace-all' => 'Substituir todas as ocorrências',
 	'edittoolbar-tool-replace-button' => 'Substituir',
-	'edittoolbar-tool-replace-close' => 'Fechar',
+	'edittoolbar-tool-replace-close' => 'Cancelar',
 	'edittoolbar-tool-replace-nomatch' => 'Sua busca não encontrou nenhum resultado.',
 	'edittoolbar-section-characters' => 'Carateres especiais',
 	'edittoolbar-characters-page-latin' => 'Latim',
@@ -7327,7 +8408,7 @@ $messages['pt'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Item de lista</li><li>Item de lista</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Ficheiro integrado',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Exemplo.png|thumb|Legenda]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Legenda' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Aumentar' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Legenda</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Legenda' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Aumentar' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Legenda</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referência',
 	'edittoolbar-help-content-reference-syntax' => 'Texto da página.&lt;ref name="teste"&gt;[http://www.exemplo.org Texto da ligação], texto adicional.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Texto da página.<sup><a href='#'>[1]</a></sup>",
@@ -7347,6 +8428,7 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Heldergeovane
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'edittoolbar' => 'Barra de ferramentas de edição',
@@ -7357,6 +8439,10 @@ $messages['pt-br'] = array(
 	'edittoolbar-tool-bold-example' => 'Texto em negrito',
 	'edittoolbar-tool-italic' => 'Itálico',
 	'edittoolbar-tool-italic-example' => 'Texto em itálico',
+	'edittoolbar-tool-ilink' => 'Ligação interna',
+	'edittoolbar-tool-ilink-example' => 'Título da ligação',
+	'edittoolbar-tool-xlink' => 'Ligação externa (lembre-se do prefixo http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com título da ligação',
 	'edittoolbar-tool-link' => 'Ligação',
 	'edittoolbar-tool-link-title' => 'Inserir ligação',
 	'edittoolbar-tool-link-int' => 'Para um artigo ou página wiki',
@@ -7372,6 +8458,7 @@ $messages['pt-br'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Título inválido',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Verificando existência da página...',
 	'edittoolbar-tool-link-int-invalid' => 'O título que você especificou é inválido.',
+	'edittoolbar-tool-link-ext-invalid' => 'A URL que você especificou é inválida.',
 	'edittoolbar-tool-file' => 'Arquivo embutido',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referência',
@@ -7405,6 +8492,12 @@ $messages['pt-br'] = array(
 	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Exemplo1.jpg|Legenda1',
 	'edittoolbar-tool-newline' => 'Nova linha',
 	'edittoolbar-tool-table' => 'Tabela',
+	'edittoolbar-tool-table-title' => 'Inserir tabela',
+	'edittoolbar-tool-table-dimensions' => 'Dimensões',
+	'edittoolbar-tool-table-dimensions-rows' => 'Linhas',
+	'edittoolbar-tool-table-dimensions-columns' => 'Colunas',
+	'edittoolbar-tool-table-insert' => 'Inserir',
+	'edittoolbar-tool-table-cancel' => 'Cancelar',
 	'edittoolbar-tool-replace' => 'Substituir',
 	'edittoolbar-tool-replace-title' => 'Localizar e substituir',
 	'edittoolbar-tool-replace-search' => 'Localizar:',
@@ -7474,7 +8567,7 @@ $messages['pt-br'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Item de lista</li><li>Item de lista</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Arquivo embutido',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Exemplo.png|thumb|Legenda]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Legenda' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Aumentar' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Legenda</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Legenda' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Aumentar' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Legenda</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referência',
 	'edittoolbar-help-content-reference-syntax' => 'Texto da página.&lt;ref name="teste"&gt;[http://www.exemplo.org Texto da ligação], texto adicional.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Texto da página.<sup><a href='#'>[1]</a></sup>",
@@ -7494,6 +8587,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Strainu
  */
 $messages['ro'] = array(
 	'edittoolbar-loading' => 'Încărcare...',
@@ -7501,6 +8595,8 @@ $messages['ro'] = array(
 	'edittoolbar-tool-bold-example' => 'Text aldin',
 	'edittoolbar-tool-italic' => 'Cursiv',
 	'edittoolbar-tool-italic-example' => 'Text cursiv',
+	'edittoolbar-tool-ilink' => 'Legătură internă',
+	'edittoolbar-tool-link-cancel' => 'Renunţă',
 	'edittoolbar-tool-file-example' => 'Exemplu.jpg',
 	'edittoolbar-tool-reference' => 'Referinţă',
 	'edittoolbar-section-advanced' => 'Avansat',
@@ -7527,6 +8623,8 @@ $messages['ro'] = array(
 	'edittoolbar-tool-gallery' => 'Galerie de imagini',
 	'edittoolbar-tool-newline' => 'Linie nouă',
 	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-dimensions' => 'Dimensiuni',
+	'edittoolbar-tool-table-dimensions-rows' => 'Linii',
 	'edittoolbar-section-characters' => 'Caractere speciale',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Latin extins',
@@ -7596,6 +8694,7 @@ $messages['roa-tara'] = array(
 	'edittoolbar-tool-bold-example' => 'Teste grascette',
 	'edittoolbar-tool-italic' => 'Corsive',
 	'edittoolbar-tool-italic-example' => 'Teste corsive',
+	'edittoolbar-tool-ilink-example' => "Titele d'u collegamende",
 	'edittoolbar-tool-link' => 'Collegamende',
 	'edittoolbar-tool-link-title' => "'Nzerisce 'nu collegamende",
 	'edittoolbar-tool-link-int' => "A 'na vôsce/pàgene de Uicchi",
@@ -7606,6 +8705,7 @@ $messages['roa-tara'] = array(
 	'edittoolbar-tool-link-ext-text' => "Teste d'u collegamende:",
 	'edittoolbar-tool-link-insert' => "'Nzerisce 'nu collegamende",
 	'edittoolbar-tool-link-cancel' => 'Scangille',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Titele invalide',
 	'edittoolbar-tool-file' => 'Fiel ingapsulate',
 	'edittoolbar-tool-file-example' => 'Esembie.jpg',
 	'edittoolbar-tool-reference' => 'Riferimende',
@@ -7617,6 +8717,7 @@ $messages['roa-tara'] = array(
 	'edittoolbar-tool-heading-3' => 'Levèlle 3',
 	'edittoolbar-tool-heading-4' => 'Levèlle 4',
 	'edittoolbar-tool-heading-5' => 'Levèlle 5',
+	'edittoolbar-group-list' => 'Liste',
 	'edittoolbar-group-size' => 'Dimenzione',
 	'edittoolbar-tool-big' => 'Granne',
 	'edittoolbar-tool-small' => 'Piccinne',
@@ -7624,12 +8725,14 @@ $messages['roa-tara'] = array(
 	'edittoolbar-tool-gallery' => 'Gallerìe fotografeche',
 	'edittoolbar-tool-newline' => 'Linèa nove',
 	'edittoolbar-tool-table' => 'Tabbelle',
-	'edittoolbar-tool-replace' => 'Sostituisce',
+	'edittoolbar-tool-table-example' => 'Riga $1, celle $2',
+	'edittoolbar-tool-table-example-header' => 'Riga $1, celle $2 (testate)',
+	'edittoolbar-tool-replace' => 'Cirche e sostituisce',
 	'edittoolbar-tool-replace-title' => 'Cirche e sostituisce',
 	'edittoolbar-tool-replace-search' => 'Cirche pe:',
 	'edittoolbar-tool-replace-replace' => 'Sostituisce cu:',
 	'edittoolbar-tool-replace-button' => 'Sostituisce',
-	'edittoolbar-tool-replace-close' => 'Achiude',
+	'edittoolbar-tool-replace-close' => 'Annulle',
 	'edittoolbar-characters-page-latin' => 'Latine',
 	'edittoolbar-characters-page-latinextended' => 'Latine estese',
 	'edittoolbar-characters-page-ipa' => 'IPA',
@@ -7652,6 +8755,7 @@ $messages['roa-tara'] = array(
 	'edittoolbar-help-content-bold-description' => 'Grascette',
 	'edittoolbar-help-content-bold-syntax' => "'''Teste Grascette'''",
 	'edittoolbar-help-content-bold-result' => '<strong>Teste Grascette</strong>',
+	'edittoolbar-help-content-signature-description' => 'Firme',
 );
 
 /** Russian (Русский)
@@ -7664,11 +8768,16 @@ $messages['ru'] = array(
 	'edittoolbar' => 'Панель редактирования',
 	'edittoolbar-desc' => 'Панель редактирования с улучшенным юзабилити',
 	'edittoolbar-preference' => 'Включить улучшенную панель редактирования',
+	'edittoolbar-cgd-preference' => 'Включите справку по добавлению более сложного вики-текста',
 	'edittoolbar-loading' => 'Загрузка…',
 	'edittoolbar-tool-bold' => 'Полужирный',
 	'edittoolbar-tool-bold-example' => 'Полужирное начертание',
 	'edittoolbar-tool-italic' => 'Курсив',
 	'edittoolbar-tool-italic-example' => 'Курсивное начертание',
+	'edittoolbar-tool-ilink' => 'Внутренняя ссылка',
+	'edittoolbar-tool-ilink-example' => 'Заголовок ссылки',
+	'edittoolbar-tool-xlink' => 'Внешняя ссылка (не забудьте о префиксе http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com заголовок ссылки',
 	'edittoolbar-tool-link' => 'Ссылка',
 	'edittoolbar-tool-link-title' => 'Вставить ссылку',
 	'edittoolbar-tool-link-int' => 'На вики-страницу',
@@ -7684,6 +8793,7 @@ $messages['ru'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Недопустимое название',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Проверка существования страницы…',
 	'edittoolbar-tool-link-int-invalid' => 'Указанное название недопустимо.',
+	'edittoolbar-tool-link-ext-invalid' => 'Указан ошибочный URL.',
 	'edittoolbar-tool-file' => 'Встроенный файл',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Примечание',
@@ -7718,6 +8828,18 @@ $messages['ru'] = array(
 {{ns:file}}:Example.jpg|Описание2',
 	'edittoolbar-tool-newline' => 'Новая строка',
 	'edittoolbar-tool-table' => 'Таблица',
+	'edittoolbar-tool-table-example-old' => '-
+! заголовок 1
+! заголовок 2
+! заголовок 3
+|-
+| строка 1, ячейка 1
+| строка 1, ячейка 2
+| строка 1, ячейка 3
+|-
+| строка 2, ячейка 1
+| строка 2, ячейка 2
+| строка 2, ячейка 3',
 	'edittoolbar-tool-table-example' => 'Строка $1, ячейка $2',
 	'edittoolbar-tool-table-example-header' => 'Строка $1, ячейка $2 (заголовок)',
 	'edittoolbar-tool-table-title' => 'Вставить таблицу',
@@ -7727,7 +8849,7 @@ $messages['ru'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Добавить заголовочную строку',
 	'edittoolbar-tool-table-insert' => 'Вставить',
 	'edittoolbar-tool-table-cancel' => 'Отмена',
-	'edittoolbar-tool-replace' => 'Заменить',
+	'edittoolbar-tool-replace' => 'Поиск и замена',
 	'edittoolbar-tool-replace-title' => 'Поиск и замена',
 	'edittoolbar-tool-replace-search' => 'Поиск:',
 	'edittoolbar-tool-replace-replace' => 'Заменить на:',
@@ -7735,8 +8857,9 @@ $messages['ru'] = array(
 	'edittoolbar-tool-replace-regex' => 'Считать строку поиска регулярным выражением',
 	'edittoolbar-tool-replace-all' => 'Заменить все вхождения',
 	'edittoolbar-tool-replace-button' => 'Заменить',
-	'edittoolbar-tool-replace-close' => 'Закрыть',
+	'edittoolbar-tool-replace-close' => 'Отмена',
 	'edittoolbar-tool-replace-nomatch' => 'По вашему запросу ничего не найдено.',
+	'edittoolbar-tool-replace-success' => 'Произведено замен: $1.',
 	'edittoolbar-section-characters' => 'Специальные символы',
 	'edittoolbar-characters-page-latin' => 'Латинские',
 	'edittoolbar-characters-page-latinextended' => 'Латинские расширенные',
@@ -7797,7 +8920,7 @@ $messages['ru'] = array(
 	'edittoolbar-help-content-file-description' => 'Встроенный файл',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Пояснительный текст]]',
 	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='
-Сопроводительная надпись' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>
+Сопроводительная надпись' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>
 Сопроводительная надпись</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Примечание',
 	'edittoolbar-help-content-reference-syntax' => 'Текст страницы&lt;ref name="test"&gt;[http://www.example.org Текст ссылки], дополнительный текст.&lt;/ref&gt;.',
@@ -7822,11 +8945,16 @@ $messages['sah'] = array(
 	'edittoolbar' => 'Көннөрүү хаптаһына (панель)',
 	'edittoolbar-desc' => 'Тупсарыллыбыт уларытыы хаптаһына',
 	'edittoolbar-preference' => 'Тупсарыллыбыт уларытыы хаптаһынын холбуурга',
+	'edittoolbar-cgd-preference' => 'Арыый уустук биики тиэкиһи туһанар туһунан көмө-суруктары көстөр гыныы',
 	'edittoolbar-loading' => 'Киллэрии...',
 	'edittoolbar-tool-bold' => 'Модьу',
 	'edittoolbar-tool-bold-example' => 'Модьу бичик',
 	'edittoolbar-tool-italic' => 'Иҥнэри',
 	'edittoolbar-tool-italic-example' => 'Иҥнэри бичик',
+	'edittoolbar-tool-ilink' => 'Ис сигэ',
+	'edittoolbar-tool-ilink-example' => 'Сигэ баһа',
+	'edittoolbar-tool-xlink' => 'Тас сигэ (http:// диэни умнума)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com сигэ быһаарыыта',
 	'edittoolbar-tool-link' => 'Сигэ',
 	'edittoolbar-tool-link-title' => 'Сигэни туруоруу',
 	'edittoolbar-tool-link-int' => 'Биики сирэйгэ',
@@ -7842,6 +8970,7 @@ $messages['sah'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Сатаммат бас',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Сирэй баарын тургутуу...',
 	'edittoolbar-tool-link-int-invalid' => 'Суруллубут аат туттуллара сатаммат.',
+	'edittoolbar-tool-link-ext-invalid' => 'Алҕастаах URL ыйыллыбыт.',
 	'edittoolbar-tool-file' => 'Иһинээҕи билэ',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Быһаарыы',
@@ -7876,6 +9005,18 @@ $messages['sah'] = array(
 {{ns:file}}:Example.jpg|Сурук2',
 	'edittoolbar-tool-newline' => 'Кыһыл устуруока',
 	'edittoolbar-tool-table' => 'Таабыл',
+	'edittoolbar-tool-table-example-old' => '-
+! баһа 1
+! баһа 2
+! баһа 3
+|-
+| строка 1, ячейка 1
+| строка 1, ячейка 2
+| строка 1, ячейка 3
+|-
+| строка 2, ячейка 1
+| строка 2, ячейка 2
+| строка 2, ячейка 3',
 	'edittoolbar-tool-table-example' => 'Устуруока $1, ячейка $2',
 	'edittoolbar-tool-table-example-header' => 'Устуруока $1, ячейка $2 (баһа)',
 	'edittoolbar-tool-table-title' => 'Табылыыссаны угуу',
@@ -7885,14 +9026,17 @@ $messages['sah'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Бас устуруоканы эбии',
 	'edittoolbar-tool-table-insert' => 'Киллэрэргэ',
 	'edittoolbar-tool-table-cancel' => 'Бигэргэтимэ',
-	'edittoolbar-tool-replace' => 'Уларыт',
+	'edittoolbar-tool-replace' => 'Көрдөөһүн уонна уларытыы',
 	'edittoolbar-tool-replace-title' => 'Бул уонна уларыт',
 	'edittoolbar-tool-replace-search' => 'Көрдөөһүн:',
 	'edittoolbar-tool-replace-replace' => 'Манан уларыт:',
 	'edittoolbar-tool-replace-case' => 'Регистрын учуоттуурга',
+	'edittoolbar-tool-replace-regex' => 'Көрдөөһүн устуруокатын регулярнай выражение курдук көрөргө',
+	'edittoolbar-tool-replace-all' => 'Барытын уларыт',
 	'edittoolbar-tool-replace-button' => 'Уларыт',
-	'edittoolbar-tool-replace-close' => 'Сап',
+	'edittoolbar-tool-replace-close' => 'Таҕыс',
 	'edittoolbar-tool-replace-nomatch' => 'Эн көрдөбүлгүнэн туох да көстүбэтэ.',
+	'edittoolbar-tool-replace-success' => 'Бачча уларытыы оҥоһулунна: $1.',
 	'edittoolbar-section-characters' => 'Анал бэлиэлэр',
 	'edittoolbar-characters-page-latin' => 'Латыынныы',
 	'edittoolbar-characters-page-latinextended' => 'Латыынныы кэтирэтиллибиттэр',
@@ -7953,7 +9097,7 @@ $messages['sah'] = array(
 	'edittoolbar-help-content-file-description' => 'Иһинээҕи билэ',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Быһаарыыта]]',
 	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='
-Быһаарыы сурук' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>
+Быһаарыы сурук' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>
 Быһаарыы сурук</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Быһаарыы',
 	'edittoolbar-help-content-reference-syntax' => 'Сирэй тиэкиһэ.&lt;ref name="test"&gt;[http://www.example.org Сигэ быһаарыыта], эбии быһаарыы.&lt;/ref&gt;',
@@ -8003,6 +9147,70 @@ $messages['sco'] = array(
 	'edittoolbar-characters-page-ipa' => 'IPA',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'edittoolbar' => 'සංස්කරණ මෙවලම් තීරුව',
+	'edittoolbar-tool-ilink' => 'අභ්‍යන්තර සබැඳුම',
+	'edittoolbar-tool-ilink-example' => 'සබැඳුම් මාතෘකාව',
+	'edittoolbar-tool-link' => 'සබැඳුම',
+	'edittoolbar-tool-link-title' => 'සබැඳුමක් ඇතුල් කිරීම',
+	'edittoolbar-tool-link-int' => 'විකි පිටුවක් වෙත',
+	'edittoolbar-tool-link-int-target' => 'පිටු මාතෘකාව:',
+	'edittoolbar-tool-link-int-text' => 'සබැඳුම් පෙළ:',
+	'edittoolbar-tool-link-ext' => 'බාහිර වෙබ් පිටුවක් වෙත',
+	'edittoolbar-tool-link-ext-target' => ' URL සබැඳුම:',
+	'edittoolbar-tool-link-insert' => 'සබැඳුමක් ඇතුල් කරන්න',
+	'edittoolbar-tool-link-int-target-status-exists' => 'පිටුව පවතී',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'වලංගු මාතෘකාවක් නොවේ.',
+	'edittoolbar-tool-link-int-target-status-loading' => 'පිටුවේ පැවැත්ම පරීක්ෂා කරමින් පවතී...',
+	'edittoolbar-tool-link-int-invalid' => 'ඔබ සඳහන් කළ මාතෘකාව වලංගු නොවේ.',
+	'edittoolbar-tool-reference' => 'යොමුව',
+	'edittoolbar-section-advanced' => 'දියුණු කළ',
+	'edittoolbar-tool-heading' => 'ශීර්ෂය',
+	'edittoolbar-tool-heading-1' => '1 මට්ටම',
+	'edittoolbar-tool-heading-2' => '2 මට්ටම',
+	'edittoolbar-tool-heading-3' => '3 මට්ටම',
+	'edittoolbar-tool-heading-4' => '4 මට්ටම',
+	'edittoolbar-tool-heading-5' => '5 මට්ටම',
+	'edittoolbar-tool-heading-example' => 'ශීර්ෂ පෙළ',
+	'edittoolbar-group-list' => 'ලැයිස්තුව',
+	'edittoolbar-tool-ulist' => 'රටා සහිත ලැයිස්තුව',
+	'edittoolbar-tool-ulist-example' => 'රටා සහිත ලයිස්තු අයිතමය',
+	'edittoolbar-tool-olist' => 'අංකිත ලැයිස්තුව',
+	'edittoolbar-group-size' => 'විශාලත්වය',
+	'edittoolbar-tool-big' => 'විශාල',
+	'edittoolbar-tool-big-example' => 'විශාල පෙළ',
+	'edittoolbar-tool-small' => 'කුඩා',
+	'edittoolbar-tool-small-example' => 'කුඩා පෙළ',
+	'edittoolbar-group-baseline' => 'පාද රේඛාව',
+	'edittoolbar-tool-superscript' => 'උඩු ලකුණු',
+	'edittoolbar-tool-superscript-example' => 'උඩු ලකණු පෙළ',
+	'edittoolbar-tool-subscript' => 'යටි ලකුණු',
+	'edittoolbar-tool-subscript-example' => 'යටි ලකුණු පෙළ',
+	'edittoolbar-tool-gallery' => 'පිංතූර ගැලරිය',
+	'edittoolbar-tool-newline' => 'නව පේළිය',
+	'edittoolbar-tool-table' => 'වගුව',
+	'edittoolbar-tool-table-title' => 'වගුවක් ඇතුල් කිරීම',
+	'edittoolbar-tool-table-dimensions' => 'මාන',
+	'edittoolbar-tool-table-dimensions-rows' => 'පේළි',
+	'edittoolbar-tool-table-dimensions-columns' => 'තීරු',
+	'edittoolbar-tool-table-dimensions-header' => 'ශීර්ෂ පේළියක් ඇතුල් කරන්න',
+	'edittoolbar-tool-table-insert' => 'ඇතුල් කරන්න',
+	'edittoolbar-tool-table-cancel' => 'අවලංගු කරන්න',
+	'edittoolbar-tool-replace-title' => 'සෙවීම හා ප්‍රතිස්ථාපනය',
+	'edittoolbar-tool-replace-search' => 'සොයන්නේ',
+	'edittoolbar-tool-replace-replace' => 'ප්‍රතිස්ථාපනය කරනු ලබන්නේ',
+	'edittoolbar-tool-replace-case' => 'අවස්ථාව ගළපන්න',
+	'edittoolbar-tool-replace-regex' => 'සොයන පදය නියත ප්‍රකාශනයක් ලෙස සලකන්න',
+	'edittoolbar-tool-replace-all' => 'සියලුම අවස්ථාවන් ප්‍රතිස්ථාපනය කරන්න.',
+	'edittoolbar-tool-replace-button' => 'ප්‍රතිස්ථාපනය කරන්න',
+	'edittoolbar-tool-replace-nomatch' => 'ඔබේ සෙවීම කිසිදු පදයක් හා නොගැළපේ',
+	'edittoolbar-tool-replace-success' => 'ඒක් ප්‍රතිස්ථාපනයක් සිදු කරන ලදී.',
+	'edittoolbar-section-characters' => 'විශේෂ අනු ලකුණු',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Rudko
@@ -8011,11 +9219,16 @@ $messages['sk'] = array(
 	'edittoolbar' => 'Panel nástrojov na úpravy',
 	'edittoolbar-desc' => 'Panel nástrojov na úpravy stránky s rozšírenou použiteľnosťou',
 	'edittoolbar-preference' => 'Zapnúť rozšírený panel nástrojov na úpravy',
+	'edittoolbar-cgd-preference' => 'Povoliť pomocníka k pridávaniu rozšíreného wiki textu',
 	'edittoolbar-loading' => 'Načítava sa...',
 	'edittoolbar-tool-bold' => 'Hrubý',
 	'edittoolbar-tool-bold-example' => 'Hrubý text',
 	'edittoolbar-tool-italic' => 'Kurzíva',
 	'edittoolbar-tool-italic-example' => 'Text kurzívou',
+	'edittoolbar-tool-ilink' => 'Interný odkaz',
+	'edittoolbar-tool-ilink-example' => 'Názov odkazu',
+	'edittoolbar-tool-xlink' => 'Externý odkaz (pamätajte na predponu http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com názov odkazu',
 	'edittoolbar-tool-link' => 'Odkaz',
 	'edittoolbar-tool-link-title' => 'Vložiť odkaz',
 	'edittoolbar-tool-link-int' => 'Na wiki stránku',
@@ -8031,6 +9244,7 @@ $messages['sk'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Neplatný názov',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kontroluje sa existencia stránky...',
 	'edittoolbar-tool-link-int-invalid' => 'Názov, ktorý ste zadali nie je platný.',
+	'edittoolbar-tool-link-ext-invalid' => 'URL, ktorý ste uviedli nie je platný.',
 	'edittoolbar-tool-file' => 'Vložený súbor',
 	'edittoolbar-tool-file-example' => 'Príklad.jpg',
 	'edittoolbar-tool-reference' => 'Referencia',
@@ -8065,6 +9279,18 @@ $messages['sk'] = array(
 {{ns:file}}:Príklad.jpg|Popis2',
 	'edittoolbar-tool-newline' => 'Nový riadok',
 	'edittoolbar-tool-table' => 'Tabuľka',
+	'edittoolbar-tool-table-example-old' => '-
+! hlavička 1
+! hlavička 2
+! hlavička 3
+|-
+| riadok 1, bunka 1
+| riadok 1, bunka 2
+| riadok 1, bunka 3
+|-
+| riadok 2, bunka 1
+| riadok 2, bunka 2
+| riadok 2, bunka 3',
 	'edittoolbar-tool-table-example' => 'Riadok $1, bunka $2',
 	'edittoolbar-tool-table-example-header' => 'Riadok $1, bunka $2 (hlavička)',
 	'edittoolbar-tool-table-title' => 'Vložiť tabuľku',
@@ -8074,7 +9300,7 @@ $messages['sk'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Vrátane hlavičkového riadka',
 	'edittoolbar-tool-table-insert' => 'Vložiť',
 	'edittoolbar-tool-table-cancel' => 'Zrušiť',
-	'edittoolbar-tool-replace' => 'Nahradiť',
+	'edittoolbar-tool-replace' => 'Hľadať a nahradiť',
 	'edittoolbar-tool-replace-title' => 'Hľadať a nahradiť',
 	'edittoolbar-tool-replace-search' => 'Hľadať:',
 	'edittoolbar-tool-replace-replace' => 'Nahradiť čím:',
@@ -8082,8 +9308,9 @@ $messages['sk'] = array(
 	'edittoolbar-tool-replace-regex' => 'Vyhľadávací reťazec je regulárny výraz',
 	'edittoolbar-tool-replace-all' => 'Nahradiť všetky výskyty',
 	'edittoolbar-tool-replace-button' => 'Nahradiť',
-	'edittoolbar-tool-replace-close' => 'Zatvoriť',
+	'edittoolbar-tool-replace-close' => 'Zrušiť',
 	'edittoolbar-tool-replace-nomatch' => 'Vyhľadávanie nenašlo vyhovujúce položky.',
+	'edittoolbar-tool-replace-success' => 'Nahradilo sa $1 výskytov.',
 	'edittoolbar-section-characters' => 'Špeciálne znaky',
 	'edittoolbar-characters-page-latin' => 'Latinka',
 	'edittoolbar-characters-page-latinextended' => 'Latina rozšírené',
@@ -8143,7 +9370,7 @@ $messages['sk'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Položka zoznamu</li><li>Položka zoznamu</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Vložený súbor',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Príklad.png|náhľad|Text nadpisu]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Text nadpisu' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Zväčšiť' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Text nadpisu</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Text nadpisu' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Zväčšiť' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Text nadpisu</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referencie',
 	'edittoolbar-help-content-reference-syntax' => 'Text stránky.&lt;ref name="test"&gt;[http://www.example.org Text odkazu], ďalší text.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Text stránky.<sup><a href='#'>[1]</a></sup>",
@@ -8172,6 +9399,10 @@ $messages['sl'] = array(
 	'edittoolbar-tool-bold-example' => 'Krepko besedilo',
 	'edittoolbar-tool-italic' => 'Ležeče',
 	'edittoolbar-tool-italic-example' => 'Ležeče besedilo',
+	'edittoolbar-tool-ilink' => 'Notranja povezava',
+	'edittoolbar-tool-ilink-example' => 'Naslov povezave',
+	'edittoolbar-tool-xlink' => 'Zunanja povezava (ne pozabite na predpono http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com naslov povezave',
 	'edittoolbar-tool-link' => 'Povezava',
 	'edittoolbar-tool-link-title' => 'Vstavi povezavo',
 	'edittoolbar-tool-link-int' => 'Na wiki stran',
@@ -8227,8 +9458,6 @@ $messages['sl'] = array(
 	'edittoolbar-tool-table-dimensions' => 'Dimenzije',
 	'edittoolbar-tool-table-dimensions-rows' => 'Vrstice',
 	'edittoolbar-tool-table-dimensions-columns' => 'Stolpci',
-	'edittoolbar-tool-table-dimensions-headerrows' => 'Naslovna vrstica',
-	'edittoolbar-tool-table-dimensions-headercolumns' => 'Naslovni stolpec',
 	'edittoolbar-tool-table-insert' => 'Vstavi',
 	'edittoolbar-tool-table-cancel' => 'Prekliči',
 	'edittoolbar-tool-replace' => 'Zamenjaj',
@@ -8300,7 +9529,7 @@ $messages['sl'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li> Vnos a </li><li> Vnos b </li></ol>',
 	'edittoolbar-help-content-file-description' => 'Vgradnja slike',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Primer.jpg|thumb|Napis pod sliko]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'> <a title=\"Napis pod sliko\" class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a> <div class='thumbcaption'><div class='magnify'> <a title=\"Povečaj\" class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a> </div> Napis pod sliko </div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'> <a title=\"Napis pod sliko\" class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a> <div class='thumbcaption'><div class='magnify'> <a title=\"Povečaj\" class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a> </div> Napis pod sliko </div></div>",
 	'edittoolbar-help-content-reference-description' => 'Sprotna opomba',
 	'edittoolbar-help-content-reference-syntax' => 'Besedilo strani. &lt;ref name=&quot;test&quot;&gt; [http://www.example.org Oznaka povezave], dodatno besedilo. &lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Besedilo strani. <a href='#'><sup>[1]</sup></a>",
@@ -8318,6 +9547,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -8326,6 +9556,23 @@ $messages['sr-ec'] = array(
 	'edittoolbar-tool-bold-example' => 'Подебљан текст',
 	'edittoolbar-tool-italic' => 'Корзив',
 	'edittoolbar-tool-italic-example' => 'Курзиван текст',
+	'edittoolbar-tool-ilink' => 'Унутрашња веза',
+	'edittoolbar-tool-ilink-example' => 'Наслов везе',
+	'edittoolbar-tool-xlink' => 'Спољашња веза (не заборавите http:// префикс)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com наслов везе',
+	'edittoolbar-tool-link' => 'Веза',
+	'edittoolbar-tool-link-title' => 'Убаци везу',
+	'edittoolbar-tool-link-int-target' => 'Наслов стране:',
+	'edittoolbar-tool-link-int-text' => 'Текст везе:',
+	'edittoolbar-tool-link-ext-target' => 'Путања везе (УРЛ):',
+	'edittoolbar-tool-link-ext-text' => 'Текст везе:',
+	'edittoolbar-tool-link-cancel' => 'Прекини',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Страница постоји',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'Страница не постоји',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Погрешан наслов',
+	'edittoolbar-tool-link-int-target-status-loading' => 'Провера постојања странице...',
+	'edittoolbar-tool-link-int-invalid' => 'Наслов који сте изабрали није валидан',
+	'edittoolbar-tool-link-ext-invalid' => 'Веза коју сте изабрали није валидна',
 	'edittoolbar-tool-file-example' => 'Primer.jpg',
 	'edittoolbar-tool-reference' => 'Референца',
 	'edittoolbar-tool-reference-example' => 'Унесите текст фусноте овде',
@@ -8339,6 +9586,47 @@ $messages['sr-ec'] = array(
 	'edittoolbar-tool-heading-example' => 'Текст одељка',
 	'edittoolbar-group-list' => 'Списак',
 	'edittoolbar-group-size' => 'Величина',
+	'edittoolbar-tool-big' => 'Велик',
+	'edittoolbar-tool-big-example' => 'Велик текст',
+	'edittoolbar-tool-small' => 'Мали',
+	'edittoolbar-tool-small-example' => 'Мали текст',
+	'edittoolbar-group-insert' => 'Убаци',
+	'edittoolbar-tool-gallery' => 'Галерија слика',
+	'edittoolbar-tool-newline' => 'Нова линија',
+	'edittoolbar-tool-table' => 'Табела',
+	'edittoolbar-tool-table-example-old' => '-
+! наслов 1
+! наслов 2
+! наслов 3
+|-
+| ред 1, ћелија 1
+| ред 1, ћелија 2
+| ред 1, ћелија 3
+|-
+| ред 2, ћелија 1
+| ред 2, ћелија 2
+| ред 2, ћелија 3',
+	'edittoolbar-tool-table-example' => 'Ред $1, ћелија $2',
+	'edittoolbar-tool-table-example-header' => 'Ред $1, ћелија $2 (наслов)',
+	'edittoolbar-tool-table-title' => 'Убаци табелу',
+	'edittoolbar-tool-replace-button' => 'Замени',
+	'edittoolbar-tool-replace-close' => 'одустани',
+	'edittoolbar-characters-page-latin' => 'латиница',
+	'edittoolbar-characters-page-latinextended' => 'проширена латиница',
+	'edittoolbar-characters-page-ipa' => 'ИПА',
+	'edittoolbar-characters-page-symbols' => 'Симболи',
+	'edittoolbar-characters-page-greek' => 'грчки',
+	'edittoolbar-characters-page-cyrillic' => 'ћирилица',
+	'edittoolbar-characters-page-arabic' => 'арапски',
+	'edittoolbar-characters-page-telugu' => 'телугу',
+	'edittoolbar-section-help' => 'Помоћ',
+	'edittoolbar-help-heading-description' => 'Опис',
+	'edittoolbar-help-heading-syntax' => 'Шта куцате',
+	'edittoolbar-help-heading-result' => 'Шта добијете',
+	'edittoolbar-help-page-format' => 'Форматирање',
+	'edittoolbar-help-page-link' => 'Везе',
+	'edittoolbar-help-page-heading' => 'Наслови',
+	'edittoolbar-help-page-list' => 'Спискови',
 	'edittoolbar-help-content-heading1-description' => 'одељак првог нивоа',
 	'edittoolbar-help-content-heading1-syntax' => '= Наслов одељка =',
 	'edittoolbar-help-content-heading1-result' => '<h1>Наслов одељка</h1>',
@@ -8365,6 +9653,10 @@ $messages['sr-el'] = array(
 	'edittoolbar-tool-bold-example' => 'Podebljan tekst',
 	'edittoolbar-tool-italic' => 'Korziv',
 	'edittoolbar-tool-italic-example' => 'Kurzivan tekst',
+	'edittoolbar-tool-ilink' => 'Unutrašnja veza',
+	'edittoolbar-tool-ilink-example' => 'Naslov veze',
+	'edittoolbar-tool-xlink' => 'Spoljašnja veza (ne zaboravite <a href="http://">http://</a> prefiks)',
+	'edittoolbar-tool-xlink-example' => '<a href="http://www.example.com">http://www.example.com</a> naslov veze',
 	'edittoolbar-tool-file-example' => 'Primer.jpg',
 	'edittoolbar-tool-reference' => 'Referenca',
 	'edittoolbar-tool-reference-example' => 'Unesite tekst fusnote ovde',
@@ -8419,6 +9711,10 @@ $messages['sv'] = array(
 	'edittoolbar-tool-bold-example' => 'Fet text',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Kursiv text',
+	'edittoolbar-tool-ilink' => 'Intern länk',
+	'edittoolbar-tool-ilink-example' => 'Länktitel',
+	'edittoolbar-tool-xlink' => 'Extern länk (kom ihåg http:// -prefixet)',
+	'edittoolbar-tool-xlink-example' => 'http://www.exempel.com länktitel',
 	'edittoolbar-tool-link' => 'Länk',
 	'edittoolbar-tool-link-title' => 'Lägg till länk',
 	'edittoolbar-tool-link-int' => 'Till en wikisida',
@@ -8540,7 +9836,7 @@ $messages['sv'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Listelement</li><li>Listelement</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Inbäddad fil',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|miniatyr|Bildtext]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bildtext' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Förstora' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Bildtext</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bildtext' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Förstora' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Bildtext</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referens',
 	'edittoolbar-help-content-reference-syntax' => 'Brödtext.&lt;ref name="test"&gt;[http://www.example.org Länktext], ytterligare text.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Brödtext.<sup><a href='#'>[1]</a></sup>",
@@ -8561,7 +9857,60 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'edittoolbar-loading' => 'Inapakizwa...',
+	'edittoolbar-tool-bold' => 'Koze',
+	'edittoolbar-tool-bold-example' => 'Maandishi ya kooze',
+	'edittoolbar-tool-italic' => 'Italiki',
+	'edittoolbar-tool-italic-example' => 'Maandishi ya italiki',
+	'edittoolbar-tool-ilink' => 'Kiungo cha ndani',
+	'edittoolbar-tool-ilink-example' => 'Jina la kiungo',
+	'edittoolbar-tool-xlink' => 'Kiungo cha nje (kumbuka kuanza na http:// )',
+	'edittoolbar-tool-link' => 'Kiungo',
+	'edittoolbar-tool-link-title' => 'Kuweka kiungo',
+	'edittoolbar-tool-link-int' => 'Kwa ukurasa mwingine wa wiki',
+	'edittoolbar-tool-link-int-target' => 'Jina la ukurasa:',
+	'edittoolbar-tool-link-int-text' => 'Maandishi ya kiungo:',
+	'edittoolbar-tool-link-ext-target' => 'KISARA ya kiungo:',
+	'edittoolbar-tool-link-ext-text' => 'Maandishi ya kiungo:',
+	'edittoolbar-tool-link-insert' => 'Weka kiungo',
+	'edittoolbar-tool-link-cancel' => 'Batilisha',
+	'edittoolbar-tool-link-int-target-status-exists' => 'Ukurasa unapatikana',
+	'edittoolbar-tool-link-int-target-status-notexists' => 'Ukurasa haupatikani',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Jina batili',
+	'edittoolbar-tool-signature' => 'Sahihi na stempu ya saa',
+	'edittoolbar-section-advanced' => 'Hali ya juu',
+	'edittoolbar-tool-heading' => 'Kichwa',
+	'edittoolbar-tool-heading-example' => 'Maandishi ya kichwa',
+	'edittoolbar-group-list' => 'Orodha',
+	'edittoolbar-group-size' => 'Ukubwa',
+	'edittoolbar-tool-big' => 'Kubwa',
+	'edittoolbar-tool-big-example' => 'Maandishi makubwa',
+	'edittoolbar-tool-small' => 'Ndogo',
+	'edittoolbar-tool-small-example' => 'Maandishi madogo',
+	'edittoolbar-group-insert' => 'Kuweka',
+	'edittoolbar-tool-table' => 'Jedwali',
+	'edittoolbar-tool-table-title' => 'Weka jedwali',
+	'edittoolbar-tool-table-dimensions-rows' => 'Mistari',
+	'edittoolbar-tool-table-dimensions-columns' => 'Safu',
+	'edittoolbar-tool-table-insert' => 'Weka',
+	'edittoolbar-tool-table-cancel' => 'Batilisha',
+	'edittoolbar-tool-replace-search' => 'Tafuta:',
+	'edittoolbar-tool-replace-close' => 'Batilisha',
+	'edittoolbar-section-characters' => 'Herufi maalum',
+	'edittoolbar-section-help' => 'Msaada',
+	'edittoolbar-help-heading-description' => 'Elezo',
+	'edittoolbar-help-page-link' => 'Viungo',
+	'edittoolbar-help-page-list' => 'Orodha',
 	'edittoolbar-help-page-file' => 'Mafaili',
+	'edittoolbar-help-page-discussion' => 'Majadiliano',
+	'edittoolbar-help-content-italic-description' => 'Italiki',
+	'edittoolbar-help-content-italic-syntax' => "''Maandishi ya italiki''",
+	'edittoolbar-help-content-italic-result' => '<em>Maandishi ya italiki</em>',
+	'edittoolbar-help-content-bold-description' => 'Koze',
+	'edittoolbar-help-content-bold-syntax' => "'''Maandishi ya kooze'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Maandishi ya kooze</strong>',
+	'edittoolbar-help-content-ilink-description' => 'Kiungo cha ndani ya wiki',
+	'edittoolbar-help-content-signature-description' => 'Sahihi',
 );
 
 /** Telugu (తెలుగు)
@@ -8576,6 +9925,10 @@ $messages['te'] = array(
 	'edittoolbar-tool-bold-example' => 'బొద్దు పాఠ్యం',
 	'edittoolbar-tool-italic' => 'వాలు',
 	'edittoolbar-tool-italic-example' => 'వాలు పాఠ్యం',
+	'edittoolbar-tool-ilink' => 'అంతర్గత లింకు',
+	'edittoolbar-tool-ilink-example' => 'లంకె లంకెపేరు',
+	'edittoolbar-tool-xlink' => 'బయటి లింకు (http:// ఉపసర్గని మరిచిపోకండి)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com లంకె లంకెపేరు',
 	'edittoolbar-tool-link' => 'లంకె',
 	'edittoolbar-tool-link-title' => 'లంకె కలుపు',
 	'edittoolbar-tool-link-int' => 'ఒక వికీ పేజీకి',
@@ -8588,11 +9941,14 @@ $messages['te'] = array(
 	'edittoolbar-tool-link-int-target-status-notexists' => 'పేజీ ఉనికిలో లేదు',
 	'edittoolbar-tool-reference' => 'సాక్ష్యాలు',
 	'edittoolbar-tool-signature' => 'టైంస్టాంపుతో సహా మీ సంతకం',
+	'edittoolbar-section-advanced' => 'ఉన్నత',
+	'edittoolbar-tool-heading' => 'శీర్షిక',
 	'edittoolbar-tool-heading-1' => '1వ స్థాయి',
 	'edittoolbar-tool-heading-2' => '2వ స్థాయి',
 	'edittoolbar-tool-heading-3' => '3వ స్థాయి',
 	'edittoolbar-tool-heading-4' => '4వ స్థాయి',
 	'edittoolbar-tool-heading-5' => '5వ స్థాయి',
+	'edittoolbar-tool-heading-example' => 'శీర్షిక పాఠ్యం',
 	'edittoolbar-group-list' => 'జాబితా',
 	'edittoolbar-group-size' => 'పరిమాణం',
 	'edittoolbar-tool-big' => 'పెద్ద',
@@ -8629,9 +9985,25 @@ $messages['te'] = array(
 	'edittoolbar-help-content-bold-syntax' => "'''బొద్దు పాఠ్యం'''",
 	'edittoolbar-help-content-bold-result' => '<strong>బొద్దు పాఠ్యం</strong>',
 	'edittoolbar-help-content-bolditalic-description' => 'బొద్దు &amp; వాలు',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''బొద్దు &amp; వాలు పాఠ్యం'''''",
 	'edittoolbar-help-content-bolditalic-result' => '<strong><em>బొద్దు &amp; వాలు పాఠ్యం</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'అంతర్గత లింకు',
 	'edittoolbar-help-content-xlink-description' => 'బయటి లింకు',
+	'edittoolbar-help-content-heading1-description' => '1వ స్థాయి శీర్షిక',
+	'edittoolbar-help-content-heading1-syntax' => '= శీర్షిక పాఠ్యం =',
+	'edittoolbar-help-content-heading1-result' => '<h1>శీర్షిక పాఠ్యం</h1>',
+	'edittoolbar-help-content-heading2-description' => '2వ స్థాయి శీర్షిక',
+	'edittoolbar-help-content-heading2-syntax' => '== శీర్షిక పాఠ్యం ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>శీర్షిక పాఠ్యం</h2>',
+	'edittoolbar-help-content-heading3-description' => '3వ స్థాయి శీర్షిక',
+	'edittoolbar-help-content-heading3-syntax' => '=== శీర్షిక పాఠ్యం ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>శీర్షిక పాఠ్యం</h3>',
+	'edittoolbar-help-content-heading4-description' => '4వ స్థాయి శీర్షిక',
+	'edittoolbar-help-content-heading4-syntax' => '==== శీర్షిక పాఠ్యం ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>శీర్షిక పాఠ్యం</h4>',
+	'edittoolbar-help-content-heading5-description' => '5వ స్థాయి శీర్షిక',
+	'edittoolbar-help-content-heading5-syntax' => '===== శీర్షిక పాఠ్యం =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>శీర్షిక పాఠ్యం</h5>',
 	'edittoolbar-help-content-olist-description' => 'సంఖ్యానుగుణ జాబితా',
 	'edittoolbar-help-content-reference-description' => 'సాక్ష్యాలు',
 	'edittoolbar-help-content-reference-result' => "పేజీ పాఠ్యం.<sup><a href='#'>[1]</a></sup>",
@@ -8687,11 +10059,16 @@ $messages['tr'] = array(
 	'edittoolbar' => 'Araç çubuğu düzenleme',
 	'edittoolbar-desc' => 'Gelişmiş kullanılabilirlik ile sayfa araç çubuğunu değiştir',
 	'edittoolbar-preference' => 'Gelişmiş düzenleme araç çubuğunu etkinleştir',
+	'edittoolbar-cgd-preference' => 'Gelişmiş viki metni eklemek için yardımı etkinleştir',
 	'edittoolbar-loading' => 'Yükleniyor...',
 	'edittoolbar-tool-bold' => 'Kalın',
 	'edittoolbar-tool-bold-example' => 'Kalın metin',
 	'edittoolbar-tool-italic' => 'İtalik',
 	'edittoolbar-tool-italic-example' => 'İtalik metin',
+	'edittoolbar-tool-ilink' => 'İç bağlantı',
+	'edittoolbar-tool-ilink-example' => 'Bağlantı başlığı',
+	'edittoolbar-tool-xlink' => 'Dış bağlantı (http:// önekini unutmayın)',
+	'edittoolbar-tool-xlink-example' => 'http://www.ornek.com bağlantı başlığı',
 	'edittoolbar-tool-link' => 'Bağlantı',
 	'edittoolbar-tool-link-title' => 'Bağlantı ekle',
 	'edittoolbar-tool-link-int' => 'Bir viki sayfasına',
@@ -8707,6 +10084,7 @@ $messages['tr'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Geçersiz başlık',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Sayfanın mevcudiyeti kontrol ediliyor...',
 	'edittoolbar-tool-link-int-invalid' => 'Belirttiğiniz başlık geçersiz.',
+	'edittoolbar-tool-link-ext-invalid' => 'Belirttiğiniz URL geçersiz.',
 	'edittoolbar-tool-file' => 'Gömülü dosya',
 	'edittoolbar-tool-file-example' => 'Örnek.jpg',
 	'edittoolbar-tool-reference' => 'Kaynakça',
@@ -8741,6 +10119,18 @@ $messages['tr'] = array(
 {{ns:file}}:Örnek.jpg|Resimyazısı2',
 	'edittoolbar-tool-newline' => 'Yeni satır',
 	'edittoolbar-tool-table' => 'Tablo',
+	'edittoolbar-tool-table-example-old' => '-
+! başlık 1
+! başlık 2
+! başlık 3
+|-
+| satır 1, hücre 1
+| satır 1, hücre 2
+| satır 1, hücre 3
+|-
+| satır 2, hücre 1
+| satır 2, hücre 2
+| satır 2, hücre 3',
 	'edittoolbar-tool-table-example' => 'Satır $1, hücre $2',
 	'edittoolbar-tool-table-example-header' => 'Satır $1, hücre $2 (başlık)',
 	'edittoolbar-tool-table-title' => 'Tablo ekle',
@@ -8750,7 +10140,7 @@ $messages['tr'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Başlık satırını içer',
 	'edittoolbar-tool-table-insert' => 'Ekle',
 	'edittoolbar-tool-table-cancel' => 'İptal',
-	'edittoolbar-tool-replace' => 'Değiştir',
+	'edittoolbar-tool-replace' => 'Ara ve değiştir',
 	'edittoolbar-tool-replace-title' => 'Ara ve değiştir',
 	'edittoolbar-tool-replace-search' => 'Şunun için ara:',
 	'edittoolbar-tool-replace-replace' => 'Şununla değiştir:',
@@ -8758,8 +10148,9 @@ $messages['tr'] = array(
 	'edittoolbar-tool-replace-regex' => 'Arama dizesine bir düzenli ifade muamelesi yap',
 	'edittoolbar-tool-replace-all' => 'Tüm bulunanları değiştir',
 	'edittoolbar-tool-replace-button' => 'Değiştir',
-	'edittoolbar-tool-replace-close' => 'Kapat',
+	'edittoolbar-tool-replace-close' => 'İptal',
 	'edittoolbar-tool-replace-nomatch' => 'Aramanız hiçbir şeyle uyuşmuyor.',
+	'edittoolbar-tool-replace-success' => '$1 değiştirme yapıldı.',
 	'edittoolbar-section-characters' => 'Özel karakter',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Genişletilmiş Latince',
@@ -8819,7 +10210,7 @@ $messages['tr'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Liste öğesi</li><li>Liste öğesi</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Gömülü dosya',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Ornek.png|thumb|Resim yazısı]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Resim yazısı</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Resim yazısı</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Kaynak',
 	'edittoolbar-help-content-reference-syntax' => 'Sayfa metni.&lt;ref name="deneme"&gt;[http://www.ornek.org Bağlanı metni], ek metin.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Sayfa metni.<sup><a href='#'>[1]</a></sup>",
@@ -8848,6 +10239,10 @@ $messages['uk'] = array(
 	'edittoolbar-tool-bold-example' => 'Жирний текст',
 	'edittoolbar-tool-italic' => 'Курсив',
 	'edittoolbar-tool-italic-example' => 'Курсивний текст',
+	'edittoolbar-tool-ilink' => 'Внутрішнє посилання',
+	'edittoolbar-tool-ilink-example' => 'Заголовок посилання',
+	'edittoolbar-tool-xlink' => "Зовнішнє посилання (пам'ятайте про префікс http://)",
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com заголовок посилання',
 	'edittoolbar-tool-file' => 'Вкладений файл',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Виноска',
@@ -8929,11 +10324,16 @@ $messages['vec'] = array(
 	'edittoolbar' => 'Bara dei strumenti de modifica',
 	'edittoolbar-desc' => 'Modifica bara dei strumenti de la pagina co na magiore usabilità',
 	'edittoolbar-preference' => 'Abilita bara dei strumenti de modifica avansada',
+	'edittoolbar-cgd-preference' => 'Intacar i ajuti par zontar testo wiki avansado',
 	'edittoolbar-loading' => "So' drio cargar...",
 	'edittoolbar-tool-bold' => 'Grasseto',
 	'edittoolbar-tool-bold-example' => 'Testo in grasseto',
 	'edittoolbar-tool-italic' => 'Corsivo',
 	'edittoolbar-tool-italic-example' => 'Testo in corsivo',
+	'edittoolbar-tool-ilink' => 'Colegamento interno',
+	'edittoolbar-tool-ilink-example' => 'Titolo del colegamento',
+	'edittoolbar-tool-xlink' => 'Colegamento esterno (ricòrdete el prefisso http:// )',
+	'edittoolbar-tool-xlink-example' => 'http://www.esenpio.com titolo del colegamento',
 	'edittoolbar-tool-link' => 'Colegamento',
 	'edittoolbar-tool-link-title' => 'Inserissi colegamento',
 	'edittoolbar-tool-link-int' => 'a na pagina wiki',
@@ -8949,6 +10349,7 @@ $messages['vec'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Titolo mia valido',
 	'edittoolbar-tool-link-int-target-status-loading' => "So' drio controlar se la pagina la esiste o no...",
 	'edittoolbar-tool-link-int-invalid' => "El titolo che te ghè indicà no'l xe mia valido.",
+	'edittoolbar-tool-link-ext-invalid' => "L'indirisso indicà no'l xe mia vàlido.",
 	'edittoolbar-tool-file' => 'File incorporado',
 	'edittoolbar-tool-file-example' => 'Esenpio.jpg',
 	'edittoolbar-tool-reference' => 'Nota',
@@ -8983,6 +10384,18 @@ $messages['vec'] = array(
 {{ns:file}}:Esenpio.jpg|Didascalia2',
 	'edittoolbar-tool-newline' => 'Riga nova',
 	'edittoolbar-tool-table' => 'Tabèla',
+	'edittoolbar-tool-table-example-old' => '-
+! intestassion 1
+! intestassion 2
+! intestassion 3
+|-
+| riga 1, casèla 1
+| riga 1, casèla 2
+| riga 1, casèla 3
+|-
+| riga 2, casèla 1
+| riga 2, casèla 2
+| riga 2, casèla 3',
 	'edittoolbar-tool-table-example' => 'Lìnia $1, colòna $2',
 	'edittoolbar-tool-table-example-header' => 'Lìnia $1, colòna $2 (intestassion)',
 	'edittoolbar-tool-table-title' => 'Inserissi na tabèla',
@@ -8992,7 +10405,7 @@ $messages['vec'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Includi la riga de intestassion',
 	'edittoolbar-tool-table-insert' => 'Inserissi',
 	'edittoolbar-tool-table-cancel' => 'Anùla',
-	'edittoolbar-tool-replace' => 'Sostituìssi',
+	'edittoolbar-tool-replace' => 'Serca e sostituìssi',
 	'edittoolbar-tool-replace-title' => 'Serca e sostituìssi',
 	'edittoolbar-tool-replace-search' => 'Serca:',
 	'edittoolbar-tool-replace-replace' => 'Sostituìssi con:',
@@ -9000,8 +10413,9 @@ $messages['vec'] = array(
 	'edittoolbar-tool-replace-regex' => 'Testo de la riserca come espression regolare',
 	'edittoolbar-tool-replace-all' => 'Sostituìssi tute le olte che te lo cati',
 	'edittoolbar-tool-replace-button' => 'Sostituìssi',
-	'edittoolbar-tool-replace-close' => 'Sara',
+	'edittoolbar-tool-replace-close' => 'Anùla',
 	'edittoolbar-tool-replace-nomatch' => 'No gavemo catà gnente che corisponde a quel che te serchi.',
+	'edittoolbar-tool-replace-success' => '$1 sostitussion fate.',
 	'edittoolbar-section-characters' => 'Caràteri speciali',
 	'edittoolbar-characters-page-latin' => 'Latìn',
 	'edittoolbar-characters-page-latinextended' => 'Latìn esteso',
@@ -9061,7 +10475,7 @@ $messages['vec'] = array(
 	'edittoolbar-help-content-olist-result' => "<ol><li>Elemento de l'elenco</li><li>Elemento de l'elenco</li></ol>",
 	'edittoolbar-help-content-file-description' => 'File incorporado',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Esenpio.png|thumb|Testo de la didascalia]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Testo de la didascalia</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Testo de la didascalia</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Nota',
 	'edittoolbar-help-content-reference-syntax' => 'Testo de la pagina.&lt;ref name="test"&gt;[http://www.esenpio.org Testo del colegamento], altro testo in più.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Testo de la pagina.<sup><a href='#'>[1]</a></sup>",
@@ -9078,6 +10492,64 @@ $messages['vec'] = array(
 	'edittoolbar-help-content-indent-result' => 'Testo normal<dl><dd>Testo rientrà<dl><dd>Testo rientrà</dd></dl></dd></dl>',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'edittoolbar-tool-bold' => 'Lihavoitud',
+	'edittoolbar-tool-bold-example' => 'Lihavoitud tekst',
+	'edittoolbar-tool-link' => 'Kosketuz',
+	'edittoolbar-tool-link-title' => 'Ližada kosketuz',
+	'edittoolbar-tool-link-ext-target' => 'Kosketusen URL:',
+	'edittoolbar-tool-link-ext-text' => 'Kosketusen tekst:',
+	'edittoolbar-tool-link-cancel' => 'Heitta',
+	'edittoolbar-tool-link-int-target-status-invalid' => 'Vär nimi',
+	'edittoolbar-tool-file' => 'Mülütadud fail',
+	'edittoolbar-group-list' => 'Nimikirjutez',
+	'edittoolbar-tool-ulist-example' => 'Markiruidud nimikirjutez',
+	'edittoolbar-tool-olist' => 'Nomeroitud nimikirjutez',
+	'edittoolbar-group-size' => 'Suruz',
+	'edittoolbar-tool-big' => "Sur'",
+	'edittoolbar-tool-big-example' => 'Järed tekst',
+	'edittoolbar-tool-small' => "Pen'",
+	'edittoolbar-tool-small-example' => "Pen' tekst",
+	'edittoolbar-group-insert' => 'Ližata',
+	'edittoolbar-tool-gallery' => 'Kuviden gallerei',
+	'edittoolbar-tool-newline' => "Uz' rivi",
+	'edittoolbar-tool-table-title' => 'Ližada tablut',
+	'edittoolbar-tool-table-dimensions' => 'Suruz',
+	'edittoolbar-tool-table-dimensions-rows' => 'Rivid',
+	'edittoolbar-tool-table-insert' => 'Ližata',
+	'edittoolbar-tool-table-cancel' => 'Heitta',
+	'edittoolbar-tool-replace-close' => 'Heitta',
+	'edittoolbar-characters-page-latin' => 'Latinalaine',
+	'edittoolbar-characters-page-latinextended' => 'Levitadud latinalaine',
+	'edittoolbar-characters-page-ipa' => 'IPA',
+	'edittoolbar-characters-page-symbols' => 'Simvolad',
+	'edittoolbar-characters-page-greek' => 'Grekalaine',
+	'edittoolbar-characters-page-cyrillic' => 'Kirilline',
+	'edittoolbar-characters-page-arabic' => 'Arabine',
+	'edittoolbar-characters-page-hebrew' => 'Evrejine',
+	'edittoolbar-characters-page-telugu' => 'Telugu',
+	'edittoolbar-section-help' => 'Abu',
+	'edittoolbar-help-page-link' => 'Kosketused',
+	'edittoolbar-help-page-list' => 'Nimikirjutesed',
+	'edittoolbar-help-page-file' => 'Failad',
+	'edittoolbar-help-content-bold-description' => 'Lihavoitud',
+	'edittoolbar-help-content-bold-syntax' => "'''Lihavoitud tekst'''",
+	'edittoolbar-help-content-ilink-description' => 'Südäikosketuz',
+	'edittoolbar-help-content-xlink-description' => 'Irdkosketuz',
+	'edittoolbar-help-content-heading1-syntax' => '= Pälkirjutesen tekst =',
+	'edittoolbar-help-content-heading2-syntax' => '== Pälkirjutesen tekst ==',
+	'edittoolbar-help-content-heading3-syntax' => '=== Pälkirjutesen tekst ===',
+	'edittoolbar-help-content-heading4-syntax' => '==== Pälkirjutesen tekst ====',
+	'edittoolbar-help-content-heading5-syntax' => '===== Pälkirjutesen tekst =====',
+	'edittoolbar-help-content-ulist-description' => 'Markiruidud nimikirjutez',
+	'edittoolbar-help-content-olist-description' => 'Nomeroitud nimikirjutez',
+	'edittoolbar-help-content-file-description' => 'Mülütadud fail',
+	'edittoolbar-help-content-signature-description' => 'Allekirjutez',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
@@ -9086,11 +10558,16 @@ $messages['vi'] = array(
 	'edittoolbar' => 'Thanh công cụ sửa đổi',
 	'edittoolbar-desc' => 'Thanh công cụ ở trang sửa đổi được cải tiến để dễ sử dụng hơn',
 	'edittoolbar-preference' => 'Sử dụng thanh công cụ sửa đổi nâng cao',
+	'edittoolbar-cgd-preference' => 'Mở trợ giúp về cách thêm mã wiki nâng cao',
 	'edittoolbar-loading' => 'Đang tải…',
 	'edittoolbar-tool-bold' => 'Đậm',
 	'edittoolbar-tool-bold-example' => 'Chữ đậm',
 	'edittoolbar-tool-italic' => 'Xiên',
 	'edittoolbar-tool-italic-example' => 'Chữ xiên',
+	'edittoolbar-tool-ilink' => 'Liên kết trong',
+	'edittoolbar-tool-ilink-example' => 'Tựa đề liên kết',
+	'edittoolbar-tool-xlink' => 'Liên kết ngoài (nhớ ghi http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.vidu.com tựa đề liên kết',
 	'edittoolbar-tool-link' => 'Liên kết',
 	'edittoolbar-tool-link-title' => 'Chèn liên kết',
 	'edittoolbar-tool-link-int' => 'Đến một trang wiki',
@@ -9106,6 +10583,7 @@ $messages['vi'] = array(
 	'edittoolbar-tool-link-int-target-status-invalid' => 'Tựa sai',
 	'edittoolbar-tool-link-int-target-status-loading' => 'Kiểm tra trang đã tồn tại chưa...',
 	'edittoolbar-tool-link-int-invalid' => 'Tựa trang chỉ định không hợp lệ.',
+	'edittoolbar-tool-link-ext-invalid' => 'URL không đúng.',
 	'edittoolbar-tool-file' => 'Chèn tập tin',
 	'edittoolbar-tool-file-example' => 'Ví dụ.jpg',
 	'edittoolbar-tool-reference' => 'Chú thích tham khảo',
@@ -9140,6 +10618,18 @@ $messages['vi'] = array(
 {{ns:file}}:Ví dụ.jpg|Chú thích 2',
 	'edittoolbar-tool-newline' => 'Dòng mới',
 	'edittoolbar-tool-table' => 'Bảng',
+	'edittoolbar-tool-table-example-old' => '-
+! tiêu đề 1
+! tiêu đề 2
+! tiêu đề 3
+|-
+| hàng 1, cột 1
+| hàng 1, cột 2
+| hàng 1, cột 3
+|-
+| hàng 2, cột 1
+| hàng 2, cột 2
+| hàng 2, cột 3',
 	'edittoolbar-tool-table-example' => 'Hàng $1, ô $2',
 	'edittoolbar-tool-table-example-header' => 'Hàng $1, cột $2 (tiêu đề)',
 	'edittoolbar-tool-table-title' => 'Chèn bảng',
@@ -9149,7 +10639,7 @@ $messages['vi'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Có hàng tiêu đề',
 	'edittoolbar-tool-table-insert' => 'Chèn',
 	'edittoolbar-tool-table-cancel' => 'Hủy bỏ',
-	'edittoolbar-tool-replace' => 'Thay thế',
+	'edittoolbar-tool-replace' => 'Tìm và thay thế',
 	'edittoolbar-tool-replace-title' => 'Tìm và thay thế',
 	'edittoolbar-tool-replace-search' => 'Tìm kiếm:',
 	'edittoolbar-tool-replace-replace' => 'Thay thế bằng:',
@@ -9157,8 +10647,9 @@ $messages['vi'] = array(
 	'edittoolbar-tool-replace-regex' => 'Xem chuỗi tìm kiếm là biểu thức chính quy',
 	'edittoolbar-tool-replace-all' => 'Thay thế mọi từ tìm thấy',
 	'edittoolbar-tool-replace-button' => 'Thay thế',
-	'edittoolbar-tool-replace-close' => 'Đóng',
+	'edittoolbar-tool-replace-close' => 'Hủy bỏ',
 	'edittoolbar-tool-replace-nomatch' => 'Không tìm thấy',
+	'edittoolbar-tool-replace-success' => 'Đã thực hiện $1 thay thế.',
 	'edittoolbar-section-characters' => 'Ký tự đặc biệt',
 	'edittoolbar-characters-page-latin' => 'La tinh',
 	'edittoolbar-characters-page-latinextended' => 'La tinh mở rộng',
@@ -9218,7 +10709,7 @@ $messages['vi'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Mục danh sách</li><li>Mục danh sách</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Chèn tập tin',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Ví dụ.png|nhỏ|Văn bản chú thích]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Văn bản chú thích' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Phóng lớn' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Văn bản chú thích</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Văn bản chú thích' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Phóng lớn' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>Văn bản chú thích</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Tham khảo',
 	'edittoolbar-help-content-reference-syntax' => 'Nội dung trang&lt;ref name="thử"&gt;[http://www.vidu.org Văn bản liên kết], văn bản bổ sung.&lt;/ref&gt;.',
 	'edittoolbar-help-content-reference-result' => "Nội dung trang<sup><a href='#'>[1]</a></sup>.",
@@ -9235,6 +10726,14 @@ $messages['vi'] = array(
 	'edittoolbar-help-content-indent-result' => 'Văn bản thường<dl><dd>Văn bản được tăng lề<dl><dd>Văn bản được tăng lề</dd></dl></dd></dl>',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'edittoolbar-tool-replace-search' => 'זוכן פֿאַר:',
+	'edittoolbar-section-help' => 'הילף',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */
@@ -9247,6 +10746,10 @@ $messages['yue'] = array(
 	'edittoolbar-tool-bold-example' => '粗體字',
 	'edittoolbar-tool-italic' => '斜體',
 	'edittoolbar-tool-italic-example' => '斜體字',
+	'edittoolbar-tool-ilink' => '內連',
+	'edittoolbar-tool-ilink-example' => '拎題',
+	'edittoolbar-tool-xlink' => '外連（記住 http:// 字頭）',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com 連結標題',
 	'edittoolbar-tool-file' => '結合標題',
 	'edittoolbar-tool-reference' => '參考',
 	'edittoolbar-tool-reference-example' => '響呢度插入底文字',
@@ -9280,6 +10783,18 @@ $messages['yue'] = array(
 {{ns:file}}:Example.jpg|標題2',
 	'edittoolbar-tool-newline' => '新行',
 	'edittoolbar-tool-table' => '表',
+	'edittoolbar-tool-table-example-old' => '-
+! 表頭 1
+! 表頭 2
+! 表頭 3
+|-
+| 行 1, 格 1
+| 行 1, 格 2
+| 行 1, 格 3
+|-
+| 行 2, 格 1
+| 行 2, 格 2
+| 行 2, 格 3',
 	'edittoolbar-tool-table-example' => '-
 ! 表頭 1
 ! 表頭 2
@@ -9348,7 +10863,7 @@ $messages['yue'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>一覽項目</li><li>一覽項目</li></ol>',
 	'edittoolbar-help-content-file-description' => '結合檔',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|標題字]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='標題字' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='放大' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>標題字</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='標題字' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='放大' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>標題字</div></div>",
 	'edittoolbar-help-content-reference-description' => '參考',
 	'edittoolbar-help-content-reference-syntax' => '頁字。&lt;ref name="test"&gt;[http://www.example.org 連字]，附加字。&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "頁字。<sup><a href='#'>[1]</a></sup>",
@@ -9380,6 +10895,10 @@ $messages['zh-hans'] = array(
 	'edittoolbar-tool-bold-example' => '粗体文本',
 	'edittoolbar-tool-italic' => '斜体',
 	'edittoolbar-tool-italic-example' => '斜体文本',
+	'edittoolbar-tool-ilink' => '内部链接',
+	'edittoolbar-tool-ilink-example' => '链接标题',
+	'edittoolbar-tool-xlink' => '外部链接（需以“http://”前缀）',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com 链接标题',
 	'edittoolbar-tool-link' => '链接',
 	'edittoolbar-tool-link-title' => '插入链接',
 	'edittoolbar-tool-link-int' => '链往wiki页面',
@@ -9435,8 +10954,6 @@ $messages['zh-hans'] = array(
 	'edittoolbar-tool-table-dimensions' => '大小',
 	'edittoolbar-tool-table-dimensions-rows' => '行',
 	'edittoolbar-tool-table-dimensions-columns' => '列',
-	'edittoolbar-tool-table-dimensions-headerrows' => '标题行',
-	'edittoolbar-tool-table-dimensions-headercolumns' => '标题列',
 	'edittoolbar-tool-table-insert' => '插入',
 	'edittoolbar-tool-table-cancel' => '取消',
 	'edittoolbar-tool-replace' => '替换',
@@ -9508,7 +11025,7 @@ $messages['zh-hans'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>列表项</li><li>列表项</li></ol>',
 	'edittoolbar-help-content-file-description' => '嵌入文件',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|标题文本]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='标题文本' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='放大' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>标题文本</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='标题文本' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='放大' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>标题文本</div></div>",
 	'edittoolbar-help-content-reference-description' => '参考',
 	'edittoolbar-help-content-reference-syntax' => '页面文本。&lt;ref name="test"&gt;[http://www.example.org 链接文本]，附加文本。&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "页面文本。<sup><a href='#'>[1]</a></sup>",
@@ -9538,6 +11055,10 @@ $messages['zh-hant'] = array(
 	'edittoolbar-tool-bold-example' => '粗體文字',
 	'edittoolbar-tool-italic' => '斜體',
 	'edittoolbar-tool-italic-example' => '斜體文字',
+	'edittoolbar-tool-ilink' => '內部連結',
+	'edittoolbar-tool-ilink-example' => '連結標題',
+	'edittoolbar-tool-xlink' => '外部連結（記住 http:// 文字開頭）',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com 連結標題',
 	'edittoolbar-tool-file' => '結合標題',
 	'edittoolbar-tool-reference' => '參考',
 	'edittoolbar-tool-reference-example' => '在這裏插入頁底文字',
@@ -9571,6 +11092,18 @@ $messages['zh-hant'] = array(
 {{ns:file}}:Example.jpg|標題2',
 	'edittoolbar-tool-newline' => '換行',
 	'edittoolbar-tool-table' => '表格',
+	'edittoolbar-tool-table-example-old' => '-
+! 表頭 1
+! 表頭 2
+! 表頭 3
+|-
+| 行 1, 格 1
+| 行 1, 格 2
+| 行 1, 格 3
+|-
+| 行 2, 格 1
+| 行 2, 格 2
+| 行 2, 格 3',
 	'edittoolbar-tool-table-example' => '-
 ! 表頭 1
 ! 表頭 2
@@ -9640,7 +11173,7 @@ $messages['zh-hant'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>列表項目</li><li>列表項目</li></ol>',
 	'edittoolbar-help-content-file-description' => '結合檔',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|標題文字]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='標題文字' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='放大' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>標題文字</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='標題文字' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='放大' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>標題文字</div></div>",
 	'edittoolbar-help-content-reference-description' => '參考',
 	'edittoolbar-help-content-reference-syntax' => '頁面文字。&lt;ref name="test"&gt;[http://www.example.org 連結文字]，附加文字。&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "頁面文字。<sup><a href='#'>[1]</a></sup>",

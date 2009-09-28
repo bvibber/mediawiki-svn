@@ -76,7 +76,61 @@ $.fn.eachAsync = function(opts)
 
 })(jQuery);
 
-/*
+/**
+ * Plugin that automatically truncates the plain text contents of an element and adds an ellipsis 
+ */
+( function( $ ) {
+
+$.fn.autoEllipse = function( options ) {
+	$(this).each( function() {
+		options = $.extend( {
+			'position': 'center',
+			'tooltip': false
+		}, options );
+		var text = $(this).text();
+		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
+		$(this).empty().append( $text );
+		if ( $text.outerWidth() > $(this).innerWidth() ) {
+			switch ( options.position ) {
+				case 'right':
+					var l = text.length;
+					while ( $text.outerWidth() > $(this).innerWidth() && l > 0 ) {
+						$text.text( text.substr( 0, l ) + '...' );
+						l--;
+					}
+					break;
+				case 'center':
+					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
+					var side = 1; // Begin with making the end shorter
+					while ( $text.outerWidth() > ( $(this).innerWidth() ) && i[0] > 0 ) {
+						$text.text( text.substr( 0, i[0] ) + '...' + text.substr( i[1] ) );
+						// Alternate between trimming the end and begining
+						if ( side == 0 ) {
+							// Make the begining shorter
+							i[0]--;
+							side = 1;
+						} else {
+							// Make the end shorter
+							i[1]++;
+							side = 0;
+						}
+					}
+					break;
+				case 'left':
+					var r = 0;
+					while ( $text.outerWidth() > $(this).innerWidth() && r < text.length ) {
+						$text.text( '...' + text.substr( r ) );
+						r++;
+					}
+					break;
+			}
+			if ( options.tooltip )
+				$text.attr( 'title', text );
+		}
+	} );
+};
+
+} )( jQuery );/*
 
 jQuery Browser Plugin
 	* Version 2.3
@@ -255,6 +309,507 @@ jQuery.cookie = function(name, value, options) {
     }
 };
 
+(function( $ ) {
+/**
+ * Function that escapes spaces in event names. This is needed because
+ * "_delayedBind-foo bar-1000" refers to two events
+ */
+function encodeEvent( event ) {
+	return event.replace( /-/g, '--' ).replace( / /g, '-' );
+}
+
+$.fn.extend( {
+	/**
+	 * Bind a callback to an event in a delayed fashion.
+	 * In detail, this means that the callback will be called a certain
+	 * time after the event fires, but the timer is reset every time
+	 * the event fires.
+	 * @param timeout Number of milliseconds to wait
+	 * @param event Name of the event (string)
+	 * @param data Data to pass to the event handler (optional)
+	 * @param callback Function to call
+	 */
+	delayedBind: function( timeout, event, data, callback ) {
+		var encEvent = encodeEvent( event );
+		return this.each( function() {
+			var that = this;
+			// Bind the top half
+			// Do this only once for every (event, timeout) pair
+			if (  !( $(this).data( '_delayedBindBound-' + encEvent + '-' + timeout ) ) ) {
+				$(this).data( '_delayedBindBound-' + encEvent + '-' + timeout, true );
+				$(this).bind( event, function() {
+					var timerID = $(this).data( '_delayedBindTimerID-' + encEvent + '-' + timeout );
+					// Cancel the running timer
+					if ( typeof timerID != 'undefined' )
+						clearTimeout( timerID );
+					timerID = setTimeout( function() {
+						$(that).trigger( '_delayedBind-' + encEvent + '-' + timeout );
+					}, timeout );
+					$(this).data( '_delayedBindTimerID-' + encEvent + '-' + timeout, timerID );
+				} );
+			}
+			
+			// Bottom half
+			$(this).bind( '_delayedBind-' + encEvent + '-' + timeout, data, callback );
+		} );
+	},
+	
+	/**
+	 * Cancel the timers for delayed events on the selected elements.
+	 */
+	delayedBindCancel: function( timeout, event ) {
+		var encEvent = encodeEvent( event );
+		return this.each( function() {
+			var timerID = $(this).data( '_delayedBindTimerID-' + encEvent + '-' + timeout );
+			if ( typeof timerID != 'undefined' )
+				clearTimeout( timerID );
+		} );
+	},
+	
+	/**
+	 * Unbind an event bound with delayedBind()
+	 */
+	delayedBindUnbind: function( timeout, event, callback ) {
+		var encEvent = encodeEvent( event );
+		return this.each( function() {
+			$(this).unbind( '_delayedBind-' + encEvent + '-' + timeout, callback );
+		} );
+	}
+} );
+} )( jQuery );
+/**
+ * Plugin that fills a <select> with namespaces
+ */
+
+(function ($) {
+$.fn.namespaceSelector = function( defaultNS ) {
+	if ( typeof defaultNS == 'undefined' )
+		defaultNS = 0;
+	return this.each( function() {
+		for ( var id in wgFormattedNamespaces ) {
+			var opt = $( '<option />' )
+				.attr( 'value', id )
+				.text( wgFormattedNamespaces[id] );
+			if ( id == defaultNS )
+				opt.attr( 'selected', 'selected' );
+			opt.appendTo( $(this) );
+		}
+	});
+};})(jQuery);
+
+/**
+ * This plugin provides a generic way to add suggestions to a text box.
+ * 
+ * Usage:
+ * 
+ * Set options:
+ *		$('#textbox').suggestions( { option1: value1, option2: value2 } );
+ *		$('#textbox').suggestions( option, value );
+ * Get option:
+ *		value = $('#textbox').suggestions( option );
+ * Initialize:
+ *		$('#textbox').suggestions();
+ * 
+ * Options:
+ * 
+ * fetch(query): Callback that should fetch suggestions and set the suggestions property. Executed in the context of the
+ * 		textbox
+ * 		Type: Function
+ * cancel: Callback function to call when any pending asynchronous suggestions fetches should be canceled.
+ * 		Executed in the context of the textbox
+ *		Type: Function
+ * special: Set of callbacks for rendering and selecting
+ *		Type: Object of Functions 'render' and 'select'
+ * result: Set of callbacks for rendering and selecting
+ *		Type: Object of Functions 'render' and 'select'
+ * $region: jQuery selection of element to place the suggestions below and match width of
+ * 		Type: jQuery Object, Default: $(this)
+ * suggestions: Suggestions to display
+ * 		Type: Array of strings
+ * maxRows: Maximum number of suggestions to display at one time
+ * 		Type: Number, Range: 1 - 100, Default: 7
+ * delay: Number of ms to wait for the user to stop typing
+ * 		Type: Number, Range: 0 - 1200, Default: 120
+ */
+( function( $ ) {
+
+$.suggestions = {
+	/**
+	 * Cancel any delayed updateSuggestions() call and inform the user so
+	 * they can cancel their result fetching if they use AJAX or something 
+	 */
+	cancel: function( context ) {
+		if ( context.data.timerID != null ) {
+			clearTimeout( context.data.timerID );
+		}
+		if ( typeof context.config.cancel == 'function' ) {
+			context.config.cancel.call( context.data.$textbox );
+		}
+	},
+	/**
+	 * Restore the text the user originally typed in the textbox, before it was overwritten by highlight(). This
+	 * restores the value the currently displayed suggestions are based on, rather than the value just before
+	 * highlight() overwrote it; the former is arguably slightly more sensible.
+	 */
+	restore: function( context ) {
+		context.data.$textbox.val( context.data.prevText );
+	},
+	/**
+	 * Ask the user-specified callback for new suggestions. Any previous delayed call to this function still pending
+	 * will be canceled.  If the value in the textbox hasn't changed since the last time suggestions were fetched, this
+	 * function does nothing.
+	 * @param {Boolean} delayed Whether or not to delay this by the currently configured amount of time
+	 */
+	update: function( context, delayed ) {
+		// Only fetch if the value in the textbox changed
+		function maybeFetch() {
+			if ( context.data.$textbox.val() !== context.data.prevText ) {
+				context.data.prevText = context.data.$textbox.val();
+				if ( typeof context.config.fetch == 'function' ) {
+					context.config.fetch.call( context.data.$textbox, context.data.$textbox.val() );
+				}
+			}
+		}
+		// Cancel previous call
+		if ( context.data.timerID != null ) {
+			clearTimeout( context.data.timerID );
+		}
+		if ( delayed ) {
+			// Start a new asynchronous call
+			context.data.timerID = setTimeout( maybeFetch, context.config.delay );
+		} else {
+			maybeFetch();
+		}
+		$.suggestions.special( context );
+	},
+	special: function( context ) {
+		// Allow custom rendering - but otherwise don't do any rendering
+		if ( typeof context.config.special.render == 'function' ) {
+			// Wait for the browser to update the value
+			setTimeout( function() {
+				// Render special
+				$special = context.data.$container.find( '.suggestions-special' );
+				context.config.special.render.call( $special, context.data.$textbox.val() );
+			}, 1 );
+		}
+	},
+	/**
+	 * Sets the value of a property, and updates the widget accordingly
+	 * @param {String} property Name of property
+	 * @param {Mixed} value Value to set property with
+	 */
+	configure: function( context, property, value ) {
+		// Validate ccontextration using fallback values
+		switch( property ) {
+			case 'fetch':
+			case 'cancel':
+			case 'special':
+			case 'result':
+			case '$region':
+				context.config[property] = value;
+				break;
+			case 'suggestions':
+				context.config[property] = value;
+				// Update suggestions
+				if ( typeof context.data !== 'undefined'  ) {
+					if ( context.config.suggestions.length == 0 ) {
+						// Hide the dive when no suggestion exist
+						context.data.$container.hide();
+					} else {
+						// Rebuild the suggestions list
+						context.data.$container.show();
+						// Update the size and position of the list
+						context.data.$container.css( {
+							'top': context.config.$region.offset().top + context.config.$region.outerHeight(),
+							'bottom': 'auto',
+							'width': context.config.$region.outerWidth(),
+							'height': 'auto',
+							'left': context.config.$region.offset().left,
+							'right': 'auto'
+						} );
+						var $results = context.data.$container.children( '.suggestions-results' );
+						$results.empty();
+						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
+							$result = $( '<div />' )
+								.addClass( 'suggestions-result' )
+								.attr( 'rel', i )
+								.data( 'text', context.config.suggestions[i] )
+								.appendTo( $results );
+							// Allow custom rendering
+							if ( typeof context.config.result.render == 'function' ) {
+								context.config.result.render.call( $result, context.config.suggestions[i] );
+							} else {
+								$result.text( context.config.suggestions[i] ).autoEllipse();
+							}
+						}
+					}
+				}
+				break;
+			case 'maxRows':
+				context.config[property] = Math.max( 1, Math.min( 100, value ) );
+				break;
+			case 'delay':
+				context.config[property] = Math.max( 0, Math.min( 12000, value ) );
+				break;
+			case 'submitOnClick':
+				context.config[property] = value ? true : false;
+				break;
+		}
+	},
+	/**
+	 * Highlight a result in the results table
+	 * @param result <tr> to highlight: jQuery object, or 'prev' or 'next'
+	 * @param updateTextbox If true, put the suggestion in the textbox
+	 */
+	highlight: function( context, result, updateTextbox ) {
+		var selected = context.data.$container.find( '.suggestions-result-current' )
+		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
+			if ( result == 'prev' ) {
+				result = selected.prev();
+			} else if ( result == 'next' ) {
+				if ( selected.size() == 0 )
+					// No item selected, go to the first one
+					result = context.data.$container.find( '.suggestions-results div:first' );
+				else {
+					result = selected.next();
+					if ( result.size() == 0 )
+						// We were at the last item, stay there
+						result = selected;
+				}
+			}
+			selected.removeClass( 'suggestions-result-current' );
+			result.addClass( 'suggestions-result-current' );
+		}
+		if ( updateTextbox ) {
+			if ( result.size() == 0 ) {
+				$.suggestions.restore( context );
+			} else {
+				context.data.$textbox.val( result.data( 'text' ) );
+				
+				// .val() doesn't call any event handlers, so
+				// let the world know what happened
+				context.data.$textbox.change();
+			}
+		}
+		$.suggestions.special( context );
+	},
+	/**
+	 * Respond to keypress event
+	 * @param {Integer} key Code of key pressed
+	 */
+	keypress: function( e, context, key ) {
+		var wasVisible = context.data.$container.is( ':visible' );
+		var preventDefault = false;
+		switch ( key ) {
+			// Arrow down
+			case 40:
+				if ( wasVisible ) {
+					$.suggestions.highlight( context, 'next', true );
+				} else {
+					$.suggestions.update( context, false );
+				}
+				context.data.$textbox.trigger( 'change' );
+				preventDefault = true;
+				break;
+			// Arrow up
+			case 38:
+				if ( wasVisible ) {
+					$.suggestions.highlight( context, 'prev', true );
+				}
+				context.data.$textbox.trigger( 'change' );
+				preventDefault = wasVisible;
+				break;
+			// Escape
+			case 27:
+				context.data.$container.hide();
+				$.suggestions.restore( context );
+				$.suggestions.cancel( context );
+				context.data.$textbox.trigger( 'change' );
+				preventDefault = wasVisible;
+				break;
+			// Enter
+			case 13:
+				context.data.$container.hide();
+				preventDefault = wasVisible;
+				break;
+			default:
+				$.suggestions.update( context, true );
+				break;
+		}
+		if ( preventDefault ) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+		}
+	}
+};
+$.fn.suggestions = function() {
+	
+	// Multi-context fields
+	var returnValue = null;
+	var args = arguments;
+	
+	$(this).each( function() {
+
+		/* Construction / Loading */
+		
+		var context = $(this).data( 'suggestions-context' );
+		if ( typeof context == 'undefined' ) {
+			context = {
+				config: {
+				    'fetch' : function() {},
+					'cancel': function() {},
+					'special': {},
+					'result': {},
+					'$region': $(this),
+					'suggestions': [],
+					'maxRows': 7,
+					'delay': 1200,
+					'submitOnClick': false
+				}
+			};
+		}
+		
+		/* API */
+		
+		// Handle various calling styles
+		if ( args.length > 0 ) {
+			if ( typeof args[0] == 'object' ) {
+				// Apply set of properties
+				for ( key in args[0] ) {
+					$.suggestions.configure( context, key, args[0][key] );
+				}
+			} else if ( typeof args[0] == 'string' ) {
+				if ( args.length > 1 ) {
+					// Set property values
+					$.suggestions.configure( context, args[0], args[1] );
+				} else if ( returnValue == null ) {
+					// Get property values, but don't give access to internal data - returns only the first
+					returnValue = ( args[0] in context.config ? undefined : context.config[args[0]] );
+				}
+			}
+		}
+		
+		/* Initialization */
+		
+		if ( typeof context.data == 'undefined' ) {
+			context.data = {
+				// ID of running timer
+				'timerID': null,
+				// Text in textbox when suggestions were last fetched
+				'prevText': null,
+				// Number of results visible without scrolling
+				'visibleResults': 0,
+				// Suggestion the last mousedown event occured on
+				'mouseDownOn': $( [] ),
+				'$textbox': $(this)
+			};
+			context.data.$container = $( '<div />' )
+				.css( {
+					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
+					'left': Math.round( context.data.$textbox.offset().left ),
+					'width': context.data.$textbox.outerWidth(),
+					'display': 'none'
+				} )
+				.mouseover( function( e ) {
+					$.suggestions.highlight( context, $( e.target ).closest( '.suggestions-results div' ), false );
+				} )
+				.addClass( 'suggestions' )
+				.append(
+					$( '<div />' ).addClass( 'suggestions-results' )
+						// Can't use click() because the container div is hidden when the textbox loses focus. Instead,
+						// listen for a mousedown followed by a mouseup on the same div
+						.mousedown( function( e ) {
+							context.data.mouseDownOn = $( e.target ).closest( '.suggestions-results div' );
+						} )
+						.mouseup( function( e ) {
+							var $result = $( e.target ).closest( '.suggestions-results div' );
+							var $other = context.data.mouseDownOn;
+							context.data.mouseDownOn = $( [] );
+							if ( $result.get( 0 ) != $other.get( 0 ) ) {
+								return;
+							}
+							$.suggestions.highlight( context, $result, true );
+							context.data.$container.hide();
+							if ( typeof context.config.result.select == 'function' ) {
+								context.config.result.select.call( $result, context.data.$textbox );
+							}
+							context.data.$textbox.focus();
+						} )
+				)
+				.append(
+					$( '<div />' ).addClass( 'suggestions-special' )
+						// Can't use click() because the container div is hidden when the textbox loses focus. Instead,
+						// listen for a mousedown followed by a mouseup on the same div
+						.mousedown( function( e ) {
+							context.data.mouseDownOn = $( e.target ).closest( '.suggestions-special' );
+						} )
+						.mouseup( function( e ) {
+							var $special = $( e.target ).closest( '.suggestions-special' );
+							var $other = context.data.mouseDownOn;
+							context.data.mouseDownOn = $( [] );
+							if ( $special.get( 0 ) != $other.get( 0 ) ) {
+								return;
+							}
+							context.data.$container.hide();
+							if ( typeof context.config.special.select == 'function' ) {
+								context.config.special.select.call( $special, context.data.$textbox );
+							}
+							context.data.$textbox.focus();
+						} )
+				)
+				.appendTo( $( 'body' ) );
+			$(this)
+				// Stop browser autocomplete from interfering
+				.attr( 'autocomplete', 'off')
+				.keydown( function( e ) {
+					// Store key pressed to handle later
+					context.data.keypressed = ( e.keyCode == undefined ) ? e.which : e.keyCode;
+					context.data.keypressedCount = 0;
+					
+					switch ( context.data.keypressed ) {
+						// This preventDefault logic is duplicated from
+						// $.suggestions.keypress(), which sucks
+						case 40:
+							e.preventDefault();
+							e.stopImmediatePropagation();
+							break;
+						case 38:
+						case 27:
+						case 13:
+							if ( context.data.$container.is( ':visible' ) ) {
+								e.preventDefault();
+								e.stopImmediatePropagation();
+							}
+					}
+				} )
+				.keypress( function( e ) {
+					context.data.keypressedCount++;
+					$.suggestions.keypress( e, context, context.data.keypressed );
+				} )
+				.keyup( function( e ) {
+					// Some browsers won't throw keypress() for arrow keys. If we got a keydown and a keyup without a
+					// keypress in between, solve it
+					if ( context.data.keypressedCount == 0 ) {
+						$.suggestions.keypress( e, context, context.data.keypressed );
+					}
+				} )
+				.blur( function() {
+					// When losing focus because of a mousedown
+					// on a suggestion, don't hide the suggestions 
+					if ( context.data.mouseDownOn.size() > 0 ) {
+						return;
+					}
+					context.data.$container.hide();
+					$.suggestions.cancel( context );
+				} );
+		}
+		// Store the context for next time
+		$(this).data( 'suggestions-context', context );
+	} );
+	return returnValue !== null ? returnValue : $(this);
+};
+
+} )( jQuery );
 /**
  * These plugins provide extra functionality for interaction with textareas.
  */
@@ -287,91 +842,82 @@ getSelection: function() {
  * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
  */
 encapsulateSelection: function( pre, peri, post, ownline, replace ) {
-	/**
-	 * Check if the selected text is the same as the insert text
-	 */ 
-	function checkSelectedText() {
-		if ( !selText ) {
-			selText = peri;
-			isSample = true;
-		} else if ( replace ) {
-			selText = peri;
-		} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
-			// Exclude ending space char
-			selText = selText.substring(0, selText.length - 1);
-			post += ' '
-		}
-	}
-	var e = this.jquery ? this[0] : this;
-	var selText = $(this).getSelection();
-	var isSample = false;
-	if ( e.style.display == 'none' ) {
-		// Do nothing
-	} else if ( document.selection && document.selection.createRange ) {
-		// IE/Opera
-		if ( document.documentElement && document.documentElement.scrollTop ) {
-			var winScroll = document.documentElement.scrollTop;
-		} else if ( document.body ) {
-			var winScroll = document.body.scrollTop;
-		}
-		$(this).focus();
-		var range = document.selection.createRange();
-		if ( ownline && range.moveStart ) {
-			var range2 = document.selection.createRange();
-			range2.collapse();
-			range2.moveStart( 'character', -1 );
-			// FIXME: Which check is correct?
-			if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
-				pre = "\n" + pre;
-			}
-			var range3 = document.selection.createRange();
-			range3.collapse( false );
-			range3.moveEnd( 'character', 1 );
-			if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
-				post += "\n";
+	return this.each( function() {
+		/**
+		 * Check if the selected text is the same as the insert text
+		 */ 
+		function checkSelectedText() {
+			if ( !selText ) {
+				selText = peri;
+				isSample = true;
+			} else if ( replace ) {
+				selText = peri;
+			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
+				// Exclude ending space char
+				selText = selText.substring(0, selText.length - 1);
+				post += ' '
 			}
 		}
-		checkSelectedText();
-		range.text = pre + selText + post;
-		if ( isSample && range.moveStart ) {
-			if ( window.opera ) {
-				post = post.replace( /\n/g, '' );
+		var selText = $(this).getSelection();
+		var isSample = false;
+		if ( this.style.display == 'none' ) {
+			// Do nothing
+		} else if ( document.selection && document.selection.createRange ) {
+			// IE/Opera
+			$(this).focus();
+			var range = document.selection.createRange();
+			if ( ownline && range.moveStart ) {
+				var range2 = document.selection.createRange();
+				range2.collapse();
+				range2.moveStart( 'character', -1 );
+				// FIXME: Which check is correct?
+				if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
+					pre = "\n" + pre;
+				}
+				var range3 = document.selection.createRange();
+				range3.collapse( false );
+				range3.moveEnd( 'character', 1 );
+				if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
+					post += "\n";
+				}
 			}
-			range.moveStart( 'character', - post.length - selText.length );
-			range.moveEnd( 'character', - post.length );
-		}
-		range.select();
-		if ( document.documentElement && document.documentElement.scrollTop ) {
-			document.documentElement.scrollTop = winScroll
-		} else if ( document.body ) {
-			document.body.scrollTop = winScroll;
-		}
-	} else if ( e.selectionStart || e.selectionStart == '0' ) {
-		// Mozilla
-		var textScroll = e.scrollTop;
-		$(this).focus();
-		var startPos = e.selectionStart;
-		var endPos = e.selectionEnd;
-		checkSelectedText();
-		if ( ownline ) {
-			if ( startPos != 0 && e.value.charAt( startPos - 1 ) != "\n" ) {
-				pre = "\n" + pre;
+			checkSelectedText();
+			range.text = pre + selText + post;
+			if ( isSample && range.moveStart ) {
+				if ( window.opera ) {
+					post = post.replace( /\n/g, '' );
+				}
+				range.moveStart( 'character', - post.length - selText.length );
+				range.moveEnd( 'character', - post.length );
 			}
-			if ( e.value.charAt( endPos ) != "\n" ) {
-				post += "\n";
+			range.select();
+		} else if ( this.selectionStart || this.selectionStart == '0' ) {
+			// Mozilla
+			$(this).focus();
+			var startPos = this.selectionStart;
+			var endPos = this.selectionEnd;
+			checkSelectedText();
+			if ( ownline ) {
+				if ( startPos != 0 && this.value.charAt( startPos - 1 ) != "\n" ) {
+					pre = "\n" + pre;
+				}
+				if ( this.value.charAt( endPos ) != "\n" ) {
+					post += "\n";
+				}
+			}
+			this.value = this.value.substring( 0, startPos ) + pre + selText + post + this.value.substring( endPos, this.value.length );
+			if ( isSample ) {
+				this.selectionStart = startPos + pre.length;
+				this.selectionEnd = startPos + pre.length + selText.length;
+			} else {
+				this.selectionStart = startPos + pre.length + selText.length + post.length;
+				this.selectionEnd = this.selectionStart;
 			}
 		}
-		e.value = e.value.substring( 0, startPos ) + pre + selText + post + e.value.substring( endPos, e.value.length );
-		if ( isSample ) {
-			e.selectionStart = startPos + pre.length;
-			e.selectionEnd = startPos + pre.length + selText.length;
-		} else {
-			e.selectionStart = startPos + pre.length + selText.length + post.length;
-			e.selectionEnd = e.selectionStart;
-		}
-		e.scrollTop = textScroll;
-	}
-	$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+		// Scroll the textarea to the inserted text
+		$(this).scrollToCaretPosition();
+		$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+	});
 },
 /**
  * Ported from Wikia's LinkSuggest extension
@@ -462,18 +1008,38 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 	}
 	return getCaret( this.get( 0 ) );
 },
+setSelection: function( start, end ) {
+	if ( typeof end == 'undefined' )
+		end = start;
+	return this.each( function() {
+		if ( this.selectionStart || this.selectionStart == '0' ) {
+			this.selectionStart = start;
+			this.selectionEnd = end;
+		} else if ( document.body.createTextRange ) {
+			var selection = document.body.createTextRange;
+			selection.setToElementText( this );
+			var length = selection.text.length;
+			selection.moveStart( 'character', start );
+			selection.moveEnd( 'character', -length + end );
+			selection.select();
+		}
+	});
+},
 /**
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
  * 
- * Scroll a textarea to a certain offset
+ * Scroll a textarea to the current cursor position. You can set the cursor
+ * position with setSelection()
  * @param pos Byte offset
  */
-scrollToCaretPosition: function( pos ) {
+scrollToCaretPosition: function() {
 	function getLineLength( e ) {
 		return Math.floor( e.scrollWidth / ( $.os.name == 'linux' ? 7 : 8 ) );
 	}
 	function getCaretScrollPosition( e ) {
+		// FIXME: This functions sucks and is off by a few lines most
+		// of the time. It should be replaced by something decent.
 		var text = e.value.replace( /\r/g, "" );
 		var caret = $( e ).getCaretPosition();
 		var lineLength = getLineLength( e );
@@ -518,33 +1084,26 @@ scrollToCaretPosition: function( pos ) {
 		$(this).focus();
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
-			this.selectionStart = pos;
-			this.selectionEnd = pos;
 			$(this).scrollTop( getCaretScrollPosition( this ) );
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE / Opera
 			/*
-			 * IE automatically scrolls the section to the bottom of the page,
-			 * except if it's already in view and the cursor position hasn't
-			 * changed, in which case it does nothing. In that case we'll force
-			 * it to act by moving one character back and forth.
+			 * IE automatically scrolls the selected text to the
+			 * bottom of the textarea at setSelection() time, except
+			 * if it was already in view and the cursor position
+			 * wasn't changed, in which case it does nothing. To
+			 * cover that case, we'll force it to act by moving one
+			 * character back and forth.
 			 */
 			var range = document.selection.createRange();
-			var oldPos = $(this).getCaretPosition();
-			var goBack = false;
-			if ( oldPos == pos ) {
-				pos++;
-				goBack = true;
-			}
+			var pos = $(this).getCaretPosition();
 			range.moveToElementText( this );
 			range.collapse();
-			range.move( 'character', pos );
+			range.move( 'character', pos + 1);
 			range.select();
 			this.scrollTop += range.offsetTop;
-			if ( goBack ) {
-				range.move( 'character', -1 );
-				range.select();
-			}
+			range.move( 'character', -1 );
+			range.select();
 		}
 		$(this).trigger( 'scrollToPosition' );
 	} );
@@ -679,7 +1238,7 @@ if ( typeof context == 'undefined' ) {
 	}
 	//Each browser seems to do this differently, so let's keep our editor
 	//consistent by always starting at the begining
-	context.$textarea.scrollToCaretPosition( 0 );
+	context.$textarea.setSelection( 0 ).scrollToCaretPosition();
 }
 
 // If there was a configuration passed, it's assumed to be for the addModule
@@ -703,6 +1262,141 @@ if ( arguments.length > 0 && typeof arguments[0] == 'object' ) {
 return $(this).data( 'wikiEditor-context', context );
 
 };})(jQuery);/**
+ * Extend the RegExp object with an escaping function
+ * From http://simonwillison.net/2006/Jan/20/escape/
+ */
+RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$1'); };
+
+/**
+ * Dialog Module for wikiEditor
+ */
+( function( $ ) { $.wikiEditor.modules.dialogs = {
+
+/**
+ * API accessible functions
+ */
+api: {
+	addDialog: function( context, data ) {
+		$.wikiEditor.modules.dialogs.fn.create( context, { 'modules': data } )
+	},
+	openDialog: function( context, data ) {
+		if ( data.dialog in $.wikiEditor.modules.dialogs.modules ) {
+			$( '#' + $.wikiEditor.modules.dialogs.modules[data.dialog].id ).dialog( 'open' );
+		}
+	},
+	closeDialog: function( context, data ) {
+		if ( data.dialog in $.wikiEditor.modules.dialogs.modules ) {
+			$( '#' + $.wikiEditor.modules.dialogs.modules[data.dialog].id ).dialog( 'close' );
+		}
+	}
+},
+/**
+ * Internally used functions
+ */
+fn: {
+	/**
+	 * Creates a dialog module within a wikiEditor
+	 * 
+	 * @param {Object} context Context object of editor to create module in
+	 * @param {Object} config Configuration object to create module from
+	 */
+	create: function( context, config ) {
+		// Add modules
+		for ( module in config ) {
+			$.wikiEditor.modules.dialogs.modules[module] = config[module];
+		}
+		// Build out modules immediately
+		for ( module in $.wikiEditor.modules.dialogs.modules ) {
+			var module = $.wikiEditor.modules.dialogs.modules[module];
+			// Only create the dialog if it doesn't exist yet
+			if ( $( '#' + module.id ).size() == 0 ) {
+				var configuration = module.dialog;
+				// Add some stuff to configuration
+				configuration.bgiframe = true;
+				configuration.autoOpen = false;
+				configuration.modal = true;
+				configuration.title = $.wikiEditor.autoMsg( module, 'title' );
+				// Transform messages in keys
+				// Stupid JS won't let us do stuff like
+				// foo = { gM ('bar'): baz }
+				configuration.newButtons = {};
+				for ( msg in configuration.buttons )
+					configuration.newButtons[gM( msg )] = configuration.buttons[msg];
+				configuration.buttons = configuration.newButtons;
+				// Create the dialog <div>
+				$( '<div /> ' )
+					.attr( 'id', module.id )
+					.html( module.html )
+					.data( 'context', context )
+					.appendTo( $( 'body' ) )
+					.each( module.init )
+					.dialog( configuration )
+					.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+					.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+						$(this).closest( '.ui-dialog-content' ).each(
+							$.wikiEditor.modules.dialogs.fn.resize );
+					});
+				
+				// Add tabindexes to dialog form elements
+				// Find the highest tabindex in use
+				var maxTI = 0;
+				$j( '[tabindex]' ).each( function() {
+					var ti = parseInt( $j(this).attr( 'tabindex' ) );
+					if ( ti > maxTI )
+						maxTI = ti;
+				});
+				
+				var tabIndex = maxTI + 1;
+				$j( '.ui-dialog input, .ui-dialog button' )
+					.not( '[tabindex]' )
+					.each( function() {
+						$j(this).attr( 'tabindex', tabIndex++ );
+					});
+			}
+		}
+	},
+	
+	/**
+	 * Resize a dialog so its contents fit
+	 *
+	 * Usage: dialog.each( resize ); or dialog.bind( 'blah', resize );
+	 */
+	resize: function() {
+		var wrapper = $(this).closest( '.ui-dialog' );
+		// Make sure elements don't wrapped so we get an accurate idea
+		// of whether they really fit. Also temporarily show hidden
+		// elements.
+		
+		// Work around jQuery bug where <div style="display:inline;" />
+		// inside a dialog is both :visible and :hidden 
+		var oldHidden = $(this).find( '*' ).not( ':visible' );
+		
+		// Save the style attributes of the hidden elements to restore
+		// them later. Calling hide() after show() messes up for
+		// elements hidden with a class
+		oldHidden.each( function() {
+			$(this).data( 'oldstyle', $(this).attr( 'style' ) );
+		});
+		oldHidden.show();
+		var oldWS = $(this).css( 'white-space' );
+		$(this).css( 'white-space', 'nowrap' );
+		
+		if ( wrapper.width() <= $(this).get(0).scrollWidth ) {
+			$(this).width( $(this).get(0).scrollWidth );
+			wrapper.width( wrapper.get(0).scrollWidth );
+			$(this).dialog( { 'width': wrapper.width() } );
+		}
+		
+		$(this).css( 'white-space', oldWS );
+		oldHidden.each( function() {
+			$(this).attr( 'style', $(this).data( 'oldstyle' ) );
+		});
+	}
+},
+'modules': {}
+
+}; } ) ( jQuery );
+/**
  * Toolbar module for wikiEditor
  */
 ( function( $ ) { $.wikiEditor.modules.toolbar = {
@@ -1313,7 +2007,7 @@ fn: {
 		$.wikiEditor.modules.toc.fn.build( context );
 		$.wikiEditor.modules.toc.fn.update( context );
 		context.$textarea
-			.bind( 'keyup encapsulateSelection',
+			.delayedBind( 1000, 'keyup encapsulateSelection',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -1325,7 +2019,7 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition focus',
+			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -1367,7 +2061,20 @@ fn: {
 				}
 				section = Math.max( 0, section );
 			}
-			context.modules.$toc.find( 'a.section-' + section ).addClass( 'currentSelection' );
+			var sectionLink = context.modules.$toc.find( 'a.section-' + section );
+			sectionLink.addClass( 'currentSelection' );
+			
+			// Scroll the highlighted link into view if necessary
+			var relTop = sectionLink.offset().top - context.modules.$toc.offset().top;
+			var scrollTop = context.modules.$toc.scrollTop();
+			var divHeight = context.modules.$toc.height();
+			var sectionHeight = sectionLink.height();
+			if ( relTop < 0 )
+				// Scroll up
+				context.modules.$toc.scrollTop( scrollTop + relTop );
+			else if ( relTop + sectionHeight > divHeight )
+				// Scroll down
+				context.modules.$toc.scrollTop( scrollTop + relTop + sectionHeight - divHeight );
 		}
 	},
 	/**
@@ -1414,7 +2121,9 @@ fn: {
 							.data( 'textbox', context.$textarea )
 							.data( 'position', structure[i].position )
 							.click( function( event ) {
-								$(this).data( 'textbox' ).scrollToCaretPosition( $(this).data( 'position' ) );
+								$(this).data( 'textbox' )
+									.setSelection( $(this).data( 'position' ) )
+									.scrollToCaretPosition();
 								event.preventDefault();
 							} )
 							.text( structure[i].text )
@@ -1478,7 +2187,7 @@ fn: {
 			if ( outline[i].level > lastLevel ) {
 				nLevel++;
 			}
-			else if ( outline[i].level < nLevel ) {
+			else if ( outline[i].level < lastLevel ) {
 				nLevel -= Math.max( 1, lastLevel - outline[i].level );
 			}
 			if ( nLevel <= 0 ) {
@@ -1493,6 +2202,7 @@ fn: {
 		if ( $( 'input[name=wpSection]' ).val() == '' )
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		context.modules.$toc.html( buildList( structure ) );
+		context.modules.$toc.find( 'ul a' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}

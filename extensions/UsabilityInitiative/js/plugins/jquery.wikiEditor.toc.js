@@ -43,7 +43,7 @@ fn: {
 		$.wikiEditor.modules.toc.fn.build( context );
 		$.wikiEditor.modules.toc.fn.update( context );
 		context.$textarea
-			.bind( 'keyup encapsulateSelection',
+			.delayedBind( 1000, 'keyup encapsulateSelection',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -55,7 +55,7 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition focus',
+			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -97,7 +97,20 @@ fn: {
 				}
 				section = Math.max( 0, section );
 			}
-			context.modules.$toc.find( 'a.section-' + section ).addClass( 'currentSelection' );
+			var sectionLink = context.modules.$toc.find( 'a.section-' + section );
+			sectionLink.addClass( 'currentSelection' );
+			
+			// Scroll the highlighted link into view if necessary
+			var relTop = sectionLink.offset().top - context.modules.$toc.offset().top;
+			var scrollTop = context.modules.$toc.scrollTop();
+			var divHeight = context.modules.$toc.height();
+			var sectionHeight = sectionLink.height();
+			if ( relTop < 0 )
+				// Scroll up
+				context.modules.$toc.scrollTop( scrollTop + relTop );
+			else if ( relTop + sectionHeight > divHeight )
+				// Scroll down
+				context.modules.$toc.scrollTop( scrollTop + relTop + sectionHeight - divHeight );
 		}
 	},
 	/**
@@ -144,7 +157,9 @@ fn: {
 							.data( 'textbox', context.$textarea )
 							.data( 'position', structure[i].position )
 							.click( function( event ) {
-								$(this).data( 'textbox' ).scrollToCaretPosition( $(this).data( 'position' ) );
+								$(this).data( 'textbox' )
+									.setSelection( $(this).data( 'position' ) )
+									.scrollToCaretPosition();
 								event.preventDefault();
 							} )
 							.text( structure[i].text )
@@ -208,7 +223,7 @@ fn: {
 			if ( outline[i].level > lastLevel ) {
 				nLevel++;
 			}
-			else if ( outline[i].level < nLevel ) {
+			else if ( outline[i].level < lastLevel ) {
 				nLevel -= Math.max( 1, lastLevel - outline[i].level );
 			}
 			if ( nLevel <= 0 ) {
@@ -223,6 +238,7 @@ fn: {
 		if ( $( 'input[name=wpSection]' ).val() == '' )
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		context.modules.$toc.html( buildList( structure ) );
+		context.modules.$toc.find( 'ul a' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}

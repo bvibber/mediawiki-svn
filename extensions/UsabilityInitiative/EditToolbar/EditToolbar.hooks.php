@@ -59,6 +59,7 @@ class EditToolbarHooks {
 					'edittoolbar-tool-link-int-target-status-invalid',
 					'edittoolbar-tool-link-int-target-status-loading',
 					'edittoolbar-tool-link-int-invalid',
+					'edittoolbar-tool-link-ext-invalid',
 					'edittoolbar-tool-file',
 					'edittoolbar-tool-file-pre',
 					'edittoolbar-tool-file-example',
@@ -104,6 +105,7 @@ class EditToolbarHooks {
 					'edittoolbar-tool-table-dimensions-header',
 					'edittoolbar-tool-table-insert',
 					'edittoolbar-tool-table-cancel',
+					'edittoolbar-tool-table-toomany',
 					'edittoolbar-tool-replace',
 					'edittoolbar-tool-replace-title',
 					'edittoolbar-tool-replace-search',
@@ -114,6 +116,7 @@ class EditToolbarHooks {
 					'edittoolbar-tool-replace-button',
 					'edittoolbar-tool-replace-close',
 					'edittoolbar-tool-replace-nomatch',
+					'edittoolbar-tool-replace-success',
 					/* Special Characters Section */
 					'edittoolbar-section-characters',
 					'edittoolbar-characters-page-latin',
@@ -219,7 +222,7 @@ class EditToolbarHooks {
 			);
 		}
 		
-		if ( !$wgEditToolbarCGDGlobalEnable && $wgEditToolbarCGDGlobalEnable ) {
+		if ( !$wgEditToolbarCGDGlobalEnable && $wgEditToolbarCGDUserEnable ) {
 			wfLoadExtensionMessages( 'EditToolbar' );
 			$defaultPreferences['usebetatoolbar-cgd'] = array(
 				'type' => 'toggle',

@@ -139,8 +139,11 @@ $messages['cs'] = array(
  */
 $messages['da'] = array(
 	'optin-try' => 'Prøv Beta',
+	'tooltip-pt-optin-try' => 'Afprøv nye funktioner',
 	'optin-leave' => 'Forlad Beta',
+	'tooltip-pt-optin-leave' => 'Slå de nye funktioner fra igen',
 	'optin-feedback' => 'Tilbagemelding om Beta',
+	'tooltip-pt-optin-feedback' => 'Giv en tilbagemelding om dine oplevelser med de nye funktioner',
 );
 
 /** German (Deutsch)
@@ -190,7 +193,7 @@ $messages['el'] = array(
 	'tooltip-pt-optin-try' => 'Δοκιμάστε νέα χαρακτηριστικά',
 	'optin-leave' => 'Εγκαταλείψτε την Beta',
 	'tooltip-pt-optin-leave' => 'Απενεργοποίηση νέων χαρακτηριστικών',
-	'optin-feedback' => 'Ανατροφοδότηση Beta',
+	'optin-feedback' => 'Ανάδραση περί της Beta',
 	'tooltip-pt-optin-feedback' => 'Παροχή ανάδρασης περί της εμπειρίας σας με τις νέες λειτουργίες',
 );
 
@@ -240,8 +243,20 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'optin-try' => 'Beta probatu',
+	'tooltip-pt-optin-try' => 'Eginbide berriak probatu',
 	'optin-leave' => 'Beta utzi',
+	'tooltip-pt-optin-leave' => 'Eginbide berriak ezgaitu',
 	'optin-feedback' => 'Beta feedbacka',
+);
+
+/** Persian (فارسی)
+ * @author Ladsgroup
+ */
+$messages['fa'] = array(
+	'optin-try' => 'استفاده از بتا',
+	'tooltip-pt-optin-try' => 'خروج از امکانات جدید',
+	'optin-leave' => 'خروج از بتا',
+	'tooltip-pt-optin-leave' => 'خاموش کردن امکانات جدید',
 );
 
 /** Finnish (Suomi)
@@ -255,7 +270,9 @@ $messages['fi'] = array(
 	'optin-try' => 'Kokeile Betaa',
 	'tooltip-pt-optin-try' => 'Kokeile uusia ominaisuuksia',
 	'optin-leave' => 'Poistu Betasta',
+	'tooltip-pt-optin-leave' => 'Poista käytöstä uudet omaisuudet',
 	'optin-feedback' => 'Anna palautetta',
+	'tooltip-pt-optin-feedback' => 'Tarjoa palautetta kokemuksistasi uusien ominaisuuksien osalta',
 );
 
 /** French (Français)
@@ -298,6 +315,18 @@ $messages['gsw'] = array(
 	'tooltip-pt-optin-feedback' => 'Gib Ruckmäldige iber Dyni Erfahrige mit dr neje Funktione',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'optin-try' => 'הרשמה לגרסת בטא',
+	'tooltip-pt-optin-try' => 'ניסוי תכונות חדשות',
+	'optin-leave' => 'עזיבת גרסת הבטא',
+	'tooltip-pt-optin-leave' => 'כיבוי התכונות החדשות',
+	'optin-feedback' => 'משוב על גרסת הבטא',
+	'tooltip-pt-optin-feedback' => 'כתבו משוב על נסיונכם עם התכונות החדשות',
+);
+
 /** Croatian (Hrvatski)
  * @author Suradnik13
  */
@@ -330,6 +359,7 @@ $messages['hu'] = array(
 	'optin-leave' => 'A bétateszt befejezése',
 	'tooltip-pt-optin-leave' => 'Új lehetőségek kikapcsolása',
 	'optin-feedback' => 'Visszajelzés a bétáról',
+	'tooltip-pt-optin-feedback' => 'Adj visszajelzést az új funkciókkal kapcsolatos tapasztalataidról',
 );
 
 /** Interlingua (Interlingua)
@@ -363,6 +393,13 @@ $messages['id'] = array(
  */
 $messages['io'] = array(
 	'optin-try' => 'Probez Beta',
+);
+
+/** Icelandic (Íslenska)
+ * @author Spacebirdy
+ */
+$messages['is'] = array(
+	'optin-try' => 'Prófa beta-útgáfu',
 );
 
 /** Italian (Italiano)
@@ -441,7 +478,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'optin-try' => 'Probéiert Beta aus',
-	'tooltip-pt-optin-try' => 'Probéiert  déi nei Fonctionalitéiten aus',
+	'tooltip-pt-optin-try' => 'Probéiert déi nei Fonctionalitéiten aus',
 	'optin-leave' => 'Beta verloossen',
 	'tooltip-pt-optin-leave' => 'Schalt déi nei Fonctionalitéiten aus',
 	'optin-feedback' => 'Gitt eis Är Meenung',
@@ -472,6 +509,18 @@ $messages['mk'] = array(
 	'optin-try' => 'Пробај ја Бета',
 	'optin-leave' => 'Напушти ја Бета',
 	'optin-feedback' => 'Мислења за Бета',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'optin-try' => 'ബീറ്റ പരീക്ഷിക്കുക',
+	'tooltip-pt-optin-try' => 'പുതിയ സവിശേഷതകള്‍ പരിശോധിക്കുക',
+	'optin-leave' => 'ബീറ്റ വിടുക',
+	'tooltip-pt-optin-leave' => 'പുതിയ സവിശേഷതകള്‍ വേണ്ട',
+	'optin-feedback' => 'ബീറ്റയുടെ ഉപയോഗാനുഭവമറിയിക്കുക',
+	'tooltip-pt-optin-feedback' => 'പുതിയ സവിശേഷതകളുമായുള്ള താങ്കളുടെ അനുഭവം പങ്കു വെയ്ക്കുക',
 );
 
 /** Malay (Bahasa Melayu)
@@ -515,6 +564,17 @@ $messages['nl'] = array(
 	'tooltip-pt-optin-feedback' => 'Terugkoppeling geven over uw ervaringen met de nieuwe functionaliteit',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'optin-try' => 'Prøv Beta',
+	'tooltip-pt-optin-try' => 'Prøv ut nye funksjonar',
+	'optin-leave' => 'Gå ut av Beta',
+	'tooltip-pt-optin-leave' => 'Slå av nye funksjonar',
+	'optin-feedback' => 'Beta tilbakemelding',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor
@@ -533,8 +593,11 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'optin-try' => 'Ensajar la Bèta',
+	'tooltip-pt-optin-try' => 'Ensajatz las foncionalitats novèlas',
 	'optin-leave' => 'Quitar la Bèta',
+	'tooltip-pt-optin-leave' => 'Desactivar las foncionalitats novèlas',
 	'optin-feedback' => 'Balhatz vòstre vejaire',
+	'tooltip-pt-optin-feedback' => "Balhatz vòstras impressions sus l'utilizacion de las foncionalitats novèlas",
 );
 
 /** Deitsch (Deitsch)
@@ -639,8 +702,11 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'optin-try' => 'Beta-ны тургутуу',
+	'tooltip-pt-optin-try' => 'Саҥа кыахтары тургут',
 	'optin-leave' => 'Beta-ттан тахсыы',
+	'tooltip-pt-optin-leave' => 'Саҥа кыахтары туһанары араар',
 	'optin-feedback' => 'Сыанабылы ыытарга',
+	'tooltip-pt-optin-feedback' => 'Саҥаны туттубутуҥ туһунан кэпсээ',
 );
 
 /** Slovak (Slovenčina)
@@ -665,11 +731,14 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'optin-try' => 'Пробајте бета-верзију',
+	'tooltip-pt-optin-try' => 'Пробајте нове могућности',
 	'optin-leave' => 'Напустите бета-верзију',
+	'tooltip-pt-optin-leave' => 'Угасите нове могућности',
 	'optin-feedback' => 'Повратна информација о бета-верзији',
 );
 
@@ -735,6 +804,15 @@ $messages['vec'] = array(
 	'tooltip-pt-optin-leave' => 'Destaca le funsionalità nove',
 	'optin-feedback' => 'Cossa ghe ne pénsito de Beta',
 	'tooltip-pt-optin-feedback' => "Dane la to inpression su l'utiliso de ste funsionalità nove",
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'optin-try' => 'Kodvi bata',
+	'tooltip-pt-optin-try' => 'Kodvgat uded voindad',
+	'optin-leave' => 'Lähtta Betaspäi',
 );
 
 /** Vietnamese (Tiếng Việt)

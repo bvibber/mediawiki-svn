@@ -757,7 +757,7 @@ js2AddOnloadHook( function() {
 					<li><a href="#edittoolbar-link-dialog-tab-int" rel="edittoolbar-tool-link-int"></a></li>\
 					<li><a href="#edittoolbar-link-dialog-tab-ext" rel="edittoolbar-tool-link-ext"></a></li>\
 				</ul>\
-				<div id="edittoolbar-link-dialog-tab-int"><form><fieldset><table><tr>\
+				<div id="edittoolbar-link-dialog-tab-int"><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label></td>\
 					<td>\
 						<input type="text" id="edittoolbar-link-int-target" />\
@@ -766,14 +766,14 @@ js2AddOnloadHook( function() {
 				</tr><tr>\
 					<td><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label></td>\
 					<td><input type="text" id="edittoolbar-link-int-text" /></td>\
-				</table></fieldset></form></div>\
-				<div id="edittoolbar-link-dialog-tab-ext"><form><fieldset><table><tr>\
+				</table></fieldset></div>\
+				<div id="edittoolbar-link-dialog-tab-ext"><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label></td>\
 					<td><input type="text" id="edittoolbar-link-ext-target" /></td>\
 				</tr><tr>\
 					<td><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label></td>\
 					<td><input type="text" id="edittoolbar-link-ext-text" /></td>\
-				</table></fieldset></form></div>\
+				</table></fieldset></div>\
 			</div>',
 		init: function() {
 			// Updates the UI to show if the page title being inputed by the user exists or not
@@ -940,13 +940,12 @@ js2AddOnloadHook( function() {
 				},
 				cancel: function() {
 					var request = $j(this).data( 'request' );
-					if ( request.abort )
+					if ( request )
 						request.abort();
 				}
 			});
 		},
 		dialog: {
-			width: 550, // FIXME: autoresize width
 			buttons: {
 				'edittoolbar-tool-link-insert': function() {
 					function escapeInternalText( s ) {
@@ -963,14 +962,15 @@ js2AddOnloadHook( function() {
 					var whitespace = [ '', '' ];
 					switch ( $j( '#edittoolbar-link-tabs' ).tabs( 'option', 'selected' ) ) {
 						case 0: // Internal link
+							var target = $j( '#edittoolbar-link-int-target' ).val();
+							var text = $j( '#edittoolbar-link-int-text' ).val();
 							// FIXME: Exactly how fragile is this?
-							if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' ) ) {
+							if ( $j( '#edittoolbar-link-int-target-status-invalid' ).is( ':visible' )  ||
+									target == '' ) {
 								// Refuse to add links to invalid titles
 								alert( gM( 'edittoolbar-tool-link-int-invalid' ) );
 								return;
 							}
-							var target = $j( '#edittoolbar-link-int-target' ).val();
-							var text = $j( '#edittoolbar-link-int-text' ).val();
 							whitespace = $j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace' );
 							if ( target == text )
 								insertText = '[[' + target + ']]';
@@ -983,6 +983,12 @@ js2AddOnloadHook( function() {
 							var escTarget = escapeExternalTarget( target );
 							var escText = escapeExternalText( text );
 							whitespace = $j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace' );
+							if ( target == '' || target == 'http://' ) {
+								// Refuse to add links to invalid URLs
+								// TODO: More elaborate regex here?
+								alert( gM( 'edittoolbar-tool-link-ext-invalid' ) );
+								return;
+							}
 							if ( escTarget == escText )
 								insertText = escTarget;
 							else if ( text == '' )
@@ -1008,8 +1014,8 @@ js2AddOnloadHook( function() {
 			open: function() {
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
-					$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
-					$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
+				$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
+				$j( '#edittoolbar-link-dialog-tab-ext' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
 					var intText, intTarget, extText, extTarget;
 					var matches;
@@ -1048,6 +1054,19 @@ js2AddOnloadHook( function() {
 					$j( '#edittoolbar-link-int-text' ).val() == $j( '#edittoolbar-link-int-target' ).val()
 				);
 				$j( '#edittoolbar-link-int-target' ).suggestions();
+				
+				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
+					$j(this).data( 'dialogkeypressset', true );
+					// Execute the action associated with the first button
+					// when the user presses Enter
+					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							$j(this)
+								.find( 'button:first' )
+								.click();
+						}
+					});
+				}
 			}
 		}
 	},
@@ -1055,7 +1074,7 @@ js2AddOnloadHook( function() {
 		titleMsg: 'edittoolbar-tool-table-title',
 		id: 'edittoolbar-table-dialog',
 		html: '\
-			<form><fieldset><legend rel="edittoolbar-tool-table-dimensions"></legend><table><tr>\
+			<fieldset><legend rel="edittoolbar-tool-table-dimensions"></legend><table><tr>\
 				<td><input type="checkbox" id="edittoolbar-table-dimensions-header" value="1" /></td>\
 				<td class="label"><label for="edittoolbar-table-dimensions-header"\
 					rel="edittoolbar-tool-table-dimensions-header"></label></td>\
@@ -1066,22 +1085,34 @@ js2AddOnloadHook( function() {
 				<td class="label"><label for="edittoolbar-table-dimensions-rows"\
 					rel="edittoolbar-tool-table-dimensions-rows"></label></td>\
 				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="2" /></td>\
-			</tr></table></fieldset></form>',
+			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+			});
+			// Execute the action associated with the first button
+			// when the user presses Enter
+			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+				if ( ( e.keyCode || e.which ) == 13 ) {
+					$j(this)
+						.find( 'button:first' )
+						.click();
+				}
 			});
 			$j( '#edittoolbar-table-dimensions-rows' ).val( 2 );
 			$j( '#edittoolbar-table-dimensions-columns' ).val( 2 );
 		},
 		dialog: {
-			width: 350, // FIXME: autoresize
 			buttons: {
 				'edittoolbar-tool-table-insert': function() {
 					var rows = parseInt( $j( '#edittoolbar-table-dimensions-rows' ).val() );
 					var cols = parseInt( $j( '#edittoolbar-table-dimensions-columns' ).val() );
 					var header = Math.min( 1, $j( '#edittoolbar-table-dimensions-header:checked' ).size() );
 					var table = "{|\n";
+					if ( rows * cols > 1000 ) {
+						alert( gM( 'edittoolbar-tool-table-toomany', 1000 ) );
+						return;
+					}
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
 						for ( var c = 0; c < cols; c++ ) {
@@ -1116,6 +1147,20 @@ js2AddOnloadHook( function() {
 				'edittoolbar-tool-table-cancel': function() {
 					$j(this).dialog( 'close' );
 				}
+			},
+			open: function() {
+				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
+					$j(this).data( 'dialogkeypressset', true );
+					// Execute the action associated with the first button
+					// when the user presses Enter
+					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							$j(this)
+								.find( 'button:first' )
+								.click();
+						}
+					});
+				}
 			}
 		}
 	},
@@ -1123,7 +1168,11 @@ js2AddOnloadHook( function() {
 		titleMsg: 'edittoolbar-tool-replace-title',
 		id: 'edittoolbar-replace-dialog',
 		html: '\
-			<form><fieldset><table><tr>\
+			<div id="edittoolbar-replace-message">\
+				<div id="edittoolbar-replace-nomatch" rel="edittoolbar-tool-replace-nomatch"></div>\
+				<div id="edittoolbar-replace-success"></div>\
+			</div>\
+			<fieldset><table><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
 				<td><input type="text" id="edittoolbar-replace-search" /></td>\
 			</tr><tr>\
@@ -1138,23 +1187,67 @@ js2AddOnloadHook( function() {
 			</tr><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-all" /></td>\
 				<td><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></td>\
-			</tr></table></fieldset></form>',
+			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
 			});
+			// Execute the action associated with the first button
+			// when the user presses Enter
+			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+				if ( ( e.keyCode || e.which ) == 13 ) {
+					$j(this)
+						.find( 'button:first' )
+						.click();
+				}
+			});
 		},
 		dialog: {
-			width: 350, // FIXME: autoresize width
 			buttons: {
 				'edittoolbar-tool-replace-button': function() {
+					function fixOperaBrokenness( s ) {
+						// This function works around Opera's
+						// broken newline handling in textareas.
+						// .val() has \n while selection functions
+						// treat newlines as \r\n
+						
+						if ( typeof $j.isOperaBroken == 'undefined' ) {
+							// Create a textarea inside a div
+							// with zero area, to hide it properly
+							var div = $j( '<div />' )
+								.height( 0 )
+								.width( 0 )
+								.insertBefore( $textarea );
+							var textarea = $j( '<textarea></textarea' )
+								.height( 0 )
+								.appendTo( div )
+								.val( "foo\r\nbar" );
+							
+							// Try to search&replace bar --> BAR
+							var index = textarea.val().indexOf( 'bar' );
+							textarea.select();
+							textarea.setSelection( index, index + 3 );
+							textarea.encapsulateSelection( '', 'BAR', '', false, true );
+							if ( textarea.val().substr( -1 ) == 'R' )
+								$j.isOperaBroken = false;
+							else
+								$j.isOperaBroken = true; 
+							div.remove();
+						}
+						if ( $j.isOperaBroken )
+							s = s.replace( /\n/g, "\r\n" );
+						return s;
+					}
+
+					$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
 					var searchStr = $j( '#edittoolbar-replace-search' ).val();
 					var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
 					var flags = '';
+					var replaceAll = $j( '#edittoolbar-replace-all' ).is( ':checked' );
 					if ( !$j( '#edittoolbar-replace-case' ).is( ':checked' ) ) {
 						flags += 'i';
 					}
-					if ( $j( '#edittoolbar-replace-all' ).is( ':checked' ) ) {
+					if ( replaceAll ) {
 						flags += 'g';
 					}
 					if ( !$j( '#edittoolbar-replace-regex' ).is( ':checked' ) ) {
@@ -1162,15 +1255,57 @@ js2AddOnloadHook( function() {
 					}
 					var regex = new RegExp( searchStr, flags );
 					var $textarea = $j(this).data( 'context' ).$textarea;
-					if ( !$textarea.val().match( regex ) ) {
-						alert( gM( 'edittoolbar-tool-replace-nomatch' ) );
+					var text = fixOperaBrokenness( $textarea.val() );
+					var matches = text.match( regex );
+					if ( !matches ) {
+						$j( '#edittoolbar-replace-nomatch' ).show();
+					} else if ( replaceAll ) {
+						// Prepare to select the last match
+						var start = text.lastIndexOf( matches[matches.length - 1] );
+						var end = start + replaceStr.length;
+						var corr = ( matches.length - 1 ) * ( replaceStr.length - searchStr.length ); 
+						$textarea
+							.val( $textarea.val().replace( regex, replaceStr ) )
+							.change()
+							.setSelection( start + corr, end + corr )
+							.scrollToCaretPosition();
+						
+						$j( '#edittoolbar-replace-success' )
+							.text( gM( 'edittoolbar-tool-replace-success', matches.length ) )
+							.show();
+						$j(this).data( 'offset', 0 );
 					} else {
-						$textarea.val( $textarea.val().replace( regex, replaceStr ) );
+						var start = text.indexOf( matches[0],
+							$j(this).data( 'offset' ) );
+						var end = start + matches[0].length;
+						var newEnd = start + replaceStr.length;
+						$textarea
+							.setSelection( start, end )
+							.encapsulateSelection( '', replaceStr, '', false, true )
+							.setSelection( start, newEnd )
+							.scrollToCaretPosition();
+						$j(this).data( 'offset', newEnd );
 					}
-					// TODO: Hook for wikEd
 				},
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
+					$j(this).data( 'context' ).$textarea.focus();
+				}
+			},
+			open: function() {
+				$j(this).data( 'offset', 0 );
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
+				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
+					$j(this).data( 'dialogkeypressset', true );
+					// Execute the action associated with the first button
+					// when the user presses Enter
+					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							$j(this)
+								.find( 'button:first' )
+								.click();
+						}
+					});
 				}
 			}
 		}

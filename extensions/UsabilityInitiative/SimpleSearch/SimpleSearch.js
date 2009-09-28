@@ -80,27 +80,31 @@ js2AddOnloadHook( function() {
 				render: function( query ) {
 					var perfectMatch = false;
 					$j(this).closest( '.suggestions' ).find( '.suggestions-results div' ).each( function() {
-						if ( $j(this).text() == query ) {
+						if ( $j(this).data( 'text' ) == query ) {
 							perfectMatch = true;
 						}
 					} );
 					if ( perfectMatch ) {
 						if ( $j(this).children().size() == 0  ) {
-							$j(this).append(
-								$j( '<div />' )
-									.addClass( 'special-label' )
-									.text( gM( 'simplesearch-containing' ) )
-							);
-							$j(this).append(
-								$j( '<span />' ).addClass( 'special-query' ).text( query )
-							);
 							$j(this).show();
+							$label = $j( '<div />' )
+								.addClass( 'special-label' )
+								.text( gM( 'simplesearch-containing' ) )
+								.appendTo( $j(this) );
+							$query = $j( '<div />' )
+								.addClass( 'special-query' )
+								.text( query )
+								.appendTo( $j(this) );
+							$query.autoEllipse();
 						} else {
-							$j(this).find( '.special-query' ).text( query );
+							$j(this).find( '.special-query' )
+								.empty()
+								.text( query )
+								.autoEllipse();
 						}
 					} else {
-						$j(this).empty();
 						$j(this).hide();
+						$j(this).empty();
 					}
 				},
 				select: function( $textbox ) {

@@ -34,9 +34,12 @@ margin:0;
 .suggestions-result{
 color:black;
 color:WindowText;
-padding:0.25em 0.25em;
-line-height:1.25em;
 margin:0;
+width:100%;
+}
+.suggestions-result span{
+line-height:1.5em;
+padding:0.25em 0.25em;
 }
 .suggestions-result-current{
 background-color:#4C59A6;
@@ -83,7 +86,7 @@ border-bottom:solid silver 1px;
 .ui-widget table td{
 padding:0.5em;
 }
-div.os-suggest{
+div.suggestions{
 z-index:1099;
 }
 .wikiEditor-ui-text{

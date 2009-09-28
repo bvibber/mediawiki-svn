@@ -119,21 +119,6 @@ $.suggestions = {
 					} else {
 						// Rebuild the suggestions list
 						context.data.$container.show();
-						var $results = context.data.$container.children( '.suggestions-results' );
-						$results.empty();
-						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
-							$result = $( '<div />' )
-								.addClass( 'suggestions-result' )
-								.attr( 'rel', i )
-								.data( 'text', context.config.suggestions[i] );
-							// Allow custom rendering
-							if ( typeof context.config.result.render == 'function' ) {
-								context.config.result.render.call( $result, context.config.suggestions[i] );
-							} else {
-								$result.text( context.config.suggestions[i] );
-							}
-							$results.append( $result );
-						}
 						// Update the size and position of the list
 						context.data.$container.css( {
 							'top': context.config.$region.offset().top + context.config.$region.outerHeight(),
@@ -143,6 +128,21 @@ $.suggestions = {
 							'left': context.config.$region.offset().left,
 							'right': 'auto'
 						} );
+						var $results = context.data.$container.children( '.suggestions-results' );
+						$results.empty();
+						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
+							$result = $( '<div />' )
+								.addClass( 'suggestions-result' )
+								.attr( 'rel', i )
+								.data( 'text', context.config.suggestions[i] )
+								.appendTo( $results );
+							// Allow custom rendering
+							if ( typeof context.config.result.render == 'function' ) {
+								context.config.result.render.call( $result, context.config.suggestions[i] );
+							} else {
+								$result.text( context.config.suggestions[i] ).autoEllipse();
+							}
+						}
 					}
 				}
 				break;
@@ -186,6 +186,10 @@ $.suggestions = {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
+				
+				// .val() doesn't call any event handlers, so
+				// let the world know what happened
+				context.data.$textbox.change();
 			}
 		}
 		$.suggestions.special( context );
@@ -194,23 +198,27 @@ $.suggestions = {
 	 * Respond to keypress event
 	 * @param {Integer} key Code of key pressed
 	 */
-	keypress: function( context, key ) {
+	keypress: function( e, context, key ) {
+		var wasVisible = context.data.$container.is( ':visible' );
+		var preventDefault = false;
 		switch ( key ) {
 			// Arrow down
 			case 40:
-				if ( context.data.$container.is( ':visible' ) ) {
+				if ( wasVisible ) {
 					$.suggestions.highlight( context, 'next', true );
 				} else {
 					$.suggestions.update( context, false );
 				}
 				context.data.$textbox.trigger( 'change' );
+				preventDefault = true;
 				break;
 			// Arrow up
 			case 38:
-				if ( context.data.$container.is( ':visible' ) ) {
+				if ( wasVisible ) {
 					$.suggestions.highlight( context, 'prev', true );
 				}
 				context.data.$textbox.trigger( 'change' );
+				preventDefault = wasVisible;
 				break;
 			// Escape
 			case 27:
@@ -218,14 +226,20 @@ $.suggestions = {
 				$.suggestions.restore( context );
 				$.suggestions.cancel( context );
 				context.data.$textbox.trigger( 'change' );
+				preventDefault = wasVisible;
 				break;
 			// Enter
 			case 13:
 				context.data.$container.hide();
+				preventDefault = wasVisible;
 				break;
 			default:
 				$.suggestions.update( context, true );
 				break;
+		}
+		if ( preventDefault ) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
 		}
 	}
 };
@@ -315,7 +329,7 @@ $.fn.suggestions = function() {
 							if ( $result.get( 0 ) != $other.get( 0 ) ) {
 								return;
 							}
-							highlight( $result, true );
+							$.suggestions.highlight( context, $result, true );
 							context.data.$container.hide();
 							if ( typeof context.config.result.select == 'function' ) {
 								context.config.result.select.call( $result, context.data.$textbox );
@@ -352,16 +366,32 @@ $.fn.suggestions = function() {
 					// Store key pressed to handle later
 					context.data.keypressed = ( e.keyCode == undefined ) ? e.which : e.keyCode;
 					context.data.keypressedCount = 0;
+					
+					switch ( context.data.keypressed ) {
+						// This preventDefault logic is duplicated from
+						// $.suggestions.keypress(), which sucks
+						case 40:
+							e.preventDefault();
+							e.stopImmediatePropagation();
+							break;
+						case 38:
+						case 27:
+						case 13:
+							if ( context.data.$container.is( ':visible' ) ) {
+								e.preventDefault();
+								e.stopImmediatePropagation();
+							}
+					}
 				} )
-				.keypress( function() {
+				.keypress( function( e ) {
 					context.data.keypressedCount++;
-					$.suggestions.keypress( context, context.data.keypressed );
+					$.suggestions.keypress( e, context, context.data.keypressed );
 				} )
-				.keyup( function() {
+				.keyup( function( e ) {
 					// Some browsers won't throw keypress() for arrow keys. If we got a keydown and a keyup without a
 					// keypress in between, solve it
 					if ( context.data.keypressedCount == 0 ) {
-						$.suggestions.keypress( context, context.data.keypressed );
+						$.suggestions.keypress( e, context, context.data.keypressed );
 					}
 				} )
 				.blur( function() {

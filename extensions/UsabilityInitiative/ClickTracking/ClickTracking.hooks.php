@@ -23,11 +23,6 @@ class ClickTrackingHooks {
 		);
 
 		$wgExtNewTables[] = array(
-			'user_daily_contribs',
-			dirname( __FILE__ ) . '/UserDailyContribs.sql'
-		);
-
-		$wgExtNewTables[] = array(
 			'click_tracking_events',
 			dirname( __FILE__ ) . '/ClickTrackingEvents.sql'
 		);
@@ -55,6 +50,8 @@ class ClickTrackingHooks {
 	 * Adds JavaScript
 	 */
 	public static function addJS(){
+		global $wgOut;
+		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'ClickTracking/ClickTracking.js' );
 		UsabilityInitiativeHooks::addVariables(
@@ -62,11 +59,9 @@ class ClickTrackingHooks {
 				'wgTrackingToken' => ClickTrackingHooks::get_session_id()
 			)
 		);
-		UsabilityInitiativeHooks::addVariables(
-			array( 
-				'wgClickTrackingIsThrottled' => ClickTrackingHooks::isUserThrottled()
-			)
-		);
+		//need a literal false, not "false" to be output, to work prperly
+		$userThrottle = ClickTrackingHooks::isUserThrottled();
+		$wgOut->addScript("<script> var wgClickTrackingIsThrottled = $userThrottle; </script>");
 		
 		return true;
 		
@@ -112,20 +107,6 @@ class ClickTrackingHooks {
 		return $edits;
 	}
 
-	/**
-	 * Stores a new contribution
-	 * @return true
-	 */
-	public static function storeNewContrib(){
-		global $wgUser;
-		$today = gmdate( 'Ymd', time() );
-		$dbw = wfGetDB( DB_MASTER );
-		$sql = 
-		"INSERT INTO user_daily_contribs (user_id,day,contribs) VALUES ({$wgUser->getId()},$today,1) ON DUPLICATE KEY UPDATE contribs=contribs+1;";
-		$dbw->query($sql, __METHOD__);
-		
-		return true;
-	}
 
 	/**
 	 * Get event ID from name

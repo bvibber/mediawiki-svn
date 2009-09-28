@@ -30,91 +30,82 @@ getSelection: function() {
  * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
  */
 encapsulateSelection: function( pre, peri, post, ownline, replace ) {
-	/**
-	 * Check if the selected text is the same as the insert text
-	 */ 
-	function checkSelectedText() {
-		if ( !selText ) {
-			selText = peri;
-			isSample = true;
-		} else if ( replace ) {
-			selText = peri;
-		} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
-			// Exclude ending space char
-			selText = selText.substring(0, selText.length - 1);
-			post += ' '
-		}
-	}
-	var e = this.jquery ? this[0] : this;
-	var selText = $(this).getSelection();
-	var isSample = false;
-	if ( e.style.display == 'none' ) {
-		// Do nothing
-	} else if ( document.selection && document.selection.createRange ) {
-		// IE/Opera
-		if ( document.documentElement && document.documentElement.scrollTop ) {
-			var winScroll = document.documentElement.scrollTop;
-		} else if ( document.body ) {
-			var winScroll = document.body.scrollTop;
-		}
-		$(this).focus();
-		var range = document.selection.createRange();
-		if ( ownline && range.moveStart ) {
-			var range2 = document.selection.createRange();
-			range2.collapse();
-			range2.moveStart( 'character', -1 );
-			// FIXME: Which check is correct?
-			if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
-				pre = "\n" + pre;
-			}
-			var range3 = document.selection.createRange();
-			range3.collapse( false );
-			range3.moveEnd( 'character', 1 );
-			if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
-				post += "\n";
+	return this.each( function() {
+		/**
+		 * Check if the selected text is the same as the insert text
+		 */ 
+		function checkSelectedText() {
+			if ( !selText ) {
+				selText = peri;
+				isSample = true;
+			} else if ( replace ) {
+				selText = peri;
+			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
+				// Exclude ending space char
+				selText = selText.substring(0, selText.length - 1);
+				post += ' '
 			}
 		}
-		checkSelectedText();
-		range.text = pre + selText + post;
-		if ( isSample && range.moveStart ) {
-			if ( window.opera ) {
-				post = post.replace( /\n/g, '' );
+		var selText = $(this).getSelection();
+		var isSample = false;
+		if ( this.style.display == 'none' ) {
+			// Do nothing
+		} else if ( document.selection && document.selection.createRange ) {
+			// IE/Opera
+			$(this).focus();
+			var range = document.selection.createRange();
+			if ( ownline && range.moveStart ) {
+				var range2 = document.selection.createRange();
+				range2.collapse();
+				range2.moveStart( 'character', -1 );
+				// FIXME: Which check is correct?
+				if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
+					pre = "\n" + pre;
+				}
+				var range3 = document.selection.createRange();
+				range3.collapse( false );
+				range3.moveEnd( 'character', 1 );
+				if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
+					post += "\n";
+				}
 			}
-			range.moveStart( 'character', - post.length - selText.length );
-			range.moveEnd( 'character', - post.length );
-		}
-		range.select();
-		if ( document.documentElement && document.documentElement.scrollTop ) {
-			document.documentElement.scrollTop = winScroll
-		} else if ( document.body ) {
-			document.body.scrollTop = winScroll;
-		}
-	} else if ( e.selectionStart || e.selectionStart == '0' ) {
-		// Mozilla
-		var textScroll = e.scrollTop;
-		$(this).focus();
-		var startPos = e.selectionStart;
-		var endPos = e.selectionEnd;
-		checkSelectedText();
-		if ( ownline ) {
-			if ( startPos != 0 && e.value.charAt( startPos - 1 ) != "\n" ) {
-				pre = "\n" + pre;
+			checkSelectedText();
+			range.text = pre + selText + post;
+			if ( isSample && range.moveStart ) {
+				if ( window.opera ) {
+					post = post.replace( /\n/g, '' );
+				}
+				range.moveStart( 'character', - post.length - selText.length );
+				range.moveEnd( 'character', - post.length );
 			}
-			if ( e.value.charAt( endPos ) != "\n" ) {
-				post += "\n";
+			range.select();
+		} else if ( this.selectionStart || this.selectionStart == '0' ) {
+			// Mozilla
+			$(this).focus();
+			var startPos = this.selectionStart;
+			var endPos = this.selectionEnd;
+			checkSelectedText();
+			if ( ownline ) {
+				if ( startPos != 0 && this.value.charAt( startPos - 1 ) != "\n" ) {
+					pre = "\n" + pre;
+				}
+				if ( this.value.charAt( endPos ) != "\n" ) {
+					post += "\n";
+				}
+			}
+			this.value = this.value.substring( 0, startPos ) + pre + selText + post + this.value.substring( endPos, this.value.length );
+			if ( isSample ) {
+				this.selectionStart = startPos + pre.length;
+				this.selectionEnd = startPos + pre.length + selText.length;
+			} else {
+				this.selectionStart = startPos + pre.length + selText.length + post.length;
+				this.selectionEnd = this.selectionStart;
 			}
 		}
-		e.value = e.value.substring( 0, startPos ) + pre + selText + post + e.value.substring( endPos, e.value.length );
-		if ( isSample ) {
-			e.selectionStart = startPos + pre.length;
-			e.selectionEnd = startPos + pre.length + selText.length;
-		} else {
-			e.selectionStart = startPos + pre.length + selText.length + post.length;
-			e.selectionEnd = e.selectionStart;
-		}
-		e.scrollTop = textScroll;
-	}
-	$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+		// Scroll the textarea to the inserted text
+		$(this).scrollToCaretPosition();
+		$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+	});
 },
 /**
  * Ported from Wikia's LinkSuggest extension
@@ -205,18 +196,38 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 	}
 	return getCaret( this.get( 0 ) );
 },
+setSelection: function( start, end ) {
+	if ( typeof end == 'undefined' )
+		end = start;
+	return this.each( function() {
+		if ( this.selectionStart || this.selectionStart == '0' ) {
+			this.selectionStart = start;
+			this.selectionEnd = end;
+		} else if ( document.body.createTextRange ) {
+			var selection = document.body.createTextRange;
+			selection.setToElementText( this );
+			var length = selection.text.length;
+			selection.moveStart( 'character', start );
+			selection.moveEnd( 'character', -length + end );
+			selection.select();
+		}
+	});
+},
 /**
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
  * 
- * Scroll a textarea to a certain offset
+ * Scroll a textarea to the current cursor position. You can set the cursor
+ * position with setSelection()
  * @param pos Byte offset
  */
-scrollToCaretPosition: function( pos ) {
+scrollToCaretPosition: function() {
 	function getLineLength( e ) {
 		return Math.floor( e.scrollWidth / ( $.os.name == 'linux' ? 7 : 8 ) );
 	}
 	function getCaretScrollPosition( e ) {
+		// FIXME: This functions sucks and is off by a few lines most
+		// of the time. It should be replaced by something decent.
 		var text = e.value.replace( /\r/g, "" );
 		var caret = $( e ).getCaretPosition();
 		var lineLength = getLineLength( e );
@@ -261,33 +272,26 @@ scrollToCaretPosition: function( pos ) {
 		$(this).focus();
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
-			this.selectionStart = pos;
-			this.selectionEnd = pos;
 			$(this).scrollTop( getCaretScrollPosition( this ) );
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE / Opera
 			/*
-			 * IE automatically scrolls the section to the bottom of the page,
-			 * except if it's already in view and the cursor position hasn't
-			 * changed, in which case it does nothing. In that case we'll force
-			 * it to act by moving one character back and forth.
+			 * IE automatically scrolls the selected text to the
+			 * bottom of the textarea at setSelection() time, except
+			 * if it was already in view and the cursor position
+			 * wasn't changed, in which case it does nothing. To
+			 * cover that case, we'll force it to act by moving one
+			 * character back and forth.
 			 */
 			var range = document.selection.createRange();
-			var oldPos = $(this).getCaretPosition();
-			var goBack = false;
-			if ( oldPos == pos ) {
-				pos++;
-				goBack = true;
-			}
+			var pos = $(this).getCaretPosition();
 			range.moveToElementText( this );
 			range.collapse();
-			range.move( 'character', pos );
+			range.move( 'character', pos + 1);
 			range.select();
 			this.scrollTop += range.offsetTop;
-			if ( goBack ) {
-				range.move( 'character', -1 );
-				range.select();
-			}
+			range.move( 'character', -1 );
+			range.select();
 		}
 		$(this).trigger( 'scrollToPosition' );
 	} );
