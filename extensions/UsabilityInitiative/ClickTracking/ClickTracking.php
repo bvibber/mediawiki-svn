@@ -18,13 +18,10 @@
 
 /* Configuration */
 
-// functions should check if this is set before logging clicktrack events
-$wgClickTrackEnabled = true;
-
 // click throttle, should be seen as "1 out of every $wgClickTrackThrottle users will have it enabled"
 // setting this to 1 means all users will have it enabled
 // setting to a negative number will disable it for all users
-$wgClickTrackThrottle = 1;
+$wgClickTrackThrottle = -1;
 
 // set the time window for what we consider 'recent' contributions, in days
 $wgClickTrackContribGranularity1 = 60 * 60 * 24 * 365 / 2; // half a year
@@ -61,7 +58,7 @@ $wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';
 
 //Special page setup
 $wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
-$wgSpecialPageGroups['ClickTracking'] = 'admin';
+$wgGroupPermissions['sysop']['clicktrack'] = true;
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';
