@@ -2061,7 +2061,20 @@ fn: {
 				}
 				section = Math.max( 0, section );
 			}
-			context.modules.$toc.find( 'a.section-' + section ).addClass( 'currentSelection' );
+			var sectionLink = context.modules.$toc.find( 'a.section-' + section );
+			sectionLink.addClass( 'currentSelection' );
+			
+			// Scroll the highlighted link into view if necessary
+			var relTop = sectionLink.offset().top - context.modules.$toc.offset().top;
+			var scrollTop = context.modules.$toc.scrollTop();
+			var divHeight = context.modules.$toc.height();
+			var sectionHeight = sectionLink.height();
+			if ( relTop < 0 )
+				// Scroll up
+				context.modules.$toc.scrollTop( scrollTop + relTop );
+			else if ( relTop + sectionHeight > divHeight )
+				// Scroll down
+				context.modules.$toc.scrollTop( scrollTop + relTop + sectionHeight - divHeight );
 		}
 	},
 	/**
