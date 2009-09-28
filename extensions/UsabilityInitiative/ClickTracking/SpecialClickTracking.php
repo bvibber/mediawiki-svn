@@ -110,11 +110,11 @@ class SpecialClickTracking extends SpecialPage {
 		//build row headers
 		$header_row = array();
 		
-		$header_row["event_header"] = wfMsg( 'event-name' );
-		$header_row["expert_header"] = wfMsg( 'expert-header' );
-		$header_row["intermediate_header"] = wfMsg( 'intermediate-header' );
-		$header_row["beginner_header"] = wfMsg( 'beginner-header' );
-		$header_row["total_header"] = wfMsg( 'total-header' );
+		$header_row["event_header"] = wfMsg( 'ct-event-name' );
+		$header_row["expert_header"] = wfMsg( 'ct-expert-header' );
+		$header_row["intermediate_header"] = wfMsg( 'ct-intermediate-header' );
+		$header_row["beginner_header"] = wfMsg( 'ct-beginner-header' );
+		$header_row["total_header"] = wfMsg( 'ct-total-header' );
 		$outputTable .= Xml::buildTableRow( array( "class"=>"table_headers" ), $header_row );
 		
 		//foreach event, build a row
@@ -244,14 +244,14 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("form", array("id" => "user_definition_form", "class" => "user_def_form"));
 		$control .= Xml::openElement("fieldset", array("id" => "user_def_alter_fieldset"));
 		$control .= Xml::openElement("legend", array("id" => "user_def_alter_legend"));
-		$control .= wfMsg( "editing" );
+		$control .= wfMsg( "ct-editing" );
 		$control .= Xml::closeElement("legend");
 		
 		//[] anonymous users?
 		$control .= Xml::openElement("div", array("id" => "anon_users_div", "class" => "checkbox_div control_div"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "anon_users_checkbox", "class" => "user_def_checkbox"));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg("anon-users");
+		$control .= wfMsg("ct-anon-users");
 		$control .= Xml::closeElement("div");
 		
 		// ----------------
@@ -263,7 +263,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("div", array("id" => "total_users_contrib_div", "class" => "checkbox_div control_div"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_checkbox", "class" => "user_def_checkbox"));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg("user-contribs");
+		$control .= wfMsg("ct-user-contribs");
 		
 		$control .= Xml::openElement("div", array("id" => "contrib_sub_div", "class" => "checkbox_div sub_option_div"));
 		$control .= $this->buildUserDefNumberSelect(false, false, "contrib_sub");
@@ -279,7 +279,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("div", array("id" => "contrib_span_1_text_div", "class" => "checkbox_div"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_span_1_checkbox", "class" => "user_def_checkbox"));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg("user-span") . " 1";
+		$control .= wfMsg("ct-user-span") . " 1";
 		$control .= Xml::closeElement("div");
 		
 		$control .= Xml::openElement("div", array("id" => "contrib_span_1_range_1_div", "class" => "checkbox_div sub_option_div"));
@@ -309,7 +309,7 @@ class SpecialClickTracking extends SpecialPage {
 		}
 		
 		if($include_and){
-			$control .= wfMsg("and");
+			$control .= wfMsg("ct-and");
 		}
 		
 		$control .= Xml::openElement("select", array("id" => "{$ids}_ltgt", "class" => "number_select_ltgt"));
@@ -333,7 +333,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("form", array("id" => "chart_dialog_form", "class" => "chart_form"));
 		$control .= Xml::openElement("fieldset", array("id" => "chart_dialog_alter_fieldset"));
 		$control .= Xml::openElement("legend", array("id" => "chart_dialog_alter_legend"));
-		$control .= wfMsg( "increment-by" );
+		$control .= wfMsg( "ct-increment-by" );
 		$control .= Xml::closeElement("legend");
 		
 		$control .= Xml::openElement("table", array("id" => "chart_dialog_increment_table"));
@@ -347,7 +347,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::closeElement("td");
 		
 		$control .= Xml::openElement("td", array("id" => "chart_dialog_button_cell"));
-		$control .= Xml::openElement("input", array("type" => "button", "id" => "change_graph", "value" => wfMsg( "change-graph" ) )  );
+		$control .= Xml::openElement("input", array("type" => "button", "id" => "change_graph", "value" => wfMsg( "ct-change-graph" ) )  );
 		$control .= Xml::closeElement("input");
 		$control .= Xml::closeElement("td");
 		
@@ -367,7 +367,7 @@ class SpecialClickTracking extends SpecialPage {
 		
 		$control .= Xml::openElement("fieldset", array("id" => "date_range_fieldset"));
 		$control .= Xml::openElement("legend", array("id" => "date_range_legend"));
-		$control .= wfMsg('date-range');
+		$control .= wfMsg('ct-date-range');
 		$control .= Xml::closeElement("legend");
 		
 
@@ -381,7 +381,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("td", array("id" => "start_date_label", "class" => "date_range_label"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "start_date_checkbox", "class" => "date_range_checkbox", "checked" => ""));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg( "start-date" );
+		$control .= wfMsg( "ct-start-date" );
 		$control .= Xml::closeElement("td");
 		
 		$control .= Xml::openElement("td", array("id" => "start_date_textarea"));
@@ -396,7 +396,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("td", array("id" => "end_date_label", "class" => "date_range_label"));
 		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "end_date_checkbox", "class" => "date_range_checkbox", "checked" => ""));
 		$control .= Xml::closeElement("input");
-		$control .= wfMsg( "end-date" );
+		$control .= wfMsg( "ct-end-date" );
 		$control .= Xml::closeElement("td");
 		
 		$control .= Xml::openElement("td", array("id" => "end_date_textarea"));
@@ -426,7 +426,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("tr", array("id" => "start_date_row"));
 		
 		$control .= Xml::openElement("td", array("id" => "start_date_label", "class" => "control_box_label"));
-		$control .= wfMsg( "start-date" );
+		$control .= wfMsg( "ct-start-date" );
 		$control .= Xml::closeElement("td");
 		
 		$control .= Xml::openElement("td", array("id" => "start_date_textarea"));
@@ -441,7 +441,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("tr", array("id" => "end_date_row"));
 		
 		$control .= Xml::openElement("td", array("id" => "end_date_label", "class" => "control_box_label"));
-		$control .= wfMsg( "end-date" );
+		$control .= wfMsg( "ct-end-date" );
 		$control .= Xml::closeElement("td");
 		
 		$control .= Xml::openElement("td", array("id" => "end_date_textarea"));
@@ -456,7 +456,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("tr", array("id" => "increment_date_row"));
 		
 		$control .= Xml::openElement("td", array("id" => "increment_date_label", "class" => "control_box_label"));
-		$control .= wfMsg( "increment-by" );
+		$control .= wfMsg( "ct-increment-by" );
 		$control .= Xml::closeElement("td");
 		
 		$control .= Xml::openElement("td", array("id" => "increment_date_textarea"));
@@ -471,7 +471,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::openElement("tr", array("id" => "change_graph_row"));
 		$control .= Xml::openElement("td", array("id" => "change_graph_cell", "colspan" => 2));
 		
-		$control .= Xml::openElement("input", array("type" => "button", "id" => "change_graph", "value" => wfMsg( "change-graph" ) )  );
+		$control .= Xml::openElement("input", array("type" => "button", "id" => "change_graph", "value" => wfMsg( "ct-change-graph" ) )  );
 		$control .= Xml::closeElement("input");
 		$control .= Xml::closeElement("td");
 		
