@@ -1234,10 +1234,11 @@ js2AddOnloadHook( function() {
 					var searchStr = $j( '#edittoolbar-replace-search' ).val();
 					var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
 					var flags = '';
+					var replaceAll = $j( '#edittoolbar-replace-all' ).is( ':checked' );
 					if ( !$j( '#edittoolbar-replace-case' ).is( ':checked' ) ) {
 						flags += 'i';
 					}
-					if ( $j( '#edittoolbar-replace-all' ).is( ':checked' ) ) {
+					if ( replaceAll ) {
 						flags += 'g';
 					}
 					if ( !$j( '#edittoolbar-replace-regex' ).is( ':checked' ) ) {
@@ -1249,21 +1250,30 @@ js2AddOnloadHook( function() {
 					var matches = text.match( regex );
 					if ( !matches ) {
 						alert( gM( 'edittoolbar-tool-replace-nomatch' ) );
+					} else if ( replaceAll ) {
+						// Prepare to select the last match
+						var start = text.lastIndexOf( matches[matches.length - 1] );
+						var end = start + replaceStr.length;
+						var corr = ( matches.length - 1 ) * ( replaceStr.length - searchStr.length ); 
+						$textarea
+							.val( $textarea.val().replace( regex, replaceStr ) )
+							.change()
+							.setSelection( start + corr, end + corr )
+							.scrollToCaretPosition();
+						
+						alert( gM( 'edittoolbar-tool-replace-success', matches.length ) );
+						$j(this).data( 'offset', 0 );
 					} else {
-						var start, end;
-						for ( var i = 0; i < matches.length; i++ ) {
-							start = text.indexOf( matches[i] );
-							end = start + matches[i].length;
-							$textarea.setSelection( start, end );
-							$textarea.encapsulateSelection( '', replaceStr, '', false, true );
-							
-							// $textarea.val() has changed
-							text = fixOperaBrokenness( $textarea.val() );
-						}
-						if ( $j( '#edittoolbar-replace-all' ).is( ':checked' )  )
-							alert( gM( 'edittoolbar-tool-replace-success', i ) );
-						$textarea.scrollToCaretPosition( start );
-						$textarea.setSelection( start, start + replaceStr.length );
+						var start = text.indexOf( matches[0],
+							$j(this).data( 'offset' ) );
+						var end = start + matches[0].length;
+						var newEnd = start + replaceStr.length;
+						$textarea
+							.setSelection( start, end )
+							.encapsulateSelection( '', replaceStr, '', false, true )
+							.setSelection( start, newEnd )
+							.scrollToCaretPosition();
+						$j(this).data( 'offset', newEnd );
 					}
 				},
 				'edittoolbar-tool-replace-close': function() {
@@ -1272,6 +1282,7 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
+				$j(this).data( 'offset', 0 );	
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button

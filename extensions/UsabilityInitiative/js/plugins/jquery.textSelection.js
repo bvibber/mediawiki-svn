@@ -30,81 +30,82 @@ getSelection: function() {
  * @param replace If true, replaces any selected text with peri; if false, peri is ignored and selected text is left alone
  */
 encapsulateSelection: function( pre, peri, post, ownline, replace ) {
-	/**
-	 * Check if the selected text is the same as the insert text
-	 */ 
-	function checkSelectedText() {
-		if ( !selText ) {
-			selText = peri;
-			isSample = true;
-		} else if ( replace ) {
-			selText = peri;
-		} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
-			// Exclude ending space char
-			selText = selText.substring(0, selText.length - 1);
-			post += ' '
-		}
-	}
-	var e = this.jquery ? this[0] : this;
-	var selText = $(this).getSelection();
-	var isSample = false;
-	if ( e.style.display == 'none' ) {
-		// Do nothing
-	} else if ( document.selection && document.selection.createRange ) {
-		// IE/Opera
-		$(this).focus();
-		var range = document.selection.createRange();
-		if ( ownline && range.moveStart ) {
-			var range2 = document.selection.createRange();
-			range2.collapse();
-			range2.moveStart( 'character', -1 );
-			// FIXME: Which check is correct?
-			if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
-				pre = "\n" + pre;
-			}
-			var range3 = document.selection.createRange();
-			range3.collapse( false );
-			range3.moveEnd( 'character', 1 );
-			if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
-				post += "\n";
+	return this.each( function() {
+		/**
+		 * Check if the selected text is the same as the insert text
+		 */ 
+		function checkSelectedText() {
+			if ( !selText ) {
+				selText = peri;
+				isSample = true;
+			} else if ( replace ) {
+				selText = peri;
+			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
+				// Exclude ending space char
+				selText = selText.substring(0, selText.length - 1);
+				post += ' '
 			}
 		}
-		checkSelectedText();
-		range.text = pre + selText + post;
-		if ( isSample && range.moveStart ) {
-			if ( window.opera ) {
-				post = post.replace( /\n/g, '' );
+		var selText = $(this).getSelection();
+		var isSample = false;
+		if ( this.style.display == 'none' ) {
+			// Do nothing
+		} else if ( document.selection && document.selection.createRange ) {
+			// IE/Opera
+			$(this).focus();
+			var range = document.selection.createRange();
+			if ( ownline && range.moveStart ) {
+				var range2 = document.selection.createRange();
+				range2.collapse();
+				range2.moveStart( 'character', -1 );
+				// FIXME: Which check is correct?
+				if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
+					pre = "\n" + pre;
+				}
+				var range3 = document.selection.createRange();
+				range3.collapse( false );
+				range3.moveEnd( 'character', 1 );
+				if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
+					post += "\n";
+				}
 			}
-			range.moveStart( 'character', - post.length - selText.length );
-			range.moveEnd( 'character', - post.length );
-		}
-		range.select();
-	} else if ( e.selectionStart || e.selectionStart == '0' ) {
-		// Mozilla
-		$(this).focus();
-		var startPos = e.selectionStart;
-		var endPos = e.selectionEnd;
-		checkSelectedText();
-		if ( ownline ) {
-			if ( startPos != 0 && e.value.charAt( startPos - 1 ) != "\n" ) {
-				pre = "\n" + pre;
+			checkSelectedText();
+			range.text = pre + selText + post;
+			if ( isSample && range.moveStart ) {
+				if ( window.opera ) {
+					post = post.replace( /\n/g, '' );
+				}
+				range.moveStart( 'character', - post.length - selText.length );
+				range.moveEnd( 'character', - post.length );
 			}
-			if ( e.value.charAt( endPos ) != "\n" ) {
-				post += "\n";
+			range.select();
+		} else if ( this.selectionStart || this.selectionStart == '0' ) {
+			// Mozilla
+			$(this).focus();
+			var startPos = this.selectionStart;
+			var endPos = this.selectionEnd;
+			checkSelectedText();
+			if ( ownline ) {
+				if ( startPos != 0 && this.value.charAt( startPos - 1 ) != "\n" ) {
+					pre = "\n" + pre;
+				}
+				if ( this.value.charAt( endPos ) != "\n" ) {
+					post += "\n";
+				}
+			}
+			this.value = this.value.substring( 0, startPos ) + pre + selText + post + this.value.substring( endPos, this.value.length );
+			if ( isSample ) {
+				this.selectionStart = startPos + pre.length;
+				this.selectionEnd = startPos + pre.length + selText.length;
+			} else {
+				this.selectionStart = startPos + pre.length + selText.length + post.length;
+				this.selectionEnd = this.selectionStart;
 			}
 		}
-		e.value = e.value.substring( 0, startPos ) + pre + selText + post + e.value.substring( endPos, e.value.length );
-		if ( isSample ) {
-			e.selectionStart = startPos + pre.length;
-			e.selectionEnd = startPos + pre.length + selText.length;
-		} else {
-			e.selectionStart = startPos + pre.length + selText.length + post.length;
-			e.selectionEnd = e.selectionStart;
-		}
-	}
-	// Scroll the textarea to the inserted text
-	$(this).scrollToCaretPosition();
-	$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+		// Scroll the textarea to the inserted text
+		$(this).scrollToCaretPosition();
+		$(this).trigger( 'encapsulateSelection', [ pre, peri, post, ownline, replace ] );
+	});
 },
 /**
  * Ported from Wikia's LinkSuggest extension
