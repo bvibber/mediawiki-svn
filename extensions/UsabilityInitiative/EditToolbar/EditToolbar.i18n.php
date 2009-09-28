@@ -99,6 +99,7 @@ $messages['en'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Include header row',
 	'edittoolbar-tool-table-insert' => 'Insert',
 	'edittoolbar-tool-table-cancel' => 'Cancel',
+	'edittoolbar-tool-table-toomany' => 'Inserting a table with more than $1 cells is not possible with this dialog.',
 	'edittoolbar-tool-replace' => 'Search and replace',
 	'edittoolbar-tool-replace-title' => 'Search and replace',
 	'edittoolbar-tool-replace-search' => 'Search for:',
@@ -233,6 +234,8 @@ $messages['qqq'] = array(
 	'edittoolbar-group-insert' => '{{Identical|Insert}}',
 	'edittoolbar-tool-table-insert' => '{{Identical|Insert}}',
 	'edittoolbar-tool-table-cancel' => '{{Identical|Cancel}}',
+	'edittoolbar-tool-table-toomany' => '[[file:Bulbgraph.png|left|22px]]
+This message does not support PLURAL on $1.',
 	'edittoolbar-tool-replace' => '{{Identical|Search and replace}}',
 	'edittoolbar-tool-replace-title' => '{{Identical|Search and replace}}',
 	'edittoolbar-tool-replace-search' => '{{Identical|Search}}',
