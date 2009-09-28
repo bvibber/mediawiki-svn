@@ -21,10 +21,11 @@ class ApiSpecialClickTracking extends ApiBase {
 		$startdate = $params['startdate'];
 		$enddate = $params['enddate'];
 		$increment = $params['increment'];
+		$userDefString = $params['userdefs'];
 		
 		$click_data = array();
 		try{
-			$click_data = SpecialClickTracking::getChartData($event_id, $startdate, $enddate, $increment);
+			$click_data = SpecialClickTracking::getChartData($event_id, $startdate, $enddate, $increment, $userDefString);
 			$this->getResult()->addValue(array('datapoints'), 'expert', $click_data['expert']);
 			$this->getResult()->addValue(array('datapoints'), 'basic', $click_data['basic']);
 			$this->getResult()->addValue(array('datapoints'), 'intermediate', $click_data['intermediate']);
@@ -38,7 +39,7 @@ class ApiSpecialClickTracking extends ApiBase {
 	 * @param $params params extracted from the POST
 	 */
  	protected function validateParams( $params ) {
-		$required = array( 'eventid', 'startdate', 'enddate', 'increment' );
+		$required = array( 'eventid', 'startdate', 'enddate', 'increment', 'userdefs');
 		foreach( $required as $arg ) {
 			if ( !isset( $params[$arg] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', $arg ) );
@@ -51,16 +52,20 @@ class ApiSpecialClickTracking extends ApiBase {
 		}
 		
 		//check start and end date are of proper format
-		if(strptime(  $this->space_out_date($params['startdate']), "%Y %m %d") === false){
+		if($params['startdate'] != 0 && strptime(  $this->space_out_date($params['startdate']), "%Y %m %d") === false){
 			$this->dieUsage("startdate not in YYYYMMDD format: <<{$params['startdate']}>>", "badstartdate");
 		}
- 		if(strptime( $this->space_out_date($params['enddate']), "%Y %m %d") === false){
-			$this->dieUsage("enddate not in YYYYMMDD format", "badenddate");
+ 		if($params['enddate'] != 0 && strptime( $this->space_out_date($params['enddate']), "%Y %m %d") === false){
+			$this->dieUsage("enddate not in YYYYMMDD format:<<{$params['enddate']}>>", "badenddate");
 		}
 		
 		//check if increment is a positive int
  		if( (int) $params['increment'] <= 0){
 			$this->dieUsage("Invalid increment", "badincrement"); 
+		}
+		
+		if(json_decode($params['userdefs']) == null){
+			$this->dieUsage("Invalid JSON encoding <<{$params['userdefs']}>>", "badjson");
 		}
 	}
 
