@@ -27,6 +27,12 @@ $messages['en'] = array(
 	'beginner' => 'Beginner',
 	'intermediate' => 'Intermediate',
 	'expert' => 'Expert',
+	'date-range' => 'Date range',
+	'editing' => 'Currently editing:',
+	'anon-users' => 'Anonymous users',
+	'user-contribs' => 'Total user contributions',
+	'user-span' => 'User contributions in timespan',
+	'and' => 'and',
 );
 
 /** Message documentation (Message documentation)
@@ -47,6 +53,7 @@ $messages['qqq'] = array(
 	'beginner' => 'label for a user at beginner skill level',
 	'intermediate' => 'label for a user at intermediate skill level',
 	'expert' => 'label for a user at expert skill level',
+	'date-range' => 'range of dates being shown currently',
 );
 
 /** Afrikaans (Afrikaans)
