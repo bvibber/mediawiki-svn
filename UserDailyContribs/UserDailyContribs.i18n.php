@@ -52,6 +52,13 @@ $messages['bs'] = array(
 	'userdailycontribs-desc' => 'Dnevni doprinosi korisnka za proširenje praćenja klikova',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'userdailycontribs-desc' => 'Denní příspěvky uživatelů pro rozšíření sledující kliknutí',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */

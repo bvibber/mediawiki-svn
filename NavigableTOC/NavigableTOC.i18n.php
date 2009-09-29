@@ -377,6 +377,15 @@ $messages['sah'] = array(
 	'navigabletoc' => 'Иһинээҕитин навигациялаах тиһигэ',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'navigabletoc' => 'සංචලනය කළ හැකි පටුන',
+	'navigabletoc-desc' => 'අංශයක් ක්ලික් කළ විට පෙළ කොටුව අනුචලනය කරනු ලබන සංස්කරණ පෝරමයට පටුනක් ඇතුල් කරයි',
+	'navigabletoc-preference' => 'සංචලනය කළ හැකි පටුන සක්‍රීය කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

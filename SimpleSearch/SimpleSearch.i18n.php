@@ -266,6 +266,15 @@ $messages['gsw'] = array(
 	'simplesearch-containing' => 'din het s …',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'simplesearch' => 'Ronsaghey aashagh',
+	'simplesearch-search' => 'Ronsaghey',
+	'simplesearch-containing' => 'goaill stiagh...',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

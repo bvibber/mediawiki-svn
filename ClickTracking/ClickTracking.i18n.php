@@ -36,6 +36,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  */
 $messages['qqq'] = array(
@@ -53,7 +54,9 @@ $messages['qqq'] = array(
 	'ct-beginner' => 'label for a user at beginner skill level',
 	'ct-intermediate' => 'label for a user at intermediate skill level',
 	'ct-expert' => 'label for a user at expert skill level',
-	'ct-date-range' => 'range of dates being shown currently',
+	'ct-date-range' => 'range of dates being shown currently
+{{Identical|Date range}}',
+	'ct-and' => '{{Identical|And}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -62,6 +65,8 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'ct-start-date' => 'Begindatum (JJJJMMDD)',
 	'ct-end-date' => 'Einddatum (JJJJMMDD)',
+	'ct-date-range' => 'Periode',
+	'ct-and' => 'en',
 );
 
 /** Arabic (العربية)
@@ -82,7 +87,7 @@ $messages['ar'] = array(
 $messages['be-tarask'] = array(
 	'clicktracking' => 'Сачэньне за націскамі кампутарнай мышшу ў межах ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня',
 	'clicktracking-desc' => 'Сачэньне за націскамі кампутарнай мышшу, прызначанае для сачэньня за здарэньнямі, якія не вядуць да абнаўленьня старонкі',
-	'clicktracking-title' => 'Групаваныя націскі кнопак мышы ўдзельнікам',
+	'ct-title' => 'Групаваныя націскі мышшу ўдзельнікам',
 	'ct-event-name' => 'Назва падзеі',
 	'ct-expert-header' => 'Націскі мышшу для «Экспэрта»',
 	'ct-intermediate-header' => 'Націскі мышшу для «Сярэдняга»',
@@ -95,6 +100,12 @@ $messages['be-tarask'] = array(
 	'ct-beginner' => 'Пачынаючы',
 	'ct-intermediate' => 'Сярэдні',
 	'ct-expert' => 'Экспэрт',
+	'ct-date-range' => 'Дыяпазон датаў',
+	'ct-editing' => 'Цяперашняе рэдагаваньне:',
+	'ct-anon-users' => 'Ананімныя ўдзельнікі',
+	'ct-user-contribs' => 'Агульны ўнёсак удзельніка',
+	'ct-user-span' => 'Унёсак удзельніка за адлегласьць часу',
+	'ct-and' => 'і',
 );
 
 /** Bengali (বাংলা)
@@ -102,7 +113,6 @@ $messages['be-tarask'] = array(
  */
 $messages['bn'] = array(
 	'clicktracking' => 'ইউজাবিলিটি ইনিসিয়াটিভ ক্লিক ট্র্যাকিং',
-	'clicktracking-title' => 'সমষ্টিক ব্যবহার ক্লিক',
 	'ct-event-name' => 'ইভেন্টের নাম',
 	'ct-expert-header' => '"দক্ষ" ক্লিক',
 	'ct-intermediate-header' => '"মাধ্যমিক" ক্লিক',
@@ -132,7 +142,6 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'clicktracking' => 'Praćenje klikova u Inicijativi upotrebljivosti',
 	'clicktracking-desc' => 'Praćenje klikova, napravljeno za praćenje događaja koji ne proizvode osvježavanje stanice',
-	'clicktracking-title' => 'Sveukupni klikovi korisnika',
 	'ct-event-name' => 'Naziv događaja',
 	'ct-expert-header' => "''Stručnjački'' klikovi",
 	'ct-intermediate-header' => "''Napredni'' klikovi",
@@ -145,6 +154,11 @@ $messages['bs'] = array(
 	'ct-beginner' => 'Početnik',
 	'ct-intermediate' => 'Napredni',
 	'ct-expert' => 'Stručnjak',
+	'ct-editing' => 'Trenutno se uređuje:',
+	'ct-anon-users' => 'Anonimni korisnici',
+	'ct-user-contribs' => 'Ukupni doprinosi korisnika',
+	'ct-user-span' => 'Korisnički doprinosi u vremenskom periodu',
+	'ct-and' => 'i',
 );
 
 /** Catalan (Català)
@@ -162,7 +176,6 @@ $messages['ca'] = array(
 $messages['cs'] = array(
 	'clicktracking' => 'Sledování kliknutí pro Iniciativu použitelnosti',
 	'clicktracking-desc' => 'Sledování kliknutí pro sledování událostí, které nezpůsobují znovunačtení stránky',
-	'clicktracking-title' => 'Souhrn klikání uživatelů',
 	'ct-event-name' => 'Název události',
 	'ct-expert-header' => 'Kliknutí „expertů“',
 	'ct-intermediate-header' => 'Kliknutí „pokročilých“',
@@ -175,6 +188,12 @@ $messages['cs'] = array(
 	'ct-beginner' => 'Začátečník',
 	'ct-intermediate' => 'Pokročilý',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Časový rozsah',
+	'ct-editing' => 'Aktivní uživatelé:',
+	'ct-anon-users' => 'Anonymní uživatelé',
+	'ct-user-contribs' => 'Celkem příspěvků uživatele',
+	'ct-user-span' => 'Příspěvků uživatele během',
+	'ct-and' => 'a zároveň',
 );
 
 /** German (Deutsch)
@@ -183,7 +202,6 @@ $messages['cs'] = array(
 $messages['de'] = array(
 	'clicktracking' => 'Benutzerfreundlichkeitsinitiative Klickverfolgung',
 	'clicktracking-desc' => 'Klickverfolgung, gedacht für die Aufzeichnung von Aktionen, die nicht zu einer Seitenaktualisierung führen',
-	'clicktracking-title' => 'Erzeugte Benutzerklicks',
 	'ct-event-name' => 'Ereignisname',
 	'ct-expert-header' => 'Expertenklicks',
 	'ct-intermediate-header' => 'Klicks von Mittleren',
@@ -203,7 +221,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'clicktracking' => 'Kliknjeńske pśeslědowanje iniciatiwy wužywajobnosći',
 	'clicktracking-desc' => 'Kliknjeńske pśeslědowanje, myslone za slědowanje tšojenjow, kótarež njezawinuju aktualizaciju boka',
-	'clicktracking-title' => 'Nakopjone wužywarske kliknjenja',
+	'ct-title' => 'Nakopjone wužywarske kliknjenja',
 	'ct-event-name' => 'Mě tšojenja',
 	'ct-expert-header' => 'Kliknjenja "ekspertow"',
 	'ct-intermediate-header' => 'Kliknjenja "pókšacanych"',
@@ -216,6 +234,12 @@ $messages['dsb'] = array(
 	'ct-beginner' => 'Zachopjeńkaŕ',
 	'ct-intermediate' => 'Pókšacony',
 	'ct-expert' => 'Ekspert',
+	'ct-date-range' => 'Datumowy wobcerk',
+	'ct-editing' => 'Tuchylu so wobźěłujo:',
+	'ct-anon-users' => 'Anonymne wužywarje',
+	'ct-user-contribs' => 'Wužywarske pśinoski dogromady',
+	'ct-user-span' => 'Wužywarske pśinoski w casowem wótrězku',
+	'ct-and' => 'a',
 );
 
 /** Greek (Ελληνικά)
@@ -226,7 +250,6 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'clicktracking' => 'Πατήστε παρακολούθηση της Πρωτοβουλίας Χρηστικότητας',
 	'clicktracking-desc' => 'Πατήστε παρακολούθηση, προορίζεται για την παρακολούθηση εκδηλώσεων που δεν προκαλούν ανανέωση σελίδας',
-	'clicktracking-title' => 'Συναθροισμένα κλικ χρήστη',
 	'ct-event-name' => 'Όνομα γεγονότος',
 	'ct-expert-header' => 'Κλικ "ειδικοί"',
 	'ct-intermediate-header' => 'Κλικ "μέτριοι"',
@@ -249,6 +272,7 @@ $messages['eo'] = array(
 	'ct-expert-header' => 'Klakoj de "Spertuloj"',
 	'ct-intermediate-header' => 'Klakoj de "progresantoj"',
 	'ct-beginner-header' => 'Klakoj de "novuloj"',
+	'ct-total-header' => 'Sumo de klakoj',
 	'ct-start-date' => 'Komenca Dato (JJJJMMTT)',
 	'ct-end-date' => 'Fina Dato (JJJJMMTT)',
 	'ct-beginner' => 'Novulo',
@@ -261,7 +285,6 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
-	'clicktracking-title' => 'Clicks de usuario agregados',
 	'ct-total-header' => 'Clicks totales',
 	'ct-start-date' => 'Fecha de inicio (AAMMDD)',
 	'ct-end-date' => 'Fecha de fin (AAMMDD)',
@@ -274,7 +297,6 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
-	'clicktracking-title' => 'Gehitutako lankideen klikak',
 	'ct-event-name' => 'Ekintzaren izena',
 	'ct-expert-header' => '"Aditu" klikak',
 	'ct-intermediate-header' => '"Maila ertaineko" klikak',
@@ -289,11 +311,15 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'clicktracking' => 'Käytettävyyshankkeen klikkausten seuranta',
 	'clicktracking-desc' => 'Klikkausten seuranta, tarkoituksena seurata tapahtumia, jotka eivät aiheuta sivun uudelleenlataamista.',
+	'ct-event-name' => 'Tapahtuman nimi',
+	'ct-anon-users' => 'Anonyymit käyttäjät',
+	'ct-and' => 'ja',
 );
 
 /** French (Français)
@@ -303,7 +329,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'clicktracking' => "Suivi de clics de l'initiative d'utilisabilité",
 	'clicktracking-desc' => 'Suivi de clics, visant à traquer les événements qui ne causent pas un rechargement de page',
-	'clicktracking-title' => "Agrégation des clics d'utilisateurs",
+	'ct-title' => "Agrégation des clics d'utilisateurs",
 	'ct-event-name' => "Nom de l'événement",
 	'ct-expert-header' => 'Clics « experts »',
 	'ct-intermediate-header' => 'Clics « intermédiaires »',
@@ -316,6 +342,12 @@ $messages['fr'] = array(
 	'ct-beginner' => 'Débutant',
 	'ct-intermediate' => 'Intermédiaire',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Portée de la date',
+	'ct-editing' => 'En cours de modification :',
+	'ct-anon-users' => 'Utilisateurs anonymes',
+	'ct-user-contribs' => 'Contributions totales des utilisateurs',
+	'ct-user-span' => "Contributions de l'utilisateur sur la durée",
+	'ct-and' => 'et',
 );
 
 /** Galician (Galego)
@@ -324,7 +356,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'clicktracking' => 'Seguimento dos clics da Iniciativa de usabilidade',
 	'clicktracking-desc' => 'Seguimento dos clics, co obxectivo de seguir os acontecementos que non causan unha actualización da páxina',
-	'clicktracking-title' => 'Clics de usuario engadidos',
+	'ct-title' => 'Clics de usuario engadidos',
 	'ct-event-name' => 'Nome do evento',
 	'ct-expert-header' => 'Clics "expertos"',
 	'ct-intermediate-header' => 'Clics "intermedios"',
@@ -333,10 +365,16 @@ $messages['gl'] = array(
 	'ct-start-date' => 'Data de inicio (AAAAMMDD)',
 	'ct-end-date' => 'Data de fin (AAAAMMDD)',
 	'ct-increment-by' => 'Número de días que representa cada punto de datos',
-	'ct-change-graph' => 'Gráfica de cambio',
+	'ct-change-graph' => 'Cambiar a gráfica',
 	'ct-beginner' => 'Principiante',
 	'ct-intermediate' => 'Intermedio',
 	'ct-expert' => 'Experto',
+	'ct-date-range' => 'Intervalo de datas',
+	'ct-editing' => 'Editando nestes intres:',
+	'ct-anon-users' => 'Usuarios anónimos',
+	'ct-user-contribs' => 'Contribucións totais do usuario',
+	'ct-user-span' => 'Contribucións do usuario nun período de tempo',
+	'ct-and' => 'e',
 );
 
 /** Swiss German (Alemannisch)
@@ -345,7 +383,7 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'clicktracking' => 'D Klickverfolgig vu dr Benutzerfrejndligkeits-Initiative',
 	'clicktracking-desc' => 'Klickverfolgig, fir Aktione, wu kei Syteaktualisierig verursache',
-	'clicktracking-title' => 'Zämmegfassti Benutzerklicks',
+	'ct-title' => 'Aggregierti Benutzerklicks',
 	'ct-event-name' => 'Ereignis',
 	'ct-expert-header' => '„Experte“-Klicks',
 	'ct-intermediate-header' => 'Klicks vu „Mittlere“',
@@ -358,27 +396,40 @@ $messages['gsw'] = array(
 	'ct-beginner' => 'Aafänger',
 	'ct-intermediate' => 'Mittlere',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Datumsberyych',
+	'ct-editing' => 'Am bearbeite:',
+	'ct-anon-users' => 'Anonymi Benutzer',
+	'ct-user-contribs' => 'Gsamti Benutzerbyytreg',
+	'ct-user-span' => 'Benutzerbyytreg in Zytspanne',
+	'ct-and' => 'un',
 );
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'clicktracking' => 'מעקב לחיצות במיזם השימושיות',
 	'clicktracking-desc' => 'מעקב לחיצות עבור בדיקת אירועים שאינם גורמים לרענון דף',
-	'clicktracking-title' => 'לחיצות משתמשים מצטברות',
+	'ct-title' => 'כמות לחיצות המשתמשים המצטברות',
 	'ct-event-name' => 'שם האירוע',
 	'ct-expert-header' => 'לחיצות של "מומחים"',
 	'ct-intermediate-header' => 'לחיצות של "בינוניים"',
 	'ct-beginner-header' => 'לחיצות של "מתחילים"',
 	'ct-total-header' => 'סך כל הלחיצות',
-	'ct-start-date' => 'תאריך התחלה (YYYYMMDD)', 
+	'ct-start-date' => 'תאריך התחלה (YYYYMMDD)',
 	'ct-end-date' => 'תאריך סיום (YYYYMMDD)',
-	'ct-increment-by' =>'מספר הימים שמייצגת כל נקודת מידע', 
-	'ct-change-graph' =>'שינוי הגרף',
+	'ct-increment-by' => 'מספר הימים שמייצגת כל נקודת מידע',
+	'ct-change-graph' => 'שינוי הגרף',
 	'ct-beginner' => 'מתחיל',
 	'ct-intermediate' => 'בינוני',
 	'ct-expert' => 'מומחה',
+	'ct-date-range' => 'טווח התאריכים',
+	'ct-editing' => 'כרגע בעריכה:',
+	'ct-anon-users' => 'משתמשים אנונימיים',
+	'ct-user-contribs' => 'סך כל תרומות המשתמשים',
+	'ct-user-span' => 'תרומות המשתמשים לאורך הזמן',
+	'ct-and' => 'וגם',
 );
 
 /** Croatian (Hrvatski)
@@ -395,7 +446,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'clicktracking' => 'Kliknjenske přesćěhanje iniciatiwy wužiwajomnosće',
 	'clicktracking-desc' => 'Kliknjenske přesćěhanje, myslene za přesćěhowanje podawkow, kotrež aktualizaciju strony njezawinuja',
-	'clicktracking-title' => 'Nahromadźene wužiwarske kliknjenja',
+	'ct-title' => 'Nakopjene wužiwarske kliknjenja',
 	'ct-event-name' => 'Mjenp podawka',
 	'ct-expert-header' => 'Kliknjenja "ekspertow"',
 	'ct-intermediate-header' => 'Kliknjenja "pokročenych"',
@@ -408,20 +459,41 @@ $messages['hsb'] = array(
 	'ct-beginner' => 'Započatkar',
 	'ct-intermediate' => 'Pokročeny',
 	'ct-expert' => 'Ekspert',
+	'ct-date-range' => 'Datumowy rozsah',
+	'ct-editing' => 'Tuchwilu so wobdźěłuje:',
+	'ct-anon-users' => 'Anonymni wužiwarjo',
+	'ct-user-contribs' => 'Wužiwarske přinoški dohromady',
+	'ct-user-span' => 'Wužiwarske přinoški w časowym wotrězku',
+	'ct-and' => 'a',
 );
 
 /** Hungarian (Magyar)
+ * @author Bdamokos
  * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'clicktracking' => 'Usability Initiative kattintásszámláló',
 	'clicktracking-desc' => 'Kattintásszámláló, az olyan események rögzítésére, melyekhez nem szükséges a lap frissítése',
-	'clicktracking-title' => 'A szerkesztők kattintásainak összesítése',
+	'ct-title' => 'Aggregált felhasználói kattintások',
 	'ct-event-name' => 'Esemény neve',
+	'ct-expert-header' => '„Szakértők” kattintásai',
+	'ct-intermediate-header' => '„Középhaladók” kattintásai',
+	'ct-beginner-header' => '„Kezdők” kattintásai',
 	'ct-total-header' => 'Összes kattintás',
 	'ct-start-date' => 'Kezdődátum (ÉÉÉÉHHNN)',
 	'ct-end-date' => 'Végdátum (ÉÉÉÉHHNN)',
+	'ct-increment-by' => 'Az egyes adatpontok által jelölt napok száma',
+	'ct-change-graph' => 'Változásgrafikon',
+	'ct-beginner' => 'Kezdő',
+	'ct-intermediate' => 'Középhaladó',
+	'ct-expert' => 'Szakértő',
+	'ct-date-range' => 'Időszak',
+	'ct-editing' => 'Jelenleg szerkesztők:',
+	'ct-anon-users' => 'Névtelen szerkesztők',
+	'ct-user-contribs' => 'Összes szerkesztői közreműködés',
+	'ct-user-span' => 'A szerkesztő közreműködései az időszakon  belül',
+	'ct-and' => 'és',
 );
 
 /** Interlingua (Interlingua)
@@ -430,7 +502,6 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'clicktracking' => 'Traciamento de clics del Initiativa de Usabilitate',
 	'clicktracking-desc' => 'Traciamento de clics, pro traciar eventos que non causa un recargamento de pagina',
-	'clicktracking-title' => 'Clics aggregate de usatores',
 	'ct-event-name' => 'Nomine del evento',
 	'ct-expert-header' => 'Clics "experte"',
 	'ct-intermediate-header' => 'Clics "intermedie"',
@@ -452,7 +523,25 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'clicktracking' => 'Pelacak klik Inisiatif Kebergunaan',
 	'clicktracking-desc' => "Pelacak klik, digunakan untuk melacak kejadian yang tidak menyebabkan ''refresh'' halaman",
-	'clicktracking-title' => 'Diagregasikan pengguna mengklik',
+	'ct-title' => 'Total klik pengguna',
+	'ct-event-name' => 'Nama even',
+	'ct-expert-header' => 'Klik "mahir"',
+	'ct-intermediate-header' => 'Klik "menengah"',
+	'ct-beginner-header' => 'Klik "pemula"',
+	'ct-total-header' => 'Klik total',
+	'ct-start-date' => 'Tanggal Mulai (YYYYMMDD)',
+	'ct-end-date' => 'Tanggal selesai (YYYYMMDD)',
+	'ct-increment-by' => 'Setiap poin mencerminkan jumlah hari',
+	'ct-change-graph' => 'Ganti grafik',
+	'ct-beginner' => 'Pemula',
+	'ct-intermediate' => 'Menengah',
+	'ct-expert' => 'Mahir',
+	'ct-date-range' => 'Interval tanggal',
+	'ct-editing' => 'Saat ini menyunting:',
+	'ct-anon-users' => 'Pengguna anonim',
+	'ct-user-contribs' => 'Total kontribusi pengguna',
+	'ct-user-span' => 'Kontribusi pengguna dalam rentang waktu',
+	'ct-and' => 'dan',
 );
 
 /** Japanese (日本語)
@@ -462,7 +551,7 @@ $messages['id'] = array(
 $messages['ja'] = array(
 	'clicktracking' => 'Usability Initiative クリック追跡',
 	'clicktracking-desc' => 'クリック追跡：ページの再描画を引き起こさないイベントを追跡記録する機能',
-	'clicktracking-title' => '利用者によるクリックの総計',
+	'ct-title' => '利用者クリック集計',
 	'ct-event-name' => 'イベント名',
 	'ct-expert-header' => '「上級者」のクリック数',
 	'ct-intermediate-header' => '「中級者」のクリック数',
@@ -475,6 +564,12 @@ $messages['ja'] = array(
 	'ct-beginner' => '初級者',
 	'ct-intermediate' => '中級者',
 	'ct-expert' => '上級者',
+	'ct-date-range' => '日付範囲',
+	'ct-editing' => '現在編集中:',
+	'ct-anon-users' => '匿名利用者',
+	'ct-user-contribs' => '利用者投稿の合計',
+	'ct-user-span' => '期間ごとの利用者投稿',
+	'ct-and' => 'および',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -483,7 +578,7 @@ $messages['ja'] = array(
 $messages['ksh'] = array(
 	'clicktracking' => 'Dä <i lang="en">Wikipedia Usability Initiative</i> ier Kleckverfolljung',
 	'clicktracking-desc' => 'Klecks un Akßuhne Verfollje, di kein neu Sigg afroofe donn.',
-	'clicktracking-title' => 'Jesammte Klecks',
+	'ct-title' => 'Jesampte Klecks vun enem Metmaacher',
 	'ct-event-name' => 'Da Name vun dämm, wat passeet es',
 	'ct-expert-header' => 'Klecks vun „{{int:Expert}}“',
 	'ct-intermediate-header' => 'Klecks vun „{{int:Intermediate}}“',
@@ -496,6 +591,12 @@ $messages['ksh'] = array(
 	'ct-beginner' => 'Aanfänger udder Neuling',
 	'ct-intermediate' => 'Meddel',
 	'ct-expert' => 'Mer kännt sesch uß',
+	'ct-date-range' => 'Zick',
+	'ct-editing' => 'Aam Ändere',
+	'ct-anon-users' => 'Nameloose Metmaacher',
+	'ct-user-contribs' => 'Em Metmaacher sing Beidrääsch enßjesamp',
+	'ct-user-span' => 'Em Metmaacher sing Beidrääsch en dä Zick',
+	'ct-and' => ', un',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -504,7 +605,6 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'clicktracking' => 'Benotzerfrëndlechkeetsinitiative Suivi vun de Klicken',
 	'clicktracking-desc' => "Suivi vun de Klicken, fir déi Aktiounen z'erfaassen déi net zu engem neie Luede vun der Säit féieren",
-	'clicktracking-title' => 'Vun de Benotzer gemaachte Klicken',
 	'ct-event-name' => 'Numm vum Evenement',
 	'ct-expert-header' => '"Expert"-Klicken',
 	'ct-intermediate-header' => '"Duerschnëtt"-Klicken',
@@ -517,6 +617,10 @@ $messages['lb'] = array(
 	'ct-beginner' => 'Ufänger',
 	'ct-intermediate' => 'Dertëschent',
 	'ct-expert' => 'Expert',
+	'ct-editing' => 'Ännert elo:',
+	'ct-anon-users' => 'Anonym Benotzer',
+	'ct-user-contribs' => 'Total vun de Benotzer-Kontributiounen',
+	'ct-and' => 'an',
 );
 
 /** Macedonian (Македонски)
@@ -541,7 +645,7 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'clicktracking' => 'Klikvolgen voor het Bruikbaarheidsinitiatief',
 	'clicktracking-desc' => 'Klikvolgen voor het volgens van handelingen die niet het oproepen van een nieuwe pagina tot gevolg hebben',
-	'clicktracking-title' => 'Samengevoegde gebruikerskliks',
+	'ct-title' => 'Samengevoegde gebruikerskliks',
 	'ct-event-name' => 'Gebeurtenis',
 	'ct-expert-header' => '"Expert"-kliks',
 	'ct-intermediate-header' => '"Gemiddeld"-kliks',
@@ -554,6 +658,12 @@ $messages['nl'] = array(
 	'ct-beginner' => 'Beginner',
 	'ct-intermediate' => 'Gemiddeld',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Periode',
+	'ct-editing' => 'Bezig met het bewerken van:',
+	'ct-anon-users' => 'Anonieme gebruikers',
+	'ct-user-contribs' => 'Totaal aantal gebruikersbijdragen',
+	'ct-user-span' => 'Gebruikersbijdragen in periode',
+	'ct-and' => 'en',
 );
 
 /** Occitan (Occitan)
@@ -562,7 +672,6 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'clicktracking' => "Seguit de clics de l'iniciativa d'utilizabilitat",
 	'clicktracking-desc' => 'Seguit de clics, visant a tracar los eveniments que causan pas un recargament de pagina',
-	'clicktracking-title' => "Agregacion dels clics d'utilizaires",
 	'ct-event-name' => "Nom de l'eveniment",
 	'ct-expert-header' => 'Clics « expèrts »',
 	'ct-intermediate-header' => 'Clics « intermediaris »',
@@ -583,7 +692,7 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'clicktracking' => 'Śledzenie kliknięć dla inicjatywy użyteczności',
 	'clicktracking-desc' => 'Śledzenie kliknięć, przeznaczone do poszukiwania zdarzeń, które nie powodują odświeżenia strony',
-	'clicktracking-title' => 'Suma kliknięć użytkowników',
+	'ct-title' => 'Zestawienie kliknięć użytkowników',
 	'ct-event-name' => 'Nazwa zdarzenia',
 	'ct-expert-header' => 'Kliknięcia „specjalistów”',
 	'ct-intermediate-header' => 'Kliknięcia „zaawansowanych”',
@@ -591,10 +700,17 @@ $messages['pl'] = array(
 	'ct-total-header' => 'Wszystkich kliknięć',
 	'ct-start-date' => 'Data rozpoczęcia (RRRRMMDD)',
 	'ct-end-date' => 'Data zakończenia (RRRRMMDD)',
+	'ct-increment-by' => 'Liczba dni, którą oznacza każdy punkt danych',
 	'ct-change-graph' => 'Wykres zmian',
 	'ct-beginner' => 'Nowicjusz',
 	'ct-intermediate' => 'Zaawansowany',
 	'ct-expert' => 'Specjalista',
+	'ct-date-range' => 'Zakres dat',
+	'ct-editing' => 'Teraz edytują:',
+	'ct-anon-users' => 'Anonimowi użytkownicy',
+	'ct-user-contribs' => 'Ogółem wkład użytkownika',
+	'ct-user-span' => 'Wkład użytkownika w przedziale czasu',
+	'ct-and' => 'i',
 );
 
 /** Piedmontese (Piemontèis)
@@ -603,7 +719,6 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'clicktracking' => "Trassadura dij click ëd l'Usability Initiative",
 	'clicktracking-desc' => "Trassadura dij click, për trassé dj'event cha a causo pa ël refresh ëd na pàgina",
-	'clicktracking-title' => "Click agregà dl'utent",
 	'ct-event-name' => "Nòm ëd l'event",
 	'ct-expert-header' => 'Click d\'"Espert"',
 	'ct-intermediate-header' => 'Click dj\'"antërmedi"',
@@ -644,7 +759,7 @@ $messages['pt-br'] = array(
 $messages['ru'] = array(
 	'clicktracking' => 'Отслеживание нажатий в рамках Инициативы юзабилити',
 	'clicktracking-desc' => 'Отслеживание нажатий. Предназначается для отслеживания событий, не приводящих к обновлению страницы',
-	'clicktracking-title' => 'Собранные щелчки участников',
+	'ct-title' => 'Агрегированные щелчки мышью участников',
 	'ct-event-name' => 'Название события',
 	'ct-expert-header' => 'Нажатия «экспертов»',
 	'ct-intermediate-header' => 'Нажатия «средних участников»',
@@ -657,6 +772,12 @@ $messages['ru'] = array(
 	'ct-beginner' => 'Новичок',
 	'ct-intermediate' => 'Средний участник',
 	'ct-expert' => 'Эксперт',
+	'ct-date-range' => 'Диапазон дат',
+	'ct-editing' => 'Текущее редактирование:',
+	'ct-anon-users' => 'Анонимные участники',
+	'ct-user-contribs' => 'Общий вклад участников',
+	'ct-user-span' => 'Вклад участников за период',
+	'ct-and' => 'и',
 );
 
 /** Yakut (Саха тыла)
@@ -665,7 +786,6 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'clicktracking' => 'Баттааһыннары Табыгас Ситиһиитин иһинэн кэтээһин',
 	'clicktracking-desc' => 'Баттааһыны кэтээһин. Сирэйи саҥардыбат түбэлтэлэри кэтииргэ туттуллар',
-	'clicktracking-title' => 'Кыттааччылар баттааһыннарын хомуура',
 	'ct-event-name' => 'Түбэлтэ аата',
 	'ct-expert-header' => '"Экспертар" баттааһыннара (клик)',
 	'ct-intermediate-header' => '"Орто кыттааччылар" баттааһыннара (клик)',
@@ -685,7 +805,6 @@ $messages['sah'] = array(
 $messages['sk'] = array(
 	'clicktracking' => 'Sledovanie kliknutí pre Iniciatívu použiteľnosti',
 	'clicktracking-desc' => 'Sledovanie kliknutí, na sledovanie udalostí, ktoré nespôsobujú opätovné načítanie stránky',
-	'clicktracking-title' => 'Agregované kliknutia používateľa',
 	'ct-event-name' => 'Názov udalosti',
 	'ct-expert-header' => 'Kliknutia „expertov“',
 	'ct-intermediate-header' => 'Kliknutia „pokročilých“',
@@ -714,7 +833,6 @@ $messages['sl'] = array(
 $messages['tr'] = array(
 	'clicktracking' => 'Kullanılabilirlik Girişimi tıklama izleme',
 	'clicktracking-desc' => 'Tıklama izleme, bir sayfa yenilemesine sebep olmadan olayları izleme amaçlı',
-	'clicktracking-title' => 'Toplu kullanıcı tıklamaları',
 	'ct-event-name' => 'Olay adı',
 	'ct-expert-header' => '"Deneyimli" tıklamaları',
 	'ct-intermediate-header' => '"Orta düzeyde" tıklamaları',
@@ -727,6 +845,10 @@ $messages['tr'] = array(
 	'ct-beginner' => 'Acemi',
 	'ct-intermediate' => 'Orta düzeyde',
 	'ct-expert' => 'Deneyimli',
+	'ct-date-range' => 'Tarih aralığı',
+	'ct-anon-users' => 'Anonim kullanıcılar',
+	'ct-user-contribs' => 'Toplam kullanıcı katkıları',
+	'ct-and' => 've',
 );
 
 /** Vèneto (Vèneto)
@@ -735,7 +857,6 @@ $messages['tr'] = array(
 $messages['vec'] = array(
 	'clicktracking' => "Traciamento click de l'Inissiativa par l'Usabilità",
 	'clicktracking-desc' => 'Traciamento dei click, par traciare i eventi che no provoca mia un refresh de la pagina.',
-	'clicktracking-title' => 'Agregassion dei clic dei utenti',
 	'ct-event-name' => "Nome de l'evento",
 	'ct-expert-header' => 'Clic de "esperti"',
 	'ct-intermediate-header' => 'Clic de "intermedi"',
@@ -764,7 +885,6 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'clicktracking' => 'Theo dõi nhấn chuột Sáng kiến Khả dụng',
 	'clicktracking-desc' => 'Theo dõi hành vi nhấn chuột, dùng để theo dõi các hoạt động không làm tươi trang',
-	'clicktracking-title' => 'Tổng số nhấn chuột của thành viên',
 	'ct-event-name' => 'Tên sự kiện',
 	'ct-expert-header' => 'Cú nhấn "chuyên gia"',
 	'ct-intermediate-header' => 'Cú nhấn "trung bình"',

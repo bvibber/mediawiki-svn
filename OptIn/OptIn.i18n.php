@@ -184,7 +184,7 @@ $messages['ar'] = array(
 	'optin-intro' => 'عملت مبادرة استخدامية ويكيبيديا (Wikipedia Usability Initiative) بجد على تحسين استخدامية ويكيبيديا.
 أترغب في تجربة نسختنا البيتا؟',
 	'optin-feedback-intro' => 'شكرًا لتجريبك البيتا.
-نود الإطلاع على رأيك في الواجهة الجديدة، لذا فإننا سنقدر ملأك للاستطلاع الاختياري أدناه.',
+نود الاطلاع على رأيك في الواجهة الجديدة، ولذا فإننا سنقدر ملأك للاستطلاع الاختياري أدناه.',
 	'optin-feedback-back' => 'إذا لم ترغب بملء الاستطلاع، يمكنك الرجوع إلى $1.',
 	'optin-success-in' => 'تقوم الآن بتجريب البيتا.
 تستطيع العودة في أي وقت بنقر وصلة "{{int:optin-leave}}" في أعلى الشاشة.',
@@ -1803,6 +1803,17 @@ Go meh iber s Projäkt erfahre oder sälber mitmache, git s im [http://usability
 Dankschen vilmol, mir freien is uf Dyy Ruckmäldig!',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'optin-title-optedout' => 'Prowal Beta',
+	'optin-title-optedin' => 'Faagail Beta',
+	'optin-submit-feedback' => 'Cur aaveaghey',
+	'optin-survey-yes' => 'Verrym',
+	'optin-survey-no' => 'Cha derrym',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -2060,11 +2071,13 @@ Dźakujemy so a bychmy so wjeselili wot tebje słyšeć!',
 );
 
 /** Hungarian (Magyar)
+ * @author Bdamokos
  * @author Dani
  * @author Glanthor Reviol
  * @author Hunyadym
  */
 $messages['hu'] = array(
+	'optin' => 'Csatlakozás az Usability Initiative-hez',
 	'optin-desc' => 'Lehetővé teszi a szerkesztőknek a béta verzió kipróbálását, a használhatóság fejlesztése kezdeményezés legfrissebb fejlesztéseivel',
 	'optin-title-optedout' => 'A béta kipróbálása',
 	'optin-title-optedin' => 'Kilépés a bétából',
@@ -2077,7 +2090,12 @@ Szeretnéd kipróbálni a bétánkat?',
 	'optin-feedback-intro' => 'Köszönjük, hogy kipróbáltad a bétát.
 Szeretnénk tudni, hogy mit gondolsz az új felületről, így örülnénk neki, ha kitöltenéd az alábbi kérdőívet.',
 	'optin-feedback-back' => 'Ha nem szeretnéd kitölteni a kérdőívet, visszatérhetsz a(z) $1 lapra.',
+	'optin-success-in' => 'Jelenleg részt veszel a bétatesztben.
+Bármikor elhagyhatod a tesztet az oldal tetején található „{{int:optin-leave}}” linkre kattintva.',
 	'optin-leave-cancel' => 'Ha továbbra is szeretnéd használni a bétát, akkor visszatérhetsz a(z) $1 lapra.',
+	'optin-success-out' => 'Sikeresen elhagytad a bétatesztet.
+Bármikor újra kipróbálhatod a bétaváltozatot a lap tetején található „{{int:optin-try}}” linkre kattintva.',
+	'optin-success-feedback' => 'Köszönjük a visszajelzésed!',
 	'optin-accept-short' => 'Kipróbálom!',
 	'optin-accept-long' => 'A béta kipróbálása',
 	'optin-accept-long-anon' => 'Jelentkezz be, és próbáld ki a bétát',
@@ -2087,12 +2105,38 @@ Szeretnénk tudni, hogy mit gondolsz az új felületről, így örülnénk neki,
 	'optin-submit-feedback' => 'Visszajelzés küldése',
 	'optin-survey-yes' => 'Igen',
 	'optin-survey-no' => 'Nem',
+	'optin-survey-intro' => 'Köszönjük, hogy kipróbálod a bétatesztet!
+Szeretnénk tudni, hogy mit gondolsz az új felületről ezért örülnénk, ha kitöltenéd az alábbi nem kötelező kérdőívet mielőtt a „[[#leave|{{int:optin-submit-out}}]]”-ra kattintanál.',
+	'optin-survey-question-likedislike' => 'Mi tetszett a bétaváltozatban? Mi nem tetszett a bétaváltozatban?',
+	'optin-survey-question-whyoptout' => 'Miért hagyod el a bétatesztet? (Kérlek válaszd ki az összet amely vonatkozik rád.)',
+	'optin-survey-answer-whyoptout-hard' => 'Túl nehéz volt használni.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Nem működött megfelelően.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Nem működött előrejelezhető módon.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Nem tetszik, ahogy kinéz.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Nem tetszenek az új fülek és az elrendezés.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nem tetszik az új szerkesztő-eszköztár.',
 	'optin-survey-answer-whyoptout-other' => 'Más indok:',
+	'optin-survey-question-explain' => 'Kérlek magyarázd meg vagy fejtsd ki a fenti válaszod:',
+	'optin-survey-question-techfail' => 'Tapasztaltál műszaki hibákat a bétateszt használata közben?',
+	'optin-survey-question-techfail-ifyes' => 'Ha igen, kérjük fejtsd ki őket:',
+	'optin-survey-question-usedtoolbar' => 'Használtad az új kinyitható eszköztárat a lapok szerkesztéséhez?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Ha igen, mi tetszett benne? Mi nem tetszett benne?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Ha nem, miért nem? Használod majd a jövőben? Kérjük magyarázd el.',
+	'optin-survey-question-different' => 'Mit tehettünk volna másképpen, hogy folytasd a bétaváltozat használatát?',
+	'optin-survey-question-feedback' => 'Kérlek írd le minden egyéb megjegyzésed, aggodalmad vagy gondolatod számunkra - minden visszajelzés hasznos:',
+	'optin-survey-question-browser' => 'Melyik böngészőt használod?',
 	'optin-survey-answer-browser-other' => 'Más böngésző:',
+	'optin-survey-question-os' => 'Melyik operációs rendszert használod?',
+	'optin-survey-answer-os-other' => 'Egyéb operációs rendszer:',
+	'optin-survey-question-res' => 'Milyen felbontású a monitorod?',
+	'optin-survey-question-changes' => 'Milyen változásokat szeretnél látni a bétaváltozatban a jövőben (válaszd ki az összeset)?',
+	'optin-survey-answer-changes-nav' => 'Tegyétek könnyebben használhatóvá az oldalon való általános navigálást.',
+	'optin-survey-answer-changes-edittools' => 'Bővítsétek és fejlesszétek a szerkesztési eszközöket.',
 	'optin-survey-answer-changes-upload' => 'Tartalom és médiafájlok feltöltésének fejlesztése.',
+	'optin-survey-answer-changes-richtext' => 'Fejlesszetek ki a formázott szöveg szerkesztőkhöz hasonló szerkesztési eszközöket.',
+	'optin-survey-answer-changes-lookfeel' => 'Frissítsétek az oldal kinézetét.',
+	'optin-survey-answer-changes-predictability' => 'Fejlesszétek a teljesítmény előrejelezhetőségét.',
+	'optin-survey-answer-changes-custom' => 'Tegyetek lehetővé nagyobb felhasználói szabadságot a beállításokban.',
 	'optin-survey-answer-changes-other' => 'Más:',
 	'optin-improvements' => '== Mit fejlesztettünk? ==
 [[File:UsabilityNavigation.png|left|link=]]
@@ -3069,7 +3113,7 @@ $messages['ml'] = array(
 	'optin-needlogin' => 'ബീറ്റ പരീക്ഷിക്കാൻ താങ്കൾ [$1 ലോഗിൻ] ചെയ്യേണ്ടതാണ്.',
 	'optin-feedback-intro' => 'ബീറ്റ പരീക്ഷിക്കുന്നതിനു നന്ദി.
 പുതിയ ദൃശ്യരൂപത്തെക്കുറിച്ച് താങ്കളെന്താണ് കരുതുന്നതെന്നറിയാൻ ഞങ്ങളാഗ്രഹിക്കുന്നു, അതുകൊണ്ട് ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന സർവേയിൽ പങ്കെടുക്കാൻ താത്പര്യപ്പെടുന്നു.',
-	'optin-feedback-back' => 'താങ്കൾക്ക് സർവേയിൽ പങ്കെടുക്കേണ്ടയെങ്കിൽ, $1-ലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
+	'optin-feedback-back' => 'താങ്കൾക്ക് സർവേയിൽ പങ്കെടുക്കേണ്ടയെങ്കിൽ, $1 താളിലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
 	'optin-success-in' => 'താങ്കൾ ഇപ്പോൾ ബീറ്റ പരീക്ഷിക്കുന്നു.
 താളിന്റെ മുകളിലായി കാണുന്ന "{{int:optin-leave}}" എന്ന കണ്ണി ഞെക്കി താങ്കൾക്ക് ഏതൊരു സമയത്തും ഇതൊഴിവാക്കാവുന്നതാണ്.',
 	'optin-leave-cancel' => 'താങ്കൾ ബീറ്റ തുടർന്നും ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, $1-ലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
@@ -3100,7 +3144,7 @@ $messages['ml'] = array(
 	'optin-survey-question-techfail' => 'ബീറ്റ ഉപയോഗിക്കുമ്പോള്‍ ഏന്തെങ്കിലും സാങ്കേതിക തകരാറുകള്‍ താങ്കള്‍ക്ക് അനുഭവപ്പെട്ടിട്ടുണ്ടോ?',
 	'optin-survey-question-techfail-ifyes' => 'അതെ എങ്കിൽ, ദയവായി വികസിപ്പിക്കുക അല്ലങ്കിൽ വിശദീകരിക്കുക:',
 	'optin-survey-question-usedtoolbar' => 'ഒരു താള്‍ തിരുത്തുവാന്‍ വേണ്ടി വിപുലീകരിക്കാവുന്ന ടൂള്‍ബാര്‍ താങ്കള്‍ ഉപയോഗിച്ചിട്ടുണ്ടോ?',
-	'optin-survey-question-usedtoolbar-ifyes' => 'അതെ എങ്കിൽ, താങ്കൾക്ക് ഇതിൽ എന്താണ് ഇഷ്ടപ്പെട്ടത്? ഇതിൽ എന്താണ് ഇഷ്ടപ്പെടാതെ പോയത്?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'ഉണ്ട് എന്നാണെങ്കിൽ, താങ്കൾക്ക് ഇതിൽ എന്താണ് ഇഷ്ടപ്പെട്ടത്? ഇതിൽ എന്താണ് ഇഷ്ടപ്പെടാതെ പോയത്?',
 	'optin-survey-question-usedtoolbar-ifno' => 'ഇല്ല എങ്കിൽ, എന്തുകൊണ്ട് ഇല്ല? ഭാവിയിലോ? ദയവായി വിശദീകരിക്കുക.',
 	'optin-survey-question-different' => 'താങ്കളെ ബീറ്റയിൽ തന്നെ പിടിച്ചു നിർത്താൻ എന്തെന്തു മാറ്റങ്ങളായിരുന്നു ഞങ്ങൾ വരുത്തേണ്ടിയിരുന്നത്?',
 	'optin-survey-question-feedback' => 'ദയവായി താങ്കളുടെ കുറിപ്പുകളും, ഉത്കണ്ഠകളും, ചിന്തകളും ഞങ്ങളെ അറിയിക്കുക - എല്ലാ അഭിപ്രായങ്ങളും ഉപകാരപ്രദങ്ങളാണ്:',
