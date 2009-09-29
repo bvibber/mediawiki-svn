@@ -47,7 +47,7 @@ var wikiEditorTests = {
 					action: {
 						type: 'encapsulate',
 						options: {
-							pre: ":)",
+							pre: ":)"
 						}
 					}
 				}
@@ -187,7 +187,7 @@ var wikiEditorTests = {
 		'test': '*[rel=info].section *[rel=colors].page tr td',
 		'pre': 9,
 		'post': 6
-	},
+	}
 };
 js2AddOnloadHook( function() {
 	var button = $j( '<button>Run wikiEditor Tests!</button>' )
