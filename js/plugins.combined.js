@@ -1168,6 +1168,40 @@ $.wikiEditor.autoMsg = function( object, property ) {
 	}
 };
 
+$.wikiEditor.fixOperaBrokenness = function( s ) {
+	// This function works around Opera's
+	// broken newline handling in textareas.
+	// .val() has \n while selection functions
+	// treat newlines as \r\n
+	
+	if ( typeof $.isOperaBroken == 'undefined' && $.wikiEditor.instances.length > 0 ) {
+		// Create a textarea inside a div
+		// with zero area, to hide it properly
+		var div = $( '<div />' )
+			.height( 0 )
+			.width( 0 )
+			.insertBefore( $.wikiEditor.instances[0] );
+		var textarea = $( '<textarea></textarea' )
+			.height( 0 )
+			.appendTo( div )
+			.val( "foo\r\nbar" );
+		
+		// Try to search&replace bar --> BAR
+		var index = textarea.val().indexOf( 'bar' );
+		textarea.select();
+		textarea.setSelection( index, index + 3 );
+		textarea.encapsulateSelection( '', 'BAR', '', false, true );
+		if ( textarea.val().substr( -1 ) == 'R' )
+			$.isOperaBroken = false;
+		else
+			$.isOperaBroken = true; 
+		div.remove();
+	}
+	if ( $.isOperaBroken )
+		s = s.replace( /\n/g, "\r\n" );
+	return s;
+};
+
 $.fn.wikiEditor = function() {
 
 /* Initialization */
@@ -2137,8 +2171,8 @@ fn: {
 		}
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = '\n' + context.$textarea.val() + '\n';
-		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
+		var wikitext = '\n' + $.wikiEditor.fixOperaBrokenness( context.$textarea.val() ) + '\n';
+		var headings = wikitext.match( /(\r|\n)={1,5}.*={1,5}(?=(\r|\n))/g );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {

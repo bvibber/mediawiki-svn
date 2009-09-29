@@ -1217,40 +1217,6 @@ js2AddOnloadHook( function() {
 		dialog: {
 			buttons: {
 				'edittoolbar-tool-replace-button': function() {
-					function fixOperaBrokenness( s ) {
-						// This function works around Opera's
-						// broken newline handling in textareas.
-						// .val() has \n while selection functions
-						// treat newlines as \r\n
-						
-						if ( typeof $j.isOperaBroken == 'undefined' ) {
-							// Create a textarea inside a div
-							// with zero area, to hide it properly
-							var div = $j( '<div />' )
-								.height( 0 )
-								.width( 0 )
-								.insertBefore( $textarea );
-							var textarea = $j( '<textarea></textarea' )
-								.height( 0 )
-								.appendTo( div )
-								.val( "foo\r\nbar" );
-							
-							// Try to search&replace bar --> BAR
-							var index = textarea.val().indexOf( 'bar' );
-							textarea.select();
-							textarea.setSelection( index, index + 3 );
-							textarea.encapsulateSelection( '', 'BAR', '', false, true );
-							if ( textarea.val().substr( -1 ) == 'R' )
-								$j.isOperaBroken = false;
-							else
-								$j.isOperaBroken = true; 
-							div.remove();
-						}
-						if ( $j.isOperaBroken )
-							s = s.replace( /\n/g, "\r\n" );
-						return s;
-					}
-
 					$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
 					var searchStr = $j( '#edittoolbar-replace-search' ).val();
 					var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
@@ -1267,7 +1233,7 @@ js2AddOnloadHook( function() {
 					}
 					var regex = new RegExp( searchStr, flags );
 					var $textarea = $j(this).data( 'context' ).$textarea;
-					var text = fixOperaBrokenness( $textarea.val() );
+					var text = $j.wikiEditor.fixOperaBrokenness( $textarea.val() );
 					var matches = text.match( regex );
 					if ( !matches ) {
 						$j( '#edittoolbar-replace-nomatch' ).show();

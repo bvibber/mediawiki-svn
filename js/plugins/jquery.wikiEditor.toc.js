@@ -173,8 +173,8 @@ fn: {
 		}
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = '\n' + context.$textarea.val() + '\n';
-		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
+		var wikitext = '\n' + $.wikiEditor.fixOperaBrokenness( context.$textarea.val() ) + '\n';
+		var headings = wikitext.match( /(\r|\n)={1,5}.*={1,5}(?=(\r|\n))/g );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
