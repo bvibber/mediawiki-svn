@@ -106,6 +106,8 @@ class EditToolbarHooks {
 					'edittoolbar-tool-table-insert',
 					'edittoolbar-tool-table-cancel',
 					'edittoolbar-tool-table-toomany',
+					'edittoolbar-tool-table-invalidnumber',
+					'edittoolbar-tool-table-zero',
 					'edittoolbar-tool-replace',
 					'edittoolbar-tool-replace-title',
 					'edittoolbar-tool-replace-search',
