@@ -30,19 +30,14 @@ class UserDailyContribsHooks {
 		$today = gmdate( 'Ymd', time() );
 		$dbw = wfGetDB( DB_MASTER );
 		
-		//writes only return true/false and an update on 0 rows is true, so try insert, on fail, update
-		try
-		{
-			$dbw->insert("user_daily_contribs", array("user_id" => $wgUser->getId(), "day" => $today, "contribs" => 1), __METHOD__);
-		}
-		catch(Exception $e)
-		{
-			//normal $db->update doesn't support SQL variables yet
-			$sql = "UPDATE user_daily_contribs SET contribs=contribs+1 WHERE day = $today AND user_id = {$wgUser->getId()}";
-			$dbw->query($sql, __METHOD__);
-		}
+		//normal $db->update doesn't support SQL variables yet
+		$sql = "UPDATE user_daily_contribs SET contribs=contribs+1 WHERE day = $today AND user_id = {$wgUser->getId()}";
+		$dbw->query($sql, __METHOD__);
 		
-		
+		if($dbw->affectedRows() == 0){
+			$dbw->insert("user_daily_contribs", array("user_id" => $wgUser->getId(), "day" => $today, "contribs" => 1), __METHOD__);	
+		}
+	
 		return true;
 	}
 	
