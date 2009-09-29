@@ -39,12 +39,13 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 		$totals = $this->getDayTotals();
 
-		$msg = wfMsg( 'contribstats-day-totals' );
+		$msg = wfMsg( 'contribstats-day-totals' ) . " - " . date( 'o-m-d', wfTimestamp( TS_UNIX ) );
 		$htmlOut = Xml::element( 'h3', null, $msg );
 
 		// Day
 		$htmlOut .= Xml::openElement( 'table',
 				array(
+					'class' => 'sortable',
 					'border' => 0,
 					'cellpadding' => 5, 
 					'width' => '100%'
@@ -118,6 +119,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			$htmlOut .= Xml::element( 'h2', null, date( 'o-m-d', wfTimeStamp( TS_UNIX, $week ) ) ); 		
 			$htmlOut .= Xml::openElement( 'table',
 					array(
+						'class' => 'sortable',
 						'border' => 0,
 						'cellpadding' => 5, 
 						'width' => '100%'
