@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'flvhandler_desc'   => 'Allow Flash Video (.flv) files to be added as standard files (e.g. <nowiki>[[File:Movie.flv]]</nowiki>)',
-	'flv-long-desc'     => '(Flash video, $1 × $2 pixels, file size: $3)'
+	'flv-long-desc'     => '(Flash Video, $1 × $2 pixels, file size: $3)'
 );
 
 /** Message documentation (Message documentation)
