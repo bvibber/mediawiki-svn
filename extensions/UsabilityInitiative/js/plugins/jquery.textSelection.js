@@ -204,7 +204,7 @@ setSelection: function( start, end ) {
 			this.selectionStart = start;
 			this.selectionEnd = end;
 		} else if ( document.body.createTextRange ) {
-			var selection = document.body.createTextRange;
+			var selection = document.body.createTextRange();
 			selection.setToElementText( this );
 			var length = selection.text.length;
 			selection.moveStart( 'character', start );
