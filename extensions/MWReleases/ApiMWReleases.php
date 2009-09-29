@@ -13,11 +13,17 @@ class ApiMWReleases extends ApiBase {
 		$results = array();
 		$releases = explode( "\n", wfMsgForContent( 'mwreleases-list' ) );
 		foreach( $releases as $release ) {
-			list( $status, $version ) = explode( ':', $release );
-			$r = array( 'version' => $version );
-			if( $status == 'current' )
-				$r['current'] = '';
-			$results[] = $r;
+			$release = trim( $release );
+			if( substr( $release, 0, 1 ) == '#' ) {
+				continue;
+			}
+			if( strpos( $release, ':' ) !== false ) {
+				list( $status, $version ) = explode( ':', $release, 2 );
+				$r = array( 'version' => $version );
+				if( $status == 'current' )
+					$r['current'] = '';
+				$results[] = $r;
+			}
 		}
 		$this->getResult()->setIndexedTagName($results, 'release');
 		$this->getResult()->addValue(null, $this->getModuleName(), $results);
