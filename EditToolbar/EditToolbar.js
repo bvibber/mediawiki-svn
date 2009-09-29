@@ -1196,9 +1196,6 @@ js2AddOnloadHook( function() {
 			</tr><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-regex" /></td>\
 				<td><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label></td>\
-			</tr><tr>\
-				<td><input type="checkbox" id="edittoolbar-replace-all" /></td>\
-				<td><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></td>\
 			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
@@ -1213,57 +1210,71 @@ js2AddOnloadHook( function() {
 						.click();
 				}
 			});
+			
+			// TODO: Find a cleaner way to share this function
+			$j(this).data( 'replaceCallback', function( mode ) {
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
+				var searchStr = $j( '#edittoolbar-replace-search' ).val();
+				var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
+				var flags = '';
+				var matchCase = $j( '#edittoolbar-replace-case' ).is( ':checked' );
+				var isRegex = $j( '#edittoolbar-replace-regex' ).is( ':checked' );
+				if ( !matchCase ) {
+					flags += 'i';
+				}
+				if ( mode == 'replaceAll' ) {
+					flags += 'g';
+				}
+				if ( !isRegex ) {
+					searchStr = RegExp.escape( searchStr );
+				}
+				var regex = new RegExp( searchStr, flags );
+				var $textarea = $j(this).data( 'context' ).$textarea;
+				var text = $j.wikiEditor.fixOperaBrokenness( $textarea.val() );
+				var matches = text.match( regex );
+				if ( !matches ) {
+					$j( '#edittoolbar-replace-nomatch' ).show();
+				} else if ( mode == 'replaceAll' ) {
+					// Prepare to select the last match
+					var start = text.lastIndexOf( matches[matches.length - 1] );
+					var end = start + replaceStr.length;
+					var corr = ( matches.length - 1 ) * ( replaceStr.length - searchStr.length ); 
+					$textarea
+						.val( $textarea.val().replace( regex, replaceStr ) )
+						.change()
+						.setSelection( start + corr, end + corr )
+						.scrollToCaretPosition();
+					
+					$j( '#edittoolbar-replace-success' )
+						.text( gM( 'edittoolbar-tool-replace-success', matches.length ) )
+						.show();
+					$j(this).data( 'offset', 0 );
+				} else {
+					var start = text.indexOf( matches[0],
+						$j(this).data( 'offset' ) );
+					var end = start + matches[0].length;
+					var newEnd = start + replaceStr.length;
+					$textarea.setSelection( start, end );
+					if ( mode == 'replace' ) {
+						$textarea
+							.encapsulateSelection( '', replaceStr, '', false, true )
+							.setSelection( start, newEnd );
+					}
+					$textarea.scrollToCaretPosition();
+					$j(this).data( 'offset', mode == 'replace' ? newEnd : end );
+				}
+			});
 		},
 		dialog: {
 			buttons: {
-				'edittoolbar-tool-replace-button': function() {
-					$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
-					var searchStr = $j( '#edittoolbar-replace-search' ).val();
-					var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
-					var flags = '';
-					var replaceAll = $j( '#edittoolbar-replace-all' ).is( ':checked' );
-					if ( !$j( '#edittoolbar-replace-case' ).is( ':checked' ) ) {
-						flags += 'i';
-					}
-					if ( replaceAll ) {
-						flags += 'g';
-					}
-					if ( !$j( '#edittoolbar-replace-regex' ).is( ':checked' ) ) {
-						searchStr = RegExp.escape( searchStr );
-					}
-					var regex = new RegExp( searchStr, flags );
-					var $textarea = $j(this).data( 'context' ).$textarea;
-					var text = $j.wikiEditor.fixOperaBrokenness( $textarea.val() );
-					var matches = text.match( regex );
-					if ( !matches ) {
-						$j( '#edittoolbar-replace-nomatch' ).show();
-					} else if ( replaceAll ) {
-						// Prepare to select the last match
-						var start = text.lastIndexOf( matches[matches.length - 1] );
-						var end = start + replaceStr.length;
-						var corr = ( matches.length - 1 ) * ( replaceStr.length - searchStr.length ); 
-						$textarea
-							.val( $textarea.val().replace( regex, replaceStr ) )
-							.change()
-							.setSelection( start + corr, end + corr )
-							.scrollToCaretPosition();
-						
-						$j( '#edittoolbar-replace-success' )
-							.text( gM( 'edittoolbar-tool-replace-success', matches.length ) )
-							.show();
-						$j(this).data( 'offset', 0 );
-					} else {
-						var start = text.indexOf( matches[0],
-							$j(this).data( 'offset' ) );
-						var end = start + matches[0].length;
-						var newEnd = start + replaceStr.length;
-						$textarea
-							.setSelection( start, end )
-							.encapsulateSelection( '', replaceStr, '', false, true )
-							.setSelection( start, newEnd )
-							.scrollToCaretPosition();
-						$j(this).data( 'offset', newEnd );
-					}
+				'edittoolbar-tool-replace-button-findnext': function() {
+					$j(this).data( 'replaceCallback' ).call( this, 'find' );
+				},
+				'edittoolbar-tool-replace-button-replacenext': function() {
+					$j(this).data( 'replaceCallback' ).call( this, 'replace' );
+				},
+				'edittoolbar-tool-replace-button-replaceall': function() {
+					$j(this).data( 'replaceCallback' ).call( this, 'replaceAll' );
 				},
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
