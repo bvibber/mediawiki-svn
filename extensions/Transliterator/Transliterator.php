@@ -25,6 +25,8 @@
  *     use new magic word i18n system
  * @version 1.3.1
  *     made ^ act more like $ (i.e. ^μπ => doesn't prevent μ => from matching), fix bug with cache refresh
+ * @version 1.3.2 
+ *     cache getExistingMapNames query - still not sure caching is optimal.
  */
 
 /**
@@ -133,9 +135,16 @@ class ExtTransliterator {
      * templates that don't know if a map exists, so may try far too often.
      */
     function getExistingMapNames( $prefix ) {
+        global $wgMemc;
 
+        // Have we used it on this page already?
         if ( ! is_null($this->mPages) )
             return $this->mPages;
+
+        // Have we used it recently?
+        $cached = $wgMemc->get( self::CACHE_PREFIX . "__map_names__" );
+        if ( $cached )
+            return $this->mPages = $cached;
 
         $dbr = wfGetDB( DB_SLAVE );
         $res = $dbr->select( 'page',
@@ -150,38 +159,41 @@ class ExtTransliterator {
         $this->mPages = Array();
 
         while ( $r = $res->fetchObject() ) {
-            $this->mPages[$r->page_title] = $r;
+            $this->mPages[$r->page_title] = $r->page_id;
         }
 
+        $wgMemc->set( self::CACHE_PREFIX . "__map_names__", $this->mPages );
         return $this->mPages;
     }
     /**
      * Get a map function, either from the local cache or from the page,
-     * TODO: I am uncomfortable with cache integration.
      */
-    function getMap( $prefix, $name ) {
+    function getMap( $prefix, $mappage ) {
         global $wgMemc;
 
-        $mappage = $prefix.$name;
-
-        // Have we used it on thie page already?
-        if ( isset( $this->mMaps[$mappage] ) )
+        // Have we used it on this page already?
+        if ( isset( $this->mMaps[$mappage] ) ) {
             return $this->mMaps[$mappage];
-
-        // Have we used it recently?
-        $cached = $wgMemc->get( self::CACHE_PREFIX . $name );
-        if ( $cached )
-            return $this->mMaps[$mappage] = ($cached == "false" ? false : $cached);
+        }
 
         // Does it exist at all?
         $existing = $this->getExistingMapNames( $prefix );
-        if (! isset( $existing[$mappage] ) )
+        if ( isset( $existing[$mappage] ) ) {
+
+            // Have we used it recently?
+            $map = $wgMemc->get( self::CACHE_PREFIX . $mappage );
+            if (! $map ) {
+
+                $map = $this->readMap( wfMsg( $mappage ), $mappage );
+
+                if ( $map )
+                    $wgMemc->set( self::CACHE_PREFIX . $mappage, $map);
+            }
+
+        } else {
             $map = false;
+        }
 
-        else
-            $map = $this->readMap( wfMsg( $mappage ), $mappage );
-
-        $wgMemc->set( self::CACHE_PREFIX . $name, ($map == false ? "false" : $map));
         return $this->mMaps[$mappage] = $map;
     }
 
@@ -456,9 +468,15 @@ class ExtTransliterator {
         }
 
         $prefix = wfMsg( 'transliterator-prefix' );
-        $mappage = $prefix.$mapname;
+        $title = Title::newFromText( $prefix . $mapname, NS_MEDIAWIKI );
 
-        $map = $this->getMap( $prefix, $mapname );
+        if (! $title ) {
+            return $other == '' ? str_replace("$1", "{{#transliterate:$mapname|$word}}", $format) : $other;
+        }
+
+        $mappage = $title->getDBkey();
+
+        $map = $this->getMap( $prefix, $mappage );
 
         if ( !$map ) { // False if map was not found
             $output = $other;
@@ -473,11 +491,9 @@ class ExtTransliterator {
 
         // Populate the dependency table so that we get re-rendered if the map changes.
         if ( isset( $this->mPages[$mappage] ) )
-            $title = Title::newFromRow( $this->mPages[$mappage] );
-        else
-            $title = Title::newFromText( $mappage, NS_MEDIAWIKI );
+            $parser->mOutput->addTemplate( $title, $this->mPages[$mappage], null );
 
-        if ($title)
+        else
             $parser->mOutput->addTemplate( $title, $title->getArticleID(), null );
 
         return $output;
@@ -506,7 +522,8 @@ class ExtTransliterator {
             $text = $title->getText();
             $prefix = wfMsg( 'transliterator-prefix' );
             if ( strpos( $text, $prefix ) === 0 ) {
-                $wgMemc->delete( self::CACHE_PREFIX . str_replace( $prefix, '', $text ) );
+                $wgMemc->delete( self::CACHE_PREFIX . $title->getDBkey() );
+                $wgMemc->delete( self::CACHE_PREFIX . "__map_names__" );
             }
         }
         return true;
