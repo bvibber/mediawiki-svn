@@ -1012,6 +1012,9 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
+				$j( '#edittoolbar-link-int-target, #edittoolbar-link-ext-target' )
+					.filter( ':visible' )
+					.focus();
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
 				$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
@@ -1157,6 +1160,7 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
+				$j( '#edittoolbar-table-dimensions-columns' ).focus();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button
@@ -1302,6 +1306,7 @@ js2AddOnloadHook( function() {
 			},
 			open: function() {
 				$j(this).data( 'offset', 0 );
+				$j( '#edittoolbar-replace-search' ).focus();
 				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
