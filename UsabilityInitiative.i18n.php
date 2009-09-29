@@ -14,6 +14,7 @@ $messages = array();
 $messages['en'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => 'Features developed by the Wikipedia Usability Initiative to enhance the usability of MediaWiki',
+	'prefs-experimental' => 'Experimental features',
 );
 
 /** Message documentation (Message documentation)

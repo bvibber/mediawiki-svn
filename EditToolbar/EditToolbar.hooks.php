@@ -220,7 +220,7 @@ class EditToolbarHooks {
 			array(
 				'type' => 'toggle',
 				'label-message' => 'edittoolbar-preference',
-				'section' => 'editing/advancedediting',
+				'section' => 'editing/experimental',
 			);
 		}
 		
@@ -229,7 +229,7 @@ class EditToolbarHooks {
 			$defaultPreferences['usebetatoolbar-cgd'] = array(
 				'type' => 'toggle',
 				'label-message' => 'edittoolbar-cgd-preference',
-				'section' => 'editing/advancedediting',
+				'section' => 'editing/experimental',
 			);
 		}
 		return true;

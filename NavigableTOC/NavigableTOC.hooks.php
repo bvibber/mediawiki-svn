@@ -42,7 +42,7 @@ class NavigableTOCHooks {
 			array(
 				'type' => 'toggle',
 				'label-message' => 'navigabletoc-preference',
-				'section' => 'editing/advancedediting',
+				'section' => 'editing/experimental',
 			);
 		}
 		return true;
