@@ -265,7 +265,7 @@ $messages['cs'] = array(
 	'ratinghistory' => 'Historie hodnocení stránky',
 	'ratinghistory-leg' => 'Časový průběh hodnocení stránky [[:$1|$1]]',
 	'ratinghistory-link' => 'Hodnocení stránky',
-	'ratinghistory-thanks' => "''<font color=\"darkred\">Děkujeme, že věnujete čas hodnocení této stránky!</font>''",
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Děkujeme, že jste {{GENDER:|věnoval|věnovala|věnovali}} čas hodnocení této stránky!</font>''",
 	'ratinghistory-period' => 'Období:',
 	'ratinghistory-month' => 'poslední měsíc',
 	'ratinghistory-3months' => 'poslední 3 měsíce',

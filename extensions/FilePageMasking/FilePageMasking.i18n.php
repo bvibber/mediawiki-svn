@@ -32,6 +32,13 @@ $messages['br'] = array(
 	'filepagemasking-desc' => 'Erlec\'hiañ a ra ".xxx" gant "_xxx" e liammoù pajenn deskrivañ ar restr',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'filepagemasking-desc' => 'Mijenja ".xxx" u "_xxx" u linkovima stranica opisa datoteke',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -130,6 +137,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'filepagemasking-desc' => 'Herschrijft ".xxx" naar "_xxx" in verwijzingen naar de bestandsbeschrijvingspagina\'s',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'filepagemasking-desc' => 'Zastępuje „.xxx” przez „_xxx” w linkach do strony opisu pliku',
 );
 
 /** Piedmontese (Piemontèis)

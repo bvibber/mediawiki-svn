@@ -315,6 +315,13 @@ $messages['gsw'] = array(
 	'tooltip-pt-optin-feedback' => 'Gib Ruckmäldige iber Dyni Erfahrige mit dr neje Funktione',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'optin-try' => 'Prowal Beta',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

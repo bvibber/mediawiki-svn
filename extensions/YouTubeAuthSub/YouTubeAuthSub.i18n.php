@@ -3035,6 +3035,14 @@ Lütfen sabırlı olun.',
 	'youtubeauthsub_jserror_nodesc' => 'Lütfen video için bir tanım girin.',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author KhayR
+ */
+$messages['tt-cyrl'] = array(
+	'youtubeauthsub' => 'YouTube видеосын кертү',
+	'youtubeauthsub-desc' => 'YouTube кулланучыларына [[Special:YouTubeAuthSub|видео кертергә]] мөмкинлек бирә',
+);
+
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Sahran
  */

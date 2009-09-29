@@ -1684,6 +1684,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdamokos
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -1707,6 +1708,11 @@ $messages['hu'] = array(
 	'voctrain_Definition' => 'Definíció',
 	'voctrain_Word' => 'Szó',
 	'voctrain_submit_answer' => 'válasz elküldése',
+	'voctrain_peek' => 'les',
+	'voctrain_skip' => 'átugor',
+	'voctrain_I_know_it_do_not_ask_again' => 'Ismerem/ne kérdezze mégegyszer',
+	'voctrain_abort_exercise' => 'gyakorlat befejezése',
+	'voctrain_The_word_to_translate' => 'A lefordítandó szó',
 	'voctrain_User_name' => 'Felhasználói név',
 	'voctrain_Login' => 'Bejelentkezés',
 	'voctrain_Log_in' => 'Bejelentkezés',

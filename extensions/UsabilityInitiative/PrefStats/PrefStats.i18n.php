@@ -700,6 +700,21 @@ Druck uf eini go Statischtike iber si aaluege.',
 	'prefstats-legend-in' => 'Aagmäldet',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'prefstats' => 'Earroo tosheeaghtyn',
+	'prefstats-desc' => "Freill arrey er quoid ymmydeyryn t'er reih tosheeaghtyn ennagh",
+	'prefstats-title' => 'Earrooyn er tosheeaghtyn',
+	'prefstats-factor-hour' => 'oor',
+	'prefstats-factor-sixhours' => 'shey ooryn',
+	'prefstats-factor-day' => 'laa',
+	'prefstats-factor-week' => 'shiaghtin',
+	'prefstats-factor-twoweeks' => 'daa hiaghtin',
+	'prefstats-factor-fourweeks' => 'kiare shiaghteeyn',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  * @author Rotemliss

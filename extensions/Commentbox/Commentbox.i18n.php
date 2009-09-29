@@ -246,6 +246,25 @@ Du hesch e Aamerkig zue däre Syte? Trag e do yy oder <span class="plainlinks">[
 	'commentbox-error-empty-comment' => 'Lääri Aamerkige sin nit erlaubt!',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'commentbox-desc' => 'הוספת תיבת תגובות לדפים מסויימים',
+	'commentbox-intro' => '== הוספת תגובה... ==
+יש לכם תגובה על דף זה? הוסיפו אותה כאן או <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} ערכו את הדף ישירות]</span>.�',
+	'commentbox-savebutton' => 'שמירת התגובה',
+	'commentbox-name' => 'שם:',
+	'commentbox-name-explanation' => '<small>(עצה: אם תבצעו [[Special:UserLogin|כניסה]], לא תצטרכו למלא כאן את שמכם ידנית)</small>',
+	'commentbox-log' => 'תגובות חדשות',
+	'commentbox-first-comment-heading' => '== תגובות ==',
+	'commentbox-regex' => '/\\n==\\s*תגובות\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'ארעה שגיאה בעת יצירת התגובה',
+	'commentbox-error-page-nonexistent' => 'דף זה אינו קיים!',
+	'commentbox-error-namespace' => 'תגובות אינן מורשות במרחב שם זה!',
+	'commentbox-error-empty-comment' => 'תגובות ריקות אינן מורשות!',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

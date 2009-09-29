@@ -684,6 +684,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Japsu
+ * @author Kulmalukko
  * @author Mobe
  * @author Nike
  * @author Silvonen
@@ -697,6 +698,7 @@ $messages['fi'] = array(
 	'usagestatisticsfor' => '<h2>Käyttäjäkohtaiset tilastot ([[User:$1|$1]])</h2>',
 	'usagestatisticsforallusers' => '<h2>Käyttötilastot kaikilta käyttäjiltä</h2>',
 	'usagestatisticsinterval' => 'Aikaväli',
+	'usagestatisticsnamespace' => 'Nimiavaruus:',
 	'usagestatisticstype' => 'Tyyppi',
 	'usagestatisticsstart' => 'Aloituspäivä',
 	'usagestatisticsend' => 'Lopetuspäivä',
@@ -1603,8 +1605,11 @@ $messages['pl'] = array(
 	'usagestatistics-desc' => 'Pokazuje statystyki indywidualne użytkownika oraz statystyki wiki',
 	'usagestatisticsfor' => '<h2>Statystyki użytkownika [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statystyki wykorzystania dla wszystkich użytkowników</h2>',
-	'usagestatisticsinterval' => 'odstęp',
-	'usagestatisticsnamespace' => 'Przestrzeń nazw:',
+	'usagestatisticsinterval' => 'Okres',
+	'usagestatisticsnamespace' => 'Przestrzeń nazw',
+	'usagestatisticsexcluderedirects' => 'Wyklucz przekierowania',
+	'usagestatistics-namespace' => 'Dane statystyczne dotyczą przestrzeni nazw „[[Special:Allpages/$1|$2]]”.',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Przekierowania]] nie są brane pod uwagę.',
 	'usagestatisticstype' => 'Typ',
 	'usagestatisticsstart' => 'Data początkowa',
 	'usagestatisticsend' => 'Data końcowa',

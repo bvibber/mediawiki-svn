@@ -118,6 +118,16 @@ $messages['gsw'] = array(
 	'replaceset-error-regexbadmodifier' => "Dr Regex-Modifier '$1' isch nit giltig.",
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'replaceset-desc' => 'הוספת התגית <nowiki>{{#replaceset}}</nowiki> המשמשת להחלפת מקטעים של טקסט בנתונים מעוצבים',
+	'replaceset-error-calllimit' => 'מגבלת הקריאה לתגית ReplaceSet הושגה.',
+	'replaceset-error-regexnoend' => 'לתבנית הביטוי הרגולרי "$1" חסר מפריד הסיום \'$2\'',
+	'replaceset-error-regexbadmodifier' => "תו ההכללה לביטוי הרגולרי '$1' אינו תקני.",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

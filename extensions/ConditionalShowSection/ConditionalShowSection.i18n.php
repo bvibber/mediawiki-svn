@@ -155,6 +155,13 @@ $messages['oc'] = array(
 	'conditionalshowsection-desc' => 'Apondon de la balisa <cshow> per afichar o amagar condicionalament una seccion de wikitèxte',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'conditionalshowsection-desc' => 'Dodaje znacznik <cshow> warunkowego pokazywania lub ukrywania fragmentu tekstu wiki',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

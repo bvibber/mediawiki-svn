@@ -54,10 +54,12 @@ The replacement values should not be escaped.',
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'masseditregex-desc' => '{{desc}}',
 	'masseditregextext' => 'Replace <code>/en/</code> in the middle in link <code>http://php.net/manual/en/function.preg-replace.php</code> with your language code between slashes, if that page exists. Otherwise leave it as is to link to the English documentation, or choose an appropriate fallback language code.',
+	'masseditregex-hint-headmatch' => "Noun. This is a column header for the 'match' regexes.",
 );
 
 /** Afrikaans (Afrikaans)
@@ -130,7 +132,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bs'] = array(
 	'masseditregex-desc' => 'Korištenje regularnih izraza za [[Special:MassEditRegex|uređivanje više stranica u jednoj operaciji]]',
-	'masseditregex-pagelisttxt' => 'Stranice za uređivanje:',
+	'masseditregex-pagelisttxt' => 'Stranice za uređivanje (ne koristite imenski prostor: prefiks):',
 	'masseditregex-matchtxt' => 'Traži:',
 	'masseditregex-replacetxt' => 'Zamijeni sa:',
 	'masseditregex-executebtn' => 'Izvrši',
@@ -142,6 +144,9 @@ $messages['bs'] = array(
 	'masseditregex-view-full-summary' => 'Pogledaj puni sažetak izmjene',
 	'masseditregex-hint-headreplace' => 'Zamjena',
 	'masseditregex-hint-headeffect' => 'Efekat',
+	'masseditregex-listtype-intro' => 'Ovo je spisak:',
+	'masseditregex-editfailed' => 'Uređivanje neuspjelo:',
+	'masseditregex-tooltip-execute' => 'Primijeni ove izmjene na svaku stranicu',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -286,6 +291,7 @@ $messages['gl'] = array(
 	'masseditregex-exprnomatch' => 'A expresión "$1" non coincide con ningunha páxina.',
 	'masseditregex-badregex' => 'Expresión regular non válida:',
 	'masseditregex-editfailed' => 'Fallou a edición:',
+	'masseditregex-tooltip-execute' => 'Aplicar estes cambios a cada páxina',
 );
 
 /** Swiss German (Alemannisch)
@@ -453,6 +459,7 @@ $messages['ja'] = array(
 	'masseditregex-exprnomatch' => '正規表現「$1」に一致したページはありません。',
 	'masseditregex-badregex' => '無効な正規表現:',
 	'masseditregex-editfailed' => '編集失敗:',
+	'masseditregex-tooltip-execute' => 'これらの変更を各ページに適用する',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -490,7 +497,7 @@ $messages['ksh'] = array(
 	'masseditregex-namespace-intro' => 'All di Sigge sin en däm Appachtemang heh:',
 	'masseditregex-exprnomatch' => 'De <i lang="en">regular expression</i> „$1“ hät keine Träfer, op keine vun dä Sigge.',
 	'masseditregex-badregex' => 'Dat es en onjöltejje <i lang="en">regular expression</i>:',
-	'masseditregex-editfailed' => 'Sat Ändere is donevve jejange:',
+	'masseditregex-editfailed' => 'Dat Ändere is donevve jejange:',
 	'masseditregex-tooltip-execute' => 'Donn di Änderunge op jede Sigg maache',
 );
 

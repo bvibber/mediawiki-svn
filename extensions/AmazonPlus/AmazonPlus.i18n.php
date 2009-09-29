@@ -139,6 +139,16 @@ $messages['be-tarask'] = array(
 	'amazonplus-noidres' => 'Памылка: Немагчыма знайсьці ідэнтыфікатар прадукту!',
 	'amazonplus-fgcerr' => 'Памылка: Немагчыма атрымаць зьвесткі з Amazon!',
 	'amazonplus-slserr' => 'Памылка: Не магчыма прааналізаваць зьвесткі з Amazon!',
+	'amazonplus-used' => 'выкарыстоўваецца',
+	'amazonplus-german' => 'Нямецкая',
+	'amazonplus-french' => 'Француская',
+	'amazonplus-japanese' => 'Японская',
+	'amazonplus-amazon' => 'кошт на Amazon',
+	'amazonplus-new' => 'новая',
+	'amazonplus-none' => 'Не засталося экзэмпляраў гэтага тавару на продаж.',
+	'amazonplus-cp-none' => 'Няма',
+	'amazonplus-more' => 'болей',
+	'amazonplus-less' => 'меней',
 );
 
 /** Bulgarian (Български)

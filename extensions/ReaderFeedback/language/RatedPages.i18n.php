@@ -99,6 +99,7 @@ $messages['cs'] = array(
 	'ratedpages-list' => 'Toto je seznam stránek seřazený podle čtenářského hodnocení.',
 	'ratedpages-none' => 'V tomto seznamu nejsou žádné stránky',
 	'ratedpages-graphs' => 'hodnocení',
+	'ratedpages-count' => '$1 {{PLURAL:$1|hodnocení|hodnocení}}',
 );
 
 /** Danish (Dansk)
@@ -430,11 +431,15 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'ratedpages' => 'Strony oceniane przez czytelników',
+	'ratedpages-leg' => 'Znajdź strony o liczbie ocen w zadanym przedziale',
 	'ratedpages-list' => 'Poniżej znajduje się lista stron posortowanych według ocen wystawionych przez czytelników.',
 	'ratedpages-none' => 'Na tej liście nie ma żadnych stron',
 	'ratedpages-graphs' => 'ocena danych',
+	'ratedpages-count' => '$1 {{PLURAL:$1|ocena|oceny|ocen}}',
 );
 
 /** Piedmontese (Piemontèis)

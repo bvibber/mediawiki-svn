@@ -149,6 +149,13 @@ $messages['nl'] = array(
 	'ipauth-desc' => 'Automatisch aanmelden van vaste IP-adressen',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'ipauth-desc' => 'Automatyczne logowanie użytkowników korzystających ze stałych adresów IP',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

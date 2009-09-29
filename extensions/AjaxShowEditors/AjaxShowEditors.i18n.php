@@ -94,6 +94,20 @@ $messages['bcl'] = array(
 	'ajax-se-idling' => '($1s na an nakaagi)',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'ajax-se-desc' => 'Паказвае ўдзельнікаў, якія рэдагуюць адну старонку',
+	'ajax-se-title' => 'Цяпер рэдагуюць:',
+	'ajax-se-pending' => 'чаканьне абнаўленьня... (націсьніце тут альбо пачніце рэдагаваньне)',
+	'ajax-se-idling' => '($1 таму)',
+	'ajax-se-pagedoesnotexist' => 'старонка не існуе',
+	'ajax-se-userinvalid' => 'Памылка: няслушны ўдзельнік',
+	'ajax-se-usernotfound' => 'Памылка: удзельнік ня знойдзены',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

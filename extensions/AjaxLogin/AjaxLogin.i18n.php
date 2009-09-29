@@ -62,6 +62,9 @@ Cтаронка рэдагаваньня будзе пакінутая, што �
 	'ajaxLogin2' => 'Вы ўпэўнены?
 Вы можаце страціць зьмены зробленыя на гэтай старонцы, калі Вы зараз пакінеце гэту старонку.',
 	'ajaxlogin-create' => 'Стварыць рахунак',
+	'al-nosuchuser' => 'Не існуе ўдзельніка з іменем «$1».
+Імя ўдзельніка зьяўляецца адчувальным да велічыні літар.
+Праверце правапіс.',
 );
 
 /** Bulgarian (Български)
@@ -598,12 +601,15 @@ Verificatz l'ortografia.",
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'ajaxlogin-desc' => 'Dynamiczne pole, które pozwala użytkownikom na zalogowanie się oraz przypomnienie hasła',
+	'ajaxlogin-desc' => 'Dynamiczne pole, które umożliwia użytkownikom zalogowanie się oraz przypomnienie hasła',
 	'ajaxLogin1' => 'Aby się zalogować, należy wprowadzić nowe hasło.
-Obecne edytowana strona zostanie zmieniana co może spowodować utratę wprowadzonych teraz zmian.',
+Opuścisz obecnie edytowaną stronę, co może spowodować utratę wprowadzonych zmian.',
 	'ajaxLogin2' => 'Czy jesteś pewien?
 Możesz stracić zmiany które zrobiłeś na tej stronie, jeśli ją teraz opuścisz.',
 	'ajaxlogin-create' => 'Załóż konto',
+	'al-nosuchuser' => 'Brak użytkownika o nazwie „$1”.
+W nazwie użytkownika ma znaczenie wielkość znaków.
+Sprawdź czy poprawnie napisałeś.',
 );
 
 /** Piedmontese (Piemontèis)

@@ -148,6 +148,13 @@ $messages['nl'] = array(
 	'lockout-desc' => 'Zorgt ervoor dat geblokkeerde gebruikers niet kunnen aanmelden',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'lockout-desc' => 'Zapobiega zalogowaniu się przez zablokowanych użytkowników',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
