@@ -1109,6 +1109,14 @@ js2AddOnloadHook( function() {
 					var cols = parseInt( $j( '#edittoolbar-table-dimensions-columns' ).val() );
 					var header = Math.min( 1, $j( '#edittoolbar-table-dimensions-header:checked' ).size() );
 					var table = "{|\n";
+					if ( isNaN( rows ) || isNaN( cols ) ) {
+						alert( gM( 'edittoolbar-tool-table-invalidnumber' ) );
+						return;
+					}
+					if ( rows + header == 0 || cols == 0 ) {
+						alert( gM( 'edittoolbar-tool-table-zero' ) );
+						return;
+					}
 					if ( rows * cols > 1000 ) {
 						alert( gM( 'edittoolbar-tool-table-toomany', 1000 ) );
 						return;
