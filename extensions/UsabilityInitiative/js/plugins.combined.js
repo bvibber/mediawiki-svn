@@ -1017,7 +1017,7 @@ setSelection: function( start, end ) {
 			this.selectionEnd = end;
 		} else if ( document.body.createTextRange ) {
 			var selection = document.body.createTextRange();
-			selection.setToElementText( this );
+			selection.moveToElementText( this );
 			var length = selection.text.length;
 			selection.moveStart( 'character', start );
 			selection.moveEnd( 'character', -length + end );
