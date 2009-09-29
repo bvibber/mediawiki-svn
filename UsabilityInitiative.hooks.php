@@ -67,16 +67,16 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 7 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 11 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 12 ),
 				// FIXME: jQuery UI doesn't belong here, should move to no_js2
 				// once we figure out how to do jQuery UI properly in JS2 
 				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 30 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 31 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 30 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 31 ),
 			),
 		),
 	);
