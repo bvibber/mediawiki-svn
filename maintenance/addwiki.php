@@ -73,7 +73,8 @@ class AddWiki extends Maintenance {
 		$dbw->sourceFile( "$IP/extensions/AbuseFilter/abusefilter.tables.sql" );
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.sql" );
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/UserDailyContribs/UserDailyContribs.sql" );
-
+		$dbw->sourceFile( "$IP/extensions/ProofreadPage/ProofreadPage.sql" );
+		
 		$dbw->query( "INSERT INTO site_stats(ss_row_id) VALUES (1)" );
 
 		# Initialise external storage
