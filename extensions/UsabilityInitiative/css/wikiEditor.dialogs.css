@@ -1,7 +1,12 @@
 /* wikiEditor dialogs module */
 
+.ui-widget table {
+	margin-top: 0.75em;
+}
 .ui-widget table td {
 	padding: 0.5em;
+	height: 3em;
+	overflow: visible;
 }
 
 /* Put suggestions (default z-index 99) on top of dialogs (z-index 1002) */
