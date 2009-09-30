@@ -1111,7 +1111,6 @@ js2AddOnloadHook( function() {
 					var rows = parseInt( $j( '#edittoolbar-table-dimensions-rows' ).val() );
 					var cols = parseInt( $j( '#edittoolbar-table-dimensions-columns' ).val() );
 					var header = Math.min( 1, $j( '#edittoolbar-table-dimensions-header:checked' ).size() );
-					var table = "{|\n";
 					if ( isNaN( rows ) || isNaN( cols ) ) {
 						alert( gM( 'edittoolbar-tool-table-invalidnumber' ) );
 						return;
@@ -1124,6 +1123,7 @@ js2AddOnloadHook( function() {
 						alert( gM( 'edittoolbar-tool-table-toomany', 1000 ) );
 						return;
 					}
+					var table = "";
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
 						for ( var c = 0; c < cols; c++ ) {
@@ -1141,13 +1141,14 @@ js2AddOnloadHook( function() {
 						// table[table.length - 1] is read-only
 						table = table.substr( 0, table.length - 1 ) + "\n";
 					}
-					table += "|}";
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j(this).data( 'context' ),
 						{
 							type: 'encapsulate',
 							options: {
-								pre: table,
+								pre: "{|\n",
+								peri: table,
+								post: "|}",
 								ownline: true
 							}
 						},
@@ -1252,6 +1253,9 @@ js2AddOnloadHook( function() {
 				} else {
 					var start = text.indexOf( matches[0],
 						$j(this).data( 'offset' ) );
+					if ( start == -1 )
+						// Search hit BOTTOM, continuing at TOP
+						start = text.indexOf( matches[0] );
 					var end = start + matches[0].length;
 					var newEnd = start + replaceStr.length;
 					$textarea.setSelection( start, end );

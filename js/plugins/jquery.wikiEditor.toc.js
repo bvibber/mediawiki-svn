@@ -159,7 +159,7 @@ fn: {
 							.click( function( event ) {
 								$(this).data( 'textbox' )
 									.setSelection( $(this).data( 'position' ) )
-									.scrollToCaretPosition();
+									.scrollToCaretPosition( true );
 								event.preventDefault();
 							} )
 							.text( structure[i].text )
