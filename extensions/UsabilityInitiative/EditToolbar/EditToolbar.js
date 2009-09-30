@@ -760,19 +760,19 @@ js2AddOnloadHook( function() {
 				<div id="edittoolbar-link-dialog-tab-int"><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label></td>\
 					<td>\
-						<input type="text" id="edittoolbar-link-int-target" />\
+						<input type="text" id="edittoolbar-link-int-target" size="50" />\
 						<div id="edittoolbar-link-int-target-status" style="display: inline;"></div>\
 					</td>\
 				</tr><tr>\
 					<td><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label></td>\
-					<td><input type="text" id="edittoolbar-link-int-text" /></td>\
+					<td><input type="text" id="edittoolbar-link-int-text" size="50" /></td>\
 				</table></fieldset></div>\
 				<div id="edittoolbar-link-dialog-tab-ext"><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label></td>\
-					<td><input type="text" id="edittoolbar-link-ext-target" /></td>\
+					<td><input type="text" id="edittoolbar-link-ext-target" size="50" /></td>\
 				</tr><tr>\
 					<td><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label></td>\
-					<td><input type="text" id="edittoolbar-link-ext-text" /></td>\
+					<td><input type="text" id="edittoolbar-link-ext-text" size="50" /></td>\
 				</table></fieldset></div>\
 			</div>',
 		init: function() {
