@@ -400,6 +400,13 @@ $messages['lt'] = array(
 	'abcdownload' => 'Atsisiųsti:',
 );
 
+/** Latvian (Latviešu)
+ * @author Dark Eagle
+ */
+$messages['lv'] = array(
+	'abcdownload' => 'Ielādēt:',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

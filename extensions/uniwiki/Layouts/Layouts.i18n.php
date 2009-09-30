@@ -472,6 +472,13 @@ $messages['jv'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Tagkacasunting',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'layouts_title' => 'გვერდის შექმნა',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */

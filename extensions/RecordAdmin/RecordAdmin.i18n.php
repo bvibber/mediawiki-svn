@@ -498,6 +498,7 @@ $messages['es'] = array(
 	'recordadmin-recordtype' => 'tipo de registro',
 	'recordadmin-newrecord' => 'Seleccionar otro tipo de registro',
 	'recordadmin-submit' => 'Enviar',
+	'recordadmin-create' => 'Encontrar o crear "$1" registros',
 	'recordadmin-alreadyexist' => 'Perdón, "$1" ya existe!',
 	'recordadmin-createsuccess' => '$1 creado',
 	'recordadmin-createerror' => 'Un error ocurrió cuando se intentaba crear el $1!',

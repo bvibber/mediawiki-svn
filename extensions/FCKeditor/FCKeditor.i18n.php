@@ -564,6 +564,7 @@ $messages['hu'] = array(
 	'rich_editor_new_window' => 'Vizuális szerkesztő megnyitása új ablakban',
 	'tog-riched_start_disabled' => 'Indítás a vizuális szerkesztő letiltásával',
 	'tog-riched_use_popup' => 'Vizuális szerkesztő megnyitása felugró ablakban',
+	'tog-riched_use_toggle' => 'Váltás a wikiszöveg és a vizuális szerkesztő között (lecseréli a szövegbeviteli mezőt a vizuális szerkesztőre)',
 	'tog-riched_toggle_remember_state' => 'Emlékezzen az utolsó állapotra',
 );
 

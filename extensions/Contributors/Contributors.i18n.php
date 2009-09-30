@@ -1185,6 +1185,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'contributors' => 'Condrebbutore',
 	'contributors-toolbox' => 'Condrebbuture prengepàle',
+	'contributors-legend' => "Elenghe de le condrebbutore prengepàle a 'na pàgene",
 	'contributors-target' => 'Titele:',
 	'contributors-submit' => 'Fà vedè',
 	'contributors-subtitle' => 'Condrebbutore prengepàle de $1',

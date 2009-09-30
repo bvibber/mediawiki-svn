@@ -601,11 +601,12 @@ $messages['vep'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'ratedpages' => 'Trang được độc giả đánh dấu',
+	'ratedpages' => 'Trang được độc giả đánh giá',
 	'ratedpages-leg' => 'Tìm các trang có số lần đánh giá đáng kể',
 	'ratedpages-list' => 'Đây là danh sách các trang theo thứ tự đánh giá của độc giả.',
 	'ratedpages-none' => 'Danh sách này không có trang nào.',
 	'ratedpages-graphs' => 'dữ liệu đánh giá',
+	'ratedpages-count' => '$1 đánh giá',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

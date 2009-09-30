@@ -142,6 +142,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'clicktracking' => 'Praćenje klikova u Inicijativi upotrebljivosti',
 	'clicktracking-desc' => 'Praćenje klikova, napravljeno za praćenje događaja koji ne proizvode osvježavanje stanice',
+	'ct-title' => 'Akumulirani korisnički klikovi',
 	'ct-event-name' => 'Naziv događaja',
 	'ct-expert-header' => "''Stručnjački'' klikovi",
 	'ct-intermediate-header' => "''Napredni'' klikovi",
@@ -154,6 +155,7 @@ $messages['bs'] = array(
 	'ct-beginner' => 'Početnik',
 	'ct-intermediate' => 'Napredni',
 	'ct-expert' => 'Stručnjak',
+	'ct-date-range' => 'Raspon podataka',
 	'ct-editing' => 'Trenutno se uređuje:',
 	'ct-anon-users' => 'Anonimni korisnici',
 	'ct-user-contribs' => 'Ukupni doprinosi korisnika',
@@ -283,14 +285,31 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dalton2
+ * @author Locos epraix
  */
 $messages['es'] = array(
-	'ct-total-header' => 'Clicks totales',
+	'clicktracking' => 'Iniciativa de usabilidad de seguimiento mediante clics',
+	'clicktracking-desc' => 'Seguimiento mediante clics de eventos que no producen refresco de página',
+	'ct-title' => 'Clics de usuario agregados',
+	'ct-event-name' => 'Nombre de evento',
+	'ct-expert-header' => 'Clics "de experto"',
+	'ct-intermediate-header' => 'Clics "de usuario intermedio"',
+	'ct-beginner-header' => 'Clics "de principiante"',
+	'ct-total-header' => 'Clics totales',
 	'ct-start-date' => 'Fecha de inicio (AAMMDD)',
 	'ct-end-date' => 'Fecha de fin (AAMMDD)',
+	'ct-increment-by' => 'Número de días que cada punto representa',
+	'ct-change-graph' => 'Gráfico de cambio',
 	'ct-beginner' => 'Principiante',
 	'ct-intermediate' => 'Intemedio',
 	'ct-expert' => 'Experto',
+	'ct-date-range' => 'Rango de fecha',
+	'ct-editing' => 'Actualmente editando:',
+	'ct-anon-users' => 'Usuarios anónimos',
+	'ct-user-contribs' => 'Total de contribuciones de los usuarios',
+	'ct-user-span' => 'Contribuciones de usuario en lapso de tiempo',
+	'ct-and' => 'y',
 );
 
 /** Basque (Euskara)
@@ -572,6 +591,24 @@ $messages['ja'] = array(
 	'ct-and' => 'および',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'ct-beginner' => 'დამწყები',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'ct-event-name' => 'ឈ្មោះព្រឹត្តិការណ៍​',
+	'ct-total-header' => 'ចំនួនចុចសរុប​',
+	'ct-start-date' => 'កាលបរិច្ឆេទ​ចាប់ផ្ដើម (YYYYMMDD)',
+	'ct-end-date' => 'កាលបរិច្ឆេទ​បញ្ចប់ (YYYYMMDD)',
+	'ct-and' => 'និង​',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -672,6 +709,7 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'clicktracking' => "Seguit de clics de l'iniciativa d'utilizabilitat",
 	'clicktracking-desc' => 'Seguit de clics, visant a tracar los eveniments que causan pas un recargament de pagina',
+	'ct-title' => "Agregacion dels clics d'utilizaires",
 	'ct-event-name' => "Nom de l'eveniment",
 	'ct-expert-header' => 'Clics « expèrts »',
 	'ct-intermediate-header' => 'Clics « intermediaris »',
@@ -684,6 +722,12 @@ $messages['oc'] = array(
 	'ct-beginner' => 'Debutant',
 	'ct-intermediate' => 'Intermediari',
 	'ct-expert' => 'Expèrt',
+	'ct-date-range' => 'Portada de la data',
+	'ct-editing' => 'En cors de modificacion :',
+	'ct-anon-users' => 'Utilizaires anonims',
+	'ct-user-contribs' => 'Contribucions totalas dels utilizaires',
+	'ct-user-span' => "Contribucions de l'utilizaire sus la durada",
+	'ct-and' => 'e',
 );
 
 /** Polish (Polski)
@@ -719,6 +763,7 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'clicktracking' => "Trassadura dij click ëd l'Usability Initiative",
 	'clicktracking-desc' => "Trassadura dij click, për trassé dj'event cha a causo pa ël refresh ëd na pàgina",
+	'ct-title' => "Clich agregà ëd l'utent",
 	'ct-event-name' => "Nòm ëd l'event",
 	'ct-expert-header' => 'Click d\'"Espert"',
 	'ct-intermediate-header' => 'Click dj\'"antërmedi"',
@@ -731,6 +776,12 @@ $messages['pms'] = array(
 	'ct-beginner' => 'Prinsipiant',
 	'ct-intermediate' => 'Antërmedi',
 	'ct-expert' => 'Espert',
+	'ct-date-range' => 'Antërval ëd date',
+	'ct-editing' => 'Al moment an modìfica:',
+	'ct-anon-users' => 'Utent anònim',
+	'ct-user-contribs' => "Contribussion totaj ëd l'utent",
+	'ct-user-span' => "Contribussion ëd l'utent ant l'interval",
+	'ct-and' => 'e',
 );
 
 /** Portuguese (Português)
@@ -880,11 +931,13 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'clicktracking' => 'Theo dõi nhấn chuột Sáng kiến Khả dụng',
 	'clicktracking-desc' => 'Theo dõi hành vi nhấn chuột, dùng để theo dõi các hoạt động không làm tươi trang',
+	'ct-title' => 'Các lần nhấn chuột tập hợp lại',
 	'ct-event-name' => 'Tên sự kiện',
 	'ct-expert-header' => 'Cú nhấn "chuyên gia"',
 	'ct-intermediate-header' => 'Cú nhấn "trung bình"',
@@ -897,6 +950,12 @@ $messages['vi'] = array(
 	'ct-beginner' => 'Người mới',
 	'ct-intermediate' => 'Trung bình',
 	'ct-expert' => 'Chuyên gia',
+	'ct-date-range' => 'Dãy ngày',
+	'ct-editing' => 'Đang sửa đổi:',
+	'ct-anon-users' => 'Người dùng vô danh',
+	'ct-user-contribs' => 'Tổng số lần đóng góp',
+	'ct-user-span' => 'Số lần đóng góp trong thời gian',
+	'ct-and' => 'và',
 );
 
 /** Yue (粵語)

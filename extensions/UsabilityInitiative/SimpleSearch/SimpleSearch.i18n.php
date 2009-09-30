@@ -170,12 +170,13 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dalton2
  * @author Locos epraix
  * @author Omnipaedista
  */
 $messages['es'] = array(
 	'simplesearch' => 'Búsqueda simple',
-	'simplesearch-desc' => 'Agrega funcionalidades extra al vector de búsqueda simple',
+	'simplesearch-desc' => 'Agregue funcionalidades extra al vector de búsqueda simple',
 	'simplesearch-search' => 'Búsqueda',
 	'simplesearch-containing' => 'conteniendo...',
 );

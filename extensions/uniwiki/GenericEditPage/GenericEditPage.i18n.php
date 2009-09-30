@@ -779,6 +779,14 @@ Tambahaké nganggo piranti sing ana ing menu bar.',
 	'gep-categorypage' => 'MediaWiki:Tagkacasunting',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'gep-categories' => 'კატეგორიები',
+	'gep-addcategory' => 'კატეგორიის დამატება',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */

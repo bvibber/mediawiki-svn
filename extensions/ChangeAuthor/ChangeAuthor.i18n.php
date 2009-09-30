@@ -1577,6 +1577,10 @@ Jeśli błąd wystąpi ponownie, prawdopodobnie uszkodzona jest baza danych.',
  */
 $messages['pms'] = array(
 	'changeauthor' => 'Cambia autor ëd la revision',
+	'changeauthor-desc' => "A përmett ëd cambié l'autor ëd na revision",
+	'changeauthor-title' => "Cambia l'autor ëd la revision",
+	'changeauthor-search-box' => 'Serca revision',
+	'changeauthor-pagenameform-go' => 'Va',
 );
 
 /** Pashto (پښتو)

@@ -393,6 +393,13 @@ A SmoothGallery legtöbb beállítását támogatja',
 	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
 	'smoothgallery-error' => '<b>SmoothGallery hiba:</b>',
 	'smoothgallery-gallery-not-found' => 'A kért galéria nem létezik.',
+	'smoothgallery-not-found' => 'Nem lettek képek hozzáadva a galériához.
+Adj hozzá legalább egy képet.',
+	'smoothgallery-no-images' => 'Ebben a galériában nincsenek képek.
+
+Ellenőrizd hogy a kért {{PLURAL:$3|kép létezik|képek léteznek}}.
+A következő {{PLURAL:$2|kép nem található|képek nem találhatóak}}: $1',
+	'smoothgallery-invalid-images' => 'A következő kért {{PLURAL:$2|kép érvénytelen típusú|képek érvénytelen típusúak}}: $1',
 	'smoothgallery-unexpected-error' => 'Nem várt hiba történt.
 Légyszíves készíts hibajelentést.',
 	'smoothgallery-javascript-disabled' => 'A galéria helyes megjelenítéséhez JavaScript szükséges.',

@@ -517,11 +517,13 @@ $messages['lb'] = array(
 	'masseditregex-num-changes' => '$1 : $2 {{PLURAL:$2|Ännerung|Ännerungen}}',
 	'masseditregex-page-not-exists' => '$1 gëtt et net',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|Säit|Säite}} geännert',
+	'masseditregex-view-full-summary' => 'De ganze Resumé vun der Ännerung weisen',
 	'masseditregex-hint-headreplace' => 'Ersetzen',
 	'masseditregex-hint-headeffect' => 'Resultat',
 	'masseditregex-hint-toappend' => "Text un d'Ënn vun der Säit bäisetzen - gutt fir Säiten a Kategorien derbäizesetzen",
 	'masseditregex-hint-remove' => 'Text vun alle Säiten op der Lëscht erofhuelen',
 	'masseditregex-listtype-intro' => 'Dëst ass eng Lëscht vun:',
+	'masseditregex-listtype-pagenames' => 'Numm vun de Säiten (dës Säiten änneren)',
 );
 
 /** Dutch (Nederlands)
