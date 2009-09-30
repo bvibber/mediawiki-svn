@@ -100,6 +100,7 @@ fn: {
 	 */
 	resize: function() {
 		var wrapper = $(this).closest( '.ui-dialog' );
+		var oldWidth = wrapper.width();
 		// Make sure elements don't wrapped so we get an accurate idea
 		// of whether they really fit. Also temporarily show hidden
 		// elements.
@@ -122,6 +123,9 @@ fn: {
 			$(this).width( $(this).get(0).scrollWidth );
 			wrapper.width( wrapper.get(0).scrollWidth );
 			$(this).dialog( { 'width': wrapper.width() } );
+			wrapper.css( 'left',
+				parseInt( wrapper.css( 'left' ) ) -
+				( wrapper.width() - oldWidth ) / 2 );
 		}
 		
 		$(this).css( 'white-space', oldWS );
