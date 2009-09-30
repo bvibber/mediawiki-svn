@@ -204,14 +204,15 @@ Se vi ensalutas, vi povas malŝalti ĉi tiun averton en la sekcio "{{int:prefs-e
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dalton2
  * @author McDutchie
  * @author XalD
  */
 $messages['es'] = array(
 	'editwarning' => 'Alerta de edición',
-	'editwarning-desc' => 'Mostrar una advertencia cuando un usuario intente dejar el formulario de edición sin grabar',
-	'editwarning-warning' => 'Dejar esta página te causará pérdida de los cambios que has hecho.
-Puedes deshabilitar esta advertencia en la sección "{{int:prefs-editing}}" de tus preferencias.',
+	'editwarning-desc' => 'Mostrar una advertencia cuando un usuario intente abandonar el formulario de edición sin grabar',
+	'editwarning-warning' => 'Dejar esta página le causará la pérdida de cualquier cambio que haya hecho.
+Si está "logueado", puede deshabilitar esta advertencia en la sección "{{int:prefs-editing}}" de sus preferencias.',
 	'editwarning-preference' => 'Advertirme cuando abandone una página editada con cambios sin grabar',
 );
 
@@ -395,7 +396,7 @@ $messages['km'] = array(
 	'editwarning' => 'សារក្រើនរំលឹកអំពីការកែប្រែ',
 	'editwarning-desc' => 'បង្ហាញសារក្រើនរំលឹកនៅពេលដែលអ្នកប្រើប្រាស់ព្យាយាមចាកចេញពីទំរង់បែបបទកែប្រែដោយមិនបានរក្សាទុក',
 	'editwarning-warning' => 'ចាកចេញពីទំព័រនេះ នឹងធ្វើឲ្យអ្នកបាត់បង់កំណែប្រែដែលអ្នកបានធ្វើ។
-អ្នកអាច​បិទ​បម្រាម​នេះ​នៅ​ក្នុងផ្នែក​"{{int:prefs-editing}}"នៃ​ចំណូល​ចិត្ត​របស់​អ្នក​។',
+ប្រសិនបើអ្នកបាន​ឡុកអ៊ីនរួចហើយ អ្នកអាច​បិទ​បម្រាម​នេះ​នៅ​ក្នុងផ្នែក​ "{{int:prefs-editing}}" នៃ​ចំណូល​ចិត្ត​របស់​អ្នក​។',
 	'editwarning-preference' => 'សូមព្រមាន​ខ្ញុំ​ ពេលដែលខ្ញុំ​ចាកចេញ​ពី​ទំព័រ​កែប្រែដោយមិន​បានរក្សា​ទុកបំលាស់ប្ដូរ​នានា​',
 );
 
@@ -420,7 +421,7 @@ $messages['ksh'] = array(
 	'editwarning' => 'Warnung beim Ändere_Afbreshe',
 	'editwarning-desc' => 'Donn en Warnung aanzeije, wann ene Metmaacher vum Sigge_Ändere fott jonn well, der oohne sing Änderunge afzeseschere.',
 	'editwarning-warning' => 'Wann de vun hee dä Sigg fott jeihß, doh künnte all Ding Änderunge aan dä Sigg verschött jonn.
-(Do kanns heh di Warnung affschallde, dann kriß de se nieh mieh wider. Jangk doför en dä Affschnett „{{int:prefs-editing}}“ en Dinge Enshtellunge)',
+Do kanns heh di Warnung affschallde, wann de aanjemelldt un enjelogg bes, dann kriß de se nieh mieh wider. Jangk doför en dä Affschnett „{{int:prefs-editing}}“ en Dinge Enshtellunge.',
 	'editwarning-preference' => 'Donn mesch warne, wann esch vun en Sigg fott jonn, ih dat esch all ming Änderunge avjeschpeischert hann.',
 );
 
@@ -459,6 +460,10 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'editwarning' => 'തിരുത്തൽ മുന്നറിയിപ്പ്',
+	'editwarning-desc' => 'ഒരു ഉപയോക്താവ് തന്റെ തിരുത്തൽ സേവ് ചെയ്യാതെ മടങ്ങാൻ ശ്രമിക്കുകയാണെങ്കിൽ അദ്ദേഹത്തിനൊരു അറിയിപ്പ് നൽകുക',
+	'editwarning-warning' => 'ഈ താളിൽ നിന്നു പോകുന്നത് താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ നഷ്ടപ്പെടാൻ ഇടയാക്കുന്നതാണ്.
+താങ്കൾ ലോഗിൻ ചെയ്തിട്ടുണ്ടെങ്കിൽ, താങ്കളുടെ ക്രമീകരണങ്ങളിൽ "{{int:prefs-editing}}" ഭാഗത്ത് ചെന്ന് ഈ അറിയിപ്പ് ഒഴിവാക്കാവുന്നതാണ്.',
 	'editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തല്‍ താളിൽ നിന്നും പോകുമ്പോൾ എന്നെ അറിയിക്കുക',
 );
 
@@ -513,7 +518,7 @@ $messages['oc'] = array(
 	'editwarning' => 'Avertiment de modificacion',
 	'editwarning-desc' => 'Afichar un avertiment quora l’utilizaire tempta de quitar lo formulari sens enregistrar las modificacions',
 	'editwarning-warning' => "Quitar aquesta pagina vos farà pèrdre totas las modificacions qu'avètz fachas.
-Podètz levar aqueste avertiment dins la seccion {{int:prefs-editing}} de vòstras preferéncias.",
+Se sètz connectat amb vòstre compte, podètz levar aqueste avertiment dins la seccion {{int:prefs-editing}} de vòstras preferéncias.",
 	'editwarning-preference' => 'M’avisar quand quiti una pagina de modificacion sens publicar los cambiaments',
 );
 
@@ -535,7 +540,7 @@ $messages['pms'] = array(
 	'editwarning' => 'Avis ëd modìfica',
 	'editwarning-desc' => "Mosta n'avis quand che n'utent a serca ëd lassé la forma ëd modìfica sensa salvé",
 	'editwarning-warning' => "Lassé sta pàgina-sì a peul fé an manera che it perde tute le modìfiche ch'it l'has fàit.
-It peule disabilité st'avis-sì ant la session \"{{int:prefs-editing}}\" dij tò gust",
+S'it ses logà, it peule disabilité st'avis-sì ant la session \"{{int:prefs-editing}}\" dij tò gust.",
 	'editwarning-preference' => 'Avisme quand che i lasso na pàgina ëd modìfiche con modìfiche nen salvà',
 );
 
@@ -686,7 +691,7 @@ $messages['vi'] = array(
 	'editwarning' => 'Cảnh báo sửa đổi',
 	'editwarning-desc' => 'Hiện cảnh báo khi người dùng rời khỏi trang sửa đổi mà chưa lưu trang',
 	'editwarning-warning' => 'Rời khỏi trang này sẽ khiến bạn mất các sửa đổi đã thực hiện.
-Bạn có thể tắt cảnh báo này tại mục “{{int:prefs-editing}}” trong tùy chọn cá nhân.',
+Nếu đã đăng nhập, bạn có thể tắt cảnh báo này tại mục “{{int:prefs-editing}}” trong tùy chọn cá nhân.',
 	'editwarning-preference' => 'Cảnh báo khi tôi thoát trang sửa đổi mà chưa lưu trang',
 );
 

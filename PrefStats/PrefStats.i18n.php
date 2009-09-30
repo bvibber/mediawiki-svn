@@ -453,25 +453,26 @@ Konfiguru $wgPrefStatsTrackPrefs por sekvi preferojn.',
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dalton2
  * @author Imre
  * @author Locos epraix
  * @author Omnipaedista
  */
 $messages['es'] = array(
-	'prefstats' => 'Estadísticas de preferencia',
+	'prefstats' => 'Estadísticas de preferencias',
 	'prefstats-desc' => 'Seguimiento de las estadísticas sobre cuántos usuarios tienen ciertas preferencias habilitadas',
-	'prefstats-title' => 'Estadísticas de preferencia',
-	'prefstats-list-intro' => 'De momento, las siguientes preferencias están siendo seguidas.
-Selecciona una para ver estadísticas acerca de ella.',
+	'prefstats-title' => 'Estadísticas de preferencias',
+	'prefstats-list-intro' => 'De momento, se están siguiendo las siguientes preferencias.
+Seleccione una para ver estadísticas acerca de ella.',
 	'prefstats-noprefs' => 'No se han establecido preferencias.
 Configure $wgPrefStatsTrackPrefs para establecerlas.',
 	'prefstats-counters' => '* $1  {{PLURAL:$1|usuario ha|usuarios han}} activado esta preferencia desde que la estadística fue activada.
-** $2  {{PLURAL:$2|usuario aún tiene|usuarios aún tienen}} esta preferencia activada
-** $3  {{PLURAL:$1|usuario la ha|usuarios la han}} desactivado',
+** $2  {{PLURAL:$2|usuario aún tiene|usuarios aún tienen}} esta preferencia activada.
+** $3  {{PLURAL:$1|usuario la ha|usuarios la han}} desactivado.',
 	'prefstats-counters-expensive' => '* $1  {{PLURAL:$1|usuario ha|usuarios han}} activado esta preferencia desde el inicio de la estadística de preferencias.
 ** $2 {{PLURAL:$2|usuario todavía la mantiene|usuarios todavía la mantienen}} activada.
-** $3 {{PLURAL:$3|usuario la ha|usuarios la han}} desactivado
-* En total $4 {{PLURAL:$4|usuario ha|usuarios han}} utilizado esta preferencia',
+** $3 {{PLURAL:$3|usuario la ha|usuarios la han}} desactivado.
+* En total $4 {{PLURAL:$4|usuario ha|usuarios han}} utilizado esta preferencia.',
 	'prefstats-xaxis' => 'Duración (horas)',
 	'prefstats-factors' => 'Vista por: $1',
 	'prefstats-factor-hour' => 'hora',
@@ -979,6 +980,7 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author Temuri rajavi
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -988,6 +990,12 @@ $messages['ka'] = array(
 	'prefstats-list-intro' => 'ეხლა მიმდინარეობს შემდეგ კონფიგურაციათა კონტროლი
 აირჩიეთ რომელიმე მათგანი სტატისტიკის სანახავად',
 	'prefstats-noprefs' => 'რაიმე უპირატესობა ამჟამად კონტროლი არ ეწევა. კონფიგურაციის კონტროლისთვის შეიტანეთ ცვლილებები $wgPrefStatsTrackPrefs გვერდზე.',
+	'prefstats-factor-hour' => 'საათი',
+	'prefstats-factor-sixhours' => 'ექვსი საათი',
+	'prefstats-factor-day' => 'დღე',
+	'prefstats-factor-week' => 'კვირა',
+	'prefstats-factor-twoweeks' => 'ორი კვირა',
+	'prefstats-factor-fourweeks' => 'ოთხი კვირა',
 );
 
 /** Khmer (ភាសាខ្មែរ)

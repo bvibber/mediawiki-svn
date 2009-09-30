@@ -87,6 +87,13 @@ $messages['eo'] = array(
 	'userdailycontribs-desc' => 'Ĉiutagaj kontribuoj de uzantoj por la klak-sekvada modulo.',
 );
 
+/** Spanish (Español)
+ * @author Dalton2
+ */
+$messages['es'] = array(
+	'userdailycontribs-desc' => 'Contribuciones diarias de los usuarios para la extensión de seguimiento mediante clics',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */
