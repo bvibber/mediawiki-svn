@@ -33,6 +33,7 @@ class SpecialMergeThread extends ThreadActionPage {
 	protected function getRightRequirement() { return 'lqt-merge'; }
 	
 	public function checkParameters( $par ) {
+		global $wgOut;
 		if ( !parent::checkParameters($par) ) {
 			return false;
 		}
@@ -127,7 +128,7 @@ class SpecialMergeThread extends ThreadActionPage {
 		$thread->save();
 		
 		foreach( $thread->replies() as $subThread ) {
-			$this->recursiveSet( $subThread, $subject, $ancestor, $reason );
+			$this->recursiveSet( $subThread, $subject, $ancestor );
 		}
 	}
 	

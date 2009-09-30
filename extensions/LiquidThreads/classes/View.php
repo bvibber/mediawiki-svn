@@ -20,14 +20,15 @@ class LqtView {
 	protected $request;
 
 	protected $headerLevel = 2; 	/* h1, h2, h3, etc. */
-	protected $maxIndentationLevel = 4;
 	protected $lastUnindentedSuperthread;
 
-	protected $threadNestingLevel = 0;
+	public $threadNestingLevel = 0;
 
 	protected $sort_order = LQT_NEWEST_CHANGES;
 	
 	static $stylesAndScriptsDone = false;
+	
+	static $userSignatureCache = array();
 
 	function __construct( &$output, &$article, &$title, &$user, &$request ) {
 		$this->article = $article;
@@ -272,27 +273,31 @@ class LqtView {
 		 throughout the edit cycle, since the article doesn't exist yet anyways.
 		*/
 
-		// Stuff that might break the save		
-		$valid_subject = true;
-		$failed_rename = false;
-		
+		// Check if we actually want a subject, pull the submitted subject, and validate it.
+		$subject_expected = ( $edit_type == 'new' || $thread && $thread->isTopmostThread() );
 		$subject = $this->request->getVal( 'lqt_subject_field', '' );
+		$valid_subject = true;
 		
 		if ( $edit_type == 'summarize' && $edit_applies_to->summary() ) {
 			$article = $edit_applies_to->summary();
 		} elseif ( $edit_type == 'summarize' ) {
 			$t = $this->newSummaryTitle( $edit_applies_to );
 			$article = new Article( $t );
-		} elseif ( $thread == null ) {
-			if ( $subject && is_null( Title::makeTitleSafe( NS_LQT_THREAD, $subject ) ) ) {
+		} elseif ( !$thread ) {
+			if ( !$subject ) {
 				// Dodgy title
-				$valid_subject = false;
 				$t = $this->scratchTitle();
-			} else {			
-				if ( $edit_type == 'new' ) {
-					$t = $this->newScratchTitle( $subject );
-				} elseif ( $edit_type == 'reply' ) {
-					$t = $this->newReplyTitle( $subject, $edit_applies_to );
+				$valid_subject = false;
+			} else {
+				try {
+					if ( $edit_type == 'new' ) {
+						$t = $this->newScratchTitle( $subject );
+					} elseif ( $edit_type == 'reply' ) {
+						$t = $this->newReplyTitle( $subject, $edit_applies_to );
+					}
+				} catch( MWException $excep ) {
+					$t = $this->scratchTitle();
+					$valid_subject = false;
 				}
 			}
 			$article = new Article( $t );
@@ -302,15 +307,21 @@ class LqtView {
 
 		$e = new EditPage( $article );
 		
-		
-		// Find errors.
-		if (!$valid_subject && $subject) {
+		// Display an error if a subject is specified but it's invalid
+		if ( $subject_expected && $this->request->wasPosted() && !$valid_subject ) {
+			if ( !$subject ) {
+				$msg = 'lqt_empty_subject';
+ 			} else {
+				$msg = 'lqt_invalid_subject';
+			}
+			
 			$e->editFormPageTop .= 
 				Xml::tags( 'div', array( 'class' => 'error' ),
-					wfMsgExt( 'lqt_invalid_subject', 'parse' ) );
+					wfMsgExt( $msg, 'parse' ) );
 		}
 		
-		if ( (!$valid_subject && $subject) || $failed_rename ) {
+		// Quietly force a preview if no subject has been specified.
+		if ( (!$valid_subject && $subject) || ($subject_expected && !$subject) ) {
 			// Dirty hack to prevent saving from going ahead
 			global $wgRequest;
 			$wgRequest->setVal( 'wpPreview', true );
@@ -338,7 +349,7 @@ class LqtView {
 			$wgMemc->set( $key, 1, 3600 );
 		}
 
-		if ( $edit_type == 'new' ) {
+		if ( $subject_expected ) {
 			wfLoadExtensionMessages( 'LiquidThreads' );
 			// This is a top-level post; show the subject line.
 			$db_subject = $thread ? $thread->subjectWithoutIncrement() : '';
@@ -542,21 +553,24 @@ class LqtView {
 			$label = wfMsgExt( 'lqt-thread-merge-to', 'parseinline' );
 			
 			$commands['merge-to'] = array( 'label' => $label, 'href' => $mergeUrl,
-											'enabled' => true );
+											'enabled' => true, 'tooltip' => $label );
 		}
 		
 		$commands['reply'] = array( 'label' => wfMsgExt( 'lqt_reply', 'parseinline' ),
 							 'href' => $this->talkpageUrl( $this->title, 'reply', $thread ),
-							 'enabled' => true, 'icon' => 'reply.png', 'showlabel' => 1);
+							 'enabled' => true, 'icon' => 'reply.png', 'showlabel' => 1,
+							 'tooltip' => wfMsg( 'lqt_reply' ) );
 		
 		$commands['link'] = array( 'label' => wfMsgExt( 'lqt_permalink', 'parseinline' ),
 							'href' => $thread->title()->getFullURL(),
-							'enabled' => true, 'icon' => 'link.png' );
+							'enabled' => true, 'icon' => 'link.png',
+							'tooltip' => wfMsgExt( 'lqt_permalink', 'parseinline' ) );
 		
 		if ( $thread->root()->getTitle()->quickUserCan( 'edit' ) ) {
 			$commands['edit'] = array( 'label' => wfMsgExt( 'edit', 'parseinline' ),
 								'href' => $this->talkpageUrl( $this->title, 'edit', $thread ),
-								'enabled' => true, 'icon' => 'edit.png' );
+								'enabled' => true, 'icon' => 'edit.png',
+								'tooltip' => wfMsgExt( 'edit', 'parseinline' ) );
 		}
 		
 		return $commands;
@@ -725,6 +739,7 @@ class LqtView {
 		$label = $command['label'];
 		$href = $command['href'];
 		$enabled = $command['enabled'];
+		$tooltip = isset($command['tooltip']) ? $command['tooltip'] : '';
 		
 		if ( isset( $command['icon'] ) ) {
 			global $wgScriptPath;
@@ -746,10 +761,11 @@ class LqtView {
 		$thisCommand = '';
 	
 		if ( $enabled ) {
-			$thisCommand = Xml::tags( 'a', array( 'href' => $href ), $label );
+			$thisCommand = Xml::tags( 'a', array( 'href' => $href, 'title' => $tooltip ),
+					$label );
 		} else {
-			$thisCommand = Xml::tags( 'span', array( 'class' => 'lqt_command_disabled' ),
-										$label );
+			$thisCommand = Xml::tags( 'span', array( 'class' => 'lqt_command_disabled',
+						'title' => $tooltip), $label );
 		}
 		
 		return $thisCommand;
@@ -822,11 +838,8 @@ class LqtView {
 		$sk = $wgUser->getSkin();
 		
 		$author = $thread->author();
-		$signature = $sk->userLink( $author->getId(), $author->getName() );
-		$signature = '&mdash; '. Xml::tags( 'span', array( 'class' => 'lqt-thread-author' ),
-								$signature );
-		$signature .= $sk->userToolLinks( $author->getId(), $author->getName() );
 		
+		$signature = $this->getSignature( $author );
 		$signature = Xml::tags( 'div', array( 'class' => 'lqt-thread-signature' ),
 								$signature );
 		
@@ -873,10 +886,13 @@ class LqtView {
 											array( 'class' => 'lqt_threadlevel_commands' ),
 											$lis );
 			}
+			
+			$id = 'lqt-header-'.$thread->id();
 
 			$html = $this->output->parseInline( $thread->subjectWithoutIncrement() );
 			$html = Xml::tags( 'span', array( 'class' => 'mw-headline' ), $html );
-			$html = Xml::tags( 'h'.$this->headerLevel, array( 'class' => 'lqt_header' ),
+			$html = Xml::tags( 'h'.$this->headerLevel,
+								array( 'class' => 'lqt_header', 'id' => $id),
 								$html ) . $commands_html;
 			
 			return $html;
@@ -971,7 +987,7 @@ class LqtView {
 	
 	}
 
-	function showThread( $thread, $levelNum = 1, $totalInLevel = 1 ) {
+	function showThread( $thread, $levelNum = 1, $totalInLevel = 1, $options = array() ) {
 		global $wgLang;
 		
 		// Safeguard
@@ -982,6 +998,21 @@ class LqtView {
 		}
 		
 		$this->threadNestingLevel++;
+		
+		// Figure out which threads *need* to be shown because they're involved in an
+		//  operation
+		static $mustShowThreads = null; // Array of thread IDs
+		if ( is_null($mustShowThreads) ) {
+			$mustShowThreads = array();
+			if ( $this->request->getVal( 'lqt_operand' ) ) {
+				$walk_thread = Threads::withId( $this->request->getVal( 'lqt_operand' ) );
+				
+				do {
+					$mustShowThreads[$walk_thread->id()] = $walk_thread;
+					$walk_thread = $walk_thread->superthread();
+				} while ( $walk_thread );
+			}
+		}
 		
 		$sk = $this->user->getSkin();
 		
@@ -1016,32 +1047,104 @@ class LqtView {
 		$this->showSingleThread( $thread );
 		$this->output->addHTML( Xml::closeElement( 'div' ) );
 
-		if ( $thread->hasSubthreads() ) {
+		// Check depth and count
+		if ( isset($options['maxDepth']) ) {
+			$maxDepth = $options['maxDepth'];
+		} else {
+			$maxDepth = $this->user->getOption( 'lqtdisplaydepth' );
+		}
+		
+		if ( isset($options['maxCount']) ) {
+			$maxCount = $options['maxCount'];
+		} else {
+			$maxCount = $this->user->getOption( 'lqtdisplaycount' );
+		}
+		
+		if ( isset( $options['startAt'] ) ) {
+			$startAt = $options['startAt'];
+		} else {
+			$startAt = 0;
+		}
+		
+		$cascadeOptions = $options;
+		unset($cascadeOptions['startAt']);
+		
+		$showThreads = ($maxDepth == -1) || ( $this->threadNestingLevel <= $maxDepth );
+		
+		// Show subthreads if one of the subthreads is on the must-show list
+		$showThreads = $showThreads ||
+			count( array_intersect( array_keys($mustShowThreads), array_keys( $thread->replies() ) ) );
+		if ( $thread->hasSubthreads() && $showThreads ) {
 			$repliesClass = 'lqt-thread-replies lqt-thread-replies-'.$this->threadNestingLevel;
 			$div = Xml::openElement( 'div', array( 'class' => $repliesClass ) );
 			$this->output->addHTML( $div );
 			
 			$subthreadCount = count( $thread->subthreads() );
 			$i = 0;
+			$showCount = 0;
+			$showThreads = true;
 			
 			foreach ( $thread->subthreads() as $st ) {
 				++$i;
-				if ($i == 1 || !$lastSubthread->hasSubthreads() ) {
-					$this->output->addHTML(
-						Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' ) );
+				
+				// Only show undeleted threads that are above our 'startAt' index.
+				$shown = false;
+				if ($st->type() != Threads::TYPE_DELETED && $i >= $startAt && $showThreads) {
+					if ($showCount > $maxCount && $maxCount > 0) {
+						// We've shown too many threads.
+						$linkText = wfMsgExt( 'lqt-thread-show-more', 'parseinline' );
+						$linkTitle = clone $thread->topmostThread()->title();
+						$linkTitle->setFragment( '#'.$st->getAnchorName() );
+						
+						$link = $sk->link( $linkTitle, $linkText,
+											array( 'class' => 'lqt-show-more-posts' ) );
+						$link .= Xml::hidden( 'lqt-thread-start-at', $i,
+												array( 'class' => 'lqt-thread-start-at' ) );
+						
+						$this->output->addHTML( $link );
+						$showThreads = false;
+						continue;
+					}
+					
+					++$showCount;
+					if ($showCount == 1 ) {
+						$this->output->addHTML(
+							Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' ) );
+					}
+					
+					$this->showThread( $st, $i, $subthreadCount, $cascadeOptions );
+					$shown = true;
 				}
 				
-				if ($st->type() != Threads::TYPE_DELETED) {
-					$this->showThread( $st, $i, $subthreadCount );
+				if ($st->type() != Threads::TYPE_DELETED && !$shown &&
+						array_key_exists( $st->id(), $mustShowThreads ) ) {
+						
+					$this->showThread( $st, $i, $subthreadCount, $cascadeOptions );
 				}
-				
-				$lastSubthread = $st;
 			}
 			
 			$finishDiv = Xml::tags( 'div', array( 'class' => 'lqt-replies-finish' ),
 				Xml::tags( 'div', array( 'class' => 'lqt-replies-finish-corner' ), '&nbsp;' ) );
 			
 			$this->output->addHTML( $finishDiv . Xml::CloseElement( 'div' ) );
+		} elseif ( $thread->hasSubthreads() && !$showThreads ) {
+			// Add a "show subthreads" link.
+			$replies = count($thread->replies());
+			$linkText = wfMsgExt( 'lqt-thread-show-replies', 'parseinline', $wgLang->formatNum($replies) );
+			$linkTitle = clone $thread->topmostThread()->title();
+			$linkTitle->setFragment( '#'.$thread->getAnchorName() );
+			
+			$link = $sk->link( $linkTitle, $linkText, array( 'class' => 'lqt-show-replies' ) );
+			
+			$this->output->addHTML( Xml::tags( 'div', array( 'class' => 'lqt-thread-replies' ), $link ) );
+			
+			if ($levelNum < $totalInLevel) {
+				$this->output->addHTML(
+					Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' ) );
+			}
+		} elseif ($levelNum < $totalInLevel) {
+			$this->output->addHTML(
+				Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' ) );
 		}
 
 		if ($this->threadNestingLevel == 1) {
@@ -1099,5 +1202,37 @@ class LqtView {
 	
 	function showSummary( $t ) {
 		$this->output->addHTML( $this->getSummary( $t ) );
+	}
+	
+	function getSignature( $user ) {
+		if ( is_object($user) ) {
+			$uid = $user->getId();
+			$name = $user->getName();
+		} elseif ( is_integer($user) ) {
+			$uid = $user;
+			$user = User::newFromId($uid);
+			$name = $user->getName();
+		} else {
+			$user = User::newFromName( $user );
+			$name = $user->getName();
+			$uid = $user->getId();
+		}
+		
+		if ( isset( self::$userSignatureCache[$name] ) ) {
+			return self::$userSignatureCache[$name];
+		}
+		
+		if (!$user) {
+			$user = User::newFromId( $uid );
+		}
+		
+		global $wgParser, $wgOut;
+		
+		$sig = $wgParser->getUserSig( $user );
+		$sig = $wgOut->parseInline( $sig );
+		
+		self::$userSignatureCache[$name] = $sig;
+		
+		return $sig;
 	}
 }

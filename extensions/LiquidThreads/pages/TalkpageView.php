@@ -104,7 +104,7 @@ class TalkpageView extends LqtView {
 			$authorLink = $sk->userLink( $author->getId(), $author->getName() );
 			$row .= Xml::tags( 'td', null, $authorLink );
 			
-			$row .= Xml::element( 'td', null, count( $thread->replies() ) );
+			$row .= Xml::element( 'td', null, $thread->replyCount() );
 			
 			$timestamp = $wgLang->timeanddate( $thread->modified(), true );
 			$row .= Xml::element( 'td', null, $timestamp );
@@ -182,6 +182,17 @@ class TalkpageView extends LqtView {
 
 		$this->output->setPageTitle( $this->title->getPrefixedText() );
 		self::addJSandCSS();
+		
+		// Expose feed links.
+		global $wgFeedClasses, $wgScriptPath, $wgServer;
+		$apiParams = array( 'action' => 'feedthreads', 'type' => 'replies|newthreads',
+				'talkpage' => $this->title->getPrefixedText() );
+		$urlPrefix = wfScript('api').'?';
+		foreach( $wgFeedClasses as $format => $class ) {
+			$theseParams = $apiParams + array( 'feedformat' => $format );
+			$url = $urlPrefix . wfArrayToCGI( $theseParams );
+			$this->output->addFeedLink( $format, $url );
+		}
 		
 		$sk = $this->user->getSkin();
 		
@@ -383,7 +394,7 @@ class LqtDiscussionPager extends IndexPager {
 	function getIndexField() {
 		switch( $this->orderType ) {
 			case LQT_NEWEST_CHANGES:
-				return 'thread_modified';
+				return 'thread_sortkey';
 			case LQT_OLDEST_THREADS:
 			case LQT_NEWEST_THREADS:
 				return 'thread_created';

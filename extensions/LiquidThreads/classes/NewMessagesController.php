@@ -201,56 +201,93 @@ class NewMessages {
 		
 		global $wgVersion;
 		$tables = array( 'user' );
+		$fields = array( 'user.*' );
 		$join_conds = array();
 		$oldPreferenceFormat = false;
 		if (version_compare( $wgVersion, '1.16', '<' )) {
 			$oldPreferenceFormat = true;
 		} else {
-			$tables[] = 'user_properties';
+			$tables[] = 'user_properties as tc_prop';
+			$fields[] = 'tc_prop.up_value as timecorrection';
 			
-			$join_conds['user_properties'] =
+			$join_conds['user_properties as tc_prop'] =
 				array( 'left join', 
 						array(
 							'up_user=user_id',
-							'up_property' => 'timecorrection'
+							'up_property' => 'timecorrection',
+						)
+					);
+					
+			$tables[] = 'user_properties as l_prop';
+			$fields[] = 'l_prop.up_value as language';
+			
+			$join_conds['user_properties as l_prop'] =
+				array( 'left join', 
+						array(
+							'up_user=user_id',
+							'up_property' => 'language',
 						)
 					);
 		}
 		
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( array( 'user' ), '*',
+		$res = $dbr->select( $tables, $fields,
 							array( 'user_id' => $watching_users ), __METHOD__, array(),
 							$join_conds
 						);
+						
+		// Set up one-time data.
+		$link_title = clone $t->article()->getTitle();
+		$link_title->setFragment( '#'.$t->getAnchorName() );
+		$permalink = $link_title->getFullURL();
+		$talkPage = $t->article()->getTitle()->getPrefixedText();
+		$from = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
+		$threadSubject = $t->subject();
+		
+		// Parse content and strip HTML of post content
+		// Doesn't work for some reason (transaction issues?)
+// 		$content = $t->root()->getContent();
+// 		global $wgOut;
+// 		$html = $wgOut->parse( $content );
+// 		$text = StringUtils::delimiterReplace( '<', '>', '', $html );
 		
 		while( $row = $dbr->fetchObject( $res ) ) {
 			$u = User::newFromRow( $row );
 			
-			global $wgLang;
+			if ($oldPreferenceFormat) {
+				$langCode = $u->getOption( 'language' );
+			} elseif ($row->language) {
+				$langCode = $row->language;
+			} else {
+				global $wgLanguageCode;
+				$langCode = $wgLanguageCode;
+			}
 			
-			$permalink = LqtView::permalinkUrl( $t );
+			$lang = Language::factory( $langCode );
 			
 			// Adjust with time correction
 			if ($oldPreferenceFormat) {
-				$u = User::newFromId( $row->user_id );
 				$timeCorrection = $u->getOption( 'timecorrection' );
 			} else {
-				$timeCorrection = $row->up_value;
+				$timeCorrection = $row->timecorrection;
 			}
-			$adjustedTimestamp = $wgLang->userAdjust( $timestamp, $timeCorrection );
+			$adjustedTimestamp = $lang->userAdjust( $timestamp, $timeCorrection );
 			
-			$date = $wgLang->date( $adjustedTimestamp );
-			$time = $wgLang->time( $adjustedTimestamp );
+			$date = $lang->date( $adjustedTimestamp );
+			$time = $lang->time( $adjustedTimestamp );
 			
-			$talkPage = $t->article()->getTitle()->getPrefixedText();
-			$msg = wfMsg( $msgName, $u->getName(), $t->subjectWithoutIncrement(),
+			$params = array( $u->getName(), $t->subjectWithoutIncrement(),
 							$date, $time, $talkPage, $permalink );
+			
+			// Get message in user's own language, bug 20645
+			$msg = wfMsgReal( $msgName, $params, true /* use DB */, $langCode,
+								true /*transform*/ );
 							
 			global $wgPasswordSender;
 							
-			$from = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
 			$to   = new MailAddress( $u );
-			$subject = wfMsgExt( $subjectMsg, 'parsemag', $t->subjectWithoutIncrement() );
+			$subject = wfMsgReal( $subjectMsg, array($threadSubject), true /* use DB */,
+									$langCode, true /* transform */);
 			
 			UserMailer::send( $to, $from, $subject, $msg );
 		}

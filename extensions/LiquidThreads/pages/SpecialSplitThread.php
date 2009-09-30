@@ -5,6 +5,13 @@ class SpecialSplitThread extends ThreadActionPage {
 
 	function getFormFields() {
 		$splitForm = array(
+			'src' =>
+				array(
+					'type' => 'info',
+					'label-message' => 'lqt-thread-split-thread',
+					'default' => LqtView::permalink( $this->mThread ),
+					'raw' => 1,
+				),
 			'subject' =>
 				array(
 					'type' => 'text',
@@ -68,7 +75,7 @@ class SpecialSplitThread extends ThreadActionPage {
 		$thread->save( );
 		
 		foreach( $thread->replies() as $subThread ) {
-			$this->recursiveSet( $subThread, $subject, $ancestor, $reason );
+			$this->recursiveSet( $subThread, $subject, $ancestor );
 		}
 	}
 	

@@ -20,6 +20,8 @@ $threadFieldUpdates = array('thread_article_namespace' => 'split-thread_article.
 							'thread_subject' => 'store_subject-author.sql',
 							'thread_author_id' => 'store_subject-author.sql',
 							'thread_author_name' => 'store_subject-author.sql',
+							'thread_sortkey' => 'new-sortkey.sql',
+							'thread_replies' => 'store_reply_count.sql',
 						);
 $threadIndexUpdates = array('thread_summary_page' => 'index-summary_page.sql');
 
