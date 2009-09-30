@@ -96,12 +96,12 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-changes-custom' => 'Allow greater user customization.',
 	'optin-survey-answer-changes-other' => 'Other:',
 	'optin-improvements' => "== What has been improved? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Screenshot of the new navigation tabs]]
 ;Enhanced navigation
 The new navigation system makes it easier to see where you are and what you are doing, as well as where you can go and how to get there. With the search box located in the top right corner, the search feature is easier to find and quicker to use.
 <div style=\"clear:both;\"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
 ;Edit toolbar improvements
 New-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
 The help section provides quick access to a reference for common uses of wiki-markup.
