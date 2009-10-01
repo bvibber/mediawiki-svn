@@ -30,7 +30,16 @@ class ClickTrackingHooks {
 		return true;
 	}
 
-	
+	/**
+	 * Make sure the table exists for parser tests
+	 * @param $tables
+	 * @return unknown_type
+	 */
+	public static function parserTestTables( &$tables ) {
+    	$tables[] = 'click_tracking';
+    	$tables[] = 'click_tracking_events';
+    	return true;
+	}
 	
 	/*
 	 * check to see if user is throttled

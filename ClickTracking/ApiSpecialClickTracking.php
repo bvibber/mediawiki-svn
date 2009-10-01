@@ -15,6 +15,9 @@ class ApiSpecialClickTracking extends ApiBase {
 	 */
 	public function execute(){
 		
+		$file = fopen("/Users/nimishgautam/logs/PHPLOG.txt", "a");
+	 
+		
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
 		$event_id = $params['eventid'];
@@ -22,6 +25,10 @@ class ApiSpecialClickTracking extends ApiBase {
 		$enddate = $params['enddate'];
 		$increment = $params['increment'];
 		$userDefString = $params['userdefs'];
+		
+		fwrite($file, var_export($_REQUEST, true) . "\n\n");
+		fwrite($file, var_export($params, true). "\n\n");
+		fclose($file);	
 		
 		$click_data = array();
 		try{
@@ -84,6 +91,7 @@ class ApiSpecialClickTracking extends ApiBase {
 			'startdate'  => 'start date for data in YYYYMMDD format',
 			'enddate' =>'end date for the data in YYYYMMDD format',
 			'increment' => 'increment interval (in days) for data points',
+			'userdefs' => 'JSON object to encode user definitions'
 		);
 	}
 
@@ -109,7 +117,9 @@ class ApiSpecialClickTracking extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => 365 //1 year
-			)
+			),
+			'userdefs' => array (
+			ApiBase::PARAM_TYPE => 'string')
 		);
 	}
 

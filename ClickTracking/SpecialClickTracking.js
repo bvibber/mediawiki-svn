@@ -1,9 +1,35 @@
 (function($) {
+	/* Very limited JSON encoder */
+	$.json_encode = function (js_obj){
+		var returnstr = "{ ";
+		
+		//trailing commas and json don't mix
+		var propertynum = 0;
+		for(property in js_obj){
+			if(propertynum > 0){
+				returnstr +=", ";
+			}
+			returnstr += "\"" + property + "\"" + " : ";
+			if(typeof js_obj[property] == 'object'){
+				returnstr += $.json_encode(js_obj[property]);
+			}
+			else{
+				returnstr += "\"" + js_obj[property] + "\" ";
+			}
+			propertynum++;
+		}
+		
+		returnstr+= " }";
+		return returnstr;
+	};
+	
+	
 	
 	$.renderUserDefDialogWith = function (userDef, defName){
 		//change name
 		$("#user_def_alter_legend").text($("#user_def_alter_legend").data("defaultChangeText") + " " + defName);
 		$("#user_def_alter_legend").data("currentlyEditing", defName);
+		console.dir(userDef);
 		
 		var setContribs = function(conditionArray, contribName){
 			
@@ -25,6 +51,7 @@
 			initialDiv.append(textDiv);
 			
 			var i=0;
+			console.dir(conditionArray);
 			for( var condition in conditionArray){
 				i++;
 				conditionDiv = $("<div>").attr("id", contribName + "_range_" + i + "_div");
@@ -44,7 +71,7 @@
 				cOpt1 = $("<option>").attr("id", contribName+"_"+i+"_lt");
 				cOpt1.addClass("number_select_ltgt_opt");
 				cOpt1.attr("value", "lt");
-				cOpt1.text("&lt;");
+				cOpt1.text("<");
 				if(condition["operation"] == "<"){
 					cOpt1.attr("selected", true);
 				}
@@ -53,7 +80,7 @@
 				cOpt2 = $("<option>").attr("id", contribName+"_"+i+"_gt");
 				cOpt2.addClass("number_select_ltgt_opt");
 				cOpt2.attr("value", "gt");
-				cOpt2.text("&gt;");
+				cOpt2.text(">");
 				if(condition["operation"] == ">"){
 					cOpt2.attr("selected", true);
 				}
@@ -61,7 +88,7 @@
 				cOpt3 = $("<option>").attr("id", contribName+"_"+i+"_lteq");
 				cOpt3.addClass("number_select_ltgt_opt");
 				cOpt3.attr("value", "lteq");
-				cOpt3.text("&lt;=");
+				cOpt3.text("<=");
 				if(condition["operation"] == "<="){
 					cOpt3.attr("selected", true);
 				}
@@ -69,7 +96,7 @@
 				cOpt4 = $("<option>").attr("id", contribName+"_"+i+"_gteq");
 				cOpt4.addClass("number_select_ltgt_opt");
 				cOpt4.attr("value", "gteq");
-				cOpt4.text("&gt;=");
+				cOpt4.text(">=");
 				if(condition["operation"] == ">="){
 					cOpt4.attr("selected", true);
 				}
@@ -99,7 +126,7 @@
 		$("#anon_users_checkbox").attr('checked', anon);
 		
 		//clear out old contents
-		$("#contrib_opts_container").clear();
+		$("#contrib_opts_container").empty();
 		
 		var setup_set_contribs = function(contribName){
 			var current_contribs = userDef[contribName];
@@ -214,7 +241,7 @@
 		$j.post( wgScriptPath + '/api.php', 
 				{ 'action': 'specialclicktracking', 'format': 'json', 
 				'eventid': $("#chart_img").data( "eventid" ), 'increment': $("#chart_increment").val(), 
-				'startdate': start_date, 'enddate':end_date, 'userdefs': wgClickTrackUserDefs } , processChartJSON, "json");
+				'startdate': start_date, 'enddate':end_date, 'userdefs': $.json_encode(wgClickTrackUserDefs) } , processChartJSON, "json");
 	};
 	
 	
@@ -356,6 +383,21 @@
 		//CHANGE USER INFO DIALOG
 		$("#user_def_dialog").dialog({ autoOpen: true, width: 400 });
 		$("#user_def_alter_legend").data("defaultChangeText", $("#user_def_alter_legend").text());
+		
+		
+		//CHANGE USER/INTERMEDIATE/EXPERT DIALOGS
+		var loadHeaderInfo = function(headerName){
+			$("#" + headerName + "_header").css("cursor", "pointer");
+			$("#" + headerName + "_header").click(function(){
+				$.renderUserDefDialogWith (wgClickTrackUserDefs[headerName], headerName);
+				$("#user_def_dialog").dialog('open');
+			});
+		}; //headername
+		
+		
+		loadHeaderInfo("beginner");
+		loadHeaderInfo("intermediate");
+		loadHeaderInfo("expert");
 		
 	};
 	
