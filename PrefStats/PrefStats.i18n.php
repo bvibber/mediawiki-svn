@@ -1627,6 +1627,19 @@ $messages['sr-ec'] = array(
 	'prefstats-factor-fourweeks' => '4 недеље',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'prefstats' => 'Statistika préferénsi',
+	'prefstats-factor-hour' => 'jam',
+	'prefstats-factor-sixhours' => 'genep jam',
+	'prefstats-factor-day' => 'poé',
+	'prefstats-factor-week' => 'minggu',
+	'prefstats-factor-twoweeks' => 'dua minggu',
+	'prefstats-factor-fourweeks' => 'opat minggu',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Ozp

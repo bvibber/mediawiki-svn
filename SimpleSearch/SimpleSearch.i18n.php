@@ -48,6 +48,7 @@ $messages['ar'] = array(
 	'simplesearch' => 'بحث بسيط',
 	'simplesearch-desc' => 'يضيف خصائص جديدة إلى بحث ڤكتور المبسّط',
 	'simplesearch-search' => 'ابحث',
+	'simplesearch-containing' => 'يحتوي...',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -439,10 +440,13 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Junaidpv
+ * @author Praveenp
  */
 $messages['ml'] = array(
 	'simplesearch' => 'ലളിതമായ തിരച്ചില്‍',
+	'simplesearch-desc' => 'വെക്റ്ററിന്റെ ലളിതമായ തിരച്ചിൽ രീതിയ്ക്ക് കൂടുതൽ സവിശേഷതകൾ ചേർക്കുന്നു',
 	'simplesearch-search' => 'തിരയുക',
+	'simplesearch-containing' => 'ഉൾപ്പെടുത്തുന്നു...',
 );
 
 /** Mongolian (Монгол)
@@ -648,6 +652,15 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'simplesearch' => 'Jednostavna pretraga',
 	'simplesearch-search' => 'Pretraga',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'simplesearch' => 'Sungsian basajan',
+	'simplesearch-search' => 'Sungsi',
+	'simplesearch-containing' => 'ngandung...',
 );
 
 /** Swedish (Svenska)
