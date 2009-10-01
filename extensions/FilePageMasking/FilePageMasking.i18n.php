@@ -103,6 +103,13 @@ $messages['hu'] = array(
 	'filepagemasking-desc' => 'Módosítja a fájlok leírólapjainak hivatkozásait „.xxx”-ről „_xxx”-re',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'filepagemasking-desc' => 'Rescribe ".xxx" in "_xxx" in ligamines a paginas de description de file',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

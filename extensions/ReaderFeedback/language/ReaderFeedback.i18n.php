@@ -1511,7 +1511,11 @@ $messages['pt'] = array(
 	'readerfeedback-voted' => "'''Aparentemente você já avaliou esta página''' ([$3 comentários ou dúvidas?]).",
 	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => 'Obrigado!',
+	'readerfeedback-tier-high' => 'Elevado',
+	'readerfeedback-tier-medium' => 'Moderado',
+	'readerfeedback-tier-poor' => 'Pobre',
 	'tooltip-ca-ratinghist' => 'Opinião dos leitores sobre esta página',
+	'specialpages-group-feedback' => 'Opinião de leitores',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

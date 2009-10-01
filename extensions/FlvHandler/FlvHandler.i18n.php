@@ -127,6 +127,13 @@ $messages['hu'] = array(
 	'flv-long-desc' => '(Flash videó, $1 × $2 képpont, fájlméret: $3)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'flvhandler_desc' => 'Permitte le insertion de files video Flash (.flv) como files normal (p.ex. <nowiki>[[File:Movie.flv]]</nowiki>)',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

@@ -580,6 +580,7 @@ Pro facer isto, per favor obtene un clave API ab [http://www.flickr.com/services
 	'importfreeimages_filefromflickr' => '$1 per le usator <b>[$2]</b> ab Flickr. Adresse URL original',
 	'importfreeimages_promptuserforfilename' => 'Per favor entra le nomine del file de destination:',
 	'importfreeimages_returntoform' => "O clicca <a href='$1'>hic</a> pro retornar al resultatos del recerca",
+	'importfreeimages_nophpflickr' => 'Tu non ha installate phpFlickr, per favor configura $wgIFphpFlickr in tu LocalSettings.php.',
 );
 
 /** Indonesian (Bahasa Indonesia)

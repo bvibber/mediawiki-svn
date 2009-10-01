@@ -49,8 +49,11 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'optin-try' => 'جرّب البيتا',
+	'tooltip-pt-optin-try' => 'جرب المزايا الجديدة',
 	'optin-leave' => 'غادر البيتا',
+	'tooltip-pt-optin-leave' => 'ألغِ المزايا الجديدة',
 	'optin-feedback' => 'ملاحظات البيتا',
+	'tooltip-pt-optin-feedback' => 'يوفر ملاحظات عن تجربتك مع المزايا الجديدة',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -643,12 +646,15 @@ $messages['pms'] = array(
 /** Portuguese (Português)
  * @author Capmo
  * @author Giro720
+ * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'optin-try' => 'Experimente o Beta',
+	'tooltip-pt-optin-try' => 'Experimente novas funcionalidades',
 	'optin-leave' => 'Sair do Beta',
+	'tooltip-pt-optin-leave' => 'Desligue as novas funcionalidades',
 	'optin-feedback' => 'Enviar comentários',
 );
 
@@ -758,6 +764,15 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'optin-try' => 'Beta uutprobierje',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'tooltip-pt-optin-try' => 'Cobaan fitur anyar',
+	'optin-leave' => 'Tinggalkeun Béta',
+	'tooltip-pt-optin-leave' => 'Pareuman fitur anyar',
 );
 
 /** Swedish (Svenska)

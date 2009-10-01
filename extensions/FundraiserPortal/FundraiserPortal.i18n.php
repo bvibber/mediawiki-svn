@@ -676,6 +676,20 @@ $messages['pms'] = array(
 	'fundraiserportal-tourmaline-close' => 'Stërma sòn-sì da adess an peui',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'fundraiserportal-plain-button' => 'Ajude a Wikipédia!',
+	'fundraiserportal-ruby-button' => 'Faça doação agora',
+	'fundraiserportal-rubytext-button' => 'Faça doação agora',
+	'fundraiserportal-rubytext-close' => 'Esconder isto a partir de agora',
+	'fundraiserportal-sapphire-button' => 'Faça doação agora',
+	'fundraiserportal-tourmaline-button' => 'Faça doação agora',
+	'fundraiserportal-tourmaline-message' => 'Cada doação ajuda-nos a manter a Wikipédia livre para toda a gente.',
+	'fundraiserportal-tourmaline-close' => 'Esconder isto a partir de agora',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Giro720

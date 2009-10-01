@@ -2727,6 +2727,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -2763,7 +2764,12 @@ $messages['pt'] = array(
 	'contribstats-value-under' => 'Menos de $1',
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Mais de $1',
+	'contribstats-day-totals' => 'Total para hoje',
+	'contribstats-week' => 'Semana',
 	'contribstats-donations' => 'Donativos',
+	'contribstats-conversion' => 'Taxa de conversão (%)',
+	'contribstats-template' => 'Predefinição',
+	'contribstats-nodata' => 'Não foram providenciados dados',
 	'fundraiserstatistics' => 'Estatísticas da angariação de fundos',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dia $1 de $2',

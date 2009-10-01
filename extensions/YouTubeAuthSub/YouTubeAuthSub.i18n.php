@@ -3103,6 +3103,7 @@ YouTube може знадобитися деякий час, щоб оброби
 
 /** Vèneto (Vèneto)
  * @author Candalua
+ * @author Vajotwo
  */
 $messages['vec'] = array(
 	'youtubeauthsub' => 'Carga un video de YouTube',
@@ -3111,7 +3112,7 @@ $messages['vec'] = array(
 	'youtubeauthsub_title' => 'Titolo',
 	'youtubeauthsub_description' => 'Descrission',
 	'youtubeauthsub_password' => 'Password de YouTube',
-	'youtubeauthsub_username' => 'Nome utente su YouTube',
+	'youtubeauthsub_username' => 'Nome utente so YouTube',
 	'youtubeauthsub_keywords' => 'Parole chiave',
 	'youtubeauthsub_category' => 'Categoria',
 	'youtubeauthsub_submit' => 'Invia',

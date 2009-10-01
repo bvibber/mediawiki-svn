@@ -402,7 +402,7 @@ $messages['ia'] = array(
 	'masseditregextext' => 'Entra un o plus expressiones regular (un per linea) a cercar, e un o plus expressiones pro reimplaciar cata resultato.
 Le prime expression a cercar, si trovate, essera reimplaciate per le prime expression de reimplaciamento, et cetera.
 Vide [http://php.net/manual/en/function.preg-replace.php le function PHP preg_replace()] pro detalios.',
-	'masseditregex-pagelisttxt' => 'Paginas a modificar:',
+	'masseditregex-pagelisttxt' => "Paginas a modificar (non usa un 'prefixo:' de spatio de nomines):",
 	'masseditregex-matchtxt' => 'Cercar:',
 	'masseditregex-replacetxt' => 'Reimplaciar per:',
 	'masseditregex-executebtn' => 'Executar',
@@ -422,6 +422,16 @@ Vide [http://php.net/manual/en/function.preg-replace.php le function PHP preg_re
 	'masseditregex-hint-remove' => 'Remover alcun texto de tote le paginas in le lista',
 	'masseditregex-hint-removecat' => 'Remover tote le categorias de un pagina (nota le escappamento del parentheses quadrate in le wikicodice).
 Le valores de reimplaciamento non debe esser escappate.',
+	'masseditregex-listtype-intro' => 'Isto es un lista de:',
+	'masseditregex-listtype-pagenames' => 'Nomines de paginas (modificar iste paginas)',
+	'masseditregex-listtype-pagename-prefixes' => 'Prefixos de nomines de paginas (modificar paginas con nomines comenciante per iste texto)',
+	'masseditregex-listtype-categories' => 'Nomines de categorias (modificar cata pagina presente in iste categorias; le selection de spatio de nomines es ignorate)',
+	'masseditregex-listtype-backlinks' => 'Retroligamines (modificar paginas que liga a istes)',
+	'masseditregex-namespace-intro' => 'Tote iste paginas es in iste spatio de nomines:',
+	'masseditregex-exprnomatch' => 'Le expression "$1" non ha essite trovate in alcun pagina.',
+	'masseditregex-badregex' => 'Regex invalide:',
+	'masseditregex-editfailed' => 'Modification falleva:',
+	'masseditregex-tooltip-execute' => 'Applicar iste modificationes a cata pagina',
 );
 
 /** Japanese (日本語)

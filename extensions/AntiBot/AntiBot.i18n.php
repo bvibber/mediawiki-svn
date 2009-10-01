@@ -249,10 +249,11 @@ $messages['jv'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'antibot-desc' => '스팸봇 확인과 트리거 사용량 확인 기능을 가지는 프레임워크',
+	'antibot-desc' => '스팸봇 확인을 위한 프레임워크',
 );
 
 /** Ripoarisch (Ripoarisch)

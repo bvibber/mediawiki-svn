@@ -355,12 +355,12 @@ $messages['be-tarask'] = array(
 	'optin-survey-answer-changes-custom' => 'Дазволіць удзельнікам пашыраную настройку.',
 	'optin-survey-answer-changes-other' => 'Іншыя:',
 	'optin-improvements' => '== Што было палепшана? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Выява новай навігацыйнай панэлі]]
 ;Паляпшэньне навігацыі
-Новая навігацыйная сыстэма дазвяляе лягчэй зразумець дзе Вы знаходзіцеся і што робіце, а так сама куды Вы можаце перайсьці і як гэта зрабіць. Поле пошуку перанесена з левай навігацыйнай панэлі ў верхні правы вугал для палягчэньня і паскарэньня пошуку.
+Новая навігацыйная сыстэма дазвяляе лягчэй зразумець дзе Вы знаходзіцеся і што робіце, а так сама куды Вы можаце перайсьці і як гэта зрабіць. Поле пошуку знаходзіцца ў верхнім правы вуглу для палягчэньня і паскарэньня пошуку.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Выява палепшанай панэлі рэдагаваньня]]
 ;Паляпшэньне панэлі рэдагаваньняў
 Новыя і палепшаныя значкі дазваляюць лягчэй зразумець якія дзеяньні выконвае кожная прылада. Адчыняемыя сэктары зьмяньшаюць тлум, захоўваючы рэдка выкарыстоўваемыя прылады для кліку мышкай. Дапаможны падзел забясьпечвае хуткі доступ да прыкладаў па найбольш выкарыстоўваемым тыпам вікі-метак.
 <div style="clear:both;"></div>
@@ -527,12 +527,12 @@ Možete se bilo kada ponovno prijaviti putem klika na link "{{int:optin-try}}" u
 	'optin-survey-answer-changes-custom' => 'Omogućuje veća korisnička podešavanja.',
 	'optin-survey-answer-changes-other' => 'Ostalo:',
 	'optin-improvements' => '== Šta je poboljšano? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Pregled novih navigacijskih tabova]]
 ;Poboljšana navigacija
 Novi sistem navigacije čini jednostavnije da se vidi gdje ste i šta radite, kao i gdje idete i kako do tamo stići. Sa kutijom za pretaživanje u gornjem desnom uglu, osobina pretrage je lahka i brza za upotrebu.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Pregled napredne alatne trake za uređivanje]]
 ;Poboljšanja trake za uređivanje
 Nove i poboljšane ikone prikazuju akcije koje svaki alat izvrši dosta pregledijim. Proširive sekcije smanjuju traku dok čuvaju ne mnogo korištene alate sakrivene, ali dostupne u jednom kliku. Sekcija pomoći omogućuje brzi pristup referencama za zajedničku upotrebu wiki jezika.
 <div style="clear:both;"></div>
@@ -609,12 +609,12 @@ Volem saber què n'opinau de la nova interfície, així que us agrairíem que re
 	'optin-survey-answer-changes-custom' => 'Permet una major personalització.',
 	'optin-survey-answer-changes-other' => 'Altres:',
 	'optin-improvements' => "== Què s'ha millorat? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Noves pestanyes de navegació]]
 ;Navegació millorada
 El nou sistema de navegació fa més fàcil veure on sou i què estau fent, així com on podeu anar i com arribar-hi. Amb la caixa de cerques situada al cantó superior dret, l'opció de cercar és més fàcil de trobar i més ràpida d'usar.
 <div style=\"clear:both;\"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|barra d'eines d'edició millorada]]
 ;Millores a la barra d'edició
 Noves icones fan més clar quina acció realitza cada eina. Les seccions desplegables redueixen els ecos paràsits i a la vegada mantenen les eines poc usades a només un clic.
 La secció d'ajuda dóna un ràpid accés a una guia dels usos més comuns del marcatge wiki.
@@ -1009,12 +1009,12 @@ My by rady wěźeli, co mysliš wó našem nowem wužywarskem pówjerchu, togodl
 	'optin-survey-answer-changes-custom' => 'Wětše wužywarske pśiměrjenja dowóliś',
 	'optin-survey-answer-changes-other' => 'Druge:',
 	'optin-improvements' => '== Co jo se pólěpšyło? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Njezjapka bildka nowych nawigaciskich rejtarkow]]
 ;Pólěpšona nawigacija
 Nowy nawigaciski system wólažcujo wiźeś, źož sy a což cyniš a teke, źož móžoš hyś a kak se tam dostanjoš. Z pytańskim pólom górjejce napšawo pytańska funkcija dajo se lažčej namakaś a malsnjej wužywaś.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Njezjapka bildka pólěpšoneje wobźěłowańskeje kšomy]]
 ;Pólěpšenja wobźěłowańskeje kšomy
 Nowe a pólěpšone symbole lěpjej rozjasnjuju, kótaru akciju kuždy rěd wuwjedujo. Wótrězki, kótarež daju se wócyniś, reducěruju barłog, mjaztym až rědko wužywane rědy su jano jadne kliknjenje zdalone.
 Wótrězk pomocy bitujo malsny pśistup na referencu wó powšyknem wužywanju wikijoweje syntaksy.
@@ -1337,6 +1337,8 @@ $messages['et'] = array(
 	'optin-survey-answer-os-other' => 'Muu operatsioonisüsteem:',
 	'optin-survey-question-res' => 'Milline on su ekraani resolutsioon?',
 	'optin-survey-question-changes' => 'Milliseid muudatusi soovid näha Beta-versioonis tulevikus (vali kõik sobivad)?',
+	'optin-survey-answer-changes-custom' => 'Luba enam isikupärastamist.',
+	'optin-survey-answer-changes-other' => 'Muu:',
 );
 
 /** Basque (Euskara)
@@ -1587,12 +1589,12 @@ Nous aimerions savoir ce que vous pensez de notre nouvelle interface, nous appr�
 	'optin-survey-answer-changes-custom' => 'Permettre une plus grande personnalisation de l’interface.',
 	'optin-survey-answer-changes-other' => 'Autre :',
 	'optin-improvements' => '== Qu’est-ce qui a été amélioré ? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Capture d\'écran des nouveaux onglets de navigation]]
 ;Navigation enrichie
 Le nouveau système de navigation vous permet de voir plus facilement où vous êtes et ce que vous faites, de même que où vous pouvez aller et comment vous y rendre. Avec la boîte de recherche située dans le coin supérieur droit, la fonctionnalité de recherche est plus facile à trouver et plus rapide à utiliser.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Capture d\'écran de la barre d\'outils avancée]]
 ;Améliorations de la barre d’outils
 De toutes nouvelles icônes clarifient l’action effectuée par chaque outil. Des sections expansibles réduisent le désordre tout en gardant l’accès aux outils plus rarement utilisés à portée de clic.
 La section d’aide fournit un accès rapide à la documentation sur l’utilisation courante des balises wiki.
@@ -1688,12 +1690,12 @@ Queremos saber que pensa da nosa nova interface, polo que lle agradeceriamos que
 	'optin-survey-answer-changes-custom' => 'Permitir unha maior personalización por parte dos usuarios.',
 	'optin-survey-answer-changes-other' => 'Outros:',
 	'optin-improvements' => '== Que se mellorou? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Captura de pantalla das novas lapelas de edición]]
 ;Navegación realzada
 O novo sistema de navegación fai máis doado ver onde se está e que se está facendo, así como onde se pode ir e como chegar ata alí. Co cadro de procuras localizado no canto superior dereito obtense un acceso máis fácil para así poder realizar unha busca máis rápida.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Captura de pantalla da barra de ferramentas de edición realzada]]
 ;Melloras na barra de ferramentas de edición
 As novas e melloradas iconas fan máis clara a identificación da acción que realiza cada unha. As seccións expansibles reducen a desorde á vez que manteñen as ferramentas menos usadas a só un clic de distancia.
 A sección de axuda proporciona un acceso rápido a unha referencia cos usos comúns do formato wiki.
@@ -1783,12 +1785,12 @@ Mir wisste gärn, was Du iber di nej Benutzeroberflächi dänksch. Wäge däm de
 	'optin-survey-answer-changes-custom' => 'Greßeri Benutzeraapassige erlaube.',
 	'optin-survey-answer-changes-other' => 'Anderi:',
 	'optin-improvements' => '== Was isch verbesseret wore? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Screenshot vu dr neje Navigationstabälle]]
 ;Verbessereti Navigation
 Di nej Navigation macht s eifacher z säh, wu du grad bisch un was du machsch un au wu Du chasch ane goh un wie du dert ane chunnsch. S Suechfäld isch jetz im obere rächte Ecke un eso hscnäller z finde un eifacher z bruche.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Screenshot vu dr neje Navigationstabälle]]
 ;Verbesserige am Wärchzygchäschtli
 
 Fortgschritteni Benutzer chenne s Wärchzygchäschtli uusklappe go speziälleri Wärchzyg uuswehle.
@@ -2055,12 +2057,12 @@ Bychmy rady wědźeli, što mysliš wo našim nowym wužiwarskim powjerchu, bych
 	'optin-survey-answer-changes-custom' => 'Wjace wužiwarskich přiměrjenjow dowolić',
 	'optin-survey-answer-changes-other' => 'Druhe:',
 	'optin-improvements' => '== Što je so polěpšiło? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Njejapke foto nowych nawigaciskich rajtarkow]]
 ;Polěpšena nawigacija
 Nowy nawigaciski system wolóžuje widźeć, hdźež sy a štož činiš a tež, hdźež móžeš hić a kak so dóstanješ. Z pytanskim polom horjeka naprawo, hodźi so pytanska funkcija lóšo namakać a spěšnišo wužiwać.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Njejapke foto polěpšeneje wobdźěłanskeje lajsty]]
 ;Polěpšenja wobdźěłanskeje lajsty
 Nowe a polěpšene symbole lěpje znazornjuja, kotru akciju kóždy nastroj čini. Rozfałdujomne wotrězki šmjatańcu redukuja, mjeztym zo su zrědka wužiwane nastroje jenož jedne kliknjenje zdalene.
 Wotrězk pomocy skići spěšny přistup na referencu za powšitkowne wužiwanje wikijoweje syntaksy.
@@ -2222,20 +2224,20 @@ Nos volerea saper lo que tu pensa super nostre nove interfacie, e nos appreciare
 	'optin-survey-answer-changes-custom' => 'Permitter un personalisation plus ample al usator.',
 	'optin-survey-answer-changes-other' => 'Altere:',
 	'optin-improvements' => '== Que ha essite meliorate? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Captura de schermo del nove schedas de navigation]]
 ;Navigation plus efficace
-Le nove systema de navigation rende plus facile vider ubi tu es e lo que tu face, e tamben a ubi tu pote ir e como arrivar. Con le quadro de recerca situate in alto a derecta, le facilitate de recerca es plus facile de trovar e plus rapide de usar.
+Le nove systema de navigation te permitte vider plus facilemente ubi tu es e lo que tu face, e a ubi tu pote ir e como arrivar. Con le quadro de recerca situate in alto a dextra, le facilitate de recerca es plus facile de trovar e plus rapide de usar.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link= |Captura de schermo del instrumentario de modification meliorate]]
 ;Meliorationes del instrumentario de modification
-Le icones nove e melior clarifica le action que cata instrumento exeque. Le sectiones expansibile simplifica le apparentia, durante que le instrumentos usate infrequentemente resta disponibile a solo un clic de distantia.
-Le section de adjuta provide accesso rapide a un referentia pro usos commun del marcation wiki.
+Le icones nove e melior clarifica le action que cata instrumento exeque. Le sectiones expansibile simplifica le apparentia, mantenente le instrumentos minus usate disponibile a solo un clic de distantia.
+Le section de adjuta forni accesso rapide a un referentia pro usos commun del marcation wiki.
 <div style="clear:both;"></div>
 == Como participar ==
-Pro ulterior informationes super le projecto o pro participar, per favor visita le [http://usability.wikimedia.org wiki del Initiativa de Usabilitate]. Ibi tu trovara informationes super nostre subvention, recerca, conception + disveloppamento, e edition de versiones. Pro poner questiones o lassar commentarios general, per favor usa nostre [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion super le prototypo]. Pro discuter subjectos particular, per favor usa le paginas de discussion dedicate a istes. Si tu trova defectos, lassa tu commentos in le [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina de discussion super editiones de Acai] o invia los a [https://bugzilla.wikimedia.org Bugzilla].
+Pro ulterior informationes super le projecto o pro participar, visita le [http://usability.wikimedia.org wiki del Initiativa de Usabilitate]. Ibi tu trovara informationes super nostre subvention, recerca, conception + disveloppamento, e edition de versiones. Pro poner questiones o lassar commentarios general, usa nostre [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion super le prototypo]. Pro discuter subjectos particular, usa le paginas de discussion dedicate a istes. Si tu trova defectos, lassa tu commentos in le [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina de discussion super editiones de Acai] o invia los a [https://bugzilla.wikimedia.org Bugzilla].
 
-Gratias e nos spera audir de te!',
+Gratias, e nos spera audir de te!',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2305,20 +2307,21 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 	'optin-survey-answer-changes-custom' => 'Memperbolehkan Pengguna yang lebih tinggi untuk kustomisasi',
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
 	'optin-improvements' => '== Apa yang telah dikembangkan? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Tab navigasi yang baru]]
 ;Perluasan navigasi
-Sistem navigasi yang baru membuat lebih mudah untuk melihat di mana Anda dan apa yang Anda lakukan, semudah anda dapat pergi dan bagaimana menuju ke sana. Dengan kotak pencarian yang terletak di pojok kanan atas, fitur pencarian mudah ditemukan dan cepat digunakan.
+Dengan sistem navigasi yang baru, Anda dapat dengan mudah mengetahui di mana Anda berada dan apa yang sedang Anda lakukan, dan juga ke mana Anda dapat pergi dan bagaimana menuju ke sana. Dengan kotak pencarian yang terletak di pojok kanan atas, fitur pencarian menjadi lebih mudah ditemukan dan lebih cepat digunakan.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Batang alat penyuntingan yang diperluas]]
 ;Perbaikan alat penyuntingan
-Baru-dan-perbaikan ikon membuatnya lebih jelas tindakan apa yang dilakukan masing-masing alat. Bagian yang dapat diperluas mengurangi kekacauan sehingga alat yang jarang digunakan hanya dengan sekali klik.
+Ikon yang baru dan lebih baik lebih dapat menjelaskan tindakan apa yang dapat dilakukan masing-masing alat. Alat-alat yang jarang dipakai disembunyikan pada bagian yang dapat diklik sehingga mengurangi tombol-tombol yang tidak terpakai.
+Bagian "Bantuan" memberikan penjelasan untuk markup-wiki yang sering digunakan.
 Bagian yang membantu memberikan akses cepat ke referensi untuk penggunaan umum markup-wiki .
 <div style="clear:both;"></div>
-== Bagaimana terlibat ==
-Untuk mempelajari lebih lanjut tentang proyek atau terlibat, silakan kunjungi [http://usability.wikimedia.org Usability Initiative\'s wiki]. Di sana Anda akan menemukan informasi tentang hibah, penelitian, desain + pengembangan, dan rilis. Untuk mengajukan pertanyaan atau meninggalkan umpan balik umum, silakan gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype prototipe halaman pembicaraan]. Untuk mengatasi mata pelajaran tertentu, silakan gunakan halaman diskusi yang terkait. Jika anda menemukan bug, silakan tinggalkan komentar Anda pada [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai rilis halaman pembicaraan] atau dengan menggunakan [https://bugzilla.wikimedia.org Bugzilla].
+== Bagaimana Anda dapat terlibat ==
+Untuk mempelajari lebih lanjut tentang proyek ini atau terlibat di dalamnya, silakan kunjungi [http://usability.wikimedia.org Wiki Inisiatif Kebergunaan]. Di sana Anda akan menemukan informasi tentang hibah, penelitian, desain + pengembangan, dan rilis terbaru. Untuk mengajukan pertanyaan atau meninggalkan umpan balik, silakan gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype halaman pembicaraan] prototipe kami. Untuk membahas tentang subyek tertentu, silakan gunakan halaman diskusi yang terkait. Jika Anda menemukan bug, silakan tinggalkan komentar pada [http://usability.wikimedia.org/wiki/Talk:Releases/Acai halaman pembicaraan rilis Acai] atau lewat [https://bugzilla.wikimedia.org Bugzilla].
 
-Terima kasih dan kami berharap pendapat Anda!',
+Terima kasih dan kami menunggu pendapat Anda!',
 );
 
 /** Ido (Ido)
@@ -2408,17 +2411,17 @@ Vorremmo sapere cosa ne pensi della nostra nuova interfaccia, quindi apprezzerem
 	'optin-survey-answer-changes-custom' => "Consentire una maggiore personalizzazione all'utente.",
 	'optin-survey-answer-changes-other' => 'Altro:',
 	'optin-improvements' => '== Cosa è stato migliorato? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Istantanea nelle nuove linguette di navigazione]]
 ;Navigazione potenziata
 Il nuovo sistema di navigazione rende più semplice vedere dove ti trovi e cosa stai facendo, oltre a dove puoi andare e come puoi arrivarci. Con il box di ricerca situato nell\'angolo in alto a destra, la funzione di ricerca è più facile per trovare e più veloce da usare.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Istantanea della barra degli strumenti potenziata]]
 ;Miglioramenti della barra degli strumenti
 Le icone nuove e migliorate rendono più chiare le azioni che ciascuno strumento esegue. Le sezioni espandibili riducono l\'ingombro mantenendo gli strumenti usati di rado a un clic di distanza. La sezione di aiuto fornisce un rapido accesso a un riferimento per gli usi comuni della sintassi wiki.
 <div style="clear:both;"></div>
 == Come aiutare ==
-Per saperne di più sul progetto o aiutare, visita il [http://usability.wikimedia.org sito del progetto usabilità]. Lì potrai trovare informazioni sulla nostra sovvenzione, ricerca, progettazione e sviluppo e nuove versioni. Per porre domande o lasciare un commento generale, usa la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina di discussione sui prototipi]. Per discutere di specifici argomenti, usa le pagine di discussione relative. Se trovi degli errori, lascia un commento nella [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina di discussione delle versioni di Acai] o usa [https://bugzilla.wikimedia.org Bugzilla].
+Per saperne di più sul progetto o aiutare, visita il [http://usability.wikimedia.org sito del progetto usabilità]. Lì potrai trovare informazioni sulla nostra sovvenzione, ricerca, progettazione e sviluppo e nuove versioni. Per porre domande o lasciare un commento generale, usa la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina di discussione sui prototipi]. Per discutere di specifici argomenti, usa le pagine di discussione relative. Se trovi degli errori, lascia un commento nella [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina di discussione delle versioni di Acai] o usa [https://bugzilla.wikimedia.org Bugzilla]. Oppure, [http://it.wikipedia.org/wiki/Progetto:Coordinamento/Usabilit%C3%A0 qui] puoi fare segnalazioni o dare pareri di ogni genere in italiano. 
 
 Grazie; non vediamo l\'ora di sentirti.',
 );
@@ -2489,12 +2492,12 @@ $messages['ja'] = array(
 	'optin-survey-answer-changes-custom' => 'より強力なカスタマイズを可能にしてほしい。',
 	'optin-survey-answer-changes-other' => 'その他:',
 	'optin-improvements' => '== 何が改良されたのですか？ ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|新しいナビゲーションタブのスクリーンショット]]
 ;ナビゲーションの向上
 新しいナビゲーションシステムでは、現在見ているページがどこか、現在行っている作業なにかがわかりやすくなりました。また、どのページにアクセスでき、どうやってそれらのページにアクセスすればよいかも分かりやすくなりました。画面右上に検索ボックスを置くことで、検索バーを見つけやすく、より素早く利用できるようになりました。
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|改良された編集ツールバーのスクリーンショット]]
 ;編集ツールバーの改良
 新しく改良されたアイコンにより、各ツールの機能をより明確に表現できるようになりました。編集ツールバーの各部分について表示・非表示を切り替えられるようにすることで、ツールバーのデザインを簡潔に保ちつつ、散発的に使用される機能にもすぐアクセスできるようにしました。ツールバーにヘルプを組み込むことで、一般的なウィキ・マークアップの説明を素早く参照できるようにしました。
 <div style="clear:both;"></div>
@@ -2840,14 +2843,14 @@ Wat hät Der aam <i lang="en">Beta</i> nit jefalle?',
 	'optin-survey-answer-changes-custom' => 'Jrüßer Aanpassonge aan der einzelne Metmaacher müjjelesch maache.',
 	'optin-survey-answer-changes-other' => 'Söns jet:',
 	'optin-improvements' => '== Wat es bäßer jemaat woode? ==
-[[File:UsabilityNavigation.png|left|link=]]
-; verbäßert Eöm_jonn
+[[File:UsabilityNavigation.png|left|link=|E Beld vun de neue Lenks för wohen ze kumme]]
+; Verbäßert Eröm_jonn
 Dat neu Süßteem zom eröm jonn määd_et leischter ze märke, woh De bes, un wat De jraad aam Donn bes, un woh De henjonn kann, un wi De doh hen küß. Dä Kaßte zom Söhke bove räähß es bäßer ze fenge un mer es flöcker mem Söhke. 
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
-; bäßer Wärkzüsch zom Ändere
-Neu un bäßer Mini-Beldsche maache kloorer, wat e Wärkzüsch deiht. Verjrüüßerbaa Afschnedde maache winnijer Dorjeneein un hallde sällde jebruch Wärkzüsch nur doch eine Klick wick.
+[[File:UsabilityToolbar.png|left|link=|E Beld vun de verbäßerte Wärkzüsch för zem Ändere]]
+; Bäßer Wärkzüsch zom Ändere
+Neu un bäßer Mini-Beldsche maache kloorer, wat e Wärkzüsch deiht. Verjrüüßerbaa Afschnedde maache winnijer Dorjeneein un hallde sällde jebruch Wärkzüsch doch bloß eine Klick wick parraat.
 <div style="clear:both;"></div>
 
 == Wi mer metmaache kann ==
@@ -3119,7 +3122,7 @@ $messages['ml'] = array(
 	'optin-feedback-back' => 'താങ്കൾക്ക് സർവേയിൽ പങ്കെടുക്കേണ്ടയെങ്കിൽ, $1 താളിലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
 	'optin-success-in' => 'താങ്കൾ ഇപ്പോൾ ബീറ്റ പരീക്ഷിക്കുന്നു.
 താളിന്റെ മുകളിലായി കാണുന്ന "{{int:optin-leave}}" എന്ന കണ്ണി ഞെക്കി താങ്കൾക്ക് ഏതൊരു സമയത്തും ഇതൊഴിവാക്കാവുന്നതാണ്.',
-	'optin-leave-cancel' => 'താങ്കൾ ബീറ്റ തുടർന്നും ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, $1-ലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
+	'optin-leave-cancel' => 'താങ്കൾ ബീറ്റ തുടർന്നും ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, $1 എന്ന താളിലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
 	'optin-success-out' => 'താങ്കൾ വിജയകരമായി ബീറ്റയിൽ നിന്ന് പുറത്തുകടന്നിരിക്കുന്നു.
 താളിന്റെ മുകളിലായി കൊടുത്തിരിക്കുന്ന "{{int:optin-try}}" എന്ന കണ്ണി ഞെക്കി താങ്കൾക്ക് ഏതൊരു സമയത്തും ബീറ്റ പരീക്ഷിക്കാവുന്നതാണ്.',
 	'optin-success-feedback' => 'താങ്കളുടെ അഭിപ്രായം അറിയിച്ചതിനു നന്ദി!',
@@ -3165,12 +3168,12 @@ $messages['ml'] = array(
 	'optin-survey-answer-changes-custom' => 'ഉപയോക്താവിനു ഏറ്റവും കൂടുതൽ സജ്ജീകരിച്ചെടുക്കാവുന്ന വിധത്തിലാക്കുക.',
 	'optin-survey-answer-changes-other' => 'കൂടുതൽ:',
 	'optin-improvements' => '==എന്താണു മെച്ചപ്പെടുത്തിയത്?==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|പുതിയ നാവിഗേഷൻ റ്റാബുകളുടെ സ്ക്രീൻഷോട്ട്]]
 ;മെച്ചപ്പെട്ട നാവിഗേഷൻ
-പുതിയ നാവിഗേഷൻ സിസ്റ്റം താങ്കൾ എവിടെയെന്നും, എന്താണു ചെയ്യുന്നതെന്നും ലളിതമായി കാണിച്ചു തരുന്നു, അതുപോലെ എങ്ങിനെ മറ്റൊരിടത്തേയ്ക്ക് പോകാം എന്നും അതിലുണ്ട്. പുതിയതായി തിരച്ചിൽ പെട്ടി മുകളിൽ വലത്തു മൂലയിലായി സ്ഥാപിച്ചിരിക്കുന്നു. തിരച്ചിൽ ഉപയൊഗിച്ച് കണ്ടുപിടിക്കലും ഉപയോഗിക്കലും ലളിതമാകും.
+പുതിയ നാവിഗേഷൻ സിസ്റ്റം താങ്കൾ എവിടെയെന്നും, എന്താണു ചെയ്യുന്നതെന്നും ലളിതമായി കാണിച്ചു തരുന്നു, അതുപോലെ എങ്ങിനെ മറ്റൊരിടത്തേയ്ക്ക് പോകാം എന്നും അതിലുണ്ട്. തിരച്ചിൽ പെട്ടി മുകളിൽ വലത്തു മൂലയിലായി മാറ്റി സ്ഥാപിച്ചിരിക്കുന്നു. തിരച്ചിൽ ഉപയോഗിച്ച് കണ്ടുപിടിക്കലും ഉപയോഗിക്കലും ഇനി ലളിതമാകും.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|വിപുലീകരിച്ച എഡിറ്റ് റ്റൂൾബാറിന്റെ സ്ക്രീൻഷോട്ട്]]
 ;തിരുത്താനുള്ള റ്റൂൾബാറിൽ വരുത്തിയ മെച്ചപ്പെടുത്തലുകൾ
 പുതിയ മെച്ചപ്പെടുത്തിയ ഐകോണുകൾ, ഓരോ ഉപകരണവും ചെയ്യുന്നതെന്താണെന്നു വ്യക്തമായി വെളിപ്പെടുത്തുന്നു. വികസിപ്പിക്കാവുന്ന ഭാഗങ്ങൾ തുടർച്ചയായി ഉപയോഗിക്കാത്തവ മറച്ചു വെയ്ക്കുന്നു, അതേ സമയം വീണ്ടും വീണ്ടും ഉപയോഗിക്കുന്നവ ഒരൊറ്റ ക്ലിക്കിൽ തന്നെ ലഭ്യവുമാണ്.
 <div style="clear:both;"></div>
@@ -3653,12 +3656,12 @@ Vi vil gjerne vite hva du tenker om vårt nye grensesnitt, så vi vil sette pris
 	'optin-survey-answer-changes-custom' => 'Tillat mere skreddersydde innstillinger.',
 	'optin-survey-answer-changes-other' => 'Andre ting:',
 	'optin-improvements' => '== Hva har blitt forbedret? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Skjermbilde av de nye navigasjonsflikene]]
 ;Forbedret navigering
 Det nye systemet for navigasjon gjør det enklere å se hvor du er og hva du gjør samt hvor du kan gå hvordan du kommer dit. Med søkefeltet i det øvre høyre hjørnet så er søkefunksjonen lettere å finne og kjappere å bruke. (Observer at bildene til venstre ikke bruker den norske oversettelsen som finnes).
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Skjermbilde av den forbedrede verktøylinja]]
 ;Forbedringer i verktøylinja
 Nye og forbedrede ikoner gjør det tydeligere hvilken funksjon hvert verktøy er koblet til. Utvidbare seksjoner reduserer den visuelle støyen, men gjør samtidig verktøyene som brukes sjelden tilgjengelige.
 Seksjonen for hjelp gir rask tilgang til forklaringer på vanlig bruk av kodene i wikiteksten.
@@ -3957,12 +3960,12 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-answer-changes-custom' => 'Permite maior personalização pelo utilizador.',
 	'optin-survey-answer-changes-other' => 'Outros:',
 	'optin-improvements' => '== O que foi melhorado? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Captura de ecrã das novas abas de navegação]]
 ;Navegação melhorada 
 O novo sistema de navegação torna mais fácil ver onde você está e o que você está a fazer, bem como onde pode ir e como chegar lá. Com a caixa de pesquisa localizada no canto superior direito, a funcionalidade de pesquisa é mais fácil de encontrar e mais rápida de usar.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Captura de ecrã da barra de ferramentas melhorada]]
 ;Melhoramentos na barra de ferramentas de edição
 Novos e melhorados ícones tornam mais claro que acção que cada ferramenta realiza. Secções ampliáveis reduzem o empilhamento de botões, continuando a manter ferramentas menos utilizadas a apenas um clique de distância.
 A secção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
@@ -3974,6 +3977,7 @@ Obrigado e estamos ansiosos para ouvir de você!',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -4039,18 +4043,18 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-answer-changes-custom' => 'Permitir uma maior personalização para o usuário.',
 	'optin-survey-answer-changes-other' => 'Outros:',
 	'optin-improvements' => '== O que foi melhorado? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Captura de tela das novas abas de navegação]]
 ;Navegação melhorada
 O novo sistema de navegação torna mais fácil ver onde você está e o que você está fazendo, bem como onde pode ir e como chegar lá. Com a caixa de pesquisa localizada no canto superior direito, a funcionalidade de pesquisa é mais fácil de encontrar e mais rápida de usar.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Captura de tela da barra de ferramentas melhorada]]
 ;Melhoramentos na barra de ferramentas de edição
 Ícones novos e melhorados tornam mais claro que ação que cada ferramenta realiza. Seções ampliáveis reduzem o empilhamento de botões, mantendo as ferramentas menos utilizadas a apenas um clique de distância.
 A seção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
 <div style="clear:both;"></div>
 == Como se envolver ==
-Para aprender mais sobre o projeto ou se envolver, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá você encontrará informação sobre nossa doação, pesquisa, concepção e desenvolvimento, e lançamentos. Para perguntar ou deixar comentários em geral, por favor use nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão do prototipo]. Para tratar de assuntos particulares, por favor use as páginas de discussão associadas. Se você encontrar problemas, por favor deixe seus comentários na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão do Acai] ou use o [https://bugzilla.wikimedia.org Bugzilla].
+Para aprender mais sobre o projeto ou se envolver, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá você encontrará informação sobre nossa doação, pesquisa, concepção e desenvolvimento, e lançamentos. Para perguntar ou deixar comentários em geral, por favor use nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão do protótipo]. Para tratar de assuntos particulares, por favor use as páginas de discussão associadas. Se você encontrar problemas, por favor deixe seus comentários na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão do Acai] ou use o [https://bugzilla.wikimedia.org Bugzilla].
 
 Obrigado e nós estamos ansiosos para saber o que você tem a dizer!',
 );
@@ -4210,12 +4214,12 @@ $messages['ru'] = array(
 	'optin-survey-answer-changes-custom' => 'Позволить производить больше индивидуальных настроек.',
 	'optin-survey-answer-changes-other' => 'Иное:',
 	'optin-improvements' => '== Что было улучшено? ==
-[[File:UsabilityNavigation.png|left]]
+[[File:UsabilityNavigation.png|left|link=|Снимок новой навигационной панели]]
 ; Усовершенствование навигации 
 Новая система навигации позволяет проще понять, где вы находитесь и что делаете, а также — куда вы можете перейти и как туда попасть. С полем поиска, расположенным в верхнем правом углу, искать становится проще и быстрее.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left]]
+[[File:UsabilityToolbar.png|left|link=|Снимок улучшенной панели редактирования]]
 ; Улучшение панели редактирования
 Новые и улучшенные значки более точно показывают соответствие инструментов и выполняемых ими действий. Раскрываемые разделы уменьшают беспорядок, сохраняя при этом редко используемые инструменты на расстоянии щелчка мыши. Справочный раздел обеспечивает быстрый доступ к примерам по наиболее часто используемым типам вики-разметки.
 <div style="clear:both;"></div>
@@ -4571,6 +4575,15 @@ $messages['sr-el'] = array(
 	'optin-survey-answer-changes-other' => 'Drugo:',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'optin-title-justoptedout' => 'Ngahaturkeun nuhun tos nyobian Béta',
+	'optin-needlogin' => 'Anjeun kudu [$1 asup log] pikeun nyobaan Béta.',
+	'optin-deny-long' => 'Balik ka kaca saméméhna',
+);
+
 /** Swedish (Svenska)
  * @author Hannibal
  * @author Micke
@@ -4810,12 +4823,12 @@ Yeni arayüzümüz konusunda ne düşündüğünüzü bilmek isteriz, o yüzden 
 	'optin-survey-answer-changes-custom' => 'Daha fazla kullanıcı özelleştirmesine izin ver.',
 	'optin-survey-answer-changes-other' => 'Diğer:',
 	'optin-improvements' => '== Neler geliştirildi? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Yeni dolaşım sekmelerinin ekran görüntüsü]]
 ;Geliştirilmiş dolaşım
 Yeni dolaşım sistemi, nerede olduğunuzu ve ne yaptığınızı görmenizi, ayrıca nereye gidebileceğinizi ve oraya nasıl ulaşacağınızı kolaylaştırır. Sağ üst köşede yer alan yeni arama kutusu ile bulmak daha kolay ve kullanmak daha hızlı.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Gelişmiş değiştirme araç çubuğunun ekran görüntüsü]]
 ;Değiştirme araç çubuğu geliştirmeleri
 Yeni-ve-geliştirilmiş simgeler her aracın ne eylemi yaptığını daha netleştirir. Genişletilebilir bölümler dağınıklığı azaltırken az kullanılan araçları sadece bir tık ötesinde saklar.
 Yardım bölümü, viki-biçimlendirmesinin genel kullanımı için bir referansa kolay erişim sağlar.

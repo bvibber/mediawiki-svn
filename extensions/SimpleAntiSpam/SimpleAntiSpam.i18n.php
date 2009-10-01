@@ -465,6 +465,14 @@ $messages['mk'] = array(
 	'simpleantispam-desc' => 'Додава едноставна проверка за спам/ботови на обрасците',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'simpleantispam-label' => "സ്പാം വിരുദ്ധ പരിശോധന.
+ഇത് '''പൂരിപ്പിക്കരുത്'''",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

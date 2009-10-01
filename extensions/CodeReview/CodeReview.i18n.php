@@ -5611,6 +5611,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Crazymadlover
+ * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
@@ -5623,6 +5624,8 @@ $messages['pt'] = array(
 	'code-change-tags' => "alterou as '''etiquetas''' da revisão r$1",
 	'code-change-removed' => 'removeu:',
 	'code-change-added' => 'adicionou:',
+	'code-old-status' => 'Estado antigo',
+	'code-new-status' => 'Estado novo',
 	'code-prop-changes' => 'Registo de estado & etiquetagem',
 	'code-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte para Subversion]]',
 	'code-no-repo' => 'Nenhum repositório configurado!',
@@ -5649,6 +5652,7 @@ $messages['pt'] = array(
 	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
+	'code-field-tests' => 'Testes',
 	'code-field-path' => 'Caminho',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Selecionar',
@@ -5694,6 +5698,7 @@ $messages['pt'] = array(
 	'code-release-legend' => 'Gerar notas de lançamento',
 	'code-release-startrev' => 'Primeira rev:',
 	'code-release-endrev' => 'Última rev:',
+	'code-release-badrange' => 'Intervalo é demasiado elevado!',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
 	'codereview-email-subj' => '[$1] [r$2]: Novo comentário adicionado',

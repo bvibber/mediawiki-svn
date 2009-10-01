@@ -247,15 +247,16 @@ Du hesch e Aamerkig zue däre Syte? Trag e do yy oder <span class="plainlinks">[
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'commentbox-desc' => 'הוספת תיבת תגובות לדפים מסויימים',
 	'commentbox-intro' => '== הוספת תגובה... ==
-יש לכם תגובה על דף זה? הוסיפו אותה כאן או <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} ערכו את הדף ישירות]</span>.�',
+יש לכם תגובה על דף זה? הוסיפו אותה כאן או <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} ערכו את הדף ישירות]</span>.',
 	'commentbox-savebutton' => 'שמירת התגובה',
 	'commentbox-name' => 'שם:',
-	'commentbox-name-explanation' => '<small>(עצה: אם תבצעו [[Special:UserLogin|כניסה]], לא תצטרכו למלא כאן את שמכם ידנית)</small>',
+	'commentbox-name-explanation' => '<small>(עצה: אם [[Special:UserLogin|תיכנסו לחשבון]], לא תצטרכו למלא כאן את שמכם ידנית)</small>',
 	'commentbox-log' => 'תגובות חדשות',
 	'commentbox-first-comment-heading' => '== תגובות ==',
 	'commentbox-regex' => '/\\n==\\s*תגובות\\s*==\\s*\\n/i',

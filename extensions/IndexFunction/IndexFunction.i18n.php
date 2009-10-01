@@ -485,6 +485,11 @@ Per favor remove "$1" del <nowiki>{{#index:}}</nowiki> in le {{PLURAL:$3|pagina|
 	'index-expand-detail' => 'Monstrar paginas indexate sub iste titulo',
 	'index-hide-detail' => 'Celar le lista de paginas',
 	'index-no-results' => 'Le recerca retornava nulle resultato',
+	'index-search-explain' => 'Iste pagina usa un recerca de prefixo.
+
+Entra le prime poc characteres e preme le button de submission pro cercar titulos de paginas e entratas de indice que comencia per le catena de recerca',
+	'index-details-explain' => 'Entratas con sagittas es entratas de indice.
+Clicca super le sagitta pro revelar tote le paginas indexate sub ille titulo.',
 );
 
 /** Indonesian (Bahasa Indonesia)

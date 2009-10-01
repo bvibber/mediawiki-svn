@@ -1387,6 +1387,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Crazymadlover
+ * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
@@ -1411,6 +1412,7 @@ $messages['pt'] = array(
 	'ratinghistory-table-rating' => 'Avaliação',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Ainda não há dados suficientes de avaliações dos leitores para mostrar gráficos.',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Pobre; '''(2)''' - Baixo; '''(3)''' - Moderado; '''(4)''' - Elevado; '''(5)''' - Excelente;",
 	'ratinghistory-legend' => "O '''número diário de revisões''' <font color=\"red\">''(vermelho)''</font>, '''avaliação média diária''' <font color=\"blue\">''(azul)''</font> e a '''avaliação média acumulada''' <font color=\"green\">''(verde)''</font> estão apresentadas graficamente abaixo, por data. 
 A '''avaliação média acumulada''' é apenas a média de todas as avaliações diárias ''dentro'' desta janela temporal para cada dia.
 As avaliações são como segue:

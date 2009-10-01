@@ -670,6 +670,13 @@ It peule giuté a trascodifiché sto video-sì an visitand [[Special:WikiAtHome|
 	'wah-loading' => "carié l'antërfassa ëd Wiki@Home <blink>...</blink>",
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'wah-transcode-working' => 'Este vídeo está a ser processado. Por favor, tente mais tarde',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Heldergeovane

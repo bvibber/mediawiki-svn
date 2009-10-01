@@ -377,6 +377,7 @@ $messages['af'] = array(
 	'configure-section-search' => 'Soek',
 	'configure-select-wiki-view-desc' => 'Kies die wiki waarvoor u die weergawes van die instellings wil sien.',
 	'configure-select-wiki-submit' => 'Kies',
+	'configure-view' => 'Wys',
 	'configure-throttle-action-edit' => 'Wysig',
 	'configure-throttle-action-move' => 'Skuif',
 	'configure-throttle-action-rollback' => 'Terugrol',

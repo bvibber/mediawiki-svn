@@ -296,7 +296,7 @@ $messages['he'] = array(
 	'editwarning' => 'אזהרת עריכה',
 	'editwarning-desc' => 'הצגת אזהרה כאשר משתמש מנסה לעזוב את טופס העריכה בלי לשמור',
 	'editwarning-warning' => 'עזיבת דף זה עשויה לגרום לאובדן כל השינויים שביצעתם.
-אם ביצעתם כניסה, ניתן לבטל אזהרה זו בחלק "{{int:prefs-editing}}" שבהעדפות שלכם.',
+אם אתם מחוברים לחשבון, תוכלו לבטל אזהרה זו בחלק "{{int:prefs-editing}}" שבהעדפות שלכם.',
 	'editwarning-preference' => 'הצגת אזהרה אם אני עומד לעזוב דף עריכה עם שינויים שטרם נשמרו',
 );
 
@@ -341,7 +341,7 @@ $messages['ia'] = array(
 	'editwarning' => 'Advertimento de modification',
 	'editwarning-desc' => 'Monstra un advertimento quando un usator tenta quitar un formulario de modification sin immagazinar',
 	'editwarning-warning' => 'Quitar iste pagina pote causar le perdita de omne modificationes que tu ha facite.
-(Es possibile disactivar iste aviso in le section "{{int:prefs-editing}}" del Preferentias.)',
+Si tu ha aperite un session, tu pote disactivar iste aviso in le section "{{int:prefs-editing}}" de tu preferentias.',
 	'editwarning-preference' => 'Advertir me quando io quita un pagina de modification sin publicar le cambiamentos',
 );
 

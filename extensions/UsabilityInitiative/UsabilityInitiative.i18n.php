@@ -40,6 +40,7 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'usabilityinitiative' => 'مبادرة الاستخدامية',
 	'usabilityinitiative-desc' => 'مزايا طورتها مبادرة استخدامية ويكيبيديا (Wikipedia Usability Initiative) لتحسين استخدامية ميدياويكي.',
+	'prefs-experimental' => 'مزايا تجريبية',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -154,6 +155,7 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'usabilityinitiative' => 'Kasutushõlpsuse algatus',
 	'usabilityinitiative-desc' => 'Vikipeedia kasutushõlpsuse algatuse välja töötatud omadused, mis peaks täiustama MediaWiki kasutatavust.',
+	'prefs-experimental' => 'Katselised funktsioonid',
 );
 
 /** Basque (Euskara)
@@ -240,6 +242,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'usabilityinitiative' => 'Initiativa de usabilitate',
 	'usabilityinitiative-desc' => 'Functiones disveloppate per le Initiativa de Usabilitate de Wikipedia pro meliorar le usabilitate de MediaWiki',
+	'prefs-experimental' => 'Functiones experimental',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -321,6 +324,15 @@ $messages['mk'] = array(
 	'usabilityinitiative-desc' => 'Алатки и можности изработени од Иницијативата за употребливост на Википедија со цел да се подобри употребливоста на МедијаВики',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'usabilityinitiative' => 'യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ്',
+	'usabilityinitiative-desc' => 'മീഡിയവിക്കിയുടെ മെച്ചപ്പെട്ട ഉപയോഗ്യതയ്ക്കായി വിക്കിപീഡിയ യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വികസിപ്പിച്ചെടുത്ത വിശേഷഗുണങ്ങൾ',
+	'prefs-experimental' => 'പരീക്ഷണാടിസ്ഥാനത്തിലുള്ള സവിശേഷതകൾ',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Kurniasan
  */
@@ -389,6 +401,7 @@ $messages['pms'] = array(
 $messages['pt'] = array(
 	'usabilityinitiative' => 'Iniciativa de Usabilidade',
 	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
+	'prefs-experimental' => 'Funcionalidades experimentais',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -473,6 +486,7 @@ $messages['te'] = array(
 $messages['tr'] = array(
 	'usabilityinitiative' => 'Kullanılabilirlik Girişimi',
 	'usabilityinitiative-desc' => "Vikipedi Kullanılabilirlik Girişimi tarafından MedyaViki'nin kullanılabilirliğini artırmak için geliştirilen özellikler",
+	'prefs-experimental' => 'Deneysel özellikler',
 );
 
 /** Vèneto (Vèneto)

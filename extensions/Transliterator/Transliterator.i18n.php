@@ -92,6 +92,17 @@ $messages['bs'] = array(
 	'transliterator-error-rulesize' => 'Pravilo <code>$1</code> ima više od $3 {{PLURAL:$3|znaka|znaka|znakova}} na lijevoj strani u [[MediaWiki:$2]]',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'transliterator-desc' => 'Proporciona una funció configurable per a fer transliteració',
+	'transliterator-error-ambiguous' => 'Regla ambigua <code>$1</code> a [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaxi incorrecta <code>$1</code> a [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Més {{PLURAL:$1|d\'una regla|de $3 regles}} a [[MediaWiki: $ 2]]',
+	'transliterator-error-rulesize' => "La regla <code>$1</code> té més {{PLURAL:$3|d'un caràcter|de $3 caràcters}} a l'esquerra a [[MediaWiki:$2]]",
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  */

@@ -458,6 +458,13 @@ $messages['ps'] = array(
 	'webchat' => 'د جال بنډار',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'right-webchat' => 'Permitido o uso de [[Special:WebChat|web chat]]',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */
