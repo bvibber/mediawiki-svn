@@ -92,7 +92,7 @@ class SpecialClickTracking extends SpecialPage {
 		
 		$wgOut->addScript('<script type="text/javascript">'. "var wgClickTrackUserDefs = ".json_encode($this->user_defs).  '</script>');
 		
-		$wgOut->setPageTitle( wfMsg( 'clicktracking-title' ) );
+		$wgOut->setPageTitle( wfMsg( 'ct-title' ) );
 		
 		$outputTable ="";
 		
