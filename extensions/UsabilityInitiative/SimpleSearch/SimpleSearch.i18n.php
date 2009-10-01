@@ -170,12 +170,13 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dalton2
  * @author Locos epraix
  * @author Omnipaedista
  */
 $messages['es'] = array(
 	'simplesearch' => 'Búsqueda simple',
-	'simplesearch-desc' => 'Agrega funcionalidades extra al vector de búsqueda simple',
+	'simplesearch-desc' => 'Agregue funcionalidades extra al vector de búsqueda simple',
 	'simplesearch-search' => 'Búsqueda',
 	'simplesearch-containing' => 'conteniendo...',
 );
@@ -264,6 +265,15 @@ $messages['gsw'] = array(
 	'simplesearch-desc' => 'Fiegt e extra Funktionswys zue dr vereifachte Suechi vum Vekter derzue',
 	'simplesearch-search' => 'Suechi',
 	'simplesearch-containing' => 'din het s …',
+);
+
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'simplesearch' => 'Ronsaghey aashagh',
+	'simplesearch-search' => 'Ronsaghey',
+	'simplesearch-containing' => 'goaill stiagh...',
 );
 
 /** Hebrew (עברית)

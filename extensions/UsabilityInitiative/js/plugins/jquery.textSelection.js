@@ -43,44 +43,15 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
 				// Exclude ending space char
 				selText = selText.substring(0, selText.length - 1);
-				post += ' '
+				post += ' ';
 			}
 		}
 		var selText = $(this).getSelection();
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
-		} else if ( document.selection && document.selection.createRange ) {
-			// IE/Opera
-			$(this).focus();
-			var range = document.selection.createRange();
-			if ( ownline && range.moveStart ) {
-				var range2 = document.selection.createRange();
-				range2.collapse();
-				range2.moveStart( 'character', -1 );
-				// FIXME: Which check is correct?
-				if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
-					pre = "\n" + pre;
-				}
-				var range3 = document.selection.createRange();
-				range3.collapse( false );
-				range3.moveEnd( 'character', 1 );
-				if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
-					post += "\n";
-				}
-			}
-			checkSelectedText();
-			range.text = pre + selText + post;
-			if ( isSample && range.moveStart ) {
-				if ( window.opera ) {
-					post = post.replace( /\n/g, '' );
-				}
-				range.moveStart( 'character', - post.length - selText.length );
-				range.moveEnd( 'character', - post.length );
-			}
-			range.select();
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
-			// Mozilla
+			// Mozilla/Opera
 			$(this).focus();
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
@@ -94,6 +65,11 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				}
 			}
 			this.value = this.value.substring( 0, startPos ) + pre + selText + post + this.value.substring( endPos, this.value.length );
+			if ( window.opera ) {
+				pre = pre.replace( /\r?\n/g, "\r\n" );
+				selText = selText.replace( /\r?\n/g, "\r\n" );
+				post = post.replace( /\r?\n/g, "\r\n" );
+			}
 			if ( isSample ) {
 				this.selectionStart = startPos + pre.length;
 				this.selectionEnd = startPos + pre.length + selText.length;
@@ -101,6 +77,32 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				this.selectionStart = startPos + pre.length + selText.length + post.length;
 				this.selectionEnd = this.selectionStart;
 			}
+		} else if ( document.selection && document.selection.createRange ) {
+			// IE
+			$(this).focus();
+			var range = document.selection.createRange();
+			if ( ownline && range.moveStart ) {
+				var range2 = document.selection.createRange();
+				range2.collapse();
+				range2.moveStart( 'character', -1 );
+				// FIXME: Which check is correct?
+				if ( range2.text != "\r" && range2.text != "\n" && range2.text != "" ) {
+					pre = "\n" + pre;
+				}
+				var range3 = document.selection.createRange();
+				range3.collapse( false );
+				range3.moveEnd( 'character', 1 );
+				if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
+					post += "\n";
+				}
+			}
+			checkSelectedText();
+			range.text = pre + selText + post;
+			if ( isSample && range.moveStart ) {
+				range.moveStart( 'character', - post.length - selText.length );
+				range.moveEnd( 'character', - post.length );
+			}
+			range.select();
 		}
 		// Scroll the textarea to the inserted text
 		$(this).scrollToCaretPosition();
@@ -204,8 +206,8 @@ setSelection: function( start, end ) {
 			this.selectionStart = start;
 			this.selectionEnd = end;
 		} else if ( document.body.createTextRange ) {
-			var selection = document.body.createTextRange;
-			selection.setToElementText( this );
+			var selection = document.body.createTextRange();
+			selection.moveToElementText( this );
 			var length = selection.text.length;
 			selection.moveStart( 'character', start );
 			selection.moveEnd( 'character', -length + end );
@@ -219,9 +221,10 @@ setSelection: function( start, end ) {
  * 
  * Scroll a textarea to the current cursor position. You can set the cursor
  * position with setSelection()
- * @param pos Byte offset
+ * @param force boolean Whether to force a scroll even if the caret position
+ *  is already visible. Defaults to false
  */
-scrollToCaretPosition: function() {
+scrollToCaretPosition: function( force ) {
 	function getLineLength( e ) {
 		return Math.floor( e.scrollWidth / ( $.os.name == 'linux' ? 7 : 8 ) );
 	}
@@ -272,12 +275,15 @@ scrollToCaretPosition: function() {
 		$(this).focus();
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
-			$(this).scrollTop( getCaretScrollPosition( this ) );
+			var scroll = getCaretScrollPosition( this );
+			if ( force || scroll < $(this).scrollTop() ||
+					scroll > $(this).scrollTop() + $(this).height() )
+				$(this).scrollTop( scroll );
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE / Opera
 			/*
 			 * IE automatically scrolls the selected text to the
-			 * bottom of the textarea at setSelection() time, except
+			 * bottom of the textarea at range.select() time, except
 			 * if it was already in view and the cursor position
 			 * wasn't changed, in which case it does nothing. To
 			 * cover that case, we'll force it to act by moving one
@@ -285,13 +291,17 @@ scrollToCaretPosition: function() {
 			 */
 			var range = document.selection.createRange();
 			var pos = $(this).getCaretPosition();
+			var oldScrollTop = this.scrollTop;
 			range.moveToElementText( this );
 			range.collapse();
 			range.move( 'character', pos + 1);
 			range.select();
-			this.scrollTop += range.offsetTop;
-			range.move( 'character', -1 );
-			range.select();
+			if ( this.scrollTop != oldScrollTop )
+				this.scrollTop += range.offsetTop;
+			else if ( force ) {
+				range.move( 'character', -1 );
+				range.select();
+			}
 		}
 		$(this).trigger( 'scrollToPosition' );
 	} );

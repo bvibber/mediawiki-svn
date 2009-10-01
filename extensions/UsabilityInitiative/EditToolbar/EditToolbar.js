@@ -760,19 +760,19 @@ js2AddOnloadHook( function() {
 				<div id="edittoolbar-link-dialog-tab-int"><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-int-target" rel="edittoolbar-tool-link-int-target"></label></td>\
 					<td>\
-						<input type="text" id="edittoolbar-link-int-target" />\
+						<input type="text" id="edittoolbar-link-int-target" size="50" />\
 						<div id="edittoolbar-link-int-target-status" style="display: inline;"></div>\
 					</td>\
 				</tr><tr>\
 					<td><label for="edittoolbar-link-int-text" rel="edittoolbar-tool-link-int-text"></label></td>\
-					<td><input type="text" id="edittoolbar-link-int-text" /></td>\
+					<td><input type="text" id="edittoolbar-link-int-text" size="50" /></td>\
 				</table></fieldset></div>\
 				<div id="edittoolbar-link-dialog-tab-ext"><fieldset><table><tr>\
 					<td><label for="edittoolbar-link-ext-target" rel="edittoolbar-tool-link-ext-target"></label></td>\
-					<td><input type="text" id="edittoolbar-link-ext-target" /></td>\
+					<td><input type="text" id="edittoolbar-link-ext-target" size="50" /></td>\
 				</tr><tr>\
 					<td><label for="edittoolbar-link-ext-text" rel="edittoolbar-tool-link-ext-text"></label></td>\
-					<td><input type="text" id="edittoolbar-link-ext-text" /></td>\
+					<td><input type="text" id="edittoolbar-link-ext-text" size="50" /></td>\
 				</table></fieldset></div>\
 			</div>',
 		init: function() {
@@ -1012,6 +1012,9 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
+				$j( '#edittoolbar-link-int-target, #edittoolbar-link-ext-target' )
+					.filter( ':visible' )
+					.focus();
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.getSelection();
 				$j( '#edittoolbar-link-dialog-tab-int' ).data( 'whitespace', [ '', '' ] );
@@ -1108,11 +1111,19 @@ js2AddOnloadHook( function() {
 					var rows = parseInt( $j( '#edittoolbar-table-dimensions-rows' ).val() );
 					var cols = parseInt( $j( '#edittoolbar-table-dimensions-columns' ).val() );
 					var header = Math.min( 1, $j( '#edittoolbar-table-dimensions-header:checked' ).size() );
-					var table = "{|\n";
+					if ( isNaN( rows ) || isNaN( cols ) ) {
+						alert( gM( 'edittoolbar-tool-table-invalidnumber' ) );
+						return;
+					}
+					if ( rows + header == 0 || cols == 0 ) {
+						alert( gM( 'edittoolbar-tool-table-zero' ) );
+						return;
+					}
 					if ( rows * cols > 1000 ) {
 						alert( gM( 'edittoolbar-tool-table-toomany', 1000 ) );
 						return;
 					}
+					var table = "";
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
 						for ( var c = 0; c < cols; c++ ) {
@@ -1130,13 +1141,14 @@ js2AddOnloadHook( function() {
 						// table[table.length - 1] is read-only
 						table = table.substr( 0, table.length - 1 ) + "\n";
 					}
-					table += "|}";
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j(this).data( 'context' ),
 						{
 							type: 'encapsulate',
 							options: {
-								pre: table,
+								pre: "{|\n",
+								peri: table,
+								post: "|}",
 								ownline: true
 							}
 						},
@@ -1149,6 +1161,7 @@ js2AddOnloadHook( function() {
 				}
 			},
 			open: function() {
+				$j( '#edittoolbar-table-dimensions-columns' ).focus();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button
@@ -1184,9 +1197,6 @@ js2AddOnloadHook( function() {
 			</tr><tr>\
 				<td><input type="checkbox" id="edittoolbar-replace-regex" /></td>\
 				<td><label for="edittoolbar-replace-regex" rel="edittoolbar-tool-replace-regex"></label></td>\
-			</tr><tr>\
-				<td><input type="checkbox" id="edittoolbar-replace-all" /></td>\
-				<td><label for="edittoolbar-replace-all" rel="edittoolbar-tool-replace-all"></label></td>\
 			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
@@ -1201,91 +1211,74 @@ js2AddOnloadHook( function() {
 						.click();
 				}
 			});
+			
+			// TODO: Find a cleaner way to share this function
+			$j(this).data( 'replaceCallback', function( mode ) {
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
+				var searchStr = $j( '#edittoolbar-replace-search' ).val();
+				var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
+				var flags = '';
+				var matchCase = $j( '#edittoolbar-replace-case' ).is( ':checked' );
+				var isRegex = $j( '#edittoolbar-replace-regex' ).is( ':checked' );
+				if ( !matchCase ) {
+					flags += 'i';
+				}
+				if ( mode == 'replaceAll' ) {
+					flags += 'g';
+				}
+				if ( !isRegex ) {
+					searchStr = RegExp.escape( searchStr );
+				}
+				var regex = new RegExp( searchStr, flags );
+				var $textarea = $j(this).data( 'context' ).$textarea;
+				var text = $j.wikiEditor.fixOperaBrokenness( $textarea.val() );
+				var matches = text.match( regex );
+				if ( !matches ) {
+					$j( '#edittoolbar-replace-nomatch' ).show();
+				} else if ( mode == 'replaceAll' ) {
+					// Prepare to select the last match
+					var start = text.lastIndexOf( matches[matches.length - 1] );
+					var end = start + replaceStr.length;
+					var corr = ( matches.length - 1 ) * ( replaceStr.length - searchStr.length ); 
+					$textarea
+						.val( $textarea.val().replace( regex, replaceStr ) )
+						.change()
+						.setSelection( start + corr, end + corr )
+						.scrollToCaretPosition();
+					
+					$j( '#edittoolbar-replace-success' )
+						.text( gM( 'edittoolbar-tool-replace-success', matches.length ) )
+						.show();
+					$j(this).data( 'offset', 0 );
+				} else {
+					var start = text.indexOf( matches[0],
+						$j(this).data( 'offset' ) );
+					if ( start == -1 )
+						// Search hit BOTTOM, continuing at TOP
+						start = text.indexOf( matches[0] );
+					var end = start + matches[0].length;
+					var newEnd = start + replaceStr.length;
+					$textarea.setSelection( start, end );
+					if ( mode == 'replace' ) {
+						$textarea
+							.encapsulateSelection( '', replaceStr, '', false, true )
+							.setSelection( start, newEnd );
+					}
+					$textarea.scrollToCaretPosition();
+					$j(this).data( 'offset', mode == 'replace' ? newEnd : end );
+				}
+			});
 		},
 		dialog: {
 			buttons: {
-				'edittoolbar-tool-replace-button': function() {
-					function fixOperaBrokenness( s ) {
-						// This function works around Opera's
-						// broken newline handling in textareas.
-						// .val() has \n while selection functions
-						// treat newlines as \r\n
-						
-						if ( typeof $j.isOperaBroken == 'undefined' ) {
-							// Create a textarea inside a div
-							// with zero area, to hide it properly
-							var div = $j( '<div />' )
-								.height( 0 )
-								.width( 0 )
-								.insertBefore( $textarea );
-							var textarea = $j( '<textarea></textarea' )
-								.height( 0 )
-								.appendTo( div )
-								.val( "foo\r\nbar" );
-							
-							// Try to search&replace bar --> BAR
-							var index = textarea.val().indexOf( 'bar' );
-							textarea.select();
-							textarea.setSelection( index, index + 3 );
-							textarea.encapsulateSelection( '', 'BAR', '', false, true );
-							if ( textarea.val().substr( -1 ) == 'R' )
-								$j.isOperaBroken = false;
-							else
-								$j.isOperaBroken = true; 
-							div.remove();
-						}
-						if ( $j.isOperaBroken )
-							s = s.replace( /\n/g, "\r\n" );
-						return s;
-					}
-
-					$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
-					var searchStr = $j( '#edittoolbar-replace-search' ).val();
-					var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
-					var flags = '';
-					var replaceAll = $j( '#edittoolbar-replace-all' ).is( ':checked' );
-					if ( !$j( '#edittoolbar-replace-case' ).is( ':checked' ) ) {
-						flags += 'i';
-					}
-					if ( replaceAll ) {
-						flags += 'g';
-					}
-					if ( !$j( '#edittoolbar-replace-regex' ).is( ':checked' ) ) {
-						searchStr = RegExp.escape( searchStr );
-					}
-					var regex = new RegExp( searchStr, flags );
-					var $textarea = $j(this).data( 'context' ).$textarea;
-					var text = fixOperaBrokenness( $textarea.val() );
-					var matches = text.match( regex );
-					if ( !matches ) {
-						$j( '#edittoolbar-replace-nomatch' ).show();
-					} else if ( replaceAll ) {
-						// Prepare to select the last match
-						var start = text.lastIndexOf( matches[matches.length - 1] );
-						var end = start + replaceStr.length;
-						var corr = ( matches.length - 1 ) * ( replaceStr.length - searchStr.length ); 
-						$textarea
-							.val( $textarea.val().replace( regex, replaceStr ) )
-							.change()
-							.setSelection( start + corr, end + corr )
-							.scrollToCaretPosition();
-						
-						$j( '#edittoolbar-replace-success' )
-							.text( gM( 'edittoolbar-tool-replace-success', matches.length ) )
-							.show();
-						$j(this).data( 'offset', 0 );
-					} else {
-						var start = text.indexOf( matches[0],
-							$j(this).data( 'offset' ) );
-						var end = start + matches[0].length;
-						var newEnd = start + replaceStr.length;
-						$textarea
-							.setSelection( start, end )
-							.encapsulateSelection( '', replaceStr, '', false, true )
-							.setSelection( start, newEnd )
-							.scrollToCaretPosition();
-						$j(this).data( 'offset', newEnd );
-					}
+				'edittoolbar-tool-replace-button-findnext': function() {
+					$j(this).data( 'replaceCallback' ).call( this, 'find' );
+				},
+				'edittoolbar-tool-replace-button-replacenext': function() {
+					$j(this).data( 'replaceCallback' ).call( this, 'replace' );
+				},
+				'edittoolbar-tool-replace-button-replaceall': function() {
+					$j(this).data( 'replaceCallback' ).call( this, 'replaceAll' );
 				},
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
@@ -1294,6 +1287,7 @@ js2AddOnloadHook( function() {
 			},
 			open: function() {
 				$j(this).data( 'offset', 0 );
+				$j( '#edittoolbar-replace-search' ).focus();
 				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );

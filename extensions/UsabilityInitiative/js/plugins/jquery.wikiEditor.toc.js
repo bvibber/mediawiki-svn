@@ -41,9 +41,8 @@ fn: {
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
-		$.wikiEditor.modules.toc.fn.update( context );
 		context.$textarea
-			.delayedBind( 1000, 'keyup encapsulateSelection',
+			.delayedBind( 1000, 'keyup encapsulateSelection change',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -55,7 +54,7 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection',
+			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection change',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -159,7 +158,7 @@ fn: {
 							.click( function( event ) {
 								$(this).data( 'textbox' )
 									.setSelection( $(this).data( 'position' ) )
-									.scrollToCaretPosition();
+									.scrollToCaretPosition( true );
 								event.preventDefault();
 							} )
 							.text( structure[i].text )
@@ -173,8 +172,8 @@ fn: {
 		}
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = '\n' + context.$textarea.val() + '\n';
-		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
+		var wikitext = '\n' + $.wikiEditor.fixOperaBrokenness( context.$textarea.val() ) + '\n';
+		var headings = wikitext.match( /^={1,6}.+={1,6}\s*$/gm );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {

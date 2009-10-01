@@ -855,44 +855,15 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
 				// Exclude ending space char
 				selText = selText.substring(0, selText.length - 1);
-				post += ' '
+				post += ' ';
 			}
 		}
 		var selText = $(this).getSelection();
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
-		} else if ( document.selection && document.selection.createRange ) {
-			// IE/Opera
-			$(this).focus();
-			var range = document.selection.createRange();
-			if ( ownline && range.moveStart ) {
-				var range2 = document.selection.createRange();
-				range2.collapse();
-				range2.moveStart( 'character', -1 );
-				// FIXME: Which check is correct?
-				if ( range2.text != "\r" && range2.text != "\n" && range3.text != "" ) {
-					pre = "\n" + pre;
-				}
-				var range3 = document.selection.createRange();
-				range3.collapse( false );
-				range3.moveEnd( 'character', 1 );
-				if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
-					post += "\n";
-				}
-			}
-			checkSelectedText();
-			range.text = pre + selText + post;
-			if ( isSample && range.moveStart ) {
-				if ( window.opera ) {
-					post = post.replace( /\n/g, '' );
-				}
-				range.moveStart( 'character', - post.length - selText.length );
-				range.moveEnd( 'character', - post.length );
-			}
-			range.select();
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
-			// Mozilla
+			// Mozilla/Opera
 			$(this).focus();
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
@@ -906,6 +877,11 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				}
 			}
 			this.value = this.value.substring( 0, startPos ) + pre + selText + post + this.value.substring( endPos, this.value.length );
+			if ( window.opera ) {
+				pre = pre.replace( /\r?\n/g, "\r\n" );
+				selText = selText.replace( /\r?\n/g, "\r\n" );
+				post = post.replace( /\r?\n/g, "\r\n" );
+			}
 			if ( isSample ) {
 				this.selectionStart = startPos + pre.length;
 				this.selectionEnd = startPos + pre.length + selText.length;
@@ -913,6 +889,32 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				this.selectionStart = startPos + pre.length + selText.length + post.length;
 				this.selectionEnd = this.selectionStart;
 			}
+		} else if ( document.selection && document.selection.createRange ) {
+			// IE
+			$(this).focus();
+			var range = document.selection.createRange();
+			if ( ownline && range.moveStart ) {
+				var range2 = document.selection.createRange();
+				range2.collapse();
+				range2.moveStart( 'character', -1 );
+				// FIXME: Which check is correct?
+				if ( range2.text != "\r" && range2.text != "\n" && range2.text != "" ) {
+					pre = "\n" + pre;
+				}
+				var range3 = document.selection.createRange();
+				range3.collapse( false );
+				range3.moveEnd( 'character', 1 );
+				if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
+					post += "\n";
+				}
+			}
+			checkSelectedText();
+			range.text = pre + selText + post;
+			if ( isSample && range.moveStart ) {
+				range.moveStart( 'character', - post.length - selText.length );
+				range.moveEnd( 'character', - post.length );
+			}
+			range.select();
 		}
 		// Scroll the textarea to the inserted text
 		$(this).scrollToCaretPosition();
@@ -1016,8 +1018,8 @@ setSelection: function( start, end ) {
 			this.selectionStart = start;
 			this.selectionEnd = end;
 		} else if ( document.body.createTextRange ) {
-			var selection = document.body.createTextRange;
-			selection.setToElementText( this );
+			var selection = document.body.createTextRange();
+			selection.moveToElementText( this );
 			var length = selection.text.length;
 			selection.moveStart( 'character', start );
 			selection.moveEnd( 'character', -length + end );
@@ -1031,9 +1033,10 @@ setSelection: function( start, end ) {
  * 
  * Scroll a textarea to the current cursor position. You can set the cursor
  * position with setSelection()
- * @param pos Byte offset
+ * @param force boolean Whether to force a scroll even if the caret position
+ *  is already visible. Defaults to false
  */
-scrollToCaretPosition: function() {
+scrollToCaretPosition: function( force ) {
 	function getLineLength( e ) {
 		return Math.floor( e.scrollWidth / ( $.os.name == 'linux' ? 7 : 8 ) );
 	}
@@ -1084,12 +1087,15 @@ scrollToCaretPosition: function() {
 		$(this).focus();
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
-			$(this).scrollTop( getCaretScrollPosition( this ) );
+			var scroll = getCaretScrollPosition( this );
+			if ( force || scroll < $(this).scrollTop() ||
+					scroll > $(this).scrollTop() + $(this).height() )
+				$(this).scrollTop( scroll );
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE / Opera
 			/*
 			 * IE automatically scrolls the selected text to the
-			 * bottom of the textarea at setSelection() time, except
+			 * bottom of the textarea at range.select() time, except
 			 * if it was already in view and the cursor position
 			 * wasn't changed, in which case it does nothing. To
 			 * cover that case, we'll force it to act by moving one
@@ -1097,13 +1103,17 @@ scrollToCaretPosition: function() {
 			 */
 			var range = document.selection.createRange();
 			var pos = $(this).getCaretPosition();
+			var oldScrollTop = this.scrollTop;
 			range.moveToElementText( this );
 			range.collapse();
 			range.move( 'character', pos + 1);
 			range.select();
-			this.scrollTop += range.offsetTop;
-			range.move( 'character', -1 );
-			range.select();
+			if ( this.scrollTop != oldScrollTop )
+				this.scrollTop += range.offsetTop;
+			else if ( force ) {
+				range.move( 'character', -1 );
+				range.select();
+			}
 		}
 		$(this).trigger( 'scrollToPosition' );
 	} );
@@ -1166,6 +1176,40 @@ $.wikiEditor.autoMsg = function( object, property ) {
 	} else {
 		return '';
 	}
+};
+
+$.wikiEditor.fixOperaBrokenness = function( s ) {
+	// This function works around Opera's
+	// broken newline handling in textareas.
+	// .val() has \n while selection functions
+	// treat newlines as \r\n
+	
+	if ( typeof $.isOperaBroken == 'undefined' && $.wikiEditor.instances.length > 0 ) {
+		// Create a textarea inside a div
+		// with zero area, to hide it properly
+		var div = $( '<div />' )
+			.height( 0 )
+			.width( 0 )
+			.insertBefore( $.wikiEditor.instances[0] );
+		var textarea = $( '<textarea></textarea' )
+			.height( 0 )
+			.appendTo( div )
+			.val( "foo\r\nbar" );
+		
+		// Try to search&replace bar --> BAR
+		var index = textarea.val().indexOf( 'bar' );
+		textarea.select();
+		textarea.setSelection( index, index + 3 );
+		textarea.encapsulateSelection( '', 'BAR', '', false, true );
+		if ( textarea.val().substr( -1 ) == 'R' )
+			$.isOperaBroken = false;
+		else
+			$.isOperaBroken = true; 
+		div.remove();
+	}
+	if ( $.isOperaBroken )
+		s = s.replace( /\n/g, "\r\n" );
+	return s;
 };
 
 $.fn.wikiEditor = function() {
@@ -1236,9 +1280,6 @@ if ( typeof context == 'undefined' ) {
 			}
 		}
 	}
-	//Each browser seems to do this differently, so let's keep our editor
-	//consistent by always starting at the begining
-	context.$textarea.setSelection( 0 ).scrollToCaretPosition();
 }
 
 // If there was a configuration passed, it's assumed to be for the addModule
@@ -1363,6 +1404,7 @@ fn: {
 	 */
 	resize: function() {
 		var wrapper = $(this).closest( '.ui-dialog' );
+		var oldWidth = wrapper.width();
 		// Make sure elements don't wrapped so we get an accurate idea
 		// of whether they really fit. Also temporarily show hidden
 		// elements.
@@ -1385,6 +1427,9 @@ fn: {
 			$(this).width( $(this).get(0).scrollWidth );
 			wrapper.width( wrapper.get(0).scrollWidth );
 			$(this).dialog( { 'width': wrapper.width() } );
+			wrapper.css( 'left',
+				parseInt( wrapper.css( 'left' ) ) -
+				( wrapper.width() - oldWidth ) / 2 );
 		}
 		
 		$(this).css( 'white-space', oldWS );
@@ -2005,9 +2050,8 @@ fn: {
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
-		$.wikiEditor.modules.toc.fn.update( context );
 		context.$textarea
-			.delayedBind( 1000, 'keyup encapsulateSelection',
+			.delayedBind( 1000, 'keyup encapsulateSelection change',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -2019,7 +2063,7 @@ fn: {
 					} );
 				}
 			)
-			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection',
+			.bind( 'mouseup scrollToPosition focus keyup encapsulateSelection change',
 				function( event ) {
 					var context = $(this).data( 'wikiEditor-context' );
 					$(this).eachAsync( {
@@ -2123,7 +2167,7 @@ fn: {
 							.click( function( event ) {
 								$(this).data( 'textbox' )
 									.setSelection( $(this).data( 'position' ) )
-									.scrollToCaretPosition();
+									.scrollToCaretPosition( true );
 								event.preventDefault();
 							} )
 							.text( structure[i].text )
@@ -2137,8 +2181,8 @@ fn: {
 		}
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = '\n' + context.$textarea.val() + '\n';
-		var headings = wikitext.match( /\n={1,5}.*={1,5}(?=\n)/g );
+		var wikitext = '\n' + $.wikiEditor.fixOperaBrokenness( context.$textarea.val() ) + '\n';
+		var headings = wikitext.match( /^={1,6}.+={1,6}\s*$/gm );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {

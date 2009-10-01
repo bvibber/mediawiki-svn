@@ -52,6 +52,13 @@ $messages['bs'] = array(
 	'userdailycontribs-desc' => 'Dnevni doprinosi korisnka za proširenje praćenja klikova',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'userdailycontribs-desc' => 'Denní příspěvky uživatelů pro rozšíření sledující kliknutí',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -78,6 +85,13 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'userdailycontribs-desc' => 'Ĉiutagaj kontribuoj de uzantoj por la klak-sekvada modulo.',
+);
+
+/** Spanish (Español)
+ * @author Dalton2
+ */
+$messages['es'] = array(
+	'userdailycontribs-desc' => 'Contribuciones diarias de los usuarios para la extensión de seguimiento mediante clics',
 );
 
 /** French (Français)

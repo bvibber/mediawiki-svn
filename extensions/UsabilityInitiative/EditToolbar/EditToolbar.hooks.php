@@ -106,14 +106,17 @@ class EditToolbarHooks {
 					'edittoolbar-tool-table-insert',
 					'edittoolbar-tool-table-cancel',
 					'edittoolbar-tool-table-toomany',
+					'edittoolbar-tool-table-invalidnumber',
+					'edittoolbar-tool-table-zero',
 					'edittoolbar-tool-replace',
 					'edittoolbar-tool-replace-title',
 					'edittoolbar-tool-replace-search',
 					'edittoolbar-tool-replace-replace',
 					'edittoolbar-tool-replace-case',
 					'edittoolbar-tool-replace-regex',
-					'edittoolbar-tool-replace-all',
-					'edittoolbar-tool-replace-button',
+					'edittoolbar-tool-replace-button-findnext',
+					'edittoolbar-tool-replace-button-replacenext',
+					'edittoolbar-tool-replace-button-replaceall',
 					'edittoolbar-tool-replace-close',
 					'edittoolbar-tool-replace-nomatch',
 					'edittoolbar-tool-replace-success',
@@ -218,7 +221,7 @@ class EditToolbarHooks {
 			array(
 				'type' => 'toggle',
 				'label-message' => 'edittoolbar-preference',
-				'section' => 'editing/advancedediting',
+				'section' => 'editing/experimental',
 			);
 		}
 		
@@ -227,7 +230,7 @@ class EditToolbarHooks {
 			$defaultPreferences['usebetatoolbar-cgd'] = array(
 				'type' => 'toggle',
 				'label-message' => 'edittoolbar-cgd-preference',
-				'section' => 'editing/advancedediting',
+				'section' => 'editing/experimental',
 			);
 		}
 		return true;

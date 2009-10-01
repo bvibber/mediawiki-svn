@@ -83,8 +83,13 @@ position:relative;
 width:100%;
 border-bottom:solid silver 1px;
 }
+.ui-widget table{
+margin-top:0.75em;
+}
 .ui-widget table td{
 padding:0.5em;
+height:3em;
+overflow:visible;
 }
 div.suggestions{
 z-index:1099;

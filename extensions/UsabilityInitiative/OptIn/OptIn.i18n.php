@@ -96,12 +96,12 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-changes-custom' => 'Allow greater user customization.',
 	'optin-survey-answer-changes-other' => 'Other:',
 	'optin-improvements' => "== What has been improved? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Screenshot of the new navigation tabs]]
 ;Enhanced navigation
 The new navigation system makes it easier to see where you are and what you are doing, as well as where you can go and how to get there. With the search box located in the top right corner, the search feature is easier to find and quicker to use.
 <div style=\"clear:both;\"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
 ;Edit toolbar improvements
 New-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
 The help section provides quick access to a reference for common uses of wiki-markup.
@@ -184,7 +184,7 @@ $messages['ar'] = array(
 	'optin-intro' => 'عملت مبادرة استخدامية ويكيبيديا (Wikipedia Usability Initiative) بجد على تحسين استخدامية ويكيبيديا.
 أترغب في تجربة نسختنا البيتا؟',
 	'optin-feedback-intro' => 'شكرًا لتجريبك البيتا.
-نود الإطلاع على رأيك في الواجهة الجديدة، لذا فإننا سنقدر ملأك للاستطلاع الاختياري أدناه.',
+نود الاطلاع على رأيك في الواجهة الجديدة، ولذا فإننا سنقدر ملأك للاستطلاع الاختياري أدناه.',
 	'optin-feedback-back' => 'إذا لم ترغب بملء الاستطلاع، يمكنك الرجوع إلى $1.',
 	'optin-success-in' => 'تقوم الآن بتجريب البيتا.
 تستطيع العودة في أي وقت بنقر وصلة "{{int:optin-leave}}" في أعلى الشاشة.',
@@ -1214,6 +1214,7 @@ Dankegon, kaj ni antaŭĝojas viajn komentojn!',
  * @author Antur
  * @author Barcex
  * @author Crazymadlover
+ * @author Dalton2
  * @author Imre
  * @author Locos epraix
  * @author Toliño
@@ -1226,17 +1227,17 @@ $messages['es'] = array(
 	'optin-title-justoptedin' => 'Bienvenido a Beta',
 	'optin-title-justoptedout' => 'Gracias por probar Beta',
 	'optin-title-feedback' => 'Retroalimentación beta',
-	'optin-needlogin' => 'Necesitas [$1 iniciar sesión] para probar Beta',
-	'optin-intro' => 'La Iniciativa de usabilidad de Wikipedia ha estado trabajando duro para mejorar la usabilidad de Wikipedia.
-¿Te gustaría probar nuestra versión Beta?',
+	'optin-needlogin' => 'Necesita [$1 iniciar sesión] para probar Beta',
+	'optin-intro' => 'La Iniciativa de usabilidad de Wikipedia ha estado trabajando mucho para mejorar la usabilidad de Wikipedia.
+¿Le gustaría probar nuestra versión Beta?',
 	'optin-feedback-intro' => 'Gracias por probar Beta.
 Deseamos saber qué piensa de nuestra interfaz, por lo que le agradeceremos completar la encuesta opcional que se muestra a continuación.',
 	'optin-feedback-back' => 'Si no desea llenar la encuesta, puede volver a $1.',
-	'optin-success-in' => 'Estás probando ahora Beta.
-Puedes volver a dejar de formar parte en cualquier momento haciendo click en el vínculo "{{int:optin-leave}}" en la parte superior derecha de la pantalla.',
-	'optin-leave-cancel' => 'Si te gustaría continuar usando Beta, puedes regresar a $1',
-	'optin-success-out' => 'Has abandonado exitosamente Beta.
-Puedes probarlo nuevamente en cualquier momento haciendo click en el vínculo "{{int:optin-try}}" en la parte superior derecha de la pantalla.',
+	'optin-success-in' => 'Está usted probando ahora Beta.
+Podrá volver a dejar de formar parte en cualquier momento haciendo clic en el vínculo "{{int:optin-leave}}" en la parte superior derecha de la pantalla.',
+	'optin-leave-cancel' => 'Si desea continuar usando Beta, puede regresar a $1',
+	'optin-success-out' => 'Ha abandonado exitosamente Beta.
+Puede probarlo nuevamente en cualquier momento haciendo clic en el vínculo "{{int:optin-try}}" en la parte superior derecha de la pantalla.',
 	'optin-success-feedback' => '¡Gracias por sus comentarios!',
 	'optin-accept-short' => '¡Hagámoslo!',
 	'optin-accept-long' => 'Probar Beta',
@@ -1248,53 +1249,53 @@ Puedes probarlo nuevamente en cualquier momento haciendo click en el vínculo "{
 	'optin-survey-yes' => 'Sí',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => 'Gracias por probar Beta.
-Nos gustaría conocer que opinas acerca de la nueva interfaz, apreciaríamos si llenas la encuesta opcional de abajo antes de que hagas click en "[[#leave|{{int:optin-submit-out}}]]".',
-	'optin-survey-question-likedislike' => 'Qué te gustó de Beta? Qué no te gustó de Beta?',
-	'optin-survey-question-whyoptout' => 'Porqué estás dejando esta Beta? (por favor selecciona todo lo que aplique)',
+Nos gustaría saber qué opina acerca de la nueva interfaz; agradeceríamos que rellenase la encuesta opcional de abajo antes de hacer clic en "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => '¿Qué le gustó de Beta? ¿Qué no le gustó de Beta?',
+	'optin-survey-question-whyoptout' => '¿Por qué va a abandonar esta Beta? (Por favor, seleccione todo lo que sea pertinente)',
 	'optin-survey-answer-whyoptout-hard' => 'Fue muy difícil de usar.',
 	'optin-survey-answer-whyoptout-didntwork' => 'No funcionó apropiadamente.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'No funcionó de manera predecible.',
-	'optin-survey-answer-whyoptout-didntlike-look' => 'No me gustó la manera como lució.',
-	'optin-survey-answer-whyoptout-didntlike-layout' => 'No me gustó las nuevas pestañas y diseño.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'No me gustó su apariencia.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'No me gustaron las nuevas pestañas y diseño.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'No me gustó la nueva barra de herramientas.',
 	'optin-survey-answer-whyoptout-other' => 'Otra razón:',
-	'optin-survey-question-explain' => 'Por favor explica o desarrolla tu respuesta arriba:',
-	'optin-survey-question-techfail' => 'Experimentaste alguna dificultad técnica cuando usaste Beta?',
-	'optin-survey-question-techfail-ifyes' => 'Si es sí, por favor desarrolla o explica:',
-	'optin-survey-question-usedtoolbar' => 'Usaste la nueva barra de herramientas expandible para editar una página?',
-	'optin-survey-question-usedtoolbar-ifyes' => 'Si es sí, qué te gustó de él? qué te disgustó de él?',
-	'optin-survey-question-usedtoolbar-ifno' => 'En caso negativo, ¿por qué?...  ¿Lo haría en el futuro? Por favor, explíquelo.',
-	'optin-survey-question-different' => 'Qué podríamos haber hecho diferente para que te mantuvieses usando nuestra Beta?',
-	'optin-survey-question-feedback' => 'Por favor déjanos saber acercar de algunos otros comentarios, inquietudes u opiniones que tengas para nosotros - toda retroalimentación es útil!:',
+	'optin-survey-question-explain' => 'Por favor, explique o desarrolle su respuesta arriba:',
+	'optin-survey-question-techfail' => '¿Experimentó usted alguna dificultad técnica cuando usó Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Si la respuesta es sí, por favor, desarrolle o explíquelo:',
+	'optin-survey-question-usedtoolbar' => '¿Usó usted la nueva barra de herramientas expandible para editar una página?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Si la respuesta es sí, ¿qué le gustó de él?, ¿qué le disgustó?',
+	'optin-survey-question-usedtoolbar-ifno' => 'En caso negativo, ¿por qué no?...  ¿Lo haría en el futuro? Por favor, explíquelo.',
+	'optin-survey-question-different' => '¿Qué podríamos haber hecho diferente para que continuase usted usando nuestra Beta?',
+	'optin-survey-question-feedback' => 'Por favor, háganos conocer cualquier otro comentario, inquietud u opinión que tenga para nosotros - ¡toda retroalimentación es útil!:',
 	'optin-survey-question-browser' => '¿Qué navegador utiliza?',
 	'optin-survey-answer-browser-other' => 'Otro navegador:',
 	'optin-survey-question-os' => '¿Qué sistema operativo utiliza?',
 	'optin-survey-answer-os-other' => 'Otro sistema operativo:',
 	'optin-survey-question-res' => '¿Cuál es la resolución de su pantalla?',
-	'optin-survey-question-changes' => '¿Qué cambios desearía ver en Beta en el futuro? (por favor seleccione todo lo que coincida)',
-	'optin-survey-answer-changes-nav' => 'Hace la navegación general del sitio mas fácil de usar.',
-	'optin-survey-answer-changes-edittools' => 'Aumenta y mejora las herramientas de edición.',
-	'optin-survey-answer-changes-upload' => 'Mejorar contenido y cargas de medios.',
-	'optin-survey-answer-changes-richtext' => 'Herramientas de edición similares a los editores de texto enriquecido.',
-	'optin-survey-answer-changes-lookfeel' => 'Actualiza la interfaz del sitio.',
-	'optin-survey-answer-changes-predictability' => 'Mejorar predictibilidad de desempeño',
-	'optin-survey-answer-changes-custom' => 'Permite una gran personalización del usuario.',
+	'optin-survey-question-changes' => '¿Qué cambios desearía ver en Beta en el futuro? (Por favor, seleccione todo lo que coincida)',
+	'optin-survey-answer-changes-nav' => 'Hacer la navegación general del sitio mas fácil de usar.',
+	'optin-survey-answer-changes-edittools' => 'Aumentar y mejorar las herramientas de edición.',
+	'optin-survey-answer-changes-upload' => 'Mejorar el contenido y las subidas de material multimedia.',
+	'optin-survey-answer-changes-richtext' => 'Desarrollar herramientas de edición similares a los editores de texto enriquecido.',
+	'optin-survey-answer-changes-lookfeel' => 'Actualizar la apariencia y funcionalidad de la interfaz del sitio.',
+	'optin-survey-answer-changes-predictability' => 'Mejorar la predictibilidad del comportamiento.',
+	'optin-survey-answer-changes-custom' => 'Permitir una mayor personalización por parte del usuario.',
 	'optin-survey-answer-changes-other' => 'Otro:',
 	'optin-improvements' => '== Qué ha sido mejorado? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;Navegación mejorada
-El nuevo sistema de navegación hace más fácil ver en donde estás y qué estás haciendo, también como dónde puedes ir y cómo ir. Con la tabla de búsqueda localizada en la esquina superior izquierda la búsqueda es más fácil de encontrar y más rápida de usar.
+El nuevo sistema de navegación le hace ver más fácilmente dónde está y qué está haciendo, así como dónde puede ir y cómo ir. Con la tabla de búsqueda localizada en la esquina superior izquierda la búsqueda es más fácil de encontrar y más rápida de usar.
 <div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=]]
 ;Mejoras de la barra de herramientas de edición
-Nuevos-y-mejores íconos clarifican la acción de cada herramienta. Secciones expandibles reducen la saturación y mantienen herramientas poco usadas a solo un clic de distancia.
-La sección de ayuda provee acceso rápido a una referencia para usos comunes del lenguaje wiki.
+Nuevos y mejores iconos clarifican la acción de cada herramienta. Secciones expandibles reducen la saturación y mantienen herramientas poco usadas a solo un clic de distancia.
+La sección de ayuda proporciona acceso rápido a una referencia para usos comunes del lenguaje wiki.
 <div style="clear:both;"></div>
 == Cómo involucrarse ==
-Para aprender más acerca del proyecto o involucrarse, por favor visita la [http://usability.wikimedia.org Iniciativa de usabilidad de wiki].  Allí encontrarás información acerca de nuestra subvención, investigación, diseño + desarrollo, y versiones.  Para preguntar o dejar retroalimentación general, por favor utiliza nuestra [http://usability.wikimedia.org/wiki/Talk:Prototype página de discusión prototipo].  Para plantear temas particulares, por favor usa las páginas de discusión específicas.  Si encuentras errores, por favor deja tus comentarios en la [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discusión versión Acai] o usando [https://bugzilla.wikimedia.org Bugzilla].
+Para aprender más acerca del proyecto o involucrarse, por favor visite la [http://usability.wikimedia.org Iniciativa de usabilidad de wiki].  Allí encontrará información acerca de nuestra subvención, investigación, diseño + desarrollo, y versiones.  Para preguntar o dejar retroalimentación en general, por favor utilice nuestra [http://usability.wikimedia.org/wiki/Talk:Prototype página de discusión del prototipo].  Para plantear temas particulares, por favor use las páginas de discusión específicas.  Si encuentra errores, por favor deje sus comentarios en la [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discusión de la versión Acai] o usando [https://bugzilla.wikimedia.org Bugzilla].
 
-Gracias, y esperamos saber pronto de tí!',
+¡Gracias, y esperamos saber pronto de usted!',
 );
 
 /** Estonian (Eesti)
@@ -1803,6 +1804,17 @@ Go meh iber s Projäkt erfahre oder sälber mitmache, git s im [http://usability
 Dankschen vilmol, mir freien is uf Dyy Ruckmäldig!',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'optin-title-optedout' => 'Prowal Beta',
+	'optin-title-optedin' => 'Faagail Beta',
+	'optin-submit-feedback' => 'Cur aaveaghey',
+	'optin-survey-yes' => 'Verrym',
+	'optin-survey-no' => 'Cha derrym',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -1818,8 +1830,8 @@ $messages['he'] = array(
 	'optin-needlogin' => 'עליכם [$1 להיכנס לחשבון] כדי להירשם לגרסת הבטא.',
 	'optin-intro' => 'יוזמת השימוש של ויקיפדיה עבדה ועובדת קשה כדי לשפר את השימושיות של ויקיפדיה.
 האם תרצו לנסות את גרסת הבטא שלנו?',
-	'optin-feedback-intro' => "תודה לכם על שניסיתם את גרסת הבטא.
-נשמח לדעת מה אתם חושבים על הממשק החדש שלנו, לכן נעריך זאת אם תמלאו את השאלון (האופציונלי) שלהלן.",
+	'optin-feedback-intro' => 'תודה לכם על שניסיתם את גרסת הבטא.
+נשמח לדעת מה אתם חושבים על הממשק החדש שלנו, לכן נעריך זאת אם תמלאו את השאלון (האופציונלי) שלהלן.',
 	'optin-feedback-back' => 'אם אינכם רוצים למלא את השאלון, באפשרותכם לחזור ל$1.',
 	'optin-success-in' => 'כעת אתם מנסים את גרסת הבטא.
 באפשרותכם לעזוב אותה בכל עת באמצעות לחיצה על הקישור "{{int:optin-leave}}" בראש הדף.',
@@ -1836,8 +1848,8 @@ $messages['he'] = array(
 	'optin-submit-feedback' => 'מתן משוב',
 	'optin-survey-yes' => 'כן',
 	'optin-survey-no' => 'לא',
-	'optin-survey-intro' => "תודה לכם על שניסיתם את גרסת הבטא.
-אנו רוצים לדעת מה אתם חושבים על הממשק החדש שלנו, לכן נעריך זאת אם תמלאו את הסקר האופציונלי שלהלן לפני שתלחצו על הכפתור \"[[#leave|{{int:optin-submit-out}}]]\".",
+	'optin-survey-intro' => 'תודה לכם על שניסיתם את גרסת הבטא.
+אנו רוצים לדעת מה אתם חושבים על הממשק החדש שלנו, לכן נעריך זאת אם תמלאו את הסקר האופציונלי שלהלן לפני שתלחצו על הכפתור "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'מה אהבתם בגרסת הבטא? מה לא אהבתם בגרסת הבטא?',
 	'optin-survey-question-whyoptout' => 'למה אתם עוזבים את גרסת הבטא? (אנא בחרו את כל האפשרויות המתאימות.)',
 	'optin-survey-answer-whyoptout-hard' => 'הוא היה קשה מדי לשימוש.',
@@ -1869,21 +1881,21 @@ $messages['he'] = array(
 	'optin-survey-answer-changes-predictability' => 'שיפור אפשרויות החיזוי של הביצועים.',
 	'optin-survey-answer-changes-custom' => 'הוספת אפשרויות רבות יותר להתאמה אישית.',
 	'optin-survey-answer-changes-other' => 'אחר:',
-	'optin-improvements' => "== מה השתפר? ==
+	'optin-improvements' => '== מה השתפר? ==
 [[File:UsabilityNavigation.png|left|link=]]
 ;ניווט משופר
 מערכת הניווט החדשה מקלה עליכם לראות איפה אתם ומה אתם עושים, וגם לאן אתם יכולים להגיע ואיך לעשות זאת. כאשר תיבת החיפוש ממוקמת בפינה השמאלית העליונה, קל יותר למצוא את אפשרות החיפוש והשימוש בה מהיר יותר.
-<div style=\"clear:both;\"></div>
+<div style="clear:both;"></div>
 
 [[File:UsabilityToolbar.png|left|link=]]
 ;שיפורים בסרגל העריכה
 סמלים חדשים ומשופרים מבהירים את הפעולה שמבצע כל כלי עריכה. חלקים מתרחבים מקטינים את הבלגן אך מאפשרים לשמור את הכלים שמשתמשים בהם פחות במרחק לחיצה אחת בלבד.
 חלק העזרה מאפשר גישה מהירה לתיעוד רוב השימושים הנפוצים של תחביר ויקי.
-<div style=\"clear:both;\"></div>
+<div style="clear:both;"></div>
 == איך להצטרף ==
 כדי ללמוד עוד על המיזם או כדי להצטרף אליו, אנא בקרו ב[http://usability.wikimedia.org אתר הוויקי של יוזמת השימושיות]. שם תוכלו למצוא את כל המידע על המענק, המחקר, העיצוב והפיתוח, ושחרורי הגרסאות שלנו. כדי לשאול שאלות או להשאיר משוב כללי, אנא השתמשו ב[http://usability.wikimedia.org/wiki/Talk:Prototype דף השיחה על אב הטיפוס] שלנו. כדי לדון בנושאים מסוימים, אנא השתמשו בדפי השיחה המתאימים. אם אתם מוצאים באגים, אנא השאירו את הערותיכם ב[http://usability.wikimedia.org/wiki/Talk:Releases/Acai דף השיחה של הגרסה Acai] או ב[https://bugzilla.wikimedia.org באגזילה].
 
-תודה, ואנחנו מקווים לשמוע מכם!",
+תודה, ואנחנו מקווים לשמוע מכם!',
 );
 
 /** Hindi (हिन्दी)
@@ -2060,11 +2072,13 @@ Dźakujemy so a bychmy so wjeselili wot tebje słyšeć!',
 );
 
 /** Hungarian (Magyar)
+ * @author Bdamokos
  * @author Dani
  * @author Glanthor Reviol
  * @author Hunyadym
  */
 $messages['hu'] = array(
+	'optin' => 'Csatlakozás az Usability Initiative-hez',
 	'optin-desc' => 'Lehetővé teszi a szerkesztőknek a béta verzió kipróbálását, a használhatóság fejlesztése kezdeményezés legfrissebb fejlesztéseivel',
 	'optin-title-optedout' => 'A béta kipróbálása',
 	'optin-title-optedin' => 'Kilépés a bétából',
@@ -2077,7 +2091,12 @@ Szeretnéd kipróbálni a bétánkat?',
 	'optin-feedback-intro' => 'Köszönjük, hogy kipróbáltad a bétát.
 Szeretnénk tudni, hogy mit gondolsz az új felületről, így örülnénk neki, ha kitöltenéd az alábbi kérdőívet.',
 	'optin-feedback-back' => 'Ha nem szeretnéd kitölteni a kérdőívet, visszatérhetsz a(z) $1 lapra.',
+	'optin-success-in' => 'Jelenleg részt veszel a bétatesztben.
+Bármikor elhagyhatod a tesztet az oldal tetején található „{{int:optin-leave}}” linkre kattintva.',
 	'optin-leave-cancel' => 'Ha továbbra is szeretnéd használni a bétát, akkor visszatérhetsz a(z) $1 lapra.',
+	'optin-success-out' => 'Sikeresen elhagytad a bétatesztet.
+Bármikor újra kipróbálhatod a bétaváltozatot a lap tetején található „{{int:optin-try}}” linkre kattintva.',
+	'optin-success-feedback' => 'Köszönjük a visszajelzésed!',
 	'optin-accept-short' => 'Kipróbálom!',
 	'optin-accept-long' => 'A béta kipróbálása',
 	'optin-accept-long-anon' => 'Jelentkezz be, és próbáld ki a bétát',
@@ -2087,12 +2106,38 @@ Szeretnénk tudni, hogy mit gondolsz az új felületről, így örülnénk neki,
 	'optin-submit-feedback' => 'Visszajelzés küldése',
 	'optin-survey-yes' => 'Igen',
 	'optin-survey-no' => 'Nem',
+	'optin-survey-intro' => 'Köszönjük, hogy kipróbálod a bétatesztet!
+Szeretnénk tudni, hogy mit gondolsz az új felületről ezért örülnénk, ha kitöltenéd az alábbi nem kötelező kérdőívet mielőtt a „[[#leave|{{int:optin-submit-out}}]]”-ra kattintanál.',
+	'optin-survey-question-likedislike' => 'Mi tetszett a bétaváltozatban? Mi nem tetszett a bétaváltozatban?',
+	'optin-survey-question-whyoptout' => 'Miért hagyod el a bétatesztet? (Kérlek válaszd ki az összet amely vonatkozik rád.)',
+	'optin-survey-answer-whyoptout-hard' => 'Túl nehéz volt használni.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Nem működött megfelelően.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Nem működött előrejelezhető módon.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Nem tetszik, ahogy kinéz.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Nem tetszenek az új fülek és az elrendezés.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nem tetszik az új szerkesztő-eszköztár.',
 	'optin-survey-answer-whyoptout-other' => 'Más indok:',
+	'optin-survey-question-explain' => 'Kérlek magyarázd meg vagy fejtsd ki a fenti válaszod:',
+	'optin-survey-question-techfail' => 'Tapasztaltál műszaki hibákat a bétateszt használata közben?',
+	'optin-survey-question-techfail-ifyes' => 'Ha igen, kérjük fejtsd ki őket:',
+	'optin-survey-question-usedtoolbar' => 'Használtad az új kinyitható eszköztárat a lapok szerkesztéséhez?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Ha igen, mi tetszett benne? Mi nem tetszett benne?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Ha nem, miért nem? Használod majd a jövőben? Kérjük magyarázd el.',
+	'optin-survey-question-different' => 'Mit tehettünk volna másképpen, hogy folytasd a bétaváltozat használatát?',
+	'optin-survey-question-feedback' => 'Kérlek írd le minden egyéb megjegyzésed, aggodalmad vagy gondolatod számunkra - minden visszajelzés hasznos:',
+	'optin-survey-question-browser' => 'Melyik böngészőt használod?',
 	'optin-survey-answer-browser-other' => 'Más böngésző:',
+	'optin-survey-question-os' => 'Melyik operációs rendszert használod?',
+	'optin-survey-answer-os-other' => 'Egyéb operációs rendszer:',
+	'optin-survey-question-res' => 'Milyen felbontású a monitorod?',
+	'optin-survey-question-changes' => 'Milyen változásokat szeretnél látni a bétaváltozatban a jövőben (válaszd ki az összeset)?',
+	'optin-survey-answer-changes-nav' => 'Tegyétek könnyebben használhatóvá az oldalon való általános navigálást.',
+	'optin-survey-answer-changes-edittools' => 'Bővítsétek és fejlesszétek a szerkesztési eszközöket.',
 	'optin-survey-answer-changes-upload' => 'Tartalom és médiafájlok feltöltésének fejlesztése.',
+	'optin-survey-answer-changes-richtext' => 'Fejlesszetek ki a formázott szöveg szerkesztőkhöz hasonló szerkesztési eszközöket.',
+	'optin-survey-answer-changes-lookfeel' => 'Frissítsétek az oldal kinézetét.',
+	'optin-survey-answer-changes-predictability' => 'Fejlesszétek a teljesítmény előrejelezhetőségét.',
+	'optin-survey-answer-changes-custom' => 'Tegyetek lehetővé nagyobb felhasználói szabadságot a beállításokban.',
 	'optin-survey-answer-changes-other' => 'Más:',
 	'optin-improvements' => '== Mit fejlesztettünk? ==
 [[File:UsabilityNavigation.png|left|link=]]
@@ -2894,12 +2939,12 @@ Mir wiere frou fir ze wëssen wat Dir vun deem neien Interface denkt, dofir wier
 	'optin-survey-answer-changes-custom' => 'Méi en grouss Benotzer-Upassung erlaben.',
 	'optin-survey-answer-changes-other' => 'Anerer:',
 	'optin-improvements' => '== Wat gouf verbessert? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Screenshot vun den neien Navigatiouns-Tabs]]
 ;Erweidert Navigatioun
 Dat neit Navigatiounssystem mécht et net nëmme méi einfacher fir ze gesinn, wou een ass a wat ee mécht, mee e weist och wuer ee goe kann. Mat der Sichbox uewe riets am Eck gëtt d\'Fanne méi einfach a méi séier.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Screenshot vun der erweiderter Ännerungs-Toolbar]]
 ;Verbesserunge vun der Ännerungs-Toolbar
 Nei a verbessert Symboler maachen et méi kloer, watfireng Aktioun hanner all Tool stécht. Abschnitter déi opgeklappt kënne ginn reduzéieren den Duercherneen, während sele benotzten Toolen nëmmen ee Klick ewech sinn.
 Den Abschnitt mat der Hëllef erlaabt e séieren Zougrëff mat déi am dackste benotzte Wikisyntax.
@@ -3067,9 +3112,11 @@ $messages['ml'] = array(
 	'optin-title-justoptedout' => 'ബീറ്റ പരീക്ഷിച്ചു നോക്കുന്നതിനു നന്ദി',
 	'optin-title-feedback' => 'ബീറ്റയെ കുറിച്ചുള്ള അഭിപ്രായം',
 	'optin-needlogin' => 'ബീറ്റ പരീക്ഷിക്കാൻ താങ്കൾ [$1 ലോഗിൻ] ചെയ്യേണ്ടതാണ്.',
+	'optin-intro' => 'വിക്കിപീഡിയയുടെ ഉപയോഗക്ഷമത വർദ്ധിപ്പിക്കാൻ വിക്കിപീഡീയ യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് കഠിനാധ്വാനം ചെയ്യുന്നുണ്ട്.
+താങ്കൾ ബീറ്റ പരീക്ഷിച്ചു നോക്കാൻ ആഗ്രഹിക്കുന്നുവോ?',
 	'optin-feedback-intro' => 'ബീറ്റ പരീക്ഷിക്കുന്നതിനു നന്ദി.
 പുതിയ ദൃശ്യരൂപത്തെക്കുറിച്ച് താങ്കളെന്താണ് കരുതുന്നതെന്നറിയാൻ ഞങ്ങളാഗ്രഹിക്കുന്നു, അതുകൊണ്ട് ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന സർവേയിൽ പങ്കെടുക്കാൻ താത്പര്യപ്പെടുന്നു.',
-	'optin-feedback-back' => 'താങ്കൾക്ക് സർവേയിൽ പങ്കെടുക്കേണ്ടയെങ്കിൽ, $1-ലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
+	'optin-feedback-back' => 'താങ്കൾക്ക് സർവേയിൽ പങ്കെടുക്കേണ്ടയെങ്കിൽ, $1 താളിലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
 	'optin-success-in' => 'താങ്കൾ ഇപ്പോൾ ബീറ്റ പരീക്ഷിക്കുന്നു.
 താളിന്റെ മുകളിലായി കാണുന്ന "{{int:optin-leave}}" എന്ന കണ്ണി ഞെക്കി താങ്കൾക്ക് ഏതൊരു സമയത്തും ഇതൊഴിവാക്കാവുന്നതാണ്.',
 	'optin-leave-cancel' => 'താങ്കൾ ബീറ്റ തുടർന്നും ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, $1-ലേയ്ക്ക് തിരിച്ചു പോകാവുന്നതാണ്.',
@@ -3100,7 +3147,7 @@ $messages['ml'] = array(
 	'optin-survey-question-techfail' => 'ബീറ്റ ഉപയോഗിക്കുമ്പോള്‍ ഏന്തെങ്കിലും സാങ്കേതിക തകരാറുകള്‍ താങ്കള്‍ക്ക് അനുഭവപ്പെട്ടിട്ടുണ്ടോ?',
 	'optin-survey-question-techfail-ifyes' => 'അതെ എങ്കിൽ, ദയവായി വികസിപ്പിക്കുക അല്ലങ്കിൽ വിശദീകരിക്കുക:',
 	'optin-survey-question-usedtoolbar' => 'ഒരു താള്‍ തിരുത്തുവാന്‍ വേണ്ടി വിപുലീകരിക്കാവുന്ന ടൂള്‍ബാര്‍ താങ്കള്‍ ഉപയോഗിച്ചിട്ടുണ്ടോ?',
-	'optin-survey-question-usedtoolbar-ifyes' => 'അതെ എങ്കിൽ, താങ്കൾക്ക് ഇതിൽ എന്താണ് ഇഷ്ടപ്പെട്ടത്? ഇതിൽ എന്താണ് ഇഷ്ടപ്പെടാതെ പോയത്?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'ഉണ്ട് എന്നാണെങ്കിൽ, താങ്കൾക്ക് ഇതിൽ എന്താണ് ഇഷ്ടപ്പെട്ടത്? ഇതിൽ എന്താണ് ഇഷ്ടപ്പെടാതെ പോയത്?',
 	'optin-survey-question-usedtoolbar-ifno' => 'ഇല്ല എങ്കിൽ, എന്തുകൊണ്ട് ഇല്ല? ഭാവിയിലോ? ദയവായി വിശദീകരിക്കുക.',
 	'optin-survey-question-different' => 'താങ്കളെ ബീറ്റയിൽ തന്നെ പിടിച്ചു നിർത്താൻ എന്തെന്തു മാറ്റങ്ങളായിരുന്നു ഞങ്ങൾ വരുത്തേണ്ടിയിരുന്നത്?',
 	'optin-survey-question-feedback' => 'ദയവായി താങ്കളുടെ കുറിപ്പുകളും, ഉത്കണ്ഠകളും, ചിന്തകളും ഞങ്ങളെ അറിയിക്കുക - എല്ലാ അഭിപ്രായങ്ങളും ഉപകാരപ്രദങ്ങളാണ്:',
@@ -3110,6 +3157,27 @@ $messages['ml'] = array(
 	'optin-survey-answer-os-other' => 'മറ്റ് ഓപറേറ്റിങ് സിസ്റ്റം:',
 	'optin-survey-question-res' => 'താങ്കളുടെ സ്ക്രീന്‍ റെസ‌ല്യൂഷന്‍ എന്താണ്?',
 	'optin-survey-question-changes' => 'ഭാവിയിൽ ബീറ്റയിൽ എന്തു മാറ്റങ്ങൾ ഉണ്ടായിരിക്കാൻ താങ്കൾ ആഗ്രഹിക്കുന്നു (ബാധകമാകുന്ന എല്ലാം തിരഞ്ഞെടുക്കുക)?',
+	'optin-survey-answer-changes-nav' => 'സൈറ്റിലെ ആകെ നാവിഗേഷൻ കൂടുതൽ ലളിതമാക്കുക.',
+	'optin-survey-answer-changes-edittools' => 'തിരുത്താനുള്ള ഉപകരണങ്ങൾ വർദ്ധിപ്പിക്കുക, മെച്ചപ്പെടുത്തുക.',
+	'optin-survey-answer-changes-upload' => 'ഉള്ളടക്കവും മീഡിയ അപ്‌‌ലോഡുകളും മെച്ചപ്പെടുത്തുക.',
+	'optin-survey-answer-changes-richtext' => 'റിച്ച് ടെക്സ്റ്റ് എഡിറ്ററുകളിൽ ലഭ്യമായ വിധത്തിലുള്ള തിരുത്തൽ ഉപകരണങ്ങൾ വികസിപ്പിക്കുക.',
+	'optin-survey-answer-changes-lookfeel' => 'സൈറ്റിന്റെ "ദൃശ്യാനുഭവം" കാലാനുസൃതമാക്കുക.',
+	'optin-survey-answer-changes-custom' => 'ഉപയോക്താവിനു ഏറ്റവും കൂടുതൽ സജ്ജീകരിച്ചെടുക്കാവുന്ന വിധത്തിലാക്കുക.',
+	'optin-survey-answer-changes-other' => 'കൂടുതൽ:',
+	'optin-improvements' => '==എന്താണു മെച്ചപ്പെടുത്തിയത്?==
+[[File:UsabilityNavigation.png|left|link=]]
+;മെച്ചപ്പെട്ട നാവിഗേഷൻ
+പുതിയ നാവിഗേഷൻ സിസ്റ്റം താങ്കൾ എവിടെയെന്നും, എന്താണു ചെയ്യുന്നതെന്നും ലളിതമായി കാണിച്ചു തരുന്നു, അതുപോലെ എങ്ങിനെ മറ്റൊരിടത്തേയ്ക്ക് പോകാം എന്നും അതിലുണ്ട്. പുതിയതായി തിരച്ചിൽ പെട്ടി മുകളിൽ വലത്തു മൂലയിലായി സ്ഥാപിച്ചിരിക്കുന്നു. തിരച്ചിൽ ഉപയൊഗിച്ച് കണ്ടുപിടിക്കലും ഉപയോഗിക്കലും ലളിതമാകും.
+<div style="clear:both;"></div>
+
+[[File:UsabilityToolbar.png|left|link=]]
+;തിരുത്താനുള്ള റ്റൂൾബാറിൽ വരുത്തിയ മെച്ചപ്പെടുത്തലുകൾ
+പുതിയ മെച്ചപ്പെടുത്തിയ ഐകോണുകൾ, ഓരോ ഉപകരണവും ചെയ്യുന്നതെന്താണെന്നു വ്യക്തമായി വെളിപ്പെടുത്തുന്നു. വികസിപ്പിക്കാവുന്ന ഭാഗങ്ങൾ തുടർച്ചയായി ഉപയോഗിക്കാത്തവ മറച്ചു വെയ്ക്കുന്നു, അതേ സമയം വീണ്ടും വീണ്ടും ഉപയോഗിക്കുന്നവ ഒരൊറ്റ ക്ലിക്കിൽ തന്നെ ലഭ്യവുമാണ്.
+<div style="clear:both;"></div>
+== എപ്രകാരം പങ്കെടുക്കാം ==
+പദ്ധതിയെക്കുറിച്ച് കൂടുതൽ അറിയാനും, പങ്കാളിത്ത സാധ്യത ആരായാനും ദയവായി [http://usability.wikimedia.org യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വിക്കി] സന്ദർശിക്കുക. അവിടെ ഞങ്ങളുടെ പണസ്രോതസ്സുകൾ, ഗവേഷണങ്ങൾ, രൂപകല്പനയും + വികസിപ്പിക്കലും, പതിപ്പുകൾ തുടങ്ങിയവയുടെ വിവരങ്ങൾ ലഭ്യമാണ്. ചോദ്യങ്ങൾ ചോദിക്കാനോ, സാധാരണ അഭിപ്രായം അറിയിക്കാനോ ദയവായി ഞങ്ങളുടെ [http://usability.wikimedia.org/wiki/Talk:Prototype പ്രോട്ടോടൈപ്പ് സംവാദം താൾ] ഉപയോഗിക്കുക. എന്തെങ്കിലും പ്രത്യേക കാര്യത്തെ കുറിക്കാൻ ബന്ധപ്പെട്ട സംവാദം താൾ ഉപയോഗിക്കുക. താങ്കൾ ബഗ്ഗ് വല്ലതും കണ്ടെത്തിയാൽ ദയവായി [http://usability.wikimedia.org/wiki/Talk:Releases/Acai അകായ് റിലീസ് സം‌‌വാദം താളിൽ] നൽകുക, അല്ലങ്കിൽ [https://bugzilla.wikimedia.org ബഗ്സില്ല] ഉപയോഗിക്കുക.
+
+നന്ദി, താങ്കളുടെ അഭിപ്രായം അറിയാൻ ഞങ്ങൾ കാത്തിരിക്കുന്നു!',
 );
 
 /** Mongolian (Монгол)
@@ -3452,13 +3520,13 @@ Geef alstublieft een toelichting.',
 	'optin-survey-answer-changes-custom' => 'Meer gebruikersaanpassingen mogelijk maken.',
 	'optin-survey-answer-changes-other' => 'Overig:',
 	'optin-improvements' => '== Wat is er verbeterd?==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Schermafbeelding van de nieuwe navigatietabbladen]]
 ;Verbeterde navigatie
 Het nieuwe navigatiesysteem maakt het makkelijker om te zien waar u bent en op wat u doet, als ook waar u heen kunt gaan en hoe er te komen.
 Met het zoekvak in de rechterbovenhoek is de zoekfunctie makkelijker te vinden en sneller te gebruiken.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Schermafbeelding van de verbeterde bewerkingswerkbalk]]
 ;Verbeterde bewerkingswerkbalk
 Nieuwe en verbeterde pictogrammen maken het duidelijker wat ieder hulpmiddel doet.
 Uitklapbare onderdelen verminderen een rommelig uiterlijk, terwijl minder vaak gebruikte functies wel bereikbaar blijven.

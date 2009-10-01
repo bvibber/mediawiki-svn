@@ -213,6 +213,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dalton2
  * @author Imre
  * @author Locos epraix
  * @author Toliño
@@ -223,7 +224,7 @@ $messages['es'] = array(
 	'optin-leave' => 'Abandonar Beta',
 	'tooltip-pt-optin-leave' => 'Desactivar nuevas características',
 	'optin-feedback' => 'Retroalimentación de Beta',
-	'tooltip-pt-optin-feedback' => 'Proveer retroalimentación acerca de su experiencia sobre las nuevas funcionalidades',
+	'tooltip-pt-optin-feedback' => 'Proporcionar retroalimentación acerca de su experiencia sobre las nuevas funcionalidades',
 );
 
 /** Estonian (Eesti)
@@ -313,6 +314,13 @@ $messages['gsw'] = array(
 	'tooltip-pt-optin-leave' => 'Di neje Funktione abstelle',
 	'optin-feedback' => 'Ruckmäldig gee',
 	'tooltip-pt-optin-feedback' => 'Gib Ruckmäldige iber Dyni Erfahrige mit dr neje Funktione',
+);
+
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'optin-try' => 'Prowal Beta',
 );
 
 /** Hebrew (עברית)
@@ -677,8 +685,11 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'optin-try' => 'Pruève Beta',
+	'tooltip-pt-optin-try' => 'Pruève le funziune nuève',
 	'optin-leave' => 'Lasse Beta',
+	'tooltip-pt-optin-leave' => 'Stute le funziune nuève',
 	'optin-feedback' => 'Segnale a Beta',
+	'tooltip-pt-optin-feedback' => "Pinze a 'nu feedback sus a l'esperienza toje cu le funziune nuève",
 );
 
 /** Russian (Русский)
