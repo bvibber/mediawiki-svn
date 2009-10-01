@@ -70,7 +70,7 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 			.height( 0 )
 			.width( 0 )
 			.insertBefore( $.wikiEditor.instances[0] );
-		var textarea = $( '<textarea></textarea' )
+		var textarea = $( '<textarea />' )
 			.height( 0 )
 			.appendTo( div )
 			.val( "foo\r\nbar" );

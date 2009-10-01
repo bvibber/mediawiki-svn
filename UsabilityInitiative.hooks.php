@@ -57,26 +57,26 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.autoEllipse.js', 'version' => 2 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipse.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 14 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 8 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 15 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 16 ),
 				// FIXME: jQuery UI doesn't belong here, should move to no_js2
 				// once we figure out how to do jQuery UI properly in JS2 
 				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 36 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 37 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 36 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 37 ),
 			),
 		),
 	);
