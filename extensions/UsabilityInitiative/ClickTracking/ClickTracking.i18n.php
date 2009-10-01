@@ -133,7 +133,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'clicktracking' => 'Heuliañ klikoù an intrudu implijadusted',
 	'clicktracking-desc' => "Heuliañ klikoù, talvezout a ra da heuliañ an darvoudoù na vez ket adkarget ur bajenn d'ho heul",
-	'clicktracking-title' => "Sammad ar c'hlikoù implijerien",
+	'ct-title' => "Sammad ar c'hlikoù implijerien",
 );
 
 /** Bosnian (Bosanski)
