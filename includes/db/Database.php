@@ -498,9 +498,9 @@ abstract class DatabaseBase {
 			$sqlx = substr( $commentedSql, 0, 500 );
 			$sqlx = strtr( $sqlx, "\t\n", '  ' );
 			if ( $isMaster ) {
-				wfDebug( "SQL-master: $sqlx\n" );
+				wfDebugLog( 'db-query-master', "SQL-master: $sqlx\n" );
 			} else {
-				wfDebug( "SQL: $sqlx\n" );
+				wfDebug( 'db-query', "SQL: $sqlx\n" );
 			}
 		}
 
