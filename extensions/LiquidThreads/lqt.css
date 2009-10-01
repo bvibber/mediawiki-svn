@@ -1,0 +1,490 @@
+
+.lqt_watchlist_messages_notice {
+	background-color: #eee;
+	border:           1px solid #ddd;
+	margin:           1em 0;
+	padding:          0.5em 1em;
+
+	display: table;
+	width:   auto;
+}
+
+.lqt_newmessages_section {
+	border-bottom: 0px;
+}
+
+.lqt_undo_mark_as_read {
+	background-color: #f0f0e3;
+	display: table; width: auto;
+}
+
+.lqt_newmessages_read_all_button {
+	padding-top: 0.75em;
+	padding-bottom: 0.75em;
+}
+
+.lqt_header_notice {
+	font-size:   smaller;
+	float:       right;
+	font-weight: bold;
+}
+
+.lqt_header_content {
+	border-bottom: 2px solid #ddd;
+	border-right:  2px solid #ddd;
+	margin:        0;
+	margin-top:    0.5em;
+	margin-bottom: 1.5em;
+	padding:       0;
+
+	float: left;
+	width: 100%;
+}
+
+.lqt_header_commands {
+	float:      right;
+	clear:      both;
+	list-style: none;
+	margin:     0;
+	margin-top: 0.5em;
+	font-size: 90%;
+}
+
+.lqt_header_commands li {
+	display:       inline;
+	padding-right: 0.6em;
+	font-weight:   bold;
+}
+
+.lqt_thread_show_summary {
+	margin-left:   1em;
+	margin-bottom: 0.5em;
+}
+
+.lqt_thread_permalink_summary {
+	margin-right: 12em;
+}
+
+.lqt_thread_permalink_summary_body {
+	background-color: #eee;
+	border:           1px solid #ddd;
+	clear:            both;
+	padding-left:     1em;
+	padding-right:    1em;
+	margin:           2em 1em 1em 1em;
+}
+
+.lqt_thread_permalink_summary_title {
+	float:       left;
+	margin-left: 1em;
+	font-weight: bold;
+}
+
+.lqt_thread_permalink_summary_edit {
+	float:        right;
+	margin-right: 1em;
+	font-weight:  normal;
+	font-size:    smaller;
+}
+
+.lqt_hidden {
+	display: none;
+}
+
+.lqt_post_changed_by_history {
+	padding: 0.5em !important;
+	background-color: #eeeeee;
+	border:           solid 1pt #66aaff;
+	display:          table;
+}
+
+.lqt_post_new_message {
+	padding: 0.5em !important;
+	background-color: #eeeeee !important;
+	border:           solid 1pt #66aaff;
+	display:          table;
+	width:            auto;
+}
+
+.lqt_history_info {
+	padding:          0.75em 1.5em;
+	margin-bottom:    1em;
+	background-color: #eeeeee;
+	border:           solid 1pt #66aaff;
+	text-align: center;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.lqt_threadlevel_commands {
+	/* shift up to be in line with the h2. */
+	position:      relative;
+	top:           -2.9em;
+	margin-bottom: -2.9em;
+
+	float: right;
+
+	color:     #777;
+}
+
+.lqt_threadlevel_commands li {
+	display:         inline;
+	list-style-type: none;
+	padding-right:   0.6em;
+}
+
+#lqt_subject_field {
+	margin-top:    0.7em;
+	margin-bottom: 0.5em;
+	width:         80%;
+}
+
+li#ca-nstab-thread {
+	/* from #ca-talk */
+	margin-right: 1.6em;
+}
+
+.lqt_view_options  {
+	padding: 0.2em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	/*float: left;*/
+	display: inline-block;
+}
+
+.lqt_go_sort {
+	font-weight:bold;
+}
+
+.lqt_rc_blockquote {
+	font-style: italic;
+	margin: 0.5em 1em;
+}
+
+.lqt_rc_ellipsis {
+	font-style: normal;
+	font-weight: bold;
+}
+
+.lqt_rc_author_notice_others {
+	color: #cd9800;
+}
+
+.lqt_toc {
+	width: 80%;
+	border-collapse: collapse;
+}
+
+.lqt_toc th {
+	border-bottom: 1px solid #000000;
+}
+
+.lqt_toc td,.lqt_toc th {
+	margin: 0;
+	padding: 0.2em;
+	text-align: left;
+}
+
+.lqt_toc td {
+	border-bottom: 1px solid #aaaaaa;
+}
+
+.lqt-newmessages-left {
+	padding-right: 1em;
+	vertical-align: top;
+	padding-top: 1em;
+}
+
+.lqt-thread-toolbar-info > span {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.lqt-thread-toolbar-signature {
+	padding-left: 0 !important;
+}
+
+.lqt-thread-toolbar-author {
+	font-weight: bold;
+}
+
+.lqt-thread-toolbar-edited-author {
+	font-weight: bold;
+}
+
+.lqt-thread-toolbar-edited-others {
+	font-weight: bold;
+	color: #aa8800;
+}
+
+.lqt-command-icon {
+	height: 1.25em;
+	line-height: 1.25em;
+	background-position: center left;
+	background-repeat: no-repeat;
+	display: inline;
+}
+
+li.lqt-command-reply {
+	text-align: right;
+}
+
+.lqt-thread-actions-trigger {
+	padding: 0.5em;
+	margin-top: 8px;
+	border: 1px transparent solid;
+	color: #002BB8;
+}
+
+.lqt-thread-toolbar-menu ul {
+	display: none;
+	position: absolute;
+	right: 0;
+	left: auto;
+	background-color: white;
+	border: solid 1px silver;
+	margin-right: 1px;
+	margin-left: 10px;
+	margin-top: 5px;
+	list-style: none;
+	padding: 0;
+	z-index: 10;
+	margin-top: 8px;
+
+}
+
+.lqt-thread-toolbar-command-list li {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	margin-top:      0;
+	margin-bottom:   0;
+	list-style-type: none;
+	list-style-image: none;
+	display: block;
+}
+
+.lqt-thread-permalink {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.lqt-header-quote {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.lqt-thread-actions-icon {
+	background-image: url('icons/arrow-down-icon.png');
+	background-position: center-bottom;
+	background-repeat: no-repeat;
+	height: 80%;
+	width: 1em;
+	height: 2em;
+	padding-bottom: 0.2em;
+	padding-left: 26px;
+}
+
+.lqt-talkpage-search {
+	/*float: left;*/
+	display: inline-block;
+}
+
+.lqt-talkpage-search {
+	padding: 0.2em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.lqt-talkpage-header {
+	border: 1px solid #ddd;
+	clear: both;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+div.lqt-post-sep {
+	height: 1px;
+	padding: 0;
+	margin: 0;
+	background-image: url(images/break.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+	clear: both;
+}
+
+.lqt-thread-first > .lqt-post-wrapper {
+	background-image: url(images/vertical-fade.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: top left;
+}
+
+.lqt-thread-replies {
+	margin-left: 2em;
+}
+
+.lqt-thread-topmost,
+.lqt-thread-replies {
+	background-image: url(images/edge.png);
+	background-repeat: repeat-y;
+	background-position: left;
+}
+
+.lqt-replies-finish {
+	background-image: url(images/edge.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+.lqt-replies-finish > div {
+	background-image: url(images/corner.png);
+	background-repeat: no-repeat;
+	background-position: bottom left;
+}
+
+.lqt-post-wrapper {
+	padding: 0.5em;
+}
+
+.lqt-thread-info-panel {
+	float: right;
+}
+
+.lqt-thread-toolbar-timestamp {
+	color: silver;
+}
+
+.lqt-thread-toolbar {
+	position: absolute;
+	right: 0.5em;
+	background-image: url(images/box-c.png);
+}
+
+div.lqt-thread-toolbar-box-bl {
+	background-image: url(images/box-bl.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+div.lqt-thread-toolbar-box-br {
+	background-image: url(images/box-br.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+div.lqt-thread-toolbar-box-tr {
+	background-image: url(images/box-tr.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+	padding-bottom: 8px;
+}
+div.lqt-thread-toolbar-box-tl {
+	background-image: url(images/box-tl.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	padding-right: 8px;
+}
+
+.lqt-thread-toolbar-commands > .lqt-command > a {
+	height: 1.25em;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.lqt-thread-toolbar-commands {
+	height: 30px;
+}
+
+.lqt-command-reply {
+	margin-right: 8px;
+}
+
+.lqt-thread-toolbar .lqt-command > a {
+	display: block;
+}
+
+.lqt-thread-toolbar-commands > .lqt-command-edit a {
+	background-image: url(icons/edit.png);
+	padding-left: 26px;
+}
+
+.lqt-thread-toolbar-commands > .lqt-command-reply a {
+	background-image: url(icons/reply.png);
+	background-position: left;
+	padding-left: 26px;
+	margin-left: 8px;
+}
+
+.lqt-command-quote a {
+	background-image: url(icons/quote.png);
+	margin-left: 8px;
+	padding-left: 26px;
+	background-position: left center !important;
+}
+
+.lqt-command-merge-to {
+	margin-left: 8px;
+}
+
+.lqt-command-link a {
+	background-image: url(icons/link.png) !important;
+	padding-left: 26px;
+}
+
+ul.lqt-thread-toolbar-commands {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	line-height: 1em;
+}
+
+.lqt-thread-toolbar-commands > .lqt-command,
+.lqt-thread-toolbar-menu {
+	float: left;
+}
+
+.lqt-command {
+	margin-top: 8px;
+	padding: 0;
+}
+
+.lqt-thread-toolbar * {
+	text-decoration: none !important;
+}
+
+.lqt_start_discussion {
+/*	float: left;*/
+	font-weight: bold;
+}
+
+.lqt-updated-notification {
+	text-align: center;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding: 1em;
+	font-weight: bold;
+	border: 1px solid #dddddd;
+	background-color: #eeeeee;
+}
+
+.lqt-edit-form {
+	margin-top: 1em;
+}
+
+.lqt-show-replies,
+.lqt-show-more-posts{
+	margin-left: 2em;
+	font-size: 120%;
+}
+
+.lqt-post-sep,
+.lqt-replies-finish {
+	clear: both;
+}
+
+table.lqt-new-messages {
+	width: 100%;
+}
+
+.mw-lqt-newmessages-left {
+	width: 10em	;
+}
