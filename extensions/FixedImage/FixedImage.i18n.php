@@ -130,6 +130,13 @@ $messages['dsb'] = array(
 	'fixedimage-desc' => 'Pśidawa toflicku <tt><nowiki><fundraising></nowiki></tt> ako wobraz',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'fixedimage-desc' => 'Προσθέτει την ετικέτα <tt><nowiki><fundraising></nowiki></tt> ως εικόνα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

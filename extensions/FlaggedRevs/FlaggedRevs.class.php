@@ -644,7 +644,7 @@ class FlaggedRevs {
 			# Get parsed stable version
 			$anon = new User(); // anon cache most likely to exist
 			$stableOutput = self::getPageCache( $article, $anon );
-			if( $stableOutput == false && $wgUser->getId() )
+			if( $stableOutput === false && $wgUser->getId() )
 				$stableOutput = self::getPageCache( $article, $wgUser );
 			# Regenerate the parser output as needed...
 			if( $stableOutput == false ) {
@@ -655,6 +655,7 @@ class FlaggedRevs {
 	   		}
 		}
 		if( is_null($currentOutput) || !isset($currentOutput->fr_newestTemplateID) ) {
+			global $wgParser;
 			# Get parsed current version
 			$parserCache = ParserCache::singleton();
 			$currentOutput = false;
@@ -663,7 +664,7 @@ class FlaggedRevs {
 			# the current must also be new to avoid sync goofs.
 			if( !isset($text) ) {
 				$currentOutput = $parserCache->get( $article, $anon );
-				if( $currentOutput == false && $wgUser->getId() )
+				if( $currentOutput === false && $wgUser->getId() )
 					$currentOutput = $parserCache->get( $article, $wgUser );
 			}
 			# Regenerate the parser output as needed...
@@ -1122,26 +1123,21 @@ class FlaggedRevs {
 	 * @returns array (string,string)
 	 */
 	public static function markHistoryRow( $title, $row ) {
-		global $wgUser;
 		if( !isset($row->fr_quality) ) {
 			return array("",""); // not reviewed
 		}
 		$css = FlaggedRevsXML::getQualityColor( $row->fr_quality );
-		if( $row->rev_deleted & Revision::DELETED_USER ) {
-			$link = "";
+		wfLoadExtensionMessages( 'FlaggedRevs' );
+		$user = User::whois( $row->fr_user ); // FIXME: o(N)
+		$flags = explode(',',$row->fr_flags);
+		if( in_array('auto',$flags) ) {
+			$msg = 'hist-autoreviewed';
 		} else {
-			wfLoadExtensionMessages( 'FlaggedRevs' );
-			$user = User::whois( $row->fr_user ); // FIXME: o(N)
-			$flags = explode(',',$row->fr_flags);
-			if( in_array('auto',$flags) ) {
-				$msg = 'hist-autoreviewed';
-			} else {
-				$msg = ($row->fr_quality >= 1) ? 'hist-quality-user' : 'hist-stable-user';
-			}
-			$st = $title->getPrefixedDBkey();
-			$link = "<span class='fr-$msg plainlinks'>[" .
-				wfMsgExt($msg,array('parseinline'),$st,$row->rev_id,$user) . "]</span>";
+			$msg = ($row->fr_quality >= 1) ? 'hist-quality-user' : 'hist-stable-user';
 		}
+		$st = $title->getPrefixedDBkey();
+		$link = "<span class='fr-$msg plainlinks'>[" .
+			wfMsgExt($msg,array('parseinline'),$st,$row->rev_id,$user) . "]</span>";
 		return array($link,$css);
 	}
 

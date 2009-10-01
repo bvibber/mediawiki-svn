@@ -436,15 +436,16 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Samat
  */
 $messages['hu'] = array(
-	'stableversions' => 'Megjelölt lapváltozatok',
-	'stableversions-leg1' => 'Oldal jelölt lapváltozatainak listája',
+	'stableversions' => 'Stabil változatok megjelenítése',
+	'stableversions-leg1' => 'Oldal ellenőrzött változatainak listája',
 	'stableversions-page' => 'A lap címe:',
-	'stableversions-none' => 'A(z) „[[:$1]]” nem rendelkezik jelölt lapváltozatokkal',
-	'stableversions-list' => 'A(z) „[[:$1]]” következő változatai lettek megjelölve:',
-	'stableversions-review' => 'megjelölte $2, <i>$1</i>-kor',
+	'stableversions-none' => 'A(z) „[[:$1]]” lapnak nincsenek ellenőrzött változatai.',
+	'stableversions-list' => 'Alább a(z) „[[:$1]]” lap azon {{PLURAL:$2|változata látható|változatai láthatóak}}, {{PLURAL:$2|amelyet|amelyeket}} ellenőriztek:',
+	'stableversions-review' => 'Ellenőrizte $2, <i>$1</i>-kor',
 );
 
 /** Interlingua (Interlingua)
@@ -658,12 +659,13 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'stableversions' => 'Lihat versi-versi stabil',
-	'stableversions-leg1' => 'Papar senarai versi yang telah diperiksa bagi sesebuah laman',
-	'stableversions-page' => 'Nama laman:',
-	'stableversions-none' => '"[[:$1]]" tidak mempunyai semakan yang telah diperiksa.',
+	'stableversions-leg1' => 'Senaraikan semakan tersemak bagi sesebuah halaman',
+	'stableversions-page' => 'Nama halaman:',
+	'stableversions-none' => '"[[:$1]]" tidak mempunyai semakan tersemak.',
 	'stableversions-list' => 'Yang berikut ialah senarai semakan yang telah diperiksa bagi laman [[:$1]]',
 	'stableversions-review' => 'Diperiksa pada <i>$1</i> oleh $2',
 );
@@ -857,7 +859,7 @@ $messages['sah'] = array(
 	'stableversions-leg1' => 'Сирэй ырытыллыбыт торумнарын испииһэгэ',
 	'stableversions-page' => 'Сирэй аата:',
 	'stableversions-none' => '"[[:$1]]" көрүллүбүт/бэрэбиэркэлэммит торумнара суох.',
-	'stableversions-list' => 'Сирэй бу "[[:$1]]" торумнара ырытыллыбыттар:',
+	'stableversions-list' => '"[[:$1]]" сирэй {{PLURAL:$2|бу барыла ырытыллыбыт|бу барыллара ырытыллыбыттар}}:',
 	'stableversions-review' => '$2 кыттааччы ырыппыт <i>$1</i>',
 );
 

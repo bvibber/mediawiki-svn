@@ -106,11 +106,12 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Reaperman
  */
 $messages['cs'] = array(
 	'unstablepages' => 'Nestabilní stránky',
 	'unstablepages-stable' => 'stabilní verze',
-	'unstablepages-text' => 'Toto je seznam stránke, které byly ručně nastaveny, aby se zobrazovala jejich verze návrhu jako standardní stránka s obsahem pro čtenáře.',
+	'unstablepages-text' => 'Toto je seznam stránek, které byly ručně nastaveny, aby se zobrazovala jejich verze návrhu jako standardní stránka s obsahem pro čtenáře.',
 	'unstablepages-none' => 'Tento seznam neobsahuje žádné stránky',
 	'unstablepages-config' => 'Nastavení',
 );
@@ -294,10 +295,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'unstablepages' => 'Rögzítetlen lapok',
-	'unstablepages-stable' => 'rögzített változat',
+	'unstablepages' => 'Nem stabil lapok',
+	'unstablepages-stable' => 'stabil változat',
 	'unstablepages-text' => 'Lent azon lapok listája található, amelyeknél külön be lett állítva, hogy az olvasók számára mindig a legutolsó változat jelenjen meg.',
 	'unstablepages-none' => 'Nincsenek lapok a listában',
 	'unstablepages-config' => 'beállítás',
@@ -420,6 +422,16 @@ $messages['ml'] = array(
 	'unstablepages-config' => 'ക്രമീകരണങ്ങള്‍',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'unstablepages' => 'Halaman tidak stabil',
+	'unstablepages-stable' => 'versi stabil',
+	'unstablepages-none' => 'Tiada halaman dalam senarai ini',
+	'unstablepages-config' => 'Tatarajah',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -539,6 +551,16 @@ $messages['ru'] = array(
 	'unstablepages-text' => 'Ниже приведён список страниц, для которых вручную установлена настройка показывать черновую версию по умолчанию.',
 	'unstablepages-none' => 'В данном списке нет страниц',
 	'unstablepages-config' => 'Настройка',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'unstablepages' => 'Бигэргэтиллибэтэх барыллар',
+	'unstablepages-stable' => 'бигэ барыл',
+	'unstablepages-text' => 'Манна ыстатыйа харатын көрдөрөргө диэн туруоруулаах ыстатыйалар тиһиктэрэ бэриллэр.',
+	'unstablepages-none' => 'Бу тиһиккэ сирэйдэр суохтар',
 );
 
 /** Slovak (Slovenčina)

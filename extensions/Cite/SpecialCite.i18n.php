@@ -8,12 +8,13 @@
 $messages = array();
 
 $messages['en'] = array(
-	'cite_article_desc' => 'Adds a [[Special:Cite|citation]] special page and toolbox link',
-	'cite_article_link' => 'Cite this page',
-	'cite'              => 'Cite',
-	'cite_page'         => 'Page:',
-	'cite_submit'       => 'Cite',
-	'cite_text'         => '', # Do not translate this
+	'cite_article_desc'       => 'Adds a [[Special:Cite|citation]] special page and toolbox link',
+	'cite_article_link'       => 'Cite this page',
+	'cite_article_link_title' => 'Information on how to cite this page',
+	'cite'                    => 'Cite',
+	'cite_page'               => 'Page:',
+	'cite_submit'             => 'Cite',
+	'cite_text'               => '', # Do not translate this
 );
 
 /** Message documentation (Message documentation)
@@ -120,6 +121,13 @@ $messages['ast'] = array(
 	'cite_submit' => 'Citar',
 );
 
+/** Avaric (Авар)
+ * @author Amikeco
+ */
+$messages['av'] = array(
+	'cite_article_link' => 'Гьумер рехсезе',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -171,6 +179,7 @@ $messages['be'] = array(
 $messages['be-tarask'] = array(
 	'cite_article_desc' => 'Дадае спэцыяльную старонку [[Special:Cite|цытаваньня]] і спасылку ў інструмэнтах',
 	'cite_article_link' => 'Цытаваць гэтую старонку',
+	'cite_article_link_title' => 'Інфармацыя пра тое, як цытатаваць гэтую старонку',
 	'cite' => 'Цытаваньне',
 	'cite_page' => 'Старонка:',
 	'cite_submit' => 'Цытаваць',
@@ -211,6 +220,7 @@ $messages['bpy'] = array(
 $messages['br'] = array(
 	'cite_article_desc' => 'Ouzhpennañ a ra ur bajenn dibar [[Special:Cite|arroud]] hag ul liamm er voest ostilhoù',
 	'cite_article_link' => 'Menegiñ ar pennad-mañ',
+	'cite_article_link_title' => 'Titouroù war an doare da venegiñ ar bajenn-mañ',
 	'cite' => 'Menegiñ',
 	'cite_page' => 'Pajenn :',
 	'cite_submit' => 'Menegiñ',
@@ -222,6 +232,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'cite_article_desc' => 'Dodaje posebnu stranicu za [[Special:Cite|citiranje]] i link u alatnoj kutiji',
 	'cite_article_link' => 'Citiraj ovu stranicu',
+	'cite_article_link_title' => 'Informacije kako citirati ovu stranicu',
 	'cite' => 'Citiranje',
 	'cite_page' => 'Stranica:',
 	'cite_submit' => 'Citiraj',
@@ -265,10 +276,12 @@ $messages['co'] = array(
  * @author Beren
  * @author Li-sung
  * @author Martin Kozák
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'cite_article_desc' => 'Přidává speciální stránku [[Special:Cite|Citace]] a odkaz v nabídce nástrojů',
 	'cite_article_link' => 'Citovat stránku',
+	'cite_article_link_title' => 'Informace o tom, jak citovat tuto stránku',
 	'cite' => 'Citace',
 	'cite_page' => 'Článek:',
 	'cite_submit' => 'Citovat',
@@ -309,6 +322,7 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'cite_article_desc' => 'Ergänzt die [[Special:Cite|Zitierhilfe]]-Spezialseite und einen Link im Kasten Werkzeuge',
 	'cite_article_link' => 'Seite zitieren',
+	'cite_article_link_title' => 'Hinweis, wie diese Seite zitiert werden kann',
 	'cite' => 'Zitierhilfe',
 	'cite_page' => 'Seite:',
 	'cite_submit' => 'anzeigen',
@@ -326,6 +340,7 @@ $messages['diq'] = array(
 $messages['dsb'] = array(
 	'cite_article_desc' => 'Pśidawa specialny bok [[Special:Cite|Citěrowańska pomoc]] a link w kašćiku źěłowe rědy',
 	'cite_article_link' => 'Toś ten bok citěrowaś',
+	'cite_article_link_title' => 'Informacije wó tom, kak toś ten bok dajo se citěrowaś',
 	'cite' => 'Citěrowańska pomoc',
 	'cite_page' => 'Bok:',
 	'cite_submit' => 'pokazaś',
@@ -361,6 +376,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Icvav
  * @author Jatrobat
  * @author Muro de Aguas
@@ -369,6 +385,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'cite_article_desc' => 'Añade una página especial para [[Special:Cite|citar la página]] y un enlace en la caja de herramientas.',
 	'cite_article_link' => 'Citar este artículo',
+	'cite_article_link_title' => 'Información de como citar esta página',
 	'cite' => 'Citar',
 	'cite_page' => 'Página:',
 	'cite_submit' => 'Citar',
@@ -447,11 +464,13 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Grondin
  * @author Hégésippe Cormier
+ * @author PieRRoMaN
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'cite_article_desc' => 'Ajoute une page spéciale [[Special:Cite|citation]] et un lien dans la boîte à outils',
 	'cite_article_link' => 'Citer cette page',
+	'cite_article_link_title' => 'Informations sur comment citer cette page',
 	'cite' => 'Citation',
 	'cite_page' => 'Page :',
 	'cite_submit' => 'Citer',
@@ -509,6 +528,7 @@ $messages['ga'] = array(
 $messages['gl'] = array(
 	'cite_article_desc' => 'Engade unha páxina especial de [[Special:Cite|citas]] e unha ligazón na caixa de ferramentas',
 	'cite_article_link' => 'Citar esta páxina',
+	'cite_article_link_title' => 'Información sobre como citar esta páxina',
 	'cite' => 'Citar un artigo',
 	'cite_page' => 'Páxina:',
 	'cite_submit' => 'Citar',
@@ -534,6 +554,7 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'cite_article_desc' => 'Ergänzt d [[Special:Cite|Zitierhilf]]-Spezialsyte un e Gleich im Chaschte Wärchzyyg',
 	'cite_article_link' => 'Die Site zitiere',
+	'cite_article_link_title' => 'Informatione driber, wie mer die Syte cha zitiere',
 	'cite' => 'Zitierhilf',
 	'cite_page' => 'Syte:',
 	'cite_submit' => 'aazeige',
@@ -569,6 +590,7 @@ $messages['haw'] = array(
 $messages['he'] = array(
 	'cite_article_desc' => 'הוספת דף מיוחד וקישור בתיבת הכלים ל[[Special:Cite|ציטוט]]',
 	'cite_article_link' => 'ציטוט דף זה',
+	'cite_article_link_title' => 'מידע כיצד לצטט דף זה',
 	'cite' => 'ציטוט',
 	'cite_page' => 'דף:',
 	'cite_submit' => 'ציטוט',
@@ -610,6 +632,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'cite_article_desc' => 'Přidawa specialnu stronu [[Special:Cite|Citowanska pomoc]] a wotkaz w gratowym kašćiku',
 	'cite_article_link' => 'Nastawk citować',
+	'cite_article_link_title' => 'Informacije wo tym, kak tuta strona hodźi so citować',
 	'cite' => 'Citowanska pomoc',
 	'cite_page' => 'Strona:',
 	'cite_submit' => 'pokazać',
@@ -628,11 +651,13 @@ $messages['ht'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
 	'cite_article_desc' => '[[Special:Cite|Hivatkozás-készítő]] speciális lap és link az eszközdobozba',
 	'cite_article_link' => 'Hogyan hivatkozz erre a lapra',
+	'cite_article_link_title' => 'Információk a lap idézésével kapcsolatban',
 	'cite' => 'Hivatkozás',
 	'cite_page' => 'Lap neve:',
 	'cite_submit' => 'Mehet',
@@ -661,11 +686,13 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author IvanLanin
  */
 $messages['id'] = array(
 	'cite_article_desc' => 'Menambahkan halaman istimewa [[Special:Cite|kutipan]] dan pranala pada kotak peralatan',
-	'cite_article_link' => 'Kutip artikel ini',
+	'cite_article_link' => 'Kutip halaman ini',
+	'cite_article_link_title' => 'Informasi tentang bagaimana mengutip halaman ini',
 	'cite' => 'Kutip',
 	'cite_page' => 'Halaman:',
 	'cite_submit' => 'Kutip',
@@ -728,6 +755,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'cite_article_desc' => '[[Special:Cite|引用情報のための特別ページ]]とツールボックスからのリンクを追加する',
 	'cite_article_link' => 'この項目を引用する',
+	'cite_article_link_title' => 'このページの引用の仕方',
 	'cite' => '引用',
 	'cite_page' => 'ページ:',
 	'cite_submit' => '引用',
@@ -827,6 +855,7 @@ $messages['krj'] = array(
 $messages['ksh'] = array(
 	'cite_article_desc' => 'Brenk de Sondersigg „[[Special:Cite|Ziteere]]“ un ene Link onger „{{int:toolbox}}“.',
 	'cite_article_link' => 'Di Sigk Zitteere',
+	'cite_article_link_title' => 'Enfommazjuhne doh drövver, wi mer heh di Sigg zitteere sullt.',
 	'cite' => 'Zittiere',
 	'cite_page' => 'Sigk:',
 	'cite_submit' => 'Zittėere',
@@ -857,6 +886,7 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'cite_article_desc' => "Setzt eng [[Special:Cite|Zitatioun op dëser Spezialsäit]] bäi an e Link an d'Geschiirkëscht",
 	'cite_article_link' => 'Dës Säit zitéieren',
+	'cite_article_link_title' => 'Informatioune wéi een dës Säit zitéiere kann',
 	'cite' => 'Zitéierhëllef',
 	'cite_page' => 'Säit:',
 	'cite_submit' => 'weisen',
@@ -1045,6 +1075,7 @@ $messages['ne'] = array(
 $messages['nl'] = array(
 	'cite_article_desc' => 'Voegt een [[Special:Cite|speciale pagina]] toe om te citeren, en een verwijzing ernaar in de hulpmiddelen',
 	'cite_article_link' => 'Deze pagina citeren',
+	'cite_article_link_title' => 'Informatie over hoe u deze pagina kunt citeren',
 	'cite' => 'Citeren',
 	'cite_page' => 'Pagina:',
 	'cite_submit' => 'Citeren',
@@ -1094,6 +1125,7 @@ $messages['nso'] = array(
 $messages['oc'] = array(
 	'cite_article_desc' => "Apond una pagina especiala [[Special:Cite|citacion]] e un ligam dins la bóstia d'espleches",
 	'cite_article_link' => 'Citar aqueste article',
+	'cite_article_link_title' => 'Informacions sus cossí citar aquesta pagina',
 	'cite' => 'Citacion',
 	'cite_page' => 'Pagina :',
 	'cite_submit' => 'Citar',
@@ -1143,6 +1175,7 @@ $messages['pfl'] = array(
 $messages['pl'] = array(
 	'cite_article_desc' => 'Dodaje stronę specjalną i guzik w toolbarze edycyjnym do obsługi [[Special:Cite|cytowania]]',
 	'cite_article_link' => 'Odwołanie bibliograficzne',
+	'cite_article_link_title' => 'Informacja o tym jak należy cytować tę stronę',
 	'cite' => 'Cytowanie',
 	'cite_page' => 'Strona:',
 	'cite_submit' => 'stwórz wpis bibliograficzny',
@@ -1155,6 +1188,7 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'cite_article_desc' => "A gionta na pàgina special [[Special:Cite|citassion]] e n'anliura dj'utiss",
 	'cite_article_link' => 'Sita sta pàgina-sì',
+	'cite_article_link_title' => 'Anformassion ëd com sité sta pàgina-sì.',
 	'cite' => 'Citassion',
 	'cite_page' => 'Pàgina da cité:',
 	'cite_submit' => 'Pronta la citassion',
@@ -1250,6 +1284,7 @@ $messages['roa-rup'] = array(
 $messages['roa-tara'] = array(
 	'cite_article_desc' => "Aggiunge 'na pàgena speciele de [[Special:Cite|citaziune]] e collegamende a scatele de le struminde",
 	'cite_article_link' => 'Cite sta pàgene',
+	'cite_article_link_title' => "'Mbormaziune sus a cumme se cite sta pàgene",
 	'cite' => 'Cite',
 	'cite_page' => 'Pàgene:',
 	'cite_submit' => 'Cite',
@@ -1261,6 +1296,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'cite_article_desc' => 'Добавляет служебную страницу [[Special:Cite|цитирования]] и ссылку в инструментах',
 	'cite_article_link' => 'Цитировать страницу',
+	'cite_article_link_title' => 'Информация о том, как цитировать эту страницу',
 	'cite' => 'Цитирование',
 	'cite_page' => 'Страница:',
 	'cite_submit' => 'Процитировать',
@@ -1551,6 +1587,7 @@ $messages['ur'] = array(
 $messages['vec'] = array(
 	'cite_article_desc' => 'Zonta na pagina speciale par le [[Special:Cite|citazion]] e un colegamento nei strumenti',
 	'cite_article_link' => 'Cita sta pagina',
+	'cite_article_link_title' => 'Informassion su come citar sta pagina',
 	'cite' => 'Citazion',
 	'cite_page' => 'Pagina da citar:',
 	'cite_submit' => 'Crea la citazion',
@@ -1561,6 +1598,8 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'cite_article_desc' => 'Ližadab [[Special:Cite|citiruindan]] specialižen lehtpolen da kosketusen azegištos',
+	'cite_article_link' => "Citiruida necidä lehtpol't",
 	'cite' => 'Citiruind',
 	'cite_page' => 'Lehtpol’:',
 	'cite_submit' => 'Citiruida',
@@ -1573,6 +1612,7 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'cite_article_desc' => 'Thêm trang đặc biệt để [[Special:Cite|ghi chú bài]] và đặt liên kết đến nó trong thanh công cụ',
 	'cite_article_link' => 'Chú thích trang này',
+	'cite_article_link_title' => 'Hướng dẫn ghi chú trang này',
 	'cite' => 'Chú thích',
 	'cite_page' => 'Trang:',
 	'cite_submit' => 'Chú thích',

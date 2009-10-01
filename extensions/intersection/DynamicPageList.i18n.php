@@ -871,9 +871,11 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'intersection-desc' => "Ozutab markiruidud nimikirjutesen nägus jäl'gmäižed ližadused kategorijaha vai kategorijoiden ühtenzoituz",
 	'intersection_toomanycats' => 'Error: äjahk kategorijoid!',
 	'intersection_toofewcats' => 'Error: Vähähk kategorijoid!',
 	'intersection_noresults' => "Error: Ei ole rezul'tatoid!",
+	'intersection_noincludecats' => "Petuz: pidab mülütada hot' üks' kategorii vai märita nimiavaruz!",
 );
 
 /** Vietnamese (Tiếng Việt)

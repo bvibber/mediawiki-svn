@@ -567,6 +567,13 @@ $messages['vec'] = array(
 	'poem-desc' => 'Zonta el tag <tt>&lt;poem&gt;</tt> par la formatazion dei testi poetici',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'poem-desc' => 'Ližadab <tt>&lt;poem&gt;</tt>-virg runod formatiruides',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

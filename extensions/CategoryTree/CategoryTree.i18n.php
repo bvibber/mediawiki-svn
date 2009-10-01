@@ -1104,11 +1104,11 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'categorytree' => 'Arborèscence de les catègories',
+	'categorytree' => 'Structura d’âbro de les catègories',
 	'categorytree-desc' => 'Outil basâ dessus AJAX por afichiér la [[Special:CategoryTree|structura de la catègorie]] d’un vouiqui',
-	'categorytree-header' => 'Entrâd un nom de catègorie por vêre son contegnu en structura arborèscenta.
+	'categorytree-header' => 'Buchiéd un nom de catègorie por vêre son contegnu en structura d’âbro.
 Cen utilise des fonccionalitâts JavaScript avanciês cognues desot lo nom d’AJAX.
-Se vos avéd un rudo viely navigator Malyâjo ou que vos éd pas activâ la fonccionalitât JavaScript, cen fonccionerat pas.',
+Se vos avéd un rudo viely navigator ou ben se vos éd pas activâ la fonccionalitât JavaScript, cen fonccionerat pas.',
 	'categorytree-category' => 'Catègorie:',
 	'categorytree-go' => 'Afichiér l’arborèscence',
 	'categorytree-parents' => 'Sur-catègorie(s) ',
@@ -1311,6 +1311,7 @@ $messages['gu'] = array(
 	'categorytree' => 'શ્રેણીવૃક્ષ',
 	'categorytree-portlet' => 'શ્રેણીઓ',
 	'categorytree-legend' => 'શ્રેણીવૃક્ષ બતાવો',
+	'categorytree-desc' => '[[Special:CategoryTree|શ્રેણી રચના]]નું ગતિશીલ સંચાલન',
 	'categorytree-header' => 'શ્રેણીની વિષયસૂચી ને વૃક્ષસંરચનામાં જોવા માટે શ્રેણીનું નામ દાખલ કરો.
 એ વાતની નોંધ લેશો કે, આ માટે AJAX તરીકે ઓળખાતી સુધરેલી જાવાસ્ક્રિપ્ટ કાર્યક્ષમતા જરૂરી છે.
 જો તમારૂં બ્રાઉઝર અતિ જુનું હશે કે જાવાસ્ક્રિપ્ટ અક્રિય કરેલી હશે તો આ કાર્ય કરશે નહીં.',
@@ -1318,14 +1319,19 @@ $messages['gu'] = array(
 	'categorytree-go' => 'વૃક્ષ બતાવો',
 	'categorytree-parents' => 'પિતૃ',
 	'categorytree-mode-categories' => 'ફક્ત શ્રેણીઓ',
+	'categorytree-mode-pages' => 'ફાઇલો સિવાયનાં પાનાઓ',
 	'categorytree-mode-all' => 'બધા પાનાં',
 	'categorytree-collapse' => 'સંકેલો',
 	'categorytree-expand' => 'વિસ્તારો',
+	'categorytree-member-counts' => 'સમાવિષ્ટ {{PLURAL:$1|૧ ઉપશ્રેણી|$1 ઉપશ્રેણીઓ}}, {{PLURAL:$2|૧ પાનું|$2 પાનાંઓ}}, અને {{PLURAL:$3|૧ ફાઇલ|$3 ફાઇલો}}',
+	'categorytree-load' => 'ભારાક્રાન્ત',
+	'categorytree-loading' => 'ભારાક્રાન્તિત...',
 	'categorytree-nothing-found' => 'કઈ ન મળ્યું',
 	'categorytree-no-subcategories' => 'ઉપશ્રેણીઓ નથી',
 	'categorytree-no-parent-categories' => 'પૈતૃકશ્રેણીઓ નથી',
 	'categorytree-no-pages' => 'પાનાઓ કે ઉપશ્રેણીઓ નથી',
 	'categorytree-not-found' => 'શ્રેણી <i>$1</i> મળેલ નથી',
+	'categorytree-error' => 'ડેટા ભારાક્રાંતરણમાં સમસ્યા.',
 	'categorytree-retry' => 'કૃપયા એક ક્ષણ પ્રતીક્ષા કરી ફરી પ્રયત્ન કરો',
 );
 
@@ -1512,6 +1518,7 @@ Si ou ta genyen yon vye navigatè (navigatè, bwozè entènèt), oubyen JavaScri
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author KossuthRad
  */
 $messages['hu'] = array(
@@ -1531,7 +1538,7 @@ Ha túlságosan régi böngésződ van, vagy a JavaScript le van tiltva, akkor n
 	'categorytree-collapse' => 'összecsuk',
 	'categorytree-expand' => 'kinyit',
 	'categorytree-member-counts' => '{{PLURAL:$1|egy|$1}} alkategóriát, {{PLURAL:$2|egy|$2}} lapot, és {{PLURAL:$3|egy|$3}} fájlt tartalmaz',
-	'categorytree-load' => 'Töltés',
+	'categorytree-load' => 'betöltés',
 	'categorytree-loading' => 'töltés',
 	'categorytree-nothing-found' => 'nincs találat',
 	'categorytree-no-subcategories' => 'nincs alkategória.',
@@ -2024,12 +2031,13 @@ $messages['ku-latn'] = array(
 	'categorytree-no-subcategories' => 'binekategorî tune',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'categorytree-portlet' => 'Klasyansow',
-	'categorytree-category' => 'Klass:',
+	'categorytree-portlet' => 'Classys',
+	'categorytree-category' => 'Class:',
 	'categorytree-mode-all' => 'oll folennow',
 );
 
@@ -2211,14 +2219,18 @@ Tam ir nepieciešama JavaScript (AJAX) funkcionalitāte.
 Ja tev ir veca interneta pārlūkprogramma, vai arī JavaScript ir atslēgts, šitas te nedarbosies.',
 	'categorytree-category' => 'Kategorija:',
 	'categorytree-go' => 'Parādīt koku',
+	'categorytree-parents' => 'Augšējā līmeņa kategorijas',
 	'categorytree-mode-categories' => 'tikai kategorijas',
 	'categorytree-mode-pages' => 'lapas (bez attēlu lapām)',
 	'categorytree-mode-all' => 'visas lapas',
 	'categorytree-collapse' => 'sakļaut',
 	'categorytree-expand' => 'izplest',
+	'categorytree-member-counts' => 'satur {{PLURAL:$1|1 apakškategoriju|$1 apakškategorijas}}, {{PLURAL:$2|1 lapu|$2 lapas}}, un {{PLURAL:$3|1 failu|$3 failus}}',
+	'categorytree-load' => 'ielādēt',
 	'categorytree-loading' => 'ielādējas...',
 	'categorytree-nothing-found' => 'neko neatrada',
 	'categorytree-no-subcategories' => 'nav apakškategoriju',
+	'categorytree-no-parent-categories' => 'nav augšējā līmeņa kategoriju',
 	'categorytree-no-pages' => 'nav ne lapu, ne apakškategoriju',
 	'categorytree-not-found' => 'Kategorija <i>$1</i> netika atrasta',
 	'categorytree-error' => 'Problēma ar datu ielādi.',
@@ -3615,6 +3627,22 @@ $messages['vec'] = array(
 	'categorytree-not-found' => 'Categoria <i>$1</i> mìa catà',
 	'categorytree-error' => 'Ghe xe un problema nel caricamento dei dati.',
 	'categorytree-retry' => "Speta n'atimo e dopo próa de novo.",
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'categorytree' => 'Kategorijoiden pu',
+	'categorytree-portlet' => 'Kategorijad',
+	'categorytree-legend' => 'Ozutada kategorijoiden pu',
+	'categorytree-category' => 'Kategorii:',
+	'categorytree-go' => 'Ozutada pu',
+	'categorytree-parents' => 'Ülembaižed kategorijad',
+	'categorytree-mode-categories' => 'vaiše kategorijad',
+	'categorytree-mode-pages' => 'lehtpoled failoita',
+	'categorytree-mode-all' => 'kaik lehtpoled',
+	'categorytree-no-subcategories' => 'ei ole alakategorijoid',
 );
 
 /** Vietnamese (Tiếng Việt)

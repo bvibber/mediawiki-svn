@@ -109,6 +109,7 @@ $messages['qqq'] = array(
 	'noticetemplate' => 'Title of Special:NoticeTemplate',
 	'centralnotice-desc' => 'Short description of the Centralnotice extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'centralnotice-summary' => 'Used in Special:CentralNotice',
+	'centralnotice-end-date' => '{{Identical|End date}}',
 	'centralnotice-enabled' => '{{Identical|Enabled}}',
 	'centralnotice-modify' => '{{Identical|Submit}}',
 	'centralnotice-preview' => '{{Identical|Preview}}',
@@ -118,7 +119,9 @@ $messages['qqq'] = array(
 	'centralnotice-translate' => '{{Identical|Translate}}',
 	'centralnotice-notice-exists' => 'Errore message displayed in Special:CentralNotice when trying to add a notice with the same name of another notice',
 	'centralnotice-template-exists' => 'Errore message displayed in Special:NoticeTemplate when trying to add a template with the same name of another template',
-	'centralnotice-start-date' => 'Used in Special:CentralNotice',
+	'centralnotice-start-date' => 'Used in Special:CentralNotice.
+
+{{Identical|Start date}}',
 	'centralnotice-start-time' => 'Used in Special:CentralNotice',
 	'centralnotice-available-templates' => 'Used in Special:NoticeTemplate',
 	'centralnotice-notice-is-locked' => 'Errore message displayed in Special:CentralNotice when trying to delete a locked notice',
@@ -1426,6 +1429,7 @@ Lisa mõni!',
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  * @author Pi
  * @author Theklan
@@ -1468,6 +1472,8 @@ Ez da gehituko',
 	'centralnotice-start-date' => 'Hasiera data',
 	'centralnotice-start-time' => 'Hasiera ordua (UTC)',
 	'centralnotice-assigned-templates' => 'Ezarritako txantiloiak',
+	'centralnotice-preview-template' => 'Txantiloia aurreikusi',
+	'centralnotice-edit-template' => 'Txantiloia aldatu',
 	'centralnotice-message' => 'Mezua',
 );
 
@@ -2441,7 +2447,7 @@ $messages['id'] = array(
 Modul ini juga dapat digunakan untuk menambahkan atau menghapus pengumuman lama.',
 	'centralnotice-query' => 'Ubah pengumuman saat ini',
 	'centralnotice-notice-name' => 'Judul pengumuman',
-	'centralnotice-end-date' => 'Tanggal akhir',
+	'centralnotice-end-date' => 'Tanggal selesai',
 	'centralnotice-enabled' => 'Diaktifkan',
 	'centralnotice-modify' => 'Kirim',
 	'centralnotice-preview' => 'Pratayang',
@@ -2929,7 +2935,7 @@ $messages['ko'] = array(
 한 번 삭제하면 복구할 수 없습니다.',
 	'centralnotice-no-notices-exist' => '공지가 존재하지 않습니다. 공지를 추가해주세요.',
 	'centralnotice-no-templates-translate' => '번역해야 할 템플릿이 없습니다.',
-	'centralnotice-number-uses' => '사용',
+	'centralnotice-number-uses' => '사용 횟수',
 	'centralnotice-edit-template' => '틀 편집하기',
 	'centralnotice-message' => '메시지',
 	'centralnotice-message-not-set' => '메시지가 정의되지 않았습니다.',
@@ -2940,7 +2946,7 @@ $messages['ko'] = array(
 	'right-centralnotice-translate' => '중앙 공지 번역',
 	'action-centralnotice-admin' => '중앙 공지를 관리하기',
 	'action-centralnotice-translate' => '중앙 공지를 번역할',
-	'centralnotice-preferred' => '우선적으로',
+	'centralnotice-preferred' => '우선 사용',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -3033,12 +3039,13 @@ De kanns ävver welshe dobei don.',
 	'centralnotice-preferred' => 'Förjetrocke!',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
 	'centralnotice-english' => 'Sowsnek',
-	'centralnotice-day' => 'Dydh',
+	'centralnotice-day' => 'Dedh',
 	'centralnotice-year' => 'Bledhen',
 	'centralnotice-month' => 'Mis',
 	'centralnotice-edit-template' => 'Chanjya skantlyn',
@@ -4109,6 +4116,7 @@ $messages['ps'] = array(
 	'centralnotice-desc' => 'يو مرکزي ويبځی-يادښت ورګډول',
 	'centralnotice-translate-heading' => 'د $1 لپاره ژباړه',
 	'centralnotice-add' => 'ورګډول',
+	'centralnotice-add-template' => 'يوه کينډۍ ورګډول',
 	'centralnotice-translations' => 'ژباړې',
 	'centralnotice-translate' => 'ژباړل',
 	'centralnotice-english' => 'انګرېزي',
@@ -4123,6 +4131,10 @@ $messages['ps'] = array(
 	'centralnotice-project-name' => 'د پروژې نوم',
 	'centralnotice-start-date' => 'د پيل نېټه',
 	'centralnotice-start-time' => 'د پيل وخت (UTC)',
+	'centralnotice-available-templates' => 'شته کينډۍ',
+	'centralnotice-start-hour' => 'د پيل وخت',
+	'centralnotice-change-lang' => 'د ژباړې ژبه بدلول',
+	'centralnotice-message' => 'پيغام',
 );
 
 /** Portuguese (Português)
@@ -5726,10 +5738,11 @@ Zónteghene una qua soto.',
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'centralnotice' => 'Quản lý các thông báo chung',
-	'noticetemplate' => 'Tiêu bản thông báo chung',
+	'noticetemplate' => 'Bản mẫu thông báo chung',
 	'centralnotice-desc' => 'Thêm thông báo ở đầu các trang tại hơn một wiki',
 	'centralnotice-summary' => 'Dùng phần này, bạn có thể sửa đổi các thông báo chung đã được thiết lập, cũng như thêm thông báo mới hoặc dời thông báo cũ.',
 	'centralnotice-query' => 'Sửa đổi các thông báo hiện hành',
@@ -5744,23 +5757,23 @@ $messages['vi'] = array(
 	'centralnotice-manage' => 'Quản lý thông báo chung',
 	'centralnotice-add' => 'Thêm',
 	'centralnotice-add-notice' => 'Thêm thông báo',
-	'centralnotice-add-template' => 'Thêm tiêu bản',
+	'centralnotice-add-template' => 'Thêm bản mẫu',
 	'centralnotice-show-notices' => 'Xem các thông báo',
-	'centralnotice-list-templates' => 'Liệt kê các tiêu bản',
+	'centralnotice-list-templates' => 'Liệt kê các bản mẫu',
 	'centralnotice-translations' => 'Bản dịch',
 	'centralnotice-translate-to' => 'Dịch ra',
 	'centralnotice-translate' => 'Biên dịch',
 	'centralnotice-english' => 'tiếng Anh',
-	'centralnotice-template-name' => 'Tên tiêu bản',
-	'centralnotice-templates' => 'Tiêu bản',
+	'centralnotice-template-name' => 'Tên bản mẫu',
+	'centralnotice-templates' => 'Bản mẫu',
 	'centralnotice-weight' => 'Mức ưu tiên',
 	'centralnotice-locked' => 'Bị khóa',
 	'centralnotice-notices' => 'Thông báo',
 	'centralnotice-notice-exists' => 'Không thêm được: thông báo đã tồn tại.',
-	'centralnotice-template-exists' => 'Không thêm được: tiêu bản đã tồn tại.',
+	'centralnotice-template-exists' => 'Không thêm được: bản mẫu đã tồn tại.',
 	'centralnotice-notice-doesnt-exist' => 'Không dời được: thông báo không tồn tại.',
-	'centralnotice-template-still-bound' => 'Không dời được: có thông báo dựa theo tiêu bản.',
-	'centralnotice-template-body' => 'Nội dung tiêu bản:',
+	'centralnotice-template-still-bound' => 'Không dời được: có thông báo dựa theo bản mẫu.',
+	'centralnotice-template-body' => 'Nội dung bản mẫu:',
 	'centralnotice-day' => 'Ngày',
 	'centralnotice-year' => 'Năm',
 	'centralnotice-month' => 'Tháng',
@@ -5770,12 +5783,13 @@ $messages['vi'] = array(
 	'centralnotice-project-name' => 'Tên dự án',
 	'centralnotice-start-date' => 'Ngày bắt đầu',
 	'centralnotice-start-time' => 'Lúc bắt đầu (UTC)',
-	'centralnotice-assigned-templates' => 'Tiêu bản được sử dụng',
-	'centralnotice-no-templates' => 'Hệ thống không chứa tiêu bản',
-	'centralnotice-no-templates-assigned' => 'Thông báo không dùng tiêu bản nào. Hãy chỉ định tiêu bản!',
-	'centralnotice-available-templates' => 'Tiêu bản có sẵn',
-	'centralnotice-template-already-exists' => 'Không chỉ định được: thông báo đã sử dụng tiêu bản.',
-	'centralnotice-preview-template' => 'Xem trước tiêu bản',
+	'centralnotice-assigned-templates' => 'Bản mẫu được sử dụng',
+	'centralnotice-no-templates' => 'Hệ thống không chứa bản mẫu.
+Hãy thêm vào!',
+	'centralnotice-no-templates-assigned' => 'Thông báo không dùng bản mẫu nào. Hãy chỉ định bản mẫu!',
+	'centralnotice-available-templates' => 'Bản mẫu có sẵn',
+	'centralnotice-template-already-exists' => 'Không chỉ định được: thông báo đã sử dụng bản mẫu.',
+	'centralnotice-preview-template' => 'Xem trước bản mẫu',
 	'centralnotice-start-hour' => 'Lúc bắt đầu',
 	'centralnotice-change-lang' => 'Thay đổi ngôn ngữ của bản dịch',
 	'centralnotice-weights' => 'Mức ưu tiên',
@@ -5785,14 +5799,14 @@ $messages['vi'] = array(
 	'centralnotice-null-string' => 'Không thêm được: chuỗi rỗng.',
 	'centralnotice-confirm-delete' => 'Bạn có chắc muốn xóa thông báo hoặc tiêu bản này không? Không thể phục hồi nó.',
 	'centralnotice-no-notices-exist' => 'Chưa có thông báo. Hãy thêm thông báo ở dưới.',
-	'centralnotice-no-templates-translate' => 'Không có tiêu bản để dịch',
+	'centralnotice-no-templates-translate' => 'Không có bản mẫu để dịch',
 	'centralnotice-number-uses' => 'Số thông báo dùng',
 	'centralnotice-edit-template' => 'Sửa đổi tiêu bản',
 	'centralnotice-message' => 'Thông báo',
 	'centralnotice-message-not-set' => 'Thông báo chưa được thiết lập',
 	'centralnotice-clone' => 'Sao',
-	'centralnotice-clone-notice' => 'Tạo bản sao của tiêu bản',
-	'centralnotice-preview-all-template-translations' => 'Xem trước các bản dịch có sẵn của tiêu bản',
+	'centralnotice-clone-notice' => 'Tạo bản sao của bản mẫu',
+	'centralnotice-preview-all-template-translations' => 'Xem trước các bản dịch có sẵn của bản mẫu',
 	'right-centralnotice-admin' => 'Quản lý thông báo chung',
 	'right-centralnotice-translate' => 'Dịch thông báo chung',
 	'action-centralnotice-admin' => 'quản lý thông báo chung',

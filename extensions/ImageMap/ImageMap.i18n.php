@@ -202,10 +202,16 @@ $messages['br'] = array(
 	'imagemap_desc' => "Aotren a ra ar c'hartennoù skeudennoù arval klikadus, a-drugarez d'ar valizenn <tt><nowiki><imagemap></nowiki></tt>",
 	'imagemap_no_image' => 'Error: rankout a rit spisaat ur skeudenn el linenn gentañ',
 	'imagemap_invalid_image' => "Error : direizh eo ar skeudenn pe n'eus ket anezhi",
+	'imagemap_bad_image' => 'Fazi : emañ ar skeudenn war al listenn zu evit ar bajenn-mañ',
 	'imagemap_no_link' => "Error: n'eus bet kavet liamm reizh ebet e dibenn al linenn $1",
 	'imagemap_invalid_title' => 'Error: titl direizh el liamm el linenn $1',
 	'imagemap_missing_coord' => 'Error: diouer a zaveennoù zo evit stumm al linenn $1',
+	'imagemap_unrecognised_shape' => 'Fazi : Furm dianav el linenn $1, rankout a ra pep linenn kregiñ gant unan eus ar gerioù-mañ : default, rect, circle pe poly',
+	'imagemap_no_areas' => 'Fazi : ret eo merkañ ur spisadur takad da nebeutañ',
+	'imagemap_invalid_coord' => 'Fazi : daveenn fall el linenn $1, ret eo e vije un niver',
+	'imagemap_invalid_desc' => 'Fazi : arventenn desc direizh; setu an arventennoù aotreet : <tt>$1</tt>',
 	'imagemap_description' => 'Diwar-benn ar skeudenn-mañ',
+	'imagemap_poly_odd' => 'Fazi : kavet ez eus ul lieskorn dezhañ un niver daveennoù ampar el linenn $1',
 );
 
 /** Bosnian (Bosanski)
@@ -419,10 +425,12 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'imagemap_no_image' => 'Errorea: lehen lerroan irudia zehaztu behar da',
 	'imagemap_invalid_image' => 'Errorea: irudia baliogabea da edo ez da existitzen',
+	'imagemap_invalid_coord' => 'Errorea: baliogabeko koordenatua $1. lerroan, zenbaki bat izan behar du',
 	'imagemap_description' => 'Irudi honen inguruan',
 );
 
@@ -524,14 +532,14 @@ $messages['gl'] = array(
 	'imagemap_no_image' => 'Erro: debe especificar unha imaxe na primeira liña',
 	'imagemap_invalid_image' => 'Erro: a imaxe non é válida ou non existe',
 	'imagemap_bad_image' => 'Erro: a imaxe atópase na lista negra desta páxina',
-	'imagemap_no_link' => 'Erro: foi atopada unha ligazón non válida ao final da liña $1',
+	'imagemap_no_link' => 'Erro: non se atopou ningunha ligazón válida ao final da liña $1',
 	'imagemap_invalid_title' => 'Erro: título non válido na ligazón na liña $1',
 	'imagemap_missing_coord' => 'Erro: non abondan as coordenadas para crear un polígono, na liña $1',
 	'imagemap_unrecognised_shape' => 'Erro: forma descoñecida na liña $1, cada liña debe comezar con un dos seguintes: por defecto, rectángulo, círculo ou polígono',
-	'imagemap_no_areas' => 'Erro: polo menos debe darse unha zona de especificación',
+	'imagemap_no_areas' => 'Erro: polo menos debe darse unha especificación de área',
 	'imagemap_invalid_coord' => 'Erro: coordenada non válida na liña $1, debe ser un número',
 	'imagemap_invalid_desc' => 'Erro: especificación da descrición non válida, debe ser unha de: <tt>$1</tt>',
-	'imagemap_description' => 'Sobre esta imaxe',
+	'imagemap_description' => 'Acerca desta imaxe',
 	'imagemap_poly_odd' => 'Erro: atopouse un polígono cun número impar de coordenadas na liña $1',
 );
 

@@ -266,9 +266,10 @@ $messages['lt'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
-	'trustedxff-desc' => 'раководење со листа на прокси адреси од доверба ([http://meta.wikimedia.org/wiki/XFF_project проект XFF])',
+	'trustedxff-desc' => 'Ракување со листа на прокси адреси од доверба ([http://meta.wikimedia.org/wiki/XFF_project проект XFF])',
 );
 
 /** Malay (Bahasa Melayu)

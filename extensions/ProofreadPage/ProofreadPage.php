@@ -272,13 +272,7 @@ function pr_parse_index_text( $text ){
 
 	//links in ns-0. Only if mOptions exist
 	if( $wgParser->mOptions ) {
-		# We use Parser::replaceVariables to expand templates
-		# However this method has a side effect on wgParser->mOutput->mTemplates, 
-		# To avoid this, we instanciate a temporary ParserOutput object
-		$saved_output = $wgParser->mOutput;
-		$wgParser->mOutput = new ParserOutput;
 		$rtext = $wgParser->replaceVariables( $text );
-		$wgParser->mOutput = $saved_output;
 		$text_links_pattern = "/\[\[([^:\|]*?)(\|(.*?)|)\]\]/i";
 		preg_match_all( $text_links_pattern, $rtext, $text_links, PREG_PATTERN_ORDER );
 	}
@@ -764,6 +758,7 @@ function pr_renderPages( $input, $args ) {
 			} else {
 				$out.= "{{:".$text."}}";
 			}
+			$out.= "\n";
 			if( $i == $from ) $from_pagenum = $pagenum;
 			if( $i == $to ) $to_pagenum = $pagenum;
 		}
@@ -819,12 +814,14 @@ function pr_renderPages( $input, $args ) {
 		if( ( $i >= 1 ) && ( $i + 1 < count( $text_links[1] ) ) ) {
 			$next = $text_links[0][$i+1];
 		}
+		if( $args["current"] ) $current = $args["current"];
 		if( $current ) $h_out .= "|current=$current";
 		if( $prev ) $h_out .= "|prev=$prev";
 		if( $next ) $h_out .= "|next=$next";
 		if( $from_pagenum ) $h_out .= "|from=$from_pagenum";
 		if( $to_pagenum ) $h_out .= "|to=$to_pagenum";
 		foreach ( $attributes as $key => $val ) {
+			if( $args[$key] ) $val = $args[$key];
 			$h_out .= "|$key=$val";
 		}
 		$h_out .= '}}';
@@ -895,7 +892,7 @@ function  pr_formData( $editpage, $request ) {
 		$text = "<noinclude><pagequality level=\"".$editpage->quality."\" user=\"".$editpage->username."\" />"
 			.$editpage->header."\n\n\n</noinclude>"
 			.$editpage->textbox1
-			."\n<noinclude>\n".$editpage->footer."</noinclude>";
+			."<noinclude>\n".$editpage->footer."</noinclude>";
 		$editpage->textbox1 = $text;
 	} else {
 		//replace deprecated template
@@ -1292,7 +1289,7 @@ function pr_OutputPageBeforeHTML( $out, $text ) {
 	}
 
 	# find the proofreading status of transclusions
-	$query = "SELECT COUNT(page_id) AS count FROM $templatelinks LEFT JOIN $page ON page_title=tl_title AND page_namespace=tl_namespace LEFT JOIN $catlinks ON cl_from=page_id WHERE tl_from=$id AND tl_namespace=$page_ns_index AND cl_to='###'";
+	$query = "SELECT COUNT(page_id) AS count FROM $templatelinks LEFT JOIN $page ON page_title=tl_title LEFT JOIN $catlinks ON cl_from=page_id where tl_from=$id and tl_namespace=$page_ns_index AND cl_to='###'";
 	$n0 = pr_query_count( $dbr, $query, 'proofreadpage_quality0_category' );
 	$n2 = pr_query_count( $dbr, $query, 'proofreadpage_quality2_category' );
 	$n3 = pr_query_count( $dbr, $query, 'proofreadpage_quality3_category' );
@@ -1308,17 +1305,12 @@ function pr_OutputPageBeforeHTML( $out, $text ) {
 		$row = $dbr->fetchObject( $res );
 		$title = $dbr->strencode( $row->title );
 		$dbr->freeResult( $res );
-		$query2 = "SELECT page_title AS title FROM $pagelinks LEFT JOIN $page ON page_id=pl_from WHERE pl_title=\"$title\" AND pl_namespace=$page_ns_index AND page_namespace=$index_ns_index LIMIT 1";
-		$res2 = $dbr->query( $query2 , __METHOD__ );
-		if( $res2 && $dbr->numRows( $res2 ) > 0 ) {
-			$row = $dbr->fetchObject( $res2 );
-			$indextitle = $row->title;
-			$dbr->freeResult( $res2 );
-			$sk = $wgUser->getSkin();
-			$indexlink = $sk->makeKnownLink( "$index_namespace:$indextitle", "[index]" );
-		}
-	}
+		$sk = $wgUser->getSkin();
+		$indexlink = $sk->makeKnownLink( "$index_namespace:$title", "[index]" );
+	} else {
+		$indexlink="";
+	}	
 	$output = wfMsgForContent( 'proofreadpage_quality_message', $n0*100/$n, $n1*100/$n, $n2*100/$n, $n3*100/$n, $n4*100/$n, $n, $indexlink );
-	$out->setSubtitle($output);
+	$out->setSubtitle( $out->getSubtitle() . $output );
 	return true;
 };

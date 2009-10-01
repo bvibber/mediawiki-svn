@@ -112,10 +112,11 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jan Friberg
  */
 $messages['da'] = array(
-	'wikihiero-desc' => "Tilføjer tag'en <tt>&lt;hiero&gt;</tt> for at vise hieroglyffer",
+	'wikihiero-desc' => 'Tilføjer tagget <tt>&lt;hiero&gt;</tt> for at vise hieroglyffer',
 );
 
 /** German (Deutsch)
@@ -589,6 +590,13 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'wikihiero-desc' => 'Zonta el tag <tt>&lt;hiero&gt;</tt> par la visualizazion dei geroglifici',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'wikihiero-desc' => 'Ližadab <tt>&lt;hiero&gt;</tt>-virgan, miše ozutada ieroglifid',
 );
 
 /** Vietnamese (Tiếng Việt)

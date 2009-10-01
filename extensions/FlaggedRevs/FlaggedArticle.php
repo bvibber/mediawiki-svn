@@ -135,8 +135,7 @@ class FlaggedArticle extends Article {
 	 * @returns bool
 	 */
 	public function limitedUI() {
-		global $wgFlaggedRevsUIForDefault;
-		return ( $wgFlaggedRevsUIForDefault && !$this->showStableByDefault() );
+		return ( FlaggedRevs::forDefaultVersionOnly() && !$this->showStableByDefault() );
 	}
 
 	/**
@@ -169,10 +168,9 @@ class FlaggedArticle extends Article {
 	 * @param bool $titleOnly, only check if title is in reviewable namespace
 	 */
 	public function isReviewable( $titleOnly = false ) {
-		global $wgFlaggedRevsReviewForDefault;
 		if( !FlaggedRevs::isPageReviewable( $this->parent->getTitle() ) ) {
 			return false;
-		} elseif( !$titleOnly && $wgFlaggedRevsReviewForDefault && !$this->showStableByDefault() ) {
+		} elseif( !$titleOnly && FlaggedRevs::forDefaultVersionOnly() && !$this->showStableByDefault() ) {
 			return false;
 		}
 		return true;
@@ -184,10 +182,9 @@ class FlaggedArticle extends Article {
 	* @return bool
 	*/
 	public function isPatrollable( $titleOnly = false ) {
-		global $wgFlaggedRevsReviewForDefault;
 		if( FlaggedRevs::isPagePatrollable( $this->parent->getTitle() ) ) {
 			return true;
-		} elseif( !$titleOnly && $wgFlaggedRevsReviewForDefault && !$this->showStableByDefault() ) {
+		} elseif( !$titleOnly && FlaggedRevs::forDefaultVersionOnly() && !$this->showStableByDefault() ) {
 			return true;
 		}
 		return false;
@@ -245,7 +242,7 @@ class FlaggedArticle extends Article {
 	 * Adds a quick review form on the bottom if needed
 	 */
 	public function setPageContent( &$outputDone, &$pcache ) {
-		global $wgRequest, $wgOut, $wgUser, $wgLang;
+		global $wgRequest, $wgOut, $wgUser, $wgLang, $wgContLang;
 		# Only trigger on article view for content pages, not for protect/delete/hist...
 		$action = $wgRequest->getVal( 'action', 'view' );
 		if( !self::isViewAction($action) || !$this->parent->exists() )
@@ -295,6 +292,8 @@ class FlaggedArticle extends Article {
 			$prot = "<span class='fr-icon-unlocked' title=\"".
 				wfMsgHtml('revreview-unlocked-title')."\"></span>";
 		}
+		// RTL langauges
+		$rtl = $wgContLang->isRTL() ? " rtl" : "";
 		// Is there no stable version?
 		if( is_null($frev) ) {
 			// Add "no reviewed version" tag, but not for printable output.
@@ -304,7 +303,7 @@ class FlaggedArticle extends Article {
 					$msg = $old ? 'revreview-quick-invalid' : 'revreview-quick-none';
 					$tag .= "{$prot}<span class='fr-icon-current plainlinks'></span>" .
 						wfMsgExt($msg,array('parseinline'));
-					$tag = "<div id='mw-revisiontag' class='flaggedrevs_short plainlinks noprint'>$tag</div>";
+					$tag = "<div id='mw-revisiontag' class='flaggedrevs_short{$rtl} plainlinks noprint'>$tag</div>";
 					$this->reviewNotice .= $tag;
 				// Standard UI
 				} else {
@@ -351,7 +350,7 @@ class FlaggedArticle extends Article {
 		else $tagClass = 'flaggedrevs_basic';
 		# Wrap tag contents in a div
 		if( $tag !='' ) {
-			$tag = "<div id='mw-revisiontag' class='$tagClass plainlinks noprint'>$tag</div>";
+			$tag = "<div id='mw-revisiontag' class='{$tagClass}{$rtl} plainlinks noprint'>$tag</div>";
 			$this->reviewNotice .= $tag;
 		}
 		# Show notice bar/icon
@@ -931,8 +930,8 @@ class FlaggedArticle extends Article {
 	 * SkinTemplateTabs, to inlude flagged revs UI elements
 	 */
 	public function setActionTabs( $skin, &$actions ) {
-		global $wgRequest, $wgUser, $wgFlaggedRevTabs;
-	
+		global $wgRequest, $wgUser;
+
 		$title = $this->parent->getTitle()->getSubjectPage();
 		if ( !FlaggedRevs::isPageReviewable( $title ) ) {
 			return true; // Only reviewable pages need these tabs
@@ -966,22 +965,22 @@ class FlaggedArticle extends Article {
 	 */
 	public function setViewTabs( $skin, &$views ) {
 		global $wgRequest, $wgUser, $wgFlaggedRevTabs;
-		
-		$title = $this->parent->getTitle()->getSubjectPage();
+
+		$title = $this->parent->getTitle()->getSubjectPage(); // Get the actual content page
 		$article = new Article( $title );
 		$action = $wgRequest->getVal( 'action', 'view' );
 		$fa = FlaggedArticle::getTitleInstance( $title );
 		if ( !$fa->isReviewable() || $this->limitedUI() ) {
-			// Exit, since this isn't a reviewable page or the UI is hidden
+			// This isn't a reviewable page or the UI is hidden
 			return true;
 		}
 	   	$srev = $this->getStableRev( $action == 'rollback' ? FR_MASTER : 0 );
 	   	if( is_null( $srev ) ) {
-			// Exit, since no stable revision exists
-			return true;
+			return true; // No stable revision exists
 		}
 		wfLoadExtensionMessages( 'FlaggedRevs' );
 		$synced = FlaggedRevs::stableVersionIsSynced( $srev, $article );
+		// Set draft tab as needed...
 	   	if ( !$skin->mTitle->isTalkPage() && !$synced ) {
 	   		if ( isset( $views['edit'] ) ) {
 				if ( $this->showStableByDefault() ) {
@@ -1001,13 +1000,13 @@ class FlaggedArticle extends Article {
 			}
 	   	}
 	 	if ( !$wgFlaggedRevTabs || $synced ) {
-	 		// Exit, since either the flagged revisions tabs should not be shown
+	 		// Exit, since either the stable/draft tabs should not be shown
 	 		// or the page is already the most current revision
 	   		return true;
 	 	}
 	 	$tabs = array(
 	 		'stable' => array(
-				'text' => wfMsg( 'revreview-stable' ),
+				'text' => wfMsg( 'revreview-stable' ), // unused
 				'href' => $title->getLocalUrl( 'stable=1' ),
 	 			'class' => ''
 	 		),
@@ -1030,13 +1029,16 @@ class FlaggedArticle extends Article {
 		$first = true;
 		$newViews = array();
 		foreach ( $views as $tabAction => $data ) {
-			if ( $first ) {
+			// Very first tab (page link)
+			if( $first ) {
 				if( $synced ) {
 					// Use existing first tabs when synced
 					$newViews[$tabAction] = $data;
 				} else {
 					// Use split current and stable tabs when not synced
-					$newViews['stable'] = $tabs['stable'];
+					$newViews[$tabAction]['text'] = $data['text']; // keep tab name
+					$newViews[$tabAction]['href'] = $tabs['stable']['href'];
+					$newViews[$tabAction]['class'] = $tabs['stable']['class'];
 					$newViews['current'] = $tabs['current'];
 				}
 				$first = false;
@@ -1452,8 +1454,11 @@ class FlaggedArticle extends Article {
 			if( !RevisionReview::userCanSetFlags( $oldFlags ) ) {
 				$flags = $oldFlags;
 			}
+			$encNotes = $srev->getComment();
 		} else {
-			$flags = $this->getFlagsForRevision( $id );
+			$frev = FlaggedRevision::newFromTitle( $this->parent->getTitle(), $id );
+			$flags = $oldFlags;
+			$encNotes = $frev ? $frev->getComment() : ""; // pre-fill notes
 		}
 
 		$reviewTitle = SpecialPage::getTitleFor( 'RevisionReview' );
@@ -1547,7 +1552,9 @@ class FlaggedArticle extends Article {
 			$form .= "<div id='mw-notebox'>\n";
 			$form .= "<p>".wfMsgHtml( 'revreview-notes' ) . "</p>\n";
 			$form .= Xml::openElement( 'textarea', array('name' => 'wpNotes', 'id' => 'wpNotes',
-				'class' => 'fr-notes-box', 'rows' => '2', 'cols' => '80') ) . Xml::closeElement('textarea') . "\n";
+				'class' => 'fr-notes-box', 'rows' => '2', 'cols' => '80') ) .
+				htmlspecialchars( $encNotes ) .
+				Xml::closeElement('textarea') . "\n";
 			$form .= "</div>\n";
 		}
 

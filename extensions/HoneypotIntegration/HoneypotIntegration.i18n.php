@@ -163,6 +163,14 @@ $messages['hsb'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Ličba aktualnych podawkow, kotrež IP-adresa je pušćiła, po projekće Honey Pot',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'honeypot-desc' => '[http://projecthoneypot.org/ Honey Pot] projekt integráció MediaWiki oldalakhoz',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Az IP-cím által kiváltott közelmúltbeli események száma a Honey Pot projekt szerint',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -208,6 +216,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'honeypot-desc' => 'Integratioun mam [http://projecthoneypot.org/ Projet Honey Pot] fir MediaWiki Siten',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Zuel vun den aktuellen Evenementer déi duerch d'IP-Adress ausgeléist goufen, esou wéi et aus dem Projet ''Honey Pot'' ervirgeet",
 );
 

@@ -30,7 +30,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-define( 'MWRELEASES_VERSION', 1.0 );
+define( 'MWRELEASES_VERSION', '1.1' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,

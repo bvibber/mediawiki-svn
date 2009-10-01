@@ -226,8 +226,18 @@ class FlaggedRevsHooks {
 		}
 		# Update page fields
 		FlaggedRevs::updateStableVersion( $article, $sv->getRevision() );
-		# We only care about links that are only in the stable version
+		# Get the list of categories that must be reviewed
+		$reviewedCats = array();
+		$msg = wfMsgForContent( 'flaggedrevs-stable-categories' );
+		if( !wfEmptyMsg( 'flaggedrevs-stable-categories', $msg ) ) {
+			$list = explode("\n*","\n$msg");
+			foreach( $list as $category ) {
+				$category = trim($category);
+				if( strlen($category) ) $reviewedCats[$category] = 1;
+			}
+		}
 		$links = array();
+		# Get any links that are only in the stable version...
 		foreach( $parserOut->getLinks() as $ns => $titles ) {
 			foreach( $titles as $title => $id ) {
 				if( !isset($linksUpdate->mLinks[$ns]) || !isset($linksUpdate->mLinks[$ns][$title]) ) {
@@ -235,11 +245,13 @@ class FlaggedRevsHooks {
 				}
 			}
 		}
+		# Get any images that are only in the stable version...
 		foreach( $parserOut->getImages() as $image => $n ) {
 			if( !isset($linksUpdate->mImages[$image]) ) {
 				self::addLink( $links, NS_FILE, $image );
 			}
 		}
+		# Get any templates that are only in the stable version...
 		foreach( $parserOut->getTemplates() as $ns => $titles ) {
 			foreach( $titles as $title => $id ) {
 				if( !isset($linksUpdate->mTemplates[$ns]) || !isset($linksUpdate->mTemplates[$ns][$title]) ) {
@@ -247,11 +259,24 @@ class FlaggedRevsHooks {
 				}
 			}
 		}
+		# Get any categories that are only in the stable version...
 		foreach( $parserOut->getCategories() as $category => $sort ) {
             if( !isset($linksUpdate->mCategories[$category]) ) {
-                self::addLink( $links, NS_CATEGORY, $category );
+				// Stable categories must remain until removed from the stable version
+				if( isset($reviewedCats[$category]) ) {
+					$linksUpdate->mCategories[$category] = $sort;
+				} else {
+					self::addLink( $links, NS_CATEGORY, $category );
+				}
 			}
         }
+		$stableCats = $parserOut->getCategories(); // from stable version
+		foreach( $reviewedCats as $category ) {
+			// Stable categories cannot be added until added to the stable version
+			if( isset($linksUpdate->mCategories[$category]) && !isset($stableCats[$category]) ) {
+				unset( $linksUpdate->mCategories[$category] );
+			}
+		}
 		# Get any link tracking changes
 		$existing = self::getExistingLinks( $pageId );
 		$insertions = self::getLinkInsertions( $existing, $links, $pageId );
@@ -981,6 +1006,19 @@ class FlaggedRevsHooks {
 		return ($benchmarks >= $needed );
 	}
 	
+	protected function previousBlockCheck( $user ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		return (bool)$dbr->selectField( 'logging', '1',
+			array(
+				'log_namespace' => NS_USER, 
+				'log_title'     => $user->getUserPage()->getDBkey(),
+				'log_type'      => 'block',
+				'log_action'    => 'block' ),
+			__METHOD__,
+			array( 'USE INDEX' => 'page_time' )
+		);
+	}
+	
 	/**
 	* Check for 'autoreview' permission. This lets people who opt-out as
 	* Editors still have their own edits automatically reviewed. Bot
@@ -1003,7 +1041,7 @@ class FlaggedRevsHooks {
 		# Checked basic, already available, promotion heuristics first...
 		$APSkipKey = wfMemcKey( 'flaggedrevs', 'autoreview-skip', $user->getId() );
 		$value = $wgMemc->get( $APSkipKey );
-		if( $value == 'true' ) return true;
+		if( $value === 'true' ) return true;
 		# Check $wgFlaggedRevsAutoconfirm settings...
 		$now = time();
 		$userCreation = wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
@@ -1045,14 +1083,7 @@ class FlaggedRevsHooks {
 		}
 		# Check if user was ever blocked before
 		if( $wgFlaggedRevsAutoconfirm['neverBlocked'] ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$blocked = $dbr->selectField( 'logging', '1',
-				array( 'log_namespace' => NS_USER, 
-					'log_title' => $user->getUserPage()->getDBkey(),
-					'log_type' => 'block',
-					'log_action' => 'block' ),
-				__METHOD__,
-				array( 'USE INDEX' => 'page_time' ) );
+			$blocked = self::previousBlockCheck( $user );
 			if( $blocked ) {
 				# Make a key to store the results
 				$wgMemc->set( $APSkipKey, 'true', 3600*24*7 );
@@ -1188,15 +1219,7 @@ class FlaggedRevsHooks {
 		}
 		# Check if user was ever blocked before
 		if( $wgFlaggedRevsAutopromote['neverBlocked'] ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$blocked = $dbr->selectField( 'logging', '1',
-				array( 'log_namespace' => NS_USER, 
-					'log_title' => $user->getUserPage()->getDBkey(),
-					'log_type' => 'block',
-					'log_action' => 'block' ),
-				__METHOD__,
-				array( 'USE INDEX' => 'page_time' )
-			);
+			$blocked = self::previousBlockCheck( $user );
 			if( $blocked ) {
 				# Make a key to store the results
 				$wgMemc->set( $APSkipKey, 'true', 3600*24*7 );
@@ -1310,9 +1333,9 @@ class FlaggedRevsHooks {
 		$newGroups = $groups ;
 		array_push( $newGroups, 'editor' );
 
-		wfLoadExtensionMessages( 'FlaggedRevs' );
-		# Lets NOT spam RC, set $RC to false
-		$log = new LogPage( 'rights', false );
+		wfLoadExtensionMessages( 'FlaggedRevs' ); // load UI messages
+		global $wgFlaggedRevsAutopromoteInRC;
+		$log = new LogPage( 'rights', $wgFlaggedRevsAutopromoteInRC );
 		$log->addEntry( 'rights', $user->getUserPage(), wfMsg('rights-editor-autosum'),
 			array( implode(', ',$groups), implode(', ',$newGroups) ) );
 		$user->addGroup('editor');
@@ -1325,9 +1348,17 @@ class FlaggedRevsHooks {
 	*/
 	public static function recordDemote( $u, $addgroup, $removegroup ) {
 		if( $removegroup && in_array('editor',$removegroup) ) {
-			$params = FlaggedRevs::getUserParams( $u->getId() );
-			$params['demoted'] = 1;
-			FlaggedRevs::saveUserParams( $u->getId(), $params );
+			// Cross-wiki rights change
+			if( $u instanceof UserRightsProxy ) {
+				$params = FlaggedRevs::getUserParams( $u->getId(), $u->getDBName() );
+				$params['demoted'] = 1;
+				FlaggedRevs::saveUserParams( $u->getId(), $params, $u->getDBName() );
+			// On-wiki rights change
+			} else {
+				$params = FlaggedRevs::getUserParams( $u->getId() );
+				$params['demoted'] = 1;
+				FlaggedRevs::saveUserParams( $u->getId(), $params );
+			}
 		}
 		return true;
 	}
@@ -1338,7 +1369,7 @@ class FlaggedRevsHooks {
 		$preferences['flaggedrevssimpleui'] =
 			array(
 				'type' => 'radio',
-				'section' => 'flaggedrevs',
+				'section' => 'flaggedrevs/flaggedrevs-ui',
 				'label-message' => 'flaggedrevs-pref-UI',
 				'options' => array(
 					wfMsg( 'flaggedrevs-pref-UI-0' ) => 0,
@@ -1349,7 +1380,7 @@ class FlaggedRevsHooks {
 		$preferences['flaggedrevsstable'] =
 			array(
 				'type' => 'toggle',
-				'section' => 'flaggedrevs',
+				'section' => 'flaggedrevs/flaggedrevs-ui',
 				'label-message' => 'flaggedrevs-prefs-stable',
 			);
 		// Review-related rights...
@@ -1365,14 +1396,14 @@ class FlaggedRevsHooks {
 			$preferences['flaggedrevseditdiffs'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'flaggedrevs',
+					'section' => 'flaggedrevs/flaggedrevs-ui',
 					'label-message' => 'flaggedrevs-prefs-editdiffs',
 				);
 			// Diff-to-stable on draft view
 			$preferences['flaggedrevsviewdiffs'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'flaggedrevs',
+					'section' => 'flaggedrevs/flaggedrevs-ui',
 					'label-message' => 'flaggedrevs-prefs-viewdiffs',
 				);
 		}
@@ -1390,21 +1421,29 @@ class FlaggedRevsHooks {
 	* @return bool true
 	*/
 	public static function reviewLogLine( $type, $action, $title=null, $params=array(), &$comment, &$rv ) {
+		if( $type != 'review' || !is_object($title) ) {
+			return true; // for review log only
+		}
 		$actionsValid = array('approve','approve2','approve-a','approve2-a','unapprove','unapprove2');
-		# Show link to page with oldid=x
-		if( $type == 'review' && is_object($title) && in_array($action,$actionsValid) && isset($params[0]) ) {
-			global $wgUser;
+		# Show link to page with oldid=x as well as the diff to the former stable rev.
+		# Param format is <rev id, last stable id, rev timestamp>.
+		if( in_array($action,$actionsValid) && isset($params[0]) ) {
+			global $wgUser, $wgLang;
+			$revId = (int)$params[0]; // the reviewed revision
 			# Load required messages
 			wfLoadExtensionMessages( 'FlaggedRevs' );
 			# Don't show diff if param missing or rev IDs are the same
-			if( !empty($params[1]) && $params[0] != $params[1] ) {
+			if( !empty($params[1]) && $revId != $params[1] ) {
 				$rv = '(' . $wgUser->getSkin()->makeKnownLinkObj( $title, wfMsgHtml('review-logentry-diff'), 
-					"oldid={$params[1]}&diff={$params[0]}") . ') ';
+					"oldid={$params[1]}&diff={$revId}") . ') ';
 			} else {
 				$rv = '(' . wfMsgHtml('review-logentry-diff') . ')';
 			}
+			# Show diff from this revision
+			$ts = empty($params[2]) ? Revision::getTimestampFromId($title,$revId) : $params[2];
+			$time = $wgLang->timeanddate( $ts );
 			$rv .= ' (' . $wgUser->getSkin()->makeKnownLinkObj( $title, 
-				wfMsgHtml('review-logentry-id',$params[0]),
+				wfMsgHtml('review-logentry-id',$revId,$time),
 				"oldid={$params[0]}&diff=prev&diffonly=0") . ')';
 		}
 		return true;
@@ -1559,6 +1598,8 @@ class FlaggedRevsHooks {
 	public static function addToHistLine( $history, $row, &$s ) {
 		if( $row->rev_deleted & Revision::DELETED_TEXT )
 			return true; // Don't bother showing notice for deleted revs
+		if( !isset($row->fr_quality) )
+			return true; // Unreviewed
 		# Add link to stable version of *this* rev, if any
 		list($link,$class) = FlaggedRevs::markHistoryRow( $history->getArticle()->getTitle(), $row );
 		# Style the row as needed

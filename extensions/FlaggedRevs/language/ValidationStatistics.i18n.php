@@ -741,13 +741,23 @@ Stabilna wersija strony je najnowša wersija, kotraž je so wobkrućena, zo by s
  */
 $messages['hu'] = array(
 	'validationstatistics' => 'Ellenőrzési statisztika',
-	'validationstatistics-users' => "A(z) '''{{SITENAME}}''' wikinek jelenleg '''{{PLURAL:$1|egy|$1}}''' [[{{MediaWiki:Validationpage}}|járőrjoggal]], valamint '''{{PLURAL:$2|egy|$2}}''' [[{{MediaWiki:Validationpage}}|lektorjoggal]] rendelkező szerkesztője van.",
-	'validationstatistics-table' => "Ezen az oldalon a névterekre bontott statisztika látható, az átirányítások nélkül.
+	'validationstatistics-users' => "A(z) '''{{SITENAME}}''' wikinek jelenleg '''[[Special:ListUsers/editor|{{PLURAL:$1|egy|$1}}]]''' [[{{MediaWiki:Validationpage}}|járőrjoggal]], valamint '''[[Special:ListUsers/reviewer|{{PLURAL:$2|egy|$2}}]]''' [[{{MediaWiki:Validationpage}}|lektorjoggal]] rendelkező szerkesztője van.
 
-'''Megjegyzés:''' az adatokat néhány órás időközönként rögzíti a gyorsítótár, így nem feltétlenül pontosak.",
+A járőrök és lektorok olyan tapasztalt szerkesztők, akik ellenőrizhetik a lapok változatait.",
+	'validationstatistics-time' => "''A következő adatok gyorsítótárból származnak, és lehet hogy nem frissek.''
+
+Azok a szerkesztések, amelyeket tapasztalt szerkesztők ellenőriztek, lektoráltnak tekinthetőek.
+
+Az átlagos várakozási idő ''nem bejelentkezett szerkesztők'' szerkesztéseinek ellenőrzésére '''$1''', a medián '''$3'''.
+$4
+Az átlagos átfutási idő [[Special:OldReviewedPages|megtekintésre váró szerkesztésekkel rendelkező lapoknál]] '''$2'''.
+Ezek a lapok ''elavultnak'' tekintendőek. Hasonlóképpen, a lapok ''szinkronizáltnak'' tekintendőek, ha a [[{{MediaWiki:Validationpage}}|stabil változat]] egyben a jelenlegi nem ellenőrzött változat (a lap utolsó változata).
+
+A lap stabil változata a legújabb elfogadott változat, amit alapértelmezetten látnak az olvasók.",
+	'validationstatistics-table' => "Ezen az oldalon a névterekre bontott statisztika látható, az átirányítások ''nélkül''.",
 	'validationstatistics-ns' => 'Névtér',
-	'validationstatistics-total' => 'Oldalak',
-	'validationstatistics-stable' => 'Ellenőrzött',
+	'validationstatistics-total' => 'Lapok',
+	'validationstatistics-stable' => 'Ellenőrizve',
 	'validationstatistics-latest' => 'Szinkronizálva',
 	'validationstatistics-synced' => 'Szinkronizálva/ellenőrizve',
 	'validationstatistics-old' => 'Elavult',
@@ -938,7 +948,8 @@ Dommet zopaß, donn Sigge als ''{{lcfirst:{{int:validationstatistics-latest}}}}'
 	'validationstatistics-reviews' => 'Mohlde en Sigg beshtätesh',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -1034,17 +1045,23 @@ $messages['mn'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'validationstatistics' => 'Statistik pengesahan',
-	'validationstatistics-users' => "'''{{SITENAME}}''' kini mempunyai {{PLURAL:$1|seorang|'''[[Special:ListUsers/editor|$1]]''' orang}} pengguna dengan hak [[{{MediaWiki:Validationpage}}|Penyunting]] dan {{PLURAL:$2|seorang|'''$2''' orang}} pengguna dengan hak [[{{MediaWiki:Validationpage}}|Pemeriksa]].",
-	'validationstatistics-table' => "Yang berikut ialah statistik bagi setiap ruang nama, tidak termasuk laman lencongan.
+	'validationstatistics-users' => "'''{{SITENAME}}''' kini mempunyai {{PLURAL:$1|seorang|'''[[Special:ListUsers/editor|$1]]''' orang}} pengguna dengan hak [[{{MediaWiki:Validationpage}}|Penyunting]] dan {{PLURAL:$2|seorang|'''$2''' orang}} pengguna '''[[Special:ListUsers/reviewer|$2]]''' dengan hak [[{{MediaWiki:Validationpage}}|Penyemak]].
 
-'''Catatan:''' data berikut diambil daripada cache yang disimpan sejak beberapa jam yang lalu dan kemungkinan besar bukan yang terkini.",
+Penyunting dan Penyemak adalah pengguna-pengguna berhak yang boleh memeriksa semakan-semakan kepada laman-laman.",
+	'validationstatistics-table' => "Statistik bagi setiap ruang nama ditunjukkan di bawah, ''melainkan'' halaman lencongan.",
 	'validationstatistics-ns' => 'Ruang nama',
 	'validationstatistics-total' => 'Laman',
 	'validationstatistics-stable' => 'Diperiksa',
-	'validationstatistics-latest' => 'Pemeriksaan terakhir',
+	'validationstatistics-latest' => 'Diselaras',
+	'validationstatistics-synced' => 'Diselaras/Disemak',
+	'validationstatistics-old' => 'Lapuk',
+	'validationstatistics-utable' => 'Di bawah adalah senarai 5 penyemak teratas dalam jam terakhir.',
+	'validationstatistics-user' => 'Pengguna',
+	'validationstatistics-reviews' => 'Semakan',
 );
 
 /** Erzya (Эрзянь)
@@ -1211,12 +1228,42 @@ Wersja oznaczona strony to najnowsza wersja, która została zaakceptowana jako 
 	'validationstatistics-reviews' => 'Liczba oznaczeń',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'validationstatistics' => 'Statìstiche ëd validassion',
+	'validationstatistics-users' => "'''{{SITENAME}}''' al moment a l'ha '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utent|utent}} con drit d'[[{{MediaWiki:Validationpage}}|Editor]] 
+e '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|utent|utent}} con drit ëd [[{{MediaWiki:Validationpage}}|Revisor]].
+
+Editor e Revisor a son utent che a peulo controlé le revision a le pàgine.",
+	'validationstatistics-time' => "''Ij dat sota a son an cache e a podrìo esse pa agiornà.''
+
+Le modìfiche che a son ëstàite controlà da utent intrà a son considrà da esse revisionà.
+
+L'atesa media ëd le modìfiche fàite da j'''utent pa intrà'' për esse revisionà a l'é '''$1'''; la median-a a l'é '''$3'''.
+$4
+L'artard medi për [[Special:OldReviewedPages|pàgine con modìfiche pa revisionà pendente]] a l'é '''$2'''. Le pàgine a son considrà '''veje'''. Ant la midema manera, le pàgine a son considrà '''sincronisà''' se la [[{{MediaWiki:Validationpage}}|vërsion stàbila]] a l'é ëdcò la vërsion sbòssa curenta.
+La vërsion stàbila ëd la pàgina a l'é la revision pì neuva che a l'é stàita aprovà për mosté a tùit ij visitador.",
+	'validationstatistics-table' => "Lë statìstiche për minca spassi nominal a son mostà sota, ''an gavand'' le pàgine ëd rediression.",
+	'validationstatistics-ns' => 'Spassi nominal',
+	'validationstatistics-total' => 'Pàgine',
+	'validationstatistics-stable' => 'Revisionà',
+	'validationstatistics-latest' => 'Sincronisà',
+	'validationstatistics-synced' => 'Sincronisà/Revisionà',
+	'validationstatistics-old' => 'Veje',
+	'validationstatistics-utable' => "Sota a-i é la lista dij prim 5 revisor ëd l'ùltima ora.",
+	'validationstatistics-user' => 'Utent',
+	'validationstatistics-reviews' => 'Revisor',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
 	'validationstatistics-ns' => 'نوم-تشيال',
 	'validationstatistics-total' => 'مخونه',
+	'validationstatistics-user' => 'کارن',
 );
 
 /** Portuguese (Português)
@@ -1363,6 +1410,23 @@ $4
 	'validationstatistics-reviews' => 'Проверок',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'validationstatistics' => 'Тургутуу статиистиката',
+	'validationstatistics-table' => "Аллара утаарыылартан ''ураты'' ааттар далларын статиистиката бэриллибит.",
+	'validationstatistics-ns' => 'Аат дала',
+	'validationstatistics-total' => 'Сирэй',
+	'validationstatistics-stable' => 'Тургутуллубут',
+	'validationstatistics-latest' => 'Хат тургутуллубут',
+	'validationstatistics-synced' => 'Хат тургутуллубуттар тургутуллубуттар истэригэр бырыаннара',
+	'validationstatistics-old' => 'Эргэрбит',
+	'validationstatistics-utable' => 'Бүтэһик чааска ордук көхтөөх 5 тургутааччы тиһигэ көстөр.',
+	'validationstatistics-user' => 'Кыттааччы',
+	'validationstatistics-reviews' => 'Бэрэбиэркэ',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1397,9 +1461,13 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
+ * @author Обрадовић Горан
  */
 $messages['sr-ec'] = array(
+	'validationstatistics-table' => "Статистике за сваки именски простор су приказане испод, ''искључујући'' странице преусмерења.",
 	'validationstatistics-ns' => 'Именски простор',
+	'validationstatistics-total' => 'Странице',
+	'validationstatistics-latest' => 'Синхронизовано',
 	'validationstatistics-old' => 'Застарело',
 );
 
@@ -1616,7 +1684,9 @@ Bản ổn định của một trang là phiên bản của trang đã được 
 	'validationstatistics-latest' => 'Đã đồng bộ',
 	'validationstatistics-synced' => 'Cập nhật/Duyệt',
 	'validationstatistics-old' => 'Lỗi thời',
+	'validationstatistics-utable' => 'Đây là danh sách top 5 người duyệt trong giờ qua.',
 	'validationstatistics-user' => 'Người dùng',
+	'validationstatistics-reviews' => 'Bản duyệt',
 );
 
 /** Volapük (Volapük)
@@ -1633,6 +1703,7 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'validationstatistics-ns' => 'נאמענטייל',
 	'validationstatistics-total' => 'בלעטער',
+	'validationstatistics-user' => 'באַניצער',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

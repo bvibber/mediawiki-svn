@@ -375,8 +375,10 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'contributiontracking-desc' => 'Adományok követése a Wikimédia adománygyűjtő kampányában',
+	'contributiontracking' => 'Adakozás nyomonkövetése',
 	'contrib-tracking-error' => 'Hiba',
-	'contrib-tracking-error-text' => 'Érvénytelen űrlapküldés',
+	'contrib-tracking-error-text' => 'Az elküldött űrlap érvénytelen',
 	'contrib-tracking-submitting' => 'Küldés a fizetés-feldolgozóhoz…',
 	'contrib-tracking-continue' => 'Ha az oldal nem irányít át automatikusan, kattints a gombra hogy befejezd az adományozást a PayPalen.',
 	'contrib-tracking-button' => 'Folytatás',
@@ -871,6 +873,7 @@ $messages['vep'] = array(
 	'contrib-tracking-error' => 'Petuz',
 	'contrib-tracking-error-text' => 'Forman vär alištuz',
 	'contrib-tracking-submitting' => 'Oigendamine maksuiden processorale...',
+	'contrib-tracking-continue' => 'Ku teid ei udesoigendanuded avtomatižešti, paindat kingiteshe, miše lahjoita rahoid PayPal-saital.',
 	'contrib-tracking-button' => 'Jatkta',
 );
 
@@ -894,6 +897,13 @@ $messages['vo'] = array(
 	'contrib-tracking-error' => 'Pöl',
 	'contrib-tracking-error-text' => 'Fometised no lonöföl',
 	'contrib-tracking-button' => 'Föfiö!',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'contrib-tracking-error' => 'גרײַז',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

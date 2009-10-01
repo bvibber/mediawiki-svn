@@ -1743,6 +1743,7 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'sitematrix-language' => 'Kel’',
+	'sitematrix-others' => 'Wikimedian toižed projektad',
 	'sitematrix-sitetotal' => 'Kaiked',
 	'sitematrix-private' => 'privatine',
 	'sitematrix-fishbowl' => 'redaktiruind om kaidetud',

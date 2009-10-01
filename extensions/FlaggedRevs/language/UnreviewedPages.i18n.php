@@ -89,7 +89,7 @@ $messages['ar'] = array(
 	'unreviewed-diff' => 'مراجعة',
 	'unreviewed-unwatched' => '(غير مراقبة)',
 	'unreviewed-watched' => '({{PLURAL:$1|لا مستخدمون نشطون يراقبون|مستخدم واحد نشط يراقب|مستخدمان نشطان يراقبان|$1 مستخدمون نشطون يراقبون|$1 مستخدمًا نشيطًا يراقبون|$1 مستخدم نشط يراقبون}})',
-	'unreviewed-list' => 'هذه الصفحة تعرض صفحات المحتويات التي لم يتم مراجعتها.',
+	'unreviewed-list' => 'هذه الصفحة تعرض صفحات المحتوى التي لم تتم مراجعتها لمستوى المحدد.',
 	'unreviewed-none' => 'لا توجد صفحات بهذه المواصفات حاليا',
 	'unreviewed-viewing' => '(تحت المراجعة)',
 	'unreviewed-hours' => '({{PLURAL:$1||ساعة واحد|ساعتان|$1 ساعات|$1 ساعة}})',
@@ -285,7 +285,7 @@ $messages['de'] = array(
 	'unreviewed-diff' => 'sichten',
 	'unreviewed-unwatched' => '(unbeobachtet)',
 	'unreviewed-watched' => '(von $1 {{PLURAL:$1|aktivem Benutzer|aktiven Benutzern}} beobachtet)',
-	'unreviewed-list' => 'Diese Spezialseite zeigt Seiten, die bisher noch nicht gesichtet wurden.',
+	'unreviewed-list' => 'Diese Spezialseite zeigt Seiten, die bisher noch nicht mit dem angegebenem Level markiert wurden.',
 	'unreviewed-none' => 'Es gibt keine Seiten, die den eingegebenen Kriterien entsprechen.',
 	'unreviewed-viewing' => '(wird überprüft)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|Stunde|Stunden}})',
@@ -548,6 +548,7 @@ $messages['haw'] = array(
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author StuB
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'right-unreviewedpages' => 'צפייה ב[[Special:UnreviewedPages|רשימת הדפים שלא נבדקו]]',
@@ -557,7 +558,7 @@ $messages['he'] = array(
 	'unreviewed-diff' => 'בדיקה',
 	'unreviewed-unwatched' => 'לא במעקב',
 	'unreviewed-watched' => '({{PLURAL:$1|משתמש פעיל אחד עוקב|$1 משתמשים פעילים עוקבים}})',
-	'unreviewed-list' => 'דף זה מכיל רשימה של דפי תוכן שלא נבדקו.',
+	'unreviewed-list' => 'דף זה מכיל רשימה של דפי תוכן שלא נבדקו עד לרמה שצויינה.',
 	'unreviewed-none' => 'אין כרגע דפים העונים לקריטריונים אלו',
 	'unreviewed-viewing' => '(בבדיקה)',
 	'unreviewed-hours' => '({{PLURAL:$1|שעה|$1 שעות|שעתיים}})',
@@ -634,15 +635,15 @@ $messages['hu'] = array(
 	'unreviewedpages' => 'Ellenőrizetlen lapok',
 	'unreviewed-legend' => 'Nem ellenőrzött tartalmú lapok listája',
 	'unreviewed-category' => 'Kategória:',
-	'unreviewed-diff' => 'Eltérések',
+	'unreviewed-diff' => 'ellenőrzés',
 	'unreviewed-unwatched' => '(nem figyelt)',
 	'unreviewed-watched' => '({{PLURAL:$1|egy|$1}} aktív szerkesztő figyeli)',
-	'unreviewed-list' => 'Ez az oldal azokat a lapokat tartalmazza, amelyek még nem lettek ellenőrizve.',
+	'unreviewed-list' => 'Ez az oldal azokat a lapokat tartalmazza, amelyek még nem lettek ellenőrizve egy megadott ellenőrzöttségi szintre.',
 	'unreviewed-none' => 'Jelenleg nincs ezeknek a feltételeknek megfelelő oldal.',
-	'unreviewed-viewing' => '(megtekintés alatt)',
+	'unreviewed-viewing' => '(ellenőrzés alatt)',
 	'unreviewed-hours' => '({{PLURAL:$1|egy|$1}} óra)',
 	'unreviewed-days' => '({{PLURAL:$1|egy|$1}} nap)',
-	'unreviewed-recent' => '(kevesebb mint egy órája)',
+	'unreviewed-recent' => '(kevesebb, mint egy órája)',
 );
 
 /** Interlingua (Interlingua)
@@ -657,7 +658,7 @@ $messages['ia'] = array(
 	'unreviewed-diff' => 'revider',
 	'unreviewed-unwatched' => '(non observate)',
 	'unreviewed-watched' => '(observate per $1 {{PLURAL:$1|usator|usatores}} active)',
-	'unreviewed-list' => 'Iste pagina lista le paginas de contento que non ha essite revidite.',
+	'unreviewed-list' => 'Iste pagina lista le paginas de contento que non ha essite revidite al nivello specificate.',
 	'unreviewed-none' => 'Al momento il non ha paginas que corresponde a iste criterios',
 	'unreviewed-viewing' => '(sub revision)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|hora|horas}})',
@@ -687,10 +688,16 @@ $messages['id'] = array(
 
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
+ * @author Spacebirdy
  */
 $messages['is'] = array(
+	'right-unreviewedpages' => 'Skoða [[Special:UnreviewedPages|lista yfir óendurskoðaðar síður]]',
+	'unreviewedpages' => 'Óendurskoðaðar síður',
 	'unreviewed-category' => 'Flokkur:',
-	'unreviewed-diff' => 'Breytingar',
+	'unreviewed-diff' => 'endurskoða',
+	'unreviewed-unwatched' => '(án eftirlits)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|klukkustund|klukkustundir}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|dagur|dagar}})',
 );
 
 /** Italian (Italiano)
@@ -833,11 +840,12 @@ $messages['ksh'] = array(
 	'unreviewed-recent' => '(winnijer wie en Shtund)',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'unreviewed-category' => 'Klass:',
+	'unreviewed-category' => 'Class:',
 );
 
 /** Latin (Latina)
@@ -916,6 +924,7 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Praveenp
  * @author Sadik Khalid
  * @author Shijualex
  */
@@ -926,7 +935,7 @@ $messages['ml'] = array(
 	'unreviewed-category' => 'വര്‍ഗ്ഗം:',
 	'unreviewed-diff' => 'പരിശോധന',
 	'unreviewed-unwatched' => '(ശ്രദ്ധിക്കാത്തവ)',
-	'unreviewed-watched' => '($1 {{PLURAL:$1|ഉപയോക്താവ്|ഉപയോക്താക്കള്‍}} ശ്രദ്ധിക്കുന്നുണ്ട്)',
+	'unreviewed-watched' => '({{PLURAL:$1|ഒരു സജീവ ഉപയോക്താവ്|$1 സജീവ ഉപയോക്താക്കള്‍}} ശ്രദ്ധിക്കുന്നുണ്ട്)',
 	'unreviewed-list' => 'പരിശോധിക്കാത്ത ലേഖനങ്ങളുടെ പട്ടിക ഈ താളില്‍ പ്രദര്‍ശിപ്പിക്കുന്നു.',
 	'unreviewed-none' => 'ഈ മാനദണ്ഡം പാലിക്കുന്ന താളുകളൊന്നും നിലവിലില്ല',
 );
@@ -949,17 +958,21 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'right-unreviewedpages' => 'Lihat senarai laman yang belum diperiksa',
-	'unreviewedpages' => 'Laman belum diperiksa',
+	'unreviewedpages' => 'Halaman belum diperiksa',
 	'unreviewed-legend' => 'Senarai laman kandungan yang belum diperiksa',
 	'unreviewed-category' => 'Kategori:',
-	'unreviewed-diff' => 'periksa',
+	'unreviewed-diff' => 'semak',
 	'unreviewed-unwatched' => '(tidak dipantau)',
-	'unreviewed-watched' => '(dipantau oleh $1 orang pengguna)',
-	'unreviewed-list' => 'Yang berikut ialah senarai laman kandungan yang belum diperiksa.',
+	'unreviewed-watched' => '(dipantau oleh {{PLURAL:$1|seorang|$1 orang}} pengguna aktif)',
+	'unreviewed-list' => 'Halaman ini menyenaraikan halaman kandungan yang tidak lagi disemak kepada tahap yang dinyatakan.',
 	'unreviewed-none' => 'Tiada laman yang memenuhi kriteria ini',
+	'unreviewed-viewing' => '(dalam semakan)',
+	'unreviewed-hours' => '({{PLURAL:$1|sejam|$1 jam}})',
+	'unreviewed-recent' => '(kurang drpd. 1 jam)',
 );
 
 /** Erzya (Эрзянь)
@@ -1132,6 +1145,8 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'unreviewed-category' => 'وېشنيزه:',
 	'unreviewed-diff' => 'مخکتنه',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|ساعت|ساعتونه}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|ورځ|ورځې}})',
 );
 
 /** Portuguese (Português)
@@ -1239,10 +1254,19 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'right-unreviewedpages' => '[[Special:UnreviewedPages|Көрүллүбэтэх сирэйдэр тиһиктэрин]] көрүү',
 	'unreviewedpages' => 'Ырытыллыбатах сирэйдэр',
+	'unreviewed-legend' => 'Бэрэбиэркэлэммэтэх сирэйдэр тиһиктэрэ',
 	'unreviewed-category' => 'Категория:',
-	'unreviewed-diff' => 'Уларыйыылар',
-	'unreviewed-list' => 'Бу көрүллүбэтэх (бэрэбиэркэлэммэтэх) сирэйдэр испииһэктэрэ.',
+	'unreviewed-diff' => 'тургутуу',
+	'unreviewed-unwatched' => '(кэтээбэттэр)',
+	'unreviewed-watched' => '($1 көхтөөх кыттааччы кэтиир)',
+	'unreviewed-list' => 'Бу сирэйгэ этиллибит таһымынан сыаналамматах сирэйдэр көстөллөр.',
+	'unreviewed-none' => 'Эппит таһымҥар эппиэттиир ыстатыйа билигин суох эбит',
+	'unreviewed-viewing' => '(тургутуллаллар)',
+	'unreviewed-hours' => '($1 чаас)',
+	'unreviewed-days' => '($1 {{PLURAL:$1|хонук|күн}})',
+	'unreviewed-recent' => '(1 чаастан кылгас)',
 );
 
 /** Slovak (Slovenčina)
@@ -1356,11 +1380,12 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'right-unreviewedpages' => '[[Special:UnreviewedPages|సమీక్షించని పేజీల జాబితా]]ని చూడండి',
 	'unreviewedpages' => 'సమీక్షించని పేజీలు',
+	'unreviewed-legend' => 'సమీక్షించని పాఠ్య పేజీల జాబితా',
 	'unreviewed-category' => 'వర్గం:',
 	'unreviewed-diff' => 'సమీక్షించండి',
 	'unreviewed-unwatched' => '(వీక్షణలో లేనివి)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|క్రియాశీల వాడుకరి|గురు క్రియాశీల వాడుకరులు}} వీక్షిస్తున్నారు)',
-	'unreviewed-list' => 'ఈ పేజీలో సమీక్షించని వ్యాసాల జాబితా ప్రదర్సిన్పబడుతోంది.',
+	'unreviewed-list' => 'ఈ పేజీలో పేర్కొన్న స్థాయి వరకు సమీక్షించని వ్యాసాల జాబితా ప్రదర్సింపబడుతోంది.',
 	'unreviewed-viewing' => '(సమీక్షలో ఉంది)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|గంట|గంటలు}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|రోజు|రోజులు}})',
@@ -1448,9 +1473,12 @@ $messages['vec'] = array(
 	'unreviewed-diff' => 'esamina',
 	'unreviewed-unwatched' => '(non osservà)',
 	'unreviewed-watched' => "($1 {{PLURAL:$1|utente el|utenti i}} tien d'ocio sta pagina)",
-	'unreviewed-list' => 'Sta pagina la elenca le pagine che no le xe stà gnancora riesaminà.',
+	'unreviewed-list' => 'Sta pagina la elenca le pagine che no le xe stà gnancora riesaminà fin al livèl indicà.',
 	'unreviewed-none' => 'No ghe xe atualmente pagine che sodisfa sti criteri',
 	'unreviewed-viewing' => '(in corso de revision)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|ora|ore}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|zorno|zorni}})',
+	'unreviewed-recent' => "(manco de un'ora)",
 );
 
 /** Veps (Vepsan kel')
@@ -1484,7 +1512,7 @@ $messages['vi'] = array(
 	'unreviewed-diff' => 'duyệt',
 	'unreviewed-unwatched' => '(chưa theo dõi)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|thành viên|thành viên}} tích cực đang theo dõi)',
-	'unreviewed-list' => 'Trang này liệt kê những trang nội dung chưa được duyệt.',
+	'unreviewed-list' => 'Trang này liệt kê những trang nội dung chưa được duyệt thành cấp độ chỉ định.',
 	'unreviewed-none' => 'Hiện không có trang nào thỏa mãn tiêu chí này',
 	'unreviewed-viewing' => '(đang duyệt)',
 	'unreviewed-hours' => '($1 tiếng)',

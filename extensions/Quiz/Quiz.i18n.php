@@ -345,15 +345,18 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
+	'quiz_desc' => 'Tillader oprettelse af quizzer',
+	'quiz_addedPoints' => '{{PLURAL:$1|Point|point}} for korrekt svar',
 	'quiz_colorRight' => 'Ret',
 	'quiz_colorWrong' => 'Fejl',
 	'quiz_colorNA' => 'Ikke svared',
 	'quiz_colorError' => 'syntaksfejl',
 	'quiz_correction' => 'Send',
-	'quiz_points' => '$1 | $2 poeng',
+	'quiz_points' => '$1 | $2 {{PLURAL:$2|point|point}}',
 );
 
 /** German (Deutsch)

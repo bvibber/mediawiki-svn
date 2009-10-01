@@ -509,6 +509,13 @@ $messages['vec'] = array(
 	'antibot-desc' => 'Un semplice framework par el controlo dei spambot e par el payload dei trigger',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'antibot-desc' => 'Järgeline avaruz spambotiden kodvdes da tarbhašt ličked ližates',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

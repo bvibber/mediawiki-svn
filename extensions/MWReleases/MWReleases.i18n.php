@@ -43,6 +43,13 @@ $messages['bs'] = array(
 	'mwreleases-desc' => 'Dodaje [[Mediawiki:Mwreleases-list|spisak]] podržanih izdanja, dostupnih preko API',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'mwreleases-desc' => 'Poskytuje [[Mediawiki:Mwreleases-list|seznam]] podporovaných vydání, dostupný pomocí API',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
