@@ -12,9 +12,8 @@ class SpecialClickTracking extends SpecialPage {
 	private $top_results = 10;
 	private $normalize_top_results = false;
 	private $normalize_results = false;
-	private $minimum_date = '20090815'; //YYYYMMDD (+1 for today)
 	private $end_timeframe = '20090902';
-	
+	private static $minimum_date = '20090815'; //YYYYMMDD (+1 for today)
 	
 	private static $userTypes = array("basic" => 0, "intermediate" => 1, "expert" => 2);
 	private $user_defs = array();
@@ -137,7 +136,7 @@ class SpecialClickTracking extends SpecialPage {
 		//$wgOut->addHTML($this->buildControlBox());
 		
 		$wgOut->addHTML($this->buildChartDialog());
-		$wgOut->addHTML($this->buildUserDefDialog());
+		$wgOut->addHTML($this->buildUserDefBlankDialog());
 		
 	}
 	
@@ -233,6 +232,80 @@ class SpecialClickTracking extends SpecialPage {
 						implode( "," , $intermediateUserData ) . "|" . implode( "," , $basicUserData ),
 			'chds' => "0,$max,0,$max,0,$max"
 			));
+	}
+	
+	
+	function buildUserDefBlankDialog(){
+		$control = "";
+		$control .= Xml::openElement("div", array("id" => "user_def_dialog", "class" => "dialog"));
+		
+		//currently editing...----|
+		$control .= Xml::openElement("form", array("id" => "user_definition_form", "class" => "user_def_form"));
+		$control .= Xml::openElement("fieldset", array("id" => "user_def_alter_fieldset"));
+		$control .= Xml::openElement("legend", array("id" => "user_def_alter_legend"));
+		$control .= wfMsg( "editing" );
+		$control .= Xml::closeElement("legend");
+		
+		//[] anonymous users?
+		$control .= Xml::openElement("div", array("id" => "anon_users_div", "class" => "checkbox_div control_div"));
+		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "anon_users_checkbox", "class" => "user_def_checkbox"));
+		$control .= Xml::closeElement("input");
+		$control .= wfMsg("anon-users");
+		$control .= Xml::closeElement("div");
+		
+		// ----------------
+		$control .= Xml::openElement("hr");
+		$control .= Xml::closeElement("hr");
+		$control .= Xml::openElement("div", array("id" => "contrib_opts_container"));
+		
+		// [] users with contributions [>=V] [n    ]
+		$control .= Xml::openElement("div", array("id" => "total_users_contrib_div", "class" => "checkbox_div control_div"));
+		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_checkbox", "class" => "user_def_checkbox"));
+		$control .= Xml::closeElement("input");
+		$control .= wfMsg("user-contribs");
+		
+		
+		$control .= Xml::closeElement("div");
+		
+		// [] contributions in timespan 1
+		$control .= Xml::openElement("div", array("id" => "contrib_span_1_div", "class" => "checkbox_div control_div"));
+		
+		$control .= Xml::openElement("div", array("id" => "contrib_span_1_text_div", "class" => "checkbox_div"));
+		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_span_1_checkbox", "class" => "user_def_checkbox"));
+		$control .= Xml::closeElement("input");
+		$control .= wfMsg("user-span") . " 1";
+		$control .= Xml::closeElement("div");
+		$control .= Xml::closeElement("div");
+		
+		// [] contributions in timespan 2
+		$control .= Xml::openElement("div", array("id" => "contrib_span_2_div", "class" => "checkbox_div control_div"));
+		
+		$control .= Xml::openElement("div", array("id" => "contrib_span_2_text_div", "class" => "checkbox_div"));
+		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_span_2_checkbox", "class" => "user_def_checkbox"));
+		$control .= Xml::closeElement("input");
+		$control .= wfMsg("user-span") . " 2";
+		$control .= Xml::closeElement("div");
+		$control .= Xml::closeElement("div");
+		
+		// [] contributions in timespan 3
+		$control .= Xml::openElement("div", array("id" => "contrib_span_3_div", "class" => "checkbox_div control_div"));
+		
+		$control .= Xml::openElement("div", array("id" => "contrib_span_3_text_div", "class" => "checkbox_div"));
+		$control .= Xml::openElement("input", array("type" => "checkbox", "id" => "contrib_span_3_checkbox", "class" => "user_def_checkbox"));
+		$control .= Xml::closeElement("input");
+		$control .= wfMsg("user-span") . " 3";
+		$control .= Xml::closeElement("div");
+		$control .= Xml::closeElement("div");
+		
+		
+		
+		
+		$control .= Xml::closeElement("div");//close contrib opts
+		
+		$control .= Xml::closeElement("fieldset");
+		$control .= Xml::closeElement("form");	
+		$control .= Xml::closeElement("div");
+		return $control;
 	}
 	
 	
@@ -385,7 +458,7 @@ class SpecialClickTracking extends SpecialPage {
 		$control .= Xml::closeElement("td");
 		
 		$control .= Xml::openElement("td", array("id" => "start_date_textarea"));
-		$control .= Xml::openElement("input", array("type" => "text", "id" => "start_date", "class" => "date_range_input"));
+		$control .= Xml::openElement("input", array("type" => "text", "id" => "start_date", "class" => "date_range_input", "value" => self::$minimum_date));
 		$control .= Xml::closeElement("input");
 		$control .= Xml::closeElement("td");
 		
