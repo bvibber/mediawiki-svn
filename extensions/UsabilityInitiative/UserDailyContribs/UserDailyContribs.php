@@ -41,3 +41,4 @@ $wgExtensionMessagesFiles['UserDailyContribs'] = $dir . 'UserDailyContribs.i18n.
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'UserDailyContribsHooks::schema';
 $wgHooks['ArticleSaveComplete'][] = 'UserDailyContribsHooks::storeNewContrib';
+$wgHooks['ParserTestTables'][] = 'UserDailyContribsHooks::parserTestTables';

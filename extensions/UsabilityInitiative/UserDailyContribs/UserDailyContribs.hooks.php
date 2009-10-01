@@ -20,6 +20,15 @@ class UserDailyContribsHooks {
 		return true;
 	}
 	
+	/**
+	 * Hook for making sure parser tests pass
+	 * @param $tables
+	 * @return unknown_type
+	 */
+	public static function parserTestTables( &$tables ) {
+    	$tables[] = 'user_daily_contribs';
+    	return true;
+	}
 	
 	/**
 	 * Stores a new contribution
