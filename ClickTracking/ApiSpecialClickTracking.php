@@ -15,8 +15,6 @@ class ApiSpecialClickTracking extends ApiBase {
 	 */
 	public function execute(){
 		
-		$file = fopen("/Users/nimishgautam/logs/PHPLOG.txt", "a");
-	 
 		
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
@@ -25,10 +23,6 @@ class ApiSpecialClickTracking extends ApiBase {
 		$enddate = $params['enddate'];
 		$increment = $params['increment'];
 		$userDefString = $params['userdefs'];
-		
-		fwrite($file, var_export($_REQUEST, true) . "\n\n");
-		fwrite($file, var_export($params, true). "\n\n");
-		fclose($file);	
 		
 		$click_data = array();
 		try{

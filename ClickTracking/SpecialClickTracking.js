@@ -29,7 +29,7 @@
 		//change name
 		$("#user_def_alter_legend").text($("#user_def_alter_legend").data("defaultChangeText") + " " + defName);
 		$("#user_def_alter_legend").data("currentlyEditing", defName);
-		console.dir(userDef);
+		
 		
 		var setContribs = function(conditionArray, contribName){
 			
@@ -51,7 +51,6 @@
 			initialDiv.append(textDiv);
 			
 			var i=0;
-			console.dir(conditionArray);
 			for( var condition in conditionArray){
 				i++;
 				conditionDiv = $("<div>").attr("id", contribName + "_range_" + i + "_div");
