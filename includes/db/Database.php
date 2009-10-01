@@ -500,7 +500,7 @@ abstract class DatabaseBase {
 			if ( $isMaster ) {
 				wfDebugLog( 'db-query-master', "SQL-master: $sqlx\n" );
 			} else {
-				wfDebug( 'db-query', "SQL: $sqlx\n" );
+				wfDebugLog( 'db-query', "SQL: $sqlx\n" );
 			}
 		}
 
