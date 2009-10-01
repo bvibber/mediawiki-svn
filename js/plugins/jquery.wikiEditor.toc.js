@@ -41,7 +41,6 @@ fn: {
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
-		$.wikiEditor.modules.toc.fn.update( context );
 		context.$textarea
 			.delayedBind( 1000, 'keyup encapsulateSelection change',
 				function( event ) {

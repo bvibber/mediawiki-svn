@@ -1280,9 +1280,6 @@ if ( typeof context == 'undefined' ) {
 			}
 		}
 	}
-	//Each browser seems to do this differently, so let's keep our editor
-	//consistent by always starting at the begining
-	context.$textarea.setSelection( 0 ).scrollToCaretPosition();
 }
 
 // If there was a configuration passed, it's assumed to be for the addModule
@@ -2053,7 +2050,6 @@ fn: {
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
-		$.wikiEditor.modules.toc.fn.update( context );
 		context.$textarea
 			.delayedBind( 1000, 'keyup encapsulateSelection change',
 				function( event ) {
