@@ -23,10 +23,9 @@ fn: {
 		if ( '$toc' in context.modules ) {
 			return;
 		}
-		context.modules.$toc = $( '<div></div>' )
+		context.modules.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
 			.attr( 'id', 'wikiEditor-ui-toc' );
-		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$ui.find( '.wikiEditor-ui-bottom' )
 			.append( context.modules.$toc );
 		context.modules.$toc.height(
@@ -35,12 +34,13 @@ fn: {
 		// Make some css modifications to make room for the toc on the right...
 		// Perhaps this could be configurable?
 		context.modules.$toc
-			.css( 'width', '12em' )
-			.css( 'marginTop', -( context.$ui.find( '.wikiEditor-ui-bottom' ).height() ) );
+			.css( { 'width': '12em',
+				'marginTop': -( context.$ui.find( '.wikiEditor-ui-bottom' ).height() )
+			} );
 		context.$ui.find( '.wikiEditor-ui-text' )
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
-		$.wikiEditor.modules.toc.fn.build( context );
+		$.wikiEditor.modules.toc.fn.build( context, config );
 		context.$textarea
 			.delayedBind( 1000, 'keyup encapsulateSelection change',
 				function( event ) {
@@ -146,11 +146,11 @@ fn: {
 		 * @param {Object} structure Structured outline
 		 */
 		function buildList( structure ) {
-			var list = $( '<ul></ul>' );
+			var list = $( '<ul />' );
 			for ( i in structure ) {
-				var item = $( '<li></li>' )
+				var item = $( '<li />' )
 					.append(
-						$( '<a></a>' )
+						$( '<a />' )
 							.attr( 'href', '#' )
 							.addClass( 'section-' + structure[i].index )
 							.data( 'textbox', context.$textarea )
