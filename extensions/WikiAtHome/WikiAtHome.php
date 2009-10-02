@@ -55,7 +55,7 @@ $wgExtensionCredits['media'][] = array(
 	'name'           => 'Wiki@Home',
 	'author'         => 'Michael Dale',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikiAtHome',
-	'description'    => 'Enables distributing transcoding video jobs to clients using firefogg.',
+	'description'    => 'Enables distributing transcoding & flattening video jobs to clients using firefogg.',
 	'descriptionmsg' => 'wah-desc',
 );
 
@@ -236,7 +236,7 @@ $wgJobTypeConfig = array(
 		'chunkDuration'=> 0,
 		// if the api should assign the job on the Special:WikiAtHome page
 		// (or via other external api scripts)
-		'assignAtHome' 	=> false,
+		'assignAtHome' 	=> true,
 		'assignInternal'=> true
 	),
 	'flatten'=> array(
@@ -253,7 +253,7 @@ $wgClientSearchInterval = 60;
 //note first "in" wins & if once time is up we decrement set_c
 $wgJobTimeOut = 60*10; //10 min
 
-//this meaters how many copies of any given stream we should send out as part of a job
+//this sets how many copies of any given stream we should send out as part of a job
 $wgNumberOfClientsPerJobSet = 25;
 
 //what to encode to:

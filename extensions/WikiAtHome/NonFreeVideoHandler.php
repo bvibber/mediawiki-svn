@@ -311,7 +311,7 @@ class MediaQueueTransformOutput extends MediaTransformOutput {
 			$waitHtml = wfMsgWikiHtml( 'wah-transcode-working' ) . '<br />';
 			//check if we doing it ~at~ home then we know how far it is done:
 			if( $wgJobTypeConfig['transcode'][ 'assignAtHome' ] ){
-		 		$waitHtml += wfMsgExt('wah-transcode-helpout', array('parsemag'), $this->percDone);
+		 		$waitHtml .= wfMsgExt('wah-transcode-helpout', array('parsemag'), $this->percDone);
 			}
 		}
 
