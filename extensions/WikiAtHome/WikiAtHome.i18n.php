@@ -41,7 +41,7 @@ $messages['en'] = array(
 	"wah-menu-pref"	=> "Preferences",
 	"wah-loading"	=> "loading Wiki@Home interface <blink>...</blink>",
 
-	"wah-lookingforjob"	=> "Looking For a job <blink>...</blink>",
+	"wah-lookingforjob"	=> "Looking for a job <blink>...</blink>",
 
 	"wah-start-on-visit" => "Start up Wiki@Home any time I visit this site.",
 	"wah-jobs-while-away"=> "Only run jobs when I have been away from my browser for 20 minutes.",
@@ -49,15 +49,15 @@ $messages['en'] = array(
 	"wah-nojobfound" 	=> "No job found. Will retry in $1.",
 
 	"wah-notoken-login" => "Could not get a token. Are you logged in?",
-	"wah-apioff"		=> "The Wiki@Home API appears to be off. Please Contact your wiki administrator.",
+	"wah-apioff"		=> "The Wiki@Home API appears to be off. Please contact the wiki administrator.",
 
 	"wah-doing-job"		=> "Job: <i>$1</i> on: <i>$2</i>",
-	"wah-downloading"	=> "Downloading file <i>$1%</i> done",
-	"wah-encoding"		=> "Encoding file <i>$1%</i> done",
+	"wah-downloading"	=> "Downloading file <i>$1%</i> complete",
+	"wah-encoding"		=> "Encoding file <i>$1%</i> complete",
 
 	"wah-encoding-fail"	=> "Encoding failed. Please reload this page or try back later.",
 
-	"wah-uploading"		=> "Uploading file <i>$1</i> done",
+	"wah-uploading"		=> "Uploading file <i>$1</i> complete",
 	"wah-uploadfail"	=> "Uploading failed",
 	"wah-doneuploading" => "Upload complete. Thank you for your contribution.",
 

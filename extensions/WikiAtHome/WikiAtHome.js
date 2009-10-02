@@ -2,34 +2,34 @@
 
 //load msgs:
 loadGM({
-	"wah-menu-jobs"	: "Jobs",
+	"wah-menu-jobs" : "Jobs",
 	"wah-menu-stats": "Stats",
-	"wah-menu-pref"	: "Prefrences",
-	"wah-loading"	: "loading Wiki@Home interface <blink>...</blink>",
+	"wah-menu-pref" : "Prefrences",
+	"wah-loading" : "loading Wiki@Home interface <blink>...</blink>",
 	
-	"wah-lookingforjob"	: "Looking For a job <blink>...</blink>",
+	"wah-lookingforjob" : "Looking For a job <blink>...</blink>",
 	
 	"wah-start-on-visit": "Start up Wiki@Home anytime I visit this site.",
 	"wah-jobs-while-away": "Only run jobs when I have been away from my browser for 20 minutes.",
 	
-	"wah-nojobfound" 	: "No job found. Will retry in $1.",
+	"wah-nojobfound" : "No job found. Will retry in $1.",
 	
 	"wah-notoken-login" : "Could not get a token. Are you logged in?",
-	"wah-apioff"		: "The API appears to be off. Please contact your wiki administrator.",
+	"wah-apioff" : "The API appears to be off. Please contact the wiki administrator.",
 	
-	"wah-doing-job"		: "Job: <i>$1</i> on: <i>$2</i>",
-	"wah-downloading"	: "Downloading file <i>$1%</i> complete",
-	"wah-encoding"		: "Encoding file <i>$1%</i> complete",
+	"wah-doing-job" : "Job: <i>$1</i> on: <i>$2</i>",
+	"wah-downloading" : "Downloading file <i>$1%</i> complete",
+	"wah-encoding" : "Encoding file <i>$1%</i> complete",
 	
-	"wah-encoding-fail"	: "Encoding failed. Please reload this page or try back latter.",
+	"wah-encoding-fail" : "Encoding failed. Please reload this page or try back later.",
 	
-	"wah-uploading"		: "Uploading file <i>$1</i> done",
-	"wah-uploadfail"	: "Uploading failed",
+	"wah-uploading" : "Uploading file <i>$1</i> complete",
+	"wah-uploadfail" : "Uploading failed",
 	"wah-doneuploading" : "Upload complete. Thank you for your contribution.",
 	
 	"wah-needs-firefogg": "To participate in Wiki@Home you need to install Firefogg."
 	
-	"wah-api-error"	: "There has been an error with the API. Please try back later."
+	"wah-api-error" : "There has been an error with the API. Please try back later."
 	
 });
 
