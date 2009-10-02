@@ -5,6 +5,11 @@
  */
 
 class ApiMWReleases extends ApiBase {
+	
+	// Possible releases. Current is the latest stable,
+	// Alpha is trunk, Beta is release candidates
+	private $tags = array( 'current', 'alpha', 'beta' );
+	
 	public function __construct($main, $action) {
 		parent :: __construct($main, $action);
 	}
@@ -20,8 +25,8 @@ class ApiMWReleases extends ApiBase {
 			if( strpos( $release, ':' ) !== false ) {
 				list( $status, $version ) = explode( ':', $release, 2 );
 				$r = array( 'version' => $version );
-				if( $status == 'current' )
-					$r['current'] = '';
+				if( in_array( $status, $this->tags ) )
+					$r[$status] = '';
 				$results[] = $r;
 			}
 		}
