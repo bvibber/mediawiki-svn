@@ -383,6 +383,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -397,7 +398,7 @@ A SmoothGallery legtöbb beállítását támogatja',
 Adj hozzá legalább egy képet.',
 	'smoothgallery-no-images' => 'Ebben a galériában nincsenek képek.
 
-Ellenőrizd hogy a kért {{PLURAL:$3|kép létezik|képek léteznek}}.
+Ellenőrizd, hogy a kért {{PLURAL:$3|kép létezik-e|képek léteznek-e}}.
 A következő {{PLURAL:$2|kép nem található|képek nem találhatóak}}: $1',
 	'smoothgallery-invalid-images' => 'A következő kért {{PLURAL:$2|kép érvénytelen típusú|képek érvénytelen típusúak}}: $1',
 	'smoothgallery-unexpected-error' => 'Nem várt hiba történt.

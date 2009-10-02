@@ -132,6 +132,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'flvhandler_desc' => 'Permitte le insertion de files video Flash (.flv) como files normal (p.ex. <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(Video Flash, $1 × $2 pixeles, grandor del file: $3)',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -204,5 +205,12 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'flvhandler_desc' => 'Povoliť Flash video (.flv) na mieste obrázkov v štandardných značkách obrázkov (napr. <nowiki>[[Image:Movie.flv]]</nowiki>)',
 	'flv-long-desc' => '(Flash video, $1 × $2 pixlov, veľkosť súboru: $3)',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'flv-long-desc' => '(Flaş Video, $1 × $2 piksel, dosya boyutu: $3)',
 );
 

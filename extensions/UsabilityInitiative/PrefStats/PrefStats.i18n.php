@@ -387,6 +387,19 @@ Klikni na jadne z nich, aby se statistiku wó nim woglědał.',
 	'prefstats-legend-in' => 'Pśizjawjony',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'prefstats-xaxis' => 'Ɣeyiɣi (gaƒoƒowo)',
+	'prefstats-factor-hour' => 'gaƒoƒo',
+	'prefstats-factor-sixhours' => 'gaƒoƒo ade',
+	'prefstats-factor-day' => 'ŋkeke',
+	'prefstats-factor-week' => 'kɔsiɖa',
+	'prefstats-factor-twoweeks' => 'kɔsiɖa eve',
+	'prefstats-factor-fourweeks' => 'kɔsiɖa ene',
+);
+
 /** Greek (Ελληνικά)
  * @author Omnipaedista
  * @author ZaDiak
@@ -1106,6 +1119,37 @@ Klickt op eng fir Statistiken iwwer hire Gebrauch ze gesinn.',
 	'prefstats-factor-default' => "zréck op d'Standard-Gréisst",
 	'prefstats-legend-out' => 'Mécht net mat',
 	'prefstats-legend-in' => 'Mécht mat',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'prefstats' => 'Prifferensiesjtattistieke',
+	'prefstats-desc' => 'Sjtattistieke biehauwe euver wieväöl gebroekers bepaolde prifferensies höbbe ingesjakeld',
+	'prefstats-title' => 'Prifferensiesjtattistieke',
+	'prefstats-list-intro' => "Insjtellinge veur de ongerstaonde prifferensies waere biegehauwe.
+Klik op 'n prifferensie óm de sjtattistieke te betrachte.",
+	'prefstats-noprefs' => 'D\'r waere gein prifferensies biegehauwe.
+Sjtèl $wgPrefStatsTrackPrefs in óm prifferensies bie te hauwe.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|gebroeker haet|gebroekers höbbe}} dees prifferensie ingesjakeld sinds de prifferensiesjtattistieke geaktiveerd zeen.
+** $2 {{PLURAL:$2|gebroeker haet|gebroekers höbbe}} deze nog ummer ingesjakeld
+** $3 {{PLURAL:$3|gebroeker haet|gebroekers höbbe}} deze weer oetgesjakeld',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|gebroeker haet|gebroekers höbbe}} deze prifferensie ingesjakeld sinds de prifferentiesjtattistieke zeen geaktiveerd.
+** $2 {{PLURAL:$2|gebroeker haet|gebroekers höbbe}} deze nog ummer ingesjakeld
+** $3 {{PLURAL:$3|gebroeker haet|gebroekers höbbe}} deze weer oetgesjakeld
+* In totaal {{PLURAL:$4|haet $4 gebroeker|höbbe $4 gebroekers}} deze prifferentie ingesjakeld.',
+	'prefstats-xaxis' => 'Door (oere)',
+	'prefstats-factors' => 'Weergeve per: $1',
+	'prefstats-factor-hour' => 'oer',
+	'prefstats-factor-sixhours' => 'zès oer',
+	'prefstats-factor-day' => 'daag',
+	'prefstats-factor-week' => 'waek',
+	'prefstats-factor-twoweeks' => 'twie waeke',
+	'prefstats-factor-fourweeks' => 'veer waeke',
+	'prefstats-factor-default' => 'trök nao de sjtandaardsjaol',
+	'prefstats-legend-out' => 'Aafgemeld',
+	'prefstats-legend-in' => 'Aangemeld',
 );
 
 /** Lithuanian (Lietuvių)

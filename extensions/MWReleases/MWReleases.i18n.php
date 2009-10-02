@@ -226,6 +226,20 @@ $messages['sk'] = array(
 	'mwreleases-desc' => 'Pridáva [[Mediawiki:Mwreleases-list|zoznam]] podporovaných vydaní prístupných prostredníctvom API',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'mwreleases-desc' => 'Desteklenen sürümlerin bir [[Mediawiki:Mwreleases-list|listesini]] ekler, API ile erişilebilir',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'mwreleases-desc' => 'Thêm [[Mediawiki:Mwreleases-list|danh sách]] phiên bản được hỗ trợ, có thể truy cập qua API.',
+);
+
 $messages['yue'] = array(
 	'mwreleases-desc' => '加入一個支援發佈嘅[[Mediawiki:Mwreleases-list|一覽]]，可經API訪問',
 );

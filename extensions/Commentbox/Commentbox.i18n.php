@@ -306,6 +306,25 @@ Hozzáfűznivalód van ehhez az oldalhoz? Írd le itt, vagy <span class="plainli
 	'commentbox-error-empty-comment' => 'Az üres hozzászólás nem engedélyezett!',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'commentbox-desc' => 'Adde un quadro pro commentos a certe paginas',
+	'commentbox-intro' => '== Adde un commento... ==
+Ha tu un commento super iste pagina? Adde lo hic o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} modifica le pagina directemente]</span>.',
+	'commentbox-savebutton' => 'Publicar commento',
+	'commentbox-name' => 'Nomine:',
+	'commentbox-name-explanation' => '<small>(Aviso: Si tu [[Special:UserLogin|aperi un session]], il non essera necessari completar tu nomine hic manualmente)</small>',
+	'commentbox-log' => 'Nove commentos',
+	'commentbox-first-comment-heading' => '== Commentos ==',
+	'commentbox-regex' => '/\\n==\\s*Commentos\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Error durante le creation del commento',
+	'commentbox-error-page-nonexistent' => 'Iste pagina non existe!',
+	'commentbox-error-namespace' => 'Commentos non es permittite in iste spatio de nomines!',
+	'commentbox-error-empty-comment' => 'Commentos vacue non es permittite!',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
@@ -576,6 +595,33 @@ $messages['te'] = array(
 	'commentbox-name' => 'పేరు:',
 	'commentbox-log' => 'కొత్త వ్యాఖ్యలు',
 	'commentbox-first-comment-heading' => '== వ్యాఖ్యలు ==',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'commentbox-name' => 'İsim:',
+	'commentbox-log' => 'Yeni yorumlar',
+	'commentbox-first-comment-heading' => '==Yorumlar ==',
+);
+
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'commentbox-intro' => '== Ajungi on comento ... ==
+Gheto comenti so sta paxena? Ajungi qui o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} modifega diretamente a paxena]</span>.',
+	'commentbox-savebutton' => 'Salva comento',
+	'commentbox-name' => 'Nome:',
+	'commentbox-name-explanation' => "<small>(Sujerimento: Se se [[Special:UserLogin|effetua l'acesso]], non se deve inserire manualmente qui el proprio nome)</small>",
+	'commentbox-log' => 'Novi comenti',
+	'commentbox-first-comment-heading' => '== Comenti ==',
+	'commentbox-regex' => '/\\n==\\s*Comenti\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Erore durante a creasion del comento',
+	'commentbox-error-page-nonexistent' => 'Sta paxena non esiste',
+	'commentbox-error-namespace' => 'No i xe amessi comenti in sto namespace',
+	'commentbox-error-empty-comment' => 'Comenti vodi no i xe amessi!',
 );
 
 /** Veps (Vepsan kel')

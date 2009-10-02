@@ -707,6 +707,7 @@ $messages['da'] = array(
  * @author Melancholie
  * @author Pill
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'whitelist-desc' => 'Zugriffsrechte von beschränkten Benutzern bearbeiten',
@@ -756,7 +757,7 @@ Diese Seite gilt nur für beschränkte Bentzer.",
 	'whitelistnever' => 'niemals',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Übereinstimmung|Übereinstimmungen}}',
 	'right-editwhitelist' => 'Weiße Liste für existierende Benutzer bearbeiten',
-	'right-restricttowhitelist' => 'Bearbeite und betrachte nur Seiten die in der Positivliste enthalten sind',
+	'right-restricttowhitelist' => 'Seiten ansehen und bearbeiten, die in der Positivliste enthalten sind',
 	'action-editwhitelist' => 'modifiziere die Positivliste für existierende Benutzer',
 	'action-restricttowhitelist' => 'bearbeite und betrachte nur Seiten die in der Positivliste enthalten sind',
 	'group-restricted' => 'Eingeschränkte Benutzer',

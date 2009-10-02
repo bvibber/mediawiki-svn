@@ -83,6 +83,7 @@ $wgCustomToolbarMessages['af'] = array(
 	'ct_submit' => 'OK',
 	'ct_close' => 'Sluit venster',
 	'ct_user_user' => 'Gebruiker',
+	'ct_user_sample' => 'Gebruikersnaam',
 );
 
 /** Amharic (አማርኛ)

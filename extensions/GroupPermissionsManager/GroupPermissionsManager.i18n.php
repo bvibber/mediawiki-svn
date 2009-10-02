@@ -499,6 +499,7 @@ $messages['ca'] = array(
  * @author Leithian
  * @author Purodha
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'grouppermissions' => 'Gruppenberechtigungen verwalten',
@@ -564,7 +565,7 @@ Schwebe mit der Maus über eine Berechtigung, um eine Beschreibung anzuzeigen.',
 	'right-recentchanges' => 'Letzte Änderungen ansehen',
 	'right-edittalk' => 'Diskussionsseiten bearbeiten',
 	'right-edit-new' => 'Seiten bearbeiten (ausgenommen Diskussionsseiten)',
-	'right-readold' => 'Betrachte den Inhalt von alten Versionen und Versionsunterschieden',
+	'right-readold' => 'Inhalt von alten Versionen und Versionsunterschieden ansehen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -2835,6 +2836,7 @@ $messages['tr'] = array(
 	'grouppermissions-desc4' => 'Araçlara yeni kalemler eklemeye izin verir',
 	'grouppermissions-search' => 'Grup:',
 	'grouppermissions-dologin' => 'oturum açma',
+	'grouppermissions-searchlabel' => 'Grup ara',
 	'grouppermissions-deletelabel' => 'Grup sil',
 	'grouppermissions-add' => 'Grup ekle',
 	'grouppermissions-delete' => 'Grup sil',

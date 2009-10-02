@@ -106,6 +106,7 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author Merlissimo
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'webchat' => 'Web Chat',
@@ -114,7 +115,7 @@ $messages['de'] = array(
 Zum Verbinden klicke den „Connect“-Knopf.
 Solltest du angemeldet sein, wird standardmäßig dein Wiki-Benutzername als Chatname verwendet.
 Andernfalls wird der Chatname automatisch erzeugt. Dieser kann aber noch geändert werden.',
-	'right-webchat' => 'Benutzung des [[Special:WebChat|Web Chats]]',
+	'right-webchat' => '[[Special:WebChat|Web Chat]] benutzen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

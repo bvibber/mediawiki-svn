@@ -865,6 +865,7 @@ $messages['lt'] = array(
  */
 $messages['mhr'] = array(
 	'countedits-username' => 'Пайдаланышын лӱмжӧ:',
+	'countedits-ok' => 'Йӧра',
 );
 
 /** Malayalam (മലയാളം)

@@ -521,6 +521,13 @@ $messages['lb'] = array(
 	'layouts_tagline' => "Dës Säit gouf mam '''$1''' Layout generéiert.",
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'layouts_title' => 'Лаштыкым ышташ',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

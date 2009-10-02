@@ -36,12 +36,14 @@ This cannot be done a second time.'
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jon Harald Søby
  */
 $messages['qqq'] = array(
 	'createsigndoc-pagename' => '{{Identical|Page}}',
 	'createsigndoc-email' => '{{Identical|E-mail address}}',
 	'createsigndoc-phone' => '{{Identical|Phone number}}',
+	'createsigndoc-introtext' => '{{Identical|Introduction}}',
 	'createsigndoc-hidden' => '{{Identical|Hidden}}',
 	'createsigndoc-optional' => '{{Identical|Optional}}',
 	'createsigndoc-create' => '{{Identical|Create}}',
@@ -56,6 +58,7 @@ $messages['af'] = array(
 	'createsigndoc-pagename' => 'Bladsy:',
 	'createsigndoc-email' => 'E-posadres:',
 	'createsigndoc-phone' => 'Telefoonnommer:',
+	'createsigndoc-introtext' => 'Inleiding:',
 	'createsigndoc-hidden' => 'Verborge',
 	'createsigndoc-optional' => 'Opsioneel',
 	'createsigndoc-create' => 'Skep',

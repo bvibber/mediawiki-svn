@@ -40,9 +40,10 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
-	'logentry-append' => 'إضافة',
+	'logentry-append' => 'ألحق',
 	'logentry-parserhook-desc' => 'امتداد الوسم هذا يوفر استمارة للإضافة/التخطيط لصفحات السجلات',
 	'logentry-specialpage-desc' => 'امتداد الوسم هذا يوفر معالجة للإضافة لصفحات السجلات',
 	'logentry' => 'مدخلة سجل',

@@ -596,6 +596,13 @@ $messages['lzh'] = array(
 	'createpage-badtitle' => '「$1」無頁題用也',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'createpage' => 'Лаштыкым ышташ',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest

@@ -63,7 +63,7 @@ $messages['af'] = array(
 	'passwordreset-invalidusername' => 'Ongeldige gebruiker',
 	'passwordreset-emptyusername' => 'Gebruiker nie gespesifiseerd nie',
 	'passwordreset-nopassmatch' => 'Die wagwoorde kom nie ooreen nie',
-	'passwordreset-username' => 'Gebruikersnaam',
+	'passwordreset-username' => 'Gebruiker:',
 	'passwordreset-newpass' => 'Nuwe wagwoord:',
 	'passwordreset-submit' => 'Herstel wagwoord',
 );

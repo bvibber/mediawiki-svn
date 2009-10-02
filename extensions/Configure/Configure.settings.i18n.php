@@ -6927,6 +6927,7 @@ $messages['ia'] = array(
 	'configure-setting-wgMiserMode' => 'Disactivar alcun functionalitate que exige multo del systema',
 	'configure-setting-wgShowHostnames' => 'Exponer le nomines de hospite per API e commentos HTML',
 	'configure-setting-wgUseDumbLinkUpdate' => 'Face <code>DELETE</code>/<code>INSERT</code> pro le actualisation de ligamines in loco de incremental',
+	'configure-setting-wgCacheVaryCookies' => 'Un lista de cookies que face modificar le cache',
 	'configure-setting-wgCookieDomain' => 'Dominio explicite pro le cookies de session',
 	'configure-setting-wgCookieExpiration' => 'Expiration de cookies HTTP',
 	'configure-setting-wgCookieHttpOnly' => 'Fortiar que le cookies de authentication es inviate solmente per requestas HTTP',

@@ -395,7 +395,7 @@ $messages['ar'] = array(
 	'code-rev-tag-remove' => 'أزل الوسوم:',
 	'code-rev-comment-by' => 'تعليق بواسطة $1',
 	'code-rev-comment-submit' => 'إرسال التعليق',
-	'code-rev-comment-preview' => 'عرض مسبق',
+	'code-rev-comment-preview' => 'عاين',
 	'code-rev-diff' => 'فرق',
 	'code-rev-diff-link' => 'فرق',
 	'code-rev-purge-link' => 'إفراغ الكاش',
@@ -1405,10 +1405,10 @@ $3',
 	'repoadmin-edit-sucess' => 'Das Repositorium „[[Special:Code/$1|$1]]“ wurde erfolgreich geändert.',
 	'right-repoadmin' => 'Code-Repositorien verwalten',
 	'right-codereview-use' => 'Special:Code benutzen',
-	'right-codereview-add-tag' => 'Hinzufügen neuer Tags zu Revisionen',
-	'right-codereview-remove-tag' => 'Entfernen von Tags von Revisionen',
+	'right-codereview-add-tag' => 'Neue Tags zu Revisionen hinzufügen',
+	'right-codereview-remove-tag' => 'Tags von Revisionen entfernen',
 	'right-codereview-post-comment' => 'Eigene Kommentare zu Revisionen einstellen',
-	'right-codereview-set-status' => 'Ändern des Revisionsstatus',
+	'right-codereview-set-status' => 'Revisionsstatus ändern',
 	'right-codereview-link-user' => 'Autoren auf Wiki-Benutzer verlinken',
 	'specialpages-group-developer' => 'Entwicklerwerkzeuge',
 );
@@ -4582,6 +4582,14 @@ $4',
 $messages['lt'] = array(
 	'repoadmin-new-button' => 'Sukurti',
 	'repoadmin-edit-button' => 'Gerai',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'code-status-ok' => 'Йӧра',
+	'repoadmin-edit-button' => 'Йӧра',
 );
 
 /** Macedonian (Македонски)

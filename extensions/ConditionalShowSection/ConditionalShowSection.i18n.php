@@ -113,6 +113,13 @@ $messages['hu'] = array(
 	'conditionalshowsection-desc' => '<cshow> tag a wikiszöveg egy szakaszának feltételes megjelenítéséhez/elrejtéséhez',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'conditionalshowsection-desc' => 'Adde le etiquetta <cshow> pro monstrar/celar conditionalmente un section de wikitexto',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  */

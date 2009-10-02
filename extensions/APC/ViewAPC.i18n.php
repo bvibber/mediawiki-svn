@@ -3353,6 +3353,13 @@ $messages['lt'] = array(
 	'viewapc-php-version' => 'PHP versija',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'viewapc-ls-limit-none' => 'Чыла',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

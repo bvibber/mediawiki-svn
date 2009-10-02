@@ -702,9 +702,10 @@ $2',
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Karduelis
  */
 $messages['tr'] = array(
-	'email-desc' => 'Kullnıcı e-postalarına özel başlık/altbilgi eklenmesine izin verir',
+	'email-desc' => 'Kullanıcı e-postalarına özel başlık/altbilgi eklenmesine izin verir',
 	'email_footer' => '----------------------------------------------------------------------------
 Bu e-posta size {{SITENAME}} e-posta sistemi aracılığıyla $1 tarafından gönderildi.
 

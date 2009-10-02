@@ -35,9 +35,10 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
-	'forcepreview' => 'حفظ الصفحة (استخدم عرض مسبق أولا)',
+	'forcepreview' => 'احفظ الصفحة (عاين أولا)',
 	'forcepreview-desc' => 'إجبار المستخدمين غير الموثوقين على العرض المسبق',
 	'right-forcepreviewexempt' => 'يمكنه الحفظ بدون استخدام العرض المسبق',
 );

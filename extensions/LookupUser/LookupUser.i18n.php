@@ -240,7 +240,7 @@ $messages['de'] = array(
 	'lookupuser-touched' => 'Benutzerkonto zuletzt berührt: $1',
 	'lookupuser-info-authenticated' => 'E-Mail-Bestätigung: $1',
 	'lookupuser-useroptions' => 'Einstellungen des Benutzerkontos:',
-	'right-lookupuser' => 'Sehe die Benutzereinstellungen anderer Benutzer',
+	'right-lookupuser' => 'Benutzereinstellungen anderer Benutzer sehen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

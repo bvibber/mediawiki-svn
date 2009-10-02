@@ -95,11 +95,12 @@ $messages['ang'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'badimages' => 'قائمة الصور السيئة',
 	'badimages-desc' => 'يمد قدرات قائمة الصور السيئة لميدياويكي',
-	'badimages-add-btn' => 'إضافة',
+	'badimages-add-btn' => 'أضف',
 	'badimages-added' => '$1 تمت إضافتها للقائمة.',
 	'badimages-count' => "{{PLURAL:$1|توجد|توجد}} '''$1''' {{PLURAL:$1|صورة|صورة}} في قائمة الصور السيئة.",
 	'badimages-name' => 'الاسم:',

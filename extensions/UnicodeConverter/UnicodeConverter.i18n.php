@@ -431,6 +431,13 @@ $messages['lb'] = array(
 	'unicodeconverter-newtext' => 'Text ëmwandelen:',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'unicodeconverter-ok' => 'Йӧра',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest

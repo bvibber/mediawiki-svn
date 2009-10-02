@@ -363,7 +363,7 @@ Der '''Durchschnitt im ausgewählten Zeitraum''' ist der Durchschnitt aller Tage
 Die Bewertung erfolgt nach:
 '''(1)''' - {{int:readerfeedback-level-0}}; '''(2)''' - {{int:readerfeedback-level-1}}; '''(3)''' - {{int:readerfeedback-level-2}}; '''(4)''' - {{int:readerfeedback-level-3}}; '''(5)''' - {{int:readerfeedback-level-4}};",
 	'ratinghistory-graph-scale' => "Die '''tägliche Zahl an Sichtungen''' <font color=\"red\">''(rot)''</font> werden im Maßstab ''1:\$1'' angezeigt.",
-	'right-feedback' => 'Bewerten einer Seite',
+	'right-feedback' => 'Das Feedback-Formular zur Bewertung einer Seite benutzen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

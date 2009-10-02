@@ -249,6 +249,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author MF-Warburg
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'edituser-desc' => 'Erlaubt berechtigten Benutzern, die Einstellungen anderer Benutzer zu verändern',
@@ -258,7 +259,7 @@ $messages['de'] = array(
 	'edituser-dosearch' => 'Suchen',
 	'edituser-nouser' => 'Der angegebene Benutzer ist nicht vorhanden',
 	'edituser-exempt' => 'Der angegebene Benutzer kann nicht bearbeitet werden',
-	'right-edituser' => 'Bearbeiten der Einstellungen anderer Benutzer',
+	'right-edituser' => 'Einstellungen anderer Benutzer bearbeiten',
 	'right-edituser-exempt' => 'Einstellungen können durch Dritte nicht geändert werden',
 );
 

@@ -171,6 +171,13 @@ $messages['lb'] = array(
 	'userdailycontribs-desc' => "Ännerunge pro Dag a Bentzer fir d'Erweiderung vum Suivi vun de Clicken",
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'userdailycontribs-desc' => 'Dagelikse gebroekersbiedrage veur de oetbreijing óm gebroekerskliks mit te volge',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

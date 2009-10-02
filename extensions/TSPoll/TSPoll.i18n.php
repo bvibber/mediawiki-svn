@@ -243,6 +243,13 @@ $messages['nl'] = array(
 	'tspoll-id-error' => 'Er is geen ID opgegeven!',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'tspoll-id-error' => 'Ingen ID er oppgjeven!',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

@@ -580,6 +580,13 @@ $messages['lt'] = array(
 	'findspam-ip' => 'IP adresas:',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'findspam-ok' => 'Йӧра',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

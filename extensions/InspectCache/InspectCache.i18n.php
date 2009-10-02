@@ -641,6 +641,7 @@ $messages['lt'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'inspectcache-ok' => 'Йӧра',
 	'inspectcache-delete' => 'Шӧраш',
 );
 

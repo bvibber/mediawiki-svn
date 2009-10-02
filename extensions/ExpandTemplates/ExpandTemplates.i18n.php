@@ -110,7 +110,7 @@ $messages['ar'] = array(
 	'expand_templates_ok' => 'موافق',
 	'expand_templates_remove_comments' => 'أزل التعليقات',
 	'expand_templates_generate_xml' => 'اعرض شجرة XML parse',
-	'expand_templates_preview' => 'عرض مسبق',
+	'expand_templates_preview' => 'معاينة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -860,6 +860,7 @@ Illo functiona per appellar le stadio relevante del analysator syntactic a parti
 	'expand_templates_xml_output' => 'Output XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Eliminar commentos',
+	'expand_templates_remove_nowiki' => 'Supprimer le etiquettas <nowiki> in le resultato',
 	'expand_templates_generate_xml' => 'Monstrar arbore syntactic XML',
 	'expand_templates_preview' => 'Previsualisation',
 );
@@ -1172,6 +1173,7 @@ $messages['lv'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'expand_templates_ok' => 'Йӧра',
 	'expand_templates_preview' => 'Ончылгоч ончымаш',
 );
 
@@ -1922,6 +1924,7 @@ $messages['vi'] = array(
 	'expand_templates_xml_output' => 'Xuất XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Bỏ các chú thích',
+	'expand_templates_remove_nowiki' => 'Bỏ qua thẻ <nowiki> trong kết quả',
 	'expand_templates_generate_xml' => 'Xem cây phân tích XML',
 	'expand_templates_preview' => 'Xem thử',
 );

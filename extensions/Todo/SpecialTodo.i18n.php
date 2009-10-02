@@ -104,6 +104,7 @@ $messages['am'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'todo' => 'قائمة للعمل',
@@ -129,7 +130,7 @@ $4',
 	'todo-move-queue' => 'انقل إلى الطابور...',
 	'todo-list-for' => 'قائمة للعمل ل $1',
 	'todo-list-change' => 'تغيير',
-	'todo-list-cancel' => 'إلغاء',
+	'todo-list-cancel' => 'ألغِ',
 	'todo-new-item' => 'مدخلة جديدة',
 	'todo-issue-summary' => 'ملخص القضية:',
 	'todo-form-details' => 'التفاصيل:',

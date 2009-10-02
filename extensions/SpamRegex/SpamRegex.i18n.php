@@ -316,7 +316,7 @@ Sei aber vorsichtig, Phrasen sollten nicht zu kurz oder zu allgemein sein.',
 	'spamregex-block-submit' => 'Phrase sperren',
 	'spamregex-text' => '(Text)',
 	'spamregex-summary-log' => '(Zusammenfassung)',
-	'right-spamregex' => 'Blockiere ungewollte Phrasen über [[Special:SpamRegex]]',
+	'right-spamregex' => 'Ungewollte Phrasen über [[Special:SpamRegex]] blockieren',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

@@ -471,7 +471,7 @@ $messages['de'] = array(
 	'changeauthor-logentry' => 'änderte Autorenname der $2 von $1 von $3 auf $4',
 	'changeauthor-logpagename' => 'Autorenänderungs-Logbuch',
 	'changeauthor-rev' => 'Version $1',
-	'right-changeauthor' => 'Ändere den Autor einer Version',
+	'right-changeauthor' => 'Autor einer Version ändern',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -1580,6 +1580,7 @@ $messages['pms'] = array(
 	'changeauthor-desc' => "A përmett ëd cambié l'autor ëd na revision",
 	'changeauthor-title' => "Cambia l'autor ëd la revision",
 	'changeauthor-search-box' => 'Serca revision',
+	'changeauthor-pagename-or-revid' => 'Nòm pàgina o ID revision:',
 	'changeauthor-pagenameform-go' => 'Va',
 );
 

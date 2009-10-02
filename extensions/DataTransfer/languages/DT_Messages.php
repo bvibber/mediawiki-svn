@@ -825,6 +825,7 @@ $messages['ia'] = array(
 	'dt_xml_freetext' => 'Texto libere',
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Per favor selige le file $1 a importar:',
+	'dt_import_encodingtype' => 'Typo de codification',
 	'dt_import_editsummary' => 'Importation de $1',
 	'dt_import_importing' => 'Importation in curso…',
 	'dt_import_success' => '$1 {{PLURAL:$1|pagina|paginas}} essera create ex le file $2.',

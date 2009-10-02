@@ -386,7 +386,7 @@ Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werden und es g
 	'povwatch_subscribe' => 'Registrieren',
 	'povwatch_added' => 'hinzugefügt',
 	'right-povwatch_admin' => 'Das Benutzerrecht Zuteilen oder Entziehen, Seiten zur Beobachtungsliste anderer Benutzer hinzufügen zu dürfen',
-	'right-povwatch_user' => 'Hinzufügen von Seiten zur Beobachtungsliste anderer Benutzer',
+	'right-povwatch_user' => 'Seiten zur Beobachtungsliste anderer Benutzer hinzufügen',
 	'action-povwatch_admin' => 'Rechte für PovWatch zu verwalten',
 	'action-povwatch_user' => 'füge diese Seite zu der Beobachtungsliste eines anderen Benutzers hinzu',
 );

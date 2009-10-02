@@ -249,6 +249,7 @@ $wgGoogleMapsMessages['am'] = array(
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
+ * @author OsamaK
  * @author ترجمان05
  */
 $wgGoogleMapsMessages['ar'] = array(
@@ -274,7 +275,7 @@ $wgGoogleMapsMessages['ar'] = array(
 	'gm-no-results' => 'عذرا، لا توجد نتائج',
 	'gm-searching' => 'في بحث...',
 	'gm-map' => 'خريطة',
-	'gm-note' => 'ملاحظة: كن متأكدا من نسخ الذي تريد حفظه في الصفحة (أدناه) قبل النقر على "حمل الخريطة"، "حفظ" أو "عرض مسبق "!',
+	'gm-note' => 'ملاحظة: تأكد من نسخ النص الذي تريد حفظه في الصفحة (أدناه) قبل النقر على "حّمل الخريطة"، "احفظ" أو "عاين"!',
 	'gm-instructions' => 'بالأسفل تهيئة الويكي لإنشاء الخريطة بالأعلى.',
 	'gm-are-you-sure' => 'هل أنت متأكد؟',
 	'gm-clear-all-points' => 'امسح كل النقاط',

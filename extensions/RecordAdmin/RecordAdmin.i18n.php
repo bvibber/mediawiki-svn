@@ -363,7 +363,7 @@ $messages['de'] = array(
 	'recordadmin-needscontent' => 'Inhalt hinzufügen …',
 	'recordadmin-editwithform' => 'Mit Formular bearbeiten',
 	'recordadmin-typeinfo' => '$1-Aufnahme',
-	'right-recordadmin' => 'Finde und Editiere Aufzeichnungsseiten',
+	'right-recordadmin' => 'Aufzeichnungsseiten finden und bearbeiten',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
