@@ -46,7 +46,8 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'lockout-desc',
 );
 
-$wgExtensionMessagesFiles['Lockout'] = $root . 'Lockout.i18n.php';
+$root = dirname( __FILE__ );
+$wgExtensionMessagesFiles['Lockout'] = $root . '/Lockout.i18n.php';
 $wgHooks['UserLoadAfterLoadFromSession'][] = 'lockoutUserLoadAfterLoadFromSession';
 $wgHooks['AbortLogin'][] = 'lockoutAbortLogin';
 

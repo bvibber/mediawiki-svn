@@ -46,7 +46,8 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'ipauth-desc',
 );
 
-$wgExtensionMessagesFiles['IPAuth'] = $root . 'IPAuth.i18n.php';
+$root = dirname( __FILE__ );
+$wgExtensionMessagesFiles['IPAuth'] = $root . '/IPAuth.i18n.php';
 $wgIPAuthUsers = array(  );
 # $wgIPAuthUsers = array( "127.0.0.1" => "LocalUser" );
 
