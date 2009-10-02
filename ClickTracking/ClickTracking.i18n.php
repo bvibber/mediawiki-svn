@@ -271,6 +271,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -285,6 +286,8 @@ $messages['eo'] = array(
 	'ct-beginner' => 'Novulo',
 	'ct-intermediate' => 'Progresanto',
 	'ct-expert' => 'Spertulo',
+	'ct-anon-users' => 'Sennomaj uzantoj',
+	'ct-and' => 'kaj',
 );
 
 /** Spanish (Español)
@@ -734,6 +737,15 @@ $messages['nl'] = array(
 	'ct-user-contribs' => 'Totaal aantal gebruikersbijdragen',
 	'ct-user-span' => 'Gebruikersbijdragen in periode',
 	'ct-and' => 'en',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',
+	'ct-expert' => 'Ekspert',
+	'ct-anon-users' => 'Anonyme brukarar',
 );
 
 /** Occitan (Occitan)

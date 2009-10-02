@@ -1025,6 +1025,19 @@ Aby wěcej wó projekśe zgónił, abo wó tom, kak móžoš se wobźěliś, wó
 Źěkujomy se a by se wjaselili wót tebje słyšaś.',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'optin-title-optedout' => 'Zã Beta kpɔ',
+	'optin-title-optedin' => 'Ɖe asi le Beta ŋu',
+	'optin-title-justoptedin' => 'Woezɔ ɖe Beta me loo',
+	'optin-title-justoptedout' => 'Akpe na wò Beta zãzã',
+	'optin-title-feedback' => 'Wò susuwo le Beta ŋu',
+	'optin-success-out' => 'Wò do le Beta me vɔ azɔ̃.<br />
+Wò agateŋu azãe ɣesiaɣi fãa ne wò tia "{{int:optin-try}}" si le axa sia tame.',
+);
+
 /** Greek (Ελληνικά)
  * @author Assassingr
  * @author Crazymadlover
@@ -1193,12 +1206,12 @@ Ni volus sciigi vian opinion pri la nova interfaco, do ni dankemus se vi plenumu
 	'optin-survey-answer-changes-custom' => 'Ebligu pli multe da uzulaj preferoj',
 	'optin-survey-answer-changes-other' => 'Alia:',
 	'optin-improvements' => '== Kio estis plibonigita? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Ekrankapto de la novaj navigadaj etikedoj]]
 ;Plibonigita navigado
 La nova navigada sistemo plifacilas vidi kie vi estas, kaj kion vi faras, kaj kie vi povas iri, kaj kiel iri tie. Kun la nova serĉkadro ĉe la supra-dekstra angulo, la serĉ-funkcio estas pli facila trovi kaj pli rapida uzi.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Ekrankapto de la progresa redakta ilobreto]]
 ;Plibonigado al la redakta ilobreto
 
 Novaj kaj pli bonaj ikonoj klarigas la funkciojn de ĉiu ilo. Etendeblaj sekcioj kaŝas troaĵojn, sed permesas atingon al maloftaj iloj per nur simpla kliko.
@@ -2959,6 +2972,27 @@ Fir méi iwwer dëse Projet gewuer ze ginn oder fir matzemaachen, gitt w.e.g. op
 Merci a mir freën eis fir vun Iech ze héieren!',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'optin-title-optedout' => 'Perbeer Beta',
+	'optin-title-optedin' => 'Verlaot Beta',
+	'optin-title-justoptedin' => 'Welkom bij Beta',
+	'optin-title-justoptedout' => "Danke veur 't perbere van Beta",
+	'optin-title-feedback' => 'Trökkoppeling gaeve',
+	'optin-success-feedback' => 'Danke veur de trökkoppeling!',
+	'optin-accept-short' => 'Insjakele!',
+	'optin-accept-long' => 'Perbeer Beta',
+	'optin-accept-long-anon' => 'Aanmelje en Beta perbere',
+	'optin-deny-short' => 'Nei, danke',
+	'optin-deny-long' => 'Trök nao de veurige pagina',
+	'optin-submit-out' => 'Verlaot Beta',
+	'optin-submit-feedback' => 'Trökkoppeling gaeve',
+	'optin-survey-yes' => 'Jao',
+	'optin-survey-no' => 'Nei',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
@@ -3561,6 +3595,7 @@ $messages['nn'] = array(
 Vi vil gjerne vite kva du meiner om det nye grensesnittet vårt, og ynskjer at du deltek i ut den valfrie undersøkinga under.',
 	'optin-success-feedback' => 'Takk for di tilbakemelding!',
 	'optin-accept-short' => 'Lat oss gjera det!',
+	'optin-accept-long' => 'Prøv Beta',
 	'optin-accept-long-anon' => 'Logg inn og prøv Beta',
 	'optin-deny-short' => 'Nei takk',
 	'optin-deny-long' => 'Gå attende til førre sida',
@@ -5063,18 +5098,18 @@ Chúng tôi muốn biết cảm nghĩ của bạn về giao diện mới của c
 	'optin-survey-answer-changes-custom' => 'Cho phép người dùng tùy chỉnh nhiều hơn.',
 	'optin-survey-answer-changes-other' => 'Khác:',
 	'optin-improvements' => '== Những cải tiến ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Ảnh chụp các thẻ duyệt trang mới]]
 ;Duyệt trang tốt hơn
 Hệ thống duyệt trang giúp bạn dễ nhận thấy mình đang ở đâu và làm gì hơn, cũng như nơi bạn có thể đến và cách làm điều đó. Với hộp tìm kiếm đặt ở góc trên bên phải, tính năng tìm kiếm sẽ dễ tìm thấy và dễ sử dụng hơn.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Ảnh chụp thanh công cụ sửa đổi được cải tiến]]
 ;Cải tiến thanh công cụ sửa đổi
 Các biểu tượng mới và được cải tiến để làm rõ hơn các chức năng của từng nút công cụ. Nhiều phần có thể mở rộng giúp giảm bớt sự lộn xộn nhưng vẫn giữ lại được những công cụ thường dùng chỉ bằng một cú nhấn chuột.
 Đề mục trợ giúp giúp truy cập nhanh vào hướng dẫn sử dụng mã wiki.
 <div style="clear:both;"></div>
 == Cách tham gia ==
-Để tìm hiểu thêm về dự án hoặc tham gia vào dự án, xin mời thăm [http://usability.wikimedia.org wiki của Sáng kiến Khả dụng].  Tại đó bạn sẽ tìm thấy những thông tin về số tiền được cấp, nghiên cứu, thiết kế + phát triển, và các bản phát hành. Để đặt câu hỏi hoặc để lại hồi đáp, xin hãy sử dụng [http://usability.wikimedia.org/wiki/Talk:Prototype trang thảo luận prototype của chúng tôi].  Để bàn về các chủ đề cụ thể, hãy sử dụng các trang thảo luận đi kèm. Nếu bạn nhận thấy có lỗi phần mềm, xin để lại lời nhắn tại  [http://usability.wikimedia.org/wiki/Talk:Releases/Acai trang thảo luận bản phát hành Acai] hoặc sử dụng [https://bugzilla.wikimedia.org Bugzilla].
+Để tìm hiểu thêm về dự án hoặc tham gia vào dự án, xin mời thăm [http://usability.wikimedia.org/wiki/?uselang=vi wiki của Sáng kiến Khả dụng]. Tại đó bạn sẽ tìm thấy những thông tin về số tiền được cấp, nghiên cứu, thiết kế + phát triển, và các bản phát hành. Để đặt câu hỏi hoặc để lại hồi đáp, xin hãy sử dụng [http://usability.wikimedia.org/wiki/Talk:Prototype?uselang=vi trang thảo luận mô hình của chúng tôi]. Để bàn về các chủ đề cụ thể, hãy sử dụng các trang thảo luận đi kèm. Nếu bạn nhận thấy có lỗi phần mềm, xin để lại lời nhắn tại [http://usability.wikimedia.org/wiki/Talk:Releases/Acai?uselang=vi trang thảo luận của phiên bản Acai] hoặc sử dụng [https://bugzilla.wikimedia.org Bugzilla].
 
 Cảm ơn và mong hồi âm từ bạn!',
 );

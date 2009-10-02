@@ -420,6 +420,16 @@ $messages['lb'] = array(
 	'simplesearch-containing' => 'mat ...',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'simplesearch' => 'Sumpel zeuke',
+	'simplesearch-desc' => "Deit extra fónksionaliteit bie aan 't sumpel zeuke in Vector",
+	'simplesearch-search' => 'Zeuke',
+	'simplesearch-containing' => 'bevat...',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
@@ -479,6 +489,7 @@ $messages['nl'] = array(
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'simplesearch' => 'Enkelt søk',
 	'simplesearch-search' => 'Søk',
 	'simplesearch-containing' => 'inneheld ...',
 );

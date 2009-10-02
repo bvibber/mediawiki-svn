@@ -111,6 +111,7 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'usabilityinitiative' => 'Benutzerfreundlichkeitsinitiative',
 	'usabilityinitiative-desc' => 'Von der Wikipedia-Benutzerfreundlichkeitsinitiative entwickelte Features, um die Benutzerfreundlichkeit von MediaWiki zu verbessern',
+	'prefs-experimental' => 'Experimentelle Features',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -132,11 +133,13 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'usabilityinitiative' => 'Iniciato pri Uzebleco',
 	'usabilityinitiative-desc' => 'Funkcioj disvolvitaj de la Uzebleca Iniciato de Vikipedio por plibonigi la uzeblecon de MediaWiki',
+	'prefs-experimental' => 'Eksperimentaj eblecoj',
 );
 
 /** Spanish (Español)

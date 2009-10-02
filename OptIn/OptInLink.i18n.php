@@ -185,6 +185,15 @@ $messages['dsb'] = array(
 	'tooltip-pt-optin-feedback' => 'Komentar wó twójom nazgónjenju z nowymi funkcijami pósłaś',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'optin-try' => 'Zã Beta kpɔ',
+	'optin-leave' => 'Ɖe asi le Beta ŋu',
+	'optin-feedback' => 'Wò susuwo le Beta ŋu',
+);
+
 /** Greek (Ελληνικά)
  * @author Assassingr
  * @author Crazymadlover
@@ -494,6 +503,17 @@ $messages['lb'] = array(
 	'tooltip-pt-optin-leave' => 'Schalt déi nei Fonctionalitéiten aus',
 	'optin-feedback' => 'Gitt eis Är Meenung',
 	'tooltip-pt-optin-feedback' => 'Gitt Feedback iwwer Är Erfarung mat den neie Fonctionalitéiten',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'optin-try' => 'Perbeer Beta',
+	'tooltip-pt-optin-try' => 'Perbeer nuuj mäögelikhede',
+	'optin-leave' => 'Verlaot Beta',
+	'tooltip-pt-optin-leave' => 'Sjakel nuuj mäögelikhede oet',
+	'optin-feedback' => 'Trökkoppeling gaeve',
 );
 
 /** Lithuanian (Lietuvių)
