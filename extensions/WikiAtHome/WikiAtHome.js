@@ -7,15 +7,15 @@ loadGM({
 	"wah-menu-pref"	: "Prefrences",
 	"wah-loading"	: "loading Wiki@Home interface <blink>...</blink>",
 	
-	"wah-lookingforjob"	: "Looking For a Job <blink>...</blink>",
+	"wah-lookingforjob"	: "Looking For a job <blink>...</blink>",
 	
-	"wah-start-on-visit": "Start up Wiki@Home anytime I visit this site",
-	"wah-jobs-while-away": "Only run jobs when I have been away from my browser for 20 minnutes",
+	"wah-start-on-visit": "Start up Wiki@Home anytime I visit this site.",
+	"wah-jobs-while-away": "Only run jobs when I have been away from my browser for 20 minutes.",
 	
-	"wah-nojobfound" 	: "No job found. Will retry in $1",
+	"wah-nojobfound" 	: "No job found. Will retry in $1.",
 	
 	"wah-notoken-login" : "Could not get a token. Are you logged in?",
-	"wah-apioff"		: "The api appears to be off. Please contact your wiki administrator",
+	"wah-apioff"		: "The API appears to be off. Please contact your wiki administrator.",
 	
 	"wah-doing-job"		: "Job: <i>$1</i> on: <i>$2</i>",
 	"wah-downloading"	: "Downloading file <i>$1%</i> complete",
@@ -29,7 +29,7 @@ loadGM({
 	
 	"wah-needs-firefogg": "To participate in Wiki@Home you need to install Firefogg."
 	
-	"wah-api-error"	: "There has been an error with the api. Please try back later"
+	"wah-api-error"	: "There has been an error with the API. Please try back later."
 	
 });
 
