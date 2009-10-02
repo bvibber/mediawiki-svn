@@ -1084,10 +1084,10 @@ js2AddOnloadHook( function() {
 			</tr></table><table><tr>\
 				<td class="label"><label for="edittoolbar-table-dimensions-columns"\
 					rel="edittoolbar-tool-table-dimensions-columns"></label></td>\
-				<td><input type="text" id="edittoolbar-table-dimensions-columns" size="2" /></td>\
+				<td><input type="text" id="edittoolbar-table-dimensions-columns" size="3" /></td>\
 				<td class="label"><label for="edittoolbar-table-dimensions-rows"\
 					rel="edittoolbar-tool-table-dimensions-rows"></label></td>\
-				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="2" /></td>\
+				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="3" /></td>\
 			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
@@ -1184,6 +1184,7 @@ js2AddOnloadHook( function() {
 			<div id="edittoolbar-replace-message">\
 				<div id="edittoolbar-replace-nomatch" rel="edittoolbar-tool-replace-nomatch"></div>\
 				<div id="edittoolbar-replace-success"></div>\
+				<div id="edittoolbar-replace-emptysearch" rel="edittoolbar-tool-replace-emptysearch"></div>\
 			</div>\
 			<fieldset><table><tr>\
 				<td><label for="edittoolbar-replace-search" rel="edittoolbar-tool-replace-search"></label></td>\
@@ -1214,8 +1215,12 @@ js2AddOnloadHook( function() {
 			
 			// TODO: Find a cleaner way to share this function
 			$j(this).data( 'replaceCallback', function( mode ) {
-				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch' ).hide();
 				var searchStr = $j( '#edittoolbar-replace-search' ).val();
+				if ( searchStr == '' ) {
+					$j( '#edittoolbar-replace-emptysearch' ).show();
+					return;
+				}
 				var replaceStr = $j( '#edittoolbar-replace-replace' ).val();
 				var flags = '';
 				var matchCase = $j( '#edittoolbar-replace-case' ).is( ':checked' );
@@ -1288,7 +1293,7 @@ js2AddOnloadHook( function() {
 			open: function() {
 				$j(this).data( 'offset', 0 );
 				$j( '#edittoolbar-replace-search' ).focus();
-				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success' ).hide();
+				$j( '#edittoolbar-replace-nomatch, #edittoolbar-replace-success, #edittoolbar-replace-emptysearch' ).hide();
 				if ( !( $j(this).data( 'dialogkeypressset' ) ) ) {
 					$j(this).data( 'dialogkeypressset', true );
 					// Execute the action associated with the first button

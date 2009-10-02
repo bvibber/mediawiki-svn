@@ -114,6 +114,7 @@ $messages['en'] = array(
 	'edittoolbar-tool-replace-close' => 'Cancel',
 	'edittoolbar-tool-replace-nomatch' => 'Your search did not match anything.',
 	'edittoolbar-tool-replace-success' => '$1 replacement(s) made.',
+	'edittoolbar-tool-replace-emptysearch' => 'You did not enter anything to search for.',
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',
 	'edittoolbar-characters-page-latin' => 'Latin',
