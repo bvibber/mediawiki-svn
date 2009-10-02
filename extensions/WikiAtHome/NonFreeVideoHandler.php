@@ -308,10 +308,10 @@ class MediaQueueTransformOutput extends MediaTransformOutput {
 		if( $this->percDone == -1){
 			$waitHtml =  wfMsgWikiHtml( 'wah-transcode-fail');
 		}else{
-			$waitHtml = wfMsgWikiHtml( 'wah-transcode-working' ) . '<br />';
+			$waitHtml = wfMsgWikiHtml( 'wah-transcode-working' );
 			//check if we doing it ~at~ home then we know how far it is done:
 			if( $wgJobTypeConfig['transcode'][ 'assignAtHome' ] ){
-		 		$waitHtml .= wfMsgExt('wah-transcode-helpout', array('parsemag'), $this->percDone);
+		 		$waitHtml .= wfMsgWikiHtml('wah-transcode-helpout', $this->percDone);
 			}
 		}
 

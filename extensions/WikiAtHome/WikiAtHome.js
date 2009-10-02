@@ -1,6 +1,5 @@
 //the core javascript file of the wiki@home extension
 
-// FIXME: needs localisation support.
 //load msgs:
 loadGM({
 	"wah-menu-jobs"	: "Jobs",
@@ -24,11 +23,13 @@ loadGM({
 	
 	"wah-encoding-fail"	: "Encoding failed. Please reload this page or try back latter.",
 	
-	"wah-uploading"		: "Uploading file <i>$i</i> done",
+	"wah-uploading"		: "Uploading file <i>$1</i> done",
 	"wah-uploadfail"	: "Uploading failed",
 	"wah-doneuploading" : "Upload complete. Thank you for your contribution.",
 	
-	"wah-needs-firefogg": "To particate in Wiki@Home you need to install Firefogg."
+	"wah-needs-firefogg": "To participate in Wiki@Home you need to install Firefogg."
+	
+	"wah-api-error"	: "There has been an error with the api. Please try back later"
 	
 });
 
@@ -188,8 +189,10 @@ var WikiAtHome = {
 		do_api_req({
 			'data' : reqObj
 		},function(data){
-			//if we have a job update status to proccessing
-			if( data.wikiathome.nojobs ){				
+			//if we have a job update status to processing
+			if( data.error){
+				$j('#tab-jobs .wah-gen-status').html( gM('wah-api-error') );
+			}else if( data.wikiathome.nojobs ){				
 				_this.delayLookForJob();
 			}else{
 				//we do have job proccess it
@@ -327,7 +330,7 @@ var WikiAtHome = {
 					}				
 					
 					
-					//congradulate the user and issue new job request
+					//congratulate the user and issue new job request
 					$j('#tab-jobs .prograss-status').html(
 						gM( 'wah-doneuploading' )
 					);

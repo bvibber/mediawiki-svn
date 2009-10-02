@@ -176,7 +176,7 @@ class WahJobManager {
 		$or = '';
 		foreach($wgJobTypeConfig as $tKey=>$tSet){
 			if( $tSet['assign' . $reqMode] ){
-				$okyJobOrList = $or . ' ( set_job_type = ' . $dbr->addQuotes(  $tKey ) . ' )';
+				$okyJobOrList .= $or . ' ( set_job_type = ' . $dbr->addQuotes(  $tKey ) . ' )';
 				$or = ' OR ';
 			}
 		}

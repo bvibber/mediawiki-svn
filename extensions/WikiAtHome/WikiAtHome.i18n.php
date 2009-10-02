@@ -28,13 +28,41 @@ $messages['en'] = array(
 	'wah-long-error' => '(ffmpeg could not read this file: $1)',
 
 	'wah-transcode-working' => 'This video is being processed, please try again later',
-	'wah-transcode-helpout' => 'The clip is $1 percent done.
-You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
+	'wah-transcode-helpout' => 'You can help transcode this video by visiting [[Special:WikiAtHome|Wiki@Home]]',
 
 	'wah-transcode-fail' => 'This file failed to transcode.',
 
 	'wah-javascript-off' => 'You must have JavaScript enabled to participate in Wiki@Home',
-	'wah-loading' => 'loading Wiki@Home interface <blink>...</blink>'
+	'wah-loading' => 'loading Wiki@Home interface <blink>...</blink>',
+
+	/* javascript msgs WikiAtHome.js */
+	"wah-menu-jobs"	=> "Jobs",
+	"wah-menu-stats" => "Stats",
+	"wah-menu-pref"	=> "Preferences",
+	"wah-loading"	=> "loading Wiki@Home interface <blink>...</blink>",
+
+	"wah-lookingforjob"	=> "Looking For a Job <blink>...</blink>",
+
+	"wah-start-on-visit" => "Start up Wiki@Home any time I visit this site",
+	"wah-jobs-while-away"=> "Only run jobs when I have been away from my browser for 20 minutes",
+
+	"wah-nojobfound" 	=> "No Job Found, Will retry in $1",
+
+	"wah-notoken-login" => "Could not get a token. Are you logged in?",
+	"wah-apioff"		=> "The wiki@home api appears to be off. Please Contact your wiki admin",
+
+	"wah-doing-job"		=> "Job: <i>$1</i> on: <i>$2</i>",
+	"wah-downloading"	=> "Downloading File <i>$1%</i> done",
+	"wah-encoding"		=> "Encoding File <i>$1%</i> done",
+
+	"wah-encoding-fail"	=> "Encoding Failed. Please reload this page or try back latter.",
+
+	"wah-uploading"		=> "Uploading File <i>$1</i> done",
+	"wah-uploadfail"	=> "Uploading Failed",
+	"wah-doneuploading" => "Done Uploading. Thanks for your Contribution.",
+
+	"wah-needs-firefogg"=> "To participate in wiki@home you need to install <a href=\"http://firefogg.org\">firefogg</a>",
+	"wah-api-error"		=> "There has been an error with the api. Please try back later"
 );
 
 /** Message documentation (Message documentation)
@@ -803,7 +831,7 @@ $messages['sv'] = array(
 	'wah-long-general' => '(mediafil, längd $2, $3)',
 	'wah-long-error' => '(ffmpeg kunde inte läsa filen: $1)',
 	'wah-transcode-working' => 'Videon bearbetas just ju, vänligen försök igen senare',
-	'wah-transcode-helpout' => 'Filen är $1 procent klar. 
+	'wah-transcode-helpout' => 'Filen är $1 procent klar.
 Du kan hjälpa till att konvertera den här videon genom att besöka [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Kunde inte konvertera den här filen.',
 	'wah-javascript-off' => 'Du måste ha JavaScript aktiverat för att delta i Wiki@Home',
