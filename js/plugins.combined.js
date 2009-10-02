@@ -2193,23 +2193,22 @@ fn: {
 		}
 		// Build outline from wikitext
 		var outline = [];
-		var wikitext = '\n' + $.wikiEditor.fixOperaBrokenness( context.$textarea.val() ) + '\n';
+		var wikitext = $.wikiEditor.fixOperaBrokenness( context.$textarea.val() );
 		var headings = wikitext.match( /^={1,6}.+={1,6}\s*$/gm );
 		var offset = 0;
 		headings = $.makeArray( headings );
 		for ( var h = 0; h < headings.length; h++ ) {
-			text = headings[h];
+			text = $.trim( headings[h] );
 			// Get position of first occurence
 			var position = wikitext.indexOf( text, offset );
 			// Update offset to avoid stumbling on duplicate headings
-			if ( position > offset ) {
+			if ( position >= offset ) {
 				offset = position + 1;
 			} else if ( position == -1 ) {
 				// Not sure this is possible, or what should happen
 				continue;
 			}
-			// Trim off whitespace
-			text = $.trim( text );
+			
 			// Detect the starting and ending heading levels
 			var startLevel = 0;
 			for ( var c = 0; c < text.length; c++ ) {
@@ -2258,7 +2257,13 @@ fn: {
 		if ( $( 'input[name=wpSection]' ).val() == '' )
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		context.modules.$toc.html( buildList( structure ) );
-		context.modules.$toc.find( 'ul a' ).autoEllipse( { 'position': 'right', 'tooltip': true } );
+		
+		var links = context.modules.$toc.find( 'ul a' );
+		// Highlighted links are wider; autoEllipse links in
+		// highlighted state
+		links.addClass( 'currentSelection' );
+		links.autoEllipse( { 'position': 'right', 'tooltip': true } );
+		links.removeClass( 'currentSelection' );
 		// Cache the outline for later use
 		context.data.outline = outline;
 	}
