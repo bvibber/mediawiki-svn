@@ -93,7 +93,6 @@ $messages['qqq'] = array(
 	'wah-long-general' => '* $2 is file length (time)
 * $3 is bitrate',
 	'wah-long-error' => '* $1 is error message',
-	'wah-transcode-helpout' => 'You can use PLURAL on $1.',
 );
 
 /** Afrikaans (Afrikaans)
