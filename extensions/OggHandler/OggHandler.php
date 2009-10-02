@@ -59,6 +59,9 @@ $wgJs2VideoTagOut = true;
 //if we should enable iframe embedding of form ?title=File:name&iframe=true
 $wgEnableIframeEmbed = true;
 
+//Location of oggThumb binary (used over the ffmpeg version)
+$wgOggThumbLocation = '/usr/bin/oggThumb';
+
 // Location of the FFmpeg binary
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 

@@ -266,6 +266,17 @@ class OggHandler extends MediaHandler {
 			return new OggVideoDisplay( $file, $targetFileUrl, $dstUrl, $width, $height, $length, $dstPath, $noIcon, $offset);
 		}
 
+		$thumbStatus = $this->gennerateThumb($file, $dstPath,$params, $width, $height);
+		if( $thumbStatus !== true )
+			return $thumbStatus;
+
+
+		return new OggVideoDisplay( $file, $targetFileUrl, $dstUrl, $width, $height, $length, $dstPath );
+	}
+	function gennerateThumb($file, $dstPath, $params, $width, $height){
+		global $wgFFmpegLocation, $wgOggThumbLocation;
+
+		$length = $this->getLength( $file );
 		$thumbtime = false;
 		if ( isset( $params['thumbtime'] ) ) {
 			$thumbtime = $this->parseTimeString( $params['thumbtime'], $length );
@@ -282,6 +293,31 @@ class OggHandler extends MediaHandler {
 		wfMkdirParents( dirname( $dstPath ) );
 
 		wfDebug( "Creating video thumbnail at $dstPath\n" );
+
+		//first check for oggThumb
+		if( $wgOggThumbLocation && is_file( $wgOggThumbLocation ) ){
+			$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
+				' -t '. intval( $thumbtime ) . ' ' .
+				' ' . wfEscapeShellArg( $file->getPath() ) . ' 2>&1';
+			//@@NOTE target output file argument support is on the way
+			//(will be in the next release of oggThumb)
+			$orgPath = getcwd();
+			//change to destination path:
+			chdir( dirname( $dstPath ) );
+			$retval = 0;
+			$returnText = wfShellExec( $cmd, $retval );
+			//check for the file:
+			$name = substr( $file->getName(), 0, strrpos( $file->getName(), '.'));
+			if( is_file( $name ) . '_0.jpg' ){
+				rename(  $name . '_0.jpg',  $dstPath);
+			}
+			//change back to the orgPath
+			chdir( $orgPath );
+			//check if it was successful or if we should try ffmpeg:
+			if( is_file ( $dstPath ) ){
+				return true;
+			}
+		}
 
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
 			' -ss ' . intval( $thumbtime ) . ' ' .
@@ -332,11 +368,9 @@ class OggHandler extends MediaHandler {
 				return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
 			}
 		}
-
-
-		return new OggVideoDisplay( $file, $targetFileUrl, $dstUrl, $width, $height, $length, $dstPath );
+		//if we did not return an error return true to continue media thum display
+		return true;
 	}
-
 	function canRender( $file ) { return true; }
 	function mustRender( $file ) { return true; }
 
@@ -654,8 +688,7 @@ class OggTransformOutput extends MediaTransformOutput {
 					Xml::tags('div', array(
 							'style'=>"overflow:hidden;".
 								"width:{$width}px;height:{$playerHeight}px;".
-								"border:solid thin black;padding:5px;",
-							'class'=>'videonojs'
+								"border:solid thin black;padding:5px;"
 						),
 						wfMsg('ogg-no-player-js', $url)
 					)
@@ -829,7 +862,7 @@ function output_iframe_page( $title ) {
 	</style>
 		<?php
 			//similar to $out->headElement (but without css)
-			echo $wgUser->getSkin()->getHeadScripts( $out );
+			echo $out->getHeadScripts();
 			echo $out->getHeadLinks();
 			echo $out->getHeadItems();
 		?>
