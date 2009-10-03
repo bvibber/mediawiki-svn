@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Plotter parser extension',
-	'version'        => '0.6a',
+	'version'        => '0.6b',
 	'author'         => 'Ryan Lane',
 	'description'    => 'Allows users to create client side graphs and plots',
 	'descriptionmsg' => 'plotters-desc',
@@ -37,6 +37,9 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionFunctions[] = "efPlotters";
 
 $wgHooks['OutputPageParserOutput'][] = 'PlottersParserOutput';
+if( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
+	$wgHooks['LanguageGetMagic'][] = 'PlottersLanguageGetMagic';
+}
 $wgHooks['ArticleSaveComplete'][] = 'wfPlottersArticleSaveComplete';
 
 $dir = dirname( __FILE__ ) . '/';
@@ -244,5 +247,15 @@ function PlottersParserOutput( &$outputPage, &$parserOutput )  {
 			}
 		}
 	}
+	return true;
+}
+
+// FIXME: doesn't this make using this method and the hook above useless?
+/**
+ * We ignore langCode - parser function names can be translated but
+ * we are not using this feature
+ */
+function PlottersLanguageGetMagic( &$magicWords, $langCode ) {
+	$magicWords['plot']  = array( 0, 'plot' );
 	return true;
 }
