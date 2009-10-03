@@ -382,6 +382,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Qllach
  * @author SMP
  * @author Solde
  */
@@ -391,10 +392,14 @@ $messages['ca'] = array(
 	'usagestatistics-desc' => "Mostrar estadístiques d'ús d'usuaris individuals i globals del wiki",
 	'usagestatisticsfor' => "<h2>Estadístiques d'ús de [[User:$1|$1]]</h2>",
 	'usagestatisticsforallusers' => "<h2>Estadístiques d'ús per tots els usuaris</h2>",
-	'usagestatisticsinterval' => 'Interval',
+	'usagestatisticsinterval' => 'Interval:',
+	'usagestatisticsnamespace' => 'Espai de noms:',
+	'usagestatisticsexcluderedirects' => 'Exclou-ne les redireccions',
+	'usagestatistics-namespace' => "Aquestes estadístiques són de l'espai de noms [[Special:Allpages/$1|$2]].",
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Redirects]] no es tenen en compte.',
 	'usagestatisticstype' => 'Tipus',
-	'usagestatisticsstart' => "Data d'inici",
-	'usagestatisticsend' => "Data d'acabament",
+	'usagestatisticsstart' => "Data d'inici:",
+	'usagestatisticsend' => "Data d'acabament:",
 	'usagestatisticssubmit' => "Generació d'estadístiques",
 	'usagestatisticsnostart' => "Si us plau, especifiqueu una data d'inici",
 	'usagestatisticsnoend' => "Si us plau, especifiqueu una data d'acabament",

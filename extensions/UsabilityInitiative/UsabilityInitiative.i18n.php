@@ -206,10 +206,12 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'usabilityinitiative' => 'יוזמת השימושיות',
 	'usabilityinitiative-desc' => 'תכונות שפותחו על ידי יוזמת השימושית של ויקיפדיה, כדי לשפר את השימושיות של מדיה־ויקי',
+	'prefs-experimental' => 'תכונות נסיוניות',
 );
 
 /** Croatian (Hrvatski)
@@ -274,7 +276,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'usabilityinitiative' => 'ユーザビリティ・イニシアティブ',
 	'usabilityinitiative-desc' => 'ウィキペディア・ユーザビリティ・イニシアティブによって MediaWiki の使いやすさを向上させるために開発された各種機能',
-	'prefs-experimental' => '開発版の機能',
+	'prefs-experimental' => '開発中の機能',
 );
 
 /** Georgian (ქართული)
@@ -309,6 +311,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'usabilityinitiative' => "Initiativ fir d'Benotzerfrëndlechkeet",
 	'usabilityinitiative-desc' => "Fonctinnalitéiten déi vun der Wikipedia Benotzerfrëndlechkeets-Initiative entwéckelt goufe fir d'Benotzerfrëndleckeet vu MediaWiki ze verbesseren",
+	'prefs-experimental' => 'Experimentell Fonctiounnen',
 );
 
 /** Lithuanian (Lietuvių)
@@ -362,11 +365,13 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author Stigmj
  */
 $messages['no'] = array(
 	'usabilityinitiative' => 'Initiativet for brukervennlighet',
 	'usabilityinitiative-desc' => "Funksjoner utviklet av ''Wikipedias initiativ for brukervennlighet'', for å forbedre MediaWikis brukervennlighet",
+	'prefs-experimental' => 'Eksperimentelle funksjoner',
 );
 
 /** Occitan (Occitan)

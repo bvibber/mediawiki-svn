@@ -555,6 +555,7 @@ Otkrivanje ovih informacija može rezultirati stalnim gubitkom privilegija nazdo
  * @author Aleator
  * @author Iradigalesc
  * @author Paucabot
+ * @author Qllach
  * @author SMP
  * @author Toniher
  */
@@ -601,7 +602,7 @@ Revertiu aquest canvi abans.",
 Difondre aquesta informació pot resultar en una pèrdua permanent dels privilegis de Supervisió.',
 	'oversight-legend' => "Cerca al registre d'ocultació de revisions",
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Ofensor:',
+	'oversight-offender' => 'Autor de la revisió:',
 );
 
 /** Corsican (Corsu) */

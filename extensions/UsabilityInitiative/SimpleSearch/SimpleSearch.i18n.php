@@ -495,12 +495,14 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author Laaknor
  */
 $messages['no'] = array(
 	'simplesearch' => 'Enkelt søk',
 	'simplesearch-desc' => 'Legger til ekstra funksjonalitet til Vectors forenklede søk',
 	'simplesearch-search' => 'Søk',
+	'simplesearch-containing' => 'inneholder …',
 );
 
 /** Occitan (Occitan)

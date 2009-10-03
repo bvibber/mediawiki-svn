@@ -156,7 +156,7 @@ $messages['de'] = array(
 	'editwarning' => 'Bearbeitungswarnung',
 	'editwarning-desc' => 'Eine Warnung anzeigen, wenn ein Benutzer versucht, den Bearbeitungsvorgang ohne speichern zu verlassen',
 	'editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass deine Änderungen verloren gehen.
-Du kannst das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich deiner Einstellungen abschalten.',
+Wenn du angemeldet bist, kannst du das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich deiner Einstellungen abschalten.',
 	'editwarning-preference' => 'Warne mich, wenn ich eine „Bearbeiten“-Seite mit nicht gesicherten Änderungen verlasse',
 );
 
@@ -672,7 +672,7 @@ $messages['vec'] = array(
 	'editwarning' => 'Ocio a le modìfeghe',
 	'editwarning-desc' => "Fà vedar n'avertimento co che un utente el vole lassar la casèla de modìfega sensa ver salvà le so modìfeghe",
 	'editwarning-warning' => 'Se te vè via da sta pagina te podaressi pèrdar tute le modìfeghe che te ghè fato.
-Te poli disabilitar sto aviso in te la sezion "{{int:prefs-editing}} de le to preferense.',
+Se te sì loggà, te poli disabilitar sto aviso in te la sezion "{{int:prefs-editing}} de le to preferense.',
 	'editwarning-preference' => 'Dime se sto lassando na pagina de modifica sensa aver salvà',
 );
 

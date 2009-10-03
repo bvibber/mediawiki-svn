@@ -568,6 +568,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author City-busz
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -579,18 +580,18 @@ $messages['hu'] = array(
 	'slippymap_error_missing_attribute_lat' => 'Hiányzó <tt>lat</tt> attribútum (a földrajzi szélességhez).',
 	'slippymap_error_missing_attribute_lon' => 'Hiányzó <tt>lon</tt> attribútum (a földrajzi hosszúsághoz).',
 	'slippymap_error_missing_attribute_zoom' => 'Hiányzó <tt>zoom</tt> attribútum (a nagyítási szinthez).',
-	'slippymap_error_invalid_attribute_lat_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lat</tt> (latitude) attribútumra, a megadott értéknek egy érvényes számnak kell lennie.',
-	'slippymap_error_invalid_attribute_lon_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lon</tt> (longitude) attribútumra, a megadott értéknek egy érvényes számnak kell lennie.',
-	'slippymap_error_invalid_attribute_zoom_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>zoom</tt> attribútumra, a megadott értéknek egy érvényes számnak kell lennie.',
-	'slippymap_error_invalid_attribute_width_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>width</tt> attribútumra, a megadott értéknek egy érvényes számnak kell lennie.',
-	'slippymap_error_invalid_attribute_height_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>height</tt> attribútumra, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lat</tt> (latitude) attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lon</tt> (longitude) attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>zoom</tt> attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>width</tt> attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>height</tt> attribútumnak, a megadott értéknek egy érvényes számnak kell lennie.',
 	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>mode</tt> attribútumhoz, érvényes értékek: $2.',
 	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>layer</tt> attribútumhoz, érvényes rétegek: $2.',
 	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>marker</tt> attribútumhoz, érvényes jelölők: $2.',
 	'slippymap_error_unknown_attribute' => 'A(z) <tt>$1</tt> attribútum ismeretlen.',
 	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lat</tt> (latitude) attribútumhoz. A földrajzi szélességnek -90 és 90 fok között kell lennie.',
 	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>lon</tt> (longitude) attribútumhoz. A földrajzi hosszúságnak -180 és 180 fok között kell lennie.',
-	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>zoom</tt> attribútumhoz. A nagyítási szintnek $2 és $3 között kell lennie.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>zoom</tt> attribútumnak. A nagyítási szintnek $2 és $3 között kell lennie.',
 	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>width</tt> attribútumhoz. A szélességnek $2 és $3 között kell lennie.',
 	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'A(z) <tt>$1</tt> érték nem érvényes a <tt>height</tt> attribútumhoz. A magasságnak $2 és $3 között kell lennie.',
 	'slippymap_code' => 'Ennek a térképnézetnek a wikikódja:',

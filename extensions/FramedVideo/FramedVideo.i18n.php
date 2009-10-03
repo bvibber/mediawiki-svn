@@ -140,12 +140,15 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Qllach
  */
 $messages['ca'] = array(
+	'framedvideo_errors' => "S'han produït diversos errors!",
 	'framedvideo_error' => 'Hi ha hagut un error!',
 	'framedvideo_error_no_id_given' => 'Manca el paràmetre "id".',
 	'framedvideo_error_limit' => 'El valor màxim permès és $1.',
 	'framedvideo_helppage' => 'Ajuda:Vídeo',
+	'framedvideo-desc' => "Permet incrustar vídeos de diversos llocs web mitjançant l'etiqueta <tt><nowiki><video></nowiki></tt>",
 );
 
 /** Danish (Dansk)

@@ -1582,6 +1582,7 @@ $messages['pms'] = array(
 	'changeauthor-search-box' => 'Serca revision',
 	'changeauthor-pagename-or-revid' => 'Nòm pàgina o ID revision:',
 	'changeauthor-pagenameform-go' => 'Va',
+	'changeauthor-comment' => 'Coment:',
 );
 
 /** Pashto (پښتو)

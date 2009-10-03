@@ -738,19 +738,24 @@ $wgGoogleMapsMessages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Qllach
  * @author Solde
  * @author Toniher
  */
 $wgGoogleMapsMessages['ca'] = array(
+	'gm-desc' => 'Creeu fàcilment mapes amb marcadors en format wiki',
 	'gm-incompatible-browser' => "Per veure el mapa que hi ha en aquesta p&agrave;gina, has d'utilitzar un navegador compatible.",
+	'gm-incompatible-browser-link' => 'Feu clic aquí per a obtenir una llista de navegadors compatibles.',
 	'gm-no-editor' => 'Desgraciadament, el teu navegador no suporta la funci&oacute; interactiva de construcci&oacute; de mapes. Prova la darrera versi&oacute; de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac i Linux).',
 	'gm-balloon-title' => 'Títol:',
+	'gm-balloon-link-article' => 'Enllaç a aquesta pàgina (opcional):',
 	'gm-make-marker' => 'Llegenda (sintaxi wiki OK):',
 	'gm-remove' => 'elimina',
 	'gm-caption' => 'Llegenda',
 	'gm-tab-title' => 'T&iacute;tol de tab',
 	'gm-tab' => 'Tab',
 	'gm-start-path' => 'inicia una ruta',
+	'gm-trace-area' => 'definiu una zona',
 	'gm-save-point' => 'guarda i tanca',
 	'gm-load-map-from-article' => "Carrega un mapa des de l'article:",
 	'gm-no-maps' => 'No hi ha mapes per carregar en aquest article.',

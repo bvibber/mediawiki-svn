@@ -119,6 +119,13 @@ $messages['hu'] = array(
 	'autoincrement-desc' => 'Egy hook változó ami létrehozza az automatikusan növekvő <nowiki>{{AUTOINCREMENT}}</nowiki> változót',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'autoincrement-desc' => 'Un "hook" de variabile que permitte le uso del variabile autoincrementante <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */

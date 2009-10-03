@@ -3377,6 +3377,7 @@ $messages['ia'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'statos',
 	'code-tags' => 'etiquettas',
+	'code-tests' => 'Casos de test',
 	'code-authors-text' => 'Infra es un lista de autores del deposito in ordine de publicationes recente. Le contos del wiki local es monstrate inter parentheses.',
 	'code-author-haslink' => 'Iste autor es ligate al usator $1 de iste wiki',
 	'code-author-orphan' => 'Iste autor ha nulle ligamine con un conto wiki',
@@ -3395,6 +3396,7 @@ $messages['ia'] = array(
 	'code-field-status' => 'Stato',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
+	'code-field-tests' => 'Tests',
 	'code-field-path' => 'Cammino',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Seliger',
@@ -3440,6 +3442,7 @@ $messages['ia'] = array(
 	'code-release-legend' => 'Generar notas del version',
 	'code-release-startrev' => 'Version initial:',
 	'code-release-endrev' => 'Version final:',
+	'code-release-badrange' => 'Intervallo troppo grande!',
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'responder',
 	'codereview-email-subj' => '[$1] [v$2]: Nove commento addite',
@@ -3458,6 +3461,14 @@ URL complete: $3
 Summario del modification:
 
 $4',
+	'codereview-email-subj3' => '[$1] [v$2]: Un test automatic detegeva un regression',
+	'codereview-email-body3' => 'Un test automatic ha revelate un regression a causa del modificationes in v$1.
+
+URL complete: $2
+
+Summario del commit:
+
+$3',
 	'repoadmin' => 'Administration del depositos',
 	'repoadmin-new-legend' => 'Crear un nove deposito',
 	'repoadmin-new-label' => 'Nomine del deposito:',

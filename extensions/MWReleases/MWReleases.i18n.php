@@ -50,6 +50,13 @@ $messages['cs'] = array(
 	'mwreleases-desc' => 'Poskytuje [[Mediawiki:Mwreleases-list|seznam]] podporovaných vydání, dostupný pomocí API',
 );
 
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'mwreleases-desc' => 'Fügt eine [[Mediawiki:Mwreleases-list|Liste]] unterstützter Veröffentlichungen hinzu, die über die API erreichbar ist',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -5277,7 +5277,7 @@ $messages['hu'] = array(
 	'ow_meaningsofsubtitle' => '<em>Wiki hivatkozás:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Engedély megtagadva</h2>',
 	'ow_copy_no_action_specified' => 'Kérlek adj meg egy akciót',
-	'ow_copy_help' => 'Egy nap, lehet hogy segítünk neked.',
+	'ow_copy_help' => 'A súgó még nincs megvalósítva.',
 	'ow_please_proved_dmid' => 'Úgy tűnik, hiányzik egy „?dmid=<ID>” (dmid= Defined Meaning ID, definiált jelentés azonosító) abból, amit megadtál.<br />
 Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
 	'ow_upload' => 'Feltöltés',

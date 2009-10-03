@@ -394,9 +394,14 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'layouts-desc' => 'Az újonnan létrehozott lapok feltöltése szerkeszthető „oldaltervvel”, a lapok egységes struktúrájának elősegítésére',
 	'layouts_title' => 'Lap létrehozása',
+	'layouts_chooselayout' => '$1 oldaltervének kiválasztása:',
+	'layouts_nolayout' => 'Nincs oldalterv',
 	'layouts_continue' => 'Folytatás',
+	'layouts_choosecategory' => 'Válaszd ki $1 kategóriáját:',
 	'layouts_unknown' => 'Ismeretlen',
+	'layouts_tagline' => "Ez a lap a(z) '''$1''' oldalterv felhasználásával lett generálva.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 

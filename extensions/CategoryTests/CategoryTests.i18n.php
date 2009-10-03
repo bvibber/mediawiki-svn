@@ -155,6 +155,13 @@ $messages['hu'] = array(
 	'categorytests-desc' => 'Funkciók kategóriateszteléshez',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'categorytests-desc' => 'Functiones pro test de categoria',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
