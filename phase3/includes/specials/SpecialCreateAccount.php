@@ -211,10 +211,11 @@ class SpecialCreateAccount extends SpecialPage {
 		$this->mLogin->mUser->saveSettings();
 	
 		if( $byEmail ) {
-			if( $result == Login::MAIL_ERROR ){
+			if( $status == Login::MAIL_ERROR ){
 				# FIXME: we are totally screwed if we end up here...
 				$this->showMainForm( wfMsgExt( 'mailerror', 'parseinline', $this->mLogin->mMailResult->getMessage() ) );
 			} else {
+				global $wgOut;
 				$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
 				$wgOut->addWikiMsg( 'accmailtext', $this->mLogin->mUser->getName(), $this->mLogin->mUser->getEmail() );
 				$wgOut->returnToMain( false );
