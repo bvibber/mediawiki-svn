@@ -167,6 +167,14 @@ class SpecialResetpass extends SpecialPage {
 	 * Try to reset the user's password 
 	 */
 	protected function attemptReset() {
+		
+		if( !$this->mUsername
+			|| !$this->mNewpass
+			|| !$this->mRetype )
+		{
+			return false;
+		}
+		
 		$user = User::newFromName( $this->mUsername );
 		if( !$user || $user->isAnon() ) {
 			$this->mHeaderMsg = 'no such user';
@@ -179,7 +187,8 @@ class SpecialResetpass extends SpecialPage {
 			return false;
 		}
 
-		if( !$user->checkTemporaryPassword($this->mOldpass) && !$user->checkPassword($this->mOldpass) ) {
+		if( !$user->checkTemporaryPassword($this->mOldpass) && !$user->checkPassword($this->mOldpass) ) 
+		{
 			wfRunHooks( 'PrefsPasswordAudit', array( $user, $this->mNewpass, 'wrongpassword' ) );
 			$this->mHeaderMsg = 'resetpass-wrong-oldpass';
 			return false;
