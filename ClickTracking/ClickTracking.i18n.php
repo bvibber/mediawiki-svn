@@ -138,6 +138,12 @@ $messages['br'] = array(
 	'clicktracking' => 'Heuliañ klikoù an intrudu implijadusted',
 	'clicktracking-desc' => "Heuliañ klikoù, talvezout a ra da heuliañ an darvoudoù na vez ket adkarget ur bajenn d'ho heul",
 	'ct-title' => "Sammad ar c'hlikoù implijerien",
+	'ct-total-header' => "Hollad ar c'hlikoù",
+	'ct-beginner' => 'Deraouad',
+	'ct-intermediate' => 'Etre',
+	'ct-expert' => 'Mailh',
+	'ct-editing' => "Oc'h aozañ er mare-mañ :",
+	'ct-anon-users' => 'implijerien dizanv',
 );
 
 /** Bosnian (Bosanski)
@@ -220,6 +226,12 @@ $messages['de'] = array(
 	'ct-beginner' => 'Anfänger',
 	'ct-intermediate' => 'Mittlere',
 	'ct-expert' => 'Experte',
+	'ct-date-range' => 'Datumsbereich',
+	'ct-editing' => 'Derzeit bearbeitet von:',
+	'ct-anon-users' => 'Anonyme Benutzer',
+	'ct-user-contribs' => 'Gesamtbenutzerbeiträge',
+	'ct-user-span' => 'Benutzerbeiträge in Zeitspanne',
+	'ct-and' => 'und',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -250,6 +262,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Consta
  * @author Crazymadlover
  * @author Omnipaedista
  * @author ZaDiak
@@ -268,6 +281,7 @@ $messages['el'] = array(
 	'ct-beginner' => 'Αρχάριος',
 	'ct-intermediate' => 'Μέτριος',
 	'ct-expert' => 'Ειδικός',
+	'ct-and' => 'και',
 );
 
 /** Esperanto (Esperanto)
@@ -286,6 +300,7 @@ $messages['eo'] = array(
 	'ct-beginner' => 'Novulo',
 	'ct-intermediate' => 'Progresanto',
 	'ct-expert' => 'Spertulo',
+	'ct-editing' => 'Nune redaktante:',
 	'ct-anon-users' => 'Sennomaj uzantoj',
 	'ct-and' => 'kaj',
 );
@@ -690,9 +705,11 @@ $messages['lb'] = array(
 	'ct-beginner' => 'Ufänger',
 	'ct-intermediate' => 'Dertëschent',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Datumsberäich',
 	'ct-editing' => 'Ännert elo:',
 	'ct-anon-users' => 'Anonym Benotzer',
 	'ct-user-contribs' => 'Total vun de Benotzer-Kontributiounen',
+	'ct-user-span' => 'Benotzerkontributiounen am Zäitraum',
 	'ct-and' => 'an',
 );
 
@@ -746,6 +763,31 @@ $messages['nn'] = array(
 	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',
 	'ct-expert' => 'Ekspert',
 	'ct-anon-users' => 'Anonyme brukarar',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'clicktracking' => 'Klikksporing for brukervennlighetsprosjektet.',
+	'clicktracking-desc' => 'Sporer klikk som ikke forårsaker lasting av ny side.',
+	'ct-expert-header' => '«Ekspertklikk»',
+	'ct-intermediate-header' => '«Mellomnivåbrukerklikk»',
+	'ct-beginner-header' => '«Nybegynnerklikk»',
+	'ct-total-header' => 'Totalt antall klikk',
+	'ct-start-date' => 'Fra (ÅÅÅÅMMDD)',
+	'ct-end-date' => 'Til (ÅÅÅÅMMDD)',
+	'ct-increment-by' => 'Antall dager representert i hvert datapunkt.',
+	'ct-change-graph' => 'Endre graf',
+	'ct-beginner' => 'Nybegynner',
+	'ct-intermediate' => 'Mellomnivåbruker',
+	'ct-expert' => 'Ekspert',
+	'ct-date-range' => 'Datoer som vises',
+	'ct-editing' => 'Redigerer:',
+	'ct-anon-users' => 'Anonyme brukere',
+	'ct-user-contribs' => 'Totalt antall bidrag',
+	'ct-user-span' => 'Bidrag i tid',
+	'ct-and' => 'og',
 );
 
 /** Occitan (Occitan)
@@ -970,6 +1012,7 @@ $messages['vec'] = array(
 	'ct-beginner' => 'Prinsipiante',
 	'ct-intermediate' => 'Intermedio',
 	'ct-expert' => 'Esperto',
+	'ct-and' => 'e',
 );
 
 /** Veps (Vepsan kel')

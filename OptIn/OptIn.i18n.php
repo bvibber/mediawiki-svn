@@ -892,12 +892,12 @@ Wir möchten gerne erfahren, was du über unsere neue Benutzeroberfläche denkst
 	'optin-survey-answer-changes-custom' => 'Größere Benutzeranpassungen erlauben.',
 	'optin-survey-answer-changes-other' => 'Andere:',
 	'optin-improvements' => '== Was wurde verbessert? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Bildschirmfoto der neuen Navigationstabs]]
 ;Erweiterte Navigation
 Durch das neue Navigationssystem wird es einfacher zu bestimmen, wo man sich gerade befindet, was man tut und welche anderen Seiten man wie erreichen kann. Um das Auffinden von Information noch schneller und einfacher zu gestalten, wurde beispielsweise das Suchfeld nach oben rechts verschoben.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Bildschirmfoto der erweiterten Bearbeiten-Werkzeugleiste]]
 ;Verbesserungen der Werkzeugleiste
 Neue und verbesserte Symbole tragen dazu bei, dass man die gewünschte Funktion einfach und schnell erreichen kann. Mithilfe ausklappbarer Abschnitte konnte die Menüstruktur einerseits übersichtlich gehalten werden, andererseits sind so auch selten verwendete Werkzeuge nur einen Klick entfernt.
 Der Hilfeabschnitt erlaubt den schnellen Zugriff auf häufig verwendete Wiki-Syntax.
@@ -1295,12 +1295,12 @@ Nos gustaría saber qué opina acerca de la nueva interfaz; agradeceríamos que 
 	'optin-survey-answer-changes-custom' => 'Permitir una mayor personalización por parte del usuario.',
 	'optin-survey-answer-changes-other' => 'Otro:',
 	'optin-improvements' => '== Qué ha sido mejorado? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Screenshot de las nuevas pestañas de navegación]]
 ;Navegación mejorada
 El nuevo sistema de navegación le hace ver más fácilmente dónde está y qué está haciendo, así como dónde puede ir y cómo ir. Con la tabla de búsqueda localizada en la esquina superior izquierda la búsqueda es más fácil de encontrar y más rápida de usar.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Screenshot de la barra de herramientas de edición mejorada]]
 ;Mejoras de la barra de herramientas de edición
 Nuevos y mejores iconos clarifican la acción de cada herramienta. Secciones expandibles reducen la saturación y mantienen herramientas poco usadas a solo un clic de distancia.
 La sección de ayuda proporciona acceso rápido a una referencia para usos comunes del lenguaje wiki.
@@ -1897,20 +1897,20 @@ $messages['he'] = array(
 	'optin-survey-answer-changes-custom' => 'הוספת אפשרויות רבות יותר להתאמה אישית.',
 	'optin-survey-answer-changes-other' => 'אחר:',
 	'optin-improvements' => '== מה השתפר? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|צילום מסך של לשוניות הניווט החדשות]]
 ;ניווט משופר
 מערכת הניווט החדשה מקלה עליכם לראות איפה אתם ומה אתם עושים, וגם לאן אתם יכולים להגיע ואיך לעשות זאת. כאשר תיבת החיפוש ממוקמת בפינה השמאלית העליונה, קל יותר למצוא את אפשרות החיפוש והשימוש בה מהיר יותר.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|צילום מסך של סרגל העריכה המשופר]]
 ;שיפורים בסרגל העריכה
-סמלים חדשים ומשופרים מבהירים את הפעולה שמבצע כל כלי עריכה. חלקים מתרחבים מקטינים את הבלגן אך מאפשרים לשמור את הכלים שמשתמשים בהם פחות במרחק לחיצה אחת בלבד.
+סמלים חדשים ומשופרים מבהירים את הפעולה שמבצע כל כלי עריכה. חלקים מתרחבים מקטינים את הבלגן ומאפשרים לשמור את הכלים שמשתמשים בהם פחות במרחק לחיצה אחת בלבד.
 חלק העזרה מאפשר גישה מהירה לתיעוד רוב השימושים הנפוצים של תחביר ויקי.
 <div style="clear:both;"></div>
 == איך להצטרף ==
 כדי ללמוד עוד על המיזם או כדי להצטרף אליו, אנא בקרו ב[http://usability.wikimedia.org אתר הוויקי של יוזמת השימושיות]. שם תוכלו למצוא את כל המידע על המענק, המחקר, העיצוב והפיתוח, ושחרורי הגרסאות שלנו. כדי לשאול שאלות או להשאיר משוב כללי, אנא השתמשו ב[http://usability.wikimedia.org/wiki/Talk:Prototype דף השיחה על אב הטיפוס] שלנו. כדי לדון בנושאים מסוימים, אנא השתמשו בדפי השיחה המתאימים. אם אתם מוצאים באגים, אנא השאירו את הערותיכם ב[http://usability.wikimedia.org/wiki/Talk:Releases/Acai דף השיחה של הגרסה Acai] או ב[https://bugzilla.wikimedia.org באגזילה].
 
-תודה, ואנחנו מקווים לשמוע מכם!',
+תודה, ואנו מקווים לשמוע מכם!',
 );
 
 /** Hindi (हिन्दी)
@@ -2169,6 +2169,15 @@ A Segítség részben a wiki-jelölőnyelv leggyakrabban használt elemeinek le�
 Ha többet szeretnél tudni a projektről, vagy be szeretnél kapcsolódni, látogasd meg a [http://usability.wikimedia.org Usability Initiative wikiét].  Itt információkat találsz az indulásunkról, kutatásról, tervezésről és fejlesztéstől, valamint a kiadásainkról.  Kérdéseidet vagy visszajelzéseidet a [http://usability.wikimedia.org/wiki/Talk:Prototype prototípus megbeszélési lapján] várjuk.  Konkrét probléma orvosolásához keresd fel a megfelelő vitalapot.  Ha hibával találkoznál, hagyj üzenetet az [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai kiadás vitalapján] vagy a [https://bugzilla.wikimedia.org Bugzillán].
 
 Köszönjük, és várjuk a visszajelzésedet!',
+);
+
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'optin-title-justoptedin' => 'Բատրի Գալուստ Բետա',
+	'optin-title-justoptedout' => 'Շնորհակալություն Բետա տարբերակը փորձելու համար',
+	'optin-title-feedback' => 'Կարծիք հայտնել Բետայի մասին',
 );
 
 /** Interlingua (Interlingua)
@@ -5001,12 +5010,12 @@ Gavaressimo caro savér cossa te ghe ne pensi de la nostra interfacia nova, quin
 	'optin-survey-question-res' => 'Quala xea la risolussion del to schermo?',
 	'optin-survey-answer-changes-other' => 'Altro:',
 	'optin-improvements' => '== Cossa gavemo fato de mejo? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Schermada de le nove lenguéte de navigassion]]
 ;Navigassion piessè potente
 El sistema novo de navigassion el rende pi senplice védar in do che te sì e cossa te sì drio far, oltre a dove te podi \'ndar e come te podi rivarghe. Co la casèla de riserca piassà in tel canton in alto a destra, la funsion de riserca la xe pi fàsile par catar le robe e pi svelta da doparar.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=Schermada de la bara dei strumenti mejorada]]
 ;Mejoramenti de la bara dei strumenti
 Le icone nove e fate mejo le rende pi ciare le azioni che ogni strumento el fa. Le sezioni espandibili le riduse l\'ingonbro tegnendo i strumenti doparà de manco a un clic de distansa. La sezion de aiuto la fornisse un rapido acesso a un riferimento per i usi comuni de la sintassi wiki.
 <div style="clear:both;"></div>

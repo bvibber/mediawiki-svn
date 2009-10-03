@@ -382,6 +382,16 @@ $messages['hu'] = array(
 	'tooltip-pt-optin-feedback' => 'Adj visszajelzést az új funkciókkal kapcsolatos tapasztalataidról',
 );
 
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'optin-try' => 'Փորձել Բետա տարբերակը',
+	'tooltip-pt-optin-try' => 'Փորձել նոր հնարավորությունները',
+	'optin-leave' => 'Լքել Բետա տարբերակը',
+	'tooltip-pt-optin-leave' => 'Անջատել նոր հնարավորությունները',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -615,7 +625,9 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'optin-try' => 'Prøv Beta',
+	'tooltip-pt-optin-try' => 'Prøv nye funksjoner',
 	'optin-leave' => 'Forlat Beta',
+	'tooltip-pt-optin-leave' => 'Slå av de nye funksjonene',
 	'optin-feedback' => 'Beta tilbakemelding',
 );
 
