@@ -367,9 +367,9 @@ class Login {
 			$this->mUser->addNewUserLogEntry( $wgUser, $byEmail );
 		
 		# Run hooks
-		wfRunHooks( 'AddNewAccount', array( $this->mUser ) );
+		wfRunHooks( 'AddNewAccount', array( &$this->mUser, $autocreate, $byEmail ) );
 
-		return true;
+		return self::SUCCESS;
 	}
 
 	/**
@@ -445,7 +445,7 @@ class Login {
 
 		# if you need a confirmed email address to edit, then obviously you
 		# need an email address. Equally if we're going to send the password to it.
-		if ( $wgEmailConfirmToEdit && empty( $this->mEmail ) || $byEmail ) {
+		if ( ( $wgEmailConfirmToEdit || $byEmail ) && empty( $this->mEmail ) ) {
 			$this->mCreateResult = 'noemailcreate';
 			return self::CREATE_NEEDEMAIL;
 		}
@@ -490,11 +490,12 @@ class Login {
 			# It's unlikely we'd get here without some exception 
 			# being thrown, but it's probably possible...
 			return self::FAILED;
-			
-	
-		# Send out an email message if needed
+		
 		if( $byEmail ){
-			$this->mailPassword( 'createaccount-title', 'createaccount-text' );
+			# Send out the password by email
+			$this->mUser->setPassword( null );
+			$this->mUser->saveSettings();
+			$emailResult = $this->mailPassword( 'createaccount-text', 'createaccount-title' );
 			if( WikiError::isError( $this->mMailResult ) ){
 				# FIXME: If the password email hasn't gone out, 
 				# then the account is inaccessible :(
@@ -511,7 +512,7 @@ class Login {
 					: self::SUCCESS;
 			}
 		}
-		return true;
+		return self::SUCCESS;
 	}
 
 	/**
@@ -522,7 +523,6 @@ class Login {
 	 */
 	public function mailPassword( $text='passwordremindertext', $title='passwordremindertitle' ) {
 		global $wgUser, $wgOut, $wgAuth, $wgServer, $wgScript, $wgNewPasswordExpiry;
-
 		if( wfReadOnly() ) 
 			return self::READ_ONLY;
 
@@ -579,7 +579,6 @@ class Login {
 		$message = wfMsgExt( $text, array( 'parsemag' ), $ip, $this->mUser->getName(), $newpass,
 				$wgServer . $wgScript, round( $wgNewPasswordExpiry / 86400 ) );
 		$this->mMailResult = $this->mUser->sendMail( wfMsg( $title ), $message );
-		
 		if( WikiError::isError( $this->mMailResult ) ) {
 			return self::MAIL_ERROR;
 		} else {
