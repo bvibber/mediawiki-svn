@@ -48,7 +48,7 @@ $messages['en'] = array(
 
 	"wah-nojobfound" 	=> "No job found. Will retry in $1.",
 
-	"wah-notoken-login" => "Could not get a token. Are you logged in?",
+	"wah-notoken-login" => "Are you logged in? If not, please log in first.",
 	"wah-apioff"		=> "The Wiki@Home API appears to be off. Please contact the wiki administrator.",
 
 	"wah-doing-job"		=> "Job: <i>$1</i> on: <i>$2</i>",
