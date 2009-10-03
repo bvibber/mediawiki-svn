@@ -327,34 +327,39 @@ class MassEditRegex extends SpecialPage {
 		switch ($this->strPageListType) {
 			case 'pagenames': // Can do this in one hit
 				$strNamespace = $wgContLang->getNsText($this->iNamespace) . ':';
-				$aRequestVars['titles'] = $strNamespace . join( '|' . $strNamespace, $this->aPageList );
+				$aRequestVars['titles'] = $strNamespace . join( '|' . $strNamespace,
+					$this->aPageList );
 				return $this->runRequest($aRequestVars);
+
 			case 'pagename-prefixes':
 				$aRequestVars['generator'] = 'allpages';
 				$aRequestVars['gapnamespace'] = $this->iNamespace;
 				$aRequestVars['gaplimit'] = $iMaxPerCriterion;
-				return $this->runMultiRequest($aRequestVars, 'gapprefix', $this->aPageList, $aErrors);
-				//$aRequestVars['gapprefix'] = $this->aPageList[0];
+				return $this->runMultiRequest($aRequestVars, 'gapprefix',
+					$this->aPageList, $aErrors);
+
 			case 'categories':
 				$aRequestVars['generator'] = 'categorymembers';
 				$aRequestVars['gcmlimit'] = $iMaxPerCriterion;
+
 				// This generator must have "Category:" on the start of each category
 				// name, so append it to all the pages we've been given if it's missing
-				$strNamespace = $wgContLang->getNsText( NS_CATEGORY ) . ':';
-				$iLen = strlen($strNamespace);
-				foreach ($this->aPageList as &$p) {
-					if (substr($p, 0, $iLen) != $strNamespace)
-						$p = $strNamespace . $p;
-				}
-				$retVar = $this->runMultiRequest($aRequestVars, 'gcmtitle', $this->aPageList, $aErrors);
+				foreach ($this->aPageList as &$p)
+					$p = Title::newFromText($p, NS_CATEGORY);
+
+				$retVar = $this->runMultiRequest($aRequestVars, 'gcmtitle',
+					$this->aPageList, $aErrors);
+
 				// Remove all the 'Category:' prefixes again for consistency
-				foreach ($this->aPageList as &$p) $p = substr($p, $iLen);
+				foreach ($this->aPageList as &$p) $p = $p->getText();
 				return $retVar;
+
 			case 'backlinks':
 				$aRequestVars['generator'] = 'backlinks';
 				$aRequestVars['gblnamespace'] = $this->iNamespace;
 				$aRequestVars['gbllimit'] = $iMaxPerCriterion;
-				return $this->runMultiRequest($aRequestVars, 'gbltitle', $this->aPageList, $aErrors);
+				return $this->runMultiRequest($aRequestVars, 'gbltitle',
+					$this->aPageList, $aErrors);
 		}
 		return null;
 	}
