@@ -155,7 +155,7 @@ class RatingHistory extends UnlistedSpecialPage
 					if( $sExt === 'svg' ) {
 						$svgUrl = $this->getUrlPath( $tag, 'svg' );
 						$viewLink = " <small>[<a href='".htmlspecialchars($svgUrl)."'>".
-							wfMsgHtml("readerfeedback-svg")."</a>]</small>";
+							wfMsgHtml("ratinghistory-svg")."</a>]</small>";
 					}
 					$html .= "<h3>" . wfMsgHtml("readerfeedback-$tag") . "$viewLink</h3>\n" .
 						Xml::openElement( 'div', array('class' => 'rfb-reader_feedback_graph') ) .
