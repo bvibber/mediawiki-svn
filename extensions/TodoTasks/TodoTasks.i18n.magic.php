@@ -18,6 +18,10 @@ $magicWords['ml'] = array(
 	'todo'   => array( '0', 'ചെയ്യേണ്ടവ', 'todo' ),
 );
 
+$magicWords['mr'] = array(
+	'todo'   => array( '0', 'हेकरा', 'हेकर', 'todo' ),
+);
+
 $magicWords['nl'] = array(
 	'todo'   => array( '0', 'tedoen', 'todo' ),
 );

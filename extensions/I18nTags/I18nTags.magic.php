@@ -11,7 +11,7 @@ $magicWords['af'] = array(
 );
 
 $magicWords['ar'] = array(
-	'languagename'   => array( '0', 'اسم_لغة', 'اسم_اللغة', 'languagename' ),
+	'languagename'   => array( '0', 'اسم_اللغة', 'languagename' ),
 );
 
 $magicWords['br'] = array(
@@ -52,6 +52,10 @@ $magicWords['ksh'] = array(
 
 $magicWords['ml'] = array(
 	'languagename'   => array( '0', 'ഭാഷാനാമം', 'languagename' ),
+);
+
+$magicWords['mr'] = array(
+	'languagename'   => array( '0', 'भाषानाव', 'languagename' ),
 );
 
 $magicWords['nl'] = array(

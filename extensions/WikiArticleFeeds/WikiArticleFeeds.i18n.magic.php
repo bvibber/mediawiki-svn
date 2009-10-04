@@ -14,6 +14,10 @@ $magicWords['ja'] = array(
 	'itemtags'   => array( '0', 'アイテムタグ', 'itemtags' ),
 );
 
+$magicWords['mr'] = array(
+	'itemtags'   => array( '0', 'आयटमखूणा', 'कलमखूणा', 'itemtags' ),
+);
+
 $magicWords['nl'] = array(
 	'itemtags'   => array( '0', 'itemlabels', 'itemtags' ),
 );

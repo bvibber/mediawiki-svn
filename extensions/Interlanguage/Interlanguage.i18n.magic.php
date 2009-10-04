@@ -22,6 +22,10 @@ $magicWords['ml'] = array(
 	'interlanguage'   => array( '0', 'അന്തർഭാഷ', 'interlanguage' ),
 );
 
+$magicWords['mr'] = array(
+	'interlanguage'   => array( '0', 'आंतरभाषीय', 'interlanguage' ),
+);
+
 $magicWords['nl'] = array(
 	'interlanguage'   => array( '0', 'intertaal', 'interlanguage' ),
 );

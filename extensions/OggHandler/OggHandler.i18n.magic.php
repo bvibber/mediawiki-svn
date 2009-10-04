@@ -29,6 +29,12 @@ $magicWords['ar'] = array(
 	'ogg_endtime'     => array( '0', 'نهاية=$1', 'end=$1' ),
 );
 
+$magicWords['mr'] = array(
+	'ogg_thumbtime'   => array( '0', 'थंबटाइम=$1', 'इवलावेळ=$1', 'thumbtime=$1' ),
+	'ogg_starttime'   => array( '0', 'सुरवात=$1', 'start=$1' ),
+	'ogg_endtime'     => array( '0', 'शेवट=$1', 'end=$1' ),
+);
+
 $magicWords['nl'] = array(
 	'ogg_noplayer'    => array( '0', 'geenspeler', 'noplayer' ),
 	'ogg_noicon'      => array( '0', 'geenicoon', 'noicon' ),

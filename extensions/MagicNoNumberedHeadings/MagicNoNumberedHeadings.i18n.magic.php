@@ -22,6 +22,10 @@ $magicWords['ml'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__ക്രമസംഖ്യാരഹിതതലക്കെട്ടുകൾ__', '__NONUMBEREDHEADINGS__' ),
 );
 
+$magicWords['mr'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__विनाअंकमथळे__', '__NONUMBEREDHEADINGS__' ),
+);
+
 $magicWords['nl'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__GEENGENUMMERDEKOPPEN__', '__NONUMBEREDHEADINGS__' ),
 );

@@ -10,6 +10,10 @@ $magicWords['ar'] = array(
 	'autoincrement'   => array( '0', 'زيادة_تلقائية', 'AUTOINCREMENT' ),
 );
 
+$magicWords['mr'] = array(
+	'autoincrement'   => array( '0', 'स्वयंवाढ', 'AUTOINCREMENT' ),
+);
+
 $magicWords['nl'] = array(
 	'autoincrement'   => array( '0', 'AUTOMATISCHOPHOGEN', 'AUTOINCREMENT' ),
 );

@@ -30,6 +30,14 @@ $magicWords['ar'] = array(
 	'mediadimensions'   => array( '0', 'أبعاد_الميديا', 'mediadimensions' ),
 );
 
+$magicWords['mr'] = array(
+	'mediamime'         => array( '0', 'दृक्श्राव्यसंकेतक', 'मिडियामाइम', 'mediamime' ),
+	'mediasize'         => array( '0', 'दृक्श्राव्यआकार', 'मिडियासाइझ', 'mediasize' ),
+	'mediaheight'       => array( '0', 'दृक्श्राव्यउंची', 'मिडियाहाइट', 'mediaheight' ),
+	'mediawidth'        => array( '0', 'दृक्श्राव्यलांबी', 'मिडियाविड्थ', 'mediawidth' ),
+	'mediadimensions'   => array( '0', 'दृक्श्राव्यमोजमाप', 'मिडियाडायमेंशन्स', 'mediadimensions' ),
+);
+
 $magicWords['nl'] = array(
 	'mediasize'         => array( '0', 'mediagrootte', 'mediasize' ),
 	'mediaheight'       => array( '0', 'mediahoogte', 'mediaheight' ),

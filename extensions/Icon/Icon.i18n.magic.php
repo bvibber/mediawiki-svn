@@ -34,6 +34,10 @@ $magicWords['ml'] = array(
 	'icon'   => array( '0', 'ഐകോൺ', 'icon' ),
 );
 
+$magicWords['mr'] = array(
+	'icon'   => array( '0', 'प्रतीक', 'चिन्ह', 'icon' ),
+);
+
 $magicWords['nl'] = array(
 	'icon'   => array( '0', 'icoon', 'icon' ),
 );
