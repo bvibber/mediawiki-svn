@@ -710,6 +710,7 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Indech
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -730,6 +731,7 @@ $messages['pt'] = array(
 	'security-unchain' => 'Modificar ações individualmente',
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'domínio',
+	'security-restricttogroup' => 'Acessar conteúdo restrito a membros de "$1"',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

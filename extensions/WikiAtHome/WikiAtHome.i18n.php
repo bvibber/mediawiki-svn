@@ -174,6 +174,21 @@ $messages['be-tarask'] = array(
 	'wah-api-error' => 'Адбылася памылка ў API. Калі ласка, паспрабуйце вярнуцца пазьней.',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'wah-transcode-working' => 'Видеото се обработва. Моля, опитайте пак по-късно.',
+	'wah-notoken-login' => 'Влязохте ли в системата? Ако не, моля, първо влезте с потребителското си име.',
+	'wah-downloading' => 'Свалянето на файла <i>$1%</i> завърши',
+	'wah-encoding' => 'Кодирането на файла <i>$1%</i> завърши',
+	'wah-encoding-fail' => 'Възникна грешка при кодирането на файла. Моля, опреснете страницата или опитайте пак по-късно.',
+	'wah-uploading' => 'Качването на файла <i>$1</i> завърши',
+	'wah-uploadfail' => 'Възникна грешка при качването',
+	'wah-doneuploading' => 'Качването на файла завърши. Благодарим ви за приноса.',
+	'wah-api-error' => 'Възникна грешка в приложно-програмния интерфейс. Моля, опитайте пак по-късно.',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -557,6 +572,9 @@ $messages['hu'] = array(
 	'wah-transcode-fail' => 'A fájl átkódolása meghiúsult.',
 	'wah-javascript-off' => 'A Wiki@Home-ban való részvételhez engedélyezned kell a JavaScriptet',
 	'wah-loading' => 'Wiki@Home interfész betöltése <blink>…</blink>',
+	'wah-menu-stats' => 'Statisztikák',
+	'wah-menu-pref' => 'Beállítások',
+	'wah-uploadfail' => 'Sikertelen feltöltés',
 );
 
 /** Interlingua (Interlingua)

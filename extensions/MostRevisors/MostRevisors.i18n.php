@@ -359,12 +359,18 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'mostrevisors' => 'A legtöbb hozzájárulóval rendelkező lapok',
+	'mostrevisors-desc' => '[[Special:MostRevisors|Legtöbb hozzájárulóval rendelkező lapok]] listázása',
+	'mostrevisors-header' => "'''Ezen a lapon a wiki legtöbb hozzájárulóval rendelkező {{PLURAL:$1|lapja|$1 lapja}} látható.'''",
 	'mostrevisors-limitlinks' => '$1 lap mutatása',
 	'mostrevisors-namespace' => 'Névtér:',
 	'mostrevisors-none' => 'Nem találhatók bejegyzések.',
+	'mostrevisors-ns-header' => "'''Ezen a lapon a wiki legtöbb hozzájárulóval rendelkező {{PLURAL:$1|lapja|$1 lapja}} látható a $2 névtérből.'''",
+	'mostrevisors-showing' => '$1 lap:',
 	'mostrevisors-submit' => 'Menj',
 	'mostrevisors-showredir' => 'Átirányítás lapok megjelenítése',
 	'mostrevisors-hideredir' => 'Átirányítás lapok elrejtése',
+	'mostrevisors-users' => '– $1 szerkesztő',
 	'mostrevisors-viewcontributors' => 'Fő közreműködők megtekintése',
 );
 

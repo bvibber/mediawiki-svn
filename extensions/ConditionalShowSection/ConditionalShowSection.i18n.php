@@ -176,6 +176,13 @@ $messages['pms'] = array(
 	'conditionalshowsection-desc' => 'Gionté ël tag <cshow> per mosté/stërmé condissionalment na session ëd test wiki',
 );
 
+/** Portuguese (Português)
+ * @author Indech
+ */
+$messages['pt'] = array(
+	'conditionalshowsection-desc' => 'Adicionando a marcação <cshow> para mostrar/ocultar condicionalmente uma seção de wikitexto',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

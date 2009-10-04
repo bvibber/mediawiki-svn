@@ -267,13 +267,14 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'usagestatistics-desc' => 'Показване на статистика за отделни потребители или за цялото уики',
-	'usagestatisticsinterval' => 'Интервал',
+	'usagestatisticsinterval' => 'Интервал:',
 	'usagestatisticstype' => 'Вид',
-	'usagestatisticsstart' => 'Начална дата',
-	'usagestatisticsend' => 'Крайна дата',
+	'usagestatisticsstart' => 'Начална дата:',
+	'usagestatisticsend' => 'Крайна дата:',
 	'usagestatisticssubmit' => 'Генериране на статистиката',
 	'usagestatisticsnostart' => 'Необходимо е да се посочи начална дата',
 	'usagestatisticsnoend' => 'Необходимо е да се посочи крайна дата',
@@ -688,6 +689,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Japsu
  * @author Kulmalukko
  * @author Mobe

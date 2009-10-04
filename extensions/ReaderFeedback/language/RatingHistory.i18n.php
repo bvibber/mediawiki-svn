@@ -1387,6 +1387,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Crazymadlover
+ * @author Indech
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -1408,7 +1409,7 @@ $messages['pt'] = array(
 	'ratinghistory-table' => 'Resumo das avaliações dos leitores',
 	'ratinghistory-users' => 'Utilizadores que fizeram avaliações',
 	'ratinghistory-graph' => '$2 de "$3" ($1 {{PLURAL:$1|avaliação|avaliações}})',
-	'readerfeedback-svg' => 'Ver como SVG',
+	'ratinghistory-svg' => 'Ver como SVG',
 	'ratinghistory-table-rating' => 'Avaliação',
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Ainda não há dados suficientes de avaliações dos leitores para mostrar gráficos.',
@@ -1418,6 +1419,7 @@ A '''avaliação média acumulada''' é apenas a média de todas as avaliações
 As avaliações são como segue:
 
 '''(1)''' - Péssima; '''(2)''' - Baixa; '''(3)''' - Razoável; '''(4)''' - Alta; '''(5)''' - Excelente;",
+	'ratinghistory-graph-scale' => "'''Revisões por dia''' <font color=\"red\">''(red)''</font> mostrados em uma escala ''1:\$1''.",
 	'right-feedback' => 'Use o formulário de feedback para avaliar uma página',
 );
 

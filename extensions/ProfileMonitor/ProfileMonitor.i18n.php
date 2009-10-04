@@ -410,8 +410,14 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'profiling' => 'Futásidő-analizálási adatok',
+	'profiling-desc' => '[[Special:Profiling|Speciális lap]] a futásidő-analizálási adatok keresésére és vizsgálatára',
+	'profiling-process' => 'Futtatási parancs:',
+	'profiling-wildcard' => 'Helyettesítő karakterek használata',
 	'profiling-ok' => 'OK',
+	'profiling-data' => 'Futásidő-elemzési adatok erről: „$1”',
 	'profiling-data-process' => 'Folyamat',
+	'profiling-data-count' => 'Darabszám',
 	'profiling-data-time' => 'Idő (összes)',
 	'profiling-data-average' => 'Idő (átlag)',
 	'profiling-no-data' => 'Nem található egyező adat.',

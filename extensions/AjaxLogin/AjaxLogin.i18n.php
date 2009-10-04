@@ -638,6 +638,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Indech
  * @author Malafaya
  * @author Waldir
  */
@@ -648,6 +649,9 @@ Isto leva-lo-á a abandonar esta página de edição e poderá perder a sua edi�
 	'ajaxLogin2' => 'Tem a certeza?
 Poderá perder as suas alterações a esta página se abandonar esta página agora.',
 	'ajaxlogin-create' => 'Criar uma conta',
+	'al-nosuchuser' => 'Não existe usuário com o nome "$1".
+Nomes de usuário são sensíveis à maiúsculas.
+Cheque se você soletrou corretamente.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

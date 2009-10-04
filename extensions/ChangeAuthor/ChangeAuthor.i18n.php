@@ -1583,6 +1583,8 @@ $messages['pms'] = array(
 	'changeauthor-pagename-or-revid' => 'Nòm pàgina o ID revision:',
 	'changeauthor-pagenameform-go' => 'Va',
 	'changeauthor-comment' => 'Coment:',
+	'changeauthor-changeauthors-multi' => 'Cambia {{PLURAL:$1|autor|autor}}',
+	'changeauthor-changeauthors-single' => 'Cambia autor',
 );
 
 /** Pashto (پښتو)

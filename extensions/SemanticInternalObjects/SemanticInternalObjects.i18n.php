@@ -182,6 +182,13 @@ $messages['pms'] = array(
 	'semanticinternalobjects-desc' => "Ampostassion d'oget intern an drinta a Semantic MediaWiki",
 );
 
+/** Portuguese (Português)
+ * @author Indech
+ */
+$messages['pt'] = array(
+	'semanticinternalobjects-desc' => 'Configuração de objetos internos na MediaWiki Semântica',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

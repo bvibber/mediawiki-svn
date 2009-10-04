@@ -160,6 +160,13 @@ $messages['pms'] = array(
 	'filepagemasking-desc' => 'A riscriv ".xxx" an "_xxx" ant ij colegament ëd le pàgine ëd descrission dij file',
 );
 
+/** Portuguese (Português)
+ * @author Indech
+ */
+$messages['pt'] = array(
+	'filepagemasking-desc' => 'Reescreve ".xxx" para "_xxx" nas ligações das páginas de descrição de arquivo',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  */

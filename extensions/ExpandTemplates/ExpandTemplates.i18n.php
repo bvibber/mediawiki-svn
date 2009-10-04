@@ -1459,6 +1459,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Indech
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1471,6 +1472,7 @@ $messages['pt'] = array(
 	'expand_templates_xml_output' => 'Resultado XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Remover comentários',
+	'expand_templates_remove_nowiki' => 'Suprima marcações <nowiki> no resultado',
 	'expand_templates_generate_xml' => 'Mostrar árvore de análise (parse) do XML',
 	'expand_templates_preview' => 'Previsão',
 );
@@ -1832,6 +1834,7 @@ Bunu, ilgili derleyici aşamasını MedyaVikinin kendisinden çağırarak yapar.
 	'expand_templates_xml_output' => 'XML üretim',
 	'expand_templates_ok' => 'Tamam',
 	'expand_templates_remove_comments' => 'Yorumları sil',
+	'expand_templates_remove_nowiki' => 'Sonuçlarda <nowiki> etiketlerini bastır',
 	'expand_templates_generate_xml' => 'XML derleyici ağacını göster',
 	'expand_templates_preview' => 'Ön izleme',
 );

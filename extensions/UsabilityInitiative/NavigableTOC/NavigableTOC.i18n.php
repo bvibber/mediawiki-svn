@@ -329,11 +329,13 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Indech
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'navigabletoc' => 'Tabela de conteúdo navegável',
 	'navigabletoc-desc' => 'Adiciona uma tabela de conteúdo ao formulário de edição que desloca a caixa de texto quando a secção é clicada',
+	'navigabletoc-preference' => 'Habilita tabela de conteúdo navegável',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

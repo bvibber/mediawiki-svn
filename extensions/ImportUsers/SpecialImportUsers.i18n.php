@@ -778,8 +778,17 @@ $messages['hu'] = array(
 	'importusers' => 'Szerkesztők importálása',
 	'importusers-desc' => '[[Special:ImportUsers|Szerkesztői azonosítók importálása]] tömegesen CSV fájlból; kódolás: UTF-8',
 	'importusers-uploadfile' => 'Fájl feltöltése',
+	'importusers-form-caption' => 'CSV fájl beolvasása (utf-8)',
+	'importusers-form-file' => 'Felhasználó fájlformátum (CSV):',
 	'importusers-form-replace-present' => 'Jelenlegi szerkesztői fiókok lecserélése',
 	'importusers-form-button' => 'Importálás',
+	'importusers-user-added' => "'''$1''' felhasználó hozzáadva.",
+	'importusers-user-present-update' => "'''$1''' nevű felhasználó már létezik.
+Frissítve.",
+	'importusers-user-present-not-update' => "'''$1''' nevű felhasználó már létezik.
+Nem történt frissítés.",
+	'importusers-user-invalid-format' => 'A(z) #$1. sorban levő felhasználói adatok érvénytelen formátumúak, vagy nincsenek megadva.
+Átugorva.',
 	'importusers-log' => 'Importált szerkesztői azonosítók naplója',
 	'importusers-log-summary' => 'Összefoglaló',
 	'importusers-log-summary-all' => 'Összes',
@@ -789,6 +798,7 @@ $messages['hu'] = array(
 	'importusers-password' => 'jelszó',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'valódi név',
+	'right-import_users' => 'felhasználók tömeges importálása',
 );
 
 /** Interlingua (Interlingua)

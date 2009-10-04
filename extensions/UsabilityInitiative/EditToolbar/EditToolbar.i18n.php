@@ -783,6 +783,18 @@ $messages['bg'] = array(
 	'edittoolbar-tool-file-example' => 'Пример.jpg',
 	'edittoolbar-group-list' => 'Списък',
 	'edittoolbar-tool-table' => 'Таблица',
+	'edittoolbar-tool-table-example-old' => '-
+! колона 1
+! колона 2
+! колона 3
+|-
+| ред 1, клетка 1
+| ред 1, клетка 2
+| ред 1, клетка 3
+|-
+| ред 2, клетка 1
+| ред 2, клетка 2
+| ред 2, клетка 3',
 	'edittoolbar-section-characters' => 'Специални символи',
 	'edittoolbar-characters-page-latin' => 'Латиница',
 	'edittoolbar-characters-page-ipa' => 'IPA',
@@ -2799,8 +2811,8 @@ $messages['es'] = array(
 	'edittoolbar-loading' => 'Cargando...',
 	'edittoolbar-tool-bold' => 'Negrita',
 	'edittoolbar-tool-bold-example' => 'Texto en negrita',
-	'edittoolbar-tool-italic' => 'Itálica',
-	'edittoolbar-tool-italic-example' => 'Texto en itálica',
+	'edittoolbar-tool-italic' => 'Cursiva',
+	'edittoolbar-tool-italic-example' => 'Texto en cursiva',
 	'edittoolbar-tool-ilink' => 'Vínculo interno',
 	'edittoolbar-tool-ilink-example' => 'Título del vínculo',
 	'edittoolbar-tool-xlink' => 'Vínculo externo (recordar prefijo http://)',
@@ -2906,7 +2918,7 @@ $messages['es'] = array(
 	'edittoolbar-help-heading-description' => 'Descripción',
 	'edittoolbar-help-heading-syntax' => 'Lo que escribe',
 	'edittoolbar-help-heading-result' => 'Lo que obtiene',
-	'edittoolbar-help-page-format' => 'Formatear',
+	'edittoolbar-help-page-format' => 'Formateando',
 	'edittoolbar-help-page-link' => 'Vínculos',
 	'edittoolbar-help-page-heading' => 'Encabezados',
 	'edittoolbar-help-page-list' => 'Listas',
@@ -5037,6 +5049,7 @@ $messages['hy'] = array(
 	'edittoolbar-tool-link-title' => 'Ավելացնել հղում',
 	'edittoolbar-tool-link-int' => 'վիքիի էջին',
 	'edittoolbar-tool-link-ext' => 'արտաքին վեբ էջին',
+	'edittoolbar-tool-file-example' => 'Օրինակ.jpg',
 	'edittoolbar-tool-signature' => 'Ստորագրությունը ամսաթվով',
 	'edittoolbar-section-advanced' => 'Ընդլայնված',
 	'edittoolbar-tool-heading-1' => '1-ին խորքի',
@@ -7271,6 +7284,7 @@ $messages['ml'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>ലിസ്റ്റിലെ അംഗം</li><li>ലിസ്റ്റിലെ അംഗം</li></ol>',
 	'edittoolbar-help-content-file-description' => 'പ്രമാണം ചേർക്കൽ',
 	'edittoolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|ലഘു|വിവരണ കുറിപ്പ്]]',
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='കുറിപ്പായുള്ള എഴുത്ത്' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='{{STYLEPATH}}/common/images/magnify-clip.png'/></a></div>കുറിപ്പായുള്ള എഴുത്ത്</div></div>",
 	'edittoolbar-help-content-reference-description' => 'അവലംബം',
 	'edittoolbar-help-content-reference-syntax' => 'താളിലെ എഴുത്ത്.&lt;ref name="test"&gt;[http://www.example.org കണ്ണിയായുള്ള എഴുത്ത്], കൂടുതൽ എഴുത്ത്.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "താളിലെ എഴുത്ത്.<sup><a href='#'>[1]</a></sup>",
@@ -7282,6 +7296,9 @@ $messages['ml'] = array(
 	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>ഉപയോക്തൃനാമം</a> (<a href='#' title='{{#special:mytalk}}'>സംവാദം</a>) 15:54, 10 ജൂൺ 2009 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'ഒപ്പ്',
 	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>ഉപയോക്തൃനാമം</a> (<a href='#' title='{{#special:mytalk}}'>സംവാദം</a>)",
+	'edittoolbar-help-content-indent-description' => 'നീക്കിയെഴുതുക',
+	'edittoolbar-help-content-indent-syntax' => 'സാധാരണ എഴുത്ത്<br />:നീക്കിയുള്ള എഴുത്ത്<br />::നീക്കിയുള്ള എഴുത്ത്',
+	'edittoolbar-help-content-indent-result' => 'സാധാരണ എഴുത്ത്<dl><dd>നീക്കിയുള്ള എഴുത്ത്<dl><dd>നീക്കിയുള്ള എഴുത്ത്</dd></dl></dd></dl>',
 );
 
 /** Mongolian (Монгол)
@@ -10920,6 +10937,9 @@ $messages['vec'] = array(
 	'edittoolbar-tool-table-dimensions-header' => 'Includi la riga de intestassion',
 	'edittoolbar-tool-table-insert' => 'Inserissi',
 	'edittoolbar-tool-table-cancel' => 'Anùla',
+	'edittoolbar-tool-table-toomany' => 'Co sto comando no se pole inserir na tabèla con piassè de $1 casèle.',
+	'edittoolbar-tool-table-invalidnumber' => 'No te ghè inserìo un nùmaro valido de righe o colòne.',
+	'edittoolbar-tool-table-zero' => 'No te poli inserir na tabèla con zero righe o colòne.',
 	'edittoolbar-tool-replace' => 'Serca e sostituìssi',
 	'edittoolbar-tool-replace-title' => 'Serca e sostituìssi',
 	'edittoolbar-tool-replace-search' => 'Serca:',
@@ -10932,6 +10952,7 @@ $messages['vec'] = array(
 	'edittoolbar-tool-replace-close' => 'Anùla',
 	'edittoolbar-tool-replace-nomatch' => 'No gavemo catà gnente che corisponde a quel che te serchi.',
 	'edittoolbar-tool-replace-success' => '$1 sostitussion fate.',
+	'edittoolbar-tool-replace-emptysearch' => 'No te ghè inserìo gnente da sercar.',
 	'edittoolbar-section-characters' => 'Caràteri speciali',
 	'edittoolbar-characters-page-latin' => 'Latìn',
 	'edittoolbar-characters-page-latinextended' => 'Latìn esteso',

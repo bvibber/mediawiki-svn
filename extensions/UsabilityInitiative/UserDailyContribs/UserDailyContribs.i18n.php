@@ -206,6 +206,13 @@ $messages['pms'] = array(
 	'userdailycontribs-desc' => "Contribussion giornaliere dl'utent për l'estension dla trassadura dij click",
 );
 
+/** Portuguese (Português)
+ * @author Indech
+ */
+$messages['pt'] = array(
+	'userdailycontribs-desc' => 'Contribuições diárias de usuário para a extensão de rastreio de clique',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

@@ -162,6 +162,13 @@ $messages['pms'] = array(
 	'lockout-desc' => "A lassa pa intré j'utent blocà",
 );
 
+/** Portuguese (Português)
+ * @author Indech
+ */
+$messages['pt'] = array(
+	'lockout-desc' => 'Prevenir que usuários bloqueados façam login',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

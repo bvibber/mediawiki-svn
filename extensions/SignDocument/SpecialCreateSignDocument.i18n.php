@@ -503,6 +503,7 @@ $messages['ext'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  * @author Vililikku
  */
@@ -522,7 +523,8 @@ $messages['fi'] = array(
 	'createsigndoc-create' => 'Luo',
 	'createsigndoc-error-generic' => 'Virhe: $1',
 	'createsigndoc-error-pagenoexist' => 'Virhe: sivua [[$1]] ei löydy.',
-	'createsigndoc-error-alreadycreated' => 'Asiakirjan allekirjoitus ”$1” on jo olemassa.',
+	'createsigndoc-error-alreadycreated' => 'Asiakirjan allekirjoitus ”$1” on jo olemassa.
+Tätä ei voi tehdä toista kertaa.',
 );
 
 /** French (Français)
@@ -774,9 +776,14 @@ $messages['hu'] = array(
 	'createsigndoc-phone' => 'Telefonszám:',
 	'createsigndoc-bday' => 'Születési dátum:',
 	'createsigndoc-minage' => 'Minimális kor:',
+	'createsigndoc-introtext' => 'Bevezetés:',
 	'createsigndoc-hidden' => 'Rejtett',
+	'createsigndoc-optional' => 'Nem kötelező',
 	'createsigndoc-create' => 'Létrehozás',
 	'createsigndoc-error-generic' => 'Hiba: $1',
+	'createsigndoc-error-pagenoexist' => 'Hiba: nincs [[$1]] nevű lap.',
+	'createsigndoc-error-alreadycreated' => 'A(z) „$1” dokumentum-aláírás már létezik.
+Ezt nem lehet újból megtenni.',
 );
 
 /** Interlingua (Interlingua)

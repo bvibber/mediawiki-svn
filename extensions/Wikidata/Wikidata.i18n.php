@@ -3633,8 +3633,8 @@ $messages['fi'] = array(
 	'importtsv' => 'Wikidata: Tuo TSV',
 	'ow_importtsv_title1' => 'Tuo TSV',
 	'ow_importtsv_title2' => 'Tuo määritelmiä ja käännöksiä',
-	'ow_importtsv_header' => '<p>Tuo määritelmät ja käännökset sarkainmerkein eroteltuna tekstitiedostona, jolle olet saattanut tehdä viennin OpenOffice.org:in, Excelin tai muun taulukkolaskentaohjelmiston tiedostomuodossa.</p>
-<p>Tiedostomuodon pitää olla sama kuin viedyissä tiedostoissa jotka ovat [[Special:ExportTSV|ExportTSV]] -sivulla. Jos olet muuttanut sarakkeiden nimiä, tuonti ei onnistu. Jos olet muuttanut id:n tai määrittävän lausekkeen määritellylle merkitykselle ilmaus mitään määritelty merkitys, että linja ei oteta huomioon. Jos olet lisännyt sarakkeet, niiden on oltava muodossa ”definitions_iso” tai ”translations_iso”, jossa iso on ISO 639-3 -kielikoodi.</p>
+	'ow_importtsv_header' => '<p>Tuo määritelmät ja käännökset sarkainmerkein eroteltuna tekstitiedostona, jolle olet saattanut tehdä viennin OpenOffice.orgin, Excelin tai muun taulukkolaskentaohjelmiston tiedostomuodossa.</p>
+<p>Tiedostomuodon pitää olla sama kuin viedyissä tiedostoissa jotka ovat [[Special:ExportTSV|ExportTSV]]-sivulla. Jos olet muuttanut sarakkeiden nimiä, tuonti ei onnistu. Jos olet muuttanut id:n tai määrittävän lausekkeen määritellylle merkitykselle ilmaus mitään määritelty merkitys, että linja ei oteta huomioon. Jos olet lisännyt sarakkeet, niiden on oltava muodossa ”definitions_iso” tai ”translations_iso”, jossa iso on ISO 639-3 -kielikoodi.</p>
 <p>Jos ”testikäyttö” on valittuna, kaikki toimet, jotka sen suhteen on raportoitu, mutta muutoksia ei oikeastaan tapahtunut. Sinun kannattaa tehdä testin, ennen kuin teet todellinen tuonti.</p>',
 	'ow_importtsv_not_allowed' => 'Sinulla ei ole lupaa tehdä TSV-tuontia.',
 	'ow_importtsv_importing' => 'TSV-tietueitten tuonti',
@@ -5218,6 +5218,7 @@ $messages['hu'] = array(
 	'ow_save' => 'Mentés',
 	'ow_history' => 'Történet',
 	'ow_uipref_datasets' => 'Alapértelmezett nézet:',
+	'ow_transaction_count' => 'Darabszám:',
 	'ow_transaction_user' => 'Felhasználói név:',
 	'ow_transaction_remove' => 'Eltávolítás',
 	'ow_transaction_summary' => 'Összefoglaló',

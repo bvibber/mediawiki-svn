@@ -2862,6 +2862,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Indech
  * @author Lijealso
  * @author Malafaya
  * @author Sir Lestaty de Lioncourt
@@ -2911,7 +2912,7 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
 	'oversight-legend' => 'Pesquisar registro de revisões ocultas',
 	'oversight-oversighter' => 'Supervisor:',
-	'oversight-offender' => 'Ofensor:',
+	'oversight-offender' => 'Autor da revisão:',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

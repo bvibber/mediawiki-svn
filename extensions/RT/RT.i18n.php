@@ -282,8 +282,16 @@ Sy spytał: '''$1'''",
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'rt-desc' => 'Díszes felület az RT-hez (Request Tracker)',
 	'rt-inactive' => 'Az RT kiterjesztés nem aktív',
+	'rt-badquery' => 'Az RT kiterjesztés hibát észlelt az RT adatbázissal való kommunikáció közben',
 	'rt-badlimit' => "Érvénytelen „LIMIT (l)” argumentum: számnak kell lennie.
+A következőt próbáltad: '''$1'''",
+	'rt-badorderby' => "Érvénytelen ORDER BY (ob) paraméter: standard mezőnek kell lennie (lásd a dokumentációt).
+A következőt próbáltad: '''$1'''",
+	'rt-badstatus' => "Érvénytelen status (s) paraméter: standard mezőnek kell lennie (lásd a dokumentációt).
+A következőt próbáltad: '''$1'''",
+	'rt-badqueue' => "Érvénytelen queue (q) paraméter: egyszerű szónak kell lennie.
 A következőt próbáltad: '''$1'''",
 	'rt-badowner' => "Érvénytelen „owner (o)” argumentum: érvényes felhasználói névnek kell lennie.
 A következőt próbáltad: '''$1'''",

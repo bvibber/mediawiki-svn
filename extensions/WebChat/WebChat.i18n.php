@@ -460,9 +460,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Indech
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'webchat' => 'Bate-papo',
 	'right-webchat' => 'Permitido o uso de [[Special:WebChat|web chat]]',
 );
 

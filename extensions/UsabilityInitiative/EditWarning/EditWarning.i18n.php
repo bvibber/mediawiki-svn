@@ -162,10 +162,11 @@ Wenn du angemeldet bist, kannst du das Anzeigen dieser Warnung im „{{int:prefs
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass Ihre Änderungen verloren gehen.
-Sie können die Anzeige dieser Warnung im „{{int:prefs-editing}}“-Bereich Ihrer Einstellungen abschalten.',
+Wenn Sie angemeldet sind, können Sie das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich Ihrer Einstellungen abschalten.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -547,14 +548,15 @@ S'it ses logà, it peule disabilité st'avis-sì ant la session \"{{int:prefs-ed
 /** Portuguese (Português)
  * @author Giro720
  * @author Heldergeovane
+ * @author Indech
  * @author Lijealso
  * @author Waldir
  */
 $messages['pt'] = array(
 	'editwarning' => 'Aviso de edição',
 	'editwarning-desc' => 'Exibir um aviso quando um utilizador tenta deixar a caixa de edição sem gravar',
-	'editwarning-warning' => 'Abandonar esta página fará com que você perca todas as alterações que fez.
-Você pode desabilitar este aviso na seção "{{int:prefs-editing}}" em suas preferências.',
+	'editwarning-warning' => 'Sair desta página fará com que você perca todas as alterações feitas por você.
+Se você fez login, pode desabilitar este aviso na seção "{{int:prefs-editing}}" das suas preferências.',
 	'editwarning-preference' => 'Avisar-me ao abandonar uma página editada sem gravar as alterações.',
 );
 

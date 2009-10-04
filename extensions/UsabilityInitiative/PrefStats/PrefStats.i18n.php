@@ -133,6 +133,34 @@ $messages['be-tarask'] = array(
 	'prefstats-legend-in' => 'Прынялі ўдзел',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'prefstats' => 'Статистики за настройките',
+	'prefstats-desc' => 'На тази страница се събират статистически данни за това колко потребители са включили определени свои лични настройки',
+	'prefstats-title' => 'Статистики за настройките',
+	'prefstats-list-intro' => 'Понастоящем се събира информация за следните настройки.
+Щракнете на някоя от настройките, за да прегледате статистиките за нея.',
+	'prefstats-noprefs' => 'Понастоящем не се събира информация за настройките.
+Конфигурирайте $wgPrefStatsTrackPrefs, за да започнете да събирате данни за тях.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|потребител е включил|потребители са включили}} тази настройка, откакто се събират статистики за настройките
+** $2 {{PLURAL:$2|потребител продължава да я ползва|потребители продължават да я ползват}}
+** $3 {{PLURAL:$3|потребител я е изключил|потребители са я изключили}} оттогава',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|потребител е включил|потребители са включили}} тази настройка, откакто се събират статистики за настройките
+** $2 {{PLURAL:$2|потребител продължава да я ползва|потребители продължават да я ползват}}
+** $3 {{PLURAL:$3|потребител я е изключил|потребители са я изключили}} оттогава
+* Общо, $4 {{PLURAL:$4|потребител има|потребители имат}} включена тази настройка',
+	'prefstats-xaxis' => 'Времетраене (в часове)',
+	'prefstats-factors' => 'Преглед на интервал от $1',
+	'prefstats-factor-hour' => 'един час',
+	'prefstats-factor-sixhours' => 'шест часа',
+	'prefstats-factor-day' => 'един ден',
+	'prefstats-factor-week' => 'една седмица',
+	'prefstats-factor-twoweeks' => 'две седмици',
+	'prefstats-factor-fourweeks' => 'четири седмици',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -1830,6 +1858,8 @@ Strucando su de una te vedi le so statìsteghe.',
 	'prefstats-factor-twoweeks' => 'do setimane',
 	'prefstats-factor-fourweeks' => 'quatro setimane',
 	'prefstats-factor-default' => 'torna a la scala predefinìa',
+	'prefstats-legend-out' => 'Destacà',
+	'prefstats-legend-in' => 'Intacà',
 );
 
 /** Veps (Vepsan kel')

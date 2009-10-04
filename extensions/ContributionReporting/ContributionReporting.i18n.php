@@ -1607,10 +1607,15 @@ $messages['hu'] = array(
 	'contribstats-value-under' => 'kevesebb, mint $1',
 	'contribstats-value-from' => '$1 és $2 között',
 	'contribstats-value-over' => 'több, mint $1',
+	'contributiontrackingstatistics' => 'Adománykövetési statisztika',
+	'contribstats-day-totals' => 'Összes a mai napon',
 	'contribstats-week' => 'Hét',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Heti összesítés|Heti összesítések az elmúlt $1 hetet is beleértve}}',
 	'contribstats-clicks' => 'Kattintások',
 	'contribstats-donations' => 'Adományok',
+	'contribstats-conversion' => 'Konverziós ráta (%)',
 	'contribstats-template' => 'Sablon',
+	'contribstats-nodata' => 'Nincs rendelkezésre álló adat',
 	'fundraiserstatistics' => 'Adományozási statisztikák',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => '$2, $1. nap',
@@ -1622,6 +1627,7 @@ $messages['hu'] = array(
 	'fundraiserstats-tab-contributions' => 'Közreműködések száma',
 	'fundraiserstats-tab-averages' => 'Átlagosan (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
+	'specialpages-group-contribution' => 'Adományok/Adománygyűjtés',
 );
 
 /** Interlingua (Interlingua)
@@ -3357,6 +3363,7 @@ $messages['tr'] = array(
 	'contribstats-donations' => 'Bağışlar',
 	'contribstats-conversion' => 'Dönüşüm oranı (%)',
 	'contribstats-template' => 'Şablon',
+	'contribstats-nodata' => 'Hiç veri sağlanmamış',
 	'fundraiserstatistics' => 'Fonsağlayıcı istatistikleri',
 	'fundraiserstats-date' => 'Tarih',
 	'fundraiserstats-day' => '$2 fonsağlayıcısının $1. günü',

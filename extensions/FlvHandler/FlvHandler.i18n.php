@@ -183,6 +183,14 @@ $messages['pms'] = array(
 	'flv-long-desc' => '(Video flah, $1 x $2 pixel, dimension dël file: $3)',
 );
 
+/** Portuguese (Português)
+ * @author Indech
+ */
+$messages['pt'] = array(
+	'flvhandler_desc' => 'Permitir arquivos de vídeo Flash (.flv) serem adicionados como arquivos padrão (ex.: <nowiki>[[File:Movie.flv]]</nowiki>)',
+	'flv-long-desc' => '(Vídeo Flash, $1 × $2 pixels, tamanho do arquivo: $3)',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

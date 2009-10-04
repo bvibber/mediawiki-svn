@@ -529,6 +529,19 @@ It l\'has-to un coment an sta pàgina-sì? Giontlo sì o <span class="plainlinks
 	'commentbox-error-empty-comment' => 'Coment veuid a son pa possìbij!',
 );
 
+/** Portuguese (Português)
+ * @author Indech
+ */
+$messages['pt'] = array(
+	'commentbox-desc' => 'Inclui uma caixa de comentários em certas páginas',
+	'commentbox-savebutton' => 'Salvar comentário',
+	'commentbox-name' => 'Nome:',
+	'commentbox-log' => 'Novos comentários',
+	'commentbox-first-comment-heading' => '== Comentários ==',
+	'commentbox-error-page-nonexistent' => 'Essa página não existe!',
+	'commentbox-error-empty-comment' => 'Comentários vazios não são permitidos!',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */

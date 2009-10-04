@@ -586,6 +586,13 @@ $messages['uk'] = array(
 	'ratedpages-graphs' => 'дані рейтингу',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revision}}',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

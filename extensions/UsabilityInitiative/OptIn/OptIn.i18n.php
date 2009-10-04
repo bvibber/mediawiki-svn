@@ -370,6 +370,43 @@ $messages['be-tarask'] = array(
 Дзякуй, мы чакаем Вашых водгукаў!',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'optin-title-optedout' => 'Изпробвайте Бета',
+	'optin-accept-long' => 'Изпробвайте Бета',
+	'optin-accept-long-anon' => 'Влезте в системата и изпробвайте Бета',
+	'optin-survey-intro' => 'Благодарим ви, че изпробвахте Бета. Бихме искали да знаем какво мислите за новия ни интерфейс и ще се радваме, ако решите да отговорите на въпросите от проучването по-долу, като щракнете на връзката "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'Какво ви допадна в Бета? Какво не ви хареса?',
+	'optin-survey-question-whyoptout' => 'Защо излизате от Бета? (Моля, изберете всички подходящи отговори.)',
+	'optin-survey-answer-whyoptout-hard' => 'Беше много сложно за ползване.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Не работеше както трябва.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Държеше се непредсказуемо.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Не ми хареса как изглежда.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Не ми хареса изгледът с новите бутони.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Не ми хареса новата лента за редактиране.',
+	'optin-survey-answer-whyoptout-other' => 'Друга причина:',
+	'optin-survey-question-explain' => 'Моля, обяснете с повече подробности горния си отговор:',
+	'optin-survey-question-techfail' => 'Изпитахте ли някакви технически затруднения докато използвахте Бета?',
+	'optin-survey-question-techfail-ifyes' => 'Ако да, можете ли да ги обясните с повече подробности:',
+	'optin-survey-question-usedtoolbar' => 'Използвахте ли новата лента с падащи раздели за редактиране на страниците?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Ако да, какво ви хареса в нея? А какво не ви хареса?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Ако не, защо? Бихте ли я използвали в бъдеще? Моля, обяснете.',
+	'optin-survey-question-different' => 'Какво трябва да се промени, за да продължите да използвате Бета?',
+	'optin-survey-question-feedback' => 'Отправете тук своите коментари, забележки и виждания за работата ни - всякакви отзиви ще са добре дошли!',
+	'optin-survey-question-browser' => 'Какъв браузър използвате?',
+	'optin-survey-answer-browser-other' => 'Друг браузър:',
+	'optin-survey-question-os' => 'Каква операционна система използвате?',
+	'optin-survey-answer-os-other' => 'Друга операционна система:',
+	'optin-survey-question-res' => 'Каква екранна резолюция използвате?',
+	'optin-survey-question-changes' => 'Как бихте искали Бета да се променя в бъдеще (моля, изберете всички подходящи отговори)?',
+	'optin-survey-answer-changes-nav' => 'Да се улесни цялостната навигация на сайта.',
+	'optin-survey-answer-changes-edittools' => 'Да се подобрят и улеснят инструментите за редактиране.',
+	'optin-survey-answer-changes-upload' => 'Да се подобри качването на текстово и мултимедийно съдържание.',
+	'optin-survey-answer-changes-richtext' => 'Да се разработят инструменти за редактиране, подобни на тези в текстообработващите офис приложения.',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

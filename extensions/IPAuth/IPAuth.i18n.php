@@ -163,6 +163,13 @@ $messages['pms'] = array(
 	'ipauth-desc' => 'Login automàtich da adrësse IP stàtiche',
 );
 
+/** Portuguese (Português)
+ * @author Indech
+ */
+$messages['pt'] = array(
+	'ipauth-desc' => 'Login automático de endereços de IP fixos',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
