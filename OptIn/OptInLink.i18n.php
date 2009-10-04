@@ -79,6 +79,13 @@ $messages['be-tarask'] = array(
 	'tooltip-pt-optin-feedback' => 'Даслаць водгук пра Ваш вопыт выкарыстаньня новых магчымасьцяў',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'optin-try' => 'Изпробвайте Бета',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -678,6 +685,7 @@ $messages['pms'] = array(
 /** Portuguese (Português)
  * @author Capmo
  * @author Giro720
+ * @author Indech
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
@@ -688,6 +696,7 @@ $messages['pt'] = array(
 	'optin-leave' => 'Sair do Beta',
 	'tooltip-pt-optin-leave' => 'Desligue as novas funcionalidades',
 	'optin-feedback' => 'Enviar comentários',
+	'tooltip-pt-optin-feedback' => 'Dê sua opinião acerca de sua experiência com as novidades',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

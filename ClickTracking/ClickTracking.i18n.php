@@ -380,6 +380,9 @@ $messages['fi'] = array(
 	'clicktracking' => 'Käytettävyyshankkeen klikkausten seuranta',
 	'clicktracking-desc' => 'Klikkausten seuranta, tarkoituksena seurata tapahtumia, jotka eivät aiheuta sivun uudelleenlataamista.',
 	'ct-event-name' => 'Tapahtuman nimi',
+	'ct-beginner' => 'Aloittelija',
+	'ct-intermediate' => 'Keskitaso',
+	'ct-expert' => 'Asiantuntija',
 	'ct-anon-users' => 'Anonyymit käyttäjät',
 	'ct-and' => 'ja',
 );
@@ -989,6 +992,7 @@ $messages['tr'] = array(
 	'ct-intermediate' => 'Orta düzeyde',
 	'ct-expert' => 'Deneyimli',
 	'ct-date-range' => 'Tarih aralığı',
+	'ct-editing' => 'Şuanda değiştiriyor:',
 	'ct-anon-users' => 'Anonim kullanıcılar',
 	'ct-user-contribs' => 'Toplam kullanıcı katkıları',
 	'ct-and' => 've',
@@ -1000,6 +1004,7 @@ $messages['tr'] = array(
 $messages['vec'] = array(
 	'clicktracking' => "Traciamento click de l'Inissiativa par l'Usabilità",
 	'clicktracking-desc' => 'Traciamento dei click, par traciare i eventi che no provoca mia un refresh de la pagina.',
+	'ct-title' => 'Clic dei utenti messi insieme',
 	'ct-event-name' => "Nome de l'evento",
 	'ct-expert-header' => 'Clic de "esperti"',
 	'ct-intermediate-header' => 'Clic de "intermedi"',
@@ -1012,6 +1017,10 @@ $messages['vec'] = array(
 	'ct-beginner' => 'Prinsipiante',
 	'ct-intermediate' => 'Intermedio',
 	'ct-expert' => 'Esperto',
+	'ct-date-range' => 'Interval de date',
+	'ct-editing' => 'En corso de modìfega:',
+	'ct-anon-users' => 'Utenti anonimi',
+	'ct-user-contribs' => 'Contributi utente totali',
 	'ct-and' => 'e',
 );
 

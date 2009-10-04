@@ -69,6 +69,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'usabilityinitiative' => 'Intrudu Implijadusted',
 	'usabilityinitiative-desc' => "Arc'hwelioù diorroet gant Intrudu Implijadusted Wikipedia evit gwellaat implijadusted MediaWiki",
+	'prefs-experimental' => 'Elfennoù arnodel',
 );
 
 /** Bosnian (Bosanski)
@@ -106,12 +107,13 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Church of emacs
  * @author Metalhead64
  */
 $messages['de'] = array(
 	'usabilityinitiative' => 'Benutzerfreundlichkeitsinitiative',
 	'usabilityinitiative-desc' => 'Von der Wikipedia-Benutzerfreundlichkeitsinitiative entwickelte Features, um die Benutzerfreundlichkeit von MediaWiki zu verbessern',
-	'prefs-experimental' => 'Experimentelle Features',
+	'prefs-experimental' => 'Experimentelle Optionen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -503,6 +505,7 @@ $messages['tr'] = array(
 $messages['vec'] = array(
 	'usabilityinitiative' => "Inissiativa par l'Usabilità",
 	'usabilityinitiative-desc' => "Carateristiche svilupà da l'Inissiativa par l'Usabilità de Wikipedia par mejorar l'usabilità de MediaWiki",
+	'prefs-experimental' => 'Funsionalidà sperimentali',
 );
 
 /** Veps (Vepsan kel')

@@ -70,6 +70,13 @@ $messages['be-tarask'] = array(
 	'simplesearch-containing' => 'утрымлівае...',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'simplesearch' => 'Просто търсене',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
