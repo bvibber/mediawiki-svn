@@ -118,6 +118,18 @@ if ( typeof context == 'undefined' ) {
 	// Attach a container in the top
 	context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
 	
+	// Some browsers don't restore the cursor position on refocus properly
+	// Do it for them
+	$(this)
+		.focus( function() {
+			var pos = $(this).data( 'wikiEditor-cursor' );
+			if ( typeof pos != 'undefined' )
+				$(this).setSelection( pos[0], pos[1] );
+			})
+		.blur( function() {
+			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
+		});
+	
 	// Create a set of standard methods for internal and external use
 	context.api = {
 		/**
