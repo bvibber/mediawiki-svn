@@ -1237,16 +1237,25 @@ js2AddOnloadHook( function() {
 				var regex = new RegExp( searchStr, flags );
 				var $textarea = $j(this).data( 'context' ).$textarea;
 				var text = $j.wikiEditor.fixOperaBrokenness( $textarea.val() );
-				var matches = text.match( regex );
-				if ( !matches ) {
+				var matches = false;
+				if ( mode != 'replaceAll' )
+					matches = text.substr( $j(this).data( 'offset' ) ).match( regex );
+				if ( !matches )
+					// Search hit BOTTOM, continuing at TOP
+					matches = text.match( regex );
+				
+				if ( !matches )
 					$j( '#edittoolbar-replace-nomatch' ).show();
-				} else if ( mode == 'replaceAll' ) {
+				else if ( mode == 'replaceAll' ) {
 					// Prepare to select the last match
 					var start = text.lastIndexOf( matches[matches.length - 1] );
 					var end = start + replaceStr.length;
-					var corr = ( matches.length - 1 ) * ( replaceStr.length - searchStr.length ); 
+					
+					// Calculate how much the last match will move
+					var replaced = text.replace( regex, replaceStr );
+					var corr = replaced.length - text.length - replaceStr.length + matches[matches.length - 1].length;
 					$textarea
-						.val( $textarea.val().replace( regex, replaceStr ) )
+						.val( replaced )
 						.change()
 						.setSelection( start + corr, end + corr )
 						.scrollToCaretPosition();
@@ -1287,7 +1296,9 @@ js2AddOnloadHook( function() {
 				},
 				'edittoolbar-tool-replace-close': function() {
 					$j(this).dialog( 'close' );
-					$j(this).data( 'context' ).$textarea.focus();
+					$j(this).data( 'context' ).$textarea
+						.unbind( 'keypress.srdialog' )
+						.focus();
 				}
 			},
 			open: function() {
@@ -1299,13 +1310,15 @@ js2AddOnloadHook( function() {
 					// Execute the action associated with the first button
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
-						if ( ( e.keyCode || e.which ) == 13 ) {
-							$j(this)
-								.find( 'button:first' )
-								.click();
-						}
+						if ( ( e.keyCode || e.which ) == 13 )
+							$j(this).find( 'button:first' ).click();
 					});
 				}
+				var dialog = $j(this).closest( '.ui-dialog' );
+				$j(this).data( 'context' ).$textarea.bind( 'keypress.srdialog', function( e ) {
+					if ( ( e.keyCode || e.which ) == 13 )
+						dialog.find( 'button:first' ).click();
+				});
 			}
 		}
 	}
