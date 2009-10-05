@@ -1310,14 +1310,18 @@ js2AddOnloadHook( function() {
 					// Execute the action associated with the first button
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
-						if ( ( e.keyCode || e.which ) == 13 )
+						if ( ( e.keyCode || e.which ) == 13 ) {
 							$j(this).find( 'button:first' ).click();
+							e.preventDefault();
+						}
 					});
 				}
 				var dialog = $j(this).closest( '.ui-dialog' );
 				$j(this).data( 'context' ).$textarea.bind( 'keypress.srdialog', function( e ) {
-					if ( ( e.keyCode || e.which ) == 13 )
+					if ( ( e.keyCode || e.which ) == 13 ) {
 						dialog.find( 'button:first' ).click();
+						e.preventDefault();
+					}
 				});
 			}
 		}
