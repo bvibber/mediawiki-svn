@@ -63,7 +63,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 4 ),
-				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 14 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 15 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 4 ),
@@ -73,10 +73,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/js2/jquery-ui-1.7.2.js', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 38 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 39 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 38 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 39 ),
 			),
 		),
 	);

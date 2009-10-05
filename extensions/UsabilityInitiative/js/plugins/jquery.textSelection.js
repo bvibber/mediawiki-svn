@@ -203,8 +203,16 @@ setSelection: function( start, end ) {
 		end = start;
 	return this.each( function() {
 		if ( this.selectionStart || this.selectionStart == '0' ) {
-			this.selectionStart = start;
-			this.selectionEnd = end;
+			// Opera 9.0 doesn't allow setting selectionStart past
+			// selectionEnd; any attempts to do that will be ignored
+			// Make sure to set them in the right order
+			if ( start > this.selectionEnd ) {
+				this.selectionEnd = end;
+				this.selectionStart = start;
+			} else {
+				this.selectionStart = start;
+				this.selectionEnd = end;
+			}
 		} else if ( document.body.createTextRange ) {
 			var selection = document.body.createTextRange();
 			selection.moveToElementText( this );
