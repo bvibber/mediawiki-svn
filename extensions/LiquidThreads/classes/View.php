@@ -643,7 +643,7 @@ class LqtView {
 		wfLoadExtensionMessages( 'LiquidThreads' );
 		
 		$messages = array( 'lqt-quote-intro', 'lqt-quote', 'lqt-ajax-updated',
-							'lqt-ajax-update-link' );
+							'lqt-ajax-update-link', 'watch', 'unwatch' );
 		$data = array();
 		
 		foreach( $messages as $msg ) {
@@ -882,8 +882,10 @@ class LqtView {
 				$commands_html = "";
 			} else {
 				$lis = $this->listItemsForCommands( $this->topLevelThreadCommands( $thread ) );
+				$id = 'lqt-threadlevel-commands-'.$thread->id();
 				$commands_html = Xml::tags( 'ul',
-											array( 'class' => 'lqt_threadlevel_commands' ),
+											array( 'class' => 'lqt_threadlevel_commands',
+												'id' => $id ),
 											$lis );
 			}
 			
@@ -1038,7 +1040,13 @@ class LqtView {
 									wfTimestamp( TS_MW, $thread->modified() ),
 									array( 'id' => 'lqt-thread-modified-'.$thread->id(),
 											'class' => 'lqt-thread-modified' ) );
-		}								
+		}
+		
+		// Add the thread's title
+		$html .= Xml::hidden( 'lqt-thread-title-'.$thread->id(),
+					$thread->title()->getPrefixedText(),
+					array( 'id' => 'lqt-thread-title-'.$thread->id(),
+						'class' => 'lqt-thread-title-metadata' ) );
 
 		// Flush output to display thread
 		$this->output->addHTML( $html );
