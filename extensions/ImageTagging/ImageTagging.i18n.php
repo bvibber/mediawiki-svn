@@ -846,6 +846,8 @@ $messages['hu'] = array(
 	'imagetagging-tagcancel-button' => 'Mégse',
 	'imagetagging-addingtag' => 'Címke hozzáadása…',
 	'imagetagging-removingtag' => 'Címke eltávolítása…',
+	'imagetagging-addtagsuccess' => 'Címke hozzáadva.',
+	'imagetagging-removetagsuccess' => 'Címke eltávolítva.',
 	'tag-logpagename' => 'Címkézési napló',
 );
 

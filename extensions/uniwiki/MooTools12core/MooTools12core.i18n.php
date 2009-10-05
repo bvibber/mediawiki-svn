@@ -123,9 +123,10 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Str4nd
  */
 $messages['fi'] = array(
-	'mootools12core-desc' => 'Lisää koodin [http://mootools.net mootools-1.2-core-yc.js] jokaiselle sivulle.',
+	'mootools12core-desc' => 'Lisää tiiviin JavaScript-kehyksen [http://mootools.net mootools-1.2-core-yc.js] jokaiselle sivulle.',
 );
 
 /** French (Français)

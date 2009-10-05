@@ -252,6 +252,13 @@ $messages['te'] = array(
 	'interlanguage-desc' => 'అంతర భాషా లింకులను వేరొక వికీ నుంచి సంపాదిస్తుంది',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'interlanguage-desc' => 'Başka bir vikiden dillerarası bağlantıları alır',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

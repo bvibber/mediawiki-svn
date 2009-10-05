@@ -558,6 +558,7 @@ $messages['hu'] = array(
 	'errorhandler-errors' => 'Hibák:',
 	'errorhandler-error-fatal' => 'Végzetes hiba',
 	'errorhandler-error-warning' => 'Figyelmeztetés',
+	'errorhandler-error-parse' => 'Elemző hiba',
 	'errorhandler-error-notice' => 'Megjegyzés',
 	'errorhandler-error-user-error' => 'Felhasználói hiba',
 	'errorhandler-error-user-warning' => 'Felhasználói figyelmeztetés',

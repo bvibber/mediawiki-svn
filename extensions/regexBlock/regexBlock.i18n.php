@@ -1246,6 +1246,7 @@ $messages['hu'] = array(
 	'regexblock-block-success' => 'A blokk sikeres',
 	'regexblock-currently-blocked' => 'Jelenleg blokkolt címek:',
 	'regexblockstats' => 'Reguláris kifejezés alapú blokkok statisztikája',
+	'regexblock-page-title-1' => 'Cím blokkolása reguláris kifejezések segítségével',
 	'regexblock-form-username' => 'IP-cím vagy felhasználói név:',
 	'regexblock-form-reason' => 'Indoklás:',
 	'regexblock-form-expiry' => 'Lejárat:',
@@ -1253,11 +1254,15 @@ $messages['hu'] = array(
 	'regexblock-form-submit' => 'Blokkold ezt a felhasználót',
 	'regexblock-form-submit-regex' => 'Érvénytelen reguláris kifejezés.',
 	'regexblock-nodata-found' => 'Nem található adat',
+	'regexblock-stats-title' => 'Reguláris kifejezés blokk statisztika',
+	'regexblock-unblock-success' => 'A blokk feloldása sikerült',
 	'regexblock-view-all' => 'Mind',
 	'regexblock-view-go' => 'Menj',
 	'regexblock-view-match' => '(pontos találat)',
 	'regexblock-view-reason' => 'indoklás: $1',
 	'regexblock-view-block-infinite' => 'végleges blokk',
+	'regexblock-view-block-by' => 'blokkolta:',
+	'regexblock-view-block-unblock' => 'blokkolás feloldása',
 	'regexblock-view-stats' => 'statisztikák',
 );
 

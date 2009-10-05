@@ -183,3 +183,10 @@ $messages['ru'] = array(
 	'lockout-desc' => 'Не позволяет заблокированным участникам представляться системе',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'lockout-desc' => 'Engellenmiş kullanıcıların giriş yapmalarını önle',
+);
+

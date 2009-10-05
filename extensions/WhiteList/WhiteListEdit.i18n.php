@@ -1532,6 +1532,7 @@ $messages['hu'] = array(
 	'whitelisttablemodby' => 'Utoljára módosította:',
 	'whitelisttablemodon' => 'Utolsó módosítás dátuma:',
 	'whitelisttableedit' => 'Szerkesztés',
+	'whitelisttableview' => 'Megjelenítés',
 	'whitelisttablenewdate' => 'Új dátum:',
 	'whitelisttablechangedate' => 'Lejárat dátumának megváltoztatása',
 	'whitelisttableremove' => 'Eltávolítás',

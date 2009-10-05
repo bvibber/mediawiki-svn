@@ -592,8 +592,12 @@ $messages['hu'] = array(
 	'refreshspecial-choice' => 'speciális lapok frissítése',
 	'refreshspecial-js-disabled' => '(<i>Nem tudod kijelölni az összes lapot, ha a JavaScript le van tiltva</i>)',
 	'refreshspecial-select-all-pages' => 'Összes lap kijelölése',
+	'refreshspecial-link-back' => 'Vissza a speciális lapra',
 	'refreshspecial-db-error' => 'Sikertelen: adatbázishiba',
+	'refreshspecial-no-page' => 'Nincs ilyen speciális lap',
+	'refreshspecial-slave-lagged' => 'A slave lemaradt, várakozás…',
 	'refreshspecial-reconnected' => 'Újracsatlakozva.',
+	'refreshspecial-reconnecting' => 'A kapcsolat megszakadt, újracsatlakozás 10 másodperc múlva…',
 	'right-refreshspecial' => 'Speciális lapok frissítése',
 );
 

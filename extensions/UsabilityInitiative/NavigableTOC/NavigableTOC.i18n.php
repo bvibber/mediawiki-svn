@@ -48,6 +48,15 @@ $messages['be-tarask'] = array(
 	'navigabletoc-preference' => 'Дазволіць навігацыйныя табліцы зьместу',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'navigabletoc' => 'দিকদর্শী সূচী',
+	'navigabletoc-desc' => 'সম্পাদনা বাক্সে সূচী যোগ করে যাতে কোনো অনুচ্ছেদে ক্লিক করলে তা ঐ অংশে নিয়ে যায়',
+	'navigabletoc-preference' => 'দিকদর্শী সূচী সক্রিয় করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

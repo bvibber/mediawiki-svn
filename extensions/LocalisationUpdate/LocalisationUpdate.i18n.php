@@ -310,6 +310,13 @@ $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'localisationupdate-desc' => 'Yerelleştirilen mesajları mümkün olabildiğince güncel tutar',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

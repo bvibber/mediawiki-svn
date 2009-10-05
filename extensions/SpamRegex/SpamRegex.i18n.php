@@ -719,7 +719,12 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'spamregex' => 'Spam reguláris kifejezés',
+	'spamregex-summary' => 'Szövegtalálat a lap összefoglalójában.',
+	'spamregex-currently-blocked' => "'''Jelenleg blokkolt kifejezések:'''",
 	'spamregex-no-currently-blocked' => "'''Nincsenek blokkolt kifejezések.'''",
+	'spamregex-unblock-success' => 'A blokk feloldása sikerült',
+	'spamregex-block-success' => 'A blokkolás sikerült',
 	'spamregex-warning-1' => 'Adj meg egy blokkolandó kifejezést.',
 	'spamregex-error-1' => 'Érvénytelen reguláris kifejezés.',
 	'spamregex-already-blocked' => '„$1” már blokkolva van',

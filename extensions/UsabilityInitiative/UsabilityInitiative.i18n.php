@@ -177,6 +177,7 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'usabilityinitiative' => 'Käytettävyyshanke',
 	'usabilityinitiative-desc' => 'Wikipedian käytettävyyshankkeen kehittämät MediaWikin helppokäyttöisyyttä parantavat ominaisuudet.',
+	'prefs-experimental' => 'Kokeiluluontoiset ominaisuudet',
 );
 
 /** French (Français)
@@ -446,6 +447,7 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'usabilityinitiative' => 'Табыгас Ситиһиитэ',
 	'usabilityinitiative-desc' => 'Табыгас Ситиһиитин иһинэн эбиллибит MediaWiki движогун саҥа кыахтара; үлэ судургу уонна табыгастаах буоларыгар аналлаахтар.',
+	'prefs-experimental' => 'Тургутуллар кыахтар',
 );
 
 /** Sinhala (සිංහල)

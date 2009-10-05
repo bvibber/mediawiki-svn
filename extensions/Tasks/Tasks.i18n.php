@@ -1545,11 +1545,14 @@ $messages['hu'] = array(
 	'tasks_search_form_title' => 'Keresés',
 	'tasks_search_tasks' => 'Feladatok',
 	'tasks_search_status' => 'Állapot',
+	'tasks_search_results' => 'Keresési eredmények',
 	'tasks_previous' => 'Előző',
 	'tasks_next' => 'Következő',
 	'tasks_sort' => 'Rendezés',
 	'tasks_ascending' => 'Legrégebbit előre',
 	'tasks_status_open' => 'Megnyitás',
+	'tasks_status_assigned' => 'Hozzárendelve',
+	'tasks_status_closed' => 'Lezárva',
 	'tasks_logpage' => 'Feladatok naplója',
 );
 

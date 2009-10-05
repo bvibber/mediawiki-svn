@@ -99,6 +99,8 @@ $messages['qqq'] = array(
 	'wah-doing-job' => 'Parameters:
 * $1 is the job type
 * $2 is the job name',
+	'wah-uploading' => 'Parameters:
+* $1 is the file name of the file that is being uploaded',
 );
 
 /** Afrikaans (Afrikaans)
@@ -160,6 +162,7 @@ $messages['be-tarask'] = array(
 	'wah-menu-pref' => 'Устаноўкі',
 	'wah-lookingforjob' => 'Пошук заданьняў <blink>...</blink>',
 	'wah-start-on-visit' => 'Запускаць Wiki@Home у любы час, калі я наведваю гэты сайт.',
+	'wah-jobs-while-away' => 'Запускаць заданьні толькі пасьля таго, як я не карыстаюся браўзэрам болей 20 хвілінаў.',
 	'wah-nojobfound' => 'Заданьні ня знойдзеныя. Паўтор спробы ў $1.',
 	'wah-notoken-login' => 'Вы ўвайшлі ў сыстэму? Калі не, калі ласка, спачатку ўвайдзіце ў сыстэму.',
 	'wah-apioff' => 'Выглядае, што Wiki@Home API выключаны. Калі ласка, зьвяжыцеся з адміністратарам вікі.',
@@ -208,6 +211,9 @@ $messages['br'] = array(
 	'wah-transcode-fail' => "C'hwitet eo treuzkodañ ar restr.",
 	'wah-javascript-off' => 'Rekis eo bezañ gweredekaet JavaScript evit kemer perzh e Wiki@Home',
 	'wah-loading' => 'o kargañ etrefas Wiki@Home <blink>...</blink>',
+	'wah-menu-stats' => 'Stadegoù',
+	'wah-menu-pref' => 'Penndibaboù',
+	'wah-lookingforjob' => 'O klask un tamm labour <blink>...</blink>',
 );
 
 /** Bosnian (Bosanski)
@@ -478,7 +484,7 @@ $messages['gsw'] = array(
 	'wah-start-on-visit' => 'Wiki@Home jedes Mol starte, wänn ich uf die Syte gang.',
 	'wah-jobs-while-away' => 'Uftreg nume laufe loo, wänn ich fir meh wie 20 Minute myy Browser nit brucht haa.',
 	'wah-nojobfound' => 'Kei Uftrag gfunde. Neje Versuech: $1.',
-	'wah-notoken-login' => 'Het kei Token chenne iberchuu. Bisch aagmäldet?',
+	'wah-notoken-login' => 'Bisch aagmäldet? Wänn nit, no tue di bitte zerscht aamälde.',
 	'wah-apioff' => 'Wiki@Home API isch schyns abgstellt. Bitte nimm Kontakt uf zum Wikiadministrator.',
 	'wah-doing-job' => 'Uftrag: <i>$1</i> uf: <i>$2</i>',
 	'wah-downloading' => 'Datei <i>$1%</i> abeglade',
@@ -718,7 +724,7 @@ $messages['ksh'] = array(
 	'wah-start-on-visit' => 'Donn Wiki@Home jeedes Mohl aanwerfe, wann esch op heh di Webßaijt kummen.',
 	'wah-jobs-while-away' => 'Nur dann Aufjabe beärbeide, wann esch 20 Mennutte lang fott jewääse ben vum Brauser.',
 	'wah-nojobfound' => 'Kein Aufjab jevonge. Wider versöhke en $1.',
-	'wah-notoken-login' => 'Kunnt kei <i lang="en">token</i> krijje. Bes De övverhoup enjelogg?',
+	'wah-notoken-login' => 'Bes De enjelogg? Wann nit, donn Desch eez ens enlogge.',
 	'wah-apioff' => 'De <i lang="en">API</i> vun Wiki@Home schingk affjeschalldt ze sinn. Donn desch aan ene Wiki_Köbes wende.',
 	'wah-doing-job' => 'Aufjab: <i>$1</i> vun: <i>$2</i>',
 	'wah-downloading' => 'De Dattei es zoh $1% fäädesch eronger jelaade',
@@ -957,7 +963,7 @@ $messages['ru'] = array(
 	'wah-start-on-visit' => 'Запускать Wiki@Home всегда, когда я посещаю этот сайт.',
 	'wah-jobs-while-away' => 'Запускать задания только когда я не пользовался браузером более 20 минут.',
 	'wah-nojobfound' => 'Задание не найдено. Повтор будет произведён $1.',
-	'wah-notoken-login' => 'Не удалось получить токен. Вы представились системе?',
+	'wah-notoken-login' => 'Вы представились системе? Если нет, то пожалуйста, сначала представьтесь.',
 	'wah-apioff' => 'Судя по всему, Wiki@Home API выключен. Пожалуйста, свяжитесь с администратором вики.',
 	'wah-doing-job' => 'Задание: <i>$1</i> — <i>$2</i>',
 	'wah-downloading' => 'Загрузка файла выполнена на <i>$1 %</i>',

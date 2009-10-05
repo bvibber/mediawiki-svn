@@ -879,6 +879,7 @@ $messages['hu'] = array(
 	'recordadmin-buttonsave' => 'Mentés',
 	'recordadmin-newcreated' => 'Új $1 létrehozva nyilvános űrlap alapján',
 	'recordadmin-summary-typecreated' => 'Új $1 létrehozva',
+	'recordadmin-viewlink' => 'megjelenítés',
 	'recordadmin-editlink' => 'szerkesztés',
 	'recordadmin-created' => 'Létrehozva',
 	'recordadmin-modified' => 'Módosítva',

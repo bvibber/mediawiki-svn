@@ -327,9 +327,11 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'createpage' => 'Luo sivu',
+	'createpage-desc' => 'Lisää [[Special:CreatePage|toimintosivun]] uusien sivujen luomiseen.',
 	'createpage_submitbutton' => 'Lähetä',
 	'createpage_instructions' => 'Syötä nimi sivulle, jonka haluat luoda:',
 	'createpage_entertitle' => 'Anna sivulle nimi.',

@@ -1556,16 +1556,20 @@ Haluaisimme tietää, mitä mieltä olet uudesta käyttöliittymästä, joten ar
 	'optin-survey-answer-changes-custom' => 'Sallii laajemman käyttäjäkohtaisen muutettavuuden.',
 	'optin-survey-answer-changes-other' => 'Muu',
 	'optin-improvements' => '== Mitä on uudistettu? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Kuvakaappaus uusista navigoinnin välilehdistä.]]
 ;Paranneltu navigointi
 Uudesta valikkojärjestelmästä näkee helpommin, missä olet ja mitä teet. Näet myös helpommin, minne voit mennä ja kuinka pääset sinne. Oikeassa yläkulmassa olevalla hakulaatikolla hakutoimintoa on helpompi ja nopeampi käyttää.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Kuvakaappaus parannellusta muokkaustyökaluiden palkista.]]
 ;Muokkauspalkin parannukset
 Uusista ja parannetuista kuvakkeista näkee helpommin, mitä mikäkin työkalu tekee. Laajennettavat osiot vähentävät epäjärjestystä, kun harvoin käytetyt työkalut ovat vain klikkauksen päässä.
 Ohje-osiosta näkyy esimerkit wikimerkinnän yleiseen käyttöön nopeasti.
-<div style="clear:both;"></div>',
+<div style="clear:both;"></div>
+== Kuinka tulla mukaan ==
+Kuullaksesi lisää hankkeesta tai tullaksesi mukaan, käy [http://usability.wikimedia.org käytettävyyshankkeen wikissä].  Sieltä voit löytää tietoa koskien lahjoitusta, tutkimusta, suunnittelua, kehitystä ja julkaisuja.  Kysymyksiä tai yleistä palautetta voi jättää [http://usability.wikimedia.org/wiki/Talk:Prototype prototyypin keskustelusivulle].  Kohdistaaksesi viestit tiettyihin aiheisiin, käytä niihin liittyviä keskustelusivuja. Jos löysit ohjelmistovirheitä, jätä viestisi [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai-julkaisun keskustelusivulle] tai [https://bugzilla.wikimedia.org Bugzillaan].
+
+Kiitos ja odotamme kuulumisiasi.',
 );
 
 /** French (Français)
@@ -3228,7 +3232,7 @@ $messages['ml'] = array(
 	'optin-survey-answer-whyoptout-other' => 'മറ്റു കാരണം:',
 	'optin-survey-question-explain' => 'താങ്കൾ മുകളിൽ നൽകിയ ഉത്തരം ദയവായി വിശദീകരിക്കുകയോ വികസിപ്പിക്കുകയോ ചെയ്യുക:',
 	'optin-survey-question-techfail' => 'ബീറ്റ ഉപയോഗിക്കുമ്പോള്‍ ഏന്തെങ്കിലും സാങ്കേതിക തകരാറുകള്‍ താങ്കള്‍ക്ക് അനുഭവപ്പെട്ടിട്ടുണ്ടോ?',
-	'optin-survey-question-techfail-ifyes' => 'അതെ എങ്കിൽ, ദയവായി വികസിപ്പിക്കുക അല്ലങ്കിൽ വിശദീകരിക്കുക:',
+	'optin-survey-question-techfail-ifyes' => 'ഉണ്ട് എങ്കിൽ, ദയവായി വികസിപ്പിക്കുകയോ വിശദീകരിക്കുകയോ ചെയ്യുക:',
 	'optin-survey-question-usedtoolbar' => 'ഒരു താള്‍ തിരുത്തുവാന്‍ വേണ്ടി വിപുലീകരിക്കാവുന്ന ടൂള്‍ബാര്‍ താങ്കള്‍ ഉപയോഗിച്ചിട്ടുണ്ടോ?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'ഉണ്ട് എന്നാണെങ്കിൽ, താങ്കൾക്ക് ഇതിൽ എന്താണ് ഇഷ്ടപ്പെട്ടത്? ഇതിൽ എന്താണ് ഇഷ്ടപ്പെടാതെ പോയത്?',
 	'optin-survey-question-usedtoolbar-ifno' => 'ഇല്ല എങ്കിൽ, എന്തുകൊണ്ട് ഇല്ല? ഭാവിയിലോ? ദയവായി വിശദീകരിക്കുക.',
@@ -4377,19 +4381,18 @@ Beta-ны боруобалаары гынаҕын дуо?',
 	'optin-survey-answer-changes-custom' => 'Тус туруоруулары өссө киэҥник уларытары көҥүллүүргэ.',
 	'optin-survey-answer-changes-other' => 'Атын:',
 	'optin-improvements' => '== Туох тупсарыллыбытый? ==
-[[File:UsabilityNavigation.png|left|link=]]
-; Навигацията тупсуута  
+[[File:UsabilityNavigation.png|left|link=|Саҥа навигация хаптаһынын ойуута]]
+; Навигацията тупсарыллыыта  
 Саҥа навигация систиэмэтэ ханна билигин сылдьаргын, тугу гынаргын, уонна ханна хайдах барыаххын сөбүн кэбэҕэстик өйдүүргэ көмөлөһөр. Үөһээ уҥа муннукка баар көрдүүр түннүгү туттарга ордук табыгастаах.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
-; Эрэдээксийэлиир панел тупсуута
-Саҥа тупсарыллыбыт значоктар ханнык үнүстүрүмүөн ханнык үлэни оҥорорун ордук үчүгэйдик көрдөрөллөр. Аһыллар салаалар булкууру аҕыйаталлар, ол да буоллар сэдэхтик туттуллар үнүстүрүмүөннэри чугас илдьэ сылдьарга көмөлөһөллөр. Көмө салаата биики-бэлиэлэри сөпкө туһанар туһунан холобурдары түргэнник көрөргө табыгастаах. 
+[[File:UsabilityToolbar.png|left|link=|Тупсарыллыбыт эрэдээксийэлиир хаптаһын ойуута]]
+; Эрэдээксийэлиир хаптаһын (панел) тупсуута
+Саҥа тупсарыллыбыт значоктар ханнык үнүстүрүмүөн көмөтүнэе тугу гыныахха сөбүн ордук үчүгэйдик көрдөрөллөр. Аһыллар салаалар булкууру аҕыйаталлар, ол да буоллар сэдэхтик туттуллар үнүстүрүмүөннэри чугас илдьэ сылдьарга көмөлөһөллөр. Көмө салаата биики-бэлиэлэри сөпкө туһанар туһунан холобурдары түргэнник көрөргө табыгастаах. 
 <div style="clear:both;"></div>
-
 == Хайдах кыттабыный ==
 
-Бу бырайыак туһунан сиһилии билиэххитин баҕарар буоллаххытына бу [http://usability.wikimedia.org биики-саайка] киириҥ. Онно биһиги грааннарбыт, чинчийиилэрбит, бырайыактарбыт уонна бырагырааммаларбыт барылларын туһунан информацияны булуоххут. Тугу эрэ ыйытаары гыннаххытына эбэтэр бородууксуйабыт туһунан тугу эрэ этиэххитин баҕардаххытына [http://usability.wikimedia.org/wiki/Talk:Prototype ырытыы сирэйигэр] киириҥ. Чопчу боппуруостары аналлаах ырытар сирэйдэргэ быһаарсыҥ. Туох эмит алҕаһы булбут буоллаххытына бука диэн   [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai тахсыытын ырытыытыгар суруйуҥ] эбэтэр [https://bugzilla.wikimedia.org Bugzilla] көмөтүнэн биллэриҥ.
+Бу бырайыак туһунан сиһилии билиэххитин баҕарар буоллаххытына бу [http://usability.wikimedia.org биики-саайка] киириҥ. Онно биһиги грааннарбыт, чинчийиилэрбит, бырайыактарбыт уонна бырагырааммаларбыт барылларын туһунан ааҕыаххыт. Тугу эрэ ыйытаары гыннаххытына эбэтэр бородууксуйабыт туһунан тугу эрэ этиэххитин баҕардаххытына [http://usability.wikimedia.org/wiki/Talk:Prototype ырытыы сирэйигэр] киириҥ. Чопчу боппуруостары аналлаах ырытар сирэйдэргэ быһаарсыҥ. Туох эмит алҕаһы булбут буоллаххытына бука диэн   [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai тахсыытын ырытыытыгар суруйуҥ] эбэтэр [https://bugzilla.wikimedia.org Bugzilla] көмөтүнэн биллэриҥ.
 
 Махтанабыт, суруккутун кэтэһэбит!',
 );
