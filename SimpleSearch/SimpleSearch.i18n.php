@@ -82,7 +82,9 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'simplesearch' => 'সহজ অনুসন্ধান',
+	'simplesearch-desc' => 'ভেক্টরের সরলীকৃত অনুসন্ধানে বাড়তি ফাংশনালিটি যুক্ত করে',
 	'simplesearch-search' => 'অনুসন্ধান',
+	'simplesearch-containing' => 'যা আছে...',
 );
 
 /** Breton (Brezhoneg)

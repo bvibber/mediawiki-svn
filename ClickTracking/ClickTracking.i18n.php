@@ -669,7 +669,7 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'clicktracking' => 'Dä <i lang="en">Wikipedia Usability Initiative</i> ier Kleckverfolljung',
 	'clicktracking-desc' => 'Klecks un Akßuhne Verfollje, di kein neu Sigg afroofe donn.',
-	'ct-title' => 'Jesampte Klecks vun enem Metmaacher',
+	'ct-title' => 'Metmaacher ier jesampte Klecks',
 	'ct-event-name' => 'Da Name vun dämm, wat passeet es',
 	'ct-expert-header' => 'Klecks vun „{{int:Expert}}“',
 	'ct-intermediate-header' => 'Klecks vun „{{int:Intermediate}}“',
@@ -696,6 +696,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'clicktracking' => 'Benotzerfrëndlechkeetsinitiative Suivi vun de Klicken',
 	'clicktracking-desc' => "Suivi vun de Klicken, fir déi Aktiounen z'erfaassen déi net zu engem neie Luede vun der Säit féieren",
+	'ct-title' => 'Opgezeechent Benotzerklicken',
 	'ct-event-name' => 'Numm vum Evenement',
 	'ct-expert-header' => '"Expert"-Klicken',
 	'ct-intermediate-header' => '"Duerschnëtt"-Klicken',
