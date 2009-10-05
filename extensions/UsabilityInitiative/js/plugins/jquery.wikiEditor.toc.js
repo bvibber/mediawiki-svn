@@ -26,6 +26,8 @@ fn: {
 		context.modules.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
 			.attr( 'id', 'wikiEditor-ui-toc' );
+		// If we ask for this later (after we insert the TOC) then in IE this measurement will be incorrect
+		var height = context.$ui.find( '.wikiEditor-ui-bottom' ).height()
 		context.$ui.find( '.wikiEditor-ui-bottom' )
 			.append( context.modules.$toc );
 		context.modules.$toc.height(
@@ -33,10 +35,7 @@ fn: {
 		);
 		// Make some css modifications to make room for the toc on the right...
 		// Perhaps this could be configurable?
-		context.modules.$toc
-			.css( { 'width': '12em',
-				'marginTop': -( context.$ui.find( '.wikiEditor-ui-bottom' ).height() )
-			} );
+		context.modules.$toc.css( { 'width': '12em', 'marginTop': -( height ) } );
 		context.$ui.find( '.wikiEditor-ui-text' )
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
