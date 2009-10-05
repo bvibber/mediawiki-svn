@@ -1144,7 +1144,7 @@ js2AddOnloadHook( function() {
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j(this).data( 'context' ),
 						{
-							type: 'encapsulate',
+							type: 'replace',
 							options: {
 								pre: "{|\n",
 								peri: table,

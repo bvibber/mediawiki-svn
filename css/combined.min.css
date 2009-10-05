@@ -115,6 +115,9 @@ border-left:none;
 padding:0;
 margin:0.5em 1em;
 list-style:none;
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
 }
 .wikiEditor-ui-toc ul ul{
 padding:0;

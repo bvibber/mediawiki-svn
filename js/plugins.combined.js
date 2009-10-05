@@ -942,9 +942,9 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
  * Get the position (in resolution of bytes not nessecarily characters)
  * in a textarea 
  */
- getCaretPosition: function() {
+ getCaretPosition: function( startAndEnd ) {
 	function getCaret( e ) {
-		var caretPos = 0;
+		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
 			// IE Support
 			var postFinished = false;
@@ -1014,11 +1014,13 @@ encapsulateSelection: function( pre, peri, post, ownline, replace ) {
 				}
 			} while ( ( !postFinished || !periFinished || !postFinished ) );
 			caretPos = rawPreText.replace( /\r\n/g, "\n" ).length;
+			endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
 		} else if ( e.selectionStart || e.selectionStart == '0' ) {
 			// Firefox support
 			caretPos = e.selectionStart;
+			endPos = e.selectionEnd;
 		}
-		return caretPos;
+		return startAndEnd ? [ caretPos, endPos ] : caretPos;
 	}
 	return getCaret( this.get( 0 ) );
 },
@@ -1104,7 +1106,6 @@ scrollToCaretPosition: function( force ) {
 		return ( $.os.name == 'mac' ? 13 : ( $.os.name == 'linux' ? 15 : 16 ) ) * row;
 	}
 	return this.each(function() {
-		$(this).focus();
 		if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla
 			var scroll = getCaretScrollPosition( this );
@@ -1258,6 +1259,18 @@ if ( typeof context == 'undefined' ) {
 	context.$ui.after( $( '<div style="clear:both;"></div>' ) );
 	// Attach a container in the top
 	context.$ui.prepend( $( '<div></div>' ).addClass( 'wikiEditor-ui-top' ).attr( 'id', 'wikiEditor-ui-top' ) );
+	
+	// Some browsers don't restore the cursor position on refocus properly
+	// Do it for them
+	$(this)
+		.focus( function() {
+			var pos = $(this).data( 'wikiEditor-cursor' );
+			if ( typeof pos != 'undefined' )
+				$(this).setSelection( pos[0], pos[1] );
+			})
+		.blur( function() {
+			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
+		});
 	
 	// Create a set of standard methods for internal and external use
 	context.api = {
@@ -2055,6 +2068,8 @@ fn: {
 		context.modules.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
 			.attr( 'id', 'wikiEditor-ui-toc' );
+		// If we ask for this later (after we insert the TOC) then in IE this measurement will be incorrect
+		var height = context.$ui.find( '.wikiEditor-ui-bottom' ).height()
 		context.$ui.find( '.wikiEditor-ui-bottom' )
 			.append( context.modules.$toc );
 		context.modules.$toc.height(
@@ -2062,10 +2077,7 @@ fn: {
 		);
 		// Make some css modifications to make room for the toc on the right...
 		// Perhaps this could be configurable?
-		context.modules.$toc
-			.css( { 'width': '12em',
-				'marginTop': -( context.$ui.find( '.wikiEditor-ui-bottom' ).height() )
-			} );
+		context.modules.$toc.css( { 'width': '12em', 'marginTop': -( height ) } );
 		context.$ui.find( '.wikiEditor-ui-text' )
 			.css( ( $( 'body.rtl' ).size() ? 'marginLeft' : 'marginRight' ), '12em' );
 		// Add the TOC to the document
@@ -2186,6 +2198,7 @@ fn: {
 							.data( 'position', structure[i].position )
 							.click( function( event ) {
 								$(this).data( 'textbox' )
+									.focus()
 									.setSelection( $(this).data( 'position' ) )
 									.scrollToCaretPosition( true );
 								event.preventDefault();

@@ -156,6 +156,7 @@ fn: {
 							.data( 'position', structure[i].position )
 							.click( function( event ) {
 								$(this).data( 'textbox' )
+									.focus()
 									.setSelection( $(this).data( 'position' ) )
 									.scrollToCaretPosition( true );
 								event.preventDefault();
