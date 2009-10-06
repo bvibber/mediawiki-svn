@@ -1085,10 +1085,10 @@ js2AddOnloadHook( function() {
 			</tr></table><table><tr>\
 				<td class="label"><label for="edittoolbar-table-dimensions-columns"\
 					rel="edittoolbar-tool-table-dimensions-columns"></label></td>\
-				<td><input type="text" id="edittoolbar-table-dimensions-columns" size="3" /></td>\
+				<td><input type="text" id="edittoolbar-table-dimensions-columns" size="4" /></td>\
 				<td class="label"><label for="edittoolbar-table-dimensions-rows"\
 					rel="edittoolbar-tool-table-dimensions-rows"></label></td>\
-				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="3" /></td>\
+				<td><input type="text" id="edittoolbar-table-dimensions-rows" size="4" /></td>\
 			</tr></table></fieldset>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
