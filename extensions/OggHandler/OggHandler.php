@@ -45,6 +45,9 @@ $wgPlayerStatsCollection=false;
 // Location of the FFmpeg binary
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 
+// Location of the OggThumb binary 
+$wgOggThumbLocation = '/usr/bin/oggThumb';
+
 // Filename or URL path to the Cortado Java player applet.
 //
 // If no path is included, the path to this extension's
