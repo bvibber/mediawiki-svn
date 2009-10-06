@@ -1554,6 +1554,11 @@ api : {
 						$tabs.append(
 							$.wikiEditor.modules.toolbar.fn.buildTab( context, section, data[type][section] )
 						);
+						// Update visibility of section
+						$section = $sections.find( '.section:visible' );
+						if ( $section.size() ) {
+							$sections.animate( { 'height': $section.outerHeight() }, 'fast' );
+						}
 					}
 					break;
 				case 'groups':
