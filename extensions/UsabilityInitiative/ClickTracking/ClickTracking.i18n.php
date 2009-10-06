@@ -373,13 +373,16 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'clicktracking' => 'Käytettävyyshankkeen klikkausten seuranta',
 	'clicktracking-desc' => 'Klikkausten seuranta, tarkoituksena seurata tapahtumia, jotka eivät aiheuta sivun uudelleenlataamista.',
+	'ct-title' => 'Käyttäjän napsautuksien yhteenlaskettu määrä',
 	'ct-event-name' => 'Tapahtuman nimi',
+	'ct-total-header' => 'Napsautuksia yhteensä',
 	'ct-beginner' => 'Aloittelija',
 	'ct-intermediate' => 'Keskitaso',
 	'ct-expert' => 'Asiantuntija',

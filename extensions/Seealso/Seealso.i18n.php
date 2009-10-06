@@ -54,6 +54,13 @@ $messages['arz'] = array(
 	'seealso-desc' => "عناوين 'See also' مترجمة باستخدام الوسم <code><nowiki><seealso></nowiki></code>.",
 );
 
+/** Azerbaijani (Azərbaycan)
+ * @author Gulmammad
+ */
+$messages['az'] = array(
+	'seealso' => 'Həmçinin bax',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

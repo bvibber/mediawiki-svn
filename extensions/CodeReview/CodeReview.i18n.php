@@ -1793,6 +1793,13 @@ Komento:
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Postatentaj ŝanĝoj',
+	'codereview-email-body3' => 'Aŭtomata testado malkaŝis regresion pro la ŝanĝoj en r$1.
+
+Plena URL: $2
+
+Ŝanĝa resumo:
+
+$3',
 	'repoadmin' => 'Administrado de Kodujo',
 	'repoadmin-new-legend' => 'Krei novan kodujon',
 	'repoadmin-new-label' => 'Nomo de dosierujo:',
@@ -3992,14 +3999,17 @@ $4',
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'code-notes' => 'ბოლო კომენტარები',
 	'code-authors' => 'ავტორები',
 	'code-field-author' => 'ავტორი',
 	'code-field-timestamp' => 'თარიღი',
 	'code-rev-author' => 'ავტორი:',
 	'code-rev-date' => 'თარიღი:',
+	'code-rev-diff-link' => 'განსხ.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

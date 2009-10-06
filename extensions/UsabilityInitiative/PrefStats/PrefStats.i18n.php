@@ -306,10 +306,17 @@ $messages['cu'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'prefstats' => 'Ystadegau dewisiadau',
+	'prefstats-title' => 'Ystadegau dewisiadau',
+	'prefstats-xaxis' => 'Parhad (oriau)',
+	'prefstats-factors' => 'Cyfnod y blociau ar y graff: $1',
 	'prefstats-factor-hour' => 'awr',
 	'prefstats-factor-sixhours' => 'chwech awr',
 	'prefstats-factor-day' => 'diwrnod',
 	'prefstats-factor-week' => 'wythnos',
+	'prefstats-factor-twoweeks' => 'pythefnos',
+	'prefstats-factor-fourweeks' => 'pedair wythnos',
+	'prefstats-factor-default' => 'adfer y raddfa diofyn',
 );
 
 /** Danish (Dansk)
@@ -1021,6 +1028,7 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author BRUTE
  * @author Temuri rajavi
  * @author გიორგიმელა
  */
@@ -1031,6 +1039,7 @@ $messages['ka'] = array(
 	'prefstats-list-intro' => 'ეხლა მიმდინარეობს შემდეგ კონფიგურაციათა კონტროლი
 აირჩიეთ რომელიმე მათგანი სტატისტიკის სანახავად',
 	'prefstats-noprefs' => 'რაიმე უპირატესობა ამჟამად კონტროლი არ ეწევა. კონფიგურაციის კონტროლისთვის შეიტანეთ ცვლილებები $wgPrefStatsTrackPrefs გვერდზე.',
+	'prefstats-xaxis' => 'ხანგძლივობა (საათი)',
 	'prefstats-factor-hour' => 'საათი',
 	'prefstats-factor-sixhours' => 'ექვსი საათი',
 	'prefstats-factor-day' => 'დღე',

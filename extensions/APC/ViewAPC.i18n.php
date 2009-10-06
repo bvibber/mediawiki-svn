@@ -1679,6 +1679,7 @@ Uudempi versio ($2) on saatavilla osoitteesta http://pecl.php.net/package/APC/$2
 
 /** French (Français)
  * @author Crochet.david
+ * @author Damouns
  * @author Grondin
  * @author IAlex
  * @author Verdy p

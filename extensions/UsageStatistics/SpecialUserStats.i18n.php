@@ -1977,12 +1977,15 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'specialuserstats' => 'వాడుక గణాంకాలు',
 	'usagestatistics' => 'వాడుక గణాంకాలు',
+	'usagestatistics-desc' => 'వ్యక్తిగత వాడుకరి మరియు మొత్తం వికీ వాడుక గణాంకాలను చూపిస్తుంది',
 	'usagestatisticsfor' => '<h2>[[User:$1|$1]] కు వాడుక గణాంకాలు</h2>',
 	'usagestatisticsforallusers' => '<h2>అందరు వాడుకరుల వాడుక గణాంకాలు</h2>',
-	'usagestatisticsinterval' => 'సమయాంతరం',
+	'usagestatisticsinterval' => 'సమయాంతరం:',
+	'usagestatisticsexcluderedirects' => 'దారిమార్పులను మినహాయించు',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|దారిమార్పల]]ని పరిగణన లోనికి తీసుకోలేదు.',
 	'usagestatisticstype' => 'రకం',
-	'usagestatisticsstart' => 'ప్రారంభ తేదీ',
-	'usagestatisticsend' => 'ముగింపు తేదీ',
+	'usagestatisticsstart' => 'ప్రారంభ తేదీ:',
+	'usagestatisticsend' => 'ముగింపు తేదీ:',
 	'usagestatisticssubmit' => 'గణాంకాలను సృష్టించు',
 	'usagestatisticsnostart' => 'ప్రారంభ తేదీ ఇవ్వండి',
 	'usagestatisticsnoend' => 'ముగింపు తేదీ ఇవ్వండి',
@@ -1995,6 +1998,7 @@ $messages['te'] = array(
 	'usagestatisticscalselect' => 'ఎంచుకోండి',
 	'usagestatistics-editindividual' => 'వ్యక్తిగత వాడుకరి $1 మార్పుల గణాంకాలు',
 	'usagestatistics-editpages' => 'వ్యక్తిగత వాడుకరి $1 పేజీల గణాంకాలు',
+	'right-viewsystemstats' => '[[Special:UserStats|వికీ వాడుక గణాంకాల]]ని చూడగలగటం',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

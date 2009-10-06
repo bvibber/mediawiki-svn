@@ -94,6 +94,13 @@ $messages['es'] = array(
 	'userdailycontribs-desc' => 'Contribuciones diarias de los usuarios para la extensión de seguimiento mediante clics',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'userdailycontribs-desc' => 'Käyttäjän päivittäiset muokkaukset käyttäjien napsautuksia seuraavaa laajennosta varten',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

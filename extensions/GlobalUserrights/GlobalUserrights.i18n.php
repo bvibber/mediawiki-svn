@@ -543,6 +543,13 @@ $messages['sv'] = array(
 	'right-userrights-global' => 'Administrera globala användarrättigheter',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'globaluserrights' => 'సార్వత్రిక వాడుకరి హక్కుల నిర్వహణ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

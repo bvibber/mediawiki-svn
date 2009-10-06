@@ -897,12 +897,23 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'emergencydesysop' => 'Rút quyền quản lý khẩn cấp',
+	'emergencydesysop-desc' => 'Cho phép người quản lý hy sinh quyền của mình để tước quyền sysop của quản lý khác',
+	'emergencydesysop-title' => 'Bỏ quyền truy cập quản lý đối với thành viên hiện tại lẫn một người quản lý khác',
+	'emergencydesysop-otheradmin' => 'Người quản lý khác cần bị tước quyền',
 	'emergencydesysop-reason' => 'Lý do rút quyền',
 	'emergencydesysop-submit' => 'Thực hiện',
+	'emergencydesysop-incomplete' => 'Bạn cần điền đầy đủ mọi chỗ trống, xin hãy làm lại.',
+	'emergencydesysop-notasysop' => 'Thành viên đích không nằm trong nhóm người quản lý.',
 	'emergencydesysop-nogroups' => 'Không có',
+	'emergencydesysop-done' => 'Đã hoàn thành tác vụ, cả bạn và [[$1]] đều đã bị tước quyền sysop.',
+	'emergencydesysop-invalidtarget' => 'Thành viên đích không tồn tại.',
+	'emergencydesysop-blocked' => 'Bạn không thể truy cập trang này khi đang bị cấm',
+	'emergencydesysop-noright' => 'Bạn không có đủ quyền hạn để truy cập trang này',
+	'right-emergencydesysop' => 'Có thể tước quyền sysop của thành viên khác bằng cách tước cả quyền sysop của mình',
 );
 
 /** Yiddish (ייִדיש)

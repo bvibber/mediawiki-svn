@@ -455,17 +455,16 @@ $messages['eo'] = array(
 	'ratinghistory-table' => 'Superrigardo pri taksado de legantoj',
 	'ratinghistory-users' => 'Uzantoj taksinte ĉi tiun paĝon:',
 	'ratinghistory-graph' => '$2 de "$3" ($1 {{PLURAL:$1|kontrolo|kontroloj}})',
-	'readerfeedback-svg' => 'Vidi kiel SVG',
+	'ratinghistory-svg' => 'Vidi kiel SVG',
 	'ratinghistory-table-rating' => 'Takso',
 	'ratinghistory-table-votes' => 'Voĉdonoj',
 	'ratinghistory-none' => 'Ne sufiĉas datenoj de legintoj por grafeoj ĉi-momente.',
 	'ratinghistory-legend' => "La '''tage averaĝa taksado''' <font color=\"blue\">''(blua)''</font> kaj 
 '''intervalaveraĝa taksado''' <font color=\"green\">''(verda)''</font> estas montrita en la jena grafeo, laŭ dato. La
 '''intervalaveraĝa taksado''' estas simiple la averaĝo de ĉiuj tagaj taksaĵoj ''inter'' ĉi tiu tempdaŭro por ĉiu tago.
+Jen la taksada skalo:
 
-'''[1]''' - Malbonega; '''[2]''' - Malbonkvalita; '''[3]''' - Mezkvalita; '''[4]''' - Bonkvalita; '''[5]''' - Bonega;
-
-La '''nombro de kontrolo po tago''' <font color=\"red\">''(ruĝa)''</font> estas montrata en la jena grafeo, en ''1:\$1'' skalo.",
+'''[1]''' - Malbonega; '''[2]''' - Malbonkvalita; '''[3]''' - Mezkvalita; '''[4]''' - Bonkvalita; '''[5]''' - Bonega;",
 	'right-feedback' => 'Uzu la kontrolan sekcion por kontroli paĝon',
 );
 

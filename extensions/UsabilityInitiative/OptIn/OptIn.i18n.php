@@ -751,14 +751,14 @@ Rádi bychom věděli, co si o našem novém rozhraní myslíte, takže oceníme
 	'optin-survey-answer-changes-custom' => 'Umožnění výraznějšího přizpůsobení uživatelům',
 	'optin-survey-answer-changes-other' => 'Jiné:',
 	'optin-improvements' => '== Co jsme vylepšili? ==
-[[File:UsabilityNavigation.png|left|link=]]
+[[File:UsabilityNavigation.png|left|link=|Snímek obrazovky zobrazující nové navigační záložky]]
 ;Zdokonalená navigace
 Díky novému systému navigace snáze vidíte, kde jste a co děláte, stejně tak i to, kam můžete jít a jak se tam dostanete. Vyhledávání umístěné v pravém horním rohu lze jednodušeji nalézt a rychleji používat.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=]]
+[[File:UsabilityToolbar.png|left|link=|Snímek obrazovky zobrazující vylepšený editační panel nástrojů]]
 ;Vylepšení editačního panelu nástrojů
-Nové a vylepšené ikonky zřetelněji označují, co který nástroj dělá. Díky rozbalovacím částem je panel jednodušší, přitom méně používané nástroje jsou dostupné jediným kliknutím.
+Nové a vylepšené ikonky zřetelněji označují, co který nástroj dělá. Díky rozbalovacím částem je panel přehlednější, přitom méně používané nástroje jsou dostupné jediným kliknutím.
 Část s nápovědou poskytuje rychlý přístup k přehledu základního použití wikikódu.
 <div style="clear:both;"></div>
 == Jak se zapojit ==
@@ -1561,7 +1561,7 @@ Haluaisimme tietää, mitä mieltä olet uudesta käyttöliittymästä, joten ar
 Uudesta valikkojärjestelmästä näkee helpommin, missä olet ja mitä teet. Näet myös helpommin, minne voit mennä ja kuinka pääset sinne. Oikeassa yläkulmassa olevalla hakulaatikolla hakutoimintoa on helpompi ja nopeampi käyttää.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|left|link=|Kuvakaappaus parannellusta muokkaustyökaluiden palkista.]]
+[[File:UsabilityToolbar.png|left|link=|Kuvakaappaus parannellusta muokkaustyökalupalkista.]]
 ;Muokkauspalkin parannukset
 Uusista ja parannetuista kuvakkeista näkee helpommin, mitä mikäkin työkalu tekee. Laajennettavat osiot vähentävät epäjärjestystä, kun harvoin käytetyt työkalut ovat vain klikkauksen päässä.
 Ohje-osiosta näkyy esimerkit wikimerkinnän yleiseen käyttöön nopeasti.
@@ -3658,6 +3658,7 @@ Vi vil gjerne vite kva du meiner om det nye grensesnittet vårt, og ynskjer at d
 	'optin-survey-answer-whyoptout-didntwork' => 'Det fungerte ikkje på rett vis.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Eg likte ikkje utsjånaden.',
 	'optin-survey-answer-whyoptout-other' => 'Anna årsak:',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Om ja, kva lika du med det? Kva likte du ikkje med det?',
 	'optin-survey-question-different' => "Kva kunne me ha gjort annleis for at du skulle ha halda fram med å bruka denne betaversjonen ''(tilbakemelding på engelsk)''?",
 	'optin-survey-question-feedback' => 'Ver venleg og send ei tilbakemelding:',
 	'optin-survey-question-browser' => 'Kva for ein nettlesar nyttar du?',

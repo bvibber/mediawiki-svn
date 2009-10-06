@@ -235,6 +235,9 @@ $messages['bs'] = array(
 	'wah-transcode-fail' => 'Ova datoteka se nije uspjela transkodirati.',
 	'wah-javascript-off' => 'Morate imati omogućenu JavaScript za učestvovanje u Wiki@Home',
 	'wah-loading' => 'učitavam interfejs Wiki@Home <blink>...</blink>',
+	'wah-menu-jobs' => 'Poslovi',
+	'wah-menu-stats' => 'Statistike',
+	'wah-menu-pref' => 'Postavke',
 );
 
 /** German (Deutsch)
@@ -308,6 +311,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Crazymadlover
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -319,6 +323,7 @@ $messages['el'] = array(
 	'wah-long-general' => '(αρχείο μέσου, διάρκεια $2, $3)',
 	'wah-long-error' => '(το ffmpeg δεν μπορούσε να διαβάσει αυτό το αρχείο: $1)',
 	'wah-transcode-working' => 'Αυτό το βίντεο προωθείται, παρακαλώ δοκιμαστε ξανά αργότερα',
+	'wah-menu-pref' => 'Προτιμήσεις',
 );
 
 /** Spanish (Español)
@@ -825,6 +830,7 @@ Probeer het later nog eens.',
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'wah-short-audio' => '$1 lydfil, $2',
 	'wah-transcode-working' => 'Videoen vert arbeidd med, ver venleg og prøv igjen seinare',
 	'wah-transcode-fail' => 'Kunde ikkje konvertera denne fila.',
 	'wah-javascript-off' => 'Du må ha JavaScript aktivert for kunna delta i Wiki@Home',
