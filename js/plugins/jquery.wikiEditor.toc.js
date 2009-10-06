@@ -237,6 +237,8 @@ fn: {
 			structure.unshift( { 'text': wgPageName.replace(/_/g, ' '), 'level': 1, 'index': 0, 'position': 0 } );
 		context.modules.$toc.html( buildList( structure ) );
 		
+		context.modules.$toc.find( 'ul' ).css( 'width', '10em' );
+		
 		var links = context.modules.$toc.find( 'ul a' );
 		// Highlighted links are wider; autoEllipse links in
 		// highlighted state
