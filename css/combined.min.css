@@ -151,6 +151,8 @@ width:100%;
 float:left;
 width:100%;
 clear:both;
+height:0;
+overflow:hidden;
 }
 body.rtl .wikiEditor-ui-toolbar .sections{
 float:right;
