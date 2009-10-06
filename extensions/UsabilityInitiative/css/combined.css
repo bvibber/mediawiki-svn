@@ -117,6 +117,7 @@ body.rtl .wikiEditor-ui-text {
 	float: right;
 	padding: 0;
 	overflow: auto;
+	overflow-x: hidden;
 }
 body.rtl .wikiEditor-ui-toc {
 	right: auto;
