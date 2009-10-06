@@ -491,12 +491,15 @@ Als u bent aangemeld, kunt u deze waarschuwing uitschakelen in het tabblad "{{in
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
 	'editwarning' => 'Endringsåtvaring',
 	'editwarning-desc' => 'Vis ei åtvaring nå ein brukar freistar å navigera vekk frå eit endringsområde utan å lagra',
-	'editwarning-warning' => 'Gjennom å navigera vekk frå denne sida vil du mista alle endringane du måtte ha gjort.',
+	'editwarning-warning' => 'Gjennom å navigera vekk frå denne sida vil du mista alle endringane du måtte ha gjort.
+Denne åtvaringa kan slåast av under {{int:prefs-editing}} i instillingane dine.',
+	'editwarning-preference' => 'Gje ei åtvaring om eg går ut av ei redigeringsside og ikkje alle endringar er lagra',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
