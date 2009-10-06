@@ -242,7 +242,7 @@ class OggHandler extends MediaHandler {
 				' -n ' . wfEscapeShellArg( $dstPath ) . ' ' .
 				' ' . wfEscapeShellArg( $file->getPath() ) . ' 2>&1';
 			$returnText = wfShellExec( $cmd, $retval );
-			if ( !$this->removeBadFile( $dstPath, $retval ) || $retval ) {
+			if ( ! $this->removeBadFile( $dstPath, $retval ) ) {
 				return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath );
 			}
 		}
