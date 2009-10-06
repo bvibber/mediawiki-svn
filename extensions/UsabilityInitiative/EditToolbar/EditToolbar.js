@@ -1100,10 +1100,12 @@ js2AddOnloadHook( function() {
 		dialog: {
 			buttons: {
 				'edittoolbar-tool-table-insert': function() {
-					var rows = parseInt( $j( '#edittoolbar-table-dimensions-rows' ).val() );
-					var cols = parseInt( $j( '#edittoolbar-table-dimensions-columns' ).val() );
+					var rowsVal = $j( '#edittoolbar-table-dimensions-rows' ).val();
+					var colsVal = $j( '#edittoolbar-table-dimensions-columns' ).val();
+					var rows = parseInt( rowsVal );
+					var cols = parseInt( colsVal );
 					var header = Math.min( 1, $j( '#edittoolbar-table-dimensions-header:checked' ).size() );
-					if ( isNaN( rows ) || isNaN( cols ) ) {
+					if ( isNaN( rows ) || isNaN( cols ) || rows != rowsVal  || cols != colsVal ) {
 						alert( gM( 'edittoolbar-tool-table-invalidnumber' ) );
 						return;
 					}
