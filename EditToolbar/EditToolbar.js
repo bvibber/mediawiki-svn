@@ -1257,6 +1257,7 @@ js2AddOnloadHook( function() {
 					$textarea
 						.val( replaced )
 						.change()
+						.focus()
 						.setSelection( start + corr, end + corr )
 						.scrollToCaretPosition();
 					
@@ -1272,7 +1273,7 @@ js2AddOnloadHook( function() {
 						start = text.indexOf( matches[0] );
 					var end = start + matches[0].length;
 					var newEnd = start + replaceStr.length;
-					$textarea.setSelection( start, end );
+					$textarea.focus().setSelection( start, end );
 					if ( mode == 'replace' ) {
 						$textarea
 							.encapsulateSelection( '', replaceStr, '', false, true )

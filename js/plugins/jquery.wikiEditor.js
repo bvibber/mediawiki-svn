@@ -123,9 +123,10 @@ if ( typeof context == 'undefined' ) {
 	$(this)
 		.focus( function() {
 			var pos = $(this).data( 'wikiEditor-cursor' );
-			if ( typeof pos != 'undefined' )
+			if ( pos )
 				$(this).setSelection( pos[0], pos[1] );
-			})
+			$(this).data( 'wikiEditor-cursor', false );
+		})
 		.blur( function() {
 			$(this).data( 'wikiEditor-cursor', $(this).getCaretPosition( true ) );
 		});
