@@ -1067,6 +1067,7 @@ js2AddOnloadHook( function() {
 							$j(this)
 								.find( 'button:first' )
 								.click();
+							e.preventDefault();
 						}
 					});
 				}
@@ -1092,15 +1093,6 @@ js2AddOnloadHook( function() {
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
-			});
-			// Execute the action associated with the first button
-			// when the user presses Enter
-			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
-				if ( ( e.keyCode || e.which ) == 13 ) {
-					$j(this)
-						.find( 'button:first' )
-						.click();
-				}
 			});
 			$j( '#edittoolbar-table-dimensions-rows' ).val( 2 );
 			$j( '#edittoolbar-table-dimensions-columns' ).val( 2 );
@@ -1171,6 +1163,7 @@ js2AddOnloadHook( function() {
 							$j(this)
 								.find( 'button:first' )
 								.click();
+							e.preventDefault();
 						}
 					});
 				}
@@ -1202,15 +1195,6 @@ js2AddOnloadHook( function() {
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
-			});
-			// Execute the action associated with the first button
-			// when the user presses Enter
-			$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
-				if ( ( e.keyCode || e.which ) == 13 ) {
-					$j(this)
-						.find( 'button:first' )
-						.click();
-				}
 			});
 			
 			// TODO: Find a cleaner way to share this function
@@ -1286,13 +1270,16 @@ js2AddOnloadHook( function() {
 		},
 		dialog: {
 			buttons: {
-				'edittoolbar-tool-replace-button-findnext': function() {
+				'edittoolbar-tool-replace-button-findnext': function( e ) {
+					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'find' );
 				},
-				'edittoolbar-tool-replace-button-replacenext': function() {
+				'edittoolbar-tool-replace-button-replacenext': function( e ) {
+					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'replace' );
 				},
-				'edittoolbar-tool-replace-button-replaceall': function() {
+				'edittoolbar-tool-replace-button-replaceall': function( e ) {
+					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
 					$j(this).data( 'replaceCallback' ).call( this, 'replaceAll' );
 				},
 				'edittoolbar-tool-replace-close': function() {
@@ -1300,6 +1287,7 @@ js2AddOnloadHook( function() {
 					$j(this).data( 'context' ).$textarea
 						.unbind( 'keypress.srdialog' )
 						.focus();
+					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 				}
 			},
 			open: function() {
@@ -1312,7 +1300,8 @@ js2AddOnloadHook( function() {
 					// when the user presses Enter
 					$j(this).closest( '.ui-dialog' ).keypress( function( e ) {
 						if ( ( e.keyCode || e.which ) == 13 ) {
-							$j(this).find( 'button:first' ).click();
+							var button = $j(this).data( 'dialogaction' ) || $j(this).find( 'button:first' );
+							button.click();
 							e.preventDefault();
 						}
 					});
@@ -1320,7 +1309,8 @@ js2AddOnloadHook( function() {
 				var dialog = $j(this).closest( '.ui-dialog' );
 				$j(this).data( 'context' ).$textarea.bind( 'keypress.srdialog', function( e ) {
 					if ( ( e.keyCode || e.which ) == 13 ) {
-						dialog.find( 'button:first' ).click();
+						var button = dialog.data( 'dialogaction' ) || dialog.find( 'button:first' );
+						button.click();
 						e.preventDefault();
 					}
 				});
