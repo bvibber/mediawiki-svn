@@ -1639,9 +1639,6 @@ api : {
 			}
 		}
 	},
-	modifyTool : function( context, data ){
-		
-	},
 	removeFromToolbar : function( context, data ) {
 		js_log("f:removeFromToolbar");
 		if ( typeof data.section == 'string' ) {
@@ -2005,6 +2002,7 @@ fn : {
 			);
 	},
 	buildSection : function( context, id, section ) {
+		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + id, [section] );
 		var selected = $.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
 		var $section;
 		switch ( section.type ) {
