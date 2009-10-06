@@ -298,23 +298,11 @@ class OggHandler extends MediaHandler {
 		if( $wgOggThumbLocation && is_file( $wgOggThumbLocation ) ){
 			$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
 				' -t '. intval( $thumbtime ) . ' ' .
+				' -n ' . wfEscapeShellArg( $dstPath ) . ' ' .
 				' ' . wfEscapeShellArg( $file->getPath() ) . ' 2>&1';
-			//@@NOTE target output file argument support is on the way
-			//(will be in the next release of oggThumb)
-			$orgPath = getcwd();
-			//change to destination path:
-			chdir( dirname( $dstPath ) );
-			$retval = 0;
 			$returnText = wfShellExec( $cmd, $retval );
-			//check for the file:
-			$name = substr( $file->getName(), 0, strrpos( $file->getName(), '.'));
-			if( is_file( $name ) . '_0.jpg' ){
-				rename(  $name . '_0.jpg',  $dstPath);
-			}
-			//change back to the orgPath
-			chdir( $orgPath );
 			//check if it was successful or if we should try ffmpeg:
-			if( is_file ( $dstPath ) ){
+			if ( ! $this->removeBadFile( $dstPath, $retval ) ) {
 				return true;
 			}
 		}
