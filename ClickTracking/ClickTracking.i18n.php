@@ -211,6 +211,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Metalhead64
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'clicktracking' => 'Benutzerfreundlichkeitsinitiative Klickverfolgung',
@@ -229,7 +230,7 @@ $messages['de'] = array(
 	'ct-date-range' => 'Datumsbereich',
 	'ct-editing' => 'Derzeit bearbeitet von:',
 	'ct-anon-users' => 'Anonyme Benutzer',
-	'ct-user-contribs' => 'Gesamtbenutzerbeiträge',
+	'ct-user-contribs' => 'Gesamte Benutzerbeiträge',
 	'ct-user-span' => 'Benutzerbeiträge in Zeitspanne',
 	'ct-and' => 'und',
 );

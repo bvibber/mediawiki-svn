@@ -5873,6 +5873,7 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author BRUTE
  * @author Temuri rajavi
  * @author გიორგიმელა
  */
@@ -5892,6 +5893,7 @@ $messages['ka'] = array(
 	'edittoolbar-tool-link' => 'ბმული',
 	'edittoolbar-tool-link-title' => 'ბმულის ჩასმა',
 	'edittoolbar-tool-link-int' => 'ვიკი გვერდზე',
+	'edittoolbar-tool-link-int-target' => 'გვერდის სათაური:',
 	'edittoolbar-tool-link-cancel' => 'გაუქმება',
 	'edittoolbar-tool-file' => 'ჩასმული ფაილი',
 	'edittoolbar-tool-file-example' => 'მაგალითი.jpg',
@@ -6472,6 +6474,7 @@ $messages['ksh'] = array(
  * @author Kernoweger
  */
 $messages['kw'] = array(
+	'edittoolbar-tool-link-cancel' => 'Hedhy',
 	'edittoolbar-help-page-discussion' => 'Dadhelva',
 );
 
@@ -8281,7 +8284,7 @@ $messages['oc'] = array(
 	'edittoolbar' => 'Modificacion de la barra d’espleches',
 	'edittoolbar-desc' => "Modificacion de la barra d'espleches amb l'utilizabilitat melhorada",
 	'edittoolbar-preference' => "Activar la barra d'espleches melhorada",
-	'edittoolbar-cgd-preference' => "Activar l'ajuda per apondre de tèxte wiki avançat",
+	'edittoolbar-cgd-preference' => 'Activar las bóstias de dialòg per apondre de ligams, de tablèus e mai encara',
 	'edittoolbar-loading' => 'Cargament ...',
 	'edittoolbar-tool-bold' => 'Gras',
 	'edittoolbar-tool-bold-example' => 'Tèxte en gras',
@@ -8377,6 +8380,7 @@ $messages['oc'] = array(
 	'edittoolbar-tool-replace-close' => 'Anullar',
 	'edittoolbar-tool-replace-nomatch' => 'Vòstra recèrca a pas trobat cap de correspondéncia.',
 	'edittoolbar-tool-replace-success' => '$1 remplaçaments faches.',
+	'edittoolbar-tool-replace-emptysearch' => 'Avètz pas indicat de tèxte de recercar.',
 	'edittoolbar-section-characters' => 'Caractèrs especials',
 	'edittoolbar-characters-page-latin' => 'Latin',
 	'edittoolbar-characters-page-latinextended' => 'Latin espandit',
