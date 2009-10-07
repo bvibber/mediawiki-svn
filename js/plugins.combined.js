@@ -1265,10 +1265,10 @@ $.wikiEditor.fixOperaBrokenness = function( s ) {
 		textarea.select();
 		textarea.setSelection( index, index + 3 );
 		textarea.encapsulateSelection( '', 'BAR', '', false, true );
-		if ( textarea.val().substr( -1 ) == 'R' )
+		if ( textarea.val().substr( -4 ) != 'BARr' )
 			$.isOperaBroken = false;
 		else
-			$.isOperaBroken = true; 
+			$.isOperaBroken = true;
 		div.remove();
 	}
 	if ( $.isOperaBroken )
