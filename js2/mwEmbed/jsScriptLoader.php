@@ -5,14 +5,18 @@
  */
 // Check if we are being invoked in a MediaWiki context or stand alone usage:
 
+/***
+ * WMF PATCH
+ *
 if ( !defined( 'MEDIAWIKI' ) ) {
 	// Load noMediaWiki helper
 	require_once( realpath( dirname( __FILE__ ) ) . '/php/noMediaWikiConfig.php' );
 	$myScriptLoader = new jsScriptLoader();
 	$myScriptLoader->doScriptLoader();
 } else {
+ ** end patch */
 	$wgExtensionMessagesFiles['mwEmbed'] = realpath( dirname( __FILE__ ) ) . '/php/mwEmbed.i18n.php';
-}
+//}
 
 class jsScriptLoader {
 	var $jsFileList = array();
