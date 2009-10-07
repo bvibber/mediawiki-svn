@@ -762,6 +762,9 @@ $messages['lb'] = array(
 	'wah-transcode-fail' => 'Dëse Fichier konnt net ëmgeschriwwe ginn.',
 	'wah-javascript-off' => 'Dir musst JavaScript zouloossen fir bäi Wiki@Doheem matzemaachen',
 	'wah-loading' => 'wiki@home Interface lueden <blink>...</blink>',
+	'wah-menu-jobs' => 'Aarbechten',
+	'wah-menu-stats' => 'Statistiken',
+	'wah-menu-pref' => 'Astellungen',
 );
 
 /** Macedonian (Македонски)
@@ -834,6 +837,7 @@ $messages['nn'] = array(
 	'wah-transcode-working' => 'Videoen vert arbeidd med, ver venleg og prøv igjen seinare',
 	'wah-transcode-fail' => 'Kunde ikkje konvertera denne fila.',
 	'wah-javascript-off' => 'Du må ha JavaScript aktivert for kunna delta i Wiki@Home',
+	'wah-nojobfound' => 'Ingen jobb funne. Prøver igjen om $1.',
 );
 
 /** Occitan (Occitan)
@@ -855,6 +859,24 @@ $messages['oc'] = array(
 	'wah-transcode-fail' => 'Aqueste fichièr a pas pogut èsser transcodat.',
 	'wah-javascript-off' => 'Vos cal activar JavaScript per participar a Wiki@Home',
 	'wah-loading' => "cargament de l'interfàcia Wiki@Home <blink>...</blink>",
+	'wah-menu-jobs' => 'Prètzfaches',
+	'wah-menu-stats' => 'Estatisticas',
+	'wah-menu-pref' => 'Preferéncias',
+	'wah-lookingforjob' => 'Recèrca de prètzfach <blink>...</blink>',
+	'wah-start-on-visit' => 'Aviar Wiki@Home a cada còp que visiti aqueste site.',
+	'wah-jobs-while-away' => 'Aviar un prètzfach solament quand me soi pas servit de mon navigador pendent 20 minutas.',
+	'wah-nojobfound' => 'Cap de prètzfach pas trobat. Tornatz ensajar en $1.',
+	'wah-notoken-login' => "Sètz connectat ? S'es pas lo cas, començatz per vos connectar.",
+	'wah-apioff' => 'Sembla que l’API de Wiki@Home fonciona pas. Contactatz l’administrator wiki.',
+	'wah-doing-job' => 'Prètzfach : <i>$1</i> sus : <i>$2</i>',
+	'wah-downloading' => 'Telecargament del fichièr <i>$1%</i> acabat',
+	'wah-encoding' => 'Encodatge del fichièr <i>$1%</i> acabat',
+	'wah-encoding-fail' => 'L’encodatge a fracassat. Recargatz aquesta pagina o tornatz ensajar pus tard.',
+	'wah-uploading' => 'Telecargament del fichièr <i>$1</i> acabat.',
+	'wah-uploadfail' => 'Lo telecargament a fracassat',
+	'wah-doneuploading' => 'Telecargament acabat. Mercés per vòstra contribucion.',
+	'wah-needs-firefogg' => 'Per contribuir a Wiki@Home vos cal installar <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'I a agut una error amb l’API. Tornatz ensajar pus tard.',
 );
 
 /** Polish (Polski)

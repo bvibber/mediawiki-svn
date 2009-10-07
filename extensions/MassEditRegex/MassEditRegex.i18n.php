@@ -588,7 +588,7 @@ $messages['oc'] = array(
 	'masseditregex' => "Modificacion en massa amb l'ajuda de las expressions racionalas",
 	'masseditregex-desc' => 'Utilizar las expressions racionalas per [[Special:MassEditRegex|modificar de paginas nombrosas en una operacion]]',
 	'masseditregextext' => 'Entrar una o mantuna expression racionala (una per linha) de recercar, e una o mantuna expression per las qualas remplaçar los resultats. La primièra expression trobada serà remplaçada per la primièra expression de remplaçament, e atal encara. Veire la descripcion de la [http://php.net/manual/en/function.preg-replace.php foncion PHP preg_replace()] per mai de detalhs.',
-	'masseditregex-pagelisttxt' => 'Paginas de modificar :',
+	'masseditregex-pagelisttxt' => "Paginas de modificar (sens lo prefix de l'espaci de noms) :",
 	'masseditregex-matchtxt' => 'Recercar :',
 	'masseditregex-replacetxt' => 'Remplaçar per :',
 	'masseditregex-executebtn' => 'Executar',
@@ -607,6 +607,7 @@ $messages['oc'] = array(
 	'masseditregex-hint-toappend' => "Inserís de tèxte a la fin de l'article - practic per apondre las paginas a de categorias",
 	'masseditregex-hint-remove' => 'Levar de tèxte de totas las paginas de la lista',
 	'masseditregex-hint-removecat' => "Suprimís totas las categorias de l'article (notatz que los croquets dins lo wikicòde son escapats.) Las valors de remplaçament devon pas èsser escapadas.",
+	'masseditregex-tooltip-execute' => 'Aplicar aquestes cambiaments a cada pagina',
 );
 
 /** Russian (Русский)

@@ -467,9 +467,9 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'eval' => 'Evaluar',
+	'eval' => 'Avalorar',
 	'eval-desc' => 'Apond [[Special:Eval|una interfàcia]] a la foncion <code>eval()</code>.',
-	'eval_submit' => 'Evaluar',
+	'eval_submit' => 'Avalorar',
 	'eval_escape' => 'Arrèstar la sortida',
 	'eval_out' => 'Sortida',
 	'eval_code' => 'Còde',

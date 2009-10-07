@@ -310,6 +310,13 @@ $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'localisationupdate-desc' => 'స్ధానికీకరించిన సందేశాలను సాధ్యమైనంత తాజాగా ఉంచుతుంది',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

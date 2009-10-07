@@ -460,8 +460,8 @@ $messages['de'] = array(
 $messages['de-formal'] = array(
 	'readerfeedback' => 'Was denken Sie über diese Seite?',
 	'readerfeedback-text' => "''Bitte nehmen Sie sich einen Moment Zeit und bewerten diese Seite. Ihre Rückmeldung ist wertvoll und hilft uns, das Angebot zu verbessern.''",
-	'readerfeedback-success' => "'''Danke für Ihre Bewertung dieser Seite.''' ([$2 siehe Ergebnisse]) ([$3 Kommentare oder Fragen?]).",
-	'readerfeedback-voted' => "'''Sie haben scheinbar bereits eine Bewertung für diese Seite abgegeben.''' ([$2 siehe Ergebnisse]) ([$3 Kommentare oder Fragen?]).",
+	'readerfeedback-success' => "'''Danke für Ihre Bewertung dieser Seite.''' ([$2 Ergebnisse anschauen]) ([$3 Kommentare oder Fragen?]).",
+	'readerfeedback-voted' => "'''Sie haben offenbar bereits eine Bewertung für diese Seite abgegeben.''' ([$2 Ergebnisse anschauen]) ([$3 Kommentare oder Fragen?]).",
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -591,9 +591,9 @@ $messages['es'] = array(
 	'readerfeedback-level-4' => 'Excelente',
 	'readerfeedback-submit' => 'Enviar',
 	'readerfeedback-main' => 'Solamente páginas de contenido pueden ser valoradas.',
-	'readerfeedback-success' => "'''Gracias por revisar esta página!''' ([$3 Comentarios o preguntas?]).",
-	'readerfeedback-voted' => "'''Parece que ya valoraste esta página''' ([$3 comentarios o preguntas?]).",
-	'readerfeedback-error' => "'''Un error ha ocurrido cuando se valorizaba esta página''' ([$3 comentarios o preguntas?]).",
+	'readerfeedback-success' => "'''Gracias por revisar esta página!''' ([$2 ver resultados]) ([$3 Comentarios o preguntas?]).",
+	'readerfeedback-voted' => "'''Parece que ya valoraste esta página''' ([$2 ver resultados]) ([$3 comentarios o preguntas?]).",
+	'readerfeedback-error' => "'''Un error ha ocurrido cuando se valorizaba esta página''' ([$2 ver resultados]) ([$3 comentarios o preguntas?]).",
 	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => '¡Gracias!',
 	'readerfeedback-tagfilter' => 'Etiqueta:',
@@ -1116,6 +1116,15 @@ $messages['ja'] = array(
 	'specialpages-group-feedback' => '読者の意見',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'readerfeedback-level-1' => 'დაბალი',
+	'readerfeedback-level-3' => 'მაღალი',
+	'readerfeedback-finished' => 'გმადლობთ!',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -1427,13 +1436,13 @@ $messages['oc'] = array(
 	'readerfeedback-level-4' => 'Excellent',
 	'readerfeedback-submit' => 'Sometre',
 	'readerfeedback-main' => 'Sol lo contengut de las paginas pòt èsser notat.',
-	'readerfeedback-success' => "'''Mercés per la revision d'aquesta pagina ! ''' ([$3 De questions o de comentaris ? ]).",
-	'readerfeedback-voted' => "'''Apareis que ja avètz notat aquesta pagina'''. ([$3 De questions o de comentaris ?]).",
-	'readerfeedback-error' => "'''Una error s'es producha al moment de l'evaluacion d'aquesta pagina''' ([$3 remarcas o questions ?]).",
+	'readerfeedback-success' => "'''Mercés per a aver relegit aquesta pagina ! ''' ([$2 veire los resultats]) ([$3 De questions o de comentaris ? ]).",
+	'readerfeedback-voted' => "'''Sembla que ja avètz evalorat aquesta pagina''' ([$2 veire los resultats]) ([$3 De questions o de comentaris ?]).",
+	'readerfeedback-error' => "'''Una error s'es producha al moment de l'avaloracion d'aquesta pagina''' ([$2 veire los resultats]) ([$3 remarcas o questions ?]).",
 	'readerfeedback-submitting' => 'Somission…',
 	'readerfeedback-finished' => 'Mercés !',
 	'readerfeedback-tagfilter' => 'Balisa :',
-	'readerfeedback-tierfilter' => 'Evaluacion :',
+	'readerfeedback-tierfilter' => 'Avaloracion :',
 	'readerfeedback-tier-high' => 'Bona',
 	'readerfeedback-tier-medium' => 'Mejana',
 	'readerfeedback-tier-poor' => 'Marrida',
@@ -1976,9 +1985,9 @@ $messages['vi'] = array(
 	'readerfeedback-level-4' => 'Tốt',
 	'readerfeedback-submit' => 'Đệ trình',
 	'readerfeedback-main' => 'Chỉ đánh giá được những trang nội dung.',
-	'readerfeedback-success' => "'''Cám ơn bạn vì đã duyệt trang này!''' ([$3 Ghi chú hoặc câu hỏi?]).",
-	'readerfeedback-voted' => "'''Dường như bạn đã xếp hạng trang này rồi''' ([$3 Ghi chú hoặc câu hỏi?]).",
-	'readerfeedback-error' => "'''Xảy ra lỗi khi đang xếp hạng trang này''' ([$3 bình luận hoặc câu hỏi?]).",
+	'readerfeedback-success' => "'''Cám ơn bạn vì đã duyệt trang này!''' ([$2 Xem kết quả]&nbsp;– [$3 Bình luận hoặc câu hỏi?])",
+	'readerfeedback-voted' => "'''Dường như bạn đã xếp hạng trang này rồi.''' ([$2 Xem kết quả]&nbsp;– [$3 Bình luận hoặc câu hỏi?])",
+	'readerfeedback-error' => "'''Xảy ra lỗi khi đang xếp hạng trang này.''' ([$2 Xem kết quả]&nbsp;– [$3 Bình luận hoặc câu hỏi?])",
 	'readerfeedback-submitting' => 'Đang gửi…',
 	'readerfeedback-finished' => 'Cám ơn!',
 	'readerfeedback-tagfilter' => 'Thẻ:',

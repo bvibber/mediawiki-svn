@@ -1089,6 +1089,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1149,12 +1150,16 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
 	'openidloginlabel' => 'URL-o OpenID',
 	'openidupdateuserinfo' => 'Ĝisdatigi mian personan informon',
 	'openiddelete' => 'Forigi OpenID',
+	'openiddelete-button' => 'Konfirmi',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-agordoj',
 	'openid-pref-hide' => 'Kaŝi viajn identigon OpenID en via uzula paĝo, se vi ensalutas kun OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Ĝisdatigi mian informon de OpenID-konto ĉiam mi ensalutos',
 	'openid-urls-action' => 'Ago',
 	'openid-urls-delete' => 'Forigi',
 	'openid-add-url' => 'Aldoni novan OpenID',
+	'openidsigninorcreateaccount' => 'Ensaluti aŭ Krei Novan Konton',
+	'openid-provider-label-google' => 'Ensaluti per via Google-konto',
+	'openid-provider-label-yahoo' => 'Ensaluti per via Yahoo-konto',
 	'openid-provider-label-other-username' => 'Enigi vian salutnomon de $1',
 );
 

@@ -165,6 +165,7 @@ $messages['es'] = array(
 	'ratedpages-list' => 'Lo de abajo es una lista de páginas ordenadas por su valoración de retroalimentación de lector.',
 	'ratedpages-none' => 'No hay páginas en esta lista',
 	'ratedpages-graphs' => 'Datos de rating',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revisión|revisiones}}',
 );
 
 /** Persian (فارسی)

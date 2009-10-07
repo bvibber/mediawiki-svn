@@ -676,7 +676,7 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'profiling' => 'Donadas per evaluar',
+	'profiling' => 'Donadas per avalorar',
 	'profiling-desc' => '[[Special:Profiling|Pagina especiala]] per recercar e inspectar de donadas de perfil',
 	'profiling-process' => 'Cadena de caractèrs de tractar :',
 	'profiling-wildcard' => 'Utilizatz de « joker »',

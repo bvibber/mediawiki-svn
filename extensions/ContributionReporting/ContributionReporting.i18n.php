@@ -2626,6 +2626,7 @@ $messages['oc'] = array(
 	'contribstats-donations' => 'Donacions',
 	'contribstats-conversion' => 'Taus de conversion (%)',
 	'contribstats-template' => 'Modèl',
+	'contribstats-nodata' => 'Cap de donada pas provesida',
 	'fundraiserstatistics' => 'Estatisticas de la levada de fonses',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Jorn $1 de $2',

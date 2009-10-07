@@ -149,6 +149,13 @@ $messages['nl'] = array(
 	'ipauth-desc' => 'Automatisch aanmelden van vaste IP-adressen',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'ipauth-desc' => 'Connexion automatica dempuèi una adreça IP fixa',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

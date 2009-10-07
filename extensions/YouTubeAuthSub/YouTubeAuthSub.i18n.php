@@ -1626,8 +1626,8 @@ $messages['kw'] = array(
 	'youtubeauthsub_password' => 'Ger-tremena YouTube',
 	'youtubeauthsub_username' => 'Hanow-usyer YouTube',
 	'youtubeauthsub_category' => 'Class',
-	'youtubeauthsub_uploadbutton' => 'Ughkarga',
-	'youtubeauthsub_summary' => 'Owth ughkarga video YouTube',
+	'youtubeauthsub_uploadbutton' => 'Ughcarga',
+	'youtubeauthsub_summary' => 'Owth ughcarga video YouTube',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

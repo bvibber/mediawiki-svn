@@ -2738,6 +2738,7 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author FriedC
  * @author Klutzy
  * @author Kwj2772
  */
@@ -2750,7 +2751,7 @@ $messages['ko'] = array(
 	'optin-title-justoptedout' => '베타 버전을 사용해 주셔서 감사합니다.',
 	'optin-title-feedback' => '피드백 남기기',
 	'optin-needlogin' => '베타 버전을 사용하려면 [$1 로그인]을 해 주세요.',
-	'optin-intro' => '위키백과에서는 사용자들의 편의성을 높이기 위해 새로운 스킨을 만들고 있습니다. 체험해 보세요!',
+	'optin-intro' => '위키백과에서는 사용자들의 편의성을 높이기 위해 새로운 스킨을 만들고 있습니다. 직접 체험해 보세요!',
 	'optin-feedback-intro' => '베타 버전을 사용해 주셔서 감사합니다.
 아래 설문조사를 작성해 주시면 더 좋은 스킨을 만드는 데에 참고하겠습니다.',
 	'optin-feedback-back' => '설문조사를 작성하지 않으려면 바로 $1 문서로 되돌아갈 수 있습니다.',
@@ -2923,10 +2924,14 @@ Mer freue uns, vun Üsch ze hüüre!',
 );
 
 /** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'optin-title-optedout' => 'Previ Beta',
+	'optin-title-optedout' => 'Prevy Beta',
+	'optin-deny-short' => 'Na, meur ras',
+	'optin-survey-yes' => 'Ea',
+	'optin-survey-no' => 'Na',
 );
 
 /** Latin (Latina)

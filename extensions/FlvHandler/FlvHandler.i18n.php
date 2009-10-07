@@ -175,6 +175,14 @@ $messages['nl'] = array(
 	'flv-long-desc' => '(Flash Video, $1 × $2 pixels, bestandsgrootte: $3)',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'flvhandler_desc' => "Permet als fichièrs vidèo Flash (.flv) d'èsser utilizats coma de fichièrs estandards (per exemple <nowiki>[[File:Movie.flv]]</nowiki>)",
+	'flv-long-desc' => '(Vidèo flash, $1 × $2 pixèls, talha del fichièr : $3)',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

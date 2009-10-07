@@ -1593,10 +1593,13 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'ogg-more' => 'მეტი...',
 	'ogg-download' => 'ფაილის ჩამოტვირთვა',
+	'ogg-desc-link' => 'ამ ფაილის შესახებ',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */

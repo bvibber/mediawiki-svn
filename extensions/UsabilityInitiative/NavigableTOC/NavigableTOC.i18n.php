@@ -106,6 +106,7 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'navigabletoc' => 'Navigierbares Inhaltsverzeichnis',
 	'navigabletoc-desc' => 'Fügt ein Inhaltsverzeichnis zum Bearbeitungsfenster hinzu, das den Text scrollt, wenn ein Abschnitt angeklickt wird',
+	'navigabletoc-preference' => 'Inhaltsverzeichnis im Bearbeiten-Fenster aktivieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)

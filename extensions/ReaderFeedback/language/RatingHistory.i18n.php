@@ -1319,13 +1319,13 @@ $messages['oc'] = array(
 	'ratinghistory-table' => "Vista d'ensemble de las notations dels lectors",
 	'ratinghistory-users' => "Utilizaires qu'an fach de relecturas",
 	'ratinghistory-graph' => '$2 sus « $3 » ($1 {{PLURAL:$1|relector|relectors}})',
-	'readerfeedback-svg' => 'Veire en SVG',
+	'ratinghistory-svg' => 'Veire en SVG',
 	'ratinghistory-table-rating' => 'Notacion',
 	'ratinghistory-table-votes' => 'Vòts',
 	'ratinghistory-none' => 'En aqueste moment, i a pas pro de lectors de donadas de notacion pels grafics.',
 	'ratinghistory-ratings' => "'''Legenda :''' '''(1)''' - Marrit ; '''(2)''' - Mediòcre ; '''(3)''' - Mejan ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
-	'ratinghistory-legend' => "Lo '''nombre d'evaluacions per jorn''' <font color=\"red\">''(roge)''</font>, l''''evaluacion mejana per jorn''' <font color=\"blue\">''(blau)''</font> e l''''evaluacion mejana en cors''' <font color=\"green\">''(verd)''</font> son representadas graficament çaijós, per data.
-L''''evaluacion mejana en cors''' es simplament la mejana de totas las evaluacions quotidianas ''dins'' lo periòde del jorn causit.
+	'ratinghistory-legend' => "Lo '''nombre d'avaloracions per jorn''' <font color=\"red\">''(roge)''</font>, l''''avaloracion mejana per jorn''' <font color=\"blue\">''(blau)''</font> e l''''avaloracion mejana en cors''' <font color=\"green\">''(verd)''</font> son representadas graficament çaijós, per data.
+L''''avaloracion mejana en cors''' es simplament la mejana de totas las avaloracions quotidianas ''dins'' lo periòde del jorn causit.
 Las notacions son las seguentas :
 
 '''(1)''' - Marrit ; '''(2)''' - Mediòcre ; '''(3)''' - Mejan ; '''(4)''' - Bon ; '''(5)''' - Excellent.",

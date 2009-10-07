@@ -146,6 +146,13 @@ $messages['nl'] = array(
 	'filepagemasking-desc' => 'Herschrijft ".xxx" naar "_xxx" in verwijzingen naar de bestandsbeschrijvingspagina\'s',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'filepagemasking-desc' => 'Remplaça ".xxx" per "_xxx" dins los ligams de la pagina de descripcion del fichièr',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
