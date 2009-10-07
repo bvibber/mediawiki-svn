@@ -13,12 +13,12 @@
  *
  * @author Adam Miller <amiller@wikimedia.org>
  * @license GPL v2 or later
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 /* Configuration */
 // Bump the version number every time you change any of the .css/.js files
-$wgCollapsibleTabsStyleVersion = 1;
+$wgCollapsibleTabsStyleVersion = 2;
 
 /* Setup */
 
