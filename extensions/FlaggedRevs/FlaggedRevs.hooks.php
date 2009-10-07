@@ -226,8 +226,18 @@ class FlaggedRevsHooks {
 		}
 		# Update page fields
 		FlaggedRevs::updateStableVersion( $article, $sv->getRevision() );
-		# We only care about links that are only in the stable version
+		# Get the list of categories that must be reviewed
+		$reviewedCats = array();
+		$msg = wfMsgForContent( 'flaggedrevs-stable-categories' );
+		if( !wfEmptyMsg( 'flaggedrevs-stable-categories', $msg ) ) {
+			$list = explode("\n*","\n$msg");
+			foreach( $list as $category ) {
+				$category = trim($category);
+				if( strlen($category) ) $reviewedCats[$category] = 1;
+			}
+		}
 		$links = array();
+		# Get any links that are only in the stable version...
 		foreach( $parserOut->getLinks() as $ns => $titles ) {
 			foreach( $titles as $title => $id ) {
 				if( !isset($linksUpdate->mLinks[$ns]) || !isset($linksUpdate->mLinks[$ns][$title]) ) {
@@ -235,11 +245,13 @@ class FlaggedRevsHooks {
 				}
 			}
 		}
+		# Get any images that are only in the stable version...
 		foreach( $parserOut->getImages() as $image => $n ) {
 			if( !isset($linksUpdate->mImages[$image]) ) {
 				self::addLink( $links, NS_FILE, $image );
 			}
 		}
+		# Get any templates that are only in the stable version...
 		foreach( $parserOut->getTemplates() as $ns => $titles ) {
 			foreach( $titles as $title => $id ) {
 				if( !isset($linksUpdate->mTemplates[$ns]) || !isset($linksUpdate->mTemplates[$ns][$title]) ) {
@@ -247,11 +259,24 @@ class FlaggedRevsHooks {
 				}
 			}
 		}
+		# Get any categories that are only in the stable version...
 		foreach( $parserOut->getCategories() as $category => $sort ) {
             if( !isset($linksUpdate->mCategories[$category]) ) {
-                self::addLink( $links, NS_CATEGORY, $category );
+				// Stable categories must remain until removed from the stable version
+				if( isset($reviewedCats[$category]) ) {
+					$linksUpdate->mCategories[$category] = $sort;
+				} else {
+					self::addLink( $links, NS_CATEGORY, $category );
+				}
 			}
         }
+		$stableCats = $parserOut->getCategories(); // from stable version
+		foreach( $reviewedCats as $category ) {
+			// Stable categories cannot be added until added to the stable version
+			if( isset($linksUpdate->mCategories[$category]) && !isset($stableCats[$category]) ) {
+				unset( $linksUpdate->mCategories[$category] );
+			}
+		}
 		# Get any link tracking changes
 		$existing = self::getExistingLinks( $pageId );
 		$insertions = self::getLinkInsertions( $existing, $links, $pageId );
@@ -770,7 +795,7 @@ class FlaggedRevsHooks {
 		$key = wfMemcKey( 'flaggedrevs', 'includesSynced', $rev->getPage() );
 		# Auto-reviewing must be enabled and user must have the required permissions
 		if( !$wgFlaggedRevsAutoReview || !$user->isAllowed('autoreview') ) {
-			$isAllowed = false; // trusted user
+			$isAllowed = false; // untrusted user
 		} else {
 			# Get autoreview restriction settings...
 			$config = FlaggedRevs::getPageVisibilitySettings( $title, true );
@@ -916,12 +941,11 @@ class FlaggedRevsHooks {
 		}
 		// Is the page reviewable?
 		if( FlaggedRevs::isPageReviewable( $rc->getTitle() ) ) {
-			global $wgFlaggedRevsPatrolLevel;
 			# Note: pages in reviewable namespace with FR disabled
 			# won't autopatrol. May or may not be useful...
 			$quality = FlaggedRevs::getRevQuality( $rc->mAttribs['rc_cur_id'],
 				$rc->mAttribs['rc_this_oldid'], GAID_FOR_UPDATE );
-			if( $quality !== false && $quality >= $wgFlaggedRevsPatrolLevel ) {
+			if( $quality !== false && $quality >= FlaggedRevs::getPatrolLevel() ) {
 				RevisionReview::updateRecentChanges( $rc->getTitle(), $rc->mAttribs['rc_this_oldid'] );
 				$rc->mAttribs['rc_patrolled'] = 1; // make sure irc/email notifs now status
 			}
@@ -1014,6 +1038,22 @@ class FlaggedRevsHooks {
 	}
 	
 	/**
+	* Checks if $user was previously blocked
+	*/
+	protected function previousBlockCheck( $user ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		return (bool)$dbr->selectField( 'logging', '1',
+			array(
+				'log_namespace' => NS_USER, 
+				'log_title'     => $user->getUserPage()->getDBkey(),
+				'log_type'      => 'block',
+				'log_action'    => 'block' ),
+			__METHOD__,
+			array( 'USE INDEX' => 'page_time' )
+		);
+	}
+	
+	/**
 	* Check for 'autoreview' permission. This lets people who opt-out as
 	* Editors still have their own edits automatically reviewed. Bot
 	* accounts are also handled here to make sure that can autoreview.
@@ -1035,7 +1075,7 @@ class FlaggedRevsHooks {
 		# Checked basic, already available, promotion heuristics first...
 		$APSkipKey = wfMemcKey( 'flaggedrevs', 'autoreview-skip', $user->getId() );
 		$value = $wgMemc->get( $APSkipKey );
-		if( $value == 'true' ) return true;
+		if( $value === 'true' ) return true;
 		# Check $wgFlaggedRevsAutoconfirm settings...
 		$now = time();
 		$userCreation = wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
@@ -1077,14 +1117,7 @@ class FlaggedRevsHooks {
 		}
 		# Check if user was ever blocked before
 		if( $wgFlaggedRevsAutoconfirm['neverBlocked'] ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$blocked = $dbr->selectField( 'logging', '1',
-				array( 'log_namespace' => NS_USER, 
-					'log_title' => $user->getUserPage()->getDBkey(),
-					'log_type' => 'block',
-					'log_action' => 'block' ),
-				__METHOD__,
-				array( 'USE INDEX' => 'page_time' ) );
+			$blocked = self::previousBlockCheck( $user );
 			if( $blocked ) {
 				# Make a key to store the results
 				$wgMemc->set( $APSkipKey, 'true', 3600*24*7 );
@@ -1220,15 +1253,7 @@ class FlaggedRevsHooks {
 		}
 		# Check if user was ever blocked before
 		if( $wgFlaggedRevsAutopromote['neverBlocked'] ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$blocked = $dbr->selectField( 'logging', '1',
-				array( 'log_namespace' => NS_USER, 
-					'log_title' => $user->getUserPage()->getDBkey(),
-					'log_type' => 'block',
-					'log_action' => 'block' ),
-				__METHOD__,
-				array( 'USE INDEX' => 'page_time' )
-			);
+			$blocked = self::previousBlockCheck( $user );
 			if( $blocked ) {
 				# Make a key to store the results
 				$wgMemc->set( $APSkipKey, 'true', 3600*24*7 );
@@ -1342,9 +1367,9 @@ class FlaggedRevsHooks {
 		$newGroups = $groups ;
 		array_push( $newGroups, 'editor' );
 
-		wfLoadExtensionMessages( 'FlaggedRevs' );
-		# Lets NOT spam RC, set $RC to false
-		$log = new LogPage( 'rights', false );
+		wfLoadExtensionMessages( 'FlaggedRevs' ); // load UI messages
+		global $wgFlaggedRevsAutopromoteInRC;
+		$log = new LogPage( 'rights', $wgFlaggedRevsAutopromoteInRC );
 		$log->addEntry( 'rights', $user->getUserPage(), wfMsg('rights-editor-autosum'),
 			array( implode(', ',$groups), implode(', ',$newGroups) ) );
 		$user->addGroup('editor');
@@ -1357,9 +1382,17 @@ class FlaggedRevsHooks {
 	*/
 	public static function recordDemote( $u, $addgroup, $removegroup ) {
 		if( $removegroup && in_array('editor',$removegroup) ) {
-			$params = FlaggedRevs::getUserParams( $u->getId() );
-			$params['demoted'] = 1;
-			FlaggedRevs::saveUserParams( $u->getId(), $params );
+			// Cross-wiki rights change
+			if( $u instanceof UserRightsProxy ) {
+				$params = FlaggedRevs::getUserParams( $u->getId(), $u->getDBName() );
+				$params['demoted'] = 1;
+				FlaggedRevs::saveUserParams( $u->getId(), $params, $u->getDBName() );
+			// On-wiki rights change
+			} else {
+				$params = FlaggedRevs::getUserParams( $u->getId() );
+				$params['demoted'] = 1;
+				FlaggedRevs::saveUserParams( $u->getId(), $params );
+			}
 		}
 		return true;
 	}
@@ -1370,7 +1403,7 @@ class FlaggedRevsHooks {
 		$preferences['flaggedrevssimpleui'] =
 			array(
 				'type' => 'radio',
-				'section' => 'flaggedrevs',
+				'section' => 'flaggedrevs/flaggedrevs-ui',
 				'label-message' => 'flaggedrevs-pref-UI',
 				'options' => array(
 					wfMsg( 'flaggedrevs-pref-UI-0' ) => 0,
@@ -1381,7 +1414,7 @@ class FlaggedRevsHooks {
 		$preferences['flaggedrevsstable'] =
 			array(
 				'type' => 'toggle',
-				'section' => 'flaggedrevs',
+				'section' => 'flaggedrevs/flaggedrevs-ui',
 				'label-message' => 'flaggedrevs-prefs-stable',
 			);
 		// Review-related rights...
@@ -1397,14 +1430,14 @@ class FlaggedRevsHooks {
 			$preferences['flaggedrevseditdiffs'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'flaggedrevs',
+					'section' => 'flaggedrevs/flaggedrevs-ui',
 					'label-message' => 'flaggedrevs-prefs-editdiffs',
 				);
 			// Diff-to-stable on draft view
 			$preferences['flaggedrevsviewdiffs'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'flaggedrevs',
+					'section' => 'flaggedrevs/flaggedrevs-ui',
 					'label-message' => 'flaggedrevs-prefs-viewdiffs',
 				);
 		}
@@ -1422,21 +1455,29 @@ class FlaggedRevsHooks {
 	* @return bool true
 	*/
 	public static function reviewLogLine( $type, $action, $title=null, $params=array(), &$comment, &$rv ) {
+		if( $type != 'review' || !is_object($title) ) {
+			return true; // for review log only
+		}
 		$actionsValid = array('approve','approve2','approve-a','approve2-a','unapprove','unapprove2');
-		# Show link to page with oldid=x
-		if( $type == 'review' && is_object($title) && in_array($action,$actionsValid) && isset($params[0]) ) {
-			global $wgUser;
+		# Show link to page with oldid=x as well as the diff to the former stable rev.
+		# Param format is <rev id, last stable id, rev timestamp>.
+		if( in_array($action,$actionsValid) && isset($params[0]) ) {
+			global $wgUser, $wgLang;
+			$revId = (int)$params[0]; // the reviewed revision
 			# Load required messages
 			wfLoadExtensionMessages( 'FlaggedRevs' );
 			# Don't show diff if param missing or rev IDs are the same
-			if( !empty($params[1]) && $params[0] != $params[1] ) {
+			if( !empty($params[1]) && $revId != $params[1] ) {
 				$rv = '(' . $wgUser->getSkin()->makeKnownLinkObj( $title, wfMsgHtml('review-logentry-diff'), 
-					"oldid={$params[1]}&diff={$params[0]}") . ') ';
+					"oldid={$params[1]}&diff={$revId}") . ') ';
 			} else {
 				$rv = '(' . wfMsgHtml('review-logentry-diff') . ')';
 			}
+			# Show diff from this revision
+			$ts = empty($params[2]) ? Revision::getTimestampFromId($title,$revId) : $params[2];
+			$time = $wgLang->timeanddate( $ts );
 			$rv .= ' (' . $wgUser->getSkin()->makeKnownLinkObj( $title, 
-				wfMsgHtml('review-logentry-id',$params[0]),
+				wfMsgHtml('review-logentry-id',$revId,$time),
 				"oldid={$params[0]}&diff=prev&diffonly=0") . ')';
 		}
 		return true;
@@ -1591,6 +1632,8 @@ class FlaggedRevsHooks {
 	public static function addToHistLine( $history, $row, &$s ) {
 		if( $row->rev_deleted & Revision::DELETED_TEXT )
 			return true; // Don't bother showing notice for deleted revs
+		if( !isset($row->fr_quality) )
+			return true; // Unreviewed
 		# Add link to stable version of *this* rev, if any
 		list($link,$class) = FlaggedRevs::markHistoryRow( $history->getArticle()->getTitle(), $row );
 		# Style the row as needed
@@ -1760,6 +1803,176 @@ class FlaggedRevsHooks {
 		);
 		$join['revision'] = array('INNER JOIN','rev_page = fp_page_id AND rev_id = fp_stable');
 		return false; // final
+	}
+	
+	// Add radio of review "protection" options
+	// Code stolen from Stabilization (which was stolen from ProtectionForm)
+	public static function onProtectionForm( $article, &$output ) {
+		global $wgUser, $wgRequest, $wgOut, $wgLang;
+		if( !count( FlaggedRevs::getProtectionLevels() ) )
+			return true; // nothing to do
+		# Can the user actually do anything?
+		$isAllowed = $wgUser->isAllowed('stablesettings');
+		$disabledAttrib = !$isAllowed ? array( 'disabled' => 'disabled' ) : array();
+		# Get the current config/expiry
+		$config = FlaggedRevs::getPageVisibilitySettings( $article->getTitle(), true );
+		$oldExpiry = $config['expiry'] !== 'infinity' ? 
+			wfTimestamp( TS_RFC2822, $config['expiry'] ) : 'infinite';
+		# Load request params...
+		$selected = $wgRequest->getVal( 'wpStabilityConfig', FlaggedRevs::getProtectionLevel($config) );
+		$expiry = $wgRequest->getText( 'mwStabilize-expiry' );
+		$reviewThis = $wgRequest->getBool( 'wpReviewthis', true );
+		# Add some script for expiry dropdowns
+		$wgOut->addScript(
+			"<script type=\"text/javascript\">
+				function updateStabilizationDropdowns() {
+					val = document.getElementById('mwExpirySelection').value;
+					if( val == 'existing' )
+						document.getElementById('mwStabilize-expiry').value = ".
+						Xml::encodeJsVar($oldExpiry).";
+					else if( val != 'othertime' )
+						document.getElementById('mwStabilize-expiry').value = val;
+				}
+			</script>"
+		);
+		# Add an extra row to the protection fieldset tables
+		$output .= "<tr><td>";
+		$output .= Xml::openElement( 'fieldset' );
+		$output .= Xml::element( 'legend', null, wfMsg('flaggedrevs-protect-legend') );
+		$output .= "<table>";
+		# Add a "no restrictions" level
+		$effectiveLevels = array( "none" => null );
+		$effectiveLevels += FlaggedRevs::getProtectionLevels();
+		# Show all restriction levels as radios...
+		foreach( $effectiveLevels as $level => $x ) {
+			$label = wfMsg( 'flaggedrevs-protect-'.$level );
+			// Default to the key itself if no UI message
+			if( wfEmptyMsg('flaggedrevs-protect-'.$level,$label) ) {
+				$label = 'flaggedrevs-protect-'.$level;
+			}
+			$output .= "<tr><td>" . Xml::radioLabel( $label, 'wpStabilityConfig', $level,
+				'wpStabilityConfig-'.$level, $level == $selected, $disabledAttrib ) . "</td></tr>";
+		}
+		$output .= "</table>";
+		# Get expiry dropdown
+		$scExpiryOptions = wfMsgForContent( 'protect-expiry-options' );
+		$showProtectOptions = ($scExpiryOptions !== '-' && $isAllowed);
+		# Add the current expiry as an option
+		$expiryFormOptions = '';
+		if( $config['expiry'] && $config['expiry'] != 'infinity' ) {
+			$timestamp = $wgLang->timeanddate( $config['expiry'] );
+			$d = $wgLang->date( $config['expiry'] );
+			$t = $wgLang->time( $config['expiry'] );
+			$expiryFormOptions .= 
+				Xml::option( 
+					wfMsg( 'protect-existing-expiry', $timestamp, $d, $t ),
+					'existing',
+					$config['expiry'] == 'existing'
+				) . "\n";
+		}
+		$expiryFormOptions .= Xml::option( wfMsg( 'protect-othertime-op' ), "othertime" ) . "\n";
+		# Add custom levels (from MediaWiki message)
+		foreach( explode(',',$scExpiryOptions) as $option ) {
+			if( strpos($option,":") === false ) {
+				$show = $value = $option;
+			} else {
+				list($show, $value) = explode(":",$option);
+			}
+			$show = htmlspecialchars($show);
+			$value = htmlspecialchars($value);
+			$expiryFormOptions .= Xml::option( $show, $value, $config['expiry'] === $value ) . "\n";
+		}
+		# Add expiry dropdown to form
+		$scExpiryOptions = wfMsgForContent( 'protect-expiry-options' );
+		$showProtectOptions = ($scExpiryOptions !== '-' && $isAllowed);
+		$output .= "<table>"; // expiry table start
+		if( $showProtectOptions && $isAllowed ) {
+			$output .= "
+				<tr>
+					<td class='mw-label'>" .
+						Xml::label( wfMsg('stabilization-expiry'), 'mwExpirySelection' ) .
+					"</td>
+					<td class='mw-input'>" .
+						Xml::tags( 'select',
+							array(
+								'id' => 'mwExpirySelection',
+								'name' => 'wpExpirySelection',
+								'onchange' => 'updateStabilizationDropdowns()',
+							) + $disabledAttrib,
+							$expiryFormOptions ) .
+					"</td>
+				</tr>";
+		}
+		# Add custom expiry field to form
+		$attribs = array( 'id' => "mwStabilize-expiry",
+			'onkeyup' => 'updateStabilizationDropdowns()' ) + $disabledAttrib;
+		$output .= "
+			<tr>
+				<td class='mw-label'>" .
+					Xml::label( wfMsg('stabilization-othertime'), 'mwStabilize-expiry' ) .
+				'</td>
+				<td class="mw-input">' .
+					Xml::input( "mwStabilize-expiry", 50,
+						$expiry ? $expiry : $oldExpiry, $attribs ) .
+				'</td>
+			</tr>';
+		$output .= "</table>"; // expiry table end
+		# Add "review this page" checkbox
+		$reviewLabel = wfMsgExt( 'stabilization-review', array('parseinline') );
+		if( $wgUser->isAllowed('review') ) {
+			$output .= Xml::checkLabel( $reviewLabel, 'wpReviewthis', 'wpReviewthis',
+				$reviewThis, $disabledAttrib );
+		}
+		# Close field set and table row
+		$output .= Xml::closeElement( 'fieldset' );
+		$output .= "</td></tr>";
+		return true;
+	}
+	
+	// Add stability log extract to protection form
+	public static function insertStabilityLog( $article, $out ) {
+		# Show relevant lines from the stability log:
+		$out->addHTML( Xml::element( 'h2', null, LogPage::logName('stable') ) );
+		LogEventsList::showLogExtract( $out, 'stable', $article->getTitle()->getPrefixedText() );
+		return true;
+	}
+	
+	// Update stability config from request
+	public static function onProtectionSave( $article, &$errorMsg ) {
+		global $wgUser, $wgRequest;
+		if( wfReadOnly() || !$wgUser->isAllowed('stablesettings') ) {
+			return true; // user cannot change anything
+		}
+		$form = new Stabilization();
+		$form->target = $article->getTitle(); # Our target page
+		$form->watchThis = null; // protection form already has a watch check
+		$form->reviewThis = $wgRequest->getBool( 'wpReviewthis', true ); # Auto-review option
+		$form->reason = $wgRequest->getText( 'mwProtect-reason' ); # Reason
+		$form->reasonSelection = $wgRequest->getVal( 'wpProtectReasonSelection' );  # Reason dropdown
+		$form->expiry = $wgRequest->getText( 'mwStabilize-expiry' ); # Expiry
+		$form->expirySelection = $wgRequest->getVal( 'wpExpirySelection' ); # Expiry dropdown
+		# Fill in config from the protection level...
+		$selected = $wgRequest->getVal( 'wpStabilityConfig' );
+		$levels = FlaggedRevs::getProtectionLevels();
+		if( $selected == "none" ) {
+			$form->select = FlaggedRevs::getPrecedence(); // default
+			$form->override = FlaggedRevs::showStableByDefault(); // default
+			$form->autoreview = ''; // default
+		} else if( isset($levels[$selected]) ) {
+			$form->select = $levels[$selected]['select'];
+			$form->override = $levels[$selected]['override'];
+			$form->autoreview = $levels[$selected]['autoreview'];
+		} else {
+			return false; // bad level
+		}
+		$form->wasPosted = $wgRequest->wasPosted();
+		if( $form->handleParams() ) {
+			$status = $form->submit();
+			if( $status !== true ) {
+				$errorMsg = wfMsg($status); // some error message
+			}
+		}
+		return true;
 	}
 
 	public static function onParserTestTables( &$tables ) {

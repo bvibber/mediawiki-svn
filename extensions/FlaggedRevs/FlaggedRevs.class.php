@@ -56,6 +56,14 @@ class FlaggedRevs {
 			self::$minPL[$tag] = max($minPL,1);
 			self::$minSL[$tag] = 1;
 		}
+		global $wgFlaggedRevsProtectLevels;
+		foreach( $wgFlaggedRevsProtectLevels as $level => &$config ) {
+			# Sanity checks
+			if( !isset($config['select']) || !isset($config['override']) || !isset($config['autoreview']) ) {
+				throw new MWException( 'FlaggedRevs given incomplete $wgFlaggedRevsProtectLevels value!' );
+			}
+			$config['override'] = intval( $config['override'] ); // Type cleanup
+		}
 		self::$loaded = true;
 	}
 	
@@ -142,6 +150,32 @@ class FlaggedRevs {
 		self::load();
 		return $wgFlaggedRevsLowProfile;
 	}
+	
+	/**
+	 * Get the site defined protection levels for review
+	 * @returns array
+	 */
+	public static function getProtectionLevels() {
+		global $wgFlaggedRevsProtectLevels;
+		self::load();
+		return $wgFlaggedRevsProtectLevels;
+	}
+	
+	/**
+	 * Find what protection level a config is in
+	 * @param array $config
+	 * @returns mixed (array/string)
+	 */
+	public static function getProtectionLevel( $config ) {
+		global $wgFlaggedRevsProtectLevels;
+		self::load();
+		unset( $config['expiry'] );
+		foreach( $wgFlaggedRevsProtectLevels as $level => $settings ) {
+			if( $config == $settings ) return $level;
+		}
+		return "none";
+	}
+
 	/**
 	 * Should comments be allowed on pages and forms?
 	 * @returns bool
@@ -644,7 +678,7 @@ class FlaggedRevs {
 			# Get parsed stable version
 			$anon = new User(); // anon cache most likely to exist
 			$stableOutput = self::getPageCache( $article, $anon );
-			if( $stableOutput == false && $wgUser->getId() )
+			if( $stableOutput === false && $wgUser->getId() )
 				$stableOutput = self::getPageCache( $article, $wgUser );
 			# Regenerate the parser output as needed...
 			if( $stableOutput == false ) {
@@ -655,6 +689,7 @@ class FlaggedRevs {
 	   		}
 		}
 		if( is_null($currentOutput) || !isset($currentOutput->fr_newestTemplateID) ) {
+			global $wgParser;
 			# Get parsed current version
 			$parserCache = ParserCache::singleton();
 			$currentOutput = false;
@@ -663,7 +698,7 @@ class FlaggedRevs {
 			# the current must also be new to avoid sync goofs.
 			if( !isset($text) ) {
 				$currentOutput = $parserCache->get( $article, $anon );
-				if( $currentOutput == false && $wgUser->getId() )
+				if( $currentOutput === false && $wgUser->getId() )
 					$currentOutput = $parserCache->get( $article, $wgUser );
 			}
 			# Regenerate the parser output as needed...
@@ -996,7 +1031,7 @@ class FlaggedRevs {
 	 * @param bool $forUpdate, use master DB?
 	 * @returns Array (select,override)
 	 */
-	public static function getPageVisibilitySettings( &$title, $forUpdate=false ) {
+	public static function getPageVisibilitySettings( $title, $forUpdate=false ) {
 		$db = $forUpdate ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
 		$row = $db->selectRow( 'flaggedpage_config',
 			array( 'fpc_select', 'fpc_override', 'fpc_level', 'fpc_expiry' ),
@@ -1122,26 +1157,21 @@ class FlaggedRevs {
 	 * @returns array (string,string)
 	 */
 	public static function markHistoryRow( $title, $row ) {
-		global $wgUser;
 		if( !isset($row->fr_quality) ) {
 			return array("",""); // not reviewed
 		}
 		$css = FlaggedRevsXML::getQualityColor( $row->fr_quality );
-		if( $row->rev_deleted & Revision::DELETED_USER ) {
-			$link = "";
+		wfLoadExtensionMessages( 'FlaggedRevs' );
+		$user = User::whois( $row->fr_user ); // FIXME: o(N)
+		$flags = explode(',',$row->fr_flags);
+		if( in_array('auto',$flags) ) {
+			$msg = 'hist-autoreviewed';
 		} else {
-			wfLoadExtensionMessages( 'FlaggedRevs' );
-			$user = User::whois( $row->fr_user ); // FIXME: o(N)
-			$flags = explode(',',$row->fr_flags);
-			if( in_array('auto',$flags) ) {
-				$msg = 'hist-autoreviewed';
-			} else {
-				$msg = ($row->fr_quality >= 1) ? 'hist-quality-user' : 'hist-stable-user';
-			}
-			$st = $title->getPrefixedDBkey();
-			$link = "<span class='fr-$msg plainlinks'>[" .
-				wfMsgExt($msg,array('parseinline'),$st,$row->rev_id,$user) . "]</span>";
+			$msg = ($row->fr_quality >= 1) ? 'hist-quality-user' : 'hist-stable-user';
 		}
+		$st = $title->getPrefixedDBkey();
+		$link = "<span class='fr-$msg plainlinks'>[" .
+			wfMsgExt($msg,array('parseinline'),$st,$row->rev_id,$user) . "]</span>";
 		return array($link,$css);
 	}
 
@@ -1208,6 +1238,10 @@ class FlaggedRevs {
 	* $auto is here for revisions checked off to be reviewed. Auto-review
 	* triggers on edit, but we don't want it to count as just automatic.
 	* This also makes it so the user's name shows up in the page history.
+	*
+	* If $flags is given, then they will be the review tags. If not, the one
+	* from the stable version will be used or minimal tags if that's not possible.
+	* If no appropriate tags can be found, then the review will abort.
 	*/
 	public static function autoReviewEdit( $article, $user, $text, $rev, $flags=null, $auto=true ) {
 		global $wgMemc;

@@ -307,6 +307,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'qualityoversight' => 'Qualitéits Iwwersiicht',
+	'qualityoversight-list' => 'Op dëser Säit stinn déi rezenste Säiten déi fräigi goufen an denen hir Markéierung opgehuewe gouf.',
+	'qualityoversight-legend' => 'Am Logbuch vun den nogekuckte Säite sichen',
 );
 
 /** Macedonian (Македонски)
@@ -470,6 +472,13 @@ $messages['sv'] = array(
 	'qualityoversight' => 'Översikt över kvaliteten',
 	'qualityoversight-list' => 'Denna sida listar de senaste godkännandena och avskrivandena av versioner.',
 	'qualityoversight-legend' => 'Sök loggar för senaste granskningar',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'qualityoversight-legend' => 'దగ్గరలోని సమీక్షా లాగులను వెతకండి',
 );
 
 /** Tagalog (Tagalog)

@@ -67,7 +67,7 @@ $messages['an'] = array(
 $messages['ar'] = array(
 	'reviewedpages' => 'صفحات مراجعة',
 	'reviewedpages-leg' => 'اعرض الصفحات حسب أعلى مستوى',
-	'reviewedpages-list' => 'تمت مراجعة {{PLURAL:$1||الصفحة التالية|الصفحتان التاليتان|الصفحات التالية}} حتى المستوى المحدد',
+	'reviewedpages-list' => 'هذه الصفحة تعرض الصفحات التي تمت مراجعتها (على أقصى تقدير) للمستوى المحدد.',
 	'reviewedpages-none' => 'لا توجد صفحات في هذه القائمة',
 	'reviewedpages-lev-0' => 'منظورة',
 	'reviewedpages-lev-1' => 'جودة',
@@ -213,7 +213,7 @@ $messages['cs'] = array(
 $messages['de'] = array(
 	'reviewedpages' => 'Liste der gesichteten Seiten',
 	'reviewedpages-leg' => 'Liste der Seiten mit höchstem Level',
-	'reviewedpages-list' => 'Die {{PLURAL:$1|folgende Seite wurde markiert|folgenden Seiten wurden markiert}} und {{PLURAL:$1|hat|haben}} den angegebenen Status erhalten',
+	'reviewedpages-list' => 'Diese Spezialseite zeigt Seiten, die bisher mit dem angegebenem Level als höchstes markiert wurden.',
 	'reviewedpages-none' => 'Die Liste ist leer.',
 	'reviewedpages-lev-0' => 'Gesichtet',
 	'reviewedpages-lev-1' => 'Geprüft',
@@ -277,9 +277,9 @@ $messages['es'] = array(
 	'reviewedpages-leg' => 'Lista de páginas por nivel más alto',
 	'reviewedpages-list' => 'Esta página lista páginas que han sido revisadas (al más alto) al nivel especificado.',
 	'reviewedpages-none' => 'No hay páginas en esta lista',
-	'reviewedpages-lev-0' => 'Visto',
-	'reviewedpages-lev-1' => 'Calidad',
-	'reviewedpages-lev-2' => 'Destacado',
+	'reviewedpages-lev-0' => '{{int:revreview-lev-sighted}}',
+	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
+	'reviewedpages-lev-2' => '{{int:revreview-lev-pristine}}',
 	'reviewedpages-all' => 'versiones revisadas',
 	'reviewedpages-best' => 'revisión de primera',
 );
@@ -402,7 +402,7 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'reviewedpages' => 'דפים שנבדקו',
 	'reviewedpages-leg' => 'רשימת הדפים שאושרו לפי הרמה הגבוהה ביותר',
-	'reviewedpages-list' => '{{PLURAL:$1|הדף הבא אושר|הדפים הבאים אושרו}} עד לרמה שצוינה',
+	'reviewedpages-list' => 'דף זה מציג את כל הדפים שאושרו (לכל היותר) עד לרמה שצוינה.',
 	'reviewedpages-none' => 'אין דפים ברשימה זו',
 	'reviewedpages-lev-0' => 'נצפה',
 	'reviewedpages-lev-1' => 'איכותי',
@@ -460,19 +460,20 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author KossuthRad
  * @author Samat
  */
 $messages['hu'] = array(
 	'reviewedpages' => 'Ellenőrzött lapok',
-	'reviewedpages-leg' => 'Ellenőrzött lapok listázása',
-	'reviewedpages-list' => 'Az alábbi lapok a megadott szinten vannak ellenőrízve.',
+	'reviewedpages-leg' => 'Lapok listázása a legmagasabb értékelési szintjük alapján',
+	'reviewedpages-list' => 'Az alábbi lapok legmagasabb értékelési szintje a megadott szint.',
 	'reviewedpages-none' => 'Nem található egyetlen lap sem a listában.',
-	'reviewedpages-lev-0' => 'megtekintett',
-	'reviewedpages-lev-1' => 'minőségi',
-	'reviewedpages-lev-2' => 'kiemelt',
-	'reviewedpages-all' => 'Ellenőrzött változatok',
-	'reviewedpages-best' => 'legjobb változat',
+	'reviewedpages-lev-0' => '{{int:revreview-lev-sighted}}',
+	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
+	'reviewedpages-lev-2' => '{{int:revreview-lev-pristine}}',
+	'reviewedpages-all' => 'ellenőrzött változatok',
+	'reviewedpages-best' => 'kiemelkedő változat',
 );
 
 /** Interlingua (Interlingua)
@@ -481,7 +482,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'reviewedpages' => 'Paginas revidite',
 	'reviewedpages-leg' => 'Listar paginas per plus alte nivello',
-	'reviewedpages-list' => 'Le sequente {{PLURAL:$1|pagina|paginas}} ha essite revidite al nivello specificate',
+	'reviewedpages-list' => 'Iste pagina lista paginas que ha essite revidite (al maximo) al nivello specificate.',
 	'reviewedpages-none' => 'Il non ha paginas in iste lista',
 	'reviewedpages-lev-0' => 'Mirate',
 	'reviewedpages-lev-1' => 'Qualitate',
@@ -710,11 +711,12 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'reviewedpages' => 'Laman diperiksa',
-	'reviewedpages-leg' => 'Senarai laman yang telah diperiksa pada suatu aras tertentu',
-	'reviewedpages-list' => 'Yang berikut ialah senarai laman yang telah diperiksa pada aras yang dinyatakan',
+	'reviewedpages-leg' => 'Senaraikan halaman mengikut tahap tertinggi',
+	'reviewedpages-list' => 'Halaman ini menyenaraikan halaman yang telah disemak (yang tertinggi) kepada tahap yang dinyatakan.',
 	'reviewedpages-none' => 'Tiada laman dalam senarai ini',
 	'reviewedpages-lev-0' => 'Dijenguk',
 	'reviewedpages-lev-1' => 'Bermutu',
@@ -914,8 +916,8 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'reviewedpages' => 'Ырытыллыбыт сирэйдэр',
-	'reviewedpages-leg' => 'Ханнык эмит сыананы ылбыт сирэйдэр испииһэктэрэ',
-	'reviewedpages-list' => 'Бу сирэйдэр сөптөөх сыананы ылбыттар',
+	'reviewedpages-leg' => 'Сирэйдэр тиһиктэрэ, сыанабыл таһымынан',
+	'reviewedpages-list' => 'Бу сирэйгэ этиллибит таһымынан сыаналаммыт сирэйдэр көрдөрүлүннүлэр.',
 	'reviewedpages-none' => 'Испииһэк кураанах',
 	'reviewedpages-lev-0' => 'Көрүллүбүт',
 	'reviewedpages-lev-1' => 'Бэрэбиэркэлэммит',
@@ -1025,7 +1027,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'reviewedpages' => 'సమీక్షించిన పేజీలు',
 	'reviewedpages-leg' => 'అత్యధిక స్థాయి వరకు పేజీలను చూపించు, స్థాయిని బట్టి',
-	'reviewedpages-list' => 'ఈ క్రింద పేర్కొన్న {{PLURAL:$1|పేజీ|పేజీలు}} మీరడిగిన స్థాయివరకు సమీక్షించబడినవి',
+	'reviewedpages-list' => 'ఈ క్రింద పేర్కొన్న {{PLURAL:$1|పేజీ|పేజీలు}} మీరడిగిన స్థాయివరకు ఎక్కువగా సమీక్షించబడినవి',
 	'reviewedpages-none' => 'ఈ జాబితాలో పేజీలు లేవు.',
 	'reviewedpages-lev-0' => 'కనబడింది',
 	'reviewedpages-lev-1' => 'నాణ్యత',
@@ -1101,7 +1103,7 @@ $messages['uk'] = array(
 $messages['vec'] = array(
 	'reviewedpages' => 'Pagine riesaminà',
 	'reviewedpages-leg' => 'Elenco de le pagine dal livèl pi alto',
-	'reviewedpages-list' => '{{PLURAL:$1|La pagina seguente la|Le pagine seguenti le}} xe stà riesaminà fin al livèl indicà',
+	'reviewedpages-list' => 'Sta pagina la elenca le pagine che xe stà riesaminà al massimo fin al livèl indicà.',
 	'reviewedpages-none' => 'No ghe xe nissuna pagina su sta lista',
 	'reviewedpages-lev-0' => 'Rivardà',
 	'reviewedpages-lev-1' => 'De qualità',
@@ -1132,7 +1134,7 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'reviewedpages' => 'Các trang đã duyệt',
 	'reviewedpages-leg' => 'Liệt kê các trang theo cấp độ cao nhất',
-	'reviewedpages-list' => '{{PLURAL:$1|Trang|Các trang}} sau đã được duyệt thành cấp độ chỉ định',
+	'reviewedpages-list' => '{{PLURAL:$1|Trang|Các trang}} sau đã được duyệt thành cấp độ chỉ định.',
 	'reviewedpages-none' => 'Danh sách này không có trang nào',
 	'reviewedpages-lev-0' => 'Đã xem qua',
 	'reviewedpages-lev-1' => 'Chất lượng',

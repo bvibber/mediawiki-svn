@@ -143,6 +143,15 @@ $wgFlagAvailability = array(
 # 0 => sighted; 1 => quality; 2 => pristine
 $wgFlaggedRevsPatrolLevel = 0;
 
+# Stability levels, defined below, that appear in protection form
+$wgFlaggedRevsProtectLevels = array();
+/* (example usage)
+$wgFlaggedRevsProtectLevels = array(
+	'semi-review' => array('select' => FLAGGED_VIS_LATEST, 'override' => true, 'autoreview' => ''),
+	'intm-review' => array('select' => FLAGGED_VIS_LATEST, 'override' => true, 'autoreview' => 'review'),
+);
+*/
+
 # Restriction levels for auto-review right at Stabilization page
 $wgFlaggedRevsRestrictionLevels = array( '', 'sysop' );
 
@@ -233,6 +242,8 @@ $wgRemoveGroups['bureaucrat'][] = 'reviewer';
 
 # Show reviews in recentchanges? Disabled by default, often spammy...
 $wgFlaggedRevsLogInRC = false;
+# Show automatic promotions to Editor in RC? Disabled by default, often spammy...
+$wgFlaggedRevsAutopromoteInRC = false;
 
 # How far the logs for overseeing quality revisions and depreciations go
 $wgFlaggedRevsOversightAge = 30 * 24 * 3600;
@@ -243,6 +254,7 @@ $wgFlaggedRevsVisible = array();
 # If $wgFlaggedRevsVisible is populated, it is applied to talk pages too
 $wgFlaggedRevsTalkVisible = true;
 
+# How long before Special:ValidationStatistics is updated
 $wgFlaggedRevsStatsAge = 2 * 3600; // 2 hours
 
 # We may have templates that do not have stable version. Given situational
@@ -415,6 +427,10 @@ $wgHooks['SkinTemplateNavigation'][] = 'FlaggedRevsHooks::setNavigation';
 $wgHooks['EditPage::showEditForm:initial'][] = 'FlaggedRevsHooks::addToEditView';
 # Add review form and visiblity settings link
 $wgHooks['SkinAfterContent'][] = 'FlaggedRevsHooks::onSkinAfterContent';
+# Add protection form field
+$wgHooks['ProtectionForm::buildForm'][] = 'FlaggedRevsHooks::onProtectionForm';
+$wgHooks['ProtectionForm::showLogExtract'][] = 'FlaggedRevsHooks::insertStabilityLog';
+$wgHooks['ProtectionForm::save'][] = 'FlaggedRevsHooks::onProtectionSave';
 # Mark items in page history
 $wgHooks['PageHistoryPager::getQueryInfo'][] = 'FlaggedRevsHooks::addToHistQuery';
 $wgHooks['PageHistoryLineEnding'][] = 'FlaggedRevsHooks::addToHistLine';
@@ -447,7 +463,7 @@ $wgHooks['ArticleSaveComplete'][] = 'FlaggedRevsHooks::maybeNullEditReview';
 $wgHooks['BeforePageDisplay'][] = 'FlaggedRevsHooks::injectStyleAndJS';
 $wgHooks['MakeGlobalVariablesScript'][] = 'FlaggedRevsHooks::injectGlobalJSVars';
 
-# Cache updates
+# Extra cache updates for stable versions
 $wgHooks['HTMLCacheUpdate::doUpdate'][] = 'FlaggedRevsHooks::doCacheUpdate';
 
 # Duplicate flagged* tables in parserTests.php
@@ -494,11 +510,12 @@ function efLoadFlaggedRevs() {
  * Also sets $wgSpecialPages just to be consistent.
  */
 function efLoadFlaggedRevsSpecialPages( &$list ) {
-	global $wgSpecialPages, $wgFlaggedRevsNamespaces, $wgFlaggedRevsOverride;
+	global $wgSpecialPages, $wgFlaggedRevsNamespaces, $wgFlaggedRevsOverride, $wgFlaggedRevsProtectLevels;
 	if( !empty($wgFlaggedRevsNamespaces) ) {
 		$list['RevisionReview'] = $wgSpecialPages['RevisionReview'] = 'RevisionReview';
 		$list['StableVersions'] = $wgSpecialPages['StableVersions'] = 'StableVersions';
-		$list['Stabilization'] = $wgSpecialPages['Stabilization'] = 'Stabilization';
+		if( empty($wgFlaggedRevsProtectLevels) )
+			$list['Stabilization'] = $wgSpecialPages['Stabilization'] = 'Stabilization';
 		$list['UnreviewedPages'] = $wgSpecialPages['UnreviewedPages'] = 'UnreviewedPages';
 		$list['OldReviewedPages'] = $wgSpecialPages['OldReviewedPages'] = 'OldReviewedPages';
 		$list['ProblemChanges'] = $wgSpecialPages['ProblemChanges'] = 'ProblemChanges';

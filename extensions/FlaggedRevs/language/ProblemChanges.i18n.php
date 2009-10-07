@@ -227,10 +227,11 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
-	'problemchanges' => 'Felcímkézett változtatások áttekintése',
+	'problemchanges' => 'Felcímkézett változtatások ellenőrzése',
 	'problemchanges-legend' => 'Ellenőrizetlen felcímkézett változtatásokat tartalmazó ellenőrzött lapok listája',
 	'problemchanges-none' => 'Jelenleg nincs a a feltételeknek megfelelő lap',
 	'problemchanges-category' => 'Kategória:',
@@ -377,6 +378,13 @@ $messages['pms'] = array(
 	'problemchanges-category' => 'Categorìa:',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'problemchanges-category' => 'وېشنيزه:',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Malafaya
@@ -426,6 +434,13 @@ $messages['ru'] = array(
 	'problemchanges-category' => 'Категория:',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'problemchanges-category' => 'Категория:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -469,6 +484,13 @@ $messages['tr'] = array(
 	'problemchanges-category' => 'Kategori:',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'problemchanges-category' => 'Categoria:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
@@ -483,6 +505,9 @@ $messages['vep'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'problemchanges' => 'Duyệt các thay đổi được đánh dấu',
+	'problemchanges-legend' => 'Liệt kê các trang được duyệt có sửa đổi cần được duyệt',
+	'problemchanges-none' => 'Hiện không có trang nào hợp tiêu chuẩn này.',
 	'problemchanges-category' => 'Thể loại:',
 );
 

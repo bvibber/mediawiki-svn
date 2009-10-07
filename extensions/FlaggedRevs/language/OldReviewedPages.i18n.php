@@ -362,6 +362,9 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'oldreviewedpages' => 'Μη ενημερωμένες επιθεωρημένες σελίδες',
+	'oldreviewedpages-legend' => 'Δημιουργία λίστας σελίδων με αναθεωρήσεις για τις οποίες εκκρεμεί επιθεώρηση',
+	'oldreviewedpages-list' => 'Αυτή η σελίδα περιλαμβάνει {{PLURAL:$1|μία επιθεωρημένη σελίδα για την οποίαν|επιθεωρημένες σελίδες για τις οποίες}} εκκρεμούν επεξεργασίες.',
+	'oldreviewedpages-none' => 'Προς το παρόν δεν υπάρχουν σελίδες που να πληρούν αυτά τα κριτήρια.',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ώρα|ώρες}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|ημέρα|ημέρες}})',
 	'oldreviewedpages-recent' => '(λιγότερο από 1 ώρα)',
@@ -663,15 +666,15 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'oldreviewedpages' => 'Elavult ellenőrzött lapok',
-	'oldreviewedpages-legend' => 'Ellenőrizetlen változatokkal rendelkező lapok listája',
-	'oldreviewedpages-list' => 'Ezen a lapon azon ellenőrzött lapok listája látható, melyek ellenőrizetlen szerkesztésekkel rendelkeznek.',
+	'oldreviewedpages-legend' => 'Ellenőrizetlen változatokkal rendelkező ellenőrzött lapok listája',
+	'oldreviewedpages-list' => 'Az alábbi lista az ellenőrizetlen szerkesztésekkel rendelkező {{PLURAL:$1|lapot|lapokat}} tartalmazza',
 	'oldreviewedpages-none' => 'Jelenleg nincs a feltételeknek megfelelő lap.',
 	'oldreviewedpages-hours' => '({{PLURAL:$1|Egy|$1}} órája)',
 	'oldreviewedpages-days' => '({{PLURAL:$1|Egy|$1}} napja)',
 	'oldreviewedpages-recent' => '(kevesebb, mint egy órája)',
 	'oldreviewed-category' => 'Kategória:',
 	'oldreviewed-watched' => 'A figyelőlistámon',
-	'oldreviewed-stable' => 'Jelölt lapváltozat',
+	'oldreviewed-stable' => 'Stabil változat',
 	'oldreviewed-diff' => 'ellenőriz',
 	'oldreviewed-size' => 'Változás legfeljebb (bájtban):',
 	'oldreviewedpages-unwatched' => '(nem figyelt)',
@@ -721,6 +724,17 @@ $messages['id'] = array(
 	'oldreviewedpages-unwatched' => '(tidak dipantau)',
 	'oldreviewedpages-watched' => '(dipantau $2 {{PLURAL:$1|pengguna|pengguna}} aktif)',
 	'oldreviewedpages-viewing' => '(sedang ditinjau)',
+);
+
+/** Icelandic (Íslenska)
+ * @author Spacebirdy
+ */
+$messages['is'] = array(
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|klukkustund|klukkustundir}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dagur|dagar}})',
+	'oldreviewed-category' => 'Flokkur:',
+	'oldreviewed-diff' => 'endurskóða',
+	'oldreviewedpages-unwatched' => '(án eftirlits)',
 );
 
 /** Italian (Italiano)
@@ -828,12 +842,13 @@ $messages['ksh'] = array(
 	'oldreviewedpages-viewing' => '(weed nohjekik)',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
+ * @author Kernoweger
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dydh|dydh}})',
-	'oldreviewed-category' => 'Klass:',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dedh|dedh}})',
+	'oldreviewed-category' => 'Class:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -872,6 +887,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -882,7 +898,7 @@ $messages['ml'] = array(
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|ദിവസം|ദിവസങ്ങള്‍}})',
 	'oldreviewedpages-recent' => '(1 മണിക്കൂറില്‍ താഴെ)',
 	'oldreviewedpages-unwatched' => '(ശ്രദ്ധിക്കുന്നില്ല)',
-	'oldreviewedpages-watched' => '($2 {{PLURAL:$1|ഉപയോക്താവ്|ഉപയോക്താക്കള്‍}} ശ്രദ്ധിക്കുന്നു)',
+	'oldreviewedpages-watched' => '($2 സജീവ {{PLURAL:$1|ഉപയോക്താവ്|ഉപയോക്താക്കള്‍}} ശ്രദ്ധിക്കുന്നു)',
 );
 
 /** Marathi (मराठी)
@@ -904,6 +920,7 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'oldreviewedpages' => 'Laman diperiksa lapuk',
@@ -914,9 +931,13 @@ $messages['ms'] = array(
 	'oldreviewedpages-days' => '($1 hari)',
 	'oldreviewedpages-recent' => '(kurang dari sejam)',
 	'oldreviewed-category' => 'Kategori:',
+	'oldreviewed-watched' => 'Pada senarai pantau saya',
+	'oldreviewed-stable' => 'Distabilkan',
 	'oldreviewed-diff' => 'periksa',
+	'oldreviewed-size' => 'Perubahan maks. (bait):',
 	'oldreviewedpages-unwatched' => '(tidak dipantau)',
-	'oldreviewedpages-watched' => '(dipantau oleh $2 orang pengguna)',
+	'oldreviewedpages-watched' => '(dipantau {{PLURAL:$1|seorang|$2 orang}} pengguna aktif)',
+	'oldreviewedpages-viewing' => '(dalam semakan)',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -1059,10 +1080,32 @@ $messages['pl'] = array(
 	'oldreviewedpages-viewing' => '(w trakcie przeglądania)',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'oldreviewedpages' => 'Pàgine revisionà da temp',
+	'oldreviewedpages-legend' => 'Lista le pàgine revisionà con vërsion pendente dle revision',
+	'oldreviewedpages-list' => 'Sta pàgina-sì a lista {{PLURAL:$1|na pàgina revisionà|le pàgine revisionà}} con modìfiche pendente.',
+	'oldreviewedpages-none' => 'Al moment a-i son pa gnun-e pàgine con sti criteri-sì',
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ora|ore}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|di|di}})',
+	'oldreviewedpages-recent' => '(men che 1 ora)',
+	'oldreviewed-category' => 'Categorìa:',
+	'oldreviewed-watched' => "An s'lòn ch'im ten d'euj",
+	'oldreviewed-stable' => 'Stabilisà',
+	'oldreviewed-diff' => 'revision-a',
+	'oldreviewed-size' => 'Màssim cambi (byte):',
+	'oldreviewedpages-unwatched' => '(pa tnùa sot euj)',
+	'oldreviewedpages-watched' => "($2 {{PLURAL:$1|utent|utent}} ativ ch'a ten-o sot euj)",
+	'oldreviewedpages-viewing' => '(sota revision)',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|ورځ|ورځې}})',
 	'oldreviewed-category' => 'وېشنيزه:',
 );
 
@@ -1175,6 +1218,18 @@ $messages['ru'] = array(
 	'oldreviewedpages-unwatched' => '(не следят)',
 	'oldreviewedpages-watched' => '({{PLURAL:$1|следит $2 активный участник|следят $2 активных участника|следят $2 активных участников}})',
 	'oldreviewedpages-viewing' => '(проверяются)',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'oldreviewedpages-hours' => '($1 чаас)',
+	'oldreviewedpages-days' => '($1 хонук)',
+	'oldreviewedpages-recent' => '(1 чаастан кылгас)',
+	'oldreviewed-category' => 'Категория:',
+	'oldreviewed-watched' => 'Мин кэтиир сирэйдэрбиттэн',
+	'oldreviewedpages-unwatched' => '(кэтээбэттэр)',
 );
 
 /** Slovak (Slovenčina)
@@ -1300,6 +1355,7 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  * @author Joseph
+ * @author Karduelis
  * @author Runningfridgesrule
  */
 $messages['tr'] = array(
@@ -1314,7 +1370,7 @@ $messages['tr'] = array(
 	'oldreviewed-watched' => 'İzleme listemde',
 	'oldreviewed-stable' => 'Kararlılaştırıldı',
 	'oldreviewed-diff' => 'gözden geçir',
-	'oldreviewed-size' => 'Max değişiklik (byte):',
+	'oldreviewed-size' => 'Azami değişiklik (bayt):',
 	'oldreviewedpages-unwatched' => '(izlenmiyor)',
 	'oldreviewedpages-watched' => '($2 etkin {{PLURAL:$1|kullanıcı|kullanıcı}} izliyor)',
 	'oldreviewedpages-viewing' => '(gözden geçiriliyor)',
