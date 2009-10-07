@@ -39,7 +39,7 @@ $messages = array(
 'tog-numberheadings'      => 'Cur earrooyn gyn smooinaght er kione-linnaghyn',
 'tog-showtoolbar'         => 'Taishbyney barr greieyn (ta feme ec er JavaScript)',
 'tog-editondblclick'      => 'Reaghey duillagyn lesh crig dooblit (ta feme ec er JavaScript)',
-'tog-rememberpassword'    => "Cooinnee m'ockle arrey",
+'tog-rememberpassword'    => "Cooinnee m'ockle arrey er y cho-earrooder shoh",
 'tog-watchcreations'      => 'Cur duillagyn ta crooit aym lesh my rolley arrey',
 'tog-watchdefault'        => 'Cur duillagyn ta reaghit aym lesh my rolley arrey',
 'tog-watchmoves'          => 'Cur duillagyn ta scughit aym lesh my rolley arrey',
@@ -313,10 +313,10 @@ Ny jean jarrood dty [[Special:Preferences|{{SITENAME}} hosheeaghtyn]] y arraghey
 'logout'                     => 'Log magh',
 'userlogout'                 => 'Log magh',
 'notloggedin'                => 'Cha nel ou loggit stiagh',
-'nologin'                    => 'Nagh vel log stiagh ayd? $1.',
+'nologin'                    => "Nagh vel log stiagh ayd? '''$1'''.",
 'nologinlink'                => 'Croo coontys',
 'createaccount'              => 'Croo coontys',
-'gotaccount'                 => 'Vel coontys ayd hannah? $1.',
+'gotaccount'                 => "Vel coontys ayd hannah? '''$1'''.",
 'gotaccountlink'             => 'Log stiagh',
 'createaccountmail'          => 'er post-L',
 'loginerror'                 => 'Marranys log stiagh',
@@ -509,7 +509,7 @@ Foddee oo [[:\$1|croo yn duillag shoh]].",
 'notitlematches'            => 'Cha nel shen ennym ghuillag erbee',
 'prevn'                     => '{{PLURAL:$1|$1}} roish shoh',
 'nextn'                     => 'nah {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'Jeeagh er ($1) ($2) ($3)',
+'viewprevnext'              => 'Jeeagh er ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'            => 'Help:Cummal',
 'searchprofile-project'     => 'Duillagyn Coonee as Shalee',
 'search-result-size'        => "$1 ({{PLURAL:$2|1 fockle|$2 'ockle|$2ockle|$2 focklyn}})",
@@ -664,10 +664,9 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'filesource'        => 'Bun:',
 'uploadedfiles'     => 'Coadanyn ta laadit neese',
 'badfilename'       => 'T\'ennym y choadan aa-enmyssit myr "$1".',
-'fileexists-thumb'  => "<center>'''Coadan roie'''</center>",
 'savefile'          => 'Sauail y coadan',
 'uploadedimage'     => '"[[$1]]" laadit neese',
-'uploadvirus'       => "Ta veerys 'sy coadan! Mynphoyntyn: $1",
+'uploadvirus'       => "Ta veerys 'sy choadan! Mynphoyntyn: $1",
 'watchthisupload'   => 'Freill arrey er y choadan shoh',
 
 'upload-file-error' => 'Marranys ynveanagh',
@@ -743,7 +742,7 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 
 # Statistics
 'statistics'              => 'Staydraa',
-'statistics-header-users' => 'Staydraa yn ymmydeyr',
+'statistics-header-users' => 'Staydraa ymmydeyr',
 'statistics-pages'        => 'Duillagyn',
 
 'disambiguations' => 'Duillagyn reddaghyn',
@@ -758,7 +757,7 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'withoutinterwiki-legend' => 'Roie-ockle',
 'withoutinterwiki-submit' => 'Taishbyney',
 
-'fewestrevisions' => 'Duillagyn lesh y chooid by loo jeh dy chooilley arraghey',
+'fewestrevisions' => 'Duillagyn lesh ny caghlaaghyn sloo',
 
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|byte|vyte|byte|byteyn}}',
@@ -883,10 +882,10 @@ Bee caghlaaghyn jeant er y duillag shoh as e ghuillag resoonaght ry-akin ayns y 
 'changed'                      => 'ceaghlit',
 'created'                      => 'crooit',
 'enotif_anon_editor'           => 'ymmydeyr $1 neuenmyssit',
-'enotif_body'                  => 'Y charrey,
+'enotif_body'                  => '$WATCHINGUSERNAME veen,
 
 
-Va\'n duilag $PAGETITLE er {{SITENAME}} $CHANGEDORCREATED er $PAGEEDITDATEANDTIME liorish $PAGEEDITOR, jeeagh er $PAGETITLE_URL dys y lhieggan roie dy akin.
+Va\'n duillag $PAGETITLE er {{SITENAME}} $CHANGEDORCREATED er $PAGEEDITDATE liorish $PAGEEDITOR, jeeagh er $PAGETITLE_URL son y lhieggan roie dy akin.
 
 $NEWPAGE
 
@@ -896,7 +895,7 @@ Cur fys er y reagheyder:
 post: $PAGEEDITOR_EMAIL
 wiki: $PAGEEDITOR_WIKI
 
-Cha bee fograghyn elley ayns cah caghlaaghyn elley agh ynrican my vel shiu er jeet dys y duillag shen.
+Cha bee fograghyn elley er caghlaaghyn elley agh my vel shiu er jeet dys y duillag shen ynrican.
 Foddee shiu aajeshaghey bratteeyn ny fograghyn ry hoi dagh duillag er dty rolley arrey.
 
              Dty chorys fograghyn caarjoil ec {{SITENAME}}
@@ -937,7 +936,7 @@ Jeeagh er $2 son recortys ny scryssaghyn magh jeianagh.',
 'editcomment'    => "V'eh \"''\$1''\" giare-choontys y reaghey.",
 
 # Protect
-'protectlogpage'              => 'Lioar coadee',
+'protectlogpage'              => 'Lioar choadee',
 'protectedarticle'            => '"[[$1]]" glast',
 'prot_1movedto2'              => '[[$1]] aa-enmyssit myr [[$2]]',
 'protectcomment'              => 'Fa:',
@@ -994,11 +993,11 @@ Shoh ny reaghaghyn roie da'n duillag '''$1''':",
 
 'sp-contributions-newbies'     => 'Taishbyney cohortyssyn liorish coontyssyn noa ynrican',
 'sp-contributions-newbies-sub' => 'Lesh coontyssyn noa',
-'sp-contributions-blocklog'    => 'Lioar chooishyn lhiettrimyssyn',
+'sp-contributions-blocklog'    => 'Lioar chooishyn ghlassaghyn magh',
 'sp-contributions-talk'        => 'resoonaght',
 'sp-contributions-userrights'  => 'Reireydys kiartyn ymmydeyr',
 'sp-contributions-search'      => 'Ronsaghey cohortyssyn',
-'sp-contributions-username'    => 'Enmys IP ny ennym yn ymmydeyr:',
+'sp-contributions-username'    => 'Enmys IP ny ennym ymmydeyr:',
 'sp-contributions-submit'      => 'Ronsaghey',
 
 # What links here
@@ -1018,10 +1017,10 @@ Shoh ny reaghaghyn roie da'n duillag '''$1''':",
 'whatlinkshere-filters'    => 'Shollaneyn',
 
 # Block/unblock
-'blockip'                  => 'Ymmydeyr y ghlassey magh',
-'blockip-legend'           => 'Ymmydeyr y ghlassey magh',
-'ipaddress'                => 'Enmys IP / ennym yn ymmydeyr',
-'ipadressorusername'       => 'Enmys IP ny ennym yn ymmydeyr:',
+'blockip'                  => 'Glass magh yn ymmydeyr',
+'blockip-legend'           => 'Glass magh yn ymmydeyr',
+'ipaddress'                => 'Enmys IP / ennym ymmydeyr',
+'ipadressorusername'       => 'Enmys IP ny ennym ymmydeyr:',
 'ipbexpiry'                => 'Jerrey:',
 'ipbreason'                => 'Fa:',
 'ipbreasonotherlist'       => 'Fa elley',
@@ -1035,16 +1034,16 @@ Shoh ny reaghaghyn roie da'n duillag '''$1''':",
 * Oyr elley
 ** Ennym ymmydeyryn neuchooie
 ** Feyshtyn eddyr-wiki',
-'ipbanononly'              => 'Ymmydeyryn neuenmyssit y ghlassey magh',
+'ipbanononly'              => 'Glass magh ymmydeyryn neuenmyssit',
 'ipbcreateaccount'         => 'Crooaght coontys y chumrail',
-'ipbsubmit'                => 'Yn ymmydeyr shoh y ghlassey magh',
+'ipbsubmit'                => 'Glass magh yn ymmydeyr shoh',
 'ipbother'                 => 'Mooad elley am:',
 'ipboptions'               => '2 oor:2 hours,1 laa:1 day,3 laaghyn:3 days,1 hiaghtin:1 week,2 hiaghtin:2 weeks,1 vee:1 month,3 meeghyn:3 months,6 meeghyn:6 months,1 vlein:1 year,neuyerrinagh:infinite',
 'ipbotheroption'           => 'elley',
 'ipbotherreason'           => 'Fa elley/tooilley:',
 'badipaddress'             => 'Enmys IP gyn vree',
 'ipblocklist'              => 'Rolley enmyssyn IP as enmyn ymmydeyr fo ghlass',
-'ipblocklist-username'     => 'Ennym yn ymmydeyr ny enmys IP:',
+'ipblocklist-username'     => 'Ennym ymmydeyr ny enmys IP:',
 'ipblocklist-submit'       => 'Ronsaghey',
 'infiniteblock'            => 'neuyerrinagh',
 'createaccountblock'       => 'crooaght coontys glasst',
@@ -1052,7 +1051,7 @@ Shoh ny reaghaghyn roie da'n duillag '''$1''':",
 'unblocklink'              => 'foshley',
 'change-blocklink'         => 'caghlaa glass',
 'contribslink'             => 'cohortyssyn',
-'blocklogpage'             => 'Cur lhiettrimys er lioar chooishyn',
+'blocklogpage'             => 'Lioar chooishyn ghlassaghyn magh',
 'block-log-flags-anononly' => 'ymmydeyryn neuenmyssit ynrican',
 'proxyblocksuccess'        => 'Jeant.',
 

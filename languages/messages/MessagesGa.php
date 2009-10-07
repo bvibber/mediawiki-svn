@@ -463,10 +463,10 @@ Cruthaíodh do chuntas. Ná déan dearmad athrú a dhéanamh ar do chuid [[Speci
 'logout'                     => 'Logáil amach',
 'userlogout'                 => 'Logáil amach',
 'notloggedin'                => 'Níl tú logáilte isteach',
-'nologin'                    => 'Nach bhfuil logáil isteach agat? $1.',
+'nologin'                    => "Nach bhfuil logáil isteach agat? '''$1'''.",
 'nologinlink'                => 'Cruthaigh cuntas',
 'createaccount'              => 'Cruthaigh cuntas nua',
-'gotaccount'                 => 'An bhfuil cuntas agat cheana féin? $1.',
+'gotaccount'                 => "An bhfuil cuntas agat cheana féin? '''$1'''.",
 'gotaccountlink'             => 'Logáil isteach',
 'createaccountmail'          => 'le ríomhphost',
 'badretype'                  => "D'iontráil tú dhá fhocal faire difriúla.",
@@ -749,7 +749,7 @@ Treoir: (rth) = difríocht ón leagan reatha, (rmh) = difríocht ón leagan roim
 'notextmatches'                  => 'Ní bhfuarthas an téacs ar leathanach ar bith',
 'prevn'                          => 'na {{PLURAL:$1|$1}} cinn roimhe seo',
 'nextn'                          => 'an {{PLURAL:$1|$1}} i ndiadh',
-'viewprevnext'                   => 'Taispeáin ($1) ($2) ($3).',
+'viewprevnext'                   => 'Taispeáin ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'              => 'Sainroghanna cuardaithe',
 'searchmenu-new'                 => "'''Cruthaigh an leathanach \"[[:\$1]]\" ar an vicí seo!'''",
 'searchhelp-url'                 => 'Help:Clár_ábhair',
@@ -1272,7 +1272,7 @@ taobh istigh den tréimhse atá roghnaithe agat.',
 'enotif_anon_editor'           => 'úsáideoir gan ainm $1',
 'enotif_body'                  => 'A $WATCHINGUSERNAME, a chara,
 
-$CHANGEDORCREATED $PAGEEDITOR an leathanach $PAGETITLE  ag {{SITENAME}} ar $PAGEEDITDATEANDTIME, féach ar $PAGETITLE_URL chun an leagan reatha a fháil.
+$CHANGEDORCREATED $PAGEEDITOR an leathanach $PAGETITLE  ag {{SITENAME}} ar $PAGEEDITDATE, féach ar $PAGETITLE_URL chun an leagan reatha a fháil.
 
 $NEWPAGE
 

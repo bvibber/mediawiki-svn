@@ -38,7 +38,7 @@ class MostlinkedPage extends QueryPage {
 			FROM $pagelinks
 			LEFT JOIN $page ON pl_namespace=page_namespace AND pl_title=page_title
 			GROUP BY pl_namespace, pl_title
-			HAVING COUNT(*) > $cutoff";
+			HAVING COUNT(*) > 1";
 	}
 
 	/**

@@ -84,6 +84,8 @@ class ImagePage extends Article {
 
 		if( $this->mTitle->getNamespace() != NS_FILE || ( isset( $diff ) && $diffOnly ) )
 			return Article::view();
+			
+		$this->showRedirectedFromHeader();
 
 		if( $wgShowEXIF && $this->displayImg->exists() ) {
 			// FIXME: bad interface, see note on MediaHandler::formatMetadata().
@@ -441,7 +443,7 @@ class ImagePage extends Article {
 					$icon= $this->displayImg->iconThumb();
 
 					$wgOut->addHTML( '<div class="fullImageLink" id="file">' .
-					$icon->toHtml( array( 'desc-link' => true ) ) .
+					$icon->toHtml( array( 'file-link' => true ) ) .
 					"</div>\n" );
 				}
 
@@ -723,7 +725,7 @@ EOT
 		global $wgUploadMaintenance;
 		if( $wgUploadMaintenance && $this->mTitle && $this->mTitle->getNamespace() == NS_FILE ) {
 			global $wgOut;
-			$wgOut->addWikiText('Deletion and restoration of images temporarily disabled during maintenance.' );
+			$wgOut->wrapWikiMsg( "<div class='error'>\n$1</div>\n", array( 'filedelete-maintenance' ) );
 			return;
 		}
 
@@ -796,7 +798,7 @@ class ImageHistoryList {
 		$this->img = $imagePage->getDisplayedFile();
 		$this->title = $imagePage->getTitle();
 		$this->imagePage = $imagePage;
-		$this->showThumb = $wgShowArchiveThumbnails;
+		$this->showThumb = $wgShowArchiveThumbnails && $this->img->canRender();
 	}
 
 	public function getImagePage() {
@@ -819,7 +821,7 @@ class ImageHistoryList {
 			. $navLinks . "\n"
 			. Xml::openElement( 'table', array( 'class' => 'wikitable filehistory' ) ) . "\n"
 			. '<tr><td></td>'
-			. ( $this->current->isLocal() && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deleterevision') ) ? '<td></td>' : '' )
+			. ( $this->current->isLocal() && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deletedhistory') ) ? '<td></td>' : '' )
 			. '<th>' . wfMsgHtml( 'filehist-datetime' ) . '</th>'
 			. ( $this->showThumb ? '<th>' . wfMsgHtml( 'filehist-thumb' ) . '</th>' : '' )
 			. '<th>' . wfMsgHtml( 'filehist-dimensions' ) . '</th>'
@@ -845,7 +847,7 @@ class ImageHistoryList {
 		$row = $css = $selected = '';
 
 		// Deletion link
-		if( $local && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deleterevision') ) ) {
+		if( $local && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deletedhistory') ) ) {
 			$row .= '<td>';
 			# Link to remove from history
 			if( $wgUser->isAllowed( 'delete' ) ) {
@@ -858,18 +860,19 @@ class ImageHistoryList {
 					array(), $q, array( 'known' )
 				);
 			}
-			# Link to hide content
-			if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			# Link to hide content. Don't show useless link to people who cannot hide revisions.
+			if( $wgUser->isAllowed('deleterevision') || ($wgUser->isAllowed('deletedhistory') && $file->getVisibility()) ) {
 				if( $wgUser->isAllowed('delete') ) {
 					$row .= '<br/>';
 				}
-				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 				// If file is top revision or locked from this user, don't link
 				if( $iscur || !$file->userCan(File::DELETED_RESTRICTED) ) {
 					$del = wfMsgHtml( 'rev-delundel' );
 				} else {
 					list( $ts, $name ) = explode( '!', $img, 2 );
-					$del = $this->skin->link( $revdel, wfMsgHtml( 'rev-delundel' ),
+					$del = $this->skin->link(
+						SpecialPage::getTitleFor( 'Revisiondelete' ),
+						wfMsgHtml( 'rev-delundel' ),
 						array(),
 						array( 
 							'type' => 'oldimage',

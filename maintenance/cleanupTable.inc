@@ -91,20 +91,19 @@ class TableCleanup extends Maintenance {
 		flush();
 	}
 
-	public function runTable( $params ) {
-		$dbr = wfGetDB( DB_SLAVE );
-
-		if ( array_diff( array_keys( $params ),
-			array( 'table', 'conds', 'index', 'callback' ) ) ) 
-		{
-			throw new MWException( __METHOD__.': Missing parameter ' . implode( ', ', $params ) );
-		}
-
-		$table = $params['table'];
-		$count = $dbr->selectField( $table, 'count(*)', $params['conds'], __METHOD__ );
+	protected function runTable( $table, $where, $callback ) {
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$count = $dbw->selectField( $table, 'count(*)', '', __METHOD__ );
 		$this->init( $count, $table );
 		$this->output( "Processing $table...\n" );
 
+		// Unbuffered queries, avoids OOM
+		$dbw->bufferResults( false );
+		
+		$tableName = $dbw->tableName( $table );
+		$sql = "SELECT * FROM $tableName $where";
+		$result = $dbw->query( $sql, __METHOD__ );
 
 		$index = (array)$params['index'];
 		$indexConds = array();

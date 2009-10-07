@@ -86,7 +86,7 @@ class UsersPager extends AlphabeticPager {
 		if( $this->requestedUser != '' ) {
 			# Sorted either by account creation or name
 			if( $this->creationSort ) {
-				$conds[] = 'user_id >= ' . User::idFromName( $this->requestedUser );
+				$conds[] = 'user_id >= ' . intval( User::idFromName( $this->requestedUser ) );
 			} else {
 				$conds[] = 'user_name >= ' . $dbr->addQuotes( $this->requestedUser );
 			}
@@ -107,7 +107,7 @@ class UsersPager extends AlphabeticPager {
 				'COUNT(ug_group) AS numgroups',
 				'MAX(ug_group) AS singlegroup', // the usergroup if there is only one
 				'MIN(user_registration) AS creation',
-				'ipb_deleted' // block/hide status
+				'MAX(ipb_deleted) AS ipb_deleted' // block/hide status
 			),
 			'options' => array('GROUP BY' => $this->creationSort ? 'user_id' : 'user_name'),
 			'conds' => $conds
@@ -241,7 +241,7 @@ class UsersPager extends AlphabeticPager {
 	/**
 	 * Get a list of groups the specified user belongs to
 	 *
-	 * @param int $uid
+	 * @param $uid Integer: user id
 	 * @return array
 	 */
 	protected static function getGroups( $uid ) {
@@ -253,7 +253,7 @@ class UsersPager extends AlphabeticPager {
 	/**
 	 * Format a link to a group description page
 	 *
-	 * @param string $group
+	 * @param $group String: group name
 	 * @return string
 	 */
 	protected static function buildGroupLink( $group ) {

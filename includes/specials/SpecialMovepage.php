@@ -180,7 +180,7 @@ class MovePageForm {
 			}
 			$wgOut->addHTML( "<div class='mw-warning-with-logexcerpt'>\n" );
 			$wgOut->addWikiMsg( $noticeMsg );
-			LogEventsList::showLogExtract( $wgOut, 'protect', $this->oldTitle->getPrefixedText(), '', 1 );
+			LogEventsList::showLogExtract( $wgOut, 'protect', $this->oldTitle->getPrefixedText(), '', array( 'lim' => 1 ) );
 			$wgOut->addHTML( "</div>\n" );
 		}
 
@@ -357,9 +357,7 @@ class MovePageForm {
 			$createRedirect = true;
 		}
 
-		# Do the actual move.  First remember the old ID for later reference,
-		# so that we don't get the ID of the redirect.
-		$oldId = $ot->getArticleId();
+		# Do the actual move.
 		$error = $ot->moveTo( $nt, true, $this->reason, $createRedirect );
 		if ( $error !== true ) {
 			# FIXME: show all the errors in a list, not just the first one
@@ -453,7 +451,7 @@ class MovePageForm {
 		$skin = $wgUser->getSkin();
 		$count = 1;
 		foreach( $extraPages as $oldSubpage ) {
-			if( $oldSubpage->getArticleId() == $oldId ) {
+			if( $ot->equals( $oldSubpage ) ) {
 				# Already did this one.
 				continue;
 			}

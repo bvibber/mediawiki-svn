@@ -29,7 +29,9 @@
 class ActiveUsersPager extends UsersPager {
 
 	function __construct( $group = null ) {
-		global $wgRequest;
+		global $wgRequest, $wgRCMaxAge;
+		$this->RCMaxAge = ceil( $wgRCMaxAge / ( 3600 * 24 ) ); // Constant
+
 		$un = $wgRequest->getText( 'username' );
 		$this->requestedUser = '';
 		if ( $un != '' ) {
@@ -58,7 +60,7 @@ class ActiveUsersPager extends UsersPager {
 			'tables' => array( 'recentchanges', 'user', 'ipblocks' ),
 			'fields' => array( 'rc_user_text AS user_name', // inheritance
 				'rc_user_text', // for Pager
-				'user_id',
+				'MAX(user_id) AS user_id',
 				'COUNT(*) AS recentedits',
 				'MAX(ipb_user) AS blocked'
 			),
@@ -76,44 +78,43 @@ class ActiveUsersPager extends UsersPager {
 	}
 
 	function formatRow( $row ) {
+		global $wgLang;
 		$userName = $row->user_name;
-		$userPage = Title::makeTitle( NS_USER, $userName );
-		$name = $this->getSkin()->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
+		
+		$ulinks = $this->getSkin()->userLink( $row->user_id, $userName );
+		$ulinks .= $this->getSkin()->userToolLinks( $row->user_id, $userName );
 
 		$list = array();
-		foreach( self::getGroups( $row->user_id ) as $group )
+		foreach( self::getGroups( $row->user_id ) as $group ) {
 			$list[] = self::buildGroupLink( $group );
-		$groups = implode( ', ', $list );
+		}
+		$groups = $wgLang->commaList( $list );
 
-		$item = wfSpecialList( $name, $groups );
-		$count = wfMsgExt( 'activeusers-count', array( 'parsemag' ), $row->recentedits, $userName );
+		$item = wfSpecialList( $ulinks, $groups );
+		$count = wfMsgExt( 'activeusers-count',
+			array( 'parsemag' ),
+			$wgLang->formatNum( $row->recentedits ),
+			$userName,
+			$wgLang->formatNum ( $this->RCMaxAge )
+		);
 		$blocked = $row->blocked ? ' ' . wfMsgExt( 'listusers-blocked', array( 'parsemag' ), $userName ) : '';
 
-		return "<li>{$item} [{$count}]{$blocked}</li>";
+		return Html::rawElement( 'li', array(), "{$item} [{$count}]{$blocked}" );
 	}
 
 	function getPageHeader() {
 		global $wgScript, $wgRequest;
 		$self = $this->getTitle();
+		$limit = $this->mLimit ? Xml::hidden( 'limit', $this->mLimit ) : '';
 
-		# Form tag
-		$out  = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) .
-			'<fieldset>' .
-			Xml::element( 'legend', array(), wfMsg( 'activeusers' ) );
-		$out .= Xml::hidden( 'title', $self->getPrefixedDBkey() );
-
-		# Username field
-		$out .= Xml::label( wfMsg( 'activeusers-from' ), 'offset' ) . ' ' .
-			Xml::input( 'username', 20, $this->requestedUser, array( 'id' => 'offset' ) ) . ' ';
-
-		# Submit button and form bottom
-		if( $this->mLimit )
-			$out .= Xml::hidden( 'limit', $this->mLimit );
-		$out .= Xml::submitButton( wfMsg( 'allpagessubmit' ) );
-
-		$out .= '</fieldset>' . Xml::closeElement( 'form' );
-
-		return $out;
+		return  Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) . # Form tag
+			Xml::fieldset( wfMsg( 'activeusers' ) ) . "\n" .
+			Xml::hidden( 'title', $self->getPrefixedDBkey() ) .
+			$limit . "\n" .
+			Xml::inputLabel( wfMsg( 'activeusers-from' ), 'username', 'offset', 20, $this->requestedUser ) . ' ' . # Username field
+			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .  "\n" .# Submit button and form bottom
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' );
 	}
 }
 
@@ -146,10 +147,10 @@ class SpecialActiveUsers extends SpecialPage {
 		$s = $up->getPageHeader();
 		if( $usersbody ) {
 			$s .= $up->getNavigationBar();
-			$s .= '<ul>' . $usersbody . '</ul>';
+			$s .= Html::rawElement( 'ul', array(), $usersbody );
 			$s .= $up->getNavigationBar();
 		} else {
-			$s .= '<p>' . wfMsgHtml( 'activeusers-noresult' ) . '</p>';
+			$s .= Html::element( 'p', array(), wfMsg( 'activeusers-noresult' ) );
 		}
 
 		$wgOut->addHTML( $s );

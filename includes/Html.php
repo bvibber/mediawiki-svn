@@ -99,14 +99,15 @@ class Html {
 	 *
 	 * @param $element  string The element's name, e.g., 'a'
 	 * @param $attribs  array  Associative array of attributes, e.g., array(
-	 *   'href' => 'http://www.mediawiki.org/' ).  Values will be HTML-escaped.
-	 *   A value of false means to omit the attribute.
+	 *   'href' => 'http://www.mediawiki.org/' ).  See expandAttributes() for
+	 *   further documentation.
 	 * @param $contents string The raw HTML contents of the element: *not*
 	 *   escaped!
 	 * @return string Raw HTML
 	 */
 	public static function rawElement( $element, $attribs = array(), $contents = '' ) {
 		global $wgHtml5, $wgWellFormedXml;
+		$attribs = (array)$attribs;
 		# This is not required in HTML 5, but let's do it anyway, for
 		# consistency and better compression.
 		$element = strtolower( $element );
@@ -191,7 +192,8 @@ class Html {
 	 *
 	 * @param $element string Name of the element, e.g., 'a'
 	 * @param $attribs array  Associative array of attributes, e.g., array(
-	 *   'href' => 'http://www.mediawiki.org/' ).
+	 *   'href' => 'http://www.mediawiki.org/' ).  See expandAttributes() for
+	 *   further documentation.
 	 * @return array An array of attributes functionally identical to $attribs
 	 */
 	private static function dropDefaults( $element, $attribs ) {
@@ -289,7 +291,9 @@ class Html {
 	 *
 	 * @param $attribs array Associative array of attributes, e.g., array(
 	 *   'href' => 'http://www.mediawiki.org/' ).  Values will be HTML-escaped.
-	 *   A value of false means to omit the attribute.
+	 *   A value of false means to omit the attribute.  For boolean attributes,
+	 *   you can omit the key, e.g., array( 'checked' ) instead of
+	 *   array( 'checked' => 'checked' ) or such.
 	 * @return string HTML fragment that goes between element name and '>'
 	 *   (starting with a space if at least one attribute is output)
 	 */
@@ -297,6 +301,7 @@ class Html {
 		global $wgHtml5, $wgWellFormedXml;
 
 		$ret = '';
+		$attribs = (array)$attribs;
 		foreach ( $attribs as $key => $value ) {
 			if ( $value === false ) {
 				continue;
@@ -318,8 +323,14 @@ class Html {
 			# marks omitted, but not all.  (Although a literal " is not
 			# permitted, we don't check for that, since it will be escaped
 			# anyway.)
+			#
+			# See also research done on further characters that need to be
+			# escaped: http://code.google.com/p/html5lib/issues/detail?id=93
+			$badChars = "\\x00- '=<>`/\x{00a0}\x{1680}\x{180e}\x{180F}\x{2000}\x{2001}"
+				. "\x{2002}\x{2003}\x{2004}\x{2005}\x{2006}\x{2007}\x{2008}\x{2009}"
+				. "\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}\x{3000}";
 			if ( $wgWellFormedXml || $value === ''
-			|| preg_match( "/[ '=<>]/", $value ) ) {
+			|| preg_match( "![$badChars]!u", $value ) ) {
 				$quote = '"';
 			} else {
 				$quote = '';
@@ -342,13 +353,23 @@ class Html {
 				# and we don't need <> escaped here, we may as well not call
 				# htmlspecialchars().  FIXME: verify that we actually need to
 				# escape \n\r\t here, and explain why, exactly.
-				$ret .= " $key=$quote" . strtr( $value, array(
+				#
+				# We could call Sanitizer::encodeAttribute() for this, but we
+				# don't because we're stubborn and like our marginal savings on
+				# byte size from not having to encode unnecessary quotes.
+				$map = array(
 					'&' => '&amp;',
 					'"' => '&quot;',
 					"\n" => '&#10;',
 					"\r" => '&#13;',
 					"\t" => '&#9;'
-				) ) . $quote;
+				);
+				if ( $wgWellFormedXml ) {
+					# '<' must be escaped in attributes for XML for some
+					# reason, per spec: http://www.w3.org/TR/xml/#NT-AttValue
+					$map['<'] = '&lt;';
+				}
+				$ret .= " $key=$quote" . strtr( $value, $map ) . $quote;
 			}
 		}
 		return $ret;

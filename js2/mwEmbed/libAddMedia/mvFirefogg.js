@@ -15,7 +15,9 @@ loadGM({
 	"fogg-passthrough_mode" : "Your selected file is already Ogg or not a video file",
 	"fogg-transcoding" : "Encoding video to Ogg",
 	"fogg-encoding-done" : "Encoding complete",
-	"fogg-badtoken" : "Token is not valid"
+	"fogg-badtoken" : "Token is not valid",
+	"fogg-preview"	: "Preview video",
+	"fogg-hidepreview" : "Hide preview"
 });
 
 var firefogg_install_links =  {
@@ -67,7 +69,10 @@ var default_firefogg_options = {
 	'target_passthrough_mode':false,
 
 	//if firefogg should take over the form submit action
-	'firefogg_form_action':true
+	'firefogg_form_action':true,
+	
+	//if we should show a preview of encoding progress 
+	'show_preview':false,
 }
 
 
@@ -306,6 +311,109 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		//update the bindings:
 		this.doControlBindings();
 	},
+	//do firefogg specific additions: 
+	dispProgressOverlay:function(){
+		this.pe_dispProgressOverlay();
+		//if we are uploading video (not in passthrough mode show preview button)
+		if( ! this.encoder_settings['passthrough'] ){ 
+			this.doPreviewControl();	
+		}
+	},
+	doPreviewControl:function(){
+		var _this = this;
+		//prepend preview collapable				
+		$j('#upProgressDialog').append(		
+			'<div style="clear:both;height:3em"/>'+							
+			$j.btnHtml(gM('fogg-preview'), 'fogg_preview', 'triangle-1-e') + 
+			'<div style="padding:10px;">' +  				
+				'<canvas style="margin:auto;" id="fogg_preview_canvas" />' +
+			'</div>'
+		);
+		//set initial state
+		if( _this.show_preview == true){
+			$j('#fogg_preview_canvas').show();
+		}else{
+			$j('#fogg_preview_canvas').hide();
+		}
+		//apply preview binding:
+		$j('#upProgressDialog .fogg_preview').btnBind().click( function(){
+			js_log("click .foog_preview" + $j(this).children('.ui-icon').attr('class') );
+			//check state: 
+			if( $j(this).children('.ui-icon').hasClass('ui-icon-triangle-1-e') ){
+				_this.show_preview = true; 			
+				//update icon:
+				$j(this).children('.ui-icon')
+					.removeClass('ui-icon-triangle-1-e')
+					.addClass('ui-icon-triangle-1-s'); 
+				//update text
+				$j(this).children('.btnText').text( gM('fogg-hidepreview') );
+				 
+				//show preview window			
+				$j('#fogg_preview_canvas').show('fast');
+			}else{					
+				_this.show_preview = false; 						
+				//update icon:
+				$j(this).children('.ui-icon')
+					.removeClass('ui-icon-triangle-1-s')
+					.addClass('ui-icon-triangle-1-e');									
+				//update text:
+				$j(this).children('.btnText').text( gM('fogg-preview') );				
+				
+				$j('#fogg_preview_canvas').hide('slow');
+			}
+			//don't follow the #
+			return false; 
+		});
+	}, 
+	doRenderPreview:function(){
+		var _this = this;		
+		//set up the hidden video to pull frames from: 
+		if( $j('#fogg_preview_vid').length == 0 )
+			$j('body').append('<video id="fogg_preview_vid" style="display:none"></video>');	
+		var v = $j('#fogg_preview_vid').get(0);							
+		
+		function seekToEnd(){			
+		    var v = $j('#fogg_preview_vid').get(0);		    	
+		    v.currentTime = v.duration-0.4;		
+		}
+		function getFrame() {
+			var v = $j('#fogg_preview_vid').get(0);
+			var canvas = $j('#fogg_preview_canvas').get(0);
+			if( canvas ){
+				canvas.width = 160;
+				canvas.height = canvas.width * v.videoHeight/v.videoWidth;
+				var ctx = canvas.getContext("2d");
+				ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+			}
+  		}		
+		var previewI=null;
+		function preview() {				
+			//initialize the video if not setup already:
+			var v = $j('#fogg_preview_vid').get(0);						
+			if( v.src != _this.fogg.previewUrl ){		
+				js_log('init preview with url:' + _this.fogg.previewUrl); 		
+				v.src = _this.fogg.previewUrl;
+				
+				//set the video to seek to the end of the video
+				v.removeEventListener("loadedmetadata", seekToEnd, true);
+				v.addEventListener("loadedmetadata", seekToEnd, true);
+				
+				//render a frame once seek is complete: 
+				v.removeEventListener("seeked", getFrame, true);
+				v.addEventListener("seeked", getFrame, true);
+				
+				//refresh the video duration/meta:
+				clearInterval(previewI);
+				var previewI = setInterval(function(){
+					if (_this.fogg.status() != "encoding"){
+						clearInterval(previewI);
+					}					
+					v.load();
+				}, 1000);			 
+			} 
+		}		
+		preview();	
+	},
 	getEditForm:function(){
 		if( this.target_edit_from )
 			return this.pe_getEditForm();
@@ -343,8 +451,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			//now setup encoder settings based source type:
 			_this.autoEncoderSettings();
 
-			//if set to passthough update the interface:
-			if(_this.encoder_settings['passthrough']==true){
+			//if set to passthough update the interface (if not a form) 
+			if(_this.encoder_settings['passthrough'] == true && !_this.form_rewrite){
 				$j(_this.target_passthrough_mode).show();
 			}else{
 				$j(_this.target_passthrough_mode).hide();
@@ -530,13 +638,16 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		js_log('doEncode: with: ' +  JSON.stringify( _this.encoder_settings ) );
 		_this.fogg.encode( JSON.stringify( _this.encoder_settings ) );
 
-
 		 //show transcode status:
 		$j('#up-status-state').html( gM('mwe-upload-transcoded-status') );
 
 		//setup a local function for timed callback:
 		var encodingStatus = function() {
 			var status = _this.fogg.status();
+
+			if( _this.show_preview == true && _this.fogg.state == 'encoding'){
+				_this.doRenderPreview();
+			}
 
 			//update progress bar
 			_this.updateProgress( _this.fogg.progress() );
@@ -571,11 +682,45 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			//update upload status:
 			_this.doUploadStatus();
 		}else{
-			js_log("done with encoding (no upload) ");
+			js_log("done with encoding (no upload) ");						
 			//set stuats to 100% for one second:
-			_this.updateProgress( 1 );
+			_this.updateProgress( 1 );			
 			setTimeout(function(){
-				_this.updateProgressWin(gM('fogg-encoding-done'), gM('fogg-encoding-done'));
+				_this.updateProgressWin(gM('fogg-encoding-done'), 	
+					gM('fogg-encoding-done') + '<br>' + 				
+					//show the video at full resolution upto 720px wide
+					'<video controls="true" style="margin:auto" id="fogg_final_vid" src="' + 
+						 _this.fogg.previewUrl + '"></video>'					
+				);
+				//load the video and set a callback: 
+				var v = $j('#fogg_final_vid').get(0);
+				function resizeVid(){
+					var v = $j('#fogg_final_vid').get(0);					
+					if( v.videoWidth > 720 ){
+						var vW = 720;
+						var vH = 720 * (v.videoHeight/v.videoWidth)													
+					}else{
+						var vW = v.videoWidth;
+						var vH = v.videoHeight;												
+					}
+					//reize the video:
+					$j(v).css({
+						'width'	: vW,
+						'height': vH					
+					});
+					//if large video resize the dialog box:
+					if( vW + 5 > 400){ 
+						//also resize the dialog box
+						$j('#upProgressDialog').dialog('option', 'width', vW + 20);	
+						$j('#upProgressDialog').dialog('option', 'height', 	vH + 120);	 			
+						
+						//also position the dialog container				
+						$j('#upProgressDialog').dialog('option', 'position', 'center');
+					}
+				}								 
+				v.removeEventListener("loadedmetadata", resizeVid, true);
+				v.addEventListener("loadedmetadata", resizeVid, true);
+				v.load();				
 			}, 1000);
 		}
 	},
@@ -618,6 +763,12 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 					return false;
 				}
 			}
+			if( _this.show_preview == true ){
+				if(  _this.fogg.state == 'encoding' ){
+					_this.doRenderPreview();
+				}
+			}
+			
 			//update progress bar
 			_this.updateProgress( _this.fogg.progress() );
 
@@ -644,7 +795,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 								}else{
 									//if done action returns 'false' //close progress window
 									this.action_done = true;
-						  	       	$j('#upProgressDialog').dialog('close');
+						  	       	$j('#upProgressDialog').empty().dialog('close');
 								}
 						   	}else{
 						   		//update status (without done_upload_cb)
@@ -675,11 +826,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	  	    }else{
 	  	    	this.action_done = true;
 	  	        this.fogg.cancel();
-	  	        $j(dlElm).dialog('close');
+	  	        $j(dlElm).empty().dialog('close');	  	       
 	  	    }
-	  	} else{
-	  		return false;
 	  	}
+	  	//dont' follow the link:
+	  	return false;
 	},
 	/**
 	* procPageResponse should be faded out in favor of the upload api soon..

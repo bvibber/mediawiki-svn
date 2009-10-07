@@ -19,15 +19,15 @@ class SkinVector extends SkinTemplate {
 
 	/* Functions */
 	var $skinname = 'vector', $stylename = 'vector',
-		$template = 'VectorTemplate';
+		$template = 'VectorTemplate', $useHeadElement = true;
 
 	/**
 	 * Initializes output page and sets up skin-specific parameters
 	 * @param object $out Output page object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgStylePath, $wgJsMimeType, $wgStyleVersion;
-
+		global $wgStylePath, $wgJsMimeType, $wgStyleVersion, $wgScriptPath, $wgVectorExtraStyles;
+		
 		parent::initPage( $out );
 
 		// Append skin-specific styles
@@ -41,6 +41,13 @@ class SkinVector extends SkinTemplate {
 				$wgStylePath .
 				'/vector/csshover.htc")}</style><![endif]-->'
 		);
+		// Add extra stylesheets
+		// THIS IS ONLY USEFUL FOR EXPERIMENTING WITH DIFFERNT STYLE OPTIONS! THIS WILL BE REMOVED IN THE NEAR FUTURE.
+		if ( is_array( $wgVectorExtraStyles ) ) {
+			foreach ( $wgVectorExtraStyles as $style ) {
+				$out->addStyle( 'vector/' . $style, 'screen' );
+			}
+		}
 		// Append common IE fixes, which perhaps should be included in all
 		// skins, but for now it seems each skin needs to include them
 		// explicitly
@@ -59,8 +66,8 @@ class SkinVector extends SkinTemplate {
 	 * @private
 	 */
 	function buildNavigationUrls() {
-		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle;
-		global $wgDisableLangConversion;
+		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle, $wgStylePath;
+		global $wgDisableLangConversion, $wgVectorUseIconWatch;
 
 		wfProfileIn( __METHOD__ );
 
@@ -271,7 +278,6 @@ class SkinVector extends SkinTemplate {
 				}
 			}
 			wfProfileOut( __METHOD__ . '-live' );
-
 			/**
 			 * The following actions use messages which, if made particular to
 			 * the Vector skin, would break the Ajax code which makes this
@@ -282,29 +288,21 @@ class SkinVector extends SkinTemplate {
 			 * the global versions.
 			 */
 			// Checks if the user is logged in
-			if( $this->loggedin ) {
-				// Checks if the user is watching this page
-				if( !$this->mTitle->userIsWatching() ) {
-					// Adds watch action link
-					$links['actions']['watch'] = array(
-						'class' =>
-							( $action == 'watch' or $action == 'unwatch' ) ?
-								'selected' : false,
-						'text' => wfMsg( 'watch' ),
-						'href' => $this->mTitle->getLocalUrl( 'action=watch' )
-					);
+			if ( $this->loggedin ) {
+				if ( $wgVectorUseIconWatch ) {
+					$class = 'icon ';
+					$place = 'views';
 				} else {
-					// Adds unwatch action link
-					$links['actions']['unwatch'] = array(
-						'class' =>
-							($action == 'unwatch' or $action == 'watch') ?
-								'selected' : false,
-						'text' => wfMsg( 'unwatch' ),
-						'href' => $this->mTitle->getLocalUrl( 'action=unwatch' )
-					);
+					$class = '';
+					$place = 'actions';
 				}
+				$mode = $this->mTitle->userIsWatching() ? 'unwatch' : 'watch';
+				$links[$place][$mode] = array(
+					'class' => $class . ( ( $action == 'watch' || $action == 'unwatch' ) ? ' selected' : false ),
+					'text' => wfMsg( $mode ), // uses 'watch' or 'unwatch' message
+					'href' => $this->mTitle->getLocalUrl( 'action=' . $mode )
+				);
 			}
-
 			// This is instead of SkinTemplateTabs - which uses a flat array
 			wfRunHooks( 'SkinTemplateNavigation', array( &$this, &$links ) );
 
@@ -459,7 +457,7 @@ class VectorTemplate extends QuickTemplate {
 				array_reverse( $this->data['personal_urls'] );
 		}
 		// Output HTML Page
-		echo $wgOut->headElement( $this->skin );
+		$this->html( 'headelement' );
 ?>
 	<body<?php if ( $this->data['body_ondblclick'] ): ?> ondblclick="<?php $this->text( 'body_ondblclick' ) ?>"<?php endif; ?> <?php if ( $this->data['body_onload'] ): ?> onload="<?php $this->text( 'body_onload' ) ?>"<?php endif; ?> class="mediawiki <?php $this->text( 'dir' ) ?> <?php $this->text( 'pageclass' ) ?> <?php $this->text( 'skinnameclass' ) ?>" dir="<?php $this->text( 'dir' ) ?>">
 		<div id="page-base" class="noprint"></div>
@@ -722,7 +720,7 @@ class VectorTemplate extends QuickTemplate {
 	<h5><?php $this->msg('views') ?></h5>
 	<ul <?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['view_urls'] as $key => $link ): ?>
-			<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><span><?php echo htmlspecialchars( $link['text'] ) ?></span></a></li>
+			<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo (array_key_exists('img',$link) ?  '<img src="'.$link['img'].'" alt="'.$link['text'].'" />' : '<span>'.htmlspecialchars( $link['text'] ).'</span>') ?></a></li>
 		<?php endforeach; ?>
 	</ul>
 </div>

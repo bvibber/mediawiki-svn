@@ -11,8 +11,9 @@ class DeletedContribsPager extends IndexPager {
 
 	function __construct( $target, $namespace = false ) {
 		parent::__construct();
-		foreach( explode( ' ', 'deletionlog undeleteviewlink diff' ) as $msg ) {
-			$this->messages[$msg] = wfMsgExt( $msg, array( 'escape') );
+		$msgs = array( 'deletionlog', 'undeleteviewlink', 'diff' );
+		foreach( $msgs as $msg ) {
+			$this->messages[$msg] = wfMsgExt( $msg, array( 'escapenoentities') );
 		}
 		$this->target = $target;
 		$this->namespace = $namespace;
@@ -30,7 +31,7 @@ class DeletedContribsPager extends IndexPager {
 		list( $index, $userCond ) = $this->getUserCond();
 		$conds = array_merge( $userCond, $this->getNamespaceCond() );
 		// Paranoia: avoid brute force searches (bug 17792)
-		if( !$wgUser->isAllowed( 'deleterevision' ) ) {
+		if( !$wgUser->isAllowed( 'deletedhistory' ) ) {
 			$conds[] = $this->mDb->bitAnd('ar_deleted',Revision::DELETED_USER) . ' = 0';
 		} else if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
 			$conds[] = $this->mDb->bitAnd('ar_deleted',Revision::SUPPRESSED_USER) .
@@ -145,7 +146,7 @@ class DeletedContribsPager extends IndexPager {
 			$this->messages['undeleteviewlink']
 		);
 
-		if( $wgUser->isAllowed('undelete') ) {
+		if( $wgUser->isAllowed('deletedtext') ) {
 			$last = $sk->linkKnown(
 				$undelete,
 				$this->messages['diff'],
@@ -188,8 +189,9 @@ class DeletedContribsPager extends IndexPager {
 		} else {
 			$mflag = '';
 		}
-
-		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+		
+		// Don't show useless link to people who cannot hide revisions
+		if( $wgUser->isAllowed('deleterevision') || ($rev->getVisibility() && $wgUser->isAllowed('deletedhistory')) ) {
 			// If revision was hidden from sysops
 			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
 				$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
@@ -207,9 +209,17 @@ class DeletedContribsPager extends IndexPager {
 			$del = '';
 		}
 
-		$ret = "{$del}{$link} ({$last}) ({$dellog}) ({$reviewlink}) . . {$mflag} {$pagelink} {$comment}";
+		$tools = Html::rawElement(
+			'span',
+			array( 'class' => 'mw-deletedcontribs-tools' ),
+			wfMsg( 'parentheses', $wgLang->pipeList( array( $last, $dellog, $reviewlink ) ) )
+		);
 
-		$ret = "<li>$ret</li>\n";
+		$ret = Html::rawElement(
+			'li',
+			array(),
+			"{$del}{$link} {$tools} . . {$mflag} {$pagelink} {$comment}"
+		) . "\n";
 
 		wfProfileOut( __METHOD__ );
 		return $ret;

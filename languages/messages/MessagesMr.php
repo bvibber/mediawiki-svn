@@ -10,6 +10,7 @@
  * @author Angela
  * @author Harshalhayat
  * @author Hemanshu
+ * @author Hemant wikikosh1
  * @author Kaustubh
  * @author Mahitgar
  * @author Sankalpdravid
@@ -206,8 +207,8 @@ $magicWords = array(
 	'img_upright'           => array( '1', 'उभा', 'उभा=$1', 'उभा $1', 'upright', 'upright=$1', 'upright $1' ),
 	'img_border'            => array( '1', 'सीमा', 'border' ),
 	'img_baseline'          => array( '1', 'तळरेषा', 'आधाररेषा', 'baseline' ),
-	'img_sub'               => array( '1', 'उप', 'विषय', 'sub' ),
-	'img_super'             => array( '1', 'उत्तम', 'उत्कृष्ट', 'झकास', 'फर्मास', 'फर्डा', 'super', 'sup' ),
+	'img_sub'               => array( '1', 'अधो', 'sub' ),
+	'img_super'             => array( '1', 'उर्ध्व', 'super', 'sup' ),
 	'img_top'               => array( '1', 'अत्यूच्च', 'top' ),
 	'img_text_top'          => array( '1', 'मजकूर-शीर्ष', 'शीर्ष-मजकूर', 'text-top' ),
 	'img_middle'            => array( '1', 'मध्य', 'middle' ),
@@ -218,8 +219,9 @@ $magicWords = array(
 	'int'                   => array( '0', 'इन्ट:', 'INT:' ),
 	'sitename'              => array( '1', 'संकेतस्थळनाव', 'SITENAME' ),
 	'ns'                    => array( '0', 'नावि:', 'NS:' ),
-	'localurl'              => array( '0', 'स्थानिकस्थळ', 'स्थानिकसंकेतस्थळ', 'LOCALURL:' ),
-	'localurle'             => array( '0', 'स्थानिकस्थली', 'LOCALURLE:' ),
+	'nse'                   => array( '0', 'नाविअरिक्त:', 'नाव्यारिक्त:', 'नाव्याख:', 'NSE:' ),
+	'localurl'              => array( '0', 'स्थानिकस्थळ:', 'स्थानिकसंकेतस्थळ:', 'LOCALURL:' ),
+	'localurle'             => array( '0', 'स्थानिकस्थली:', 'LOCALURLE:' ),
 	'server'                => array( '0', 'विदादाता', 'SERVER' ),
 	'servername'            => array( '0', 'विदादातानाव', 'SERVERNAME' ),
 	'scriptpath'            => array( '0', 'संहीतामार्ग', 'SCRIPTPATH' ),
@@ -240,15 +242,15 @@ $magicWords = array(
 	'revisionuser'          => array( '1', 'आवृत्तीसदस्य', 'REVISIONUSER' ),
 	'plural'                => array( '0', 'बहुवचन:', 'PLURAL:' ),
 	'fullurl'               => array( '0', 'संपूर्णसंस्थळ', 'FULLURL:' ),
-	'fullurle'              => array( '0', 'संपूर्णसंस्थली', 'संपूर्णसंस्थळी', 'FULLURLE:' ),
+	'fullurle'              => array( '0', 'संपूर्णसंस्थली :', 'संपूर्णसंस्थळी :', 'FULLURLE:' ),
 	'raw'                   => array( '0', 'कच्चे:', 'RAW:' ),
 	'displaytitle'          => array( '1', 'शीर्षकदाखवा', 'DISPLAYTITLE' ),
 	'rawsuffix'             => array( '1', 'ॠ', 'R' ),
 	'newsectionlink'        => array( '1', '__बातमीविभागदुवा__', '__NEWSECTIONLINK__' ),
 	'nonewsectionlink'      => array( '1', '__विनाबातमीविभागदुवा__', '__NONEWSECTIONLINK__' ),
 	'currentversion'        => array( '1', 'सद्यआवृत्ती', 'CURRENTVERSION' ),
-	'urlencode'             => array( '0', 'संकेतस्थलीआंग्ल्संकेत', 'URLENCODE:' ),
-	'anchorencode'          => array( '0', 'नांगरआंग्ल्संकेत', 'ANCHORENCODE' ),
+	'urlencode'             => array( '0', 'संकेतस्थलीआंग्ल्संकेत :', 'URLENCODE:' ),
+	'anchorencode'          => array( '0', 'नांगरआंग्लसंकेत', 'ANCHORENCODE' ),
 	'currenttimestamp'      => array( '1', 'सद्यकालमुद्रा', 'CURRENTTIMESTAMP' ),
 	'localtimestamp'        => array( '1', 'स्थानिककालमुद्रा', 'LOCALTIMESTAMP' ),
 	'directionmark'         => array( '1', 'दिशाचिन्ह', 'दिशादर्शक', 'DIRECTIONMARK', 'DIRMARK' ),
@@ -260,7 +262,7 @@ $magicWords = array(
 	'padleft'               => array( '0', 'डावाभरीव', 'भरीवडावा', 'PADLEFT' ),
 	'padright'              => array( '0', 'उजवाभरीव', 'भरीवउजवा', 'PADRIGHT' ),
 	'special'               => array( '0', 'विशेष', 'special' ),
-	'defaultsort'           => array( '1', 'अविचलवर्ग', 'अविचलवर्गकळ', 'अविचलवर्गवर्गीकरण:', 'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
+	'defaultsort'           => array( '1', 'अविचलवर्ग :', 'अविचलवर्गकळ :', 'अविचलवर्गवर्गीकरण:', 'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
 	'filepath'              => array( '0', 'संचिकामार्ग:', 'FILEPATH:' ),
 	'tag'                   => array( '0', 'खूण', 'खूणगाठ', 'tag' ),
 	'hiddencat'             => array( '1', '__वर्गलपवा__', '__HIDDENCAT__' ),
@@ -572,9 +574,9 @@ $messages = array(
 तुम्ही कदाचित URL चुकीची दिली असेल, किंवा चुकीच्या दुव्यावर टिचकी दिली असेल.
 कदाचित ही कृती {{SITENAME}} मधील त्रुटी सुद्धा दर्शवित असेल.',
 'nosuchspecialpage' => 'असे कोणतेही विशेष पृष्ठ अस्तित्वात नाही',
-'nospecialpagetext' => "<big>'''आपण केलेली विनंती अयोग्य विशेषपानासंबंधी आहे.'''</big>
+'nospecialpagetext' => '<strong>आपण केलेली विनंती अयोग्य विशेषपानासंबंधी आहे.</strong>
 
-योग्य विशेषपानांची यादी  [[Special:SpecialPages|{{int:specialpages}}]] येथे उपलब्ध होऊ शकते.",
+योग्य विशेषपानांची यादी  [[Special:SpecialPages|{{int:specialpages}}]] येथे उपलब्ध होऊ शकते.',
 
 # General errors
 'error'                => 'त्रुटी',
@@ -668,10 +670,10 @@ $2',
 'logout'                     => 'बाहेर पडा',
 'userlogout'                 => 'बाहेर पडा',
 'notloggedin'                => 'प्रवेशाची नोंदणी झालेली नाही!',
-'nologin'                    => 'आपण सदस्यत्व घेतलेले नाही का? $1.',
+'nologin'                    => "आपण सदस्यत्व घेतलेले नाही का? '''$1'''.",
 'nologinlink'                => 'सदस्य खाते तयार करा',
 'createaccount'              => 'नवीन खात्याची नोंदणी करा',
-'gotaccount'                 => 'जुने खाते आहे? $1.',
+'gotaccount'                 => "जुने खाते आहे? '''$1'''.",
 'gotaccountlink'             => 'प्रवेश करा',
 'createaccountmail'          => 'इमेल द्वारे',
 'badretype'                  => 'आपला परवलीचा शब्द चुकीचा आहे.',
@@ -1040,7 +1042,7 @@ $3ने ''$2'' कारण दिले आहे.",
 'notextmatches'             => 'पानातील मजकुराशी जुळत नाही',
 'prevn'                     => 'मागील {{PLURAL:$1|$1}}',
 'nextn'                     => 'पुढील {{PLURAL:$1|$1}}',
-'viewprevnext'              => 'पहा ($1) ($2) ($3).',
+'viewprevnext'              => 'पहा ($1 {{int:pipe-separator}} $2) ($3).',
 'searchhelp-url'            => 'Help:साहाय्य पृष्ठ',
 'search-result-size'        => '$1 ({{PLURAL:$2|१ शब्द|$2 शब्द}})',
 'search-result-score'       => 'जुळणी: $1%',
@@ -1323,14 +1325,15 @@ $3ने ''$2'' कारण दिले आहे.",
 'large-file'                  => 'संचिका $1 पेक्षा कमी आकाराची असण्याची अपेक्षा आहे, ही संचिका $2 एवढी आहे.',
 'largefileserver'             => 'सेवा संगणकावर (सर्वर) निर्धारित केलेल्या आकारापेक्षा या संचिकेचा आकार मोठा आहे.',
 'emptyfile'                   => 'चढवलेली संचिका रिकामी आहे. हे संचिकानाम चुकीचे लिहिल्याने असू शकते. कृपया तुम्हाला हीच संचिका चढवायची आहे का ते तपासा.',
-'fileexists'                  => "या नावाची संचिका आधीच अस्तित्वात आहे, कृपया ही संचिका बदलण्याबद्दल तुम्ही साशंक असाल तर '''<tt>$1</tt>''' तपासा.",
-'filepageexists'              => "या नावाचे एक माहितीपृष्ठ (संचिका नव्हे) अगोदरच अस्तित्त्वात आहे. कृपया जर आपणांस त्यात बदल करायचा नसेल तर '''<tt>$1</tt>''' तपासा.",
-'fileexists-extension'        => "या नावाची संचिका अस्तित्वात आहे:<br />
-चढवित असलेल्या संचिकेचे नाव: '''<tt>$1</tt>'''<br />
-अस्तित्वात असलेल्या संचिकेचे नाव: '''<tt>$2</tt>'''<br />
+'fileexists'                  => "या नावाची संचिका आधीच अस्तित्वात आहे, कृपया ही संचिका बदलण्याबद्दल तुम्ही साशंक असाल तर '''<tt>[[:$1]]</tt>''' तपासा.
+[[$1|thumb]]",
+'filepageexists'              => "या नावाचे एक माहितीपृष्ठ (संचिका नव्हे) अगोदरच अस्तित्त्वात आहे. कृपया जर आपणांस त्यात बदल करायचा नसेल तर '''<tt>[[:$1]]</tt>''' तपासा.",
+'fileexists-extension'        => "या नावाची संचिका अस्तित्वात आहे: [[$2|thumb]]
+* चढवित असलेल्या संचिकेचे नाव: '''<tt>[[:$1]]</tt>'''
+* अस्तित्वात असलेल्या संचिकेचे नाव: '''<tt>[[:$2]]</tt>'''
 कृपया दुसरे नाव निवडा.",
-'fileexists-thumb'            => "<center>'''सध्याची संचिका'''</center>",
-'fileexists-thumbnail-yes'    => "आपण चढवित असलेली संचिका ही मोठ्या चित्राची झलक ''(thumbnail)'' असण्याची शक्यता आहे. कृपया '''<tt>$1</tt>''' ही संचिका तपासा.<br />
+'fileexists-thumbnail-yes'    => "आपण चढवित असलेली संचिका ही मोठ्या चित्राची झलक ''(thumbnail)'' असण्याची शक्यता आहे. [[$1|thumb]]
+कृपया '''<tt>[[:$1]]</tt>''' ही संचिका तपासा.
 जर तपासलेली संचिका ही याच आकाराची असेल तर नवीन झलक चढविण्याची गरज नाही.",
 'file-thumbnail-no'           => "या संचिकेचे नाव '''<tt>$1</tt>''' पासून सुरू होत आहे. ही कदाचित झलक ''(thumbnail)'' असू शकते.
 जर तुमच्या कडे पूर्ण रिझोल्यूशनची संचिका असेल तर चढवा अथवा संचिकेचे नाव बदला.",
@@ -1689,7 +1692,7 @@ Input:contenttype/subtype, e.g. <tt>image/jpeg</tt>.',
 'enotif_body'                  => 'प्रिय $WATCHINGUSERNAME,
 
 
-The {{SITENAME}}चे  $PAGETITLE पान $PAGEEDITORने $PAGEEDITDATEANDTIME तारखेस $CHANGEDORCREATED केले आहे ,सध्याच्या आवृत्तीकरिता पहा $PAGETITLE_URL.
+The {{SITENAME}}चे  $PAGETITLE पान $PAGEEDITORने $PAGEEDITDATE तारखेस $CHANGEDORCREATED केले आहे ,सध्याच्या आवृत्तीकरिता पहा $PAGETITLE_URL.
 
 $NEWPAGE
 

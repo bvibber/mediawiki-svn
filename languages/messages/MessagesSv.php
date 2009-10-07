@@ -527,7 +527,7 @@ $messages = array(
 'redirectedfrom'    => '(Omdirigerad från $1)',
 'redirectpagesub'   => 'Omdirigeringssida',
 'lastmodifiedat'    => 'Sidan ändrades senast den $1 kl. $2.',
-'viewcount'         => 'Denna sidan har visats {{PLURAL:$1|en gång|$1 gånger}}.',
+'viewcount'         => 'Den här sidan har visats {{PLURAL:$1|en gång|$1 gånger}}.',
 'protectedpage'     => 'Skrivskyddad sida',
 'jumpto'            => 'Hoppa till:',
 'jumptonavigation'  => 'navigering',
@@ -610,9 +610,9 @@ $1',
 Du kan ha stavat URL:en fel, eller följt en felaktig länk.
 Det kan också bero på en bug i {{SITENAME}}.',
 'nosuchspecialpage' => 'Någon sådan specialsida finns inte',
-'nospecialpagetext' => "<big>'''Du har begärt en specialsida som inte finns.'''</big>
+'nospecialpagetext' => '<strong>Du har begärt en specialsida som inte finns.</strong>
 
-I [[Special:SpecialPages|listan över specialsidor]] kan du se vilka specialsidor som finns.",
+I [[Special:SpecialPages|listan över specialsidor]] kan du se vilka specialsidor som finns.',
 
 # General errors
 'error'                => 'Fel',
@@ -704,10 +704,10 @@ Glöm inte att justera dina [[Special:Preferences|{{SITENAME}}-inställningar]].
 'logout'                     => 'Logga ut',
 'userlogout'                 => 'Logga ut',
 'notloggedin'                => 'Inte inloggad',
-'nologin'                    => 'Har du inget användarkonto? $1.',
+'nologin'                    => "Har du inget användarkonto? '''$1'''.",
 'nologinlink'                => 'Skapa ett användarkonto',
 'createaccount'              => 'Skapa ett konto',
-'gotaccount'                 => 'Har du redan ett användarkonto? $1.',
+'gotaccount'                 => "Har du redan ett användarkonto? '''$1'''.",
 'gotaccountlink'             => 'Logga in',
 'createaccountmail'          => 'med e-post',
 'badretype'                  => 'De lösenord du uppgett överenstämmer inte med varandra.',
@@ -1104,6 +1104,8 @@ Du har inte behörighet till det.',
 'revdelete-concurrent-change' => 'Fel vid förändring av objektet daterat $2, $1: dess status verkar ha ändrats av någon annan medan du försökte förändra det.
 Vänligen kontrollera loggarna.',
 'revdelete-only-restricted'   => 'Du kan inte hindra visning av objekt av administratörer utan att också välja en av de övriga visningshindrande alternativen.',
+'revdelete-otherreason'       => 'Annan/ytterligare anledning:',
+'revdelete-reasonotherlist'   => 'Annan anledning',
 'revdelete-edit-reasonlist'   => 'Redigera anledningar för radering',
 
 # Suppression log
@@ -1222,7 +1224,7 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 'prevn-title'                      => 'Föregående $1 {{PLURAL:$1|resultat|resultat}}',
 'nextn-title'                      => 'Nästa $1 {{PLURAL:$1|resultat|resultat}}',
 'shown-title'                      => 'Visa $1 {{PLURAL:$1|resultat|resultat}} per sida',
-'viewprevnext'                     => 'Visa ($1) ($2) ($3)',
+'viewprevnext'                     => 'Visa ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Sökalternativ',
 'searchmenu-exists'                => "'''Det finns en sida med namnet \"[[:\$1]]\" på denna wiki'''",
 'searchmenu-new'                   => "'''Skapa sidan \"[[:\$1]]\" på denna wiki!'''",
@@ -1492,6 +1494,7 @@ Du kan också välja att låta andra användare kontakta dig genom din användar
 'right-reset-passwords'       => 'Återställa andra användares lösenord',
 'right-override-export-depth' => 'Exportera sidor inklusive länkade sidor till ett djup på 5',
 'right-versiondetail'         => 'Visa den utökade mjukvaruversionsinformationen',
+'right-sendemail'             => 'Skicka e-post till andra användare',
 
 # User rights log
 'rightslog'      => 'Användarrättighetslogg',
@@ -1632,14 +1635,16 @@ Se [[Special:NewFiles|galleriet över nya filer]] för en mer visuell översikt.
 denna fil är $2.',
 'largefileserver'             => 'Denna fil är större än vad servern ställts in att tillåta.',
 'emptyfile'                   => 'Filen du laddade upp verkar vara tom; felet kan bero på ett stavfel i filnamnet. Kontrollera om du verkligen vill ladda upp denna fil.',
-'fileexists'                  => "Det finns redan en fil med detta namn. Titta på '''<tt>$1</tt>''', såvida du inte är säker på att du vill ändra den.",
-'filepageexists'              => "Beskrivningssidan för denna fil har redan skapats på '''<tt>$1</tt>''', men just nu finns ingen fil med detta namn. Den sammanfattning du skriver här kommer inte visas på beskrivningssidan. För att din sammanfattning ska visas där, så måste du redigera beskrivningssidan manuellt.",
-'fileexists-extension'        => "En fil med ett liknande namn finns redan:<br />
-Namn på den fil du försöker ladda upp: '''<tt>$1</tt>'''<br />
-Namn på filen som redan finns: '''<tt>$2</tt>'''<br />
-Den enda skillnaden är versaliseringen av filnamnsändelsen. Var vänlig kontrollera om filerna är identiska.",
-'fileexists-thumb'            => "<center>'''Den existerande filen'''</center>",
-'fileexists-thumbnail-yes'    => "Filen verkar vara en bild med förminskad storlek ''(miniatyrbild)''. Var vänlig kontrollera filen '''<tt>$1</tt>'''.<br />
+'fileexists'                  => "Det finns redan en fil med detta namn.
+Titta på '''<tt>[[:$1]]</tt>''', såvida du inte är säker på att du vill ändra den.
+[[$1|thumb]]",
+'filepageexists'              => "Beskrivningssidan för denna fil har redan skapats på '''<tt>[[:$1]]</tt>''', men just nu finns ingen fil med detta namn. Den sammanfattning du skriver här kommer inte visas på beskrivningssidan. För att din sammanfattning ska visas där, så måste du redigera beskrivningssidan manuellt.",
+'fileexists-extension'        => "En fil med ett liknande namn finns redan: [[$2|thumb]]
+* Namn på den fil du försöker ladda upp: '''<tt>[[:$1]]</tt>'''
+* Namn på filen som redan finns: '''<tt>[[:$2]]</tt>'''
+Var vänlig välj ett annat namn.",
+'fileexists-thumbnail-yes'    => "Filen verkar vara en bild med förminskad storlek ''(miniatyrbild)''. [[$1|thumb]]
+Var vänlig kontrollera filen '''<tt>[[:$1]]</tt>'''.
 Om det är samma fil i originalstorlek så är det inte nödvändigt att ladda upp en extra miniatyrbild.",
 'file-thumbnail-no'           => "Filnamnet börjar med '''<tt>$1</tt>'''.
 Det verkar vara en bild med förminskad storlek ''(miniatyrbild)''.
@@ -1699,6 +1704,10 @@ Om problemet kvarstår, kontakta en [[Special:ListUsers/sysop|administratör]].'
 'upload-unknown-size'       => 'Okänd storlek',
 'upload-http-error'         => 'Ett HTTP-fel uppstod: $1',
 
+# img_auth script messages
+'img-auth-accessdenied' => 'Åtkomst nekad',
+'img-auth-nofile'       => 'Filen "$1" finns inte.',
+
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL:en kunde inte nås',
 'upload-curl-error6-text'  => 'Den angivna URL:en kunde inte nås. Kontrollera att den är korrekt och att webbplatsern fungerar.',
@@ -1706,7 +1715,7 @@ Om problemet kvarstår, kontakta en [[Special:ListUsers/sysop|administratör]].'
 'upload-curl-error28-text' => 'Webbplatsen tog för lång tid på sig att svara. Kontrollera att den är uppe och försök igen om en liten stund.',
 
 'license'            => 'Licens:',
-'license-header'     => 'Licens:',
+'license-header'     => 'Licensiering',
 'nolicense'          => 'Ingen angiven',
 'license-nopreview'  => '(Förhandsvisning är inte tillgänglig)',
 'upload_source_url'  => ' (en giltig URL som är allmänt åtkomlig)',
@@ -2086,14 +2095,13 @@ Framtida ändringar av den här sidan och dess diskussionssida kommer att listas
 'enotif_impersonal_salutation' => '{{SITENAME}}användare',
 'changed'                      => 'ändrad',
 'created'                      => 'skapad',
-'deleted'                      => 'raderad',
 'enotif_subject'               => '{{SITENAME}}-sidan $PAGETITLE har blivit $CHANGEDORCREATED av $PAGEEDITOR',
 'enotif_lastvisited'           => 'På $1 återfinner du alla ändringar sedan ditt senaste besök.',
 'enotif_lastdiff'              => 'Se denna ändring på $1',
 'enotif_anon_editor'           => 'anonym användare $1',
 'enotif_body'                  => '$WATCHINGUSERNAME,
 
-{{SITENAME}}-sidan $PAGETITLE har blivit $CHANGEDORCREATED $PAGEEDITDATEANDTIME av $PAGEEDITOR; den nuvarande versionen hittar du på $PAGETITLE_URL.
+{{SITENAME}}-sidan $PAGETITLE har blivit $CHANGEDORCREATED $PAGEEDITDATE av $PAGEEDITOR; se $PAGETITLE_URL för den nuvarande versionen.
 
 $NEWPAGE
 
@@ -2106,13 +2114,13 @@ wiki: $PAGEEDITOR_WIKI
 Såvida du inte besöker sidan, kommer du inte att få flera meddelanden om ändringar av sidan.
 Du kan också ta bort flaggan för meddelanden om ändringar på alla sidor i din bevakningslista.
 
-Hälsningar från {{SITENAME}}s meddelandesystem
+             Hälsningar från {{SITENAME}}s meddelandesystem
 
 --
 För att ändra inställningarna i din bevakningslista, besök
 {{fullurl:{{#special:Watchlist}}/edit}}
 
-Feedback och hjälp:
+Feedback och ytterligare hjälp:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete
@@ -2392,7 +2400,6 @@ Ange orsak nedan (exempelvis genom att nämna sidor som blivit vandaliserade).',
 'autoblocker'                     => 'Automatisk blockerad eftersom din IP-adress nyligen använts av "[[User:$1|$1]]".
 Motiveringen som angavs för blockeringen av $1 var: "$2".',
 'blocklogpage'                    => 'Blockeringslogg',
-'blocklog-fulllog'                => 'Fullständig blockeringslogg',
 'blocklogentry'                   => 'blockerade [[$1]] med blockeringstid på $2 $3',
 'reblock-logentry'                => 'ändrade blockeringsinställningar för [[$1]] med en varaktighet på $2 $3',
 'blocklogtext'                    => 'Detta är en logg över blockeringar och avblockeringar.
@@ -3131,6 +3138,7 @@ Den första länken på en rad måste vara en länk till en otillåten fil.
 'watchlistall2'    => 'alla',
 'namespacesall'    => 'alla',
 'monthsall'        => 'alla',
+'limitall'         => 'alla',
 
 # E-mail address confirmation
 'confirmemail'             => 'Bekräfta e-postadress',
@@ -3366,5 +3374,15 @@ Skriv filnamnet utan prefixet "{{ns:file}}:" .',
 'htmlform-submit'              => 'Spara',
 'htmlform-reset'               => 'Ogör ändringar',
 'htmlform-selectorother-other' => 'Andra',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'Lägg till kategori',
+'ajax-add-category-submit'     => 'Lägg till',
+'ajax-confirm-prompt'          => 'Du kan skriva en redigeringssammanfattning nedanför.
+Klicka på "Spara" för att spara din redigering.',
+'ajax-confirm-save'            => 'Spara',
+'ajax-add-category-summary'    => 'Lägg till kategorin "$1"',
+'ajax-remove-category-summary' => 'Tag bort kategorin "$1"',
+'ajax-error-title'             => 'Fel',
 
 );

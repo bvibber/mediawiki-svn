@@ -264,9 +264,9 @@ $messages = array(
 Možda ste pogriješili pri unosu URL-a ili ste slijedili pokvaren link.
 Moguće je i da je ovo greška u softveru koji koristi {{SITENAME}}.',
 'nosuchspecialpage' => 'Nema takve posebne stranice',
-'nospecialpagetext' => "<big>'''Zatražili ste nevaljanu posebnu stranicu.'''</big>
+'nospecialpagetext' => '<strong>Zatražili ste nevaljanu posebnu stranicu.</strong>
 
-Lista valjanih posebnih stranica se može naći na [[Special:SpecialPages|{{int:specialpages}}]].",
+Lista valjanih posebnih stranica se može naći na [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Greška',
@@ -363,10 +363,10 @@ Ne zaboravite izmijeniti vlastite [[Special:Preferences|{{SITENAME}} postavke]].
 'logout'                     => 'Odjavi me',
 'userlogout'                 => 'Odjava',
 'notloggedin'                => 'Niste prijavljeni',
-'nologin'                    => 'Nemate korisničko ime? $1.',
+'nologin'                    => "Nemate korisničko ime? '''$1'''.",
 'nologinlink'                => 'Otvorite račun',
 'createaccount'              => 'Napravi korisnički račun',
-'gotaccount'                 => 'Imate račun? $1.',
+'gotaccount'                 => "Imate račun? '''$1'''.",
 'gotaccountlink'             => 'Prijavi se',
 'createaccountmail'          => 'e-mailom',
 'badretype'                  => 'Lozinke koje ste unijeli se ne poklapaju.',
@@ -594,14 +594,66 @@ Ako je snimite, sve promjene učinjene od ove revizije će biti izgubljene.'''",
 Ukoliko ne želite da vaše pisanje bude nemilosrdno uređivano i redistribuirano po tuđoj volji, onda ga nemojte ovdje objavljivati.<br />
 Također obećavate kako ste ga napisali sami ili kopirali iz izvora u javnoj domeni ili sličnog slobodnog izvora.
 '''NEMOJTE SLATI RAD ZAŠTIĆEN AUTORSKIM PRAVIMA BEZ DOZVOLE!'''",
+'copyrightwarning2'                => "Zapamtite da svaki doprinos na stranici {{SITENAME}} može biti izmijenjen, promijenjen ili uklonjen od strane ostalih korisnika. Ako ne želite da ovo desi sa Vašim tekstom, onda ga nemojte slati ovdje.<br />
+Također nam garantujete da ste ovo Vi napisali, ili da ste ga kopirali iz javne domene ili sličnog slobodnog izvora informacija (pogledajte $1 za više detalja).
+'''NE ŠALJITE DJELA ZAŠTIĆENA AUTORSKIM PRAVOM BEZ DOZVOLE!'''",
+'longpagewarning'                  => "'''PAŽNJA''': Ova stranica ima $1 kilobajta;  
+neki preglednici mogu imati problema kad uređujete stranice skoro ili veće od 32 kilobajta.
+Molimo Vas da razmotrite razbijanje stranice na manje dijelove.",
+'longpageerror'                    => "'''Greška: Tekst, koji ste poslali, je dug $1 kilobajta, što je veće od maksimuma, koji iznosi $2 kilobajta.  
+Stranica ne može biti spremljena.'''",
+'readonlywarning'                  => "'''PAŽNJA: Baza je zaključana zbog održavanja, tako da nećete moći da snimite svoje izmjene za sada.  
+Možda želite da kopirate i nalijepite tekst u tekst editor i sačuvate ga za kasnije.'''
+
+Administrator koji je zaključao bazu je naveo slijedeće objašnjenje: $1",
+'protectedpagewarning'             => "'''PAŽNJA: Ova stranica je zaključana tako da samo korisnici sa administratorskim privilegijama mogu da je mijenjaju.'''",
+'semiprotectedpagewarning'         => "'''Pažnja:''' Ova stranica je zaključana tako da je samo registrovani korisnici mogu uređivati.",
+'cascadeprotectedwarning'          => "'''Upozorenje:''' Ova stranica je zaključana tako da je samo administratori mogu mijenjati, jer je ona uključena u {{PLURAL:$1|ovu, lančanu povezanu, zaštićenu stranicu|sljedeće, lančano povezane, zaštićene stranice}}:",
+'titleprotectedwarning'            => "'''UPOZORENJE: Ova stranica je zaključana tako da su potrebna [[Special:ListGroupRights|posebna prava]] da se ona napravi.'''",
 'templatesused'                    => 'Šabloni korišteni na ovoj stranici:',
 'templatesusedpreview'             => 'Šabloni korišteni u ovom pretpregledu:',
+'templatesusedsection'             => 'Šabloni korišteni u ovoj sekciji:',
 'template-protected'               => '(zaštićeno)',
 'template-semiprotected'           => '(polu-zaštićeno)',
 'hiddencategories'                 => 'Ova stranica pripada {{PLURAL:$1|1 skrivenoj kategoriji|$1 skrivenim kategorijama}}:',
+'nocreatetitle'                    => 'Stvaranje stranica ograničeno',
+'nocreatetext'                     => '{{SITENAME}} je ograničio/la postavljanje novih stranica.  
+Možete se vratiti i uređivati već postojeće stranice ili se [[Special:UserLogin|prijaviti ili otvoriti korisnički račun]].',
+'nocreate-loggedin'                => 'Nemate dopuštenje da kreirate nove stranice.',
+'permissionserrors'                => 'Greške pri odobrenju',
+'permissionserrorstext'            => 'Nemate dopuštenje da to uradite, iz {{PLURAL:$1|slijedećeg razloga|slijedećih razloga}}:',
 'permissionserrorstext-withaction' => 'Nemate dozvolu za $2, zbog {{PLURAL:$1|sljedećeg|sljedećih}} razloga:',
 'moveddeleted-notice'              => 'Ova stranica je obrisana.
 Registar brisanja za stranicu je dolje naveden radi referenci.',
+'edit-hook-aborted'                => 'Izmjena je poništena putem interfejsa.
+Nije ponuđeno nikakvo objašnjenje.',
+'edit-gone-missing'                => 'Stranica se nije mogla osvježiti.
+Izgleda da je obrisana.',
+'edit-conflict'                    => 'Sukob izmjena.',
+'edit-no-change'                   => 'Vaša izmjena je ignorirana, jer nije bilo promjena teksta stranice.',
+'edit-already-exists'              => 'Stranica nije mogla biti kreirana.
+Izgleda da već postoji.',
+
+# Parser/template warnings
+'expensive-parserfunction-warning'        => 'Upozorenje: Ova stranica sadrži previše poziva opterećujućih parserskih funkcija.
+
+Trebalo bi imati manje od $2 {{PLURAL:$2|poziv|poziva}}, a sad ima {{PLURAL:$1|$1 poziv|$1 poziva}}.',
+'expensive-parserfunction-category'       => 'Stranice sa previše poziva parserskih funkcija',
+'post-expand-template-inclusion-warning'  => "'''Upozorenje:''' Šablon koji je uključen je prevelik.
+Neki šabloni neće biti uključeni.",
+'post-expand-template-inclusion-category' => 'Stranice gdje su uključeni šabloni preveliki',
+'post-expand-template-argument-warning'   => "'''Upozorenje:''' Ova stranica sadrži najmanje jedan argument u šablonu koji ima preveliku veličinu.
+Ovakvi argumenti se trebaju izbjegavati.",
+'post-expand-template-argument-category'  => 'Stranice koje sadrže nedostajuće argumente u šablonu',
+'parser-template-loop-warning'            => 'Otkrivena kružna greška u šablonu: [[$1]]',
+'parser-template-recursion-depth-warning' => 'Dubina uključivanja šablona prekoračena ($1)',
+
+# "Undo" feature
+'undo-success' => 'Izmjena se može vratiti.
+Molimo da provjerite usporedbu ispod da budete sigurni da to želite učiniti, a zatim spremite promjene da bi ste završili vraćanje izmjene.',
+'undo-failure' => 'Izmjene se ne mogu vratiti zbog konflikta sa izmjenama u međuvremenu.',
+'undo-norev'   => 'Izmjena se ne može vratiti jer ne postoji ranija ili je obrisana.',
+'undo-summary' => 'Vraćena izmjena $1 [[Special:Contributions/$2|korisnika $2]] ([[User talk:$2|razgovor]])',
 
 # History pages
 'viewpagelogs'           => 'Pogledaj protokole ove stranice',
@@ -646,7 +698,7 @@ Možete [[:\$1|stvoriti ovu stranicu]].",
 'notextmatches'                    => 'Tekst stranice ne odgovara',
 'prevn'                            => 'prethodna {{PLURAL:$1|$1}}',
 'nextn'                            => 'sljedećih {{PLURAL:$1|$1}}',
-'viewprevnext'                     => 'Pogledaj ($1) ($2) ($3)',
+'viewprevnext'                     => 'Pogledaj ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Opcije pretrage',
 'searchmenu-exists'                => "'''Postoji stranica pod nazivom \"[[\$1]]\" na ovoj wiki'''",
 'searchmenu-new'                   => "'''Napravi stranicu \"[[:\$1|\$1]]\" na ovoj wiki!'''",
@@ -722,37 +774,54 @@ Također omogućuje drugim korisnicima da vas kontaktiraju preko Vaše korisnič
 'action-edit' => 'uređujete ovu stranicu',
 
 # Recent changes
-'nchanges'                       => '$1 {{PLURAL:$1|izmjena|izmjene|izmjena}}',
-'recentchanges'                  => 'Nedavne izmjene',
-'recentchanges-legend'           => 'Postavke za Nedavne promjene',
-'recentchanges-feed-description' => 'Praćenje nedavnih izmjena na ovom wikiju u ovom feedu.',
-'rcnote'                         => "Ispod {{PLURAL:$1|je '''$1''' promjena|su '''$1''' zadnje promjene|su '''$1''' zadnjih promjena}} u {{PLURAL:$2|posljednjem '''$2''' danu|posljednja '''$2''' dana|posljednjih '''$2''' dana}}, od $4, $5.",
-'rclistfrom'                     => 'Prikaži nove izmjene počevši od $1',
-'rcshowhideminor'                => '$1 male izmjene',
-'rcshowhidebots'                 => '$1 botove',
-'rcshowhideliu'                  => '$1 prijavljene korisnike',
-'rcshowhideanons'                => '$1 anonimne korisnike',
-'rcshowhidemine'                 => '$1 moje izmjene',
-'rclinks'                        => 'Prikaži najskorijih $1 izmjena u posljednjih $2 dana<br />$3',
-'diff'                           => 'razl',
-'hist'                           => 'hist',
-'hide'                           => 'Sakrij',
-'show'                           => 'Prikaži',
-'minoreditletter'                => 'm',
-'newpageletter'                  => 'N',
-'boteditletter'                  => 'b',
-'rc-enhanced-expand'             => 'Pokaži detalje (neophodan JavaScript)',
-'rc-enhanced-hide'               => 'Sakrij detalje',
+'nchanges'                          => '$1 {{PLURAL:$1|izmjena|izmjene|izmjena}}',
+'recentchanges'                     => 'Nedavne izmjene',
+'recentchanges-legend'              => 'Postavke za Nedavne promjene',
+'recentchangestext'                 => 'Na ovoj stranici možete pratiti nedavne izmjene.',
+'recentchanges-feed-description'    => 'Praćenje nedavnih izmjena na ovom wikiju u ovom feedu.',
+'recentchanges-label-legend'        => 'Legenda: $1.',
+'recentchanges-legend-newpage'      => '$1 - nova stranica',
+'recentchanges-label-newpage'       => 'Ovom izmjenom je stvorena nova stranica',
+'recentchanges-legend-minor'        => '$1 - manja izmjena',
+'recentchanges-label-minor'         => 'Ovo je manja izmjena',
+'recentchanges-legend-bot'          => '$1 - izmjena bota',
+'recentchanges-label-bot'           => 'Ovu je izmjenu učinio bot',
+'recentchanges-legend-unpatrolled'  => '$1 - nepatrolirana izmjena',
+'recentchanges-label-unpatrolled'   => 'Ova izmjena još nije patrolirana',
+'rcnote'                            => "Ispod {{PLURAL:$1|je '''$1''' promjena|su '''$1''' zadnje promjene|su '''$1''' zadnjih promjena}} u {{PLURAL:$2|posljednjem '''$2''' danu|posljednja '''$2''' dana|posljednjih '''$2''' dana}}, od $4, $5.",
+'rcnotefrom'                        => "Ispod {{PLURAL:$1|je '''$1''' izmjena|su '''$1''' zadnje izmjene|su '''$1''' zadnjih izmjena}} u {{PLURAL:$2|posljednjem '''$2''' danu|posljednja '''$2''' dana|posljednjih '''$2''' dana}}, od $4, $5.",
+'rclistfrom'                        => 'Prikaži nove izmjene počevši od $1',
+'rcshowhideminor'                   => '$1 male izmjene',
+'rcshowhidebots'                    => '$1 botove',
+'rcshowhideliu'                     => '$1 prijavljene korisnike',
+'rcshowhideanons'                   => '$1 anonimne korisnike',
+'rcshowhidepatr'                    => '$1 patrolirane izmjene',
+'rcshowhidemine'                    => '$1 moje izmjene',
+'rclinks'                           => 'Prikaži najskorijih $1 izmjena u posljednjih $2 dana<br />$3',
+'diff'                              => 'razl',
+'hist'                              => 'hist',
+'hide'                              => 'Sakrij',
+'show'                              => 'Prikaži',
+'minoreditletter'                   => 'm',
+'newpageletter'                     => 'N',
+'boteditletter'                     => 'b',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|korisnik|korisnika}} koji pregledaju]',
+'rc_categories'                     => 'Ograniči na kategorije (razdvojene sa "|")',
+'rc_categories_any'                 => 'Sve',
+'newsectionsummary'                 => '/* $1 */ nova sekcija',
+'rc-enhanced-expand'                => 'Pokaži detalje (neophodan JavaScript)',
+'rc-enhanced-hide'                  => 'Sakrij detalje',
 
 # Recent changes linked
-'recentchangeslinked'         => 'Srodne izmjene',
-'recentchangeslinked-feed'    => 'Srodne izmjene',
-'recentchangeslinked-toolbox' => 'Srodne izmjene',
-'recentchangeslinked-title'   => 'Srodne promjene sa "$1"',
-'recentchangeslinked-summary' => "Ova posebna stranica prikazuje promjene na povezanim stranicama. 
+'recentchangeslinked'          => 'Srodne izmjene',
+'recentchangeslinked-feed'     => 'Srodne izmjene',
+'recentchangeslinked-toolbox'  => 'Srodne izmjene',
+'recentchangeslinked-title'    => 'Srodne promjene sa "$1"',
+'recentchangeslinked-noresult' => 'Nema izmjena na povezanim stranicama u zadanom periodu.',
+'recentchangeslinked-summary'  => "Ova posebna stranica prikazuje promjene na povezanim stranicama. 
 Stranice koje su na vašem [[Special:Watchlist|spisku praćenja]] su '''podebljane'''.",
-'recentchangeslinked-page'    => 'Naslov stranice:',
-'recentchangeslinked-to'      => 'Pokaži promjene stranica koji su povezane sa datom stranicom',
+'recentchangeslinked-page'     => 'Naslov stranice:',
+'recentchangeslinked-to'       => 'Pokaži promjene stranica koji su povezane sa datom stranicom',
 
 # Upload
 'upload'          => 'Postavi datoteku',

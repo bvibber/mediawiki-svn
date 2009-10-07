@@ -41,7 +41,7 @@ $1',
 
 'badaccess-group0' => 'Sie haben nicht die erforderliche Berechtigung für diese Aktion.',
 
-'youhavenewmessages'      => 'Sie haben $2 auf Ihrer $1.',
+'youhavenewmessages'      => 'Sie haben $1 auf Ihrer Diskussionsseite ($2).',
 'youhavenewmessagesmulti' => 'Sie haben neue Nachrichten: $1',
 
 # General errors
@@ -71,8 +71,8 @@ Ihr Benutzerkonto wurde eingerichtet.
 Vergessen Sie nicht, Ihre [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupassen.',
 'yourdomainname'             => 'Ihre Domain:',
 'externaldberror'            => 'Entweder es liegt ein Fehler bei der externen Authentifizierung vor, oder Sie dürfen Ihr externes Benutzerkonto nicht aktualisieren.',
-'nologin'                    => 'Sie haben kein Benutzerkonto? $1.',
-'gotaccount'                 => 'Haben Sie bereits ein Benutzerkonto? $1.',
+'nologin'                    => "Sie haben kein Benutzerkonto? '''$1'''.",
+'gotaccount'                 => "Haben Sie bereits ein Benutzerkonto? '''$1'''.",
 'userexists'                 => 'Dieser Benutzername ist schon vergeben. Bitte wählen Sie einen anderen.',
 'nocookiesnew'               => 'Der Benutzerzugang wurde erstellt, aber Sie sind nicht angemeldet.
 {{SITENAME}} benötigt für diese Funktion Cookies, bitte aktivieren Sie diese und melden sich dann mit Ihrem neuen Benutzernamen und dem zugehörigen Passwort an.',
@@ -86,7 +86,6 @@ Sie haben Cookies deaktiviert, bitte aktivieren Sie diese und versuchen Sie es e
 'nouserspecified'            => 'Bitte geben Sie einen Benutzernamen an.',
 'wrongpassword'              => 'Das Passwort ist falsch (oder fehlt). Bitte versuchen Sie es erneut.',
 'wrongpasswordempty'         => 'Es wurde kein Passwort eingegeben. Bitte versuchen Sie es erneut.',
-'passwordtooshort'           => 'Passwörter müssen mindestens {{PLURAL:$1|1 Zeichen|$1 Zeichen}} lang sein.',
 'password-name-match'        => 'Ihr Passwort muss sich von Ihrem Benutzernamen unterscheiden.',
 'passwordremindertext'       => 'Jemand mit der IP-Adresse $1, wahrscheinlich Sie selbst, hat ein neues Passwort für die Anmeldung bei {{SITENAME}} ($4) angefordert.
 
@@ -96,6 +95,7 @@ Falls Sie dies wirklich gewünscht haben, sollten Sie sich jetzt anmelden und da
 Das neue Passwort ist {{PLURAL:$5|1 Tag|$5 Tage}} gültig.
 
 Bitte ignorieren Sie diese E-Mail, falls Sie sie nicht selbst angefordert haben. Das alte Passwort bleibt weiterhin gültig.',
+'noemailcreate'              => 'Sie müssen eine gültige E-Mail-Adresse angeben',
 'passwordsent'               => 'Ein neues, temporäres Passwort wurde an die E-Mail-Adresse von Benutzer „$1“ gesandt.
 Bitte melden Sie sich damit an, sobald sie es erhalten haben. Das alte Passwort bleibt weiterhin gültig.',
 'blocked-mailpassword'       => 'Die von Ihnen verwendete IP-Adresse ist für das Ändern von Seiten gesperrt. Um einen Missbrauch zu verhindern, wurde die Möglichkeit zur Anforderung eines neuen Passwortes ebenfalls gesperrt.',
@@ -112,8 +112,8 @@ Besucher, die diese IP-Adresse verwenden, können momentan keine Benutzerkonten 
 'createaccount-text'         => 'Es wurde für Sie ein Benutzerkonto „$2“ auf {{SITENAME}} ($4) erstellt. Das automatisch generierte Passwort für „$2“ ist „$3“. Sie sollten sich nun anmelden und das Passwort ändern.
 
 Falls das Benutzerkonto irrtümlich angelegt wurde, können Sie diese Nachricht ignorieren.',
-'login-throttled'            => 'Sie haben zu oft vergeblich versucht, sich unter diesem Benutzernamen anzumelden.
-Bitte warten Sie, bevor Sie es erneut probieren.',
+'login-throttled'            => 'Sie haben zu oft versucht, sich anzumelden.
+Bitte warten Sie, bevor Sie es erneut probierst.',
 
 # Password reset dialog
 'resetpass_announce'      => 'Anmeldung mit dem per E-Mail zugesandten Code. Um die Anmeldung abzuschließen, müssen Sie jetzt ein neues Passwort wählen.',
@@ -165,7 +165,7 @@ Bitte fügen Sie alle Informationen jeder Anfrage hinzu, die Sie stellen.",
 'loginreqpagetext'                 => 'Sie müssen sich $1, um Seiten lesen zu können.',
 'newarticletext'                   => "Sie sind einem Link zu einer Seite gefolgt, die nicht vorhanden ist.
 Um die Seite anzulegen, tragen Sie Ihren Text in die untenstehende Box ein (siehe die [[{{MediaWiki:Helppage}}|Hilfeseite]] für mehr Informationen).
-Sind Sie fälschigerweise hier, klicken Sie die '''Zurück'''-Schaltfläche Ihres Browsers.",
+Sind Sie fälschlicherweise hier, klicken Sie die '''Zurück'''-Schaltfläche Ihres Browsers.",
 'anontalkpagetext'                 => "----''Diese Seite dient dazu, einem nicht angemeldeten Benutzer Nachrichten zu hinterlassen. Es wird seine IP-Adresse zur Identifizierung verwendet. IP-Adressen können von mehreren Benutzern gemeinsam verwendet werden. Wenn Sie mit den Kommentaren auf dieser Seite nichts anfangen können, richten sie sich vermutlich an einen früheren Inhaber Ihrer IP-Adresse und Sie können sie ignorieren. Sie können sich auch ein [[Special:UserLogin/signup|Benutzerkonto erstellen]] oder sich [[Special:UserLogin|anmelden]], um künftig Verwechslungen mit anderen anonymen Benutzern zu vermeiden.''",
 'noarticletext'                    => 'Diese Seite enthält momentan noch keinen Text.
 Sie können diesen Titel auf den anderen Seiten [[Special:Search/{{PAGENAME}}|suchen]],
@@ -232,6 +232,9 @@ Zu Ihrer Information folgt das Lösch- und Verschiebungs-Logbuch mit der Begrün
 'rev-deleted-text-unhide'     => "Diese Version wurde '''gelöscht'''.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].
 Einem Administrator können Sie [$1 diesen Link zur Version] nennen.",
+'rev-suppressed-text-unhide'  => "Diese Version wurde '''unterdrückt'''.
+Details stehen im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Unterdrückungs-Logbuch].
+Sie als Administrator können Sie [$1 diese Version einsehen], wenn Sie es wünschen.",
 'rev-deleted-text-view'       => "Diese Version wurde '''gelöscht'''.
 Als Administrator können Sie sie weiterhin einsehen.
 Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
@@ -282,7 +285,6 @@ Dies kann nicht mehr rückgängig gemacht werden.',
 'prefs-help-realname'        => 'Optional. Ihr echter Name wird Ihren Beiträgen zugeordnet.',
 'prefs-help-email'           => 'Die Angabe einer E-Mail ist optional, ermöglicht aber die Zusendung eines Ersatzpasswortes, wenn Sie Ihr Passwort vergessen haben.
 Mit anderen Benutzer können Sie auch über die Benutzerdiskussionsseiten Kontakt aufnehmen, ohne dass Sie Ihre Identität offenlegen müssen.',
-'prefs-help-email-required'  => 'Es wird eine gültige E-Mail-Adresse benötigt.',
 
 # User rights
 'userrights-groups-help'      => 'Sie können die Gruppenzugehörigkeit für diesen Benutzer ändern.
@@ -324,14 +326,20 @@ Um '''Mediendateien''' einzubinden, verwenden Sie zum Beispiel:
 Bitte beachten Sie, dass, genau wie bei normalen Seiteninhalten, andere Benutzer Ihre Dateien löschen oder verändern können.",
 'illegalfilename'             => 'Der Dateiname „$1“ enthält mindestens ein nicht erlaubtes Zeichen. Bitte benennen Sie die Datei um und versuchen Sie sie erneut hochzuladen.',
 'emptyfile'                   => 'Die hochgeladene Datei ist leer. Der Grund kann ein Tippfehler im Dateinamen sein. Bitte kontrollieren Sie, ob Sie die Datei wirklich hochladen wollen.',
-'fileexists'                  => "Eine Datei mit diesem Namen existiert bereits. Wenn Sie auf „Datei speichern“ klicken, wird die Datei überschrieben. Bitte prüfen Sie '''<tt>$1</tt>''', wenn Sie sich nicht sicher sind.",
-'filepageexists'              => "Eine Beschreibungsseite wurde bereits als '''<tt>$1</tt>''' erstellt, es ist aber keine Datei mit diesem Namen vorhanden. Die eingegebene Beschreibung wird nicht auf die Beschreibungsseite übernommen. Die Beschreibungsseite müssen Sie nach dem Hochladen der Datei noch manuell bearbeiten.",
-'fileexists-extension'        => "Eine Datei mit ähnlichem Namen existiert bereits:<br />
-Name der hochzuladenden Datei: '''<tt>$1</tt>'''<br />
-Name der vorhandenen Datei: '''<tt>$2</tt>'''<br />
-Nur die Dateiendung unterscheidet sich in Groß-/Kleinschreibung. Bitte prüfen Sie, ob die Dateien inhaltlich identisch sind.",
-'fileexists-thumb'            => "<center>'''Vorhandenes Bild'''</center>",
-'fileexists-thumbnail-yes'    => "Bei der Datei scheint es sich um ein Bild verringerter Größe ''(thumbnail)'' zu handeln. Bitte prüfen Sie die Datei '''<tt>$1</tt>'''.<br />
+'fileexists'                  => "Eine Datei mit diesem Namen existiert bereits.
+Wenn Sie auf „Datei speichern“ klicken, wird die Datei überschrieben.
+Bitte prüfen Sie '''<tt>[[:$1]]</tt>''', wenn Sie sich nicht sicher sind.
+[[$1|thumb]]",
+'filepageexists'              => "Eine Beschreibungsseite wurde bereits als '''<tt>[[:$1]]</tt>''' erstellt, es ist aber keine Datei mit diesem Namen vorhanden.
+Die eingegebene Beschreibung wird nicht auf die Beschreibungsseite übernommen.
+Die Beschreibungsseite müssen Sie nach dem Hochladen der Datei noch manuell bearbeiten.
+[[$1|thumb]]",
+'fileexists-extension'        => "Eine Datei mit ähnlichem Namen existiert bereits: [[$2|thumb]]
+* Name der hochzuladenden Datei: '''<tt>[[:$1]]</tt>'''
+* Name der vorhandenen Datei: '''<tt>[[:$2]]</tt>'''
+Bitte wählen Sie einen anderen Namen.",
+'fileexists-thumbnail-yes'    => "Bei der Datei scheint es sich um ein Bild verringerter Größe ''(thumbnail)'' zu handeln. [[$1|thumb]]
+Bitte prüfen Sie die Datei '''<tt>[[:$1]]</tt>'''.
 Wenn es sich um das Bild in Originalgröße handelt, so braucht kein separates Vorschaubild hochgeladen zu werden.",
 'file-thumbnail-no'           => "Der Dateiname beginnt mit '''<tt>$1</tt>'''. Dies deutet auf ein Bild verringerter Größe ''(thumbnail)'' hin.
 Bitte prüfen Sie, ob Sie das Bild in voller Auflösung vorliegen haben und laden dieses unter dem Originalnamen hoch.",
@@ -356,6 +364,15 @@ Bitte informieren Sie einen [[Special:ListUsers/sysop|System-Administrator]].',
 'upload-misc-error-text' => 'Beim Hochladen ist ein unbekannter Fehler aufgetreten.
 Prüfen Sie die URL auf Fehler, den Online-Status der Seite und versuchem Sie erneut.
 Wenn das Problem weiter besteht, informieren Sie einen [[Special:ListUsers/sysop|System-Administrator]].',
+
+# img_auth script messages
+'img-auth-nopathinfo' => 'PATH_INFO fehlt.
+Ihr Server ist nicht dafür eingerichtet, diese Information weiterzugeben.
+Es könnte CGI-basiert sein und unterstützt img_auth nicht.
+Siehe http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
+'img-auth-nologinnWL' => 'Sie sind nicht angemeldet und „$1“ ist nicht in der weißen Liste.',
+'img-auth-isdir'      => 'Sie versuchen, auf ein Verzeichnis „$1“ zuzugreifen.
+Nur Dateizugriff ist erlaubt.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6-text'  => 'Die angegebene URL ist nicht erreichbar. Prüfen Sie sowohl die URL auf Fehler als auch den Online-Status der Seite.',
@@ -411,7 +428,7 @@ Wenn Sie die Seite wieder von Ihrer Beobachtungsliste entfernen möchten, klicke
 
 'enotif_body' => 'Hallo $WATCHINGUSERNAME,
 
-die {{SITENAME}}-Seite „$PAGETITLE“ wurde von $PAGEEDITOR am $PAGEEDITDATE um $PAGEEDITTIME Uhr $CHANGEDORCREATED. $REVINFO
+die {{SITENAME}}-Seite „$PAGETITLE“ wurde von $PAGEEDITOR am $PAGEEDITDATE um $PAGEEDITTIME Uhr $CHANGEDORCREATED.
 
 Aktuelle Version: $PAGETITLE_URL
 
@@ -467,11 +484,12 @@ Im [[Special:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht der gelösch
 Dies sollte nur erfolgen, um Vandalismus zu verhindern und in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]].
 Bitte geben Sie den Grund für die Sperre an.',
 'unblockiptext'            => 'Mit diesem Formular können Sie eine IP-Adresse oder einen Benutzer freigeben.',
-'autoblocker'              => 'Automatische Sperre, da Sie eine gemeinsame IP-Adresse mit [[User:$1|Benutzer:$1]] benutzen. Grund der Benutzersperre: „$2“.',
+'autoblocker'              => 'Automatische Sperre, da Sie eine gemeinsame IP-Adresse mit [[User:$1|$1]] benutzen. Grund der Benutzersperre: „$2“.',
 'ipb-needreblock'          => '== Sperre vorhanden ==
 „$1“ ist bereits gesperrt. Möchten Sie die Sperrparameter ändern?',
 'proxyblockreason'         => 'Ihre IP-Adresse wurde gesperrt, da sie ein offener Proxy ist. Bitte kontaktieren Sie Ihren Internet-Provider oder Ihre Systemadministratoren und informieren Sie sie über dieses mögliche Sicherheitsproblem.',
 'cant-block-while-blocked' => 'Sie können keine anderen Benutzer sperren, während Sie selbst gesperrt sind.',
+'cant-see-hidden-user'     => 'Der Benutzer, den Sie versuchen zu sperren, wurde bereits gesperrt und verborgen. Da Sie das „hideuser“-Recht nicht haben, können Sie die Benutzersperre nicht sehen und nicht bearbeiten.',
 
 # Developer tools
 'locknoconfirm'     => 'Sie haben das Bestätigungsfeld nicht markiert.',

@@ -139,16 +139,21 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-action-delete'      => 'Défacer',
-'vector-action-move'        => "Canger ch'nom",
-'vector-namespace-image'    => 'Fichié',
-'vector-namespace-main'     => 'Pache',
-'vector-namespace-template' => 'Modéle',
-'vector-namespace-user'     => 'Pache dechl uzeu',
-'vector-view-create'        => 'Créer',
-'vector-view-edit'          => 'Éditer',
-'vector-view-view'          => 'Lire',
-'vector-view-viewsource'    => "Vir l'source",
+'vector-action-delete'       => 'Défacer',
+'vector-action-move'         => "Canger ch'nom",
+'vector-namespace-help'      => "Pache d'aïude",
+'vector-namespace-image'     => 'Fichié',
+'vector-namespace-main'      => 'Pache',
+'vector-namespace-mediawiki' => 'Message',
+'vector-namespace-special'   => 'Pache éspéchiale',
+'vector-namespace-talk'      => 'Pérlache',
+'vector-namespace-template'  => 'Modéle',
+'vector-namespace-user'      => 'Pache dechl uzeu',
+'vector-view-create'         => 'Créer',
+'vector-view-edit'           => 'Éditer',
+'vector-view-history'        => "Vir l'histoère",
+'vector-view-view'           => 'Lire',
+'vector-view-viewsource'     => "Vir l'source",
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -268,6 +273,10 @@ $messages = array(
 # General errors
 'error'                => 'Bérlurache',
 'databaseerror'        => "Bérlurache din l'database",
+'laggedslavemode'      => "'''Afute:''' Pététe éq l'pache-lo n'o poin chés darins canjemints.",
+'missing-article'      => "El base éd dounées n'o poin treuvé ech teske d'eune pache éq ale d'vroait treuver, aveuc ch'nom  \"\$1\" \$2. <br />  Généralemint, ch'est pasqué in o sui eune anthieusse diff o bin un histourique érlié aveuc eune pache défachée.
+
+Si s'n'est poin ch'cas-lo, pététe éq ch'est un bogue din ch'businkillache. <br /> I feut signaler ch'probléme-lo à un [[Special:ListUsers/sysop|administrateu]], aveuc l'URL.",
 'missingarticle-rev'   => '(révision#: $1)',
 'missingarticle-diff'  => '(Diff: $1, $2)',
 'internalerror'        => 'Bérlurache intérne',
@@ -302,18 +311,22 @@ $messages = array(
 'logout'                  => 'Sortir',
 'userlogout'              => 'Sortir',
 'notloggedin'             => 'Poin connékté',
-'nologin'                 => "os n'avez mie un conpte? $1.",
+'nologin'                 => "os n'avez mie un conpte? '''$1'''.",
 'nologinlink'             => 'Créer un conpte',
 'createaccount'           => 'Créer un conpte',
-'gotaccount'              => "Jou qu'os avez piécha un conpte? $1.",
+'gotaccount'              => "Jou qu'os avez piécha un conpte? '''$1'''.",
 'gotaccountlink'          => 'Intrer',
 'createaccountmail'       => 'par imèle',
 'badretype'               => "Chés mots d'passe intrés, is sont poin bon.",
 'userexists'              => "ch'nom d'uzeu intré, il est piécha donné.
 
 j'm'escuse mais i feut prinde un aute nom.",
+'loginerror'              => 'Bérlurache del intrée',
+'nouserspecified'         => "Os dvez intrer un nom d'uzeu.",
 'mailmypassword'          => "Imèle un nouvieu mot d'passe",
 'passwordremindertitle'   => "Nouvieu mot d'passe tanporoère pou {{SITENAME}}",
+'accountcreated'          => "Ch'conpte est créé",
+'accountcreatedtext'      => "Ech conpte d'uzeu pou $1 o té créé.",
 
 # Edit page toolbar
 'bold_sample'     => 'Cros teske',
@@ -357,6 +370,7 @@ Vos cangemints, is sont poin coèr inrégistrés!",
 'templatesused'                    => 'Modèles imploïés pou chol pache:',
 'templatesusedpreview'             => "Modèles imploïés din ch'prévue-lo:",
 'template-protected'               => '(garanti)',
+'template-semiprotected'           => '(semi-garanti)',
 'hiddencategories'                 => '{{PLURAL:$1|Catégorie muchée|Catégories muchées}} pou chol pache:',
 'permissionserrorstext-withaction' => "Vos n’avez poin l'pérmichon éd $2, pou {{PLURAL:$1|ch'motif suivant|chés motifs suivants}}:",
 
@@ -406,7 +420,7 @@ Os pouvez [[:\$1|créer chol pache]].",
 'prevn'                     => 'dvant {{PLURAL:$1|$1}}',
 'nextn'                     => 'apreu {{PLURAL:$1|$1}}',
 'prevn-title'               => 'Dvant $1 {{PLURAL:$1|résultat|résultats}}',
-'viewprevnext'              => 'Vir ($1) ($2) ($3)',
+'viewprevnext'              => 'Vir ($1 {{int:pipe-separator}} $2) ($3)',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 mot|$2 mots}})',
 'search-redirect'           => '(érdirection $1)',
 'search-section'            => '(sekchon $1)',
@@ -416,6 +430,7 @@ Os pouvez [[:\$1|créer chol pache]].",
 'search-interwiki-more'     => '(pus)',
 'search-mwsuggest-enabled'  => 'aveuc avanches',
 'search-mwsuggest-disabled' => "mie d'avanches",
+'nonefound'                 => "'''Note''': il y o tasseulemint quéques éspaces éd noms éq sont trachés pèr défeut. <br /> Pou tracher din tous chés contnus (paches éd pérlache, modéles, etc... comprins) insséyer in imploéyant ch'préfixe ''all:'' o bin imploéyer echl éspace éd noms édmindé conme préfixe.",
 'powersearch'               => 'Érvue avanchée',
 'powersearch-legend'        => 'Érvue avanchée',
 'powersearch-ns'            => 'Tracher din chés éspaches éd chés noms:',
@@ -423,19 +438,20 @@ Os pouvez [[:\$1|créer chol pache]].",
 'powersearch-field'         => 'Tracher pou',
 
 # Preferences page
-'preferences'          => 'Préférinches',
-'mypreferences'        => 'Mes préférinches',
-'youremail'            => 'Imèle:',
-'username'             => "Nom d'uzeu:",
-'uid'                  => 'ID dech uzeu:',
-'prefs-memberingroups' => 'Mimbe éd {{PLURAL:$1|groupe|groupes}}:',
-'yourrealname'         => 'Vrai nom:',
-'yourlanguage'         => 'Langache:',
-'badsiglength'         => 'Vote signature est gramint longue.
+'preferences'               => 'Préférinches',
+'mypreferences'             => 'Mes préférinches',
+'youremail'                 => 'Imèle:',
+'username'                  => "Nom d'uzeu:",
+'uid'                       => 'ID dech uzeu:',
+'prefs-memberingroups'      => 'Mimbe éd {{PLURAL:$1|groupe|groupes}}:',
+'yourrealname'              => 'Vrai nom:',
+'yourlanguage'              => 'Langache:',
+'badsiglength'              => 'Vote signature est gramint longue.
 Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
-'gender-male'          => 'Marle',
-'gender-female'        => 'Femelle',
-'email'                => 'Imèle',
+'gender-male'               => 'Marle',
+'gender-female'             => 'Femelle',
+'email'                     => 'Imèle',
+'prefs-help-email-required' => 'I feut eune iméle adérche',
 
 # Groups
 'group-sysop'      => 'Aménistrateus',
@@ -473,10 +489,11 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'rc-enhanced-hide'               => 'Mucher chés détails',
 
 # Recent changes linked
-'recentchangeslinked'       => 'Darins canjemints érliés',
-'recentchangeslinked-title' => 'Cangemints à pérpos éd "$1"',
-'recentchangeslinked-page'  => 'Nom del pache:',
-'recentchangeslinked-to'    => "Vir putot chés canjemints d'chés paches aveuc un loïen su l'pache-lo",
+'recentchangeslinked'         => 'Darins canjemints érliés',
+'recentchangeslinked-title'   => 'Cangemints à pérpos éd "$1"',
+'recentchangeslinked-summary' => "Ch'est eune lisse d'chés darins canjemints su chés paches qu'ont un loïen aveuc l'pache-lo. Chés paches din vote [[Special:Watchlist|''lisse à suire'']] il sont in '''cros'''.",
+'recentchangeslinked-page'    => 'Nom del pache:',
+'recentchangeslinked-to'      => "Vir putot chés canjemints d'chés paches aveuc un loïen su l'pache-lo",
 
 # Upload
 'upload'        => 'Quértcher chés fichiés',
@@ -552,6 +569,7 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'mywatchlist'       => "M'lisse à suire",
 'watchlistfor'      => "(pou '''$1''')",
 'addedwatch'        => "Rajouté su l'lisse à suire",
+'addedwatchtext'    => "L' pache « [[:$1]] » o té rajoutée à vote [[Special:Watchlist|lisse à suire]].<br /> Chés  canjemints à vnir del pache-lo pi del page éd pérlache sront mis din l'lisse. L'pache sro '''in cros''' din el [[Special:RecentChanges|lisse d'chés darins canjemints]] pou les értreuver fachilmint. Pou értirer chol pache del ''lisse à suire'', bukez su « {{MediaWiki:Unwatch}} ».",
 'removedwatch'      => 'Értiré del lisse à suire',
 'removedwatchtext'  => "L'pache « [[:$1]] » o té értirée éd vote [[Special:Watchlist|lisse à suire]].",
 'watch'             => 'Suire',
@@ -567,6 +585,7 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 
 # Delete
 'deletepage'            => "Défacer l'pache",
+'confirmdeletetext'     => "Vos alez défacer eune pache ou un fichié aveuc toutes chés antieusses vérchons.<br /> Confreumer éq ch'est cho éq vos voulez foaire, éq vos conprindez chés consécanches et pi éq ch'est bin s'lon el [[{{MediaWiki:Policy-url}}|politique éd MédiaWiki]].",
 'actioncomplete'        => 'Plònne acchon',
 'deletedtext'           => "« <nowiki>$1</nowiki> » o té défacé.
 Vir $2 pou eune lisse d'chés darinnes défachons.",
@@ -598,6 +617,7 @@ L' passèie édition del pache étoait par  [[User:$3|$3]] ([[User talk:$3|Talk]
 'protect-text'                => "Os pouvez vir pi canger ech nivieu d'protécchon ichi pou l'pache-lo '''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "Vos n’avez poin chés droés pou canger chés nivieus d'protécchon des paches.<br />
 Vlo chés réglages del pache '''$1''' à ch'momint-chi:",
+'protect-cascadeon'           => "L'pache-lo ale est garantie ker ale est incluse din {{PLURAL:$1|eune pache qu'o té garantie|des paches éq ont té garanties}} aveuc l'option « protécchon in cascate» écanillée. <br /> Os povez canger ch'nivieu d'garantie del pache mais el garantie in cascate n'sro poin cangée.",
 'protect-default'             => 'Por tertous chés uzeus',
 'protect-fallback'            => 'I feut avoèr l\'pérmission "$1"',
 'protect-level-autoconfirmed' => 'Blotcher nouvieus pi mie-inrégistrés uzeus',
@@ -663,20 +683,26 @@ Vlo chés réglages del pache '''$1''' à ch'momint-chi:",
 'block-log-flags-nocreate' => "créhachon d'conpte intérdite",
 
 # Move page
-'movearticle'     => "Déplacer l'pache",
-'newtitle'        => 'Pou un nouvieu tite:',
-'move-watch'      => "Suire l'pache-lo",
-'movepagebtn'     => "Déplacer l'pache",
-'pagemovedsub'    => 'Déplachemint réussi',
-'movepage-moved'  => '<big>\'\'\'"$1" o té déplaché su "$2"\'\'\'</big>',
-'articleexists'   => "Il y o eune pache aveuc ch'nom-lo dja, ou bin ch'tite couési n'est poin valabe. <br /> I feut in prinde un eute",
-'movedto'         => 'Déplaché dsus',
-'movetalk'        => "Canjer ch'nom del pache d'pérlache apparièe",
-'1movedto2'       => 'déplacher [[$1]] dsus [[$2]]',
-'1movedto2_redir' => "il o déplaché [[$1]] su [[$2]] in écatant l'érsin",
-'movelogpage'     => "Déplacher ch'jornal",
-'movereason'      => 'Motif:',
-'revertmove'      => 'invérser',
+'movepagetalktext' => "L'pache éd pérlache achochonnèe sro oùtonmatiquemint érlonmée aveuc l'pache-lo ''' hormis si: ''' <br />
+*eune pache éd pérlache aveuc un teske essiste aveuc ch'nom-lo piécha, ou
+*os débiffez el casse édzou.
+
+Din chés cas-lo, I feut érlonmer ou ratatouiller l'pache aveuc l'main.",
+'movearticle'      => "Déplacer l'pache",
+'newtitle'         => 'Pou un nouvieu tite:',
+'move-watch'       => "Suire l'pache-lo",
+'movepagebtn'      => "Déplacer l'pache",
+'pagemovedsub'     => 'Déplachemint réussi',
+'movepage-moved'   => '<big>\'\'\'"$1" o té déplaché su "$2"\'\'\'</big>',
+'articleexists'    => "Il y o eune pache aveuc ch'nom-lo dja, ou bin ch'tite couési n'est poin valabe. <br /> I feut in prinde un eute",
+'talkexists'       => "'''L'pache ale o té déplachée   mais l'pache d'pérlache n'put poin éte déplachée ker il y o pécho eune pache d'pérlache aveuc ch'nouvieu nom. <br /> I feut foaire un touillache al main.'''",
+'movedto'          => 'Déplaché dsus',
+'movetalk'         => "Canjer ch'nom del pache d'pérlache apparièe",
+'1movedto2'        => 'déplacher [[$1]] dsus [[$2]]',
+'1movedto2_redir'  => "il o déplaché [[$1]] su [[$2]] in écatant l'érsin",
+'movelogpage'      => "Déplacher ch'jornal",
+'movereason'       => 'Motif:',
+'revertmove'       => 'invérser',
 
 # Export
 'export' => 'Ésporter chés paches',
@@ -740,6 +766,7 @@ Os pouvez vir l'source",
 'tooltip-compareselectedversions' => 'Vir chés diférinches intre chés deus couésies vérchons del pache-lo',
 'tooltip-watch'                   => 'Ajouter chol pache-lo à vo lisse à suire',
 'tooltip-rollback'                => '« Racacher » cancéle aveuc un clic el (ou chés) modificachon(s) del pache-lo pèr sin darin contérbucheu.',
+'tooltip-undo'                    => "« Undo » ( ''démangler'' ) értire ch'canjemint-lo pi ouvre l' fénéte d'édichon din ch'mode ''prévir''. <br /> In put mette un motif din ch'résumé.",
 
 # Browsing diffs
 'previousdiff' => '← Pu vieille édition',
@@ -752,8 +779,14 @@ Os pouvez vir l'source",
 'show-big-image'       => 'Plinne résoluchon',
 'show-big-image-thumb' => '<small>Diminchon del intérvue-lo : $1 × $2 picséls</small>',
 
+# Bad image list
+'bad_image_list' => "Ch'format ch'est:
+
+In érbéye seulemint chés lisses éd limérachon (aveuc * al copéte). <br /> Ech preumié loïen d'eune line i doét éte échti d'eune méchante image. <br /> Chés eutes loïens su el méme line s'ront érbéyés conme des éssékcions, pèr eximpe des paches où l'image put aparoète.",
+
 # Metadata
 'metadata'          => 'Metadata',
+'metadata-help'     => "Ech fichié-lo i conprinte des informacions métadatas éq ils sont suremint rajoutées par echl’apàrèl foto limérique ou ech éscanère utilisé pou l' créer.<br /> Si ch' fichié o té canjé dpui sin étot avoyé, quéques détals peute n'poin corésponne à l’imache modifiée.",
 'metadata-expand'   => 'Montrer chés métadatas del imache',
 'metadata-collapse' => 'Mucher chés métadatas del imache',
 'metadata-fields'   => "Chés cans d'chés métadonnées EXIF afiqués din ch'messache-lo is s'ront mis din l'pache d'édvisse éd l'image quant el tabe d'chés métadonnées ale s'ro rapetichée.<br />

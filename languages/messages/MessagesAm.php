@@ -321,9 +321,9 @@ $messages = array(
 'nosuchaction'      => 'የማይሆን ተግባር',
 'nosuchactiontext'  => 'በURL የተወሰነው ተግባር በዚህ ዊኪ አይታወቀም።',
 'nosuchspecialpage' => 'እንዲህ የተባለ ልዩ ገጽ የለም',
-'nospecialpagetext' => "<big>'''ለማይኖር ልዩ ገጽ ጠይቀዋል።'''</big>
+'nospecialpagetext' => '<strong>ለማይኖር ልዩ ገጽ ጠይቀዋል።</strong>
 
-የሚኖሩ ልዩ ገጾች ዝርዝር በ[[Special:SpecialPages|{{int:specialpages}}]] ሊገኝ ይችላል።",
+የሚኖሩ ልዩ ገጾች ዝርዝር በ[[Special:SpecialPages|{{int:specialpages}}]] ሊገኝ ይችላል።',
 
 # General errors
 'error'                => 'ስኅተት',
@@ -398,10 +398,10 @@ $2",
 'logout'                     => 'ከብዕር ስምዎ ለመውጣት',
 'userlogout'                 => 'መውጫ',
 'notloggedin'                => 'አልገቡም',
-'nologin'                    => 'የብዕር ስም ገና የለዎም? $1!',
+'nologin'                    => "የብዕር ስም ገና የለዎም? '''$1'''!",
 'nologinlink'                => 'አዲስ የብዕር ስም ያውጡ',
 'createaccount'              => 'አዲስ አባል ለመሆን',
-'gotaccount'                 => '(አባልነት አሁን ካለዎ፥ $1 ይግቡ)',
+'gotaccount'                 => "(አባልነት አሁን ካለዎ፥ '''$1''' ይግቡ)",
 'gotaccountlink'             => 'በዚህ',
 'createaccountmail'          => 'በኢ-ሜል',
 'badretype'                  => 'የጻፉት መግቢያ ቃሎች አይስማሙም።',
@@ -736,7 +736,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'notextmatches'                    => 'ጽሕፈት የሚስማማባቸው ገጾች የሉም',
 'prevn'                            => 'ፊተኛ {{PLURAL:$1|$1}}',
 'nextn'                            => 'ቀጥሎ {{PLURAL:$1|$1}}',
-'viewprevnext'                     => 'በቁጥር ለማየት፡ ($1) ($2) ($3).',
+'viewprevnext'                     => 'በቁጥር ለማየት፡ ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'የፍለጋ ምርጫዎች',
 'searchmenu-exists'                => "'''\"[[:\$1]]\" የሚባል መጣጥፍ በዚሁ ዊኪ ላይ አለ።'''",
 'searchmenu-new'                   => "'''\"[[:\$1]]\" የሚባል መጣጥፍ ይፈጠር?'''",
@@ -1021,14 +1021,16 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'large-file'                  => 'የፋይል መጠን ከ$1 በላይ እንዳይሆን ይመከራል፤ የዚህ ፋይል መጠን $2 ነው።',
 'largefileserver'             => 'ይህ ፋይል ሰርቨሩ ከሚችለው መጠን በላይ ነው።',
 'emptyfile'                   => 'የላኩት ፋይል ባዶ እንደ ሆነ ይመስላል። ይህ ምናልባት በፋይሉ ስም አንድ ግድፋት ስላለ ይሆናል። እባክዎ ይህን ፋይል በውኑ መላክ እንደ ፈለጉ ያረጋግጡ።',
-'fileexists'                  => "ይህ ስም ያለው ፋይል አሁን ይኖራል፤ እባክዎ እሱም ለመቀየር እንደፈለጉ እርግጥኛ ካልሆኑ '''<tt>$1</tt>''' ይመለከቱ።",
-'filepageexists'              => "የዚሁ ፋኡል መግለጫ ገጽ ከዚህ በፊት በ'''<tt>$1</tt>''' ተፈጥሯል፤ ነገር ግን ይህ ስም ያለበት ፋይል አሁን አይኖርም። ስለዚህ ያቀረቡት ማጠቃለያ በመግለጫው ገጽ አይታይም። መግለጫዎ በዚያ እንዲታይ በእጅ ማስገባት ይኖርብዎታል።",
-'fileexists-extension'        => "ተመሳሳይ ስም ያለበት ፋይል ይኖራል፦<br />
-የሚላክ ፋይል ስም፦ '''<tt>$1</tt>'''<br />
-የሚኖር (የቆየው) ፋይል ስም፦ '''<tt>$2</tt>'''<br />
+'fileexists'                  => "ይህ ስም ያለው ፋይል አሁን ይኖራል፤ እባክዎ እሱም ለመቀየር እንደፈለጉ እርግጥኛ ካልሆኑ '''<tt>[[:$1]]</tt>''' ይመለከቱ።
+[[$1|thumb]]",
+'filepageexists'              => "የዚሁ ፋኡል መግለጫ ገጽ ከዚህ በፊት በ'''<tt>[[:$1]]</tt>''' ተፈጥሯል፤ ነገር ግን ይህ ስም ያለበት ፋይል አሁን አይኖርም። ስለዚህ ያቀረቡት ማጠቃለያ በመግለጫው ገጽ አይታይም። መግለጫዎ በዚያ እንዲታይ በእጅ ማስገባት ይኖርብዎታል።",
+'fileexists-extension'        => "ተመሳሳይ ስም ያለበት ፋይል ይኖራል፦[[$2|thumb]]
+* የሚላክ ፋይል ስም፦ '''<tt>[[:$1]]</tt>'''
+* የሚኖር (የቆየው) ፋይል ስም፦ '''<tt>[[:$2]]</tt>'''
 እባክዎ ሌላ ስም ይምረጡ።",
-'fileexists-thumb'            => "<center>'''የሚኖር ፋይል'''</center>",
-'fileexists-thumbnail-yes'    => "ፋይሉ የተቀነሰ መጠን ያለበት ስዕል ''(ናሙና)'' እንደ ሆነ ይመስላል። እባክዎ ፋይሉን '''<tt>$1</tt>''' ይመለከቱ።<br /> ያው ፋይል ለዚሁ ፋይል አንድ አይነት በኦሪጂናሉ መጠን ቢሆን ኖሮ፣ ተጨማሪ ናሙና መላክ አያስፈልግም።",
+'fileexists-thumbnail-yes'    => "ፋይሉ የተቀነሰ መጠን ያለበት ስዕል ''(ናሙና)'' እንደ ሆነ ይመስላል። [[$1|thumb]]
+እባክዎ ፋይሉን '''<tt>[[:$1]]</tt>''' ይመለከቱ።
+ያው ፋይል ለዚሁ ፋይል አንድ አይነት በኦሪጂናሉ መጠን ቢሆን ኖሮ፣ ተጨማሪ ናሙና መላክ አያስፈልግም።",
 'file-thumbnail-no'           => "የፋይሉ ስም በ'''<tt>$1</tt>''' ይጀመራል። የተቀነሰ መጠን ያለበት ስዕል ''(ናሙና)'' እንደ ሆነ ይመስላል። ይህን ስዕል በሙሉ ማጉላት ካለዎ፣ ይህን ይላኩ፤ አለዚያ እባክዎ የፋይሉን ስም ይቀይሩ።",
 'fileexists-forbidden'        => 'በዚህ ስም የሚኖር ፋይል ገና አለ፤ እባክዎ ተመልሰው ይህን ፋይል በአዲስ ስም ስር ይልኩት። [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'ይህ ስም ያለበት ፋይል አሁን በጋራ ፋይል ምንጭ ይኖራል፤ እባክዎ ተመልሰው ፋይሉን በሌላ ስም ስር ይላኩት። [[File:$1|thumb|center|$1]]',
@@ -1383,7 +1385,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'enotif_body'                  => 'ለ$WATCHINGUSERNAME ይድረስ፣
 
 
-የ{{SITENAME}} ገጽ $PAGETITLE በ$PAGEEDITDATEANDTIME በ$PAGEEDITOR $CHANGEDORCREATED፤ ለአሁኑኑ እትም $PAGETITLE_URL ይዩ።
+የ{{SITENAME}} ገጽ $PAGETITLE በ$PAGEEDITDATE በ$PAGEEDITOR $CHANGEDORCREATED፤ ለአሁኑኑ እትም $PAGETITLE_URL ይዩ።
 
 $NEWPAGE
 
@@ -1631,7 +1633,6 @@ $1',
 'unblocklink'                 => 'ማገጃ ለማንሣት',
 'contribslink'                => 'አስተዋጽኦች',
 'blocklogpage'                => 'የማገጃ መዝገብ',
-'blocklog-fulllog'            => 'ሙሉ የማገጃ መዝገብ',
 'blocklogentry'               => 'እስከ $2 ድረስ [[$1]] አገዳ $3',
 'blocklogtext'                => 'ይህ መዝገብ ተጠቃሚዎች መቸም ሲታገዱ ወይም ማገጃ ሲነሣ የሚዘረዝር ነው። ለአሁኑ የታገዱት ሰዎች [[Special:IPBlockList|በአሁኑ ማገጃዎች ዝርዝር]] ይታያሉ።',
 'unblocklogentry'             => 'የ$1 ማገጃ አነሣ',

@@ -84,21 +84,23 @@ var javaEmbed = {
 		this.monitor();
 	},
 	monitor:function(){
-		this.getJCE()   
-		if(this.jce && this.jce.getPlayPosition){		  
-			try{					 
-			   //java reads ogg media time.. so no need to add the start or seek offset:
-			   //js_log(' ct: ' + this.jce.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
-			   this.currentTime = this.jce.getPlayPosition();	
-			   if( this.jce.getPlayPosition() < 0){
-			   		js_log('pp:'+this.jce.getPlayPosition());				 
-					//probably reached clip end 
-					this.onClipDone();
-			   }						  
-			}catch (e){
-			   js_log('could not get time from jPlayer: ' + e);
-			}							
-		}  
+		this.getJCE();   
+		if( this.isPlaying() ){
+			if( this.jce && this.jce.getPlayPosition ){		  
+				try{					 
+				   //java reads ogg media time.. so no need to add the start or seek offset:
+				   //js_log(' ct: ' + this.jce.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
+				   this.currentTime = this.jce.getPlayPosition();	
+				   if( this.jce.getPlayPosition() < 0){
+				   		js_log('pp:'+this.jce.getPlayPosition());				 
+						//probably reached clip end					
+						this.onClipDone();					
+				   }						  
+				}catch (e){
+				   js_log('could not get time from jPlayer: ' + e);
+				}							
+			}  
+		}
 		//once currentTime is updated call parent_monitor 
 		this.parent_monitor();
 	},   
@@ -150,26 +152,14 @@ var javaEmbed = {
 			this.jce = window.frames['cframe_' + this.id ].document.getElementById( this.pid );
 		}else{
 			this.jce = $j('#'+this.pid).get( 0 );
-		}
-		/*if( ! mv_java_iframe ){
-			
-		}else{
-			if( $j('#iframe_' + this.pid ).length > 0 )
-				try{
-					this.jce = $j('#iframe_' + this.pid ).get(0).contentWindow.jPlayer;
-				}catch (e){
-					if(!this.logged_domain_error)
-						js_log("failed to grab jce we wont have time updates for java");
-					this.logged_domain_error = true;
-				}
-			else
-				return false;
-		}   */		 
+		}		 
 	},
 	doThumbnailHTML:function(){		
 		//empty out player html (jquery with java applets does mix) :			
 		var pelm = document.getElementById('dc_' + this.id );
-		pelm.innerHTML = '';		
+		if( pelm ){
+			pelm.innerHTML = '';
+		}		
 		this.parent_doThumbnailHTML();
 	},
 	play:function(){

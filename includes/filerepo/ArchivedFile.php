@@ -33,7 +33,7 @@ class ArchivedFile
 		$this->id = -1;
 		$this->title = false;
 		$this->name = false;
-		$this->group = '';
+		$this->group = 'deleted'; // needed for direct use of constructor
 		$this->key = '';
 		$this->size = 0;
 		$this->bits = 0;
@@ -48,6 +48,7 @@ class ArchivedFile
 		$this->timestamp = NULL;
 		$this->deleted = 0;
 		$this->dataLoaded = false;
+		$this->exists = false;
 		
 		if( is_object($title) ) {
 			$this->title = $title;
@@ -142,6 +143,7 @@ class ArchivedFile
 			return;
 		}
 		$this->dataLoaded = true;
+		$this->exists = true;
 
 		return true;
 	}
@@ -192,6 +194,11 @@ class ArchivedFile
 	public function getID() {
 		$this->load();
 		return $this->id;
+	}
+	
+	public function exists() {
+		$this->load();
+		return $this->exists;
 	}
 
 	/**
@@ -358,6 +365,7 @@ class ArchivedFile
 	 * @return bool
 	 */
 	public function isDeleted( $field ) {
+		$this->load();
 		return ($this->deleted & $field) == $field;
 	}
 
@@ -368,11 +376,12 @@ class ArchivedFile
 	 * @return bool
 	 */
 	public function userCan( $field ) {
-		if( ($this->deleted & $field) == $field ) {
+		$this->load();
+		if( $this->deleted & $field ) {
 			global $wgUser;
-			$permission = ( $this->deleted & File::DELETED_RESTRICTED ) == File::DELETED_RESTRICTED
+			$permission = ( $this->deleted & File::DELETED_RESTRICTED )
 				? 'suppressrevision'
-				: 'deleterevision';
+				: ( $field & File::DELETED_FILE ) ? 'deletedtext' : 'deletedhistory';
 			wfDebug( "Checking for $permission due to $field match on $this->deleted\n" );
 			return $wgUser->isAllowed( $permission );
 		} else {

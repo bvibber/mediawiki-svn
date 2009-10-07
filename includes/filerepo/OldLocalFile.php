@@ -181,17 +181,25 @@ class OldLocalFile extends LocalFile {
 	}
 
 	/**
+	 * Returns bitfield value
+	 * @return int
+	 */
+	function getVisibility() {
+		return (int)$this->deleted;
+	}
+
+	/**
 	 * Determine if the current user is allowed to view a particular
 	 * field of this image file, if it's marked as deleted.
 	 * @param int $field
 	 * @return bool
 	 */
 	function userCan( $field ) {
-		if( isset($this->deleted) && ($this->deleted & $field) == $field ) {
+		if( isset($this->deleted) && ($this->deleted & $field) ) {
 			global $wgUser;
-			$permission = ( $this->deleted & File::DELETED_RESTRICTED ) == File::DELETED_RESTRICTED
+			$permission = ( $this->deleted & File::DELETED_RESTRICTED )
 				? 'suppressrevision'
-				: 'deleterevision';
+				: ( $field & File::DELETED_FILE ) ? 'deletedtext' : 'deletedhistory';
 			wfDebug( "Checking for $permission due to $field match on $this->mDeleted\n" );
 			return $wgUser->isAllowed( $permission );
 		} else {

@@ -2139,7 +2139,7 @@ class Title {
 	/**
 	 * What is the page_latest field for this page?
 	 * @param $flags \type{\int} a bit field; may be GAID_FOR_UPDATE to select for update
-	 * @return \type{\int}
+	 * @return \type{\int} or false if the page doesn't exist
 	 */
 	public function getLatestRevID( $flags = 0 ) {
 		if( $this->mLatestID !== false )
@@ -2206,21 +2206,11 @@ class Title {
 		}
 		return $p . $name;
 	}
-
-	/**
-	 * Secure and split - main initialisation function for this object
-	 *
-	 * Assumes that mDbkeyform has been set, and is urldecoded
-	 * and uses underscores, but not otherwise munged.  This function
-	 * removes illegal characters, splits off the interwiki and
-	 * namespace prefixes, sets the other forms, and canonicalizes
-	 * everything.
-	 * @return \type{\bool} true on success
-	 */
-	private function secureAndSplit() {
-		global $wgContLang, $wgLocalInterwiki, $wgCapitalLinks;
-
-		# Initialisation
+	
+	// Returns a simple regex that will match on characters and sequences invalid in titles.
+	//  Note that this doesn't pick up many things that could be wrong with titles, but that
+	//  replacing this regex with something valid will make many titles valid.
+	static function getTitleInvalidRegex() {
 		static $rxTc = false;
 		if( !$rxTc ) {
 			# Matching titles will be held as illegal.
@@ -2236,6 +2226,25 @@ class Title {
 				'|&#x[0-9A-Fa-f]+;' .
 				'/S';
 		}
+		
+		return $rxTc;
+	}
+
+	/**
+	 * Secure and split - main initialisation function for this object
+	 *
+	 * Assumes that mDbkeyform has been set, and is urldecoded
+	 * and uses underscores, but not otherwise munged.  This function
+	 * removes illegal characters, splits off the interwiki and
+	 * namespace prefixes, sets the other forms, and canonicalizes
+	 * everything.
+	 * @return \type{\bool} true on success
+	 */
+	private function secureAndSplit() {
+		global $wgContLang, $wgLocalInterwiki, $wgCapitalLinks;
+
+		# Initialisation
+		$rxTc = self::getTitleInvalidRegex();
 
 		$this->mInterwiki = $this->mFragment = '';
 		$this->mNamespace = $this->mDefaultNamespace; # Usually NS_MAIN
@@ -2856,7 +2865,7 @@ class Title {
 	 */
 	private function moveOverExistingRedirect( &$nt, $reason = '', $createRedirect = true ) {
 		global $wgUseSquid, $wgUser;
-		$fname = 'Title::moveOverExistingRedirect';
+
 		$comment = wfMsgForContent( '1movedto2_redir', $this->getPrefixedText(), $nt->getPrefixedText() );
 
 		if ( $reason ) {
@@ -2878,7 +2887,7 @@ class Title {
 		# by definition if we've got here it's rather uninteresting.
 		# We have to remove it so that the next step doesn't trigger
 		# a conflict on the unique namespace+title index...
-		$dbw->delete( 'page', array( 'page_id' => $newid ), $fname );
+		$dbw->delete( 'page', array( 'page_id' => $newid ), __METHOD__ );
 		if ( !$dbw->cascadingDeletes() ) {
 			$dbw->delete( 'revision', array( 'rev_page' => $newid ), __METHOD__ );
 			global $wgUseTrackbacks;
@@ -2914,7 +2923,7 @@ class Title {
 				'page_latest'    => $nullRevId,
 			),
 			/* WHERE */ array( 'page_id' => $oldid ),
-			$fname
+			__METHOD__
 		);
 		$nt->resetArticleID( $oldid );
 
@@ -2935,13 +2944,13 @@ class Title {
 
 			# Now, we record the link from the redirect to the new title.
 			# It should have no other outgoing links...
-			$dbw->delete( 'pagelinks', array( 'pl_from' => $newid ), $fname );
+			$dbw->delete( 'pagelinks', array( 'pl_from' => $newid ), __METHOD__ );
 			$dbw->insert( 'pagelinks',
 				array(
 					'pl_from'      => $newid,
 					'pl_namespace' => $nt->getNamespace(),
 					'pl_title'     => $nt->getDBkey() ),
-				$fname );
+				__METHOD__ );
 			$redirectSuppressed = false;
 		} else {
 			$this->resetArticleID( 0 );
@@ -2970,7 +2979,7 @@ class Title {
 	 */
 	private function moveToNewTitle( &$nt, $reason = '', $createRedirect = true ) {
 		global $wgUseSquid, $wgUser;
-		$fname = 'MovePageForm::moveToNewTitle';
+
 		$comment = wfMsgForContent( '1movedto2', $this->getPrefixedText(), $nt->getPrefixedText() );
 		if ( $reason ) {
 			$comment .= wfMsgExt( 'colon-separator',
@@ -3004,7 +3013,7 @@ class Title {
 				'page_latest'    => $nullRevId,
 			),
 			/* WHERE */ array( 'page_id' => $oldid ),
-			$fname
+			__METHOD__
 		);
 		$nt->resetArticleID( $oldid );
 
@@ -3029,7 +3038,7 @@ class Title {
 					'pl_from'      => $newid,
 					'pl_namespace' => $nt->getNamespace(),
 					'pl_title'     => $nt->getDBkey() ),
-				$fname );
+				__METHOD__ );
 			$redirectSuppressed = false;
 		} else {
 			$this->resetArticleID( 0 );
@@ -3377,7 +3386,7 @@ class Title {
 	 */
 	public function countRevisionsBetween( $old, $new ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		return $dbr->selectField( 'revision', 'count(*)',
+		return (int)$dbr->selectField( 'revision', 'count(*)',
 			'rev_page = ' . intval( $this->getArticleId() ) .
 			' AND rev_id > ' . intval( $old ) .
 			' AND rev_id < ' . intval( $new ),

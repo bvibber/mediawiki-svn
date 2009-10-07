@@ -541,6 +541,10 @@ span.mw-revdelundel-link,
 strong.mw-revdelundel-link {
 	font-size: 90%;
 }
+span.mw-revdelundel-hidden,
+input.mw-revdelundel-hidden {
+	visibility: hidden;
+}
 
 /* feed links */
 a.feedlink {
@@ -760,12 +764,12 @@ div.gallerytext {
 
 table.mw-enhanced-rc {
 	background: none;
-	padding:0;
 	border:0;
 	border-spacing:0;
 }
 td.mw-enhanced-rc {
 	white-space:nowrap;
+	padding:0;
 	vertical-align:top;
 	font-family:monospace
 }
@@ -801,12 +805,4 @@ td.mw-enhanced-rc {
 	padding: 16px;
 	position: relative;
 	top: -16px;
-}
-
-.mw-small-spinner {
-	padding: 10px !important;
-	margin-right: 0.6em;
-	background-image: url(images/spinner.gif);
-	background-position: middle middle;
-	background-repeat: no-repeat;
 }

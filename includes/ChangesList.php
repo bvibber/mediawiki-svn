@@ -31,8 +31,8 @@ class ChangesList {
 	* Changeslist contructor
 	* @param Skin $skin
 	*/
-	public function __construct( &$skin ) {
-		$this->skin =& $skin;
+	public function __construct( $skin ) {
+		$this->skin = $skin;
 		$this->preCacheMessages();
 	}
 
@@ -446,11 +446,11 @@ class ChangesList {
 	 * @return bool
 	 */
 	public static function userCan( $rc, $field ) {
-		if( ( $rc->mAttribs['rc_deleted'] & $field ) == $field ) {
+		if( $rc->mAttribs['rc_deleted'] & $field ) {
 			global $wgUser;
-			$permission = ( $rc->mAttribs['rc_deleted'] & Revision::DELETED_RESTRICTED ) == Revision::DELETED_RESTRICTED
+			$permission = ( $rc->mAttribs['rc_deleted'] & Revision::DELETED_RESTRICTED )
 				? 'suppressrevision'
-				: 'deleterevision';
+				: ( $field & Revision::DELETED_TEXT ) ? 'deletedtext' : 'deletedhistory';
 			wfDebug( "Checking for $permission due to $field match on {$rc->mAttribs['rc_deleted']}\n" );
 			return $wgUser->isAllowed( $permission );
 		} else {
@@ -852,7 +852,7 @@ class EnhancedChangesList extends ChangesList {
 		$r .= $this->recentChangesFlags( $isnew, false, $unpatrolled, '&nbsp;', $bot );
 
 		# Timestamp
-		$r .= '&nbsp;'.$block[0]->timestamp.'&nbsp;</td><td>';
+		$r .= '&nbsp;'.$block[0]->timestamp.'&nbsp;</td><td style="padding:0px;">';
 
 		# Article link
 		if( $namehidden ) {
@@ -954,10 +954,10 @@ class EnhancedChangesList extends ChangesList {
 			extract( $rcObj->mAttribs );
 
 			#$r .= '<tr><td valign="top">'.$this->spacerArrow();
-			$r .= '<tr><td style="vertical-align:top;font-family:monospace">';
+			$r .= '<tr><td style="vertical-align:top;font-family:monospace; padding:0px;">';
 			$r .= $this->spacerIndent() . $this->spacerIndent();
 			$r .= $this->recentChangesFlags( $rc_new, $rc_minor, $rcObj->unpatrolled, '&nbsp;', $rc_bot );
-			$r .= '&nbsp;</td><td style="vertical-align:top"><span style="font-family:monospace">';
+			$r .= '&nbsp;</td><td style="vertical-align:top; padding:0px;"><span style="font-family:monospace">';
 
 			$params = $queryParams;
 
@@ -1099,7 +1099,7 @@ class EnhancedChangesList extends ChangesList {
 		} else {
 			$r .= $this->recentChangesFlags( $rc_type == RC_NEW, $rc_minor, $rcObj->unpatrolled, '&nbsp;', $rc_bot );
 		}
-		$r .= '&nbsp;'.$rcObj->timestamp.'&nbsp;</td><td>';
+		$r .= '&nbsp;'.$rcObj->timestamp.'&nbsp;</td><td style="padding:0px;">';
 		# Article or log link
 		if( $rc_log_type ) {
 			$logtitle = Title::newFromText( "Log/$rc_log_type", NS_SPECIAL );

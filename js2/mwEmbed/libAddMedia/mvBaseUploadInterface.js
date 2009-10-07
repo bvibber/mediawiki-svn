@@ -211,7 +211,7 @@ mvBaseUploadInterface.prototype = {
 			_this.upload_mode == 'api' &&
 			( $j('#wpSourceTypeFile').length ==  0 || $j('#wpSourceTypeFile').get(0).checked )
 		){
-			//@@TODO check for sendAsBinnary to support firefox 3.5 progress
+			//@@TODO check for sendAsBinnary to support firefox 3.5 progress on upload
 
 			//set the form target to iframe target:	
 			_this.iframeId = 'f_' + ($j('iframe').length + 1);					
@@ -437,7 +437,7 @@ mvBaseUploadInterface.prototype = {
 			var bObj = {};
 			bObj[ gM('mwe-return-to-form') ] = function(){
 					_this.form_post_override = false;
-					$j(this).dialog('close');
+					$j(this).empty().dialog('close');
 			 };
 
 			//@@TODO should be refactored to more specialUpload page type error handling
@@ -571,7 +571,7 @@ mvBaseUploadInterface.prototype = {
 				$j( _this.editForm ).submit();
 			};
 			bObj[ gM('mwe-return-to-form') ] = function(){
-				$j(this).dialog('close');
+				$j(this).empty().dialog('close');
 				_this.form_post_override = false;
 			}
 			_this.updateProgressWin( gM('mwe-uploadwarning'),  '<h3>' + gM('mwe-uploadwarning') + '</h3>' +wmsg + '<p>',bObj);
@@ -606,14 +606,14 @@ mvBaseUploadInterface.prototype = {
 				if( _this.done_upload_cb && typeof _this.done_upload_cb == 'function'){
 					js_log("call done_upload_cb");
 					//close up shop:
-					$j('#upProgressDialog').dialog('close');
+					$j('#upProgressDialog').empty().dialog('close');
 					//call the callback:
 					_this.done_upload_cb( apiRes.upload );
 					return false;
 				}else{
 					var bObj = {};
 					bObj[ gM('mwe-return-to-form')] = function(){
-						$j(this).dialog('close');
+						$j(this).empty().dialog('close');
 						_this.form_post_override = false;
 					}
 					bObj[ gM('mwe-go-to-resource') ] = function(){
@@ -638,10 +638,10 @@ mvBaseUploadInterface.prototype = {
 		 if(buttons){
 			 $j('#upProgressDialog').dialog('option','buttons', buttons);
 		 }else{
-			 //@@todo should convice the jquery ui people to not use object keys as user msg's
+			 //@@todo should fix jquery ui to not use object keys as user msg's
 			 var bObj = {};
 			 bObj[ gM('mwe-ok-button') ] =  function(){
-				  $j(this).dialog('close');
+				  $j(this).empty().dialog('close');
 			 };
 			 $j('#upProgressDialog').dialog('option','buttons', bObj);
 		 }
@@ -666,7 +666,7 @@ mvBaseUploadInterface.prototype = {
 	  var _this = this;
 	  
 	  //remove old instance:
-	  if($j('#upProgressDialog').length!=0){
+	  if($j('#upProgressDialog').length !=0 ){
 		 $j('#upProgressDialog').dialog( 'destroy' ).remove();
 	  }
 	  //re add it:
@@ -676,21 +676,21 @@ mvBaseUploadInterface.prototype = {
 		  title:_this.getProgressTitle(),
 		  bgiframe: true,
 		  modal: true,
+		  draggable:true,
 		  width:400,
 		  heigh:200,
 		  beforeclose: function(event, ui) {
 			  if( event.button==0 && _this.action_done === false){
 				return _this.cancel_action();
 			  }else{
-				 //click on button (dont do close action);
+				 //click on button (don't do close action);
 				 return true;
 			  }
 		  },
 		  buttons: _this.cancel_button()
 	  });
-	  $j('#upProgressDialog').html(
-	  	//set initial content:
-		'<div id="up-pbar-container" style="width:90%;height:15px;" >' +
+	  $j('#upProgressDialog').html(	  	
+		'<div id="up-pbar-container" style="width:90%;height:15px;" >' +		
 		'<div id="up-progressbar" style="height:15px;"></div>' +
 			'<div id="up-status-container">'+
 				'<span id="up-pstatus">0% - </span> ' +
@@ -705,7 +705,6 @@ mvBaseUploadInterface.prototype = {
 	  $j('#up-progressbar').progressbar({
 		  value:0
 	  });
-
 	},
 	cancel_button:function(){
 	   var _this = this;
@@ -719,11 +718,10 @@ mvBaseUploadInterface.prototype = {
 		//confirm:
 		if( confirm( gM('mwe-cancel-confim') )){
 			//@@todo (cancel the encode / upload)
-			$j(this).dialog('close');
-			return false;
-		}else{
-			return true;
+			$j(this).empty().dialog('close');		
 		}
+		//dont' follow the link; 
+		return false;
 	}
 };
 

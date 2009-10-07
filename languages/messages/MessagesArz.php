@@ -315,6 +315,7 @@ $messages = array(
 'tog-enotifminoredits'        => 'ابعتلى ايميل للتعديلات الصغيره للصفحات',
 'tog-enotifrevealaddr'        => 'بين الايميل بتاعى فى ايميلات الاعلام',
 'tog-shownumberswatching'     => 'بين عدد اليوزرز المراقبين',
+'tog-oldsig'                  => 'بروفه للامضا الحاليه',
 'tog-fancysig'                => 'امضا خام (من غير لينك أوتوماتيك)',
 'tog-externaleditor'          => 'استعمل محرر خارجى افتراضيا',
 'tog-externaldiff'            => 'استعمل فرق خارجى افتراضيا',
@@ -339,8 +340,10 @@ $messages = array(
 'underline-default' => 'على حسب إعدادات المتصفح',
 
 # Font style option in Special:Preferences
-'editfont-style'   => ':الفونت بتاع مساحة التعديل',
-'editfont-default' => 'حسب إعدادات البراوزر',
+'editfont-style'     => ':الفونت بتاع مساحة التعديل',
+'editfont-default'   => 'حسب إعدادات البراوزر',
+'editfont-monospace' => 'فونت  Monospaced',
+'editfont-sansserif' => 'فونت  Sans-serif',
 
 # Dates
 'sunday'        => 'الحد',
@@ -604,9 +607,9 @@ $1',
 ممكن تكون غلطت و انتا بتكتب الـ URL, او دوست على لينك مش مضبوطه.
 دا ممكن كمان يكون بيعنى انه فيه باج فى الـ {{SITENAME}}.',
 'nosuchspecialpage' => 'مافيش صفحة خاصة بالاسم ده',
-'nospecialpagetext' => "<big>'''انت طلبت صفحة مخصوصة مش صحيحة.'''</big>
+'nospecialpagetext' => '<strong>انت طلبت صفحة مخصوصة مش صحيحة.</strong>
 
-لستة الصفحات المخصوصة الصحيحة ممكن تلاقيها فى [[Special:SpecialPages]].",
+لستة الصفحات المخصوصة الصحيحة ممكن تلاقيها فى [[Special:SpecialPages]].',
 
 # General errors
 'error'                => 'غلطة',
@@ -699,10 +702,10 @@ $2',
 'logout'                     => 'خروج',
 'userlogout'                 => 'خروج',
 'notloggedin'                => 'انت مش مسجل دخولك',
-'nologin'                    => 'معندكش حساب؟ $1.',
+'nologin'                    => "معندكش حساب؟ '''$1'''.",
 'nologinlink'                => 'افتح حساب',
 'createaccount'              => 'افتح حساب',
-'gotaccount'                 => 'عندك حساب؟ $1.',
+'gotaccount'                 => "عندك حساب؟ '''$1'''.",
 'gotaccountlink'             => 'دخول',
 'createaccountmail'          => 'بـ الايميل',
 'badretype'                  => 'كلمتين السر اللى  كتبتهم مش  زى بعضهم',
@@ -1062,7 +1065,7 @@ $2',
 'revdelete-suppress'          => 'تخبية البيانات عن السيسوبات و اليوزرز التانيين',
 'revdelete-hide-image'        => 'خبى المحتويات بتاعة الملف',
 'revdelete-unsuppress'        => 'إزالة الضوابط من المراجعات المسترجعة',
-'revdelete-log'               => 'تعليق  على السجل:',
+'revdelete-log'               => 'سبب المسح:',
 'revdelete-submit'            => 'طبق على النسخه المختاره',
 'revdelete-logentry'          => 'غير رؤية المراجعة ل[[$1]]',
 'logdelete-logentry'          => 'غير رؤية الحدث ل[[$1]]',
@@ -1095,6 +1098,7 @@ $1",
 'revdelete-concurrent-change' => 'حصل غلط فى تعديل البند اللى بتاريخ $2,الساعه $1: حالته الظاهر فى حد تانى غيرها و انتا بتحاول تعدل فيها..
 لو سمحت بص على السجلات.',
 'revdelete-only-restricted'   => 'ماينفعش تمنع بنود من ان الاداريين يشوفوها من غير ما تختار كمان واحد من اختيارات الكبت التانيه.',
+'revdelete-reasonotherlist'   => 'سبب تانى',
 'revdelete-edit-reasonlist'   => 'عدل أسباب المسح',
 
 # Suppression log
@@ -1216,7 +1220,7 @@ $1",
 'prevn-title'                      => '$1 {{PLURAL:$1|نتيجه|نتيجه}} سابقه',
 'nextn-title'                      => '{{PLURAL:$1|النتيجه|النتايج}}  $1 اللى بعد كدا.',
 'shown-title'                      => 'اعرض $1 {{PLURAL:$1|نتيجه|نتايج}} فى كل صفحه',
-'viewprevnext'                     => 'بص ($1) ($2) ($3)',
+'viewprevnext'                     => 'بص ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'اختيارات التدوير',
 'searchmenu-exists'                => "*الصفحة '''[[$1]]'''",
 'searchmenu-new'                   => "'''ابتدى الصفحه \"[[:\$1]]\" ع الويكى دا!'''",
@@ -1619,17 +1623,17 @@ $1",
 'emptyfile'                   => 'الظاهر ان الملف اللى انت حملته طلع فاضي.
 يمكن يكون السبب هوه كتابة الاسم غلط.
 لو سمحت تتاكد من إنك فعلا عايز تحمل الملف دا..',
-'fileexists'                  => "فيه  ملف موجود بالاسم ده  الرجاء التأكد من الملف ده باتباع الوصلة التالية '''<tt>$1</tt>''' قبل ما تغيره.",
-'filepageexists'              => "صفحة الوصف بتاعة المف دا خلاص اتعملها انشاء فى '''<tt>$1</tt>'''، بس مافيش ملف بالاسم دا دلوقتى.
+'fileexists'                  => "فيه  ملف موجود بالاسم ده  الرجاء التأكد من الملف ده باتباع الوصلة التالية '''<tt>[[:$1]]</tt>''' قبل ما تغيره.
+[[$1|thumb]]",
+'filepageexists'              => "صفحة الوصف بتاعة المف دا خلاص اتعملها انشاء فى '''<tt>[[:$1]]</tt>'''، بس مافيش ملف بالاسم دا دلوقتى.
 الملخص اللى ح تكتبه  مش ح يظهر على صفحة الوصف.
 علشان تخلى الملف يظهر هناك، ح تحتاج تعدله يدوي.",
-'fileexists-extension'        => "فى ملف موجود باسم قريب:<br />
-اسم الملف اللى انت عايز تحمله: '''<tt>$1</tt>'''<br />
-اسم الملف الموجود: '''<tt>$2</tt>'''<br />
+'fileexists-extension'        => "فى ملف موجود باسم قريب: [[$2|thumb]]
+* اسم الملف اللى انت عايز تحمله: '''<tt>[[:$1]]</tt>'''
+* اسم الملف الموجود: '''<tt>[[:$2]]</tt>'''
 لو سمحت تختار اسم تاني.",
-'fileexists-thumb'            => "<center>'''الملف الموجود'''</center>",
-'fileexists-thumbnail-yes'    => "الظاهر ان الملف دا عبارة عن صورة متصغرة ''(تصغير)''. 
-لو سمحت تشيك على الملف '''<tt>$1</tt>'''.<br />
+'fileexists-thumbnail-yes'    => "الظاهر ان الملف دا عبارة عن صورة متصغرة ''(تصغير)''. [[$1|thumb]]
+لو سمحت تشيك على الملف '''<tt>[[:$1]]</tt>'''.
 لو كان الملف هو نفس الصورة بالحجم الاصلي، ف مافيش داعى تحمله مرة تانية",
 'file-thumbnail-no'           => "يبدأ الملف ب '''<tt>$1</tt>'''. 
 يبدو أن الملف مصتغر لحجم أعلى ''(تصغير)''.
@@ -1703,7 +1707,7 @@ PICT # misc.
 يمكن تجرب تانى فى وقت مايكونش فيه زحمة.',
 
 'license'            => 'ترخيص:',
-'license-header'     => 'ترخيص:',
+'license-header'     => 'الترخيص',
 'nolicense'          => 'مش متحدد',
 'license-nopreview'  => '(البروفه مش متوفره)',
 'upload_source_url'  => '  (اليوأرإل صحيح وممكن توصل ليه)',
@@ -1823,6 +1827,7 @@ PICT # misc.
 'statistics-header-edits'      => 'إحصاءات التعديلات',
 'statistics-header-views'      => 'إحصاءات المشاهدة',
 'statistics-header-users'      => 'الاحصاءات بتاعة اليوزر',
+'statistics-header-hooks'      => 'احصائيات تانيه',
 'statistics-articles'          => 'صفحات المحتوى',
 'statistics-pages'             => 'الصفحات',
 'statistics-pages-desc'        => 'كل الصفحات فى الويكى، بما فيها صفحات النقاش، التحويلات، إلى آخره.',
@@ -2179,7 +2184,7 @@ $NEWPAGE
 'protect-title'               => 'غير مستوى الحماية ل"$1"',
 'prot_1movedto2'              => '[[$1]] اتنقلت ل [[$2]]',
 'protect-legend'              => 'تأكيد الحماية',
-'protectcomment'              => 'تعليق:',
+'protectcomment'              => 'السبب:',
 'protectexpiry'               => 'تنتهى فى:',
 'protect_expiry_invalid'      => 'وقت الانتهاء مش صحيح.',
 'protect_expiry_old'          => 'وقت انتهاء المنع قديم.',
@@ -2405,7 +2410,6 @@ $1',
 'autoblocker'                     => 'انت اتمنعت اوتوماتيكى لأن الأيبى بتاعك استعمله "[[User:$1|$1]]" فى الفترة الاخيرة.
 السبب اللى خلا $1 يتمنع هو: "$2"',
 'blocklogpage'                    => 'سجل المنع',
-'blocklog-fulllog'                => 'سجل المنع الكامل',
 'blocklogentry'                   => 'منع "[[$1]]" لفتره زمنيه مدتها $2 $3',
 'reblock-logentry'                => 'غير إعدادات المنع ل[[$1]] بتاريخ انتهاء $2 $3',
 'blocklogtext'                    => 'دا سجل بعمليات المنع ورفع المنع.
@@ -2665,6 +2669,7 @@ $1 ممنوع فعلا. عايز تغير الإعدادات؟',
 'tooltip-search-fulltext'         => 'دور فى الصفحات  على النص دا',
 'tooltip-p-logo'                  => 'الصفحه الرئيسيه',
 'tooltip-n-mainpage'              => 'زور الصفحه الرئيسيه',
+'tooltip-n-mainpage-description'  => 'زور الصفحه الرئيسيه',
 'tooltip-n-portal'                => 'عن المشروع، ممكن تعمل ايه، و فين تلاقى اللى بتدور عليه',
 'tooltip-n-currentevents'         => 'مطالعه سريعه لاهم الاخبار دلوقتى',
 'tooltip-n-recentchanges'         => 'لسته بالتعديلات الجديده فى الويكى',
@@ -2835,6 +2840,8 @@ $1',
 'svg-long-desc'        => '(ملف SVG، اساسا $1 × $2 بكسل، حجم الملف: $3)',
 'show-big-image'       => 'الصورة بدقه كامله',
 'show-big-image-thumb' => '<small>حجم البروفه دى: $1 × $2 بكسل</small>',
+'file-info-gif-looped' => 'ملفوف',
+'file-info-gif-frames' => '$1 {{PLURAL:$1|برواز|براويز}}',
 
 # Special:NewFiles
 'newimages'             => 'جاليرى الصور الجديده',
@@ -3161,6 +3168,7 @@ $1',
 'watchlistall2'    => 'الكل',
 'namespacesall'    => 'الكل',
 'monthsall'        => 'الكل',
+'limitall'         => 'الكل',
 
 # E-mail address confirmation
 'confirmemail'             => 'اعمل تأكيد للأيميل بتاعك',
@@ -3446,7 +3454,7 @@ $1',
 'tag-filter-submit'       => 'فلتر',
 'tags-title'              => 'وسوم',
 'tags-intro'              => 'الصفحه دى فيها ليستة الوسوم اللى ممكن البرنامج يعلم عى التعديل بيها، و معانيهم',
-'tags-tag'                => 'اسم وسم داخلى',
+'tags-tag'                => 'اسم الوسم',
 'tags-display-header'     => 'المظهر على ليستات التغيير',
 'tags-description-header' => 'وصف كامل للمعنى',
 'tags-hitcount-header'    => 'تغييرات موسومة',
@@ -3472,5 +3480,20 @@ $1',
 'htmlform-submit'              => 'تقديم',
 'htmlform-reset'               => 'الرجوع فى التغييرات',
 'htmlform-selectorother-other' => 'تانيين',
+
+# Add categories per AJAX
+'ajax-add-category'            => 'ضيف تصنيف',
+'ajax-add-category-submit'     => 'ضيف',
+'ajax-confirm-title'           => 'تأكيد العمليه',
+'ajax-confirm-prompt'          => 'ممكن تضيف ملخص للتعديل تحت.
+دوس على "تسييف" علشان تسيف التعديل بتاعك.',
+'ajax-confirm-save'            => 'سييف',
+'ajax-add-category-summary'    => 'حط التصنيف "$1"',
+'ajax-remove-category-summary' => 'شيل التصنيف "$1"',
+'ajax-confirm-actionsummary'   => 'العمل المطلوب:',
+'ajax-error-title'             => 'غلط',
+'ajax-error-dismiss'           => 'طيب',
+'ajax-remove-category-error'   => 'مانفعش نشيل التصنيف دا.
+دا بيحصل عادة لما التصنيف بيتحط فى الصفحه عن طريق القالب',
 
 );

@@ -138,7 +138,7 @@ class EditPage {
 				$wgMessageCache->loadAllMessages( $lang );
 				$text = wfMsgGetKey( $message, false, $lang, false );
 				if( wfEmptyMsg( $message, $text ) )
-					$text = '';
+					$text = $this->getPreloadedText( $preload );
 			} else {
 				# If requested, preload some text.
 				$text = $this->getPreloadedText( $preload );
@@ -730,7 +730,12 @@ class EditPage {
 		}
 		# Give a notice if the user is editing a deleted/moved page...
 		if ( !$this->mTitle->exists() ) {
-			$this->showLogs( $wgOut );
+			LogEventsList::showLogExtract( $wgOut, array( 'delete', 'move' ), $this->mTitle->getPrefixedText(), 
+				'', array( 'lim' => 10, 
+					   'conds' => array( "log_action != 'revision'" ), 
+					   'showIfEmpty' => false, 
+					   'msgKey' => array( 'recreate-moveddeleted-warn') ) 
+			);
 		}
 	}
 
@@ -1191,6 +1196,8 @@ class EditPage {
 		# Enabled article-related sidebar, toplinks, etc.
 		$wgOut->setArticleRelated( true );
 
+		$cancelParams = array();
+
 		if ( $this->isConflict ) {
 			$wgOut->wrapWikiMsg( "<div class='mw-explainconflict'>\n$1</div>", 'explainconflict' );
 
@@ -1241,6 +1248,7 @@ class EditPage {
 
 				if ( !$this->mArticle->mRevision->isCurrent() ) {
 					$this->mArticle->setOldSubtitle( $this->mArticle->mRevision->getId() );
+					$cancelParams['oldid'] = $this->mArticle->mRevision->getId();
 					$wgOut->addWikiMsg( 'editingold' );
 				}
 			}
@@ -1277,10 +1285,8 @@ class EditPage {
 				$noticeMsg = 'protectedpagewarning';
 				$classes[] = 'mw-textarea-protected';
 			}
-			$wgOut->addHTML( "<div class='mw-warning-with-logexcerpt'>\n" );
-			$wgOut->addWikiMsg( $noticeMsg );
-			LogEventsList::showLogExtract( $wgOut, 'protect', $this->mTitle->getPrefixedText(), '', 1 );
-			$wgOut->addHTML( "</div>\n" );
+			LogEventsList::showLogExtract( $wgOut, 'protect', $this->mTitle->getPrefixedText(), '', 
+				array( 'lim' => 1, 'msgKey' => array( $noticeMsg ) ) );
 		}
 		if ( $this->mTitle->isCascadeProtected() ) {
 			# Is this page under cascading protection from some source pages?
@@ -1322,7 +1328,7 @@ class EditPage {
 			$wgTitle,
 			wfMsgExt( 'cancel', array( 'parseinline' ) ),
 			array( 'id' => 'mw-editform-cancel' ),
-			array(),
+			$cancelParams,
 			array( 'known', 'noclasses' )
 		);
 		$separator = wfMsgExt( 'pipe-separator' , 'escapenoentities' );
@@ -1588,12 +1594,6 @@ END
 </div>
 END
 );
-
-		if (!$this->preview) {
-			$wgOut->addHTML( Xml::tags( 'div',
-										array( 'class' => 'catlinks catlinks-allhidden',
-												'id' => 'catlinks' ), ' ' ) );
-		}
 
 		if ( $this->isConflict && wfRunHooks( 'EditPageBeforeConflictDiff', array( &$this, &$wgOut ) ) ) {
 			$wgOut->wrapWikiMsg( '==$1==', "yourdiff" );
@@ -2261,8 +2261,6 @@ END
 	 * @return array
 	 */
 	public function getEditButtons(&$tabindex) {
-		global $wgLivePreview, $wgUser;
-
 		$buttons = array();
 
 		$temp = array(
@@ -2277,7 +2275,7 @@ END
 		$buttons['save'] = Xml::element('input', $temp, '');
 
 		++$tabindex; // use the same for preview and live preview
-		if ( $wgLivePreview && $wgUser->getOption( 'uselivepreview' ) ) {
+		if ( $this->useLivePreview() ) {
 			$this->doLivePreviewScript(); // Add to output
 			
 			$temp = array(
@@ -2288,7 +2286,6 @@ END
 				'value'     => wfMsg('showpreview'),
 				'accesskey' => '',
 				'title'     => wfMsg( 'tooltip-preview' ).' ['.wfMsg( 'accesskey-preview' ).']',
-				'style'     => 'display: none;',
 			);
 			$buttons['preview'] = Xml::element('input', $temp, '');
 
@@ -2300,6 +2297,7 @@ END
 				'value'     => wfMsg('showlivepreview'),
 				'accesskey' => wfMsg('accesskey-preview'),
 				'title'     => '',
+				'style'     => 'display: none;',
 			);
 			
 			$buttons['live'] = Xml::element('input', $temp, '');
@@ -2330,6 +2328,21 @@ END
 
 		wfRunHooks( 'EditPageBeforeEditButtons', array( &$this, &$buttons, &$tabindex ) );
 		return $buttons;
+	}
+
+	/**
+	 * Whether to use live preview for this page
+	 * This disables live preview when editing css/js user subpages so that the
+	 * user can preview them (bug 3421)
+	 *
+	 * @return Boolean
+	 */
+	public function useLivePreview() {
+		global $wgLivePreview, $wgUser;
+
+		return $wgLivePreview && $wgUser->getOption( 'uselivepreview' ) &&
+			!( ( $this->mTitle->isCssSubpage() && $this->mTitle->userCanEditCssSubpage() ) ||
+			( $this->mTitle->isJsSubpage() && $this->mTitle->userCanEditCssSubpage() ) );
 	}
 
 	/**
@@ -2509,42 +2522,6 @@ END
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( 'nocreatetitle' ) );
 		$wgOut->addWikiMsg( 'nocreatetext' );
-	}
-
-	/**
-	 * If there are rows in the deletion/move log for this page, show them,
-	 * along with a nice little note for the user
-	 *
-	 * @param OutputPage $out
-	 */
-	protected function showLogs( $out ) {
-		global $wgUser;
-		$loglist = new LogEventsList( $wgUser->getSkin(), $out );
-		$pager = new LogPager( $loglist, array('move', 'delete'), false,
-			$this->mTitle->getPrefixedText(), '', array( "log_action != 'revision'" ) );
-
-		$count = $pager->getNumRows();
-		if ( $count > 0 ) {
-			$pager->mLimit = 10;
-			$out->addHTML( '<div class="mw-warning-with-logexcerpt">' );
-			$out->addWikiMsg( 'recreate-moveddeleted-warn' );
-			$out->addHTML(
-				$loglist->beginLogEventsList() .
-				$pager->getBody() .
-				$loglist->endLogEventsList()
-			);
-			if($count > 10){
-				$out->addHTML( $wgUser->getSkin()->link(
-					SpecialPage::getTitleFor( 'Log' ),
-					wfMsgHtml( 'log-fulllog' ),
-					array(),
-					array( 'page' => $this->mTitle->getPrefixedText() ) ) );
-			}
-			$out->addHTML( '</div>' );
-			return true;
-		}
-		
-		return false;
 	}
 
 	/**

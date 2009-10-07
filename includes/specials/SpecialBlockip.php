@@ -454,7 +454,7 @@ class IPBlockForm {
 					# If the name was hidden and the blocking user cannot hide
 					# names, then don't allow any block changes...
 					if( $currentBlock->mHideName && !$wgUser->isAllowed('hideuser') ) {
-						return array( 'hookaborted' );
+						return array( 'cant-see-hidden-user' );
 					}
 					$currentBlock->delete();
 					$block->insert();
@@ -585,22 +585,44 @@ class IPBlockForm {
 
 	private function showLogFragment( $out, $title ) {
 		global $wgUser;
-		$out->addHTML( Xml::element( 'h2', NULL, LogPage::logName( 'block' ) ) );
-		$count = LogEventsList::showLogExtract( $out, 'block', $title->getPrefixedText(), '', 10 );
-		if( $count > 10 ) {
-			$out->addHTML( $wgUser->getSkin()->link(
-				SpecialPage::getTitleFor( 'Log' ),
-				wfMsgHtml( 'blocklog-fulllog' ),
-				array(),
-				array(
-					'type' => 'block',
-					'page' => $title->getPrefixedText() ) ) );
-		}
+
+		// Used to support GENDER in 'blocklog-showlog' and 'blocklog-showsuppresslog'
+		$userBlocked = $title->getText();
+
+		LogEventsList::showLogExtract(
+			$out,
+			'block',
+			$title->getPrefixedText(),
+			'',
+			array(
+				'lim' => 10,
+				'msgKey' => array(
+					'blocklog-showlog',
+					$userBlocked
+				),
+				'showIfEmpty' => false
+			)
+		);
+
 		// Add suppression block entries if allowed
-		if( $wgUser->isAllowed('hideuser') ) {
-			$out->addHTML( Xml::element( 'h2', NULL, LogPage::logName( 'suppress' ) ) );
+		if( $wgUser->isAllowed( 'hideuser' ) ) {
 			LogEventsList::showLogExtract( $out, 'suppress', $title->getPrefixedText(), '',
-				10, array('log_action' => array('block','reblock','unblock')) );
+				array(
+					'lim' => 10,
+					'conds' => array(
+						'log_action' => array(
+							'block',
+							'reblock',
+							'unblock'
+						)
+					),
+					'msgKey' => array(
+						'blocklog-showsuppresslog',
+						$userBlocked
+					),
+					'showIfEmpty' => false
+				)
+			);
 		}
 	}
 

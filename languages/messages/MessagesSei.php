@@ -264,9 +264,9 @@ $messages = array(
 'nosuchaction'      => "Ne'dáár accion",
 'nosuchactiontext'  => 'Accion apualte URLsan z coccebj nepualat wiki zo san',
 'nosuchspecialpage' => "Ne'dáár páhina extrava",
-'nospecialpagetext' => "<big>'''Meccan páhina extrava invalida.'''</big>
+'nospecialpagetext' => '<strong>Meccan páhina extrava invalida.</strong>
 
-Meccan páhina extrava valide pac [[Special:SpecialPages]] iti.",
+Meccan páhina extrava valide pac [[Special:SpecialPages]] iti.',
 
 # General errors
 'error'                => 'Römj',
@@ -342,10 +342,10 @@ Mecaitom coccebj creatöx. Quiix hequáatlaácde {{SITENAME}} pos-poop.",
 'logout'                     => 'Cuípo',
 'userlogout'                 => 'Cuípo',
 'notloggedin'                => 'Necaápo',
-'nologin'                    => 'Menecaápo? $1.',
+'nologin'                    => "Menecaápo? '''$1'''.",
 'nologinlink'                => 'Xuatl ö',
 'createaccount'              => 'Xuatl',
-'gotaccount'                 => 'Mecaápo? $1.',
+'gotaccount'                 => "Mecaápo? '''$1'''.",
 'gotaccountlink'             => 'Caápo',
 'createaccountmail'          => 'caxuatl e-iitom',
 'badretype'                  => 'Quimx cánj zo misoj nematchöx.',
@@ -599,7 +599,7 @@ Informacion: (curt) = quiíxde vercion currentua,
 'noexactmatch'          => "'''Páhina zo \"\$1\" coccebj ne'dáár.''' Mecoccebj [[:\$1|hunpáhinámom]].",
 'prevn'                 => 'jan {{PLURAL:$1|$1}}',
 'nextn'                 => 'hun {{PLURAL:$1|$1}}',
-'viewprevnext'          => 'Cohuatlöx ($1) ($2) ($3)',
+'viewprevnext'          => 'Cohuatlöx ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'        => 'Help:Caálixötöj',
 'powersearch'           => 'Yahöx',
 

@@ -2092,6 +2092,7 @@ function getLanguageList() {
 		$m = array();
 		if( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $f, $m ) ) {
 			$code = str_replace( '_', '-', strtolower( $m[1] ) );
+			if( $code == 'qqq' ) continue;
 			if( isset( $wgLanguageNames[$code] ) ) {
 				$name = wfBCP47( $code ) . ' - ' . $wgLanguageNames[$code];
 			} else {
@@ -2199,7 +2200,7 @@ function printListItem( $item ) {
 function getShellLocale( $wikiLang ) {
 	# Give up now if we're in safe mode or open_basedir
 	# It's theoretically possible but tricky to work with
-	if ( wfIniGetBool( "safe_mode" ) || ini_get( 'open_basedir' ) ) {
+	if ( wfIniGetBool( "safe_mode" ) || ini_get( 'open_basedir' ) || !function_exists('exec') ) {
 		return false;
 	}
 

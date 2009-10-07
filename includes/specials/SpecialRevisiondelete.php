@@ -90,18 +90,19 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 	);
 
 	public function __construct() {
-		parent::__construct( 'Revisiondelete', 'deleterevision' );
+		parent::__construct( 'Revisiondelete', 'deletedhistory' );
 	}
 
 	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
-		if( !$wgUser->isAllowed( 'deleterevision' ) ) {
-			$wgOut->permissionRequired( 'deleterevision' );
+		if( !$wgUser->isAllowed( 'deletedhistory' ) ) {
+			$wgOut->permissionRequired( 'deletedhistory' );
 			return;
 		} else if( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
 		}
+		$this->mIsAllowed = $wgUser->isAllowed('deleterevision'); // for changes
 		$this->skin = $wgUser->getSkin();
 		$this->setHeaders();
 		$this->outputHeader();
@@ -118,7 +119,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		// $this->ids = array_map( 'intval', $this->ids );
 		$this->ids = array_unique( array_filter( $this->ids ) );
 
-		if ( $wgRequest->getVal( 'action' ) == 'revisiondelete' ) {
+		if ( $wgRequest->getVal( 'action' ) == 'historysubmit' ) {
 			# For show/hide form submission from history page
 			$this->targetObj = $GLOBALS['wgTitle'];
 			$this->typeName = 'revision';
@@ -175,7 +176,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		}
 
 		# Either submit or create our form
-		if( $this->submitClicked ) {
+		if( $this->mIsAllowed && $this->submitClicked ) {
 			$this->submit( $wgRequest );
 		} else {
 			$this->showForm();
@@ -184,12 +185,12 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		# Show relevant lines from the deletion log
 		$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
 		LogEventsList::showLogExtract( $wgOut, 'delete',
-			$this->targetObj->getPrefixedText(), '', 25, $qc );
+			$this->targetObj->getPrefixedText(), '', array( 'lim' => 25, 'conds' => $qc ) );
 		# Show relevant lines from the suppression log
 		if( $wgUser->isAllowed( 'suppressionlog' ) ) {
 			$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'suppress' ) ) . "</h2>\n" );
 			LogEventsList::showLogExtract( $wgOut, 'suppress',
-				$this->targetObj->getPrefixedText(), '', 25, $qc );
+				$this->targetObj->getPrefixedText(), '', array( 'lim' => 25, 'conds' => $qc ) );
 		}
 	}
 
@@ -201,9 +202,8 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		# Give a link to the logs/hist for this page
 		if( $this->targetObj ) {
 			$links = array();
-			$logtitle = SpecialPage::getTitleFor( 'Log' );
 			$links[] = $this->skin->linkKnown(
-				$logtitle,
+				SpecialPage::getTitleFor( 'Log' ),
 				wfMsgHtml( 'viewpagelogs' ),
 				array(),
 				array( 'page' => $this->targetObj->getPrefixedText() )
@@ -261,7 +261,11 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 			return;
 		}
 		if( !$oimage->userCan(File::DELETED_FILE) ) {
-			$wgOut->permissionRequired( 'suppressrevision' );
+			if( $oimage->isDeleted( File::DELETED_RESTRICTED ) ) {
+				$wgOut->permissionRequired( 'suppressrevision' );
+			} else {
+				$wgOut->permissionRequired( 'deletedtext' );
+			}
 			return;
 		}
 		if ( !$wgUser->matchEditToken( $this->token, $archiveName ) ) {
@@ -360,42 +364,47 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		// Normal sysops can always see what they did, but can't always change it
 		if( !$UserAllowed ) return;
 
-		$out =  Xml::openElement( 'form', array( 'method' => 'post',
-				'action' => $this->getTitle()->getLocalUrl( array( 'action' => 'submit' ) ), 
-				'id' => 'mw-revdel-form-revisions' ) ) .
-			Xml::fieldset( wfMsg( 'revdelete-legend' ) ) .
-			$this->buildCheckBoxes( $bitfields ) .
-			Xml::openElement( 'table' ) .
-			"<tr>\n" .
-				'<td class="mw-label">' .
-					Xml::label( wfMsg( 'revdelete-log' ), 'wpRevDeleteReasonList' ) .
-				'</td>' .
-				'<td class="mw-input">' .
-					Xml::listDropDown( 'wpRevDeleteReasonList',
-						wfMsgForContent( 'revdelete-reason-dropdown' ),
-						wfMsgForContent( 'revdelete-reasonotherlist' ), '', 'wpReasonDropDown', 1
-					) .
-				'</td>' .
-			"</tr><tr>\n" .
-				'<td class="mw-label">' .
-					Xml::label( wfMsg( 'revdelete-otherreason' ), 'wpReason' ) .
-				'</td>' .
-				'<td class="mw-input">' .
-					Xml::input( 'wpReason', 60, $this->otherReason, array( 'id' => 'wpReason' ) ) .
-				'</td>' .
-			"</tr><tr>\n" .
-				'<td></td>' .
-				'<td class="mw-submit">' .
-					Xml::submitButton( wfMsg( 'revdelete-submit' ), array( 'name' => 'wpSubmit' ) ) .
-				'</td>' .
-			"</tr>\n" .
-			Xml::closeElement( 'table' ) .
-			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
-			Xml::hidden( 'target', $this->targetObj->getPrefixedText() ) .
-			Xml::hidden( 'type', $this->typeName ) .
-			Xml::hidden( 'ids', implode( ',', $this->ids ) ) .
-			Xml::closeElement( 'fieldset' ) . "\n";
-
+		// Show form if the user can submit
+		if( $this->mIsAllowed ) {
+			$out = Xml::openElement( 'form', array( 'method' => 'post',
+					'action' => $this->getTitle()->getLocalUrl( array( 'action' => 'submit' ) ), 
+					'id' => 'mw-revdel-form-revisions' ) ) .
+				Xml::fieldset( wfMsg( 'revdelete-legend' ) ) .
+				$this->buildCheckBoxes( $bitfields ) .
+				Xml::openElement( 'table' ) .
+				"<tr>\n" .
+					'<td class="mw-label">' .
+						Xml::label( wfMsg( 'revdelete-log' ), 'wpRevDeleteReasonList' ) .
+					'</td>' .
+					'<td class="mw-input">' .
+						Xml::listDropDown( 'wpRevDeleteReasonList',
+							wfMsgForContent( 'revdelete-reason-dropdown' ),
+							wfMsgForContent( 'revdelete-reasonotherlist' ), '', 'wpReasonDropDown', 1
+						) .
+					'</td>' .
+				"</tr><tr>\n" .
+					'<td class="mw-label">' .
+						Xml::label( wfMsg( 'revdelete-otherreason' ), 'wpReason' ) .
+					'</td>' .
+					'<td class="mw-input">' .
+						Xml::input( 'wpReason', 60, $this->otherReason, array( 'id' => 'wpReason' ) ) .
+					'</td>' .
+				"</tr><tr>\n" .
+					'<td></td>' .
+					'<td class="mw-submit">' .
+						Xml::submitButton( wfMsg( 'revdelete-submit' ), array( 'name' => 'wpSubmit' ) ) .
+					'</td>' .
+				"</tr>\n" .
+				Xml::closeElement( 'table' ) .
+				Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
+				Xml::hidden( 'target', $this->targetObj->getPrefixedText() ) .
+				Xml::hidden( 'type', $this->typeName ) .
+				Xml::hidden( 'ids', implode( ',', $this->ids ) ) .
+				Xml::closeElement( 'fieldset' ) . "\n";
+		} else {
+			$out = '';
+		}
+		// Show link to edit the dropdown reasons
 		if( $wgUser->isAllowed( 'editinterface' ) ) {
 			$title = Title::makeTitle( NS_MEDIAWIKI, 'revdelete-reason-dropdown' );
 			$link = $wgUser->getSkin()->link(
@@ -406,8 +415,9 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 			);
 			$out .= Xml::tags( 'p', array( 'class' => 'mw-revdel-editreasons' ), $link ) . "\n";
 		}
-		$out .= Xml::closeElement( 'form' ) . "\n";
-
+		if( $this->mIsAllowed ) {
+			$out .= Xml::closeElement( 'form' ) . "\n";
+		}
 		$wgOut->addHTML( $out );
 	}
 
@@ -616,6 +626,7 @@ class RevisionDeleter {
 	// Get DB field name for URL param...
 	// Future code for other things may also track
 	// other types of revision-specific changes.
+	// @returns string One of log_id/rev_id/fa_id/ar_timestamp/oi_archive_name
 	public static function getRelationType( $typeName ) {
 		if ( isset( SpecialRevisionDelete::$deprecatedTypeMap[$typeName] ) ) {
 			$typeName = SpecialRevisionDelete::$deprecatedTypeMap[$typeName];
@@ -638,6 +649,8 @@ abstract class RevDel_List {
 	var $type = null; // override this
 	var $idField = null; // override this
 	var $dateField = false; // override this
+	var $authorIdField = false; // override this
+	var $authorNameField = false; // override this
 
 	/**
 	 * @param $special The parent SpecialPage
@@ -658,7 +671,7 @@ abstract class RevDel_List {
 	}
 
 	/**
-	 * Get the DB field name associated with the ID list/
+	 * Get the DB field name associated with the ID list
 	 */
 	public function getIdField() {
 		return $this->idField;
@@ -671,6 +684,19 @@ abstract class RevDel_List {
 		return $this->dateField;
 	}
 
+	/**
+	 * Get the DB field name storing user ids
+	 */
+	public function getAuthorIdField() {
+		return $this->authorIdField;
+	}
+
+	/**
+	 * Get the DB field name storing user names
+	 */
+	public function getAuthorNameField() {
+		return $this->authorNameField;
+	}
 	/**
 	 * Set the visibility for the revisions in this list. Logging and 
 	 * transactions are done here.
@@ -692,6 +718,7 @@ abstract class RevDel_List {
 		$missing = array_flip( $this->ids );
 		$this->clearFileOps();
 		$idsForLog = array();
+		$authorIds = $authorIPs = array();
 
 		for ( $this->reset(); $this->current(); $this->next() ) {
 			$item = $this->current();
@@ -731,6 +758,11 @@ abstract class RevDel_List {
 			if ( $ok ) {
 				$idsForLog[] = $item->getId();
 				$status->successCount++;
+				if( $item->getAuthorId() > 0 ) {
+					$authorIds[] = $item->getAuthorId();
+				} else if( IP::isIPAddress( $item->getAuthorName() ) ) {
+					$authorIPs[] = $item->getAuthorName();
+				}
 			} else {
 				$status->error( 'revdelete-concurrent-change', $item->formatDate(), $item->formatTime() );
 				$status->failCount++;
@@ -768,6 +800,8 @@ abstract class RevDel_List {
 			'oldBits' => $oldBits,
 			'comment' => $comment,
 			'ids' => $idsForLog,
+			'authorIds' => $authorIds,
+			'authorIPs' => $authorIPs
 		) );
 		$dbw->commit();
 
@@ -793,6 +827,8 @@ abstract class RevDel_List {
 	 *     title:           The target title
 	 *     ids:             The ID list
 	 *     comment:         The log comment
+	 *     authorsIds:      The array of the user IDs of the offenders
+	 *     authorsIPs:      The array of the IP/anon user offenders
 	 */
 	protected function updateLog( $params ) {
 		// Get the URL param's corresponding DB field
@@ -814,6 +850,8 @@ abstract class RevDel_List {
 			$params['comment'], $logParams );
 		// Allow for easy searching of deletion log items for revision/log items
 		$log->addRelations( $field, $params['ids'], $logid );
+		$log->addRelations( 'target_author_id', $params['authorIds'], $logid );
+		$log->addRelations( 'target_author_ip', $params['authorIPs'], $logid );
 	}
 
 	/**
@@ -976,6 +1014,22 @@ abstract class RevDel_Item {
 		$field = $this->list->getTimestampField();
 		return wfTimestamp( TS_MW, $this->row->$field );
 	}
+	
+	/**
+	 * Get the author user ID
+	 */	
+	public function getAuthorId() {
+		$field = $this->list->getAuthorIdField();
+		return intval( $this->row->$field );
+	}
+
+	/**
+	 * Get the author user name
+	 */	
+	public function getAuthorName() {
+		$field = $this->list->getAuthorNameField();
+		return strval( $this->row->$field );
+	}
 
 	/** 
 	 * Returns true if the item is "current", and the operation to set the given
@@ -1023,6 +1077,8 @@ class RevDel_RevisionList extends RevDel_List {
 	var $type = 'revision';
 	var $idField = 'rev_id';
 	var $dateField = 'rev_timestamp';
+	var $authorIdField = 'rev_user';
+	var $authorNameField = 'rev_user_text';
 
 	public function doQuery( $db ) {
 		$ids = array_map( 'intval', $this->ids );
@@ -1132,7 +1188,7 @@ class RevDel_RevisionItem extends RevDel_Item {
 	 */
 	protected function getRevisionLink() {
 		global $wgLang;
-		$date = $wgLang->timeanddate( $this->revision->getTimestamp() );
+		$date = $wgLang->timeanddate( $this->revision->getTimestamp(), true );
 		if ( $this->isDeleted() && !$this->canView() ) {
 			return $date;
 		}
@@ -1192,6 +1248,8 @@ class RevDel_ArchiveList extends RevDel_RevisionList {
 	var $type = 'archive';
 	var $idField = 'ar_timestamp';
 	var $dateField = 'ar_timestamp';
+	var $authorIdField = 'ar_user';
+	var $authorNameField = 'ar_user_text';
 
 	public function doQuery( $db ) {
 		$timestamps = array();
@@ -1254,7 +1312,7 @@ class RevDel_ArchiveItem extends RevDel_RevisionItem {
 	protected function getRevisionLink() {
 		global $wgLang;
 		$undelete = SpecialPage::getTitleFor( 'Undelete' );
-		$date = $wgLang->timeanddate( $this->revision->getTimestamp() );
+		$date = $wgLang->timeanddate( $this->revision->getTimestamp(), true );
 		if ( $this->isDeleted() && !$this->canView() ) {
 			return $date;
 		}
@@ -1286,6 +1344,8 @@ class RevDel_FileList extends RevDel_List {
 	var $type = 'oldimage';
 	var $idField = 'oi_archive_name';
 	var $dateField = 'oi_timestamp';
+	var $authorIdField = 'oi_user';
+	var $authorNameField = 'oi_user_text';
 	var $storeBatch, $deleteBatch, $cleanupBatch;
 
 	public function doQuery( $db ) {
@@ -1502,6 +1562,8 @@ class RevDel_ArchivedFileList extends RevDel_FileList {
 	var $type = 'filearchive';
 	var $idField = 'fa_id';
 	var $dateField = 'fa_timestamp';
+	var $authorIdField = 'fa_user';
+	var $authorNameField = 'fa_user_text';
 	
 	public function doQuery( $db ) {
 		$ids = array_map( 'intval', $this->ids );
@@ -1550,13 +1612,22 @@ class RevDel_ArchivedFileItem extends RevDel_FileItem {
 		$date = $wgLang->timeanddate( $this->file->getTimestamp(), true  );
 		$undelete = SpecialPage::getTitleFor( 'Undelete' );
 		$key = $this->file->getKey();
-		return $this->special->skin->link( $undelete, $date, array(),
-			array(
-				'target' => $this->list->title->getPrefixedText(),
-				'file' => $key,
-				'token' => $wgUser->editToken( $key )
-			)
-		);
+		# Hidden files...
+		if( !$this->canView() ) {
+			$link = $date;
+		} else {
+			$link = $this->special->skin->link( $undelete, $date, array(),
+				array(
+					'target' => $this->list->title->getPrefixedText(),
+					'file' => $key,
+					'token' => $wgUser->editToken( $key )
+				)
+			);
+		}
+		if( $this->isDeleted() ) {
+			$link = '<span class="history-deleted">' . $link . '</span>';
+		}
+		return $link;
 	}
 }
 
@@ -1567,6 +1638,8 @@ class RevDel_LogList extends RevDel_List {
 	var $type = 'logging';
 	var $idField = 'log_id';
 	var $dateField = 'log_timestamp';
+	var $authorIdField = 'log_user';
+	var $authorNameField = 'log_user_text';
 
 	public function doQuery( $db ) {
 		global $wgMessageCache;
@@ -1620,7 +1693,7 @@ class RevDel_LogItem extends RevDel_Item {
 			),
 			array(
 				'rc_logid' => $this->row->log_id,
-				'rc_timestamp' => $this->row->log_timestamp
+				'rc_timestamp' => $this->row->log_timestamp // index
 			),
 			__METHOD__
 		);
@@ -1642,9 +1715,9 @@ class RevDel_LogItem extends RevDel_Item {
 		$paramArray = LogPage::extractParams( $this->row->log_params );
 		$title = Title::makeTitle( $this->row->log_namespace, $this->row->log_title );
 
-		$logtitle = SpecialPage::getTitleFor( 'Log' );
+		// Log link for this page
 		$loglink = $this->special->skin->link(
-			$logtitle,
+			SpecialPage::getTitleFor( 'Log' ),
 			wfMsgHtml( 'log' ),
 			array(),
 			array( 'page' => $title->getPrefixedText() )

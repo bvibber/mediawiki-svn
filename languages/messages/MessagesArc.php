@@ -13,6 +13,16 @@
  * @author The Thadman
  */
 
+$specialPageAliases = array(
+	'Preferences'               => array( 'ܓܒܝܬ̈ܐ' ),
+	'Watchlist'                 => array( 'ܪ̈ܗܝܬܐ' ),
+	'Recentchanges'             => array( 'ܫܘܚܠܦ̈ܐ_ܚܕܬ̈ܐ' ),
+);
+
+$magicWords = array(
+	'redirect'              => array( '0', '#ܨܘܝܒܐ', '#REDIRECT' ),
+);
+
 $rtl = true;
 
 $defaultUserOptionOverrides = array(
@@ -26,18 +36,18 @@ $namespaceNames = array(
 	NS_MAIN             => '',
 	NS_TALK             => 'ܡܡܠܠܐ',
 	NS_USER             => 'ܡܬܚܫܚܢܐ',
-	NS_USER_TALK        => 'ܡܡܠܠܐ ܕܡܬܚܫܚܢܐ',
-	NS_PROJECT_TALK     => 'ܡܡܠܠܐ ܕ_$1',
+	NS_USER_TALK        => 'ܡܡܠܠܐ_ܕܡܬܚܫܚܢܐ',
+	NS_PROJECT_TALK     => 'ܡܡܠܠܐ_ܕ$1',
 	NS_FILE             => 'ܠܦܦܐ',
-	NS_FILE_TALK        => 'ܡܡܠܠܐ ܕܠܦܦܐ',
+	NS_FILE_TALK        => 'ܡܡܠܠܐ_ܕܠܦܦܐ',
 	NS_MEDIAWIKI        => 'ܡܝܕܝܐܘܝܩܝ',
-	NS_MEDIAWIKI_TALK   => 'ܡܡܠܠܐ ܕܡܝܕܝܐܘܝܩܝ',
+	NS_MEDIAWIKI_TALK   => 'ܡܡܠܠܐ_ܕܡܝܕܝܐܘܝܩܝ',
 	NS_TEMPLATE         => 'ܩܠܒܐ',
-	NS_TEMPLATE_TALK    => 'ܡܡܠܠܐ ܕܩܠܒܐ',
+	NS_TEMPLATE_TALK    => 'ܡܡܠܠܐ_ܕܩܠܒܐ',
 	NS_HELP             => 'ܥܘܕܪܢܐ',
-	NS_HELP_TALK        => 'ܡܡܠܠܐ ܕܥܘܕܪܢܐ',
+	NS_HELP_TALK        => 'ܡܡܠܠܐ_ܕܥܘܕܪܢܐ',
 	NS_CATEGORY         => 'ܣܕܪܐ',
-	NS_CATEGORY_TALK    => 'ܡܡܠܠܐ ܕܣܕܪܐ',
+	NS_CATEGORY_TALK    => 'ܡܡܠܠܐ_ܕܣܕܪܐ',
 );
 
 $messages = array(
@@ -293,13 +303,13 @@ Note that some pages may continue to be displayed as if you were still logged in
 'login'                   => 'ܥܘܠ',
 'nav-login-createaccount' => 'ܥܘܠ / ܒܪܝ ܚܘܫܒܢܐ',
 'userlogin'               => 'ܥܘܠ / ܒܪܝ ܚܘܫܒܢܐ',
-'logout'                  => 'ܦܠܛܐ',
-'userlogout'              => 'ܦܠܘܛ',
+'logout'                  => 'ܦܠܘܛ',
+'userlogout'              => 'ܦܠܛܐ',
 'notloggedin'             => 'ܠܐ ܥܠܝܠܐ',
-'nologin'                 => 'ܠܝܬ ܠܟ ܚܘܫܒܢܐ؟ $1.',
+'nologin'                 => "ܠܝܬ ܠܟ ܚܘܫܒܢܐ؟ '''$1'''.",
 'nologinlink'             => 'ܒܪܝ ܚܘܫܒܢܐ',
 'createaccount'           => 'ܒܪܝ ܚܘܫܒܢܐ',
-'gotaccount'              => 'ܐܝܬ ܠܟ ܚܘܫܒܢܐ؟ $1.',
+'gotaccount'              => "ܐܝܬ ܠܟ ܚܘܫܒܢܐ؟ '''$1'''.",
 'gotaccountlink'          => 'ܥܘܠ',
 'createaccountmail'       => 'ܒܒܝܠܕܪܐ ܐܠܟܬܪܘܢܝܐ',
 'badretype'               => 'ܡܠܬܐ ܕܥܠܠܬܐ ܟܬܒ ܐܢܬ ܠܐ ܐܘܝܢܬܐ.',
@@ -389,7 +399,7 @@ Note that some pages may continue to be displayed as if you were still logged in
 'last'                   => 'ܩܕܡ',
 'page_first'             => 'ܩܕܡܝܐ',
 'page_last'              => 'ܐܚܪܝܐ',
-'histlegend'             => "ܓܒܝܐ ܕܦܪܝܫܘܬܐ: ܓܒܝ ܣܢܕܘܩ̈ܐ ܕܬܢܝܬ̈ܐ ܠܦܘܚܡܐ ܘܕܘܫ ܐܘ '''ܦܚܘܡ ܒܝܬ ܬܪܝܢ ܬܢܝܬ̈ܐ ܓܒܝܬ̈ܐ'''.<br />
+'histlegend'             => "ܓܒܝܐ ܕܦܪܝܫܘܬܐ: ܓܒܝ ܣܢܕܘܩ̈ܐ ܕܬܢܝܬ̈ܐ ܠܦܘܚܡܐ ܘܕܘܫ '''Enter''' ܐܘ '''ܦܚܘܡ ܒܝܬ ܬܪܝܢ ܬܢܝܬ̈ܐ ܓܒܝܬ̈ܐ'''.<br />
 ܩܠܝܕܐ: '''({{int:cur}})''' = ܦܪܝܫܘܬܐ ܥܡ ܬܢܝܬܐ ܗܫܝܬܐ,
 '''({{int:last}})''' = ܦܪܝܫܘܬܐ ܥܡ ܬܢܝܬܐ ܩܕܝܡܬܐ, '''{{int:minoreditletter}}''' = ܫܘܚܠܦܐ ܙܥܘܪܐ.",
 'history-fieldset-title' => 'ܡܦܐܬ ܬܫܥܝܬܐ',
@@ -472,7 +482,7 @@ Note that some pages may continue to be displayed as if you were still logged in
 'textmatches'                    => 'ܟܬܒܬܐ ܐܘܝܢܬܐ',
 'notextmatches'                  => 'ܠܝܬ ܟܬܒܬܐ ܐܘܝܢܬܐ',
 'shown-title'                    => 'ܚܘܝ $1 {{PLURAL:$1|ܦܠܛܐ|ܦܠܛ̈ܐ}} ܠܟܠ ܦܐܬܐ',
-'viewprevnext'                   => 'ܚܘܝ ($1) ($2) ($3)',
+'viewprevnext'                   => 'ܚܘܝ ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'              => 'ܓܒܝܬ̈ܐ ܕܒܘܨܝܐ',
 'searchmenu-exists'              => "'''ܐܝܬ ܦܐܬܐ ܒܫܡ \"[[:\$1]]\" ܥܠ ܗܢܐ ܘܝܩܝ'''",
 'searchmenu-new'                 => "'''ܒܪܝ ܦܐܬܐ \"[[:\$1]]\" ܥܠ ܗܢܐ ܘܝܩܝ!'''",
@@ -644,6 +654,7 @@ Note that some pages may continue to be displayed as if you were still logged in
 'recentchanges-label-newpage'  => 'ܫܘܚܠܦܐ ܗܢܐ ܒܪܐ ܦܐܬܐ ܚܕܬܐ',
 'recentchanges-legend-minor'   => '$1 - ܫܘܚܠܦܐ ܙܥܘܪܐ',
 'recentchanges-label-minor'    => 'ܗܢܐ ܗܘ ܫܘܚܠܦܐ ܙܥܘܪܐ',
+'recentchanges-legend-bot'     => '$1 - ܫܘܚܠܦܐ ܕܒܘܬ (bot)',
 'rclistfrom'                   => 'ܚܘܝ ܫܘܚܠܦ̈ܐ ܚܕܬ̈ܐ ܡܢ $1',
 'rcshowhideminor'              => '$1 ܫܘܚܠܦ̈ܐ ܙܥܘܪ̈ܐ',
 'rcshowhidebots'               => '$1 ܒܘܬ̈ܐ (Bots)',
@@ -770,13 +781,13 @@ Note that some pages may continue to be displayed as if you were still logged in
 'uncategorizedimages'     => 'ܠܦܦ̈ܐ ܠܐ ܣܕܝܪ̈ܐ',
 'uncategorizedtemplates'  => 'ܩܠܒ̈ܐ ܠܐ ܣܕܝܪ̈ܐ',
 'wantedcategories'        => 'ܣܕܪ̈ܐ ܒܥܝ̈ܐ',
-'wantedpages'             => 'ܦܐܬܬ̈ܐ ܒܥܝ̈ܐ',
+'wantedpages'             => 'ܦܐܬܬ̈ܐ ܒܥܝܬ̈ܐ',
 'wantedfiles'             => 'ܠܦܦ̈ܐ ܒܥܝ̈ܐ',
-'wantedtemplates'         => 'ܩܠܒ̈ܐ ܒܥܝܐ',
+'wantedtemplates'         => 'ܩܠܒ̈ܐ ܒܥܝ̈ܐ',
 'shortpages'              => 'ܦܐܬܬ̈ܐ ܟܪ̈ܝܬܐ',
 'longpages'               => 'ܦܐܬܬ̈ܐ ܐܪ̈ܝܟܬܐ',
 'deadendpages'            => 'ܦܐܬܬ̈ܐ ܥܡ ܚܪܬܐ ܡܝܬܬܐ',
-'protectedpages'          => 'ܦܐܬܬ̈ܐ ܢܛܝܪ̈ܐ',
+'protectedpages'          => 'ܦܐܬܬ̈ܐ ܢܛܝܪ̈ܬܐ',
 'listusers'               => 'ܒܪܒܝܢ ܕܗܕܡ̈ܐ',
 'listusers-editsonly'     => 'ܚܘܝ ܡܦܠܚܢ̈ܐ ܥܡ ܫܘܚܠܦ̈ܐ ܒܠܚܘܕ',
 'listusers-creationsort'  => 'ܛܟܣ ܒܣܝܩܘܡܐ ܕܒܪܝܐ',
@@ -1015,7 +1026,6 @@ Note that some pages may continue to be displayed as if you were still logged in
 'change-blocklink'           => 'ܫܚܠܦ ܚܪܡܐ',
 'contribslink'               => 'ܫܘ̈ܬܦܘܝܬܐ',
 'blocklogpage'               => 'ܣܓܠܐ ܕܚܪܡܐ',
-'blocklog-fulllog'           => 'ܣܓܠܐ ܕܚܪܡܐ ܫܠܡܐ',
 'blocklogentry'              => 'ܚܪܡ [[$1]] ܠܡܬܚܐ ܕ $2 $3',
 'unblocklogentry'            => 'ܫܩܠ ܚܪܡܐ ܡܢ $1',
 'block-log-flags-anononly'   => 'ܡܦܠܚܢ̈ܐ ܠܐ ܝܕܝܥ̈ܐ ܒܠܚܘܕ',

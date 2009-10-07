@@ -50,8 +50,6 @@ loadGM({
 var default_remote_search_options = {
 	'profile':'mediawiki_edit',
 	'target_container':null, //the div that will hold the search interface
-	//if using a modeal dialog (instead of target_container) how close to the edge of the window should we go:
-	'modal_edge_padding':'20px',
 
 	'target_invocation': null, //the button or link that will invoke the search interface
 
@@ -73,9 +71,12 @@ var default_remote_search_options = {
 	'p_seq':null,
 	'cFileNS':'File', //What is the canonical namespace prefix for images
 					  //@@todo (should get that from the api or in-page vars)
-
-	'enable_upload_tab':true, // if we want to enable an uploads tab:
-	'upload_api_target'	   : 'http://localhost/wiki_trunk/api.php' // can be local or the url of the upload api.
+	
+	'upload_api_target': 'http://localhost/wiki_trunk/api.php', // can be local or the url of the upload api.
+	
+	'enabled_cps':'all', //can be keyword 'all' or an array of enabled content provider keys
+		
+	'disp_item':'wiki_commons' //sets the default display item:
 }
 
 if(typeof wgServer == 'undefined')
@@ -101,15 +102,10 @@ remoteSearchDriver.prototype = {
 		'advanced_search':{
 			'title': 'Advanced Options'
 		}
-	},
-	/*
-	 * sets the default display item:
-	 * can be any content_providers key or 'all'
-	 */
-	disp_item : 'wiki_commons',
+	},	
 	/** the default content providers list.
 	 *
-	 * (should be note that special tabs like "upload" and "combined" don't go into the content proviers list:
+	 * (should be note that special tabs like "upload" and "combined" don't go into the content providers list:
 	 * @note do not use double underscore in content providers names (used for id lookup)
 	 *
 	 * @@todo we will want to load more per user-preference and per category lookup
@@ -203,6 +199,12 @@ remoteSearchDriver.prototype = {
 			'remote_embed_ext': false, //if running the remoteEmbed extension no need to copy local
 									   //syntax will be [remoteEmbed:roe_url link title]
 			'tab_img':true
+		},
+		//special cp "upload"
+		'upload':{
+			'enabled':1,
+			'checked':1,
+			'title'	:'Upload'			
 		}
 	},
 	//define the licenses
@@ -310,7 +312,7 @@ remoteSearchDriver.prototype = {
 		};
 	},
 	//some default layout values:
-	thumb_width		 : 80,
+	thumb_width		 	: 80,
 	image_edit_width	: 400,
 	video_edit_width	: 400,
 	insert_text_pos		: 0,	  //insert at the start (will be overwritten by the user cursor pos)
@@ -320,51 +322,28 @@ remoteSearchDriver.prototype = {
 	cEdit				: null,
 	dmodalCss			: {},
 
-	init: function( iObj ){
+	init: function( options ){
 		var _this = this;
 		js_log('remoteSearchDriver:init');
-		for( var i in default_remote_search_options ) {
-			if( iObj[i]){
-				this[ i ] = iObj[i];
-			}else{
-				this[ i ] = default_remote_search_options[i];
-			}
-		}
+		
+		//merge in the options:  
+		//@@todo for cleaner config we should set _this.opt to the provided options) 
+		$j.extend( _this, default_remote_search_options, options);
+		
 		//update the base text:
 		if(_this.target_textbox)
 		   _this.getTexboxSelection();
 
-		//set up the content provider config:
-		if( this.cpconfig ){
-			for(var cpc in cpconfig){
-				for(var cinx in this.cpconfig[cpc]){
-					if( this.content_providers[cpc] )
-						this.content_providers[ cpc ][ cinx ] = this.cpconfig[cpc][ cinx];
+		//modify the content provider config based on options: 
+		if(_this.enabled_cps != 'all'){
+			for(var i in this.content_providers){
+				if( $j.inArray(i, _this.enabled_cps)!= -1){
+					this.content_providers[i].enabled = true;
+				}else{
+					this.content_providers[i].enabled = false;
 				}
 			}
-		}
-
-		//make sure the selected cp has an api to query against (if its a content_provider
-		if( this.content_providers[ this.disp_item ] &&
-			!this.content_providers[ this.disp_item ].api_url  ){
-			for(var inx in this.content_providers){
-				if( this.content_providers[ inx ].api_url ){
-					this.disp_item = inx;
-					break;
-				}
-			}
-		}
-
-
-		//set up the default model config:
-		this.dmodalCss = {
-			'width':'auto',
-			'height':'auto',
-			'top'	: this.modal_edge_padding,
-			'left'	: this.modal_edge_padding,
-			'right' : this.modal_edge_padding,
-			'bottom': this.modal_edge_padding
-		}
+		}		
 
 
 		//set up the target invocation:
@@ -395,6 +374,8 @@ remoteSearchDriver.prototype = {
 					_this.getTexboxSelection();
 			  //$j(_this.target_container).dialog("open");
 			  $j(_this.target_container).parents('.ui-dialog').fadeIn('slow');
+			  //re-center the dialog:
+			  $j(_this.target_container).dialog('option', 'position','center');
 		 });
 	},
 	//gets the in and out points for insert position or grabs the selected text for search
@@ -443,54 +424,46 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		//add the parent target_container if not provided or missing
 		if(!_this.target_container || $j(_this.target_container).length==0){
-			$j('body').append('<div id="rsd_modal_target" style="position:absolute;top:30px;left:0px;bottom:33px;right:0px;" title="' + gM('mwe-add_media_wizard') + '" ></div>');
+			$j('body').append('<div id="rsd_modal_target" style="position:absolute;top:3em;left:0px;bottom:3em;right:0px;" title="' + gM('mwe-add_media_wizard') + '" ></div>');
 			_this.target_container = '#rsd_modal_target';
 			//js_log('appended: #rsd_modal_target' + $j(_this.target_container).attr('id'));
 			//js_log('added target id:' + $j(_this.target_container).attr('id'));
 			//get layout
 			//layout = _this.getMaxModalLayout();
+			js_log( 'width: ' + $j(window).width() +  ' height: ' + $j(window).height());
+			var cConf = {};
+			cConf['cancel'] = function(){
+				_this.cancelClipEditCB()
+			}
+			function doResize(){
+				js_log('do resize:: ' + _this.target_container);				
+				$j( '#rsd_modal_target').dialog('option', 'width', $j(window).width()-50 );
+				$j( '#rsd_modal_target').dialog('option', 'height', $j(window).height()-50 );
+				$j( '#rsd_modal_target').dialog('option', 'position','center');
+			}
+			
 			$j(_this.target_container).dialog({
 				bgiframe: true,
 				autoOpen: true,
 				modal: true,
 				draggable:false,
 				resizable:false,
-				buttons: {
-					'_': function() {
-						//just a place-holder
-					}
-				},
+				buttons:cConf,								
 				close: function() {
 					//if we are 'editing' a item close that					
 					_this.cancelClipEditCB();
 					js_log('closed modal');
 					$j(this).parents('.ui-dialog').fadeOut('slow');
 				}
-			}).parent('.ui-dialog').css( _this.dmodalCss );
+			});				
+			doResize();
+			$j(window).resize(function(){
+				doResize();
+			});
 			
-			//@@bind on resize to disable css dialog to update dmodelCss 
-			//(resize and drag presently disabled) 
-			/*.bind('resizestart', function(event, ui) {
-				 _this.dmodalCss = {};
-				 $j(this).css({});
-			})
-			//bind on drag to remove preset style as well
-			.bind('dragstart', function(event, ui) {
-				 _this.dmodalCss = {};
-				 $j(this).css({});
-			});*/
 			
-			/*var resizeTimer = false;
-			$j(window).bind('resize', function() {
-				var adjustModal = function(){
-					var layout = _this.getMaxModalLayout();
-					//js_log("should adjust: h " + layout.h + ' width:' + layout.w);
-					$j(_this.target_container).dialog('option', 'width', layout.w);
-					$j(_this.target_container).dialog('option', 'height', layout.h);
-				}
-				if (resizeTimer) clearTimeout(resizeTimer);
-				var resizeTimer = setTimeout(adjustModal, 100);
-			});*/
+			//re add cancel button
+			_this.cancelClipEditCB();
 			
 			//update the child position: (some of this should be pushed up-stream via dialog config options
 			$j(_this.target_container +'~ .ui-dialog-buttonpane').css({
@@ -499,11 +472,12 @@ remoteSearchDriver.prototype = {
 				'right':'0px',
 				'bottom':'0px'
 			});
-			//re add cancel button
-			_this.cancelClipEditCB();
+			/*
+			
+			
 			js_log('done setup of target_container: ' +
 				$j(_this.target_container +'~ .ui-dialog-buttonpane').length);
-
+			*/
 			
 		}
 	},
@@ -602,13 +576,13 @@ remoteSearchDriver.prototype = {
 			if( parseUri( document.URL ).host == parseUri( _this.upload_api_target ).host ){
 				mvJsLoader.doLoad(['$j.fn.simpleUploadForm'],function(){
 
-					//get extened info about the file
+					//get extends info about the file
 					var cp = _this.content_providers['this_wiki'];
 					//check for "this_wiki" enabled
-					if(!cp.enabled){
+					/*if(!cp.enabled){
 						$j('#tab-upload').html('error this_wiki not enabled (can\'t get uploaded file info)');
 						return false;
-					}
+					}*/
 
 					//load  this_wiki search system to grab the rObj
 					_this.loadSearchLib(cp, function(){
@@ -672,15 +646,14 @@ remoteSearchDriver.prototype = {
 		js_log("f:runSearch::" + this.disp_item);
 		//draw_direct_flag
 		var draw_direct_flag = true;
-		if( !this.content_providers[this.disp_item] ){
-			//check if its the special upload tab case:
-			if( this.disp_item == 'upload'){
-				this.doUploadInteface();
-			}else{
-				js_log("can't run search for:" + this.disp_item);
-			}
-			return false;
+			
+		//check if its the special upload tab case:
+		if( this.disp_item == 'upload'){
+			this.doUploadInteface();
+			return true;
 		}
+		//else do runSearch			
+		
 		cp = this.content_providers[this.disp_item];
 
 		//check if we need to update:
@@ -956,7 +929,8 @@ remoteSearchDriver.prototype = {
 		p = rid.split('__');
 		var cp_id = p[0];
 		var rid = p[1];
-
+		
+		//Set the upload helper cp_id (to render recent uploads by this user)
 		if(cp_id == 'upload')
 			cp_id = 'this_wiki';
 
@@ -1074,7 +1048,7 @@ remoteSearchDriver.prototype = {
 		$j( _this.target_container ).find('#rsd_resource_edit').remove();
 		//add the edit layout window with loading place holders
 		$j( _this.target_container ).append('<div id="rsd_resource_edit" '+
-			'style="position:absolute;top:0px;left:0px;bottom:5px;right:4px;background-color:#FFF;">' +
+			'style="position:absolute;top:0px;left:0px;bottom:0px;right:4px;background-color:#FFF;">' +
 				'<div id="clip_edit_disp" style="position:absolute;' + overflow_style + 'width:100%;height:100%;padding:5px;'+
 					'width:' + (maxWidth) + 'px;" >' +
 						mv_get_loading_img('position:absolute;top:30px;left:30px') +
@@ -1123,18 +1097,14 @@ remoteSearchDriver.prototype = {
 			'cursor':'default',
 			'opacity':0
 		});
-
-
-		//try and keep aspect ratio for the thumbnail that we clicked:
-		var rh = $j('#rsd_edit_img').height();
-		var rw = $j('#rsd_edit_img').width(); 
 		
-		var tRatio = rh / rw;
+		//try and keep aspect ratio for the thumbnail that we clicked:				
+		var tRatio = rObj.orgheight / rObj.orgwidth;
 
 		if(	! tRatio )
 			var tRatio = 1; //set ratio to 1 if tRatio did not work. 
 
-		//js_log('set from ' +  $j('#rsd_edit_img').width() + 'x' + $j('#rsd_edit_img').height() + ' to init thumbimage to ' + maxWidth + ' x ' + parseInt( tRatio * maxWidth) );
+		//js_log('set from ' +  tRatio + ' to init thumbimage to ' + maxWidth + ' x ' + parseInt( tRatio * maxWidth) );
 		//scale up image and to swap with high res version
 		$j('#rsd_edit_img').animate({
 			'opacity':1,

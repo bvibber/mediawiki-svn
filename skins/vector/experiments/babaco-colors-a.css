@@ -1,0 +1,74 @@
+/* Babaco Color Scheme A */
+a:visited,
+a:visited div.vectorTabs li.selected a:visited span {
+	color: #260e9c;
+}
+
+html .thumbimage,
+#toc, .toc, .mw-warning, div.thumbinner {
+	border-color: #c0c0c0;
+	background-color: #f0f0f0;
+}
+
+/* Framework */
+body {
+	background-color: #f9f9f9 !important;
+	background-image:url(images/page-base-updated.png);
+}
+/* Links */
+a {
+	color: #003cb3;
+}
+a:visited {
+	color: #004d99;
+}
+a:active {
+	color: #be5900;
+}
+a.stub {
+	color: #772233;
+}
+a.new, #p-personal a.new {
+	color: #990000 !important;
+}
+a.new:visited, #p-personal a.new:visited {
+	color: #a55858;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	border-color:#8d8d8d;
+}
+body div.vectorTabs li.selected a,
+body div.vectorTabs li.selected a span,
+body div.vectorTabs li.selected a:visited
+body div.vectorTabs li.selected a:visited span {
+	color: #be5900 !important;
+}
+div.vectorTabs li.new a, 
+div.vectorTabs li.new a span, 
+div.vectorTabs li.new a:visited, 
+div.vectorTabs li.new a:visited span {
+	color:#990000;
+}
+#toc,
+.toc,
+.mw-warning,
+div.gallerybox div.thumb,
+table.gallery,
+#preferences fieldset.prefsection fieldset,
+#preferences,
+html .thumbimage,
+.usermessage,
+img.thumbborder,
+div.thumbinner{
+	border: 1px solid #c0c0c0;
+	background-color: #f0f0f0;
+}
+#firstHeading {
+	color:#005780;
+}

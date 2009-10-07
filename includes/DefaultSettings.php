@@ -191,10 +191,13 @@ $wgFileStore['deleted']['directory'] = false;///< Defaults to $wgUploadDirectory
 $wgFileStore['deleted']['url'] = null;       ///< Private
 $wgFileStore['deleted']['hash'] = 3;         ///< 3-level subdirectory split
 
+$wgImgAuthDetails   = false; ///< defaults to false - only set to true if you use img_auth and want the user to see details on why access failed
+$wgImgAuthPublicTest = true; ///< defaults to true - if public read is turned on, no need for img_auth, config error unless other access is used
+
 /**@{
  * File repository structures
  *
- * $wgLocalFileRepo is a single repository structure, and $wgForeignFileRepo is
+ * $wgLocalFileRepo is a single repository structure, and $wgForeignFileRepos is
  * an array of such structures. Each repository structure is an associative
  * array of properties configuring the repository.
  *
@@ -645,6 +648,8 @@ $wgCheckDBSchema = true;
  * main database.
  * For backwards compatibility the shared prefix is set to the same as the local
  * prefix, and the user table is listed in the default list of shared tables.
+ * The user_properties table is also added so that users will continue to have their
+ * preferences shared (preferences were stored in the user table prior to 1.16)
  *
  * $wgSharedTables may be customized with a list of tables to share in the shared
  * datbase. However it is advised to limit what tables you do share as many of
@@ -653,7 +658,7 @@ $wgCheckDBSchema = true;
  */
 $wgSharedDB     = null;
 $wgSharedPrefix = false; # Defaults to $wgDBprefix
-$wgSharedTables = array( 'user' );
+$wgSharedTables = array( 'user', 'user_properties' );
 
 /**
  * Database load balancer
@@ -981,6 +986,16 @@ $wgDisableTitleConversion = false;
 
 /** Default variant code, if false, the default will be the language code */
 $wgDefaultLanguageVariant = false;
+
+/** Disabled variants array of language variant conversion.
+ *  example:
+ *  $wgDisabledVariants[] = 'zh-mo';
+ *  $wgDisabledVariants[] = 'zh-my';
+ *
+ *  or:
+ *  $wgDisabledVariants = array('zh-mo', 'zh-my');
+ */
+$wgDisabledVariants = array();
 
 /**
  * Show a bar of language selection links in the user login and user
@@ -1317,6 +1332,7 @@ $wgGroupPermissions['user']['reupload']         = true;
 $wgGroupPermissions['user']['reupload-shared']  = true;
 $wgGroupPermissions['user']['minoredit']        = true;
 $wgGroupPermissions['user']['purge']            = true; // can use ?action=purge without clicking "ok"
+$wgGroupPermissions['user']['sendemail']        = true;
 
 // Implicit group for accounts that pass $wgAutoConfirmAge
 $wgGroupPermissions['autoconfirmed']['autoconfirmed'] = true;
@@ -1338,6 +1354,7 @@ $wgGroupPermissions['sysop']['createaccount']    = true;
 $wgGroupPermissions['sysop']['delete']           = true;
 $wgGroupPermissions['sysop']['bigdelete']        = true; // can be separately configured for pages with > $wgDeleteRevisionsLimit revs
 $wgGroupPermissions['sysop']['deletedhistory']   = true; // can view deleted history entries, but not see or restore the text
+$wgGroupPermissions['sysop']['deletedtext']      = true; // can view deleted revision text
 $wgGroupPermissions['sysop']['undelete']         = true;
 $wgGroupPermissions['sysop']['editinterface']    = true;
 $wgGroupPermissions['sysop']['editusercss']      = true;
@@ -1588,7 +1605,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '240';
+$wgStyleVersion = '243';
 
 
 # Server-side caching:
@@ -2771,13 +2788,7 @@ $wgScriptModifiedCheck = true;
 $wgEnableJS2system = false;
 
 /*
- * boolean; if relative file paths can be used (in addition to the autoload 
- * js classes listed in: $wgJSAutoloadClasses)
- */
-$wgEnableScriptLoaderJsFile = false;
-
-/*
- * boolean; if we should minify the output. (note if you send ?debug=true in 
+ * boolean; if we should minify the output. (note if you send ?debug=true in
  * the page request it will automatically not group and not minify)
  */
 $wgEnableScriptMinify = true;
@@ -3878,6 +3889,12 @@ $wgAPIRequestLog = false;
 $wgAPICacheHelp = true;
 
 /**
+ * Set the timeout for the API help text cache. Ignored if $wgAPICacheHelp
+ * is false.
+ */
+$wgAPICacheHelpTimeout = 60*60;
+
+/**
  * Parser test suite files to be run by parserTests.php when no specific
  * filename is passed to it.
  *
@@ -4078,11 +4095,26 @@ $wgEnforceHtmlIds = true;
 $wgUseTwoButtonsSearchForm = true;
 
 /**
- *  Search form behavior for Vector skin only
+ * Search form behavior for Vector skin only
  * true = use an icon search button
  * false = use Go & Search buttons
  */
 $wgVectorUseSimpleSearch = false;
+
+/**
+ * Watch and unwatch as an icon rather than a link for Vector skin only
+ * true = use an icon watch/unwatch button
+ * false = use watch/unwatch text link
+ */
+$wgVectorUseIconWatch = false;
+
+/**
+ * Add extra stylesheets for Vector - This is only being used so that we can play around with different options while
+ * keeping our CSS code in the SVN and not having to change the main Vector styles. This will probably go away later on.
+ * null = add no extra styles
+ * array = list of style paths relative to skins/vector/
+ */
+$wgVectorExtraStyles = null;
 
 /**
  * Preprocessor caching threshold
@@ -4233,7 +4265,17 @@ $wgMemoryLimit = "50M";
  */
 $wgUseAJAXCategories = false;
 
-// to disable image delete/restore temporarily
+/**
+ * Only enable AJAXCategories on configured namespaces. Default is all.
+ *
+ * Example:
+ *   $wgAJAXCategoriesNamespaces = array( NS_MAIN, NS_PROJECT );
+ */
+$wgAJAXCategoriesNamespaces = array();
+
+/**
+ * To disable file delete/restore temporarily
+ */
 $wgUploadMaintenance = false;
 
 /**
